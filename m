@@ -1,106 +1,108 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5875905lfk;
-        Mon, 15 Nov 2021 05:39:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz9nRM+EXIgG4tGvkUCxO6uw/VWETxJUCHBAR0I6wsp39xj8IE3PrGuPYGLr3xhbKFmh6HS
-X-Received: by 2002:ab0:21c6:: with SMTP id u6mr2419061uan.132.1636983558394;
-        Mon, 15 Nov 2021 05:39:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1636983558; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp6019388lfk;
+        Mon, 15 Nov 2021 07:29:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxK9AKdFTGc8DK1Vc+WRdII761YLPbo0KrIFBMQWg8oN+K4oxe5WaS+Vjex5eQFn5PQ3eWy
+X-Received: by 2002:a05:6102:199:: with SMTP id r25mr43949712vsq.44.1636990151604;
+        Mon, 15 Nov 2021 07:29:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636990151; cv=none;
         d=google.com; s=arc-20160816;
-        b=cJhkZSYP9jlocIsACHtnf/8KXr9YVitBGGajvSR2FSVG0bupRVDI4PvwRkVA4iUx53
-         lgYwCP2T/raroYo3f+4gnKfn2rLPHj/jEzw4iM1ScwQWeEQ0iPyMOc6t/OSjyYDUsTrO
-         qkXRcBYhY1T/jC9IwRt3iwPkwvxsX2auJ/JfUKnUMl3KPBIn/jkmMM5oa7FqOPa+cRBq
-         HpLlUJ9yhbaDQ5hRMDo45m/q/NQb2l5xsTzHVdNuGkcUL4BYbGXZf/bnaH+Zh0odCdLI
-         iWXGT6r2LXObJrf/8utjFawP7htwN5cwHCjK/EInI5vhw7H9sfl0drFKeHNhlZlXiUNI
-         O+sw==
+        b=aGT0oXliZ+G2fimKJt9VHGxZUxhp6w+dxM2jg6GW4hhXna4Iiq3sUswsCzwXwFM0PO
+         kyKSuZK01fDzOXufHli2YYwJQjjDIuyKpReJniec/P4+3qr5wHvTdtlp7IvYHlOTYiXp
+         CNRgi+8m9TOkzIIABH2pifb4gTawwZ7P0YK7h2OpZ6tHRsUlGjIF2atnK7e8YfJi95CS
+         c9/kujfwkumGisOHHNv2yRMdu8LERcr23McmiGl+3FzUcEp++Lcrf1m27Fsq/r5sP60g
+         j7jcc8hvsn0WOa3eJie6/+LQuJyAEV8sYqEmCEFKH7b9VX4T/c5EFVMzzQ3WD5aL8mib
+         P8Wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=NJeT81Ln08sVnOvClQx7gZy/obIymPr4zWjhEVgsEjA=;
-        b=mAdeveLJ8kcTKvez750N9TiUSincEKAYjp6MF13F46VMjcWB2Jy392y7PUu5rDQSCJ
-         mNYlIR8zPO8vRLjzr6AtgaO+JV/+mTDU1qRDzqEIv31AwQo7xwVY76Bn/MAPoRSnXqMM
-         ++GIFcp1BdbVLzbtvLnqjgFR6+tyzvhHF/KW0VT8rDfUQ8BB4E2ehnb+x7FHrIOuq7Az
-         AYY6pUj3Ju6y0cKwotVFlzLvvrcadvGPRLNLTM3sIHuEvZFqVZl2YH9dWcfNNPqv9QfD
-         98SWat+ILHRJxgTbGxV9gcgsXDH//AM6UZ+Zi4EQCxg7vPBMzWvgtxJmYQ43Tfb7xnnf
-         387g==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from
+         :dkim-signature;
+        bh=crVDgUFmpmZO9nTQH6bGuGTZLTK4QCeBv9bNIsWhg5c=;
+        b=GAB5XE7WVjobN/W0QeTaV29x2fO65Uc5M4YYP29QrHmzK11CD/qzdBem8CjeZwswOe
+         IElexacuQDVQDa8Kq9nkSTK7VHHT4XR3phTqVZqD7fD7oD4TbGdIgAspoLFhCSEdQFEb
+         jFpH3PfxYEeCUnIU8z1AD0l4DbSq9rDQVpSEtLhZ06jVcaMuhXhPw697uzoseooZQgPW
+         Eh55IJBxyDEiCEhLXcd2H7+jrcymLqHsQ9KigSyaH3pbpnPI9DkZlMGwLECVfJvKPjpt
+         ZFi3r3n00EJkwsG1uWFunZHXiUYDyB8exLXjXwgRHLAE1bEX8HRriO1L3Yc88+gR3quf
+         bM2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qZRH7NGm;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PMcEtdqW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13si5084020vsa.207.2021.11.15.05.39.18
+        by mx.google.com with ESMTPS id e2si23052967vsh.128.2021.11.15.07.29.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Nov 2021 05:39:18 -0800 (PST)
+        Mon, 15 Nov 2021 07:29:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qZRH7NGm;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PMcEtdqW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52662 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mmcCb-0003GQ-PA
-	for alex.bennee@linaro.org; Mon, 15 Nov 2021 08:39:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34356)
+	id 1mmduw-0008W1-SK
+	for alex.bennee@linaro.org; Mon, 15 Nov 2021 10:29:10 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36056)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mmcCI-0003Fl-D3
- for qemu-arm@nongnu.org; Mon, 15 Nov 2021 08:38:58 -0500
-Received: from [2a00:1450:4864:20::32f] (port=54984
- helo=mail-wm1-x32f.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mmcCG-0004ME-Gl
- for qemu-arm@nongnu.org; Mon, 15 Nov 2021 08:38:57 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id i12so13146853wmq.4
- for <qemu-arm@nongnu.org>; Mon, 15 Nov 2021 05:38:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NJeT81Ln08sVnOvClQx7gZy/obIymPr4zWjhEVgsEjA=;
- b=qZRH7NGmp1PMciSQoyUMYVXlFymS4BExsXAseBK1B8gjNV7fhXTfSBMzGWpMUvhW33
- ObFcgmCeoLByoNeaNhtvBwJ254GuzHATVvjBBtZHYMjgrlIklX0TiqCeCvXo/HJQFgZT
- RtDmcu0GZJQ1korC7xr1allEf3AuqyaF7yAjb5tfS7wQzCCqwtHXotneub2OtKC/tSat
- slvDZ6PurEUAZqLTuziK0JygPkdx7tGK4Hmt/24//NdaHnG9FTWR0P2nFJajVIpgJ93a
- rYONTU+dCi82DRk3il1SExHOH6ouF2YbXBB8iGPL0DE8fg26aWUaN1VWZQejgimbBX0F
- LzqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NJeT81Ln08sVnOvClQx7gZy/obIymPr4zWjhEVgsEjA=;
- b=yfHiXCBqG8s/WrIjQAACPoPy3CoFhCUk/F2FNF9ItpiuhVAZLG8S1dwGxaPa34dduj
- uY4jLdnDVGHu9LDjnpHvqA1DEi/2F9e+ufG/dvYCj3BiT8jtJxoDq0/8jyqtWMVhlSZc
- coixmJfzAnurTQYOnbYeVwwKzyfGdS6+2gpLB60GnTULDL8S5jIWIiS3dq8vUBf3x3xN
- cG4ihnDf0FWDdEuvj6eEUmib1oOSpucSaBFXvLsczse1Y2Nmx92uDiLr7n7zbGpycCfS
- BobF1lI+oE/50iX0YTmI8/5HvN1OZtGKXQDM+elfO7Hiz6wyOPl32jD6rw42/gaqa4k/
- xn+g==
-X-Gm-Message-State: AOAM531ANC/XMadrMK8omN9I1dqdC+qqIN+hZ56oD5Ql9RCj7dh5n7gx
- iw6S8HdyGG9eYiLB8b/dBaVOs/64tE+b7NfDYYLrVQ==
-X-Received: by 2002:a05:600c:3486:: with SMTP id
- a6mr26357463wmq.32.1636983535036; 
- Mon, 15 Nov 2021 05:38:55 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mmdua-0008Ss-JZ
+ for qemu-arm@nongnu.org; Mon, 15 Nov 2021 10:28:48 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55182)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mmduU-00044V-M3
+ for qemu-arm@nongnu.org; Mon, 15 Nov 2021 10:28:48 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1636990120;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=crVDgUFmpmZO9nTQH6bGuGTZLTK4QCeBv9bNIsWhg5c=;
+ b=PMcEtdqWRx/4TkhK9qurLgJfmYlLdxH4Do3A2iS6gr4Ndbu+r9CQ6pOh8EsCBHFmkBEH1m
+ HLt1XNY33ZdK1GyZD+PRNzqsXzI386eObyCpzWwtkzbXkkp/ZZ0zJdU0Sxzpqtdr9bSDvW
+ ohWKlenNTggTQpBuxrkTdky4OUVXkAU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-42-qo0B8a7mOSyRLIftShn8Ng-1; Mon, 15 Nov 2021 10:28:37 -0500
+X-MC-Unique: qo0B8a7mOSyRLIftShn8Ng-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A9C8F18414A0;
+ Mon, 15 Nov 2021 15:28:35 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CE0F160BE5;
+ Mon, 15 Nov 2021 15:28:34 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 498DE11380A7; Mon, 15 Nov 2021 16:28:33 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Kevin Wolf <kwolf@redhat.com>
+Subject: On configuring onboard block devices with -blockdev (was: [PATCH v4
+ 6/7] hw/nvram: Update at24c EEPROM init function in NPCM7xx boards)
+References: <20211103220133.1422879-1-wuhaotsh@google.com>
+ <20211103220133.1422879-4-wuhaotsh@google.com>
+ <YZJeU5fCxR07hmJQ@redhat.com>
+Date: Mon, 15 Nov 2021 16:28:33 +0100
+In-Reply-To: <YZJeU5fCxR07hmJQ@redhat.com> (Kevin Wolf's message of "Mon, 15
+ Nov 2021 14:19:15 +0100")
+Message-ID: <875ystigke.fsf_-_@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20211115125536.3341681-1-armbru@redhat.com>
- <20211115125536.3341681-3-armbru@redhat.com>
-In-Reply-To: <20211115125536.3341681-3-armbru@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 15 Nov 2021 13:38:43 +0000
-Message-ID: <CAFEAcA-dxXdsaKP5G7nhSROqwsRS9=r44G7rvNpEKbjgX8BbGQ@mail.gmail.com>
-Subject: Re: [PATCH RFC 2/2] hw: Replace drive_get_next() by drive_get()
-To: Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32f
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,59 +115,150 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: bin.meng@windriver.com, mark.cave-ayland@ilande.co.uk,
- qemu-devel@nongnu.org, sundeep.lkml@gmail.com, qemu-block@nongnu.org,
- andrew.smirnov@gmail.com, hskinnemoen@google.com, joel@jms.id.au,
- atar4qemu@gmail.com, alistair@alistair23.me, b.galvani@gmail.com,
- nieklinnenbank@gmail.com, qemu-arm@nongnu.org, clg@kaod.org, kwolf@redhat.com,
- qemu-riscv@nongnu.org, andrew@aj.id.au, f4bug@amsat.org,
- Andrew.Baumann@microsoft.com, jcd@tribudubois.net, kfting@nuvoton.com,
- hreitz@redhat.com, palmer@dabbelt.com
+Cc: peter.maydell@linaro.org, thuth@redhat.com, qemu-block@nongnu.org,
+ venture@google.com, bin.meng@windriver.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, hskinnemoen@google.com, Hao Wu <wuhaotsh@google.com>,
+ kfting@nuvoton.com, qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com,
+ armbru@redhat.com, f4bug@amsat.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /db1VmoSLvnK
+X-TUID: HrZ7YBJZF9e2
 
-On Mon, 15 Nov 2021 at 12:55, Markus Armbruster <armbru@redhat.com> wrote:
->
-> drive_get_next() is basically a bad idea.  It returns the "next" block
-> backend of a certain interface type.  "Next" means bus=0,unit=N, where
-> subsequent calls count N up from zero, per interface type.
->
-> This lets you define unit numbers implicitly by execution order.  If the
-> order changes, or new calls appear "in the middle", unit numbers change.
-> ABI break.  Hard to spot in review.
->
-> Explicit is better than implicit: use drive_get() directly.
->
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  include/sysemu/blockdev.h           |  1 -
->  blockdev.c                          | 10 ----------
->  hw/arm/aspeed.c                     | 21 +++++++++++++--------
->  hw/arm/cubieboard.c                 |  2 +-
->  hw/arm/imx25_pdk.c                  |  2 +-
->  hw/arm/integratorcp.c               |  2 +-
->  hw/arm/mcimx6ul-evk.c               |  2 +-
->  hw/arm/mcimx7d-sabre.c              |  2 +-
->  hw/arm/msf2-som.c                   |  2 +-
->  hw/arm/npcm7xx_boards.c             |  6 +++---
->  hw/arm/orangepi.c                   |  2 +-
->  hw/arm/raspi.c                      |  2 +-
->  hw/arm/realview.c                   |  2 +-
->  hw/arm/sabrelite.c                  |  2 +-
->  hw/arm/versatilepb.c                |  4 ++--
->  hw/arm/vexpress.c                   |  6 +++---
->  hw/arm/xilinx_zynq.c                | 16 +++++++++-------
->  hw/arm/xlnx-versal-virt.c           |  3 ++-
->  hw/arm/xlnx-zcu102.c                |  6 +++---
->  hw/microblaze/petalogix_ml605_mmu.c |  2 +-
->  hw/misc/sifive_u_otp.c              |  2 +-
->  hw/riscv/microchip_pfsoc.c          |  2 +-
->  hw/sparc64/niagara.c                |  2 +-
->  23 files changed, 49 insertions(+), 52 deletions(-)
+Kevin Wolf <kwolf@redhat.com> writes:
 
-This would be easier to review if it didn't try to change all of
-these board/SoC models at once. Each one of them is entirely
-separate review work.
+> Am 03.11.2021 um 23:01 hat Hao Wu geschrieben:
+>> We made 3 changes to the at24c_eeprom_init function in
+>> npcm7xx_boards.c:
+>> 
+>> 1. We allow the function to take a I2CBus* as parameter. This allows
+>>    us to attach an EEPROM device behind an I2C mux which is not
+>>    possible with the old method.
+>> 
+>> 2. We make at24c EEPROMs are backed by drives so that we can
+>>    specify the content of the EEPROMs.
+>> 
+>> 3. Instead of using i2c address as unit number, This patch assigns
+>>    unique unit numbers for each eeproms in each board. This avoids
+>>    conflict in providing multiple eeprom contents with the same address.
+>>    In the old method if we specify two drives with the same unit number,
+>>    the following error will occur: `Device with id 'none85' exists`.
+>> 
+>> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+>> ---
+>>  hw/arm/npcm7xx_boards.c | 14 +++++++++-----
+>>  1 file changed, 9 insertions(+), 5 deletions(-)
+>> 
+>> diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+>> index dec7d16ae5..9121e081fa 100644
+>> --- a/hw/arm/npcm7xx_boards.c
+>> +++ b/hw/arm/npcm7xx_boards.c
+>> @@ -126,13 +126,17 @@ static I2CBus *npcm7xx_i2c_get_bus(NPCM7xxState *soc, uint32_t num)
+>>      return I2C_BUS(qdev_get_child_bus(DEVICE(&soc->smbus[num]), "i2c-bus"));
+>>  }
+>>  
+>> -static void at24c_eeprom_init(NPCM7xxState *soc, int bus, uint8_t addr,
+>> -                              uint32_t rsize)
+>> +static void at24c_eeprom_init(I2CBus *i2c_bus, int bus, uint8_t addr,
+>> +                              uint32_t rsize, int unit_number)
+>>  {
+>> -    I2CBus *i2c_bus = npcm7xx_i2c_get_bus(soc, bus);
+>>      I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
+>>      DeviceState *dev = DEVICE(i2c_dev);
+>> +    DriveInfo *dinfo;
+>>  
+>> +    dinfo = drive_get(IF_OTHER, bus, unit_number);
+>> +    if (dinfo) {
+>> +        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
+>> +    }
+>
+> I may be missing the history of this series, but why do we have to use a
+> legacy DriveInfo here instead of adding a drive property to the board to
+> make this configurable with -blockdev?
+>
+> Adding even more devices that can only be configured with -drive feels
+> like a step backwards to me.
 
--- PMM
+More like sideways.
+
+The big unfinished part of -blockdev is configuring onboard devices with
+it.
+
+I took a stab at one instance in commit ebc29e1bea "pc: Support firmware
+configuration with -blockdev", 2019-03-11.  Quoting from the commit
+message:
+
+    Mapping -drive if=none,... to -blockdev is a solved problem.  With
+    if=T other than if=none, -drive additionally configures a block device
+    frontend.  For non-onboard devices, that part maps to -device.  Also a
+    solved problem.  For onboard devices such as PC flash memory, we have
+    an unsolved problem.
+
+    This is actually an instance of a wider problem: our general device
+    configuration interface doesn't cover onboard devices.  Instead, we have
+    a zoo of ad hoc interfaces that are much more limited.  One of them is
+    -drive, which we'd rather deprecate, but can't until we have suitable
+    replacements for all its uses.
+
+    Sadly, I can't attack the wider problem today.  So back to the narrow
+    problem.
+
+    My first idea was to reduce it to its solved buddy by using pluggable
+    instead of onboard devices for the flash memory.  Workable, but it
+    requires some extra smarts in firmware descriptors and libvirt.  Paolo
+    had an idea that is simpler for libvirt: keep the devices onboard, and
+    add machine properties for their block backends.
+
+    The implementation is less than straightforward, I'm afraid.
+
+    First, block backend properties are *qdev* properties.  Machines can't
+    have those, as they're not devices.  I could duplicate these qdev
+    properties as QOM properties, but I hate that.
+
+    More seriously, the properties do not belong to the machine, they
+    belong to the onboard flash devices.  Adding them to the machine would
+    then require bad magic to somehow transfer them to the flash devices.
+    Fortunately, QOM provides the means to handle exactly this case: add
+    alias properties to the machine that forward to the onboard devices'
+    properties.
+
+    Properties need to be created in .instance_init() methods.  For PC
+    machines, that's pc_machine_initfn().  To make alias properties work,
+    we need to create the onboard flash devices there, too.  Requires
+    several bug fixes, in the previous commits.  We also have to realize
+    the devices.  More on that below.
+
+The need to create onboard devices differently results in a non-trivial
+refactoring.  The need for keeping -drive working complicates things
+further.
+
+The "several bug fixes" took me 26 preparatory patches, plus at least
+three more to fix regressions caused by one of them.
+
+I then did the same for ARM virt in commit e0561e60f1 "hw/arm/virt:
+Support firmware configuration with -blockdev", 2019-05-07.  Only a few
+preparatory patches, but the patch again includes non-trivial
+refactoring.
+
+Two new machines (ARM sbsa-ref and RISC-V virt) have since done it this
+way from the start, both in 2019.  Definitely easier than the
+refactoring I did for PC machines and ARM virt.
+
+More than a hundred drive_get() remain in some 70 files hw/.  These
+should all be for onboard block devices.  I'm not aware of progress
+since 2019.
+
+If "replace them all by machine properties" is the way forward, we need
+to get going.  At the current rate of one file a year (measured
+charitably), we'll be done around 2090, provided we don't add more
+(we've added quite a few since I did the first replacement).
+
+If it isn't a practical way forward, then what is?
+
+And this is what makes me go "more like sideways".  Hao Wu is doing what
+the vast majority of the code does.  Yes, that's not moving us forward
+on this thorny set of problems.  But it's hardly setting us back,
+either.
+
+Before we can ask people to help us move forward, we need to find the
+way forward.  I'm not sure we have.
+

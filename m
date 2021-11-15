@@ -1,107 +1,107 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5878361lfk;
-        Mon, 15 Nov 2021 05:41:15 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwWBPVRfCGa7jv1Odzf4tk1dldRlLtCvHiflWBGblX+cxNb4oBL10ImPz8Ogx+RiIHFzPUI
-X-Received: by 2002:a67:db0b:: with SMTP id z11mr43027832vsj.59.1636983675538;
-        Mon, 15 Nov 2021 05:41:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1636983675; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5886926lfk;
+        Mon, 15 Nov 2021 05:48:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzz6UHcSK6MKxr3PIaAFwWgmvInp3YO0WS0p5YXuPFueSyoghrJXFXlp/ZCVRR3KJ2Xz81R
+X-Received: by 2002:ab0:44e:: with SMTP id 72mr59091140uav.121.1636984114701;
+        Mon, 15 Nov 2021 05:48:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636984114; cv=none;
         d=google.com; s=arc-20160816;
-        b=PP3hyWvMQIJ+mziHpAUw6NS6zVUnJIhzGQD1IN1s+a+bvWNXG4x614O0BcYtxo5coy
-         G8RshudncSAPQ20pO6Jhl5ATa9sVmVpa05rL5m/d30klq1vZQp5oEwcy9oMU0UOGtN0c
-         C2Sh+l1eO7aI1uirC2Ljgv7MKf8/qs9Vv/WuAUP2vHosTzawMqtfBsAmGxQsBw0CEnCR
-         w1Tz5U/Wwus/eTah4uYxKSVxFtJ5Zwnh9VErHhLg5FrRBqDi9YwHVkjVrw8sN9kFdX6F
-         QBaAM8igd4VYPoj43Y5m43bzYbT611GBiB7FuKnZR7Y5UwS33bDUyNT3GkI8TQTet9yr
-         L/8g==
+        b=skYgeH3x1hKWis9ZsdgS/ufCub0R4rwBSomwlzTHrEHRsTYiIs72pJIJYQpYqr5wzP
+         Vi0CCrE4Wf0b0ZonO8XG4wjpJOlHUUDdw1ABaCx8fHRkKyUbJb4Q0zzRiv7OI4GgachM
+         Y+E4hhvQXUJOPq48D85q+tr2pi3D6Ig38GSJ/k6Fv+1HfT7v65CoSDitDOHyv1SSqZVg
+         SRTTS1x0HUGSXDK+0brKxtUjqqhaKXIAHm7lHyG3E8jRRD5EtIriQIgra49LRRtXbPld
+         fp5reWPjdDq+dFZe1Rq/eLiwrTn0bIn6IcVO77ZuloILVx4mWlu+7UvUaHPYObv+t7Tr
+         6o9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=QvRVK5lj+6pdoso32NupYmtgW6boEgcwejPFuAqqqMc=;
-        b=VG3zf47qmiMtLO5Y6tw6eAcvN0KegrBtdPtYnHwOoU1N6GL0sinW93Kmm5E4cNRubI
-         vW/P90sqODWziYJZupF3YBxhTS2NRdoj7iZfblgN/U1/rnGcd8YxXn9GAr7JwOZAHyHE
-         so2tNcDx6ST34Xh/w8sew/SxQLWx9We1QFXb7gF1jpMbspkjDiFer5ad2M28CTt0NdVX
-         2HdF0szf/apbJK9ih2HsEJp8TBTvIYfRgNUljjcHVibC7XoIAJZHAC9nFZVGkvi9Gq2d
-         5saDq+14BGwsmJAIml3VVsfkHNQqLAWYZQpWYDEg+FSl5KfS8OjNMltcHrNghA/B62yx
-         6mLg==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from
+         :dkim-signature;
+        bh=39X9PHyLgG5tKgwq8KHgl7E9/h1ZlQME+TsbaEXLlrw=;
+        b=Fr/c0fi6PH298rkm/jM+OQq632P2nTflRhbCU8wUcN8R8NcDNo/cqA65T8KfoAw7Gh
+         kv7JdWyDPoA6KqCc017/E1oTL9AjbSXF2ZTvU/yN/mXBdNb1wEgA4I+Gz/ZOI+EpBmlI
+         nxXlp8mS6KfheG29sb3ifz73Iaa+z6YcEVUh2A1jWYH6sdiQFjHv4ISnME/Gd6im0B61
+         w+MDCsh56/zaSQ/XhNei1IH6+b0RieE+2HO3gub1YT4twoea1/e2IHTDbx/KV1RMC4WT
+         IzFWOFhjq2Tpw8dSB60/tJlcb3E+/Gt1soPqZpEmrT61C+F+vudQBkLPe7JprFekEprD
+         cmIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=lT7owlu9;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Z51v133k;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d2si27790675vsj.136.2021.11.15.05.41.15
+        by mx.google.com with ESMTPS id i5si34479761vsk.40.2021.11.15.05.48.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Nov 2021 05:41:15 -0800 (PST)
+        Mon, 15 Nov 2021 05:48:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=lT7owlu9;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Z51v133k;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54944 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59874 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mmcEU-0004tB-Tn
-	for alex.bennee@linaro.org; Mon, 15 Nov 2021 08:41:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34804)
+	id 1mmcLa-0000OB-3h
+	for alex.bennee@linaro.org; Mon, 15 Nov 2021 08:48:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mmcE7-0004ZM-DJ
- for qemu-arm@nongnu.org; Mon, 15 Nov 2021 08:40:51 -0500
-Received: from [2a00:1450:4864:20::435] (port=39721
- helo=mail-wr1-x435.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mmcE4-0004aP-Ln
- for qemu-arm@nongnu.org; Mon, 15 Nov 2021 08:40:51 -0500
-Received: by mail-wr1-x435.google.com with SMTP id d27so30814580wrb.6
- for <qemu-arm@nongnu.org>; Mon, 15 Nov 2021 05:40:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QvRVK5lj+6pdoso32NupYmtgW6boEgcwejPFuAqqqMc=;
- b=lT7owlu9kJkl1DLiwDtaWf0BfcwxScHS1nkQk3oSy0mThst9XyTf9WnvWCVk0eQ8xi
- +7Wuug0OFye3gA7Gyv776v7uJV6hP3ZHE/ZBVKl5ZLtZm4D7H6lu8GeYJuK8xJmlIR1k
- 3v6j0LFRLzCzvECJdozDQTMy7Byh2unTGJYz7AuziTpMOG0fyRLzQemoPCZAhgUAw2XX
- hOyoTO40pqzlPylb6kjNJvkg7rvBBxOy9nV8wyL7iSNPVO3t4OX6oEpSc+pHaJRCfdSb
- 54ZtA3cXJ8MYWv78R1muAXVUoQuvmtBGKx3IaBVqEfxEYNsjIX3t4eyzdJsX2ZAjykoo
- fkVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QvRVK5lj+6pdoso32NupYmtgW6boEgcwejPFuAqqqMc=;
- b=IFSvSZHe7nCli+GwSb6dOlQDVqZw1WRme3Q22Xhd+dZxVwB9mVi6f6KhVjDP5knB3O
- 85mRfKaU0fOLczzXyNWRGSnOsmuai3vUudjmeuzlz10fETh6t3hhQ+fUwDm5NeA7E8uk
- pjAizqnUmevVASF/IfEKthzp7xmUe7/LylwT7ibMKc8qph85GGoK3DyvPRaX1I5evV/+
- ZXgDswcxbh+HoycPS7aKTj4tMrqr4EqQv+AzoTecmxJDOv12MlvnKXjH3pwc2SxHZBr7
- zcVWLxkavw/mtsPtSTklxKEfgtPiEpNQED0kaI/JMPbNUvukBvorem6JQVsR8ln8vKhp
- pFgg==
-X-Gm-Message-State: AOAM530RDMpYe9+UOk/+TzxOT1vb5QX7MHa5LnQqCKsarrfl2Cf7MGMm
- Hg3VAbdG6Pu6skTcG/NQQG7beAWiuyZbahYocANIqw==
-X-Received: by 2002:a05:6000:381:: with SMTP id
- u1mr47959699wrf.302.1636983647148; 
- Mon, 15 Nov 2021 05:40:47 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mmcLH-000054-Oy
+ for qemu-arm@nongnu.org; Mon, 15 Nov 2021 08:48:15 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45884)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mmcLF-0005tU-FS
+ for qemu-arm@nongnu.org; Mon, 15 Nov 2021 08:48:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1636984091;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=39X9PHyLgG5tKgwq8KHgl7E9/h1ZlQME+TsbaEXLlrw=;
+ b=Z51v133kjJYihUJ6S1o9quCBm7IqkELHTcW9m+8iTI8fQzl3HZdooimPGAi448HMEXMlk7
+ o+lsFoZWQ1hepvyA0muGXofkZv71mq/jFC4np8XUo2TIAW+isI3YLKhzVYZ45K/KrUvdSS
+ ZlZLQcw30F/563mUhoQ5Xy/WIMEcd5A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-505-Xv4NxenOOdGGoggfrfxtoA-1; Mon, 15 Nov 2021 08:48:08 -0500
+X-MC-Unique: Xv4NxenOOdGGoggfrfxtoA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EC53719251A2;
+ Mon, 15 Nov 2021 13:48:04 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CC61F5F4EF;
+ Mon, 15 Nov 2021 13:48:03 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 4854011380A7; Mon, 15 Nov 2021 14:48:02 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH RFC 2/2] hw: Replace drive_get_next() by drive_get()
 References: <20211115125536.3341681-1-armbru@redhat.com>
- <20211115125536.3341681-2-armbru@redhat.com>
-In-Reply-To: <20211115125536.3341681-2-armbru@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 15 Nov 2021 13:40:36 +0000
-Message-ID: <CAFEAcA94NzZq6fnvvF6aRJtHV29Wnrtudz4QKSoADo6=-QF5JA@mail.gmail.com>
-Subject: Re: [PATCH RFC 1/2] hw/sd/ssi-sd: Do not create SD card within
- controller's realize
-To: Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::435
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ <20211115125536.3341681-3-armbru@redhat.com>
+ <CAFEAcA-dxXdsaKP5G7nhSROqwsRS9=r44G7rvNpEKbjgX8BbGQ@mail.gmail.com>
+Date: Mon, 15 Nov 2021 14:48:02 +0100
+In-Reply-To: <CAFEAcA-dxXdsaKP5G7nhSROqwsRS9=r44G7rvNpEKbjgX8BbGQ@mail.gmail.com>
+ (Peter Maydell's message of "Mon, 15 Nov 2021 13:38:43 +0000")
+Message-ID: <875ystjzsd.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,31 +124,53 @@ Cc: bin.meng@windriver.com, mark.cave-ayland@ilande.co.uk,
  hreitz@redhat.com, palmer@dabbelt.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IWk5+wl8iof7
+X-TUID: Qz1wjBYjmH8Z
 
-On Mon, 15 Nov 2021 at 12:56, Markus Armbruster <armbru@redhat.com> wrote:
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> On Mon, 15 Nov 2021 at 12:55, Markus Armbruster <armbru@redhat.com> wrote:
+>>
+>> drive_get_next() is basically a bad idea.  It returns the "next" block
+>> backend of a certain interface type.  "Next" means bus=0,unit=N, where
+>> subsequent calls count N up from zero, per interface type.
+>>
+>> This lets you define unit numbers implicitly by execution order.  If the
+>> order changes, or new calls appear "in the middle", unit numbers change.
+>> ABI break.  Hard to spot in review.
+>>
+>> Explicit is better than implicit: use drive_get() directly.
+>>
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> ---
+>>  include/sysemu/blockdev.h           |  1 -
+>>  blockdev.c                          | 10 ----------
+>>  hw/arm/aspeed.c                     | 21 +++++++++++++--------
+>>  hw/arm/cubieboard.c                 |  2 +-
+>>  hw/arm/imx25_pdk.c                  |  2 +-
+>>  hw/arm/integratorcp.c               |  2 +-
+>>  hw/arm/mcimx6ul-evk.c               |  2 +-
+>>  hw/arm/mcimx7d-sabre.c              |  2 +-
+>>  hw/arm/msf2-som.c                   |  2 +-
+>>  hw/arm/npcm7xx_boards.c             |  6 +++---
+>>  hw/arm/orangepi.c                   |  2 +-
+>>  hw/arm/raspi.c                      |  2 +-
+>>  hw/arm/realview.c                   |  2 +-
+>>  hw/arm/sabrelite.c                  |  2 +-
+>>  hw/arm/versatilepb.c                |  4 ++--
+>>  hw/arm/vexpress.c                   |  6 +++---
+>>  hw/arm/xilinx_zynq.c                | 16 +++++++++-------
+>>  hw/arm/xlnx-versal-virt.c           |  3 ++-
+>>  hw/arm/xlnx-zcu102.c                |  6 +++---
+>>  hw/microblaze/petalogix_ml605_mmu.c |  2 +-
+>>  hw/misc/sifive_u_otp.c              |  2 +-
+>>  hw/riscv/microchip_pfsoc.c          |  2 +-
+>>  hw/sparc64/niagara.c                |  2 +-
+>>  23 files changed, 49 insertions(+), 52 deletions(-)
 >
-> ssi_sd_realize() creates an "sd-card" device.  This is inappropriate,
-> and marked FIXME.
->
-> Move it to the boards that create these devices.  Prior art: commit
-> eb4f566bbb for device "generic-sdhci", and commit 26c607b86b for
-> device "pl181".
->
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
+> This would be easier to review if it didn't try to change all of
+> these board/SoC models at once. Each one of them is entirely
+> separate review work.
 
-> @@ -670,7 +672,7 @@ static void sifive_u_machine_init(MachineState *machine)
->
->      /* Connect an SPI flash to SPI0 */
->      flash_dev = qdev_new("is25wp256");
-> -    dinfo = drive_get_next(IF_MTD);
-> +    dinfo = drive_get(IF_MTD, 0, 0);
->      if (dinfo) {
->          qdev_prop_set_drive_err(flash_dev, "drive",
->                                  blk_by_legacy_dinfo(dinfo),
+Happy to split, but first I'd like to get some advice on the part I'm
+unsure about; see my cover letter.
 
-
-This part looks like it should have been in the other patch.
-
--- PMM

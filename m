@@ -1,115 +1,107 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5901137lfk;
-        Mon, 15 Nov 2021 06:00:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx18cIC5hFpjcHI983/lgccOxdre7v5/PObo3GB3dKYspNhyxQM6/8MdGR5Miye+kjPTiMH
-X-Received: by 2002:ab0:6002:: with SMTP id j2mr59530521ual.9.1636984842495;
-        Mon, 15 Nov 2021 06:00:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1636984842; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5878361lfk;
+        Mon, 15 Nov 2021 05:41:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwWBPVRfCGa7jv1Odzf4tk1dldRlLtCvHiflWBGblX+cxNb4oBL10ImPz8Ogx+RiIHFzPUI
+X-Received: by 2002:a67:db0b:: with SMTP id z11mr43027832vsj.59.1636983675538;
+        Mon, 15 Nov 2021 05:41:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636983675; cv=none;
         d=google.com; s=arc-20160816;
-        b=oLUGmZILHKPfo+/RvpvapA2dDbM1X7wurzYKLQ1ghZpS5B6p2AoaxJkQcConr706bW
-         EJHdn/kCsEh1LeTCjsdDki3flAk43E351Ou+suHyDaZZDj8wNrMFBH+Bk/pEvnilEQ6e
-         99XcXMBzzSrafK+FmVVn2rvymfBkWuxzYlEMhq6s0VDnDzAeEYR1BiCqd0yy1QZecW3X
-         zhBnzUWONYElKvvsOZrrZbEFqePAIVgLiYy5liJ66/JO2YRWhAGv6UnMZkKNdC7R0NvT
-         N66l3CaYx+f8oG0oV2aCtBND70tREi20Bi87B3Byj/a3Wf7tqFKfJsHaYW+L/5+4wqAv
-         GbCA==
+        b=PP3hyWvMQIJ+mziHpAUw6NS6zVUnJIhzGQD1IN1s+a+bvWNXG4x614O0BcYtxo5coy
+         G8RshudncSAPQ20pO6Jhl5ATa9sVmVpa05rL5m/d30klq1vZQp5oEwcy9oMU0UOGtN0c
+         C2Sh+l1eO7aI1uirC2Ljgv7MKf8/qs9Vv/WuAUP2vHosTzawMqtfBsAmGxQsBw0CEnCR
+         w1Tz5U/Wwus/eTah4uYxKSVxFtJ5Zwnh9VErHhLg5FrRBqDi9YwHVkjVrw8sN9kFdX6F
+         QBaAM8igd4VYPoj43Y5m43bzYbT611GBiB7FuKnZR7Y5UwS33bDUyNT3GkI8TQTet9yr
+         L/8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=Vaj/3uTZGSNhF1Z2VfOfqJusUbdCarifgwLV0njRbhE=;
-        b=h2CbEmuIAnw3x8OCrdj21SaMGOlWwWvZrk3ia5ggmimJ8RF1GgCOU7vYFrzTVUc54P
-         qApMuGOWZnNTnyBsqbFKzloHsfBCozK4XOR6R/CizR3ySpR/88CznEsbVmHY3xHoTfSk
-         jDfQpFaAaA37g+xNPdOruH4DDP52aUSrZnshC49wc1onwh7iKPpvc5h9rpso2NZ5jfe/
-         Ns3+wiLaci02rhiAO73+dNYbOfc5g55aifMbBhc9iZkRpi9FoKKsa77Wpv4ECFGeJxhg
-         OosZCC5VbkFmip5v5aqa3IvoOyaT66PHvdWQWMJCBCTIPCQd05W+kYCGuRJ3h5pf9IiT
-         wm7g==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=QvRVK5lj+6pdoso32NupYmtgW6boEgcwejPFuAqqqMc=;
+        b=VG3zf47qmiMtLO5Y6tw6eAcvN0KegrBtdPtYnHwOoU1N6GL0sinW93Kmm5E4cNRubI
+         vW/P90sqODWziYJZupF3YBxhTS2NRdoj7iZfblgN/U1/rnGcd8YxXn9GAr7JwOZAHyHE
+         so2tNcDx6ST34Xh/w8sew/SxQLWx9We1QFXb7gF1jpMbspkjDiFer5ad2M28CTt0NdVX
+         2HdF0szf/apbJK9ih2HsEJp8TBTvIYfRgNUljjcHVibC7XoIAJZHAC9nFZVGkvi9Gq2d
+         5saDq+14BGwsmJAIml3VVsfkHNQqLAWYZQpWYDEg+FSl5KfS8OjNMltcHrNghA/B62yx
+         6mLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ETsYELfR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=lT7owlu9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e12si14294463vke.24.2021.11.15.06.00.42
+        by mx.google.com with ESMTPS id d2si27790675vsj.136.2021.11.15.05.41.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Nov 2021 06:00:42 -0800 (PST)
+        Mon, 15 Nov 2021 05:41:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ETsYELfR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42860 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=lT7owlu9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mmcXJ-0008Qm-Aq
-	for alex.bennee@linaro.org; Mon, 15 Nov 2021 09:00:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40166)
+	id 1mmcEU-0004tB-Tn
+	for alex.bennee@linaro.org; Mon, 15 Nov 2021 08:41:14 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mmcWb-0008P1-Qr; Mon, 15 Nov 2021 08:59:57 -0500
-Received: from [2a00:1450:4864:20::42a] (port=46895
- helo=mail-wr1-x42a.google.com)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mmcE7-0004ZM-DJ
+ for qemu-arm@nongnu.org; Mon, 15 Nov 2021 08:40:51 -0500
+Received: from [2a00:1450:4864:20::435] (port=39721
+ helo=mail-wr1-x435.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mmcWZ-0007fw-VZ; Mon, 15 Nov 2021 08:59:57 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id u1so30910779wru.13;
- Mon, 15 Nov 2021 05:59:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Vaj/3uTZGSNhF1Z2VfOfqJusUbdCarifgwLV0njRbhE=;
- b=ETsYELfR6LIvbj5aCZlh7C5GlAzDRNORvKNIF1+dKYPC1wXc4BZcK+sALEXeEJDuCS
- 7RIEWSe+5XzShDSb5yFpN2nDtXYp0rOI2mb2wv0Vw/asqjnn3i2on+ZVck3D0eKqOq2z
- c50TLBkxM9xvJk89DFcmwhKsi5DB3FPyEvpgYYN+VvdGoky3D+DBU8ritTU7kt1vo5Kq
- c9fjSep+OEULbDgDUrge45GvEuvFCwTitjjnZ7dzzsI/7fzp0SdwLCqgeu9XGv2TY9dA
- vQosvW0crGlc0fFhPCGl7poiB+rMBMpAEzDMn6mReRiQPjh0EUAAyHF7KriVueAl9R6C
- a5yw==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mmcE4-0004aP-Ln
+ for qemu-arm@nongnu.org; Mon, 15 Nov 2021 08:40:51 -0500
+Received: by mail-wr1-x435.google.com with SMTP id d27so30814580wrb.6
+ for <qemu-arm@nongnu.org>; Mon, 15 Nov 2021 05:40:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=QvRVK5lj+6pdoso32NupYmtgW6boEgcwejPFuAqqqMc=;
+ b=lT7owlu9kJkl1DLiwDtaWf0BfcwxScHS1nkQk3oSy0mThst9XyTf9WnvWCVk0eQ8xi
+ +7Wuug0OFye3gA7Gyv776v7uJV6hP3ZHE/ZBVKl5ZLtZm4D7H6lu8GeYJuK8xJmlIR1k
+ 3v6j0LFRLzCzvECJdozDQTMy7Byh2unTGJYz7AuziTpMOG0fyRLzQemoPCZAhgUAw2XX
+ hOyoTO40pqzlPylb6kjNJvkg7rvBBxOy9nV8wyL7iSNPVO3t4OX6oEpSc+pHaJRCfdSb
+ 54ZtA3cXJ8MYWv78R1muAXVUoQuvmtBGKx3IaBVqEfxEYNsjIX3t4eyzdJsX2ZAjykoo
+ fkVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Vaj/3uTZGSNhF1Z2VfOfqJusUbdCarifgwLV0njRbhE=;
- b=xKfgbdcTBBGAyBnJoH8RDaVRs3xjoNhWQz7zsPV7z0ws4pgGmixmWqHauqgWXaQuvM
- sMFchuczfgZPdxv/3U3vJjsCAhEmtKvBtL7HgRZPXjZe5k00ZDb5oDaO6UqbHclCGEJ/
- 4O1Bu/epJqyPBopJkjF8EuDlZa4fKeii1TGQrMa0fkWGhlD1Dp8wXNjEKQomB/Ib7koL
- qMCYzmLETtxOaobPflsJeqW1NcvrnT8LiaLx20G7lu4j/HHOcKRz874M+75rOMdCSYgc
- +xWVqLgKN1JFid0zoQdvnu+UqilvFspDw85oTgnSR4V8mLPT6QiI6yN2ph+e8Z69ia7o
- u9XQ==
-X-Gm-Message-State: AOAM530Hbb8SaTLnxILHX8Ff+4CRcRJYcGbDfCFPcLAFyzmN5aJObNcy
- syYeExe8GiGF7GmNTJ6kyVk=
-X-Received: by 2002:a5d:6691:: with SMTP id l17mr47085485wru.227.1636984793625; 
- Mon, 15 Nov 2021 05:59:53 -0800 (PST)
-Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id c16sm14034565wrx.96.2021.11.15.05.59.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Nov 2021 05:59:52 -0800 (PST)
-Message-ID: <5b799ad5-a552-454f-dcc7-1ea6de22b397@amsat.org>
-Date: Mon, 15 Nov 2021 14:59:51 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=QvRVK5lj+6pdoso32NupYmtgW6boEgcwejPFuAqqqMc=;
+ b=IFSvSZHe7nCli+GwSb6dOlQDVqZw1WRme3Q22Xhd+dZxVwB9mVi6f6KhVjDP5knB3O
+ 85mRfKaU0fOLczzXyNWRGSnOsmuai3vUudjmeuzlz10fETh6t3hhQ+fUwDm5NeA7E8uk
+ pjAizqnUmevVASF/IfEKthzp7xmUe7/LylwT7ibMKc8qph85GGoK3DyvPRaX1I5evV/+
+ ZXgDswcxbh+HoycPS7aKTj4tMrqr4EqQv+AzoTecmxJDOv12MlvnKXjH3pwc2SxHZBr7
+ zcVWLxkavw/mtsPtSTklxKEfgtPiEpNQED0kaI/JMPbNUvukBvorem6JQVsR8ln8vKhp
+ pFgg==
+X-Gm-Message-State: AOAM530RDMpYe9+UOk/+TzxOT1vb5QX7MHa5LnQqCKsarrfl2Cf7MGMm
+ Hg3VAbdG6Pu6skTcG/NQQG7beAWiuyZbahYocANIqw==
+X-Received: by 2002:a05:6000:381:: with SMTP id
+ u1mr47959699wrf.302.1636983647148; 
+ Mon, 15 Nov 2021 05:40:47 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH RFC 2/2] hw: Replace drive_get_next() by drive_get()
-Content-Language: en-US
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 References: <20211115125536.3341681-1-armbru@redhat.com>
- <20211115125536.3341681-3-armbru@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20211115125536.3341681-3-armbru@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42a
+ <20211115125536.3341681-2-armbru@redhat.com>
+In-Reply-To: <20211115125536.3341681-2-armbru@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 15 Nov 2021 13:40:36 +0000
+Message-ID: <CAFEAcA94NzZq6fnvvF6aRJtHV29Wnrtudz4QKSoADo6=-QF5JA@mail.gmail.com>
+Subject: Re: [PATCH RFC 1/2] hw/sd/ssi-sd: Do not create SD card within
+ controller's realize
+To: Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::435
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-2.278,
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,134 +114,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, bin.meng@windriver.com,
- mark.cave-ayland@ilande.co.uk, jcd@tribudubois.net, qemu-block@nongnu.org,
+Cc: bin.meng@windriver.com, mark.cave-ayland@ilande.co.uk,
+ qemu-devel@nongnu.org, sundeep.lkml@gmail.com, qemu-block@nongnu.org,
  andrew.smirnov@gmail.com, hskinnemoen@google.com, joel@jms.id.au,
  atar4qemu@gmail.com, alistair@alistair23.me, b.galvani@gmail.com,
  nieklinnenbank@gmail.com, qemu-arm@nongnu.org, clg@kaod.org, kwolf@redhat.com,
- qemu-riscv@nongnu.org, andrew@aj.id.au, Andrew.Baumann@microsoft.com,
- sundeep.lkml@gmail.com, kfting@nuvoton.com, hreitz@redhat.com,
- palmer@dabbelt.com
+ qemu-riscv@nongnu.org, andrew@aj.id.au, f4bug@amsat.org,
+ Andrew.Baumann@microsoft.com, jcd@tribudubois.net, kfting@nuvoton.com,
+ hreitz@redhat.com, palmer@dabbelt.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +R2OTUoaRtzo
+X-TUID: IWk5+wl8iof7
 
-On 11/15/21 13:55, Markus Armbruster wrote:
-> drive_get_next() is basically a bad idea.  It returns the "next" block
-> backend of a certain interface type.  "Next" means bus=0,unit=N, where
-> subsequent calls count N up from zero, per interface type.
-> 
-> This lets you define unit numbers implicitly by execution order.  If the
-> order changes, or new calls appear "in the middle", unit numbers change.
-> ABI break.  Hard to spot in review.
-> 
-> Explicit is better than implicit: use drive_get() directly.
-> 
+On Mon, 15 Nov 2021 at 12:56, Markus Armbruster <armbru@redhat.com> wrote:
+>
+> ssi_sd_realize() creates an "sd-card" device.  This is inappropriate,
+> and marked FIXME.
+>
+> Move it to the boards that create these devices.  Prior art: commit
+> eb4f566bbb for device "generic-sdhci", and commit 26c607b86b for
+> device "pl181".
+>
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->  include/sysemu/blockdev.h           |  1 -
->  blockdev.c                          | 10 ----------
->  hw/arm/aspeed.c                     | 21 +++++++++++++--------
->  hw/arm/cubieboard.c                 |  2 +-
->  hw/arm/imx25_pdk.c                  |  2 +-
->  hw/arm/integratorcp.c               |  2 +-
->  hw/arm/mcimx6ul-evk.c               |  2 +-
->  hw/arm/mcimx7d-sabre.c              |  2 +-
->  hw/arm/msf2-som.c                   |  2 +-
->  hw/arm/npcm7xx_boards.c             |  6 +++---
->  hw/arm/orangepi.c                   |  2 +-
->  hw/arm/raspi.c                      |  2 +-
->  hw/arm/realview.c                   |  2 +-
->  hw/arm/sabrelite.c                  |  2 +-
->  hw/arm/versatilepb.c                |  4 ++--
->  hw/arm/vexpress.c                   |  6 +++---
->  hw/arm/xilinx_zynq.c                | 16 +++++++++-------
->  hw/arm/xlnx-versal-virt.c           |  3 ++-
->  hw/arm/xlnx-zcu102.c                |  6 +++---
->  hw/microblaze/petalogix_ml605_mmu.c |  2 +-
->  hw/misc/sifive_u_otp.c              |  2 +-
->  hw/riscv/microchip_pfsoc.c          |  2 +-
->  hw/sparc64/niagara.c                |  2 +-
->  23 files changed, 49 insertions(+), 52 deletions(-)
 
-> @@ -435,11 +438,13 @@ static void aspeed_machine_init(MachineState *machine)
->      }
->  
->      for (i = 0; i < bmc->soc.sdhci.num_slots; i++) {
-> -        sdhci_attach_drive(&bmc->soc.sdhci.slots[i], drive_get_next(IF_SD));
-> +        sdhci_attach_drive(&bmc->soc.sdhci.slots[i],
-> +                           drive_get(IF_SD, 0, i));
+> @@ -670,7 +672,7 @@ static void sifive_u_machine_init(MachineState *machine)
+>
+>      /* Connect an SPI flash to SPI0 */
+>      flash_dev = qdev_new("is25wp256");
+> -    dinfo = drive_get_next(IF_MTD);
+> +    dinfo = drive_get(IF_MTD, 0, 0);
+>      if (dinfo) {
+>          qdev_prop_set_drive_err(flash_dev, "drive",
+>                                  blk_by_legacy_dinfo(dinfo),
 
-If we put SD on bus #0, ...
 
->      }
->  
->      if (bmc->soc.emmc.num_slots) {
-> -        sdhci_attach_drive(&bmc->soc.emmc.slots[0], drive_get_next(IF_SD));
-> +        sdhci_attach_drive(&bmc->soc.emmc.slots[0],
-> +                           drive_get(IF_SD, 0, bmc->soc.sdhci.num_slots));
+This part looks like it should have been in the other patch.
 
-... we'd want to put eMMC on bus #1, but I see having eMMC cards on a
-IF_SD bus as a bug, since these cards are soldered on the board.
-
-> --- a/hw/arm/vexpress.c
-> +++ b/hw/arm/vexpress.c
-> @@ -625,7 +625,7 @@ static void vexpress_common_init(MachineState *machine)
->                            qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_WPROT));
->      qdev_connect_gpio_out_named(dev, "card-inserted", 0,
->                            qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_CARDIN));
-> -    dinfo = drive_get_next(IF_SD);
-> +    dinfo = drive_get(IF_SD, 0, 0);
-
-Can we have one interface refactor per patch (IF_SD, IF_PFLASH, IF_MTD...)?
-
-> @@ -657,7 +657,7 @@ static void vexpress_common_init(MachineState *machine)
->  
->      sysbus_create_simple("pl111", map[VE_CLCD], pic[14]);
->  
-> -    dinfo = drive_get_next(IF_PFLASH);
-> +    dinfo = drive_get(IF_PFLASH, 0, 0);
-
-> -static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
-> -                                         bool is_qspi)
-> +static inline int zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
-> +                                        bool is_qspi, int unit0)
->  {
-> +    int unit = unit0;
->      DeviceState *dev;
->      SysBusDevice *busdev;
->      SSIBus *spi;
-> @@ -156,7 +157,7 @@ static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
->          spi = (SSIBus *)qdev_get_child_bus(dev, bus_name);
->  
->          for (j = 0; j < num_ss; ++j) {
-> -            DriveInfo *dinfo = drive_get_next(IF_MTD);
-> +            DriveInfo *dinfo = drive_get(IF_MTD, 0, unit++);
-
-> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-> index 3dc2b5e8ca..45eb19ab3b 100644
-> --- a/hw/arm/xlnx-zcu102.c
-> +++ b/hw/arm/xlnx-zcu102.c
-> @@ -190,7 +190,7 @@ static void xlnx_zcu102_init(MachineState *machine)
->          BusState *spi_bus;
->          DeviceState *flash_dev;
->          qemu_irq cs_line;
-> -        DriveInfo *dinfo = drive_get_next(IF_MTD);
-> +        DriveInfo *dinfo = drive_get(IF_MTD, 0, i);
-
-If this is bus #0, ...
-
->          gchar *bus_name = g_strdup_printf("spi%d", i);
->  
->          spi_bus = qdev_get_child_bus(DEVICE(&s->soc), bus_name);
-> @@ -212,7 +212,7 @@ static void xlnx_zcu102_init(MachineState *machine)
->          BusState *spi_bus;
->          DeviceState *flash_dev;
->          qemu_irq cs_line;
-> -        DriveInfo *dinfo = drive_get_next(IF_MTD);
-> +        DriveInfo *dinfo = drive_get(IF_MTD, 0, XLNX_ZYNQMP_NUM_SPIS + i);
-
-... I'd expect we use bus #1 here (different connector on the board).
-
->          int bus = i / XLNX_ZYNQMP_NUM_QSPI_BUS_CS;
->          gchar *bus_name = g_strdup_printf("qspi%d", bus);
+-- PMM

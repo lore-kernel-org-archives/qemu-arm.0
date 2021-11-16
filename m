@@ -1,321 +1,223 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp972487lfk;
-        Wed, 17 Nov 2021 08:41:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyCYhGmaP5z9AnmDWV7oRPzwyrD0nH5nB2SHuUnC67231vV3OrsY84DqtEc3B28UCgOP73c
-X-Received: by 2002:a05:620a:1450:: with SMTP id i16mr14229667qkl.284.1637167316140;
-        Wed, 17 Nov 2021 08:41:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637167316; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp7199223lfk;
+        Tue, 16 Nov 2021 01:32:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwwzauFr/xdg1IY1PK93f/JkczNHqg2pfMwkYbzQyy3KsCQurEWX57RT308Gflxy/cyV+n+
+X-Received: by 2002:a05:6122:78c:: with SMTP id k12mr71713023vkr.22.1637055122841;
+        Tue, 16 Nov 2021 01:32:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637055122; cv=none;
         d=google.com; s=arc-20160816;
-        b=HS3/Xa52IdXBR3zAkgFlmwmEZ0gBDTnz149J89Klst1E8CW1sA+2RdXTmOzFxBQRUv
-         AstpfPlp10+QH8PhmYoPsOgvDjgKl+sCAmRVVKlMGCht/zRcL0tiBK0cwKuy0PjbvvIx
-         jcJYFkAOfZKbIAB2ef63tu1lodI/uLv14IW6AR/tSYSbDSUwBftN2IPQl29ebkyb4tUd
-         NqxoDBHK+WBDeAc4O1t8dYmTQpZlTHi4YN51MJGdxvysOMP1kMHif+ZTrnwCVUV5qHmG
-         JBmC4oT2ZX0lKvb/WVdaChMRZTl3avKX7D/RC3pvJrph6c37YvPujhwZcQw1XoYX4fX2
-         RefA==
+        b=DDNICKrIdWFqT4IoapzeT70JHFbSyJvuEhTQtAg/RQUOOh3yDe3NP+sO4Gmp7uzcE3
+         GRbEKdrEVbm5TjfBQepIR4bFGTIDKROGWkfFW3h6zapSvthlaB8VmvmTMYYE4Cj0FUzd
+         NMAw4ZAteT+UYTi4HdOdOCZ91W9Frh3oXlNtkG9oD/gw9OF2Qadd/DA6clFD/eIpxsMX
+         nzAeY+J3LASVJ0i/2NO4O3DHmbQ2mHoKQRc0jI6G8fJDh/yIf5L7oSwb5x7g4dZu8JkR
+         i/r2eKAzQ0OawBczToMm8YRY17C2jrs9JCBjdRMFrZL42vC8sqtewI1Nhd5vZ0kTH2YZ
+         c4gQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=Nv7xEc0r9K+UFSB/+bjTC9hP1s8f7mZ1TvPS4t1YCmc=;
-        b=rpv7ju5BiOA9lq5KW7TQ75xsYNVdoDTW1wqiOiq1YOt2J7gtlC2LFYLmXteknnETt7
-         OGpZYElBJePdMUwqUE3/DqKNkRNIPLDLNjE37bHBPusMvzKHU/7fUT2v2x6SAHyGvnF+
-         dXegKBVek/CsAWJGZzIfNM2k26qIQ4cWA4jisMtTk88jCNuJuChfOAd8mR2VejGzceAC
-         Fzlws3MD35tN+AvYHY7qytROKJ5as25UQCHa9iqJLH8C8FcIINB78tYrP9hGDEvpXcTg
-         ZBVa3sN/MV3bcZ1crj4tKuyKTXPz9L8FVqFuSnTM7P0VTgx0YUpjblEhZmdsX+ZxsYGP
-         QNow==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=LCl8U/D/Pa48qIvfVxZX4rYcYvDhz3Xjr1zYmbJqQjc=;
+        b=IDTkljpLRODvziE2AD5cJFWWBU6VDSb3g5QpksHq0ecG9+ywfS7BbKfuCFALxivDYQ
+         r1gvpfowpd3qFp60UJgTnzEQH7fkJCw/SseXES5wFmL9Zywu1h7W2qg8M3YQ8jU2JfWi
+         jjF8vBmktPO7tW51dBcR8Zv30EJR4FVsEibsLB8WaqW4iIqXuPD72zGL9hQ5wn6U6nGV
+         Pa0ktfVP2CAGZTG6xc4uGO4uwdKyGdz/9GwlNt7fqzKACrWlDUqMM30zRARmfCDsRj/E
+         Mbe7B+V9GsLFRIALOZsZCLaKTp4peKU/xpjulKgQ8bkl/nD32BmESBd0kk7UofIA/gD4
+         uPGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WBILbZPT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WIyr2dhx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5si366188qtw.291.2021.11.17.08.41.55
+        by mx.google.com with ESMTPS id b12si37157099uav.136.2021.11.16.01.32.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Nov 2021 08:41:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Nov 2021 01:32:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WBILbZPT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WIyr2dhx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53572 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51456 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mnO0R-0003c2-Fn
-	for alex.bennee@linaro.org; Wed, 17 Nov 2021 11:41:55 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33034)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mmuos-0007K5-3s
+	for alex.bennee@linaro.org; Tue, 16 Nov 2021 04:32:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnNtM-0003X4-Ik
- for qemu-arm@nongnu.org; Wed, 17 Nov 2021 11:34:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:60365)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mmumw-0005eV-1G
+ for qemu-devel@nongnu.org; Tue, 16 Nov 2021 04:30:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:45587)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnNtD-0008Ao-MT
- for qemu-arm@nongnu.org; Wed, 17 Nov 2021 11:34:36 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mmumu-00013T-BD
+ for qemu-devel@nongnu.org; Tue, 16 Nov 2021 04:30:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637166866;
+ s=mimecast20190719; t=1637054999;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Nv7xEc0r9K+UFSB/+bjTC9hP1s8f7mZ1TvPS4t1YCmc=;
- b=WBILbZPTfETQdr+Mst25RDLLXGhbGE8UJhAngnG7ydNf5eNERnIpZxrzvII1AkEyhd/R6S
- YS/eo7NZBfl9yt9B5ochxSBxN2HwSvUpiCcYfw0aiibPZby9s3s22t7mdQtQXeEhNSAEeG
- k2GyEBKi70h7DCpN3FqBXsnFMmf7wXU=
+ bh=LCl8U/D/Pa48qIvfVxZX4rYcYvDhz3Xjr1zYmbJqQjc=;
+ b=WIyr2dhxV6Emkzq9mKQNaZ18NAOj8FLay/LYoAAENNDtlQDtQZqsGwuvCU9NHCszmD7iMG
+ AjCbWKMsnuNvVnDS5AP42EBt9ZozWaQoHOkEuiwjMWmclm9iWYudHI4yhabF1fDxG98jr1
+ CiE5tpdRGyC2jLb4tA0+Ygx4nBivdsI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-250-yzX-l9IxOD2U8Tr0TBfI3w-1; Wed, 17 Nov 2021 11:34:19 -0500
-X-MC-Unique: yzX-l9IxOD2U8Tr0TBfI3w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-243-4yDtXnA-PsayCco88Ft6cQ-1; Tue, 16 Nov 2021 04:29:56 -0500
+X-MC-Unique: 4yDtXnA-PsayCco88Ft6cQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A324810168C0;
- Wed, 17 Nov 2021 16:34:16 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1DF911023F55;
+ Tue, 16 Nov 2021 09:29:53 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0811A179B3;
- Wed, 17 Nov 2021 16:34:16 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E6DA05D6BA;
+ Tue, 16 Nov 2021 09:29:51 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 7A80211380B8; Wed, 17 Nov 2021 17:34:09 +0100 (CET)
+ id A7AFA11380A7; Tue, 16 Nov 2021 10:29:49 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 02/13] hw: Replace trivial drive_get_next() by drive_get()
-Date: Wed, 17 Nov 2021 17:33:58 +0100
-Message-Id: <20211117163409.3587705-3-armbru@redhat.com>
-In-Reply-To: <20211117163409.3587705-1-armbru@redhat.com>
-References: <20211117163409.3587705-1-armbru@redhat.com>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Subject: Re: [PATCH RFC 2/2] hw: Replace drive_get_next() by drive_get()
+References: <20211115125536.3341681-1-armbru@redhat.com>
+ <20211115125536.3341681-3-armbru@redhat.com>
+ <5b799ad5-a552-454f-dcc7-1ea6de22b397@amsat.org>
+ <87lf1pfm2z.fsf@dusky.pond.sub.org>
+ <39b908d3-57aa-ab1e-f10a-87afd887a341@kaod.org>
+Date: Tue, 16 Nov 2021 10:29:49 +0100
+In-Reply-To: <39b908d3-57aa-ab1e-f10a-87afd887a341@kaod.org>
+ (=?utf-8?Q?=22C=C3=A9dric?= Le
+ Goater"'s message of "Tue, 16 Nov 2021 09:52:35 +0100")
+Message-ID: <87h7ccbg8i.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
 X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.701,
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.697,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- qemu-block@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <laurent@vivier.eu>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MFB6FevbRwBt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, bin.meng@windriver.com,
+ mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org, jcd@tribudubois.net,
+ qemu-block@nongnu.org, andrew.smirnov@gmail.com, hskinnemoen@google.com,
+ joel@jms.id.au, atar4qemu@gmail.com, alistair@alistair23.me,
+ b.galvani@gmail.com, nieklinnenbank@gmail.com, qemu-arm@nongnu.org,
+ kwolf@redhat.com, qemu-riscv@nongnu.org, andrew@aj.id.au,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew.Baumann@microsoft.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
+ hreitz@redhat.com, palmer@dabbelt.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jzFfm0VkcT+d
 
-drive_get_next() is basically a bad idea.  It returns the "next" block
-backend of a certain interface type.  "Next" means bus=0,unit=N, where
-subsequent calls count N up from zero, per interface type.
+C=C3=A9dric Le Goater <clg@kaod.org> writes:
 
-This lets you define unit numbers implicitly by execution order.  If the
-order changes, or new calls appear "in the middle", unit numbers change.
-ABI break.  Hard to spot in review.
+> On 11/15/21 16:57, Markus Armbruster wrote:
+>> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+>>=20
+>>> On 11/15/21 13:55, Markus Armbruster wrote:
+>>>> drive_get_next() is basically a bad idea.  It returns the "next" block
+>>>> backend of a certain interface type.  "Next" means bus=3D0,unit=3DN, w=
+here
+>>>> subsequent calls count N up from zero, per interface type.
+>>>>
+>>>> This lets you define unit numbers implicitly by execution order.  If t=
+he
+>>>> order changes, or new calls appear "in the middle", unit numbers chang=
+e.
+>>>> ABI break.  Hard to spot in review.
+>>>>
+>>>> Explicit is better than implicit: use drive_get() directly.
+>>>>
+>>>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>>>> ---
+>>>>   include/sysemu/blockdev.h           |  1 -
+>>>>   blockdev.c                          | 10 ----------
+>>>>   hw/arm/aspeed.c                     | 21 +++++++++++++--------
+>>>>   hw/arm/cubieboard.c                 |  2 +-
+>>>>   hw/arm/imx25_pdk.c                  |  2 +-
+>>>>   hw/arm/integratorcp.c               |  2 +-
+>>>>   hw/arm/mcimx6ul-evk.c               |  2 +-
+>>>>   hw/arm/mcimx7d-sabre.c              |  2 +-
+>>>>   hw/arm/msf2-som.c                   |  2 +-
+>>>>   hw/arm/npcm7xx_boards.c             |  6 +++---
+>>>>   hw/arm/orangepi.c                   |  2 +-
+>>>>   hw/arm/raspi.c                      |  2 +-
+>>>>   hw/arm/realview.c                   |  2 +-
+>>>>   hw/arm/sabrelite.c                  |  2 +-
+>>>>   hw/arm/versatilepb.c                |  4 ++--
+>>>>   hw/arm/vexpress.c                   |  6 +++---
+>>>>   hw/arm/xilinx_zynq.c                | 16 +++++++++-------
+>>>>   hw/arm/xlnx-versal-virt.c           |  3 ++-
+>>>>   hw/arm/xlnx-zcu102.c                |  6 +++---
+>>>>   hw/microblaze/petalogix_ml605_mmu.c |  2 +-
+>>>>   hw/misc/sifive_u_otp.c              |  2 +-
+>>>>   hw/riscv/microchip_pfsoc.c          |  2 +-
+>>>>   hw/sparc64/niagara.c                |  2 +-
+>>>>   23 files changed, 49 insertions(+), 52 deletions(-)
+>>>
+>>>> @@ -435,11 +438,13 @@ static void aspeed_machine_init(MachineState *ma=
+chine)
+>>>>       }
+>>>>         for (i =3D 0; i < bmc->soc.sdhci.num_slots; i++) {
+>>>> -        sdhci_attach_drive(&bmc->soc.sdhci.slots[i], drive_get_next(I=
+F_SD));
+>>>> +        sdhci_attach_drive(&bmc->soc.sdhci.slots[i],
+>>>> +                           drive_get(IF_SD, 0, i));
+>>>
+>>> If we put SD on bus #0, ...
+>>>
+>>>>       }
+>>>>         if (bmc->soc.emmc.num_slots) {
+>>>> -        sdhci_attach_drive(&bmc->soc.emmc.slots[0], drive_get_next(IF=
+_SD));
+>>>> +        sdhci_attach_drive(&bmc->soc.emmc.slots[0],
+>>>> +                           drive_get(IF_SD, 0, bmc->soc.sdhci.num_slo=
+ts));
+>>>
+>>> ... we'd want to put eMMC on bus #1
+>>
+>> Using separate buses for different kinds of devices would be neater, but
+>> it also would be an incompatible change.  This patch keeps existing
+>> bus/unit numbers working.  drive_get_next() can only use bus 0.
+>
+> All Aspeed SoCs have 3 SPI busses, each with multiple CS, and also multip=
+le
+> sdhci controllers with multiple slots.
+>
+> How drives are defined for the aspeed machines can/should be improved.
+> The machine init iterates on the command line drives, attaches the
+> DriveInfo, in the order found, to a m25p80 device model first and then
+> follows on with the SD devices. This is fragile clearly and a bus+id
+> would be most welcome to identify the drive backend.
+>
+> May be this is a prereq for this patchset ?
 
-A number of machines connect just one backend with drive_get_next().
-Change them to use drive_get() directly.  This makes the (zero) unit
-number explicit in the code.
+Such a change will probably be easier to review after this patch,
+because then it's just a matter of changing / dumbing down parameters to
+drive_get().
 
-Cc: Beniamino Galvani <b.galvani@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Cc: Niek Linnenbank <nieklinnenbank@gmail.com>
-Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
-Cc: "Philippe Mathieu-Daudé" <f4bug@amsat.org>
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
-Cc: Alistair Francis <Alistair.Francis@wdc.com>
-Cc: Bin Meng <bin.meng@windriver.com>
-Cc: Palmer Dabbelt <palmer@dabbelt.com>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-arm@nongnu.org
-Cc: qemu-riscv@nongnu.org
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- hw/arm/cubieboard.c        | 2 +-
- hw/arm/integratorcp.c      | 2 +-
- hw/arm/msf2-som.c          | 2 +-
- hw/arm/orangepi.c          | 2 +-
- hw/arm/raspi.c             | 2 +-
- hw/arm/realview.c          | 2 +-
- hw/arm/sabrelite.c         | 2 +-
- hw/misc/sifive_u_otp.c     | 2 +-
- hw/riscv/microchip_pfsoc.c | 2 +-
- hw/riscv/sifive_u.c        | 2 +-
- hw/sparc64/niagara.c       | 2 +-
- 11 files changed, 11 insertions(+), 11 deletions(-)
-
-diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-index 294ba5de6e..5e3372a3c7 100644
---- a/hw/arm/cubieboard.c
-+++ b/hw/arm/cubieboard.c
-@@ -81,7 +81,7 @@ static void cubieboard_init(MachineState *machine)
-     }
- 
-     /* Retrieve SD bus */
--    di = drive_get_next(IF_SD);
-+    di = drive_get(IF_SD, 0, 0);
-     blk = di ? blk_by_legacy_dinfo(di) : NULL;
-     bus = qdev_get_child_bus(DEVICE(a10), "sd-bus");
- 
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index 16e8985953..b109ece3ae 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -649,7 +649,7 @@ static void integratorcp_init(MachineState *machine)
-                           qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_WPROT, 0));
-     qdev_connect_gpio_out_named(dev, "card-inserted", 0,
-                           qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_CARDIN, 0));
--    dinfo = drive_get_next(IF_SD);
-+    dinfo = drive_get(IF_SD, 0, 0);
-     if (dinfo) {
-         DeviceState *card;
- 
-diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-index 396e8b9913..d9f881690e 100644
---- a/hw/arm/msf2-som.c
-+++ b/hw/arm/msf2-som.c
-@@ -45,7 +45,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
-     DeviceState *spi_flash;
-     MSF2State *soc;
-     MachineClass *mc = MACHINE_GET_CLASS(machine);
--    DriveInfo *dinfo = drive_get_next(IF_MTD);
-+    DriveInfo *dinfo = drive_get(IF_MTD, 0, 0);
-     qemu_irq cs_line;
-     BusState *spi_bus;
-     MemoryRegion *sysmem = get_system_memory();
-diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-index 0cf9895ce7..e796382236 100644
---- a/hw/arm/orangepi.c
-+++ b/hw/arm/orangepi.c
-@@ -85,7 +85,7 @@ static void orangepi_init(MachineState *machine)
-     qdev_realize(DEVICE(h3), NULL, &error_abort);
- 
-     /* Retrieve SD bus */
--    di = drive_get_next(IF_SD);
-+    di = drive_get(IF_SD, 0, 0);
-     blk = di ? blk_by_legacy_dinfo(di) : NULL;
-     bus = qdev_get_child_bus(DEVICE(h3), "sd-bus");
- 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 146d35382b..b4dd6c1e99 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -284,7 +284,7 @@ static void raspi_machine_init(MachineState *machine)
-     qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
- 
-     /* Create and plug in the SD cards */
--    di = drive_get_next(IF_SD);
-+    di = drive_get(IF_SD, 0, 0);
-     blk = di ? blk_by_legacy_dinfo(di) : NULL;
-     bus = qdev_get_child_bus(DEVICE(&s->soc), "sd-bus");
-     if (bus == NULL) {
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index 1c54316ba3..ddc70b54a5 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -237,7 +237,7 @@ static void realview_init(MachineState *machine,
-         qemu_irq_invert(qdev_get_gpio_in(gpio2, 0)));
-     qdev_connect_gpio_out_named(dev, "card-read-only", 0, mmc_irq[0]);
-     qdev_connect_gpio_out_named(dev, "card-inserted", 0, mmc_irq[1]);
--    dinfo = drive_get_next(IF_SD);
-+    dinfo = drive_get(IF_SD, 0, 0);
-     if (dinfo) {
-         DeviceState *card;
- 
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index 553608e583..cce49aa25c 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -76,7 +76,7 @@ static void sabrelite_init(MachineState *machine)
-             if (spi_bus) {
-                 DeviceState *flash_dev;
-                 qemu_irq cs_line;
--                DriveInfo *dinfo = drive_get_next(IF_MTD);
-+                DriveInfo *dinfo = drive_get(IF_MTD, 0, 0);
- 
-                 flash_dev = qdev_new("sst25vf016b");
-                 if (dinfo) {
-diff --git a/hw/misc/sifive_u_otp.c b/hw/misc/sifive_u_otp.c
-index 18aa0bd55d..5d5a8c8a90 100644
---- a/hw/misc/sifive_u_otp.c
-+++ b/hw/misc/sifive_u_otp.c
-@@ -209,7 +209,7 @@ static void sifive_u_otp_realize(DeviceState *dev, Error **errp)
-                           TYPE_SIFIVE_U_OTP, SIFIVE_U_OTP_REG_SIZE);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmio);
- 
--    dinfo = drive_get_next(IF_NONE);
-+    dinfo = drive_get(IF_NONE, 0, 0);
-     if (dinfo) {
-         int ret;
-         uint64_t perm;
-diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
-index 57d779fb55..d1d065efbc 100644
---- a/hw/riscv/microchip_pfsoc.c
-+++ b/hw/riscv/microchip_pfsoc.c
-@@ -458,7 +458,7 @@ static void microchip_icicle_kit_machine_init(MachineState *machine)
-     target_ulong firmware_end_addr, kernel_start_addr;
-     uint64_t kernel_entry;
-     uint32_t fdt_load_addr;
--    DriveInfo *dinfo = drive_get_next(IF_SD);
-+    DriveInfo *dinfo = drive_get(IF_SD, 0, 0);
- 
-     /* Sanity check on RAM size */
-     if (machine->ram_size < mc->default_ram_size) {
-diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-index a4ecadaf12..aa74e67889 100644
---- a/hw/riscv/sifive_u.c
-+++ b/hw/riscv/sifive_u.c
-@@ -672,7 +672,7 @@ static void sifive_u_machine_init(MachineState *machine)
- 
-     /* Connect an SPI flash to SPI0 */
-     flash_dev = qdev_new("is25wp256");
--    dinfo = drive_get_next(IF_MTD);
-+    dinfo = drive_get(IF_MTD, 0, 0);
-     if (dinfo) {
-         qdev_prop_set_drive_err(flash_dev, "drive",
-                                 blk_by_legacy_dinfo(dinfo),
-diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
-index f3e42d0326..ccad2c43a3 100644
---- a/hw/sparc64/niagara.c
-+++ b/hw/sparc64/niagara.c
-@@ -98,7 +98,7 @@ static void add_rom_or_fail(const char *file, const hwaddr addr)
- static void niagara_init(MachineState *machine)
- {
-     NiagaraBoardState *s = g_new(NiagaraBoardState, 1);
--    DriveInfo *dinfo = drive_get_next(IF_PFLASH);
-+    DriveInfo *dinfo = drive_get(IF_PFLASH, 0, 0);
-     MemoryRegion *sysmem = get_system_memory();
- 
-     /* init CPUs */
--- 
-2.31.1
+I can't judge whether incompatible change is okay here.
 

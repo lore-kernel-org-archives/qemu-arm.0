@@ -1,221 +1,260 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp6551007lfk;
-        Mon, 15 Nov 2021 14:38:27 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwmBwlYerBiuixZ3bmCpANTWPLW3VkuHWknBqD+Zh8X58Y5jcR9dgYav5sf+G1J9BKHP2QD
-X-Received: by 2002:a05:620a:c11:: with SMTP id l17mr2182017qki.493.1637015907619;
-        Mon, 15 Nov 2021 14:38:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637015907; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp7096630lfk;
+        Mon, 15 Nov 2021 23:48:21 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyWJ/S4lNQVjOsQZd/GOyS/7eu16uzEds8S09AgRof0Dfsa/ObbKTE0FTHZVdtStBxxbA3x
+X-Received: by 2002:a37:b306:: with SMTP id c6mr4484569qkf.133.1637048901456;
+        Mon, 15 Nov 2021 23:48:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637048901; cv=none;
         d=google.com; s=arc-20160816;
-        b=KWiq6JXD/w+YYRxge3OFgdEXuixqKJNHY63hA0eoyDcOL3lO9/KnZ1PDzUxoK1afI4
-         Dn1zioAG/exfXNZvbV1tuSd/6oVr9L8xaqfCYyW8gION2ZL55cBEBdGDTtLuo3DvMXQW
-         Y40WXUiltqwlKC93V/z5BkzhSonu/QQKUsfH9F/5O5R5jmNoa4w+8BFES6CMZEwfp7/Y
-         /8Wk6mGMSn4/gx+yEpN8A4qtqsFs5ZPyu0Ro3CBAeeN17Mtjge8At7/VVny2qSyUVvNB
-         i8Y/z9Gh0LyLoI5Uli4Mi9sg4PzuAavuy8A9mBk/EfTNpBAsrEbsbm66LiRql54+rcJc
-         u6Xg==
+        b=S2JiGG03xykSnagB5X/EoYQRx4gLkkJ+uYiwAbeztqbrDQlgipFy5u8cGYHtSrihV5
+         16CHb+RpBnSaX5/1MCLB7uDnuP9rcKDK2xSkXxsbsif/sReVRNn8h+/6DYKm+rAqFrB+
+         qlb3gIUPrM7j0yjrdGZhqc/wK3bF5pj+MXICnK4yuHYPIZ26emglp2wWYwpPYMeEfnTU
+         y+JWOiTCqZ9csRwmmKZ7Vl53lON956THmC1y4XqcsilU8P56+qxkADwP15NJ3W+uTXn7
+         OIIqwds090Vx/ky7vpOZKxQiSAJcSQvkLTIIYRk/FuLw4jp6/YFZzUyTDhHlVq1cwU6n
+         4S+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=8gClzPd0+2kP2htrjZGgkgP6tGqZUPw4g8JDuUbcWpc=;
-        b=0PzRxuoLK3/jc4ZTYpH6xuga9niWz4rZWYcypVIbDG84S3NQd34NaLDn1QWbbJcgYu
-         Csb+osNx4aPFHsQHNaC1I1JjxfRh+EMIsn/JEC7i494RR9vOIrrWauKM1fhlTKw1Zp51
-         CLu5i0VU4qlNpUkpqxGI47f/U3zWBKJ9G6zFD8/SVdnoe2q875Hp+c/R3IbiCpEzbRNm
-         mUikP/2lvHGlBJuI3hiDkD1tGfVSr0EDUsc/Ssq3lT9oO5uV1ZXZavOlKoEhMYnZYvlR
-         S3H30H7C/qIc5LgQh9nBtKEYP2Oxf1SM6Ui89/U17WCBWGXP93744xmEGUxImJuWpM9j
-         pYOA==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=Pej0BvoWZ3cp9gwa8IVAvA5/kRkXJWghrp9vqCi+qjM=;
+        b=ANPnI0c8DIs1GxNwAk8CnEp/eJhVFmGswiSMtp+vO6G6nB8pADeUalvRININItMvzw
+         xygimucDNYvz+MsCkdsxk8hkrjoXHc3hQsArkILa3VtZNgnN2lM7efqlvAaSOxqpGgfT
+         hGiATQliXtP5JuKm4G115UUj4q52NGUV7XiwvAddysgEtWj/JDcGlxPjVIpUzYvOQgJB
+         XgY4B5e7bZYG0xsLPB8D6SpGBKEKOKsYbvUmnpx32U08VxPPLCfyp66OJ8SMaznrXzCP
+         jZs1k09B+yyGLLeI/vN30ySy2kjZj8SsVhdcesY37d0S/djR4t0eu3NWBU2M2jtWAakN
+         niZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SeJ0MPIQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VG5xvcUx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l2si20176067qkj.359.2021.11.15.14.38.27
+        by mx.google.com with ESMTPS id i10si28244567qkn.22.2021.11.15.23.48.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Nov 2021 14:38:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 Nov 2021 23:48:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SeJ0MPIQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VG5xvcUx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60870 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38852 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mmkcM-0003yS-VF
-	for alex.bennee@linaro.org; Mon, 15 Nov 2021 17:38:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54770)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mmtCW-0004Zv-Fu
+	for alex.bennee@linaro.org; Tue, 16 Nov 2021 02:48:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mmkaT-0002G5-S7
- for qemu-devel@nongnu.org; Mon, 15 Nov 2021 17:36:29 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48866)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mmtBo-0004Ud-DP
+ for qemu-arm@nongnu.org; Tue, 16 Nov 2021 02:47:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:26684)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mmkaS-0002iT-9F
- for qemu-devel@nongnu.org; Mon, 15 Nov 2021 17:36:29 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mmtBm-0000io-84
+ for qemu-arm@nongnu.org; Tue, 16 Nov 2021 02:47:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637015787;
+ s=mimecast20190719; t=1637048853;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8gClzPd0+2kP2htrjZGgkgP6tGqZUPw4g8JDuUbcWpc=;
- b=SeJ0MPIQmQmeTlLZ26fw9dxOfutjge3Z2aKrxCe134X7uKEZfVVmBJppRGtUlTM2Zi/yvf
- uIIAZa5yYhYi06nAQQf47zXPNgv2HbXP8VbSRbZT3fMy6LaX9NhQWAd5laxuzfl75ysJH6
- pl+NsVQY6d7UsOOY6zz6EVFrKT4oNdY=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-461-4tinQVeQPHO9T-LUv2-YoQ-1; Mon, 15 Nov 2021 17:36:26 -0500
-X-MC-Unique: 4tinQVeQPHO9T-LUv2-YoQ-1
-Received: by mail-wm1-f71.google.com with SMTP id
- g11-20020a1c200b000000b003320d092d08so6523835wmg.9
- for <qemu-devel@nongnu.org>; Mon, 15 Nov 2021 14:36:26 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=8gClzPd0+2kP2htrjZGgkgP6tGqZUPw4g8JDuUbcWpc=;
- b=RrA+2955JEs4WpVF1LIx5NIXt6WvZkIGdCm8JdTT595IZEtWZeVZMy59u+WRzA0HkO
- zrwPNezQb5gFU5UHYYoerqnEzhC4RCYe7/6snTPkznKe78I46e/+3xqHl8xnXMpD6Wjp
- /fP7FTJBrqw47Bab/j+U6bcmdJNQyuIqnuQ+WzPRrC0N+KgzA6WLE6naLkpGv4v6exNy
- cEPOtJkT6jlr84UYcrFVAlwf/bGyO8lngq2iou5MrrXbfMu0QJ42WGBzhiRQhRl4fj98
- ClsN9+p+41ywQEnVZnG6HnHRCX0Afou/JVI0p9uuq3dSR3Vnc1AIFQGqsNtqlMpZkQjp
- QYxw==
-X-Gm-Message-State: AOAM533vn4DXowstwkPb3YrAp2jJYVjGaTEXLLhwLk97p8zN47B8L/3l
- LNRWlDJuTVwlwi4UznOqkDZ/nCb8QjhM+5gl8eQBGEdzR5K3FvBOqWleSNI9NTrJAITTDagoLKu
- EGa6zp3bpsd0gyvD0alhIPIniXm5gK7yO3BDb+mYvIAcwYBVvgJG+biufLn8btO4f
-X-Received: by 2002:adf:ef4f:: with SMTP id c15mr3282868wrp.226.1637015785282; 
- Mon, 15 Nov 2021 14:36:25 -0800 (PST)
-X-Received: by 2002:adf:ef4f:: with SMTP id c15mr3282843wrp.226.1637015785054; 
- Mon, 15 Nov 2021 14:36:25 -0800 (PST)
-Received: from x1w.. (62.red-83-57-168.dynamicip.rima-tde.net. [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id
- b197sm539935wmb.24.2021.11.15.14.36.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Nov 2021 14:36:24 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH-for-6.2? 1/2] hw/intc/arm_gicv3: Extract gicv3_set_gicv3state
- from arm_gicv3_cpuif.c
-Date: Mon, 15 Nov 2021 23:36:18 +0100
-Message-Id: <20211115223619.2599282-2-philmd@redhat.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211115223619.2599282-1-philmd@redhat.com>
-References: <20211115223619.2599282-1-philmd@redhat.com>
+ bh=Pej0BvoWZ3cp9gwa8IVAvA5/kRkXJWghrp9vqCi+qjM=;
+ b=VG5xvcUx74EwdEN8mEosk5dzrxikRTMhr902IIRJ4673qYx6yHnyJ9GqIZf1rrx1LkWLZB
+ cH3q9s0lL0du4/pCN1qmehcxO89CnDFm79w+6fpl0CoqlU6ImBmErGfdGKYLsaI15Hv7Am
+ BscH2V1UFfiA9Ni2elFZEysck4wIoFo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-351-_GEhH1P2NLmUV_UA_vjWtQ-1; Tue, 16 Nov 2021 02:47:28 -0500
+X-MC-Unique: _GEhH1P2NLmUV_UA_vjWtQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1DAD510168C6;
+ Tue, 16 Nov 2021 07:47:25 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C00E75C1A1;
+ Tue, 16 Nov 2021 07:47:23 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 2790811380A7; Tue, 16 Nov 2021 08:47:22 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH RFC 2/2] hw: Replace drive_get_next() by drive_get()
+References: <20211115125536.3341681-1-armbru@redhat.com>
+ <20211115125536.3341681-3-armbru@redhat.com>
+ <5b799ad5-a552-454f-dcc7-1ea6de22b397@amsat.org>
+ <87lf1pfm2z.fsf@dusky.pond.sub.org>
+ <b18519f7-7198-0965-a528-2d1a45c7c93c@amsat.org>
+Date: Tue, 16 Nov 2021 08:47:22 +0100
+In-Reply-To: <b18519f7-7198-0965-a528-2d1a45c7c93c@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 15 Nov 2021 22:15:12
+ +0100")
+Message-ID: <878rxoczjp.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
 X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.697,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Miroslav Rezanina <mrezanin@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Shashi Mallela <shashi.mallela@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: liGK+tWXdZwu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, bin.meng@windriver.com,
+ mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org, sundeep.lkml@gmail.com,
+ qemu-block@nongnu.org, andrew.smirnov@gmail.com, hskinnemoen@google.com,
+ joel@jms.id.au, atar4qemu@gmail.com, alistair@alistair23.me,
+ b.galvani@gmail.com, nieklinnenbank@gmail.com, qemu-arm@nongnu.org,
+ clg@kaod.org, kwolf@redhat.com, qemu-riscv@nongnu.org, andrew@aj.id.au,
+ Andrew.Baumann@microsoft.com, jcd@tribudubois.net, kfting@nuvoton.com,
+ hreitz@redhat.com, palmer@dabbelt.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ca9cmAFLyc9V
 
-gicv3_set_gicv3state() is used by arm_gicv3_common.c in
-arm_gicv3_common_realize(). Since we want to restrict
-arm_gicv3_cpuif.c to TCG, extract gicv3_set_gicv3state()
-to a new file. Add this file to the meson 'specific'
-source set, since it needs access to "cpu.h".
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- hw/intc/arm_gicv3_cpuif.c        | 10 +---------
- hw/intc/arm_gicv3_cpuif_common.c | 22 ++++++++++++++++++++++
- hw/intc/meson.build              |  1 +
- 3 files changed, 24 insertions(+), 9 deletions(-)
- create mode 100644 hw/intc/arm_gicv3_cpuif_common.c
+> On 11/15/21 16:57, Markus Armbruster wrote:
+>> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+>>> On 11/15/21 13:55, Markus Armbruster wrote:
+>>>> drive_get_next() is basically a bad idea.  It returns the "next" block
+>>>> backend of a certain interface type.  "Next" means bus=3D0,unit=3DN, w=
+here
+>>>> subsequent calls count N up from zero, per interface type.
+>>>>
+>>>> This lets you define unit numbers implicitly by execution order.  If t=
+he
+>>>> order changes, or new calls appear "in the middle", unit numbers chang=
+e.
+>>>> ABI break.  Hard to spot in review.
+>>>>
+>>>> Explicit is better than implicit: use drive_get() directly.
+>>>>
+>>>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>>>> ---
+>
+>>>> @@ -435,11 +438,13 @@ static void aspeed_machine_init(MachineState *ma=
+chine)
+>>>>      }
+>>>> =20
+>>>>      for (i =3D 0; i < bmc->soc.sdhci.num_slots; i++) {
+>>>> -        sdhci_attach_drive(&bmc->soc.sdhci.slots[i], drive_get_next(I=
+F_SD));
+>>>> +        sdhci_attach_drive(&bmc->soc.sdhci.slots[i],
+>>>> +                           drive_get(IF_SD, 0, i));
+>>>
+>>> If we put SD on bus #0, ...
+>>>
+>>>>      }
+>>>> =20
+>>>>      if (bmc->soc.emmc.num_slots) {
+>>>> -        sdhci_attach_drive(&bmc->soc.emmc.slots[0], drive_get_next(IF=
+_SD));
+>>>> +        sdhci_attach_drive(&bmc->soc.emmc.slots[0],
+>>>> +                           drive_get(IF_SD, 0, bmc->soc.sdhci.num_slo=
+ts));
+>>>
+>>> ... we'd want to put eMMC on bus #1
+>>=20
+>> Using separate buses for different kinds of devices would be neater, but
+>> it also would be an incompatible change.  This patch keeps existing
+>> bus/unit numbers working.  drive_get_next() can only use bus 0.
+>>=20
+>>>                                      but I see having eMMC cards on a
+>>> IF_SD bus as a bug, since these cards are soldered on the board.
+>>=20
+>> IF_SD is not a bus, it's an "block interface type", which is really just
+>> a user interface thing.
+>
+> Why are we discriminating by "block interface type" then?
+>
+> What is the difference between "block interfaces"? I see a block drive
+> as a generic unit, usable on multiple hardware devices.
+>
+> I never really understood how this "block interface type" helps
+> developers and users. I thought BlockInterfaceType and DriveInfo
+> were legacy / deprecated APIs we want to get rid of; and we would
+> come up with a replacement API using BlockDeviceInfo or providing
+> a BlockFrontend state of the art object.
+> Anyway, I suppose the explanation is buried in the git history
+> before the last 8 years. I need to keep reading.
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 3fe5de8ad7d..5e539e3b5ef 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -1,5 +1,5 @@
- /*
-- * ARM Generic Interrupt Controller v3
-+ * ARM Generic Interrupt Controller v3 (emulation)
-  *
-  * Copyright (c) 2016 Linaro Limited
-  * Written by Peter Maydell
-@@ -21,14 +21,6 @@
- #include "hw/irq.h"
- #include "cpu.h"
- 
--void gicv3_set_gicv3state(CPUState *cpu, GICv3CPUState *s)
--{
--    ARMCPU *arm_cpu = ARM_CPU(cpu);
--    CPUARMState *env = &arm_cpu->env;
--
--    env->gicv3state = (void *)s;
--};
--
- static GICv3CPUState *icc_cs_from_env(CPUARMState *env)
- {
-     return env->gicv3state;
-diff --git a/hw/intc/arm_gicv3_cpuif_common.c b/hw/intc/arm_gicv3_cpuif_common.c
-new file mode 100644
-index 00000000000..ff1239f65db
---- /dev/null
-+++ b/hw/intc/arm_gicv3_cpuif_common.c
-@@ -0,0 +1,22 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ * ARM Generic Interrupt Controller v3
-+ *
-+ * Copyright (c) 2016 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ * This code is licensed under the GPL, version 2 or (at your option)
-+ * any later version.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "gicv3_internal.h"
-+#include "cpu.h"
-+
-+void gicv3_set_gicv3state(CPUState *cpu, GICv3CPUState *s)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+
-+    env->gicv3state = (void *)s;
-+};
-diff --git a/hw/intc/meson.build b/hw/intc/meson.build
-index c89d2ca180e..11352806db2 100644
---- a/hw/intc/meson.build
-+++ b/hw/intc/meson.build
-@@ -25,6 +25,7 @@
- 
- specific_ss.add(when: 'CONFIG_ALLWINNER_A10_PIC', if_true: files('allwinner-a10-pic.c'))
- specific_ss.add(when: 'CONFIG_APIC', if_true: files('apic.c', 'apic_common.c'))
-+specific_ss.add(when: 'CONFIG_ARM_GIC', if_true: files('arm_gicv3_cpuif_common.c'))
- specific_ss.add(when: 'CONFIG_ARM_GIC', if_true: files('arm_gicv3_cpuif.c'))
- specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
- specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'TARGET_AARCH64'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
--- 
-2.31.1
+In the beginning (v0.4.2), there was -hda and -hdb, and life was simple.
+
+Then there was -hdc, -hdd, -cdrom (v0.5.1), -fda, -fdb (v0.6.0),
+-mtdblock, -sd, -pflash (v0.9.1).
+
+All these options do two things: they create a block backend, and they
+request the board to create a certain block frontend for it, similar to
+other options of this vintage, like -serial, -parallel, and -net.
+Boards generally ignore requests they don't understand, but that's just
+sloppiness.
+
+For each set of related options, there was a global variable holding the
+requests: bs_table[] for -hda, -hdb, -hdc, -hdd, -cdrom; fd_table[]
+-fda, -fdb; mtd_bdrv for -mtd; sd_drv for -ds; pflash_table[] for
+-pflash.
+
+The options replaced prior ones, except for -pflash, which appended to
+its table.
+
+bs_table[]'s index had a peculiar meaning: it's bus * MAX_IDE_DEVS +
+unit.  This ensures that -hda (index 0) goes on IDE bus 0 as unit 0;
+-hdb on bus 0, unit 1; -hdc on 1, 0; -hdc on 1, 1.
+
+Life was now complicated enough for a generalization (v0.9.1), so there
+was -drive (v0.9.1).  All the variables holding requests were fused into
+drives_table[].  Table elements are identified by (type, bus, unit),
+where type is an enum whose members correspond to the old global
+variables: IF_IDE for bs_table[], IF_FLOPPY for fd_table[], and so
+forth.  So:
+
+    -hda becomes type =3D IF_IDE, bus =3D 0, unit =3D 0
+    -hdb becomes type =3D IF_IDE, bus =3D 0, unit =3D 1
+    ...
+    -sd becomes type =3D IF_SD, bus =3D 0, unit =3D 0
+    1st -pflash becomes type =3D IF_PFLASH, bus =3D 0, unit =3D 0
+    2nd -pflash becomes type =3D IF_PFLASH, bus =3D 0, unit =3D 1
+    ...
+
+Other mappings from old to new global variables would have been
+possible.  I figure this one was chosen because it comes with a
+reasonable user interface.  Identifying block devices by (interface
+type, bus, unit) is certainly nicer than by index in bs_table[].  Since
+bus and/or unit make sense only with some interface types, they are
+optional.
+
+Things calmed down for a couple of years, until -device appeared
+(v0.12).  Now we needed a way to define just a backend, without
+requesting a frontend from the board.  Instead of inventing a new
+option, this became IF_NONE, with meaningless bus and unit.
+
+Over the next years, the block layer outgrew -drive's limited
+capabilities to define frontends.  -blockdev appeard (v1.7.0) and
+matured over several releases.  I don't remember exactly when it became
+stable, relegating -drive if=3Dnone to legacy status.
+
+What's *not* legacy is -drive with other interface types, simply because
+there is no replacement.  Yet.  We clearly want one.
+
+Questions?
 

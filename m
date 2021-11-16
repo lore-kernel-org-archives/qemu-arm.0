@@ -1,223 +1,180 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp7199223lfk;
-        Tue, 16 Nov 2021 01:32:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwwzauFr/xdg1IY1PK93f/JkczNHqg2pfMwkYbzQyy3KsCQurEWX57RT308Gflxy/cyV+n+
-X-Received: by 2002:a05:6122:78c:: with SMTP id k12mr71713023vkr.22.1637055122841;
-        Tue, 16 Nov 2021 01:32:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637055122; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp7305353lfk;
+        Tue, 16 Nov 2021 03:11:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwmj7m3zTZ/qD+xnJBoWLiHWhv732TJeBhuuxATXx7Pv/cuXBlEQcEyuHalftEIFYeoqeor
+X-Received: by 2002:a1f:2c13:: with SMTP id s19mr28050940vks.8.1637061111874;
+        Tue, 16 Nov 2021 03:11:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637061111; cv=none;
         d=google.com; s=arc-20160816;
-        b=DDNICKrIdWFqT4IoapzeT70JHFbSyJvuEhTQtAg/RQUOOh3yDe3NP+sO4Gmp7uzcE3
-         GRbEKdrEVbm5TjfBQepIR4bFGTIDKROGWkfFW3h6zapSvthlaB8VmvmTMYYE4Cj0FUzd
-         NMAw4ZAteT+UYTi4HdOdOCZ91W9Frh3oXlNtkG9oD/gw9OF2Qadd/DA6clFD/eIpxsMX
-         nzAeY+J3LASVJ0i/2NO4O3DHmbQ2mHoKQRc0jI6G8fJDh/yIf5L7oSwb5x7g4dZu8JkR
-         i/r2eKAzQ0OawBczToMm8YRY17C2jrs9JCBjdRMFrZL42vC8sqtewI1Nhd5vZ0kTH2YZ
-         c4gQ==
+        b=Sj7SzGa0tZEjGBQxzuDlGRy3gr1CODwX9tupHMdbLdhhTyqpo2Mo9GXCzduzEvQXZB
+         2iAPT7V1LhgjrqXd9t2bsdJyinKJ6CIMdJKRx4ar5tWnkimcYtKSsj0euqYXub+mIkj5
+         RkEDdAwuMrWaGF3t8nW1N9VAzFtJ25NQzvfkunkuCSooXBLP85XeTNPX/f5g1RsuVY5F
+         lrMPQO8lok/BGg7qvAlLx0DlTIS88JnBihbacxhiCI9kYfhGmC8c8Cp9Q2LnOXyk+PeF
+         eUDcCD76cQ2O4FC8IzMPa78aFhsEF98cijZiEWV8yyTYP+327hfciGm9ziLQLB4Ehatv
+         qB1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=LCl8U/D/Pa48qIvfVxZX4rYcYvDhz3Xjr1zYmbJqQjc=;
-        b=IDTkljpLRODvziE2AD5cJFWWBU6VDSb3g5QpksHq0ecG9+ywfS7BbKfuCFALxivDYQ
-         r1gvpfowpd3qFp60UJgTnzEQH7fkJCw/SseXES5wFmL9Zywu1h7W2qg8M3YQ8jU2JfWi
-         jjF8vBmktPO7tW51dBcR8Zv30EJR4FVsEibsLB8WaqW4iIqXuPD72zGL9hQ5wn6U6nGV
-         Pa0ktfVP2CAGZTG6xc4uGO4uwdKyGdz/9GwlNt7fqzKACrWlDUqMM30zRARmfCDsRj/E
-         Mbe7B+V9GsLFRIALOZsZCLaKTp4peKU/xpjulKgQ8bkl/nD32BmESBd0kk7UofIA/gD4
-         uPGw==
+         :content-language:in-reply-to:organization:from:references:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=CkolIweQscYOPDXfCjJTBsMGMCH+H0slToqry6VpWZU=;
+        b=kUBYGAbkrDk5HachaRF4A8wpZzSuyJbopmWZcbi/bSu/g7g0xHwicrRDRAMWT4gLzf
+         YHQGUeHKV0rFtiaZeLdesBC6EHuxatUTChNK62QtwqwM8vTbUlOwSobvNnGAVhVh4Fdf
+         xCRQtEct74AVrMSbVnqIp+0SruoTLbFsnofolL1XnS1Ml/3H+NtysAQSgOHcBIPGcmpt
+         c6cusRiJUa6QWbJ3LmCjZTC8YX7zqzuuoUE0mRO4ONhbQ/FNqPKBO0HpBvvxTj5KerKG
+         k8VPG6Geg6t8d5bgbZyupSS203ptcPlLWtKoIztT+w8AUhPx+YgcpxqqYHyW///BXeXR
+         tQ8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WIyr2dhx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="F0rpxsf/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b12si37157099uav.136.2021.11.16.01.32.02
+        by mx.google.com with ESMTPS id n26si23865403vsr.400.2021.11.16.03.11.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Nov 2021 01:32:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Nov 2021 03:11:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WIyr2dhx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="F0rpxsf/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51456 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mmuos-0007K5-3s
-	for alex.bennee@linaro.org; Tue, 16 Nov 2021 04:32:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38220)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mmwNT-0002H2-7a
+	for alex.bennee@linaro.org; Tue, 16 Nov 2021 06:11:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33326)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mmumw-0005eV-1G
- for qemu-devel@nongnu.org; Tue, 16 Nov 2021 04:30:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:45587)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1mmwNH-0002Cd-3G
+ for qemu-arm@nongnu.org; Tue, 16 Nov 2021 06:11:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:21934)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mmumu-00013T-BD
- for qemu-devel@nongnu.org; Tue, 16 Nov 2021 04:30:01 -0500
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1mmwND-0005mX-68
+ for qemu-arm@nongnu.org; Tue, 16 Nov 2021 06:11:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637054999;
+ s=mimecast20190719; t=1637061093;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LCl8U/D/Pa48qIvfVxZX4rYcYvDhz3Xjr1zYmbJqQjc=;
- b=WIyr2dhxV6Emkzq9mKQNaZ18NAOj8FLay/LYoAAENNDtlQDtQZqsGwuvCU9NHCszmD7iMG
- AjCbWKMsnuNvVnDS5AP42EBt9ZozWaQoHOkEuiwjMWmclm9iWYudHI4yhabF1fDxG98jr1
- CiE5tpdRGyC2jLb4tA0+Ygx4nBivdsI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-243-4yDtXnA-PsayCco88Ft6cQ-1; Tue, 16 Nov 2021 04:29:56 -0500
-X-MC-Unique: 4yDtXnA-PsayCco88Ft6cQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1DF911023F55;
- Tue, 16 Nov 2021 09:29:53 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E6DA05D6BA;
- Tue, 16 Nov 2021 09:29:51 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id A7AFA11380A7; Tue, 16 Nov 2021 10:29:49 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH RFC 2/2] hw: Replace drive_get_next() by drive_get()
-References: <20211115125536.3341681-1-armbru@redhat.com>
- <20211115125536.3341681-3-armbru@redhat.com>
- <5b799ad5-a552-454f-dcc7-1ea6de22b397@amsat.org>
- <87lf1pfm2z.fsf@dusky.pond.sub.org>
- <39b908d3-57aa-ab1e-f10a-87afd887a341@kaod.org>
-Date: Tue, 16 Nov 2021 10:29:49 +0100
-In-Reply-To: <39b908d3-57aa-ab1e-f10a-87afd887a341@kaod.org>
- (=?utf-8?Q?=22C=C3=A9dric?= Le
- Goater"'s message of "Tue, 16 Nov 2021 09:52:35 +0100")
-Message-ID: <87h7ccbg8i.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ bh=CkolIweQscYOPDXfCjJTBsMGMCH+H0slToqry6VpWZU=;
+ b=F0rpxsf/NFfc4Q7FQo32WriYnnJuHm9lOQwy/v7XU891J+4Lf0f4yAvH976wQ9jWUzJvHN
+ l+sBNGYIWWvyWMh7uB2cAcDruNqmK2DQouqlxwzmrSPCnW8vcGq/mDN19UCd6t0YVTX3Nw
+ FPqaZ6sw6JYOq53zbAKhOXpbEw5I0ps=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-569-JsxYqCj9Mji4wNCtRQM6lQ-1; Tue, 16 Nov 2021 06:11:32 -0500
+X-MC-Unique: JsxYqCj9Mji4wNCtRQM6lQ-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ ay34-20020a05600c1e2200b00337fd217772so1304735wmb.4
+ for <qemu-arm@nongnu.org>; Tue, 16 Nov 2021 03:11:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:organization:in-reply-to
+ :content-transfer-encoding;
+ bh=CkolIweQscYOPDXfCjJTBsMGMCH+H0slToqry6VpWZU=;
+ b=3JXAd9FQKgVg2bF5qEhu+rEhrzQiRlkshQgQ6cGIdqsXjL+hZ/oo0HGvGdzGfdQ6za
+ /VEPk0RyZqTTz/AxUbMYZG/qg1FNP/IbUMqf/M/37h2Ck8JJQ6S91LOTA6FRmE0hN8Ze
+ sJ0qBhgDOnWLUomrnvh+Pft/aM4PLFMxNMtPhyD+GHQfFlc0al2QN+WxfQA7kCZZPbGH
+ +b0snvJm7jlAE07kAaYaE7804IY4IK2ER9Lfy++4XVEq0lLHxkrp0wDbUp//9LamWcfr
+ BMyz6s2aGk9TH/2DElG83gkuqRfYAzkBUkXf3/NvBQfl8X1FaeI0TQ4lx9NnVdAb3FtF
+ 5WFg==
+X-Gm-Message-State: AOAM533FWH7MWTMsfni3bU4mb+TEwyavwKkWTYeF6BGxAMw1JpoPNFPx
+ I2Jxv4O0HvyOzrKvUcgyvJB8xBRJGejFGXktP4mbmuFdPhg68znCU5CmuNWeVNCVQgK5B5J+lrq
+ 8nYlzGqVBvwkl
+X-Received: by 2002:a5d:6a4d:: with SMTP id t13mr8283424wrw.104.1637061090908; 
+ Tue, 16 Nov 2021 03:11:30 -0800 (PST)
+X-Received: by 2002:a5d:6a4d:: with SMTP id t13mr8283394wrw.104.1637061090728; 
+ Tue, 16 Nov 2021 03:11:30 -0800 (PST)
+Received: from [192.168.3.132] (p4ff23d3a.dip0.t-ipconnect.de. [79.242.61.58])
+ by smtp.gmail.com with ESMTPSA id
+ m20sm2353656wmq.11.2021.11.16.03.11.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 16 Nov 2021 03:11:30 -0800 (PST)
+Message-ID: <188faab7-1e57-2bc1-846f-9457433c2f9d@redhat.com>
+Date: Tue, 16 Nov 2021 12:11:29 +0100
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v2] hw/arm/virt: Expose empty NUMA nodes through ACPI
+To: Igor Mammedov <imammedo@redhat.com>
+References: <20211027052958.280741-1-gshan@redhat.com>
+ <20211027174028.1f16fcfb@redhat.com>
+ <fecb9351-ae78-8fcd-e377-623243ef80df@redhat.com>
+ <20211101094431.71e1a50a@redhat.com>
+ <47dc3a95-ed77-6c0e-d024-27cb22c338eb@redhat.com>
+ <20211102073948.am3p3hcqqd3cfvru@gator.home>
+ <b8ed4687-e30a-d70f-0816-bd8ba490ceb7@redhat.com>
+ <20211110113304.2d713d4a@redhat.com>
+ <5180ecee-62e2-cd6f-d595-c7c29eff6039@redhat.com>
+ <20211112142751.4807ab50@redhat.com>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+In-Reply-To: <20211112142751.4807ab50@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=david@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.697,
+X-Spam_score_int: -48
+X-Spam_score: -4.9
+X-Spam_bar: ----
+X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.697,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-1.446, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, bin.meng@windriver.com,
- mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org, jcd@tribudubois.net,
- qemu-block@nongnu.org, andrew.smirnov@gmail.com, hskinnemoen@google.com,
- joel@jms.id.au, atar4qemu@gmail.com, alistair@alistair23.me,
- b.galvani@gmail.com, nieklinnenbank@gmail.com, qemu-arm@nongnu.org,
- kwolf@redhat.com, qemu-riscv@nongnu.org, andrew@aj.id.au,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew.Baumann@microsoft.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
- hreitz@redhat.com, palmer@dabbelt.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jzFfm0VkcT+d
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Andrew Jones <drjones@redhat.com>,
+ Gavin Shan <gshan@redhat.com>, ehabkost@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ shan.gavin@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GzNLEzkYxCAd
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
-
-> On 11/15/21 16:57, Markus Armbruster wrote:
->> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
->>=20
->>> On 11/15/21 13:55, Markus Armbruster wrote:
->>>> drive_get_next() is basically a bad idea.  It returns the "next" block
->>>> backend of a certain interface type.  "Next" means bus=3D0,unit=3DN, w=
-here
->>>> subsequent calls count N up from zero, per interface type.
->>>>
->>>> This lets you define unit numbers implicitly by execution order.  If t=
-he
->>>> order changes, or new calls appear "in the middle", unit numbers chang=
-e.
->>>> ABI break.  Hard to spot in review.
->>>>
->>>> Explicit is better than implicit: use drive_get() directly.
->>>>
->>>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->>>> ---
->>>>   include/sysemu/blockdev.h           |  1 -
->>>>   blockdev.c                          | 10 ----------
->>>>   hw/arm/aspeed.c                     | 21 +++++++++++++--------
->>>>   hw/arm/cubieboard.c                 |  2 +-
->>>>   hw/arm/imx25_pdk.c                  |  2 +-
->>>>   hw/arm/integratorcp.c               |  2 +-
->>>>   hw/arm/mcimx6ul-evk.c               |  2 +-
->>>>   hw/arm/mcimx7d-sabre.c              |  2 +-
->>>>   hw/arm/msf2-som.c                   |  2 +-
->>>>   hw/arm/npcm7xx_boards.c             |  6 +++---
->>>>   hw/arm/orangepi.c                   |  2 +-
->>>>   hw/arm/raspi.c                      |  2 +-
->>>>   hw/arm/realview.c                   |  2 +-
->>>>   hw/arm/sabrelite.c                  |  2 +-
->>>>   hw/arm/versatilepb.c                |  4 ++--
->>>>   hw/arm/vexpress.c                   |  6 +++---
->>>>   hw/arm/xilinx_zynq.c                | 16 +++++++++-------
->>>>   hw/arm/xlnx-versal-virt.c           |  3 ++-
->>>>   hw/arm/xlnx-zcu102.c                |  6 +++---
->>>>   hw/microblaze/petalogix_ml605_mmu.c |  2 +-
->>>>   hw/misc/sifive_u_otp.c              |  2 +-
->>>>   hw/riscv/microchip_pfsoc.c          |  2 +-
->>>>   hw/sparc64/niagara.c                |  2 +-
->>>>   23 files changed, 49 insertions(+), 52 deletions(-)
->>>
->>>> @@ -435,11 +438,13 @@ static void aspeed_machine_init(MachineState *ma=
-chine)
->>>>       }
->>>>         for (i =3D 0; i < bmc->soc.sdhci.num_slots; i++) {
->>>> -        sdhci_attach_drive(&bmc->soc.sdhci.slots[i], drive_get_next(I=
-F_SD));
->>>> +        sdhci_attach_drive(&bmc->soc.sdhci.slots[i],
->>>> +                           drive_get(IF_SD, 0, i));
->>>
->>> If we put SD on bus #0, ...
->>>
->>>>       }
->>>>         if (bmc->soc.emmc.num_slots) {
->>>> -        sdhci_attach_drive(&bmc->soc.emmc.slots[0], drive_get_next(IF=
-_SD));
->>>> +        sdhci_attach_drive(&bmc->soc.emmc.slots[0],
->>>> +                           drive_get(IF_SD, 0, bmc->soc.sdhci.num_slo=
-ts));
->>>
->>> ... we'd want to put eMMC on bus #1
 >>
->> Using separate buses for different kinds of devices would be neater, but
->> it also would be an incompatible change.  This patch keeps existing
->> bus/unit numbers working.  drive_get_next() can only use bus 0.
->
-> All Aspeed SoCs have 3 SPI busses, each with multiple CS, and also multip=
-le
-> sdhci controllers with multiple slots.
->
-> How drives are defined for the aspeed machines can/should be improved.
-> The machine init iterates on the command line drives, attaches the
-> DriveInfo, in the order found, to a m25p80 device model first and then
-> follows on with the SD devices. This is fragile clearly and a bus+id
-> would be most welcome to identify the drive backend.
->
-> May be this is a prereq for this patchset ?
+>> Examples include exposing HBM or PMEM to the VM. Just like on real HW,
+>> this memory is exposed via cpu-less, special nodes. In contrast to real
+>> HW, the memory is hotplugged later (I don't think HW supports hotplug
+>> like that yet, but it might just be a matter of time).
+> 
+> I suppose some of that maybe covered by GENERIC_AFFINITY entries in SRAT
+> some by MEMORY entries. Or nodes created dynamically like with normal
+> hotplug memory.
+> 
 
-Such a change will probably be easier to review after this patch,
-because then it's just a matter of changing / dumbing down parameters to
-drive_get().
+I'm certainly no SRAT expert, but seems like under VMWare something
+similar can happen:
 
-I can't judge whether incompatible change is okay here.
+https://lkml.kernel.org/r/BAE95F0C-FAA7-40C6-A0D6-5049B1207A27@vmware.com
+
+"VM was powered on with 4 vCPUs (4 NUMA nodes) and 4GB memory.
+ACPI SRAT reports 128 possible CPUs and 128 possible NUMA nodes."
+
+Note that that discussion is about hotplugging CPUs to memory-less,
+hotplugged nodes.
+
+But there seems to be some way to expose possible NUMA nodes. Maybe
+that's via GENERIC_AFFINITY.
+
+-- 
+Thanks,
+
+David / dhildenb
 

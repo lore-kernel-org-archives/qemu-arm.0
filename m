@@ -1,88 +1,88 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp962960lfk;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp962981lfk;
         Wed, 17 Nov 2021 08:35:05 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy5ff4bGgER1jMLGhUcUHu9ftR2YgTI7UhPhkY5H/QR8bgCxeJn4b8YlUM//wr6E1U7kjjr
-X-Received: by 2002:a67:d19d:: with SMTP id w29mr69428670vsi.26.1637166905018;
+X-Google-Smtp-Source: ABdhPJwlAAPCtrZGVR2+kRllTzXRWBB261SDrC/Vki8T7NO2DkoDu3o5jskwF+vyCvhkHj4KBkzv
+X-Received: by 2002:ab0:4324:: with SMTP id k33mr25527857uak.43.1637166905716;
         Wed, 17 Nov 2021 08:35:05 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1637166905; cv=none;
         d=google.com; s=arc-20160816;
-        b=itCHByEI3VV0kGICgKEEdR9yTAV+UDqD6i/bEtpJV9ESVgszVDtqeKDYlkRVwL5BVj
-         PYJfh9X5hbw1Qcm6U1cdAc+oyfllraekPOT9mFcoszoQMo1X3UZfLzT7hhy+9pA8039Q
-         lSPZ1T6Dq3VgG0uwvS6k9oTP+DCdGh3gOXkVeugOL5PmQdzNYyr8A5psk7FkKinwqxZu
-         wIsXYcLq7N89WTvVixRuv+EPbs3bTeYSzqITABIOhdAzz98Yc9I4F5xD9H9S0QiKpHAY
-         Fr47P2X4hCTG/tqHHjbLHjHBCh8FvYtbNrzK2zHKGW4XecLLWYiqDIQPuvg8OIU5eQoN
-         1hMQ==
+        b=Vn9FKzTdJLNb5bkOV/oHXQQZorkn16xIj3vVWeoYN0eeJeGwFfA1f5/dZj2rvnofv3
+         HaTLDAMkZsRA4OcXajLLN1LpKl5l/FuV2HdmLNNOyGSzd7ieG9q7+w+CUKz2QZKOtxcK
+         BiHoYqlJN/uA/s6AbD6w91s9rZ4UAXQOqHqxftQulIa85OdwAdSUhZleCSk5sBie0DJd
+         qTdAUs5jSYFZ2Mn819ETfseYw2AxRUbbe/qO78nA1ugeOYrMZEUh8CJnxxRUoofw5A/n
+         t5GhYvmuQPxqMYyhGEyPzvwjvmCKumGRex4ztwhsU5GfM6O93XC2B4CSHbLnyaDj3O0y
+         XtPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ZJwQU4w8VmhCqL45WDYwISlZ94BAmtX/oVcRCe35xsM=;
-        b=bIYqQ9DHPGTCpcr6Ym1y7+Tw3sSXxilfPCZEzmmZ4TgscGMXYKdKxI6OhDRYDSXODt
-         L8cmsoV00DsmsoEDGMGhDQNvA9KzHSgPct/hIRaflDbWNRv7afPImsqlok7oQbslOWYQ
-         wL8etBMmS7n7qaOOHjZEgKiHVJj1jDAgApj2a4HAzPq2UFdJFkm9FbevqX10hm2xNUDs
-         fUdVQVaR4xfEHYIvSHNkMSbvpD/kJvpZH7qehjjOeVe9CuXPTugaZKCDHy1y/IEjctCN
-         moH7IQ5Q/+fwCmKtm3mLpE9HSnlLXSNId//5yneBSuHTdpI2YIRdWEOLU1wSOwSan37z
-         pWVA==
+        bh=qy/be1AOUE7Ms2lbtbLyXpcwHOrPuiAjrY96KknfdPQ=;
+        b=ckXgGPOFoz8sqmsnBIxUP4Z75rzAGvHaTSGy7yZBNA3WmdmiiuTecMa1fo0TBNGv7q
+         hK8RDl8n+6v++YK2E8IvUaaoC7ba1ielwtqGLgi1boubEmSAchwXKyo4ah/i7ZkTG1a5
+         aJlfxTHWVcNrbO3GYDxwOEyuP7eIVJs6MQD5Xq7QHEYKFigt462zYfVlS8XyNIQocT15
+         cfGtpGDHDByN46y5MKC333E2Ou0qSHSw69uk22dR4f4YZZEXngmD8//Ln5tPRJU64RKX
+         MC1F8+0XIVB7qWjg1FbJtv5dJH/kWDUdRKEa+Cv+LFaeghhKs0PAQbxBRupbCl7hVbCL
+         RmTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LLgbf55r;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZVrbT53+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o16si664762vst.169.2021.11.17.08.35.04
+        by mx.google.com with ESMTPS id c10si426807uak.56.2021.11.17.08.35.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 17 Nov 2021 08:35:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LLgbf55r;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZVrbT53+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56886 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mnNto-0003Ok-CU
-	for alex.bennee@linaro.org; Wed, 17 Nov 2021 11:35:04 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60932)
+	id 1mnNtp-0003QW-21
+	for alex.bennee@linaro.org; Wed, 17 Nov 2021 11:35:05 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnNtE-0003Mb-I9
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnNtF-0003OY-Nv
  for qemu-arm@nongnu.org; Wed, 17 Nov 2021 11:34:29 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:55147)
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:48998)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnNt7-00088A-Cw
- for qemu-arm@nongnu.org; Wed, 17 Nov 2021 11:34:25 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnNt9-00089I-SY
+ for qemu-arm@nongnu.org; Wed, 17 Nov 2021 11:34:28 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637166860;
+ s=mimecast20190719; t=1637166863;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZJwQU4w8VmhCqL45WDYwISlZ94BAmtX/oVcRCe35xsM=;
- b=LLgbf55rjkXk6QuxJeQU1TBKC0miWvYceAWdjrU6zSbQNCxKhppmJkei3W8Y0V3rK3TArH
- DXB9mOsYbwmXkPul407fkGfu1O5n30XSAdviVF1V0xMMmnGLniDBhBJw8gCqG7nd7UdryV
- eJBZoR7WOJy9e8klLgK2nhGO54Em9aw=
+ bh=qy/be1AOUE7Ms2lbtbLyXpcwHOrPuiAjrY96KknfdPQ=;
+ b=ZVrbT53+hXtSKsM2oiR3BkBfrYEiDSK+RQmPpMnFdVSV7Jl5WHVnK0Q7gEu8XDf/NNc5y/
+ bMFJPSDBWuqn8WPcfnCEVMSqS8ZV9388uGzTkENs4UV/D2SkPDE5MW8pU1T1idIahtuhQf
+ g+CPgGgqDC9bIL0rm6B/MVJmqMftsKs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-107-5IarRvImMOW4jSuEP9ggDg-1; Wed, 17 Nov 2021 11:34:19 -0500
-X-MC-Unique: 5IarRvImMOW4jSuEP9ggDg-1
+ us-mta-287-gwWkTUUUPMSA-jwxnir80Q-1; Wed, 17 Nov 2021 11:34:20 -0500
+X-MC-Unique: gwWkTUUUPMSA-jwxnir80Q-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8362B804140;
- Wed, 17 Nov 2021 16:34:17 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B584A8799EB;
+ Wed, 17 Nov 2021 16:34:18 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 146B25C232;
- Wed, 17 Nov 2021 16:34:16 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 828945C1BB;
+ Wed, 17 Nov 2021 16:34:18 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 7EE1F11380BA; Wed, 17 Nov 2021 17:34:09 +0100 (CET)
+ id 9A8F91132996; Wed, 17 Nov 2021 17:34:09 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 03/13] hw/arm/npcm7xx_boards: Replace drive_get_next() by
+Subject: [PATCH v2 11/13] hw/arm/xilinx_zynq: Replace drive_get_next() by
  drive_get()
-Date: Wed, 17 Nov 2021 17:33:59 +0100
-Message-Id: <20211117163409.3587705-4-armbru@redhat.com>
+Date: Wed, 17 Nov 2021 17:34:07 +0100
+Message-Id: <20211117163409.3587705-12-armbru@redhat.com>
 In-Reply-To: <20211117163409.3587705-1-armbru@redhat.com>
 References: <20211117163409.3587705-1-armbru@redhat.com>
 MIME-Version: 1.0
@@ -114,12 +114,11 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
- Havard Skinnemoen <hskinnemoen@google.com>, qemu-block@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FyXmXAQ3f4iu
+X-TUID: IE65PHIuc79/
 
 drive_get_next() is basically a bad idea.  It returns the "next" block
 backend of a certain interface type.  "Next" means bus=0,unit=N, where
@@ -129,45 +128,76 @@ This lets you define unit numbers implicitly by execution order.  If the
 order changes, or new calls appear "in the middle", unit numbers change.
 ABI break.  Hard to spot in review.
 
-Machine "quanta-gbs-bmc" connects just one backend with
-drive_get_next(), but with a helper function.  Change it to use
+Machine "xlnx-zcu102" connects backends with drive_get_next() in two
+counting loops, one of them in a helper function.  Change it to use
 drive_get() directly.  This makes the unit numbers explicit in the
 code.
 
-Cc: Havard Skinnemoen <hskinnemoen@google.com>
-Cc: Tyrone Ting <kfting@nuvoton.com>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Alistair Francis <alistair@alistair23.me>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- hw/arm/npcm7xx_boards.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/arm/xilinx_zynq.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-index dec7d16ae5..d8a49e4e85 100644
---- a/hw/arm/npcm7xx_boards.c
-+++ b/hw/arm/npcm7xx_boards.c
-@@ -84,9 +84,9 @@ static void npcm7xx_connect_dram(NPCM7xxState *soc, MemoryRegion *dram)
-                              &error_abort);
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index 69c333e91b..50e7268396 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -125,9 +125,10 @@ static void gem_init(NICInfo *nd, uint32_t base, qemu_irq irq)
+     sysbus_connect_irq(s, 0, irq);
  }
  
--static void sdhci_attach_drive(SDHCIState *sdhci)
-+static void sdhci_attach_drive(SDHCIState *sdhci, int unit)
+-static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
+-                                         bool is_qspi)
++static inline int zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
++                                        bool is_qspi, int unit0)
  {
--        DriveInfo *di = drive_get_next(IF_SD);
-+        DriveInfo *di = drive_get(IF_SD, 0, unit);
-         BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
++    int unit = unit0;
+     DeviceState *dev;
+     SysBusDevice *busdev;
+     SSIBus *spi;
+@@ -156,7 +157,7 @@ static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
+         spi = (SSIBus *)qdev_get_child_bus(dev, bus_name);
  
-         BusState *bus = qdev_get_child_bus(DEVICE(sdhci), "sd-bus");
-@@ -374,7 +374,7 @@ static void quanta_gbs_init(MachineState *machine)
-                           drive_get(IF_MTD, 0, 0));
+         for (j = 0; j < num_ss; ++j) {
+-            DriveInfo *dinfo = drive_get_next(IF_MTD);
++            DriveInfo *dinfo = drive_get(IF_MTD, 0, unit++);
+             flash_dev = qdev_new("n25q128");
+             if (dinfo) {
+                 qdev_prop_set_drive_err(flash_dev, "drive",
+@@ -170,6 +171,7 @@ static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
+         }
+     }
  
-     quanta_gbs_i2c_init(soc);
--    sdhci_attach_drive(&soc->mmc.sdhci);
-+    sdhci_attach_drive(&soc->mmc.sdhci, 0);
-     npcm7xx_load_kernel(machine, soc);
++    return unit;
  }
  
+ static void zynq_init(MachineState *machine)
+@@ -247,9 +249,9 @@ static void zynq_init(MachineState *machine)
+         pic[n] = qdev_get_gpio_in(dev, n);
+     }
+ 
+-    zynq_init_spi_flashes(0xE0006000, pic[58-IRQ_OFFSET], false);
+-    zynq_init_spi_flashes(0xE0007000, pic[81-IRQ_OFFSET], false);
+-    zynq_init_spi_flashes(0xE000D000, pic[51-IRQ_OFFSET], true);
++    n = zynq_init_spi_flashes(0xE0006000, pic[58 - IRQ_OFFSET], false, 0);
++    n = zynq_init_spi_flashes(0xE0007000, pic[81 - IRQ_OFFSET], false, n);
++    n = zynq_init_spi_flashes(0xE000D000, pic[51 - IRQ_OFFSET], true, n);
+ 
+     sysbus_create_simple(TYPE_CHIPIDEA, 0xE0002000, pic[53 - IRQ_OFFSET]);
+     sysbus_create_simple(TYPE_CHIPIDEA, 0xE0003000, pic[76 - IRQ_OFFSET]);
+@@ -298,7 +300,7 @@ static void zynq_init(MachineState *machine)
+         sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, hci_addr);
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[hci_irq - IRQ_OFFSET]);
+ 
+-        di = drive_get_next(IF_SD);
++        di = drive_get(IF_SD, 0, n);
+         blk = di ? blk_by_legacy_dinfo(di) : NULL;
+         carddev = qdev_new(TYPE_SD_CARD);
+         qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
 -- 
 2.31.1
 

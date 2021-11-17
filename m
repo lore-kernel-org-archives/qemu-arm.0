@@ -1,171 +1,188 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp266243lfk;
-        Tue, 16 Nov 2021 23:02:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz+d14UqdD6FgHX49W0MkEMmjSNpa/G7gY57Rk+iPAg4PhjYXh2uw9jGtZYCWO5rbGRzgmW
-X-Received: by 2002:a05:6122:16a3:: with SMTP id 35mr84433780vkl.11.1637132544726;
-        Tue, 16 Nov 2021 23:02:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637132544; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp789741lfk;
+        Wed, 17 Nov 2021 06:30:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyC7tWVBXWrllb5A/CChvsMw18TJtHFe5KSU5TP5rceBnBFlMo8r45ZQvyMdNBd33n6Ac+0
+X-Received: by 2002:ab0:2617:: with SMTP id c23mr24472831uao.38.1637159457551;
+        Wed, 17 Nov 2021 06:30:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637159457; cv=none;
         d=google.com; s=arc-20160816;
-        b=WNgNMbCbfGBdf+1oLDwTkY2t9e1CRFI5dwI0dfgPWIU42JfXx3DTtg5QP6gAqoTY7H
-         2smdXNqJMIYplyRt/NiHVJ+MsHk6buOvpYjSgFau4V/LOcevhcyvfC6mRdlMd3hMZvaz
-         7NxQFOObNlw3TAZs8Z+Q2/cbpwEHBNvg76Uit8U04tC2Asfc6DKFqCreKolIt++Dzeaz
-         WtL2+t+B579Z/5x2M9aEvSB4wk/WjPLt8LmBwuZera8H8sqceZGPUxhxfxDIYH5b2PoO
-         VMwEofxOY/7ztoHSSoSVUenuBoYbhkzAkHUbIfHNEB69dij1HQnyEet4Q7ZFSlDmO7kH
-         1bnA==
+        b=L3J98E6B6PkzvFqgv0bUYZXWqoGLSrIA2g8N7Ec+5UAh2BRTQKyvWTFsmbVr6edoQs
+         s5rF8XnwH4yVJ+tRPQv3Kg8P1YhArG0vfpVlVEJGtKXtEWqlqAo98VC8OxAtQCYcLQBA
+         D0r+lEf37mPY6eruxmJJ2kBRDmILNnJER+xGTBg+x/dIqRHeHrhemeG+h8rf+RqiNWtr
+         xcjfisiAHalUj2kZSolHEanid3OEgMBvThhT78AXafwwcV0+Abl4r5hQKKpKTXIzlyj8
+         DXM5c8SHGXIBw/SJBeks86/xxn2S8ndSrq99V48GhGodFb1T/+TGTGxrDxyBVD/bDP2I
+         J//Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=SnefBrylWy8QEKCC1c48fL6Ne7IkZGFtlVNbY45TI+w=;
-        b=QOH3x4uED0PxI/QVdMrPL50PI6mpTj4hIGV/y8QTCQsLp10V9xhj4yjquuJW7+9OgM
-         PgDeZExHooT/WBLRJoD9n7c7TtYVF0m7CpKsMwDeFhmSzVo7TriJh5y1fmWb699NKbor
-         205w8vzeUsXb6WXoWCUP3cBxBkPWz9CYarbqKlbdHVR9uGoNQmtTzU1dJUUxTJ/oI/3r
-         oecKxEV9xhvNpN9Aj4Wqc+pNSgiMmDoxR4SXR+htfNy1v8sCrKe7GF/nAzA5q/LCWo1s
-         Iq9C2Fr0ylI1JQijIcg3fP//Bgl5h2Zp7C19J3ZwyLFTWLd02YRwg7OaKqd8zO4Sgj6o
-         BMoQ==
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date;
+        bh=6NBe0x8yaoYuQA4RS48rrMh4/eIdedU2cGenWbjpcjM=;
+        b=obVpcHhsyrRlDuBtumZDcy5YaizpzkRNzy49W4e8p/YokFIF2tJ4AUwjbdkr4KwYzY
+         CPxWw3N3/Y/lonoBj3D820nXIPTK0Uu24W3nhwq4haxnmVSjlN7/STsXs0ZedgWJfVt6
+         D54GP7Eibn8IxG9pH1jKZyDkfWQcfX9lgaa2p+9zp29Ykszf9T/lgkhmrvqPteLBsmGn
+         295d4kg3lvceoppIdVy4IcagEAmfLgu1IEy01pbd+Jl/TGKf+fKetSfNyo2q/lB3ZYpb
+         UAtrTlv8WPWtcPzqaDh3pzCAZvtWAV7lI1TutLXYhXM9ExooJJRxNmgFgTecjaHYY2Hw
+         5y6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="lnv/aa94";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 94si21135624uas.46.2021.11.16.23.02.24
+        by mx.google.com with ESMTPS id j27si3120210vka.2.2021.11.17.06.30.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Nov 2021 23:02:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 17 Nov 2021 06:30:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="lnv/aa94";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55050 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:36304 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mnExc-0000BB-07
-	for alex.bennee@linaro.org; Wed, 17 Nov 2021 02:02:24 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57326)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mnLxf-0005ac-0i
+	for alex.bennee@linaro.org; Wed, 17 Nov 2021 09:30:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53116)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1mnEtb-0004wC-9G; Wed, 17 Nov 2021 01:58:15 -0500
-Received: from [2607:f8b0:4864:20::435] (port=34652
- helo=mail-pf1-x435.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1mnEtX-0005bC-PD; Wed, 17 Nov 2021 01:58:15 -0500
-Received: by mail-pf1-x435.google.com with SMTP id r130so1780497pfc.1;
- Tue, 16 Nov 2021 22:58:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=SnefBrylWy8QEKCC1c48fL6Ne7IkZGFtlVNbY45TI+w=;
- b=lnv/aa94No7ZzBhe6/kPVopKD9ueGhvP+5sHNuc6qIRU3/5U9MyZe+BXRPQroab5XI
- aqkeoZR3fvTfopcWdlw5TXC6VSPOCM7xi+s812Och+l1Hr1Ux9DTwZkDhXyQsWBPcxHR
- EZz0CMvVJputaYZfLBX3Lssg/7NMD/tYD+j2N1vj483OaTNakhi4TI3ig5OJOVrMaOnI
- Nt0UoMl6anAfFhBd64Uvr22RBYrnGWdJORWAoLnvQW1hbSlH6PGLyzDvkdFMqKMFfiSg
- gxWjN2+h//7Tz/DTTKxyY+3RM7+E+HXN3cznElYDsmYnvY49KTTAIxMJrBNhJNRGXVFb
- J5gA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=SnefBrylWy8QEKCC1c48fL6Ne7IkZGFtlVNbY45TI+w=;
- b=hUvBFfXPBUFbM59EWlmeNAXxoRgwCoDiB6969N0IAXoyJve/52rdzgLGpA9i3/9kOZ
- TZJ5n0TwfGW7BCQyQis/2npAWUDpEj647Pg2kzqeoFCZwLXgva6vfIBbmLGTnKSozYSy
- CZNVfS0x4ThEziJbgPM7OFuOB7RWO4UdscLE+6YQiX54J1nN1PgyWQytAp+anU5CmrPo
- usSurQmxrRid24qGcqA8gJt+NcsCxduAB+rh3ceymyqFYyvYoQYu00kBSqkcHLeEWbdx
- BvGO1tj7rj40uUcnv8zYXapDdd+D+mjNvMpzCbeGTxAP9c1H7UWy/Y8Gp1UVjQzHifSF
- Uu7A==
-X-Gm-Message-State: AOAM530WltRUcky7HCEJV0MK85qqO9gS5eKvCJ5M4+xH//zdzH+y37+p
- U7Q711uInrMDXYawAb5U9ZiIZZriryz+9RNx
-X-Received: by 2002:a62:7802:0:b0:49f:d21e:1dc9 with SMTP id
- t2-20020a627802000000b0049fd21e1dc9mr45816508pfc.18.1637132290107; 
- Tue, 16 Nov 2021 22:58:10 -0800 (PST)
-Received: from voyager.guest.fluxperth.local
- (210-10-213-150.per.static-ipl.aapt.com.au. [210.10.213.150])
- by smtp.gmail.com with ESMTPSA id d13sm21914618pfu.196.2021.11.16.22.58.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Nov 2021 22:58:09 -0800 (PST)
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 3/4] docs: aspeed: Give an example of booting a kernel
-Date: Wed, 17 Nov 2021 14:57:51 +0800
-Message-Id: <20211117065752.330632-4-joel@jms.id.au>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211117065752.330632-1-joel@jms.id.au>
-References: <20211117065752.330632-1-joel@jms.id.au>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1mnLxJ-0005XP-A1; Wed, 17 Nov 2021 09:30:33 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2152)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1mnLxE-0006Ru-Ix; Wed, 17 Nov 2021 09:30:33 -0500
+Received: from fraeml742-chm.china.huawei.com (unknown [172.18.147.200])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4HvQL92yfYz67mnw;
+ Wed, 17 Nov 2021 22:29:37 +0800 (CST)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ fraeml742-chm.china.huawei.com (10.206.15.223) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Wed, 17 Nov 2021 15:30:19 +0100
+Received: from localhost (10.52.126.160) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.20; Wed, 17 Nov
+ 2021 14:30:17 +0000
+Date: Wed, 17 Nov 2021 14:30:15 +0000
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: David Hildenbrand <david@redhat.com>
+Subject: Re: [PATCH v2] hw/arm/virt: Expose empty NUMA nodes through ACPI
+Message-ID: <20211117143015.00002e0a@Huawei.com>
+In-Reply-To: <188faab7-1e57-2bc1-846f-9457433c2f9d@redhat.com>
+References: <20211027052958.280741-1-gshan@redhat.com>
+ <20211027174028.1f16fcfb@redhat.com>
+ <fecb9351-ae78-8fcd-e377-623243ef80df@redhat.com>
+ <20211101094431.71e1a50a@redhat.com>
+ <47dc3a95-ed77-6c0e-d024-27cb22c338eb@redhat.com>
+ <20211102073948.am3p3hcqqd3cfvru@gator.home>
+ <b8ed4687-e30a-d70f-0816-bd8ba490ceb7@redhat.com>
+ <20211110113304.2d713d4a@redhat.com>
+ <5180ecee-62e2-cd6f-d595-c7c29eff6039@redhat.com>
+ <20211112142751.4807ab50@redhat.com>
+ <188faab7-1e57-2bc1-846f-9457433c2f9d@redhat.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::435
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=joel.stan@gmail.com; helo=mail-pf1-x435.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.52.126.160]
+X-ClientProxiedBy: lhreml719-chm.china.huawei.com (10.201.108.70) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xhboU31g+DD6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Andrew
+ Jones <drjones@redhat.com>, Gavin Shan <gshan@redhat.com>, ehabkost@redhat.com,
+ alison.schofield@intel.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, shan.gavin@gmail.com,
+ Igor Mammedov <imammedo@redhat.com>, Dan
+ Williams <dan.j.williams@intel.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: i1f0WHdv3+Du
 
-A common use case for the ASPEED machine is to boot a Linux kernel.
-Provide a full example command line.
+On Tue, 16 Nov 2021 12:11:29 +0100
+David Hildenbrand <david@redhat.com> wrote:
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
- docs/system/arm/aspeed.rst | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+> >>
+> >> Examples include exposing HBM or PMEM to the VM. Just like on real HW,
+> >> this memory is exposed via cpu-less, special nodes. In contrast to real
+> >> HW, the memory is hotplugged later (I don't think HW supports hotplug
+> >> like that yet, but it might just be a matter of time).  
+> > 
+> > I suppose some of that maybe covered by GENERIC_AFFINITY entries in SRAT
+> > some by MEMORY entries. Or nodes created dynamically like with normal
+> > hotplug memory.
+> >   
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index b87697fcf0b1..6aafd611e9a5 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -78,9 +78,9 @@ Missing devices
- Boot options
- ------------
- 
--The Aspeed machines can be started using the ``-kernel`` option to
--load a Linux kernel or from a firmware. Images can be downloaded from
--the OpenBMC jenkins :
-+The Aspeed machines can be started using the ``-kernel`` and ``-dtb`` options
-+to load a Linux kernel or from a firmware. Images can be downloaded from the
-+OpenBMC jenkins :
- 
-    https://jenkins.openbmc.org/job/ci-openbmc/lastSuccessfulBuild/
- 
-@@ -88,6 +88,15 @@ or directly from the OpenBMC GitHub release repository :
- 
-    https://github.com/openbmc/openbmc/releases
- 
-+To boot a kernel directly from a Linux build tree:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M ast2600-evb -nographic \
-+        -kernel arch/arm/boot/zImage \
-+        -dtb arch/arm/boot/dts/aspeed-ast2600-evb.dtb \
-+        -initrd rootfs.cpio
-+
- The image should be attached as an MTD drive. Run :
- 
- .. code-block:: bash
--- 
-2.33.0
+The naming of the define is unhelpful.  GENERIC_AFFINITY here corresponds
+to Generic Initiator Affinity.  So no good for memory. This is meant for
+representation of accelerators / network cards etc so you can get the NUMA
+characteristics for them accessing Memory in other nodes.
+
+My understanding of 'traditional' memory hotplug is that typically the
+PA into which memory is hotplugged is known at boot time whether or not
+the memory is physically present.  As such, you present that in SRAT and rely
+on the EFI memory map / other information sources to know the memory isn't
+there.  When it is hotplugged later the address is looked up in SRAT to identify
+the NUMA node.
+
+That model is less useful for more flexible entities like virtio-mem or
+indeed physical hardware such as CXL type 3 memory devices which typically
+need their own nodes.
+
+For the CXL type 3 option, currently proposal is to use the CXL table entries
+representing Physical Address space regions to work out how many NUMA nodes
+are needed and just create extra ones at boot.
+https://lore.kernel.org/linux-cxl/163553711933.2509508.2203471175679990.stgit@dwillia2-desk3.amr.corp.intel.com
+
+It's a heuristic as we might need more nodes to represent things well kernel
+side, but it's better than nothing and less effort that true dynamic node creation.
+If you chase through the earlier versions of Alison's patch you will find some
+discussion of that.
+
+I wonder if virtio-mem should just grow a CDAT instance via a DOE?
+
+That would make all this stuff discoverable via PCI config space rather than ACPI
+CDAT is at:
+https://uefi.org/sites/default/files/resources/Coherent%20Device%20Attribute%20Table_1.01.pdf
+but the table access protocol over PCI DOE is currently in the CXL 2.0 spec
+(nothing stops others using it though AFAIK).
+
+However, then we'd actually need either dynamic node creation in the OS, or
+some sort of reserved pool of extra nodes.  Long term it may be the most
+flexible option.
+
+Jonathan
+
+> 
+> I'm certainly no SRAT expert, but seems like under VMWare something
+> similar can happen:
+> 
+> https://lkml.kernel.org/r/BAE95F0C-FAA7-40C6-A0D6-5049B1207A27@vmware.com
+> 
+> "VM was powered on with 4 vCPUs (4 NUMA nodes) and 4GB memory.
+> ACPI SRAT reports 128 possible CPUs and 128 possible NUMA nodes."
+> 
+> Note that that discussion is about hotplugging CPUs to memory-less,
+> hotplugged nodes.
+> 
+> But there seems to be some way to expose possible NUMA nodes. Maybe
+> that's via GENERIC_AFFINITY.
+> 
 

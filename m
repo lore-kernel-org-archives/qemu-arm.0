@@ -1,106 +1,107 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp966882lfk;
-        Wed, 17 Nov 2021 08:37:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx2RtwcBMoJUy6FaHsIrzvIB72KNT8SSJIaOBqNyJJA2hdNx0WMyKe44xVDyJlQAaCjbnwf
-X-Received: by 2002:ab0:2b96:: with SMTP id q22mr26030109uar.87.1637167068294;
-        Wed, 17 Nov 2021 08:37:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637167068; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp968474lfk;
+        Wed, 17 Nov 2021 08:38:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx86yG0NHcEsah/A1ljAG+DHQQ7zGtj/b/1kGvon5rafUdpgwg0TteiFHxbU0p0f57P4ngh
+X-Received: by 2002:ad4:5bc4:: with SMTP id t4mr56764175qvt.3.1637167131751;
+        Wed, 17 Nov 2021 08:38:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637167131; cv=none;
         d=google.com; s=arc-20160816;
-        b=DlM7WPRrXkmRd1sJQOspD4uhfyI9JrXx6yvtqZJ4xAQYWyKwYBcNgMN33obJmEJYEf
-         swVBylJMyyG1pLgiXZpMtPjil1uzwfbu4+fK8I/HY658r6QRbPCvjv0WdhWeyD+U7/rF
-         JI49REtlGZHv+vQlO4wmSxH5DY+Dy2USnHC3UBlEDpV6pTMV+ErxRcFRnJdr9DjSsR9Q
-         N0n9J3gbCH/VQcRSg8jv/tvK34dqnMIwlnuKKm42/DwynvFtLqPwiZmESYY4GxuedCr2
-         eZZVy5MbEbAiZYqSCDauzriRikDKupDjLNBf6LygfWuE96QcJ07ivAza5N3E9rFlpt5G
-         OdSw==
+        b=Hl/WZLTl1+6+CbxrE/xWC9ZiiFsVdwvIpW1I3vLUUGPHyBu3G0RL7W2Yr0mtKwO0d9
+         Aw41/GwvDYlDtx45YPEA/X/l9IPoGZRRUrRtFvoLYLybM0SonHxF6fPrNzoE0jQkn7sw
+         u5knp2QI/SOYrYmYhmFaT3ICw0TvlCHDt2SDrJYlt8RkKJVCn6A9G5fWwa4gY9Dk+CqO
+         3UQEShw3GdY2BVU3U9+X92ZVEmtMS3YE0TWpVwncLyJRETqQSh57KLR0DwrN0kGXLeaE
+         cews5hbhLqGxNMnkfp+6Nd9G9GbQq2zj1IGOqPzLrMwxei6hNgNrurcY7AcodLqrFqSR
+         rzQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Dg8Y/pSUQZzurv6Scuss9r3ZPr1dYJI5QxZwyNKqZKY=;
-        b=iXjzm1ElK7Kytg3s3qaPEJ01eC1MSdzpKWfijdUO2uaBWwX+t5p/LOXin2kFRSP8f9
-         BTJJ/Mmi3uswovamDc3L9/SQeVp1Eq7GYCMwcvpT2AHmHOodTagpEfnQPwtVNOG/y4pM
-         R+LRsDy4/AXufCmJ9cDLsFWuFMFjvXM9jBUU5OyOBZYgEU+QoqTTJlykA4kKdTN94gHN
-         l5K5Z+Qboev9Ub8VeEVDa5pdegY/HIc0kawkIqTMzGD3mmnaZAgLNWWYvf9Co+sUDw17
-         GWzIFzDFhyxYbsLKbSULFWZlPoLT7U7czQTD7ziWMQV+Kllg3mW58iNLdiQQAoO7EvJD
-         5VgA==
+        bh=EgarIjhvXGK6SoTdao173npcs6FsLF5ihY/bFRR9IPE=;
+        b=A6nG5ZYVQnojtezVLSkUiF+u8ZJqas0ckgkpgz6ErH2WQj8N/MIfBsBHTXqVxnYivx
+         nS1B7iNE3sk/nmXIiZXAyMgcX+3O78F/tk+EnqD82BZC24HQZq5LsL8Uc5kHvki8UXHM
+         G9IL9lfXB/NDdZmx4qH6zmoibA91KLq3mCBCAFkIBjiw3GX+U5g37okKnzQXJq5IkS74
+         QApR9xqdGRYSy+wmKjg0uqyVFCB2FtfdHDIvp9Ajq7usmiVsfWL77ANySE7VG69deMWI
+         QFnVBEJcCIK2nYkzTG5kG3ukHUOGCutSFZ/xIjEtiXPFJ6MAVDfjHZ2ME0+LlKulIHYD
+         YjpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Gt1qykmV;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q5mAcLOn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i8si419181vsj.456.2021.11.17.08.37.48
+        by mx.google.com with ESMTPS id g15si458268qtg.77.2021.11.17.08.38.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Nov 2021 08:37:48 -0800 (PST)
+        Wed, 17 Nov 2021 08:38:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Gt1qykmV;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q5mAcLOn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38042 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42642 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mnNwR-0001am-M1
-	for alex.bennee@linaro.org; Wed, 17 Nov 2021 11:37:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:32806)
+	id 1mnNxT-0004fk-1f
+	for alex.bennee@linaro.org; Wed, 17 Nov 2021 11:38:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnNtH-0003Qd-M2
- for qemu-devel@nongnu.org; Wed, 17 Nov 2021 11:34:31 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36055)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnNt9-000890-Tk
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnNtE-0003MW-1g
  for qemu-devel@nongnu.org; Wed, 17 Nov 2021 11:34:29 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:24071)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnNt9-00088U-Rv
+ for qemu-devel@nongnu.org; Wed, 17 Nov 2021 11:34:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637166862;
+ s=mimecast20190719; t=1637166861;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Dg8Y/pSUQZzurv6Scuss9r3ZPr1dYJI5QxZwyNKqZKY=;
- b=Gt1qykmVJmwDkw7lkE7yoeKCXfqVMgblcgn5DmyTn3PyIe/SeVC7clZmHBZkT5Qrk3GL9/
- 3SUnA0A+P8EXaDLJ1b4Td8Cq4gpk212zyOI6Bxj9KD7/eLspFrFIjh6D/qcQOZaUrW8Rlq
- Dc3RGVKJ/QjY7drwHGDXWyH0tme6U6U=
+ bh=EgarIjhvXGK6SoTdao173npcs6FsLF5ihY/bFRR9IPE=;
+ b=Q5mAcLOnNL1tYtnyu6KM2pM/srsyiPYAtOler4WCPcLE0SBWSBY4TQHKLLwvy75fqCHwd+
+ zq/725YBCTbLTJWbPY8w5l8NprC8vVxONYRATjaxXc4tHt7HeIs08/J35/p5eIxujw5o+p
+ vblNLI87mDOMjoo1wielPBbx3nYytTA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-568--CTeMP9SNG2rqBjQpFBpRw-1; Wed, 17 Nov 2021 11:34:17 -0500
-X-MC-Unique: -CTeMP9SNG2rqBjQpFBpRw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-177-1SLvi43POV6U-hB9QFRVsg-1; Wed, 17 Nov 2021 11:34:20 -0500
+X-MC-Unique: 1SLvi43POV6U-hB9QFRVsg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3CC698799E0;
- Wed, 17 Nov 2021 16:34:16 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1B63419251A4;
+ Wed, 17 Nov 2021 16:34:19 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0B3A560C13;
- Wed, 17 Nov 2021 16:34:16 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DE74C5F4E0;
+ Wed, 17 Nov 2021 16:34:18 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 82C1911380C3; Wed, 17 Nov 2021 17:34:09 +0100 (CET)
+ id 8CC9D11380CF; Wed, 17 Nov 2021 17:34:09 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 04/13] hw/arm/versatilepb hw/arm/vexpress: Replace
- drive_get_next() by drive_get()
-Date: Wed, 17 Nov 2021 17:34:00 +0100
-Message-Id: <20211117163409.3587705-5-armbru@redhat.com>
+Subject: [PATCH v2 07/13] hw/arm/mcimx7d-sabre: Replace drive_get_next() by
+ drive_get()
+Date: Wed, 17 Nov 2021 17:34:03 +0100
+Message-Id: <20211117163409.3587705-8-armbru@redhat.com>
 In-Reply-To: <20211117163409.3587705-1-armbru@redhat.com>
 References: <20211117163409.3587705-1-armbru@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
 X-Spam_bar: ---
 X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.701,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,11 +114,12 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-block@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1qPdhr7O8Ga1
+X-TUID: MXSzp8OIY7R3
 
 drive_get_next() is basically a bad idea.  It returns the "next" block
 backend of a certain interface type.  "Next" means bus=0,unit=N, where
@@ -127,72 +129,31 @@ This lets you define unit numbers implicitly by execution order.  If the
 order changes, or new calls appear "in the middle", unit numbers change.
 ABI break.  Hard to spot in review.
 
-The versatile and vexpress machines ("versatileab", "versatilepb",
-"vexpress-a9", "vexpress-a15") connect just one or two backends of a
-type with drive_get_next().  Change them to use drive_get() directly.
-This makes the unit numbers explicit in the code.
+Machine "mcimx7d-sabre" connects backends with drive_get_next() in a
+counting loop.  Change it to use drive_get() directly.  This makes the
+unit numbers explicit in the code.
 
 Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>
 Cc: qemu-arm@nongnu.org
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- hw/arm/versatilepb.c | 4 ++--
- hw/arm/vexpress.c    | 6 +++---
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ hw/arm/mcimx7d-sabre.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 575399c4fc..ecc1f6cf74 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -310,7 +310,7 @@ static void versatile_init(MachineState *machine, int board_id)
-     qdev_connect_gpio_out(sysctl, 0, qdev_get_gpio_in(dev, 0));
+diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
+index 935d4b0f1c..50a5ecde31 100644
+--- a/hw/arm/mcimx7d-sabre.c
++++ b/hw/arm/mcimx7d-sabre.c
+@@ -52,7 +52,7 @@ static void mcimx7d_sabre_init(MachineState *machine)
+         DriveInfo *di;
+         BlockBackend *blk;
  
-     dev = sysbus_create_varargs("pl181", 0x10005000, sic[22], sic[1], NULL);
--    dinfo = drive_get_next(IF_SD);
-+    dinfo = drive_get(IF_SD, 0, 0);
-     if (dinfo) {
-         DeviceState *card;
- 
-@@ -322,7 +322,7 @@ static void versatile_init(MachineState *machine, int board_id)
-     }
- 
-     dev = sysbus_create_varargs("pl181", 0x1000b000, sic[23], sic[2], NULL);
--    dinfo = drive_get_next(IF_SD);
-+    dinfo = drive_get(IF_SD, 0, 1);
-     if (dinfo) {
-         DeviceState *card;
- 
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index 58481c0762..966758cf82 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -625,7 +625,7 @@ static void vexpress_common_init(MachineState *machine)
-                           qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_WPROT));
-     qdev_connect_gpio_out_named(dev, "card-inserted", 0,
-                           qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_CARDIN));
--    dinfo = drive_get_next(IF_SD);
-+    dinfo = drive_get(IF_SD, 0, 0);
-     if (dinfo) {
-         DeviceState *card;
- 
-@@ -657,7 +657,7 @@ static void vexpress_common_init(MachineState *machine)
- 
-     sysbus_create_simple("pl111", map[VE_CLCD], pic[14]);
- 
--    dinfo = drive_get_next(IF_PFLASH);
-+    dinfo = drive_get(IF_PFLASH, 0, 0);
-     pflash0 = ve_pflash_cfi01_register(map[VE_NORFLASH0], "vexpress.flash0",
-                                        dinfo);
-     if (!pflash0) {
-@@ -673,7 +673,7 @@ static void vexpress_common_init(MachineState *machine)
-         memory_region_add_subregion(sysmem, map[VE_NORFLASHALIAS], flashalias);
-     }
- 
--    dinfo = drive_get_next(IF_PFLASH);
-+    dinfo = drive_get(IF_PFLASH, 0, 1);
-     if (!ve_pflash_cfi01_register(map[VE_NORFLASH1], "vexpress.flash1",
-                                   dinfo)) {
-         error_report("vexpress: error registering flash 1");
+-        di = drive_get_next(IF_SD);
++        di = drive_get(IF_SD, 0, i);
+         blk = di ? blk_by_legacy_dinfo(di) : NULL;
+         bus = qdev_get_child_bus(DEVICE(&s->usdhc[i]), "sd-bus");
+         carddev = qdev_new(TYPE_SD_CARD);
 -- 
 2.31.1
 

@@ -1,100 +1,103 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp261745lfk;
-        Tue, 16 Nov 2021 22:58:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyQOYJfXBLqendtXfUyBwztgF63pmxmx7QGH+8Vx+3Cd9bD3wqlckunZXxvRz5S6wW7Xxli
-X-Received: by 2002:a67:c90a:: with SMTP id w10mr54874868vsk.22.1637132328247;
-        Tue, 16 Nov 2021 22:58:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637132328; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp261806lfk;
+        Tue, 16 Nov 2021 22:58:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxdXPRd0NBRMIR6Vt9sqtSHOSTg4hhAwbeFhE/830afKpeeZNjem+sQ25niIZgDjXWUxFF0
+X-Received: by 2002:ab0:1c4c:: with SMTP id o12mr20086201uaj.136.1637132332704;
+        Tue, 16 Nov 2021 22:58:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637132332; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ps1b1aYodHyb/SQLsLfw84Zb3rHCeNYUjc5bOZDXv9VSp1gZWbO8KrE0aGLcvVOww1
-         zEwQd0KutIevuQ6ddCwe0EdUmMJcNGzaoqddvpOijO9Jffv08yUrCwbyoev0A9egqU7J
-         tHnqdIpMcNgcwCbSEWNcSyEhZVALOKV4+v+bPieosdAqU9v8mNVLmMTb6B2dIVrI0UX7
-         XmB0MM7yrzH+shcRlS2Bz0baS4UsxkMo7n9vjD9drQe+WaCzoImZ7PawoPUKipFaggaI
-         d0D2t9MWu1jtvLier/eGaItzwUGSa75VDatSLNL/e7uMwXpWlh1hixIGy9pnEwDH16va
-         fj5w==
+        b=vgwyfJV3Dr5fuOBdqqRZH2MPD62RexsHjHyZF/NREzoh1ZsKYl+xEe80ULfR4vK58h
+         yg+w8XJemid2gPujr7u5eOANvDgh4bCISS1D7TCo36mvS48Tmw7eAiLMICi58cbS0oYK
+         qtuZoiyO4tqfgjs4PmiYichxv3qmrrY3ssKH+6Cp1uVGj2YxKHED7r3pliJu9+vfNpDR
+         fQ2ZTN84TmM2dIe6t0UvppS6hbkhuhkd5VudGO7+JK4p5HTcTI3O8asLC0zEEEEUr1r9
+         33P6KSAZ79gIpVcQnv+Mj7fuq2titf9CCFUf6IKnRmncY75U5VtpIW4QF4UgGv62fYCt
+         g7Qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=jj2TxrYIZkkNgjx/8vtmRWzq2ea9PiKONmxpwxgAhDY=;
-        b=t2HvBGMrKojnn9cQ72gelnT6buIuOLVuqbaamGoljiW+sh70LsfVE0P21eYp8xHz3H
-         X7AjO0cUQdjCsPv1Iq/DQ5ug9qlMhla4j32vJIuvwWZPhDRZCNDlHHC/7FYxk+PlD41B
-         7+7Yv2pHRYs1t7ZkRgyXXtkicIf0vTPc9y+a+asWChfbMwNh4J8n+a2fjdTS+rYX928b
-         9W6fnYIoRUPU0YrtATFP7D4CSMCnLPgjzNUheRQSBfIT3P8I5FCW57yiLoUX5M0wDDf2
-         /rmf9cZdvDH446mwIQtCZnRregNuyZYy3z5BGRa0Z0DL+CKIcxG3wPDEKex1cz86+RUq
-         xPHA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Tt9YzbsEWtPuG5Ge5rnyBeLs7tuX8ZxfIZJWS1cdf10=;
+        b=FW9qSfiizoMLgauGkMOMb8ZGfNgebovB9JjRihlDp4rKcaXEP+BEYOpMk6fR56SaBB
+         NTWTLNMFR/EzZZl8GRp/Q99r6Qm0pAWnS4DmtIXTCWa16b7DITVmGjKM9p1MgVFnbVNm
+         fJwuHiwvUhQufk9YBIFGsq5dqjVH9i0OrtdNP1te6cUVye7GEbbj15Tm8VnRURduc4Yq
+         6JuZN+K/wKut5J/MDpmW557WMRTp9Na4ZVKVQRA3N67jsNZkEDo2YBxaOFHVFE5zawTE
+         RNIB1lrgFppXsZUuSV6I5vswpLDX3IDdRv10y00Jm9tSB/iegxhzxcoetfbN52n3cgxe
+         5rEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BnVr06S4;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=OgU1m2Ig;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9si47627824vsh.46.2021.11.16.22.58.48
+        by mx.google.com with ESMTPS id h8si42143358vsf.182.2021.11.16.22.58.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Nov 2021 22:58:48 -0800 (PST)
+        Tue, 16 Nov 2021 22:58:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BnVr06S4;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=OgU1m2Ig;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49774 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49884 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mnEu7-0004oh-Gf
-	for alex.bennee@linaro.org; Wed, 17 Nov 2021 01:58:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57258)
+	id 1mnEuB-0004uQ-TH
+	for alex.bennee@linaro.org; Wed, 17 Nov 2021 01:58:52 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57308)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1mnEtQ-0004o8-Rb; Wed, 17 Nov 2021 01:58:04 -0500
-Received: from [2607:f8b0:4864:20::52c] (port=33462
- helo=mail-pg1-x52c.google.com)
+ id 1mnEtY-0004t8-Tp; Wed, 17 Nov 2021 01:58:12 -0500
+Received: from [2607:f8b0:4864:20::531] (port=45854
+ helo=mail-pg1-x531.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1mnEtN-0005a1-TN; Wed, 17 Nov 2021 01:58:04 -0500
-Received: by mail-pg1-x52c.google.com with SMTP id 136so1469598pgc.0;
- Tue, 16 Nov 2021 22:58:01 -0800 (PST)
+ id 1mnEtU-0005av-D4; Wed, 17 Nov 2021 01:58:10 -0500
+Received: by mail-pg1-x531.google.com with SMTP id h63so1393695pgc.12;
+ Tue, 16 Nov 2021 22:58:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=jj2TxrYIZkkNgjx/8vtmRWzq2ea9PiKONmxpwxgAhDY=;
- b=BnVr06S4ERMIxYe1cRfE3MtTo13gktvHZew95IKpT1/VcYvNZvSMUIr7GUTnXrVEiq
- yE8PYF86ZcRKHQTUjcYYkhhWqn9qfa00JDGvy5SDKQ2qJs+YoAyjuvVvuawvNSNFSsZV
- vsgeQKurZQbWMDN5S1U4WKpyizz34xQPRS38qQNFaVs7t/kzH39rfkE5E/KWJeJkiZ6a
- ErbgeWKmC9zdrzSUYrBHDpY7Cwtu7QGoYBsc8lbDUy/YYv2S092agA2+ydTDLMBLQwes
- XHHMqdO8TjiOy93h1CwNEaD88VPY3wK8mbU+WU+gv7DRk4k4De7vISVNcMvETOic+m6j
- p0bA==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Tt9YzbsEWtPuG5Ge5rnyBeLs7tuX8ZxfIZJWS1cdf10=;
+ b=OgU1m2Igrr9CkwYTtIMW4qpxnAuAki2FWjBFJrlquvhJzz4hMFGgLqSl6F4CrGLLup
+ xVzIj04I7lDdXjPr6tBqeUV3ZF3T9uT4TSsn7kKDKa4bNGAKPA85WUG5fZ+2+xmW/qAi
+ nB49qMnWXICVgGoxiKQiWCNXnLcS5umYbCOwckGtIDcY+gK0QPTNaot0S6MSnWX1ZCKH
+ EToWEGcAFcCWqz61mN8qKeqscXac2vMEOTKwxZCb2WgbcEF8aQQeGfFy0bBB87C7c64Q
+ sH3RR9wD3ffsTe5p4B+V91LGDkSfxLjL8uiDrRVvyTOLPBmFMidpg4Fnm2whafzDbJKT
+ LQ/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=jj2TxrYIZkkNgjx/8vtmRWzq2ea9PiKONmxpwxgAhDY=;
- b=JrVmTNKiTpy6gUEMRNcSMJFSHgsrG3PKEeBN5D8jncU3mQ9VbaQybajpCdAkUyTGl1
- W0yp1/xdm/thmNhRMrt6+9wfkhXFh7g18flkszSoU/o1TzT39QSUW1qdROP1ZOFpAplk
- UYyfTIUD7VJ9zyOVpwS/dFVBNg0hrG14GEUuRnH1U9d1KD/NdGLeMkPJsDeBg5KlMva3
- fweHotbtM7W/urXEPLMy+8u377vgLltSIZjsuQSAYtvYyoQr5OkDERpqn/BCBlTQPy09
- z/3T+1XE5wKxhcAj7VoN5KLOsPfJMvy/szOnDcHAOkIqBgIb9iY1Yq1Y+Cf/6GWiPeZw
- YVPg==
-X-Gm-Message-State: AOAM530tSfYeLectUhEZQbdzZU2YvnKC4+vH220jiCWTARqCH1Jy9DKD
- C4CDrLhPrHJrIuJnsgMIZxw=
-X-Received: by 2002:a05:6a00:99b:b0:49f:eab4:4e7e with SMTP id
- u27-20020a056a00099b00b0049feab44e7emr5031478pfg.63.1637132280099; 
- Tue, 16 Nov 2021 22:58:00 -0800 (PST)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=Tt9YzbsEWtPuG5Ge5rnyBeLs7tuX8ZxfIZJWS1cdf10=;
+ b=dP2Nznq686HwIU8qjlZSu+yRJz5eNxPNVqYDgwpQL2aj2UMXvSyJtJGw8DCPQlKgAh
+ xavYyduutApbyABFjt9ztlx9jpOZ3/xVWELGaqlCU2i7pMEQnp3B+2StVjsSvbYm54tf
+ gSGOaQBMqKHydEtQgTqo/bY5njITBXzgmx86FV8OmC6MZBruVRdY4Tpp55TsPqdoMKDr
+ JmMqzQsnTEhLL9V9IoszP6WMIRm9xyhI3Npg3M2HJyEyZSUDZY4REzgA6IcmLCtc35FD
+ JxnaUdD2WsN+irvI6x1nN4AMz/x5+yG1DXZwUF+BjSiy55Hwayi+xqsSgtB3Ucz1Dkte
+ gqYw==
+X-Gm-Message-State: AOAM532qUAdY9TZIue+cNVi5jq6CXwfm8sjv4FWQrZH9mg2FEkuVI6dS
+ yj0FnI6bK1dCQsgTCt/4K5E=
+X-Received: by 2002:a05:6a00:17a4:b0:49f:c0c0:3263 with SMTP id
+ s36-20020a056a0017a400b0049fc0c03263mr46683270pfg.81.1637132286665; 
+ Tue, 16 Nov 2021 22:58:06 -0800 (PST)
 Received: from voyager.guest.fluxperth.local
  (210-10-213-150.per.static-ipl.aapt.com.au. [210.10.213.150])
- by smtp.gmail.com with ESMTPSA id d13sm21914618pfu.196.2021.11.16.22.57.56
+ by smtp.gmail.com with ESMTPSA id d13sm21914618pfu.196.2021.11.16.22.58.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Nov 2021 22:57:59 -0800 (PST)
+ Tue, 16 Nov 2021 22:58:05 -0800 (PST)
 From: Joel Stanley <joel@jms.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 0/4] docs: aspeed: Minor updates
-Date: Wed, 17 Nov 2021 14:57:48 +0800
-Message-Id: <20211117065752.330632-1-joel@jms.id.au>
+Subject: [PATCH v2 2/4] docs: aspeed: Update OpenBMC image URL
+Date: Wed, 17 Nov 2021 14:57:50 +0800
+Message-Id: <20211117065752.330632-3-joel@jms.id.au>
 X-Mailer: git-send-email 2.33.0
+In-Reply-To: <20211117065752.330632-1-joel@jms.id.au>
+References: <20211117065752.330632-1-joel@jms.id.au>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::52c
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::531
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=joel.stan@gmail.com; helo=mail-pg1-x52c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=joel.stan@gmail.com; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -119,21 +122,30 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uGyMtBeoeJl9
+X-TUID: IXZGVItLirje
 
-Here are some small updates to the aspeed docs.
+This is the latest URL for the OpenBMC CI. The old URL still works, but
+redirects.
 
-v2: Tweak board changes, add patch to move ADC to the supported list
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ docs/system/arm/aspeed.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Joel Stanley (4):
-  docs: aspeed: Add new boards
-  docs: aspeed: Update OpenBMC image URL
-  docs: aspeed: Give an example of booting a kernel
-  docs: aspeed: ADC is now modelled
-
- docs/system/arm/aspeed.rst | 26 ++++++++++++++++++++------
- 1 file changed, 20 insertions(+), 6 deletions(-)
-
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 41a9bd5608e8..b87697fcf0b1 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -82,7 +82,7 @@ The Aspeed machines can be started using the ``-kernel`` option to
+ load a Linux kernel or from a firmware. Images can be downloaded from
+ the OpenBMC jenkins :
+ 
+-   https://jenkins.openbmc.org/job/ci-openbmc/lastSuccessfulBuild/distro=ubuntu,label=docker-builder
++   https://jenkins.openbmc.org/job/ci-openbmc/lastSuccessfulBuild/
+ 
+ or directly from the OpenBMC GitHub release repository :
+ 
 -- 
 2.33.0
 

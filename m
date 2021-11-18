@@ -1,899 +1,468 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id n32sm537042wms.42.2021.11.18.10.46.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Nov 2021 10:47:04 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 877EA1FFA6;
-	Thu, 18 Nov 2021 18:46:50 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: kvm@vger.kernel.org
-Cc: idan.horowitz@gmail.com,
-	qemu-arm@nongnu.org,
-	linux-arm-kernel@lists.infradead.org,
-	kvmarm@lists.cs.columbia.edu,
-	christoffer.dall@arm.com,
-	maz@kernel.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [kvm-unit-tests PATCH v8 10/10] arm/tcg-test: some basic TCG exercising tests
-Date: Thu, 18 Nov 2021 18:46:50 +0000
-Message-Id: <20211118184650.661575-11-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211118184650.661575-1-alex.bennee@linaro.org>
-References: <20211118184650.661575-1-alex.bennee@linaro.org>
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1100088lfk;
+        Thu, 18 Nov 2021 11:28:41 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy4hY6mBgEOSRJpQQbKjtg2o/eQX2UbLNr5SJ9619yD7pzasA27SDEPAAaEY/x68XYvNmRe
+X-Received: by 2002:a67:d216:: with SMTP id y22mr83385763vsi.6.1637263721029;
+        Thu, 18 Nov 2021 11:28:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637263721; cv=none;
+        d=google.com; s=arc-20160816;
+        b=D7ywtzwExRyOmxALG3vk9Nu5Py0Uopk7ZkXe6TgVztTf2RLX4OfxK3Nycez2ucNG+T
+         6vakt8LHi/0adIprh6znjpS+3n5I8+pa3xeBOfH/9ctlquqtucOoRYCOEazfipbvCwId
+         nJ72vodtz8od9qpOIXpR7ao1g+6yxtxHE7PPjPy18S+NT4nX6xdwkXGxwUiKL3bmeZmZ
+         /NhnYfGQvS4oTrQNFTdQGwQblSeGI2muCRJ26/AeI99bnar7v4+5diqL0E8NqWfmdb21
+         7n9jGSSQhOH/xH7tcGGPPk+wSr96x3Z4oa3jNtqWJD+4NocZHmhfLXbBtnt69cOG2AUr
+         JTmA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=onQzSf5POREpUX9e4aWGOLccXTbzTIctz5gjtxaTXRY=;
+        b=Taoyluik0w+gK4ZS6/Mvd99F1CzhpV6C8Q/vGUTcE2n1NKuMF5qR1uuwVs0mqnHDa5
+         m83jg9KrT9N9EAz9lUnp4W+s18vFr2rTZ68RfNLxv/wAvk/DRW9ZJSkkPtd1A+vHKp1B
+         FGATReq63eKthEZfd2LNHTJ4fbtB7uUjoBPRE/+ez1gLPJgfSe8WsZmgA5uOgWB+umat
+         PtRo+Fb0OmpaJbTwlfJhodSmL18VNCryoRHZawSxsApcF7kLOY1WukRYggflaJb7h4Db
+         93vLxmTw9deWvEb81gB3Mh2PGT+dHlH/+Ac9hC9/J7dZU25YcRjdfrEHDXiGwV7agj9x
+         L6zQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XDllT5Ut;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n21si213324vsk.356.2021.11.18.11.28.40
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 18 Nov 2021 11:28:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XDllT5Ut;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37206 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mnn5M-0000UU-Be
+	for alex.bennee@linaro.org; Thu, 18 Nov 2021 14:28:40 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42934)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mnn53-0000TJ-89
+ for qemu-arm@nongnu.org; Thu, 18 Nov 2021 14:28:22 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41200)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mnn4t-0007Ct-Ut
+ for qemu-arm@nongnu.org; Thu, 18 Nov 2021 14:28:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1637263691;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=onQzSf5POREpUX9e4aWGOLccXTbzTIctz5gjtxaTXRY=;
+ b=XDllT5UtNyyFyM2QBvTd/Cz/+VTzHmW/drgEPs0I2pTmI5N568Ga08BY0kqmWSwvtfemIE
+ oaKjf1eYDbI9H3QX63DoF6LMSPOVCZ6pxBpJTRxHKt86k8VGrOmdD7hyV/ad74y1HJSksa
+ ByHvoUVSBGLusZoRqS7aJlyEL5mZhWY=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-159-sTLnWrwEOZWm91Itm2y1dg-1; Thu, 18 Nov 2021 14:27:49 -0500
+X-MC-Unique: sTLnWrwEOZWm91Itm2y1dg-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ b133-20020a1c808b000000b0032cdd691994so4788768wmd.1
+ for <qemu-arm@nongnu.org>; Thu, 18 Nov 2021 11:27:48 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=onQzSf5POREpUX9e4aWGOLccXTbzTIctz5gjtxaTXRY=;
+ b=s5jnm0t8i7GbaHXSg3CfEJP5sSLAj867s3XoeLtwxs11DTE19/DKKP84A0hfeEKHRM
+ 4/GAw2tjNcJwYfacF56hKXygq9VgKmxyZ6Vskj0HU9aoxBPqk2sYo+FDnbDZwmm0WmSF
+ UFZcJuGdgh8RHeapfxBKzN3VEEu11BErFibrcs3Njq9PLCTkUP18CC12FXTJ4FJ/dvJE
+ QTLN2dqQtsNFJzt1pWcm4rPh5fBVeZaxU5e6+FMY97G+3c8swqHfX4iDCMdoAQBEqQiO
+ WCHFPqcfIrR4CSHCRtXQ6TUfrF+BPsw9pvOZ96fkWaRjL/iphWEV+xVoUpA0gk5LDI4r
+ U4eA==
+X-Gm-Message-State: AOAM532JXOBt7rVvekdtHEPYG6bPDTn+ZKknGlw2XIvz5ohVxPomQlzG
+ ZyRHoB/vKNjNi6chFoUzL16g/fVDMiWkNmsHq1mFOATRPQIrn6GwnFW4efM5VVQXGnmix0gtdCw
+ 2bv3a4rpD6NQ4
+X-Received: by 2002:a05:600c:378b:: with SMTP id
+ o11mr12912074wmr.157.1637263666840; 
+ Thu, 18 Nov 2021 11:27:46 -0800 (PST)
+X-Received: by 2002:a05:600c:378b:: with SMTP id
+ o11mr12912007wmr.157.1637263666458; 
+ Thu, 18 Nov 2021 11:27:46 -0800 (PST)
+Received: from x1w.. (62.red-83-57-168.dynamicip.rima-tde.net. [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id
+ az4sm10019966wmb.20.2021.11.18.11.27.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Nov 2021 11:27:46 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH-for-6.2? v2] docs: Render binary names as monospaced text
+Date: Thu, 18 Nov 2021 20:27:44 +0100
+Message-Id: <20211118192744.64325-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: sLQuimdYCkuk
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.698,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, John G Johnson <john.g.johnson@oracle.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-block@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>, virtio-fs@redhat.com,
+ Darren Kenny <darren.kenny@oracle.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Jagannathan Raman <jag.raman@oracle.com>, Eric Blake <eblake@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tu/i6FaQbhdM
 
-These tests are not really aimed at KVM at all but exist to stretch
-QEMU's TCG code generator. In particular these exercise the ability of
-the TCG to:
-
-  * Chain TranslationBlocks together (tight)
-  * Handle heavy usage of the tb_jump_cache (paged)
-  * Pathological case of computed local jumps (computed)
-
-In addition the tests can be varied by adding IPI IRQs or SMC sequences
-into the mix to stress the tcg_exit and invalidation mechanisms.
-
-To explicitly stress the tb_flush() mechanism you can use the mod/rounds
-parameters to force more frequent tb invalidation. Combined with setting
--tb-size 1 in QEMU to limit the code generation buffer size.
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
+Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
-v5
-  - added armv8 version of the tcg tests
-  - max out at -smp 4 in unittests.cfg
-  - add up IRQs sent and delivered for PASS/FAIL
-  - take into account error count
-  - add "rounds=" parameter
-  - tweak smc to tb-size=1
-  - printf fmt fix
-v7
-  - merged in IRQ numerology
-  - updated to latest IRQ API
-v8
-  - fix report usage
-  - fix checkpatch errors
+v2: Addressed Eric comments
 ---
- arm/Makefile.arm     |   2 +
- arm/Makefile.arm64   |   2 +
- arm/Makefile.common  |   1 +
- arm/tcg-test-asm.S   | 171 ++++++++++++++++++++++
- arm/tcg-test-asm64.S | 170 ++++++++++++++++++++++
- arm/tcg-test.c       | 338 +++++++++++++++++++++++++++++++++++++++++++
- arm/mttcgtests.cfg   |  84 +++++++++++
- 7 files changed, 768 insertions(+)
- create mode 100644 arm/tcg-test-asm.S
- create mode 100644 arm/tcg-test-asm64.S
- create mode 100644 arm/tcg-test.c
+ docs/about/removed-features.rst        |  8 ++++----
+ docs/devel/build-system.rst            |  6 +++---
+ docs/devel/multi-process.rst           |  6 +++---
+ docs/devel/testing.rst                 |  8 ++++----
+ docs/image-fuzzer.txt                  |  6 +++---
+ docs/system/arm/orangepi.rst           |  2 +-
+ docs/system/images.rst                 |  2 +-
+ docs/system/qemu-block-drivers.rst.inc |  6 +++---
+ docs/system/tls.rst                    |  2 +-
+ docs/tools/qemu-img.rst                | 18 +++++++++---------
+ docs/tools/qemu-nbd.rst                |  4 ++--
+ docs/tools/qemu-storage-daemon.rst     |  7 ++++---
+ docs/tools/virtiofsd.rst               |  4 ++--
+ 13 files changed, 40 insertions(+), 39 deletions(-)
 
-diff --git a/arm/Makefile.arm b/arm/Makefile.arm
-index 3a4cc6b..05e47f1 100644
---- a/arm/Makefile.arm
-+++ b/arm/Makefile.arm
-@@ -31,4 +31,6 @@ tests =
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index 9d0d90c90d9..d42c3341dee 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -658,8 +658,8 @@ enforce that any failure to open the backing image (including if the
+ backing file is missing or an incorrect format was specified) is an
+ error when ``-u`` is not used.
  
- include $(SRCDIR)/$(TEST_DIR)/Makefile.common
+-qemu-img amend to adjust backing file (removed in 6.1)
+-''''''''''''''''''''''''''''''''''''''''''''''''''''''
++``qemu-img amend`` to adjust backing file (removed in 6.1)
++''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
  
-+$(TEST_DIR)/tcg-test.elf: $(cstart.o) $(TEST_DIR)/tcg-test.o $(TEST_DIR)/tcg-test-asm.o
-+
- arch_clean: arm_clean
-diff --git a/arm/Makefile.arm64 b/arm/Makefile.arm64
-index e8a38d7..ac94f8e 100644
---- a/arm/Makefile.arm64
-+++ b/arm/Makefile.arm64
-@@ -34,5 +34,7 @@ tests += $(TEST_DIR)/cache.flat
+ The use of ``qemu-img amend`` to modify the name or format of a qcow2
+ backing image was never fully documented or tested, and interferes
+@@ -670,8 +670,8 @@ backing chain should be performed with ``qemu-img rebase -u`` either
+ before or after the remaining changes being performed by amend, as
+ appropriate.
  
- include $(SRCDIR)/$(TEST_DIR)/Makefile.common
+-qemu-img backing file without format (removed in 6.1)
+-'''''''''''''''''''''''''''''''''''''''''''''''''''''
++``qemu-img`` backing file without format (removed in 6.1)
++'''''''''''''''''''''''''''''''''''''''''''''''''''''''''
  
-+$(TEST_DIR)/tcg-test.elf: $(cstart.o) $(TEST_DIR)/tcg-test.o $(TEST_DIR)/tcg-test-asm64.o
-+
- arch_clean: arm_clean
- 	$(RM) lib/arm64/.*.d
-diff --git a/arm/Makefile.common b/arm/Makefile.common
-index 861e5c7..abb6948 100644
---- a/arm/Makefile.common
-+++ b/arm/Makefile.common
-@@ -14,6 +14,7 @@ tests-common += $(TEST_DIR)/pl031.flat
- tests-common += $(TEST_DIR)/tlbflush-code.flat
- tests-common += $(TEST_DIR)/locking-test.flat
- tests-common += $(TEST_DIR)/barrier-litmus-test.flat
-+tests-common += $(TEST_DIR)/tcg-test.flat
+ The use of ``qemu-img create``, ``qemu-img rebase``, or ``qemu-img
+ convert`` to create or modify an image that depends on a backing file
+diff --git a/docs/devel/build-system.rst b/docs/devel/build-system.rst
+index 7a83f5fc0db..431caba7aa0 100644
+--- a/docs/devel/build-system.rst
++++ b/docs/devel/build-system.rst
+@@ -121,11 +121,11 @@ process for:
  
- tests-all = $(tests-common) $(tests)
- all: directories $(tests-all)
-diff --git a/arm/tcg-test-asm.S b/arm/tcg-test-asm.S
-new file mode 100644
-index 0000000..4ec4978
---- /dev/null
-+++ b/arm/tcg-test-asm.S
-@@ -0,0 +1,171 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ * TCG Test assembler functions for armv7 tests.
-+ *
-+ * Copyright (C) 2016, Linaro Ltd, Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * This work is licensed under the terms of the GNU LGPL, version 2.
-+ *
-+ * These helper functions are written in pure asm to control the size
-+ * of the basic blocks and ensure they fit neatly into page
-+ * aligned chunks. The pattern of branches they follow is determined by
-+ * the 32 bit seed they are passed. It should be the same for each set.
-+ *
-+ * Calling convention
-+ *  - r0, iterations
-+ *  - r1, jump pattern
-+ *  - r2-r3, scratch
-+ *
-+ * Returns r0
-+ */
-+
-+.arm
-+
-+.section .text
-+
-+/* Tight - all blocks should quickly be patched and should run
-+ * very fast unless irqs or smc gets in the way
-+ */
-+
-+.global tight_start
-+tight_start:
-+        subs    r0, r0, #1
-+        beq     tight_end
-+
-+        ror     r1, r1, #1
-+        tst     r1, #1
-+        beq     tightA
-+        b       tight_start
-+
-+tightA:
-+        subs    r0, r0, #1
-+        beq     tight_end
-+
-+        ror     r1, r1, #1
-+        tst     r1, #1
-+        beq     tightB
-+        b       tight_start
-+
-+tightB:
-+        subs    r0, r0, #1
-+        beq     tight_end
-+
-+        ror     r1, r1, #1
-+        tst     r1, #1
-+        beq     tight_start
-+        b       tightA
-+
-+.global tight_end
-+tight_end:
-+        mov     pc, lr
-+
-+/*
-+ * Computed jumps cannot be hardwired into the basic blocks so each one
-+ * will cause an exit for the main execution loop to look up the next block.
-+ *
-+ * There is some caching which should ameliorate the cost a little.
-+ */
-+
-+        /* Align << 13 == 4096 byte alignment */
-+        .align 13
-+        .global computed_start
-+computed_start:
-+        subs    r0, r0, #1
-+        beq     computed_end
-+
-+        /* Jump table */
-+        ror     r1, r1, #1
-+        and     r2, r1, #1
-+        adr     r3, computed_jump_table
-+        ldr     r2, [r3, r2, lsl #2]
-+        mov     pc, r2
-+
-+        b       computed_err
-+
-+computed_jump_table:
-+        .word   computed_start
-+        .word   computedA
-+
-+computedA:
-+        subs    r0, r0, #1
-+        beq     computed_end
-+
-+        /* Jump into code */
-+        ror     r1, r1, #1
-+        and     r2, r1, #1
-+        adr     r3, 1f
-+        add	r3, r2, lsl #2
-+        mov     pc, r3
-+1:      b       computed_start
-+        b       computedB
-+
-+        b       computed_err
-+
-+
-+computedB:
-+        subs    r0, r0, #1
-+        beq     computed_end
-+        ror     r1, r1, #1
-+
-+        /* Conditional register load */
-+        adr     r3, computedA
-+        tst     r1, #1
-+        adreq   r3, computed_start
-+        mov     pc, r3
-+
-+        b       computed_err
-+
-+computed_err:
-+        mov     r0, #1
-+        .global computed_end
-+computed_end:
-+        mov     pc, lr
-+
-+
-+/*
-+ * Page hoping
-+ *
-+ * Each block is in a different page, hence the blocks never get joined
-+ */
-+        /* Align << 13 == 4096 byte alignment */
-+        .align 13
-+        .global paged_start
-+paged_start:
-+        subs    r0, r0, #1
-+        beq     paged_end
-+
-+        ror     r1, r1, #1
-+        tst     r1, #1
-+        beq     pagedA
-+        b       paged_start
-+
-+        /* Align << 13 == 4096 byte alignment */
-+        .align 13
-+pagedA:
-+        subs    r0, r0, #1
-+        beq     paged_end
-+
-+        ror     r1, r1, #1
-+        tst     r1, #1
-+        beq     pagedB
-+        b       paged_start
-+
-+        /* Align << 13 == 4096 byte alignment */
-+        .align 13
-+pagedB:
-+        subs    r0, r0, #1
-+        beq     paged_end
-+
-+        ror     r1, r1, #1
-+        tst     r1, #1
-+        beq     paged_start
-+        b       pagedA
-+
-+        /* Align << 13 == 4096 byte alignment */
-+        .align 13
-+.global paged_end
-+paged_end:
-+        mov     pc, lr
-+
-+.global test_code_end
-+test_code_end:
-diff --git a/arm/tcg-test-asm64.S b/arm/tcg-test-asm64.S
-new file mode 100644
-index 0000000..2781eeb
---- /dev/null
-+++ b/arm/tcg-test-asm64.S
-@@ -0,0 +1,170 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ * TCG Test assembler functions for armv8 tests.
-+ *
-+ * Copyright (C) 2016, Linaro Ltd, Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * This work is licensed under the terms of the GNU LGPL, version 2.
-+ *
-+ * These helper functions are written in pure asm to control the size
-+ * of the basic blocks and ensure they fit neatly into page
-+ * aligned chunks. The pattern of branches they follow is determined by
-+ * the 32 bit seed they are passed. It should be the same for each set.
-+ *
-+ * Calling convention
-+ *  - x0, iterations
-+ *  - x1, jump pattern
-+ *  - x2-x3, scratch
-+ *
-+ * Returns x0
-+ */
-+
-+.section .text
-+
-+/* Tight - all blocks should quickly be patched and should run
-+ * very fast unless irqs or smc gets in the way
-+ */
-+
-+.global tight_start
-+tight_start:
-+        subs    x0, x0, #1
-+        beq     tight_end
-+
-+        ror     x1, x1, #1
-+        tst     x1, #1
-+        beq     tightA
-+        b       tight_start
-+
-+tightA:
-+        subs    x0, x0, #1
-+        beq     tight_end
-+
-+        ror     x1, x1, #1
-+        tst     x1, #1
-+        beq     tightB
-+        b       tight_start
-+
-+tightB:
-+        subs    x0, x0, #1
-+        beq     tight_end
-+
-+        ror     x1, x1, #1
-+        tst     x1, #1
-+        beq     tight_start
-+        b       tightA
-+
-+.global tight_end
-+tight_end:
-+        ret
-+
-+/*
-+ * Computed jumps cannot be hardwired into the basic blocks so each one
-+ * will cause an exit for the main execution loop to look up the next block.
-+ *
-+ * There is some caching which should ameliorate the cost a little.
-+ */
-+
-+        /* Align << 13 == 4096 byte alignment */
-+        .align 13
-+        .global computed_start
-+computed_start:
-+        subs    x0, x0, #1
-+        beq     computed_end
-+
-+        /* Jump table */
-+        ror     x1, x1, #1
-+        and     x2, x1, #1
-+        adr     x3, computed_jump_table
-+        ldr     x2, [x3, x2, lsl #3]
-+        br      x2
-+
-+        b       computed_err
-+
-+computed_jump_table:
-+        .quad   computed_start
-+        .quad   computedA
-+
-+computedA:
-+        subs    x0, x0, #1
-+        beq     computed_end
-+
-+        /* Jump into code */
-+        ror     x1, x1, #1
-+        and     x2, x1, #1
-+        adr     x3, 1f
-+        add	x3, x3, x2, lsl #2
-+        br      x3
-+1:      b       computed_start
-+        b       computedB
-+
-+        b       computed_err
-+
-+
-+computedB:
-+        subs    x0, x0, #1
-+        beq     computed_end
-+        ror     x1, x1, #1
-+
-+        /* Conditional register load */
-+        adr     x2, computedA
-+        adr     x3, computed_start
-+        tst     x1, #1
-+        csel    x2, x3, x2, eq
-+        br      x2
-+
-+        b       computed_err
-+
-+computed_err:
-+        mov     x0, #1
-+        .global computed_end
-+computed_end:
-+        ret
-+
-+
-+/*
-+ * Page hoping
-+ *
-+ * Each block is in a different page, hence the blocks never get joined
-+ */
-+        /* Align << 13 == 4096 byte alignment */
-+        .align 13
-+        .global paged_start
-+paged_start:
-+        subs    x0, x0, #1
-+        beq     paged_end
-+
-+        ror     x1, x1, #1
-+        tst     x1, #1
-+        beq     pagedA
-+        b       paged_start
-+
-+        /* Align << 13 == 4096 byte alignment */
-+        .align 13
-+pagedA:
-+        subs    x0, x0, #1
-+        beq     paged_end
-+
-+        ror     x1, x1, #1
-+        tst     x1, #1
-+        beq     pagedB
-+        b       paged_start
-+
-+        /* Align << 13 == 4096 byte alignment */
-+        .align 13
-+pagedB:
-+        subs    x0, x0, #1
-+        beq     paged_end
-+
-+        ror     x1, x1, #1
-+        tst     x1, #1
-+        beq     paged_start
-+        b       pagedA
-+
-+        /* Align << 13 == 4096 byte alignment */
-+        .align 13
-+.global paged_end
-+paged_end:
-+        ret
-+
-+.global test_code_end
-+test_code_end:
-diff --git a/arm/tcg-test.c b/arm/tcg-test.c
-new file mode 100644
-index 0000000..fddab7b
---- /dev/null
-+++ b/arm/tcg-test.c
-@@ -0,0 +1,338 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * ARM TCG Tests
-+ *
-+ * These tests are explicitly aimed at stretching the QEMU TCG engine.
-+ */
-+
-+#include <libcflat.h>
-+#include <asm/processor.h>
-+#include <asm/smp.h>
-+#include <asm/cpumask.h>
-+#include <asm/barrier.h>
-+#include <asm/mmu.h>
-+#include <asm/gic.h>
-+
-+#include <prng.h>
-+
-+#define MAX_CPUS 8
-+
-+/* These entry points are in the assembly code */
-+extern int tight_start(uint32_t count, uint32_t pattern);
-+extern int computed_start(uint32_t count, uint32_t pattern);
-+extern int paged_start(uint32_t count, uint32_t pattern);
-+extern uint32_t tight_end;
-+extern uint32_t computed_end;
-+extern uint32_t paged_end;
-+extern unsigned long test_code_end;
-+
-+typedef int (*test_fn)(uint32_t count, uint32_t pattern);
-+
-+typedef struct {
-+	const char *test_name;
-+	bool       should_pass;
-+	test_fn    start_fn;
-+	uint32_t   *code_end;
-+} test_descr_t;
-+
-+/* Test array */
-+static test_descr_t tests[] = {
-+       /*
-+	* Tight chain.
-+	*
-+	* These are a bunch of basic blocks that have fixed branches in
-+	* a page aligned space. The branches taken are decided by a
-+	* psuedo-random bitmap for each CPU.
-+	*
-+	* Once the basic blocks have been chained together by the TCG they
-+	* should run until they reach their block count. This will be the
-+	* most efficient mode in which generated code is run. The only other
-+	* exits will be caused by interrupts or TB invalidation.
-+	*/
-+	{ "tight", true, tight_start, &tight_end },
-+	/*
-+	 * Computed jumps.
-+	 *
-+	 * A bunch of basic blocks which just do computed jumps so the basic
-+	 * block is never chained but they are all within a page (maybe not
-+	 * required). This will exercise the cache lookup but not the new
-+	 * generation.
-+	 */
-+	{ "computed", true, computed_start, &computed_end },
-+	/*
-+	 * Page ping pong.
-+	 *
-+	 * Have the blocks are separated by PAGE_SIZE so they can never
-+	 * be chained together.
-+	 *
-+	 */
-+	{ "paged", true, paged_start, &paged_end}
-+};
-+
-+static test_descr_t *test;
-+
-+static int iterations = 1000000;
-+static int rounds = 1000;
-+static int mod_freq = 5;
-+static uint32_t pattern[MAX_CPUS];
-+
-+/* control flags */
-+static int smc;
-+static int irq;
-+static int check_irq;
-+
-+/* IRQ accounting */
-+#define MAX_IRQ_IDS 16
-+static int irqv;
-+static unsigned long irq_sent_ts[MAX_CPUS][MAX_CPUS][MAX_IRQ_IDS];
-+
-+static int irq_recv[MAX_CPUS];
-+static int irq_sent[MAX_CPUS];
-+static int irq_overlap[MAX_CPUS];  /* if ts > now, i.e a race */
-+static int irq_slow[MAX_CPUS];  /* if delay > threshold */
-+static unsigned long irq_latency[MAX_CPUS]; /* cumulative time */
-+
-+static int errors[MAX_CPUS];
-+
-+static cpumask_t smp_test_complete;
-+
-+static cpumask_t ready;
-+
-+static void wait_on_ready(void)
-+{
-+	cpumask_set_cpu(smp_processor_id(), &ready);
-+	while (!cpumask_full(&ready))
-+		cpu_relax();
-+}
-+
-+/* This triggers TCGs SMC detection by writing values to the executing
-+ * code pages. We are not actually modifying the instructions and the
-+ * underlying code will remain unchanged. However this should trigger
-+ * invalidation of the Translation Blocks
-+ */
-+
-+static void trigger_smc_detection(uint32_t *start, uint32_t *end)
-+{
-+	volatile uint32_t *ptr = start;
-+
-+	while (ptr < end) {
-+		uint32_t inst = *ptr;
-+		*ptr++ = inst;
-+	}
-+}
-+
-+/* Handler for receiving IRQs */
-+
-+static void irq_handler(struct pt_regs *regs __unused)
-+{
-+	unsigned long then, now = get_cntvct();
-+	int cpu = smp_processor_id();
-+	u32 irqstat = gic_read_iar();
-+	u32 irqnr = gic_iar_irqnr(irqstat);
-+
-+	if (irqnr != GICC_INT_SPURIOUS) {
-+		unsigned int src_cpu = (irqstat >> 10) & 0x7;
-+
-+		gic_write_eoir(irqstat);
-+		irq_recv[cpu]++;
-+
-+		then = irq_sent_ts[src_cpu][cpu][irqnr];
-+
-+		if (then > now) {
-+			irq_overlap[cpu]++;
-+		} else {
-+			unsigned long latency = (now - then);
-+
-+			if (latency > 30000)
-+				irq_slow[cpu]++;
-+			else
-+				irq_latency[cpu] += latency;
-+		}
-+	}
-+}
-+
-+/* This triggers cross-CPU IRQs. Each IRQ should cause the basic block
-+ * execution to finish the main run-loop get entered again.
-+ */
-+static int send_cross_cpu_irqs(int this_cpu, int irq)
-+{
-+	int cpu, sent = 0;
-+	cpumask_t mask;
-+
-+	cpumask_copy(&mask, &cpu_present_mask);
-+
-+	for_each_present_cpu(cpu) {
-+		if (cpu != this_cpu) {
-+			irq_sent_ts[this_cpu][cpu][irq] = get_cntvct();
-+			cpumask_clear_cpu(cpu, &mask);
-+			sent++;
-+		}
-+	}
-+
-+	gic_ipi_send_mask(irq, &mask);
-+
-+	return sent;
-+}
-+
-+static void do_test(void)
-+{
-+	int cpu = smp_processor_id();
-+	int i, irq_id = 0;
-+
-+	printf("CPU%d: online and setting up with pattern 0x%"PRIx32"\n",
-+	       cpu, pattern[cpu]);
-+
-+	if (irq) {
-+		gic_enable_defaults();
-+#ifdef __arm__
-+		install_exception_handler(EXCPTN_IRQ, irq_handler);
-+#else
-+		install_irq_handler(EL1H_IRQ, irq_handler);
-+#endif
-+		local_irq_enable();
-+
-+		wait_on_ready();
-+	}
-+
-+	for (i = 0; i < rounds; i++) {
-+		/* Enter the blocks */
-+		errors[cpu] += test->start_fn(iterations, pattern[cpu]);
-+
-+		if ((i + cpu) % mod_freq == 0) {
-+			if (smc)
-+				trigger_smc_detection((uint32_t *) test->start_fn,
-+						      test->code_end);
-+
-+			if (irq) {
-+				irq_sent[cpu] += send_cross_cpu_irqs(cpu, irq_id);
-+				irq_id++;
-+				irq_id = irq_id % 15;
-+			}
-+		}
-+	}
-+
-+	/* ensure everything complete before we finish */
-+	smp_wmb();
-+
-+	cpumask_set_cpu(cpu, &smp_test_complete);
-+	if (cpu != 0)
-+		halt();
-+}
-+
-+static void report_irq_stats(int cpu)
-+{
-+	int recv = irq_recv[cpu];
-+	int race = irq_overlap[cpu];
-+	int slow = irq_slow[cpu];
-+
-+	unsigned long avg_latency = irq_latency[cpu] / (recv - (race + slow));
-+
-+	printf("CPU%d: %d irqs (%d races, %d slow,  %ld ticks avg latency)\n",
-+		cpu, recv, race, slow, avg_latency);
-+}
-+
-+
-+static void setup_and_run_tcg_test(void)
-+{
-+	static const unsigned char seed[] = "tcg-test";
-+	struct isaac_ctx prng_context;
-+	int cpu;
-+	int total_err = 0, total_sent = 0, total_recv = 0;
-+
-+	isaac_init(&prng_context, &seed[0], sizeof(seed));
-+
-+	/* boot other CPUs */
-+	for_each_present_cpu(cpu) {
-+		pattern[cpu] = isaac_next_uint32(&prng_context);
-+
-+		if (cpu == 0)
-+			continue;
-+
-+		smp_boot_secondary(cpu, do_test);
-+	}
-+
-+	do_test();
-+
-+	while (!cpumask_full(&smp_test_complete))
-+		cpu_relax();
-+
-+	/* Ensure everything completes before we check the data */
-+	smp_mb();
-+
-+	/* Now total up errors and irqs */
-+	for_each_present_cpu(cpu) {
-+		total_err += errors[cpu];
-+		total_sent += irq_sent[cpu];
-+		total_recv += irq_recv[cpu];
-+
-+		if (check_irq)
-+			report_irq_stats(cpu);
-+	}
-+
-+	if (check_irq)
-+		report(total_sent == total_recv && total_err == 0,
-+		       "%d IRQs sent, %d received, %d errors\n",
-+		       total_sent, total_recv, total_err == 0);
-+	else
-+		report(total_err == 0, "%d errors, IRQs not checked", total_err);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+	int i;
-+	unsigned int j;
-+
-+	for (i = 0; i < argc; i++) {
-+		char *arg = argv[i];
-+
-+		for (j = 0; j < ARRAY_SIZE(tests); j++) {
-+			if (strcmp(arg, tests[j].test_name) == 0)
-+				test = &tests[j];
-+		}
-+
-+		/* Test modifiers */
-+		if (strstr(arg, "mod=") != NULL) {
-+			char *p = strstr(arg, "=");
-+
-+			mod_freq = atol(p+1);
-+		}
-+
-+		if (strstr(arg, "rounds=") != NULL) {
-+			char *p = strstr(arg, "=");
-+
-+			rounds = atol(p+1);
-+		}
-+
-+		if (strcmp(arg, "smc") == 0) {
-+			unsigned long test_start = (unsigned long) &tight_start;
-+			unsigned long test_end = (unsigned long) &test_code_end;
-+
-+			smc = 1;
-+			mmu_set_range_ptes(mmu_idmap, test_start, test_start, test_end,
-+					__pgprot(PTE_WBWA));
-+
-+			report_prefix_push("smc");
-+		}
-+
-+		if (strcmp(arg, "irq") == 0) {
-+			irq = 1;
-+			if (!gic_init())
-+				report_abort("No supported gic present!");
-+			irqv = gic_version();
-+			report_prefix_push("irq");
-+		}
-+
-+		if (strcmp(arg, "check_irq") == 0)
-+			check_irq = 1;
-+	}
-+
-+	if (test) {
-+		/* ensure args visible to all cores */
-+		smp_mb();
-+		setup_and_run_tcg_test();
-+	} else {
-+		report(false, "Unknown test");
-+	}
-+
-+	return report_summary();
-+}
-diff --git a/arm/mttcgtests.cfg b/arm/mttcgtests.cfg
-index 2b46756..046a59c 100644
---- a/arm/mttcgtests.cfg
-+++ b/arm/mttcgtests.cfg
-@@ -90,3 +90,87 @@ smp = 2
- extra_params = -append 'sal_barrier'
- groups = barrier
+ 1) executables, which include:
  
-+# TCG Tests
-+[tcg::tight]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'tight'
-+groups = tcg
-+accel = tcg
-+
-+[tcg::tight-smc]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'tight smc' -accel tcg,tb-size=1
-+groups = tcg
-+accel = tcg
-+
-+[tcg::tight-irq]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'tight irq'
-+groups = tcg
-+accel = tcg
-+
-+[tcg::tight-smc-irq]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'tight smc irq'
-+groups = tcg
-+accel = tcg
-+
-+[tcg::computed]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'computed'
-+groups = tcg
-+accel = tcg
-+
-+[tcg::computed-smc]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'computed smc'
-+groups = tcg
-+accel = tcg
-+
-+[tcg::computed-irq]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'computed irq'
-+groups = tcg
-+accel = tcg
-+
-+[tcg::computed-smc-irq]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'computed smc irq'
-+groups = tcg
-+accel = tcg
-+
-+[tcg::paged]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'paged'
-+groups = tcg
-+accel = tcg
-+
-+[tcg::paged-smc]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'paged smc'
-+groups = tcg
-+accel = tcg
-+
-+[tcg::paged-irq]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'paged irq'
-+groups = tcg
-+accel = tcg
-+
-+[tcg::paged-smc-irq]
-+file = tcg-test.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'paged smc irq'
-+groups = tcg
-+accel = tcg
+-   - Tools - qemu-img, qemu-nbd, qga (guest agent), etc
++   - Tools - ``qemu-img``, ``qemu-nbd``, ``qga`` (guest agent), etc
+ 
+-   - System emulators - qemu-system-$ARCH
++   - System emulators - ``qemu-system-$ARCH``
+ 
+-   - Userspace emulators - qemu-$ARCH
++   - Userspace emulators - ``qemu-$ARCH``
+ 
+    - Unit tests
+ 
+diff --git a/docs/devel/multi-process.rst b/docs/devel/multi-process.rst
+index e5758a79aba..2c5ec977df8 100644
+--- a/docs/devel/multi-process.rst
++++ b/docs/devel/multi-process.rst
+@@ -187,9 +187,9 @@ desired, in which the emulation application should only be allowed to
+ access the files or devices the VM it's running on behalf of can access.
+ #### qemu-io model
+ 
+-Qemu-io is a test harness used to test changes to the QEMU block backend
+-object code. (e.g., the code that implements disk images for disk driver
+-emulation) Qemu-io is not a device emulation application per se, but it
++``qemu-io`` is a test harness used to test changes to the QEMU block backend
++object code (e.g., the code that implements disk images for disk driver
++emulation). ``qemu-io`` is not a device emulation application per se, but it
+ does compile the QEMU block objects into a separate binary from the main
+ QEMU one. This could be useful for disk device emulation, since its
+ emulation applications will need to include the QEMU block objects.
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 60c59023e58..755343c7dd0 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -564,11 +564,11 @@ exploiting a QEMU security bug to compromise the host.
+ QEMU binaries
+ ~~~~~~~~~~~~~
+ 
+-By default, qemu-system-x86_64 is searched in $PATH to run the guest. If there
+-isn't one, or if it is older than 2.10, the test won't work. In this case,
++By default, ``qemu-system-x86_64`` is searched in $PATH to run the guest. If
++there isn't one, or if it is older than 2.10, the test won't work. In this case,
+ provide the QEMU binary in env var: ``QEMU=/path/to/qemu-2.10+``.
+ 
+-Likewise the path to qemu-img can be set in QEMU_IMG environment variable.
++Likewise the path to ``qemu-img`` can be set in QEMU_IMG environment variable.
+ 
+ Make jobs
+ ~~~~~~~~~
+@@ -650,7 +650,7 @@ supported. To start the fuzzer, run
+ 
+   tests/image-fuzzer/runner.py -c '[["qemu-img", "info", "$test_img"]]' /tmp/test qcow2
+ 
+-Alternatively, some command different from "qemu-img info" can be tested, by
++Alternatively, some command different from ``qemu-img info`` can be tested, by
+ changing the ``-c`` option.
+ 
+ Integration tests using the Avocado Framework
+diff --git a/docs/image-fuzzer.txt b/docs/image-fuzzer.txt
+index 3e23ebec331..279cc8c807f 100644
+--- a/docs/image-fuzzer.txt
++++ b/docs/image-fuzzer.txt
+@@ -51,10 +51,10 @@ assumes that core dumps will be generated in the current working directory.
+ For comprehensive test results, please, set up your test environment
+ properly.
+ 
+-Paths to binaries under test (SUTs) qemu-img and qemu-io are retrieved from
+-environment variables. If the environment check fails the runner will
++Paths to binaries under test (SUTs) ``qemu-img`` and ``qemu-io`` are retrieved
++from environment variables. If the environment check fails the runner will
+ use SUTs installed in system paths.
+-qemu-img is required for creation of backing files, so it's mandatory to set
++``qemu-img`` is required for creation of backing files, so it's mandatory to set
+ the related environment variable if it's not installed in the system path.
+ For details about environment variables see qemu-iotests/check.
+ 
+diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
+index c55694dd91b..83c7445197b 100644
+--- a/docs/system/arm/orangepi.rst
++++ b/docs/system/arm/orangepi.rst
+@@ -128,7 +128,7 @@ Alternatively, you can also choose to build you own image with buildroot
+ using the orangepi_pc_defconfig. Also see https://buildroot.org for more information.
+ 
+ When using an image as an SD card, it must be resized to a power of two. This can be
+-done with the qemu-img command. It is recommended to only increase the image size
++done with the ``qemu-img`` command. It is recommended to only increase the image size
+ instead of shrinking it to a power of two, to avoid loss of data. For example,
+ to prepare a downloaded Armbian image, first extract it and then increase
+ its size to one gigabyte as follows:
+diff --git a/docs/system/images.rst b/docs/system/images.rst
+index 3d9144e6258..d000bd6b6f1 100644
+--- a/docs/system/images.rst
++++ b/docs/system/images.rst
+@@ -20,7 +20,7 @@ where myimage.img is the disk image filename and mysize is its size in
+ kilobytes. You can add an ``M`` suffix to give the size in megabytes and
+ a ``G`` suffix for gigabytes.
+ 
+-See the qemu-img invocation documentation for more information.
++See the ``qemu-img`` invocation documentation for more information.
+ 
+ .. _disk_005fimages_005fsnapshot_005fmode:
+ 
+diff --git a/docs/system/qemu-block-drivers.rst.inc b/docs/system/qemu-block-drivers.rst.inc
+index 16225710ebb..e313784426d 100644
+--- a/docs/system/qemu-block-drivers.rst.inc
++++ b/docs/system/qemu-block-drivers.rst.inc
+@@ -511,13 +511,13 @@ of an inet socket:
+ 
+   |qemu_system| linux.img -hdb nbd+unix://?socket=/tmp/my_socket
+ 
+-In this case, the block device must be exported using qemu-nbd:
++In this case, the block device must be exported using ``qemu-nbd``:
+ 
+ .. parsed-literal::
+ 
+   qemu-nbd --socket=/tmp/my_socket my_disk.qcow2
+ 
+-The use of qemu-nbd allows sharing of a disk between several guests:
++The use of ``qemu-nbd`` allows sharing of a disk between several guests:
+ 
+ .. parsed-literal::
+ 
+@@ -530,7 +530,7 @@ and then you can use it with two guests:
+   |qemu_system| linux1.img -hdb nbd+unix://?socket=/tmp/my_socket
+   |qemu_system| linux2.img -hdb nbd+unix://?socket=/tmp/my_socket
+ 
+-If the nbd-server uses named exports (supported since NBD 2.9.18, or with QEMU's
++If the ``nbd-server`` uses named exports (supported since NBD 2.9.18, or with QEMU's
+ own embedded NBD server), you must specify an export name in the URI:
+ 
+ .. parsed-literal::
+diff --git a/docs/system/tls.rst b/docs/system/tls.rst
+index b0973afe1bf..1a04674362e 100644
+--- a/docs/system/tls.rst
++++ b/docs/system/tls.rst
+@@ -311,7 +311,7 @@ containing one or more usernames and random keys::
+    mkdir -m 0700 /tmp/keys
+    psktool -u rich -p /tmp/keys/keys.psk
+ 
+-TLS-enabled servers such as qemu-nbd can use this directory like so::
++TLS-enabled servers such as ``qemu-nbd`` can use this directory like so::
+ 
+    qemu-nbd \
+      -t -x / \
+diff --git a/docs/tools/qemu-img.rst b/docs/tools/qemu-img.rst
+index c0a44431467..d663dd92bd7 100644
+--- a/docs/tools/qemu-img.rst
++++ b/docs/tools/qemu-img.rst
+@@ -127,9 +127,9 @@ by the used format or see the format descriptions below for details.
+ .. option:: -S SIZE
+ 
+   Indicates the consecutive number of bytes that must contain only zeros
+-  for qemu-img to create a sparse image during conversion. This value is rounded
+-  down to the nearest 512 bytes. You may use the common size suffixes like
+-  ``k`` for kilobytes.
++  for ``qemu-img`` to create a sparse image during conversion. This value is
++  rounded down to the nearest 512 bytes. You may use the common size suffixes
++  like ``k`` for kilobytes.
+ 
+ .. option:: -t CACHE
+ 
+@@ -431,7 +431,7 @@ Command description:
+   suppressed from the destination image.
+ 
+   *SPARSE_SIZE* indicates the consecutive number of bytes (defaults to 4k)
+-  that must contain only zeros for qemu-img to create a sparse image during
++  that must contain only zeros for ``qemu-img`` to create a sparse image during
+   conversion. If *SPARSE_SIZE* is 0, the source will not be scanned for
+   unallocated or zero sectors, and the destination image will always be
+   fully allocated.
+@@ -447,7 +447,7 @@ Command description:
+   If the ``-n`` option is specified, the target volume creation will be
+   skipped. This is useful for formats such as ``rbd`` if the target
+   volume has already been created with site specific options that cannot
+-  be supplied through qemu-img.
++  be supplied through ``qemu-img``.
+ 
+   Out of order writes can be enabled with ``-W`` to improve performance.
+   This is only recommended for preallocated devices like host devices or other
+@@ -472,7 +472,7 @@ Command description:
+   If the option *BACKING_FILE* is specified, then the image will record
+   only the differences from *BACKING_FILE*. No size needs to be specified in
+   this case. *BACKING_FILE* will never be modified unless you use the
+-  ``commit`` monitor command (or qemu-img commit).
++  ``commit`` monitor command (or ``qemu-img commit``).
+ 
+   If a relative path name is given, the backing file is looked up relative to
+   the directory containing *FILENAME*.
+@@ -684,7 +684,7 @@ Command description:
+ 
+   Safe mode
+     This is the default mode and performs a real rebase operation. The
+-    new backing file may differ from the old one and qemu-img rebase
++    new backing file may differ from the old one and ``qemu-img rebase``
+     will take care of keeping the guest-visible content of *FILENAME*
+     unchanged.
+ 
+@@ -697,7 +697,7 @@ Command description:
+     exists.
+ 
+   Unsafe mode
+-    qemu-img uses the unsafe mode if ``-u`` is specified. In this
++    ``qemu-img`` uses the unsafe mode if ``-u`` is specified. In this
+     mode, only the backing file name and format of *FILENAME* is changed
+     without any checks on the file contents. The user must take care of
+     specifying the correct new backing file, or the guest-visible
+@@ -735,7 +735,7 @@ Command description:
+   sizes accordingly.  Failure to do so will result in data loss!
+ 
+   When shrinking images, the ``--shrink`` option must be given. This informs
+-  qemu-img that the user acknowledges all loss of data beyond the truncated
++  ``qemu-img`` that the user acknowledges all loss of data beyond the truncated
+   image's end.
+ 
+   After using this command to grow a disk image, you must use file system and
+diff --git a/docs/tools/qemu-nbd.rst b/docs/tools/qemu-nbd.rst
+index 56e54cd4411..fdcee0244af 100644
+--- a/docs/tools/qemu-nbd.rst
++++ b/docs/tools/qemu-nbd.rst
+@@ -38,7 +38,7 @@ driver options if ``--image-opts`` is specified.
+   supported. The common object types that it makes sense to define are the
+   ``secret`` object, which is used to supply passwords and/or encryption
+   keys, and the ``tls-creds`` object, which is used to supply TLS
+-  credentials for the qemu-nbd server or client.
++  credentials for the ``qemu-nbd`` server or client.
+ 
+ .. option:: -p, --port=PORT
+ 
+@@ -238,7 +238,7 @@ daemon:
+ Expose the guest-visible contents of a qcow2 file via a block device
+ /dev/nbd0 (and possibly creating /dev/nbd0p1 and friends for
+ partitions found within), then disconnect the device when done.
+-Access to bind qemu-nbd to an /dev/nbd device generally requires root
++Access to bind ``qemu-nbd`` to a /dev/nbd device generally requires root
+ privileges, and may also require the execution of ``modprobe nbd``
+ to enable the kernel NBD client module.  *CAUTION*: Do not use
+ this method to mount filesystems from an untrusted guest image - a
+diff --git a/docs/tools/qemu-storage-daemon.rst b/docs/tools/qemu-storage-daemon.rst
+index b8ef4486f1e..3e5a9dc0320 100644
+--- a/docs/tools/qemu-storage-daemon.rst
++++ b/docs/tools/qemu-storage-daemon.rst
+@@ -10,9 +10,10 @@ Synopsis
+ Description
+ -----------
+ 
+-qemu-storage-daemon provides disk image functionality from QEMU, qemu-img, and
+-qemu-nbd in a long-running process controlled via QMP commands without running
+-a virtual machine. It can export disk images, run block job operations, and
++``qemu-storage-daemon`` provides disk image functionality from QEMU,
++``qemu-img``, and ``qemu-nbd`` in a long-running process controlled via QMP
++commands without running a virtual machine.
++It can export disk images, run block job operations, and
+ perform other disk-related operations. The daemon is controlled via a QMP
+ monitor and initial configuration from the command-line.
+ 
+diff --git a/docs/tools/virtiofsd.rst b/docs/tools/virtiofsd.rst
+index cc314028309..07ac0be5511 100644
+--- a/docs/tools/virtiofsd.rst
++++ b/docs/tools/virtiofsd.rst
+@@ -136,8 +136,8 @@ Extended attribute (xattr) mapping
+ By default the name of xattr's used by the client are passed through to the server
+ file system.  This can be a problem where either those xattr names are used
+ by something on the server (e.g. selinux client/server confusion) or if the
+-virtiofsd is running in a container with restricted privileges where it cannot
+-access some attributes.
++``virtiofsd`` is running in a container with restricted privileges where it
++cannot access some attributes.
+ 
+ Mapping syntax
+ ~~~~~~~~~~~~~~
 -- 
-2.30.2
+2.31.1
+

@@ -1,117 +1,112 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp740362lfk;
-        Thu, 18 Nov 2021 06:44:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzSLmJpUtuqMm2OeMMOzkqyF0nSd6vWNhyJqyvlHYCxuYFkSDrKflU0Uplu9bLR49qPrDfq
-X-Received: by 2002:a05:6102:5f2:: with SMTP id w18mr85141661vsf.6.1637246650306;
-        Thu, 18 Nov 2021 06:44:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637246650; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp744366lfk;
+        Thu, 18 Nov 2021 06:47:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw8393bYOZo1VMpKwA2wVnjzn5S6tFmlpykzAIb6+jHW/p3fIdIatNkd2ltTRCQs7FSmh5Z
+X-Received: by 2002:ab0:4911:: with SMTP id z17mr37040521uac.91.1637246829453;
+        Thu, 18 Nov 2021 06:47:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637246829; cv=none;
         d=google.com; s=arc-20160816;
-        b=UXthtg8EfM4a8KM7ORoYJa3wsNoWKbV/MZydi5JarPMj8QRc+oHXYedYtHU0zu8noU
-         rvDagGxo+l+qG/s/xFpjATNrnBY3fkwwUjMhJI6RJkdh/vQ87p3zGOCRXyp/IHGhLm90
-         Qy8Y9Z/0zoGh1wJ4teOGSLiZfZMvKFu5dTTMflgsh5ktC580HdSDKHzU1XGmIFG/7Ycj
-         og1+927RXlCc2vbrOonyCNh0OfdrulCzIfG4iWHGYWxCnJUH9TUK48Da3Qz1UdnBjOku
-         7Q4t8ewpibYsS9OKPqSLCeynV1GhGb51aX9r4GO78Sesxub0aKrE/YbqkP+F3GmhsvXm
-         JXfA==
+        b=L3/cgV853LlTOWfXlsZFdPmz9/6ULVFPRy7yba4y10DaFKafh5lXHFuzjPcUgZtV54
+         Vmh7Qu7fxlqkpqFTKNFY1B/hlhJYq5af3Eak2HFYjIPSv/sn//6cd36RS3YU5jkKVK4h
+         6G2HZdU9lVFGBMLk7yjjw18zb9phPODmMM5hu5E/sD1xgM/Zac4ESI17jtUklhMFAAgM
+         v1shVSD7OJT1Pr4paQZOrpoovgwNrfQLlCM8ByNvoq/+O+5lmW+ap9cRML/s660ZrSGY
+         4l0VpHuTjjp3fJvkpuLz6sbtmouCSrJAEDvM/HUGeKPJCJAYjEfe5UjOYczDhW+QtiaW
+         l3vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=LRKnFXAVl8wpVG007mpED6/IHRZNBWKQdiU57zxxYQw=;
-        b=IOGG5KNUrwVmgVLUIiFZLAhWTovcZOiUVIhTH+1kX0O1lRjEiCg43fKe5XAqHQ7jWW
-         0fOyMfpLhIODBy/bH5oQB3tO4vTjMm7v+hEm9fjRn5Vh2joxKAoJh45eogtnZuYaD2RH
-         tWMzYZeM+RQtzrwwYjIbpQaoixuoyf6OQmVtlrcOOLlKhq9G/o8WmYln8Yw/NsPbMA5T
-         Kc8yp7NrbTHAlUYWlHEyRuZjCiy5YDITlLUjQbFGwTXEfAG1M/fAvBVNlI2Qlek/UIKn
-         dL/Pjhb13OhH4N3LQ/OV9N9K5ccZSVimJoVT1gToYC23m9GYQHngS+FOTJVCiOFvM8Wa
-         FKEg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=UxG+bFOx6b8BiO1xXMvbeK8M/d4QJqt1mVZxDhjMHAE=;
+        b=tntLYUFqfoyb0Lr/wDRwYQJWPvVaXg9fjj3CegHspfYGiOc7wkcxcLg3LXLvu5j0uv
+         Dul9oNBPL6HVzsNqJUjDK0jKtUeGMK4G7cuxesH9dLFGHVp7edehbrXwoPzSPYOqijkC
+         wEbgPAV3ZsCQjYJ74bBe+c3hanGP+G6YowbXbZyTkK//2wImTT04tKb2EQDEQJVGwVON
+         le7U/vJC4q21pJFr1nfaQp5ZYrRpQJqJxk/xqdocrsb2WEJCVgnfdOWH86DWvp8vTL5b
+         871Z0GEfq8DZI4UoyPKpDRDfTyN1UBrBLkjPgs38PbRDS4fwaqI15jy3ihzCTBvUUoCe
+         rcyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JowyJETQ;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UJSj8ysB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bb2si1471353vkb.96.2021.11.18.06.44.10
+        by mx.google.com with ESMTPS id w11si8393640vsi.165.2021.11.18.06.47.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Nov 2021 06:44:10 -0800 (PST)
+        Thu, 18 Nov 2021 06:47:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JowyJETQ;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UJSj8ysB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47022 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53548 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mnie1-0006a0-L9
-	for alex.bennee@linaro.org; Thu, 18 Nov 2021 09:44:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48892)
+	id 1mnigu-0002om-8y
+	for alex.bennee@linaro.org; Thu, 18 Nov 2021 09:47:08 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49626)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mnidf-0006WW-2U
- for qemu-arm@nongnu.org; Thu, 18 Nov 2021 09:43:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:38985)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mnidb-0005o6-Nt
- for qemu-arm@nongnu.org; Thu, 18 Nov 2021 09:43:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637246622;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=LRKnFXAVl8wpVG007mpED6/IHRZNBWKQdiU57zxxYQw=;
- b=JowyJETQ+dNQIit0W0zXHO1PbN0pz6CsNv1ECBzS7ixOik+7RwfAREkbz15rEpN1cp0Vsv
- ixy9mTT/dUljcFnZesxKx8huCF5LezyueS+hJ/HE33Ro1zTPPMSwFDEnzW3DZFqtkO75Gv
- V//nfmQrpf9rUWg7ZKBEWSSN2cr/DxY=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-342-u3xmqvu-PSaXzh1uwI7YGw-1; Thu, 18 Nov 2021 09:43:21 -0500
-X-MC-Unique: u3xmqvu-PSaXzh1uwI7YGw-1
-Received: by mail-wr1-f71.google.com with SMTP id
- k8-20020a5d5248000000b001763e7c9ce5so1131508wrc.22
- for <qemu-arm@nongnu.org>; Thu, 18 Nov 2021 06:43:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1mnigV-0002jy-Mg; Thu, 18 Nov 2021 09:46:44 -0500
+Received: from [2a00:1450:4864:20::134] (port=38818
+ helo=mail-lf1-x134.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1mnigT-0006Fz-5g; Thu, 18 Nov 2021 09:46:42 -0500
+Received: by mail-lf1-x134.google.com with SMTP id bi37so27197040lfb.5;
+ Thu, 18 Nov 2021 06:46:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=UxG+bFOx6b8BiO1xXMvbeK8M/d4QJqt1mVZxDhjMHAE=;
+ b=UJSj8ysByz+UKhlse4zpxxizbspnRp86bJZ4V7OyNPVJHDbN4s8WzWd6wl/4Xnk2f9
+ Lh8ZehEZMM8cNDVXFswnfi6Y6UKNUqCJ7vE0Yt4v/8MyEeFHReEBq24+Yi/k9zugaECf
+ bdWOJJYb6uzos8f4M1yAmuXFseOII3gdGqkP9VVI9Ci1p19QelK6usvRug4c0MNiMr0Y
+ GJW7Y3PjtWS9VNp8GymqNeSlqOzvNiZXMRiinlhfMhoaB/zqSaRqDNv7Hn8cWFEyqhRW
+ SWqUJTlUmcn1d22vZArtxKhp5jBBYJZsMMrZbR+QKTh3ieOvsXpEQjab9tLYZCYZxoMJ
+ MWqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=LRKnFXAVl8wpVG007mpED6/IHRZNBWKQdiU57zxxYQw=;
- b=zWugjanfFe0pSAUoq3jQuFVeizQdTfKfhKp34YVU2/WTDdniWC0m0CFkDVgK2GeDet
- et9jnHguT8NmESapUtmfJCVo9xstxJcWGI5Gp8a8/9nAku+ip6H7qSy+QtsGoSHL7mHf
- zusiFA6SjVX+Z0KwiBQObZyhLDk7H6RZnh4Le5KCGQVje3d0IAEgein10snlBUkX6iYF
- j7CRJYuP3pXIT689hVKJ+ob8XN+fB7MBl7VaZUXVgqY2ekTWl/us6nvHbnbPjjCATIK/
- A6RoKc3Sr5EZzyBVL5ddpKFyvDP7XFKVGIBnGTQnuhNmw2dtcG+wnx7OPhjH6c3NsYli
- OPVQ==
-X-Gm-Message-State: AOAM530Cwd307CwJgtDogBtUdeF5+5vZjKMyPu7XHD7QPu5YVo/DQcSg
- drGEdR3MclRwxON19za6M6IQnKu5oDU+fz5/TDK6UGrIdPmC7RN9AJBbOGYhTP3huODaONHseAy
- jcKzgO/d3lH4J
-X-Received: by 2002:adf:ce0e:: with SMTP id p14mr31115933wrn.423.1637246599747; 
- Thu, 18 Nov 2021 06:43:19 -0800 (PST)
-X-Received: by 2002:adf:ce0e:: with SMTP id p14mr31115852wrn.423.1637246599261; 
- Thu, 18 Nov 2021 06:43:19 -0800 (PST)
-Received: from x1w.. (62.red-83-57-168.dynamicip.rima-tde.net. [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id
- t127sm9624297wma.9.2021.11.18.06.43.18
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=UxG+bFOx6b8BiO1xXMvbeK8M/d4QJqt1mVZxDhjMHAE=;
+ b=KFNEwe563faBlDp5bHEyvwywDf/5K9gh/7UIZgopZEz85cltcRw8aYk0QIGiedvRb6
+ 73swY0PWFFDSkRRHasMCSfWoUc8qvYLWQ+x12UuE+qEqcmjR4hqQmRJN+E69S0GF0L05
+ JPqSDmL1yZfpCP4EA7dtAdHmK1lNpyxdd06N8sMU6caJIz/q0bZIKhEbzhWn0BRrGMc5
+ MUKkzuy+w1fpYhz47U1vimgwGOWgOcLoGoMvmzNmlGboeJ2DDKPCc0aZI8l8katkqdrm
+ q8b6i8d/C99EqQYw4BP3LzfoAoEp7Pxwp7T7X7kOscXsgAi8a1K1mBXnA6cim5gcPkNA
+ xDsQ==
+X-Gm-Message-State: AOAM533qolGeLK1h+1eyiyA/2G1K+2OqiwkcdXnxZY7WF19Haa1ydBC9
+ SCt5hdVlmMJWkv2ivyUdSHW2ope/G154aQ==
+X-Received: by 2002:a2e:95cb:: with SMTP id y11mr17434858ljh.461.1637246798711; 
+ Thu, 18 Nov 2021 06:46:38 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id x27sm8857lfq.33.2021.11.18.06.46.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Nov 2021 06:43:18 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH-for-6.2?] docs: Render binary names as monospaced text
-Date: Thu, 18 Nov 2021 15:43:17 +0100
-Message-Id: <20211118144317.4106651-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.31.1
+ Thu, 18 Nov 2021 06:46:38 -0800 (PST)
+Date: Thu, 18 Nov 2021 15:46:37 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Subject: Re: [PATCH v2 11/13] hw/arm/xilinx_zynq: Replace drive_get_next() by
+ drive_get()
+Message-ID: <20211118144637.GP3586016@toto>
+References: <20211117163409.3587705-1-armbru@redhat.com>
+ <20211117163409.3587705-12-armbru@redhat.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.698,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20211117163409.3587705-12-armbru@redhat.com>
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::134
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::134;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x134.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FSL_HELO_FAKE=0.001, PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,340 +119,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, John G Johnson <john.g.johnson@oracle.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Jagannathan Raman <jag.raman@oracle.com>, qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, virtio-fs@redhat.com,
- Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eric Blake <eblake@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, qemu-block@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UAzXrINg8x1z
+X-TUID: CO4gbHmolO2x
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- docs/about/removed-features.rst        |  8 ++++----
- docs/devel/build-system.rst            |  6 +++---
- docs/devel/multi-process.rst           |  6 +++---
- docs/devel/testing.rst                 |  8 ++++----
- docs/image-fuzzer.txt                  |  6 +++---
- docs/system/arm/orangepi.rst           |  2 +-
- docs/system/images.rst                 |  2 +-
- docs/system/qemu-block-drivers.rst.inc |  6 +++---
- docs/system/tls.rst                    |  2 +-
- docs/tools/qemu-img.rst                | 18 +++++++++---------
- docs/tools/qemu-nbd.rst                |  4 ++--
- docs/tools/qemu-storage-daemon.rst     |  7 ++++---
- docs/tools/virtiofsd.rst               |  4 ++--
- 13 files changed, 40 insertions(+), 39 deletions(-)
+On Wed, Nov 17, 2021 at 05:34:07PM +0100, Markus Armbruster wrote:
+> drive_get_next() is basically a bad idea.  It returns the "next" block
+> backend of a certain interface type.  "Next" means bus=0,unit=N, where
+> subsequent calls count N up from zero, per interface type.
+> 
+> This lets you define unit numbers implicitly by execution order.  If the
+> order changes, or new calls appear "in the middle", unit numbers change.
+> ABI break.  Hard to spot in review.
+> 
+> Machine "xlnx-zcu102" connects backends with drive_get_next() in two
+> counting loops, one of them in a helper function.  Change it to use
+> drive_get() directly.  This makes the unit numbers explicit in the
+> code.
 
-diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index 9d0d90c90d9..c02d1f6d494 100644
---- a/docs/about/removed-features.rst
-+++ b/docs/about/removed-features.rst
-@@ -658,8 +658,8 @@ enforce that any failure to open the backing image (including if the
- backing file is missing or an incorrect format was specified) is an
- error when ``-u`` is not used.
- 
--qemu-img amend to adjust backing file (removed in 6.1)
--''''''''''''''''''''''''''''''''''''''''''''''''''''''
-+``qemu-img`` amend to adjust backing file (removed in 6.1)
-+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
- 
- The use of ``qemu-img amend`` to modify the name or format of a qcow2
- backing image was never fully documented or tested, and interferes
-@@ -670,8 +670,8 @@ backing chain should be performed with ``qemu-img rebase -u`` either
- before or after the remaining changes being performed by amend, as
- appropriate.
- 
--qemu-img backing file without format (removed in 6.1)
--'''''''''''''''''''''''''''''''''''''''''''''''''''''
-+``qemu-img`` backing file without format (removed in 6.1)
-+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''
- 
- The use of ``qemu-img create``, ``qemu-img rebase``, or ``qemu-img
- convert`` to create or modify an image that depends on a backing file
-diff --git a/docs/devel/build-system.rst b/docs/devel/build-system.rst
-index 7a83f5fc0db..431caba7aa0 100644
---- a/docs/devel/build-system.rst
-+++ b/docs/devel/build-system.rst
-@@ -121,11 +121,11 @@ process for:
- 
- 1) executables, which include:
- 
--   - Tools - qemu-img, qemu-nbd, qga (guest agent), etc
-+   - Tools - ``qemu-img``, ``qemu-nbd``, ``qga`` (guest agent), etc
- 
--   - System emulators - qemu-system-$ARCH
-+   - System emulators - ``qemu-system-$ARCH``
- 
--   - Userspace emulators - qemu-$ARCH
-+   - Userspace emulators - ``qemu-$ARCH``
- 
-    - Unit tests
- 
-diff --git a/docs/devel/multi-process.rst b/docs/devel/multi-process.rst
-index e5758a79aba..2c5ec977df8 100644
---- a/docs/devel/multi-process.rst
-+++ b/docs/devel/multi-process.rst
-@@ -187,9 +187,9 @@ desired, in which the emulation application should only be allowed to
- access the files or devices the VM it's running on behalf of can access.
- #### qemu-io model
- 
--Qemu-io is a test harness used to test changes to the QEMU block backend
--object code. (e.g., the code that implements disk images for disk driver
--emulation) Qemu-io is not a device emulation application per se, but it
-+``qemu-io`` is a test harness used to test changes to the QEMU block backend
-+object code (e.g., the code that implements disk images for disk driver
-+emulation). ``qemu-io`` is not a device emulation application per se, but it
- does compile the QEMU block objects into a separate binary from the main
- QEMU one. This could be useful for disk device emulation, since its
- emulation applications will need to include the QEMU block objects.
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index 60c59023e58..755343c7dd0 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -564,11 +564,11 @@ exploiting a QEMU security bug to compromise the host.
- QEMU binaries
- ~~~~~~~~~~~~~
- 
--By default, qemu-system-x86_64 is searched in $PATH to run the guest. If there
--isn't one, or if it is older than 2.10, the test won't work. In this case,
-+By default, ``qemu-system-x86_64`` is searched in $PATH to run the guest. If
-+there isn't one, or if it is older than 2.10, the test won't work. In this case,
- provide the QEMU binary in env var: ``QEMU=/path/to/qemu-2.10+``.
- 
--Likewise the path to qemu-img can be set in QEMU_IMG environment variable.
-+Likewise the path to ``qemu-img`` can be set in QEMU_IMG environment variable.
- 
- Make jobs
- ~~~~~~~~~
-@@ -650,7 +650,7 @@ supported. To start the fuzzer, run
- 
-   tests/image-fuzzer/runner.py -c '[["qemu-img", "info", "$test_img"]]' /tmp/test qcow2
- 
--Alternatively, some command different from "qemu-img info" can be tested, by
-+Alternatively, some command different from ``qemu-img info`` can be tested, by
- changing the ``-c`` option.
- 
- Integration tests using the Avocado Framework
-diff --git a/docs/image-fuzzer.txt b/docs/image-fuzzer.txt
-index 3e23ebec331..279cc8c807f 100644
---- a/docs/image-fuzzer.txt
-+++ b/docs/image-fuzzer.txt
-@@ -51,10 +51,10 @@ assumes that core dumps will be generated in the current working directory.
- For comprehensive test results, please, set up your test environment
- properly.
- 
--Paths to binaries under test (SUTs) qemu-img and qemu-io are retrieved from
--environment variables. If the environment check fails the runner will
-+Paths to binaries under test (SUTs) ``qemu-img`` and ``qemu-io`` are retrieved
-+from environment variables. If the environment check fails the runner will
- use SUTs installed in system paths.
--qemu-img is required for creation of backing files, so it's mandatory to set
-+``qemu-img`` is required for creation of backing files, so it's mandatory to set
- the related environment variable if it's not installed in the system path.
- For details about environment variables see qemu-iotests/check.
- 
-diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
-index c55694dd91b..83c7445197b 100644
---- a/docs/system/arm/orangepi.rst
-+++ b/docs/system/arm/orangepi.rst
-@@ -128,7 +128,7 @@ Alternatively, you can also choose to build you own image with buildroot
- using the orangepi_pc_defconfig. Also see https://buildroot.org for more information.
- 
- When using an image as an SD card, it must be resized to a power of two. This can be
--done with the qemu-img command. It is recommended to only increase the image size
-+done with the ``qemu-img`` command. It is recommended to only increase the image size
- instead of shrinking it to a power of two, to avoid loss of data. For example,
- to prepare a downloaded Armbian image, first extract it and then increase
- its size to one gigabyte as follows:
-diff --git a/docs/system/images.rst b/docs/system/images.rst
-index 3d9144e6258..d000bd6b6f1 100644
---- a/docs/system/images.rst
-+++ b/docs/system/images.rst
-@@ -20,7 +20,7 @@ where myimage.img is the disk image filename and mysize is its size in
- kilobytes. You can add an ``M`` suffix to give the size in megabytes and
- a ``G`` suffix for gigabytes.
- 
--See the qemu-img invocation documentation for more information.
-+See the ``qemu-img`` invocation documentation for more information.
- 
- .. _disk_005fimages_005fsnapshot_005fmode:
- 
-diff --git a/docs/system/qemu-block-drivers.rst.inc b/docs/system/qemu-block-drivers.rst.inc
-index 16225710ebb..e313784426d 100644
---- a/docs/system/qemu-block-drivers.rst.inc
-+++ b/docs/system/qemu-block-drivers.rst.inc
-@@ -511,13 +511,13 @@ of an inet socket:
- 
-   |qemu_system| linux.img -hdb nbd+unix://?socket=/tmp/my_socket
- 
--In this case, the block device must be exported using qemu-nbd:
-+In this case, the block device must be exported using ``qemu-nbd``:
- 
- .. parsed-literal::
- 
-   qemu-nbd --socket=/tmp/my_socket my_disk.qcow2
- 
--The use of qemu-nbd allows sharing of a disk between several guests:
-+The use of ``qemu-nbd`` allows sharing of a disk between several guests:
- 
- .. parsed-literal::
- 
-@@ -530,7 +530,7 @@ and then you can use it with two guests:
-   |qemu_system| linux1.img -hdb nbd+unix://?socket=/tmp/my_socket
-   |qemu_system| linux2.img -hdb nbd+unix://?socket=/tmp/my_socket
- 
--If the nbd-server uses named exports (supported since NBD 2.9.18, or with QEMU's
-+If the ``nbd-server`` uses named exports (supported since NBD 2.9.18, or with QEMU's
- own embedded NBD server), you must specify an export name in the URI:
- 
- .. parsed-literal::
-diff --git a/docs/system/tls.rst b/docs/system/tls.rst
-index b0973afe1bf..1a04674362e 100644
---- a/docs/system/tls.rst
-+++ b/docs/system/tls.rst
-@@ -311,7 +311,7 @@ containing one or more usernames and random keys::
-    mkdir -m 0700 /tmp/keys
-    psktool -u rich -p /tmp/keys/keys.psk
- 
--TLS-enabled servers such as qemu-nbd can use this directory like so::
-+TLS-enabled servers such as ``qemu-nbd`` can use this directory like so::
- 
-    qemu-nbd \
-      -t -x / \
-diff --git a/docs/tools/qemu-img.rst b/docs/tools/qemu-img.rst
-index c0a44431467..d663dd92bd7 100644
---- a/docs/tools/qemu-img.rst
-+++ b/docs/tools/qemu-img.rst
-@@ -127,9 +127,9 @@ by the used format or see the format descriptions below for details.
- .. option:: -S SIZE
- 
-   Indicates the consecutive number of bytes that must contain only zeros
--  for qemu-img to create a sparse image during conversion. This value is rounded
--  down to the nearest 512 bytes. You may use the common size suffixes like
--  ``k`` for kilobytes.
-+  for ``qemu-img`` to create a sparse image during conversion. This value is
-+  rounded down to the nearest 512 bytes. You may use the common size suffixes
-+  like ``k`` for kilobytes.
- 
- .. option:: -t CACHE
- 
-@@ -431,7 +431,7 @@ Command description:
-   suppressed from the destination image.
- 
-   *SPARSE_SIZE* indicates the consecutive number of bytes (defaults to 4k)
--  that must contain only zeros for qemu-img to create a sparse image during
-+  that must contain only zeros for ``qemu-img`` to create a sparse image during
-   conversion. If *SPARSE_SIZE* is 0, the source will not be scanned for
-   unallocated or zero sectors, and the destination image will always be
-   fully allocated.
-@@ -447,7 +447,7 @@ Command description:
-   If the ``-n`` option is specified, the target volume creation will be
-   skipped. This is useful for formats such as ``rbd`` if the target
-   volume has already been created with site specific options that cannot
--  be supplied through qemu-img.
-+  be supplied through ``qemu-img``.
- 
-   Out of order writes can be enabled with ``-W`` to improve performance.
-   This is only recommended for preallocated devices like host devices or other
-@@ -472,7 +472,7 @@ Command description:
-   If the option *BACKING_FILE* is specified, then the image will record
-   only the differences from *BACKING_FILE*. No size needs to be specified in
-   this case. *BACKING_FILE* will never be modified unless you use the
--  ``commit`` monitor command (or qemu-img commit).
-+  ``commit`` monitor command (or ``qemu-img commit``).
- 
-   If a relative path name is given, the backing file is looked up relative to
-   the directory containing *FILENAME*.
-@@ -684,7 +684,7 @@ Command description:
- 
-   Safe mode
-     This is the default mode and performs a real rebase operation. The
--    new backing file may differ from the old one and qemu-img rebase
-+    new backing file may differ from the old one and ``qemu-img rebase``
-     will take care of keeping the guest-visible content of *FILENAME*
-     unchanged.
- 
-@@ -697,7 +697,7 @@ Command description:
-     exists.
- 
-   Unsafe mode
--    qemu-img uses the unsafe mode if ``-u`` is specified. In this
-+    ``qemu-img`` uses the unsafe mode if ``-u`` is specified. In this
-     mode, only the backing file name and format of *FILENAME* is changed
-     without any checks on the file contents. The user must take care of
-     specifying the correct new backing file, or the guest-visible
-@@ -735,7 +735,7 @@ Command description:
-   sizes accordingly.  Failure to do so will result in data loss!
- 
-   When shrinking images, the ``--shrink`` option must be given. This informs
--  qemu-img that the user acknowledges all loss of data beyond the truncated
-+  ``qemu-img`` that the user acknowledges all loss of data beyond the truncated
-   image's end.
- 
-   After using this command to grow a disk image, you must use file system and
-diff --git a/docs/tools/qemu-nbd.rst b/docs/tools/qemu-nbd.rst
-index 56e54cd4411..a1eebbce4fa 100644
---- a/docs/tools/qemu-nbd.rst
-+++ b/docs/tools/qemu-nbd.rst
-@@ -38,7 +38,7 @@ driver options if ``--image-opts`` is specified.
-   supported. The common object types that it makes sense to define are the
-   ``secret`` object, which is used to supply passwords and/or encryption
-   keys, and the ``tls-creds`` object, which is used to supply TLS
--  credentials for the qemu-nbd server or client.
-+  credentials for the ``qemu-nbd`` server or client.
- 
- .. option:: -p, --port=PORT
- 
-@@ -238,7 +238,7 @@ daemon:
- Expose the guest-visible contents of a qcow2 file via a block device
- /dev/nbd0 (and possibly creating /dev/nbd0p1 and friends for
- partitions found within), then disconnect the device when done.
--Access to bind qemu-nbd to an /dev/nbd device generally requires root
-+Access to bind ``qemu-nbd`` to an /dev/nbd device generally requires root
- privileges, and may also require the execution of ``modprobe nbd``
- to enable the kernel NBD client module.  *CAUTION*: Do not use
- this method to mount filesystems from an untrusted guest image - a
-diff --git a/docs/tools/qemu-storage-daemon.rst b/docs/tools/qemu-storage-daemon.rst
-index b8ef4486f1e..3e5a9dc0320 100644
---- a/docs/tools/qemu-storage-daemon.rst
-+++ b/docs/tools/qemu-storage-daemon.rst
-@@ -10,9 +10,10 @@ Synopsis
- Description
- -----------
- 
--qemu-storage-daemon provides disk image functionality from QEMU, qemu-img, and
--qemu-nbd in a long-running process controlled via QMP commands without running
--a virtual machine. It can export disk images, run block job operations, and
-+``qemu-storage-daemon`` provides disk image functionality from QEMU,
-+``qemu-img``, and ``qemu-nbd`` in a long-running process controlled via QMP
-+commands without running a virtual machine.
-+It can export disk images, run block job operations, and
- perform other disk-related operations. The daemon is controlled via a QMP
- monitor and initial configuration from the command-line.
- 
-diff --git a/docs/tools/virtiofsd.rst b/docs/tools/virtiofsd.rst
-index cc314028309..07ac0be5511 100644
---- a/docs/tools/virtiofsd.rst
-+++ b/docs/tools/virtiofsd.rst
-@@ -136,8 +136,8 @@ Extended attribute (xattr) mapping
- By default the name of xattr's used by the client are passed through to the server
- file system.  This can be a problem where either those xattr names are used
- by something on the server (e.g. selinux client/server confusion) or if the
--virtiofsd is running in a container with restricted privileges where it cannot
--access some attributes.
-+``virtiofsd`` is running in a container with restricted privileges where it
-+cannot access some attributes.
- 
- Mapping syntax
- ~~~~~~~~~~~~~~
--- 
-2.31.1
 
+Acked-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+
+> 
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Alistair Francis <alistair@alistair23.me>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  hw/arm/xilinx_zynq.c | 16 +++++++++-------
+>  1 file changed, 9 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> index 69c333e91b..50e7268396 100644
+> --- a/hw/arm/xilinx_zynq.c
+> +++ b/hw/arm/xilinx_zynq.c
+> @@ -125,9 +125,10 @@ static void gem_init(NICInfo *nd, uint32_t base, qemu_irq irq)
+>      sysbus_connect_irq(s, 0, irq);
+>  }
+>  
+> -static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
+> -                                         bool is_qspi)
+> +static inline int zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
+> +                                        bool is_qspi, int unit0)
+>  {
+> +    int unit = unit0;
+>      DeviceState *dev;
+>      SysBusDevice *busdev;
+>      SSIBus *spi;
+> @@ -156,7 +157,7 @@ static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
+>          spi = (SSIBus *)qdev_get_child_bus(dev, bus_name);
+>  
+>          for (j = 0; j < num_ss; ++j) {
+> -            DriveInfo *dinfo = drive_get_next(IF_MTD);
+> +            DriveInfo *dinfo = drive_get(IF_MTD, 0, unit++);
+>              flash_dev = qdev_new("n25q128");
+>              if (dinfo) {
+>                  qdev_prop_set_drive_err(flash_dev, "drive",
+> @@ -170,6 +171,7 @@ static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
+>          }
+>      }
+>  
+> +    return unit;
+>  }
+>  
+>  static void zynq_init(MachineState *machine)
+> @@ -247,9 +249,9 @@ static void zynq_init(MachineState *machine)
+>          pic[n] = qdev_get_gpio_in(dev, n);
+>      }
+>  
+> -    zynq_init_spi_flashes(0xE0006000, pic[58-IRQ_OFFSET], false);
+> -    zynq_init_spi_flashes(0xE0007000, pic[81-IRQ_OFFSET], false);
+> -    zynq_init_spi_flashes(0xE000D000, pic[51-IRQ_OFFSET], true);
+> +    n = zynq_init_spi_flashes(0xE0006000, pic[58 - IRQ_OFFSET], false, 0);
+> +    n = zynq_init_spi_flashes(0xE0007000, pic[81 - IRQ_OFFSET], false, n);
+> +    n = zynq_init_spi_flashes(0xE000D000, pic[51 - IRQ_OFFSET], true, n);
+>  
+>      sysbus_create_simple(TYPE_CHIPIDEA, 0xE0002000, pic[53 - IRQ_OFFSET]);
+>      sysbus_create_simple(TYPE_CHIPIDEA, 0xE0003000, pic[76 - IRQ_OFFSET]);
+> @@ -298,7 +300,7 @@ static void zynq_init(MachineState *machine)
+>          sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, hci_addr);
+>          sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[hci_irq - IRQ_OFFSET]);
+>  
+> -        di = drive_get_next(IF_SD);
+> +        di = drive_get(IF_SD, 0, n);
+>          blk = di ? blk_by_legacy_dinfo(di) : NULL;
+>          carddev = qdev_new(TYPE_SD_CARD);
+>          qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
+> -- 
+> 2.31.1
+> 

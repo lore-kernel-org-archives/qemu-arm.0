@@ -1,197 +1,278 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp821465lfk;
-        Thu, 18 Nov 2021 07:46:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyLXJlK/4dpGp+PDdUZHviRYB5AeAUlqD/nYGDGK9GdKaQR6A50FNdX/HDgjKnrNxYXzzLA
-X-Received: by 2002:a05:620a:a45:: with SMTP id j5mr21683963qka.392.1637250407651;
-        Thu, 18 Nov 2021 07:46:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637250407; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp948860lfk;
+        Thu, 18 Nov 2021 09:28:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw2D/L1brE3QO4tkuq5/AKuooiiVZZPEXwIEJVe8ptObGRHKmFNED2jRzrSXeJnMAaO/TR2
+X-Received: by 2002:ab0:5552:: with SMTP id u18mr37926421uaa.78.1637256493207;
+        Thu, 18 Nov 2021 09:28:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637256493; cv=none;
         d=google.com; s=arc-20160816;
-        b=SEfrmc9c1wshvn25oiEuBPIE7Wzw4/z0OuY4AWrRdpb7V/lXAthuH/U6ledju9v/fi
-         RmCN1ittftaP5hH+UbGt7uYeO/CPy6//MpOuXvifE8KtNRx54SqOiIJCUfeMQGZRiB4g
-         t8c9KPqHsoemw7sAmpwDT1zhyoxClZPzll9yEuo5EgZrok4zbqcUz1Vqzr/uWzCfH/dT
-         RlDi3KX1bXbTCp2g+3mww4Ahtcwn+8ZxuuUylYshr37BHnyx+DMVCc8YlXsiX1T+iGYT
-         Xp2dXTFbXSeMes2EZljmYLDKbytzVERCGs+mvhHtucEQjq+htUTaQQ/KsQKvXUKC4FxB
-         zgDw==
+        b=DgH5+1P2yHwUZV+0ygZCnoMQgdyV93IkNQTzuIumoCI63I6q5ELoUJ/zWH57zV8bqg
+         FYaoI1cnm7W4NCcZ7rGpnu5RiI+Dmfs0p2+5ST0jhErdL3DhyNwans+jQ1+EWkt7yaBU
+         W1ZP4skvpyIUVeLgBGXOWqe4ybhvKRKo3BgnCPKPpl6FH5M08rr+dwr7iKGMeX5LISwk
+         m+Uz1Isyctxawiy8mb2qIVrRSuGjh80vp/RthN1JYB0BCnxN2bet7OzcVeUXD24lWapR
+         pzDUQ+DK1IrIAUDUz2zc6bysWy3OCte36Ysm6EOtLj7baiSoIm5AdgLxfzWKKpild3a5
+         tDag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:user-agent:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=dAZssIcABG5QkpLKKwjzqsxx5qFwUj/oXA8+wG/I6uQ=;
-        b=o0Kf3FepRwtIqbqh0z+Q0hTxjk/QBMTIFiHk8gqX1IysgTbxp5ek8dKXwscbrr9m/7
-         fHLj0NAkTaPktmIo4aModPx/AUtWn2xemHCe9cjjYfKCnw2wRZufqLawjAGYn5cyEvy2
-         gedg16WPytLwrSUrbPKmXI+EL62QVsmIn/Bt5eCFWjtuhCuaJvQvsVk2OdwfBfcz2HVa
-         gF8wc+DGB38UUOqFPac9XCaogg+Fd1FIKclH4zWeqAD9K+YGIzC+XGJChzv46CYyB66R
-         LjSLT8tHt/KlAoFZztdAIP0mJkc6B9V6dtdxX7cwHU5JoBxsTQBDrJAn1nw5b9n/TI33
-         nqmg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=9h7ZQprOlUXDFSMlB5bRnXVytvo2Uw7M8Jezw7CdWXQ=;
+        b=wWgzd0KHqcVz3MYheWHWA8gYIY9tMGdhEp1AbNFjGmX3UsOxwXIAaelG7+Lz/8+mFm
+         8wCVUoQBpYYQuSJBJFU2uMHuwfBv6prDgZrSWtz4/Uc/yMY7J3b4gFzY/7D0blarDyML
+         ucNdMC3KWaLolU1MawKBdE+mMDf1bmABmUFpJnhMpke/e/nJd5fTNRaeLLBM55t9MIxL
+         rKqZd88f4ZRBTcrWDrCGQTt/kzY89wYX80LN2B2LrKYxIHzawkAzaDZwpIJhRDWxrrNs
+         l39/0F56+OBsI2ofxkR3XuqsYYbEtZn20UssOemUQ4ztGcXx2zTMHh7NbIpq9IR2Qcix
+         CchQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="PJ+2/t/B";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=P8ueiorD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v5si415346vsk.292.2021.11.18.07.46.47
+        by mx.google.com with ESMTPS id m16si1481341vsg.345.2021.11.18.09.28.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Nov 2021 07:46:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 18 Nov 2021 09:28:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="PJ+2/t/B";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54264 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20210112 header.b=P8ueiorD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:49508 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mnjcd-0004wb-1X
-	for alex.bennee@linaro.org; Thu, 18 Nov 2021 10:46:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42680)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mnlCm-0004qc-I8
+	for alex.bennee@linaro.org; Thu, 18 Nov 2021 12:28:12 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42888)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1mnjc8-0004uB-Lm
- for qemu-arm@nongnu.org; Thu, 18 Nov 2021 10:46:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:31559)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1mnjc6-0000cg-Oe
- for qemu-arm@nongnu.org; Thu, 18 Nov 2021 10:46:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637250374;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dAZssIcABG5QkpLKKwjzqsxx5qFwUj/oXA8+wG/I6uQ=;
- b=PJ+2/t/BcUiCzsAeyFIRC5LHWV+DOzftBDBPXfOoRwBfX7+y1jjdih7gArPJLQHveaBM5F
- sx8W5vMQTV2IcloFFjjcWRxrUXbazcK/crelCPzBMVHLucdYHWon+2MhAYtfXBGSrY9Crh
- uWS6hHS7vf404oIv3y31u64MQ2yyLPE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-479-bTWV3ogKPEmPDWEE9o9CeA-1; Thu, 18 Nov 2021 10:46:11 -0500
-X-MC-Unique: bTWV3ogKPEmPDWEE9o9CeA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7656E87D548;
- Thu, 18 Nov 2021 15:46:09 +0000 (UTC)
-Received: from redhat.com (ovpn-112-250.phx2.redhat.com [10.3.112.250])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5D3305D9DE;
- Thu, 18 Nov 2021 15:46:08 +0000 (UTC)
-Date: Thu, 18 Nov 2021 09:46:06 -0600
-From: Eric Blake <eblake@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH-for-6.2?] docs: Render binary names as monospaced text
-Message-ID: <20211118154606.6mt73we5obw6pvav@redhat.com>
-References: <20211118144317.4106651-1-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1mnlC3-00049k-1v
+ for qemu-devel@nongnu.org; Thu, 18 Nov 2021 12:27:27 -0500
+Received: from [2607:f8b0:4864:20::42e] (port=38825
+ helo=mail-pf1-x42e.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1mnlC1-0007W9-Ha
+ for qemu-devel@nongnu.org; Thu, 18 Nov 2021 12:27:26 -0500
+Received: by mail-pf1-x42e.google.com with SMTP id g18so6720421pfk.5
+ for <qemu-devel@nongnu.org>; Thu, 18 Nov 2021 09:27:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9h7ZQprOlUXDFSMlB5bRnXVytvo2Uw7M8Jezw7CdWXQ=;
+ b=P8ueiorDDTfRKgEsnRj512NqGyIqdGVclByCVDhL+rLfmLHOQRfGOM/5xcwbfFSir/
+ eZZRIM6JRdZrtoPJJ/Xs1Avrr4Nz6sARWOEm3uYh7SJIZx8QLL/2l4k4RnQ1zfJA3bNK
+ kc9XJ/YG8JqdMS4GguIQNrdCxJLotEpwsNoJkTFAtAGD4w/j19gRgOejoo6mYWl2os30
+ DgGsA4gyoBuChbdVfx+wy5FQKVVq82m996ce2KhscqnJ2d6DF3H7yqc4neFychLI0gcY
+ 5H6NPgezf3I0CXUtwBlVZx8yCUZMXhDYDePgITPqSEWzsNQw/KpBG7kuhn6rg2Dn6Ygx
+ ReMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9h7ZQprOlUXDFSMlB5bRnXVytvo2Uw7M8Jezw7CdWXQ=;
+ b=QjwnXjVBnkLKIRawak7j5r0nbGyfJI3fwyJBJM3nVzU6g32CzYUOIMRCjwyfr2L94Y
+ 7rABiULG0E+jm9BAPe2FUewaMrvb/bd9cCIxTCMLNb5SBJ5U7jR48muBK2dYGTgn2Wnf
+ 5yPIe114f38dbNy19839mKIykQWsbAVC+27pMA9Kj/Jest5/Edklk9Xqo6x8TgitAkOF
+ 6/ff0MV1/vffqkrnEIFZSolz5SlN1kDKJGa9KlKQAMxgBcIz0aC50nA+4eVYWVuVE/M4
+ PCuz3fWu+7UX9eAvW4EzyfHEbLqmJMb7YEHTycBRKDBGlNjzL4h7Era5OUbBZLDIdx0p
+ QIXw==
+X-Gm-Message-State: AOAM531tum5db5ov+/YHn+A+dfIxHX65Hw5opRo31FKzRNcU/IM2+d1N
+ H80QZw6XxM12jIRDfZmOvDw61JmmdflwIWrJWxCFJFLarBA=
+X-Received: by 2002:a1f:7c85:: with SMTP id
+ x127mr104954781vkc.10.1637256115510; 
+ Thu, 18 Nov 2021 09:21:55 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20211118144317.4106651-1-philmd@redhat.com>
-User-Agent: NeoMutt/20211029-16-b680fe
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.698,
+References: <20211108215831.2162883-1-venture@google.com>
+In-Reply-To: <20211108215831.2162883-1-venture@google.com>
+From: Patrick Venture <venture@google.com>
+Date: Thu, 18 Nov 2021 09:21:44 -0800
+Message-ID: <CAO=notxq1x2a3XWnEqsDeAMMrtp9fnyuCKgerPfhc+ybOBWY4g@mail.gmail.com>
+Subject: Re: [PATCH] hw/i2c: add pca9543 support to mux
+To: cminyard@mvista.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com
+Content-Type: multipart/alternative; boundary="0000000000002c30a005d113650b"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::42e
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=venture@google.com; helo=mail-pf1-x42e.google.com
+X-Spam_score_int: -167
+X-Spam_score: -16.8
+X-Spam_bar: ----------------
+X-Spam_report: (-16.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, John G Johnson <john.g.johnson@oracle.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Jagannathan Raman <jag.raman@oracle.com>, qemu-block@nongnu.org,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, virtio-fs@redhat.com,
- Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: F04vVJVLXqgL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PPe5JlFqFnTT
 
-On Thu, Nov 18, 2021 at 03:43:17PM +0100, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+--0000000000002c30a005d113650b
+Content-Type: text/plain; charset="UTF-8"
+
+On Mon, Nov 8, 2021 at 1:58 PM Patrick Venture <venture@google.com> wrote:
+
+> Adds support for the 2 channel pca9543 i2c switch.
+>
+> Signed-off-by: Patrick Venture <venture@google.com>
 > ---
+>  hw/i2c/i2c_mux_pca954x.c         | 12 ++++++++++++
+>  include/hw/i2c/i2c_mux_pca954x.h |  1 +
+>  2 files changed, 13 insertions(+)
+>
+> diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
+> index 847c59921c..36a5c8cb31 100644
+> --- a/hw/i2c/i2c_mux_pca954x.c
+> +++ b/hw/i2c/i2c_mux_pca954x.c
+> @@ -29,6 +29,7 @@
+>
+>  #define PCA9548_CHANNEL_COUNT 8
+>  #define PCA9546_CHANNEL_COUNT 4
+> +#define PCA9543_CHANNEL_COUNT 2
+>
+>  /*
+>   * struct Pca954xChannel - The i2c mux device will have N of these states
+> @@ -203,6 +204,12 @@ static void pca954x_channel_class_init(ObjectClass
+> *klass, void *data)
+>      dc->desc = "Pca954x Channel";
+>  }
+>
+> +static void pca9543_class_init(ObjectClass *klass, void *data)
+> +{
+> +    Pca954xClass *s = PCA954X_CLASS(klass);
+> +    s->nchans = PCA9543_CHANNEL_COUNT;
+> +}
+> +
+>  static void pca9546_class_init(ObjectClass *klass, void *data)
+>  {
+>      Pca954xClass *s = PCA954X_CLASS(klass);
+> @@ -268,6 +275,11 @@ static const TypeInfo pca954x_info[] = {
+>          .class_init    = pca954x_class_init,
+>          .abstract      = true,
+>      },
+> +    {
+> +        .name          = TYPE_PCA9543,
+> +        .parent        = TYPE_PCA954X,
+> +        .class_init    = pca9543_class_init,
+> +    },
+>      {
+>          .name          = TYPE_PCA9546,
+>          .parent        = TYPE_PCA954X,
+> diff --git a/include/hw/i2c/i2c_mux_pca954x.h
+> b/include/hw/i2c/i2c_mux_pca954x.h
+> index 8aaf9bbc39..91e2ffd0a2 100644
+> --- a/include/hw/i2c/i2c_mux_pca954x.h
+> +++ b/include/hw/i2c/i2c_mux_pca954x.h
+> @@ -3,6 +3,7 @@
+>
+>  #include "hw/i2c/i2c.h"
+>
+> +#define TYPE_PCA9543 "pca9543"
+>  #define TYPE_PCA9546 "pca9546"
+>  #define TYPE_PCA9548 "pca9548"
+>
+> --
+> 2.34.0.rc0.344.g81b53c2807-goog
+>
+> Friendly ping. The patch itself is trivial, but let me know if I've
+submitted it incorrectly since I also maintain this device.
 
-> +++ b/docs/about/removed-features.rst
-> @@ -658,8 +658,8 @@ enforce that any failure to open the backing image (including if the
->  backing file is missing or an incorrect format was specified) is an
->  error when ``-u`` is not used.
->  
-> -qemu-img amend to adjust backing file (removed in 6.1)
-> -''''''''''''''''''''''''''''''''''''''''''''''''''''''
-> +``qemu-img`` amend to adjust backing file (removed in 6.1)
-> +''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+-Patrick
 
-Why quote just qemu-img here,
+--0000000000002c30a005d113650b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
->  
->  The use of ``qemu-img amend`` to modify the name or format of a qcow2
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Nov 8, 2021 at 1:58 PM Patric=
+k Venture &lt;<a href=3D"mailto:venture@google.com">venture@google.com</a>&=
+gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
+px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Adds =
+support for the 2 channel pca9543 i2c switch.<br>
+<br>
+Signed-off-by: Patrick Venture &lt;<a href=3D"mailto:venture@google.com" ta=
+rget=3D"_blank">venture@google.com</a>&gt;<br>
+---<br>
+=C2=A0hw/i2c/i2c_mux_pca954x.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 12 ++++++=
+++++++<br>
+=C2=A0include/hw/i2c/i2c_mux_pca954x.h |=C2=A0 1 +<br>
+=C2=A02 files changed, 13 insertions(+)<br>
+<br>
+diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c<br>
+index 847c59921c..36a5c8cb31 100644<br>
+--- a/hw/i2c/i2c_mux_pca954x.c<br>
++++ b/hw/i2c/i2c_mux_pca954x.c<br>
+@@ -29,6 +29,7 @@<br>
+<br>
+=C2=A0#define PCA9548_CHANNEL_COUNT 8<br>
+=C2=A0#define PCA9546_CHANNEL_COUNT 4<br>
++#define PCA9543_CHANNEL_COUNT 2<br>
+<br>
+=C2=A0/*<br>
+=C2=A0 * struct Pca954xChannel - The i2c mux device will have N of these st=
+ates<br>
+@@ -203,6 +204,12 @@ static void pca954x_channel_class_init(ObjectClass *kl=
+ass, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;desc =3D &quot;Pca954x Channel&quot;;<br>
+=C2=A0}<br>
+<br>
++static void pca9543_class_init(ObjectClass *klass, void *data)<br>
++{<br>
++=C2=A0 =C2=A0 Pca954xClass *s =3D PCA954X_CLASS(klass);<br>
++=C2=A0 =C2=A0 s-&gt;nchans =3D PCA9543_CHANNEL_COUNT;<br>
++}<br>
++<br>
+=C2=A0static void pca9546_class_init(ObjectClass *klass, void *data)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0Pca954xClass *s =3D PCA954X_CLASS(klass);<br>
+@@ -268,6 +275,11 @@ static const TypeInfo pca954x_info[] =3D {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =3D pca954x_clas=
+s_init,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.abstract=C2=A0 =C2=A0 =C2=A0 =3D true,<b=
+r>
+=C2=A0 =C2=A0 =C2=A0},<br>
++=C2=A0 =C2=A0 {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TY=
+PE_PCA9543,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_PC=
+A954X,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =3D pca9543_class_ini=
+t,<br>
++=C2=A0 =C2=A0 },<br>
+=C2=A0 =C2=A0 =C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=3D TYPE_PCA9546,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TY=
+PE_PCA954X,<br>
+diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca9=
+54x.h<br>
+index 8aaf9bbc39..91e2ffd0a2 100644<br>
+--- a/include/hw/i2c/i2c_mux_pca954x.h<br>
++++ b/include/hw/i2c/i2c_mux_pca954x.h<br>
+@@ -3,6 +3,7 @@<br>
+<br>
+=C2=A0#include &quot;hw/i2c/i2c.h&quot;<br>
+<br>
++#define TYPE_PCA9543 &quot;pca9543&quot;<br>
+=C2=A0#define TYPE_PCA9546 &quot;pca9546&quot;<br>
+=C2=A0#define TYPE_PCA9548 &quot;pca9548&quot;<br>
+<br>
+-- <br>
+2.34.0.rc0.344.g81b53c2807-goog<br>
+<br></blockquote><div>Friendly ping. The patch itself is trivial, but let m=
+e know if I&#39;ve submitted it incorrectly since I also maintain this devi=
+ce.</div><div><br></div><div>-Patrick</div></div></div>
 
-when the context is obvious that it is the 'qemu-img amend' subcommand?
-
->  backing image was never fully documented or tested, and interferes
-> @@ -670,8 +670,8 @@ backing chain should be performed with ``qemu-img rebase -u`` either
->  before or after the remaining changes being performed by amend, as
->  appropriate.
->  
-> -qemu-img backing file without format (removed in 6.1)
-> -'''''''''''''''''''''''''''''''''''''''''''''''''''''
-> +``qemu-img`` backing file without format (removed in 6.1)
-> +'''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-This one makes sense, though, as "backing" is not a qemu-img subcommand.
-
->  
->  The use of ``qemu-img create``, ``qemu-img rebase``, or ``qemu-img
->  convert`` to create or modify an image that depends on a backing file
-> diff --git a/docs/devel/build-system.rst b/docs/devel/build-system.rst
-> index 7a83f5fc0db..431caba7aa0 100644
-> --- a/docs/devel/build-system.rst
-> +++ b/docs/tools/qemu-nbd.rst
-> @@ -38,7 +38,7 @@ driver options if ``--image-opts`` is specified.
->    supported. The common object types that it makes sense to define are the
->    ``secret`` object, which is used to supply passwords and/or encryption
->    keys, and the ``tls-creds`` object, which is used to supply TLS
-> -  credentials for the qemu-nbd server or client.
-> +  credentials for the ``qemu-nbd`` server or client.
->  
->  .. option:: -p, --port=PORT
->  
-> @@ -238,7 +238,7 @@ daemon:
->  Expose the guest-visible contents of a qcow2 file via a block device
->  /dev/nbd0 (and possibly creating /dev/nbd0p1 and friends for
->  partitions found within), then disconnect the device when done.
-> -Access to bind qemu-nbd to an /dev/nbd device generally requires root
-> +Access to bind ``qemu-nbd`` to an /dev/nbd device generally requires root
-
-As long as you're touching this line, s/an/a/.
-
->  privileges, and may also require the execution of ``modprobe nbd``
->  to enable the kernel NBD client module.  *CAUTION*: Do not use
->  this method to mount filesystems from an untrusted guest image - a
-
-Overall looks like a nice changeset.
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
+--0000000000002c30a005d113650b--

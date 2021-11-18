@@ -1,158 +1,197 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp717455lfk;
-        Thu, 18 Nov 2021 06:25:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxyardUJpmuxophXMQrU0TYeSLqtUW5HrA36wWuiKTgGngiK+LAceCmclO8YvV61Fzdm3XR
-X-Received: by 2002:a1f:f24f:: with SMTP id q76mr104298734vkh.11.1637245548657;
-        Thu, 18 Nov 2021 06:25:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637245548; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp739112lfk;
+        Thu, 18 Nov 2021 06:43:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwX0SE5liH9DXaMazk7iebmK8/VwnMPAdhSF6brQKiElicvwnB+VptGhWS0HahNwauUMO0c
+X-Received: by 2002:a05:6122:a02:: with SMTP id 2mr105235931vkn.6.1637246584259;
+        Thu, 18 Nov 2021 06:43:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637246584; cv=none;
         d=google.com; s=arc-20160816;
-        b=ywnWwfMfcztll4VhmqQsVLGzoZWeBEnlTlnElCLLEy42eWEwZaF8ZOXpF5Zi8Y1D7W
-         WfreLnwBYlpoq11yG0mXb5xPeY6KN6qEdOZo5Bf08P+l1M5mcaLfoF9Th1lcmWqeM32l
-         uGW26SwVBgKj01BxybGI+rlhCzzPreEl4A7sZBdYBsWQYCcmAOtSrBujdPD/yXBmX1En
-         LPv9SgajSi/shmgLKmHzYuEQdQcLqnxlMi5qggzT9zPTBLIPKkOv9mP9nFSLUJFOXj1i
-         qdJa4y81VEmFmtVuQkVchd6QViTa+ipg6gAwNcLKcLAZWdgXeMpy7ntpe/ptEv1AVxUP
-         AAcA==
+        b=BjJLBcRXRuE9iJXC1VOCAThXmxN54+dn3inmUNf7X7g1fcJ8JCXms9TuTKvfz3NH56
+         Li7QHI5HYvCFrrV5ZbHbChLOLV8yKVgt3w6QTffD5VXnjJif7bGancKdm22WI8UEhy76
+         RX+PxpKlxaaiaXuxWKsO1LXfiltEEEXCliVAG7aZifV3ZfUSdtfCNUnBgQlQSMo/JK36
+         NMEeZ9u1KuUEExNk35psRNS4Xy30k8Gz+47pXqxODYndk2/DV6XO4MRxh0sR98ivB5eQ
+         yyO5ha/Z80FI0lVsiSpvoyvpTvdu+wuwhAMYrCqGSU7euUbssPlyBlBpMunuxUTyz5S7
+         xc1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=vOGFXcZmpYY2BY6qbPyMmtN8viz7SFLU+jf7YVqY0Kk=;
-        b=azlpAZRmuH6BwGZl/BvO1ltHokdNkPhvynY7OyH2Sl/6P9/JqwgAvL6vnlWqn5eU++
-         BVJuGzlkF6HoL58vuy40WxL6o1Ir81HJlMLe2WXK0taTVTbQV0EcCMknWk8Nqv6rDJm8
-         W6OZfTBt4EaWEEJuWTSKtNgKHIbOBxkNDM7Gkhlew7Yj+oYfa3t2ckYtC4UEvVXq7ulK
-         TKR9qTOV/dBuQOxnP/TdslNhB4Se1hKnlRANIApv2U6awlS8QFJkMjRjTj3tNPOwHTlX
-         A01J2DwStCh9m1iiAYkTZwZUGUBenxrRX/3dFcszjJlL266RAcSIH8sEygey1+8HZjb/
-         CMog==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=bVojfUJ4nwI/Aei/4lYO7LMCxDxfLRxL6viMoCFiWso=;
+        b=DpTB413N7xQxOWgtj++/i2PUZ92mz5e09aeBlrzX72XUdlj/KBbLaodE8p/GoISBrf
+         2oKD3/ar+3/gni8zESejvHbctKK1FuXTMlEcwIUNQomrWkLmSXRFgHKMecECKKP/UAk5
+         Sa6o/wbcOdZQ/9xwkVZ0/2OS/bIW+Xkgi+PpXL+hqGrt/nqp/TgJITymVfhzCxnUnGt+
+         gYG/ph69YBLTZqNNvyupxVQmns+3YD+DoSgd8LTkpla9EJAHWDGf1DKckvPeZbsOUMRu
+         xbY5nmi4ptq3Ot3yLE7Rb6yw8yD09mm2dL+qmRmlDbQqoJN45WBZk517corMOJnIuaGU
+         50JA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HegA5YYh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m9si7227944uah.223.2021.11.18.06.25.48
+        by mx.google.com with ESMTPS id l11si8190869vsj.350.2021.11.18.06.43.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Nov 2021 06:25:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 18 Nov 2021 06:43:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HegA5YYh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52520 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mniMF-0007ET-Vh
-	for alex.bennee@linaro.org; Thu, 18 Nov 2021 09:25:48 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44424)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mnicx-0004fB-IF
+	for alex.bennee@linaro.org; Thu, 18 Nov 2021 09:43:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48304)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <janne.karhunen@gmail.com>)
- id 1mniM6-0007E7-O3
- for qemu-arm@nongnu.org; Thu, 18 Nov 2021 09:25:38 -0500
-Received: from [2a00:1450:4864:20::12a] (port=43680
- helo=mail-lf1-x12a.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <janne.karhunen@gmail.com>)
- id 1mniM5-0003b9-16
- for qemu-arm@nongnu.org; Thu, 18 Nov 2021 09:25:38 -0500
-Received: by mail-lf1-x12a.google.com with SMTP id b40so26939444lfv.10
- for <qemu-arm@nongnu.org>; Thu, 18 Nov 2021 06:25:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vOGFXcZmpYY2BY6qbPyMmtN8viz7SFLU+jf7YVqY0Kk=;
- b=HegA5YYhFdaaZRvUyx46lp0prbRnp3YQLG4DM+l6MP45KJq/zN7BKkafNEfFHdjnHx
- /Koo+qUp5I8rx3beuOtxuVjG0vkPAn+xJy/9Xf3QwcTz/V99FqqUFm4GCh/ZAxRx2WPo
- JOfVaUig7JBjTHpajoMENuFru25Ey4VrEAg5K/zWp3L2/dkbbEqkG501YFW65ObsOLpv
- h2TE/TGINc5EhIHX49RsWebXQVteVkMU+TSDMqW1wXmV2TBuvklPhV9kXUOcxdKK4M/W
- 7p+1GXvqfWr6QQP5fviPkyMeye5+5dlUvGnTijUh6XMIlYTOQMmHYQ2mGlEIZscPEWbv
- 7vKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=vOGFXcZmpYY2BY6qbPyMmtN8viz7SFLU+jf7YVqY0Kk=;
- b=t4TlBfKAROZ5IMLBYyIXczMdhjf98/9GIoMmR0gOkjcr/u+01v/1/OCJmsaarImYww
- 8FcIBh511+TYyF+B+H106d4V//Zj5/2AAptzFfE1xaP4II4dMOeiuEsDnkhYtJek7+I3
- 8DCT/TbbSHs3gAKQ/rJSk2GU48Mp+dL7AsdIupLwQ/18yZ9qpqQpWuQbL4BIWeGQdk0x
- awxesZ3w0orMML3O+D1EyAiaLTD1DeboOn6BcpgW6kaPn8IcHn/n8iJVUqUU56H2tvYP
- afEPkJsmQJ1pBH58W6Lz2kkaNc7q3WQ2/Z/LeubtD6xa97huQizHNSn5cBUgvxw4EiZy
- HAuA==
-X-Gm-Message-State: AOAM530P1ZH/zOynOaWaOucm+o1SYaTk8hLg9kRbQPSCPmHkLoyO05ER
- sE7Mfk672BoBQ4UfZjdIvoJK6bpeNp9FO0Pju1o=
-X-Received: by 2002:a05:6512:405:: with SMTP id
- u5mr23611112lfk.271.1637245535300; 
- Thu, 18 Nov 2021 06:25:35 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mnic3-0003nQ-Al; Thu, 18 Nov 2021 09:42:07 -0500
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:39401)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mnic0-0005ZY-SK; Thu, 18 Nov 2021 09:42:07 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.132])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id CCDF0CC642FC;
+ Thu, 18 Nov 2021 15:41:58 +0100 (CET)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.20; Thu, 18 Nov
+ 2021 15:41:57 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002ffd21ca9-e706-40ea-8dcf-22e4bb212975,
+ 4A6ABDF66DC85A3D00A6C17CB73E494911F6EB6E) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.55.24.82
+Message-ID: <a092fc06-66e5-44b1-4e95-7b4a7325c140@kaod.org>
+Date: Thu, 18 Nov 2021 15:41:56 +0100
 MIME-Version: 1.0
-References: <CAE=NcrYJfjF-pEiX-tY7NfiTbDfXtcxnk5AnBVwc2AX4cpeCrg@mail.gmail.com>
- <CAFEAcA-CKqZPF8A+WsXE7gLgOPPYncteomvMSOcAuLEkB9F-Ew@mail.gmail.com>
- <CAE=NcrbPW4LVihnZksOCJ6NcQQYkwJudbqrp-sUEx663+qyG5w@mail.gmail.com>
-In-Reply-To: <CAE=NcrbPW4LVihnZksOCJ6NcQQYkwJudbqrp-sUEx663+qyG5w@mail.gmail.com>
-From: Janne Karhunen <janne.karhunen@gmail.com>
-Date: Thu, 18 Nov 2021 16:25:24 +0200
-Message-ID: <CAE=NcrYPqu9oa0UZM7VRDtUqQWg93spVOdRLQGs0hdHtqghGVg@mail.gmail.com>
-Subject: Re: softmmu 'at' instruction support
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::12a
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=janne.karhunen@gmail.com; helo=mail-lf1-x12a.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v2 12/13] hw/arm/aspeed: Replace drive_get_next() by
+ drive_get()
+Content-Language: en-US
+To: Markus Armbruster <armbru@redhat.com>, <qemu-devel@nongnu.org>
+References: <20211117163409.3587705-1-armbru@redhat.com>
+ <20211117163409.3587705-13-armbru@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20211117163409.3587705-13-armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 6cb04726-a525-4d45-9888-7bcf4e3ceef2
+X-Ovh-Tracer-Id: 7365074242974878569
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvuddrfeeigdeigecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeigedvffekgeeftedutddttdevudeihfegudffkeeitdekkeetkefhffelveelleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.084,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BLmB/6U8+non
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-block@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yDr9jhjdA85A
 
-On Thu, Nov 18, 2021 at 1:53 PM Janne Karhunen <janne.karhunen@gmail.com> wrote:
-
-> > If you want to walk through what QEMU does and why it
-> > returns the fault indication, you can run QEMU under
-> > a debugger and put a breakpoint at ats_write64().
-> > That will do the page table walk (in get_phys_addr())
-> > and you can see where and why we decide that it should
-> > report a fault to the PAR_EL1.
+On 11/17/21 17:34, Markus Armbruster wrote:
+> drive_get_next() is basically a bad idea.  It returns the "next" block
+> backend of a certain interface type.  "Next" means bus=0,unit=N, where
+> subsequent calls count N up from zero, per interface type.
+> 
+> This lets you define unit numbers implicitly by execution order.  If the
+> order changes, or new calls appear "in the middle", unit numbers change.
+> ABI break.  Hard to spot in review.
 >
-> Thanks, I'll do this and post the results here. I've been walking
-> around the 'get_phys_addr_lpae' a million times but not via 'at'.
+> The aspeed machines connects backends with drive_get_next() in several
+> counting loops, one of them in a helper function, and a conditional.
+> Change it to use drive_get() directly.  This makes the unit numbers
+> explicit in the code.
 
-Here we go. The debugger attached to the kernel says:
-(gdb) info all-registers TTBR1_EL1
-TTBR1_EL1      0x41731001          1098059777
+I hope we can introduce some bus id. At least for the SPI controllers.
+  
+> Cc: "Cédric Le Goater" <clg@kaod.org>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Andrew Jeffery <andrew@aj.id.au>
+> Cc: Joel Stanley <joel@jms.id.au>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
 
-That table is populated by the kernel and looks like this when I print it:
-Table 0x41731000
-000:0x000000ffff9803 256:0x000000fffff803 507:0x00000041fbc803
-508:0x000000ff9ef803
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Note that the first gigabyte is populated. Then we move to the qemu:
-Thread 4 "qemu-system-aar" hit Breakpoint 1, ats_write64
-(env=0x80ec001fb8, ri=0x7ffff5b802d0, value=93825004025122) at
-../target/arm/helper.c:3691
-..
-11610     ttbr = regime_ttbr(env, mmu_idx, param.select);
-(gdb) n
-11616     if (param.epd) {
-(gdb) p/x ttbr
-$1 = 0x41730000
+Thanks,
 
-So it starts looking from the wrong table (off by one page) ... ?
+C.
 
+>   hw/arm/aspeed.c | 21 +++++++++++++--------
+>   1 file changed, 13 insertions(+), 8 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index a77f46b3ad..cf20ae0db5 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -284,12 +284,13 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
+>   }
+>   
+>   static void aspeed_board_init_flashes(AspeedSMCState *s,
+> -                                      const char *flashtype)
+> +                                      const char *flashtype,
+> +                                      int unit0)
+>   {
+>       int i ;
+>   
+>       for (i = 0; i < s->num_cs; ++i) {
+> -        DriveInfo *dinfo = drive_get_next(IF_MTD);
+> +        DriveInfo *dinfo = drive_get(IF_MTD, 0, unit0 + i);
+>           qemu_irq cs_line;
+>           DeviceState *dev;
+>   
+> @@ -382,10 +383,12 @@ static void aspeed_machine_init(MachineState *machine)
+>                             "max_ram", max_ram_size  - machine->ram_size);
+>       memory_region_add_subregion(&bmc->ram_container, machine->ram_size, &bmc->max_ram);
+>   
+> -    aspeed_board_init_flashes(&bmc->soc.fmc, bmc->fmc_model ?
+> -                              bmc->fmc_model : amc->fmc_model);
+> -    aspeed_board_init_flashes(&bmc->soc.spi[0], bmc->spi_model ?
+> -                              bmc->spi_model : amc->spi_model);
+> +    aspeed_board_init_flashes(&bmc->soc.fmc,
+> +                              bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+> +                              0);
+> +    aspeed_board_init_flashes(&bmc->soc.spi[0],
+> +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
+> +                              bmc->soc.fmc.num_cs);
+>   
+>       /* Install first FMC flash content as a boot rom. */
+>       if (drive0) {
+> @@ -435,11 +438,13 @@ static void aspeed_machine_init(MachineState *machine)
+>       }
+>   
+>       for (i = 0; i < bmc->soc.sdhci.num_slots; i++) {
+> -        sdhci_attach_drive(&bmc->soc.sdhci.slots[i], drive_get_next(IF_SD));
+> +        sdhci_attach_drive(&bmc->soc.sdhci.slots[i],
+> +                           drive_get(IF_SD, 0, i));
+>       }
+>   
+>       if (bmc->soc.emmc.num_slots) {
+> -        sdhci_attach_drive(&bmc->soc.emmc.slots[0], drive_get_next(IF_SD));
+> +        sdhci_attach_drive(&bmc->soc.emmc.slots[0],
+> +                           drive_get(IF_SD, 0, bmc->soc.sdhci.num_slots));
+>       }
+>   
+>       arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
+> 
 
---
-Janne

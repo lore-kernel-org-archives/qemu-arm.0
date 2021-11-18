@@ -1,88 +1,71 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id q26sm654555wrc.39.2021.11.18.10.46.50
+        by smtp.gmail.com with ESMTPSA id l124sm10048418wml.8.2021.11.18.10.51.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Nov 2021 10:46:54 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 583341FF9B;
-	Thu, 18 Nov 2021 18:46:50 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: kvm@vger.kernel.org
-Cc: idan.horowitz@gmail.com,
-	qemu-arm@nongnu.org,
-	linux-arm-kernel@lists.infradead.org,
-	kvmarm@lists.cs.columbia.edu,
-	christoffer.dall@arm.com,
-	maz@kernel.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [kvm-unit-tests PATCH v8 04/10] run_tests.sh: add --config option for alt test set
-Date: Thu, 18 Nov 2021 18:46:44 +0000
-Message-Id: <20211118184650.661575-5-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211118184650.661575-1-alex.bennee@linaro.org>
-References: <20211118184650.661575-1-alex.bennee@linaro.org>
+        Thu, 18 Nov 2021 10:51:28 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 002051FF96;
+	Thu, 18 Nov 2021 18:51:27 +0000 (GMT)
+References: <CA+4MfEJhOsmUWmifkzJ7jSw8B0q7X2mJe=jist4AiTwhYd8Wug@mail.gmail.com>
+ <CAFEAcA8+U-9OKYhGSm57dip-AhKpJq3AN7+aHoW9+b7NmTPaOA@mail.gmail.com>
+User-agent: mu4e 1.7.5; emacs 28.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Idan Horowitz <idan.horowitz@gmail.com>, qemu-arm@nongnu.org
+Subject: Re: DSB does not seem to wait for TLBI completion
+Date: Thu, 18 Nov 2021 18:50:32 +0000
+In-reply-to: <CAFEAcA8+U-9OKYhGSm57dip-AhKpJq3AN7+aHoW9+b7NmTPaOA@mail.gmail.com>
+Message-ID: <87bl2huwk0.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: SFaoYYJq7e6p
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: UpBG0OGOjcKR
 
-The upcoming MTTCG tests don't need to be run for normal KVM unit
-tests so lets add the facility to have a custom set of tests.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- run_tests.sh | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-diff --git a/run_tests.sh b/run_tests.sh
-index 9f233c5..b1088d2 100755
---- a/run_tests.sh
-+++ b/run_tests.sh
-@@ -15,7 +15,7 @@ function usage()
- {
- cat <<EOF
- 
--Usage: $0 [-h] [-v] [-a] [-g group] [-j NUM-TASKS] [-t]
-+Usage: $0 [-h] [-v] [-a] [-g group] [-j NUM-TASKS] [-t] [-c CONFIG]
- 
-     -h, --help      Output this help text
-     -v, --verbose   Enables verbose mode
-@@ -24,6 +24,7 @@ Usage: $0 [-h] [-v] [-a] [-g group] [-j NUM-TASKS] [-t]
-     -g, --group     Only execute tests in the given group
-     -j, --parallel  Execute tests in parallel
-     -t, --tap13     Output test results in TAP format
-+    -c, --config    Override default unittests.cfg
- 
- Set the environment variable QEMU=/path/to/qemu-system-ARCH to
- specify the appropriate qemu binary for ARCH-run.
-@@ -42,7 +43,7 @@ if [ $? -ne 4 ]; then
- fi
- 
- only_tests=""
--args=$(getopt -u -o ag:htj:v -l all,group:,help,tap13,parallel:,verbose -- $*)
-+args=$(getopt -u -o ag:htj:vc: -l all,group:,help,tap13,parallel:,verbose,config: -- $*)
- [ $? -ne 0 ] && exit 2;
- set -- $args;
- while [ $# -gt 0 ]; do
-@@ -73,6 +74,10 @@ while [ $# -gt 0 ]; do
-         -t | --tap13)
-             tap_output="yes"
-             ;;
-+        -c | --config)
-+            shift
-+            config=$1
-+            ;;
-         --)
-             ;;
-         *)
-@@ -152,7 +157,7 @@ function run_task()
- 
- : ${unittest_log_dir:=logs}
- : ${unittest_run_queues:=1}
--config=$TEST_DIR/unittests.cfg
-+: ${config:=$TEST_DIR/unittests.cfg}
- 
- rm -rf $unittest_log_dir.old
- [ -d $unittest_log_dir ] && mv $unittest_log_dir $unittest_log_dir.old
--- 
-2.30.2
+> On Thu, 18 Nov 2021 at 15:46, Idan Horowitz <idan.horowitz@gmail.com> wro=
+te:
+>>
+>> Hey, I'm running a bare-metal image on QEMU 6.1 and I've encountered the=
+ following scenario:
+>> After receiving a data abort and mapping in the correct page I try to in=
+validate the corresponding TLB entry using the following assembly sequence:
+>>
+>> dsb ish
+>> tlbi vaae1is, x0
+>> dsb sy
+>
+> Do you have a repro case you can give us ?
+> Does your setup involve SMP, or is this all on a single CPU ?
+
+I had started on writing an explicit test case for all of this in:
+
+  https://github.com/stsquad/kvm-unit-tests/blob/712eb3a287df24cdeff00ef966=
+d68aef6ff2b8eb/arm/tlbflush-data.c
+
+but it's been a while and I need to debug what I was thinking when I
+wrote it. However if we can get a test case for kvm-unit-tests that
+would be great.
+
+>
+>> Unfortunately this does not seem to have any immediate effect, as
+>> upon returning back to the source of the exception I immediately hit
+>> the same Data Abort. This cycle of receiving a Data Abort and then
+>> updating the mapping continues for 100s of times, until the TLB
+>> finally updates to the correct mapping.
+>
+> Note that the architecture says that the DSB will guarantee the
+> TLB maintenance operation to be finished for *other* processors,
+> but that if you want to guarantee it to be finished for the
+> processor which executed the TLBI then you must do a DSB followed
+> by a "context synchronization event", eg a ISB insn, or return
+> from exception. (See the v8 Arm ARM DDI0487G.b page D5-2833.)
+> It sounds from your description as if a return-from-exception
+> is done on the CPU that executed the TLBI, though...
+>
+> -- PMM
+
+
+--=20
+Alex Benn=C3=A9e

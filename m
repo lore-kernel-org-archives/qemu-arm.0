@@ -1,85 +1,100 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id 8sm9332039wmg.24.2021.11.18.10.46.50
+        by smtp.gmail.com with ESMTPSA id o4sm516544wry.80.2021.11.18.09.13.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Nov 2021 10:46:50 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3D38D1FF96;
-	Thu, 18 Nov 2021 18:46:50 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: kvm@vger.kernel.org
-Cc: idan.horowitz@gmail.com,
-	qemu-arm@nongnu.org,
-	linux-arm-kernel@lists.infradead.org,
-	kvmarm@lists.cs.columbia.edu,
-	christoffer.dall@arm.com,
-	maz@kernel.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [kvm-unit-tests PATCH v8 00/10] MTTCG sanity tests for ARM
-Date: Thu, 18 Nov 2021 18:46:40 +0000
-Message-Id: <20211118184650.661575-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.30.2
+        Thu, 18 Nov 2021 09:13:11 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id B93821FF96;
+	Thu, 18 Nov 2021 17:13:10 +0000 (GMT)
+References: <CA+4MfEJhOsmUWmifkzJ7jSw8B0q7X2mJe=jist4AiTwhYd8Wug@mail.gmail.com>
+User-agent: mu4e 1.7.5; emacs 28.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Idan Horowitz <idan.horowitz@gmail.com>
+Cc: qemu-arm@nongnu.org
+Subject: Re: DSB does not seem to wait for TLBI completion
+Date: Thu, 18 Nov 2021 17:01:45 +0000
+In-reply-to: <CA+4MfEJhOsmUWmifkzJ7jSw8B0q7X2mJe=jist4AiTwhYd8Wug@mail.gmail.com>
+Message-ID: <87fsrtv13t.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: kW8ohZylp5Pp
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: cVYi3lPMS464
 
-Hi,
 
-It's been a long time since I last posted these but I'd like to
-incorporate some MTTCG tests into QEMU's upstream acceptance tests and
-a first step is getting these up-streamed. Most of the changes are
-fixing up the numerous checkpatch failures (although isaac remains
-unchanged and some warnings make no sense for kvm-unit-tests).
+Idan Horowitz <idan.horowitz@gmail.com> writes:
 
-I dropped an additional test which attempts to test for data flush
-behaviour but it still needs some work:
+> Hey, I'm running a bare-metal image on QEMU 6.1 and I've encountered the =
+following scenario:
+> After receiving a data abort and mapping in the correct page I try to inv=
+alidate the corresponding TLB entry using the following assembly
+> sequence:
+>
+> dsb ish
+> tlbi vaae1is, x0
+> dsb sy
+>
+> Unfortunately this does not seem to have any immediate effect, as upon re=
+turning back to the source of the exception I immediately hit
+> the same Data Abort. This cycle of receiving a Data Abort and then updati=
+ng the mapping continues for 100s of times, until the TLB finally
+> updates to the correct mapping.
+>
+> As part of my testing I also tried to replace the Inner Shareable tlbi I =
+showed above with the base version that only invalidates the current
+> PE's TLB entry (tlbi vaae1, x0) this seemed to fix the issue, which made =
+me suspect something was up with QEMU itself, as the inner
+> shareable version of the instruction is supposed to invalidate the curren=
+t PE's TLB entry as well as the others', so if the non-shareable
+> version works the inner-shareable one should work as well.
+>
+> After digging a bit through the code I saw that the non-shareable version=
+ calls 'tlb_flush_page_bits_by_mmuidx' which eventually calls
+> 'tlb_flush_range_by_mmuidx_async_0' synchronously, while the inner-sharea=
+ble version calls
+> 'tlb_flush_page_bits_by_mmuidx_all_cpus_synced' which also eventually cal=
+ls 'tlb_flush_range_by_mmuidx_async_0', but asynchronously
+> this time.
+>
+> Moving on to the implementation of the DSB instruction I saw that it is t=
+ranslated into an 'INDEX_op_mb' operation, but looking at the
+> interpreter handling of that instruction, it simply performs a memory bar=
+rier, it does not handle any of the async tasks in the work queue
+> (at least explicitly) so from my (admittedly basic) understanding of the =
+code it looks like QEMU's implementation of the DSB instruction
+> does not wait until the TLB flush has finished, as required.
 
-  https://github.com/stsquad/kvm-unit-tests/commit/712eb3a287df24cdeff00ef966d68aef6ff2b8eb
+If we exit the translation block like the code for ISB does then that
+will give a chance for all the queued work to complete. If we have done
+a _synced call this includes bringing all vCPUs to a halt before
+flushing and restarting.
 
-Alex Bennée (10):
-  docs: mention checkpatch in the README
-  arm/flat.lds: don't drop debug during link
-  Makefile: add GNU global tags support
-  run_tests.sh: add --config option for alt test set
-  lib: add isaac prng library from CCAN
-  arm/tlbflush-code: TLB flush during code execution
-  arm/locking-tests: add comprehensive locking test
-  arm/barrier-litmus-tests: add simple mp and sal litmus tests
-  arm/run: use separate --accel form
-  arm/tcg-test: some basic TCG exercising tests
+> If anyone can point me in the right direction it would be greatly
+> appreciated.
 
- arm/run                   |   4 +-
- run_tests.sh              |  11 +-
- Makefile                  |   5 +-
- arm/Makefile.arm          |   2 +
- arm/Makefile.arm64        |   2 +
- arm/Makefile.common       |   6 +-
- lib/arm/asm/barrier.h     |  61 ++++++
- lib/arm64/asm/barrier.h   |  50 +++++
- lib/prng.h                |  82 +++++++
- lib/prng.c                | 162 ++++++++++++++
- arm/flat.lds              |   1 -
- arm/tcg-test-asm.S        | 171 +++++++++++++++
- arm/tcg-test-asm64.S      | 170 ++++++++++++++
- arm/barrier-litmus-test.c | 450 ++++++++++++++++++++++++++++++++++++++
- arm/locking-test.c        | 322 +++++++++++++++++++++++++++
- arm/spinlock-test.c       |  87 --------
- arm/tcg-test.c            | 338 ++++++++++++++++++++++++++++
- arm/tlbflush-code.c       | 209 ++++++++++++++++++
- arm/mttcgtests.cfg        | 176 +++++++++++++++
- README.md                 |   2 +
- 20 files changed, 2216 insertions(+), 95 deletions(-)
- create mode 100644 lib/prng.h
- create mode 100644 lib/prng.c
- create mode 100644 arm/tcg-test-asm.S
- create mode 100644 arm/tcg-test-asm64.S
- create mode 100644 arm/barrier-litmus-test.c
- create mode 100644 arm/locking-test.c
- delete mode 100644 arm/spinlock-test.c
- create mode 100644 arm/tcg-test.c
- create mode 100644 arm/tlbflush-code.c
- create mode 100644 arm/mttcgtests.cfg
+Try:
 
--- 
-2.30.2
+modified   target/arm/translate-a64.c
+@@ -1553,6 +1553,7 @@ static void handle_sync(DisasContext *s, uint32_t ins=
+n,
+             break;
+         }
+         tcg_gen_mb(bar);
++        gen_goto_tb(s, 0, s->base.pc_next);
+         return;
+     case 6: /* ISB */
+
+and see if that helps. I suspect do be efficient we should probably do
+some more decode on the instruction to make that decision as ending a
+block for every DMB/DSB might be overkill and impact performance.=20
+
+I don't think we have a way to track pending state awaiting a DSB
+instruction in the translator but in theory we could. I thought
+(ri->type & ARM_CP_IO) for system registers would ensure an end of block
+but apparently that is only for icount.
+
+>
+> Thanks, Idan Horowitz.
+
+
+--=20
+Alex Benn=C3=A9e

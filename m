@@ -1,104 +1,105 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp746185lfk;
-        Thu, 18 Nov 2021 06:48:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw90RtoGj5WSYx0EGzscTtcfKDp3eFGnNNgJxrEGjKzk7d5dgoeN24Dtwi1etdyaxi1OYVp
-X-Received: by 2002:a67:cd8b:: with SMTP id r11mr83000320vsl.27.1637246913648;
-        Thu, 18 Nov 2021 06:48:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637246913; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp748179lfk;
+        Thu, 18 Nov 2021 06:50:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwo1aWkEC9r+iE9bogrf90y3enfi+Wrb9Q7VNrOUElQlLGBRj4qcjgjz6kObFI8Oza7EYTn
+X-Received: by 2002:a9f:21d7:: with SMTP id 81mr37392586uac.39.1637247003144;
+        Thu, 18 Nov 2021 06:50:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637247003; cv=none;
         d=google.com; s=arc-20160816;
-        b=XeWgY1hsSgykPK9WVuJKtkRjf2A7R7sgPT9bUhaTFQZJg9Cf0FIwMS5kNvv0ELBE0J
-         HK0jEHhLkkk4qGi9P/KDsI1xHma/MKyL0L+oZWFPRTQ9bLz92eGSl72gRN4r9rE0J7Za
-         3xsXk864fCjAVgc/DV7Bl1KCayjw1fxHCNCScif6MpF9m2AR+hYtWK2wTmjZPiJbBeTC
-         lj/94w3rHA9EDtpamytiE1lmWxkwSVYHhPgSfpQmofHlhhKMiptoQrZxs4uRchf3GokV
-         IWnmpouRbn5Mm46gaOjprR74i5+CqZrjkrH1o9F12HWCRP9g18F82lrpsHxFCXBPfVQB
-         vcEw==
+        b=UYq0JQZZOSBMHRUH0gHBnRX63vcc1reHFN3f9MgY/p7dSnsxbQsqQH4GAfRwFySd5j
+         5S8+7GfDjnh5wu7I779Ug5YfXZAFm5FQ6JznhM0DTwJEzD+6U8WP+D0UnIB7kW8q/5sf
+         6vFqNFSFL/Fle4cmVI/1jmwV922crYsxOm1Vp4U/sDF92jIiZNhQbuXUoO06Hpzg+XmB
+         kEJaWk63UdJUdHjVqEv+ehcd5+6SQNFPMlmV5o1RqmVHqs0pWmgb3kYzTpxiGHsBWrfo
+         Ds8kNywJtwF8iVPHT/YDou4Ny45xF0jS4GigidiFsPrZXOMlNp6Gs1svfQaJsAkYnlwG
+         lqew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=i4ImNUWBVTPzUuDTwmiZeUqYQEgZpRtF3z5QGW+ZAp4=;
-        b=W7BelU6nv0DWf0tN9SGYgqcP5DgBm1ux1ScCH1knDgwIiUSAiiOeBZ/vobkEb2jtFW
-         gZx7Z4x8ShqhmboH4uppiaLdyUOQNdf8gxYFJsULdyPr7I5L/70cpUE+0WY33IpRTZ72
-         i8i7spBNLM/zCURnRbomaNCsXV241Xq4tQ0pCDlTK8sBhSEiA8XHrbC4VHZ0Yj5sQQyg
-         bt1q9SK+PocU0A7vps0d1+p4a/410gVphf6RfGlA+r24qcVzyE0oo5+RLIc6quXQEHYt
-         1D5q39Cmqm6PTXeHzc139YHZ9kR5Oxv/y7YPrPQ5zKn3oo1sTCIYI2zZO6PjNt34RvO0
-         YwDw==
+        bh=e0iNmG+ALESer+7as8Y80bQsaMjkBuVSGgYvNOKD/AQ=;
+        b=omws0P9tyIItccUE3b33vVTK32UseaE2p7any1bOsxD3CTTHwW2fbMN5sNV4yqdTud
+         Rp+/gWdsyY1ZSyjvz+OvXzia5wf2qsSyg+YjEIKXoasHemc8CRcv0i9K2n5pj+VSZ/JP
+         Jyz9ov2A7GD7JYf2uaHSo0cgPpenn7W/8HEg3kE72vfkTPapt4JBTd7TNENLGT7A2z0g
+         X9P/tmxTJwq2tP1cAh6t/Fa8IzFSAEvWYf/bzR5LFx/UWZx77t4aqFbt4/JuFYWW59qz
+         D7v9WLTSW/CZchCayKBbLNCeTA7E94T7A46qZ0KSjpO/UEhj3zjU9OhpbH6iKrBnqtor
+         8mJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SIzYQxkG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="RH/KT4i8";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d15si148070uak.183.2021.11.18.06.48.33
+        by mx.google.com with ESMTPS id bm32si1280379vsb.250.2021.11.18.06.50.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Nov 2021 06:48:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 18 Nov 2021 06:50:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SIzYQxkG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="RH/KT4i8";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56368 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60932 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mniiF-0004oA-SC
-	for alex.bennee@linaro.org; Thu, 18 Nov 2021 09:48:31 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49554)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mnijf-0007xE-JN
+	for alex.bennee@linaro.org; Thu, 18 Nov 2021 09:49:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49754)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1mnigM-0002MB-9v; Thu, 18 Nov 2021 09:46:34 -0500
-Received: from [2a00:1450:4864:20::136] (port=35662
- helo=mail-lf1-x136.google.com)
+ id 1mnigu-0003SF-Be; Thu, 18 Nov 2021 09:47:08 -0500
+Received: from [2a00:1450:4864:20::129] (port=45624
+ helo=mail-lf1-x129.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1mnigK-0006F5-4V; Thu, 18 Nov 2021 09:46:34 -0500
-Received: by mail-lf1-x136.google.com with SMTP id u3so27176717lfl.2;
- Thu, 18 Nov 2021 06:46:30 -0800 (PST)
+ id 1mnigs-0006J9-5B; Thu, 18 Nov 2021 09:47:08 -0500
+Received: by mail-lf1-x129.google.com with SMTP id m27so27087921lfj.12;
+ Thu, 18 Nov 2021 06:47:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=i4ImNUWBVTPzUuDTwmiZeUqYQEgZpRtF3z5QGW+ZAp4=;
- b=SIzYQxkG+Jp1+YA689ua/sp8dQvufaslHYD/fULuC1jSNmIhkXUDx2Ovl0nYtwfGwT
- D7ulWcdHgxpAYu8hxo06LMnKZ6QHrTpdDN6qPxRBWwKGAsDUsFpMsO5Ax2X2hs76O5lZ
- 8234hObPVJXTvmA2ou8wKOp+GuwCN2bdMXdzaMBDEYxSXBYouBHZZAvGHuNVMS8xL2YL
- PtM8TRxUogWwbWaGfyIjZLZESpY0dj7/dLBRdgnOmZi4QhGePGCBb68VfmjgJJubDGQZ
- zIOgbkG5psoIfnm3le9qfgcqTUR4uS+FFFMC+PzkkNmRJlOL/oEs5VpIbbRo6x6sWIV5
- r1dw==
+ bh=e0iNmG+ALESer+7as8Y80bQsaMjkBuVSGgYvNOKD/AQ=;
+ b=RH/KT4i83xrYkkJraDa5Q+98foYJMSqc+OlhLxqYiD3ONt79mi/R4qoPOo2093XqAX
+ 4mw6VG4BYejHIVn798zizIBzRMalz298UC3HnlqzJqR/1LLjsmU9UVtKQZBSd7Qp1vTk
+ Bztj0PQnBu17l5EX9zfaOVXTtPDQLy1oqblrEVLC5eUra49alY9ADdx2pdcibpNI3utQ
+ tFV/yDcOJcBT8adGcdqaEN0VUfv5o5eG9fqjzpiXtc16/c4ROA7+bpGehup6+HzgbqEe
+ pbNdZXbDfMa1Aql/oBBGU4ryxw3vS9SXeOLXXMqSwAcI9CSRrBDFRun33YLPV+OSevbt
+ iCjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=i4ImNUWBVTPzUuDTwmiZeUqYQEgZpRtF3z5QGW+ZAp4=;
- b=vWdBetpVFbNgyaI6EAFYj3t+OsWx/MdxU/dDAmmeAk6AL+4qr5AzBQoBftH9l3sVXQ
- FzFjrekbVLCq3hHhZa3ieYSiz+ptGq/hQ348WaupN89mnTsPYURtUfmlSp3s6IsvVESf
- wL0AaYZ6V+8FRBdY+MGoVRYLbTip/h8Yi+/2hht+8gadXjc6bvwWZO5ofumnleHtYbBR
- h3LQ01Zdr10V18HSPsuI5hOr8dmn3x65rjav5bORq0tw80hafkOjL62w6/7Jc+n5gRxj
- 5cxjT6wvyjWwSphHnq3GVcOdS/TpYJsDAN+hjI/2knFWub0n/YvvlmziISERaKt8j3Uq
- WhpA==
-X-Gm-Message-State: AOAM532YRzDCfeBwLQCCrgAmDW/YOJk8zAJPOXxd2e2Pw7c1l2caJ+FE
- bHn7sivbWHAdPm06BBBciRw=
-X-Received: by 2002:a2e:b0ca:: with SMTP id g10mr16660937ljl.491.1637246788779; 
- Thu, 18 Nov 2021 06:46:28 -0800 (PST)
+ bh=e0iNmG+ALESer+7as8Y80bQsaMjkBuVSGgYvNOKD/AQ=;
+ b=VkLNgqQJIpeRNbtYT3Ea4A7ycVY1OMnvbyrNHEQdqnZJNiads+zqUDibdcFR7RJ9Id
+ acqJfLHuN4LB6zWESWAJg6poMj9nTy1kYCWV+CKYozoNOvu4rIqvtDo+dAzsrj1rf7tb
+ 03/eJxC8+nbYFGSD1vsLsRyJ1E5LhCHbzCB1eUDFSSAJXvcpZ2H1hcPw3O0CRbqAY2Cr
+ fOHbt21i0giNKuKz85XXlkPjZbRWjdbMOQpt73FZlRJqq1IVKjweZz9aXfrUat+usk+7
+ 6Ynt83O80M09ItRXmRqrXJKaYlPLnSqjfK0zJbSM421RliWfzD4sRD6Ai1qQDU5/UIpV
+ KsfA==
+X-Gm-Message-State: AOAM531O2ZW7PSaZLtFz9qO/UhPlH0Wvrf+GipN1c32KIlGg8dc8n3I5
+ l5/GqfGSXhrE5/rmMNiEucM=
+X-Received: by 2002:a05:651c:1213:: with SMTP id
+ i19mr17419776lja.123.1637246823064; 
+ Thu, 18 Nov 2021 06:47:03 -0800 (PST)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id x3sm5372lfq.238.2021.11.18.06.46.28
+ by smtp.gmail.com with ESMTPSA id j20sm8172lfu.84.2021.11.18.06.47.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Nov 2021 06:46:28 -0800 (PST)
-Date: Thu, 18 Nov 2021 15:46:27 +0100
+ Thu, 18 Nov 2021 06:47:02 -0800 (PST)
+Date: Thu, 18 Nov 2021 15:47:02 +0100
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH v2 10/13] hw/arm/xlnx-zcu102: Replace drive_get_next() by
- drive_get()
-Message-ID: <20211118144627.GO3586016@toto>
+Subject: Re: [PATCH v2 08/13] hw/arm/xlnx-versal-virt: Replace
+ drive_get_next() by drive_get()
+Message-ID: <20211118144702.GR3586016@toto>
 References: <20211117163409.3587705-1-armbru@redhat.com>
- <20211117163409.3587705-11-armbru@redhat.com>
+ <20211117163409.3587705-9-armbru@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20211117163409.3587705-11-armbru@redhat.com>
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::136
+In-Reply-To: <20211117163409.3587705-9-armbru@redhat.com>
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::129
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::136;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x136.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::129;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x129.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -108,25 +109,25 @@ X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, qemu-block@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +0gjXf10gAB5
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mUt2ftL4BZxo
 
-On Wed, Nov 17, 2021 at 05:34:06PM +0100, Markus Armbruster wrote:
+On Wed, Nov 17, 2021 at 05:34:04PM +0100, Markus Armbruster wrote:
 > drive_get_next() is basically a bad idea.  It returns the "next" block
 > backend of a certain interface type.  "Next" means bus=0,unit=N, where
 > subsequent calls count N up from zero, per interface type.
@@ -135,13 +136,11 @@ On Wed, Nov 17, 2021 at 05:34:06PM +0100, Markus Armbruster wrote:
 > order changes, or new calls appear "in the middle", unit numbers change.
 > ABI break.  Hard to spot in review.
 > 
-> Machine "xlnx-zcu102" connects backends with drive_get_next() in
-> several counting loops.  Change it to use drive_get() directly.  This
-> makes the unit numbers explicit in the code.
-
+> Machine "xlnx-versal-virt" connects backends with drive_get_next() in
+> a counting loop.  Change it to use drive_get() directly.  This makes
+> the unit numbers explicit in the code.
 
 Acked-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
 
 
 > 
@@ -151,40 +150,23 @@ Acked-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 > Cc: qemu-arm@nongnu.org
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->  hw/arm/xlnx-zcu102.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  hw/arm/xlnx-versal-virt.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-> index 3dc2b5e8ca..45eb19ab3b 100644
-> --- a/hw/arm/xlnx-zcu102.c
-> +++ b/hw/arm/xlnx-zcu102.c
-> @@ -169,7 +169,7 @@ static void xlnx_zcu102_init(MachineState *machine)
->      /* Create and plug in the SD cards */
->      for (i = 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
->          BusState *bus;
-> -        DriveInfo *di = drive_get_next(IF_SD);
-> +        DriveInfo *di = drive_get(IF_SD, 0, i);
->          BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
->          DeviceState *carddev;
->          char *bus_name;
-> @@ -190,7 +190,7 @@ static void xlnx_zcu102_init(MachineState *machine)
->          BusState *spi_bus;
->          DeviceState *flash_dev;
->          qemu_irq cs_line;
-> -        DriveInfo *dinfo = drive_get_next(IF_MTD);
-> +        DriveInfo *dinfo = drive_get(IF_MTD, 0, i);
->          gchar *bus_name = g_strdup_printf("spi%d", i);
+> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+> index d2f55e29b6..0c5edc898e 100644
+> --- a/hw/arm/xlnx-versal-virt.c
+> +++ b/hw/arm/xlnx-versal-virt.c
+> @@ -669,7 +669,8 @@ static void versal_virt_init(MachineState *machine)
 >  
->          spi_bus = qdev_get_child_bus(DEVICE(&s->soc), bus_name);
-> @@ -212,7 +212,7 @@ static void xlnx_zcu102_init(MachineState *machine)
->          BusState *spi_bus;
->          DeviceState *flash_dev;
->          qemu_irq cs_line;
-> -        DriveInfo *dinfo = drive_get_next(IF_MTD);
-> +        DriveInfo *dinfo = drive_get(IF_MTD, 0, XLNX_ZYNQMP_NUM_SPIS + i);
->          int bus = i / XLNX_ZYNQMP_NUM_QSPI_BUS_CS;
->          gchar *bus_name = g_strdup_printf("qspi%d", bus);
+>      /* Plugin SD cards.  */
+>      for (i = 0; i < ARRAY_SIZE(s->soc.pmc.iou.sd); i++) {
+> -        sd_plugin_card(&s->soc.pmc.iou.sd[i], drive_get_next(IF_SD));
+> +        sd_plugin_card(&s->soc.pmc.iou.sd[i],
+> +                       drive_get(IF_SD, 0, i));
+>      }
 >  
+>      s->binfo.ram_size = machine->ram_size;
 > -- 
 > 2.31.1
 > 

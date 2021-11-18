@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id b11sm9637580wmj.35.2021.11.18.10.46.53
+        by smtp.gmail.com with ESMTPSA id s8sm697055wra.9.2021.11.18.10.46.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 18 Nov 2021 10:46:55 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 78D701FF9F;
+	by zen.linaroharston (Postfix) with ESMTP id 64ADB1FF9C;
 	Thu, 18 Nov 2021 18:46:50 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: kvm@vger.kernel.org
@@ -15,708 +15,312 @@ Cc: idan.horowitz@gmail.com,
 	christoffer.dall@arm.com,
 	maz@kernel.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Will Deacon <will@kernel.org>
-Subject: [kvm-unit-tests PATCH v8 08/10] arm/barrier-litmus-tests: add simple mp and sal litmus tests
-Date: Thu, 18 Nov 2021 18:46:48 +0000
-Message-Id: <20211118184650.661575-9-alex.bennee@linaro.org>
+	"Timothy B . Terriberry" <tterribe@xiph.org>,
+	Andrew Jones <drjones@redhat.com>
+Subject: [kvm-unit-tests PATCH v8 05/10] lib: add isaac prng library from CCAN
+Date: Thu, 18 Nov 2021 18:46:45 +0000
+Message-Id: <20211118184650.661575-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20211118184650.661575-1-alex.bennee@linaro.org>
 References: <20211118184650.661575-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: p1Mb+LuMWKmB
+X-TUID: j6IGRvpN0LV6
 
-This adds a framework for adding simple barrier litmus tests against
-ARM. The litmus tests aren't as comprehensive as the academic exercises
-which will attempt to do all sorts of things to keep racing CPUs synced
-up. These tests do honour the "sync" parameter to do a poor-mans
-equivalent.
+It's often useful to introduce some sort of random variation when
+testing several racing CPU conditions. Instead of each test implementing
+some half-arsed PRNG bring in a a decent one which has good statistical
+randomness. Obviously it is deterministic for a given seed value which
+is likely the behaviour you want.
 
-The two litmus tests are:
-  - message passing
-  - store-after-load
+I've pulled in the ISAAC library from CCAN:
 
-They both have case that should fail (although won't on single-threaded
-TCG setups). If barriers aren't working properly the store-after-load
-test will fail even on an x86 backend as x86 allows re-ording of non
-aliased stores.
+    http://ccodearchive.net/info/isaac.html
 
-I've imported a few more of the barrier primatives from the Linux source
-tree so we consistently use macros.
-
-The arm64 barrier primitives trip up on -Wstrict-aliasing so this is
-disabled in the Makefile.
+I shaved off the float related stuff which is less useful for unit
+testing and re-indented to fit the style. The original license was
+CC0 (Public Domain) which is compatible with the LGPL v2 of
+kvm-unit-tests.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-CC: Will Deacon <will@kernel.org>
-
+CC: Timothy B. Terriberry <tterribe@xiph.org>
+Acked-by: Andrew Jones <drjones@redhat.com>
 ---
-v8
-  - move to mttcgtests.cfg
-  - fix checkpatch issues
-  - fix report usage
-v7
-  - merge in store-after-load
-  - clean-up sync-up code
-  - use new counter api
-  - fix xfail for sal test
-v6
-  - add a unittest.cfg
-  - -fno-strict-aliasing
----
- arm/Makefile.common       |   1 +
- lib/arm/asm/barrier.h     |  61 ++++++
- lib/arm64/asm/barrier.h   |  50 +++++
- arm/barrier-litmus-test.c | 450 ++++++++++++++++++++++++++++++++++++++
- arm/mttcgtests.cfg        |  33 +++
- 5 files changed, 595 insertions(+)
- create mode 100644 arm/barrier-litmus-test.c
+ arm/Makefile.common |   1 +
+ lib/prng.h          |  82 ++++++++++++++++++++++
+ lib/prng.c          | 162 ++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 245 insertions(+)
+ create mode 100644 lib/prng.h
+ create mode 100644 lib/prng.c
 
 diff --git a/arm/Makefile.common b/arm/Makefile.common
-index f905971..861e5c7 100644
+index 38385e0..99bcf3f 100644
 --- a/arm/Makefile.common
 +++ b/arm/Makefile.common
-@@ -13,6 +13,7 @@ tests-common += $(TEST_DIR)/sieve.flat
- tests-common += $(TEST_DIR)/pl031.flat
- tests-common += $(TEST_DIR)/tlbflush-code.flat
- tests-common += $(TEST_DIR)/locking-test.flat
-+tests-common += $(TEST_DIR)/barrier-litmus-test.flat
- 
- tests-all = $(tests-common) $(tests)
- all: directories $(tests-all)
-diff --git a/lib/arm/asm/barrier.h b/lib/arm/asm/barrier.h
-index 7f86831..2870080 100644
---- a/lib/arm/asm/barrier.h
-+++ b/lib/arm/asm/barrier.h
-@@ -8,6 +8,8 @@
-  * This work is licensed under the terms of the GNU GPL, version 2.
-  */
- 
-+#include <stdint.h>
-+
- #define sev()		asm volatile("sev" : : : "memory")
- #define wfe()		asm volatile("wfe" : : : "memory")
- #define wfi()		asm volatile("wfi" : : : "memory")
-@@ -25,4 +27,63 @@
- #define smp_rmb()	smp_mb()
- #define smp_wmb()	dmb(ishst)
- 
-+extern void abort(void);
-+
-+static inline void __write_once_size(volatile void *p, void *res, int size)
-+{
-+	switch (size) {
-+	case 1: *(volatile uint8_t *)p = *(uint8_t *)res; break;
-+	case 2: *(volatile uint16_t *)p = *(uint16_t *)res; break;
-+	case 4: *(volatile uint32_t *)p = *(uint32_t *)res; break;
-+	case 8: *(volatile uint64_t *)p = *(uint64_t *)res; break;
-+	default:
-+		/* unhandled case */
-+		abort();
-+	}
-+}
-+
-+#define WRITE_ONCE(x, val) \
-+({							\
-+	union { typeof(x) __val; char __c[1]; } __u =	\
-+		{ .__val = (typeof(x)) (val) }; \
-+	__write_once_size(&(x), __u.__c, sizeof(x));	\
-+	__u.__val;					\
-+})
-+
-+#define smp_store_release(p, v)						\
-+do {									\
-+	smp_mb();							\
-+	WRITE_ONCE(*p, v);						\
-+} while (0)
-+
-+
-+static inline
-+void __read_once_size(const volatile void *p, void *res, int size)
-+{
-+	switch (size) {
-+	case 1: *(uint8_t *)res = *(volatile uint8_t *)p; break;
-+	case 2: *(uint16_t *)res = *(volatile uint16_t *)p; break;
-+	case 4: *(uint32_t *)res = *(volatile uint32_t *)p; break;
-+	case 8: *(uint64_t *)res = *(volatile uint64_t *)p; break;
-+	default:
-+		/* unhandled case */
-+		abort();
-+	}
-+}
-+
-+#define READ_ONCE(x)							\
-+({									\
-+	union { typeof(x) __val; char __c[1]; } __u;			\
-+	__read_once_size(&(x), __u.__c, sizeof(x));			\
-+	__u.__val;							\
-+})
-+
-+
-+#define smp_load_acquire(p)						\
-+({									\
-+	typeof(*p) ___p1 = READ_ONCE(*p);				\
-+	smp_mb();							\
-+	___p1;								\
-+})
-+
- #endif /* _ASMARM_BARRIER_H_ */
-diff --git a/lib/arm64/asm/barrier.h b/lib/arm64/asm/barrier.h
-index 0e1904c..5e40519 100644
---- a/lib/arm64/asm/barrier.h
-+++ b/lib/arm64/asm/barrier.h
-@@ -24,4 +24,54 @@
- #define smp_rmb()	dmb(ishld)
- #define smp_wmb()	dmb(ishst)
- 
-+#define smp_store_release(p, v)						\
-+do {									\
-+	switch (sizeof(*p)) {						\
-+	case 1:								\
-+		asm volatile ("stlrb %w1, %0"				\
-+				: "=Q" (*p) : "r" (v) : "memory");	\
-+		break;							\
-+	case 2:								\
-+		asm volatile ("stlrh %w1, %0"				\
-+				: "=Q" (*p) : "r" (v) : "memory");	\
-+		break;							\
-+	case 4:								\
-+		asm volatile ("stlr %w1, %0"				\
-+				: "=Q" (*p) : "r" (v) : "memory");	\
-+		break;							\
-+	case 8:								\
-+		asm volatile ("stlr %1, %0"				\
-+				: "=Q" (*p) : "r" (v) : "memory");	\
-+		break;							\
-+	}								\
-+} while (0)
-+
-+#define smp_load_acquire(p)						\
-+({									\
-+	union { typeof(*p) __val; char __c[1]; } __u;			\
-+	switch (sizeof(*p)) {						\
-+	case 1:								\
-+		asm volatile ("ldarb %w0, %1"				\
-+			: "=r" (*(u8 *)__u.__c)				\
-+			: "Q" (*p) : "memory");				\
-+		break;							\
-+	case 2:								\
-+		asm volatile ("ldarh %w0, %1"				\
-+			: "=r" (*(u16 *)__u.__c)			\
-+			: "Q" (*p) : "memory");				\
-+		break;							\
-+	case 4:								\
-+		asm volatile ("ldar %w0, %1"				\
-+			: "=r" (*(u32 *)__u.__c)			\
-+			: "Q" (*p) : "memory");				\
-+		break;							\
-+	case 8:								\
-+		asm volatile ("ldar %0, %1"				\
-+			: "=r" (*(u64 *)__u.__c)			\
-+			: "Q" (*p) : "memory");				\
-+		break;							\
-+	}								\
-+	__u.__val;							\
-+})
-+
- #endif /* _ASMARM64_BARRIER_H_ */
-diff --git a/arm/barrier-litmus-test.c b/arm/barrier-litmus-test.c
+@@ -44,6 +44,7 @@ cflatobjs += lib/pci-testdev.o
+ cflatobjs += lib/virtio.o
+ cflatobjs += lib/virtio-mmio.o
+ cflatobjs += lib/chr-testdev.o
++cflatobjs += lib/prng.o
+ cflatobjs += lib/arm/io.o
+ cflatobjs += lib/arm/setup.o
+ cflatobjs += lib/arm/mmu.o
+diff --git a/lib/prng.h b/lib/prng.h
 new file mode 100644
-index 0000000..e90f6dd
+index 0000000..bf5776d
 --- /dev/null
-+++ b/arm/barrier-litmus-test.c
-@@ -0,0 +1,450 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
++++ b/lib/prng.h
+@@ -0,0 +1,82 @@
 +/*
-+ * ARM Barrier Litmus Tests
-+ *
-+ * This test provides a framework for testing barrier conditions on
-+ * the processor. It's simpler than the more involved barrier testing
-+ * frameworks as we are looking for simple failures of QEMU's TCG not
-+ * weird edge cases the silicon gets wrong.
++ * PRNG Header
 + */
++#ifndef __PRNG_H__
++#define __PRNG_H__
 +
-+#include <libcflat.h>
-+#include <asm/smp.h>
-+#include <asm/cpumask.h>
-+#include <asm/barrier.h>
-+#include <asm/mmu.h>
++# include <stdint.h>
 +
-+#define MAX_CPUS 8
 +
-+/* Array size and access controls */
-+static int array_size = 100000;
-+static int wait_if_ahead;
 +
-+static cpumask_t cpu_mask;
++typedef struct isaac_ctx isaac_ctx;
 +
-+/*
-+ * These test_array_* structures are a contiguous array modified by two or more
-+ * competing CPUs. The padding is to ensure the variables do not share
-+ * cache lines.
-+ *
-+ * All structures start zeroed.
-+ */
 +
-+typedef struct test_array {
-+	volatile unsigned int x;
-+	uint8_t dummy[64];
-+	volatile unsigned int y;
-+	uint8_t dummy2[64];
-+	volatile unsigned int r[MAX_CPUS];
-+} test_array;
 +
-+volatile test_array *array;
++/*This value may be lowered to reduce memory usage on embedded platforms, at
++  the cost of reducing security and increasing bias.
++  Quoting Bob Jenkins: "The current best guess is that bias is detectable after
++  2**37 values for [ISAAC_SZ_LOG]=3, 2**45 for 4, 2**53 for 5, 2**61 for 6,
++  2**69 for 7, and 2**77 values for [ISAAC_SZ_LOG]=8."*/
++#define ISAAC_SZ_LOG      (8)
++#define ISAAC_SZ          (1<<ISAAC_SZ_LOG)
++#define ISAAC_SEED_SZ_MAX (ISAAC_SZ<<2)
 +
-+/* Test definition structure
-+ *
-+ * The first function will always run on the primary CPU, it is
-+ * usually the one that will detect any weirdness and trigger the
-+ * failure of the test.
-+ */
 +
-+typedef void (*test_fn)(void);
 +
-+typedef struct {
-+	const char *test_name;
-+	bool  should_pass;
-+	test_fn main_fn;
-+	test_fn secondary_fns[MAX_CPUS-1];
-+} test_descr_t;
-+
-+/* Litmus tests */
-+
-+static unsigned long sync_start(void)
-+{
-+	const unsigned long gate_mask = ~0x3ffff;
-+	unsigned long gate, now;
-+
-+	gate = get_cntvct() & gate_mask;
-+	do {
-+		now = get_cntvct();
-+	} while ((now & gate_mask) == gate);
-+
-+	return now;
-+}
-+
-+/* Simple Message Passing
-+ *
-+ * x is the message data
-+ * y is the flag to indicate the data is ready
-+ *
-+ * Reading x == 0 when y == 1 is a failure.
-+ */
-+
-+static void message_passing_write(void)
-+{
-+	int i;
-+
-+	sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+
-+		entry->x = 1;
-+		entry->y = 1;
-+	}
-+
-+	halt();
-+}
-+
-+static void message_passing_read(void)
-+{
-+	int i;
-+	int errors = 0, ready = 0;
-+
-+	sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int x, y;
-+
-+		y = entry->y;
-+		x = entry->x;
-+
-+		if (y && !x)
-+			errors++;
-+		ready += y;
-+	}
-+
-+	/*
-+	 * We expect this to fail but with STO backends you often get
-+	 * way with it. Fudge xfail if we did actually pass.
-+	 */
-+	report_xfail(errors == 0 ? false : true, errors == 0,
-+		     "mp: %d errors, %d ready", errors, ready);
-+}
-+
-+/* Simple Message Passing with barriers */
-+static void message_passing_write_barrier(void)
-+{
-+	int i;
-+
-+	sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+
-+		entry->x = 1;
-+		smp_wmb();
-+		entry->y = 1;
-+	}
-+
-+	halt();
-+}
-+
-+static void message_passing_read_barrier(void)
-+{
-+	int i;
-+	int errors = 0, ready = 0, not_ready = 0;
-+
-+	sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int x, y;
-+
-+		y = entry->y;
-+		smp_rmb();
-+		x = entry->x;
-+
-+		if (y && !x)
-+			errors++;
-+
-+		if (y) {
-+			ready++;
-+		} else {
-+			not_ready++;
-+
-+			if (not_ready > 2) {
-+				entry = &array[i+1];
-+				do {
-+					not_ready = 0;
-+				} while (wait_if_ahead && !entry->y);
-+			}
-+		}
-+	}
-+
-+	report(errors == 0, "mp barrier: %d errors, %d ready", errors, ready);
-+}
-+
-+/* Simple Message Passing with Acquire/Release */
-+static void message_passing_write_release(void)
-+{
-+	int i;
-+
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+
-+		entry->x = 1;
-+		smp_store_release(&entry->y, 1);
-+	}
-+
-+	halt();
-+}
-+
-+static void message_passing_read_acquire(void)
-+{
-+	int i;
-+	int errors = 0, ready = 0, not_ready = 0;
-+
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int x, y;
-+
-+		y = smp_load_acquire(&entry->y);
-+		x = entry->x;
-+
-+		if (y && !x)
-+			errors++;
-+
-+		if (y) {
-+			ready++;
-+		} else {
-+			not_ready++;
-+
-+			if (not_ready > 2) {
-+				entry = &array[i+1];
-+				do {
-+					not_ready = 0;
-+				} while (wait_if_ahead && !entry->y);
-+			}
-+		}
-+	}
-+
-+	report(errors == 0, "mp acqrel: %d errors, %d ready", errors, ready);
-+}
-+
-+/*
-+ * Store after load
-+ *
-+ * T1: write 1 to x, load r from y
-+ * T2: write 1 to y, load r from x
-+ *
-+ * Without memory fence r[0] && r[1] == 0
-+ * With memory fence both == 0 should be impossible
-+ */
-+
-+static void check_store_and_load_results(const char *name, int thread,
-+					 bool xfail, unsigned long start,
-+					 unsigned long end)
-+{
-+	int i;
-+	int neither = 0;
-+	int only_first = 0;
-+	int only_second = 0;
-+	int both = 0;
-+
-+	for ( i= 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+
-+		if (entry->r[0] == 0 &&
-+		    entry->r[1] == 0)
-+			neither++;
-+		else if (entry->r[0] &&
-+			entry->r[1])
-+			both++;
-+		else if (entry->r[0])
-+			only_first++;
-+		else
-+			only_second++;
-+	}
-+
-+	printf("T%d: %08lx->%08lx neither=%d only_t1=%d only_t2=%d both=%d\n", thread,
-+		start, end, neither, only_first, only_second, both);
-+
-+	if (thread == 1)
-+		report_xfail(xfail, neither==0, "%s: errors=%d", name, neither);
-+
-+}
-+
-+/*
-+ * This attempts to synchronise the start of both threads to roughly
-+ * the same time. On real hardware there is a little latency as the
-+ * secondary vCPUs are powered up however this effect it much more
-+ * exaggerated on a TCG host.
-+ *
-+ * Busy waits until the we pass a future point in time, returns final
-+ * start time.
-+ */
-+
-+static void store_and_load_1(void)
-+{
-+	int i;
-+	unsigned long start, end;
-+
-+	start = sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int r;
-+
-+		entry->x = 1;
-+		r = entry->y;
-+		entry->r[0] = r;
-+	}
-+	end = get_cntvct();
-+
-+	smp_mb();
-+
-+	while (!cpumask_test_cpu(1, &cpu_mask))
-+		cpu_relax();
-+
-+	check_store_and_load_results("sal", 1, true, start, end);
-+}
-+
-+static void store_and_load_2(void)
-+{
-+	int i;
-+	unsigned long start, end;
-+
-+	start = sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int r;
-+
-+		entry->y = 1;
-+		r = entry->x;
-+		entry->r[1] = r;
-+	}
-+	end = get_cntvct();
-+
-+	check_store_and_load_results("sal", 2, true, start, end);
-+
-+	cpumask_set_cpu(1, &cpu_mask);
-+
-+	halt();
-+}
-+
-+static void store_and_load_barrier_1(void)
-+{
-+	int i;
-+	unsigned long start, end;
-+
-+	start = sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int r;
-+
-+		entry->x = 1;
-+		smp_mb();
-+		r = entry->y;
-+		entry->r[0] = r;
-+	}
-+	end = get_cntvct();
-+
-+	smp_mb();
-+
-+	while (!cpumask_test_cpu(1, &cpu_mask))
-+		cpu_relax();
-+
-+	check_store_and_load_results("sal_barrier", 1, false, start, end);
-+}
-+
-+static void store_and_load_barrier_2(void)
-+{
-+	int i;
-+	unsigned long start, end;
-+
-+	start = sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int r;
-+
-+		entry->y = 1;
-+		smp_mb();
-+		r = entry->x;
-+		entry->r[1] = r;
-+	}
-+	end = get_cntvct();
-+
-+	check_store_and_load_results("sal_barrier", 2, false, start, end);
-+
-+	cpumask_set_cpu(1, &cpu_mask);
-+
-+	halt();
-+}
-+
-+
-+/* Test array */
-+static test_descr_t tests[] = {
-+
-+	{ "mp",         false,
-+	  message_passing_read,
-+	  { message_passing_write }
-+	},
-+
-+	{ "mp_barrier", true,
-+	  message_passing_read_barrier,
-+	  { message_passing_write_barrier }
-+	},
-+
-+	{ "mp_acqrel", true,
-+	  message_passing_read_acquire,
-+	  { message_passing_write_release }
-+	},
-+
-+	{ "sal",       false,
-+	  store_and_load_1,
-+	  { store_and_load_2 }
-+	},
-+
-+	{ "sal_barrier", true,
-+	  store_and_load_barrier_1,
-+	  { store_and_load_barrier_2 }
-+	},
++/*ISAAC is the most advanced of a series of pseudo-random number generators
++  designed by Robert J. Jenkins Jr. in 1996.
++  http://www.burtleburtle.net/bob/rand/isaac.html
++  To quote:
++  No efficient method is known for deducing their internal states.
++  ISAAC requires an amortized 18.75 instructions to produce a 32-bit value.
++  There are no cycles in ISAAC shorter than 2**40 values.
++  The expected cycle length is 2**8295 values.*/
++struct isaac_ctx{
++	unsigned n;
++	uint32_t r[ISAAC_SZ];
++	uint32_t m[ISAAC_SZ];
++	uint32_t a;
++	uint32_t b;
++	uint32_t c;
 +};
 +
 +
-+static void setup_and_run_litmus(test_descr_t *test)
++/**
++ * isaac_init - Initialize an instance of the ISAAC random number generator.
++ * @_ctx:   The instance to initialize.
++ * @_seed:  The specified seed bytes.
++ *          This may be NULL if _nseed is less than or equal to zero.
++ * @_nseed: The number of bytes to use for the seed.
++ *          If this is greater than ISAAC_SEED_SZ_MAX, the extra bytes are
++ *           ignored.
++ */
++void isaac_init(isaac_ctx *_ctx,const unsigned char *_seed,int _nseed);
++
++/**
++ * isaac_reseed - Mix a new batch of entropy into the current state.
++ * To reset ISAAC to a known state, call isaac_init() again instead.
++ * @_ctx:   The instance to reseed.
++ * @_seed:  The specified seed bytes.
++ *          This may be NULL if _nseed is zero.
++ * @_nseed: The number of bytes to use for the seed.
++ *          If this is greater than ISAAC_SEED_SZ_MAX, the extra bytes are
++ *           ignored.
++ */
++void isaac_reseed(isaac_ctx *_ctx,const unsigned char *_seed,int _nseed);
++/**
++ * isaac_next_uint32 - Return the next random 32-bit value.
++ * @_ctx: The ISAAC instance to generate the value with.
++ */
++uint32_t isaac_next_uint32(isaac_ctx *_ctx);
++/**
++ * isaac_next_uint - Uniform random integer less than the given value.
++ * @_ctx: The ISAAC instance to generate the value with.
++ * @_n:   The upper bound on the range of numbers returned (not inclusive).
++ *        This must be greater than zero and less than 2**32.
++ *        To return integers in the full range 0...2**32-1, use
++ *         isaac_next_uint32() instead.
++ * Return: An integer uniformly distributed between 0 and _n-1 (inclusive).
++ */
++uint32_t isaac_next_uint(isaac_ctx *_ctx,uint32_t _n);
++
++#endif
+diff --git a/lib/prng.c b/lib/prng.c
+new file mode 100644
+index 0000000..ebd6df7
+--- /dev/null
++++ b/lib/prng.c
+@@ -0,0 +1,162 @@
++/*
++ * Pseudo Random Number Generator
++ *
++ * Lifted from ccan modules ilog/isaac under CC0
++ *   - http://ccodearchive.net/info/isaac.html
++ *   - http://ccodearchive.net/info/ilog.html
++ *
++ * And lightly hacked to compile under the KVM unit test environment.
++ * This provides a handy RNG for torture tests that want to vary
++ * delays and the like.
++ *
++ */
++
++/*Written by Timothy B. Terriberry (tterribe@xiph.org) 1999-2009.
++  CC0 (Public domain) - see LICENSE file for details
++  Based on the public domain implementation by Robert J. Jenkins Jr.*/
++
++#include "libcflat.h"
++
++#include <string.h>
++#include "prng.h"
++
++#define ISAAC_MASK        (0xFFFFFFFFU)
++
++/* Extract ISAAC_SZ_LOG bits (starting at bit 2). */
++static inline uint32_t lower_bits(uint32_t x)
 +{
-+	array = calloc(array_size, sizeof(test_array));
-+
-+	if (array) {
-+		int i = 0;
-+
-+		printf("Allocated test array @ %p\n", array);
-+
-+		while (test->secondary_fns[i]) {
-+			smp_boot_secondary(i+1, test->secondary_fns[i]);
-+			i++;
-+		}
-+
-+		test->main_fn();
-+	} else
-+		report(false, "%s: failed to allocate memory", test->test_name);
++	return (x & ((ISAAC_SZ-1) << 2)) >> 2;
 +}
 +
-+int main(int argc, char **argv)
++/* Extract next ISAAC_SZ_LOG bits (starting at bit ISAAC_SZ_LOG+2). */
++static inline uint32_t upper_bits(uint32_t y)
 +{
-+	int i;
-+	unsigned int j;
-+	test_descr_t *test = NULL;
++	return (y >> (ISAAC_SZ_LOG+2)) & (ISAAC_SZ-1);
++}
 +
-+	for (i = 0; i < argc; i++) {
-+		char *arg = argv[i];
-+
-+		for (j = 0; j < ARRAY_SIZE(tests); j++) {
-+			if (strcmp(arg, tests[j].test_name) == 0)
-+				test = &tests[j];
-+		}
-+
-+		/* Test modifiers */
-+		if (strstr(arg, "count=") != NULL) {
-+			char *p = strstr(arg, "=");
-+
-+			array_size = atol(p+1);
-+		} else if (strcmp(arg, "wait") == 0) {
-+			wait_if_ahead = 1;
-+		}
++static void isaac_update(isaac_ctx *_ctx){
++	uint32_t *m;
++	uint32_t *r;
++	uint32_t  a;
++	uint32_t  b;
++	uint32_t  x;
++	uint32_t  y;
++	int       i;
++	m=_ctx->m;
++	r=_ctx->r;
++	a=_ctx->a;
++	b=_ctx->b+(++_ctx->c);
++	for(i=0;i<ISAAC_SZ/2;i++){
++		x=m[i];
++		a=(a^a<<13)+m[i+ISAAC_SZ/2];
++		m[i]=y=m[lower_bits(x)]+a+b;
++		r[i]=b=m[upper_bits(y)]+x;
++		x=m[++i];
++		a=(a^a>>6)+m[i+ISAAC_SZ/2];
++		m[i]=y=m[lower_bits(x)]+a+b;
++		r[i]=b=m[upper_bits(y)]+x;
++		x=m[++i];
++		a=(a^a<<2)+m[i+ISAAC_SZ/2];
++		m[i]=y=m[lower_bits(x)]+a+b;
++		r[i]=b=m[upper_bits(y)]+x;
++		x=m[++i];
++		a=(a^a>>16)+m[i+ISAAC_SZ/2];
++		m[i]=y=m[lower_bits(x)]+a+b;
++		r[i]=b=m[upper_bits(y)]+x;
 +	}
-+
-+	if (test)
-+		setup_and_run_litmus(test);
-+	else
-+		report(false, "Unknown test");
-+
-+	return report_summary();
++	for(i=ISAAC_SZ/2;i<ISAAC_SZ;i++){
++		x=m[i];
++		a=(a^a<<13)+m[i-ISAAC_SZ/2];
++		m[i]=y=m[lower_bits(x)]+a+b;
++		r[i]=b=m[upper_bits(y)]+x;
++		x=m[++i];
++		a=(a^a>>6)+m[i-ISAAC_SZ/2];
++		m[i]=y=m[lower_bits(x)]+a+b;
++		r[i]=b=m[upper_bits(y)]+x;
++		x=m[++i];
++		a=(a^a<<2)+m[i-ISAAC_SZ/2];
++		m[i]=y=m[lower_bits(x)]+a+b;
++		r[i]=b=m[upper_bits(y)]+x;
++		x=m[++i];
++		a=(a^a>>16)+m[i-ISAAC_SZ/2];
++		m[i]=y=m[lower_bits(x)]+a+b;
++		r[i]=b=m[upper_bits(y)]+x;
++	}
++	_ctx->b=b;
++	_ctx->a=a;
++	_ctx->n=ISAAC_SZ;
 +}
-diff --git a/arm/mttcgtests.cfg b/arm/mttcgtests.cfg
-index 46fcb57..2b46756 100644
---- a/arm/mttcgtests.cfg
-+++ b/arm/mttcgtests.cfg
-@@ -57,3 +57,36 @@ file = locking-test.flat
- smp = $(($MAX_SMP>4?4:$MAX_SMP))
- extra_params = -append 'excl'
- groups = locking
 +
-+# Barrier Litmus tests
-+[barrier-litmus::mp]
-+file = barrier-litmus-test.flat
-+smp = 2
-+extra_params = -append 'mp'
-+groups = barrier
++static void isaac_mix(uint32_t _x[8]){
++	static const unsigned char SHIFT[8]={11,2,8,16,10,4,8,9};
++	int i;
++	for(i=0;i<8;i++){
++		_x[i]^=_x[(i+1)&7]<<SHIFT[i];
++		_x[(i+3)&7]+=_x[i];
++		_x[(i+1)&7]+=_x[(i+2)&7];
++		i++;
++		_x[i]^=_x[(i+1)&7]>>SHIFT[i];
++		_x[(i+3)&7]+=_x[i];
++		_x[(i+1)&7]+=_x[(i+2)&7];
++	}
++}
 +
-+[barrier-litmus::mp-barrier]
-+file = barrier-litmus-test.flat
-+smp = 2
-+extra_params = -append 'mp_barrier'
-+groups = barrier
 +
-+[barrier-litmus::mp-acqrel]
-+file = barrier-litmus-test.flat
-+smp = 2
-+extra_params = -append 'mp_acqrel'
-+groups = barrier
++void isaac_init(isaac_ctx *_ctx,const unsigned char *_seed,int _nseed){
++	_ctx->a=_ctx->b=_ctx->c=0;
++	memset(_ctx->r,0,sizeof(_ctx->r));
++	isaac_reseed(_ctx,_seed,_nseed);
++}
 +
-+[barrier-litmus::sal]
-+file = barrier-litmus-test.flat
-+smp = 2
-+extra_params = -append 'sal'
-+groups = barrier
-+accel = tcg
++void isaac_reseed(isaac_ctx *_ctx,const unsigned char *_seed,int _nseed){
++	uint32_t *m;
++	uint32_t *r;
++	uint32_t  x[8];
++	int       i;
++	int       j;
++	m=_ctx->m;
++	r=_ctx->r;
++	if(_nseed>ISAAC_SEED_SZ_MAX)_nseed=ISAAC_SEED_SZ_MAX;
++	for(i=0;i<_nseed>>2;i++){
++		r[i]^=(uint32_t)_seed[i<<2|3]<<24|(uint32_t)_seed[i<<2|2]<<16|
++			(uint32_t)_seed[i<<2|1]<<8|_seed[i<<2];
++	}
++	_nseed-=i<<2;
++	if(_nseed>0){
++		uint32_t ri;
++		ri=_seed[i<<2];
++		for(j=1;j<_nseed;j++)ri|=(uint32_t)_seed[i<<2|j]<<(j<<3);
++		r[i++]^=ri;
++	}
++	x[0]=x[1]=x[2]=x[3]=x[4]=x[5]=x[6]=x[7]=0x9E3779B9U;
++	for(i=0;i<4;i++)isaac_mix(x);
++	for(i=0;i<ISAAC_SZ;i+=8){
++		for(j=0;j<8;j++)x[j]+=r[i+j];
++		isaac_mix(x);
++		memcpy(m+i,x,sizeof(x));
++	}
++	for(i=0;i<ISAAC_SZ;i+=8){
++		for(j=0;j<8;j++)x[j]+=m[i+j];
++		isaac_mix(x);
++		memcpy(m+i,x,sizeof(x));
++	}
++	isaac_update(_ctx);
++}
 +
-+[barrier-litmus::sal-barrier]
-+file = barrier-litmus-test.flat
-+smp = 2
-+extra_params = -append 'sal_barrier'
-+groups = barrier
++uint32_t isaac_next_uint32(isaac_ctx *_ctx){
++	if(!_ctx->n)isaac_update(_ctx);
++	return _ctx->r[--_ctx->n];
++}
 +
++uint32_t isaac_next_uint(isaac_ctx *_ctx,uint32_t _n){
++	uint32_t r;
++	uint32_t v;
++	uint32_t d;
++	do{
++		r=isaac_next_uint32(_ctx);
++		v=r%_n;
++		d=r-v;
++	}
++	while(((d+_n-1)&ISAAC_MASK)<d);
++	return v;
++}
 -- 
 2.30.2

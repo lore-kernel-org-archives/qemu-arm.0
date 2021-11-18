@@ -1,108 +1,101 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp197150lfk;
-        Wed, 17 Nov 2021 22:57:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzt29jMT18xlGu7/tAqGvlJCHZOHNHMBVeWZ+f9/zBeouzqK/VHp1KqMX372K884Z/JalX9
-X-Received: by 2002:a05:6214:334:: with SMTP id j20mr62350741qvu.15.1637218641546;
-        Wed, 17 Nov 2021 22:57:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637218641; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp330377lfk;
+        Thu, 18 Nov 2021 01:09:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz8tJErwVL0a9MV/kFekQCtjpXrYrHv7ISRFsidAz3IGyEUKQpnoCdLR+p34di7VYrVQzJy
+X-Received: by 2002:a37:c20b:: with SMTP id i11mr19263290qkm.300.1637226592587;
+        Thu, 18 Nov 2021 01:09:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637226592; cv=none;
         d=google.com; s=arc-20160816;
-        b=FS0brDeKDcCPs0huKRY7qvYS79y32Hh+TYDurWzQGer3PDp0Tsx+WrXfwUHCoWu5/R
-         iif5NnOBudwd9x64okKOwDdYF8PwDhoYGjtP0lX3c6Ol1BsWg6HnWpcVeLpfaS9fOroh
-         dVSij4kFIR4DVTYsk0LY9rzgQElfWd4OHw6sRuoFsSoCM05j+p6+7/LdOm1KfQt10AVn
-         pvWzkPMdFDLyyy3aQvKFBTMqkjXa/EgCAPD+avu2vY4gEu+givtlRd8f5ALdymNnYrtD
-         UoHJDZKyeam5Pey9DroaGacBHqmdPUiLVGhfQPlrakd/C5IW19HLu4htHkoO6pVgfS02
-         ZaRA==
+        b=WEHIjh2BT5u83os7BNf6Tlp6OKYXz/C8b1VgYonzWC+1qL5C+WGOw2nZL+UJX6sMZV
+         ijwiQB6uV/D0dERHvHiqp0geAg0EHMKarGbMWxDZ4aa+en2FX1eN8xOWHsMZzITgqpYY
+         GORy113owj0yHXszYMnBe/ptWDve8sNU3H3wrnRQX1sbCRqU8Xw2Z0+rVVT7RRD2Kq8O
+         UWvyozmrl2JKRhU9j0THOxBs84AHM+VOuasO6MyRCuguv/vUquIw8aeALAyKE+T2VLj7
+         M8jf05ymr4BVGZpdhVuvTKa5hUsqocXo+tcjeMkEjRyfvFEHKRMECJD0vyz1Q7Ei284J
+         xvdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:to:from
-         :dkim-signature;
-        bh=RQh2nPzLZ0bpcJKCbWKLD+G2mdW+RE9UfMD39mUoAj0=;
-        b=xrpp22zSJdk6P+uI6uPs9JQ+kFHBpIZ1F0XVhB3qbdk9MsJncCgB3wn77edG9BT1Ys
-         MYysIFxC02st9zsWYC8/RwgwXQ42xzPlTAeeKFaVBRS8QcmpXgTHbc7qm3MpwtIVqRZe
-         0yBkneXa5ubY3bL+OGGJbBaBWLc/ezhnWRHQS00Fdd7N0qRMfKjlQ76lApvYSehNSBh4
-         VIwHwzuHmyueVpBAkXKRDgi8ys9aZGdiP69G2lILaBCYGdlD6cAskLSRp/c1bHrRITZN
-         FVtp+ezv74r2og4VQuXWbP2hEgQUTnaH3vDV0qKiZ6cGNgzdn42VJ3zNtOhlImR3wp7r
-         0G0w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=kfI+FCi0EqK/7iB5Rx4IZmwT2mYcKxiRGNfQ35/pOJA=;
+        b=iz/TwyejB0amcyeuJzR1qMGZ4zfrPEPtqjy1D/onw4TAzV6v3j0Q7AKnmoCbUIZaGr
+         ObShnMmHoS9dpGbo7Txy7vQHXgLrALhkedCYp6AGinB8H65seopDLP4KinKOATiR1dpj
+         QEkqCXW7y1/DZEwnye/YitNkm3fMwYzX04xMshqWSFjyn1YwJ7V5duh4HeTguOkMpc7n
+         hGDnGebyi7KPaYuA+5GyawinoSUNJ7pTgcoTURbq/91OvK2/Ow9maI/ceTGNDgCYnvz1
+         jemJx53pPucpcs+ETL5rKkPxGTbRUcumooEYM6Jnqvhz5paeoO3Uh0H8kH6YrdoA7ZUD
+         5WCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GP5fK3bp;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=jAHLm44Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x5si2874028qkd.152.2021.11.17.22.57.21
+        by mx.google.com with ESMTPS id w8si4956121qtc.218.2021.11.18.01.09.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Nov 2021 22:57:21 -0800 (PST)
+        Thu, 18 Nov 2021 01:09:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GP5fK3bp;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=jAHLm44Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59966 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45912 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mnbMG-0005cq-Td
-	for alex.bennee@linaro.org; Thu, 18 Nov 2021 01:57:20 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60910)
+	id 1mndQW-00027e-4t
+	for alex.bennee@linaro.org; Thu, 18 Nov 2021 04:09:52 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnbLj-0005bi-3L
- for qemu-arm@nongnu.org; Thu, 18 Nov 2021 01:56:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:26202)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mnbLg-0006ey-LJ
- for qemu-arm@nongnu.org; Thu, 18 Nov 2021 01:56:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637218600;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=RQh2nPzLZ0bpcJKCbWKLD+G2mdW+RE9UfMD39mUoAj0=;
- b=GP5fK3bpqJBEtKvM6A4XPEVTvAyEmFL/krnCdpeFFuIks5WiG26PqBR0DkIDeQQO919A1p
- Xwc5dwoZ92ix6OvdZ4pri+HeIn+5czk99lJSdcSlD9DS5WYFRoeC/hxCo2e3waK0COtWyo
- hMTp1lF3zc2c/mn+VRr6VaedpwE8Isg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-586-QP_jtTXnNsSW3ygJtVcDFg-1; Thu, 18 Nov 2021 01:56:36 -0500
-X-MC-Unique: QP_jtTXnNsSW3ygJtVcDFg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4F64687D541;
- Thu, 18 Nov 2021 06:56:35 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 81D0A604CC;
- Thu, 18 Nov 2021 06:56:34 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id DB13311380A7; Thu, 18 Nov 2021 07:56:32 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Havard Skinnemoen <hskinnemoen@google.com>
-Subject: Re: [PATCH v2 03/13] hw/arm/npcm7xx_boards: Replace
- drive_get_next() by drive_get()
-References: <20211117163409.3587705-1-armbru@redhat.com>
- <20211117163409.3587705-4-armbru@redhat.com>
- <CAFQmdRaz9aa22KVHup15oquDrt+HviqqNtGvt9tb21=spTKHog@mail.gmail.com>
-Date: Thu, 18 Nov 2021 07:56:32 +0100
-In-Reply-To: <CAFQmdRaz9aa22KVHup15oquDrt+HviqqNtGvt9tb21=spTKHog@mail.gmail.com>
- (Havard Skinnemoen's message of "Wed, 17 Nov 2021 08:53:57 -0800")
-Message-ID: <874k8ax87z.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <janne.karhunen@gmail.com>)
+ id 1mndQI-00022t-I1
+ for qemu-arm@nongnu.org; Thu, 18 Nov 2021 04:09:38 -0500
+Received: from [2a00:1450:4864:20::131] (port=39725
+ helo=mail-lf1-x131.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <janne.karhunen@gmail.com>)
+ id 1mndQH-00012K-A3
+ for qemu-arm@nongnu.org; Thu, 18 Nov 2021 04:09:38 -0500
+Received: by mail-lf1-x131.google.com with SMTP id f18so22698749lfv.6
+ for <qemu-arm@nongnu.org>; Thu, 18 Nov 2021 01:09:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=kfI+FCi0EqK/7iB5Rx4IZmwT2mYcKxiRGNfQ35/pOJA=;
+ b=jAHLm44ZbXU+iDx+GYuiWVozWKQvdS1r8TbPc/EJ8WTmUoWUfW6nPsP9aHMKaFFMvN
+ qopVIJYI39TOlZkEoqQAfRbNhToLQ2x8Dhojzw6XJVdVfcWjptBgj0VyYxu43nBc4a9J
+ 70i7tAMnkgXAqq+wKExWyi3Ywy0A4ACGzJXgb4JO6i8H2boS00eYACMrOhf0gXed/P0U
+ 1/vjdLXfTTxWRpZeemgBi89JhGS3TOA82y2L2CpKHZuYKdaPyu6syhbmlsFtcf13QHOE
+ T9kJVbQiHknozfc4idYbJCL8pVl5PQaZygxLkbzfwI/0E4xo2hQ+hCGYRegQzfwG5c0f
+ f0wg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=kfI+FCi0EqK/7iB5Rx4IZmwT2mYcKxiRGNfQ35/pOJA=;
+ b=73+C76X7PUEmXl94vshUIq1VTMnbDHescEEQD0DSkXPHkemFKLfXEJPUfge5mGtGST
+ LAcLal+KEAdsB4KpZ/xpqWiADwXeP7mE+XInUaX/9lvLo+tBFEzwcrT+YtM/ZE/V9sNt
+ uSs+HbQWOk3cUDLSFh64CIV60721sosqZ9xo/7eYLlPpeI1yS61kE5qZHcFQq2Odm33h
+ KNAzIviw9bPV86JQzRCfFnVlnNgOzoKJfaBK2Nt1ty69xdmvt4+P2+rIhrzpxqy1mk4/
+ z3ZSdYevlhIOLBPEYlHSKTAWkfO2/HlG7DOzWPes2ixdqs0Yk8dxDhkaMBtUY5bgKqaP
+ i9Qg==
+X-Gm-Message-State: AOAM530t9RvpSluT63SU5GAYpAmv7z+TEsgksq7EwBUA04G7S8vlQGh0
+ 5160oRWjkiANKrKo+CBootZ1/mXQ1aMd+09/khJNvcwTWOI=
+X-Received: by 2002:a2e:964a:: with SMTP id z10mr15109441ljh.210.1637226572838; 
+ Thu, 18 Nov 2021 01:09:32 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.698,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+From: Janne Karhunen <janne.karhunen@gmail.com>
+Date: Thu, 18 Nov 2021 11:09:21 +0200
+Message-ID: <CAE=NcrYJfjF-pEiX-tY7NfiTbDfXtcxnk5AnBVwc2AX4cpeCrg@mail.gmail.com>
+Subject: softmmu 'at' instruction support
+To: qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::131
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::131;
+ envelope-from=janne.karhunen@gmail.com; helo=mail-lf1-x131.google.com
+X-Spam_score_int: 14
+X-Spam_score: 1.4
+X-Spam_bar: +
+X-Spam_report: (1.4 / 5.0 requ) BAYES_50=0.8, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,84 +108,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- qemu-devel@nongnu.org, Hao Wu <wuhaotsh@google.com>,
- Tyrone Ting <KFTING@nuvoton.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Tcnm1Yfndx3W
+X-TUID: zZgFTFOL9i0x
 
-Havard Skinnemoen <hskinnemoen@google.com> writes:
+Hi,
 
-> On Wed, Nov 17, 2021 at 8:34 AM Markus Armbruster <armbru@redhat.com> wrote:
->>
->> drive_get_next() is basically a bad idea.  It returns the "next" block
->> backend of a certain interface type.  "Next" means bus=0,unit=N, where
->> subsequent calls count N up from zero, per interface type.
->>
->> This lets you define unit numbers implicitly by execution order.  If the
->> order changes, or new calls appear "in the middle", unit numbers change.
->> ABI break.  Hard to spot in review.
->>
->> Machine "quanta-gbs-bmc" connects just one backend with
->> drive_get_next(), but with a helper function.  Change it to use
->> drive_get() directly.  This makes the unit numbers explicit in the
->> code.
->>
->> Cc: Havard Skinnemoen <hskinnemoen@google.com>
->> Cc: Tyrone Ting <kfting@nuvoton.com>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: qemu-arm@nongnu.org
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->> ---
->>  hw/arm/npcm7xx_boards.c | 6 +++---
->>  1 file changed, 3 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
->> index dec7d16ae5..d8a49e4e85 100644
->> --- a/hw/arm/npcm7xx_boards.c
->> +++ b/hw/arm/npcm7xx_boards.c
->> @@ -84,9 +84,9 @@ static void npcm7xx_connect_dram(NPCM7xxState *soc, MemoryRegion *dram)
->>                               &error_abort);
->>  }
->>
->> -static void sdhci_attach_drive(SDHCIState *sdhci)
->> +static void sdhci_attach_drive(SDHCIState *sdhci, int unit)
->>  {
->> -        DriveInfo *di = drive_get_next(IF_SD);
->> +        DriveInfo *di = drive_get(IF_SD, 0, unit);
->
-> +Hao Wu IIRC the chip has separate SD and eMMC buses. Would it make
-> sense to take the bus number as a parameter as well? Is bus 0 the
-> right one to use in this case?
->
-> The existing code always uses bus 0, so this is an improvement either way.
+This looks like a bug to me, please comment if I'm wrong:
 
-Using separate buses for different kinds of devices would be neater, but
-it also would be an incompatible change.  I can't judge whether
-incompatible change is okay here.
+0x0000000100004a3c <at_s12e1r+8>: 80 78 0c d5 at s12e1r, x0
+0x0000000100004a40 <at_s12e1r+12>: 01 74 38 d5 mrs x1, par_el1
 
-This patch is just refactoring code.  An interface change, if desired,
-should be a separate patch.
+(gdb) info registers x0 x1
+x0             0x0                 0
+x1             0x809               2057
 
-> Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+So that would be translation fault level 0, stage 1 if I'm not mistaken.
 
-Thanks!
+(gdb) info all-registers TCR_EL1 VTCR_EL2 TTBR1_EL1
+TCR_EL1        0x400035b5503510    18014629184681232
+VTCR_EL2       0x623590            6436240
+TTBR1_EL1      0x304000041731001   217298683118686209
 
->
->>          BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
->>
->>          BusState *bus = qdev_get_child_bus(DEVICE(sdhci), "sd-bus");
->> @@ -374,7 +374,7 @@ static void quanta_gbs_init(MachineState *machine)
->>                            drive_get(IF_MTD, 0, 0));
->>
->>      quanta_gbs_i2c_init(soc);
->> -    sdhci_attach_drive(&soc->mmc.sdhci);
->> +    sdhci_attach_drive(&soc->mmc.sdhci, 0);
->>      npcm7xx_load_kernel(machine, soc);
->>  }
->>
->> --
->> 2.31.1
->>
+(gdb) p print_table(0x41731000)
+000:0x000000ffff9803 256:0x000000fffff803 507:0x00000041fbc803
+508:0x000000ff9ef803
 
+First gigabyte is populated, yet the 'at' knows nothing about it. Did
+I miss something?
+
+
+--
+Janne

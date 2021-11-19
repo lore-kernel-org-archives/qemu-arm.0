@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id r8sm328551wrz.43.2021.11.19.08.37.11
+        by smtp.gmail.com with ESMTPSA id h18sm259315wre.46.2021.11.19.08.37.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 19 Nov 2021 08:37:11 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 721D91FF9A;
+	by zen.linaroharston (Postfix) with ESMTP id 57DF81FF96;
 	Fri, 19 Nov 2021 16:37:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: kvm@vger.kernel.org
@@ -14,42 +14,30 @@ Cc: qemu-arm@nongnu.org,
 	christoffer.dall@arm.com,
 	maz@kernel.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [kvm-unit-tests PATCH v4 3/3] arch-run: do not process ERRATA when running under TCG
-Date: Fri, 19 Nov 2021 16:37:10 +0000
-Message-Id: <20211119163710.974653-4-alex.bennee@linaro.org>
+Subject: [kvm-unit-tests PATCH v4 0/3] GIC ITS tests
+Date: Fri, 19 Nov 2021 16:37:07 +0000
+Message-Id: <20211119163710.974653-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211119163710.974653-1-alex.bennee@linaro.org>
-References: <20211119163710.974653-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: AL3ve+vxp8fH
+X-TUID: Ew1KZUwoCWZG
 
-All the errata checking looks at the current host kernel version. For
-TCG runs this is entirely irrelevant as the host kernel has no impact
-on the behaviour of the guest. In fact we should set ERRATA_FORCE to
-ensure we run those tests as QEMU doesn't attempt to model
-non-confirming architectures.
+Hi,
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- scripts/arch-run.bash | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+changes since v3:
 
-diff --git a/scripts/arch-run.bash b/scripts/arch-run.bash
-index 43da998..f1f4456 100644
---- a/scripts/arch-run.bash
-+++ b/scripts/arch-run.bash
-@@ -267,7 +267,9 @@ env_file ()
- 
- env_errata ()
- {
--	if [ "$ERRATATXT" ] && [ ! -f "$ERRATATXT" ]; then
-+	if [ "$ACCEL" = "tcg" ]; then
-+		eval export "ERRATA_FORCE=y"
-+	elif [ "$ERRATATXT" ] && [ ! -f "$ERRATATXT" ]; then
- 		echo "$ERRATATXT not found. (ERRATATXT=$ERRATATXT)" >&2
- 		return 2
- 	elif [ "$ERRATATXT" ]; then
+  - dropped the pending LPI test altogether
+
+Alex Bennée (3):
+  arm64: remove invalid check from its-trigger test
+  arm64: enable its-migration tests for TCG
+  arch-run: do not process ERRATA when running under TCG
+
+ scripts/arch-run.bash |  4 +++-
+ arm/gic.c             | 28 ++++++++--------------------
+ arm/unittests.cfg     |  3 ---
+ 3 files changed, 11 insertions(+), 24 deletions(-)
+
 -- 
 2.30.2

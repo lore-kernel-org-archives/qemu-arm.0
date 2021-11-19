@@ -1,229 +1,379 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp2543386lfk;
-        Fri, 19 Nov 2021 08:41:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwV30qSUqLrPvJvMA3JMboD7VWCQzUOGqdeEEjViNzGTUWhQzQAoJjBgbZLT4H/qo92zTgH
-X-Received: by 2002:a67:fc91:: with SMTP id x17mr99283481vsp.23.1637340102615;
-        Fri, 19 Nov 2021 08:41:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637340102; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp2610315lfk;
+        Fri, 19 Nov 2021 09:27:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzrH2wzzXI8q4diHK+oaOHjhFM1v0gIl/B+uvm6LoZHjlmyGdQXPd56vKp8q5Qeq9/KloPQ
+X-Received: by 2002:a67:fa93:: with SMTP id f19mr96429395vsq.48.1637342833589;
+        Fri, 19 Nov 2021 09:27:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637342833; cv=none;
         d=google.com; s=arc-20160816;
-        b=KbeYhtqRwdqvxNUEtj2ysAIxsGZbpBYOWqMHPJbZxTueV7aUlyAAfKmqr4WgtcgQF7
-         djQngnZfK7en3hxkgKBGkFYUzaMozPb0fH0lQjmQwkFjjgpV6BGvZdNajVhHfC2UEU0F
-         MniL+iAAxh+hG8wtTAr2I5CK7zKMURRK1LBu/kz4ccoMYxfJccCvKaiLMtqcfM3lDx8/
-         pr39H4NIPrGkGoBUPRu64x2Vo3SI1EpD9AEzB4VKHpIjKv5aB/3ZcBXJCY+Jvyr9sYcg
-         fESlvaFTvbAR4oxz29iUXzLdkiZnVEdCKJ/5mqM4UejUaEo7N0BhmNRMkcjDejYwD99W
-         xZpg==
+        b=OvT+Nfh6NHoeNXw9SFig4C/2Ib1P7EknKxFLdhu9WSbaumzy96CIh0MH0cr99RjnXP
+         Q+9MQP2nYJgIlmht2yj0oc77PhV9kuHTs6Dy59JgAvsZA1LBGjlUWRoAkQ+wicnQsIYy
+         nCIa17bqfvHW6TSW2YTeAMJrCa76s9Czwh8Kqp6h547ylOm2JgSOLVg++YG0DtlWXsWl
+         hpmYSymJhs+Q7dL2AlKs/HHkIePHmdCc9vq0sZspVhLHl1cA8oflkc1FDrzQ2NdDJUtp
+         4dgDdEbdatxU2eVyZATbuj9JRpmfN3H0OKtazkoIqX+WHe+Q/fZnDZTeE25FIdMG6pcO
+         UrEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=S+X3+xwfX1qzDsaDbBMl0W4CfvHI15E3kFkRdo44CBU=;
-        b=dU++Eq4lf0I09VLbNzC2jk81XGY3Hu8Ha6GRaw55Paoy75+eHRgBiK6sxoUNo6u8nr
-         XNfF293QiCIhu3/gj+7WdffUCzDHfXNkPxAhNXLetHHMOnijpRO/jJWAnxmb5eUW72ea
-         DHAZhn4tvENvreGEr2BPs+VrKwiXgxd7QZELAwbJ17g5i0I4XhTyal4alO0VMdHKHAZt
-         yfp5O/vMMQafqW483fq3E3JUBF5uYV+MD3p3XFJpm9sV35joyFH5odi2B4fMsRapUO8Q
-         bIWKFNIGe+UJaBMiirzT1ImMn5yfpfxQleHzTrPqz7sGBpeggM+0G71OMX8f0bIWNvRw
-         SAwg==
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date;
+        bh=5tgiFaQJIn9bxR4ob4BLjaJ2smsQfEXWkOAzZvLiRog=;
+        b=S3vhQ+/hlV2wlZkONjv4+tHz3Jt6mFTgI1/MKj9eKno3W0Royy2UF8w5VMBb9lRgBB
+         D80fec9I9w+gtgfexbeQjBHsDvfZB/xbR3KoZFAGYBTkgeWXv0UdrXUAQbXbE6YEZgt5
+         v5KwFjqOuVceOqUFhoOqL7YdlHZ4vNYgAmvzq0WOsi6Qak7lcH4nQVT4IJhndiIj9QFH
+         yY4eoom6hlp4gicDu9LzDEL3GlVkHp5zchXlc/mfyY2TxpeZHeQAb/0c9pZW3fWg+yIL
+         rPcwI1fZiqzuN/vK9A1AirOn9/+ofn1ok48TX/QJZaMvFWlx6JkKcC6oC/DMl/QO/MHh
+         yOsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n+9viAUI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h22si698813vsk.45.2021.11.19.08.41.42
+        by mx.google.com with ESMTPS id b13si983249uas.229.2021.11.19.09.27.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Nov 2021 08:41:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Nov 2021 09:27:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n+9viAUI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36136 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:58228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mo6xI-0005S0-T2
-	for alex.bennee@linaro.org; Fri, 19 Nov 2021 11:41:40 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54920)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mo7fM-00012x-Tw
+	for alex.bennee@linaro.org; Fri, 19 Nov 2021 12:27:12 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50148)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mo6qJ-00043Q-9o
- for qemu-devel@nongnu.org; Fri, 19 Nov 2021 11:34:27 -0500
-Received: from [2a00:1450:4864:20::42e] (port=34337
- helo=mail-wr1-x42e.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mo6qG-00078d-W9
- for qemu-devel@nongnu.org; Fri, 19 Nov 2021 11:34:26 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id d5so19171176wrc.1
- for <qemu-devel@nongnu.org>; Fri, 19 Nov 2021 08:34:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=S+X3+xwfX1qzDsaDbBMl0W4CfvHI15E3kFkRdo44CBU=;
- b=n+9viAUICGG1SQme46xhO6nXg0kTB8qOx7vVgwEKbzEttO38XhL/W1tc/uJEWpDV6l
- f4pkP+9wySZlnOnhN0F/q+lv9AZQB8Om9tiBiE1Ag1lZGfFERvZ2bgEqmmTMADaS/f/0
- lB9jg/xOZIG2/Cnfrp617Wr0JIjNhIDVNft5EOmkYXfDuGt/RsHJxnnZa/3g3I2rw7gg
- MNTYBxHTyNRiBwojceZfvrYmXBGnEl2mjB9c05aiRNiCgtB5tOu4z+IwpOblYUS5974B
- dfq9mjRFd5cwlqWjETzC+ImU6wHVrEbW/9jbezac/FJa/eZKiy5opzaHAE5ksccBmS59
- 3+Lg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=S+X3+xwfX1qzDsaDbBMl0W4CfvHI15E3kFkRdo44CBU=;
- b=PRHxVSI9sJy7hhocIj+BuGdz8zehS5sR5FfrgzxUljv/WbBm4Dc4MDkon42J++K1ml
- QU0xxrCuwL7oWWRbBsDa+H6ZNBUJ6j8EbdZmSf7dUQNNPoQfSwr0uX0xwd1vMYLvBwd4
- JjOJgJprSwzgfCLQ8rlKcqHOlJKJXFyNkXnPPNcIuCx61fvdS3Oq2J/4M4o0IsBabY4q
- hwT9DkHVM3XG4LNYxD9TEwd49TZXKgQSM9EkuS7HHU/4VJv8GYgTHzDQrJUvturBFV1S
- rqhBnv3pJT2cumiVzdZN1fcBuxXAlDzykaVH/CrWal3aooKxkR1VAd3Oao9XH8xe0TEv
- f+TQ==
-X-Gm-Message-State: AOAM532aScq6DkXM8s3mSGWh0gCuk2+hy33kvN9LNrf7iLxTpC1QC0ld
- zPpbV4+w9Z7zEVlLz/R4iNQw8Q==
-X-Received: by 2002:adf:d1e2:: with SMTP id g2mr9002586wrd.362.1637339663148; 
- Fri, 19 Nov 2021 08:34:23 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id b11sm12491830wmj.35.2021.11.19.08.34.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Nov 2021 08:34:22 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2] Revert "arm: tcg: Adhere to SMCCC 1.3 section 5.2"
-Date: Fri, 19 Nov 2021 16:34:19 +0000
-Message-Id: <20211119163419.557623-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1mo7ep-0000wl-0r; Fri, 19 Nov 2021 12:26:39 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2157)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1mo7eb-0001g6-7D; Fri, 19 Nov 2021 12:26:38 -0500
+Received: from fraeml714-chm.china.huawei.com (unknown [172.18.147.200])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Hwk862lgkz67bb5;
+ Sat, 20 Nov 2021 01:25:26 +0800 (CST)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ fraeml714-chm.china.huawei.com (10.206.15.33) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Fri, 19 Nov 2021 18:26:14 +0100
+Received: from localhost (10.52.121.45) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.20; Fri, 19 Nov
+ 2021 17:26:13 +0000
+Date: Fri, 19 Nov 2021 17:26:07 +0000
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: David Hildenbrand <david@redhat.com>
+Subject: Re: [PATCH v2] hw/arm/virt: Expose empty NUMA nodes through ACPI
+Message-ID: <20211119172607.0000019f@Huawei.com>
+In-Reply-To: <33b10c1b-46c2-3107-ddad-ca532b2c40e4@redhat.com>
+References: <20211027052958.280741-1-gshan@redhat.com>
+ <20211027174028.1f16fcfb@redhat.com>
+ <fecb9351-ae78-8fcd-e377-623243ef80df@redhat.com>
+ <20211101094431.71e1a50a@redhat.com>
+ <47dc3a95-ed77-6c0e-d024-27cb22c338eb@redhat.com>
+ <20211102073948.am3p3hcqqd3cfvru@gator.home>
+ <b8ed4687-e30a-d70f-0816-bd8ba490ceb7@redhat.com>
+ <20211110113304.2d713d4a@redhat.com>
+ <5180ecee-62e2-cd6f-d595-c7c29eff6039@redhat.com>
+ <20211112142751.4807ab50@redhat.com>
+ <188faab7-1e57-2bc1-846f-9457433c2f9d@redhat.com>
+ <20211117143015.00002e0a@Huawei.com>
+ <8576e0e8-aa06-1c05-9849-806c2bce4141@redhat.com>
+ <20211118102837.00002069@Huawei.com>
+ <655c65af-fd7a-8007-37b3-a56c60a0ec5b@redhat.com>
+ <20211118112306.00004b55@Huawei.com>
+ <20211119105851.0000594a@Huawei.com>
+ <33b10c1b-46c2-3107-ddad-ca532b2c40e4@redhat.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42e
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.52.121.45]
+X-ClientProxiedBy: lhreml737-chm.china.huawei.com (10.201.108.187) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Alexander Graf <agraf@csgraf.de>,
- Jean-Christophe DUBOIS <jcd@tribudubois.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ICTsUJnTI3Wx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Andrew Jones <drjones@redhat.com>,
+ Gavin Shan <gshan@redhat.com>, ehabkost@redhat.com,
+ richard.henderson@linaro.org, alison.schofield@intel.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, shan.gavin@gmail.com,
+ Igor Mammedov <imammedo@redhat.com>, Dan Williams <dan.j.williams@intel.com>,
+ kangkang.shen@futurewei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zUrE6vP7mTq1
 
-This reverts commit 9fcd15b9193e819b6cc2fd0a45e3506148812bb4.
+On Fri, 19 Nov 2021 12:33:27 +0100
+David Hildenbrand <david@redhat.com> wrote:
 
-This change turns out to cause regressions, for instance on the
-imx6ul boards as described here:
-https://lore.kernel.org/qemu-devel/c8b89685-7490-328b-51a3-48711c140a84@tribudubois.net/
+> On 19.11.21 11:58, Jonathan Cameron wrote:
+> > On Thu, 18 Nov 2021 11:23:06 +0000
+> > Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
+> >   
+> >> On Thu, 18 Nov 2021 12:06:27 +0100
+> >> David Hildenbrand <david@redhat.com> wrote:
+> >>  
+> >>> On 18.11.21 11:28, Jonathan Cameron wrote:    
+> >>>> On Wed, 17 Nov 2021 19:08:28 +0100
+> >>>> David Hildenbrand <david@redhat.com> wrote:
+> >>>>       
+> >>>>> On 17.11.21 15:30, Jonathan Cameron wrote:      
+> >>>>>> On Tue, 16 Nov 2021 12:11:29 +0100
+> >>>>>> David Hildenbrand <david@redhat.com> wrote:
+> >>>>>>         
+> >>>>>>>>>
+> >>>>>>>>> Examples include exposing HBM or PMEM to the VM. Just like on real HW,
+> >>>>>>>>> this memory is exposed via cpu-less, special nodes. In contrast to real
+> >>>>>>>>> HW, the memory is hotplugged later (I don't think HW supports hotplug
+> >>>>>>>>> like that yet, but it might just be a matter of time).          
+> >>>>>>>>
+> >>>>>>>> I suppose some of that maybe covered by GENERIC_AFFINITY entries in SRAT
+> >>>>>>>> some by MEMORY entries. Or nodes created dynamically like with normal
+> >>>>>>>> hotplug memory.
+> >>>>>>>>           
+> >>>>>>         
+> >>>>>
+> >>>>> Hi Jonathan,
+> >>>>>      
+> >>>>>> The naming of the define is unhelpful.  GENERIC_AFFINITY here corresponds
+> >>>>>> to Generic Initiator Affinity.  So no good for memory. This is meant for
+> >>>>>> representation of accelerators / network cards etc so you can get the NUMA
+> >>>>>> characteristics for them accessing Memory in other nodes.
+> >>>>>>
+> >>>>>> My understanding of 'traditional' memory hotplug is that typically the
+> >>>>>> PA into which memory is hotplugged is known at boot time whether or not
+> >>>>>> the memory is physically present.  As such, you present that in SRAT and rely
+> >>>>>> on the EFI memory map / other information sources to know the memory isn't
+> >>>>>> there.  When it is hotplugged later the address is looked up in SRAT to identify
+> >>>>>> the NUMA node.        
+> >>>>>
+> >>>>> in virtualized environments we use the SRAT only to indicate the hotpluggable
+> >>>>> region (-> indicate maximum possible PFN to the guest OS), the actual present
+> >>>>> memory+PXM assignment is not done via SRAT. We differ quite a lot here from
+> >>>>> actual hardware I think.
+> >>>>>      
+> >>>>>>
+> >>>>>> That model is less useful for more flexible entities like virtio-mem or
+> >>>>>> indeed physical hardware such as CXL type 3 memory devices which typically
+> >>>>>> need their own nodes.
+> >>>>>>
+> >>>>>> For the CXL type 3 option, currently proposal is to use the CXL table entries
+> >>>>>> representing Physical Address space regions to work out how many NUMA nodes
+> >>>>>> are needed and just create extra ones at boot.
+> >>>>>> https://lore.kernel.org/linux-cxl/163553711933.2509508.2203471175679990.stgit@dwillia2-desk3.amr.corp.intel.com
+> >>>>>>
+> >>>>>> It's a heuristic as we might need more nodes to represent things well kernel
+> >>>>>> side, but it's better than nothing and less effort that true dynamic node creation.
+> >>>>>> If you chase through the earlier versions of Alison's patch you will find some
+> >>>>>> discussion of that.
+> >>>>>>
+> >>>>>> I wonder if virtio-mem should just grow a CDAT instance via a DOE?
+> >>>>>>
+> >>>>>> That would make all this stuff discoverable via PCI config space rather than ACPI
+> >>>>>> CDAT is at:
+> >>>>>> https://uefi.org/sites/default/files/resources/Coherent%20Device%20Attribute%20Table_1.01.pdf
+> >>>>>> but the table access protocol over PCI DOE is currently in the CXL 2.0 spec
+> >>>>>> (nothing stops others using it though AFAIK).
+> >>>>>>
+> >>>>>> However, then we'd actually need either dynamic node creation in the OS, or
+> >>>>>> some sort of reserved pool of extra nodes.  Long term it may be the most
+> >>>>>> flexible option.        
+> >>>>>
+> >>>>>
+> >>>>> I think for virtio-mem it's actually a bit simpler:
+> >>>>>
+> >>>>> a) The user defined on the QEMU cmdline an empty node
+> >>>>> b) The user assigned a virtio-mem device to a node, either when 
+> >>>>>    coldplugging or hotplugging the device.
+> >>>>>
+> >>>>> So we don't actually "hotplug" a new node, the (possible) node is already known
+> >>>>> to QEMU right when starting up. It's just a matter of exposing that fact to the
+> >>>>> guest OS -- similar to how we expose the maximum possible PFN to the guest OS.
+> >>>>> It's seems to boild down to an ACPI limitation.
+> >>>>>
+> >>>>> Conceptually, virtio-mem on an empty node in QEMU is not that different from
+> >>>>> hot/coldplugging a CPU to an empty node or hot/coldplugging a DIMM/NVDIMM to
+> >>>>> an empty node. But I guess it all just doesn't work with QEMU as of now.      
+> >>>>
+> >>>> A side distraction perhaps, but there is a code first acpi proposal to add
+> >>>> a 'softer' form of CPU hotplug 
+> >>>> https://bugzilla.tianocore.org/show_bug.cgi?id=3706
+> >>>>
+> >>>> Whilst the reason for that proposal was for arm64 systems where there is no architected
+> >>>> physical hotplug, it might partly solve the empty node question for CPUs.  They won't
+> >>>> be empty, there will simply be CPUs that are marked as 'Online capable'.
+> >>>>       
+> >>>>>
+> >>>>> In current x86-64 code, we define the "hotpluggable region" in hw/i386/acpi-build.c via
+> >>>>>
+> >>>>> 	build_srat_memory(table_data, machine->device_memory->base,
+> >>>>> 			  hotpluggable_address_space_size, nb_numa_nodes - 1,
+> >>>>> 			  MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
+> >>>>>
+> >>>>> So we tell the guest OS "this range is hotpluggable" and "it contains to
+> >>>>> this node unless the device says something different". From both values we
+> >>>>> can -- when under QEMU -- conclude the maximum possible PFN and the maximum
+> >>>>> possible node. But the latter is not what Linux does: it simply maps the last
+> >>>>> numa node (indicated in the memory entry) to a PXM
+> >>>>> (-> drivers/acpi/numa/srat.c:acpi_numa_memory_affinity_init()).      
+> >>>> yeah.  There is nothing in ACPI that says there can't be holes in the node numbering
+> >>>> so Linux does a remapping as you point out.
+> >>>>       
+> >>>>>
+> >>>>>
+> >>>>> I do wonder if we could simply expose the same hotpluggable range via multiple nodes:      
+> >>>>
+> >>>> Fairly sure the answer to this is no.  You'd have to indicate different ranges and
+> >>>> then put the virtio-mem in the right one.       
+> >>>
+> >>> And I repeat, this is in no way different to DIMMs/NVDIMMs. We cannot predict
+> >>> the future when hotplugging DIMMS/NVDIMMs/virtio-mem/... to some node later. We only
+> >>> have access to that information when coldplugging devices, but even a
+> >>> hotunplug+hotplug can change that info. Whatever we expose via ACPI is moot
+> >>> already and just a hint to the guest OS "maximum possible PFN".    
+> >>
+> >> Sure, so the solution is a large non overlapping extra node for each node on the
+> >> underlying physical system.  It uses a lot of PA space, but I'm going to assume
+> >> the system isn't so big that that PA space exhaustion is a problem?  For a sensible setup
+> >> those node would match the actual memory present on the underlying system.
+> >>
+> >> For physical CCIX systems we did this with SRAT entries with XTB per node to match
+> >> what the host supported.  On our particular platform those PA ranges were well separated
+> >> from each other due to how the system routing worked, but the principal is the same.
+> >> Those supported a huge amount of memory being hotplugged.
+> >>  
+> >>>
+> >>> We've been abusing ACPI hotpluggable region for years for virt DIMM hotplug,
+> >>> putting it to some fantasy node and having it just work with hotplug of
+> >>> DIMMs/NVDIMMs. The only issue we have is empty nodes. We differ from real
+> >>> HW already significantly (especially, never exposing DIMMs via e820 to
+> >>> the guest, which I call a feature and not a bug).    
+> >>
+> >> Understood.  
+> >>>     
+> >>>> Now I can't actually find anywhere in the
+> >>>> ACPI spec that says that but I'm 99% sure Linux won't like and I'm fairly sure if we
+> >>>> query it with ACPI folks the answer will be a no you can't don't that.      
+> >>>
+> >>> I didn't find anything that contradicts it in the spec as well. It's not really
+> >>> specified what's allowed and what's not :)
+> >>>
+> >>> FWIW, the code I shared works with 5.11.12-300.fc34.x86_64 inside the guest flawlessly.    
+> >>
+> >> Hmm. I'm surprised that works at all and my worry is there is no reason it will continue
+> >> to work.  
+> > 
+> > I've checked with some of our firmware people and the response was very much against doing this
+> > on the basis it makes no sense in any physical system to have overlapping regions.
+> > 
+> > I'll reach out to our ASWG representatives to see if we can get the ACPI spec clarified.
+> > (Given question is from a public mailing list this should be under the code first policy).
+> > 
+> > My view is that a clarification should be added to state that these regions must not overlap.  
+> 
+> I'd really appreciate if we could instead have something that makes virt
+> happy as well ("makes no sense in any physical system"), because virt is
+> most probably the biggest actual consumer of ACPI memory hotplug out
+> there (!).
 
-The primary cause of that regression is that the guest code running
-at EL3 expects SMCs (not related to PSCI) to do what they would if
-our PSCI emulation was not present at all, but after this change
-they instead set a value in R0/X0 and continue.
+No problem with finding such a solution - but it's an ASWG question
+(be it with a code first discussion). I have no idea what other
+operating systems would do with overlapping nodes today.  We need to
+jump through the hoops to make sure any solution is mutually agreed.
+Maybe the solution is a new type of entry or flag that makes it clear
+the 'real' node mapping is not PA range based?
 
-We could fix that by a refactoring that allowed us to only turn on
-the PSCI emulation if we weren't booting the guest at EL3, but there
-is a more tangled problem with the highbank board, which:
- (1) wants to enable PSCI emulation
- (2) has a bit of guest code that it wants to run at EL3 and
-     to perform SMC calls that trap to the monitor vector table:
-     this is the boot stub code that is written to memory by
-     arm_write_secure_board_setup_dummy_smc() and which the
-     highbank board enables by setting bootinfo->secure_board_setup
+> 
+> I mean, for virt as is we will never know which PA range will belong to
+> which node upfront. All we know is that there is a PA range that could
+> belong to node X-Z. Gluing a single range to a single node doesn't make
+> too much sense for virt, which is why we have just been using it to
+> indicate the maximum possible PFN with a fantasy node.
 
-We can't satisfy both of those and also have the PSCI emulation
-handle all SMC instruction executions regardless of function
-identifier value.
+I'm not convinced that's true. The physical memory
+is coming from somewhere (assuming RAM backed).  I would assume the ideal
+if going to the effort of passing NUMA into a VM, would be to convey
+the same NUMA characteristics to the VM.  So add it to the VM at
+the PA range that matches the appropriate host system NUMA node.
 
-This is too tricky to try to sort out before 6.2 is released;
-revert this commit so we can take the time to get it right in
-the 7.0 release.
+> 
+> Overlapping regions would really simplify the whole thing, and I think
+> if we go down that path we should go one step further and indicate the
+> hotpluggable region to all nodes that might see hotplug (QEMU -> all
+> nodes). The ACPI clarification would then be that we can have
+> overlapping ranges and that on overlapping ranges all indicated nodes
+> would be a possible target later. That would make perfect sense to me
+> and make both phys and virt happy.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Jean-Christophe: could you confirm that reverting this fixes the
-regressions you had on the imx boards ?
+One alternative I mentioned briefly earlier is don't use ACPI at all.
+For the new interconnects like CXL the decision was made that it wasn't
+a suitable medium so they had CDAT (which is provided by the device)
+instead. It's an open question how that will be handled by the OS at the
+moment, but once solved (and it will need to be soon) that provides
+a means to specify all the same data you get from ACPI NUMA description,
+and leaves the OS to figure out how to merge it with it's internal
+representation of NUMA.
 
- target/arm/psci.c | 35 +++++++++++++++++++++++++++++------
- 1 file changed, 29 insertions(+), 6 deletions(-)
+For virtio-mem / PCI at least it seems a fairly natural match.
 
-diff --git a/target/arm/psci.c b/target/arm/psci.c
-index b279c0b9a45..6709e280133 100644
---- a/target/arm/psci.c
-+++ b/target/arm/psci.c
-@@ -27,13 +27,15 @@
- 
- bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
- {
--    /*
--     * Return true if the exception type matches the configured PSCI conduit.
--     * This is called before the SMC/HVC instruction is executed, to decide
--     * whether we should treat it as a PSCI call or with the architecturally
-+    /* Return true if the r0/x0 value indicates a PSCI call and
-+     * the exception type matches the configured PSCI conduit. This is
-+     * called before the SMC/HVC instruction is executed, to decide whether
-+     * we should treat it as a PSCI call or with the architecturally
-      * defined behaviour for an SMC or HVC (which might be UNDEF or trap
-      * to EL2 or to EL3).
-      */
-+    CPUARMState *env = &cpu->env;
-+    uint64_t param = is_a64(env) ? env->xregs[0] : env->regs[0];
- 
-     switch (excp_type) {
-     case EXCP_HVC:
-@@ -50,7 +52,27 @@ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
-         return false;
-     }
- 
--    return true;
-+    switch (param) {
-+    case QEMU_PSCI_0_2_FN_PSCI_VERSION:
-+    case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
-+    case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
-+    case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
-+    case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
-+    case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
-+    case QEMU_PSCI_0_1_FN_CPU_ON:
-+    case QEMU_PSCI_0_2_FN_CPU_ON:
-+    case QEMU_PSCI_0_2_FN64_CPU_ON:
-+    case QEMU_PSCI_0_1_FN_CPU_OFF:
-+    case QEMU_PSCI_0_2_FN_CPU_OFF:
-+    case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
-+    case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
-+    case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
-+    case QEMU_PSCI_0_1_FN_MIGRATE:
-+    case QEMU_PSCI_0_2_FN_MIGRATE:
-+        return true;
-+    default:
-+        return false;
-+    }
- }
- 
- void arm_handle_psci_call(ARMCPU *cpu)
-@@ -172,9 +194,10 @@ void arm_handle_psci_call(ARMCPU *cpu)
-         break;
-     case QEMU_PSCI_0_1_FN_MIGRATE:
-     case QEMU_PSCI_0_2_FN_MIGRATE:
--    default:
-         ret = QEMU_PSCI_RET_NOT_SUPPORTED;
-         break;
-+    default:
-+        g_assert_not_reached();
-     }
- 
- err:
--- 
-2.25.1
+> 
+> 
+> 
+> Two ways to avoid overlapping regions, which aren't much better:
+> 
+> 1) Split the hotpluggable region up into fantasy regions and assign one
+> fantasy region to each actual node.
+> 
+> The fantasy regions will have nothing to do with reality late (just like
+> what we have right now with the last node getting assigned the whole
+> hotpluggable region) and devices might overlap, but we don't really
+> care, because the devices expose the actual node themselves.
+> 
+> 
+> 2) Duplicate the hotpluggable region accross all nodes
+> 
+> We would have one hotpluggable region with a dedicate PA space, and
+> hotplug the device into the respective node PA space.
+> 
+> That can be problematic, though, as we can easily run out of PA space.
+> For example, my Ryzen 9 cannot address anything above 1 TiB. So if we'd
+> have a hotpluggable region of 256 GiB, we'll already be in trouble with
+> more than 3 nodes.
+
+My assumption was that the reason to do this is to pass through node
+mappings that line up with the underlying physical system.  If that's the case
+then the hotpluggable regions for each node could be made to match what is
+there.
+
+Your Ryzen 9 would normally only have one node?
+
+If the intent is to sue these regions for more complex purposes (maybe file
+backed memory devices?) then things get more interesting, but how useful
+is mapping them to conventional NUMA representations?
+
+Thanks,
+
+Jonathan
+
+> 
 

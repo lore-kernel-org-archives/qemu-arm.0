@@ -1,129 +1,108 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1215957lfk;
-        Thu, 18 Nov 2021 13:05:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzNZ8+UtqmyJhFnwcTyK6EfsqjPp6E0xGoyW01JuJbWEp0tstEKuTfgNu4PVLmy9d+3wfrZ
-X-Received: by 2002:a37:e15:: with SMTP id 21mr24304456qko.413.1637269518244;
-        Thu, 18 Nov 2021 13:05:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637269518; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp2078769lfk;
+        Fri, 19 Nov 2021 02:54:43 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxMHoyl9VryygA7HvjUE9Da8B3OPadePgSUE3zzVYR5VG645iskTENrXDwuv0CFboMowDeU
+X-Received: by 2002:a05:6102:512b:: with SMTP id bm43mr93329670vsb.14.1637319282948;
+        Fri, 19 Nov 2021 02:54:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637319282; cv=none;
         d=google.com; s=arc-20160816;
-        b=FQRRc1/xfuL3m/+zqYmk0duqFZzgZZVZFuC8veo4V/V+ULmNQZaaRR7/fu1L1+pZJl
-         PNqJi6Pl1BWsen8XUMpBc4cadcPJRBiH765wJxEhnfW0SPm3/2YzwNg+xK67pzY2jJAJ
-         t4lARnww+wyprbjdPfzmv6Nket1I23zEiS+pveS64AQK9K8/37Ne8U9M83xH8Fhzbzbx
-         AdfVndjR/3ZH8PZtzUUZQAIsYF4+lIepS46UmooEYYLF9epZqhIdBv3AcjFcuWprlRsb
-         0w2AVrO0xng3AGjnGBQ7WLy555WjuOmqgBuuRu6IweOC17zivNXTHSVTEf6XXeQ2x7fb
-         MKJw==
+        b=B5obma64AaL1rdMTGix+9td5gajeO0g+pLpZ6MGCXBvXI9/4Ptfg5fk0y6x+V1UOaM
+         M6/evfkFb/Hq2PNLGUDzJ7o8YhocgJ2n7TaBpxlyAPjiDmtG0tnGE+K7NL7cst9w80vG
+         53L2widCUq9jykXjULl4qZT5A4pQvwAM7skMQaq9iX9MEkxe+UsU3UjRH/wbGOZOwRu9
+         qryyEOfYSFu5QzXyHduzcSo3mr+Env1XsB4M62GR/bOeJWGbfI1/Ecaqn7RaqlANeY2Q
+         Pme79MakJaIg0ASbnYVqthV63bvv+S5G1rJHnLpg+pHGDNmShIAMyQ35EEf7R+lpjiQ3
+         BkCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=KtfO0r4hMF1t67Fm/nFejKUhC7rrKBlw0HYHrwB3cdQ=;
-        b=YRqMgKQ/PYsE0WPNmIoZTqWqbSQXZqf2gKVOIUaAtDigQCFe06zC7Eo9UMpMc/oQf/
-         xH9Wm6ZM/8rRnzzxp0ocXD2AvZgKdgdE0Il1zNFJz1rGB1kEg3ie73Je9iA1nVphaXeT
-         GWtGX87mBGyRAFr/7IsdwrFgaTlfvS1uVXUlcnqerkRJfkW+m0cbjmaIFSR4VnwK5khv
-         hQ6qHITp0sF3vieF7Bf3e8m5BmeA5tFiDzMNADu18NV/mGvO08v+9vqCwZFgf/QGfBpz
-         obkElTEjBu3WuI+1zCV8PH/nxoxSFOVLXmIDZCzzFIEPgRDY6jnzk+15RBvlu0p1pR8B
-         jPqw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=6Zc/texVsq6WEJ7WgAdHOZkf5Ka98i0TKFzkK3XWxxU=;
+        b=v1qDtNHFegTUxLokc0Uj03R3iZID6dP3NhBMHEP9lefG/K+/g6SNlBD/U9NsEWtzns
+         0RoJNGfHkXee47OPapghxi3TczhQcbMUMg6UPxEggdVlCHdcmlHjdWlbAtKbeoWYTDWj
+         8FjJ+AYoPruZLKbLwLX7AVB5LvLoRt3u8QYrsHrEOLjLnXCErm/l6HmyESflw8H0g4YR
+         ezo/rq7ATmTtM03X8xgA26tkJ2zX1hAokHFsK0w2uFi6TT/MaVF/DwWuG84FQnMZM9WX
+         f8MAJpUGL40BN8amK2liB+L5DjZHivlPRRK7QmiC1dsNEeDkJC8kvtqmPyk69rsUvJEG
+         0soQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YXXR3RKA;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=LPY+mVvi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w19si936697qtk.151.2021.11.18.13.05.17
+        by mx.google.com with ESMTPS id d8si1257075uak.146.2021.11.19.02.54.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Nov 2021 13:05:18 -0800 (PST)
+        Fri, 19 Nov 2021 02:54:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YXXR3RKA;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=LPY+mVvi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39882 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:40586 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mnoar-0002l9-Aj
-	for alex.bennee@linaro.org; Thu, 18 Nov 2021 16:05:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35014)
+	id 1mo1XW-0005v6-Ai
+	for alex.bennee@linaro.org; Fri, 19 Nov 2021 05:54:42 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38152)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mnoaf-0002ku-Al
- for qemu-arm@nongnu.org; Thu, 18 Nov 2021 16:05:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:21741)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mnoaa-0002dD-Gz
- for qemu-arm@nongnu.org; Thu, 18 Nov 2021 16:05:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637269499;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KtfO0r4hMF1t67Fm/nFejKUhC7rrKBlw0HYHrwB3cdQ=;
- b=YXXR3RKA8T+F7w6DZggobzbaP2WKIjfzzdVs00UdCkxWNRiyYZTth55b9V5SvjhOqGXTQ4
- qJtTkkdB/FuWG6lbCxw8wiQ1MTqFRgmLED7IXODyJg7/Kx53tpQAddVjwmmzwyhClyGtUp
- AVWErjw7hdRel5n23kU0Z9f93nCCxTo=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-358-PLqt4n-eNuqvTAMZxbpJpw-1; Thu, 18 Nov 2021 16:04:58 -0500
-X-MC-Unique: PLqt4n-eNuqvTAMZxbpJpw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- l6-20020a05600c4f0600b0033321934a39so3714462wmq.9
- for <qemu-arm@nongnu.org>; Thu, 18 Nov 2021 13:04:57 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <janne.karhunen@gmail.com>)
+ id 1mo1XO-0005ux-Ca
+ for qemu-arm@nongnu.org; Fri, 19 Nov 2021 05:54:34 -0500
+Received: from [2a00:1450:4864:20::131] (port=35754
+ helo=mail-lf1-x131.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <janne.karhunen@gmail.com>)
+ id 1mo1XM-0000Eo-QG
+ for qemu-arm@nongnu.org; Fri, 19 Nov 2021 05:54:34 -0500
+Received: by mail-lf1-x131.google.com with SMTP id u3so41486038lfl.2
+ for <qemu-arm@nongnu.org>; Fri, 19 Nov 2021 02:54:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6Zc/texVsq6WEJ7WgAdHOZkf5Ka98i0TKFzkK3XWxxU=;
+ b=LPY+mVviX51IMCfxoDYQaBMZlqBv95bh08hMxl2LHhX8PMMgoaN9eEWv/aUcj1US2u
+ 1HXv6x3TVO1MU1z8nab0zjtPgaK3I2X1uLRklnaxK/mW9uZSiwA+iyQyPFOZgG9qxSNF
+ RDe9IZCF68W+/jomFudOdeyqMlvdBJ3ZssI8Ei74nkHUYTBiZ/hcaUSAtOL0OCwzGxnG
+ RG2pqPLYl4TBC3aGd2vbKLGmsTI8GS2Pu81G6UxjbgRbZTbbCOpOC2RM4Kk9lC714Gz0
+ 2ce94BeckxrTUiACAQ/hxlhMtUcoUXy6VFoX0XAFiQylRstpV773Fqc8oL9EIQ6wK770
+ oNxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=KtfO0r4hMF1t67Fm/nFejKUhC7rrKBlw0HYHrwB3cdQ=;
- b=iweQZH8yOo4JjOwI8K7ShHoNgsSGaVinDiwbFxRNdh7WO8RqFNlvkV9RntOSm5FRk4
- snQ4PlqUxPf0AeIvxpMTcraXT1wZpU1A2XgfmB3eJpZqLZSqXyD6LxikayOkdnLATO7c
- /Urm6zFvzMDJYHS+VL59skUQa6859ARhSAsSXDcJ72EM1GV66HE8XLG3ZJt0YNfPQK2Q
- R6YqsHOK3lEdjXwgf/6WCUbKiklS0DQ61GjeQjbfNM7K/yk4IhlcyO0iMVYD1tHwqEzH
- oMseNt0TzgOGVMbXJYaqACQQJ9cT6oiILbKj/A+jxl3SX8oG36FVeNt4KKc4IC9+Ckd9
- ciRw==
-X-Gm-Message-State: AOAM53397MIR0ZIVrL+7kYjkVH9cDo1ihb8KiL7YZ+qhj9OfzO+kW+0J
- zcb5TBv6q8i/2+bw++BSj8ATpjzbfE/kFz1EA1l2qxjECvbIdfTs1RMoS0QTEtOH7u25r6D9SFI
- S/NSxMm5jAYC7
-X-Received: by 2002:a1c:4d15:: with SMTP id o21mr37607wmh.171.1637269496943;
- Thu, 18 Nov 2021 13:04:56 -0800 (PST)
-X-Received: by 2002:a1c:4d15:: with SMTP id o21mr37540wmh.171.1637269496591;
- Thu, 18 Nov 2021 13:04:56 -0800 (PST)
-Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id o3sm11718511wms.10.2021.11.18.13.04.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Nov 2021 13:04:55 -0800 (PST)
-Message-ID: <c91b4ea2-3b2e-f79f-b5ad-3f01961e2974@redhat.com>
-Date: Thu, 18 Nov 2021 22:04:54 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6Zc/texVsq6WEJ7WgAdHOZkf5Ka98i0TKFzkK3XWxxU=;
+ b=CyPjRY6anG6ixrbY2U124lzbSfJLI02xbMEfC8UnHmC3RCNVxfYdTd0ciqf+7WbsKe
+ upxvQQMl0ap5EwfdNq+MgymrOC54HduUnaSIMgbzlZ7GP+3lNfWY5iIkp/ZkG3PPDqDJ
+ /kSucDccOgLLxxRcyHQ5rEW1csAUk3CrDchRG64LTPM74A/G3k9iHq5ocjg2/B/Pwbi5
+ FEs60V+R/LrWJjIViolLrxeLqQ7D2wdveTp8QEuvNyd6nybVEryHvyULcOjwM11FIqlc
+ +n2ew+6t7043KQBAK/Bc1v1Ed7Hvp6WY1L3EGR6FUfYMBJw2B7ferxw3YhS+gEym1fi5
+ yrrg==
+X-Gm-Message-State: AOAM533RUM+WXvTRbplwAOkzmfAGHWLQ0zVlXONtogHr0PVk2dVo5HNn
+ TFBb3KlvGNd4abwlcP/a2KhHq5blPzVHzfgF5fk=
+X-Received: by 2002:a2e:7611:: with SMTP id r17mr25405115ljc.519.1637319270550; 
+ Fri, 19 Nov 2021 02:54:30 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [RFC PATCH v2 5/5] softmmu/physmem: Have flaview API check
- MemTxAttrs::bus_perm field
+References: <CAE=NcrYJfjF-pEiX-tY7NfiTbDfXtcxnk5AnBVwc2AX4cpeCrg@mail.gmail.com>
+ <CAFEAcA-CKqZPF8A+WsXE7gLgOPPYncteomvMSOcAuLEkB9F-Ew@mail.gmail.com>
+ <CAE=NcrbPW4LVihnZksOCJ6NcQQYkwJudbqrp-sUEx663+qyG5w@mail.gmail.com>
+ <CAE=NcrYPqu9oa0UZM7VRDtUqQWg93spVOdRLQGs0hdHtqghGVg@mail.gmail.com>
+ <CAFEAcA_uzvNuMx9KJa=Z_Dwuonf10ekTDUbNf9bZSVa+hNtHLg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_uzvNuMx9KJa=Z_Dwuonf10ekTDUbNf9bZSVa+hNtHLg@mail.gmail.com>
+From: Janne Karhunen <janne.karhunen@gmail.com>
+Date: Fri, 19 Nov 2021 12:54:19 +0200
+Message-ID: <CAE=NcrY8GJZ-Py0n_24JDao0sJLcYoZ1TSK4RMLfkiWyOxPR3A@mail.gmail.com>
+Subject: Re: softmmu 'at' instruction support
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210823164157.751807-1-philmd@redhat.com>
- <20210823164157.751807-6-philmd@redhat.com>
- <YSTw9VPd44uIZ55L@stefanha-x1.localdomain>
- <569b3a2f-2d05-700d-cae3-07d8b78fcd55@redhat.com>
- <CAFEAcA__epFKNUsZhUChOhkM18xSbm=qndCFDtVBTfm1gSz+Dw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <CAFEAcA__epFKNUsZhUChOhkM18xSbm=qndCFDtVBTfm1gSz+Dw@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -45
-X-Spam_score: -4.6
-X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.698,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.084, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::131
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::131;
+ envelope-from=janne.karhunen@gmail.com; helo=mail-lf1-x131.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,100 +115,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Li Qiang <liq3ea@gmail.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Peter Xu <peterx@redhat.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
- Alexander Bulekov <alxndr@bu.edu>, qemu-arm <qemu-arm@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SunQm7yFvahu
+X-TUID: avOvKCQ1vT+w
 
-On 8/24/21 16:21, Peter Maydell wrote:
-> On Tue, 24 Aug 2021 at 14:50, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->> On 8/24/21 3:15 PM, Stefan Hajnoczi wrote:
->>> On Mon, Aug 23, 2021 at 06:41:57PM +0200, Philippe Mathieu-Daudé wrote:
->>>> Check bus permission in flatview_access_allowed() before
->>>> running any bus transaction.
->>>>
->>>> There is not change for the default case (MEMTXPERM_UNSPECIFIED).
->>>>
->>>> The MEMTXPERM_UNRESTRICTED case works as an allow list. Devices
->>>> using it won't be checked by flatview_access_allowed().
->>>>
->>>> The only deny list equivalent is MEMTXPERM_RAM_DEVICE: devices
->>>> using this flag will reject transactions and set the optional
->>>> MemTxResult to MEMTX_BUS_ERROR.
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>>> ---
->>>>  softmmu/physmem.c | 17 ++++++++++++++++-
->>>>  1 file changed, 16 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/softmmu/physmem.c b/softmmu/physmem.c
->>>> index 0d31a2f4199..329542dba75 100644
->>>> --- a/softmmu/physmem.c
->>>> +++ b/softmmu/physmem.c
->>>> @@ -2772,7 +2772,22 @@ static inline bool flatview_access_allowed(MemoryRegion *mr, MemTxAttrs attrs,
->>>>                                             hwaddr addr, hwaddr len,
->>>>                                             MemTxResult *result)
->>>>  {
->>>> -    return true;
->>>> +    if (unlikely(attrs.bus_perm == MEMTXPERM_RAM_DEVICE)) {
->>>> +        if (memory_region_is_ram(mr) || memory_region_is_ram_device(mr)) {
->>>> +            return true;
->>>> +        }
->>>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>>> +                      "Invalid access to non-RAM device at "
->>>> +                      "addr 0x%" HWADDR_PRIX ", size %" HWADDR_PRIu ", "
->>>> +                      "region '%s'\n", addr, len, memory_region_name(mr));
->>>> +        if (result) {
->>>> +            *result |= MEMTX_BUS_ERROR;
->>>
->>> Why bitwise OR?
->>
->> MemTxResult is not an enum but used as a bitfield.
->>
->> See access_with_adjusted_size():
->>
->>     MemTxResult r = MEMTX_OK;
->>     ...
->>     if (memory_region_big_endian(mr)) {
->>         for (i = 0; i < size; i += access_size) {
->>             r |= access_fn(mr, addr + i, value, access_size,
->>                         (size - access_size - i) * 8,
->>                         access_mask, attrs);
->>         }
->>     } else {
->>         for (i = 0; i < size; i += access_size) {
->>             r |= access_fn(mr, addr + i, value, access_size, i * 8,
->>                         access_mask, attrs);
->>         }
->>     }
->>     return r;
->> }
->>
->> and flatview_read_continue() / flatview_write_continue():
->>
->>     for (;;) {
->>         if (!memory_access_is_direct(mr, true)) {
->>             release_lock |= prepare_mmio_access(mr);
->>             l = memory_access_size(mr, l, addr1);
->>             val = ldn_he_p(buf, l);
->>             result |= memory_region_dispatch_write(mr, addr1, val,
->>                                                    size_memop(l),
->>                                                    attrs);
->>     ...
->>     return result;
->> }
-> 
-> In these two examples we OR together the MemTxResults because
-> we are looping over multiple accesses and combining all the
-> results together; we want to return a "not OK" result if any
-> of the individual results failed. Is that the case for
-> flatview_access_allowed() ?
+On Thu, Nov 18, 2021 at 5:40 PM Peter Maydell <peter.maydell@linaro.org> wrote:
 
-You are right, this is not the case here, so we can simplify as
-Stefan suggested. Thanks for clarifying the examples.
+> > 11610     ttbr = regime_ttbr(env, mmu_idx, param.select);
+> > (gdb) n
+> > 11616     if (param.epd) {
+> > (gdb) p/x ttbr
+> > $1 = 0x41730000
+> >
+> > So it starts looking from the wrong table (off by one page) ... ?
+>
+> My guess is that your guest code and QEMU disagree about how aligned
+> the page table needs to be, and that extra 1 in bit 12 is being
+> cleared out because QEMU is implementing it as RES0.
 
+I added bug because it still looks like one to me:
+https://gitlab.com/qemu-project/qemu/-/issues/735
+
+So 'at' reads in regime_ttbr:
+10541         return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
+(gdb) p/x env->cp15.ttbr0_el[regime_el(env, mmu_idx)]
+$1 = 0x41730000
+
+Which is wrong. The runtime reads:
+10543         return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
+(gdb) p/x env->cp15.ttbr1_el[regime_el(env, mmu_idx)]
+$1 = 0x41731001
+
+The determining factor about which one is used is in
+aa64_va_parameters, and it's the bit 55:
+
+    /*
+     * Bit 55 is always between the two regions, and is canonical for
+     * determining if address tagging is enabled.
+     */
+    select = extract64(va, 55, 1);
+    if (!select) {
+
+Which, IMHO, is just a Linux convention to set up the high bits.  I
+can work around that issue by setting that bit, and then it goes a bit
+further:
+
+..
+        target_ulong top_bits = sextract64(address, inputsize,
+                                           addrsize - inputsize);
+        if (-top_bits != param.select) {
+..
+
+And fails here. I can understand this check a bit better and arrange
+it, but before going there I'd like to understand why this wasn't used
+as TTBRN to 'regime_ttbr' ?
+uint32_t el = regime_el(env, mmu_idx);
+
+It determines the calling el just nicely before, but doesn't use this
+and goes about using the magical bit 55?
+
+
+--
+Janne

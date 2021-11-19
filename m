@@ -1,101 +1,100 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp2246370lfk;
-        Fri, 19 Nov 2021 05:06:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwo6iBtAMIt7ByzxzE/ro1ARI8aiHyerI/0dzn/1OeWL90le2/TbVXnu4JIeUTLN0NoiYii
-X-Received: by 2002:a05:600c:1987:: with SMTP id t7mr6641504wmq.24.1637327213481;
-        Fri, 19 Nov 2021 05:06:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637327213; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp2247064lfk;
+        Fri, 19 Nov 2021 05:07:20 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxYX2VQDoypWSyJ/fSF929gzN/TraQRKEFeNX91n+DSUJWWPhV8J9g7Pg2cgcJgo4A0C41I
+X-Received: by 2002:adf:fa0b:: with SMTP id m11mr7216087wrr.152.1637327238441;
+        Fri, 19 Nov 2021 05:07:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637327238; cv=none;
         d=google.com; s=arc-20160816;
-        b=XF0oEEowHF8Znt+CKE26/PFra91lMs8aFsrMgDc/NPgaI6AnLwULlT/a3VL8c+Tf7n
-         vuokBkAr6PNNbeZgJ5DVboCzCw+y7HjP+FuMhmEnM+ilF+Pe55a8WaYRX+GMP/yui8Ud
-         zQsnsEZ1tLCfoF9cuLuxW0ZIABJ7brQKI8Z1HLq4L9SUlu2sCN0cp+K/g1Dh9VsfdCS8
-         xrLS4GMcvHhVyQe3Gc66xML05aaYjZKNFElPJLlH1uaojZ6Jh8ZU2hNhNksjPK46JFYv
-         TOMAK80ri+eNnVe1Vt3C/NXViF6wiv2wkbNc2qG1fv7p9AiH4WN0ByTfV/Jc8QlFzuap
-         pNRA==
+        b=DjyV2uSyu5bbdcRd59h8YJTOFPG3QN0pzfcXi20+MfBEPFWZGH5RthsNGilyEdPZLw
+         5vZWgKJALxsBQMTDbWM2RH7kXlaVgYRP9ydb+RPGtnMgbuFNEY6KcIYynLO+FcfjhtHW
+         YyN0wdQE9qv7/kbxyxOekU4CitMMrGL9l/zqY1Hxu8CWytToIJpxAv2YnKtCw9W+/ZpM
+         hU8W8zzakjwXRhZxBzL7fUJrMA0oIM9hEARV5Ii6EBi7m7Ep8C4U+pLW+zMGJw+1qFx+
+         Ku3ghLjlXpojtbklDcyrxalwjCOeAa8EkX3mqKUwRNiLyAYSDBhZzz1mVF5Qhd7atJmI
+         //EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=CoqYXV2MKbJj7YZE3rDxpsTOo8HygkWpcdGEQ1UE9IY=;
-        b=Nphe6mPLI+gDUOXslLpPaXjv0dRnPSFxanpL6b/d4cMPK9ATO/tHIghtB55QhpX8yc
-         5Mw97Nm9c0LpyQqBPbG+1zlq+HrqHs7GdXRw3Mj79aiyCTsFrJS8dhOFiNQ+nOJtM9Th
-         kErr2ga68/Z9ksg3Q6Zf4/aRuCp7E9+jrPiaQQpPCEWvRkt8n1yuR8Tt43mfh2IViHAB
-         i8Yl7ZJNvzBd/AAbH80KJDjyB2uBxx8LHDAQkzoGm/lh7Fe/mdWUVN0k0MEuquHovxro
-         9id62vjnHN2KyVQhsfSwJp6K5RHDamY6d/NvXO1D95JjpaH3ssCGX+dE0k1NV/aISzII
-         cZjw==
+        bh=KLih65B6mQHyeOo4GGrCFNiDI4jDPAKBKS1NrCHFzB8=;
+        b=MMXlge3bo5OhAxLeTYTKk2iz8bxvGOz6hEmza9wZC8MInXA7BQzaZFUTBSi+8mjBNi
+         RuOuDfDnKeLO7FEQ9IteDMmXXpj4Y7lFfXhO8aeTKmffgLgj2FtDERqsamyDGLfTsceR
+         XgccqnVrrtYLCVYMBtANUTTrD620hyxgS68L375/cCK9YrTND5+pLjLbYTgYqCC7++o0
+         PIbdfYwXh+XNil4sjpgfltxZN90jDbJ8mKXPcTj6KYi31j/lm/bKmMJxc69QZG2m3r3C
+         BGvWxWxI0ozzuBUjhxlvmTTBTHLeZ+8hVeA066+ogQwwrp+cj5hxs8AUfGbcZ77elYLP
+         0Nxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=LL1ITD2I;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=AFWVSiBH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u8si7634732wmq.205.2021.11.19.05.06.51
+        by mx.google.com with ESMTPS id v10si4134993wri.428.2021.11.19.05.07.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Nov 2021 05:06:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Nov 2021 05:07:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=LL1ITD2I;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=AFWVSiBH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51138 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50794 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mo3bO-0004HR-P5
-	for alex.bennee@linaro.org; Fri, 19 Nov 2021 08:06:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46568)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mo3bp-00043l-Ax
+	for alex.bennee@linaro.org; Fri, 19 Nov 2021 08:07:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45544)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mo3a4-0003b2-6h; Fri, 19 Nov 2021 08:05:32 -0500
-Received: from [2607:f8b0:4864:20::133] (port=43960
- helo=mail-il1-x133.google.com)
+ id 1mo3Xd-0001EM-Sq; Fri, 19 Nov 2021 08:02:57 -0500
+Received: from [2607:f8b0:4864:20::135] (port=43944
+ helo=mail-il1-x135.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mo3a1-0003Tk-Hz; Fri, 19 Nov 2021 08:05:27 -0500
-Received: by mail-il1-x133.google.com with SMTP id s14so10131597ilv.10;
- Fri, 19 Nov 2021 05:05:20 -0800 (PST)
+ id 1mo3Xb-0002Kp-HN; Fri, 19 Nov 2021 08:02:57 -0500
+Received: by mail-il1-x135.google.com with SMTP id s14so10124361ilv.10;
+ Fri, 19 Nov 2021 05:02:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=CoqYXV2MKbJj7YZE3rDxpsTOo8HygkWpcdGEQ1UE9IY=;
- b=LL1ITD2IlILvp2qrTxmeHhUK74F6WhvMFGUYziBGGqTCEGPoXduXjW5YYBtlYme8fS
- xnQCuYGmlukaAjQ45kx+SrlmRVQKNVq+tn8hY+9xX1v+2bCNt+5s5xLk+KwTFoD21zEb
- /HdAgXtu+9oLH7Y27Tnn6ku1e1IEiKCfQ40ZUoctKMwlj9HdDUDfFzm6KveLpU/aRljL
- scc/3fuLj1by2MdhfBJrWJBn0NernJmfuzvH4E85aM1qRWsia7Hnxwabknugoys1AJos
- LwsuDTgsf1ZRFUYHckxanrZjFVqmDmgYCOab02yx4Uz470XZ0o0yoOe7Sa0IRUc3icRh
- RFKA==
+ bh=KLih65B6mQHyeOo4GGrCFNiDI4jDPAKBKS1NrCHFzB8=;
+ b=AFWVSiBHtPttYLeOpQRSuX4pD255CiOqCA9/74ZQ2vxUS+iMHOPuz5oh7pFUozQpyE
+ Bk5VjVbmN1AWuvxImzWf9l3KCIiez9xLFdGKrcs8qwlbDfX0v88k8x1sMCNgwN94SgE1
+ wYEg+fxEHsyyFp2T4wYiJU8K0FHWNAWKeyMuvoWlmmEXvb1xUv3/yA/KWIx/YfTdJhF8
+ dMsFUszOQ149aCV4Et7Dq6/jLQ7qSJzUQJ+bTr2Xoyaf+pvwZdl20AAeF7tECPLnPPUY
+ LOZJtmeEHMgL9sdvhPVIcpBw8zD3QZ2vNLaPR+Z1HvFzngfTKVOcgOVOr08FC2C97/iA
+ baRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=CoqYXV2MKbJj7YZE3rDxpsTOo8HygkWpcdGEQ1UE9IY=;
- b=D52Fb586ZEtciFUhSNMslwpZ8//QJcfalgJt167Us71hTzoPw553ZwoMquuNpXIkCA
- 05RnjOUe+KJflVefQcAIbdTsRjaHNPG4WUCY5lfgeU5mYLSN+mBcg7ZbdRyO/wpVncer
- o79CB5PQ9ueWzOH8WjS3VrUDzS36aCpIx1zvQ0H2J/uD5aKgdCnm7WHagITM7BWwyvTF
- xw2HiqOTZpvEKA5ATFCBnntkn1+Ibx8rZ2fM39V7ZqsySBcbCfZwN0jIqRsStBybC8dt
- q2mTYhyQTRrkfMcunYIz1/7GAw25zu7mgaHdb8MjnMba7K98Altb07lKr9B9eavKiTDG
- rqHA==
-X-Gm-Message-State: AOAM530co0Qty+ziwUPyhhmJPfKyHWZkIPbl8pa1PYIgElBFs1k/T+L4
- tooP0sIvxA5zatJ4yhKXwCTHCD5LymKWo8Y8nk4=
-X-Received: by 2002:a05:6e02:1bec:: with SMTP id
- y12mr4329689ilv.74.1637327119918; 
- Fri, 19 Nov 2021 05:05:19 -0800 (PST)
+ bh=KLih65B6mQHyeOo4GGrCFNiDI4jDPAKBKS1NrCHFzB8=;
+ b=QibcQ3v0mxfKH1BpG+qyLBvJHuRJqui9Y4w6TI5vd/SbhvRI++G6gdyq/YW910m0pr
+ qHYbBnezs6ASAaGxc7eP/XdqtK7mQYKJuNxGlJ5wQSU+/DE8x51Vx3D6TNY+tMvZCcJW
+ OYiKhM5Kq/jVtRk2M37yflVXGIGX0VA6iFU7vgJS0jESzwWaxrE5kduDHYxSSgw3cDbQ
+ KVeU0BtPzWsubiA4MXIyVSy7LVwTOw83Oa5YisauUMQYXwif1VmDnZKYtKo4aXGT6kGE
+ ToV23t+RT9VMp2XGLx8/bhweYMyc0OBV279pO82Q17wbodjXISWUuCudLWFCsWhwObI4
+ B/CQ==
+X-Gm-Message-State: AOAM5308IPZ9eoHja62dMfXfXvlugH2gr9ahLwT+p7H8JyZtfpnnwaK3
+ gZGQ9RFtVMxHuOABrigBIgzKVoLaalHFXZ5xb0w=
+X-Received: by 2002:a92:cda2:: with SMTP id g2mr4678549ild.46.1637326973576;
+ Fri, 19 Nov 2021 05:02:53 -0800 (PST)
 MIME-Version: 1.0
 References: <20211117163409.3587705-1-armbru@redhat.com>
- <20211117163409.3587705-2-armbru@redhat.com>
-In-Reply-To: <20211117163409.3587705-2-armbru@redhat.com>
+ <20211117163409.3587705-3-armbru@redhat.com>
+In-Reply-To: <20211117163409.3587705-3-armbru@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 19 Nov 2021 23:04:52 +1000
-Message-ID: <CAKmqyKNMsvp4GBMznqHdP7JiTPBYsK4RnvBHP+EtjcWmhdeHvA@mail.gmail.com>
-Subject: Re: [PATCH v2 01/13] hw/sd/ssi-sd: Do not create SD card within
- controller's realize
+Date: Fri, 19 Nov 2021 23:02:26 +1000
+Message-ID: <CAKmqyKNRQRJQgVEZyb7xOJkoaAn2aZsfo6eByXeHsGCQ9XWgkQ@mail.gmail.com>
+Subject: Re: [PATCH v2 02/13] hw: Replace trivial drive_get_next() by
+ drive_get()
 To: Markus Armbruster <armbru@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::133
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::135
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::133;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::135;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x135.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -105,46 +104,65 @@ X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "open list:RISC-V" <qemu-riscv@nongnu.org>, Qemu-block <qemu-block@nongnu.org>,
- Bin Meng <bin.meng@windriver.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Bin Meng <bin.meng@windriver.com>, Michael Tokarev <mjt@tls.msk.ru>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 70OHvlr6+HWK
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <laurent@vivier.eu>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KnRDPb7it55j
 
-On Thu, Nov 18, 2021 at 2:35 AM Markus Armbruster <armbru@redhat.com> wrote=
+On Thu, Nov 18, 2021 at 2:42 AM Markus Armbruster <armbru@redhat.com> wrote=
 :
 >
-> ssi_sd_realize() creates an "sd-card" device.  This is inappropriate,
-> and marked FIXME.
+> drive_get_next() is basically a bad idea.  It returns the "next" block
+> backend of a certain interface type.  "Next" means bus=3D0,unit=3DN, wher=
+e
+> subsequent calls count N up from zero, per interface type.
 >
-> Move it to the boards that create these devices.  Prior art: commit
-> eb4f566bbb for device "generic-sdhci", and commit 26c607b86b for
-> device "pl181".
+> This lets you define unit numbers implicitly by execution order.  If the
+> order changes, or new calls appear "in the middle", unit numbers change.
+> ABI break.  Hard to spot in review.
 >
-> The device remains not user-creatable, because its users should (and
-> do) wire up its GPIO chip-select line.
+> A number of machines connect just one backend with drive_get_next().
+> Change them to use drive_get() directly.  This makes the (zero) unit
+> number explicit in the code.
 >
+> Cc: Beniamino Galvani <b.galvani@gmail.com>
 > Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> Cc: Niek Linnenbank <nieklinnenbank@gmail.com>
+> Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> Cc: "Philippe Mathieu-Daud=C3=A9" <f4bug@amsat.org>
+> Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
 > Cc: Alistair Francis <Alistair.Francis@wdc.com>
 > Cc: Bin Meng <bin.meng@windriver.com>
 > Cc: Palmer Dabbelt <palmer@dabbelt.com>
-> Cc: "Philippe Mathieu-Daud=C3=A9" <f4bug@amsat.org>
+> Cc: Artyom Tarasenko <atar4qemu@gmail.com>
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> Cc: Michael Tokarev <mjt@tls.msk.ru>
+> Cc: Laurent Vivier <laurent@vivier.eu>
 > Cc: qemu-arm@nongnu.org
 > Cc: qemu-riscv@nongnu.org
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
@@ -154,150 +172,169 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/stellaris.c  | 15 ++++++++++++++-
->  hw/riscv/sifive_u.c | 13 ++++++++++++-
->  hw/sd/ssi-sd.c      | 29 +----------------------------
->  3 files changed, 27 insertions(+), 30 deletions(-)
+>  hw/arm/cubieboard.c        | 2 +-
+>  hw/arm/integratorcp.c      | 2 +-
+>  hw/arm/msf2-som.c          | 2 +-
+>  hw/arm/orangepi.c          | 2 +-
+>  hw/arm/raspi.c             | 2 +-
+>  hw/arm/realview.c          | 2 +-
+>  hw/arm/sabrelite.c         | 2 +-
+>  hw/misc/sifive_u_otp.c     | 2 +-
+>  hw/riscv/microchip_pfsoc.c | 2 +-
+>  hw/riscv/sifive_u.c        | 2 +-
+>  hw/sparc64/niagara.c       | 2 +-
+>  11 files changed, 11 insertions(+), 11 deletions(-)
 >
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index 78827ace6b..b6c8a5d609 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -10,6 +10,7 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "hw/sysbus.h"
-> +#include "hw/sd/sd.h"
->  #include "hw/ssi/ssi.h"
->  #include "hw/arm/boot.h"
->  #include "qemu/timer.h"
-> @@ -1157,6 +1158,9 @@ static void stellaris_init(MachineState *ms, stella=
-ris_board_info *board)
->              void *bus;
->              DeviceState *sddev;
->              DeviceState *ssddev;
-> +            DriveInfo *dinfo;
-> +            DeviceState *carddev;
-> +            BlockBackend *blk;
+> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+> index 294ba5de6e..5e3372a3c7 100644
+> --- a/hw/arm/cubieboard.c
+> +++ b/hw/arm/cubieboard.c
+> @@ -81,7 +81,7 @@ static void cubieboard_init(MachineState *machine)
+>      }
 >
->              /*
->               * Some boards have both an OLED controller and SD card conn=
-ected to
-> @@ -1221,8 +1225,17 @@ static void stellaris_init(MachineState *ms, stell=
-aris_board_info *board)
->               *  - Make the ssd0323 OLED controller chipselect active-low
->               */
->              bus =3D qdev_get_child_bus(dev, "ssi");
-> -
->              sddev =3D ssi_create_peripheral(bus, "ssi-sd");
-> +
-> +            dinfo =3D drive_get(IF_SD, 0, 0);
-> +            blk =3D dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
-> +            carddev =3D qdev_new(TYPE_SD_CARD);
-> +            qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal)=
-;
-> +            qdev_prop_set_bit(carddev, "spi", true);
-> +            qdev_realize_and_unref(carddev,
-> +                                   qdev_get_child_bus(sddev, "sd-bus"),
-> +                                   &error_fatal);
-> +
->              ssddev =3D ssi_create_peripheral(bus, "ssd0323");
->              gpio_out[GPIO_D][0] =3D qemu_irq_split(
->                      qdev_get_gpio_in_named(sddev, SSI_GPIO_CS, 0),
+>      /* Retrieve SD bus */
+> -    di =3D drive_get_next(IF_SD);
+> +    di =3D drive_get(IF_SD, 0, 0);
+>      blk =3D di ? blk_by_legacy_dinfo(di) : NULL;
+>      bus =3D qdev_get_child_bus(DEVICE(a10), "sd-bus");
+>
+> diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
+> index 16e8985953..b109ece3ae 100644
+> --- a/hw/arm/integratorcp.c
+> +++ b/hw/arm/integratorcp.c
+> @@ -649,7 +649,7 @@ static void integratorcp_init(MachineState *machine)
+>                            qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_WPROT=
+, 0));
+>      qdev_connect_gpio_out_named(dev, "card-inserted", 0,
+>                            qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_CARDI=
+N, 0));
+> -    dinfo =3D drive_get_next(IF_SD);
+> +    dinfo =3D drive_get(IF_SD, 0, 0);
+>      if (dinfo) {
+>          DeviceState *card;
+>
+> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
+> index 396e8b9913..d9f881690e 100644
+> --- a/hw/arm/msf2-som.c
+> +++ b/hw/arm/msf2-som.c
+> @@ -45,7 +45,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machi=
+ne)
+>      DeviceState *spi_flash;
+>      MSF2State *soc;
+>      MachineClass *mc =3D MACHINE_GET_CLASS(machine);
+> -    DriveInfo *dinfo =3D drive_get_next(IF_MTD);
+> +    DriveInfo *dinfo =3D drive_get(IF_MTD, 0, 0);
+>      qemu_irq cs_line;
+>      BusState *spi_bus;
+>      MemoryRegion *sysmem =3D get_system_memory();
+> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+> index 0cf9895ce7..e796382236 100644
+> --- a/hw/arm/orangepi.c
+> +++ b/hw/arm/orangepi.c
+> @@ -85,7 +85,7 @@ static void orangepi_init(MachineState *machine)
+>      qdev_realize(DEVICE(h3), NULL, &error_abort);
+>
+>      /* Retrieve SD bus */
+> -    di =3D drive_get_next(IF_SD);
+> +    di =3D drive_get(IF_SD, 0, 0);
+>      blk =3D di ? blk_by_legacy_dinfo(di) : NULL;
+>      bus =3D qdev_get_child_bus(DEVICE(h3), "sd-bus");
+>
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 146d35382b..b4dd6c1e99 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -284,7 +284,7 @@ static void raspi_machine_init(MachineState *machine)
+>      qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
+>
+>      /* Create and plug in the SD cards */
+> -    di =3D drive_get_next(IF_SD);
+> +    di =3D drive_get(IF_SD, 0, 0);
+>      blk =3D di ? blk_by_legacy_dinfo(di) : NULL;
+>      bus =3D qdev_get_child_bus(DEVICE(&s->soc), "sd-bus");
+>      if (bus =3D=3D NULL) {
+> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+> index 1c54316ba3..ddc70b54a5 100644
+> --- a/hw/arm/realview.c
+> +++ b/hw/arm/realview.c
+> @@ -237,7 +237,7 @@ static void realview_init(MachineState *machine,
+>          qemu_irq_invert(qdev_get_gpio_in(gpio2, 0)));
+>      qdev_connect_gpio_out_named(dev, "card-read-only", 0, mmc_irq[0]);
+>      qdev_connect_gpio_out_named(dev, "card-inserted", 0, mmc_irq[1]);
+> -    dinfo =3D drive_get_next(IF_SD);
+> +    dinfo =3D drive_get(IF_SD, 0, 0);
+>      if (dinfo) {
+>          DeviceState *card;
+>
+> diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
+> index 553608e583..cce49aa25c 100644
+> --- a/hw/arm/sabrelite.c
+> +++ b/hw/arm/sabrelite.c
+> @@ -76,7 +76,7 @@ static void sabrelite_init(MachineState *machine)
+>              if (spi_bus) {
+>                  DeviceState *flash_dev;
+>                  qemu_irq cs_line;
+> -                DriveInfo *dinfo =3D drive_get_next(IF_MTD);
+> +                DriveInfo *dinfo =3D drive_get(IF_MTD, 0, 0);
+>
+>                  flash_dev =3D qdev_new("sst25vf016b");
+>                  if (dinfo) {
+> diff --git a/hw/misc/sifive_u_otp.c b/hw/misc/sifive_u_otp.c
+> index 18aa0bd55d..5d5a8c8a90 100644
+> --- a/hw/misc/sifive_u_otp.c
+> +++ b/hw/misc/sifive_u_otp.c
+> @@ -209,7 +209,7 @@ static void sifive_u_otp_realize(DeviceState *dev, Er=
+ror **errp)
+>                            TYPE_SIFIVE_U_OTP, SIFIVE_U_OTP_REG_SIZE);
+>      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmio);
+>
+> -    dinfo =3D drive_get_next(IF_NONE);
+> +    dinfo =3D drive_get(IF_NONE, 0, 0);
+>      if (dinfo) {
+>          int ret;
+>          uint64_t perm;
+> diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
+> index 57d779fb55..d1d065efbc 100644
+> --- a/hw/riscv/microchip_pfsoc.c
+> +++ b/hw/riscv/microchip_pfsoc.c
+> @@ -458,7 +458,7 @@ static void microchip_icicle_kit_machine_init(Machine=
+State *machine)
+>      target_ulong firmware_end_addr, kernel_start_addr;
+>      uint64_t kernel_entry;
+>      uint32_t fdt_load_addr;
+> -    DriveInfo *dinfo =3D drive_get_next(IF_SD);
+> +    DriveInfo *dinfo =3D drive_get(IF_SD, 0, 0);
+>
+>      /* Sanity check on RAM size */
+>      if (machine->ram_size < mc->default_ram_size) {
 > diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-> index 589ae72a59..a4ecadaf12 100644
+> index a4ecadaf12..aa74e67889 100644
 > --- a/hw/riscv/sifive_u.c
 > +++ b/hw/riscv/sifive_u.c
-> @@ -46,6 +46,7 @@
->  #include "hw/char/serial.h"
->  #include "hw/cpu/cluster.h"
->  #include "hw/misc/unimp.h"
-> +#include "hw/sd/sd.h"
->  #include "hw/ssi/ssi.h"
->  #include "target/riscv/cpu.h"
->  #include "hw/riscv/riscv_hart.h"
-> @@ -536,7 +537,8 @@ static void sifive_u_machine_init(MachineState *machi=
+> @@ -672,7 +672,7 @@ static void sifive_u_machine_init(MachineState *machi=
 ne)
->      uint32_t fdt_load_addr;
->      uint64_t kernel_entry;
->      DriveInfo *dinfo;
-> -    DeviceState *flash_dev, *sd_dev;
-> +    BlockBackend *blk;
-> +    DeviceState *flash_dev, *sd_dev, *card_dev;
->      qemu_irq flash_cs, sd_cs;
 >
->      /* Initialize SoC */
-> @@ -686,6 +688,15 @@ static void sifive_u_machine_init(MachineState *mach=
-ine)
->
->      sd_cs =3D qdev_get_gpio_in_named(sd_dev, SSI_GPIO_CS, 0);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->soc.spi2), 1, sd_cs);
-> +
-> +    dinfo =3D drive_get(IF_SD, 0, 0);
-> +    blk =3D dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
-> +    card_dev =3D qdev_new(TYPE_SD_CARD);
-> +    qdev_prop_set_drive_err(card_dev, "drive", blk, &error_fatal);
-> +    qdev_prop_set_bit(card_dev, "spi", true);
-> +    qdev_realize_and_unref(card_dev,
-> +                           qdev_get_child_bus(sd_dev, "sd-bus"),
-> +                           &error_fatal);
->  }
->
->  static bool sifive_u_machine_get_start_in_flash(Object *obj, Error **err=
-p)
-> diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-> index e60854eeef..167c03b780 100644
-> --- a/hw/sd/ssi-sd.c
-> +++ b/hw/sd/ssi-sd.c
-> @@ -368,36 +368,9 @@ static const VMStateDescription vmstate_ssi_sd =3D {
->
->  static void ssi_sd_realize(SSIPeripheral *d, Error **errp)
+>      /* Connect an SPI flash to SPI0 */
+>      flash_dev =3D qdev_new("is25wp256");
+> -    dinfo =3D drive_get_next(IF_MTD);
+> +    dinfo =3D drive_get(IF_MTD, 0, 0);
+>      if (dinfo) {
+>          qdev_prop_set_drive_err(flash_dev, "drive",
+>                                  blk_by_legacy_dinfo(dinfo),
+> diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
+> index f3e42d0326..ccad2c43a3 100644
+> --- a/hw/sparc64/niagara.c
+> +++ b/hw/sparc64/niagara.c
+> @@ -98,7 +98,7 @@ static void add_rom_or_fail(const char *file, const hwa=
+ddr addr)
+>  static void niagara_init(MachineState *machine)
 >  {
-> -    ERRP_GUARD();
->      ssi_sd_state *s =3D SSI_SD(d);
-> -    DeviceState *carddev;
-> -    DriveInfo *dinfo;
+>      NiagaraBoardState *s =3D g_new(NiagaraBoardState, 1);
+> -    DriveInfo *dinfo =3D drive_get_next(IF_PFLASH);
+> +    DriveInfo *dinfo =3D drive_get(IF_PFLASH, 0, 0);
+>      MemoryRegion *sysmem =3D get_system_memory();
 >
->      qbus_init(&s->sdbus, sizeof(s->sdbus), TYPE_SD_BUS, DEVICE(d), "sd-b=
-us");
-> -
-> -    /* Create and plug in the sd card */
-> -    /* FIXME use a qdev drive property instead of drive_get_next() */
-> -    dinfo =3D drive_get_next(IF_SD);
-> -    carddev =3D qdev_new(TYPE_SD_CARD);
-> -    if (dinfo) {
-> -        if (!qdev_prop_set_drive_err(carddev, "drive",
-> -                                     blk_by_legacy_dinfo(dinfo), errp)) =
-{
-> -            goto fail;
-> -        }
-> -    }
-> -
-> -    if (!object_property_set_bool(OBJECT(carddev), "spi", true, errp)) {
-> -        goto fail;
-> -    }
-> -
-> -    if (!qdev_realize_and_unref(carddev, BUS(&s->sdbus), errp)) {
-> -        goto fail;
-> -    }
-> -
-> -    return;
-> -
-> -fail:
-> -    error_prepend(errp, "failed to init SD card: ");
->  }
->
->  static void ssi_sd_reset(DeviceState *dev)
-> @@ -426,7 +399,7 @@ static void ssi_sd_class_init(ObjectClass *klass, voi=
-d *data)
->      k->cs_polarity =3D SSI_CS_LOW;
->      dc->vmsd =3D &vmstate_ssi_sd;
->      dc->reset =3D ssi_sd_reset;
-> -    /* Reason: init() method uses drive_get_next() */
-> +    /* Reason: GPIO chip-select line should be wired up */
->      dc->user_creatable =3D false;
->  }
->
+>      /* init CPUs */
 > --
 > 2.31.1
 >

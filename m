@@ -1,239 +1,148 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5346194lfk;
-        Sun, 21 Nov 2021 04:29:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzd6T6TRRwAOG/zfRMVaE2v7nIUtHW6Q8KR6po6hMhosmbRsmWA+ghEcMEaC7hA8RpDPG/k
-X-Received: by 2002:a1f:18cb:: with SMTP id 194mr146088201vky.16.1637497768722;
-        Sun, 21 Nov 2021 04:29:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637497768; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp6767407lfk;
+        Mon, 22 Nov 2021 03:07:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyPfqn9zrRkBK+SBoz2INDtVTi5iQRMsC5lCMX/56qi2p2eGp8p5OZYNxUcR89E7LFJP5wI
+X-Received: by 2002:a05:6102:3ec3:: with SMTP id n3mr130688482vsv.48.1637579250458;
+        Mon, 22 Nov 2021 03:07:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637579250; cv=none;
         d=google.com; s=arc-20160816;
-        b=vl5PryH6d4xHHU18BOg0gJqe8O+D+Uw/6SH9VksmXXg/ubX+XbBDXHGyGGViYhqbUc
-         fqmnitMQ9YAOxTFKWFQUN35DVB/K+3SIfdMWCDtjWu/XfDnslCSFgmcR6BYjww0ExHHp
-         iAQX3bUg57AgzJMKb3O93W2lSYW0hHxoHUoFpLi+3L4u/oMyq9fuU4h/CkKwTP2TMrNI
-         ALDoKAIFq5ncIA6IzRg81g0IpdYUQCCZv7jKd+GE6J6D4YgaQHstoAltsuXc0QlIqBJ7
-         hGM36LBYVM8MsP79uyPuBg77FkQeQ5ncLals0HZI58rLLcSecTqXhILOwvuHBOWKJxjN
-         xhEQ==
+        b=qe056Hk1zK7PNIhUxg4XOVBCo6WFI1ZYWwVP+Vwq+CFQcxU1zDwO3pbc6wv33H5aXZ
+         CgTKd1FFec26Sn3CFHx8ulYGekB+d+ENl0+jKcc4kV/iLANeQfqmloMkcRB9SZ9zgGbk
+         +LV9xPp3MF4SvOtFRAnkwS7JEdIuxznDDLhqSYIL8w0YpFfSbbUVfq5KeuCB73Qp87aG
+         I25fRLmvWwjZOcJxDfKriIrhQwO85iwpk94JWAOtuZDVZbRJoHNgfujEbDYLTjT7OThI
+         42e5rBCw0FmKmtELDhTF0bsN+KqMS9FKAoiPEaAmX+6X27h2jWEz8clPiODuH6G9KNUi
+         Hyqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=ooyrJuKyczM0c8Rh1GVy44W4Y+ttWwczgVJf8O2GUzU=;
-        b=F7EV52Ma8Cg07xngxkKdSaszfh536CoG25xIgmKvanKy/1TZmhFeq4iYFsbCPsmE69
-         tDUl0ePE6IljyaB3kMEBEu8hDQ/vqDk1kcqAHfiyAlEnVM7kcqw3CQ1xqgNUDT74Bg0W
-         63Wxt0/CipMUDx8tmJWlN+J2+rGhMpQNzclgeOHB4FbWnWzv5Npj44QLQiZy0fY2fufR
-         DI15Yxd4Ct7v0g3Rh/toB6CxdIRCce8C8TSWafr30Q5uYsX4fkwM+Te2xkMTT8U/iVu0
-         UNfO00fiamcb7juohuZy8Wp7zd7vbfDSmwtMsiriP1AsGVZcT++Uscep+cPhBmK765MW
-         Z9Ag==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=2IExDQvEd2WzGQ71T3AjMsU+y1fO98aLmLROqfsaKhA=;
+        b=oe9bDjT4TmnPqCdxAejjV4qq5oVPU5PIQ2HXhcuXS5kGW8Xp21lU9XQviNMC4E9AED
+         ADZvFUGboiRZfsMXo2oyWLuexSUgbvAeMMk96dN1T9pJlPs490qCBKGmFG7sxbus6lKK
+         /aSz4e7pkh3pxKBPbW99tkVviswHgVFpHwivDlIwCHgyivppPGVtep3b4mvwEefgFW4q
+         zp/dNZOHpFGmorYQ5jKVGsMKiMN7GbQ9cTnYtITpsIG7xRG42nEhdXSMtGscy485Vg1d
+         Yn1OepBNs4n/z75Ec//PkQuM3yj3AOWEPpy6FvDS5Nhp82lBwV+uTI+4ACNWdQJiUrFK
+         tBOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=i4QDkzrO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a44si8205006uad.151.2021.11.21.04.29.28
+        by mx.google.com with ESMTPS id bl10si24345766vsb.26.2021.11.22.03.07.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Nov 2021 04:29:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Nov 2021 03:07:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:60134 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=i4QDkzrO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37644 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1molyK-0003ks-3b
-	for alex.bennee@linaro.org; Sun, 21 Nov 2021 07:29:28 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52670)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mp7AX-0000Af-Nt
+	for alex.bennee@linaro.org; Mon, 22 Nov 2021 06:07:29 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55860)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1moluM-0003pG-UG; Sun, 21 Nov 2021 07:25:22 -0500
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2906)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1moluH-0005l5-ST; Sun, 21 Nov 2021 07:25:22 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.54])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4HxqKq5MX1z1DJQV;
- Sun, 21 Nov 2021 20:22:39 +0800 (CST)
-Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Sun, 21 Nov 2021 20:25:07 +0800
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
- <drjones@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>, Marcel
- Apfelbaum <marcel.apfelbaum@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <ani@anisinha.ca>, Markus Armbruster <armbru@redhat.com>, Eric
- Blake <eblake@redhat.com>, <wanghaibin.wang@huawei.com>, Yanan Wang
- <wangyanan55@huawei.com>
-Subject: [PATCH v4 01/10] qemu-options: Improve readability of SMP related Docs
-Date: Sun, 21 Nov 2021 20:24:53 +0800
-Message-ID: <20211121122502.9844-2-wangyanan55@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
-In-Reply-To: <20211121122502.9844-1-wangyanan55@huawei.com>
-References: <20211121122502.9844-1-wangyanan55@huawei.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mp73R-0004b4-Mh
+ for qemu-devel@nongnu.org; Mon, 22 Nov 2021 06:00:11 -0500
+Received: from [2a00:1450:4864:20::331] (port=50986
+ helo=mail-wm1-x331.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mp73P-00017f-Tq
+ for qemu-devel@nongnu.org; Mon, 22 Nov 2021 06:00:09 -0500
+Received: by mail-wm1-x331.google.com with SMTP id 133so14934597wme.0
+ for <qemu-devel@nongnu.org>; Mon, 22 Nov 2021 03:00:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=2IExDQvEd2WzGQ71T3AjMsU+y1fO98aLmLROqfsaKhA=;
+ b=i4QDkzrOyJ6Bl4ifmkIblt0VMAdDzxRQUWDlKXWnbOg433DtnsAQQT7siRD9oQb9Nt
+ uGrI+cUp8s5ryn2HlQtMSyo90OJGuAACd/RnTHP1PV9BKMPn+ekN/6x+vl6ZrvlmiTDa
+ m9O/Wxq9jbr9KmWxf456zXU80iu35cvvjG8rByMcEaUr6rhADee4mjrSUjz9r61DvHhD
+ f+qzkSeL+JEnGWD5yaF0K+TaHVKwoEZtQNFO3IYRg2UnQu9i+UpsVoI11fOJnHjWOeAo
+ fIRkDgKMz53FOO5c+SnryRlBPY7Zvz75OPUppYBmIjCwhMb4bYkMUvKt90doWGbSuFbe
+ HTzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=2IExDQvEd2WzGQ71T3AjMsU+y1fO98aLmLROqfsaKhA=;
+ b=3RpqXvpmGriHwTP4CAUNe8iKG9HdvkrzHHFOR/X/yy/Zd4ODkXjhAKNnTpeYZzGw3Q
+ hnZNcQfZ63MYxo9lxC6MmqfiQ9DQtVbG4G35yCW6KgNCxeCo/RQbj/Q1Kn9Rf93HsXb1
+ wRmeHtamGDsORqtpH+MG0gbcpPXdjUPOHcI1iIZ92SQgx9jpqcvLDPrV0Ez97ntE66lk
+ LZy8LB00WeQ+ITI8939dtxZ0XkN7eNFATF4IiTHZUooODryLGVKqaRMlWR8L895qMlO/
+ 0H7bXouLU8l7v2n0r8tiQlcJY14FCvw4GZZ5hysQrB0hHNvSr84msKoJhZNq9fyJ9ldl
+ ziIA==
+X-Gm-Message-State: AOAM5300cOMZ4fpZdvHRR7GDFUV/4FAK7md3qfuN4NrxilLnvlW7EKRF
+ UqT99QK24pk6y3f9CYgvBacksO5T2/kod6h9brngpw==
+X-Received: by 2002:a1c:7f43:: with SMTP id a64mr2739182wmd.133.1637578800996; 
+ Mon, 22 Nov 2021 03:00:00 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20211115223619.2599282-1-philmd@redhat.com>
+In-Reply-To: <20211115223619.2599282-1-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 22 Nov 2021 10:59:49 +0000
+Message-ID: <CAFEAcA8TvHb3XG6Kw83=Bb69YZ+GF0p4r6uG+UdwM3UbLmQ31A@mail.gmail.com>
+Subject: Re: [PATCH-for-6.2? 0/2] hw/intc/arm_gicv3: Introduce
+ CONFIG_ARM_GIC_TCG Kconfig selector
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::331
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Yanan Wang <wangyanan55@huawei.com>
-From:  Yanan Wang via <qemu-arm@nongnu.org>
-X-TUID: TwApMKJ3o6SD
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Miroslav Rezanina <mrezanin@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Shashi Mallela <shashi.mallela@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3ZJqDkGhKpIr
 
-We have a description in qemu-options.hx for each CPU topology
-parameter to explain what it exactly means, and also an extra
-declaration for the target-specific one, e.g. "for PC only"
-when describing "dies", and "for PC, it's on one die" when
-describing "cores".
+On Mon, 15 Nov 2021 at 22:36, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> The GICv3 ITS support has been introduced uring the 6.2 development
+> window (commits 18f6290a6a9..17fb5e36aab). This device is for
+> emulation. When building virtualization-only binary, it might be
+> desirable to not include this device.
+>
+> Introduce the CONFIG_ARM_GIC_TCG Kconfig selector to allow downstream
+> distributions to deselect this device.
+>
+> Based-on: pull-target-arm-20211115-1
+>
+> Philippe Mathieu-Daud=C3=A9 (2):
+>   hw/intc/arm_gicv3: Extract gicv3_set_gicv3state from arm_gicv3_cpuif.c
+>   hw/intc/arm_gicv3: Introduce CONFIG_ARM_GIC_TCG Kconfig selector
 
-Now we are going to introduce one more non-generic parameter
-"clusters", it will make the Doc less readable and  if we still
-continue to use the legacy way to describe it.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-So let's at first make two tweaks of the Docs to improve the
-readability and also scalability:
-1) In the -help text: Delete the extra specific declaration and
-   describe each topology parameter level by level. Then add a
-   note to declare that different machines may support different
-   subsets and the actual meaning of the supported parameters
-   will vary accordingly.
-2) In the rST text: List all the sub-hierarchies currently
-   supported in QEMU, and correspondingly give an example of
-   -smp configuration for each of them.
+This looks OK to me, but I'm inclined to leave it for 7.0 at this
+point in the release cycle, unless it would be awkward for
+downstreams if we didn't put it in ?
 
-Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
----
- qemu-options.hx | 76 ++++++++++++++++++++++++++++++++++++++-----------
- 1 file changed, 59 insertions(+), 17 deletions(-)
-
-diff --git a/qemu-options.hx b/qemu-options.hx
-index ae2c6dbbfc..7a59db7764 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -207,14 +207,26 @@ ERST
- 
- DEF("smp", HAS_ARG, QEMU_OPTION_smp,
-     "-smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
--    "                set the number of CPUs to 'n' [default=1]\n"
-+    "                set the number of initial CPUs to 'n' [default=1]\n"
-     "                maxcpus= maximum number of total CPUs, including\n"
-     "                offline CPUs for hotplug, etc\n"
--    "                sockets= number of discrete sockets in the system\n"
--    "                dies= number of CPU dies on one socket (for PC only)\n"
--    "                cores= number of CPU cores on one socket (for PC, it's on one die)\n"
--    "                threads= number of threads on one CPU core\n",
--        QEMU_ARCH_ALL)
-+    "                sockets= number of sockets on the machine board\n"
-+    "                dies= number of dies in one socket\n"
-+    "                cores= number of cores in one die\n"
-+    "                threads= number of threads in one core\n"
-+    "Note: Different machines may have different subsets of the CPU topology\n"
-+    "      parameters supported, so the actual meaning of the supported parameters\n"
-+    "      will vary accordingly. For example, for a machine type that supports a\n"
-+    "      three-level CPU hierarchy of sockets/cores/threads, the parameters will\n"
-+    "      sequentially mean as below:\n"
-+    "                sockets means the number of sockets on the machine board\n"
-+    "                cores means the number of cores in one socket\n"
-+    "                threads means the number of threads in one core\n"
-+    "      For a particular machine type board, an expected CPU topology hierarchy\n"
-+    "      can be defined through the supported sub-option. Unsupported parameters\n"
-+    "      can also be provided in addition to the sub-option, but their values\n"
-+    "      must be set as 1 in the purpose of correct parsing.\n",
-+    QEMU_ARCH_ALL)
- SRST
- ``-smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]``
-     Simulate a SMP system with '\ ``n``\ ' CPUs initially present on
-@@ -225,27 +237,57 @@ SRST
-     initial CPU count will match the maximum number. When only one of them
-     is given then the omitted one will be set to its counterpart's value.
-     Both parameters may be specified, but the maximum number of CPUs must
--    be equal to or greater than the initial CPU count. Both parameters are
--    subject to an upper limit that is determined by the specific machine
--    type chosen.
--
--    To control reporting of CPU topology information, the number of sockets,
--    dies per socket, cores per die, and threads per core can be specified.
--    The sum `` sockets * cores * dies * threads `` must be equal to the
--    maximum CPU count. CPU targets may only support a subset of the topology
--    parameters. Where a CPU target does not support use of a particular
--    topology parameter, its value should be assumed to be 1 for the purpose
--    of computing the CPU maximum count.
-+    be equal to or greater than the initial CPU count. Product of the
-+    CPU topology hierarchy must be equal to the maximum number of CPUs.
-+    Both parameters are subject to an upper limit that is determined by
-+    the specific machine type chosen.
-+
-+    To control reporting of CPU topology information, values of the topology
-+    parameters can be specified. Machines may only support a subset of the
-+    parameters and different machines may have different subsets supported
-+    which vary depending on capacity of the corresponding CPU targets. So
-+    for a particular machine type board, an expected topology hierarchy can
-+    be defined through the supported sub-option. Unsupported parameters can
-+    also be provided in addition to the sub-option, but their values must be
-+    set as 1 in the purpose of correct parsing.
- 
-     Either the initial CPU count, or at least one of the topology parameters
-     must be specified. The specified parameters must be greater than zero,
-     explicit configuration like "cpus=0" is not allowed. Values for any
-     omitted parameters will be computed from those which are given.
-+
-+    For example, the following sub-option defines a CPU topology hierarchy
-+    (2 sockets totally on the machine, 2 cores per socket, 2 threads per
-+    core) for a machine that only supports sockets/cores/threads.
-+    Some members of the option can be omitted but their values will be
-+    automatically computed:
-+
-+    ::
-+
-+        -smp 8,sockets=2,cores=2,threads=2,maxcpus=8
-+
-+    The following sub-option defines a CPU topology hierarchy (2 sockets
-+    totally on the machine, 2 dies per socket, 2 cores per die, 2 threads
-+    per core) for PC machines which support sockets/dies/cores/threads.
-+    Some members of the option can be omitted but their values will be
-+    automatically computed:
-+
-+    ::
-+
-+        -smp 16,sockets=2,dies=2,cores=2,threads=2,maxcpus=16
-+
-     Historically preference was given to the coarsest topology parameters
-     when computing missing values (ie sockets preferred over cores, which
-     were preferred over threads), however, this behaviour is considered
-     liable to change. Prior to 6.2 the preference was sockets over cores
-     over threads. Since 6.2 the preference is cores over sockets over threads.
-+
-+    For example, the following option defines a machine board with 2 sockets
-+    of 1 core before 6.2 and 1 socket of 2 cores after 6.2:
-+
-+    ::
-+
-+        -smp 2
- ERST
- 
- DEF("numa", HAS_ARG, QEMU_OPTION_numa,
--- 
-2.19.1
-
+thanks
+-- PMM

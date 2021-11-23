@@ -1,129 +1,76 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp7554616lfk;
-        Mon, 22 Nov 2021 12:46:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzeG4Khg3G8KfGmY2UQbStbZz4kx3S8e1f8vUiYJbXlAuLH8Cls0in7n9SI47bHjpQiXauF
-X-Received: by 2002:a05:6122:1353:: with SMTP id f19mr35130069vkp.4.1637614010261;
-        Mon, 22 Nov 2021 12:46:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637614010; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp9279697lfk;
+        Tue, 23 Nov 2021 12:26:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyALxb8wunbz8qJmkpfzo/493MmoX4SDHCBDSR2EIgHrysGAjyisM+XiopS0N7tqK/hZJSu
+X-Received: by 2002:a67:c181:: with SMTP id h1mr13937250vsj.3.1637699213313;
+        Tue, 23 Nov 2021 12:26:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637699213; cv=none;
         d=google.com; s=arc-20160816;
-        b=o78ClusY7fimTs0QZOM//SFE3lCPv267BVLNRPojP5TrzSVIix0oAnA3xGOVZTEJcS
-         saseRhA55/pcqmizQuocj6YEknJJMg2GqnUPiuR7/F2oZuF4hiGY+eEqWM9JGUu+Xban
-         HZ5p3unT4SSqfUCGpp+K0fnNn3mywi5aowMgl5PsYnGuSTO56KYzMw9j4yUAx8rkgzXO
-         yYWlpztgVeEME431plN1FyUg6bIN2siF0G+rYPpNExilQLyrF0p5mg4mpSKwkX1yFc2q
-         dyaROjRqG0uiIg8CbW+REHLdJroD6wPZm6lVcb4b751udUigNx2++3xR1spnEQZ6B2tV
-         h52g==
+        b=W5P9+YZqb7g1tHffS4BKVQlP8BHS+/cFZgMDc+ZU2ODse0NWbv3frXrS5YUPmMaNKD
+         ww3SlNQaqOWltgAuubl/K5dySEAzaDi2L+Knuy2t6IS4qgYH6E54JkZYq9bs/rCwHnWt
+         uTtQtvIO7haqe5I0nRBTEfu7iu/BEvhDWjSEuwY+SQGBWhxd+IAiNs0njKVTkk6hf9za
+         Mhp5Sp2AGpl2WahKCOMNKWET21SC+FgCJgOzo1sAhURAxw+5yjXUi2gAR2/CHXYwzgq0
+         luEqMfp6C9ISRDlcCGbf7cmh4fEDlmmERg17SxnarkEZLAPxTXsd+Q2GhVcf2O/aq0r8
+         R/kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=3W+AwtR3FDj8lNUStc9QYpxEsslpZdlkvWuQwCPtt1A=;
-        b=lsfQa4RVU/veAIbK4Argom3+EeOMYHsrPLRG/aOLvB0Yox3cVfws8sLxx25M22RJit
-         reSiaoqKq4zcAS7xFxvJL+dYZNSGLlhpPRMeEdlhZNIl8iRYi9wumFiizAq2loX78QQ4
-         lPB9u0J1ns/ot9aWDjQNAxwSKszGGgw2S7FA9HS9SK6PUUJQO2sv0kZUB0/h8HafgmDu
-         lDgXFhi3BAv7ra9taUm1T64SvqLZb34jST0a94JN2ai9OTDOQwq7zptOm2NTyEcGdpU9
-         kDrdGxgnstjEC5Mrvt01nxBEdJy6sNu6jBJoks6oQ7Km3pPgzIonMBlixqAEEVN0bldY
-         Bc+w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=Ev98vReT8hHSVDEhelO+G2Cm7PYBSlBAbzf1eOBQ6d8=;
+        b=RQZm9zZgeuchGdD+owYGvr8KdNL4nZttFpJ0WbtpMBt6RIkBCTLR/Gj8n7nTx3GmRO
+         YPPMUkU/LkSbpbRLfnGNiG4rllSetcDyVjeH0dIdvgbUy+MPzoJA4KlscvCvWQxfcpwQ
+         0xvxihDrsqlCdT02HmCaVf7osRfGtOg/mZ6CSYAHcOkD9gJ4EaXm53xnEtbxxoDq1l/e
+         DX8uAXjBFUikrpEB4iN2YCkiYY6z7DdAcNmRYFUyWBNP49K4/fcpP4RTc5u3VPouuznX
+         +JWlxmUEzWlF7L7/3Au1sIS06pIeJvbgAqNGaj41K5+SXUK4sh3YSboTd2l+EIZVmJJH
+         Z/KQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Kwo+EqZs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g22si25196102uam.68.2021.11.22.12.46.50
+        by mx.google.com with ESMTPS id v13si8889076uam.204.2021.11.23.12.26.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Nov 2021 12:46:50 -0800 (PST)
+        Tue, 23 Nov 2021 12:26:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Kwo+EqZs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46242 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mpGDB-0007SI-Ko
-	for alex.bennee@linaro.org; Mon, 22 Nov 2021 15:46:49 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53744)
+	id 1mpcNQ-0006Fr-HT
+	for alex.bennee@linaro.org; Tue, 23 Nov 2021 15:26:52 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33446)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mpGCv-0007Qi-TC
- for qemu-arm@nongnu.org; Mon, 22 Nov 2021 15:46:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34906)
+ (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
+ id 1mpcMm-0006Bw-Kd; Tue, 23 Nov 2021 15:26:14 -0500
+Received: from relay8-d.mail.gandi.net ([217.70.183.201]:33241)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mpGCr-0000D7-ET
- for qemu-arm@nongnu.org; Mon, 22 Nov 2021 15:46:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637613987;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3W+AwtR3FDj8lNUStc9QYpxEsslpZdlkvWuQwCPtt1A=;
- b=Kwo+EqZs60DS0aBK8nKu7XiiXvCLUF6CWF6OjXKuOXmny5vVtG8PoGPh+3krESZg/0RjmB
- YS0Y4zQbPCmHWC5iCtEhPF3l0IxrcUbFyl0ku4xECWlLdMoZTphYTHvd1DJ9kBYvE+Oqab
- vEqL1PBbdFyKsMMp7OZAF6KFBQ5pLR8=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-549-Qi13zFNoOQuQJBsVyPnVug-1; Mon, 22 Nov 2021 15:46:26 -0500
-X-MC-Unique: Qi13zFNoOQuQJBsVyPnVug-1
-Received: by mail-wm1-f69.google.com with SMTP id
- r129-20020a1c4487000000b00333629ed22dso137461wma.6
- for <qemu-arm@nongnu.org>; Mon, 22 Nov 2021 12:46:25 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=3W+AwtR3FDj8lNUStc9QYpxEsslpZdlkvWuQwCPtt1A=;
- b=18OlFqViEkeXnOUb5jAQNImwu44gYHSuPoWaKog2RaLjqE0Q1a8InTmpxmGwwTC/HH
- uijH+FvhX1ax43x+JUcIVKnp8aV3PD1coV08OL/Uro0L08tzbHKHo5DinheJOIak9iGD
- cqoHxK0W1xlhuv0HolA3SXoyilbmvuCdqZdDu63F+YKw/BH/og81mGoDcnhLvquFi1oL
- al7ap6KIkZdWbNOO9nvTCLQi9sTM2IUjGTbSimvXfSCYJRcu4y2xwivzBlZi1cm7AQkU
- 32hI3neOhNu1Z8DGCldRYj9R/kXAFwlYo0adTEf2kR2Hny3LT0Gb51CCgbkEKHmBhR2j
- ifIg==
-X-Gm-Message-State: AOAM533olS2liZLHxOmWldffVznVjnJXj9sp24ntBp+QwwXGCxewFMxy
- s0Sb72E2iqLGPe7JDkpoeIZSC6FUAPl0nhOEnlb9Jo+m1Dzc01dye3bSgn4fTijVFmYoBlBSA4k
- eBENFkGS2jmy/
-X-Received: by 2002:a5d:4f8d:: with SMTP id d13mr26904wru.89.1637613984833;
- Mon, 22 Nov 2021 12:46:24 -0800 (PST)
-X-Received: by 2002:a5d:4f8d:: with SMTP id d13mr26861wru.89.1637613984576;
- Mon, 22 Nov 2021 12:46:24 -0800 (PST)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id r15sm21677478wmh.13.2021.11.22.12.46.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 Nov 2021 12:46:23 -0800 (PST)
-Subject: Re: [PATCH for-6.2] hw/intc/arm_gicv3_its: Revert version increments
- in vmstate_its
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20211122171020.1195483-1-eric.auger@redhat.com>
- <CAFEAcA-g9yjdO24cs+FSD0tp-Sw=RMe5_v0aVyFfWbY8zZp=Sw@mail.gmail.com>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <dfe31c68-4e91-a18e-c691-fa8c5e39074d@redhat.com>
-Date: Mon, 22 Nov 2021 21:46:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
+ id 1mpcMi-00025k-SS; Tue, 23 Nov 2021 15:26:12 -0500
+Received: (Authenticated sender: jcd@tribudubois.net)
+ by relay8-d.mail.gandi.net (Postfix) with ESMTPSA id CB55D1BF205;
+ Tue, 23 Nov 2021 20:26:01 +0000 (UTC)
+Message-ID: <2c310930-5a29-791a-dc42-fd649081c1d9@tribudubois.net>
+Date: Tue, 23 Nov 2021 21:26:01 +0100
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-g9yjdO24cs+FSD0tp-Sw=RMe5_v0aVyFfWbY8zZp=Sw@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.1
+Subject: Re: [PATCH for-6.2] Revert "arm: tcg: Adhere to SMCCC 1.3 section 5.2"
 Content-Language: en-US
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.709,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.097, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20211119163419.557623-1-peter.maydell@linaro.org>
+From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
+In-Reply-To: <20211119163419.557623-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=217.70.183.201; envelope-from=jcd@tribudubois.net;
+ helo=relay8-d.mail.gandi.net
+X-Spam_score_int: -60
+X-Spam_score: -6.1
+X-Spam_bar: ------
+X-Spam_report: (-6.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.515,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,56 +83,123 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: drjones@redhat.com, shashi.mallela@linaro.org, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, eric.auger.pro@gmail.com
+Cc: Alexander Graf <agraf@csgraf.de>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zP0WsDpk4Maj
+X-TUID: OWO2s7UJjlro
 
-Hi Peter,
-
-On 11/22/21 7:04 PM, Peter Maydell wrote:
-> On Mon, 22 Nov 2021 at 17:10, Eric Auger <eric.auger@redhat.com> wrote:
->> Commit 18f6290a6a ("hw/intc: GICv3 ITS initial framework")
->> incremented version_id and minimum_version_id fields of
->> VMStateDescription vmstate_its. This breaks the migration between
->> 6.2 and 6.1 with the following message:
->>
->> qemu-system-aarch64: savevm: unsupported version 1 for 'arm_gicv3_its' v0
->> qemu-system-aarch64: load of migration failed: Invalid argument
->>
->> Revert that change.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  hw/intc/arm_gicv3_its_common.c | 2 --
->>  1 file changed, 2 deletions(-)
->>
->> diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
->> index 7d7f3882e76..90b85f1e25c 100644
->> --- a/hw/intc/arm_gicv3_its_common.c
->> +++ b/hw/intc/arm_gicv3_its_common.c
->> @@ -50,8 +50,6 @@ static int gicv3_its_post_load(void *opaque, int version_id)
->>
->>  static const VMStateDescription vmstate_its = {
->>      .name = "arm_gicv3_its",
->> -    .version_id = 1,
->> -    .minimum_version_id = 1,
->>      .pre_save = gicv3_its_pre_save,
->>      .post_load = gicv3_its_post_load,
->>      .priority = MIG_PRI_GICV3_ITS,
-> Oops, I didn't notice that the version bump lines were still
-> in the patchset I applied :-(
-
-No problem. I did not notice either ;-)
-
-Thanks!
-
-Eric
+Le 19/11/2021 à 17:34, Peter Maydell a écrit :
+> This reverts commit 9fcd15b9193e819b6cc2fd0a45e3506148812bb4.
 >
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> This change turns out to cause regressions, for instance on the
+> imx6ul boards as described here:
+> https://lore.kernel.org/qemu-devel/c8b89685-7490-328b-51a3-48711c140a84@tribudubois.net/
 >
-> -- PMM
+> The primary cause of that regression is that the guest code running
+> at EL3 expects SMCs (not related to PSCI) to do what they would if
+> our PSCI emulation was not present at all, but after this change
+> they instead set a value in R0/X0 and continue.
 >
+> We could fix that by a refactoring that allowed us to only turn on
+> the PSCI emulation if we weren't booting the guest at EL3, but there
+> is a more tangled problem with the highbank board, which:
+>   (1) wants to enable PSCI emulation
+>   (2) has a bit of guest code that it wants to run at EL3 and
+>       to perform SMC calls that trap to the monitor vector table:
+>       this is the boot stub code that is written to memory by
+>       arm_write_secure_board_setup_dummy_smc() and which the
+>       highbank board enables by setting bootinfo->secure_board_setup
+>
+> We can't satisfy both of those and also have the PSCI emulation
+> handle all SMC instruction executions regardless of function
+> identifier value.
+>
+> This is too tricky to try to sort out before 6.2 is released;
+> revert this commit so we can take the time to get it right in
+> the 7.0 release.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Jean-Christophe: could you confirm that reverting this fixes the
+> regressions you had on the imx boards ?
+
+Hello Peter,
+
+With this patch, things are back to "normal".
+
+Thanks.
+
+JC
+
+>
+>   target/arm/psci.c | 35 +++++++++++++++++++++++++++++------
+>   1 file changed, 29 insertions(+), 6 deletions(-)
+>
+> diff --git a/target/arm/psci.c b/target/arm/psci.c
+> index b279c0b9a45..6709e280133 100644
+> --- a/target/arm/psci.c
+> +++ b/target/arm/psci.c
+> @@ -27,13 +27,15 @@
+>   
+>   bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+>   {
+> -    /*
+> -     * Return true if the exception type matches the configured PSCI conduit.
+> -     * This is called before the SMC/HVC instruction is executed, to decide
+> -     * whether we should treat it as a PSCI call or with the architecturally
+> +    /* Return true if the r0/x0 value indicates a PSCI call and
+> +     * the exception type matches the configured PSCI conduit. This is
+> +     * called before the SMC/HVC instruction is executed, to decide whether
+> +     * we should treat it as a PSCI call or with the architecturally
+>        * defined behaviour for an SMC or HVC (which might be UNDEF or trap
+>        * to EL2 or to EL3).
+>        */
+> +    CPUARMState *env = &cpu->env;
+> +    uint64_t param = is_a64(env) ? env->xregs[0] : env->regs[0];
+>   
+>       switch (excp_type) {
+>       case EXCP_HVC:
+> @@ -50,7 +52,27 @@ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+>           return false;
+>       }
+>   
+> -    return true;
+> +    switch (param) {
+> +    case QEMU_PSCI_0_2_FN_PSCI_VERSION:
+> +    case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
+> +    case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
+> +    case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
+> +    case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
+> +    case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
+> +    case QEMU_PSCI_0_1_FN_CPU_ON:
+> +    case QEMU_PSCI_0_2_FN_CPU_ON:
+> +    case QEMU_PSCI_0_2_FN64_CPU_ON:
+> +    case QEMU_PSCI_0_1_FN_CPU_OFF:
+> +    case QEMU_PSCI_0_2_FN_CPU_OFF:
+> +    case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
+> +    case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
+> +    case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
+> +    case QEMU_PSCI_0_1_FN_MIGRATE:
+> +    case QEMU_PSCI_0_2_FN_MIGRATE:
+> +        return true;
+> +    default:
+> +        return false;
+> +    }
+>   }
+>   
+>   void arm_handle_psci_call(ARMCPU *cpu)
+> @@ -172,9 +194,10 @@ void arm_handle_psci_call(ARMCPU *cpu)
+>           break;
+>       case QEMU_PSCI_0_1_FN_MIGRATE:
+>       case QEMU_PSCI_0_2_FN_MIGRATE:
+> -    default:
+>           ret = QEMU_PSCI_RET_NOT_SUPPORTED;
+>           break;
+> +    default:
+> +        g_assert_not_reached();
+>       }
+>   
+>   err:
+
 

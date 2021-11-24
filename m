@@ -1,158 +1,259 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp10934558lfk;
-        Wed, 24 Nov 2021 10:23:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxGiG8Kij35JkfpkuiGXstr4vZuAxzUITrG/a/P0khFk/2GaRAKE9w/YRLS55jyoyybKu1i
-X-Received: by 2002:a05:6102:32c3:: with SMTP id o3mr27877798vss.36.1637778184003;
-        Wed, 24 Nov 2021 10:23:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637778184; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp11110881lfk;
+        Wed, 24 Nov 2021 12:20:08 -0800 (PST)
+X-Received: by 2002:adf:da41:: with SMTP id r1mr1310788wrl.443.1637785208450;
+        Wed, 24 Nov 2021 12:20:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637785208; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZpFs/HjS/Mp6RC5syjZphBlJm3O74id9CPFeenzyoHRm5mVuJY9NhIfUMzqY/Xim1b
-         930gxBhO6wl4nP39uEli+p/4fzCyGQBh9anry7KD5DF4+RtI1xIn/XbON2J0XHL4gbOw
-         u1DmX/n6Byxj2UwVaTnDEZlLqIqi65fZIoHvuuhjvGlL0vdYCA0uJkNRc3EN4lS3pjeN
-         2KItRhyms47gWTfoSajyejWYzBtPked8+3sl3glYgua9FDXaiCbMc9J6pn566C69o0Zg
-         CxNTVwT9oYZsH3kWAouDWBjuxi+CJrLx0kJp8V1pC8/RDuwoArLZB41DrEy1lEHCk9cn
-         w1SQ==
+        b=N/Of4240jx/DUeUidrFANpOIdJeJLGyXZKowawOhUc+53WVRaxiUHuLTsaNKMz1TJ1
+         cAE5LVoNbmbFFyzoGWW2/GE/v8mAdo9R07inagyjanx8L83M7FaModi/e88jWI8CY/d4
+         VDZjmKbTMz/+He8NWk4IbdrUWvYzqdY6lV4SPhnCVysZmq9OsWzLiRbnnM1zRBVWywxM
+         K1fXRRqDfh2sqENVw4tUdICqCAL9U9oFeoVIweGVZudha4Zpwn8NAdwYYeA9UFXVGpTf
+         dN3HbJYnMgb23G6FMmg6NYv9lQeRMcKbw9eWnXcWu7Lw7HVFMk5AJeSxheJ5sZeDw9I7
+         WhBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=uvwqkwvKY1N2gxuH7VwfxvJ5mQx7rsbXP3TITiOVwJo=;
-        b=PwAzamSgfa2Sg9QOV7iYCIRtN5QMKO6+XG6XJMECqipTu7BdGB3Qag850LX0KOV9aP
-         JbgoG+lOqGrRLyus3ziBpCkqJDmgoWLj8ViofSu+iTp46DVeq8kYNatCQcG1kGzfFzLl
-         Yli37v3UDB6yjvBtYJOtEmhE4QIpR2iXAkqFPBFC8oaMbYgxRlv00f2keqjbVffq0Bdo
-         EpcCnFreZtrAOH5dtFN2yws171JoqVr6MkuqZSl7gcoNFNu2sZJrEOZB7y8EwT63KPeC
-         pYHywV9iEQTAV3kZXmU7Kzm6WOU1yJQnUR4gFPFPLrNRGXVPh5gHTFP5WI2qdQ44tHyM
-         QEyw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=iY3zkci67KDhAgVHHsM976TrmI5TaYyabwOsKa3QFw0=;
+        b=aDOUvMf461I8o9UT9qGAv6qJw+PTChf2fZLYhdZgdgOPBvBWr1mZeJInPKtCKccuV3
+         N2jl5dhNvvXPQCjQgk2KrLEedtEweXlM7H7WwgXMijgm/g/sdmTMbpiOuxnuoS7bHVs7
+         7gOpDO5gmYXv23zrOI3oELPK8PnAf6oSeI15Im0pkBQJOdW8jLyh4/q28UBU8XqP0gjn
+         /RK2j1g4lsqQ5iPI5CC3R5vBVVIhxPssNiJlxyiz7uIKTVemgLpHznYe+DMeN5hNrMyL
+         3zPSRH9OXyA5QRBOpvkaUGH0KDCRcDE/h1P83kKAMpSipXjQDdtGbzpNDmZY4IacIcxS
+         H4Ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qf6f3V0y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MSWIXsTs;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v11si1707548uau.53.2021.11.24.10.23.03
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p17sor659993wrf.4.2021.11.24.12.20.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Nov 2021 10:23:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 24 Nov 2021 12:20:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qf6f3V0y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MSWIXsTs;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50152 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mpwv9-0006ny-Bk
-	for alex.bennee@linaro.org; Wed, 24 Nov 2021 13:23:03 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46206)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1mpwux-0006lP-0u
- for qemu-arm@nongnu.org; Wed, 24 Nov 2021 13:22:51 -0500
-Received: from [2607:f8b0:4864:20::731] (port=40945
- helo=mail-qk1-x731.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1mpwuv-00037l-8n
- for qemu-arm@nongnu.org; Wed, 24 Nov 2021 13:22:50 -0500
-Received: by mail-qk1-x731.google.com with SMTP id p4so3795641qkm.7
- for <qemu-arm@nongnu.org>; Wed, 24 Nov 2021 10:22:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=uvwqkwvKY1N2gxuH7VwfxvJ5mQx7rsbXP3TITiOVwJo=;
- b=Qf6f3V0yz1ZrX20U8SWFBGfUTx0bSYEte+8kSnaECy2pbnET/BmG+g5sDNSkrmufb/
- 1atPv4tIMytQgcg8DXXfqxTlMh8O3aJOhbgl7/iDtQj5qaKg4bFLmCDPCIakPKxOKHmQ
- 5WSN6Mr0t6Nw2+v/H9yvEq5b5h9PnIfknaQORUUUwL45OY7vXyhi8SVCSDn9U5lX+a3v
- 4x1SMt75cBkj0uy3UMY/1So2owoYDuNShVo9GPXNqz/HOzdkpK3QrAPqXAKjHUaIuQTr
- mQuXPO5PNyChcZgY3tttZyNBcywbX5B81pin8rENciDQmSvOB9YPqQOKApAkclBe5ki/
- V4TQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=iY3zkci67KDhAgVHHsM976TrmI5TaYyabwOsKa3QFw0=;
+        b=MSWIXsTsU62FeZg0ctFu1/cC9L3JIFmQmN18rEJ6+JY4sCUMnYkwzCGhtd9nw4+TRY
+         +ChscKmC9BiWABUiPj5p4u6hyo4loQ80Dgl+zZrKYE5jE6JjqDszad4LkouwuTId8hBk
+         2+mz6mR7haXAyUzlOUmQ2+Vihe32+HzPNF1Q8iQ3FH7sYnsVwtfAjydQh63YdwY77XyP
+         vjxOi6QAtkAMDWjfnlw/eZOsTiOXjf+Y8IDbOxNLVohGiw4mYyHRgxMrYUGuAFSJrkR2
+         M7Pl1eUGCiUlrKzsV7aWvr7ua+ru1LzSCMmADAenLmZTuQ0+buA8ABhK5kCFzwC5csjo
+         qLuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=uvwqkwvKY1N2gxuH7VwfxvJ5mQx7rsbXP3TITiOVwJo=;
- b=eTJIdKuzToAv3I0tw0pkXprTYrxjLo8VVBrosYhEQoHLD8oaOHZ3pQjvkFUtyKCnr6
- U3pf+WJgfW51uBn1GSpxIUUrth23X/78cTxNHj5eqQALNtU9zz+YY5U6FGDwDPVeNHPU
- Q8vziHguKjoKuSn+8BaKThGdPDpAbSDVYpr0hDReq1RZYfuaxt/rvFxc1w/Jut6gJLJ3
- LNEwGAi9tbBGniQMGl7ebzpJAltWD07HgSwG3uhaWBRElVrG+7jMK0fgszX6tCxEQ1nW
- 9XIFU+SV0p4SyvPamuAlHSktfSiZOPHjaoJ33UjWUmAgr4j0/rv/gKP3GH9wSDnwspeA
- JF7Q==
-X-Gm-Message-State: AOAM532GHALR4xzhoPyCLCIz2GLEjoXO2UpQJjt6vUQKuNCKNqFZ86yH
- OR9yv0S1nMj0g182pOYi1PuETA==
-X-Received: by 2002:a37:5cc:: with SMTP id 195mr256484qkf.680.1637778168235;
- Wed, 24 Nov 2021 10:22:48 -0800 (PST)
-Received: from localhost.localdomain
- (bras-base-stsvon1503w-grc-20-142-114-141-224.dsl.bell.ca. [142.114.141.224])
- by smtp.googlemail.com with ESMTPSA id h11sm267904qko.18.2021.11.24.10.22.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Nov 2021 10:22:47 -0800 (PST)
-From: Shashi Mallela <shashi.mallela@linaro.org>
-To: peter.maydell@linaro.org,
-	leif@nuviainc.com,
-	rad@semihalf.com
-Subject: [PATCH] hw/intc: cannot clear GICv3 ITS CTLR[Enabled] bit
-Date: Wed, 24 Nov 2021 13:22:46 -0500
-Message-Id: <20211124182246.67691-1-shashi.mallela@linaro.org>
-X-Mailer: git-send-email 2.27.0
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=iY3zkci67KDhAgVHHsM976TrmI5TaYyabwOsKa3QFw0=;
+        b=ytowMzAQ5ljA8iKXkpbnG0NZE/18hW20HWOsCfucAvNyO3xN0ilecuAPF9KOw/Q1xK
+         6xN3Q2cvYUdgUPRwLDsROPADyJiifBK83pBjuoV7d/UfgKJ5s4Gh+F92CpGyUeOcSQ74
+         YDW+E/PEy0rLJ1c9qvcyqwOTEgjFru0z2ysqrE5+jRWOxszh2jD+ISBv1fBXnNp3zLLS
+         bsSSUT5rOyQvTClV/NEfoFHEJ3ewCD9E7vcHr+vddmRJpdQU9quFibqOoE+7wu1Tc9KF
+         nXJvrJDh7yp0epCX7XsPAJHaJb9v1EUc+O9tjd7rCgEhWia2YioI9zRHsEcXDZV3PJkp
+         iaBg==
+X-Gm-Message-State: AOAM5321vja6Y7c6iCVf9VxeMU0F/PeVBb6IBfKU4dJaG28jcaUXHLBU
+	p/sLsD9ak9suZ6E9Q1cfX8MYj32u
+X-Google-Smtp-Source: ABdhPJzbfoElgxemVSe5I041jyck63e+vQ7OZSiZ1GkCPI29oLet+TPFZ/vbk6ayGjedIwPy67BQ1Q==
+X-Received: by 2002:a5d:460d:: with SMTP id t13mr22262927wrq.44.1637785207894;
+        Wed, 24 Nov 2021 12:20:07 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by smtp.gmail.com with ESMTPSA id b10sm793944wrt.36.2021.11.24.12.20.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 24 Nov 2021 12:20:07 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Shashi Mallela <shashi.mallela@linaro.org>
+Subject: [PATCH v2] hw/intc/arm_gicv3: Update cached state after LPI state changes
+Date: Wed, 24 Nov 2021 20:20:05 +0000
+Message-Id: <20211124202005.989935-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::731
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::731;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qk1-x731.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GnoysqyKSHya
+X-TUID: XJP/vEfSIsoc
 
-When Enabled bit is cleared in GITS_CTLR,ITS feature continues
-to be enabled.This patch fixes the issue.
+The logic of gicv3_redist_update() is as follows:
+ * it must be called in any code path that changes the state of
+   (only) redistributor interrupts
+ * if it finds a redistributor interrupt that is (now) higher
+   priority than the previous highest-priority pending interrupt,
+   then this must be the new highest-priority pending interrupt
+ * if it does *not* find a better redistributor interrupt, then:
+    - if the previous state was "no interrupts pending" then
+      the new state is still "no interrupts pending"
+    - if the previous best interrupt was not a redistributor
+      interrupt then that remains the best interrupt
+    - if the previous best interrupt *was* a redistributor interrupt,
+      then the new best interrupt must be some non-redistributor
+      interrupt, but we don't know which so must do a full scan
 
-Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+In commit 17fb5e36aabd4b2c125 we effectively added the LPI interrupts
+as a kind of "redistributor interrupt" for this purpose, by adding
+cs->hpplpi to the set of things that gicv3_redist_update() considers
+before it gives up and decides to do a full scan of distributor
+interrupts. However we didn't quite get this right:
+ * the condition check for "was the previous best interrupt a
+   redistributor interrupt" must be updated to include LPIs
+   in what it considers to be redistributor interrupts
+ * every code path which updates the LPI state which
+   gicv3_redist_update() checks must also call gicv3_redist_update():
+   this is cs->hpplpi and the GICR_CTLR ENABLE_LPIS bit
+
+This commit fixes this by:
+ * correcting the test on cs->hppi.irq in gicv3_redist_update()
+ * making gicv3_redist_update_lpi() always call gicv3_redist_update()
+ * introducing a new gicv3_redist_update_lpi_only() for the one
+   callsite (the post-load hook) which must not call
+   gicv3_redist_update()
+ * making gicv3_redist_lpi_pending() always call gicv3_redist_update(),
+   either directly or via gicv3_redist_update_lpi()
+ * removing a couple of now-unnecessary calls to gicv3_redist_update()
+   from some callers of those two functions
+ * calling gicv3_redist_update() when the GICR_CTLR ENABLE_LPIS
+   bit is cleared
+
+(This means that the not-file-local gicv3_redist_* LPI related
+functions now all take care of the updates of internally cached
+GICv3 information, in the same way the older functions
+gicv3_redist_set_irq() and gicv3_redist_send_sgi() do.)
+
+The visible effect of this bug was that when the guest acknowledged
+an LPI by reading ICC_IAR1_EL1, we marked it as not pending in the
+LPI data structure but still left it in cs->hppi so we would offer it
+to the guest again.  In particular for setups using an emulated GICv3
+and ITS and using devices which use LPIs (ie PCI devices) a Linux
+guest would complain "irq 54: nobody cared" and then hang.  (The hang
+was intermittent, presumably depending on the timing between
+different interrupts arriving and being completed.)
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_its.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+I think this is now a proper fix for the problem. Testing
+definitely welcomed... The commit message makes it sound like a bit
+of a "several things in one patch" change, but it isn't really IMHO:
+I just erred on the side of being very verbose in the description...
+---
+ hw/intc/gicv3_internal.h   | 17 +++++++++++++++++
+ hw/intc/arm_gicv3.c        |  6 ++++--
+ hw/intc/arm_gicv3_redist.c | 14 ++++++++++----
+ 3 files changed, 31 insertions(+), 6 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index 84bcbb5f56..c929a9cb5c 100644
---- a/hw/intc/arm_gicv3_its.c
-+++ b/hw/intc/arm_gicv3_its.c
-@@ -896,13 +896,14 @@ static bool its_writel(GICv3ITSState *s, hwaddr offset,
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index a0369dace7b..70f34ee4955 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -463,7 +463,24 @@ void gicv3_dist_set_irq(GICv3State *s, int irq, int level);
+ void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level);
+ void gicv3_redist_process_lpi(GICv3CPUState *cs, int irq, int level);
+ void gicv3_redist_lpi_pending(GICv3CPUState *cs, int irq, int level);
++/**
++ * gicv3_redist_update_lpi:
++ * @cs: GICv3CPUState
++ *
++ * Scan the LPI pending table and recalculate the highest priority
++ * pending LPI and also the overall highest priority pending interrupt.
++ */
+ void gicv3_redist_update_lpi(GICv3CPUState *cs);
++/**
++ * gicv3_redist_update_lpi_only:
++ * @cs: GICv3CPUState
++ *
++ * Scan the LPI pending table and recalculate cs->hpplpi only,
++ * without calling gicv3_redist_update() to recalculate the overall
++ * highest priority pending interrupt. This should be called after
++ * an incoming migration has loaded new state.
++ */
++void gicv3_redist_update_lpi_only(GICv3CPUState *cs);
+ void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp, int irq, bool ns);
+ void gicv3_init_cpuif(GICv3State *s);
  
-     switch (offset) {
-     case GITS_CTLR:
--        s->ctlr |= (value & ~(s->ctlr));
--
--        if (s->ctlr & ITS_CTLR_ENABLED) {
-+        if (value & R_GITS_CTLR_ENABLED_MASK) {
-+            s->ctlr |= ITS_CTLR_ENABLED;
-             extract_table_params(s);
-             extract_cmdq_params(s);
-             s->creadr = 0;
-             process_cmdq(s);
-+        } else {
-+            s->ctlr &= ~ITS_CTLR_ENABLED;
+diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
+index c6282984b1e..9f5f815db9b 100644
+--- a/hw/intc/arm_gicv3.c
++++ b/hw/intc/arm_gicv3.c
+@@ -186,7 +186,9 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
+      * interrupt has reduced in priority and any other interrupt could
+      * now be the new best one).
+      */
+-    if (!seenbetter && cs->hppi.prio != 0xff && cs->hppi.irq < GIC_INTERNAL) {
++    if (!seenbetter && cs->hppi.prio != 0xff &&
++        (cs->hppi.irq < GIC_INTERNAL ||
++         cs->hppi.irq >= GICV3_LPI_INTID_START)) {
+         gicv3_full_update_noirqset(cs->gic);
+     }
+ }
+@@ -354,7 +356,7 @@ static void arm_gicv3_post_load(GICv3State *s)
+      * pending interrupt, but don't set IRQ or FIQ lines.
+      */
+     for (i = 0; i < s->num_cpu; i++) {
+-        gicv3_redist_update_lpi(&s->cpu[i]);
++        gicv3_redist_update_lpi_only(&s->cpu[i]);
+     }
+     gicv3_full_update_noirqset(s);
+     /* Repopulate the cache of GICv3CPUState pointers for target CPUs */
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 424e7e28a86..c8ff3eca085 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -256,9 +256,10 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
+                 cs->gicr_ctlr |= GICR_CTLR_ENABLE_LPIS;
+                 /* Check for any pending interr in pending table */
+                 gicv3_redist_update_lpi(cs);
+-                gicv3_redist_update(cs);
+             } else {
+                 cs->gicr_ctlr &= ~GICR_CTLR_ENABLE_LPIS;
++                /* cs->hppi might have been an LPI; recalculate */
++                gicv3_redist_update(cs);
+             }
          }
-         break;
-     case GITS_CBASER:
+         return MEMTX_OK;
+@@ -571,7 +572,7 @@ static void gicv3_redist_check_lpi_priority(GICv3CPUState *cs, int irq)
+     }
+ }
+ 
+-void gicv3_redist_update_lpi(GICv3CPUState *cs)
++void gicv3_redist_update_lpi_only(GICv3CPUState *cs)
+ {
+     /*
+      * This function scans the LPI pending table and for each pending
+@@ -614,6 +615,12 @@ void gicv3_redist_update_lpi(GICv3CPUState *cs)
+     }
+ }
+ 
++void gicv3_redist_update_lpi(GICv3CPUState *cs)
++{
++    gicv3_redist_update_lpi_only(cs);
++    gicv3_redist_update(cs);
++}
++
+ void gicv3_redist_lpi_pending(GICv3CPUState *cs, int irq, int level)
+ {
+     /*
+@@ -651,6 +658,7 @@ void gicv3_redist_lpi_pending(GICv3CPUState *cs, int irq, int level)
+      */
+     if (level) {
+         gicv3_redist_check_lpi_priority(cs, irq);
++        gicv3_redist_update(cs);
+     } else {
+         if (irq == cs->hpplpi.irq) {
+             gicv3_redist_update_lpi(cs);
+@@ -673,8 +681,6 @@ void gicv3_redist_process_lpi(GICv3CPUState *cs, int irq, int level)
+ 
+     /* set/clear the pending bit for this irq */
+     gicv3_redist_lpi_pending(cs, irq, level);
+-
+-    gicv3_redist_update(cs);
+ }
+ 
+ void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level)
 -- 
-2.27.0
-
+2.25.1

@@ -1,185 +1,111 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp10782410lfk;
-        Wed, 24 Nov 2021 08:49:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxNGeavxyXT5qW0QqXYZ+Wh3R5AyzNYCgKqHfACno/84E5y62eF0ah8jw8pz5T6e8UAfipb
-X-Received: by 2002:ab0:6f4f:: with SMTP id r15mr12693008uat.17.1637772547126;
-        Wed, 24 Nov 2021 08:49:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637772547; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp10815474lfk;
+        Wed, 24 Nov 2021 09:10:10 -0800 (PST)
+X-Received: by 2002:adf:dc0a:: with SMTP id t10mr21392171wri.8.1637773810518;
+        Wed, 24 Nov 2021 09:10:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637773810; cv=none;
         d=google.com; s=arc-20160816;
-        b=eFRc9vKWhhyElcH5J4UN26s2zLRywGNiOBFuR89sCiCD1sw2e92YvK3BdoSaU6pldX
-         NUSnr5fxOVdnE4ErOtwBp560WCDpzM8F7oElp8pJ1ZQ2oa78XlULIJUXnX4Kno08+a7Q
-         RD32PXGwz4Ba3D3sguo1sG8ALN/K02nuWYmtHt+o9nyzT6vB8ALICiLSJdox8jXywUAI
-         t9/flihPl0mreBetIs4iPSEs74DtCU5+AFITo7Y06PlnYF0RcL+Ckypcy34td5Xros6u
-         5DhVnY2GJvyIHu9dqioWwpM/x62adJYm89Owg5iqX81PFExDF0OE5EKAFzH7etolCxCq
-         QZ5Q==
+        b=Isg15GwQ/qViZUJ2jDND2+Y1GMYWLCSXHTtKHvavWP/J2rLG5JlMFnRhGGjH7lYxgM
+         1p3puomSflZ0a4xkLFakh7c39LIE3ZNiwt8Y4KB3BBEL4MSlWK4LssxAcX5BR9QQbwd6
+         TFuCRdQydgzojuUfsfDfKBwWVqII7pmMUxUGrAJ7M3M3vx17g9QE+xOf47Z+Wl+fgbMf
+         4DvdTHyBUTZlR0PhgRP3tdv+536g+xPUssUvvlkg3fYEZAwdssK8kLDpufnz/jvx/fR/
+         Y6Ov6y6pLtyKvpn3DthUayOsKeom4dm9bLXIROUd0dilyxQH3CbrDhWll/FF3QIS11qn
+         bsTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=9J3cD1dyyOWaeZtyt11eMPdAt6Sv3JFpKNvzxQVuJ5s=;
-        b=w6LgfwXoX1Np3mmAsaFyIGngnVzFzkkCtpfDlfvxySZjr68gcT2QFeVYVXXmol2kp9
-         PCsROgqnx5v3nqqvgULpDBZkxS1jflCoPqWLyarwy88TeHUQpa0YMzIsa5Zdi0ZhgZyW
-         2S+V5MjFcqmmlUazIzorEdaWto4a67qOnWaqfKV0Tkdme3CrGAcYNlAEg8eS+qYj1zrd
-         mWE7uwEZrdinYtYUF3Jk/bO+i0sJgZL9Vz3qLNVOutEufvlzscEVnwloJXmFxvmEiHPn
-         qvgPgginSGHicFT3v49WnuSoCJgXfJDEdltYi/cW8y0lZb0HcyqVRlbreXWGW0EEPO2u
-         Uo3A==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=lUgGk4Y9SUXNaFFkMjbf7Vqvt0fKzJOmKbaBE7oKM/Y=;
+        b=nwRSUGqpIdHC17cCAO9+poose+gAhroGXvNK8gofql8ZRseHJ/upcy0OrfVauZG62G
+         ub3g627FV7UqHRRhF9ClogMXaXHvMNsaeWWt3E/r4vZpw3wAwOTCCrEQMnPivdHU8+oU
+         +beDra698NdovvLRdyHb2q+Y3B061yPGOkjrYUyNiFE+gAGHbmWiIou9m9Dhq825xuSu
+         n0AaGPwXMKVxQ0fTGx/M7e6MhCielTxBkPynIMPbUZTvNvlRDR4bc8GdSFhZsmK8Wof4
+         C8ySknCF9ozGyBIONoSaR7dx74JrQq49Y3OE3otfJgb55AAZhtNgTl9aoB6hWpfEtReE
+         9kqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Oq5EVYGL;
-       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id l6si944215vkd.80.2021.11.24.08.49.06
+       dkim=pass header.i=@linaro.org header.s=google header.b=izxyB96Q;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 13sor302996wrz.22.2021.11.24.09.10.10
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Nov 2021 08:49:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Wed, 24 Nov 2021 09:10:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Oq5EVYGL;
-       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1637772546;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9J3cD1dyyOWaeZtyt11eMPdAt6Sv3JFpKNvzxQVuJ5s=;
-	b=Oq5EVYGLesKz89GaaZRFh31VvUR+dOceToWVNAgBN7DxbqXGGYIzaNw7i1Xj0v7gMxCYjr
-	+nLzveLQ90riEGypIT9Xzmv9nbvsxF8uRv5XOoOKSL1CQ3DmEu4H5sbKn2GrVafoe0AYE0
-	AKRAwjw02Er70f/400Dzk7okb6AvcIA=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-531-Ag4TNieMOxise_u298LN4A-1; Wed, 24 Nov 2021 11:49:03 -0500
-X-MC-Unique: Ag4TNieMOxise_u298LN4A-1
-Received: by mail-wm1-f70.google.com with SMTP id l6-20020a05600c4f0600b0033321934a39so1747567wmq.9
-        for <alex.bennee@linaro.org>; Wed, 24 Nov 2021 08:49:02 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=izxyB96Q;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=lUgGk4Y9SUXNaFFkMjbf7Vqvt0fKzJOmKbaBE7oKM/Y=;
+        b=izxyB96QZlXb1bVnPQG4S0OTyE9FR1Iz3rJmEtKxhuryNiJxQxEu2MccLd7jy29T1G
+         ygfja0JXXq7wK4Onyx+/0Y/S4kqRabhLoYoYKcIo9ka/cUiFbBxfTS1u+gmpHpJJde8E
+         0K8TA6YZrV/lPCnVLBTGVL/dCqeXCOYW7cQ4C4sIEcrV2Ot1xrRJK4EyuefPqZNa9rSM
+         oSrVEMT1chhtBsNol98ZkxzXLFr/G8+GGrb4GXLmt7zozVfTRGSyxXwg5rnqzvc2bUyc
+         3cp5yb0fNgxb2680Z8KQGQCCIWtiVw2OkMC///rwa5CwAHwQZ/7Srihv4T7C4g4AU2WC
+         GUFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=9J3cD1dyyOWaeZtyt11eMPdAt6Sv3JFpKNvzxQVuJ5s=;
-        b=rFEGR6sEXxj5QergWhaKJQ7qvK5qUZrk3WzuA6UYM+maq20MjjLFqSpdKkUEsGw7hv
-         +njsAN9pFDLyUu6PAyyjdLgRZojRumlEuEUBxtAlKH6JN30/zX+82vP8lJhV8o7LJ6FN
-         zLJZ01+xOKciFivzWnqiP94xhCA50l4Gty+6Db2wglEA8xmDaY4MmLjCdk/oDkFtT7g8
-         AY/73wEDGFDFM8tO3oI9TFyD9l4Wp02AhhOBT+eG4jJVj6jnuipkf3IVX+PX6j9bu5Mm
-         0HVbwO+qEyX7Q3qkOJcKpQ8WhsPKamIFuLw09jQvvb8LoB2VXU5CcHMzE0ptwep9xtKY
-         2Kew==
-X-Gm-Message-State: AOAM533X7be2Qbh9Jjx4YMijChaN+wTbLvRxMZ15fPrbhCyFeCq4C+CC
-	WyREOD3WN5Vsr5LmARsw108xmBWoViCHELYKewgnmGnErMEwyguA+aBbYoqKiPB+RFzGVlqAUQH
-	kE42yVE8b9AX5+O1ViRAqr2PXfquz6/frqq4tdKjARF+GxuE9FQ03ZlaiOW0+FCWohwE=
-X-Received: by 2002:a05:600c:202:: with SMTP id 2mr17343013wmi.134.1637772541912;
-        Wed, 24 Nov 2021 08:49:01 -0800 (PST)
-X-Received: by 2002:a05:600c:202:: with SMTP id 2mr17342972wmi.134.1637772541675;
-        Wed, 24 Nov 2021 08:49:01 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from gator (nat-pool-brq-u.redhat.com. [213.175.37.12])
-        by smtp.gmail.com with ESMTPSA id o4sm6354481wmq.31.2021.11.24.08.49.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Nov 2021 08:49:01 -0800 (PST)
-Date: Wed, 24 Nov 2021 17:48:59 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: kvm@vger.kernel.org, maz@kernel.org, qemu-arm@nongnu.org,
-	idan.horowitz@gmail.com, kvmarm@lists.cs.columbia.edu,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [kvm-unit-tests PATCH v8 04/10] run_tests.sh: add --config
- option for alt test set
-Message-ID: <20211124164859.4enqimrptr3pfdkp@gator>
-References: <20211118184650.661575-1-alex.bennee@linaro.org>
- <20211118184650.661575-5-alex.bennee@linaro.org>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=lUgGk4Y9SUXNaFFkMjbf7Vqvt0fKzJOmKbaBE7oKM/Y=;
+        b=fgyuHKv6r9mPN3ggYPwwn6ZizzxCFYIU4cg7vt4/3E2/xEHigXsi8VFbBjp03ET5qk
+         XfSRkYoT9iEA4aHIpKwV1o70Q8mDxz0kyGF+PVhxTlZXFFwNPlJPhxhFPrLq3nodnwgf
+         f1ew1RbE+As7+xEgTYaRDu17EFaXDrNG3rQzBXMhL3DZF+8hhhmgmaMXJf0JotxCqZ57
+         Bn9ss1/4VgpzOgbhViCS1wQs3QYH/bmIpwtCcShokpNCKZ9UzkXNo8pCI1S2YZ2UNfdq
+         QdNKGMKHRGrE7vis8RPcBtaP8001DvIz7wY76XdEocypJGmjTE617PdDjvFlUBlmW87V
+         AQrA==
+X-Gm-Message-State: AOAM530lnVAkSeK8ONCELCsnxmhCzmtxHo6ZjIBe/gvSQyBiCqlG5NQ5
+	FfkA1OjRjzi1Rb2ZzLO0b2tCFsneBmPmnI/aCK6ltZ4Sd8Nyimcu
+X-Google-Smtp-Source: ABdhPJwP4j6L3/EFJJZpn+IPs4Iy+4t9E47aUqOxz6EfZ15gU9OcALYo+tQcKBpa670YRnpWJY4L2PUWWST+PJ7xess=
+X-Received: by 2002:a05:6000:381:: with SMTP id u1mr21382830wrf.302.1637773810027;
+ Wed, 24 Nov 2021 09:10:10 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20211118184650.661575-5-alex.bennee@linaro.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-X-TUID: bQlJ/kYEB8v+
+References: <20211123171031.975367-1-peter.maydell@linaro.org>
+ <CAFEAcA8XMtAHKY=saAajLc2b03_PHGi+G=iioEpeetuS3Hh5yg@mail.gmail.com> <233AD939-3A37-4075-8430-8FFBC6A04836@hxcore.ol>
+In-Reply-To: <233AD939-3A37-4075-8430-8FFBC6A04836@hxcore.ol>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 24 Nov 2021 17:09:58 +0000
+Message-ID: <CAFEAcA_dnt5bSzdkhR99JHVKXL48KqMJDQg7uN6-cyypLfzj7w@mail.gmail.com>
+Subject: Re: [for-6.2] hw/intc/arm_gicv3: Update cached state after
+ acknowledging LPI
+To: Shashi Mallela <shashi.mallela@linaro.org>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: SdhkvVZaEdzv
 
-On Thu, Nov 18, 2021 at 06:46:44PM +0000, Alex Bennée wrote:
-> The upcoming MTTCG tests don't need to be run for normal KVM unit
-> tests so lets add the facility to have a custom set of tests.
+On Tue, 23 Nov 2021 at 19:22, Shashi Mallela <shashi.mallela@linaro.org> wrote:
+>
+> Since LPIs do not have an active or active and pending state,the current implementation only clears the LPI pending state from the pending table once ICC_IAR1_EL1 acknowledges the interrupt.
+>
+> But, as part of gicv3_lpi_pending() processing, cs->hpplpi is updated with the next best priotiy lpi (only if the current acknowledged irq was best priority irq).
 
-I think an environment variable override would be better than this command
-line override, because then we could also get mkstandalone to work with
-the new unittests.cfg files. Or, it may be better to just add them to
-the main unittests.cfg with lines like these
+Yes. But we don't update cs->hppi there, and the GIC code assumes
+that that cs->hppi always indicates the highest priority pending
+interrupt, so leaving it stale will break things.
 
-groups = nodefault mttcg
-accel = tcg
+> By calling gicv3_redist_update() in icc_activate_irq(), we are
+> re-initiating high priority irqs scan in redistributor and if
+> applicable trigger of next best pending lpi from the latest
+> cs->hpplpi info (which otherwise would have happened on next
+> irq trigger from source).
 
-That'll "dirty" the logs with SKIP ... (test marked as manual run only)
-for each one, but at least we won't easily forget about running them from
-time to time.
+We will figure out which the next best pending interrupt is
+(which might be an LPI or might be some other interrupt).
+But we won't actually trigger it, because it must be lower
+priority than the LPI that we are activating.
 
-Thanks,
-drew
+(The way this works is that activating the LPI in icc_activate_irq()
+writes into the Active Priority Registers to indicate the priority
+of the current active interrupt. When gicv3_cpuif_update() is
+deciding whether to set IRQ/FIQ to tell the CPU it has an interrupt
+it calls icc_hppi_can_preempt(), which checks the priority of the
+pending interrupt recorded in cs->hppi against the priority
+of the active interrupt as calculated by icc_highest_active_prio().
+So we won't take another interrupt until either (a) this one is
+deactivated or (b) a fresh one arrives at a higher priority.)
 
-
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  run_tests.sh | 11 ++++++++---
->  1 file changed, 8 insertions(+), 3 deletions(-)
-> 
-> diff --git a/run_tests.sh b/run_tests.sh
-> index 9f233c5..b1088d2 100755
-> --- a/run_tests.sh
-> +++ b/run_tests.sh
-> @@ -15,7 +15,7 @@ function usage()
->  {
->  cat <<EOF
->  
-> -Usage: $0 [-h] [-v] [-a] [-g group] [-j NUM-TASKS] [-t]
-> +Usage: $0 [-h] [-v] [-a] [-g group] [-j NUM-TASKS] [-t] [-c CONFIG]
->  
->      -h, --help      Output this help text
->      -v, --verbose   Enables verbose mode
-> @@ -24,6 +24,7 @@ Usage: $0 [-h] [-v] [-a] [-g group] [-j NUM-TASKS] [-t]
->      -g, --group     Only execute tests in the given group
->      -j, --parallel  Execute tests in parallel
->      -t, --tap13     Output test results in TAP format
-> +    -c, --config    Override default unittests.cfg
->  
->  Set the environment variable QEMU=/path/to/qemu-system-ARCH to
->  specify the appropriate qemu binary for ARCH-run.
-> @@ -42,7 +43,7 @@ if [ $? -ne 4 ]; then
->  fi
->  
->  only_tests=""
-> -args=$(getopt -u -o ag:htj:v -l all,group:,help,tap13,parallel:,verbose -- $*)
-> +args=$(getopt -u -o ag:htj:vc: -l all,group:,help,tap13,parallel:,verbose,config: -- $*)
->  [ $? -ne 0 ] && exit 2;
->  set -- $args;
->  while [ $# -gt 0 ]; do
-> @@ -73,6 +74,10 @@ while [ $# -gt 0 ]; do
->          -t | --tap13)
->              tap_output="yes"
->              ;;
-> +        -c | --config)
-> +            shift
-> +            config=$1
-> +            ;;
->          --)
->              ;;
->          *)
-> @@ -152,7 +157,7 @@ function run_task()
->  
->  : ${unittest_log_dir:=logs}
->  : ${unittest_run_queues:=1}
-> -config=$TEST_DIR/unittests.cfg
-> +: ${config:=$TEST_DIR/unittests.cfg}
->  
->  rm -rf $unittest_log_dir.old
->  [ -d $unittest_log_dir ] && mv $unittest_log_dir $unittest_log_dir.old
-> -- 
-> 2.30.2
-> 
-> _______________________________________________
-> kvmarm mailing list
-> kvmarm@lists.cs.columbia.edu
-> https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+-- PMM

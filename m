@@ -1,101 +1,162 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp279417lfk;
-        Thu, 25 Nov 2021 07:48:15 -0800 (PST)
-X-Received: by 2002:a5d:65c7:: with SMTP id e7mr7517053wrw.319.1637855295187;
-        Thu, 25 Nov 2021 07:48:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637855295; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp280003lfk;
+        Thu, 25 Nov 2021 07:48:41 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzXrFJCmutlPNrCrkt79zG/lNeDF0bVZkW892prBIKgB1HN83SF35WLiV6YNTX3InnN185k
+X-Received: by 2002:a05:6122:2158:: with SMTP id m24mr12647463vkd.1.1637855321130;
+        Thu, 25 Nov 2021 07:48:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637855321; cv=none;
         d=google.com; s=arc-20160816;
-        b=BM+Evu79sCt6/MfkRncOomi2xmDZBDp6RC8XTE0g07AWwF7HrskMYa5mHolS8zOrNt
-         TPi0pLrkR3SuI5rIae7TyHi8JlCrm0iTcdLGG7XI+tps6ld4rcvUvAIaJgGRQjcRgj0u
-         /H10eSliDc7FpP7QHzujIOt2NtkRoKP0k8Q1R6/YudDuoTjIhxuo4vw2VNMpzMtVG8wV
-         qW7uHb+g+DBEgitqvFhIoC37OKjOdOI9l8qQCcMgTkxi6IZxUJLYvbTTMfpjXCAepjlC
-         pCl+i8sTmbndk0r4wM2ed7jGJtHHew4K5iRanS9CDyN/hJgvun2GVsNFak1RY/VCcF7H
-         Wvtg==
+        b=Zxm9O7o8R0SyLTSCwKH2dIqUt52TJSjS4AJnUWqcFMTx2WDxQTCwcPbkSImny0+iQ/
+         HPISZTfcpQscxFzD+YC8m8BnG9Xmz90IsFgkpnymJjmFiKn/YeGkzaDQmH3gq1E69/uE
+         zmBPy6SI73Yud2/b8wd6JWUv5BQqIPMeq7tfuXVLXBrogoN3c4SY+lJBE/tomGLT75GU
+         DEo7rFAN7QxUrytmCLu/f1q7+z2hhG0sNCuw7Av3OD96v5ROfF9s1K3k+s7RYCxanob8
+         gMYiPpBke6j0bez6IUGH6lSsDFLran0EVTL9wCGDGeWEUS1J6HRHJZEc7JYZjhjmkXpX
+         atxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=/ZiiAdoMXvpwVANGKUlqfPUaqJC3IGe25PRTFgj1iI8=;
-        b=qOJyWw6zEdzJhDduTdSL/nRPC9RqDZseOJH5YNfB2+XYgpXNSBVoVY0wg7s7PT2W8K
-         2AVTL6wrgR9SHFUJcen/FDyj00XNRdCNxFlKnomG04gTGX6tbTlEbXdw250lvSRLnyDl
-         lSxdWWlBBs0n95NxIHbvFE/1VmbOaRM69S3GjOraXD1ChmtO7mMXg9D1ij1T1nsgHCGN
-         1J+wQpltlhkHouwGNVQ5YyshEUiTq0+J4BQCgKznJCL6xiUi8Moczz6f1j9thzxjdzZa
-         8IEx5BBdFK4GbN9huxofOIRn0sj9nj8tXkvQoEoDcCArFbMxgHdOdN9z0An7EGqPBt3s
-         J/6Q==
+        bh=WOvcTccvesEWZ4KsC11CLEJ2ozS9TZEsN6axSvwIXOU=;
+        b=kAw7IwO/d99tF24L8vRhZjLI0pNJ4Ud7sfNHcmgQRrZjQId5pd3ipr7dwghsKhBoFY
+         Ydy4XUnj+nN4aCD06hhr0vYB3VtHzJfurL0fM8XMYUoRYUN1CVkW4W0mMSaesND+I2zl
+         v/pE+uP4za4rsoPFGKdnGuirT50y5ZWS1eunGKxHp5f/SQQoVM0JTSUEOm901MN6V3+M
+         q8UNUJZWPQc23YaMxC+RpufEKQCY8ceYAJWtl1AfCowSJmDLiFD+iFMi5ONlISgDqfTz
+         g5EckMHzcU+u5KkF0akMjMBNIo+sEHF/heM02c9D+QJIdErCrih+j/HgNsgo7XQn6jZx
+         QB7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sMR3fOuB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n1sor2222202wmq.12.2021.11.25.07.48.15
+       dkim=fail header.i=@linaro.org header.s=google header.b=VwXMO9H8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r20si5847750vsj.575.2021.11.25.07.48.40
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 25 Nov 2021 07:48:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 25 Nov 2021 07:48:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sMR3fOuB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=/ZiiAdoMXvpwVANGKUlqfPUaqJC3IGe25PRTFgj1iI8=;
-        b=sMR3fOuByG0vt0k/ubQEkC8qUSFtgO9yCkGZn8tmlGJ/JKpdz+hMZTkbjSrUhLdMh3
-         H/UG8I7Gbs5hreEY3TLymLCcjocwty/9FVMkDwH6mIuEpAzO5ZfUn6dKBhm8afc+jMzW
-         8uBG0v+KRBy16UaGstuNc7fyQTyOSzK1qAYRB67wrSjQ9vIBqy/4gClO60D8gCZUNS+e
-         /3lVGAwCQyFMM8KDDg52Dp4aMtM9kCHbgO5e70Gox9aKZYXaonAQ16hSqJ9gxpY/p4o8
-         YTc1a4VKHQHjVMebFVLpHVoDN9oibDpj9qn/E0sfQdA/ddIRmDBHF0c8MSHVJU0FIUIK
-         XvjQ==
+       dkim=fail header.i=@linaro.org header.s=google header.b=VwXMO9H8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56036 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mqGzI-0002F0-I5
+	for alex.bennee@linaro.org; Thu, 25 Nov 2021 10:48:40 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48954)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mqGyD-0000Eb-ME
+ for qemu-devel@nongnu.org; Thu, 25 Nov 2021 10:47:33 -0500
+Received: from [2a00:1450:4864:20::42f] (port=38466
+ helo=mail-wr1-x42f.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mqGyB-00054u-BA
+ for qemu-devel@nongnu.org; Thu, 25 Nov 2021 10:47:33 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id u18so12566592wrg.5
+ for <qemu-devel@nongnu.org>; Thu, 25 Nov 2021 07:47:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=WOvcTccvesEWZ4KsC11CLEJ2ozS9TZEsN6axSvwIXOU=;
+ b=VwXMO9H8LnWvmxxWDwIioGxhl1UI/UVoOycTp6JFwm2crz2RJUnF1V3Gs6sl8tGRp7
+ EO+2p4dV5oGPYLamKMzIGWHyVOu+vOfw23Mc7SIafHh0ErLLzsoLW+2U+TEBS+xHLFim
+ qwpmg/zKs8ixKFYh7l7KGTRkrZeNuoU7hgR+NyWSz/gpN9qZGrmptlXQcFfQjB3dY5Fe
+ MQ9GRFMjoMazyzGDJrHnn5snj3SL+1RWENcDc/ZMg8uyFcmZ+kVp2q8U8d3Mdz8Yk1xF
+ Ectvg47EkQuUZ55kYJABDeK9k2Jb6wK6Dde0gMRA+HqQA7CRso4XqDOV/6nbT8LPZxGO
+ GABg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=/ZiiAdoMXvpwVANGKUlqfPUaqJC3IGe25PRTFgj1iI8=;
-        b=RvB34RtGt5i7uwq44aG07D+WrJXdcflQqTuoUvaBPZEyPJD38b9DPGx781CDuS3y0b
-         NcIGOd1hgviQ/0NFZhIBqVN8kDLW6EvYHfLQS7aF0he3wy+wbuaHji3xrIZ+k3cldADF
-         gJvr967UbIGKDq+ImtlfenywcZupSI+aREs+MfGIx2IeBTZvIcdc2EmTGthDRVZbnfo8
-         W+OLEdfQosZdEOO9L9/hI1CwYdlxhCVbMOHzZMm4YI6EA0y9KyklBJOOE7kh4udTl77p
-         yIKOP8pSuHtTJABJfryckJA2Y3JJekYawI1AhU/txdPkrEEuXW07xZyoZjFszJqh4mLR
-         fMFw==
-X-Gm-Message-State: AOAM532rAoqat1STrlcczdFX+pry5SslYskMWYQTWzYIru23HQw+V4hx
-	sHmSkDTtJy8YPJ6Uwcl7l3ZbPs/MuBhuBwZhX35x/qNkL9TkZwV8
-X-Google-Smtp-Source: ABdhPJzGMKGjXupe0MipChIplC8vTMBglf9Gjw8agYQXdXvBTctBNjuWnJ2LI6aGrkJsHzu+V9whMw96XTF8zi53gJ0=
-X-Received: by 2002:a05:600c:22d0:: with SMTP id 16mr8492061wmg.37.1637855294918;
- Thu, 25 Nov 2021 07:48:14 -0800 (PST)
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=WOvcTccvesEWZ4KsC11CLEJ2ozS9TZEsN6axSvwIXOU=;
+ b=iCgHRaD4O8FOujXxGKRzPQhuKH5AYMmDGYZxzZ3Uy5tbqcZvUhm6KAswT9Djx6D0t9
+ /279gHPkp9AIC3PyvDZbbzTwltY/iumiEZasrHHFhfBIdFW7KjAu5Aj6dm4HLvl6CNc2
+ d00Aka7pWEtiLwA/Vm+oOeI82iWN0DHw9n+U6Zto9ZrcxPhlncxMWr8gaCIBxNsLBjRD
+ fWi0DPcKCRHdtAyErPuZLhRQ43sUsr12uIOR6F4zp0vqgk3EbUWdtwhZn+NWEZOigWa4
+ um56mKUO0tMnV1/a5ihLb8epW9P2G0bihK8BMmvGV18EwEyv9MGky4TrB1gJoduSl9lw
+ ZELQ==
+X-Gm-Message-State: AOAM531MFjiHieMN/ndgEUKodbBsyZFQ89su4ENuiyQ1PR9CDaOtGDnC
+ t5V++jJctDBgiXDC/ttzp7SUbyARLzTYRk24j+l4iw==
+X-Received: by 2002:adf:cf05:: with SMTP id o5mr7539485wrj.325.1637855249606; 
+ Thu, 25 Nov 2021 07:47:29 -0800 (PST)
 MIME-Version: 1.0
-References: <20211124182246.67691-1-shashi.mallela@linaro.org> <87v90gfejs.fsf@linaro.org>
-In-Reply-To: <87v90gfejs.fsf@linaro.org>
+References: <20211124182246.67691-1-shashi.mallela@linaro.org>
+In-Reply-To: <20211124182246.67691-1-shashi.mallela@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Nov 2021 15:48:04 +0000
-Message-ID: <CAFEAcA9OgVksrLHZ8m_aub_tUN1zp6y6_Ev06+Xo2zDpJaLJxw@mail.gmail.com>
+Date: Thu, 25 Nov 2021 15:47:18 +0000
+Message-ID: <CAFEAcA-spJc2Dg=D=9=XgPYxdzi_d4sJh27BRDW_DD9y_+O0JQ@mail.gmail.com>
 Subject: Re: [PATCH] hw/intc: cannot clear GICv3 ITS CTLR[Enabled] bit
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Shashi Mallela <shashi.mallela@linaro.org>, leif@nuviainc.com, rad@semihalf.com, 
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org
+To: Shashi Mallela <shashi.mallela@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 3yldDj5vkf23
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42f
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: leif@nuviainc.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ rad@semihalf.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: M4Vn6xnRjEej
 
-On Thu, 25 Nov 2021 at 15:19, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
+On Wed, 24 Nov 2021 at 18:22, Shashi Mallela <shashi.mallela@linaro.org> wrote:
 >
+> When Enabled bit is cleared in GITS_CTLR,ITS feature continues
+> to be enabled.This patch fixes the issue.
 >
-> Shashi Mallela <shashi.mallela@linaro.org> writes:
+> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> ---
+>  hw/intc/arm_gicv3_its.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 >
-> > When Enabled bit is cleared in GITS_CTLR,ITS feature continues
-> > to be enabled.This patch fixes the issue.
-> >
-> > Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+> index 84bcbb5f56..c929a9cb5c 100644
+> --- a/hw/intc/arm_gicv3_its.c
+> +++ b/hw/intc/arm_gicv3_its.c
+> @@ -896,13 +896,14 @@ static bool its_writel(GICv3ITSState *s, hwaddr offset,
 >
->
-> Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> in so far as it doesn't break the kvm-unit-tests but it also doesn't
-> solve the:
->
->   irq 55: nobody cared (try booting with the "irqpoll" option)
+>      switch (offset) {
+>      case GITS_CTLR:
+> -        s->ctlr |= (value & ~(s->ctlr));
+> -
+> -        if (s->ctlr & ITS_CTLR_ENABLED) {
+> +        if (value & R_GITS_CTLR_ENABLED_MASK) {
+> +            s->ctlr |= ITS_CTLR_ENABLED;
+>              extract_table_params(s);
+>              extract_cmdq_params(s);
+>              s->creadr = 0;
+>              process_cmdq(s);
+> +        } else {
+> +            s->ctlr &= ~ITS_CTLR_ENABLED;
+>          }
+>          break;
+>      case GITS_CBASER:
 
-For the fix to that try
-https://patchew.org/QEMU/20211124202005.989935-1-peter.maydell@linaro.org/
+The code looks fine, so in that sense
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+It seems odd that we have two different #defines for the
+same bit, though (ITS_CTLR_ENABLED and R_GITS_CTLR_ENABLED_MASK).
+We should probably standardize on the latter and drop the
+former.
+
+thanks
 -- PMM

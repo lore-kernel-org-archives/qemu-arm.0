@@ -1,145 +1,104 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp915414lfk;
-        Fri, 26 Nov 2021 08:39:18 -0800 (PST)
-X-Received: by 2002:adf:a389:: with SMTP id l9mr15392999wrb.121.1637944757944;
-        Fri, 26 Nov 2021 08:39:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637944757; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp926790lfk;
+        Fri, 26 Nov 2021 08:53:04 -0800 (PST)
+X-Received: by 2002:a1c:e913:: with SMTP id q19mr16779590wmc.87.1637945584218;
+        Fri, 26 Nov 2021 08:53:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637945584; cv=none;
         d=google.com; s=arc-20160816;
-        b=yjP7zPuiEsjLI60DDgbVxTRC3ryEQW5URW3a7D3vJxcdYEIA58WtF0VOTr1jK5F33H
-         0hXuYM0CcOgbD8Qx10vm/OSMOQSQIOpItGJng37PkXDj9oSCo8EiSkOwAQP8IylvioTZ
-         L+1dVemhljdS96x3QA50yHn0jPX4tKSGxSn1elSscjwKL7n71w5dmVIH/+eBsXaUBhwP
-         PizXKoXrWlOmWerrrtkj+1IRO8NJiFUS0V13F6uJaXvHnPTdBUWjVMOfFyVYMTcZ0WTh
-         bOBneC7PNmh3MEQRmCdAP3iU+HsDlEmLzBoZJt6lex4mm6Hyc2h11o8mjw0OA7iBO5Yz
-         naLg==
+        b=wuZTri6GthHtsnyPblVGJxRYhNNqRI7eGG98LIx9tm3crXELDHttpp8xKzpXrCWQGL
+         fnRvPlbhdno3WS3Ns8FwexhWUST2lNt2Zq4VhBvh3XOJbDk02bTIW0cDYJvrqxMJA6m/
+         k2pjX488yre+hPySHxndZ46JxbWN8jebe90IDAi/3OA9jRUzV8U3WrIB9LaLxTIGpdsy
+         MdOZzdx9z3vm7EpzwrcXSvxhYRb4UW5NfHOJUMOl6vHnoU3ztGtj6pJH/VB2x3p9clA/
+         PY4vlAmvFL//xphKRhqETTxashdJf0xexWIm3ytKZb3n58+IoAqCHkuSdrOi/6+WIlBZ
+         5zLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=bhjDrhsvrUXt5l3q8ZZdjljlNarEl9ipYV1LbEcWSak=;
-        b=MC3kAHdszVesBTswCRbcxTBGSaHTOHPJ5mesbABJwtfSFrcDt1AAX3Sm1galNe77R6
-         RWdQRnCb0XnEYVB96RlmGbRwdvFXDg4d6yIVvafYgfBHNchSodVPkQWptJUN+zl1a0UW
-         NPT8OOn967lz9jP2MZbS6QDwFmN9lDJFB1Qr5FHAG2Q7oFHRQ+N9OvIXl9n+3nEKL5j1
-         6gFiCf7asew5fUw1pqvxKtPjzEHERy446wi65u5VXAOEtzfLWcEglG+M7w1XrS5BarSo
-         1Rq9D0o/TybUtLewJuqbLuo674WSrlfAmYzAa66KWrn0r9Pgdx7fGoztpk0oCKPxzqz2
-         8uqg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=H/c4Lfwu289fdqtW7jGN350pH2xZCNFAPPkgTLrF72g=;
+        b=BVZQ2J/Ee9punkwrUZYMEa9a7XPZAf0vYv8cVzfGdhmRUuabu4eZgSA9i/QSm7sV9d
+         p8rrLcZLdjNIBoN3BV/dABomiYJdd7i3J0OOeLT/RehL17yQhQHngWpsvKatLQQK6i4o
+         BJsjkhf4BWJty5j7F4CNCbPdtMCSc//tsyQzADr8fduXbqsIovfE2DeV2hWxfX3qk+zc
+         pSqqCiA4nGKaA5xeY+4EAz4blw0ORr9eVNgcSkEMUC4eKR41/MDk2RLFD/e2BuXPPZ87
+         Q8nxvCvE2hi6x9Od1MABofSVhE2g5IEJ4smxZTBJLLFqOwMqzbhY1NWQ/fowuXsRCVGL
+         aubA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qGOMVaNd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nUfL7tj6;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x8sor4872641wrt.38.2021.11.26.08.39.17
+        by mx.google.com with SMTPS id bg22sor7114315wmb.25.2021.11.26.08.53.03
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 26 Nov 2021 08:39:17 -0800 (PST)
+        Fri, 26 Nov 2021 08:53:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qGOMVaNd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nUfL7tj6;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=bhjDrhsvrUXt5l3q8ZZdjljlNarEl9ipYV1LbEcWSak=;
-        b=qGOMVaNdqvhHAXikp16IX7mqVQElUQeazlaWlqbwGvR4NAe0KewNENn5hsNal55STy
-         T9SmXu3XIwYIjmFerqoRfswhsxBhlPdX6FQ9LhMyHyt3Jq+VWvR7zgY1juiPXRie0imb
-         8boazpIaB9x6ivwkyit2iEplqJCNRFnvSFL+R08j5/cNHGQrqmiY3Gs4FWLJJucpHyj3
-         mtdoywl5gOjVqY3iwI9FVxf2kOoEa0eWAi4F1cuzYCyrzZ+ivoAHXBt8C+asH3410x9E
-         918FF1NBwecFYycAxf0JFR9OXnoSf3uuu0XlGFRmRsdkL0C1Aw9wgz4B9Ld+XaIjaM/t
-         9BHQ==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=H/c4Lfwu289fdqtW7jGN350pH2xZCNFAPPkgTLrF72g=;
+        b=nUfL7tj6WuX8DqN3WbRiUYfikLpmq29JssEBwlYRnKQHgCmClIboRVgp2Ow8Uhxcjo
+         9YdT1EDJHE8YXP8Lys/GhMrWVo01d5kVZ9m1/nJWKNAwfwSRIKDOr7PAC6c08vskkeks
+         7A/WmY4z1W8doNkDFswQmATKv33l9bif5V748Q8ckXci3hCZ2E4OBiof1T7J+kaKKNva
+         dmA/dcR9ojMfZ5XXjDrXZ0jovCXcEv2fzYjVEj/0Xc9hFfHjNDLvCMv9ip8ledrmUJIM
+         WoIsPPkyH/KRnVF31Dc2yv/xVyOFJ10e4bjrGkhN2a9q3/2IDZZetl/qGx2hN5j4dB+M
+         qXQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=bhjDrhsvrUXt5l3q8ZZdjljlNarEl9ipYV1LbEcWSak=;
-        b=DulkW93VVD256i/i5vIGQhnaw6FdsZajexly+usaS2BBV+UnegjbgEG7jhDwQYU7Gy
-         DsGsiuy3IjeT0CUiDNXTX+kQnY08kljG6uaeNeajoRkYj5TSoXUEOmjpKhR454MhSv9D
-         rd1ItGRVWUhDDK5dhRdwkxEtupMpuoRv1gZC5+IE8D/xrYUdQ309As4IpYZK9nY0ak5H
-         /ABBB0CChD9YUATtElS1PeZf9tysmAlcOMq/JciD1op4fSPEEpmScWG0j5WrNln6YUxv
-         gji1Zd8BG8DupabfJRfQpxa/DYp37044Qpt6Wr4vkJJxqkcaOiPJTycHPQm1QaVLxKkI
-         jqcw==
-X-Gm-Message-State: AOAM532J0UtqQTG6ysCVyaWSP3ZD3kcqUz7jwtYxtOQVVhG4L6Om7a4L
-	tO9XSh25f5e1Q7ZQ9mEWimqindSGI5SS1ooE
-X-Google-Smtp-Source: ABdhPJxvUu8ApXpepidUF2X/eZse6cnVkA0PAkDKEOS4K0hCEy2NXFmZTTnmzY4FB062sCXPe+RRtw==
-X-Received: by 2002:a5d:52c3:: with SMTP id r3mr15191292wrv.115.1637944757709;
-        Fri, 26 Nov 2021 08:39:17 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id b14sm7837698wrd.24.2021.11.26.08.39.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Nov 2021 08:39:17 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Shashi Mallela <shashi.mallela@linaro.org>,
-	Marc Zyngier <maz@kernel.org>
-Subject: [PATCH for-6.2? 1/2] hw/intc/arm_gicv3: Add new gicv3_intid_is_special() function
-Date: Fri, 26 Nov 2021 16:39:14 +0000
-Message-Id: <20211126163915.1048353-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211126163915.1048353-1-peter.maydell@linaro.org>
-References: <20211126163915.1048353-1-peter.maydell@linaro.org>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=H/c4Lfwu289fdqtW7jGN350pH2xZCNFAPPkgTLrF72g=;
+        b=aDAKXkLr1d6n54viYvHfVg1EEIDhiQbb7UVuklhXT1EyY+nZWdQqFQlmVqIobyqOx/
+         Ggi6kp10pP251apZwBz8huWUHitPRmCsC04ewSUgeuG0MR2OKcnZ+LZtmE1myGNSyhNB
+         y5WtRQEL9QJxvwa55R2VXlWoMzF/q/FSYQqZlbQDNJhTFHyt5IXqv8KUYm2VCpGNMOsd
+         Lgwi7xiG0eSJQTUGO/bbtg/2mNF+JMXuF+ikdcJ1cRHQgP8fU7qVWKaRp/vp5/Nfd12n
+         nPRQ089CcEc7hzYzzIVB2pFCgijTJCp/rRP9qAqXED8HJRd7L7fAotI4sHr5VmvO8RKk
+         xwDA==
+X-Gm-Message-State: AOAM5306ZyHUBZjNrdHvLzHUbeCTI34zL58IEYV53rhL325oCLP3+f8W
+	L2aZWK+mJjJr4MfwLzfW4rJB1hWOrO8a5dyOFzbhIny/
+X-Google-Smtp-Source: ABdhPJwP9eqrWt39so7h6rCQcnLsCq7Vs+FrhosaCd1wSYVF2hFlnoTgYlpwoLi+/s/8IqV80bdOL4xQJeWLid6/gHc=
+X-Received: by 2002:a05:600c:22d0:: with SMTP id 16mr16785796wmg.37.1637945583837;
+ Fri, 26 Nov 2021 08:53:03 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: iFYY3kLl/dIa
+References: <20211123122859.22452-1-agraf@csgraf.de> <CAFEAcA9ceorf5YK+yKS8KGfHPgFDTxWkLyfva0NDmkrHV5zz2A@mail.gmail.com>
+ <5c36aaa3-158b-815f-3e71-badfe2d12632@csgraf.de>
+In-Reply-To: <5c36aaa3-158b-815f-3e71-badfe2d12632@csgraf.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Nov 2021 16:52:52 +0000
+Message-ID: <CAFEAcA8Mb7tFw4pvG3td4G2w83Q-O6RP2X102b5CHp-PhFzJ+Q@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/virt: Extend nested and mte checks to hvf
+To: Alexander Graf <agraf@csgraf.de>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	saar amar <saaramar5@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: vK6xGQL5/D/K
 
-The GICv3/v4 pseudocode has a function IsSpecial() which returns true
-if passed a "special" interrupt ID number (anything between 1020 and
-1023 inclusive).  We open-code this condition in a couple of places,
-so abstract it out into a new function gicv3_intid_is_special().
+On Tue, 23 Nov 2021 at 14:00, Alexander Graf <agraf@csgraf.de> wrote:
+>
+>
+> On 23.11.21 13:34, Peter Maydell wrote:
+> > On Tue, 23 Nov 2021 at 12:29, Alexander Graf <agraf@csgraf.de> wrote:
+> >> The virt machine has properties to enable MTE and Nested Virtualization
+> >> support. However, its check to ensure the backing accel implementation
+> >> supports it today only looks for KVM and bails out if it finds it.
+> >>
+> >> Extend the checks to HVF as well as it does not support either today.
+> >>
+> >> Reported-by: saar amar <saaramar5@gmail.com>
+> >> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> > Without this check, what happens if you try to enable
+> > both eg virtualization and hvf? Crash, unhelpful error
+> > message, something else?
+>
+>
+> The guest just never gets either feature enabled. No crash, no error
+> message.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/gicv3_internal.h  | 13 +++++++++++++
- hw/intc/arm_gicv3_cpuif.c |  4 ++--
- 2 files changed, 15 insertions(+), 2 deletions(-)
+Thanks; I've added that info to the commit message and applied this
+to target-arm.next for 6.2.
 
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index 70f34ee4955..b9c37453b04 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -411,6 +411,19 @@ FIELD(MAPC, RDBASE, 16, 32)
- 
- /* Functions internal to the emulated GICv3 */
- 
-+/**
-+ * gicv3_intid_is_special:
-+ * @intid: interrupt ID
-+ *
-+ * Return true if @intid is a special interrupt ID (1020 to
-+ * 1023 inclusive). This corresponds to the GIC spec pseudocode
-+ * IsSpecial() function.
-+ */
-+static inline bool gicv3_intid_is_special(int intid)
-+{
-+    return intid >= INTID_SECURE && intid <= INTID_SPURIOUS;
-+}
-+
- /**
-  * gicv3_redist_update:
-  * @cs: GICv3CPUState for this redistributor
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 3fe5de8ad7d..7fbc36ff41b 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -997,7 +997,7 @@ static uint64_t icc_iar0_read(CPUARMState *env, const ARMCPRegInfo *ri)
-         intid = icc_hppir0_value(cs, env);
-     }
- 
--    if (!(intid >= INTID_SECURE && intid <= INTID_SPURIOUS)) {
-+    if (!gicv3_intid_is_special(intid)) {
-         icc_activate_irq(cs, intid);
-     }
- 
-@@ -1020,7 +1020,7 @@ static uint64_t icc_iar1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-         intid = icc_hppir1_value(cs, env);
-     }
- 
--    if (!(intid >= INTID_SECURE && intid <= INTID_SPURIOUS)) {
-+    if (!gicv3_intid_is_special(intid)) {
-         icc_activate_irq(cs, intid);
-     }
- 
--- 
-2.25.1
+-- PMM

@@ -1,212 +1,133 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1582689lfk;
-        Fri, 26 Nov 2021 23:51:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw2XUm7soXO5FgkUkQ6U4YL3Poq6TjaSyjELZP2NXNCnU63a1nCEaVopqQLxMC/nIg7uAi5
-X-Received: by 2002:a25:830f:: with SMTP id s15mr21894900ybk.262.1637999493728;
-        Fri, 26 Nov 2021 23:51:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637999493; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp915403lfk;
+        Fri, 26 Nov 2021 08:39:17 -0800 (PST)
+X-Received: by 2002:a05:6000:1848:: with SMTP id c8mr15750244wri.265.1637944757331;
+        Fri, 26 Nov 2021 08:39:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637944757; cv=none;
         d=google.com; s=arc-20160816;
-        b=kDMimEM+1wnHpJ5gnaRdSUyEIwqXYKl1HdgvWCRlgJp5dpaMygqt3nZNIiX36zeAZv
-         6DDZ4iVC3JC7y+Y7Gq2qi00qTt1XnaxaNxfsSqOI5yY9VvCeR5y35EI4PMuXJGKPgkA1
-         lxmApwZiw7tuvtYvmBWEIdIp0v8SnbuSl+z6ONKK5kflK858yi7uih/xaeH1kNTNN7Z1
-         4AATnvBigUUQ61LM7j6vCtnRF69l7PAHiEnvIforghU5wWf4hUCKDcY1c0Fzqw7VEoa6
-         0pgsuhTokJ7oqi+ioU7YMgBkmxDKIhBMrmKn3sjqVxBYhOKWmmCuyjjHiyovR+R3kTBN
-         slNg==
+        b=RmrAc5tKeIUMknNb9uiizDUIXYXQNuXSHI0fW4mhSb2zzSOfeDas6THrgnYz5EE8ZM
+         Y+Xn6k+pqWMyXGBSxh3Ebg9Vsx+PK4netg5DKHQsS4F1GsSc5Pu2GmrAV1gp6AtYiZ+k
+         dc6Lot0VjYPw/Vx8iSeOnypPMAGR4SyTVUBjUwPjs6eOvHdmquCtp25zv8Zjf/ucEvqE
+         JtHDDXpZgdzoUSVJ34HaQCAqFa9FQpKuCtwStoxTygx90WhmZOW+puQ8PN5mQ1byCKEq
+         zqIDq4XE5vmEcOAWtuUaaVAbvYUW2AcdhEF1oV+zAhfeRiC6E+ccDDgda/MLEnqX8CDX
+         vJPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=r0b3UeNvMCqIBRkOJXrz12zbTCMKb0bYedR2Od9qu/E=;
-        b=pvKoRcypJZb8TZYt8PC3MhOXfTtmiTcKEvyjVeU7KJj0iMe0zFZP5wOBVF4kd5FYFm
-         lsYJOhElnL0SV8s8VBk7m4UEHmEnIHJ/IGPAkIaE+SraOqvoyGbOn6Eeasu52Adftz+h
-         3Eyc0FrnhWd0BySKz/bZSlxB86UFVLl/ltoAfUqPY09bPfvdXKge2yKGzKlEiIReYhjF
-         sH8llGQud36QpR6X12z+Eo0eII9H9JVxz4m2tXjZdYKevFARZ4jtvC0mCJNX6AqAq5s5
-         8+Fk4+mhZRnMq30ZbPp5ZXOYTW3reV2giw8DPRySGCb7oXLQlaDfJSWB9SFpEGqloSIc
-         lZ1A==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Ne0ZZY7CP8ngWRBKnIGwHYwnzIuCtxGGrO8uqvdjtxw=;
+        b=sgk5aOdMVUyVm2rRS1XlVWOVggikI7Ub/eWjcndKDGJxEYxDzhafOT2Bu4W1tydjML
+         RtrFaFL5IDYgK/uQr/Og+3BV3MAweuNj7gXvB/CtNHZBaNWBwn7czVxELsq/kA9g6ser
+         y0dA2QuC3nu2ExXiayT3xwU3pZPKiGcT5//B3+Excqwt5O3KivAPoMriLMlmvlcCPbDj
+         7Y5ejRifT5/M2+eVKgM5vTVm/BkegU4KhWo5DBw2+sWUT1YDQ2ymG2Z4O4rG2N1x9SEf
+         S2VICxus43RKYJ7JU27zyzoZ/5nD7wrlVikxwPt0vTzH2MfG2VBOgWiT7f/4Zr/8/MpV
+         aejA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LV7A2dvz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x19si5673389ybd.37.2021.11.26.23.51.33
+       dkim=pass header.i=@linaro.org header.s=google header.b=eF0XzSoe;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o11sor4712886wry.30.2021.11.26.08.39.17
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Nov 2021 23:51:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 26 Nov 2021 08:39:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LV7A2dvz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50996 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mqsUf-0002af-4n
-	for alex.bennee@linaro.org; Sat, 27 Nov 2021 02:51:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53100)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mqsTk-0002aP-J4
- for qemu-arm@nongnu.org; Sat, 27 Nov 2021 02:50:37 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:27637)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mqsTi-0004RW-3W
- for qemu-arm@nongnu.org; Sat, 27 Nov 2021 02:50:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637999432;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=r0b3UeNvMCqIBRkOJXrz12zbTCMKb0bYedR2Od9qu/E=;
- b=LV7A2dvzV8YFd8b1fRxpKylvLz1K3TXpG91CeG69uHoONwkFG73c44qydxw+hI0NBySBLz
- nouvjIVHwXHZBHzcHaAhXIJUhuS6bZWAlq94HyMByV4bACx8VaoL/sPEo5yIsto26wuj9H
- qXoKGxCZ15IzVtmXpT4nxKyJePHKDJI=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-534-FAUCC4vFNtSzz6Oidc36GA-1; Sat, 27 Nov 2021 02:50:31 -0500
-X-MC-Unique: FAUCC4vFNtSzz6Oidc36GA-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 138-20020a1c0090000000b00338bb803204so6331714wma.1
- for <qemu-arm@nongnu.org>; Fri, 26 Nov 2021 23:50:30 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=eF0XzSoe;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Ne0ZZY7CP8ngWRBKnIGwHYwnzIuCtxGGrO8uqvdjtxw=;
+        b=eF0XzSoeavTbETYE9iCoeSz7UkGjztWGq4gF6e6hSce56oifStDRExf07oXqJtI30w
+         SdnrIxptygV6D+L5CP6E/NdHa3w5x3fjNuE2R42nbXOI/DOORYANBZEsAnyayXS4VhcA
+         njiincXZDOA15Q7G0j33yKKjBTHZ4Iglm21kdE8lF6PKQDQJJ4MY03kUfivtjvm3oeCD
+         jQo3XySYQy32De3BWObd2YFwF1d/3P9pO6KU3FHylxal8MQMmka6y+C0qGOm7UZoNTYb
+         3zXPlUgcUJMlqa2AljTBH4pnOL5Xq7Qi6MOpSlIkh2AcAslceRG8gkWOZ8qn+mqhLORR
+         UpuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=r0b3UeNvMCqIBRkOJXrz12zbTCMKb0bYedR2Od9qu/E=;
- b=7PIU9XNurkgLprGRWwZSDezCf9XcGkteFkgSXYtZW+bDsq2Jvrvy0MN90Oscx8mp5c
- w0TCzSPs/39qGSeXLnMe8anlV9gUoW2fQXoadrSZpy4YM0AusuyVy/Vck8eOCirtlMW8
- L2XhmRTcJnIb9ZOlC9G4SyQVthDBXGoSXBlgWD4jwTLn50gZ6M2ZuHBAysULwDPAA832
- JIZl6fuVPVczRGUwlKqVorTk2ZDzJTqSpV98yDTiH888DCHeHBO9BccC9sSPIJeRy5ej
- n3pRiV9pfs0dW20V8Q015eQoHu9/0UIZiXJrcyDpAs/TAjBRc+5ugm1xxLWPRU2BNrH0
- HKqg==
-X-Gm-Message-State: AOAM532wTyi+As9c90Au3ovmsJ/SPf7xZ0xbmk1/YsQQLwrg46wG57Cr
- QQJ8pYso6sw7Jjikmk86SA4Brf4lzTuSN3DpTtu15BXotJm7wF7vVt6b2zpu6+nj95G8cEaDZTu
- M9+Q53SarKJWh
-X-Received: by 2002:a05:600c:358a:: with SMTP id
- p10mr20502668wmq.180.1637999429824; 
- Fri, 26 Nov 2021 23:50:29 -0800 (PST)
-X-Received: by 2002:a05:600c:358a:: with SMTP id
- p10mr20502641wmq.180.1637999429587; 
- Fri, 26 Nov 2021 23:50:29 -0800 (PST)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id o1sm7654513wrn.63.2021.11.26.23.50.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Nov 2021 23:50:28 -0800 (PST)
-Subject: Re: [PATCH v6 1/4] virtio-iommu: Remove set_config callback
-To: eric.auger.pro@gmail.com, thuth@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, jean-philippe@linaro.org, peter.maydell@linaro.org
-References: <20211127072910.1261824-1-eric.auger@redhat.com>
- <20211127072910.1261824-2-eric.auger@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <638d96d9-a580-ab29-5fc1-48909a524c2a@redhat.com>
-Date: Sat, 27 Nov 2021 08:50:27 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Ne0ZZY7CP8ngWRBKnIGwHYwnzIuCtxGGrO8uqvdjtxw=;
+        b=FTrmgBtCyNv2ikcZy484rEKqGuaQL1c/l8g+Nk5KyOw7sNbVrTkxwyr1W22bgVIPHE
+         +h/a0jZy7zrJLadRWYggRMwkyh6cQT+nuteprNvJ8HqA5/RTkQ1F7ktmxeQCNiSdTnhd
+         Fusf1ST21thcEB5OI8Xm6SBosg+AWWsK+MwHALfM2CYMT0qnQ+QVmA7ScTHKX/4AJILs
+         1t88HNcsq4Cih+NAKtfbhWMaCGvjvt6aZ0WEQAnskDSa4LRNXsSKpldFghZwlcH5NZ9u
+         RB0ueLvut0acrQ1Z1VdK877tXng+TJvnYip7bmYGk1dyk+bMTFzMMrhnN8LI18CIrOaW
+         PVGA==
+X-Gm-Message-State: AOAM532NAT9I8Wr+wdWjrCPcXRb4uwOLm1hK13t40Oy7lzoCo7quXo8C
+	6Z1lk7R/4ZtwlxP46wHhxcNAwODU
+X-Google-Smtp-Source: ABdhPJwlh4ENSg/Y7dYXg0LqmYaz/1iSUoGhic4SmfWu7Qtft0WRaUhBFLNAU5A4zamPNGOgqHQrtw==
+X-Received: by 2002:a5d:47a1:: with SMTP id 1mr15105533wrb.436.1637944756975;
+        Fri, 26 Nov 2021 08:39:16 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by smtp.gmail.com with ESMTPSA id b14sm7837698wrd.24.2021.11.26.08.39.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 26 Nov 2021 08:39:16 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Shashi Mallela <shashi.mallela@linaro.org>,
+	Marc Zyngier <maz@kernel.org>
+Subject: [PATCH for-6.2? 0/2] arm_gicv3: Fix handling of LPIs in list registers
+Date: Fri, 26 Nov 2021 16:39:13 +0000
+Message-Id: <20211126163915.1048353-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20211127072910.1261824-2-eric.auger@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -45
-X-Spam_score: -4.6
-X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.702,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.09, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: lvivier@redhat.com, pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VlBIq5oKiBMj
+X-TUID: CV1CVDgrnrTQ
 
-Hi,
-On 11/27/21 8:29 AM, Eric Auger wrote:
-> The spec says "the driver must not write to device configuration
-> fields". So remove the set_config() callback which anyway did
-> not do anything.
-Forgot to mention that with the advent of  VIRTIO_IOMMU_F_BYPASS_CONFIG
-feature and bypass field in struct virtio_iommu_config coming, this will
-change soon. Only the bypass field will be settable. But this is not yet
-available in the imported linux header.
+(Marc: cc'd you on this one in case you're still using QEMU
+to test KVM stuff with, in which case you might have run into
+the bug this is fixing.)
 
-Thanks
+It is valid for an OS to put virtual interrupt ID values into the
+list registers ICH_LR<n> which are greater than 1023.  This
+corresponds to (for example) KVM running as an L1 guest inside
+emulated QEMU and using the in-kernel emulated ITS to give a (nested)
+L2 guest an ITS.  LPIs are delivered by the L1 kernel to the L2 guest
+via the list registers in the same way as non-LPI interrupts.
+    
+QEMU's code for handling writes to ICV_IARn (which happen when the L2
+guest acknowledges an interrupt) and to ICV_EOIRn (which happen at
+the end of the interrupt) did not consider LPIs, so it would
+incorrectly treat interrupt IDs above 1023 as invalid, with the
+effect that a read to ICV_IARn would return the correct interrupt ID
+number but not actually mark the interrupt active or set the CPU
+priority accordingly, and a write to ICV_EOIRn would do nothing.
 
-Eric
+This bug doesn't seem to have any visible effect on Linux L2 guests
+most of the time, because the two bugs cancel each other out: we
+neither mark the interrupt active nor deactivate it.  However it does
+mean that the L2 vCPU priority while the LPI handler is running will
+not be correct, so the interrupt handler could be unexpectedly
+interrupted by a different interrupt.  (I haven't observed this; I
+found the ICV_IARn bug by code inspection, and then the ICV_EOIRn bug
+by figuring out why fixing ICV_IARn broke L2 guests :-))
+    
+This isn't a regression -- we've behaved like this since the GICv3
+support for virtualization was first implemented. I'm tempted to
+put it into 6.2 anyway, though.
 
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/virtio/trace-events   |  1 -
->  hw/virtio/virtio-iommu.c | 14 --------------
->  2 files changed, 15 deletions(-)
->
-> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-> index 650e521e351..54bd7da00c8 100644
-> --- a/hw/virtio/trace-events
-> +++ b/hw/virtio/trace-events
-> @@ -92,7 +92,6 @@ virtio_iommu_device_reset(void) "reset!"
->  virtio_iommu_get_features(uint64_t features) "device supports features=0x%"PRIx64
->  virtio_iommu_device_status(uint8_t status) "driver status = %d"
->  virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint32_t domain_range, uint32_t probe_size) "page_size_mask=0x%"PRIx64" start=0x%"PRIx64" end=0x%"PRIx64" domain_range=%d probe_size=0x%x"
-> -virtio_iommu_set_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint32_t domain_range, uint32_t probe_size) "page_size_mask=0x%"PRIx64" start=0x%"PRIx64" end=0x%"PRIx64" domain_bits=%d probe_size=0x%x"
->  virtio_iommu_attach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
->  virtio_iommu_detach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
->  virtio_iommu_map(uint32_t domain_id, uint64_t virt_start, uint64_t virt_end, uint64_t phys_start, uint32_t flags) "domain=%d virt_start=0x%"PRIx64" virt_end=0x%"PRIx64 " phys_start=0x%"PRIx64" flags=%d"
-> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-> index 1b23e8e18c7..645c0aa3997 100644
-> --- a/hw/virtio/virtio-iommu.c
-> +++ b/hw/virtio/virtio-iommu.c
-> @@ -832,19 +832,6 @@ static void virtio_iommu_get_config(VirtIODevice *vdev, uint8_t *config_data)
->      memcpy(config_data, &dev->config, sizeof(struct virtio_iommu_config));
->  }
->  
-> -static void virtio_iommu_set_config(VirtIODevice *vdev,
-> -                                      const uint8_t *config_data)
-> -{
-> -    struct virtio_iommu_config config;
-> -
-> -    memcpy(&config, config_data, sizeof(struct virtio_iommu_config));
-> -    trace_virtio_iommu_set_config(config.page_size_mask,
-> -                                  config.input_range.start,
-> -                                  config.input_range.end,
-> -                                  config.domain_range.end,
-> -                                  config.probe_size);
-> -}
-> -
->  static uint64_t virtio_iommu_get_features(VirtIODevice *vdev, uint64_t f,
->                                            Error **errp)
->  {
-> @@ -1185,7 +1172,6 @@ static void virtio_iommu_class_init(ObjectClass *klass, void *data)
->      vdc->unrealize = virtio_iommu_device_unrealize;
->      vdc->reset = virtio_iommu_device_reset;
->      vdc->get_config = virtio_iommu_get_config;
-> -    vdc->set_config = virtio_iommu_set_config;
->      vdc->get_features = virtio_iommu_get_features;
->      vdc->set_status = virtio_iommu_set_status;
->      vdc->vmsd = &vmstate_virtio_iommu_device;
+Patch 1 abstracts out the test we were using already elsewhere
+in the code into its own function, and patch 2 uses it to fix
+the EOIR and IAR behaviour.
 
+Based-on: 20211124202005.989935-1-peter.maydell@linaro.org
+("[PATCH v2] hw/intc/arm_gicv3: Update cached state after LPI state changes")
+
+Peter Maydell (2):
+  hw/intc/arm_gicv3: Add new gicv3_intid_is_special() function
+  hw/intc/arm_gicv3: fix handling of LPIs in list registers
+
+ hw/intc/gicv3_internal.h  | 13 +++++++++++++
+ hw/intc/arm_gicv3_cpuif.c |  9 ++++-----
+ 2 files changed, 17 insertions(+), 5 deletions(-)
+
+-- 
+2.25.1

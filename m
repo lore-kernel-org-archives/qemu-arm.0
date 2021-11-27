@@ -1,76 +1,131 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp9279697lfk;
-        Tue, 23 Nov 2021 12:26:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyALxb8wunbz8qJmkpfzo/493MmoX4SDHCBDSR2EIgHrysGAjyisM+XiopS0N7tqK/hZJSu
-X-Received: by 2002:a67:c181:: with SMTP id h1mr13937250vsj.3.1637699213313;
-        Tue, 23 Nov 2021 12:26:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637699213; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1582689lfk;
+        Fri, 26 Nov 2021 23:51:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw2XUm7soXO5FgkUkQ6U4YL3Poq6TjaSyjELZP2NXNCnU63a1nCEaVopqQLxMC/nIg7uAi5
+X-Received: by 2002:a25:830f:: with SMTP id s15mr21894900ybk.262.1637999493728;
+        Fri, 26 Nov 2021 23:51:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637999493; cv=none;
         d=google.com; s=arc-20160816;
-        b=W5P9+YZqb7g1tHffS4BKVQlP8BHS+/cFZgMDc+ZU2ODse0NWbv3frXrS5YUPmMaNKD
-         ww3SlNQaqOWltgAuubl/K5dySEAzaDi2L+Knuy2t6IS4qgYH6E54JkZYq9bs/rCwHnWt
-         uTtQtvIO7haqe5I0nRBTEfu7iu/BEvhDWjSEuwY+SQGBWhxd+IAiNs0njKVTkk6hf9za
-         Mhp5Sp2AGpl2WahKCOMNKWET21SC+FgCJgOzo1sAhURAxw+5yjXUi2gAR2/CHXYwzgq0
-         luEqMfp6C9ISRDlcCGbf7cmh4fEDlmmERg17SxnarkEZLAPxTXsd+Q2GhVcf2O/aq0r8
-         R/kA==
+        b=kDMimEM+1wnHpJ5gnaRdSUyEIwqXYKl1HdgvWCRlgJp5dpaMygqt3nZNIiX36zeAZv
+         6DDZ4iVC3JC7y+Y7Gq2qi00qTt1XnaxaNxfsSqOI5yY9VvCeR5y35EI4PMuXJGKPgkA1
+         lxmApwZiw7tuvtYvmBWEIdIp0v8SnbuSl+z6ONKK5kflK858yi7uih/xaeH1kNTNN7Z1
+         4AATnvBigUUQ61LM7j6vCtnRF69l7PAHiEnvIforghU5wWf4hUCKDcY1c0Fzqw7VEoa6
+         0pgsuhTokJ7oqi+ioU7YMgBkmxDKIhBMrmKn3sjqVxBYhOKWmmCuyjjHiyovR+R3kTBN
+         slNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=Ev98vReT8hHSVDEhelO+G2Cm7PYBSlBAbzf1eOBQ6d8=;
-        b=RQZm9zZgeuchGdD+owYGvr8KdNL4nZttFpJ0WbtpMBt6RIkBCTLR/Gj8n7nTx3GmRO
-         YPPMUkU/LkSbpbRLfnGNiG4rllSetcDyVjeH0dIdvgbUy+MPzoJA4KlscvCvWQxfcpwQ
-         0xvxihDrsqlCdT02HmCaVf7osRfGtOg/mZ6CSYAHcOkD9gJ4EaXm53xnEtbxxoDq1l/e
-         DX8uAXjBFUikrpEB4iN2YCkiYY6z7DdAcNmRYFUyWBNP49K4/fcpP4RTc5u3VPouuznX
-         +JWlxmUEzWlF7L7/3Au1sIS06pIeJvbgAqNGaj41K5+SXUK4sh3YSboTd2l+EIZVmJJH
-         Z/KQ==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=r0b3UeNvMCqIBRkOJXrz12zbTCMKb0bYedR2Od9qu/E=;
+        b=pvKoRcypJZb8TZYt8PC3MhOXfTtmiTcKEvyjVeU7KJj0iMe0zFZP5wOBVF4kd5FYFm
+         lsYJOhElnL0SV8s8VBk7m4UEHmEnIHJ/IGPAkIaE+SraOqvoyGbOn6Eeasu52Adftz+h
+         3Eyc0FrnhWd0BySKz/bZSlxB86UFVLl/ltoAfUqPY09bPfvdXKge2yKGzKlEiIReYhjF
+         sH8llGQud36QpR6X12z+Eo0eII9H9JVxz4m2tXjZdYKevFARZ4jtvC0mCJNX6AqAq5s5
+         8+Fk4+mhZRnMq30ZbPp5ZXOYTW3reV2giw8DPRySGCb7oXLQlaDfJSWB9SFpEGqloSIc
+         lZ1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LV7A2dvz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v13si8889076uam.204.2021.11.23.12.26.52
+        by mx.google.com with ESMTPS id x19si5673389ybd.37.2021.11.26.23.51.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Nov 2021 12:26:53 -0800 (PST)
+        Fri, 26 Nov 2021 23:51:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44234 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LV7A2dvz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50996 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mpcNQ-0006Fr-HT
-	for alex.bennee@linaro.org; Tue, 23 Nov 2021 15:26:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33446)
+	id 1mqsUf-0002af-4n
+	for alex.bennee@linaro.org; Sat, 27 Nov 2021 02:51:33 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1mpcMm-0006Bw-Kd; Tue, 23 Nov 2021 15:26:14 -0500
-Received: from relay8-d.mail.gandi.net ([217.70.183.201]:33241)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mqsTk-0002aP-J4
+ for qemu-arm@nongnu.org; Sat, 27 Nov 2021 02:50:37 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:27637)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1mpcMi-00025k-SS; Tue, 23 Nov 2021 15:26:12 -0500
-Received: (Authenticated sender: jcd@tribudubois.net)
- by relay8-d.mail.gandi.net (Postfix) with ESMTPSA id CB55D1BF205;
- Tue, 23 Nov 2021 20:26:01 +0000 (UTC)
-Message-ID: <2c310930-5a29-791a-dc42-fd649081c1d9@tribudubois.net>
-Date: Tue, 23 Nov 2021 21:26:01 +0100
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mqsTi-0004RW-3W
+ for qemu-arm@nongnu.org; Sat, 27 Nov 2021 02:50:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1637999432;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=r0b3UeNvMCqIBRkOJXrz12zbTCMKb0bYedR2Od9qu/E=;
+ b=LV7A2dvzV8YFd8b1fRxpKylvLz1K3TXpG91CeG69uHoONwkFG73c44qydxw+hI0NBySBLz
+ nouvjIVHwXHZBHzcHaAhXIJUhuS6bZWAlq94HyMByV4bACx8VaoL/sPEo5yIsto26wuj9H
+ qXoKGxCZ15IzVtmXpT4nxKyJePHKDJI=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-534-FAUCC4vFNtSzz6Oidc36GA-1; Sat, 27 Nov 2021 02:50:31 -0500
+X-MC-Unique: FAUCC4vFNtSzz6Oidc36GA-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 138-20020a1c0090000000b00338bb803204so6331714wma.1
+ for <qemu-arm@nongnu.org>; Fri, 26 Nov 2021 23:50:30 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:reply-to:subject:to:cc:references:from
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-transfer-encoding:content-language;
+ bh=r0b3UeNvMCqIBRkOJXrz12zbTCMKb0bYedR2Od9qu/E=;
+ b=7PIU9XNurkgLprGRWwZSDezCf9XcGkteFkgSXYtZW+bDsq2Jvrvy0MN90Oscx8mp5c
+ w0TCzSPs/39qGSeXLnMe8anlV9gUoW2fQXoadrSZpy4YM0AusuyVy/Vck8eOCirtlMW8
+ L2XhmRTcJnIb9ZOlC9G4SyQVthDBXGoSXBlgWD4jwTLn50gZ6M2ZuHBAysULwDPAA832
+ JIZl6fuVPVczRGUwlKqVorTk2ZDzJTqSpV98yDTiH888DCHeHBO9BccC9sSPIJeRy5ej
+ n3pRiV9pfs0dW20V8Q015eQoHu9/0UIZiXJrcyDpAs/TAjBRc+5ugm1xxLWPRU2BNrH0
+ HKqg==
+X-Gm-Message-State: AOAM532wTyi+As9c90Au3ovmsJ/SPf7xZ0xbmk1/YsQQLwrg46wG57Cr
+ QQJ8pYso6sw7Jjikmk86SA4Brf4lzTuSN3DpTtu15BXotJm7wF7vVt6b2zpu6+nj95G8cEaDZTu
+ M9+Q53SarKJWh
+X-Received: by 2002:a05:600c:358a:: with SMTP id
+ p10mr20502668wmq.180.1637999429824; 
+ Fri, 26 Nov 2021 23:50:29 -0800 (PST)
+X-Received: by 2002:a05:600c:358a:: with SMTP id
+ p10mr20502641wmq.180.1637999429587; 
+ Fri, 26 Nov 2021 23:50:29 -0800 (PST)
+Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id o1sm7654513wrn.63.2021.11.26.23.50.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 26 Nov 2021 23:50:28 -0800 (PST)
+Subject: Re: [PATCH v6 1/4] virtio-iommu: Remove set_config callback
+To: eric.auger.pro@gmail.com, thuth@redhat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, jean-philippe@linaro.org, peter.maydell@linaro.org
+References: <20211127072910.1261824-1-eric.auger@redhat.com>
+ <20211127072910.1261824-2-eric.auger@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+Message-ID: <638d96d9-a580-ab29-5fc1-48909a524c2a@redhat.com>
+Date: Sat, 27 Nov 2021 08:50:27 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.1
-Subject: Re: [PATCH for-6.2] Revert "arm: tcg: Adhere to SMCCC 1.3 section 5.2"
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20211119163419.557623-1-peter.maydell@linaro.org>
-From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
-In-Reply-To: <20211119163419.557623-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <20211127072910.1261824-2-eric.auger@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=217.70.183.201; envelope-from=jcd@tribudubois.net;
- helo=relay8-d.mail.gandi.net
-X-Spam_score_int: -60
-X-Spam_score: -6.1
-X-Spam_bar: ------
-X-Spam_report: (-6.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.515,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.702,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.09, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,123 +138,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alexander Graf <agraf@csgraf.de>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
+Reply-To: eric.auger@redhat.com
+Cc: lvivier@redhat.com, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OWO2s7UJjlro
+X-TUID: VlBIq5oKiBMj
 
-Le 19/11/2021 à 17:34, Peter Maydell a écrit :
-> This reverts commit 9fcd15b9193e819b6cc2fd0a45e3506148812bb4.
+Hi,
+On 11/27/21 8:29 AM, Eric Auger wrote:
+> The spec says "the driver must not write to device configuration
+> fields". So remove the set_config() callback which anyway did
+> not do anything.
+Forgot to mention that with the advent of  VIRTIO_IOMMU_F_BYPASS_CONFIG
+feature and bypass field in struct virtio_iommu_config coming, this will
+change soon. Only the bypass field will be settable. But this is not yet
+available in the imported linux header.
+
+Thanks
+
+Eric
+
 >
-> This change turns out to cause regressions, for instance on the
-> imx6ul boards as described here:
-> https://lore.kernel.org/qemu-devel/c8b89685-7490-328b-51a3-48711c140a84@tribudubois.net/
->
-> The primary cause of that regression is that the guest code running
-> at EL3 expects SMCs (not related to PSCI) to do what they would if
-> our PSCI emulation was not present at all, but after this change
-> they instead set a value in R0/X0 and continue.
->
-> We could fix that by a refactoring that allowed us to only turn on
-> the PSCI emulation if we weren't booting the guest at EL3, but there
-> is a more tangled problem with the highbank board, which:
->   (1) wants to enable PSCI emulation
->   (2) has a bit of guest code that it wants to run at EL3 and
->       to perform SMC calls that trap to the monitor vector table:
->       this is the boot stub code that is written to memory by
->       arm_write_secure_board_setup_dummy_smc() and which the
->       highbank board enables by setting bootinfo->secure_board_setup
->
-> We can't satisfy both of those and also have the PSCI emulation
-> handle all SMC instruction executions regardless of function
-> identifier value.
->
-> This is too tricky to try to sort out before 6.2 is released;
-> revert this commit so we can take the time to get it right in
-> the 7.0 release.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
-> Jean-Christophe: could you confirm that reverting this fixes the
-> regressions you had on the imx boards ?
-
-Hello Peter,
-
-With this patch, things are back to "normal".
-
-Thanks.
-
-JC
-
+>  hw/virtio/trace-events   |  1 -
+>  hw/virtio/virtio-iommu.c | 14 --------------
+>  2 files changed, 15 deletions(-)
 >
->   target/arm/psci.c | 35 +++++++++++++++++++++++++++++------
->   1 file changed, 29 insertions(+), 6 deletions(-)
->
-> diff --git a/target/arm/psci.c b/target/arm/psci.c
-> index b279c0b9a45..6709e280133 100644
-> --- a/target/arm/psci.c
-> +++ b/target/arm/psci.c
-> @@ -27,13 +27,15 @@
->   
->   bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
->   {
-> -    /*
-> -     * Return true if the exception type matches the configured PSCI conduit.
-> -     * This is called before the SMC/HVC instruction is executed, to decide
-> -     * whether we should treat it as a PSCI call or with the architecturally
-> +    /* Return true if the r0/x0 value indicates a PSCI call and
-> +     * the exception type matches the configured PSCI conduit. This is
-> +     * called before the SMC/HVC instruction is executed, to decide whether
-> +     * we should treat it as a PSCI call or with the architecturally
->        * defined behaviour for an SMC or HVC (which might be UNDEF or trap
->        * to EL2 or to EL3).
->        */
-> +    CPUARMState *env = &cpu->env;
-> +    uint64_t param = is_a64(env) ? env->xregs[0] : env->regs[0];
->   
->       switch (excp_type) {
->       case EXCP_HVC:
-> @@ -50,7 +52,27 @@ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
->           return false;
->       }
->   
-> -    return true;
-> +    switch (param) {
-> +    case QEMU_PSCI_0_2_FN_PSCI_VERSION:
-> +    case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
-> +    case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
-> +    case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
-> +    case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
-> +    case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
-> +    case QEMU_PSCI_0_1_FN_CPU_ON:
-> +    case QEMU_PSCI_0_2_FN_CPU_ON:
-> +    case QEMU_PSCI_0_2_FN64_CPU_ON:
-> +    case QEMU_PSCI_0_1_FN_CPU_OFF:
-> +    case QEMU_PSCI_0_2_FN_CPU_OFF:
-> +    case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
-> +    case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
-> +    case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
-> +    case QEMU_PSCI_0_1_FN_MIGRATE:
-> +    case QEMU_PSCI_0_2_FN_MIGRATE:
-> +        return true;
-> +    default:
-> +        return false;
-> +    }
->   }
->   
->   void arm_handle_psci_call(ARMCPU *cpu)
-> @@ -172,9 +194,10 @@ void arm_handle_psci_call(ARMCPU *cpu)
->           break;
->       case QEMU_PSCI_0_1_FN_MIGRATE:
->       case QEMU_PSCI_0_2_FN_MIGRATE:
-> -    default:
->           ret = QEMU_PSCI_RET_NOT_SUPPORTED;
->           break;
-> +    default:
-> +        g_assert_not_reached();
->       }
->   
->   err:
-
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+> index 650e521e351..54bd7da00c8 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -92,7 +92,6 @@ virtio_iommu_device_reset(void) "reset!"
+>  virtio_iommu_get_features(uint64_t features) "device supports features=0x%"PRIx64
+>  virtio_iommu_device_status(uint8_t status) "driver status = %d"
+>  virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint32_t domain_range, uint32_t probe_size) "page_size_mask=0x%"PRIx64" start=0x%"PRIx64" end=0x%"PRIx64" domain_range=%d probe_size=0x%x"
+> -virtio_iommu_set_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint32_t domain_range, uint32_t probe_size) "page_size_mask=0x%"PRIx64" start=0x%"PRIx64" end=0x%"PRIx64" domain_bits=%d probe_size=0x%x"
+>  virtio_iommu_attach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
+>  virtio_iommu_detach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
+>  virtio_iommu_map(uint32_t domain_id, uint64_t virt_start, uint64_t virt_end, uint64_t phys_start, uint32_t flags) "domain=%d virt_start=0x%"PRIx64" virt_end=0x%"PRIx64 " phys_start=0x%"PRIx64" flags=%d"
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index 1b23e8e18c7..645c0aa3997 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -832,19 +832,6 @@ static void virtio_iommu_get_config(VirtIODevice *vdev, uint8_t *config_data)
+>      memcpy(config_data, &dev->config, sizeof(struct virtio_iommu_config));
+>  }
+>  
+> -static void virtio_iommu_set_config(VirtIODevice *vdev,
+> -                                      const uint8_t *config_data)
+> -{
+> -    struct virtio_iommu_config config;
+> -
+> -    memcpy(&config, config_data, sizeof(struct virtio_iommu_config));
+> -    trace_virtio_iommu_set_config(config.page_size_mask,
+> -                                  config.input_range.start,
+> -                                  config.input_range.end,
+> -                                  config.domain_range.end,
+> -                                  config.probe_size);
+> -}
+> -
+>  static uint64_t virtio_iommu_get_features(VirtIODevice *vdev, uint64_t f,
+>                                            Error **errp)
+>  {
+> @@ -1185,7 +1172,6 @@ static void virtio_iommu_class_init(ObjectClass *klass, void *data)
+>      vdc->unrealize = virtio_iommu_device_unrealize;
+>      vdc->reset = virtio_iommu_device_reset;
+>      vdc->get_config = virtio_iommu_get_config;
+> -    vdc->set_config = virtio_iommu_set_config;
+>      vdc->get_features = virtio_iommu_get_features;
+>      vdc->set_status = virtio_iommu_set_status;
+>      vdc->vmsd = &vmstate_virtio_iommu_device;
 

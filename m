@@ -1,114 +1,112 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp3493543lfk;
-        Mon, 29 Nov 2021 01:19:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxiHlt/TbhD3VUTMTrHH3j1cj60El/rG4k5wup9MNRX1zNRnc310TyMAhbOHxSbEAPj0shJ
-X-Received: by 2002:a05:6820:622:: with SMTP id e34mr31445007oow.19.1638177584805;
-        Mon, 29 Nov 2021 01:19:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638177584; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp3728517lfk;
+        Mon, 29 Nov 2021 05:57:01 -0800 (PST)
+X-Received: by 2002:adf:ce03:: with SMTP id p3mr33911756wrn.145.1638194221333;
+        Mon, 29 Nov 2021 05:57:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638194221; cv=none;
         d=google.com; s=arc-20160816;
-        b=JTWHaQDOP07oFHp4Yka/Cdq9L9ZV8byEqT/jnBHVU3pUM2MWHKnIZFrQEqPF1G8vZd
-         DkYsFfla0yB1uYIymRfg5uyYfP8xIWzsuPsoyZpOKusPnQBkFBF42/WicA4sEFfNoGan
-         t1+JeGNRro9V8C31qaPJWX+0kkgXY1fLDWYAafaFEvylcQ2wI1dGwBSK31vG9UeJgx1j
-         uS1HiPUSNqV1kMH91DYyYpsYJyZQn+mhUKCpfGTVqVg2C8eFgbMqmIdDIi5k/IbFFo1B
-         Bd4LgbiWz8zRgnj+a/uHuFjWscZVpWc7v9A/tcbruEN+oyXaD18VE6YLKqK/845vXRq5
-         cdHQ==
+        b=i9yjO2BPeq6vVUsadOBtIcGkjeQz9/MDa/lIXKb8Vj1Qbunog6/cX/wcwRYu8BVXxN
+         ZLVkUmBzaMWPvPITcYhl8gT1RDqpgmjMIz4KFmz5voVeUVsHlwsaft/pqpBG8HmVptZ3
+         KGUV0T2yl4QaDwqeyFiUs+Cle5HUkDkNIRc+/CkU16UlgoBRMUCUrBUEcDtVoTy4ei/b
+         iYMJqoOEIhWZIlBBu38antQuVzY3f6I1GnwC/MJed3pGPKD0eJJ3oSiQQOHJNcOnxW4r
+         qEYNoCiZjATp+SXpvOnR4tCWYmeX/B1nidLzAhpRl2XPE37+Pk8+By5F/EhTu5t4jM8b
+         OrNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:in-reply-to:subject:cc:to:from
-         :message-id:date:dkim-signature;
-        bh=vIocVomLAkvM8vTetVvAPWytVBfv5Q9T7/MzBsZoEFA=;
-        b=cWUm8/OhFa/z/uwwx6UkS2NTJXZHwFyRFxQY0PGbvRDaSzOkzGyqWhRS1f1w/YfDbU
-         RHPV5d9FlSlD+Vb5sedaoQ6JdCeszJ96SJS+kO01P9JILeEvfTi5y1e7MHWtl8AAEFDL
-         MMCPBr3P5jRZPECV6sWD1xXTmOiL9asqa3xxH+rvI+E+zhGoWmBpMps/ZB/7BDy0/9ue
-         7pA7I4BgC1Nz+uiGCdPTYecJlzhrxk+3JtOT3RFWPmfiqVamtHiS1s5KYEmlMMvGM2k4
-         RR7oLWTOTl9qSyysFaBaolryTUqNcLuDk90jkQBm8vXwZ79MBcRr34UvTySd7GbtlMSj
-         u5fg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=3R0nafG5ODL5DRR7ec4ccsXtAd+EwKH++2HjSLBAW6c=;
+        b=CKJA6V7tQH6nevd9BaGH7bDxRHv+0+tzqwTjMHKpckjAMp+EZtEvDgFI34EECvkCCZ
+         RDMkcLkmsn2Cs8pCGTAGlDWXXvILp7hTMwMXbGQqXCtfQHbic65v5OpXooc3KUWetfGT
+         vf5+GNIg8e/jLkyn27EAmXDOpSnziG4onjLioBLgA9AuR9Fy9iWDK8Buw/BQ6ejqnD7U
+         0HELMS3kWK97GuC/2mwLMigArAebfFiFEbS7JlWdQo/dc+1UnL3AX4yIF1yYl3u+ceAy
+         tDwPHTiU9tB/WOA5/STfYOfbA2/OvhC0uiOdVIr+lXwRWAO9dytCw1DGM7ukDmEtgno5
+         Ay4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=H2NDpVnb;
-       spf=pass (google.com: domain of maz@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <maz@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
-        by mx.google.com with ESMTPS id t3si14106406oth.234.2021.11.29.01.19.43
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Nov 2021 01:19:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of maz@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GMFB725b;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w4sor9454180wru.21.2021.11.29.05.57.01
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 29 Nov 2021 05:57:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=H2NDpVnb;
-       spf=pass (google.com: domain of maz@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 83F43611F9;
-	Mon, 29 Nov 2021 09:19:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAB61C004E1;
-	Mon, 29 Nov 2021 09:19:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1638177583;
-	bh=Nt1W7Smat1fUpYIQt6EYKDfPMsXrSZ/yrbGkUkAu7EY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=H2NDpVnbfnplod5AzC9w0pq0PUmV3pU5rxGrqmBLJPopJcZEg8gu5fbX6yY8DR4NM
-	 yFuDdtjMwY5NoU3q6/4ESHkiAw7tdtc5o1DDN9PsBRUNS7UV+r76qXNVt4JJo7AfTD
-	 WhOmTd7TBUDe/PO5GYR9lhoVBr8093Qj532QMb6OIvUH2H+fy2FvbBPGP6vzzEF/4k
-	 hbwSa2ei+cIKY/xhx+JpT43X0FR6+fl8qruqxUiZ9S1wt1xmWWndD9k3i/Q9EhNFOU
-	 Rr3j/UcSm4LtIQ1ewQ0LvxBykClK8l6ItlF4K4H1gc2wr5rM/xuOx1SDoMtwAXomzS
-	 LovjdA6Wv10gg==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <maz@kernel.org>)
-	id 1mrcp2-008Yv8-IS; Mon, 29 Nov 2021 09:19:40 +0000
-Date: Mon, 29 Nov 2021 09:19:33 +0000
-Message-ID: <87v90bmi8q.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org,	qemu-devel@nongnu.org,	Alex =?UTF-8?B?QmVubsOp?=
- =?UTF-8?B?ZQ==?= <alex.bennee@linaro.org>,	Richard Henderson
- <richard.henderson@linaro.org>,	Shashi Mallela <shashi.mallela@linaro.org>
-Subject: Re: [PATCH for-6.2? 0/2] arm_gicv3: Fix handling of LPIs in list registers
-In-Reply-To: <20211126163915.1048353-1-peter.maydell@linaro.org>
-References: <20211126163915.1048353-1-peter.maydell@linaro.org>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.bennee@linaro.org, richard.henderson@linaro.org, shashi.mallela@linaro.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
-X-TUID: DbXyKsXMGByR
+       dkim=pass header.i=@linaro.org header.s=google header.b=GMFB725b;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=3R0nafG5ODL5DRR7ec4ccsXtAd+EwKH++2HjSLBAW6c=;
+        b=GMFB725bAevOPhKetlFm2nh3z45lZpBl5maAdtNCllhW0IwMnwH4htujoBg+nLE8bL
+         N7IcOld4sYTSJDSYtdGjh1aVc+0uLzLG9VJrMWdKnnSdRPUC04TbGnzq3Xl2TWPQb8cn
+         CSdsm+Pqt29TdIGYwGKpbIVbJThQgETDSxI/+tXiWnBX2zt6D6c33VWF3eTLsQ3pUqae
+         5+q0Ur3KV/X1dIi0y4UEFnO5x3g8qFrSqiu8kYYZm6qY3TlPjiCaDdX17I6DVoqdNJVH
+         Ogw0jVnW5cLpmjcbOUiKiBGSLCt/fo4skU1CUBIVm/q4ovwRY5rXipr/pQ1y4trj+I8W
+         dffQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=3R0nafG5ODL5DRR7ec4ccsXtAd+EwKH++2HjSLBAW6c=;
+        b=CUyAnkQHLPB9ytHzD2FdAfDlsTwU9YAovgTkMNbigLlQgE3dWO5H2lveqIj9PE8SkY
+         MiSClZte+7BAksXigpbqLO9UIE/whC90TeKQUSmY1a7ICAkIsDfUybtX3emTM7REuKDL
+         ndZCYG0xWUy7YKub1/tq/0LyhfCbXrwzHIzx8yOuAwD/38DmPERC31x3YVQj+cWONqwF
+         3hltvdFGWHN6m89Hy16U0gQ3hoQApMPWtgeGMg8YwYBgVER2KSByjdRKwD0B1bz0K9EM
+         TeBSOwfMPfRKI0mBesMDJJcfBlIOjEidO5XR74cneiZA+P5hMflBGWIujcUcMSIUijfa
+         fvRA==
+X-Gm-Message-State: AOAM530zRBjX8Uhs+Vf2EmLI7X6HhaafS4YYeeUXtK3+kqavcIRZvuQZ
+	+FX5phyMKNFxxA93Ojqe4q5xv/IRPtY7+lqGfrYz5OSGWxyRXA==
+X-Google-Smtp-Source: ABdhPJxroHcSOfVuJ1pdVOhOp3MoWJl23Uo6hAP2EuzI0Wge9d8V9UkpyZ0B8eWTZigdYdNwHImYwvJwCVs8CzzomNo=
+X-Received: by 2002:adf:f0c5:: with SMTP id x5mr32443081wro.484.1638194220994;
+ Mon, 29 Nov 2021 05:57:00 -0800 (PST)
+MIME-Version: 1.0
+References: <20211112170454.3158925-1-alex.bennee@linaro.org>
+In-Reply-To: <20211112170454.3158925-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Nov 2021 13:56:50 +0000
+Message-ID: <CAFEAcA9iJdkhuPZtm_h66H2L2N+=Ue5UJ3jDnF+cxdVTZpdxsA@mail.gmail.com>
+Subject: Re: [RFC PATCH] hw/intc: clean-up error reporting for failed ITS cmd
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	Shashi Mallela <shashi.mallela@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: B9beQ8I5SAXN
 
-Hi Peter,
+On Fri, 12 Nov 2021 at 17:05, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> While trying to debug a GIC ITS failure I saw some guest errors that
+> had poor formatting as well as leaving me confused as to what failed.
+> As most of the checks aren't possible without a valid dte split that
+> check apart and then check the other conditions in steps. This avoids
+> us relying on undefined data.
+>
+> I still get a failure with the current kvm-unit-tests but at least I
+> know (partially) why now:
+>
+>   Exception return from AArch64 EL1 to AArch64 EL1 PC 0x40080588
+>   PASS: gicv3: its-trigger: inv/invall: dev2/eventid=3D20 now triggers an=
+ LPI
+>   ITS: MAPD devid=3D2 size =3D 0x8 itt=3D0x40430000 valid=3D0
+>   INT dev_id=3D2 event_id=3D20
+>   process_its_cmd: invalid command attributes: invalid dte: 0 for 2 (MEM_=
+TX: 0)
+>   PASS: gicv3: its-trigger: mapd valid=3Dfalse: no LPI after device unmap
+>   SUMMARY: 6 tests, 1 unexpected failures
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Cc: Shashi Mallela <shashi.mallela@linaro.org>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> --
 
-On Fri, 26 Nov 2021 16:39:13 +0000,
-Peter Maydell <peter.maydell@linaro.org> wrote:
-> 
-> (Marc: cc'd you on this one in case you're still using QEMU
-> to test KVM stuff with, in which case you might have run into
-> the bug this is fixing.)
+Seems reasonable to me; I've put this on my list of things to queue
+for 7.0.
 
-Amusingly enough, I have recently fixed [1] a very similar issue with
-the ICV_*_EL1 emulation that KVM uses when dealing with sub-par HW
-(ThunderX and M1).
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-When writing this a very long while ago, I modelled it so that LPIs
-wouldn't have an Active state, similar to bare metal. As it turns out,
-the pseudocode actually treats LPIs almost like any other interrupt,
-and is quite happy to carry an active bit that eventually gets exposed
-to the hypervisor.
-
-I don't think this ever caused any issue, but I'd be pretty happy to
-see the QEMU implementation fixed.
-
-For the whole series:
-
-Reviewed-by: Marc Zyngier <maz@kernel.org>
-
-Thanks,
-
-	M.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/arm64/kvm/hyp/vgic-v3-sr.c?id=9d449c71bd8f74282e84213c8f0b8328293ab0a7
-
--- 
-Without deviation from the norm, progress is not possible.
+thanks
+-- PMM

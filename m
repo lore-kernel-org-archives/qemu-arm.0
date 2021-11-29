@@ -1,184 +1,146 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1574916lfk;
-        Fri, 26 Nov 2021 23:37:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJygIvIqLwZ6qQszLLf0NGYQ6SFdWdAHI4KQzYJO5Ng13gL4rn1MG1O2F6QGCXlhp1YZNm74
-X-Received: by 2002:a5d:9492:: with SMTP id v18mr41096504ioj.158.1637998628699;
-        Fri, 26 Nov 2021 23:37:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637998628; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp3696442lfk;
+        Mon, 29 Nov 2021 05:24:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw6wrsGbim64//0xTgRkRUbx3ikntVc71zBILulkYLHF+iE1uYRwMqpRWlqDvxxgjMScwFz
+X-Received: by 2002:a05:600c:2dc8:: with SMTP id e8mr36577852wmh.189.1638192245005;
+        Mon, 29 Nov 2021 05:24:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638192245; cv=none;
         d=google.com; s=arc-20160816;
-        b=NyANFffttTwG7yy8J4Zv39Nrd9dV+7OnrZ3OMqQBRE7r0KVeuscejLgvyZodbuPv5N
-         i6jwXp+RdPoMUb7CMoHnyxo8dOMmJFJv+kQfR9Hugx2+MzfHpcFCAnFvLjQQydL8QjyA
-         TekWPR4eQwNvVxwAhwW1LlzCVlQoldGYDCz7LYnRbLwDIN6Sp/6ilwrFGvP3tlM25ZvD
-         TbZgEYrDAtn7gvxqz0OxN18qUsbbcVWRmW3ocuXLe9ethjfZnb0EIOsLUtT/zMpqk8Xx
-         mucuzr3KiUfl7GsCAe76WJM0Yi9Issa2lTpXzJC5qTZyZXwYIPPUWymSCoL4enBeEoIL
-         KT5A==
+        b=q50rT8LKlhdtIoSN3Q9WbV5X/PPc9oxTYnfWVBrDti8iDN81PFi7AOIE3jK6nLxBP1
+         bOywI/0ud+MqD0x2WJmJvXscWJcqjgDgkDOFOGWraUAWj60tuvzzhBpF4Q4OeI8Fx9R9
+         Eh9gytzeXMJD0dqItSSgN6NUQCRF0rBdOWcyxuqJu+z2hhtqeYxEYJRHAKWxbO5HJEPN
+         jjiJc+4OmwV5fEcTYmXUEBr3HFy1Dnt0upMDGW7q3hV8/3Bfeurjqo8119MxCKDMBJvC
+         6uS4OgjiMEHChAjgXKUGZTEk1oDJU16wOfh9jofKc8NVzOM2MyXHlld5NkhVOzpJ+5r/
+         lEyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=YDhGwZ7NW6jt8p5xJ6q5zE85WMbOE0yCHpx5n/sxl10=;
-        b=p/UcEDcnMqjlP0BH9vRHNSIGuTlASAwFEnmDdkgWw88Wds47xFpWRZK/oAnelyIkM7
-         WTi1xhSc9cmgoRbLHg1tnUdcmD7mrcPWJ5VGqOqdbsgsvl0PSexCnVQ7AbjWIbbuC7zO
-         +eksaow6wsC8K/OO+3rDvRUrmErRxmmShOobZ8Kh267Vc/6y8L8u1xfT9BtECkISvbei
-         cQDqtF/KjpkGGEV0fl6kreQ/0BfHVTjpQlzKGCR1qNxhIjcpWqpkY/UsY2rvEILBs4+L
-         7dfto8iL/aQvSDXwLtVMcKAYo+Zwpi5+AC91euR22/c09QUZ8secJcOzHACwdG08okHk
-         1d8w==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=j+OaQc4EFLLIk4Ngs96CA869eSl0gwol9QOp0Hx7KIk=;
+        b=GKNk6iKJLWSfPxRD+by2DfucTP7GFZ0VNI+kmSCuqBabjNrgSRkTxDQyxlSfdUOWz7
+         k8619z5Ixgquso1tZcUJ8F12qHjhjVHMVLmy+Q98/wipCU8+hqmBe2E3rix13hEoSq+K
+         eOnjSrRFJtUunr5ZtKtWfNFOFcZbZ1D5vrM8pt4YEW3dL7/prrCoETQM/uvGZ5ZHbSfQ
+         hw3sdloM3RDaQRFlBo02jLtoCdThFUGSaQVbZo/ZGsGs4xaKmONqO1MGOHE+Z80TYNEY
+         dHGNBhXWNP+N5ZgVNQ5A5OLVg7F70X7AmvZUz+XNMzMNQqArBMyMF77R2UB+4PNj3Mul
+         mxzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=K9A1eMsS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=vKkkd3wb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si18368157iow.84.2021.11.26.23.37.08
+        by mx.google.com with ESMTPS id p1si31289228wmg.100.2021.11.29.05.24.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Nov 2021 23:37:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 29 Nov 2021 05:24:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=K9A1eMsS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44986 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=vKkkd3wb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50750 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mqsGi-0006OX-4m
-	for alex.bennee@linaro.org; Sat, 27 Nov 2021 02:37:08 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50838)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mrgdX-0005cW-Tp
+	for alex.bennee@linaro.org; Mon, 29 Nov 2021 08:24:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41464)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mqs9h-0007mm-C7
- for qemu-devel@nongnu.org; Sat, 27 Nov 2021 02:29:53 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:30572)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mqs9e-0002DM-95
- for qemu-devel@nongnu.org; Sat, 27 Nov 2021 02:29:52 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637998189;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YDhGwZ7NW6jt8p5xJ6q5zE85WMbOE0yCHpx5n/sxl10=;
- b=K9A1eMsSlJAOURVHAauTJfe88p7ayxHrBKr+h27JNc9W1QigJQX1ts0T2VPx6b2MJDVSkP
- 5sHsN2yauD08/8zAKeCBStozIbxUqVe9DsWupQ1lpn3wFsrXZf7ZcO28Ri9OYG+I0FYrXj
- Oohw4N+OOoHuYCakT61wYOqH3M7Jawg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-122-ffjbJvbKOwKmebkjBpb3Zw-1; Sat, 27 Nov 2021 02:29:46 -0500
-X-MC-Unique: ffjbJvbKOwKmebkjBpb3Zw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 558368042E1;
- Sat, 27 Nov 2021 07:29:45 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.192.178])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D2CC1608BA;
- Sat, 27 Nov 2021 07:29:36 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, thuth@redhat.com,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, jean-philippe@linaro.org,
- peter.maydell@linaro.org
-Subject: [PATCH v6 2/4] virtio-iommu: Fix endianness in get_config
-Date: Sat, 27 Nov 2021 08:29:08 +0100
-Message-Id: <20211127072910.1261824-3-eric.auger@redhat.com>
-In-Reply-To: <20211127072910.1261824-1-eric.auger@redhat.com>
-References: <20211127072910.1261824-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mrgbo-0005ZC-Ne
+ for qemu-arm@nongnu.org; Mon, 29 Nov 2021 08:22:16 -0500
+Received: from [2a00:1450:4864:20::330] (port=42901
+ helo=mail-wm1-x330.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mrgbg-0006Hb-NV
+ for qemu-arm@nongnu.org; Mon, 29 Nov 2021 08:22:16 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ d72-20020a1c1d4b000000b00331140f3dc8so12394991wmd.1
+ for <qemu-arm@nongnu.org>; Mon, 29 Nov 2021 05:22:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=j+OaQc4EFLLIk4Ngs96CA869eSl0gwol9QOp0Hx7KIk=;
+ b=vKkkd3wbaM+BDiecJiwAOybhIzapHCnpfVDBjvXgS0j+YoIzqDiV8fa6iw8godHF6S
+ KZb/BGk3FIMpIeY2DHIgt3YnkH9mDMvHzYupSsdWimX7AxolQtaILz33VzhibNpxyFy4
+ rqVEZf+GjXxgdHmpbZeExjpHQ+JMuCD77y5GyZumWE2K9faEFgC9ImfixwSRLqT9uNp8
+ +aw6xAEdhF1wtMK2hXtDsYLaEdaWm9078PjCtJUlx3CS8hSKXzJLdgwF9fKKU35r8FJq
+ bY8PjbtYvTlYz9BE3GmkfTNmCA6kA3bMM8LlIuusenYO6OFLhO0Z9Bq+HIZhkFriWTbx
+ 92Dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=j+OaQc4EFLLIk4Ngs96CA869eSl0gwol9QOp0Hx7KIk=;
+ b=MEAJ97dukudACQjnyfAzA+Wd7ngBtgUv/zO3jtGW15xbpG8ULRC/fEM8GItJxm1CBm
+ B2zLkhJPKFSpQd6ZACryBJadILDEHgBy2keDtJbtuZtofQynvhDOYsO0BSCC8cEX/pWP
+ rBdMsHYR7ogBaz0VctbCCL5r/m6q3939Sp9PRSBPLDU5OkQwrPGiyYyiPbS65bcLS2Ch
+ v1RGVzcBTuLgb3BVTJgnQfJWzWycDa0kQoe/eV0C08s1JtL7GtNSk0gPItayWHtN3ZOR
+ 9E+VB4mFFMbqwic2PDDScDZYbejh7zL3YxLpFrz9xWKifKS9+LawgpGYPkgvFJX1u0df
+ lTnw==
+X-Gm-Message-State: AOAM533UblxqkJEWExpY4l1h8Yz4sgdVQabYszQRLD1cJSZmlolpaHDA
+ MFOB5IEhMGA227CAxX5Vn6hhxMXmiSKpDuzpZhbbjg==
+X-Received: by 2002:a05:600c:22d0:: with SMTP id
+ 16mr36488673wmg.37.1638192122850; 
+ Mon, 29 Nov 2021 05:22:02 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.702,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20211117163409.3587705-1-armbru@redhat.com>
+ <20211117163409.3587705-5-armbru@redhat.com>
+In-Reply-To: <20211117163409.3587705-5-armbru@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Nov 2021 13:21:51 +0000
+Message-ID: <CAFEAcA9d+pLFmrQa-kMUpCEEmdi99NzN4AjFgM6oU3-w4TniQA@mail.gmail.com>
+Subject: Re: [PATCH v2 04/13] hw/arm/versatilepb hw/arm/vexpress: Replace
+ drive_get_next() by drive_get()
+To: Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::330
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: lvivier@redhat.com, pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0TzBYTZvKJ4H
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eKPL3hi1pp75
 
-Endianess is not properly handled when populating
-the returned config. Use the cpu_to_le* primitives
-for each separate field. Also, while at it, trace
-the domain range start.
+On Wed, 17 Nov 2021 at 16:34, Markus Armbruster <armbru@redhat.com> wrote:
+>
+> drive_get_next() is basically a bad idea.  It returns the "next" block
+> backend of a certain interface type.  "Next" means bus=0,unit=N, where
+> subsequent calls count N up from zero, per interface type.
+>
+> This lets you define unit numbers implicitly by execution order.  If the
+> order changes, or new calls appear "in the middle", unit numbers change.
+> ABI break.  Hard to spot in review.
+>
+> The versatile and vexpress machines ("versatileab", "versatilepb",
+> "vexpress-a9", "vexpress-a15") connect just one or two backends of a
+> type with drive_get_next().  Change them to use drive_get() directly.
+> This makes the unit numbers explicit in the code.
+>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reported-by: Thomas Huth <thuth@redhat.com>
----
- hw/virtio/trace-events   |  2 +-
- hw/virtio/virtio-iommu.c | 22 +++++++++++++++-------
- 2 files changed, 16 insertions(+), 8 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index 54bd7da00c8..f7ad6be5fbb 100644
---- a/hw/virtio/trace-events
-+++ b/hw/virtio/trace-events
-@@ -91,7 +91,7 @@ virtio_mmio_setting_irq(int level) "virtio_mmio setting IRQ %d"
- virtio_iommu_device_reset(void) "reset!"
- virtio_iommu_get_features(uint64_t features) "device supports features=0x%"PRIx64
- virtio_iommu_device_status(uint8_t status) "driver status = %d"
--virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint32_t domain_range, uint32_t probe_size) "page_size_mask=0x%"PRIx64" start=0x%"PRIx64" end=0x%"PRIx64" domain_range=%d probe_size=0x%x"
-+virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint32_t domain_start, uint32_t domain_end, uint32_t probe_size) "page_size_mask=0x%"PRIx64" input range start=0x%"PRIx64" input range end=0x%"PRIx64" domain range start=%d domain range end=%d probe_size=0x%x"
- virtio_iommu_attach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
- virtio_iommu_detach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
- virtio_iommu_map(uint32_t domain_id, uint64_t virt_start, uint64_t virt_end, uint64_t phys_start, uint32_t flags) "domain=%d virt_start=0x%"PRIx64" virt_end=0x%"PRIx64 " phys_start=0x%"PRIx64" flags=%d"
-diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index 645c0aa3997..30ee09187b8 100644
---- a/hw/virtio/virtio-iommu.c
-+++ b/hw/virtio/virtio-iommu.c
-@@ -822,14 +822,22 @@ unlock:
- static void virtio_iommu_get_config(VirtIODevice *vdev, uint8_t *config_data)
- {
-     VirtIOIOMMU *dev = VIRTIO_IOMMU(vdev);
--    struct virtio_iommu_config *config = &dev->config;
-+    struct virtio_iommu_config *dev_config = &dev->config;
-+    struct virtio_iommu_config *out_config = (void *)config_data;
- 
--    trace_virtio_iommu_get_config(config->page_size_mask,
--                                  config->input_range.start,
--                                  config->input_range.end,
--                                  config->domain_range.end,
--                                  config->probe_size);
--    memcpy(config_data, &dev->config, sizeof(struct virtio_iommu_config));
-+    out_config->page_size_mask = cpu_to_le64(dev_config->page_size_mask);
-+    out_config->input_range.start = cpu_to_le64(dev_config->input_range.start);
-+    out_config->input_range.end = cpu_to_le64(dev_config->input_range.end);
-+    out_config->domain_range.start = cpu_to_le32(dev_config->domain_range.start);
-+    out_config->domain_range.end = cpu_to_le32(dev_config->domain_range.end);
-+    out_config->probe_size = cpu_to_le32(dev_config->probe_size);
-+
-+    trace_virtio_iommu_get_config(dev_config->page_size_mask,
-+                                  dev_config->input_range.start,
-+                                  dev_config->input_range.end,
-+                                  dev_config->domain_range.start,
-+                                  dev_config->domain_range.end,
-+                                  dev_config->probe_size);
- }
- 
- static uint64_t virtio_iommu_get_features(VirtIODevice *vdev, uint64_t f,
--- 
-2.26.3
-
+thanks
+-- PMM

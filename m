@@ -1,97 +1,106 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp3712366lfk;
-        Mon, 29 Nov 2021 05:39:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwxPe2poBVOa5DEkIbCEidAzSb3enKNvjJay78YtQBkNc0IKaShjxP3MonQVkfZxm/k4AME
-X-Received: by 2002:a37:b53:: with SMTP id 80mr38828184qkl.91.1638193172019;
-        Mon, 29 Nov 2021 05:39:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638193172; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp4031229lfk;
+        Mon, 29 Nov 2021 11:05:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyZPPOAanjgka0Ymw4qG+RvsMMjxgV2dAC6G/XA4fPMfVG8TlKu87LqJ7gEHcU/CkddrFTh
+X-Received: by 2002:aa7:d546:: with SMTP id u6mr78386523edr.311.1638212707182;
+        Mon, 29 Nov 2021 11:05:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638212707; cv=none;
         d=google.com; s=arc-20160816;
-        b=QboUkkubXjdeR5U9oOjm4fay+aj6VAMKr/qpgsImKmaU3n9/nF2KGuYghezzFWt8Xi
-         SmgZtYKDO0Hu7JHMVDPi3nXLDMSIb5o+TBI5Iq/1ywQHMC08ZzP8D8pGmYA9kEJ9hjLw
-         IcH8mHjHu43Ctg50gGr4CO3wYwRy12CpmIZAZGX7zi2vwp0AYRBtgIFC6eryt/pqPqGt
-         CA2pAQpsR8s2D/rs3bKXbiAZ3p4E4xqUxwIXifaTlr/0b79wyqJyc+JQjI/LclaHkRoI
-         uXjVwXuLnu0wjpKifQKk/svvqcTx41Soo9l9o5kykf0zXGmLg3MnKUSny6u34om1QMcr
-         Xmvw==
+        b=x6TSoZm2CyS3vMDSzZSVsRSGFQAwYsR9570DvMAmkIAhDHs5ClMi8IPL6h2pdWfa16
+         lczY2vDQyViRy0ktdVszkH7MSo8aWl7OhRWZB5FoipLGj3Sp+pgSIIAME3t6RrsTE2kn
+         J6pMzZVT6hIh84OMqtv1W1Ylev3v3M11ONT0CCXN4k1nt/gSi/pS7Eehh9yX0zKBTK5z
+         AbSXw8gD5hJzigWKF0xpmy8H44330ZsrlMppiw0G3vTihRENwABpP+61iLynPrFnGsCE
+         OpcXSwWcn/RQJQzCyEFHyzfpLBSqc+/nujrRQkdcHLLp/EPhvWfV9NvZW3yAX3+MmbRm
+         9Szw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=wNfrtr4/7mjQw/0TXRMqEhEsBJL9QwYxUHkv85EybYo=;
-        b=Nd9oVwI9p+lbDtjBxjoEYOZ1qEAozK1kH82yX0X87Fmq8nuTAY16nLc7aspmVMiPuZ
-         9+2+qi3lN7uLQJ9BvfI27bzd2F3cwQVHK3pr21LUvmKKr5VTtyqLT6bfYxCo7dqWnarh
-         LVb9dYn0iZLN4N3Qr0e3RpUn5Q+MLU0z5J/5T4FeNtqIfe3eunnEZl1RECHGEA+vK7JM
-         0nB1lXexmGTk+nGCXk+n/10ZD8OGf0MUgzTrhDW9mtOEEUnrBUJMiXjbN413EPD6EKEw
-         IC0s5b+ppji02ZxzoB/Dc+BfqI5nUTxpQIBD1UjY9s8h+BZbN5pLcxpI8y52c03BNLG7
-         mO9Q==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=uUluT2JOvEPt2cRmSmpNXjbuo27s9L40V//c+pgYyGY=;
+        b=vVva2OCmNlWV1cA0TzADWdDB2Wh51lujOpw1NVAQBoHKOmwCm1kaTo6+6VqUcN+BK7
+         Pq9MuO7KPKZDpxsSJ7+aQhG/d7b7rslX9l6gNovg+IvxbS8cUgFV5RtX5VtU33/8Cmbr
+         gTYV95KATHI8E7MsrSPminzBsRDETox3H7+3RDTfD4QaDlylegiW05Fbup7ooR99KYa6
+         SnxQJV6Oi6R4MHipT6QCrLocVUWL/yf12sRocfdea4Dedu2Y221CuH8erquKtweWKKRE
+         JDtF3mw7EXdENL6efFYRcCrQ6s/hCnScO0+BQ8QLULsdN9SoHrXnrr8Z6QRYXzVjle+w
+         dxNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qsINIe2s;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LVb7sr6G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n3si14107298qkg.89.2021.11.29.05.39.31
+        by mx.google.com with ESMTPS id r21si24724656edp.303.2021.11.29.11.05.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Nov 2021 05:39:32 -0800 (PST)
+        Mon, 29 Nov 2021 11:05:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qsINIe2s;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LVb7sr6G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49916 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52652 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mrgsV-0000Bn-Ex
-	for alex.bennee@linaro.org; Mon, 29 Nov 2021 08:39:31 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42584)
+	id 1mrlxa-0007g9-Bt
+	for alex.bennee@linaro.org; Mon, 29 Nov 2021 14:05:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57342)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mrgfv-00020t-1T
- for qemu-arm@nongnu.org; Mon, 29 Nov 2021 08:26:31 -0500
-Received: from [2a00:1450:4864:20::429] (port=34392
- helo=mail-wr1-x429.google.com)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1mrlxE-0007da-FM
+ for qemu-arm@nongnu.org; Mon, 29 Nov 2021 14:04:44 -0500
+Received: from [2a00:1450:4864:20::42b] (port=43933
+ helo=mail-wr1-x42b.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mrgft-000774-7T
- for qemu-arm@nongnu.org; Mon, 29 Nov 2021 08:26:30 -0500
-Received: by mail-wr1-x429.google.com with SMTP id j3so36829181wrp.1
- for <qemu-arm@nongnu.org>; Mon, 29 Nov 2021 05:26:28 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1mrlx4-00087F-4c
+ for qemu-arm@nongnu.org; Mon, 29 Nov 2021 14:04:44 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id v11so39039558wrw.10
+ for <qemu-arm@nongnu.org>; Mon, 29 Nov 2021 11:04:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wNfrtr4/7mjQw/0TXRMqEhEsBJL9QwYxUHkv85EybYo=;
- b=qsINIe2sK/DdugB5TY1ziuzscwt0i4p/zYWYd8QkzwvXesHH7hx7oFRuuvUHA9r6qc
- EpgOouj7NysgE8/5y9zppfZLAu62bZRLC1QWgfMeNiE/EGonxZUwaHKgNf2lFCENE/9o
- ORWUNk1WxpsQwvgoGHYmeP/nFlIPvI2FiuV3uS8Yrz+6FHlX3Xt7PSDN7geZrnSJv8ju
- 3Bur7Lqq5MBAiD0srSc9kRN4NXk9rEzwZzoSdjJM08/XYH4jbmdcM4WI71MTeDxht1sF
- C6PrS9vRXVg+qAj02/E6mGuvhXqZ6atOYCnTLy7yOyyfFa7ZYtx6XGFzKGM6WTpJsAGn
- RkfQ==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=uUluT2JOvEPt2cRmSmpNXjbuo27s9L40V//c+pgYyGY=;
+ b=LVb7sr6GTImDiHe616x9Cq/t2fEXFM4NK7C8IkH2E56hXa313Wc3mZO02Keaq57cep
+ BF0eEQZ5UJgOKesqG4HggKVOY/QyFBjDMyUE7TEfQzwG+Fq/uoN7pMRsW25I8PmXDWO1
+ m/AFY3GhGZNtlJFmOV06A4B1tQmHxmYxLABbCSPOulQN/5sTIuzeemevhcsPaVt5/tCh
+ njj01QKM30aIclJNTEvx9Q0LqpiFTCJxYNBo4VHAo7BnVMZuMZK42e8NL8O/S8AIGe5W
+ 5LZwMMhez/DYW1eLI8nfRg2xT7T0UurNdOz3h1V75w9yoXfvM/dd39X/CfGKmKNTKUkb
+ G+BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wNfrtr4/7mjQw/0TXRMqEhEsBJL9QwYxUHkv85EybYo=;
- b=aiFkCNPzKodzSL/YJUgQRtYgcvB1ddu67AO4tdUhul6TvGg4ZSVu608svyRpE1ifP9
- R1x0lIh7KoWcWQW5SkQAi9UHo6iM2QKTz39d0Rmj+1v9i2YscWTrcZSgeIiCLjssah3a
- hesq/1TsbuejfWtDUli/ujN4/73nEFu7cnKLF905thG8sy4XhnJCBR4WSnylMj9SKY/I
- WKNyEO2IVsohCXomihSKUqPOJfj9aC0QlLV2e8Okdq2kdXxr1vLcT+o41cvKsNtxMo2n
- SsXOMaGwSmgt2WavRyiomBZH9rrJBkWCuB+0eTzy8g34pnyi1eQ6fHD5CDAD6t2NDa9I
- hJGw==
-X-Gm-Message-State: AOAM531BWeH6QBK84/BFYk9oxd+LxAtUucNw/blu3wn4XnKC0BBzWUOG
- 1f6q9BM5GwylTZgfkzc5vIt7mmXhHloXCSP/R2VPdQ==
-X-Received: by 2002:adf:f0c5:: with SMTP id x5mr32258976wro.484.1638192387840; 
- Mon, 29 Nov 2021 05:26:27 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=uUluT2JOvEPt2cRmSmpNXjbuo27s9L40V//c+pgYyGY=;
+ b=eMIx2MK2zfh3WOd6MziyYZXX8NmF/JQ3xnIaWVE06iDqIoD8mcTgNK6PNr5vRouKba
+ 9btIXBfJnpoRHG/ENSTZvqbMkyYYdlP2pbhOmkN0JMPNxpip44XEkpuZvRslIZqnlypy
+ bJkkT/np/vLObr7zmgz0GmLZlSTZ+amYUYuwJaXE+K4yELm0phWe6WCA4pnkEwpFo2RT
+ Jdhb3ziIbFw1vht2YEkA9wTOGrUhxcNOx4EutgSlyj9TL35JJSc3CDum4QxoQnnXd3Zg
+ yS5V8xGSO0BGPHDl1qY5W4rCYsIys6VdUnv8qs9INJZNev8dtuRPvIScvxluaigYYzs9
+ VBSw==
+X-Gm-Message-State: AOAM531U3D8oGkK83HnnfEt52tXeBERq5P6kOAnGrdW11kmRETGAs6Kj
+ 98BecGborcHQOqbPheH02R1HyA==
+X-Received: by 2002:a5d:6481:: with SMTP id o1mr37251097wri.305.1638212664489; 
+ Mon, 29 Nov 2021 11:04:24 -0800 (PST)
+Received: from myrica (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net.
+ [82.27.106.168])
+ by smtp.gmail.com with ESMTPSA id z5sm199951wmp.26.2021.11.29.11.04.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 29 Nov 2021 11:04:24 -0800 (PST)
+Date: Mon, 29 Nov 2021 19:04:01 +0000
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v6 1/4] virtio-iommu: Remove set_config callback
+Message-ID: <YaUkIV4DleMtTDu3@myrica>
+References: <20211127072910.1261824-1-eric.auger@redhat.com>
+ <20211127072910.1261824-2-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20211117065752.330632-1-joel@jms.id.au>
-In-Reply-To: <20211117065752.330632-1-joel@jms.id.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 29 Nov 2021 13:26:17 +0000
-Message-ID: <CAFEAcA8YH9WqQr4c8wXsjsSOEc52-LkG0Oj6TZxkgr=sf44jHQ@mail.gmail.com>
-Subject: Re: [PATCH v2 0/4] docs: aspeed: Minor updates
-To: Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::429
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20211127072910.1261824-2-eric.auger@redhat.com>
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42b
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -111,25 +120,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
+Cc: lvivier@redhat.com, peter.maydell@linaro.org, thuth@redhat.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GjWG604zQx5O
+X-TUID: kekrUo4aV/nm
 
-On Wed, 17 Nov 2021 at 06:58, Joel Stanley <joel@jms.id.au> wrote:
->
-> Here are some small updates to the aspeed docs.
->
-> v2: Tweak board changes, add patch to move ADC to the supported list
->
-> Joel Stanley (4):
->   docs: aspeed: Add new boards
->   docs: aspeed: Update OpenBMC image URL
->   docs: aspeed: Give an example of booting a kernel
->   docs: aspeed: ADC is now modelled
+On Sat, Nov 27, 2021 at 08:29:07AM +0100, Eric Auger wrote:
+> The spec says "the driver must not write to device configuration
+> fields". So remove the set_config() callback which anyway did
+> not do anything.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Hi; I've added this patchset to my set of things to apply
-to target-arm.next for 7.0; thanks.
+Removing this makes sense. For bypass, I'll add the function back with a
+reduced trace
 
--- PMM
+Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+
+> ---
+>  hw/virtio/trace-events   |  1 -
+>  hw/virtio/virtio-iommu.c | 14 --------------
+>  2 files changed, 15 deletions(-)
+> 
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+> index 650e521e351..54bd7da00c8 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -92,7 +92,6 @@ virtio_iommu_device_reset(void) "reset!"
+>  virtio_iommu_get_features(uint64_t features) "device supports features=0x%"PRIx64
+>  virtio_iommu_device_status(uint8_t status) "driver status = %d"
+>  virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint32_t domain_range, uint32_t probe_size) "page_size_mask=0x%"PRIx64" start=0x%"PRIx64" end=0x%"PRIx64" domain_range=%d probe_size=0x%x"
+> -virtio_iommu_set_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint32_t domain_range, uint32_t probe_size) "page_size_mask=0x%"PRIx64" start=0x%"PRIx64" end=0x%"PRIx64" domain_bits=%d probe_size=0x%x"
+>  virtio_iommu_attach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
+>  virtio_iommu_detach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
+>  virtio_iommu_map(uint32_t domain_id, uint64_t virt_start, uint64_t virt_end, uint64_t phys_start, uint32_t flags) "domain=%d virt_start=0x%"PRIx64" virt_end=0x%"PRIx64 " phys_start=0x%"PRIx64" flags=%d"
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index 1b23e8e18c7..645c0aa3997 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -832,19 +832,6 @@ static void virtio_iommu_get_config(VirtIODevice *vdev, uint8_t *config_data)
+>      memcpy(config_data, &dev->config, sizeof(struct virtio_iommu_config));
+>  }
+>  
+> -static void virtio_iommu_set_config(VirtIODevice *vdev,
+> -                                      const uint8_t *config_data)
+> -{
+> -    struct virtio_iommu_config config;
+> -
+> -    memcpy(&config, config_data, sizeof(struct virtio_iommu_config));
+> -    trace_virtio_iommu_set_config(config.page_size_mask,
+> -                                  config.input_range.start,
+> -                                  config.input_range.end,
+> -                                  config.domain_range.end,
+> -                                  config.probe_size);
+> -}
+> -
+>  static uint64_t virtio_iommu_get_features(VirtIODevice *vdev, uint64_t f,
+>                                            Error **errp)
+>  {
+> @@ -1185,7 +1172,6 @@ static void virtio_iommu_class_init(ObjectClass *klass, void *data)
+>      vdc->unrealize = virtio_iommu_device_unrealize;
+>      vdc->reset = virtio_iommu_device_reset;
+>      vdc->get_config = virtio_iommu_get_config;
+> -    vdc->set_config = virtio_iommu_set_config;
+>      vdc->get_features = virtio_iommu_get_features;
+>      vdc->set_status = virtio_iommu_set_status;
+>      vdc->vmsd = &vmstate_virtio_iommu_device;
+> -- 
+> 2.26.3
+> 

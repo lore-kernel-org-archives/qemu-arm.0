@@ -1,107 +1,97 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp4082217lfk;
-        Mon, 29 Nov 2021 12:08:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJze66SiZRPJNLMNZmesK/NYVs1pcBsepIR5FhpUvTgyGj/P2BgGJi2iEA0dGfNBwOKaVZur
-X-Received: by 2002:a05:600c:1d0e:: with SMTP id l14mr232534wms.64.1638216520812;
-        Mon, 29 Nov 2021 12:08:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638216520; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp4119508lfk;
+        Mon, 29 Nov 2021 12:59:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwRfLrIaN3ZdXTbCFvGoQUEjAkhaXie885UIeFi5eFEYkUEzO/7fAac8MqeMqXQQeDvg3/n
+X-Received: by 2002:ac8:5712:: with SMTP id 18mr37731753qtw.584.1638219567930;
+        Mon, 29 Nov 2021 12:59:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638219567; cv=none;
         d=google.com; s=arc-20160816;
-        b=nD7xYdBgauW/wTeDi2CS/Hwifq1mWVM62HD806JpgK/2Q7OrbBmVM1bXSaKnxhCtbA
-         1hKf6NYNPaEScTogD+mJxE+IFKYzaf1+nocfSj18QlvWWTe7YwUkhjqHj8Jk4Da+EyCM
-         h6KgU0pN44M1yse2M07WusKFow92FQBFbIpWkyZVsI+5n+UfTo21eDWrUkSJbSKlZLQo
-         uG+pIh5iRuyaKEhtJjPakH3WON1CCvu61ghOWJCEVLaA3XdsWBWeIe0FHWRIbygMKKN+
-         xgij79i7Eb2M3MxEE7q7O6r9pZ2UmlVY3XRpBsRoKA58emh9qBzfyZVn79wVso67uvJY
-         /3XQ==
+        b=Na5rWANLoVRVfor3uYB6DzBk1gLFTSC/E3mDUOkdKXxaEOswDatFs4RURgpdasxYEA
+         VLdX4Lb0gQsGM4QQdXih7Ts6J7Gb0xVyXCPTKnGXbAHSbwfrvAAqMIX61j5oQm0B3OWa
+         apdKlwYzCbNPkw1fMXtp4IY1ZeqDdJFsucqorjXtjamGInNhQjCOD6vRq2H+/HxBOtEn
+         R75YAwQt+8IDHcUKZnchqm/M8lh1VKNlJXijDV7xGi2rpPeILvOmIBxlZTW35Oi6AFJb
+         Z/7tbKqn75bvBce7WNgwvhllFNreUefE8ggvxa+aM2HnFaDIt479/gpMHtWqLYD27s2W
+         gyDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=T9k9KN5zJmRQNsTgBr/a7NChGJkpUEj//jlPxI0w1T4=;
-        b=SmkiWBbCxhnZZi8/PrtLOIRuhkUwnGfV805NNaZUXqGXuvAkgI3ZC0NR+h4Iu3P+bY
-         vwXraixV5k29NSi+WpIgSpZR+bBBOt6r0FqA/vhL4X7r6jjAmnP68AWjEwo4UHwWwTR4
-         l7gC4NA/1Ki+341uyKMUKA0MZsfzLcaKVmv0Lsp4uFLXd1jv3ASGHQC3Fa7uSxSGNh2s
-         xhvxda4VLjPJ8g0RaSlRLL81M4t4tpBxyFynfyA236FzUmw6f2SUtT07Dy58bDs/ksWZ
-         3knd1Nnbtup8wslRWX7EpnxPJr3fjc6VROtK/jhlLNNxk8ZijqiG381rYMYPH0frltG1
-         SCOA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=nOMHFaD9kmkt+xIs4AZJH2PN3VPbDuw5b9wWDjTOyPY=;
+        b=R3VfDSnAitKIUMlu+G6wWRc7cWCH3E1caOyPUbJfrD62T/hQ+tbrjcgfpgNbaYfjfq
+         0JnfoQMV4aa5PsRZDaNboeC/tBi+K/NMPi0SMwbRx+T5nLBB0DOH0HFGpIQo1IlGTVvU
+         Wm6rHTgSRCYaeCqDBBMZKDrZI1cNYFkFrwsra6ZdSkoP1D+H3dCjkTTgPZtDAbJkUUJG
+         8Myx053aCLdtFtWKokCjF/y+kGcIb+pw0D7/uyf2OvL3vrmPM1xZvimOwG+h8qLmwH2l
+         jyjQpAnihZ5U1qw5128CLXsvhLMi6Ow+oAqWf1jBsm+jDwwE0IQOBkXgZCTTaPPJoruD
+         LGzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mNjpmR00;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=hr4eoPPC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e6si29968467wrg.602.2021.11.29.12.08.40
+        by mx.google.com with ESMTPS id c11si15035319qtb.670.2021.11.29.12.59.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Nov 2021 12:08:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 29 Nov 2021 12:59:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mNjpmR00;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=hr4eoPPC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42770 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57564 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mrmx5-0006L7-NP
-	for alex.bennee@linaro.org; Mon, 29 Nov 2021 15:08:39 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45552)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mrnkF-0008At-7Z
+	for alex.bennee@linaro.org; Mon, 29 Nov 2021 15:59:27 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56328)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mrmtx-0003O9-Re
- for qemu-devel@nongnu.org; Mon, 29 Nov 2021 15:05:26 -0500
-Received: from [2a00:1450:4864:20::32d] (port=55070
- helo=mail-wm1-x32d.google.com)
+ id 1mrnZa-0007se-L8
+ for qemu-arm@nongnu.org; Mon, 29 Nov 2021 15:48:26 -0500
+Received: from [2a00:1450:4864:20::42b] (port=45865
+ helo=mail-wr1-x42b.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mrmtq-0008CV-BE
- for qemu-devel@nongnu.org; Mon, 29 Nov 2021 15:05:25 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id i12so15638565wmq.4
- for <qemu-devel@nongnu.org>; Mon, 29 Nov 2021 12:05:15 -0800 (PST)
+ id 1mrnZV-0005vX-O9
+ for qemu-arm@nongnu.org; Mon, 29 Nov 2021 15:48:26 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id o13so39460987wrs.12
+ for <qemu-arm@nongnu.org>; Mon, 29 Nov 2021 12:48:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=T9k9KN5zJmRQNsTgBr/a7NChGJkpUEj//jlPxI0w1T4=;
- b=mNjpmR00l08Zl6qD7dwj47CypqFDuNy+c7yF4DFJi1qsvRTJbHBZJNg19AHDIIh7wT
- cZ8e3akLKnVyhiikU/a51/idKtcv0Nuim2vcE0KGUtLYbu+zgOF6bNF1wCPFnNcAeh9k
- vwD7bJtwVnY2SI//XNYcQ8B7F6QW5v0PvRxVqmlwDLbCehvtyUkUuiEhJSa1LDiK48Pn
- Ea2vkkT7CBFDgvk+acz/APUjiYf4cbK9RHkhDfZ7FUa3iuuaDeQZHBuQKSA2VJ94ZsIg
- 9MUJxmYNup7HnLLzOLSKxz2uEFQTO+Bj8NYBF/tEG2rGdFTFW+Ki3iB1LupchjoOm/SJ
- ePDg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=nOMHFaD9kmkt+xIs4AZJH2PN3VPbDuw5b9wWDjTOyPY=;
+ b=hr4eoPPC69qUVOrkOI7xlZG66LBIsnuqAEmIFmRI51QxGIO4ApkGHGm+WeFhM+04vR
+ TtYtxb/0Wz1aMMA5MWByR1DIiKNR1dax2wdNL06QTDQvBc1wtgkVpgH6C6GIR1NMPu2m
+ EercVq54A8bbWZnZDv85gOn6aaff1lRmYWq0lNQKo8u2GNH0YtclXgmrh7SyWNq4qfay
+ I41EPBFO6JELpqjqpSpVwEM+Ta6zmOo5AdGSnLRyGEG2csDFLrKHW/jwinLtwA0N4WxG
+ N3Vo78BU6oX5+J8otKveq7t1pncgHWIw5jBh3vDCIguHWmvhq75ZFxsqJTaHB70GJSr+
+ ZZDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=T9k9KN5zJmRQNsTgBr/a7NChGJkpUEj//jlPxI0w1T4=;
- b=YjJnaWY6pkDgyi0muF8x9Wfga5imf0xwdu3iHdMITaVT4zpUXQTMq/VJAzrkb8uTQF
- KGbz0FWuLvYuPPH/1nIBPlCH5QGOKhm1wwzVi8ezw+dTrWcQzsassZq79d6AtN/aGFiI
- mA9f5gvuMduAD1ybWUUUtDweqqSC59xqRYc4D4aogngHwzQbw1mYQxI0jfev0M4KwHbk
- 7ihZFggnOnc/p6G/SCp3nNiZM7Ae6MUmWS+fhznVASqzqtCGlqLaLwWSTBI39F0A9KZf
- 1j5JeJ8ZjEF4YYKno9pFrf7BNTxOsphhu3oGQ7bnEn+GamGIdCwTFUU/MLuldLIAPw9k
- anew==
-X-Gm-Message-State: AOAM530Mxk+VKQa0tw0/JTm5QSOSQCuUPPzKXcw2QLdod025nES9/QCM
- M/kzmBeN7x1pZgAwPQso/4LmGw==
-X-Received: by 2002:a05:600c:4108:: with SMTP id
- j8mr162764wmi.139.1638216314008; 
- Mon, 29 Nov 2021 12:05:14 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id v15sm14678863wro.35.2021.11.29.12.05.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Nov 2021 12:05:13 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-7.0 1/4] include/hw/i386: Don't include qemu-common.h in
- .h files
-Date: Mon, 29 Nov 2021 20:05:07 +0000
-Message-Id: <20211129200510.1233037-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211129200510.1233037-1-peter.maydell@linaro.org>
-References: <20211129200510.1233037-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=nOMHFaD9kmkt+xIs4AZJH2PN3VPbDuw5b9wWDjTOyPY=;
+ b=OBdIehzJy7G9eqENSLlTT/Kr8h6fhXUHDMO2y4g3ehjsAafH015BBrIYY1sRZvaa8I
+ NHuSQoRzcRZvTL7WWfr/IN4AqqAa3JaaT89MwZs9DWLBbAT4ggpHRRe92dH08l+NnxqY
+ wQULhUyZg3Dy66PWv+6K6ei3yGJ5WAzb0hFasMA+/snurgagME8AXKm67RwpVKFEXsQ9
+ d6WlVMIdFARAa1e5ZNMW0ZltUPvZhVIrVAbBDbnMVh1fpQRF5iqyDGTS9mJiV4HYfGGl
+ lohaH2gdsCr/JjLNFaJ72nDUcRnBAAgy8MoawO9Q1+767cgxetBVeXK9lsFMoUek5BzE
+ r+Cg==
+X-Gm-Message-State: AOAM531vBPvABZrPjeBtVqpleYKVgfkzkHPs/fVLWYVzh6s1DKMQ+H27
+ JETGtHaUKE/SNcUMBLyhJrKfEaM4NkbbRMOna52dlRtrS2A=
+X-Received: by 2002:adf:ef42:: with SMTP id c2mr35378849wrp.528.1638218899836; 
+ Mon, 29 Nov 2021 12:48:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32d
+References: <20211129200510.1233037-1-peter.maydell@linaro.org>
+In-Reply-To: <20211129200510.1233037-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Nov 2021 20:48:08 +0000
+Message-ID: <CAFEAcA_ognVQ=7-pE+MDwkJCtcD0FfzPL0Vnb7vTgzbVSpnrLA@mail.gmail.com>
+Subject: Re: [PATCH for-7.0 0/4] qemu-common.h include cleanup
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42b
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -110,61 +100,43 @@ X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Taylor Simpson <tsimpson@quicinc.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Sergio Lopez <slp@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LIlcfgto8yFP
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Sergio Lopez <slp@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NffkZOcJVULt
 
-The qemu-common.h header is not supposed to be included from any
-other header files, only from .c files (as documented in a comment at
-the start of it).
+On Mon, 29 Nov 2021 at 20:05, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> qemu-common.h has a comment at the top:
+>
+>  * This file is supposed to be included only by .c files. No header file should
+>  * depend on qemu-common.h, as this would easily lead to circular header
+>  * dependencies.
 
-include/hw/i386/x86.h and include/hw/i386/microvm.h break this rule.
-In fact, the include is not required at all, so we can just drop it
-from both files.
+As a side note, that comment was added back in 2012 when qemu-common.h
+was bigger, included other headers, and did some of the work we currently
+use osdep.h for. As it stands today qemu-common.h includes no other
+files so it isn't a source of possible circular dependencies -- it's
+just a grab-bag of miscellaneous prototypes that in an ideal world
+would be in more focused individual headers[*]. So there's an argument
+for deleting this comment...
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/i386/microvm.h | 1 -
- include/hw/i386/x86.h     | 1 -
- 2 files changed, 2 deletions(-)
+[*] A cleanup that would be nice, and I'm about to send out a patchset
+that splits out the rtc related functions; but the grab-bag at the
+bottom of osdep.h is probably higher priority because that header
+gets pulled in by an order of magnitude more C files.
 
-diff --git a/include/hw/i386/microvm.h b/include/hw/i386/microvm.h
-index 4d9c732d4b2..efcbd926fd4 100644
---- a/include/hw/i386/microvm.h
-+++ b/include/hw/i386/microvm.h
-@@ -18,7 +18,6 @@
- #ifndef HW_I386_MICROVM_H
- #define HW_I386_MICROVM_H
- 
--#include "qemu-common.h"
- #include "exec/hwaddr.h"
- #include "qemu/notify.h"
- 
-diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
-index bb1cfb88966..a145a303703 100644
---- a/include/hw/i386/x86.h
-+++ b/include/hw/i386/x86.h
-@@ -17,7 +17,6 @@
- #ifndef HW_I386_X86_H
- #define HW_I386_X86_H
- 
--#include "qemu-common.h"
- #include "exec/hwaddr.h"
- #include "qemu/notify.h"
- 
--- 
-2.25.1
-
+-- PMM

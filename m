@@ -1,178 +1,179 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp4878544lfk;
-        Tue, 30 Nov 2021 06:34:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxwhueoar9M+H63fg4TOL6qLWCbVswVGqS+wYqSvGW49xonDiZZaHXENIUAtvzhO/d1tiIB
-X-Received: by 2002:a05:6402:270d:: with SMTP id y13mr83491868edd.362.1638282878039;
-        Tue, 30 Nov 2021 06:34:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638282878; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5056540lfk;
+        Tue, 30 Nov 2021 09:34:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxZbIrZFmsn8SO9IDN5VkBYPj4/h0KZw+TI8o/7s1rXu9k3kbgON3BYIZpqmZlvjYEPKuQ2
+X-Received: by 2002:ab0:6010:: with SMTP id j16mr870289ual.69.1638293656092;
+        Tue, 30 Nov 2021 09:34:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638293656; cv=none;
         d=google.com; s=arc-20160816;
-        b=asYrERIPozIiLjZNfQBezGGiDo153mfyXoVIKxDWbt3bDP3j4WK8WaGMJyVJ9fCDXr
-         44KFfDMmCfKkaJRWodY7bxA6/XG1/EN3B4jZYWs7HsMfuuKm/92dQcWGAJ9l3HK/hQjM
-         ahRoBtc9P4HFBvyTt8xr8KtFuBU6f9aZlOUDEgYt0ZnsjjMCd+kw+l+JxD7R+H8v9XKd
-         NZkdx6lEB/FNuh8PiUuXk2nl/odpGAjyJ83VJf7rCM0x7t1Y+MROujBXh6pxO+N3RDI+
-         8Mbd73KkOjkC5JC7uXpBWbcFHsHZ+RNRSXTmbhCGB8QH5VAaNoPdfTVfnBYmYwxqIlH8
-         loow==
+        b=Lsz+2hj1qwORxZQ7X+sYVssbWnvGuY0NLBKRYV9Chss774doyXad+4N8yYi5OO0B5r
+         XGhx8m8PZI7LDJmPgLXZmo6YmsuLeXzgvllU18md1OUJe4Fhi1G9blxu24aEwvPSVkQE
+         j2CY8sq3Y/TIM69HdtGBogYti+Z19DOlJCRKVhKKI704129XKfZdMCaaC7+q+NZ6kq7d
+         gS4eqANdWXQcut0QAWZPyU/wbZZqi7gYZGsaJDTekp4efGSMu1hdoK6HIjDKN4M1rjeR
+         a8jbx9IUdUIoB1BoQlvRLFHcO0pXW/9SeBehuCx2T0jqgm5bSjpE1nSt6sjB/pubxw/0
+         VY6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=lUXILyRo006H5l+ZcdqOJwD3xK1tyZFHAK4YXmJdU1Y=;
-        b=SgxOxjL/qWv5ZpB0hruxf7+ab0EPYQDrmD3gqmZfGQTMcHpLNw8cx4zZdyzwErWRlO
-         QbX/7EMcTEMJFMOtEs5Iz8S2FF/BEG2kZcCBx4EMZLZK26M1bTvyHUIqOtxJ3bEQ84TP
-         pX21PWjjaQJOegQhhQvaRFLw9mie8GBlmkkdcb7e34fVxzgbpuXrbrKqRmG6yYurpdho
-         sN40rra6mfgrKm8GyPiihbkq7THhQVi98lts82kAY9KFL+sQMXz6kZhK/LaHY9R6BP6c
-         G7kq+JvZNtTYW32eY+yFt+jcb//lITHNv/bNIPei6LU3AYqTGzs4WixtnP81bLsLTd1E
-         p68g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=rfQ+RiViECLNtr/c9/my/pnagCNTFLLUTJEjsLwzVUY=;
+        b=TSlzyXgLKbwACTmFLUrpYASZFJHYIgqoaEgsTAp2Dlz+QjVUva/5Ml2g+mjAiU0XAf
+         Rw2PFXArc98Q1SpCQQmsATUiTYZipnZLWC4eB/q9quyvJIxOL5Wda608m5cvGKK2PPWZ
+         H6umgxCt3u16j5+5/3pSxOIEb1z6Z4ttLxgnfR+kr1qOCdVgJmK5vwo1e+kOvLOcdwlh
+         DjsQCUC8xeXnTDScMDXJpbNkyUbYw1I/QytwPM/6WXG3KjNELflyqfOJMTloOsRVqXVX
+         W9w3RqLxyJ1dJywYhFcJmyMM4PHBfkzrBmV2m3Ostq0auNCojjkg0MhxIsaDrQJ070pv
+         c0Eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="C5NjV/dR";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id i7si23094346ejr.784.2021.11.30.06.34.37;
-        Tue, 30 Nov 2021 06:34:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@linaro.org header.s=google header.b=uFz57qVY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m69si6407340vkh.4.2021.11.30.09.34.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 Nov 2021 09:34:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="C5NjV/dR";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S235367AbhK3Oh4 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Tue, 30 Nov 2021 09:37:56 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:54326 "EHLO
-        us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
-        by vger.kernel.org with ESMTP id S233709AbhK3Ohz (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Tue, 30 Nov 2021 09:37:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1638282876;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=lUXILyRo006H5l+ZcdqOJwD3xK1tyZFHAK4YXmJdU1Y=;
-        b=C5NjV/dRx+aqM8fogtZVXcB61/84IU5q03+vr7swL6X2q5URc7EjWd8yAH/u7o36ijuzU/
-        rqLxu58LPH3xbYLQmS1i38HU3TIao3kbUOepXyt8PAEAFlJZ3dHFzZ9RwpE3uymxsTW7CO
-        pk18cUsbH0muKHRTXLrgSTjym3K+rmM=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-185-wDfC9DV0OEivQGnSlli5qg-1; Tue, 30 Nov 2021 09:34:34 -0500
-X-MC-Unique: wDfC9DV0OEivQGnSlli5qg-1
-Received: by mail-ed1-f69.google.com with SMTP id d13-20020a056402516d00b003e7e67a8f93so17167657ede.0
-        for <kvm@vger.kernel.org>; Tue, 30 Nov 2021 06:34:34 -0800 (PST)
+       dkim=fail header.i=@linaro.org header.s=google header.b=uFz57qVY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60956 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ms71D-0007NE-Gs
+	for alex.bennee@linaro.org; Tue, 30 Nov 2021 12:34:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:43326)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ms704-00063P-Li
+ for qemu-arm@nongnu.org; Tue, 30 Nov 2021 12:33:04 -0500
+Received: from [2a00:1450:4864:20::429] (port=41635
+ helo=mail-wr1-x429.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ms702-0006ZD-TN
+ for qemu-arm@nongnu.org; Tue, 30 Nov 2021 12:33:04 -0500
+Received: by mail-wr1-x429.google.com with SMTP id a9so46117431wrr.8
+ for <qemu-arm@nongnu.org>; Tue, 30 Nov 2021 09:33:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rfQ+RiViECLNtr/c9/my/pnagCNTFLLUTJEjsLwzVUY=;
+ b=uFz57qVY2nGIQxKRDHFsX5iWPlQRq4UCCXirYYe+qmq2XlygKjwUqUJDBYrrMXBWL5
+ D8TUWimoGiu7VmsTQuqeGeQ0MYUaG9/UJxU3SQ8uzOGw0HWNp1hLaKDlseccRMukxxir
+ E5GIVyepQveIIw9jvu5OVI7T+8baLEUCILqiviBxa/rlYK8Zl0A09lobAAeNt72fstQ5
+ h5i/9g47E7AKcsx/xhddrJYwMxy4vMHxckzsfPEo5emYYzmvpdZS05O4xtxDtoHc+ad3
+ SQYGDi+XXx3pK3+Ofy5APUbWR5T2RMzP/RI7bH1MrpQ1cbvqs2JCrPtXYQEtrzS5w3uz
+ FIdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=lUXILyRo006H5l+ZcdqOJwD3xK1tyZFHAK4YXmJdU1Y=;
-        b=fd7NJqht2+M/8VzSTzLpJkmp+yYGIlrWA+UbZjPQecerg0zgkJnzU6sb4Z6Eu05svD
-         29/+HCOk8mAv/VW3I6C8iJoZCIRQk5wwOn7WhBR0vaXmMDvGGMOgMUl8U4/17EBvLNYh
-         aDMXpHqxiVbX/A1cZOiqup3QS2NYRzbfjkLMFkMtD7J0y4CcBzyUVXtijYvroVK+b39i
-         crPyh9X5rJBalZlwW7MZZTfpRT6/96fc0y2W4IwpBIq3go8NGpDEEGBIlRZZI5tho2+K
-         f+lNmgrS9RMIIeEZDoUZSaXM5IJ6msEGgvAEQIKDCX3pBaMv6edl9uFOHtzF85SvWiRS
-         XbJA==
-X-Gm-Message-State: AOAM530NiTetFF9aurt0Qz+nMzWP4Sj+joP2aPA2s3wWA1q1Teg6A85Y
-        GWuDXEOpqpDq7OgatHbsDNu7330OQW3zSG2IflvRQncPhF8QSzYoBUr5qZUR8LbxySGg8f56OpG
-        adHahh2ikVRGM
-X-Received: by 2002:a17:907:7d86:: with SMTP id oz6mr67730911ejc.312.1638282873401;
-        Tue, 30 Nov 2021 06:34:33 -0800 (PST)
-X-Received: by 2002:a17:907:7d86:: with SMTP id oz6mr67730877ejc.312.1638282873127;
-        Tue, 30 Nov 2021 06:34:33 -0800 (PST)
-Received: from gator.home (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
-        by smtp.gmail.com with ESMTPSA id g11sm12219088edz.53.2021.11.30.06.34.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Nov 2021 06:34:32 -0800 (PST)
-Date:   Tue, 30 Nov 2021 15:34:25 +0100
-From:   Andrew Jones <drjones@redhat.com>
-To:     Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc:     kvm@vger.kernel.org, maz@kernel.org, shashi.mallela@linaro.org,
-        qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu,
-        linux-arm-kernel@lists.infradead.org, eric.auger@redhat.com
-Subject: Re: [kvm-unit-tests PATCH v3 0/3] GIC ITS tests
-Message-ID: <20211130143425.bh27yy47vpihllvs@gator.home>
-References: <20211112114734.3058678-1-alex.bennee@linaro.org>
- <20211112132312.qrgmby55mlenj72p@gator.home>
- <87wnldfoul.fsf@linaro.org>
- <20211112145442.5ktlpwyolwdsxlnx@gator.home>
- <877dd4umy6.fsf@linaro.org>
- <20211119183059.jwrhb77jfjbv5rbz@gator.home>
- <87a6hlzq8t.fsf@linaro.org>
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rfQ+RiViECLNtr/c9/my/pnagCNTFLLUTJEjsLwzVUY=;
+ b=gOI00SRUB31GUoMHL940uJX3gK5oQ9vjkcD6IsqO6CxMm7GEYGenYuSyjbpIQ6WfYb
+ +940elX4OfFgj0yllJfbqfcsvjX1vzwdMnVkjBili6EuKKu2SHLEOSO8iH9RI28FRmeH
+ XtDZFRqVTMj0iBmbc2cIydEGI4vQWF1ay4RTcSHJLtdYWICT5qTgdNnyD2XoxgjJ6crE
+ GB4TSu/LQX7m+ADQEtzhl12gBMWC1zZtiJTZpnIT1g7vTVYytOJVfX6CXybnGJPezhmv
+ oIBTSlPDiGfK+VJQ2ieUJpuc5bC2lncDF+iPIbeBsyCnidWo+iqyybMc0P33BLX5VFAm
+ XN1g==
+X-Gm-Message-State: AOAM532GbInUbyIcMHOw/nzIJ/3GemO/gD9jb2ofm6FI79QexkBUCxXZ
+ hOr8Oq3xRUKDgnbrTrMFX0u4T46IJiCs5g==
+X-Received: by 2002:adf:c605:: with SMTP id n5mr365321wrg.564.1638293580202;
+ Tue, 30 Nov 2021 09:33:00 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id r8sm21583972wrz.43.2021.11.30.09.32.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 30 Nov 2021 09:32:59 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Correct calculation of tlb range invalidate length
+Date: Tue, 30 Nov 2021 17:32:57 +0000
+Message-Id: <20211130173257.1274194-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87a6hlzq8t.fsf@linaro.org>
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: OgcJ2hzhJR+3
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::429
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Rebecca Cran <rebecca@nuviainc.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Vjs+FfHjfrKv
 
-On Tue, Nov 30, 2021 at 02:11:34PM +0000, Alex Bennée wrote:
-> 
-> Andrew Jones <drjones@redhat.com> writes:
-> 
-> > On Fri, Nov 19, 2021 at 04:30:47PM +0000, Alex Bennée wrote:
-> >> 
-> >> Andrew Jones <drjones@redhat.com> writes:
-> >> 
-> >> > On Fri, Nov 12, 2021 at 02:08:01PM +0000, Alex Bennée wrote:
-> >> >> 
-> >> >> Andrew Jones <drjones@redhat.com> writes:
-> >> >> 
-> >> >> > On Fri, Nov 12, 2021 at 11:47:31AM +0000, Alex Bennée wrote:
-> >> >> >> Hi,
-> >> >> >> 
-> >> >> >> Sorry this has been sitting in my tree so long. The changes are fairly
-> >> >> >> minor from v2. I no longer split the tests up into TCG and KVM
-> >> >> >> versions and instead just ensure that ERRATA_FORCE is always set when
-> >> >> >> run under TCG.
-> >> >> >> 
-> >> >> >> Alex Bennée (3):
-> >> >> >>   arm64: remove invalid check from its-trigger test
-> >> >> >>   arm64: enable its-migration tests for TCG
-> >> >> >>   arch-run: do not process ERRATA when running under TCG
-> >> >> >> 
-> >> >> >>  scripts/arch-run.bash |  4 +++-
-> >> >> >>  arm/gic.c             | 16 ++++++----------
-> >> >> >>  arm/unittests.cfg     |  3 ---
-> >> >> >>  3 files changed, 9 insertions(+), 14 deletions(-)
-> >> >> >> 
-> >> >> >> -- 
-> >> >> >> 2.30.2
-> >> >> >> 
-> >> >> >> _______________________________________________
-> >> >> >> kvmarm mailing list
-> >> >> >> kvmarm@lists.cs.columbia.edu
-> >> >> >> https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
-> >> >> >
-> >> >> > Hi Alex,
-> >> >> >
-> >> >> > Thanks for this. I've applied to arm/queue, but I see that
-> >> >> >
-> >> >> > FAIL: gicv3: its-trigger: inv/invall: dev2/eventid=20 pending LPI is received
-> >> >> >
-> >> >> > consistently fails for me. Is that expected? Does it work for you?
-> >> >> 
-> >> >> doh - looks like I cocked up the merge conflict...
-> >> >> 
-> >> >> Did it fail for TCG or for KVM (or both)?
-> >> >
-> >> > Just TCG, which was why I was wondering if it was expected. I've never run
-> >> > these tests with TCG before.
-> >> 
-> >> Hmm I think expecting the IRQ at all is broken so I think I should
-> >> delete the whole pending test.
-> >
-> > Feel free to repost. I'll update the patches in arm/queue before my next
-> > MR.
-> 
-> Actually I think the problem was with a regression in the TCG ITS
-> support (now fixed in master). So I believe as of v3 everything is
-> correct (and v4 should be ignored).
-> 
-> Are you happy to apply this series or do you want me to repost it as v5?
+The calculation of the length of TLB range invalidate operations
+in tlbi_aa64_range_get_length() is incorrect in two ways:
+ * the NUM field is 5 bits, but we read only 4 bits
+ * we miscalculate the page_shift value, because of an
+   off-by-one error:
+    TG 0b00 is invalid
+    TG 0b01 is 4K granule size == 4096 == 2^12
+    TG 0b10 is 16K granule size == 16384 == 2^14
+    TG 0b11 is 64K granule size == 65536 == 2^16
+   so page_shift should be (TG - 1) * 2 + 12
 
-No need to repost. I'll retest v3 with latest QEMU.
+Thanks to the bug report submitter Cha HyunSoo for identifying
+both these errors.
 
-Thanks,
-drew
+Fixes: 84940ed82552d3c
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/734
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Not marked for-6.2 because this isn't a regression: we
+shipped the TLBI range invalidate support in 6.1.
+I have no repro case for this issue, but this doesn't break
+booting an aarch64 kernel, at least.
+---
+ target/arm/helper.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 9b317899a66..db837d53bd9 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4519,18 +4519,18 @@ static uint64_t tlbi_aa64_range_get_length(CPUARMState *env,
+     uint64_t exponent;
+     uint64_t length;
+ 
+-    num = extract64(value, 39, 4);
++    num = extract64(value, 39, 5);
+     scale = extract64(value, 44, 2);
+     page_size_granule = extract64(value, 46, 2);
+ 
+-    page_shift = page_size_granule * 2 + 12;
+-
+     if (page_size_granule == 0) {
+         qemu_log_mask(LOG_GUEST_ERROR, "Invalid page size granule %d\n",
+                       page_size_granule);
+         return 0;
+     }
+ 
++    page_shift = (page_size_granule - 1) * 2 + 12;
++
+     exponent = (5 * scale) + 1;
+     length = (num + 1) << (exponent + page_shift);
+ 
+-- 
+2.25.1
+

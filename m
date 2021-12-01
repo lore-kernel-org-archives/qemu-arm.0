@@ -1,112 +1,115 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5620814lfk;
-        Tue, 30 Nov 2021 21:10:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyJcK5bzFw5oFQoIfPnvnnGhH0sv/1UOBwTepTpt5phoyKjmwaftv52YiuNeEy3xQbayV+J
-X-Received: by 2002:ae9:e20b:: with SMTP id c11mr3923838qkc.230.1638335459457;
-        Tue, 30 Nov 2021 21:10:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638335459; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp6004221lfk;
+        Wed, 1 Dec 2021 05:06:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw3n7fP3cUC4Nnr8DmnZOtMFDhQWyRIp9MVdQqWYKOb03a+LBw8zz3E9X/gOiEMHYhybz0F
+X-Received: by 2002:a05:620a:4103:: with SMTP id j3mr5936292qko.737.1638363986961;
+        Wed, 01 Dec 2021 05:06:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638363986; cv=none;
         d=google.com; s=arc-20160816;
-        b=uH1Imm+ELCwdwukY04Hb9Unjlbm/mMs7tjEOFmY+Hrcm5ckjOpfg79Ua3GgTi9xEdM
-         UGEoeVJKLkCpHHmeVAA+/gNpFinQgRIxMRlWM6B8D+RbFUkjU1bX+oCIviuEvBJ9qmCw
-         mZ8NJHpdgLiJGFXaOmZCc7kmK6WBD/OdL4WmNqvtCSLS8bbjyGnEc8hTV1iY5wklPzi+
-         CqjGbJV+/I3kB+XsuoYBANPqSripxvjSlVuYRqcEwT/u4T2XwVrwTOUyVT3/BlxxapFe
-         6onz5r1eExfhzMI4yPceIQsFHigVJeRIEEXh6Q+y5fX1QSGJHixz1vMs7bxz427km8d9
-         J7cg==
+        b=UoBWJJ9bHxJp7pvztdTgNSiJICwN0mxC5RGk+8vwpXxxRplcvWurchcq7ddTj1IshO
+         ZbSWyV5BDOyGHJmLSqwF2cbMd9+Urnd9RktsyKoMWVOYHK85eDZ2O5zhNvVbtHh73VEk
+         I9j5eQJZ7QbDgOraYdzEVc7fbyxvoUYmoJvmXXq2XYUt7p3wTVT6GclupDcahyLX77FH
+         FlLSRLTmqn+JN70P4EZcHjW3G22yE5kkDPz9EdSTnej6U7WYbyajYr+T8jMo8IRzqPSq
+         09H8cQ88hROAdF5Csjyq2B3IIXCM3E0NeqyyKSJ4O4x5nFhpWfQ3ZaCFydub1cuVWNAf
+         s1zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=Eu2kSU5mSntFB+JsrfbZmh+a6rbMQ1y8862q2dVwwZ4=;
-        b=co/n7Iuizw07LVsOZ2AtbC4fdg2uaN4nw7kEpY7K1Yim3U8V+MHJgDHUlWnTjRgIIx
-         ReTHrlnFNcz0CmPsw0svH7TXB/82sY9RIpEG4eifUkXCvRpRAT5bPMcwN9Swrtrafqwo
-         DqoG7pcr/OLFsN8QSMOwiR1dkKZ+jDzH6g/Gv9ShykQrVLHCBTzi2l0ELd5CoY24Aaum
-         HFrPvU3bfDSWF1wS22DhUIWDV481eItp19eHG+5Qp1iqzEPZJiVHPWztVHhnV8F/rzl/
-         vx+vsOyvUGp2UEIcusuRR3cEe7BZ87J3Wtjnw5tu1bGaEJNdcCOpy2eM8p3F700iPA5S
-         5yfA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=oRyV/aS2bzgNlOIF5jVjVHvTzuy/PEW1Qo0P+6yL/M0=;
+        b=OROfMs09O8mwA7d+5R9am8xJHnRmAD3PIYrNpSISJdKLhQjrplYemHVWvHh+r3pjQB
+         m/Hu/TDXceF5lJNxQgugcVzOjzZ5uK2nkY1859qrjPeX6mp0uFodFQxC/68vaN1m0L5s
+         Sw6WKnlAs9xIlLUEnFrjV7QDdNQizZpws9pzlsuPleALFrksxnfW64l8DxlptTCpU8zL
+         wAEzrCq6BCJ3qAKoV3efIl7GvMTKf5cwHTeT2lm3GjwgDpSbgDGHHKzBo3OHCVtFzhwJ
+         VPmLP4wL5dntS/ZrgoozuzmRWgSjsgMDPVHA1Px58NVWbdeiFVdppzXQt3B126JNDDEi
+         kuTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AoZpaJQZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=mj1YGcdR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5si24869824qve.169.2021.11.30.21.10.59
+        by mx.google.com with ESMTPS id h4si2766585qtu.398.2021.12.01.05.06.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Nov 2021 21:10:59 -0800 (PST)
+        Wed, 01 Dec 2021 05:06:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AoZpaJQZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34914 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=mj1YGcdR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1msHtS-0001Gx-Pz
-	for alex.bennee@linaro.org; Wed, 01 Dec 2021 00:10:58 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41496)
+	id 1msPJa-0000vH-8w
+	for alex.bennee@linaro.org; Wed, 01 Dec 2021 08:06:26 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33394)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1msHtD-0001Ft-QT
- for qemu-arm@nongnu.org; Wed, 01 Dec 2021 00:10:43 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:23580)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1msHtA-00022D-AQ
- for qemu-arm@nongnu.org; Wed, 01 Dec 2021 00:10:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1638335439;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Eu2kSU5mSntFB+JsrfbZmh+a6rbMQ1y8862q2dVwwZ4=;
- b=AoZpaJQZUbGv89qaOV3LFemN4ASNvuKp69BjX3VThd7bF9Ytk6OYpDtZFtzPMRi/49rX0d
- oGVW/2/EDuhRX8Nig3a9WT/OJNaLdBT2uNEYMxenQuu7gPuSIpckXa8UhQSlWBwDK35XXk
- HW6LUlhuLVW7JoB8DOqUnMxcCKU7KZQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-45-Wp1QQlNHMQSddfT3Q3LrlA-1; Wed, 01 Dec 2021 00:10:35 -0500
-X-MC-Unique: Wp1QQlNHMQSddfT3Q3LrlA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 36D4181EE60;
- Wed,  1 Dec 2021 05:10:34 +0000 (UTC)
-Received: from [10.64.54.189] (vpn2-54-189.bne.redhat.com [10.64.54.189])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 32EA25F4E1;
- Wed,  1 Dec 2021 05:09:47 +0000 (UTC)
-Subject: Re: [PATCH 1/1] hw/arm/virt: Support for virtio-mem-pci
-To: David Hildenbrand <david@redhat.com>, qemu-arm@nongnu.org
-References: <20211130003328.201270-1-gshan@redhat.com>
- <20211130003328.201270-2-gshan@redhat.com>
- <be174699-17d1-f033-2228-193d1c3fb631@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <c44a9072-0f21-9321-1828-23aadea5fea3@redhat.com>
-Date: Wed, 1 Dec 2021 16:09:43 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1msPJ4-0000tX-OX; Wed, 01 Dec 2021 08:05:54 -0500
+Received: from [2a00:1450:4864:20::435] (port=47039
+ helo=mail-wr1-x435.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1msPIy-00052Z-Sq; Wed, 01 Dec 2021 08:05:53 -0500
+Received: by mail-wr1-x435.google.com with SMTP id u1so52082776wru.13;
+ Wed, 01 Dec 2021 05:05:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=oRyV/aS2bzgNlOIF5jVjVHvTzuy/PEW1Qo0P+6yL/M0=;
+ b=mj1YGcdRhMdodCtD82uwGuXN+g3kcL+W7+flzxT9Ib0gtumiXHMiybshilkoOWZgj/
+ W/NQGNLMXKLYwzWcfUM3RKxvLyPXomHNT2PiwdFzbmJ7NYz7omzj2lVytoc2PMbRdOaA
+ vxgLzpepJWFdgm8XmnljjJm6SO3bL2D7cnb5bLoSUN9BhH46EwQd2wisQ6YNopo5lxCP
+ ZAxnIvjkN0t41UCl2h0abVHwUSpRNGnHZBBQg/rLpfhqBh0TCNAkIhU4rSKWVDC1MNRz
+ PQm/w60fCLwRY7GQqEcpAcvxn2f5lGrAKWOhD6FjGaChO0cK23n0TfMlkciQnLqCANs4
+ B5dA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=oRyV/aS2bzgNlOIF5jVjVHvTzuy/PEW1Qo0P+6yL/M0=;
+ b=oLrKimFCaFYzZRBUfbxamr9s2A6Bgj+tUSRqSKv+9T9qh1Z3cYaNbSTO+esEZBirPH
+ uCwZIbUgYOfKHbFzu53bgB2Q/DFrLnGcnWmj9x85/2y763+oUaokctxK0GnID5biHKJR
+ EfRqQ0Y/s69YcA6YK30/xnLzVHcm9LgTG3hqd8Jc9o0WM85MF3pLXZozLM+PQkirVsg0
+ x//9po1vUF02YdGqLEKb4cDq3fVp/fU4BeVXTd43jHOOx7x1ZNGKzMA7d2z4Da5F5ApH
+ 1BQUkxXF66QSjDWRwSGVulm11svO7UMKCZoe27AY1jLI67BdFL/GVWxAsZtsR00SnJlr
+ gzIA==
+X-Gm-Message-State: AOAM533oXpO/ZcaSgik9JqjiD502LEAypsbymgW7dQxWDYiSQDkSa4R4
+ I0dfYU3kcwr73Dkz0fn2FeE=
+X-Received: by 2002:adf:9e01:: with SMTP id u1mr6544787wre.561.1638363946716; 
+ Wed, 01 Dec 2021 05:05:46 -0800 (PST)
+Received: from [192.168.1.12] (abayonne-654-1-79-213.w86-222.abo.wanadoo.fr.
+ [86.222.222.213])
+ by smtp.gmail.com with ESMTPSA id z6sm1389080wmp.9.2021.12.01.05.05.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 01 Dec 2021 05:05:45 -0800 (PST)
+Message-ID: <e5fb6785-0210-5056-014d-c1e062fc806c@amsat.org>
+Date: Wed, 1 Dec 2021 14:05:44 +0100
 MIME-Version: 1.0
-In-Reply-To: <be174699-17d1-f033-2228-193d1c3fb631@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH for-7.0 0/4] qemu-common.h include cleanup
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -56
-X-Spam_score: -5.7
-X-Spam_bar: -----
-X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.716,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.211, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20211129200510.1233037-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20211129200510.1233037-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::435
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-2.211,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,245 +122,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, eric.auger@redhat.com, shan.gavin@gmail.com,
- Jonathan.Cameron@huawei.com, imammedo@redhat.com
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Taylor Simpson <tsimpson@quicinc.com>,
+ Sergio Lopez <slp@redhat.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1ELFRWxz6dMV
+X-TUID: LyuiwF4VZkNG
 
-On 11/30/21 8:37 PM, David Hildenbrand wrote:
-> On 30.11.21 01:33, Gavin Shan wrote:
->> This supports virtio-mem-pci device on "virt" platform, by simply
->> following the implementation on x86.
-> 
-> Thanks for picking this up!
-> 
+On 11/29/21 21:05, Peter Maydell wrote:
 
-Thanks, David.
+> Peter Maydell (4):
+>   include/hw/i386: Don't include qemu-common.h in .h files
+>   target/hexagon/cpu.h: don't include qemu-common.h
+>   target/rx/cpu.h: Don't include qemu-common.h
+>   hw/arm: Don't include qemu-common.h unnecessarily
 
->>
->>     * The patch was written by David Hildenbrand <david@redhat.com>
->>       modified by Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> 
-> Maybe replace this section by
-> 
-> Co-developed-by: David Hildenbrand <david@redhat.com>
-> Co-developed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> 
-
-Yes, it will be included into v2.
-
->>
->>     * This implements the hotplug handlers to support virtio-mem-pci
->>       device hot-add, while the hot-remove isn't supported as we have
->>       on x86.
->>
->>     * The block size is 1GB on ARM64 instead of 128MB on x86.
-> 
-> See below, isn't it actually 512 MiB nowadays?
-> 
-
-I think so.
-
->>
->>     * It has been passing the tests with various combinations like 64KB
->>       and 4KB page sizes on host and guest, different memory device
->>       backends like normal, transparent huge page and HugeTLB, plus
->>       migration.
-> 
-> Perfect. A note that hugetlbfs isn't fully supported/safe to use until
-> we have preallocation support in QEMU (WIP).
-> 
-
-Yes, there is some warnings raised to enlarge 'request-size' on
-host with 64KB page size. Note that the memory backends I used
-in the testings always have "prealloc=on" property though.
-
->>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   hw/arm/Kconfig         |  1 +
->>   hw/arm/virt.c          | 68 +++++++++++++++++++++++++++++++++++++++++-
->>   hw/virtio/virtio-mem.c |  2 ++
->>   3 files changed, 70 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->> index 2d37d29f02..15aff8efb8 100644
->> --- a/hw/arm/Kconfig
->> +++ b/hw/arm/Kconfig
->> @@ -27,6 +27,7 @@ config ARM_VIRT
->>       select DIMM
->>       select ACPI_HW_REDUCED
->>       select ACPI_APEI
->> +    select VIRTIO_MEM_SUPPORTED
->>   
->>   config CHEETAH
->>       bool
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 369552ad45..f4599a5ef0 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -71,9 +71,11 @@
->>   #include "hw/arm/smmuv3.h"
->>   #include "hw/acpi/acpi.h"
->>   #include "target/arm/internals.h"
->> +#include "hw/mem/memory-device.h"
->>   #include "hw/mem/pc-dimm.h"
->>   #include "hw/mem/nvdimm.h"
->>   #include "hw/acpi/generic_event_device.h"
->> +#include "hw/virtio/virtio-mem-pci.h"
->>   #include "hw/virtio/virtio-iommu.h"
->>   #include "hw/char/pl011.h"
->>   #include "qemu/guest-random.h"
->> @@ -2480,6 +2482,63 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
->>                            dev, &error_abort);
->>   }
->>   
->> +static void virt_virtio_md_pci_pre_plug(HotplugHandler *hotplug_dev,
->> +                                        DeviceState *dev, Error **errp)
->> +{
->> +    HotplugHandler *hotplug_dev2 = qdev_get_bus_hotplug_handler(dev);
->> +    Error *local_err = NULL;
->> +
->> +    if (!hotplug_dev2 && dev->hotplugged) {
->> +        /*
->> +         * Without a bus hotplug handler, we cannot control the plug/unplug
->> +         * order. We should never reach this point when hotplugging on x86,
->> +         * however, better add a safety net.
->> +         */
->> +        error_setg(errp, "hotplug of virtio based memory devices not supported"
->> +                   " on this bus.");
->> +        return;
->> +    }
->> +    /*
->> +     * First, see if we can plug this memory device at all. If that
->> +     * succeeds, branch of to the actual hotplug handler.
->> +     */
->> +    memory_device_pre_plug(MEMORY_DEVICE(dev), MACHINE(hotplug_dev), NULL,
->> +                           &local_err);
->> +    if (!local_err && hotplug_dev2) {
->> +        hotplug_handler_pre_plug(hotplug_dev2, dev, &local_err);
->> +    }
->> +    error_propagate(errp, local_err);
->> +}
->> +
->> +static void virt_virtio_md_pci_plug(HotplugHandler *hotplug_dev,
->> +                                    DeviceState *dev, Error **errp)
->> +{
->> +    HotplugHandler *hotplug_dev2 = qdev_get_bus_hotplug_handler(dev);
->> +    Error *local_err = NULL;
->> +
->> +    /*
->> +     * Plug the memory device first and then branch off to the actual
->> +     * hotplug handler. If that one fails, we can easily undo the memory
->> +     * device bits.
->> +     */
->> +    memory_device_plug(MEMORY_DEVICE(dev), MACHINE(hotplug_dev));
->> +    if (hotplug_dev2) {
->> +        hotplug_handler_plug(hotplug_dev2, dev, &local_err);
->> +        if (local_err) {
->> +            memory_device_unplug(MEMORY_DEVICE(dev), MACHINE(hotplug_dev));
->> +        }
->> +    }
->> +    error_propagate(errp, local_err);
->> +}
->> +
->> +static void virt_virtio_md_pci_unplug_request(HotplugHandler *hotplug_dev,
->> +                                              DeviceState *dev, Error **errp)
->> +{
->> +    /* We don't support hot unplug of virtio based memory devices */
->> +    error_setg(errp, "virtio based memory devices cannot be unplugged.");
->> +}
->> +
->> +
->>   static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->>                                               DeviceState *dev, Error **errp)
->>   {
->> @@ -2513,6 +2572,8 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->>           qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
->>           qdev_prop_set_string(dev, "reserved-regions[0]", resv_prop_str);
->>           g_free(resv_prop_str);
->> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
->> +        virt_virtio_md_pci_pre_plug(hotplug_dev, dev, errp);
->>       }
->>   }
->>   
->> @@ -2538,6 +2599,8 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
->>           vms->iommu = VIRT_IOMMU_VIRTIO;
->>           vms->virtio_iommu_bdf = pci_get_bdf(pdev);
->>           create_virtio_iommu_dt_bindings(vms);
->> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
->> +        virt_virtio_md_pci_plug(hotplug_dev, dev, errp);
->>       }
->>   }
->>   
->> @@ -2588,6 +2651,8 @@ static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
->>   {
->>       if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
->>           virt_dimm_unplug_request(hotplug_dev, dev, errp);
->> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
->> +        virt_virtio_md_pci_unplug_request(hotplug_dev, dev, errp);
->>       } else {
->>           error_setg(errp, "device unplug request for unsupported device"
->>                      " type: %s", object_get_typename(OBJECT(dev)));
->> @@ -2611,7 +2676,8 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
->>       MachineClass *mc = MACHINE_GET_CLASS(machine);
->>   
->>       if (device_is_dynamic_sysbus(mc, dev) ||
->> -       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
->> +        object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
->> +        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
->>           return HOTPLUG_HANDLER(machine);
->>       }
->>       if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
->> diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
->> index d5a578142b..3033692a83 100644
->> --- a/hw/virtio/virtio-mem.c
->> +++ b/hw/virtio/virtio-mem.c
->> @@ -126,6 +126,8 @@ static uint64_t virtio_mem_default_block_size(RAMBlock *rb)
->>    */
->>   #if defined(TARGET_X86_64) || defined(TARGET_I386)
->>   #define VIRTIO_MEM_USABLE_EXTENT (2 * (128 * MiB))
->> +#elif defined(TARGET_ARM)
->> +#define VIRTIO_MEM_USABLE_EXTENT (2 * (1024 * MiB))
-> 
-> 
-> Can we make this 512 MiB ?
-> 
-> arch/arm64/include/asm/sparsemem.h
-> 
-> /*
->   * Section size must be at least 512MB for 64K base
->   * page size config. Otherwise it will be less than
->   * (MAX_ORDER - 1) and the build process will fail.
->   */
-> #ifdef CONFIG_ARM64_64K_PAGES
-> #define SECTION_SIZE_BITS 29
-> 
-> #else
-> 
-> /*
->   * Section size must be at least 128MB for 4K base
->   * page size config. Otherwise PMD based huge page
->   * entries could not be created for vmemmap mappings.
->   * 16K follows 4K for simplicity.
->   */
-> #define SECTION_SIZE_BITS 27
-> #endif /* CONFIG_ARM64_64K_PAGES */
-> 
-> 
-> Apart from that, LGTM -- thanks!
-> 
-
-Indeed. The scetion size has been changed by the following
-linux commit. v2 will include the changes.
-
-f0b13ee2324184 arm64/sparsemem: reduce SECTION_SIZE_BITS
-(Wed Jan 20 21:29:13 2021 Sudarshan Rajagopalan <sudaraja@codeaurora.org>)
-
-Thanks,
-Gavin
-
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

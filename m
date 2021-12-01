@@ -1,79 +1,128 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5965843lfk;
-        Wed, 1 Dec 2021 04:28:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzbq9UyOMgtLdJp+QgRmlhrWpdYaH0/gMnHKQo32Qj83ONCADmvVy3tNQtmwO6CdUBGpTlQ
-X-Received: by 2002:a05:622a:346:: with SMTP id r6mr6324305qtw.78.1638361712729;
-        Wed, 01 Dec 2021 04:28:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638361712; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5772596lfk;
+        Wed, 1 Dec 2021 01:04:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwbvCYtN8quTxaIZXviTAIlsIs6tfoQense8mlzHVDYi0QzPYHk7x3mDSI8ql0Pd5DUjCDg
+X-Received: by 2002:a05:6214:2306:: with SMTP id gc6mr4761031qvb.34.1638349488881;
+        Wed, 01 Dec 2021 01:04:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638349488; cv=none;
         d=google.com; s=arc-20160816;
-        b=pfh5803NJpmj2xajphQ7wgCvg1pUwAGyCxUDoD1/VW/i8GOdyu+tQk5Nc+QiKwiLye
-         mzFoDTvcVwtiq4jAaZ3lI4ieI0Ct1n5AjyIYsF+cEWDB0BfyFnUb8rbZOiIAkEmjt3U/
-         4HHWQqwd5wGBwHxTsShTUnCG3fgalJcj2fihyQRecHgkSDziPpYfsEvmpnxdBuen1qvD
-         v+ujwHStmSo5WyNXyyV7cu+qbvICuhMs8inWhzbnww6nmHAn2cGq/PdAtNckX/6YXc0I
-         4K80d1jyL8KeBx6U328zE2jmeDy3BdpFBT8njSs+kjI7kDsn3xHOJmkg6CQSBM+NvIy8
-         hoVw==
+        b=jC6fHuaMAkIT5yUVsY0POAqqB+9/JeKpww9TvnL1V9vAiZ+YQnt8C2G2pOVigIaDZf
+         0fwCxVHpUNaX+3CSniCeMBXUmB1OEYzSVh3ZXS7b8mJ/TLP9207kOO8F965FoxQsnym3
+         9juubFFg18oFNycsqi4UNxzuGpYXy3hH+zls/ja0gMcBKPgUk162FWe3nXaQItsr5d4/
+         C6JwinBR4j0o7SbaQvTEHnbTj/8CrT1AWPb6NvANbvj/VulmV5lg+x9wM3aDz4FEfcIg
+         YrXtqANMLpx6SGenCh5K01yAvNLnVkXdzXhigP6LL0UTV842YQKhQTrguq1D/T+uvnhV
+         UPVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :references:in-reply-to:subject:to:from:message-id:date;
-        bh=SKTYE4hNs+AHsZWWmP/eEdxWBiYyWXqucQmTmFbfi60=;
-        b=uiWFiobUrVovtKRLWuyTrOnz5poM8JUyRqX+oh8TpCtHYnO+6kZ9I5CnBmrPZyXXKC
-         lm16MVmMch2j/UEkBw/KjC1rrN++4GD8g0+EAjOCYWYWO0EkN3qTjD3pOdkwXBADa+u9
-         YM8NRxK1u99VTVyEWuZ4KiAK0mU+MfFk6JdHgJLA7hInffetB4LiWbe9plgSs4hToVG3
-         AtHRer7A6trQyYfeZ7phCzELxs71iMGSRXZWGL5KsKQgYxXFI0lzxxSWdgrZCdoWW1Kk
-         GJGhT95R00ZLeDFANMofj3NZXiIsdcTlC+v67HPXofnU5sLoWFNNjYk9dvf1DZ1rUbBw
-         x5Kw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:subject:organization:from:references
+         :to:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=xbMJnhvL1QYwNCrrd5aJGVSZYEwV351P4+llJiVQ8PM=;
+        b=f6zzkKJJGuaDDvfDrew22a3D6OM0NNnZE4Nb1FkOGg9ALOWWU8aJb4ZvuHFPMOZ6WM
+         0gvHi2n6vLAYfUp9H/qYvm3GjVCAKkvseCAwo5ypvcXaRfgn1h/40n/DwHlscztSHoS7
+         j6V9n5cvA4CGIrahJ4/s/dydHms6R7F/UGNU5CAkmWIiXttTLlX7oRJRG04Ye1o2Z93o
+         RlrHa61f6La8CMg3N5TB4dHq6MJGJdVCaoGXNazDGjIfS/FAVPFBtsVHrLP1pOmgArqy
+         yn9I30oCOhePQHYD47DbipK7CiXXHjvwBpc8akDd7rsMHYCPcKp+TZA2qCLM8z2L8YF8
+         L0LA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OwZmaJXf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d10si11440994vsk.121.2021.12.01.04.28.32
+        by mx.google.com with ESMTPS id o15si17403185qtk.748.2021.12.01.01.04.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Dec 2021 04:28:32 -0800 (PST)
+        Wed, 01 Dec 2021 01:04:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53160 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OwZmaJXf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38820 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1msOiu-0008OT-23
-	for alex.bennee@linaro.org; Wed, 01 Dec 2021 07:28:32 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50840)
+	id 1msLXk-0001ga-8Y
+	for alex.bennee@linaro.org; Wed, 01 Dec 2021 04:04:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55400)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ysato@users.sourceforge.jp>)
- id 1msOgw-0007Z6-Mp; Wed, 01 Dec 2021 07:26:30 -0500
-Received: from mail08.asahi-net.or.jp ([202.224.55.48]:35216)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <ysato@users.sourceforge.jp>)
- id 1msOgu-0004g2-Cc; Wed, 01 Dec 2021 07:26:30 -0500
-Received: from sakura.ysato.name (ik1-413-38519.vs.sakura.ne.jp
- [153.127.30.23]) (Authenticated sender: PQ4Y-STU)
- by mail08.asahi-net.or.jp (Postfix) with ESMTPA id A4C8421781;
- Wed,  1 Dec 2021 21:26:23 +0900 (JST)
-Received: from SIOS1075.ysato.ml (al142214.dynamic.ppp.asahi-net.or.jp
- [111.234.142.214])
- by sakura.ysato.name (Postfix) with ESMTPSA id BBEF91C0123;
- Wed,  1 Dec 2021 21:26:22 +0900 (JST)
-Date: Wed, 01 Dec 2021 21:26:22 +0900
-Message-ID: <87h7bsa4up.wl-ysato@users.sourceforge.jp>
-From: Yoshinori Sato <ysato@users.sourceforge.jp>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH for-7.0 3/4] target/rx/cpu.h: Don't include qemu-common.h
-In-Reply-To: <20211129200510.1233037-4-peter.maydell@linaro.org>
-References: <20211129200510.1233037-1-peter.maydell@linaro.org>
- <20211129200510.1233037-4-peter.maydell@linaro.org>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?ISO-8859-4?Q?Goj=F2?=) APEL-LB/10.8 EasyPG/1.0.0
- Emacs/27.1 (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: softfail client-ip=202.224.55.48;
- envelope-from=ysato@users.sourceforge.jp; helo=mail08.asahi-net.or.jp
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1msLWG-0000mS-Gh
+ for qemu-devel@nongnu.org; Wed, 01 Dec 2021 04:03:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:26770)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1msLWD-0005uj-73
+ for qemu-devel@nongnu.org; Wed, 01 Dec 2021 04:03:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1638349390;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xbMJnhvL1QYwNCrrd5aJGVSZYEwV351P4+llJiVQ8PM=;
+ b=OwZmaJXfHIkgwmIUVIMnxiubhD2juyhYciLCQy8T95/qaGArbj2f7VtDoHVJWKefBNJhvu
+ lNyq66CuicrFFcZz5M9mhtIfYvBnYNUziLU/M1hL5GvjZ8aw4oYFHQCvgX/+3OtVSUZaQ3
+ 6m4c5u23/Oa40MryPIUiLBCAS9RHwKk=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-521-z7dT6TVTNf6WBTLpKqZLoA-1; Wed, 01 Dec 2021 04:03:08 -0500
+X-MC-Unique: z7dT6TVTNf6WBTLpKqZLoA-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ y141-20020a1c7d93000000b0033c2ae3583fso11889519wmc.5
+ for <qemu-devel@nongnu.org>; Wed, 01 Dec 2021 01:03:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent
+ :content-language:to:cc:references:from:organization:subject
+ :in-reply-to:content-transfer-encoding;
+ bh=xbMJnhvL1QYwNCrrd5aJGVSZYEwV351P4+llJiVQ8PM=;
+ b=Ru8Y6nOBMIJiy5Ly13ipBKcjRmOKF3Cw9icBqFeV2eeGlQgh4cB+kGwtgA2Wys4BpO
+ ZK8ViJDs41PNSe9gnlaaSEFVfLK0yjcmhr4JYKf9//mF6pnfMApHkeGXfzfNyhMYaQT3
+ pR6zWI11G+jQBo/b73tpM+sViBZFTDoMF4D9PqXRMJS/ZqANOBw+QzHB7wVD4KHQPb/G
+ /1ejsaORr7mPMB1fmbwcgL3xGKn3M2i6p+MPZvnX4rpMn/y4U4qcV5bYhVj+385ib1Rg
+ xJPN2huSKK9ibKr8O097TX1D2FKHqN+noBoKjXp1iHMXTV4QqNfOTvS1AsGUFiS18Zah
+ upig==
+X-Gm-Message-State: AOAM531p1PHZlvEgjfXZ1YN46MS+As/TEEruYuCGkGdawST45Zi3xYhq
+ ZALXe04xkwmqZ6t9wp2kvU00oOOiMV3pmBoohBR5JpV5iqerr+Mr3CNFIhIgSUvlrKKs2XbDAb8
+ kGFBwpjgB3vr0zfs=
+X-Received: by 2002:adf:df89:: with SMTP id z9mr5083541wrl.336.1638349387281; 
+ Wed, 01 Dec 2021 01:03:07 -0800 (PST)
+X-Received: by 2002:adf:df89:: with SMTP id z9mr5083491wrl.336.1638349386853; 
+ Wed, 01 Dec 2021 01:03:06 -0800 (PST)
+Received: from [192.168.3.132] (p5b0c65f1.dip0.t-ipconnect.de. [91.12.101.241])
+ by smtp.gmail.com with ESMTPSA id z5sm498200wmp.26.2021.12.01.01.03.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 01 Dec 2021 01:03:06 -0800 (PST)
+Message-ID: <1ae3f686-aaa9-4402-433e-325f422275df@redhat.com>
+Date: Wed, 1 Dec 2021 10:03:05 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+References: <20211130003328.201270-1-gshan@redhat.com>
+ <20211130003328.201270-2-gshan@redhat.com>
+ <be174699-17d1-f033-2228-193d1c3fb631@redhat.com>
+ <c44a9072-0f21-9321-1828-23aadea5fea3@redhat.com>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+Subject: Re: [PATCH 1/1] hw/arm/virt: Support for virtio-mem-pci
+In-Reply-To: <c44a9072-0f21-9321-1828-23aadea5fea3@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -56
+X-Spam_score: -5.7
+X-Spam_bar: -----
+X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.716,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.211, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,42 +135,152 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Taylor Simpson <tsimpson@quicinc.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Sergio Lopez <slp@redhat.com>
+Cc: peter.maydell@linaro.org, drjones@redhat.com,
+ Michal Privoznik <mprivozn@redhat.com>, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, eric.auger@redhat.com, shan.gavin@gmail.com,
+ Jonathan.Cameron@huawei.com, imammedo@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SVWTxXJ6DiVt
+X-TUID: N/fJofwH7vkV
 
-On Tue, 30 Nov 2021 05:05:09 +0900,
-Peter Maydell wrote:
+>>>
+>>>     * It has been passing the tests with various combinations like 64KB
+>>>       and 4KB page sizes on host and guest, different memory device
+>>>       backends like normal, transparent huge page and HugeTLB, plus
+>>>       migration.
+>>
+>> Perfect. A note that hugetlbfs isn't fully supported/safe to use until
+>> we have preallocation support in QEMU (WIP).
+>>
 > 
-> The qemu-common.h header is not supposed to be included from any
-> other header files, only from .c files (as documented in a comment at
-> the start of it).
-> 
-> Nothing actually relies on target/rx/cpu.h including it, so we can
-> just drop the include.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
+> Yes, there is some warnings raised to enlarge 'request-size' on
+> host with 64KB page size. Note that the memory backends I used
+> in the testings always have "prealloc=on" property though.
 
-> ---
->  target/rx/cpu.h | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-> index 4ac71aec370..657db84ef0a 100644
-> --- a/target/rx/cpu.h
-> +++ b/target/rx/cpu.h
-> @@ -20,7 +20,6 @@
->  #define RX_CPU_H
->  
->  #include "qemu/bitops.h"
-> -#include "qemu-common.h"
->  #include "hw/registerfields.h"
->  #include "cpu-qom.h"
->  
-> -- 
-> 2.25.1
-> 
-> 
+1. prealloc=on
+
+"prealloc=on" on the memory backend won't get the job done, because the first
+thing virtio-mem does is discard all memory in the memory backend again when
+it initializes. So it's an expensive NOP :) See
+
+https://lkml.kernel.org/r/20211130104136.40927-9-david@redhat.com
+
+for the virtio-mem "prealloc=on" option that preallocates memory when
+exposing that memory to the VM.
+
+To use huge pages in a safe way with virtio-mem, we need "reserve=off" on the
+memory backend and "prealloc=on" on the virtio-mem device. (I'm in the process
+of documenting that on virtio-mem.gitlab.io/ to make it clearer)
+
+
+2. Warning on arm64 with 64k
+
+I assume the warning you're seeing is regarding the block-size:
+
+"Read unsupported THP size: ..." followed by
+"Could not detect THP size, falling back to ..."
+
+The right thing to do for now should be to remove that sanity check:
+
+diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+index d5a578142b..33c32afeb1 100644
+--- a/hw/virtio/virtio-mem.c
++++ b/hw/virtio/virtio-mem.c
+@@ -78,11 +78,8 @@ static uint32_t virtio_mem_thp_size(void)
+     if (g_file_get_contents(HPAGE_PMD_SIZE_PATH, &content, NULL, NULL) &&
+         !qemu_strtou64(content, &endptr, 0, &tmp) &&
+         (!endptr || *endptr == '\n')) {
+-        /*
+-         * Sanity-check the value, if it's too big (e.g., aarch64 with 64k base
+-         * pages) or weird, fallback to something smaller.
+-         */
+-        if (!tmp || !is_power_of_2(tmp) || tmp > 16 * MiB) {
++        /* Sanity-check the value and fallback to something reasonable.  */
++        if (!tmp || !is_power_of_2(tmp)) {
+             warn_report("Read unsupported THP size: %" PRIx64, tmp);
+         } else {
+             thp_size = tmp;
+
+This will not affect setups we care about ( x86-64 KVM ).
+
+It will imply that with a arm64 64k host, we can only hot(un)plug in
+512 MiB granularity when not using hugetlb witht he default block-size.
+However, that is already the case with arm64 64k guests as well.
+The suggestion will be to use arm64 4k with virtio-mem in the host and
+the guest for increased flexibility -- fortunately most distros
+already have performed the switch to 4k on arm64, so we don't really
+care IMHO.
+
+To support block_size < THP size when not using hugetlb,
+we'll have to disable THP (via MADV_NOHUGEPAGE) permanently for the memory
+region, also making sure that e.g., postcopy won't re-enable it by adding
+a proper flag (RAM_NOHUGEPAGE) to the RAMBlock. Because the issue is that
+once the guest touches some memory, we might populate a THP that would cover
+plugged and unplugged memory, which is bad.
+
+Instead of warning in virtio_mem_device_realize() when
+	vmem->block_size < virtio_mem_default_block_size(rb)
+we'd have to disable THP.
+
+
+Further, we should fixup the default THP size on arm64 in case we're
+running on an older kernel where we cannot sense the THP size:
+
+
+diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+index d5a578142b..371cee380a 100644
+--- a/hw/virtio/virtio-mem.c
++++ b/hw/virtio/virtio-mem.c
+@@ -38,13 +38,21 @@
+  */
+ #define VIRTIO_MEM_MIN_BLOCK_SIZE ((uint32_t)(1 * MiB))
+ 
++static uint32_t virtio_mem_default_thp_size(void)
++{
++#if defined(__aarch64__)
++    if (qemu_real_host_page_size == 64 * KiB) {
++        return 512 * MiB;
++    }
++#endif
+ #if defined(__x86_64__) || defined(__arm__) || defined(__aarch64__) || \
+     defined(__powerpc64__)
+-#define VIRTIO_MEM_DEFAULT_THP_SIZE ((uint32_t)(2 * MiB))
++    return 2 * MiB;
+ #else
+-        /* fallback to 1 MiB (e.g., the THP size on s390x) */
+-#define VIRTIO_MEM_DEFAULT_THP_SIZE VIRTIO_MEM_MIN_BLOCK_SIZE
++    /* fallback to 1 MiB (e.g., the THP size on s390x) */
++    return VIRTIO_MEM_MIN_BLOCK_SIZE;
+ #endif
++}
+ 
+ /*
+  * We want to have a reasonable default block size such that
+@@ -90,7 +98,7 @@ static uint32_t virtio_mem_thp_size(void)
+     }
+ 
+     if (!thp_size) {
+-        thp_size = VIRTIO_MEM_DEFAULT_THP_SIZE;
++        thp_size = virtio_mem_default_thp_size();
+         warn_report("Could not detect THP size, falling back to %" PRIx64
+                     "  MiB.", thp_size / MiB);
+     }
+
+
+
+In the context of proper arm64 support, adding the above two changes
+should be good enough. If you agree, can you include them in your v2
+series as a separate patch?
+
+Supporting block_size < thp_size when not using hugetlb is a different
+work IMHO, if someone ever cares about that.
+
+
+
+Thanks!
+
+-- 
+Thanks,
+
+David / dhildenb
+

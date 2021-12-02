@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id n32sm2101850wms.1.2021.12.02.03.53.54
+        by smtp.gmail.com with ESMTPSA id b15sm3233237wri.62.2021.12.02.03.53.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 02 Dec 2021 03:53:59 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id CA4531FF9C;
+	by zen.linaroharston (Postfix) with ESMTP id EF2F81FF9E;
 	Thu,  2 Dec 2021 11:53:52 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: pbonzini@redhat.com,
@@ -17,79 +17,177 @@ Cc: kvm@vger.kernel.org,
 	christoffer.dall@arm.com,
 	maz@kernel.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Mark Rutland <mark.rutland@arm.com>
-Subject: [kvm-unit-tests PATCH v9 5/9] arm/tlbflush-code: TLB flush during code execution
-Date: Thu,  2 Dec 2021 11:53:48 +0000
-Message-Id: <20211202115352.951548-6-alex.bennee@linaro.org>
+	Will Deacon <will@kernel.org>
+Subject: [kvm-unit-tests PATCH v9 7/9] arm/barrier-litmus-tests: add simple mp and sal litmus tests
+Date: Thu,  2 Dec 2021 11:53:50 +0000
+Message-Id: <20211202115352.951548-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20211202115352.951548-1-alex.bennee@linaro.org>
 References: <20211202115352.951548-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: nAf8vQd17MCH
+X-TUID: 9Jf+yKjEUftU
 
-This adds a fairly brain dead torture test for TLB flushes intended
-for stressing the MTTCG QEMU build. It takes the usual -smp option for
-multiple CPUs.
+This adds a framework for adding simple barrier litmus tests against
+ARM. The litmus tests aren't as comprehensive as the academic exercises
+which will attempt to do all sorts of things to keep racing CPUs synced
+up. These tests do honour the "sync" parameter to do a poor-mans
+equivalent.
 
-By default it CPU0 will do a TLBIALL flush after each cycle. You can
-pass options via -append to control additional aspects of the test:
+The two litmus tests are:
+  - message passing
+  - store-after-load
 
-  - "page" flush each page in turn (one per function)
-  - "self" do the flush after each computation cycle
-  - "verbose" report progress on each computation cycle
+They both have case that should fail (although won't on single-threaded
+TCG setups). If barriers aren't working properly the store-after-load
+test will fail even on an x86 backend as x86 allows re-ording of non
+aliased stores.
+
+I've imported a few more of the barrier primatives from the Linux source
+tree so we consistently use macros.
+
+The arm64 barrier primitives trip up on -Wstrict-aliasing so this is
+disabled in the Makefile.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-CC: Mark Rutland <mark.rutland@arm.com>
-Message-Id: <20211118184650.661575-7-alex.bennee@linaro.org>
+CC: Will Deacon <will@kernel.org>
+Message-Id: <20211118184650.661575-9-alex.bennee@linaro.org>
 
 ---
 v9
-  - move tests back into unittests.cfg (with nodefault mttcg)
-  - replace printf with report_info
-  - drop accel = tcg
+  - return to unittests.cfg, drop accel=tcg
+  - use compiler.h for barriers instead of defining outselves
+  - s/printf/report_info/
 ---
- arm/Makefile.common |   1 +
- arm/tlbflush-code.c | 209 ++++++++++++++++++++++++++++++++++++++++++++
- arm/unittests.cfg   |  25 ++++++
- 3 files changed, 235 insertions(+)
- create mode 100644 arm/tlbflush-code.c
+ arm/Makefile.common       |   1 +
+ lib/arm/asm/barrier.h     |  19 ++
+ lib/arm64/asm/barrier.h   |  50 +++++
+ arm/barrier-litmus-test.c | 450 ++++++++++++++++++++++++++++++++++++++
+ arm/unittests.cfg         |  31 +++
+ 5 files changed, 551 insertions(+)
+ create mode 100644 arm/barrier-litmus-test.c
 
 diff --git a/arm/Makefile.common b/arm/Makefile.common
-index 99bcf3fc..e3f04f2d 100644
+index f9059718..861e5c7f 100644
 --- a/arm/Makefile.common
 +++ b/arm/Makefile.common
-@@ -12,6 +12,7 @@ tests-common += $(TEST_DIR)/gic.flat
- tests-common += $(TEST_DIR)/psci.flat
- tests-common += $(TEST_DIR)/sieve.flat
+@@ -13,6 +13,7 @@ tests-common += $(TEST_DIR)/sieve.flat
  tests-common += $(TEST_DIR)/pl031.flat
-+tests-common += $(TEST_DIR)/tlbflush-code.flat
+ tests-common += $(TEST_DIR)/tlbflush-code.flat
+ tests-common += $(TEST_DIR)/locking-test.flat
++tests-common += $(TEST_DIR)/barrier-litmus-test.flat
  
  tests-all = $(tests-common) $(tests)
  all: directories $(tests-all)
-diff --git a/arm/tlbflush-code.c b/arm/tlbflush-code.c
+diff --git a/lib/arm/asm/barrier.h b/lib/arm/asm/barrier.h
+index 7f868314..0f3670b8 100644
+--- a/lib/arm/asm/barrier.h
++++ b/lib/arm/asm/barrier.h
+@@ -8,6 +8,9 @@
+  * This work is licensed under the terms of the GNU GPL, version 2.
+  */
+ 
++#include <stdint.h>
++#include <linux/compiler.h>
++
+ #define sev()		asm volatile("sev" : : : "memory")
+ #define wfe()		asm volatile("wfe" : : : "memory")
+ #define wfi()		asm volatile("wfi" : : : "memory")
+@@ -25,4 +28,20 @@
+ #define smp_rmb()	smp_mb()
+ #define smp_wmb()	dmb(ishst)
+ 
++extern void abort(void);
++
++#define smp_store_release(p, v)						\
++do {									\
++	smp_mb();							\
++	WRITE_ONCE(*p, v);						\
++} while (0)
++
++
++#define smp_load_acquire(p)						\
++({									\
++	typeof(*p) ___p1 = READ_ONCE(*p);				\
++	smp_mb();							\
++	___p1;								\
++})
++
+ #endif /* _ASMARM_BARRIER_H_ */
+diff --git a/lib/arm64/asm/barrier.h b/lib/arm64/asm/barrier.h
+index 0e1904cf..5e405190 100644
+--- a/lib/arm64/asm/barrier.h
++++ b/lib/arm64/asm/barrier.h
+@@ -24,4 +24,54 @@
+ #define smp_rmb()	dmb(ishld)
+ #define smp_wmb()	dmb(ishst)
+ 
++#define smp_store_release(p, v)						\
++do {									\
++	switch (sizeof(*p)) {						\
++	case 1:								\
++		asm volatile ("stlrb %w1, %0"				\
++				: "=Q" (*p) : "r" (v) : "memory");	\
++		break;							\
++	case 2:								\
++		asm volatile ("stlrh %w1, %0"				\
++				: "=Q" (*p) : "r" (v) : "memory");	\
++		break;							\
++	case 4:								\
++		asm volatile ("stlr %w1, %0"				\
++				: "=Q" (*p) : "r" (v) : "memory");	\
++		break;							\
++	case 8:								\
++		asm volatile ("stlr %1, %0"				\
++				: "=Q" (*p) : "r" (v) : "memory");	\
++		break;							\
++	}								\
++} while (0)
++
++#define smp_load_acquire(p)						\
++({									\
++	union { typeof(*p) __val; char __c[1]; } __u;			\
++	switch (sizeof(*p)) {						\
++	case 1:								\
++		asm volatile ("ldarb %w0, %1"				\
++			: "=r" (*(u8 *)__u.__c)				\
++			: "Q" (*p) : "memory");				\
++		break;							\
++	case 2:								\
++		asm volatile ("ldarh %w0, %1"				\
++			: "=r" (*(u16 *)__u.__c)			\
++			: "Q" (*p) : "memory");				\
++		break;							\
++	case 4:								\
++		asm volatile ("ldar %w0, %1"				\
++			: "=r" (*(u32 *)__u.__c)			\
++			: "Q" (*p) : "memory");				\
++		break;							\
++	case 8:								\
++		asm volatile ("ldar %0, %1"				\
++			: "=r" (*(u64 *)__u.__c)			\
++			: "Q" (*p) : "memory");				\
++		break;							\
++	}								\
++	__u.__val;							\
++})
++
+ #endif /* _ASMARM64_BARRIER_H_ */
+diff --git a/arm/barrier-litmus-test.c b/arm/barrier-litmus-test.c
 new file mode 100644
-index 00000000..bf9eb111
+index 00000000..5d7e61d1
 --- /dev/null
-+++ b/arm/tlbflush-code.c
-@@ -0,0 +1,209 @@
++++ b/arm/barrier-litmus-test.c
+@@ -0,0 +1,450 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
-+ * TLB Flush Race Tests
++ * ARM Barrier Litmus Tests
 + *
-+ * These tests are designed to test for incorrect TLB flush semantics
-+ * under emulation. The initial CPU will set all the others working a
-+ * compuation task and will then trigger TLB flushes across the
-+ * system. It doesn't actually need to re-map anything but the flushes
-+ * themselves will trigger QEMU's TCG self-modifying code detection
-+ * which will invalidate any generated  code causing re-translation.
-+ * Eventually the code buffer will fill and a general tb_lush() will
-+ * be triggered.
-+ *
-+ * Copyright (C) 2016-2021, Linaro, Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * This work is licensed under the terms of the GNU LGPL, version 2.
++ * This test provides a framework for testing barrier conditions on
++ * the processor. It's simpler than the more involved barrier testing
++ * frameworks as we are looking for simple failures of QEMU's TCG not
++ * weird edge cases the silicon gets wrong.
 + */
 +
 +#include <libcflat.h>
@@ -98,223 +196,478 @@ index 00000000..bf9eb111
 +#include <asm/barrier.h>
 +#include <asm/mmu.h>
 +
-+#define SEQ_LENGTH 10
-+#define SEQ_HASH 0x7cd707fe
++#define MAX_CPUS 8
 +
-+static cpumask_t smp_test_complete;
-+static int flush_count = 1000000;
-+static bool flush_self;
-+static bool flush_page;
-+static bool flush_verbose;
++/* Array size and access controls */
++static int array_size = 100000;
++static int wait_if_ahead;
++
++static cpumask_t cpu_mask;
 +
 +/*
-+ * Work functions
++ * These test_array_* structures are a contiguous array modified by two or more
++ * competing CPUs. The padding is to ensure the variables do not share
++ * cache lines.
 + *
-+ * These work functions need to be:
-+ *
-+ *  - page aligned, so we can flush one function at a time
-+ *  - have branches, so QEMU TCG generates multiple basic blocks
-+ *  - call across pages, so we exercise the TCG basic block slow path
++ * All structures start zeroed.
 + */
 +
-+/* Adler32 */
-+__attribute__((aligned(PAGE_SIZE))) static
-+uint32_t hash_array(const void *buf, size_t buflen)
-+{
-+	const uint8_t *data = (uint8_t *) buf;
-+	uint32_t s1 = 1;
-+	uint32_t s2 = 0;
++typedef struct test_array {
++	volatile unsigned int x;
++	uint8_t dummy[64];
++	volatile unsigned int y;
++	uint8_t dummy2[64];
++	volatile unsigned int r[MAX_CPUS];
++} test_array;
 +
-+	for (size_t n = 0; n < buflen; n++) {
-+		s1 = (s1 + data[n]) % 65521;
-+		s2 = (s2 + s1) % 65521;
-+	}
-+	return (s2 << 16) | s1;
++volatile test_array *array;
++
++/* Test definition structure
++ *
++ * The first function will always run on the primary CPU, it is
++ * usually the one that will detect any weirdness and trigger the
++ * failure of the test.
++ */
++
++typedef void (*test_fn)(void);
++
++typedef struct {
++	const char *test_name;
++	bool  should_pass;
++	test_fn main_fn;
++	test_fn secondary_fns[MAX_CPUS-1];
++} test_descr_t;
++
++/* Litmus tests */
++
++static unsigned long sync_start(void)
++{
++	const unsigned long gate_mask = ~0x3ffff;
++	unsigned long gate, now;
++
++	gate = get_cntvct() & gate_mask;
++	do {
++		now = get_cntvct();
++	} while ((now & gate_mask) == gate);
++
++	return now;
 +}
 +
-+__attribute__((aligned(PAGE_SIZE))) static
-+void create_fib_sequence(int length, unsigned int *array)
++/* Simple Message Passing
++ *
++ * x is the message data
++ * y is the flag to indicate the data is ready
++ *
++ * Reading x == 0 when y == 1 is a failure.
++ */
++
++static void message_passing_write(void)
 +{
 +	int i;
 +
-+	/* first two values */
-+	array[0] = 0;
-+	array[1] = 1;
-+	for (i = 2; i < length; i++)
-+		array[i] = array[i-2] + array[i-1];
-+}
++	sync_start();
++	for (i = 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
 +
-+__attribute__((aligned(PAGE_SIZE))) static
-+unsigned long long factorial(unsigned int n)
-+{
-+	unsigned int i;
-+	unsigned long long fac = 1;
-+
-+	for (i = 1; i <= n; i++)
-+		fac = fac * i;
-+	return fac;
-+}
-+
-+__attribute__((aligned(PAGE_SIZE))) static
-+void factorial_array(unsigned int n, unsigned int *input,
-+		     unsigned long long *output)
-+{
-+	unsigned int i;
-+
-+	for (i = 0; i < n; i++)
-+		output[i] = factorial(input[i]);
-+}
-+
-+__attribute__((aligned(PAGE_SIZE))) static
-+unsigned int do_computation(void)
-+{
-+	unsigned int fib_array[SEQ_LENGTH];
-+	unsigned long long facfib_array[SEQ_LENGTH];
-+	uint32_t fib_hash, facfib_hash;
-+
-+	create_fib_sequence(SEQ_LENGTH, &fib_array[0]);
-+	fib_hash = hash_array(&fib_array[0], sizeof(fib_array));
-+	factorial_array(SEQ_LENGTH, &fib_array[0], &facfib_array[0]);
-+	facfib_hash = hash_array(&facfib_array[0], sizeof(facfib_array));
-+
-+	return (fib_hash ^ facfib_hash);
-+}
-+
-+/* This provides a table of the work functions so we can flush each
-+ * page individually
-+ */
-+static void *pages[] = {&hash_array, &create_fib_sequence, &factorial,
-+			&factorial_array, &do_computation};
-+
-+static void do_flush(int i)
-+{
-+	if (flush_page)
-+		flush_tlb_page((unsigned long)pages[i % ARRAY_SIZE(pages)]);
-+	else
-+		flush_tlb_all();
-+}
-+
-+
-+static void just_compute(void)
-+{
-+	int i, errors = 0;
-+	int cpu = smp_processor_id();
-+
-+	uint32_t result;
-+
-+	report_info("CPU%d online", cpu);
-+
-+	for (i = 0 ; i < flush_count; i++) {
-+		result = do_computation();
-+
-+		if (result != SEQ_HASH) {
-+			errors++;
-+			report_info("CPU%d: seq%d 0x%"PRIx32"!=0x%x",
-+				    cpu, i, result, SEQ_HASH);
-+		}
-+
-+		if (flush_verbose && (i % 1000) == 0)
-+			report_info("CPU%d: seq%d", cpu, i);
-+
-+		if (flush_self)
-+			do_flush(i);
++		entry->x = 1;
++		entry->y = 1;
 +	}
 +
-+	report(errors == 0, "CPU%d: Done - Errors: %d", cpu, errors);
-+
-+	cpumask_set_cpu(cpu, &smp_test_complete);
-+	if (cpu != 0)
-+		halt();
++	halt();
 +}
 +
-+static void just_flush(void)
++static void message_passing_read(void)
 +{
-+	int cpu = smp_processor_id();
-+	int i = 0;
++	int i;
++	int errors = 0, ready = 0;
++
++	sync_start();
++	for (i = 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
++		unsigned int x, y;
++
++		y = entry->y;
++		x = entry->x;
++
++		if (y && !x)
++			errors++;
++		ready += y;
++	}
 +
 +	/*
-+	 * Set our CPU as done, keep flushing until everyone else
-+	 * finished
++	 * We expect this to fail but with STO backends you often get
++	 * away with it. Fudge xfail if we did actually pass.
 +	 */
-+	cpumask_set_cpu(cpu, &smp_test_complete);
++	report_xfail(errors == 0 ? false : true, errors == 0,
++		     "mp: %d errors, %d ready", errors, ready);
++}
 +
-+	while (!cpumask_full(&smp_test_complete))
-+		do_flush(i++);
++/* Simple Message Passing with barriers */
++static void message_passing_write_barrier(void)
++{
++	int i;
 +
-+	report_info("CPU%d: Done - Triggered %d flushes", cpu, i);
++	sync_start();
++	for (i = 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
++
++		entry->x = 1;
++		smp_wmb();
++		entry->y = 1;
++	}
++
++	halt();
++}
++
++static void message_passing_read_barrier(void)
++{
++	int i;
++	int errors = 0, ready = 0, not_ready = 0;
++
++	sync_start();
++	for (i = 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
++		unsigned int x, y;
++
++		y = entry->y;
++		smp_rmb();
++		x = entry->x;
++
++		if (y && !x)
++			errors++;
++
++		if (y) {
++			ready++;
++		} else {
++			not_ready++;
++
++			if (not_ready > 2) {
++				entry = &array[i+1];
++				do {
++					not_ready = 0;
++				} while (wait_if_ahead && !entry->y);
++			}
++		}
++	}
++
++	report(errors == 0, "mp barrier: %d errors, %d ready", errors, ready);
++}
++
++/* Simple Message Passing with Acquire/Release */
++static void message_passing_write_release(void)
++{
++	int i;
++
++	for (i = 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
++
++		entry->x = 1;
++		smp_store_release(&entry->y, 1);
++	}
++
++	halt();
++}
++
++static void message_passing_read_acquire(void)
++{
++	int i;
++	int errors = 0, ready = 0, not_ready = 0;
++
++	for (i = 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
++		unsigned int x, y;
++
++		y = smp_load_acquire(&entry->y);
++		x = entry->x;
++
++		if (y && !x)
++			errors++;
++
++		if (y) {
++			ready++;
++		} else {
++			not_ready++;
++
++			if (not_ready > 2) {
++				entry = &array[i+1];
++				do {
++					not_ready = 0;
++				} while (wait_if_ahead && !entry->y);
++			}
++		}
++	}
++
++	report(errors == 0, "mp acqrel: %d errors, %d ready", errors, ready);
++}
++
++/*
++ * Store after load
++ *
++ * T1: write 1 to x, load r from y
++ * T2: write 1 to y, load r from x
++ *
++ * Without memory fence r[0] && r[1] == 0
++ * With memory fence both == 0 should be impossible
++ */
++
++static void check_store_and_load_results(const char *name, int thread,
++					 bool xfail, unsigned long start,
++					 unsigned long end)
++{
++	int i;
++	int neither = 0;
++	int only_first = 0;
++	int only_second = 0;
++	int both = 0;
++
++	for ( i= 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
++
++		if (entry->r[0] == 0 &&
++		    entry->r[1] == 0)
++			neither++;
++		else if (entry->r[0] &&
++			entry->r[1])
++			both++;
++		else if (entry->r[0])
++			only_first++;
++		else
++			only_second++;
++	}
++
++	report_info("T%d: %08lx->%08lx neither=%d only_t1=%d only_t2=%d both=%d\n",
++		    thread, start, end, neither, only_first, only_second, both);
++
++	if (thread == 1)
++		report_xfail(xfail, neither==0, "%s: errors=%d", name, neither);
++
++}
++
++/*
++ * This attempts to synchronise the start of both threads to roughly
++ * the same time. On real hardware there is a little latency as the
++ * secondary vCPUs are powered up however this effect it much more
++ * exaggerated on a TCG host.
++ *
++ * Busy waits until the we pass a future point in time, returns final
++ * start time.
++ */
++
++static void store_and_load_1(void)
++{
++	int i;
++	unsigned long start, end;
++
++	start = sync_start();
++	for (i = 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
++		unsigned int r;
++
++		entry->x = 1;
++		r = entry->y;
++		entry->r[0] = r;
++	}
++	end = get_cntvct();
++
++	smp_mb();
++
++	while (!cpumask_test_cpu(1, &cpu_mask))
++		cpu_relax();
++
++	check_store_and_load_results("sal", 1, true, start, end);
++}
++
++static void store_and_load_2(void)
++{
++	int i;
++	unsigned long start, end;
++
++	start = sync_start();
++	for (i = 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
++		unsigned int r;
++
++		entry->y = 1;
++		r = entry->x;
++		entry->r[1] = r;
++	}
++	end = get_cntvct();
++
++	check_store_and_load_results("sal", 2, true, start, end);
++
++	cpumask_set_cpu(1, &cpu_mask);
++
++	halt();
++}
++
++static void store_and_load_barrier_1(void)
++{
++	int i;
++	unsigned long start, end;
++
++	start = sync_start();
++	for (i = 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
++		unsigned int r;
++
++		entry->x = 1;
++		smp_mb();
++		r = entry->y;
++		entry->r[0] = r;
++	}
++	end = get_cntvct();
++
++	smp_mb();
++
++	while (!cpumask_test_cpu(1, &cpu_mask))
++		cpu_relax();
++
++	check_store_and_load_results("sal_barrier", 1, false, start, end);
++}
++
++static void store_and_load_barrier_2(void)
++{
++	int i;
++	unsigned long start, end;
++
++	start = sync_start();
++	for (i = 0; i < array_size; i++) {
++		volatile test_array *entry = &array[i];
++		unsigned int r;
++
++		entry->y = 1;
++		smp_mb();
++		r = entry->x;
++		entry->r[1] = r;
++	}
++	end = get_cntvct();
++
++	check_store_and_load_results("sal_barrier", 2, false, start, end);
++
++	cpumask_set_cpu(1, &cpu_mask);
++
++	halt();
++}
++
++
++/* Test array */
++static test_descr_t tests[] = {
++
++	{ "mp",         false,
++	  message_passing_read,
++	  { message_passing_write }
++	},
++
++	{ "mp_barrier", true,
++	  message_passing_read_barrier,
++	  { message_passing_write_barrier }
++	},
++
++	{ "mp_acqrel", true,
++	  message_passing_read_acquire,
++	  { message_passing_write_release }
++	},
++
++	{ "sal",       false,
++	  store_and_load_1,
++	  { store_and_load_2 }
++	},
++
++	{ "sal_barrier", true,
++	  store_and_load_barrier_1,
++	  { store_and_load_barrier_2 }
++	},
++};
++
++
++static void setup_and_run_litmus(test_descr_t *test)
++{
++	array = calloc(array_size, sizeof(test_array));
++
++	if (array) {
++		int i = 0;
++
++		report_info("Allocated test array @ %p", array);
++
++		while (test->secondary_fns[i]) {
++			smp_boot_secondary(i+1, test->secondary_fns[i]);
++			i++;
++		}
++
++		test->main_fn();
++	} else
++		report(false, "%s: failed to allocate memory", test->test_name);
 +}
 +
 +int main(int argc, char **argv)
 +{
-+	int cpu, i;
-+	char prefix[100];
++	int i;
++	unsigned int j;
++	test_descr_t *test = NULL;
 +
 +	for (i = 0; i < argc; i++) {
 +		char *arg = argv[i];
 +
-+		if (strcmp(arg, "page") == 0)
-+			flush_page = true;
++		for (j = 0; j < ARRAY_SIZE(tests); j++) {
++			if (strcmp(arg, tests[j].test_name) == 0)
++				test = &tests[j];
++		}
 +
-+		if (strcmp(arg, "self") == 0)
-+			flush_self = true;
++		/* Test modifiers */
++		if (strstr(arg, "count=") != NULL) {
++			char *p = strstr(arg, "=");
 +
-+		if (strcmp(arg, "verbose") == 0)
-+			flush_verbose = true;
++			array_size = atol(p+1);
++		} else if (strcmp(arg, "wait") == 0) {
++			wait_if_ahead = 1;
++		}
 +	}
 +
-+	snprintf(prefix, sizeof(prefix), "tlbflush_%s_%s",
-+		 flush_page ? "page" : "all",
-+		 flush_self ? "self" : "other");
-+	report_prefix_push(prefix);
-+
-+	for_each_present_cpu(cpu) {
-+		if (cpu == 0)
-+			continue;
-+		smp_boot_secondary(cpu, just_compute);
-+	}
-+
-+	if (flush_self)
-+		just_compute();
++	if (test)
++		setup_and_run_litmus(test);
 +	else
-+		just_flush();
-+
-+	while (!cpumask_full(&smp_test_complete))
-+		cpu_relax();
++		report(false, "Unknown test");
 +
 +	return report_summary();
 +}
 diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index 945c2d07..34c8a95b 100644
+index 0a757556..607f5641 100644
 --- a/arm/unittests.cfg
 +++ b/arm/unittests.cfg
-@@ -241,3 +241,28 @@ arch = arm64
- file = cache.flat
- arch = arm64
- groups = cache
+@@ -296,3 +296,34 @@ smp = $(($MAX_SMP>4?4:$MAX_SMP))
+ extra_params = -append 'excl'
+ groups = nodefault mttcg locking
+ 
++# Barrier Litmus tests
++[barrier-litmus::mp]
++file = barrier-litmus-test.flat
++smp = 2
++extra_params = -append 'mp'
++groups = nodefault mttcg barrier
 +
-+# TLB Torture Tests
-+[tlbflush-code::all_other]
-+file = tlbflush-code.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+groups = nodefault mttcg
++[barrier-litmus::mp-barrier]
++file = barrier-litmus-test.flat
++smp = 2
++extra_params = -append 'mp_barrier'
++groups = nodefault mttcg barrier
 +
-+[tlbflush-code::page_other]
-+file = tlbflush-code.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'page'
-+groups = nodefault mttcg
++[barrier-litmus::mp-acqrel]
++file = barrier-litmus-test.flat
++smp = 2
++extra_params = -append 'mp_acqrel'
++groups = nodefault mttcg barrier
 +
-+[tlbflush-code::all_self]
-+file = tlbflush-code.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'self'
-+groups = nodefault mttcg
++[barrier-litmus::sal]
++file = barrier-litmus-test.flat
++smp = 2
++extra_params = -append 'sal'
++groups = nodefault mttcg barrier
 +
-+[tlbflush-code::page_self]
-+file = tlbflush-code.flat
-+smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'page self'
-+groups = nodefault mttcg
++[barrier-litmus::sal-barrier]
++file = barrier-litmus-test.flat
++smp = 2
++extra_params = -append 'sal_barrier'
++groups = nodefault mttcg barrier
 +
 -- 
 2.30.2

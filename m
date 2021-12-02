@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id s63sm2154085wme.22.2021.12.02.03.53.54
+        by smtp.gmail.com with ESMTPSA id s63sm2154174wme.22.2021.12.02.03.53.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Dec 2021 03:53:59 -0800 (PST)
+        Thu, 02 Dec 2021 03:54:00 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id DFFEF1FF9D;
-	Thu,  2 Dec 2021 11:53:52 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 2817A1FFA5;
+	Thu,  2 Dec 2021 11:53:53 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: pbonzini@redhat.com,
 	drjones@redhat.com,
@@ -17,525 +17,876 @@ Cc: kvm@vger.kernel.org,
 	christoffer.dall@arm.com,
 	maz@kernel.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [kvm-unit-tests PATCH v9 6/9] arm/locking-tests: add comprehensive locking test
-Date: Thu,  2 Dec 2021 11:53:49 +0000
-Message-Id: <20211202115352.951548-7-alex.bennee@linaro.org>
+Subject: [kvm-unit-tests PATCH v9 9/9] arm/tcg-test: some basic TCG exercising tests
+Date: Thu,  2 Dec 2021 11:53:52 +0000
+Message-Id: <20211202115352.951548-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20211202115352.951548-1-alex.bennee@linaro.org>
 References: <20211202115352.951548-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: aDAbAP5cMxXO
+X-TUID: HiAH9JsETBGc
 
-This test has been written mainly to stress multi-threaded TCG behaviour
-but will demonstrate failure by default on real hardware. The test takes
-the following parameters:
+These tests are not really aimed at KVM at all but exist to stretch
+QEMU's TCG code generator. In particular these exercise the ability of
+the TCG to:
 
-  - "lock" use GCC's locking semantics
-  - "atomic" use GCC's __atomic primitives
-  - "wfelock" use WaitForEvent sleep
-  - "excl" use load/store exclusive semantics
+  * Chain TranslationBlocks together (tight)
+  * Handle heavy usage of the tb_jump_cache (paged)
+  * Pathological case of computed local jumps (computed)
 
-Also two more options allow the test to be tweaked
+In addition the tests can be varied by adding IPI IRQs or SMC sequences
+into the mix to stress the tcg_exit and invalidation mechanisms.
 
-  - "noshuffle" disables the memory shuffling
-  - "count=%ld" set your own per-CPU increment count
+To explicitly stress the tb_flush() mechanism you can use the mod/rounds
+parameters to force more frequent tb invalidation. Combined with setting
+-tb-size 1 in QEMU to limit the code generation buffer size.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20211118184650.661575-8-alex.bennee@linaro.org>
+Message-Id: <20211118184650.661575-11-alex.bennee@linaro.org>
 
 ---
 v9
-  - move back to unittests.cfg, drop accel=tcg
-  - s/printf/report_info
+  - moved back to unittests.cfg
+  - fixed some missing accel tags
+  - s/printf/report_info/
 ---
- arm/Makefile.common |   2 +-
- arm/locking-test.c  | 322 ++++++++++++++++++++++++++++++++++++++++++++
- arm/spinlock-test.c |  87 ------------
- arm/unittests.cfg   |  30 +++++
- 4 files changed, 353 insertions(+), 88 deletions(-)
- create mode 100644 arm/locking-test.c
- delete mode 100644 arm/spinlock-test.c
+ arm/Makefile.arm     |   2 +
+ arm/Makefile.arm64   |   2 +
+ arm/Makefile.common  |   1 +
+ arm/tcg-test-asm.S   | 171 ++++++++++++++++++++++
+ arm/tcg-test-asm64.S | 170 ++++++++++++++++++++++
+ arm/tcg-test.c       | 338 +++++++++++++++++++++++++++++++++++++++++++
+ arm/unittests.cfg    |  84 +++++++++++
+ 7 files changed, 768 insertions(+)
+ create mode 100644 arm/tcg-test-asm.S
+ create mode 100644 arm/tcg-test-asm64.S
+ create mode 100644 arm/tcg-test.c
 
+diff --git a/arm/Makefile.arm b/arm/Makefile.arm
+index 3a4cc6b2..05e47f10 100644
+--- a/arm/Makefile.arm
++++ b/arm/Makefile.arm
+@@ -31,4 +31,6 @@ tests =
+ 
+ include $(SRCDIR)/$(TEST_DIR)/Makefile.common
+ 
++$(TEST_DIR)/tcg-test.elf: $(cstart.o) $(TEST_DIR)/tcg-test.o $(TEST_DIR)/tcg-test-asm.o
++
+ arch_clean: arm_clean
+diff --git a/arm/Makefile.arm64 b/arm/Makefile.arm64
+index e8a38d78..ac94f8ed 100644
+--- a/arm/Makefile.arm64
++++ b/arm/Makefile.arm64
+@@ -34,5 +34,7 @@ tests += $(TEST_DIR)/cache.flat
+ 
+ include $(SRCDIR)/$(TEST_DIR)/Makefile.common
+ 
++$(TEST_DIR)/tcg-test.elf: $(cstart.o) $(TEST_DIR)/tcg-test.o $(TEST_DIR)/tcg-test-asm64.o
++
+ arch_clean: arm_clean
+ 	$(RM) lib/arm64/.*.d
 diff --git a/arm/Makefile.common b/arm/Makefile.common
-index e3f04f2d..f9059718 100644
+index 861e5c7f..abb69489 100644
 --- a/arm/Makefile.common
 +++ b/arm/Makefile.common
-@@ -5,7 +5,6 @@
- #
- 
- tests-common  = $(TEST_DIR)/selftest.flat
--tests-common += $(TEST_DIR)/spinlock-test.flat
- tests-common += $(TEST_DIR)/pci-test.flat
- tests-common += $(TEST_DIR)/pmu.flat
- tests-common += $(TEST_DIR)/gic.flat
-@@ -13,6 +12,7 @@ tests-common += $(TEST_DIR)/psci.flat
- tests-common += $(TEST_DIR)/sieve.flat
- tests-common += $(TEST_DIR)/pl031.flat
+@@ -14,6 +14,7 @@ tests-common += $(TEST_DIR)/pl031.flat
  tests-common += $(TEST_DIR)/tlbflush-code.flat
-+tests-common += $(TEST_DIR)/locking-test.flat
+ tests-common += $(TEST_DIR)/locking-test.flat
+ tests-common += $(TEST_DIR)/barrier-litmus-test.flat
++tests-common += $(TEST_DIR)/tcg-test.flat
  
  tests-all = $(tests-common) $(tests)
  all: directories $(tests-all)
-diff --git a/arm/locking-test.c b/arm/locking-test.c
+diff --git a/arm/tcg-test-asm.S b/arm/tcg-test-asm.S
 new file mode 100644
-index 00000000..93d9250c
+index 00000000..f58fac08
 --- /dev/null
-+++ b/arm/locking-test.c
-@@ -0,0 +1,322 @@
++++ b/arm/tcg-test-asm.S
+@@ -0,0 +1,171 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/*
++ * TCG Test assembler functions for armv7 tests.
++ *
++ * Copyright (C) 2016, Linaro Ltd, Alex Bennée <alex.bennee@linaro.org>
++ *
++ * These helper functions are written in pure asm to control the size
++ * of the basic blocks and ensure they fit neatly into page
++ * aligned chunks. The pattern of branches they follow is determined by
++ * the 32 bit seed they are passed. It should be the same for each set.
++ *
++ * Calling convention
++ *  - r0, iterations
++ *  - r1, jump pattern
++ *  - r2-r3, scratch
++ *
++ * Returns r0
++ */
++
++.arm
++
++.section .text
++
++/*
++ * Tight - all blocks should quickly be patched and should run
++ * very fast unless irqs or smc gets in the way
++ */
++
++.global tight_start
++tight_start:
++        subs    r0, r0, #1
++        beq     tight_end
++
++        ror     r1, r1, #1
++        tst     r1, #1
++        beq     tightA
++        b       tight_start
++
++tightA:
++        subs    r0, r0, #1
++        beq     tight_end
++
++        ror     r1, r1, #1
++        tst     r1, #1
++        beq     tightB
++        b       tight_start
++
++tightB:
++        subs    r0, r0, #1
++        beq     tight_end
++
++        ror     r1, r1, #1
++        tst     r1, #1
++        beq     tight_start
++        b       tightA
++
++.global tight_end
++tight_end:
++        mov     pc, lr
++
++/*
++ * Computed jumps cannot be hardwired into the basic blocks so each one
++ * will either cause an exit for the main execution loop or trigger an
++ * inline look up for the next block.
++ *
++ * There is some caching which should ameliorate the cost a little.
++ */
++
++        /* Align << 13 == 4096 byte alignment */
++        .align 13
++        .global computed_start
++computed_start:
++        subs    r0, r0, #1
++        beq     computed_end
++
++        /* Jump table */
++        ror     r1, r1, #1
++        and     r2, r1, #1
++        adr     r3, computed_jump_table
++        ldr     r2, [r3, r2, lsl #2]
++        mov     pc, r2
++
++        b       computed_err
++
++computed_jump_table:
++        .word   computed_start
++        .word   computedA
++
++computedA:
++        subs    r0, r0, #1
++        beq     computed_end
++
++        /* Jump into code */
++        ror     r1, r1, #1
++        and     r2, r1, #1
++        adr     r3, 1f
++        add	r3, r2, lsl #2
++        mov     pc, r3
++1:      b       computed_start
++        b       computedB
++
++        b       computed_err
++
++
++computedB:
++        subs    r0, r0, #1
++        beq     computed_end
++        ror     r1, r1, #1
++
++        /* Conditional register load */
++        adr     r3, computedA
++        tst     r1, #1
++        adreq   r3, computed_start
++        mov     pc, r3
++
++        b       computed_err
++
++computed_err:
++        mov     r0, #1
++        .global computed_end
++computed_end:
++        mov     pc, lr
++
++
++/*
++ * Page hoping
++ *
++ * Each block is in a different page, hence the blocks never get joined
++ */
++        /* Align << 13 == 4096 byte alignment */
++        .align 13
++        .global paged_start
++paged_start:
++        subs    r0, r0, #1
++        beq     paged_end
++
++        ror     r1, r1, #1
++        tst     r1, #1
++        beq     pagedA
++        b       paged_start
++
++        /* Align << 13 == 4096 byte alignment */
++        .align 13
++pagedA:
++        subs    r0, r0, #1
++        beq     paged_end
++
++        ror     r1, r1, #1
++        tst     r1, #1
++        beq     pagedB
++        b       paged_start
++
++        /* Align << 13 == 4096 byte alignment */
++        .align 13
++pagedB:
++        subs    r0, r0, #1
++        beq     paged_end
++
++        ror     r1, r1, #1
++        tst     r1, #1
++        beq     paged_start
++        b       pagedA
++
++        /* Align << 13 == 4096 byte alignment */
++        .align 13
++.global paged_end
++paged_end:
++        mov     pc, lr
++
++.global test_code_end
++test_code_end:
+diff --git a/arm/tcg-test-asm64.S b/arm/tcg-test-asm64.S
+new file mode 100644
+index 00000000..e69a8c72
+--- /dev/null
++++ b/arm/tcg-test-asm64.S
+@@ -0,0 +1,170 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/*
++ * TCG Test assembler functions for armv8 tests.
++ *
++ * Copyright (C) 2016, Linaro Ltd, Alex Bennée <alex.bennee@linaro.org>
++ *
++ * These helper functions are written in pure asm to control the size
++ * of the basic blocks and ensure they fit neatly into page
++ * aligned chunks. The pattern of branches they follow is determined by
++ * the 32 bit seed they are passed. It should be the same for each set.
++ *
++ * Calling convention
++ *  - x0, iterations
++ *  - x1, jump pattern
++ *  - x2-x3, scratch
++ *
++ * Returns x0
++ */
++
++.section .text
++
++/*
++ * Tight - all blocks should quickly be patched and should run
++ * very fast unless irqs or smc gets in the way
++ */
++
++.global tight_start
++tight_start:
++        subs    x0, x0, #1
++        beq     tight_end
++
++        ror     x1, x1, #1
++        tst     x1, #1
++        beq     tightA
++        b       tight_start
++
++tightA:
++        subs    x0, x0, #1
++        beq     tight_end
++
++        ror     x1, x1, #1
++        tst     x1, #1
++        beq     tightB
++        b       tight_start
++
++tightB:
++        subs    x0, x0, #1
++        beq     tight_end
++
++        ror     x1, x1, #1
++        tst     x1, #1
++        beq     tight_start
++        b       tightA
++
++.global tight_end
++tight_end:
++        ret
++
++/*
++ * Computed jumps cannot be hardwired into the basic blocks so each one
++ * will either cause an exit for the main execution loop or trigger an
++ * inline look up for the next block.
++ *
++ * There is some caching which should ameliorate the cost a little.
++ */
++
++        /* Align << 13 == 4096 byte alignment */
++        .align 13
++        .global computed_start
++computed_start:
++        subs    x0, x0, #1
++        beq     computed_end
++
++        /* Jump table */
++        ror     x1, x1, #1
++        and     x2, x1, #1
++        adr     x3, computed_jump_table
++        ldr     x2, [x3, x2, lsl #3]
++        br      x2
++
++        b       computed_err
++
++computed_jump_table:
++        .quad   computed_start
++        .quad   computedA
++
++computedA:
++        subs    x0, x0, #1
++        beq     computed_end
++
++        /* Jump into code */
++        ror     x1, x1, #1
++        and     x2, x1, #1
++        adr     x3, 1f
++        add	x3, x3, x2, lsl #2
++        br      x3
++1:      b       computed_start
++        b       computedB
++
++        b       computed_err
++
++
++computedB:
++        subs    x0, x0, #1
++        beq     computed_end
++        ror     x1, x1, #1
++
++        /* Conditional register load */
++        adr     x2, computedA
++        adr     x3, computed_start
++        tst     x1, #1
++        csel    x2, x3, x2, eq
++        br      x2
++
++        b       computed_err
++
++computed_err:
++        mov     x0, #1
++        .global computed_end
++computed_end:
++        ret
++
++
++/*
++ * Page hoping
++ *
++ * Each block is in a different page, hence the blocks never get joined
++ */
++        /* Align << 13 == 4096 byte alignment */
++        .align 13
++        .global paged_start
++paged_start:
++        subs    x0, x0, #1
++        beq     paged_end
++
++        ror     x1, x1, #1
++        tst     x1, #1
++        beq     pagedA
++        b       paged_start
++
++        /* Align << 13 == 4096 byte alignment */
++        .align 13
++pagedA:
++        subs    x0, x0, #1
++        beq     paged_end
++
++        ror     x1, x1, #1
++        tst     x1, #1
++        beq     pagedB
++        b       paged_start
++
++        /* Align << 13 == 4096 byte alignment */
++        .align 13
++pagedB:
++        subs    x0, x0, #1
++        beq     paged_end
++
++        ror     x1, x1, #1
++        tst     x1, #1
++        beq     paged_start
++        b       pagedA
++
++        /* Align << 13 == 4096 byte alignment */
++        .align 13
++.global paged_end
++paged_end:
++        ret
++
++.global test_code_end
++test_code_end:
+diff --git a/arm/tcg-test.c b/arm/tcg-test.c
+new file mode 100644
+index 00000000..3efec2b2
+--- /dev/null
++++ b/arm/tcg-test.c
+@@ -0,0 +1,338 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
-+ * Locking Test
++ * ARM TCG Tests
 + *
-+ * This test allows us to stress the various atomic primitives of a VM
-+ * guest. A number of methods are available that use various patterns
-+ * to implement a lock.
-+ *
-+ * Copyright (C) 2017 Linaro
-+ * Author: Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
++ * These tests are explicitly aimed at stretching the QEMU TCG engine.
 + */
 +
 +#include <libcflat.h>
++#include <asm/processor.h>
 +#include <asm/smp.h>
 +#include <asm/cpumask.h>
 +#include <asm/barrier.h>
 +#include <asm/mmu.h>
++#include <asm/gic.h>
 +
 +#include <prng.h>
 +
 +#define MAX_CPUS 8
 +
-+/* Test definition structure
-+ *
-+ * A simple structure that describes the test name, expected pass and
-+ * increment function.
-+ */
++/* These entry points are in the assembly code */
++extern int tight_start(uint32_t count, uint32_t pattern);
++extern int computed_start(uint32_t count, uint32_t pattern);
++extern int paged_start(uint32_t count, uint32_t pattern);
++extern uint32_t tight_end;
++extern uint32_t computed_end;
++extern uint32_t paged_end;
++extern unsigned long test_code_end;
 +
-+/* Function pointers for test */
-+typedef void (*inc_fn)(int cpu);
++typedef int (*test_fn)(uint32_t count, uint32_t pattern);
 +
 +typedef struct {
 +	const char *test_name;
-+	bool  should_pass;
-+	inc_fn main_fn;
++	bool       should_pass;
++	test_fn    start_fn;
++	uint32_t   *code_end;
 +} test_descr_t;
-+
-+/* How many increments to do */
-+static int increment_count = 1000000;
-+static bool do_shuffle = true;
-+
-+/* Shared value all the tests attempt to safely increment using
-+ * various forms of atomic locking and exclusive behaviour.
-+ */
-+static unsigned int shared_value;
-+
-+/* PAGE_SIZE * uint32_t means we span several pages */
-+__attribute__((aligned(PAGE_SIZE))) static uint32_t memory_array[PAGE_SIZE];
-+
-+/* We use the alignment of the following to ensure accesses to locking
-+ * and synchronisation primatives don't interfere with the page of the
-+ * shared value
-+ */
-+__attribute__((aligned(PAGE_SIZE))) static unsigned int per_cpu_value[MAX_CPUS];
-+__attribute__((aligned(PAGE_SIZE))) static cpumask_t smp_test_complete;
-+__attribute__((aligned(PAGE_SIZE))) struct isaac_ctx prng_context[MAX_CPUS];
-+
-+/* Some of the approaches use a global lock to prevent contention. */
-+static int global_lock;
-+
-+/* In any SMP setting this *should* fail due to cores stepping on
-+ * each other updating the shared variable
-+ */
-+static void increment_shared(int cpu)
-+{
-+	(void)cpu;
-+
-+	shared_value++;
-+}
-+
-+/* GCC __sync primitives are deprecated in favour of __atomic */
-+static void increment_shared_with_lock(int cpu)
-+{
-+	(void)cpu;
-+
-+	while (__sync_lock_test_and_set(&global_lock, 1));
-+
-+	shared_value++;
-+
-+	__sync_lock_release(&global_lock);
-+}
-+
-+/*
-+ * In practice even __ATOMIC_RELAXED uses ARM's ldxr/stex exclusive
-+ * semantics
-+ */
-+static void increment_shared_with_atomic(int cpu)
-+{
-+	(void)cpu;
-+
-+	__atomic_add_fetch(&shared_value, 1, __ATOMIC_SEQ_CST);
-+}
-+
-+
-+/*
-+ * Load/store exclusive with WFE (wait-for-event)
-+ *
-+ * See ARMv8 ARM examples:
-+ *   Use of Wait For Event (WFE) and Send Event (SEV) with locks
-+ */
-+
-+static void increment_shared_with_wfelock(int cpu)
-+{
-+	(void)cpu;
-+
-+#if defined(__aarch64__)
-+	asm volatile(
-+	"	mov     w1, #1\n"
-+	"       sevl\n"
-+	"       prfm PSTL1KEEP, [%[lock]]\n"
-+	"1:     wfe\n"
-+	"	ldaxr	w0, [%[lock]]\n"
-+	"	cbnz    w0, 1b\n"
-+	"	stxr    w0, w1, [%[lock]]\n"
-+	"	cbnz	w0, 1b\n"
-+	/* lock held */
-+	"	ldr	w0, [%[sptr]]\n"
-+	"	add	w0, w0, #0x1\n"
-+	"	str	w0, [%[sptr]]\n"
-+	/* now release */
-+	"	stlr	wzr, [%[lock]]\n"
-+	: /* out */
-+	: [lock] "r" (&global_lock), [sptr] "r" (&shared_value) /* in */
-+	: "w0", "w1", "cc");
-+#else
-+	asm volatile(
-+	"	mov     r1, #1\n"
-+	"1:	ldrex	r0, [%[lock]]\n"
-+	"	cmp     r0, #0\n"
-+	"	wfene\n"
-+	"	strexeq r0, r1, [%[lock]]\n"
-+	"	cmpeq	r0, #0\n"
-+	"	bne	1b\n"
-+	"	dmb\n"
-+	/* lock held */
-+	"	ldr	r0, [%[sptr]]\n"
-+	"	add	r0, r0, #0x1\n"
-+	"	str	r0, [%[sptr]]\n"
-+	/* now release */
-+	"	mov	r0, #0\n"
-+	"	dmb\n"
-+	"	str	r0, [%[lock]]\n"
-+	"	dsb\n"
-+	"	sev\n"
-+	: /* out */
-+	: [lock] "r" (&global_lock), [sptr] "r" (&shared_value) /* in */
-+	: "r0", "r1", "cc");
-+#endif
-+}
-+
-+
-+/*
-+ * Hand-written version of the load/store exclusive
-+ */
-+static void increment_shared_with_excl(int cpu)
-+{
-+	(void)cpu;
-+
-+#if defined(__aarch64__)
-+	asm volatile(
-+	"1:	ldxr	w0, [%[sptr]]\n"
-+	"	add     w0, w0, #0x1\n"
-+	"	stxr	w1, w0, [%[sptr]]\n"
-+	"	cbnz	w1, 1b\n"
-+	: /* out */
-+	: [sptr] "r" (&shared_value) /* in */
-+	: "w0", "w1", "cc");
-+#else
-+	asm volatile(
-+	"1:	ldrex	r0, [%[sptr]]\n"
-+	"	add     r0, r0, #0x1\n"
-+	"	strex	r1, r0, [%[sptr]]\n"
-+	"	cmp	r1, #0\n"
-+	"	bne	1b\n"
-+	: /* out */
-+	: [sptr] "r" (&shared_value) /* in */
-+	: "r0", "r1", "cc");
-+#endif
-+}
 +
 +/* Test array */
 +static test_descr_t tests[] = {
-+	{ "none", false, increment_shared },
-+	{ "lock", true, increment_shared_with_lock },
-+	{ "atomic", true, increment_shared_with_atomic },
-+	{ "wfelock", true, increment_shared_with_wfelock },
-+	{ "excl", true, increment_shared_with_excl }
++       /*
++	* Tight chain.
++	*
++	* These are a bunch of basic blocks that have fixed branches in
++	* a page aligned space. The branches taken are decided by a
++	* psuedo-random bitmap for each CPU.
++	*
++	* Once the basic blocks have been chained together by the TCG they
++	* should run until they reach their block count. This will be the
++	* most efficient mode in which generated code is run. The only other
++	* exits will be caused by interrupts or TB invalidation.
++	*/
++	{ "tight", true, tight_start, &tight_end },
++	/*
++	 * Computed jumps.
++	 *
++	 * A bunch of basic blocks which just do computed jumps so the basic
++	 * block is never chained but they are all within a page (maybe not
++	 * required). This will exercise the cache lookup but not the new
++	 * generation.
++	 */
++	{ "computed", true, computed_start, &computed_end },
++	/*
++	 * Page ping pong.
++	 *
++	 * Have the blocks are separated by PAGE_SIZE so they can never
++	 * be chained together.
++	 *
++	 */
++	{ "paged", true, paged_start, &paged_end}
 +};
 +
-+/* The idea of this is just to generate some random load/store
-+ * activity which may or may not race with an un-barried incremented
-+ * of the shared counter
-+ */
-+static void shuffle_memory(int cpu)
++static test_descr_t *test;
++
++static int iterations = 1000000;
++static int rounds = 1000;
++static int mod_freq = 5;
++static uint32_t pattern[MAX_CPUS];
++
++/* control flags */
++static int smc;
++static int irq;
++static int check_irq;
++
++/* IRQ accounting */
++#define MAX_IRQ_IDS 16
++static int irqv;
++static unsigned long irq_sent_ts[MAX_CPUS][MAX_CPUS][MAX_IRQ_IDS];
++
++static int irq_recv[MAX_CPUS];
++static int irq_sent[MAX_CPUS];
++static int irq_overlap[MAX_CPUS];  /* if ts > now, i.e a race */
++static int irq_slow[MAX_CPUS];  /* if delay > threshold */
++static unsigned long irq_latency[MAX_CPUS]; /* cumulative time */
++
++static int errors[MAX_CPUS];
++
++static cpumask_t smp_test_complete;
++
++static cpumask_t ready;
++
++static void wait_on_ready(void)
 +{
-+	int i;
-+	uint32_t lspat = isaac_next_uint32(&prng_context[cpu]);
-+	uint32_t seq = isaac_next_uint32(&prng_context[cpu]);
-+	int count = seq & 0x1f;
-+	uint32_t val = 0;
-+
-+	seq >>= 5;
-+
-+	for (i = 0; i < count; i++) {
-+		int index = seq & ~PAGE_MASK;
-+
-+		if (lspat & 1)
-+			val ^= memory_array[index];
-+		else
-+			memory_array[index] = val;
-+
-+		seq >>= PAGE_SHIFT;
-+		seq ^= lspat;
-+		lspat >>= 1;
-+	}
-+
++	cpumask_set_cpu(smp_processor_id(), &ready);
++	while (!cpumask_full(&ready))
++		cpu_relax();
 +}
 +
-+static inc_fn increment_function;
++/* This triggers TCGs SMC detection by writing values to the executing
++ * code pages. We are not actually modifying the instructions and the
++ * underlying code will remain unchanged. However this should trigger
++ * invalidation of the Translation Blocks
++ */
 +
-+static void do_increment(void)
++static void trigger_smc_detection(uint32_t *start, uint32_t *end)
 +{
-+	int i;
++	volatile uint32_t *ptr = start;
++
++	while (ptr < end) {
++		uint32_t inst = *ptr;
++		*ptr++ = inst;
++	}
++}
++
++/* Handler for receiving IRQs */
++
++static void irq_handler(struct pt_regs *regs __unused)
++{
++	unsigned long then, now = get_cntvct();
 +	int cpu = smp_processor_id();
++	u32 irqstat = gic_read_iar();
++	u32 irqnr = gic_iar_irqnr(irqstat);
 +
-+	report_info("CPU%d: online and ++ing", cpu);
++	if (irqnr != GICC_INT_SPURIOUS) {
++		unsigned int src_cpu = (irqstat >> 10) & 0x7;
 +
-+	for (i = 0; i < increment_count; i++) {
-+		per_cpu_value[cpu]++;
-+		increment_function(cpu);
++		gic_write_eoir(irqstat);
++		irq_recv[cpu]++;
 +
-+		if (do_shuffle)
-+			shuffle_memory(cpu);
++		then = irq_sent_ts[src_cpu][cpu][irqnr];
++
++		if (then > now) {
++			irq_overlap[cpu]++;
++		} else {
++			unsigned long latency = (now - then);
++
++			if (latency > 30000)
++				irq_slow[cpu]++;
++			else
++				irq_latency[cpu] += latency;
++		}
++	}
++}
++
++/* This triggers cross-CPU IRQs. Each IRQ should cause the basic block
++ * execution to finish the main run-loop get entered again.
++ */
++static int send_cross_cpu_irqs(int this_cpu, int irq)
++{
++	int cpu, sent = 0;
++	cpumask_t mask;
++
++	cpumask_copy(&mask, &cpu_present_mask);
++
++	for_each_present_cpu(cpu) {
++		if (cpu != this_cpu) {
++			irq_sent_ts[this_cpu][cpu][irq] = get_cntvct();
++			cpumask_clear_cpu(cpu, &mask);
++			sent++;
++		}
 +	}
 +
-+	report_info("CPU%d: Done, %d incs\n", cpu, per_cpu_value[cpu]);
++	gic_ipi_send_mask(irq, &mask);
++
++	return sent;
++}
++
++static void do_test(void)
++{
++	int cpu = smp_processor_id();
++	int i, irq_id = 0;
++
++	report_info("CPU%d: online and setting up with pattern 0x%"PRIx32,
++		    cpu, pattern[cpu]);
++
++	if (irq) {
++		gic_enable_defaults();
++#ifdef __arm__
++		install_exception_handler(EXCPTN_IRQ, irq_handler);
++#else
++		install_irq_handler(EL1H_IRQ, irq_handler);
++#endif
++		local_irq_enable();
++
++		wait_on_ready();
++	}
++
++	for (i = 0; i < rounds; i++) {
++		/* Enter the blocks */
++		errors[cpu] += test->start_fn(iterations, pattern[cpu]);
++
++		if ((i + cpu) % mod_freq == 0) {
++			if (smc)
++				trigger_smc_detection((uint32_t *) test->start_fn,
++						      test->code_end);
++
++			if (irq) {
++				irq_sent[cpu] += send_cross_cpu_irqs(cpu, irq_id);
++				irq_id++;
++				irq_id = irq_id % 15;
++			}
++		}
++	}
++
++	/* ensure everything complete before we finish */
++	smp_wmb();
 +
 +	cpumask_set_cpu(cpu, &smp_test_complete);
 +	if (cpu != 0)
 +		halt();
 +}
 +
-+static void setup_and_run_test(test_descr_t *test)
++static void report_irq_stats(int cpu)
 +{
-+	unsigned int i, sum = 0;
-+	int cpu, cpu_cnt = 0;
++	int recv = irq_recv[cpu];
++	int race = irq_overlap[cpu];
++	int slow = irq_slow[cpu];
 +
-+	increment_function = test->main_fn;
++	unsigned long avg_latency = irq_latency[cpu] / (recv - (race + slow));
 +
-+	/* fill our random page */
-+	for (i = 0; i < PAGE_SIZE; i++)
-+		memory_array[i] = isaac_next_uint32(&prng_context[0]);
++	report_info("CPU%d: %d irqs (%d races, %d slow,  %ld ticks avg latency)",
++		    cpu, recv, race, slow, avg_latency);
++}
 +
++
++static void setup_and_run_tcg_test(void)
++{
++	static const unsigned char seed[] = "tcg-test";
++	struct isaac_ctx prng_context;
++	int cpu;
++	int total_err = 0, total_sent = 0, total_recv = 0;
++
++	isaac_init(&prng_context, &seed[0], sizeof(seed));
++
++	/* boot other CPUs */
 +	for_each_present_cpu(cpu) {
-+		uint32_t seed2 = isaac_next_uint32(&prng_context[0]);
++		pattern[cpu] = isaac_next_uint32(&prng_context);
 +
-+		cpu_cnt++;
 +		if (cpu == 0)
 +			continue;
 +
-+		isaac_init(&prng_context[cpu], (unsigned char *) &seed2, sizeof(seed2));
-+		smp_boot_secondary(cpu, do_increment);
++		smp_boot_secondary(cpu, do_test);
 +	}
 +
-+	do_increment();
++	do_test();
 +
 +	while (!cpumask_full(&smp_test_complete))
 +		cpu_relax();
 +
-+	/* All CPUs done, do we add up */
++	/* Ensure everything completes before we check the data */
++	smp_mb();
++
++	/* Now total up errors and irqs */
 +	for_each_present_cpu(cpu) {
-+		sum += per_cpu_value[cpu];
++		total_err += errors[cpu];
++		total_sent += irq_sent[cpu];
++		total_recv += irq_recv[cpu];
++
++		if (check_irq)
++			report_irq_stats(cpu);
 +	}
 +
-+	if (test->should_pass)
-+		report(sum == shared_value, "total incs %d", shared_value);
++	if (check_irq)
++		report(total_sent == total_recv && total_err == 0,
++		       "%d IRQs sent, %d received, %d errors\n",
++		       total_sent, total_recv, total_err == 0);
 +	else
-+		report_xfail(true, sum == shared_value, "total incs %d", shared_value);
++		report(total_err == 0, "%d errors, IRQs not checked", total_err);
 +}
 +
 +int main(int argc, char **argv)
 +{
-+	static const unsigned char seed[] = "myseed";
-+	test_descr_t *test = &tests[0];
 +	int i;
 +	unsigned int j;
-+
-+	isaac_init(&prng_context[0], &seed[0], sizeof(seed));
 +
 +	for (i = 0; i < argc; i++) {
 +		char *arg = argv[i];
 +
-+		/* Check for test name */
 +		for (j = 0; j < ARRAY_SIZE(tests); j++) {
 +			if (strcmp(arg, tests[j].test_name) == 0)
 +				test = &tests[j];
 +		}
 +
 +		/* Test modifiers */
-+		if (strcmp(arg, "noshuffle") == 0) {
-+			do_shuffle = false;
-+			report_prefix_push("noshuffle");
-+		} else if (strstr(arg, "count=") != NULL) {
++		if (strstr(arg, "mod=") != NULL) {
 +			char *p = strstr(arg, "=");
 +
-+			increment_count = atol(p+1);
-+		} else {
-+			isaac_reseed(&prng_context[0], (unsigned char *) arg, strlen(arg));
++			mod_freq = atol(p+1);
 +		}
++
++		if (strstr(arg, "rounds=") != NULL) {
++			char *p = strstr(arg, "=");
++
++			rounds = atol(p+1);
++		}
++
++		if (strcmp(arg, "smc") == 0) {
++			unsigned long test_start = (unsigned long) &tight_start;
++			unsigned long test_end = (unsigned long) &test_code_end;
++
++			smc = 1;
++			mmu_set_range_ptes(mmu_idmap, test_start, test_start, test_end,
++					__pgprot(PTE_WBWA));
++
++			report_prefix_push("smc");
++		}
++
++		if (strcmp(arg, "irq") == 0) {
++			irq = 1;
++			if (!gic_init())
++				report_abort("No supported gic present!");
++			irqv = gic_version();
++			report_prefix_push("irq");
++		}
++
++		if (strcmp(arg, "check_irq") == 0)
++			check_irq = 1;
 +	}
 +
-+	if (test)
-+		setup_and_run_test(test);
-+	else
++	if (test) {
++		/* ensure args visible to all cores */
++		smp_mb();
++		setup_and_run_tcg_test();
++	} else {
 +		report(false, "Unknown test");
++	}
 +
 +	return report_summary();
 +}
-diff --git a/arm/spinlock-test.c b/arm/spinlock-test.c
-deleted file mode 100644
-index 73aea76a..00000000
---- a/arm/spinlock-test.c
-+++ /dev/null
-@@ -1,87 +0,0 @@
--/*
-- * Spinlock test
-- *
-- * This code is based on code from the tcg_baremetal_tests.
-- *
-- * Copyright (C) 2015 Virtual Open Systems SAS
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- */
--
--#include <libcflat.h>
--#include <asm/smp.h>
--#include <asm/barrier.h>
--
--#define LOOP_SIZE 10000000
--
--struct lock_ops {
--	void (*lock)(int *v);
--	void (*unlock)(int *v);
--};
--static struct lock_ops lock_ops;
--
--static void gcc_builtin_lock(int *lock_var)
--{
--	while (__sync_lock_test_and_set(lock_var, 1));
--}
--static void gcc_builtin_unlock(int *lock_var)
--{
--	__sync_lock_release(lock_var);
--}
--static void none_lock(int *lock_var)
--{
--	while (*(volatile int *)lock_var != 0);
--	*(volatile int *)lock_var = 1;
--}
--static void none_unlock(int *lock_var)
--{
--	*(volatile int *)lock_var = 0;
--}
--
--static int global_a, global_b;
--static int global_lock;
--
--static void test_spinlock(void *data __unused)
--{
--	int i, errors = 0;
--	int cpu = smp_processor_id();
--
--	printf("CPU%d online\n", cpu);
--
--	for (i = 0; i < LOOP_SIZE; i++) {
--
--		lock_ops.lock(&global_lock);
--
--		if (global_a == (cpu + 1) % 2) {
--			global_a = 1;
--			global_b = 0;
--		} else {
--			global_a = 0;
--			global_b = 1;
--		}
--
--		if (global_a == global_b)
--			errors++;
--
--		lock_ops.unlock(&global_lock);
--	}
--	report(errors == 0, "CPU%d: Done - Errors: %d", cpu, errors);
--}
--
--int main(int argc, char **argv)
--{
--	report_prefix_push("spinlock");
--	if (argc > 1 && strcmp(argv[1], "bad") != 0) {
--		lock_ops.lock = gcc_builtin_lock;
--		lock_ops.unlock = gcc_builtin_unlock;
--	} else {
--		lock_ops.lock = none_lock;
--		lock_ops.unlock = none_unlock;
--	}
--
--	on_cpus(test_spinlock, NULL);
--
--	return report_summary();
--}
 diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index 34c8a95b..0a757556 100644
+index 607f5641..8adbebd8 100644
 --- a/arm/unittests.cfg
 +++ b/arm/unittests.cfg
-@@ -266,3 +266,33 @@ smp = $(($MAX_SMP>4?4:$MAX_SMP))
- extra_params = -append 'page self'
- groups = nodefault mttcg
+@@ -327,3 +327,87 @@ smp = 2
+ extra_params = -append 'sal_barrier'
+ groups = nodefault mttcg barrier
  
-+# Locking tests
-+[locking::none]
-+file = locking-test.flat
++# TCG Tests
++[tcg::tight]
++file = tcg-test.flat
 +smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+groups = nodefault mttcg locking
++extra_params = -append 'tight'
++groups = nodefault mttcg
++accel = tcg
 +
-+[locking::lock]
-+file = locking-test.flat
++[tcg::tight-smc]
++file = tcg-test.flat
 +smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'lock'
-+groups = nodefault mttcg locking
++extra_params = -append 'tight smc' -accel tcg,tb-size=1
++groups = nodefault mttcg
++accel = tcg
 +
-+[locking::atomic]
-+file = locking-test.flat
++[tcg::tight-irq]
++file = tcg-test.flat
 +smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'atomic'
-+groups = nodefault mttcg locking
++extra_params = -append 'tight irq'
++groups = nodefault mttcg
++accel = tcg
 +
-+[locking::wfelock]
-+file = locking-test.flat
++[tcg::tight-smc-irq]
++file = tcg-test.flat
 +smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'wfelock'
-+groups = nodefault mttcg locking
++extra_params = -append 'tight smc irq'
++groups = nodefault mttcg
++accel = tcg
 +
-+[locking::excl]
-+file = locking-test.flat
++[tcg::computed]
++file = tcg-test.flat
 +smp = $(($MAX_SMP>4?4:$MAX_SMP))
-+extra_params = -append 'excl'
-+groups = nodefault mttcg locking
++extra_params = -append 'computed'
++groups = nodefault mttcg
++accel = tcg
 +
++[tcg::computed-smc]
++file = tcg-test.flat
++smp = $(($MAX_SMP>4?4:$MAX_SMP))
++extra_params = -append 'computed smc'
++groups = nodefault mttcg
++accel = tcg
++
++[tcg::computed-irq]
++file = tcg-test.flat
++smp = $(($MAX_SMP>4?4:$MAX_SMP))
++extra_params = -append 'computed irq'
++groups = nodefault mttcg
++accel = tcg
++
++[tcg::computed-smc-irq]
++file = tcg-test.flat
++smp = $(($MAX_SMP>4?4:$MAX_SMP))
++extra_params = -append 'computed smc irq'
++groups = nodefault mttcg
++accel = tcg
++
++[tcg::paged]
++file = tcg-test.flat
++smp = $(($MAX_SMP>4?4:$MAX_SMP))
++extra_params = -append 'paged'
++groups = nodefault mttcg
++accel = tcg
++
++[tcg::paged-smc]
++file = tcg-test.flat
++smp = $(($MAX_SMP>4?4:$MAX_SMP))
++extra_params = -append 'paged smc'
++groups = nodefault mttcg
++accel = tcg
++
++[tcg::paged-irq]
++file = tcg-test.flat
++smp = $(($MAX_SMP>4?4:$MAX_SMP))
++extra_params = -append 'paged irq'
++groups = nodefault mttcg
++accel = tcg
++
++[tcg::paged-smc-irq]
++file = tcg-test.flat
++smp = $(($MAX_SMP>4?4:$MAX_SMP))
++extra_params = -append 'paged smc irq'
++groups = nodefault mttcg
++accel = tcg
 -- 
 2.30.2

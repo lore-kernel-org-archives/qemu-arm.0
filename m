@@ -1,122 +1,92 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id o3sm2656828wms.10.2021.12.02.08.02.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Dec 2021 08:02:17 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 343AB1FF96;
-	Thu,  2 Dec 2021 16:02:17 +0000 (GMT)
-References: <c76bde31-8f3b-2d03-b7c7-9e026d4b5873@huawei.com>
-User-agent: mu4e 1.7.5; emacs 28.0.60
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Vasilev Oleg <vasilev.oleg@huawei.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Richard Henderson
- <richard.henderson@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
- "Emilio G. Cota" <cota@braap.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Plotnik Nikolay <plotnik.nikolay@huawei.com>, Andrey Shinkevich
- <andrey.shinkevich@huawei.com>, Konobeev Vladimir
- <konobeev.vladimir@huawei.com>, "Chengen (William, FixNet)"
- <chengen@huawei.com>
-Subject: Re: Suggestions for TCG performance improvements
-Date: Thu, 02 Dec 2021 15:31:38 +0000
-In-reply-to: <c76bde31-8f3b-2d03-b7c7-9e026d4b5873@huawei.com>
-Message-ID: <87bl1zxaeu.fsf@linaro.org>
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1140923lfk;
+        Thu, 2 Dec 2021 21:22:10 -0800 (PST)
+X-Received: by 2002:a05:6602:1686:: with SMTP id s6mr19269048iow.186.1638508930079;
+        Thu, 02 Dec 2021 21:22:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638508930; cv=none;
+        d=google.com; s=arc-20160816;
+        b=N4rp/08gZKHo+cEfaPMYKgVY7gDGT/32XyOSXIeI6cxWt+gWSC6r6jbc6oLAFtifyV
+         aYRiBfhOElbgYd9NPgp4mLfZeztj9aSAFRYn8HV2kntMHrEJR+x12JSFK/wfGQAet2Ww
+         re4Oa/Jrfm0mSchzjPTxb9G4jfBA8+5aJMu8NsFM6SyPmFnK32f6f+Fx8kly6MB3ZrRL
+         klhYURBXe91bP30XvTHNKvMpPnAJTbNpftmI5tFgfqzHrQu68tXDYGaOP1qy4STlNETS
+         e0WjD7ImNw7xsI3EvAiJC+vg4XbfIpdS824CglacBjfvc9Kko2y4SjI8iveGY/LILou+
+         91dg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=sK6+IUHKECnagMWmHHLsPx+swwwlBUbpQ5fGyoSzNTI=;
+        b=YE11u32bOB2cp/nBNcE8fTHtT9RdW6THNL9XZ57MqxZ2HcI6WWom7IUIHgvBLJHrT3
+         2TskwqBQMG8KGOHLN9IfP4FCJnXXooTZ9b97IcVxSoCAxO/yFzD0BrXK6+wL/eLhQHQu
+         XuW2V//cp+kDqZhKAUX3cevlhJBXeecor5xvx5dYR3UYgGn36dPBXBOA49F3rdDBvyhR
+         Aj3qLcumGSUJNsiuTra6jTIDIfa0YEc4/pFK7tPObCbTrq3wW7phDqr7gNsrh28EnXQ5
+         9QgXlecXJmoVHd5spcrXFb/0EJbC2LTdx80FQNv6ACDyoqmNsSG/t1GKmyt4gTdqioDg
+         XbWg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@braap-org.20210112.gappssmtp.com header.s=20210112 header.b=Hoqe7c2O;
+       spf=softfail (google.com: domain of transitioning cota@braap.org does not designate 209.85.220.41 as permitted sender) smtp.mailfrom=cota@braap.org
+Return-Path: <cota@braap.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id v6sor1057611iol.14.2021.12.02.21.22.09
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 02 Dec 2021 21:22:10 -0800 (PST)
+Received-SPF: softfail (google.com: domain of transitioning cota@braap.org does not designate 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@braap-org.20210112.gappssmtp.com header.s=20210112 header.b=Hoqe7c2O;
+       spf=softfail (google.com: domain of transitioning cota@braap.org does not designate 209.85.220.41 as permitted sender) smtp.mailfrom=cota@braap.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=braap-org.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=sK6+IUHKECnagMWmHHLsPx+swwwlBUbpQ5fGyoSzNTI=;
+        b=Hoqe7c2OgE9IZuKeXSJ5y1YZbumMhX9GhyFV8oOsQ05rpaguLHA5Twn4km2lYulTi6
+         dfKZN2Aaw1qpQtaEqrGIJZMhvlsOEa0TxqyzlYsLNO6CMkM3wnEcI8Li/zQEWdHF4Vsq
+         oBiC818M6dxY3b5Wg2OjNbuWfMHdeyj0AUjdl4nJCTB8nQpebwb7IvjXjfo6QotVZqb1
+         l3osU4XmMC+W8S2tT2Lg8L2/NxlLJtcQmJwE3ka2/XtymIgwqXnVr843GJnGqN8RYzEO
+         VczdUv69gm/sJtuhg0gweRn7bZ2IMh58FUWzCavaioxE1OiC9V8KskPSrRRKN/KKPL71
+         Qp7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=sK6+IUHKECnagMWmHHLsPx+swwwlBUbpQ5fGyoSzNTI=;
+        b=LuJmd5zts5hSjjGjeNbCNyWe9KBjNnFduUKYET+rZQj+ThtBMB99qbaglwmmo01wU1
+         BpuZEMHihmJPu7lWyau+Omc8yQFJbXu1WqP4oOXEoTy3r5suNXjSEhMhglOXexX15JT6
+         5udNqKFs1yAYaNKZIZMyDjKd2CVVsB3gUCIk31TrEGJSXjJRR3Ek14ywb3F8lc6uIHJV
+         VQIJR7LKAKyXrVkqfAw62JvyztGws4hNb6S7bnhsueO0CCecwX4a2sDzqi9+6B/s6z29
+         05xdt4JrYso8aAIA6sLE7ZZuO6Jbefc7Ktei/D96IzbUnrfdGTGQQTnv+7BcWtoz/ZQg
+         ybjQ==
+X-Gm-Message-State: AOAM5329FD6fb+FhRWf6ZYWlSX6jj7qKIebVnUk8YgJz4Q/W/40TnlWz
+	hgiFLGUVtcEYQ8zsbjMTPqxXJ0/o/s0yW+ATRLz4vA==
+X-Google-Smtp-Source: ABdhPJyoB+n1KntqFFxQ/d7g0KsP+wVkB6a+2B8DiQpAv65LJXlsPdIL+Dm5HQRGb+kpS2UK7Z7+xAOEtoOPClpP37A=
+X-Received: by 2002:a6b:d904:: with SMTP id r4mr18379827ioc.52.1638508929680;
+ Thu, 02 Dec 2021 21:22:09 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: ffUz/uFhlxaA
+References: <c76bde31-8f3b-2d03-b7c7-9e026d4b5873@huawei.com>
+In-Reply-To: <c76bde31-8f3b-2d03-b7c7-9e026d4b5873@huawei.com>
+From: Emilio Cota <cota@braap.org>
+Date: Fri, 3 Dec 2021 00:21:57 -0500
+Message-ID: <CAJY1Aq7-J+nnf1k_HdbUnc3mJvua0VHYPNMokCKeitG1ZbH91g@mail.gmail.com>
+Subject: Re: Suggestions for TCG performance improvements
+To: Vasilev Oleg <vasilev.oleg@huawei.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Richard Henderson <richard.henderson@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+	Plotnik Nikolay <plotnik.nikolay@huawei.com>, 
+	Andrey Shinkevich <andrey.shinkevich@huawei.com>, 
+	Konobeev Vladimir <konobeev.vladimir@huawei.com>, 
+	"Chengen (William, FixNet)" <chengen@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 1zSNyZ2i0bYe
 
-
-Vasilev Oleg <vasilev.oleg@huawei.com> writes:
-
-> Hi everyone,
->
-> I've recently been tasked with improving QEMU performance and would like
-> to discuss several possible optimizations which we could implement and
-> later upstream.
-
-Excellent - it's always good to see others that want to improve our
-emulation performance ;-)
-
-> We ran the sysbench[1] tool in threads mode on a linux installed as
-> an aarch64 guest on x86_64 host. The QEMU profile flamegraph is attached
-> to this message. One of the conclusions is that refilling TLB takes
-> a substantial amount of time, and we are thinking of some solutions to
-> abstain from refilling TLB so often.
-
-Refilling the TLB is always going to be an expensive operation as
-besides the complexity of the slow-path we also need to walk the guest
-page tables to come up with the new contents.
-
-> I've discovered some MMU-related suggestions in the 2018 letter[2], and
-> those seem to be still not implemented (flush still uses memset[3]).
-> Do you think we should go forward with implementing those?
-
-I doubt you can do better than memset which should be the most optimised
-memory clear for the platform. We could consider a separate thread to
-proactively allocate and clear new TLBs so we don't have to do it at
-flush time. However we wouldn't have complete information about what
-size we want the new table to be.
-
-When a TLB flush is performed it could be that the majority of the old
-table is still perfectly valid. However we would need a reliable
-mechanism to work out which entries in the table could be kept. I did
-ponder a debug mode which would keep the last N tables dropped by
-tlb_mmu_resize_locked and then measure the differences in the entries
-before submitting the free to an rcu tasks.
-
+On Thu, Dec 2, 2021 at 4:47 AM Vasilev Oleg <vasilev.oleg@huawei.com> wrote:
 > The mentioned paper[4] also describes other possible improvements.
 > Some of those are already implemented (such as victim TLB and dynamic
 > size for TLB), but others are not (e.g. TLB lookup uninlining and
 > set-associative TLB layer). Do you think those improvements
 > worth trying?
 
-Anything is worth trying but you would need hard numbers. Also its all
-too easy to target micro benchmarks which might not show much difference
-in real world use. The best thing you can do at the moment is give the
-guest plenty of RAM so page updates are limited because the guest OS
-doesn't have to swap RAM around.
+I cannot find the emails, but I do remember that Richard wrote tcg-i386 patches
+for uninlining TLB lookups. Unfortunately they resulted in a slowdown on
+modern machines.
 
-Another optimisation would be looking at bigger page sizes. For example
-the kernel (in a Linux setup) usually has a contiguous flat map for
-kernel space. If we could represent that at a larger granularity then
-not only could we make the page lookup tighter for kernel mode we could
-also achieve things like cross-page TB chaining for kernel functions.
-
-> Another idea for decreasing occurence of TLB refills is to make TBs key
-> in htable independent of physical address. I assume it is only needed
-> to distinguish different processes where VAs can be the same.
-> Is that assumption correct?
->
-> Do you have any other ideas which parts of TCG could require our
-> attention w.r.t the flamegraph I attached?
-
-It's been done before but not via upstream patches but improving code
-generation for hot loops would be a potential performance win. That
-would require some changes to the translation model to allow for
-multiple exit points and probably introducing a new code generator
-(gccjit or llvm) to generate highly optimised code.
-
-> I am also CCing my teammates. We are eager to improve the QEMU TCG
-> performance for our needs and to contribute our patches to upstream.
-
-Do you have any particular goal in mind or just "better"? The current
-MTTCG scaling tends to drop off as we go above 10-12 vCPUs due to the
-cost of synchronous flushing across all those vCPUs.
-
->
-> [1]: https://github.com/akopytov/sysbench
-> [2]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg562103.html
-> [3]:=20
-> https://github.com/qemu/qemu/blob/14d02cfbe4adaeebe7cb833a8cc71191352cf03=
-b/accel/tcg/cputlb.c#L239
-> [4]: https://dl.acm.org/doi/pdf/10.1145/2686034
->
-> [2. flamegraph.svg --- image/svg+xml; flamegraph.svg]...
->
-> [3. callgraph.svg --- image/svg+xml; callgraph.svg]...
-
-
---=20
-Alex Benn=C3=A9e
+        Emilio

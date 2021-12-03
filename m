@@ -1,92 +1,128 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp266551lfk;
-        Fri, 3 Dec 2021 06:11:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzDJmbLYBQ1EjIf1s5PS2mDtUQ7/UMtGoV39M1VguL6UbYXSWmmA0WCB8j+geblU/hoK8fF
-X-Received: by 2002:a05:6102:6c5:: with SMTP id m5mr21503785vsg.83.1638540701021;
-        Fri, 03 Dec 2021 06:11:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638540701; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp488403lfk;
+        Fri, 3 Dec 2021 10:16:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwJBGAhtpTDfMi6IFQWeiXppsrT7lmrMQ6JWh1Si8YrIozb8o54q6Ppwmg13MJgWeTPVbdS
+X-Received: by 2002:a67:d29c:: with SMTP id z28mr22615404vsi.12.1638555407052;
+        Fri, 03 Dec 2021 10:16:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638555406; cv=none;
         d=google.com; s=arc-20160816;
-        b=KJqYzzI+Ob2zH/mYotlUIfT/73P5yLHm8al4iq0sR7j6t+sr0MP+wMfjUMRDGqe/NA
-         NVJBhzCYRvn0A5ucfSN+zk0995Y+BqDAtoeyytObRcYkCu7dkoSV1xy667gOIpOJj8tj
-         5SeNu28gC6gsZjE4v+ZfE0XnI0lBDE39PX1wZEdMHWxX20Gh9oaiyRpIRbF9LpqqW5Nj
-         Hu53RQDgjSqOX6HjZwvZysAhrTk/FTCIceOULB3Ab7run8KpMqPWtdRzB33WH+QHRgf2
-         WXq79+l6NbO53PcW75S/r7xNssUc167SIcG4mKTkjwLOE05V/1bMKUX9HROJpSIk/dC5
-         SZng==
+        b=ifN97qBuqezKSRPbDZLZmSFGQdoso9CmqCKWjl9YLe0Oomzm3R1c8U+bbeDkKz5kbs
+         kNEraPo0NybOYycrdgQR72EWkZ0k5TdRvBi4jZnx7GQHbfJVlGIiOhVqJvjeBQ3vLa6b
+         qrST380ahZTwC+vIciZWEQG9UnfwbHyPvDHeasYoO6voPjlaEjQt2+ViUTG9UxOpnoGS
+         TwgsCJJU5MtkEWoXvdJ6ytzJKibLHk67Uw4bej6Ev4vHtWED18WLCd2If9SNS6gLXirF
+         SFIebIQaFyPF6YbKUq86QxGVZLkFA96NpJv2TqJbZVQFAH2H6O/OQjO4Kd+t2QbpSqM3
+         2jJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=zobFUeq9NlM9cOX7BJCSC6kaddidPf7YVqrw0L/DjXU=;
-        b=KYG2VbDIrn2uh21ubRLcCW6kttAqCpWX2VNfOItZRwuhOWsI6J5iTfCFeHH4K/WJXk
-         yhr/PETj6Hopu++B7Cb51iqhOSZIZ2xt+vNQWRvNfJzilO9S9W5/LiETHmzeWp5XfN/d
-         JkNSgyqC84xP90y7wwk2XUTWyGJ3UwGxRruqMfysVFrGrg/mnJSx750nkRFKga5+17z4
-         QVa8QlgsyGp7G1e80GAb+WEpygEshKO8ND41n7cq9bl4MazrK/6A3gW3bCB61g42A4mu
-         l/jflBbAqddJNxgFGsVpRlRlfN87SWsdtipiItQnUIe4BX5MRD3etYXsCMxfa06GvYuw
-         WSww==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:organization:from:references:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ppBkGJRQ9w4U32spyxVgQF9MT7bP1WtTokxACvGdm80=;
+        b=PSjIGC4OI3kWFotTnLm7uGBoroKJTPvLuYgsLtA8pjcQB2BbHI/kdRITzZpF+r+zqL
+         Qjlm+HLNTbjCC6tMWgyqrXnlmaS4tEBU+J3OIrfTcjfnYk+No9JGqlxHnpyAL155S1hH
+         2UR3cFNmovUXRSAWJyFTDuMSVOZd4WkPsrH8//mLNHqhTbTXRAyv0VgsvK+FkDW4ZfRl
+         dR9KBmnj5MDof5TxNbVgL522GBZegK5FIIYS73Bl42oxKjCoFYTHiI66jUn5FndEVozZ
+         lKHZVAObxr2mQHMRkNUqXxy8SbFoCh1EoDYV127G2qKCVKu8SAyAQlx75xKRlSiU9Slh
+         3WqA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="h1/rGB5V";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5si3364393vkd.109.2021.12.03.06.11.40
+        by mx.google.com with ESMTPS id a125si4197213vsa.79.2021.12.03.10.16.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Dec 2021 06:11:41 -0800 (PST)
+        Fri, 03 Dec 2021 10:16:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="h1/rGB5V";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:38176 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49384 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mt9Ho-00018e-8g
-	for alex.bennee@linaro.org; Fri, 03 Dec 2021 09:11:40 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45602)
+	id 1mtD70-0001K7-95
+	for alex.bennee@linaro.org; Fri, 03 Dec 2021 13:16:46 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54764)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1mt9HP-00018Q-4c; Fri, 03 Dec 2021 09:11:15 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56]:2163)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1mtD6h-0001ID-1T
+ for qemu-arm@nongnu.org; Fri, 03 Dec 2021 13:16:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:38459)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1mt9HK-0001jb-9h; Fri, 03 Dec 2021 09:11:13 -0500
-Received: from fraeml739-chm.china.huawei.com (unknown [172.18.147.201])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4J5F8D59N0z67b2S;
- Fri,  3 Dec 2021 22:10:04 +0800 (CST)
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- fraeml739-chm.china.huawei.com (10.206.15.220) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Fri, 3 Dec 2021 15:11:00 +0100
-Received: from localhost (10.202.226.41) by lhreml710-chm.china.huawei.com
- (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.20; Fri, 3 Dec
- 2021 14:10:59 +0000
-Date: Fri, 3 Dec 2021 14:10:58 +0000
-To: Gavin Shan <gshan@redhat.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <david@redhat.com>,
- <eric.auger@redhat.com>, <drjones@redhat.com>, <imammedo@redhat.com>,
- <peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
- <shan.gavin@gmail.com>
-Subject: Re: [PATCH v2 0/2] hw/arm/virt: Support for virtio-mem-pci
-Message-ID: <20211203141058.00006079@Huawei.com>
-In-Reply-To: <20211203033522.27580-1-gshan@redhat.com>
-References: <20211203033522.27580-1-gshan@redhat.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1mtD6d-0005z7-TP
+ for qemu-arm@nongnu.org; Fri, 03 Dec 2021 13:16:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1638555376;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ppBkGJRQ9w4U32spyxVgQF9MT7bP1WtTokxACvGdm80=;
+ b=h1/rGB5VN6icUqRkqEwK6rXllh8fAo6EiacHIvn0b7lpsUSrQtcST5u88B2PtHs3z06spK
+ Gx0hApCAu3AWDktOJr6U9eRYNOC3YMbNbjKU9AjNjNztoEWOdD83WhXuc3b7HkwAfV6Wus
+ /PEt9EyfstdhNg72rDAnk1+JmLaYQ3w=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-369-ix-e4S7YMBeo9S6kwthqFg-1; Fri, 03 Dec 2021 13:16:15 -0500
+X-MC-Unique: ix-e4S7YMBeo9S6kwthqFg-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ q7-20020adff507000000b0017d160d35a8so859028wro.4
+ for <qemu-arm@nongnu.org>; Fri, 03 Dec 2021 10:16:15 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:organization:in-reply-to
+ :content-transfer-encoding;
+ bh=ppBkGJRQ9w4U32spyxVgQF9MT7bP1WtTokxACvGdm80=;
+ b=mHhW8/eLR50zO+IkmOYvp/16M1pBq09LKRJLq3J30BH3+Pz8HxFvDd/ShjmRAwKZHr
+ lWv05709oVbOtPKuoRrSo0wOdsV4uU5FLTYNEgSRBd4Nq4WHYkc9WFaYvUk66Fo0JC1p
+ fdVlZxhlvSRBlOrGAtZBF21bekOr1bhXpH8oh5z848fxBys3pZAv9/7rLwm4//jKUTyn
+ WwI2fzMPjw+BaPMszEBmKCRvm2UN2xyX8d3dIDgEoWSxbLGgz3odm3HjTIPlJ45bm6HF
+ HRPPSS7lXsKjsJgvw4pEba4+IJN7wPs6CncjL+NYa9U5fzzoB3MdKOvtLQX+CYNCyLwj
+ BLRQ==
+X-Gm-Message-State: AOAM530ofRkeP/qgXxoO7s+bim/6k3YiSUj+ePOhT21a6lxQtUikN0G0
+ zRpeuIJvibTEzMOUEmjKW5PoY9NmlWfGutRuE41LQLHw1fMRMXMyhL+RHCbjTE/rV9pIlFMatYQ
+ UFli5oLMSp3cw
+X-Received: by 2002:a7b:c763:: with SMTP id x3mr16969728wmk.31.1638555374093; 
+ Fri, 03 Dec 2021 10:16:14 -0800 (PST)
+X-Received: by 2002:a7b:c763:: with SMTP id x3mr16969664wmk.31.1638555373696; 
+ Fri, 03 Dec 2021 10:16:13 -0800 (PST)
+Received: from ?IPV6:2003:d8:2f44:9200:3344:447e:353c:bf0b?
+ (p200300d82f4492003344447e353cbf0b.dip0.t-ipconnect.de.
+ [2003:d8:2f44:9200:3344:447e:353c:bf0b])
+ by smtp.gmail.com with ESMTPSA id m17sm3175697wrz.22.2021.12.03.10.16.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 03 Dec 2021 10:16:13 -0800 (PST)
+Message-ID: <cb4ff18b-9e99-b503-a4b6-f2ecce664a25@redhat.com>
+Date: Fri, 3 Dec 2021 19:16:12 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v2 2/2] virtio-mem: Correct default THP size for ARM64
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+References: <20211203033522.27580-1-gshan@redhat.com>
+ <20211203033522.27580-3-gshan@redhat.com>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+In-Reply-To: <20211203033522.27580-3-gshan@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.226.41]
-X-ClientProxiedBy: lhreml711-chm.china.huawei.com (10.201.108.62) To
- lhreml710-chm.china.huawei.com (10.201.108.61)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.717,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.938, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,112 +135,112 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, eric.auger@redhat.com, shan.gavin@gmail.com,
+ Jonathan.Cameron@huawei.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-X-TUID: e/cNNVnnv2Aj
+X-TUID: Ae66rBuvlaQd
 
-On Fri,  3 Dec 2021 11:35:20 +0800
-Gavin Shan <gshan@redhat.com> wrote:
-
-> This series supports virtio-mem-pci device, by simply following the
-> implementation on x86. The exception is the block size is 512MB on
-> ARM64 instead of 128MB on x86, compatible with the memory section
-> size in linux guest.
+On 03.12.21 04:35, Gavin Shan wrote:
+> The default block size is same as to the THP size, which is either
+> retrieved from "/sys/kernel/mm/transparent_hugepage/hpage_pmd_size"
+> or hardcoded to 2MB. There are flaws in both mechanisms and this
+> intends to fix them up.
 > 
-> The work was done by David Hildenbrand and then Jonathan Cameron. I'm
-> taking the patch and putting more efforts, which is all about testing
-> to me at current stage.
+>   * When "/sys/kernel/mm/transparent_hugepage/hpage_pmd_size" is
+>     used to getting the THP size, 32MB and 512MB are valid values
+>     when we have 16KB and 64KB page size on ARM64.
 
-Hi Gavin,
-
-Thanks for taking this forwards.  What you have here looks good to me, but
-I've not looked at this for a while, so I'll go with whatever David and
-others say :)
-
-Jonathan
+Ah, right, there is 16KB as well :)
 
 > 
-> Testing
-> =======
-> The upstream linux kernel (v5.16.rc3) is used on host/guest during
-> the testing. The guest kernel includes changes to enable virtio-mem
-> driver, which is simply to enable CONFIG_VIRTIO_MEM on ARM64.
+>   * When the hardcoded THP size is used, 2MB, 32MB and 512MB are
+>     valid values when we have 4KB, 16KB and 64KB page sizes on
+>     ARM64.
 > 
-> Mutiple combinations like page sizes on host/guest, memory backend
-> device etc are covered in the testing. Besides, migration is also
-> tested. The following command lines are used for VM or virtio-mem-pci
-> device hot-add. It's notable that virtio-mem-pci device hot-remove
-> isn't supported, similar to what we have on x86. 
+> Co-developed-by: David Hildenbrand <david@redhat.com>
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> ---
+>  hw/virtio/virtio-mem.c | 32 ++++++++++++++++++++------------
+>  1 file changed, 20 insertions(+), 12 deletions(-)
 > 
->   host.pgsize  guest.pgsize  backend    hot-add  hot-remove  migration
->   ---------------------------------------------------------------------
->    4KB         4KB           normal     ok       ok          ok
->                              THP        ok       ok          ok
->                              hugeTLB    ok       ok          ok
->    4KB         64KB          normal     ok       ok          ok
->                              THP        ok       ok          ok
->                              hugeTLB    ok       ok          ok
->   64KB         4KB           normal     ok       ok          ok
->                              THP        ok       ok          ok
->                              hugeTLB    ok       ok          ok
->   64KB         64KB          normal     ok       ok          ok
->                              THP        ok       ok          ok
->                              hugeTLB    ok       ok          ok
+> diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+> index ac7a40f514..8f3c95300f 100644
+> --- a/hw/virtio/virtio-mem.c
+> +++ b/hw/virtio/virtio-mem.c
+> @@ -38,14 +38,25 @@
+>   */
+>  #define VIRTIO_MEM_MIN_BLOCK_SIZE ((uint32_t)(1 * MiB))
+>  
+> -#if defined(__x86_64__) || defined(__arm__) || defined(__aarch64__) || \
+> -    defined(__powerpc64__)
+> -#define VIRTIO_MEM_DEFAULT_THP_SIZE ((uint32_t)(2 * MiB))
+> -#else
+> -        /* fallback to 1 MiB (e.g., the THP size on s390x) */
+> -#define VIRTIO_MEM_DEFAULT_THP_SIZE VIRTIO_MEM_MIN_BLOCK_SIZE
+> +static uint32_t virtio_mem_default_thp_size(void)
+> +{
+> +    uint32_t default_thp_size = VIRTIO_MEM_MIN_BLOCK_SIZE;
+> +
+> +#if defined(__x86_64__) || defined(__arm__) || defined(__powerpc64__)
+> +    default_thp_size = (uint32_t)(2 * MiB);
+> +#elif defined(__aarch64__)
+> +    if (qemu_real_host_page_size == (4 * KiB)) {
+
+you can drop the superfluous (), also in the cases below.
+
+> +        default_thp_size = (uint32_t)(2 * MiB);
+
+The explicit cast shouldn't be required.
+
+> +    } else if (qemu_real_host_page_size == (16 * KiB)) {
+> +        default_thp_size = (uint32_t)(32 * MiB);
+> +    } else if (qemu_real_host_page_size == (64 * KiB)) {
+> +        default_thp_size = (uint32_t)(512 * MiB);
+> +    }
+>  #endif
+>  
+> +    return default_thp_size;
+> +}
+> +
+>  /*
+>   * We want to have a reasonable default block size such that
+>   * 1. We avoid splitting THPs when unplugging memory, which degrades
+> @@ -78,11 +89,8 @@ static uint32_t virtio_mem_thp_size(void)
+>      if (g_file_get_contents(HPAGE_PMD_SIZE_PATH, &content, NULL, NULL) &&
+>          !qemu_strtou64(content, &endptr, 0, &tmp) &&
+>          (!endptr || *endptr == '\n')) {
+> -        /*
+> -         * Sanity-check the value, if it's too big (e.g., aarch64 with 64k base
+> -         * pages) or weird, fallback to something smaller.
+> -         */
+> -        if (!tmp || !is_power_of_2(tmp) || tmp > 16 * MiB) {
+> +        /* Sanity-check the value and fallback to something reasonable. */
+> +        if (!tmp || !is_power_of_2(tmp)) {
+>              warn_report("Read unsupported THP size: %" PRIx64, tmp);
+>          } else {
+>              thp_size = tmp;
+> @@ -90,7 +98,7 @@ static uint32_t virtio_mem_thp_size(void)
+>      }
+>  
+>      if (!thp_size) {
+> -        thp_size = VIRTIO_MEM_DEFAULT_THP_SIZE;
+> +        thp_size = virtio_mem_default_thp_size();
+>          warn_report("Could not detect THP size, falling back to %" PRIx64
+>                      "  MiB.", thp_size / MiB);
+>      }
 > 
-> The command lines are used for VM. When hugeTLBfs is used, all memory
-> backend objects are popuated on /dev/hugepages-2048kB or
-> /dev/hugepages-524288kB, depending on the host page sizes.
-> 
->   /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64                       \
->   -accel kvm -machine virt,gic-version=host                                     \
->   -cpu host -smp 4,sockets=2,cores=2,threads=1                                  \
->   -m 1024M,slots=16,maxmem=64G                                                  \
->   -object memory-backend-ram,id=mem0,size=512M                                  \
->   -object memory-backend-ram,id=mem1,size=512M                                  \
->   -numa node,nodeid=0,cpus=0-1,memdev=mem0                                      \
->   -numa node,nodeid=1,cpus=2-3,memdev=mem1                                      \
->      :
->   -kernel /home/gavin/sandbox/linux.guest/arch/arm64/boot/Image                 \
->   -initrd /home/gavin/sandbox/images/rootfs.cpio.xz                             \
->   -append earlycon=pl011,mmio,0x9000000                                         \
->   -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                         \
->   -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                         \
->   -device pcie-root-port,bus=pcie.0,chassis=3,id=pcie.3                         \
->   -object memory-backend-ram,id=vmem0,size=512M                                 \
->   -device virtio-mem-pci,id=vm0,bus=pcie.1,memdev=vmem0,node=0,requested-size=0 \
->   -object memory-backend-ram,id=vmem1,size=512M                                 \
->   -device virtio-mem-pci,id=vm1,bus=pcie.2,memdev=vmem1,node=1,requested-size=0 
-> 
-> Command lines used for memory hot-add and hot-remove:
-> 
->   (qemu) qom-set vm1 requested-size 512M
->   (qemu) qom-set vm1 requested-size 0
->   (qemu) qom-set vm1 requested-size 512M
-> 
-> Command lines used for virtio-mem-pci device hot-add:
-> 
->   (qemu) object_add memory-backend-ram,id=hp-mem1,size=512M
->   (qemu) device_add virtio-mem-pci,id=hp-vm1,bus=pcie.3,memdev=hp-mem1,node=1
->   (qemu) qom-set hp-vm1 requested-size 512M
->   (qemu) qom-set hp-vm1 requested-size 0
->   (qemu) qom-set hp-vm1 requested-size 512M
-> 
-> Changelog
-> =========
-> v2:
->   * Include David/Jonathan as co-developers in the commit log           (David)
->   * Decrease VIRTIO_MEM_USABLE_EXTENT to 512MB on ARM64 in PATCH[1/2]   (David)
->   * PATCH[2/2] is added to correct the THP sizes on ARM64               (David)
-> 
-> Gavin Shan (2):
->   hw/arm/virt: Support for virtio-mem-pci
->   virtio-mem: Correct default THP size for ARM64
-> 
->  hw/arm/Kconfig         |  1 +
->  hw/arm/virt.c          | 68 +++++++++++++++++++++++++++++++++++++++++-
->  hw/virtio/virtio-mem.c | 36 ++++++++++++++--------
->  3 files changed, 91 insertions(+), 14 deletions(-)
-> 
+
+Apart from that,
+
+Reviewed-by: David Hildenbrand <david@redhat.com>
+
+
+Thanks!
+
+-- 
+Thanks,
+
+David / dhildenb
 

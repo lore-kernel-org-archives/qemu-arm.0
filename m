@@ -1,240 +1,299 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp739165lfk;
-        Fri, 3 Dec 2021 15:36:27 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwMRox7oYk9O3NFw6VwZS5Uhu8WzoFg1+X4E+xMo5lnAYvfBB7RPWSIgDoqPB0t9Xuh7N+B
-X-Received: by 2002:a25:d693:: with SMTP id n141mr25443433ybg.272.1638574587780;
-        Fri, 03 Dec 2021 15:36:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638574587; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp740749lfk;
+        Fri, 3 Dec 2021 15:38:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzgWV8Z71hMVlAYFjHGddEubRhyknutKTQil2O1RKQNjv4ZkCPF41cjYUssOsoy0trSRBm6
+X-Received: by 2002:a25:cb46:: with SMTP id b67mr26288616ybg.517.1638574722371;
+        Fri, 03 Dec 2021 15:38:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638574722; cv=none;
         d=google.com; s=arc-20160816;
-        b=XmJkbrPdXe3DFB1EfiSacc6LZq8HFR6+j1a+AOT+oZ5hsQIx3QJiVFnbfYfMWigHVu
-         U2bNqh98VBC2+rPhB4EwX/OJScXorlYTcHlLXZieLlp/StkzylyB42lxZAPk11GhI9LD
-         GppQkSjZEMc2lOwGQn74SPhaJ1BNRulni6qS55QoHx3zOIezdb3utTHkRR+CAApVVxb7
-         hvGqs399pyGTJ33v5GyCDaB2P1z/HqRnQocms9tgku1ertBi+yzkeqQbScn+2S431ovg
-         m1GPVBsailC0P3c2zpgzUrdfvnUZvIZEevzJs61GgMHDTYTJngtzJF8o8nDn3HJ+fkeM
-         ElRA==
+        b=qrzLVFJkSLUjO1TtNVdO0ej9SfwMocL1EoWn+T2XXlcVGDX5DBivK+5kCLZs5JSl3n
+         HmQX6vaakcB64c1StehYNzzv86M9MDzu87AGWTYNW1mMlwrXtAC2Uyj+FPYgF8Y4LyDF
+         PAwJnW9tzyrhTN7WCqCDHEgW74c2/UXSyYjWKAeU5NZatoALnCEyBABkycBEArV1aIE3
+         G0gBKbXAG4KWrrx9ryBRHwh9TjzrQGrMQwxrmNEUSoTNIA9O06FZBh8X1LZU+aQNPnfU
+         o+Rn/4/Zj4nxXTLpHK0UO7VmQZLRXoIuelcOpeb2z31Xrgiu59ti481rRHXeCeFOxj6f
+         oorw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=wkDn57nbMjK2xrMRrUXqKVbECqdc/fwEKixDkyEIacc=;
-        b=feVw6Late406Lg1XWIJjijXmld8Is1VPe3pmjPkvSoEnFo99dWSRzzBAuJEoT6Wuu+
-         Z011+6sI2MvNHbxpL8QhOk8ttDhThNKLuMI8Oi38Y3xP6LdUpz8B7Isb2kHvSTG/9v8N
-         gXjIeO4IwbHMSC+fG31nYdzrKIirB85u1+6iQpb/7jrZ2P7tjlUTX+sKGbj1ydbrQL/i
-         /aMIlRzgqo9TEeIKE1R1H6G+kgVv9zWSUbEK9oKw4vcIvrB/RLJONqi0WZwt9N5VVU2s
-         3bYbqZIr1ha7GjWgHEZYNDAh0N7ZJYqaRTBuLcisYLdXrNVfsOxPdpYfc7v0VinF7PSj
-         vmkQ==
+        bh=VtNz+daFdRVqMzXQEdDO0e9qGyb3lRfv8GHRF45nWMQ=;
+        b=mH3BA+flBMbk6bpRHdOBtVjRIMr1Ptsz0asaPpRkcKNTTG/a3mjZ/kTDeA7V1UAz8y
+         2WaTGW1pC8bHeStbd8VHuUDfwucXc7+V5tWhNx9Hsn4z6fY6XqpJYtWGir9b6EWWt8j8
+         bLPUs2H2twqJX+GlpNcrziBHm1rgL5jp5gZxWzVObVX03r9I7TMwzIRh0C9dJrIOBvLx
+         Uoydk9V1KtNNkyDftsJGlhiYZ91J5dercTe9tMztBSd8BvK4zPDsrwtE58rQ2jtibSsK
+         y9SIWZDA2/YuL3FuN5EdRPfLQD2KwSWQjJg6P1Ilro7gqOTfRPhtqJ1Vc3g5YbluvSY3
+         55LA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WOxoTND+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PmcEMQjx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p204si5174662ybb.272.2021.12.03.15.36.27
+        by mx.google.com with ESMTPS id l138si5808535ybf.418.2021.12.03.15.38.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Dec 2021 15:36:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Dec 2021 15:38:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WOxoTND+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PmcEMQjx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53434 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mtI6N-0001IV-4J
-	for alex.bennee@linaro.org; Fri, 03 Dec 2021 18:36:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39556)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mtI8X-0004hb-Ns
+	for alex.bennee@linaro.org; Fri, 03 Dec 2021 18:38:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40910)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mtHwh-0003YJ-1B
- for qemu-arm@nongnu.org; Fri, 03 Dec 2021 18:26:27 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:29110)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mtI4t-0006pC-NU
+ for qemu-devel@nongnu.org; Fri, 03 Dec 2021 18:34:56 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:26178)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mtHwf-0008Gt-0D
- for qemu-arm@nongnu.org; Fri, 03 Dec 2021 18:26:26 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mtI4r-0001ql-KV
+ for qemu-devel@nongnu.org; Fri, 03 Dec 2021 18:34:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1638573984;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1638574493;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wkDn57nbMjK2xrMRrUXqKVbECqdc/fwEKixDkyEIacc=;
- b=WOxoTND+IqV251gxoDFuzhUpPhkSKy9kDUgZf7PRXyc/lVpEtNV7IHZaBr1fPUC1Q224PU
- rPjU3GMgu2un8iDOHpLmxRG4noqLm4VW4I2hueU3/QXvhIBtKycLH8Oo8CgGuwOizY4mBN
- eorZsA+ZKxYQd4DZoUsabw44UkPfK0A=
+ bh=VtNz+daFdRVqMzXQEdDO0e9qGyb3lRfv8GHRF45nWMQ=;
+ b=PmcEMQjxdNL25GQOS3y3h643JqBkmItSHBjH0b3sTkcxOdYcpG6102ZKibKMgiihwcYidc
+ KyjHoqVeO43hbOtHrYQMOS8NdE2XAicxlDv8cHsGb9oRxAyshjtq2CCmcMPZCBPGLgJl+A
+ zMAU2MoZexV4UVvrFcd8zyt4H2+IVFI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-312-K2I2240HMLuw1tf4o9zQzA-1; Fri, 03 Dec 2021 18:26:21 -0500
-X-MC-Unique: K2I2240HMLuw1tf4o9zQzA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-593-3nRp0qFaPeSLBo2uqC7Afw-1; Fri, 03 Dec 2021 18:34:50 -0500
+X-MC-Unique: 3nRp0qFaPeSLBo2uqC7Afw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2EC56343C9;
- Fri,  3 Dec 2021 23:26:20 +0000 (UTC)
-Received: from [10.64.54.43] (vpn2-54-43.bne.redhat.com [10.64.54.43])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 323A7101E59D;
- Fri,  3 Dec 2021 23:26:07 +0000 (UTC)
-Subject: Re: [PATCH v2 2/2] virtio-mem: Correct default THP size for ARM64
-To: David Hildenbrand <david@redhat.com>, qemu-arm@nongnu.org
-References: <20211203033522.27580-1-gshan@redhat.com>
- <20211203033522.27580-3-gshan@redhat.com>
- <cb4ff18b-9e99-b503-a4b6-f2ecce664a25@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D3A528042E1;
+ Fri,  3 Dec 2021 23:34:48 +0000 (UTC)
+Received: from gshan.redhat.com (vpn2-54-43.bne.redhat.com [10.64.54.43])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C199B60843;
+ Fri,  3 Dec 2021 23:34:33 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
-Message-ID: <61905581-f77a-8b70-28e6-11655bb5f3e6@redhat.com>
-Date: Sat, 4 Dec 2021 10:25:58 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+To: qemu-arm@nongnu.org
+Subject: [PATCH v3 2/2] hw/arm/virt: Support for virtio-mem-pci
+Date: Sat,  4 Dec 2021 07:34:04 +0800
+Message-Id: <20211203233404.37313-3-gshan@redhat.com>
+In-Reply-To: <20211203233404.37313-1-gshan@redhat.com>
+References: <20211203233404.37313-1-gshan@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <cb4ff18b-9e99-b503-a4b6-f2ecce664a25@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.717,
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.717,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.938, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, eric.auger@redhat.com, shan.gavin@gmail.com,
- Jonathan.Cameron@huawei.com, imammedo@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: adJ93XNgcSZc
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
+ shan.gavin@gmail.com, Jonathan.Cameron@huawei.com, imammedo@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JnQ+hkhA+FCc
 
-On 12/4/21 5:16 AM, David Hildenbrand wrote:
-> On 03.12.21 04:35, Gavin Shan wrote:
->> The default block size is same as to the THP size, which is either
->> retrieved from "/sys/kernel/mm/transparent_hugepage/hpage_pmd_size"
->> or hardcoded to 2MB. There are flaws in both mechanisms and this
->> intends to fix them up.
->>
->>    * When "/sys/kernel/mm/transparent_hugepage/hpage_pmd_size" is
->>      used to getting the THP size, 32MB and 512MB are valid values
->>      when we have 16KB and 64KB page size on ARM64.
-> 
-> Ah, right, there is 16KB as well :)
-> 
+This supports virtio-mem-pci device on "virt" platform, by simply
+following the implementation on x86.
 
-Yep, even though it's rarely used :)
+   * This implements the hotplug handlers to support virtio-mem-pci
+     device hot-add, while the hot-remove isn't supported as we have
+     on x86.
 
->>
->>    * When the hardcoded THP size is used, 2MB, 32MB and 512MB are
->>      valid values when we have 4KB, 16KB and 64KB page sizes on
->>      ARM64.
->>
->> Co-developed-by: David Hildenbrand <david@redhat.com>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   hw/virtio/virtio-mem.c | 32 ++++++++++++++++++++------------
->>   1 file changed, 20 insertions(+), 12 deletions(-)
->>
->> diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
->> index ac7a40f514..8f3c95300f 100644
->> --- a/hw/virtio/virtio-mem.c
->> +++ b/hw/virtio/virtio-mem.c
->> @@ -38,14 +38,25 @@
->>    */
->>   #define VIRTIO_MEM_MIN_BLOCK_SIZE ((uint32_t)(1 * MiB))
->>   
->> -#if defined(__x86_64__) || defined(__arm__) || defined(__aarch64__) || \
->> -    defined(__powerpc64__)
->> -#define VIRTIO_MEM_DEFAULT_THP_SIZE ((uint32_t)(2 * MiB))
->> -#else
->> -        /* fallback to 1 MiB (e.g., the THP size on s390x) */
->> -#define VIRTIO_MEM_DEFAULT_THP_SIZE VIRTIO_MEM_MIN_BLOCK_SIZE
->> +static uint32_t virtio_mem_default_thp_size(void)
->> +{
->> +    uint32_t default_thp_size = VIRTIO_MEM_MIN_BLOCK_SIZE;
->> +
->> +#if defined(__x86_64__) || defined(__arm__) || defined(__powerpc64__)
->> +    default_thp_size = (uint32_t)(2 * MiB);
->> +#elif defined(__aarch64__)
->> +    if (qemu_real_host_page_size == (4 * KiB)) {
-> 
-> you can drop the superfluous (), also in the cases below.
-> 
+   * The block size is 512MB on ARM64 instead of 128MB on x86.
 
-It will be included in v3.
+   * It has been passing the tests with various combinations like 64KB
+     and 4KB page sizes on host and guest, different memory device
+     backends like normal, transparent huge page and HugeTLB, plus
+     migration.
 
->> +        default_thp_size = (uint32_t)(2 * MiB);
-> 
-> The explicit cast shouldn't be required.
-> 
+Co-developed-by: David Hildenbrand <david@redhat.com>
+Co-developed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+---
+ hw/arm/Kconfig         |  1 +
+ hw/arm/virt.c          | 68 +++++++++++++++++++++++++++++++++++++++++-
+ hw/virtio/virtio-mem.c |  4 ++-
+ 3 files changed, 71 insertions(+), 2 deletions(-)
 
-It's not required, but inherited from the definition
-of VIRTIO_MEM_MIN_BLOCK_SIZE. However, it's safe to
-drop the cast and it will be included in v3.
-
->> +    } else if (qemu_real_host_page_size == (16 * KiB)) {
->> +        default_thp_size = (uint32_t)(32 * MiB);
->> +    } else if (qemu_real_host_page_size == (64 * KiB)) {
->> +        default_thp_size = (uint32_t)(512 * MiB);
->> +    }
->>   #endif
->>   
->> +    return default_thp_size;
->> +}
->> +
->>   /*
->>    * We want to have a reasonable default block size such that
->>    * 1. We avoid splitting THPs when unplugging memory, which degrades
->> @@ -78,11 +89,8 @@ static uint32_t virtio_mem_thp_size(void)
->>       if (g_file_get_contents(HPAGE_PMD_SIZE_PATH, &content, NULL, NULL) &&
->>           !qemu_strtou64(content, &endptr, 0, &tmp) &&
->>           (!endptr || *endptr == '\n')) {
->> -        /*
->> -         * Sanity-check the value, if it's too big (e.g., aarch64 with 64k base
->> -         * pages) or weird, fallback to something smaller.
->> -         */
->> -        if (!tmp || !is_power_of_2(tmp) || tmp > 16 * MiB) {
->> +        /* Sanity-check the value and fallback to something reasonable. */
->> +        if (!tmp || !is_power_of_2(tmp)) {
->>               warn_report("Read unsupported THP size: %" PRIx64, tmp);
->>           } else {
->>               thp_size = tmp;
->> @@ -90,7 +98,7 @@ static uint32_t virtio_mem_thp_size(void)
->>       }
->>   
->>       if (!thp_size) {
->> -        thp_size = VIRTIO_MEM_DEFAULT_THP_SIZE;
->> +        thp_size = virtio_mem_default_thp_size();
->>           warn_report("Could not detect THP size, falling back to %" PRIx64
->>                       "  MiB.", thp_size / MiB);
->>       }
->>
-> 
-> Apart from that,
-> 
-> Reviewed-by: David Hildenbrand <david@redhat.com>
-> 
-
-Thanks for your review, David!
-
-Thanks,
-Gavin
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 2d37d29f02..15aff8efb8 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -27,6 +27,7 @@ config ARM_VIRT
+     select DIMM
+     select ACPI_HW_REDUCED
+     select ACPI_APEI
++    select VIRTIO_MEM_SUPPORTED
+ 
+ config CHEETAH
+     bool
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 30da05dfe0..db1544760d 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -72,9 +72,11 @@
+ #include "hw/arm/smmuv3.h"
+ #include "hw/acpi/acpi.h"
+ #include "target/arm/internals.h"
++#include "hw/mem/memory-device.h"
+ #include "hw/mem/pc-dimm.h"
+ #include "hw/mem/nvdimm.h"
+ #include "hw/acpi/generic_event_device.h"
++#include "hw/virtio/virtio-mem-pci.h"
+ #include "hw/virtio/virtio-iommu.h"
+ #include "hw/char/pl011.h"
+ #include "qemu/guest-random.h"
+@@ -2483,6 +2485,63 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
+                          dev, &error_abort);
+ }
+ 
++static void virt_virtio_md_pci_pre_plug(HotplugHandler *hotplug_dev,
++                                        DeviceState *dev, Error **errp)
++{
++    HotplugHandler *hotplug_dev2 = qdev_get_bus_hotplug_handler(dev);
++    Error *local_err = NULL;
++
++    if (!hotplug_dev2 && dev->hotplugged) {
++        /*
++         * Without a bus hotplug handler, we cannot control the plug/unplug
++         * order. We should never reach this point when hotplugging on x86,
++         * however, better add a safety net.
++         */
++        error_setg(errp, "hotplug of virtio based memory devices not supported"
++                   " on this bus.");
++        return;
++    }
++    /*
++     * First, see if we can plug this memory device at all. If that
++     * succeeds, branch of to the actual hotplug handler.
++     */
++    memory_device_pre_plug(MEMORY_DEVICE(dev), MACHINE(hotplug_dev), NULL,
++                           &local_err);
++    if (!local_err && hotplug_dev2) {
++        hotplug_handler_pre_plug(hotplug_dev2, dev, &local_err);
++    }
++    error_propagate(errp, local_err);
++}
++
++static void virt_virtio_md_pci_plug(HotplugHandler *hotplug_dev,
++                                    DeviceState *dev, Error **errp)
++{
++    HotplugHandler *hotplug_dev2 = qdev_get_bus_hotplug_handler(dev);
++    Error *local_err = NULL;
++
++    /*
++     * Plug the memory device first and then branch off to the actual
++     * hotplug handler. If that one fails, we can easily undo the memory
++     * device bits.
++     */
++    memory_device_plug(MEMORY_DEVICE(dev), MACHINE(hotplug_dev));
++    if (hotplug_dev2) {
++        hotplug_handler_plug(hotplug_dev2, dev, &local_err);
++        if (local_err) {
++            memory_device_unplug(MEMORY_DEVICE(dev), MACHINE(hotplug_dev));
++        }
++    }
++    error_propagate(errp, local_err);
++}
++
++static void virt_virtio_md_pci_unplug_request(HotplugHandler *hotplug_dev,
++                                              DeviceState *dev, Error **errp)
++{
++    /* We don't support hot unplug of virtio based memory devices */
++    error_setg(errp, "virtio based memory devices cannot be unplugged.");
++}
++
++
+ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+                                             DeviceState *dev, Error **errp)
+ {
+@@ -2516,6 +2575,8 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+         qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
+         qdev_prop_set_string(dev, "reserved-regions[0]", resv_prop_str);
+         g_free(resv_prop_str);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
++        virt_virtio_md_pci_pre_plug(hotplug_dev, dev, errp);
+     }
+ }
+ 
+@@ -2541,6 +2602,8 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+         vms->iommu = VIRT_IOMMU_VIRTIO;
+         vms->virtio_iommu_bdf = pci_get_bdf(pdev);
+         create_virtio_iommu_dt_bindings(vms);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
++        virt_virtio_md_pci_plug(hotplug_dev, dev, errp);
+     }
+ }
+ 
+@@ -2591,6 +2654,8 @@ static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+ {
+     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+         virt_dimm_unplug_request(hotplug_dev, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
++        virt_virtio_md_pci_unplug_request(hotplug_dev, dev, errp);
+     } else {
+         error_setg(errp, "device unplug request for unsupported device"
+                    " type: %s", object_get_typename(OBJECT(dev)));
+@@ -2614,7 +2679,8 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
+ 
+     if (device_is_dynamic_sysbus(mc, dev) ||
+-       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
++        object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
++        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+         return HOTPLUG_HANDLER(machine);
+     }
+     if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+index b20595a496..21e4d572ab 100644
+--- a/hw/virtio/virtio-mem.c
++++ b/hw/virtio/virtio-mem.c
+@@ -125,7 +125,7 @@ static uint64_t virtio_mem_default_block_size(RAMBlock *rb)
+  * The memory block size corresponds mostly to the section size.
+  *
+  * This allows e.g., to add 20MB with a section size of 128MB on x86_64, and
+- * a section size of 1GB on arm64 (as long as the start address is properly
++ * a section size of 512MB on arm64 (as long as the start address is properly
+  * aligned, similar to ordinary DIMMs).
+  *
+  * We can change this at any time and maybe even make it configurable if
+@@ -134,6 +134,8 @@ static uint64_t virtio_mem_default_block_size(RAMBlock *rb)
+  */
+ #if defined(TARGET_X86_64) || defined(TARGET_I386)
+ #define VIRTIO_MEM_USABLE_EXTENT (2 * (128 * MiB))
++#elif defined(TARGET_ARM)
++#define VIRTIO_MEM_USABLE_EXTENT (2 * (512 * MiB))
+ #else
+ #error VIRTIO_MEM_USABLE_EXTENT not defined
+ #endif
+-- 
+2.23.0
 

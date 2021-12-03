@@ -1,130 +1,111 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp490073lfk;
-        Fri, 3 Dec 2021 10:18:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzLz1bqM5/gJNJi/yTAdiOAkPGp4j9y8l9qa1IkW8vq9mjnvUBRVWySx14WCEOO25RCcfq9
-X-Received: by 2002:a1f:9f04:: with SMTP id i4mr23915520vke.33.1638555535763;
-        Fri, 03 Dec 2021 10:18:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638555535; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp716421lfk;
+        Fri, 3 Dec 2021 15:07:46 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz1S3Zrp0UuM3DS8oYluTAIsmuT27m8vUrAbg01TXDZmy8dGQXn9RHBKisG/Tz0Vczq9pgC
+X-Received: by 2002:a9f:2329:: with SMTP id 38mr25532718uae.124.1638572865986;
+        Fri, 03 Dec 2021 15:07:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638572865; cv=none;
         d=google.com; s=arc-20160816;
-        b=SVSzsDf7hyeKrPdzGr1K4sAYEPbuGRlP7UTOVGSg6WPsY669LaIKnBlERFr3NyO8eP
-         j1NswIN8/6elC4j6Zi4l2p341joMMSjWAVZFdyq9JZv3VOUaTJZbEArGGYrdkCOXR4uM
-         XHHLWQhsCjNE4mt7Djy9SnhbBSoKDdGMuN7i4SlBVqwpm+gUkCMD6dYtvYUXmuyAk0lh
-         xss/4V/PKsNGIrK931uUWE9rteJ2kzCcBFgHpDDrVyc/ZEweTuzDyjPNOa7b9fumoBMx
-         Mo0HLLVpL8Rtes4u5VhAwXqw9l6NyDeJW5r1b33AmQ18CL9lNLy3dDBrwDXGWABRYI9o
-         iFxA==
+        b=U1FUu89YQugzsSbSjHgT/4Yb20G2d3PgaZRNvpzq3Clzw//M6FxbSkMtMeh4so/4qo
+         JfSsmEYiX0nmCmSTMV75S/hc0haFLlumih2yMxyp4k2aFB4R0e8aeGfNp4b0U2CDxe6P
+         Ga5mKX9sOK9JJBD3oTWrUSmrFIDt1/tcmIlQFPfbbRpQ6h21XPljB7FPdZs4teSzLugm
+         s3Egy/s7hHi+7NrxlSajWgRth74Nu29y5CUbB6nI2nnzwy8fu0nj6BEkp1mViDKTp1GE
+         Jv1wEk4KzFzKp9ai2dTPodrybClfn73dCCs4J/OFv6AF/ssyP3SrEldwJ+3euvE/G/n0
+         mUXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:organization:from:references:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=6fphzoqruj/GSER9WikftOGOyqYcY3SAZ2CnJKbP2iM=;
-        b=RqORnlib1ajSgs1rkbjd6UkYd1D8p/M5XkFX3N/7/WYFwCeTLll9MPShsVyAL+OyXq
-         8YJoXhbxhR3QYBx92tRP+OfM7UdhnLnJ9CbjrdnAdSuyQ/pR21uOLMkLF6la6pRVeLNU
-         VwdC4lx9BjzrBvlmil1K9sPWtahXvETVseou7kLYBC4ABtPMETIQ23rM8YdLnjKTvHZP
-         7CjV+9hX0SbgCWe8Ope/nnIzr2UH/P3nNxJpuXA3MJ/ZNqSwgpBhNX/b5CfMJXerBmR0
-         cosujgs0WS0amcDFCDYYYbf3FzQBdkv/jkwKuSwGZJQtnPjFtR6DEgavrM6lLP7chwFy
-         SngA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=E1PqSQCgSBZSyeFtBCxTlhhTodq9lOn37h2qobTUok8=;
+        b=ENmTxf3tu6ESEGWGihibDGZGMexwutB11RFK9Yw6+qmNNR3ZXVH/+n5p6UA/RRXCzn
+         djXxT+wIOHGjFEi4ZS11VHPb9LG9Oxj6RD1xTqycimJZTJRGN80O4RPSISqepy01lGqe
+         hFZvszv2Ykh60fVLUA1YcXvi7lK2/Hgi+Uf3y8ojSEiF7cOlLWeJbN3O4YBd1FXPHxzt
+         f6zbHTQ+rc6PGBH9RET/lZTyLlJ5FqeRwb7oSrW+uIGn8Ar8CyUFCN7eOYwx7oeLLrf4
+         sjjKdi3cnk/IGcPCiXeQ6DKC7sjKvmnsfKsd3P4bogGVIhOO2R62cn+ndAJjCz6jjpD7
+         nz3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IxdN9wcf;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L0Bm6Dn9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k21si3806845vsq.401.2021.12.03.10.18.55
+        by mx.google.com with ESMTPS id h8si4176862vsj.457.2021.12.03.15.07.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Dec 2021 10:18:55 -0800 (PST)
+        Fri, 03 Dec 2021 15:07:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IxdN9wcf;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L0Bm6Dn9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52604 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38644 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mtD95-0003Yf-4o
-	for alex.bennee@linaro.org; Fri, 03 Dec 2021 13:18:55 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55292)
+	id 1mtHeb-0002AH-Cw
+	for alex.bennee@linaro.org; Fri, 03 Dec 2021 18:07:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35794)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1mtD8l-0003LH-5i
- for qemu-arm@nongnu.org; Fri, 03 Dec 2021 13:18:35 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:49155)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mtHeK-00029j-FW
+ for qemu-arm@nongnu.org; Fri, 03 Dec 2021 18:07:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:25903)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1mtD8U-0006HB-Nw
- for qemu-arm@nongnu.org; Fri, 03 Dec 2021 13:18:25 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mtHeH-0007LB-0p
+ for qemu-arm@nongnu.org; Fri, 03 Dec 2021 18:07:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1638555496;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1638572844;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6fphzoqruj/GSER9WikftOGOyqYcY3SAZ2CnJKbP2iM=;
- b=IxdN9wcfrP1urruDgVVhUiLmnQfJDTafTgyL+C5Uiem4aK7Y3qGoGO/35M2ZtZ6sqYAJkw
- ZwnQteeRC14nfu3un06u2i5sq3f55WaPl89dCWRwndYuJKaXW/WnSERT7GJWs9rL9yn0YD
- krQRN70ZsnnNcEfZfBqz6VnJbroFoYE=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=E1PqSQCgSBZSyeFtBCxTlhhTodq9lOn37h2qobTUok8=;
+ b=L0Bm6Dn9lvy7jeVIjouMQl8lD5Ngn2LTsXpdxNFbNS+trI/74BN/+kwhOuZfvh1egSCwJp
+ B0c3jrajk6Mn3hGjFM5wyEgvXGKW7niQQ3H1lBcW+QHMsKdWWeH3VSJhmx32rUuqTZVphh
+ /TSsFvs9sabCtRH16jlkFOBybulCAAQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-363-9ZnOxKQ2OF-MYsfzFxoqrw-1; Fri, 03 Dec 2021 13:18:15 -0500
-X-MC-Unique: 9ZnOxKQ2OF-MYsfzFxoqrw-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 138-20020a1c0090000000b00338bb803204so1909801wma.1
- for <qemu-arm@nongnu.org>; Fri, 03 Dec 2021 10:18:15 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:organization:in-reply-to
- :content-transfer-encoding;
- bh=6fphzoqruj/GSER9WikftOGOyqYcY3SAZ2CnJKbP2iM=;
- b=Do9m4nFr6/Pn9vyzMl4PUY+eZyvS7h3VHE/tdwH/uma5vIKoJzHW4FJ9AQh7K6kH26
- YJox5TY2Q1OZp4XrkMNYMCvWwEPHf+ob73DTwPt03Nods5IORQiMkShxrjF6iekFS/YR
- hD6SN1ZPbswVCz3Fpj9h5f+NiVZCsxPZeS+ObHDIybkZl1Fj2sceIQDYLdqx2ZxxbJIm
- pN0eq1ow8gBmd7yVCqYcbhn5Ul9TeRTdJfZ3ktRE++mhAZUiJjPRV94cJFOSJ8xel5NQ
- wTuAEAa6W5D5918eVHWXCe+ht/nw4BKxCx8B3sTf1YLWKzuR8prwBUMoxqgWaRJ43Ea8
- v5Ew==
-X-Gm-Message-State: AOAM532sc2wcc94bBPolivC44bwGp9fkn8SbfRRcwTDTWQfXAL4oVxTo
- l3Bm7MnyQvynpKefobm+EV1Mk47PDLwGzJb7LsCtST/xuK1p1MogogtIUnVckKVgDMWKA9WeD0n
- Y9xYiq+dp4lsg
-X-Received: by 2002:a05:600c:4f02:: with SMTP id
- l2mr17176056wmq.26.1638555494433; 
- Fri, 03 Dec 2021 10:18:14 -0800 (PST)
-X-Received: by 2002:a05:600c:4f02:: with SMTP id
- l2mr17176027wmq.26.1638555494197; 
- Fri, 03 Dec 2021 10:18:14 -0800 (PST)
-Received: from ?IPV6:2003:d8:2f44:9200:3344:447e:353c:bf0b?
- (p200300d82f4492003344447e353cbf0b.dip0.t-ipconnect.de.
- [2003:d8:2f44:9200:3344:447e:353c:bf0b])
- by smtp.gmail.com with ESMTPSA id c4sm3371022wrr.37.2021.12.03.10.18.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Dec 2021 10:18:13 -0800 (PST)
-Message-ID: <e9a7760e-33bf-478f-50b2-830eaf35d1de@redhat.com>
-Date: Fri, 3 Dec 2021 19:18:13 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH v2 1/2] hw/arm/virt: Support for virtio-mem-pci
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+ us-mta-585--W1jDEo8MYuKgVvyTUJU0w-1; Fri, 03 Dec 2021 18:07:21 -0500
+X-MC-Unique: -W1jDEo8MYuKgVvyTUJU0w-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF3B683DD20;
+ Fri,  3 Dec 2021 23:07:19 +0000 (UTC)
+Received: from [10.64.54.43] (vpn2-54-43.bne.redhat.com [10.64.54.43])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 48CF460843;
+ Fri,  3 Dec 2021 23:07:00 +0000 (UTC)
+Subject: Re: [PATCH v2 0/2] hw/arm/virt: Support for virtio-mem-pci
+To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
 References: <20211203033522.27580-1-gshan@redhat.com>
- <20211203033522.27580-2-gshan@redhat.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <20211203033522.27580-2-gshan@redhat.com>
+ <20211203141058.00006079@Huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <e6159135-6bbc-7f2f-2226-e25e29ba3c67@redhat.com>
+Date: Sat, 4 Dec 2021 10:06:56 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
+MIME-Version: 1.0
+In-Reply-To: <20211203141058.00006079@Huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
+X-Spam_score_int: -44
+X-Spam_score: -4.5
 X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.717,
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.717,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.938, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,41 +118,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, eric.auger@redhat.com, shan.gavin@gmail.com,
- Jonathan.Cameron@huawei.com, imammedo@redhat.com
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, shan.gavin@gmail.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dBaFKjgvoz/2
+X-TUID: TGt9x557YqS6
 
-On 03.12.21 04:35, Gavin Shan wrote:
-> This supports virtio-mem-pci device on "virt" platform, by simply
-> following the implementation on x86.
+Hi Jonathan,
+
+On 12/4/21 1:10 AM, Jonathan Cameron wrote:
+> On Fri,  3 Dec 2021 11:35:20 +0800
+> Gavin Shan <gshan@redhat.com> wrote:
 > 
->    * This implements the hotplug handlers to support virtio-mem-pci
->      device hot-add, while the hot-remove isn't supported as we have
->      on x86.
+>> This series supports virtio-mem-pci device, by simply following the
+>> implementation on x86. The exception is the block size is 512MB on
+>> ARM64 instead of 128MB on x86, compatible with the memory section
+>> size in linux guest.
+>>
+>> The work was done by David Hildenbrand and then Jonathan Cameron. I'm
+>> taking the patch and putting more efforts, which is all about testing
+>> to me at current stage.
 > 
->    * The block size is 512MB on ARM64 instead of 128MB on x86.
-> 
->    * It has been passing the tests with various combinations like 64KB
->      and 4KB page sizes on host and guest, different memory device
->      backends like normal, transparent huge page and HugeTLB, plus
->      migration.
+> Thanks for taking this forwards.  What you have here looks good to me, but
+> I've not looked at this for a while, so I'll go with whatever David and
+> others say :)
 > 
 
-I would turn this patch into 2/2, reshuffling both patches.
+[...]
 
-> Co-developed-by: David Hildenbrand <david@redhat.com>
-> Co-developed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
+I would translate this as your reviewed-by tag, which will be added to v3.
+However, it shouldn't stop you from further reviewing :)
 
-Reviewed-by: David Hildenbrand <david@redhat.com>
-
-Thanks Gavin!
-
--- 
 Thanks,
-
-David / dhildenb
+Gavin
 

@@ -1,137 +1,348 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp3612495lfk;
-        Mon, 6 Dec 2021 11:40:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxBPe1HOukcBC67OJCbFVcULlHXtep8+tJdi7IdQpf+Qqv2nPdoHlk9O0pkjnGAkUfwQyL7
-X-Received: by 2002:a02:b813:: with SMTP id o19mr43039520jam.130.1638819657912;
-        Mon, 06 Dec 2021 11:40:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638819657; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp226718lfk;
+        Wed, 8 Dec 2021 09:32:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwS6HE8+Bv8MQ+Ijw43BhxjDrseOD+tRN5bDYhwYVolaL8WPOpPMGOHIfWuOT+OykZpVqaC
+X-Received: by 2002:ab0:22d6:: with SMTP id z22mr10072156uam.65.1638984768800;
+        Wed, 08 Dec 2021 09:32:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638984768; cv=none;
         d=google.com; s=arc-20160816;
-        b=V2oJu+uD02Hj5Tf0HLxflxI+4UPIV26YfjXED2OG27skNVok5w20FoAxnOxlS5DC7T
-         0VSbOC0JxVdUSAmH8RtcWDGLvcdVBJroizYY0pLY6gtRIL/a4meHw2HF8w7iGVHcW7W6
-         CSGlCwyugfhZTsdSIy/Sa1nFdrwGQIVfIxHPVz2/Krk9mbkPq+bPHBtCU/XhaoBfGvIn
-         YEP0JT9GHvguJFzTskoKfspObksZyONTxtgGCn1CYIihAMegdmo0EBNrOkZQzoCDEapv
-         vvDnaPQo0GQUBEEWp8f9lv9szPdeMQtgjMwRKpzE/H9eKIhOfv1M5pJR5rk54dQggm/4
-         cn1w==
+        b=0D5f5pG3qsss29/DCVuR5wIkN30ktH4B810yUYc7acTmZjgoufJQWTGNyUQgBtKzMg
+         gJD14S+QFbKW13cXmNmYIsH/6H6kl5e+usToa1za9o9SGrDcMkyb0kR96PF1eWc2VCPI
+         6sWymahqFeoRI2fJBibzWgh1pwClas+lXrDRdqaVy/BaUNK2HW1AywHyN2lL9L9TfZEB
+         LptMtAa0uaybXXqrRsBUTFwDF7+ktPGRzrp8ia6+RS+WH3mRMUXb2Oaqni2OlfGA0/qQ
+         gfFVN/Ej0uvHzq8teVbwDVg20/Ub9RA2LbUPAwQGQwYwibOeKw3pYWHcGOPhxlx0I3Bm
+         Kzwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=dJsv45CTniK3UPELst2wThxtkHsEs78SkbqvaT8sDYI=;
-        b=fsiNRTTATKevZeGYJDN8SEbgmzj/X7zIwmRmVnDRgvjC0LhH96Im1INY6H98yOc8Ud
-         wrNbjCRlHEm3Efg5io6kflIOBGWruH5YNeP/A90MdTO36lww0or+pAu7nG9oUWLcE1iG
-         /p3iLbiQMpKcu1I8VLCIvkz8/HAy2ibWFCNon2dd1krTUOG3D5m31aEOj6j+bTg0+CtD
-         wfwq7hTA1qH/F86FvKwiTtvmKprd7clqAG+bdPZjHkYBmxkWMsWFBjvAfweD5V9zJbfE
-         wZR5WjkqmMm9qKH9L5LhdHbJhMZ7Tpe3A9yNA+eZChlRUv+Mdhb+PnI/HB7SPthlTrpk
-         IMiw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=/JgyKZhUCvT5KUpYZVw2XyK3XzMlZnFyYifBZHqTtgk=;
+        b=ZUUl9LMSUQwrY7HsjJehSpjjKkoecAveCIelRq19vk7GtEdGXllDrP2x0dG2APBH6L
+         V6ji7iWAdTB3bZ7fRN05d8jk5Xsj/VRBUm1KFxiKwrzWUXM7nV1+CizUa+EvQGzD5cM1
+         prbJw5eeAYlJjp422qVUpWSibtuNzVfB9TgzWlQP/lzdrllrPuLCUnLj50nsTBVKriOk
+         AmBqN1BDLPxylx4FFuJmYuuXLd4JIaJjfoz2NwfIX6cE3K9SYxOgDsnn7LzKFImNwgle
+         NgcMs5vMClljY1WsJ74sxM0ZsdVnCQr3Q5oo8RE9QrMe212FdD4bLETRWRTg+U/Aad3I
+         Mx0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of vasilev.oleg@huawei.com designates 45.249.212.187 as permitted sender) smtp.mailfrom=vasilev.oleg@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <vasilev.oleg@huawei.com>
-Received: from szxga01-in.huawei.com (szxga01-in.huawei.com. [45.249.212.187])
-        by mx.google.com with ESMTPS id z12si14684465ilb.16.2021.12.06.11.40.57
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Dec 2021 11:40:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of vasilev.oleg@huawei.com designates 45.249.212.187 as permitted sender) client-ip=45.249.212.187;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l9si4787633vse.700.2021.12.08.09.32.48
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 08 Dec 2021 09:32:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of vasilev.oleg@huawei.com designates 45.249.212.187 as permitted sender) smtp.mailfrom=vasilev.oleg@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from dggpemm500022.china.huawei.com (unknown [172.30.72.55])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4J7DKp1CltzcbnC;
-	Tue,  7 Dec 2021 03:40:14 +0800 (CST)
-Received: from dggpemm500012.china.huawei.com (7.185.36.89) by
- dggpemm500022.china.huawei.com (7.185.36.162) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Tue, 7 Dec 2021 03:40:25 +0800
-Received: from dggpeml500023.china.huawei.com (7.185.36.114) by
- dggpemm500012.china.huawei.com (7.185.36.89) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Tue, 7 Dec 2021 03:40:24 +0800
-Received: from dggpeml500023.china.huawei.com ([7.185.36.114]) by
- dggpeml500023.china.huawei.com ([7.185.36.114]) with mapi id 15.01.2308.020;
- Tue, 7 Dec 2021 03:40:24 +0800
-From: Vasilev Oleg <vasilev.oleg@huawei.com>
-To: =?iso-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Konobeev Vladimir
-	<konobeev.vladimir@huawei.com>, Plotnik Nikolay <plotnik.nikolay@huawei.com>,
-	Richard Henderson <richard.henderson@linaro.org>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, Andrey Shinkevich <andrey.shinkevich@huawei.com>,
-	"Emilio G. Cota" <cota@braap.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "Chengen (William, FixNet)" <chengen@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: Suggestions for TCG performance improvements
-Thread-Topic: Suggestions for TCG performance improvements
-Thread-Index: AQHX52GV5RpBCy0TxkCBqrK5dfMw1Q==
-Date: Mon, 6 Dec 2021 19:40:24 +0000
-Message-ID: <35631f7cceb141879aa7475ccaf81acb@huawei.com>
-References: <c76bde31-8f3b-2d03-b7c7-9e026d4b5873@huawei.com>
- <87bl1zxaeu.fsf@linaro.org> <7d137a2403be43b7a1c5857e96866403@huawei.com>
- <87v905wq6d.fsf@linaro.org>
-Accept-Language: en-US, zh-CN
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.47.169.108]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54936 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mv0oB-0003Wb-3U
+	for alex.bennee@linaro.org; Wed, 08 Dec 2021 12:32:47 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58390)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mv0o0-0003WL-Fw
+ for qemu-arm@nongnu.org; Wed, 08 Dec 2021 12:32:36 -0500
+Received: from 9.mo552.mail-out.ovh.net ([87.98.180.222]:44639)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mv0ny-00016X-5w
+ for qemu-arm@nongnu.org; Wed, 08 Dec 2021 12:32:36 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.55])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 3C0C320986;
+ Wed,  8 Dec 2021 17:32:31 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.20; Wed, 8 Dec
+ 2021 18:32:30 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002ae66b403-e897-417f-8be9-b2f57a824b86,
+ 8F2F55344B714E1E8EB9F2B8AB3A843E42DFE4C2) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <0dfc7dec-54fa-3b3a-0eb5-fe2e404adf5b@kaod.org>
+Date: Wed, 8 Dec 2021 18:32:29 +0100
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: WIltuHAT25KK
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH for-7.0] hw: Add compat machines for 7.0
+Content-Language: en-US
+To: Cornelia Huck <cohuck@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Eduardo Habkost <eduardo@habkost.net>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Daniel Henrique Barboza
+ <danielhb413@gmail.com>, David Gibson <david@gibson.dropbear.id.au>, Greg
+ Kurz <groug@kaod.org>, David Hildenbrand <david@redhat.com>, Thomas Huth
+ <thuth@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, Christian Borntraeger
+ <borntraeger@de.ibm.com>
+References: <20211208170241.110551-1-cohuck@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20211208170241.110551-1-cohuck@redhat.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 28b3b951-87a4-490f-9279-849b3e7a8dba
+X-Ovh-Tracer-Id: 17018821518107183885
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvuddrjeekgddutddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdeljeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehgrhhouhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=87.98.180.222; envelope-from=clg@kaod.org;
+ helo=9.mo552.mail-out.ovh.net
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.44,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2iinFwL79BfS
 
-On 12/3/2021 8:32 PM, Alex Benn=E9e wrote:=0A=
-> Vasilev Oleg <vasilev.oleg@huawei.com> writes:=0A=
->=0A=
->> On 12/2/2021 7:02 PM, Alex Benn=E9e wrote:=0A=
->>=0A=
->>> Vasilev Oleg <vasilev.oleg@huawei.com> writes:=0A=
-...skipped...=0A=
->>> I did ponder a debug mode which would keep the last N tables dropped by=
-=0A=
->>> tlb_mmu_resize_locked and then measure the differences in the entries=
-=0A=
->>> before submitting the free to an rcu tasks.=0A=
->>>> The mentioned paper[4] also describes other possible improvements.=0A=
->>>> Some of those are already implemented (such as victim TLB and dynamic=
-=0A=
->>>> size for TLB), but others are not (e.g. TLB lookup uninlining and=0A=
->>>> set-associative TLB layer). Do you think those improvements=0A=
->>>> worth trying?=0A=
->>> Anything is worth trying but you would need hard numbers. Also its all=
-=0A=
->>> too easy to target micro benchmarks which might not show much differenc=
-e=0A=
->>> in real world use. =0A=
->> The  mentioned paper presents some benchmarking, e. g. linux kernel=0A=
->> compilation and some other stuff. Do you think those shouldn't be=0A=
->> trusted?=0A=
-> No they are good. To be honest it's the context switches that get you.=0A=
-> Look at "info jit" between a normal distro and a initramfs shell. Places=
-=0A=
-> where the kernel is switching between multiple maps means a churn of TLB=
-=0A=
-> data.=0A=
->=0A=
-> See my other post with a match of "msr ttrb"=0A=
-Sorry, couldn't find what you are referring to. Could you, please, share=0A=
-a link?=0A=
->>>> Another idea for decreasing occurence of TLB refills is to make TBs ke=
-y=0A=
->>>> in htable independent of physical address. I assume it is only needed=
-=0A=
->>>> to distinguish different processes where VAs can be the same.=0A=
->>>> Is that assumption correct?=0A=
->> This one, what do you think? Can we replace physical address as part=0A=
->> of a key in TB htable with some sort of address space identifier?=0A=
-> Hmm maybe - so a change in ASID wouldn't need a total flush?=0A=
-=0A=
-No, I think it would need a flush since regular memory accesses need to=0A=
-be in the correct address space. But, we won't need to access TLB when=0A=
-looking for the next TB. Also, TLB wouldn't need to be filled with code=0A=
-pages, only data pages.=0A=
-=0A=
-Overall, thanks for your feedback on those ideas.=0A=
-=0A=
-Oleg=0A=
-=0A=
-=0A=
-...skipped...=0A=
-=0A=
-=0A=
+On 12/8/21 18:02, Cornelia Huck wrote:
+> Add 7.0 machine types for arm/i440fx/q35/s390x/spapr.
+>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+
+Acked-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+> ---
+>   hw/arm/virt.c              |  9 ++++++++-
+>   hw/core/machine.c          |  3 +++
+>   hw/i386/pc.c               |  3 +++
+>   hw/i386/pc_piix.c          | 14 +++++++++++++-
+>   hw/i386/pc_q35.c           | 13 ++++++++++++-
+>   hw/ppc/spapr.c             | 15 +++++++++++++--
+>   hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>   include/hw/boards.h        |  3 +++
+>   include/hw/i386/pc.h       |  3 +++
+>   9 files changed, 71 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 30da05dfe040..ddcfab426436 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2857,10 +2857,17 @@ static void machvirt_machine_init(void)
+>   }
+>   type_init(machvirt_machine_init);
+>   
+> +static void virt_machine_7_0_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(7, 0)
+> +
+>   static void virt_machine_6_2_options(MachineClass *mc)
+>   {
+> +    virt_machine_7_0_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_6_2, hw_compat_6_2_len);
+>   }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(6, 2)
+> +DEFINE_VIRT_MACHINE(6, 2)
+>   
+>   static void virt_machine_6_1_options(MachineClass *mc)
+>   {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 53a99abc5605..a9c15479fe1d 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -37,6 +37,9 @@
+>   #include "hw/virtio/virtio.h"
+>   #include "hw/virtio/virtio-pci.h"
+>   
+> +GlobalProperty hw_compat_6_2[] = {};
+> +const size_t hw_compat_6_2_len = G_N_ELEMENTS(hw_compat_6_2);
+> +
+>   GlobalProperty hw_compat_6_1[] = {
+>       { "vhost-user-vsock-device", "seqpacket", "off" },
+>       { "nvme-ns", "shared", "off" },
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index a2ef40ecbc24..fccde2ef39f6 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -94,6 +94,9 @@
+>   #include "trace.h"
+>   #include CONFIG_DEVICES
+>   
+> +GlobalProperty pc_compat_6_2[] = {};
+> +const size_t pc_compat_6_2_len = G_N_ELEMENTS(pc_compat_6_2);
+> +
+>   GlobalProperty pc_compat_6_1[] = {
+>       { TYPE_X86_CPU, "hv-version-id-build", "0x1bbc" },
+>       { TYPE_X86_CPU, "hv-version-id-major", "0x0006" },
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 223dd3e05d15..b03026bf0648 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -413,7 +413,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>       machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+>   }
+>   
+> -static void pc_i440fx_6_2_machine_options(MachineClass *m)
+> +static void pc_i440fx_7_0_machine_options(MachineClass *m)
+>   {
+>       PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>       pc_i440fx_machine_options(m);
+> @@ -422,6 +422,18 @@ static void pc_i440fx_6_2_machine_options(MachineClass *m)
+>       pcmc->default_cpu_version = 1;
+>   }
+>   
+> +DEFINE_I440FX_MACHINE(v7_0, "pc-i440fx-7.0", NULL,
+> +                      pc_i440fx_7_0_machine_options);
+> +
+> +static void pc_i440fx_6_2_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_machine_options(m);
+> +    m->alias = NULL;
+> +    m->is_default = false;
+> +    compat_props_add(m->compat_props, hw_compat_6_2, hw_compat_6_2_len);
+> +    compat_props_add(m->compat_props, pc_compat_6_2, pc_compat_6_2_len);
+> +}
+> +
+>   DEFINE_I440FX_MACHINE(v6_2, "pc-i440fx-6.2", NULL,
+>                         pc_i440fx_6_2_machine_options);
+>   
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index e1e100316d93..6b66eb16bb64 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -360,7 +360,7 @@ static void pc_q35_machine_options(MachineClass *m)
+>       m->max_cpus = 288;
+>   }
+>   
+> -static void pc_q35_6_2_machine_options(MachineClass *m)
+> +static void pc_q35_7_0_machine_options(MachineClass *m)
+>   {
+>       PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>       pc_q35_machine_options(m);
+> @@ -368,6 +368,17 @@ static void pc_q35_6_2_machine_options(MachineClass *m)
+>       pcmc->default_cpu_version = 1;
+>   }
+>   
+> +DEFINE_Q35_MACHINE(v7_0, "pc-q35-7.0", NULL,
+> +                   pc_q35_7_0_machine_options);
+> +
+> +static void pc_q35_6_2_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_machine_options(m);
+> +    m->alias = NULL;
+> +    compat_props_add(m->compat_props, hw_compat_6_2, hw_compat_6_2_len);
+> +    compat_props_add(m->compat_props, pc_compat_6_2, pc_compat_6_2_len);
+> +}
+> +
+>   DEFINE_Q35_MACHINE(v6_2, "pc-q35-6.2", NULL,
+>                      pc_q35_6_2_machine_options);
+>   
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 3b5fd749be89..837342932586 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4665,15 +4665,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
+>       }                                                                \
+>       type_init(spapr_machine_register_##suffix)
+>   
+> +/*
+> + * pseries-7.0
+> + */
+> +static void spapr_machine_7_0_class_options(MachineClass *mc)
+> +{
+> +    /* Defaults for the latest behaviour inherited from the base class */
+> +}
+> +
+> +DEFINE_SPAPR_MACHINE(7_0, "7.0", true);
+> +
+>   /*
+>    * pseries-6.2
+>    */
+>   static void spapr_machine_6_2_class_options(MachineClass *mc)
+>   {
+> -    /* Defaults for the latest behaviour inherited from the base class */
+> +    spapr_machine_7_0_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_6_2, hw_compat_6_2_len);
+>   }
+>   
+> -DEFINE_SPAPR_MACHINE(6_2, "6.2", true);
+> +DEFINE_SPAPR_MACHINE(6_2, "6.2", false);
+>   
+>   /*
+>    * pseries-6.1
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index 653587ea62f4..84e3e63c430d 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -791,14 +791,26 @@ bool css_migration_enabled(void)
+>       }                                                                         \
+>       type_init(ccw_machine_register_##suffix)
+>   
+> +static void ccw_machine_7_0_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_7_0_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE(7_0, "7.0", true);
+> +
+>   static void ccw_machine_6_2_instance_options(MachineState *machine)
+>   {
+> +    ccw_machine_7_0_instance_options(machine);
+>   }
+>   
+>   static void ccw_machine_6_2_class_options(MachineClass *mc)
+>   {
+> +    ccw_machine_7_0_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_6_2, hw_compat_6_2_len);
+>   }
+> -DEFINE_CCW_MACHINE(6_2, "6.2", true);
+> +DEFINE_CCW_MACHINE(6_2, "6.2", false);
+>   
+>   static void ccw_machine_6_1_instance_options(MachineState *machine)
+>   {
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index 9c1c1901046c..b7b68471ffc1 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -375,6 +375,9 @@ struct MachineState {
+>       } \
+>       type_init(machine_initfn##_register_types)
+>   
+> +extern GlobalProperty hw_compat_6_2[];
+> +extern const size_t hw_compat_6_2_len;
+> +
+>   extern GlobalProperty hw_compat_6_1[];
+>   extern const size_t hw_compat_6_1_len;
+>   
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 9ab39e428f80..b38947c224cd 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -196,6 +196,9 @@ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+>   /* sgx.c */
+>   void pc_machine_init_sgx_epc(PCMachineState *pcms);
+>   
+> +extern GlobalProperty pc_compat_6_2[];
+> +extern const size_t pc_compat_6_2_len;
+> +
+>   extern GlobalProperty pc_compat_6_1[];
+>   extern const size_t pc_compat_6_1_len;
+>   
+> 
+

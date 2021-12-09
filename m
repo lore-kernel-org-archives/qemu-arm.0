@@ -1,187 +1,284 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp678316lfk;
-        Fri, 3 Dec 2021 14:16:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz2FSHlnRr6OEYOgdQTG66Ejs0WdVG1fU6PuoMZHUUrvJa5oxJxg10MJmagHx1U8gK6AJth
-X-Received: by 2002:a67:1dc5:: with SMTP id d188mr4848362vsd.34.1638569784708;
-        Fri, 03 Dec 2021 14:16:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638569784; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp38392lfk;
+        Thu, 9 Dec 2021 04:20:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwaLmuxEvuFNnxQJBDvn/xdCIRbPNTvYS8YUJu/TLDK+TFzM0xBVXqBbzqfNzwO7M0cuOYt
+X-Received: by 2002:a63:5746:: with SMTP id h6mr120508pgm.490.1639052426691;
+        Thu, 09 Dec 2021 04:20:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639052426; cv=none;
         d=google.com; s=arc-20160816;
-        b=auGI9Aq1z+K1yNJw8PHpioam1VwH4JWZ36dzWz8+mlwuz5GW7aRh2OM8/tGAV/4s51
-         +DyzqBnNP+tXqEIxVDLqqM2UFw9mRBjKf4P1MhrR67PBB3xxZLrMIuDPCecPnIxRW1lW
-         67j0Wfo39SnA2APqqhuicYyvWj3AZHdCuPVldFWBWTOKzLu7al94Z/62iKcI+meB6bSA
-         JcfEektgnC6WaOzkx1C4635MMm4k1hK+byIUOZeT27CP2m/R9yKL7U4N4MapVoJ2mBiD
-         11dai4R8il5PZWXigKysyDDMfNkCaJdfTtMTVTTo8hp7cJQ5SvT9+jxWdazIZLRFVYHm
-         MsRg==
+        b=qCIHv/xlMI+0bZ8JC8t2O+bL5+zttgPRGf+CcHGKce9I7AA++HRxcuhLQeLdvcak09
+         8LHjd5y6UxBWdfn9r70KWmvgG5ZP4GASEHe/PCT+GmT62gVXGHQ+ggz04ebYLygrWB6q
+         BuzyHflqtNMRObhoRRY3UVZHh9q1eAhUps30RcyL0NGygwpYjHLAFsQmuQfA37RSkaKz
+         DdKIGafj2II6rX2BmdEui4N5zkEeXy0ogm4JKvZijTXUZeEXH52Yrt7YfW+5EbBcLf5S
+         QE1kHRSrrvpuNaHtPFxy3C6jQkKquO8jKjTISxdcVO1XWwHuapMfRWiMoxQWJ9NI8kpY
+         SNQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=DptKPBtVqulkRZwb4bxvQuevNljfMMf/j/w293um1mM=;
-        b=ku0B8OgOEp+7DQ84qcDZfu6jesl3Y+/oM4ddazziNfVuIVW/91b/4P6XuIoXrgVkmo
-         P29sn0Sl0DEjJLB/tv3/qy3y1ZmtnNGEWC1jJWFXjVODL9ZuLSOJLqEh1J8/jLF7IKvW
-         OB0aBLfYnpQtQIJ4Kd3QgdoObZUfGVOdXeQvRSu1ixmPnoQ7l/bPgrQfoZgQnOqioA2p
-         35wlICCkP+Dy7qUbT3xJPeaHV/Mc5Qga7zHwOP/yr5hEurkLq5tTKuupQZeRNV26TQ9I
-         rwzgboKAmZs93GwfvrjNqrjBg/GFvek8P19on66Z7t3eyRpyFZysuOlp37mJgDjSsc5S
-         FnDw==
+        h=list-id:precedence:content-transfer-encoding:content-disposition
+         :mime-version:reply-to:message-id:subject:cc:to:from:date
+         :dkim-signature:dkim-signature;
+        bh=qi8ZoK8f8gPDnzmEmrKOIb52wbwmYXcQJdNvNkryX1Q=;
+        b=Wi1BjYBvqQ5pSZJAlaElBi5XzynJshVFA4yydThtr1Np1EfzyE5QDu4lUmNZL31eJG
+         mjvYRvv5ReU6UfDr6AijSqUQheXtG/JwY2EnfgjydnossDGeKRR4GFdHhvWuWB4K4JbC
+         k2Fc2cXmFIm8S0xb+nLeiCMXUXXUx7aeZ66L7j5qFfH5vKQAVGpjhxmJh9zdC4HOegdc
+         HT9GBFTJBy/bNhhUfmeBl2gC5VZ1pvOVHii+Vtd8f7AM1XEHD46MXCaBcKwcaQaPqbNb
+         T/OLQG61qUGuHbBiyNglRt39KFXjtPIKTr803SPJAlOgTwTc4fuoIXcNy8gl6greS0zm
+         2O1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=PnQ9CBH+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p2si3715104vsl.752.2021.12.03.14.16.24
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Dec 2021 14:16:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.cz header.s=susede2_rsa header.b=ll0amWt1;
+       dkim=neutral (no key) header.i=@suse.cz header.s=susede2_ed25519;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id 6si6791548pfh.313.2021.12.09.04.20.26;
+        Thu, 09 Dec 2021 04:20:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=PnQ9CBH+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:40612 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mtGqu-0006qK-49
-	for alex.bennee@linaro.org; Fri, 03 Dec 2021 17:16:24 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54124)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3wZWqYQcKCKofOXdebOQYYQVO.MYWaOWe-KbWXYXQXe.YbQ@flex--venture.bounces.google.com>)
- id 1mtGqe-0006pz-IN
- for qemu-arm@nongnu.org; Fri, 03 Dec 2021 17:16:08 -0500
-Received: from [2607:f8b0:4864:20::c49] (port=47852
- helo=mail-oo1-xc49.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3wZWqYQcKCKofOXdebOQYYQVO.MYWaOWe-KbWXYXQXe.YbQ@flex--venture.bounces.google.com>)
- id 1mtGqQ-0003yf-4V
- for qemu-arm@nongnu.org; Fri, 03 Dec 2021 17:16:07 -0500
-Received: by mail-oo1-xc49.google.com with SMTP id
- y123-20020a4a4581000000b002c282d3ab49so3272026ooa.14
- for <qemu-arm@nongnu.org>; Fri, 03 Dec 2021 14:15:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=DptKPBtVqulkRZwb4bxvQuevNljfMMf/j/w293um1mM=;
- b=PnQ9CBH+4dRC6T58i0FF2tAOVJVR9mjl5b1wvXU68ZFgFoMxAlb9glW9BNKxrRwFiB
- iUMtVJv8YDO+nXz4Hs9655gwiX5whn5hdNQdVePsaXaZNGR7MDRgjaYn09jL52sGRT64
- opXGamPG+JSxE3z+RB+tbIZMcLaILeLqTE3H6eYjm0lEdsIyavvZczfTDBUWMfkUZXoh
- hpd1CovuXupBRb61ig78XoFF968uqhN0HiM6vHAwVrfpJHdWHZ+iEW8K8WKtuh39kPbn
- /hsKq0yXbPymkZS+6xZyVhhZfGamhQpXo/CzwRFf7RZM/1Y7xmXzEu8IMXyuMAtlfedQ
- Wk2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=DptKPBtVqulkRZwb4bxvQuevNljfMMf/j/w293um1mM=;
- b=Un0IvQbcoA1KDm8agU2CSi5ivjTJZcDedbzvffYuuaCe9lDUqELIzQ1J0F10S4r9IW
- YDQrp5jrG20pDN87WBIvE4Y3+r0vru8nHQpwVoiXZbAEdSj2wdWhvEc/ykqvWUBZwnad
- S297MFWKtBLIINNq9DuSUb6qUUErTuI6h3oyNQBBuboEhHA5oJfReuoJbW+DjzcsWtMN
- PCdqa/H4a4VG9KfByEMZsZCki3coLCv9tegfDOkz4ojv48B/i/EuxWsUWNCukfWsbWjF
- hL7m+7wpUBmaEfHvTHRee+cHcFW0iFsO4qpDgXMhr2mnGY2+4BdqwPX9IbOGdYbw0t61
- 6DAQ==
-X-Gm-Message-State: AOAM530v2T9OQwQ0hPETmZVPiDYYxRKG+nhrg6aCeH6PTuJK6sXiiB9B
- 0EMBdCUApobx0eyZpGFUThXtZ5m6tC5n
-X-Received: from venture.svl.corp.google.com
- ([2620:15c:2a3:200:7a5a:6b8a:761a:5dd9])
- (user=venture job=sendgmr) by 2002:a17:90b:17cf:: with SMTP id
- me15mr17228792pjb.125.1638569409918; Fri, 03 Dec 2021 14:10:09 -0800 (PST)
-Date: Fri,  3 Dec 2021 14:10:02 -0800
-Message-Id: <20211203221002.1719306-1-venture@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.34.1.400.ga245620fadb-goog
-Subject: [PATCH v2] hw/net: npcm7xx_emc fix missing queue_flush
-From: Patrick Venture <venture@google.com>
-To: f4bug@amsat.org, peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, hskinnemoen@google.com, 
- kfting@nuvoton.com, Patrick Venture <venture@google.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::c49
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c49;
- envelope-from=3wZWqYQcKCKofOXdebOQYYQVO.MYWaOWe-KbWXYXQXe.YbQ@flex--venture.bounces.google.com;
- helo=mail-oo1-xc49.google.com
-X-Spam_score_int: -87
-X-Spam_score: -8.8
-X-Spam_bar: --------
-X-Spam_report: (-8.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IU0O8CryWajL
+       dkim=pass header.i=@suse.cz header.s=susede2_rsa header.b=ll0amWt1;
+       dkim=neutral (no key) header.i=@suse.cz header.s=susede2_ed25519;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S237246AbhLIMX6 (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Thu, 9 Dec 2021 07:23:58 -0500
+Received: from smtp-out2.suse.de ([195.135.220.29]:45508 "EHLO
+        smtp-out2.suse.de" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S233686AbhLIMX5 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 9 Dec 2021 07:23:57 -0500
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+        (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+         key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+        (No client certificate requested)
+        by smtp-out2.suse.de (Postfix) with ESMTPS id B7A291F37D;
+        Thu,  9 Dec 2021 12:20:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
+        t=1639052423;
+        h=from:from:reply-to:reply-to:date:date:message-id:message-id:to:to:
+         cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=qi8ZoK8f8gPDnzmEmrKOIb52wbwmYXcQJdNvNkryX1Q=;
+        b=ll0amWt1Q+ikTxxelRKVDZcLKFC9yGD4S8zTE2LrieQwfEGK9Uj0e0RJ9x3Hcnle2TzFde
+        fSCR0ObkzlK9wJMJ7vFgtRYVYnuT3fIRynCp2McbJr/gIqkr4PczQ1vMaU4h/S0f+J7DAO
+        KKvVHIhB2KQ6GPMAoecAgptGiJ7MyX0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
+        s=susede2_ed25519; t=1639052423;
+        h=from:from:reply-to:reply-to:date:date:message-id:message-id:to:to:
+         cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=qi8ZoK8f8gPDnzmEmrKOIb52wbwmYXcQJdNvNkryX1Q=;
+        b=l5HJQnTJidxiMurMgt9/auTdtfLp07wMGhxNKRYKroXx+oug64fuDQdsmlgrkid+2xpy9K
+        qw+wi1GI0LQmv2AA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+        (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+         key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+        (No client certificate requested)
+        by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 7F57813B2D;
+        Thu,  9 Dec 2021 12:20:23 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+        by imap2.suse-dmz.suse.de with ESMTPSA
+        id qkZJHYf0sWEHYQAAMHmgww
+        (envelope-from <pvorel@suse.cz>); Thu, 09 Dec 2021 12:20:23 +0000
+Date:   Thu, 9 Dec 2021 13:20:21 +0100
+From:   Petr Vorel <pvorel@suse.cz>
+To:     linux-perf-users@vger.kernel.org
+Cc:     ltp@lists.linux.it, Cyril Hrubis <chrubis@suse.cz>,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
+Subject: LTP test perf_event_open02.c: possible rounding issue on aarch64 KVM
+Message-ID: <YbH0hQbQw3KNSLOQ@pevik>
+Reply-To: Petr Vorel <pvorel@suse.cz>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: aLYicijoL6md
 
-The rx_active boolean change to true should always trigger a try_read
-call that flushes the queue.
+Hi,
 
-Signed-off-by: Patrick Venture <venture@google.com>
----
-v2: introduced helper method to encapsulate rx activation and queue flush.
----
- hw/net/npcm7xx_emc.c | 18 ++++++++----------
- 1 file changed, 8 insertions(+), 10 deletions(-)
+I have problem with LTP test perf_event_open02.c [1] on QEMU using KVM on
+openSUSE aarch64 kernel 5.15.5-1-default (not much different from stable ke=
+rnel
+=66rom kernel.org):
 
-diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
-index 7c892f820f..545b2b7410 100644
---- a/hw/net/npcm7xx_emc.c
-+++ b/hw/net/npcm7xx_emc.c
-@@ -284,6 +284,12 @@ static void emc_halt_rx(NPCM7xxEMCState *emc, uint32_t mista_flag)
-     emc_set_mista(emc, mista_flag);
- }
- 
-+static void emc_enable_rx_and_flush(NPCM7xxEMCState *emc)
-+{
-+    emc->rx_active = true;
-+    qemu_flush_queued_packets(qemu_get_queue(emc->nic));
-+}
-+
- static void emc_set_next_tx_descriptor(NPCM7xxEMCState *emc,
-                                        const NPCM7xxEMCTxDesc *tx_desc,
-                                        uint32_t desc_addr)
-@@ -581,13 +587,6 @@ static ssize_t emc_receive(NetClientState *nc, const uint8_t *buf, size_t len1)
-     return len;
- }
- 
--static void emc_try_receive_next_packet(NPCM7xxEMCState *emc)
--{
--    if (emc_can_receive(qemu_get_queue(emc->nic))) {
--        qemu_flush_queued_packets(qemu_get_queue(emc->nic));
--    }
--}
--
- static uint64_t npcm7xx_emc_read(void *opaque, hwaddr offset, unsigned size)
- {
-     NPCM7xxEMCState *emc = opaque;
-@@ -703,7 +702,7 @@ static void npcm7xx_emc_write(void *opaque, hwaddr offset,
-             emc->regs[REG_MGSTA] |= REG_MGSTA_RXHA;
-         }
-         if (value & REG_MCMDR_RXON) {
--            emc->rx_active = true;
-+            emc_enable_rx_and_flush(emc);
-         } else {
-             emc_halt_rx(emc, 0);
-         }
-@@ -739,8 +738,7 @@ static void npcm7xx_emc_write(void *opaque, hwaddr offset,
-         break;
-     case REG_RSDR:
-         if (emc->regs[REG_MCMDR] & REG_MCMDR_RXON) {
--            emc->rx_active = true;
--            emc_try_receive_next_packet(emc);
-+            emc_enable_rx_and_flush(emc);
-         }
-         break;
-     case REG_MIIDA:
--- 
-2.34.1.400.ga245620fadb-goog
+# /opt/ltp/testcases/bin/perf_event_open02
+=2E..
+perf_event_open02.c:104: TINFO: bench_work estimated loops =3D 8083 in 500 =
+ms
+perf_event_open02.c:149: TINFO: [0] value:2425293761 time_enabled:749092800=
+ time_running:749092800
+perf_event_open02.c:149: TINFO: [1] value:2425287027 time_enabled:749141475=
+ time_running:749141475
+perf_event_open02.c:149: TINFO: [2] value:2433046583 time_enabled:757346300=
+ time_running:757346300
+perf_event_open02.c:149: TINFO: [3] value:2432771537 time_enabled:753369300=
+ time_running:753369300
+perf_event_open02.c:149: TINFO: [4] value:2432551620 time_enabled:753784075=
+ time_running:753784075
+perf_event_open02.c:149: TINFO: [5] value:2432386104 time_enabled:753481750=
+ time_running:753481750
+perf_event_open02.c:149: TINFO: [6] value:2095086137 time_enabled:768866050=
+ time_running:660021525
+perf_event_open02.c:308: TINFO: nhw: 6, overall task clock: 4098138525
+perf_event_open02.c:309: TINFO: hw sum: 116450294745, task clock sum: 24589=
+636350
+perf_event_open02.c:321: TINFO: ratio: 6.000196
+perf_event_open02.c:323: TFAIL: test failed (ratio was greater than 6)
+=2E..
 
+The test tries to assert the precision of hardware counters (using struct
+perf_event_attr hw_event.type =3D PERF_TYPE_HARDWARE), but sometimes it fai=
+ls with
+slight overrun. We suppose that this is a rounding error, but it'd be nice =
+to
+get this confirmed from kernel developers.
+
+Related kernel setup (or you need to know something else)
+grep PERF_EVENTS config-5.15.5-1-default # aarch64
+CONFIG_HAVE_PERF_EVENTS=3Dy
+CONFIG_PERF_EVENTS=3Dy
+CONFIG_HW_PERF_EVENTS=3Dy
+
+Test is running inside testing framework with this setup:
+qemu-system-aarch64 -device virtio-gpu-pci -only-migratable -chardev ringbu=
+f,id=3Dserial0,logfile=3Dserial0,logappend=3Don -serial chardev:serial0 -au=
+diodev none,id=3Dsnd0 -device intel-hda -device hda-output,audiodev=3Dsnd0 =
+-m 2048 -machine virt,gic-version=3Dhost -cpu host -mem-prealloc -mem-path =
+/dev/hugepages/ -netdev user,id=3Dqanet0 -device virtio-net,netdev=3Dqanet0=
+,mac=3D52:54:00:12:34:56 -object rng-random,filename=3D/dev/urandom,id=3Drn=
+g0 -device virtio-rng-pci,rng=3Drng0 -boot menu=3Don,splash-time=3D5000 -de=
+vice nec-usb-xhci -device usb-tablet -device usb-kbd -smp 2 -enable-kvm -no=
+-shutdown -vnc :97,share=3Dforce-shared -device virtio-serial -chardev pipe=
+,id=3Dvirtio_console,path=3Dvirtio_console,logfile=3Dvirtio_console.log,log=
+append=3Don -device virtconsole,chardev=3Dvirtio_console,name=3Dorg.openqa.=
+console.virtio_console -chardev pipe,id=3Dvirtio_console1,path=3Dvirtio_con=
+sole1,logfile=3Dvirtio_console1.log,logappend=3Don -device virtconsole,char=
+dev=3Dvirtio_console1,name=3Dorg.openqa.console.virtio_console1 -chardev so=
+cket,path=3Dqmp_socket,server=3Don,wait=3Doff,id=3Dqmp_socket,logfile=3Dqmp=
+_socket.log,logappend=3Don -qmp chardev:qmp_socket -S -device virtio-scsi-p=
+ci,id=3Dscsi0 -blockdev driver=3Dfile,node-name=3Dhd0-overlay0-file,filenam=
+e=3D/var/lib/openqa/pool/7/raid/hd0-overlay0,cache.no-flush=3Don -blockdev =
+driver=3Dqcow2,node-name=3Dhd0-overlay0,file=3Dhd0-overlay0-file,cache.no-f=
+lush=3Don -device virtio-blk-device,id=3Dhd0-device,drive=3Dhd0-overlay0,bo=
+otindex=3D0,serial=3Dhd0 -blockdev driver=3Dfile,node-name=3Dcd0-overlay0-f=
+ile,filename=3D/var/lib/openqa/pool/7/raid/cd0-overlay0,cache.no-flush=3Don=
+ -blockdev driver=3Dqcow2,node-name=3Dcd0-overlay0,file=3Dcd0-overlay0-file=
+,cache.no-flush=3Don -device scsi-cd,id=3Dcd0-device,drive=3Dcd0-overlay0,s=
+erial=3Dcd0 -drive id=3Dpflash-code-overlay0,if=3Dpflash,file=3D/var/lib/op=
+enqa/pool/7/raid/pflash-code-overlay0,unit=3D0,readonly=3Don -drive id=3Dpf=
+lash-vars-overlay0,if=3Dpflash,file=3D/var/lib/openqa/pool/7/raid/pflash-va=
+rs-overlay0,unit=3D1
+
+Running the same OS and kernel (aarch64 JeOS Tumbleweed 20211202) on RPI it=
+'s working:
+perf_event_open02.c:104: TINFO: bench_work estimated loops =3D 3601 in 500 =
+ms
+perf_event_open02.c:149: TINFO: [0] value:1080601748 time_enabled:480527015=
+ time_running:480527015
+perf_event_open02.c:149: TINFO: [1] value:1080599535 time_enabled:480540573=
+ time_running:480540573
+perf_event_open02.c:149: TINFO: [2] value:1080592770 time_enabled:480533868=
+ time_running:480533868
+perf_event_open02.c:149: TINFO: [3] value:1080607121 time_enabled:480571573=
+ time_running:480571573
+perf_event_open02.c:149: TINFO: [4] value:1080598264 time_enabled:480568330=
+ time_running:480568330
+perf_event_open02.c:149: TINFO: [5] value:1080608798 time_enabled:480600001=
+ time_running:480600001
+perf_event_open02.c:149: TINFO: [6] value:923390393 time_enabled:480919479 =
+time_running:410947611
+perf_event_open02.c:308: TINFO: nhw: 6, overall task clock: 4990107074
+perf_event_open02.c:309: TINFO: hw sum: 51868804135, task clock sum: 299406=
+16417
+perf_event_open02.c:321: TINFO: ratio: 5.999995
+perf_event_open02.c:325: TPASS: test passed
+
+Test is not supported ENOENT when running with similar setup on x86_64 and
+s390x quests:
+perf_event_open.h:31: TCONF: perf_event_open type/config not supported: ENO=
+ENT (2)
+
+grep PERF_EVENTS config-5.15.5-1-default # x86_64
+CONFIG_HAVE_PERF_EVENTS=3Dy
+CONFIG_PERF_EVENTS=3Dy
+CONFIG_PERF_EVENTS_INTEL_UNCORE=3Dy
+CONFIG_PERF_EVENTS_INTEL_RAPL=3Dy
+CONFIG_PERF_EVENTS_INTEL_CSTATE=3Dy
+CONFIG_PERF_EVENTS_AMD_POWER=3Dm
+CONFIG_PERF_EVENTS_AMD_UNCORE=3Dm
+CONFIG_HAVE_PERF_EVENTS_NMI=3Dy
+
+But it passes on ppc64le
+
+perf_event_open02.c:104: TINFO: bench_work estimated loops =3D 4075 in 500 =
+ms
+perf_event_open02.c:151: TINFO: [0] value:815279669 time_enabled:316461566 =
+time_running:316461566
+perf_event_open02.c:151: TINFO: [1] value:815281799 time_enabled:316462740 =
+time_running:316462740
+perf_event_open02.c:151: TINFO: [2] value:815280588 time_enabled:316534086 =
+time_running:316534086
+perf_event_open02.c:151: TINFO: [3] value:815283285 time_enabled:316465672 =
+time_running:316465672
+perf_event_open02.c:151: TINFO: [4] value:815305390 time_enabled:316492698 =
+time_running:316492698
+perf_event_open02.c:151: TINFO: [5] value:686550649 time_enabled:316631866 =
+time_running:266632316
+perf_event_open02.c:308: TINFO: nhw: 5, overall task clock: 2534004200
+perf_event_open02.c:309: TINFO: hw sum: 32612814180, task clock sum: 126699=
+66232
+perf_event_open02.c:321: TINFO: ratio: 4.999978
+perf_event_open02.c:325: TPASS: test passed
+
+grep PERF_EVENTS config # ppc64le
+CONFIG_HAVE_PERF_EVENTS=3Dy
+CONFIG_PERF_EVENTS=3Dy
+CONFIG_HAVE_PERF_EVENTS_NMI=3Dy
+
+When I tried running aarch64 quest with stable kernel 5.10.76 from kernel.o=
+rg on
+my intel laptop, using simplified setup, the event was not supported (not s=
+ure
+whether that was caused unavailable -enable-kvm or something else; I also
+haven't checked kernel config):
+
+qemu-system-aarch64 -M virt -cpu cortex-a53 -nographic -smp $SMP -kernel Im=
+age -append "rootwait root=3D/dev/vda console=3DttyAMA0" -netdev user,id=3D=
+eth0 -device virtio-net-device,netdev=3Deth0 -drive file=3Drootfs.ext4,if=
+=3Dnone,format=3Draw,id=3Dhd0 -device virtio-blk-device,drive=3Dhd0
+=2E..
+perf_event_open.h:26: TINFO: perf_event_open event.type: 0, event.config: 1
+perf_event_open.h:30: TCONF: perf_event_open type/config not supported: ENO=
+ENT (2)
+
+I also tested that stable kernel 5.10.76 on RPI but that passed (the same a=
+s openSUSE 5.15.5-1-default)
+perf_event_open02.c:104: TINFO: bench_work estimated loops =3D 1496 in 500 =
+ms
+perf_event_open02.c:149: TINFO: [0] value:449725668 time_enabled:500191054 =
+time_running:500191054
+perf_event_open02.c:149: TINFO: [1] value:449728803 time_enabled:500204795 =
+time_running:500204795
+perf_event_open02.c:149: TINFO: [2] value:449732944 time_enabled:500210665 =
+time_running:500210665
+perf_event_open02.c:149: TINFO: [3] value:449738099 time_enabled:500210443 =
+time_running:500210443
+perf_event_open02.c:149: TINFO: [4] value:449745104 time_enabled:500234961 =
+time_running:500234961
+perf_event_open02.c:149: TINFO: [5] value:449756676 time_enabled:500247647 =
+time_running:500247647
+perf_event_open02.c:149: TINFO: [6] value:385474224 time_enabled:502975813 =
+time_running:430976612
+perf_event_open02.c:308: TINFO: nhw: 6, overall task clock: 4031349522
+perf_event_open02.c:309: TINFO: hw sum: 21590362808, task clock sum: 241871=
+13827
+perf_event_open02.c:321: TINFO: ratio: 5.999756
+perf_event_open02.c:325: TPASS: test passed
+
+So is it a rounding issue on aarch64 QEMU/KVM?
+Thanks for any hint what to check / try.
+
+Kind regards,
+Petr
+
+[1] https://github.com/linux-test-project/ltp/tree/c2d4836c057fb9f78e7f625d=
+71638d4f40f98659/testcases/kernel/syscalls/perf_event_open/perf_event_open0=
+2.c

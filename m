@@ -1,91 +1,93 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1368959lfk;
-        Fri, 10 Dec 2021 06:06:02 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwzOhprjMY3be+9kdoGpJdaA4VrQhxW+O2VRAc2biHzQoGVzh1nvwJRZU5yklfJcZcDakNl
-X-Received: by 2002:a05:6402:124e:: with SMTP id l14mr37881345edw.74.1639145162762;
-        Fri, 10 Dec 2021 06:06:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639145162; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1436730lfk;
+        Fri, 10 Dec 2021 07:14:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx8XHhqDMpPHyp7kjiU/nzXIrbVtLxwg+QkfSQnm+Q//KABVKWNFx230SMmZVvPpCFtAaOi
+X-Received: by 2002:a05:6214:260e:: with SMTP id gu14mr26575173qvb.84.1639149281815;
+        Fri, 10 Dec 2021 07:14:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639149281; cv=none;
         d=google.com; s=arc-20160816;
-        b=IpY+L7t0VgE3W7bzw3avTvPbOv7ndiGlhPkj4Q8lF/FHbsLs7/WbBIQaVXwOuSTbDJ
-         91PXjqo7bUtokS4HBOzr57EnchuBOjtNfuYkNQDBmJ3fWEt9GbBCzNk/hLCMN0fFNRRn
-         oIyD+BwDU5NjA0AjqpzJmR1tOsNY//qiYcSw01ECweagHkbv2ltaGCgRTp60pWxIGDxT
-         IfQqSKTqWCangNbw3FAq7PMapYx9jDAQq/I2ZhBmISwIQyrOcsocxHta+EmeqjHgB5+x
-         AmJgxaKAd/oGFUwGZV3kWpsTzlm75QZgeyEfNKpqbfHSUdS2uDhOvqJdJwW2oTPHC5m1
-         gqUQ==
+        b=eyqXyPZ553qs44ZncO2T66aNvuSNY8Us4s6femTiAEVAb/VblT6rjzIV6CDSyQ7HbP
+         Tn2eoP8FlczspNW6X/2giVT240EQvKG2jvqTqVvIpOPYRsuasMUetPmyZkBj5S0AgcJz
+         6sboO6UGi1f0a4YWeWvxSzrCWRXy7xzrpX03PmB/SfFSJhnEWFWB8g0z5s31SLOTmeSq
+         u3mXL2cjLOQK0nAtKY2nEU6e59ftObWAyEMVZI0BcZ+sLdkaaYVbg3B1Ri2C4y0ON+0I
+         8qjGMOTUjjr1+WqojLZwDoR/+8udubBVTQ59hDiyjuc34WmXQaCUvO/e2qPNMPOnHSay
+         1y0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id;
-        bh=r34I9beaR1al+PtkZU8STkn58ZP+mVE61UZfmpHWCPw=;
-        b=ZQ8CxDDG541ObvF93NSVuoCS8MwJh0yuKFTNrupW8uoGhwizTrHDjjN3XyzXbl5xg0
-         TY8twb7ZfG71nBJtoMZZPLpTPPW2XbWdvNDzgXjeU2kW2KcZJZLUgsG+EngTCBuwg4A4
-         zlYuKNwiFoqwpLGCPbD4f0v9pXaDuzg45x0JtDCTU+HkZe04M+qtoSJXz942beXf2RC6
-         7Ky/Sie4Ej43EO2X0ntpjwOm/BBgPrvJf3kGVJ7k9dOktfl6pm+Jsrxi1UxZZPPpZqh+
-         w70zx9JmYzUX5GcJ9lkkzvckyohB0LvacaI0egUk3Z+smToP6tta2qW56Eeaclt4lsQ1
-         8ifA==
+        bh=84VqnAeMS++mIcw5J5AZ575TZ+ZC/S4aBxmcUGv4us4=;
+        b=OLK6V/O2B77ths3yiENl2Nn4EwMP3yW430cQ1iJEb1fV7fVqMFtV+uvJatREQlWqmi
+         m4wtoki6LVi6Xq/F/N6DW/Ry677L0Oo3VkQFT3xlv6MXA5lWFAhKhrNG5ucpQC2CEGK/
+         dDhDp/3O9NpfJjfUdFaI/vim/vHq8+alU87F1wk6pEN3Mlggs+UEtGqF9kZ9h3N0uGDx
+         9s/Mr4lSpRAFSCjaE++FRHeJ4bWz3viQVKpHsOkSXcn5utJakzS6TPlONnZHtZoGN6UA
+         JH1gBTsJ6FesI4PRAAvHGmH1iQLAT8J4Wdxut5v3giGJaWSL5gMS0keGmHIXj5YaftgI
+         nDbA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=none (google.com: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org does not designate permitted sender hosts) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g9si5685762edb.263.2021.12.10.06.06.02
+        by mx.google.com with ESMTPS id j21si3104639qta.160.2021.12.10.07.14.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Dec 2021 06:06:02 -0800 (PST)
+        Fri, 10 Dec 2021 07:14:41 -0800 (PST)
 Received-SPF: none (google.com: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org does not designate permitted sender hosts) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=none (google.com: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org does not designate permitted sender hosts) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54530 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36718 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mvgXB-0006zx-TY
-	for alex.bennee@linaro.org; Fri, 10 Dec 2021 09:06:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41506)
+	id 1mvhbd-0006A6-6H
+	for alex.bennee@linaro.org; Fri, 10 Dec 2021 10:14:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mvgWw-0006zZ-Cl
- for qemu-arm@nongnu.org; Fri, 10 Dec 2021 09:05:47 -0500
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81]:58111)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mvhb5-00066i-Bm
+ for qemu-arm@nongnu.org; Fri, 10 Dec 2021 10:14:07 -0500
+Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156]:44297)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mvgWu-0005Pw-7a
- for qemu-arm@nongnu.org; Fri, 10 Dec 2021 09:05:45 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.250])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id BAFFCD1212B2;
- Fri, 10 Dec 2021 15:05:40 +0100 (CET)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mvhb1-0007Ee-Ls
+ for qemu-arm@nongnu.org; Fri, 10 Dec 2021 10:14:07 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.84])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 9594122F0D;
+ Fri, 10 Dec 2021 15:13:57 +0000 (UTC)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.17; Fri, 10 Dec
- 2021 15:05:39 +0100
+ 2021 16:13:57 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001ebf0e436-1375-4f7c-a038-19b6b0cb698f,
- C80FE4A66E5B5B4A0E1D48CB2EFD2B2F83D6D903) smtp.auth=clg@kaod.org
+ (GARM-99G0031786238d-fb69-45e8-8fe2-8b3ab58c6f38,
+ 46725CDD1DA84BED7F471249384164116D1F6139) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <914155fd-646e-b551-9c54-3b132a5abfa5@kaod.org>
-Date: Fri, 10 Dec 2021 15:05:39 +0100
+Message-ID: <e96aa35b-a8d9-41fa-ae0f-5e89fe6b1cfa@kaod.org>
+Date: Fri, 10 Dec 2021 16:13:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.3.0
 Subject: Re: [PATCH v1] Add dummy Aspeed AST2600 Display Port MCU (DPMCU)
 Content-Language: en-US
-To: Troy Lee <troy_lee@aspeedtech.com>, <qemu-devel@nongnu.org>
+To: Troy Lee <leetroy@gmail.com>
 References: <20211210083034.726610-1-troy_lee@aspeedtech.com>
+ <914155fd-646e-b551-9c54-3b132a5abfa5@kaod.org>
+ <CAN9Jwz3ytV3ogztQrcL+YKGdgKYdNjypeMFbKfyqMiwvWhnMEw@mail.gmail.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20211210083034.726610-1-troy_lee@aspeedtech.com>
+In-Reply-To: <CAN9Jwz3ytV3ogztQrcL+YKGdgKYdNjypeMFbKfyqMiwvWhnMEw@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX1.mxp5.local
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 71b9bd2a-f0c3-4eb3-ad13-e6dc41a6c117
-X-Ovh-Tracer-Id: 6824079338113305449
+X-Ovh-Tracer-GUID: 1271641b-30b0-4022-9692-21f827ea714f
+X-Ovh-Tracer-Id: 7977282318680296297
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvuddrkedvgdeiudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeigedvffekgeeftedutddttdevudeihfegudffkeeitdekkeetkefhffelveelleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvuddrkedvgdejgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeuveelvdejteegteefieevfeetffefvddvieekteevleefgeelgfeutedvfedvfeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
+ helo=8.mo552.mail-out.ovh.net
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.317,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -99,92 +101,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- leetroy@gmail.com, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Troy Lee <troy_lee@aspeedtech.com>, qemu-devel@nongnu.org,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K2Vv2/X2aMwQ
+X-TUID: Ehf2TdLY2/ka
 
-On 12/10/21 09:30, Troy Lee wrote:
-> AST2600 Display Port MCU introduces 0x18000000~0x1803FFFF as it's memory
-> and io address. If guest machine try to access DPMCU memory, it will
-> cause a fatal error.
+On 12/10/21 15:33, Troy Lee wrote:
+> On Fri, Dec 10, 2021 at 10:05 PM Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> On 12/10/21 09:30, Troy Lee wrote:
+>>> AST2600 Display Port MCU introduces 0x18000000~0x1803FFFF as it's memory
+>>> and io address. If guest machine try to access DPMCU memory, it will
+>>> cause a fatal error.
+>>
+>> The Aspeed SoCs have an "aspeed_soc.io" region for unimplemented devices
+>> but it's too small. Anyhow, it is better to have per logic unit. We should
+>> change that one day.
+>>
+> Good idea!
+> 
+>> For my information, which FW image are you using ?
+>>
+> 
+> We're using Aspeed's SDK image, I tested with ast2600-default machine.
+> Prebuilt image can be download from:
+> https://github.com/AspeedTech-BMC/openbmc/releases/tag/v07.02
 
-The Aspeed SoCs have an "aspeed_soc.io" region for unimplemented devices
-but it's too small. Anyhow, it is better to have per logic unit. We should
-change that one day.
+Excellent ! Is there one I could try in particular ?
 
-For my information, which FW image are you using ?
 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+Once correctly supported, we should include one of these SDK images in :
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+   tests/avocado/boot_linux_console.py
+
+to complete our tests of the device models.
+
+QEMU is not making much difference between the revision. You might need
+to improve that.
+
+> Without declaring the DPMCU memory, the image will hangs in u-boot.
+
+yeah. You can use -d guest_errors,unimp to catch accesses done on AHB
+windows not covered by the QEMU models. There are plenty of ways to
+move past U-Boot when models are not implemented yet. Don't waste
+too much time, just ask.
+
+eMMC is only on these branches :
+
+   https://github.com/openbmc/qemu/
+   https://github.com/legoater/qemu/
+
+Same for SBC and support is primitive.
+
+> We're still working on I3C and SPI issue to be resolved to get into rootfs.
+
+I3C has not much support in Linux and none in QEMU. You will have to
+add dummy models.
+
+SPI as a non-SPI flash driver ? The SPI flash controller models should
+be quite well covered today. What's the issue ?
 
 Thanks,
 
 C.
-
-> ---
->   hw/arm/aspeed_ast2600.c     | 8 ++++++++
->   include/hw/arm/aspeed_soc.h | 2 ++
->   2 files changed, 10 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 0384357a95..e33483fb5d 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -19,9 +19,11 @@
->   #include "sysemu/sysemu.h"
->   
->   #define ASPEED_SOC_IOMEM_SIZE       0x00200000
-> +#define ASPEED_SOC_DPMCU_SIZE       0x00040000
->   
->   static const hwaddr aspeed_soc_ast2600_memmap[] = {
->       [ASPEED_DEV_SRAM]      = 0x10000000,
-> +    [ASPEED_DEV_DPMCU]     = 0x18000000,
->       /* 0x16000000     0x17FFFFFF : AHB BUS do LPC Bus bridge */
->       [ASPEED_DEV_IOMEM]     = 0x1E600000,
->       [ASPEED_DEV_PWM]       = 0x1E610000,
-> @@ -44,6 +46,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
->       [ASPEED_DEV_SCU]       = 0x1E6E2000,
->       [ASPEED_DEV_XDMA]      = 0x1E6E7000,
->       [ASPEED_DEV_ADC]       = 0x1E6E9000,
-> +    [ASPEED_DEV_DP]        = 0x1E6EB000,
->       [ASPEED_DEV_VIDEO]     = 0x1E700000,
->       [ASPEED_DEV_SDHCI]     = 0x1E740000,
->       [ASPEED_DEV_EMMC]      = 0x1E750000,
-> @@ -104,6 +107,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
->       [ASPEED_DEV_ETH3]      = 32,
->       [ASPEED_DEV_ETH4]      = 33,
->       [ASPEED_DEV_KCS]       = 138,   /* 138 -> 142 */
-> +    [ASPEED_DEV_DP]        = 62,
->   };
->   
->   static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
-> @@ -298,6 +302,10 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       memory_region_add_subregion(get_system_memory(),
->                                   sc->memmap[ASPEED_DEV_SRAM], &s->sram);
->   
-> +    /* DPMCU */
-> +    create_unimplemented_device("aspeed.dpmcu", sc->memmap[ASPEED_DEV_DPMCU],
-> +                                ASPEED_SOC_DPMCU_SIZE);
-> +
->       /* SCU */
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
->           return;
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 8139358549..18fb7eed46 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -139,6 +139,8 @@ enum {
->       ASPEED_DEV_EMMC,
->       ASPEED_DEV_KCS,
->       ASPEED_DEV_HACE,
-> +    ASPEED_DEV_DPMCU,
-> +    ASPEED_DEV_DP,
->   };
->   
->   #endif /* ASPEED_SOC_H */
-> 
-

@@ -1,168 +1,43 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1436730lfk;
-        Fri, 10 Dec 2021 07:14:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx8XHhqDMpPHyp7kjiU/nzXIrbVtLxwg+QkfSQnm+Q//KABVKWNFx230SMmZVvPpCFtAaOi
-X-Received: by 2002:a05:6214:260e:: with SMTP id gu14mr26575173qvb.84.1639149281815;
-        Fri, 10 Dec 2021 07:14:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639149281; cv=none;
-        d=google.com; s=arc-20160816;
-        b=eyqXyPZ553qs44ZncO2T66aNvuSNY8Us4s6femTiAEVAb/VblT6rjzIV6CDSyQ7HbP
-         Tn2eoP8FlczspNW6X/2giVT240EQvKG2jvqTqVvIpOPYRsuasMUetPmyZkBj5S0AgcJz
-         6sboO6UGi1f0a4YWeWvxSzrCWRXy7xzrpX03PmB/SfFSJhnEWFWB8g0z5s31SLOTmeSq
-         u3mXL2cjLOQK0nAtKY2nEU6e59ftObWAyEMVZI0BcZ+sLdkaaYVbg3B1Ri2C4y0ON+0I
-         8qjGMOTUjjr1+WqojLZwDoR/+8udubBVTQ59hDiyjuc34WmXQaCUvO/e2qPNMPOnHSay
-         1y0g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=84VqnAeMS++mIcw5J5AZ575TZ+ZC/S4aBxmcUGv4us4=;
-        b=OLK6V/O2B77ths3yiENl2Nn4EwMP3yW430cQ1iJEb1fV7fVqMFtV+uvJatREQlWqmi
-         m4wtoki6LVi6Xq/F/N6DW/Ry677L0Oo3VkQFT3xlv6MXA5lWFAhKhrNG5ucpQC2CEGK/
-         dDhDp/3O9NpfJjfUdFaI/vim/vHq8+alU87F1wk6pEN3Mlggs+UEtGqF9kZ9h3N0uGDx
-         9s/Mr4lSpRAFSCjaE++FRHeJ4bWz3viQVKpHsOkSXcn5utJakzS6TPlONnZHtZoGN6UA
-         JH1gBTsJ6FesI4PRAAvHGmH1iQLAT8J4Wdxut5v3giGJaWSL5gMS0keGmHIXj5YaftgI
-         nDbA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=none (google.com: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org does not designate permitted sender hosts) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j21si3104639qta.160.2021.12.10.07.14.41
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Dec 2021 07:14:41 -0800 (PST)
-Received-SPF: none (google.com: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org does not designate permitted sender hosts) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=none (google.com: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org does not designate permitted sender hosts) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36718 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mvhbd-0006A6-6H
-	for alex.bennee@linaro.org; Fri, 10 Dec 2021 10:14:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33640)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mvhb5-00066i-Bm
- for qemu-arm@nongnu.org; Fri, 10 Dec 2021 10:14:07 -0500
-Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156]:44297)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mvhb1-0007Ee-Ls
- for qemu-arm@nongnu.org; Fri, 10 Dec 2021 10:14:07 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.84])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 9594122F0D;
- Fri, 10 Dec 2021 15:13:57 +0000 (UTC)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.17; Fri, 10 Dec
- 2021 16:13:57 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G0031786238d-fb69-45e8-8fe2-8b3ab58c6f38,
- 46725CDD1DA84BED7F471249384164116D1F6139) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <e96aa35b-a8d9-41fa-ae0f-5e89fe6b1cfa@kaod.org>
-Date: Fri, 10 Dec 2021 16:13:56 +0100
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id ne33sm1770325ejc.6.2021.12.10.07.39.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Dec 2021 07:39:10 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id B07661FF96;
+	Fri, 10 Dec 2021 15:39:09 +0000 (GMT)
+References: <20211202115352.951548-1-alex.bennee@linaro.org>
+User-agent: mu4e 1.7.5; emacs 28.0.90
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: pbonzini@redhat.com, drjones@redhat.com, thuth@redhat.com
+Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ linux-arm-kernel@lists.infradead.org, kvmarm@lists.cs.columbia.edu,
+ christoffer.dall@arm.com, maz@kernel.org, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+Subject: Re: [kvm-unit-tests PATCH v9 0/9] MTTCG sanity tests for ARM
+Date: Fri, 10 Dec 2021 15:38:56 +0000
+In-reply-to: <20211202115352.951548-1-alex.bennee@linaro.org>
+Message-ID: <87czm4jwpu.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [PATCH v1] Add dummy Aspeed AST2600 Display Port MCU (DPMCU)
-Content-Language: en-US
-To: Troy Lee <leetroy@gmail.com>
-References: <20211210083034.726610-1-troy_lee@aspeedtech.com>
- <914155fd-646e-b551-9c54-3b132a5abfa5@kaod.org>
- <CAN9Jwz3ytV3ogztQrcL+YKGdgKYdNjypeMFbKfyqMiwvWhnMEw@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CAN9Jwz3ytV3ogztQrcL+YKGdgKYdNjypeMFbKfyqMiwvWhnMEw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 1271641b-30b0-4022-9692-21f827ea714f
-X-Ovh-Tracer-Id: 7977282318680296297
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvuddrkedvgdejgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeuveelvdejteegteefieevfeetffefvddvieekteevleefgeelgfeutedvfedvfeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
- helo=8.mo552.mail-out.ovh.net
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.317,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Troy Lee <troy_lee@aspeedtech.com>, qemu-devel@nongnu.org,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ehf2TdLY2/ka
-
-On 12/10/21 15:33, Troy Lee wrote:
-> On Fri, Dec 10, 2021 at 10:05 PM Cédric Le Goater <clg@kaod.org> wrote:
->>
->> On 12/10/21 09:30, Troy Lee wrote:
->>> AST2600 Display Port MCU introduces 0x18000000~0x1803FFFF as it's memory
->>> and io address. If guest machine try to access DPMCU memory, it will
->>> cause a fatal error.
->>
->> The Aspeed SoCs have an "aspeed_soc.io" region for unimplemented devices
->> but it's too small. Anyhow, it is better to have per logic unit. We should
->> change that one day.
->>
-> Good idea!
-> 
->> For my information, which FW image are you using ?
->>
-> 
-> We're using Aspeed's SDK image, I tested with ast2600-default machine.
-> Prebuilt image can be download from:
-> https://github.com/AspeedTech-BMC/openbmc/releases/tag/v07.02
-
-Excellent ! Is there one I could try in particular ?
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: R3NQHOvUtFUT
 
 
-Once correctly supported, we should include one of these SDK images in :
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
-   tests/avocado/boot_linux_console.py
+> Hi,
+>
+> Not a great deal has changed from the last posting although I have
+> dropped the additional unittests.cfg in favour of setting "nodefault"
+> for the tests. Otherwise the clean-ups are mainly textual (removing
+> printfs, random newlines and cleaning up comments). As usual the
+> details are in the commits bellow the ---.
+>
+> I've also tweaked .git/config so get_maintainer.pl should ensure
+> direct delivery of the patches ;-)
 
-to complete our tests of the device models.
+Gentle ping...
 
-QEMU is not making much difference between the revision. You might need
-to improve that.
-
-> Without declaring the DPMCU memory, the image will hangs in u-boot.
-
-yeah. You can use -d guest_errors,unimp to catch accesses done on AHB
-windows not covered by the QEMU models. There are plenty of ways to
-move past U-Boot when models are not implemented yet. Don't waste
-too much time, just ask.
-
-eMMC is only on these branches :
-
-   https://github.com/openbmc/qemu/
-   https://github.com/legoater/qemu/
-
-Same for SBC and support is primitive.
-
-> We're still working on I3C and SPI issue to be resolved to get into rootfs.
-
-I3C has not much support in Linux and none in QEMU. You will have to
-add dummy models.
-
-SPI as a non-SPI flash driver ? The SPI flash controller models should
-be quite well covered today. What's the issue ?
-
-Thanks,
-
-C.
+--=20
+Alex Benn=C3=A9e

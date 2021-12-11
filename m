@@ -1,224 +1,122 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp2583331lfk;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp2583345lfk;
         Sat, 11 Dec 2021 11:11:44 -0800 (PST)
-X-Received: by 2002:adf:fd83:: with SMTP id d3mr3598239wrr.600.1639249903901;
-        Sat, 11 Dec 2021 11:11:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639249903; cv=none;
+X-Received: by 2002:adf:e84d:: with SMTP id d13mr21663264wrn.72.1639249904518;
+        Sat, 11 Dec 2021 11:11:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639249904; cv=none;
         d=google.com; s=arc-20160816;
-        b=FLrLoR6u850bTQATCcPj9qj2ze1BNfWikhZaIMXpi5mGHaqTT0NyhJ+nwPgqMWcaZR
-         sH9BgJDrTzAx1CO89cSbEzRkTixGvwiLdRNjXjpMZDvPys+yQoXktsvXtmn5cj2CJChA
-         UTPkRw7GfHzSWlTRmIxxJayxx5qWBks6FdQNWLdHnVAbEaehCwCy7WzAM/29x9nbOpaw
-         uR89/xMcKo9uPsMQuh8izbxYiDpYtN7mJhLOcOP2m7RKsG4dKxvnXVczYHN5YoQfRL5N
-         nIbsYcEUrfsSx0+dVYMokBczED3fQWxh+bmDQVk6uy6YESY9OuWZURjcqXpVBBcSi2zj
-         zhrQ==
+        b=kNbdZ/zBO3Hf3FzT/YJWOdbQYXpi0o7mWi+SwYV7wn5BsaRL1F0DlcmJmWvLu2BRFU
+         oQaOvnjc18yefCtnge7cqQl4tBkvxgHfj6CfWnSZkZSt4QUWF1oqDFusdsm1tSakYjbt
+         dc/C+BMkFJYr4fisMJCo21NY3kYfCxLVTR2CYWlyD6A9p4jgKqZ9XWLhiFGaRY3IgicW
+         xNYT4Efv1IhjM/h1hprMRzbvvSfW8qEa929jz35Y56D1BNwIvKwl/7tvjDWis+HaTsIv
+         wKL6PYg74/QOUoq7MsBRNBvHvpLv9d1cc+guhqOkfz9bpo7iVL59ey9fivJuZ6KZeAtR
+         ux/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=UU9Ga+a5TMHIVvedbmFulE35BgOQRPa9LBAE1rDIpwU=;
-        b=IU+gMAZFIjypELGFbs7Ep4hSCBmrTYNAxt1VjQXabxhkb1gEN0X+71X6WasEWoLcvO
-         MXUKFIRwfCf6wZ/56c+u7fvNKdZJzrYEXI0A140ZzgX+O6cwd+Qg49iBfwLEjO7s3xnp
-         0YIK8IiQm0BqwQKMWcfaud+bRy+1CguoFBjyCss8PCvoKdvSpJdGq5DCZH9AT+gg2E9M
-         bmnddLBD754cpHdKzo5/oydqq0IpzlLGBPYNSVgjfeaHeY+I9WEAru+sGTksUcGOpChB
-         Xfr6F4mXmth4pWujymPUU1rLHbxoD3XfHVX0W0hYvMv47W+O+WpkxaIiNBzo74yRCFuw
-         mZyA==
+        bh=S9WJzvjYpmxgrrlt3qCuhlC8wT1kSr5boBWat1KdIow=;
+        b=cR6CknZznijIcif6cbGVOSOyup6zE7n2PpHsDcCKopUDSxdK0kFCisW7TOyNjFv9u9
+         UA4XlobdC+FbfEw4A57jFtRzbd9pYLC/kkyXztZTTokFvxndrWuKAqTWXnZ1ZPmwf0jW
+         oCo+lwlDPNfI2yBURuD72ycA9RsWiytCL90b85oMUjYh0Ews+1QfmrkipXo0GsS+bokn
+         XG2O4p2VhmumeyaQ6+jmDny+VPFxZITUSNNa3Ts4E18TFvgWOaUD+3HamAnGdEBSI6tJ
+         KX8yslx+ZCAvPoU408E2WXDMhNCNUK38RkqDA76AcO0Db61M9Q3k20mjvhR71NAL3u88
+         dfgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PMm1wvhe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vxe0y0ON;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o17sor4238709wrj.48.2021.12.11.11.11.43
+        by mx.google.com with SMTPS id r27sor4189988wrc.55.2021.12.11.11.11.44
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 11 Dec 2021 11:11:43 -0800 (PST)
+        Sat, 11 Dec 2021 11:11:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PMm1wvhe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vxe0y0ON;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=UU9Ga+a5TMHIVvedbmFulE35BgOQRPa9LBAE1rDIpwU=;
-        b=PMm1wvheXPbQuQuB8P9oX/1LQyZdKtL8ThYojAzGabUTtYTvsXO3mj2WRXD9kCkewW
-         mf4wXwhVNdavEt9R7aqpwUjuWxk3P8yN7lF18arLj7PLBc1SeC48u0k3lSrNgxGBCrdM
-         cIq7NdQXzuyHhnZwp/sp/1b+PjJOdKMGkFWeE6bLcBVq+Mc9wSSu3QrSbBz+XpDkftAz
-         aJMkpBNmxVaLcXm7rjS4VqR/AE9J7TiBJTGopFsB8f/M09f+YgKWsNxXHkP5dWZLZGU1
-         tm5U4E0TlQ5EbmpXwlBHmonEildBYJcDXAv2nwlP+np/7hX4NPqWpkecGcHkjHhG4k4o
-         nDBQ==
+        bh=S9WJzvjYpmxgrrlt3qCuhlC8wT1kSr5boBWat1KdIow=;
+        b=vxe0y0ON6PrAIofFTI7Qm7PievJd1al2ZIfvUU29qc4djOQTDr2K2EM3+sKogoq3P9
+         k2hQSJGyfdYchb6dtsRA61eDscE9BgXeiYvSoocJSfvhSk+Kar8O6lVIsr9a02nkIHu1
+         iToEcJk16ChoUoLfiZX/bvJ7KBBr1iLFxaRyKv62uYw2FaXd1O10qsHELtZzU0qT7JKB
+         6ATdRH2/dK/L02hfg12A1KnFEd9if20bgXVAyaCTN4FmfAPPwqukbkxdnP0Xgskl0zr6
+         nGruDU3VOA2vS1s2ViSxWi9iJNhNaGjAnAFbfXrQXwR7CNOvSuJ53/ug0/ZKI1RNsLmL
+         JaLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=UU9Ga+a5TMHIVvedbmFulE35BgOQRPa9LBAE1rDIpwU=;
-        b=kkXrelp/WNrM3QV4lBbRtxHX3Db7YwAS1fTVy/lL4P1813w2I6RNTQAwls+AhTz4c/
-         iNx+oqVmcxhU/xI4M6iYS/r+dtEj6DJvsSdCDe5lucCYH22T4WrODcAUEeyxKm7AQpiP
-         N3z5RMcBU+Pdt+Cdwf9kGnYWPMWobVBG0TOMYX+Aw0acVGqy6mStZI0jydwGT7ixT5pq
-         VqRXdBc6jkZVZVa1dxQfo+W5hZHJWZ/T7lLGxOyie1LaFoVmjEkv5fIW3X+5J07fIAVl
-         gKgGHHBL7Wl/kvfe3Vv6DRd3C/JTmFFNFmgkZKQSuO0nxWlJO5kOxmy1FpDjiDuDyv+k
-         rZ1g==
-X-Gm-Message-State: AOAM532tiWKSE2trB6JeuAko6LkM/CS2sRXu64WkldH1cAIr23eEq2r+
-	6Pl/Y51uScCom26TEyWVJI12eJyd
-X-Google-Smtp-Source: ABdhPJy0v+mXynBuIV53zTypPVUtsGr7bepsXujsumG96mGhhjl0hUH+jj4nHKBzBIuKST+Eh5CFWA==
-X-Received: by 2002:adf:fb09:: with SMTP id c9mr21380833wrr.223.1639249903595;
-        Sat, 11 Dec 2021 11:11:43 -0800 (PST)
+        bh=S9WJzvjYpmxgrrlt3qCuhlC8wT1kSr5boBWat1KdIow=;
+        b=4KMUtg+/hNqkLKK0NInvTnBSVGGOOPcQ1hPII2OTM2ye145WMkMToeaFaePDaJv9Wq
+         uU7OJEY/tRGHmJEk1xk8eKwVihpmljqr0MAdQtJnOiMIy92xQIl2I3CLXCLTUoWoWjnd
+         SUz5eFw01kxEorUw7ibI92MuH4jCFhAeGS0iykYz2HY7t8QdJs2sgTpDSdZf/OdMPsdU
+         E8ZMHdHUU7FA2TtVOTv0muy0+QaWiPXUqjfY/iBEtlIlbeCMLMmD8SN9IYxo7tC/y16/
+         qHRH/6ChP3jAgUqHxB0qiwrr8unIrJIz0/k2woi7PFfdmytqbd4vOEwg6sS6nSEjx2Vi
+         KqSQ==
+X-Gm-Message-State: AOAM533BO/J336BiJp0bWDmHEXnauhqx7YBATuSQq7oL1yfaGaYCviZw
+	QgLj60KWQPA2zLAk5fkswL1hqjP0
+X-Google-Smtp-Source: ABdhPJzO5qTPLmYg+Pws3AkOBBGpxbLgfRrUOoEZy7ZZTrLy8BGnNgcur3LhpvVbOEF/2MJg/PDPJw==
+X-Received: by 2002:a05:6000:1a43:: with SMTP id t3mr22220223wry.555.1639249904279;
+        Sat, 11 Dec 2021 11:11:44 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
         by smtp.gmail.com with ESMTPSA id m20sm2205300wmq.11.2021.12.11.11.11.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 11 Dec 2021 11:11:43 -0800 (PST)
+        Sat, 11 Dec 2021 11:11:44 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Shashi Mallela <shashi.mallela@linaro.org>
-Subject: [PATCH 06/26] hw/intc/arm_gicv3_its: Reduce code duplication in extract_table_params()
-Date: Sat, 11 Dec 2021 19:11:15 +0000
-Message-Id: <20211211191135.1764649-7-peter.maydell@linaro.org>
+Subject: [PATCH 07/26] hw/intc/arm_gicv3_its: Correct setting of TableDesc entry_sz
+Date: Sat, 11 Dec 2021 19:11:16 +0000
+Message-Id: <20211211191135.1764649-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211211191135.1764649-1-peter.maydell@linaro.org>
 References: <20211211191135.1764649-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 8+4GwbEXvSJ2
+X-TUID: AM/LjwALWpxV
 
-The extract_table_params() decodes the fields in the GITS_BASER<n>
-registers into TableDesc structs.  Since the fields are the same for
-all the GITS_BASER<n> registers, there is currently a lot of code
-duplication within the switch (type) statement.  Refactor so that the
-cases include only what is genuinely different for each type:
-the calculation of the number of bits in the ID value that indexes
-into the table.
+We set the TableDesc entry_sz field from the appropriate
+GITS_BASER.ENTRYSIZE field.  That ID register field specifies the
+number of bytes per table entry minus one.  However when we use
+td->entry_sz we assume it to be the number of bytes per table entry
+(for instance we calculate the number of entries in a page by
+dividing the page size by the entry size).
+
+The effects of this bug are:
+ * we miscalculate the maximum number of entries in the table,
+   so our checks on guest index values are wrong (too lax)
+ * when looking up an entry in the second level of an indirect
+   table, we calculate an incorrect index into the L2 table.
+   Because we make the same incorrect calculation on both
+   reads and writes of the L2 table, the guest won't notice
+   unless it's unlucky enough to use an index value that
+   causes us to index off the end of the L2 table page and
+   cause guest memory corruption in whatever follows
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_its.c | 97 +++++++++++++++++------------------------
- 1 file changed, 40 insertions(+), 57 deletions(-)
+ hw/intc/arm_gicv3_its.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index c97b9982ae1..84808b1e298 100644
+index 84808b1e298..88f4d730999 100644
 --- a/hw/intc/arm_gicv3_its.c
 +++ b/hw/intc/arm_gicv3_its.c
-@@ -758,6 +758,9 @@ static void extract_table_params(GICv3ITSState *s)
-     uint64_t value;
- 
-     for (int i = 0; i < 8; i++) {
-+        TableDesc *td;
-+        int idbits;
-+
-         value = s->baser[i];
- 
-         if (!value) {
-@@ -789,73 +792,53 @@ static void extract_table_params(GICv3ITSState *s)
-         type = FIELD_EX64(value, GITS_BASER, TYPE);
- 
-         switch (type) {
--
-         case GITS_BASER_TYPE_DEVICE:
--            memset(&s->dt, 0 , sizeof(s->dt));
--            s->dt.valid = FIELD_EX64(value, GITS_BASER, VALID);
--
--            if (!s->dt.valid) {
--                break;
--            }
--
--            s->dt.page_sz = page_sz;
--            s->dt.indirect = FIELD_EX64(value, GITS_BASER, INDIRECT);
--            s->dt.entry_sz = FIELD_EX64(value, GITS_BASER, ENTRYSIZE);
--
--            if (!s->dt.indirect) {
--                s->dt.max_entries = (num_pages * page_sz) / s->dt.entry_sz;
--            } else {
--                s->dt.max_entries = (((num_pages * page_sz) /
--                                     L1TABLE_ENTRY_SIZE) *
--                                     (page_sz / s->dt.entry_sz));
--            }
--
--            s->dt.max_ids = (1UL << (FIELD_EX64(s->typer, GITS_TYPER,
--                                                DEVBITS) + 1));
--
--            s->dt.base_addr = baser_base_addr(value, page_sz);
--
-+            td = &s->dt;
-+            idbits = FIELD_EX64(s->typer, GITS_TYPER, DEVBITS) + 1;
-             break;
--
-         case GITS_BASER_TYPE_COLLECTION:
--            memset(&s->ct, 0 , sizeof(s->ct));
--            s->ct.valid = FIELD_EX64(value, GITS_BASER, VALID);
--
--            /*
--             * GITS_TYPER.HCC is 0 for this implementation
--             * hence writes are discarded if ct.valid is 0
--             */
--            if (!s->ct.valid) {
--                break;
--            }
--
--            s->ct.page_sz = page_sz;
--            s->ct.indirect = FIELD_EX64(value, GITS_BASER, INDIRECT);
--            s->ct.entry_sz = FIELD_EX64(value, GITS_BASER, ENTRYSIZE);
--
--            if (!s->ct.indirect) {
--                s->ct.max_entries = (num_pages * page_sz) / s->ct.entry_sz;
--            } else {
--                s->ct.max_entries = (((num_pages * page_sz) /
--                                     L1TABLE_ENTRY_SIZE) *
--                                     (page_sz / s->ct.entry_sz));
--            }
--
-+            td = &s->ct;
-             if (FIELD_EX64(s->typer, GITS_TYPER, CIL)) {
--                s->ct.max_ids = (1UL << (FIELD_EX64(s->typer,
--                                                    GITS_TYPER, CIDBITS) + 1));
-+                idbits = FIELD_EX64(s->typer, GITS_TYPER, CIDBITS) + 1;
-             } else {
-                 /* 16-bit CollectionId supported when CIL == 0 */
--                s->ct.max_ids = (1UL << 16);
-+                idbits = 16;
-             }
--
--            s->ct.base_addr = baser_base_addr(value, page_sz);
--
-             break;
--
-         default:
--            break;
-+            /*
-+             * GITS_BASER<n>.TYPE is read-only, so GITS_BASER_RO_MASK
-+             * ensures we will only see type values corresponding to
-+             * the values set up in gicv3_its_reset().
-+             */
-+            g_assert_not_reached();
+@@ -829,7 +829,7 @@ static void extract_table_params(GICv3ITSState *s)
          }
-+
-+        memset(td, 0, sizeof(*td));
-+        td->valid = FIELD_EX64(value, GITS_BASER, VALID);
-+        /*
-+         * If GITS_BASER<n>.Valid is 0 for any <n> then we will not process
-+         * interrupts. (GITS_TYPER.HCC is 0 for this implementation, so we
-+         * do not have a special case where the GITS_BASER<n>.Valid bit is 0
-+         * for the register corresponding to the Collection table but we
-+         * still have to process interrupts using non-memory-backed
-+         * Collection table entries.)
-+         */
-+        if (!td->valid) {
-+            continue;
-+        }
-+        td->page_sz = page_sz;
-+        td->indirect = FIELD_EX64(value, GITS_BASER, INDIRECT);
-+        td->entry_sz = FIELD_EX64(value, GITS_BASER, ENTRYSIZE);
-+        td->base_addr = baser_base_addr(value, page_sz);
-+        if (!td->indirect) {
-+            td->max_entries = (num_pages * page_sz) / td->entry_sz;
-+        } else {
-+            td->max_entries = (((num_pages * page_sz) /
-+                                  L1TABLE_ENTRY_SIZE) *
-+                                 (page_sz / td->entry_sz));
-+        }
-+        td->max_ids = 1ULL << idbits;
-     }
- }
- 
+         td->page_sz = page_sz;
+         td->indirect = FIELD_EX64(value, GITS_BASER, INDIRECT);
+-        td->entry_sz = FIELD_EX64(value, GITS_BASER, ENTRYSIZE);
++        td->entry_sz = FIELD_EX64(value, GITS_BASER, ENTRYSIZE) + 1;
+         td->base_addr = baser_base_addr(value, page_sz);
+         if (!td->indirect) {
+             td->max_entries = (num_pages * page_sz) / td->entry_sz;
 -- 
 2.25.1

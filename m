@@ -1,107 +1,103 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp3478900lfk;
-        Sun, 12 Dec 2021 12:43:31 -0800 (PST)
-X-Received: by 2002:a17:90b:4b09:: with SMTP id lx9mr40603111pjb.100.1639341810975;
-        Sun, 12 Dec 2021 12:43:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639341810; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp3480281lfk;
+        Sun, 12 Dec 2021 12:46:11 -0800 (PST)
+X-Received: by 2002:a05:600c:3b8f:: with SMTP id n15mr33136687wms.180.1639341971729;
+        Sun, 12 Dec 2021 12:46:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639341971; cv=none;
         d=google.com; s=arc-20160816;
-        b=wVp/hVFFznMfgOd/V9diPUluevoQIt6fa5j/5dammS2Ocyjj/gs3ZSBMLfRWCPe0/a
-         k2LYk82VpPzk6YghqUqqa72dYgh43JIwc4vYBJd8Bq1P7wJMvUVbwucTarjTNtfB2dyb
-         TYxcRWGYDKI+78gungyqxazsmNXNtj86xhwZmfgzdFyIAONC/Kn0IFywabBHelMzOXdl
-         2RRgKmZP2mj0Z462c+HtbdOHPHJh8zXUY01H1BbY2PWuiQux9KoAPE/3ojUNkRw7EobB
-         SS4VXbFb+3ACqeZil3230INz+VuEUUFWu6NXOoZo1oag+o++fdi2SEmqN0aOCwQBuTKf
-         dWfA==
+        b=kF/NFVAuiFwkdL+RFLvEFZ3Et5SgpBidQr++0x1fyKaHoDqZ5LFKtfnUL+w2V2cubK
+         lZpulUCVlI8y1ftVvrF/Y70MkIlqdyctlEI7qu3u0RWbpL/wUbt5iX/Aez0rwCg39jMX
+         +7xqKouLsi//CJ21VhHNwYC7KT4/TTX6gs9jwAhk5xhubKg620DT6DMn0tjF/to+5bIV
+         q5PLWGpu0ILZMuvpHFf2RQ1vXHksKZ6AeUpaOp6GDvL+jxUqITVizqFrKeZEX1uLNbHq
+         sWofwA0ukaB9T4pD3eaj0tDFsJNcVmxgG97pX+endG03J9HLBMdLLBXiHOiHSZfRiV5E
+         wqJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=24U4qXKInjYeICxUXdhiQPFvo1gapp+rEvu4ctBipvI=;
-        b=dbzeYCcdIk7sv/7NhaQAkss17MbnWbN27yQiriSAJfNOLVAIqrLFjmolUTWwwD4HI8
-         AbEQ+ERtDVmI0rNA7LOrzQCbXWp3EbBYc858llEQUUreqVV/8e60g+BscRu8TWXEF3dC
-         fEqmEI8gnK1jDO/NVMWJMx8l9Kow4PYxuezP3cgdw76bfJwQj+wWf8HIOm3JcJpWF2lg
-         /yMIOSS93eMN3CCXHPLreaQBQWwdbocgHzOgfZTWeHykJ8sv4ogS4IY8i2P8m8jXx7LO
-         tSdi1F34hUv3I9vWxzlEHDbXUbtpdL/3IYdDKk3UNG+T8uTZPMPIjlrSGSUklFTL1U1Y
-         w8jw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :sender:dkim-signature;
+        bh=hGM2NHUtnbFDEgpWxlzwlarIp6xK2fhN/yqxsB9M4XI=;
+        b=QhcMQgvu0vwx2Ke339L+nmpYpb2lrPykVOf1pV0PXrvlYmjAmte5Wecm5juTMt6iHu
+         RVnHQ7PAF6bc3JKCg+piG53jtURfMd9hKzpCRXkUAmpoW1vmrs4Ar+rX0jwM0Ueh16xK
+         GJRH/Bu9PgLL6wnZB6djC07xO6fpXh7Xjvkkk53aKIsrCewjezYvu3bpC3QrBMoTEPm1
+         L/Sv8obkPyia5gmC3kkLy0tV435PYjzGaltsP9rl+mNlFfn2RREt5sZXAFNBjUM8n2SG
+         Q0+g3Yy/eetURDcM8uAT5gHO3l/Q5LtXSYsBY7U5Xsc9mIBxIfm9L7ZEFF6Wf6Bu+TBQ
+         iy3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ONeEV83z;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gwM6uXXc;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e15sor5458559pln.57.2021.12.12.12.43.30
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id i20sor451857wmb.14.2021.12.12.12.46.11
         (Google Transport Security);
-        Sun, 12 Dec 2021 12:43:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sun, 12 Dec 2021 12:46:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ONeEV83z;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gwM6uXXc;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=24U4qXKInjYeICxUXdhiQPFvo1gapp+rEvu4ctBipvI=;
-        b=ONeEV83zNfuDVxFFAy36IJDxRkvLY+zEO33skCmw9XC8ISxrjnr7A8hxWPWzH5xOsg
-         zt0PJCalKjZY/DIO6yGge6D/RFJhXAPXnu+HEpCOPhJN6HlTbMuN2hZ0kDXvIno1Kc5b
-         c4LpVhxAL2NbFUsW2tZLGAFKuQNZ1sBKiT+8PlcQwnVSYMgMoRbHx3GYDAW0WThIPzyO
-         iplYsSCZG7ZfrUrPzypIYrgiyQhHdwh7WPAOKGnLj0qc8qktkk/nLOgCj8HxcQYKS88M
-         3OyetDJgo4+RcFUgmFRDFOkpj0smuAaZVZuO3kOdxhF0LtXvps6D2ue8HrniOeaprdjr
-         qrzw==
+        d=gmail.com; s=20210112;
+        h=sender:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=hGM2NHUtnbFDEgpWxlzwlarIp6xK2fhN/yqxsB9M4XI=;
+        b=gwM6uXXcliG67oQufE/i5bs66VzU6+kSCSLNJx/JvzKMiJgviqsdvvj5FTb9KGdfXB
+         x6XbijvU/BiaWbP7yX40g+X8AGmDXb+J6QSMlSn92E4RM3sqGpxZKMvNRm2mluNukrOw
+         bdYlkOSaMUEoRtB0o1y6asg7nr149hNn8yudg8RHS//r4HuykakQ1+99coBDIkc9bBpp
+         c1vpo9XHVIJsqYf+mKVlCSNn3rc/U+aAYJ7db6tzFXbhAkZyEBtPjTKZeOgyzGBqDHRp
+         MrFz/Bm1shWPZoim8ijhiX4OuOmiu8wxkd83QOGXf/r7spcjjEJ4Ib1UhzV3zg0EAHz2
+         AqxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
+        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+         :subject:content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=24U4qXKInjYeICxUXdhiQPFvo1gapp+rEvu4ctBipvI=;
-        b=qX6gXwJJRujWrR3lMgPDS28knzJpMKeTn1NJdqsNudU32jsuFgjKmHLfD0r7+35Vry
-         Rv3TIK/m6dLlp53oBtD5v1b9HcS/efUUYLLS6r06G8ljBd0Qv5qYS2X8XGcSluiXO06S
-         WhrOMIBw5hz8AOasrxGC4ZtTnOJ8Dwrx/GP4cypkZOprPaD87BwntoNQNvQgubOjf4Cj
-         VQTqXJ4aIOMTIywvslaq2c7dVzP/MVUZ0v0rkrAKscESF7KtcC45CUVLPYiPsUJCfnT2
-         qW9xBeTuYNGWCy4gCTVrduy9K5fuqk4dml89rgw7nx230qs4vWDlzRXGCQY1Jr5HBeec
-         bPLw==
-X-Gm-Message-State: AOAM533EchVQlgQcwJqVXUZl4t9/DiGbaYSEwjyC0BFyOGNErqbTFHuZ
-	1qqBEvFRkAo2ZPcCQ8cXfepRydLwD2sipVSF
-X-Google-Smtp-Source: ABdhPJy0MxAynF+cJG1FTpEn/M7Pd1uF7SzceFtcKTL0gjmMwMlPd6ZVC6iLfBE7pxMcZ6vnVBn7mA==
-X-Received: by 2002:a17:902:a584:b0:143:c2e3:c4 with SMTP id az4-20020a170902a58400b00143c2e300c4mr90125108plb.69.1639341810494;
-        Sun, 12 Dec 2021 12:43:30 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
-        by smtp.gmail.com with ESMTPSA id z8sm8080585pgc.53.2021.12.12.12.43.30
+        bh=hGM2NHUtnbFDEgpWxlzwlarIp6xK2fhN/yqxsB9M4XI=;
+        b=a7Y4cJs3aPulnP5fuBwm7xwew0V8d7+9RWyrbLYatCL2tDGPoJf+hhYddMAreJSzxw
+         deE4be5dhcfwAnDx5zereZ+bh/7hftMeqffu37RaupyY7whSuXt7cTV2J3luHvF0ta8j
+         cb6qsiqADEgkHI3Ke3QcNTm43S9KrmH14VEJsZsCA91rrounpkJIAX7mapO/A4tpEZcd
+         cFaVhncbTEg549OhRICfkSpxz9/kshZHgllEY+44IeyKL0ap+spbO2Ov26Ow3bM4+sc2
+         ONcPez/dcRvCd1vS6rt2yXHCh4qvlx0MCQcFSHYSBubxmAqsvy/EIq3FU74SYGlDqOER
+         zy1w==
+X-Gm-Message-State: AOAM5339CigIjKgEHa2Yh39BxhiU8IB1JSDXVMj42A+BZC30ZOdEORlG
+	CzP18b682YcFyaj0MC+l5DtxxlKYJARR8w==
+X-Google-Smtp-Source: ABdhPJz/fImkd0bhG0CYUp3Z9YJhRwlSL/T8Kya/WrdN0hL18FXBlK+H7ARrWE/+ZURhsg5I2eTTWQ==
+X-Received: by 2002:a1c:7907:: with SMTP id l7mr32524567wme.72.1639341971149;
+        Sun, 12 Dec 2021 12:46:11 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net. [83.50.185.174])
+        by smtp.gmail.com with ESMTPSA id az15sm5251678wmb.0.2021.12.12.12.46.10
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 12 Dec 2021 12:43:30 -0800 (PST)
-Subject: Re: [PATCH 11/26] hw/intc/arm_gicv3_its: Use 1ULL when shifting by
- (DTE.SIZE + 1)
+        Sun, 12 Dec 2021 12:46:10 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Message-ID: <717d0487-147f-14a9-34ed-993e8cc83c63@amsat.org>
+Date: Sun, 12 Dec 2021 21:46:09 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH 03/26] hw/intc/arm_gicv3_its: Remove redundant
+ ITS_CTLR_ENABLED define
+Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Shashi Mallela <shashi.mallela@linaro.org>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20211211191135.1764649-1-peter.maydell@linaro.org>
- <20211211191135.1764649-12-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <6458979b-3162-570f-e5af-1f3baff70d04@linaro.org>
-Date: Sun, 12 Dec 2021 12:43:28 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
-MIME-Version: 1.0
-In-Reply-To: <20211211191135.1764649-12-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: jXegshFPhYEO
+ <20211211191135.1764649-4-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20211211191135.1764649-4-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: fG5Fx+qZfE0R
 
-On 12/11/21 11:11 AM, Peter Maydell wrote:
->   
->       if (dte_valid) {
-> -        max_eventid = 1UL << (FIELD_EX64(dte, DTE, SIZE) + 1);
-> +        max_eventid = 1ULL << (FIELD_EX64(dte, DTE, SIZE) + 1);
+On 12/11/21 20:11, Peter Maydell wrote:
+> We currently define a bitmask for the GITS_CTLR ENABLED bit in
+> two ways: as ITS_CTLR_ENABLED, and via the FIELD() macro as
+> R_GITS_CTLR_ENABLED_MASK. Consistently use the FIELD macro version
+> everywhere and remove the redundant ITS_CTLR_ENABLED define.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/intc/gicv3_internal.h |  2 --
+>  hw/intc/arm_gicv3_its.c  | 20 ++++++++++----------
+>  2 files changed, 10 insertions(+), 12 deletions(-)
 
-Without changing the type of max_eventid, I think it'd be easiest to fix the off-by-one 
-bug by not changing the comparisions, but changing this computation.  E.g.
-
-   max_eventid = (2 << FIELD_EX64(dte, DTE, SIZE)) - 1;
-
-so that the value becomes UINT32_MAX for SIZE=31.
-
-
-
-r~
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

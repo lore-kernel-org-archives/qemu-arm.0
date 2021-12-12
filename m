@@ -1,103 +1,146 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp3480281lfk;
-        Sun, 12 Dec 2021 12:46:11 -0800 (PST)
-X-Received: by 2002:a05:600c:3b8f:: with SMTP id n15mr33136687wms.180.1639341971729;
-        Sun, 12 Dec 2021 12:46:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639341971; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp3481320lfk;
+        Sun, 12 Dec 2021 12:48:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxiFQVDsB74MeJBAvtw0A9DwXUmF2laQqArLCdwZlGAjyx3lmHwRzooT79FkfFnh0KZjJlT
+X-Received: by 2002:a05:6214:246f:: with SMTP id im15mr39528386qvb.21.1639342084160;
+        Sun, 12 Dec 2021 12:48:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639342084; cv=none;
         d=google.com; s=arc-20160816;
-        b=kF/NFVAuiFwkdL+RFLvEFZ3Et5SgpBidQr++0x1fyKaHoDqZ5LFKtfnUL+w2V2cubK
-         lZpulUCVlI8y1ftVvrF/Y70MkIlqdyctlEI7qu3u0RWbpL/wUbt5iX/Aez0rwCg39jMX
-         +7xqKouLsi//CJ21VhHNwYC7KT4/TTX6gs9jwAhk5xhubKg620DT6DMn0tjF/to+5bIV
-         q5PLWGpu0ILZMuvpHFf2RQ1vXHksKZ6AeUpaOp6GDvL+jxUqITVizqFrKeZEX1uLNbHq
-         sWofwA0ukaB9T4pD3eaj0tDFsJNcVmxgG97pX+endG03J9HLBMdLLBXiHOiHSZfRiV5E
-         wqJQ==
+        b=TjQHtXST/7yb/O/PDFUYwxgfCZfMQECswsp2CMZVM8iNt8gp1PrRbKbCWGBrU+B5gJ
+         0ZZjyPLXOl0S19B8st8mvUE/euwC/udejM8sOKDKL4sHFpfg25FWJhBVqo9X+EoUXMpv
+         tNX9J68ojDZxI5/f+7D8Dx/la8QCUdVz00bQIGSsfGLy1hAqGXdCOW44TI7GcVG/y4Eg
+         d2YMsNZrCkvm9ZNNQGCKSkwIop3qQJV9UMi9muc56w6tgVmbo+RVru5uUGSMqMAP2/j4
+         KFZKiicbBupsCOEfNrA7QZ84s5nRIVnIwCj33w30CTFo/3ewS3KdXoz4Y/Sd8MYE2zJU
+         38Pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:dkim-signature;
-        bh=hGM2NHUtnbFDEgpWxlzwlarIp6xK2fhN/yqxsB9M4XI=;
-        b=QhcMQgvu0vwx2Ke339L+nmpYpb2lrPykVOf1pV0PXrvlYmjAmte5Wecm5juTMt6iHu
-         RVnHQ7PAF6bc3JKCg+piG53jtURfMd9hKzpCRXkUAmpoW1vmrs4Ar+rX0jwM0Ueh16xK
-         GJRH/Bu9PgLL6wnZB6djC07xO6fpXh7Xjvkkk53aKIsrCewjezYvu3bpC3QrBMoTEPm1
-         L/Sv8obkPyia5gmC3kkLy0tV435PYjzGaltsP9rl+mNlFfn2RREt5sZXAFNBjUM8n2SG
-         Q0+g3Yy/eetURDcM8uAT5gHO3l/Q5LtXSYsBY7U5Xsc9mIBxIfm9L7ZEFF6Wf6Bu+TBQ
-         iy3g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=QK4IgL2PhuslEAczWGM8tN3iN5M3RPsV9nieV1QfAH4=;
+        b=pUDKaZ/GnffeEOiYFyhhaExHSCdrQx1Ji7rDCVbOfMCB8vhdkEwaPLS2Nhvieyz3eN
+         0S8Nd3T2E8MM3tsS6pF4viDY97ct0BkLvssnBYCWU6T/q4MGaVrjsC2NV+2JIXDaQ+/z
+         30SJrWmqaOK9WlxXpupUR5bnlBVFtkn7DsWzom8gryaqW9snhqrBjainbhralBZBMHdH
+         QysKCXIpIXv6SAqgoGcX2JgjGXau1xvLcRwnLC8q+w/ygxie/01CBEjpa6OoMm094eC7
+         AvtxBIGqeZNGWf/wmcsJNOg08Xa8h0q8JnGMEKnrAJq8ac0v2ZmMjmQSxyNCWCLvvfzw
+         du2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gwM6uXXc;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id i20sor451857wmb.14.2021.12.12.12.46.11
-        (Google Transport Security);
-        Sun, 12 Dec 2021 12:46:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=hjQBwTkS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h11si9959271qtx.584.2021.12.12.12.48.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 12 Dec 2021 12:48:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gwM6uXXc;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=sender:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=hGM2NHUtnbFDEgpWxlzwlarIp6xK2fhN/yqxsB9M4XI=;
-        b=gwM6uXXcliG67oQufE/i5bs66VzU6+kSCSLNJx/JvzKMiJgviqsdvvj5FTb9KGdfXB
-         x6XbijvU/BiaWbP7yX40g+X8AGmDXb+J6QSMlSn92E4RM3sqGpxZKMvNRm2mluNukrOw
-         bdYlkOSaMUEoRtB0o1y6asg7nr149hNn8yudg8RHS//r4HuykakQ1+99coBDIkc9bBpp
-         c1vpo9XHVIJsqYf+mKVlCSNn3rc/U+aAYJ7db6tzFXbhAkZyEBtPjTKZeOgyzGBqDHRp
-         MrFz/Bm1shWPZoim8ijhiX4OuOmiu8wxkd83QOGXf/r7spcjjEJ4Ib1UhzV3zg0EAHz2
-         AqxA==
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=hjQBwTkS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38920 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mwVlL-00014f-Jp
+	for alex.bennee@linaro.org; Sun, 12 Dec 2021 15:48:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49780)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mwVlE-00014E-5i; Sun, 12 Dec 2021 15:47:56 -0500
+Received: from [2a00:1450:4864:20::336] (port=56260
+ helo=mail-wm1-x336.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mwVlC-00088D-Br; Sun, 12 Dec 2021 15:47:55 -0500
+Received: by mail-wm1-x336.google.com with SMTP id p18so10614365wmq.5;
+ Sun, 12 Dec 2021 12:47:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=QK4IgL2PhuslEAczWGM8tN3iN5M3RPsV9nieV1QfAH4=;
+ b=hjQBwTkSkbXJK5sOjX9NmIkNtTSCqTG34hbmmop8K84a57yTPcGD8Bj8c4dhu33t4P
+ QPH0tbGjhAXhivNMJgaHdpV/2Sr+6gKTVdsJd3Nhw5XCdMBzE/+UHMEAh0fCbOHbEkzC
+ hkafCHTYDPKXQU2lVpRbwe3jz4NOIO5gNEuMgNMgKvfrs60fIonIjsXpfReGmkGzskC7
+ LZcoHlqB7nOLbVh9OGWehSY90yfopQ7uk/pQxwv0Xc150Ex/grP0zab0PTRPl/zZ9WIE
+ YEzQM5bcMaHyA7xZPM+PYzGZk9B7dDJzOjyEVX783gJ+fNo5ZJzBm4qL35ur7B60R77n
+ Kyzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
-         :subject:content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=hGM2NHUtnbFDEgpWxlzwlarIp6xK2fhN/yqxsB9M4XI=;
-        b=a7Y4cJs3aPulnP5fuBwm7xwew0V8d7+9RWyrbLYatCL2tDGPoJf+hhYddMAreJSzxw
-         deE4be5dhcfwAnDx5zereZ+bh/7hftMeqffu37RaupyY7whSuXt7cTV2J3luHvF0ta8j
-         cb6qsiqADEgkHI3Ke3QcNTm43S9KrmH14VEJsZsCA91rrounpkJIAX7mapO/A4tpEZcd
-         cFaVhncbTEg549OhRICfkSpxz9/kshZHgllEY+44IeyKL0ap+spbO2Ov26Ow3bM4+sc2
-         ONcPez/dcRvCd1vS6rt2yXHCh4qvlx0MCQcFSHYSBubxmAqsvy/EIq3FU74SYGlDqOER
-         zy1w==
-X-Gm-Message-State: AOAM5339CigIjKgEHa2Yh39BxhiU8IB1JSDXVMj42A+BZC30ZOdEORlG
-	CzP18b682YcFyaj0MC+l5DtxxlKYJARR8w==
-X-Google-Smtp-Source: ABdhPJz/fImkd0bhG0CYUp3Z9YJhRwlSL/T8Kya/WrdN0hL18FXBlK+H7ARrWE/+ZURhsg5I2eTTWQ==
-X-Received: by 2002:a1c:7907:: with SMTP id l7mr32524567wme.72.1639341971149;
-        Sun, 12 Dec 2021 12:46:11 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net. [83.50.185.174])
-        by smtp.gmail.com with ESMTPSA id az15sm5251678wmb.0.2021.12.12.12.46.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 12 Dec 2021 12:46:10 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Message-ID: <717d0487-147f-14a9-34ed-993e8cc83c63@amsat.org>
-Date: Sun, 12 Dec 2021 21:46:09 +0100
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=QK4IgL2PhuslEAczWGM8tN3iN5M3RPsV9nieV1QfAH4=;
+ b=d0+ie/r/a/G7ncWXhayhkuVtvh6pr4deLsb5UbYWr0hXRGBaNoIqT8pqiW0O151W41
+ RPBaPRVALCjjDisn1BOEvKqCH/cUPrQwBSUASyitZnVsyq3buYKC8FoF3uhtwgKNTXA+
+ A3qLphKwopUASw+BoobIkCg0WVaMbX8USjRyxEeH7grAwVgfZb3s4UXu+hSGJTkEie+e
+ Kj+DSJYdKXiQ+puzlf1Bk9tdyUrjPJyYW7/20fZHCIfkh1Otn+uAgUI4Yo71LsyGEcVa
+ g+xe5eANqFF5Dm/3QlgOm+4gT2PNHCrKUYOlEIa10b0Ym+m9EMnGvaeLqRyNr274Up3n
+ hliw==
+X-Gm-Message-State: AOAM531RAdQTkI7WSzdhIdWGJuQzSG56BYPUtjvLqNlz2qZ3iEVFLn2v
+ gN03pgI5V5LviYxGOYCZ9bI=
+X-Received: by 2002:a1c:5414:: with SMTP id i20mr33406020wmb.88.1639342072665; 
+ Sun, 12 Dec 2021 12:47:52 -0800 (PST)
+Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net.
+ [83.50.185.174])
+ by smtp.gmail.com with ESMTPSA id h15sm5384201wmq.32.2021.12.12.12.47.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 12 Dec 2021 12:47:52 -0800 (PST)
+Message-ID: <3b4e4399-419b-55b4-a787-4131b0e06d4e@amsat.org>
+Date: Sun, 12 Dec 2021 21:47:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.3.0
-Subject: Re: [PATCH 03/26] hw/intc/arm_gicv3_its: Remove redundant
- ITS_CTLR_ENABLED define
+Subject: Re: [PATCH 06/26] hw/intc/arm_gicv3_its: Reduce code duplication in
+ extract_table_params()
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: Shashi Mallela <shashi.mallela@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20211211191135.1764649-1-peter.maydell@linaro.org>
- <20211211191135.1764649-4-peter.maydell@linaro.org>
+ <20211211191135.1764649-7-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20211211191135.1764649-4-peter.maydell@linaro.org>
+In-Reply-To: <20211211191135.1764649-7-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: fG5Fx+qZfE0R
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::336
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-2.051,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Shashi Mallela <shashi.mallela@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e0vBseZQvFDp
 
 On 12/11/21 20:11, Peter Maydell wrote:
-> We currently define a bitmask for the GITS_CTLR ENABLED bit in
-> two ways: as ITS_CTLR_ENABLED, and via the FIELD() macro as
-> R_GITS_CTLR_ENABLED_MASK. Consistently use the FIELD macro version
-> everywhere and remove the redundant ITS_CTLR_ENABLED define.
+> The extract_table_params() decodes the fields in the GITS_BASER<n>
+> registers into TableDesc structs.  Since the fields are the same for
+> all the GITS_BASER<n> registers, there is currently a lot of code
+> duplication within the switch (type) statement.  Refactor so that the
+> cases include only what is genuinely different for each type:
+> the calculation of the number of bits in the ID value that indexes
+> into the table.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/intc/gicv3_internal.h |  2 --
->  hw/intc/arm_gicv3_its.c  | 20 ++++++++++----------
->  2 files changed, 10 insertions(+), 12 deletions(-)
+>  hw/intc/arm_gicv3_its.c | 97 +++++++++++++++++------------------------
+>  1 file changed, 40 insertions(+), 57 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

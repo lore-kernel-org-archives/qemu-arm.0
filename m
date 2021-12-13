@@ -1,203 +1,180 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp4296592lfk;
-        Mon, 13 Dec 2021 08:49:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy5zZ4cqRXuDfjoF/VQYjaD9YslyOcUbI3lUQybbYLzPmQ+rYBX34UzdVemZSH5rQ0CgXHT
-X-Received: by 2002:ac8:7fc5:: with SMTP id b5mr47131927qtk.492.1639414191969;
-        Mon, 13 Dec 2021 08:49:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639414191; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp4354714lfk;
+        Mon, 13 Dec 2021 09:52:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxIw4j0iepVqWgouTyt2gw5jd4kFAKntS3INRw+DKE9zYE13H2ovH/6+G5XUjmVYy2ARqss
+X-Received: by 2002:ad4:5674:: with SMTP id bm20mr279597qvb.130.1639417955278;
+        Mon, 13 Dec 2021 09:52:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639417955; cv=none;
         d=google.com; s=arc-20160816;
-        b=uoS6G960MGOvwnFq9BhMcBtPcRqmN9kgy2OAWi2kueyyqkuDkB65jF9hfJR3TVxdvn
-         D2VWw8LUibvynrwbLlgZ8ebrSmCGgdxhfa0fjuxYg5CrfZKBlXpIeDbWP1jK5sMSlevX
-         jwSWtjqN1PteEE3QwvycFMWLQbgMCmvRNkl9qoeMgmpk5NAqeJY0esgEM6VgH1maruPu
-         Br7kqbk5tlsAQJ9ez0wYNbxwHxSyeEATKKxjL573TKG6RL4IeaAXWh77j8Q3cZf8oMq0
-         il/v9XAMn9AZbU0/FmSr/oF6IaPooNHzO0EI1rked8VzU/TSlmbi6gKQ5p0azstncQgq
-         bTqQ==
+        b=xbM9eCdamE7DRLXWvJRoD4nBx5UG9KadNeN2Mg83d6zZuiFhKm65zSuZtkN9sqjquP
+         2avG7czROtwhbsWHqji0nZs0L3LuV4QvWES24TE9nKmNWE4xA8wYhmnGzlkTzNGn/2KW
+         YK3bjjMmTfWpuFRjNOypc06SUv5/1c4X8pwwzlqm5w20eucWUTOLh+ZWm4IFQbHPGVUh
+         6dp/D8riAhlO2i5EqMZXWBhTGu5ItBVSK0x5tL+gAo6GDcZTJgkqe148/83/1OepkhRq
+         k1G7v51OXpIEFmWLUcWrg95Gj6v1l0oGkwSfe61UkiDzyjHxa60XRzEWYz3QuB9V+VZe
+         5oJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :mime-version:user-agent:references:in-reply-to:subject:to:from
-         :message-id:date:dkim-signature;
-        bh=jdOoiDn3SVRJjlt5yFm/Al69KJJEVJDVvV+L4ir+b0w=;
-        b=LfCTVDOCHvn3av59i+Tm74ueZHHR2L5L1nEh0/i0MCzsPSKdSnCJ07KM2iTUVrzUtd
-         X60FxM66nsK1t0qQjInlRb/b1yvdHwuQbPzzLnUzCei76vZbzeeCBv7K4SxqSlpSDO1O
-         Rui6oBKN7CbP2L1CoNtNTGmI+kV5I3nAlNh8X2k6bfXTaSsNGEi9WUgJG+98v1y7smte
-         JldVlnIuAaP+EBrSuPP9I/v+Z6prqk9YwLmAnnkzoZxmyeePeX1L1VQzwW7h0MU1CE5k
-         hhz5aA/H4/+xArlS4+ARiFS8GIkt9k7IAMppTPyjWc+EvOZtx14CyknjffHCLCSgeDgy
-         9zdw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=f0LxNXb4IQNUC9OuIExKo2Mj0cTDj2VFL7x6COsjBrU=;
+        b=YQYBxeSJQKrMsD2TzhgxHRGyowfJe1+0KApNRjNCL0/z7fzViQdHqIGMsY3X0+U+nm
+         bfAJS7ajdukRfeiR/DhWrPHUpTRShL+kLOVnY6U+8q28cggr9H7iCNqOQo2UbUZwKF/9
+         6i87ZpC/zaWW95YJJKDOOoNYq5r1GJr+Z/bBnYaG7B0GETxTCLvFmfBU/MNEe4ckXuWw
+         wJeVqs7a/jkEDcJpKDPgBJaK0yb7a6ThvUC9fQMKAWxnSghG/3MaZwJ5tIwAKEB/qjuv
+         iR53W1R0OoIyUyifEFDnaNg1KP6/OIN02BWzRXF4biHGlnIn4xmqRb6HglBgaZEn31V7
+         Eg9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@kernel.org header.s=k20201202 header.b=B6q5Kq8c;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id jo23si12236532qvb.238.2021.12.13.08.49.51;
-        Mon, 13 Dec 2021 08:49:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VC9c4svW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g4si12975031qvi.379.2021.12.13.09.52.35
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 13 Dec 2021 09:52:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@kernel.org header.s=k20201202 header.b=B6q5Kq8c;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 98A6A4B11A;
-	Mon, 13 Dec 2021 11:49:51 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699, T_DKIM_INVALID=0.01]
-	autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, body has been altered) header.i=@kernel.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LP1Co7Yb9+PY; Mon, 13 Dec 2021 11:49:50 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 0D89F4B125;
-	Mon, 13 Dec 2021 11:49:50 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 268974B11A
- for <kvmarm@lists.cs.columbia.edu>; Mon, 13 Dec 2021 11:49:48 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BN5TZ9FoCEfX for <kvmarm@lists.cs.columbia.edu>;
- Mon, 13 Dec 2021 11:49:46 -0500 (EST)
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 7094C4B0F5
- for <kvmarm@lists.cs.columbia.edu>; Mon, 13 Dec 2021 11:49:46 -0500 (EST)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 2ECDDB8119C;
- Mon, 13 Dec 2021 16:49:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0132FC34604;
- Mon, 13 Dec 2021 16:49:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1639414184;
- bh=9XYPoRBEBiI5pCZdy7jkkatiZ7JENrfP9OHrl35HPIc=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=B6q5Kq8cD07PwtmUiWnqSXpByQooIeVuQFfGn7qPYAh3yVQr0P+r4cGO0Jf28EN26
- LSQJKNljU+ygKt95JZUfZFbFt1peWNIiLIPjpKav+WcYxMxfnWaP/45wvOdNV0HE5f
- 5qBb2NUZR7dG0dbHHg9SX9QBmJuntP/sFMqY+lL2wLOXbSmrG+j4DkAbzGdBCb1+Bf
- i1td+X0Fbmf65Bu6oG1nsYjaTsLiSFUWDl4pFY80eD/wEsqfo/orwX69mci4EIa+fy
- mg6ymHej2v59dVPXuyn9GHbaPbMi96chcRxmOLf3GBNtGXV4CeBM2zWZ9Ve6BdzYUh
- x4K9FKKQhJomQ==
-Received: from cfbb000407.r.cam.camfibre.uk ([185.219.108.64]
- helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1mwoWE-00BrKn-24; Mon, 13 Dec 2021 16:49:42 +0000
-Date: Mon, 13 Dec 2021 16:49:41 +0000
-Message-ID: <87lf0ojvq2.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Qu Wenruo <quwenruo.btrfs@gmx.com>
-Subject: Re: Libvirt on little.BIG ARM systems unable to start guest if no
- cpuset is provided
-In-Reply-To: <CAFEAcA-URrpy3w3AtDb8zVfq8fWxvQ8_jtSqEkaeb=3KE99oAQ@mail.gmail.com>
-References: <70a2f7d6-5ac1-72df-4a88-b1a662d07070@gmx.com>
- <32bb61a9-0938-d254-0453-18a108bc4b63@redhat.com>
- <1dc0403b-c61b-b04b-e7fd-f2d66276ba7b@gmx.com>
- <CAFEAcA-URrpy3w3AtDb8zVfq8fWxvQ8_jtSqEkaeb=3KE99oAQ@mail.gmail.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, quwenruo.btrfs@gmx.com,
- libvirt-users@redhat.com, mprivozn@redhat.com, qemu-arm@nongnu.org,
- kvmarm@lists.cs.columbia.edu, qemu-discuss@nongnu.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
-Cc: libvirt-users@redhat.com,
- Michal =?UTF-8?B?UHLDrXZvem7DrWs=?= <mprivozn@redhat.com>, qemu-arm@nongnu.org,
- kvmarm <kvmarm@lists.cs.columbia.edu>, qemu-discuss@nongnu.org
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VC9c4svW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47694 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mwpV2-0004zH-Tf
+	for alex.bennee@linaro.org; Mon, 13 Dec 2021 12:52:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41084)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1mwpTv-0003XT-Rb
+ for qemu-devel@nongnu.org; Mon, 13 Dec 2021 12:51:23 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:35223)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1mwpTi-0007Ds-2x
+ for qemu-devel@nongnu.org; Mon, 13 Dec 2021 12:51:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1639417868;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=f0LxNXb4IQNUC9OuIExKo2Mj0cTDj2VFL7x6COsjBrU=;
+ b=VC9c4svWyA6YXkNkrmZI1zrpQ4OKyXaH5b0T9A8G5d+UKvTf1irPZRdmeSIDVs1MkxC0zF
+ jTPIvfxAjA2FBT8cWrh+bZglE9Z6U7s8nIChIBAWEA22x4YW5x8XXicwP5Dv8EiqWth/gm
+ ygGLRFc5xYMOZe9kF1/ZsRRfN+KY2tM=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-204-h62SIcfDOJuHH-hCPRhZtg-1; Mon, 13 Dec 2021 12:51:06 -0500
+X-MC-Unique: h62SIcfDOJuHH-hCPRhZtg-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ n11-20020aa7c68b000000b003e7d68e9874so14630011edq.8
+ for <qemu-devel@nongnu.org>; Mon, 13 Dec 2021 09:51:06 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=f0LxNXb4IQNUC9OuIExKo2Mj0cTDj2VFL7x6COsjBrU=;
+ b=0gB15Dl8OTypIB4RVheOMULWoAzjDJe8wOOeMziP3p7H/3PJs8kof1zrNsJS6H8CYD
+ BvoJLyv1bqego1wu7uNw7A3kRqOH1v97h1NCQyGuwJCROiW3TmovFoFi7ukaVFKWRu5I
+ RUUOiINtfZJTowQei52ypSU4UmB8+PfYRWOUTv0KG0UfRfKZ59I09m68a7HmkyIGRSEx
+ rEIqVjA7x/YWvpF/CoP63nDC01yC9KT35q1AfwEkTNpcLPmo0XWtvFVnmpusekozkOc9
+ usMEi85j5G855ycY7D7qsH0T7tI2lDKuyT4/cQwWKbpWySV7U1H57NM/NHIYWEmftOdW
+ awVg==
+X-Gm-Message-State: AOAM532wQhlFxi3YfdfQ5HTzXBACA9ouEr1nLEKXkdkWoRt7Hee4MMV1
+ kHApDUbB/8DPYDBkgOIKI9NoYekcU3WD06Zgi1EMqHpazdd7iyBiAPuBAskScPWkStUsaarCmnU
+ ffhnkYNDAeTHdG2I=
+X-Received: by 2002:a50:fe8e:: with SMTP id d14mr282535edt.51.1639417865459;
+ Mon, 13 Dec 2021 09:51:05 -0800 (PST)
+X-Received: by 2002:a50:fe8e:: with SMTP id d14mr282508edt.51.1639417865241;
+ Mon, 13 Dec 2021 09:51:05 -0800 (PST)
+Received: from redhat.com ([2.55.148.125])
+ by smtp.gmail.com with ESMTPSA id f29sm42180ejj.209.2021.12.13.09.51.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Dec 2021 09:51:03 -0800 (PST)
+Date: Mon, 13 Dec 2021 12:50:58 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: Re: [PATCH v7 0/8] virtio-iommu: Add ACPI support (Arm part + tests)
+Message-ID: <20211213125048-mutt-send-email-mst@kernel.org>
+References: <20211210170415.583179-1-jean-philippe@linaro.org>
+MIME-Version: 1.0
+In-Reply-To: <20211210170415.583179-1-jean-philippe@linaro.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.713,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: VYm0MC1d/So3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, ani@anisinha.ca,
+ imammedo@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bcTvktyA6xsF
 
-T24gTW9uLCAxMyBEZWMgMjAyMSAxNjowNjoxNCArMDAwMCwKUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIu
-bWF5ZGVsbEBsaW5hcm8ub3JnPiB3cm90ZToKPiAKPiBLVk0gb24gYmlnLmxpdHRsZSBzZXR1cHMg
-aXMgYSBrZXJuZWwtbGV2ZWwgcXVlc3Rpb24gcmVhbGx5OyBJJ3ZlCj4gY2MnZCB0aGUga3ZtYXJt
-IGxpc3QuCgpUaGFua3MgUGV0ZXIgZm9yIHRocm93aW5nIHVzIHVuZGVyIHRoZSBiaWctbGl0dGxl
-IGJ1cyEgOy0pCgo+IAo+IE9uIE1vbiwgMTMgRGVjIDIwMjEgYXQgMTU6MDIsIFF1IFdlbnJ1byA8
-cXV3ZW5ydW8uYnRyZnNAZ214LmNvbT4gd3JvdGU6Cj4gPgo+ID4KPiA+Cj4gPiBPbiAyMDIxLzEy
-LzEzIDIxOjE3LCBNaWNoYWwgUHLDrXZvem7DrWsgd3JvdGU6Cj4gPiA+IE9uIDEyLzExLzIxIDAy
-OjU4LCBRdSBXZW5ydW8gd3JvdGU6Cj4gPiA+PiBIaSwKPiA+ID4+Cj4gPiA+PiBSZWNlbnRseSBJ
-IGdvdCBteSBsaWJ2aXJ0IHNldHVwIG9uIGJvdGggUkszMzk5IChSb2NrUHJvNjQpIGFuZCBSUEkg
-Q000LAo+ID4gPj4gd2l0aCB1cHN0cmVhbSBrZXJuZWxzLgo+ID4gPj4KPiA+ID4+IEZvciBSUEkg
-Q000IGl0cyBtb3N0bHkgc21vb3RoIHNhaWwsIGJ1dCBvbiBSSzMzOTkgZHVlIHRvIGl0cyBsaXR0
-bGUuQklHCj4gPiA+PiBzZXR1cCAoY29yZSAwLTMgYXJlIDR4IEE1NSBjb3JlcywgYW5kIGNvcmUg
-NC01IGFyZSAyeCBBNzIgY29yZXMpLCBpdAo+ID4gPj4gYnJpbmdzIHF1aXRlIHNvbWUgdHJvdWJs
-ZXMgZm9yIFZNcy4KPiA+ID4+Cj4gPiA+PiBJbiBzaG9ydCwgd2l0aG91dCBwcm9wZXIgY3B1c2V0
-IHRvIGJpbmQgdGhlIFZNIHRvIGVpdGhlciBhbGwgQTcyIGNvcmVzCj4gPiA+PiBvciBhbGwgQTU1
-IGNvcmVzLCB0aGUgVk0gd2lsbCBtb3N0bHkgZmFpbCB0byBib290LgoKcy9BNTUvQTUzLy4gVGhl
-cmUgd2VyZSB0aGFua2Z1bGx5IG5vIEE3MitBNTUgZXZlciBwcm9kdWNlZCAoanVzdCB0aGUKdGhv
-dWdoIG9mIGl0IG1ha2VzIG1lIHNpY2spLgoKPiA+ID4+Cj4gPiA+PiBDdXJyZW50bHkgdGhlIHdv
-cmtpbmcgeG1sIGlzOgo+ID4gPj4KPiA+ID4+ICAgIDx2Y3B1IHBsYWNlbWVudD0nc3RhdGljJyBj
-cHVzZXQ9JzQtNSc+MjwvdmNwdT4KPiA+ID4+ICAgIDxjcHUgbW9kZT0naG9zdC1wYXNzdGhyb3Vn
-aCcgY2hlY2s9J25vbmUnLz4KPiA+ID4+Cj4gPiA+PiBCdXQgZXZlbiB3aXRoIHZjcHVwaW4sIHBp
-bm5pbmcgZWFjaCB2Y3B1IHRvIGVhY2ggcGh5c2ljYWwgY29yZSwgVk0gd2lsbAo+ID4gPj4gbW9z
-dGx5IGZhaWwgdG8gc3RhcnQgdXAgZHVlIHRvIHZjcHUgaW5pdGlhbGl6YXRpb24gZmFpbGVkIHdp
-dGggLUVJTlZBTC4KCkRpc2NsYWltZXI6IEkga25vdyBub3RoaW5nIGFib3V0IGxpYnZpcnQgKGFu
-ZCBubywgSSBkb24ndCB3YW50IHRvCmtub3chIDstKS4KCkhvd2V2ZXIsIGZvciB0aGluZ3MgdG8g
-YmUgcmVsaWFibGUsIHlvdSBuZWVkIHRvIHRhc2tzZXQgdGhlIHdob2xlIFFFTVUKcHJvY2VzcyB0
-byB0aGUgQ1BVIHR5cGUgeW91IGludGVuZCB0byB1c2UuIFRoYXQncyBiZWNhdXNlLCBBRkFJQ1Qs
-ClFFTVUgd2lsbCBzbmFwc2hvdCB0aGUgc3lzdGVtIHJlZ2lzdGVycyBvdXRzaWRlIG9mIHRoZSB2
-Y3B1IHRocmVhZHMsCmFuZCBhdHRlbXB0IHRvIHVzZSB0aGUgcmVzdWx0IHRvIGNvbmZpZ3VyZSB0
-aGUgYWN0dWFsIHZjcHUgdGhyZWFkcy4gSWYKdGhleSBoYXBwZW4gdG8gcnVuIG9uIGRpZmZlcmVu
-dCBDUFUgdHlwZXMsIHRoZSBzeXNyZWdzIHdpbGwgZGlmZmVyIGluCmluY29tcGF0aWJsZSB3YXlz
-IGFuZCBhbiBlcnJvciB3aWxsIGJlIHJldHVybmVkLiBUaGlzIG1heSBvciBtYXkgbm90CmJlIGEg
-YnVnLCBJIGRvbid0IGtub3cgKEkgc2VlIGl0IGFzIGEgZmVhdHVyZSkuCgpJZiB5b3UgYXJlIGFu
-bm95ZWQgd2l0aCB0aGlzIGJlaGF2aW91ciwgeW91IGNhbiBhbHdheXMgdXNlIGEgZGlmZmVyZW50
-ClZNTSB0aGF0IHdvbid0IGNhcmUgYWJvdXQgc3VjaCBkaWZmZXJlbmNlIChjcm9zdm0gb3Iga3Zt
-dG9vbCwgdG8gbmFtZQphIGZldykuIEhvd2V2ZXIsIHRoZSBndWVzdCB3aWxsIGJlIGFibGUgdG8g
-b2JzZXJ2ZSB0aGUgbWlncmF0aW9uIGZyb20Kb25lIGNwdSB0eXBlIHRvIGFub3RoZXIuIFRoaXMg
-bWF5IG9yIG1heSBub3QgYWZmZWN0IHlvdXIgZ3Vlc3QncwpiZWhhdmlvdXIuCgpJIHBlcnNvbmFs
-bHkgZmluZCB0aGUgUUVNVSBiZWhhdmlvdXIgcmVhc29uYWJsZS4gS1ZNL2FybTY0IG1ha2UgbGl0
-dGxlCmVmZm9ydCB0byBzdXBwb3J0IEJMIHZpcnR1YWxpc2F0aW9uIGFzIGRlc2lnbiBjaG9pY2Ug
-KEkgdmFsdWUgbXkKc2FuaXR5KSwgYW5kIHVzZXJzcGFjZSBpcyBzdGlsbCBpbiBjb250cm9sIG9m
-IHRoZSBwbGFjZW1lbnQuCgo+ID4gPj4gVGhpcyBicmluZ3MgYSBwcm9ibGVtLCBpbiB0aGVvcnkg
-UkszMzk5IFNvQyBzaG91bGQgb3V0LXBlcmZvcm0gQkNNMjcxMQo+ID4gPj4gaW4gbXVsdGktY29y
-ZSBwZXJmb3JtYW5jZSwgYnV0IGlmIGEgVk0gY2FuIG9ubHkgYmUgYmluZCB0byBlaXRoZXIgQTcy
-IG9yCj4gPiA+PiBBNTUgY29yZXMsIHRoZW4gdGhlIHBlcmZvcm1hbmNlIGlzIG5vIGxvbmdlciBj
-b21wZXRpdGl2ZSBhZ2FpbnN0Cj4gPiA+PiBCQ00yNzExLCB3YXN0aW5nIHRoZSBQQ0lFIDIuMCB4
-NCBjYXBhY2l0eS4KClZvdGUgd2l0aCB5b3VyIG1vbmV5LiBJZiB5b3UgdG9vIHRoaW5rIHRoYXQg
-Qkwgc3lzdGVtcyBhcmUgdXR0ZXIgY3JhcCwKZG8gbm90IGJ1eSB0aGVtISBPciB0cmVhdCB0aGVt
-IGFzICd0d28gc3lzdGVtcyBpbiBvbmUnLCB3aGljaCBpcyB3aGF0CkkgZG8uIEZyb20gdGhhdCBh
-bmdsZSwgdGhpcyBpcyBvZiBncmVhdCB2YWx1ZSEgOy0pCgo+ID4gPj4gSSBndWVzcyB3aXRoIHBy
-b2plY3RzIGxpa2UgQXNhaGkgTGludXggbWFraW5nIHByb2dyZXNzLCB0aGVyZSB3aWxsIGJlCj4g
-PiA+PiBtb3JlIGFuZCBtb3JlIHN1Y2ggcHJvYmxlbXMuCgpXZWxsLCBub3QgbW9yZSB0aGFuIGFu
-eSBvdGhlciBiaWctbGl0dGxlIHN5c3RlbS4gVGhleSBzdWZmZXIgZnJvbQpzaW1pbGFyIGlzc3Vl
-cywgcGx1cyB0aG9zZSByZXN1bHRpbmcgZnJvbSBub3QgZnVsbHkgaW1wbGVtZW50aW5nIHRoZQpB
-Uk0gYXJjaGl0ZWN0dXJlLiBUaGV5IGFyZSBob3dldmVyIG1vcmUgY29uc2lzdGVudCBpbiB0aGVp
-ciBmZWF0dXJlCnNldCB0aGFuIHRoZSBBUk0gaW1wbGVtZW50YXRpb25zIGV2ZXIgd2VyZS4KCj4g
-PiA+Pgo+ID4gPj4gQW55IGNsdWUgb24gaG93IHRvIHByb3Blcmx5IHBhc3MgYWxsIHBoeXNpY2Fs
-IENQVSBjb3JlcyB0byBWTSBmb3IKPiA+ID4+IGxpdHRsZS5CSUcgc2V0dXA/Cj4gPiA+Pgo+ID4g
-Pgo+ID4gPiBJIGhhdmUgbmV2ZXIgbWV0IGJpZy5MSVRUTEUgYnV0IG15IHVuZGVyc3RhbmRpbmcg
-d2FzIHRoYXQgdGhvc2UgYmlnCj4gPiA+IGNvcmVzIGFyZSBjb21wYXRpYmxlIHdpdGggbGl0dGxl
-IG9uZXMgYW5kIHRoZSBvbmx5IGRpZmZlcmVuY2UgaXMgdGhhdAo+ID4gPiB0aGUgYmlnIG9uZXMg
-YXJlIHNodXQgb2ZmIGlmIHRoZXJlJ3Mgbm8gZGVtYW5kICh0byBzYXZlIGVuZXJneSkgbGVhdmlu
-Zwo+ID4gPiBvbmx5IHRoZSBsaXR0bGUgb25lcyBydW5uaW5nLgoKTm8uIFRoZXkgYXJlIGFsbCBu
-b3Rpb25hbGx5IHJ1bm5pbmcuIEl0IGlzIHRoZSBzY2hlZHVsZXIgdGhhdCBwbGFjZXMKdGFza3Mg
-KHN1Y2ggYXMgYSB2Y3B1KSBvbiBhICdjb252ZW5pZW50JyBjb3JlLCB3aGVyZSAnY29udmVuaWVu
-dCcKZGVwZW5kcyBvbiB0aGUgc2NoZWR1bGluZyBwb2xpY3kuCgpIVEgsCgoJTS4KCi0tIApXaXRo
-b3V0IGRldmlhdGlvbiBmcm9tIHRoZSBub3JtLCBwcm9ncmVzcyBpcyBub3QgcG9zc2libGUuCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmt2bWFybSBtYWls
-aW5nIGxpc3QKa3ZtYXJtQGxpc3RzLmNzLmNvbHVtYmlhLmVkdQpodHRwczovL2xpc3RzLmNzLmNv
-bHVtYmlhLmVkdS9tYWlsbWFuL2xpc3RpbmZvL2t2bWFybQo=
+On Fri, Dec 10, 2021 at 05:04:08PM +0000, Jean-Philippe Brucker wrote:
+> Add ACPI support for virtio-iommu on the virt machine, by instantiating
+> a VIOT table. Also add the tests for the ACPI table.
+
+ACPI parts:
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+
+> Since last posting [1], I rebased onto v6.2.0-rc4. Note that v6 of this
+> series [2] only contained the table and x86 support, which have been
+> merged. Everything has now been reviewed and should be good to go.
+> 
+> * Patches 1-2 add the VIOT table for the virt machine
+> * Patches 3-4 are minor fixes
+> * Patches 5-8 add tests for the VIOT table. They contain the tests for
+>   q35 as well, which didn't make it last time because they depended on
+>   another fix that has now been merged.
+> 
+> [1] https://lore.kernel.org/qemu-devel/20211020172745.620101-1-jean-philippe@linaro.org/
+> [2] https://lore.kernel.org/qemu-devel/20211026182024.2642038-1-jean-philippe@linaro.org/
+> 
+> Jean-Philippe Brucker (8):
+>   hw/arm/virt-acpi-build: Add VIOT table for virtio-iommu
+>   hw/arm/virt: Remove device tree restriction for virtio-iommu
+>   hw/arm/virt: Reject instantiation of multiple IOMMUs
+>   hw/arm/virt: Use object_property_set instead of qdev_prop_set
+>   tests/acpi: allow updates of VIOT expected data files
+>   tests/acpi: add test case for VIOT
+>   tests/acpi: add expected blobs for VIOT test on q35 machine
+>   tests/acpi: add expected blob for VIOT test on virt machine
+> 
+>  hw/arm/virt-acpi-build.c       |   7 ++++++
+>  hw/arm/virt.c                  |  20 ++++++++---------
+>  hw/virtio/virtio-iommu-pci.c   |  12 ++---------
+>  tests/qtest/bios-tables-test.c |  38 +++++++++++++++++++++++++++++++++
+>  hw/arm/Kconfig                 |   1 +
+>  tests/data/acpi/q35/DSDT.viot  | Bin 0 -> 9398 bytes
+>  tests/data/acpi/q35/VIOT.viot  | Bin 0 -> 112 bytes
+>  tests/data/acpi/virt/VIOT      | Bin 0 -> 88 bytes
+>  8 files changed, 58 insertions(+), 20 deletions(-)
+>  create mode 100644 tests/data/acpi/q35/DSDT.viot
+>  create mode 100644 tests/data/acpi/q35/VIOT.viot
+>  create mode 100644 tests/data/acpi/virt/VIOT
+> 
+> -- 
+> 2.34.1
+

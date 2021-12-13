@@ -1,115 +1,102 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp4083696lfk;
-        Mon, 13 Dec 2021 05:00:25 -0800 (PST)
-X-Received: by 2002:a5d:6d8a:: with SMTP id l10mr11186426wrs.157.1639400425620;
-        Mon, 13 Dec 2021 05:00:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639400425; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp4084705lfk;
+        Mon, 13 Dec 2021 05:01:22 -0800 (PST)
+X-Received: by 2002:adf:8bd8:: with SMTP id w24mr31872663wra.540.1639400482734;
+        Mon, 13 Dec 2021 05:01:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639400482; cv=none;
         d=google.com; s=arc-20160816;
-        b=rTbh0+E+UA/63CJYZoXw8hldP9BomyJf64RYkAL2DgJrP86cpbOEKJuQV7L5hj1cpC
-         TxEAcK1DIAeX8qtnNacv66kd3kPS20UJg5gSp/tJj4222MXsM689RssT3cujRP6oygTa
-         G+LJw8FZUQ6knQg1lDio1hLksRlLVlVGiQ0yLslV7Kz7xR+Bn+JnDdxfF5kEbX3GtFbi
-         +FhH5sY3//H32NAt2B+f8R8RntkhXsibRHfVHjYJ22yyVVxfuOqmOhkMfORZL8JWIfhE
-         Ui0606bdasXbdjP8h+re2dwio9764WC5uaDXSb6s59+TFdZptb3qEd68kqGdZu9CVK1D
-         6/kg==
+        b=Q2aBT16WhHT7EZYwYin0PB4tSnkE+lHcI0KvNLsOuP0moJkTs7TWffF9JeDumHkxTB
+         m8VD7cilIPhu5qAvujMUNNPU99eOxerUsZ07PeN/4yxdH0Ayov1tAnU+oxtbc/agzTJu
+         Q/2//nKSaxs0Gee9SjRjiAhdYciFdnKXGBERVH5YVz+eU2O94kOTZ3ptMk+HZqk7I8n6
+         eVefF9NEZ76iQHh6dfm14bt5v9AZre6aWCqGJsu429WJNnSRZ0R9uhAe7ZWVEyCcRWaA
+         u+EiK8l5Kj8HRY2kjhVlDINCo+XG2jYR/sJ+Fz8BO77rYPs+N1lIii8Nl4VTufNjsRPj
+         dshQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :sender:dkim-signature;
-        bh=QRsEWIMBpAFPuvFlO4/xubTig9kMptMut+zvRDO+d3g=;
-        b=xohdk1723t47W+cAOh6ocR4Rgc++t32XGN4aTj758NNOcXJL6WBD2R3Z0cyoDHpd0H
-         pHrIbLsQN4egF1IZRCi0qtd7E1lawqfZ5q46GdyduadvnUqSQzdek6SK9A3rBWHVAkIg
-         vSnoUj9LHTyiC19SAHI0XC84I3D25g3lyMZXrjUK7E7f+5WGl4Bhklf4U3X8ZvlBbh1p
-         j9orN4Bz1vJqU7oG1RASoq3/1hL7PKjCNxBK47uJ13tm/t/VdWCiw2xWTdG/cjCiF2zG
-         uQvnVA0RuYifW7jRiHr04moXh4DT1OlMfjrsdvuNz4ehWy10zT6jD3injX83J+XBUtMh
-         saXg==
+        bh=Csu36sXR6qEuaYGpzFmdSiJPxadFaA86jlWo4F57irM=;
+        b=rerYtqq+yddzHxM0TjqhAoC0QOlNVQon4FyDVuGN2YrMi8XGc83q/u2Wi524h70u/H
+         dY3fAMHsvhFnd+TcASZH32rmbk6+oh7mSl5boc6HswCDcs45fYEqNNzT2NsyaOCVt/vR
+         MqYh53QYi7DgWbXrwGcc9liNeH0ZfKCTQZo7mueA7CNsKtdAS8enX66LwvVOi7Uyo9C7
+         fvT2W2LjzOFAiWdsEvlzJc3KpbgurHiWOBwDN5TtGqmE2pdsBKjFH96yQPoI28LJq3kq
+         dOYntV3MUc2qdnkCbZJ/h2c4f2OUFx0yP6d92JiA4fmFQsl8gDTwwDUsof/FeIEMM++V
+         p2fQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dPsHmAuD;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Avh2IGGr;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p41sor3134138wms.10.2021.12.13.05.00.25
+        by mx.google.com with SMTPS id m8sor6485264wrw.36.2021.12.13.05.01.21
         (Google Transport Security);
-        Mon, 13 Dec 2021 05:00:25 -0800 (PST)
+        Mon, 13 Dec 2021 05:01:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dPsHmAuD;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Avh2IGGr;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=sender:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=QRsEWIMBpAFPuvFlO4/xubTig9kMptMut+zvRDO+d3g=;
-        b=dPsHmAuD9DRC6sTK8PkkPu4C+mqEn3bioQOFxFhj67TqvWnVCmKLQ6/Cv6NKozAgYB
-         5XQcOrsBuVuIw3dXbzvQlnsmC4pc3j3KKZJdNnR9j1PpUPR9l0g4pxaBZdUkraSf8P7e
-         WQwQ4ScpyD9GSXvukUCkbpaZM+fp92X/SvEvOLZM9TeCsJyJQClfx6s2mGUaX86M0KTY
-         iTvDQJmDubUSX62AIkF4tzs+feqnnAu6J/YyBwgw8aLoJdEEzODoZJ8GMUj5ARmezro7
-         Y1ZYoVbFq7IicLPHo3NG4bEsMgFiNjOeAaFbWYr8o4ZGboKtmKXIVMIcP6nHJgnx9liB
-         4JxA==
+        bh=Csu36sXR6qEuaYGpzFmdSiJPxadFaA86jlWo4F57irM=;
+        b=Avh2IGGr3OCnt5TAhRsSzdpm9963mPebkTb5JbicZQpPtTwd45ygXevZkNcO8eTB8d
+         9A5FCdY8DHO8cYwAu8Lue1kOjL1stUvBH4T9JcckdT1sZzNg+SDVzo68y6PGxzHAKub9
+         qmThAjgHcrKTbkQNfaEqgIpnSkdQEAb+RxqRh0DKnQBU7M7jmPquT1Fj80OQTj4zDmXA
+         0QbXWKNtpv+T/LpALHR0QrMTvDtK6RG3UrrkG18VRWmJA71V4+hCewzv1aPOJSIhOnmd
+         h0uL8fLsvEljUMr3jgyIuo10sLIkgdALqmzsCt9BBjYUazJmdx/sQJR07ybfCGbXWfcS
+         tlJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
          :subject:content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=QRsEWIMBpAFPuvFlO4/xubTig9kMptMut+zvRDO+d3g=;
-        b=BeCXL7h+o7KGMXWseW0c9q3kU1dPdodxQjUU/6WkrSqZNLywUvlsTR4X/qpNYHRAYY
-         fUUk9ou7bwJUVS0KaXKdB5L0YyQdP1544hQvT9dkJLp36K6792PiQ/fymIgAnAdDm3yF
-         nGfFwAPw60GHGqnui7ZLTvZxMPk4DGaFp9b9o6vxK2fcz/YiAhipGrnwN4eZXkI1dpjT
-         YTOAwT/a3LQMwdHJF4nab6pUvM5RxcKAUsGle5nTg9zojS1rE/rlZYC4ae8VChhtXDsv
-         KMDDytPQIwhHHM8u+HMXh0CNk1Gs/OZQvvpjt0HckErmyOsf/2UQGgRR6kOvYp1nW++w
-         GRHQ==
-X-Gm-Message-State: AOAM531vPKm4GwIL9WURcSXYRgenTd+Pqv3hHjidlyH6CKqiVNYjQxhG
-	XuWpGrp0Pe/hQqlGBPnZ+DyWCb0NTQGchA==
-X-Google-Smtp-Source: ABdhPJw1R887o8jn1uzVwq3ZfC5H410sDmC2uN42POTO3T6EJw0ql2BRrBxOVpiKDBPR88DoAtSLsQ==
-X-Received: by 2002:a1c:8015:: with SMTP id b21mr36851410wmd.161.1639400425028;
-        Mon, 13 Dec 2021 05:00:25 -0800 (PST)
+        bh=Csu36sXR6qEuaYGpzFmdSiJPxadFaA86jlWo4F57irM=;
+        b=uYZHz7lJg2xxBDhP5Jcj601CYAPtvbc1uey2utFH7+xmEC1p/WzEjXS8P80rgBVwrY
+         dZpkMJ0Lu1giqA+Hsv7r50+cNXYPj/vUVY6V3C3kE4E5KZxmfcGS4sTW9sZ1hdz+sW1d
+         80u+cNzjfCRxyWajOpeCi4c+yZ/eWNdrxoMwqSCwZmGigvIH/w/Ev3F9a1xF3lTaqzmh
+         aLS2vmF0c7BZ5wedjvtEvP8UQpUqKDBwrnsL74CBHakXN7gahXAAX7PJGvcQaJ0ltaI1
+         ygC/vKTIC5pEuZQF7KNW4s7OBHde3VbXBeI2Pb94WJa+rCgYKUVPJ6TbIIluBIyC5zPE
+         metg==
+X-Gm-Message-State: AOAM5336VjJa6uC3y2SkB6csysYdZT7QCKJSGefoeRTsuWrqdRITXuE/
+	UIVnW21A6K4lC7oYykBHWxG+A1OrAPzJ8A==
+X-Google-Smtp-Source: ABdhPJx8Aqn9J5YD7gR58t0mzX8aIBXdwXLzkOhJlkiNLefsf4fsYaidVu/a4HUYgcdYnjjO7GatFQ==
+X-Received: by 2002:a05:6000:1103:: with SMTP id z3mr16560296wrw.718.1639400481320;
+        Mon, 13 Dec 2021 05:01:21 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from [192.168.50.34] (static-180-27-86-188.ipcom.comunitel.net. [188.86.27.180])
-        by smtp.gmail.com with ESMTPSA id p5sm11630787wrd.13.2021.12.13.05.00.24
+        by smtp.gmail.com with ESMTPSA id l8sm7795226wmc.40.2021.12.13.05.01.20
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Dec 2021 05:00:24 -0800 (PST)
+        Mon, 13 Dec 2021 05:01:20 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Message-ID: <1e18eba2-258d-4b4f-3ab4-99180c2a1659@amsat.org>
-Date: Mon, 13 Dec 2021 14:00:23 +0100
+Message-ID: <4c37d323-35d6-c3ba-4ba6-41e67c1bf9cf@amsat.org>
+Date: Mon, 13 Dec 2021 14:01:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.3.0
-Subject: Re: [PATCH 16/26] hw/intc/arm_gicv3_its: Fix event ID bounds checks
+Subject: Re: [PATCH 18/26] hw/intc/arm_gicv3_its: Fix handling of
+ process_its_cmd() return value
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Shashi Mallela <shashi.mallela@linaro.org>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20211211191135.1764649-1-peter.maydell@linaro.org>
- <20211211191135.1764649-17-peter.maydell@linaro.org>
+ <20211211191135.1764649-19-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20211211191135.1764649-17-peter.maydell@linaro.org>
+In-Reply-To: <20211211191135.1764649-19-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: OSkAkOpdEMoO
+X-TUID: D9186yQw1DVO
 
 On 12/11/21 20:11, Peter Maydell wrote:
-> In process_its_cmd() and process_mapti() we must check the
-> event ID against a limit defined by the size field in the DTE,
-> which specifies the number of ID bits minus one. Convert
-> this code to our num_foo convention, fixing the off-by-one error.
+> process_its_cmd() returns a bool, like all the other process_ functions.
+> However we were putting its return value into 'res', not 'result',
+> which meant we would ignore it when deciding whether to continue
+> or stall the command queue. Fix the typo.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/intc/arm_gicv3_its.c | 14 +++++++-------
->  1 file changed, 7 insertions(+), 7 deletions(-)
-
-> @@ -299,10 +299,10 @@ static bool process_its_cmd(GICv3ITSState *s, uint64_t value, uint32_t offset,
->                        dte_valid ? "valid" : "invalid",
->                        ite_valid ? "valid" : "invalid",
->                        cte_valid ? "valid" : "invalid");
-> -    } else if (eventid > max_eventid) {
-> +    } else if (eventid >= num_eventids) {
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "%s: invalid command attributes: eventid %d > %d\n",
-
-">=" in format.
+>  hw/intc/arm_gicv3_its.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> -                      __func__, eventid, max_eventid);
-> +                      __func__, eventid, num_eventids);

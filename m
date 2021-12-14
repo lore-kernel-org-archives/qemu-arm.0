@@ -1,196 +1,215 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5012445lfk;
-        Tue, 14 Dec 2021 00:23:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxV6/gRK9rsQ1wjfU3+kM00d6HSNI/MsjzPCu+Ju4TIBqkQwGGMGvpBMql3l7hqqSB8ds+V
-X-Received: by 2002:a25:7542:: with SMTP id q63mr4120995ybc.643.1639470204346;
-        Tue, 14 Dec 2021 00:23:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639470204; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5058295lfk;
+        Tue, 14 Dec 2021 01:34:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzd5J1tV6HCwEFHPux4iYYFH9uSNgMAnC81OOoCB7oI8Beg9DMToL328ADuu5RZQt9+n6SO
+X-Received: by 2002:ac8:6619:: with SMTP id c25mr4666444qtp.390.1639474468281;
+        Tue, 14 Dec 2021 01:34:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639474468; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q02M+jv+k0XPBTJz7YNeaJa3bRl8W31UXXDzdI5ETWRxXJRJLautyzLRML/sN/jRjo
-         TNJjBqNtWjvokTIB60oARj7LiYX3DO+795ltt/cYY/yjznk7V08AYwB83nkTpQNDrVva
-         7jr1P/qa/lMSuID9JSB2qj2AFm95+144ezb+njIvsBEBUScvu12O3/NfnhojpwRdRTAN
-         egaEhECaO58VM+9/CB4H4S/xZAwkiAWI9vaQS/IiMUuljbsYmHwCZHmPcArG8yqTIpRH
-         rJe5UbXVijTZxTyQhTxNtzvenHMGRn15XDdHPb0meNgU0/DKyo85qEvBUCKl4dueMMJj
-         40HA==
+        b=ZdNAZ1BxsfZrtjFYogQY3Pa3a5WMOqem3q1Ix8Sj+Pee8kAydW9lBFMY5H82mT9pGm
+         Fe40Bpfa2ktQjS2V6Azrx9vlFnOE9DaLLZnirOTJm8OpNFEL9B6g2e++0mApzQgZ9NXy
+         A3TxZYx8VzifBg5jk9EHXWftpx6D5ZLdR7mOzMfdwPIZxzAIgLLRPMFJGqa0RuY845Qp
+         5qVDUnzNZzQiYl7zQhGX7ny706JqVUPzxbEAP6lF5GFy4oViF7a93ihHeMGCpVsurHtg
+         5e3zDT6S+p8ySyZk9bbzZpYQaOox+5ouZPGJaP9IS4fwl+w5bEr55oM6RtFB3mBTpTVA
+         /lQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=DMzQKsznUSAl/BcEzIP2xJxRV3mWatjkoyW2XlLCLX4=;
-        b=Hm5l/PNFgH3wVNvOEOqcP9jyx6cTJzHdVq+4WYuZ4Dq6Ogb6MMvSj/dlujeZsitURD
-         Y/JaoDCMMG+xUzJvTtIONbhMd/rDLYgIQINwIi+escYYpVTwSFf42eRSkalkwAzggi+a
-         5klq8oHdktjLN4cLyJpcVdDkpSHkmbNuFgUU6ARvj86GVb8HJ4uneQKEuDbhd0CaxaJl
-         eGRdeUyKqE2YxJ7l7GuwG6+e3/iVLODPFlKwRqrgmhjfVyLZU7KX8wBgAXgvRTk5OCBt
-         5Q06YOzD7lbGIqWYelMFK6wauHWukYLdlrkRwGy6vuX5QGJsLUOE4h7shNkkq7NRvvCE
-         SLbQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:user-agent:references:in-reply-to:subject:to:from
+         :message-id:date:dkim-signature;
+        bh=nOXhY4wlwW18Fyd3uTsGfboqOlOGzv518WtWR5euM9I=;
+        b=u7miPnGP87UHrU01GHGElvYRi0SfiGhSFMSia1LG7Ab3CN715oZ/cuD3M2PfaaVTTq
+         6crC5JhyzRUwm86pFavCvGtE8YrjbfRLV0zUs2lCajPL8hcDFkSFna3inwlbZvRSUFTs
+         AgrDk+7R2DZzpoRL+Z/bK6ly2Drj2WvZOqoPYtpF5uSCvF0aVLkVJmIeMKrpqJH3CcV2
+         7jZmVzHgFACE3IT0/afl/hrz7ylfwv5YmAJKjeai2OjsRE8Aun47ydt/Qgoaj0xcezzr
+         eB4SIdAEOG/vEWFNNp5x4RUHCe4mTjvT9Rqk6yfTIjQ9kN+D7p2eWk+3shSpoGJ/j0Gg
+         ulew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z11si3236352ybk.724.2021.12.14.00.23.24
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Dec 2021 00:23:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@kernel.org header.s=k20201202 header.b=mCEKJEY7;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id h20si14195142qtx.281.2021.12.14.01.34.28;
+        Tue, 14 Dec 2021 01:34:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53624 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mx35n-0003yc-PQ
-	for alex.bennee@linaro.org; Tue, 14 Dec 2021 03:23:23 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38932)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mx31v-0002Rt-Ve
- for qemu-arm@nongnu.org; Tue, 14 Dec 2021 03:19:24 -0500
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81]:38557)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mx31t-0002MC-Ua
- for qemu-arm@nongnu.org; Tue, 14 Dec 2021 03:19:23 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.131])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 50F3ED1C4156;
- Tue, 14 Dec 2021 09:19:18 +0100 (CET)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.17; Tue, 14 Dec
- 2021 09:19:17 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R0013cdc15bf-f9c6-4289-b750-975969568bc7,
- 38CAC366F57D933321BFAD7EF233B756AABE9985) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <7011fa88-dfa5-5676-e6c7-950a788add44@kaod.org>
-Date: Tue, 14 Dec 2021 09:19:15 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [PATCH v1] Add dummy Aspeed AST2600 Display Port MCU (DPMCU)
-Content-Language: en-US
-To: Troy Lee <leetroy@gmail.com>
-References: <20211210083034.726610-1-troy_lee@aspeedtech.com>
- <914155fd-646e-b551-9c54-3b132a5abfa5@kaod.org>
- <CAN9Jwz3ytV3ogztQrcL+YKGdgKYdNjypeMFbKfyqMiwvWhnMEw@mail.gmail.com>
- <e96aa35b-a8d9-41fa-ae0f-5e89fe6b1cfa@kaod.org>
- <CAN9Jwz0fhYELCkiZ16PSd4WXye5EPVrBSvLEq8r5SCigPW6-zg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CAN9Jwz0fhYELCkiZ16PSd4WXye5EPVrBSvLEq8r5SCigPW6-zg@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 6ecb7223-7f14-42d6-9fc6-d03cb7861bbe
-X-Ovh-Tracer-Id: 6018497955375516521
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvuddrkeelgdduvddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepueevledvjeetgeetfeeiveeftefffedvvdeikeetveelfeeglefgueetvdefvdefnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.962,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
+       dkim=neutral (body hash did not verify) header.i=@kernel.org header.s=k20201202 header.b=mCEKJEY7;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id D1DBF4B1AF;
+	Tue, 14 Dec 2021 04:34:27 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699, T_DKIM_INVALID=0.01]
+	autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@kernel.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6AqaJL65N5uA; Tue, 14 Dec 2021 04:34:26 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id A0D004B204;
+	Tue, 14 Dec 2021 04:34:26 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 5B0174B1AF
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 14 Dec 2021 04:34:25 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LhCbZjEzb28a for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 14 Dec 2021 04:34:22 -0500 (EST)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id A469A4B176
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 14 Dec 2021 04:34:22 -0500 (EST)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 9F1C861411;
+ Tue, 14 Dec 2021 09:34:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 100C5C34601;
+ Tue, 14 Dec 2021 09:34:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1639474461;
+ bh=z1u6GNeFy14nSurJpEUNEAh3KRzG84qWb8RhIp4MwOA=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=mCEKJEY7XHfp4C6goeMpPfyVCodGPwrpBCACX8inECCP4yOWM+EEL91I5KB/TTYRw
+ TsxAmKpXZtHzGr09jogZiO8wAF4xLT74tWt21+tQlcnHfNgHvLWE8bMAIemSgCLsKU
+ Nspo7NT5S66s8VfGYWyx3zb+lvly/Bx4D6xJv8VhHBtXFhEXUbrlzi8HYQXabwQK0h
+ ZCv+qB6I5/PxTHJU+/t2cMTzGROSwQ6Q5cRTL19y0ikuG5Y0QBuBybId9TNhPCqowG
+ badhM/8MSA07n7IKJ4jiwHmVRCOsiFu1iic9Z+gbLFP/Ta0fUF4ieRxYoigkH0TaDq
+ s4VWR0XLC2I6Q==
+Received: from cfbb000407.r.cam.camfibre.uk ([185.219.108.64]
+ helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <maz@kernel.org>)
+ id 1mx4CR-00C0fR-4E; Tue, 14 Dec 2021 09:34:19 +0000
+Date: Tue, 14 Dec 2021 09:34:18 +0000
+Message-ID: <87fsqvjzs5.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Qu Wenruo <quwenruo.btrfs@gmx.com>
+Subject: Re: Libvirt on little.BIG ARM systems unable to start guest if no
+ cpuset is provided
+In-Reply-To: <aa407ba2-e9c4-882e-a085-91e7dd724f78@gmx.com>
+References: <70a2f7d6-5ac1-72df-4a88-b1a662d07070@gmx.com>
+ <32bb61a9-0938-d254-0453-18a108bc4b63@redhat.com>
+ <1dc0403b-c61b-b04b-e7fd-f2d66276ba7b@gmx.com>
+ <CAFEAcA-URrpy3w3AtDb8zVfq8fWxvQ8_jtSqEkaeb=3KE99oAQ@mail.gmail.com>
+ <87lf0ojvq2.wl-maz@kernel.org>
+ <aa407ba2-e9c4-882e-a085-91e7dd724f78@gmx.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: quwenruo.btrfs@gmx.com, peter.maydell@linaro.org,
+ libvirt-users@redhat.com, mprivozn@redhat.com, qemu-arm@nongnu.org,
+ kvmarm@lists.cs.columbia.edu, qemu-discuss@nongnu.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Cc: Michal =?UTF-8?B?UHLDrXZvem7DrWs=?= <mprivozn@redhat.com>,
+ qemu-discuss@nongnu.org, libvirt-users@redhat.com, qemu-arm@nongnu.org,
+ kvmarm <kvmarm@lists.cs.columbia.edu>
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Troy Lee <troy_lee@aspeedtech.com>, qemu-devel@nongnu.org,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lclgi5sZ1GhK
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: VdgIWJ9m1Y8I
 
-On 12/14/21 08:57, Troy Lee wrote:
-> On Fri, Dec 10, 2021 at 11:13 PM Cédric Le Goater <clg@kaod.org> wrote:
->>
->> On 12/10/21 15:33, Troy Lee wrote:
->>> On Fri, Dec 10, 2021 at 10:05 PM Cédric Le Goater <clg@kaod.org> wrote:
->>>>
->>>> On 12/10/21 09:30, Troy Lee wrote:
->>>>> AST2600 Display Port MCU introduces 0x18000000~0x1803FFFF as it's memory
->>>>> and io address. If guest machine try to access DPMCU memory, it will
->>>>> cause a fatal error.
->>>>
->>>> The Aspeed SoCs have an "aspeed_soc.io" region for unimplemented devices
->>>> but it's too small. Anyhow, it is better to have per logic unit. We should
->>>> change that one day.
->>>>
->>> Good idea!
->>>
->>>> For my information, which FW image are you using ?
->>>>
->>>
->>> We're using Aspeed's SDK image, I tested with ast2600-default machine.
->>> Prebuilt image can be download from:
->>> https://github.com/AspeedTech-BMC/openbmc/releases/tag/v07.02
->>
->> Excellent ! Is there one I could try in particular ?
-> You could use ast2600-default-obmc.tgz, but we will send another patch
-> for HACE engine.
-> 
->>
->>
->> Once correctly supported, we should include one of these SDK images in :
->>
->>     tests/avocado/boot_linux_console.py
->>
->> to complete our tests of the device models.
-> Sure, once the image successfully boots into rootfs, I'll add a test
-> case for it.
-
-yeah. No hurries.
-
->> QEMU is not making much difference between the revision. You might need
->> to improve that.
->>
->>> Without declaring the DPMCU memory, the image will hangs in u-boot.
->>
->> yeah. You can use -d guest_errors,unimp to catch accesses done on AHB
->> windows not covered by the QEMU models. There are plenty of ways to
->> move past U-Boot when models are not implemented yet. Don't waste
->> too much time, just ask.
->>
->> eMMC is only on these branches :
->>
->>     https://github.com/openbmc/qemu/
->>     https://github.com/legoater/qemu/
-> These two branches are very useful!
-
-One day, we should try to upstream eMMC support.
-  
->> Same for SBC and support is primitive.
->>
->>> We're still working on I3C and SPI issue to be resolved to get into rootfs.
->>
->> I3C has not much support in Linux and none in QEMU. You will have to
->> add dummy models.
-> Can I submit a dummy model that only responds to the RESET control register?
-
-yes.
-
-> Or it has to be well implemented like i2c/core.c and i2c/aspeed_i2c.c?
-
-No it can be dummy to start with.
-
->> SPI as a non-SPI flash driver ? The SPI flash controller models should
->> be quite well covered today. What's the issue ?
-> I need some more investigation, because we're using a different spi
-> driver for fmc-spi.
-
-Is that the one written by Chin-Ting Kuo in 2020 ? If so, I did send
-some adjustment of the model for it, such as address lane disablement,
-but there might be more to it.
-
-Thanks,
-
-C.
+T24gVHVlLCAxNCBEZWMgMjAyMSAwMDo0MTowMSArMDAwMCwKUXUgV2VucnVvIDxxdXdlbnJ1by5i
+dHJmc0BnbXguY29tPiB3cm90ZToKPiAKPiAKPiAKPiBPbiAyMDIxLzEyLzE0IDAwOjQ5LCBNYXJj
+IFp5bmdpZXIgd3JvdGU6Cj4gPiBPbiBNb24sIDEzIERlYyAyMDIxIDE2OjA2OjE0ICswMDAwLAo+
+ID4gUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPiB3cm90ZToKPiA+PiAK
+PiA+PiBLVk0gb24gYmlnLmxpdHRsZSBzZXR1cHMgaXMgYSBrZXJuZWwtbGV2ZWwgcXVlc3Rpb24g
+cmVhbGx5OyBJJ3ZlCj4gPj4gY2MnZCB0aGUga3ZtYXJtIGxpc3QuCj4gPiAKPiA+IFRoYW5rcyBQ
+ZXRlciBmb3IgdGhyb3dpbmcgdXMgdW5kZXIgdGhlIGJpZy1saXR0bGUgYnVzISA7LSkKPiA+IAo+
+ID4+IAo+ID4+IE9uIE1vbiwgMTMgRGVjIDIwMjEgYXQgMTU6MDIsIFF1IFdlbnJ1byA8cXV3ZW5y
+dW8uYnRyZnNAZ214LmNvbT4gd3JvdGU6Cj4gPj4+IAo+ID4+PiAKPiA+Pj4gCj4gPj4+IE9uIDIw
+MjEvMTIvMTMgMjE6MTcsIE1pY2hhbCBQcsOtdm96bsOtayB3cm90ZToKPiA+Pj4+IE9uIDEyLzEx
+LzIxIDAyOjU4LCBRdSBXZW5ydW8gd3JvdGU6Cj4gPj4+Pj4gSGksCj4gPj4+Pj4gCj4gPj4+Pj4g
+UmVjZW50bHkgSSBnb3QgbXkgbGlidmlydCBzZXR1cCBvbiBib3RoIFJLMzM5OSAoUm9ja1BybzY0
+KSBhbmQgUlBJIENNNCwKPiA+Pj4+PiB3aXRoIHVwc3RyZWFtIGtlcm5lbHMuCj4gPj4+Pj4gCj4g
+Pj4+Pj4gRm9yIFJQSSBDTTQgaXRzIG1vc3RseSBzbW9vdGggc2FpbCwgYnV0IG9uIFJLMzM5OSBk
+dWUgdG8gaXRzIGxpdHRsZS5CSUcKPiA+Pj4+PiBzZXR1cCAoY29yZSAwLTMgYXJlIDR4IEE1NSBj
+b3JlcywgYW5kIGNvcmUgNC01IGFyZSAyeCBBNzIgY29yZXMpLCBpdAo+ID4+Pj4+IGJyaW5ncyBx
+dWl0ZSBzb21lIHRyb3VibGVzIGZvciBWTXMuCj4gPj4+Pj4gCj4gPj4+Pj4gSW4gc2hvcnQsIHdp
+dGhvdXQgcHJvcGVyIGNwdXNldCB0byBiaW5kIHRoZSBWTSB0byBlaXRoZXIgYWxsIEE3MiBjb3Jl
+cwo+ID4+Pj4+IG9yIGFsbCBBNTUgY29yZXMsIHRoZSBWTSB3aWxsIG1vc3RseSBmYWlsIHRvIGJv
+b3QuCj4gPiAKPiA+IHMvQTU1L0E1My8uIFRoZXJlIHdlcmUgdGhhbmtmdWxseSBubyBBNzIrQTU1
+IGV2ZXIgcHJvZHVjZWQgKGp1c3QgdGhlCj4gPiB0aG91Z2ggb2YgaXQgbWFrZXMgbWUgc2ljayku
+Cj4gPiAKPiA+Pj4+PiAKPiA+Pj4+PiBDdXJyZW50bHkgdGhlIHdvcmtpbmcgeG1sIGlzOgo+ID4+
+Pj4+IAo+ID4+Pj4+ICAgICA8dmNwdSBwbGFjZW1lbnQ9J3N0YXRpYycgY3B1c2V0PSc0LTUnPjI8
+L3ZjcHU+Cj4gPj4+Pj4gICAgIDxjcHUgbW9kZT0naG9zdC1wYXNzdGhyb3VnaCcgY2hlY2s9J25v
+bmUnLz4KPiA+Pj4+PiAKPiA+Pj4+PiBCdXQgZXZlbiB3aXRoIHZjcHVwaW4sIHBpbm5pbmcgZWFj
+aCB2Y3B1IHRvIGVhY2ggcGh5c2ljYWwgY29yZSwgVk0gd2lsbAo+ID4+Pj4+IG1vc3RseSBmYWls
+IHRvIHN0YXJ0IHVwIGR1ZSB0byB2Y3B1IGluaXRpYWxpemF0aW9uIGZhaWxlZCB3aXRoIC1FSU5W
+QUwuCj4gPiAKPiA+IERpc2NsYWltZXI6IEkga25vdyBub3RoaW5nIGFib3V0IGxpYnZpcnQgKGFu
+ZCBubywgSSBkb24ndCB3YW50IHRvCj4gPiBrbm93ISA7LSkuCj4gPiAKPiA+IEhvd2V2ZXIsIGZv
+ciB0aGluZ3MgdG8gYmUgcmVsaWFibGUsIHlvdSBuZWVkIHRvIHRhc2tzZXQgdGhlIHdob2xlIFFF
+TVUKPiA+IHByb2Nlc3MgdG8gdGhlIENQVSB0eXBlIHlvdSBpbnRlbmQgdG8gdXNlLgo+IAo+IFll
+cCwgdGhhdCdzIHdoYXQgSSdtIGRvaW5nLgoKQXJlIHlvdSBzdXJlPyBUaGUgeG1sIGRpcmVjdGl2
+ZSBhYm92ZSBzZWVtIHRvIG9ubHkgYXBwbHkgdG8gdGhlIHZjcHVzLAphbmQgbm8gb3RoZXIgUUVN
+VSB0aHJlYWQuCgo+ID4gVGhhdCdzIGJlY2F1c2UsIEFGQUlDVCwKPiA+IFFFTVUgd2lsbCBzbmFw
+c2hvdCB0aGUgc3lzdGVtIHJlZ2lzdGVycyBvdXRzaWRlIG9mIHRoZSB2Y3B1IHRocmVhZHMsCj4g
+PiBhbmQgYXR0ZW1wdCB0byB1c2UgdGhlIHJlc3VsdCB0byBjb25maWd1cmUgdGhlIGFjdHVhbCB2
+Y3B1IHRocmVhZHMuIElmCj4gPiB0aGV5IGhhcHBlbiB0byBydW4gb24gZGlmZmVyZW50IENQVSB0
+eXBlcywgdGhlIHN5c3JlZ3Mgd2lsbCBkaWZmZXIgaW4KPiA+IGluY29tcGF0aWJsZSB3YXlzIGFu
+ZCBhbiBlcnJvciB3aWxsIGJlIHJldHVybmVkLiBUaGlzIG1heSBvciBtYXkgbm90Cj4gPiBiZSBh
+IGJ1ZywgSSBkb24ndCBrbm93IChJIHNlZSBpdCBhcyBhIGZlYXR1cmUpLgo+IAo+IFRoZW4gdGhp
+cyBicmluZ3MgYW5vdGhlciBxdWVzdGlvbi4KPiAKPiBJZiB3ZSBjYW4gcGluIGVhY2ggdkNQVSB0
+byBlYWNoIHBoeXNpY2FsIGNvcmUgKGJvdGggbGl0dGxlIGFuZCBiaWcpLAo+IHRoZW4gYXMgbG9u
+ZyBhcyB0aGUgcmVnaXN0ZXJzIGFyZSBwZXItdkNQVSBiYXNlZCwgaXQgc2hvdWxkIGJlIGFibGUg
+dG8KPiBwYXNzIGJvdGggYmlnIGFuZCBsaXR0bGUgY29yZXMgdG8gdGhlIFZNLgoKQWJzb2x1dGVs
+eS4gQnV0IHRoYXQncyBub3QgaG93IFFFTVUgd29ya3MuIEl0IGFzc3VtZXMgdGhhdCBpdCBjYW4K
+cmVzdG9yZSB0aGUgKnNhbWUqIHJlZ2lzdGVycyB0byBhbGwgdGhlIHZjcHVzLiBXaGljaCBvZiBj
+b3Vyc2UgZG9lc24ndAp3b3JrICh3ZSBkb24ndCBhbGxvdyB5b3UgdG8gY2hhbmdlIE1JRFJfRUwx
+LCBmb3IgYSBzdGFydCkuCgo+IFllYWgsIEkgdG90YWxseSB1bmRlcnN0YW5kIHRoaXMgc2NyZXcg
+dXAgdGhlIHNjaGVkdWxpbmcsIGJ1dCB0aGF0J3MgYXQKPiBsZWFzdCB3aGF0IChzb21lIGluc2Fu
+ZSkgdXNlcnMgd2FudCAoanVzdCBsaWtlIG1lKS4KClRoYXQncyBmaW5lLCB3ZSBhbGwgaGF2ZSBv
+dXIgb3duIHVzZSBjYXNlcy4KCj4gCj4gPiAKPiA+IElmIHlvdSBhcmUgYW5ub3llZCB3aXRoIHRo
+aXMgYmVoYXZpb3VyLCB5b3UgY2FuIGFsd2F5cyB1c2UgYSBkaWZmZXJlbnQKPiA+IFZNTSB0aGF0
+IHdvbid0IGNhcmUgYWJvdXQgc3VjaCBkaWZmZXJlbmNlIChjcm9zdm0gb3Iga3ZtdG9vbCwgdG8g
+bmFtZQo+ID4gYSBmZXcpLgo+IAo+IFNvdW5kcyBwcmV0dHkgaW50ZXJlc3RpbmcsIGEgbmV3IHdv
+cmxkIGJ1dCB3aXRob3V0IGxpYnZpcnQuLi4KPgo+ID4gSG93ZXZlciwgdGhlIGd1ZXN0IHdpbGwg
+YmUgYWJsZSB0byBvYnNlcnZlIHRoZSBtaWdyYXRpb24gZnJvbQo+ID4gb25lIGNwdSB0eXBlIHRv
+IGFub3RoZXIuIFRoaXMgbWF5IG9yIG1heSBub3QgYWZmZWN0IHlvdXIgZ3Vlc3Qncwo+ID4gYmVo
+YXZpb3VyLgo+IAo+IE5vdCBzdXJlIGlmIGl0J3MgcG9zc2libGUgdG8gcGluIGVhY2ggdkNQVSB0
+aHJlYWQgdG8gZWFjaCBjb3JlLCBidXQgbGV0Cj4gbWUgdHJ5LgoKQWdhaW46IHRoZSBwcm9ibGVt
+IGlzbid0IHRoZSB2Y3B1IHRocmVhZHMsIGJ1dCB0aGUgZHVtbXkgVk0gdGhhdCBRRU1VCmNyZWF0
+ZXMgdG8gc25hcHNob3QgdGhlIHZjcHUgcmVnaXN0ZXJzLgoKPiA+IEkgcGVyc29uYWxseSBmaW5k
+IHRoZSBRRU1VIGJlaGF2aW91ciByZWFzb25hYmxlLiBLVk0vYXJtNjQgbWFrZSBsaXR0bGUKPiA+
+IGVmZm9ydCB0byBzdXBwb3J0IEJMIHZpcnR1YWxpc2F0aW9uIGFzIGRlc2lnbiBjaG9pY2UgKEkg
+dmFsdWUgbXkKPiA+IHNhbml0eSksIGFuZCB1c2Vyc3BhY2UgaXMgc3RpbGwgaW4gY29udHJvbCBv
+ZiB0aGUgcGxhY2VtZW50Lgo+ID4gCj4gPj4+Pj4gVGhpcyBicmluZ3MgYSBwcm9ibGVtLCBpbiB0
+aGVvcnkgUkszMzk5IFNvQyBzaG91bGQgb3V0LXBlcmZvcm0gQkNNMjcxMQo+ID4+Pj4+IGluIG11
+bHRpLWNvcmUgcGVyZm9ybWFuY2UsIGJ1dCBpZiBhIFZNIGNhbiBvbmx5IGJlIGJpbmQgdG8gZWl0
+aGVyIEE3MiBvcgo+ID4+Pj4+IEE1NSBjb3JlcywgdGhlbiB0aGUgcGVyZm9ybWFuY2UgaXMgbm8g
+bG9uZ2VyIGNvbXBldGl0aXZlIGFnYWluc3QKPiA+Pj4+PiBCQ00yNzExLCB3YXN0aW5nIHRoZSBQ
+Q0lFIDIuMCB4NCBjYXBhY2l0eS4KPiA+IAo+ID4gVm90ZSB3aXRoIHlvdXIgbW9uZXkuIElmIHlv
+dSB0b28gdGhpbmsgdGhhdCBCTCBzeXN0ZW1zIGFyZSB1dHRlciBjcmFwLAo+ID4gZG8gbm90IGJ1
+eSB0aGVtISBPciB0cmVhdCB0aGVtIGFzICd0d28gc3lzdGVtcyBpbiBvbmUnLCB3aGljaCBpcyB3
+aGF0Cj4gPiBJIGRvLiBGcm9tIHRoYXQgYW5nbGUsIHRoaXMgaXMgb2YgZ3JlYXQgdmFsdWUhIDst
+KQo+IAo+IEkgZ3Vlc3MgSSdtIHNldHRpbmcgbXkgZXhwZWN0YXRpb24gdG9vIGhpZ2ggZm9yIHJr
+MzM5OSwganVzdCBzZWVpbmcgaXRzCj4gbXVsdGktdGhyZWFkIHBlcmYgYmVhdGluZyBSUEk0IGFu
+ZCBoYXMgYmV0dGVyIElPIGRvZXNuJ3QgbWVhbiBpdCdzIGEKPiBwZXJmZWN0IGZpdCBmb3IgVk0u
+CgpJIGZpbmQgbXkgb3duIHJrMzM5OSBwZXJmZWN0bHkgYWRlcXVhdGUgd2l0aCBRRU1VLgoKSFRI
+LAoKCU0uCgotLSAKV2l0aG91dCBkZXZpYXRpb24gZnJvbSB0aGUgbm9ybSwgcHJvZ3Jlc3MgaXMg
+bm90IHBvc3NpYmxlLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwprdm1hcm0gbWFpbGluZyBsaXN0Cmt2bWFybUBsaXN0cy5jcy5jb2x1bWJpYS5lZHUKaHR0
+cHM6Ly9saXN0cy5jcy5jb2x1bWJpYS5lZHUvbWFpbG1hbi9saXN0aW5mby9rdm1hcm0K

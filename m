@@ -1,97 +1,95 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5151255lfk;
-        Tue, 14 Dec 2021 03:39:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxncR20w+Jq72UjQlRtgkhWFqEKGJhGjpDyvwf4bfSs9LrVaGJP2XCkwMWlyDZfDlwZVH6S
-X-Received: by 2002:a05:6214:c47:: with SMTP id r7mr4799502qvj.51.1639481942829;
-        Tue, 14 Dec 2021 03:39:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639481942; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5160929lfk;
+        Tue, 14 Dec 2021 03:50:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxVZoTMW/OMUxLCkR4sI3ON01Ckq8GIyJigPRsKiPPM2JRdqRKGMD5RmxeA2U7MSfz2OZA9
+X-Received: by 2002:a05:620a:24d0:: with SMTP id m16mr3491056qkn.596.1639482652086;
+        Tue, 14 Dec 2021 03:50:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639482652; cv=none;
         d=google.com; s=arc-20160816;
-        b=G9MvmwTh7hKMk8C4YdqBwZujxQJZ92H3/l5Z994L4q9wdmppQYoKLExQ9tBsr8doJf
-         hlVv3zObq54/u5eXJ1yqbsAJqagbPRRhvfkvf3FmPZ8bTXc596mTzdvm6V0/IuPTuOut
-         5PGwf7NIi696A/9QQtce1Het4FMWt5+aSoIouFZABg/fwfreC1kXim9LLM3X7ZnGac6o
-         WNnlN9U4PW67tsugVf+BybaYBM88g9n+ieeyo7ImlT7R4pC7JU23Vs/8VByfzC74X7rO
-         kwa/DvPwd2SzFFRaekqepf6dNq15LiOJvv2GBEfkQuizS/cvK0VFtaB+Oxe0uy1hgoYe
-         DcNQ==
+        b=p2x5XgGYETZPEnthrplQKN1rl6v1obSORhGRp7+jLncLB+GZM3w/SanKgcDdHw5ddr
+         F1qTmgjCE+sc3iX3zjLVqEFfrC1HUPL9b7cft/Psg+nXnqWGeWTYqtnBSTKAwuh41s69
+         3KWp3RZQiFsPNBRQv22K4WNVKiwMWhWQj+Z5gciumNO4oJTsQ1Oh36/uiFBqtlgPavnr
+         yOwj8mxMS1ZfwUeJkOoNmTUVLnn1eUBlEaNUhtjPXIkv3mXkIRXp1bIZNTBPVj0Ygm5u
+         VVcm8KIiz+mjC0USIF+yn21rlWJM+YLDE4+Gqun+AIGFzFfqcfraNZOwoP+aGbcsn5Oz
+         fA4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=0j8FhG3Pdijo+JlLzqQ4wiB6x9V3flBlZRvgbDc00+M=;
-        b=EZYpK16klVaAR3YoO4DTF1tTRCx0kLXmDigMyWg/ZK6IftYvQt/aaPIUc5oXXVupK8
-         pDel2xWSPMThzGbtmygW8KP2XVYjBYAqMBmklHGH95r7ll+atLGAH2pid1cWHrto7A6B
-         e64PGVjjMv+0nRZpfTvXX5oT1Xmt/NZr8JMNOdn5+v50SlPonX3yIp+MfdyjACYcGz/A
-         E1wbSGHrNdPlu7enIl9ZjTfMKBxEeXV1J4sBYFSJ1cFdgu2hlNoKXy7likpzCDe37Alg
-         UhLsYgTAuaRe34O7QzjCYiQKizpvRs8xqPOV/1hYMFfEDT/DTsgY0S54HyG3HuI+WTv5
-         JNtw==
+        bh=A+h2CjDECkE7naOqREV8EYRWbl6MLE1bq6FCssGIuZg=;
+        b=nTCcEVuAAx1WwuBEMdCBsOsgnHAxsRijMFi5ukBFA5kDAWynVZN5rULZ7j7Ft19YtL
+         RSw/5l36u9abawJTmbaEaLAm3wRMj81rO96fbD3LJXkjfFgi6BWH6u4T+YZzKMvsebn3
+         7mCDEfqsfQ2Kwdd8M7Zk5IuWMdyN0QlUUdYGdN4FSdUrEMB9lHyBNuibnaICmETab0CW
+         vgF6zqNIz2jiSOpX8ZR+PakEUYu+HSFAWmqHIwOr6GqYgKGsimugfd250JQdpzsOLs1F
+         Pjw07AR/U1af1sQlkNK4yIW2cON8mgdqCIYB6yW+B7Rzoch2kSibr21NScOUt0ks3SUQ
+         Umhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OcPMK34H;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LT4jmVKM;
        spf=pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id g4si13301961qtb.144.2021.12.14.03.39.02
+        by mx.google.com with ESMTPS id p7si14615701qtx.228.2021.12.14.03.50.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 14 Dec 2021 03:39:02 -0800 (PST)
+        Tue, 14 Dec 2021 03:50:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OcPMK34H;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LT4jmVKM;
        spf=pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1639481942;
+	s=mimecast20190719; t=1639482651;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=0j8FhG3Pdijo+JlLzqQ4wiB6x9V3flBlZRvgbDc00+M=;
-	b=OcPMK34HRGnZSkyndtCMK7nyX9U9M6v0K44X8/tD4YWMRjtYVVaaSTJEZ0cVf5mmRpAf8j
-	nEWdXEoHAinw2WPjyg3HMKFdSKGtVKHZOJ5JCZrOtopmIFsW5iM82rU9WKhf5/4/2QpO+G
-	4h11n1QPMMI9ONeIq+5ehKxYTpR222A=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=A+h2CjDECkE7naOqREV8EYRWbl6MLE1bq6FCssGIuZg=;
+	b=LT4jmVKMnelV1cMaqq8nFS4AeqLgCMAHcMZI0pCcpsrQnWq5vJY1dz35x+54yVWhJF+X3m
+	14jxSy6r5pEPQoi9SSiaB9POqdVIv7gMgImDuNedSeeaLXyqayGFcgyv2WoAyRyfqTu4xI
+	C97EWAsOLipQyPKxMKZ1xvatKm4AUGw=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-203--Mv0SY0KNNSWxV5KAAAuxg-1; Tue, 14 Dec 2021 06:36:16 -0500
-X-MC-Unique: -Mv0SY0KNNSWxV5KAAAuxg-1
-Received: by mail-ed1-f71.google.com with SMTP id m12-20020a056402430c00b003e9f10bbb7dso16695307edc.18
-        for <alex.bennee@linaro.org>; Tue, 14 Dec 2021 03:36:16 -0800 (PST)
+ us-mta-195-A0N3emtONhacbBL601Cd_g-1; Tue, 14 Dec 2021 06:50:50 -0500
+X-MC-Unique: A0N3emtONhacbBL601Cd_g-1
+Received: by mail-ed1-f70.google.com with SMTP id c1-20020aa7c741000000b003e7bf1da4bcso16662025eds.21
+        for <alex.bennee@linaro.org>; Tue, 14 Dec 2021 03:50:49 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:content-transfer-encoding
          :in-reply-to;
-        bh=0j8FhG3Pdijo+JlLzqQ4wiB6x9V3flBlZRvgbDc00+M=;
-        b=w1NVXV5BC8eG3VwwSbpwVCH6FiNCGAPvch9le1zvWD1xWbprumMWW8wdmoZvLSFN+X
-         ybvXXI8BPJKTFdD7p3M7VbZ/Z5yGI/qOzQjH+/O23eZD7Cl89xMfi6K5CKiYguJtCxhA
-         fTT1qX8LEDrNgNep8cIc1A2zZXd4+YNJ4JZODnXyqFYc7PG2IEOhnJQIX3NvTHRLm/lS
-         8bnXu+pCjBqUF/MNuM2gwjfLXUe4rpxmmqQcsBNoj2TR8YItP7ldfxO8115A8cHNPWeb
-         fT4a+XRYgj5N5yojCj/1iA+PmmSStlX9bz16wJ/sqS6hSiQm+VxEKVUZ14pVzkwSr213
-         Si7A==
-X-Gm-Message-State: AOAM531q+bKGw3BuW9vfUk4sNbXjKHEYvzkXTNW6G892q+CXJo3A7F+Y
-	eFrY2PKlfEUFnLsaFef0jZE2LBGnOiLfnhMZKWTOfBUF37+oH6QwsDK5GnBIxfZRMO+GyEFVPTj
-	LgG9PB22g6T52SMtA+XZ8/u23i3KEnMJtt258zc0y2sxcS9YDkUBo++mbC1ErqGjQbrE=
-X-Received: by 2002:a17:906:9b92:: with SMTP id dd18mr5231701ejc.425.1639481775767;
-        Tue, 14 Dec 2021 03:36:15 -0800 (PST)
-X-Received: by 2002:a17:906:9b92:: with SMTP id dd18mr5231671ejc.425.1639481775578;
-        Tue, 14 Dec 2021 03:36:15 -0800 (PST)
+        bh=A+h2CjDECkE7naOqREV8EYRWbl6MLE1bq6FCssGIuZg=;
+        b=MJ9be+269HT/xOlNI4KOmtTIQELO8vG1aiocJcq3b33J0I7FCJk79I/kf1NxgK7S7h
+         BrBcdcEdQ4k6Lt2HdRxgj2AmbxuGO4+VG5ne1hqoMOOGfUeRyZ0LnHtMTejvb4nMgyI/
+         x2I0CV73ZPgyI2TxNBSKCkOVLb4KhtlIQLKuYbJ1vdqK4lV19yME+gG/AIO3msePZ4d6
+         gu7Lzc4VSw6gwUE7cIfqcblaOsFscmbWT1Ilo1UYka66PGY4hepZxAs6Vj7o5WEIxILd
+         ss8ZDPfmAEjk0oWvN/sUnjKdEnMVKGac1RSr4ccQH+UH6WRD4e3WIQWdnd8vRUmEw84r
+         1YNw==
+X-Gm-Message-State: AOAM5326RnZZBCVCqOxdUFFaIHLsTjBghvVMlqzLNHsO2LJ3sfQ/mWSK
+	0RRSeoF/UcPSEQdgLmKHqDJlEG7AC9ay9/bC7JwljEDtjnt4OQowvERo9aezCOoFPIAK1Ax5oU0
+	4OjJRZn+NzEgauYpzdfGXAkD7f1eXtq5SrGdFy3l5TiX9O2xxih22Wt2RSc7x0aMB7cs=
+X-Received: by 2002:a05:6402:1d48:: with SMTP id dz8mr7262786edb.100.1639482648949;
+        Tue, 14 Dec 2021 03:50:48 -0800 (PST)
+X-Received: by 2002:a05:6402:1d48:: with SMTP id dz8mr7262761edb.100.1639482648779;
+        Tue, 14 Dec 2021 03:50:48 -0800 (PST)
 Return-Path: <drjones@redhat.com>
 Received: from gator.home (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
-        by smtp.gmail.com with ESMTPSA id ck12sm4885009edb.53.2021.12.14.03.36.14
+        by smtp.gmail.com with ESMTPSA id k21sm7507968edo.87.2021.12.14.03.50.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Dec 2021 03:36:14 -0800 (PST)
-Date: Tue, 14 Dec 2021 12:36:12 +0100
+        Tue, 14 Dec 2021 03:50:48 -0800 (PST)
+Date: Tue, 14 Dec 2021 12:50:46 +0100
 From: Andrew Jones <drjones@redhat.com>
 To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: pbonzini@redhat.com, thuth@redhat.com, kvm@vger.kernel.org,
 	qemu-arm@nongnu.org, linux-arm-kernel@lists.infradead.org,
 	kvmarm@lists.cs.columbia.edu, christoffer.dall@arm.com,
 	maz@kernel.org
-Subject: Re: [kvm-unit-tests PATCH v9 3/9] Makefile: add GNU global tags
- support
-Message-ID: <20211214113612.u7g6n3ye4auj56s7@gator.home>
+Subject: Re: [kvm-unit-tests PATCH v9 0/9] MTTCG sanity tests for ARM
+Message-ID: <20211214115046.kpiboz7uzgymdoci@gator.home>
 References: <20211202115352.951548-1-alex.bennee@linaro.org>
- <20211202115352.951548-4-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20211202115352.951548-4-alex.bennee@linaro.org>
+In-Reply-To: <20211202115352.951548-1-alex.bennee@linaro.org>
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -99,37 +97,48 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: NqhR5Xax/8ii
+X-TUID: DBgOvBsE8CKP
 
-On Thu, Dec 02, 2021 at 11:53:46AM +0000, Alex Bennée wrote:
-> If you have ctags you might as well offer gtags as a target.
+On Thu, Dec 02, 2021 at 11:53:43AM +0000, Alex Bennée wrote:
+> Hi,
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20211118184650.661575-4-alex.bennee@linaro.org>
-> ---
->  Makefile | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+> Not a great deal has changed from the last posting although I have
+> dropped the additional unittests.cfg in favour of setting "nodefault"
+> for the tests. Otherwise the clean-ups are mainly textual (removing
+> printfs, random newlines and cleaning up comments). As usual the
+> details are in the commits bellow the ---.
 > 
-> diff --git a/Makefile b/Makefile
-> index b80c31f8..0b7c03ac 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -122,6 +122,9 @@ cscope:
->  		-name '*.[chsS]' -exec realpath --relative-base=$(CURDIR) {} \; | sort -u > ./cscope.files
->  	cscope -bk
->  
-> -.PHONY: tags
-> +.PHONY: tags gtags
->  tags:
->  	ctags -R
-> +
-> +gtags:
-> +	gtags
-> -- 
-> 2.30.2
->
+> I've also tweaked .git/config so get_maintainer.pl should ensure
+> direct delivery of the patches ;-)
+> 
+> Alex Bennée (9):
+>   docs: mention checkpatch in the README
+>   arm/flat.lds: don't drop debug during link
 
-We should also add gtags' generated files to .gitignore
+>   arm/run: use separate --accel form
+
+I queued these three to arm/queue[1].
+
+>   Makefile: add GNU global tags support
+
+Haven't queued this yet since I think we need .gitignore changes.
+
+>   lib: add isaac prng library from CCAN
+>   arm/tlbflush-code: TLB flush during code execution
+>   arm/locking-tests: add comprehensive locking test
+>   arm/barrier-litmus-tests: add simple mp and sal litmus tests
+>   arm/tcg-test: some basic TCG exercising tests
+
+These I've queued to arm/mttcg[2] with a slight change of dropping the
+'mttcg' group name from any tests that can also run under kvm and
+renaming mttcg to to tcg for the tests that require tcg.
+
+I haven't pushed everything to arm/queue yet since I'm not yet sure
+I like all the nodefault tests showing up in the logs, even though that
+was my suggestion... I need to play with it some more.
 
 Thanks,
-drew 
+drew
+
+[1] https://gitlab.com/rhdrjones/kvm-unit-tests/-/commits/arm/queue
+[2] https://gitlab.com/rhdrjones/kvm-unit-tests/-/commits/arm/mttcg

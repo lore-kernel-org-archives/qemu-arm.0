@@ -1,122 +1,133 @@
-Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp58376lfj;
-        Wed, 15 Dec 2021 10:32:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwXUiO9dy+R3ZHKHG10a2D81amxfvXT8zWZ+wHQphpt8XJi3f/aUN0fTmEI6aVcg1KbjgFz
-X-Received: by 2002:a05:6214:27c4:: with SMTP id ge4mr2244762qvb.39.1639593157676;
-        Wed, 15 Dec 2021 10:32:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639593157; cv=none;
+Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp75756lfj;
+        Wed, 15 Dec 2021 10:52:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxigJUlCvQ9SOPBXgezc77JiEDWhnA1K1KdI1EnTceaeQpSZhNJdJhibetUecHomTRKb6t2
+X-Received: by 2002:a25:b599:: with SMTP id q25mr7466931ybj.618.1639594352376;
+        Wed, 15 Dec 2021 10:52:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639594352; cv=none;
         d=google.com; s=arc-20160816;
-        b=wFvvEhwtQQYnJEmlUg9tb0WyVI/i3alhGNlX3K1cauEwWT5wcETsA/M8H0zAnhGsps
-         XDRe+Q/MPLyvrXvqrNPOGvSc7Ikxr9Dvi+eg3ziU67NC/6Ktpsizy+bgRZaQ+nWnu8lM
-         tls0irLCW5WC6t1iU5dzuYcE3YIdXa/K8aXKLUa0z0xYwbtey3KrOdNm43/b4I/nBtW+
-         z2kbsrFPRvcQTqlwOHIMC2Kzt4R6LyjvlQ/7b3hA/4PQUBsi0ND+ZHMV6A8+EE3ezgK4
-         TIsuB2uIEbymg2YLeWJkD20WeTpQ1PMxoAAN9kQxpT/qSWprk2SS5YXK5mQuSln+d3rl
-         xtDg==
+        b=KyPaDHpJ7qZk72m9PxKaBdnZWuHCP2k9bmUy1Nt15oCDOt7jEjT5uJNcI2k13QY0W9
+         FTR7fgLhF1Ii1rPHK2ILYAEcuJl5JhhPoiFBl3aYy9LBnNhyFxSLTlEd3ujQ32PFZZ+X
+         y71097u6Fmxl/oBeE88wl2ioCbXexO3m3IlP/MpipW4rrelhAT05IzeExllEGTnd/ADa
+         K5lNACwCGenoQu/eLCe9CKWRoua58XTCF0PzNJGkZmCVsENl3ZWptW19hI47uYUfvH6K
+         yYZhPOB1nnFX8c0ZiUbFj6to3xoJ05A8xCl55+M9ezUJVFKvBnrWSwO3DJqY+8121a+z
+         xSgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :message-id:date:user-agent:references:in-reply-to:subject:to:from
-         :dkim-signature;
-        bh=mqwrPSbY/JGb754RPS3dLXynKiuM1Q8YUyM0R4IY3/s=;
-        b=nJE+FPjCYonthx0DQJKt5hn/miwKF4CzJZRHinlasIfSo0p/m0+nDS23Jdk2Br3rXA
-         ESYXIa+WumYtsXUmu679bRZ5djrJ0C/dEOPLQPcCnqmGJEKwYgoDTnPrZ3IZ6Wj8H/7+
-         Lqjj9TIz1skBJUFa0wEZogBzKuZNv9ZUp/lZBPZ2QF/ho9Zlcrf/4QXWCAi6LvlP//qw
-         /8Kn60liQPI4jO4EsSwV/ZzuXu1LI8NB7py62B2x6whkhqdslN0dDc0C5fN6QLdTJIoL
-         NV/rorvEJ3dXMYnZOHiTIhQiOTKdpK048MMrvr0Bxw5DLDP89b8tuacNatjNv3440h6u
-         IRyg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=aBk5xCr9fbCBCffCAuyfaBOmPKNPJg+oUOEHDvF+gnk=;
+        b=G3XpVJaNsSDq57RthhFf2RWj7C9QdjSLustYDQZFn8k6hPKL4p+VMF0LxlepO2qLjg
+         uOLQFF9Hum07NMfgbIaIqFQTIexhq/yoByeUbAKHVCxPXZZxpF16yZwoJdTsqrEw6r9/
+         dGSExmKDD5SVPf6eYTUVMNlxuiHmb5Osf9Cp+9QzP+pL0fRr40SUj/WBj8MhAuzH5zQg
+         A+DujVCW81SDovgRObQ1H5m7qRepEA+L30hFoSKYWX4I+57lCSrgp5/dK4P2RUPSttDQ
+         9qYisMKKWLClkl+RJU00HDrrJmXEFCyJuQLb0MKa5KPgWHZGJO8OxYEVoDmfuOA+oZ5J
+         ebkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YYyJ+5QL;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="SOB/fTrQ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si1308404qka.353.2021.12.15.10.32.37
+        by mx.google.com with ESMTPS id s193si2793807ybs.801.2021.12.15.10.52.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Dec 2021 10:32:37 -0800 (PST)
+        Wed, 15 Dec 2021 10:52:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YYyJ+5QL;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="SOB/fTrQ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52496 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35820 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mxZ4u-0005al-Vn
-	for alex.bennee@linaro.org; Wed, 15 Dec 2021 13:32:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42900)
+	id 1mxZOB-0007ng-Ll
+	for alex.bennee@linaro.org; Wed, 15 Dec 2021 13:52:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41488)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1mxXuZ-0004rc-9N
- for qemu-arm@nongnu.org; Wed, 15 Dec 2021 12:17:51 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:59907)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mxXo6-0000LP-Fj
+ for qemu-arm@nongnu.org; Wed, 15 Dec 2021 12:11:10 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:20746)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1mxXuX-0001wm-Sn
- for qemu-arm@nongnu.org; Wed, 15 Dec 2021 12:17:51 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mxXo2-0006DV-H8
+ for qemu-arm@nongnu.org; Wed, 15 Dec 2021 12:11:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1639588668;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=mqwrPSbY/JGb754RPS3dLXynKiuM1Q8YUyM0R4IY3/s=;
- b=YYyJ+5QLZDnpb/ac7oI1P8TuWKrpae4NLjIu1CdQJT0YuTR3dp00HvXSZzHCQFw9WYKokj
- U4OayA/N8nt88wkhyQJ5VdenK/Qr/XJXQF0X6RH/XnryT5QkE2guImZarYaSI22O+7Du3X
- HqiVN7mnzmbeBDheVrX4UbtA9bAPjAk=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1639588265;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=aBk5xCr9fbCBCffCAuyfaBOmPKNPJg+oUOEHDvF+gnk=;
+ b=SOB/fTrQhUvve/mtcmSqojFFlKTc+9L7XdWKvWQK/bXG7lc3yQ5ybjL8nPl4agZgCD2UPP
+ HPy0Ceul77QGL852XjHY17MUtFL6WMKx5owpMNNS9aw0QA63WYGgAG9ss2dx4RHEjA1Yev
+ VNV5vQPM4svlCeeynjTb2WUO1gPWo3I=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-96-7fM5LB-2Mtujisi0cZSgGA-1; Wed, 15 Dec 2021 12:17:47 -0500
-X-MC-Unique: 7fM5LB-2Mtujisi0cZSgGA-1
-Received: by mail-wr1-f69.google.com with SMTP id
- f3-20020a5d50c3000000b00183ce1379feso6100552wrt.5
- for <qemu-arm@nongnu.org>; Wed, 15 Dec 2021 09:17:47 -0800 (PST)
+ us-mta-439-M6aqQ8GpM-6aTmYWLfUdaQ-1; Wed, 15 Dec 2021 12:11:04 -0500
+X-MC-Unique: M6aqQ8GpM-6aTmYWLfUdaQ-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ r129-20020a1c4487000000b00333629ed22dso14923622wma.6
+ for <qemu-arm@nongnu.org>; Wed, 15 Dec 2021 09:11:04 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references
- :user-agent:reply-to:date:message-id:mime-version;
- bh=mqwrPSbY/JGb754RPS3dLXynKiuM1Q8YUyM0R4IY3/s=;
- b=0pG0Mc+O1T72ocVqRMViK5/AzZeJRyL+Un3HF9pvHT7DKOKPl3Y+NxK32Pe6Bm8uDZ
- +XjF+wojDW7FpA9gul/KkqoRFZbSQpDe8Fw/idGnypXrh2YM802TOR5F78jX4rAWYUl/
- +rcj6YDhpfKKOntIGEc335eMLzsC7yvJqa5je7EvNepARUG9UvcDG+CVTQsbxWEaUIaQ
- k4bw8/WsWvYfkwg98GLItQZ60uFgyFz7R3XBgvTS+i15PmzeJcfYDN7k1n+MDcwhgNtP
- mSTKE11BGC654BBJpX7teZbVTJbELQGpXDmZYUFvQkfxoreZLgl58bDk5Almity5w/gw
- a8BA==
-X-Gm-Message-State: AOAM5307Gmr4R7T9I7dq4Ylc1MFhTXlw0IuPxQsOcNdnEQ0VNImlimrK
- whdOmIDHPmQhVmr3Z6coq+VkOwHpALttP91R9yNpQ3diPpipuisCDFmkYKcM+dEmGYt8KJFZgCR
- 1FU4k/PtbCp2G
-X-Received: by 2002:adf:b35e:: with SMTP id k30mr5252603wrd.707.1639588666288; 
- Wed, 15 Dec 2021 09:17:46 -0800 (PST)
-X-Received: by 2002:adf:b35e:: with SMTP id k30mr5252578wrd.707.1639588666140; 
- Wed, 15 Dec 2021 09:17:46 -0800 (PST)
-Received: from localhost (static-174-144-85-188.ipcom.comunitel.net.
- [188.85.144.174])
- by smtp.gmail.com with ESMTPSA id o4sm1334197wmc.43.2021.12.15.09.17.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Dec 2021 09:17:45 -0800 (PST)
-From: Juan Quintela <quintela@redhat.com>
-To: Cornelia Huck <cohuck@redhat.com>
-Subject: Re: [PATCH for-7.0] hw: Add compat machines for 7.0
-In-Reply-To: <20211208170241.110551-1-cohuck@redhat.com> (Cornelia Huck's
- message of "Wed, 8 Dec 2021 18:02:41 +0100")
-References: <20211208170241.110551-1-cohuck@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
-Date: Wed, 15 Dec 2021 18:17:45 +0100
-Message-ID: <87lf0lyeh2.fsf@secure.mitica>
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=aBk5xCr9fbCBCffCAuyfaBOmPKNPJg+oUOEHDvF+gnk=;
+ b=F7Wd+ZPizZiBc7c3wVsZwBiQgkZtqP23W2ndtpAH4ptRLO3YulrqMg1EdL35gp8G8I
+ JcGO3fKylJtpc33Nk1aJTFoIQdepogdPSxLhm87K6OLiT/RKDGoTDAWQhFKoAoqVGsbI
+ J5mu144ZlU7JCcbspxgkuslIFX1X1LH9Iff07slYTgb0O6b/lgUp2ZS3R7pcFK1p3WqN
+ XdEsOkgbEOY0oM/1OVJ67rD6O0RxRLSRdCqTNjL6Eq9RR9cc3YJuCwf5v4+dVrz1MAgJ
+ ldt7ptZrwdI4m/XvUC3jKUqeDGhjOYwQ1gT1A6mLAJh2orbDQlbCjUvUUCE5nRSvc7pr
+ fZRQ==
+X-Gm-Message-State: AOAM5320blibD7o0pFhU6tRXv8ddx3jjQ6g4VYreUEvgtk3AsCd+4lxr
+ dQ4co6uxuEvf6Z4UBOe5bKRq1e0Q0ycG5MHXi3IAAEIKbFZX1IYy6pTSKS2i4sKP3/62Id4dMvU
+ IZS+RwqG5xwuY
+X-Received: by 2002:a05:600c:4c96:: with SMTP id
+ g22mr886286wmp.46.1639588263131; 
+ Wed, 15 Dec 2021 09:11:03 -0800 (PST)
+X-Received: by 2002:a05:600c:4c96:: with SMTP id
+ g22mr886248wmp.46.1639588262892; 
+ Wed, 15 Dec 2021 09:11:02 -0800 (PST)
+Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net.
+ [83.50.185.174])
+ by smtp.gmail.com with ESMTPSA id o9sm2430667wrs.4.2021.12.15.09.11.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 15 Dec 2021 09:11:02 -0800 (PST)
+Message-ID: <f2ea84f5-156c-7dfe-7aa0-e7848ebe1859@redhat.com>
+Date: Wed, 15 Dec 2021 18:11:01 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [RFC PATCH v2 3/5] exec/memattrs: Introduce MemTxAttrs::bus_perm
+ field
+To: Stefan Hajnoczi <stefanha@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>
+References: <20210823164157.751807-1-philmd@redhat.com>
+ <20210823164157.751807-4-philmd@redhat.com>
+ <YSTvSlU5fk8JuY0u@stefanha-x1.localdomain>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+In-Reply-To: <YSTvSlU5fk8JuY0u@stefanha-x1.localdomain>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.719,
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.719,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-1.64, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,33 +140,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Jason Wang <jasowang@redhat.com>, Li Qiang <liq3ea@gmail.com>,
+ qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>, Alexander Bulekov <alxndr@bu.edu>,
+ qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9pjZOXUARFY4
+X-TUID: ZWOtcnkglFuh
 
-Cornelia Huck <cohuck@redhat.com> wrote:
-> Add 7.0 machine types for arm/i440fx/q35/s390x/spapr.
->
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+On 8/24/21 15:08, Stefan Hajnoczi wrote:
+> On Mon, Aug 23, 2021 at 06:41:55PM +0200, Philippe Mathieu-Daudé wrote:
+>> Add the 'direct_access' bit to the memory attributes to restrict
+>> bus master access to ROM/RAM.
+>> Have read/write accessors return MEMTX_BUS_ERROR if an access is
+>> restricted and the region is not ROM/RAM ('direct').
+>> Add corresponding trace events.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  include/exec/memattrs.h | 21 +++++++++++++++++++++
+>>  1 file changed, 21 insertions(+)
+>>
+>> diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
+>> index 95f2d20d55b..7a94ee75a88 100644
+>> --- a/include/exec/memattrs.h
+>> +++ b/include/exec/memattrs.h
+>> @@ -14,6 +14,13 @@
+>>  #ifndef MEMATTRS_H
+>>  #define MEMATTRS_H
+>>  
+>> +/* Permission to restrict bus memory accesses. See MemTxAttrs::bus_perm */
+>> +enum {
+>> +    MEMTXPERM_UNSPECIFIED   = 0,
+>> +    MEMTXPERM_UNRESTRICTED  = 1,
+>> +    MEMTXPERM_RAM_DEVICE    = 2,
+>> +};
+>> +
+>>  /* Every memory transaction has associated with it a set of
+>>   * attributes. Some of these are generic (such as the ID of
+>>   * the bus master); some are specific to a particular kind of
+>> @@ -35,6 +42,19 @@ typedef struct MemTxAttrs {
+>>      unsigned int secure:1;
+>>      /* Memory access is usermode (unprivileged) */
+>>      unsigned int user:1;
+>> +    /*
+>> +     * Bus memory access permission.
+>> +     *
+>> +     * Some devices (such DMA) might be restricted to only access
+>> +     * some type of device, such RAM devices. By default memory
+>> +     * accesses are unspecified (MEMTXPERM_UNSPECIFIED), but could be
+>> +     * unrestricted (MEMTXPERM_UNRESTRICTED, similar to an allow list)
+>> +     * or restricted to a type of devices (similar to a deny list).
+>> +     * Currently only RAM devices can be restricted (MEMTXPERM_RAM_DEVICE).
+> 
+> I don't understand these 3 categories.
+> 
+> MEMTXPERM_UNSPECIFIED means any MemoryRegion can be accessed?
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+MEMTXPERM_UNSPECIFIED means no change in the current behavior.
+IOW we haven't reviewed the device, and don't know whether it has
+to be restricted or not.
 
-I did a similar one with 6.3 by error, I think we should get a script to
-do this everytime that we increase the version number O:-)
+> What does MEMTXPERM_UNRESTRICTED mean? How does this differ from
+> MEMTXPERM_UNSPECIFIED?
 
-Later, Juan.
+We set MEMTXPERM_UNRESTRICTED when we reviewed a device and are sure
+it can be accessed any region (even being re-entrant on itself).
+I understand it like connected via a dual-port on the bus, and
+allowing read *and* write accesses at the same time... So the device
+is allowed to access itself, i.e. it can re-program itself in loop
+and so on. IIUC this is a requested feature for this API.
+
+> What exactly does MEMTXPERM_RAM_DEVICE mean? Maybe that only
+> MemoryRegions where memory_region_is_ram() is true can be accessed?
+
+No, it means, while we don't know which bus owner will access the
+device, the device itself can only access RAMd regions on the bus.
+
+I added MEMTXPERM_RAM_DEVICE as the first example, thinking it is
+the more generic use case. But maybe it is too generic and unuseful,
+and we need a real bus permission matrix?
 

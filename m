@@ -1,155 +1,161 @@
-Received: by 2002:a05:6214:3f4:0:0:0:0 with SMTP id cf20csp550934qvb;
-        Wed, 15 Dec 2021 08:54:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzdkD9NYFQyfebni0JftV3U7ezv9GNktuhOTYoR9kyAVQrRURV0V2I6BrokFmjexE5mVUTU
-X-Received: by 2002:a05:6214:cce:: with SMTP id 14mr4465252qvx.58.1639587251704;
-        Wed, 15 Dec 2021 08:54:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639587251; cv=none;
+Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp191402lfj;
+        Wed, 15 Dec 2021 06:11:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx/eqqYF6CAviJIBLdgxU+yBsA3BX4C1+e1LzSamyw7cdYmEdH6AUhSpJoQ1s0wSxrgnNe2
+X-Received: by 2002:a02:84eb:: with SMTP id f98mr5578834jai.743.1639577493052;
+        Wed, 15 Dec 2021 06:11:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639577493; cv=none;
         d=google.com; s=arc-20160816;
-        b=jnlCrIMWxgqwdQo52ZInXT3g+LLQVM/jRrvoui5Yh/lLN1egad3BjA+HWXJ+ijhwDM
-         8JWqvpAbHiuNulJPVgd7A4aDFlJez/yv8oFbg4Fu198t1tAV3XMrk2NCrau1RUzE7DQF
-         F/2lMpaJmIXqp1Qyt2lBfOPKr86gDvRpLdBtDx2v3QxWHNIrLWT8wHPuqpYS9BNr8aeu
-         VPBDEknz2cAsYg5CjI+fVQht/P3uKNLwbalVxWIhoiYRqbkiIxUsoY5ylZC7n1a49Ikf
-         5/rdzZI+K2n4587aPcT1jCu9FOWXGYvVUKe0byQzgm7P9ompX4ky+ULHFl0Pv27kllEf
-         BxXA==
+        b=AjjKk/wg6uoJrQgoFIWEgAGS5LgoKe78r2Kuckq+k3DqJvRxVIeS4n7sn1Npe684fx
+         QHibDo9NrF6QlQ0bBtyJSMUbR8Mfmfzs73GbtV1/EqF2rvO5G+AoTq6UmZhY+m/LTdgS
+         m3DongjkrC3Lf6ARIsqugkwx7Agm1DGqn4xClVP8t7mfTAoq1mSthjZW62jPtmh/4rEW
+         75/4r4yxscVvWX59uAFuxhW8ip2/J5KRJiacBYfvF+t61ihV95URs9FinGIXbB9ZnqWU
+         nu8YIjrBsivh33K+YyPhZwTKi5JIlNYKHF7taMGKQ7hqaHqzyIYHg3TRj8kbfwXdFpdJ
+         guAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=BLtJrCZcQqOeInQ2K4AukauYCruYIyRO70+OV26bvCo=;
-        b=c4PVqOsCQWL61QyDNkUnW+husP6HgOy1/pcX8qWzqNpPanbOihxnNzgZgJqAuP1nvO
-         J8YLH+eErxBc4/450JCJwd8EvqbxOUKHfQSUmslojlUTHALtiP2K+LXVdgBQimXHwklM
-         y9f+XcYBckVbgbx/ZsWA7OwXtBUUcgpaomOlF1i/YqRsHd05asJLYPdZKFtyRfb3MyGv
-         pPBGnK1kTzEK+fgOcR1YE83D6mQPkWPm+Uw/fkJNbQKf0/aqYj1tww3cgefc4e+Zl7vk
-         9JakahiVT4GFMnPXRtLFjTErxXh8VUla5dL84wVDrZo0Z5ub6h2n5bHI1vqgc/k8WxYV
-         cgmg==
+        bh=WPSFBkjrHnZU1t8FAYRblmb5wkFbahbFJD3p/FpU8E4=;
+        b=bzvNoWo9mcPsLNSmRJjbW5nrrSs3MfjrTpc+IJncF9c4+Fz4QDY6DxZTrLwfZMv2Db
+         YxpMZKk2OxxfB0RSjFHbeqEdNmawztAt/eyGvzpzDEJrTnc1WFukaq4dgDn7p7X2sUOS
+         J/UNuw902wj96LDq9Jo9BmwusCvOMwK6YjZkFKV0+I/PITb7q67trdgm2ox9Oj3iyp3h
+         ebpRo5KZydX9A3wWVFbgcq6jCxfIGRkrS/oPEWEC5+A/YYeAmiDIZl5IDa2lAoXGWMqF
+         3+qLSPHHR8ZZpt+pZrp3gbV9tI+AZIt3eZvFghY6inmJbNiKsnK2n9mCAyjqurI5ztoX
+         HAPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O0KH61Qy;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id u3si1115421qvm.269.2021.12.15.08.54.11
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aKhWmHLo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ay32si1121187iob.102.2021.12.15.06.11.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 Dec 2021 08:54:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 15 Dec 2021 06:11:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O0KH61Qy;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aKhWmHLo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53496 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mxV0G-0002QN-3r
+	for alex.bennee@linaro.org; Wed, 15 Dec 2021 09:11:32 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:43614)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mxUrm-0000zo-KZ
+ for qemu-devel@nongnu.org; Wed, 15 Dec 2021 09:02:50 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:47379)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mxUra-0001Ts-WD
+ for qemu-devel@nongnu.org; Wed, 15 Dec 2021 09:02:46 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1639587251;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BLtJrCZcQqOeInQ2K4AukauYCruYIyRO70+OV26bvCo=;
-	b=O0KH61QyjluYe/Y0b7yGAq309pG1wts87Mu91E1KwREiKMygTmrmkvEwvgsETMvA61/8+O
-	bKnan5DpnpiDsu5P6BEn0283NXGOsjIo3rw21d4GnK5xRHReitDvkibDE1x3kJjQUYRLTd
-	szKwoX8g3nN+F30O3sZA9iyWiE/C5mY=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1639576954;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WPSFBkjrHnZU1t8FAYRblmb5wkFbahbFJD3p/FpU8E4=;
+ b=aKhWmHLoPO1TiGLNstBFJLb302tULEKm9dLdhVmyvc6uSsK3D6EauS+eBh72OWCoc3U3Zg
+ WpmkJwy62jyH7sNaJESihQgKyqmAVjynvmpztd3XEYe4+VFFn9IVmOqolaNv8vbdFEUAqy
+ XEIo/+9hfjRTjzpmgLLaxYyRHgyTook=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-589-3aiIQAB0OKyY-kJ_ARBncg-1; Wed, 15 Dec 2021 11:54:07 -0500
-X-MC-Unique: 3aiIQAB0OKyY-kJ_ARBncg-1
-Received: by mail-wm1-f71.google.com with SMTP id 69-20020a1c0148000000b0033214e5b021so12839234wmb.3
-        for <alex.bennee@linaro.org>; Wed, 15 Dec 2021 08:54:07 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=BLtJrCZcQqOeInQ2K4AukauYCruYIyRO70+OV26bvCo=;
-        b=gQz+LJLlKnuy0KkxgzP+kGSi/O00e92PqAjyvWfRzHq7o1HvW1YRRXoKgGl1PaVPRP
-         ssgI2didjTjZQl2TeXyIB0vqhjji3Cc6L6hCjKGzgIj75BZPynZ6WsIoZIwsX16nfzrr
-         Wh+Y/aehnPwYo5HVc3ZMVv7+xMUUc1OmeEbKEwJ5KdSugDI92IFA/EWeTU1kKETYNCMW
-         DG6O7bHHjPjXNPNn8bp6MQKw+bEHQHtqEazhr+OFgwq4q3geZO8nTjpnpLNy3wmgYKHA
-         josRqDD8nJp8UL+jkqkg0ANLAI7wZ5tgK31kGP/9TZaX4/rzq37booIq1P2cJmJa7gud
-         hQRQ==
-X-Gm-Message-State: AOAM530IL7co0yP1bsKpnbDjjyqSgQ3g/JCelg2MEncBzkKSqVYPqEE+
-	R5Uvz4206PvBk7Fg84L6kVl50xMgpVZjwnyK73Tz8Fshtkh0gaFNXouaSoWpEeqTZdL5J8SB867
-	xY8sXvhMTv3HSvV4k
-X-Received: by 2002:a05:6000:2ac:: with SMTP id l12mr2922494wry.72.1639587246640;
-        Wed, 15 Dec 2021 08:54:06 -0800 (PST)
-X-Received: by 2002:a05:6000:2ac:: with SMTP id l12mr2922471wry.72.1639587246493;
-        Wed, 15 Dec 2021 08:54:06 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net. [83.50.185.174])
-        by smtp.gmail.com with ESMTPSA id v8sm2393630wrd.84.2021.12.15.08.54.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Dec 2021 08:54:05 -0800 (PST)
-Message-ID: <697323f3-0d82-2c7f-3c54-a0f38d93615f@redhat.com>
-Date: Wed, 15 Dec 2021 17:54:04 +0100
+ us-mta-253-eDiSt5ejO1GwhvT_D4LRLg-1; Wed, 15 Dec 2021 09:02:26 -0500
+X-MC-Unique: eDiSt5ejO1GwhvT_D4LRLg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 93F9281CD03;
+ Wed, 15 Dec 2021 14:02:25 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-2.ams2.redhat.com [10.36.112.2])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 60F697A4E1;
+ Wed, 15 Dec 2021 14:02:25 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 612771138220; Wed, 15 Dec 2021 15:02:22 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 07/13] hw/arm/mcimx7d-sabre: Replace drive_get_next() by
+ drive_get()
+Date: Wed, 15 Dec 2021 15:02:16 +0100
+Message-Id: <20211215140222.769652-8-armbru@redhat.com>
+In-Reply-To: <20211215140222.769652-1-armbru@redhat.com>
+References: <20211215140222.769652-1-armbru@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [PATCH v3 00/28] glib: Replace g_memdup() by g_memdup2()
-To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Laurent Vivier <lvivier@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
- Kevin Wolf <kwolf@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- David Hildenbrand <david@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Eric Blake <eblake@redhat.com>, John Snow <jsnow@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Hanna Reitz <hreitz@redhat.com>,
- qemu-block@nongnu.org, qemu-ppc@nongnu.org,
- "Daniel P . Berrange" <berrange@redhat.com>
-References: <20210903174510.751630-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <20210903174510.751630-1-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: c2TnTd+fqhof
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.719,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ richard.henderson@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Y3tK5sMAqSVy
 
-Hi Laurent,
+drive_get_next() is basically a bad idea.  It returns the "next" block
+backend of a certain interface type.  "Next" means bus=0,unit=N, where
+subsequent calls count N up from zero, per interface type.
 
-On 9/3/21 19:44, Philippe Mathieu-Daudé wrote:
+This lets you define unit numbers implicitly by execution order.  If the
+order changes, or new calls appear "in the middle", unit numbers change.
+ABI break.  Hard to spot in review.
 
-> This series provides the safely equivalent g_memdup2() wrapper,
-> and replace all g_memdup() calls by it.
+Machine "mcimx7d-sabre" connects backends with drive_get_next() in a
+counting loop.  Change it to use drive_get() directly.  This makes the
+unit numbers explicit in the code.
 
-> Philippe Mathieu-Daudé (28):
->   hw/hyperv/vmbus: Remove unused vmbus_load/save_req()
->   glib-compat: Introduce g_memdup2() wrapper
->   qapi: Replace g_memdup() by g_memdup2()
->   accel/tcg: Replace g_memdup() by g_memdup2()
->   block/qcow2-bitmap: Replace g_memdup() by g_memdup2()
->   softmmu: Replace g_memdup() by g_memdup2()
->   hw/9pfs: Replace g_memdup() by g_memdup2()
->   hw/acpi: Avoid truncating acpi_data_len() to 32-bit
->   hw/acpi: Replace g_memdup() by g_memdup2()
->   hw/core/machine: Replace g_memdup() by g_memdup2()
->   hw/hppa/machine: Replace g_memdup() by g_memdup2()
->   hw/i386/multiboot: Replace g_memdup() by g_memdup2()
->   hw/net/eepro100: Replace g_memdup() by g_memdup2()
->   hw/nvram/fw_cfg: Replace g_memdup() by g_memdup2()
->   hw/scsi/mptsas: Replace g_memdup() by g_memdup2()
->   hw/ppc/spapr_pci: Replace g_memdup() by g_memdup2()
->   hw/rdma: Replace g_memdup() by g_memdup2()
->   hw/vfio/pci: Replace g_memdup() by g_memdup2()
->   hw/virtio: Replace g_memdup() by g_memdup2()
->   net/colo: Replace g_memdup() by g_memdup2()
->   ui/clipboard: Replace g_memdup() by g_memdup2()
->   linux-user: Replace g_memdup() by g_memdup2()
->   tests/unit: Replace g_memdup() by g_memdup2()
->   tests/qtest: Replace g_memdup() by g_memdup2()
->   target/arm: Replace g_memdup() by g_memdup2()
->   target/ppc: Replace g_memdup() by g_memdup2()
->   contrib: Replace g_memdup() by g_memdup2()
->   checkpatch: Do not allow deprecated g_memdup(
-Is it possible to take the reviewed patches 2, 24 and 28
-via qemu-trivial, so the rest can be merged slowly by
-each submaintainer?
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Message-Id: <20211117163409.3587705-8-armbru@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/mcimx7d-sabre.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
+index 935d4b0f1c..50a5ecde31 100644
+--- a/hw/arm/mcimx7d-sabre.c
++++ b/hw/arm/mcimx7d-sabre.c
+@@ -52,7 +52,7 @@ static void mcimx7d_sabre_init(MachineState *machine)
+         DriveInfo *di;
+         BlockBackend *blk;
+ 
+-        di = drive_get_next(IF_SD);
++        di = drive_get(IF_SD, 0, i);
+         blk = di ? blk_by_legacy_dinfo(di) : NULL;
+         bus = qdev_get_child_bus(DEVICE(&s->usdhc[i]), "sd-bus");
+         carddev = qdev_new(TYPE_SD_CARD);
+-- 
+2.31.1
+

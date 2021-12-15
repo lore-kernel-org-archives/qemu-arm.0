@@ -1,182 +1,105 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5490437lfk;
-        Tue, 14 Dec 2021 09:36:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyV9o5ArwaGVlXEXOCB3GH10CRSOewDWDmGVh64wrJrFXfmBC02ZtL60xwtaK7g9+SSDvps
-X-Received: by 2002:a67:d19d:: with SMTP id w29mr334477vsi.26.1639503363782;
-        Tue, 14 Dec 2021 09:36:03 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1639503363; cv=pass;
+Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp75494lfj;
+        Wed, 15 Dec 2021 10:52:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwDiMlFzgRX88Beo/Cf8Z8WC3OSXTWAPMnxR/jiNQDJGw7Hdf64tsxzUn/kf1F4TIN1ub7U
+X-Received: by 2002:a05:6214:20e4:: with SMTP id 4mr12919617qvk.95.1639594330650;
+        Wed, 15 Dec 2021 10:52:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639594330; cv=none;
         d=google.com; s=arc-20160816;
-        b=GrI03tTzUUbx7uomPd5uOnL3s2CejBqZzB200yGiuQ8KgoV/K4/n1EEjqoXrtZMylo
-         yt5QrdHtlJs5taratlgKvl9ViOz49qpNSu91+NDqUO50GormWLmnGnrFG/64iRr1Gj2X
-         kisAckMPnGlVvfHlEURShNkp7etwoOObGVQoPF0knBmoqMYEWRnVSZdO+GV9X5HQq9EJ
-         m3TvjblGkFBPGaN7hJgGmZOaziFbcSgde8A/pw9Y4bNw/IHDWD+fADyPjsD0B88jn55c
-         GTBcrhLMN8c3e6mVcQVE44w4AjKBFZ3Q5StuZnmXqM07tr4rZi+Bg///A3C6zjtbO8OL
-         5P3Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:user-agent:date
-         :message-id:to:subject:from:dkim-signature;
-        bh=zUSudDcSoiRbSlYKGQwPNsObuJeXAj1guZevQEEjBH8=;
-        b=yYecnGpETKLxNuDGEcs4M7pQxeBJSRryxaOrqL3/P4gTadWOFTCCbJqWDkedem6RVd
-         bIeChQjnXX2Dv8fohTxbbjvObqZyCb0CaL5197TyU5ZHrbxCdzLMb2P4rKYKQT+N56I1
-         V6TX7QEQSu5X9doD+1nXhTAbljawNop3kkSO3d7l0HuFf4zcCg9R9AFvULmvgg/WL3Pb
-         EbGYnKWH42G6qsAKRkh/4nJCwoClnzOjj8tuCnZbNRuaHkvtbW/t5lZzChHhFVRuoqby
-         qk2DbL4q6JbheGut67XVqdPksDZRrreQ8Ih7kQnoVqNhHNgWUC2LVkIY5NEGWZ3bJaz/
-         qwLQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@suse.com header.s=mimecast20200619 header.b=c1uBc55v;
-       arc=pass (i=1 spf=pass spfdomain=suse.com dkim=pass dkdomain=suse.com dmarc=pass fromdomain=suse.com);
+        b=U+HtUnSkfE/V0kvESrmARquzv3pgs1sPDp4b33T7DGWjFuo/zHd5JnfR/2sjpcNwYr
+         OI4yZiJ+0dior3/cgsWgU9MJUhaDIc4f6OdrLRqoDbXIEjODoImgZFQ722pQs1a/MIZn
+         LhA4qMw1vOyF2zoG4MPY6XsWpXtq3i64W8ZoOR4tv/vag4xC4MQVlXTBQcw7qbwFEotX
+         FP0FeTpwlTZ2yZqwf4BtTsS8G+IcNJ3LXg2zcenArWSJWjmqlGvj9bPKwVBkNYjZj3CA
+         ki2f1C6zlVk4Wpj9bgrUH+zoShlZ0gUT8uqITHT5livqYJR5xKqO4SDwxdgj7VTQjoKs
+         vhDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=MbZ995HH6h+XNE8SuFHfoy0WgztGZQ4Rc3McDP1f+fA=;
+        b=aX/bgDg8VWr+Lolk1orglr5fEobIERtKF599q3dtj/rIPtyBcrq0b5va7ht9pkSaYF
+         YZwwG5hUsCmk16O3iESIQSL/WPkWPPmuNYafTrIDUp+dhI3FzMdEdQiOFy+WtNYF2SXa
+         khLUgvt7GynFNy+EixkbmGKXw4zMYB+lHnosvUhkpZ6l/F/ZNvEkMl5xl9x857BjSasg
+         K1HKbjtw++F0YlnXg+rDmRfZGKDEYMyuLfFdZhy+9YntmM8FzHqP3xZkDdRHd6eC63JH
+         AMQnHnQ9WdlOt+VQwXRntUcTwXuCsNG/u9qXBvsFxOc7uuWtt0TgRBwRdmahxxUB7Pj0
+         frRw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=M1lcfZdZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=suse.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u206si700809vkb.32.2021.12.14.09.36.03
+        by mx.google.com with ESMTPS id jp11si1548232qvb.369.2021.12.15.10.52.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Dec 2021 09:36:03 -0800 (PST)
+        Wed, 15 Dec 2021 10:52:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.com header.s=mimecast20200619 header.b=c1uBc55v;
-       arc=pass (i=1 spf=pass spfdomain=suse.com dkim=pass dkdomain=suse.com dmarc=pass fromdomain=suse.com);
+       dkim=fail header.i=@linaro.org header.s=google header.b=M1lcfZdZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=suse.com
-Received: from localhost ([::1]:40240 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34516 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mxBid-0007KM-4A
-	for alex.bennee@linaro.org; Tue, 14 Dec 2021 12:36:03 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57056)
+	id 1mxZNo-0006wQ-AW
+	for alex.bennee@linaro.org; Wed, 15 Dec 2021 13:52:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <petr.pavlu@suse.com>)
- id 1mxBba-0002Kt-LK
- for qemu-arm@nongnu.org; Tue, 14 Dec 2021 12:28:46 -0500
-Received: from de-smtp-delivery-102.mimecast.com ([194.104.111.102]:55632)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <petr.pavlu@suse.com>)
- id 1mxBbU-0005Uy-Cz
- for qemu-arm@nongnu.org; Tue, 14 Dec 2021 12:28:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com;
- s=mimecast20200619; t=1639502914;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=zUSudDcSoiRbSlYKGQwPNsObuJeXAj1guZevQEEjBH8=;
- b=c1uBc55vP7IL+Q5Ad6QAtvCb6s9FYtmr4qwS0oxRnTWsYCSC6q5slt+mAi4Ip2DcikZ/jT
- vU5BpHblEVcVMxPaVFaiSoocOwQT4xtF6/2926CMajpgtXd5H/inzsSE4mWCVVEb0ouBh4
- 5a1Zm6p/aHBnIUiQlh+gZRerBa2QMAY=
-Received: from EUR05-VI1-obe.outbound.protection.outlook.com
- (mail-vi1eur05lp2170.outbound.protection.outlook.com [104.47.17.170]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- de-mta-4-degZBCf9MfW_9-qzvONTRg-1; Tue, 14 Dec 2021 18:28:33 +0100
-X-MC-Unique: degZBCf9MfW_9-qzvONTRg-1
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=R0bHn01jHahrC7/ZgS55gXqqX6YMbeFYP7AwbwMsuwHT9gFoOPWo1n2jMpcD/khKWrtWxYgwZStcSScgR8m5g9pIm1/ZzVDZ2frk3/HAFqOKlLKKC3IbjTXhjlgS6H74STKnRXXrj6KpN7a3AA/i+jaiIBIsJcbmLOi+AdDzFJVr5YFrLr36O1WiQMp+sd79KMPQ82Ii/il5QHfXtZv+Dg9FRiUvtmOpFEiLPVRq1MhvZ4rsquj08Q1nFC6A5l26BhoC4BSg1KdwUaRJBbB5Dp43k62mJ+/tV22wZN+3srOeBZxv1MO2TKoiIz6qgAvv/O8YlkUVeeV4E3PA94MPYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zUSudDcSoiRbSlYKGQwPNsObuJeXAj1guZevQEEjBH8=;
- b=ELxPwn1cx1qOawukt9welx3mhkbWiM/3+SFk1qeLL2IDEjKDAniI8tzDz4zfHu2PhcwG6O8mYcnHOK/9dn1lbBBYX5pgSNO5JCxV7wIelgtZcoeivipBygFwyU9pA6IyzotcpV9qWQJph9aNZOWgU6lkIxM7o5PruXyoFfGyovfCXL4iPjmezAGQJZSibFN5ArYSF1xNKlXCCM88V6OaCNI6eEwP6zlDMWJOH8b+pqHlz5mxPGhYnqc91EL3gfUDHZx1MZ+vasph485ZHpxVrgs3yRP9kHBNC/agMpacG5T1/HafhiZIatbDROJLOrpd4Vzz6nf/adWm/KozMNrB8w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
- dkim=pass header.d=suse.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=suse.com;
-Received: from AM0PR0402MB3395.eurprd04.prod.outlook.com
- (2603:10a6:208:1a::16) by AM0PR04MB5154.eurprd04.prod.outlook.com
- (2603:10a6:208:c4::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4778.17; Tue, 14 Dec
- 2021 17:28:32 +0000
-Received: from AM0PR0402MB3395.eurprd04.prod.outlook.com
- ([fe80::488f:35ef:e500:1a94]) by AM0PR0402MB3395.eurprd04.prod.outlook.com
- ([fe80::488f:35ef:e500:1a94%3]) with mapi id 15.20.4778.018; Tue, 14 Dec 2021
- 17:28:32 +0000
-From: Petr Pavlu <petr.pavlu@suse.com>
-Subject: [PATCH] hw/intc/arm_gic: Allow reset of the running priority
-To: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Message-ID: <771c599a-3ea5-8d59-909a-05f127c8ff0e@suse.com>
-Date: Tue, 14 Dec 2021 18:28:31 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: AS9PR06CA0211.eurprd06.prod.outlook.com
- (2603:10a6:20b:45e::15) To AM0PR0402MB3395.eurprd04.prod.outlook.com
- (2603:10a6:208:1a::16)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mxXmF-0004ft-TO
+ for qemu-arm@nongnu.org; Wed, 15 Dec 2021 12:09:15 -0500
+Received: from [2a00:1450:4864:20::32f] (port=56107
+ helo=mail-wm1-x32f.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mxXmE-0005lm-7R
+ for qemu-arm@nongnu.org; Wed, 15 Dec 2021 12:09:15 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id p18so17071914wmq.5
+ for <qemu-arm@nongnu.org>; Wed, 15 Dec 2021 09:09:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=MbZ995HH6h+XNE8SuFHfoy0WgztGZQ4Rc3McDP1f+fA=;
+ b=M1lcfZdZ4qBu5clYaaPQkmbYMldU3t8cj1bond67Kx5aOVFj1H6V7WKonkoQjz4hPO
+ KTwxRLHBRx0rdip1yiBzVbP3CZPrgV8vB9FYC4/DNeeX7mQ/8HG5I8SDpReBd3Ng02VY
+ vW8w9knoorU/lPeJLl2hI7UWfzlRdOI49ojH90b1hPqyI9XndOV0vpaR++2zQ2XnzcHw
+ zLxlBGxggEZlNfO4aMmv6v9pLA6bQ7TV1s/n6RQ2Uwc9dB4h+kC6e2zFwA3isTf3RV6k
+ CtgrAndTEimF0qMMRxxgDIwU/voJ4VJuF/D5fkEhbWIgkzOqoMZ9/AYeJCe78BcSDlVG
+ s4Eg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MbZ995HH6h+XNE8SuFHfoy0WgztGZQ4Rc3McDP1f+fA=;
+ b=ZiQwD3ii2eZve1O4K1CeVwBS407YGUU6OhwZHXKFu1ZJ3jgcjXZEbytzKjwNpSg2Bx
+ jGyV4mWrxIDB5hzIHjP1v39dQTQVESZlnFOseVp7m8iUlUU/r8cg6HBqkJ9X9gcuKAOj
+ YdK4XAaGFwi1plKaAb35B1mFVT+ZZ1R/6j6nArmtnSx43EDUWwn2fs6vgJqf4OwVU2Ld
+ wSQ7y5sJliBnP3OEzklnArL7EoSVzpl6ZGcvTXe+protjk61mpA3JW8/Ysjmesyz4Mb8
+ 4cGP3c8BIbl4Q3m2kPHl4q+pn2bqChAKpK/ZUb4MiKYxobXw28S6l4iAZs2yldevQpZw
+ BJcw==
+X-Gm-Message-State: AOAM531k7ofQCGDXClZoGuqJQGXYN+41ppoULlBKtMstB41QC25eUUS6
+ jGhPNe/9j4iNuYb3KzUOiMC8PbcnSIku02fMhZCs4g==
+X-Received: by 2002:a7b:c054:: with SMTP id u20mr833545wmc.133.1639588152298; 
+ Wed, 15 Dec 2021 09:09:12 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: e4d3357f-a6d2-448e-0b19-08d9bf2726c2
-X-MS-TrafficTypeDiagnostic: AM0PR04MB5154:EE_
-X-Microsoft-Antispam-PRVS: <AM0PR04MB51542E47984BD4761F6872C8E6759@AM0PR04MB5154.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:2449;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: PL2owmKtiFWMAhExTeGGeGWcEJ59NA2I8Ef8Lfy6GC+RJ4oqBBT7Chx50H8yg0Qq8a7vCMnpAqqc/MNu/vWM+5NISu9k9L5SrWKTGRW9uq1VtAfUVfUUlpEVuyaeJCGA4GQDfL2sh4cXIJ0Vm9sglYuKH+bFX25HY4v7xK/d9brh3S0toYcrdoVeepV1IMdO+RaxIxhgH/OFVwVNgdJskuZQVjM+NVy8Ea18Ok9pVtEq3PypUQqTiYUUEqrMFFL/eq0Rp7hJFbbqM0Lif9iZWzHT/cCIJ/w5jtuGjqohO/Y1PdfN+UiWZ68RuBwxnwYM8GAyJNBSbOHFApbUgwZk2quDoGeS9Om/hstFUXHAyYiw0ofY2JhMRGEIM0LOaircqdAwuypwff/2CwKxASIhKPFZs+wsy/WKwHqKAE+8wjj02Emo20dSj/w644nGmrhFkMcFrwQeSFVTKpkyOCMOLYlU1qw9yt3FspFU/U0kpFoR+oapDjlrn5JEmkgmHSq42jZrMG2imSUfGAAtXq0FRJtbza6LL7H0iV95BbFuoOXwdcyeyoY1l/cnBf4rBTOQysrjdu+pzI6CisGimizCgyyG5SttWTvmIeTEI1p+cyDWP5jw3FRkR/MXd/Bl/LwG1GW/v6t+dHFybp9gB/JHN1XgGHSfCRRDRLQUcFs7cJFK36edAysQSUWxxReVDAgSJr6WwbREeuSYLFHIVDB0TuQlR8tsLjoef0sShQFsL18=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM0PR0402MB3395.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(66476007)(5660300002)(2906002)(316002)(44832011)(66946007)(31696002)(508600001)(66556008)(31686004)(36756003)(8936002)(8676002)(86362001)(6486002)(6512007)(186003)(2616005)(6506007)(26005)(38100700002)(45980500001)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?elBXNU5CYStxbXdOVHc1d0d0UVh0ajJvWnlWOHJSb0pWSlBxUFEzZHExMjNQ?=
- =?utf-8?B?OCtSa1NxRHZxRFRSaHJIZTJ4ZmozdWVKaW1sVVVoWFdMKzVlMHEzSENhRHNh?=
- =?utf-8?B?ZDN6dVFQRFAvM3E5cDdFa0xBTG03WWJac0xpQUg1QUVtWFpiR0NRTDlCd2Fp?=
- =?utf-8?B?LzZvM2d4OEpGdkdsNWFibnVEa0hUMFFzY2JRWkdJWE5DQ3QybHpHNVRaTUly?=
- =?utf-8?B?dHV6azU4K3hPaUNWRFE1RUpEZzYyc3RhRnhkaW1iYXRicDA0NE5xSFZhUjQ0?=
- =?utf-8?B?bzVWd0ZwWXpaNEZ3aVkvNzFxcDNZSTdLQW5EcEtsRG81TVpUMVMwL3lZM24w?=
- =?utf-8?B?bkdBN1Q1cUxlUDR4NXMwcUdnQVlYRTBObEpOTVV6V21iYTd4RytndStBT0po?=
- =?utf-8?B?cWtnMENaMTZodDdrdVhwM0xuMTAvQ3JKNmlyUVdlalJPM0p1VEUrdFVKaGd6?=
- =?utf-8?B?aVNiMEx4a1Z0a2Z3NzJpK2hOd0JVOHQyWjBtb0lhM0ZVQWRaQ29XRnM1U1Qx?=
- =?utf-8?B?bDNVOVlraHAzZ25BdjJVMUhGVDRRdWVPZXdXd1NSV3RmTlJYMlQ1SmhPMGZx?=
- =?utf-8?B?dTZTTFFnV0lENmplZXJRUUV5ZWxlTWYwV1NpdkNVbzFubzh0VVhLWHpVTm5x?=
- =?utf-8?B?ejlhVGo2ZDFlZFNmWmcvNlNhZG5FTnZ2cloyckdiWjF5TVVaSkcwSUdOWkVZ?=
- =?utf-8?B?UFRUS1lHYi9Rek9ZL21QSHBhKzlRblhOQ3JueTl2WGU1S3JoTkJjNng0eUdK?=
- =?utf-8?B?V0RYVE1EN2tFV094dldlbVpJU21vVGhDME5VbWxWUFd3VFAvWGJabXl2ODBQ?=
- =?utf-8?B?SExVTXVrSm5IVW53N3pRbzQ5SmxQODVoMUdKTVVKRzczNnVzOHNwdmtGNUtE?=
- =?utf-8?B?UkdyejI1ZUtZeW9uYzl4bWhEbGo3blFKdW1LVnNpdUZFbWNKWHl4V3B4SlBN?=
- =?utf-8?B?a3lSNnRDREphYUp6T2pueEFsbDdEN05FSkV5aXlvbkZZT3BhYXcySG9ScDVi?=
- =?utf-8?B?ZFhJaDFXNGRxanRRKzlPaFhHUHhpMktqZ0pUbzMxQjloTisxV0lHbE9HK2Jn?=
- =?utf-8?B?Qk44RUEyODJuZnlQMUEvTVd1dHdKbWNNR2pmMnVFb2FiNGRSejRUSnBCVHYw?=
- =?utf-8?B?TTZURXlKUVJpdTZyMkRlMGdGZFkwMVJjaHBjM2JWNURUbzZUcjh4VGMvenZI?=
- =?utf-8?B?RWZSYWIrZzN6Smw0ckxITjJQby9ML295L1hEbFhVczl0MG1TbUV5L1Zqa1Vu?=
- =?utf-8?B?YlJ3WEZBOU9JMlZ6RlJDS1ZSL0YyaGswdFJmYkxZV0VBYTg1R2JrUjZKeGpw?=
- =?utf-8?B?emhEa2ZCd1h6cEVzTlBIZThOSEh1dkVFRHJCcUdFeWVrSEN1dTVsSW1FY0pn?=
- =?utf-8?B?SWRqZmsraWhYbnNQbjF3RU5qclozOFlBS2F1VVBOLzd0bk9SU1pkSTFjcHA1?=
- =?utf-8?B?akZTZ0xLRHF6Lzg2bTNFb1FvNnJrQ3dQWG5GSmVPaENKZndvVHI2bUdZWkNv?=
- =?utf-8?B?bEJQNTRrSzNuMXBpL214blkraEpqTVBYamw5NzlNR1h6bk50QmNnVHBpekZk?=
- =?utf-8?B?ZnhXcG02SHdVUThaOEZIRjcxalRHcGc0Vjg2dU5idlVNbVlnSlVDYXlkQ0M4?=
- =?utf-8?B?eHQwbG9FaEVsUkgyeUwvREEvWXR2Q0ZvWGYxU3JkRmhWUGw5TVc3amgwRkVY?=
- =?utf-8?B?eVlKQUE4aFUyZFNxUWRQNEgxeWc5NndRVVhPVERuQjFjWWkxbFFkRnVaYVhn?=
- =?utf-8?B?N2lkelcybENVOW1FZ0V0SitMOXdTM1ZiTG1kTHcxZC9jNTVGaFE0WnZrVVRE?=
- =?utf-8?B?RStydUhkQVJ1ek1BUXJMNGJyc3BxUjUyMkNhYmJQYlJjQzN2MkxPa3NoMUFa?=
- =?utf-8?B?bDU2eFlYN2F5bGU5V0VkbVVWSWZwUmdKQTZ6VllDdGdQcFRTeHAyTnAyUEJa?=
- =?utf-8?B?WGpOT3N1Rnhta3owN0RmVy92SGtaQ0RVQ25hUlZka1hacDlBVmNHczlsSWp1?=
- =?utf-8?B?SnFFa3lVOVlSdk5vdTgvdTlOY05nUE5jTmJHOWlwYjU3eUcxU1NPTWdmc1lI?=
- =?utf-8?B?TEJGZVFsMHJDNmlhbWkydUJhUmF4QWVlRWNLaDJzSjJPNzhSaUV2TWhjU1Nl?=
- =?utf-8?B?MklhWHBLdlZ2Z0JOaFZTc2tDRFA3dDZoL2RjYUJ4NEJxTjJsaVFnQzFXVVg3?=
- =?utf-8?Q?+S8yaGCUXiV84SyR/PtZQ48=3D?=
-X-OriginatorOrg: suse.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e4d3357f-a6d2-448e-0b19-08d9bf2726c2
-X-MS-Exchange-CrossTenant-AuthSource: AM0PR0402MB3395.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Dec 2021 17:28:32.5476 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: f7a17af6-1c5c-4a36-aa8b-f5be247aa4ba
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qXX2HdaU5FiTv6g48QhfKOQmJ/avviTMpwuxNwrMEHqrlYT1ZVD57gzTxJ224CTiWhX/t/qnPmqKAS6z6R3USg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR04MB5154
-Received-SPF: pass client-ip=194.104.111.102; envelope-from=petr.pavlu@suse.com;
- helo=de-smtp-delivery-102.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20211215170548.20776-1-quintela@redhat.com>
+In-Reply-To: <20211215170548.20776-1-quintela@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 15 Dec 2021 17:09:01 +0000
+Message-ID: <CAFEAcA-94WxKObDZQn_XRaJ7SDBKvqgvqwPb3v3Uyg73rZepgQ@mail.gmail.com>
+Subject: Re: [PATCH] hw: Add compat machines for 6.3
+To: Juan Quintela <quintela@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32f
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 14 Dec 2021 12:35:34 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -188,71 +111,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <eduardo@habkost.net>, Thomas Huth <thuth@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, David Hildenbrand <david@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Greg Kurz <groug@kaod.org>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qRWZj40zjUTE
+X-TUID: 1ohI9sBcuDIQ
 
-When running Linux on a machine with GICv2, the kernel can crash while
-processing an interrupt and can subsequently start a kdump kernel from
-the active interrupt handler. In such a case, the crashed kernel might
-not gracefully signal the end of interrupt to the GICv2 hardware. The
-kdump kernel will however try to reset the GIC state on startup to get
-the controller into a sane state, in particular the kernel writes ones
-to GICD_ICACTIVERn and wipes out GICC_APRn to make sure that no
-interrupt is active.
+On Wed, 15 Dec 2021 at 17:06, Juan Quintela <quintela@redhat.com> wrote:
+>
+> Add 6.2 machine types for arm/i440fx/q35/s390x/spapr.
+>
+> Shameless copy of commit
+>         52e64f5b1f2c81472b57dbad255ab9b00302f10d
+> from
+>         Yanan Wang <wangyanan55@huawei.com>
 
-The patch makes sure that this reset works for the GICv2 emulation in
-QEMU too and the kdump kernel starts receiving interrupts. It adds
-a logic to recalculate the running priority when GICC_APRn/GICC_NSAPRn
-is written and implements read of GICC_IIDR so the kernel can recognize
-that the GICv2 with GICC_APRn is present.
+> +DEFINE_VIRT_MACHINE_AS_LATEST(6, 3)
 
-The described scenario can be reproduced on an AArch64 QEMU virt machine
-with a kdump-enabled Linux system by using the softdog module. The kdump
-kernel will hang at some point because QEMU still thinks the running
-priority is that of the timer interrupt and asserts no new interrupts to
-the system:
-$ modprobe softdog soft_margin=10 soft_panic=1
-$ cat > /dev/watchdog
-[Press Enter to start the watchdog, wait for its timeout and observe
-that the kdump kernel hangs on startup.]
+There is no 6.3 -- the next release (being next year) will be 7.0.
+Cornelia's posted an update-machine-types patch:
+https://patchew.org/QEMU/20211208170241.110551-1-cohuck@redhat.com/
 
-Signed-off-by: Petr Pavlu <petr.pavlu@suse.com>
----
- hw/intc/arm_gic.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index a994b1f024..2edbc4cb46 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -1662,6 +1662,10 @@ static MemTxResult gic_cpu_read(GICState *s, int cpu, int offset,
-         }
-         break;
-     }
-+    case 0xfc:
-+        /* GICv1/2, ARM implementation */
-+        *data = (s->revision << 16) + 0x43b;
-+        break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "gic_cpu_read: Bad offset %x\n", (int)offset);
-@@ -1727,6 +1731,7 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
-         } else {
-             s->apr[regno][cpu] = value;
-         }
-+        s->running_priority[cpu] = gic_get_prio_from_apr_bits(s, cpu);
-         break;
-     }
-     case 0xe0: case 0xe4: case 0xe8: case 0xec:
-@@ -1743,6 +1748,7 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
-             return MEMTX_OK;
-         }
-         s->nsapr[regno][cpu] = value;
-+        s->running_priority[cpu] = gic_get_prio_from_apr_bits(s, cpu);
-         break;
-     }
-     case 0x1000:
--- 
-2.34.1
-
+-- PMM

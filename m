@@ -1,204 +1,158 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5123565lfk;
-        Tue, 14 Dec 2021 03:05:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxsUcy8mp1o6Rng/gaInrhSmdCD4BNu6x3ZHvE42uWYISWUj3HSRQ63DW9lN3fGc0vKi59D
-X-Received: by 2002:ac8:7f43:: with SMTP id g3mr4917254qtk.127.1639479941145;
-        Tue, 14 Dec 2021 03:05:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639479941; cv=none;
+Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp39896lfj;
+        Wed, 15 Dec 2021 02:28:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwHZ+yARSd0C3fOycFurvDNiyCyrR+uPuS09cqFgBfmTolNW6nctJQzU3VeeS89Ieatn/m4
+X-Received: by 2002:a25:c512:: with SMTP id v18mr5975858ybe.124.1639564086172;
+        Wed, 15 Dec 2021 02:28:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639564086; cv=none;
         d=google.com; s=arc-20160816;
-        b=be+yeVfuT50Gp+0xkMjwHjEJe0AzprLUm4uasrjRYW5sru2f3f7honQhCd60hu5NQy
-         puKG8DFxe/IGh3CYxm7m5nll4ChvtfBrCq1TDpmuMo+KwRAAvRMK16g+QkZv44vmFidX
-         d29JvXv0r8Rd4W+a6710LVCDMHEpTGCu8KVwYgdIBuacAIzJMqwClqjwnF4C4nmYrKrJ
-         0eid+b93EjCi2EYI4OYqTvnl5aGyAa00oTxjJonpdLJ2KLjG6yVTymIWSXmisCNyjAtg
-         Cn98oLpBVFCwvYrYUjDvzTRGbOMJ51ZuBzNdwJxWif8DThh+NIj7exHpTNKkgurEu8hT
-         Tcsw==
+        b=o5s38jBc0s+mMVnrROzYzd0oHKSAuh8PEyBWGQ/UftR2+C8cf/aGFHWVkTcU/mT9aw
+         OqXs6tA+T+aVr9EYyd2dbjUCpi5QM6Ew4GZO59VHmjcomC9JazGCZmZvdKFaRvsfuEn+
+         qstd1q31DgK2DfLJE2j3GU03Qv+YYT0YcWqbJpnZ/M7Bu7gSBmusbehn/Y2LVbWvbtXO
+         Il0rgvz6yeqgYhcVLEstp7ehMfWmS65eM+xWRlOHjbIf5OqBttLCyLwR5DSPbA7PkEnx
+         AIjXMwmoMCCVOm+Jqyn7xEm/T0t7cGIBOdYpPbhjdmBMYuSQ355NL74QsgoFrzPdWr4X
+         P+bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:reply-to:precedence
-         :cc:content-disposition:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=S/RjWV3QYOkSlF39SYQHEFQlR7Rl5mClCORS0KmvnZg=;
-        b=uQ/U1cdAz4EY0ErUOwERYcXigX2+RWlbnyJCvRE5B5AtZks2tHdsK3Ex+49xqfk5/O
-         VNPWTTq4m9BcSCMauIyhRfySUQSygu+vl7PcwbimyoqI0H2OnLlWdttrPI9WEcaCiRaY
-         kehfIYFvtzfHXV9f2eQii9jUcatGgMn/hDqUHGUDXjFxcH6yLQy1E6SBXoASSgozDA0s
-         UOJhd/xWHtnXXWyfFQY91ygZyEpCxGD7pakN12OV5AU5Vm+zvsDxFEVjfXqU6Fd7rt8W
-         7/h691DIZqOFAzKdAGfNcq8VA/bH7rVeZWzDXJTyppQ/RQCtgvPG1PP3moWLhtNyP2/W
-         cL7g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=8l9DEKZEeBSB3HzgDS7e/xqnm2n2oYtGvqgXIqm6dPU=;
+        b=I1xTpORWsAcWQakAN1hb3PWjQXE9sIf1lMl8Ipea8P6FcqAWSAh9wlLb/M4KAQEOYy
+         69jzpWhREZdOrvRlLqoSBXrKlIRC0TsM0+M1UaMxrutx+uCvlG1l7DnH736ipu7B8BPD
+         bkv9fJbVdGIJaOEEGFvt1YpHRwNzfV01CtebE8WDU5Pn23xSb3tG7+KE5BFLVBdFVtkQ
+         qxfxHRxdUunxcEIZroDfSYVeeWughI9LAF+DgseG6ty9AgXbbZLkcal/bB9z1UPw+ksG
+         FM7DOVjKwO+f0EXdx5FivdwuuWzW3qFqhHypSfSQ155usSHnrjazQKK+tWV4tM6d3W5z
+         ZpaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=F7H2518P;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id p24si13006745qkk.93.2021.12.14.03.05.40;
-        Tue, 14 Dec 2021 03:05:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Y5Ftyt9J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c6si1549972ybb.1.2021.12.15.02.28.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 15 Dec 2021 02:28:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=F7H2518P;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id CD2934B11E;
-	Tue, 14 Dec 2021 06:05:40 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.209
-X-Spam-Level: 
-X-Spam-Status: No, score=0.209 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_LOW=-0.7,
-	T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id D3o86D2gqe+m; Tue, 14 Dec 2021 06:05:39 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 93E994B1FA;
-	Tue, 14 Dec 2021 06:05:39 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 98DDA4B11E
- for <kvmarm@lists.cs.columbia.edu>; Tue, 14 Dec 2021 06:05:38 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G-2qsjxjoH8w for <kvmarm@lists.cs.columbia.edu>;
- Tue, 14 Dec 2021 06:05:36 -0500 (EST)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 9DBEE4B10A
- for <kvmarm@lists.cs.columbia.edu>; Tue, 14 Dec 2021 06:05:36 -0500 (EST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1639479936;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=p/WREcM0SvRtkUuJZM05/oyj5S+0OHpsIu7XRvLVKgY=;
- b=F7H2518PJ+yMYvQBx+IuB04wGljxXaNynI4m6g/9r8FF4XnvMXqIm7TKcL5yHhZ3SPADDU
- LadrDAl4tIOiWk8hEdQmevPprhkth/qhkwZM7/jY7kT2foGJ9BxSpY8Kmo7R0AQ+CwHAQd
- 02JzXiTyvkYCbZNu/oMgKlF6tP1ZhJc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-178-6JESUqWwM-6bLiXMtpKYKw-1; Tue, 14 Dec 2021 06:05:33 -0500
-X-MC-Unique: 6JESUqWwM-6bLiXMtpKYKw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EEC42801AAB;
- Tue, 14 Dec 2021 11:05:31 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.194.122])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B071B1972E;
- Tue, 14 Dec 2021 11:05:17 +0000 (UTC)
-Date: Tue, 14 Dec 2021 11:05:15 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Qu Wenruo <quwenruo.btrfs@gmx.com>
-Subject: Re: Libvirt on little.BIG ARM systems unable to start guest if no
- cpuset is provided
-Message-ID: <Ybh6a7/I1RXlJmHI@redhat.com>
-References: <70a2f7d6-5ac1-72df-4a88-b1a662d07070@gmx.com>
- <32bb61a9-0938-d254-0453-18a108bc4b63@redhat.com>
- <1dc0403b-c61b-b04b-e7fd-f2d66276ba7b@gmx.com>
- <CAFEAcA-URrpy3w3AtDb8zVfq8fWxvQ8_jtSqEkaeb=3KE99oAQ@mail.gmail.com>
- <87lf0ojvq2.wl-maz@kernel.org>
- <aa407ba2-e9c4-882e-a085-91e7dd724f78@gmx.com>
- <87fsqvjzs5.wl-maz@kernel.org> <YbhzuKQLByleh3T8@redhat.com>
- <8693375e-6f29-16f4-4fa4-2fd79a00ebd0@gmx.com>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Y5Ftyt9J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34612 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mxRW1-0004ba-Hl
+	for alex.bennee@linaro.org; Wed, 15 Dec 2021 05:28:05 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36824)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mxRSs-0000jg-M6; Wed, 15 Dec 2021 05:24:50 -0500
+Received: from [2a00:1450:4864:20::335] (port=43581
+ helo=mail-wm1-x335.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mxRSq-00062D-VP; Wed, 15 Dec 2021 05:24:50 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ o19-20020a1c7513000000b0033a93202467so15600278wmc.2; 
+ Wed, 15 Dec 2021 02:24:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=8l9DEKZEeBSB3HzgDS7e/xqnm2n2oYtGvqgXIqm6dPU=;
+ b=Y5Ftyt9JKwhcHR/i+0gJDq6PRL56pxz7k6FN/r+FruVyMNR+gQxYzoa1SXrbwfusVr
+ gW4L5TE0EPLdu+ayXFjYelE+khWnm4T5Uj4H4Z5kZPOFbfnDkWFtFahUSOt2TVjjg/iW
+ y8CVhhBjntW/AunKMCksTItEhe7FmdJQWgvEzN99WCP91bBcI34inRHWdTCzhVSCMLcW
+ cuYhCKRLTO9lEH6Mpncp3VZsAtD+g6PLF1MY783HksYl9Fsut2izF5c+wfKy+U1jS0CR
+ N5Ouh9elqeSY8SZcKOGIHln9MyV1NCyEB577stA8LytCM3UyYELgarE4ofSInC4z57IH
+ FuQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=8l9DEKZEeBSB3HzgDS7e/xqnm2n2oYtGvqgXIqm6dPU=;
+ b=BOS0M7Nt2Nta8ZEaNmGizNdtZnZbI+x6k2LGEF4rfzESPjAYYmxrJ+LOXcP5HZxxpZ
+ zvREAadLbJ9/MkPEnbfXkhzSez6P5vLNdvqLopwy2znZwP4X+cWxgqmWlQ68H30CE7Ks
+ c/9ERmnCuLseAaixMeYVpt+MiO0nt7EIwaloKqymwhUUWz+0X3yfFQAVvmkCwaWqFDsI
+ lCTSC2kITiSrFS/oVv2KZNhcbL0Qe9ioeiht4RHIteFPciJYRrC8rKdW2S4GDGfVNWFG
+ w6yNPtdxNc97RhO8vTtjIsSWKQp9ajp4cA+oa5DRhLY0FMMiPiZoNNWPbOdCEGhhKIgJ
+ looQ==
+X-Gm-Message-State: AOAM533pq5vyJo9USltCkPPfF/DylkNdEGj5lUDX3ZhkHc7UPZgamV1X
+ wEI4IsYTbQmpQZlaYJrglw/GYE6sgX4=
+X-Received: by 2002:a1c:cc0f:: with SMTP id h15mr1175262wmb.38.1639563886092; 
+ Wed, 15 Dec 2021 02:24:46 -0800 (PST)
+Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net.
+ [83.50.185.174])
+ by smtp.gmail.com with ESMTPSA id i17sm1577005wmq.48.2021.12.15.02.24.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 15 Dec 2021 02:24:45 -0800 (PST)
+Message-ID: <60230067-bf75-0352-d5d6-93529c03aa24@amsat.org>
+Date: Wed, 15 Dec 2021 11:24:44 +0100
 MIME-Version: 1.0
-In-Reply-To: <8693375e-6f29-16f4-4fa4-2fd79a00ebd0@gmx.com>
-User-Agent: Mutt/2.1.3 (2021-09-10)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-Cc: Michal =?utf-8?B?UHLDrXZvem7DrWs=?= <mprivozn@redhat.com>,
- qemu-discuss@nongnu.org, libvirt-users@redhat.com, qemu-arm@nongnu.org,
- Marc Zyngier <maz@kernel.org>, kvmarm <kvmarm@lists.cs.columbia.edu>
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH] hw/net/allwinner_emac: Replace MII_ANAR_TX ->
+ MII_ANLPAR_TX definition
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+References: <20211122105145.1053455-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20211122105145.1053455-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::335
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.64,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
 Precedence: list
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: e88NS+reMAWj
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+ Beniamino Galvani <b.galvani@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: P6Epb7TrnpeF
 
-T24gVHVlLCBEZWMgMTQsIDIwMjEgYXQgMDY6NTk6MTJQTSArMDgwMCwgUXUgV2VucnVvIHdyb3Rl
-Ogo+IAo+IAo+IE9uIDIwMjEvMTIvMTQgMTg6MzYsIERhbmllbCBQLiBCZXJyYW5nw6kgd3JvdGU6
-Cj4gPiBPbiBUdWUsIERlYyAxNCwgMjAyMSBhdCAwOTozNDoxOEFNICswMDAwLCBNYXJjIFp5bmdp
-ZXIgd3JvdGU6Cj4gPiA+IE9uIFR1ZSwgMTQgRGVjIDIwMjEgMDA6NDE6MDEgKzAwMDAsCj4gPiA+
-IFF1IFdlbnJ1byA8cXV3ZW5ydW8uYnRyZnNAZ214LmNvbT4gd3JvdGU6Cj4gPiA+ID4gCj4gPiA+
-ID4gCj4gPiA+ID4gCj4gPiA+ID4gT24gMjAyMS8xMi8xNCAwMDo0OSwgTWFyYyBaeW5naWVyIHdy
-b3RlOgo+ID4gPiA+ID4gT24gTW9uLCAxMyBEZWMgMjAyMSAxNjowNjoxNCArMDAwMCwKPiA+ID4g
-PiA+IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4gd3JvdGU6Cj4gPiA+
-ID4gPiA+IAo+ID4gPiA+ID4gPiBLVk0gb24gYmlnLmxpdHRsZSBzZXR1cHMgaXMgYSBrZXJuZWwt
-bGV2ZWwgcXVlc3Rpb24gcmVhbGx5OyBJJ3ZlCj4gPiA+ID4gPiA+IGNjJ2QgdGhlIGt2bWFybSBs
-aXN0Lgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBUaGFua3MgUGV0ZXIgZm9yIHRocm93aW5nIHVzIHVu
-ZGVyIHRoZSBiaWctbGl0dGxlIGJ1cyEgOy0pCj4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gCj4gPiA+
-ID4gPiA+IE9uIE1vbiwgMTMgRGVjIDIwMjEgYXQgMTU6MDIsIFF1IFdlbnJ1byA8cXV3ZW5ydW8u
-YnRyZnNAZ214LmNvbT4gd3JvdGU6Cj4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gCj4gPiA+
-ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gT24gMjAyMS8xMi8xMyAyMToxNywgTWljaGFsIFByw612
-b3puw61rIHdyb3RlOgo+ID4gPiA+ID4gPiA+ID4gT24gMTIvMTEvMjEgMDI6NTgsIFF1IFdlbnJ1
-byB3cm90ZToKPiA+ID4gPiA+ID4gPiA+ID4gSGksCj4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+
-ID4gPiA+ID4gPiBSZWNlbnRseSBJIGdvdCBteSBsaWJ2aXJ0IHNldHVwIG9uIGJvdGggUkszMzk5
-IChSb2NrUHJvNjQpIGFuZCBSUEkgQ000LAo+ID4gPiA+ID4gPiA+ID4gPiB3aXRoIHVwc3RyZWFt
-IGtlcm5lbHMuCj4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gPiBGb3IgUlBJIENN
-NCBpdHMgbW9zdGx5IHNtb290aCBzYWlsLCBidXQgb24gUkszMzk5IGR1ZSB0byBpdHMgbGl0dGxl
-LkJJRwo+ID4gPiA+ID4gPiA+ID4gPiBzZXR1cCAoY29yZSAwLTMgYXJlIDR4IEE1NSBjb3Jlcywg
-YW5kIGNvcmUgNC01IGFyZSAyeCBBNzIgY29yZXMpLCBpdAo+ID4gPiA+ID4gPiA+ID4gPiBicmlu
-Z3MgcXVpdGUgc29tZSB0cm91YmxlcyBmb3IgVk1zLgo+ID4gPiA+ID4gPiA+ID4gPiAKPiA+ID4g
-PiA+ID4gPiA+ID4gSW4gc2hvcnQsIHdpdGhvdXQgcHJvcGVyIGNwdXNldCB0byBiaW5kIHRoZSBW
-TSB0byBlaXRoZXIgYWxsIEE3MiBjb3Jlcwo+ID4gPiA+ID4gPiA+ID4gPiBvciBhbGwgQTU1IGNv
-cmVzLCB0aGUgVk0gd2lsbCBtb3N0bHkgZmFpbCB0byBib290Lgo+ID4gPiA+ID4gCj4gPiA+ID4g
-PiBzL0E1NS9BNTMvLiBUaGVyZSB3ZXJlIHRoYW5rZnVsbHkgbm8gQTcyK0E1NSBldmVyIHByb2R1
-Y2VkIChqdXN0IHRoZQo+ID4gPiA+ID4gdGhvdWdoIG9mIGl0IG1ha2VzIG1lIHNpY2spLgo+ID4g
-PiA+ID4gCj4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gPiBDdXJyZW50bHkgdGhl
-IHdvcmtpbmcgeG1sIGlzOgo+ID4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+ID4gICAg
-ICA8dmNwdSBwbGFjZW1lbnQ9J3N0YXRpYycgY3B1c2V0PSc0LTUnPjI8L3ZjcHU+Cj4gPiA+ID4g
-PiA+ID4gPiA+ICAgICAgPGNwdSBtb2RlPSdob3N0LXBhc3N0aHJvdWdoJyBjaGVjaz0nbm9uZScv
-Pgo+ID4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+ID4gQnV0IGV2ZW4gd2l0aCB2Y3B1
-cGluLCBwaW5uaW5nIGVhY2ggdmNwdSB0byBlYWNoIHBoeXNpY2FsIGNvcmUsIFZNIHdpbGwKPiA+
-ID4gPiA+ID4gPiA+ID4gbW9zdGx5IGZhaWwgdG8gc3RhcnQgdXAgZHVlIHRvIHZjcHUgaW5pdGlh
-bGl6YXRpb24gZmFpbGVkIHdpdGggLUVJTlZBTC4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gRGlzY2xh
-aW1lcjogSSBrbm93IG5vdGhpbmcgYWJvdXQgbGlidmlydCAoYW5kIG5vLCBJIGRvbid0IHdhbnQg
-dG8KPiA+ID4gPiA+IGtub3chIDstKS4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gSG93ZXZlciwgZm9y
-IHRoaW5ncyB0byBiZSByZWxpYWJsZSwgeW91IG5lZWQgdG8gdGFza3NldCB0aGUgd2hvbGUgUUVN
-VQo+ID4gPiA+ID4gcHJvY2VzcyB0byB0aGUgQ1BVIHR5cGUgeW91IGludGVuZCB0byB1c2UuCj4g
-PiA+ID4gCj4gPiA+ID4gWWVwLCB0aGF0J3Mgd2hhdCBJJ20gZG9pbmcuCj4gPiA+IAo+ID4gPiBB
-cmUgeW91IHN1cmU/IFRoZSB4bWwgZGlyZWN0aXZlIGFib3ZlIHNlZW0gdG8gb25seSBhcHBseSB0
-byB0aGUgdmNwdXMsCj4gPiA+IGFuZCBubyBvdGhlciBRRU1VIHRocmVhZC4KPiA+IAo+ID4gRm9y
-IGhpc3RvcmljYWwgcmVhc29ucyB0aGlzIFhNTCBlbGVtZW50IGlzIGEgYml0IG1pc2xlYWRpbmds
-eSBuYW1lZC4KPiA+IAo+ID4gV2l0aCB0aGUgY29uZmlnCj4gPiAKPiA+ICAgICA8dmNwdSBwbGFj
-ZW1lbnQ9J3N0YXRpYycgY3B1c2V0PSc0LTUnPjI8L3ZjcHU+Cj4gPiAKPiA+IHRoZSAnY3B1c2V0
-JyBhcHBsaWVzIHRvIHRoZSBRRU1VIHByb2Nlc3MgYXMgYSB3aG9sZSAtIGl0cyB2Q1BVcywKPiA+
-IEkvTyB0aHJlYWRzIGFuZCBhbnkgb3RoZXIgZW11bGF0b3IgdGhyZWFkcy4KPiA+IAo+ID4gVGhl
-cmUgaXMgYSBzZXBhcmF0ZSBjb25maWcgZm9yIHNldHRpbmcgcGVyLVZDUFUgYmluZGluZyB3aGlj
-aCB3YXMKPiA+IGlsbHVzdHJhdGVkIGVsc2V3aGVyZSBpbiB0aGlzIHRocmVhZC4KPiAKPiBXaGlj
-aCBhbHNvIG1lYW5zLCBJIGNhbiBwdXQgdGhlIGlvIHRocmVhZHMgdG8gQTUzIGNvcmVzIGZyZWVp
-bmcgdXAgdGhlCj4gQTcyIGNvcmVzIG1vcmUuCj4gCj4gQW5kIGlzIHRoZXJlIGFueSBwbGFuIHRv
-IGRlcHJlY2F0ZSB0aGUgb2xkICJjcHVzZXQiIGtleSBvZiB2Y3B1IGVsZW1lbnQsCj4gYW5kIHJl
-Y29tbWVuZCB0byB1c2UgInZjcHVwaW4iIGVsZW1lbnQ/CgpObywgdGhleSdyZSBjb21wbGVtZW50
-YXJ5IGFzIHRoZXkncmUgb3BlcmF0aW5nIGF0IGRpZmZlcmVudCBsZXZlbHMKYW5kIG5vdCBldmVy
-eSBzY2VuYXJpbyBuZWVkcyB0aGlzIGZpbmUgZ3JhaW5lZCBsZXZlbC4KSW4gZmFjdCBpZiB5b3Ug
-anVzdCB1c2UgJ3ZjcHVwaW4nIGFuZCBkb24ndCBwcm92aWRlICdjcHVzZXQnLCB0aGVuCmludGVy
-bmFsbHkgdHJlYXRzIGl0IGFzIGlmICdjcHVzZXQnIHdhcyB0aGUgdW5pb24gb2YgYWxsICd2Y3B1
-cGluJwpiaXRzZXRzLgoKUmVnYXJkcywKRGFuaWVsCi0tIAp8OiBodHRwczovL2JlcnJhbmdlLmNv
-bSAgICAgIC1vLSAgICBodHRwczovL3d3dy5mbGlja3IuY29tL3Bob3Rvcy9kYmVycmFuZ2UgOnwK
-fDogaHR0cHM6Ly9saWJ2aXJ0Lm9yZyAgICAgICAgIC1vLSAgICAgICAgICAgIGh0dHBzOi8vZnN0
-b3AxMzguYmVycmFuZ2UuY29tIDp8Cnw6IGh0dHBzOi8vZW50YW5nbGUtcGhvdG8ub3JnICAgIC1v
-LSAgICBodHRwczovL3d3dy5pbnN0YWdyYW0uY29tL2RiZXJyYW5nZSA6fAoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18Ka3ZtYXJtIG1haWxpbmcgbGlzdApr
-dm1hcm1AbGlzdHMuY3MuY29sdW1iaWEuZWR1Cmh0dHBzOi8vbGlzdHMuY3MuY29sdW1iaWEuZWR1
-L21haWxtYW4vbGlzdGluZm8va3ZtYXJtCg==
+Ping?
+
+On 11/22/21 11:51, Philippe Mathieu-Daudé wrote:
+> While both MII_ANAR_TX / MII_ANLPAR_TX have the same value,
+> the ANAR and ANLPAR registers are different, so technically
+> the ANLPAR register have to use the MII_ANLPAR_TX definition.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/net/allwinner_emac.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/net/allwinner_emac.c b/hw/net/allwinner_emac.c
+> index ddddf35c45d..3aed92b8f1a 100644
+> --- a/hw/net/allwinner_emac.c
+> +++ b/hw/net/allwinner_emac.c
+> @@ -50,7 +50,7 @@ static void mii_reset(RTL8201CPState *mii, bool link_ok)
+>                  MII_BMSR_10T_HD | MII_BMSR_MFPS | MII_BMSR_AUTONEG;
+>      mii->anar = MII_ANAR_TXFD | MII_ANAR_TX | MII_ANAR_10FD | MII_ANAR_10 |
+>                  MII_ANAR_CSMACD;
+> -    mii->anlpar = MII_ANAR_TX;
+> +    mii->anlpar = MII_ANLPAR_TX;
+>  
+>      mii_set_link(mii, link_ok);
+>  }
+> 

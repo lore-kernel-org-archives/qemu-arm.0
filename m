@@ -1,107 +1,125 @@
-Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp222102lfj;
-        Wed, 15 Dec 2021 06:50:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx0l+6IOGeAdguQu3hptezCoVdR9IzyFzz85AOUN3q2dadjCWg2lc7A0V1utPKUFtTVPJWl
-X-Received: by 2002:a05:6638:12d6:: with SMTP id v22mr6002518jas.6.1639579839299;
-        Wed, 15 Dec 2021 06:50:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639579839; cv=none;
+Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp76695lfj;
+        Wed, 15 Dec 2021 10:53:46 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz09YDg8JmM0LU7hLO7xHRK7pfMCZcPIF9vHFF7zqnb6Nak7hLdVbnrkLtCEP7DuRpSNXCC
+X-Received: by 2002:a25:b50:: with SMTP id 77mr8088968ybl.72.1639594426247;
+        Wed, 15 Dec 2021 10:53:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639594426; cv=none;
         d=google.com; s=arc-20160816;
-        b=yXTc1dmdMOH0CDtPGepdN6pnpeNCRwNUdr5sTNlLB4E2Q5KCWVYXO3/RJrrn7FPobm
-         5ffoezADlT+t6daGP2XLDwmpJ9IVZYjjCcsGLJgh8ghZn9+Q6gh/MeNhjszcFpqPeWPK
-         pW/LEQAvuWeX5dnuUbQ2tiAtSKy8oBDv7/qv9CiicQyuhA3U0TRFl+IoFPCqNMQEbqOf
-         HZlssPNkhEc963xeCpQG9JL2Ehb4D6UeRhx3k5w55FjL/0l4VMLr8Ms0ni2IMvX0d2tE
-         bBRz3r5OSpZBN4YrlC6SteR9KTVJtWbgdzDybvrk2NprHcflfzhf/zrhgZpJxVYju3WK
-         hoMw==
+        b=ufsRE3y1K43W/fF96y/T5bzJTfH/lyrI78s/GCgz08wSYJ1Y6ZuBZxy9luML8KKnf7
+         AdLE3ayqoRjc61S9fBIUYCz1w3YiDgrVnRsGmFoGulXyiWH2c7uvzfULABerg6B0llX6
+         lMUZmDMVkljx96RTXp0T6EHdaqym9sB9L9+8m/uzEpcYOiI4+zgPqKswtbtleoYyf/Je
+         L5W4/Bxgi1Hs3ALGheFTv9lhmB8FhaSoPwAF7E45uh85ROt751hwWXELuMKw2xCCioWd
+         bKZG5gkP9P/xAmyXyfi7cyoSusAQjLgpApF9D2MaE6ZfSYkbBTyYyV8qj9lrd1sQEBit
+         nvnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :message-id:date:user-agent:references:in-reply-to:subject:to:from
          :dkim-signature;
-        bh=3VDWlihgIQN1ahbyNL4iqIQ345qkWnfRwEmVyLliHxw=;
-        b=i4Pm+j4dS+Sn622CbeeSCXXBRIfOPLXxxDN5MBV6oyaTP9D5u9Iod+AXfzWgYxQV5E
-         MdnmeIdPqn/U3Z9My0Yh9E9gwh8UWWh6wVct3aM8U7vSG3ZzEIBpsm58bh6CIsM2bFNg
-         zSOcA/tUdaiuJvIULiNw7FaQ05FQlwxG+hK/eHXk5xADclOY63fGltG/U1vwkjvCjGyv
-         5MACemMtjl2H+nfykDsnSzcQmnBav26sOAHNBxxsxzBj4PSh15vnkVRkgCHxCvOLFx4E
-         Gw/i5vNajx54+cg0MVCgA3TU72ahUg63BeTPdZKKUHptdLsSlxtWrfjUS4CxHphqDUke
-         HWiw==
+        bh=Ho6C3mzkobyr0kkgBwGJf8ZVAFSV08hew1QHHDo/ey0=;
+        b=Dors0JVNyWu48O+QTz+5UA00L0HY/QOiYJCPj0E4jOZOpjKCgoOuPj2OEYy6iw/Mk0
+         4ak/iBieiBef5bkYllWhmKJ0g258tghdxoA3cS6zH3U6i0Cq4I165S6gU+AKUr1hdJvd
+         cW8IUAYQ2JILFw0aLWjh6r3e2+3TQfAO/IdD0pCRx6cBIECXIFIE+cTSM6boeJc5k0wT
+         xXJAGd+6iBMc7E9ULQ8JooYcYXhp7WWIp4XU6R2icoXrCSH+ls25xTBOWqI/nbAPwYVr
+         GvBhvFJbIY9oM3zdD//FOqMuvdEI2OtjHk1uEcnTfict2Hep7BXbWW8njeKgn4SJqVbE
+         dHMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b0cFVNnt;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Mz/tcLFz";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b8si649119jae.564.2021.12.15.06.50.39
+        by mx.google.com with ESMTPS id q206si2677906ybg.171.2021.12.15.10.53.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Dec 2021 06:50:39 -0800 (PST)
+        Wed, 15 Dec 2021 10:53:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b0cFVNnt;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Mz/tcLFz";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57538 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mxVc5-0005jf-UN
-	for alex.bennee@linaro.org; Wed, 15 Dec 2021 09:50:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43366)
+	id 1mxZPN-0002n5-Ib
+	for alex.bennee@linaro.org; Wed, 15 Dec 2021 13:53:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mxUrd-0000rc-KF
- for qemu-devel@nongnu.org; Wed, 15 Dec 2021 09:02:37 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:27645)
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1mxXqI-0004ux-Su
+ for qemu-devel@nongnu.org; Wed, 15 Dec 2021 12:13:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:28942)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mxUrY-0001SK-N8
- for qemu-devel@nongnu.org; Wed, 15 Dec 2021 09:02:37 -0500
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1mxXqG-0007F2-6d
+ for qemu-devel@nongnu.org; Wed, 15 Dec 2021 12:13:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1639576951;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3VDWlihgIQN1ahbyNL4iqIQ345qkWnfRwEmVyLliHxw=;
- b=b0cFVNnt2QCfoRv7H7EL4M2Lxl6R2AvgDBMqKmwgeJrIY50Oq1pYgpsqv0S5W1xcYIOoLt
- anHE2HWtx+UNz8Tl0rzatXheMHUM/iAcvlMsyt5MPeRvdAyKexwrdFQPqgYh3+WgslnRH4
- /DoDBaNO3qlWNx1M52jokFmgsPCMmUs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1639588403;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=Ho6C3mzkobyr0kkgBwGJf8ZVAFSV08hew1QHHDo/ey0=;
+ b=Mz/tcLFzbp6YFzXGYsjUmJFagi9wLiIXPuj+hb+/hKYs3zQCA1wMPwkVSXaxK325huk12Z
+ qmRV50iceaN56lNaxZV0RTYGbUoRidQIQtdj9eNdIVn7Oor13V5spo7EzuozQlOoQ+GR6U
+ pWOkPnAwUFVYQE1tyX22rrCB9U7LD1U=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-496-waxmmB28OwKyIKh1XTmD2A-1; Wed, 15 Dec 2021 09:02:27 -0500
-X-MC-Unique: waxmmB28OwKyIKh1XTmD2A-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 09B51101D60D;
- Wed, 15 Dec 2021 14:02:26 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-2.ams2.redhat.com [10.36.112.2])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id AB7B55BD07;
- Wed, 15 Dec 2021 14:02:25 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 6E9F11138224; Wed, 15 Dec 2021 15:02:22 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PULL 11/13] hw/arm/xilinx_zynq: Replace drive_get_next() by
- drive_get()
-Date: Wed, 15 Dec 2021 15:02:20 +0100
-Message-Id: <20211215140222.769652-12-armbru@redhat.com>
-In-Reply-To: <20211215140222.769652-1-armbru@redhat.com>
-References: <20211215140222.769652-1-armbru@redhat.com>
+ us-mta-421-3sSlA3idP9-0II8eLoU2EA-1; Wed, 15 Dec 2021 12:13:20 -0500
+X-MC-Unique: 3sSlA3idP9-0II8eLoU2EA-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ h12-20020adfa4cc000000b001a22dceda69so798026wrb.16
+ for <qemu-devel@nongnu.org>; Wed, 15 Dec 2021 09:13:20 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references
+ :user-agent:reply-to:date:message-id:mime-version;
+ bh=Ho6C3mzkobyr0kkgBwGJf8ZVAFSV08hew1QHHDo/ey0=;
+ b=GaGjWboZiLz+m4p4wZ5/7OQSBAVO7mpaHrpGQf+DYDJ/eRfltSnvALfGQ12wUfWwbn
+ bI7ICIEwP2tJX+YN7E4SblLLNBLR0DyQbgoVw/7C7Ev85tHoRk012qgrV/z03BR8xMhd
+ yvEuqwuY+I+XLxzb2lIM+eJBmtMmoMXnspiyzWZ3N3W+p38W3JIDji0RF/f5YFYMUH6T
+ Wf8akKD8stBh9TInmpQC1paE/cx6tinKNF8q4bbk9YKWKyA7JwxWKLDgfYeS1Uwet4Wn
+ 1dYZI/vs/A9K3KDewuAwmc4leAgXAQnyZw7AYpbIAnbapaX4GC2N8q7T+7E59podTWu9
+ Q49w==
+X-Gm-Message-State: AOAM532Bo4HA2qcgDInRNpgGN0MWKnMc1po4tbQ4Gkdk5vLptE59WIp8
+ uqAtTyqN0R3VEROWORFG2mbzch6Fpqoi0TKKdAq/weOMS0fxuyKyNdktlel4xb/eTAqDrWTtxAD
+ Jnh9RtxH3gMquZ6o=
+X-Received: by 2002:a05:600c:1f0c:: with SMTP id
+ bd12mr899467wmb.56.1639588399264; 
+ Wed, 15 Dec 2021 09:13:19 -0800 (PST)
+X-Received: by 2002:a05:600c:1f0c:: with SMTP id
+ bd12mr899401wmb.56.1639588398778; 
+ Wed, 15 Dec 2021 09:13:18 -0800 (PST)
+Received: from localhost (static-174-144-85-188.ipcom.comunitel.net.
+ [188.85.144.174])
+ by smtp.gmail.com with ESMTPSA id g18sm6848693wmq.4.2021.12.15.09.13.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 15 Dec 2021 09:13:18 -0800 (PST)
+From: Juan Quintela <quintela@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw: Add compat machines for 6.3
+In-Reply-To: <CAFEAcA-94WxKObDZQn_XRaJ7SDBKvqgvqwPb3v3Uyg73rZepgQ@mail.gmail.com>
+ (Peter Maydell's message of "Wed, 15 Dec 2021 17:09:01 +0000")
+References: <20211215170548.20776-1-quintela@redhat.com>
+ <CAFEAcA-94WxKObDZQn_XRaJ7SDBKvqgvqwPb3v3Uyg73rZepgQ@mail.gmail.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+Date: Wed, 15 Dec 2021 18:13:17 +0100
+Message-ID: <87tuf9yeoi.fsf@secure.mitica>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
 X-Spam_bar: ---
 X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.719,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,94 +132,46 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, richard.henderson@linaro.org,
- qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Reply-To: quintela@redhat.com
+Cc: Eduardo Habkost <eduardo@habkost.net>, Thomas Huth <thuth@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, David Hildenbrand <david@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Greg Kurz <groug@kaod.org>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q6Dsvoov1KBv
+X-TUID: RAkQa/nSiIx+
 
-drive_get_next() is basically a bad idea.  It returns the "next" block
-backend of a certain interface type.  "Next" means bus=0,unit=N, where
-subsequent calls count N up from zero, per interface type.
+Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Wed, 15 Dec 2021 at 17:06, Juan Quintela <quintela@redhat.com> wrote:
+>>
+>> Add 6.2 machine types for arm/i440fx/q35/s390x/spapr.
+>>
+>> Shameless copy of commit
+>>         52e64f5b1f2c81472b57dbad255ab9b00302f10d
+>> from
+>>         Yanan Wang <wangyanan55@huawei.com>
+>
+>> +DEFINE_VIRT_MACHINE_AS_LATEST(6, 3)
+>
+> There is no 6.3 -- the next release (being next year) will be 7.0.
+> Cornelia's posted an update-machine-types patch:
+> https://patchew.org/QEMU/20211208170241.110551-1-cohuck@redhat.com/
 
-This lets you define unit numbers implicitly by execution order.  If the
-order changes, or new calls appear "in the middle", unit numbers change.
-ABI break.  Hard to spot in review.
+Hi
 
-Machine "xlnx-zcu102" connects backends with drive_get_next() in two
-counting loops, one of them in a helper function.  Change it to use
-drive_get() directly.  This makes the unit numbers explicit in the
-code.
+Didn't see it when I was doing this.
 
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: Alistair Francis <alistair@alistair23.me>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Message-Id: <20211117163409.3587705-12-armbru@redhat.com>
-Acked-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- hw/arm/xilinx_zynq.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+I got confused with the version number on the tree.
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 69c333e91b..50e7268396 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -125,9 +125,10 @@ static void gem_init(NICInfo *nd, uint32_t base, qemu_irq irq)
-     sysbus_connect_irq(s, 0, irq);
- }
- 
--static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
--                                         bool is_qspi)
-+static inline int zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
-+                                        bool is_qspi, int unit0)
- {
-+    int unit = unit0;
-     DeviceState *dev;
-     SysBusDevice *busdev;
-     SSIBus *spi;
-@@ -156,7 +157,7 @@ static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
-         spi = (SSIBus *)qdev_get_child_bus(dev, bus_name);
- 
-         for (j = 0; j < num_ss; ++j) {
--            DriveInfo *dinfo = drive_get_next(IF_MTD);
-+            DriveInfo *dinfo = drive_get(IF_MTD, 0, unit++);
-             flash_dev = qdev_new("n25q128");
-             if (dinfo) {
-                 qdev_prop_set_drive_err(flash_dev, "drive",
-@@ -170,6 +171,7 @@ static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
-         }
-     }
- 
-+    return unit;
- }
- 
- static void zynq_init(MachineState *machine)
-@@ -247,9 +249,9 @@ static void zynq_init(MachineState *machine)
-         pic[n] = qdev_get_gpio_in(dev, n);
-     }
- 
--    zynq_init_spi_flashes(0xE0006000, pic[58-IRQ_OFFSET], false);
--    zynq_init_spi_flashes(0xE0007000, pic[81-IRQ_OFFSET], false);
--    zynq_init_spi_flashes(0xE000D000, pic[51-IRQ_OFFSET], true);
-+    n = zynq_init_spi_flashes(0xE0006000, pic[58 - IRQ_OFFSET], false, 0);
-+    n = zynq_init_spi_flashes(0xE0007000, pic[81 - IRQ_OFFSET], false, n);
-+    n = zynq_init_spi_flashes(0xE000D000, pic[51 - IRQ_OFFSET], true, n);
- 
-     sysbus_create_simple(TYPE_CHIPIDEA, 0xE0002000, pic[53 - IRQ_OFFSET]);
-     sysbus_create_simple(TYPE_CHIPIDEA, 0xE0003000, pic[76 - IRQ_OFFSET]);
-@@ -298,7 +300,7 @@ static void zynq_init(MachineState *machine)
-         sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, hci_addr);
-         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[hci_irq - IRQ_OFFSET]);
- 
--        di = drive_get_next(IF_SD);
-+        di = drive_get(IF_SD, 0, n);
-         blk = di ? blk_by_legacy_dinfo(di) : NULL;
-         carddev = qdev_new(TYPE_SD_CARD);
-         qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
--- 
-2.31.1
+Sorry for the noise.
+
+Later, Juan.
 

@@ -1,112 +1,175 @@
-Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp169395lfj;
-        Wed, 15 Dec 2021 05:43:10 -0800 (PST)
-X-Received: by 2002:adf:ec45:: with SMTP id w5mr4445567wrn.183.1639575790410;
-        Wed, 15 Dec 2021 05:43:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639575790; cv=none;
+Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp193113lfj;
+        Wed, 15 Dec 2021 06:13:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzOAzU/Dllkgh6wJj+Loh7ZFMtBms1CHY8FnHBs91vsCyUfCxTzcklYytKFn38xkq5f2qLG
+X-Received: by 2002:a05:6638:25ca:: with SMTP id u10mr5929561jat.327.1639577612759;
+        Wed, 15 Dec 2021 06:13:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639577612; cv=none;
         d=google.com; s=arc-20160816;
-        b=DalG4H0ntUk96x4f6lA1zuZIFsJFrvrZ9ADevFNZSXDPC39naS0nQTOy9xbEha2eVB
-         HNKJjjaHTkV1B96fLdHHM1sL6q882VKvZG/iv6danqKdgzgfcnUz6tzU53zaqoZrp38a
-         Q2ogs9DuhuDKi3S6YnYbGmwS47NNGclXcSsqp6bbbEqH9tWD3+LeP+vdlLq4yvxSJc2M
-         4HTCJmNlrX99Jz48ANJQdsA5CafK96RJ+l8LjUedymI+ZcvXk3Cujc8q1K7ME21Kbfku
-         bLX3F9XgVSBja1nTuWVCPVRboDRtrhCyX/qygnbxtBnUn3M+txLd73PPKVdbwlJTP3mq
-         d6KA==
+        b=bLeQJtRu2PyX7yLNquu4hZOh5U6PC+kpCe7C4o7lN8bzYK1u8YrTDk4PKxIIpAiXbu
+         T6AlaRvSD9kmpijZID/YYMeTraWrYFjvyEZUMJT1svjz4lixOnQWKeMho+ZyimoSBqWc
+         qCRRMVEG4PMtCLQFbuV0/vk4MOAyHGJEW4ASDQBjo7wKEJyHsAvzCuZ5k5jEHZGmPffM
+         XHUhpbX0e0PDcq0pdKdHDLV2JrlYuRp3PJPeLiu5OzIiqpiI1ZuiYFGLi7lDKaWQHuq0
+         rdykNz2pwsFfBB+6LZFQOgcTuId8cMKviXeK5jTP3CvryXcnGB5aNmGJqahElnaFJ6tl
+         sxYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=9nEdcr5p8OcHxve1Z5DC5oBdMvprAMYX5tTrlQkG1E8=;
-        b=llCBmObtp6aQ9Wr2qyMBCDCpdbkJ++ogfMVxFgEoxj+x+ao7+TCPr7tiS7rezC9AcB
-         9cdL4RDjsEq3aAgv8VsYRhV9l5Ug+CpZoxH2/zFxYFLDoYPnST3Wo8k/CRFsGZhT8VQ0
-         9dtlihibkQrwNTQj1MEl6iIYrk81+5TRfCEuPleu9IjHLVk1I+jVE+bBfBpAO48dv8hd
-         bom8lCH7+A6aLRsIW9htFgyA5sC3IDkPBMDSQjlJQsO4FxdiIbzsRamO8yi7U5QMzJJO
-         q62VFaXgX3SD0gShykD5z5QGoYLW41OAV8rlKJ6gvLv9tEJtn9V8wCfIMqgeA8ZRUJbP
-         U7kA==
+        bh=zwBr7DLX25Tdnq9A/wZL4KQ5ENSJgKkxMvK2leyMdfM=;
+        b=ib09s+Gt15vvjLW9CcuIk/4wWIhJsmmzgYXMbBezd7n6K3+Rs2FSeekD2WLCDSliH3
+         fK55f8EhXG3wuWhdinEHAxlvFrTOGTWi6A5YGIknhPsIUzC9kMFspfuXd62O6fMSBndU
+         yVkvnwmnkW/mhbijKWsHCdTi8YbGdPovw4g598dWcN32DU/dj69gZpVdRLSXqq4IyaJW
+         XWqVbnPje43b90df+DoYm5A559i6O8mQTV4sNikDPEU7bpLtTWhjEnwmfvEC8qyDKLPb
+         CoANzymj7uutX7i1d/RBG0BcoTMMJr7Mhf+jxEapb3eQeNhJdtmdJts2n84Ngmcd2CXU
+         yfCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k5nsBURW;
-       spf=pass (google.com: domain of ilias.apalodimas@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=ilias.apalodimas@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <ilias.apalodimas@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j18sor2827517wmq.29.2021.12.15.05.43.10
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=U1qgPanT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k10si686982jaq.510.2021.12.15.06.13.32
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 15 Dec 2021 05:43:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of ilias.apalodimas@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 15 Dec 2021 06:13:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k5nsBURW;
-       spf=pass (google.com: domain of ilias.apalodimas@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=ilias.apalodimas@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=9nEdcr5p8OcHxve1Z5DC5oBdMvprAMYX5tTrlQkG1E8=;
-        b=k5nsBURW0k2O5pBVlRPQYuFcXgIty+uBN5CKoxVY9lgwUjz1pmAHmHG9kDiVBiOvZq
-         zRbX+OpqWz/VJeGw8S1lJtef/xvnmYxtJEGVyPhuUlnDW7m0UQ56HCqZlmlzKYviBnKv
-         7hIjKHHiNIeNGvluYGdInwIG1W3lvqk4bvKaa/8qd7of19J9rpmbWLyAZXbazYkHRrn+
-         Rrg9HSKejq7b5EcJIFVmdpEbvMhNPZqD6qzE9M/WjZomUEgz5oJkHgijUi+o5ZUEL7My
-         CV3HCvE9lqrbhulLkL2qhyFOwQJCAQvO+YlyMXY7TL0nV+ww466cTHAX1OJnqwzIoJ8R
-         Qu6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=9nEdcr5p8OcHxve1Z5DC5oBdMvprAMYX5tTrlQkG1E8=;
-        b=BlxjkeUOt6fs6tphfOWTTkb1MxanbR+Q1NXnt/v77PREd7vzJBq94lEqFSlkF+ruPZ
-         ZtCMYl8r5AIeoaS4a6T+WjyEGdMC6e0/QQrycn1VSJKo1jtBJiJPHxP7T/BVl71RFbdf
-         Omg3u4dzj9idzqSiWhqKH4duHdjPCIOVVjfg2/mBkV/zIowcSFGtD5yy0uTp/AaFlRpm
-         v3sBP5PhV5MCc5BIYDN8i38t/YSePqrBdVmltNjf+ZB2HAUEDem/OjDUrGoHJqeuo6Fb
-         oSfA7DqCaNVeGAhGaaQyJBoxOtLrVTXNCssgFES93QIPspsJtRq81zpJ5JSZXUFzfYKY
-         +ONg==
-X-Gm-Message-State: AOAM533mwDQKrKhHkpkwa8l19blBTl8k045T8WLKTNSJ40u8GrgaHfVd
-	RA7XNNK3hG9qD2VYLhM4Id7JcsAjbp4n2n0e
-X-Google-Smtp-Source: ABdhPJzPyexGYnwdRdap/znx5OEHb+pRJO5tXSkPES0lYwvrRzNtXakaHDLsM1WCM4KRiy/cKOdhmw==
-X-Received: by 2002:a05:600c:2304:: with SMTP id 4mr1896406wmo.71.1639575790169;
-        Wed, 15 Dec 2021 05:43:10 -0800 (PST)
-Return-Path: <ilias.apalodimas@linaro.org>
-Received: from hades (athedsl-4461669.home.otenet.gr. [94.71.4.85])
-        by smtp.gmail.com with ESMTPSA id w15sm2038057wrk.77.2021.12.15.05.43.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Dec 2021 05:43:09 -0800 (PST)
-Date: Wed, 15 Dec 2021 15:43:07 +0200
-From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Jerome Forissier <jerome@forissier.org>
-Subject: Re: [PATCH] hw/arm: add control knob to disable kaslr_seed via DTB
-Message-ID: <Ybnw6+lOQPInzgqz@hades>
-References: <20211215120926.1696302-1-alex.bennee@linaro.org>
- <CAFEAcA_psjs5vaCZ06oU_OwSYorED4zgg+y-eD4nN5X2sRBVRg@mail.gmail.com>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=U1qgPanT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58716 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mxV2C-0006Cz-1y
+	for alex.bennee@linaro.org; Wed, 15 Dec 2021 09:13:32 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:43562)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mxUrl-0000zi-5n
+ for qemu-arm@nongnu.org; Wed, 15 Dec 2021 09:02:50 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:60386)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mxUra-0001TG-2k
+ for qemu-arm@nongnu.org; Wed, 15 Dec 2021 09:02:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1639576953;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zwBr7DLX25Tdnq9A/wZL4KQ5ENSJgKkxMvK2leyMdfM=;
+ b=U1qgPanT0qquzpDxjznr7wTfXTe4bDRrRI/UDo1k2FJS+cd+pnK9gCtU0l2Wa4PaoXMQfP
+ g7ayGdVDucoFUtoO/F2NI0RAcmu3eJKhK/B7uF7ZMguoe0HOGJwHeitD4Fa6dod5wF0rlk
+ 0vI5vzloFGCmgw72ucPnL0wLRSVG2hE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-31-FnXHfUbjPiG3NrdYWyF5cg-1; Wed, 15 Dec 2021 09:02:26 -0500
+X-MC-Unique: FnXHfUbjPiG3NrdYWyF5cg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 62FBC1934106;
+ Wed, 15 Dec 2021 14:02:24 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-2.ams2.redhat.com [10.36.112.2])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DBB295BD01;
+ Wed, 15 Dec 2021 14:02:23 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 5369B1138611; Wed, 15 Dec 2021 15:02:22 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 03/13] hw/arm/npcm7xx_boards: Replace drive_get_next() by
+ drive_get()
+Date: Wed, 15 Dec 2021 15:02:12 +0100
+Message-Id: <20211215140222.769652-4-armbru@redhat.com>
+In-Reply-To: <20211215140222.769652-1-armbru@redhat.com>
+References: <20211215140222.769652-1-armbru@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFEAcA_psjs5vaCZ06oU_OwSYorED4zgg+y-eD4nN5X2sRBVRg@mail.gmail.com>
-X-TUID: PS/Y/i8OBGRq
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.719,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
+ richard.henderson@linaro.org, Havard Skinnemoen <hskinnemoen@google.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: s7Yc29Oi+KST
 
-Hi Peter
+drive_get_next() is basically a bad idea.  It returns the "next" block
+backend of a certain interface type.  "Next" means bus=0,unit=N, where
+subsequent calls count N up from zero, per interface type.
 
-On Wed, Dec 15, 2021 at 01:36:07PM +0000, Peter Maydell wrote:
-> On Wed, 15 Dec 2021 at 12:09, Alex Bennée <alex.bennee@linaro.org> wrote:
-> >
-> > Generally a guest needs an external source of randomness to properly
-> > enable things like address space randomisation. However in a trusted
-> > boot environment where the firmware will cryptographically verify
-> > components having random data in the DTB will cause verification to
-> > fail. Add a control knob so we can prevent this being added to the
-> > system DTB.
-> 
-> Given that the DTB is automatically generated for the virt board,
-> firmware has no way to guarantee that it's the same every time
-> anyway, surely ?
+This lets you define unit numbers implicitly by execution order.  If the
+order changes, or new calls appear "in the middle", unit numbers change.
+ABI break.  Hard to spot in review.
 
-The firmware needs hardware assistance to do this. In order to have some 
-guarantees on the loaded DTB, the firmware measures and extends the TPM PCRs.
-In that case you'd expect the measurements to match across reboots assuming 
-the command line hasn't been changed.  The kaslr-seed is obviously a deal
-breaker for this. 
+Machine "quanta-gbs-bmc" connects just one backend with
+drive_get_next(), but with a helper function.  Change it to use
+drive_get() directly.  This makes the unit numbers explicit in the
+code.
 
-Thanks
-/Ilias
+Cc: Havard Skinnemoen <hskinnemoen@google.com>
+Cc: Tyrone Ting <kfting@nuvoton.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Message-Id: <20211117163409.3587705-4-armbru@redhat.com>
+Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+---
+ hw/arm/npcm7xx_boards.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index dec7d16ae5..d8a49e4e85 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -84,9 +84,9 @@ static void npcm7xx_connect_dram(NPCM7xxState *soc, MemoryRegion *dram)
+                              &error_abort);
+ }
+ 
+-static void sdhci_attach_drive(SDHCIState *sdhci)
++static void sdhci_attach_drive(SDHCIState *sdhci, int unit)
+ {
+-        DriveInfo *di = drive_get_next(IF_SD);
++        DriveInfo *di = drive_get(IF_SD, 0, unit);
+         BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
+ 
+         BusState *bus = qdev_get_child_bus(DEVICE(sdhci), "sd-bus");
+@@ -374,7 +374,7 @@ static void quanta_gbs_init(MachineState *machine)
+                           drive_get(IF_MTD, 0, 0));
+ 
+     quanta_gbs_i2c_init(soc);
+-    sdhci_attach_drive(&soc->mmc.sdhci);
++    sdhci_attach_drive(&soc->mmc.sdhci, 0);
+     npcm7xx_load_kernel(machine, soc);
+ }
+ 
+-- 
+2.31.1
+

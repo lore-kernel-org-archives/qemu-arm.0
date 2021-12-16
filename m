@@ -1,101 +1,105 @@
-Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp527409lfj;
-        Wed, 15 Dec 2021 22:51:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx77aWY4az2kdDm0exUO9sp2EPa4zU57K8yiL0JcA6OR6lR92qYfAXbrIx8capWFSYB3/r6
-X-Received: by 2002:a25:2d3:: with SMTP id 202mr10931667ybc.111.1639637490010;
-        Wed, 15 Dec 2021 22:51:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639637490; cv=none;
+Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp527424lfj;
+        Wed, 15 Dec 2021 22:51:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwjTxyADbOhWEZotur79tMB7pg+I+9XraBgPUAuSr6RCgW/tRj+j2iieM85bRNXihfFLJDg
+X-Received: by 2002:a25:245:: with SMTP id 66mr11345058ybc.285.1639637491928;
+        Wed, 15 Dec 2021 22:51:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639637491; cv=none;
         d=google.com; s=arc-20160816;
-        b=UVEZUHB1UXMUBt/KYpDh1/of+0LpVvQSFbT1AcvrozE5RlTdOSm+4mb8nd//zkob5b
-         e/By2IiywYv00ZDXPYyOSwwbrrJcPSi0SO6YVelMjZPIoSId37iSEGtKSMmhIRhpiT7e
-         0R+APz0RDevHbURdJ3Q6tC4KS9DiFTUkllA5tcdwgV8leTgPkNzMChuxAGGs2bD3NQeb
-         Uu2Q9yJB3Bqh8s7P5IJ+wlaezJUxRUPpmDj/pdj5re2JlnVQUBDc/VINrRM8Bw7tI/LN
-         1MR90JTRJFSDQS1a7JkX7seuksLl3nXcjUew8W91PWmbQS9T9ArFzRrxnwq0VTK3mpgL
-         e9qA==
+        b=jqfSOWTnk10HC+UCn4FYKanqxKRC4g6ypNKQRBunYZmkx+6d3pBfM7E/7LlIGLzszA
+         ZnkUapVWrCWtQgXoZN1zwBHT/3bcL26cqTI7GVuYhUSd+Bv154vcITf5MteunmZJ12Pk
+         NGROfgr6PqsMhxAEWKJmkN0l7sgs1y1MRKpv8nkk1eLb05kGtblaBOWAGlbHTsuQgwEJ
+         mkp3T1WBbGOOj99pO4DO8+5ud5CkE1KlK9zlNhPDWyqBzgtr00NxpgsO339HmvUT+jmP
+         bPs6z9JxhRexXEIr/q8qEI/17MTWQIWpELuNLSvsS4uE9TP/Ht1mGYoJgSbo60t5GMu3
+         CI/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=MxuHWfF+qtg+SV+ywBQ12V6ZROfJi/YqNST0MAHC+Ek=;
-        b=q2ABCAR1WD2+Zys8A7HHi4f8WkvWJXGtFkb0CqQPmWt+RlTFxo0SA2zaDYcAIXTDHp
-         vsz/t384hs8OWOJZyGjUqSqF4FlYTIIHkkVmf2USqvokyJoE0WCZqx/uLGGkjHOQqgnX
-         T7jTf24L1NL3Ax/Cepf61BtTNLK1uDYHh4metC0+FilS9hYC0Cf9jdZdp8Ti0pVXF2N/
-         OyoF7Xryr+EULrPK84P+XOjPqfDiRj9yp+RP43/BewY8N2PKBWFUwoeG7UH98r/hT50G
-         B7EOEvWqF2EvCi0JsJ36gBtXi9xqd4Sar4jCFUWBfANMcXPauNF6/tFHEwxH0PRex1H2
-         HMaA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=G4VNIWE+grGyasSlHE22Jzb2u7dCewCAQ9WV4W7onhI=;
+        b=MlLX9O5xDmUWysX4LpWWJ76nqPL2vR+noYJStQp2G+9KP5jx8pNd9EQoOxVyK0puo9
+         7YHZ+pCM+jOXOzh2XDYg4+5jYSa/Sq/elZYQaj7rxzC0mX0X13DWtvdmwGxpaNecDKfM
+         iDFZwPZS56Z9VSq6PNhAKhqtValQaOO9a8jZmGkqVXektUOZvcYh90icO1IlXypg7QFy
+         hrEVI24Bn67qbq048B+T0K+bs+4VYfa5tr6MuZT1AwOwIA+maikovNWlanYpGXJ3OvWl
+         ljchokjU66yU92RbL5zOffDUjKOvXLYm6Der97ezbXAk7ynbNwWyr6janaZKLWO6dBaM
+         VZvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=G9a1JuUZ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=b0Ge3Q5D;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 133si3769136yba.506.2021.12.15.22.51.29
+        by mx.google.com with ESMTPS id y127si4683824yba.189.2021.12.15.22.51.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Dec 2021 22:51:30 -0800 (PST)
+        Wed, 15 Dec 2021 22:51:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=G9a1JuUZ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=b0Ge3Q5D;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43594 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43600 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mxkbw-0008D3-Qv
-	for alex.bennee@linaro.org; Thu, 16 Dec 2021 01:51:28 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41812)
+	id 1mxkbz-0008DC-8W
+	for alex.bennee@linaro.org; Thu, 16 Dec 2021 01:51:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bslathi19@gmail.com>)
- id 1mxkZB-0006LW-RX; Thu, 16 Dec 2021 01:48:37 -0500
-Received: from [2607:f8b0:4864:20::132] (port=40539
- helo=mail-il1-x132.google.com)
+ id 1mxkZF-0006Lj-HD; Thu, 16 Dec 2021 01:48:41 -0500
+Received: from [2607:f8b0:4864:20::d2f] (port=33546
+ helo=mail-io1-xd2f.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bslathi19@gmail.com>)
- id 1mxkZ9-0005PN-Ue; Thu, 16 Dec 2021 01:48:37 -0500
-Received: by mail-il1-x132.google.com with SMTP id l5so21325553ilv.7;
- Wed, 15 Dec 2021 22:48:34 -0800 (PST)
+ id 1mxkZD-0005Px-RO; Thu, 16 Dec 2021 01:48:41 -0500
+Received: by mail-io1-xd2f.google.com with SMTP id m9so33963506iop.0;
+ Wed, 15 Dec 2021 22:48:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MxuHWfF+qtg+SV+ywBQ12V6ZROfJi/YqNST0MAHC+Ek=;
- b=G9a1JuUZMLt/n1Z5ZtteS+Tl3TINv2KzVRQK/Vi2gm2y7EwIELBD143LbisMvfJdjs
- rrs1wICXTQGye80Pg6L/LoTp0fnW7tsSSB8fVVMXNTWlKQ8nz4fAmZAmP3Hd03drX4+W
- 0ZOLGvS39K/7zChCweRNAF2+QC+dHcE9HwQvLruO7YnUfhKC/2DQEhtLd6SsB944K6ag
- At/iN109eLg1bH+Ldb+ZniNwIINuvzSP8jRbzaMUCuK3bm6lRkwOEAHGZnlwZAntGtuM
- slQE30aPF2K71W2blO7FjS+ISVI8YeqdIgpt16R3nLGkM5h+pboCw7Zhqii/BwH9gvfq
- OSSQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=G4VNIWE+grGyasSlHE22Jzb2u7dCewCAQ9WV4W7onhI=;
+ b=b0Ge3Q5D5Roe+v7ulU3lxWDfLQrLBigA/h5+0hMQP6QnNxxaVc6jiAkAHNjouKEnF0
+ qreB/UwBnemS/9T11mzbYSPic1oXy6HKb6Oh94h+v8eKTexgY/hHp99aesNelNvxdK12
+ frah6r7UHgwGntJS0HI4qlmKrJ5efh1eQ2rys43satDgSOUR1mmtPh1ifnpWwF+Aj0Du
+ lp/9M4wwfA+WW1n0NTE6SzCeR+ax5eg8KOJ6nUP0XMUau1wW8OFvWeq3zl56F94gnaAG
+ j0FSvoZl8ehhDPH9RMcRvubUMK1MOutlVu4om7GYF/W7Vi0tENi9WDUlosGFI8WPtJTM
+ i75g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MxuHWfF+qtg+SV+ywBQ12V6ZROfJi/YqNST0MAHC+Ek=;
- b=IbIpdhBSR07hJwEyVlJOvQ1aHz1qk0zsdEoFNr9HMWCB+au/K2MtgQt2zoo9ouKvq4
- 25nJ2m+Y29Uq4qakCe00Yir3SB9xd6WUvPXWs9JStwuVYD2XHJWfzbad6harIuony70o
- KYAK9yiKLFqqBCvDNZUo+5di1pgiFCgEWVKEsudSuUNHqR8jSSM/6EUFwSkfr93MP0Fa
- n1uFO77SuWOaxAzlcpEfhSj9mLKaR/pOyXgv/yFxm8PkUSyst/AcKveMI9oq7POtw4SW
- rObbQMSPyskWpJTl0IqbNO+NxCHjmFIwCzEvFJuO8DqdqSWcuAjtozXW4jfdMcGDM2X6
- ZYGA==
-X-Gm-Message-State: AOAM530v+ceFKBQrVh5qewnwxuB4DzmWbuwl8LS9HBjltqTGJ6w67rH2
- hj0Qsdo5t6P6fdru/fkp7y5TpEtp13GPgQ==
-X-Received: by 2002:a92:c24f:: with SMTP id k15mr8622980ilo.280.1639637313953; 
- Wed, 15 Dec 2021 22:48:33 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=G4VNIWE+grGyasSlHE22Jzb2u7dCewCAQ9WV4W7onhI=;
+ b=7Pyo4DGShu8ZGgmYlZZLe/GtZDrscnG7ojTrBXkFEbGKfmpw06sig5uJTjwGWG4Lsp
+ SkxQhqohuyQ6NzC5Tj+EaLdNdMR+OukscmUjVBUrbWxg3URmIyqkdjyO/k6PPSd7//Dg
+ YScxRH+lQ0bRjJWWf1Rl4jG3/NckuhtKUqNQl4xYsfrjelbT5vBE01HCjpt9CP/HkC/4
+ qeP9bVWHvos1wMH0qd8T1V09YUImVO0+0gzo9dDUfdIVsa2K5s25YnbgrB7W3PcakOm3
+ Tm7RVb0mxJV3+M0YQq6P7/2ZkLsmxuiZ0evUsf3bXlCc3cs25pr0OMhdzWX8YS4Y13V2
+ niwQ==
+X-Gm-Message-State: AOAM533pkWQ5VJO2Y6FAdqSsDFHcDlhtrInW1wL2t/ykZPHZbgJZgEbA
+ f2bwvETajb3PV5f+FeMTgUUtbaFHbZwbaA==
+X-Received: by 2002:a05:6638:33a6:: with SMTP id
+ h38mr8373946jav.188.1639637317393; 
+ Wed, 15 Dec 2021 22:48:37 -0800 (PST)
 Received: from localhost.localdomain (s-30-204.flex.volo.net. [76.191.30.204])
  by smtp.gmail.com with ESMTPSA id
- t6sm2081650ioi.51.2021.12.15.22.48.33
+ t6sm2081650ioi.51.2021.12.15.22.48.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Dec 2021 22:48:33 -0800 (PST)
+ Wed, 15 Dec 2021 22:48:37 -0800 (PST)
 From: Byron Lathi <bslathi19@gmail.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
  bslathi19@gmail.org
-Subject: [PATCH v2 0/2] Implement Cortex-A5 and add to virt device
-Date: Thu, 16 Dec 2021 00:48:18 -0600
-Message-Id: <20211216064820.61342-1-bslathi19@gmail.com>
+Subject: [PATCH v2 2/2] hw/arm: Add Cortex-A5 to virt device
+Date: Thu, 16 Dec 2021 00:48:20 -0600
+Message-Id: <20211216064820.61342-3-bslathi19@gmail.com>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20211216064820.61342-1-bslathi19@gmail.com>
+References: <20211216064820.61342-1-bslathi19@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::132
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d2f
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132;
- envelope-from=bslathi19@gmail.com; helo=mail-il1-x132.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2f;
+ envelope-from=bslathi19@gmail.com; helo=mail-io1-xd2f.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -119,20 +123,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Byron Lathi <bslathi19@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jn746bbynagT
+X-TUID: Lzg0QBB7A/eb
 
-Patch 1 adds the Cortex-A5 to the tcg
-Patch 2 adds the Cortex-A5 as a supported cpu for the virt machine, and updates the documentation accordingly.
+Add the Cortex-A5 to the list of supported CPUs by the virt platform.
 
-Byron Lathi (2):
-  target/arm: Implement Cortex-A5
-  hw/arm: Add Cortex-A5 to virt device
+Signed-off-by: Byron Lathi <bslathi19@gmail.com>
+---
+ docs/system/arm/virt.rst | 1 +
+ hw/arm/virt.c            | 1 +
+ 2 files changed, 2 insertions(+)
 
- docs/system/arm/virt.rst |  1 +
- hw/arm/virt.c            |  1 +
- target/arm/cpu_tcg.c     | 36 ++++++++++++++++++++++++++++++++++++
- 3 files changed, 38 insertions(+)
-
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 850787495b..2384606ae7 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -50,6 +50,7 @@ The virt board supports:
+ 
+ Supported guest CPU types:
+ 
++- ``cortex-a5`` (32-bit)
+ - ``cortex-a7`` (32-bit)
+ - ``cortex-a15`` (32-bit; the default)
+ - ``cortex-a53`` (64-bit)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 6bce595aba..545bd2f958 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -195,6 +195,7 @@ static const int a15irqmap[] = {
+ };
+ 
+ static const char *valid_cpus[] = {
++    ARM_CPU_TYPE_NAME("cortex-a5"),
+     ARM_CPU_TYPE_NAME("cortex-a7"),
+     ARM_CPU_TYPE_NAME("cortex-a15"),
+     ARM_CPU_TYPE_NAME("cortex-a53"),
 -- 
 2.30.2
 

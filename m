@@ -1,116 +1,111 @@
-Received: by 2002:a19:791d:0:0:0:0:0 with SMTP id u29csp27095lfc;
-        Thu, 16 Dec 2021 01:04:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxxpIs8s92LJAoQrOnXzOYfpfsYS0IxcBf5axk3ZsOKe/HIIsBG1+OP8oZCdWajtMpmQAOo
-X-Received: by 2002:a05:622a:1195:: with SMTP id m21mr16015804qtk.514.1639645485437;
-        Thu, 16 Dec 2021 01:04:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639645485; cv=none;
+Received: by 2002:a19:791d:0:0:0:0:0 with SMTP id u29csp182941lfc;
+        Thu, 16 Dec 2021 05:01:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJymuHRxl57/sWp6S7gc36sm4y8h0o42a46hEYjzg2ylkvH7sC7u6pErD7iKt+nS5+6axkhb
+X-Received: by 2002:ac8:5842:: with SMTP id h2mr7049893qth.244.1639659665278;
+        Thu, 16 Dec 2021 05:01:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639659665; cv=none;
         d=google.com; s=arc-20160816;
-        b=kTY33Uyl2ngkbGa4470x4xyyCQRTmwGjZnqhXRJLsnESWbpFTDMwpuSV/Ik7qpI+qq
-         wvjoc2SKiCZILzs5BV5w2FC3J+V4hmupTzv+2i2M/vbl/89lbJzKuXRW9vLVboK3c03E
-         6ZsxtC1eTybjNCPy1WXvex+3x/lOZpaGDK449wGVcqOOQ+eT803+8lJ09d8A64gzjFj0
-         PN2/AihmDcx3E8RK4UUrdQOXU27DrzfGlNiGZfUmo0SqX4/e7sSesJnbdNNf7eN74Y/7
-         pTJLyPGvWbc6PQtJrFIweuHbjnr253j8b4aQiykSLRpTI8Rw7FEJ41YrzArBNmg/cPaW
-         fV3Q==
+        b=HBh/1j6Aqg+/W8eGDl0FCTrnwyfkgZq5FvUUTdLZPnRZFXIQztq7LT/UcVk0PCYTbD
+         EogzooO1MJyT+tLvDHkZ37algcKlqvr6OGUJtye1NzAlpzFUfNYq9aUY3AFSsUWTVaNK
+         Qowy1Xdokd2Cm/83Zo0q82HFnfMo7TgoWIP9+c8KM1O8podDIyz3r091riGubkjPSC+T
+         rEQYFpca2sa0Nd8fPrt2N70NZt+CDnU3F9YUm7Uote6tz4J9I8D6I6KlQIx6KTLjEFkr
+         QZjI89mQv3S54BUF5NmX0+0kLUH8O5Oue1HxTEaVATeBsTAWNIXB7mArOqOn2jEsL2XK
+         jUcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=1+3v+zkwduL2NmJ+TcTU219ReVWr0YctHxqV7Y/mxXM=;
-        b=Nbob+SltpaDzMmnozmoREtlRRXFKOSSyqls565efzlWHOGY6XxyfhcYm4dPh+qOMJC
-         gsYBs/EJRnbSkL3THpXTcXOYja6A+zoHc1xurexFSIPgABI77Hpc+y1B8mYvpK5IhH7D
-         h+ct9atY1vRIi1HjQojnTdZBhW7Mnf74MJJuwqcO7RBTLHMcvqytDceK14tXcrXxe4mH
-         5h9c6/BcCKRw2Wmc5dN6aWzN7Gd3lUw2DSzCjYOYjwI2OLVQ8OxAtgRLhsjVLbqTYVHG
-         Go0pvp7qfmF6QdT7yXBKNjyVl2+SIZcVkplKLRI8jrgKDsWKUlylj1To0NKgFBQBUvPz
-         lZ3A==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=NsGkgLg/FTwpFvrnErxAcsQIbF5SaAPwAKaBC1NuFFw=;
+        b=Jrk9oY2Dc3Ov8+19BVIOfH60nNuERz0qJ++yLG02k220aDAUB1FODA+ayMgyFdMwWB
+         QWiQkCqxB7HDfRe4EXsSklSzzxVt9hgrSEJQvcWXhQojnVZQZWYhdFD5ZMY4mYcZnV23
+         iuQHRJ8dAo/2z99I3gKlk1VBhfKOeWRwyHhLej/2s3XN/X4oIiGpXpZ4GUFCtTSAWLIl
+         DKkEqicXPytERbDcLcYsx6rlebzU6TT0VGn4lZcyyucg0Rv9TrXGqxCJ+dWKhijUujeE
+         huWrwaw3P+/ZaygpfQiMhniuCq9VDUYkD1MS0FKTsHTjPUhdKG3CFORP15wdTc2QVCwT
+         hfzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=jWlkMVq4;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=nDl8Choh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e10si2355586qte.316.2021.12.16.01.04.45
+        by mx.google.com with ESMTPS id f5si2596242qkp.253.2021.12.16.05.01.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Dec 2021 01:04:45 -0800 (PST)
+        Thu, 16 Dec 2021 05:01:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=jWlkMVq4;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=nDl8Choh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52156 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40864 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mxmgu-0002pK-W5
-	for alex.bennee@linaro.org; Thu, 16 Dec 2021 04:04:45 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38376)
+	id 1mxqNc-00072I-GZ
+	for alex.bennee@linaro.org; Thu, 16 Dec 2021 08:01:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54688)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mxmfO-0001Ls-G3; Thu, 16 Dec 2021 04:03:10 -0500
-Received: from [2a00:1450:4864:20::32c] (port=41633
- helo=mail-wm1-x32c.google.com)
+ id 1mxqJp-0004Hh-RL; Thu, 16 Dec 2021 07:57:10 -0500
+Received: from [2a00:1450:4864:20::332] (port=38714
+ helo=mail-wm1-x332.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mxmfK-0005f7-J0; Thu, 16 Dec 2021 04:03:09 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- b186-20020a1c1bc3000000b00345734afe78so352200wmb.0; 
- Thu, 16 Dec 2021 01:03:05 -0800 (PST)
+ id 1mxqJo-00022Y-5l; Thu, 16 Dec 2021 07:57:09 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ p36-20020a05600c1da400b003457428ec78so501757wms.3; 
+ Thu, 16 Dec 2021 04:57:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=1+3v+zkwduL2NmJ+TcTU219ReVWr0YctHxqV7Y/mxXM=;
- b=jWlkMVq4so/KaaXi5uUz5NDXYuMdAUOXewqjmDIjzetdKJ4EV9Xl2FBM9Ek+5LSAd7
- ctXTkJmLOVK1jQ7KbDR0dVtDOH8iMy64MLRW9JykEBBD+Z/Ouo1Y7IlxOa6iBUPymiMZ
- zc/R0GmlXTuxeCv2bzN0lbDX3zfRWmPRfSmPnjvJ6OSIb7hGZPPxfkcsOB2H1+aCjZLA
- qDufInuvA/ZqWWitJXucXRPuLSf9Fiv8X85SPoUMpEh46VPCqZyC8uPiJu48dPmBXzun
- tV5PrX5uRG8/iYQgoh5oi535reHXBg1yvF4WIoDVRAg0CZHcsP2FOWc90oOwhLLgLUqD
- dVnA==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=NsGkgLg/FTwpFvrnErxAcsQIbF5SaAPwAKaBC1NuFFw=;
+ b=nDl8Choh8DT97eJ2VeA9y9HQJGGeAEjn1LMwGajemIXC5ZW5O+A0B25sq7i4bqY7nY
+ ib8MEzxOYPx33ozpkfq9OX21ne1nhbve5128gPqHRrh4ff8J6UQXxx/plU2e4gopEpBI
+ DISI3sYU0eWhSiXQKEdgWwMSBswJHKUqtCPj6cW3JUZ/B055mXRVgpztvkUIrfKHA7Zn
+ ofcSUFeiAo9Do1QF/HM8tIQP4N3fGXWATv37VG3Jb7c/ZJ5mvw8Ox3f0oJ4e46H96AX4
+ G6U/75kuKLA2C3nnmVkoHlB8x+EGT1KBKt93Igs8yvLB+d17xUUZ+hVadkWedYfIwSK5
+ 64BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=1+3v+zkwduL2NmJ+TcTU219ReVWr0YctHxqV7Y/mxXM=;
- b=fIHMkx1KVyLMXxeluOK1fV3uJEVdcedEuFWTRy7blbuZQD+xL4lfuPXxcVwaZOggtY
- QmB1JvmEA6kEo+NcEMJh1lm/JbpjC6NKYiN9UljnC3izyyQKKApZJvqhTv3gngfFF2ZE
- fYIof3mHAO2xa3IoUdRNz1wE2DU3xaLvn+KPmBvYdJTlBHHLB6Vw29PwftQQm4u24wCK
- IQBCDT+7aqLnBh1Y3wTcbrSk9UA6jxgFE8K94oltBXdOpKy0WjGiyJ2V+qxcPY4VcdYx
- zpg1ODaMArQ2DHX9EIKDNlksgqmBOhur8aqOJQ0arqc3vN/rGzg+swbYUpQlGdyU2awz
- 7vtg==
-X-Gm-Message-State: AOAM533ZlvIvoygmZZoY3Ua4eE7AIlDO2BZdpWEziDEiaAYe68Eqk3ZX
- e2ggsU5UOkX+4vlRDPM31MjyWr+1Kqk=
-X-Received: by 2002:a05:600c:3586:: with SMTP id
- p6mr4010142wmq.34.1639645382863; 
- Thu, 16 Dec 2021 01:03:02 -0800 (PST)
-Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net.
- [83.50.185.174])
- by smtp.gmail.com with ESMTPSA id s22sm7348271wmc.1.2021.12.16.01.03.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Dec 2021 01:03:02 -0800 (PST)
-Message-ID: <e165b04e-f1c9-41a4-bd58-a2cbe8f980ae@amsat.org>
-Date: Thu, 16 Dec 2021 10:03:01 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [PATCH 2/2] hw/net: Move MV88W8618 network device out of hw/arm/
- directory
-Content-Language: en-US
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=NsGkgLg/FTwpFvrnErxAcsQIbF5SaAPwAKaBC1NuFFw=;
+ b=wau4pIHAj1p6oZvtkgIt1ZDbjAp9uIc6i2ZYaWOeyXKiJ4WKna46mMD9u946yawWyT
+ NMuH2ZfMGDMUQeQ0TqR22MJVuT0CjsICcCi3bg3vlNuHxJbnE9wY8h53hJxYD+/yqRGA
+ 2iAiDI4I+JGhlohwasj4cX3RahQsWlRWoxzz0vik3etSRfOhrWyAj0anAL4hBR4iofOU
+ K85eeh0HXyijp0bVq5j+Q/Lg7ZPg8YSHu5Xfj/F9EgL3ZB9y6He51hbmxDq/fpz7Xq58
+ 7RdxfEjGfQdh62eLjNdL9p5RhTzMgkCTk/y8FDd32vkqywmLKmNRFh6M65MGr0SR5Hcc
+ hdvg==
+X-Gm-Message-State: AOAM531k6c571olNxAFfB3m6w51tuHhzu5uLtFvIeg53Gco6omawcIOR
+ fIkCIB7PZGtAfmEWBWLyORBCh+jhhMU=
+X-Received: by 2002:a05:600c:4153:: with SMTP id
+ h19mr4989725wmm.142.1639659425651; 
+ Thu, 16 Dec 2021 04:57:05 -0800 (PST)
+Received: from localhost.localdomain
+ (174.red-83-50-185.dynamicip.rima-tde.net. [83.50.185.174])
+ by smtp.gmail.com with ESMTPSA id h19sm4771585wmq.0.2021.12.16.04.57.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Dec 2021 04:57:05 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-References: <20211216084530.698125-1-f4bug@amsat.org>
- <20211216084530.698125-3-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20211216084530.698125-3-f4bug@amsat.org>
+Subject: [PATCH v2 1/2] hw/arm/musicpal: Fix coding style of code related to
+ MV88W8618 device
+Date: Thu, 16 Dec 2021 13:56:46 +0100
+Message-Id: <20211216125647.805544-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.33.1
+In-Reply-To: <20211216125647.805544-1-f4bug@amsat.org>
+References: <20211216125647.805544-1-f4bug@amsat.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32c
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::332
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.034,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -126,48 +121,63 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>
+ qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hWKB0RmOO7AQ
+X-TUID: vcj6K/s+JTnl
 
-On 12/16/21 09:45, Philippe Mathieu-Daudé wrote:
-> The Marvell 88W8618 network device is hidden in the Musicpal
-> machine. Move it into a new unit file under the hw/net/ directory.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  include/hw/net/mv88w8618_eth.h |  16 ++
->  hw/arm/musicpal.c              | 380 +-----------------------------
->  hw/net/mv88w8618_eth.c         | 406 +++++++++++++++++++++++++++++++++
->  MAINTAINERS                    |   2 +
->  hw/net/meson.build             |   1 +
->  5 files changed, 426 insertions(+), 379 deletions(-)
->  create mode 100644 include/hw/net/mv88w8618_eth.h
->  create mode 100644 hw/net/mv88w8618_eth.c
-> 
-> diff --git a/include/hw/net/mv88w8618_eth.h b/include/hw/net/mv88w8618_eth.h
-> new file mode 100644
-> index 00000000000..65e880e0eb7
-> --- /dev/null
-> +++ b/include/hw/net/mv88w8618_eth.h
-> @@ -0,0 +1,16 @@
-> +/*
-> + * Marvell MV88W8618 / Freecom MusicPal emulation.
-> + *
-> + * Copyright (c) 2008 Jan Kiszka
-> + *
-> + * This code is licensed under the GNU GPL v2.
-> + *
-> + * Contributions after 2012-01-13 are licensed under the terms of the
-> + * GNU GPL, version 2 or (at your option) any later version.
+We are going to move this code, so fix its style first to avoid:
 
-These 2 lines are probably irrelevant here.
+  ERROR: spaces required around that '/' (ctx:VxV)
 
-> + */
-> +#ifndef HW_NET_MV88W8618_H
-> +#define HW_NET_MV88W8618_H
-> +
-> +#define TYPE_MV88W8618_ETH "mv88w8618_eth"
-> +
-> +#endif
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/musicpal.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index 2d612cc0c9b..6b5310117b8 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -309,13 +309,13 @@ static uint64_t mv88w8618_eth_read(void *opaque, hwaddr offset,
+         return s->imr;
+ 
+     case MP_ETH_FRDP0 ... MP_ETH_FRDP3:
+-        return s->frx_queue[(offset - MP_ETH_FRDP0)/4];
++        return s->frx_queue[(offset - MP_ETH_FRDP0) / 4];
+ 
+     case MP_ETH_CRDP0 ... MP_ETH_CRDP3:
+-        return s->rx_queue[(offset - MP_ETH_CRDP0)/4];
++        return s->rx_queue[(offset - MP_ETH_CRDP0) / 4];
+ 
+     case MP_ETH_CTDP0 ... MP_ETH_CTDP1:
+-        return s->tx_queue[(offset - MP_ETH_CTDP0)/4];
++        return s->tx_queue[(offset - MP_ETH_CTDP0) / 4];
+ 
+     default:
+         return 0;
+@@ -360,16 +360,16 @@ static void mv88w8618_eth_write(void *opaque, hwaddr offset,
+         break;
+ 
+     case MP_ETH_FRDP0 ... MP_ETH_FRDP3:
+-        s->frx_queue[(offset - MP_ETH_FRDP0)/4] = value;
++        s->frx_queue[(offset - MP_ETH_FRDP0) / 4] = value;
+         break;
+ 
+     case MP_ETH_CRDP0 ... MP_ETH_CRDP3:
+-        s->rx_queue[(offset - MP_ETH_CRDP0)/4] =
+-            s->cur_rx[(offset - MP_ETH_CRDP0)/4] = value;
++        s->rx_queue[(offset - MP_ETH_CRDP0) / 4] =
++            s->cur_rx[(offset - MP_ETH_CRDP0) / 4] = value;
+         break;
+ 
+     case MP_ETH_CTDP0 ... MP_ETH_CTDP1:
+-        s->tx_queue[(offset - MP_ETH_CTDP0)/4] = value;
++        s->tx_queue[(offset - MP_ETH_CTDP0) / 4] = value;
+         break;
+     }
+ }
+-- 
+2.33.1
+

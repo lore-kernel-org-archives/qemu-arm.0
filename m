@@ -1,97 +1,98 @@
-Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp544106lfj;
-        Wed, 15 Dec 2021 23:22:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwzbezRE8aYc5RK2wlmZAoARFL1DZMGEd7HErK8ZlUIfO5sGscaikjhbijPO9+0k+hg8RfB
-X-Received: by 2002:a25:25d4:: with SMTP id l203mr11995935ybl.228.1639639342571;
-        Wed, 15 Dec 2021 23:22:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639639342; cv=none;
+Received: by 2002:a05:6214:3f4:0:0:0:0 with SMTP id cf20csp1774305qvb;
+        Thu, 16 Dec 2021 12:04:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxM2VAuB68Wf8thC9kaDwKJKhhA4PABldLVkB1k7y7fVTNy7BYk+YzqRd/skRfzNfwFPrFG
+X-Received: by 2002:a05:620a:414a:: with SMTP id k10mr13512181qko.489.1639685075789;
+        Thu, 16 Dec 2021 12:04:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639685075; cv=none;
         d=google.com; s=arc-20160816;
-        b=WcrfT+/VHi7IL6bSwGOKPPqXXMD25F+RCs51NKaHyxPgqL6sQhscsUTd0CmhX2rEA7
-         SU3feRIyS1LXXP0sZdJjnPNEc83eXLwqKcxX9Lx7l0JDvP+BNY0iBYJPgeZ8OioAfseH
-         0dVIkE+dzyG6pk70B43lrOVEH52k8k9UxSLZH5uSgDlnn6iB6osd76wzJnMupYsjahCG
-         ieCRRWIuNyRw7RkRKmtpMtLWirYXCorQkH8+9Y94gyFryQhAzMWp7PGYdaCEhIJXdmMl
-         68EJHLMQk9OJCpl5VZl8pYiVV/cUTSujL4za8ade697LAngKm+13sU9Qg9oRPr+0wJu1
-         SvEA==
+        b=IZVO83Eha5cohKFLMm05tLbm62CkPv/KNw/CLtBnIItJIWBh348l2eqrfKzwMxvWPg
+         IOxSUJYBjxeIlK1dCKARlSa6PRteYWf/B+twoLbf7OWmBf/ADyu8B2DK1skagTCnDpGx
+         849E1LYHwwFS07XoSbAYf65tsLARH7MmTJKPn2RXjnsmW/Ohi9K7EoFyWquQf93p7270
+         oCwZhV/F/ZyzP4gMqmFPUGaX4QCfSo/4z1M7ZBh1W6Bj9WI9clf8VFvDuq0Ewkx5rKdY
+         KgxrU7UWZ2kAPLpzNlldnO2+WXqaqBaat5gXp23U4ymim36EEVVlSSxiZf9BigWfnQGn
+         muag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Dh5Crm266aQSyOAUnA6rnhNvPpKt3i62trG1VYUbqLA=;
-        b=Qlzify5W/Nelyhpu4LsrajUzWUkDpJg6dEg85Obgs4ZQROaL+SR7GkuHsE66KFZLd9
-         xWiOQvUsfoTW1/OzCMqZ+oH3edbs1Kq28WJ8QUhE/KVu9ImbTqAbTjY5PQYkRoQYhcUc
-         mRXLDEHlpCFRTgo+s/DoHFZkmDuoxIWQtTNmlX3bxhKx9P6Whg6zE5aEzbsaQFC9O9M7
-         SJvj6YLHxqxTgggtWK3LIr6Lf9tPoP4kqq/hRg7DGbAdlTpNzjb3M3soWBl5f62z3RgW
-         h3dLuoAyRMneTwPPtuTxUxcp0URq7rCUOcWZT8x4kr83bQPnGXyydSbnl66CvGFv/mYl
-         jXJg==
+        bh=KLxLm8TpKavGXoLgANwIbESUlYfyTO+539rjIefpqJ4=;
+        b=UhMl7x6mANjlwJRiS+3QSe01JKhGpQmHGVnpCBzOOI5bNEpCiHDyv97BTtePNA+6ec
+         4PSDsPJmSL1SE16LB6pvm3Cn5guJ9hZqvreIIkK/LySjBLMqLtbI8SKebeLHMu7X2nC6
+         9PPCSNf3zN5y6O3qFNGOIB4i8PIEOPt8x0CTPFSwo5tkQJOKvfEFFGQNyyij9gOYX4/9
+         2F1aUpFHD1cfZAs4nglSQkcVEQRKOPXoeYfWSFmEhWyG0Ow9xUlQDM0qLivSX1LInS/1
+         cgtuiSSC7DFqi1GV3dVAwO8A/IA7Rv7m3bVKgzaT5f0Knwf3CFBDIfJzQ1598/wV04pY
+         UfgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=aF6T4cjp;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=m6FlQJRd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s78si4857835ybs.816.2021.12.15.23.22.22
+        by mx.google.com with ESMTPS id bp20si2437313qvb.282.2021.12.16.12.04.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Dec 2021 23:22:22 -0800 (PST)
+        Thu, 16 Dec 2021 12:04:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=aF6T4cjp;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=m6FlQJRd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60008 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:50916 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mxl5p-0003l1-UC
-	for alex.bennee@linaro.org; Thu, 16 Dec 2021 02:22:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46604)
+	id 1mxwzT-00038H-8w
+	for alex.bennee@linaro.org; Thu, 16 Dec 2021 15:04:35 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58124)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bslathi19@gmail.com>)
- id 1mxl4p-0003kb-1l; Thu, 16 Dec 2021 02:21:22 -0500
-Received: from [2607:f8b0:4864:20::b36] (port=33720
- helo=mail-yb1-xb36.google.com)
+ (Exim 4.90_1) (envelope-from <abhijeetinamdar3005@gmail.com>)
+ id 1mxwxw-0000JH-7w; Thu, 16 Dec 2021 15:03:00 -0500
+Received: from [2607:f8b0:4864:20::f30] (port=40602
+ helo=mail-qv1-xf30.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bslathi19@gmail.com>)
- id 1mxl4k-0006rh-OL; Thu, 16 Dec 2021 02:21:18 -0500
-Received: by mail-yb1-xb36.google.com with SMTP id d10so62305148ybn.0;
- Wed, 15 Dec 2021 23:21:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <abhijeetinamdar3005@gmail.com>)
+ id 1mxwxu-0001dX-9o; Thu, 16 Dec 2021 15:02:59 -0500
+Received: by mail-qv1-xf30.google.com with SMTP id eq6so325792qvb.7;
+ Thu, 16 Dec 2021 12:02:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
- bh=Dh5Crm266aQSyOAUnA6rnhNvPpKt3i62trG1VYUbqLA=;
- b=aF6T4cjp4g+oeBLGOqzYH/ytTE4bEi/vWI1iz+wd7RmYzOucyId6kF21TnYizslpf+
- NyUxR6FXQsjr4I7a0wMh2Ow/6B1KrvNNcxLF4I2Hjjq9ayUgpZv+uIY9bO5kFDXBN039
- JM5wKC5pVjSgOiGDvYuexFbCpijDYc0DD2EdVgnDorsUusmOhRhC1Jm8lgrw9JyxDxrz
- Mt2FDwDnDxZuj3tR4UiPqUXiZ0eS1+yy1/GapSRUWk9yns0ay26v/N/UAa5aW19MhRz6
- KZC1k+IA9iK3kg3wlnUP/9lBjc6p4roZTz3Lb5Z92njHXMHiLiStC2rFqUD4d7MAtrMy
- MNUA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KLxLm8TpKavGXoLgANwIbESUlYfyTO+539rjIefpqJ4=;
+ b=m6FlQJRdaEDx+iB6Qi6EMVRG4Yx7hbERZdEbclpflmUO29aXjYletBnBeyjxGP/fQ4
+ NbUOpFItGkrEqLR26PTGzbW9UTSp7ltEz6WOLHcHZauCf9I6t82csopSIZEKcwcVXKrq
+ xCvAdiOnxU++3m0fVDCH3zWGg99PUhlFYivs3ybZ3RvT16SxzFoccv7yMqjPkEqHxea5
+ D+UXldF+Xck2czyPQLSSs/PaSwEv3Oz0ObQ13pEmD7jSFoPjREr7yXshfmL2LUsAV+4w
+ X0xm6092d5NJSJJHajkcbO158Nthn5hrd6XJtLQFn/bKZ05p9mZA5bz9NzJOk6YR3t80
+ byng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=Dh5Crm266aQSyOAUnA6rnhNvPpKt3i62trG1VYUbqLA=;
- b=pCuinlUrrLvuWzco8Iqi9OuxyK+P92mXeoLY+Srd9WFfb5+gADDy3fxN90dDB1QXTu
- 6/or7eYLknkegkPHA4ZoOC+ljmmUUvv+3gPrtIMCFA0ra1ofWZlbFfH+e2muNIxPnMAa
- s0Kvy/k6dUy5O15MYdv+9nKFyzvAuAnC+M+e1mc+rQ4VIJfICABiwTcNQenxrjJkpmh2
- lNAc/FT6UnO0rVXrzTvvJLsNSxd6+E8fAG3g8R4FyxpcJouH+4n6cYOcCcV0xTU/tGGB
- o2xyTm7qrF0gSNIY8CPdtiI4MG/6M8SfqolM2KfZ3LOX/BFqBeKfrCVflJ7fxOW7j3Wy
- daMw==
-X-Gm-Message-State: AOAM530De1JfDhazxYobEZiOsB8inym2JMSkbORyEdXN/6hGaMN5DwnG
- 51vzKvvpx15vb5UuLT1QHCkuLX139BUmzBZEEA+iK9tw7Sc=
-X-Received: by 2002:a25:b285:: with SMTP id k5mr11661220ybj.132.1639639266689; 
- Wed, 15 Dec 2021 23:21:06 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=KLxLm8TpKavGXoLgANwIbESUlYfyTO+539rjIefpqJ4=;
+ b=LwzSpj2PZOdaNAe/5O8hseUY+r5oBvw/DM1PikWW7WIknZQE+aaRV7xngi+In81NgJ
+ K21oOyewGt8UCxtqnjfX6Lm5n05kzuCyAUnE8YxvwrSMlOY2uyuPxIQBq+XPYVv4/zZ1
+ IuA7GmDVrfOcZkW1/fGJK4pQ4RuZ5EDwPloS7zTL1PjW8TiDmjChtSa/T9DDFphK3TgU
+ 9HiN6Hbtnc5IaymrGkClKS24bcsUbQ8FnuwKT0mVqQUAdYUyxBtJ4JslRlpFmu5NePmp
+ wB5VobSkm6d/EQNsU3xKS38mPEwc6XN/XToXiGKcZNEu3baECUY2QPwt1W3tHCgK5j8c
+ ghzA==
+X-Gm-Message-State: AOAM532iBFm9jWHmwur8QMESC3UiVsDQuQYadsp2pEIg1aWC6LIFoxev
+ mcrYRTZrME2j8HcYi5w+TPwVYMbm6dkJ+vtiQU8=
+X-Received: by 2002:a05:6214:c6e:: with SMTP id
+ t14mr12155345qvj.57.1639684976597; 
+ Thu, 16 Dec 2021 12:02:56 -0800 (PST)
 MIME-Version: 1.0
-References: <20211216064820.61342-1-bslathi19@gmail.com>
- <20211216064820.61342-2-bslathi19@gmail.com>
-In-Reply-To: <20211216064820.61342-2-bslathi19@gmail.com>
-From: Byron Lathi <bslathi19@gmail.com>
-Date: Thu, 16 Dec 2021 01:20:55 -0600
-Message-ID: <CAJ_MG7qoMgm__sEw1KL1UwoXdAU67k097g-+sn_oBx=17sm9MQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] target/arm: Implement Cortex-A5
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org, 
- Byron Lathi <bslathi19@gmail.com>
-Content-Type: multipart/alternative; boundary="0000000000000d073305d33e4446"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b36
+References: <CAP4GjT1x=9z9jwRxUg-J_nyGQKiga=xcDddWzG5a9HCkiC2Tog@mail.gmail.com>
+ <6b16b0e4-c0db-02de-1d95-ec831fdff938@amsat.org>
+ <CAFEAcA9v6JQD3OR1tKL7yJaY+=-ohhvMCzF4xpSRAATXAB59vA@mail.gmail.com>
+In-Reply-To: <CAFEAcA9v6JQD3OR1tKL7yJaY+=-ohhvMCzF4xpSRAATXAB59vA@mail.gmail.com>
+From: abhijeet inamdar <abhijeetinamdar3005@gmail.com>
+Date: Thu, 16 Dec 2021 21:02:45 +0100
+Message-ID: <CAP4GjT1dhNPhHgNWJFH1CJg4zkZU0zkGr-rAqTZE1-HzqG=ahw@mail.gmail.com>
+Subject: Re: Exception return
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="00000000000092dca805d348e845"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::f30
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
- envelope-from=bslathi19@gmail.com; helo=mail-yb1-xb36.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f30;
+ envelope-from=abhijeetinamdar3005@gmail.com; helo=mail-qv1-xf30.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -112,175 +113,158 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ qemu-discuss <qemu-discuss@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0tN9DAhMxWAG
+X-TUID: G3pfgD6N0xuS
 
---0000000000000d073305d33e4446
+--00000000000092dca805d348e845
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-..and I've just realized that I left the processor id as C0F instead of C05
-again.
-I also removed the generic timer as I don't think the A5 has one.
+I made some changes to the code in qemu :
+https://github.com/qemu/qemu/blob/stable-6.0/target/arm/cpu.c#L339 . I have
+commented out the variable vecbase and directly given the address of my
+vector address(not zero) or where they are located in our binary file. Is
+that a problem?
 
-On Thu, Dec 16, 2021 at 12:48 AM Byron Lathi <bslathi19@gmail.com> wrote:
+BR.
+Abhijeet.
 
-> Add support for the Cortex-A5. These changes are based off of the A7 and
-> A9 Init functions, using the appropriate values from the technical
-> reference manual for the A5.
+On Thu, Dec 16, 2021 at 7:47 PM Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> On Thu, 16 Dec 2021 at 17:44, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+> wrote:
+> >
+> > Cc'ing qemu-arm developers.
+> >
+> > On 12/16/21 18:31, abhijeet inamdar wrote:
+> > > Hi,
+> > >
+> > > I was running my .elf file on my custom machine(CM3) and was hit with
+> > > this error when debugging and had the required -d flags and single
+> stepping.
+> > >
+> > > IN: Hal_MemFault
+> > > 0x7004e794:  4770       bx       lr
+> > >
+> > > Trace 0: 0x7f4faa471100 [00000000/7004e794/0x312000c1]  Hal_MemFault
+> > > R00=3D7004938d R01=3D00000000 R02=3D7004938c R03=3Dffffffff
+> > > R04=3D7005e410 R05=3D10020000 R06=3De000eda0 R07=3D00000000
+> > > R08=3D00000010 R09=3D1003f8e0 R10=3De000ed94 R11=3D00000000
+> > > R12=3Dffffffff R13=3D1003dbe0 R14=3Dfffffff9 R15=3D7004e794
+> > > XPSR=3D01000003 ---- T handler
+> > > Taking exception 8 [QEMU v7M exception exit]
+> > > Exception return: magic PC fffffff9 previous exception 3
+> > > M profile return from interrupt with misaligned PC is UNPREDICTABLE o=
+n
+> v7M
+> > > ...successful exception return
+> > > DRBAR[6]: 0xa0000000 misaligned to DRSR region size, mask =3D 0x3ffff=
+fff
+> > > Taking exception 3 [Prefetch Abort]
+> > > ...with CFSR.IACCVIOL
+> > > ...taking pending nonsecure exception 3
 >
-> Signed-off-by: Byron Lathi <bslathi19@gmail.com>
-> ---
->  target/arm/cpu_tcg.c | 36 ++++++++++++++++++++++++++++++++++++
->  1 file changed, 36 insertions(+)
+> The logging here tells you what happened:
 >
-> diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-> index 13d0e9b195..2b54fb618b 100644
-> --- a/target/arm/cpu_tcg.c
-> +++ b/target/arm/cpu_tcg.c
-> @@ -304,6 +304,41 @@ static void cortex_a8_initfn(Object *obj)
->      define_arm_cp_regs(cpu, cortexa8_cp_reginfo);
->  }
+>  * we are in an exception handler
+>  * we do the bx lr to magic value which is M-profile's exception-return
+>  * ...but there's something wrong with the return address we pull
+>    off the stack, because it's not an aligned value (its least
+>    significant bit is set)
+>  * moreover, it's an address that corresponds to an MPU region
+>    that has been misprogrammed (the DRBAR value isn't right);
+>    the MPU treats such regions as not matching
+>  * and so we take an instruction access fault
 >
-> +static void cortex_a5_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    cpu->dtb_compatible = "arm,cortex-a5";
-> +    set_feature(&cpu->env, ARM_FEATURE_V7);
-> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
-> +    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-> +    set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
-> +    cpu->midr = 0x410fc0f1;
-> +    cpu->reset_fpsid = 0x41023051;
-> +    cpu->isar.mvfr0 = 0x10110221;
-> +    cpu->isar.mvfr1 = 0x11000011;
-> +    cpu->ctr = 0x83338003;
-> +    cpu->reset_sctlr = 0x00c50078;
-> +    cpu->isar.id_pfr0 = 0x00001231;
-> +    cpu->isar.id_pfr1 = 0x00000011;
-> +    cpu->isar.id_dfr0 = 0x02010444;
-> +    cpu->id_afr0 = 0x00000000;
-> +    cpu->isar.id_mmfr0 = 0x00100103;
-> +    cpu->isar.id_mmfr1 = 0x40000000;
-> +    cpu->isar.id_mmfr2 = 0x01230000;
-> +    cpu->isar.id_mmfr3 = 0x00102211;
-> +    cpu->isar.id_isar0 = 0x00101111;
-> +    cpu->isar.id_isar1 = 0x13112111;
-> +    cpu->isar.id_isar2 = 0x21232041;
-> +    cpu->isar.id_isar3 = 0x11112131;
-> +    cpu->isar.id_isar4 = 0x00011142;
-> +    cpu->isar.dbgdidr = 0x1203f001;
-> +    cpu->clidr = 0x09200003;
-> +    cpu->ccsidr[0] = 0x701fe00a;
-> +    cpu->ccsidr[1] = 0x203fe00a;
-> +}
-> +
->  static const ARMCPRegInfo cortexa9_cp_reginfo[] = {
->      /*
->       * power_control should be set to maximum latency. Again,
-> @@ -1019,6 +1054,7 @@ static const ARMCPUInfo arm_tcg_cpus[] = {
->      { .name = "arm1136",     .initfn = arm1136_initfn },
->      { .name = "arm1176",     .initfn = arm1176_initfn },
->      { .name = "arm11mpcore", .initfn = arm11mpcore_initfn },
-> +    { .name = "cortex-a5",  .initfn = cortex_a5_initfn },
->      { .name = "cortex-a7",   .initfn = cortex_a7_initfn },
->      { .name = "cortex-a8",   .initfn = cortex_a8_initfn },
->      { .name = "cortex-a9",   .initfn = cortex_a9_initfn },
-> --
-> 2.30.2
+> So you have two problems:
+>  (1) the PC value on the stack that you're trying to return to is wrong
+>  (2) you're programming the MPU wrong
 >
+> You need to investigate and fix both.
+>
+> -- PMM
 >
 
---0000000000000d073305d33e4446
+--00000000000092dca805d348e845
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>..and I&#39;ve just realized that I left the processo=
-r id as C0F instead of C05 again.</div><div>I also removed the generic time=
-r as I don&#39;t think the A5 has one.<br></div></div><br><div class=3D"gma=
-il_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Dec 16, 2021 at 12:=
-48 AM Byron Lathi &lt;<a href=3D"mailto:bslathi19@gmail.com">bslathi19@gmai=
-l.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
-1ex">Add support for the Cortex-A5. These changes are based off of the A7 a=
-nd<br>
-A9 Init functions, using the appropriate values from the technical<br>
-reference manual for the A5.<br>
+<div dir=3D"ltr">I made some changes to the code in qemu :=C2=A0<a href=3D"=
+https://github.com/qemu/qemu/blob/stable-6.0/target/arm/cpu.c#L339">https:/=
+/github.com/qemu/qemu/blob/stable-6.0/target/arm/cpu.c#L339</a> . I have co=
+mmented out the variable vecbase and directly given the address of my vecto=
+r address(not zero) or where they are=C2=A0located in our binary file. Is t=
+hat a problem?=C2=A0<div><br></div><div>BR.</div><div>Abhijeet.</div></div>=
+<br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu=
+, Dec 16, 2021 at 7:47 PM Peter Maydell &lt;<a href=3D"mailto:peter.maydell=
+@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
+d rgb(204,204,204);padding-left:1ex">On Thu, 16 Dec 2021 at 17:44, Philippe=
+ Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank=
+">f4bug@amsat.org</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Cc&#39;ing qemu-arm developers.<br>
+&gt;<br>
+&gt; On 12/16/21 18:31, abhijeet inamdar wrote:<br>
+&gt; &gt; Hi,<br>
+&gt; &gt;<br>
+&gt; &gt; I was running my .elf file on my custom machine(CM3) and was hit =
+with<br>
+&gt; &gt; this error when debugging and had the required -d flags and singl=
+e stepping.<br>
+&gt; &gt;<br>
+&gt; &gt; IN: Hal_MemFault<br>
+&gt; &gt; 0x7004e794:=C2=A0 4770=C2=A0 =C2=A0 =C2=A0 =C2=A0bx=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0lr<br>
+&gt; &gt;<br>
+&gt; &gt; Trace 0: 0x7f4faa471100 [00000000/7004e794/0x312000c1]=C2=A0 Hal_=
+MemFault<br>
+&gt; &gt; R00=3D7004938d R01=3D00000000 R02=3D7004938c R03=3Dffffffff<br>
+&gt; &gt; R04=3D7005e410 R05=3D10020000 R06=3De000eda0 R07=3D00000000<br>
+&gt; &gt; R08=3D00000010 R09=3D1003f8e0 R10=3De000ed94 R11=3D00000000<br>
+&gt; &gt; R12=3Dffffffff R13=3D1003dbe0 R14=3Dfffffff9 R15=3D7004e794<br>
+&gt; &gt; XPSR=3D01000003 ---- T handler<br>
+&gt; &gt; Taking exception 8 [QEMU v7M exception exit]<br>
+&gt; &gt; Exception return: magic PC fffffff9 previous exception 3<br>
+&gt; &gt; M profile return from interrupt with misaligned PC is UNPREDICTAB=
+LE on v7M<br>
+&gt; &gt; ...successful exception return<br>
+&gt; &gt; DRBAR[6]: 0xa0000000 misaligned to DRSR region size, mask =3D 0x3=
+fffffff<br>
+&gt; &gt; Taking exception 3 [Prefetch Abort]<br>
+&gt; &gt; ...with CFSR.IACCVIOL<br>
+&gt; &gt; ...taking pending nonsecure exception 3<br>
 <br>
-Signed-off-by: Byron Lathi &lt;<a href=3D"mailto:bslathi19@gmail.com" targe=
-t=3D"_blank">bslathi19@gmail.com</a>&gt;<br>
----<br>
-=C2=A0target/arm/cpu_tcg.c | 36 ++++++++++++++++++++++++++++++++++++<br>
-=C2=A01 file changed, 36 insertions(+)<br>
+The logging here tells you what happened:<br>
 <br>
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c<br>
-index 13d0e9b195..2b54fb618b 100644<br>
---- a/target/arm/cpu_tcg.c<br>
-+++ b/target/arm/cpu_tcg.c<br>
-@@ -304,6 +304,41 @@ static void cortex_a8_initfn(Object *obj)<br>
-=C2=A0 =C2=A0 =C2=A0define_arm_cp_regs(cpu, cortexa8_cp_reginfo);<br>
-=C2=A0}<br>
+=C2=A0* we are in an exception handler<br>
+=C2=A0* we do the bx lr to magic value which is M-profile&#39;s exception-r=
+eturn<br>
+=C2=A0* ...but there&#39;s something wrong with the return address we pull<=
+br>
+=C2=A0 =C2=A0off the stack, because it&#39;s not an aligned value (its leas=
+t<br>
+=C2=A0 =C2=A0significant bit is set)<br>
+=C2=A0* moreover, it&#39;s an address that corresponds to an MPU region<br>
+=C2=A0 =C2=A0that has been misprogrammed (the DRBAR value isn&#39;t right);=
 <br>
-+static void cortex_a5_initfn(Object *obj)<br>
-+{<br>
-+=C2=A0 =C2=A0 ARMCPU *cpu =3D ARM_CPU(obj);<br>
-+<br>
-+=C2=A0 =C2=A0 cpu-&gt;dtb_compatible =3D &quot;arm,cortex-a5&quot;;<br>
-+=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_V7);<br>
-+=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_NEON);<br>
-+=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_THUMB2EE);<br>
-+=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_DUMMY_C15_REGS);<b=
-r>
-+=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_PMU);<br>
-+=C2=A0 =C2=A0 cpu-&gt;midr =3D 0x410fc0f1;<br>
-+=C2=A0 =C2=A0 cpu-&gt;reset_fpsid =3D 0x41023051;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.mvfr0 =3D 0x10110221;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.mvfr1 =3D 0x11000011;<br>
-+=C2=A0 =C2=A0 cpu-&gt;ctr =3D 0x83338003;<br>
-+=C2=A0 =C2=A0 cpu-&gt;reset_sctlr =3D 0x00c50078;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_pfr0 =3D 0x00001231;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_pfr1 =3D 0x00000011;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_dfr0 =3D 0x02010444;<br>
-+=C2=A0 =C2=A0 cpu-&gt;id_afr0 =3D 0x00000000;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_mmfr0 =3D 0x00100103;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_mmfr1 =3D 0x40000000;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_mmfr2 =3D 0x01230000;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_mmfr3 =3D 0x00102211;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_isar0 =3D 0x00101111;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_isar1 =3D 0x13112111;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_isar2 =3D 0x21232041;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_isar3 =3D 0x11112131;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.id_isar4 =3D 0x00011142;<br>
-+=C2=A0 =C2=A0 cpu-&gt;isar.dbgdidr =3D 0x1203f001;<br>
-+=C2=A0 =C2=A0 cpu-&gt;clidr =3D 0x09200003;<br>
-+=C2=A0 =C2=A0 cpu-&gt;ccsidr[0] =3D 0x701fe00a;<br>
-+=C2=A0 =C2=A0 cpu-&gt;ccsidr[1] =3D 0x203fe00a;<br>
-+}<br>
-+<br>
-=C2=A0static const ARMCPRegInfo cortexa9_cp_reginfo[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0/*<br>
-=C2=A0 =C2=A0 =C2=A0 * power_control should be set to maximum latency. Agai=
-n,<br>
-@@ -1019,6 +1054,7 @@ static const ARMCPUInfo arm_tcg_cpus[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0{ .name =3D &quot;arm1136&quot;,=C2=A0 =C2=A0 =C2=A0.in=
-itfn =3D arm1136_initfn },<br>
-=C2=A0 =C2=A0 =C2=A0{ .name =3D &quot;arm1176&quot;,=C2=A0 =C2=A0 =C2=A0.in=
-itfn =3D arm1176_initfn },<br>
-=C2=A0 =C2=A0 =C2=A0{ .name =3D &quot;arm11mpcore&quot;, .initfn =3D arm11m=
-pcore_initfn },<br>
-+=C2=A0 =C2=A0 { .name =3D &quot;cortex-a5&quot;,=C2=A0 .initfn =3D cortex_=
-a5_initfn },<br>
-=C2=A0 =C2=A0 =C2=A0{ .name =3D &quot;cortex-a7&quot;,=C2=A0 =C2=A0.initfn =
-=3D cortex_a7_initfn },<br>
-=C2=A0 =C2=A0 =C2=A0{ .name =3D &quot;cortex-a8&quot;,=C2=A0 =C2=A0.initfn =
-=3D cortex_a8_initfn },<br>
-=C2=A0 =C2=A0 =C2=A0{ .name =3D &quot;cortex-a9&quot;,=C2=A0 =C2=A0.initfn =
-=3D cortex_a9_initfn },<br>
--- <br>
-2.30.2<br>
+=C2=A0 =C2=A0the MPU treats such regions as not matching<br>
+=C2=A0* and so we take an instruction access fault<br>
 <br>
+So you have two problems:<br>
+=C2=A0(1) the PC value on the stack that you&#39;re trying to return to is =
+wrong<br>
+=C2=A0(2) you&#39;re programming the MPU wrong<br>
+<br>
+You need to investigate and fix both.<br>
+<br>
+-- PMM<br>
 </blockquote></div>
 
---0000000000000d073305d33e4446--
+--00000000000092dca805d348e845--

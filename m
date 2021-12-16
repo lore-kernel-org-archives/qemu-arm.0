@@ -1,92 +1,108 @@
-Received: by 2002:a19:8c50:0:0:0:0:0 with SMTP id i16csp418839lfj;
-        Wed, 15 Dec 2021 19:23:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwNQ1vvmJbFRMKxNqFSVqNy7YGpYfWdK4nfnNW5sZMB1r9rHTO23SvdVtqmLDGBK5N2ZfX/
-X-Received: by 2002:a25:ac9a:: with SMTP id x26mr10702059ybi.344.1639625008219;
-        Wed, 15 Dec 2021 19:23:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639625008; cv=none;
+Received: by 2002:a19:791d:0:0:0:0:0 with SMTP id u29csp16732lfc;
+        Thu, 16 Dec 2021 00:46:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwZCDaVJUiCieimppPw8NSnnuYLVuhKKMbLZKga+7SStRhV/gdm9GVY7M+C4TQg/W1+Fvat
+X-Received: by 2002:a25:d048:: with SMTP id h69mr12112464ybg.747.1639644363117;
+        Thu, 16 Dec 2021 00:46:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639644363; cv=none;
         d=google.com; s=arc-20160816;
-        b=iT5Iy1rNfGDg9o4X3d/3M4pmVuGUkvGJ5ti87yD+4Bec9ZL+mRVM+7MwouKKHnYCwj
-         2VF5VjOGOMkFrJE0dIKSDbMLyYaf2uPwQ7ISuVqPkRw2R99DC8jXF8b4c+1Pa6grwhyQ
-         LidGR4GEYbQjxtJ8WnWHhdNdmdK7qfTJmJ7UcAm6S9Ul9B7BHe1vzHL0CI3t4sz3y8hr
-         952ufM86RRjdLsrksqUSC7+497g09D5/fWTGPxbpmEdK0ds+RFkrKfiiQ8n63dpJaLWt
-         ojg8a2Oa4y/C08/Et99H/PUGxVCWpNMhmzNMc4B0yCXLmJmphtd2aQecRnazubZ51FpI
-         MMKA==
+        b=fq4WNP3VuZwr0MGhvp0s3lpirpQyrBbmODzjGahbY1xl+/PWFU+4nd8mkpo8zRV76b
+         cs6MGuCgObHKatUP83YKxGGL16VLr5pTgnnGtG0IWgE3nfr1wVXmgxoE14EfrnKQwolP
+         ZTyDdwAr2DkGDfZ1MvnOG3S6hErufgA7aZOBK5YGG43OqaeifTrfrT+IkPcXZy06oT7n
+         pGUO653Otgm444HJtWmrQA5Db0vbPj0OKGUFmDfX+ZTRsLgRDGUOuaMMa57KU9ANPN5s
+         IvQffHHtHiF/zHgCYZOxNQ1l+6xb/T2yeKttDgFTevBRTe9cnymKwozzI/vCV3n9G1GA
+         LE9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:references:cc:to:subject;
-        bh=q+QLRLfkl3GkJANY/bgWIlr2uurYtf1UrjWJs09t2ys=;
-        b=1EHoWxbuBY80z3UDHhXdyBZV8SJ2jPnZ21rWHVUNnZ0F+9u0bRnzWCUnK9PcesRFWV
-         Z0SMV/HTYYPjYrVvixO9aWLi/mt+p1QKGirFlrOqKz/ug1nK3M0YcP/gesFft2W+XxdL
-         2UkWUOwTjLnIEVRIY2mmPbL8D6XVqPLSMA8kusy3TVaXUU+eSO3Px+trNDNkwPhATlSp
-         jAvh6N2y9/5NKM+MYM0tAySJjL7zwrnZV+HiypQnzmLJhRNT8sV9QxQYyvYmoxa+15Mg
-         PUjsQ0vdr9hgY5TZiNn4sDKztOJzDUjF4MIgpNOCtz0dqHmkuNKfrAFDYRUAu4uoaZDK
-         PJcQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=x7h4IFcdtUPDr1JygqvtRcndheDiqrA4h0qEiTxFhuk=;
+        b=aOPjH+OmN+TV2aANuoSJTkWKTn1s5agsPXFsvWG1G3PMqTg6xdV3C8/fAk1y6zErgD
+         mlFoW6KZbtZ7r9QenXjYNuBNcd2SJcyEeJABDQdGlDDwE5jOXCj8/A3UTtF+oMCmQcyz
+         oddGOzh4sWdtsfmhw26Y5L8qJ/w+1YxGW7Caloc7cBj3ddxhZbU/HZNxplvkd5jOaJ4C
+         28sMHB5YjCx8EcWYMZnwRaXmASId9fNK0Yls+wWKzsg/mQ5vqr7gN7T+GJrdWExGORdu
+         64s5HKnNCsCjTNZ0lPV+TwZvliox45TT501LsFR2dPrAdWakV7woaBJ3rxT9DFJ4gDUo
+         pqiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SzW9CTPR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y206si4174691yby.673.2021.12.15.19.23.28
+        by mx.google.com with ESMTPS id w2si4723149ybs.393.2021.12.16.00.46.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Dec 2021 19:23:28 -0800 (PST)
+        Thu, 16 Dec 2021 00:46:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:34430 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SzW9CTPR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39846 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mxhMd-00079a-K5
-	for alex.bennee@linaro.org; Wed, 15 Dec 2021 22:23:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36476)
+	id 1mxmOo-0000Ey-HO
+	for alex.bennee@linaro.org; Thu, 16 Dec 2021 03:46:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34196)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mxhMB-00077k-Fw; Wed, 15 Dec 2021 22:23:02 -0500
-Received: from szxga03-in.huawei.com ([45.249.212.189]:3210)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mxhM8-0005H5-CU; Wed, 15 Dec 2021 22:22:59 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.55])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4JDy6s5XB0z8vsR;
- Thu, 16 Dec 2021 11:20:37 +0800 (CST)
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.20; Thu, 16 Dec 2021 11:22:50 +0800
-Subject: Re: [PATCH v4 00/10] ARM virt: Introduce CPU clusters topology support
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
- <drjones@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, "Michael S
- . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Ani Sinha
- <ani@anisinha.ca>, Markus Armbruster <armbru@redhat.com>, Eric Blake
- <eblake@redhat.com>, <wanghaibin.wang@huawei.com>
-References: <20211121122502.9844-1-wangyanan55@huawei.com>
-Message-ID: <b5a9c162-c2b8-4673-4a70-5f84d3e86ff2@huawei.com>
-Date: Thu, 16 Dec 2021 11:22:50 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mxmOW-0000EK-MZ; Thu, 16 Dec 2021 03:45:44 -0500
+Received: from [2a00:1450:4864:20::42d] (port=40905
+ helo=mail-wr1-x42d.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mxmOU-0003He-G2; Thu, 16 Dec 2021 03:45:44 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id q16so1959177wrg.7;
+ Thu, 16 Dec 2021 00:45:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=x7h4IFcdtUPDr1JygqvtRcndheDiqrA4h0qEiTxFhuk=;
+ b=SzW9CTPRjcUb6SGZzYGrxTeMWXjzR30BPnRTbPUfyYsgAe/x7raudb4KTs1h5O903Y
+ QVDfuBApC4Jj2CC7iJe5hSYAg4d4c6uyoNEZ5TirT2LkNrHTOGWTljrDkXAWc3B8PSgX
+ lR7X6veUwDByxE7C+ZltCbDLvqFv4rc+7m29rD26yUO/Cg+I6fXUq4+kNbPCaT90eboK
+ 7yolJpUg9ARB3Pms27ch60t83hmyJLNUMGBN6URdU3OZyD8sxVSArGvdewW48tMfOB/Z
+ T8BgyRTMwCAhZKVFdWdT06z50koV7B7BmGSXcBxjrGB+qmu8ZIuSQVhJRCeP/13VzNat
+ +rUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=x7h4IFcdtUPDr1JygqvtRcndheDiqrA4h0qEiTxFhuk=;
+ b=q4z3L0h6MTYb4jZ/2VCom7c15U64Xm5cFG+pf9sJGOraYiGy5MJc7eH5wPI8Z0/GFc
+ K4kp7efGvb+GsyU5kKKrmiU2JQLRnyXogRvN6iz4p01jngRUENcokbEIMdCfH0Jcyqh2
+ s2LMsLBha2rW9ekQeHUx0BSta6Rddfi25FtMSFjHDEojY+Rbuo4py02BkgF5xnQttVP8
+ 54//sGUeeT+TveWyl9NgqAjjzU5JsmMDAKBV6yE5Ehnrtv6pCdu8/1mh3WLg1sjv3aHs
+ FIA4V7mmsPLrOfnUE+gqiZLslbUAG435YxdUoIq9JVcOXYgKuFal+3WHF9ELdhKESa3+
+ Uw6g==
+X-Gm-Message-State: AOAM5318HlVYbTwVHEuB9et4kXVvRD3Mzz2fJaErCxl+YVk1y74wX4um
+ sUDPa69vCzBnd8IaXwrg2wb0LqiYLP8=
+X-Received: by 2002:adf:ea8c:: with SMTP id s12mr7430699wrm.342.1639644340227; 
+ Thu, 16 Dec 2021 00:45:40 -0800 (PST)
+Received: from localhost.localdomain
+ (174.red-83-50-185.dynamicip.rima-tde.net. [83.50.185.174])
+ by smtp.gmail.com with ESMTPSA id 12sm2323845wmi.35.2021.12.16.00.45.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Dec 2021 00:45:39 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/2] hw/net: Move MV88W8618 network device out of hw/arm/
+ directory
+Date: Thu, 16 Dec 2021 09:45:28 +0100
+Message-Id: <20211216084530.698125-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
-In-Reply-To: <20211121122502.9844-1-wangyanan55@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme701-chm.china.huawei.com (10.1.199.97) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=wangyanan55@huawei.com; helo=szxga03-in.huawei.com
-X-Spam_score_int: -57
-X-Spam_score: -5.8
-X-Spam_bar: -----
-X-Spam_report: (-5.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.64,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42d
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,101 +115,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
-From:  "wangyanan (Y)" via <qemu-arm@nongnu.org>
-X-TUID: M9X1hPDEZka8
+X-TUID: jl2XhDmSzf/t
 
-Ping...
-
-On 2021/11/21 20:24, Yanan Wang wrote:
-> Hi,
->
-> This series introduces the new CPU clusters topology parameter
-> and enable the support for it on ARM virt machines.
->
-> Background and descriptions:
-> The new Cluster-Aware Scheduling support has landed in Linux 5.16,
-> which has been proved to benefit the scheduling performance (e.g.
-> load balance and wake_affine strategy) on both x86_64 and AArch64.
-> We can see Kernel PR [1] and the latest patch set [2] for reference.
->
-> So now in Linux 5.16 we have four-level arch-neutral CPU topology
-> definition like below and a new scheduler level for clusters.
-> struct cpu_topology {
->      int thread_id;
->      int core_id;
->      int cluster_id;
->      int package_id;
->      int llc_id;
->      cpumask_t thread_sibling;
->      cpumask_t core_sibling;
->      cpumask_t cluster_sibling;
->      cpumask_t llc_sibling;
-> }
->
-> A cluster generally means a group of CPU cores which share L2 cache
-> or other mid-level resources, and it is the shared resources that
-> is used to improve scheduler's behavior. From the point of view of
-> the size range, it's between CPU die and CPU core. For example, on
-> some ARM64 Kunpeng servers, we have 6 clusters in each NUMA node,
-> and 4 CPU cores in each cluster. The 4 CPU cores share a separate
-> L2 cache and a L3 cache tag, which brings cache affinity advantage.
->
-> [1] https://lore.kernel.org/lkml/163572864855.3357115.17938524897008353101.tglx@xen13/
-> [2] https://lkml.org/lkml/2021/9/24/178
->
-> In virtualization, on the Hosts which have pClusters, if we can
-> design a vCPU topology with cluster level for guest kernel and
-> have a dedicated vCPU pinning. A Cluster-Aware Guest kernel can
-> also make use of the cache affinity of CPU clusters to gain
-> similar scheduling performance.
->
-> This series consists of two parts:
-> The first part (patch 1-3):
-> Implement infrastructure for CPU cluster level topology support,
-> including the SMP documentation, configuration and parsing.
->
-> The second part (part 4-10):
-> Enable CPU cluster support on ARM virt machines, so that users
-> can specify a 4-level CPU hierarchy sockets/clusters/cores/threads.
-> And the 4-level topology will be described to guest kernel through
-> ACPI PPTT and DT cpu-map.
->
-> Changelog:
-> v3->v4:
-> - Significant change from v3 to v4, since the whole series is reworked
->    based on latest QEMU SMP frame.
-> - v3: https://lore.kernel.org/qemu-devel/20210516103228.37792-1-wangyanan55@huawei.com/
->
-> Yanan Wang (10):
->    qemu-options: Improve readability of SMP related Docs
->    hw/core/machine: Introduce CPU cluster topology support
->    hw/core/machine: Wrap target specific parameters together
->    hw/arm/virt: Support clusters on ARM virt machines
->    hw/arm/virt: Support cluster level in DT cpu-map
->    hw/acpi/aml-build: Improve scalability of PPTT generation
->    hw/arm/virt-acpi-build: Make an ARM specific PPTT generator
->    tests/acpi/bios-tables-test: Allow changes to virt/PPTT file
->    hw/acpi/virt-acpi-build: Support cluster level in PPTT generation
->    tests/acpi/bios-table-test: Update expected virt/PPTT file
->
->   hw/acpi/aml-build.c         |  66 ++------------------------
->   hw/arm/virt-acpi-build.c    |  92 +++++++++++++++++++++++++++++++++++-
->   hw/arm/virt.c               |  16 ++++---
->   hw/core/machine-smp.c       |  29 +++++++++---
->   hw/core/machine.c           |   3 ++
->   include/hw/acpi/aml-build.h |   5 +-
->   include/hw/boards.h         |   6 ++-
->   qapi/machine.json           |   5 +-
->   qemu-options.hx             |  91 +++++++++++++++++++++++++++--------
->   softmmu/vl.c                |   3 ++
->   tests/data/acpi/virt/PPTT   | Bin 76 -> 96 bytes
->   11 files changed, 214 insertions(+), 102 deletions(-)
->
-> --
-> 2.19.1
->
-> .
-
+This series simply extract the MV88W8618 device from the ARM=0D
+machine in hw/arm/ and move it to hw/net/.=0D
+=0D
+I was expecting for this to get merged before posting a generic=0D
+network code rework series, then figured I never posted it >_<=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (2):=0D
+  hw/arm/musicpal: Fix coding style of code related to MV88W8618 device=0D
+  hw/net: Move MV88W8618 network device out of hw/arm/ directory=0D
+=0D
+ include/hw/net/mv88w8618_eth.h |  16 ++=0D
+ hw/arm/musicpal.c              | 380 +-----------------------------=0D
+ hw/net/mv88w8618_eth.c         | 406 +++++++++++++++++++++++++++++++++=0D
+ MAINTAINERS                    |   2 +=0D
+ hw/net/meson.build             |   1 +=0D
+ 5 files changed, 426 insertions(+), 379 deletions(-)=0D
+ create mode 100644 include/hw/net/mv88w8618_eth.h=0D
+ create mode 100644 hw/net/mv88w8618_eth.c=0D
+=0D
+-- =0D
+2.33.1=0D
+=0D

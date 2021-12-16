@@ -1,232 +1,176 @@
-Received: by 2002:a05:6214:3f4:0:0:0:0 with SMTP id cf20csp1710750qvb;
-        Thu, 16 Dec 2021 10:39:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzbI1Ltq4UzOOqLzhyKd1KyxdYnUzSwpZxmR8isWFPHU/kn+rFAgbZPEOJh5wDSrE00fd4q
-X-Received: by 2002:a17:906:9754:: with SMTP id o20mr16459721ejy.277.1639679956127;
-        Thu, 16 Dec 2021 10:39:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639679956; cv=none;
+Received: by 2002:a05:6214:3f4:0:0:0:0 with SMTP id cf20csp1718376qvb;
+        Thu, 16 Dec 2021 10:49:22 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzKidZVyAmonGO1fXYefmOg2nlH/chzZzWyBLdXfgrg8pNPb8zQ/i8HgaaBaMod742Nfctv
+X-Received: by 2002:a5b:ecc:: with SMTP id a12mr15554791ybs.347.1639680561852;
+        Thu, 16 Dec 2021 10:49:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639680561; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vsnl/fN1yNlwFrrEMKWviJkxU5YIF89q0PLmimR2AHnv/FtmTaGDNN9iB/AJXT01q6
-         MkFdWbbOywJocORF1BFIROXV8V+XN56N1soDXOqq/5PhEm/owN0wm16r7BXC55nTLI2w
-         RZxhDohxZ/NZ73vi4UekTVPko9ZUNqdOr7XA7seViLym+sIBLUnBKrjyC2TV+b8JEZyS
-         d1IRoRPashQ5RPoj0iJXe2mT4ETinNd2C+Nzv+xQoFYYRZe8Te9H8O8PAXbAsA+qkeLx
-         E8U4uQ2bmHc0fYvLczDLbpu/5MozeC0LjcIjlYwOgfjZvqA8k79cYHVeec8ZIg/Ris/n
-         1dNQ==
+        b=LUUa929TbdluZBJZ0ew0n0Rk/JH3YLz2/GKKftcpySXzxJNDmXkaNRb7ZFwdsvoiAo
+         HnYQfSsG0OkQ9eTYY6SDCatxth+zH8jN/cMawgkMY3KAq8CRvpEkbeuvlYMf3HVdzky8
+         LAWk0heXqEwJU0wXAkBj6a+dfl8yWrjiSKvnuAmvuWnEvKK+F70oroSnqmFlqhi56tSg
+         DUEfgWc3R3GYtD64RD1SdPlOdckJNOWSxoFc1IJ/eH0RckJ4bqmBl3z6/QjoFjV+w2Gw
+         jyN3nbxPtrnIgADls8CVUqpb8bb5H+fsbGP4mD3YgG+RFRPft9ZPwYirNMePOxoFRaKV
+         jMmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=NfaU8TjKmM2SL5bUcLh7VXaP6O+RnGZA0udY5OpISrM=;
-        b=WGdD8ZQnrE/CyWDp6s3RMBVVjaw4SzDIFPJnuv5joHsU0ZEEYuzwm228afMWVZm0ug
-         3l+s4zEQ2egiBHWe8sekgjI797O0PqF6m+jpjkkaXVwvJIFk6qlGcKWfOG7iYqLizvJJ
-         UNAvOCmaADKG8+12iSrN3xn8APyE6zAy5doyYQ/7wKvjFuR8J2llkaUAsl2a87azVvkq
-         t91hPgBplFqQjnXZoqBkjRzAIHLJd+SaVFyH6cPIq4rExZWzgmQO8zeEbpcYqz4dTUFV
-         XBfqbD1ufiUjLtgXaOlriGjjX0tB//473Nth/SrsoVZBkC5XXY6DpBtVRBlfPzGJjqhw
-         PZ/Q==
+        bh=ah7hFnqyPldKY1f+xfKUjnDd1bmDVbuCIQ+aapZsJR8=;
+        b=lvtAeUGb6j9sJLYjMyQXZ8QOGgHTuIg8LhBzdNmCCQBUEvP9vr7bx4o7ky1oLbw3S2
+         SE6/Il3STaVH85C7aYkDY9wkRobZX8E+yYCs8XDq5IW556+0XTZP9pGxf7GZYFtQYS8T
+         NodzRV5Ux1xru6qs+IEIwOIWiRuJja3wu6Aq/ZORQ3AVdV/VPmRa6Cq4tkXB4+4h1eRp
+         hOF8ZNRGmW+Z2PGAxtsNniqHAtIW97BBewMWPI5er8rRIiSBQmhEwnTmODIYIqa4W7wW
+         IH/ca3S80zDofnSfGcevOkJ+0D+TdBSjPbJwUrNbPKJwlxbSi2QkZVYQ5htmAD3o9kMM
+         u30A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z8KT95Pz;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id i8si3975204ejj.664.2021.12.16.10.39.15
+       dkim=fail header.i=@linaro.org header.s=google header.b=L1Z+x8Ey;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p12si8032836ybu.218.2021.12.16.10.49.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Dec 2021 10:39:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 16 Dec 2021 10:49:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z8KT95Pz;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1639679955;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NfaU8TjKmM2SL5bUcLh7VXaP6O+RnGZA0udY5OpISrM=;
-	b=Z8KT95PzAakXEswmsdXOuyu/EHNlVSsBG7rjaPqaAIyg1eDs+vfjOlgDIYsn5ieIcUBU2C
-	LW3OSzYCoa1epOuiYkyQQGzda6TqbfMA480j2x3TTfqfBHOpxrgkFRZRFQmX78dfgqMutY
-	CcSI5HHr0RiG1ZSjdVrAwzhdvL+ODEQ=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-630-RB8BNMpZNMmySB-PD2gxcA-1; Thu, 16 Dec 2021 13:39:08 -0500
-X-MC-Unique: RB8BNMpZNMmySB-PD2gxcA-1
-Received: by mail-wr1-f71.google.com with SMTP id q21-20020adfab15000000b001a24b36e47eso383705wrc.2
-        for <alex.bennee@linaro.org>; Thu, 16 Dec 2021 10:39:08 -0800 (PST)
+       dkim=fail header.i=@linaro.org header.s=google header.b=L1Z+x8Ey;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52996 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mxvof-0002cW-2G
+	for alex.bennee@linaro.org; Thu, 16 Dec 2021 13:49:21 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38040)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mxvmz-0001oE-4M
+ for qemu-arm@nongnu.org; Thu, 16 Dec 2021 13:47:37 -0500
+Received: from [2a00:1450:4864:20::42e] (port=45640
+ helo=mail-wr1-x42e.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mxvmx-0001GV-6K
+ for qemu-arm@nongnu.org; Thu, 16 Dec 2021 13:47:36 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id o13so45787087wrs.12
+ for <qemu-arm@nongnu.org>; Thu, 16 Dec 2021 10:47:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=ah7hFnqyPldKY1f+xfKUjnDd1bmDVbuCIQ+aapZsJR8=;
+ b=L1Z+x8EykT1FfSYcYZX9x9wzFZTxiNViiLtAMVvX+rS71QCtreSi41Gy8MvC+YdRqK
+ FGL6BYouEEmR9b3in7Tma4s0T4y3L+JatE+JJ14v/oBJXEW/C7n5iTvqbeW+VVGC8XNt
+ VUC30dM3J7nh9kYYWidxYqXZYniZLBC/cDUTEhIRzV2K4Q0nXJD8bV+AqP6RDpR0ch+R
+ A2BVBiwiA8BHKyvCj8aUt6KB5T5iLRste/w7YmiPBHn7WO7thr8CLpkMi0PLrtxAOrWj
+ n4wV0I0YvLn9A7Aoojm5p+B9iKIF45Ip228Y7NyTfoUXUq2bX+9G7gwwMsrR6Lmf6k/C
+ U0gQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=NfaU8TjKmM2SL5bUcLh7VXaP6O+RnGZA0udY5OpISrM=;
-        b=Y2MCJ0kiUmKTfI+F0c4h6TSg0dkwvEgMErEUvJ6uSf1gVoJPGFNkIqspDFFjQlXJmO
-         gXd3H7sUBly9IqbyW+SYBfjIzVWHmKA9OaiFyrmvEb+6UWrmk9e6XaqVXXS+aKIc1KYP
-         YUP+TInj6/7KFe2ZsixmmYRn8Jb3Bk5WMXb+vLeKRAWc1b869czNAh/138QghPtS1Xsi
-         rwBm+Ri+yc6Rnr+AJ0FAGBdofoOYfy4Vo50eo4lcvgw1xBk8NFDv7WgzS/MgURCcdXSB
-         W1SbvuUdCQ2V36UdcRIprsoLsdHm3CHgHvTg7mLdoJ4OZxzm/eYdGj/PqBMOySjdIrJL
-         Eg9A==
-X-Gm-Message-State: AOAM531+naECL5FEuBhfAG6pUVb8I9XdgeIg/p1rYrofCGlS+ENzfY6K
-	kEFG9aMt7Pd5LFyxLs01xehsz3mE9wYEfChvtvhDK+xXGXwQG7BNMJDrtfXAr9MZM6ILyKnAdss
-	9g3aqqwTgd1iMrlutShuXbypyHoUskqLEatFbPuCRhHv494l376Uu69NllEdCzduy7w==
-X-Received: by 2002:a05:600c:4f0f:: with SMTP id l15mr6198350wmq.25.1639679947355;
-        Thu, 16 Dec 2021 10:39:07 -0800 (PST)
-X-Received: by 2002:a05:600c:4f0f:: with SMTP id l15mr6198302wmq.25.1639679947008;
-        Thu, 16 Dec 2021 10:39:07 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net. [83.50.185.174])
-        by smtp.gmail.com with ESMTPSA id o3sm6193100wri.103.2021.12.16.10.39.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 16 Dec 2021 10:39:06 -0800 (PST)
-Message-ID: <34bd86db-a213-bb3a-9c72-8c48bd138835@redhat.com>
-Date: Thu, 16 Dec 2021 19:39:02 +0100
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=ah7hFnqyPldKY1f+xfKUjnDd1bmDVbuCIQ+aapZsJR8=;
+ b=Djf6V7nhuHc1kjdaCsuuQmURVhAqdcgw0Ph3jviPPelu3fyrCF+5t8Ueu+CvmMb3Es
+ mH4QmjWax3TzU3Jag/Wga4V/0QqZRBJVan1drfzkIdWC5aPvGal7LhKGGqY+6+XA2kuz
+ 0ZBoDs8u3xRslyiivqRRxgaXa67NElck8EY48enwI1bchc6yNNovnAMHOsiBGgDrJ1Y/
+ gN09mhfN6kRzniAtJgHBwwS9+raFOtaJ4sI1G1M5QGK1Z/HhAG/efNc0vzMML9I4rYnK
+ a4fohjvlf9KzQyLwC2SaMG4QYfK/IOMW2f1HBj0My55mLq1EjDPpw5AHZeKmiGq+Z9h7
+ mElQ==
+X-Gm-Message-State: AOAM531UngZxtCq8VUKroaV7ucelmHIrfvkFTHhWiAazH7sEckhryB6a
+ w2l0gio7HB5TKGgzZ33P3PO3/Mow3PMgzCouDvoJkw==
+X-Received: by 2002:a05:6000:3c4:: with SMTP id
+ b4mr3614406wrg.172.1639680450136; 
+ Thu, 16 Dec 2021 10:47:30 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [PATCH v3 02/28] glib-compat: Introduce g_memdup2() wrapper
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Eric Blake <eblake@redhat.com>, "Daniel P . Berrange" <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- David Hildenbrand <david@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Eric Blake <eblake@redhat.com>, John Snow <jsnow@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- qemu-block@nongnu.org, qemu-ppc@nongnu.org,
- "Daniel P . Berrange" <berrange@redhat.com>
-References: <20210903174510.751630-1-philmd@redhat.com>
- <20210903174510.751630-3-philmd@redhat.com> <875yrofxki.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <875yrofxki.fsf@linaro.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: WEWe63PxSSHs
+References: <CAP4GjT1x=9z9jwRxUg-J_nyGQKiga=xcDddWzG5a9HCkiC2Tog@mail.gmail.com>
+ <6b16b0e4-c0db-02de-1d95-ec831fdff938@amsat.org>
+In-Reply-To: <6b16b0e4-c0db-02de-1d95-ec831fdff938@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Dec 2021 18:47:19 +0000
+Message-ID: <CAFEAcA9v6JQD3OR1tKL7yJaY+=-ohhvMCzF4xpSRAATXAB59vA@mail.gmail.com>
+Subject: Re: Exception return
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42e
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: abhijeet inamdar <abhijeetinamdar3005@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+ qemu-discuss <qemu-discuss@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +GAsTKf6mqzs
 
-On 12/16/21 15:11, Alex Bennée wrote:
-> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
-> 
->> When experimenting raising GLIB_VERSION_MIN_REQUIRED to 2.68
->> (Fedora 34 provides GLib 2.68.1) we get:
->>
->>   hw/virtio/virtio-crypto.c:245:24: error: 'g_memdup' is deprecated: Use 'g_memdup2' instead [-Werror,-Wdeprecated-declarations]
->>   ...
->>
->> g_memdup() has been updated by g_memdup2() to fix eventual security
->> issues (size argument is 32-bit and could be truncated / wrapping).
->> GLib recommends to copy their static inline version of g_memdup2():
->> https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
->>
->> Our glib-compat.h provides a comment explaining how to deal with
->> these deprecated declarations (see commit e71e8cc0355
->> "glib: enforce the minimum required version and warn about old APIs").
->>
->> Following this comment suggestion, implement the g_memdup2_qemu()
->> wrapper to g_memdup2(), and use the safer equivalent inlined when
->> we are using pre-2.68 GLib.
->>
->> Reported-by: Eric Blake <eblake@redhat.com>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  include/glib-compat.h | 37 +++++++++++++++++++++++++++++++++++++
->>  1 file changed, 37 insertions(+)
->>
->> diff --git a/include/glib-compat.h b/include/glib-compat.h
->> index 9e95c888f54..8d01a8c01fb 100644
->> --- a/include/glib-compat.h
->> +++ b/include/glib-compat.h
->> @@ -68,6 +68,43 @@
->>   * without generating warnings.
->>   */
->>  
->> +/*
->> + * g_memdup2_qemu:
->> + * @mem: (nullable): the memory to copy.
->> + * @byte_size: the number of bytes to copy.
->> + *
->> + * Allocates @byte_size bytes of memory, and copies @byte_size bytes into it
->> + * from @mem. If @mem is %NULL it returns %NULL.
->> + *
->> + * This replaces g_memdup(), which was prone to integer overflows when
->> + * converting the argument from a #gsize to a #guint.
->> + *
->> + * This static inline version is a backport of the new public API from
->> + * GLib 2.68, kept internal to GLib for backport to older stable releases.
->> + * See https://gitlab.gnome.org/GNOME/glib/-/issues/2319.
->> + *
->> + * Returns: (nullable): a pointer to the newly-allocated copy of the memory,
->> + *          or %NULL if @mem is %NULL.
->> + */
->> +static inline gpointer g_memdup2_qemu(gconstpointer mem, gsize byte_size)
->> +{
->> +#if GLIB_CHECK_VERSION(2, 68, 0)
->> +    return g_memdup2(mem, byte_size);
->> +#else
->> +    gpointer new_mem;
->> +
->> +    if (mem && byte_size != 0) {
->> +        new_mem = g_malloc(byte_size);
->> +        memcpy(new_mem, mem, byte_size);
->> +    } else {
->> +        new_mem = NULL;
->> +    }
->> +
->> +    return new_mem;
->> +#endif
->> +}
->> +#define g_memdup2(m, s) g_memdup2_qemu(m, s)
->> +
-> 
-> As per our style wouldn't it make sense to just call it qemu_memdup(m,
-> s)?
+On Thu, 16 Dec 2021 at 17:44, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> Cc'ing qemu-arm developers.
+>
+> On 12/16/21 18:31, abhijeet inamdar wrote:
+> > Hi,
+> >
+> > I was running my .elf file on my custom machine(CM3) and was hit with
+> > this error when debugging and had the required -d flags and single step=
+ping.
+> >
+> > IN: Hal_MemFault
+> > 0x7004e794:  4770       bx       lr
+> >
+> > Trace 0: 0x7f4faa471100 [00000000/7004e794/0x312000c1]  Hal_MemFault
+> > R00=3D7004938d R01=3D00000000 R02=3D7004938c R03=3Dffffffff
+> > R04=3D7005e410 R05=3D10020000 R06=3De000eda0 R07=3D00000000
+> > R08=3D00000010 R09=3D1003f8e0 R10=3De000ed94 R11=3D00000000
+> > R12=3Dffffffff R13=3D1003dbe0 R14=3Dfffffff9 R15=3D7004e794
+> > XPSR=3D01000003 ---- T handler
+> > Taking exception 8 [QEMU v7M exception exit]
+> > Exception return: magic PC fffffff9 previous exception 3
+> > M profile return from interrupt with misaligned PC is UNPREDICTABLE on =
+v7M
+> > ...successful exception return
+> > DRBAR[6]: 0xa0000000 misaligned to DRSR region size, mask =3D 0x3ffffff=
+f
+> > Taking exception 3 [Prefetch Abort]
+> > ...with CFSR.IACCVIOL
+> > ...taking pending nonsecure exception 3
 
-I followed the documentation in include/glib-compat.h:
+The logging here tells you what happened:
 
-/*
- * Note that because of the GLIB_VERSION_MAX_ALLOWED constant above,
-allowing
- * use of functions from newer GLib via this compat header needs a little
- * trickery to prevent warnings being emitted.
- *
- * Consider a function from newer glib-X.Y that we want to use
- *
- *    int g_foo(const char *wibble)
- *
- * We must define a static inline function with the same signature that does
- * what we need, but with a "_qemu" suffix e.g.
- *
- * static inline void g_foo_qemu(const char *wibble)
- * {
- *     #if GLIB_CHECK_VERSION(X, Y, 0)
- *        g_foo(wibble)
- *     #else
- *        g_something_equivalent_in_older_glib(wibble);
- *     #endif
- * }
- *
- * The #pragma at the top of this file turns off -Wdeprecated-declarations,
- * ensuring this wrapper function impl doesn't trigger the compiler warning
- * about using too new glib APIs. Finally we can do
- *
- *   #define g_foo(a) g_foo_qemu(a)
- *
- * So now the code elsewhere in QEMU, which *does* have the
- * -Wdeprecated-declarations warning active, can call g_foo(...) as normal,
- * without generating warnings.
- */
+ * we are in an exception handler
+ * we do the bx lr to magic value which is M-profile's exception-return
+ * ...but there's something wrong with the return address we pull
+   off the stack, because it's not an aligned value (its least
+   significant bit is set)
+ * moreover, it's an address that corresponds to an MPU region
+   that has been misprogrammed (the DRBAR value isn't right);
+   the MPU treats such regions as not matching
+ * and so we take an instruction access fault
 
-which is how g_unix_get_passwd_entry_qemu() is implemented.
+So you have two problems:
+ (1) the PC value on the stack that you're trying to return to is wrong
+ (2) you're programming the MPU wrong
 
-Should we reword the documentation first?
+You need to investigate and fix both.
+
+-- PMM

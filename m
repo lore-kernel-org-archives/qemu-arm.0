@@ -1,107 +1,105 @@
-Received: by 2002:a05:6214:3f4:0:0:0:0 with SMTP id cf20csp1718376qvb;
-        Thu, 16 Dec 2021 10:49:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzKidZVyAmonGO1fXYefmOg2nlH/chzZzWyBLdXfgrg8pNPb8zQ/i8HgaaBaMod742Nfctv
-X-Received: by 2002:a5b:ecc:: with SMTP id a12mr15554791ybs.347.1639680561852;
-        Thu, 16 Dec 2021 10:49:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639680561; cv=none;
+Received: by 2002:a05:6214:3f4:0:0:0:0 with SMTP id cf20csp1776816qvb;
+        Thu, 16 Dec 2021 12:07:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz6dD28BGTFynPt2FQLOqXLcD1hztwZplikhXVaV3WPotE4iYrqoMMDEFHYuxuZuY+Ck2ag
+X-Received: by 2002:a05:622a:148e:: with SMTP id t14mr18763655qtx.266.1639685236021;
+        Thu, 16 Dec 2021 12:07:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639685236; cv=none;
         d=google.com; s=arc-20160816;
-        b=LUUa929TbdluZBJZ0ew0n0Rk/JH3YLz2/GKKftcpySXzxJNDmXkaNRb7ZFwdsvoiAo
-         HnYQfSsG0OkQ9eTYY6SDCatxth+zH8jN/cMawgkMY3KAq8CRvpEkbeuvlYMf3HVdzky8
-         LAWk0heXqEwJU0wXAkBj6a+dfl8yWrjiSKvnuAmvuWnEvKK+F70oroSnqmFlqhi56tSg
-         DUEfgWc3R3GYtD64RD1SdPlOdckJNOWSxoFc1IJ/eH0RckJ4bqmBl3z6/QjoFjV+w2Gw
-         jyN3nbxPtrnIgADls8CVUqpb8bb5H+fsbGP4mD3YgG+RFRPft9ZPwYirNMePOxoFRaKV
-         jMmA==
+        b=LkQZiN9WB7pN8R8rXj1aJE59BmuZSbmnivMm0xATFl85ktsjTAB0BhZf54kaAvjySq
+         /acb+8MhSmOdaaiOC8SwAn4SGEPWvlubSzIM2I1YZLEh/lYsHl0n2pm9kZbfwY9AknrB
+         viJ6wOqbeyy2vLcMP8fxxoKthaWeFlfTHt7zFyhObpGkWsOssvOl4+Jt6r5z9yhfhFDw
+         tL/qtQHWpEqj9cipHj880nXdNE3OSC2gCFcCMRGXUhwRZLSIzSXUpXdtU/wMrDp1/PlM
+         olafcSwfNMXH/f1V0Xo0bsloQ7puGOBGa+r2o9QR8cghodTrruw4O55LP1SC++kQiZoN
+         jmyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=ah7hFnqyPldKY1f+xfKUjnDd1bmDVbuCIQ+aapZsJR8=;
-        b=lvtAeUGb6j9sJLYjMyQXZ8QOGgHTuIg8LhBzdNmCCQBUEvP9vr7bx4o7ky1oLbw3S2
-         SE6/Il3STaVH85C7aYkDY9wkRobZX8E+yYCs8XDq5IW556+0XTZP9pGxf7GZYFtQYS8T
-         NodzRV5Ux1xru6qs+IEIwOIWiRuJja3wu6Aq/ZORQ3AVdV/VPmRa6Cq4tkXB4+4h1eRp
-         hOF8ZNRGmW+Z2PGAxtsNniqHAtIW97BBewMWPI5er8rRIiSBQmhEwnTmODIYIqa4W7wW
-         IH/ca3S80zDofnSfGcevOkJ+0D+TdBSjPbJwUrNbPKJwlxbSi2QkZVYQ5htmAD3o9kMM
-         u30A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=nWTKQ9psyQ13r8t6k5U5jGGROERzHfOfOUuOaiS7K/I=;
+        b=HATdJGm0YntGZVHjC3sj/wxXgynWctq5AnRO/gyODFhCkiogNN77rVIY6prMqsRfVW
+         B41RXW51WD++jyt7oBPtuTRbrJYPSoXG7MzpE12Scr+apnALl7hBTQL42UsRIp7CQiLD
+         Z+17u9J4ZxiKu88r0YVyqFoqmbk5fk7ZlBTqCdUy8IWfuWBEF2aVm7RcWf6tFS4BjIo6
+         3r86sPhmhkFOeORSe3PFsdU2DW6ifhSrIR1HyAERtnO5plBx4u26ZQfD8kccexwlpRUB
+         +5mAXBhYzC+k22bvRQDy2UQIe6i4D8uimPNm7i+byRf4y08gnNjoNLCCuu8e2q3YI+tO
+         sQxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=L1Z+x8Ey;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qOgQiYWc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p12si8032836ybu.218.2021.12.16.10.49.21
+        by mx.google.com with ESMTPS id bm42si3096463qkb.156.2021.12.16.12.07.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Dec 2021 10:49:21 -0800 (PST)
+        Thu, 16 Dec 2021 12:07:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=L1Z+x8Ey;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qOgQiYWc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52996 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mxvof-0002cW-2G
-	for alex.bennee@linaro.org; Thu, 16 Dec 2021 13:49:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38040)
+	id 1mxx23-0006pH-GE
+	for alex.bennee@linaro.org; Thu, 16 Dec 2021 15:07:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59684)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mxvmz-0001oE-4M
- for qemu-arm@nongnu.org; Thu, 16 Dec 2021 13:47:37 -0500
-Received: from [2a00:1450:4864:20::42e] (port=45640
- helo=mail-wr1-x42e.google.com)
+ (Exim 4.90_1) (envelope-from <abhijeetinamdar3005@gmail.com>)
+ id 1mxx1r-0006ls-E3; Thu, 16 Dec 2021 15:07:03 -0500
+Received: from [2607:f8b0:4864:20::82d] (port=34784
+ helo=mail-qt1-x82d.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mxvmx-0001GV-6K
- for qemu-arm@nongnu.org; Thu, 16 Dec 2021 13:47:36 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id o13so45787087wrs.12
- for <qemu-arm@nongnu.org>; Thu, 16 Dec 2021 10:47:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <abhijeetinamdar3005@gmail.com>)
+ id 1mxx1p-0002dO-Ju; Thu, 16 Dec 2021 15:07:03 -0500
+Received: by mail-qt1-x82d.google.com with SMTP id o17so436316qtk.1;
+ Thu, 16 Dec 2021 12:07:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=ah7hFnqyPldKY1f+xfKUjnDd1bmDVbuCIQ+aapZsJR8=;
- b=L1Z+x8EykT1FfSYcYZX9x9wzFZTxiNViiLtAMVvX+rS71QCtreSi41Gy8MvC+YdRqK
- FGL6BYouEEmR9b3in7Tma4s0T4y3L+JatE+JJ14v/oBJXEW/C7n5iTvqbeW+VVGC8XNt
- VUC30dM3J7nh9kYYWidxYqXZYniZLBC/cDUTEhIRzV2K4Q0nXJD8bV+AqP6RDpR0ch+R
- A2BVBiwiA8BHKyvCj8aUt6KB5T5iLRste/w7YmiPBHn7WO7thr8CLpkMi0PLrtxAOrWj
- n4wV0I0YvLn9A7Aoojm5p+B9iKIF45Ip228Y7NyTfoUXUq2bX+9G7gwwMsrR6Lmf6k/C
- U0gQ==
+ :cc; bh=nWTKQ9psyQ13r8t6k5U5jGGROERzHfOfOUuOaiS7K/I=;
+ b=qOgQiYWcZJD0m1YC1m6zzUwhxhIdddufh7vW+KJQ3a3GxK4AXDBFJxqmtF4G9LfgIt
+ /764ORNknCe1QL+OhFbJfupxuu/cURdwYQk8j/qlrxE6iYA1v+GtgZTS+DJQkigQlS4h
+ NQOqLphlF5JAm+Ya3TIpnHsHQVBRBPq+b+2ciwMNKyfb3jg2e/UOLYlMcOOvwYQlXNlI
+ 3MhXdfwrYYBDXkrt8CSaqatvQ77lkgsj7V/GcRIERR5PIGrQOWjmixaDxIS4k86M1Mq4
+ Tdg2TL66iPHpt1hmHGwj1Dx8xN0gdCNfYKTO5BlH9UUWX7/Wx1VXAyOQGsErAgJ/5vTF
+ 1LNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=ah7hFnqyPldKY1f+xfKUjnDd1bmDVbuCIQ+aapZsJR8=;
- b=Djf6V7nhuHc1kjdaCsuuQmURVhAqdcgw0Ph3jviPPelu3fyrCF+5t8Ueu+CvmMb3Es
- mH4QmjWax3TzU3Jag/Wga4V/0QqZRBJVan1drfzkIdWC5aPvGal7LhKGGqY+6+XA2kuz
- 0ZBoDs8u3xRslyiivqRRxgaXa67NElck8EY48enwI1bchc6yNNovnAMHOsiBGgDrJ1Y/
- gN09mhfN6kRzniAtJgHBwwS9+raFOtaJ4sI1G1M5QGK1Z/HhAG/efNc0vzMML9I4rYnK
- a4fohjvlf9KzQyLwC2SaMG4QYfK/IOMW2f1HBj0My55mLq1EjDPpw5AHZeKmiGq+Z9h7
- mElQ==
-X-Gm-Message-State: AOAM531UngZxtCq8VUKroaV7ucelmHIrfvkFTHhWiAazH7sEckhryB6a
- w2l0gio7HB5TKGgzZ33P3PO3/Mow3PMgzCouDvoJkw==
-X-Received: by 2002:a05:6000:3c4:: with SMTP id
- b4mr3614406wrg.172.1639680450136; 
- Thu, 16 Dec 2021 10:47:30 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=nWTKQ9psyQ13r8t6k5U5jGGROERzHfOfOUuOaiS7K/I=;
+ b=UzgiUm37Moy7sbq3GE/HBxHFHcC1jFipudDlyB9tNRtxghQJLr+HYCcrclAlp11Opd
+ 2NW0f7UKx2I7Ut11TxXUR1UPrVq6CaQ2vyufzTNvqN/WVWx9rZ64qA3p/1DyWSfXFXvS
+ kP+bnzGZFBGldIfBeME2mV455yGIPuGD1U15ZZ2n8gXmBexFqpByYJMFX/WTtoCKiUc9
+ 1OFJTsRVwRxWZGtBlKlwLBorwBjN9wqqibCxRot+bPy01bWbdrMgaqL/5qqTUsJrhjfH
+ C1vj0XEvqudRo5NDH4E2OXwlK9WCEJqJbwytCvCdAStFa6SD1gDq0VKOdnEVsTwNCecW
+ tb0g==
+X-Gm-Message-State: AOAM533mx8vIBqG2G8zmYZMWbjisVqps7J/13ADquPLkJ4tmZLeFO54W
+ 8AJbv8KyY8V85wAtLD931naSPxY38aV6pmdat/o=
+X-Received: by 2002:a05:622a:612:: with SMTP id
+ z18mr18719223qta.442.1639685220074; 
+ Thu, 16 Dec 2021 12:07:00 -0800 (PST)
 MIME-Version: 1.0
 References: <CAP4GjT1x=9z9jwRxUg-J_nyGQKiga=xcDddWzG5a9HCkiC2Tog@mail.gmail.com>
  <6b16b0e4-c0db-02de-1d95-ec831fdff938@amsat.org>
-In-Reply-To: <6b16b0e4-c0db-02de-1d95-ec831fdff938@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Dec 2021 18:47:19 +0000
-Message-ID: <CAFEAcA9v6JQD3OR1tKL7yJaY+=-ohhvMCzF4xpSRAATXAB59vA@mail.gmail.com>
+ <CAFEAcA9v6JQD3OR1tKL7yJaY+=-ohhvMCzF4xpSRAATXAB59vA@mail.gmail.com>
+ <CAP4GjT1dhNPhHgNWJFH1CJg4zkZU0zkGr-rAqTZE1-HzqG=ahw@mail.gmail.com>
+In-Reply-To: <CAP4GjT1dhNPhHgNWJFH1CJg4zkZU0zkGr-rAqTZE1-HzqG=ahw@mail.gmail.com>
+From: abhijeet inamdar <abhijeetinamdar3005@gmail.com>
+Date: Thu, 16 Dec 2021 21:06:49 +0100
+Message-ID: <CAP4GjT3uOQgqc6pGDEKJjALSgjpHKYUaiZEHMtnYKWxV9oxfZQ@mail.gmail.com>
 Subject: Re: Exception return
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42e
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="00000000000016098205d348f76c"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::82d
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
+ envelope-from=abhijeetinamdar3005@gmail.com; helo=mail-qt1-x82d.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -116,61 +114,185 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: abhijeet inamdar <abhijeetinamdar3005@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
  qemu-discuss <qemu-discuss@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +GAsTKf6mqzs
+X-TUID: MYQu/4b/I4ZQ
 
-On Thu, 16 Dec 2021 at 17:44, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
+--00000000000016098205d348f76c
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+If I won't make that change it gives me immediate error as follows:
+
+Taking exception 18 [v7M INVSTATE UsageFault]
+...BusFault with BFSR.STKERR
+...taking pending nonsecure exception 3
+qemu: fatal: Lockup: can't take terminal derived exception (original
+exception priority -1)
+
+BR.
+Abhijeet.
+
+On Thu, Dec 16, 2021 at 9:02 PM abhijeet inamdar <
+abhijeetinamdar3005@gmail.com> wrote:
+
+> I made some changes to the code in qemu :
+> https://github.com/qemu/qemu/blob/stable-6.0/target/arm/cpu.c#L339 . I
+> have commented out the variable vecbase and directly given the address of
+> my vector address(not zero) or where they are located in our binary file.
+> Is that a problem?
 >
-> Cc'ing qemu-arm developers.
+> BR.
+> Abhijeet.
 >
-> On 12/16/21 18:31, abhijeet inamdar wrote:
-> > Hi,
-> >
-> > I was running my .elf file on my custom machine(CM3) and was hit with
-> > this error when debugging and had the required -d flags and single step=
-ping.
-> >
-> > IN: Hal_MemFault
-> > 0x7004e794:  4770       bx       lr
-> >
-> > Trace 0: 0x7f4faa471100 [00000000/7004e794/0x312000c1]  Hal_MemFault
-> > R00=3D7004938d R01=3D00000000 R02=3D7004938c R03=3Dffffffff
-> > R04=3D7005e410 R05=3D10020000 R06=3De000eda0 R07=3D00000000
-> > R08=3D00000010 R09=3D1003f8e0 R10=3De000ed94 R11=3D00000000
-> > R12=3Dffffffff R13=3D1003dbe0 R14=3Dfffffff9 R15=3D7004e794
-> > XPSR=3D01000003 ---- T handler
-> > Taking exception 8 [QEMU v7M exception exit]
-> > Exception return: magic PC fffffff9 previous exception 3
-> > M profile return from interrupt with misaligned PC is UNPREDICTABLE on =
-v7M
-> > ...successful exception return
-> > DRBAR[6]: 0xa0000000 misaligned to DRSR region size, mask =3D 0x3ffffff=
-f
-> > Taking exception 3 [Prefetch Abort]
-> > ...with CFSR.IACCVIOL
-> > ...taking pending nonsecure exception 3
+> On Thu, Dec 16, 2021 at 7:47 PM Peter Maydell <peter.maydell@linaro.org>
+> wrote:
+>
+>> On Thu, 16 Dec 2021 at 17:44, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg>
+>> wrote:
+>> >
+>> > Cc'ing qemu-arm developers.
+>> >
+>> > On 12/16/21 18:31, abhijeet inamdar wrote:
+>> > > Hi,
+>> > >
+>> > > I was running my .elf file on my custom machine(CM3) and was hit wit=
+h
+>> > > this error when debugging and had the required -d flags and single
+>> stepping.
+>> > >
+>> > > IN: Hal_MemFault
+>> > > 0x7004e794:  4770       bx       lr
+>> > >
+>> > > Trace 0: 0x7f4faa471100 [00000000/7004e794/0x312000c1]  Hal_MemFault
+>> > > R00=3D7004938d R01=3D00000000 R02=3D7004938c R03=3Dffffffff
+>> > > R04=3D7005e410 R05=3D10020000 R06=3De000eda0 R07=3D00000000
+>> > > R08=3D00000010 R09=3D1003f8e0 R10=3De000ed94 R11=3D00000000
+>> > > R12=3Dffffffff R13=3D1003dbe0 R14=3Dfffffff9 R15=3D7004e794
+>> > > XPSR=3D01000003 ---- T handler
+>> > > Taking exception 8 [QEMU v7M exception exit]
+>> > > Exception return: magic PC fffffff9 previous exception 3
+>> > > M profile return from interrupt with misaligned PC is UNPREDICTABLE
+>> on v7M
+>> > > ...successful exception return
+>> > > DRBAR[6]: 0xa0000000 misaligned to DRSR region size, mask =3D 0x3fff=
+ffff
+>> > > Taking exception 3 [Prefetch Abort]
+>> > > ...with CFSR.IACCVIOL
+>> > > ...taking pending nonsecure exception 3
+>>
+>> The logging here tells you what happened:
+>>
+>>  * we are in an exception handler
+>>  * we do the bx lr to magic value which is M-profile's exception-return
+>>  * ...but there's something wrong with the return address we pull
+>>    off the stack, because it's not an aligned value (its least
+>>    significant bit is set)
+>>  * moreover, it's an address that corresponds to an MPU region
+>>    that has been misprogrammed (the DRBAR value isn't right);
+>>    the MPU treats such regions as not matching
+>>  * and so we take an instruction access fault
+>>
+>> So you have two problems:
+>>  (1) the PC value on the stack that you're trying to return to is wrong
+>>  (2) you're programming the MPU wrong
+>>
+>> You need to investigate and fix both.
+>>
+>> -- PMM
+>>
+>
 
-The logging here tells you what happened:
+--00000000000016098205d348f76c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
- * we are in an exception handler
- * we do the bx lr to magic value which is M-profile's exception-return
- * ...but there's something wrong with the return address we pull
-   off the stack, because it's not an aligned value (its least
-   significant bit is set)
- * moreover, it's an address that corresponds to an MPU region
-   that has been misprogrammed (the DRBAR value isn't right);
-   the MPU treats such regions as not matching
- * and so we take an instruction access fault
+<div dir=3D"ltr">If I won&#39;t make=C2=A0that=C2=A0change it gives me imme=
+diate error as follows:<div><br></div><div>Taking exception 18 [v7M INVSTAT=
+E UsageFault]<br>...BusFault with BFSR.STKERR<br>...taking pending nonsecur=
+e exception 3<br>qemu: fatal: Lockup: can&#39;t take terminal derived excep=
+tion (original exception priority -1)<br></div><div><br></div><div>BR.</div=
+><div>Abhijeet.</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Thu, Dec 16, 2021 at 9:02 PM abhijeet inamdar &lt;<=
+a href=3D"mailto:abhijeetinamdar3005@gmail.com">abhijeetinamdar3005@gmail.c=
+om</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
+n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
+"><div dir=3D"ltr">I made some changes to the code in qemu :=C2=A0<a href=
+=3D"https://github.com/qemu/qemu/blob/stable-6.0/target/arm/cpu.c#L339" tar=
+get=3D"_blank">https://github.com/qemu/qemu/blob/stable-6.0/target/arm/cpu.=
+c#L339</a> . I have commented out the variable vecbase and directly given t=
+he address of my vector address(not zero) or where they are=C2=A0located in=
+ our binary file. Is that a problem?=C2=A0<div><br></div><div>BR.</div><div=
+>Abhijeet.</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Thu, Dec 16, 2021 at 7:47 PM Peter Maydell &lt;<a href=
+=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro=
+.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
+gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
+ex">On Thu, 16 Dec 2021 at 17:44, Philippe Mathieu-Daud=C3=A9 &lt;<a href=
+=3D"mailto:f4bug@amsat.org" target=3D"_blank">f4bug@amsat.org</a>&gt; wrote=
+:<br>
+&gt;<br>
+&gt; Cc&#39;ing qemu-arm developers.<br>
+&gt;<br>
+&gt; On 12/16/21 18:31, abhijeet inamdar wrote:<br>
+&gt; &gt; Hi,<br>
+&gt; &gt;<br>
+&gt; &gt; I was running my .elf file on my custom machine(CM3) and was hit =
+with<br>
+&gt; &gt; this error when debugging and had the required -d flags and singl=
+e stepping.<br>
+&gt; &gt;<br>
+&gt; &gt; IN: Hal_MemFault<br>
+&gt; &gt; 0x7004e794:=C2=A0 4770=C2=A0 =C2=A0 =C2=A0 =C2=A0bx=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0lr<br>
+&gt; &gt;<br>
+&gt; &gt; Trace 0: 0x7f4faa471100 [00000000/7004e794/0x312000c1]=C2=A0 Hal_=
+MemFault<br>
+&gt; &gt; R00=3D7004938d R01=3D00000000 R02=3D7004938c R03=3Dffffffff<br>
+&gt; &gt; R04=3D7005e410 R05=3D10020000 R06=3De000eda0 R07=3D00000000<br>
+&gt; &gt; R08=3D00000010 R09=3D1003f8e0 R10=3De000ed94 R11=3D00000000<br>
+&gt; &gt; R12=3Dffffffff R13=3D1003dbe0 R14=3Dfffffff9 R15=3D7004e794<br>
+&gt; &gt; XPSR=3D01000003 ---- T handler<br>
+&gt; &gt; Taking exception 8 [QEMU v7M exception exit]<br>
+&gt; &gt; Exception return: magic PC fffffff9 previous exception 3<br>
+&gt; &gt; M profile return from interrupt with misaligned PC is UNPREDICTAB=
+LE on v7M<br>
+&gt; &gt; ...successful exception return<br>
+&gt; &gt; DRBAR[6]: 0xa0000000 misaligned to DRSR region size, mask =3D 0x3=
+fffffff<br>
+&gt; &gt; Taking exception 3 [Prefetch Abort]<br>
+&gt; &gt; ...with CFSR.IACCVIOL<br>
+&gt; &gt; ...taking pending nonsecure exception 3<br>
+<br>
+The logging here tells you what happened:<br>
+<br>
+=C2=A0* we are in an exception handler<br>
+=C2=A0* we do the bx lr to magic value which is M-profile&#39;s exception-r=
+eturn<br>
+=C2=A0* ...but there&#39;s something wrong with the return address we pull<=
+br>
+=C2=A0 =C2=A0off the stack, because it&#39;s not an aligned value (its leas=
+t<br>
+=C2=A0 =C2=A0significant bit is set)<br>
+=C2=A0* moreover, it&#39;s an address that corresponds to an MPU region<br>
+=C2=A0 =C2=A0that has been misprogrammed (the DRBAR value isn&#39;t right);=
+<br>
+=C2=A0 =C2=A0the MPU treats such regions as not matching<br>
+=C2=A0* and so we take an instruction access fault<br>
+<br>
+So you have two problems:<br>
+=C2=A0(1) the PC value on the stack that you&#39;re trying to return to is =
+wrong<br>
+=C2=A0(2) you&#39;re programming the MPU wrong<br>
+<br>
+You need to investigate and fix both.<br>
+<br>
+-- PMM<br>
+</blockquote></div>
+</blockquote></div>
 
-So you have two problems:
- (1) the PC value on the stack that you're trying to return to is wrong
- (2) you're programming the MPU wrong
-
-You need to investigate and fix both.
-
--- PMM
+--00000000000016098205d348f76c--

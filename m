@@ -1,1009 +1,165 @@
-Received: by 2002:a19:791d:0:0:0:0:0 with SMTP id u29csp1033245lfc;
-        Fri, 17 Dec 2021 15:33:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy0uUYDXwDieUfJPyzhKLsOd92BKacWplVLcVZiwW95UnRzfwDhrKUs72vIH+W5tpeVb15k
-X-Received: by 2002:a92:1944:: with SMTP id e4mr2877592ilm.242.1639784018155;
-        Fri, 17 Dec 2021 15:33:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639784018; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp1206352lfb;
+        Mon, 20 Dec 2021 09:22:12 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxK68/51ceBKLsaMgn9YI8wjbkJsr2jhhHICN+1xVOBSB4h9l8gjkNhdvp3ss69B477qWU7
+X-Received: by 2002:a05:622a:151:: with SMTP id v17mr2147950qtw.167.1640020932329;
+        Mon, 20 Dec 2021 09:22:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640020932; cv=none;
         d=google.com; s=arc-20160816;
-        b=vEgdT4g5qTE6CpO5WEcUqp8fwWqBL7JYROOivx+SLSjpsaHcvJI2CMo/H2c1HorABH
-         1l3z88U/q/oOy5rUa1nEQEkB8Hx5o/+zXkjIfxsfMuH9HM96OoCldH5oWwqWtjTzsFh5
-         F/0U3fpbeQUzALXmumkKqRFuDtL1VfLQsAnteQhsfsEzDZ2TdJjk+3NHobXpWKNGmqMk
-         n3da6dHh6dsGUmFboaH48JOq/R2qDmI89znC6T73cmk0W0/YJ8FdYMOgKJ6RXRR0aHko
-         rUeVijpQI/Uh9QV/A0pq5dMoma+Gik2kBQFj7u6m5XlPmy9UraZDqOZ7/HgOwW14sHqp
-         RDOQ==
+        b=SRy/4wBYbJ0itUTc+BGtAyW4MPpQFWxcTCWbThcV74jcn87G28GD4hSOqvL8Ihmit9
+         QgV3g6SYXGPrr8yBmsH6o+pys04yj7WdSD6L/xUJRefvNI+/eUfSF8djLYPwuTanS2AW
+         HnbzkWE+KDRdLjBiJNK1Up5xVJjXLIrsICnREmdUpdwEcZIKOZ25ainAp+RK4hrPX9S4
+         xa33BTqKtCs+MbAneCbyHyugx1QKGb9+tFe2H9B7c0whnWCAs05FINLef6LJIJat5O0L
+         nEI+ALpaA4TTp0n1jjthYTIxibrrYheX2SNKnjpJzzssmnNFE3jld2i+m5oSWog9zu8p
+         8iTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=vUeM6y/jxWLBo+hBUMtJ1hK3mvSqhW1357x8/+iqoNs=;
-        b=UdcBXsdb+cMWLTx45MBIzYxCUeeq4uERwBgXnLy/MBdlYT7LTcs/zOk0FktyL+pGdp
-         +Ewx+249ntX4sRc5mXnynY37CGs+L+JWKbpBMLXGd/3fYrmoZMle4MHSqm2D8OfU2qaq
-         z/JHmpVI+jPC/FTDc0bmOVQYphYo8kYY9m7ZDxEN/45VGguiieaRQlL9YlodoGtNFhLF
-         6K5XvWv/pxz2Nt8neNR0sDPZ0wPO6iBoPgFSEWCSwA1WFrsowhN5jcjo64cp0PxzEAGu
-         vuA//UZGVsokAixZPaIYefb6q0XOLZWfAaKrAwd+0D+YthzogjDVNqOBlPjhIj8+IH6Q
-         qxNA==
+         :content-language:in-reply-to:from:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=PK6CqLqNO44fjRxA0cdMixayW1tdGf2LpNBIt9XXOww=;
+        b=lxgdLYDagd4ndnWZ7zhzP3q3FIyu/ZAIaf1ldtFlpCyHZnQCLFLzbaSkavQD4bxOzG
+         dchTdTTj5yQLeuWX+2AflVRNrQDuYOTgE4r8/ZujJHvc9qg4m5I44Lz0Cu11uaLa3O+8
+         FRNlltRblf+nmVp+/uCpjejkTxau7DH6OOZUS5hienY6FqTpoAyHQ4zqYuiaTY2tX+Re
+         dxKH6sT4M72hbniptWf8XKVtYueiyuvIQKnDiltzOYLebC9RxGQ6+kKRju4tTEtwyPK9
+         wq3mvvlggXhq6n6eXW9sppccFg9i45/SIqAo2SH164OPmN1Q+8LyooHQfmqboohNEs+g
+         vBbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=P1uyCtde;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ISiSkncB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g8si5804552ilf.153.2021.12.17.15.33.37
+        by mx.google.com with ESMTPS id hu13si7341415qvb.9.2021.12.20.09.22.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Dec 2021 15:33:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Dec 2021 09:22:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=P1uyCtde;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40954 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ISiSkncB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1myMjI-0005Dh-Kl
-	for alex.bennee@linaro.org; Fri, 17 Dec 2021 18:33:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51460)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mzMMU-0002pT-NT
+	for alex.bennee@linaro.org; Mon, 20 Dec 2021 12:22:11 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52386)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1myMgQ-00023b-Ku; Fri, 17 Dec 2021 18:30:38 -0500
-Received: from [2a00:1450:4864:20::431] (port=36750
- helo=mail-wr1-x431.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1myMgN-0000ks-V8; Fri, 17 Dec 2021 18:30:38 -0500
-Received: by mail-wr1-x431.google.com with SMTP id r17so6493840wrc.3;
- Fri, 17 Dec 2021 15:30:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=vUeM6y/jxWLBo+hBUMtJ1hK3mvSqhW1357x8/+iqoNs=;
- b=P1uyCtdeE0DXMzT0WeqojyiVLKSCEPM0k94K+iBwwZ3EtlWTVq9HzgTh7ebjldmxsv
- I03wKs2dPoyTjzwnyHH389gMat9GmqhfR3TIJIhJ9eW8safIlHTLbM9ZBTf6DGfT2fgj
- /mLQ1N5TE4lmKLztPhH60IB7cueQT/hmsfSkudgAEi/414gkD1JcGbxCzsGFU2SMArRi
- 1+SJR9uULe+EOSlkg3sdHGAe/RHM2hbj6U58eRfY4K6D8JSDuC84KS9ZJj+Hv3mZ3++Z
- 0MXOLN+RNXn0+cSfbvrYPHtFQsMUqP0LCKh9e29Afzo7LP/w3P3Y5GOhfX+Vj/EPo6sR
- 1aBw==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mzKxI-0002Rt-Ig
+ for qemu-arm@nongnu.org; Mon, 20 Dec 2021 10:52:04 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:38310)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mzKxG-0004o1-Ts
+ for qemu-arm@nongnu.org; Mon, 20 Dec 2021 10:52:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1640015522;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=PK6CqLqNO44fjRxA0cdMixayW1tdGf2LpNBIt9XXOww=;
+ b=ISiSkncBU6aoeduINbdEDV9+vGdbERcj7PqVyLY0YEzk/NKBCdvBBLlD93jzQeXPelpN6C
+ wbZN9gB0gm58v4DoC+tVoA7mZUckXQkX3woYF+/uzZiFAk+/CloivyqzgXJL3hlyqhmTQg
+ KkGV+6gDJOu7FBbqXxSH1otzFO4rzzc=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-642-ijp_RbTgNPak-vijpQzUHA-1; Mon, 20 Dec 2021 02:26:36 -0500
+X-MC-Unique: ijp_RbTgNPak-vijpQzUHA-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ p15-20020adfaa0f000000b001a240b45c1fso3419359wrd.4
+ for <qemu-arm@nongnu.org>; Sun, 19 Dec 2021 23:26:36 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=vUeM6y/jxWLBo+hBUMtJ1hK3mvSqhW1357x8/+iqoNs=;
- b=iljEUWbEs1A/rJcVuPOyVyCeNuQkstpxWE30REwWp4IX3CokGNMQ9l3XlEugnG/4r5
- X1CzDVgWBuvk5bd0Ew3X35ehRZY/qvNmkNws4eNLzeAvtm0RHBNBTY9cx1FFTVVvJLNx
- COfRZ86vp9lRmWzBE9Kozye5+fOeuUZIDIu/HLAd39AfKgizKd/RXykDI2QJ3NoHP9jq
- /bgvo3WAolaEjkmp1SPQ7WPsIGdFdSqjKduYq6inICVAMznMaFyPqq6STOANyzzKNffv
- hDvel1wEK8Z1YfH0XEX89AfeqMKoLJsDouss6xbj4GO+cTQCMN/B7s422QlJqtlppaAX
- RzTg==
-X-Gm-Message-State: AOAM531tg5byUmNMQrKCTdrE2ySIYEdGezgshgkojgx17gjzVObxQ//9
- rWkgZuVLtIr2nnUNM2BkV+z+l6m0eg0=
-X-Received: by 2002:a05:6000:2c9:: with SMTP id
- o9mr1710211wry.377.1639783824730; 
- Fri, 17 Dec 2021 15:30:24 -0800 (PST)
-Received: from x1w.redhat.com (174.red-83-50-185.dynamicip.rima-tde.net.
- [83.50.185.174])
- by smtp.gmail.com with ESMTPSA id q13sm5080022wrr.64.2021.12.17.15.30.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Dec 2021 15:30:24 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 3/3] hw/net: Move MV88W8618 network device out of hw/arm/
- directory
-Date: Sat, 18 Dec 2021 00:30:06 +0100
-Message-Id: <20211217233006.1466747-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.33.1
-In-Reply-To: <20211217233006.1466747-1-f4bug@amsat.org>
-References: <20211217233006.1466747-1-f4bug@amsat.org>
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:cc:from:in-reply-to
+ :content-transfer-encoding;
+ bh=PK6CqLqNO44fjRxA0cdMixayW1tdGf2LpNBIt9XXOww=;
+ b=xP2z2ItejXdghEW+nHRuyn/C/iFchxKyDPG6Ys9MgC/bA7VnbvWl3zOIYHEn4Mf+qM
+ gAXTlr7SkRlZK2AM7rCjUu5aWBehf1cDv2cYboVCzpe0mSq2MEnPnIxhAvCKJ88S/KQB
+ FsPF59tFvkCELipJE4KThwcMZatxH64JElH+tvN2znWzmEfvukOdmL6YOBlmEX+TlauI
+ G08tFqAfBLu02rx/phogvrF/z1vLP4n4E5l4c1hrNjGvp+srKYEmtNaXDfYKeL480zPX
+ /t26EwUEhPsgySLxBWDZq1p74xrw2xGi38zbzYgeVz+FYUi1bRxdMDkBCExu5Dod+svY
+ fjvQ==
+X-Gm-Message-State: AOAM530VTr2CNiioLQNUUqm7pArirqebJH82/F8kX627BynAV0jKvyq3
+ 1U4uzFO588N+nrIpzM9VS2YkE9TV7xYsdOxcUEhBACuHQwn87GnUkhdLqIzGn1H7CjiGjiVsL3j
+ ZhulHyPXyD5Xr
+X-Received: by 2002:a05:6000:1845:: with SMTP id
+ c5mr1467098wri.420.1639985195650; 
+ Sun, 19 Dec 2021 23:26:35 -0800 (PST)
+X-Received: by 2002:a05:6000:1845:: with SMTP id
+ c5mr1466954wri.420.1639985192317; 
+ Sun, 19 Dec 2021 23:26:32 -0800 (PST)
+Received: from [10.33.192.183] (nat-pool-str-t.redhat.com. [149.14.88.106])
+ by smtp.gmail.com with ESMTPSA id d2sm14593496wra.61.2021.12.19.23.26.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 19 Dec 2021 23:26:31 -0800 (PST)
+Message-ID: <4dfc91ff-1835-e796-772c-0774e089b57b@redhat.com>
+Date: Mon, 20 Dec 2021 08:26:30 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::431
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: build qemu on Monterey?
+To: Ani Sinha <ani@anisinha.ca>, qemu-devel@nongnu.org
+References: <alpine.DEB.2.22.394.2112182006430.46303@anisinha-lenovo>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <alpine.DEB.2.22.394.2112182006430.46303@anisinha-lenovo>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -65
+X-Spam_score: -6.6
+X-Spam_bar: ------
+X-Spam_report: (-6.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.209,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-3.608, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
- Gerd Hoffmann <kraxel@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ta86wB2UDYva
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XmI/PzvXbc21
 
-The Marvell 88W8618 network device is hidden in the Musicpal
-machine. Move it into a new unit file under the hw/net/ directory.
+On 18/12/2021 15.38, Ani Sinha wrote:
+> Hi :
+> Has anyone tried this? Yes, I know about
+> https://wiki.qemu.org/Hosts/Mac
+> 
+> but I am getting
+> 
+> $ ./configure --target-list=x86_64-softmmu
+> Using './build' as the directory for build output
+> Disabling PIE due to missing toolchain support
+> 
+> ERROR: glib-2.56 gthread-2.0 is required to compile QEMU
+> 
+> when glib is already installed using brew.
+> 
+> Any ideas?
 
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/net/mv88w8618_eth.h |  12 +
- hw/arm/musicpal.c              | 380 +------------------------------
- hw/net/mv88w8618_eth.c         | 402 +++++++++++++++++++++++++++++++++
- MAINTAINERS                    |   2 +
- hw/net/meson.build             |   1 +
- 5 files changed, 418 insertions(+), 379 deletions(-)
- create mode 100644 include/hw/net/mv88w8618_eth.h
- create mode 100644 hw/net/mv88w8618_eth.c
+1) Check "config.log" to see the exact reason for the failure
 
-diff --git a/include/hw/net/mv88w8618_eth.h b/include/hw/net/mv88w8618_eth.h
-new file mode 100644
-index 00000000000..8f4c746092f
---- /dev/null
-+++ b/include/hw/net/mv88w8618_eth.h
-@@ -0,0 +1,12 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ * Marvell MV88W8618 / Freecom MusicPal emulation.
-+ *
-+ * Copyright (c) 2008-2021 QEMU contributors
-+ */
-+#ifndef HW_NET_MV88W8618_H
-+#define HW_NET_MV88W8618_H
-+
-+#define TYPE_MV88W8618_ETH "mv88w8618_eth"
-+
-+#endif
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 6b5310117b8..7c840fb4283 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -34,12 +34,12 @@
- #include "ui/pixel_ops.h"
- #include "qemu/cutils.h"
- #include "qom/object.h"
-+#include "hw/net/mv88w8618_eth.h"
- 
- #define MP_MISC_BASE            0x80002000
- #define MP_MISC_SIZE            0x00001000
- 
- #define MP_ETH_BASE             0x80008000
--#define MP_ETH_SIZE             0x00001000
- 
- #define MP_WLAN_BASE            0x8000C000
- #define MP_WLAN_SIZE            0x00000800
-@@ -84,383 +84,6 @@
- /* Wolfson 8750 I2C address */
- #define MP_WM_ADDR              0x1A
- 
--/* Ethernet register offsets */
--#define MP_ETH_SMIR             0x010
--#define MP_ETH_PCXR             0x408
--#define MP_ETH_SDCMR            0x448
--#define MP_ETH_ICR              0x450
--#define MP_ETH_IMR              0x458
--#define MP_ETH_FRDP0            0x480
--#define MP_ETH_FRDP1            0x484
--#define MP_ETH_FRDP2            0x488
--#define MP_ETH_FRDP3            0x48C
--#define MP_ETH_CRDP0            0x4A0
--#define MP_ETH_CRDP1            0x4A4
--#define MP_ETH_CRDP2            0x4A8
--#define MP_ETH_CRDP3            0x4AC
--#define MP_ETH_CTDP0            0x4E0
--#define MP_ETH_CTDP1            0x4E4
--
--/* MII PHY access */
--#define MP_ETH_SMIR_DATA        0x0000FFFF
--#define MP_ETH_SMIR_ADDR        0x03FF0000
--#define MP_ETH_SMIR_OPCODE      (1 << 26) /* Read value */
--#define MP_ETH_SMIR_RDVALID     (1 << 27)
--
--/* PHY registers */
--#define MP_ETH_PHY1_BMSR        0x00210000
--#define MP_ETH_PHY1_PHYSID1     0x00410000
--#define MP_ETH_PHY1_PHYSID2     0x00610000
--
--#define MP_PHY_BMSR_LINK        0x0004
--#define MP_PHY_BMSR_AUTONEG     0x0008
--
--#define MP_PHY_88E3015          0x01410E20
--
--/* TX descriptor status */
--#define MP_ETH_TX_OWN           (1U << 31)
--
--/* RX descriptor status */
--#define MP_ETH_RX_OWN           (1U << 31)
--
--/* Interrupt cause/mask bits */
--#define MP_ETH_IRQ_RX_BIT       0
--#define MP_ETH_IRQ_RX           (1 << MP_ETH_IRQ_RX_BIT)
--#define MP_ETH_IRQ_TXHI_BIT     2
--#define MP_ETH_IRQ_TXLO_BIT     3
--
--/* Port config bits */
--#define MP_ETH_PCXR_2BSM_BIT    28 /* 2-byte incoming suffix */
--
--/* SDMA command bits */
--#define MP_ETH_CMD_TXHI         (1 << 23)
--#define MP_ETH_CMD_TXLO         (1 << 22)
--
--typedef struct mv88w8618_tx_desc {
--    uint32_t cmdstat;
--    uint16_t res;
--    uint16_t bytes;
--    uint32_t buffer;
--    uint32_t next;
--} mv88w8618_tx_desc;
--
--typedef struct mv88w8618_rx_desc {
--    uint32_t cmdstat;
--    uint16_t bytes;
--    uint16_t buffer_size;
--    uint32_t buffer;
--    uint32_t next;
--} mv88w8618_rx_desc;
--
--#define TYPE_MV88W8618_ETH "mv88w8618_eth"
--OBJECT_DECLARE_SIMPLE_TYPE(mv88w8618_eth_state, MV88W8618_ETH)
--
--struct mv88w8618_eth_state {
--    /*< private >*/
--    SysBusDevice parent_obj;
--    /*< public >*/
--
--    MemoryRegion iomem;
--    qemu_irq irq;
--    MemoryRegion *dma_mr;
--    AddressSpace dma_as;
--    uint32_t smir;
--    uint32_t icr;
--    uint32_t imr;
--    int mmio_index;
--    uint32_t vlan_header;
--    uint32_t tx_queue[2];
--    uint32_t rx_queue[4];
--    uint32_t frx_queue[4];
--    uint32_t cur_rx[4];
--    NICState *nic;
--    NICConf conf;
--};
--
--static void eth_rx_desc_put(AddressSpace *dma_as, uint32_t addr,
--                            mv88w8618_rx_desc *desc)
--{
--    cpu_to_le32s(&desc->cmdstat);
--    cpu_to_le16s(&desc->bytes);
--    cpu_to_le16s(&desc->buffer_size);
--    cpu_to_le32s(&desc->buffer);
--    cpu_to_le32s(&desc->next);
--    dma_memory_write(dma_as, addr, desc, sizeof(*desc));
--}
--
--static void eth_rx_desc_get(AddressSpace *dma_as, uint32_t addr,
--                            mv88w8618_rx_desc *desc)
--{
--    dma_memory_read(dma_as, addr, desc, sizeof(*desc));
--    le32_to_cpus(&desc->cmdstat);
--    le16_to_cpus(&desc->bytes);
--    le16_to_cpus(&desc->buffer_size);
--    le32_to_cpus(&desc->buffer);
--    le32_to_cpus(&desc->next);
--}
--
--static ssize_t eth_receive(NetClientState *nc, const uint8_t *buf, size_t size)
--{
--    mv88w8618_eth_state *s = qemu_get_nic_opaque(nc);
--    uint32_t desc_addr;
--    mv88w8618_rx_desc desc;
--    int i;
--
--    for (i = 0; i < 4; i++) {
--        desc_addr = s->cur_rx[i];
--        if (!desc_addr) {
--            continue;
--        }
--        do {
--            eth_rx_desc_get(&s->dma_as, desc_addr, &desc);
--            if ((desc.cmdstat & MP_ETH_RX_OWN) && desc.buffer_size >= size) {
--                dma_memory_write(&s->dma_as, desc.buffer + s->vlan_header,
--                                          buf, size);
--                desc.bytes = size + s->vlan_header;
--                desc.cmdstat &= ~MP_ETH_RX_OWN;
--                s->cur_rx[i] = desc.next;
--
--                s->icr |= MP_ETH_IRQ_RX;
--                if (s->icr & s->imr) {
--                    qemu_irq_raise(s->irq);
--                }
--                eth_rx_desc_put(&s->dma_as, desc_addr, &desc);
--                return size;
--            }
--            desc_addr = desc.next;
--        } while (desc_addr != s->rx_queue[i]);
--    }
--    return size;
--}
--
--static void eth_tx_desc_put(AddressSpace *dma_as, uint32_t addr,
--                            mv88w8618_tx_desc *desc)
--{
--    cpu_to_le32s(&desc->cmdstat);
--    cpu_to_le16s(&desc->res);
--    cpu_to_le16s(&desc->bytes);
--    cpu_to_le32s(&desc->buffer);
--    cpu_to_le32s(&desc->next);
--    dma_memory_write(dma_as, addr, desc, sizeof(*desc));
--}
--
--static void eth_tx_desc_get(AddressSpace *dma_as, uint32_t addr,
--                            mv88w8618_tx_desc *desc)
--{
--    dma_memory_read(dma_as, addr, desc, sizeof(*desc));
--    le32_to_cpus(&desc->cmdstat);
--    le16_to_cpus(&desc->res);
--    le16_to_cpus(&desc->bytes);
--    le32_to_cpus(&desc->buffer);
--    le32_to_cpus(&desc->next);
--}
--
--static void eth_send(mv88w8618_eth_state *s, int queue_index)
--{
--    uint32_t desc_addr = s->tx_queue[queue_index];
--    mv88w8618_tx_desc desc;
--    uint32_t next_desc;
--    uint8_t buf[2048];
--    int len;
--
--    do {
--        eth_tx_desc_get(&s->dma_as, desc_addr, &desc);
--        next_desc = desc.next;
--        if (desc.cmdstat & MP_ETH_TX_OWN) {
--            len = desc.bytes;
--            if (len < 2048) {
--                dma_memory_read(&s->dma_as, desc.buffer, buf, len);
--                qemu_send_packet(qemu_get_queue(s->nic), buf, len);
--            }
--            desc.cmdstat &= ~MP_ETH_TX_OWN;
--            s->icr |= 1 << (MP_ETH_IRQ_TXLO_BIT - queue_index);
--            eth_tx_desc_put(&s->dma_as, desc_addr, &desc);
--        }
--        desc_addr = next_desc;
--    } while (desc_addr != s->tx_queue[queue_index]);
--}
--
--static uint64_t mv88w8618_eth_read(void *opaque, hwaddr offset,
--                                   unsigned size)
--{
--    mv88w8618_eth_state *s = opaque;
--
--    switch (offset) {
--    case MP_ETH_SMIR:
--        if (s->smir & MP_ETH_SMIR_OPCODE) {
--            switch (s->smir & MP_ETH_SMIR_ADDR) {
--            case MP_ETH_PHY1_BMSR:
--                return MP_PHY_BMSR_LINK | MP_PHY_BMSR_AUTONEG |
--                       MP_ETH_SMIR_RDVALID;
--            case MP_ETH_PHY1_PHYSID1:
--                return (MP_PHY_88E3015 >> 16) | MP_ETH_SMIR_RDVALID;
--            case MP_ETH_PHY1_PHYSID2:
--                return (MP_PHY_88E3015 & 0xFFFF) | MP_ETH_SMIR_RDVALID;
--            default:
--                return MP_ETH_SMIR_RDVALID;
--            }
--        }
--        return 0;
--
--    case MP_ETH_ICR:
--        return s->icr;
--
--    case MP_ETH_IMR:
--        return s->imr;
--
--    case MP_ETH_FRDP0 ... MP_ETH_FRDP3:
--        return s->frx_queue[(offset - MP_ETH_FRDP0) / 4];
--
--    case MP_ETH_CRDP0 ... MP_ETH_CRDP3:
--        return s->rx_queue[(offset - MP_ETH_CRDP0) / 4];
--
--    case MP_ETH_CTDP0 ... MP_ETH_CTDP1:
--        return s->tx_queue[(offset - MP_ETH_CTDP0) / 4];
--
--    default:
--        return 0;
--    }
--}
--
--static void mv88w8618_eth_write(void *opaque, hwaddr offset,
--                                uint64_t value, unsigned size)
--{
--    mv88w8618_eth_state *s = opaque;
--
--    switch (offset) {
--    case MP_ETH_SMIR:
--        s->smir = value;
--        break;
--
--    case MP_ETH_PCXR:
--        s->vlan_header = ((value >> MP_ETH_PCXR_2BSM_BIT) & 1) * 2;
--        break;
--
--    case MP_ETH_SDCMR:
--        if (value & MP_ETH_CMD_TXHI) {
--            eth_send(s, 1);
--        }
--        if (value & MP_ETH_CMD_TXLO) {
--            eth_send(s, 0);
--        }
--        if (value & (MP_ETH_CMD_TXHI | MP_ETH_CMD_TXLO) && s->icr & s->imr) {
--            qemu_irq_raise(s->irq);
--        }
--        break;
--
--    case MP_ETH_ICR:
--        s->icr &= value;
--        break;
--
--    case MP_ETH_IMR:
--        s->imr = value;
--        if (s->icr & s->imr) {
--            qemu_irq_raise(s->irq);
--        }
--        break;
--
--    case MP_ETH_FRDP0 ... MP_ETH_FRDP3:
--        s->frx_queue[(offset - MP_ETH_FRDP0) / 4] = value;
--        break;
--
--    case MP_ETH_CRDP0 ... MP_ETH_CRDP3:
--        s->rx_queue[(offset - MP_ETH_CRDP0) / 4] =
--            s->cur_rx[(offset - MP_ETH_CRDP0) / 4] = value;
--        break;
--
--    case MP_ETH_CTDP0 ... MP_ETH_CTDP1:
--        s->tx_queue[(offset - MP_ETH_CTDP0) / 4] = value;
--        break;
--    }
--}
--
--static const MemoryRegionOps mv88w8618_eth_ops = {
--    .read = mv88w8618_eth_read,
--    .write = mv88w8618_eth_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
--};
--
--static void eth_cleanup(NetClientState *nc)
--{
--    mv88w8618_eth_state *s = qemu_get_nic_opaque(nc);
--
--    s->nic = NULL;
--}
--
--static NetClientInfo net_mv88w8618_info = {
--    .type = NET_CLIENT_DRIVER_NIC,
--    .size = sizeof(NICState),
--    .receive = eth_receive,
--    .cleanup = eth_cleanup,
--};
--
--static void mv88w8618_eth_init(Object *obj)
--{
--    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
--    DeviceState *dev = DEVICE(sbd);
--    mv88w8618_eth_state *s = MV88W8618_ETH(dev);
--
--    sysbus_init_irq(sbd, &s->irq);
--    memory_region_init_io(&s->iomem, obj, &mv88w8618_eth_ops, s,
--                          "mv88w8618-eth", MP_ETH_SIZE);
--    sysbus_init_mmio(sbd, &s->iomem);
--}
--
--static void mv88w8618_eth_realize(DeviceState *dev, Error **errp)
--{
--    mv88w8618_eth_state *s = MV88W8618_ETH(dev);
--
--    if (!s->dma_mr) {
--        error_setg(errp, TYPE_MV88W8618_ETH " 'dma-memory' link not set");
--        return;
--    }
--
--    address_space_init(&s->dma_as, s->dma_mr, "emac-dma");
--    s->nic = qemu_new_nic(&net_mv88w8618_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
--}
--
--static const VMStateDescription mv88w8618_eth_vmsd = {
--    .name = "mv88w8618_eth",
--    .version_id = 1,
--    .minimum_version_id = 1,
--    .fields = (VMStateField[]) {
--        VMSTATE_UINT32(smir, mv88w8618_eth_state),
--        VMSTATE_UINT32(icr, mv88w8618_eth_state),
--        VMSTATE_UINT32(imr, mv88w8618_eth_state),
--        VMSTATE_UINT32(vlan_header, mv88w8618_eth_state),
--        VMSTATE_UINT32_ARRAY(tx_queue, mv88w8618_eth_state, 2),
--        VMSTATE_UINT32_ARRAY(rx_queue, mv88w8618_eth_state, 4),
--        VMSTATE_UINT32_ARRAY(frx_queue, mv88w8618_eth_state, 4),
--        VMSTATE_UINT32_ARRAY(cur_rx, mv88w8618_eth_state, 4),
--        VMSTATE_END_OF_LIST()
--    }
--};
--
--static Property mv88w8618_eth_properties[] = {
--    DEFINE_NIC_PROPERTIES(mv88w8618_eth_state, conf),
--    DEFINE_PROP_LINK("dma-memory", mv88w8618_eth_state, dma_mr,
--                     TYPE_MEMORY_REGION, MemoryRegion *),
--    DEFINE_PROP_END_OF_LIST(),
--};
--
--static void mv88w8618_eth_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--
--    dc->vmsd = &mv88w8618_eth_vmsd;
--    device_class_set_props(dc, mv88w8618_eth_properties);
--    dc->realize = mv88w8618_eth_realize;
--}
--
--static const TypeInfo mv88w8618_eth_info = {
--    .name          = TYPE_MV88W8618_ETH,
--    .parent        = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(mv88w8618_eth_state),
--    .instance_init = mv88w8618_eth_init,
--    .class_init    = mv88w8618_eth_class_init,
--};
--
- /* LCD register offsets */
- #define MP_LCD_IRQCTRL          0x180
- #define MP_LCD_IRQSTAT          0x184
-@@ -1745,7 +1368,6 @@ static void musicpal_register_types(void)
-     type_register_static(&mv88w8618_pic_info);
-     type_register_static(&mv88w8618_pit_info);
-     type_register_static(&mv88w8618_flashcfg_info);
--    type_register_static(&mv88w8618_eth_info);
-     type_register_static(&mv88w8618_wlan_info);
-     type_register_static(&musicpal_lcd_info);
-     type_register_static(&musicpal_gpio_info);
-diff --git a/hw/net/mv88w8618_eth.c b/hw/net/mv88w8618_eth.c
-new file mode 100644
-index 00000000000..25b153792d0
---- /dev/null
-+++ b/hw/net/mv88w8618_eth.c
-@@ -0,0 +1,402 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ * Marvell MV88W8618 / Freecom MusicPal emulation.
-+ *
-+ * Copyright (c) 2008 Jan Kiszka
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/sysbus.h"
-+#include "hw/irq.h"
-+#include "hw/net/mv88w8618_eth.h"
-+#include "migration/vmstate.h"
-+#include "sysemu/dma.h"
-+#include "net/net.h"
-+
-+#define MP_ETH_SIZE             0x00001000
-+
-+/* Ethernet register offsets */
-+#define MP_ETH_SMIR             0x010
-+#define MP_ETH_PCXR             0x408
-+#define MP_ETH_SDCMR            0x448
-+#define MP_ETH_ICR              0x450
-+#define MP_ETH_IMR              0x458
-+#define MP_ETH_FRDP0            0x480
-+#define MP_ETH_FRDP1            0x484
-+#define MP_ETH_FRDP2            0x488
-+#define MP_ETH_FRDP3            0x48C
-+#define MP_ETH_CRDP0            0x4A0
-+#define MP_ETH_CRDP1            0x4A4
-+#define MP_ETH_CRDP2            0x4A8
-+#define MP_ETH_CRDP3            0x4AC
-+#define MP_ETH_CTDP0            0x4E0
-+#define MP_ETH_CTDP1            0x4E4
-+
-+/* MII PHY access */
-+#define MP_ETH_SMIR_DATA        0x0000FFFF
-+#define MP_ETH_SMIR_ADDR        0x03FF0000
-+#define MP_ETH_SMIR_OPCODE      (1 << 26) /* Read value */
-+#define MP_ETH_SMIR_RDVALID     (1 << 27)
-+
-+/* PHY registers */
-+#define MP_ETH_PHY1_BMSR        0x00210000
-+#define MP_ETH_PHY1_PHYSID1     0x00410000
-+#define MP_ETH_PHY1_PHYSID2     0x00610000
-+
-+#define MP_PHY_BMSR_LINK        0x0004
-+#define MP_PHY_BMSR_AUTONEG     0x0008
-+
-+#define MP_PHY_88E3015          0x01410E20
-+
-+/* TX descriptor status */
-+#define MP_ETH_TX_OWN           (1U << 31)
-+
-+/* RX descriptor status */
-+#define MP_ETH_RX_OWN           (1U << 31)
-+
-+/* Interrupt cause/mask bits */
-+#define MP_ETH_IRQ_RX_BIT       0
-+#define MP_ETH_IRQ_RX           (1 << MP_ETH_IRQ_RX_BIT)
-+#define MP_ETH_IRQ_TXHI_BIT     2
-+#define MP_ETH_IRQ_TXLO_BIT     3
-+
-+/* Port config bits */
-+#define MP_ETH_PCXR_2BSM_BIT    28 /* 2-byte incoming suffix */
-+
-+/* SDMA command bits */
-+#define MP_ETH_CMD_TXHI         (1 << 23)
-+#define MP_ETH_CMD_TXLO         (1 << 22)
-+
-+typedef struct mv88w8618_tx_desc {
-+    uint32_t cmdstat;
-+    uint16_t res;
-+    uint16_t bytes;
-+    uint32_t buffer;
-+    uint32_t next;
-+} mv88w8618_tx_desc;
-+
-+typedef struct mv88w8618_rx_desc {
-+    uint32_t cmdstat;
-+    uint16_t bytes;
-+    uint16_t buffer_size;
-+    uint32_t buffer;
-+    uint32_t next;
-+} mv88w8618_rx_desc;
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(mv88w8618_eth_state, MV88W8618_ETH)
-+
-+struct mv88w8618_eth_state {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+    MemoryRegion *dma_mr;
-+    AddressSpace dma_as;
-+    uint32_t smir;
-+    uint32_t icr;
-+    uint32_t imr;
-+    int mmio_index;
-+    uint32_t vlan_header;
-+    uint32_t tx_queue[2];
-+    uint32_t rx_queue[4];
-+    uint32_t frx_queue[4];
-+    uint32_t cur_rx[4];
-+    NICState *nic;
-+    NICConf conf;
-+};
-+
-+static void eth_rx_desc_put(AddressSpace *dma_as, uint32_t addr,
-+                            mv88w8618_rx_desc *desc)
-+{
-+    cpu_to_le32s(&desc->cmdstat);
-+    cpu_to_le16s(&desc->bytes);
-+    cpu_to_le16s(&desc->buffer_size);
-+    cpu_to_le32s(&desc->buffer);
-+    cpu_to_le32s(&desc->next);
-+    dma_memory_write(dma_as, addr, desc, sizeof(*desc));
-+}
-+
-+static void eth_rx_desc_get(AddressSpace *dma_as, uint32_t addr,
-+                            mv88w8618_rx_desc *desc)
-+{
-+    dma_memory_read(dma_as, addr, desc, sizeof(*desc));
-+    le32_to_cpus(&desc->cmdstat);
-+    le16_to_cpus(&desc->bytes);
-+    le16_to_cpus(&desc->buffer_size);
-+    le32_to_cpus(&desc->buffer);
-+    le32_to_cpus(&desc->next);
-+}
-+
-+static ssize_t eth_receive(NetClientState *nc, const uint8_t *buf, size_t size)
-+{
-+    mv88w8618_eth_state *s = qemu_get_nic_opaque(nc);
-+    uint32_t desc_addr;
-+    mv88w8618_rx_desc desc;
-+    int i;
-+
-+    for (i = 0; i < 4; i++) {
-+        desc_addr = s->cur_rx[i];
-+        if (!desc_addr) {
-+            continue;
-+        }
-+        do {
-+            eth_rx_desc_get(&s->dma_as, desc_addr, &desc);
-+            if ((desc.cmdstat & MP_ETH_RX_OWN) && desc.buffer_size >= size) {
-+                dma_memory_write(&s->dma_as, desc.buffer + s->vlan_header,
-+                                          buf, size);
-+                desc.bytes = size + s->vlan_header;
-+                desc.cmdstat &= ~MP_ETH_RX_OWN;
-+                s->cur_rx[i] = desc.next;
-+
-+                s->icr |= MP_ETH_IRQ_RX;
-+                if (s->icr & s->imr) {
-+                    qemu_irq_raise(s->irq);
-+                }
-+                eth_rx_desc_put(&s->dma_as, desc_addr, &desc);
-+                return size;
-+            }
-+            desc_addr = desc.next;
-+        } while (desc_addr != s->rx_queue[i]);
-+    }
-+    return size;
-+}
-+
-+static void eth_tx_desc_put(AddressSpace *dma_as, uint32_t addr,
-+                            mv88w8618_tx_desc *desc)
-+{
-+    cpu_to_le32s(&desc->cmdstat);
-+    cpu_to_le16s(&desc->res);
-+    cpu_to_le16s(&desc->bytes);
-+    cpu_to_le32s(&desc->buffer);
-+    cpu_to_le32s(&desc->next);
-+    dma_memory_write(dma_as, addr, desc, sizeof(*desc));
-+}
-+
-+static void eth_tx_desc_get(AddressSpace *dma_as, uint32_t addr,
-+                            mv88w8618_tx_desc *desc)
-+{
-+    dma_memory_read(dma_as, addr, desc, sizeof(*desc));
-+    le32_to_cpus(&desc->cmdstat);
-+    le16_to_cpus(&desc->res);
-+    le16_to_cpus(&desc->bytes);
-+    le32_to_cpus(&desc->buffer);
-+    le32_to_cpus(&desc->next);
-+}
-+
-+static void eth_send(mv88w8618_eth_state *s, int queue_index)
-+{
-+    uint32_t desc_addr = s->tx_queue[queue_index];
-+    mv88w8618_tx_desc desc;
-+    uint32_t next_desc;
-+    uint8_t buf[2048];
-+    int len;
-+
-+    do {
-+        eth_tx_desc_get(&s->dma_as, desc_addr, &desc);
-+        next_desc = desc.next;
-+        if (desc.cmdstat & MP_ETH_TX_OWN) {
-+            len = desc.bytes;
-+            if (len < 2048) {
-+                dma_memory_read(&s->dma_as, desc.buffer, buf, len);
-+                qemu_send_packet(qemu_get_queue(s->nic), buf, len);
-+            }
-+            desc.cmdstat &= ~MP_ETH_TX_OWN;
-+            s->icr |= 1 << (MP_ETH_IRQ_TXLO_BIT - queue_index);
-+            eth_tx_desc_put(&s->dma_as, desc_addr, &desc);
-+        }
-+        desc_addr = next_desc;
-+    } while (desc_addr != s->tx_queue[queue_index]);
-+}
-+
-+static uint64_t mv88w8618_eth_read(void *opaque, hwaddr offset,
-+                                   unsigned size)
-+{
-+    mv88w8618_eth_state *s = opaque;
-+
-+    switch (offset) {
-+    case MP_ETH_SMIR:
-+        if (s->smir & MP_ETH_SMIR_OPCODE) {
-+            switch (s->smir & MP_ETH_SMIR_ADDR) {
-+            case MP_ETH_PHY1_BMSR:
-+                return MP_PHY_BMSR_LINK | MP_PHY_BMSR_AUTONEG |
-+                       MP_ETH_SMIR_RDVALID;
-+            case MP_ETH_PHY1_PHYSID1:
-+                return (MP_PHY_88E3015 >> 16) | MP_ETH_SMIR_RDVALID;
-+            case MP_ETH_PHY1_PHYSID2:
-+                return (MP_PHY_88E3015 & 0xFFFF) | MP_ETH_SMIR_RDVALID;
-+            default:
-+                return MP_ETH_SMIR_RDVALID;
-+            }
-+        }
-+        return 0;
-+
-+    case MP_ETH_ICR:
-+        return s->icr;
-+
-+    case MP_ETH_IMR:
-+        return s->imr;
-+
-+    case MP_ETH_FRDP0 ... MP_ETH_FRDP3:
-+        return s->frx_queue[(offset - MP_ETH_FRDP0) / 4];
-+
-+    case MP_ETH_CRDP0 ... MP_ETH_CRDP3:
-+        return s->rx_queue[(offset - MP_ETH_CRDP0) / 4];
-+
-+    case MP_ETH_CTDP0 ... MP_ETH_CTDP1:
-+        return s->tx_queue[(offset - MP_ETH_CTDP0) / 4];
-+
-+    default:
-+        return 0;
-+    }
-+}
-+
-+static void mv88w8618_eth_write(void *opaque, hwaddr offset,
-+                                uint64_t value, unsigned size)
-+{
-+    mv88w8618_eth_state *s = opaque;
-+
-+    switch (offset) {
-+    case MP_ETH_SMIR:
-+        s->smir = value;
-+        break;
-+
-+    case MP_ETH_PCXR:
-+        s->vlan_header = ((value >> MP_ETH_PCXR_2BSM_BIT) & 1) * 2;
-+        break;
-+
-+    case MP_ETH_SDCMR:
-+        if (value & MP_ETH_CMD_TXHI) {
-+            eth_send(s, 1);
-+        }
-+        if (value & MP_ETH_CMD_TXLO) {
-+            eth_send(s, 0);
-+        }
-+        if (value & (MP_ETH_CMD_TXHI | MP_ETH_CMD_TXLO) && s->icr & s->imr) {
-+            qemu_irq_raise(s->irq);
-+        }
-+        break;
-+
-+    case MP_ETH_ICR:
-+        s->icr &= value;
-+        break;
-+
-+    case MP_ETH_IMR:
-+        s->imr = value;
-+        if (s->icr & s->imr) {
-+            qemu_irq_raise(s->irq);
-+        }
-+        break;
-+
-+    case MP_ETH_FRDP0 ... MP_ETH_FRDP3:
-+        s->frx_queue[(offset - MP_ETH_FRDP0) / 4] = value;
-+        break;
-+
-+    case MP_ETH_CRDP0 ... MP_ETH_CRDP3:
-+        s->rx_queue[(offset - MP_ETH_CRDP0) / 4] =
-+            s->cur_rx[(offset - MP_ETH_CRDP0) / 4] = value;
-+        break;
-+
-+    case MP_ETH_CTDP0 ... MP_ETH_CTDP1:
-+        s->tx_queue[(offset - MP_ETH_CTDP0) / 4] = value;
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps mv88w8618_eth_ops = {
-+    .read = mv88w8618_eth_read,
-+    .write = mv88w8618_eth_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static void eth_cleanup(NetClientState *nc)
-+{
-+    mv88w8618_eth_state *s = qemu_get_nic_opaque(nc);
-+
-+    s->nic = NULL;
-+}
-+
-+static NetClientInfo net_mv88w8618_info = {
-+    .type = NET_CLIENT_DRIVER_NIC,
-+    .size = sizeof(NICState),
-+    .receive = eth_receive,
-+    .cleanup = eth_cleanup,
-+};
-+
-+static void mv88w8618_eth_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    DeviceState *dev = DEVICE(sbd);
-+    mv88w8618_eth_state *s = MV88W8618_ETH(dev);
-+
-+    sysbus_init_irq(sbd, &s->irq);
-+    memory_region_init_io(&s->iomem, obj, &mv88w8618_eth_ops, s,
-+                          "mv88w8618-eth", MP_ETH_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static void mv88w8618_eth_realize(DeviceState *dev, Error **errp)
-+{
-+    mv88w8618_eth_state *s = MV88W8618_ETH(dev);
-+
-+    if (!s->dma_mr) {
-+        error_setg(errp, TYPE_MV88W8618_ETH " 'dma-memory' link not set");
-+        return;
-+    }
-+
-+    address_space_init(&s->dma_as, s->dma_mr, "emac-dma");
-+    s->nic = qemu_new_nic(&net_mv88w8618_info, &s->conf,
-+                          object_get_typename(OBJECT(dev)), dev->id, s);
-+}
-+
-+static const VMStateDescription mv88w8618_eth_vmsd = {
-+    .name = "mv88w8618_eth",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(smir, mv88w8618_eth_state),
-+        VMSTATE_UINT32(icr, mv88w8618_eth_state),
-+        VMSTATE_UINT32(imr, mv88w8618_eth_state),
-+        VMSTATE_UINT32(vlan_header, mv88w8618_eth_state),
-+        VMSTATE_UINT32_ARRAY(tx_queue, mv88w8618_eth_state, 2),
-+        VMSTATE_UINT32_ARRAY(rx_queue, mv88w8618_eth_state, 4),
-+        VMSTATE_UINT32_ARRAY(frx_queue, mv88w8618_eth_state, 4),
-+        VMSTATE_UINT32_ARRAY(cur_rx, mv88w8618_eth_state, 4),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static Property mv88w8618_eth_properties[] = {
-+    DEFINE_NIC_PROPERTIES(mv88w8618_eth_state, conf),
-+    DEFINE_PROP_LINK("dma-memory", mv88w8618_eth_state, dma_mr,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void mv88w8618_eth_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->vmsd = &mv88w8618_eth_vmsd;
-+    device_class_set_props(dc, mv88w8618_eth_properties);
-+    dc->realize = mv88w8618_eth_realize;
-+}
-+
-+static const TypeInfo mv88w8618_eth_info = {
-+    .name          = TYPE_MV88W8618_ETH,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(mv88w8618_eth_state),
-+    .instance_init = mv88w8618_eth_init,
-+    .class_init    = mv88w8618_eth_class_init,
-+};
-+
-+static void musicpal_register_types(void)
-+{
-+    type_register_static(&mv88w8618_eth_info);
-+}
-+
-+type_init(musicpal_register_types)
-+
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9a8d1bdf727..17960207858 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -781,6 +781,8 @@ M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
- F: hw/arm/musicpal.c
-+F: hw/net/mv88w8618_eth.c
-+F: include/hw/net/mv88w8618_eth.h
- F: docs/system/arm/musicpal.rst
- 
- Nuvoton NPCM7xx
-diff --git a/hw/net/meson.build b/hw/net/meson.build
-index bdf71f1f405..685b75badb4 100644
---- a/hw/net/meson.build
-+++ b/hw/net/meson.build
-@@ -26,6 +26,7 @@
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_SUN8I_EMAC', if_true: files('allwinner-sun8i-emac.c'))
- softmmu_ss.add(when: 'CONFIG_IMX_FEC', if_true: files('imx_fec.c'))
- softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-emac.c'))
-+softmmu_ss.add(when: 'CONFIG_MARVELL_88W8618', if_true: files('mv88w8618_eth.c'))
- 
- softmmu_ss.add(when: 'CONFIG_CADENCE', if_true: files('cadence_gem.c'))
- softmmu_ss.add(when: 'CONFIG_STELLARIS_ENET', if_true: files('stellaris_enet.c'))
--- 
-2.33.1
+2) Check .gitlab-ci.d/cirrus/macos-11.vars to install the same packages on 
+your system, maybe that helps...?
+
+  HTH,
+   Thomas
 

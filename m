@@ -1,130 +1,78 @@
-Received: by 2002:a19:791d:0:0:0:0:0 with SMTP id u29csp1331952lfc;
-        Sat, 18 Dec 2021 03:26:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwc2A8crMwQDFgxa744uXLCp9xfbQ+p8dkz/VIJVUpjFbbUQo7hjVv3G1ytZ2aBv3qHR+to
-X-Received: by 2002:a25:d157:: with SMTP id i84mr9808960ybg.703.1639826816372;
-        Sat, 18 Dec 2021 03:26:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639826816; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp2338091lfb;
+        Tue, 21 Dec 2021 18:23:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyXXofZtavycuAE93aNyJP4hv24NUNjG4wQl7d1MgzYxG1K2GJssOn//HgwsFD0se2zkXWd
+X-Received: by 2002:a25:b3c1:: with SMTP id x1mr1594550ybf.647.1640139809796;
+        Tue, 21 Dec 2021 18:23:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640139809; cv=none;
         d=google.com; s=arc-20160816;
-        b=h39mYQ/aBiErotiZJxnBfbo4XizSdD8HoddTRL9f3blS/P9F6kziRwNJy5OMp2k4fC
-         UtSFQrKooQJMked7sQn49KYxfmNbTkcPe44hgEmuA5zKfRBwkoZTkKpXvYJtOXIj63G0
-         BcBK9mCXkyXxMyFASRorBBFc3G2WIvt07SdPIOvjNrpjBnCO7nYWuGEwAg8/WZ5f55k2
-         kvIC3N/yHtvroSpIfVapfIjoIX/2iNBaqGtjwVdzdRAmqWk79SpttuVG0Ozdco1Qqvrh
-         ofPMIt6M4WEcmdEvetadciSHLF8uynxxEwxk5eM+WmRUXbHCFk0rk0sUzVQdkUNxcHQH
-         753w==
+        b=WOs/5Xsyo+8wcrWt100+rXahYwejgG33Z2hlgouz+kO37XWG+Tz3f9FEs73ss27aDH
+         5uCQsTcdmT+6vO8xFthUdnzl3u6YdEcZfAuFPOYygLTdiE1lpAPE1uOTUd1ornfq89ib
+         t0auQJCX9bVM+8j5ZcUudTgYFmBWYql/AyCm3ZwG2H7YK5tkb/3sTSAClgGWYOMkATFd
+         UcwVWeCUp37WOFbjbeDry5yDsM4MvWwjaPQHTB/Hcfi1fX9G4UiypvKEDz2MBCt0JIUw
+         eg7VK7y8EK65htOrKGDQfFBj+LNbsSjVkzkEIZN0bbVKzzx0hBZSaaB7I3Jtqf9Qtjn7
+         LDjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=NqYzEv8sjm1chLmdzkY6W+PLu2mXRaztXkZrhm+3WS4=;
-        b=XED9384KLEvYD77HOlIqtf7kQ/aQnMLp6MyqKt6Q2lUTN8uCtYPydpAkCtTCzJRt9c
-         ZMUet8FWp+8v+9yKMUD8sXzyRhXX5r6As9tGU7v1Am0MuiGpXYi921PLL9wd0nBRFBwI
-         euh3t5VPFwGOClNvS4lTfKl3/piU0mNAM0xl2b4SC/m95ihNU/C67b6h3J7JbmQolT/L
-         iow1/aYMUeYmuySNugh18NMqMvDN8P4v+IHgt/x640fN086r6LXRZxR90MAJZtqtu0+M
-         QnguMX8r0vwDVbYN4PJySuU8hc0rKV7VV/0FRlxnBQB9DWgAQSFB+7eWDxoxqxNcjm4Q
-         3Urg==
+         :mime-version:message-id:date:subject:to:from;
+        bh=imzaw7xOao6sNq9HFZ2Aou8tby/pATWygd+GR/n8EJs=;
+        b=lzp+8z8YvFg9n/IwLo0KA37krWbdX7fiBf0eoxLUeAeojlu5t6rhD9tRQRrceGXMmQ
+         KkfCV85uDQ/Hfy63mUh7u7lHtjKZwFbAf06tUDdEWPbsyFJFIJYNWzkkGBZHHmJrzJgn
+         /O9AH2FlE8ctIuXs9Lqii6NdL0ZN2iOqBD/Rb9kCQHknWe+g7SH/xK+f3BVh1ZUQ+19n
+         cEgUfVHksOCu+SnaV2yFkDQKkdeMq43D18q8qZ0Yqs/B0rgl6y0aj0r/yXHNPw2tm3Bv
+         62z0yrTKJHZk1hbYEBMs2DO7WMNOOU6WxRlYVkEJj6RFBLM+MITjANOpTg8OY0q2BqFg
+         kZFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S5R7G1X3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s126si10751791ybs.829.2021.12.18.03.26.55
+        by mx.google.com with ESMTPS id v62si633851ybv.206.2021.12.21.18.23.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 Dec 2021 03:26:56 -0800 (PST)
+        Tue, 21 Dec 2021 18:23:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S5R7G1X3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40470 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40696 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1myXra-0000lm-Rl
-	for alex.bennee@linaro.org; Sat, 18 Dec 2021 06:26:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35584)
+	id 1mzrHt-00063Y-6y
+	for alex.bennee@linaro.org; Tue, 21 Dec 2021 21:23:29 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46538)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1myXrI-0000lA-1u
- for qemu-arm@nongnu.org; Sat, 18 Dec 2021 06:26:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:53674)
+ (Exim 4.90_1) (envelope-from <troy_lee@aspeedtech.com>)
+ id 1mzrHj-00063M-Cv; Tue, 21 Dec 2021 21:23:19 -0500
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:41486)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1myXrF-0002da-Bx
- for qemu-arm@nongnu.org; Sat, 18 Dec 2021 06:26:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1639826791;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NqYzEv8sjm1chLmdzkY6W+PLu2mXRaztXkZrhm+3WS4=;
- b=S5R7G1X3NFY8P4VlgbycXIkqEZDoE5PKUEq1Re3xJ+2hyQEKKZcBpZBTm64eK+6m1mQX65
- IvuGJnyMeTvoIBrdUJlxImz06+Qk1ZZpHrdNVHKp+TaNAl4othUenax4aEQ2YjG4vGUnOw
- tFSsGkMU1+YIqlUHlGl6GLmX8G9gijY=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-633-C289jobEO8yH6xWoKOCaOw-1; Sat, 18 Dec 2021 06:26:30 -0500
-X-MC-Unique: C289jobEO8yH6xWoKOCaOw-1
-Received: by mail-wm1-f72.google.com with SMTP id
- l34-20020a05600c1d2200b00344d34754e4so4330102wms.7
- for <qemu-arm@nongnu.org>; Sat, 18 Dec 2021 03:26:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=NqYzEv8sjm1chLmdzkY6W+PLu2mXRaztXkZrhm+3WS4=;
- b=v6FmIKx5D6hzNd1yBKPCyBZlx0m8jSyHqOhE2ncVHcYYmEy/fOSSD89XE7Cb+2eWGm
- KkKlExgO2IUAUfA4DqHwcxMugMlrGQ533iIngEbXjOPuUkqGE3FeyjXFfz0xxl05Z7iX
- FY+hQbQSOmjmdMdg8QZLG6/VYvM04RI0/aAkuJzOOGuI9Oy7lwaNwtIxe3a6CAIzQB5Z
- dwVHvfV4bJOset5ys0s/sFODCmnFwQblIUGMBbnkJ6LpI0SrsZqLrbbuEDZT1UBEqvkt
- iuKoeqMif08ja5wsVM9i6ALcz4AveIrMy/w814IrDxwdyKPnD82XCoZdHWb1Bi3kDEX8
- eKeQ==
-X-Gm-Message-State: AOAM530WJA37E+fA4Oy3k0K08KRvSYln8ZNtWDRkQNaGSQwgVy/jvcGd
- 5lEzxd6M40Gmmz7pRzUBJVftwep1qbxW2L8rNOwni2OF4/I+lC4uUwTZqNFEWf7obnS74avBJeN
- K1u6X9ggClUgd
-X-Received: by 2002:a1c:f217:: with SMTP id s23mr13204827wmc.70.1639826789567; 
- Sat, 18 Dec 2021 03:26:29 -0800 (PST)
-X-Received: by 2002:a1c:f217:: with SMTP id s23mr13204807wmc.70.1639826789361; 
- Sat, 18 Dec 2021 03:26:29 -0800 (PST)
-Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net.
- [83.50.185.174])
- by smtp.gmail.com with ESMTPSA id m3sm3577798wms.25.2021.12.18.03.26.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 18 Dec 2021 03:26:28 -0800 (PST)
-Message-ID: <266f9231-3925-dba2-61f1-d5172e2e9fe8@redhat.com>
-Date: Sat, 18 Dec 2021 12:26:27 +0100
+ (Exim 4.90_1) (envelope-from <troy_lee@aspeedtech.com>)
+ id 1mzrHg-0002RH-CI; Tue, 21 Dec 2021 21:23:19 -0500
+Received: from mail.aspeedtech.com ([192.168.0.24])
+ by twspam01.aspeedtech.com with ESMTP id 1BM2H9MM045051;
+ Wed, 22 Dec 2021 10:17:09 +0800 (GMT-8)
+ (envelope-from troy_lee@aspeedtech.com)
+Received: from localhost.localdomain (192.168.10.10) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Wed, 22 Dec
+ 2021 10:22:34 +0800
+From: Troy Lee <troy_lee@aspeedtech.com>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH] Supporting AST2600 HACE engine accumulative mode
+Date: Wed, 22 Dec 2021 10:22:31 +0800
+Message-ID: <20211222022231.231575-1-troy_lee@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [RFC PATCH v3 3/3] softmmu/physmem: Introduce MemTxAttrs::memory
- field and MEMTX_BUS_ERROR
-To: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20211215182421.418374-1-philmd@redhat.com>
- <20211215182421.418374-4-philmd@redhat.com>
- <CAFEAcA_UKFHT=PbwNtyqV4G2Vdw7LVUjUj_X_DZ5Kk6=yF+EBg@mail.gmail.com>
- <f07f6b9c-ac81-62a1-be71-6c82267bdaf7@redhat.com>
- <65d60871-31dc-1e59-3cb4-34a27e7af339@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <65d60871-31dc-1e59-3cb4-34a27e7af339@linaro.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -51
-X-Spam_score: -5.2
-X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.718,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.716, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [192.168.10.10]
+X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
+ (192.168.0.24)
+X-DNSRBL: 
+X-MAIL: twspam01.aspeedtech.com 1BM2H9MM045051
+Received-SPF: pass client-ip=211.20.114.71;
+ envelope-from=troy_lee@aspeedtech.com; helo=twspam01.aspeedtech.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -138,38 +86,133 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Li Qiang <liq3ea@gmail.com>, qemu-devel@nongnu.org,
- Peter Xu <peterx@redhat.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
- Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ leetroy@gmail.com, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZsOQV7Cea+gb
+X-TUID: F354kle8uNUP
 
-On 12/18/21 03:07, Richard Henderson wrote:
-> On 12/17/21 3:18 PM, Philippe Mathieu-Daudé wrote:
->>>>   #define MEMTX_OK 0
->>>>   #define MEMTX_ERROR             (1U << 0) /* device returned an
->>>> error */
->>>>   #define MEMTX_DECODE_ERROR      (1U << 1) /* nothing at that
->>>> address */
->>>> +#define MEMTX_BUS_ERROR         (1U << 2) /* bus returned an error */
->>>
->>> This is kind of odd naming, because MEMTX_DECODE_ERROR already means
->>> "bus/interconnect returned an error" and it generally translates
->>> into what at the OS level gets called a "bus error"...
->>
->> MEMTX_DECODE_ERROR is "nothing at that address". We want a name
->> for "there is something, but you don't have access to it".
->> Maybe MEMTX_ILLEGAL_ERROR?
-> 
-> ILLEGAL doesn't convey much.  MEMTX_ACCESS_ERROR?
+Accumulative mode will supply a initial state and append padding bit at
+the end of hash stream.  However, the crypto library will padding those
+bit automatically, so ripped it off from iov array.
 
-OK, such:
+Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+---
+ hw/misc/aspeed_hace.c         | 30 ++++++++++++++++++++++++++++--
+ include/hw/misc/aspeed_hace.h |  1 +
+ 2 files changed, 29 insertions(+), 2 deletions(-)
 
-  #define MEMTX_ACCESS_ERROR      (1U << 2) /* access denied */
-
-alternatively MEMTX_PERM_ERROR.
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 10f00e65f4..7c1794d6d0 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -27,6 +27,7 @@
+ 
+ #define R_HASH_SRC      (0x20 / 4)
+ #define R_HASH_DEST     (0x24 / 4)
++#define R_HASH_KEY_BUFF (0x28 / 4)
+ #define R_HASH_SRC_LEN  (0x2c / 4)
+ 
+ #define R_HASH_CMD      (0x30 / 4)
+@@ -94,7 +95,10 @@ static int hash_algo_lookup(uint32_t reg)
+     return -1;
+ }
+ 
+-static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
++static void do_hash_operation(AspeedHACEState *s,
++                              int algo,
++                              bool sg_mode,
++                              bool acc_mode)
+ {
+     struct iovec iov[ASPEED_HACE_MAX_SG];
+     g_autofree uint8_t *digest_buf;
+@@ -103,6 +107,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
+ 
+     if (sg_mode) {
+         uint32_t len = 0;
++        uint32_t total_len = 0;
+ 
+         for (i = 0; !(len & SG_LIST_LEN_LAST); i++) {
+             uint32_t addr, src;
+@@ -127,6 +132,21 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
+             plen = iov[i].iov_len;
+             iov[i].iov_base = address_space_map(&s->dram_as, addr, &plen, false,
+                                                 MEMTXATTRS_UNSPECIFIED);
++
++            total_len += plen;
++            if (acc_mode && len & SG_LIST_LEN_LAST) {
++                /*
++                 * Read the message length in bit from last 64/128 bits
++                 * and tear the padding bits from iov
++                 */
++                uint64_t stream_len;
++
++                memcpy(&stream_len, iov[i].iov_base + iov[i].iov_len - 8, 8);
++                stream_len = __bswap_64(stream_len) / 8;
++
++                if (total_len > stream_len)
++                    iov[i].iov_len -= total_len - stream_len;
++            }
+         }
+     } else {
+         hwaddr len = s->regs[R_HASH_SRC_LEN];
+@@ -210,6 +230,9 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+     case R_HASH_DEST:
+         data &= ahc->dest_mask;
+         break;
++    case R_HASH_KEY_BUFF:
++        data &= ahc->key_mask;
++        break;
+     case R_HASH_SRC_LEN:
+         data &= 0x0FFFFFFF;
+         break;
+@@ -234,7 +257,7 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+                         __func__, data & ahc->hash_mask);
+                 break;
+         }
+-        do_hash_operation(s, algo, data & HASH_SG_EN);
++        do_hash_operation(s, algo, data & HASH_SG_EN, data & HASH_DIGEST_ACCUM);
+ 
+         if (data & HASH_IRQ_EN) {
+             qemu_irq_raise(s->irq);
+@@ -333,6 +356,7 @@ static void aspeed_ast2400_hace_class_init(ObjectClass *klass, void *data)
+ 
+     ahc->src_mask = 0x0FFFFFFF;
+     ahc->dest_mask = 0x0FFFFFF8;
++    ahc->key_mask = 0x0FFFFFC0;
+     ahc->hash_mask = 0x000003ff; /* No SG or SHA512 modes */
+ }
+ 
+@@ -351,6 +375,7 @@ static void aspeed_ast2500_hace_class_init(ObjectClass *klass, void *data)
+ 
+     ahc->src_mask = 0x3fffffff;
+     ahc->dest_mask = 0x3ffffff8;
++    ahc->key_mask = 0x3FFFFFC0;
+     ahc->hash_mask = 0x000003ff; /* No SG or SHA512 modes */
+ }
+ 
+@@ -369,6 +394,7 @@ static void aspeed_ast2600_hace_class_init(ObjectClass *klass, void *data)
+ 
+     ahc->src_mask = 0x7FFFFFFF;
+     ahc->dest_mask = 0x7FFFFFF8;
++    ahc->key_mask = 0x7FFFFFF8;
+     ahc->hash_mask = 0x00147FFF;
+ }
+ 
+diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+index 94d5ada95f..2242945eb4 100644
+--- a/include/hw/misc/aspeed_hace.h
++++ b/include/hw/misc/aspeed_hace.h
+@@ -37,6 +37,7 @@ struct AspeedHACEClass {
+ 
+     uint32_t src_mask;
+     uint32_t dest_mask;
++    uint32_t key_mask;
+     uint32_t hash_mask;
+ };
+ 
+-- 
+2.25.1
 

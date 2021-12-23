@@ -1,104 +1,104 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp3326584lfb;
-        Thu, 23 Dec 2021 04:26:31 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzM1ep2JEuDzj+fS3VXCsvvuOaPZj5JZ/jYiwqSrBU3Dg9ghSAA5DOf0tESjofNoUWngLTm
-X-Received: by 2002:a25:db8e:: with SMTP id g136mr2772424ybf.301.1640262390812;
-        Thu, 23 Dec 2021 04:26:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1640262390; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp3328386lfb;
+        Thu, 23 Dec 2021 04:30:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyXZ2NAZ6eeQ/WDlUwjCnH+gCUFcQwGLIBqKFGhgBXa9b9eFfO1s83T6SfvrBJ/DpMoGtiQ
+X-Received: by 2002:a05:6602:15c6:: with SMTP id f6mr960262iow.170.1640262599993;
+        Thu, 23 Dec 2021 04:29:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640262599; cv=none;
         d=google.com; s=arc-20160816;
-        b=k090h3pbNgL1DJUkTw50FGk2HUUv1qAajCZDRugCQhaWEKxrVNPcC+NR2Ey6zAjWI3
-         57SqkXRAtH/boVPWD1qnwXo5sZWVhsw6++XoSe983P7IAPX2vC2dMHNloc4AMpE41+ik
-         Jhzt7dtmx8elEmV1ld7l6bMrih9EQiWQNu6wf7JqgAs9iENIDmLcdVJcOQL9j05N9PA0
-         8WaGCfgmFs9egKlanbFiwxV8TUKjNrJRg4CUJG7EGCYcaSP/CpkotXl7LgzC05DkcGfB
-         cDUR6kGZ33fJ65U59IaOaGtF2i6FGHLpAZBOHZ9ADshTMP3/mNRSnTp3n8U09Ui8Ae8s
-         tWdw==
+        b=IWhyqptiTkXYiIR/l8Ka555+58DsNFU22VMHz6lIfWRYJs8MMdJOXqwtRfXn5l0tXY
+         qEDCakahlUqiKL5wYPLRgDT8yrxScuRlssClAbdy/kvcjG/Qqagq6vsaQvw0jM/c7dfA
+         TIeK8fn3waRsLQ3o3iVYNQco84wFSr0w36Oe9S2txiLkKmvdOefrNfn019dsZJrnq4GU
+         e+8MbpstdZd9y15ypLspNMOiR832jTO5bk/FVOgPOnG0zEgmuDNNhBt2R/RjX15awY3s
+         53PBFDJ9hi+AtVmtOBxqBwbSGD16Xulg5AkFxjiToRIw4RGPRFtFfs95irn4mE8tN14h
+         ZO0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=AccLfnY/B/12ZHLoZ2OU6IixKvcUVx9674CliXPrEJo=;
-        b=rovCQ+n9Twxg+Iq2uVJj/sV29FApV6xN3R9STiH4lGKMRcTzpHqWxYBWVEuueQ578Y
-         M7HIuqqtXketFGYIs0HMjubTZTO84iuE/dgNFzXuASfs5L2ytQTx4ycElIk5AXtkzMcG
-         QZrJTQfOdq2qi3dzLAyoG1E7HSLQ6vgDh74NwdlFarYs6wz9WWNmphIvS3IWykDS7hQw
-         wYHTwrejzkOeGcihRt78CDJV4ayyIeIWzABYPRSBVbPW+ReZUCf62G4UPa3iq32gjpPU
-         g+pKt0BMOZv92yB5eGjl/Jfwcqy2Wuc+WczLn0oz7gGJ52DSed9PcfWe8FeH0g93nl3F
-         dgLA==
+        bh=9pReE1QJ5vxBRMRDloIuGc8yeeo3MgjkQ39UWuGBPOY=;
+        b=tNkbtCA9chvKm3t3BL18yvFVesN0GLujT57LmFXCC3y4ggnLvP0LOd2uRL05Klre2n
+         tqlwXEmTyUU+7B1B3cd8MHn0HER2aJksN7MPZt9VTIy9wyYAfdP9PyBbMyRuNYgkZIp1
+         dZ7aQyvmQ/Rj441a2ptK2munWIga7q775nebm5STMBsxJejEu+j8vWY/rBfGTWqK9ZBo
+         CcoQ1WjVAjSTqBYmD98mjvWhfzqtAiFaieSMdCVKJ/nycQRvzpRV9biVT8emABIzdVkC
+         7rc2jkn47TGbcahXoYJpjuLBBmugOmBdZBxgwMIgzMLYadCbDXE2hhyTl9pHGkW+Uln+
+         5APA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="bRL+4kY/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RBwwbjlh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n5si6499918ybg.699.2021.12.23.04.26.30
+        by mx.google.com with ESMTPS id n5si906298ilk.106.2021.12.23.04.29.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Dec 2021 04:26:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Dec 2021 04:29:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="bRL+4kY/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RBwwbjlh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36530 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41832 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n0NB0-0004kZ-5T
-	for alex.bennee@linaro.org; Thu, 23 Dec 2021 07:26:30 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33790)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n0NEN-000055-5s
+	for alex.bennee@linaro.org; Thu, 23 Dec 2021 07:29:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n0MlL-0004bd-DG
- for qemu-arm@nongnu.org; Thu, 23 Dec 2021 06:59:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:56617)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n0Mlz-0004vr-GI
+ for qemu-devel@nongnu.org; Thu, 23 Dec 2021 07:00:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:24611)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n0MlJ-0001ED-RS
- for qemu-arm@nongnu.org; Thu, 23 Dec 2021 06:59:59 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n0Mlx-0001R4-9k
+ for qemu-devel@nongnu.org; Thu, 23 Dec 2021 07:00:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1640260797;
+ s=mimecast20190719; t=1640260835;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AccLfnY/B/12ZHLoZ2OU6IixKvcUVx9674CliXPrEJo=;
- b=bRL+4kY/zinwtC3pF1HHQOFS2JifjDtsAbfJKltGrh3AUIIf5zlC9osuaNQTaAh4COFfyp
- Z4CxUHmk5kz8mOmd2dc3qq2COm7mrpjbceYCQmLBtLH7X/etVUL48vuf/pU15MoZMe0wyx
- Ysea6vMgVcwSCs6fdIZP6F8fhauohcY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=9pReE1QJ5vxBRMRDloIuGc8yeeo3MgjkQ39UWuGBPOY=;
+ b=RBwwbjlhFo+Q8shguLRHnCtBBxMHErq1LNDudc98l91R8K4EtCzDlzg618Cj8sQwJep2YC
+ GYVJoHypiA5ShOC2ytSiKGbDlXu1Wd+iFKlxhK1SzSzPwe1gEp8wbP54nFtdmrX98n2nMe
+ etEhacYE2HAFiw3tfGiG6vCNsCYC1r4=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-441-nVqPIcW6ORyr1S7glfJAlw-1; Thu, 23 Dec 2021 06:59:54 -0500
-X-MC-Unique: nVqPIcW6ORyr1S7glfJAlw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- r10-20020a1c440a000000b003456b2594e0so1928557wma.8
- for <qemu-arm@nongnu.org>; Thu, 23 Dec 2021 03:59:54 -0800 (PST)
+ us-mta-341-94xg_yp8OjeJA1B53SktcA-1; Thu, 23 Dec 2021 07:00:34 -0500
+X-MC-Unique: 94xg_yp8OjeJA1B53SktcA-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ j207-20020a1c23d8000000b00345b181302eso4563338wmj.1
+ for <qemu-devel@nongnu.org>; Thu, 23 Dec 2021 04:00:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=AccLfnY/B/12ZHLoZ2OU6IixKvcUVx9674CliXPrEJo=;
- b=WOAcSNKWlP1OsRlgPsd8bu4x7uTLOZ2BrFWJRkD/8tjEKlQ78o20Ps/6ejr3Ha7UBy
- quC++hZqsqPMp9kSru4mVNov1hfccz3nWAfUaSLsMEwpzw7/9bTChzB/3LercSWQreOM
- 2Be0A5R1yx3+yTA6kxQnqXrcDO0cGsOPVtS9VG32mhqr8SMkxg7dmoG6n8jUXoTROuhp
- ypsREUsDW4ItvdiNyHrMR//pgL2NlzeFY5JjW3fK627JOahHXur/vM5azyIZ1wSm3Lnn
- RlwHj1wuSl76wzzWNh2oJ8kECCTzXNmTYtuEf7OZGyi2VqdAXmTaP2B8bWbud3gC/riS
- 61mw==
-X-Gm-Message-State: AOAM533WmaFk8diiiCUXoq5vW842r56BT/A8nsqFhUdIswWdTHRWrWnY
- bJS7b5Qe1AvZypcJSB+TUVqPuiHA58PcDI3iVguW3vDxTbv1GvT0yKUhk6QA6ehHWybdsRS6Vr0
- +o599rGCCs0SI
-X-Received: by 2002:a05:600c:1f18:: with SMTP id
- bd24mr1593856wmb.174.1640260793174; 
- Thu, 23 Dec 2021 03:59:53 -0800 (PST)
-X-Received: by 2002:a05:600c:1f18:: with SMTP id
- bd24mr1593821wmb.174.1640260793042; 
- Thu, 23 Dec 2021 03:59:53 -0800 (PST)
+ bh=9pReE1QJ5vxBRMRDloIuGc8yeeo3MgjkQ39UWuGBPOY=;
+ b=w9zNVKeQ89AbJbUqdRRnmKVpkgqIaiiiFafbgUkEXH0fCPZXX3BBwAOeYMiKKi1esU
+ 9U2tRXvI7HKIWG4G++VEJZRYXG04yChn0qOTgl+MOBG7xXpc5vU57TaxDQburJ9y+UbN
+ rwXyiY3SVWw16iZ2m5cgY4ZVNByZA+4Rq9Hj1+TiziMdVkMxa4PlycAfLxazCvrMPOKT
+ /0wlfpTnSojYw9JqexnkKGaISpOitSGMqtmAOWRUTrRYfXsusI5+E8TkCbiMRf/jEr/a
+ CcTWZkv3p7jSXPPxE1Z2TKveilxnHb6J18A/rRakqNDTsguSX034iD9isDXW93Lmn2Vj
+ jNIA==
+X-Gm-Message-State: AOAM530M5nQTB92spv4QROqu+bfukH/Uymllg4On/wn7XvXkOyOYU+fF
+ wV56PP3wEN9ORh25s5y2Ue3vfChA77SxU6634X9KcAM77Fasd6G8n79xR1TBVY8u/cn6+O9WODn
+ dqMZjKzi6bZhIL9UHUkLC1ombvJ7nDaNqk/4zfoVH+2r2mSjDZQnbSi9CZrw/O6Sk
+X-Received: by 2002:a05:6000:1787:: with SMTP id
+ e7mr1584960wrg.31.1640260832954; 
+ Thu, 23 Dec 2021 04:00:32 -0800 (PST)
+X-Received: by 2002:a05:6000:1787:: with SMTP id
+ e7mr1584902wrg.31.1640260832570; 
+ Thu, 23 Dec 2021 04:00:32 -0800 (PST)
 Received: from x1w.. (33.red-193-152-124.dynamicip.rima-tde.net.
  [193.152.124.33])
- by smtp.gmail.com with ESMTPSA id i4sm7759112wmd.34.2021.12.23.03.59.44
+ by smtp.gmail.com with ESMTPSA id w6sm4601783wrs.52.2021.12.23.04.00.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Dec 2021 03:59:52 -0800 (PST)
+ Thu, 23 Dec 2021 04:00:32 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 17/23] dma: Let st*_dma() propagate MemTxResult
-Date: Thu, 23 Dec 2021 12:55:48 +0100
-Message-Id: <20211223115554.3155328-18-philmd@redhat.com>
+Subject: [PATCH v2 20/23] pci: Let st*_pci_dma() take MemTxAttrs argument
+Date: Thu, 23 Dec 2021 12:55:51 +0100
+Message-Id: <20211223115554.3155328-21-philmd@redhat.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20211223115554.3155328-1-philmd@redhat.com>
 References: <20211223115554.3155328-1-philmd@redhat.com>
@@ -117,29 +117,30 @@ X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.203,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Bin Meng <bin.meng@windriver.com>, David Hildenbrand <david@redhat.com>,
  Peter Xu <peterx@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Klaus Jensen <its@irrelevant.dk>, Sven Schnelle <svens@stackframe.org>,
- Hannes Reinecke <hare@suse.com>, qemu-block@nongnu.org,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Klaus Jensen <its@irrelevant.dk>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Sven Schnelle <svens@stackframe.org>, Hannes Reinecke <hare@suse.com>,
+ qemu-block@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Havard Skinnemoen <hskinnemoen@google.com>, Joel Stanley <joel@jms.id.au>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Stefan Weil <sw@weilnetz.de>,
+ Stefan Weil <sw@weilnetz.de>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Alistair Francis <alistair@alistair23.me>,
@@ -154,59 +155,297 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Tyrone Ting <kfting@nuvoton.com>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TI/RIK3ncj1y
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mTDW4IOJfGEW
 
-dma_memory_write() returns a MemTxResult type. Do not discard
-it, return it to the caller.
+Let devices specify transaction attributes when calling st*_pci_dma().
+
+Keep the default MEMTXATTRS_UNSPECIFIED in the few callers.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- include/sysemu/dma.h | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ include/hw/pci/pci.h | 11 ++++++-----
+ hw/audio/intel-hda.c | 10 ++++++----
+ hw/net/eepro100.c    | 29 ++++++++++++++++++-----------
+ hw/net/tulip.c       | 18 ++++++++++--------
+ hw/scsi/megasas.c    | 15 ++++++++++-----
+ hw/scsi/vmw_pvscsi.c |  3 ++-
+ 6 files changed, 52 insertions(+), 34 deletions(-)
 
-diff --git a/include/sysemu/dma.h b/include/sysemu/dma.h
-index f3cf60d222d..725e8e90f88 100644
---- a/include/sysemu/dma.h
-+++ b/include/sysemu/dma.h
-@@ -248,13 +248,13 @@ static inline void dma_memory_unmap(AddressSpace *as,
-         dma_memory_read(as, addr, &val, (_bits) / 8, attrs); \
-         return _end##_bits##_to_cpu(val);                               \
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index 8c5f2ed5054..9f51ef2c3c2 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -859,11 +859,12 @@ static inline MemTxResult pci_dma_write(PCIDevice *dev, dma_addr_t addr,
+                      MEMTXATTRS_UNSPECIFIED); \
+         return val; \
      }                                                                   \
--    static inline void st##_sname##_##_end##_dma(AddressSpace *as,      \
--                                                 dma_addr_t addr,       \
--                                                 uint##_bits##_t val,   \
--                                                 MemTxAttrs attrs)      \
+-    static inline void st##_s##_pci_dma(PCIDevice *dev,                 \
+-                                        dma_addr_t addr, uint##_bits##_t val) \
 -    {                                                                   \
--        val = cpu_to_##_end##_bits(val);                                \
--        dma_memory_write(as, addr, &val, (_bits) / 8, attrs);           \
-+    static inline MemTxResult st##_sname##_##_end##_dma(AddressSpace *as, \
-+                                                        dma_addr_t addr, \
-+                                                        uint##_bits##_t val, \
-+                                                        MemTxAttrs attrs) \
+-        st##_s##_dma(pci_get_address_space(dev), addr, val, \
+-                     MEMTXATTRS_UNSPECIFIED); \
++    static inline void st##_s##_pci_dma(PCIDevice *dev, \
++                                        dma_addr_t addr, \
++                                        uint##_bits##_t val, \
++                                        MemTxAttrs attrs) \
 +    { \
-+        val = cpu_to_##_end##_bits(val); \
-+        return dma_memory_write(as, addr, &val, (_bits) / 8, attrs); \
++        st##_s##_dma(pci_get_address_space(dev), addr, val, attrs); \
      }
  
- static inline uint8_t ldub_dma(AddressSpace *as, dma_addr_t addr, MemTxAttrs attrs)
-@@ -265,10 +265,10 @@ static inline uint8_t ldub_dma(AddressSpace *as, dma_addr_t addr, MemTxAttrs att
-     return val;
- }
+ PCI_DMA_DEFINE_LDST(ub, b, 8);
+diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+index fb3d34a4a0c..3309ae0ea18 100644
+--- a/hw/audio/intel-hda.c
++++ b/hw/audio/intel-hda.c
+@@ -345,6 +345,7 @@ static void intel_hda_corb_run(IntelHDAState *d)
  
--static inline void stb_dma(AddressSpace *as, dma_addr_t addr,
--                           uint8_t val, MemTxAttrs attrs)
-+static inline MemTxResult stb_dma(AddressSpace *as, dma_addr_t addr,
-+                                  uint8_t val, MemTxAttrs attrs)
+ static void intel_hda_response(HDACodecDevice *dev, bool solicited, uint32_t response)
  {
--    dma_memory_write(as, addr, &val, 1, attrs);
-+    return dma_memory_write(as, addr, &val, 1, attrs);
++    const MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
+     HDACodecBus *bus = HDA_BUS(dev->qdev.parent_bus);
+     IntelHDAState *d = container_of(bus, IntelHDAState, codecs);
+     hwaddr addr;
+@@ -367,8 +368,8 @@ static void intel_hda_response(HDACodecDevice *dev, bool solicited, uint32_t res
+     ex = (solicited ? 0 : (1 << 4)) | dev->cad;
+     wp = (d->rirb_wp + 1) & 0xff;
+     addr = intel_hda_addr(d->rirb_lbase, d->rirb_ubase);
+-    stl_le_pci_dma(&d->pci, addr + 8*wp, response);
+-    stl_le_pci_dma(&d->pci, addr + 8*wp + 4, ex);
++    stl_le_pci_dma(&d->pci, addr + 8 * wp, response, attrs);
++    stl_le_pci_dma(&d->pci, addr + 8 * wp + 4, ex, attrs);
+     d->rirb_wp = wp;
+ 
+     dprint(d, 2, "%s: [wp 0x%x] response 0x%x, extra 0x%x\n",
+@@ -394,6 +395,7 @@ static void intel_hda_response(HDACodecDevice *dev, bool solicited, uint32_t res
+ static bool intel_hda_xfer(HDACodecDevice *dev, uint32_t stnr, bool output,
+                            uint8_t *buf, uint32_t len)
+ {
++    const MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
+     HDACodecBus *bus = HDA_BUS(dev->qdev.parent_bus);
+     IntelHDAState *d = container_of(bus, IntelHDAState, codecs);
+     hwaddr addr;
+@@ -428,7 +430,7 @@ static bool intel_hda_xfer(HDACodecDevice *dev, uint32_t stnr, bool output,
+                st->be, st->bp, st->bpl[st->be].len, copy);
+ 
+         pci_dma_rw(&d->pci, st->bpl[st->be].addr + st->bp, buf, copy, !output,
+-                   MEMTXATTRS_UNSPECIFIED);
++                   attrs);
+         st->lpib += copy;
+         st->bp += copy;
+         buf += copy;
+@@ -451,7 +453,7 @@ static bool intel_hda_xfer(HDACodecDevice *dev, uint32_t stnr, bool output,
+     if (d->dp_lbase & 0x01) {
+         s = st - d->st;
+         addr = intel_hda_addr(d->dp_lbase & ~0x01, d->dp_ubase);
+-        stl_le_pci_dma(&d->pci, addr + 8*s, st->lpib);
++        stl_le_pci_dma(&d->pci, addr + 8 * s, st->lpib, attrs);
+     }
+     dprint(d, 3, "dma: --\n");
+ 
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index 16e95ef9cc9..83c4431b1ad 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -700,6 +700,8 @@ static void set_ru_state(EEPRO100State * s, ru_state_t state)
+ 
+ static void dump_statistics(EEPRO100State * s)
+ {
++    const MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
++
+     /* Dump statistical data. Most data is never changed by the emulation
+      * and always 0, so we first just copy the whole block and then those
+      * values which really matter.
+@@ -707,16 +709,18 @@ static void dump_statistics(EEPRO100State * s)
+      */
+     pci_dma_write(&s->dev, s->statsaddr, &s->statistics, s->stats_size);
+     stl_le_pci_dma(&s->dev, s->statsaddr + 0,
+-                   s->statistics.tx_good_frames);
++                   s->statistics.tx_good_frames, attrs);
+     stl_le_pci_dma(&s->dev, s->statsaddr + 36,
+-                   s->statistics.rx_good_frames);
++                   s->statistics.rx_good_frames, attrs);
+     stl_le_pci_dma(&s->dev, s->statsaddr + 48,
+-                   s->statistics.rx_resource_errors);
++                   s->statistics.rx_resource_errors, attrs);
+     stl_le_pci_dma(&s->dev, s->statsaddr + 60,
+-                   s->statistics.rx_short_frame_errors);
++                   s->statistics.rx_short_frame_errors, attrs);
+ #if 0
+-    stw_le_pci_dma(&s->dev, s->statsaddr + 76, s->statistics.xmt_tco_frames);
+-    stw_le_pci_dma(&s->dev, s->statsaddr + 78, s->statistics.rcv_tco_frames);
++    stw_le_pci_dma(&s->dev, s->statsaddr + 76,
++                   s->statistics.xmt_tco_frames, attrs);
++    stw_le_pci_dma(&s->dev, s->statsaddr + 78,
++                   s->statistics.rcv_tco_frames, attrs);
+     missing("CU dump statistical counters");
+ #endif
+ }
+@@ -833,6 +837,7 @@ static void set_multicast_list(EEPRO100State *s)
+ 
+ static void action_command(EEPRO100State *s)
+ {
++    const MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
+     /* The loop below won't stop if it gets special handcrafted data.
+        Therefore we limit the number of iterations. */
+     unsigned max_loop_count = 16;
+@@ -911,7 +916,7 @@ static void action_command(EEPRO100State *s)
+         }
+         /* Write new status. */
+         stw_le_pci_dma(&s->dev, s->cb_address,
+-                       s->tx.status | ok_status | STATUS_C);
++                       s->tx.status | ok_status | STATUS_C, attrs);
+         if (bit_i) {
+             /* CU completed action. */
+             eepro100_cx_interrupt(s);
+@@ -937,6 +942,7 @@ static void action_command(EEPRO100State *s)
+ 
+ static void eepro100_cu_command(EEPRO100State * s, uint8_t val)
+ {
++    const MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
+     cu_state_t cu_state;
+     switch (val) {
+     case CU_NOP:
+@@ -986,7 +992,7 @@ static void eepro100_cu_command(EEPRO100State * s, uint8_t val)
+         /* Dump statistical counters. */
+         TRACE(OTHER, logout("val=0x%02x (dump stats)\n", val));
+         dump_statistics(s);
+-        stl_le_pci_dma(&s->dev, s->statsaddr + s->stats_size, 0xa005);
++        stl_le_pci_dma(&s->dev, s->statsaddr + s->stats_size, 0xa005, attrs);
+         break;
+     case CU_CMD_BASE:
+         /* Load CU base. */
+@@ -997,7 +1003,7 @@ static void eepro100_cu_command(EEPRO100State * s, uint8_t val)
+         /* Dump and reset statistical counters. */
+         TRACE(OTHER, logout("val=0x%02x (dump stats and reset)\n", val));
+         dump_statistics(s);
+-        stl_le_pci_dma(&s->dev, s->statsaddr + s->stats_size, 0xa007);
++        stl_le_pci_dma(&s->dev, s->statsaddr + s->stats_size, 0xa007, attrs);
+         memset(&s->statistics, 0, sizeof(s->statistics));
+         break;
+     case CU_SRESUME:
+@@ -1612,6 +1618,7 @@ static ssize_t nic_receive(NetClientState *nc, const uint8_t * buf, size_t size)
+      * - Magic packets should set bit 30 in power management driver register.
+      * - Interesting packets should set bit 29 in power management driver register.
+      */
++    const MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
+     EEPRO100State *s = qemu_get_nic_opaque(nc);
+     uint16_t rfd_status = 0xa000;
+ #if defined(CONFIG_PAD_RECEIVED_FRAMES)
+@@ -1726,9 +1733,9 @@ static ssize_t nic_receive(NetClientState *nc, const uint8_t * buf, size_t size)
+     TRACE(OTHER, logout("command 0x%04x, link 0x%08x, addr 0x%08x, size %u\n",
+           rfd_command, rx.link, rx.rx_buf_addr, rfd_size));
+     stw_le_pci_dma(&s->dev, s->ru_base + s->ru_offset +
+-                offsetof(eepro100_rx_t, status), rfd_status);
++                offsetof(eepro100_rx_t, status), rfd_status, attrs);
+     stw_le_pci_dma(&s->dev, s->ru_base + s->ru_offset +
+-                offsetof(eepro100_rx_t, count), size);
++                offsetof(eepro100_rx_t, count), size, attrs);
+     /* Early receive interrupt not supported. */
+ #if 0
+     eepro100_er_interrupt(s);
+diff --git a/hw/net/tulip.c b/hw/net/tulip.c
+index ca69f7ea5e1..1f2c79dd58b 100644
+--- a/hw/net/tulip.c
++++ b/hw/net/tulip.c
+@@ -86,16 +86,18 @@ static void tulip_desc_read(TULIPState *s, hwaddr p,
+ static void tulip_desc_write(TULIPState *s, hwaddr p,
+         struct tulip_descriptor *desc)
+ {
++    const MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
++
+     if (s->csr[0] & CSR0_DBO) {
+-        stl_be_pci_dma(&s->dev, p, desc->status);
+-        stl_be_pci_dma(&s->dev, p + 4, desc->control);
+-        stl_be_pci_dma(&s->dev, p + 8, desc->buf_addr1);
+-        stl_be_pci_dma(&s->dev, p + 12, desc->buf_addr2);
++        stl_be_pci_dma(&s->dev, p, desc->status, attrs);
++        stl_be_pci_dma(&s->dev, p + 4, desc->control, attrs);
++        stl_be_pci_dma(&s->dev, p + 8, desc->buf_addr1, attrs);
++        stl_be_pci_dma(&s->dev, p + 12, desc->buf_addr2, attrs);
+     } else {
+-        stl_le_pci_dma(&s->dev, p, desc->status);
+-        stl_le_pci_dma(&s->dev, p + 4, desc->control);
+-        stl_le_pci_dma(&s->dev, p + 8, desc->buf_addr1);
+-        stl_le_pci_dma(&s->dev, p + 12, desc->buf_addr2);
++        stl_le_pci_dma(&s->dev, p, desc->status, attrs);
++        stl_le_pci_dma(&s->dev, p + 4, desc->control, attrs);
++        stl_le_pci_dma(&s->dev, p + 8, desc->buf_addr1, attrs);
++        stl_le_pci_dma(&s->dev, p + 12, desc->buf_addr2, attrs);
+     }
  }
  
- DEFINE_LDST_DMA(uw, w, 16, le);
+diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
+index 266c3d38003..65451d34e64 100644
+--- a/hw/scsi/megasas.c
++++ b/hw/scsi/megasas.c
+@@ -168,14 +168,16 @@ static void megasas_frame_set_cmd_status(MegasasState *s,
+                                          unsigned long frame, uint8_t v)
+ {
+     PCIDevice *pci = &s->parent_obj;
+-    stb_pci_dma(pci, frame + offsetof(struct mfi_frame_header, cmd_status), v);
++    stb_pci_dma(pci, frame + offsetof(struct mfi_frame_header, cmd_status),
++                v, MEMTXATTRS_UNSPECIFIED);
+ }
+ 
+ static void megasas_frame_set_scsi_status(MegasasState *s,
+                                           unsigned long frame, uint8_t v)
+ {
+     PCIDevice *pci = &s->parent_obj;
+-    stb_pci_dma(pci, frame + offsetof(struct mfi_frame_header, scsi_status), v);
++    stb_pci_dma(pci, frame + offsetof(struct mfi_frame_header, scsi_status),
++                v, MEMTXATTRS_UNSPECIFIED);
+ }
+ 
+ static inline const char *mfi_frame_desc(unsigned int cmd)
+@@ -542,6 +544,7 @@ static MegasasCmd *megasas_enqueue_frame(MegasasState *s,
+ 
+ static void megasas_complete_frame(MegasasState *s, uint64_t context)
+ {
++    const MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
+     PCIDevice *pci_dev = PCI_DEVICE(s);
+     int tail, queue_offset;
+ 
+@@ -555,10 +558,12 @@ static void megasas_complete_frame(MegasasState *s, uint64_t context)
+          */
+         if (megasas_use_queue64(s)) {
+             queue_offset = s->reply_queue_head * sizeof(uint64_t);
+-            stq_le_pci_dma(pci_dev, s->reply_queue_pa + queue_offset, context);
++            stq_le_pci_dma(pci_dev, s->reply_queue_pa + queue_offset,
++                           context, attrs);
+         } else {
+             queue_offset = s->reply_queue_head * sizeof(uint32_t);
+-            stl_le_pci_dma(pci_dev, s->reply_queue_pa + queue_offset, context);
++            stl_le_pci_dma(pci_dev, s->reply_queue_pa + queue_offset,
++                           context, attrs);
+         }
+         s->reply_queue_tail = ldl_le_pci_dma(pci_dev, s->consumer_pa);
+         trace_megasas_qf_complete(context, s->reply_queue_head,
+@@ -572,7 +577,7 @@ static void megasas_complete_frame(MegasasState *s, uint64_t context)
+         s->reply_queue_head = megasas_next_index(s, tail, s->fw_cmds);
+         trace_megasas_qf_update(s->reply_queue_head, s->reply_queue_tail,
+                                 s->busy);
+-        stl_le_pci_dma(pci_dev, s->producer_pa, s->reply_queue_head);
++        stl_le_pci_dma(pci_dev, s->producer_pa, s->reply_queue_head, attrs);
+         /* Notify HBA */
+         if (msix_enabled(pci_dev)) {
+             trace_megasas_msix_raise(0);
+diff --git a/hw/scsi/vmw_pvscsi.c b/hw/scsi/vmw_pvscsi.c
+index cd76bd67ab7..59c3e8ba048 100644
+--- a/hw/scsi/vmw_pvscsi.c
++++ b/hw/scsi/vmw_pvscsi.c
+@@ -55,7 +55,8 @@
+                  (m)->rs_pa + offsetof(struct PVSCSIRingsState, field)))
+ #define RS_SET_FIELD(m, field, val) \
+     (stl_le_pci_dma(&container_of(m, PVSCSIState, rings)->parent_obj, \
+-                 (m)->rs_pa + offsetof(struct PVSCSIRingsState, field), val))
++                 (m)->rs_pa + offsetof(struct PVSCSIRingsState, field), val, \
++                 MEMTXATTRS_UNSPECIFIED))
+ 
+ struct PVSCSIClass {
+     PCIDeviceClass parent_class;
 -- 
 2.33.1
 

@@ -1,193 +1,541 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp3331198lfb;
-        Thu, 23 Dec 2021 04:34:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzo5j+1a6FHltmaf5ql5Qd37GupHms8ac23o/ep7rsDLCNSBv+qOLbL5teQ6XE7DAKdEdSo
-X-Received: by 2002:a25:a262:: with SMTP id b89mr2929821ybi.434.1640262872345;
-        Thu, 23 Dec 2021 04:34:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1640262872; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp3375870lfb;
+        Thu, 23 Dec 2021 05:49:21 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxrB+wYvs26OSUnX/jWw22bWH0dPjWSrU5qpEL/lNKqIyjyAONJ+2Pc5F+8pgA7G67gxSpn
+X-Received: by 2002:a05:6e02:180d:: with SMTP id a13mr1029883ilv.1.1640267361041;
+        Thu, 23 Dec 2021 05:49:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640267361; cv=none;
         d=google.com; s=arc-20160816;
-        b=atxHSYRCyxwU/dJfjG8GnjkDL5tUJJWm/wmAmii9vDpOhZfEbrSHBG8Ai0DBQheLkY
-         zQl2K9y+UODXShhimd8Q7RSNhyRru9t8tatZiY85hkbp2g9EkoN0hru21iWLC3XUlZ24
-         TGTFGDQQY5kqtxeE1neHc+0LlRGP9gG01eQq59OK5OSSWuWz6106IrjnoxTeEZs+4tO4
-         pXVwI+zQpfJ6uBL0mR7ZGhOUmIsMaB3rUobSw5970V0x/jB/DZVJZy8uzJmrgVRzjcNz
-         GMyjS2ZBqjNLpkyxr5+eFBJ8hjOLy74sN/r/4RFhW7peAT7873MFsGraKIeCpcTi5wjm
-         VOcA==
+        b=EtzR7XKiUN2P01a4aSrVYgKo0oJIRdVc+34geJeiWQNMkpPMofVmgWbmSICOp+2PBI
+         aBjiAS7h/6yeIdKbFF6M6OEHy0CAVeIziV3FyJaj3DE4YzEbOtVGpMAvkM5R3DmNHpeH
+         8+1DA/OzDG2XgWPGzwXnYo2+kolTPREf3dXMrHB1LjUqWvJGTkQcQSgddfPFD7WMKQDm
+         o+oifPOCjfKulfgkjxrIhcQv4iPmk96Cc8qc/b6l3xcjBnfyqcVs1ic6YnbgBR2UCNwJ
+         d1SbKdEgHh43ldTwh3VJdT5x8xtjaa8w6XIgiURTqzTQ13emGzxNCv8AqqMZXOSbS6tU
+         MDyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=Xe1vuKIn+V7zfO3YKXmpVrbFyeoxlWXQr1Mcr+LUv2s=;
-        b=IPFxGJnn8IwJtXsFAXO0whK1Z/jXe12OFp+iTQUgz38mlPgk6wf1qlRchfBbx8cQVv
-         ZGIUJtAMWMqYgzSzEg8AJcSKljQqMdSEfTOR0JaJ5bF3yIuqg3xTU/hFVxINIo3TDhXm
-         KOObDqw7LS6bBB2DHnfMQ2Ii1amvidDKarugYOg9xP1TG4dZWm0JBC+wqibRNK7OyKcj
-         oMQ3ffs/mzoTsP/cDAWjS6gpHIIZPbQqRHDH7140FijXBhELVitvs0Ycq1g3AbjAXJb0
-         O5n/0gw/0FRuIeAUv3MHiMPPlXoXq6gvTxOoDAjua5FX8GkkoD/sO01GJU6TUDVb1+FT
-         5zYQ==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=nheaFgSWt+ZvVW7S8+A1UuBB8khOZZznx2y17lw/ozU=;
+        b=vbeieL9O2lSLFzj4P+mZpWQmEWsjr2469iqDMXQxSAQB/jI+LWOH7jxmKNx9GmPFDB
+         bIzbLvtJedS+sgZM5bVaLzWSTuiAA+ayIm+JGjPHkzIHyo1tOXQAOpTXyoD0E/fJXG5g
+         K9zNb6TTTZaa862H7DZR9imL1PTVn5tSdDVeq//tfIzZhEnCeaAMGyuP8PW17WrRBOn2
+         7q0fgzx24e/oHvC083nDkaJXH/77gshrdvyuqoyJu3qYm90D64LpqZkYkfInJFm8W1jw
+         rcweMXFgh7q3qnbk5duOOXFJMqSIGAfaGkWhLgPnOYf9YzqIPCBNo1Dhxasi476T4ste
+         FI9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OduHoNVK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d129si4765716ybb.606.2021.12.23.04.34.32
+        by mx.google.com with ESMTPS id w8si2305904jad.135.2021.12.23.05.49.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Dec 2021 04:34:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Dec 2021 05:49:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OduHoNVK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55756 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:32904 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n0NIl-0001Bl-Pc
-	for alex.bennee@linaro.org; Thu, 23 Dec 2021 07:34:31 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34382)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n0OTA-0001YM-DB
+	for alex.bennee@linaro.org; Thu, 23 Dec 2021 08:49:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39188)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n0MmZ-00064V-Rt
- for qemu-devel@nongnu.org; Thu, 23 Dec 2021 07:01:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:34756)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1n0OSc-0001Xg-5f
+ for qemu-arm@nongnu.org; Thu, 23 Dec 2021 08:48:46 -0500
+Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173]:53925)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n0MmP-0001aq-47
- for qemu-devel@nongnu.org; Thu, 23 Dec 2021 07:01:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1640260864;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Xe1vuKIn+V7zfO3YKXmpVrbFyeoxlWXQr1Mcr+LUv2s=;
- b=OduHoNVKM5lUpZHODOYsMjk3X7aKJwtxxNnMoKozvh0wDjtY8lsfTQq32ToFqEZ8Xw6u0X
- ilV+jxdo0iTZbEARA7Sc2gMgZn8NDULNpKBL8p1fOIrVWSVNkADHCoEp/IwmhSnHfow4fK
- mWuNPFVfD0PmH2J56e00hUsolUiae6M=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-645-xzFU0Un5M5qliWCTf_1Gqg-1; Thu, 23 Dec 2021 07:01:03 -0500
-X-MC-Unique: xzFU0Un5M5qliWCTf_1Gqg-1
-Received: by mail-wm1-f69.google.com with SMTP id
- a69-20020a1c7f48000000b00345d3d135caso757201wmd.7
- for <qemu-devel@nongnu.org>; Thu, 23 Dec 2021 04:01:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Xe1vuKIn+V7zfO3YKXmpVrbFyeoxlWXQr1Mcr+LUv2s=;
- b=TXlnj3bQUP0jq6T48LhSlTnfQWFPkgOpz71xgGzWty2nMAbzCf1EQbbLk/reKuG/ED
- 3FUOBS5UBBmxH6YHtwi8dwqY1CSGKf7UljrZXcSJe+koPX/EUaxkPH7Yk2MEJ/ZosVID
- 93tvZLNJdHQFY4JhAVXZYZJ8NtwhZYzxyb6gla2YDz67E5vpj13msMEIzISF8lOOX66B
- fdCR4uKjq/woJSLKxWPbSS3QzaWSb51ZrbhS6BfhXVgvatsjLgjJozmv0HQ4gzrKX/y/
- cy2PSX+P43nNA8xOTkIdVCBcs78WFilWEsfu/afNhbaIzm1FprwBEmxpjOP1WoBVXnVD
- Gp0w==
-X-Gm-Message-State: AOAM530zTi48+Lg2Zd0gpMhpqvmh+dVvgYF9Mhe+MRbUezjFFbgADeMp
- QVHCMUDT7q/m69AMSZCBGOT/Eo6u+6PKwoePyiXc1F6Jg/PTuqQLcsQXGclO+cODRY9Sbv0vws4
- o7Dl1l8j36hJoATsieVOs+qiy1GHhPkAFcUF7eUJsIJbVXtpfpol9SlS3IZFb0ivU
-X-Received: by 2002:a7b:cbc3:: with SMTP id n3mr1580247wmi.90.1640260862086;
- Thu, 23 Dec 2021 04:01:02 -0800 (PST)
-X-Received: by 2002:a7b:cbc3:: with SMTP id n3mr1580192wmi.90.1640260861824;
- Thu, 23 Dec 2021 04:01:01 -0800 (PST)
-Received: from x1w.. (33.red-193-152-124.dynamicip.rima-tde.net.
- [193.152.124.33])
- by smtp.gmail.com with ESMTPSA id l2sm4925992wrs.43.2021.12.23.04.00.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Dec 2021 04:01:01 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 22/23] pci: Let st*_pci_dma() propagate MemTxResult
-Date: Thu, 23 Dec 2021 12:55:53 +0100
-Message-Id: <20211223115554.3155328-23-philmd@redhat.com>
-X-Mailer: git-send-email 2.33.1
-In-Reply-To: <20211223115554.3155328-1-philmd@redhat.com>
-References: <20211223115554.3155328-1-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1n0OSY-0007pb-Nw
+ for qemu-arm@nongnu.org; Thu, 23 Dec 2021 08:48:45 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.42])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 9DCADD3A8F9B;
+ Thu, 23 Dec 2021 14:48:25 +0100 (CET)
+Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.17; Thu, 23 Dec
+ 2021 14:48:24 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G00619a885cd-de29-4827-911f-25cbf8fd0ec0,
+ 8CA006CF2B51D87471028670A5C113E20BDD9F51) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.66.77.115
+Message-ID: <00d2736b-8263-125b-e4b1-3c56a99f27eb@kaod.org>
+Date: Thu, 23 Dec 2021 14:48:23 +0100
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.203,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH v1 1/2] hw/misc: Implementating dummy AST2600 I3C model
+Content-Language: en-US
+To: Troy Lee <troy_lee@aspeedtech.com>, <qemu-devel@nongnu.org>,
+ <openbmc@lists.ozlabs.org>
+References: <20211222092319.2988568-1-troy_lee@aspeedtech.com>
+ <20211222092319.2988568-2-troy_lee@aspeedtech.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20211222092319.2988568-2-troy_lee@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: c8481a5a-25a8-4fd8-b22a-d317530f9dda
+X-Ovh-Tracer-Id: 9090797324382473068
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvuddruddtkedgheekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfefgveefgeeiheffueejudevfeefteeuteejvdegudejhfetgeehhefhleefffevnecuffhomhgrihhnpeguvghvihgtvghsrdhnohenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo529.mail-out.ovh.net
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.264,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Bin Meng <bin.meng@windriver.com>, David Hildenbrand <david@redhat.com>,
- Peter Xu <peterx@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Klaus Jensen <its@irrelevant.dk>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Sven Schnelle <svens@stackframe.org>, Hannes Reinecke <hare@suse.com>,
- qemu-block@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Havard Skinnemoen <hskinnemoen@google.com>, Joel Stanley <joel@jms.id.au>,
- Stefan Weil <sw@weilnetz.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Keith Busch <kbusch@kernel.org>, John Snow <jsnow@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Eduardo Habkost <eduardo@habkost.net>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Tyrone Ting <kfting@nuvoton.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pGollw6NN/wB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ leetroy@gmail.com, "open list:ASPEED
+ BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MMTW3Hq0T4bu
 
-st*_dma() returns a MemTxResult type. Do not discard
-it, return it to the caller.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- include/hw/pci/pci.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Hello,
 
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index 7a46c1fa226..c90cecc85c0 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -859,12 +859,12 @@ static inline MemTxResult pci_dma_write(PCIDevice *dev, dma_addr_t addr,
-         ld##_l##_dma(pci_get_address_space(dev), addr, &val, attrs); \
-         return val; \
-     }                                                                   \
--    static inline void st##_s##_pci_dma(PCIDevice *dev, \
--                                        dma_addr_t addr, \
--                                        uint##_bits##_t val, \
--                                        MemTxAttrs attrs) \
-+    static inline MemTxResult st##_s##_pci_dma(PCIDevice *dev, \
-+                                               dma_addr_t addr, \
-+                                               uint##_bits##_t val, \
-+                                               MemTxAttrs attrs) \
-     { \
--        st##_s##_dma(pci_get_address_space(dev), addr, val, attrs); \
-+        return st##_s##_dma(pci_get_address_space(dev), addr, val, attrs); \
+On 12/22/21 10:23, Troy Lee wrote:
+> Introduce a dummy AST2600 I3C model.
+> 
+> Aspeed 2600 SDK enables I3C support by default.  The I3C driver will try
+> to reset the device controller and setup through device address table
+> register.  This dummy model response these register with default value
+> listed on ast2600v10 datasheet chapter 54.2.  If the device address
+> table register doesn't set correctly, it will cause guest machine kernel
+> panic due to reference to invalid address.
+
+Overall looks good. Some comments,
+
+> 
+> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> ---
+>   hw/misc/aspeed_i3c.c         | 258 +++++++++++++++++++++++++++++++++++
+>   hw/misc/meson.build          |   1 +
+>   include/hw/misc/aspeed_i3c.h |  30 ++++
+>   3 files changed, 289 insertions(+)
+>   create mode 100644 hw/misc/aspeed_i3c.c
+>   create mode 100644 include/hw/misc/aspeed_i3c.h
+> 
+> diff --git a/hw/misc/aspeed_i3c.c b/hw/misc/aspeed_i3c.c
+> new file mode 100644
+> index 0000000000..9d2bda203e
+> --- /dev/null
+> +++ b/hw/misc/aspeed_i3c.c
+> @@ -0,0 +1,258 @@
+> +/*
+> + * ASPEED I3C Controller
+> + *
+> + * Copyright (C) 2021 ASPEED Technology Inc.
+> + *
+> + * This code is licensed under the GPL version 2 or later.  See
+> + * the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "qemu/error-report.h"
+> +#include "hw/misc/aspeed_i3c.h"
+> +#include "qapi/error.h"
+> +#include "migration/vmstate.h"
+> +
+> +/* I3C Controller Registers */
+> +#define R_I3CG_REG0(x)                  (((x * 0x10) + 0x10) / 4)
+> +#define  I3CG_REG0_SDA_PULLUP_EN_MASK   GENMASK(29, 28)
+
+GENMASK() is a macro defined in the FSI model which is not upstream.
+There are other ways to define bitfield masks in QEMU. Please take a
+look at include/hw/registerfields.h.
+
+
+> +#define  I3CG_REG0_SDA_PULLUP_EN_2K     BIT(28)
+> +#define  I3CG_REG0_SDA_PULLUP_EN_750    BIT(29)
+> +#define  I3CG_REG0_SDA_PULLUP_EN_545    (BIT(29) | BIT(28))
+> +
+> +#define R_I3CG_REG1(x)                  (((x * 0x10) + 0x14) / 4)
+> +#define  I3CG_REG1_I2C_MODE             BIT(0)
+> +#define  I3CG_REG1_TEST_MODE            BIT(1)
+> +#define  I3CG_REG1_ACT_MODE_MASK        GENMASK(3, 2)
+> +#define  I3CG_REG1_ACT_MODE(x)          (((x) << 2) & I3CG_REG1_ACT_MODE_MASK)
+> +#define  I3CG_REG1_PENDING_INT_MASK     GENMASK(7, 4)
+> +#define  I3CG_REG1_PENDING_INT(x)   (((x) << 4) & I3CG_REG1_PENDING_INT_MASK)
+> +#define  I3CG_REG1_SA_MASK              GENMASK(14, 8)
+> +#define  I3CG_REG1_SA(x)                (((x) << 8) & I3CG_REG1_SA_MASK)
+> +#define  I3CG_REG1_SA_EN                BIT(15)
+> +#define  I3CG_REG1_INST_ID_MASK         GENMASK(19, 16)
+> +#define  I3CG_REG1_INST_ID(x)           (((x) << 16) & I3CG_REG1_INST_ID_MASK)
+> +
+> +/* I3C Device Registers */
+> +#define R_DEVICE_CTRL                   (0x00 / 4)
+> +#define R_DEVICE_ADDR                   (0x04 / 4)
+> +#define R_HW_CAPABILITY                 (0x08 / 4)
+> +#define R_COMMAND_QUEUE_PORT            (0x0c / 4)
+> +#define R_RESPONSE_QUEUE_PORT           (0x10 / 4)
+> +#define R_RX_TX_DATA_PORT               (0x14 / 4)
+> +#define R_IBI_QUEUE_STATUS              (0x18 / 4)
+> +#define R_IBI_QUEUE_DATA                (0x18 / 4)
+> +#define R_QUEUE_THLD_CTRL               (0x1c / 4)
+> +#define R_DATA_BUFFER_THLD_CTRL         (0x20 / 4)
+> +#define R_IBI_QUEUE_CTRL                (0x24 / 4)
+> +#define R_IBI_MR_REQ_REJECT             (0x2c / 4)
+> +#define R_IBI_SIR_REQ_REJECT            (0x30 / 4)
+> +#define R_RESET_CTRL                    (0x34 / 4)
+> +#define R_SLV_EVENT_CTRL                (0x38 / 4)
+> +#define R_INTR_STATUS                   (0x3c / 4)
+> +#define R_INTR_STATUS_EN                (0x40 / 4)
+> +#define R_INTR_SIGNAL_EN                (0x44 / 4)
+> +#define R_INTR_FORCE                    (0x48 / 4)
+> +#define R_QUEUE_STATUS_LEVEL            (0x4c / 4)
+> +#define R_DATA_BUFFER_STATUS_LEVEL      (0x50 / 4)
+> +#define R_PRESENT_STATE                 (0x54 / 4)
+> +#define R_CCC_DEVICE_STATUS             (0x58 / 4)
+> +#define R_DEVICE_ADDR_TABLE_POINTER     (0x5c / 4)
+> +#define  DEVICE_ADDR_TABLE_DEPTH(x)     (((x) & GENMASK(31, 16)) >> 16)
+> +#define  DEVICE_ADDR_TABLE_ADDR(x)      ((x) & GENMASK(7, 0))
+> +#define R_DEV_CHAR_TABLE_POINTER        (0x60 / 4)
+> +#define R_VENDOR_SPECIFIC_REG_POINTER   (0x6c / 4)
+> +#define R_SLV_MIPI_PID_VALUE            (0x70 / 4)
+> +#define R_SLV_PID_VALUE                 (0x74 / 4)
+> +#define R_SLV_CHAR_CTRL                 (0x78 / 4)
+> +#define R_SLV_MAX_LEN                   (0x7c / 4)
+> +#define R_MAX_READ_TURNAROUND           (0x80 / 4)
+> +#define R_MAX_DATA_SPEED                (0x84 / 4)
+> +#define R_SLV_DEBUG_STATUS              (0x88 / 4)
+> +#define R_SLV_INTR_REQ                  (0x8c / 4)
+> +#define R_DEVICE_CTRL_EXTENDED          (0xb0 / 4)
+> +#define R_SCL_I3C_OD_TIMING             (0xb4 / 4)
+> +#define R_SCL_I3C_PP_TIMING             (0xb8 / 4)
+> +#define R_SCL_I2C_FM_TIMING             (0xbc / 4)
+> +#define R_SCL_I2C_FMP_TIMING            (0xc0 / 4)
+> +#define R_SCL_EXT_LCNT_TIMING           (0xc8 / 4)
+> +#define R_SCL_EXT_TERMN_LCNT_TIMING     (0xcc / 4)
+> +#define R_BUS_FREE_TIMING               (0xd4 / 4)
+> +#define R_BUS_IDLE_TIMING               (0xd8 / 4)
+> +#define R_I3C_VER_ID                    (0xe0 / 4)
+> +#define R_I3C_VER_TYPE                  (0xe4 / 4)
+> +#define R_EXTENDED_CAPABILITY           (0xe8 / 4)
+> +#define R_SLAVE_CONFIG                  (0xec / 4)
+> +
+> +static uint64_t aspeed_i3c_read(void *opaque,
+> +                                hwaddr addr,
+> +                                unsigned int size)
+
+You can avoid the new lines.
+
+> +{
+> +    AspeedI3CState *s = ASPEED_I3C(opaque);
+> +    uint64_t val = 0;
+> +
+> +    addr >>= 2;
+> +
+> +    if (addr >= ASPEED_I3C_NR_REGS) {
+
+ASPEED_I3C_NR_REGS is a large value (0x8000 >> 2) which doesn't really
+represent the number of registers. I would do thing a bit differently.
+See the comment below in realize.
+
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
+> +                      __func__, addr << 2);
+> +    } else if (addr < 0x800) {
+
+Where does that value come from  ?
+
+> +        /* I3C controller register */
+> +        val = s->regs[addr];
+> +    } else {
+> +        /* I3C device register */
+
+hmm, I think we need one region per I3C device instead.
+
+> +        switch (addr & 0xff) {
+> +        case R_DEVICE_ADDR_TABLE_POINTER:
+> +            val = DEVICE_ADDR_TABLE_DEPTH(0x8) | DEVICE_ADDR_TABLE_ADDR(0x280);
+> +            break;
+> +        case R_DEV_CHAR_TABLE_POINTER:
+> +            val = 0x00020200;
+> +            break;
+> +        case R_VENDOR_SPECIFIC_REG_POINTER:
+> +            val = 0x000000b0;
+> +            break;
+> +        default:
+> +            val = s->regs[addr];
+> +            break;
+> +        }
+> +    }
+> +
+> +    printf("I3C Read[%08lx] = [%08lx]\n", addr << 2, val);
+
+Please use trace-events. See trace_aspeed_scu_read/write for example.
+
+> +
+> +    return val;
+> +}
+> +
+> +static void aspeed_i3c_write(void *opaque,
+> +                             hwaddr addr,
+> +                             uint64_t data,
+> +                             unsigned int size)
+
+same.
+
+> +{
+> +    AspeedI3CState *s = ASPEED_I3C(opaque);
+> +
+> +    printf("I3C Write[%08lx] = [%08lx]\n", addr, data);
+
+same.
+
+> +
+> +    addr >>= 2;
+> +
+> +    if (addr >= ASPEED_I3C_NR_REGS) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
+> +                      __func__, addr << 2);
+> +        return;
+> +    }
+> +
+> +    if (addr < 0x800) {
+> +        /* I3C controller register */
+> +        switch (addr) {
+> +        case R_I3CG_REG1(0):
+> +        case R_I3CG_REG1(1):
+> +        case R_I3CG_REG1(2):
+> +        case R_I3CG_REG1(3):
+> +            if (data & I3CG_REG1_I2C_MODE) {
+> +                qemu_log_mask(LOG_UNIMP,
+> +                              "%s: Not support I2C mode [%08lx]=%08lx",
+> +                              __func__, addr << 2, data);
+> +                break;
+> +            }
+> +            if (data & I3CG_REG1_SA_EN) {
+> +                qemu_log_mask(LOG_UNIMP,
+> +                              "%s: Not support slave mode [%08lx]=%08lx",
+> +                              __func__, addr << 2, data);
+> +                break;
+> +            }
+> +            s->regs[addr] = data;
+> +            break;
+> +        default:
+> +            s->regs[addr] = data;
+> +            break;
+> +        }
+> +    } else {
+> +        /* I3C device register */
+> +        switch (addr & 0xff) {
+> +        case R_RESET_CTRL:
+> +            s->regs[addr] = 0x00000000;
+> +            break;
+> +        default:
+> +            s->regs[addr] = data;
+> +            break;
+> +        }
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps aspeed_i3c_ops = {
+> +    .read = aspeed_i3c_read,
+> +    .write = aspeed_i3c_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 1,
+> +        .max_access_size = 4,
+> +    }
+> +};
+> +
+> +static void aspeed_i3c_reset(DeviceState *dev)
+> +{
+> +    struct AspeedI3CState *s = ASPEED_I3C(dev);
+> +
+> +    memset(s->regs, 0, sizeof(s->regs));
+> +
+> +    /* Init I3C controller register */
+> +
+> +
+> +    /* Init I3C devices register */
+> +    for (int i = 0; i < 4; ++i) {
+
+there are 5 devices. no ?
+
+> +        uint32_t dev_base = (0x2000 + i * 0x1000) >> 4;
+> +        s->regs[dev_base + R_HW_CAPABILITY] = 0x000e00bf;
+> +        s->regs[dev_base + R_QUEUE_THLD_CTRL] = 0x01000101;
+> +
+> +        s->regs[dev_base + R_I3C_VER_ID] = 0x3130302a;
+> +        s->regs[dev_base + R_I3C_VER_TYPE] = 0x6c633033;
+
+This is a sign that we need an AspeedI3CDevice model :)
+
+> +    }
+> +}
+> +
+> +static void aspeed_i3c_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AspeedI3CState *s = ASPEED_I3C(dev);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +
+> +    sysbus_init_irq(sbd, &s->irq);
+> +
+> +    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i3c_ops, s,
+> +            TYPE_ASPEED_I3C, 0x8000);
+
+I would do things differently with an AspeedI3CDevice, something like :
+     
+     struct AspeedI3CDevice {
+         SysBusDevice parent_obj;
+     
+         MemoryRegion mr;
+         
+         uint32_t regs[0x300 >> 2];
+     };
+
+for which you would define the realize and reset handlers like above
+but relative to the device only. The read/write ops of the device
+region would be simplified.
+     
+You will then to introduce an array of AspeedI3CDevice under
+AspeedI3CState :
+
+       AspeedI3CDevice devices[ASPEED_I3C_NR_DEVICES];
+
+and initialize them in a instance_init handler of AspeedI3CState :
+     
+     static void aspeed_i3c_instance_init(Object *obj)
+     {
+         AspeedI3CState *s = ASPEED_I3C(obj);
+         int i;
+     
+         for (i = 0; i < ASPEED_I3C_NR_DEVICES; i++) {
+             object_initialize_child(obj, "device[*]", &s->devices[i],
+                                     TYPE_ASPEED_I3C_DEVICE);
+         }
      }
- 
- PCI_DMA_DEFINE_LDST(ub, b, 8);
--- 
-2.33.1
 
+and realize the devices in aspeed_i3c_realize  :
+
+     for (i = 0; i < ASPEED_I3C_NR_DEVICES; i++) {
+         Object *obj = OBJECT(&s->devices[i]);
+
+         if (!sysbus_realize(SYS_BUS_DEVICE(obj), errp)) {
+             return;
+         }
+
+	/* Map the device MMIO window in the overall I3C MMIO */
+         memory_region_add_subregion(&s->iomem, 0x2000 + i * 0x1000;
+                                     &s->devices[i].mr);
+     }
+
+I don't think we need to handle the controller registers mapped at 0x0
+to start with. You could introduce a region to catch memory ops.
+
+At some point, we would have to consider modeling the I3C bus but that's
+beyond the scope of the initial model.
+
+Thanks,
+
+C.
+
+
+> +
+> +    sysbus_init_mmio(sbd, &s->iomem);
+> +}
+> +
+> +static const VMStateDescription vmstate_aspeed_i3c = {
+> +    .name = TYPE_ASPEED_I3C,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32_ARRAY(regs, AspeedI3CState, ASPEED_I3C_NR_REGS),
+> +        VMSTATE_END_OF_LIST(),
+> +    }
+> +};
+> +
+> +static void aspeed_i3c_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = aspeed_i3c_realize;
+> +    dc->reset = aspeed_i3c_reset;
+> +    dc->desc = "Aspeed I3C Controller";
+> +    dc->vmsd = &vmstate_aspeed_i3c;
+> +}
+> +
+> +static const TypeInfo aspeed_i3c_info = {
+> +    .name = TYPE_ASPEED_I3C,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(AspeedI3CState),
+> +    .class_init = aspeed_i3c_class_init,
+> +};
+> +
+> +static void aspeed_i3c_register_types(void)
+> +{
+> +    type_register_static(&aspeed_i3c_info);
+> +}
+> +
+> +type_init(aspeed_i3c_register_types);
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 73a92fc459..9e570131c2 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -103,6 +103,7 @@ softmmu_ss.add(when: 'CONFIG_PVPANIC_PCI', if_true: files('pvpanic-pci.c'))
+>   softmmu_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
+>   softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+>     'aspeed_hace.c',
+> +  'aspeed_i3c.c',
+>     'aspeed_lpc.c',
+>     'aspeed_pwm.c',
+>     'aspeed_scu.c',
+> diff --git a/include/hw/misc/aspeed_i3c.h b/include/hw/misc/aspeed_i3c.h
+> new file mode 100644
+> index 0000000000..c8f8ae3791
+> --- /dev/null
+> +++ b/include/hw/misc/aspeed_i3c.h
+> @@ -0,0 +1,30 @@
+> +/*
+> + * ASPEED I3C Controller
+> + *
+> + * Copyright (C) 2021 ASPEED Technology Inc.
+> + *
+> + * This code is licensed under the GPL version 2 or later.  See
+> + * the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef ASPEED_I3C_H
+> +#define ASPEED_I3C_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_ASPEED_I3C "aspeed.i3c"
+> +#define ASPEED_I3C(obj) OBJECT_CHECK(AspeedI3CState, (obj), TYPE_ASPEED_I3C)
+> +
+> +#define ASPEED_I3C_NR_REGS (0x8000 >> 2)
+> +
+> +typedef struct AspeedI3CState {
+> +    /* <private> */
+> +    SysBusDevice parent;
+> +
+> +    /* <public> */
+> +    MemoryRegion iomem;
+> +    qemu_irq irq;
+> +
+> +    uint32_t regs[ASPEED_I3C_NR_REGS];
+> +} AspeedI3CState;
+> +#endif /* ASPEED_I3C_H */
+> 

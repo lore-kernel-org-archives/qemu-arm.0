@@ -1,102 +1,102 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp3330025lfb;
-        Thu, 23 Dec 2021 04:32:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyY/Dz1V984+hXTV0TVKtCkxEk22OqwpiLBRbmuRN5vARwBcwDuudHDQrmjmzCARFN7jEJA
-X-Received: by 2002:a05:6602:1495:: with SMTP id a21mr983651iow.79.1640262748802;
-        Thu, 23 Dec 2021 04:32:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1640262748; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp3331198lfb;
+        Thu, 23 Dec 2021 04:34:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzo5j+1a6FHltmaf5ql5Qd37GupHms8ac23o/ep7rsDLCNSBv+qOLbL5teQ6XE7DAKdEdSo
+X-Received: by 2002:a25:a262:: with SMTP id b89mr2929821ybi.434.1640262872345;
+        Thu, 23 Dec 2021 04:34:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640262872; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nzwx8v+LutLNLF27jMYTNpc1UTxfidzFFom0qT4R3AyPJ1Y/ADYV1S3eHK30lgft+q
-         90XLId6QbF44SVHYsHxpaVCqYFeHCG0SdewnvxFGhwdTQMZTOa5RzksgAqA+5FO2ZTov
-         CyndOLwe0QKLE2yi9XwBDRbi3dC9o45krjk2Je83Ytm5EUUZ4qZR9PqZ1YP4dYmkIvHW
-         6wpWCf0Ng+LeoFESs7gkpi/EyzDNZELT4Ucw0dJua4bRWJJeToQl/URLUnPcqpEnu/jz
-         y4L8uukpyU23D3bzcT5TJiSzJ1/KnveDA43RXRcZe9C6xpE82rvMJ36c877sOX/V2QtK
-         U1sQ==
+        b=atxHSYRCyxwU/dJfjG8GnjkDL5tUJJWm/wmAmii9vDpOhZfEbrSHBG8Ai0DBQheLkY
+         zQl2K9y+UODXShhimd8Q7RSNhyRru9t8tatZiY85hkbp2g9EkoN0hru21iWLC3XUlZ24
+         TGTFGDQQY5kqtxeE1neHc+0LlRGP9gG01eQq59OK5OSSWuWz6106IrjnoxTeEZs+4tO4
+         pXVwI+zQpfJ6uBL0mR7ZGhOUmIsMaB3rUobSw5970V0x/jB/DZVJZy8uzJmrgVRzjcNz
+         GMyjS2ZBqjNLpkyxr5+eFBJ8hjOLy74sN/r/4RFhW7peAT7873MFsGraKIeCpcTi5wjm
+         VOcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=QvhGQ7ni8djSAeJQKRJ8D/v7/Iobbm1EjIUqX2bC7Rw=;
-        b=rWge+4veBtuXivwGOF6n5KfRgM36jEOgSaI6uoDxWcGGKkUjy9pUTyqKsbE/5qrgsI
-         agG8elm1DjJ3NtGrzntqgssY2VAYjTCnXoz6R88r2/TBE1hFrUFrS0LNEhgtEsIfzHF5
-         E7kgTEPjUoKo9e3P1eWWL3qSMZnNORNLV7QPyA2nz6n9IjmhGsd/mMoS+HOo/JM89WL/
-         zQKoAl+e1xQNgsluPTVH3WFXJWdMGogsb4XIGFWO0Cp8E6LWIHR9S8nEBqyJwJHKgbj1
-         T1aVRq6zw4qq5H5EWSDxtmiN8+OIpLttJRu3nHXycXM5f8dyXWKxLQsMAOyrmW3udJFm
-         iURw==
+        bh=Xe1vuKIn+V7zfO3YKXmpVrbFyeoxlWXQr1Mcr+LUv2s=;
+        b=IPFxGJnn8IwJtXsFAXO0whK1Z/jXe12OFp+iTQUgz38mlPgk6wf1qlRchfBbx8cQVv
+         ZGIUJtAMWMqYgzSzEg8AJcSKljQqMdSEfTOR0JaJ5bF3yIuqg3xTU/hFVxINIo3TDhXm
+         KOObDqw7LS6bBB2DHnfMQ2Ii1amvidDKarugYOg9xP1TG4dZWm0JBC+wqibRNK7OyKcj
+         oMQ3ffs/mzoTsP/cDAWjS6gpHIIZPbQqRHDH7140FijXBhELVitvs0Ycq1g3AbjAXJb0
+         O5n/0gw/0FRuIeAUv3MHiMPPlXoXq6gvTxOoDAjua5FX8GkkoD/sO01GJU6TUDVb1+FT
+         5zYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PtWDrHgn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OduHoNVK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o23si2425571jam.63.2021.12.23.04.32.28
+        by mx.google.com with ESMTPS id d129si4765716ybb.606.2021.12.23.04.34.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Dec 2021 04:32:28 -0800 (PST)
+        Thu, 23 Dec 2021 04:34:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PtWDrHgn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OduHoNVK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48898 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55756 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n0NGm-0004wU-5d
-	for alex.bennee@linaro.org; Thu, 23 Dec 2021 07:32:28 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:32866)
+	id 1n0NIl-0001Bl-Pc
+	for alex.bennee@linaro.org; Thu, 23 Dec 2021 07:34:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n0MkM-0001tR-AP
- for qemu-devel@nongnu.org; Thu, 23 Dec 2021 06:58:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58646)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n0MmZ-00064V-Rt
+ for qemu-devel@nongnu.org; Thu, 23 Dec 2021 07:01:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:34756)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n0MkJ-0000xo-Un
- for qemu-devel@nongnu.org; Thu, 23 Dec 2021 06:58:57 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n0MmP-0001aq-47
+ for qemu-devel@nongnu.org; Thu, 23 Dec 2021 07:01:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1640260734;
+ s=mimecast20190719; t=1640260864;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=QvhGQ7ni8djSAeJQKRJ8D/v7/Iobbm1EjIUqX2bC7Rw=;
- b=PtWDrHgnuOnJRSh98MZ420nC6DNp2r+BW8FVLOAGlRpMgd5I8osIxDBr9zSs6Kf0P4fm9s
- GPBYEXGReJeWPutkkLfv9vhRRBw27eWgFDFabr1UqygIGnuoKH5N8hvtPKzWk+O9eDg98C
- /9QCuURqiy0ovkDIlWpFZGm1cF5tjv0=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Xe1vuKIn+V7zfO3YKXmpVrbFyeoxlWXQr1Mcr+LUv2s=;
+ b=OduHoNVKM5lUpZHODOYsMjk3X7aKJwtxxNnMoKozvh0wDjtY8lsfTQq32ToFqEZ8Xw6u0X
+ ilV+jxdo0iTZbEARA7Sc2gMgZn8NDULNpKBL8p1fOIrVWSVNkADHCoEp/IwmhSnHfow4fK
+ mWuNPFVfD0PmH2J56e00hUsolUiae6M=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-134-eLrtoxVkMR2b85sayZkA3w-1; Thu, 23 Dec 2021 06:58:53 -0500
-X-MC-Unique: eLrtoxVkMR2b85sayZkA3w-1
-Received: by mail-wr1-f71.google.com with SMTP id
- v18-20020a5d5912000000b001815910d2c0so1224933wrd.1
- for <qemu-devel@nongnu.org>; Thu, 23 Dec 2021 03:58:53 -0800 (PST)
+ us-mta-645-xzFU0Un5M5qliWCTf_1Gqg-1; Thu, 23 Dec 2021 07:01:03 -0500
+X-MC-Unique: xzFU0Un5M5qliWCTf_1Gqg-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ a69-20020a1c7f48000000b00345d3d135caso757201wmd.7
+ for <qemu-devel@nongnu.org>; Thu, 23 Dec 2021 04:01:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=QvhGQ7ni8djSAeJQKRJ8D/v7/Iobbm1EjIUqX2bC7Rw=;
- b=27ylYUzCj+BF9UUfj5d1DYEhCGWF4q1dGGKRW97t/GpXEN9XQFSuXsbOLwVVtaDUAG
- dmyFfu8a7ZAaKGXotRN5SDemMCUTOer3JhHcSXf08VR526nLNdO5Sr/QdPPM5+1RpawI
- 46FZVEZljp2ytyFNldea0mqgTt7+2mkAgPZ0yNl0rYjv4sHiLc8FCt/X/Q5n9LFS3SPg
- FnjUlhk0MMFuCp82Hyu0y7FJQ1uh7TDRyUFlXNLl3Uc2FjRhh77TPUE3L1kCqVa71RPB
- liy5AxqbRLLTOncJxkM76VTl+ndPfpsuoiyZN+ickzjIWD+nwstNHokxExrABKcwAf8r
- FF+A==
-X-Gm-Message-State: AOAM533Q3cTsIFHN9YyZ5fXBXBaKin/qftY/aGXVlEURbYJwD1ujMDby
- uPfFj5qeThY0CV27kUdCoFFjJSZD7W61NAZ+TykjRoprMVu2xg83ca5Kqa+p8r811W/tjK35+CT
- 1F4KjzZ7/8giDmhdXaWLKy7sY3ybG5nCPn6MyZg6T+c1L2g81e2cOzw5kBDbuTHoi
-X-Received: by 2002:adf:c182:: with SMTP id x2mr1570784wre.646.1640260732055; 
- Thu, 23 Dec 2021 03:58:52 -0800 (PST)
-X-Received: by 2002:adf:c182:: with SMTP id x2mr1570729wre.646.1640260731702; 
- Thu, 23 Dec 2021 03:58:51 -0800 (PST)
+ bh=Xe1vuKIn+V7zfO3YKXmpVrbFyeoxlWXQr1Mcr+LUv2s=;
+ b=TXlnj3bQUP0jq6T48LhSlTnfQWFPkgOpz71xgGzWty2nMAbzCf1EQbbLk/reKuG/ED
+ 3FUOBS5UBBmxH6YHtwi8dwqY1CSGKf7UljrZXcSJe+koPX/EUaxkPH7Yk2MEJ/ZosVID
+ 93tvZLNJdHQFY4JhAVXZYZJ8NtwhZYzxyb6gla2YDz67E5vpj13msMEIzISF8lOOX66B
+ fdCR4uKjq/woJSLKxWPbSS3QzaWSb51ZrbhS6BfhXVgvatsjLgjJozmv0HQ4gzrKX/y/
+ cy2PSX+P43nNA8xOTkIdVCBcs78WFilWEsfu/afNhbaIzm1FprwBEmxpjOP1WoBVXnVD
+ Gp0w==
+X-Gm-Message-State: AOAM530zTi48+Lg2Zd0gpMhpqvmh+dVvgYF9Mhe+MRbUezjFFbgADeMp
+ QVHCMUDT7q/m69AMSZCBGOT/Eo6u+6PKwoePyiXc1F6Jg/PTuqQLcsQXGclO+cODRY9Sbv0vws4
+ o7Dl1l8j36hJoATsieVOs+qiy1GHhPkAFcUF7eUJsIJbVXtpfpol9SlS3IZFb0ivU
+X-Received: by 2002:a7b:cbc3:: with SMTP id n3mr1580247wmi.90.1640260862086;
+ Thu, 23 Dec 2021 04:01:02 -0800 (PST)
+X-Received: by 2002:a7b:cbc3:: with SMTP id n3mr1580192wmi.90.1640260861824;
+ Thu, 23 Dec 2021 04:01:01 -0800 (PST)
 Received: from x1w.. (33.red-193-152-124.dynamicip.rima-tde.net.
  [193.152.124.33])
- by smtp.gmail.com with ESMTPSA id az15sm4222751wmb.47.2021.12.23.03.58.44
+ by smtp.gmail.com with ESMTPSA id l2sm4925992wrs.43.2021.12.23.04.00.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Dec 2021 03:58:51 -0800 (PST)
+ Thu, 23 Dec 2021 04:01:01 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 12/23] dma: Let dma_buf_read() take MemTxAttrs argument
-Date: Thu, 23 Dec 2021 12:55:43 +0100
-Message-Id: <20211223115554.3155328-13-philmd@redhat.com>
+Subject: [PATCH v2 22/23] pci: Let st*_pci_dma() propagate MemTxResult
+Date: Thu, 23 Dec 2021 12:55:53 +0100
+Message-Id: <20211223115554.3155328-23-philmd@redhat.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20211223115554.3155328-1-philmd@redhat.com>
 References: <20211223115554.3155328-1-philmd@redhat.com>
@@ -107,7 +107,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -115,7 +115,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.203,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,221 +149,45 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Keith Busch <kbusch@kernel.org>, John Snow <jsnow@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
  Eduardo Habkost <eduardo@habkost.net>, Andrew Jeffery <andrew@aj.id.au>,
- Klaus Jensen <k.jensen@samsung.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Tyrone Ting <kfting@nuvoton.com>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z1I8dH0gZh5i
+X-TUID: pGollw6NN/wB
 
-Let devices specify transaction attributes when calling
-dma_buf_read().
+st*_dma() returns a MemTxResult type. Do not discard
+it, return it to the caller.
 
-Keep the default MEMTXATTRS_UNSPECIFIED in the few callers.
-
-Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- include/sysemu/dma.h  |  2 +-
- hw/ide/ahci.c         |  4 ++--
- hw/nvme/ctrl.c        |  2 +-
- hw/scsi/megasas.c     | 24 ++++++++++++------------
- hw/scsi/scsi-bus.c    |  2 +-
- softmmu/dma-helpers.c |  5 ++---
- 6 files changed, 19 insertions(+), 20 deletions(-)
+ include/hw/pci/pci.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/include/sysemu/dma.h b/include/sysemu/dma.h
-index e3dd74a9c4f..fd8f16003dd 100644
---- a/include/sysemu/dma.h
-+++ b/include/sysemu/dma.h
-@@ -302,7 +302,7 @@ BlockAIOCB *dma_blk_read(BlockBackend *blk,
- BlockAIOCB *dma_blk_write(BlockBackend *blk,
-                           QEMUSGList *sg, uint64_t offset, uint32_t align,
-                           BlockCompletionFunc *cb, void *opaque);
--uint64_t dma_buf_read(void *ptr, int32_t len, QEMUSGList *sg);
-+uint64_t dma_buf_read(void *ptr, int32_t len, QEMUSGList *sg, MemTxAttrs attrs);
- uint64_t dma_buf_write(void *ptr, int32_t len, QEMUSGList *sg, MemTxAttrs attrs);
- 
- void dma_acct_start(BlockBackend *blk, BlockAcctCookie *cookie,
-diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-index 079d2977f23..205dfdc6622 100644
---- a/hw/ide/ahci.c
-+++ b/hw/ide/ahci.c
-@@ -1386,7 +1386,7 @@ static void ahci_pio_transfer(const IDEDMA *dma)
-         if (is_write) {
-             dma_buf_write(s->data_ptr, size, &s->sg, attrs);
-         } else {
--            dma_buf_read(s->data_ptr, size, &s->sg);
-+            dma_buf_read(s->data_ptr, size, &s->sg, attrs);
-         }
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index 7a46c1fa226..c90cecc85c0 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -859,12 +859,12 @@ static inline MemTxResult pci_dma_write(PCIDevice *dev, dma_addr_t addr,
+         ld##_l##_dma(pci_get_address_space(dev), addr, &val, attrs); \
+         return val; \
+     }                                                                   \
+-    static inline void st##_s##_pci_dma(PCIDevice *dev, \
+-                                        dma_addr_t addr, \
+-                                        uint##_bits##_t val, \
+-                                        MemTxAttrs attrs) \
++    static inline MemTxResult st##_s##_pci_dma(PCIDevice *dev, \
++                                               dma_addr_t addr, \
++                                               uint##_bits##_t val, \
++                                               MemTxAttrs attrs) \
+     { \
+-        st##_s##_dma(pci_get_address_space(dev), addr, val, attrs); \
++        return st##_s##_dma(pci_get_address_space(dev), addr, val, attrs); \
      }
  
-@@ -1479,7 +1479,7 @@ static int ahci_dma_rw_buf(const IDEDMA *dma, bool is_write)
-     }
- 
-     if (is_write) {
--        dma_buf_read(p, l, &s->sg);
-+        dma_buf_read(p, l, &s->sg, MEMTXATTRS_UNSPECIFIED);
-     } else {
-         dma_buf_write(p, l, &s->sg, MEMTXATTRS_UNSPECIFIED);
-     }
-diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index e1a531d5d6c..462f79a1f60 100644
---- a/hw/nvme/ctrl.c
-+++ b/hw/nvme/ctrl.c
-@@ -1152,7 +1152,7 @@ static uint16_t nvme_tx(NvmeCtrl *n, NvmeSg *sg, uint8_t *ptr, uint32_t len,
-         if (dir == NVME_TX_DIRECTION_TO_DEVICE) {
-             residual = dma_buf_write(ptr, len, &sg->qsg, attrs);
-         } else {
--            residual = dma_buf_read(ptr, len, &sg->qsg);
-+            residual = dma_buf_read(ptr, len, &sg->qsg, attrs);
-         }
- 
-         if (unlikely(residual)) {
-diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
-index da1c88167ee..fe36de10a21 100644
---- a/hw/scsi/megasas.c
-+++ b/hw/scsi/megasas.c
-@@ -848,7 +848,7 @@ static int megasas_ctrl_get_info(MegasasState *s, MegasasCmd *cmd)
-                                        MFI_INFO_PDMIX_SATA |
-                                        MFI_INFO_PDMIX_LD);
- 
--    cmd->iov_size -= dma_buf_read(&info, dcmd_size, &cmd->qsg);
-+    cmd->iov_size -= dma_buf_read(&info, dcmd_size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     return MFI_STAT_OK;
- }
- 
-@@ -878,7 +878,7 @@ static int megasas_mfc_get_defaults(MegasasState *s, MegasasCmd *cmd)
-     info.disable_preboot_cli = 1;
-     info.cluster_disable = 1;
- 
--    cmd->iov_size -= dma_buf_read(&info, dcmd_size, &cmd->qsg);
-+    cmd->iov_size -= dma_buf_read(&info, dcmd_size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     return MFI_STAT_OK;
- }
- 
-@@ -899,7 +899,7 @@ static int megasas_dcmd_get_bios_info(MegasasState *s, MegasasCmd *cmd)
-         info.expose_all_drives = 1;
-     }
- 
--    cmd->iov_size -= dma_buf_read(&info, dcmd_size, &cmd->qsg);
-+    cmd->iov_size -= dma_buf_read(&info, dcmd_size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     return MFI_STAT_OK;
- }
- 
-@@ -910,7 +910,7 @@ static int megasas_dcmd_get_fw_time(MegasasState *s, MegasasCmd *cmd)
- 
-     fw_time = cpu_to_le64(megasas_fw_time());
- 
--    cmd->iov_size -= dma_buf_read(&fw_time, dcmd_size, &cmd->qsg);
-+    cmd->iov_size -= dma_buf_read(&fw_time, dcmd_size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     return MFI_STAT_OK;
- }
- 
-@@ -937,7 +937,7 @@ static int megasas_event_info(MegasasState *s, MegasasCmd *cmd)
-     info.shutdown_seq_num = cpu_to_le32(s->shutdown_event);
-     info.boot_seq_num = cpu_to_le32(s->boot_event);
- 
--    cmd->iov_size -= dma_buf_read(&info, dcmd_size, &cmd->qsg);
-+    cmd->iov_size -= dma_buf_read(&info, dcmd_size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     return MFI_STAT_OK;
- }
- 
-@@ -1006,7 +1006,7 @@ static int megasas_dcmd_pd_get_list(MegasasState *s, MegasasCmd *cmd)
-     info.size = cpu_to_le32(offset);
-     info.count = cpu_to_le32(num_pd_disks);
- 
--    cmd->iov_size -= dma_buf_read(&info, offset, &cmd->qsg);
-+    cmd->iov_size -= dma_buf_read(&info, offset, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     return MFI_STAT_OK;
- }
- 
-@@ -1100,7 +1100,7 @@ static int megasas_pd_get_info_submit(SCSIDevice *sdev, int lun,
-     info->connected_port_bitmap = 0x1;
-     info->device_speed = 1;
-     info->link_speed = 1;
--    resid = dma_buf_read(cmd->iov_buf, dcmd_size, &cmd->qsg);
-+    resid = dma_buf_read(cmd->iov_buf, dcmd_size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     g_free(cmd->iov_buf);
-     cmd->iov_size = dcmd_size - resid;
-     cmd->iov_buf = NULL;
-@@ -1172,7 +1172,7 @@ static int megasas_dcmd_ld_get_list(MegasasState *s, MegasasCmd *cmd)
-     info.ld_count = cpu_to_le32(num_ld_disks);
-     trace_megasas_dcmd_ld_get_list(cmd->index, num_ld_disks, max_ld_disks);
- 
--    resid = dma_buf_read(&info, dcmd_size, &cmd->qsg);
-+    resid = dma_buf_read(&info, dcmd_size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     cmd->iov_size = dcmd_size - resid;
-     return MFI_STAT_OK;
- }
-@@ -1221,7 +1221,7 @@ static int megasas_dcmd_ld_list_query(MegasasState *s, MegasasCmd *cmd)
-     info.size = dcmd_size;
-     trace_megasas_dcmd_ld_get_list(cmd->index, num_ld_disks, max_ld_disks);
- 
--    resid = dma_buf_read(&info, dcmd_size, &cmd->qsg);
-+    resid = dma_buf_read(&info, dcmd_size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     cmd->iov_size = dcmd_size - resid;
-     return MFI_STAT_OK;
- }
-@@ -1271,7 +1271,7 @@ static int megasas_ld_get_info_submit(SCSIDevice *sdev, int lun,
-     info->ld_config.span[0].num_blocks = info->size;
-     info->ld_config.span[0].array_ref = cpu_to_le16(sdev_id);
- 
--    resid = dma_buf_read(cmd->iov_buf, dcmd_size, &cmd->qsg);
-+    resid = dma_buf_read(cmd->iov_buf, dcmd_size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     g_free(cmd->iov_buf);
-     cmd->iov_size = dcmd_size - resid;
-     cmd->iov_buf = NULL;
-@@ -1390,7 +1390,7 @@ static int megasas_dcmd_cfg_read(MegasasState *s, MegasasCmd *cmd)
-         ld_offset += sizeof(struct mfi_ld_config);
-     }
- 
--    cmd->iov_size -= dma_buf_read(data, info->size, &cmd->qsg);
-+    cmd->iov_size -= dma_buf_read(data, info->size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     return MFI_STAT_OK;
- }
- 
-@@ -1420,7 +1420,7 @@ static int megasas_dcmd_get_properties(MegasasState *s, MegasasCmd *cmd)
-     info.ecc_bucket_leak_rate = cpu_to_le16(1440);
-     info.expose_encl_devices = 1;
- 
--    cmd->iov_size -= dma_buf_read(&info, dcmd_size, &cmd->qsg);
-+    cmd->iov_size -= dma_buf_read(&info, dcmd_size, &cmd->qsg, MEMTXATTRS_UNSPECIFIED);
-     return MFI_STAT_OK;
- }
- 
-diff --git a/hw/scsi/scsi-bus.c b/hw/scsi/scsi-bus.c
-index 64a506a3975..2b5e9dca311 100644
---- a/hw/scsi/scsi-bus.c
-+++ b/hw/scsi/scsi-bus.c
-@@ -1421,7 +1421,7 @@ void scsi_req_data(SCSIRequest *req, int len)
- 
-     buf = scsi_req_get_buf(req);
-     if (req->cmd.mode == SCSI_XFER_FROM_DEV) {
--        req->resid = dma_buf_read(buf, len, req->sg);
-+        req->resid = dma_buf_read(buf, len, req->sg, MEMTXATTRS_UNSPECIFIED);
-     } else {
-         req->resid = dma_buf_write(buf, len, req->sg, MEMTXATTRS_UNSPECIFIED);
-     }
-diff --git a/softmmu/dma-helpers.c b/softmmu/dma-helpers.c
-index 2f1a241b81a..a391773c296 100644
---- a/softmmu/dma-helpers.c
-+++ b/softmmu/dma-helpers.c
-@@ -316,10 +316,9 @@ static uint64_t dma_buf_rw(void *buf, int32_t len, QEMUSGList *sg,
-     return resid;
- }
- 
--uint64_t dma_buf_read(void *ptr, int32_t len, QEMUSGList *sg)
-+uint64_t dma_buf_read(void *ptr, int32_t len, QEMUSGList *sg, MemTxAttrs attrs)
- {
--    return dma_buf_rw(ptr, len, sg, DMA_DIRECTION_FROM_DEVICE,
--                      MEMTXATTRS_UNSPECIFIED);
-+    return dma_buf_rw(ptr, len, sg, DMA_DIRECTION_FROM_DEVICE, attrs);
- }
- 
- uint64_t dma_buf_write(void *ptr, int32_t len, QEMUSGList *sg, MemTxAttrs attrs)
+ PCI_DMA_DEFINE_LDST(ub, b, 8);
 -- 
 2.33.1
 

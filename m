@@ -1,295 +1,128 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp3459041lfb;
-        Thu, 23 Dec 2021 07:59:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx96JB4nybUyuaFvWX6e3Zi3lPjM5UcUe6ax+vhuSSlw0wJv4PtxbgrO50ATbT5R9nPCSOM
-X-Received: by 2002:a25:806:: with SMTP id 6mr4489215ybi.641.1640275144714;
-        Thu, 23 Dec 2021 07:59:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1640275144; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp3480165lfb;
+        Thu, 23 Dec 2021 08:31:24 -0800 (PST)
+X-Received: by 2002:a05:6a00:2349:b0:4ba:98c6:48f6 with SMTP id j9-20020a056a00234900b004ba98c648f6mr3322761pfj.42.1640277084490;
+        Thu, 23 Dec 2021 08:31:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640277084; cv=none;
         d=google.com; s=arc-20160816;
-        b=YPz8DKYysOKuCwi2bwkTzUxRSVZuS7elExRbPcmYNFhqvtDPtUILTIAy6Ub+tKtqLb
-         B1lbDV2sDczFXZlBUXPDtVN6a6u2X7MdsDGJvntQ64gipjHy6mk0+9Wa2lR4AU1wJrK4
-         euDnm6BtEgoeFjJAA8ZDBER0Cbmf1OL3C2PVsroN2rHm2W/YQnYUDQnArNEXZaCSw1Gr
-         BDai6M0YmJ6JqoGFbNH/daNhWoNUa5+Q+lXukUtsVAQHCmCsHu7gZyMomSGVRBeZ0J6w
-         DguJwpAedouBsv/x4iXmk9iyrRjD3rKD4hbdqXyXytxTof8SqvgQTW+ykob5DoYYfN0W
-         /neA==
+        b=K894uLX3DU475kHYjh4ix+s3P9RwYE42TRReLKcGmGI8AvV3tX6QzoLaVAfatiR8Gq
+         P1/AIN3ffDl1n34aRFp7uDh6RLd3irUwAd5Mg5XuxEhV9iaaVWXCxtOKALMKPzkFdhvk
+         Hj01cqhhoIz15gbS5u5DjiDt+961gK9w8vBKZNp6tXCwRVgDeFdMq05KpBVZBkeTYCWh
+         QAWkzSfYL8CYMTHDnRNtse4dUj+KhrOxG3RSKw+VtYPE2IsAUFJWmK6jL1fXBi2TB6hX
+         WWYPNl5H44hJWQulshyc0tncn8hAzXqlupOJshiPpf4RWKuBl60y/fXB7DwO7xamCWAI
+         PNfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=8p9MLaCKz/fqR+Dj6FewUhKVZsrPCzwWYzzcA88mmmo=;
-        b=lNdEi1D3rsHbENG2gIKNZKRkC0Hn7TLeeBaNK38Ig0auD5TUdui2C3hRR2SiL/xb6v
-         cJOGb7cGeRt1VPm4YE9wop39/uYo4qYKC86yM8zUZMLeyjIGmvH3lVJLzKjntNmPQZXv
-         1qhzowGmrsAxHKY7k2acZiYCIee/pPAl955XmQ/himzXS3b1JvIEd+LHrIhFZESCew77
-         oOjnu2a8cXJ2OzbHxBCZ+4MS+aMbbWKAKvMTdfX2LPI7PYWot63H9OX67o6TCjFio7Se
-         2o/xxd4Y6RIytQTCkemA+eGEGwTv5+s4tmUIUxbZl3fqPC7/mywLwE63krgsDwYlOAfb
-         mAdg==
+        bh=z+peQTa48PtcUBORkRRFZitqi7aszWQXDHTELpQ/ApA=;
+        b=rGcS3X8KgIfjsWZD1PB5ZhUQRO1TyZoMHPH/hURce5998C9EnqJduUX/t+CeZn2bCW
+         Rb5qsk7T34jb0lm3FQSsXJhxkdePnoA0nmCCLRKTO19gGb7yWP/K8FCEe1OkIkvh0d4z
+         meJ0316JX0YJbhQgrhqMl4M468Bf0NPKkbNcLTp6H35GT4//2E8yNU4VBJQMJfWYh6Kl
+         53mcP8a/iB1tbLARDeZFuQSqd4+NLjoxbiIyd0XfEL4JP0ugQetV/0ilH9zUEE4Egeit
+         DX1KWo/cL8rEGEOmsC3SErOitQI0NU/BGAFj1gvtuo1BOfjPlXKDmvm+JGii+2QmvNi1
+         qjcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@klauskiwi-com.20210112.gappssmtp.com header.s=20210112 header.b="s/WkxmIk";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 83si4791091ybw.33.2021.12.23.07.59.04
+       dkim=pass header.i=@linaro.org header.s=google header.b=w25KE2A4;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l3sor3784468pjt.23.2021.12.23.08.31.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Dec 2021 07:59:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 23 Dec 2021 08:31:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@klauskiwi-com.20210112.gappssmtp.com header.s=20210112 header.b="s/WkxmIk";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42306 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n0QUi-0003el-3w
-	for alex.bennee@linaro.org; Thu, 23 Dec 2021 10:59:04 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41792)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <klaus@klauskiwi.com>)
- id 1n0QTi-0002xk-M9
- for qemu-devel@nongnu.org; Thu, 23 Dec 2021 10:58:02 -0500
-Received: from [2607:f8b0:4864:20::d31] (port=35750
- helo=mail-io1-xd31.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <klaus@klauskiwi.com>)
- id 1n0QTg-0003tt-Iw
- for qemu-devel@nongnu.org; Thu, 23 Dec 2021 10:58:02 -0500
-Received: by mail-io1-xd31.google.com with SMTP id y70so7692519iof.2
- for <qemu-devel@nongnu.org>; Thu, 23 Dec 2021 07:57:59 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=w25KE2A4;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=klauskiwi-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=8p9MLaCKz/fqR+Dj6FewUhKVZsrPCzwWYzzcA88mmmo=;
- b=s/WkxmIkQNxJs9nzOxQNdHF2GCUot5uUEtWLzW6p+IxvjG4zIZ2+zZw46zrm0Fgj87
- IMpXGmfDaGMThN0nwzEZa56ASVQakieOzoORenlhzx298HBh4evCWONJq6SrwPrTZERu
- Rv+pV+UkHOGgPOmeYa1fA/LtTtRC/k2cIveALEQMVko1bejJ4+Cpt/gspg+m70xzJFS6
- BhEzdlQeHSVV1FFx+UUA+rjxrzTBNfgtn4NHSqkoUXhFpXSP6KyC+G77K+oqdf8VegP8
- 7U0iWhGulV+hX5Gtt9+5I1rLbiRir6eCFOimKZXYZ7wyggPMS4zUvsJ0Qsca5BgBIuUM
- LTyg==
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=z+peQTa48PtcUBORkRRFZitqi7aszWQXDHTELpQ/ApA=;
+        b=w25KE2A4zbEdxgqP43VvcTJJEpIfEwrYbeMhjFRttd/06B3iyI+FRdZOtbIRPxmekG
+         J+qdxa5opncSwX/ffUZAc4yHm8wPFLfGg04bBnwnik5v/PF7ncoh7dW4IJvjxQL9qA1D
+         x2CBylGeQzhJGWfn9OtWm2J/oKwNyazFFaX/XVwAEFEgDbo9Whe4A0aFpqg0k0Zmevvk
+         A1gdltKNgTrh9ImUjpUPrT0+NWXxSLAqZmyL1HCCJCezYjaiJPXCG66A9TWCzlyUkgck
+         3zQJIN90m+p31Y2V8JOzS2C+o7CqlzdlRayHhAnkFe5sukfT7mXlmE41gveWxsIP0tk1
+         s+FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=8p9MLaCKz/fqR+Dj6FewUhKVZsrPCzwWYzzcA88mmmo=;
- b=zM6fXr26+zlpgZpydPcTAZEbNU+/4Z2D8BfpZEfrS9AxO09gKKeZHHw7RdPW22JyH5
- bNtAU/UYsKPQrwpgmY0JILJDGOnpBhXeC91XL+uk5eSuQI4NcqaMSQ/G8yve9sS/4WTy
- xsYXTM8t8ju3BuzkRAF/QYcfvAhE9VHr1CHy9J5clonwlPGAgehio/fLTwhc7hLrCE8E
- wRrCSB8jUqZhGRzJ1Ej0KQ14kJ0CnE0McUD98PCF8l+NlrLR5hOokfEzO2Pu+leZUjfV
- +da2dMG1K94GyXy3FIvPkOhYjVsZKj0aQKSbS9j3heYrvCDTjusG7PqQLW5e6EhuTFhF
- JjvA==
-X-Gm-Message-State: AOAM531K5q4w1T2nrRxa3fA/vpfJq37WgGzd1b41ntDKphv/Cuqkgkc2
- ALzJsH0l7ptXrvjdSfAQ525Go9cOk3Q1vfbOp+EIiA==
-X-Received: by 2002:a05:6638:3815:: with SMTP id
- i21mr1656512jav.192.1640275078835; 
- Thu, 23 Dec 2021 07:57:58 -0800 (PST)
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=z+peQTa48PtcUBORkRRFZitqi7aszWQXDHTELpQ/ApA=;
+        b=BQax1RsfqMxumikSszVjmb63gHHN5YUODhsZRi65WUhkQkjUKWlKsuk1yNqLWxaoFc
+         lBiyS5T98BN3JRZ6y18ow5mei5t2c6MB1Tf4Le+QKs6IfCx7oH6bVURZX58bYBO9fDDD
+         esYvSscly0QfURJ/eAl3KYPZu/rqXiU2Ha+PUpWgLWaEprF3hsv1TRSznTkJWNbEtcyM
+         JklUv7bpkae6OLX6SoG7inyZnjS+HL0oEa2I15VNt4V8dIzI4OyOH0HkPzVckYw/V6UG
+         iI5RBNs2ue74bjtJNDVEuT8ygBvq7TUFWh5yGH1tnj+PjfYflDRyxYJrGCY7ENCMNssT
+         9FEg==
+X-Gm-Message-State: AOAM531Nz9fabMfV0+9FsVmjAZOn4jMd5B2qjT03xL52CF/qT9mcUliB
+	HrIbo8FVWCJWTty1n2asKtOSi8ml
+X-Google-Smtp-Source: ABdhPJypPyly0FhUpm6OCYLZxzGeh0A9G1IvIGYiQO7T9qHmHNVaO/3YQOEVV1dkUsqdQDsmrx3sGg==
+X-Received: by 2002:a17:90a:4214:: with SMTP id o20mr3565240pjg.80.1640277084047;
+        Thu, 23 Dec 2021 08:31:24 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.4.112] ([156.19.246.20])
+        by smtp.gmail.com with ESMTPSA id e11sm5733193pjl.20.2021.12.23.08.31.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 23 Dec 2021 08:31:23 -0800 (PST)
+Subject: Re: [RFC PATCH 2/2] accel/tcg: replace phys_pc with asid in TB htable
+ key
+To: Oleg Vasilev <me@svin.in>, qemu-devel@nongnu.org
+Cc: Oleg Vasilev <vasilev.oleg@huawei.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20211222164947.634759-1-me@svin.in>
+ <20211222164947.634759-3-me@svin.in>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <3f3440c3-4a1b-a272-c445-58ff7341bfd3@linaro.org>
+Date: Thu, 23 Dec 2021 08:31:21 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-References: <20211222022231.231575-1-troy_lee@aspeedtech.com>
- <8df385c9-b25c-80bb-fb27-88f774eb44c6@kaod.org>
-In-Reply-To: <8df385c9-b25c-80bb-fb27-88f774eb44c6@kaod.org>
-From: Klaus Heinrich Kiwi <klaus@klauskiwi.com>
-Date: Thu, 23 Dec 2021 12:57:47 -0300
-Message-ID: <CAJOFXWgEqYTAL59Z2CPzQTedYqN9pWuyiEt7jbG1ENZinNj=2w@mail.gmail.com>
-Subject: Re: [PATCH] Supporting AST2600 HACE engine accumulative mode
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d31
- (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::d31;
- envelope-from=klaus@klauskiwi.com; helo=mail-io1-xd31.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Troy Lee <troy_lee@aspeedtech.com>, qemu-devel@nongnu.org, leetroy@gmail.com,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TD83uWTYUEmY
+In-Reply-To: <20211222164947.634759-3-me@svin.in>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: oqt7PkI7W10l
 
-Em qui., 23 de dez. de 2021 =C3=A0s 09:54, C=C3=A9dric Le Goater <clg@kaod.=
-org> escreveu:
->
-> [ Adding Klaus ]
+On 12/22/21 8:50 AM, Oleg Vasilev wrote:
+> From: Oleg Vasilev <vasilev.oleg@huawei.com>
+> 
+> Using a physical pc requires to translate address every time next block
+> needs to be found and executed. This also contaminates TLB with code-related
+> records.
+> 
+> Instead, I suggest we introduce an architecture-specific address space
+> identifier, and use it to distinguish between different AS's
+> translation blocks.
 
-Thanks Cedric. It's been a while since I've looked at this but I'll do my b=
-est..
+Why do you believe that asid is sufficient here?  You're not invalidating any more TBs 
+that I can see.  What happens when the kernel re-uses an asid?
 
->
-> On 12/22/21 03:22, Troy Lee wrote:
-> > Accumulative mode will supply a initial state and append padding bit at
-> > the end of hash stream.  However, the crypto library will padding those
-> > bit automatically, so ripped it off from iov array.
-> >
-> > Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> > ---
-> >   hw/misc/aspeed_hace.c         | 30 ++++++++++++++++++++++++++++--
-> >   include/hw/misc/aspeed_hace.h |  1 +
-> >   2 files changed, 29 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> > index 10f00e65f4..7c1794d6d0 100644
-> > --- a/hw/misc/aspeed_hace.c
-> > +++ b/hw/misc/aspeed_hace.c
-> > @@ -27,6 +27,7 @@
-> >
-> >   #define R_HASH_SRC      (0x20 / 4)
-> >   #define R_HASH_DEST     (0x24 / 4)
-> > +#define R_HASH_KEY_BUFF (0x28 / 4)
-> >   #define R_HASH_SRC_LEN  (0x2c / 4)
-> >
-> >   #define R_HASH_CMD      (0x30 / 4)
-> > @@ -94,7 +95,10 @@ static int hash_algo_lookup(uint32_t reg)
-> >       return -1;
-> >   }
-> >
-> > -static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mo=
-de)
-> > +static void do_hash_operation(AspeedHACEState *s,
-> > +                              int algo,
-> > +                              bool sg_mode,
-> > +                              bool acc_mode)
-> >   {
-> >       struct iovec iov[ASPEED_HACE_MAX_SG];
-> >       g_autofree uint8_t *digest_buf;
-> > @@ -103,6 +107,7 @@ static void do_hash_operation(AspeedHACEState *s, i=
-nt algo, bool sg_mode)
-> >
-> >       if (sg_mode) {
-> >           uint32_t len =3D 0;
-> > +        uint32_t total_len =3D 0;
-> >
-> >           for (i =3D 0; !(len & SG_LIST_LEN_LAST); i++) {
-> >               uint32_t addr, src;
-> > @@ -127,6 +132,21 @@ static void do_hash_operation(AspeedHACEState *s, =
-int algo, bool sg_mode)
-> >               plen =3D iov[i].iov_len;
-> >               iov[i].iov_base =3D address_space_map(&s->dram_as, addr, =
-&plen, false,
-> >                                                   MEMTXATTRS_UNSPECIFIE=
-D);
-> > +
-> > +            total_len +=3D plen;
-> > +            if (acc_mode && len & SG_LIST_LEN_LAST) {
-I think we should make the precedence here explicit (with the use of
-()) instead of implicit. Also, isn't (len * SGL_LIST_LEN_LAST) always
-true inside this for loop?
+I believe this patch to be fundamentally flawed.
 
-> > +                /*
-> > +                 * Read the message length in bit from last 64/128 bit=
-s
-> > +                 * and tear the padding bits from iov
-> > +                 */
-> > +                uint64_t stream_len;
-> > +
-> > +                memcpy(&stream_len, iov[i].iov_base + iov[i].iov_len -=
- 8, 8);
-> > +                stream_len =3D __bswap_64(stream_len) / 8;
-> > +
+All that said,
 
-I no longer have access to the aspeed workbook I guess, but what is
-the actual specification here? is the message length 64 or 128 bits?
-and bswap seems arch-dependent - you probably want to be explicit if
-this is big or little-endian and use the appropriate conversion
-function.
+> +/* Returns the identifier for a current address space. */
+> +static uint64_t arm_get_asid(CPUState *cs)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +    ARMMMUIdx mmu_idx = arm_mmu_idx(env);
+> +    uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
+> +
+> +#define TCR_A1     (1U << 22)
+> +    return regime_ttbr(env, mmu_idx, (tcr&TCR_A1)>0);
+> +}
 
-> > +                if (total_len > stream_len)
-> > +                    iov[i].iov_len -=3D total_len - stream_len;
-> > +            }
+Why are you returning the entire ttbr, and not the asid in the top 16 bits?
 
-I guess you're not using total_len except for this comparison? Feels
-like there's a better way to first compare and then assign the value,
-other than assign, compare, re-assign etc.
 
-The rest of it looks fine apparently. Are you planning on adding to
-the testcases are well?
-
-Thanks,
-
- -Klaus
-
- /*
- <klaus@klauskiwi.com> - http://blog.klauskiwi.com
- */
-
-> >           }
-> >       } else {
-> >           hwaddr len =3D s->regs[R_HASH_SRC_LEN];
-> > @@ -210,6 +230,9 @@ static void aspeed_hace_write(void *opaque, hwaddr =
-addr, uint64_t data,
-> >       case R_HASH_DEST:
-> >           data &=3D ahc->dest_mask;
-> >           break;
-> > +    case R_HASH_KEY_BUFF:
-> > +        data &=3D ahc->key_mask;
-> > +        break;
-> >       case R_HASH_SRC_LEN:
-> >           data &=3D 0x0FFFFFFF;
-> >           break;
-> > @@ -234,7 +257,7 @@ static void aspeed_hace_write(void *opaque, hwaddr =
-addr, uint64_t data,
-> >                           __func__, data & ahc->hash_mask);
-> >                   break;
-> >           }
-> > -        do_hash_operation(s, algo, data & HASH_SG_EN);
-> > +        do_hash_operation(s, algo, data & HASH_SG_EN, data & HASH_DIGE=
-ST_ACCUM);
-> >
-> >           if (data & HASH_IRQ_EN) {
-> >               qemu_irq_raise(s->irq);
-> > @@ -333,6 +356,7 @@ static void aspeed_ast2400_hace_class_init(ObjectCl=
-ass *klass, void *data)
-> >
-> >       ahc->src_mask =3D 0x0FFFFFFF;
-> >       ahc->dest_mask =3D 0x0FFFFFF8;
-> > +    ahc->key_mask =3D 0x0FFFFFC0;
-> >       ahc->hash_mask =3D 0x000003ff; /* No SG or SHA512 modes */
-> >   }
-> >
-> > @@ -351,6 +375,7 @@ static void aspeed_ast2500_hace_class_init(ObjectCl=
-ass *klass, void *data)
-> >
-> >       ahc->src_mask =3D 0x3fffffff;
-> >       ahc->dest_mask =3D 0x3ffffff8;
-> > +    ahc->key_mask =3D 0x3FFFFFC0;
-> >       ahc->hash_mask =3D 0x000003ff; /* No SG or SHA512 modes */
-> >   }
-> >
-> > @@ -369,6 +394,7 @@ static void aspeed_ast2600_hace_class_init(ObjectCl=
-ass *klass, void *data)
-> >
-> >       ahc->src_mask =3D 0x7FFFFFFF;
-> >       ahc->dest_mask =3D 0x7FFFFFF8;
-> > +    ahc->key_mask =3D 0x7FFFFFF8;
-> >       ahc->hash_mask =3D 0x00147FFF;
-> >   }
-> >
-> > diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hac=
-e.h
-> > index 94d5ada95f..2242945eb4 100644
-> > --- a/include/hw/misc/aspeed_hace.h
-> > +++ b/include/hw/misc/aspeed_hace.h
-> > @@ -37,6 +37,7 @@ struct AspeedHACEClass {
-> >
-> >       uint32_t src_mask;
-> >       uint32_t dest_mask;
-> > +    uint32_t key_mask;
-> >       uint32_t hash_mask;
-> >   };
-> >
-> >
->
+r~

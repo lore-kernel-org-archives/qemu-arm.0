@@ -1,154 +1,132 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp4053373lfb;
-        Fri, 24 Dec 2021 05:02:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwHfRIBqobvXcMP5xJPFSEtglxpYf4JBL7zGZrOhQpHNq54bfxAU0BFC0QSZEtZI9NfCRGn
-X-Received: by 2002:a63:9a01:: with SMTP id o1mr5100952pge.449.1640350974657;
-        Fri, 24 Dec 2021 05:02:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1640350974; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp4271839lfb;
+        Fri, 24 Dec 2021 11:56:20 -0800 (PST)
+X-Received: by 2002:a17:90a:8041:: with SMTP id e1mr9443283pjw.60.1640375780450;
+        Fri, 24 Dec 2021 11:56:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640375780; cv=none;
         d=google.com; s=arc-20160816;
-        b=LJ//yf35alYAMbnzW3M05Et21by78bPrSMgUdiVVNn3Mhpy7r2wuaoxszO5GQMUzWX
-         x+rLDJONqQ3CgnPRrGsYWNNPBVPXIL6mysAvJYOw4zxlooWwuQoSdRHjFMUfvUnblrWn
-         d154WQfteAG/j7UZCvYafN0ELBpOYurPw0mxx/3KTzCzkXUkG3yA4X+WF1J7Xz2apc6h
-         VYzNkYSd6T+6u4K/gFvavfB4sR0a5Hn74obQ6wvQpbAg1/UF3BDoAK3HjE62u8Mjcd7+
-         yvkgg65nSA23FdDabZdAhGKXkWl68lAzzL8a+PFsbwBuneRqYU4BfEvRYKVZQO2KyMg2
-         QzKA==
+        b=d7bOFhmyi7zB2lDuMrs2Z92amQ4J8wOMEpWr+QvEEJTOQ6TTbDmjHYZBSIXykZB15T
+         BDDeyCYoFbhH5CGJ8bdPspBGc0ft10dFOidNnpXii9PsSnU2GQg2rb5cXhruHk/PTue9
+         udntUgkOZdjkEfQFRpIMsgoVUh1jTFAGhow2S6CJxeSv4WMic0H2gHr8+BXp7oY5oDkx
+         acTI9tVC9R29ilo3vsHnDVX1P6OF89CXCh5hgoXznyOOYRo2jE1wgg0oEz0YqqrVHCmk
+         ijk3TDyQFL24j4m4/CQu4il6xDdWdTiR7AQfk0gN7eZSYEhs61VVVD0B7OykOeHhdNSI
+         2YFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=AIRaf2r3a0M45mHRAcToaHY1M5EoyFbalEvSHe+oTjQ=;
-        b=QS+L7QZ0qt+UhM/AHSUaXx9ijVKI3hJ+ikVByHReNVkmfjyOuGsGpkp2hVhp6ySYxf
-         MPRdJasLCPzObLh1VU7nCVbq8ARcKs/dXWEXUV/tAck1LC2Qio9upAbJseNtqv2f7Qju
-         PBJNcVSwPoZ0qtpzjOAfKbzx0J/+5pfyzuriJCdmblYxryRaR12WSkwbxNGMXU4qyzUb
-         kgwN0+kYnkRvMhM62p5ExDd/eWSvcDTQUFtnlgaameFYPQeUR+viHUKcV026kcrUJiYP
-         mOnYGZk/kvVJX+E9SY3NI1RiBm1sztNOfAymht2q65Br22kcYo72GO+eORdyL0CDbCq1
-         o0fA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=SLENTLDKVX6gByRL9WSy8A9SbPO7USBuaJHCAX9qNa4=;
+        b=k7o0fXJkU4VyfQGEdkaALTV2CTk8FYlrNvNyiH9OLDsbdqf7ISXEjdxNlm0falmQqt
+         bOlnkiCJflXpg8qhMlGlmuy0RP36eP5rmQeexJSDBI5UBx8GrA9hct1YWI/V2ueXMexe
+         LtqJKRA96fxyGh6aEAXMxhkI+/h+mz5QoshmbV8FGX6RxepiuT0CZfLqKGrpnMhtpk6f
+         xIMZOXNDxAmxa/qZM2OQIEQCcTPtwVjE4n98/zuLCdUIJ/i3vnPSifQhradGEzNIIirv
+         FQXPkeicNJBiLmXkoanRevtXBiI46wQOMFkjpcPxUssSS78Z3rim9qQUefb8c04nH+hv
+         AYYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of vasilev.oleg@huawei.com designates 45.249.212.187 as permitted sender) smtp.mailfrom=vasilev.oleg@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <vasilev.oleg@huawei.com>
-Received: from szxga01-in.huawei.com (szxga01-in.huawei.com. [45.249.212.187])
-        by mx.google.com with ESMTPS id d5si6927456pll.324.2021.12.24.05.02.53
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Dec 2021 05:02:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of vasilev.oleg@huawei.com designates 45.249.212.187 as permitted sender) client-ip=45.249.212.187;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bXeMyODw;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id j15sor3285149plh.46.2021.12.24.11.56.20
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 24 Dec 2021 11:56:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of vasilev.oleg@huawei.com designates 45.249.212.187 as permitted sender) smtp.mailfrom=vasilev.oleg@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from dggpeml500026.china.huawei.com (unknown [172.30.72.56])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4JL6bH6m1HzZdqh;
-	Fri, 24 Dec 2021 20:59:39 +0800 (CST)
-Received: from dggpeml100022.china.huawei.com (7.185.36.176) by
- dggpeml500026.china.huawei.com (7.185.36.106) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Fri, 24 Dec 2021 21:02:51 +0800
-Received: from dggpeml500023.china.huawei.com (7.185.36.114) by
- dggpeml100022.china.huawei.com (7.185.36.176) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Fri, 24 Dec 2021 21:02:51 +0800
-Received: from dggpeml500023.china.huawei.com ([7.185.36.114]) by
- dggpeml500023.china.huawei.com ([7.185.36.114]) with mapi id 15.01.2308.020;
- Fri, 24 Dec 2021 21:02:51 +0800
-From: Vasilev Oleg <vasilev.oleg@huawei.com>
-To: Richard Henderson <richard.henderson@linaro.org>, Oleg Vasilev
-	<me@svin.in>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: =?iso-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Paolo Bonzini
-	<pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, "Marcel
- Apfelbaum" <marcel.apfelbaum@gmail.com>,
-	=?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>, Peter Maydell
-	<peter.maydell@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=bXeMyODw;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=SLENTLDKVX6gByRL9WSy8A9SbPO7USBuaJHCAX9qNa4=;
+        b=bXeMyODwrlusjuGcnSp4W2KiHA9oCy7lp8vv/TW1yNIpglnoWex7gyC0rkg8WgsSP7
+         WTRWLLYYoP2ej1N3g64+/KdqgvfRkJJJMHReltnVAC4iDWF0FGgPPSdZmItFHsfZvEfp
+         k5VJmq7MUiGJFbemY+Be5zZ/c+Bu3/hSvIOhY8PUMXKxjMQlLWPMIUU6Vh28YXgCCkk0
+         +NgenWc5H0V1bvIrwZITIo1VGzR0iU/bqNgdCOQG4aNXwAtVR0tkI0DfSGNXFlCtkB1b
+         APIsWGCwanUjyUi2lRxiWXXvtwb3mm6FsJa0oOl7KDerq79Olkga2MmrE+x2OZa1UmK7
+         N+xA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=SLENTLDKVX6gByRL9WSy8A9SbPO7USBuaJHCAX9qNa4=;
+        b=sbVND3oLRvzKa8i6tXl/KrP8Cps87Vyra2tokWB00GaXMax52dEkg9DEV0zuYlojcL
+         pnmj4YqmJNZ9MH7T6Ai6kezPZwydRBDuB+bPYrAB8x9Ppz+NUwC5GB6qjqccS76/XJMN
+         9TCTZSKj5C4jpLhI0+jVXb4w4/8sP53BjtubEiJ3LUGWDERUUETY3yQeH9irXBM76/Mu
+         AH0InmXay4YkUjGPhcaUlGw8Au4Re+qOjf4lYrPsXDsxaK1YmJz5TeZib+VxxL2l1sio
+         q4HYCWjFcLJU3BXCuQTbVxZ7pqFUXRM0IhDWHmtGCbrq+0TwFJ/60K8gOB8KqhRoZ086
+         5YNw==
+X-Gm-Message-State: AOAM531jy1xyXmsNqMI4RNw1qDi25XoiVHRzMKIH7+FM/p8ETMSI/z9d
+	/QoguOUGcCKpLx06cuv9kTINSwTQ
+X-Google-Smtp-Source: ABdhPJwBzM/1sOnFPFiEshwb/DafzE/psYhS5635tg4I8wiW4ZJsfydeGkdqJo2M3UNlGszIVSiURg==
+X-Received: by 2002:a17:902:6b46:b0:142:8470:862e with SMTP id g6-20020a1709026b4600b001428470862emr7971833plt.49.1640375779789;
+        Fri, 24 Dec 2021 11:56:19 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [172.20.100.20] ([156.19.246.20])
+        by smtp.gmail.com with ESMTPSA id y16sm9968131pfl.179.2021.12.24.11.56.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 24 Dec 2021 11:56:19 -0800 (PST)
 Subject: Re: [RFC PATCH 2/2] accel/tcg: replace phys_pc with asid in TB htable
  key
-Thread-Topic: [RFC PATCH 2/2] accel/tcg: replace phys_pc with asid in TB
- htable key
-Thread-Index: AQHX91QNy2ZGGleQ50C6S5nMGmROpg==
-Date: Fri, 24 Dec 2021 13:02:51 +0000
-Message-ID: <e05dd835e5ad4cb9aec3ccf0c7369c30@huawei.com>
+To: Vasilev Oleg <vasilev.oleg@huawei.com>, Oleg Vasilev <me@svin.in>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20211222164947.634759-1-me@svin.in>
  <20211222164947.634759-3-me@svin.in>
  <3f3440c3-4a1b-a272-c445-58ff7341bfd3@linaro.org>
-Accept-Language: en-US, zh-CN
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.47.162.240]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ <e05dd835e5ad4cb9aec3ccf0c7369c30@huawei.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <d6df7fd7-7f0f-a223-0fe6-2ab25cf6eb59@linaro.org>
+Date: Fri, 24 Dec 2021 11:56:16 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: dayGs8FgGr8B
+In-Reply-To: <e05dd835e5ad4cb9aec3ccf0c7369c30@huawei.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: 0UZ4Wl+M1XpP
 
-On 12/23/2021 7:31 PM, Richard Henderson wrote:=0A=
-> On 12/22/21 8:50 AM, Oleg Vasilev wrote:=0A=
->> From: Oleg Vasilev <vasilev.oleg@huawei.com>=0A=
->>=0A=
->> Using a physical pc requires to translate address every time next block=
-=0A=
->> needs to be found and executed. This also contaminates TLB with code-rel=
-ated=0A=
->> records.=0A=
->>=0A=
->> Instead, I suggest we introduce an architecture-specific address space=
-=0A=
->> identifier, and use it to distinguish between different AS's=0A=
->> translation blocks.=0A=
-> =0A=
-> Why do you believe that asid is sufficient here?  You're not invalidating=
- any more TBs =0A=
-> that I can see.  What happens when the kernel re-uses an asid?=0A=
-=0A=
-Hi,=0A=
-=0A=
-Sorry, I had some comments for the patch, but forgot to put it in.=0A=
-=0A=
-So, I think I interpret the term "asid" in some other sense, namely, an=0A=
-identifier, which is constant during whole lifespan of an address space.=0A=
-Same as PID in that sense. Do you think this is a viable approach?=0A=
-=0A=
-If we assume translation table wouldn't change during process life,=0A=
-after the death of the process, all it address space would be anyway=0A=
-unmapped and corresponding translation blocks would be invalidated.=0A=
-=0A=
-=0A=
-> =0A=
-> I believe this patch to be fundamentally flawed.=0A=
-=0A=
-Maybe it is, I just wanted to get feedback from you guys. Do you think=0A=
-maybe exists some other way, which would not require translating va->pa=0A=
-every time to look up next block?=0A=
-=0A=
-More context is in:=0A=
-=0A=
- Subject: Suggestions for TCG performance improvements=0A=
- Date: Thu, 2 Dec 2021 09:47:13 +0000=0A=
- Message-ID: <c76bde31-8f3b-2d03-b7c7-9e026d4b5873@huawei.com>=0A=
-=0A=
-> =0A=
-> All that said,=0A=
-> =0A=
->> +/* Returns the identifier for a current address space. */=0A=
->> +static uint64_t arm_get_asid(CPUState *cs)=0A=
->> +{=0A=
->> +    ARMCPU *cpu =3D ARM_CPU(cs);=0A=
->> +    CPUARMState *env =3D &cpu->env;=0A=
->> +    ARMMMUIdx mmu_idx =3D arm_mmu_idx(env);=0A=
->> +    uint64_t tcr =3D regime_tcr(env, mmu_idx)->raw_tcr;=0A=
->> +=0A=
->> +#define TCR_A1     (1U << 22)=0A=
->> +    return regime_ttbr(env, mmu_idx, (tcr&TCR_A1)>0);=0A=
->> +}=0A=
-> =0A=
-> Why are you returning the entire ttbr, and not the asid in the top 16 bit=
-s?=0A=
-=0A=
-Actually, for my particular case I seem to need to return the lowest 40=0A=
-bits, which is actual base for TT.=0A=
-=0A=
-Thanks,=0A=
-Oleg=0A=
-=0A=
-> =0A=
-> =0A=
-> r~=0A=
-> =0A=
-=0A=
+On 12/24/21 5:02 AM, Vasilev Oleg wrote:
+> On 12/23/2021 7:31 PM, Richard Henderson wrote:
+>> On 12/22/21 8:50 AM, Oleg Vasilev wrote:
+>>> From: Oleg Vasilev <vasilev.oleg@huawei.com>
+>>>
+>>> Using a physical pc requires to translate address every time next block
+>>> needs to be found and executed. This also contaminates TLB with code-related
+>>> records.
+>>>
+>>> Instead, I suggest we introduce an architecture-specific address space
+>>> identifier, and use it to distinguish between different AS's
+>>> translation blocks.
+>>
+>> Why do you believe that asid is sufficient here?  You're not invalidating any more TBs
+>> that I can see.  What happens when the kernel re-uses an asid?
+> 
+> Hi,
+> 
+> Sorry, I had some comments for the patch, but forgot to put it in.
+> 
+> So, I think I interpret the term "asid" in some other sense, namely, an
+> identifier, which is constant during whole lifespan of an address space.
+> Same as PID in that sense. Do you think this is a viable approach?
+
+No, I do not.
+
+> If we assume translation table wouldn't change during process life,
+> after the death of the process, all it address space would be anyway
+> unmapped and corresponding translation blocks would be invalidated.
+
+While this assumption is often true, it certainly isn't universally true.
+Consider the cases of dlclose, followed by another dlopen; or any JIT.
+
+
+r~

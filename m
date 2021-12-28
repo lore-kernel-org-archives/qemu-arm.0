@@ -1,60 +1,60 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp6326138lfb;
-        Tue, 28 Dec 2021 01:23:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy3YuGhNhHSjqVB+5WXpeTKUGBJwpADrXOgkr9wBF51BTCqgmCva138q5yGu7ZPbLgQIR5M
-X-Received: by 2002:a25:41d1:: with SMTP id o200mr18795591yba.357.1640683424168;
-        Tue, 28 Dec 2021 01:23:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1640683424; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp6326548lfb;
+        Tue, 28 Dec 2021 01:24:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxSNW70bHHs5vLNzwP5dcOwGTS8/SMpFtVgDFYK8GSyBkyG6REky/UiyW3z0ZC19jt29RTI
+X-Received: by 2002:a25:a385:: with SMTP id e5mr11251353ybi.481.1640683484162;
+        Tue, 28 Dec 2021 01:24:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640683484; cv=none;
         d=google.com; s=arc-20160816;
-        b=XJCB2fHMh+42mKsNvIGRZtwVQDjAN88svbL84gJKJc+9gHzFs6K4pQv1EuKF6gdCfG
-         q8ec57gjFwPNsupIcJTfGuxhZ+qIIeVqubp9hpi0wssFZXovWVjEV99JgdVjwfpq0foQ
-         /JH5J2sWTXH9D4DkC6wZwlUMqqCznmiH0gMTcWTsHBawyfFDJc7tA4uI/g2F6XzHBXzY
-         1aQfQ4oliWXA2DjJpb+eeGDvn7qKSvz3rfhv4XGPvBTEDAaXmFEs9HAt0++LEevMaWLO
-         5yzzDuUnpaxjZT3eAfDngzFrXOROHeVpBOqioWFwc4mExQwIw67yYHYzpQf9wUvOSkGa
-         v/hQ==
+        b=Cg68UdUfAFB9eiWhCfyRONE3nJ0FpHjL4de2Y4NsEtZ/mM6RYEYNvJ7p02rO8uRt3A
+         2nLZGyQWcYnAmcAQhQ3s5ey5K5GeOFQJy9QLbfcsUoLfgcfEpx3Auy8yiCPulbphc3vo
+         AsrbR58TAEGH5LRQD/HMMaUzA6punQpGWusJElFDOjvHKfSrssErAj4KTlI/BUYsEhD2
+         Nsci/BMYoNeUMAR4h+L4jgOf1sg2FFht8QqP9DPkGBS/xIpMIr5pw4GC0B3niRYeA10F
+         nM7TswnsnL48NNqAB7Ol5DEMQhsfnbE1EiPNS5WbNrTgY8u2f/5GsbMq3WFC3y2F8DKn
+         TX3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=pmnc+VGLOtPXnHuOpKcXtWjlOVMjwBF383Okgwyu70U=;
-        b=t5pWwyJj856XdYVudBi3GJJP/hQTOej0dFoCoX/1ICOzSehg0WPbxj2Yd9Ue8mFe6k
-         vURMDFsRHPKMp2SXpmjYJ5wjKnfhO50AVarOAUNwkLgxCPS3+b7DmHWPt4JwF0fiv8DN
-         n+M33IfWJWj/x7Hg6LfQmEybFFtnibJz766gmdMzx4K6/gaQmLn+h87+iLKEAjlQoFTE
-         p4K3AIb+IOPqDc9CXVPXSii47tr32pdqfqfi45S3W3uYjLCL/T9sm2BXPLFtjPxmMsvd
-         5wjeTcxOKdExUlNtaf1/K2/uToGf28hmDD588STK3nJed+puus7zMjmwm9AYuEjNP+eC
-         U8nQ==
+        bh=xsCypEBaje894XuaU7ojE4aozVgPJrku/Coh/c6oMQI=;
+        b=a30bg4SFE4DwN+rSa9trn2SHagozjf1Ig+tJsOu2hb18SjxBTsMyiwrnp+seQnIHE8
+         dGs6EXgsXRAONgQJ3gSldc/axQz0AUJFRYkO+tgoTTLgKbw1gRl9+ghqti76FwtMed1M
+         tXooyCCny5XImz2BPOjGHcQ+NEi0SGdzrLy1Mtec6zigZZXFWBdx04yQglLVwJNUW7DV
+         JQwTFiYhx+bRL1eWRYReNkPRUbZcwclEj+os6HPVuJWnXmewhwhu22eVZpUg+XVMUm5V
+         fnNCSI20F3Js8rO9UvP5JJ03NZSHXj/rMg8mQUPjcZxNdOw7KB9kbkTvSyyvFp9e4Q3e
+         bBDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n184si14099030ybc.735.2021.12.28.01.23.43
+        by mx.google.com with ESMTPS id h187si5383466ybg.257.2021.12.28.01.24.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Dec 2021 01:23:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Dec 2021 01:24:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:38708 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40570 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n28hr-0000px-IX
-	for alex.bennee@linaro.org; Tue, 28 Dec 2021 04:23:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52100)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n28ip-00023N-Iv
+	for alex.bennee@linaro.org; Tue, 28 Dec 2021 04:24:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52098)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n28h2-0007cH-Dg; Tue, 28 Dec 2021 04:22:52 -0500
-Received: from szxga01-in.huawei.com ([45.249.212.187]:3433)
+ id 1n28h2-0007cG-DF; Tue, 28 Dec 2021 04:22:52 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:4150)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n28gy-00077U-SB; Tue, 28 Dec 2021 04:22:52 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.56])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4JNTZW2rNFzcb82;
- Tue, 28 Dec 2021 17:22:11 +0800 (CST)
+ id 1n28gz-000794-Q3; Tue, 28 Dec 2021 04:22:52 -0500
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.55])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4JNTZ60H9Jz9rvl;
+ Tue, 28 Dec 2021 17:21:50 +0800 (CST)
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Tue, 28 Dec 2021 17:22:38 +0800
+ 15.1.2308.20; Tue, 28 Dec 2021 17:22:44 +0800
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  <drjones@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
@@ -64,9 +64,10 @@ CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <ani@anisinha.ca>, Markus
  Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
  <wanghaibin.wang@huawei.com>, Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH v5 01/14] qemu-options: Improve readability of SMP related Docs
-Date: Tue, 28 Dec 2021 17:22:08 +0800
-Message-ID: <20211228092221.21068-2-wangyanan55@huawei.com>
+Subject: [PATCH v5 04/14] tests/unit/test-smp-parse: Add testcases for CPU
+ clusters
+Date: Tue, 28 Dec 2021 17:22:11 +0800
+Message-ID: <20211228092221.21068-5-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20211228092221.21068-1-wangyanan55@huawei.com>
 References: <20211228092221.21068-1-wangyanan55@huawei.com>
@@ -76,8 +77,8 @@ X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -85,155 +86,262 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  Yanan Wang <wangyanan55@huawei.com>
-From:  Yanan Wang via <qemu-arm@nongnu.org>
-X-TUID: K2OWESn455VU
+From:  Yanan Wang via <qemu-devel@nongnu.org>
+X-TUID: VLLDARUnsXAr
 
-We have a description in qemu-options.hx for each CPU topology
-parameter to explain what it exactly means, and also an extra
-declaration for the target-specific one, e.g. "for PC only"
-when describing "dies", and "for PC, it's on one die" when
-describing "cores".
-
-Now we are going to introduce one more non-generic parameter
-"clusters", it will make the Doc less readable and  if we still
-continue to use the legacy way to describe it.
-
-So let's at first make two tweaks of the Docs to improve the
-readability and also scalability:
-1) In the -help text: Delete the extra specific declaration and
-   describe each topology parameter level by level. Then add a
-   note to declare that different machines may support different
-   subsets and the actual meaning of the supported parameters
-   will vary accordingly.
-2) In the rST text: List all the sub-hierarchies currently
-   supported in QEMU, and correspondingly give an example of
-   -smp configuration for each of them.
+Add testcases for parsing of the four-level CPU topology hierarchy,
+ie sockets/clusters/cores/threads, which will be supported on ARM
+virt machines.
 
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 ---
- qemu-options.hx | 76 ++++++++++++++++++++++++++++++++++++++-----------
- 1 file changed, 59 insertions(+), 17 deletions(-)
+ tests/unit/test-smp-parse.c | 130 ++++++++++++++++++++++++++++++++++--
+ 1 file changed, 123 insertions(+), 7 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 7d47510947..b39377de3f 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -207,14 +207,26 @@ ERST
+diff --git a/tests/unit/test-smp-parse.c b/tests/unit/test-smp-parse.c
+index b6df8137fc..331719bbc4 100644
+--- a/tests/unit/test-smp-parse.c
++++ b/tests/unit/test-smp-parse.c
+@@ -61,6 +61,20 @@
+             .has_maxcpus = hf, .maxcpus = f,                  \
+         }
  
- DEF("smp", HAS_ARG, QEMU_OPTION_smp,
-     "-smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
--    "                set the number of CPUs to 'n' [default=1]\n"
-+    "                set the number of initial CPUs to 'n' [default=1]\n"
-     "                maxcpus= maximum number of total CPUs, including\n"
-     "                offline CPUs for hotplug, etc\n"
--    "                sockets= number of discrete sockets in the system\n"
--    "                dies= number of CPU dies on one socket (for PC only)\n"
--    "                cores= number of CPU cores on one socket (for PC, it's on one die)\n"
--    "                threads= number of threads on one CPU core\n",
--        QEMU_ARCH_ALL)
-+    "                sockets= number of sockets on the machine board\n"
-+    "                dies= number of dies in one socket\n"
-+    "                cores= number of cores in one die\n"
-+    "                threads= number of threads in one core\n"
-+    "Note: Different machines may have different subsets of the CPU topology\n"
-+    "      parameters supported, so the actual meaning of the supported parameters\n"
-+    "      will vary accordingly. For example, for a machine type that supports a\n"
-+    "      three-level CPU hierarchy of sockets/cores/threads, the parameters will\n"
-+    "      sequentially mean as below:\n"
-+    "                sockets means the number of sockets on the machine board\n"
-+    "                cores means the number of cores in one socket\n"
-+    "                threads means the number of threads in one core\n"
-+    "      For a particular machine type board, an expected CPU topology hierarchy\n"
-+    "      can be defined through the supported sub-option. Unsupported parameters\n"
-+    "      can also be provided in addition to the sub-option, but their values\n"
-+    "      must be set as 1 in the purpose of correct parsing.\n",
-+    QEMU_ARCH_ALL)
- SRST
- ``-smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]``
-     Simulate a SMP system with '\ ``n``\ ' CPUs initially present on
-@@ -225,27 +237,57 @@ SRST
-     initial CPU count will match the maximum number. When only one of them
-     is given then the omitted one will be set to its counterpart's value.
-     Both parameters may be specified, but the maximum number of CPUs must
--    be equal to or greater than the initial CPU count. Both parameters are
--    subject to an upper limit that is determined by the specific machine
--    type chosen.
--
--    To control reporting of CPU topology information, the number of sockets,
--    dies per socket, cores per die, and threads per core can be specified.
--    The sum `` sockets * cores * dies * threads `` must be equal to the
--    maximum CPU count. CPU targets may only support a subset of the topology
--    parameters. Where a CPU target does not support use of a particular
--    topology parameter, its value should be assumed to be 1 for the purpose
--    of computing the CPU maximum count.
-+    be equal to or greater than the initial CPU count. Product of the
-+    CPU topology hierarchy must be equal to the maximum number of CPUs.
-+    Both parameters are subject to an upper limit that is determined by
-+    the specific machine type chosen.
++/*
++ * Currently a 4-level topology hierarchy is supported on ARM virt machines
++ *  -sockets/clusters/cores/threads
++ */
++#define SMP_CONFIG_WITH_CLUSTERS(ha, a, hb, b, hc, c, hd, d, he, e, hf, f) \
++        {                                                     \
++            .has_cpus     = ha, .cpus     = a,                \
++            .has_sockets  = hb, .sockets  = b,                \
++            .has_clusters = hc, .clusters = c,                \
++            .has_cores    = hd, .cores    = d,                \
++            .has_threads  = he, .threads  = e,                \
++            .has_maxcpus  = hf, .maxcpus  = f,                \
++        }
 +
-+    To control reporting of CPU topology information, values of the topology
-+    parameters can be specified. Machines may only support a subset of the
-+    parameters and different machines may have different subsets supported
-+    which vary depending on capacity of the corresponding CPU targets. So
-+    for a particular machine type board, an expected topology hierarchy can
-+    be defined through the supported sub-option. Unsupported parameters can
-+    also be provided in addition to the sub-option, but their values must be
-+    set as 1 in the purpose of correct parsing.
+ /**
+  * @config - the given SMP configuration
+  * @expect_prefer_sockets - the expected parsing result for the
+@@ -290,6 +304,10 @@ static const struct SMPTestData data_generic_invalid[] = {
+         /* config: -smp 2,dies=2 */
+         .config = SMP_CONFIG_WITH_DIES(T, 2, F, 0, T, 2, F, 0, F, 0, F, 0),
+         .expect_error = "dies not supported by this machine's CPU topology",
++    }, {
++        /* config: -smp 2,clusters=2 */
++        .config = SMP_CONFIG_WITH_CLUSTERS(T, 2, F, 0, T, 2, F, 0, F, 0, F, 0),
++        .expect_error = "clusters not supported by this machine's CPU topology",
+     }, {
+         /* config: -smp 8,sockets=2,cores=4,threads=2,maxcpus=8 */
+         .config = SMP_CONFIG_GENERIC(T, 8, T, 2, T, 4, T, 2, T, 8),
+@@ -337,20 +355,40 @@ static const struct SMPTestData data_with_dies_invalid[] = {
+     },
+ };
  
-     Either the initial CPU count, or at least one of the topology parameters
-     must be specified. The specified parameters must be greater than zero,
-     explicit configuration like "cpus=0" is not allowed. Values for any
-     omitted parameters will be computed from those which are given.
++static const struct SMPTestData data_with_clusters_invalid[] = {
++    {
++        /* config: -smp 16,sockets=2,clusters=2,cores=4,threads=2,maxcpus=16 */
++        .config = SMP_CONFIG_WITH_CLUSTERS(T, 16, T, 2, T, 2, T, 4, T, 2, T, 16),
++        .expect_error = "Invalid CPU topology: "
++                        "product of the hierarchy must match maxcpus: "
++                        "sockets (2) * clusters (2) * cores (4) * threads (2) "
++                        "!= maxcpus (16)",
++    }, {
++        /* config: -smp 34,sockets=2,clusters=2,cores=4,threads=2,maxcpus=32 */
++        .config = SMP_CONFIG_WITH_CLUSTERS(T, 34, T, 2, T, 2, T, 4, T, 2, T, 32),
++        .expect_error = "Invalid CPU topology: "
++                        "maxcpus must be equal to or greater than smp: "
++                        "sockets (2) * clusters (2) * cores (4) * threads (2) "
++                        "== maxcpus (32) < smp_cpus (34)",
++    },
++};
 +
-+    For example, the following sub-option defines a CPU topology hierarchy
-+    (2 sockets totally on the machine, 2 cores per socket, 2 threads per
-+    core) for a machine that only supports sockets/cores/threads.
-+    Some members of the option can be omitted but their values will be
-+    automatically computed:
-+
-+    ::
-+
-+        -smp 8,sockets=2,cores=2,threads=2,maxcpus=8
-+
-+    The following sub-option defines a CPU topology hierarchy (2 sockets
-+    totally on the machine, 2 dies per socket, 2 cores per die, 2 threads
-+    per core) for PC machines which support sockets/dies/cores/threads.
-+    Some members of the option can be omitted but their values will be
-+    automatically computed:
-+
-+    ::
-+
-+        -smp 16,sockets=2,dies=2,cores=2,threads=2,maxcpus=16
-+
-     Historically preference was given to the coarsest topology parameters
-     when computing missing values (ie sockets preferred over cores, which
-     were preferred over threads), however, this behaviour is considered
-     liable to change. Prior to 6.2 the preference was sockets over cores
-     over threads. Since 6.2 the preference is cores over sockets over threads.
-+
-+    For example, the following option defines a machine board with 2 sockets
-+    of 1 core before 6.2 and 1 socket of 2 cores after 6.2:
-+
-+    ::
-+
-+        -smp 2
- ERST
+ static char *smp_config_to_string(const SMPConfiguration *config)
+ {
+     return g_strdup_printf(
+         "(SMPConfiguration) {\n"
+-        "    .has_cpus    = %5s, cpus    = %" PRId64 ",\n"
+-        "    .has_sockets = %5s, sockets = %" PRId64 ",\n"
+-        "    .has_dies    = %5s, dies    = %" PRId64 ",\n"
+-        "    .has_cores   = %5s, cores   = %" PRId64 ",\n"
+-        "    .has_threads = %5s, threads = %" PRId64 ",\n"
+-        "    .has_maxcpus = %5s, maxcpus = %" PRId64 ",\n"
++        "    .has_cpus     = %5s, cpus     = %" PRId64 ",\n"
++        "    .has_sockets  = %5s, sockets  = %" PRId64 ",\n"
++        "    .has_dies     = %5s, dies     = %" PRId64 ",\n"
++        "    .has_clusters = %5s, clusters = %" PRId64 ",\n"
++        "    .has_cores    = %5s, cores    = %" PRId64 ",\n"
++        "    .has_threads  = %5s, threads  = %" PRId64 ",\n"
++        "    .has_maxcpus  = %5s, maxcpus  = %" PRId64 ",\n"
+         "}",
+         config->has_cpus ? "true" : "false", config->cpus,
+         config->has_sockets ? "true" : "false", config->sockets,
+         config->has_dies ? "true" : "false", config->dies,
++        config->has_clusters ? "true" : "false", config->clusters,
+         config->has_cores ? "true" : "false", config->cores,
+         config->has_threads ? "true" : "false", config->threads,
+         config->has_maxcpus ? "true" : "false", config->maxcpus);
+@@ -363,11 +401,12 @@ static char *cpu_topology_to_string(const CpuTopology *topo)
+         "    .cpus     = %u,\n"
+         "    .sockets  = %u,\n"
+         "    .dies     = %u,\n"
++        "    .clusters = %u,\n"
+         "    .cores    = %u,\n"
+         "    .threads  = %u,\n"
+         "    .max_cpus = %u,\n"
+         "}",
+-        topo->cpus, topo->sockets, topo->dies,
++        topo->cpus, topo->sockets, topo->dies, topo->clusters,
+         topo->cores, topo->threads, topo->max_cpus);
+ }
  
- DEF("numa", HAS_ARG, QEMU_OPTION_numa,
+@@ -391,6 +430,7 @@ static void check_parse(MachineState *ms, const SMPConfiguration *config,
+             (ms->smp.cpus == expect_topo->cpus) &&
+             (ms->smp.sockets == expect_topo->sockets) &&
+             (ms->smp.dies == expect_topo->dies) &&
++            (ms->smp.clusters == expect_topo->clusters) &&
+             (ms->smp.cores == expect_topo->cores) &&
+             (ms->smp.threads == expect_topo->threads) &&
+             (ms->smp.max_cpus == expect_topo->max_cpus)) {
+@@ -472,6 +512,11 @@ static void unsupported_params_init(const MachineClass *mc, SMPTestData *data)
+         data->expect_prefer_sockets.dies = 1;
+         data->expect_prefer_cores.dies = 1;
+     }
++
++    if (!mc->smp_props.clusters_supported) {
++        data->expect_prefer_sockets.clusters = 1;
++        data->expect_prefer_cores.clusters = 1;
++    }
+ }
+ 
+ static void machine_base_class_init(ObjectClass *oc, void *data)
+@@ -491,6 +536,7 @@ static void machine_generic_valid_class_init(ObjectClass *oc, void *data)
+     mc->max_cpus = MAX_CPUS;
+ 
+     mc->smp_props.dies_supported = false;
++    mc->smp_props.clusters_supported = false;
+ }
+ 
+ static void machine_generic_invalid_class_init(ObjectClass *oc, void *data)
+@@ -502,6 +548,7 @@ static void machine_generic_invalid_class_init(ObjectClass *oc, void *data)
+     mc->max_cpus = 511;
+ 
+     mc->smp_props.dies_supported = false;
++    mc->smp_props.clusters_supported = false;
+ }
+ 
+ static void machine_with_dies_class_init(ObjectClass *oc, void *data)
+@@ -512,6 +559,18 @@ static void machine_with_dies_class_init(ObjectClass *oc, void *data)
+     mc->max_cpus = MAX_CPUS;
+ 
+     mc->smp_props.dies_supported = true;
++    mc->smp_props.clusters_supported = false;
++}
++
++static void machine_with_clusters_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++
++    mc->min_cpus = MIN_CPUS;
++    mc->max_cpus = MAX_CPUS;
++
++    mc->smp_props.clusters_supported = true;
++    mc->smp_props.dies_supported = false;
+ }
+ 
+ static void test_generic_valid(const void *opaque)
+@@ -607,6 +666,56 @@ static void test_with_dies(const void *opaque)
+     object_unref(obj);
+ }
+ 
++static void test_with_clusters(const void *opaque)
++{
++    const char *machine_type = opaque;
++    Object *obj = object_new(machine_type);
++    MachineState *ms = MACHINE(obj);
++    MachineClass *mc = MACHINE_GET_CLASS(obj);
++    SMPTestData data = {};
++    unsigned int num_clusters = 2;
++    int i;
++
++    for (i = 0; i < ARRAY_SIZE(data_generic_valid); i++) {
++        data = data_generic_valid[i];
++        unsupported_params_init(mc, &data);
++
++        /* when clusters parameter is omitted, it will be set as 1 */
++        data.expect_prefer_sockets.clusters = 1;
++        data.expect_prefer_cores.clusters = 1;
++
++        smp_parse_test(ms, &data, true);
++
++        /* when clusters parameter is specified */
++        data.config.has_clusters = true;
++        data.config.clusters = num_clusters;
++        if (data.config.has_cpus) {
++            data.config.cpus *= num_clusters;
++        }
++        if (data.config.has_maxcpus) {
++            data.config.maxcpus *= num_clusters;
++        }
++
++        data.expect_prefer_sockets.clusters = num_clusters;
++        data.expect_prefer_sockets.cpus *= num_clusters;
++        data.expect_prefer_sockets.max_cpus *= num_clusters;
++        data.expect_prefer_cores.clusters = num_clusters;
++        data.expect_prefer_cores.cpus *= num_clusters;
++        data.expect_prefer_cores.max_cpus *= num_clusters;
++
++        smp_parse_test(ms, &data, true);
++    }
++
++    for (i = 0; i < ARRAY_SIZE(data_with_clusters_invalid); i++) {
++        data = data_with_clusters_invalid[i];
++        unsupported_params_init(mc, &data);
++
++        smp_parse_test(ms, &data, false);
++    }
++
++    object_unref(obj);
++}
++
+ /* Type info of the tested machine */
+ static const TypeInfo smp_machine_types[] = {
+     {
+@@ -628,6 +737,10 @@ static const TypeInfo smp_machine_types[] = {
+         .name           = MACHINE_TYPE_NAME("smp-with-dies"),
+         .parent         = TYPE_MACHINE,
+         .class_init     = machine_with_dies_class_init,
++    }, {
++        .name           = MACHINE_TYPE_NAME("smp-with-clusters"),
++        .parent         = TYPE_MACHINE,
++        .class_init     = machine_with_clusters_class_init,
+     }
+ };
+ 
+@@ -648,6 +761,9 @@ int main(int argc, char *argv[])
+     g_test_add_data_func("/test-smp-parse/with_dies",
+                          MACHINE_TYPE_NAME("smp-with-dies"),
+                          test_with_dies);
++    g_test_add_data_func("/test-smp-parse/with_clusters",
++                         MACHINE_TYPE_NAME("smp-with-clusters"),
++                         test_with_clusters);
+ 
+     g_test_run();
+ 
 -- 
 2.27.0
 

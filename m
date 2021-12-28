@@ -1,60 +1,60 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp6331313lfb;
-        Tue, 28 Dec 2021 01:34:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyHpDW5q2f842bzAR1i+lnLZ3V45M/WkFtwGabBHxWqshXNO2NjBO/sq7Umb5wLKsnfUh9J
-X-Received: by 2002:a05:6902:110c:: with SMTP id o12mr29672119ybu.159.1640684075885;
-        Tue, 28 Dec 2021 01:34:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1640684075; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp6331693lfb;
+        Tue, 28 Dec 2021 01:35:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy2v4sSEW1/OcErwmYV8/3rEvoC/dXFI9zT4eztwG+m8YpevkN44HENxW/Al0PforCImcyP
+X-Received: by 2002:a25:5bd6:: with SMTP id p205mr18245675ybb.616.1640684126488;
+        Tue, 28 Dec 2021 01:35:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640684126; cv=none;
         d=google.com; s=arc-20160816;
-        b=iFVkYNa6VHGLdAnFWBeGUxxWG14fFwBAXXwFTHgiBfD9d4LweyL2SgHRwZQBbe+ByD
-         xw8jkbR3Vkz7tdzPsi5YhT+GxgicKv5xsid9bUdT54A8mNyiCZ4eb8HDL0OuBzsy4DFr
-         b3uhDXH6fPm4MZwY8rGaGTWa/cpdF/EMfA9bCk7rKauJxcfwx45ubk4iVZpP5ls+Qhbm
-         LW2JPSY8k9aszoZmWKQMR/AT/AGQMDIEYomujr1fGJUelKg9uoyxkRV1/2RytrI1Ox8W
-         up7dK594HVi7tg9ybZRTYsn57TE9sBJyKRmUrpipPgMiEej8rsvpjdBoKsFXUVQnp4XR
-         PRIg==
+        b=wKeQLZPFlBiVXuQuLOqJMC/cXme07TfEYdpYInR/h0Pgse9DX+WVo6w9Y8u5mYh8xa
+         208jesYv8z1wdTtvtKJ1rO5yNYjsT2x2mS4zB8wQUZTNacekylg+VjzCqkpV8r/vaWsN
+         f1WfNQxzbkwhq0saQ2/DJPkHPIdFRkuwhq5ZxJmXS9V4f7ghc3DNmMZzJ2wNZtoNCQod
+         rpPJNUrksVWKsasD8YqgrqVn/F5aPRAVbQ4DVtOCbcgWKiP4zYynYaRL7MPVo/VYUGHP
+         2ry8a+6TixD5YzXY1CVW3w9F2AU5XoJVB4GYTNmg5U/9wFIgiH8Xk+CAnpwwiht77wPa
+         K/iA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=P2JLn7sZQTszxItloYBLcZBNIjPbfKFohUNGaLhjspQ=;
-        b=eDq3vzcQybyUrFba5f83S3eHDOsHXd7tt6Gxl6rs7WEeU05/gBi5WPXUthX8BQkUYQ
-         9nN0yH5C3H705dBAAyeNqInxchA2rlOVIpkhO1uExZQhcwIqvYOBGDVNc+LjEantcsv/
-         yKUvbcbA5Na2VD7414UCldodZBCSHfVzvngd/GbS70aAtJPNuU6Rcq7/dhxYSBZJgCSN
-         CrDdl0XUpA9B4ugkC7Fy28zVH6tWFXMUDRNEug4nJq4avHu8muHi0u1cGtXrK4LiNsOI
-         ZErQv6E6fi0aWteFkkl8SknEo+0nfN14faljajw398Fd/Pbglh9KTB54XqMqO9iTZw56
-         YtyA==
+        bh=Jwy7Rtd92m9QClZeLfoET89DQwFB0D+b7fIiDBmygBc=;
+        b=bzpCqOPHad+slNcfnc3RQ118DpNqkfMKZu80MYZhFViqYJTk5wtTsunWR2NOsFqiZE
+         J9R+UpWusTaHY4pK+ATx+bPPGtBPdDRY8KIm5z7eVDNi7Hch7DhfpLrU15wLP7sQzMqJ
+         62JCAC4thFKdIBIsw4VwUZi9mhkDI/zQEdLHVpQPvUyBf6ocSKx5W7VqQiic2hjMaeIj
+         Gvhpbxuzs3T/dcRj02Be8vGQBJsXoQ0Z1zEDw8OvFObCdzmbKEb5d/nGpr6OYbRXxKV4
+         U17gbNmutT7iFVPHYjlhROV2pjcvpgoAAD5iBOAkFFURZqQdz+MeEIqhLNZ3oDejo3bz
+         m5rw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e79si2836204ybf.364.2021.12.28.01.34.35
+        by mx.google.com with ESMTPS id a15si330319ybt.149.2021.12.28.01.35.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Dec 2021 01:34:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Dec 2021 01:35:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:38916 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42338 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n28sN-0003Ar-BV
-	for alex.bennee@linaro.org; Tue, 28 Dec 2021 04:34:35 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52232)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n28tB-0005S3-UX
+	for alex.bennee@linaro.org; Tue, 28 Dec 2021 04:35:25 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n28hD-0008Fs-Br; Tue, 28 Dec 2021 04:23:03 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:3063)
+ id 1n28hF-0008Mg-0q; Tue, 28 Dec 2021 04:23:05 -0500
+Received: from szxga03-in.huawei.com ([45.249.212.189]:4166)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n28hB-0007CK-I3; Tue, 28 Dec 2021 04:23:03 -0500
+ id 1n28hC-0007CQ-N6; Tue, 28 Dec 2021 04:23:04 -0500
 Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.54])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4JNTZt1wrwzbjgC;
- Tue, 28 Dec 2021 17:22:30 +0800 (CST)
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4JNTXc6mbFz8w6R;
+ Tue, 28 Dec 2021 17:20:32 +0800 (CST)
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Tue, 28 Dec 2021 17:22:57 +0800
+ 15.1.2308.20; Tue, 28 Dec 2021 17:22:58 +0800
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  <drjones@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
@@ -64,10 +64,10 @@ CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <ani@anisinha.ca>, Markus
  Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
  <wanghaibin.wang@huawei.com>, Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH v5 13/14] hw/arm/virt-acpi-build: Support cluster level in
- PPTT generation
-Date: Tue, 28 Dec 2021 17:22:20 +0800
-Message-ID: <20211228092221.21068-14-wangyanan55@huawei.com>
+Subject: [PATCH v5 14/14] tests/acpi/bios-table-test: Update expected
+ virt/PPTT file
+Date: Tue, 28 Dec 2021 17:22:21 +0800
+Message-ID: <20211228092221.21068-15-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20211228092221.21068-1-wangyanan55@huawei.com>
 References: <20211228092221.21068-1-wangyanan55@huawei.com>
@@ -77,8 +77,8 @@ X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=wangyanan55@huawei.com; helo=szxga03-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -86,57 +86,121 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  Yanan Wang <wangyanan55@huawei.com>
-From:  Yanan Wang via <qemu-devel@nongnu.org>
-X-TUID: SZpa9zfyNNQX
+From:  Yanan Wang via <qemu-arm@nongnu.org>
+X-TUID: MR1oLI0OwzmS
 
-Support cluster level in generation of ACPI Processor Properties
-Topology Table (PPTT) for ARM virt machines.
+Run ./tests/data/acpi/rebuild-expected-aml.sh from build directory
+to update PPTT binary. Also empty bios-tables-test-allowed-diff.h.
+
+The disassembled differences between actual and expected PPTT:
+
+ /*
+  * Intel ACPI Component Architecture
+  * AML/ASL+ Disassembler version 20180810 (64-bit version)
+  * Copyright (c) 2000 - 2018 Intel Corporation
+  *
+- * Disassembly of tests/data/acpi/virt/PPTT, Mon Oct 25 20:24:53 2021
++ * Disassembly of /tmp/aml-BPI5B1, Mon Oct 25 20:24:53 2021
+  *
+  * ACPI Data Table [PPTT]
+  *
+  * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
+  */
+
+ [000h 0000   4]                    Signature : "PPTT"    [Processor Properties Topology Table]
+-[004h 0004   4]                 Table Length : 0000004C
++[004h 0004   4]                 Table Length : 00000060
+ [008h 0008   1]                     Revision : 02
+-[009h 0009   1]                     Checksum : A8
++[009h 0009   1]                     Checksum : 48
+ [00Ah 0010   6]                       Oem ID : "BOCHS "
+ [010h 0016   8]                 Oem Table ID : "BXPC    "
+ [018h 0024   4]                 Oem Revision : 00000001
+ [01Ch 0028   4]              Asl Compiler ID : "BXPC"
+ [020h 0032   4]        Asl Compiler Revision : 00000001
+
+ [024h 0036   1]                Subtable Type : 00 [Processor Hierarchy Node]
+ [025h 0037   1]                       Length : 14
+ [026h 0038   2]                     Reserved : 0000
+ [028h 0040   4]        Flags (decoded below) : 00000001
+                             Physical package : 1
+                      ACPI Processor ID valid : 0
+ [02Ch 0044   4]                       Parent : 00000000
+ [030h 0048   4]            ACPI Processor ID : 00000000
+ [034h 0052   4]      Private Resource Number : 00000000
+
+ [038h 0056   1]                Subtable Type : 00 [Processor Hierarchy Node]
+ [039h 0057   1]                       Length : 14
+ [03Ah 0058   2]                     Reserved : 0000
+-[03Ch 0060   4]        Flags (decoded below) : 0000000A
++[03Ch 0060   4]        Flags (decoded below) : 00000000
+                             Physical package : 0
+-                     ACPI Processor ID valid : 1
++                     ACPI Processor ID valid : 0
+ [040h 0064   4]                       Parent : 00000024
+ [044h 0068   4]            ACPI Processor ID : 00000000
+ [048h 0072   4]      Private Resource Number : 00000000
+
+-Raw Table Data: Length 76 (0x4C)
++[04Ch 0076   1]                Subtable Type : 00 [Processor Hierarchy Node]
++[04Dh 0077   1]                       Length : 14
++[04Eh 0078   2]                     Reserved : 0000
++[050h 0080   4]        Flags (decoded below) : 0000000A
++                            Physical package : 0
++                     ACPI Processor ID valid : 1
++[054h 0084   4]                       Parent : 00000038
++[058h 0088   4]            ACPI Processor ID : 00000000
++[05Ch 0092   4]      Private Resource Number : 00000000
++
++Raw Table Data: Length 96 (0x60)
+
+-    0000: 50 50 54 54 4C 00 00 00 02 A8 42 4F 43 48 53 20  // PPTTL.....BOCHS
++    0000: 50 50 54 54 60 00 00 00 02 48 42 4F 43 48 53 20  // PPTT`....HBOCHS
+     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+     0020: 01 00 00 00 00 14 00 00 01 00 00 00 00 00 00 00  // ................
+-    0030: 00 00 00 00 00 00 00 00 00 14 00 00 0A 00 00 00  // ................
+-    0040: 24 00 00 00 00 00 00 00 00 00 00 00              // $...........
++    0030: 00 00 00 00 00 00 00 00 00 14 00 00 00 00 00 00  // ................
++    0040: 24 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00  // $...............
++    0050: 0A 00 00 00 38 00 00 00 00 00 00 00 00 00 00 00  // ....8...........
 
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 ---
- hw/arm/virt-acpi-build.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ tests/data/acpi/virt/PPTT                   | Bin 76 -> 96 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+ 2 files changed, 1 deletion(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 3ce7680393..5f91969688 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -840,6 +840,21 @@ build_pptt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-             0, socket, NULL, 0);
-     }
- 
-+    length = g_queue_get_length(list);
-+    for (i = 0; i < length; i++) {
-+        int cluster;
-+
-+        father_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
-+        for (cluster = 0; cluster < ms->smp.clusters; cluster++) {
-+            g_queue_push_tail(list,
-+                GUINT_TO_POINTER(table_data->len - pptt_start));
-+            build_processor_hierarchy_node(
-+                table_data,
-+                (0 << 0), /* not a physical package */
-+                father_offset, cluster, NULL, 0);
-+        }
-+    }
-+
-     length = g_queue_get_length(list);
-     for (i = 0; i < length; i++) {
-         int core;
+diff --git a/tests/data/acpi/virt/PPTT b/tests/data/acpi/virt/PPTT
+index 7a1258ecf123555b24462c98ccbb76b4ac1d0c2b..f56ea63b369a604877374ad696c396e796ab1c83 100644
+GIT binary patch
+delta 53
+zcmV-50LuSNU<y!BR8(L90006=kqR;-00000Bme*a000000000002BZK3IG5AH~;_u
+L0000000000uCW9Z
+
+delta 32
+qcmV+*0N?*$ObSp?R8&j=00080kqR=APy`Gl00000000000001OcLdh}
+
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index cb143a55a6..dfb8523c8b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,2 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/virt/PPTT",
 -- 
 2.27.0
 

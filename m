@@ -1,60 +1,60 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp6325933lfb;
-        Tue, 28 Dec 2021 01:23:17 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw42tr9eCSAqnRamBhnVmVXSHyF5/BWd2WlBHLhSlk2qMF0yAkr2aygGxfp0VTBiDmGvnMa
-X-Received: by 2002:a05:6902:70d:: with SMTP id k13mr25454073ybt.14.1640683397442;
-        Tue, 28 Dec 2021 01:23:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1640683397; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp6326138lfb;
+        Tue, 28 Dec 2021 01:23:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy3YuGhNhHSjqVB+5WXpeTKUGBJwpADrXOgkr9wBF51BTCqgmCva138q5yGu7ZPbLgQIR5M
+X-Received: by 2002:a25:41d1:: with SMTP id o200mr18795591yba.357.1640683424168;
+        Tue, 28 Dec 2021 01:23:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640683424; cv=none;
         d=google.com; s=arc-20160816;
-        b=lDKeJ9dN30Ba64AWb1kd1EH9GCo8NnMhq+smOw+aZnmR4Ql/UrHuQ0TgVCNnhIVQX9
-         v72WQUCsjofqcrK/yF9Btc9Kk5QSYCZPJhO6voxxpgJbSgwr/RaMwQmLG/wjcZa7x44i
-         9jl7pLEeCbEhd8YZnOn3xJbZKMoMUwWjE2vvc/i5LWDHhJ09D2vUIDB8CVRZyXMQyzcx
-         aeSE9J0woiX9vmKNWS+c/rflRrx1DkA0dI/MEmJbmZ1coe0Fethk+LJxd4phJDgtY5Db
-         nsHDgAyJXw3sPurzADxFmIRjniFkzA61h+Evw+ahAqyWaNEpzIiyBdNuZDeTbJue/8zW
-         j86g==
+        b=XJCB2fHMh+42mKsNvIGRZtwVQDjAN88svbL84gJKJc+9gHzFs6K4pQv1EuKF6gdCfG
+         q8ec57gjFwPNsupIcJTfGuxhZ+qIIeVqubp9hpi0wssFZXovWVjEV99JgdVjwfpq0foQ
+         /JH5J2sWTXH9D4DkC6wZwlUMqqCznmiH0gMTcWTsHBawyfFDJc7tA4uI/g2F6XzHBXzY
+         1aQfQ4oliWXA2DjJpb+eeGDvn7qKSvz3rfhv4XGPvBTEDAaXmFEs9HAt0++LEevMaWLO
+         5yzzDuUnpaxjZT3eAfDngzFrXOROHeVpBOqioWFwc4mExQwIw67yYHYzpQf9wUvOSkGa
+         v/hQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=/IcxkQYxQN9e4dBrx/nuNdA7c0gO0/wt4kATc9QrFuw=;
-        b=bPErCc338e+yd4Z+VgKStniYSFDHvJl285IVV6UXYhqltBRYshqlVX0K6F9texyWp3
-         gkDgEnfyJpUjex8P69A8Kir5y/IdPQ8oEPhzCSA5TT/PJIgR3O3FYLhxivvwjgV5/9Vg
-         4eH0Zxq9djs70qnalOgq/HJWJEF/UAXkTPfJ38AbyRdmqqWIz+WDI0cDqNkFIy4Clmmc
-         DMlEa5RPR9DGMsr/V7G33aCebDXpALbQLT7ugfmXqeo2hzKsRDsy18KW/kl9O/jYHzDx
-         tO2gB01uzXCS2nXU3yv10hP8mEVbE+8BRCxpRuYAdPLSeN/GOXcCkElCovqvsMaEgWle
-         NYVA==
+        bh=pmnc+VGLOtPXnHuOpKcXtWjlOVMjwBF383Okgwyu70U=;
+        b=t5pWwyJj856XdYVudBi3GJJP/hQTOej0dFoCoX/1ICOzSehg0WPbxj2Yd9Ue8mFe6k
+         vURMDFsRHPKMp2SXpmjYJ5wjKnfhO50AVarOAUNwkLgxCPS3+b7DmHWPt4JwF0fiv8DN
+         n+M33IfWJWj/x7Hg6LfQmEybFFtnibJz766gmdMzx4K6/gaQmLn+h87+iLKEAjlQoFTE
+         p4K3AIb+IOPqDc9CXVPXSii47tr32pdqfqfi45S3W3uYjLCL/T9sm2BXPLFtjPxmMsvd
+         5wjeTcxOKdExUlNtaf1/K2/uToGf28hmDD588STK3nJed+puus7zMjmwm9AYuEjNP+eC
+         U8nQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t13si18141472ybu.541.2021.12.28.01.23.17
+        by mx.google.com with ESMTPS id n184si14099030ybc.735.2021.12.28.01.23.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Dec 2021 01:23:17 -0800 (PST)
+        Tue, 28 Dec 2021 01:23:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:37522 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38708 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n28hQ-0008TV-S9
-	for alex.bennee@linaro.org; Tue, 28 Dec 2021 04:23:16 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52088)
+	id 1n28hr-0000px-IX
+	for alex.bennee@linaro.org; Tue, 28 Dec 2021 04:23:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n28h2-0007bI-23; Tue, 28 Dec 2021 04:22:52 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:4149)
+ id 1n28h2-0007cH-Dg; Tue, 28 Dec 2021 04:22:52 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:3433)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n28gy-000792-84; Tue, 28 Dec 2021 04:22:51 -0500
+ id 1n28gy-00077U-SB; Tue, 28 Dec 2021 04:22:52 -0500
 Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.56])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4JNTZ458LFz9rvY;
- Tue, 28 Dec 2021 17:21:48 +0800 (CST)
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4JNTZW2rNFzcb82;
+ Tue, 28 Dec 2021 17:22:11 +0800 (CST)
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Tue, 28 Dec 2021 17:22:43 +0800
+ 15.1.2308.20; Tue, 28 Dec 2021 17:22:38 +0800
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  <drjones@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
@@ -64,10 +64,9 @@ CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <ani@anisinha.ca>, Markus
  Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
  <wanghaibin.wang@huawei.com>, Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH v5 03/14] hw/core/machine: Wrap target specific parameters
- together
-Date: Tue, 28 Dec 2021 17:22:10 +0800
-Message-ID: <20211228092221.21068-4-wangyanan55@huawei.com>
+Subject: [PATCH v5 01/14] qemu-options: Improve readability of SMP related Docs
+Date: Tue, 28 Dec 2021 17:22:08 +0800
+Message-ID: <20211228092221.21068-2-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20211228092221.21068-1-wangyanan55@huawei.com>
 References: <20211228092221.21068-1-wangyanan55@huawei.com>
@@ -77,8 +76,8 @@ X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -101,86 +100,140 @@ Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  Yanan Wang <wangyanan55@huawei.com>
 From:  Yanan Wang via <qemu-arm@nongnu.org>
-X-TUID: eR0o7oaJAtoV
+X-TUID: K2OWESn455VU
 
-Wrap the CPU target specific parameters together into a single
-variable except generic sockets/cores/threads, to make related
-code lines shorter and more concise.
+We have a description in qemu-options.hx for each CPU topology
+parameter to explain what it exactly means, and also an extra
+declaration for the target-specific one, e.g. "for PC only"
+when describing "dies", and "for PC, it's on one die" when
+describing "cores".
 
-No functional change intended.
+Now we are going to introduce one more non-generic parameter
+"clusters", it will make the Doc less readable and  if we still
+continue to use the legacy way to describe it.
+
+So let's at first make two tweaks of the Docs to improve the
+readability and also scalability:
+1) In the -help text: Delete the extra specific declaration and
+   describe each topology parameter level by level. Then add a
+   note to declare that different machines may support different
+   subsets and the actual meaning of the supported parameters
+   will vary accordingly.
+2) In the rST text: List all the sub-hierarchies currently
+   supported in QEMU, and correspondingly give an example of
+   -smp configuration for each of them.
 
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 ---
- hw/core/machine-smp.c | 17 ++++++++++-------
- 1 file changed, 10 insertions(+), 7 deletions(-)
+ qemu-options.hx | 76 ++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 59 insertions(+), 17 deletions(-)
 
-diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
-index b39ed21e65..4547d7bbdc 100644
---- a/hw/core/machine-smp.c
-+++ b/hw/core/machine-smp.c
-@@ -79,6 +79,7 @@ void machine_parse_smp_config(MachineState *ms,
-     unsigned cores   = config->has_cores ? config->cores : 0;
-     unsigned threads = config->has_threads ? config->threads : 0;
-     unsigned maxcpus = config->has_maxcpus ? config->maxcpus : 0;
-+    unsigned others;
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 7d47510947..b39377de3f 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -207,14 +207,26 @@ ERST
  
-     /*
-      * Specified CPU topology parameters must be greater than zero,
-@@ -111,6 +112,8 @@ void machine_parse_smp_config(MachineState *ms,
-     dies = dies > 0 ? dies : 1;
-     clusters = clusters > 0 ? clusters : 1;
- 
-+    others = dies * clusters;
+ DEF("smp", HAS_ARG, QEMU_OPTION_smp,
+     "-smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
+-    "                set the number of CPUs to 'n' [default=1]\n"
++    "                set the number of initial CPUs to 'n' [default=1]\n"
+     "                maxcpus= maximum number of total CPUs, including\n"
+     "                offline CPUs for hotplug, etc\n"
+-    "                sockets= number of discrete sockets in the system\n"
+-    "                dies= number of CPU dies on one socket (for PC only)\n"
+-    "                cores= number of CPU cores on one socket (for PC, it's on one die)\n"
+-    "                threads= number of threads on one CPU core\n",
+-        QEMU_ARCH_ALL)
++    "                sockets= number of sockets on the machine board\n"
++    "                dies= number of dies in one socket\n"
++    "                cores= number of cores in one die\n"
++    "                threads= number of threads in one core\n"
++    "Note: Different machines may have different subsets of the CPU topology\n"
++    "      parameters supported, so the actual meaning of the supported parameters\n"
++    "      will vary accordingly. For example, for a machine type that supports a\n"
++    "      three-level CPU hierarchy of sockets/cores/threads, the parameters will\n"
++    "      sequentially mean as below:\n"
++    "                sockets means the number of sockets on the machine board\n"
++    "                cores means the number of cores in one socket\n"
++    "                threads means the number of threads in one core\n"
++    "      For a particular machine type board, an expected CPU topology hierarchy\n"
++    "      can be defined through the supported sub-option. Unsupported parameters\n"
++    "      can also be provided in addition to the sub-option, but their values\n"
++    "      must be set as 1 in the purpose of correct parsing.\n",
++    QEMU_ARCH_ALL)
+ SRST
+ ``-smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]``
+     Simulate a SMP system with '\ ``n``\ ' CPUs initially present on
+@@ -225,27 +237,57 @@ SRST
+     initial CPU count will match the maximum number. When only one of them
+     is given then the omitted one will be set to its counterpart's value.
+     Both parameters may be specified, but the maximum number of CPUs must
+-    be equal to or greater than the initial CPU count. Both parameters are
+-    subject to an upper limit that is determined by the specific machine
+-    type chosen.
+-
+-    To control reporting of CPU topology information, the number of sockets,
+-    dies per socket, cores per die, and threads per core can be specified.
+-    The sum `` sockets * cores * dies * threads `` must be equal to the
+-    maximum CPU count. CPU targets may only support a subset of the topology
+-    parameters. Where a CPU target does not support use of a particular
+-    topology parameter, its value should be assumed to be 1 for the purpose
+-    of computing the CPU maximum count.
++    be equal to or greater than the initial CPU count. Product of the
++    CPU topology hierarchy must be equal to the maximum number of CPUs.
++    Both parameters are subject to an upper limit that is determined by
++    the specific machine type chosen.
 +
-     /* compute missing values based on the provided ones */
-     if (cpus == 0 && maxcpus == 0) {
-         sockets = sockets > 0 ? sockets : 1;
-@@ -124,30 +127,30 @@ void machine_parse_smp_config(MachineState *ms,
-             if (sockets == 0) {
-                 cores = cores > 0 ? cores : 1;
-                 threads = threads > 0 ? threads : 1;
--                sockets = maxcpus / (dies * clusters * cores * threads);
-+                sockets = maxcpus / (cores * threads * others);
-             } else if (cores == 0) {
-                 threads = threads > 0 ? threads : 1;
--                cores = maxcpus / (sockets * dies * clusters * threads);
-+                cores = maxcpus / (sockets * threads * others);
-             }
-         } else {
-             /* prefer cores over sockets since 6.2 */
-             if (cores == 0) {
-                 sockets = sockets > 0 ? sockets : 1;
-                 threads = threads > 0 ? threads : 1;
--                cores = maxcpus / (sockets * dies * clusters * threads);
-+                cores = maxcpus / (sockets * threads * others);
-             } else if (sockets == 0) {
-                 threads = threads > 0 ? threads : 1;
--                sockets = maxcpus / (dies * clusters * cores * threads);
-+                sockets = maxcpus / (cores * threads * others);
-             }
-         }
++    To control reporting of CPU topology information, values of the topology
++    parameters can be specified. Machines may only support a subset of the
++    parameters and different machines may have different subsets supported
++    which vary depending on capacity of the corresponding CPU targets. So
++    for a particular machine type board, an expected topology hierarchy can
++    be defined through the supported sub-option. Unsupported parameters can
++    also be provided in addition to the sub-option, but their values must be
++    set as 1 in the purpose of correct parsing.
  
-         /* try to calculate omitted threads at last */
-         if (threads == 0) {
--            threads = maxcpus / (sockets * dies * clusters * cores);
-+            threads = maxcpus / (sockets * cores * others);
-         }
-     }
+     Either the initial CPU count, or at least one of the topology parameters
+     must be specified. The specified parameters must be greater than zero,
+     explicit configuration like "cpus=0" is not allowed. Values for any
+     omitted parameters will be computed from those which are given.
++
++    For example, the following sub-option defines a CPU topology hierarchy
++    (2 sockets totally on the machine, 2 cores per socket, 2 threads per
++    core) for a machine that only supports sockets/cores/threads.
++    Some members of the option can be omitted but their values will be
++    automatically computed:
++
++    ::
++
++        -smp 8,sockets=2,cores=2,threads=2,maxcpus=8
++
++    The following sub-option defines a CPU topology hierarchy (2 sockets
++    totally on the machine, 2 dies per socket, 2 cores per die, 2 threads
++    per core) for PC machines which support sockets/dies/cores/threads.
++    Some members of the option can be omitted but their values will be
++    automatically computed:
++
++    ::
++
++        -smp 16,sockets=2,dies=2,cores=2,threads=2,maxcpus=16
++
+     Historically preference was given to the coarsest topology parameters
+     when computing missing values (ie sockets preferred over cores, which
+     were preferred over threads), however, this behaviour is considered
+     liable to change. Prior to 6.2 the preference was sockets over cores
+     over threads. Since 6.2 the preference is cores over sockets over threads.
++
++    For example, the following option defines a machine board with 2 sockets
++    of 1 core before 6.2 and 1 socket of 2 cores after 6.2:
++
++    ::
++
++        -smp 2
+ ERST
  
--    maxcpus = maxcpus > 0 ? maxcpus : sockets * dies * clusters * cores * threads;
-+    maxcpus = maxcpus > 0 ? maxcpus : sockets * cores * threads * others;
-     cpus = cpus > 0 ? cpus : maxcpus;
- 
-     ms->smp.cpus = cpus;
-@@ -159,7 +162,7 @@ void machine_parse_smp_config(MachineState *ms,
-     ms->smp.max_cpus = maxcpus;
- 
-     /* sanity-check of the computed topology */
--    if (sockets * dies * clusters * cores * threads != maxcpus) {
-+    if (sockets * cores * threads * others != maxcpus) {
-         g_autofree char *topo_msg = cpu_hierarchy_to_string(ms);
-         error_setg(errp, "Invalid CPU topology: "
-                    "product of the hierarchy must match maxcpus: "
+ DEF("numa", HAS_ARG, QEMU_OPTION_numa,
 -- 
 2.27.0
 

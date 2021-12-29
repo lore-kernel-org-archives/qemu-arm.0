@@ -1,90 +1,85 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp6932617lfb;
-        Tue, 28 Dec 2021 19:49:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwhdyhKebamUyVeF71U7emuZ1Fqupiro8NgSubLI7kzL5thTajqWt6UFbvCGEvc9IVj3Dip
-X-Received: by 2002:a25:db0e:: with SMTP id g14mr12851663ybf.60.1640749752673;
-        Tue, 28 Dec 2021 19:49:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1640749752; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp7017888lfb;
+        Tue, 28 Dec 2021 23:15:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzPKR7V11qEKrk/HzDGqkgX62DljCGyTb9vG5ozKj4/L+z6uyJp1dy2GFPENsHnLRqUEigF
+X-Received: by 2002:a25:db83:: with SMTP id g125mr5772409ybf.658.1640762114049;
+        Tue, 28 Dec 2021 23:15:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640762114; cv=none;
         d=google.com; s=arc-20160816;
-        b=wFcIXA8sGU18Pt7shb3WNK4NWdNP4Njx20jRdPgAtbtwOaY9AUJ+FdYdVaDd9YJDZf
-         A79jHTJSJBYbYV8nCpBKbhI6YDbYqeDs7uV8WEccvKd3BQBGwBTzjmrhb6x+fxIV/Sbu
-         AzuIuxWtesTHKgOyxdSMQGroF4ci85SB3p+cObib5DDjfWg5gCqymGvT9A9mArp5tf2x
-         tnBYXLNQnz/Di0McMWRErJGWpDBQ3LorkloljtnGg3jb2XzRb9KfZSDXH0tEyDuulUGK
-         owEX2zB+WjmSBljh4sSfMdeXPXi5Yne1izwp8Bc9VMtuls84gg7g2D3uIueAwIsgKuKJ
-         URoQ==
+        b=d5VshrSJHgALDj4V6ypWpLjEhU/XboobeUShW1QVUOT3MxNFnrb/Tq0Jx06k+M7Fhs
+         BL4j4SievVTpdYCvJzgLlk811y3qVfvJ4KjXW1tP/WijZdCMUr/7B6/RFBBcitUGKPOZ
+         3m+Y9rBnz76owdc6NOGz11NGaWq3e4SW/QekU0BtOeT29KTPWWVra0Pv3dD7A9pbNRAg
+         kIP9XiNVJtYbRHJT7o2A8yRRHEQhCQqDSPC4GNYle2YR7J2xE3v66JrvxX01nW5l0J0T
+         ClDBKhOlLhgqwbSOObamngQDRN22H/AH4aFSlunR47ca5mQS6EOPdnRvpeuxvKCg9GNh
+         nFBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:references:cc:to:subject;
-        bh=45a3wldCmQbvIhOmFDuXNQRfoGbRRI9kMKYhftWYQ4A=;
-        b=ZTUBIg0vgdfzSwm3cc6h3ylNevGKznlb6oxQY0zPIQw0j0kmq23WtvQR49ku3TXSXZ
-         COR0CsClg8loz2jyQfLr4xDbCrzh0UyGYvrCgeACrVtSq/nhXUhKOZDOW1+4X13g0+1f
-         cFM10XmcfQhrOPIjEWyMEc47XRyKf2rG158rRdatCqAvS7AP/Vw98Z36sxYBFjwRRT10
-         V+sWY7wzxOwsnLQ5rpfq9ENBkeX+Wx1BqDacrRQpJ0Jm+nFdmZW4ajZ8iFOLJ2Nr83Ve
-         QKhCHkvS1yORe8bgOUA4lvjms40PX8pFapJQBz0TXcd81g8ycUtMvroyyJLHhM1mXL3Y
-         er1A==
+         :message-id:cc:references:to:subject;
+        bh=QxmOZJoICMYFJTzhaYx8xywdwgvxYMWLHSXRo3zEV6k=;
+        b=HTgL/xRg2X9vqBQqheafsKGBpxDpyWpFkcVJYnVU3C5cLd2RC2hTowc9i5rcxNa6RA
+         BLiTQadin3D29/ltpUpVv/EHOns/g88El7FM9tlssSXj5UHdzpW1SYqitibbxcJJxV+A
+         SWROmyvaj1PSfeh5gVBdgqUT0G9HB883LikdZRwl07bjqDIbJOcJsJknyKCkI1dZpKqw
+         tWjtEPt32UDKNcQRc+0EkyyyHQRKxXyP6gGR85xi+qlBpkigyDYDhneeR+dDsyeYSSFZ
+         crICXFHz9j5SDjECp2q0Hs259rGFPbwTJM0LAOIv+yfFIoJElTDVrPOcvrGIf4f6au41
+         61dQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3si4435976ybk.380.2021.12.28.19.49.12
+        by mx.google.com with ESMTPS id p13si5652191yba.30.2021.12.28.23.15.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Dec 2021 19:49:12 -0800 (PST)
+        Tue, 28 Dec 2021 23:15:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:57222 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n2Pxg-00039m-4D
-	for alex.bennee@linaro.org; Tue, 28 Dec 2021 22:49:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39116)
+	id 1n2TB3-0001fK-D4
+	for alex.bennee@linaro.org; Wed, 29 Dec 2021 02:15:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42670)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n2Pwr-0002X2-My; Tue, 28 Dec 2021 22:48:21 -0500
-Received: from szxga03-in.huawei.com ([45.249.212.189]:4168)
+ (Exim 4.90_1) (envelope-from <chenxiang66@hisilicon.com>)
+ id 1n2T9q-0001f5-5X; Wed, 29 Dec 2021 02:13:59 -0500
+Received: from szxga08-in.huawei.com ([45.249.212.255]:3256)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n2Pwn-00076J-9W; Tue, 28 Dec 2021 22:48:21 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.54])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4JNy3q691Lz8vms;
- Wed, 29 Dec 2021 11:45:43 +0800 (CST)
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.20; Wed, 29 Dec 2021 11:48:10 +0800
-Subject: Re: [PATCH v5 02/14] hw/core/machine: Introduce CPU cluster topology
- support
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
- <drjones@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, "Michael S
- . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Shannon
- Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <ani@anisinha.ca>, Markus
- Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
- <wanghaibin.wang@huawei.com>
-References: <20211228092221.21068-1-wangyanan55@huawei.com>
- <20211228092221.21068-3-wangyanan55@huawei.com>
- <fa7f67b2-ca1d-bd95-1a33-534a50b2d4c8@redhat.com>
-Message-ID: <2248a06d-7c3d-2ee3-e683-901d9bcbec02@huawei.com>
-Date: Wed, 29 Dec 2021 11:48:10 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <chenxiang66@hisilicon.com>)
+ id 1n2T9m-0002ci-TR; Wed, 29 Dec 2021 02:13:57 -0500
+Received: from dggeme756-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4JP2c02nPPz1DJb5;
+ Wed, 29 Dec 2021 15:10:24 +0800 (CST)
+Received: from [10.40.193.166] (10.40.193.166) by
+ dggeme756-chm.china.huawei.com (10.3.19.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2308.20; Wed, 29 Dec 2021 15:13:41 +0800
+Subject: Re: [RFC v2 1/2] hw/pci-host/gpex: Allow to generate preserve boot
+ config DSM #5
+To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+ <imammedo@redhat.com>, <philmd@redhat.com>, <peter.maydell@linaro.org>,
+ <shannon.zhaosl@gmail.com>, <shameerali.kolothum.thodi@huawei.com>,
+ <ardb@kernel.org>, <jean-philippe@linaro.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>, <drjones@redhat.com>
+References: <20211005085313.493858-1-eric.auger@redhat.com>
+ <20211005085313.493858-2-eric.auger@redhat.com>
+CC: <gshan@redhat.com>, "linuxarm@huawei.com" <linuxarm@huawei.com>
+Message-ID: <97906621-e6e1-67ec-a3a2-26e5fd07f1a6@hisilicon.com>
+Date: Wed, 29 Dec 2021 15:13:41 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.2.0
 MIME-Version: 1.0
-In-Reply-To: <fa7f67b2-ca1d-bd95-1a33-534a50b2d4c8@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+In-Reply-To: <20211005085313.493858-2-eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme714-chm.china.huawei.com (10.1.199.110) To
- dggpemm500023.china.huawei.com (7.185.36.83)
+X-Originating-IP: [10.40.193.166]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggeme756-chm.china.huawei.com (10.3.19.102)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=wangyanan55@huawei.com; helo=szxga03-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=chenxiang66@hisilicon.com; helo=szxga08-in.huawei.com
 X-Spam_score_int: -71
 X-Spam_score: -7.2
 X-Spam_bar: -------
@@ -105,128 +100,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
-From:  "wangyanan (Y)" via <qemu-arm@nongnu.org>
-X-TUID: rBRITg5saBaY
+Reply-to:  "chenxiang (M)" <chenxiang66@hisilicon.com>
+From:  "chenxiang (M)" via <qemu-arm@nongnu.org>
+X-TUID: YJ/JkkrlptuD
 
-Hi Philippe,
-Thanks for your review.
+Hi Eric,
 
-On 2021/12/29 3:17, Philippe Mathieu-Daudé wrote:
-> Hi,
+
+在 2021/10/5 16:53, Eric Auger 写道:
+> Add a 'preserve_config' field in struct GPEXConfig and
+> if set generate the DSM #5 for preserving PCI boot configurations.
+> The DSM presence is needed to expose RMRs.
 >
-> On 12/28/21 10:22, Yanan Wang wrote:
->> The new Cluster-Aware Scheduling support has landed in Linux 5.16,
->> which has been proved to benefit the scheduling performance (e.g.
->> load balance and wake_affine strategy) on both x86_64 and AArch64.
->>
->> So now in Linux 5.16 we have four-level arch-neutral CPU topology
->> definition like below and a new scheduler level for clusters.
->> struct cpu_topology {
->>      int thread_id;
->>      int core_id;
->>      int cluster_id;
->>      int package_id;
->>      int llc_id;
->>      cpumask_t thread_sibling;
->>      cpumask_t core_sibling;
->>      cpumask_t cluster_sibling;
->>      cpumask_t llc_sibling;
->> }
->>
->> A cluster generally means a group of CPU cores which share L2 cache
->> or other mid-level resources, and it is the shared resources that
->> is used to improve scheduler's behavior. From the point of view of
->> the size range, it's between CPU die and CPU core. For example, on
->> some ARM64 Kunpeng servers, we have 6 clusters in each NUMA node,
->> and 4 CPU cores in each cluster. The 4 CPU cores share a separate
->> L2 cache and a L3 cache tag, which brings cache affinity advantage.
->>
->> In virtualization, on the Hosts which have pClusters, if we can
-> Maybe [*] -> reference to pClusters?
-Hm, I'm not sure what kind of reference is appropriate here.
-The third paragraph in the commit message has explained what
-a cluster generally means. We can also read the description of
-clusters in Linux kernel Kconfig files: [1] and [2].
-
-[1]arm64: https://github.com/torvalds/linux/blob/master/arch/arm64/Kconfig
-
-config SCHED_CLUSTER
-        bool "Cluster scheduler support"
-        help
-          Cluster scheduler support improves the CPU scheduler's decision
-          making when dealing with machines that have clusters of CPUs.
-          Cluster usually means a couple of CPUs which are placed closely
-          by sharing mid-level caches, last-level cache tags or internal
-          busses.
-
-[2]x86: https://github.com/torvalds/linux/blob/master/arch/x86/Kconfig
-
-config SCHED_CLUSTER
-        bool "Cluster scheduler support"
-        depends on SMP
-        default y
-        help
-          Cluster scheduler support improves the CPU scheduler's decision
-          making when dealing with machines that have clusters of CPUs.
-          Cluster usually means a couple of CPUs which are placed closely
-          by sharing mid-level caches, last-level cache tags or internal
-          busses.
->> design a vCPU topology with cluster level for guest kernel and
->> have a dedicated vCPU pinning. A Cluster-Aware Guest kernel can
->> also make use of the cache affinity of CPU clusters to gain
->> similar scheduling performance.
->>
->> This patch adds infrastructure for CPU cluster level topology
->> configuration and parsing, so that the user can specify cluster
->> parameter if their machines support it.
->>
->> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
->> ---
->>   hw/core/machine-smp.c | 26 +++++++++++++++++++-------
->>   hw/core/machine.c     |  3 +++
->>   include/hw/boards.h   |  6 +++++-
->>   qapi/machine.json     |  5 ++++-
->>   qemu-options.hx       |  7 ++++---
->>   softmmu/vl.c          |  3 +++
->>   6 files changed, 38 insertions(+), 12 deletions(-)
->> diff --git a/qapi/machine.json b/qapi/machine.json
->> index edeab6084b..ff0ab4ca20 100644
->> --- a/qapi/machine.json
->> +++ b/qapi/machine.json
->> @@ -1404,7 +1404,9 @@
->>   #
->>   # @dies: number of dies per socket in the CPU topology
->>   #
->> -# @cores: number of cores per die in the CPU topology
->> +# @clusters: number of clusters per die in the CPU topology
-> Missing:
+> At the moment the DSM generation is not yet enabled.
 >
->     #            (since 7.0)
-Ah, yes.
->> +#
->> +# @cores: number of cores per cluster in the CPU topology
->>   #
->>   # @threads: number of threads per core in the CPU topology
->>   #
->> @@ -1416,6 +1418,7 @@
->>        '*cpus': 'int',
->>        '*sockets': 'int',
->>        '*dies': 'int',
->> +     '*clusters': 'int',
->>        '*cores': 'int',
->>        '*threads': 'int',
->>        '*maxcpus': 'int' } }
-> If you want I can update the doc when applying.
-Do you mean the missing "since 7.0"?
-If you have a plan to apply the first 1-7 patches separately and
-I don't need to respin, please help to update it, thank you! :)
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>   include/hw/pci-host/gpex.h |  1 +
+>   hw/pci-host/gpex-acpi.c    | 12 ++++++++++++
+>   2 files changed, 13 insertions(+)
+>
+> diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+> index fcf8b63820..3f8f8ec38d 100644
+> --- a/include/hw/pci-host/gpex.h
+> +++ b/include/hw/pci-host/gpex.h
+> @@ -64,6 +64,7 @@ struct GPEXConfig {
+>       MemMapEntry pio;
+>       int         irq;
+>       PCIBus      *bus;
+> +    bool        preserve_config;
+>   };
+>   
+>   int gpex_set_irq_num(GPEXHost *s, int index, int gsi);
+> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+> index e7e162a00a..7dab259379 100644
+> --- a/hw/pci-host/gpex-acpi.c
+> +++ b/hw/pci-host/gpex-acpi.c
+> @@ -164,6 +164,12 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+>                   aml_append(dev, aml_name_decl("_PXM", aml_int(numa_node)));
+>               }
+>   
+> +            if (cfg->preserve_config) {
+> +                method = aml_method("_DSM", 5, AML_SERIALIZED);
 
-Thanks,
-Yanan
-> Thanks,
->
-> Phil.
->
-> .
+I notice there is a ACPI BIOS Error when booting virtual machine which 
+seems be caused by this patch as I add this patchset in my branch to 
+test the function of vsmmu.
+It seems that it requires only 4 parameter for method _DSM, but use 5 
+parameters here.
+The error log is as following:
+
+[    2.355459] ACPI BIOS Error (bug): Failure creating named object 
+[\_SB.PCI0._DSM], AE_ALREADY_EXISTS (20210930/dswload2-327)
+[    2.355467] ACPI Error: AE_ALREADY_EXISTS, During name lookup/catalog 
+(20210930/psobject-221)
+[    2.355470] ACPI: Skipping parse of AML opcode: OpcodeName 
+unavailable (0x0014)
+[    2.355657] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[    2.356321] ACPI: Interpreter enabled
+[    2.356323] ACPI: Using GIC for interrupt routing
+[    2.356333] ACPI: MCFG table detected, 1 entries
+[    2.361359] ARMH0011:00: ttyAMA0 at MMIO 0x9000000 (irq = 16, 
+base_baud = 0) is a SBSA
+[    2.619805] printk: console [ttyAMA0] enabled
+[    2.622114] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    2.622788] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM 
+ClockPM Segments MSI HPX-Type3]
+[    2.623776] acpi PNP0A08:00: _OSC: platform does not support [LTR]
+[    2.624600] acpi PNP0A08:00: _OSC: OS now controls [PCIeHotplug PME 
+AER PCIeCapability]
+[    2.625721] acpi PNP0A08:00: ECAM area [mem 
+0x4010000000-0x401fffffff] reserved by PNP0C02:00
+[    2.626645] acpi PNP0A08:00: ECAM at [mem 0x4010000000-0x401fffffff] 
+for [bus 00-ff]
+[    2.627450] ACPI: Remapped I/O 0x000000003eff0000 to [io 
+0x0000-0xffff window]
+[    2.628229] ACPI BIOS Error (bug): \_SB.PCI0._DSM: Excess arguments - 
+ASL declared 5, ACPI requires 4 (20210930/nsarguments-166)
+[    2.629576] PCI host bridge to bus 0000:00
+[    2.630008] pci_bus 0000:00: root bus resource [mem 
+0x10000000-0x3efeffff window]
+[    2.630747] pci_bus 0000:00: root bus resource [io  0x0000-0xffff window]
+[    2.631405] pci_bus 0000:00: root bus resource [mem 
+0x8000000000-0xffffffffff window]
+[    2.632177] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    2.632731] ACPI BIOS Error (bug): \_SB.PCI0._DSM: Excess arguments - 
+ASL declared 5, ACPI requires 4 (20210930/nsarguments-166)
+
+
+> +                aml_append(method, aml_return(aml_int(0)));
+> +                aml_append(dev, method);
+> +            }
+> +
+>               acpi_dsdt_add_pci_route_table(dev, cfg->irq);
+>   
+>               /*
+> @@ -191,6 +197,12 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+>       aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Device")));
+>       aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+>   
+> +    if (cfg->preserve_config) {
+> +        method = aml_method("_DSM", 5, AML_SERIALIZED);
+> +        aml_append(method, aml_return(aml_int(0)));
+> +        aml_append(dev, method);
+> +    }
+> +
+>       acpi_dsdt_add_pci_route_table(dev, cfg->irq);
+>   
+>       method = aml_method("_CBA", 0, AML_NOTSERIALIZED);
 

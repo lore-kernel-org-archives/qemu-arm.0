@@ -1,103 +1,197 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp7204007lfb;
-        Wed, 29 Dec 2021 05:23:58 -0800 (PST)
-X-Received: by 2002:a05:6808:1a89:: with SMTP id bm9mr11593838oib.86.1640784238437;
-        Wed, 29 Dec 2021 05:23:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1640784238; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp8555861lfb;
+        Fri, 31 Dec 2021 02:42:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx1uSHyHIhFYsh1TxCwDnxFpQMZj3Vb2bxmv2RrwU/I6WfgdcQ7O/ybqUuKJBbEJ4ZWOE3q
+X-Received: by 2002:a25:e787:: with SMTP id e129mr18914426ybh.492.1640947368994;
+        Fri, 31 Dec 2021 02:42:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640947368; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z1FyC5rAflTSC5P7YKI6kfyZ7Juf/9ssgjJpYCY6ZJ6Ja2VpCvPHp818Qo/1lntEKl
-         YNGgcVVEcOtniDeEmNxRHiWwRUODNjSPoUcWBgKlGq8waPLC299+nzuX28PNHX9nXJRa
-         KvGJsV0Keb+ge1XvZG7QxxopbK9C7Y8xkemU9dwwA20pi2zy8y7QGfG0hVbnxKIK/hmM
-         x/XOX69V+otnndunew3Z008UoYkwv/BWamCdtEJuNzb4chxE3hVDblzTnejgjsi6mRJU
-         +MNnONeK+asq4lEKpy2dLCopqqaEvYRCeGvvumn2zF1CVysUJ60v4T+Eapsadg7v3/cG
-         VMGA==
+        b=Df3jjQoBKNaup2XW7416Lf+F/dsW12julCpAeXlbUdZKbdwAcoTyILmw1g6OsEl7q9
+         TawWrV3a9Qhh/4w4t0gboCpKmMWa6emSyW0iDIsQzgRbJvTmKm0i5/ntw6OZo6swFvUK
+         vkr68MwhqwW9pqotcjEPDyTWuqt0PIhqTNggKGyuClQ/AprwmG45b9nBL8rzH6wC3Q0J
+         Bxgp2yWGsdRG+8CboIBgfTm6JTGLIghG7hn42xZgrC0fSYMSdn0nUz7QpZdVQr0iziMs
+         YFNT0Y7tCvAbdtoD0qqd/+oKyrzCVw8/F3GhLnzSD9nmKihANe+ikt+V1qO1qQ8oQcmC
+         JCKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=uPjxk7SKPSg1V/oZ+tI7n5Xlmpzy7Xh4ki+Upzci5E0=;
-        b=eRkE2q8Vxy9eYNUk/0FJP+Ij/DUB7XX9OF7E4X2FSB9u/V8RTDnY4Rw3m9F85Nw8OT
-         DF0xEMKhH+dgIZrrvf54BWuYe9O3GmRp8zU1HnJqY6GTQ3/IdtW8PxC/ckOxbny5FdOO
-         Wa7EKfespJ6g2IxWGIyQvYz9TBWoFUFSkFxQf+mYhCqdLAMzODVmwQ9ikZwVzxTmheLW
-         NHjcFbv9KQqcEZ36yQPdmSXK5YPPUdDbQIyUcrl63in1ikJDf24/+vK9cHLiNnlcuvkF
-         XQa5q0zJW73CzuUWK0iUXrhlVLVMBe3+W8Ecfn6FVydyZ0zCctGKuQKX8QufnbjvaF8D
-         uPsw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=dwT+KxF1l2PXNM9K+C2Ww/XGlENMNooPCezsI9lH59k=;
+        b=qn3cmOI+D6ojkVpznco6OT2UnenPKo9ImsAyl5wEQKUWZYi8YrDOy3xV5Nl5ZxEfO2
+         y3hzN1dmn4FbAb6kALVn0eCbybRm1Ir3eflvHC6vTb/TBqakK76bpDQChI4S6iNY5bTE
+         IsC8ihrB0Q5jX6B9Ui8rywVNP/UDsp7NHTV8GxNdHJNxYSHRRC8iYz0jLYnu8+H6Y9Bt
+         FrekUWxHtS05FYOUx5cosEjaCZqAAOhHGdShCXI2CeoBqOczMnXRThn+yFx33EBYCiUC
+         gMCeAhXRvuOVkFn6ZWpbDFw5A/sVSDRDdQRG1sYTJrHyebFYuyjjfMKy+YhhqC9ACb2l
+         TVWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dtSTFmOS;
-       spf=pass (google.com: domain of idan.horowitz@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=idan.horowitz@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <idan.horowitz@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f8sor3454238otu.178.2021.12.29.05.23.58
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qTZ4HdWO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h37si10803090ybi.473.2021.12.31.02.42.48
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 29 Dec 2021 05:23:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of idan.horowitz@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 31 Dec 2021 02:42:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dtSTFmOS;
-       spf=pass (google.com: domain of idan.horowitz@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=idan.horowitz@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=uPjxk7SKPSg1V/oZ+tI7n5Xlmpzy7Xh4ki+Upzci5E0=;
-        b=dtSTFmOSN8jerqd2rQLDu87ofCF0/VgN+JU3TyqUe/9UMRLS9/WgCeNI0P2OaiKs6Q
-         aAAd+GjwfQ1zELnjojJ3iUX3vteEJ4Eo57v/Zp5fetRTE/0Uwy3ERQY/FenLNnWFDnMA
-         +YitFgdNvhet9W+DNGSg++wCNoYxbxF1CQbzXSF6CYEImxg4YNMiDMVQKGs6n98MJwLo
-         DVLogLRWbjX2/lCYWPRyAWjOUTGLKTPfThnbM86qScWPzeyyTT4siAe6kLT6Q5aj3LeR
-         Ws1R/v6hSMsI5ia5YmAXRsec9PqdtitmW2PbHrPvTcPcBMDDiOQ8R1d0jV0CKPXLqzbv
-         FEYg==
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qTZ4HdWO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:58286 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n3FN2-0006yQ-C2
+	for alex.bennee@linaro.org; Fri, 31 Dec 2021 05:42:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50358)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <idan.horowitz@gmail.com>)
+ id 1n3FKX-00057R-6S; Fri, 31 Dec 2021 05:40:16 -0500
+Received: from [2a00:1450:4864:20::334] (port=44628
+ helo=mail-wm1-x334.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <idan.horowitz@gmail.com>)
+ id 1n3FKV-0000xv-8K; Fri, 31 Dec 2021 05:40:12 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ f134-20020a1c1f8c000000b00345c05bc12dso14568490wmf.3; 
+ Fri, 31 Dec 2021 02:40:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dwT+KxF1l2PXNM9K+C2Ww/XGlENMNooPCezsI9lH59k=;
+ b=qTZ4HdWOslh1XguNoPm3rPRDXB9i1zKWLAYzDAFbT/hnT3tSzFH5/Po3QWLqQoQZfE
+ Tb3Hc8TsiWjujqbEDaSR0PnqLh7KYGqWJAv6S5d86bcHTrcb+2waVWBpUFavZmgtvt4o
+ KqQB6+OqX9ypiDhw4rCpBcUtgTbHDqccjAJWxm0paJ3rYKCbjgLIyjaOVQkbdxiXcjtO
+ T0ylqlh9XPMic3BvxrN80bYjiKfaBkXPkbeoLodvB5298qCUlOk7gt5noWW7Yzu+zHGx
+ jcKsw/EE2iuKViN+ejImoD8gIrP8ciSkMGDFIUfD1oj+4fYQIah+9awBNQof7OvbOCk1
+ EuAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=uPjxk7SKPSg1V/oZ+tI7n5Xlmpzy7Xh4ki+Upzci5E0=;
-        b=jkZSmtCWMl4rfoYosN3OmqxjtIBzEPXMg2n/WWCve5F5JB/NJyF/k/qoXrTeFOhuaY
-         hWk67aAEURNPACIuPrqEzhVynsFqB5xkpMcdnLvAMLMieVmuR0u8YV3/i4jD4XS5VRh8
-         LyCeN9gbygAncoWUDaZBrZJk/GachppueDsJophBGhcUacrhUQpO18/CZMCrXkCsv8J3
-         z2bfXQbVoxq2B/VIv1Z2eRqW/3jtu8aXeYK6DpT/pZrtP2rxVZNyHo2GmqgPAgFU8znt
-         TnZqolQDupK2ojDigxuxk6Xn/AAwAqOOP9ltwpgF2eZzM9stTwjzOA3TbXPHLsbRRIOR
-         1AoA==
-X-Gm-Message-State: AOAM533EY8zypue1zxGgKniZFixhOO0rh7sfURscwePo0/R2dx4ZulV2
-	OY2qdMdNh1zSkR/ffvJ7zGFe19fCaka0GVRMSF40u4vxdg0nbw==
-X-Google-Smtp-Source: ABdhPJwMBtVO5Q9QbuLaC5onQabF5pBwYKvpoYLS0kAMT3avJtGchzAA8TMVugBhxUMWxL3oVnJ97CbpoyclNauxYec=
-X-Received: by 2002:a9d:5c81:: with SMTP id a1mr17760593oti.277.1640784237816;
- Wed, 29 Dec 2021 05:23:57 -0800 (PST)
-MIME-Version: 1.0
-References: <CA+4MfEJhOsmUWmifkzJ7jSw8B0q7X2mJe=jist4AiTwhYd8Wug@mail.gmail.com>
- <87fsrtv13t.fsf@linaro.org> <CA+4MfE+gT-CGEVZot=26DqwCRY+F-xZhTRSOsKKBVb29Un46Dw@mail.gmail.com>
- <CA+4MfEKrrsACvQKBimpkQt6r0H2cbJ9EaYCSFgZcx1Bqr20=Sg@mail.gmail.com> <87sfvcxpvb.fsf@linaro.org>
-In-Reply-To: <87sfvcxpvb.fsf@linaro.org>
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dwT+KxF1l2PXNM9K+C2Ww/XGlENMNooPCezsI9lH59k=;
+ b=VmCtIg1o3eJmELko81lVI55QOrs0T7vtS9gIpUEfY2Wyx5JxgFhPs6a6NNHukWPsID
+ 13t3i1GQWCSbUV7JRpBMh+TaAhRtmmvIiLpiJD2C4/LQmu33G7UhI7f/8XQaSCPYZNbD
+ YGnjGGntqMrLsdi67Ic0wV1g8/SHonM03gprNsDmT8imDE3YvsWrt4idCiO+Ur2Nai2c
+ p1K6vxSQz4jcflXuaRpa/ykdt/fOJBbkH3H6oVLR2nqfjWLpcU23vzggZByoNxg2o6p0
+ dbVBvw16LYSXKNJ918uEv+erp5eP/5o8uCgTC1RHqbn5w/jhvnvbyPALbrU7jxza2xK+
+ w7iQ==
+X-Gm-Message-State: AOAM533dr0iIkzWMFkOSehOvdtrn3OOVO9xa1vpj18itkZg1ZG5w2QFP
+ Ycl+zIfuboxe3IrFgs2r1sEZgnEDSAs=
+X-Received: by 2002:a7b:c1d5:: with SMTP id a21mr29277907wmj.97.1640947206700; 
+ Fri, 31 Dec 2021 02:40:06 -0800 (PST)
+Received: from li-142ea8cc-3370-11b2-a85c-c55585c2aa0e.ibm.com.com
+ (bzq-109-67-1-187.red.bezeqint.net. [109.67.1.187])
+ by smtp.gmail.com with ESMTPSA id e12sm28521323wrg.110.2021.12.31.02.40.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 31 Dec 2021 02:40:06 -0800 (PST)
 From: Idan Horowitz <idan.horowitz@gmail.com>
-Date: Wed, 29 Dec 2021 15:23:46 +0200
-Message-ID: <CA+4MfE+XTqhXiMLc-ScHqDCwvfKmX2CT8UikPfc5S79De8ewXw@mail.gmail.com>
-Subject: Re: DSB does not seem to wait for TLBI completion
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: J9wVY+t2I+7v
+To: qemu-arm@nongnu.org
+Subject: [PATCH] target/arm: Add missing FEAT_TLBIOS instructions
+Date: Fri, 31 Dec 2021 12:39:28 +0200
+Message-Id: <20211231103928.1455657-1-idan.horowitz@gmail.com>
+X-Mailer: git-send-email 2.33.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::334
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=idan.horowitz@gmail.com; helo=mail-wm1-x334.google.com
+X-Spam_score_int: 6
+X-Spam_score: 0.6
+X-Spam_bar: /
+X-Spam_report: (0.6 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Idan Horowitz <idan.horowitz@gmail.com>,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yRZeXhwmA525
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
->
->
-> That's is weird because icount basically ensures round robin scheduling
-> of each vCPU in turn. I wonder if there is a pending flush when the vCPU
-> switches?
->
-> We really need a reliable reproducer for this to investigate further.
->
+Some of the instructions added by the FEAT_TLBIOS extension were forgotten
+when the extension was originally added to QEMU.
 
-I have finally been able to find the source of the issue, it was an
-extremely subtle race condition in my code, so not an issue in QEMU
-(although I did find a translation-related issue in QEMU during the
-investigation: https://gitlab.com/qemu-project/qemu/-/issues/790), the
-issue was so subtle in fact, that not even hardware was able to
-reproduce it, only QEMU's highly deterministic icount mode was able to
-reliably reproduce it. So thanks for your help, and sorry for wasting
-your time.
+Fixes: 7113d618505b ("target/arm: Add support for FEAT_TLBIOS")
+Signed-off-by: Idan Horowitz <idan.horowitz@gmail.com>
+---
+ target/arm/helper.c | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
->
-> --
-> Alex Benn=C3=A9e
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index db837d53bd..cfca0f5ba6 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6964,18 +6964,42 @@ static const ARMCPRegInfo tlbios_reginfo[] = {
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 0,
+       .access = PL1_W, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_vmalle1is_write },
++    { .name = "TLBI_VAE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 1,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vae1is_write },
+     { .name = "TLBI_ASIDE1OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 2,
+       .access = PL1_W, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_vmalle1is_write },
++    { .name = "TLBI_VAAE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 3,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vae1is_write },
++    { .name = "TLBI_VALE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 5,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vae1is_write },
++    { .name = "TLBI_VAALE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 7,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vae1is_write },
+     { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
+       .access = PL2_W, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_alle2is_write },
++    { .name = "TLBI_VAE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 1,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vae2is_write },
+    { .name = "TLBI_ALLE1OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 4,
+       .access = PL2_W, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_alle1is_write },
++    { .name = "TLBI_VALE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 5,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vae2is_write },
+     { .name = "TLBI_VMALLS12E1OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 6,
+       .access = PL2_W, .type = ARM_CP_NO_RAW,
+@@ -6996,6 +7020,14 @@ static const ARMCPRegInfo tlbios_reginfo[] = {
+       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 0,
+       .access = PL3_W, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_alle3is_write },
++    { .name = "TLBI_VAE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 1,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vae3is_write },
++    { .name = "TLBI_VALE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 5,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vae3is_write },
+     REGINFO_SENTINEL
+ };
+ 
+-- 
+2.33.1
 
-Idan Horowitz

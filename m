@@ -1,103 +1,106 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp9951378lfb;
-        Sun, 2 Jan 2022 14:04:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzgqaX9cpECP5R49lO2zxr4FiIUd1yXciKzafD45996IUlD1dUUx8zSBqtMTG2ZlaU7FfBT
-X-Received: by 2002:a25:4dd4:: with SMTP id a203mr16376992ybb.580.1641161078156;
-        Sun, 02 Jan 2022 14:04:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641161078; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp9954319lfb;
+        Sun, 2 Jan 2022 14:12:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxh9ldeXPmWiSXloocSpGXbgsvYwKo+bFh5xZ7+YrfZ7tvQKWB4CuV+TUTQWYDfvFAYRihi
+X-Received: by 2002:a05:6902:102e:: with SMTP id x14mr22088191ybt.265.1641161560421;
+        Sun, 02 Jan 2022 14:12:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641161560; cv=none;
         d=google.com; s=arc-20160816;
-        b=h7R0w4f4Wqjv4DaiWk1VhwvQ32wrEHpHtlmO5Lm6Xrv6UjPqjXPgI2YA3ZI5w+ruoT
-         Oh6y1miRw5pE6TeeT4MNZtylOBe5zKAtpJCv6675PWGBpesVl73RRiwdT4/IRAwldMBO
-         Ze4VSZ0n/rKW/sNVeofRK+kIn4mUXOZYSHMFuvS8rFHLlxwbJvO++Zos6lYwBVp10nWR
-         TVRr9cT9hJMJuZIB6jX1WdhgFq16+C+4l7ltgQNQYO2629rho7/Wgs17VFoaYsY6JK2N
-         FT/plX3F2q/wQGkTllSg0d2/aoSsygPWPwotaF8wJG2S7g/IA+BexHnQnkfZerJi8MOE
-         UbsA==
+        b=uAxTkMw/hK5IpSFZTw31BN8C48VgRbxvZsrlsv5K5C/zaltNtNoUFxHDOYAvTcwq8r
+         3mXDLOqrxg+JQcswwWUyYtQVIhl5glcAFYOionPjp6zJNyUnnRHU8QfeI11Zo0NH58l9
+         iQNV+aUNkN2VFpjGxJQHnJWW5ndij2CfN6weFhD8Y/21vPd2ktochpEh04jt3coZhXtP
+         b0yjeyJNfluAnVFXSop5XscMdhblYr2NAIsHe6tZrTVhLDGa7xeauMGu1ihxVcjYC/zd
+         Yow/VJKj6PJ/KuQ2OcmUoVVE8OTT22rv7MNu7d+/SpSTsgrJJWVVPgCm56H6Ep4LQrmZ
+         bCKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=dqiWh61Ltx0KweLLwdv+Yg6cUqnUGT6QGn0gQRY0MJU=;
-        b=NNX2b/VvQHy+bWjk6RTuv/p5ViGEQYIig2Y26nXAYVOrexD1lJfoCBCG/AobcjlUju
-         VhEgr64PlDun3Ffw2HBehV1F7ARggIm6hBF9zuGtrpQFKV3z1GGBUTncn5m9SiAzvkXE
-         7E8UqP7FDvdGEHDV1TylrZN+leVF2jhVgdmFt1algZrqd98MDbhbWXGkpwXIpoeTAsI4
-         D9JOcihYKoC93TLQMQoOXUi2I27/qLgY5uzwP/li2gAa6+z1sV4bo11DP+l8345z8/mE
-         DypgfUMXL9wt8ltt62bho53/7RZD0lR5a5Yh+57x5kCwE4VfhTXJV+iDpqUvhvKEVCGW
-         zsnQ==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
+         :mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=9lgdCE3tpUQtlY2ZV5qpqcuD6bnWF6/JTyvPjSFhlg8=;
+        b=ZRlj/tgBem39mQWkzoYaSuTaOLkVnm74QxcA2Vqx9JfTOScS7D7tBbyQnmi/PWvR5L
+         FvcMHEhyWuEfUYny3Z4zVxLaETfJMrwiV16QTlP643o6EkCafsHqJnXpiiBlxmeliNOn
+         KlSGIhtdHx8YvqLSGtKC5CA+Bga5H3N8eAHHZkjWQoEJjuOYXAdFr2jranipF8P23phF
+         AypiECp6IFdPBETVSZOdO55qYe0MSHWG2t2sI8DCfJYx+6d7YoKb15bXbHdiBLnrYXd0
+         byPcfmgR6MfqPFN5/GocgDi3KWtDeM59EsQ8RKF2Vxcl/sIafsskWaAFMKzT6AEV4i1q
+         cMiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=EY7SMYbm;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=kawGX3uR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o3si6071506ybu.158.2022.01.02.14.04.38
+        by mx.google.com with ESMTPS id p5si18054835ybl.494.2022.01.02.14.12.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Jan 2022 14:04:38 -0800 (PST)
+        Sun, 02 Jan 2022 14:12:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=EY7SMYbm;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=kawGX3uR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:45996 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54706 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n48xx-0000Ol-KP
-	for alex.bennee@linaro.org; Sun, 02 Jan 2022 17:04:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37520)
+	id 1n495j-0006lT-SA
+	for alex.bennee@linaro.org; Sun, 02 Jan 2022 17:12:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3HCDSYQcKCLkudmstqdfnnfkd.bnlpdlt-Zqlmnmfmt.nqf@flex--venture.bounces.google.com>)
- id 1n48xg-0000OX-SI
- for qemu-arm@nongnu.org; Sun, 02 Jan 2022 17:04:20 -0500
-Received: from [2607:f8b0:4864:20::94a] (port=42736
- helo=mail-ua1-x94a.google.com)
+ <3RSDSYQcKCOIZIRXYVIKSSKPI.GSQUIQY-EVQRSRKRY.SVK@flex--venture.bounces.google.com>)
+ id 1n490u-0002HW-Ox
+ for qemu-arm@nongnu.org; Sun, 02 Jan 2022 17:07:40 -0500
+Received: from [2607:f8b0:4864:20::b4a] (port=50710
+ helo=mail-yb1-xb4a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3HCDSYQcKCLkudmstqdfnnfkd.bnlpdlt-Zqlmnmfmt.nqf@flex--venture.bounces.google.com>)
- id 1n48xf-00059V-7l
- for qemu-arm@nongnu.org; Sun, 02 Jan 2022 17:04:20 -0500
-Received: by mail-ua1-x94a.google.com with SMTP id
- x4-20020ab05ac4000000b002f713d873c4so17030948uae.9
- for <qemu-arm@nongnu.org>; Sun, 02 Jan 2022 14:04:18 -0800 (PST)
+ <3RSDSYQcKCOIZIRXYVIKSSKPI.GSQUIQY-EVQRSRKRY.SVK@flex--venture.bounces.google.com>)
+ id 1n490t-0006FR-73
+ for qemu-arm@nongnu.org; Sun, 02 Jan 2022 17:07:40 -0500
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ q81-20020a252a54000000b0060af1d7e063so44429627ybq.17
+ for <qemu-arm@nongnu.org>; Sun, 02 Jan 2022 14:07:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=dqiWh61Ltx0KweLLwdv+Yg6cUqnUGT6QGn0gQRY0MJU=;
- b=EY7SMYbmHdqMCbk6sL8wzaeuNZuuyHnPL5twbplZeQ95nMe02ab0qyTydcOj4grlyJ
- +48P3IjIX+iyNhCPQBoUsYkaJh4E5r7KC+rDikafoiBeQ/0h+CUFO7SuxPR7vyz7DjPz
- i8XeZeqlOM3AL+2S4EYY3lTqZlp4qRSRDN370s9ZRZ5RIQOw1T6+e/FRraJZrkp6FtAX
- 5FXyyeX9oDuYbG4sfNsjgdzdO8wGR1DtQ6qt+bY4QobyZXCrs7JgVoFSBws6wqBEuIwn
- jTi975yGOuprUCPLckXl/sG9XCkqkjXyF8Fm/VLvzqoUemlKCUDvV9fBb0r3quQlC8Z4
- pq7g==
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=9lgdCE3tpUQtlY2ZV5qpqcuD6bnWF6/JTyvPjSFhlg8=;
+ b=kawGX3uRa+Vkk7RKjbuZ7EisI6TqDrjlgq89wwY3UZiyi5U1Pdn3YYNYmwbZW12U2S
+ KCtzCgk3fQktlckMzLMRswVUYzEnKPTMa6bcCTyuzTF6MjXVwvXYz8HHJJCVnW604psM
+ kF3CYNSqbLXQmIm/k9ERfAq85SwUH2O/WsY1x0BUCV2cAEHLg8xbj7SXJct8+0WKzuYn
+ uiUoyPibBCCfzNl0hisMsXvgT/NXxxwMQ/nVn1W2xb3+SUT6ovuIQZyyG6PHGK8q3v2F
+ SXV7chkgPZ0KdgZDHnJVFz49zjsFfLNQEOXuIZ0aZHfaP+5rjIa2vZUvva50n17lVV5M
+ Lu6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=dqiWh61Ltx0KweLLwdv+Yg6cUqnUGT6QGn0gQRY0MJU=;
- b=in0XlYnFLQnzd+rWJ9xxI1IE4scYmFgXrO3nJHZpYXbJnI6MTyiw0jCwwabJuQgOKo
- e9Y24lQBmgeZWxKGnZlfueBsG+NG8cRX8BVzUktlpLURwOuDGHxV4lOUKsBXYStSwXXG
- gJlIILCOLYal166I7QTT+LjZSTPTT3wa9ITcfwjiPjnJ4f+2CujTBcS+dyhgpJ28ihNM
- JsqAFcXgKTZjUo7Zu0wj77rR4esYI8XIvkCgbwq/F4XSVsmU7e4TgV1yekMqC6NNeumf
- goFksgiorjnbqDwHblNobnHG+DQuNp3LHBD/QE5dvGlhBLMBpatzhggPk4EEFY7lPHvH
- afSg==
-X-Gm-Message-State: AOAM5323GD+x/RgC5PoNYYQlrYEZbS0h+0FjKPsfuAuKVC4p5bc31y/E
- DDs+1e7u/n9GT16thHw11dOxhmF0uFX4
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=9lgdCE3tpUQtlY2ZV5qpqcuD6bnWF6/JTyvPjSFhlg8=;
+ b=Ub/aJYv3kEi+XY2Jxn7jQZfIH+ZCBz2PC0DzuSHFeFBAg1Mo5WldWLswssa04LGWAf
+ 4LYg5nDsEHKfByClmB46rdtE5I5XCWeh4ojyq/S+ZJQtDlqZfx95ShmfVYr7dIXRG2Kh
+ jRMEJcsnwXKznVidaVrhU8HE4PmOk7bUIycL7DQRseST3kgfDTxCH0iNfavrcOdUZw4q
+ tNKg7TsSIXU2oVfRd8/G0OXaDdLps9tfP8K5WR1untlsesSBKG4gb/PTryDk8IXtEGyk
+ 3bCBsq1YqIj8mRrXJFku9TmAhOI3iyvOItIOUbV5rbtC0swezl+6XL9/xOvs+vt+fk35
+ 22qQ==
+X-Gm-Message-State: AOAM533+Od+pzjW+gGQq3L5yTCRLLCAwAVuh6J5pTvdKnaV6kLH19Twy
+ PJ2/sdeBlk76+gIDU9RX9RuftFZgQ17r
 X-Received: from venture.svl.corp.google.com
  ([2620:15c:2a3:200:9adc:6d14:2e33:8585])
- (user=venture job=sendgmr) by 2002:a25:b081:: with SMTP id
- f1mr42622516ybj.409.1641160732500; Sun, 02 Jan 2022 13:58:52 -0800 (PST)
-Date: Sun,  2 Jan 2022 13:58:40 -0800
-Message-Id: <20220102215844.2888833-1-venture@google.com>
+ (user=venture job=sendgmr) by 2002:a05:6902:1546:: with SMTP id
+ r6mr26126026ybu.88.1641160773845; Sun, 02 Jan 2022 13:59:33 -0800 (PST)
+Date: Sun,  2 Jan 2022 13:58:44 -0800
+In-Reply-To: <20220102215844.2888833-1-venture@google.com>
+Message-Id: <20220102215844.2888833-4-venture@google.com>
 Mime-Version: 1.0
+References: <20220102215844.2888833-1-venture@google.com>
 X-Mailer: git-send-email 2.34.1.448.ga2b2bfdf31-goog
-Subject: [PATCH 0/4] hw/arm: Add more devices to kudo-bmc
+Subject: [PATCH 3/4] hw/arm: add i2c muxes to kudo-bmc
 From: Patrick Venture <venture@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, crauer@google.com, 
  wuhaotsh@google.com, titusr@google.com, Patrick Venture <venture@google.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::94a
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b4a
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::94a;
- envelope-from=3HCDSYQcKCLkudmstqdfnnfkd.bnlpdlt-Zqlmnmfmt.nqf@flex--venture.bounces.google.com;
- helo=mail-ua1-x94a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3RSDSYQcKCOIZIRXYVIKSSKPI.GSQUIQY-EVQRSRKRY.SVK@flex--venture.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
 X-Spam_score_int: -68
 X-Spam_score: -6.9
 X-Spam_bar: ------
@@ -119,23 +122,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I0umiXsOP3IE
+X-TUID: kwvRGr/S6cN/
 
-This series of patches adds various devices that are defined in the device-tree for this board.
+Signed-off-by: Patrick Venture <venture@google.com>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+---
+ hw/arm/npcm7xx_boards.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-Chris Rauer (1):
-  hw/arm: Add kudo i2c eeproms.
-
-Patrick Venture (2):
-  hw/arm: add i2c muxes to kudo-bmc
-  hw/arm: kudo add lm75s on bus 13
-
-Shengtan Mao (1):
-  hw/arm: attach MMC to kudo-bmc
-
- hw/arm/npcm7xx_boards.c | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
-
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index 257bf638fd..4cd58972c5 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -330,8 +330,17 @@ static void quanta_gbs_i2c_init(NPCM7xxState *soc)
+ 
+ static void kudo_bmc_i2c_init(NPCM7xxState *soc)
+ {
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1), TYPE_PCA9548, 0x75);
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1), TYPE_PCA9548, 0x77);
++
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), TYPE_PCA9548, 0x77);
++
+     at24c_eeprom_init(soc, 4, 0x50, 8192); /* mbfru */
++
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 13), TYPE_PCA9548, 0x77);
++
+     at24c_eeprom_init(soc, 14, 0x55, 8192); /* bmcfru */
++
+     /* TODO: Add remaining i2c devices. */
+ }
+ 
 -- 
 2.34.1.448.ga2b2bfdf31-goog
 

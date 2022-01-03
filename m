@@ -1,114 +1,115 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10233831lfb;
-        Mon, 3 Jan 2022 03:27:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzqNHfMFIv4PF+3TtMTHnkWkNCHK68DSdwHKr2E3EOEqZ63Qul6dKAm5RcIz7MtR2SVVZwj
-X-Received: by 2002:a25:e601:: with SMTP id d1mr42534478ybh.645.1641209224457;
-        Mon, 03 Jan 2022 03:27:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641209224; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10234936lfb;
+        Mon, 3 Jan 2022 03:29:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxsyWM8dBffzD9fbKgGcF91Q9m7ohC8p4+tNwOUrhXc4jms46n+AWRd56m3UL/cYwP+LOd9
+X-Received: by 2002:ac8:5c08:: with SMTP id i8mr39933623qti.457.1641209364545;
+        Mon, 03 Jan 2022 03:29:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641209364; cv=none;
         d=google.com; s=arc-20160816;
-        b=KJxVZP+XGk9mpYshMlAS14nGMCYsYUNMeq4kZlF/ghnY3Cp/VLTsyS8PtZ9X3Cr4VT
-         THpu+4cSyFMFcYyQcXw+AlEW1ycawb47vcul9VB1UVe5j/EA2kMB0XRnYrcJoWrO1r49
-         UXMx6jGoJhW+sG72uzFyBsRZk6xACHsSEfKrKagf809kyguGJKXbTYKkueRuLU6xFTwl
-         Eq2i1/ERkGOMkNBAgx3YeN2C7+cVToVpkFhmGeeO0wFNizI7/gaPKsWzbYO0q+xNFhQT
-         n00jOuO9hwEs8KjNKRjq+9yN69sTYstoePxTTK+2nOLgFaDaHskXmrTMKlfMuupOcBiR
-         slxw==
+        b=Fy7LHW2aFyzKFmQy8jrGtg6hdCo8qh+UMWkj3kx5ICZsh0IuaeApmP7WF4pWcIVQj+
+         JEttI+h7gx4qZy46jthVLOZL3NxDg48LqN8a185JLRnc+sKB7DkfIaBfmy+sFbRgUuj7
+         oaLxiMW6YQhVbc6+9yV4Ayhzpl/uiDji1c0thLGc3Rai06XjbD+TMw69/e30FhAVTrEQ
+         7uLdU1y2CiKyNL0gZSAXB7Qa8a5K3I31h6S4c5UNe/6cMacG1LRWO43p0aJSUAZ6CpIy
+         2RYsKqixF5BvNQtUok99xe47AYTjnK2G8U1GDjLUXd4vqH85FQKPr0H90lzAa3AUrX2W
+         CKsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=rhbKdI2L+n64FvniTwVs30EHeKvUt3sJZ/iH19/8KUs=;
-        b=XdWNmssOgAUgarmEt3d0TmYM4oBXpQmbagTLGi2aF+NnHyNKpaHrWNz+1++k4TcZnT
-         +iNXOCb+Itm5tsqwEtGD+esxwPM5tEqKgaeW6IosZ1LZggk/Uh4OL98oAM6qtzO9dgM6
-         c74QkAckaJzjFH8DsP4pdFUL6wCnLidBRk2/KGvvQP19480uj2ckz1OmKjdtJqf0IQqT
-         2xDF5yOsRxkXJtedSfPo9dgbf9IQ8Mue08nXtEQPJ17cRmc8AJFucplNYkHbfK+6YGt7
-         CjnMzT6kBdpdnAQIXNKuSJn9y1JICKYXQ4IxkOhKnz7I9gOWHMo+/v+wTpl2h0R0XzOa
-         A3Tg==
+        bh=pC9O6tJM+BPo6eDubYV03H6gARf8SbN10d8Rk6tr5ig=;
+        b=ENctnwiiu+gYplBMmmz4w32K3XsnU31Ql8w5oYxgHQCEowAaAiko7jfflcsKzhBOIr
+         +izwSOzPdHF+R/pAywNr5sZutTZuBovMIPGsPI+aDu/wQO/tmaeOyJrEXgrg4ySA+Y7m
+         50se2qmsHQ/zGZntJaqHWWRoNlxbc1fpWj8w8mFpkCHGVRRkKT4/CUS5ZuooM4whB4lC
+         L/6lcrj3yK1Xo8Pa2sFCQrdtbep6/joWcclniAprAPZz4dkYwEjVri5YJ4gFOM9hYbuh
+         e5NYYk+8n9RU5QQ0Sx1M6o4jwLWtVqKdw+sDe2wAktWHy6saVYoM5c+g3R2uuwC8fXwV
+         X1nQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PVq9ibc+;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ea+e5fi+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s20si1001624ybi.695.2022.01.03.03.27.04
+        by mx.google.com with ESMTPS id dv8si15916019qvb.239.2022.01.03.03.29.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jan 2022 03:27:04 -0800 (PST)
+        Mon, 03 Jan 2022 03:29:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PVq9ibc+;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ea+e5fi+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47112 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53902 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n4LUV-0005sk-Rq
-	for alex.bennee@linaro.org; Mon, 03 Jan 2022 06:27:03 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51596)
+	id 1n4LWk-0002DP-Ot
+	for alex.bennee@linaro.org; Mon, 03 Jan 2022 06:29:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51790)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1n4LSu-0005Jz-Ef
- for qemu-arm@nongnu.org; Mon, 03 Jan 2022 06:25:24 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:40273)
+ id 1n4LT2-0005R3-QR
+ for qemu-arm@nongnu.org; Mon, 03 Jan 2022 06:25:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:34603)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1n4LSi-0001nL-Px
- for qemu-arm@nongnu.org; Mon, 03 Jan 2022 06:25:23 -0500
+ id 1n4LSu-0002F0-60
+ for qemu-arm@nongnu.org; Mon, 03 Jan 2022 06:25:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641209101;
+ s=mimecast20190719; t=1641209123;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=rhbKdI2L+n64FvniTwVs30EHeKvUt3sJZ/iH19/8KUs=;
- b=PVq9ibc+5qAyf/khDPgG7pDTBA1RIwp1nr1EGcdnOoklBicoM5HQiWewmAyf35f68BZeMV
- xZHBSqGeowA/mA6Ur0Jk1dVerziXf5FR7Uz5tNZ97rsW4N7t0JKO3Jm2lTae5WsQNyBUZJ
- LWFb9qhwK08RG85H4+zQctcUpCQKjqA=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=pC9O6tJM+BPo6eDubYV03H6gARf8SbN10d8Rk6tr5ig=;
+ b=Ea+e5fi++EBCfxUaxmGiJ539YvJbFipmm0cz48dvNBu3n8L1J2iMqv7SZKyu3J24ue5B4M
+ Wq5tnqK8igGF1FkFRrI6xz8lBvrnuco2tT0+CIyZCP9TxX3Y4GmBHEagFfFHQ0JljUKlCP
+ gPRyJ2cVwFK4DctAvBNAiBoXMwQ5XLw=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-536-Pl0pMrr5NtuRmoL_d0DbVQ-1; Mon, 03 Jan 2022 06:25:00 -0500
-X-MC-Unique: Pl0pMrr5NtuRmoL_d0DbVQ-1
-Received: by mail-ed1-f71.google.com with SMTP id
- ch27-20020a0564021bdb00b003f8389236f8so22441281edb.19
- for <qemu-arm@nongnu.org>; Mon, 03 Jan 2022 03:25:00 -0800 (PST)
+ us-mta-55-nyc5semHP3SSGekwnwO7Nw-1; Mon, 03 Jan 2022 06:25:20 -0500
+X-MC-Unique: nyc5semHP3SSGekwnwO7Nw-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ d7-20020aa7ce07000000b003f84e9b9c2fso22492680edv.3
+ for <qemu-arm@nongnu.org>; Mon, 03 Jan 2022 03:25:19 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=rhbKdI2L+n64FvniTwVs30EHeKvUt3sJZ/iH19/8KUs=;
- b=AfdyhkzLWOmgSI/CEUqfkJ1tEF5N6Dz07bUv4yj3UnHvwdt1a/XXTQ0bzm1XhuePfo
- y90eFK3/KQ++H+3OZrkPKC27Vt7C0lPmwS5KB9acx/+rH1gu0SEmDJKBGxw6JMa+a024
- 7jJu4Bxbrf4GyZe+FWDTFnHmSw+P+dsvzfOcy5CUu2alyJvdgeRUpi4BAyxmUApzc9Pc
- LzMrJs6dfqeqVgUEWglQDRYKmNzH64dU75WJtAQzH7bzjsvqdjQhlkGv/qczrIzmfxM6
- Xx5PjfkTaJP9Ffsvay3u0c1FT7htbi26UHi/6qLOYpNSFbjgA6YLBtZkS0oiOCvdb49L
- Al4w==
-X-Gm-Message-State: AOAM533QKh/wb4VIQfIbH3xfc9neMSC2rrxuyvB3boOnmxH5Taf8qlwy
- agLgnuTALFFUFUu6WKQKrPtGpRfia9JCrpt2qcA8BDIw7uJbFvtjS2r14jrRqobUMFud9mua1C4
- ViKZeQN2HfivF
-X-Received: by 2002:aa7:d6d6:: with SMTP id x22mr44544466edr.132.1641209099564; 
- Mon, 03 Jan 2022 03:24:59 -0800 (PST)
-X-Received: by 2002:aa7:d6d6:: with SMTP id x22mr44544454edr.132.1641209099415; 
- Mon, 03 Jan 2022 03:24:59 -0800 (PST)
+ bh=pC9O6tJM+BPo6eDubYV03H6gARf8SbN10d8Rk6tr5ig=;
+ b=j79hiuD0zcJVLVZUabWvKkoMSNq3u5eCueDbzYcRNgBNgcD/U6GwepPQ3GSDVpMyGI
+ m5iaoxgUvSzN5VpAx5MAZ8tSRFKttviGwInCGBfK+QM6KMZWMlozSW4C29KTJtHkPzey
+ QpCRTUDnQKMtgY0X2uY7Of0zqfIjQ6VAbzMHTdXaalm9Le429YZaVD1b/GV5VDSapQ5Z
+ uZpb0s4wC4wTCIhpZP7hU/9QFQzeZERexeXTzZy5iI85QNAMwrxrU67H8ncSDKZpB4Ns
+ 1zXFmhNqP91ICoOE1wy6SW31Z7/ZnsTl1cPRKsG9mrgwQVKIWlX0j9V5tVRuWLkM33gA
+ ORgA==
+X-Gm-Message-State: AOAM531DNN+nrws/p1q1IztTZjMHstf/w4FCAVzL1pmsk0oNpsb7bkbm
+ kBE8XEJjo6+TrIKlD/4/2H+xVRPsTN/QEkDeYmzFQAYOKd7ENdGI7V06lhnluLfx08n0vNvmjKG
+ mkkLXpjC0dffo
+X-Received: by 2002:a17:907:96a4:: with SMTP id
+ hd36mr35406070ejc.574.1641209118928; 
+ Mon, 03 Jan 2022 03:25:18 -0800 (PST)
+X-Received: by 2002:a17:907:96a4:: with SMTP id
+ hd36mr35406062ejc.574.1641209118715; 
+ Mon, 03 Jan 2022 03:25:18 -0800 (PST)
 Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
- by smtp.gmail.com with ESMTPSA id e4sm10832046ejs.13.2022.01.03.03.24.58
+ by smtp.gmail.com with ESMTPSA id dd6sm10579108ejc.212.2022.01.03.03.25.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Jan 2022 03:24:59 -0800 (PST)
-Date: Mon, 3 Jan 2022 12:24:57 +0100
+ Mon, 03 Jan 2022 03:25:18 -0800 (PST)
+Date: Mon, 3 Jan 2022 12:25:16 +0100
 From: Andrew Jones <drjones@redhat.com>
 To: Yanan Wang <wangyanan55@huawei.com>
-Subject: Re: [PATCH v6 1/7] hw/arm/virt: Support CPU cluster on ARM virt
- machine
-Message-ID: <20220103112457.56iglr2wbcrbws2y@gator>
+Subject: Re: [PATCH v6 2/7] hw/arm/virt: Support cluster level in DT cpu-map
+Message-ID: <20220103112516.xgc7jhzb6d734jmy@gator>
 References: <20220103084636.2496-1-wangyanan55@huawei.com>
- <20220103084636.2496-2-wangyanan55@huawei.com>
+ <20220103084636.2496-3-wangyanan55@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20220103084636.2496-2-wangyanan55@huawei.com>
+In-Reply-To: <20220103084636.2496-3-wangyanan55@huawei.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=drjones@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
@@ -136,67 +137,55 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Ani Sinha <ani@anisinha.ca>, Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: chs3fw8en6sH
+X-TUID: DZfuEcMClFsT
 
-On Mon, Jan 03, 2022 at 04:46:30PM +0800, Yanan Wang wrote:
-> ARM64 machines like Kunpeng Family Server Chips have a level
-> of hardware topology in which a group of CPU cores share L3
-> cache tag or L2 cache. For example, Kunpeng 920 typically
-> has 6 or 8 clusters in each NUMA node (also represent range
-> of CPU die), and each cluster has 4 CPU cores. All clusters
-> share L3 cache data, but CPU cores in each cluster share a
-> local L3 tag.
-> 
-> Running a guest kernel with Cluster-Aware Scheduling on the
-> Hosts which have physical clusters, if we can design a vCPU
-> topology with cluster level for guest kernel and then have
-> a dedicated vCPU pinning, the guest will gain scheduling
-> performance improvement from cache affinity of CPU cluster.
-> 
-> So let's enable the support for this new parameter on ARM
-> virt machines. After this patch, we can define a 4-level
-> CPU hierarchy like: cpus=*,maxcpus=*,sockets=*,clusters=*,
-> cores=*,threads=*.
+On Mon, Jan 03, 2022 at 04:46:31PM +0800, Yanan Wang wrote:
+> Support one cluster level between core and physical package in the
+> cpu-map of Arm/virt devicetree. This is also consistent with Linux
+> Doc "Documentation/devicetree/bindings/cpu/cpu-topology.txt".
 > 
 > Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 > ---
->  hw/arm/virt.c   |  1 +
->  qemu-options.hx | 10 ++++++++++
->  2 files changed, 11 insertions(+)
+>  hw/arm/virt.c | 15 ++++++++-------
+>  1 file changed, 8 insertions(+), 7 deletions(-)
 > 
 > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 6bce595aba..f413e146d9 100644
+> index f413e146d9..fc5eea8c8c 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
-> @@ -2700,6 +2700,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      hc->unplug_request = virt_machine_device_unplug_request_cb;
->      hc->unplug = virt_machine_device_unplug_cb;
->      mc->nvdimm_supported = true;
-> +    mc->smp_props.clusters_supported = true;
->      mc->auto_enable_numa_with_memhp = true;
->      mc->auto_enable_numa_with_memdev = true;
->      mc->default_ram_id = "mach-virt.ram";
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index fd1f8135fb..69ef1cdb85 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -277,6 +277,16 @@ SRST
+> @@ -430,9 +430,8 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>           * can contain several layers of clustering within a single physical
+>           * package and cluster nodes can be contained in parent cluster nodes.
+>           *
+> -         * Given that cluster is not yet supported in the vCPU topology,
+> -         * we currently generate one cluster node within each socket node
+> -         * by default.
+> +         * Note: currently we only support one layer of clustering within
+> +         * each physical package.
+>           */
+>          qemu_fdt_add_subnode(ms->fdt, "/cpus/cpu-map");
 >  
->          -smp 16,sockets=2,dies=2,cores=2,threads=2,maxcpus=16
+> @@ -442,14 +441,16 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
 >  
-> +    The following sub-option defines a CPU topology hierarchy (2 sockets
-> +    totally on the machine, 2 clusters per socket, 2 cores per cluster,
-> +    2 threads per core) for ARM virt machines which support sockets/clusters
-> +    /cores/threads. Some members of the option can be omitted but their values
-> +    will be automatically computed:
-> +
-> +    ::
-> +
-> +        -smp 16,sockets=2,clusters=2,cores=2,threads=2,maxcpus=16
-> +
->      Historically preference was given to the coarsest topology parameters
->      when computing missing values (ie sockets preferred over cores, which
->      were preferred over threads), however, this behaviour is considered
+>              if (ms->smp.threads > 1) {
+>                  map_path = g_strdup_printf(
+> -                    "/cpus/cpu-map/socket%d/cluster0/core%d/thread%d",
+> -                    cpu / (ms->smp.cores * ms->smp.threads),
+> +                    "/cpus/cpu-map/socket%d/cluster%d/core%d/thread%d",
+> +                    cpu / (ms->smp.clusters * ms->smp.cores * ms->smp.threads),
+> +                    (cpu / (ms->smp.cores * ms->smp.threads)) % ms->smp.clusters,
+>                      (cpu / ms->smp.threads) % ms->smp.cores,
+>                      cpu % ms->smp.threads);
+>              } else {
+>                  map_path = g_strdup_printf(
+> -                    "/cpus/cpu-map/socket%d/cluster0/core%d",
+> -                    cpu / ms->smp.cores,
+> +                    "/cpus/cpu-map/socket%d/cluster%d/core%d",
+> +                    cpu / (ms->smp.clusters * ms->smp.cores),
+> +                    (cpu / ms->smp.cores) % ms->smp.clusters,
+>                      cpu % ms->smp.cores);
+>              }
+>              qemu_fdt_add_path(ms->fdt, map_path);
 > -- 
 > 2.27.0
 >

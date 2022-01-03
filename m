@@ -1,93 +1,124 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10175636lfb;
-        Mon, 3 Jan 2022 01:09:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzndd2ykz7SF+QFBRjZZkeC9QTIgURo7ph6hJjI/aoP4QNCBp7KeaMGq7YKtOoEWZKGRu+H
-X-Received: by 2002:a25:8e12:: with SMTP id p18mr43098872ybl.590.1641200973176;
-        Mon, 03 Jan 2022 01:09:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641200973; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10232745lfb;
+        Mon, 3 Jan 2022 03:24:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzgRquyhwYYTSz3brvEXw0WsovHnk6bkn6UWtC2kvU/t4dZRMtZM9Uf8UkDemXDQRSV4MBi
+X-Received: by 2002:a25:da4a:: with SMTP id n71mr50131438ybf.600.1641209067847;
+        Mon, 03 Jan 2022 03:24:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641209067; cv=none;
         d=google.com; s=arc-20160816;
-        b=gKOXbq9r+eLlRksHqfnqQYqbHj/TYRbS2HkYbt1vmVGCzatQszS7MRH4CYYUMoCD+O
-         VwOHy2Z+ELVtU8qHlWHHIg97kTQb36dbd1fX6o4F3Gx6l8bjDtQ535eRBhXpDKSElpeu
-         7cMzb2CkzZsqw5+LjGzHDBhIb6cLKwIQ4FtOmd+T+W8kalPTOqmgiAvT7UvNGc1E0m/Q
-         C/GsEmTf+zjAJEx54D8sj5N3Zwh1uY/njepNQBeYP1v1OpUsKEkwHL+wljAatlaKpznd
-         HaoKGS23fEGRgEtJH3z8iObidQmvjnDtalCJbsR40t03JMTanBk77/ciLoTWJZdjwl1c
-         lTow==
+        b=sC1C6+CoGsqDpL3S0YRRHWhx4lLZcNP/3zokoDrEUd6/dL4TpXtwkJ++N8FAdkUaSL
+         egM+V4sg3jFQ5JFzd8UdlDOEkAfI5NXUZs7O5JXWYoUZJfTNldF1QtHJff1OsMsq5fKX
+         Jy3DMyWGtX9/GQRqH6WyKXGIVdJUCqflqZeHysa9LecKllSKWuFtRjNGbGgYciAV8OZ7
+         D6Sy2UcKpKY6VVBAQxPT3n/plnAfgG0jsDzGVM0OiFV/4tv1bKPZaUXtuG55o2Ex9RBV
+         0CYXsgioi0IjFNX7jIzqmn21StcH67hEgmGedRdZbz4xDSBTEX96h+dtzQrpSWuapVZJ
+         4XBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:references:cc:to:subject;
-        bh=xz7WDQ8F/7OD5mYoPFXP5YOv2bELs20GAn+WjpeC8do=;
-        b=nViIjLfxgJPTdyPGcYXOBnrvv7ILNzHjol1KNBARVvwIeQt424TwewKL0ghdaliXBf
-         nv9N0LWgGgeFUcl+nmK6QUsbi7vQr3UNAxJYeZsP4WoFswVu3yn7VmY1rTstAPADwupa
-         xElK6aaYR8U7Tqhbr7ARxvLFxKfIfgzof2iyETm1Z03LcKNw7sC7Zzeq38lUkg9DlO8u
-         1GJx5bWhThg76OGP35tJc5ZcbRdOEPYSdcEaXwLiJLtUHx9pwx4i9lf/tnMAkAkU/y3+
-         pY5IJNdOL/8kLjlnEs5P6ULzmIpFWDqTz3QdufYVU/z9Xpowjtlzf6Axh3DG5yZl+vtt
-         0f/A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=y8543RBcbTiihZAEfg+TpAZCXc3IeQ2oAodPtdz2D7Y=;
+        b=DJIOA6A7347UISqJPau/K0HmAINHU5XSz4BV81BlHN6Q16eOgZyMyVETbj31Xk8ZkF
+         FrzyNCqzWLXF202HfTEUee29QsA+U6C85hie15E4SH5RlaeRnQzp3I3OorIUmcGhiPEf
+         UQgxQp9hfzaYRUAYCdQfTL4bAbpPX+n6qsFiCahva+yltDfgQpQ0jGyBpVvdHKwJTKHc
+         vUcdd7hcihouXgBzJaJ2ADGSkqBMnd8jdDsIACZxXPrgjPNEWmT0LwnAIevpiQI5W66X
+         FCxD2BgTOwoxI6IpCGyjK9VzwF3GZneB6g+3GaiSMPdkWquyj0zcEFKPzyaNCCLNiIgI
+         gArQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AsSdG2Md;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h129si22732246ybb.622.2022.01.03.01.09.32
+        by mx.google.com with ESMTPS id i12si4018988ybt.486.2022.01.03.03.24.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jan 2022 01:09:33 -0800 (PST)
+        Mon, 03 Jan 2022 03:24:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AsSdG2Md;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:58928 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44366 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n4JLQ-0000TD-KT
-	for alex.bennee@linaro.org; Mon, 03 Jan 2022 04:09:32 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51428)
+	id 1n4LRz-0003xr-6c
+	for alex.bennee@linaro.org; Mon, 03 Jan 2022 06:24:27 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51124)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n4JKX-0008Nw-Mg; Mon, 03 Jan 2022 04:08:41 -0500
-Received: from szxga01-in.huawei.com ([45.249.212.187]:3516)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1n4LRo-0003tG-5f
+ for qemu-arm@nongnu.org; Mon, 03 Jan 2022 06:24:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:40576)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n4JKU-0007mJ-Mv; Mon, 03 Jan 2022 04:08:37 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.57])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4JS8w00ZZszZcWc;
- Mon,  3 Jan 2022 17:05:04 +0800 (CST)
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.20; Mon, 3 Jan 2022 17:08:27 +0800
-Subject: Re: [PATCH v5 00/14] ARM virt: Introduce CPU clusters topology support
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
- <drjones@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, "Michael S
- . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Shannon
- Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <ani@anisinha.ca>, Markus
- Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
- <wanghaibin.wang@huawei.com>
-References: <20211228092221.21068-1-wangyanan55@huawei.com>
-Message-ID: <7f2cc572-4ee8-2ce1-2824-311845d65021@huawei.com>
-Date: Mon, 3 Jan 2022 17:08:27 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1n4LRl-0001gf-I1
+ for qemu-arm@nongnu.org; Mon, 03 Jan 2022 06:24:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1641209052;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=y8543RBcbTiihZAEfg+TpAZCXc3IeQ2oAodPtdz2D7Y=;
+ b=AsSdG2Mdv2X8WFbcA2V7ODJzsc66+/hsXdYNwvjQxIbKkhMTPudsZKqfTlsPXPhiHe5LgQ
+ absuyBYcOSLtik/NvJ/Jsq48Ci4HyGII6bqnSBAOLLVWZIdxNEjn70caVq1fqAnh8dwD+X
+ E0ZQKVvUk/2ze9C0Db6uRgvR8yuokmQ=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-508-yoZTrM6NOoSkydCD0mo3WA-1; Mon, 03 Jan 2022 06:24:11 -0500
+X-MC-Unique: yoZTrM6NOoSkydCD0mo3WA-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ z8-20020a056402274800b003f8580bfb99so22662628edd.11
+ for <qemu-arm@nongnu.org>; Mon, 03 Jan 2022 03:24:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=y8543RBcbTiihZAEfg+TpAZCXc3IeQ2oAodPtdz2D7Y=;
+ b=QrSYhlx94owvrc8O/sQkdlBhiYTKcfyJpxrKW0i0a5Ktt27zicG8S5XIvoLVsWu2OU
+ 0xYmXcP0DDAEEHw3zbMRHCrNtgMP0VIgd4Gt5loXjzqrgrgcBfX8LxvWXOPHwC5mVj7X
+ AIa4D0uOoG9S518sWkATr0+QfVU6M7MtmjYtTQfFnpA81iGlNweYGNqbcotkAtLkLHGq
+ PXnJAdJlEul7yg+s2px0mrO1IIE+jkqjpmrfLeBMMDU+thLyG3ooGSrSN/pIXxO3Gv8n
+ NAZIM/PfIs+7ER6Wg0eZFVSKZKgU31eF+UGBdBulvh/SO1rimn1i/D/UezAWNZ2iEiAX
+ xjrg==
+X-Gm-Message-State: AOAM532L7gchGCyhpj3C2Gr8bQJ2gSqee2RdZ+WA2jdmvQ7vWviGsnsN
+ h3ZfT8YbAgxh0e6rkhyM+JVtQ5hOLh07P3jR6RhgwIW/ns7vBqViveW9acoOBS6qKdMTfifjjfo
+ APQ1ibhppmFH7
+X-Received: by 2002:a17:907:7f29:: with SMTP id
+ qf41mr35422736ejc.715.1641209050364; 
+ Mon, 03 Jan 2022 03:24:10 -0800 (PST)
+X-Received: by 2002:a17:907:7f29:: with SMTP id
+ qf41mr35422716ejc.715.1641209050123; 
+ Mon, 03 Jan 2022 03:24:10 -0800 (PST)
+Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
+ by smtp.gmail.com with ESMTPSA id gs17sm10467012ejc.116.2022.01.03.03.24.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 03 Jan 2022 03:24:09 -0800 (PST)
+Date: Mon, 3 Jan 2022 12:24:07 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Yanan Wang <wangyanan55@huawei.com>
+Subject: Re: [PATCH v6 3/7] hw/acpi/aml-build: Improve scalability of PPTT
+ generation
+Message-ID: <20220103112407.p7aep3yqnlhevylc@gator>
+References: <20220103084636.2496-1-wangyanan55@huawei.com>
+ <20220103084636.2496-4-wangyanan55@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20211228092221.21068-1-wangyanan55@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme702-chm.china.huawei.com (10.1.199.98) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -56
-X-Spam_score: -5.7
-X-Spam_bar: -----
-X-Spam_report: (-5.7 / 5.0 requ) NICE_REPLY_A=-3.354, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20220103084636.2496-4-wangyanan55@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.37, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,121 +131,131 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Eric Auger <eauger@redhat.com>, wanghaibin.wang@huawei.com,
+ Ani Sinha <ani@anisinha.ca>, Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
-From:  "wangyanan (Y)" via <qemu-arm@nongnu.org>
-X-TUID: A1F824F/lhVo
+X-TUID: Hrfw446xTAT8
 
-The rest ARM & ACPI part (patches 8-14) have been packed into v6:
-v6: https://patchew.org/QEMU/20220103084636.2496-1-wangyanan55@huawei.com/
+On Mon, Jan 03, 2022 at 04:46:32PM +0800, Yanan Wang wrote:
+> Currently we generate a PPTT table of n-level processor hierarchy
+> with n-level loops in build_pptt(). It works fine as now there are
+> only three CPU topology parameters. But the code may become less
+> scalable with the processor hierarchy levels increasing.
+> 
+> This patch only improves the scalability of build_pptt by reducing
+> the loops, and intends to make no functional change.
+> 
+> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+> ---
+>  hw/acpi/aml-build.c | 50 +++++++++++++++++++++++++++++----------------
+>  1 file changed, 32 insertions(+), 18 deletions(-)
+> 
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index b3b3310df3..be3851be36 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -2001,7 +2001,10 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+>  void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>                  const char *oem_id, const char *oem_table_id)
+>  {
+> -    int pptt_start = table_data->len;
+> +    GQueue *list = g_queue_new();
+> +    guint pptt_start = table_data->len;
+> +    guint father_offset;
+
+"parent_offset" would be more conventional.
+
+> +    guint length, i;
+>      int uid = 0;
+>      int socket;
+>      AcpiTable table = { .sig = "PPTT", .rev = 2,
+> @@ -2010,9 +2013,8 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>      acpi_table_begin(&table, table_data);
+>  
+>      for (socket = 0; socket < ms->smp.sockets; socket++) {
+> -        uint32_t socket_offset = table_data->len - pptt_start;
+> -        int core;
+> -
+> +        g_queue_push_tail(list,
+> +            GUINT_TO_POINTER(table_data->len - pptt_start));
+>          build_processor_hierarchy_node(
+>              table_data,
+>              /*
+> @@ -2021,35 +2023,47 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>               */
+>              (1 << 0),
+>              0, socket, NULL, 0);
+> +    }
+>  
+> -        for (core = 0; core < ms->smp.cores; core++) {
+> -            uint32_t core_offset = table_data->len - pptt_start;
+> -            int thread;
+> +    length = g_queue_get_length(list);
+> +    for (i = 0; i < length; i++) {
+> +        int core;
+>  
+> +        father_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
+> +        for (core = 0; core < ms->smp.cores; core++) {
+>              if (ms->smp.threads > 1) {
+> +                g_queue_push_tail(list,
+> +                    GUINT_TO_POINTER(table_data->len - pptt_start));
+>                  build_processor_hierarchy_node(
+>                      table_data,
+>                      (0 << 0), /* not a physical package */
+> -                    socket_offset, core, NULL, 0);
+> -
+> -                for (thread = 0; thread < ms->smp.threads; thread++) {
+> -                    build_processor_hierarchy_node(
+> -                        table_data,
+> -                        (1 << 1) | /* ACPI Processor ID valid */
+> -                        (1 << 2) | /* Processor is a Thread */
+> -                        (1 << 3),  /* Node is a Leaf */
+> -                        core_offset, uid++, NULL, 0);
+> -                }
+> +                    father_offset, core, NULL, 0);
+>              } else {
+>                  build_processor_hierarchy_node(
+>                      table_data,
+>                      (1 << 1) | /* ACPI Processor ID valid */
+>                      (1 << 3),  /* Node is a Leaf */
+> -                    socket_offset, uid++, NULL, 0);
+> +                    father_offset, uid++, NULL, 0);
+>              }
+>          }
+>      }
+>  
+> +    length = g_queue_get_length(list);
+> +    for (i = 0; i < length; i++) {
+> +        int thread;
+> +
+> +        father_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
+> +        for (thread = 0; thread < ms->smp.threads; thread++) {
+> +            build_processor_hierarchy_node(
+> +                table_data,
+> +                (1 << 1) | /* ACPI Processor ID valid */
+> +                (1 << 2) | /* Processor is a Thread */
+> +                (1 << 3),  /* Node is a Leaf */
+> +                father_offset, uid++, NULL, 0);
+> +        }
+> +    }
+> +
+> +    g_queue_free(list);
+>      acpi_table_end(linker, &table);
+>  }
+
+This patch actually increases the number of loops, since we need to visit
+higher hierarchical nodes twice (once to enqueue and once to dequeue). We
+do reduce code indentation and it looks like we could more easily skip
+hierarchy levels we don't want, though. While my impulse is to say we
+should just keep this simple and add another nested loop for clusters, I
+guess I'm OK with this too.
+
+Reviewed-by: Andrew Jones <drjones@redhat.com>
 
 Thanks,
-Yanan
-
-On 2021/12/28 17:22, Yanan Wang wrote:
-> Hi,
->
-> This series introduces the new CPU clusters topology parameter
-> and enable the support for it on ARM virt machines.
->
-> Background and descriptions:
-> The new Cluster-Aware Scheduling support has landed in Linux 5.16,
-> which has been proved to benefit the scheduling performance (e.g.
-> load balance and wake_affine strategy) for both x86_64 and AArch64.
-> We can see the PR [1] or the actual patch series [2] for reference.
->
-> So since Linux 5.16 we have four-level arch-neutral CPU topology
-> definition like below and a new scheduler level for clusters.
-> struct cpu_topology {
->      int thread_id;
->      int core_id;
->      int cluster_id;
->      int package_id;
->      int llc_id;
->      cpumask_t thread_sibling;
->      cpumask_t core_sibling;
->      cpumask_t cluster_sibling;
->      cpumask_t llc_sibling;
-> }
->
-> A cluster generally means a group of CPU cores which share L2 cache
-> or other mid-level resources, and it is the shared resources that
-> is used to improve scheduler's behavior. From the point of view of
-> the size range, it's between CPU die and CPU core. For example, on
-> some ARM64 Kunpeng servers, we have 6 clusters in each NUMA node,
-> and 4 CPU cores in each cluster. The 4 CPU cores share a separate
-> L2 cache and a L3 cache tag, which brings cache affinity advantage.
->
-> [1] https://lore.kernel.org/lkml/163572864855.3357115.17938524897008353101.tglx@xen13/
-> [2] https://lkml.org/lkml/2021/9/24/178
->
-> In virtualization, on the Hosts which have pClusters, if we can
-> design a vCPU topology with cluster level for guest kernel and
-> have a dedicated vCPU pinning. A Cluster-Aware Guest kernel can
-> also make use of the cache affinity of CPU clusters to gain
-> similar scheduling performance. So this series introduce clusters
-> support in the vCPU topology on ARM virt machines.
->
-> The patches are arranged mainly in two parts:
-> The first part (patch 1-7):
-> - Implement infrastructure for CPU cluster level topology support,
->    including the SMP documentation, configuration and parsing,
->    adding testcases for clusters.
->
-> The second part (part 8-14):
-> - Enable CPU cluster support on ARM virt machines, so that users
->    can specify a 4-level CPU hierarchy sockets/clusters/cores/threads.
->    And the 4-level topology will be described to guest kernel through
->    ACPI PPTT and DT cpu-map.
->
-> Changelog:
-> v3->v4:
-> - Significant change from v3 to v4, since the whole series is reworked
->    based on latest QEMU SMP frame.
-> - v3: https://patchew.org/QEMU/20210516103228.37792-1-wangyanan55@huawei.com/
->
-> v4->v5:
-> - newly added patches 4-7
-> - rebased on Philippe series: "tests/unit: Rework test-smp-parse tests"
->    https://patchew.org/QEMU/20211216132015.815493-1-philmd@redhat.com/
-> - v4: https://patchew.org/QEMU/20211121122502.9844-1-wangyanan55@huawei.com/
->
-> Yanan Wang (14):
->    qemu-options: Improve readability of SMP related Docs
->    hw/core/machine: Introduce CPU cluster topology support
->    hw/core/machine: Wrap target specific parameters together
->    tests/unit/test-smp-parse: Add testcases for CPU clusters
->    tests/unit/test-smp-parse: No need to explicitly zero MachineClass
->      members
->    tests/unit/test-smp-parse: Keep default MIN/MAX CPUs in
->      machine_base_class_init
->    MAINTAINERS: Self-recommended as reviewer of "Machine core"
->    hw/arm/virt: Support clusters on ARM virt machines
->    hw/arm/virt: Support cluster level in DT cpu-map
->    hw/acpi/aml-build: Improve scalability of PPTT generation
->    hw/arm/virt-acpi-build: Make an ARM specific PPTT generator
->    tests/acpi/bios-tables-test: Allow changes to virt/PPTT file
->    hw/arm/virt-acpi-build: Support cluster level in PPTT generation
->    tests/acpi/bios-table-test: Update expected virt/PPTT file
->
->   MAINTAINERS                 |   1 +
->   hw/acpi/aml-build.c         |  66 +----------------
->   hw/arm/virt-acpi-build.c    |  92 +++++++++++++++++++++++-
->   hw/arm/virt.c               |  16 +++--
->   hw/core/machine-smp.c       |  29 ++++++--
->   hw/core/machine.c           |   3 +
->   include/hw/acpi/aml-build.h |   5 +-
->   include/hw/boards.h         |   6 +-
->   qapi/machine.json           |   5 +-
->   qemu-options.hx             |  91 ++++++++++++++++++-----
->   softmmu/vl.c                |   3 +
->   tests/data/acpi/virt/PPTT   | Bin 76 -> 96 bytes
->   tests/unit/test-smp-parse.c | 140 ++++++++++++++++++++++++++++++------
->   13 files changed, 332 insertions(+), 125 deletions(-)
->
-> --
-> 2.27.0
->
-> .
+drew
 

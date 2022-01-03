@@ -1,124 +1,112 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10236885lfb;
-        Mon, 3 Jan 2022 03:33:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzERe2264qPVYUEUqJic7lH1I0ig7eXK2gx8beXOpiU88jWvXhMREepvKqO3CsnOi7T1P3C
-X-Received: by 2002:a05:6902:4c1:: with SMTP id v1mr41571942ybs.422.1641209598723;
-        Mon, 03 Jan 2022 03:33:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641209598; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10250815lfb;
+        Mon, 3 Jan 2022 04:04:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyvHvISFPMY2dwvbbRoGjACCoMI6ly915tS5gc+ZVSVQVjw7akzcSOkD5ezZFwwDVPKCDUM
+X-Received: by 2002:a05:6902:134a:: with SMTP id g10mr42581416ybu.410.1641211457982;
+        Mon, 03 Jan 2022 04:04:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641211457; cv=none;
         d=google.com; s=arc-20160816;
-        b=usGiwphOgGJtcMOllgEgoLdxIkmRotBwFwWx38nD9HHme2n3o0zWKIM3yuSIWlg7Bh
-         rS+UfCcRXowkhQnWNnj7cW8gXERuuEfmVvJsbh+YEaHX/y9wMqDtc+CLXUcgr2S7hed/
-         IkPUsQ9BS8/kkL1o6SsDwiQjnwA60vZCNHm8pM07CDkB+ogNQ/3xhheXtjX8SFoy9Ims
-         zQgiF/kFECC1ePc1scmS4edIW0IerOFZnoQw2RoIpmocPup//rQz4k8JMAnsO7c44cJs
-         isryCtA8BstoWT/DiEUu9jst953l3Pq4U/gbNxZepgEthNTqxDSAsdeBSPWCu5EaTpjd
-         M8zw==
+        b=I/NfH0PkQjsOok/etrnNmvvQn8yhv5JnnIuR60RNReSV+PrDJNpU+BomBT69tvPiqu
+         S4YqNliwlBU8swGAGduHpWO3P1vwyAuZvXJLpknz0r365/NL5/X2Ga+Xcs90cHPzxaeX
+         P7/8EMEKkciUfrHLOzMrCN9tWqbFi4PrCEjfUjaFFiK4nnrROS5AoqXzdQSFe9nhYcGF
+         m9oYg5qNMi9HxJxWnPLLErYbcOwve4sw+ldBbwN9mMVOvtOM+UlzJaWdc1StIR6ynlAD
+         oSzbhNCHGv0F7NK8qsrptZhfQnKvVfwVLYpQkp6iwEUX2hinsqd6ksfoqF1mvsoOhoPX
+         HlcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:message-id:in-reply-to:subject:to:date:from
          :dkim-signature;
-        bh=7gRreOUXuatvIWZrNHVRFQOcfVSCQk25xee1VF+vJ04=;
-        b=ieV0IWeHy3LFI0VYO1ZdhKgGvklQKv/O8PZDwH8iVbXsjZe/ddM8VgxG4LopO9mF9d
-         GXi+yHW5N7FDRXrDdepkDWvUnkoaiyLKMcPdQNh+sooloYx6oMHNISfJkiGz3Bp6NDJH
-         lDGRJKG51UW+jS/0dPb3GZnSdAo59gP9UqTkvW2U5BEPxuyEC5Od5dYBp0TdXDB1ST3q
-         6znrQfpEd7w6sG7ULB7L6Jxb8c0VMz8GLC0TfC5CyaAznudTniXyKLvRQqjoIQTtuVRN
-         uQP+FAsIvJk6t0BiEzZi41SRpLGfwjGo+yU44GfzHvTwLKgr5ZHg6y0WxHObwDXuV5Hf
-         baAw==
+        bh=9p0xxnBiVLvOkaeWFClMhARsy6aSq3+y00WEK7Ytv5g=;
+        b=YJKkft3PUsave1i1n+P/kiV6da/tPCidJ3Gwl+QuqaNQo8Lr1Ir6rgmcBA8Lcjwf1z
+         Ba7pNGoQr93ap3c4BlK1/HMelKCEy1xIYTWKaPMeEo/1tT76Dil4Xb1uqjISAt1eEb9k
+         RS0ce7x2h2UUPrUx8IlsHBDVkL9pfSB15+wCA2O3sMe5+gbhR7+pWwfTPeyRMPHRrSSK
+         FWCfb+lPixFrlwH82+vq47TD8eK5/0PTewoI2VKr3OKiH6/bb/Kr0N69Waq6RatzJdPe
+         IYiCIo3iQYv4m05IQ6C5H+1qIpm8+9rEogrJvcU62/L/G/14yaSjkvOYkYkPI9UGrpiG
+         swtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hPGnsKhv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@anisinha-ca.20210112.gappssmtp.com header.s=20210112 header.b=xN2e09Pj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o127si17945346ybc.690.2022.01.03.03.33.18
+        by mx.google.com with ESMTPS id x2si32283697ybk.405.2022.01.03.04.04.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jan 2022 03:33:18 -0800 (PST)
+        Mon, 03 Jan 2022 04:04:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hPGnsKhv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60182 helo=lists1p.gnu.org)
+       dkim=fail header.i=@anisinha-ca.20210112.gappssmtp.com header.s=20210112 header.b=xN2e09Pj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58236 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n4LaY-0006W1-4D
-	for alex.bennee@linaro.org; Mon, 03 Jan 2022 06:33:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53158)
+	id 1n4M4X-0001Hv-Bi
+	for alex.bennee@linaro.org; Mon, 03 Jan 2022 07:04:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59410)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1n4La0-0006SO-IP
- for qemu-arm@nongnu.org; Mon, 03 Jan 2022 06:32:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41702)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1n4LZy-0003cG-U9
- for qemu-arm@nongnu.org; Mon, 03 Jan 2022 06:32:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641209562;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=7gRreOUXuatvIWZrNHVRFQOcfVSCQk25xee1VF+vJ04=;
- b=hPGnsKhvt26efI7JBxysdLPgqelwQvz1sE67F8DZiGqrOHOTizlCb7kM+oQJdO+NzgX/4m
- adoedOvM8kLkMxNyaoeBiwgOD4gYPt1aqgkV1YHB3RliKhR29vZJUtGR4tjjeTMVe+nQIl
- p4YtH1fm0X3pXPCXN1crzVi0MvZ2B68=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-173-22MopfivP2-lxO7DoZPEKw-1; Mon, 03 Jan 2022 06:32:41 -0500
-X-MC-Unique: 22MopfivP2-lxO7DoZPEKw-1
-Received: by mail-ed1-f71.google.com with SMTP id
- s7-20020a056402520700b003f841380832so22631276edd.5
- for <qemu-arm@nongnu.org>; Mon, 03 Jan 2022 03:32:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1n4M2P-0000G3-EW
+ for qemu-arm@nongnu.org; Mon, 03 Jan 2022 07:02:08 -0500
+Received: from [2607:f8b0:4864:20::62d] (port=41650
+ helo=mail-pl1-x62d.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1n4M2N-000713-H4
+ for qemu-arm@nongnu.org; Mon, 03 Jan 2022 07:02:05 -0500
+Received: by mail-pl1-x62d.google.com with SMTP id z3so24721290plg.8
+ for <qemu-arm@nongnu.org>; Mon, 03 Jan 2022 04:02:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
+ h=from:date:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=9p0xxnBiVLvOkaeWFClMhARsy6aSq3+y00WEK7Ytv5g=;
+ b=xN2e09PjT4we2fI5VSdnSKPLKyVO7u/9YMCnkoimG8AYul3S49CTg4L37l8BZrShf/
+ Ss+nUHk6n9T3OBM9YW1k1A2kJxkFZ76AOP5DdjgQfhUcz1T/Zy8ZgH39ifF6CLji+vr9
+ JVr635aLQrT2SK4wpCJX/kj3xAJWq6utmUkS/ncnSt0JtK7u1L/2JUykfMVkA8nkPK2k
+ 618K6DDcEYyVVScpuxV1Xxjbz66QdSEr//qEcSyVfr84Zsy6axbNgGwUyx00mWfExHBQ
+ ru3uBBpHvKbxMKa0Y/AjKmjJuafrY+HL/5AV+CzOMtAcTit3Jbb1UHgbE/bXBmzq2sNQ
+ s9vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=7gRreOUXuatvIWZrNHVRFQOcfVSCQk25xee1VF+vJ04=;
- b=0vSLYhTTu6aFwKZLfo2LGflwKpxYhcjH8lRabgBRWy6rnGRSpAnCvUKQl8tHgLJKeo
- PVb1YgnSzzzMEbFy2qqP/J88oQBQwy7jzOrWvh5DFIgEnLrT8XfphZGPlHfZ7crLeLDC
- rZl5VtPHdoVb1hkHZstZlaq5RNCXLC/Yy94QmTK2tK5V9+Yx5Nm9n+FCjORKKLUuDEms
- XICBwUd8Wy9wKGpmJG7UCtPxcJRYCoNkMKPYVzCjecjrpWBgOH++DHf3iU1WKZB2tORE
- a50XOB/zeZp8UqliEs24gCJHjxTrM6UJpf/AOvm19u4eYC0+9BeELgxMsVwiohoUqVC0
- 1X5A==
-X-Gm-Message-State: AOAM530Es0WKCDsV0lExfo0wOGd6V7/vPx7//W/BilO2yynJ/lJpm4UE
- ntV6Tz/jkqBWgxInTes8eAFDQuJpTZkVwWYb1m8evNcH2ZlSc+0CrvaiWwP70bd4s3WJMJqBZh3
- 6q0o4M48TMPcE
-X-Received: by 2002:a05:6402:270a:: with SMTP id
- y10mr43492732edd.282.1641209560269; 
- Mon, 03 Jan 2022 03:32:40 -0800 (PST)
-X-Received: by 2002:a05:6402:270a:: with SMTP id
- y10mr43492727edd.282.1641209560060; 
- Mon, 03 Jan 2022 03:32:40 -0800 (PST)
-Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
- by smtp.gmail.com with ESMTPSA id m6sm13608221edc.36.2022.01.03.03.32.39
+ h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=9p0xxnBiVLvOkaeWFClMhARsy6aSq3+y00WEK7Ytv5g=;
+ b=R65gzLI5jYCpap7VLq0oQWfXAVkumyePTqNVdDuJXIaRxy+voy3WwriibTJZBuuJlc
+ gb1P/uqo1y44ep6ZSsjDMHTLdxyZx9rdz/K3Jbbr1ts2Y3AkFGNJ/0oXyyhLSn0B71jS
+ vzJ2YCpw7rG/qPmzEY5Al4aRGxQoFDGv3177B7ssoQOJd+l0Vw5CzeYbGJK4HJa1/n6x
+ kU5Egc2s8QYwWjalXmwZuIk6u8euX9uvzXlt9YndhwYb8jInjciPzgP7wVfXYh2r9IWU
+ C0+YS/jtZdlAfJG0O9MsvuSqnUtGlLR99aia09sObX4oS4LArB+D5CMAQqBWC5LQ0SEC
+ qsWA==
+X-Gm-Message-State: AOAM532pkS2iDg0nUMui6ugpPQ7BeEB6gkzypXRAYfdGGO3P3ZxyG+Zj
+ 8fCbjJW+0aYTkWSXRkHuzk4RGA==
+X-Received: by 2002:a17:902:ea0b:b0:149:68e0:9a91 with SMTP id
+ s11-20020a170902ea0b00b0014968e09a91mr39571877plg.172.1641211319185; 
+ Mon, 03 Jan 2022 04:01:59 -0800 (PST)
+Received: from anisinha-lenovo ([115.96.198.244])
+ by smtp.googlemail.com with ESMTPSA id y27sm40022514pfa.12.2022.01.03.04.01.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Jan 2022 03:32:39 -0800 (PST)
-Date: Mon, 3 Jan 2022 12:32:38 +0100
-From: Andrew Jones <drjones@redhat.com>
+ Mon, 03 Jan 2022 04:01:58 -0800 (PST)
+From: Ani Sinha <ani@anisinha.ca>
+X-Google-Original-From: Ani Sinha <anisinha@anisinha.ca>
+Date: Mon, 3 Jan 2022 17:31:52 +0530 (IST)
+X-X-Sender: anisinha@anisinha-lenovo
 To: Yanan Wang <wangyanan55@huawei.com>
-Subject: Re: [PATCH v6 6/7] hw/arm/virt-acpi-build: Support cluster level in
- PPTT generation
-Message-ID: <20220103113238.g3vk7nxmgefxe2gn@gator>
+Subject: Re: [PATCH v6 7/7] tests/acpi/bios-table-test: Update expected
+ virt/PPTT file
+In-Reply-To: <20220103084636.2496-8-wangyanan55@huawei.com>
+Message-ID: <alpine.DEB.2.22.394.2201031730230.14895@anisinha-lenovo>
 References: <20220103084636.2496-1-wangyanan55@huawei.com>
- <20220103084636.2496-7-wangyanan55@huawei.com>
+ <20220103084636.2496-8-wangyanan55@huawei.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-In-Reply-To: <20220103084636.2496-7-wangyanan55@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.37, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::62d
+ (failed)
+Received-SPF: none client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=ani@anisinha.ca; helo=mail-pl1-x62d.google.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,56 +119,122 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
  Eric Auger <eauger@redhat.com>, wanghaibin.wang@huawei.com,
  Ani Sinha <ani@anisinha.ca>, Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w2XJF9i0kPXG
+X-TUID: E1t5fXBpMcBr
 
-On Mon, Jan 03, 2022 at 04:46:35PM +0800, Yanan Wang wrote:
-> Support cluster level in generation of ACPI Processor Properties
-> Topology Table (PPTT) for ARM virt machines.
-> 
+
+
+On Mon, 3 Jan 2022, Yanan Wang wrote:
+
+> Run ./tests/data/acpi/rebuild-expected-aml.sh from build directory
+> to update PPTT binary. Also empty bios-tables-test-allowed-diff.h.
+>
+> The disassembled differences between actual and expected PPTT:
+>
+>  /*
+>   * Intel ACPI Component Architecture
+>   * AML/ASL+ Disassembler version 20180810 (64-bit version)
+>   * Copyright (c) 2000 - 2018 Intel Corporation
+>   *
+> - * Disassembly of tests/data/acpi/virt/PPTT, Mon Oct 25 20:24:53 2021
+> + * Disassembly of /tmp/aml-BPI5B1, Mon Oct 25 20:24:53 2021
+>   *
+>   * ACPI Data Table [PPTT]
+>   *
+>   * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
+>   */
+>
+>  [000h 0000   4]                    Signature : "PPTT"    [Processor Properties Topology Table]
+> -[004h 0004   4]                 Table Length : 0000004C
+> +[004h 0004   4]                 Table Length : 00000060
+>  [008h 0008   1]                     Revision : 02
+> -[009h 0009   1]                     Checksum : A8
+> +[009h 0009   1]                     Checksum : 48
+>  [00Ah 0010   6]                       Oem ID : "BOCHS "
+>  [010h 0016   8]                 Oem Table ID : "BXPC    "
+>  [018h 0024   4]                 Oem Revision : 00000001
+>  [01Ch 0028   4]              Asl Compiler ID : "BXPC"
+>  [020h 0032   4]        Asl Compiler Revision : 00000001
+>
+>  [024h 0036   1]                Subtable Type : 00 [Processor Hierarchy Node]
+>  [025h 0037   1]                       Length : 14
+>  [026h 0038   2]                     Reserved : 0000
+>  [028h 0040   4]        Flags (decoded below) : 00000001
+>                              Physical package : 1
+>                       ACPI Processor ID valid : 0
+>  [02Ch 0044   4]                       Parent : 00000000
+>  [030h 0048   4]            ACPI Processor ID : 00000000
+>  [034h 0052   4]      Private Resource Number : 00000000
+>
+>  [038h 0056   1]                Subtable Type : 00 [Processor Hierarchy Node]
+>  [039h 0057   1]                       Length : 14
+>  [03Ah 0058   2]                     Reserved : 0000
+> -[03Ch 0060   4]        Flags (decoded below) : 0000000A
+> +[03Ch 0060   4]        Flags (decoded below) : 00000000
+>                              Physical package : 0
+> -                     ACPI Processor ID valid : 1
+> +                     ACPI Processor ID valid : 0
+
+I do not know this very well but does the above two changes (flags and
+processor ID) makes sense?
+
+>  [040h 0064   4]                       Parent : 00000024
+>  [044h 0068   4]            ACPI Processor ID : 00000000
+>  [048h 0072   4]      Private Resource Number : 00000000
+>
+> -Raw Table Data: Length 76 (0x4C)
+> +[04Ch 0076   1]                Subtable Type : 00 [Processor Hierarchy Node]
+> +[04Dh 0077   1]                       Length : 14
+> +[04Eh 0078   2]                     Reserved : 0000
+> +[050h 0080   4]        Flags (decoded below) : 0000000A
+> +                            Physical package : 0
+> +                     ACPI Processor ID valid : 1
+> +[054h 0084   4]                       Parent : 00000038
+> +[058h 0088   4]            ACPI Processor ID : 00000000
+> +[05Ch 0092   4]      Private Resource Number : 00000000
+> +
+> +Raw Table Data: Length 96 (0x60)
+>
+> -    0000: 50 50 54 54 4C 00 00 00 02 A8 42 4F 43 48 53 20  // PPTTL.....BOCHS
+> +    0000: 50 50 54 54 60 00 00 00 02 48 42 4F 43 48 53 20  // PPTT`....HBOCHS
+>      0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+>      0020: 01 00 00 00 00 14 00 00 01 00 00 00 00 00 00 00  // ................
+> -    0030: 00 00 00 00 00 00 00 00 00 14 00 00 0A 00 00 00  // ................
+> -    0040: 24 00 00 00 00 00 00 00 00 00 00 00              // $...........
+> +    0030: 00 00 00 00 00 00 00 00 00 14 00 00 00 00 00 00  // ................
+> +    0040: 24 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00  // $...............
+> +    0050: 0A 00 00 00 38 00 00 00 00 00 00 00 00 00 00 00  // ....8...........
+>
 > Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 > ---
->  hw/arm/virt-acpi-build.c | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 3ce7680393..5f91969688 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -840,6 +840,21 @@ build_pptt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->              0, socket, NULL, 0);
->      }
->  
-> +    length = g_queue_get_length(list);
-> +    for (i = 0; i < length; i++) {
-> +        int cluster;
-> +
-> +        father_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
-> +        for (cluster = 0; cluster < ms->smp.clusters; cluster++) {
-> +            g_queue_push_tail(list,
-> +                GUINT_TO_POINTER(table_data->len - pptt_start));
-> +            build_processor_hierarchy_node(
-> +                table_data,
-> +                (0 << 0), /* not a physical package */
-> +                father_offset, cluster, NULL, 0);
-> +        }
-> +    }
-> +
->      length = g_queue_get_length(list);
->      for (i = 0; i < length; i++) {
->          int core;
-> -- 
+>  tests/data/acpi/virt/PPTT                   | Bin 76 -> 96 bytes
+>  tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+>  2 files changed, 1 deletion(-)
+>
+> diff --git a/tests/data/acpi/virt/PPTT b/tests/data/acpi/virt/PPTT
+> index 7a1258ecf123555b24462c98ccbb76b4ac1d0c2b..f56ea63b369a604877374ad696c396e796ab1c83 100644
+> GIT binary patch
+> delta 53
+> zcmV-50LuSNU<y!BR8(L90006=kqR;-00000Bme*a000000000002BZK3IG5AH~;_u
+> L0000000000uCW9Z
+>
+> delta 32
+> qcmV+*0N?*$ObSp?R8&j=00080kqR=APy`Gl00000000000001OcLdh}
+>
+> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+> index cb143a55a6..dfb8523c8b 100644
+> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> @@ -1,2 +1 @@
+>  /* List of comma-separated changed AML files to ignore */
+> -"tests/data/acpi/virt/PPTT",
+> --
 > 2.27.0
 >
-
-Looks good except please do s/father_offset/parent_offset/ as I mentioned
-in an earlier patch.
-
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-
+>

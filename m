@@ -1,118 +1,92 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10507469lfb;
-        Mon, 3 Jan 2022 11:58:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzJHqUckBwgYcJCrFE7MOmkcNDzTRVaH27tLI+8zXw8YxmW/IGuwXNck2nioIRxRHqRuvRc
-X-Received: by 2002:a25:d195:: with SMTP id i143mr45309566ybg.711.1641239919158;
-        Mon, 03 Jan 2022 11:58:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641239919; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10671044lfb;
+        Mon, 3 Jan 2022 18:06:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJydZxgwiSmTylcDajj6vVEfV80md9yxNie+yLaRc28cw/2ACI05P6R2NqXZ6f4gGQa0d2MU
+X-Received: by 2002:a25:1bd5:: with SMTP id b204mr15114513ybb.552.1641261965009;
+        Mon, 03 Jan 2022 18:06:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641261965; cv=none;
         d=google.com; s=arc-20160816;
-        b=QMJkxlSqEpesXuFGR2+8dJ/3FEB0n8WHLhy09YDHOwKUcSgaSLK3/qoaN10AeWSY6g
-         3i+qGRw+JahWbOXKN69+HVL2TOcxowhEps3N1B2YsoTItj4P/b42m1KF7tp21YUHvEGG
-         OspV3KGiqNOS/t4IzsINBDiWLNohudnZSvz4PjOzgirW1FslBlEvcTmHFri8ASqkl3lS
-         mHpTkti69ArQPza5o3cuaARm9gh9Rc7RzVdI6Lq9fRAArXrdoGXwYCdpId6wrX3uOYT5
-         oLTT1Ut58Q+QdjKkrqTptwdr1XpLAG6QR5UEFUZf9ofKmFiO5Nj0hKnKnJUikmVDmt6z
-         q0Pg==
+        b=BF+fahNwKnbh0lmZ714ZaWgNxNfrQYUwu/AjVm0hRLR8vTQT1XrFhTBvJapiMebSwC
+         b4jNb1AOQvzKgEcv3Eg1s3ZGQcAiogtRGdmDkHndZubahGy006pngws28QemGXfUXztO
+         5K9eBs3iyT1v1ln2s5csnqkRodbD+MERlZjYXCNN+AtCM695Y4RSnsBGbgeSYEovMNSH
+         x5PbDyakRrqhqY6pPewW9epOvZpcTdu/fk2/Gc6+w6DSDzaWglMgRoLNBckVXkRbWIJ6
+         NORvUDJ3qpQWc/DRshNZC7Hz3WxKmuSlWJzcunnPwBePmgG9l2owhnJpSn/Xw4DKkkTf
+         QfbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=SBE6KQP37CWnde/CbhtlOyjyXw1Api0n+yun7sxgR/k=;
-        b=eddJLAd75HitE8/jN9dNeWrqua8OkBdxZ8ElIRFcKRfjX+hOinXd+Y+xO19Pz6cnV+
-         VKI0scJXc/DEQrPc392L3Kf/6KaZW+2ynWcFm5USoMWJHy81+TSm0j+1ygdNAOc5hCZ4
-         0QOQadZcOjl7JC5IF/WCQ3MSVrFk985Tlu7EHb09isx6IfsrsaPjinS5DVZFrU32wY8O
-         qownZdtFE+7De2d3u4CA96efn7h736ue5GyHgLSHSMk4bE6UHahi48u0pS4/vPnK5p8W
-         ONvV1peS5lD/PT3CYJFPPzfELkTPzpn/qLVco6cxmaRHx98gU9QqmSFe+NdQg0Gbu+7h
-         c+TA==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:references:cc:to:subject;
+        bh=v7JD9BWcaiTHXH7Jlm9a1ZR0rq9nhZ2a94mPlbGkLK4=;
+        b=Xtk4JaOMjmAt6suuWFq8MPuTcMBMjujvPc9TapYwvw4+Ump7PM++DQdihMC0tcIeec
+         tFpsn+J5Y0oaEU2883jwK6PnMupjEbO9WAsMMu/pZipF4HiCLq6mTgnKfD72LWJzWld+
+         2kT5T12gg9d/uhjr0uHdZUs5SrEXl3mM4K/E8TqUyHPr2aRVfY5pM8RdYkJ9N4IbWAvU
+         7H/sxmIKD/CWvrMGVxI0I3tmYJVDcjS9Q4N9khJ9O6DhDxAOuL8u38yHjdY7PUR2srHj
+         l0QUrgt5rM36Oc4nmO3lwrYuKDYMu3U+gunB4loD0AqtmLoT9qqd4zOlOgU4HvFA0RjD
+         2iwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=nauJea3z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k128si8051953ybc.249.2022.01.03.11.58.39
+        by mx.google.com with ESMTPS id k16si23492835ybf.410.2022.01.03.18.06.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jan 2022 11:58:39 -0800 (PST)
+        Mon, 03 Jan 2022 18:06:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=nauJea3z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:35168 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:38438 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n4TTa-0005UF-1X
-	for alex.bennee@linaro.org; Mon, 03 Jan 2022 14:58:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58218)
+	id 1n4ZDA-00061U-EL
+	for alex.bennee@linaro.org; Mon, 03 Jan 2022 21:06:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49520)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1n4TTI-0005U3-2a; Mon, 03 Jan 2022 14:58:20 -0500
-Received: from [2607:f8b0:4864:20::102d] (port=35769
- helo=mail-pj1-x102d.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1n4TTG-0005no-M5; Mon, 03 Jan 2022 14:58:19 -0500
-Received: by mail-pj1-x102d.google.com with SMTP id
- r16-20020a17090a0ad000b001b276aa3aabso25409949pje.0; 
- Mon, 03 Jan 2022 11:58:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=SBE6KQP37CWnde/CbhtlOyjyXw1Api0n+yun7sxgR/k=;
- b=nauJea3zM8Oh5iPcBvoOGPIT0Y9mqeYl98xfD0LoR85OkqdJW5c2GQH5w7LSYJYVOD
- y9R77UuvjdlBd4c/l+e2XwMmf6QNTbMfqYreKWkU1dvsNP6V2lMdtWpOHNdfsdAbBn3t
- 84Kxvi9sJ5wpgivLrWLDACDyzA6JFqi9kVHWX4q6TqpoFtSJgMrkmncUZofpCl3QFdkv
- qQQ3aWP+YhTVTl9TXK4HL+s6msDF4yPZLhcbc3s1RTyJ7Se/QuwuSFLOaNYdqrdHf9Bn
- aGbMVl1GPoXh4GWsaiGJ3HBOrexYF0zAaK+jZd+bVf5v0blyswIiVGK6+2r2x4pn76ZI
- ZPfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=SBE6KQP37CWnde/CbhtlOyjyXw1Api0n+yun7sxgR/k=;
- b=ac4OWKJk7BfNJbmnE5Z/lhB96WBgBLKQw8IlIW1j4L/b9/U6bjNNffcsBYO9b2Wi9N
- dcXLAWCDSTfZb/+uBQWVm3aIQGGhjXCGnYzS//eZwKWbNoI/1orrPYfxkX/x++XVCE6c
- 9bA4ng3T7K7MMi6ExmCJAo72kHtToxMrY7bLSlr4C3q68ROjw2A+RpX3Sv+0LQarZwCs
- PeO9qI6oGccXhOgyo+KrnVKAarFTRIKJI+61BJ6h66NOBOK1+dCEx+HhrJuZSByiMvYM
- IMxHe8SdOC2kuk8JfqBx/TIvY2dF0Pc0nZeQPqzFWzQCJQuiJcURcXD68gsPJ28g9mfb
- /Zhg==
-X-Gm-Message-State: AOAM531GVtutlCA5rot6ECILv2W0Vxx8/GW5U3s7bMjwmBQfTj1S+78U
- uMV0QBia3flSfiaIEFAA5Jg=
-X-Received: by 2002:a17:90a:fe0b:: with SMTP id
- ck11mr57853472pjb.22.1641239896904; 
- Mon, 03 Jan 2022 11:58:16 -0800 (PST)
-Received: from [192.168.1.37] (26.red-83-50-86.dynamicip.rima-tde.net.
- [83.50.86.26])
- by smtp.gmail.com with ESMTPSA id b9sm41473192pfm.127.2022.01.03.11.58.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Jan 2022 11:58:16 -0800 (PST)
-Message-ID: <9f571604-6999-d12a-ac6d-ea461bf2fd64@amsat.org>
-Date: Mon, 3 Jan 2022 20:58:12 +0100
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1n4ZCz-0005yZ-F2; Mon, 03 Jan 2022 21:05:53 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:4153)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1n4ZCw-0003zn-IY; Mon, 03 Jan 2022 21:05:53 -0500
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4JSbXX0PKGz9rx2;
+ Tue,  4 Jan 2022 10:04:44 +0800 (CST)
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2308.20; Tue, 4 Jan 2022 10:05:44 +0800
+Subject: Re: [PATCH v6 3/7] hw/acpi/aml-build: Improve scalability of PPTT
+ generation
+To: Andrew Jones <drjones@redhat.com>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>, "Michael S . Tsirkin" <mst@redhat.com>, Igor
+ Mammedov <imammedo@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>, Ani
+ Sinha <ani@anisinha.ca>, Eric Auger <eauger@redhat.com>,
+ <wanghaibin.wang@huawei.com>
+References: <20220103084636.2496-1-wangyanan55@huawei.com>
+ <20220103084636.2496-4-wangyanan55@huawei.com>
+ <20220103112407.p7aep3yqnlhevylc@gator>
+Message-ID: <50b8d6d9-8ed1-5a25-cad3-7c3d6e8fafed@huawei.com>
+Date: Tue, 4 Jan 2022 10:05:43 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.4.1
-Subject: Re: [PATCH 3/4] hw/arm: add i2c muxes to kudo-bmc
+In-Reply-To: <20220103112407.p7aep3yqnlhevylc@gator>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-To: Patrick Venture <venture@google.com>, peter.maydell@linaro.org
-References: <20220102215844.2888833-1-venture@google.com>
- <20220102215844.2888833-4-venture@google.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220102215844.2888833-4-venture@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102d
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102d.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.354,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme704-chm.china.huawei.com (10.1.199.100) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -56
+X-Spam_score: -5.7
+X-Spam_bar: -----
+X-Spam_report: (-5.7 / 5.0 requ) NICE_REPLY_A=-3.354, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -126,17 +100,138 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: wuhaotsh@google.com, titusr@google.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, crauer@google.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9hCh8YoTrVAC
+Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
+From:  "wangyanan (Y)" via <qemu-arm@nongnu.org>
+X-TUID: yk8ywri7+RDE
 
-On 2/1/22 22:58, Patrick Venture wrote:
-> Signed-off-by: Patrick Venture <venture@google.com>
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> ---
->   hw/arm/npcm7xx_boards.c | 9 +++++++++
->   1 file changed, 9 insertions(+)
+Hi Drew,
+Thanks for your review.
+On 2022/1/3 19:24, Andrew Jones wrote:
+> On Mon, Jan 03, 2022 at 04:46:32PM +0800, Yanan Wang wrote:
+>> Currently we generate a PPTT table of n-level processor hierarchy
+>> with n-level loops in build_pptt(). It works fine as now there are
+>> only three CPU topology parameters. But the code may become less
+>> scalable with the processor hierarchy levels increasing.
+>>
+>> This patch only improves the scalability of build_pptt by reducing
+>> the loops, and intends to make no functional change.
+>>
+>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+>> ---
+>>   hw/acpi/aml-build.c | 50 +++++++++++++++++++++++++++++----------------
+>>   1 file changed, 32 insertions(+), 18 deletions(-)
+>>
+>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+>> index b3b3310df3..be3851be36 100644
+>> --- a/hw/acpi/aml-build.c
+>> +++ b/hw/acpi/aml-build.c
+>> @@ -2001,7 +2001,10 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+>>   void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>>                   const char *oem_id, const char *oem_table_id)
+>>   {
+>> -    int pptt_start = table_data->len;
+>> +    GQueue *list = g_queue_new();
+>> +    guint pptt_start = table_data->len;
+>> +    guint father_offset;
+> "parent_offset" would be more conventional.
+Apparently... I will rename it.
+>> +    guint length, i;
+>>       int uid = 0;
+>>       int socket;
+>>       AcpiTable table = { .sig = "PPTT", .rev = 2,
+>> @@ -2010,9 +2013,8 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>>       acpi_table_begin(&table, table_data);
+>>   
+>>       for (socket = 0; socket < ms->smp.sockets; socket++) {
+>> -        uint32_t socket_offset = table_data->len - pptt_start;
+>> -        int core;
+>> -
+>> +        g_queue_push_tail(list,
+>> +            GUINT_TO_POINTER(table_data->len - pptt_start));
+>>           build_processor_hierarchy_node(
+>>               table_data,
+>>               /*
+>> @@ -2021,35 +2023,47 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>>                */
+>>               (1 << 0),
+>>               0, socket, NULL, 0);
+>> +    }
+>>   
+>> -        for (core = 0; core < ms->smp.cores; core++) {
+>> -            uint32_t core_offset = table_data->len - pptt_start;
+>> -            int thread;
+>> +    length = g_queue_get_length(list);
+>> +    for (i = 0; i < length; i++) {
+>> +        int core;
+>>   
+>> +        father_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
+>> +        for (core = 0; core < ms->smp.cores; core++) {
+>>               if (ms->smp.threads > 1) {
+>> +                g_queue_push_tail(list,
+>> +                    GUINT_TO_POINTER(table_data->len - pptt_start));
+>>                   build_processor_hierarchy_node(
+>>                       table_data,
+>>                       (0 << 0), /* not a physical package */
+>> -                    socket_offset, core, NULL, 0);
+>> -
+>> -                for (thread = 0; thread < ms->smp.threads; thread++) {
+>> -                    build_processor_hierarchy_node(
+>> -                        table_data,
+>> -                        (1 << 1) | /* ACPI Processor ID valid */
+>> -                        (1 << 2) | /* Processor is a Thread */
+>> -                        (1 << 3),  /* Node is a Leaf */
+>> -                        core_offset, uid++, NULL, 0);
+>> -                }
+>> +                    father_offset, core, NULL, 0);
+>>               } else {
+>>                   build_processor_hierarchy_node(
+>>                       table_data,
+>>                       (1 << 1) | /* ACPI Processor ID valid */
+>>                       (1 << 3),  /* Node is a Leaf */
+>> -                    socket_offset, uid++, NULL, 0);
+>> +                    father_offset, uid++, NULL, 0);
+>>               }
+>>           }
+>>       }
+>>   
+>> +    length = g_queue_get_length(list);
+>> +    for (i = 0; i < length; i++) {
+>> +        int thread;
+>> +
+>> +        father_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
+>> +        for (thread = 0; thread < ms->smp.threads; thread++) {
+>> +            build_processor_hierarchy_node(
+>> +                table_data,
+>> +                (1 << 1) | /* ACPI Processor ID valid */
+>> +                (1 << 2) | /* Processor is a Thread */
+>> +                (1 << 3),  /* Node is a Leaf */
+>> +                father_offset, uid++, NULL, 0);
+>> +        }
+>> +    }
+>> +
+>> +    g_queue_free(list);
+>>       acpi_table_end(linker, &table);
+>>   }
+> This patch actually increases the number of loops, since we need to visit
+> higher hierarchical nodes twice (once to enqueue and once to dequeue).
+Yes, we actually need to access the higher hierarchical node's offset twice.
+But that may not be a problem since numbers of topology parameters are
+not so huge that we need to consider the performance.
+> We
+> do reduce code indentation and it looks like we could more easily skip
+> hierarchy levels we don't want, though.
+Yes, just as you said. The commit message doesn't describe the motivation
+well. This patch aims to reduce the increasing code indentation because of
+increasing nested loops, and consequently it's a bit easier to extend with
+new topology level.
+> While my impulse is to say we
+> should just keep this simple and add another nested loop for clusters, I
+> guess I'm OK with this too.
+Thank you!
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>
+Thanks,
+Yanan
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

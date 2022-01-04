@@ -1,63 +1,63 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10671044lfb;
-        Mon, 3 Jan 2022 18:06:05 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJydZxgwiSmTylcDajj6vVEfV80md9yxNie+yLaRc28cw/2ACI05P6R2NqXZ6f4gGQa0d2MU
-X-Received: by 2002:a25:1bd5:: with SMTP id b204mr15114513ybb.552.1641261965009;
-        Mon, 03 Jan 2022 18:06:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641261965; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10671478lfb;
+        Mon, 3 Jan 2022 18:07:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwF9ube0z4BnO6Xwc78S3DIO2DL3FpUL38dMEOtckQ6dpIMyIYzj/BnoYRifGor527Tyv3b
+X-Received: by 2002:a25:4197:: with SMTP id o145mr45279679yba.80.1641262021778;
+        Mon, 03 Jan 2022 18:07:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641262021; cv=none;
         d=google.com; s=arc-20160816;
-        b=BF+fahNwKnbh0lmZ714ZaWgNxNfrQYUwu/AjVm0hRLR8vTQT1XrFhTBvJapiMebSwC
-         b4jNb1AOQvzKgEcv3Eg1s3ZGQcAiogtRGdmDkHndZubahGy006pngws28QemGXfUXztO
-         5K9eBs3iyT1v1ln2s5csnqkRodbD+MERlZjYXCNN+AtCM695Y4RSnsBGbgeSYEovMNSH
-         x5PbDyakRrqhqY6pPewW9epOvZpcTdu/fk2/Gc6+w6DSDzaWglMgRoLNBckVXkRbWIJ6
-         NORvUDJ3qpQWc/DRshNZC7Hz3WxKmuSlWJzcunnPwBePmgG9l2owhnJpSn/Xw4DKkkTf
-         QfbA==
+        b=P+Qpgn+nvwpaS9Gk2Ae4xre+i+RffopKLcqeAHkZbXpO7PlULJYc5Wz0sGxdrv2hS/
+         GHFXNDEkk/mMkA+VusMwy78ZRsPmrvlYx0c6kr2Cj86YaffXrhIa4bf70AneEKS/BqU+
+         oNPx82cVsqT91LGxCQD9II1p2kUGQzH5IbruOtiJUCi9P+fcTiuaTkxzjUZu5EEzHrfE
+         OU7w9na5i/i1zySapJrItY9WNmlYVtUGCcJbLqxIgFJ8EoaHHZkrwnb3y3029Ct1PefS
+         rY7t68l6taaYbakeAF2a73jP7O+Z5xuLU48cy93r7gjJQwNwyh9DR7XAUzE6oBtTJltq
+         l1qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:references:cc:to:subject;
-        bh=v7JD9BWcaiTHXH7Jlm9a1ZR0rq9nhZ2a94mPlbGkLK4=;
-        b=Xtk4JaOMjmAt6suuWFq8MPuTcMBMjujvPc9TapYwvw4+Ump7PM++DQdihMC0tcIeec
-         tFpsn+J5Y0oaEU2883jwK6PnMupjEbO9WAsMMu/pZipF4HiCLq6mTgnKfD72LWJzWld+
-         2kT5T12gg9d/uhjr0uHdZUs5SrEXl3mM4K/E8TqUyHPr2aRVfY5pM8RdYkJ9N4IbWAvU
-         7H/sxmIKD/CWvrMGVxI0I3tmYJVDcjS9Q4N9khJ9O6DhDxAOuL8u38yHjdY7PUR2srHj
-         l0QUrgt5rM36Oc4nmO3lwrYuKDYMu3U+gunB4loD0AqtmLoT9qqd4zOlOgU4HvFA0RjD
-         2iwg==
+        bh=jJ+tkKE/g313Edc87FM4rY+ItHLbH6VFZbu4JrGamg0=;
+        b=AwxjRXD+fHomA8aDgGigjLOrOu4g2RxlTQKbEcBEwGxkVCbMsl2cV+xWDHKBwpozyW
+         VitlxGJkiFowgCBRNCjXRgkVfpzLkAI1//1rnADPI/4Hom6+ScMiPmZSwtPpcvhstJPf
+         cB6KRKmSvikBXxti4B/Pq5eHwAzu1G6/T4Yxho17bzha0Zv4CLhYJ0WhX9VrXyxhfdfQ
+         Fqv4v8LUZyVPHr+RdWOS/YZeOgz53GF3JNM7Ycy707r0HtdgkCpM5YhmjR9EaBoErI0q
+         WTrLFkup+OexeUHdt4shfk7IYOPD7VJsbjaWJDzejOLJLqLVx7ias7yY4sGW1ZpablXh
+         B24w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k16si23492835ybf.410.2022.01.03.18.06.04
+        by mx.google.com with ESMTPS id s184si21649066ybc.255.2022.01.03.18.07.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jan 2022 18:06:05 -0800 (PST)
+        Mon, 03 Jan 2022 18:07:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:38438 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39526 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n4ZDA-00061U-EL
-	for alex.bennee@linaro.org; Mon, 03 Jan 2022 21:06:04 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49520)
+	id 1n4ZDz-0006js-1q
+	for alex.bennee@linaro.org; Mon, 03 Jan 2022 21:06:56 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49600)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n4ZCz-0005yZ-F2; Mon, 03 Jan 2022 21:05:53 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:4153)
+ id 1n4ZDR-0006hn-SL; Mon, 03 Jan 2022 21:06:21 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:3518)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n4ZCw-0003zn-IY; Mon, 03 Jan 2022 21:05:53 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.54])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4JSbXX0PKGz9rx2;
- Tue,  4 Jan 2022 10:04:44 +0800 (CST)
+ id 1n4ZDP-0004Tu-2W; Mon, 03 Jan 2022 21:06:21 -0500
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.53])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4JSbVL0r2tzZdrs;
+ Tue,  4 Jan 2022 10:02:50 +0800 (CST)
 Received: from [10.174.187.128] (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.20; Tue, 4 Jan 2022 10:05:44 +0800
-Subject: Re: [PATCH v6 3/7] hw/acpi/aml-build: Improve scalability of PPTT
- generation
+ 15.1.2308.20; Tue, 4 Jan 2022 10:06:15 +0800
+Subject: Re: [PATCH v6 4/7] hw/arm/virt-acpi-build: Make an ARM specific PPTT
+ generator
 To: Andrew Jones <drjones@redhat.com>
 CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Peter Maydell
  <peter.maydell@linaro.org>, "Michael S . Tsirkin" <mst@redhat.com>, Igor
@@ -65,14 +65,14 @@ CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Peter Maydell
  Sinha <ani@anisinha.ca>, Eric Auger <eauger@redhat.com>,
  <wanghaibin.wang@huawei.com>
 References: <20220103084636.2496-1-wangyanan55@huawei.com>
- <20220103084636.2496-4-wangyanan55@huawei.com>
- <20220103112407.p7aep3yqnlhevylc@gator>
-Message-ID: <50b8d6d9-8ed1-5a25-cad3-7c3d6e8fafed@huawei.com>
-Date: Tue, 4 Jan 2022 10:05:43 +0800
+ <20220103084636.2496-5-wangyanan55@huawei.com>
+ <20220103113006.yp3kmaqoh7darhnq@gator>
+Message-ID: <fe505a8a-d1e0-22a2-7093-4085077fcdcf@huawei.com>
+Date: Tue, 4 Jan 2022 10:06:14 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20220103112407.p7aep3yqnlhevylc@gator>
+In-Reply-To: <20220103113006.yp3kmaqoh7darhnq@gator>
 Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 7bit
 Content-Language: en-US
@@ -80,8 +80,8 @@ X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggeme704-chm.china.huawei.com (10.1.199.100) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
 X-Spam_score_int: -56
 X-Spam_score: -5.7
 X-Spam_bar: -----
@@ -104,98 +104,208 @@ Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
 From:  "wangyanan (Y)" via <qemu-arm@nongnu.org>
-X-TUID: yk8ywri7+RDE
+X-TUID: JAxTzQH8k/9B
 
 Hi Drew,
-Thanks for your review.
-On 2022/1/3 19:24, Andrew Jones wrote:
-> On Mon, Jan 03, 2022 at 04:46:32PM +0800, Yanan Wang wrote:
->> Currently we generate a PPTT table of n-level processor hierarchy
->> with n-level loops in build_pptt(). It works fine as now there are
->> only three CPU topology parameters. But the code may become less
->> scalable with the processor hierarchy levels increasing.
->>
->> This patch only improves the scalability of build_pptt by reducing
->> the loops, and intends to make no functional change.
->>
+
+On 2022/1/3 19:30, Andrew Jones wrote:
+> On Mon, Jan 03, 2022 at 04:46:33PM +0800, Yanan Wang wrote:
+>> We have a generic build_pptt() in hw/acpi/aml-build.c but it's
+>> currently only used in ARM acpi initialization. Now we are going
+>> to support the new CPU cluster parameter which is currently only
+>> supported by ARM, it won't be a very good idea to add it to the
+>> generic build_pptt() as it will make the code complex and hard
+>> to maintain especially when we also support CPU cache topology
+>> hierarchy in build_pptt() too. Note that the cache topology
+>> design also varies between different CPU targets.
+> It's a shame to remove generic ACPI table. I'm not sure what
+> will be best when addressing the cache topology, but for the
+> clusters it seems like we should be able to easily skip them
+> when has_clusters is false.
+Hm yes. Currently for clusters alone, a check of 
+ms->smp_props.clusters_supported
+would be enough. So I guess it's preferred that we should keep the
+generic PPTT, right?
+>> So an ARM specific PPTT generator becomes necessary now. Given
+>> that the generic one is currently only used by ARM, let's just
+>> move build_pptt() from aml-build.c to virt-acpi-build.c with
+>> minor update.
+> Please state what the minor update is? I see the oem parameter
+> change, but I want to be sure that's the one you're referring
+> to.
+Yes, I changed the function parameter "ms" to "vms". That's the
+whole update.
+
+Thanks,
+Yanan
 >> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 >> ---
->>   hw/acpi/aml-build.c | 50 +++++++++++++++++++++++++++++----------------
->>   1 file changed, 32 insertions(+), 18 deletions(-)
+>>   hw/acpi/aml-build.c         | 80 ++-----------------------------------
+>>   hw/arm/virt-acpi-build.c    | 77 ++++++++++++++++++++++++++++++++++-
+>>   include/hw/acpi/aml-build.h |  5 ++-
+>>   3 files changed, 81 insertions(+), 81 deletions(-)
 >>
 >> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index b3b3310df3..be3851be36 100644
+>> index be3851be36..040fbc9b4b 100644
 >> --- a/hw/acpi/aml-build.c
 >> +++ b/hw/acpi/aml-build.c
->> @@ -2001,7 +2001,10 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
->>   void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->>                   const char *oem_id, const char *oem_table_id)
+>> @@ -1968,10 +1968,9 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>>    * ACPI spec, Revision 6.3
+>>    * 5.2.29.1 Processor hierarchy node structure (Type 0)
+>>    */
+>> -static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+>> -                                           uint32_t parent, uint32_t id,
+>> -                                           uint32_t *priv_rsrc,
+>> -                                           uint32_t priv_num)
+>> +void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+>> +                                    uint32_t parent, uint32_t id,
+>> +                                    uint32_t *priv_rsrc, uint32_t priv_num)
 >>   {
->> -    int pptt_start = table_data->len;
+>>       int i;
+>>   
+>> @@ -1994,79 +1993,6 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+>>       }
+>>   }
+>>   
+>> -/*
+>> - * ACPI spec, Revision 6.3
+>> - * 5.2.29 Processor Properties Topology Table (PPTT)
+>> - */
+>> -void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>> -                const char *oem_id, const char *oem_table_id)
+>> -{
+>> -    GQueue *list = g_queue_new();
+>> -    guint pptt_start = table_data->len;
+>> -    guint father_offset;
+>> -    guint length, i;
+>> -    int uid = 0;
+>> -    int socket;
+>> -    AcpiTable table = { .sig = "PPTT", .rev = 2,
+>> -                        .oem_id = oem_id, .oem_table_id = oem_table_id };
+>> -
+>> -    acpi_table_begin(&table, table_data);
+>> -
+>> -    for (socket = 0; socket < ms->smp.sockets; socket++) {
+>> -        g_queue_push_tail(list,
+>> -            GUINT_TO_POINTER(table_data->len - pptt_start));
+>> -        build_processor_hierarchy_node(
+>> -            table_data,
+>> -            /*
+>> -             * Physical package - represents the boundary
+>> -             * of a physical package
+>> -             */
+>> -            (1 << 0),
+>> -            0, socket, NULL, 0);
+>> -    }
+>> -
+>> -    length = g_queue_get_length(list);
+>> -    for (i = 0; i < length; i++) {
+>> -        int core;
+>> -
+>> -        father_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
+>> -        for (core = 0; core < ms->smp.cores; core++) {
+>> -            if (ms->smp.threads > 1) {
+>> -                g_queue_push_tail(list,
+>> -                    GUINT_TO_POINTER(table_data->len - pptt_start));
+>> -                build_processor_hierarchy_node(
+>> -                    table_data,
+>> -                    (0 << 0), /* not a physical package */
+>> -                    father_offset, core, NULL, 0);
+>> -            } else {
+>> -                build_processor_hierarchy_node(
+>> -                    table_data,
+>> -                    (1 << 1) | /* ACPI Processor ID valid */
+>> -                    (1 << 3),  /* Node is a Leaf */
+>> -                    father_offset, uid++, NULL, 0);
+>> -            }
+>> -        }
+>> -    }
+>> -
+>> -    length = g_queue_get_length(list);
+>> -    for (i = 0; i < length; i++) {
+>> -        int thread;
+>> -
+>> -        father_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
+>> -        for (thread = 0; thread < ms->smp.threads; thread++) {
+>> -            build_processor_hierarchy_node(
+>> -                table_data,
+>> -                (1 << 1) | /* ACPI Processor ID valid */
+>> -                (1 << 2) | /* Processor is a Thread */
+>> -                (1 << 3),  /* Node is a Leaf */
+>> -                father_offset, uid++, NULL, 0);
+>> -        }
+>> -    }
+>> -
+>> -    g_queue_free(list);
+>> -    acpi_table_end(linker, &table);
+>> -}
+>> -
+>>   /* build rev1/rev3/rev5.1 FADT */
+>>   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>>                   const char *oem_id, const char *oem_table_id)
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index d0f4867fdf..3ce7680393 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -808,6 +808,80 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>       acpi_table_end(linker, &table);
+>>   }
+>>   
+>> +/*
+>> + * ACPI spec, Revision 6.3
+>> + * 5.2.29 Processor Properties Topology Table (PPTT)
+>> + */
+>> +static void
+>> +build_pptt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>> +{
+>> +    MachineState *ms = MACHINE(vms);
 >> +    GQueue *list = g_queue_new();
 >> +    guint pptt_start = table_data->len;
 >> +    guint father_offset;
-> "parent_offset" would be more conventional.
-Apparently... I will rename it.
 >> +    guint length, i;
->>       int uid = 0;
->>       int socket;
->>       AcpiTable table = { .sig = "PPTT", .rev = 2,
->> @@ -2010,9 +2013,8 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->>       acpi_table_begin(&table, table_data);
->>   
->>       for (socket = 0; socket < ms->smp.sockets; socket++) {
->> -        uint32_t socket_offset = table_data->len - pptt_start;
->> -        int core;
->> -
+>> +    int uid = 0;
+>> +    int socket;
+>> +    AcpiTable table = { .sig = "PPTT", .rev = 2, .oem_id = vms->oem_id,
+>> +                        .oem_table_id = vms->oem_table_id };
+>> +
+>> +    acpi_table_begin(&table, table_data);
+>> +
+>> +    for (socket = 0; socket < ms->smp.sockets; socket++) {
 >> +        g_queue_push_tail(list,
 >> +            GUINT_TO_POINTER(table_data->len - pptt_start));
->>           build_processor_hierarchy_node(
->>               table_data,
->>               /*
->> @@ -2021,35 +2023,47 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->>                */
->>               (1 << 0),
->>               0, socket, NULL, 0);
+>> +        build_processor_hierarchy_node(
+>> +            table_data,
+>> +            /*
+>> +             * Physical package - represents the boundary
+>> +             * of a physical package
+>> +             */
+>> +            (1 << 0),
+>> +            0, socket, NULL, 0);
 >> +    }
->>   
->> -        for (core = 0; core < ms->smp.cores; core++) {
->> -            uint32_t core_offset = table_data->len - pptt_start;
->> -            int thread;
+>> +
 >> +    length = g_queue_get_length(list);
 >> +    for (i = 0; i < length; i++) {
 >> +        int core;
->>   
+>> +
 >> +        father_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
 >> +        for (core = 0; core < ms->smp.cores; core++) {
->>               if (ms->smp.threads > 1) {
+>> +            if (ms->smp.threads > 1) {
 >> +                g_queue_push_tail(list,
 >> +                    GUINT_TO_POINTER(table_data->len - pptt_start));
->>                   build_processor_hierarchy_node(
->>                       table_data,
->>                       (0 << 0), /* not a physical package */
->> -                    socket_offset, core, NULL, 0);
->> -
->> -                for (thread = 0; thread < ms->smp.threads; thread++) {
->> -                    build_processor_hierarchy_node(
->> -                        table_data,
->> -                        (1 << 1) | /* ACPI Processor ID valid */
->> -                        (1 << 2) | /* Processor is a Thread */
->> -                        (1 << 3),  /* Node is a Leaf */
->> -                        core_offset, uid++, NULL, 0);
->> -                }
+>> +                build_processor_hierarchy_node(
+>> +                    table_data,
+>> +                    (0 << 0), /* not a physical package */
 >> +                    father_offset, core, NULL, 0);
->>               } else {
->>                   build_processor_hierarchy_node(
->>                       table_data,
->>                       (1 << 1) | /* ACPI Processor ID valid */
->>                       (1 << 3),  /* Node is a Leaf */
->> -                    socket_offset, uid++, NULL, 0);
+>> +            } else {
+>> +                build_processor_hierarchy_node(
+>> +                    table_data,
+>> +                    (1 << 1) | /* ACPI Processor ID valid */
+>> +                    (1 << 3),  /* Node is a Leaf */
 >> +                    father_offset, uid++, NULL, 0);
->>               }
->>           }
->>       }
->>   
+>> +            }
+>> +        }
+>> +    }
+>> +
 >> +    length = g_queue_get_length(list);
 >> +    for (i = 0; i < length; i++) {
 >> +        int thread;
@@ -212,26 +322,43 @@ Apparently... I will rename it.
 >> +    }
 >> +
 >> +    g_queue_free(list);
->>       acpi_table_end(linker, &table);
->>   }
-> This patch actually increases the number of loops, since we need to visit
-> higher hierarchical nodes twice (once to enqueue and once to dequeue).
-Yes, we actually need to access the higher hierarchical node's offset twice.
-But that may not be a problem since numbers of topology parameters are
-not so huge that we need to consider the performance.
-> We
-> do reduce code indentation and it looks like we could more easily skip
-> hierarchy levels we don't want, though.
-Yes, just as you said. The commit message doesn't describe the motivation
-well. This patch aims to reduce the increasing code indentation because of
-increasing nested loops, and consequently it's a bit easier to extend with
-new topology level.
-> While my impulse is to say we
-> should just keep this simple and add another nested loop for clusters, I
-> guess I'm OK with this too.
-Thank you!
-> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>> +    acpi_table_end(linker, &table);
+>> +}
+>> +
+>>   /* FADT */
+>>   static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
+>>                               VirtMachineState *vms, unsigned dsdt_tbl_offset)
+>> @@ -953,8 +1027,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>>   
+>>       if (!vmc->no_cpu_topology) {
+>>           acpi_add_table(table_offsets, tables_blob);
+>> -        build_pptt(tables_blob, tables->linker, ms,
+>> -                   vms->oem_id, vms->oem_table_id);
+>> +        build_pptt(tables_blob, tables->linker, vms);
+>>       }
+>>   
+>>       acpi_add_table(table_offsets, tables_blob);
+>> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+>> index 8346003a22..2c457c8f17 100644
+>> --- a/include/hw/acpi/aml-build.h
+>> +++ b/include/hw/acpi/aml-build.h
+>> @@ -489,8 +489,9 @@ void build_srat_memory(GArray *table_data, uint64_t base,
+>>   void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>>                   const char *oem_id, const char *oem_table_id);
+>>   
+>> -void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+>> -                const char *oem_id, const char *oem_table_id);
+>> +void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+>> +                                    uint32_t parent, uint32_t id,
+>> +                                    uint32_t *priv_rsrc, uint32_t priv_num);
+>>   
+>>   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>>                   const char *oem_id, const char *oem_table_id);
+>> -- 
+>> 2.27.0
+>>
+> Thanks,
+> drew
 >
-Thanks,
-Yanan
+> .
 

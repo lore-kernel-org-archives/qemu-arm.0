@@ -1,268 +1,151 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp10735680lfb;
-        Mon, 3 Jan 2022 20:51:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwVc811sE0rjhpO9mVGFpot9+zpzMhVr1fmQNl4nGxkvs9OGa2pgi2FbLxX/5hLk+Xe7t72
-X-Received: by 2002:a25:d056:: with SMTP id h83mr47253322ybg.732.1641271912527;
-        Mon, 03 Jan 2022 20:51:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641271912; cv=none;
-        d=google.com; s=arc-20160816;
-        b=nuf+maqttGm9kkIzZKtwHN0o/G/+Jfd2hRInCa4rc0yuw4tNFXvBoIPLAO6epUxNvv
-         +hvc60T4EdolXFZayvxPQXZVrusHfSjSX5tmhzBKfN41UNvDbHzFxj/MhLfaLVgdyKTB
-         4aBjOBGl8l7LqkvhQTXfocrliqgm5cGUJM2EwstIwhzFGQaSjriTNMzCQSaYsQvUhXRr
-         3BfjuG+1ZTECxJSuyjmtVZtDJIaefMggVAqWxLHX7h0B4T0GmV4FKRq7IoiyjJ0fsszJ
-         59mznxyLqj1QYcKTFxaaNsnfNUBhEGN0fP9X1dmImYS5YLY+DjIlIud8cSS/uw1QNCiJ
-         AcIA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:references:cc:to:subject;
-        bh=0ol9oAK5gEOCzW+yW+AbSfqVK+MWrDbFAM6uXAYmte4=;
-        b=0fVwUTIFUWD58mqzkH0WUehzFPtkgOdS7PGEzoanC5flW0lI3gL3J0T7I5W4mG7UVh
-         NdwuUOtBoLzDNDIxd794KdFE0AIkrwL1ryAC61NFfUf1NBmIsNHPHsS2r45R6HhiAWdQ
-         d/+r/a+kaZL/cMGBHT9y+vw+MUo3sKRjkQ9GHedm2p/NSQui3l+HzKIGBtKV2SpGrG5U
-         v9fLfMTdeVsGeass9zIc5GTwk/uvtMBMMd3iKEfX/UQZ8h25VBI+VbTpFdYHzGe6fpR7
-         gXZXOyvGe3D4fSqUoCkkeqtmKP1SJI8Vds9HrsTwQdGUzygMr7sCkFwIsJXaV+Zgq9uF
-         t4VQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y15si18041535ybk.163.2022.01.03.20.51.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jan 2022 20:51:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:40082 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n4bnb-0004jK-T7
-	for alex.bennee@linaro.org; Mon, 03 Jan 2022 23:51:51 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46208)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n4bnA-0004hK-IA; Mon, 03 Jan 2022 23:51:24 -0500
-Received: from szxga01-in.huawei.com ([45.249.212.187]:3519)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n4bn6-0004g6-IJ; Mon, 03 Jan 2022 23:51:24 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.55])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4JSg8h3NhVzZdrs;
- Tue,  4 Jan 2022 12:47:48 +0800 (CST)
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.20; Tue, 4 Jan 2022 12:51:13 +0800
-Subject: Re: [PATCH v6 7/7] tests/acpi/bios-table-test: Update expected
- virt/PPTT file
-To: Ani Sinha <ani@anisinha.ca>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>, "Michael S .
- Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, Eric Auger <eauger@redhat.com>,
- <wanghaibin.wang@huawei.com>
-References: <20220103084636.2496-1-wangyanan55@huawei.com>
- <20220103084636.2496-8-wangyanan55@huawei.com>
- <alpine.DEB.2.22.394.2201031730230.14895@anisinha-lenovo>
- <d9c1574f-ab24-012f-0224-ab52eb7c0fc8@huawei.com>
- <alpine.OSX.2.20.2201040956570.24803@athabasca.local>
-Message-ID: <7857eea2-92c0-3c1d-d690-5390326f5060@huawei.com>
-Date: Tue, 4 Jan 2022 12:51:13 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id k33sm2765825wms.21.2022.01.05.06.00.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Jan 2022 06:00:19 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 0B4571FFCD;
+	Wed,  5 Jan 2022 13:50:11 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: fam@euphon.net,
+	berrange@redhat.com,
+	f4bug@amsat.org,
+	aurelien@aurel32.net,
+	pbonzini@redhat.com,
+	stefanha@redhat.com,
+	crosa@redhat.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Heinrich Schuchardt <xypron.glpk@gmx.de>,
+	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+	Jerome Forissier <jerome@forissier.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:Virt)
+Subject: [PATCH  v1 21/34] hw/arm: add control knob to disable kaslr_seed via DTB
+Date: Wed,  5 Jan 2022 13:49:56 +0000
+Message-Id: <20220105135009.1584676-22-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220105135009.1584676-1-alex.bennee@linaro.org>
+References: <20220105135009.1584676-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <alpine.OSX.2.20.2201040956570.24803@athabasca.local>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme708-chm.china.huawei.com (10.1.199.104) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -56
-X-Spam_score: -5.7
-X-Spam_bar: -----
-X-Spam_report: (-5.7 / 5.0 requ) NICE_REPLY_A=-3.354, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
-From:  "wangyanan (Y)" via <qemu-arm@nongnu.org>
-X-TUID: On/YZ0TikRh5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: HOONSJ8E+7EP
 
+Generally a guest needs an external source of randomness to properly
+enable things like address space randomisation. However in a trusted
+boot environment where the firmware will cryptographically verify
+components having random data in the DTB will cause verification to
+fail. Add a control knob so we can prevent this being added to the
+system DTB.
 
-On 2022/1/4 12:27, Ani Sinha wrote:
->
-> On Tue, 4 Jan 2022, wangyanan (Y) wrote:
->
->> Hi Ani,
->> Thanks for your review.
->>
->> On 2022/1/3 20:01, Ani Sinha wrote:
->>> On Mon, 3 Jan 2022, Yanan Wang wrote:
->>>
->>>> Run ./tests/data/acpi/rebuild-expected-aml.sh from build directory
->>>> to update PPTT binary. Also empty bios-tables-test-allowed-diff.h.
->>>>
->>>> The disassembled differences between actual and expected PPTT:
->>>>
->>>>    /*
->>>>     * Intel ACPI Component Architecture
->>>>     * AML/ASL+ Disassembler version 20180810 (64-bit version)
->>>>     * Copyright (c) 2000 - 2018 Intel Corporation
->>>>     *
->>>> - * Disassembly of tests/data/acpi/virt/PPTT, Mon Oct 25 20:24:53 2021
->>>> + * Disassembly of /tmp/aml-BPI5B1, Mon Oct 25 20:24:53 2021
->>>>     *
->>>>     * ACPI Data Table [PPTT]
->>>>     *
->>>>     * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
->>>>     */
->>>>
->>>>    [000h 0000   4]                    Signature : "PPTT"    [Processor
->>>> Properties Topology Table]
->>>> -[004h 0004   4]                 Table Length : 0000004C
->>>> +[004h 0004   4]                 Table Length : 00000060
->>>>    [008h 0008   1]                     Revision : 02
->>>> -[009h 0009   1]                     Checksum : A8
->>>> +[009h 0009   1]                     Checksum : 48
->>>>    [00Ah 0010   6]                       Oem ID : "BOCHS "
->>>>    [010h 0016   8]                 Oem Table ID : "BXPC    "
->>>>    [018h 0024   4]                 Oem Revision : 00000001
->>>>    [01Ch 0028   4]              Asl Compiler ID : "BXPC"
->>>>    [020h 0032   4]        Asl Compiler Revision : 00000001
->>>>
->>>>    [024h 0036   1]                Subtable Type : 00 [Processor Hierarchy
->>>> Node]
->>>>    [025h 0037   1]                       Length : 14
->>>>    [026h 0038   2]                     Reserved : 0000
->>>>    [028h 0040   4]        Flags (decoded below) : 00000001
->>>>                                Physical package : 1
->>>>                         ACPI Processor ID valid : 0
->>>>    [02Ch 0044   4]                       Parent : 00000000
->>>>    [030h 0048   4]            ACPI Processor ID : 00000000
->>>>    [034h 0052   4]      Private Resource Number : 00000000
->>>>
->>>>    [038h 0056   1]                Subtable Type : 00 [Processor Hierarchy
->>>> Node]
->>>>    [039h 0057   1]                       Length : 14
->>>>    [03Ah 0058   2]                     Reserved : 0000
->>>> -[03Ch 0060   4]        Flags (decoded below) : 0000000A
->>>> +[03Ch 0060   4]        Flags (decoded below) : 00000000
->>>>                                Physical package : 0
->>>> -                     ACPI Processor ID valid : 1
->>>> +                     ACPI Processor ID valid : 0
->>> I do not know this very well but does the above two changes (flags and
->>> processor ID) makes sense?
->> Yes. I think this is exactly what we expected.
->> Above flags is for the newly inserted cluster node which is between
->> socket node and core node. Flag "Physical package" is 0 because
->> it does not represent the boundary of physical package. Flag
->> "ACPI Processor ID valid" is 0, because we don't need a valid ID
->> for a container in QEMU (cluster is container of CPU core) just
->> like socket node.
->>
->> "0000000A" originally comes from core node, which now is at
->> place [*] below.
->>
->> We can also read the reason why we don't need a valid ID for a
->> container in 099f2df2e6b "hw/acpi/aml-build: Add PPTT table".
-> Ok as long as we can explain it, I am good.
->
->>>>    [040h 0064   4]                       Parent : 00000024
->>>>    [044h 0068   4]            ACPI Processor ID : 00000000
->>>>    [048h 0072   4]      Private Resource Number : 00000000
->>>>
->>>> -Raw Table Data: Length 76 (0x4C)
->>>> +[04Ch 0076   1]                Subtable Type : 00 [Processor Hierarchy
->>>> Node]
->>>> +[04Dh 0077   1]                       Length : 14
->>>> +[04Eh 0078   2]                     Reserved : 0000
->>>> +[050h 0080   4]        Flags (decoded below) : 0000000A
->>>> +                            Physical package : 0
->>>> +                     ACPI Processor ID valid : 1
->>>> +[054h 0084   4]                       Parent : 00000038
->>>> +[058h 0088   4]            ACPI Processor ID : 00000000
->>>> +[05Ch 0092   4]      Private Resource Number : 00000000
->> [*] Information of core node.
->>
->> Thanks,
->> Yanan
->>>> +
->>>> +Raw Table Data: Length 96 (0x60)
->>>>
->>>> -    0000: 50 50 54 54 4C 00 00 00 02 A8 42 4F 43 48 53 20  //
->>>> PPTTL.....BOCHS
->>>> +    0000: 50 50 54 54 60 00 00 00 02 48 42 4F 43 48 53 20  //
->>>> PPTT`....HBOCHS
->>>>        0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC
->>>> ....BXPC
->>>>        0020: 01 00 00 00 00 14 00 00 01 00 00 00 00 00 00 00  //
->>>> ................
->>>> -    0030: 00 00 00 00 00 00 00 00 00 14 00 00 0A 00 00 00  //
->>>> ................
->>>> -    0040: 24 00 00 00 00 00 00 00 00 00 00 00              //
->>>> $...........
->>>> +    0030: 00 00 00 00 00 00 00 00 00 14 00 00 00 00 00 00  //
->>>> ................
->>>> +    0040: 24 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00  //
->>>> $...............
->>>> +    0050: 0A 00 00 00 38 00 00 00 00 00 00 00 00 00 00 00  //
->>>> ....8...........
->>>>
->>>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-> Reviewed-by: Ani Sinha <ani@anisinha.ca>
-Thank you.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Tested-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Acked-by: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+Acked-by: Jerome Forissier <jerome@forissier.org>
+Message-Id: <20211215120926.1696302-1-alex.bennee@linaro.org>
+---
+ docs/system/arm/virt.rst |  7 +++++++
+ include/hw/arm/virt.h    |  1 +
+ hw/arm/virt.c            | 32 ++++++++++++++++++++++++++++++--
+ 3 files changed, 38 insertions(+), 2 deletions(-)
 
-Yanan
->>>> ---
->>>>    tests/data/acpi/virt/PPTT                   | Bin 76 -> 96 bytes
->>>>    tests/qtest/bios-tables-test-allowed-diff.h |   1 -
->>>>    2 files changed, 1 deletion(-)
->>>>
->>>> diff --git a/tests/data/acpi/virt/PPTT b/tests/data/acpi/virt/PPTT
->>>> index
->>>> 7a1258ecf123555b24462c98ccbb76b4ac1d0c2b..f56ea63b369a604877374ad696c396e796ab1c83
->>>> 100644
->>>> GIT binary patch
->>>> delta 53
->>>> zcmV-50LuSNU<y!BR8(L90006=kqR;-00000Bme*a000000000002BZK3IG5AH~;_u
->>>> L0000000000uCW9Z
->>>>
->>>> delta 32
->>>> qcmV+*0N?*$ObSp?R8&j=00080kqR=APy`Gl00000000000001OcLdh}
->>>>
->>>> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h
->>>> b/tests/qtest/bios-tables-test-allowed-diff.h
->>>> index cb143a55a6..dfb8523c8b 100644
->>>> --- a/tests/qtest/bios-tables-test-allowed-diff.h
->>>> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
->>>> @@ -1,2 +1 @@
->>>>    /* List of comma-separated changed AML files to ignore */
->>>> -"tests/data/acpi/virt/PPTT",
->>>> --
->>>> 2.27.0
->>>>
->>>>
->>> .
->>
-> .
-
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 850787495b..c86a4808df 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -121,6 +121,13 @@ ras
+   Set ``on``/``off`` to enable/disable reporting host memory errors to a guest
+   using ACPI and guest external abort exceptions. The default is off.
+ 
++kaslr-dtb-seed
++  Set ``on``/``off`` to pass a random seed via the guest dtb to use for features
++  like address space randomisation. The default is ``on``. You will want
++  to disable it if your trusted boot chain will verify the DTB it is
++  passed. It would be the responsibility of the firmware to come up
++  with a seed and pass it on if it wants to.
++
+ Linux guest kernel configuration
+ """"""""""""""""""""""""""""""""
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index dc6b66ffc8..acd0665fe7 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -148,6 +148,7 @@ struct VirtMachineState {
+     bool virt;
+     bool ras;
+     bool mte;
++    bool kaslr_dtb_seed;
+     OnOffAuto acpi;
+     VirtGICType gic_version;
+     VirtIOMMUType iommu;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 6bce595aba..1781e47c76 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -247,11 +247,15 @@ static void create_fdt(VirtMachineState *vms)
+ 
+     /* /chosen must exist for load_dtb to fill in necessary properties later */
+     qemu_fdt_add_subnode(fdt, "/chosen");
+-    create_kaslr_seed(ms, "/chosen");
++    if (vms->kaslr_dtb_seed) {
++        create_kaslr_seed(ms, "/chosen");
++    }
+ 
+     if (vms->secure) {
+         qemu_fdt_add_subnode(fdt, "/secure-chosen");
+-        create_kaslr_seed(ms, "/secure-chosen");
++        if (vms->kaslr_dtb_seed) {
++            create_kaslr_seed(ms, "/secure-chosen");
++        }
+     }
+ 
+     /* Clock node, for the benefit of the UART. The kernel device tree
+@@ -2235,6 +2239,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
+     vms->its = value;
+ }
+ 
++static bool virt_get_kaslr_dtb_seed(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->kaslr_dtb_seed;
++}
++
++static void virt_set_kaslr_dtb_seed(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->kaslr_dtb_seed = value;
++}
++
+ static char *virt_get_oem_id(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+@@ -2764,6 +2782,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+                                           "Set on/off to enable/disable "
+                                           "ITS instantiation");
+ 
++    object_class_property_add_bool(oc, "kaslr-dtb-seed",
++                                   virt_get_kaslr_dtb_seed,
++                                   virt_set_kaslr_dtb_seed);
++    object_class_property_set_description(oc, "kaslr-dtb-seed",
++                                          "Set off to disable passing of kaslr "
++                                          "dtb node to guest");
++
+     object_class_property_add_str(oc, "x-oem-id",
+                                   virt_get_oem_id,
+                                   virt_set_oem_id);
+@@ -2828,6 +2853,9 @@ static void virt_instance_init(Object *obj)
+     /* MTE is disabled by default.  */
+     vms->mte = false;
+ 
++    /* Supply a kaslr-seed by default */
++    vms->kaslr_dtb_seed = true;
++
+     vms->irqmap = a15irqmap;
+ 
+     virt_flash_create(vms);
+-- 
+2.30.2

@@ -1,273 +1,145 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp997890lfb;
-        Thu, 6 Jan 2022 05:38:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy6OyQtQok6mXCxkgTFgfb1zeWEOPUnNgvAwvBtmhVQK4LSbHX5zpW+4cbnl0USbN4iDV+8
-X-Received: by 2002:a25:2f86:: with SMTP id v128mr56839572ybv.205.1641476308291;
-        Thu, 06 Jan 2022 05:38:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641476308; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp1043064lfb;
+        Thu, 6 Jan 2022 06:49:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyRYSzYIQHXcE6XwFvc4PIW2lYoBUJf4lE6iyHzIi7/0k5UtROovzYuv/syfMDtcCzUiXu2
+X-Received: by 2002:a25:d78f:: with SMTP id o137mr60834292ybg.19.1641480549528;
+        Thu, 06 Jan 2022 06:49:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641480549; cv=none;
         d=google.com; s=arc-20160816;
-        b=wE9xO3c+ZHWPjk7WuZ7RaLPeVXSQ6ER5eHX1pupTVKEfLavk1j4e5DDQBkNOlZbxeL
-         iXqfRBXoKLT9hfgjzHFJs0JuI45C8y8x8pT+H3aH+r22fbF68iJUxBv5KBvQdM23zOsh
-         UxMt9J6knwGPIOf/F5yCC3CqmQZrVpp1Wq8yONme6kuZPhKbN1hOO0MuMvkzgPxPVv/z
-         zYZZf8d81XN/cxwRat+2HdZ+x28CPL5jgfR6l9IISRRyTyoIaIF1cXDe5R34zPCWja7s
-         eHfkLMXwSKcdriPFoFlFQN3DDnOJxlmNmN1g2qaZmoubfvtUGJ+WbKpKnYxg7oqYe+Di
-         dEEQ==
+        b=Fbc+q7KXscbTBRZxCLcEErX/IiLIuUpdwaOwAOvaTjJ83xyk4aDFu292KR36alr46i
+         zwOWFYfpm25ocp/6wl2OH0qDZMLflS5UKzfd+6Qyb4QcEd4GWDzIdEHmyKY8winUVje4
+         RYLb3Qwe7qfAy/HeZ96Jv4a/y8wvjgohf8j1H0cDDH014o7m2eICNyAvZyFrFvm+iM0y
+         TRD5BuZvFXomLPciqWOCMhu3IxfPgGix/UGWhV4TepBAYX+LT8tRcXymRsfLd56M54f7
+         rw5MV7GW5xaa8DeW9LLI5JJCvcSsjNRVi8bhWQhVbzZtiYslVZF7v9XbDNSIzqg4LGmK
+         JQmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=2nFeua7zjPU9qdmSR15xkvtgazR5lMIelJwJXZHlGtA=;
-        b=yw7C/cIArgr0styY+t5Ng5nYu1S3GdLJTvlmHr5E+kYxruFZQn94pF+uc7G6yxfJrO
-         xhUSyPXwwvLIlpeiSj4ns6O8zLk1t1xAuc4iIJ980ucPbg6QJ1c+9EmLmKgFzS1+f6R/
-         ehef5fmYQaEgd9bS2sTJV77xf87Nrw+PiY16I6/DtBbmSVE8GDMYV5RrPBOVu0BKXWDH
-         tT/kOUxrb/BKFMoFIuHBKpw+kkRPy9RItQP8ZX7B6ikMx1aRSxCht1rcbvMxxUKp57wP
-         dNbi2T6u7YH7CQNMjljYjIH/YFAkp4c2GUc0DlPs25O+fsVGG48EbEHCnQY1pyTPs7q2
-         h/SQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=kWNtg17y1dbyvtZ8kDz6YkHEIuVPqNEVgrQPBMKCYs4=;
+        b=gNQn34Z8loKbNX6LDVFPXm7GAWPRCSCaQfe4kArb0SHHXiQk3/P9Psr7e5dPpMSthf
+         FBF9n0yjhfyiiUS9eBgDBaoF8rLUdvugRNrWey07n2mj2fTIt1UeQyi6VHeVWNjnflad
+         +vRvCw7d8OaKkvavtDZ3RbItFkTr8ja/H614SR8qJkLIrgz3rfGqoPI0L1fx5zW1IcEx
+         XojH97WoaUtBIwOtWTtmQ6LspM0RJy39iElV0aAeJYX4TQ5R2VD8EKLVasAUxLlNjP6l
+         2IJwl8WaPx8uJt5XeRDt2mW9pvqw5rY/YXKgRTaJsqoXEs/TIht8mYPHR7finbTyx0cB
+         518Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FuyIo7Em;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="qv/9hWMM";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c64si1546336yba.413.2022.01.06.05.38.28
+        by mx.google.com with ESMTPS id e132si1481975ybe.763.2022.01.06.06.49.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Jan 2022 05:38:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Jan 2022 06:49:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FuyIo7Em;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52800 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="qv/9hWMM";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44056 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n5SyJ-0004XC-LI
-	for alex.bennee@linaro.org; Thu, 06 Jan 2022 08:38:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41806)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n5U4i-0008L6-VX
+	for alex.bennee@linaro.org; Thu, 06 Jan 2022 09:49:08 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37408)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1n5Se4-000523-I4
- for qemu-devel@nongnu.org; Thu, 06 Jan 2022 08:17:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:39402)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1n5Se2-0000uv-Gj
- for qemu-devel@nongnu.org; Thu, 06 Jan 2022 08:17:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641475049;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2nFeua7zjPU9qdmSR15xkvtgazR5lMIelJwJXZHlGtA=;
- b=FuyIo7Emv5YQh76Y0q/FwH6NxHSG38JjlmP8PsX3L4E7e8n1rixgxBgrc2+KJn9YhEadaS
- 79Y74g0Dm715U5WyRtedqYq5HIxDHFs/9jeaiOCbyJ9TsN3EuDDVDWEEXuCi6VW10j9LaI
- Nf8LNc22zsEXGA0fu5orMfUKZ8nmoNE=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-78-_3wuVHiwOm2GQd2LFRCzww-1; Thu, 06 Jan 2022 08:17:28 -0500
-X-MC-Unique: _3wuVHiwOm2GQd2LFRCzww-1
-Received: by mail-ed1-f70.google.com with SMTP id
- i5-20020a05640242c500b003f84839a8c3so1938556edc.6
- for <qemu-devel@nongnu.org>; Thu, 06 Jan 2022 05:17:28 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n5U4K-0008Iw-Hs
+ for qemu-arm@nongnu.org; Thu, 06 Jan 2022 09:48:44 -0500
+Received: from [2a00:1450:4864:20::42c] (port=36441
+ helo=mail-wr1-x42c.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n5U4F-0004dO-Jp
+ for qemu-arm@nongnu.org; Thu, 06 Jan 2022 09:48:40 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id r17so5276212wrc.3
+ for <qemu-arm@nongnu.org>; Thu, 06 Jan 2022 06:48:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=kWNtg17y1dbyvtZ8kDz6YkHEIuVPqNEVgrQPBMKCYs4=;
+ b=qv/9hWMMnA97jaLYHGxbA95PjxQ2dSKVp+Jms+ptNXNQHhF3oE5J9Wkw+LJV+ttlk3
+ mXD95qXmwJ+4SEMAl0x5W+4mLx6Dxichw9CzO5QKvuLqTbyTHV5SSzv2/2GEyQgTiPeO
+ eL7fMDB9Wz8R/GuM6rR8kHu075DKjlbJe6h0eM/Ce5AeKzyK8LAxEFXA6VbGxzym+bQy
+ ApqtDafgmgHRiUnskNH2kES0XuWecrcz183BKdjSC+37cDfrUwe6BMI4LbI4uavu5fhj
+ QZfr+tL5YOWC2kN3tDROVz+KcSnWRTsahPzc926wNzTMNCE+vaSEJ5SlqeNWXlnvyqgz
+ pXhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=2nFeua7zjPU9qdmSR15xkvtgazR5lMIelJwJXZHlGtA=;
- b=wgCD3/pFd1Xpx4kkaOVY6RWIKmfz27/jYN/n96gEXkX1By0fmMbOBykf+oMyuU0Nhp
- bvc3x26//bPusCbU8wEhJKZSHe7piDK15QQCaMwFa2feKmyMgoYhvw7KbRSPF5QJMv8j
- zLy9v+ncQk2fYn/2dTsjL3MqlWVnXHoW1GN9GXchF+ME1eI96DDs+C9d4H221GNeCYu9
- WwbkuMm3KHmv39VkPJh/t8UTssKfHkHz83mN0THXIKfQ6K8qFTrMk/S9zM/2qlECsjlk
- h/BDA2pnJgg4AGMegCJN6SsVKHp0t1lfroUh5jIkYu48bjmlaFRIU5gW4BS7+ze5kjGq
- Bxcw==
-X-Gm-Message-State: AOAM5334K9G7+JCQs77c+4SWNOfREaxLsOJMokBdj85EhOHKtChwrRCp
- dGaAkOEZ3AXjArtrpqYbyBUf3DoqmPKALn8YXoqEphI2x0MIFmfI7y71k/L/7bwgXwW07xqaXKI
- 8C0Slh8mOoD3FvbZ1oMkFIFlWaZd5YYUFpEtV3T6I1+YlGsLcE9PKZMRfbaFb
-X-Received: by 2002:a17:907:6d87:: with SMTP id
- sb7mr48269417ejc.220.1641475046550; 
- Thu, 06 Jan 2022 05:17:26 -0800 (PST)
-X-Received: by 2002:a17:907:6d87:: with SMTP id
- sb7mr48269396ejc.220.1641475046315; 
- Thu, 06 Jan 2022 05:17:26 -0800 (PST)
-Received: from redhat.com ([2a03:c5c0:207e:991b:6857:5652:b903:a63b])
- by smtp.gmail.com with ESMTPSA id qk34sm492348ejc.143.2022.01.06.05.17.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Jan 2022 05:17:25 -0800 (PST)
-Date: Thu, 6 Jan 2022 08:17:22 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PULL 25/52] smbios: Rename SMBIOS_ENTRY_POINT_* enums
-Message-ID: <20220106131534.423671-26-mst@redhat.com>
-References: <20220106131534.423671-1-mst@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=kWNtg17y1dbyvtZ8kDz6YkHEIuVPqNEVgrQPBMKCYs4=;
+ b=DSpYJOSEzsTeItLQY95VhwHXqgdxXFUwg2fZtQyv6GCdNXwCINA4GUEK3KTDW6X4gN
+ zAHAzG9pB6lOOxfzLgQ1sNW2V90GWWNMgHx0zcQk1CVG5/TiKSjAW2azEJJ0//Uksnvb
+ fyzwg/R8uDRQGXFSZwdhGsQwarPu4lV41X6rKMC1NqOczNAPjCTx35TEC6X9jGd8LY4/
+ 9swimSPE+tYFJs5TQg9PUlt/a+ShGUHO118hyZk14C92xWFlqcCCkdCSBxn1n0QTdVHz
+ zYkHHQGLYHgaP2GrwVcDn1xN21OOEq0zxrk+Zy2YTRRfognIS/Q/P1vPItrOlKiok3WW
+ xLng==
+X-Gm-Message-State: AOAM530WeShu620tJoELSHGv5qr3BxDYqNyurg/DYiPfFR77tZEk8V3+
+ OpGyoMt6IYquBsWxBgU1fnjsl9cQaXbTIcw+c1/Qyw==
+X-Received: by 2002:a5d:52c4:: with SMTP id r4mr29627102wrv.521.1641480518284; 
+ Thu, 06 Jan 2022 06:48:38 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20220106131534.423671-1-mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20211217233006.1466747-1-f4bug@amsat.org>
+In-Reply-To: <20211217233006.1466747-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 6 Jan 2022 14:48:27 +0000
+Message-ID: <CAFEAcA-__Z06M-r9VhfkGh4QKxenFizcO+U+0EM+oPHJQho-Dg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/3] hw/net: Move MV88W8618 network device out of
+ hw/arm/ directory
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42c
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5GX19F+D4Pve
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Jason Wang <jasowang@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
+ Gerd Hoffmann <kraxel@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ePqshkA4Vba8
 
-From: Eduardo Habkost <ehabkost@redhat.com>
+On Fri, 17 Dec 2021 at 23:30, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> This series simply extract the MV88W8618 device from the ARM
+> machine in hw/arm/ and move it to hw/net/.
+>
+> Since v2:
+> - declare MARVELL_88W8618 in hw/arm/Kconfig
+> - use MARVELL_88W8618 Kconfig (rth)
+>
+> Since v1:
+> - update (c) notice
 
-Rename the enums to match the naming style used by QAPI, and to
-use "32" and "64" instead of "20" and "31".  This will allow us
-to more easily move the enum to the QAPI schema later.
+Looks like the code-movement in this patchset has a clash with
+your other series that's now in master that changed the signature
+of dma_memory_read/dma_memory_write; could I ask you to respin,
+please?
 
-About the naming choice: "SMBIOS 2.1 entry point"/"SMBIOS 3.0
-entry point" and "32-bit entry point"/"64-bit entry point" are
-synonymous in the SMBIOS specification.  However, the phrases
-"32-bit entry point" and "64-bit entry point" are used more often.
-
-The new names also avoid confusion between the entry point format
-and the actual SMBIOS version reported in the entry point
-structure.  For example: currently the 32-bit entry point
-actually report SMBIOS 2.8 support, not 2.1.
-
-Based on portions of a patch submitted by Daniel P. Berrangé.
-
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-Message-Id: <20211026151100.1691925-2-ehabkost@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- include/hw/firmware/smbios.h | 4 ++--
- hw/arm/virt.c                | 2 +-
- hw/i386/pc_piix.c            | 2 +-
- hw/i386/pc_q35.c             | 2 +-
- hw/smbios/smbios.c           | 8 ++++----
- 5 files changed, 9 insertions(+), 9 deletions(-)
-
-diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
-index 5a0dd0c8cf..d916baed6a 100644
---- a/include/hw/firmware/smbios.h
-+++ b/include/hw/firmware/smbios.h
-@@ -27,8 +27,8 @@ struct smbios_phys_mem_area {
-  * SMBIOS spec defined tables
-  */
- typedef enum SmbiosEntryPointType {
--    SMBIOS_ENTRY_POINT_21,
--    SMBIOS_ENTRY_POINT_30,
-+    SMBIOS_ENTRY_POINT_TYPE_32,
-+    SMBIOS_ENTRY_POINT_TYPE_64,
- } SmbiosEntryPointType;
- 
- /* SMBIOS Entry Point
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 4593fea1ce..b45b52c90e 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1589,7 +1589,7 @@ static void virt_build_smbios(VirtMachineState *vms)
- 
-     smbios_set_defaults("QEMU", product,
-                         vmc->smbios_old_sys_ver ? "1.0" : mc->name, false,
--                        true, SMBIOS_ENTRY_POINT_30);
-+                        true, SMBIOS_ENTRY_POINT_TYPE_64);
- 
-     smbios_get_tables(MACHINE(vms), NULL, 0,
-                       &smbios_tables, &smbios_tables_len,
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 1999190276..25f918b609 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -177,7 +177,7 @@ static void pc_init1(MachineState *machine,
-         smbios_set_defaults("QEMU", "Standard PC (i440FX + PIIX, 1996)",
-                             mc->name, pcmc->smbios_legacy_mode,
-                             pcmc->smbios_uuid_encoded,
--                            SMBIOS_ENTRY_POINT_21);
-+                            SMBIOS_ENTRY_POINT_TYPE_32);
-     }
- 
-     /* allocate ram and load rom/bios */
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 2e981f436c..1103fbcd90 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -200,7 +200,7 @@ static void pc_q35_init(MachineState *machine)
-         smbios_set_defaults("QEMU", "Standard PC (Q35 + ICH9, 2009)",
-                             mc->name, pcmc->smbios_legacy_mode,
-                             pcmc->smbios_uuid_encoded,
--                            SMBIOS_ENTRY_POINT_21);
-+                            SMBIOS_ENTRY_POINT_TYPE_32);
-     }
- 
-     /* allocate ram and load rom/bios */
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 7397e56737..6013df1698 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
-@@ -62,7 +62,7 @@ uint8_t *smbios_tables;
- size_t smbios_tables_len;
- unsigned smbios_table_max;
- unsigned smbios_table_cnt;
--static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_21;
-+static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_32;
- 
- static SmbiosEntryPoint ep;
- 
-@@ -432,7 +432,7 @@ static void smbios_validate_table(MachineState *ms)
-         exit(1);
-     }
- 
--    if (smbios_ep_type == SMBIOS_ENTRY_POINT_21 &&
-+    if (smbios_ep_type == SMBIOS_ENTRY_POINT_TYPE_32 &&
-         smbios_tables_len > SMBIOS_21_MAX_TABLES_LEN) {
-         error_report("SMBIOS 2.1 table length %zu exceeds %d",
-                      smbios_tables_len, SMBIOS_21_MAX_TABLES_LEN);
-@@ -927,7 +927,7 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
- static void smbios_entry_point_setup(void)
- {
-     switch (smbios_ep_type) {
--    case SMBIOS_ENTRY_POINT_21:
-+    case SMBIOS_ENTRY_POINT_TYPE_32:
-         memcpy(ep.ep21.anchor_string, "_SM_", 4);
-         memcpy(ep.ep21.intermediate_anchor_string, "_DMI_", 5);
-         ep.ep21.length = sizeof(struct smbios_21_entry_point);
-@@ -950,7 +950,7 @@ static void smbios_entry_point_setup(void)
-         ep.ep21.structure_table_address = cpu_to_le32(0);
- 
-         break;
--    case SMBIOS_ENTRY_POINT_30:
-+    case SMBIOS_ENTRY_POINT_TYPE_64:
-         memcpy(ep.ep30.anchor_string, "_SM3_", 5);
-         ep.ep30.length = sizeof(struct smbios_30_entry_point);
-         ep.ep30.entry_point_revision = 1;
--- 
-MST
-
+thanks
+-- PMM

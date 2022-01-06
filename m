@@ -1,228 +1,174 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp281312lfb;
-        Wed, 5 Jan 2022 06:49:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwioVPc0kYnjsgcOWmhPmg5RBDVyhpKLwHnLVR+mqaMbZlq5cOIUnPDFsH0inIYYs6szCQy
-X-Received: by 2002:ac8:574d:: with SMTP id 13mr49259115qtx.88.1641394158092;
-        Wed, 05 Jan 2022 06:49:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641394158; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp1072917lfb;
+        Thu, 6 Jan 2022 07:29:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxXHJqzkq4rcrRwhMsK0IgPDH+G0r7t6kIJqCFqPOh82juRdbIukrvPRJsu53WVhi4MUXW4
+X-Received: by 2002:a02:c6a3:: with SMTP id o3mr27931799jan.14.1641482949624;
+        Thu, 06 Jan 2022 07:29:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641482949; cv=none;
         d=google.com; s=arc-20160816;
-        b=rf+kIQCotMdzp6/IlUm8+sH0UfwIBmLl7MF+TsaP3+Kt+nlOF31K8SfYQRtZadiwKf
-         O01vIrZfAZQFKoSp0I3I08fNWsU2wTQA0qAw5CzDtU6BDsp3Z2MZazE1kEu1YTY5oe36
-         jG4bGucnaj3fQ/T8T92aT5NegnBN8Z2SQK+7QBW/seyHeseraiCaNzc+Zi84iIbglTtZ
-         9BBI08tHapBEM6o4/2QkyB8EapTl7RHXlbj2pfA3mtBvpERUVwc3/LV3PLNpQv89CEI/
-         ZCPtfmyObY7FGh7I/TUpXSyWD/7iR7wHoSluXia5kr4SZ5ckBhVpgyc3N5PHBupqPNfk
-         99Kg==
+        b=DEQzIuLOig2a5y+MZYMPo/jyE6/XZ56VZNPRb9ZpNO6pro+xxh32bgsmknwa8hL8gx
+         Yqs9MIZZ0vMhvj6xC5hEP3+hidjTxTmujZyIBVTIdFkqaozMl/tTNMBm1k65a6URKdDM
+         clLpsJuYWW7qmC48E/jiXokjcSmK9rBUBXLJLJGibnWEe8zGb0kAJUUM/hNTEdVPPejw
+         WA/7lICxCvTNhDapxG4ITGVDDmssJJQEwN4W2qvV21P/fmTdNMaxb/9Ajb7W6cbLMdWo
+         r3MWRRJrBjxYrVCawcAP287LizfxEZ73qkW9Dbwwt+gj9wkcOF1M401V7PqvPvkaAaGV
+         2ZBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=7ysqLclNJzMut443f5x8/Ue0sG0SeYUxnh0PmY3i8bI=;
-        b=0kZ0R3RhtBKEbjZiscBV8KRL/25xnMSWPbO7gieRz25WaPN8ZSuQnOOgTJHvGTSfnv
-         uUpkl8o+MBw3nGNPDkjRhu75OVnWHRHHuXT/KysNLF2YUvi1OVhR/NOWH0/zeXpcpuwO
-         VZmDeVZpHKZ6xEIMP7nMJiuluBDR4v9Vei/nbmgZo7dYVORt+tcUVBl4RUHoEDnylqKF
-         rP6HW765I4XAt9vYEZfyLpLQuI5r3DR3bfvV/wQQSL5UZWAz0+K5g+Fyiep0CCb1ydLS
-         pweG+rcz27CdYVq7zeRf9KIqhANnA+w97ZepfDmYaxMsBaURpoyT2Gl6INI693mu4PA4
-         cqzQ==
+        bh=l2W6TvkIBXYjzjMw0jKIb7sjXWrdc899GHWC7UX5GUI=;
+        b=qBbQ/l+emIu0Dq+j+RNT5OouIRQUVi2uRkWW+3hm4eLqGKMr0V/fGEgPnqMB4MLlr1
+         XOTFo7UUfIUxvB4VM06Yc3hGahPTM4tUAOW9svbSeK+5TjYTNwvGGLFieJneWc5aTYWh
+         Q10rZp5RLLY2IJWb9MHRuO0WKz5zDsCCHyeant8I4fpPdVEGEpaE336o7zOoFru8IlZL
+         jREKauyqBhYB9xTuyeRgnSEom7NmA1HWQeqFSEQlcKjlS3R12NrcS4Y0zU5jJ/8w4nmH
+         cTj+ZHj8Z7VaVXQQhA56lSbQrGBi1ZwaDZaz5puaIHHgZoKxNN4VSnTulreGPMEzfPvK
+         JPIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Is7EorHQ;
-       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id r3si22710923qvc.72.2022.01.05.06.49.17
+       dkim=fail header.i=@linaro.org header.s=google header.b=trES+DIL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y11si1029847jai.65.2022.01.06.07.29.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 05 Jan 2022 06:49:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 06 Jan 2022 07:29:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Is7EorHQ;
-       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1641394157;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7ysqLclNJzMut443f5x8/Ue0sG0SeYUxnh0PmY3i8bI=;
-	b=Is7EorHQGFo7Jgho/ljXUkUabssGo3BBe41/4/sxAsELaoTGH1Xp/hC/5bQ3Scb8xuJjwj
-	mJasQS1/Ot+vonqZwYdszSZAIM2tJrYpTxobmvtdm07lm1U8ZG35TGZc3Dz3E9mmqDtfkc
-	IGNPa8x/FrQSsEtLE3IjBH/dfJ2/rHM=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-341-W4-P9DhdOkqAdmSWZ0shnA-1; Wed, 05 Jan 2022 09:49:16 -0500
-X-MC-Unique: W4-P9DhdOkqAdmSWZ0shnA-1
-Received: by mail-wm1-f69.google.com with SMTP id k40-20020a05600c1ca800b00345bf554707so765865wms.4
-        for <alex.bennee@linaro.org>; Wed, 05 Jan 2022 06:49:16 -0800 (PST)
+       dkim=fail header.i=@linaro.org header.s=google header.b=trES+DIL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45190 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n5UhR-0002Ei-2k
+	for alex.bennee@linaro.org; Thu, 06 Jan 2022 10:29:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48338)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n5UgN-0000hP-Qz
+ for qemu-arm@nongnu.org; Thu, 06 Jan 2022 10:28:03 -0500
+Received: from [2a00:1450:4864:20::42d] (port=44632
+ helo=mail-wr1-x42d.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n5UgL-0007Tx-0T
+ for qemu-arm@nongnu.org; Thu, 06 Jan 2022 10:28:03 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id k18so5437974wrg.11
+ for <qemu-arm@nongnu.org>; Thu, 06 Jan 2022 07:28:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=l2W6TvkIBXYjzjMw0jKIb7sjXWrdc899GHWC7UX5GUI=;
+ b=trES+DILDMWOfknTz264RJ0OW2UauTIbNoqOKGYiqPv01I72SFtpCQyyCF2Z3Y2IXQ
+ ywA7l/bPUpfCwtcHyd8I9GAAIK1YUl6fAd10/n/jTpXTmmHPFmr5FV+z++NPAlOJoC1B
+ ILJyG7ontTR42Ib5tyh9d/JYkmaVJMoqLzpoY5Oori0/bo+OJOls/GSU9D7xKfITIIqz
+ EbWcPt/COgS+Y765oVx299b5N1of/bZYeRF1sPTVyExjqEOVOt/2quRqICMzvzOVXezN
+ qx5adNZNSeunTjh76OQ6dE5G+87IP5m4huletmKqdtZ99XOaSTR37npW4LmXxbkkbeCa
+ BXog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=7ysqLclNJzMut443f5x8/Ue0sG0SeYUxnh0PmY3i8bI=;
-        b=RnJJX3gFC3bHIocoAhY8W2C7iteFNLVLhYA0nXJajb+r+ko4J0F/+Tond7tFdocWwt
-         wVBBhWXk8uS8urv8bBNdNQBv+ZqcdyB3zQkiHuxD1lvrVfST1kMcY95ZyKOkc7DtwACP
-         yW4up82hTDwO1/MS9rqynMxvxi0TI2V25AlwqsYd0UDKEDakUIIHtRqt/gblNmjxQF6t
-         ewIBNrJUpECPO2Fae38toRtWXFw0Qe382N0JkOt/LgxCM8Lx17FjUCgyi1xhR4KmyeK0
-         VfkujQR7bB13mi8HUJNm9SBRy6xErsn3PwWhmi85M+LgDapQcL6zuahkPFLeBbowa6Hu
-         IBcg==
-X-Gm-Message-State: AOAM530oUTQbVkBnN+YAXyLFEN9JYvEzMqPXzC2M2T6n3jpKnqBO9Eu9
-	3G1x43es2wsmeWGmwWKBOyc9lFUrkI/UEOmv6uuqSMUPVpjw33XkK7SnW4zree0fVST82+o5jJ+
-	q8xWbKWISEknJ5LqPC6V+M++NPpN6HoT4rgLyqziUFesB5DL20GCohUuyVntL1cAOwHM=
-X-Received: by 2002:a5d:4343:: with SMTP id u3mr22236378wrr.504.1641394155444;
-        Wed, 05 Jan 2022 06:49:15 -0800 (PST)
-X-Received: by 2002:a5d:4343:: with SMTP id u3mr22236342wrr.504.1641394155134;
-        Wed, 05 Jan 2022 06:49:15 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from gator (nat-pool-brq-u.redhat.com. [213.175.37.12])
-        by smtp.gmail.com with ESMTPSA id d5sm19208611wrs.61.2022.01.05.06.49.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Jan 2022 06:49:14 -0800 (PST)
-Date: Wed, 5 Jan 2022 15:49:13 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, fam@euphon.net,
-	Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
-	Heinrich Schuchardt <xypron.glpk@gmx.de>,
-	Ilias Apalodimas <ilias.apalodimas@linaro.org>, f4bug@amsat.org,
-	Jerome Forissier <jerome@forissier.org>, stefanha@redhat.com,
-	crosa@redhat.com, pbonzini@redhat.com,
-	"open list:Virt" <qemu-arm@nongnu.org>, aurelien@aurel32.net
-Subject: Re: [PATCH v1 21/34] hw/arm: add control knob to disable kaslr_seed
- via DTB
-Message-ID: <20220105144913.2nitpxzmdyucgr7g@gator>
-References: <20220105135009.1584676-1-alex.bennee@linaro.org>
- <20220105135009.1584676-22-alex.bennee@linaro.org>
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=l2W6TvkIBXYjzjMw0jKIb7sjXWrdc899GHWC7UX5GUI=;
+ b=K3EVAgvJg49Jzs2Y5/xdd2C/Tu804glzqX+r/MT0tCRAOU0aT7lKpnZMU/kKy9fvrJ
+ haqIu0zxXb+WQdTmFWLXS0h0dDCiJhh5i6idj2VU7Oy7WH574rZKaQtN2xaY3x96HvXA
+ OAHDatBCT1pBZHE2SbKidMhHDa8yoyKIIOxDQLbISL4uKQq1V5tfBB/3FKENafp0+TRf
+ eIEnt2S0Szr18AStkEeelH/NhohPBfHP3ZKSC+uKpnQDADgq0dUCXAzURG8t3hIwWhWp
+ TKSOWQEZD2gs+aRLF7AbhvEDbiJrbXoCjJDNTkbQkcB+SIbbFJBL/0pPKvSZeojs0ahw
+ pLpQ==
+X-Gm-Message-State: AOAM531ovLytgboHIpvZ5t73hwCI9RfAiHp4E3A6wn7ISx4zsvJASCmw
+ t16y6TswKgsaD7q50cEqXiaaSZO8nOm0K/tG7FjVEQ==
+X-Received: by 2002:a5d:6986:: with SMTP id g6mr48842wru.172.1641482878790;
+ Thu, 06 Jan 2022 07:27:58 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20220105135009.1584676-22-alex.bennee@linaro.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-X-TUID: TfRdgel40wsH
+References: <20211222022231.231575-1-troy_lee@aspeedtech.com>
+ <8df385c9-b25c-80bb-fb27-88f774eb44c6@kaod.org>
+ <CAJOFXWgEqYTAL59Z2CPzQTedYqN9pWuyiEt7jbG1ENZinNj=2w@mail.gmail.com>
+ <CAN9Jwz3gv5V2jPvW0mp7f_XKW=d3UtE9ROMcg4wLBR7D67+KiQ@mail.gmail.com>
+In-Reply-To: <CAN9Jwz3gv5V2jPvW0mp7f_XKW=d3UtE9ROMcg4wLBR7D67+KiQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 6 Jan 2022 15:27:47 +0000
+Message-ID: <CAFEAcA9b-JBPRt4oQkb-=ewcHY9TWJ46_xtRuW1qk6mnq-cBMw@mail.gmail.com>
+Subject: Re: [PATCH] Supporting AST2600 HACE engine accumulative mode
+To: Troy Lee <leetroy@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42d
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Troy Lee <troy_lee@aspeedtech.com>,
+ qemu-devel@nongnu.org, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>, Klaus Heinrich Kiwi <klaus@klauskiwi.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +ZepALpoCFwP
 
-On Wed, Jan 05, 2022 at 01:49:56PM +0000, Alex Bennée wrote:
-> Generally a guest needs an external source of randomness to properly
-> enable things like address space randomisation. However in a trusted
-> boot environment where the firmware will cryptographically verify
-> components having random data in the DTB will cause verification to
-> fail. Add a control knob so we can prevent this being added to the
-> system DTB.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Tested-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
-> Acked-by: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-> Acked-by: Jerome Forissier <jerome@forissier.org>
-> Message-Id: <20211215120926.1696302-1-alex.bennee@linaro.org>
-> ---
->  docs/system/arm/virt.rst |  7 +++++++
->  include/hw/arm/virt.h    |  1 +
->  hw/arm/virt.c            | 32 ++++++++++++++++++++++++++++++--
->  3 files changed, 38 insertions(+), 2 deletions(-)
-> 
-> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-> index 850787495b..c86a4808df 100644
-> --- a/docs/system/arm/virt.rst
-> +++ b/docs/system/arm/virt.rst
-> @@ -121,6 +121,13 @@ ras
->    Set ``on``/``off`` to enable/disable reporting host memory errors to a guest
->    using ACPI and guest external abort exceptions. The default is off.
->  
-> +kaslr-dtb-seed
-> +  Set ``on``/``off`` to pass a random seed via the guest dtb to use for features
-> +  like address space randomisation. The default is ``on``. You will want
-> +  to disable it if your trusted boot chain will verify the DTB it is
-> +  passed. It would be the responsibility of the firmware to come up
-> +  with a seed and pass it on if it wants to.
-> +
->  Linux guest kernel configuration
->  """"""""""""""""""""""""""""""""
->  
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index dc6b66ffc8..acd0665fe7 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -148,6 +148,7 @@ struct VirtMachineState {
->      bool virt;
->      bool ras;
->      bool mte;
-> +    bool kaslr_dtb_seed;
->      OnOffAuto acpi;
->      VirtGICType gic_version;
->      VirtIOMMUType iommu;
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 6bce595aba..1781e47c76 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -247,11 +247,15 @@ static void create_fdt(VirtMachineState *vms)
->  
->      /* /chosen must exist for load_dtb to fill in necessary properties later */
->      qemu_fdt_add_subnode(fdt, "/chosen");
-> -    create_kaslr_seed(ms, "/chosen");
-> +    if (vms->kaslr_dtb_seed) {
-> +        create_kaslr_seed(ms, "/chosen");
-> +    }
->  
->      if (vms->secure) {
->          qemu_fdt_add_subnode(fdt, "/secure-chosen");
-> -        create_kaslr_seed(ms, "/secure-chosen");
-> +        if (vms->kaslr_dtb_seed) {
-> +            create_kaslr_seed(ms, "/secure-chosen");
-> +        }
->      }
->  
->      /* Clock node, for the benefit of the UART. The kernel device tree
-> @@ -2235,6 +2239,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
->      vms->its = value;
->  }
->  
-> +static bool virt_get_kaslr_dtb_seed(Object *obj, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    return vms->kaslr_dtb_seed;
-> +}
-> +
-> +static void virt_set_kaslr_dtb_seed(Object *obj, bool value, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    vms->kaslr_dtb_seed = value;
-> +}
-> +
->  static char *virt_get_oem_id(Object *obj, Error **errp)
->  {
->      VirtMachineState *vms = VIRT_MACHINE(obj);
-> @@ -2764,6 +2782,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->                                            "Set on/off to enable/disable "
->                                            "ITS instantiation");
->  
-> +    object_class_property_add_bool(oc, "kaslr-dtb-seed",
-> +                                   virt_get_kaslr_dtb_seed,
-> +                                   virt_set_kaslr_dtb_seed);
-> +    object_class_property_set_description(oc, "kaslr-dtb-seed",
-> +                                          "Set off to disable passing of kaslr "
-> +                                          "dtb node to guest");
-> +
->      object_class_property_add_str(oc, "x-oem-id",
->                                    virt_get_oem_id,
->                                    virt_set_oem_id);
-> @@ -2828,6 +2853,9 @@ static void virt_instance_init(Object *obj)
->      /* MTE is disabled by default.  */
->      vms->mte = false;
->  
-> +    /* Supply a kaslr-seed by default */
-> +    vms->kaslr_dtb_seed = true;
-> +
->      vms->irqmap = a15irqmap;
->  
->      virt_flash_create(vms);
-> -- 
-> 2.30.2
-> 
+On Tue, 28 Dec 2021 at 03:34, Troy Lee <leetroy@gmail.com> wrote:
 >
+> Hi Klaus,
+>
+> On Thu, Dec 23, 2021 at 11:57 PM Klaus Heinrich Kiwi
+> <klaus@klauskiwi.com> wrote:
+> >
+> > Em qui., 23 de dez. de 2021 =C3=A0s 09:54, C=C3=A9dric Le Goater <clg@k=
+aod.org> escreveu:
+> > >
+> > > [ Adding Klaus ]
+> >
+> > Thanks Cedric. It's been a while since I've looked at this but I'll do =
+my best..
+> >
+> > >
+> > > On 12/22/21 03:22, Troy Lee wrote:
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+
+> > > > +                /*
+> > > > +                 * Read the message length in bit from last 64/128=
+ bits
+> > > > +                 * and tear the padding bits from iov
+> > > > +                 */
+> > > > +                uint64_t stream_len;
+> > > > +
+> > > > +                memcpy(&stream_len, iov[i].iov_base + iov[i].iov_l=
+en - 8, 8);
+> > > > +                stream_len =3D __bswap_64(stream_len) / 8;
+> > > > +
+> >
+> > I no longer have access to the aspeed workbook I guess, but what is
+> > the actual specification here? is the message length 64 or 128 bits?
+> > and bswap seems arch-dependent - you probably want to be explicit if
+> > this is big or little-endian and use the appropriate conversion
+> > function.
+> The message length is described in RFC4634:
+> - SHA224 or SHA256 should be 64-bit.
+> - SHA384 or SHA512 should be 128-bit.
+> And it should be in big-endian.
+
+You can read a 64-bit BE value with
+ uint64_t val =3D ldq_be_p(iov[i].iov_base + iov[i].iov_len - 8);
+or similar. (We don't have a similar function for 128 bits because
+there's no fully-portable native C data type for that.)
+
+-- PMM

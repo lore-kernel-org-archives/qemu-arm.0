@@ -1,212 +1,128 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp256384lfb;
-        Fri, 7 Jan 2022 09:06:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyezm/K6PpdUTBt72n1FWmLBKex2o/36xxF7UjG9MtiMcTWbcfCmo/nF84cJ1MlmoUxa+jH
-X-Received: by 2002:a37:9e85:: with SMTP id h127mr44263668qke.11.1641575172326;
-        Fri, 07 Jan 2022 09:06:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641575172; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp373159lfb;
+        Fri, 7 Jan 2022 12:29:28 -0800 (PST)
+X-Received: by 2002:a62:8ccb:0:b0:4ba:c613:2211 with SMTP id m194-20020a628ccb000000b004bac6132211mr66064849pfd.33.1641587368148;
+        Fri, 07 Jan 2022 12:29:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641587368; cv=none;
         d=google.com; s=arc-20160816;
-        b=FbPn2sQK1NMl2k5yWuEDcFTYnZ+zZSm2jwKfMHYXhZGCAqpvIWN3tTusI4c+Vj1EzU
-         SbsQyL/k6wXu/uG0DbJ+9lDjD2FpdKWfjzkOyob3HMh+jWta26Mhi5S4CVL5C3ChzZCU
-         NmBfQ6qSS4WDcqJ3MA+nggCz5/1wnxIyXaAwafy3Yx9qDAwO5cARoWc7kevJhnHVSNl1
-         kJ7jwUMF8fGuYmc8pxBuBNJgJkPyN0NOX7rnS3tskYCAHMrbanL5wO72I2uM9PQbaIec
-         bv3/VsW9rqScAP7uCHGd/mDI86fVbjMfHGvdMBKNVX5aT3xA7R3z5SrRHUYhEqpP3WE2
-         k7Tw==
+        b=zpyGfVXa6idZWRYQFgnalpLS5RvW1ZvQ3mEkNWjqZYiQzMNRmpBWmHI90EeQy/WUmb
+         GsmSxSI6eHcBZJH2IC2vL+dUlaW7osIYIhNIJWplxVwabC/ikU4aagLHerkPzIKF4U4W
+         MOjvjB0OZeba1Tasm54UVDhP0bRLl/vAgSeOAACPE/LecIZgVcYGYqSbj8nPGHRO3V2O
+         1+QPetx2KQ4v/wQy6Oddl+vgLDZ9GkB+y/z7IBjkb/C+B9STRz2wkMddPGelsj+B/KDa
+         RZnucvMqeI3YgyuX3cBsQzxMkZndXC8zfAd3L0bFCAn7imBCOZR66V1EiFhTu6NqddRF
+         /M5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=0nZyFVRLRM6IRGy6cUUpenOMXwoZRgiGiU7K35XPPuA=;
-        b=obDtYf75uGcYQLaexgEKCEzm3YqGv9U0KvxUXummdsYe1q4++9AWSujmgF2OH4cXX0
-         JWOvlcDsuoFgPYwc11uz8C7+JJHPLDQn93poWMg/zpOOPcpmNdnFyGf3yyXpN7G930Rb
-         mJ3sA1XZtn+wCepg1QMuw+D+snRa51vhSyIUpgDjurAsvJZLuq5nptPt8Vx9t9q7AJL6
-         CIFc0uY82wCKEOeEDx/pFIiqXeiPaSBrqtrJHC4/8jyQi0hSaRBFNC+zzM+cx4eY65eG
-         LhUCeHyGOjWbHLFZ8P6eyDTj6t0YGToBG5sBuK1XIk75CVMhKCggVrdDqh1VpmuVz2wh
-         Zcfg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=pqzFHF17NqTJ1RO+IP8GmJaa+kOZt7zsY5kZcze0vfE=;
+        b=c5Eb/4Ec5Ve+8lHC6QwY7XEQv161JrzcBZy9BIWopMUqx0DGc9FgU2XmeqEr+BBwmV
+         rqRUMWIk2XGWeOZOJzCv1w+F+FVrBwjpw2m6REaBmCftGbW0YC918PAbp/pShQ5HpwDM
+         ejogfMjs4E4u9aLAySNeESozaV/7oz2tq2aKdSmDYzCgSt+P2JWB0uLAdyXg1QbSQ6rm
+         ZPnIXioroQkNpO9RSmARmS3PPfm8EKjx5WfHAfvz4MH69uTO+EQif4dRKYE6+hEZMTTH
+         xvb/KH4kTJv5FO3NBznblPF59VcmTsi69ORUAL8Ljarqc/pzTatUzf3+DQCCJ9b0JTne
+         t4Zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DmSs+sFF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZUosrT+p;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 22si2448959qtp.344.2022.01.07.09.06.12
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b13sor3392920pfv.69.2022.01.07.12.29.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jan 2022 09:06:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 07 Jan 2022 12:29:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DmSs+sFF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZUosrT+p;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44342 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n5sgt-00057e-NX
-	for alex.bennee@linaro.org; Fri, 07 Jan 2022 12:06:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44124)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1n5se9-0003XY-DT
- for qemu-arm@nongnu.org; Fri, 07 Jan 2022 12:03:21 -0500
-Received: from [2a00:1450:4864:20::42a] (port=44741
- helo=mail-wr1-x42a.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1n5se6-00043d-Gv
- for qemu-arm@nongnu.org; Fri, 07 Jan 2022 12:03:21 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id k18so12195586wrg.11
- for <qemu-arm@nongnu.org>; Fri, 07 Jan 2022 09:03:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=0nZyFVRLRM6IRGy6cUUpenOMXwoZRgiGiU7K35XPPuA=;
- b=DmSs+sFFvOQ99bXVVtrq+++GFYF9JlJ59Nh/iJCLbSWoDYZnkmPWkZ6TVpotRWx0pd
- /eb+hfIYLI9yAW44uohyHJMniR682LZRZ1avAIAHXxYPqX0SJfFmZUr9qChfi/izQmBI
- T+y47gb90p4x3MwSk6WDHCcDIcpcCZpiTbVqy0kDW6bycqyxk22SWM2Is/1Ynrun19m+
- 98LJ4oNK7L78txd9Fr1ldnsoKL6pLkGYGll+cZTZMTEkbqznzKbuifidbc+g9qSb9Hth
- XbFnueCfh6tY3u+ZwV2sr4mGyo7Qiv8F5QA1tbNgLHjIKyC2yfJ3ZIW39ZEUpxlS7ck9
- PTpQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=pqzFHF17NqTJ1RO+IP8GmJaa+kOZt7zsY5kZcze0vfE=;
+        b=ZUosrT+pF7jZwpkz3oXtHFKEDOxmHVKXTBbe2/LYWDMpgEAUS/pF7RZmbXRLiIZntj
+         rZMJbV27cyvjXob5c16r2gZXXlLGY6eOk8wOBpipK9n4j9Fdxz4nfJdyhTRfpP++2iIt
+         MIq9gAdGqe7uJ7jOQ/Ee5joAri5kTmNANTlvNjxxRShZUsFQv8Hp+vtdcK57RwhazaGY
+         KVbzC1yiSiWPOTC1FQb6a7Oqpa5RL8JaA1KG8G4+H7cpEGkv/FfjEHSBJRjcDN412Wp3
+         bceuNyzJZ417dv5lhFAimdu2huU8ttKW/mR/j5fTf1jXop7HDEiJShu+eLAJ1yl7QSk7
+         SIFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=0nZyFVRLRM6IRGy6cUUpenOMXwoZRgiGiU7K35XPPuA=;
- b=jkE0+JZIFFNIoaNsjwkCbSrfud44XzxvVgUwEACS3En2qis/+qTAQAsCj6Gg31o12s
- 3k6VR9SzUTh7O+7xKx1OcZhg0XYcShKKAXu5VgEotLGRgnAeAxv4HcmdWwKqIDMq1L5J
- b1xnhTY7YsJOSlJPe8Hs8hpMRF1MUSVNb3qFfGcA09E8ARL1SRClnR1pq+WYuRZ/u+7w
- lDXL5x2caU2oZtOI5m2F4/FlW84dNouDrdzLGy7jNESGJ5HSyNl01HO29wJdoFbenKA0
- nygiK+/AWOQkHRFqeqj8jX+/LFRuQV8sKtM1LtVbmhiHtNpn4uOVMyFsJlYLTIDUTN7D
- 0xlQ==
-X-Gm-Message-State: AOAM532UsBWg7JmEaax5QG+wA2gGln90N3NLhkV2yXWaT9RQHrPV8WrW
- Vqave+TbQd2WF1FOLypChV37UYlpP+Eu3fIahjCIoA==
-X-Received: by 2002:a5d:64c3:: with SMTP id f3mr54018359wri.295.1641574996901; 
- Fri, 07 Jan 2022 09:03:16 -0800 (PST)
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=pqzFHF17NqTJ1RO+IP8GmJaa+kOZt7zsY5kZcze0vfE=;
+        b=JDj54cgK+x26dJ7vFggmTHPhuBGEc/2SpfI3x6QsQz5025/GVN2TLOJ/TzotsjpnHM
+         opa6kaEOhS9zevwIeVDguEmUU/yjxuZPBdDThQezA8ofxp5Cda/zNwI5u2m+UJRmulAp
+         lxKpC2j/bEXpfAeg/ldsMbqvONd86UgvnrqUe/Va7gsg5oGqFD6PwVVvkyUyfZsUs4vH
+         8R+AlauFdJSjcXCCOYeLENc5HyVsv39fuap05IsACFuF3UpmYXkrInwVyKelTNiiO+jc
+         MRL7CwmN9tbYCVzGkgHO2G5S7BZV86aVV17RruIevgbMtui+/v5hCyqE3ydzAJkYl+iw
+         1dpw==
+X-Gm-Message-State: AOAM532GDw4UOOzPDwaWxiraCYB/a4VUi57jrWHsJ83xzCj1LtbAe8Me
+	O+atKZ75t/BAueW+JCeV2vekfJnJLTsJ61th
+X-Google-Smtp-Source: ABdhPJwHfQv/Z9xLyjvhVG6aPgz1bqpbuR+xy+EksppGwwaHeh0/nn2H8hZYAGPL1ArLp2lE/5gXLA==
+X-Received: by 2002:a63:7983:: with SMTP id u125mr49259195pgc.569.1641587367625;
+        Fri, 07 Jan 2022 12:29:27 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.13] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
+        by smtp.gmail.com with ESMTPSA id ot6sm7240115pjb.32.2022.01.07.12.29.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 07 Jan 2022 12:29:27 -0800 (PST)
+Subject: Re: [PATCH] target/arm/cpu64: Use 32-bit GDBstub when running in
+ 32-bit KVM mode
+To: Ard Biesheuvel <ardb@kernel.org>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Alex Bennee <alex.bennee@linaro.org>
+References: <20220107155406.344273-1-ardb@kernel.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <6a8576f3-2e45-a58d-7a56-692a8bba54f7@linaro.org>
+Date: Fri, 7 Jan 2022 12:29:25 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-References: <771c599a-3ea5-8d59-909a-05f127c8ff0e@suse.com>
-In-Reply-To: <771c599a-3ea5-8d59-909a-05f127c8ff0e@suse.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 7 Jan 2022 17:03:05 +0000
-Message-ID: <CAFEAcA_kjSbgdG=iNaDJV26ZEZT4HR9P-dhEQSs2izG510H3YQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/intc/arm_gic: Allow reset of the running priority
-To: Petr Pavlu <petr.pavlu@suse.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42a
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0mtT4pRX5sE1
+In-Reply-To: <20220107155406.344273-1-ardb@kernel.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: RP52d62EiCDu
 
-On Tue, 14 Dec 2021 at 17:28, Petr Pavlu <petr.pavlu@suse.com> wrote:
-> When running Linux on a machine with GICv2, the kernel can crash while
-> processing an interrupt and can subsequently start a kdump kernel from
-> the active interrupt handler. In such a case, the crashed kernel might
-> not gracefully signal the end of interrupt to the GICv2 hardware. The
-> kdump kernel will however try to reset the GIC state on startup to get
-> the controller into a sane state, in particular the kernel writes ones
-> to GICD_ICACTIVERn and wipes out GICC_APRn to make sure that no
-> interrupt is active.
->
-> The patch makes sure that this reset works for the GICv2 emulation in
-> QEMU too and the kdump kernel starts receiving interrupts. It adds
-> a logic to recalculate the running priority when GICC_APRn/GICC_NSAPRn
-> is written and implements read of GICC_IIDR so the kernel can recognize
-> that the GICv2 with GICC_APRn is present.
->
-> The described scenario can be reproduced on an AArch64 QEMU virt machine
-> with a kdump-enabled Linux system by using the softdog module. The kdump
-> kernel will hang at some point because QEMU still thinks the running
-> priority is that of the timer interrupt and asserts no new interrupts to
-> the system:
-> $ modprobe softdog soft_margin=10 soft_panic=1
-> $ cat > /dev/watchdog
-> [Press Enter to start the watchdog, wait for its timeout and observe
-> that the kdump kernel hangs on startup.]
+On 1/7/22 7:54 AM, Ard Biesheuvel wrote:
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 15245a60a8c7..3dede9e2ec31 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -903,9 +903,15 @@ static bool aarch64_cpu_get_aarch64(Object *obj, Error **errp)
+>       return arm_feature(&cpu->env, ARM_FEATURE_AARCH64);
+>   }
+>   
+> +static gchar *arm_gdb_arch_name(CPUState *cs)
+> +{
+> +    return g_strdup("arm");
+> +}
+> +
+>   static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
+>   {
+>       ARMCPU *cpu = ARM_CPU(obj);
+> +    CPUClass *cc = CPU_GET_CLASS(obj);
+>   
+>       /* At this time, this property is only allowed if KVM is enabled.  This
+>        * restriction allows us to avoid fixing up functionality that assumes a
+> @@ -919,6 +925,12 @@ static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
+>               return;
+>           }
+>           unset_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> +
+> +        cc->gdb_read_register = arm_cpu_gdb_read_register;
+> +        cc->gdb_write_register = arm_cpu_gdb_write_register;
+> +        cc->gdb_num_core_regs = 26;
+> +        cc->gdb_core_xml_file = "arm-core.xml";
+> +        cc->gdb_arch_name = arm_gdb_arch_name;
 
-Hi; thanks for this patch and sorry I haven't got to it earlier
-(I've been on holiday). Both the mishandling of the cached
-priority and the failure to implement GICC_IIDR are definitely bugs,
-but I think they are distinct bugs. Could you split this into a two
-patch series, please ? (If you don't have time to do the respin,
-let me know and I can do it at this end.)
+It would be nice to split out a function in cpu.c for this,
+perhaps arm_cpu_class_gdb_init().
 
-> Signed-off-by: Petr Pavlu <petr.pavlu@suse.com>
-> ---
->  hw/intc/arm_gic.c | 6 ++++++
->  1 file changed, 6 insertions(+)
->
-> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-> index a994b1f024..2edbc4cb46 100644
-> --- a/hw/intc/arm_gic.c
-> +++ b/hw/intc/arm_gic.c
-> @@ -1662,6 +1662,10 @@ static MemTxResult gic_cpu_read(GICState *s, int cpu, int offset,
->          }
->          break;
->      }
-> +    case 0xfc:
-> +        /* GICv1/2, ARM implementation */
-> +        *data = (s->revision << 16) + 0x43b;
+Otherwise this looks like the correct approach.
 
-This is correct for GICv1 and GICv2, but not for 11MPCore, whose
-interrupt controller has no GICC_IIDR:
 
-https://developer.arm.com/documentation/ddi0360/e/mpcore-distributed-interrupt-controller/cpu-interface-registers-definition?lang=en
-
-So this should be
-
-    if (s->revision == REV_11MPCORE) {
-        /* Reserved on 11MPCore */
-        *data = 0;
-    } else {
-        /* GICv1 or v2; Arm implementation */
-        *data = (s->revision << 16) | 0x43b;
-    }
-
-(also using '|' rather than '+' since we're assembling a value
-as a bunch of bit operations, not doing arithmetic on it. The
-end result is the same but I think '|' is clearer stylistically.)
-
-> +        break;
->      default:
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "gic_cpu_read: Bad offset %x\n", (int)offset);
-> @@ -1727,6 +1731,7 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
->          } else {
->              s->apr[regno][cpu] = value;
->          }
-> +        s->running_priority[cpu] = gic_get_prio_from_apr_bits(s, cpu);
->          break;
->      }
->      case 0xe0: case 0xe4: case 0xe8: case 0xec:
-> @@ -1743,6 +1748,7 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
->              return MEMTX_OK;
->          }
->          s->nsapr[regno][cpu] = value;
-> +        s->running_priority[cpu] = gic_get_prio_from_apr_bits(s, cpu);
->          break;
->      }
->      case 0x1000:
-
-These parts are correct and just need to be in their own patch.
-
-thanks
--- PMM
+r~

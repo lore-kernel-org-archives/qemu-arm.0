@@ -1,80 +1,78 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp1605659lfb;
-        Fri, 7 Jan 2022 00:35:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw+RdtgBMMZ/Us07ShVA3gTGAndfzk3uG5v+6oN62exd8WuuADheRoQNYj6O8Z+OfitngMt
-X-Received: by 2002:a05:622a:138a:: with SMTP id o10mr55874221qtk.237.1641544533344;
-        Fri, 07 Jan 2022 00:35:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641544533; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp1605798lfb;
+        Fri, 7 Jan 2022 00:35:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzNZlOE1YuKOAO0rg67NPahzaxQ/QStWZYBtkdBnZ168zEZh1EIVcJv/arlCr2r47CdMxlV
+X-Received: by 2002:a05:620a:2808:: with SMTP id f8mr43955268qkp.196.1641544550899;
+        Fri, 07 Jan 2022 00:35:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641544550; cv=none;
         d=google.com; s=arc-20160816;
-        b=hxe5hnEdFRQ6Pf8GIXziU9jgX8ejHgk+zAV0PHkS01Xt9W1HiPxecDvSO2MK8AMsIy
-         W8pBuyyb5jS+tN+QYfCIFuJw7d0BCIXVG0x2SuultaTUisiu8VgxQzfKRBX1pKTEMlcT
-         nYxawzRWiZblX1DRNW/EJml9Cdm1Rvj7IxYubR2uDrbl/hpOymh/5SCUg7j1qcYITrSE
-         0r6H10fqTiCCsdumY7qg39D+uuZuKti/iXq7M+girNcV9JxFOHL5en9SvMF3KOPsxrww
-         KBavAjMnEuQJDzb8yLv8T/ybxsyjW0j0z8pzhlsuis3nTuJN8p3IwWETN1MGpBbZ5Dg8
-         CR9A==
+        b=EP2mlJv5BjRLAgsLhjMloWDWhdRJ5o8VB3MDiaaSmZd7w9kVx+p2UnHjGcmJ8UkfOo
+         U0QXCnwjbaVFexMr2zZdkly6451YmU68N6+rp1hhMO9PI5wMlzfe+xP0oA3YJkHFgWuY
+         WB8lhzyZ1r1GLnml/X7uPzHsPe93X30i5AsX3PPU9LhLns5TT2+RUhW+AvdXpYSsAZM1
+         p1jkN8r5LsRqIDcc9Wp0xZFUZaOR2LSHya06tD8W7ENTDvSQG2yNsMqt/RRZicGmqyeC
+         mf65ObolDA/hEw8/WuEac4fBl5JC6oOfXCeRW37Y9stnicu4uM/AYGTCMghZd7TE0fbM
+         GGlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=7hP5Qbn448TQnZtEQCyY7uy2UZi3WCp4n7OFp7vMGZI=;
-        b=M0WsIYdA87bWOLpaBaRPfp/KOEWmZgXc7rReFZGZo6ybqbBoZq5Q7GvtpDUWLaC0PL
-         Ad8XNmG37OFiBcuBdWVXdH0V4F9L48J2x+1jxLGlZLCOwoKj8biMClx5izDsqTgAyyUs
-         WKveGB1o1a+peh+KRFnFfyNqYyZHlrPQ7yDw01/i793THJX3eaf1se1wvqyvlvkBnxzD
-         ygIfsL8x4yk5tzyncLzBdS7ltozfboZeXzPXvf3t4xH6tv8nP5VkfnMmhek9/cD/NzQG
-         9YTAhl0PGA5Nr35O7fd323KMxUYByhwTmxAWl1SmPnjws6GMgqlwea4ICWkwT0TapP0g
-         fYSg==
+         :message-id:date:subject:cc:to;
+        bh=UmfMap1s9Qd98ojcFEcxIKA7qIYc9JQbAG0LiYYuxzs=;
+        b=DE3HiMF4+jF1/e1Rq3zArrPES6ouArUFZLMbHqOPRGNKV1xblJ2aZxcOROIUc93MBx
+         RloRq0pEsQmAAazMUtSO2AOIf/WrYM1N5jQFQu1y1T4t8qZqKV8TAP+Jz5GxNrnjvdeD
+         lKPe6fsS1G8tMwVfYqoyYIYObvhppgbJwfutAA5BMSqTyEFK7yv5xLfbN549gwLjqcvN
+         Xwco9LquWOdX5wOQco5uT1wxjJAghf9gyh2gD3AOcEDlYhCBlzfGmUCYWzu1oEzMFHYf
+         LXTFWBPopYLvPkAg1XxjpiqEjLq2PCRkgQna2BakD62bze6cfLsZT4AjtgIjdALCRc91
+         VwRg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p19si1652391qtw.718.2022.01.07.00.35.33
+        by mx.google.com with ESMTPS id hu12si254289qvb.258.2022.01.07.00.35.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jan 2022 00:35:33 -0800 (PST)
+        Fri, 07 Jan 2022 00:35:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:42610 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42658 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n5kii-00036Y-SZ
-	for alex.bennee@linaro.org; Fri, 07 Jan 2022 03:35:32 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40758)
+	id 1n5kj0-00038K-Dd
+	for alex.bennee@linaro.org; Fri, 07 Jan 2022 03:35:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40762)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n5kg3-0000NC-5w; Fri, 07 Jan 2022 03:32:47 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:3070)
+ id 1n5kg3-0000NY-C8; Fri, 07 Jan 2022 03:32:47 -0500
+Received: from szxga08-in.huawei.com ([45.249.212.255]:3262)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n5kg0-0001dt-8o; Fri, 07 Jan 2022 03:32:46 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.56])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4JVc012jdPzbjqj;
- Fri,  7 Jan 2022 16:32:01 +0800 (CST)
+ id 1n5kg0-0001de-9k; Fri, 07 Jan 2022 03:32:47 -0500
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.57])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4JVbwd2fw9z1FCX6;
+ Fri,  7 Jan 2022 16:29:05 +0800 (CST)
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Fri, 7 Jan 2022 16:32:36 +0800
+ 15.1.2308.20; Fri, 7 Jan 2022 16:32:34 +0800
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
  <imammedo@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha
  <ani@anisinha.ca>, Eric Auger <eauger@redhat.com>,
  <wanghaibin.wang@huawei.com>, Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH v7 2/6] hw/arm/virt: Support cluster level in DT cpu-map
-Date: Fri, 7 Jan 2022 16:32:28 +0800
-Message-ID: <20220107083232.16256-3-wangyanan55@huawei.com>
+Subject: [PATCH v7 0/6] ARM virt: Support CPU cluster topology
+Date: Fri, 7 Jan 2022 16:32:26 +0800
+Message-ID: <20220107083232.16256-1-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
-In-Reply-To: <20220107083232.16256-1-wangyanan55@huawei.com>
-References: <20220107083232.16256-1-wangyanan55@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -97,55 +95,82 @@ Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  Yanan Wang <wangyanan55@huawei.com>
 From:  Yanan Wang via <qemu-devel@nongnu.org>
-X-TUID: WpIdNhy/vxYo
+X-TUID: kXOOh9GW6LHT
 
-Support one cluster level between core and physical package in the
-cpu-map of Arm/virt devicetree. This is also consistent with Linux
-Doc "Documentation/devicetree/bindings/cpu/cpu-topology.txt".
+This v7 series enables the support for CPU cluster topology on
+ARM virt machines. The generic infrastructure for CPU cluster
+parameter has been in upstream.
 
-Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
----
- hw/arm/virt.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+Background and descriptions:
+The new Cluster-Aware Scheduling support has landed in Linux 5.16,
+which has been proved to benefit the scheduling performance (e.g.
+load balance and wake_affine strategy) for both x86_64 and AArch64.
+We can see the PR [1] or the actual patch series [2] for reference.
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f413e146d9..fc5eea8c8c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -430,9 +430,8 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-          * can contain several layers of clustering within a single physical
-          * package and cluster nodes can be contained in parent cluster nodes.
-          *
--         * Given that cluster is not yet supported in the vCPU topology,
--         * we currently generate one cluster node within each socket node
--         * by default.
-+         * Note: currently we only support one layer of clustering within
-+         * each physical package.
-          */
-         qemu_fdt_add_subnode(ms->fdt, "/cpus/cpu-map");
- 
-@@ -442,14 +441,16 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
- 
-             if (ms->smp.threads > 1) {
-                 map_path = g_strdup_printf(
--                    "/cpus/cpu-map/socket%d/cluster0/core%d/thread%d",
--                    cpu / (ms->smp.cores * ms->smp.threads),
-+                    "/cpus/cpu-map/socket%d/cluster%d/core%d/thread%d",
-+                    cpu / (ms->smp.clusters * ms->smp.cores * ms->smp.threads),
-+                    (cpu / (ms->smp.cores * ms->smp.threads)) % ms->smp.clusters,
-                     (cpu / ms->smp.threads) % ms->smp.cores,
-                     cpu % ms->smp.threads);
-             } else {
-                 map_path = g_strdup_printf(
--                    "/cpus/cpu-map/socket%d/cluster0/core%d",
--                    cpu / ms->smp.cores,
-+                    "/cpus/cpu-map/socket%d/cluster%d/core%d",
-+                    cpu / (ms->smp.clusters * ms->smp.cores),
-+                    (cpu / ms->smp.cores) % ms->smp.clusters,
-                     cpu % ms->smp.cores);
-             }
-             qemu_fdt_add_path(ms->fdt, map_path);
+So since Linux 5.16 we have four-level arch-neutral CPU topology
+definition like below and a new scheduler level for clusters.
+struct cpu_topology {
+    int thread_id;
+    int core_id;
+    int cluster_id;
+    int package_id;
+    int llc_id;
+    cpumask_t thread_sibling;
+    cpumask_t core_sibling;
+    cpumask_t cluster_sibling;
+    cpumask_t llc_sibling;
+}
+
+A cluster generally means a group of CPU cores which share L2 cache
+or other mid-level resources, and it is the shared resources that
+is used to improve scheduler's behavior. From the point of view of
+the size range, it's between CPU die and CPU core. For example, on
+some ARM64 Kunpeng servers, we have 6 clusters in each NUMA node,
+and 4 CPU cores in each cluster. The 4 CPU cores share a separate
+L2 cache and a L3 cache tag, which brings cache affinity advantage.
+
+[1] https://lore.kernel.org/lkml/163572864855.3357115.17938524897008353101.tglx@xen13/
+[2] https://lkml.org/lkml/2021/9/24/178
+
+In virtualization, on the Hosts which have physical clusters, if we
+can design a vCPU topology with cluster level for guest kernel and
+have a dedicated vCPU pinning. A Cluster-Aware Guest kernel can also
+make use of the cache affinity of CPU clusters to gain similar
+scheduling performance. This series only enables clusters support
+in the vCPU topology on ARM virt machines. We can also enable it
+for other machine types in the future if needed.
+
+The patches in this series do:
+- Enable CPU cluster support on ARM virt machines, so that users
+  can specify a 4-level CPU hierarchy sockets/clusters/cores/threads.
+  And the 4-level topology will be described to guest kernel through
+  ACPI PPTT and DT cpu-map.
+
+Changelog:
+v6->v7:
+- dropped the introduced ARM specific build_pptt() and extend the generic one
+- added A-bs/R-bs from Andrew and Ani, thanks.
+- v6: https://patchew.org/QEMU/20220103084636.2496-1-wangyanan55@huawei.com/
+
+v5->v6:
+- dropped the generic part which is in upstream now
+- rebased on latest master
+- v5: https://patchew.org/QEMU/20211228092221.21068-1-wangyanan55@huawei.com/
+
+Yanan Wang (6):
+  hw/arm/virt: Support CPU cluster on ARM virt machine
+  hw/arm/virt: Support cluster level in DT cpu-map
+  hw/acpi/aml-build: Improve scalability of PPTT generation
+  tests/acpi/bios-tables-test: Allow changes to virt/PPTT file
+  hw/acpi/aml-build: Support cluster level in PPTT generation
+  tests/acpi/bios-table-test: Update expected virt/PPTT file
+
+ hw/acpi/aml-build.c       |  68 ++++++++++++++++++++++++++++----------
+ hw/arm/virt.c             |  16 +++++----
+ qemu-options.hx           |  10 ++++++
+ tests/data/acpi/virt/PPTT | Bin 76 -> 96 bytes
+ 4 files changed, 69 insertions(+), 25 deletions(-)
+
 -- 
 2.27.0
 

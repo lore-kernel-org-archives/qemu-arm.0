@@ -1,87 +1,125 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp1606460lfb;
-        Fri, 7 Jan 2022 00:37:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzwAwbMRsTqpAaxIgit7lh6DiF6GeikY13Ut4xcUrKMMuzR6AcD5a/YTaVL88+SCCy704ji
-X-Received: by 2002:a05:6902:100a:: with SMTP id w10mr56472293ybt.156.1641544646137;
-        Fri, 07 Jan 2022 00:37:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641544646; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp32550lfb;
+        Fri, 7 Jan 2022 03:33:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx081bhzfyWpO4vknC1tIkKN4KcPY9EW9ahikQ5OOOvRmnrIu9twWxDVRIuXB/RZX3NR7XP
+X-Received: by 2002:a05:6902:124e:: with SMTP id t14mr86791219ybu.65.1641555228995;
+        Fri, 07 Jan 2022 03:33:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641555228; cv=none;
         d=google.com; s=arc-20160816;
-        b=neo45lKxz5XK4CWn2YqbrYzfoiiLkFIlY+ILhhwfO0tjSzf86UCXjMscHAOOlxxkpd
-         BAIXXV1Gq4CwMW5mli/ksh70uOqlVvJNcXAqXT3z7YuLHArM1pgXfLzJx+l4NOj6rFCZ
-         Y8VP2ILG6S44Pza+saFLGYJdPYa4bHtARMyE1gzujIVRlReeIs/Mq7XX+dizUHQKl47O
-         8aV8ouRKri1RBVa35AB+xi20Ld3+BobdkPRPaQ9PXBBRh/a4JL+HG8DSSOzMh14h+Fq6
-         ab+gasJczz9O3Z6QBXghtp0R2l5oQKXi/mATiCksKODLzQ25tTGLsUrp+bByopWLM+ns
-         ueZg==
+        b=PtIm+aMBJ2kctPP14NNPYTL3NcWdf/Fy/rimR6+BHGO7I6Du18XDJ9Qr4VdIG7mkS5
+         oBMKzzmTyvskyj4/6WMMmB/nJ0jniJKcCQta5N+eIDPUkF2ZiVrfjO9gh5A9aBTB+ccf
+         jsb3yEgvNIQcdOprHZgPJeCWEvzBA5Ji1Ld5btb8/R6auQWOjZMvvFintIumV7CaR8uS
+         1fboB+gw82VKcbAutKVato3+MiCk05pNfxtuirdP/nYVSUF67/l1G+n0L9sz9XnjVKvC
+         a8jABMM6Eb/TYYUgeY4tpRqutk88AVJP8zXEl+uKwlWd+Css2gQqur2lWQOYqsaYpno2
+         043A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=J7PMJu0YDAF4wfGA711Gp62DE1mcYlCrYRDwqAwVgdM=;
-        b=zEnQaziX5GqrSH04wf+mb/SPpaRPdnVQUivQkHTkIjARp461+QCNCIYpGATqJ0iqVB
-         de5TUaosO3rOTKVwSeswzcnICjQ4YXVnwDF+DB/Vk5kJrty6mkuwhh9JdIqCqkmSP3Kd
-         xRT0seg7isoYOFcGCuAg1ynXGOXlB4qWO6Al6hKeV9gg4DNg7kF7CMYgBJf3iMt7LqOz
-         dldza5H2dcFRMc3Bvztw3bdr81NsON984zR+a4hqfkMFfEvPjompRE9s8dNmO4hoPd6N
-         1cvootgnYwBranUotMzsAeejifhT31ULPqA7uShjCFqVDTB3262fYnuUpovpTfI+x6Gu
-         nTIw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=2nFeua7zjPU9qdmSR15xkvtgazR5lMIelJwJXZHlGtA=;
+        b=G7DvU1M2bNvw1wxynduqJ8v4OZY5jIpw6DMm0IpMliGRVy8IFphn3bOmAl/fU4tBj1
+         Zxsc/EO8pTYExoP32KbmHy2aeD4wbL75ddyTOAfE88h7R3euhf60/FRrpY7FN52jVEPs
+         Hegtltx2cYInys0LImJiFi3pucn/a4MVpFT7pkpzG32+XuGQ38l6o5fkot4M2ljAVoiK
+         AFL74NEHYX32aCl5m/L7FDQb1Uwqz7mf6HWGPaq4wkf04oZ6l9oAi9TWjm8KBFQNWfbb
+         4TlvCrkUMuY9H9okL6NXiravAXDIW25b1XfG3RM2CnIAqQk0aRhaixweCzCrysSSwvof
+         HLYA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TUGGeoiY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c188si218935ybb.347.2022.01.07.00.37.25
+        by mx.google.com with ESMTPS id x7si3129013ybr.580.2022.01.07.03.33.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jan 2022 00:37:26 -0800 (PST)
+        Fri, 07 Jan 2022 03:33:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TUGGeoiY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:48568 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n5kkX-00079r-Fu
-	for alex.bennee@linaro.org; Fri, 07 Jan 2022 03:37:25 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40788)
+	id 1n5nVE-0007Na-BM
+	for alex.bennee@linaro.org; Fri, 07 Jan 2022 06:33:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45250)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n5kg4-0000Pi-SI; Fri, 07 Jan 2022 03:32:48 -0500
-Received: from szxga01-in.huawei.com ([45.249.212.187]:3443)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1n5n2u-0000gj-3i
+ for qemu-arm@nongnu.org; Fri, 07 Jan 2022 06:04:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:52648)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n5kg2-0001fV-7V; Fri, 07 Jan 2022 03:32:48 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.54])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4JVc060NvWzccKD;
- Fri,  7 Jan 2022 16:32:06 +0800 (CST)
-Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Fri, 7 Jan 2022 16:32:40 +0800
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
- <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
- <imammedo@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha
- <ani@anisinha.ca>, Eric Auger <eauger@redhat.com>,
- <wanghaibin.wang@huawei.com>, Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH v7 6/6] tests/acpi/bios-table-test: Update expected virt/PPTT
- file
-Date: Fri, 7 Jan 2022 16:32:32 +0800
-Message-ID: <20220107083232.16256-7-wangyanan55@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
-In-Reply-To: <20220107083232.16256-1-wangyanan55@huawei.com>
-References: <20220107083232.16256-1-wangyanan55@huawei.com>
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1n5n2q-0001uV-NV
+ for qemu-arm@nongnu.org; Fri, 07 Jan 2022 06:04:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1641553464;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2nFeua7zjPU9qdmSR15xkvtgazR5lMIelJwJXZHlGtA=;
+ b=TUGGeoiYJy/PnSiKujFQpQFvVtS+btILNK8EPqHOoZgJBt3apqtQVaP32EniXyFrdBL5Wu
+ W6vqnv6CsDz3ISW52palMBbKBQ3J2+UlrpzA6LuDCLlIGr4r/IP1iXewDaXSKW5m5Os+pt
+ Kyz3DP74tLUYhgO1hbghcFG0EeUqOG4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-168-uKKGqaBYNVOHTHqQgOkQQA-1; Fri, 07 Jan 2022 06:04:23 -0500
+X-MC-Unique: uKKGqaBYNVOHTHqQgOkQQA-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ v1-20020adfc5c1000000b001a37fd2fa2dso2112046wrg.22
+ for <qemu-arm@nongnu.org>; Fri, 07 Jan 2022 03:04:22 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=2nFeua7zjPU9qdmSR15xkvtgazR5lMIelJwJXZHlGtA=;
+ b=kToiKTGJK4oRm2WO1dM8ewmL9ED1KSzNHuM/3sNP5x82QnhYauf9QndMN1BEQPjzV1
+ T6DbKZv4us5J4vloxsW7OQar7Rqn18UB+RS1oaQA7Iz2vWZwKX4YrO9kzITIn5ZY+77X
+ v12lMo/NR1drsbvFpAmzJkIfOdQbX+ULaWVg32IIh1qrRk9f2ecAMCMWcKo2o4SewBR8
+ t8J0L0BegH5uvo/FDTGSjSoLIo0iSS+KLanRV+qKr4Kh21YsuUHnZ+E9Vg3DBQ1ij1FK
+ QYGywWcRfLt2d/IVi60XwnDUT/Qh/3VsB9VtxMY4T4OVdX4rWqxKU3bu6u6It1sJLFcC
+ XGuw==
+X-Gm-Message-State: AOAM533Att4OUn7zj4PldzsHsKyrHzMVxeVVh78jrf2zpLJiFNEABiQJ
+ d2w6/SbLzKZDx+BwPpWgEAzKCs5ywn5xaQf2XafLF8vzyQWugKupFyb3yI8njsfb0X6KDdW/Jsp
+ gFsAPWZNz/7UF
+X-Received: by 2002:a05:6000:15ca:: with SMTP id
+ y10mr52749408wry.718.1641553461891; 
+ Fri, 07 Jan 2022 03:04:21 -0800 (PST)
+X-Received: by 2002:a05:6000:15ca:: with SMTP id
+ y10mr52749394wry.718.1641553461719; 
+ Fri, 07 Jan 2022 03:04:21 -0800 (PST)
+Received: from redhat.com ([2.55.16.192])
+ by smtp.gmail.com with ESMTPSA id t12sm5404450wrs.72.2022.01.07.03.04.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 Jan 2022 03:04:21 -0800 (PST)
+Date: Fri, 7 Jan 2022 06:04:18 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL v2 25/55] smbios: Rename SMBIOS_ENTRY_POINT_* enums
+Message-ID: <20220107102526.39238-26-mst@redhat.com>
+References: <20220107102526.39238-1-mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20220107102526.39238-1-mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,121 +132,143 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Yanan Wang <wangyanan55@huawei.com>
-From:  Yanan Wang via <qemu-arm@nongnu.org>
-X-TUID: MFWVAcWyrxoZ
+X-TUID: 7hT9LBfBsveh
 
-Run ./tests/data/acpi/rebuild-expected-aml.sh from build directory
-to update PPTT binary. Also empty bios-tables-test-allowed-diff.h.
+From: Eduardo Habkost <ehabkost@redhat.com>
 
-The disassembled differences between actual and expected PPTT:
+Rename the enums to match the naming style used by QAPI, and to
+use "32" and "64" instead of "20" and "31".  This will allow us
+to more easily move the enum to the QAPI schema later.
 
- /*
-  * Intel ACPI Component Architecture
-  * AML/ASL+ Disassembler version 20200528 (64-bit version)
-  * Copyright (c) 2000 - 2020 Intel Corporation
-  *
-- * Disassembly of tests/data/acpi/virt/PPTT, Tue Jan  4 12:51:11 2022
-+ * Disassembly of /tmp/aml-2ZGOF1, Tue Jan  4 12:51:11 2022
-  *
-  * ACPI Data Table [PPTT]
-  *
-  * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
-  */
+About the naming choice: "SMBIOS 2.1 entry point"/"SMBIOS 3.0
+entry point" and "32-bit entry point"/"64-bit entry point" are
+synonymous in the SMBIOS specification.  However, the phrases
+"32-bit entry point" and "64-bit entry point" are used more often.
 
- [000h 0000   4]                    Signature : "PPTT"    [Processor Properties Topology Table]
--[004h 0004   4]                 Table Length : 0000004C
-+[004h 0004   4]                 Table Length : 00000060
- [008h 0008   1]                     Revision : 02
--[009h 0009   1]                     Checksum : A8
-+[009h 0009   1]                     Checksum : 48
- [00Ah 0010   6]                       Oem ID : "BOCHS "
- [010h 0016   8]                 Oem Table ID : "BXPC    "
- [018h 0024   4]                 Oem Revision : 00000001
- [01Ch 0028   4]              Asl Compiler ID : "BXPC"
- [020h 0032   4]        Asl Compiler Revision : 00000001
+The new names also avoid confusion between the entry point format
+and the actual SMBIOS version reported in the entry point
+structure.  For example: currently the 32-bit entry point
+actually report SMBIOS 2.8 support, not 2.1.
 
- [024h 0036   1]                Subtable Type : 00 [Processor Hierarchy Node]
- [025h 0037   1]                       Length : 14
- [026h 0038   2]                     Reserved : 0000
- [028h 0040   4]        Flags (decoded below) : 00000001
-                             Physical package : 1
-                      ACPI Processor ID valid : 0
-                        Processor is a thread : 0
-                               Node is a leaf : 0
-                     Identical Implementation : 0
- [02Ch 0044   4]                       Parent : 00000000
- [030h 0048   4]            ACPI Processor ID : 00000000
- [034h 0052   4]      Private Resource Number : 00000000
+Based on portions of a patch submitted by Daniel P. Berrangé.
 
- [038h 0056   1]                Subtable Type : 00 [Processor Hierarchy Node]
- [039h 0057   1]                       Length : 14
- [03Ah 0058   2]                     Reserved : 0000
--[03Ch 0060   4]        Flags (decoded below) : 0000000A
-+[03Ch 0060   4]        Flags (decoded below) : 00000000
-                             Physical package : 0
--                     ACPI Processor ID valid : 1
-+                     ACPI Processor ID valid : 0
-                        Processor is a thread : 0
--                              Node is a leaf : 1
-+                              Node is a leaf : 0
-                     Identical Implementation : 0
- [040h 0064   4]                       Parent : 00000024
- [044h 0068   4]            ACPI Processor ID : 00000000
- [048h 0072   4]      Private Resource Number : 00000000
-
--Raw Table Data: Length 76 (0x4C)
-+[04Ch 0076   1]                Subtable Type : 00 [Processor Hierarchy Node]
-+[04Dh 0077   1]                       Length : 14
-+[04Eh 0078   2]                     Reserved : 0000
-+[050h 0080   4]        Flags (decoded below) : 0000000A
-+                            Physical package : 0
-+                     ACPI Processor ID valid : 1
-+                       Processor is a thread : 0
-+                              Node is a leaf : 1
-+                    Identical Implementation : 0
-+[054h 0084   4]                       Parent : 00000038
-+[058h 0088   4]            ACPI Processor ID : 00000000
-+[05Ch 0092   4]      Private Resource Number : 00000000
-+
-+Raw Table Data: Length 96 (0x60)
-
--    0000: 50 50 54 54 4C 00 00 00 02 A8 42 4F 43 48 53 20  // PPTTL.....BOCHS
-+    0000: 50 50 54 54 60 00 00 00 02 48 42 4F 43 48 53 20  // PPTT`....HBOCHS
-     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
-     0020: 01 00 00 00 00 14 00 00 01 00 00 00 00 00 00 00  // ................
--    0030: 00 00 00 00 00 00 00 00 00 14 00 00 0A 00 00 00  // ................
--    0040: 24 00 00 00 00 00 00 00 00 00 00 00              // $...........
-+    0030: 00 00 00 00 00 00 00 00 00 14 00 00 00 00 00 00  // ................
-+    0040: 24 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00  // $...............
-+    0050: 0A 00 00 00 38 00 00 00 00 00 00 00 00 00 00 00  // ....8...........
-
-Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-Reviewed-by: Ani Sinha <ani@anisinha.ca>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Message-Id: <20211026151100.1691925-2-ehabkost@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- tests/data/acpi/virt/PPTT                   | Bin 76 -> 96 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   1 -
- 2 files changed, 1 deletion(-)
+ include/hw/firmware/smbios.h | 4 ++--
+ hw/arm/virt.c                | 2 +-
+ hw/i386/pc_piix.c            | 2 +-
+ hw/i386/pc_q35.c             | 2 +-
+ hw/smbios/smbios.c           | 8 ++++----
+ 5 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/tests/data/acpi/virt/PPTT b/tests/data/acpi/virt/PPTT
-index 7a1258ecf123555b24462c98ccbb76b4ac1d0c2b..f56ea63b369a604877374ad696c396e796ab1c83 100644
-GIT binary patch
-delta 53
-zcmV-50LuSNU<y!BR8(L90006=kqR;-00000Bme*a000000000002BZK3IG5AH~;_u
-L0000000000uCW9Z
-
-delta 32
-qcmV+*0N?*$ObSp?R8&j=00080kqR=APy`Gl00000000000001OcLdh}
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index cb143a55a6..dfb8523c8b 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,2 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/virt/PPTT",
+diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
+index 5a0dd0c8cf..d916baed6a 100644
+--- a/include/hw/firmware/smbios.h
++++ b/include/hw/firmware/smbios.h
+@@ -27,8 +27,8 @@ struct smbios_phys_mem_area {
+  * SMBIOS spec defined tables
+  */
+ typedef enum SmbiosEntryPointType {
+-    SMBIOS_ENTRY_POINT_21,
+-    SMBIOS_ENTRY_POINT_30,
++    SMBIOS_ENTRY_POINT_TYPE_32,
++    SMBIOS_ENTRY_POINT_TYPE_64,
+ } SmbiosEntryPointType;
+ 
+ /* SMBIOS Entry Point
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 4593fea1ce..b45b52c90e 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1589,7 +1589,7 @@ static void virt_build_smbios(VirtMachineState *vms)
+ 
+     smbios_set_defaults("QEMU", product,
+                         vmc->smbios_old_sys_ver ? "1.0" : mc->name, false,
+-                        true, SMBIOS_ENTRY_POINT_30);
++                        true, SMBIOS_ENTRY_POINT_TYPE_64);
+ 
+     smbios_get_tables(MACHINE(vms), NULL, 0,
+                       &smbios_tables, &smbios_tables_len,
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 1999190276..25f918b609 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -177,7 +177,7 @@ static void pc_init1(MachineState *machine,
+         smbios_set_defaults("QEMU", "Standard PC (i440FX + PIIX, 1996)",
+                             mc->name, pcmc->smbios_legacy_mode,
+                             pcmc->smbios_uuid_encoded,
+-                            SMBIOS_ENTRY_POINT_21);
++                            SMBIOS_ENTRY_POINT_TYPE_32);
+     }
+ 
+     /* allocate ram and load rom/bios */
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 2e981f436c..1103fbcd90 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -200,7 +200,7 @@ static void pc_q35_init(MachineState *machine)
+         smbios_set_defaults("QEMU", "Standard PC (Q35 + ICH9, 2009)",
+                             mc->name, pcmc->smbios_legacy_mode,
+                             pcmc->smbios_uuid_encoded,
+-                            SMBIOS_ENTRY_POINT_21);
++                            SMBIOS_ENTRY_POINT_TYPE_32);
+     }
+ 
+     /* allocate ram and load rom/bios */
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index 7397e56737..6013df1698 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -62,7 +62,7 @@ uint8_t *smbios_tables;
+ size_t smbios_tables_len;
+ unsigned smbios_table_max;
+ unsigned smbios_table_cnt;
+-static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_21;
++static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_32;
+ 
+ static SmbiosEntryPoint ep;
+ 
+@@ -432,7 +432,7 @@ static void smbios_validate_table(MachineState *ms)
+         exit(1);
+     }
+ 
+-    if (smbios_ep_type == SMBIOS_ENTRY_POINT_21 &&
++    if (smbios_ep_type == SMBIOS_ENTRY_POINT_TYPE_32 &&
+         smbios_tables_len > SMBIOS_21_MAX_TABLES_LEN) {
+         error_report("SMBIOS 2.1 table length %zu exceeds %d",
+                      smbios_tables_len, SMBIOS_21_MAX_TABLES_LEN);
+@@ -927,7 +927,7 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
+ static void smbios_entry_point_setup(void)
+ {
+     switch (smbios_ep_type) {
+-    case SMBIOS_ENTRY_POINT_21:
++    case SMBIOS_ENTRY_POINT_TYPE_32:
+         memcpy(ep.ep21.anchor_string, "_SM_", 4);
+         memcpy(ep.ep21.intermediate_anchor_string, "_DMI_", 5);
+         ep.ep21.length = sizeof(struct smbios_21_entry_point);
+@@ -950,7 +950,7 @@ static void smbios_entry_point_setup(void)
+         ep.ep21.structure_table_address = cpu_to_le32(0);
+ 
+         break;
+-    case SMBIOS_ENTRY_POINT_30:
++    case SMBIOS_ENTRY_POINT_TYPE_64:
+         memcpy(ep.ep30.anchor_string, "_SM3_", 5);
+         ep.ep30.length = sizeof(struct smbios_30_entry_point);
+         ep.ep30.entry_point_revision = 1;
 -- 
-2.27.0
+MST
 

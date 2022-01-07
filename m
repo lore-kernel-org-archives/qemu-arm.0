@@ -1,101 +1,104 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp317712lfb;
-        Fri, 7 Jan 2022 10:46:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx1U3QRyWILswnju4KRFXUQq8j+IooWSVDED1n9jUkLNQtzgCapG1nd4tIQmtdB/itBMzEs
-X-Received: by 2002:a67:e10d:: with SMTP id d13mr23212456vsl.5.1641581194315;
-        Fri, 07 Jan 2022 10:46:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641581194; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp318164lfb;
+        Fri, 7 Jan 2022 10:47:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx3KsS/eiGK/S8tG3ExCubm+t8zFJfZ8rOLLjbt8C3nI2R8XFPds1kzeCJ39H4bdsW5birv
+X-Received: by 2002:a67:e351:: with SMTP id s17mr20521160vsm.63.1641581246376;
+        Fri, 07 Jan 2022 10:47:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641581246; cv=none;
         d=google.com; s=arc-20160816;
-        b=dn6waJAg2I+mfYOUHfRyXr9Io9w3pUiNjAo/0NDeQGtGzqWEthh/pPFZ3E/ISbXrBo
-         RwmlyvpX8DyBHj8V2cRFSy7IpbauYcfasa3FuLH8d9rY2/+gHW9SZ62jM2Mc2ik36+5b
-         cyqV5yKq4JrI6bQFsxevl8KkySNeRE7C5ZHMy11uxDS9i//TKDjCqXTetk2NjEafZQ8W
-         gfpJYpGEd4nf3NFWpMrUXnr6zTYTKnLxvu2Iwxs/amnFX4loqj7JmPs61aqZbI5BxSSg
-         B9vddHpwX5ok5VLFvRJ4krrv4+0U8pt23Wgqnno4N2qIiGgrBxf6rykhmKVe0ohYwJli
-         cITQ==
+        b=Ynwi1bPO2cyKcZlJHUkkfUxde25YwHlCo/We0iff6jywrYb+p5q2e+1ptJeSr+AahD
+         Oioy+v3FdYcbF6KoUgNymsfE0Ii4VhcjyQJT30wYrH+EpiLvkJ05TRLZYQqwo4mWa170
+         iH0zAl4/ZPhwBrsVJ9bIz8CqIEoibhkWv8Zaf3EYgjwvjXZBO6ZnvxfnpTucWzMIkdiY
+         xgjXbNFNOyrcZ24I+tMvZ5tq7xKtrUrUwsV8wUanBySRACAs/kezkgCQPMBed563FR9V
+         V3aaeelqe93VwOAlA1VRVl2dmNG6Qp0F3eGZeNB+CkvARTReCZrW0qrL5uS1LAkPHiD3
+         OL6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=A2xHx7jyL07FmPjaIz4i4MCNz2Q5o3lQXlGvrwGsc3w=;
-        b=NiubFYyIdfAUu9IxzvYFNnSt+nab2/TK+Mv2oijxN/WdrYp0cuL69Fg2zWctIN5xxO
-         78tVzwk7rUUYVjAut4pR4iWtwiyqbxrX6AfrudkebpTPZ9iL7qjg4vY+Z1mbeas07H1i
-         IY9LYozlCV5DwfkkUf/JkUnPtDoMTvqll2Nkvb3DVUrPMNQyNJjXRngJn4G7tJO2cLpt
-         J2slvBd811U7ChNPkQnrYGt7C2MKHAA8wHvgYLzy5R76YJAQ9QnYevBK3olq+TWgZCAQ
-         nzyXUwdzVQCYKYXztyvaACutPcQ44y3znkPG1XsX+pkon+mAyjUU1PtpDzcUSwdj8EHB
-         xgMg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=eJ0HweE+UTkeJDGCxduRDt9UXlDB1O40KAWN/sfisIM=;
+        b=HHoZx7RXpwXvwo6/L/g0VbOSlKBxVvuhdFPZAMG1NOM88dnzEjECT3XT/iAZih0d/Z
+         ADTox7v6AYi6d6r5JcA51aK+2Eea+P4udeKjt4P43wVW8HHsPAkbpflIeB+aPstl0AvB
+         VMNh1J1QnRmVxEzVP60jmuAQXZvc7J/2WO0dt++KX48wumgaCxov4EYc/e5bVcDiTi6/
+         9/3ucAX3M+jfCHcZFY3sWhApPo+M4L42aBB4T0IOgE6dyiS45p77mkNVFEe0AAIqoK0L
+         IxQGzOpp9JvUFOFfi/LP1C7pOBQsUCx726J4wC/jbYNi0c/TUeGrI5io6DcVMPa+6jYH
+         5i+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UqtozBJS;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ptr4Kp8t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o24si300407uar.227.2022.01.07.10.46.34
+        by mx.google.com with ESMTPS id i39si754233vkd.230.2022.01.07.10.47.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jan 2022 10:46:34 -0800 (PST)
+        Fri, 07 Jan 2022 10:47:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UqtozBJS;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ptr4Kp8t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:58794 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n5uG1-0005Fv-QN
-	for alex.bennee@linaro.org; Fri, 07 Jan 2022 13:46:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36110)
+	id 1n5uGr-00067s-Sq
+	for alex.bennee@linaro.org; Fri, 07 Jan 2022 13:47:25 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1n5uEC-0005CB-RR; Fri, 07 Jan 2022 13:44:40 -0500
-Received: from [2a00:1450:4864:20::42d] (port=46918
- helo=mail-wr1-x42d.google.com)
+ id 1n5uEK-0005Le-GW; Fri, 07 Jan 2022 13:44:48 -0500
+Received: from [2a00:1450:4864:20::431] (port=34723
+ helo=mail-wr1-x431.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1n5uE6-0004lc-7J; Fri, 07 Jan 2022 13:44:40 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id l25so1889102wrb.13;
- Fri, 07 Jan 2022 10:44:32 -0800 (PST)
+ id 1n5uEA-0004mZ-2X; Fri, 07 Jan 2022 13:44:48 -0500
+Received: by mail-wr1-x431.google.com with SMTP id h10so2580235wrb.1;
+ Fri, 07 Jan 2022 10:44:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=A2xHx7jyL07FmPjaIz4i4MCNz2Q5o3lQXlGvrwGsc3w=;
- b=UqtozBJSjI0i1njpYmBhopnQlRTuYeChTkkXOQozg9moyCDd7LPbrEDNpORRFqfSuK
- UycKz2ZhJcBw7Ozlsqne8I11Y61ErCQklczoOb1iLlWJv9wnsrU3rH8rHNtf6/23z4p3
- ifWCS2vDD3Bq9tVMc01t2j+t/00tHPxNX/Ey+Miqgr0+AjoSGnn9e04ufhm28IW87rSf
- zB/wS/LXq8CTTCOfI3LjK4mR/7g3R4NMnRYZQxnRCbQgceq2HadNbKCOznz1bimi2C6U
- 8QLknDXnUoq/i9jAkjVmcRLGOPyUhbM3fm9/PYDURDKSDn/TMGuTHw7TrmB6BwqutArb
- PwiQ==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=eJ0HweE+UTkeJDGCxduRDt9UXlDB1O40KAWN/sfisIM=;
+ b=ptr4Kp8tcjrCfoPZaiHMsl+lMgiQ6/E9wwRN9h+zcKb6YCXMd9hjWcnvhotDFJ7Fau
+ qYedXQLQ0t7rfoBCofkTPk937T0Wzlqh7TKcNoXOFLGa7TGsUiAzrAoMuHuDU8jrjZQl
+ uqJfM33b1ovMQb/W+6GRz8cp3MmCG3LCG2K3RdeNmwZShP2wvWiz1Pfc8KqAod/wm1GQ
+ a4GtU19J3ZCh9AokTvzT+9/9OOKDhRmld9IrG00CqPIQ1BsAr1phexOBOORzsTL+OHGT
+ dlhUZYjASJlfn0ynGJchkgN7SY4fQRn3qrRabP6nS4HIoIj31gkORU33RHrM1js1peBi
+ X/5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=A2xHx7jyL07FmPjaIz4i4MCNz2Q5o3lQXlGvrwGsc3w=;
- b=WuXUdqUrE0/PIgSD2hCdhaQQDBBbtv/zrl17LHs1S6e2I5wm5B1qig2mkJ2JA9LQGy
- ZjGkq2UvIR0UynoShwIqUNboMrAXPeiC3asVWiT//chde9rX8asu3pGGEjoRge15vtK1
- EgD1HFhkYteodl5O6pXbRUW78CibiIFOc1LDl2AEOY4BmBBBsUtX4GkCyqa9vhy31Ujc
- e/9RE0/gGRaJjkTGQxWMcmQwUDpVpHI/MZs0MIm/ash9d4ucdzUR8ITOShbTqN6yp8c+
- JMXQ0BSA3tgibnIexCi/jqxKy54XinVGZTTLI5lOFgAEZMH1CE2uUj7XVeCfTOh/DkAn
- 1hCA==
-X-Gm-Message-State: AOAM531hFhqhCVuE6YYn7pEa/GAul0+qdQtNnfUecon/XED9v2JRpLmC
- 2K6tEGhZSmURkezQWtqBBoTyCIoWLdyhCQ==
-X-Received: by 2002:adf:dfcc:: with SMTP id q12mr7651303wrn.86.1641581071482; 
- Fri, 07 Jan 2022 10:44:31 -0800 (PST)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=eJ0HweE+UTkeJDGCxduRDt9UXlDB1O40KAWN/sfisIM=;
+ b=cxfuC6lz/IT7lvz/UdCsj9LOaim8bR7PnIe6k+t4uZf43zj6lFMA23HFJ5yvEqlaeu
+ sHJtx0dJEmW2LZKMD4LEVmD07+tHfks4NuyuaRMR/DSSLOVo60oWZlJ6S+y0neEcgTAy
+ +RN+wAhvR1hiOdcP97jCsBGtpnU0vcgEMbQn7W+zlm9Pl9x9Hfqwz31xmePEzA2Vkq7B
+ BrpRvM9iWr0xVT5x+AqYCij5TCJjJpag2BF5zw/bdY4hMmO77R3aNZKKR/gruhFw2v/x
+ C3w5Y3uhvhZC7DwRUmxHk1sMbUvn7tqKSh4Wj5qJvY3prbcp402yE4QZR17W2djIBDMD
+ W2ng==
+X-Gm-Message-State: AOAM533dEdfY5w2tDtXUKUNOX2fYl2Iq0dIfNgSommWxWxadFzRKUeMU
+ /24QpUpNzc5nCL+glfaKt0kByLwqXaWyyQ==
+X-Received: by 2002:a05:6000:1548:: with SMTP id
+ 8mr55499867wry.195.1641581076244; 
+ Fri, 07 Jan 2022 10:44:36 -0800 (PST)
 Received: from nuc.. (83.red-83-50-87.dynamicip.rima-tde.net. [83.50.87.83])
- by smtp.gmail.com with ESMTPSA id i8sm6880069wry.108.2022.01.07.10.44.30
+ by smtp.gmail.com with ESMTPSA id u11sm5416205wmq.2.2022.01.07.10.44.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 10:44:31 -0800 (PST)
+ Fri, 07 Jan 2022 10:44:35 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 0/3] hw/net: Move MV88W8618 network device out of hw/arm/
- directory
-Date: Fri,  7 Jan 2022 19:44:26 +0100
-Message-Id: <20220107184429.423572-1-f4bug@amsat.org>
+Subject: [PATCH v4 1/3] hw: Move MARVELL_88W8618 Kconfig from audio/ to arm/
+Date: Fri,  7 Jan 2022 19:44:27 +0100
+Message-Id: <20220107184429.423572-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.33.1
+In-Reply-To: <20220107184429.423572-1-f4bug@amsat.org>
+References: <20220107184429.423572-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42d
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::431
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -122,37 +125,46 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
  qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yvhkY5es/6pG
+X-TUID: M9mMAL74kQ6M
 
-This series simply extract the MV88W8618 device from the ARM=0D
-machine in hw/arm/ and move it to hw/net/.=0D
-=0D
-Since v3:=0D
-- Rebased on latest main/master=0D
-=0D
-Since v2:=0D
-- declare MARVELL_88W8618 in hw/arm/Kconfig=0D
-- use MARVELL_88W8618 Kconfig (rth)=0D
-=0D
-Since v1:=0D
-- update (c) notice=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (3):=0D
-  hw: Move MARVELL_88W8618 Kconfig from audio/ to arm/=0D
-  hw/arm/musicpal: Fix coding style of code related to MV88W8618 device=0D
-  hw/net: Move MV88W8618 network device out of hw/arm/ directory=0D
-=0D
- include/hw/net/mv88w8618_eth.h |  12 +=0D
- hw/arm/musicpal.c              | 381 +------------------------------=0D
- hw/net/mv88w8618_eth.c         | 403 +++++++++++++++++++++++++++++++++=0D
- MAINTAINERS                    |   2 +=0D
- hw/arm/Kconfig                 |   3 +=0D
- hw/audio/Kconfig               |   3 -=0D
- hw/net/meson.build             |   1 +=0D
- 7 files changed, 422 insertions(+), 383 deletions(-)=0D
- create mode 100644 include/hw/net/mv88w8618_eth.h=0D
- create mode 100644 hw/net/mv88w8618_eth.c=0D
-=0D
--- =0D
-2.33.1=0D
-=0D
+The Marvell 88W8618 is a system-on-chip with an ARM core.
+We implement its audio codecs and network interface.
+Homogeneous SoC Kconfig are usually defined in the hw/$ARCH
+directory. Move it there.
+
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/Kconfig   | 3 +++
+ hw/audio/Kconfig | 3 ---
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index e6525909438..c459c897cc7 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -94,6 +94,9 @@ config MUSCA
+     select SPLIT_IRQ
+     select UNIMP
+ 
++config MARVELL_88W8618
++    bool
++
+ config MUSICPAL
+     bool
+     select OR_IRQ
+diff --git a/hw/audio/Kconfig b/hw/audio/Kconfig
+index e9c6fed8261..e76c69ca7e7 100644
+--- a/hw/audio/Kconfig
++++ b/hw/audio/Kconfig
+@@ -47,6 +47,3 @@ config PL041
+ 
+ config CS4231
+     bool
+-
+-config MARVELL_88W8618
+-    bool
+-- 
+2.33.1
+

@@ -1,357 +1,271 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp431834lfb;
-        Fri, 7 Jan 2022 14:33:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyRtOJCtiWoGk5OWN29g9DPKVird3ytikR5FNuf75F4w87ZCYjI1EHHl4HzL2CDE+X0YYeu
-X-Received: by 2002:a5b:b4c:: with SMTP id b12mr4655799ybr.339.1641594786854;
-        Fri, 07 Jan 2022 14:33:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641594786; cv=none;
+Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp517175lfb;
+        Fri, 7 Jan 2022 17:45:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzg6qro2ddqGZNn60mt+qtMcuaBv/gwfp1yIhwhjF3+KMDBxN17E0vJUCUJQBynlcOY6L89
+X-Received: by 2002:a5b:b10:: with SMTP id z16mr3660907ybp.537.1641606348927;
+        Fri, 07 Jan 2022 17:45:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641606348; cv=none;
         d=google.com; s=arc-20160816;
-        b=esmXNlLI+pL7l9w3SywyjzcflSoWeRCFm7B2ql8AeydTIkqHtbTFOlb1JTjPTcx7Px
-         41l+nc75KxnVBzf539dQw0S8BJ+E7HRoDbF1IsplsZ+iolLZTDUiAK6J3Mu3XgV+4qMO
-         FPWQnzKvyVbWSpWopNPOc/6jzdmeMLubRC83QYUeRaoEkSA003rgEX5JVhS0lKh/VC+M
-         OwvwT1G/u40oaeO1/dXcAwGwap3PjliytHfjkwGH5nNtoHWLjdi5IaISRnmafGCK7bIj
-         zr1mWzhLpKpvwJyn28XCNTCcSG1iHXuA6Y5kuY8sluWUR/xpFHRsNrgghXqColuoB2ag
-         zoeg==
+        b=YqrU4nprEEV8+26ABznqGRB+lVhpzDXHaNOrU2+Y6etp9I1ThmZs2aAg1YjRLYbI0Y
+         onlhujHu9+fDIiUn2m3Ulotg04i/qnw9a5nKYWpxTIlN8CqmaLRvWiFWXDi/E0am34G+
+         NExTvf1blSvc+hxmQBFoEUYxZGxYd/jSy0LlCRvt9LlqBvvBetMo9xScvsD2wrwLFZoD
+         aItC3V+jAgUhaebqra1uxryFscB8RctqawcZXT+7I0hiA/N9gezauROSB8z+8STQJh0/
+         HsrhSVmo0c13e5gYpekrERGmr8m48eLe1ypLmbzj2A/WImFJ6GoZcN+IGm4X0/IvUBZ2
+         6teg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=Bew94qxoEdSzZldQXSEl8nkpDsglLZc+907U9iDzJXg=;
-        b=vpoVSIePFUiwIGsVZjbE84SivH7hbVRjZQqYZIGgxfVm4Q4bVk/LlpXACSROyM8h21
-         rsV620EYRSDxwpYPNOcMIjNtX/X5PS2eZHLnrAYRYJ3DIGfI3v+/nvEI3v6tV2Egudqt
-         oOCuQajmD20oxesaz99RzBQUk4SznJ41kQKEdYfrhLaDQw1SWDtN/voTw13Xvl+GN4EG
-         6V3PwR+PSGtaHYCAySVxcVZSN8lrgjIXtRRNRMCGtLPnA6MrKBrBu6+cGJ/D2Hu/OdW+
-         Fkur+YqOTRF1aeT2dGA9UsMpV3uTmvrcIRboeUzn6ITRjR4w5LADK2I1Pw6uI6pmP3Nq
-         CxAQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=2nFeua7zjPU9qdmSR15xkvtgazR5lMIelJwJXZHlGtA=;
+        b=cVrVnB3dzspydvKS3ykKo1BKl1szkvnnSETwPYN2RIvIJ5RpydQQiHjJtyvj5lF8QS
+         Hl2kN9vQMfDncI47Pn5ZILA96di8nmJsI4G7w1RkFuSe+OWybeQJmzXD0PsNkXQz/Yz2
+         9KUmXMA/IfucIk/6/5xSdxSMFkTzVZDg01o2PYe55Xo0pC0+GzOFmrdQR+mm29HdQ+9M
+         YqCaj21oLMA1cHQ7htRIWoOR39uJB4wpiHo+eIR+NcFxnAhwIn45rvJwrlvPaB6ChWSa
+         ZZ0WE35S/ZaaEWlNfP0LX+ZXan+g9umV9/u3LZhHLYuGdx75lGHORp4A0gmuU5UnjXSC
+         Qflg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=jzzC0+TG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eHM9slhF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w18si1768361ybk.94.2022.01.07.14.33.06
+        by mx.google.com with ESMTPS id r12si270275ybp.305.2022.01.07.17.45.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jan 2022 14:33:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Jan 2022 17:45:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=jzzC0+TG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:39386 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eHM9slhF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53566 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n5xnF-0003CS-Pk
-	for alex.bennee@linaro.org; Fri, 07 Jan 2022 17:33:05 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50658)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n60nk-0001h8-9j
+	for alex.bennee@linaro.org; Fri, 07 Jan 2022 20:45:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44072)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3Cr7YYQcKCP00jsyzwjlttlqj.htrvjrz-fwrstslsz.twl@flex--venture.bounces.google.com>)
- id 1n5xmL-0001oB-6k
- for qemu-arm@nongnu.org; Fri, 07 Jan 2022 17:32:09 -0500
-Received: from [2607:f8b0:4864:20::b49] (port=53807
- helo=mail-yb1-xb49.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3Cr7YYQcKCP00jsyzwjlttlqj.htrvjrz-fwrstslsz.twl@flex--venture.bounces.google.com>)
- id 1n5xmJ-0007Mt-7D
- for qemu-arm@nongnu.org; Fri, 07 Jan 2022 17:32:08 -0500
-Received: by mail-yb1-xb49.google.com with SMTP id
- a9-20020a251a09000000b0060b2c94d515so14503138yba.20
- for <qemu-arm@nongnu.org>; Fri, 07 Jan 2022 14:32:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=Bew94qxoEdSzZldQXSEl8nkpDsglLZc+907U9iDzJXg=;
- b=jzzC0+TGuWfOW6X36qr+hH2ThEOMcDCHdbW78O97Ma0LVo7S4AGqZvVSiDtNw8F4TO
- WvAR/dhbEUT7UXAxPl6EB+cEMCEED6n5IXpfk9DQprdfIZSiMIGOeTQQuTkq/Jym7eXz
- j69acq26ApQROXX30KZQjOwN57kYnI8qh6yd7pXkX39weC/v1R5JC2xR+Uj520f6tK74
- bqdqPoFQ0TrNsqZwlno+UX+J3IKcmPEbY6tBTZqzf0e3u2i22GEFZUWD+WruzMerE1c4
- e0UwibETUgF6tNzthIVHilAEcKuh1Qvt2Sfaq2KCs8HBDTmXwYHJfDLisYGbXee2KE9W
- aJ/g==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1n60AE-0004WZ-Dc
+ for qemu-devel@nongnu.org; Fri, 07 Jan 2022 20:04:59 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:34095)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1n60AB-0002P0-Sg
+ for qemu-devel@nongnu.org; Fri, 07 Jan 2022 20:04:58 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1641603895;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2nFeua7zjPU9qdmSR15xkvtgazR5lMIelJwJXZHlGtA=;
+ b=eHM9slhFfUQNn3nNemNWsAb3z9Gf0QW+D/IaRLcEKImfyhajB/zuUNBR/rCXqau6N6Aqn0
+ GNi9CBC1dIGcc7wOryozu6PRIhzpRfiUH0QLtb1YRu/nHfcYBiy8X0up6rIbFtr5eMJYzF
+ Nv6ak88Rf7K3dYjjLI1yQmNtk+AW7vA=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-241-ph9aAUEMMIOaOU_EfQb8KQ-1; Fri, 07 Jan 2022 20:04:54 -0500
+X-MC-Unique: ph9aAUEMMIOaOU_EfQb8KQ-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ b9-20020a7bc249000000b00347c5699809so1587088wmj.1
+ for <qemu-devel@nongnu.org>; Fri, 07 Jan 2022 17:04:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=Bew94qxoEdSzZldQXSEl8nkpDsglLZc+907U9iDzJXg=;
- b=R07I249tShu3xzKWzysxwxMKlgPq5816X+KuP0/B7ZG9eCjSP3Btqp6VYlbHmTznqH
- rynjWv5RjpzlPCAsjC0xSKzGKXw4dp7FhHf6H1YGZEFZAbrj2wHIMOoZJP8zZnNLP3Nb
- lfbjRuKjeruyWyfS0dCrSVGSloDbC4ONskmlZKpMgBtjKo2pxyyGugVLwqTAyp8njklx
- wUOLT2w4JYLvWmHMoyDBGvqT+lyECxC3vkUEVz1W4BVr65Jmn/dIKd/NOkshnPRFLVed
- YK5PRfZNpNVSl7MJzVexF4CxPEJYd83Zc/MQmwiRAJ0z6Q3uMKHpjWdSYQteWv6oSTHm
- 13dA==
-X-Gm-Message-State: AOAM533HDBaYK8PHaAW9GRLantu1Nd0WvOnUXIyoEjjJKkszWI4Hs75x
- CH9tPbfJGKmAfkCPzK1qx8Esg0UWWPYA
-X-Received: from venture.svl.corp.google.com
- ([2620:15c:2a3:200:8c24:9ca4:d79e:839d])
- (user=venture job=sendgmr) by 2002:a25:cc55:: with SMTP id
- l82mr73818914ybf.408.1641594378605; Fri, 07 Jan 2022 14:26:18 -0800 (PST)
-Date: Fri,  7 Jan 2022 14:25:57 -0800
-Message-Id: <20220107222557.3812222-1-venture@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.34.1.575.g55b058a8bb-goog
-Subject: [PATCH] tests/qtest: add qtests for npcm7xx sdhci
-From: Patrick Venture <venture@google.com>
-To: thuth@redhat.com, lvivier@redhat.com, pbonzini@redhat.com
-Cc: hskinnemoen@google.com, kfting@nuvoton.com, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, Shengtan Mao <stmao@google.com>,
- Hao Wu <wuhaotsh@google.com>, Chris Rauer <crauer@google.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b49
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3Cr7YYQcKCP00jsyzwjlttlqj.htrvjrz-fwrstslsz.twl@flex--venture.bounces.google.com;
- helo=mail-yb1-xb49.google.com
-X-Spam_score_int: -87
-X-Spam_score: -8.8
-X-Spam_bar: --------
-X-Spam_report: (-8.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=2nFeua7zjPU9qdmSR15xkvtgazR5lMIelJwJXZHlGtA=;
+ b=I+msvpR9NQc1ZGpAQaWzjPY7BHTsNRDNYY52EFhmDuZmuyzRh2suM2fX7GkcZx2O1o
+ ugOyHtavtzJoRZDqqWTP6c60ETMXrzBCb6z8mDQpE3Snckc2nB0U13kKaMJJQcfHX3Yt
+ p2qZazMVx+XNkMOUV7AUAkxJghb4+v8IzpgIxiwfifzDMTyX+8pSzlUyYt8wnXMu4sKe
+ GvG8/VbAMy2kSOgb6yU0jzmpMALVvWVMYDr3Oo6SBR7+L2k3s/1J3vX48dBNKUfrJGna
+ D3F4vebwA5z31bVMsTcR3Qd97piJadTfp+vNl0QhRS39//qgW65Cp/7WrSGE9vba68Kd
+ 0iwg==
+X-Gm-Message-State: AOAM531Z6xPHM24KAsv6b0o8t2XgQEWmeTGLVKuWhMbZ0zjx/XAVPUNs
+ bcuR40uDaMdjUK1XJGB4g8kwhU3Z4Vraf1MA+yp5LFav8ftp7z9gJvhvUw0AUr7V3bXWuggruFu
+ WRwNKN/CzGxW6KIIds4oZXrvGb5TPrhAtvg5s2jqWqRzBKHAOePqNcj9S0MTO
+X-Received: by 2002:a5d:6b8b:: with SMTP id n11mr7155863wrx.296.1641603892742; 
+ Fri, 07 Jan 2022 17:04:52 -0800 (PST)
+X-Received: by 2002:a5d:6b8b:: with SMTP id n11mr7155846wrx.296.1641603892530; 
+ Fri, 07 Jan 2022 17:04:52 -0800 (PST)
+Received: from redhat.com ([147.161.13.99])
+ by smtp.gmail.com with ESMTPSA id p13sm251104wrs.54.2022.01.07.17.04.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 Jan 2022 17:04:52 -0800 (PST)
+Date: Fri, 7 Jan 2022 20:04:49 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL v3 25/55] smbios: Rename SMBIOS_ENTRY_POINT_* enums
+Message-ID: <20220108003423.15830-26-mst@redhat.com>
+References: <20220108003423.15830-1-mst@redhat.com>
+MIME-Version: 1.0
+In-Reply-To: <20220108003423.15830-1-mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H88FOwEU+jqz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oBtDxWY2X3p3
 
-From: Shengtan Mao <stmao@google.com>
+From: Eduardo Habkost <ehabkost@redhat.com>
 
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Chris Rauer <crauer@google.com>
-Signed-off-by: Shengtan Mao <stmao@google.com>
+Rename the enums to match the naming style used by QAPI, and to
+use "32" and "64" instead of "20" and "31".  This will allow us
+to more easily move the enum to the QAPI schema later.
+
+About the naming choice: "SMBIOS 2.1 entry point"/"SMBIOS 3.0
+entry point" and "32-bit entry point"/"64-bit entry point" are
+synonymous in the SMBIOS specification.  However, the phrases
+"32-bit entry point" and "64-bit entry point" are used more often.
+
+The new names also avoid confusion between the entry point format
+and the actual SMBIOS version reported in the entry point
+structure.  For example: currently the 32-bit entry point
+actually report SMBIOS 2.8 support, not 2.1.
+
+Based on portions of a patch submitted by Daniel P. Berrangé.
+
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Message-Id: <20211026151100.1691925-2-ehabkost@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- tests/qtest/meson.build          |   1 +
- tests/qtest/npcm7xx_sdhci-test.c | 201 +++++++++++++++++++++++++++++++
- 2 files changed, 202 insertions(+)
- create mode 100644 tests/qtest/npcm7xx_sdhci-test.c
+ include/hw/firmware/smbios.h | 4 ++--
+ hw/arm/virt.c                | 2 +-
+ hw/i386/pc_piix.c            | 2 +-
+ hw/i386/pc_q35.c             | 2 +-
+ hw/smbios/smbios.c           | 8 ++++----
+ 5 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 37e1eaa449..b406eba8f6 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -189,6 +189,7 @@ qtests_npcm7xx = \
-    'npcm7xx_gpio-test',
-    'npcm7xx_pwm-test',
-    'npcm7xx_rng-test',
-+   'npcm7xx_sdhci-test',
-    'npcm7xx_smbus-test',
-    'npcm7xx_timer-test',
-    'npcm7xx_watchdog_timer-test'] + \
-diff --git a/tests/qtest/npcm7xx_sdhci-test.c b/tests/qtest/npcm7xx_sdhci-test.c
-new file mode 100644
-index 0000000000..feb09b921a
---- /dev/null
-+++ b/tests/qtest/npcm7xx_sdhci-test.c
-@@ -0,0 +1,201 @@
-+/*
-+ * QTests for NPCM7xx SD-3.0 / MMC-4.51 Host Controller
-+ *
-+ * Copyright (c) 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/sd/npcm7xx_sdhci.h"
-+
-+#include "libqos/libqtest.h"
-+#include "libqtest-single.h"
-+#include "libqos/sdhci-cmd.h"
-+
-+#define NPCM7XX_MMC_BA 0xF0842000
-+#define NPCM7XX_BLK_SIZE 512
-+#define NPCM7XX_TEST_IMAGE_SIZE (1 << 30)
-+
-+char *sd_path;
-+
-+static QTestState *setup_sd_card(void)
-+{
-+    QTestState *qts = qtest_initf(
-+        "-machine kudo-bmc "
-+        "-device sd-card,drive=drive0 "
-+        "-drive id=drive0,if=none,file=%s,format=raw,auto-read-only=off",
-+        sd_path);
-+
-+    qtest_writew(qts, NPCM7XX_MMC_BA + SDHC_SWRST, SDHC_RESET_ALL);
-+    qtest_writew(qts, NPCM7XX_MMC_BA + SDHC_CLKCON,
-+                 SDHC_CLOCK_SDCLK_EN | SDHC_CLOCK_INT_STABLE |
-+                     SDHC_CLOCK_INT_EN);
-+    sdhci_cmd_regs(qts, NPCM7XX_MMC_BA, 0, 0, 0, 0, SDHC_APP_CMD);
-+    sdhci_cmd_regs(qts, NPCM7XX_MMC_BA, 0, 0, 0x41200000, 0, (41 << 8));
-+    sdhci_cmd_regs(qts, NPCM7XX_MMC_BA, 0, 0, 0, 0, SDHC_ALL_SEND_CID);
-+    sdhci_cmd_regs(qts, NPCM7XX_MMC_BA, 0, 0, 0, 0, SDHC_SEND_RELATIVE_ADDR);
-+    sdhci_cmd_regs(qts, NPCM7XX_MMC_BA, 0, 0, 0x45670000, 0,
-+                   SDHC_SELECT_DESELECT_CARD);
-+
-+    return qts;
-+}
-+
-+static void write_sdread(QTestState *qts, const char *msg)
-+{
-+    size_t len = strlen(msg);
-+    char *rmsg = g_malloc(len);
-+
-+    /* write message to sd */
-+    int fd = open(sd_path, O_WRONLY);
-+    int ret = write(fd, msg, len);
-+    close(fd);
-+    g_assert(ret == len);
-+
-+    /* read message using sdhci */
-+    ret = sdhci_read_cmd(qts, NPCM7XX_MMC_BA, rmsg, len);
-+    g_assert(ret == len);
-+    g_assert(!strcmp(rmsg, msg));
-+
-+    free(rmsg);
-+}
-+
-+/* Check MMC can read values from sd */
-+static void test_read_sd(void)
-+{
-+    QTestState *qts = setup_sd_card();
-+
-+    write_sdread(qts, "hello world");
-+    write_sdread(qts, "goodbye");
-+
-+    qtest_quit(qts);
-+}
-+
-+static void sdwrite_read(QTestState *qts, const char *msg)
-+{
-+    size_t len = strlen(msg);
-+    char *rmsg = g_malloc(len);
-+
-+    /* write message using sdhci */
-+    sdhci_write_cmd(qts, NPCM7XX_MMC_BA, msg, len, NPCM7XX_BLK_SIZE);
-+
-+    /* read message from sd */
-+    int fd = open(sd_path, O_RDONLY);
-+    int ret = read(fd, rmsg, len);
-+    close(fd);
-+    g_assert(ret == len);
-+
-+    g_assert(!strcmp(rmsg, msg));
-+
-+    free(rmsg);
-+}
-+
-+/* Check MMC can write values to sd */
-+static void test_write_sd(void)
-+{
-+    QTestState *qts = setup_sd_card();
-+
-+    sdwrite_read(qts, "hello world");
-+    sdwrite_read(qts, "goodbye");
-+
-+    qtest_quit(qts);
-+}
-+
-+/* Check SDHCI has correct default values. */
-+static void test_reset(void)
-+{
-+    QTestState *qts = qtest_init("-machine kudo-bmc");
-+
-+    uint64_t addr = NPCM7XX_MMC_BA;
-+    uint64_t end_addr = addr + NPCM7XX_REG_SIZE;
-+    uint16_t prstvals_resets[] = {NPCM7XX_PRSTVALS_0_RESET,
-+                                  NPCM7XX_PRSTVALS_1_RESET,
-+                                  0,
-+                                  NPCM7XX_PRSTVALS_3_RESET,
-+                                  0,
-+                                  0};
-+    int i;
-+    uint32_t mask;
-+    while (addr < end_addr) {
-+        switch (addr - NPCM7XX_MMC_BA) {
-+        case SDHC_PRNSTS:
-+            /* ignores bits 20 to 24: they are changed when reading registers */
-+            mask = 0x1f00000;
-+            g_assert_cmphex(qtest_readl(qts, addr) | mask, ==,
-+                            NPCM7XX_PRSNTS_RESET | mask);
-+            addr += 4;
-+            break;
-+        case SDHC_BLKGAP:
-+            g_assert_cmphex(qtest_readb(qts, addr), ==, NPCM7XX_BLKGAP_RESET);
-+            addr += 1;
-+            break;
-+        case SDHC_CAPAB:
-+            g_assert_cmphex(qtest_readq(qts, addr), ==, NPCM7XX_CAPAB_RESET);
-+            addr += 8;
-+            break;
-+        case SDHC_MAXCURR:
-+            g_assert_cmphex(qtest_readq(qts, addr), ==, NPCM7XX_MAXCURR_RESET);
-+            addr += 8;
-+            break;
-+        case SDHC_HCVER:
-+            g_assert_cmphex(qtest_readw(qts, addr), ==, NPCM7XX_HCVER_RESET);
-+            addr += 2;
-+            break;
-+        case NPCM7XX_PRSTVALS:
-+            for (i = 0; i < NPCM7XX_PRSTVALS_SIZE; ++i) {
-+                g_assert_cmphex(qtest_readw(qts, addr + 2 * i), ==,
-+                                prstvals_resets[i]);
-+            }
-+            addr += NPCM7XX_PRSTVALS_SIZE * 2;
-+            break;
-+        default:
-+            g_assert_cmphex(qtest_readb(qts, addr), ==, 0);
-+            addr += 1;
-+        }
-+    }
-+
-+    qtest_quit(qts);
-+}
-+
-+static void drive_destroy(void)
-+{
-+    unlink(sd_path);
-+    g_free(sd_path);
-+}
-+
-+static void drive_create(void)
-+{
-+    int fd, ret;
-+    sd_path = g_strdup("/tmp/qtest.XXXXXX");
-+
-+    /* Create a temporary raw image */
-+    fd = mkstemp(sd_path);
-+    g_assert_cmpint(fd, >=, 0);
-+    ret = ftruncate(fd, NPCM7XX_TEST_IMAGE_SIZE);
-+    g_assert_cmpint(ret, ==, 0);
-+    g_message("%s", sd_path);
-+    close(fd);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    drive_create();
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_add_func("npcm7xx_sdhci/reset", test_reset);
-+    qtest_add_func("npcm7xx_sdhci/write_sd", test_write_sd);
-+    qtest_add_func("npcm7xx_sdhci/read_sd", test_read_sd);
-+
-+    int ret = g_test_run();
-+    drive_destroy();
-+    return ret;
-+}
+diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
+index 5a0dd0c8cf..d916baed6a 100644
+--- a/include/hw/firmware/smbios.h
++++ b/include/hw/firmware/smbios.h
+@@ -27,8 +27,8 @@ struct smbios_phys_mem_area {
+  * SMBIOS spec defined tables
+  */
+ typedef enum SmbiosEntryPointType {
+-    SMBIOS_ENTRY_POINT_21,
+-    SMBIOS_ENTRY_POINT_30,
++    SMBIOS_ENTRY_POINT_TYPE_32,
++    SMBIOS_ENTRY_POINT_TYPE_64,
+ } SmbiosEntryPointType;
+ 
+ /* SMBIOS Entry Point
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 4593fea1ce..b45b52c90e 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1589,7 +1589,7 @@ static void virt_build_smbios(VirtMachineState *vms)
+ 
+     smbios_set_defaults("QEMU", product,
+                         vmc->smbios_old_sys_ver ? "1.0" : mc->name, false,
+-                        true, SMBIOS_ENTRY_POINT_30);
++                        true, SMBIOS_ENTRY_POINT_TYPE_64);
+ 
+     smbios_get_tables(MACHINE(vms), NULL, 0,
+                       &smbios_tables, &smbios_tables_len,
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 1999190276..25f918b609 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -177,7 +177,7 @@ static void pc_init1(MachineState *machine,
+         smbios_set_defaults("QEMU", "Standard PC (i440FX + PIIX, 1996)",
+                             mc->name, pcmc->smbios_legacy_mode,
+                             pcmc->smbios_uuid_encoded,
+-                            SMBIOS_ENTRY_POINT_21);
++                            SMBIOS_ENTRY_POINT_TYPE_32);
+     }
+ 
+     /* allocate ram and load rom/bios */
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 2e981f436c..1103fbcd90 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -200,7 +200,7 @@ static void pc_q35_init(MachineState *machine)
+         smbios_set_defaults("QEMU", "Standard PC (Q35 + ICH9, 2009)",
+                             mc->name, pcmc->smbios_legacy_mode,
+                             pcmc->smbios_uuid_encoded,
+-                            SMBIOS_ENTRY_POINT_21);
++                            SMBIOS_ENTRY_POINT_TYPE_32);
+     }
+ 
+     /* allocate ram and load rom/bios */
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index 7397e56737..6013df1698 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -62,7 +62,7 @@ uint8_t *smbios_tables;
+ size_t smbios_tables_len;
+ unsigned smbios_table_max;
+ unsigned smbios_table_cnt;
+-static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_21;
++static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_32;
+ 
+ static SmbiosEntryPoint ep;
+ 
+@@ -432,7 +432,7 @@ static void smbios_validate_table(MachineState *ms)
+         exit(1);
+     }
+ 
+-    if (smbios_ep_type == SMBIOS_ENTRY_POINT_21 &&
++    if (smbios_ep_type == SMBIOS_ENTRY_POINT_TYPE_32 &&
+         smbios_tables_len > SMBIOS_21_MAX_TABLES_LEN) {
+         error_report("SMBIOS 2.1 table length %zu exceeds %d",
+                      smbios_tables_len, SMBIOS_21_MAX_TABLES_LEN);
+@@ -927,7 +927,7 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
+ static void smbios_entry_point_setup(void)
+ {
+     switch (smbios_ep_type) {
+-    case SMBIOS_ENTRY_POINT_21:
++    case SMBIOS_ENTRY_POINT_TYPE_32:
+         memcpy(ep.ep21.anchor_string, "_SM_", 4);
+         memcpy(ep.ep21.intermediate_anchor_string, "_DMI_", 5);
+         ep.ep21.length = sizeof(struct smbios_21_entry_point);
+@@ -950,7 +950,7 @@ static void smbios_entry_point_setup(void)
+         ep.ep21.structure_table_address = cpu_to_le32(0);
+ 
+         break;
+-    case SMBIOS_ENTRY_POINT_30:
++    case SMBIOS_ENTRY_POINT_TYPE_64:
+         memcpy(ep.ep30.anchor_string, "_SM3_", 5);
+         ep.ep30.length = sizeof(struct smbios_30_entry_point);
+         ep.ep30.entry_point_revision = 1;
 -- 
-2.34.1.575.g55b058a8bb-goog
+MST
 

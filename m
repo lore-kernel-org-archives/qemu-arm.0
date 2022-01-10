@@ -1,278 +1,59 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id b4sm2679617ejl.129.2022.01.10.09.51.05
+        by smtp.gmail.com with ESMTPSA id 21sm2655615ejz.24.2022.01.10.09.51.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Jan 2022 09:51:07 -0800 (PST)
+        Mon, 10 Jan 2022 09:51:08 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9A5FB1FFBB;
+	by zen.linaroharston (Postfix) with ESMTP id C80101FFBE;
 	Mon, 10 Jan 2022 17:51:04 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [RFC PATCH  3/6] hw/arm: wire-up memory from the Pico board and the SoC
-Date: Mon, 10 Jan 2022 17:51:01 +0000
-Message-Id: <20220110175104.2908956-4-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RFC PATCH  6/6] docs/devel: add some clarifying text for aliases
+Date: Mon, 10 Jan 2022 17:51:04 +0000
+Message-Id: <20220110175104.2908956-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220110175104.2908956-1-alex.bennee@linaro.org>
 References: <20220110175104.2908956-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: BrMJQXxmy+Nn
+X-TUID: 4RntfzVH2qUT
 
-All the memory aside from the external flash is a feature of the SoC
-itself. However the flash is part of the board and different RP2040
-boards can choose to wire up different amounts of it.
-
-For now add unimplemented devices for all the rp2040 peripheral
-blocks. Before we can boot more of the ROM we will need to model at
-least the SIO and CLOCKS blocks.
-
-For now CPU#1 starts disabled as it needs a working CPUID register so
-it can identify itself before sleeping.
+We do mention the limitation of single parenthood for
+memory_region_add_subregion but lets also make it clear how aliases
+help solve that conundrum.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/hw/arm/rp2040.h |   9 +++-
- hw/arm/raspi_pico.c     |  20 +++++++
- hw/arm/rp2040.c         | 113 ++++++++++++++++++++++++++++++++++++++--
- 3 files changed, 137 insertions(+), 5 deletions(-)
+ docs/devel/memory.rst | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/arm/rp2040.h b/include/hw/arm/rp2040.h
-index 6bf4a4e57e..760cef98fc 100644
---- a/include/hw/arm/rp2040.h
-+++ b/include/hw/arm/rp2040.h
-@@ -25,7 +25,14 @@ struct RP2040State {
+diff --git a/docs/devel/memory.rst b/docs/devel/memory.rst
+index 5dc8a12682..69c5e3f914 100644
+--- a/docs/devel/memory.rst
++++ b/docs/devel/memory.rst
+@@ -67,11 +67,15 @@ MemoryRegion):
  
-     ARMv7MState armv7m[RP2040_NCPUS];
+   You initialize a pure container with memory_region_init().
  
--    MemoryRegion container;
-+    /* RP2040 regions */
-+    MemoryRegion *memory; /* from board */
-+    MemoryRegion memory_alias[RP2040_NCPUS - 1];
+-- alias: a subsection of another region.  Aliases allow a region to be
+-  split apart into discontiguous regions.  Examples of uses are memory banks
+-  used when the guest address space is smaller than the amount of RAM
+-  addressed, or a memory controller that splits main memory to expose a "PCI
+-  hole".  Aliases may point to any type of region, including other aliases,
++- alias: a subsection of another region. Aliases allow a region to be
++  split apart into discontiguous regions. Examples of uses are memory
++  banks used when the guest address space is smaller than the amount
++  of RAM addressed, or a memory controller that splits main memory to
++  expose a "PCI hole". You can also create aliases to avoid trying to
++  add the original region to multiple parents via
++  `memory_region_add_subregion`.
 +
-+    MemoryRegion rom;    /* internal mask rom */
-+    MemoryRegion sram03; /* shared SRAM0-3 banks */
-+    MemoryRegion sram4;  /* non-stripped SRAM4 */
-+    MemoryRegion sram5;  /* non-stripped SRAM5 */
- };
++  Aliases may point to any type of region, including other aliases,
+   but an alias may not point back to itself, directly or indirectly.
+   You initialize these with memory_region_init_alias().
  
- 
-diff --git a/hw/arm/raspi_pico.c b/hw/arm/raspi_pico.c
-index 9826f4d608..76839e93bf 100644
---- a/hw/arm/raspi_pico.c
-+++ b/hw/arm/raspi_pico.c
-@@ -22,6 +22,7 @@ struct PiPicoMachineState {
-     MachineState parent_obj;
-     /*< public >*/
-     RP2040State soc;
-+    MemoryRegion flash;
- };
- typedef struct PiPicoMachineState PiPicoMachineState;
- 
-@@ -37,14 +38,33 @@ typedef struct PiPicoMachineClass PiPicoMachineClass;
- DECLARE_OBJ_CHECKERS(PiPicoMachineState, PiPicoMachineClass,
-                      PIPICO_MACHINE, TYPE_PIPICO_MACHINE)
- 
-+#define RP2040_XIP_BASE   0x10000000
- 
- static void pipico_machine_init(MachineState *machine)
- {
-     PiPicoMachineState *s = PIPICO_MACHINE(machine);
-+    MemoryRegion *sysmem = get_system_memory();
-+    Error **errp = &error_fatal;
- 
-     /* Setup the SOC */
-     object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_RP2040);
-+    object_property_set_link(OBJECT(&s->soc), "memory", OBJECT(sysmem), errp);
-+
-+    /*
-+     * The flash device it external to the SoC and mounted on the
-+     * PiPico board itself. We will "load" the actual contents with
-+     * armv7_load_kernel later although we still rely on the SoC's
-+     * mask ROM to get to it.
-+     */
-+    const uint32_t flash_size = 256 * KiB;
-+    memory_region_init_rom(&s->flash, NULL, "pico.flash0", flash_size, errp);
-+    memory_region_add_subregion(sysmem, RP2040_XIP_BASE, &s->flash);
-+
-+
-     sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
-+
-+    /* This assumes the "kernel" is positioned in the XIP Flash block */
-+    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, RP2040_XIP_BASE);
- }
- 
- static void pipico_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/rp2040.c b/hw/arm/rp2040.c
-index 2feedc0da8..c6cc9b7165 100644
---- a/hw/arm/rp2040.c
-+++ b/hw/arm/rp2040.c
-@@ -7,10 +7,11 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
--#include "qemu/module.h"
- #include "hw/arm/armv7m.h"
- #include "hw/arm/rp2040.h"
-+#include "hw/misc/unimp.h"
- #include "hw/sysbus.h"
- #include "hw/qdev-properties.h"
- 
-@@ -27,6 +28,11 @@ typedef struct RP2040Class {
- #define RP2040_GET_CLASS(obj) \
-     OBJECT_GET_CLASS(RP2040Class, (obj), TYPE_RP2040)
- 
-+/* See Table 2.2.2 in the RP2040 Datasheet */
-+#define RP2040_SRAM_BASE  0x20000000
-+#define RP2040_SRAM4_BASE 0x20040000
-+#define RP2040_SRAM5_BASE 0x20041000
-+
- static void rp2040_init(Object *obj)
- {
-     RP2040State *s = RP2040(obj);
-@@ -37,6 +43,16 @@ static void rp2040_init(Object *obj)
-         object_initialize_child(obj, name, &s->armv7m[n], TYPE_ARMV7M);
-         qdev_prop_set_string(DEVICE(&s->armv7m[n]), "cpu-type",
-                              ARM_CPU_TYPE_NAME("cortex-m0"));
-+        /*
-+         * Confusingly ARMv7M creates it's own per-core container so
-+         * we need to alias additional regions to avoid trying to give
-+         * a region two parents.
-+         */
-+        if (n > 0) {
-+            memory_region_init_alias(&s->memory_alias[n - 1], obj,
-+                                     "system-memory.alias", s->memory,
-+                                     0, -1);
-+        }
-     }
- }
- 
-@@ -46,14 +62,104 @@ static void rp2040_realize(DeviceState *dev, Error **errp)
-     Object *obj = OBJECT(dev);
-     int n;
- 
-+    if (!s->memory) {
-+        error_setg(errp, "%s: memory property was not set", __func__);
-+        return;
-+    }
-+
-+    /* initialize internal 16 KB internal ROM */
-+    memory_region_init_rom(&s->rom, obj, "rp2040.rom0", 16 * KiB, errp);
-+    memory_region_add_subregion(s->memory, 0, &s->rom);
-+
-+    /* SRAM (Main 256k bank + two 4k banks)*/
-+    memory_region_init_ram(&s->sram03, obj, "rp2040.sram03", 256 * KiB, errp);
-+    memory_region_add_subregion(s->memory, RP2040_SRAM_BASE, &s->sram03);
-+
-+    memory_region_init_ram(&s->sram4, obj, "rp2040.sram4", 4 * KiB, errp);
-+    memory_region_add_subregion(s->memory, RP2040_SRAM4_BASE, &s->sram4);
-+
-+    memory_region_init_ram(&s->sram5, obj, "rp2040.sram5", 4 * KiB, errp);
-+    memory_region_add_subregion(s->memory, RP2040_SRAM5_BASE, &s->sram5);
-+
-+    /* Map all the devices - see table 2.2.2 from the datasheet */
-+
-+    /* APB Peripherals */
-+    create_unimplemented_device("rp2040.sysinfo",  0x40000000, 0x4000);
-+    create_unimplemented_device("rp2040.syscfg",   0x40004000, 0x4000);
-+    create_unimplemented_device("rp2040.clocks",   0x40008000, 0x4000);
-+    create_unimplemented_device("rp2040.resets",   0x4000c000, 0x4000);
-+    create_unimplemented_device("rp2040.psm",      0x40010000, 0x4000);
-+    create_unimplemented_device("rp2040.iobnk0",   0x40014000, 0x4000);
-+    create_unimplemented_device("rp2040.ioqspi",   0x40018000, 0x4000);
-+    create_unimplemented_device("rp2040.padsbnk0", 0x4001c000, 0x4000);
-+    create_unimplemented_device("rp2040.padsqspi", 0x40020000, 0x4000);
-+    create_unimplemented_device("rp2040.xosc",     0x40024000, 0x4000);
-+
-+    create_unimplemented_device("rp2040.pllsys", 0x40028000, 0x4000);
-+    create_unimplemented_device("rp2040.pllusb", 0x4002c000, 0x4000);
-+    create_unimplemented_device("rp2040.busctrl", 0x40030000, 0x4000);
-+    create_unimplemented_device("rp2040.uart0", 0x40034000, 0x4000);
-+    create_unimplemented_device("rp2040.uart1", 0x40038000, 0x4000);
-+    create_unimplemented_device("rp2040.spi0", 0x4003c000, 0x4000);
-+    create_unimplemented_device("rp2040.spi1", 0x40040000, 0x4000);
-+    create_unimplemented_device("rp2040.i2c0", 0x40044000, 0x4000);
-+    create_unimplemented_device("rp2040.i2c1", 0x40048000, 0x4000);
-+    create_unimplemented_device("rp2040.adc", 0x4004c000, 0x4000);
-+    create_unimplemented_device("rp2040.pwm", 0x40050000, 0x4000);
-+    create_unimplemented_device("rp2040.timer", 0x40054000, 0x4000);
-+    create_unimplemented_device("rp2040.watchdog", 0x40058000, 0x4000);
-+    create_unimplemented_device("rp2040.rtc", 0x4005c000, 0x4000);
-+    create_unimplemented_device("rp2040.rosc", 0x40060000, 0x4000);
-+    create_unimplemented_device("rp2040.vreg&reset", 0x40064000, 0x4000);
-+    create_unimplemented_device("rp2040.tbman", 0x4006c000, 0x4000);
-+
-+    /* AHB-Lite Peripherals */
-+    create_unimplemented_device("rp2040.dmabase",  0x50000000, 0x1000);
-+
-+    /* USB */
-+    create_unimplemented_device("rp2040.usbram",   0x50100000, 0x10000);
-+    create_unimplemented_device("rp2040.usbregs",  0x50110000, 0x10000);
-+
-+    /* Remaining AHB-Lite peripherals */
-+    create_unimplemented_device("rp2040.pi00",     0x50200000, 0x10000);
-+    create_unimplemented_device("rp2040.pi01",     0x50300000, 0x10000);
-+
-+    /* IOPORT Peripherals */
-+    create_unimplemented_device("rp2040.sio",      0xd0000000, 0x10000000);
-+
-+    /*
-+     * Cortex-M0+ internal peripherals (PPB_BASE) are handled by
-+     * the v7m model and live at 0xe0000000.
-+     */
-+
-+    /* TODO: deal with stripped aliases */
-+
-     for (n = 0; n < RP2040_NCPUS; n++) {
-         Object *cpuobj = OBJECT(&s->armv7m[n]);
-+        MemoryRegion *mr = n == 0 ? s->memory : &s->memory_alias[n - 1];
-+        object_property_set_link(cpuobj, "memory", OBJECT(mr), errp);
-+
-+        /*
-+         * FIXME: temp hack - until more of the logic is emulated we
-+         * can't let the second CPU run off into the wild.
-+         */
-+        if (n > 0) {
-+            object_property_set_bool(cpuobj, "start-powered-off",
-+                                     true, &error_fatal);
-+        }
-+
-         if (!sysbus_realize(SYS_BUS_DEVICE(cpuobj), errp)) {
-             return;
-         }
-     }
- }
- 
-+static Property rp2040_soc_properties[] = {
-+    DEFINE_PROP_LINK("memory", RP2040State, memory, TYPE_MEMORY_REGION,
-+                     MemoryRegion *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void rp2040_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
-@@ -61,14 +167,13 @@ static void rp2040_class_init(ObjectClass *oc, void *data)
- 
-     bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-m0");
-     dc->realize = rp2040_realize;
--    /* any props? */
-+    device_class_set_props(dc, rp2040_soc_properties);
- };
- 
- static const TypeInfo rp2040_types[] = {
-     {
-         .name           = TYPE_RP2040,
--        /* .parent         = TYPE_SYS_BUS_DEVICE, */
--        .parent         = TYPE_DEVICE,
-+        .parent         = TYPE_SYS_BUS_DEVICE,
-         .instance_size  = sizeof(RP2040State),
-         .instance_init  = rp2040_init,
-         .class_size     = sizeof(RP2040Class),
 -- 
 2.30.2

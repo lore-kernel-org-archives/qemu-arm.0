@@ -1,93 +1,88 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1160220lfj;
-        Mon, 10 Jan 2022 13:21:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyZ0vDBwPxo9c0jKdJ5f3OnU9ixFfJsaL76Z+QO6t35yVgpZtNtIff0q12CoUwvIMARzGNK
-X-Received: by 2002:a25:ae8d:: with SMTP id b13mr2395792ybj.255.1641849700875;
-        Mon, 10 Jan 2022 13:21:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641849700; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1160781lfj;
+        Mon, 10 Jan 2022 13:22:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxW60bJamdg+3/Gtrdwz9HUhOAFB6y7lusI9y9KKn5iBxZCOXQ+gK6xDpgMuiS/SkpIWacE
+X-Received: by 2002:a25:ae64:: with SMTP id g36mr1942006ybe.748.1641849759154;
+        Mon, 10 Jan 2022 13:22:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641849759; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZpyqN8y8uwZsrgaa0FC4YyDvEYhpTM5jEqk6/Wbl82IJ4qlnO+S4vhMdfj9eGISZUu
-         DRqLcMIoymz8peC9J18XrUllnpb01URIwj+BfIGzA2VdazNPgB09A+/Xzm7Dc8007Q3Q
-         xt6bsnIug7B94jqwf1gt0DIdGaYFa5a3TgvAPP3MFTGAOWqficgvf0JlvUnyQ0WY4gEG
-         N2JqUk7y7xFqhyJSCYdgJfpZb7ox0VkbiPGfx+wurRsDo4cCtYweEt8iRsPQQ7YKZG4f
-         W+35z1j5JY8GyIaMe1bl0sVZEZ0G5Z7NwYIuvs5+ZhL1BpmIhxU0IFu0maJUNf5d6EFd
-         Wzxw==
+        b=sw9AsGzEL+RWgeh2+VgSLhoI6ZN531KaeZGvnBiKJJk8NQWYIVaL4OAO5QKjKoqwkd
+         p1b9DSRT2wI7u0Ojm+fAPKvlTHqAQVfh/onFdk5jTcF3qwx2wXDDt0fEFSEfLNJgRoqb
+         bFN2IxjunLiavIbuTDwidU9EVardbEHJsEkr2bh1mFQVVDA2FHClwVcIap1sLNYwd0gP
+         tNyHp9z6NLe8q9nmglMsCcuRa9WmSH6GdFu2qceSzMBtv0B0pKUj9buDdhbrDf1aODe0
+         LcfjlJUqtQdNNT+UjRyBNxLJdxLw9rm2tX1H8jrDOzRGsETJ+pZ7+N6vpX56l08N5GE7
+         ydWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=TZb2VsF62mI0M1Q9ahfJZ0AlbNFKBIaYPyokRyFEQ58=;
-        b=rsLN4ic3IAYy5F/izHOszP2Cn8tnrXpz2jmB8VwygvKQaRPlICzmVpkmDkhuonuxS7
-         1cSNGAMx7Hxq8RrxZEC6+HXbJBrXTnglE1uyj/NtgDCrdOf0PvUSrk164Dok6c8aRA/A
-         BcfmtJX7emtKOej0gDk6KPfsT4fqdvcYRwA5Y4oQErH7SyjE9Imt3UkgqYHcIkZfEbRY
-         F+4TArJEMYGigYz6F8QULGw8sRY1IDMJM9BMvZTwPQhJ4/A5Ok/rhiM/Ro/4p2KJccxM
-         LKcvA9C2720PDMhi/0K7Ay5GDySKPGS5LIrxVe1VYgcu1m2LCKQ0JagzeZa4Ld490tf6
-         11yg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=3QMWKfnkWCQcrKUmrnLFZ5FlumGhxjFXzkw8X8GRwsY=;
+        b=myERXYS1O0vd7yIPQCKuPZZmyFhBr/7PH1wQ9HXaoBx/tmnxHMNILIAtyuQshQ9LKX
+         VvXKyB4mqrAubAkbFApbHMGLwpc1kpp/kyLmaDUCg/J93GrgI9T2w8CFalwy6V3I0D17
+         m+kfXhw1VD27yhjFGEYxcci3s0e9LIHR1YJiVtXcQi94aj0eq8jiB/J50Ylx+omVwQBO
+         9e8e6Slj8PLn0sRfgSQ5JKYeAijig+XZAy89wgzFk3wtRKS2wh/Lb47RZYTidLo7MYQE
+         WdUtRw8k6oz2uNMS7IGoKwnsM459jKVS5Vb3oiREXdW92aRxPYMyfHgiY7QSWUyf7/yk
+         thQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GQWCW6aA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KjONmJ3p;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w184si5617268ybw.423.2022.01.10.13.21.40
+        by mx.google.com with ESMTPS id w13si7009813ybt.596.2022.01.10.13.22.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Jan 2022 13:21:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 10 Jan 2022 13:22:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GQWCW6aA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KjONmJ3p;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42418 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43544 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n726m-0005rr-7L
-	for alex.bennee@linaro.org; Mon, 10 Jan 2022 16:21:40 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44926)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n727i-0006lY-Id
+	for alex.bennee@linaro.org; Mon, 10 Jan 2022 16:22:38 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1n726A-0005q6-N0
- for qemu-arm@nongnu.org; Mon, 10 Jan 2022 16:21:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:35454)
+ id 1n7250-000457-UZ
+ for qemu-devel@nongnu.org; Mon, 10 Jan 2022 16:19:50 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:22718)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1n7268-0006vM-7p
- for qemu-arm@nongnu.org; Mon, 10 Jan 2022 16:21:02 -0500
+ id 1n724z-0006YV-Aw
+ for qemu-devel@nongnu.org; Mon, 10 Jan 2022 16:19:50 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641849658;
+ s=mimecast20190719; t=1641849588;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TZb2VsF62mI0M1Q9ahfJZ0AlbNFKBIaYPyokRyFEQ58=;
- b=GQWCW6aA4z2Ez+OyuR0vghPrspS57y0S5iS5Y3D/70EN48oSANycyiFsbV5gwFNfGA3FZP
- FVL8KnxhmYTPZpfef1GBGkzxGNrKIMuHgM19lddNt0bzw7mKXVj3rENZTg2ADOz69h5zHn
- r0VJsw4Zwx0XXmIgBPKujLkNnELtaoc=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=3QMWKfnkWCQcrKUmrnLFZ5FlumGhxjFXzkw8X8GRwsY=;
+ b=KjONmJ3pE09WEUhoYns9MYg1yu74IKsbeUPYkbXQZt0skYVFgcBZFZboKkTcG+Yn6kWRwy
+ mLj8kmZz2/9e14/Jyjjqc4t8l59bK/oE7PGGKjL/9kaabieWISxFrQJOzWn5pH3gWUBD8y
+ GTokWedpfPRTCwvza7uNpxfnEnriXh8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-655-gtXP8IYlNBW10U78FE2DoA-1; Mon, 10 Jan 2022 16:20:55 -0500
-X-MC-Unique: gtXP8IYlNBW10U78FE2DoA-1
+ us-mta-216-jGav_OYTNSusSsuyVRhQMg-1; Mon, 10 Jan 2022 16:19:45 -0500
+X-MC-Unique: jGav_OYTNSusSsuyVRhQMg-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 628442F25;
- Mon, 10 Jan 2022 21:20:54 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0A24D2F25;
+ Mon, 10 Jan 2022 21:19:44 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.194.25])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A451EA18BF;
- Mon, 10 Jan 2022 21:20:51 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 84D8145D62;
+ Mon, 10 Jan 2022 21:19:19 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, thuth@redhat.com,
  pbonzini@redhat.com, lvivier@redhat.com, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  david@gibson.dropbear.id.au, clg@kaod.org
-Subject: [PATCH 6/6] tests/qtest/libqos: Add pci-arm and add a pci-arm
- producer in arm-virt machine
-Date: Mon, 10 Jan 2022 22:19:15 +0100
-Message-Id: <20220110211915.2749082-7-eric.auger@redhat.com>
-In-Reply-To: <20220110211915.2749082-1-eric.auger@redhat.com>
-References: <20220110211915.2749082-1-eric.auger@redhat.com>
+Subject: [PATCH 0/6] qtests/libqos: Introduce pci-arm
+Date: Mon, 10 Jan 2022 22:19:09 +0100
+Message-Id: <20220110211915.2749082-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
@@ -96,7 +91,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -33
 X-Spam_score: -3.4
@@ -106,501 +101,81 @@ X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.597,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I/QrWhyALxEP
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XCwyBgB83de+
 
-Up to now the virt-machine node contains a virtio-mmio node.
-However no driver produces any PCI interface node. Hence, PCI
-tests cannot be run with aarch64 binary.
+Up to now the virt-machine node only contains a virtio-mmio
+driver node but no driver that eventually produces any pci-bus
+interface.
 
-Add a GPEX driver node that produces a pci interface node. This latter
-then can be consumed by all the pci tests. One of the first motivation
-was to be able to run the virtio-iommu-pci tests.
+Hence, PCI libqos tests cannot be run with aarch64 binary.
 
-We still face an issue with pci hotplug tests as hotplug cannot happen
-on the pcie root bus and require a generic root port. This will be
-addressed later on.
+This series brings the pieces needed to be able to run PCI tests
+with the aarch64 binary: a generic-pcihost driver node gets
+instantiated by the machine. This later contains a pci-bus-arm
+driver which produces a pci-bus interface. Then all tests
+consuming the pci-bus interface can be run with the libqos arm
+virt machine.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
+One of the first goal was to be able to run the virtio-iommu-pci
+tests as the virtio-iommu was initially targetting ARM and it
+was awkard to be run the test with the pc machine. This is now
+possible.
+
+Only the tests doing hotplug cannot be run yet as hotplug is
+not possible on the root bus. This will be dealt with separately
+by adding a root port to the object tree.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/libqos-pci-arm-v1
+
+Eric Auger (6):
+  tests/qtest/vhost-user-test.c: Use vhostforce=on
+  tests/qtest/libqos/pci: Introduce pio_limit
+  tests/qtest/libqos: Skip hotplug tests if pci root bus is not
+    hotpluggable
+  tests/qtest/vhost-user-blk-test: Setup MSIx to avoid error on aarch64
+  tests/qtest/vhost-user-blk-test: Factorize vq setup code
+  tests/qtest/libqos: Add pci-arm and add a pci-arm producer in arm-virt
+    machine
+
+ tests/qtest/e1000e-test.c             |   6 +
  tests/qtest/libqos/arm-virt-machine.c |  47 +++++-
  tests/qtest/libqos/meson.build        |   3 +
  tests/qtest/libqos/pci-arm.c          | 219 ++++++++++++++++++++++++++
  tests/qtest/libqos/pci-arm.h          |  56 +++++++
- tests/qtest/libqos/pci.h              |   1 +
+ tests/qtest/libqos/pci-pc.c           |   1 +
+ tests/qtest/libqos/pci-spapr.c        |   1 +
+ tests/qtest/libqos/pci.c              |  78 +++++----
+ tests/qtest/libqos/pci.h              |   7 +-
  tests/qtest/libqos/qgraph.c           |   7 +
  tests/qtest/libqos/qgraph.h           |  15 ++
- 7 files changed, 344 insertions(+), 4 deletions(-)
+ tests/qtest/vhost-user-blk-test.c     |  39 ++++-
+ tests/qtest/vhost-user-test.c         |   2 +-
+ tests/qtest/virtio-blk-test.c         |   5 +
+ tests/qtest/virtio-net-test.c         |   5 +
+ tests/qtest/virtio-rng-test.c         |   5 +
+ 16 files changed, 452 insertions(+), 44 deletions(-)
  create mode 100644 tests/qtest/libqos/pci-arm.c
  create mode 100644 tests/qtest/libqos/pci-arm.h
 
-diff --git a/tests/qtest/libqos/arm-virt-machine.c b/tests/qtest/libqos/arm-virt-machine.c
-index e0f59322845..130c45c51e2 100644
---- a/tests/qtest/libqos/arm-virt-machine.c
-+++ b/tests/qtest/libqos/arm-virt-machine.c
-@@ -22,6 +22,8 @@
- #include "malloc.h"
- #include "qgraph.h"
- #include "virtio-mmio.h"
-+#include "pci-arm.h"
-+#include "hw/pci/pci_regs.h"
- 
- #define ARM_PAGE_SIZE               4096
- #define VIRTIO_MMIO_BASE_ADDR       0x0A003E00
-@@ -30,13 +32,40 @@
- #define VIRTIO_MMIO_SIZE            0x00000200
- 
- typedef struct QVirtMachine QVirtMachine;
-+typedef struct QGenericPCIHost QGenericPCIHost;
-+
-+struct QGenericPCIHost {
-+    QOSGraphObject obj;
-+    QPCIBusARM pci;
-+};
- 
- struct QVirtMachine {
-     QOSGraphObject obj;
-     QGuestAllocator alloc;
-     QVirtioMMIODevice virtio_mmio;
-+    QGenericPCIHost bridge;
- };
- 
-+/* QGenericPCIHost */
-+
-+static QOSGraphObject *generic_pcihost_get_device(void *obj, const char *device)
-+{
-+    QGenericPCIHost *host = obj;
-+    if (!g_strcmp0(device, "pci-bus-arm")) {
-+        return &host->pci.obj;
-+    }
-+    fprintf(stderr, "%s not present in generic-pcihost\n", device);
-+    g_assert_not_reached();
-+}
-+
-+static void qos_create_generic_pcihost(QGenericPCIHost *host,
-+                                       QTestState *qts,
-+                                       QGuestAllocator *alloc)
-+{
-+    host->obj.get_device = generic_pcihost_get_device;
-+    qpci_init_arm(&host->pci, qts, alloc, false);
-+}
-+
- static void virt_destructor(QOSGraphObject *obj)
- {
-     QVirtMachine *machine = (QVirtMachine *) obj;
-@@ -57,11 +86,13 @@ static void *virt_get_driver(void *object, const char *interface)
- static QOSGraphObject *virt_get_device(void *obj, const char *device)
- {
-     QVirtMachine *machine = obj;
--    if (!g_strcmp0(device, "virtio-mmio")) {
-+    if (!g_strcmp0(device, "generic-pcihost")) {
-+        return &machine->bridge.obj;
-+    } else if (!g_strcmp0(device, "virtio-mmio")) {
-         return &machine->virtio_mmio.obj;
-     }
- 
--    fprintf(stderr, "%s not present in arm/virtio\n", device);
-+    fprintf(stderr, "%s not present in arm/virt\n", device);
-     g_assert_not_reached();
- }
- 
-@@ -76,16 +107,24 @@ static void *qos_create_machine_arm_virt(QTestState *qts)
-     qvirtio_mmio_init_device(&machine->virtio_mmio, qts, VIRTIO_MMIO_BASE_ADDR,
-                              VIRTIO_MMIO_SIZE);
- 
-+    qos_create_generic_pcihost(&machine->bridge, qts, &machine->alloc);
-+
-     machine->obj.get_device = virt_get_device;
-     machine->obj.get_driver = virt_get_driver;
-     machine->obj.destructor = virt_destructor;
-     return machine;
- }
- 
--static void virtio_mmio_register_nodes(void)
-+static void virt_machine_register_nodes(void)
- {
-     qos_node_create_machine("arm/virt", qos_create_machine_arm_virt);
-     qos_node_contains("arm/virt", "virtio-mmio", NULL);
-+
-+    qos_node_create_machine("aarch64/virt", qos_create_machine_arm_virt);
-+    qos_node_contains("aarch64/virt", "generic-pcihost", NULL);
-+
-+    qos_node_create_driver("generic-pcihost", NULL);
-+    qos_node_contains("generic-pcihost", "pci-bus-arm", NULL);
- }
- 
--libqos_init(virtio_mmio_register_nodes);
-+libqos_init(virt_machine_register_nodes);
-diff --git a/tests/qtest/libqos/meson.build b/tests/qtest/libqos/meson.build
-index e988d157917..af1bc723737 100644
---- a/tests/qtest/libqos/meson.build
-+++ b/tests/qtest/libqos/meson.build
-@@ -19,6 +19,9 @@ libqos_srcs = files('../libqtest.c',
-         'libqos-pc.c',
-         'ahci.c',
- 
-+        # arm
-+        'pci-arm.c',
-+
-         # usb
-         'usb.c',
- 
-diff --git a/tests/qtest/libqos/pci-arm.c b/tests/qtest/libqos/pci-arm.c
-new file mode 100644
-index 00000000000..64d826bb3c7
---- /dev/null
-+++ b/tests/qtest/libqos/pci-arm.c
-@@ -0,0 +1,219 @@
-+/*
-+ * libqos PCI bindings for ARM
-+ *
-+ * Copyright Red Hat Inc., 2021
-+ *
-+ * Authors:
-+ *  Eric Auger   <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+#include "pci-arm.h"
-+#include "qapi/qmp/qdict.h"
-+#include "hw/pci/pci_regs.h"
-+
-+#include "qemu/module.h"
-+
-+static uint8_t qpci_arm_pio_readb(QPCIBus *bus, uint32_t addr)
-+{
-+    QPCIBusARM *s = container_of(bus, QPCIBusARM, bus);
-+
-+    return qtest_readb(bus->qts, s->gpex_pio_base + addr);
-+}
-+
-+static void qpci_arm_pio_writeb(QPCIBus *bus, uint32_t addr, uint8_t val)
-+{
-+    QPCIBusARM *s = container_of(bus, QPCIBusARM, bus);
-+
-+    qtest_writeb(bus->qts, s->gpex_pio_base + addr,  val);
-+}
-+
-+static uint16_t qpci_arm_pio_readw(QPCIBus *bus, uint32_t addr)
-+{
-+    QPCIBusARM *s = container_of(bus, QPCIBusARM, bus);
-+
-+    return qtest_readw(bus->qts, s->gpex_pio_base + addr);
-+}
-+
-+static void qpci_arm_pio_writew(QPCIBus *bus, uint32_t addr, uint16_t val)
-+{
-+    QPCIBusARM *s = container_of(bus, QPCIBusARM, bus);
-+
-+    qtest_writew(bus->qts, s->gpex_pio_base + addr, val);
-+}
-+
-+static uint32_t qpci_arm_pio_readl(QPCIBus *bus, uint32_t addr)
-+{
-+    QPCIBusARM *s = container_of(bus, QPCIBusARM, bus);
-+
-+    return qtest_readl(bus->qts, s->gpex_pio_base + addr);
-+}
-+
-+static void qpci_arm_pio_writel(QPCIBus *bus, uint32_t addr, uint32_t val)
-+{
-+    QPCIBusARM *s = container_of(bus, QPCIBusARM, bus);
-+
-+    qtest_writel(bus->qts, s->gpex_pio_base + addr, val);
-+}
-+
-+static uint64_t qpci_arm_pio_readq(QPCIBus *bus, uint32_t addr)
-+{
-+    QPCIBusARM *s = container_of(bus, QPCIBusARM, bus);
-+
-+    return qtest_readq(bus->qts, s->gpex_pio_base + addr);
-+}
-+
-+static void qpci_arm_pio_writeq(QPCIBus *bus, uint32_t addr, uint64_t val)
-+{
-+    QPCIBusARM *s = container_of(bus, QPCIBusARM, bus);
-+
-+    qtest_writeq(bus->qts, s->gpex_pio_base + addr, val);
-+}
-+
-+static void qpci_arm_memread(QPCIBus *bus, uint32_t addr, void *buf, size_t len)
-+{
-+    qtest_memread(bus->qts, addr, buf, len);
-+}
-+
-+static void qpci_arm_memwrite(QPCIBus *bus, uint32_t addr,
-+                             const void *buf, size_t len)
-+{
-+    qtest_memwrite(bus->qts, addr, buf, len);
-+}
-+
-+static uint8_t qpci_arm_config_readb(QPCIBus *bus, int devfn, uint8_t offset)
-+{
-+    uint64_t addr = bus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint8_t val;
-+
-+    qtest_memread(bus->qts, addr, &val, 1);
-+    return val;
-+}
-+
-+static uint16_t qpci_arm_config_readw(QPCIBus *bus, int devfn, uint8_t offset)
-+{
-+    uint64_t addr = bus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint16_t val;
-+
-+    qtest_memread(bus->qts, addr, &val, 2);
-+    return val;
-+}
-+
-+static uint32_t qpci_arm_config_readl(QPCIBus *bus, int devfn, uint8_t offset)
-+{
-+    uint64_t addr = bus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint32_t val;
-+
-+    qtest_memread(bus->qts, addr, &val, 4);
-+    return val;
-+}
-+
-+static void
-+qpci_arm_config_writeb(QPCIBus *bus, int devfn, uint8_t offset, uint8_t value)
-+{
-+    uint64_t addr = bus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint32_t val = value;
-+
-+    qtest_memwrite(bus->qts, addr, &val, 1);
-+}
-+
-+static void
-+qpci_arm_config_writew(QPCIBus *bus, int devfn, uint8_t offset, uint16_t value)
-+{
-+    uint64_t addr = bus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint32_t val = value;
-+
-+    qtest_memwrite(bus->qts, addr, &val, 2);
-+}
-+
-+static void
-+qpci_arm_config_writel(QPCIBus *bus, int devfn, uint8_t offset, uint32_t value)
-+{
-+    uint64_t addr = bus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint32_t val = value;
-+
-+    qtest_memwrite(bus->qts, addr, &val, 4);
-+}
-+
-+static void *qpci_arm_get_driver(void *obj, const char *interface)
-+{
-+    QPCIBusARM *qpci = obj;
-+    if (!g_strcmp0(interface, "pci-bus")) {
-+        return &qpci->bus;
-+    }
-+    fprintf(stderr, "%s not present in pci-bus-arm\n", interface);
-+    g_assert_not_reached();
-+}
-+
-+void qpci_init_arm(QPCIBusARM *qpci, QTestState *qts,
-+                   QGuestAllocator *alloc, bool hotpluggable)
-+{
-+    assert(qts);
-+
-+    qpci->gpex_pio_base = 0x3eff0000;
-+    qpci->bus.not_hotpluggable = !hotpluggable;
-+    qpci->bus.has_buggy_msi = false;
-+
-+    qpci->bus.pio_readb = qpci_arm_pio_readb;
-+    qpci->bus.pio_readw = qpci_arm_pio_readw;
-+    qpci->bus.pio_readl = qpci_arm_pio_readl;
-+    qpci->bus.pio_readq = qpci_arm_pio_readq;
-+
-+    qpci->bus.pio_writeb = qpci_arm_pio_writeb;
-+    qpci->bus.pio_writew = qpci_arm_pio_writew;
-+    qpci->bus.pio_writel = qpci_arm_pio_writel;
-+    qpci->bus.pio_writeq = qpci_arm_pio_writeq;
-+
-+    qpci->bus.memread = qpci_arm_memread;
-+    qpci->bus.memwrite = qpci_arm_memwrite;
-+
-+    qpci->bus.config_readb = qpci_arm_config_readb;
-+    qpci->bus.config_readw = qpci_arm_config_readw;
-+    qpci->bus.config_readl = qpci_arm_config_readl;
-+
-+    qpci->bus.config_writeb = qpci_arm_config_writeb;
-+    qpci->bus.config_writew = qpci_arm_config_writew;
-+    qpci->bus.config_writel = qpci_arm_config_writel;
-+
-+    qpci->bus.qts = qts;
-+    qpci->bus.pio_alloc_ptr = 0x0000;
-+    qpci->bus.pio_limit = 0x10000;
-+    qpci->bus.mmio_alloc_ptr = 0x10000000;
-+    qpci->bus.mmio_limit = 0x2eff0000;
-+    qpci->bus.ecam_alloc_ptr = 0x4010000000;
-+
-+    qpci->obj.get_driver = qpci_arm_get_driver;
-+}
-+
-+QPCIBus *qpci_new_arm(QTestState *qts, QGuestAllocator *alloc,
-+                      bool hotpluggable)
-+{
-+    QPCIBusARM *qpci = g_new0(QPCIBusARM, 1);
-+    qpci_init_arm(qpci, qts, alloc, hotpluggable);
-+
-+    return &qpci->bus;
-+}
-+
-+void qpci_free_arm(QPCIBus *bus)
-+{
-+    QPCIBusARM *s;
-+
-+    if (!bus) {
-+        return;
-+    }
-+    s = container_of(bus, QPCIBusARM, bus);
-+
-+    g_free(s);
-+}
-+
-+static void qpci_arm_register_nodes(void)
-+{
-+    qos_node_create_driver("pci-bus-arm", NULL);
-+    qos_node_produces_opts("pci-bus-arm", "pci-bus", NULL);
-+}
-+
-+libqos_init(qpci_arm_register_nodes);
-diff --git a/tests/qtest/libqos/pci-arm.h b/tests/qtest/libqos/pci-arm.h
-new file mode 100644
-index 00000000000..8cd49ec2969
---- /dev/null
-+++ b/tests/qtest/libqos/pci-arm.h
-@@ -0,0 +1,56 @@
-+/*
-+ * libqos PCI bindings for ARM
-+ *
-+ * Copyright Red Hat Inc., 2021
-+ *
-+ * Authors:
-+ *  Eric Auger   <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef LIBQOS_PCI_ARM_H
-+#define LIBQOS_PCI_ARM_H
-+
-+#include "pci.h"
-+#include "malloc.h"
-+#include "qgraph.h"
-+
-+typedef struct QPCIBusARM {
-+    QOSGraphObject obj;
-+    QPCIBus bus;
-+    uint64_t gpex_pio_base;
-+} QPCIBusARM;
-+
-+/*
-+ * qpci_init_arm():
-+ * @ret: A valid QPCIBusARM * pointer
-+ * @qts: The %QTestState for this ARM machine
-+ * @alloc: A previously initialized @alloc providing memory for @qts
-+ * @bool: devices can be hotplugged on this bus
-+ *
-+ * This function initializes an already allocated
-+ * QPCIBusARM object.
-+ */
-+void qpci_init_arm(QPCIBusARM *ret, QTestState *qts,
-+                   QGuestAllocator *alloc, bool hotpluggable);
-+
-+/*
-+ * qpci_arm_new():
-+ * @qts: The %QTestState for this ARM machine
-+ * @alloc: A previously initialized @alloc providing memory for @qts
-+ * @hotpluggable: the pci bus is hotpluggable
-+ *
-+ * This function creates a new QPCIBusARM object,
-+ * and properly initialize its fields.
-+ *
-+ * Returns the QPCIBus *bus field of a newly
-+ * allocated QPCIBusARM.
-+ */
-+QPCIBus *qpci_new_arm(QTestState *qts, QGuestAllocator *alloc,
-+                      bool hotpluggable);
-+
-+void qpci_free_arm(QPCIBus *bus);
-+
-+#endif
-diff --git a/tests/qtest/libqos/pci.h b/tests/qtest/libqos/pci.h
-index 6a28b405221..07393dda4ec 100644
---- a/tests/qtest/libqos/pci.h
-+++ b/tests/qtest/libqos/pci.h
-@@ -51,6 +51,7 @@ struct QPCIBus {
-     QTestState *qts;
-     uint64_t pio_alloc_ptr, pio_limit;
-     uint64_t mmio_alloc_ptr, mmio_limit;
-+    uint64_t ecam_alloc_ptr;
-     bool has_buggy_msi; /* TRUE for spapr, FALSE for pci */
-     bool not_hotpluggable; /* TRUE if devices cannot be hotplugged */
- 
-diff --git a/tests/qtest/libqos/qgraph.c b/tests/qtest/libqos/qgraph.c
-index 109ff04e1e8..e03fad35241 100644
---- a/tests/qtest/libqos/qgraph.c
-+++ b/tests/qtest/libqos/qgraph.c
-@@ -667,6 +667,13 @@ void qos_node_produces(const char *producer, const char *interface)
-     add_edge(producer, interface, QEDGE_PRODUCES, NULL);
- }
- 
-+void qos_node_produces_opts(const char *producer, const char *interface,
-+                            QOSGraphEdgeOptions *opts)
-+{
-+    create_interface(interface);
-+    add_edge(producer, interface, QEDGE_PRODUCES, opts);
-+}
-+
- void qos_node_consumes(const char *consumer, const char *interface,
-                        QOSGraphEdgeOptions *opts)
- {
-diff --git a/tests/qtest/libqos/qgraph.h b/tests/qtest/libqos/qgraph.h
-index 871740c0dc8..9879af118d4 100644
---- a/tests/qtest/libqos/qgraph.h
-+++ b/tests/qtest/libqos/qgraph.h
-@@ -284,6 +284,21 @@ void qos_node_contains(const char *container, const char *contained,
-  */
- void qos_node_produces(const char *producer, const char *interface);
- 
-+/**
-+ * qos_node_produces(): creates an edge of type QEDGE_PRODUCES and
-+ * adds it to the edge list mapped to @producer in the
-+ * edge hash table.
-+ * @producer: Source node that "produces"
-+ * @interface: Interface node that "is produced"
-+ * @ops: Facultative options (see %QOSGraphEdgeOptions
-+ *
-+ * This edge will have @producer as source and @interface as destination.
-+ * It also has the possibility to add an optional @opts
-+ * (see %QOSGraphEdgeOptions)
-+ */
-+void qos_node_produces_opts(const char *producer, const char *interface,
-+                            QOSGraphEdgeOptions *opts);
-+
- /**
-  * qos_node_consumes():  creates an edge of type QEDGE_CONSUMED_BY and
-  * adds it to the edge list mapped to @interface in the
 -- 
 2.26.3
 

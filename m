@@ -1,111 +1,80 @@
-Received: by 2002:a05:6512:15a3:0:0:0:0 with SMTP id bp35csp650729lfb;
-        Fri, 7 Jan 2022 23:29:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzjEVTeBue0rGiIqrLyeIwD2RwGjqCGbA+Rbt3bn5h6bpc0Bj3FmrjI2m8cuiXMUH5u6c0T
-X-Received: by 2002:a25:c245:: with SMTP id s66mr43054282ybf.243.1641626979463;
-        Fri, 07 Jan 2022 23:29:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641626979; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp690035lfj;
+        Sun, 9 Jan 2022 23:49:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwtNMDsqXghA8tAPid4sPt3u3uhfuWLNrg4Up3pMGLPmO1igcHHnF7fvK8URPpYo60SAsTI
+X-Received: by 2002:a05:6902:1248:: with SMTP id t8mr55518508ybu.304.1641800954127;
+        Sun, 09 Jan 2022 23:49:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641800954; cv=none;
         d=google.com; s=arc-20160816;
-        b=LtfOk7mCNhWdn/8Hw5E+Cua2Dt035YAfFYbCirlEBlnYbox5p+6ywhXT3YmpVgnOQS
-         1uZyI4qkp/iBLnmfv3cZhUHObzwj95FFzWOv/101PUpvNIpmbzK4V6WQTpjteUt2W3dX
-         dsbDH2aK7UWjO4msRQzc6RYyGI9a7dOnhsyyos5fT/BLsNxmDydOUidCy7gBdtwN/yfX
-         6sVs1BMlPGKoqWWpyqEkzISdksqwlRqStxStmYRtH3ZSCjmSbT1FkgJKhipimW1Kwvqj
-         X0XzcwT4cSoOhQIJ2dHz1/95xlzMYP+V0POdH6Fwnusju9KJeTotDjEp+MjZt+YLqrPV
-         aYUA==
+        b=xEsw7pgka73u0g/a4rVptd7qi+ULcpL3cr9BMNIi72z2Ao/yCwtQKi8dkHwD9WKhSU
+         Jb+Xkc+BQ97BY0K83c4zFgJQtk63JxE4TGcjyK7B5rf+K8B9sEJfRnGKGBxx0IHC+dgT
+         4Es/wBVjOe6NLuUwj1HtLhKAu2C5HyW8mmFTeapTetsNF2m7ZoUsJ0PeqrOe7oOxA8Fl
+         ZLTULTH9x1otS1kyMhX8nRFcNrMWc/ajzlC3hM4eMVMnmdWB4gxfFkVpLp8wYp2qQHMj
+         fGGunf0Cj5IqScPO4xFUyK+tPLiiyxYyP6dJnOPWdikPI73plHZPiP1qlHGKA5bcNSHL
+         N4Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=3aAuBCQ76B33BLPIgV+cai7XyGwp4iZUzPCfoL/rVg4=;
-        b=xGHK/q6zLaf/op/YHlaY9mMztUAd8OcbDvO504vhRmvOnARuf+59rux1QQ+faAMMTM
-         mz1Y7X8gTytmTqfV7EZmNql8/KB1S6wJ3uNZuqZANtkfKN/NctWG6ssVOIBWEDBdzVPM
-         mI6ghCY09T4XGL9VB2GwOnF4Ez+vNs0DSbbSoo1PvMChnVABtgyHEk+zaE4HZMmN42Md
-         GvnY9ymgsZ1qkaobxWxVZeYpc2R+7V4SVPGBnM0zyWR/b60PTaD6uJML83valTafBcAf
-         zoUJ0lDemeBV2JRxxcFZNlpi3Vt2I1gEgDJA82qAIzorNNpQ1KyxlKpFIC61aCgavsf5
-         C5Hw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=7i3cgTsbhD0R9Voc9qELNjioNI5yFIe5vjlv3ObEAzc=;
+        b=GK2yN59WBWGXC1AL3TBM6Zf5iKDFy72bWnF2KsffmA3yJFK6qhGxXxUIiFznpqh9+K
+         2yzV1wBYvFwrvqZNmokJecktrhww0bDK58ANSkHMHSSN30KsQJ3amMXaCxxryDXzKPoP
+         otL1l0w9kT0fJqdD0+/TssKMdO8DSCkd0pymh1O3uu7BDOzQG7qeykrMfcERG5S+N+f/
+         UzJb1fCvkM2xoCmsx/Dw8wV2s3IDg3bo4zcWGsWH+4f+2wcYBz/67tZnX/rDTPovmCGu
+         RIh1SfTox7HodEMNhlrRPS8+yBKya1AwtM+vC8q0la48q7psBo37d/vDzuYf+oJo0jef
+         1Y1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NlbDoE5i;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t8si843494ybu.804.2022.01.07.23.29.39
+        by mx.google.com with ESMTPS id z9si3903119ybo.44.2022.01.09.23.49.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jan 2022 23:29:39 -0800 (PST)
+        Sun, 09 Jan 2022 23:49:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NlbDoE5i;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49720 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54818 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n66AU-0000BU-L7
-	for alex.bennee@linaro.org; Sat, 08 Jan 2022 02:29:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33718)
+	id 1n6pQX-0004pK-Gs
+	for alex.bennee@linaro.org; Mon, 10 Jan 2022 02:49:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1n663b-0004ni-D0
- for qemu-arm@nongnu.org; Sat, 08 Jan 2022 02:22:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:41772)
+ (Exim 4.90_1) (envelope-from <troy_lee@aspeedtech.com>)
+ id 1n6p0W-0004KV-3J; Mon, 10 Jan 2022 02:22:22 -0500
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:17886)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1n663X-0001EJ-L7
- for qemu-arm@nongnu.org; Sat, 08 Jan 2022 02:22:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641626539;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3aAuBCQ76B33BLPIgV+cai7XyGwp4iZUzPCfoL/rVg4=;
- b=NlbDoE5iBwOodTGo8PfSsPwswuZNR4du5Ms4tFlDJCLUERbhTxdQAzzcnE954PusPhMc3d
- dE5uFn5mZyZKxcOwDdsrPDgaau6iJqWPYqvrRU4D3vtxETQbXsxokVGQzJJzWKr2Kszkyq
- bzfPeUb4h7NbtxoJOAIha9aOFTmmLn0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-590-LlMXwC5jM5CYvdhckKB84w-1; Sat, 08 Jan 2022 02:22:18 -0500
-X-MC-Unique: LlMXwC5jM5CYvdhckKB84w-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B38A9180FD60;
- Sat,  8 Jan 2022 07:22:16 +0000 (UTC)
-Received: from [10.72.13.57] (ovpn-13-57.pek2.redhat.com [10.72.13.57])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 504BC7A22E;
- Sat,  8 Jan 2022 07:21:57 +0000 (UTC)
-Subject: Re: [PATCH v3 2/2] hw/arm/virt: Support for virtio-mem-pci
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20211203233404.37313-1-gshan@redhat.com>
- <20211203233404.37313-3-gshan@redhat.com>
- <CAFEAcA8hd000vwp8A602uw4yueea4uU0xttELcC8sn34X+N5-A@mail.gmail.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <3528fa8b-bfa6-2127-dfe6-4135b3b0989f@redhat.com>
-Date: Sat, 8 Jan 2022 15:21:55 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <troy_lee@aspeedtech.com>)
+ id 1n6p0P-0002XY-0g; Mon, 10 Jan 2022 02:22:17 -0500
+Received: from mail.aspeedtech.com ([192.168.0.24])
+ by twspam01.aspeedtech.com with ESMTP id 20A7Ewsn025367;
+ Mon, 10 Jan 2022 15:14:58 +0800 (GMT-8)
+ (envelope-from troy_lee@aspeedtech.com)
+Received: from localhost.localdomain (192.168.10.10) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 10 Jan
+ 2022 15:21:27 +0800
+From: Troy Lee <troy_lee@aspeedtech.com>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH v2 1/2] hw/misc: Implementating dummy AST2600 I3C model
+Date: Mon, 10 Jan 2022 15:21:24 +0800
+Message-ID: <20220110072125.1886683-2-troy_lee@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220110072125.1886683-1-troy_lee@aspeedtech.com>
+References: <20220110072125.1886683-1-troy_lee@aspeedtech.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8hd000vwp8A602uw4yueea4uU0xttELcC8sn34X+N5-A@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -73
-X-Spam_score: -7.4
-X-Spam_bar: -------
-X-Spam_report: (-7.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-4.199, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [192.168.10.10]
+X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
+ (192.168.0.24)
+X-DNSRBL: 
+X-MAIL: twspam01.aspeedtech.com 20A7Ewsn025367
+Received-SPF: pass client-ip=211.20.114.71;
+ envelope-from=troy_lee@aspeedtech.com; helo=twspam01.aspeedtech.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,147 +88,547 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: drjones@redhat.com, david@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, eric.auger@redhat.com, qemu-arm@nongnu.org,
- shan.gavin@gmail.com, jonathan.cameron@huawei.com, imammedo@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ hailin.wu@aspeedtech.com, leetroy@gmail.com,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WsJwFl5IBuh9
+X-TUID: NVbOIWYJidQg
 
-Hi Peter,
+Introduce a dummy AST2600 I3C model.
 
-On 1/8/22 12:40 AM, Peter Maydell wrote:
-> On Fri, 3 Dec 2021 at 23:34, Gavin Shan <gshan@redhat.com> wrote:
->>
->> This supports virtio-mem-pci device on "virt" platform, by simply
->> following the implementation on x86.
->>
->>     * This implements the hotplug handlers to support virtio-mem-pci
->>       device hot-add, while the hot-remove isn't supported as we have
->>       on x86.
->>
->>     * The block size is 512MB on ARM64 instead of 128MB on x86.
->>
->>     * It has been passing the tests with various combinations like 64KB
->>       and 4KB page sizes on host and guest, different memory device
->>       backends like normal, transparent huge page and HugeTLB, plus
->>       migration.
->>
->> Co-developed-by: David Hildenbrand <david@redhat.com>
->> Co-developed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
->> Reviewed-by: David Hildenbrand <david@redhat.com>
-> 
-> 
->> +static void virt_virtio_md_pci_pre_plug(HotplugHandler *hotplug_dev,
->> +                                        DeviceState *dev, Error **errp)
->> +{
->> +    HotplugHandler *hotplug_dev2 = qdev_get_bus_hotplug_handler(dev);
->> +    Error *local_err = NULL;
->> +
->> +    if (!hotplug_dev2 && dev->hotplugged) {
->> +        /*
->> +         * Without a bus hotplug handler, we cannot control the plug/unplug
->> +         * order. We should never reach this point when hotplugging on x86,
->> +         * however, better add a safety net.
->> +         */
-> 
-> This comment looks like it was cut-n-pasted from x86 -- is whatever
-> it is that prevents us from reaching this point also true for arm ?
-> (What is the thing that prevents us reaching this point?)
-> 
+Aspeed 2600 SDK enables I3C support by default.  The I3C driver will try
+to reset the device controller and setup through device address table
+register.  This dummy model response these register with default value
+listed on ast2600v10 datasheet chapter 54.2.  If the device address
+table register doesn't set correctly, it will cause guest machine kernel
+panic due to reference to invalid address.
 
-Yeah, the comment was copied from x86. It's also true for ARM as a hotplug
-controller on the parent bus is required for virtio-mem-pci device hot-add,
-according to the following commit log.
+v2:
+- Split i3c model into i3c and i3c_device
+- Create 6x i3c devices
+- Using register fields macro
 
-commit a0a49813f7f2fc23bfe8a4fc6760e2a60c9a3e59
-Author: David Hildenbrand <david@redhat.com>
-Date:   Wed Jun 19 15:19:07 2019 +0530
+Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+---
+ hw/misc/aspeed_i3c.c         | 410 +++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build          |   1 +
+ hw/misc/trace-events         |   6 +
+ include/hw/misc/aspeed_i3c.h |  57 +++++
+ 4 files changed, 474 insertions(+)
+ create mode 100644 hw/misc/aspeed_i3c.c
+ create mode 100644 include/hw/misc/aspeed_i3c.h
 
-     pc: Support for virtio-pmem-pci
-     
-     Override the device hotplug handler to properly handle the memory device
-     part via virtio-pmem-pci callbacks from the machine hotplug handler and
-     forward to the actual PCI bus hotplug handler.
-     
-     As PCI hotplug has not been properly factored out into hotplug handlers,
-     most magic is performed in the (un)realize functions. Also some PCI host
-     buses don't have a PCI hotplug handler at all yet, just to be sure that
-     we alway have a hotplug handler on x86, add a simple error check.
-     
-     Unlocking virtio-pmem will unlock virtio-pmem-pci.
-     
-     Signed-off-by: David Hildenbrand <david@redhat.com>
-
-However, I don't think the comment we have for ARM is precise enough because
-it's irrelevant to x86. I will change it something like below in v4:
-
-	/*
-	 * Without a bus hotplug handler, we cannot control the plug/unplug
-	 * order. We should never reach this point when hotplugging on ARM.
-	 * However, it's nice to add a safety net, similar to what we have
-          * on x86.
-	 */
-
-
->> +        error_setg(errp, "hotplug of virtio based memory devices not supported"
->> +                   " on this bus.");
->> +        return;
->> +    }
->> +    /*
->> +     * First, see if we can plug this memory device at all. If that
->> +     * succeeds, branch of to the actual hotplug handler.
->> +     */
->> +    memory_device_pre_plug(MEMORY_DEVICE(dev), MACHINE(hotplug_dev), NULL,
->> +                           &local_err);
->> +    if (!local_err && hotplug_dev2) {
->> +        hotplug_handler_pre_plug(hotplug_dev2, dev, &local_err);
->> +    }
->> +    error_propagate(errp, local_err);
->> +}
-> 
-> 
-> 
->> diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
->> index b20595a496..21e4d572ab 100644
->> --- a/hw/virtio/virtio-mem.c
->> +++ b/hw/virtio/virtio-mem.c
->> @@ -125,7 +125,7 @@ static uint64_t virtio_mem_default_block_size(RAMBlock *rb)
->>    * The memory block size corresponds mostly to the section size.
->>    *
->>    * This allows e.g., to add 20MB with a section size of 128MB on x86_64, and
->> - * a section size of 1GB on arm64 (as long as the start address is properly
->> + * a section size of 512MB on arm64 (as long as the start address is properly
->>    * aligned, similar to ordinary DIMMs).
->>    *
->>    * We can change this at any time and maybe even make it configurable if
->> @@ -134,6 +134,8 @@ static uint64_t virtio_mem_default_block_size(RAMBlock *rb)
->>    */
->>   #if defined(TARGET_X86_64) || defined(TARGET_I386)
->>   #define VIRTIO_MEM_USABLE_EXTENT (2 * (128 * MiB))
->> +#elif defined(TARGET_ARM)
->> +#define VIRTIO_MEM_USABLE_EXTENT (2 * (512 * MiB))
->>   #else
->>   #error VIRTIO_MEM_USABLE_EXTENT not defined
->>   #endif
-> 
-> Could this comment explain where the 128MB and 512MB come from
-> and why the value is different for different architectures ?
-> 
-
-Yes, the comment already explained it by "section size", which is the
-minimal hotpluggable unit. It's defined by the linux guest kernel as
-below. On ARM64, we pick the larger section size without considering
-the base page size. Besides, the virtio-mem is/will-be enabled on
-x86_64 and ARM64 guest kernel only.
-
-#define SECTION_SIZE_BITS  29      /* ARM:    64KB base page size        */
-#define SECTION_SIZE_BITS  27      /* ARM:    16KB or 4KB base page size */
-#define SECTION_SIZE_BITS  27      /* x86_64                             */
-
-Thanks,
-Gavin
+diff --git a/hw/misc/aspeed_i3c.c b/hw/misc/aspeed_i3c.c
+new file mode 100644
+index 0000000000..16a4f2d4e4
+--- /dev/null
++++ b/hw/misc/aspeed_i3c.c
+@@ -0,0 +1,410 @@
++/*
++ * ASPEED I3C Controller
++ *
++ * Copyright (C) 2021 ASPEED Technology Inc.
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/error-report.h"
++#include "hw/misc/aspeed_i3c.h"
++#include "hw/registerfields.h"
++#include "hw/qdev-properties.h"
++#include "qapi/error.h"
++#include "migration/vmstate.h"
++#include "trace.h"
++
++/* I3C Controller Registers */
++REG32(I3C1_REG0, 0x10)
++REG32(I3C1_REG1, 0x14)
++    FIELD(I3C1_REG1, I2C_MODE,  0,  1)
++    FIELD(I3C1_REG1, SA_EN,     15, 1)
++REG32(I3C2_REG0, 0x20)
++REG32(I3C2_REG1, 0x24)
++    FIELD(I3C2_REG1, I2C_MODE,  0,  1)
++    FIELD(I3C2_REG1, SA_EN,     15, 1)
++REG32(I3C3_REG0, 0x30)
++REG32(I3C3_REG1, 0x34)
++    FIELD(I3C3_REG1, I2C_MODE,  0,  1)
++    FIELD(I3C3_REG1, SA_EN,     15, 1)
++REG32(I3C4_REG0, 0x40)
++REG32(I3C4_REG1, 0x44)
++    FIELD(I3C4_REG1, I2C_MODE,  0,  1)
++    FIELD(I3C4_REG1, SA_EN,     15, 1)
++REG32(I3C5_REG0, 0x50)
++REG32(I3C5_REG1, 0x54)
++    FIELD(I3C5_REG1, I2C_MODE,  0,  1)
++    FIELD(I3C5_REG1, SA_EN,     15, 1)
++REG32(I3C6_REG0, 0x60)
++REG32(I3C6_REG1, 0x64)
++    FIELD(I3C6_REG1, I2C_MODE,  0,  1)
++    FIELD(I3C6_REG1, SA_EN,     15, 1)
++
++/* I3C Device Registers */
++REG32(DEVICE_CTRL,                  0x00)
++REG32(DEVICE_ADDR,                  0x04)
++REG32(HW_CAPABILITY,                0x08)
++REG32(COMMAND_QUEUE_PORT,           0x0c)
++REG32(RESPONSE_QUEUE_PORT,          0x10)
++REG32(RX_TX_DATA_PORT,              0x14)
++REG32(IBI_QUEUE_STATUS,             0x18)
++REG32(IBI_QUEUE_DATA,               0x18)
++REG32(QUEUE_THLD_CTRL,              0x1c)
++REG32(DATA_BUFFER_THLD_CTRL,        0x20)
++REG32(IBI_QUEUE_CTRL,               0x24)
++REG32(IBI_MR_REQ_REJECT,            0x2c)
++REG32(IBI_SIR_REQ_REJECT,           0x30)
++REG32(RESET_CTRL,                   0x34)
++REG32(SLV_EVENT_CTRL,               0x38)
++REG32(INTR_STATUS,                  0x3c)
++REG32(INTR_STATUS_EN,               0x40)
++REG32(INTR_SIGNAL_EN,               0x44)
++REG32(INTR_FORCE,                   0x48)
++REG32(QUEUE_STATUS_LEVEL,           0x4c)
++REG32(DATA_BUFFER_STATUS_LEVEL,     0x50)
++REG32(PRESENT_STATE,                0x54)
++REG32(CCC_DEVICE_STATUS,            0x58)
++REG32(DEVICE_ADDR_TABLE_POINTER,    0x5c)
++    FIELD(DEVICE_ADDR_TABLE_POINTER, DEPTH, 16, 16)
++    FIELD(DEVICE_ADDR_TABLE_POINTER, ADDR,  0,  16)
++REG32(DEV_CHAR_TABLE_POINTER,       0x60)
++REG32(VENDOR_SPECIFIC_REG_POINTER,  0x6c)
++REG32(SLV_MIPI_PID_VALUE,           0x70)
++REG32(SLV_PID_VALUE,                0x74)
++REG32(SLV_CHAR_CTRL,                0x78)
++REG32(SLV_MAX_LEN,                  0x7c)
++REG32(MAX_READ_TURNAROUND,          0x80)
++REG32(MAX_DATA_SPEED,               0x84)
++REG32(SLV_DEBUG_STATUS,             0x88)
++REG32(SLV_INTR_REQ,                 0x8c)
++REG32(DEVICE_CTRL_EXTENDED,         0xb0)
++REG32(SCL_I3C_OD_TIMING,            0xb4)
++REG32(SCL_I3C_PP_TIMING,            0xb8)
++REG32(SCL_I2C_FM_TIMING,            0xbc)
++REG32(SCL_I2C_FMP_TIMING,           0xc0)
++REG32(SCL_EXT_LCNT_TIMING,          0xc8)
++REG32(SCL_EXT_TERMN_LCNT_TIMING,    0xcc)
++REG32(BUS_FREE_TIMING,              0xd4)
++REG32(BUS_IDLE_TIMING,              0xd8)
++REG32(I3C_VER_ID,                   0xe0)
++REG32(I3C_VER_TYPE,                 0xe4)
++REG32(EXTENDED_CAPABILITY,          0xe8)
++REG32(SLAVE_CONFIG,                 0xec)
++
++static uint64_t aspeed_i3c_device_read(void *opaque, hwaddr offset,
++                                       unsigned size)
++{
++    AspeedI3CDevice *s = ASPEED_I3C_DEVICE(opaque);
++    uint32_t addr = offset >> 2;
++    uint64_t value;
++
++    switch (addr) {
++    case R_COMMAND_QUEUE_PORT:
++        value = 0;
++        break;
++    default:
++        value = s->regs[addr];
++        break;
++    }
++
++    trace_aspeed_i3c_device_read(s->id, offset, value);
++
++    return value;
++}
++
++static void aspeed_i3c_device_write(void *opaque, hwaddr offset,
++                                    uint64_t value, unsigned size)
++{
++    AspeedI3CDevice *s = ASPEED_I3C_DEVICE(opaque);
++    uint32_t addr = offset >> 2;
++
++    trace_aspeed_i3c_device_write(s->id, offset, value);
++
++    switch (addr) {
++    case R_HW_CAPABILITY:
++    case R_RESPONSE_QUEUE_PORT:
++    case R_IBI_QUEUE_DATA:
++    case R_QUEUE_STATUS_LEVEL:
++    case R_PRESENT_STATE:
++    case R_CCC_DEVICE_STATUS:
++    case R_DEVICE_ADDR_TABLE_POINTER:
++    case R_VENDOR_SPECIFIC_REG_POINTER:
++    case R_SLV_CHAR_CTRL:
++    case R_SLV_MAX_LEN:
++    case R_MAX_READ_TURNAROUND:
++    case R_I3C_VER_ID:
++    case R_I3C_VER_TYPE:
++    case R_EXTENDED_CAPABILITY:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: write to readonly register[%02lx] = %08lx\n",
++                      __func__, offset, value);
++        break;
++    case R_RX_TX_DATA_PORT:
++        break;
++    case R_RESET_CTRL:
++        break;
++    default:
++        s->regs[addr] = value;
++        break;
++    }
++}
++
++static const VMStateDescription aspeed_i3c_device_vmstate = {
++    .name = TYPE_ASPEED_I3C,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]){
++        VMSTATE_UINT32_ARRAY(regs, AspeedI3CDevice, ASPEED_I3C_DEVICE_NR_REGS),
++        VMSTATE_END_OF_LIST(),
++    }
++};
++
++static const MemoryRegionOps aspeed_i3c_device_ops = {
++    .read = aspeed_i3c_device_read,
++    .write = aspeed_i3c_device_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++};
++
++static void aspeed_i3c_device_reset(DeviceState *dev)
++{
++    AspeedI3CDevice *s = ASPEED_I3C_DEVICE(dev);
++
++    memset(s->regs, 0, sizeof(s->regs));
++
++    s->regs[R_HW_CAPABILITY] = 0x000e00bf;
++    s->regs[R_QUEUE_THLD_CTRL] = 0x01000101;
++    s->regs[R_I3C_VER_ID] = 0x3130302a;
++    s->regs[R_I3C_VER_TYPE] = 0x6c633033;
++    s->regs[R_DEVICE_ADDR_TABLE_POINTER] =
++            (0x08 << R_DEVICE_ADDR_TABLE_POINTER_DEPTH_SHIFT) |
++            (0x280 << R_DEVICE_ADDR_TABLE_POINTER_ADDR_SHIFT);
++    s->regs[R_DEV_CHAR_TABLE_POINTER] = 0x00020200;
++    s->regs[A_VENDOR_SPECIFIC_REG_POINTER] = 0x000000b0;
++    s->regs[R_SLV_MAX_LEN] = (0xff << 16) | (0xff);
++}
++
++static void aspeed_i3c_device_realize(DeviceState *dev, Error **errp)
++{
++    AspeedI3CDevice *s = ASPEED_I3C_DEVICE(dev);
++    g_autofree char *name = g_strdup_printf(TYPE_ASPEED_I3C_DEVICE ".%d",
++                                            s->id);
++
++    if (!s->controller) {
++        error_setg(errp, TYPE_ASPEED_I3C_DEVICE ": 'controller' link not set");
++        return;
++    }
++
++    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
++
++    memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i3c_device_ops,
++                          s, name, 0x1000);
++
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
++}
++
++static uint64_t aspeed_i3c_read(void *opaque,
++                                hwaddr addr,
++                                unsigned int size)
++{
++    AspeedI3CState *s = ASPEED_I3C(opaque);
++    uint64_t val = 0;
++
++    if (addr >= (ASPEED_I3C_NR_REGS << 2)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, addr << 2);
++    } else if (addr < 0x800) {
++        /* I3C controller register */
++        val = s->regs[addr >> 2];
++    } else {
++        /* I3C device register */
++    }
++
++    trace_aspeed_i3c_read(addr, val);
++
++    return val;
++}
++
++static void aspeed_i3c_write(void *opaque,
++                             hwaddr addr,
++                             uint64_t data,
++                             unsigned int size)
++{
++    AspeedI3CState *s = ASPEED_I3C(opaque);
++
++    trace_aspeed_i3c_write(addr, data);
++
++    addr >>= 2;
++
++    if (addr >= ASPEED_I3C_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, addr << 2);
++        return;
++    }
++
++    /* I3C controller register */
++    switch (addr) {
++    case R_I3C1_REG1:
++    case R_I3C2_REG1:
++    case R_I3C3_REG1:
++    case R_I3C4_REG1:
++    case R_I3C5_REG1:
++    case R_I3C6_REG1:
++        if (data & R_I3C1_REG1_I2C_MODE_MASK) {
++            qemu_log_mask(LOG_UNIMP,
++                          "%s: Not support I2C mode [%08lx]=%08lx",
++                          __func__, addr << 2, data);
++            break;
++        }
++        if (data & R_I3C1_REG1_SA_EN_MASK) {
++            qemu_log_mask(LOG_UNIMP,
++                          "%s: Not support slave mode [%08lx]=%08lx",
++                          __func__, addr << 2, data);
++            break;
++        }
++        s->regs[addr] = data;
++        break;
++    default:
++        s->regs[addr] = data;
++        break;
++    }
++}
++
++static const MemoryRegionOps aspeed_i3c_ops = {
++    .read = aspeed_i3c_read,
++    .write = aspeed_i3c_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = 4,
++    }
++};
++
++static void aspeed_i3c_reset(DeviceState *dev)
++{
++    struct AspeedI3CState *s = ASPEED_I3C(dev);
++    memset(s->regs, 0, sizeof(s->regs));
++}
++
++static void aspeed_i3c_realize(DeviceState *dev, Error **errp)
++{
++    int i;
++    AspeedI3CState *s = ASPEED_I3C(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    sysbus_init_irq(sbd, &s->irq);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i3c_ops, s,
++            TYPE_ASPEED_I3C, ASPEED_I3C_NR_REGS << 2);
++
++    sysbus_init_mmio(sbd, &s->iomem);
++
++    for (i = 0; i < ASPEED_I3C_NR_DEVICES; ++i) {
++        Object *dev = OBJECT(&s->devices[i]);
++
++        if (!object_property_set_link(dev, "controller", OBJECT(s), errp)) {
++            return;
++        }
++
++        if (!object_property_set_uint(dev, "device-id", i, errp)) {
++            return;
++        }
++
++        if (!sysbus_realize(SYS_BUS_DEVICE(dev), errp)) {
++            return;
++        }
++
++        /*
++         * Register Address of I3CX Device =
++         *     (Base Address of Global Register) + (Offset of I3CX) + Offset
++         * X = 0, 1, 2, 3, 4, 5
++         * Offset of I3C0 = 0x2000
++         * Offset of I3C1 = 0x3000
++         * Offset of I3C2 = 0x4000
++         * Offset of I3C3 = 0x5000
++         * Offset of I3C4 = 0x6000
++         * Offset of I3C5 = 0x7000
++         */
++        memory_region_add_subregion(&s->iomem,
++                0x2000 + (i * (ASPEED_I3C_DEVICE_NR_REGS << 2)),
++                &s->devices[i].mr);
++    }
++
++}
++
++static Property aspeed_i3c_device_properties[] = {
++    DEFINE_PROP_UINT8("device-id", AspeedI3CDevice, id, 0),
++    DEFINE_PROP_LINK("controller", AspeedI3CDevice, controller, TYPE_ASPEED_I3C,
++            AspeedI3CState *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void aspeed_i3c_device_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "Aspeed I3C Device";
++    dc->realize = aspeed_i3c_device_realize;
++    dc->reset = aspeed_i3c_device_reset;
++    device_class_set_props(dc, aspeed_i3c_device_properties);
++}
++
++static const TypeInfo aspeed_i3c_device_info = {
++    .name = TYPE_ASPEED_I3C_DEVICE,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AspeedI3CDevice),
++    .class_init = aspeed_i3c_device_class_init,
++};
++
++static const VMStateDescription vmstate_aspeed_i3c = {
++    .name = TYPE_ASPEED_I3C,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, AspeedI3CState, ASPEED_I3C_NR_REGS),
++        VMSTATE_STRUCT_ARRAY(devices, AspeedI3CState, ASPEED_I3C_NR_DEVICES, 1,
++                             aspeed_i3c_device_vmstate, AspeedI3CDevice),
++        VMSTATE_END_OF_LIST(),
++    }
++};
++
++static void aspeed_i3c_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = aspeed_i3c_realize;
++    dc->reset = aspeed_i3c_reset;
++    dc->desc = "Aspeed I3C Controller";
++    dc->vmsd = &vmstate_aspeed_i3c;
++}
++
++static void aspeed_i3c_instance_init(Object *obj)
++{
++    AspeedI3CState *s = ASPEED_I3C(obj);
++    int i;
++
++    for (i = 0; i < ASPEED_I3C_NR_DEVICES; ++i) {
++        object_initialize_child(obj, "device[*]", &s->devices[i],
++                TYPE_ASPEED_I3C_DEVICE);
++    }
++}
++
++static const TypeInfo aspeed_i3c_info = {
++    .name = TYPE_ASPEED_I3C,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_init = aspeed_i3c_instance_init,
++    .instance_size = sizeof(AspeedI3CState),
++    .class_init = aspeed_i3c_class_init,
++};
++
++static void aspeed_i3c_register_types(void)
++{
++    type_register_static(&aspeed_i3c_device_info);
++    type_register_static(&aspeed_i3c_info);
++}
++
++type_init(aspeed_i3c_register_types);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 3f41a3a5b2..d1a1169108 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -105,6 +105,7 @@ softmmu_ss.add(when: 'CONFIG_PVPANIC_PCI', if_true: files('pvpanic-pci.c'))
+ softmmu_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
+ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_hace.c',
++  'aspeed_i3c.c',
+   'aspeed_lpc.c',
+   'aspeed_scu.c',
+   'aspeed_sdmc.c',
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 2da96d167a..1c373dd0a4 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -199,6 +199,12 @@ armsse_mhu_write(uint64_t offset, uint64_t data, unsigned size) "SSE-200 MHU wri
+ # aspeed_xdma.c
+ aspeed_xdma_write(uint64_t offset, uint64_t data) "XDMA write: offset 0x%" PRIx64 " data 0x%" PRIx64
+ 
++# aspeed_i3c.c
++aspeed_i3c_read(uint64_t offset, uint64_t data) "I3C read: offset 0x%" PRIx64 " data 0x%" PRIx64
++aspeed_i3c_write(uint64_t offset, uint64_t data) "I3C write: offset 0x%" PRIx64 " data 0x%" PRIx64
++aspeed_i3c_device_read(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] read: offset 0x%" PRIx64 " data 0x%" PRIx64
++aspeed_i3c_device_write(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] write: offset 0x%" PRIx64 " data 0x%" PRIx64
++
+ # bcm2835_property.c
+ bcm2835_mbox_property(uint32_t tag, uint32_t bufsize, size_t resplen) "mbox property tag:0x%08x in_sz:%u out_sz:%zu"
+ 
+diff --git a/include/hw/misc/aspeed_i3c.h b/include/hw/misc/aspeed_i3c.h
+new file mode 100644
+index 0000000000..276f70b001
+--- /dev/null
++++ b/include/hw/misc/aspeed_i3c.h
+@@ -0,0 +1,57 @@
++/*
++ * ASPEED I3C Controller
++ *
++ * Copyright (C) 2021 ASPEED Technology Inc.
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++
++#ifndef ASPEED_I3C_H
++#define ASPEED_I3C_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_ASPEED_I3C "aspeed.i3c"
++#define TYPE_ASPEED_I3C_DEVICE "aspeed.i3c.device"
++OBJECT_DECLARE_TYPE(AspeedI3CState, AspeedI3CClass, ASPEED_I3C)
++
++#define ASPEED_I3C_NR_REGS (0x8000 >> 2)
++#define ASPEED_I3C_DEVICE_NR_REGS (0x1000 >> 2)
++#define ASPEED_I3C_NR_DEVICES 6
++
++OBJECT_DECLARE_SIMPLE_TYPE(AspeedI3CDevice, ASPEED_I3C_DEVICE)
++typedef struct AspeedI3CDevice {
++    /* <private> */
++    SysBusDevice parent;
++    struct AspeedI3CState *controller;
++
++    /* <public> */
++    MemoryRegion mr;
++    qemu_irq irq;
++
++    uint8_t id;
++    uint32_t regs[ASPEED_I3C_DEVICE_NR_REGS];
++} AspeedI3CDevice;
++
++typedef struct AspeedI3CClass {
++    SysBusDeviceClass parent_class;
++
++    uint8_t num_devices;
++    uint8_t reg_size;
++
++    qemu_irq (*bus_get_irq)(AspeedI3CDevice *);
++} AspeedI3CClass;
++
++typedef struct AspeedI3CState {
++    /* <private> */
++    SysBusDevice parent;
++
++    /* <public> */
++    MemoryRegion iomem;
++    qemu_irq irq;
++
++    uint32_t regs[ASPEED_I3C_NR_REGS];
++    AspeedI3CDevice devices[ASPEED_I3C_NR_DEVICES];
++} AspeedI3CState;
++#endif /* ASPEED_I3C_H */
+-- 
+2.25.1
 

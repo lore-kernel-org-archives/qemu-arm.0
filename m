@@ -1,220 +1,361 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1168287lfj;
-        Mon, 10 Jan 2022 13:36:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwBXgd6cvX+cWmNdSFRgNBuPzA5Og9upl5jDGRnn4K8uA8vYw35pVfszUeiaYviDNXHBVwA
-X-Received: by 2002:a25:d750:: with SMTP id o77mr2122499ybg.543.1641850613344;
-        Mon, 10 Jan 2022 13:36:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641850613; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1176754lfj;
+        Mon, 10 Jan 2022 13:54:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw2vuaIXqsIPXBSxaVEjdnQtPbIauoqN52VUi0NMGSRRDSueapEOqUU6GihyuX/4PTzVgg7
+X-Received: by 2002:a25:5d02:: with SMTP id r2mr2540444ybb.335.1641851680682;
+        Mon, 10 Jan 2022 13:54:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641851680; cv=none;
         d=google.com; s=arc-20160816;
-        b=dk+eDmhU97baMreZmrNBUp4Os3mMndRM65p24aSygJyUpc6KsUvg6u2Dkk9S/Z96L1
-         QPd1LXh8SHkVSUCDAemh0oKXtuksU7QN2l8NCNjxf/X5v+wn1e/wWVLnwm7ZIPEw3rX1
-         ZuHw56BNzgjxYI5PjdUVmov1DBBQUkAty2/t1qjAb6mQ3Hb2xYAnwgGaE9O8+0FVQccH
-         Aj8YeqAARP0RatJ1XXng1zRY55Lm/pbDwCTmGstjF8W05JhC8Ph5hFgATQnGVtUfhtfe
-         oVOyNQ/8dsYCA3jB2OGaMRjZzs1pDNmzX9eTxszRunmd3r/b0tdkxWBX2eCmc5m1Higw
-         eViQ==
+        b=ZNAjJgoUZOATUhohOIS7160NNcSFA/K7uPZBAeESZHemVlkABL0MCmpXip1m1FfdCs
+         6meM5PGV2CJ3ynA2tEVkzMhSJhxnXwRPZx1AbrwVZrJ6qOkygyivRTRIurtFKS2KhxbL
+         YJ+wNTrhE0pnDPr6wZ4sV5EB7XSVdY3U3HaWCk5RbzZZcYPGvbYcuLwTjYQxsUnXxIJ4
+         kURblos+HF6gYX19MC7TbCN6XomiPt/UdXMNEPKCkvu6vmdGfzdGKZlhj2DBL6DlV3dK
+         j+Okv7xJXAu5QLVK0vK5vCoGHaaGyVbTon7KcNFZ56j4lbX1mnvPFJwCIBGZzkK/MJbL
+         jITg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=0Q7Kpur1KSgTZQSYvZxdZr1XOr4nijd7s9YR7ZVgDyM=;
-        b=e37dXDOFd5gbTgGo2rgZf4YzzOBoDPKjZJaNi+N5lo99ODMI64wQkSmQbgS56kVNsM
-         GyfwuUYLyEfTj/NnjgkWYtxkYgzQg0fkJUOC3JlKYlG7IOtgTpgM+ULZj2Mx5ECvatxu
-         gk/gmgPLXCmK2Hv1skz8LKErbozyin7gsQ/JObHHqp33outLNPkb22fBNUnBBOLOYrH8
-         poHYpG56IDicfCgPG7hdUqAvO93HJLiiz5ovlALmXF5tUdp/rZZ9TREaOQXKFKDZSwOu
-         YpFQU+6S3ZWgSvx1HNRvlNmLa2qnNh2oZp7GiNFE0AgvHFIzBXHj498Y6xt+24XdRhc3
-         0fOg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
+         :mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=SuYqbvL+od1K2zudHtgw6FszJJfcsY/PS1aX5B0xQ8g=;
+        b=mu1HFLMSw518Py6SRdg8i3T0kuu/0FFblmqkpwKeEcdUsQc3D0hNg1dw5Nl9NaLQ6R
+         nc2mUF/jxO6Qhsp1X96sMmWqQZG81waSRS4WZHiZItrioj3E7v2+Os86KLKgoMGPx3dq
+         1uIWZIctIdH8/SAL9kLCvpQBHmFmcsbEuNJryP9aygAbPCMlMlPgJ0YP62V2LW/TAwK4
+         +qA+2WmzvBwqSwSpJsNzjKLI6W0bs06wAvQQRQcaBAk2orCwsRKw/hyB3tucoW3Nz2p3
+         PReN4vtSVgFamLPQvjEc8c+X21l3rSVVE3r3d6q1Aw8hwFr/d4aMOhT1QJcZQv+Pmtcr
+         O3GQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MJvXYBJW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=YnzLEtGr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 135si5758114ybc.58.2022.01.10.13.36.53
+        by mx.google.com with ESMTPS id t4si5948925ybb.540.2022.01.10.13.54.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Jan 2022 13:36:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 10 Jan 2022 13:54:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MJvXYBJW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39632 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20210112 header.b=YnzLEtGr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:54582 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n72LU-0007Wp-Ou
-	for alex.bennee@linaro.org; Mon, 10 Jan 2022 16:36:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44954)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n72ci-0002uT-3N
+	for alex.bennee@linaro.org; Mon, 10 Jan 2022 16:54:40 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51538)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1n726C-0005qw-5e
- for qemu-devel@nongnu.org; Mon, 10 Jan 2022 16:21:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56091)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1n7269-0006vm-BR
- for qemu-devel@nongnu.org; Mon, 10 Jan 2022 16:21:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641849660;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0Q7Kpur1KSgTZQSYvZxdZr1XOr4nijd7s9YR7ZVgDyM=;
- b=MJvXYBJWeiyph/fI3EuHK098hyF0DxlGt8/JttJikFoqtTygLsje1s9LEOSwwe0sVPp5xR
- G7r6K9fQWeBlZAMBdRfJKF8NoEOb7Fm56z93tW9bU37oqaWRXEwWjC1QK6RerBT5/EhGHo
- gETibH0qL9Nh8j22pV/BvH/JScJu41Q=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-672-IH3Rbw6bOBaE5mp6QfAEGw-1; Mon, 10 Jan 2022 16:20:52 -0500
-X-MC-Unique: IH3Rbw6bOBaE5mp6QfAEGw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4B508100C660;
- Mon, 10 Jan 2022 21:20:51 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.194.25])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 079CB19811;
- Mon, 10 Jan 2022 21:20:36 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, thuth@redhat.com,
- pbonzini@redhat.com, lvivier@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
- david@gibson.dropbear.id.au, clg@kaod.org
-Subject: [PATCH 5/6] tests/qtest/vhost-user-blk-test: Factorize vq setup code
-Date: Mon, 10 Jan 2022 22:19:14 +0100
-Message-Id: <20220110211915.2749082-6-eric.auger@redhat.com>
-In-Reply-To: <20220110211915.2749082-1-eric.auger@redhat.com>
-References: <20220110211915.2749082-1-eric.auger@redhat.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.597,
+ (Exim 4.90_1) (envelope-from
+ <3k6ncYQcKCG4hQZfgdQSaaSXQ.OaYcQYg-MdYZaZSZg.adS@flex--venture.bounces.google.com>)
+ id 1n72cQ-0002tl-OD
+ for qemu-arm@nongnu.org; Mon, 10 Jan 2022 16:54:23 -0500
+Received: from [2607:f8b0:4864:20::b4a] (port=54804
+ helo=mail-yb1-xb4a.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3k6ncYQcKCG4hQZfgdQSaaSXQ.OaYcQYg-MdYZaZSZg.adS@flex--venture.bounces.google.com>)
+ id 1n72cP-0003DZ-1i
+ for qemu-arm@nongnu.org; Mon, 10 Jan 2022 16:54:22 -0500
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ y10-20020a2586ca000000b006116aaeeee6so1989585ybm.21
+ for <qemu-arm@nongnu.org>; Mon, 10 Jan 2022 13:54:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=SuYqbvL+od1K2zudHtgw6FszJJfcsY/PS1aX5B0xQ8g=;
+ b=YnzLEtGrapfi56hZwEK4oWaFj/YUbc60W7cJmZrsEI4envPLNJs+g6KxTIkcfrNg3K
+ Ifo2nbV+B+QnVHI4b/WJ2i8pX7sHpSxEhzc8su4YlcVSvzWoTUrAuKRFlBnwMX8gf/4K
+ nW29dvH4xZYtvuL70jQaKD56sZRN+zECtU1CzQXfBrhBXfRN6Ce9MlN8ebtPyyfmgOhC
+ Gm35ki2ozMziw+Ay6hZ/jb5tpPaGlbSH35ZF2U2V6YqY49gYpg64k1fvZB0d5PxjKwLd
+ TD1HwuAS+LA7o19xSXdl2116vw/v0r9bVPurmJ2Y4F9XKbLmII2E8XSuCZQST4EyyT5P
+ y9+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=SuYqbvL+od1K2zudHtgw6FszJJfcsY/PS1aX5B0xQ8g=;
+ b=Two5G6Sf61mjm4TrHXDCtu8BSF86fLbZH0dZZQ0qbUcVaVS+xAGMptRjZ4Hr9PRNqT
+ AUFTUHwdEwsTdGwP6zrcwkvglet9BROINX6ic+bndjriGXEh5hTD6Qdf+IquCoZZh/MJ
+ tuKJtLj8vTEzaqpg6wD1tP4yxak3Tq/2MRFG8xuH3nWnyD9jWdf/V35Qi0oB5nij1ooM
+ dBsvMTx34HBeqjF2RBB8WHC5wv5xpXcwFHD0VCwkR2wmTQ9Oev98HI+4UpJbQ86y1uJr
+ LZcdYhZscR2Q9V1Dsigh2CjbVwVBuqlYZ8EEXX2giFf7Q3JS3LW/Y8sHReL+OzsMcyx4
+ egZQ==
+X-Gm-Message-State: AOAM5309RPL7UQj/vkrOiD58/MY6EyMykcOHNwzex2fgjvTbVwCyLJeD
+ mFIsSUm+apuG7l1vc/wCVrX2HTQnqqIF
+X-Received: from venture.svl.corp.google.com
+ ([2620:15c:2a3:200:55ed:4d46:15ea:437b])
+ (user=venture job=sendgmr) by 2002:a25:cecb:: with SMTP id
+ x194mr1270752ybe.677.1641851283537; Mon, 10 Jan 2022 13:48:03 -0800 (PST)
+Date: Mon, 10 Jan 2022 13:47:55 -0800
+In-Reply-To: <20220110214755.810343-1-venture@google.com>
+Message-Id: <20220110214755.810343-3-venture@google.com>
+Mime-Version: 1.0
+References: <20220110214755.810343-1-venture@google.com>
+X-Mailer: git-send-email 2.34.1.575.g55b058a8bb-goog
+Subject: [PATCH 2/2] hw/arm: Enable smbus on arm virt machine.
+From: Patrick Venture <venture@google.com>
+To: crauer@google.com, peter.maydell@linaro.org, mst@redhat.com, 
+ imammedo@redhat.com, ani@anisinha.ca, shannon.zhaosl@gmail.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b4a
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3k6ncYQcKCG4hQZfgdQSaaSXQ.OaYcQYg-MdYZaZSZg.adS@flex--venture.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
+X-Spam_score_int: -87
+X-Spam_score: -8.8
+X-Spam_bar: --------
+X-Spam_report: (-8.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: USRsyWqsx+UD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QNV9DV7pmQZQ
 
-The vq setup code is repeated several times and can be
-easily factorized.
+From: Chris Rauer <crauer@google.com>
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+Signed-off-by: Chris Rauer <crauer@google.com>
 ---
- tests/qtest/vhost-user-blk-test.c | 33 +++++++++++++++----------------
- 1 file changed, 16 insertions(+), 17 deletions(-)
+ docs/system/arm/virt.rst |  4 +++
+ hw/arm/Kconfig           |  1 +
+ hw/arm/virt-acpi-build.c | 24 ++++++++++++++++++
+ hw/arm/virt.c            | 55 ++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h    |  3 +++
+ 5 files changed, 87 insertions(+)
 
-diff --git a/tests/qtest/vhost-user-blk-test.c b/tests/qtest/vhost-user-blk-test.c
-index 2024aa5923e..236af80e4ad 100644
---- a/tests/qtest/vhost-user-blk-test.c
-+++ b/tests/qtest/vhost-user-blk-test.c
-@@ -211,6 +211,19 @@ static void test_invalid_discard_write_zeroes(QVirtioDevice *dev,
-     guest_free(alloc, req_addr);
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 850787495b..e357143f6b 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -30,6 +30,7 @@ The virt board supports:
+ - An RTC
+ - The fw_cfg device that allows a guest to obtain data from QEMU
+ - A PL061 GPIO controller
++- A DesignWare I2C controller
+ - An optional SMMUv3 IOMMU
+ - hotpluggable DIMMs
+ - hotpluggable NVDIMMs
+@@ -121,6 +122,9 @@ ras
+   Set ``on``/``off`` to enable/disable reporting host memory errors to a guest
+   using ACPI and guest external abort exceptions. The default is off.
+ 
++smbus
++  Set ``on``/``off`` to enable/disable smbus controller. The default is ``off``.
++
+ Linux guest kernel configuration
+ """"""""""""""""""""""""""""""""
+ 
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index e652590943..692af8c265 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -28,6 +28,7 @@ config ARM_VIRT
+     select ACPI_HW_REDUCED
+     select ACPI_APEI
+     select ACPI_VIOT
++    select DESIGNWARE_I2C
+ 
+ config CHEETAH
+     bool
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index d0f4867fdf..310cd6fb5b 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -92,6 +92,26 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+     aml_append(scope, dev);
  }
  
-+static QVirtQueue *setup_vq(QVirtioDevice *dev, QGuestAllocator *alloc)
++static void acpi_dsdt_add_smbus(Aml *scope, const MemMapEntry *smbus_memmap,
++                                           uint32_t i2c_irq, I2CBus *smbus)
 +{
-+    QVirtioPCIDevice *vpcidev = container_of(dev, QVirtioPCIDevice, vdev);
-+    QVirtQueue *vq;
++    Aml *dev = aml_device("SMB0");
++    aml_append(dev, aml_name_decl("_HID", aml_string("APMC0D0F")));
++    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
++    aml_append(dev, aml_name_decl("_STA", aml_int(0x0F)));
++    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
 +
-+    qpci_msix_enable(vpcidev->pdev);
-+    qvirtio_pci_set_msix_configuration_vector(vpcidev, alloc, 0);
++    Aml *crs = aml_resource_template();
++    aml_append(crs, aml_memory32_fixed(smbus_memmap->base,
++                                       smbus_memmap->size, AML_READ_WRITE));
++    aml_append(crs,
++               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
++                             AML_EXCLUSIVE, &i2c_irq, 1));
++    aml_append(dev, aml_name_decl("_CRS", crs));
 +
-+    vq = qvirtqueue_setup(dev, alloc, 0);
-+    qvirtqueue_pci_msix_setup(vpcidev, (QVirtQueuePCI *)vq, alloc, 1);
-+    return vq;
++    aml_append(scope, dev);
 +}
 +
- /* Returns the request virtqueue so the caller can perform further tests */
- static QVirtQueue *test_basic(QVirtioDevice *dev, QGuestAllocator *alloc)
+ static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
  {
-@@ -223,10 +236,6 @@ static QVirtQueue *test_basic(QVirtioDevice *dev, QGuestAllocator *alloc)
-     char *data;
-     QTestState *qts = global_qtest;
-     QVirtQueue *vq;
--    QVirtioPCIDevice *vpcidev = container_of(dev, QVirtioPCIDevice, vdev);
--
--    qpci_msix_enable(vpcidev->pdev);
--    qvirtio_pci_set_msix_configuration_vector(vpcidev, alloc, 0);
- 
-     features = qvirtio_get_features(dev);
-     features = features & ~(QVIRTIO_F_BAD_FEATURE |
-@@ -238,8 +247,7 @@ static QVirtQueue *test_basic(QVirtioDevice *dev, QGuestAllocator *alloc)
-     capacity = qvirtio_config_readq(dev, 0);
-     g_assert_cmpint(capacity, ==, TEST_IMAGE_SIZE / 512);
- 
--    vq = qvirtqueue_setup(dev, alloc, 0);
--    qvirtqueue_pci_msix_setup(vpcidev, (QVirtQueuePCI *)vq, alloc, 1);
-+    vq = setup_vq(dev, alloc);
- 
-     qvirtio_set_driver_ok(dev);
- 
-@@ -474,10 +482,6 @@ static void indirect(void *obj, void *u_data, QGuestAllocator *t_alloc)
-     uint8_t status;
-     char *data;
-     QTestState *qts = global_qtest;
--    QVirtioPCIDevice *vpcidev = container_of(dev, QVirtioPCIDevice, vdev);
--
--    qpci_msix_enable(vpcidev->pdev);
--    qvirtio_pci_set_msix_configuration_vector(vpcidev, t_alloc, 0);
- 
-     features = qvirtio_get_features(dev);
-     g_assert_cmphex(features & (1u << VIRTIO_RING_F_INDIRECT_DESC), !=, 0);
-@@ -489,8 +493,7 @@ static void indirect(void *obj, void *u_data, QGuestAllocator *t_alloc)
-     capacity = qvirtio_config_readq(dev, 0);
-     g_assert_cmpint(capacity, ==, TEST_IMAGE_SIZE / 512);
- 
--    vq = qvirtqueue_setup(dev, t_alloc, 0);
--    qvirtqueue_pci_msix_setup(vpcidev, (QVirtQueuePCI *)vq, t_alloc, 1);
-+    vq = setup_vq(dev, t_alloc);
- 
-     qvirtio_set_driver_ok(dev);
- 
-@@ -576,9 +579,6 @@ static void idx(void *obj, void *u_data, QGuestAllocator *t_alloc)
-         return;
+     Aml *dev = aml_device("FWCF");
+@@ -862,6 +882,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     acpi_dsdt_add_cpus(scope, vms);
+     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
++    if (vms->smbus_enabled) {
++        acpi_dsdt_add_smbus(scope, &memmap[VIRT_SMBUS],
++                            (irqmap[VIRT_SMBUS] + ARM_SPI_BASE), vms->smbus);
++    }
+     if (vmc->acpi_expose_flash) {
+         acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
      }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 4593fea1ce..dd2219424d 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -76,6 +76,7 @@
+ #include "hw/acpi/generic_event_device.h"
+ #include "hw/virtio/virtio-iommu.h"
+ #include "hw/char/pl011.h"
++#include "hw/i2c/designware_i2c.h"
+ #include "qemu/guest-random.h"
  
--    qpci_msix_enable(pdev->pdev);
--    qvirtio_pci_set_msix_configuration_vector(pdev, t_alloc, 0);
--
-     features = qvirtio_get_features(dev);
-     features = features & ~(QVIRTIO_F_BAD_FEATURE |
-                             (1u << VIRTIO_RING_F_INDIRECT_DESC) |
-@@ -589,8 +589,7 @@ static void idx(void *obj, void *u_data, QGuestAllocator *t_alloc)
-     capacity = qvirtio_config_readq(dev, 0);
-     g_assert_cmpint(capacity, ==, TEST_IMAGE_SIZE / 512);
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+@@ -152,6 +153,7 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+     [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+     [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
++    [VIRT_SMBUS] =              { 0x090c0000, 0x00001000 },
+     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+@@ -188,6 +190,7 @@ static const int a15irqmap[] = {
+     [VIRT_GPIO] = 7,
+     [VIRT_SECURE_UART] = 8,
+     [VIRT_ACPI_GED] = 9,
++    [VIRT_SMBUS] = 10,
+     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+     [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+@@ -878,6 +881,32 @@ static void create_rtc(const VirtMachineState *vms)
+     g_free(nodename);
+ }
  
--    vq = qvirtqueue_setup(dev, t_alloc, 0);
--    qvirtqueue_pci_msix_setup(pdev, (QVirtQueuePCI *)vq, t_alloc, 1);
-+    vq = setup_vq(dev, t_alloc);
++static void create_smbus(VirtMachineState *vms)
++{
++    char *nodename;
++    hwaddr base = vms->memmap[VIRT_SMBUS].base;
++    hwaddr size = vms->memmap[VIRT_SMBUS].size;
++    int irq = vms->irqmap[VIRT_SMBUS];
++    const char compat[] = "snps,designware-i2c";
++    MachineState *ms = MACHINE(vms);
++    DeviceState *dev;
++
++    dev = sysbus_create_simple(TYPE_DESIGNWARE_I2C, base,
++                               qdev_get_gpio_in(vms->gic, irq));
++    vms->smbus = (I2CBus *)qdev_get_child_bus(dev, "i2c-bus");
++
++    nodename = g_strdup_printf("/i2c@%" PRIx64, base);
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop(ms->fdt, nodename, "compatible", compat, sizeof(compat));
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg", 2, base, 2, size);
++    qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
++                           GIC_FDT_IRQ_TYPE_SPI, irq,
++                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle);
++    qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
++    g_free(nodename);
++}
++
+ static DeviceState *gpio_key_dev;
+ static void virt_powerdown_req(Notifier *n, void *opaque)
+ {
+@@ -2125,6 +2154,10 @@ static void machvirt_init(MachineState *machine)
  
-     qvirtio_set_driver_ok(dev);
+     vms->highmem_ecam &= vms->highmem && (!firmware_loaded || aarch64);
  
++    if (vms->smbus_enabled) {
++        create_smbus(vms);
++    }
++
+     create_rtc(vms);
+ 
+     create_pcie(vms);
+@@ -2400,6 +2433,20 @@ static void virt_set_default_bus_bypass_iommu(Object *obj, bool value,
+     vms->default_bus_bypass_iommu = value;
+ }
+ 
++static bool virt_machine_get_smbus(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->smbus_enabled;
++}
++
++static void virt_machine_set_smbus(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->smbus_enabled = value;
++}
++
+ static CpuInstanceProperties
+ virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+ {
+@@ -2781,6 +2828,11 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+                                           "in ACPI table header."
+                                           "The string may be up to 8 bytes in size");
+ 
++    object_class_property_add_bool(oc, "smbus",
++                                   virt_machine_get_smbus,
++                                   virt_machine_set_smbus);
++    object_class_property_set_description(oc, "smbus",
++                                          "Enable SMBUS controller. ");
+ }
+ 
+ static void virt_instance_init(Object *obj)
+@@ -2828,6 +2880,9 @@ static void virt_instance_init(Object *obj)
+     /* MTE is disabled by default.  */
+     vms->mte = false;
+ 
++    /* smbus is disabled by default.  */
++    vms->smbus_enabled = false;
++
+     vms->irqmap = a15irqmap;
+ 
+     virt_flash_create(vms);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index dc6b66ffc8..d28de89695 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -86,6 +86,7 @@ enum {
+     VIRT_ACPI_GED,
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
++    VIRT_SMBUS,
+     VIRT_LOWMEMMAP_LAST,
+ };
+ 
+@@ -148,6 +149,7 @@ struct VirtMachineState {
+     bool virt;
+     bool ras;
+     bool mte;
++    bool smbus_enabled;
+     OnOffAuto acpi;
+     VirtGICType gic_version;
+     VirtIOMMUType iommu;
+@@ -169,6 +171,7 @@ struct VirtMachineState {
+     DeviceState *acpi_dev;
+     Notifier powerdown_notifier;
+     PCIBus *bus;
++    I2CBus *smbus;
+     char *oem_id;
+     char *oem_table_id;
+ };
 -- 
-2.26.3
+2.34.1.575.g55b058a8bb-goog
 

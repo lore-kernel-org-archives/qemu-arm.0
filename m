@@ -1,215 +1,171 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1431971lfj;
-        Mon, 10 Jan 2022 22:58:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJybS/v//Bczs38q2nGQVwQWvHu0zEtJZUGs5/Jv1eRmO0KenYf20grH7zrsI8TasJcRvr7y
-X-Received: by 2002:a5b:ec2:: with SMTP id a2mr2146484ybs.211.1641884326057;
-        Mon, 10 Jan 2022 22:58:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641884326; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1473518lfj;
+        Tue, 11 Jan 2022 00:26:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxE1SMB74aPsF7A5l4bxEnLECmT+7kuOzYYw+KazwY4CHe8VSGd5nmBCiZLqRW8xY+uasfp
+X-Received: by 2002:a05:6902:727:: with SMTP id l7mr5049671ybt.298.1641889584907;
+        Tue, 11 Jan 2022 00:26:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641889584; cv=none;
         d=google.com; s=arc-20160816;
-        b=0dS1JXrzhRX8t4diGrRRBwCmdh1MF+s7t6f/fmRy7h4i/PJ6NTGWK+JBVrnZWsqXZX
-         MS/lrG5vR2Ow3MNdlz3t/I/WiUJLE44H6UG1G08gSi67wPFLVd8u2Jd+sSp9iJJfWG4f
-         vdQviUTwLrHK6ZVkg/u9oMt3Hh5JTb1D070RxoRCX6VNQzaSeTGtTECo25Zmv/Q533kd
-         ItDzvhMd0DBGDUNurcu7SU7X+cnK0CpBFNojsi4BgCEZYbjv1GkVXE+SZtuwEcSH3gSn
-         RpZeZXcuuIpGUVYl7waIqnH0UNrAZniDb3vsxPIpQQdxyqTbaoarhSNPaLapk8TvlOBh
-         6jBQ==
+        b=jAGT4noU3ewmQIv9vXugX+kGL88ADdNEztnfH6Sz8gCvPOf33ZFf4aKL6tGEzJnvLO
+         Va5SwV4c5CA0k5zQaVk1rbyRMelZ/+EQLa4rx/dmL7iVbaettjv6qt/M1Rz+NqnqS5Du
+         5LpfUHCT9lcHEdI/JQhbnwB3hOD8U5y2VQGv/DQxBmOjinGmtaJENloSD8rYqSuA+FNA
+         V4boL1ofxv5Z/VzOZwtHQ1yyy7CJwzZRByPvAZcF9Eva0zZs3vW1fim2OB/Oba6kdceg
+         20wHb8CHWOb8mLzw/8W7qanUh3Ou+r+L9jjMV36anoaLIRYiAc+vVSX++Yk7b6wMVjeg
+         nMOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Iuk0eX2NrIgx+S4v6VTPN3i1rtPABTyhfcBu7xZsFnY=;
-        b=ujXwyxWsQX7WdJ8vCZVUd6uo0PsGzRTYTQyXWeXeZVGVyvhT/dyQxH3J/cxePlEY0d
-         tl7uPQLzQbKSh4trzf1sZlKa16r64sZGoq+f6MKTD0V6+Q2BfodBtqe1qXvQb0plM5Cp
-         3Q0LI6hVNnD3C5jfQtNhfTt1Nh2OHP0GNbmvzveExnfVhBG+uI0mrkBmqdxc40C1JK/z
-         u6W9WXlxpkcFiCJ5asuY2uupETIpTtkd7ePevid+F0n4pdNS/L/h4MVZTcuxcS+YB89R
-         qoQRLK+oMJ+7lF0WyXXbezP2rTC9osfqRuGru8Qj7+ofkr1xl7l/oJU84CJesjuOJATL
-         7RhQ==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=KqHxaIl9t6aq7xKnE7FxUmkkw8INJdKBVp6iPcvlQIs=;
+        b=Zv0Gfy1mDYPYS2PgkERdcXrW2cdsvkJUQ7IF4hq6cXAMn8keVb+OwAhQPv3YY9D/sF
+         jOggq2Pbh+7tiH86QMbPo89hcyg4bSPs90pZKwxHBe1Whb02pqpKFXUh1deOry+5kyk/
+         TLQrpdNoKS/BNQUPUyrpAVlKl0oFworubql0qy7UXHZusbUkHGgMjB4PAR5dgCquY0iU
+         N0ORO5rbQuZoWv9ROI3nT0aW3vgunlTH0j22Tkf9ym3u273axklh+iGSxZHb2smX6keW
+         574TxU0eCFyodhgrBbNECk/4MWFwKem6pMW3v65HMfXxSoUzQrGjWI0TX9jpQIPgENGf
+         sazg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FVSYFIGq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13si6630775ybl.621.2022.01.10.22.58.45
+        by mx.google.com with ESMTPS id e13si6372524ybb.50.2022.01.11.00.26.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Jan 2022 22:58:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Jan 2022 00:26:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FVSYFIGq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54788 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54554 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n7B7F-0007Yy-E1
-	for alex.bennee@linaro.org; Tue, 11 Jan 2022 01:58:45 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50934)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n7CU4-0004Ey-8X
+	for alex.bennee@linaro.org; Tue, 11 Jan 2022 03:26:24 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:43028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1n7Aka-000431-4n
- for qemu-devel@nongnu.org; Tue, 11 Jan 2022 01:35:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36859)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1n7CTj-0004BN-AW
+ for qemu-arm@nongnu.org; Tue, 11 Jan 2022 03:26:05 -0500
+Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222]:52235)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1n7AkW-0002tT-SX
- for qemu-devel@nongnu.org; Tue, 11 Jan 2022 01:35:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641882915;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Iuk0eX2NrIgx+S4v6VTPN3i1rtPABTyhfcBu7xZsFnY=;
- b=FVSYFIGqHLfOvODEvdXzAerJUE8QYt59e+Rbhjjp4l5GbjecoA/1SnoJKrXFAU6Gk/KROY
- Nupn4Rikd0zY7PNHkNNiaWZW7/C7+sAoEyygBgeG6UjUj130Gl1dOsthWLhBTCeSiTFNe4
- ZTMyOR0eYDG9YpquvP53KpKESRWn/9Q=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-247-ltQGLUUYO5m7HFz59UNv5g-1; Tue, 11 Jan 2022 01:34:06 -0500
-X-MC-Unique: ltQGLUUYO5m7HFz59UNv5g-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0BC4D10066FE;
- Tue, 11 Jan 2022 06:34:05 +0000 (UTC)
-Received: from gshan.redhat.com (vpn2-54-60.bne.redhat.com [10.64.54.60])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 022A97B034;
- Tue, 11 Jan 2022 06:33:35 +0000 (UTC)
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Subject: [PATCH v4 0/2] hw/arm/virt: Support for virtio-mem-pci
-Date: Tue, 11 Jan 2022 14:33:27 +0800
-Message-Id: <20220111063329.74447-1-gshan@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1n7CTf-0002Dg-SS
+ for qemu-arm@nongnu.org; Tue, 11 Jan 2022 03:26:03 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.249])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 12B8921E81;
+ Tue, 11 Jan 2022 08:25:53 +0000 (UTC)
+Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.17; Tue, 11 Jan
+ 2022 09:25:52 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R001feae2f63-891f-48fe-9e03-5fa327fe1117,
+ FFD8DCB8B568E78E86EDC96A86417857C679DA6D) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <cbeab84b-2d50-3713-63d9-6d8f2af5c85f@kaod.org>
+Date: Tue, 11 Jan 2022 09:25:38 +0100
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.595,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH v2 1/2] hw/misc: Implementating dummy AST2600 I3C model
+Content-Language: en-US
+To: Troy Lee <leetroy@gmail.com>
+References: <20220110072125.1886683-1-troy_lee@aspeedtech.com>
+ <20220110072125.1886683-2-troy_lee@aspeedtech.com>
+ <a8d6b7b7-7072-9407-3135-f2459bc915b2@kaod.org>
+ <CAN9Jwz0qFQKe5HuTMwo-u=1vSh47gXJm9DU2wdOjgH8ZcbAsAw@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CAN9Jwz0qFQKe5HuTMwo-u=1vSh47gXJm9DU2wdOjgH8ZcbAsAw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG1EX2.mxp5.local (172.16.2.2) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 89d84ea3-cd7a-4013-95b0-ea4e14554cb7
+X-Ovh-Tracer-Id: 4544132025855609708
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvuddrudehvddguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefheegveekkefggefhjeduvdefudevtdeluedufeevuddtteffvdefuefgieeuhfenucffohhmrghinhepghiirdhithenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
+ helo=6.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
- shan.gavin@gmail.com, Jonathan.Cameron@huawei.com, imammedo@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: spRcOlBVwWUX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Troy Lee <troy_lee@aspeedtech.com>, qemu-devel@nongnu.org,
+ hailin.wu@aspeedtech.com, "open list:ASPEED
+ BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 92tz48XkafaK
 
-This series supports virtio-mem-pci device, by simply following the
-implementation on x86. The exception is the block size is 512MB on
-ARM64 instead of 128MB on x86, compatible with the memory section
-size in linux guest.
+Hello Troy,
 
-The work was done by David Hildenbrand and then Jonathan Cameron. I'm
-taking the patch and putting more efforts, which is all about testing
-to me at current stage.
 
-Testing
-=======
-The upstream linux kernel (v5.16.rc3) is used on host/guest during
-the testing. The guest kernel includes changes to enable virtio-mem
-driver, which is simply to enable CONFIG_VIRTIO_MEM on ARM64.
+>>> +
+>>> +    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i3c_ops, s,
+>>> +            TYPE_ASPEED_I3C, ASPEED_I3C_NR_REGS << 2);
+>>> +
+>>> +    sysbus_init_mmio(sbd, &s->iomem);
+>>
+>> I would add a container region containing all the regions :
+>>
+>>
+>>       memory_region_init(&s->iomem_container, OBJECT(s),
+>>                          TYPE_ASPEED_I3C ".container", 0x8000);
+>>
+>>       sysbus_init_mmio(sbd, &s->iomem_container);
+>>
+>>       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i3c_ops, s,
+>>               TYPE_ASPEED_I3C ".regs", 0x70);
+>>
+>>       memory_region_add_subregion(&s->iomem_container, 0x0, &s->iomem);
+>>
+>>
+>>
+>> The goal is to have a stricter layout so that you can catch errors :
+>>
+>>       000000001e7a0000-000000001e7a7fff (prio 0, i/o): aspeed.i3c.container
+>>         000000001e7a0000-000000001e7a006f (prio 0, i/o): aspeed.i3c.regs
+>>         000000001e7a2000-000000001e7a22ff (prio 0, i/o): aspeed.i3c.device.0
+>>         000000001e7a3000-000000001e7a32ff (prio 0, i/o): aspeed.i3c.device.1
+>>         000000001e7a4000-000000001e7a42ff (prio 0, i/o): aspeed.i3c.device.2
+>>         000000001e7a5000-000000001e7a52ff (prio 0, i/o): aspeed.i3c.device.3
+>>         000000001e7a6000-000000001e7a62ff (prio 0, i/o): aspeed.i3c.device.4
+>>         000000001e7a7000-000000001e7a72ff (prio 0, i/o): aspeed.i3c.device.5
+>>
+>> and if under U-Boot, you peek into unimplemented regs, you get a warning :
+>>
+>>       ast# md 1e7a0000
+>>       1e7a0000: 00000000 00000000 00000000 00000000    ................
+>>       1e7a0010: 00000000 00000000 00000000 00000000    ................
+>>       1e7a0020: 00000000 00000000 00000000 00000000    ................
+>>       1e7a0030: 00000000 00000000 00000000 00000000    ................
+>>       1e7a0040: 00000000 00000000 00000000 00000000    ................
+>>       1e7a0050: 00000000 00000000 00000000 00000000    ................
+>>       1e7a0060: 00000000 00000000 00000000 00000000    ................
+>>       1e7a0070:aspeed_soc.io: unimplemented device read  (size 4, offset 0x1a0070)
+>>        00000000aspeed_soc.io: unimplemented device read  (size 4, offset 0x1a0074)
+> 
+> Thanks for the code snippet, learnt and applied.
+> Yes, it would be easier to catch driver problems.
 
-Mutiple combinations like page sizes on host/guest, memory backend
-device etc are covered in the testing. Besides, migration is also
-tested. The following command lines are used for VM or virtio-mem-pci
-device hot-add. It's notable that virtio-mem-pci device hot-remove
-isn't supported, similar to what we have on x86.
+That said, not all Aspeed models follow this pattern. We learned along
+the way and we could improve some older implementations.
 
-  host.pgsize  guest.pgsize  backend    hot-add  hot-remove  migration
-  ---------------------------------------------------------------------
-   4KB         4KB           normal     ok       ok          ok
-                             THP        ok       ok          ok
-                             hugeTLB    ok       ok          ok
-   4KB         64KB          normal     ok       ok          ok
-                             THP        ok       ok          ok
-                             hugeTLB    ok       ok          ok
-  64KB         4KB           normal     ok       ok          ok
-                             THP        ok       ok          ok
-                             hugeTLB    ok       ok          ok
-  64KB         64KB          normal     ok       ok          ok
-                             THP        ok       ok          ok
-                             hugeTLB    ok       ok          ok
+btw, I tried your series with ast2600-default-obmc.tar.gz. It boots fine.
 
-The command lines are used for VM. When hugeTLBfs is used, all memory
-backend objects are popuated on /dev/hugepages-2048kB or
-/dev/hugepages-524288kB, depending on the host page sizes.
+Thanks,
 
-  /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64                       \
-  -accel kvm -machine virt,gic-version=host                                     \
-  -cpu host -smp 4,sockets=2,cores=2,threads=1                                  \
-  -m 1024M,slots=16,maxmem=64G                                                  \
-  -object memory-backend-ram,id=mem0,size=512M                                  \
-  -object memory-backend-ram,id=mem1,size=512M                                  \
-  -numa node,nodeid=0,cpus=0-1,memdev=mem0                                      \
-  -numa node,nodeid=1,cpus=2-3,memdev=mem1                                      \
-     :
-  -kernel /home/gavin/sandbox/linux.guest/arch/arm64/boot/Image                 \
-  -initrd /home/gavin/sandbox/images/rootfs.cpio.xz                             \
-  -append earlycon=pl011,mmio,0x9000000                                         \
-  -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                         \
-  -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                         \
-  -device pcie-root-port,bus=pcie.0,chassis=3,id=pcie.3                         \
-  -object memory-backend-ram,id=vmem0,size=512M                                 \
-  -device virtio-mem-pci,id=vm0,bus=pcie.1,memdev=vmem0,node=0,requested-size=0 \
-  -object memory-backend-ram,id=vmem1,size=512M                                 \
-  -device virtio-mem-pci,id=vm1,bus=pcie.2,memdev=vmem1,node=1,requested-size=0
-
-Command lines used for memory hot-add and hot-remove:
-
-  (qemu) qom-set vm1 requested-size 512M
-  (qemu) qom-set vm1 requested-size 0
-  (qemu) qom-set vm1 requested-size 512M
-
-Command lines used for virtio-mem-pci device hot-add:
-
-  (qemu) object_add memory-backend-ram,id=hp-mem1,size=512M
-  (qemu) device_add virtio-mem-pci,id=hp-vm1,bus=pcie.3,memdev=hp-mem1,node=1
-  (qemu) qom-set hp-vm1 requested-size 512M
-  (qemu) qom-set hp-vm1 requested-size 0
-  (qemu) qom-set hp-vm1 requested-size 512M
-
-Changelog
-=========
-v4:
-  * Improved comments in virt_virtio_md_pci_pre_plug()                  (Peter)
-v3:
-  * Reshuffle patches                                                   (David)
-  * Suggested code refactoring for virtio_mem_default_thp_size()        (David)
-  * Pick r-b from Jonathan and David                                    (Gavin)
-v2:
-  * Include David/Jonathan as co-developers in the commit log           (David)
-  * Decrease VIRTIO_MEM_USABLE_EXTENT to 512MB on ARM64 in PATCH[1/2]   (David)
-  * PATCH[2/2] is added to correct the THP sizes on ARM64               (David)
-
-Gavin Shan (2):
-  virtio-mem: Correct default THP size for ARM64
-  hw/arm/virt: Support for virtio-mem-pci
-
- hw/arm/Kconfig         |  1 +
- hw/arm/virt.c          | 70 ++++++++++++++++++++++++++++++++++++++++++
- hw/virtio/virtio-mem.c | 36 ++++++++++++++--------
- 3 files changed, 94 insertions(+), 13 deletions(-)
-
--- 
-2.23.0
-
+C.

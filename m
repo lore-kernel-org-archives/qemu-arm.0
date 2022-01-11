@@ -1,162 +1,125 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1800876lfj;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1800892lfj;
         Tue, 11 Jan 2022 09:10:52 -0800 (PST)
-X-Received: by 2002:a05:6000:38b:: with SMTP id u11mr4756356wrf.408.1641921052001;
+X-Received: by 2002:adf:fd46:: with SMTP id h6mr4632538wrs.192.1641921052623;
         Tue, 11 Jan 2022 09:10:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641921051; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1641921052; cv=none;
         d=google.com; s=arc-20160816;
-        b=QcmnAHRQuZiPNZS7Rmhc+4RVntyqEVOH8pQZuW2ZRZdWK3qlt2qitpwIA824DtcWuV
-         hEyrqSLbt5VR5l4XCqiNelIrsRB9vDzLWEfnAkYz36dqbDx8IBnRE+QRS3Jje1MSqhM4
-         xeMyPcna2kBmMAUuTd3MK2Pb0oepYwo8I6czbcCLlaHgiofHy5qCTChet5Bm0DzArthC
-         9wfyzeDSTWq/k1kR06yw53Rxf5kpkWWMuzhEuqOHwp4iWNp04cCRgv93gYf8hIkH5KMF
-         j//kWfuJ6+6744FClzsMOwh0wE+Ry+qHv6fyRCQYrw/al8+GcRQHOaHKzpsPJRf6K/C6
-         2svQ==
+        b=Xrq7b1ddJhjyM8LoyMrWI+wwKMAz6Jt8WHO5ycYPlF6aUysHl8iG1GOQ48V55xNovL
+         65XGK04Raoiqr171OTkmyMHxBvhRFZmB/25LnyMRLX4yGf3y/UtJFCOY/pKv1IezcStW
+         RxqJ49F2Tt7Umyio8LI3HlPeMXCekjmYGSVMp7JNkXmAnsplX7YkwnaSZds6BVe5t5z6
+         5OLd3Eb0zSNQPRHW6SeCXh/flroDnjNebafr0hj1OW3pqqSidIa1++q2RadDgg81+kPo
+         a+tAN6jIvyjopi605qESRNBAhYEYZ9mbyJvZafr/vlbK6mGxS2VLIHaONpgZGot8xqUR
+         hPlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Ob5bbn/w0TzbvNqJivAvBR3jtD/48+Yhebkf8RVzKMw=;
-        b=u6Lt8O4iOgSQDxKT/zuxg8GM+vxc+FtsghEzxsOnOoe2znelMG3aGABKAzWtr3TTQK
-         0NzS/Kk+cAwx3nYXVHmHy8bCbudGHLqeXA/xYS4PcLqtjfYQLKN+7PbfvfEazUqmuEUl
-         XsymfHZHaQ0d7eWipW9Lm+1sv/knCiZ+D/6Q6b6jAaMg61PwVcX3cz4TGdPurgci4nee
-         9DHSboxbqzCPuacIWU2kMKo6ep7e+fRDc5sZEwIwvUlgTM89MNNQuGm3VEJjquUJAvYf
-         QpgOR7lHIU/JOvfJgy39RJS8mABTTMjwOhPWTbLlPfWg2GoNmVBYASR1N7AEGU0mUIwr
-         j56A==
+        bh=wHSwNCH5vyw/b88YEepKg5paQSwMAnG4i0aTBoYVuiw=;
+        b=LdwBxLvLaNuJV11jeOg2daJZhTf2AXtripiuQT4VZ1/TmzqGk93NQE2rOs8LSoGB2u
+         HPKTLMzRhuMRB4p1C5F7qSG0nomrcwGjSAwjzkWLeMsKP3ithXItmoTrIsDfANkvwu6l
+         qTrlZMHeNMvFj3dTrZU8bJ+NcXVrEV60FFOEx4a8ldNQhvCPcgC/40aPCCu5w9ln6V7o
+         ja85rpGHy1VVTGx/R5ps/QgE+e7qb7/la7aLFNO3OFPHybJGmUQMLtj0B5YqgX5F0VTx
+         704DIHloTttpQVO/XyTH0/tydmF3AVjNE/maYTz6WbMcPMuwFsN+LJpm6P3IpN8HxTwM
+         gicA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sWVfeHV9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZTvx+Hz7;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v10sor5874031wrn.71.2022.01.11.09.10.51
+        by mx.google.com with SMTPS id az40sor1247203wmb.23.2022.01.11.09.10.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 11 Jan 2022 09:10:51 -0800 (PST)
+        Tue, 11 Jan 2022 09:10:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sWVfeHV9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZTvx+Hz7;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=Ob5bbn/w0TzbvNqJivAvBR3jtD/48+Yhebkf8RVzKMw=;
-        b=sWVfeHV953skZ1ANSKtB6LVaJUAudCwVCsUQs+r8/tdWImub794kbVVD3TW1Opdqed
-         9TfNlbHkP6MPWkT8mstz6mmXvnb/vAkns130luOY4YUZiyW5TOLZxYryuQeT4kSiWNql
-         135tWjwhc6Wvk9DnHXG74LTAJu97ZKHm6aF4UsDscpnT6pE8ZRPmBlI5ZpNFPk46ZXWl
-         G+NPPFsxqr/kGaIfATL2Y++B3o6dKYEO/mV+ut3avaXtfh6ldGyTXeKCKaz0jM5NZqdL
-         ewkV+j0LzkBLV8mbRbNUTKa9tX37Fn6Oz/Oqi2ND6V66W3vEawcLQ3+goAW3nbt+CeIg
-         teWA==
+        bh=wHSwNCH5vyw/b88YEepKg5paQSwMAnG4i0aTBoYVuiw=;
+        b=ZTvx+Hz7MBeBL22NrZgMLVo//79SaBUYmYIgtrMR2m9UHU9/QoyB2O64wyjw0UKSIg
+         vK+2bEOoi5LKg6n0PrVNucArdssVVmWfZgHU4Zb0TVd7WM6U7q7iEmAjqoIXpmJJIr/5
+         7KOTlCo7iw+pwYM7MgGa3oz0f5KDOytZu9l91LIm6VNWTTFyzMVAHJ4McfVY0+Pmbh56
+         cnvF8ZSUYXhfO/ZJD3eCw4tgyynJxUORNkAE4sOxTSH0LjAj6GR4ic+z1mUrhhRSe5nH
+         JDHcg19K4UKhK1Xoe+FJtPpeguoDIYTxYbuLP2Jdi0rwFveWeVelooIk7Hps9bqZGwj2
+         aPCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=Ob5bbn/w0TzbvNqJivAvBR3jtD/48+Yhebkf8RVzKMw=;
-        b=Yfwq3GL4HFvg4VtE5cn/FAU0tBII7UVcn/PKjg7ofi4VSrvdfBWWdO0PUTQSnaKZXX
-         oqRJJ1ktr/qwUg2t9UhaVTJtMgE/fCC28naubVndY7A4tWt0MSlIaZCnr0irqP8IAcHZ
-         qXKCyNhvPeLUiEZU2XftRkKeZOFzJYF2fQd7JloTvGDcTaLW7G96eO3+2BZGZWKacv7g
-         M4WZkL29zB/khkdMUooLpnYgQYsJHrpeRsjjLje+qWjZnYA//q5kU15figEmlW45t3kt
-         cuTZVGwXlC507nzI43Wl0H250NqfhPBXs2mbovtNOqdLNrh5q4Ztmu8uG0/9gWXJNLAe
-         UXlw==
-X-Gm-Message-State: AOAM53021lMwO/CP67mDQdMkIrcZMjxZuG6QkXcsHzx9G0auugKHc1Hv
-	xk2QWZ8GGWr5hjUeLw7O7rW8YoGK
-X-Google-Smtp-Source: ABdhPJz+6tiYN8uN+ZbhGRQryNbfTu0AoimJeMiEJLMOi/9RtBm49pzsvfHk65PpTpam9N0/qNZdXQ==
-X-Received: by 2002:a05:6000:1883:: with SMTP id a3mr4811160wri.565.1641921051657;
-        Tue, 11 Jan 2022 09:10:51 -0800 (PST)
+        bh=wHSwNCH5vyw/b88YEepKg5paQSwMAnG4i0aTBoYVuiw=;
+        b=xnqj8DouEw5lWjO73w5d1a0MrVRuWVyrbBuGdUBSsKGyujdGpiX4H9P2dSulXkQMT+
+         GqnV5ZmDLh+xUD9CwbLDyC+QRCFkc7Wbu5uALOHPH4VCsb97f5bpkI+4mfzfv8suCOsB
+         gICQaV8I3CEY3QJMvbUlYDfetjKct1CeMwrQ5wSuWgBDvdJKjGTOUJ9q+2J6L8YiR1s+
+         7V/Bu1jSgiN21qBUJUkMJfy7gtoIMrEjizGTaRZ24e8Lm9lMcR7fYfrbFEKaPi/GBx90
+         HyC0cF/PY/d6/cKOrNBtJ+P01XkVLaFpA0+9QLz9GV8jM0AevFgy4gQ3Y0ROb3wqkwln
+         rT3Q==
+X-Gm-Message-State: AOAM5339q9DPbGv7wIHK4shHOEcyWnSa0qIwEydlkWyT2/K0ijForwvN
+	MW59r6M3lMuCI46Ddvam4wSZg4lf3ngxjoHU
+X-Google-Smtp-Source: ABdhPJw5qVogQuV2jfl44pTTyWdbG8j5iw5wsCvNEMk6lgEECGetxx6byLLluFpVWtvh92+0sOOf8g==
+X-Received: by 2002:a05:600c:22da:: with SMTP id 26mr3292021wmg.121.1641921052374;
+        Tue, 11 Jan 2022 09:10:52 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
         by smtp.gmail.com with ESMTPSA id c7sm11157941wri.21.2022.01.11.09.10.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Jan 2022 09:10:51 -0800 (PST)
+        Tue, 11 Jan 2022 09:10:52 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Shashi Mallela <shashi.mallela@linaro.org>
-Subject: [PATCH v2 01/13] hw/intc/arm_gicv3_its: Fix event ID bounds checks
-Date: Tue, 11 Jan 2022 17:10:36 +0000
-Message-Id: <20220111171048.3545974-2-peter.maydell@linaro.org>
+Subject: [PATCH v2 02/13] hw/intc/arm_gicv3_its: Convert int ID check to num_intids convention
+Date: Tue, 11 Jan 2022 17:10:37 +0000
+Message-Id: <20220111171048.3545974-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220111171048.3545974-1-peter.maydell@linaro.org>
 References: <20220111171048.3545974-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: BkZ2yQXObxpc
+X-TUID: kSRJWs5eYkgt
 
-In process_its_cmd() and process_mapti() we must check the
-event ID against a limit defined by the size field in the DTE,
-which specifies the number of ID bits minus one. Convert
-this code to our num_foo convention:
- * change the variable names
- * use uint64_t and 1ULL when calculating the number
-   of valid event IDs, because DTE.SIZE is 5 bits and
-   so num_eventids may be up to 2^32
- * fix the off-by-one error in the comparison
+The bounds check on the number of interrupt IDs is correct, but
+doesn't match our convention; change the variable name, initialize it
+to the 2^n value rather than (2^n)-1, and use >= instead of > in the
+comparison.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/intc/arm_gicv3_its.c | 18 ++++++++++--------
- 1 file changed, 10 insertions(+), 8 deletions(-)
+ hw/intc/arm_gicv3_its.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index fa3cdb57554..6d11fa02040 100644
+index 6d11fa02040..5919b1a3b7f 100644
 --- a/hw/intc/arm_gicv3_its.c
 +++ b/hw/intc/arm_gicv3_its.c
-@@ -225,7 +225,7 @@ static bool process_its_cmd(GICv3ITSState *s, uint64_t value, uint32_t offset,
-     MemTxResult res = MEMTX_OK;
-     bool dte_valid;
-     uint64_t dte = 0;
--    uint32_t max_eventid;
-+    uint64_t num_eventids;
-     uint16_t icid = 0;
-     uint32_t pIntid = 0;
-     bool ite_valid = false;
-@@ -258,7 +258,7 @@ static bool process_its_cmd(GICv3ITSState *s, uint64_t value, uint32_t offset,
-     dte_valid = FIELD_EX64(dte, DTE, VALID);
- 
-     if (dte_valid) {
--        max_eventid = 1UL << (FIELD_EX64(dte, DTE, SIZE) + 1);
-+        num_eventids = 1ULL << (FIELD_EX64(dte, DTE, SIZE) + 1);
- 
-         ite_valid = get_ite(s, eventid, dte, &icid, &pIntid, &res);
- 
-@@ -299,10 +299,11 @@ static bool process_its_cmd(GICv3ITSState *s, uint64_t value, uint32_t offset,
-                       dte_valid ? "valid" : "invalid",
-                       ite_valid ? "valid" : "invalid",
-                       cte_valid ? "valid" : "invalid");
--    } else if (eventid > max_eventid) {
-+    } else if (eventid >= num_eventids) {
-         qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: invalid command attributes: eventid %d > %d\n",
--                      __func__, eventid, max_eventid);
-+                      "%s: invalid command attributes: eventid %d >= %"
-+                      PRId64 "\n",
-+                      __func__, eventid, num_eventids);
-     } else {
-         /*
-          * Current implementation only supports rdbase == procnum
-@@ -336,7 +337,8 @@ static bool process_mapti(GICv3ITSState *s, uint64_t value, uint32_t offset,
-     AddressSpace *as = &s->gicv3->dma_as;
+@@ -338,7 +338,7 @@ static bool process_mapti(GICv3ITSState *s, uint64_t value, uint32_t offset,
      uint32_t devid, eventid;
      uint32_t pIntid = 0;
--    uint32_t max_eventid, max_Intid;
-+    uint64_t num_eventids;
-+    uint32_t max_Intid;
+     uint64_t num_eventids;
+-    uint32_t max_Intid;
++    uint32_t num_intids;
      bool dte_valid;
      MemTxResult res = MEMTX_OK;
      uint16_t icid = 0;
-@@ -376,11 +378,11 @@ static bool process_mapti(GICv3ITSState *s, uint64_t value, uint32_t offset,
-         return result;
+@@ -379,11 +379,11 @@ static bool process_mapti(GICv3ITSState *s, uint64_t value, uint32_t offset,
      }
      dte_valid = FIELD_EX64(dte, DTE, VALID);
--    max_eventid = 1UL << (FIELD_EX64(dte, DTE, SIZE) + 1);
-+    num_eventids = 1ULL << (FIELD_EX64(dte, DTE, SIZE) + 1);
-     max_Intid = (1ULL << (GICD_TYPER_IDBITS + 1)) - 1;
+     num_eventids = 1ULL << (FIELD_EX64(dte, DTE, SIZE) + 1);
+-    max_Intid = (1ULL << (GICD_TYPER_IDBITS + 1)) - 1;
++    num_intids = 1ULL << (GICD_TYPER_IDBITS + 1);
  
      if ((devid >= s->dt.num_ids) || (icid >= s->ct.num_ids)
--            || !dte_valid || (eventid > max_eventid) ||
-+            || !dte_valid || (eventid >= num_eventids) ||
-             (((pIntid < GICV3_LPI_INTID_START) || (pIntid > max_Intid)) &&
+             || !dte_valid || (eventid >= num_eventids) ||
+-            (((pIntid < GICV3_LPI_INTID_START) || (pIntid > max_Intid)) &&
++            (((pIntid < GICV3_LPI_INTID_START) || (pIntid >= num_intids)) &&
               (pIntid != INTID_SPURIOUS))) {
          qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: invalid command attributes "
 -- 
 2.25.1

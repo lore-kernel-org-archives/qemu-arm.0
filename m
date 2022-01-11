@@ -1,176 +1,127 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1696361lfj;
-        Tue, 11 Jan 2022 06:38:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyIWMIX0djA7XZlpSqwLc87KwV5aNJYEP5KabqLPSknZKIU+ag7Grh6Wi6v/OGqkvIdwbDy
-X-Received: by 2002:a17:906:f01:: with SMTP id z1mr3958540eji.346.1641911913842;
-        Tue, 11 Jan 2022 06:38:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641911913; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1800866lfj;
+        Tue, 11 Jan 2022 09:10:51 -0800 (PST)
+X-Received: by 2002:a7b:c74b:: with SMTP id w11mr3343576wmk.188.1641921051345;
+        Tue, 11 Jan 2022 09:10:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641921051; cv=none;
         d=google.com; s=arc-20160816;
-        b=ie6h8MOWCz8LXnGpckddy1+lCMQPkMHAHfqjIuBgpWxBwGWDAfZ4PI4r+d9iAFScmJ
-         mh0t04AkiF4EiDmG41X/w1K1vwQ27llyIH8DT+3CZlm2+V2jQhA+fAaBCXcKAd23Bbhh
-         8dubO2zjLV2YNBzY8vW4blAOJLVErue6gXDzfLwpTb2PhHGzlBo9TxQYxYyr8gU2wB7T
-         khwtsnfsB1tAICYqHSbdBmdDDtvo1tw0b1SL3KI2dEseeSpbu4A72c+UNciexr8AeH8v
-         GqRz/v+65EgZrrlWIbvUCEqPe3opznZurwN2Ae+7T3qVKldgU1eHegPozPFxYo2oHRv/
-         dr+Q==
+        b=I/1JIbRDP2t+IKBHddxFghlprDi7f1H2JaE/mWg654nj6hBra3B/wms6NB3LC5893H
+         AkC7jrxb0WPL0XB4XekFZpcrQRxBACIeYdbUZpbz12nwuqTMQly6C3sx3YrolZu30ech
+         HwkIvzgK161xxsR/dRiqB6uAUL7iv9gjOLAPwlNXECYddoYA1xg1VF0niAvFYiSBMsie
+         E5gQG6W4a7pGy8Cvc00B0oxfsjG06gIJWoLQn1fvgIPZMVx2XKxE+YfDKon0LCa/lL+m
+         Pw/vcZOFIQ2eTApjTyvdv8BQyfFWM524HezigfJz+eVJ4eRmbh84NxDIJb9A9yLr8UwE
+         5ufg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=JcFIZQAGkW4l2coWNcK1nDoIuneVvgQf5UfEGY0IVCQ=;
-        b=iiG+0mIknjtKboVMfgCZcKa0qIHZR3kRdZNMwBJzCoS3SJ8HtLrFLM+Z96T6Sppkuv
-         dBh47ee+XYNnH6KHd1uewnFlM4uzOqsO34LXrRUtA9Q3E0u5BcjT9uPao1GahFr50/rD
-         KE7ok8kReG1smLdHIvZWqx4YEK8a3HEhDWaDPlxDbwKgXIlQ8buo9IYVEdM32IEpYzkm
-         qIuA2CMXCJspZS4KwyLC9Qzk42aeaa8qZtMwVN+FVw5n2r/KyDz3Vz/7IOw+so8CqVq3
-         VMfTlDvBXyPJou1g/zO0uOOPPBTiGgR0RzMNsIZRabgm93PtVfBSpBznruyIQfvb5W39
-         pWSg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=UEBAvPKmww5qyhXWHyPh0DcpqRnG4rj2B1wWnUAe9YM=;
+        b=KE61WZEJ+7ZeKEKOwVT5gCVQq9cnEbCpaaE2E5W9M36z2I30eL4imtbG6l0aoe+JOO
+         zpgkZ9xdQW8ZjW8qFCejcO03iKfUQoZn5/W0sD0gc3cD7HU5dNKgluTn6tzIDkkgcjUi
+         ZrYxc8ehhIk0HiLMZWXkgLRGhYkW5ch1Afky+U7XojP/usomCXznTXxFHUx1CpKf4z8L
+         0PAxY27g371X+Ts5q95VXqxDOy/1Nzkg8VCuJUBKJyJQ4NspI+3JMfMJLvss6dIHk1ku
+         ukrNg1buc6fEJKrgwbBhSiaxxxpicVCeD5PYbb6JyJTa1QynQD/MKboEKeSbQ7VzBqun
+         sxlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="vJLu/yvn";
-       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <ardb@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [2604:1380:4641:c500::1])
-        by mx.google.com with ESMTPS id z19si3856624edc.530.2022.01.11.06.38.33
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 11 Jan 2022 06:38:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) client-ip=2604:1380:4641:c500::1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kjrIiBaD;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id c2sor1545044wmq.0.2022.01.11.09.10.51
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 11 Jan 2022 09:10:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="vJLu/yvn";
-       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 675D661684;
-	Tue, 11 Jan 2022 14:38:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D29A2C36AED;
-	Tue, 11 Jan 2022 14:38:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1641911911;
-	bh=PutJFyltCPb08IZGrqTG7R4v/+VWa2fWSkEQMTS1hjQ=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=vJLu/yvnRPB69/k+Fv8GIeC1OlS1qTs16aPTiG/GocigM2X68NkMrFntdVM5KWvME
-	 8Pc5RMtfD4FtG3TBcdPd0KOiOV8sw8MPg3KYDMXBTKrEESCpCUioJgWfNbzu+1TAaw
-	 LC7yuzFbUNre1tMlcAW448a3x6zwOK2MBT2TrnVN3nfuzn5WqqlekdslxOo3b45n6L
-	 cfwTo9pFU5f/vIpLHiloC22/u4wstIC6tWBbyDUq0mVydIWEDizsdmeQZl+aQHf48M
-	 moH6NJ1D3TQ4/XGNM7JHOf+So7JEPkgDYu0aNvVzs13HQ0nzUVIRQ+eKyXo+1C3PmN
-	 bgACAcvR7nwYA==
-Received: by mail-wr1-f52.google.com with SMTP id l25so22497660wrb.13;
-        Tue, 11 Jan 2022 06:38:31 -0800 (PST)
-X-Gm-Message-State: AOAM533eX55Fz5pFuEllGOQhfrHVb9gpbD/rDcCzG0o7RIrzGpO6scaV
-	l/wPPZO4Gzt+wxRohHHUT2fB10o2N8Cqm3HbhN0=
-X-Received: by 2002:a5d:6210:: with SMTP id y16mr3899265wru.454.1641911910149;
- Tue, 11 Jan 2022 06:38:30 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=kjrIiBaD;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=UEBAvPKmww5qyhXWHyPh0DcpqRnG4rj2B1wWnUAe9YM=;
+        b=kjrIiBaDng6RPICuavgiKj7Feufx8wvRiHVJqKEyWR2eAfUaL0pothYStpNEYaj4/m
+         v5oYkb0oR0g+6MD2X7tkDpc+1KFpDfI8DSFHmFUsjMVE+eWGqWCfmi0c2PZt0Kp+VR1P
+         dkGLyYOe38HSYwQ4lXLS09FyS5fxrF9FjOpJWztOfKBH5kfmL6LjKcf/Zc3iiIEGI6jC
+         d2c03f1x2FjFA+zBnl3iaOFgvKOCGa/t2Rrub2Zt6aoIBpSW/+4+WTKVryYvTuILBrjj
+         bfpoT5+aqtY0pjDZZGadFb7oTatZkDF7zlHFuQQJawZ9Q1mApUSoVem//zx8xZmB7HJX
+         7soA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=UEBAvPKmww5qyhXWHyPh0DcpqRnG4rj2B1wWnUAe9YM=;
+        b=hAQlzNdk3JSe6BwYVyFzUa2mcr4Flr6bqaBaZDiWY4T/3dBEt/LD2kzIZp3McctQuN
+         8IwD5x171xk8r0hW7fhfokw95Na8gSmq843Fu/XNKfgQV+22aUouAUnFi2z2dcZVMx6B
+         IdMdi35y+e5fAyhUTvxqvyLB7l5jNjOebtZdqmtS47RAa45hi1d9Lw+92VfkA5FOPBzp
+         S5aYzDz+wfBqYCAwpKlnEBs+7F/8Ljq8ihzURyxdzIKraQGNiQO5E+5cpz7RVQqGeqts
+         MKSU7Lhwu4fTEWd3iC4KkzEmOQwVFCi8XUD4ZWSbYnjApX3Co5MwCVEBw/3kBRXdYXgk
+         D6YA==
+X-Gm-Message-State: AOAM533iNMzNXdP0vlOYSC9T9fwey7Cg++UoM9ZBh7I1gbmMJh3dlvWz
+	dgFrdf09WOFGvhuy7Q5bhZ/BmNihTYRVFkbQ
+X-Google-Smtp-Source: ABdhPJwd/igU2783YHTSTDO3m5gM40Ock0gTjFMQZjA3Ec0NjEYND/sp/53xnhbwOWrtu66U10yZ2g==
+X-Received: by 2002:a1c:4c19:: with SMTP id z25mr3257846wmf.81.1641921050996;
+        Tue, 11 Jan 2022 09:10:50 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by smtp.gmail.com with ESMTPSA id c7sm11157941wri.21.2022.01.11.09.10.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Jan 2022 09:10:50 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Shashi Mallela <shashi.mallela@linaro.org>
+Subject: [PATCH v2 00/13] arm gicv3 ITS: Various bug fixes and refactorings
+Date: Tue, 11 Jan 2022 17:10:35 +0000
+Message-Id: <20220111171048.3545974-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20220108150952.1483911-1-ardb@kernel.org> <CAFEAcA9DCzNJ8q7wLqSW-4pCzGM4gSvo2FLVhkG94cdriYj4zQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9DCzNJ8q7wLqSW-4pCzGM4gSvo2FLVhkG94cdriYj4zQ@mail.gmail.com>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Tue, 11 Jan 2022 15:38:18 +0100
-X-Gmail-Original-Message-ID: <CAMj1kXFg_q=43YXScs_pOb3f21V_2dv+HMm3sR3YUu+HK222TA@mail.gmail.com>
-Message-ID: <CAMj1kXFg_q=43YXScs_pOb3f21V_2dv+HMm3sR3YUu+HK222TA@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm/cpu64: Use 32-bit GDBstub when running in
- 32-bit KVM mode
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, Alex Bennee <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: T/V3cOkedGyO
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Ghnmpf1qQtFo
 
-On Tue, 11 Jan 2022 at 15:11, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Sat, 8 Jan 2022 at 15:10, Ard Biesheuvel <ardb@kernel.org> wrote:
-> >
-> > When running under KVM, we may decide to run the CPU in 32-bit mode, by
-> > setting the 'aarch64=off' CPU option. In this case, we need to switch to
-> > the 32-bit version of the GDB stub too, so that GDB has the correct view
-> > of the CPU state. Without this, GDB debugging does not work at all, and
-> > errors out upon connecting to the target with a mysterious 'g' packet
-> > length error.
-> >
-> > Cc: Richard Henderson <richard.henderson@linaro.org>
-> > Cc: Peter Maydell <peter.maydell@linaro.org>
-> > Cc: Alex Bennee <alex.bennee@linaro.org>
-> > Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
-> > ---
-> > v2: refactor existing CPUClass::gdb_... member assignments for the
-> >     32-bit code so we can reuse it for the 64-bit code
-> >
-> >  target/arm/cpu.c   | 16 +++++++++++-----
-> >  target/arm/cpu.h   |  2 ++
-> >  target/arm/cpu64.c |  3 +++
-> >  3 files changed, 16 insertions(+), 5 deletions(-)
-> >
-> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > index a211804fd3df..ae8e78fc1472 100644
-> > --- a/target/arm/cpu.c
-> > +++ b/target/arm/cpu.c
-> > @@ -2049,6 +2049,15 @@ static const struct TCGCPUOps arm_tcg_ops = {
-> >  };
-> >  #endif /* CONFIG_TCG */
-> >
-> > +void arm_cpu_class_gdb_init(CPUClass *cc)
-> > +{
-> > +    cc->gdb_read_register = arm_cpu_gdb_read_register;
-> > +    cc->gdb_write_register = arm_cpu_gdb_write_register;
-> > +    cc->gdb_num_core_regs = 26;
-> > +    cc->gdb_core_xml_file = "arm-core.xml";
-> > +    cc->gdb_arch_name = arm_gdb_arch_name;
-> > +}
->
-> Most of these fields are not used by the gdbstub until
-> runtime, but cc->gdb_num_core_regs is used earlier.
-> In particular, in cpu_common_initfn() we copy that value
-> into cpu->gdb_num_regs and cpu->gdb_num_g_regs (this happens
-> at the CPU object's instance_init time, ie before the
-> aarch64_cpu_set_aarch64 function is called), and these are the
-> values that are then used when registering dynamic sysreg
-> XML, coprocessor registers, etc.
->
+I've been working on the ITS to add support for the GICv4 functionality.
+In the course of that I found a handful of bugs in it and also some
+places where the code benefited from refactoring to make it a better
+base to put in the GICv4 parts. This patchset is just the bugfixes
+and cleanups, because there are enough patches here that I figured it
+made sense to send them out now rather than holding on to them.
 
-Right.
+Most of these patches were in v1 and have been reviewed already.
 
-> > --- a/target/arm/cpu64.c
-> > +++ b/target/arm/cpu64.c
-> > @@ -906,6 +906,7 @@ static bool aarch64_cpu_get_aarch64(Object *obj, Error **errp)
-> >  static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
-> >  {
-> >      ARMCPU *cpu = ARM_CPU(obj);
-> > +    CPUClass *cc = CPU_GET_CLASS(obj);
->
-> This is called to change the property for a specific CPU
-> object -- you can't change the values of the *class* here.
-> (Consider a system with 2 CPUs, one of which has aarch64=yes
-> and one of which has aarch64=no.)
->
+Changes from v1:
+ * first half of the series is now upstream
+ * patch 1 now has the '1ULL' and uint64_t fixes that were
+   partly split across two patches in the old series and partly missing
+ * new patches 12 and 13
 
-So how is this fundamentally going to work then? Which GDB stub should
-we choose in such a case?
+NB: I left the returns of -1 in patch 11.
 
+Patches still needing review: 1, 12, 13
 
-> >      /* At this time, this property is only allowed if KVM is enabled.  This
-> >       * restriction allows us to avoid fixing up functionality that assumes a
-> > @@ -919,6 +920,8 @@ static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
-> >              return;
-> >          }
-> >          unset_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> > +
-> > +        arm_cpu_class_gdb_init(cc)
->
-> This fails to compile because of the missing semicolon...
->
+thanks
+-- PMM
 
-Oops, my bad. I spotted this locally as well but failed to fold it
-into the patch.
+Peter Maydell (13):
+  hw/intc/arm_gicv3_its: Fix event ID bounds checks
+  hw/intc/arm_gicv3_its: Convert int ID check to num_intids convention
+  hw/intc/arm_gicv3_its: Fix handling of process_its_cmd() return value
+  hw/intc/arm_gicv3_its: Don't use data if reading command failed
+  hw/intc/arm_gicv3_its: Use enum for return value of process_*
+    functions
+  hw/intc/arm_gicv3_its: Fix return codes in process_its_cmd()
+  hw/intc/arm_gicv3_its: Refactor process_its_cmd() to reduce nesting
+  hw/intc/arm_gicv3_its: Fix return codes in process_mapti()
+  hw/intc/arm_gicv3_its: Fix return codes in process_mapc()
+  hw/intc/arm_gicv3_its: Fix return codes in process_mapd()
+  hw/intc/arm_gicv3_its: Factor out "find address of table entry" code
+  hw/intc/arm_gicv3_its: Check indexes before use, not after
+  hw/intc/arm_gicv3_its: Range-check ICID before indexing into
+    collection table
 
-> >      } else {
-> >          set_feature(&cpu->env, ARM_FEATURE_AARCH64);
->
-> If the user (admittedly slightly perversely) toggles the
-> aarch64 flag from on to off to on again, we should reset the
-> gdb function pointers to the aarch64 versions again.
->
+ hw/intc/arm_gicv3_its.c | 492 ++++++++++++++++++----------------------
+ 1 file changed, 225 insertions(+), 267 deletions(-)
 
-Ack.
-
-So I can fix most of these issues, but the fundamental one remains, so
-I'll hold off on a v3 until we can settle that.
-
-Thanks,
-Ard.
+-- 
+2.25.1

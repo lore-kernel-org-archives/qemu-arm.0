@@ -1,123 +1,154 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1801004lfj;
-        Tue, 11 Jan 2022 09:11:00 -0800 (PST)
-X-Received: by 2002:a05:600c:154e:: with SMTP id f14mr3470339wmg.126.1641921060153;
-        Tue, 11 Jan 2022 09:11:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641921060; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp1820620lfj;
+        Tue, 11 Jan 2022 09:40:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzhwUj9V5NfzTKgWqqmkSK9arW+XC2ryDquo7H+VFrMQUijpneVJbWLYWOpNoBANIDRcX1l
+X-Received: by 2002:a05:6e02:1aa1:: with SMTP id l1mr3026401ilv.215.1641922810197;
+        Tue, 11 Jan 2022 09:40:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641922810; cv=none;
         d=google.com; s=arc-20160816;
-        b=kUCj/B2edVjPwshuih2Q3scWDyCwIFj1z9aV14kHOqmKqS5GdLKoqyEBIrqqiWqVUN
-         DDp1321KCvOjiE6QPWflgzb03qOVOPzb8ku8t2t0UP1EFV8bX+Szy1XMnFMSqUHFyIlF
-         ikFlCGZnSwoh3o7jm5UEFnf4kKkjdq7Q1t64Xp3NhU3wN7RIZtSc9PwHw74lBbh9+N99
-         W+KzVaLYLz4RkZqVxscvBmPlG53arJUXo7YQRK5AX3zQ9Lsckuca74AjlfAcSGwNpyS5
-         mvdVIBe1U8A5+bl2RDE0vKqAQC48VP7xXOcX5DfBbCq9TPihf6B2smpl9b71N1uhJhTH
-         MNhg==
+        b=esreUSVQ1VmttWQUPG+a5MZ1dZ7pkLHBcLt4cSm0MMwXSUSY7xSkX2xLCNS5D/zQC5
+         uCeKQyvsRH6LTHnL5RLcCIEJKg3dSML8PP+9iAEsOLz5SxsT4jKhmg+LvaVa+mE3mPga
+         F+a1SDJMJitad2h4f7l6njgGN2RpePvGm33+RRKsz1+VSarn6EN2kDmpFRpWFbPfhUae
+         Bgh99oWSyof38LJEA0TZBDKQkqxnh0hGJH2qdPQoGawa6DbvioD7fToYFFKp1MkCXgJz
+         QYa+W0k9iWQ5+5o9YX3iqn5bwM7npfQ9gngwPa8ORyH3dZGlLJ+QH7S05HLaCnEYrS4s
+         7AHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=bD0PDqtOotm00lmQT/lZs8XVkkqOyVklOaZCqmm8ZmM=;
-        b=hVNcxvESSGngVrVsRwUAcnJYlot04ivEWO4Q5ZdbLMFHird345TrDflqtIy6BuwEpU
-         YpLx0rLa5LZWbWqzpKnp3yutCxrEDBuG1vXpoOYqDISzpqf1snuMPscWbQF29a9/ursR
-         /J5GrPHXawzd7gHw1bGl4NdM617EczwJdLcMbHbXvBwa3SVXDmPbqjB+GHA5DeUaLZBo
-         W90/PlVyfmd7Q15e3YSy2lRKHmOLUI6C8yZheP88gRJLoYfNs+UlBsW6fflSebP88ieX
-         3nGcQAcuXhDGAbI0CJyq7i9LltOMuAmc9OuJnIc8MqeD5uuOTPY3UafRUUkzEZrpzFc/
-         u0Iw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
+         :message-id:date:dkim-signature;
+        bh=vmwZoqt3VOA1A7dG7w3w8KRUrA973J4DcOKjuhMXOP8=;
+        b=r6xiam+MLgfLM3FKd+qjjKHh0Zs5sZRm9LWxDncrm+e0+E4u6dythzHIe5hiF88/5d
+         /VOOdO41vRQ/MB66gQi7cgb00WhDRMRKnL8hf20EXrSqDAMb3OUeV7EpX+YaD/f9p2Z2
+         kL/sD8YEucWEdlyP3ssqAB1zN8JynTePE2jMTAouqgVI/dkOAHX58SVjxZisKGZVSeXm
+         P3LOn0YWAJaNt4gILVeMrAf1LlFgStm3kuj4vK4gWIz78pphA7tPYhbndBvqOnGMDlpX
+         NZtyILKaXx9QTJUSUTfbB5IV/HTi/LVdHOHIa43d8Ec6jpRjrkdBYTbLNcYb0oyBzj9X
+         aCBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F1eAfaZp;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v9sor5602048wrx.17.2022.01.11.09.11.00
+       dkim=pass header.i=@google.com header.s=20210112 header.b=phQdtBs9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k13si4549187iov.4.2022.01.11.09.40.10
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 11 Jan 2022 09:11:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 11 Jan 2022 09:40:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F1eAfaZp;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=bD0PDqtOotm00lmQT/lZs8XVkkqOyVklOaZCqmm8ZmM=;
-        b=F1eAfaZphieMMS6rwNRSadXE8oXaLTNK69dQf8YByZA/0xfinJyFTO4mtV8l+7RtGA
-         +RwXEAQOq0F+jwLc7/U+CcScBu8+SaiVPW5C+thjq8f2dJtu09fdfYXchac4HJt3LNUW
-         cKk8JldGCgR/J+Iv6Fh9MTtoUHpl4JEmzYoI5VdBQgJwjHPdcYXkPYFDJvLu3cSnCFdn
-         k3jBTIS8/eKC5drfU0zkPY5vHB5o/3Ed62Wsi1CDs6IlL/rUUM2HLJFURBh+jWlDvB4H
-         Tkd3PXjcqDI6O17E53WSce029r7oymx3rkdNSXO9wd5R5XyK+VoUqcBjtIl9iUEK7KBA
-         sRMw==
+       dkim=pass header.i=@google.com header.s=20210112 header.b=phQdtBs9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:33090 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n7L7x-00014K-Kg
+	for alex.bennee@linaro.org; Tue, 11 Jan 2022 12:40:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40504)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <3Hr3dYQcKCCUWFOUVSFHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--venture.bounces.google.com>)
+ id 1n7KyE-0005UG-2i
+ for qemu-arm@nongnu.org; Tue, 11 Jan 2022 12:30:06 -0500
+Received: from [2607:f8b0:4864:20::b4a] (port=46008
+ helo=mail-yb1-xb4a.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3Hr3dYQcKCCUWFOUVSFHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--venture.bounces.google.com>)
+ id 1n7KyC-0001hR-8D
+ for qemu-arm@nongnu.org; Tue, 11 Jan 2022 12:30:05 -0500
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ 2-20020a251302000000b006118f867dadso1803766ybt.12
+ for <qemu-arm@nongnu.org>; Tue, 11 Jan 2022 09:30:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=vmwZoqt3VOA1A7dG7w3w8KRUrA973J4DcOKjuhMXOP8=;
+ b=phQdtBs9xo9va6TKFQoBbirtPWvONoNfjxDtxTBqLEnBcQlmpS6JSA0Iddx99RbXDp
+ sbzR9QUy5MH4HObc8vjs00mG6hVBj71AgqNLTZSV1sNzefP5zwxx7ygoMCKJQhvCJOCK
+ aionZ4V62D5pYKijUHtIOzELI68t9Io7UBWB+dWFU0H5MXcrN+pZCFBWNIsX4BKAzrDa
+ 8GjQNGadHcfdqK+tFDyQqUPBKlWhkIEQpQ9z3fbn5B1qoYtk+gUhjfDlR4Xje5vNNt5T
+ g4ck21vMVl7L0pCc4LxifzSVvX1eZSp+8MyriKIU3UApRG8VfrbmgGCedfl7fL21/QKq
+ OKtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=bD0PDqtOotm00lmQT/lZs8XVkkqOyVklOaZCqmm8ZmM=;
-        b=6ahcwTGsQfngv+OXUguU2pfGWhkxaL926khmHKMTiKC8ScMhYbT+qN0JfZrAvNEs1x
-         VXKTX6H/6LrnmjIT8ZnTyE2K8YxvoEO/fxeuyb1ccbiOAB6jXuuQ14actqrH7nVB/wS0
-         ECJs92RVMJ5suPO06iRXJeQLVTQVcYibsSWWJqsW8cRR6ZKmrSIEnkjj17eqxIYpsk1q
-         SDFEEiOzzQncMVFRh71QP47qOSeVwTjaY/+uAGgFgSycwUdl5saoSgRAD+NliH+R9zdF
-         w+eb3YYkMmeO6DerGiXx7N8K0hkgxaFXmK2sK/kzpUBDHTaP38X8AnpOumAPl64TtPVp
-         P0YQ==
-X-Gm-Message-State: AOAM5337Z7ENJO4C/xJvJcqAATyk5cOYm0mTkPK5WEIBm16/c/2KhFc1
-	IosoR8TNysNpTayFdS/+2jSs6D3s
-X-Google-Smtp-Source: ABdhPJykDA7kA5IWu0h4RQX0vFDYTzyfOXYbLxTWO0HxsPRbZiE6YhSKnJFVYAUC568hZUoV+hYIaw==
-X-Received: by 2002:a05:6000:1883:: with SMTP id a3mr4811662wri.565.1641921059907;
-        Tue, 11 Jan 2022 09:10:59 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id c7sm11157941wri.21.2022.01.11.09.10.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Jan 2022 09:10:59 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Shashi Mallela <shashi.mallela@linaro.org>
-Subject: [PATCH v2 13/13] hw/intc/arm_gicv3_its: Range-check ICID before indexing into collection table
-Date: Tue, 11 Jan 2022 17:10:48 +0000
-Message-Id: <20220111171048.3545974-14-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220111171048.3545974-1-peter.maydell@linaro.org>
-References: <20220111171048.3545974-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: NrsW+UT3NH2/
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=vmwZoqt3VOA1A7dG7w3w8KRUrA973J4DcOKjuhMXOP8=;
+ b=LEFC3M88u4ZuMXScZMnPtjS/6F1B0jY92fgD6jGVBuuWQBXH4lHHj5vdulrjF1rINe
+ bYTOWBwqfIzmcDMjzI0sihgP3nY9jGOYOuB4OwpT6Wjv3TGjSRDi4lxI0ju7rQ5N2QPf
+ YKHFH7bHzgDGJzd1x+utgn/VHvG4djaL/sQGqVxzGsp9SsP+Nzr3ntoNfaS0v+mXrufe
+ uodrjf1JeKOpksgLOhRcvcttbRdNvrG97QNkuGtoNASnGdvQCZfk/Xkg1OWqpKXE7Yal
+ uLR0OWl+PUtnNOK/LIvC7Y8DO608Wq1nUm1ufVIugXl5o72pksBJagVWQ0jPPEje+hr8
+ XH1Q==
+X-Gm-Message-State: AOAM5334VuWBGhai6YBAKRrTXQApFkRreK3Cn5CWwwK33y4lwAhAYC3W
+ ZQ+bqpHjjVhhc/RhfBMlF2vAc93tjk+M
+X-Received: from venture.svl.corp.google.com
+ ([2620:15c:2a3:200:574:98c:4a15:a258])
+ (user=venture job=sendgmr) by 2002:a25:70d5:: with SMTP id
+ l204mr7718307ybc.193.1641921822061; Tue, 11 Jan 2022 09:23:42 -0800 (PST)
+Date: Tue, 11 Jan 2022 09:23:38 -0800
+Message-Id: <20220111172338.1525587-1-venture@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.34.1.575.g55b058a8bb-goog
+Subject: [PATCH] hw/arm: kudo add lm75s behind bus 1 switch at 75
+From: Patrick Venture <venture@google.com>
+To: hskinnemoen@google.com, kfting@nuvoton.com, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Patrick Venture <venture@google.com>, Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b4a
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3Hr3dYQcKCCUWFOUVSFHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--venture.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
+X-Spam_score_int: -62
+X-Spam_score: -6.3
+X-Spam_bar: ------
+X-Spam_report: (-6.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SORTED_RECIPS=2.499,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ot06erUFzpIB
 
-In process_its_cmd(), we read an ICID out of the interrupt table
-entry, and then use it as an index into the collection table.  Add a
-check that it is within range for the collection table first.
-
-This check is not strictly necessary, because:
- * we range check the ICID from the guest before writing it into
-   the interrupt table entry, so the the only way to get an
-   out of range ICID in process_its_cmd() is if a badly-behaved
-   guest is writing directly to the interrupt table memory
- * the collection table is in guest memory, so QEMU won't fall
-   over if we read off the end of it
-
-However, it seems clearer to include the check.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+Signed-off-by: Patrick Venture <venture@google.com>
 ---
- hw/intc/arm_gicv3_its.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ hw/arm/npcm7xx_boards.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index ef6c0f55ff9..b2f6a8c7f00 100644
---- a/hw/intc/arm_gicv3_its.c
-+++ b/hw/intc/arm_gicv3_its.c
-@@ -299,6 +299,13 @@ static ItsCmdResult process_its_cmd(GICv3ITSState *s, uint64_t value,
-         return CMD_CONTINUE;
-     }
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index 7d0f3148be..d701e5cc55 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -332,7 +332,15 @@ static void kudo_bmc_i2c_init(NPCM7xxState *soc)
+ {
+     I2CSlave *i2c_mux;
  
-+    if (icid >= s->ct.num_ids) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid ICID 0x%x in ITE (table corrupted?)\n",
-+                      __func__, icid);
-+        return CMD_CONTINUE;
-+    }
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1), TYPE_PCA9548, 0x75);
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1),
++                                      TYPE_PCA9548, 0x75);
 +
-     cte_valid = get_cte(s, icid, &cte, &res);
-     if (res != MEMTX_OK) {
-         return CMD_STALL;
++    /* tmp105 is compatible with the lm75 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x5c);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x5c);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6), "tmp105", 0x5c);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 7), "tmp105", 0x5c);
++
+     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1), TYPE_PCA9548, 0x77);
+ 
+     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), TYPE_PCA9548, 0x77);
 -- 
-2.25.1
+2.34.1.575.g55b058a8bb-goog
+

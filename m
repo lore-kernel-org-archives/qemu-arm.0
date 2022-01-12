@@ -1,113 +1,113 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp2728352lfj;
-        Wed, 12 Jan 2022 13:56:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyhbJWccMJPYi1sAQrUgsoeXLG7n3BLmWSyjcG+WN9ANPlYiMjwhiTJqAeLdPhuFqvDUiiU
-X-Received: by 2002:a25:7dc5:: with SMTP id y188mr2524297ybc.21.1642024570517;
-        Wed, 12 Jan 2022 13:56:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642024570; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp2774341lfj;
+        Wed, 12 Jan 2022 15:27:21 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxyrQhI2XZOpM2o/5PI7wxWPusRwJ5q3YFXeGlqAtWePgthLRV1tE5sPPHExN/rdYd6JBeE
+X-Received: by 2002:a25:d085:: with SMTP id h127mr2568135ybg.323.1642030041584;
+        Wed, 12 Jan 2022 15:27:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642030041; cv=none;
         d=google.com; s=arc-20160816;
-        b=wW9++r4JwFVwgA8sVrffVIc+ccJyqe+NeBQfIadykVafJZEYCZC3pT/8xltWj7sPhM
-         RqAzeKIrYJg6DsCsDplnjclHHliX7T0nwug6xex8nXaGh78LfHhlvwfRiOjWhL2eeWge
-         2A76YvkIOWswYWdvyz1EtH6wsI7GLTjGmkGn+vatUhNYxyCl7whTnGQSzwHk+PPDNdt5
-         XtHXBAcm8PB8Uw/vlvjyXE1JE32hdRTTRWCFA8UoFdNkzJgASab0BrzMfDy7R7FIUNLl
-         VsrZviQgpvUUOC90bdtC3y2d99WD/rlcziwYmPepVbYAB6344/HrrGTJNNP5LExPLgXC
-         iezQ==
+        b=xHmE+MTbOKyALs2Gi/Pck9BatEfZi6HzCij4Xkmjing3B6jmLi+KUZRd9l1r4PHGRg
+         CBSmJ1KfxZE3z5nBOt8xlcZO5PMCOhXYDDF87OXEZ0ECCbk0ozi68pc2+KxyPEjC2crp
+         Bf7zHgICAohp0fnEnbt1WEPAkCxnbo0YusBiF4AYDpTyYrDWaU3Z6fXfcdDSaxWVRKG+
+         izy0TujxW++BYibYCVctq2hKZ5FoLijwrJZ6rAivjB0xDM3WwfgaOxPo8ePgCU07bMIV
+         PHsHAGN+mGtaWLgMvvMh6Nix1Jiy0jkFKl58KiF8+bLfxqcZ5p1xw9ShNrGcnu8IFGWr
+         uf+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=JWSHJ466Gc/72HN7jFQTmp67kv9rm6BTkU0JJlveaDs=;
-        b=GR57xXoQRU/bfHy3m7d0nnMPR5il9jAHGuCJNxfC9PvVXU/KptpTyhHBHFy3K2WjOk
-         ofTFcGSoV5bYpTvjMNkr6c94nYtYItIgrvKBYOhUhALlq0j5QaEHM4fWZ8VDWUp2Ez87
-         T5qnQI2ETJJ1OQQ2tj2H2zIOrS7laC31HpC8dMWYS1qaWyGlmfaBCZ0armpEMKSR6h35
-         +BAnFgpeNqAHRT2Yvgy/qkqJcIAOyra8lLSEZmBn1pnZrxP/cvCrngYXYzBJOSiHg0z/
-         O1YuP8fIQDdCrwaY06RwUfRzaL/CO5tlxLWwLjU9fbIfbdb17ioH7W50Ngkbt2KUT0SX
-         Mt4w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:to:subject
+         :dkim-signature:dkim-signature;
+        bh=xKbYPG7d/Rm1sy+eNUgdKm5+5wr6EUyI8v9DnqUE/YY=;
+        b=HqfDCJP7o+SmuR3zxBZBlo+cxrS5MhONGyP94LUfj2iiHjGhi2hoUkaYnRuiEAAmDP
+         Z4pBRIGHfyYFadauIveN5VEn+nvdO/c0q3zRNKM/IiR+VzAgpYNcvRiC8xQNL/ToBfSp
+         kc5PQSXgd5m45kryRfGRAhAualCkTZBZTslMmGdQj9SrFvIv0NO8dmTRGdvflEBfqEy9
+         yXsWvdM4eJXsipk5YhcSsOelGUfDdPn2L6CZTAldV4Xv5txJ6tQAZpIs8e7OiIX1LU/4
+         1CixJJtrh5C2+/RMADjLJxoS7cv0GzitEG3Jp1l331vl4OkjacF19P5i75BfIh+2UEpK
+         KWDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SOWC83Nc;
+       dkim=pass header.i=@nrl.navy.mil header.s=s2.dkim header.b=ppMkQe3X;
+       dkim=pass header.i=@nrl.navy.mil header.s=s1.dkim header.b=MhBzkGJl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cmf.nrl.navy.mil
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i3si775013ybp.808.2022.01.12.13.56.10
+        by mx.google.com with ESMTPS id i12si1048218ybg.444.2022.01.12.15.27.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jan 2022 13:56:10 -0800 (PST)
+        Wed, 12 Jan 2022 15:27:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SOWC83Nc;
+       dkim=pass header.i=@nrl.navy.mil header.s=s2.dkim header.b=ppMkQe3X;
+       dkim=pass header.i=@nrl.navy.mil header.s=s1.dkim header.b=MhBzkGJl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36430 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cmf.nrl.navy.mil
+Received: from localhost ([::1]:57744 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n7lbF-00089g-SW
-	for alex.bennee@linaro.org; Wed, 12 Jan 2022 16:56:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55796)
+	id 1n7n1T-0002Xw-9A
+	for alex.bennee@linaro.org; Wed, 12 Jan 2022 18:27:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1n7lIk-0008RB-Tu; Wed, 12 Jan 2022 16:37:03 -0500
-Received: from [2a00:1450:4864:20::541] (port=45963
- helo=mail-ed1-x541.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1n7lIi-00052V-Gw; Wed, 12 Jan 2022 16:37:02 -0500
-Received: by mail-ed1-x541.google.com with SMTP id z22so15216143edd.12;
- Wed, 12 Jan 2022 13:36:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=JWSHJ466Gc/72HN7jFQTmp67kv9rm6BTkU0JJlveaDs=;
- b=SOWC83Nc1ovSWNM2GXItL0p+oUK9PT/iV1kdiQAzYn/QOQHu0Vql6j9La61xez9zIi
- z5J+A2TPqXEJmKu2n1rQYjdKkNn3PeMuP0971BPBC+ytvE4qXaNRVj301hKZ4DFxZ9lj
- PHlRptS1tFqgSGQ2S60ULn5PTDeq/lKrQgoodaf5tIIAZdaIiosN/kMMMAmul6nWPH8c
- m+94kl1OE4aa3bsLSmLyVUAeHkTlcI0rdKV5mk0ZSsMPtAgnXfm/PB5mADBesmNX9P+q
- AUnPu4JAt8KoKOfqIMxeGg8ao2ofKGmhJskXC6a3ojyQwN+G/xT3sGNqLhEco8Kx/sBD
- Y/ZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=JWSHJ466Gc/72HN7jFQTmp67kv9rm6BTkU0JJlveaDs=;
- b=5w9/6+Ieo5/kF95BkVbHL5G7+tvlSB6sh1qbZHbvJZsz2ggvECZC1x1QVKgfSwEtq3
- ePr5elIvF2BWiyI255BOPZNX/zNcuHZ8J3PMIjPECErABZnLx4NF8btVv00VXJRddAJh
- yKpwH9GJ/eQ2N9Owj/sQyZrRRTCTpiPD6qbhchWcclMmc0nYGxzPsOJjDYZ5jGAWjxCQ
- RgCEzZwHj2Rnt23+/j39nJHNVDLifNlC+aMhe2VXAK/cEj6gLemYA+Aw4rzJyIHMCVOH
- x6Mzlo6E3S3330O03+pF3HaSd9ln76iuKn0Bjk5Ecj9xrkReHwLpyAndhsOgk4xZTMpY
- NrWw==
-X-Gm-Message-State: AOAM532S13o4t+gNjz36NpUZzJKYvL1Eqfih/xdwFY1lirCo9diEopPo
- f1udx6Mq33Z+t4INZzXti7nazAg4RiT6laHSOi6ktA==
-X-Received: by 2002:a17:907:1692:: with SMTP id
- hc18mr1240574ejc.25.1642023418496; 
- Wed, 12 Jan 2022 13:36:58 -0800 (PST)
-Received: from osoxes.fritz.box (mue-88-130-49-239.dsl.tropolys.de.
- [88.130.49.239])
- by smtp.gmail.com with ESMTPSA id b2sm257288ejh.221.2022.01.12.13.36.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Jan 2022 13:36:58 -0800 (PST)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 2/3] pci: Always pass own DeviceState to pci_map_irq_fn's
-Date: Wed, 12 Jan 2022 22:36:27 +0100
-Message-Id: <20220112213629.9126-3-shentey@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220112213629.9126-1-shentey@gmail.com>
-References: <20220112213629.9126-1-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <olagarde@cmf.nrl.navy.mil>)
+ id 1n7n0Y-0002Xn-Bp
+ for qemu-arm@nongnu.org; Wed, 12 Jan 2022 18:26:22 -0500
+Received: from [2001:480:a0:f003::234] (port=33668 helo=mfe.dren.mil)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <olagarde@cmf.nrl.navy.mil>)
+ id 1n7n0S-0004SY-Oj
+ for qemu-arm@nongnu.org; Wed, 12 Jan 2022 18:26:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nrl.navy.mil;
+ h=subject : to :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type; s=s2.dkim; bh=xKbYPG7d/Rm1sy+eNUgdKm5+5wr6EUyI8v9DnqUE/YY=;
+ b=ppMkQe3XrKDXNSfxXZg2rGAVHnxC2UUbLNtJ2/P/b1cSSrvJx+hbbbcdQeHcNN2bWwPJ
+ d5xXAUnwIJ5EofZd99VAmFWCorGgaaQu2U2eITnbL/CfrgmpD60qIRRBs6gM5YHYwMnp
+ kHcxnKrx+S4k6taUYCafp4tSwLeBde7Im8rhiTClZkv20uIzBp08N0DetLZqm8odyTMA
+ IZMH180Q0Wbmdq3hAowcyCxvGPUOq9KaVq4BnEvjs0Nmpb/42JVRX77j6tgbkRV4qasd
+ GuUzVfVcOrWItXcLq2e2Dzl2xXq370btfJM1JuDYGEpXiQ8UtGt+EiNfX8X8aU/lxqBf lQ== 
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nrl.navy.mil;
+ h=subject : to :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type; s=s1.dkim; bh=xKbYPG7d/Rm1sy+eNUgdKm5+5wr6EUyI8v9DnqUE/YY=;
+ b=MhBzkGJlgSiTBUe3Ty9jRdGEyChOesglK8g/tx71YxVSrvMpTBgE22FZ4/OYy3et3E1f
+ p9d7eNNr4PaPKk8xFk9XGvqhdgh9DA1Cnels2wSmRTqTl7ieFttHI1EJjGQsUQv0HaI5
+ wEtO72kfm+JfTO9qLeevrIdeBcIWlCsXwyk= 
+Received: from hedwig.cmf.nrl.navy.mil (hedwig.cmf.nrl.navy.mil
+ [134.207.12.163])
+ by ppae.dren.mil (8.16.1.2/8.16.1.2) with ESMTP id 20CNQCra017316
+ for <qemu-arm@nongnu.org>; Wed, 12 Jan 2022 23:26:13 GMT
+Received: from Promethius.fios-router.home
+ (pool-72-83-148-227.washdc.fios.verizon.net [72.83.148.227])
+ (authenticated bits=0)
+ by hedwig.cmf.nrl.navy.mil  with ESMTP id 20CNO566019272
+ (version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-SHA bits=256 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 12 Jan 2022 18:24:06 -0500
+Subject: Re: virt-install on centos 7.9 not seeing qemu-aarch64?
+To: qemu-arm@nongnu.org
+References: <3e7106d0-7a0d-0482-9dae-42bcbd78aec8@cmf.nrl.navy.mil>
+From: Owen LaGarde <olagarde@cmf.nrl.navy.mil>
+Message-ID: <15b8ae91-7f6f-6213-dfc4-e47e314f3d4f@cmf.nrl.navy.mil>
+Date: Wed, 12 Jan 2022 18:24:05 -0500
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:68.0)
+ Gecko/20100101 Thunderbird/68.12.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::541
+In-Reply-To: <3e7106d0-7a0d-0482-9dae-42bcbd78aec8@cmf.nrl.navy.mil>
+Content-Type: multipart/alternative;
+ boundary="------------6FC03966E3C6EBF0F404FAE0"
+Content-Language: en-US
+X-NRLCMF-Spam-Score: () hits=0 User Authenticated
+X-NRLCMF-Virus-Scanned: No virus found
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2001:480:a0:f003::234
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::541;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x541.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+Received-SPF: pass client-ip=2001:480:a0:f003::234;
+ envelope-from=olagarde@cmf.nrl.navy.mil; helo=mfe.dren.mil
+X-Spam_score_int: -11
+X-Spam_score: -1.2
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001, NICE_REPLY_A=-0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_FILL_THIS_FORM_SHORT=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 12 Jan 2022 16:55:43 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,169 +119,457 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- "open list:Versatile PB" <qemu-arm@nongnu.org>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- "open list:sam460ex" <qemu-ppc@nongnu.org>,
- Bernhard Beschow <shentey@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mID+XKGYTbQT
+X-TUID: YgwRei/KuHf2
 
-Passing own DeviceState rather than just the IRQs allows for resolving
-global variables.
+This is a multi-part message in MIME format.
+--------------6FC03966E3C6EBF0F404FAE0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/isa/piix4.c          | 6 +++---
- hw/pci-host/sh_pci.c    | 6 +++---
- hw/pci-host/versatile.c | 6 +++---
- hw/ppc/ppc440_pcix.c    | 6 +++---
- hw/ppc/ppc4xx_pci.c     | 6 +++---
- 5 files changed, 15 insertions(+), 15 deletions(-)
+Sorry, confusing this with another post elsewhere ... meant to say 
+"qemu-system-aarch" and "qemu-system-arm", not "qemu-aarch" and "qemu-arm".
 
-diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
-index 5a86308689..a31e9714cf 100644
---- a/hw/isa/piix4.c
-+++ b/hw/isa/piix4.c
-@@ -60,7 +60,7 @@ static int pci_irq_levels[4];
- static void piix4_set_irq(void *opaque, int irq_num, int level)
- {
-     int i, pic_irq, pic_level;
--    qemu_irq *pic = opaque;
-+    PIIX4State *s = opaque;
- 
-     pci_irq_levels[irq_num] = level;
- 
-@@ -75,7 +75,7 @@ static void piix4_set_irq(void *opaque, int irq_num, int level)
-                 pic_level |= pci_irq_levels[i];
-             }
-         }
--        qemu_set_irq(pic[pic_irq], pic_level);
-+        qemu_set_irq(s->i8259[pic_irq], pic_level);
-     }
- }
- 
-@@ -323,7 +323,7 @@ DeviceState *piix4_create(PCIBus *pci_bus, ISABus **isa_bus, I2CBus **smbus)
-                                NULL, 0, NULL);
-     }
- 
--    pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s->i8259, 4);
-+    pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s, 4);
- 
-     for (int i = 0; i < ISA_NUM_IRQS; i++) {
-         s->i8259[i] = qdev_get_gpio_in_named(dev, "isa", i);
-diff --git a/hw/pci-host/sh_pci.c b/hw/pci-host/sh_pci.c
-index 719d6ca2a6..ae0aa462b3 100644
---- a/hw/pci-host/sh_pci.c
-+++ b/hw/pci-host/sh_pci.c
-@@ -111,9 +111,9 @@ static int sh_pci_map_irq(PCIDevice *d, int irq_num)
- 
- static void sh_pci_set_irq(void *opaque, int irq_num, int level)
- {
--    qemu_irq *pic = opaque;
-+    SHPCIState *s = opaque;
- 
--    qemu_set_irq(pic[irq_num], level);
-+    qemu_set_irq(s->irq[irq_num], level);
- }
- 
- static void sh_pci_device_realize(DeviceState *dev, Error **errp)
-@@ -128,7 +128,7 @@ static void sh_pci_device_realize(DeviceState *dev, Error **errp)
-     }
-     phb->bus = pci_register_root_bus(dev, "pci",
-                                      sh_pci_set_irq, sh_pci_map_irq,
--                                     s->irq,
-+                                     s,
-                                      get_system_memory(),
-                                      get_system_io(),
-                                      PCI_DEVFN(0, 0), 4, TYPE_PCI_BUS);
-diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
-index f66384fa02..5fbcb72d7d 100644
---- a/hw/pci-host/versatile.c
-+++ b/hw/pci-host/versatile.c
-@@ -362,9 +362,9 @@ static int pci_vpb_rv_map_irq(PCIDevice *d, int irq_num)
- 
- static void pci_vpb_set_irq(void *opaque, int irq_num, int level)
- {
--    qemu_irq *pic = opaque;
-+    PCIVPBState *s = opaque;
- 
--    qemu_set_irq(pic[irq_num], level);
-+    qemu_set_irq(s->irq[irq_num], level);
- }
- 
- static void pci_vpb_reset(DeviceState *d)
-@@ -422,7 +422,7 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
-         mapfn = pci_vpb_map_irq;
-     }
- 
--    pci_bus_irqs(&s->pci_bus, pci_vpb_set_irq, mapfn, s->irq, 4);
-+    pci_bus_irqs(&s->pci_bus, pci_vpb_set_irq, mapfn, s, 4);
- 
-     /* Our memory regions are:
-      * 0 : our control registers
-diff --git a/hw/ppc/ppc440_pcix.c b/hw/ppc/ppc440_pcix.c
-index 788d25514a..291c1bfbe7 100644
---- a/hw/ppc/ppc440_pcix.c
-+++ b/hw/ppc/ppc440_pcix.c
-@@ -431,14 +431,14 @@ static int ppc440_pcix_map_irq(PCIDevice *pci_dev, int irq_num)
- 
- static void ppc440_pcix_set_irq(void *opaque, int irq_num, int level)
- {
--    qemu_irq *pci_irq = opaque;
-+    PPC440PCIXState *s = opaque;
- 
-     trace_ppc440_pcix_set_irq(irq_num);
-     if (irq_num < 0) {
-         error_report("%s: PCI irq %d", __func__, irq_num);
-         return;
-     }
--    qemu_set_irq(*pci_irq, level);
-+    qemu_set_irq(s->irq, level);
- }
- 
- static AddressSpace *ppc440_pcix_set_iommu(PCIBus *b, void *opaque, int devfn)
-@@ -492,7 +492,7 @@ static void ppc440_pcix_realize(DeviceState *dev, Error **errp)
-     sysbus_init_irq(sbd, &s->irq);
-     memory_region_init(&s->busmem, OBJECT(dev), "pci bus memory", UINT64_MAX);
-     h->bus = pci_register_root_bus(dev, NULL, ppc440_pcix_set_irq,
--                         ppc440_pcix_map_irq, &s->irq, &s->busmem,
-+                         ppc440_pcix_map_irq, s, &s->busmem,
-                          get_system_io(), PCI_DEVFN(0, 0), 1, TYPE_PCI_BUS);
- 
-     s->dev = pci_create_simple(h->bus, PCI_DEVFN(0, 0), "ppc4xx-host-bridge");
-diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
-index 5df97e6d15..f6718746a1 100644
---- a/hw/ppc/ppc4xx_pci.c
-+++ b/hw/ppc/ppc4xx_pci.c
-@@ -256,11 +256,11 @@ static int ppc4xx_pci_map_irq(PCIDevice *pci_dev, int irq_num)
- 
- static void ppc4xx_pci_set_irq(void *opaque, int irq_num, int level)
- {
--    qemu_irq *pci_irqs = opaque;
-+    PPC4xxPCIState *s = opaque;
- 
-     trace_ppc4xx_pci_set_irq(irq_num);
-     assert(irq_num >= 0 && irq_num < PPC4xx_PCI_NUM_DEVS);
--    qemu_set_irq(pci_irqs[irq_num], level);
-+    qemu_set_irq(s->irq[irq_num], level);
- }
- 
- static const VMStateDescription vmstate_pci_master_map = {
-@@ -319,7 +319,7 @@ static void ppc4xx_pcihost_realize(DeviceState *dev, Error **errp)
-     }
- 
-     b = pci_register_root_bus(dev, NULL, ppc4xx_pci_set_irq,
--                              ppc4xx_pci_map_irq, s->irq, get_system_memory(),
-+                              ppc4xx_pci_map_irq, s, get_system_memory(),
-                               get_system_io(), 0, ARRAY_SIZE(s->irq),
-                               TYPE_PCI_BUS);
-     h->bus = b;
--- 
-2.34.1
 
+On 1/12/22 6:32 AM, Owen LaGarde wrote:
+>
+> I think I've missed something in the support packages enabling 
+> arch=aarch64 guests on a centos 7.9 host, such that virt-install won't 
+> accept an arch of 'aarch64' or 'arm' where ubuntu works fine.
+>
+> I'm trying to create a Rocky 8 aarch64 guest on a centos 7.9 host, 
+> coming from an ubuntu host.  I have this working on a minimal popos at 
+> home just to verify I'm not insane.  The "real, at work" host does 
+> have to be centos 7 x86_64 though it will be replaced with rocky 8 
+> x86_64 "soon".  The kicker:  I'd very much prefer to use virt-install 
+> because there's a large amount of pre-existing automation I'd have to 
+> rewrite otherwise.  I see the arm and aarch64 support added by the 
+> expected qemu-user (2.0.0-1.el7.6.x86_64) but virt-install won't use 
+> it(?).
+>
+> Here's the process as currently written into the existing automation.  
+> This works fine on the popos 21.10 minimal-plus-indicated-dpkgs, 
+> shouldn't be any surprises here (yes, there's some extra garbage on 
+> the centos side from my flailing about):
+>
+>     virt-install \
+>         --connect qemu:///system \
+>         --name apollo \
+>         --metadata title=apollo \
+>         --os-variant linux \
+>         --vcpus 4 \
+>         --ram 4096 \
+>         --arch aarch64 \
+>         --rng /dev/urandom \
+>         --nonetwork \
+>         --nographics \
+>         --noautoconsole \
+>         --controller type=scsi,model=virtio-scsi \
+>         --disk pool=apollo,size=20,format=raw,bus=scsi \
+>         --location /opt/kvm/media/Rocky-8.5-aarch64-dvd1.iso \
+>         --initrd-inject /opt/kvm/kickstart/Rocky8.cfg \
+>         --extra-args 'ks=file:/Rocky8.cfg console=ttyS0'
+>
+>     /opt/kvm/kickstart/Rocky8.cfg:
+>         auth --enableshadow --passalgo=sha512
+>         cdrom
+>         text
+>         cmdline
+>         poweroff
+>         firstboot --enable
+>         ignoredisk --only-use=sda
+>         keyboard --vckeymap=us --xlayouts='us'
+>         lang en_US.UTF-8
+>         eula --agreed
+>         firewall --enabled --service ssh
+>         services --disabled=kdump --enabled=sshd
+>         selinux --enforcing
+>         timezone America/New_York --isUtc
+>         bootloader --location=mbr --boot-drive=sda
+>         clearpart --drives=sda --all --initlabel
+>         part /boot --fstype='xfs' --ondisk=sda --size=1024 --label=boot
+>         part /boot/efi --fstype='efi' --ondisk=sda --size=1024
+>     --fsoptions='umask=0077,shortname=winnt'
+>         part pv.357 --fstype='lvmpv' --ondisk=sda --grow
+>         volgroup centos --pesize=4096 pv.357
+>         logvol /home --fstype='xfs' --size=1024 --label='home'
+>     --name=home --vgname=centos
+>         logvol /usr/local --fstype='xfs' --size=1024 --label='local'
+>     --name=local --vgname=centos
+>         logvol / --fstype='xfs' --size=4096 --label='root' --name=root
+>     --vgname=centos
+>         logvol /var --fstype='xfs' --size=4096 --label='var'
+>     --name=var --vgname=centos
+>         logvol /opt --fstype='xfs' --size=1024 --label='opt'
+>     --name=opt --vgname=centos
+>         logvol /var/log --fstype='xfs' --size=1024 --label='log'
+>     --name=log --vgname=centos
+>         logvol swap --fstype='swap' --size=1024 --name=swap
+>     --vgname=centos
+>         logvol /var/log/audit --fstype='xfs' --size=1024
+>     --label='audit' --name=audit --vgname=centos
+>         %packages
+>         @base
+>         @core
+>         yum-utils
+>         createrepo
+>         pciutils
+>         usbutils
+>         net-tools
+>         tcpdump
+>         psmisc
+>         %end
+>         %addon com_redhat_kdump --disable --reserve-mb='auto'
+>         %end
+>         %anaconda
+>         pwpolicy root --minlen=6 --minquality=1 --notstrict
+>     --nochanges --notempty
+>         pwpolicy user --minlen=6 --minquality=1 --notstrict
+>     --nochanges --emptyok
+>         pwpolicy luks --minlen=6 --minquality=1 --notstrict
+>     --nochanges --notempty
+>         %end
+>
+>     dpkg -l |egrep -i qemu\|libvirt\|aarch64 |awk '{print $2}' ## popos
+>         gir1.2-libvirt-glib-1.0:amd64
+>         ipxe-qemu
+>         ipxe-qemu-256k-compat-efi-roms
+>         libnss-libvirt:amd64
+>         libsys-virt-perl
+>         libvirt-clients
+>         libvirt-daemon
+>         libvirt-daemon-config-network
+>         libvirt-daemon-config-nwfilter
+>         libvirt-daemon-driver-qemu
+>         libvirt-daemon-driver-storage-rbd
+>         libvirt-daemon-system
+>         libvirt-daemon-system-systemd
+>         libvirt-glib-1.0-0:amd64
+>         libvirt-glib-1.0-data
+>         libvirt0:amd64
+>         python3-libvirt
+>         qemu
+>         qemu-block-extra
+>         qemu-efi-aarch64
+>         qemu-efi-arm
+>         qemu-kvm
+>         qemu-system
+>         qemu-system-arm
+>         qemu-system-common
+>         qemu-system-data
+>         qemu-system-gui:amd64
+>         qemu-system-mips
+>         qemu-system-misc
+>         qemu-system-ppc
+>         qemu-system-s390x
+>         qemu-system-sparc
+>         qemu-system-x86
+>         qemu-utils
+>
+>     rpm -qa |egrep -i qemu\|libvirt\|aarch64  ## centos
+>         libvirt-gconfig-1.0.0-1.el7.x86_64
+>         libvirt-bash-completion-4.5.0-36.el7_9.5.x86_64
+>         qemu-system-arm-2.0.0-1.el7.6.x86_64
+>     libvirt-daemon-driver-storage-logical-4.5.0-36.el7_9.5.x86_64
+>         libvirt-daemon-driver-lxc-4.5.0-36.el7_9.5.x86_64
+>         libvirt-python-4.5.0-1.el7.x86_64
+>         qemu-common-2.0.0-1.el7.6.x86_64
+>         qemu-system-lm32-2.0.0-1.el7.6.x86_64
+>     libvirt-daemon-driver-storage-mpath-4.5.0-36.el7_9.5.x86_64
+>         qemu-system-xtensa-2.0.0-1.el7.6.x86_64
+>         libvirt-daemon-driver-nodedev-4.5.0-36.el7_9.5.x86_64
+>         libvirt-4.5.0-36.el7_9.5.x86_64
+>         qemu-system-alpha-2.0.0-1.el7.6.x86_64
+>         libvirt-libs-4.5.0-36.el7_9.5.x86_64
+>         libvirt-daemon-driver-storage-4.5.0-36.el7_9.5.x86_64
+>         libvirt-lock-sanlock-4.5.0-36.el7_9.5.x86_64
+>         qemu-guest-agent-2.12.0-3.el7.x86_64
+>         qemu-system-or32-2.0.0-1.el7.6.x86_64
+>         qemu-system-m68k-2.0.0-1.el7.6.x86_64
+>     libvirt-daemon-driver-storage-core-4.5.0-36.el7_9.5.x86_64
+>     libvirt-daemon-driver-storage-rbd-4.5.0-36.el7_9.5.x86_64
+>         qemu-img-1.5.3-175.el7_9.5.x86_64
+>         qemu-system-sh4-2.0.0-1.el7.6.x86_64
+>     libvirt-daemon-driver-storage-scsi-4.5.0-36.el7_9.5.x86_64
+>         libvirt-daemon-driver-network-4.5.0-36.el7_9.5.x86_64
+>         libvirt-nss-4.5.0-36.el7_9.5.x86_64
+>         qemu-kvm-common-1.5.3-175.el7_9.5.x86_64
+>         qemu-system-unicore32-2.0.0-1.el7.6.x86_64
+>         qemu-system-s390x-2.0.0-1.el7.6.x86_64
+>     libvirt-daemon-driver-storage-iscsi-4.5.0-36.el7_9.5.x86_64
+>         libvirt-daemon-config-network-4.5.0-36.el7_9.5.x86_64
+>         python36-libvirt-4.5.0-1.el7.x86_64
+>         qemu-system-cris-2.0.0-1.el7.6.x86_64
+>         qemu-system-mips-2.0.0-1.el7.6.x86_64
+>         libvirt-daemon-driver-nwfilter-4.5.0-36.el7_9.5.x86_64
+>         libvirt-daemon-driver-secret-4.5.0-36.el7_9.5.x86_64
+>         libvirt-daemon-driver-interface-4.5.0-36.el7_9.5.x86_64
+>         libvirt-client-4.5.0-36.el7_9.5.x86_64
+>         qemu-2.0.0-1.el7.6.x86_64
+>         qemu-system-x86-2.0.0-1.el7.6.x86_64
+>     libvirt-daemon-driver-storage-gluster-4.5.0-36.el7_9.5.x86_64
+>         qemu-kvm-1.5.3-175.el7_9.5.x86_64
+>         qemu-system-moxie-2.0.0-1.el7.6.x86_64
+>         libvirt-daemon-4.5.0-36.el7_9.5.x86_64
+>         libvirt-admin-4.5.0-36.el7_9.5.x86_64
+>         qemu-user-2.0.0-1.el7.6.x86_64
+>         libvirt-daemon-config-nwfilter-4.5.0-36.el7_9.5.x86_64
+>         qemu-kvm-tools-1.5.3-175.el7_9.5.x86_64
+>         ipxe-roms-qemu-20180825-3.git133f4c.el7.noarch
+>         qemu-system-microblaze-2.0.0-1.el7.6.x86_64
+>     libvirt-daemon-driver-storage-disk-4.5.0-36.el7_9.5.x86_64
+>         libvirt-daemon-driver-qemu-4.5.0-36.el7_9.5.x86_64
+>
+> Packages added to the rpm side are the equivs of the dpkg side as far 
+> as I'm aware and as numerous docs/blogs/etc imply.  The 
+> /bin/qemu-{arm,aarch64} binaries are there, provided by the expected 
+> qemu-user package (2.0.0-1.el7.6.x86_64).  But virt-install throws the 
+> old "Host does not support any virtualization options for arch {arch}" 
+> for any of the expected arch values (arm, arm64, aarch64, etc).  
+> Obviously I've missed a support package on the centos side, but what?
+>
+
+--------------6FC03966E3C6EBF0F404FAE0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <p>Sorry, confusing this with another post elsewhere ... meant to
+      say "qemu-system-aarch" and "qemu-system-arm", not "qemu-aarch"
+      and "qemu-arm".<br>
+    </p>
+    <p><br>
+    </p>
+    <div class="moz-cite-prefix">On 1/12/22 6:32 AM, Owen LaGarde wrote:<br>
+    </div>
+    <blockquote type="cite"
+      cite="mid:3e7106d0-7a0d-0482-9dae-42bcbd78aec8@cmf.nrl.navy.mil">
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <p>I think I've missed something in the support packages enabling
+        arch=aarch64 guests on a centos 7.9 host, such that virt-install
+        won't accept an arch of 'aarch64' or 'arm' where ubuntu works
+        fine.<br>
+      </p>
+      <p>I'm trying to create a Rocky 8 aarch64 guest on a centos 7.9
+        host, coming from an ubuntu host.  I have this working on a
+        minimal popos at home just to verify I'm not insane.  The "real,
+        at work" host does have to be centos 7 x86_64 though it will be
+        replaced with rocky 8 x86_64 "soon".  The kicker:  I'd very much
+        prefer to use virt-install because there's a large amount of
+        pre-existing automation I'd have to rewrite otherwise.  I see
+        the arm and aarch64 support added by the expected qemu-user
+        (2.0.0-1.el7.6.x86_64) but virt-install won't use it(?).</p>
+      <p>Here's the process as currently written into the existing
+        automation.  This works fine on the popos 21.10
+        minimal-plus-indicated-dpkgs, shouldn't be any surprises here
+        (yes, there's some extra garbage on the centos side from my
+        flailing about):</p>
+      <blockquote><font size="-1"><tt><font size="-1"><tt>virt-install \</tt></font><br>
+            <font size="-1"><tt>    --connect qemu:///system \</tt></font><br>
+            <font size="-1"><tt>    --name apollo \</tt></font><br>
+            <font size="-1"><tt>    --metadata title=apollo \</tt></font><br>
+            <font size="-1"><tt>    --os-variant linux \</tt></font><br>
+            <font size="-1"><tt>    --vcpus 4 \</tt></font><br>
+            <font size="-1"><tt>    --ram 4096 \</tt></font><br>
+            <font size="-1"><tt>    --arch aarch64 \</tt></font><br>
+            <font size="-1"><tt>    --rng /dev/urandom \</tt></font><br>
+            <font size="-1"><tt>    --nonetwork \</tt></font><br>
+            <font size="-1"><tt>    --nographics \</tt></font><br>
+            <font size="-1"><tt>    --noautoconsole \</tt></font><br>
+            <font size="-1"><tt>    --controller
+                type=scsi,model=virtio-scsi \</tt></font><br>
+            <font size="-1"><tt>    --disk
+                pool=apollo,size=20,format=raw,bus=scsi \</tt></font><br>
+            <font size="-1"><tt>    --location
+                /opt/kvm/media/Rocky-8.5-aarch64-dvd1.iso \</tt></font><br>
+            <font size="-1"><tt>    --initrd-inject
+                /opt/kvm/kickstart/Rocky8.cfg \</tt></font><br>
+            <font size="-1"><tt>    --extra-args 'ks=<a
+                  class="moz-txt-link-freetext" href="file:/Rocky8.cfg"
+                  moz-do-not-send="true">file:/Rocky8.cfg</a>
+                console=ttyS0'<br>
+                <br>
+              </tt></font>/opt/kvm/kickstart/Rocky8.cfg:</tt></font><br>
+        <font size="-1"><tt>    auth --enableshadow --passalgo=sha512</tt></font><br>
+        <font size="-1"><tt>    cdrom</tt></font><br>
+        <font size="-1"><tt>    text</tt></font><br>
+        <font size="-1"><tt>    cmdline</tt></font><br>
+        <font size="-1"><tt>    poweroff</tt></font><br>
+        <font size="-1"><tt>    firstboot --enable</tt></font><br>
+        <font size="-1"><tt>    ignoredisk --only-use=sda</tt></font><br>
+        <font size="-1"><tt>    keyboard --vckeymap=us --xlayouts='us'</tt></font><br>
+        <font size="-1"><tt>    lang en_US.UTF-8</tt></font><br>
+        <font size="-1"><tt>    eula --agreed</tt></font><br>
+        <font size="-1"><tt>    firewall --enabled --service ssh</tt></font><br>
+        <font size="-1"><tt>    services --disabled=kdump --enabled=sshd</tt></font><br>
+        <font size="-1"><tt>    selinux --enforcing</tt></font><br>
+        <font size="-1"><tt>    timezone America/New_York --isUtc</tt></font><br>
+        <font size="-1"><tt>    bootloader --location=mbr
+            --boot-drive=sda</tt></font><br>
+        <font size="-1"><tt>    clearpart --drives=sda --all --initlabel</tt></font><br>
+        <font size="-1"><tt>    part /boot --fstype='xfs' --ondisk=sda
+            --size=1024 --label=boot</tt></font><br>
+        <font size="-1"><tt>    part /boot/efi --fstype='efi'
+            --ondisk=sda --size=1024
+            --fsoptions='umask=0077,shortname=winnt'</tt></font><br>
+        <font size="-1"><tt>    part pv.357 --fstype='lvmpv'
+            --ondisk=sda --grow</tt></font><br>
+        <font size="-1"><tt>    volgroup centos --pesize=4096 pv.357</tt></font><br>
+        <font size="-1"><tt>    logvol /home --fstype='xfs' --size=1024
+            --label='home' --name=home --vgname=centos</tt></font><br>
+        <font size="-1"><tt>    logvol /usr/local --fstype='xfs'
+            --size=1024 --label='local' --name=local --vgname=centos</tt></font><br>
+        <font size="-1"><tt>    logvol / --fstype='xfs' --size=4096
+            --label='root' --name=root --vgname=centos</tt></font><br>
+        <font size="-1"><tt>    logvol /var --fstype='xfs' --size=4096
+            --label='var' --name=var --vgname=centos</tt></font><br>
+        <font size="-1"><tt>    logvol /opt --fstype='xfs' --size=1024
+            --label='opt' --name=opt --vgname=centos</tt></font><br>
+        <font size="-1"><tt>    logvol /var/log --fstype='xfs'
+            --size=1024 --label='log' --name=log --vgname=centos</tt></font><br>
+        <font size="-1"><tt>    logvol swap --fstype='swap' --size=1024
+            --name=swap --vgname=centos</tt></font><br>
+        <font size="-1"><tt>    logvol /var/log/audit --fstype='xfs'
+            --size=1024 --label='audit' --name=audit --vgname=centos</tt></font><br>
+        <font size="-1"><tt>    %packages</tt></font><br>
+        <font size="-1"><tt>    @base</tt></font><br>
+        <font size="-1"><tt>    @core</tt></font><br>
+        <font size="-1"><tt>    yum-utils</tt></font><br>
+        <font size="-1"><tt>    createrepo</tt></font><br>
+        <font size="-1"><tt>    pciutils</tt></font><br>
+        <font size="-1"><tt>    usbutils</tt></font><br>
+        <font size="-1"><tt>    net-tools</tt></font><br>
+        <font size="-1"><tt>    tcpdump</tt></font><br>
+        <font size="-1"><tt>    psmisc</tt></font><br>
+        <font size="-1"><tt>    %end</tt></font><br>
+        <font size="-1"><tt>    %addon com_redhat_kdump --disable
+            --reserve-mb='auto'</tt></font><br>
+        <font size="-1"><tt>    %end</tt></font><br>
+        <font size="-1"><tt>    %anaconda</tt></font><br>
+        <font size="-1"><tt>    pwpolicy root --minlen=6 --minquality=1
+            --notstrict --nochanges --notempty</tt></font><br>
+        <font size="-1"><tt>    pwpolicy user --minlen=6 --minquality=1
+            --notstrict --nochanges --emptyok</tt></font><br>
+        <font size="-1"><tt>    pwpolicy luks --minlen=6 --minquality=1
+            --notstrict --nochanges --notempty</tt></font><br>
+        <font size="-1"><tt>    %end<br>
+            <br>
+            dpkg -l |egrep -i qemu\|libvirt\|aarch64 |awk '{print $2}' 
+            ## popos<br>
+                gir1.2-libvirt-glib-1.0:amd64<br>
+                ipxe-qemu<br>
+                ipxe-qemu-256k-compat-efi-roms<br>
+                libnss-libvirt:amd64<br>
+                libsys-virt-perl<br>
+                libvirt-clients<br>
+                libvirt-daemon<br>
+                libvirt-daemon-config-network<br>
+                libvirt-daemon-config-nwfilter<br>
+                libvirt-daemon-driver-qemu<br>
+                libvirt-daemon-driver-storage-rbd<br>
+                libvirt-daemon-system<br>
+                libvirt-daemon-system-systemd<br>
+                libvirt-glib-1.0-0:amd64<br>
+                libvirt-glib-1.0-data<br>
+                libvirt0:amd64<br>
+                python3-libvirt<br>
+                qemu<br>
+                qemu-block-extra<br>
+                qemu-efi-aarch64<br>
+                qemu-efi-arm<br>
+                qemu-kvm<br>
+                qemu-system<br>
+                qemu-system-arm<br>
+                qemu-system-common<br>
+                qemu-system-data<br>
+                qemu-system-gui:amd64<br>
+                qemu-system-mips<br>
+                qemu-system-misc<br>
+                qemu-system-ppc<br>
+                qemu-system-s390x<br>
+                qemu-system-sparc<br>
+                qemu-system-x86<br>
+                qemu-utils<br>
+            <br>
+            rpm -qa |egrep -i qemu\|libvirt\|aarch64  ## centos<br>
+                libvirt-gconfig-1.0.0-1.el7.x86_64<br>
+                libvirt-bash-completion-4.5.0-36.el7_9.5.x86_64<br>
+                qemu-system-arm-2.0.0-1.el7.6.x86_64<br>
+               
+            libvirt-daemon-driver-storage-logical-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-daemon-driver-lxc-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-python-4.5.0-1.el7.x86_64<br>
+                qemu-common-2.0.0-1.el7.6.x86_64<br>
+                qemu-system-lm32-2.0.0-1.el7.6.x86_64<br>
+               
+            libvirt-daemon-driver-storage-mpath-4.5.0-36.el7_9.5.x86_64<br>
+                qemu-system-xtensa-2.0.0-1.el7.6.x86_64<br>
+                libvirt-daemon-driver-nodedev-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-4.5.0-36.el7_9.5.x86_64<br>
+                qemu-system-alpha-2.0.0-1.el7.6.x86_64<br>
+                libvirt-libs-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-daemon-driver-storage-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-lock-sanlock-4.5.0-36.el7_9.5.x86_64<br>
+                qemu-guest-agent-2.12.0-3.el7.x86_64<br>
+                qemu-system-or32-2.0.0-1.el7.6.x86_64<br>
+                qemu-system-m68k-2.0.0-1.el7.6.x86_64<br>
+               
+            libvirt-daemon-driver-storage-core-4.5.0-36.el7_9.5.x86_64<br>
+               
+            libvirt-daemon-driver-storage-rbd-4.5.0-36.el7_9.5.x86_64<br>
+                qemu-img-1.5.3-175.el7_9.5.x86_64<br>
+                qemu-system-sh4-2.0.0-1.el7.6.x86_64<br>
+               
+            libvirt-daemon-driver-storage-scsi-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-daemon-driver-network-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-nss-4.5.0-36.el7_9.5.x86_64<br>
+                qemu-kvm-common-1.5.3-175.el7_9.5.x86_64<br>
+                qemu-system-unicore32-2.0.0-1.el7.6.x86_64<br>
+                qemu-system-s390x-2.0.0-1.el7.6.x86_64<br>
+               
+            libvirt-daemon-driver-storage-iscsi-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-daemon-config-network-4.5.0-36.el7_9.5.x86_64<br>
+                python36-libvirt-4.5.0-1.el7.x86_64<br>
+                qemu-system-cris-2.0.0-1.el7.6.x86_64<br>
+                qemu-system-mips-2.0.0-1.el7.6.x86_64<br>
+                libvirt-daemon-driver-nwfilter-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-daemon-driver-secret-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-daemon-driver-interface-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-client-4.5.0-36.el7_9.5.x86_64<br>
+                qemu-2.0.0-1.el7.6.x86_64<br>
+                qemu-system-x86-2.0.0-1.el7.6.x86_64<br>
+               
+            libvirt-daemon-driver-storage-gluster-4.5.0-36.el7_9.5.x86_64<br>
+                qemu-kvm-1.5.3-175.el7_9.5.x86_64<br>
+                qemu-system-moxie-2.0.0-1.el7.6.x86_64<br>
+                libvirt-daemon-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-admin-4.5.0-36.el7_9.5.x86_64<br>
+                qemu-user-2.0.0-1.el7.6.x86_64<br>
+                libvirt-daemon-config-nwfilter-4.5.0-36.el7_9.5.x86_64<br>
+                qemu-kvm-tools-1.5.3-175.el7_9.5.x86_64<br>
+                ipxe-roms-qemu-20180825-3.git133f4c.el7.noarch<br>
+                qemu-system-microblaze-2.0.0-1.el7.6.x86_64<br>
+               
+            libvirt-daemon-driver-storage-disk-4.5.0-36.el7_9.5.x86_64<br>
+                libvirt-daemon-driver-qemu-4.5.0-36.el7_9.5.x86_64<br>
+            <br>
+          </tt></font></blockquote>
+      <p>Packages added to the rpm side are the equivs of the dpkg side
+        as far as I'm aware and as numerous docs/blogs/etc imply.  The
+        /bin/qemu-{arm,aarch64} binaries are there, provided by the
+        expected qemu-user package (2.0.0-1.el7.6.x86_64).  But
+        virt-install throws the old "Host does not support any
+        virtualization options for arch {arch}" for any of the expected
+        arch values (arm, arm64, aarch64, etc).  Obviously I've missed a
+        support package on the centos side, but what?<br>
+      </p>
+    </blockquote>
+  </body>
+</html>
+
+--------------6FC03966E3C6EBF0F404FAE0--

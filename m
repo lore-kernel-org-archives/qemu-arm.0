@@ -1,102 +1,287 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp403860lfj;
-        Fri, 14 Jan 2022 12:56:58 -0800 (PST)
-X-Received: by 2002:a05:6808:8c5:: with SMTP id k5mr8714931oij.62.1642193818540;
-        Fri, 14 Jan 2022 12:56:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642193818; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp2728352lfj;
+        Wed, 12 Jan 2022 13:56:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyhbJWccMJPYi1sAQrUgsoeXLG7n3BLmWSyjcG+WN9ANPlYiMjwhiTJqAeLdPhuFqvDUiiU
+X-Received: by 2002:a25:7dc5:: with SMTP id y188mr2524297ybc.21.1642024570517;
+        Wed, 12 Jan 2022 13:56:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642024570; cv=none;
         d=google.com; s=arc-20160816;
-        b=ExyenF4PyVyV50d9lP34YLjMrd2exAnac+qj231ZMxJnnIzbzzzCp0hqgehgt5dQkz
-         WW7Qh6nWnC1RwELxKJEXy+CBwHNe2quq5DmbVVFKcDVKdiOJQ+kvMmB6Pf+U9ASaZy9I
-         D+6A1kowosJtQx0EwG6vP3HCXFxskFE6g1Woopnr4Mnaoqc3ysOy6WRxrfz/l3HLiUnL
-         R9XJgdZeQXK5g+Fs0a8fn7HFQjLY+fB4V9ES97YbWU1BpsUDdC43QkHEXiVg6Vh07ruu
-         BoI0wtQMt/z9Vs0Q8o4JME6yBGupSjiHx7de1T8Yp/+ynlDQ1sfjifVqIVuAAT/2rQfA
-         V63w==
+        b=wW9++r4JwFVwgA8sVrffVIc+ccJyqe+NeBQfIadykVafJZEYCZC3pT/8xltWj7sPhM
+         RqAzeKIrYJg6DsCsDplnjclHHliX7T0nwug6xex8nXaGh78LfHhlvwfRiOjWhL2eeWge
+         2A76YvkIOWswYWdvyz1EtH6wsI7GLTjGmkGn+vatUhNYxyCl7whTnGQSzwHk+PPDNdt5
+         XtHXBAcm8PB8Uw/vlvjyXE1JE32hdRTTRWCFA8UoFdNkzJgASab0BrzMfDy7R7FIUNLl
+         VsrZviQgpvUUOC90bdtC3y2d99WD/rlcziwYmPepVbYAB6344/HrrGTJNNP5LExPLgXC
+         iezQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=9cyEBUzATocJv7ZX/1lhYMaB4y2O9dXDe2JOA9IZXFc=;
-        b=AkHmMTRnQCeyaxyagVCvn8XkezTgjMV3hw3tYyJ43Dvp8EM9pyYRl0lWKTlteyjxyQ
-         9BQ3nq9GlJaMbB1429JPPXqtwsjn+2/npItcRIW8+oNXsAkF6wEryEcWI798foZl8UKi
-         DI7K9QcPJTU9omQWXLRoZzlhQ5Fmjx23asTjsFnDPHEmIh3W/tfvQJhpOrsn9/qdpYEe
-         SlRgZHlqapJnn+yqvD9Kdwj9Gg/DVegN/9823iIGWKxdNKQkIUEA7xavVHRsvs9k3/fm
-         MhF0X8lYe7sXuby2mla76nkde2MdDi4iK4M8KCK/xPjSpyKly5LStJmr6ES3bn4htwQI
-         bIIg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=JWSHJ466Gc/72HN7jFQTmp67kv9rm6BTkU0JJlveaDs=;
+        b=GR57xXoQRU/bfHy3m7d0nnMPR5il9jAHGuCJNxfC9PvVXU/KptpTyhHBHFy3K2WjOk
+         ofTFcGSoV5bYpTvjMNkr6c94nYtYItIgrvKBYOhUhALlq0j5QaEHM4fWZ8VDWUp2Ez87
+         T5qnQI2ETJJ1OQQ2tj2H2zIOrS7laC31HpC8dMWYS1qaWyGlmfaBCZ0armpEMKSR6h35
+         +BAnFgpeNqAHRT2Yvgy/qkqJcIAOyra8lLSEZmBn1pnZrxP/cvCrngYXYzBJOSiHg0z/
+         O1YuP8fIQDdCrwaY06RwUfRzaL/CO5tlxLWwLjU9fbIfbdb17ioH7W50Ngkbt2KUT0SX
+         Mt4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pS7iLp4A;
-       spf=pass (google.com: domain of idan.horowitz@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=idan.horowitz@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <idan.horowitz@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 99sor1461082oth.109.2022.01.14.12.56.58
-        (Google Transport Security);
-        Fri, 14 Jan 2022 12:56:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of idan.horowitz@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SOWC83Nc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i3si775013ybp.808.2022.01.12.13.56.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 12 Jan 2022 13:56:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pS7iLp4A;
-       spf=pass (google.com: domain of idan.horowitz@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=idan.horowitz@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=9cyEBUzATocJv7ZX/1lhYMaB4y2O9dXDe2JOA9IZXFc=;
-        b=pS7iLp4AXuX/U1PANWMAsTJ7Lqe0D2ILlOjeCRLQpvGvC7yuVMl3P/27t5I4wfjUzo
-         F81obfnE9YMInFX85w8V7W4BDL8YeTYj7u7TjZgjXfPRQxrIPbgktTvMsDIMnWyn8oYD
-         tQ4LNcNYDuZmzqJzsYriiZTjxC8CFqSO1/XgKPtgUO9qYNPDud5GT9mhIjm+vp4LxGE9
-         /dmeXBsLRZRYJZqHD5Yh1o4k50Mzfx4UrunbrCj0IcyQCr9kEYX60eZ+xNxaZ/U6vUzF
-         Zyeg4iZA7qASxasSxhcqQpb2MRL/+8L04tn0PDvPp6bVsm+M4eUl0cytsWcw6HHPyhQY
-         TpNQ==
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SOWC83Nc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36430 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n7lbF-00089g-SW
+	for alex.bennee@linaro.org; Wed, 12 Jan 2022 16:56:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55796)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1n7lIk-0008RB-Tu; Wed, 12 Jan 2022 16:37:03 -0500
+Received: from [2a00:1450:4864:20::541] (port=45963
+ helo=mail-ed1-x541.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1n7lIi-00052V-Gw; Wed, 12 Jan 2022 16:37:02 -0500
+Received: by mail-ed1-x541.google.com with SMTP id z22so15216143edd.12;
+ Wed, 12 Jan 2022 13:36:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=JWSHJ466Gc/72HN7jFQTmp67kv9rm6BTkU0JJlveaDs=;
+ b=SOWC83Nc1ovSWNM2GXItL0p+oUK9PT/iV1kdiQAzYn/QOQHu0Vql6j9La61xez9zIi
+ z5J+A2TPqXEJmKu2n1rQYjdKkNn3PeMuP0971BPBC+ytvE4qXaNRVj301hKZ4DFxZ9lj
+ PHlRptS1tFqgSGQ2S60ULn5PTDeq/lKrQgoodaf5tIIAZdaIiosN/kMMMAmul6nWPH8c
+ m+94kl1OE4aa3bsLSmLyVUAeHkTlcI0rdKV5mk0ZSsMPtAgnXfm/PB5mADBesmNX9P+q
+ AUnPu4JAt8KoKOfqIMxeGg8ao2ofKGmhJskXC6a3ojyQwN+G/xT3sGNqLhEco8Kx/sBD
+ Y/ZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=9cyEBUzATocJv7ZX/1lhYMaB4y2O9dXDe2JOA9IZXFc=;
-        b=gNLHbXlWk0Ba6e34+IaOOiWlDu90yGTScmTjwLz20ewTZqhrBMz9eBohwlspvdDUUM
-         aCN4uvb6YTUWHqpRF6HtBfHnqU1HXER9wptfflGwrWbuK3c+yftIZRgX+1Jn3r8z2Zmk
-         /UBYuOq/7okVfMZYgC/WKzubPDKtwwFvRnNejTjEaxnu1EkZb92OIY+fZJUxUAc/qczI
-         dK7vckTZk6kSol+Ixwgg83uMAfjqqXUBSW3fvQprus4cXatjAM/ihy8WnSOg5P7ZJAfb
-         U+ZN9hR4+w6jcdONaqOVATGe8uxFGzQXOCPTaHkDFfSZoqZ8iQCj37fVx03j5vuvE605
-         UNkg==
-X-Gm-Message-State: AOAM5314gBovbMIbWwWOtwR9kIksr+JZjpyJfcFmIgt5qohaPXa8AR97
-	dAg39tv5sGMlQa1rkZizAfhb8b/y8e3AkAdOEvpXqG2ExMdtXg==
-X-Google-Smtp-Source: ABdhPJxniehsxMgrngi34GSfqk8XAa/CW7kiwg8zjXEBSeVMFJyGx0qmtxP1pe8lJznauVcboeenGNGmPO1ZMRza0Zk=
-X-Received: by 2002:a9d:27c1:: with SMTP id c59mr6131536otb.150.1642193817521;
- Fri, 14 Jan 2022 12:56:57 -0800 (PST)
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=JWSHJ466Gc/72HN7jFQTmp67kv9rm6BTkU0JJlveaDs=;
+ b=5w9/6+Ieo5/kF95BkVbHL5G7+tvlSB6sh1qbZHbvJZsz2ggvECZC1x1QVKgfSwEtq3
+ ePr5elIvF2BWiyI255BOPZNX/zNcuHZ8J3PMIjPECErABZnLx4NF8btVv00VXJRddAJh
+ yKpwH9GJ/eQ2N9Owj/sQyZrRRTCTpiPD6qbhchWcclMmc0nYGxzPsOJjDYZ5jGAWjxCQ
+ RgCEzZwHj2Rnt23+/j39nJHNVDLifNlC+aMhe2VXAK/cEj6gLemYA+Aw4rzJyIHMCVOH
+ x6Mzlo6E3S3330O03+pF3HaSd9ln76iuKn0Bjk5Ecj9xrkReHwLpyAndhsOgk4xZTMpY
+ NrWw==
+X-Gm-Message-State: AOAM532S13o4t+gNjz36NpUZzJKYvL1Eqfih/xdwFY1lirCo9diEopPo
+ f1udx6Mq33Z+t4INZzXti7nazAg4RiT6laHSOi6ktA==
+X-Received: by 2002:a17:907:1692:: with SMTP id
+ hc18mr1240574ejc.25.1642023418496; 
+ Wed, 12 Jan 2022 13:36:58 -0800 (PST)
+Received: from osoxes.fritz.box (mue-88-130-49-239.dsl.tropolys.de.
+ [88.130.49.239])
+ by smtp.gmail.com with ESMTPSA id b2sm257288ejh.221.2022.01.12.13.36.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 Jan 2022 13:36:58 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 2/3] pci: Always pass own DeviceState to pci_map_irq_fn's
+Date: Wed, 12 Jan 2022 22:36:27 +0100
+Message-Id: <20220112213629.9126-3-shentey@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220112213629.9126-1-shentey@gmail.com>
+References: <20220112213629.9126-1-shentey@gmail.com>
 MIME-Version: 1.0
-References: <20220110164754.1066025-1-idan.horowitz@gmail.com>
- <87ilum8gfp.fsf@linaro.org> <CA+4MfEK8nJLPd3J7ENG52nXkZoeqhKP_zu7NBfFg-SC-hQRzAQ@mail.gmail.com>
-In-Reply-To: <CA+4MfEK8nJLPd3J7ENG52nXkZoeqhKP_zu7NBfFg-SC-hQRzAQ@mail.gmail.com>
-From: Idan Horowitz <idan.horowitz@gmail.com>
-Date: Fri, 14 Jan 2022 22:56:46 +0200
-Message-ID: <CA+4MfEJyB0T7SLLbXXhNk+JSVxSJk_QRmOsvUpoZi+v0=+sX6Q@mail.gmail.com>
-Subject: Re: [PATCH 1/2] accel/tcg: Optimize jump cache flush during tlb range flush
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, richard.henderson@linaro.org, 
-	qemu-devel@nongnu.org, pbonzini@redhat.com, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: KOMRwLSZXVph
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::541
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::541;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x541.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 12 Jan 2022 16:55:43 -0500
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ "open list:Versatile PB" <qemu-arm@nongnu.org>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ "open list:sam460ex" <qemu-ppc@nongnu.org>,
+ Bernhard Beschow <shentey@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mID+XKGYTbQT
 
-Idan Horowitz <idan.horowitz@gmail.com> wrote:
->
-> cbnz     x9, 0x5168abc8
->
+Passing own DeviceState rather than just the IRQs allows for resolving
+global variables.
 
-I forgot to include the addresses of the instructions, making this
-jump undecipherable, here's the snippet again but with addresses this
-time:
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/isa/piix4.c          | 6 +++---
+ hw/pci-host/sh_pci.c    | 6 +++---
+ hw/pci-host/versatile.c | 6 +++---
+ hw/ppc/ppc440_pcix.c    | 6 +++---
+ hw/ppc/ppc4xx_pci.c     | 6 +++---
+ 5 files changed, 15 insertions(+), 15 deletions(-)
 
-0x5168abb0 movk    x0, #0x0
-0x5168abb4 movk    x0, #0x0, lsl #16
-0x5168abb8 movk    x0, #0xff80, lsl #32
-0x5168abbc movk    x0, #0x0, lsl #48
-0x5168abc0 mov     x9, #0x64
-0x5168abc4 str     x9, [x8]
-0x5168abc8 tlbi    rvae1, x0
-0x5168abcc ldr     x9, [x8]
-0x5168abd0 sub     x9, x9, #0x1
-0x5168abd4 str     x9, [x8]
-0x5168abd8 cbnz    x9, 0x5168abc8
+diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
+index 5a86308689..a31e9714cf 100644
+--- a/hw/isa/piix4.c
++++ b/hw/isa/piix4.c
+@@ -60,7 +60,7 @@ static int pci_irq_levels[4];
+ static void piix4_set_irq(void *opaque, int irq_num, int level)
+ {
+     int i, pic_irq, pic_level;
+-    qemu_irq *pic = opaque;
++    PIIX4State *s = opaque;
+ 
+     pci_irq_levels[irq_num] = level;
+ 
+@@ -75,7 +75,7 @@ static void piix4_set_irq(void *opaque, int irq_num, int level)
+                 pic_level |= pci_irq_levels[i];
+             }
+         }
+-        qemu_set_irq(pic[pic_irq], pic_level);
++        qemu_set_irq(s->i8259[pic_irq], pic_level);
+     }
+ }
+ 
+@@ -323,7 +323,7 @@ DeviceState *piix4_create(PCIBus *pci_bus, ISABus **isa_bus, I2CBus **smbus)
+                                NULL, 0, NULL);
+     }
+ 
+-    pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s->i8259, 4);
++    pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s, 4);
+ 
+     for (int i = 0; i < ISA_NUM_IRQS; i++) {
+         s->i8259[i] = qdev_get_gpio_in_named(dev, "isa", i);
+diff --git a/hw/pci-host/sh_pci.c b/hw/pci-host/sh_pci.c
+index 719d6ca2a6..ae0aa462b3 100644
+--- a/hw/pci-host/sh_pci.c
++++ b/hw/pci-host/sh_pci.c
+@@ -111,9 +111,9 @@ static int sh_pci_map_irq(PCIDevice *d, int irq_num)
+ 
+ static void sh_pci_set_irq(void *opaque, int irq_num, int level)
+ {
+-    qemu_irq *pic = opaque;
++    SHPCIState *s = opaque;
+ 
+-    qemu_set_irq(pic[irq_num], level);
++    qemu_set_irq(s->irq[irq_num], level);
+ }
+ 
+ static void sh_pci_device_realize(DeviceState *dev, Error **errp)
+@@ -128,7 +128,7 @@ static void sh_pci_device_realize(DeviceState *dev, Error **errp)
+     }
+     phb->bus = pci_register_root_bus(dev, "pci",
+                                      sh_pci_set_irq, sh_pci_map_irq,
+-                                     s->irq,
++                                     s,
+                                      get_system_memory(),
+                                      get_system_io(),
+                                      PCI_DEVFN(0, 0), 4, TYPE_PCI_BUS);
+diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+index f66384fa02..5fbcb72d7d 100644
+--- a/hw/pci-host/versatile.c
++++ b/hw/pci-host/versatile.c
+@@ -362,9 +362,9 @@ static int pci_vpb_rv_map_irq(PCIDevice *d, int irq_num)
+ 
+ static void pci_vpb_set_irq(void *opaque, int irq_num, int level)
+ {
+-    qemu_irq *pic = opaque;
++    PCIVPBState *s = opaque;
+ 
+-    qemu_set_irq(pic[irq_num], level);
++    qemu_set_irq(s->irq[irq_num], level);
+ }
+ 
+ static void pci_vpb_reset(DeviceState *d)
+@@ -422,7 +422,7 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
+         mapfn = pci_vpb_map_irq;
+     }
+ 
+-    pci_bus_irqs(&s->pci_bus, pci_vpb_set_irq, mapfn, s->irq, 4);
++    pci_bus_irqs(&s->pci_bus, pci_vpb_set_irq, mapfn, s, 4);
+ 
+     /* Our memory regions are:
+      * 0 : our control registers
+diff --git a/hw/ppc/ppc440_pcix.c b/hw/ppc/ppc440_pcix.c
+index 788d25514a..291c1bfbe7 100644
+--- a/hw/ppc/ppc440_pcix.c
++++ b/hw/ppc/ppc440_pcix.c
+@@ -431,14 +431,14 @@ static int ppc440_pcix_map_irq(PCIDevice *pci_dev, int irq_num)
+ 
+ static void ppc440_pcix_set_irq(void *opaque, int irq_num, int level)
+ {
+-    qemu_irq *pci_irq = opaque;
++    PPC440PCIXState *s = opaque;
+ 
+     trace_ppc440_pcix_set_irq(irq_num);
+     if (irq_num < 0) {
+         error_report("%s: PCI irq %d", __func__, irq_num);
+         return;
+     }
+-    qemu_set_irq(*pci_irq, level);
++    qemu_set_irq(s->irq, level);
+ }
+ 
+ static AddressSpace *ppc440_pcix_set_iommu(PCIBus *b, void *opaque, int devfn)
+@@ -492,7 +492,7 @@ static void ppc440_pcix_realize(DeviceState *dev, Error **errp)
+     sysbus_init_irq(sbd, &s->irq);
+     memory_region_init(&s->busmem, OBJECT(dev), "pci bus memory", UINT64_MAX);
+     h->bus = pci_register_root_bus(dev, NULL, ppc440_pcix_set_irq,
+-                         ppc440_pcix_map_irq, &s->irq, &s->busmem,
++                         ppc440_pcix_map_irq, s, &s->busmem,
+                          get_system_io(), PCI_DEVFN(0, 0), 1, TYPE_PCI_BUS);
+ 
+     s->dev = pci_create_simple(h->bus, PCI_DEVFN(0, 0), "ppc4xx-host-bridge");
+diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
+index 5df97e6d15..f6718746a1 100644
+--- a/hw/ppc/ppc4xx_pci.c
++++ b/hw/ppc/ppc4xx_pci.c
+@@ -256,11 +256,11 @@ static int ppc4xx_pci_map_irq(PCIDevice *pci_dev, int irq_num)
+ 
+ static void ppc4xx_pci_set_irq(void *opaque, int irq_num, int level)
+ {
+-    qemu_irq *pci_irqs = opaque;
++    PPC4xxPCIState *s = opaque;
+ 
+     trace_ppc4xx_pci_set_irq(irq_num);
+     assert(irq_num >= 0 && irq_num < PPC4xx_PCI_NUM_DEVS);
+-    qemu_set_irq(pci_irqs[irq_num], level);
++    qemu_set_irq(s->irq[irq_num], level);
+ }
+ 
+ static const VMStateDescription vmstate_pci_master_map = {
+@@ -319,7 +319,7 @@ static void ppc4xx_pcihost_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     b = pci_register_root_bus(dev, NULL, ppc4xx_pci_set_irq,
+-                              ppc4xx_pci_map_irq, s->irq, get_system_memory(),
++                              ppc4xx_pci_map_irq, s, get_system_memory(),
+                               get_system_io(), 0, ARRAY_SIZE(s->irq),
+                               TYPE_PCI_BUS);
+     h->bus = b;
+-- 
+2.34.1
 
->
-> Idan Horowitz
-
-Idan Horowitz

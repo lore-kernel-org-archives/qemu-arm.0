@@ -1,142 +1,135 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id hd17sm4394939ejc.58.2022.01.12.03.36.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Jan 2022 03:36:10 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 32F721FFCD;
-	Wed, 12 Jan 2022 11:27:24 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Heinrich Schuchardt <xypron.glpk@gmx.de>,
-	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
-	Jerome Forissier <jerome@forissier.org>,
-	Andrew Jones <drjones@redhat.com>,
-	qemu-arm@nongnu.org (open list:Virt)
-Subject: [PULL 21/31] hw/arm: add control knob to disable kaslr_seed via DTB
-Date: Wed, 12 Jan 2022 11:27:12 +0000
-Message-Id: <20220112112722.3641051-22-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220112112722.3641051-1-alex.bennee@linaro.org>
-References: <20220112112722.3641051-1-alex.bennee@linaro.org>
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp3137904lfj;
+        Thu, 13 Jan 2022 04:13:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwAQlrg1fYZlZOGtZqk3nwBh9MlM6gyyqhatzOD3gN/vTfsiPgmP6LVVU9GMy9HAeupxTyg
+X-Received: by 2002:a25:cc94:: with SMTP id l142mr5199422ybf.38.1642076011696;
+        Thu, 13 Jan 2022 04:13:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642076011; cv=none;
+        d=google.com; s=arc-20160816;
+        b=kS6KnmdFd8ECD1tFUZlgPC/lPLCjyWOcvvY3njjImTQYyxqu9/nuoGRSLyQ5C1ERlH
+         G7XiOHxHvmF1oSHvdhauZR0LYRUIR/Z2+IuDDVBQZ5X4gGSVMe9vYCZ31vwFqIGV8sPR
+         QSoJWba97aVMnOLkBVjtv9SzSDG9ZDkpUVur7RZ/96k/mkDdFu2Ur7eyLf03f2GEMSqQ
+         CX50fdxGhX5QoKDGrYl1Or5Ako9fVSbKj4d9UlrNQAOshThwLhrekQ7VrerrfMY6VyUK
+         L0mG2dDqX62C2HEpZR745uzDc/wWt+hYuETzbJ+W1jlsE4oxE6Fskt4uEj4x9xH/YAFY
+         IlNA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Kk4nWK932Tv05QBY+rCwX7MLSuKB7/Th5MoZ2BNkuI8=;
+        b=pYrl6jwICcTMgizmqmq6cRkMUau4/uAmZYt+hpujzO8ekM0C9f96aQNws5B+a2aPi/
+         PXQH7hcTmQIrkAZvV6XqKTOLGUDv/SjAoMDqRpsCLPuZFFuTW3D3dtcQdqcJfQoL26pL
+         RI4xf+eDeGEJMssoj7EPgtSb6e+WqW3INN1bICOPQtqVEe3aqV7oIRUARNvBJqOblV8L
+         eMRFKA60bo6Ea0rX+68qQ28RsnOIkFUbeWC4Z4q6kn52HHMRiMDR6oammTlhEImj1GA6
+         kmGWyTJP0bH+6d5GFyjzbSwOUU8QooVC5QvGanAsmEtaUVHdKii8lrZqxKrIzSbaQXxs
+         jFqQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NKf3dsCb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z1si2075021ybo.10.2022.01.13.04.13.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 13 Jan 2022 04:13:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NKf3dsCb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41872 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n7yyx-0001GP-1l
+	for alex.bennee@linaro.org; Thu, 13 Jan 2022 07:13:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34476)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n7yal-0004cL-6G
+ for qemu-arm@nongnu.org; Thu, 13 Jan 2022 06:48:31 -0500
+Received: from [2a00:1450:4864:20::436] (port=39781
+ helo=mail-wr1-x436.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n7yad-00043J-6I
+ for qemu-arm@nongnu.org; Thu, 13 Jan 2022 06:48:27 -0500
+Received: by mail-wr1-x436.google.com with SMTP id s1so9598413wra.6
+ for <qemu-arm@nongnu.org>; Thu, 13 Jan 2022 03:48:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Kk4nWK932Tv05QBY+rCwX7MLSuKB7/Th5MoZ2BNkuI8=;
+ b=NKf3dsCbITGbLG0Pbe6jmFbmmVRaDn8hR1CsPADzhnvHfbTM+Q6ngxIp39nYbxDPHY
+ u7hRjA9SCSvDDp9AGKC4iibugGYqnzP110nDAXZZ0uY2Uh48LXn4HQiCIhkJOppLd2Ug
+ Q/5WhJ8he5qT6q4Y4nAMcI6ATVp74wTwXQeAiAcCKEiIw5hXQ6ysDqgCQ/gSWJleR9gO
+ 4cvql0wQq4MS9ps5QbSgEeLUYNnPJLBSuvrnIs1ZK7anNtxvPdBQzTI7DmxyujHM5FcC
+ 9Xt5nZ64bd+/Per5QslLEWdQCBCwshagxkqv4Edst+6kAeMZFJoeDmzEknBG5eU5KFoD
+ xuGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Kk4nWK932Tv05QBY+rCwX7MLSuKB7/Th5MoZ2BNkuI8=;
+ b=51LdsWhGF937GRVVrR8fPx3zWNjvqm4RyDdDHTZGSdF0jWBhNqtJlk0KmhtB+JloZd
+ 2F9LxoEApEqXnku7qvcUDtZ4pUm7uKrrMhfzIhHOBWaOm92EdsM3JmYZBAtsVL+m9BPe
+ OOLWt8zH2OSRAY/PxiI/tnBwKysxsQO+5A3vdlJ3rPxYf3hXS/1esg96BF0u/sFSlTA/
+ Ze7/tMYYW0fqAr1pcmyySKY4bY+8qPrI+gQ9EYT9mw03nuP89UvQ1XhJhDpRIdiyajLh
+ 5BSBryOUsXjiRmXI7960QKapQgmkf0I9PRSYpZJcnnldZCYEGVY5onMnUvyKo2MdxV1f
+ y8gw==
+X-Gm-Message-State: AOAM5321hbvGgZRoLBjlKdxZIzASF/rV425uKMoyEBtgR8my61cdYD30
+ EKRdbBxWPlKh8vLWuY9s25Lk8TTSc7rRJvG4GB09PA==
+X-Received: by 2002:adf:ee0e:: with SMTP id y14mr3794615wrn.172.1642074501247; 
+ Thu, 13 Jan 2022 03:48:21 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: n35hYUeTVKtw
+References: <20220110214755.810343-1-venture@google.com>
+In-Reply-To: <20220110214755.810343-1-venture@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 13 Jan 2022 11:48:10 +0000
+Message-ID: <CAFEAcA8Bki2dpyptkSibz5=t9Fvy-PN8SjD=Z0PwcssX3MprRA@mail.gmail.com>
+Subject: Re: [PATCH 0/2] Adds designware i2c module and adds it to virt arm
+To: Patrick Venture <venture@google.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::436
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: mst@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, ani@anisinha.ca, imammedo@redhat.com, crauer@google.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kheubpZDfjoJ
 
-Generally a guest needs an external source of randomness to properly
-enable things like address space randomisation. However in a trusted
-boot environment where the firmware will cryptographically verify
-components having random data in the DTB will cause verification to
-fail. Add a control knob so we can prevent this being added to the
-system DTB.
+On Mon, 10 Jan 2022 at 21:47, Patrick Venture <venture@google.com> wrote:
+>
+> This patch series introduces a new i2c module, namely the designware one and further enables this (optionally) for the virt-arm machine.
+>
+> Chris Rauer (2):
+>   hw/i2c: Add designware i2c controller.
+>   hw/arm: Enable smbus on arm virt machine.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
-Acked-by: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-Acked-by: Jerome Forissier <jerome@forissier.org>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-Message-Id: <20220105135009.1584676-22-alex.bennee@linaro.org>
+I need to see a pretty strong justification for why we
+should be adding new kinds of devices to the virt machine,
+given that it increases complexity and potential attack
+surface for using it with KVM; this cover letter doesn't
+seem to provide any...
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index 850787495b..1544632b67 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -121,6 +121,14 @@ ras
-   Set ``on``/``off`` to enable/disable reporting host memory errors to a guest
-   using ACPI and guest external abort exceptions. The default is off.
- 
-+dtb-kaslr-seed
-+  Set ``on``/``off`` to pass a random seed via the guest dtb
-+  kaslr-seed node (in both "/chosen" and /secure-chosen) to use
-+  for features like address space randomisation. The default is
-+  ``on``. You will want to disable it if your trusted boot chain will
-+  verify the DTB it is passed. It would be the responsibility of the
-+  firmware to come up with a seed and pass it on if it wants to.
-+
- Linux guest kernel configuration
- """"""""""""""""""""""""""""""""
- 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index dc6b66ffc8..be0534608f 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -148,6 +148,7 @@ struct VirtMachineState {
-     bool virt;
-     bool ras;
-     bool mte;
-+    bool dtb_kaslr_seed;
-     OnOffAuto acpi;
-     VirtGICType gic_version;
-     VirtIOMMUType iommu;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b45b52c90e..84c2444fff 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -247,11 +247,15 @@ static void create_fdt(VirtMachineState *vms)
- 
-     /* /chosen must exist for load_dtb to fill in necessary properties later */
-     qemu_fdt_add_subnode(fdt, "/chosen");
--    create_kaslr_seed(ms, "/chosen");
-+    if (vms->dtb_kaslr_seed) {
-+        create_kaslr_seed(ms, "/chosen");
-+    }
- 
-     if (vms->secure) {
-         qemu_fdt_add_subnode(fdt, "/secure-chosen");
--        create_kaslr_seed(ms, "/secure-chosen");
-+        if (vms->dtb_kaslr_seed) {
-+            create_kaslr_seed(ms, "/secure-chosen");
-+        }
-     }
- 
-     /* Clock node, for the benefit of the UART. The kernel device tree
-@@ -2235,6 +2239,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
-     vms->its = value;
- }
- 
-+static bool virt_get_dtb_kaslr_seed(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    return vms->dtb_kaslr_seed;
-+}
-+
-+static void virt_set_dtb_kaslr_seed(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    vms->dtb_kaslr_seed = value;
-+}
-+
- static char *virt_get_oem_id(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-@@ -2764,6 +2782,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-                                           "Set on/off to enable/disable "
-                                           "ITS instantiation");
- 
-+    object_class_property_add_bool(oc, "dtb-kaslr-seed",
-+                                   virt_get_dtb_kaslr_seed,
-+                                   virt_set_dtb_kaslr_seed);
-+    object_class_property_set_description(oc, "dtb-kaslr-seed",
-+                                          "Set off to disable passing of kaslr-seed "
-+                                          "dtb node to guest");
-+
-     object_class_property_add_str(oc, "x-oem-id",
-                                   virt_get_oem_id,
-                                   virt_set_oem_id);
-@@ -2828,6 +2853,9 @@ static void virt_instance_init(Object *obj)
-     /* MTE is disabled by default.  */
-     vms->mte = false;
- 
-+    /* Supply a kaslr-seed by default */
-+    vms->dtb_kaslr_seed = true;
-+
-     vms->irqmap = a15irqmap;
- 
-     virt_flash_create(vms);
--- 
-2.30.2
+thanks
+-- PMM

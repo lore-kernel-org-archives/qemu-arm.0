@@ -1,179 +1,134 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp529567lfj;
-        Thu, 13 Jan 2022 23:00:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxx7AXkPPL8P5xA3AcQAs2zs2vEHwjvn1hpB3SAbETdB7kWvdIpEM2maB94l8AwhEe15NjG
-X-Received: by 2002:a17:906:2802:: with SMTP id r2mr6623802ejc.172.1642143604840;
-        Thu, 13 Jan 2022 23:00:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642143604; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp563889lfj;
+        Fri, 14 Jan 2022 00:16:43 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzeCX0sGzF79WSr1jmbHkCKGaQGRV9vUWM8S5+c5G/3IqrgKxzFbYZbfxPhQuKTpisrAJHx
+X-Received: by 2002:a25:e809:: with SMTP id k9mr429241ybd.436.1642148203492;
+        Fri, 14 Jan 2022 00:16:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642148203; cv=none;
         d=google.com; s=arc-20160816;
-        b=NQRClB5hlZTXqOmpX6RqbhV3bvVHsh+yGGbTlMYtnSU7tDXG5my9vd81akascbfr/i
-         A6pQ0aBvi57nfV71HYEUmRR9SkC605ANggTCBdo5/2PjFJAOmMIeZZt//YoREG/e6Dtj
-         ZjK2H6dt/Mzs7Otj9NxQae/9XmC+We7b4a1nW5b7158EP8Ulnmwp83h+1jpD9cHPDA9w
-         +MGmpjWYXlzLs9dkVVbRx/phxDYr4Ibv3F2StOFDtZv0zP/Da+xrs705HNUfdsJ3DT4Q
-         EDwqCSjzzPpavnnav/0p1io/hb8fUR7f9RFI3ckHiZjXXsxttJA1kN1zA/ji6VMaWgJb
-         TjXw==
+        b=O/wJi69P1q5rNChpiVSzHpOdiNgSZCAkiyYBRwTgPnSFeacxQhgxpd0nSkbJJzsf2V
+         MQ/ukFDqfbRsQu0soIHggwvyg5JtKz9qvBtSCeibvtCHAOrVvgHjBkl5VQr/Yux2G+mN
+         n3R70+G/6wGspa4oTo13SO1m8C8cD5pcP6kkcH8ob1pgDqGrmjnVRKTt1KROHeHO6cup
+         41G6ZUZPUE5W1qUg1dHQ9TtE1Q/Q1f/qKltoH14mHCjU+BT0xrZTlVj6KkhbGvstSeun
+         fDAmQgwtlp04MSTW8/WwMwEjmc9ev8ch5kH4ZgP2uYnphqkAxORVOy1v9eF6sx5BJMo4
+         cg+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=yOK5xYSh1FtuE1McPhlJvPKMXYPSmh6qcCuMZNqtwrk=;
-        b=PA5AKvxkp1KB9wpXB+u5+W4q7XrPNeTbFvaWz7NDhcfLMO5ZXVEvDbA9T1ZmH434Za
-         mX3IrYMYb5YLrDrsf+due+72TjcPDZn95vm9nDDC6ffjtotzck5InJ0RbPe39cBxk98y
-         aTdOIC8ES/E3TYvaqRUMr8mlZbpvgMx6TfTEBHFMyux9eFdLdZj6jOZPqtKRuD7Kwsys
-         zgI97teQsyQcL+uTSHGkb/ykYf7i9uK8x8hPIe7l1zMZDnSkKwrs8VH/AlAf3kLk0woE
-         C/oieYS9qAtVXHhVzBeLnxkbvMsDzqCp5qTMh9KDLyWgLcMQb6I4ONcDxN/ebUINqDaD
-         DxYw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:ironport-sdr;
+        bh=bCw6jJigptvm0lQ8nrCeJnXUQxdkBrRnw0eGpeOFUwY=;
+        b=JH8l79Fju2ETklXca8GniM/0F6nDT5m+/p0iwvJdgvVDfXao7ddBMvS+CmiQGQZGON
+         jjTVwcLbXXwD+sO34wlF2uKlYN0ii3D9yjMPpZIYf9fU9Ics0//LupJm/SsdJi+ljgH8
+         mVFIj74Lm7oSy0yXF5V2Bchf7iyZ0TuE4JOJHYDT7kFZ2t9VvdTTNd1aiBL4YjLKOe2L
+         YHm27ReEqZHeGF4htAldDjdSnxeUXQI+lsj6/czIMTWZrYa6ftHrxQfnaC8Hv/4thpqm
+         FiNyVl8dPo14e5IjC87XMf0iFiKVRJaSyVhDb/W+1p9tqN5kGL70jLpM52wStLVan3Or
+         yczg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fptl2zX3;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id a3si2337040ejd.117.2022.01.13.23.00.03
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e17si4456381ybk.805.2022.01.14.00.16.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Jan 2022 23:00:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 14 Jan 2022 00:16:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fptl2zX3;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1642143603;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=yOK5xYSh1FtuE1McPhlJvPKMXYPSmh6qcCuMZNqtwrk=;
-	b=Fptl2zX3WJNitdb4GJmuB24/ZFBAfLidewC/s2MQqn8xUYpFjbJfFHOuY1wpFNx2XI937O
-	U6W9Pp25+YzxjjzcX0huEEBIgkLvwIUA4081en/lOtUNUo/njgFmMrc1DzhJYZsvAgdimh
-	WbuFXNhoOk2HhlT1gBjeeqcVUlDjzpQ=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-638-K4xc5ACPPC65KQ-7Hpxq-A-1; Fri, 14 Jan 2022 02:00:00 -0500
-X-MC-Unique: K4xc5ACPPC65KQ-7Hpxq-A-1
-Received: by mail-wr1-f70.google.com with SMTP id j19-20020adfa553000000b001a375e473d8so1518266wrb.4
-        for <alex.bennee@linaro.org>; Thu, 13 Jan 2022 22:59:59 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=yOK5xYSh1FtuE1McPhlJvPKMXYPSmh6qcCuMZNqtwrk=;
-        b=I0uBc/eijglPq4YZhfWZQGCcN6TEmUs8vwgkgRY+mw0tsotlqG+fVpYOK1RP2CiAfr
-         pdWL99G5WfYoCmjp5EFKGao+nd1g7682SYWE7g7OvVXq44i2Ac4Cp84CVQGdwW9c2K7m
-         NXiGDIWFBJkZcxY4fJyukaTV7c3ZMLjnDzeh+WoClAgt0t812efvzXg6RDiHI0ydCkT4
-         2oraDDUrXbUYimNv5a1wfaRZ9FTa5kIra88W5cfhdqFcyv5lzouR6dA07DNO+xb+tiqV
-         Bw1Z0CiTaXsLawOgxmCWMWjZ07kdoHW091Ouh7lrHfFvwaXHOfMfkbooD16e6CVFhpa1
-         dfFg==
-X-Gm-Message-State: AOAM532xAwp6APPAdplljD3aaX143kZvCK3XlVrQqOhrTQ0mjo+6zdZn
-	Y5Vuu7sAu95sm7e0gqIphYXszYobgRvgvxyFiJ28kTzkVbnu8O4+ZiXKuyDU6HEDLG37+hvnWZ/
-	cp9EjErwyQ/u/RxS5
-X-Received: by 2002:a05:6000:c8:: with SMTP id q8mr7029355wrx.611.1642143598833;
-        Thu, 13 Jan 2022 22:59:58 -0800 (PST)
-X-Received: by 2002:a05:6000:c8:: with SMTP id q8mr7029313wrx.611.1642143598578;
-        Thu, 13 Jan 2022 22:59:58 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.42.76] (tmo-098-185.customers.d1-online.com. [80.187.98.185])
-        by smtp.gmail.com with ESMTPSA id r205sm3437942wma.26.2022.01.13.22.59.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 13 Jan 2022 22:59:57 -0800 (PST)
-Message-ID: <a75789e0-0ace-c898-ea61-9b55624c772a@redhat.com>
-Date: Fri, 14 Jan 2022 07:59:54 +0100
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Received: from localhost ([::1]:43558 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n8HlK-0002Cn-Rc
+	for alex.bennee@linaro.org; Fri, 14 Jan 2022 03:16:42 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54476)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1n8GwX-00020n-Do; Fri, 14 Jan 2022 02:24:13 -0500
+Received: from esa7.hc1455-7.c3s2.iphmx.com ([139.138.61.252]:22606)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1n8GwV-0002x5-9G; Fri, 14 Jan 2022 02:24:13 -0500
+IronPort-SDR: SLemEI3a07OYuzkM0iWbffbogRQnllrBCGRRim8Pb8+QZBI+Vv7Ut164PNdLyzHFpRu47ca+T8
+ eZkRwSDbvnBXQt0UO9DotvlpChk5fIW8Q+cdINBfgkJ6HvyFNd9SmZ7kIIw/vCy4jnfKSYa82b
+ DendjtO3Elo1/lCE/sEhTONFt7dClZls6TXoBP0UA7E1B7tnWPfjrm0B8BaZISuzTkP0QwXZFO
+ +s0IIe7x8Ax5OZha7yr501dcquvpTS8EfZJHHP02gkqdGPVwZBM8np1C7dgtQDM0Ukq/k3J0u1
+ Hzedj3nCcbjD39jYxmEhpDWM
+X-IronPort-AV: E=McAfee;i="6200,9189,10226"; a="37952417"
+X-IronPort-AV: E=Sophos;i="5.88,287,1635174000"; d="scan'208";a="37952417"
+Received: from unknown (HELO oym-r4.gw.nic.fujitsu.com) ([210.162.30.92])
+ by esa7.hc1455-7.c3s2.iphmx.com with ESMTP; 14 Jan 2022 16:24:06 +0900
+Received: from oym-m2.gw.nic.fujitsu.com (oym-nat-oym-m2.gw.nic.fujitsu.com
+ [192.168.87.59])
+ by oym-r4.gw.nic.fujitsu.com (Postfix) with ESMTP id 68310E6CA1;
+ Fri, 14 Jan 2022 16:24:04 +0900 (JST)
+Received: from oym-om2.fujitsu.com (oym-om2.o.css.fujitsu.com [10.85.58.162])
+ by oym-m2.gw.nic.fujitsu.com (Postfix) with ESMTP id 9AD26BDA89;
+ Fri, 14 Jan 2022 16:24:03 +0900 (JST)
+Received: from localhost.localdomain (n3235113.np.ts.nmh.cs.fujitsu.co.jp
+ [10.123.235.113])
+ by oym-om2.fujitsu.com (Postfix) with ESMTP id 714C1404558A4;
+ Fri, 14 Jan 2022 16:24:03 +0900 (JST)
+From: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+To: peter.maydell@linaro.org, mst@redhat.com, drjones@redhat.com,
+ richard.henderson@linaro.org, f4bug@amsat.org, qemu-arm@nongnu.org
+Subject: [PATCH] hw/arm/virt: Default enable the virtualization option(VHE) on
+ A64FX
+Date: Fri, 14 Jan 2022 16:24:37 +0900
+Message-Id: <20220114072438.3085054-1-ishii.shuuichir@fujitsu.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [PATCH] Mark remaining global TypeInfo instances as const
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Corey Minyard <minyard@acm.org>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Jason Wang <jasowang@redhat.com>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
- <hpoussin@reactos.org>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, Fam Zheng
- <fam@euphon.net>, Beniamino Galvani <b.galvani@gmail.com>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting
- <kfting@nuvoton.com>, Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- "open list:Raspberry Pi" <qemu-arm@nongnu.org>,
- "open list:e500" <qemu-ppc@nongnu.org>,
- "open list:S390 PCI" <qemu-s390x@nongnu.org>
-References: <20220113171038.18128-1-shentey@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20220113171038.18128-1-shentey@gmail.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: 3uxpfC0a9joh
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+Received-SPF: neutral client-ip=139.138.61.252;
+ envelope-from=ishii.shuuichir@fujitsu.com; helo=esa7.hc1455-7.c3s2.iphmx.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_NEUTRAL=0.779 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org, ishii.shuuichir@fujitsu.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rbRtPC26ZXdS
 
-On 13/01/2022 18.10, Bernhard Beschow wrote:
-> More than 1k of TypeInfo instances are already marked as const. Mark the
-> remaining ones, too.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/core/generic-loader.c   | 2 +-
->   hw/core/guest-loader.c     | 2 +-
->   hw/display/bcm2835_fb.c    | 2 +-
->   hw/display/i2c-ddc.c       | 2 +-
->   hw/display/macfb.c         | 4 ++--
->   hw/display/virtio-vga.c    | 2 +-
->   hw/dma/bcm2835_dma.c       | 2 +-
->   hw/i386/pc_piix.c          | 2 +-
->   hw/i386/sgx-epc.c          | 2 +-
->   hw/intc/bcm2835_ic.c       | 2 +-
->   hw/intc/bcm2836_control.c  | 2 +-
->   hw/ipmi/ipmi.c             | 4 ++--
->   hw/mem/nvdimm.c            | 2 +-
->   hw/mem/pc-dimm.c           | 2 +-
->   hw/misc/bcm2835_mbox.c     | 2 +-
->   hw/misc/bcm2835_powermgt.c | 2 +-
->   hw/misc/bcm2835_property.c | 2 +-
->   hw/misc/bcm2835_rng.c      | 2 +-
->   hw/misc/pvpanic-isa.c      | 2 +-
->   hw/misc/pvpanic-pci.c      | 2 +-
->   hw/net/fsl_etsec/etsec.c   | 2 +-
->   hw/ppc/prep_systemio.c     | 2 +-
->   hw/ppc/spapr_iommu.c       | 2 +-
->   hw/s390x/s390-pci-bus.c    | 2 +-
->   hw/s390x/sclp.c            | 2 +-
->   hw/s390x/tod-kvm.c         | 2 +-
->   hw/s390x/tod-tcg.c         | 2 +-
->   hw/s390x/tod.c             | 2 +-
->   hw/scsi/lsi53c895a.c       | 2 +-
->   hw/sd/allwinner-sdhost.c   | 2 +-
->   hw/sd/aspeed_sdhci.c       | 2 +-
->   hw/sd/bcm2835_sdhost.c     | 2 +-
->   hw/sd/cadence_sdhci.c      | 2 +-
->   hw/sd/npcm7xx_sdhci.c      | 2 +-
->   hw/usb/dev-mtp.c           | 2 +-
->   hw/usb/host-libusb.c       | 2 +-
->   hw/vfio/igd.c              | 2 +-
->   hw/virtio/virtio-pmem.c    | 2 +-
->   qom/object.c               | 4 ++--
->   39 files changed, 42 insertions(+), 42 deletions(-)
+At A64FX specification, VHE is enabled by default, so
+the virtualization option should be enabled when -cpu a64fx
+is specified.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+---
+ hw/arm/virt.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b45b52c90e..56acf5cc7e 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1932,6 +1932,12 @@ static void machvirt_init(MachineState *machine)
+     firmware_loaded = virt_firmware_init(vms, sysmem,
+                                          secure_sysmem ?: sysmem);
+ 
++    /* A64FX proceesor is supported the ARMv8.1-VHE */
++    if (!vms->virt &&
++            !strncmp(machine->cpu_type, ARM_CPU_TYPE_NAME("a64fx"), 13)) {
++        vms->virt = true;
++    }
++
+     /* If we have an EL3 boot ROM then the assumption is that it will
+      * implement PSCI itself, so disable QEMU's internal implementation
+      * so it doesn't get in the way. Instead of starting secondary
+-- 
+2.27.0
 

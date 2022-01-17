@@ -1,38 +1,39 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp2018830lfj;
-        Mon, 17 Jan 2022 04:27:33 -0800 (PST)
-X-Received: by 2002:a05:6000:178b:: with SMTP id e11mr16590980wrg.126.1642422453141;
-        Mon, 17 Jan 2022 04:27:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642422453; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp2019853lfj;
+        Mon, 17 Jan 2022 04:29:22 -0800 (PST)
+X-Received: by 2002:a5d:5745:: with SMTP id q5mr19808256wrw.381.1642422561895;
+        Mon, 17 Jan 2022 04:29:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642422561; cv=none;
         d=google.com; s=arc-20160816;
-        b=IiNLEwqbNb4uAgUhi0bBuvYT2C8HWckGpNB9QeDkU2/gDfeweTy24BLte8Thq+tI7n
-         QYGijliG7WaJOTxT2QCf6MQRovojsTgzq7jjS0RqgnXpz/RGphS9NjveWPPkkfkLcSYh
-         TKWll7t0li27a+byATtl0ySgVUBdFo+Bax79JD7+8layIYSy9mlKAzaXD9NpfSS0X7Qg
-         IpHODyM91AajDAlfVATH0ZuV911+aNjzD80/ZW2lv5ruhfDsrWfkGHF9uiFNKl4C0Rd1
-         V86BeXQPgShPmLMYWYheiYtd5Ysq0npfGFEYHtKKQDosolLMMleVJA6oOyojbSkvo3qs
-         WlPg==
+        b=qXO+V6ga+AEVU60966Jxb+6uxaP0eCC3yyq8CMhVlnF+OiN1/p1a2cOF2RloVTcyHG
+         87Y/NHeE/vQGKsKWRChePMkiwvXwkDN53UAA06O508Y6FHHcmexz4jcxz65xiGbXbPHD
+         CEIe74tBsIQf7RAmB7MfJaNOTVLiXduVV72M4Vy2FYyAPuWDhujry7PvZA8MC+qb+KdM
+         107+B+z2ghp7xd3y22JkqWXl0WV9vww9PhBsuqIlbxBrCLjw1yd7tja/GcU/pmz1nW9i
+         xeUKcBTztbqhEC/R6j1LhqDwzIEp4oZQhKG4lUE0GREbMeOD6uw7H/GykSnpfi73GKOs
+         k1yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :sender:dkim-signature;
-        bh=GnX53MrZvincwz9JdkrvjmI09MWRx1r078gan7qeNjI=;
-        b=ZWIGIxclpO7jBS3CHvohkCIzvd0aVcmX/sHgovn1zynVwh+Lal8EVawk1Y3/U9M0/U
-         tZ/CwOPY0wNMK/ic0Lo/E0vcJKSV+IQuQcLjCG4/7BzqUIiiwkSxnLcP8MWdRaXrm5/w
-         weiO4WKFyBhLVV4BAt3s7G05M9MNoJeAfjIclGwwEA8S0fR6QTsRd1yu91V32KARgY8p
-         +mKUu8ZTrI/msImgOTtyiDNRlIel+xJA9Pr/DJIwXgsX4EDGQLeznnNSG4sBvxeaJI1W
-         Zkr8pMPFSZ4Us4795pAaHfTPFMCnaFf6UhQTNT/zhY4lrFHw8b3dkhJum9A1xYIX0pMZ
-         JOpw==
+        bh=EbFpMn4ZN9+tA5q1tjlgrdMpTZqE9EWZ2ycdfSkGbcY=;
+        b=N2BeGvFpRMHyUlLnNdJHMS+lci0BoYkrA05apAI5PFS3EwJXrAZ9NyrlT5UaMKR6dD
+         pYIyVI79xkezct9KhxGVx67unH1Nu971sa2PU+WaIrYdK0KPbNYRwks8XyNR69uNvc44
+         3kftviptDRnXZvb1N573/nbdysIWPc7kT5Pjybqv/X7XT5Jldu5BBUGNhBK4KhEw60BN
+         iQxk2SvP7ZF/rqkBz7GpmhqtzjqALYDUo9PejvqrgcIEi+FYLNYBJ4Bnm6JivN7E0POV
+         j+itYiAI2ncupsvKkHbraHIxr9hw/UJjHKs4y4zsJXnf2d0yDeBPfiwn0v4r1OqrRGg9
+         O0CA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=koWFFzax;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=d+Kv7mQ4;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n1sor6300245wmi.6.2022.01.17.04.27.33
+        by mx.google.com with SMTPS id f15sor1785258wmq.7.2022.01.17.04.29.21
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 17 Jan 2022 04:27:33 -0800 (PST)
+        Mon, 17 Jan 2022 04:29:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=koWFFzax;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=d+Kv7mQ4;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -40,99 +41,89 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=sender:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=GnX53MrZvincwz9JdkrvjmI09MWRx1r078gan7qeNjI=;
-        b=koWFFzax93kXsPc2+nL86gOJV8HUj1Bd5Lbt7RFpUeYEuCk82bgvlTTrarWF9o6Xpw
-         CI/TWRBQw2MIKD5RpxzjTvM+v3Mmo7u8YqIuItZpGp6RGFqXkSwWk5RBCk8QRBaD8WyX
-         VBu47VGT5ZPoM3mgizxcNzTlJpFcQmi9Ct+0N8VCUB2o0WVjTqz7O1FpGVqC9SFi7VLa
-         GBUN0FI1JDQT3sJQTlAHOTFAihs1D/S4D+YO+R5wh0fnBaOcRMo8jsattGaTW26Rv9/v
-         HdiX5VvKWojoAN8ZhjE5vN1YsEB0319HCHIgLwDpTuDzm/Qp1AgVS5pxMK84hvjAVWMH
-         bcNA==
+        bh=EbFpMn4ZN9+tA5q1tjlgrdMpTZqE9EWZ2ycdfSkGbcY=;
+        b=d+Kv7mQ4gnyOIh98oZCUO5msojK1Uhx9hL2pKbP0OFDU2y3Kadkv1SFmQKaltnuvJF
+         TPnrCRlHt+xkLPxrfzadk8h8Rcrt6oSHNER1f3SBBkSY/4EHmzGetW4HWc9HSA/P0MCh
+         df7I+XYDC0J3ICW6pC40H6FnsGiTxO7I5r0SgTw4jCY0qY5lzl7iLoQWcMlchcq5L43E
+         a1xecCgugdrTUJbJV+JNJw0i35OJ5joJeEDTBtzSydheeBfYCkofUCzkDwSPPpmDiHTe
+         7/0eaq1rxc0XsRbhQ0Ai+ISXLnsAZ+GCLsXFraAibwU5JMousS6Nvw0tqoRWfbERJQuR
+         Gp/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
          :subject:content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=GnX53MrZvincwz9JdkrvjmI09MWRx1r078gan7qeNjI=;
-        b=TuugHtojVRPfSncabR8PQdwZ0o1BqqdVQ4b8/CUUpHgSpYigiWlRWSfmuqoBoGjkOA
-         c+Hm05cOF3G6RtWyO9I+OdHpnQz/mSsojQxr4YvZtDBzg2/L9Y5593nFGEwbMepcg5JM
-         l7vA2u8Mi3cX8f5UMYUfunFgcsHCAD8A4epIWmSoNqYfCB7xQ22BnhG0Ylwu7IYCvyCb
-         Y+xBE/Yho+FQth/sb+Qx/ziRfA3098au8MufyOT1vUfKr+Vh/c/ZKgXy5rfBREWAwlQC
-         rg/d3reZ754AfMyFJ1d8DXK31vENqG6246jlaaBCrUwymtFm8jH/rXdVde2CVHkXT2Tf
-         qhWA==
-X-Gm-Message-State: AOAM530/uqiO3UGvJk4UtthADpTdWjl+nssFzbmUJ90BAQAPL+4Rk3YE
-	qbgOpSUqSTqnvrdRNn0X8MwfTna4zCqtsy+m
-X-Google-Smtp-Source: ABdhPJz87um2sYJ6OvTM0/OvuPq/Y6Pabx25ClP+1GFk/rVn/hPvcO0awHGT1xCd/axZbJEwB+qx4w==
-X-Received: by 2002:a05:600c:154c:: with SMTP id f12mr24083041wmg.126.1642422452597;
-        Mon, 17 Jan 2022 04:27:32 -0800 (PST)
+        bh=EbFpMn4ZN9+tA5q1tjlgrdMpTZqE9EWZ2ycdfSkGbcY=;
+        b=QSd064guPDFfD/uRaZWLLydWklo4HzuhxvtWju6AX9AlleF0g2oOM4bOMUs5ciqcSn
+         ef90PDicznO7KnvNLdoOWqseCjdNOJJK8fr2m3k3tigb9DA4Yl1Nsv1V0rp8P7Lhqj3q
+         YfMZhLJQE5sYbhVEkvyv6dNo5egizIbllg9lldCCNPb5gAerYQkkILqXHaHcs8Vn7ofX
+         AjmBG+aM57Mew4dNY+QaOO1NFn+fZ94d/jpVOJwc2v/oW24Py/Fqy0nrFzxp3LCinPCx
+         16glDoICbbrfjDuEGBQ7ubAnvt81546qmUKBBXhzkJaXR31SXCgNzol6/J0Q8rWt3iI3
+         9E1A==
+X-Gm-Message-State: AOAM5311D4DxMPLHVYcMx2iUvctlFV8S/y6EZ8qbUwgKyrV6qGkGj4K+
+	NDVn/hvbHBYdrb8+bT7MJpV4pZ9EPIXDfESa
+X-Google-Smtp-Source: ABdhPJwEGprV4SAf4wkm1JoSmA7T518wmb0VvXL/Mw7v2y5JZmDzlQxMlAGEcoqE8K3HB+G7kBTXaQ==
+X-Received: by 2002:a1c:44d7:: with SMTP id r206mr20245753wma.79.1642422561234;
+        Mon, 17 Jan 2022 04:29:21 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from [192.168.1.40] (154.red-83-50-83.dynamicip.rima-tde.net. [83.50.83.154])
-        by smtp.gmail.com with ESMTPSA id i11sm12892722wrn.59.2022.01.17.04.27.31
+        by smtp.gmail.com with ESMTPSA id v3sm13810540wri.4.2022.01.17.04.29.20
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Jan 2022 04:27:32 -0800 (PST)
+        Mon, 17 Jan 2022 04:29:20 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Message-ID: <4918a992-3903-6b78-c43e-76a487b651f5@amsat.org>
-Date: Mon, 17 Jan 2022 13:27:31 +0100
+Message-ID: <9f9d83eb-02d7-bd5a-e72e-62427b785253@amsat.org>
+Date: Mon, 17 Jan 2022 13:29:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.4.0
-Subject: Re: [RFC PATCH 3/6] hw/arm: wire-up memory from the Pico board and
- the SoC
+Subject: Re: [RFC PATCH 6/6] docs/devel: add some clarifying text for aliases
 Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Peter Xu <peterx@redhat.com>
 References: <20220110175104.2908956-1-alex.bennee@linaro.org>
- <20220110175104.2908956-4-alex.bennee@linaro.org>
+ <20220110175104.2908956-7-alex.bennee@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220110175104.2908956-4-alex.bennee@linaro.org>
+In-Reply-To: <20220110175104.2908956-7-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: biKnL88dziQN
+X-TUID: qEQs4Tvz7Nsq
 
 On 1/10/22 18:51, Alex Bennée wrote:
-> All the memory aside from the external flash is a feature of the SoC
-> itself. However the flash is part of the board and different RP2040
-> boards can choose to wire up different amounts of it.
-> 
-> For now add unimplemented devices for all the rp2040 peripheral
-> blocks. Before we can boot more of the ROM we will need to model at
-> least the SIO and CLOCKS blocks.
-> 
-> For now CPU#1 starts disabled as it needs a working CPUID register so
-> it can identify itself before sleeping.
+> We do mention the limitation of single parenthood for
+> memory_region_add_subregion but lets also make it clear how aliases
+> help solve that conundrum.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->  include/hw/arm/rp2040.h |   9 +++-
->  hw/arm/raspi_pico.c     |  20 +++++++
->  hw/arm/rp2040.c         | 113 ++++++++++++++++++++++++++++++++++++++--
->  3 files changed, 137 insertions(+), 5 deletions(-)
-
-> +static Property rp2040_soc_properties[] = {
-> +    DEFINE_PROP_LINK("memory", RP2040State, memory, TYPE_MEMORY_REGION,
-> +                     MemoryRegion *),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
+>  docs/devel/memory.rst | 14 +++++++++-----
+>  1 file changed, 9 insertions(+), 5 deletions(-)
+> 
+> diff --git a/docs/devel/memory.rst b/docs/devel/memory.rst
+> index 5dc8a12682..69c5e3f914 100644
+> --- a/docs/devel/memory.rst
+> +++ b/docs/devel/memory.rst
+> @@ -67,11 +67,15 @@ MemoryRegion):
+>  
+>    You initialize a pure container with memory_region_init().
+>  
+> -- alias: a subsection of another region.  Aliases allow a region to be
+> -  split apart into discontiguous regions.  Examples of uses are memory banks
+> -  used when the guest address space is smaller than the amount of RAM
+> -  addressed, or a memory controller that splits main memory to expose a "PCI
+> -  hole".  Aliases may point to any type of region, including other aliases,
+> +- alias: a subsection of another region. Aliases allow a region to be
+> +  split apart into discontiguous regions. Examples of uses are memory
+> +  banks used when the guest address space is smaller than the amount
+> +  of RAM addressed, or a memory controller that splits main memory to
+> +  expose a "PCI hole". You can also create aliases to avoid trying to
+> +  add the original region to multiple parents via
+> +  `memory_region_add_subregion`.
 > +
->  static void rp2040_class_init(ObjectClass *oc, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(oc);
-> @@ -61,14 +167,13 @@ static void rp2040_class_init(ObjectClass *oc, void *data)
+> +  Aliases may point to any type of region, including other aliases,
+>    but an alias may not point back to itself, directly or indirectly.
+>    You initialize these with memory_region_init_alias().
 >  
->      bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-m0");
->      dc->realize = rp2040_realize;
-> -    /* any props? */
-> +    device_class_set_props(dc, rp2040_soc_properties);
->  };
->  
->  static const TypeInfo rp2040_types[] = {
->      {
->          .name           = TYPE_RP2040,
-> -        /* .parent         = TYPE_SYS_BUS_DEVICE, */
-> -        .parent         = TYPE_DEVICE,
-> +        .parent         = TYPE_SYS_BUS_DEVICE,
->          .instance_size  = sizeof(RP2040State),
->          .instance_init  = rp2040_init,
->          .class_size     = sizeof(RP2040Class),
 
-Squash that in patch #1 without any MemoryRegion property?
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

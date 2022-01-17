@@ -1,129 +1,176 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp2019853lfj;
-        Mon, 17 Jan 2022 04:29:22 -0800 (PST)
-X-Received: by 2002:a5d:5745:: with SMTP id q5mr19808256wrw.381.1642422561895;
-        Mon, 17 Jan 2022 04:29:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642422561; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp2093642lfj;
+        Mon, 17 Jan 2022 06:17:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwhYlQniklzLlRhxHrBgwJvtzReLXtB3EYXjW0Gd802LcZ2UsViwfkIbFJAsyCcjgqKKv+w
+X-Received: by 2002:a05:6e02:198a:: with SMTP id g10mr11193852ilf.280.1642429077235;
+        Mon, 17 Jan 2022 06:17:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642429077; cv=none;
         d=google.com; s=arc-20160816;
-        b=qXO+V6ga+AEVU60966Jxb+6uxaP0eCC3yyq8CMhVlnF+OiN1/p1a2cOF2RloVTcyHG
-         87Y/NHeE/vQGKsKWRChePMkiwvXwkDN53UAA06O508Y6FHHcmexz4jcxz65xiGbXbPHD
-         CEIe74tBsIQf7RAmB7MfJaNOTVLiXduVV72M4Vy2FYyAPuWDhujry7PvZA8MC+qb+KdM
-         107+B+z2ghp7xd3y22JkqWXl0WV9vww9PhBsuqIlbxBrCLjw1yd7tja/GcU/pmz1nW9i
-         xeUKcBTztbqhEC/R6j1LhqDwzIEp4oZQhKG4lUE0GREbMeOD6uw7H/GykSnpfi73GKOs
-         k1yg==
+        b=yZ5M4c5d9/WqBbb4ojHMnshxrV03J4jhZI5VBrKgYhreEZoXWfUNFlmNYCQZQwTkkw
+         ZgKgG3mfNyL6+tYF3HTunx01H4vg6ub41Il4z2WSVafb4vtPI+F4SWqz7S0bmf5qZDtk
+         mNXSHQdW6pCF6Fx3W6gbw+HRLXl8S2PtQwr7X7jJfPu9eqAzhUvzDtzZypWcOaHFIZ1D
+         zXvS2uSGpwtLbqduNloFr63eHsdbE1OllpXwKYXrGmiOUxD6iERNDSdI98vsbsDnvT/Y
+         b2LpLtvbCJgXUKfqWb0Ud0eCfPWxmpCczLGdfNHlFV6oD3Ke+vKZtButF5wUh/LYrR11
+         lSag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:dkim-signature;
-        bh=EbFpMn4ZN9+tA5q1tjlgrdMpTZqE9EWZ2ycdfSkGbcY=;
-        b=N2BeGvFpRMHyUlLnNdJHMS+lci0BoYkrA05apAI5PFS3EwJXrAZ9NyrlT5UaMKR6dD
-         pYIyVI79xkezct9KhxGVx67unH1Nu971sa2PU+WaIrYdK0KPbNYRwks8XyNR69uNvc44
-         3kftviptDRnXZvb1N573/nbdysIWPc7kT5Pjybqv/X7XT5Jldu5BBUGNhBK4KhEw60BN
-         iQxk2SvP7ZF/rqkBz7GpmhqtzjqALYDUo9PejvqrgcIEi+FYLNYBJ4Bnm6JivN7E0POV
-         j+itYiAI2ncupsvKkHbraHIxr9hw/UJjHKs4y4zsJXnf2d0yDeBPfiwn0v4r1OqrRGg9
-         O0CA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=YQ9KKqaEP2pWRGu4npcv3vBer5ASXWKoR0TeN9Og9W8=;
+        b=cvzHEsGOmPNnlYZlbKlWRECc9q48UsuqW/0VYNX95FIhCSRU6lwhr9/y4y53z1k589
+         4hb3RM4NDULl8Di3I5tMf29ZEObdXVMnPZWZBVaR4Ozxkk0/3hkKnCJykGWF6H4yPQ/T
+         yVTAkBHWVHIj3XTARcKlyHHBQhbI+0NTHXWJlZa134tjUxcIiaHD7jopkNxSE4PgAVwI
+         8UvHi636OZi4qzHemfnfPge3sgrsYuFXD5JKWtdw31LpTOExOHsBMSgT0N7vnsL4Db2a
+         lcncy3kxjZ7wIAhOswUFqSp+Ectc+dHm1xL9TxDvnkyGJ2Ajl+doGXDOCOo2l9ikczcb
+         oUhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=d+Kv7mQ4;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f15sor1785258wmq.7.2022.01.17.04.29.21
+       dkim=pass header.i=@linaro.org header.s=google header.b=sZzssPpe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x13si6417475ilu.88.2022.01.17.06.17.57
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 17 Jan 2022 04:29:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Jan 2022 06:17:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=d+Kv7mQ4;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=sender:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=EbFpMn4ZN9+tA5q1tjlgrdMpTZqE9EWZ2ycdfSkGbcY=;
-        b=d+Kv7mQ4gnyOIh98oZCUO5msojK1Uhx9hL2pKbP0OFDU2y3Kadkv1SFmQKaltnuvJF
-         TPnrCRlHt+xkLPxrfzadk8h8Rcrt6oSHNER1f3SBBkSY/4EHmzGetW4HWc9HSA/P0MCh
-         df7I+XYDC0J3ICW6pC40H6FnsGiTxO7I5r0SgTw4jCY0qY5lzl7iLoQWcMlchcq5L43E
-         a1xecCgugdrTUJbJV+JNJw0i35OJ5joJeEDTBtzSydheeBfYCkofUCzkDwSPPpmDiHTe
-         7/0eaq1rxc0XsRbhQ0Ai+ISXLnsAZ+GCLsXFraAibwU5JMousS6Nvw0tqoRWfbERJQuR
-         Gp/Q==
+       dkim=pass header.i=@linaro.org header.s=google header.b=sZzssPpe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60012 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n9SpY-0003ZY-Ij
+	for alex.bennee@linaro.org; Mon, 17 Jan 2022 09:17:56 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36376)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n9RvS-0006O7-Mn
+ for qemu-devel@nongnu.org; Mon, 17 Jan 2022 08:19:59 -0500
+Received: from [2a00:1450:4864:20::335] (port=43828
+ helo=mail-wm1-x335.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n9RvQ-0007df-TG
+ for qemu-devel@nongnu.org; Mon, 17 Jan 2022 08:19:58 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ s6-20020a7bc386000000b0034a89445406so20485941wmj.2
+ for <qemu-devel@nongnu.org>; Mon, 17 Jan 2022 05:19:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=YQ9KKqaEP2pWRGu4npcv3vBer5ASXWKoR0TeN9Og9W8=;
+ b=sZzssPpejYcyQb23751ShB+lsMLzHr1p0l2L8MvgXt6dHvV4M7T9aE0FEt2yEfQV49
+ xGOe/U/yYJE+Tn4/uFHGJ+ib9Jgapuqlvms9Kn9JBtXG/uh87D2nxTBFJOLhM2kBKXo3
+ wsBFSjo+AcwAv2wNBHP3IeCskKaDEbO8vUTWXVvkCESJmv6Ih5wll9ysMos5cTcYiiCm
+ Z8N6l+A+w1YSC+OEtaMPRYcDtJqX4EMsydbLohnlQWpCULL25gCL1XjXHfOkO6Ws2Ms0
+ kAoTwARQipe7k5fCr2isEv1UOKyzS+hSWc1nnm2LjXsmjRloVJjrHSINBJ7cxflGosQD
+ Va+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
-         :subject:content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=EbFpMn4ZN9+tA5q1tjlgrdMpTZqE9EWZ2ycdfSkGbcY=;
-        b=QSd064guPDFfD/uRaZWLLydWklo4HzuhxvtWju6AX9AlleF0g2oOM4bOMUs5ciqcSn
-         ef90PDicznO7KnvNLdoOWqseCjdNOJJK8fr2m3k3tigb9DA4Yl1Nsv1V0rp8P7Lhqj3q
-         YfMZhLJQE5sYbhVEkvyv6dNo5egizIbllg9lldCCNPb5gAerYQkkILqXHaHcs8Vn7ofX
-         AjmBG+aM57Mew4dNY+QaOO1NFn+fZ94d/jpVOJwc2v/oW24Py/Fqy0nrFzxp3LCinPCx
-         16glDoICbbrfjDuEGBQ7ubAnvt81546qmUKBBXhzkJaXR31SXCgNzol6/J0Q8rWt3iI3
-         9E1A==
-X-Gm-Message-State: AOAM5311D4DxMPLHVYcMx2iUvctlFV8S/y6EZ8qbUwgKyrV6qGkGj4K+
-	NDVn/hvbHBYdrb8+bT7MJpV4pZ9EPIXDfESa
-X-Google-Smtp-Source: ABdhPJwEGprV4SAf4wkm1JoSmA7T518wmb0VvXL/Mw7v2y5JZmDzlQxMlAGEcoqE8K3HB+G7kBTXaQ==
-X-Received: by 2002:a1c:44d7:: with SMTP id r206mr20245753wma.79.1642422561234;
-        Mon, 17 Jan 2022 04:29:21 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.40] (154.red-83-50-83.dynamicip.rima-tde.net. [83.50.83.154])
-        by smtp.gmail.com with ESMTPSA id v3sm13810540wri.4.2022.01.17.04.29.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Jan 2022 04:29:20 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Message-ID: <9f9d83eb-02d7-bd5a-e72e-62427b785253@amsat.org>
-Date: Mon, 17 Jan 2022 13:29:19 +0100
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=YQ9KKqaEP2pWRGu4npcv3vBer5ASXWKoR0TeN9Og9W8=;
+ b=gwm9UkD50L8rQLfxrPda6HdONKr5CD/78kcNtig8h/Zk6Ii4XAoetWcjZMynJhXXjU
+ KXIw6uYkn0w+xSxwDO9rhEgxkpC9H6pJQ5mu/7cpqyLoKdt/kwh0wdUBJYXCS0UeUopM
+ 6RtIFoeS1AHZBWgVB9icW8UWZhTv+9c6C6rMhMcJUgOicqd28tMVLuPCDKwCH8jFRpZS
+ zhz7gHbnJSZlujPGydHdyTdTQJr/wzch4uORxzksXCPx8L8V/kU1rbxYIQD807TH9rzQ
+ PhIjdiDDFGbUsBF6P8qO2OCS4aiwcp3fP/ktXGEAz12XxbPS2zD3116NvMyctauEkR8m
+ 7zLg==
+X-Gm-Message-State: AOAM531vMwrz/d1dsK/Dq+WeOS7T1GsgYPgn8myF9BSJt6rQeYa/uwj9
+ CTMrxxwFBC56nxg8gJFQkZuQ+w==
+X-Received: by 2002:adf:ec04:: with SMTP id x4mr18819879wrn.688.1642425595297; 
+ Mon, 17 Jan 2022 05:19:55 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id 204sm7096495wmc.29.2022.01.17.05.19.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 17 Jan 2022 05:19:54 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Use correct entrypoint for SVC taken from Hyp to
+ Hyp
+Date: Mon, 17 Jan 2022 13:19:53 +0000
+Message-Id: <20220117131953.3936137-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [RFC PATCH 6/6] docs/devel: add some clarifying text for aliases
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- David Hildenbrand <david@redhat.com>, Peter Xu <peterx@redhat.com>
-References: <20220110175104.2908956-1-alex.bennee@linaro.org>
- <20220110175104.2908956-7-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220110175104.2908956-7-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: qEQs4Tvz7Nsq
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::335
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FxNvYczt5O6v
 
-On 1/10/22 18:51, Alex Bennée wrote:
-> We do mention the limitation of single parenthood for
-> memory_region_add_subregion but lets also make it clear how aliases
-> help solve that conundrum.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  docs/devel/memory.rst | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
-> 
-> diff --git a/docs/devel/memory.rst b/docs/devel/memory.rst
-> index 5dc8a12682..69c5e3f914 100644
-> --- a/docs/devel/memory.rst
-> +++ b/docs/devel/memory.rst
-> @@ -67,11 +67,15 @@ MemoryRegion):
->  
->    You initialize a pure container with memory_region_init().
->  
-> -- alias: a subsection of another region.  Aliases allow a region to be
-> -  split apart into discontiguous regions.  Examples of uses are memory banks
-> -  used when the guest address space is smaller than the amount of RAM
-> -  addressed, or a memory controller that splits main memory to expose a "PCI
-> -  hole".  Aliases may point to any type of region, including other aliases,
-> +- alias: a subsection of another region. Aliases allow a region to be
-> +  split apart into discontiguous regions. Examples of uses are memory
-> +  banks used when the guest address space is smaller than the amount
-> +  of RAM addressed, or a memory controller that splits main memory to
-> +  expose a "PCI hole". You can also create aliases to avoid trying to
-> +  add the original region to multiple parents via
-> +  `memory_region_add_subregion`.
-> +
-> +  Aliases may point to any type of region, including other aliases,
->    but an alias may not point back to itself, directly or indirectly.
->    You initialize these with memory_region_init_alias().
->  
+The exception caused by an SVC instruction may be taken to AArch32
+Hyp mode for two reasons:
+ * HCR.TGE indicates that exceptions from EL0 should trap to EL2
+ * we were already in Hyp mode
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+The entrypoint in the vector table to be used differs in these two
+cases: for an exception routed to Hyp mode from EL0, we enter at the
+common 0x14 "hyp trap" entrypoint.  For SVC from Hyp mode to Hyp
+mode, we enter at the 0x08 (svc/hvc trap) entrypoint.
+In the v8A Arm ARM pseudocode this is done in AArch32.TakeSVCException.
+
+QEMU incorrectly routed both of these exceptions to the 0x14
+entrypoint.  Correct the entrypoint for SVC from Hyp to Hyp by making
+use of the existing logic which handles "normal entrypoint for
+Hyp-to-Hyp, otherwise 0x14" for traps like UNDEF and data/prefetch
+aborts (reproduced here since it's outside the visible context
+in the diff for this commit):
+
+    if (arm_current_el(env) != 2 && addr < 0x14) {
+        addr = 0x14;
+    }
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index cfca0f5ba6d..a898e400f6c 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9655,7 +9655,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
+      * separately here.
+      *
+      * The vector table entry used is always the 0x14 Hyp mode entry point,
+-     * unless this is an UNDEF/HVC/abort taken from Hyp to Hyp.
++     * unless this is an UNDEF/SVC/HVC/abort taken from Hyp to Hyp.
+      * The offset applied to the preferred return address is always zero
+      * (see DDI0487C.a section G1.12.3).
+      * PSTATE A/I/F masks are set based only on the SCR.EA/IRQ/FIQ values.
+@@ -9669,7 +9669,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
+         addr = 0x04;
+         break;
+     case EXCP_SWI:
+-        addr = 0x14;
++        addr = 0x08;
+         break;
+     case EXCP_BKPT:
+         /* Fall through to prefetch abort.  */
+-- 
+2.25.1
+

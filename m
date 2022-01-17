@@ -1,186 +1,1432 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp35298lfj;
-        Fri, 14 Jan 2022 03:02:51 -0800 (PST)
-X-Received: by 2002:adf:db0c:: with SMTP id s12mr7640115wri.429.1642158171494;
-        Fri, 14 Jan 2022 03:02:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642158171; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp2127872lfj;
+        Mon, 17 Jan 2022 07:08:31 -0800 (PST)
+X-Received: by 2002:a2e:9794:: with SMTP id y20mr3674629lji.403.1642432111802;
+        Mon, 17 Jan 2022 07:08:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642432111; cv=none;
         d=google.com; s=arc-20160816;
-        b=lQu1SDchS2aBVIAyPR8MdjioR7n3q1qS6olJ98ZteZmdbHrcIZUJ09lgyejB3bAph9
-         ttYuN+T9kug/thCk0GXJlJ9Vq4QL0TTu8ScOQHfWH+OfNzvn0JkWn8preEmS43f8xUaN
-         mB554XWH+2aXlpwMtg+qw01jqvkuTC1rdpX9v2hMvBRxOvSZbFORfXeDhH4Jr/IU5MVY
-         rc5eYJ7KTT1R9AM/hovoTjNOKfRnBxZQ5sfN7qnS42f1e4hrzL0aK29OgvC+SiI0B8JK
-         Ho+AJrNDlMzuk07o+3LTrMQjPwt7o2RSSC0EDfT7nqyJGvK/IXlLmqKlEA3ulNmz+aEE
-         UccA==
+        b=uqAkIIEFU1uHMqz1RzcS3V9wEEyCXlcofhhpNnLUij4NbxmVnQygpgPEgfopmlLz3N
+         ftm0TeG0lYIxM1Wm5WV39RKpM7tOAg1I1cB8Xd+97pgrijIY0RUyaQvQTSqQhn6v3/vL
+         e46jh4Wuz2svQ0sX8kqCIURH56jMTk3Qu3M2hi+0I8NQVB6CNQYq6W5NgjkJo/TdwCmZ
+         h2Iva3uEmuXWHzTJdaNrB90rG23na8Aoq895qfsUEnkF/7u6dpOpw2AwjpOUcDS2qukB
+         EoalZLbFJl/tx3VXGK85erjpiFkoY9UFN6Ef8GrahyWI9Ic6zNiD5kN08HVjnduattCl
+         9Z9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:dkim-signature;
-        bh=t/G7JZA9GQDFGfYcKoq7rnD+jJp/08VTYN/09/cRKc4=;
-        b=uY2yBxqPWWhhym6jd+NRYiHbAeu0R2v88Q29lHKl/ZeMOw1Kwm65u2Bc376BdTMVe0
-         jjVHcJ6v63l2q+fwuUN0XlO8NJJMFSNMJ650uGxJ+NnRpSXRsGQ2FjkiMXxS9W4WGDV/
-         KBlt76D9xNqdIRzQ7p34sdcyaH/NcxIkJ3D93hL6h9yzAJLTiqIGoHas8iSq0VFj5pRU
-         jug0iK+h869/tr0ILZeLpHHJ5/lte9A7+DYmKcN+l06eaDPxQl2iLCBWc1BnLB+hAaiS
-         q2gIoTC9NZTn+E7D3l8VY73VvosSRCTyNrk4CYBdHXI5utNkwbkIzoeU/U2KZ32y1Foi
-         cQ+Q==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=xNM/c2SV6LNlYtbRMau2y6pZ9yk6MJ9uH0Q2zDl/Fko=;
+        b=AZH5rnSR4y7y3G1Gjl7Utuy+OY13XqzNa9vnTeuZh6+z3XWXNfkgELZN1UXAea07vk
+         Y24/lFWjiejAVHQgCGYXnrATqC4I/mdq3yUZF/3PxR6t/jHphkl7WUrJXzjRS5eoNdaX
+         ya+bTQJQ7L3ydM6R7mch1ltcChzvnh+7URYCNsrd1K0lPFsbp/dA3G1cpeIwe3PuxnSA
+         zeSXIE9aRQ0rO32D8omsnpSgl+dQdLdiy3xTIop1WxexTSBR7kUu+pChohRXLnQDgJrG
+         p2Dz+lOeTMicz3Ynxpn0ljGYI3/mkI4MKcnmgodpGgcUZZU1NiTWQZXp3rdDcQVxnn4K
+         xn6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=X3EnmfRz;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=b+Zpfgwr;
+       spf=pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shentey@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shentey@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t16sor3372647wrm.74.2022.01.14.03.02.51
+        by mx.google.com with SMTPS id l20sor6277212lje.2.2022.01.17.07.08.31
         (Google Transport Security);
-        Fri, 14 Jan 2022 03:02:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 17 Jan 2022 07:08:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=X3EnmfRz;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=b+Zpfgwr;
+       spf=pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shentey@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=sender:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=t/G7JZA9GQDFGfYcKoq7rnD+jJp/08VTYN/09/cRKc4=;
-        b=X3EnmfRzzUCkoKzau5pNnZ7iZ+INseRQ75C1ofylalMX35Y+WBDgf63tSrFdlRtmkE
-         1RDXrAlKxXoJ/LIpqzSUPWdEJhaGIlWYaP1esYACXAaThenXrolN2IZxgxT+5J39O7tf
-         5s18Wu+2nzl3U1GsTI/vXDZq3yjjnYQssPJ2sYp4/cle1aTEyxIa+q33XEslVWkNe5/4
-         Sc+SQaZOF5Ht82sLMEoPn4964FDR1qrVMkaKe8APogfjFrMVpz9QkLAE8k+OkbkIAONu
-         7L4SQopTl5UrzOoRb1/mxsUgRsSbRk+FhktijIblNYpJym+DjHzkDOEn6KtFr8taDPkw
-         XbRQ==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=xNM/c2SV6LNlYtbRMau2y6pZ9yk6MJ9uH0Q2zDl/Fko=;
+        b=b+Zpfgwr/KVDQSnfoFKbIHznKaEfuJXzjVr+O2khdJB8TaPSBobp0SrUttG07mpfu/
+         o72pG/HmuBd7iTsDMdwQfAbjqtr7J9vqIieK6r0sb4z+XjydP8uCHw1NGk40O/iHgsH2
+         gmOcyHs08SKFmDHkK+XwQzwEBwHNBeRFxNSoJUvsCQOv23zTn9fD0M3GEd0rso0ws7fL
+         cN9GDUe8lgly+6OVhQ3BeiwjUTVQ8gYdR5VhvZR8IXkl98Aptrdm5HO5v0F3ED7By/KA
+         8iMAjZDgFsnbJM/g20KXn6VhOtFURQoFlIDs/JQ1pQSYKMe02ghim4oA5TAjVsgkYSaU
+         tG8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
-         :subject:content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=t/G7JZA9GQDFGfYcKoq7rnD+jJp/08VTYN/09/cRKc4=;
-        b=nUckK/tbcF9rHUxf150iDy14+w8e4TITnoBsMKERtEmaFRawfjZS+nt+4BLwyLkPty
-         WuW61X+dW6vRcIj/pXF8n5dsrbNdylHRUmdr3OimoBx1SODCwlVyT9FtHvk5bbkEURFl
-         ZrzFa6QF6Og2gg6E9tq9WVHtXyd4w9L3BiV/yOau5+KP67vElEc7VmjtLF1oUDcaNbar
-         5KkNxArb6ng3ticw+n0mFCmWD6KxwSEHCPaGjYVq4/SYuSCsG2KnJtHqzuNpLTAlS2zt
-         rjzZvXujTjbLQA+GzP03zwyTW4R2gZuIfZhNdKLIsu6Y0Kv+74i09sZ0fc6CEsj/jG/J
-         qY+A==
-X-Gm-Message-State: AOAM5329YLvXCnFvO5JxDeV7C/HsDqmvjUkAhrWCmHK24jwNhNrBmD68
-	k2FTMfIPg09Ua408LuYb2Dw=
-X-Google-Smtp-Source: ABdhPJw1Lp+pfkjhVE9hqZpenPO4cc2wMslXnA7d/8vNWyF1R90+TCqWN2cNZc8fAi3rAX94d3L6pw==
-X-Received: by 2002:adf:cd8f:: with SMTP id q15mr2214666wrj.118.1642158171105;
-        Fri, 14 Jan 2022 03:02:51 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from ?IPV6:2a01:e34:ec40:49e0:48b5:8fce:b44b:d951? ([2a01:e34:ec40:49e0:48b5:8fce:b44b:d951])
-        by smtp.gmail.com with ESMTPSA id v13sm5729254wro.90.2022.01.14.03.02.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Jan 2022 03:02:50 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Message-ID: <abbe1a9b-96ea-26d5-0375-1eeb7f5e4e42@amsat.org>
-Date: Fri, 14 Jan 2022 12:02:48 +0100
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=xNM/c2SV6LNlYtbRMau2y6pZ9yk6MJ9uH0Q2zDl/Fko=;
+        b=I1ODglWTeoN5d8/Bp3s1e++Dm8QXernGBAYwWMUlaYpPSxqb6imHMuBOdtIN0OoCaW
+         Z613MrVLIWIsHAs5T5UTcbQ3JOjVAT68psxkz4yv9kg3DQp5MHGZ0X91P7TpKmIBETLp
+         cjFncsdXYF6K/Ohe2Y+DWETuk0K6ZOE2Tgz+fdTUjN/X3o5V0w8uyUosR0otPTSnXfMN
+         nPCAeC7Z0/Omw7ooMt0p97ow3ABIJh5TE9WwNxaKCBl3RtaoYD0yKLPYyvGP9z3XQ21U
+         sVUGF1JAorFGu0tjqzqfHXHE8/5gwv7pnoS8vCaaakPK74NzjWaWuU3rtD4KC265ibrj
+         MqGQ==
+X-Gm-Message-State: AOAM5322Ewe7pYBuqFG/mG8IGQemw35Ni9aX5gNg62jvQthcrI46ksCr
+	f8ZIBvBAc1wP9OIL9FhhgqfLuXlSKtCW3c9MBF0=
+X-Google-Smtp-Source: ABdhPJxTi6YALprh6A8+8Ec4pzZQDsFupzwJfA9VvNHA1pCf8/oJrKV5Yzd47jeeL4vYcS43DvsMCLifkTOK1PROZoA=
+X-Received: by 2002:a2e:bf1e:: with SMTP id c30mr16454219ljr.408.1642432110340;
+ Mon, 17 Jan 2022 07:08:30 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.0
-Subject: Re: [PATCH] Mark remaining global TypeInfo instances as const
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Corey Minyard <minyard@acm.org>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Jason Wang <jasowang@redhat.com>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
- <hpoussin@reactos.org>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, Fam Zheng
- <fam@euphon.net>, Beniamino Galvani <b.galvani@gmail.com>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting
- <kfting@nuvoton.com>, Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- "open list:Raspberry Pi" <qemu-arm@nongnu.org>,
- "open list:e500" <qemu-ppc@nongnu.org>,
- "open list:S390 PCI" <qemu-s390x@nongnu.org>
 References: <20220113171038.18128-1-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 In-Reply-To: <20220113171038.18128-1-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: AUdsrSzyjsBC
+From: Bernhard Beschow <shentey@gmail.com>
+Date: Mon, 17 Jan 2022 16:08:09 +0100
+Message-ID: <CAG4p6K7AZ4iixONiX--cnYWJvhyjwjiBwZSFLPhLz2+ejMTT_g@mail.gmail.com>
+Subject: Re: [PATCH] Mark remaining global TypeInfo instances as const
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+	Alistair Francis <alistair@alistair23.me>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, Andrew Baumann <Andrew.Baumann@microsoft.com>, 
+	Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
+	Eduardo Habkost <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+	Corey Minyard <minyard@acm.org>, Xiao Guangrong <xiaoguangrong.eric@gmail.com>, 
+	Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>, Jason Wang <jasowang@redhat.com>, 
+	=?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	Daniel Henrique Barboza <danielhb413@gmail.com>, David Gibson <david@gibson.dropbear.id.au>, 
+	Greg Kurz <groug@kaod.org>, Matthew Rosato <mjrosato@linux.ibm.com>, 
+	Eric Farman <farman@linux.ibm.com>, David Hildenbrand <david@redhat.com>, 
+	Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+	Christian Borntraeger <borntraeger@linux.ibm.com>, Fam Zheng <fam@euphon.net>, 
+	Beniamino Galvani <b.galvani@gmail.com>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Havard Skinnemoen <hskinnemoen@google.com>, 
+	Tyrone Ting <kfting@nuvoton.com>, Alex Williamson <alex.williamson@redhat.com>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	"open list:Raspberry Pi" <qemu-arm@nongnu.org>, "open list:e500" <qemu-ppc@nongnu.org>, 
+	"open list:S390 PCI" <qemu-s390x@nongnu.org>
+Content-Type: multipart/alternative; boundary="00000000000081316405d5c8861b"
+X-TUID: HWOoRgGjsJAK
 
-On 13/1/22 18:10, Bernhard Beschow wrote:
+--00000000000081316405d5c8861b
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Philippe,
+
+Thanks for your review. I've now sent v2 of the patch with your comments
+addressed.
+
+BTW: I almost missed your review because apparently I wasn't in the CC.
+That is also the reason I'm not responding to your mail directly.
+
+Bernhard.
+
+On Thu, Jan 13, 2022 at 6:10 PM Bernhard Beschow <shentey@gmail.com> wrote:
+
 > More than 1k of TypeInfo instances are already marked as const. Mark the
 > remaining ones, too.
-> 
+>
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   hw/core/generic-loader.c   | 2 +-
->   hw/core/guest-loader.c     | 2 +-
->   hw/display/bcm2835_fb.c    | 2 +-
->   hw/display/i2c-ddc.c       | 2 +-
->   hw/display/macfb.c         | 4 ++--
->   hw/display/virtio-vga.c    | 2 +-
->   hw/dma/bcm2835_dma.c       | 2 +-
->   hw/i386/pc_piix.c          | 2 +-
->   hw/i386/sgx-epc.c          | 2 +-
->   hw/intc/bcm2835_ic.c       | 2 +-
->   hw/intc/bcm2836_control.c  | 2 +-
->   hw/ipmi/ipmi.c             | 4 ++--
->   hw/mem/nvdimm.c            | 2 +-
->   hw/mem/pc-dimm.c           | 2 +-
->   hw/misc/bcm2835_mbox.c     | 2 +-
->   hw/misc/bcm2835_powermgt.c | 2 +-
->   hw/misc/bcm2835_property.c | 2 +-
->   hw/misc/bcm2835_rng.c      | 2 +-
->   hw/misc/pvpanic-isa.c      | 2 +-
->   hw/misc/pvpanic-pci.c      | 2 +-
->   hw/net/fsl_etsec/etsec.c   | 2 +-
->   hw/ppc/prep_systemio.c     | 2 +-
->   hw/ppc/spapr_iommu.c       | 2 +-
->   hw/s390x/s390-pci-bus.c    | 2 +-
->   hw/s390x/sclp.c            | 2 +-
->   hw/s390x/tod-kvm.c         | 2 +-
->   hw/s390x/tod-tcg.c         | 2 +-
->   hw/s390x/tod.c             | 2 +-
->   hw/scsi/lsi53c895a.c       | 2 +-
->   hw/sd/allwinner-sdhost.c   | 2 +-
->   hw/sd/aspeed_sdhci.c       | 2 +-
->   hw/sd/bcm2835_sdhost.c     | 2 +-
->   hw/sd/cadence_sdhci.c      | 2 +-
->   hw/sd/npcm7xx_sdhci.c      | 2 +-
->   hw/usb/dev-mtp.c           | 2 +-
->   hw/usb/host-libusb.c       | 2 +-
->   hw/vfio/igd.c              | 2 +-
->   hw/virtio/virtio-pmem.c    | 2 +-
->   qom/object.c               | 4 ++--
->   39 files changed, 42 insertions(+), 42 deletions(-)
-> 
+>  hw/core/generic-loader.c   | 2 +-
+>  hw/core/guest-loader.c     | 2 +-
+>  hw/display/bcm2835_fb.c    | 2 +-
+>  hw/display/i2c-ddc.c       | 2 +-
+>  hw/display/macfb.c         | 4 ++--
+>  hw/display/virtio-vga.c    | 2 +-
+>  hw/dma/bcm2835_dma.c       | 2 +-
+>  hw/i386/pc_piix.c          | 2 +-
+>  hw/i386/sgx-epc.c          | 2 +-
+>  hw/intc/bcm2835_ic.c       | 2 +-
+>  hw/intc/bcm2836_control.c  | 2 +-
+>  hw/ipmi/ipmi.c             | 4 ++--
+>  hw/mem/nvdimm.c            | 2 +-
+>  hw/mem/pc-dimm.c           | 2 +-
+>  hw/misc/bcm2835_mbox.c     | 2 +-
+>  hw/misc/bcm2835_powermgt.c | 2 +-
+>  hw/misc/bcm2835_property.c | 2 +-
+>  hw/misc/bcm2835_rng.c      | 2 +-
+>  hw/misc/pvpanic-isa.c      | 2 +-
+>  hw/misc/pvpanic-pci.c      | 2 +-
+>  hw/net/fsl_etsec/etsec.c   | 2 +-
+>  hw/ppc/prep_systemio.c     | 2 +-
+>  hw/ppc/spapr_iommu.c       | 2 +-
+>  hw/s390x/s390-pci-bus.c    | 2 +-
+>  hw/s390x/sclp.c            | 2 +-
+>  hw/s390x/tod-kvm.c         | 2 +-
+>  hw/s390x/tod-tcg.c         | 2 +-
+>  hw/s390x/tod.c             | 2 +-
+>  hw/scsi/lsi53c895a.c       | 2 +-
+>  hw/sd/allwinner-sdhost.c   | 2 +-
+>  hw/sd/aspeed_sdhci.c       | 2 +-
+>  hw/sd/bcm2835_sdhost.c     | 2 +-
+>  hw/sd/cadence_sdhci.c      | 2 +-
+>  hw/sd/npcm7xx_sdhci.c      | 2 +-
+>  hw/usb/dev-mtp.c           | 2 +-
+>  hw/usb/host-libusb.c       | 2 +-
+>  hw/vfio/igd.c              | 2 +-
+>  hw/virtio/virtio-pmem.c    | 2 +-
+>  qom/object.c               | 4 ++--
+>  39 files changed, 42 insertions(+), 42 deletions(-)
+>
 > diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
 > index 9a24ffb880..eaafc416f4 100644
 > --- a/hw/core/generic-loader.c
 > +++ b/hw/core/generic-loader.c
-> @@ -207,7 +207,7 @@ static void generic_loader_class_init(ObjectClass *klass, void *data)
->       set_bit(DEVICE_CATEGORY_MISC, dc->categories);
->   }
->   
+> @@ -207,7 +207,7 @@ static void generic_loader_class_init(ObjectClass
+> *klass, void *data)
+>      set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>  }
+>
 > -static TypeInfo generic_loader_info = {
 > +static const TypeInfo generic_loader_info = {
+>      .name = TYPE_GENERIC_LOADER,
+>      .parent = TYPE_DEVICE,
+>      .instance_size = sizeof(GenericLoaderState),
+> diff --git a/hw/core/guest-loader.c b/hw/core/guest-loader.c
+> index d3f9d1a06e..391c875a29 100644
+> --- a/hw/core/guest-loader.c
+> +++ b/hw/core/guest-loader.c
+> @@ -129,7 +129,7 @@ static void guest_loader_class_init(ObjectClass
+> *klass, void *data)
+>      set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>  }
+>
+> -static TypeInfo guest_loader_info = {
+> +static const TypeInfo guest_loader_info = {
+>      .name = TYPE_GUEST_LOADER,
+>      .parent = TYPE_DEVICE,
+>      .instance_size = sizeof(GuestLoaderState),
+> diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
+> index 2be77bdd3a..088fc3d51c 100644
+> --- a/hw/display/bcm2835_fb.c
+> +++ b/hw/display/bcm2835_fb.c
+> @@ -454,7 +454,7 @@ static void bcm2835_fb_class_init(ObjectClass *klass,
+> void *data)
+>      dc->vmsd = &vmstate_bcm2835_fb;
+>  }
+>
+> -static TypeInfo bcm2835_fb_info = {
+> +static const TypeInfo bcm2835_fb_info = {
+>      .name          = TYPE_BCM2835_FB,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(BCM2835FBState),
+> diff --git a/hw/display/i2c-ddc.c b/hw/display/i2c-ddc.c
+> index 13eb529fc1..146489518c 100644
+> --- a/hw/display/i2c-ddc.c
+> +++ b/hw/display/i2c-ddc.c
+> @@ -113,7 +113,7 @@ static void i2c_ddc_class_init(ObjectClass *oc, void
+> *data)
+>      isc->send = i2c_ddc_tx;
+>  }
+>
+> -static TypeInfo i2c_ddc_info = {
+> +static const TypeInfo i2c_ddc_info = {
+>      .name = TYPE_I2CDDC,
+>      .parent = TYPE_I2C_SLAVE,
+>      .instance_size = sizeof(I2CDDCState),
+> diff --git a/hw/display/macfb.c b/hw/display/macfb.c
+> index 4bd7c3ad6a..69c2ea2b6e 100644
+> --- a/hw/display/macfb.c
+> +++ b/hw/display/macfb.c
+> @@ -783,14 +783,14 @@ static void macfb_nubus_class_init(ObjectClass
+> *klass, void *data)
+>      device_class_set_props(dc, macfb_nubus_properties);
+>  }
+>
+> -static TypeInfo macfb_sysbus_info = {
+> +static const TypeInfo macfb_sysbus_info = {
+>      .name          = TYPE_MACFB,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(MacfbSysBusState),
+>      .class_init    = macfb_sysbus_class_init,
+>  };
+>
+> -static TypeInfo macfb_nubus_info = {
+> +static const TypeInfo macfb_nubus_info = {
+>      .name          = TYPE_NUBUS_MACFB,
+>      .parent        = TYPE_NUBUS_DEVICE,
+>      .instance_size = sizeof(MacfbNubusState),
+> diff --git a/hw/display/virtio-vga.c b/hw/display/virtio-vga.c
+> index b23a75a04b..5a2f7a4540 100644
+> --- a/hw/display/virtio-vga.c
+> +++ b/hw/display/virtio-vga.c
+> @@ -220,7 +220,7 @@ static void virtio_vga_base_class_init(ObjectClass
+> *klass, void *data)
+>                                     virtio_vga_set_big_endian_fb);
+>  }
+>
+> -static TypeInfo virtio_vga_base_info = {
+> +static const TypeInfo virtio_vga_base_info = {
+>      .name          = TYPE_VIRTIO_VGA_BASE,
+>      .parent        = TYPE_VIRTIO_PCI,
+>      .instance_size = sizeof(VirtIOVGABase),
+> diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
+> index eb0002a2b9..5e9306110d 100644
+> --- a/hw/dma/bcm2835_dma.c
+> +++ b/hw/dma/bcm2835_dma.c
+> @@ -394,7 +394,7 @@ static void bcm2835_dma_class_init(ObjectClass *klass,
+> void *data)
+>      dc->vmsd = &vmstate_bcm2835_dma;
+>  }
+>
+> -static TypeInfo bcm2835_dma_info = {
+> +static const TypeInfo bcm2835_dma_info = {
+>      .name          = TYPE_BCM2835_DMA,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(BCM2835DMAState),
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 7c7790a5ce..f6557d3c21 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -865,7 +865,7 @@ static void isa_bridge_class_init(ObjectClass *klass,
+> void *data)
+>      k->class_id     = PCI_CLASS_BRIDGE_ISA;
+>  };
+>
+> -static TypeInfo isa_bridge_info = {
+> +static const TypeInfo isa_bridge_info = {
+>      .name          = "igd-passthrough-isa-bridge",
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PCIDevice),
+> diff --git a/hw/i386/sgx-epc.c b/hw/i386/sgx-epc.c
+> index 96b2940d75..d664829d35 100644
+> --- a/hw/i386/sgx-epc.c
+> +++ b/hw/i386/sgx-epc.c
+> @@ -167,7 +167,7 @@ static void sgx_epc_class_init(ObjectClass *oc, void
+> *data)
+>      mdc->fill_device_info = sgx_epc_md_fill_device_info;
+>  }
+>
+> -static TypeInfo sgx_epc_info = {
+> +static const TypeInfo sgx_epc_info = {
+>      .name          = TYPE_SGX_EPC,
+>      .parent        = TYPE_DEVICE,
+>      .instance_size = sizeof(SGXEPCDevice),
+> diff --git a/hw/intc/bcm2835_ic.c b/hw/intc/bcm2835_ic.c
+> index 9000d995e8..4513fad16f 100644
+> --- a/hw/intc/bcm2835_ic.c
+> +++ b/hw/intc/bcm2835_ic.c
+> @@ -227,7 +227,7 @@ static void bcm2835_ic_class_init(ObjectClass *klass,
+> void *data)
+>      dc->vmsd = &vmstate_bcm2835_ic;
+>  }
+>
+> -static TypeInfo bcm2835_ic_info = {
+> +static const TypeInfo bcm2835_ic_info = {
+>      .name          = TYPE_BCM2835_IC,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(BCM2835ICState),
+> diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
+> index 2ead76ffdc..b0589df188 100644
+> --- a/hw/intc/bcm2836_control.c
+> +++ b/hw/intc/bcm2836_control.c
+> @@ -392,7 +392,7 @@ static void bcm2836_control_class_init(ObjectClass
+> *klass, void *data)
+>      dc->vmsd = &vmstate_bcm2836_control;
+>  }
+>
+> -static TypeInfo bcm2836_control_info = {
+> +static const TypeInfo bcm2836_control_info = {
+>      .name          = TYPE_BCM2836_CONTROL,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(BCM2836ControlState),
+> diff --git a/hw/ipmi/ipmi.c b/hw/ipmi/ipmi.c
+> index 8d35c9fdd6..bbb07b151e 100644
+> --- a/hw/ipmi/ipmi.c
+> +++ b/hw/ipmi/ipmi.c
+> @@ -85,7 +85,7 @@ static void ipmi_interface_class_init(ObjectClass
+> *class, void *data)
+>      ik->do_hw_op = ipmi_do_hw_op;
+>  }
+>
+> -static TypeInfo ipmi_interface_type_info = {
+> +static const TypeInfo ipmi_interface_type_info = {
+>      .name = TYPE_IPMI_INTERFACE,
+>      .parent = TYPE_INTERFACE,
+>      .class_size = sizeof(IPMIInterfaceClass),
+> @@ -120,7 +120,7 @@ static void bmc_class_init(ObjectClass *oc, void *data)
+>      device_class_set_props(dc, ipmi_bmc_properties);
+>  }
+>
+> -static TypeInfo ipmi_bmc_type_info = {
+> +static const TypeInfo ipmi_bmc_type_info = {
+>      .name = TYPE_IPMI_BMC,
+>      .parent = TYPE_DEVICE,
+>      .instance_size = sizeof(IPMIBmc),
+> diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
+> index 7397b67156..933bc5e0c7 100644
+> --- a/hw/mem/nvdimm.c
+> +++ b/hw/mem/nvdimm.c
+> @@ -248,7 +248,7 @@ static void nvdimm_class_init(ObjectClass *oc, void
+> *data)
+>      set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+>  }
+>
+> -static TypeInfo nvdimm_info = {
+> +static const TypeInfo nvdimm_info = {
+>      .name          = TYPE_NVDIMM,
+>      .parent        = TYPE_PC_DIMM,
+>      .class_size    = sizeof(NVDIMMClass),
+> diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
+> index 48b913aba6..28af0d71b2 100644
+> --- a/hw/mem/pc-dimm.c
+> +++ b/hw/mem/pc-dimm.c
+> @@ -286,7 +286,7 @@ static void pc_dimm_class_init(ObjectClass *oc, void
+> *data)
+>      mdc->fill_device_info = pc_dimm_md_fill_device_info;
+>  }
+>
+> -static TypeInfo pc_dimm_info = {
+> +static const TypeInfo pc_dimm_info = {
+>      .name          = TYPE_PC_DIMM,
+>      .parent        = TYPE_DEVICE,
+>      .instance_size = sizeof(PCDIMMDevice),
+> diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
+> index 9f73cbd5e4..1908c152f6 100644
+> --- a/hw/misc/bcm2835_mbox.c
+> +++ b/hw/misc/bcm2835_mbox.c
+> @@ -324,7 +324,7 @@ static void bcm2835_mbox_class_init(ObjectClass
+> *klass, void *data)
+>      dc->vmsd = &vmstate_bcm2835_mbox;
+>  }
+>
+> -static TypeInfo bcm2835_mbox_info = {
+> +static const TypeInfo bcm2835_mbox_info = {
+>      .name          = TYPE_BCM2835_MBOX,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(BCM2835MboxState),
+> diff --git a/hw/misc/bcm2835_powermgt.c b/hw/misc/bcm2835_powermgt.c
+> index 25fa804cbd..976f3d34e5 100644
+> --- a/hw/misc/bcm2835_powermgt.c
+> +++ b/hw/misc/bcm2835_powermgt.c
+> @@ -144,7 +144,7 @@ static void bcm2835_powermgt_class_init(ObjectClass
+> *klass, void *data)
+>      dc->vmsd = &vmstate_bcm2835_powermgt;
+>  }
+>
+> -static TypeInfo bcm2835_powermgt_info = {
+> +static const TypeInfo bcm2835_powermgt_info = {
+>      .name          = TYPE_BCM2835_POWERMGT,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(BCM2835PowerMgtState),
+> diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+> index 76ea511d53..e94e951057 100644
+> --- a/hw/misc/bcm2835_property.c
+> +++ b/hw/misc/bcm2835_property.c
+> @@ -421,7 +421,7 @@ static void bcm2835_property_class_init(ObjectClass
+> *klass, void *data)
+>      dc->vmsd = &vmstate_bcm2835_property;
+>  }
+>
+> -static TypeInfo bcm2835_property_info = {
+> +static const TypeInfo bcm2835_property_info = {
+>      .name          = TYPE_BCM2835_PROPERTY,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(BCM2835PropertyState),
+> diff --git a/hw/misc/bcm2835_rng.c b/hw/misc/bcm2835_rng.c
+> index d0c4e64e88..b3c80cf186 100644
+> --- a/hw/misc/bcm2835_rng.c
+> +++ b/hw/misc/bcm2835_rng.c
+> @@ -131,7 +131,7 @@ static void bcm2835_rng_class_init(ObjectClass *klass,
+> void *data)
+>      dc->vmsd = &vmstate_bcm2835_rng;
+>  }
+>
+> -static TypeInfo bcm2835_rng_info = {
+> +static const TypeInfo bcm2835_rng_info = {
+>      .name          = TYPE_BCM2835_RNG,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(BCM2835RngState),
+> diff --git a/hw/misc/pvpanic-isa.c b/hw/misc/pvpanic-isa.c
+> index 7b66d58acc..a39fcdd1fc 100644
+> --- a/hw/misc/pvpanic-isa.c
+> +++ b/hw/misc/pvpanic-isa.c
+> @@ -77,7 +77,7 @@ static void pvpanic_isa_class_init(ObjectClass *klass,
+> void *data)
+>      set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>  }
+>
+> -static TypeInfo pvpanic_isa_info = {
+> +static const TypeInfo pvpanic_isa_info = {
+>      .name          = TYPE_PVPANIC_ISA_DEVICE,
+>      .parent        = TYPE_ISA_DEVICE,
+>      .instance_size = sizeof(PVPanicISAState),
+> diff --git a/hw/misc/pvpanic-pci.c b/hw/misc/pvpanic-pci.c
+> index af8cbe2830..62e1be68c1 100644
+> --- a/hw/misc/pvpanic-pci.c
+> +++ b/hw/misc/pvpanic-pci.c
+> @@ -74,7 +74,7 @@ static void pvpanic_pci_class_init(ObjectClass *klass,
+> void *data)
+>      set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>  }
+>
+> -static TypeInfo pvpanic_pci_info = {
+> +static const TypeInfo pvpanic_pci_info = {
+>      .name          = TYPE_PVPANIC_PCI_DEVICE,
+>      .parent        = TYPE_PCI_DEVICE,
+>      .instance_size = sizeof(PVPanicPCIState),
+> diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
+> index bd9d62b559..e7fc082518 100644
+> --- a/hw/net/fsl_etsec/etsec.c
+> +++ b/hw/net/fsl_etsec/etsec.c
+> @@ -430,7 +430,7 @@ static void etsec_class_init(ObjectClass *klass, void
+> *data)
+>      dc->user_creatable = true;
+>  }
+>
+> -static TypeInfo etsec_info = {
+> +static const TypeInfo etsec_info = {
+>      .name                  = TYPE_ETSEC_COMMON,
+>      .parent                = TYPE_SYS_BUS_DEVICE,
+>      .instance_size         = sizeof(eTSEC),
+> diff --git a/hw/ppc/prep_systemio.c b/hw/ppc/prep_systemio.c
+> index b2bd783248..8c9b8dd67b 100644
+> --- a/hw/ppc/prep_systemio.c
+> +++ b/hw/ppc/prep_systemio.c
+> @@ -300,7 +300,7 @@ static void prep_systemio_class_initfn(ObjectClass
+> *klass, void *data)
+>      device_class_set_props(dc, prep_systemio_properties);
+>  }
+>
+> -static TypeInfo prep_systemio800_info = {
+> +static const TypeInfo prep_systemio800_info = {
+>      .name          = TYPE_PREP_SYSTEMIO,
+>      .parent        = TYPE_ISA_DEVICE,
+>      .instance_size = sizeof(PrepSystemIoState),
+> diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
+> index db01071858..81e5a1aea3 100644
+> --- a/hw/ppc/spapr_iommu.c
+> +++ b/hw/ppc/spapr_iommu.c
+> @@ -685,7 +685,7 @@ static void spapr_tce_table_class_init(ObjectClass
+> *klass, void *data)
+>      spapr_register_hypercall(H_STUFF_TCE, h_stuff_tce);
+>  }
+>
+> -static TypeInfo spapr_tce_table_info = {
+> +static const TypeInfo spapr_tce_table_info = {
+>      .name = TYPE_SPAPR_TCE_TABLE,
+>      .parent = TYPE_DEVICE,
+>      .instance_size = sizeof(SpaprTceTable),
+> diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+> index 01b58ebc70..4b2bdd94b3 100644
+> --- a/hw/s390x/s390-pci-bus.c
+> +++ b/hw/s390x/s390-pci-bus.c
+> @@ -1392,7 +1392,7 @@ static const TypeInfo s390_pci_device_info = {
+>      .class_init = s390_pci_device_class_init,
+>  };
+>
+> -static TypeInfo s390_pci_iommu_info = {
+> +static const TypeInfo s390_pci_iommu_info = {
+>      .name = TYPE_S390_PCI_IOMMU,
+>      .parent = TYPE_OBJECT,
+>      .instance_size = sizeof(S390PCIIOMMU),
+> diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c
+> index 89c30a8a91..eff74479f4 100644
+> --- a/hw/s390x/sclp.c
+> +++ b/hw/s390x/sclp.c
+> @@ -460,7 +460,7 @@ static void sclp_class_init(ObjectClass *oc, void
+> *data)
+>      sc->service_interrupt = service_interrupt;
+>  }
+>
+> -static TypeInfo sclp_info = {
+> +static const TypeInfo sclp_info = {
+>      .name = TYPE_SCLP,
+>      .parent = TYPE_DEVICE,
+>      .instance_init = sclp_init,
+> diff --git a/hw/s390x/tod-kvm.c b/hw/s390x/tod-kvm.c
+> index ec855811ae..9d0cbfbce2 100644
+> --- a/hw/s390x/tod-kvm.c
+> +++ b/hw/s390x/tod-kvm.c
+> @@ -147,7 +147,7 @@ static void kvm_s390_tod_init(Object *obj)
+>      td->stopped = false;
+>  }
+>
+> -static TypeInfo kvm_s390_tod_info = {
+> +static const TypeInfo kvm_s390_tod_info = {
+>      .name = TYPE_KVM_S390_TOD,
+>      .parent = TYPE_S390_TOD,
+>      .instance_size = sizeof(S390TODState),
+> diff --git a/hw/s390x/tod-tcg.c b/hw/s390x/tod-tcg.c
+> index 9bb94ff72b..ad4993203d 100644
+> --- a/hw/s390x/tod-tcg.c
+> +++ b/hw/s390x/tod-tcg.c
+> @@ -73,7 +73,7 @@ static void qemu_s390_tod_init(Object *obj)
+>      }
+>  }
+>
+> -static TypeInfo qemu_s390_tod_info = {
+> +static const TypeInfo qemu_s390_tod_info = {
+>      .name = TYPE_QEMU_S390_TOD,
+>      .parent = TYPE_S390_TOD,
+>      .instance_size = sizeof(S390TODState),
+> diff --git a/hw/s390x/tod.c b/hw/s390x/tod.c
+> index fd5a36bf24..c81b1c0338 100644
+> --- a/hw/s390x/tod.c
+> +++ b/hw/s390x/tod.c
+> @@ -123,7 +123,7 @@ static void s390_tod_class_init(ObjectClass *oc, void
+> *data)
+>      dc->user_creatable = false;
+>  }
+>
+> -static TypeInfo s390_tod_info = {
+> +static const TypeInfo s390_tod_info = {
+>      .name = TYPE_S390_TOD,
+>      .parent = TYPE_DEVICE,
+>      .instance_size = sizeof(S390TODState),
+> diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
+> index 4c431adb77..c8773f73f7 100644
+> --- a/hw/scsi/lsi53c895a.c
+> +++ b/hw/scsi/lsi53c895a.c
+> @@ -2352,7 +2352,7 @@ static void lsi53c810_class_init(ObjectClass *klass,
+> void *data)
+>      k->device_id = PCI_DEVICE_ID_LSI_53C810;
+>  }
+>
+> -static TypeInfo lsi53c810_info = {
+> +static const TypeInfo lsi53c810_info = {
+>      .name          = TYPE_LSI53C810,
+>      .parent        = TYPE_LSI53C895A,
+>      .class_init    = lsi53c810_class_init,
+> diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
+> index de5bc49e68..041e45c680 100644
+> --- a/hw/sd/allwinner-sdhost.c
+> +++ b/hw/sd/allwinner-sdhost.c
+> @@ -835,7 +835,7 @@ static void
+> allwinner_sdhost_sun5i_class_init(ObjectClass *klass, void *data)
+>      sc->max_desc_size = 64 * KiB;
+>  }
+>
+> -static TypeInfo allwinner_sdhost_info = {
+> +static const TypeInfo allwinner_sdhost_info = {
+>      .name          = TYPE_AW_SDHOST,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_init = allwinner_sdhost_init,
+> diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+> index df1bdf1fa4..be8cafd65f 100644
+> --- a/hw/sd/aspeed_sdhci.c
+> +++ b/hw/sd/aspeed_sdhci.c
+> @@ -198,7 +198,7 @@ static void aspeed_sdhci_class_init(ObjectClass
+> *classp, void *data)
+>      device_class_set_props(dc, aspeed_sdhci_properties);
+>  }
+>
+> -static TypeInfo aspeed_sdhci_info = {
+> +static const TypeInfo aspeed_sdhci_info = {
+>      .name          = TYPE_ASPEED_SDHCI,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(AspeedSDHCIState),
+> diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c
+> index 088a7ac6ed..9431c35914 100644
+> --- a/hw/sd/bcm2835_sdhost.c
+> +++ b/hw/sd/bcm2835_sdhost.c
+> @@ -436,7 +436,7 @@ static void bcm2835_sdhost_class_init(ObjectClass
+> *klass, void *data)
+>      dc->vmsd = &vmstate_bcm2835_sdhost;
+>  }
+>
+> -static TypeInfo bcm2835_sdhost_info = {
+> +static const TypeInfo bcm2835_sdhost_info = {
+>      .name          = TYPE_BCM2835_SDHOST,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(BCM2835SDHostState),
+> diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
+> index 56b8bae1c3..75db34befe 100644
+> --- a/hw/sd/cadence_sdhci.c
+> +++ b/hw/sd/cadence_sdhci.c
+> @@ -175,7 +175,7 @@ static void cadence_sdhci_class_init(ObjectClass
+> *classp, void *data)
+>      dc->vmsd = &vmstate_cadence_sdhci;
+>  }
+>
+> -static TypeInfo cadence_sdhci_info = {
+> +static const TypeInfo cadence_sdhci_info = {
+>      .name          = TYPE_CADENCE_SDHCI,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(CadenceSDHCIState),
+> diff --git a/hw/sd/npcm7xx_sdhci.c b/hw/sd/npcm7xx_sdhci.c
+> index ef503365df..b2f5b4a542 100644
+> --- a/hw/sd/npcm7xx_sdhci.c
+> +++ b/hw/sd/npcm7xx_sdhci.c
+> @@ -166,7 +166,7 @@ static void npcm7xx_sdhci_instance_init(Object *obj)
+>                              TYPE_SYSBUS_SDHCI);
+>  }
+>
+> -static TypeInfo npcm7xx_sdhci_info = {
+> +static const TypeInfo npcm7xx_sdhci_info = {
+>      .name = TYPE_NPCM7XX_SDHCI,
+>      .parent = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(NPCM7xxSDHCIState),
+> diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
+> index c1d1694fd0..1e6ac76bef 100644
+> --- a/hw/usb/dev-mtp.c
+> +++ b/hw/usb/dev-mtp.c
+> @@ -2106,7 +2106,7 @@ static void usb_mtp_class_initfn(ObjectClass *klass,
+> void *data)
+>      device_class_set_props(dc, mtp_properties);
+>  }
+>
+> -static TypeInfo mtp_info = {
+> +static const TypeInfo mtp_info = {
+>      .name          = TYPE_USB_MTP,
+>      .parent        = TYPE_USB_DEVICE,
+>      .instance_size = sizeof(MTPState),
+> diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
+> index d0d46dd0a4..2b35cb6cdd 100644
+> --- a/hw/usb/host-libusb.c
+> +++ b/hw/usb/host-libusb.c
+> @@ -1801,7 +1801,7 @@ static void usb_host_class_initfn(ObjectClass
+> *klass, void *data)
+>      set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>  }
+>
+> -static TypeInfo usb_host_dev_info = {
+> +static const TypeInfo usb_host_dev_info = {
+>      .name          = TYPE_USB_HOST_DEVICE,
+>      .parent        = TYPE_USB_DEVICE,
+>      .instance_size = sizeof(USBHostDevice),
+> diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
+> index d4685709a3..afe3fe7efc 100644
+> --- a/hw/vfio/igd.c
+> +++ b/hw/vfio/igd.c
+> @@ -199,7 +199,7 @@ static void
+> vfio_pci_igd_lpc_bridge_class_init(ObjectClass *klass, void *data)
+>      k->class_id = PCI_CLASS_BRIDGE_ISA;
+>  }
+>
+> -static TypeInfo vfio_pci_igd_lpc_bridge_info = {
+> +static const TypeInfo vfio_pci_igd_lpc_bridge_info = {
+>      .name = "vfio-pci-igd-lpc-bridge",
+>      .parent = TYPE_PCI_DEVICE,
+>      .class_init = vfio_pci_igd_lpc_bridge_class_init,
+> diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c
+> index d1aeb90a31..5419dca75e 100644
+> --- a/hw/virtio/virtio-pmem.c
+> +++ b/hw/virtio/virtio-pmem.c
+> @@ -182,7 +182,7 @@ static void virtio_pmem_class_init(ObjectClass *klass,
+> void *data)
+>      set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+>  }
+>
+> -static TypeInfo virtio_pmem_info = {
+> +static const TypeInfo virtio_pmem_info = {
+>      .name          = TYPE_VIRTIO_PMEM,
+>      .parent        = TYPE_VIRTIO_DEVICE,
+>      .class_size    = sizeof(VirtIOPMEMClass),
+> diff --git a/qom/object.c b/qom/object.c
+> index 4f0677cca9..9f7a33139d 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -2793,13 +2793,13 @@ static void object_class_init(ObjectClass *klass,
+> void *data)
+>
+>  static void register_types(void)
+>  {
+> -    static TypeInfo interface_info = {
+> +    static const TypeInfo interface_info = {
+>          .name = TYPE_INTERFACE,
+>          .class_size = sizeof(InterfaceClass),
+>          .abstract = true,
+>      };
+>
+> -    static TypeInfo object_info = {
+> +    static const TypeInfo object_info = {
+>          .name = TYPE_OBJECT,
+>          .instance_size = sizeof(Object),
+>          .class_init = object_class_init,
+> --
+> 2.34.1
+>
+>
 
-Good cleanup. If you use a sed expression to automatically replace,
-it would be nice to mention it (see i.e. commit f548f20176cb5f4406).
+--00000000000081316405d5c8861b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div>Thanks for your=
+ review. I&#39;ve now sent v2 of the patch with your comments addressed.</d=
+iv><div><br></div><div>BTW: I almost missed your review  because apparently=
+ I wasn&#39;t in the CC. That is also the reason I&#39;m not responding to =
+your mail directly.<br></div><div><br></div>Bernhard.<br></div><br><div cla=
+ss=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jan 13, 20=
+22 at 6:10 PM Bernhard Beschow &lt;<a href=3D"mailto:shentey@gmail.com">she=
+ntey@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex">More than 1k of TypeInfo instances are already marked as cons=
+t. Mark the<br>
+remaining ones, too.<br>
+<br>
+Signed-off-by: Bernhard Beschow &lt;<a href=3D"mailto:shentey@gmail.com" ta=
+rget=3D"_blank">shentey@gmail.com</a>&gt;<br>
+---<br>
+=C2=A0hw/core/generic-loader.c=C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/core/guest-loader.c=C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/display/bcm2835_fb.c=C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/display/i2c-ddc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/display/macfb.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 4 ++--<br>
+=C2=A0hw/display/virtio-vga.c=C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/dma/bcm2835_dma.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/i386/pc_piix.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/i386/sgx-epc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/intc/bcm2835_ic.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/intc/bcm2836_control.c=C2=A0 | 2 +-<br>
+=C2=A0hw/ipmi/ipmi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 4 ++-=
+-<br>
+=C2=A0hw/mem/nvdimm.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/mem/pc-dimm.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/misc/bcm2835_mbox.c=C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/misc/bcm2835_powermgt.c | 2 +-<br>
+=C2=A0hw/misc/bcm2835_property.c | 2 +-<br>
+=C2=A0hw/misc/bcm2835_rng.c=C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/misc/pvpanic-isa.c=C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/misc/pvpanic-pci.c=C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/net/fsl_etsec/etsec.c=C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/ppc/prep_systemio.c=C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/ppc/spapr_iommu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/s390x/s390-pci-bus.c=C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/s390x/sclp.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/s390x/tod-kvm.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/s390x/tod-tcg.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/s390x/tod.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<=
+br>
+=C2=A0hw/scsi/lsi53c895a.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/sd/allwinner-sdhost.c=C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/sd/aspeed_sdhci.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/sd/bcm2835_sdhost.c=C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/sd/cadence_sdhci.c=C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/sd/npcm7xx_sdhci.c=C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0hw/usb/dev-mtp.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/usb/host-libusb.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0hw/vfio/igd.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 2 +-<=
+br>
+=C2=A0hw/virtio/virtio-pmem.c=C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0qom/object.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| =
+4 ++--<br>
+=C2=A039 files changed, 42 insertions(+), 42 deletions(-)<br>
+<br>
+diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c<br>
+index 9a24ffb880..eaafc416f4 100644<br>
+--- a/hw/core/generic-loader.c<br>
++++ b/hw/core/generic-loader.c<br>
+@@ -207,7 +207,7 @@ static void generic_loader_class_init(ObjectClass *klas=
+s, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0set_bit(DEVICE_CATEGORY_MISC, dc-&gt;categories);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo generic_loader_info =3D {<br>
++static const TypeInfo generic_loader_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_GENERIC_LOADER,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(GenericLoaderState),<br>
+diff --git a/hw/core/guest-loader.c b/hw/core/guest-loader.c<br>
+index d3f9d1a06e..391c875a29 100644<br>
+--- a/hw/core/guest-loader.c<br>
++++ b/hw/core/guest-loader.c<br>
+@@ -129,7 +129,7 @@ static void guest_loader_class_init(ObjectClass *klass,=
+ void *data)<br>
+=C2=A0 =C2=A0 =C2=A0set_bit(DEVICE_CATEGORY_MISC, dc-&gt;categories);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo guest_loader_info =3D {<br>
++static const TypeInfo guest_loader_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_GUEST_LOADER,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(GuestLoaderState),<br>
+diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c<br>
+index 2be77bdd3a..088fc3d51c 100644<br>
+--- a/hw/display/bcm2835_fb.c<br>
++++ b/hw/display/bcm2835_fb.c<br>
+@@ -454,7 +454,7 @@ static void bcm2835_fb_class_init(ObjectClass *klass, v=
+oid *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_bcm2835_fb;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo bcm2835_fb_info =3D {<br>
++static const TypeInfo bcm2835_fb_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_BCM283=
+5_FB,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(BCM2835FBState),<br>
+diff --git a/hw/display/i2c-ddc.c b/hw/display/i2c-ddc.c<br>
+index 13eb529fc1..146489518c 100644<br>
+--- a/hw/display/i2c-ddc.c<br>
++++ b/hw/display/i2c-ddc.c<br>
+@@ -113,7 +113,7 @@ static void i2c_ddc_class_init(ObjectClass *oc, void *d=
+ata)<br>
+=C2=A0 =C2=A0 =C2=A0isc-&gt;send =3D i2c_ddc_tx;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo i2c_ddc_info =3D {<br>
++static const TypeInfo i2c_ddc_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_I2CDDC,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_I2C_SLAVE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(I2CDDCState),<br>
+diff --git a/hw/display/macfb.c b/hw/display/macfb.c<br>
+index 4bd7c3ad6a..69c2ea2b6e 100644<br>
+--- a/hw/display/macfb.c<br>
++++ b/hw/display/macfb.c<br>
+@@ -783,14 +783,14 @@ static void macfb_nubus_class_init(ObjectClass *klass=
+, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0device_class_set_props(dc, macfb_nubus_properties);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo macfb_sysbus_info =3D {<br>
++static const TypeInfo macfb_sysbus_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_MACFB,=
+<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(MacfbSysBusState),<br>
+=C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =3D macfb_sysbus_class_init,<b=
+r>
+=C2=A0};<br>
+<br>
+-static TypeInfo macfb_nubus_info =3D {<br>
++static const TypeInfo macfb_nubus_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_NUBUS_=
+MACFB,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_NUBUS_DEVIC=
+E,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(MacfbNubusState),<br>
+diff --git a/hw/display/virtio-vga.c b/hw/display/virtio-vga.c<br>
+index b23a75a04b..5a2f7a4540 100644<br>
+--- a/hw/display/virtio-vga.c<br>
++++ b/hw/display/virtio-vga.c<br>
+@@ -220,7 +220,7 @@ static void virtio_vga_base_class_init(ObjectClass *kla=
+ss, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 virtio_vga_set_big_end=
+ian_fb);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo virtio_vga_base_info =3D {<br>
++static const TypeInfo virtio_vga_base_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_VIRTIO=
+_VGA_BASE,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_VIRTIO_PCI,=
+<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(VirtIOVGABase),<br>
+diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c<br>
+index eb0002a2b9..5e9306110d 100644<br>
+--- a/hw/dma/bcm2835_dma.c<br>
++++ b/hw/dma/bcm2835_dma.c<br>
+@@ -394,7 +394,7 @@ static void bcm2835_dma_class_init(ObjectClass *klass, =
+void *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_bcm2835_dma;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo bcm2835_dma_info =3D {<br>
++static const TypeInfo bcm2835_dma_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_BCM283=
+5_DMA,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(BCM2835DMAState),<br>
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c<br>
+index 7c7790a5ce..f6557d3c21 100644<br>
+--- a/hw/i386/pc_piix.c<br>
++++ b/hw/i386/pc_piix.c<br>
+@@ -865,7 +865,7 @@ static void isa_bridge_class_init(ObjectClass *klass, v=
+oid *data)<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;class_id=C2=A0 =C2=A0 =C2=A0=3D PCI_CLASS_BRIDGE_=
+ISA;<br>
+=C2=A0};<br>
+<br>
+-static TypeInfo isa_bridge_info =3D {<br>
++static const TypeInfo isa_bridge_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D &quot;igd-p=
+assthrough-isa-bridge&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_PCI_DEVICE,=
+<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(PCIDevice),<br>
+diff --git a/hw/i386/sgx-epc.c b/hw/i386/sgx-epc.c<br>
+index 96b2940d75..d664829d35 100644<br>
+--- a/hw/i386/sgx-epc.c<br>
++++ b/hw/i386/sgx-epc.c<br>
+@@ -167,7 +167,7 @@ static void sgx_epc_class_init(ObjectClass *oc, void *d=
+ata)<br>
+=C2=A0 =C2=A0 =C2=A0mdc-&gt;fill_device_info =3D sgx_epc_md_fill_device_inf=
+o;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo sgx_epc_info =3D {<br>
++static const TypeInfo sgx_epc_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SGX_EP=
+C,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(SGXEPCDevice),<br>
+diff --git a/hw/intc/bcm2835_ic.c b/hw/intc/bcm2835_ic.c<br>
+index 9000d995e8..4513fad16f 100644<br>
+--- a/hw/intc/bcm2835_ic.c<br>
++++ b/hw/intc/bcm2835_ic.c<br>
+@@ -227,7 +227,7 @@ static void bcm2835_ic_class_init(ObjectClass *klass, v=
+oid *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_bcm2835_ic;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo bcm2835_ic_info =3D {<br>
++static const TypeInfo bcm2835_ic_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_BCM283=
+5_IC,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(BCM2835ICState),<br>
+diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c<br>
+index 2ead76ffdc..b0589df188 100644<br>
+--- a/hw/intc/bcm2836_control.c<br>
++++ b/hw/intc/bcm2836_control.c<br>
+@@ -392,7 +392,7 @@ static void bcm2836_control_class_init(ObjectClass *kla=
+ss, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_bcm2836_control;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo bcm2836_control_info =3D {<br>
++static const TypeInfo bcm2836_control_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_BCM283=
+6_CONTROL,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(BCM2836ControlState),<br>
+diff --git a/hw/ipmi/ipmi.c b/hw/ipmi/ipmi.c<br>
+index 8d35c9fdd6..bbb07b151e 100644<br>
+--- a/hw/ipmi/ipmi.c<br>
++++ b/hw/ipmi/ipmi.c<br>
+@@ -85,7 +85,7 @@ static void ipmi_interface_class_init(ObjectClass *class,=
+ void *data)<br>
+=C2=A0 =C2=A0 =C2=A0ik-&gt;do_hw_op =3D ipmi_do_hw_op;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo ipmi_interface_type_info =3D {<br>
++static const TypeInfo ipmi_interface_type_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_IPMI_INTERFACE,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_INTERFACE,<br>
+=C2=A0 =C2=A0 =C2=A0.class_size =3D sizeof(IPMIInterfaceClass),<br>
+@@ -120,7 +120,7 @@ static void bmc_class_init(ObjectClass *oc, void *data)=
+<br>
+=C2=A0 =C2=A0 =C2=A0device_class_set_props(dc, ipmi_bmc_properties);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo ipmi_bmc_type_info =3D {<br>
++static const TypeInfo ipmi_bmc_type_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_IPMI_BMC,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(IPMIBmc),<br>
+diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c<br>
+index 7397b67156..933bc5e0c7 100644<br>
+--- a/hw/mem/nvdimm.c<br>
++++ b/hw/mem/nvdimm.c<br>
+@@ -248,7 +248,7 @@ static void nvdimm_class_init(ObjectClass *oc, void *da=
+ta)<br>
+=C2=A0 =C2=A0 =C2=A0set_bit(DEVICE_CATEGORY_STORAGE, dc-&gt;categories);<br=
+>
+=C2=A0}<br>
+<br>
+-static TypeInfo nvdimm_info =3D {<br>
++static const TypeInfo nvdimm_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_NVDIMM=
+,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_PC_DIMM,<br=
+>
+=C2=A0 =C2=A0 =C2=A0.class_size=C2=A0 =C2=A0 =3D sizeof(NVDIMMClass),<br>
+diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c<br>
+index 48b913aba6..28af0d71b2 100644<br>
+--- a/hw/mem/pc-dimm.c<br>
++++ b/hw/mem/pc-dimm.c<br>
+@@ -286,7 +286,7 @@ static void pc_dimm_class_init(ObjectClass *oc, void *d=
+ata)<br>
+=C2=A0 =C2=A0 =C2=A0mdc-&gt;fill_device_info =3D pc_dimm_md_fill_device_inf=
+o;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo pc_dimm_info =3D {<br>
++static const TypeInfo pc_dimm_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_PC_DIM=
+M,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(PCDIMMDevice),<br>
+diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c<br>
+index 9f73cbd5e4..1908c152f6 100644<br>
+--- a/hw/misc/bcm2835_mbox.c<br>
++++ b/hw/misc/bcm2835_mbox.c<br>
+@@ -324,7 +324,7 @@ static void bcm2835_mbox_class_init(ObjectClass *klass,=
+ void *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_bcm2835_mbox;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo bcm2835_mbox_info =3D {<br>
++static const TypeInfo bcm2835_mbox_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_BCM283=
+5_MBOX,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(BCM2835MboxState),<br>
+diff --git a/hw/misc/bcm2835_powermgt.c b/hw/misc/bcm2835_powermgt.c<br>
+index 25fa804cbd..976f3d34e5 100644<br>
+--- a/hw/misc/bcm2835_powermgt.c<br>
++++ b/hw/misc/bcm2835_powermgt.c<br>
+@@ -144,7 +144,7 @@ static void bcm2835_powermgt_class_init(ObjectClass *kl=
+ass, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_bcm2835_powermgt;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo bcm2835_powermgt_info =3D {<br>
++static const TypeInfo bcm2835_powermgt_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_BCM283=
+5_POWERMGT,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(BCM2835PowerMgtState),<br>
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c<br>
+index 76ea511d53..e94e951057 100644<br>
+--- a/hw/misc/bcm2835_property.c<br>
++++ b/hw/misc/bcm2835_property.c<br>
+@@ -421,7 +421,7 @@ static void bcm2835_property_class_init(ObjectClass *kl=
+ass, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_bcm2835_property;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo bcm2835_property_info =3D {<br>
++static const TypeInfo bcm2835_property_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_BCM283=
+5_PROPERTY,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(BCM2835PropertyState),<br>
+diff --git a/hw/misc/bcm2835_rng.c b/hw/misc/bcm2835_rng.c<br>
+index d0c4e64e88..b3c80cf186 100644<br>
+--- a/hw/misc/bcm2835_rng.c<br>
++++ b/hw/misc/bcm2835_rng.c<br>
+@@ -131,7 +131,7 @@ static void bcm2835_rng_class_init(ObjectClass *klass, =
+void *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_bcm2835_rng;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo bcm2835_rng_info =3D {<br>
++static const TypeInfo bcm2835_rng_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_BCM283=
+5_RNG,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(BCM2835RngState),<br>
+diff --git a/hw/misc/pvpanic-isa.c b/hw/misc/pvpanic-isa.c<br>
+index 7b66d58acc..a39fcdd1fc 100644<br>
+--- a/hw/misc/pvpanic-isa.c<br>
++++ b/hw/misc/pvpanic-isa.c<br>
+@@ -77,7 +77,7 @@ static void pvpanic_isa_class_init(ObjectClass *klass, vo=
+id *data)<br>
+=C2=A0 =C2=A0 =C2=A0set_bit(DEVICE_CATEGORY_MISC, dc-&gt;categories);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo pvpanic_isa_info =3D {<br>
++static const TypeInfo pvpanic_isa_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_PVPANI=
+C_ISA_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_ISA_DEVICE,=
+<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(PVPanicISAState),<br>
+diff --git a/hw/misc/pvpanic-pci.c b/hw/misc/pvpanic-pci.c<br>
+index af8cbe2830..62e1be68c1 100644<br>
+--- a/hw/misc/pvpanic-pci.c<br>
++++ b/hw/misc/pvpanic-pci.c<br>
+@@ -74,7 +74,7 @@ static void pvpanic_pci_class_init(ObjectClass *klass, vo=
+id *data)<br>
+=C2=A0 =C2=A0 =C2=A0set_bit(DEVICE_CATEGORY_MISC, dc-&gt;categories);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo pvpanic_pci_info =3D {<br>
++static const TypeInfo pvpanic_pci_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_PVPANI=
+C_PCI_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_PCI_DEVICE,=
+<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(PVPanicPCIState),<br>
+diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c<br>
+index bd9d62b559..e7fc082518 100644<br>
+--- a/hw/net/fsl_etsec/etsec.c<br>
++++ b/hw/net/fsl_etsec/etsec.c<br>
+@@ -430,7 +430,7 @@ static void etsec_class_init(ObjectClass *klass, void *=
+data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;user_creatable =3D true;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo etsec_info =3D {<br>
++static const TypeInfo etsec_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =3D TYPE_ETSEC_COMMON,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =3D TYPE_SYS_BUS_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=3D siz=
+eof(eTSEC),<br>
+diff --git a/hw/ppc/prep_systemio.c b/hw/ppc/prep_systemio.c<br>
+index b2bd783248..8c9b8dd67b 100644<br>
+--- a/hw/ppc/prep_systemio.c<br>
++++ b/hw/ppc/prep_systemio.c<br>
+@@ -300,7 +300,7 @@ static void prep_systemio_class_initfn(ObjectClass *kla=
+ss, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0device_class_set_props(dc, prep_systemio_properties);<b=
+r>
+=C2=A0}<br>
+<br>
+-static TypeInfo prep_systemio800_info =3D {<br>
++static const TypeInfo prep_systemio800_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_PREP_S=
+YSTEMIO,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_ISA_DEVICE,=
+<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(PrepSystemIoState),<br>
+diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c<br>
+index db01071858..81e5a1aea3 100644<br>
+--- a/hw/ppc/spapr_iommu.c<br>
++++ b/hw/ppc/spapr_iommu.c<br>
+@@ -685,7 +685,7 @@ static void spapr_tce_table_class_init(ObjectClass *kla=
+ss, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0spapr_register_hypercall(H_STUFF_TCE, h_stuff_tce);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo spapr_tce_table_info =3D {<br>
++static const TypeInfo spapr_tce_table_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_SPAPR_TCE_TABLE,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(SpaprTceTable),<br>
+diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c<br>
+index 01b58ebc70..4b2bdd94b3 100644<br>
+--- a/hw/s390x/s390-pci-bus.c<br>
++++ b/hw/s390x/s390-pci-bus.c<br>
+@@ -1392,7 +1392,7 @@ static const TypeInfo s390_pci_device_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.class_init =3D s390_pci_device_class_init,<br>
+=C2=A0};<br>
+<br>
+-static TypeInfo s390_pci_iommu_info =3D {<br>
++static const TypeInfo s390_pci_iommu_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_S390_PCI_IOMMU,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_OBJECT,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(S390PCIIOMMU),<br>
+diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c<br>
+index 89c30a8a91..eff74479f4 100644<br>
+--- a/hw/s390x/sclp.c<br>
++++ b/hw/s390x/sclp.c<br>
+@@ -460,7 +460,7 @@ static void sclp_class_init(ObjectClass *oc, void *data=
+)<br>
+=C2=A0 =C2=A0 =C2=A0sc-&gt;service_interrupt =3D service_interrupt;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo sclp_info =3D {<br>
++static const TypeInfo sclp_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_SCLP,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_init =3D sclp_init,<br>
+diff --git a/hw/s390x/tod-kvm.c b/hw/s390x/tod-kvm.c<br>
+index ec855811ae..9d0cbfbce2 100644<br>
+--- a/hw/s390x/tod-kvm.c<br>
++++ b/hw/s390x/tod-kvm.c<br>
+@@ -147,7 +147,7 @@ static void kvm_s390_tod_init(Object *obj)<br>
+=C2=A0 =C2=A0 =C2=A0td-&gt;stopped =3D false;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo kvm_s390_tod_info =3D {<br>
++static const TypeInfo kvm_s390_tod_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_KVM_S390_TOD,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_S390_TOD,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(S390TODState),<br>
+diff --git a/hw/s390x/tod-tcg.c b/hw/s390x/tod-tcg.c<br>
+index 9bb94ff72b..ad4993203d 100644<br>
+--- a/hw/s390x/tod-tcg.c<br>
++++ b/hw/s390x/tod-tcg.c<br>
+@@ -73,7 +73,7 @@ static void qemu_s390_tod_init(Object *obj)<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo qemu_s390_tod_info =3D {<br>
++static const TypeInfo qemu_s390_tod_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_QEMU_S390_TOD,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_S390_TOD,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(S390TODState),<br>
+diff --git a/hw/s390x/tod.c b/hw/s390x/tod.c<br>
+index fd5a36bf24..c81b1c0338 100644<br>
+--- a/hw/s390x/tod.c<br>
++++ b/hw/s390x/tod.c<br>
+@@ -123,7 +123,7 @@ static void s390_tod_class_init(ObjectClass *oc, void *=
+data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;user_creatable =3D false;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo s390_tod_info =3D {<br>
++static const TypeInfo s390_tod_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_S390_TOD,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(S390TODState),<br>
+diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c<br>
+index 4c431adb77..c8773f73f7 100644<br>
+--- a/hw/scsi/lsi53c895a.c<br>
++++ b/hw/scsi/lsi53c895a.c<br>
+@@ -2352,7 +2352,7 @@ static void lsi53c810_class_init(ObjectClass *klass, =
+void *data)<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;device_id =3D PCI_DEVICE_ID_LSI_53C810;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo lsi53c810_info =3D {<br>
++static const TypeInfo lsi53c810_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_LSI53C=
+810,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_LSI53C895A,=
+<br>
+=C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =3D lsi53c810_class_init,<br>
+diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c<br>
+index de5bc49e68..041e45c680 100644<br>
+--- a/hw/sd/allwinner-sdhost.c<br>
++++ b/hw/sd/allwinner-sdhost.c<br>
+@@ -835,7 +835,7 @@ static void allwinner_sdhost_sun5i_class_init(ObjectCla=
+ss *klass, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0sc-&gt;max_desc_size =3D 64 * KiB;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo allwinner_sdhost_info =3D {<br>
++static const TypeInfo allwinner_sdhost_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_AW_SDH=
+OST,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_init =3D allwinner_sdhost_init,<br>
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c<br>
+index df1bdf1fa4..be8cafd65f 100644<br>
+--- a/hw/sd/aspeed_sdhci.c<br>
++++ b/hw/sd/aspeed_sdhci.c<br>
+@@ -198,7 +198,7 @@ static void aspeed_sdhci_class_init(ObjectClass *classp=
+, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0device_class_set_props(dc, aspeed_sdhci_properties);<br=
+>
+=C2=A0}<br>
+<br>
+-static TypeInfo aspeed_sdhci_info =3D {<br>
++static const TypeInfo aspeed_sdhci_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_ASPEED=
+_SDHCI,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(AspeedSDHCIState),<br>
+diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c<br>
+index 088a7ac6ed..9431c35914 100644<br>
+--- a/hw/sd/bcm2835_sdhost.c<br>
++++ b/hw/sd/bcm2835_sdhost.c<br>
+@@ -436,7 +436,7 @@ static void bcm2835_sdhost_class_init(ObjectClass *klas=
+s, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_bcm2835_sdhost;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo bcm2835_sdhost_info =3D {<br>
++static const TypeInfo bcm2835_sdhost_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_BCM283=
+5_SDHOST,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(BCM2835SDHostState),<br>
+diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c<br>
+index 56b8bae1c3..75db34befe 100644<br>
+--- a/hw/sd/cadence_sdhci.c<br>
++++ b/hw/sd/cadence_sdhci.c<br>
+@@ -175,7 +175,7 @@ static void cadence_sdhci_class_init(ObjectClass *class=
+p, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_cadence_sdhci;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo cadence_sdhci_info =3D {<br>
++static const TypeInfo cadence_sdhci_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_CADENC=
+E_SDHCI,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
+ICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(CadenceSDHCIState),<br>
+diff --git a/hw/sd/npcm7xx_sdhci.c b/hw/sd/npcm7xx_sdhci.c<br>
+index ef503365df..b2f5b4a542 100644<br>
+--- a/hw/sd/npcm7xx_sdhci.c<br>
++++ b/hw/sd/npcm7xx_sdhci.c<br>
+@@ -166,7 +166,7 @@ static void npcm7xx_sdhci_instance_init(Object *obj)<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0TYPE_SYSBUS_SDHCI);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo npcm7xx_sdhci_info =3D {<br>
++static const TypeInfo npcm7xx_sdhci_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_NPCM7XX_SDHCI,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_SYS_BUS_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(NPCM7xxSDHCIState),<br>
+diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c<br>
+index c1d1694fd0..1e6ac76bef 100644<br>
+--- a/hw/usb/dev-mtp.c<br>
++++ b/hw/usb/dev-mtp.c<br>
+@@ -2106,7 +2106,7 @@ static void usb_mtp_class_initfn(ObjectClass *klass, =
+void *data)<br>
+=C2=A0 =C2=A0 =C2=A0device_class_set_props(dc, mtp_properties);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo mtp_info =3D {<br>
++static const TypeInfo mtp_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_USB_MT=
+P,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_USB_DEVICE,=
+<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(MTPState),<br>
+diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c<br>
+index d0d46dd0a4..2b35cb6cdd 100644<br>
+--- a/hw/usb/host-libusb.c<br>
++++ b/hw/usb/host-libusb.c<br>
+@@ -1801,7 +1801,7 @@ static void usb_host_class_initfn(ObjectClass *klass,=
+ void *data)<br>
+=C2=A0 =C2=A0 =C2=A0set_bit(DEVICE_CATEGORY_BRIDGE, dc-&gt;categories);<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo usb_host_dev_info =3D {<br>
++static const TypeInfo usb_host_dev_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_USB_HO=
+ST_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_USB_DEVICE,=
+<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(USBHostDevice),<br>
+diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c<br>
+index d4685709a3..afe3fe7efc 100644<br>
+--- a/hw/vfio/igd.c<br>
++++ b/hw/vfio/igd.c<br>
+@@ -199,7 +199,7 @@ static void vfio_pci_igd_lpc_bridge_class_init(ObjectCl=
+ass *klass, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;class_id =3D PCI_CLASS_BRIDGE_ISA;<br>
+=C2=A0}<br>
+<br>
+-static TypeInfo vfio_pci_igd_lpc_bridge_info =3D {<br>
++static const TypeInfo vfio_pci_igd_lpc_bridge_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D &quot;vfio-pci-igd-lpc-bridge&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0.parent =3D TYPE_PCI_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.class_init =3D vfio_pci_igd_lpc_bridge_class_init,<br>
+diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c<br>
+index d1aeb90a31..5419dca75e 100644<br>
+--- a/hw/virtio/virtio-pmem.c<br>
++++ b/hw/virtio/virtio-pmem.c<br>
+@@ -182,7 +182,7 @@ static void virtio_pmem_class_init(ObjectClass *klass, =
+void *data)<br>
+=C2=A0 =C2=A0 =C2=A0set_bit(DEVICE_CATEGORY_STORAGE, dc-&gt;categories);<br=
+>
+=C2=A0}<br>
+<br>
+-static TypeInfo virtio_pmem_info =3D {<br>
++static const TypeInfo virtio_pmem_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_VIRTIO=
+_PMEM,<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_VIRTIO_DEVI=
+CE,<br>
+=C2=A0 =C2=A0 =C2=A0.class_size=C2=A0 =C2=A0 =3D sizeof(VirtIOPMEMClass),<b=
+r>
+diff --git a/qom/object.c b/qom/object.c<br>
+index 4f0677cca9..9f7a33139d 100644<br>
+--- a/qom/object.c<br>
++++ b/qom/object.c<br>
+@@ -2793,13 +2793,13 @@ static void object_class_init(ObjectClass *klass, v=
+oid *data)<br>
+<br>
+=C2=A0static void register_types(void)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 static TypeInfo interface_info =3D {<br>
++=C2=A0 =C2=A0 static const TypeInfo interface_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name =3D TYPE_INTERFACE,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.class_size =3D sizeof(InterfaceClass),<b=
+r>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.abstract =3D true,<br>
+=C2=A0 =C2=A0 =C2=A0};<br>
+<br>
+-=C2=A0 =C2=A0 static TypeInfo object_info =3D {<br>
++=C2=A0 =C2=A0 static const TypeInfo object_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name =3D TYPE_OBJECT,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.instance_size =3D sizeof(Object),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.class_init =3D object_class_init,<br>
+-- <br>
+2.34.1<br>
+<br>
+</blockquote></div>
 
-To avoid further non-const static TypeInfo introduced, we should
-add a check in scripts/checkpatch.pl. Maybe a simple "static TypeInfo"
-line comparison is enough. Do you mind having a look for a patch?
-
-Thanks,
-
-Phil.
+--00000000000081316405d5c8861b--

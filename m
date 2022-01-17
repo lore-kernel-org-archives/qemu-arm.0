@@ -1,176 +1,706 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp2093642lfj;
-        Mon, 17 Jan 2022 06:17:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwhYlQniklzLlRhxHrBgwJvtzReLXtB3EYXjW0Gd802LcZ2UsViwfkIbFJAsyCcjgqKKv+w
-X-Received: by 2002:a05:6e02:198a:: with SMTP id g10mr11193852ilf.280.1642429077235;
-        Mon, 17 Jan 2022 06:17:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642429077; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp2120409lfj;
+        Mon, 17 Jan 2022 06:58:42 -0800 (PST)
+X-Received: by 2002:adf:9e49:: with SMTP id v9mr19709036wre.469.1642431522476;
+        Mon, 17 Jan 2022 06:58:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642431522; cv=none;
         d=google.com; s=arc-20160816;
-        b=yZ5M4c5d9/WqBbb4ojHMnshxrV03J4jhZI5VBrKgYhreEZoXWfUNFlmNYCQZQwTkkw
-         ZgKgG3mfNyL6+tYF3HTunx01H4vg6ub41Il4z2WSVafb4vtPI+F4SWqz7S0bmf5qZDtk
-         mNXSHQdW6pCF6Fx3W6gbw+HRLXl8S2PtQwr7X7jJfPu9eqAzhUvzDtzZypWcOaHFIZ1D
-         zXvS2uSGpwtLbqduNloFr63eHsdbE1OllpXwKYXrGmiOUxD6iERNDSdI98vsbsDnvT/Y
-         b2LpLtvbCJgXUKfqWb0Ud0eCfPWxmpCczLGdfNHlFV6oD3Ke+vKZtButF5wUh/LYrR11
-         lSag==
+        b=x7HoWX8e03IpZS1M76kVNmi2XN0i249yctvqU8bvvWJzOwMBxAsGawXnRrD1++qmAN
+         k8fNLxWJsHQRxiX1wV8GiWPuhItdaHjFLvEe3H872MRLiiEA4RnO0qVDPV+PX3aO91Hq
+         Yw8xlPS/Om3IYJovgqpfPNeFGRX0X3mvwbpAk3ZY+aO9zpV3czw4cFKA7qDM460zlQeq
+         NqDnz36DotHArMU9J+u73W0xUL6ulkE6aHf1UYp2mMFEyYrh7K2evh6nvxAANMyYcG5q
+         +MyuiEsontZ1yz5CGjwYpzJAd9cFxnzGyfKUVCacfEUDnLWWr5p76tjHbGclCEnG8Iww
+         KmxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=YQ9KKqaEP2pWRGu4npcv3vBer5ASXWKoR0TeN9Og9W8=;
-        b=cvzHEsGOmPNnlYZlbKlWRECc9q48UsuqW/0VYNX95FIhCSRU6lwhr9/y4y53z1k589
-         4hb3RM4NDULl8Di3I5tMf29ZEObdXVMnPZWZBVaR4Ozxkk0/3hkKnCJykGWF6H4yPQ/T
-         yVTAkBHWVHIj3XTARcKlyHHBQhbI+0NTHXWJlZa134tjUxcIiaHD7jopkNxSE4PgAVwI
-         8UvHi636OZi4qzHemfnfPge3sgrsYuFXD5JKWtdw31LpTOExOHsBMSgT0N7vnsL4Db2a
-         lcncy3kxjZ7wIAhOswUFqSp+Ectc+dHm1xL9TxDvnkyGJ2Ajl+doGXDOCOo2l9ikczcb
-         oUhg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=YLJzgTgRSuhPZL9sf6m/nsbh3Wtf5HGwnRdPg0ngHSI=;
+        b=Mf4QLovQGvJeFlarQTlcYt7z/DtgeHH3qmw/IpDImh2U51xItns2vNiGScbRE7f0wv
+         4/xk0WItO87FIFP/DzWruKSNcy/RMR2LU4SJzxfAnzfieUgqf4VXfZPm3zqRd7dVG1zi
+         iWSvf9vvYmZ2hNFofl/m/0p2554IG/LlsCaH0kzvvm8hcPwQ7LE9aJz7cb58oXUgfnPi
+         vy7i6TVI/oyMRhfEZstKHMSQyIV0l016tMv3chRNLgvNiuOEbdtUCuF1ziOuIoK7Fyvo
+         bBGetrGkT6+P+Lo7pQaYwDTmK5Q3x9nt5D8WW429leQQwH2Q+5I2+xLvN5DlYFe1YzoL
+         wduw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sZzssPpe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x13si6417475ilu.88.2022.01.17.06.17.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Jan 2022 06:17:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="qx6nA/R4";
+       spf=pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shentey@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shentey@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id q9sor7969643wrj.67.2022.01.17.06.58.42
+        (Google Transport Security);
+        Mon, 17 Jan 2022 06:58:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sZzssPpe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60012 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n9SpY-0003ZY-Ij
-	for alex.bennee@linaro.org; Mon, 17 Jan 2022 09:17:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36376)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1n9RvS-0006O7-Mn
- for qemu-devel@nongnu.org; Mon, 17 Jan 2022 08:19:59 -0500
-Received: from [2a00:1450:4864:20::335] (port=43828
- helo=mail-wm1-x335.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1n9RvQ-0007df-TG
- for qemu-devel@nongnu.org; Mon, 17 Jan 2022 08:19:58 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- s6-20020a7bc386000000b0034a89445406so20485941wmj.2
- for <qemu-devel@nongnu.org>; Mon, 17 Jan 2022 05:19:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=YQ9KKqaEP2pWRGu4npcv3vBer5ASXWKoR0TeN9Og9W8=;
- b=sZzssPpejYcyQb23751ShB+lsMLzHr1p0l2L8MvgXt6dHvV4M7T9aE0FEt2yEfQV49
- xGOe/U/yYJE+Tn4/uFHGJ+ib9Jgapuqlvms9Kn9JBtXG/uh87D2nxTBFJOLhM2kBKXo3
- wsBFSjo+AcwAv2wNBHP3IeCskKaDEbO8vUTWXVvkCESJmv6Ih5wll9ysMos5cTcYiiCm
- Z8N6l+A+w1YSC+OEtaMPRYcDtJqX4EMsydbLohnlQWpCULL25gCL1XjXHfOkO6Ws2Ms0
- kAoTwARQipe7k5fCr2isEv1UOKyzS+hSWc1nnm2LjXsmjRloVJjrHSINBJ7cxflGosQD
- Va+Q==
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="qx6nA/R4";
+       spf=pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shentey@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=YLJzgTgRSuhPZL9sf6m/nsbh3Wtf5HGwnRdPg0ngHSI=;
+        b=qx6nA/R4iT0B7LDKTa2k9ZXnrhmdjBM9jxpOFCob94KRCp+4bFAtFchU7wnLjHxVVu
+         3cwGVn/qnGzC+ctuKK2XIARMblh4Bg66iHaGvwU/ifnqfZ57LevsCYrONDlQrVvkfMT6
+         nVO8FiDZ4oNGQ9qgZ1m2rD7jNmjwAZMARer2VeUHjFfixdNyWBsq+HoKwaZQyzV8Gznl
+         c3VO1kC1gJd8llx2G3wsf4Aw5r2dK/xirxmJcObbcjBnU+oKgd8Pd9eMIJSyeSnM+fAw
+         2uIWlHgi9eDu53eAqVX2fhzWooMyKUUN49iDU+/DZJgoqobmcMmizdOM04LehqIF0PXU
+         nSZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=YQ9KKqaEP2pWRGu4npcv3vBer5ASXWKoR0TeN9Og9W8=;
- b=gwm9UkD50L8rQLfxrPda6HdONKr5CD/78kcNtig8h/Zk6Ii4XAoetWcjZMynJhXXjU
- KXIw6uYkn0w+xSxwDO9rhEgxkpC9H6pJQ5mu/7cpqyLoKdt/kwh0wdUBJYXCS0UeUopM
- 6RtIFoeS1AHZBWgVB9icW8UWZhTv+9c6C6rMhMcJUgOicqd28tMVLuPCDKwCH8jFRpZS
- zhz7gHbnJSZlujPGydHdyTdTQJr/wzch4uORxzksXCPx8L8V/kU1rbxYIQD807TH9rzQ
- PhIjdiDDFGbUsBF6P8qO2OCS4aiwcp3fP/ktXGEAz12XxbPS2zD3116NvMyctauEkR8m
- 7zLg==
-X-Gm-Message-State: AOAM531vMwrz/d1dsK/Dq+WeOS7T1GsgYPgn8myF9BSJt6rQeYa/uwj9
- CTMrxxwFBC56nxg8gJFQkZuQ+w==
-X-Received: by 2002:adf:ec04:: with SMTP id x4mr18819879wrn.688.1642425595297; 
- Mon, 17 Jan 2022 05:19:55 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id 204sm7096495wmc.29.2022.01.17.05.19.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Jan 2022 05:19:54 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Use correct entrypoint for SVC taken from Hyp to
- Hyp
-Date: Mon, 17 Jan 2022 13:19:53 +0000
-Message-Id: <20220117131953.3936137-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=YLJzgTgRSuhPZL9sf6m/nsbh3Wtf5HGwnRdPg0ngHSI=;
+        b=nIkW3KF2B6+oPqXEYe4YKDDB9X4IUYlR9GmlkF03pHeoeTxj/NVRUFQfeGqsW0e9aX
+         bV9V6kz+npcGFa+KpjBgbeA04lliFTR0oRDA0var/cxcDrtkVBgod17z96gT7nDJCHET
+         i7a7H5BZhepyYmTApW4BM7NtqK65WVtfAiN1dXZVpaFDC9moFu4l3bFtPfLC3cp0pqEk
+         Kc/rnaSx3lCqjjYVJrHrTU83naCyrL2VaPyXkntcPB/UT8bA4ZvSls8ZQ1uqjgcWxFzE
+         IBFYZ2/fcvHxzhdOgidpO64tQre3YrZsI4OqJnrqwJzrSWk0edtr4CGbtHVW4rbMThDh
+         YGHg==
+X-Gm-Message-State: AOAM533fphCuja00JkErOrsuoT0N3JGJPN/74ccJ7L47LL4Lw2XuOqHk
+	poKHucrFLNCn6r4MPFQ9gJ5HC/64BREo1TK5I/wpUg==
+X-Google-Smtp-Source: ABdhPJyE0PklVAhQ0uwp0TfES0G98qEMetWJAS/07liyHiQ7iO6ogGxCdcBGMhrIyzxiugWs39LqcA==
+X-Received: by 2002:a05:6000:156d:: with SMTP id 13mr5551360wrz.553.1642431522095;
+        Mon, 17 Jan 2022 06:58:42 -0800 (PST)
+Return-Path: <shentey@gmail.com>
+Received: from localhost.localdomain (dynamic-089-014-042-014.89.14.pool.telefonica.de. [89.14.42.14])
+        by smtp.gmail.com with ESMTPSA id m20sm14155593wms.4.2022.01.17.06.58.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Jan 2022 06:58:41 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Bernhard Beschow <shentey@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Corey Minyard <minyard@acm.org>,
+	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Ani Sinha <ani@anisinha.ca>,
+	Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Greg Kurz <groug@kaod.org>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Eric Farman <farman@linux.ibm.com>,
+	David Hildenbrand <david@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Fam Zheng <fam@euphon.net>,
+	Beniamino Galvani <b.galvani@gmail.com>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Joel Stanley <joel@jms.id.au>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Havard Skinnemoen <hskinnemoen@google.com>,
+	Tyrone Ting <kfting@nuvoton.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	qemu-arm@nongnu.org (open list:Raspberry Pi),
+	qemu-ppc@nongnu.org (open list:e500),
+	qemu-s390x@nongnu.org (open list:S390 PCI)
+Subject: [PATCH v2 1/2] Mark remaining global TypeInfo instances as const
+Date: Mon, 17 Jan 2022 15:58:04 +0100
+Message-Id: <20220117145805.173070-2-shentey@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220117145805.173070-1-shentey@gmail.com>
+References: <20220117145805.173070-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::335
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FxNvYczt5O6v
+X-TUID: STJWmHcncr7X
 
-The exception caused by an SVC instruction may be taken to AArch32
-Hyp mode for two reasons:
- * HCR.TGE indicates that exceptions from EL0 should trap to EL2
- * we were already in Hyp mode
+More than 1k of TypeInfo instances are already marked as const. Mark the
+remaining ones, too.
 
-The entrypoint in the vector table to be used differs in these two
-cases: for an exception routed to Hyp mode from EL0, we enter at the
-common 0x14 "hyp trap" entrypoint.  For SVC from Hyp mode to Hyp
-mode, we enter at the 0x08 (svc/hvc trap) entrypoint.
-In the v8A Arm ARM pseudocode this is done in AArch32.TakeSVCException.
+This commit was created with:
+  git grep -z -l 'static TypeInfo' -- '*.c' | \
+  xargs -0 sed -i 's/static TypeInfo/static const TypeInfo/'
 
-QEMU incorrectly routed both of these exceptions to the 0x14
-entrypoint.  Correct the entrypoint for SVC from Hyp to Hyp by making
-use of the existing logic which handles "normal entrypoint for
-Hyp-to-Hyp, otherwise 0x14" for traps like UNDEF and data/prefetch
-aborts (reproduced here since it's outside the visible context
-in the diff for this commit):
-
-    if (arm_current_el(env) != 2 && addr < 0x14) {
-        addr = 0x14;
-    }
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- target/arm/helper.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/core/generic-loader.c   | 2 +-
+ hw/core/guest-loader.c     | 2 +-
+ hw/display/bcm2835_fb.c    | 2 +-
+ hw/display/i2c-ddc.c       | 2 +-
+ hw/display/macfb.c         | 4 ++--
+ hw/display/virtio-vga.c    | 2 +-
+ hw/dma/bcm2835_dma.c       | 2 +-
+ hw/i386/pc_piix.c          | 2 +-
+ hw/i386/sgx-epc.c          | 2 +-
+ hw/intc/bcm2835_ic.c       | 2 +-
+ hw/intc/bcm2836_control.c  | 2 +-
+ hw/ipmi/ipmi.c             | 4 ++--
+ hw/mem/nvdimm.c            | 2 +-
+ hw/mem/pc-dimm.c           | 2 +-
+ hw/misc/bcm2835_mbox.c     | 2 +-
+ hw/misc/bcm2835_powermgt.c | 2 +-
+ hw/misc/bcm2835_property.c | 2 +-
+ hw/misc/bcm2835_rng.c      | 2 +-
+ hw/misc/pvpanic-isa.c      | 2 +-
+ hw/misc/pvpanic-pci.c      | 2 +-
+ hw/net/fsl_etsec/etsec.c   | 2 +-
+ hw/ppc/prep_systemio.c     | 2 +-
+ hw/ppc/spapr_iommu.c       | 2 +-
+ hw/s390x/s390-pci-bus.c    | 2 +-
+ hw/s390x/sclp.c            | 2 +-
+ hw/s390x/tod-kvm.c         | 2 +-
+ hw/s390x/tod-tcg.c         | 2 +-
+ hw/s390x/tod.c             | 2 +-
+ hw/scsi/lsi53c895a.c       | 2 +-
+ hw/sd/allwinner-sdhost.c   | 2 +-
+ hw/sd/aspeed_sdhci.c       | 2 +-
+ hw/sd/bcm2835_sdhost.c     | 2 +-
+ hw/sd/cadence_sdhci.c      | 2 +-
+ hw/sd/npcm7xx_sdhci.c      | 2 +-
+ hw/usb/dev-mtp.c           | 2 +-
+ hw/usb/host-libusb.c       | 2 +-
+ hw/vfio/igd.c              | 2 +-
+ hw/virtio/virtio-pmem.c    | 2 +-
+ qom/object.c               | 4 ++--
+ 39 files changed, 42 insertions(+), 42 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index cfca0f5ba6d..a898e400f6c 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9655,7 +9655,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
-      * separately here.
-      *
-      * The vector table entry used is always the 0x14 Hyp mode entry point,
--     * unless this is an UNDEF/HVC/abort taken from Hyp to Hyp.
-+     * unless this is an UNDEF/SVC/HVC/abort taken from Hyp to Hyp.
-      * The offset applied to the preferred return address is always zero
-      * (see DDI0487C.a section G1.12.3).
-      * PSTATE A/I/F masks are set based only on the SCR.EA/IRQ/FIQ values.
-@@ -9669,7 +9669,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
-         addr = 0x04;
-         break;
-     case EXCP_SWI:
--        addr = 0x14;
-+        addr = 0x08;
-         break;
-     case EXCP_BKPT:
-         /* Fall through to prefetch abort.  */
+diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
+index 9a24ffb880..eaafc416f4 100644
+--- a/hw/core/generic-loader.c
++++ b/hw/core/generic-loader.c
+@@ -207,7 +207,7 @@ static void generic_loader_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+-static TypeInfo generic_loader_info = {
++static const TypeInfo generic_loader_info = {
+     .name = TYPE_GENERIC_LOADER,
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(GenericLoaderState),
+diff --git a/hw/core/guest-loader.c b/hw/core/guest-loader.c
+index d3f9d1a06e..391c875a29 100644
+--- a/hw/core/guest-loader.c
++++ b/hw/core/guest-loader.c
+@@ -129,7 +129,7 @@ static void guest_loader_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+-static TypeInfo guest_loader_info = {
++static const TypeInfo guest_loader_info = {
+     .name = TYPE_GUEST_LOADER,
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(GuestLoaderState),
+diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
+index 2be77bdd3a..088fc3d51c 100644
+--- a/hw/display/bcm2835_fb.c
++++ b/hw/display/bcm2835_fb.c
+@@ -454,7 +454,7 @@ static void bcm2835_fb_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_fb;
+ }
+ 
+-static TypeInfo bcm2835_fb_info = {
++static const TypeInfo bcm2835_fb_info = {
+     .name          = TYPE_BCM2835_FB,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835FBState),
+diff --git a/hw/display/i2c-ddc.c b/hw/display/i2c-ddc.c
+index 13eb529fc1..146489518c 100644
+--- a/hw/display/i2c-ddc.c
++++ b/hw/display/i2c-ddc.c
+@@ -113,7 +113,7 @@ static void i2c_ddc_class_init(ObjectClass *oc, void *data)
+     isc->send = i2c_ddc_tx;
+ }
+ 
+-static TypeInfo i2c_ddc_info = {
++static const TypeInfo i2c_ddc_info = {
+     .name = TYPE_I2CDDC,
+     .parent = TYPE_I2C_SLAVE,
+     .instance_size = sizeof(I2CDDCState),
+diff --git a/hw/display/macfb.c b/hw/display/macfb.c
+index 4bd7c3ad6a..69c2ea2b6e 100644
+--- a/hw/display/macfb.c
++++ b/hw/display/macfb.c
+@@ -783,14 +783,14 @@ static void macfb_nubus_class_init(ObjectClass *klass, void *data)
+     device_class_set_props(dc, macfb_nubus_properties);
+ }
+ 
+-static TypeInfo macfb_sysbus_info = {
++static const TypeInfo macfb_sysbus_info = {
+     .name          = TYPE_MACFB,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(MacfbSysBusState),
+     .class_init    = macfb_sysbus_class_init,
+ };
+ 
+-static TypeInfo macfb_nubus_info = {
++static const TypeInfo macfb_nubus_info = {
+     .name          = TYPE_NUBUS_MACFB,
+     .parent        = TYPE_NUBUS_DEVICE,
+     .instance_size = sizeof(MacfbNubusState),
+diff --git a/hw/display/virtio-vga.c b/hw/display/virtio-vga.c
+index b23a75a04b..5a2f7a4540 100644
+--- a/hw/display/virtio-vga.c
++++ b/hw/display/virtio-vga.c
+@@ -220,7 +220,7 @@ static void virtio_vga_base_class_init(ObjectClass *klass, void *data)
+                                    virtio_vga_set_big_endian_fb);
+ }
+ 
+-static TypeInfo virtio_vga_base_info = {
++static const TypeInfo virtio_vga_base_info = {
+     .name          = TYPE_VIRTIO_VGA_BASE,
+     .parent        = TYPE_VIRTIO_PCI,
+     .instance_size = sizeof(VirtIOVGABase),
+diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
+index eb0002a2b9..5e9306110d 100644
+--- a/hw/dma/bcm2835_dma.c
++++ b/hw/dma/bcm2835_dma.c
+@@ -394,7 +394,7 @@ static void bcm2835_dma_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_dma;
+ }
+ 
+-static TypeInfo bcm2835_dma_info = {
++static const TypeInfo bcm2835_dma_info = {
+     .name          = TYPE_BCM2835_DMA,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835DMAState),
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 7c7790a5ce..f6557d3c21 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -865,7 +865,7 @@ static void isa_bridge_class_init(ObjectClass *klass, void *data)
+     k->class_id     = PCI_CLASS_BRIDGE_ISA;
+ };
+ 
+-static TypeInfo isa_bridge_info = {
++static const TypeInfo isa_bridge_info = {
+     .name          = "igd-passthrough-isa-bridge",
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+diff --git a/hw/i386/sgx-epc.c b/hw/i386/sgx-epc.c
+index 96b2940d75..d664829d35 100644
+--- a/hw/i386/sgx-epc.c
++++ b/hw/i386/sgx-epc.c
+@@ -167,7 +167,7 @@ static void sgx_epc_class_init(ObjectClass *oc, void *data)
+     mdc->fill_device_info = sgx_epc_md_fill_device_info;
+ }
+ 
+-static TypeInfo sgx_epc_info = {
++static const TypeInfo sgx_epc_info = {
+     .name          = TYPE_SGX_EPC,
+     .parent        = TYPE_DEVICE,
+     .instance_size = sizeof(SGXEPCDevice),
+diff --git a/hw/intc/bcm2835_ic.c b/hw/intc/bcm2835_ic.c
+index 9000d995e8..4513fad16f 100644
+--- a/hw/intc/bcm2835_ic.c
++++ b/hw/intc/bcm2835_ic.c
+@@ -227,7 +227,7 @@ static void bcm2835_ic_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_ic;
+ }
+ 
+-static TypeInfo bcm2835_ic_info = {
++static const TypeInfo bcm2835_ic_info = {
+     .name          = TYPE_BCM2835_IC,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835ICState),
+diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
+index 2ead76ffdc..b0589df188 100644
+--- a/hw/intc/bcm2836_control.c
++++ b/hw/intc/bcm2836_control.c
+@@ -392,7 +392,7 @@ static void bcm2836_control_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2836_control;
+ }
+ 
+-static TypeInfo bcm2836_control_info = {
++static const TypeInfo bcm2836_control_info = {
+     .name          = TYPE_BCM2836_CONTROL,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2836ControlState),
+diff --git a/hw/ipmi/ipmi.c b/hw/ipmi/ipmi.c
+index 8d35c9fdd6..bbb07b151e 100644
+--- a/hw/ipmi/ipmi.c
++++ b/hw/ipmi/ipmi.c
+@@ -85,7 +85,7 @@ static void ipmi_interface_class_init(ObjectClass *class, void *data)
+     ik->do_hw_op = ipmi_do_hw_op;
+ }
+ 
+-static TypeInfo ipmi_interface_type_info = {
++static const TypeInfo ipmi_interface_type_info = {
+     .name = TYPE_IPMI_INTERFACE,
+     .parent = TYPE_INTERFACE,
+     .class_size = sizeof(IPMIInterfaceClass),
+@@ -120,7 +120,7 @@ static void bmc_class_init(ObjectClass *oc, void *data)
+     device_class_set_props(dc, ipmi_bmc_properties);
+ }
+ 
+-static TypeInfo ipmi_bmc_type_info = {
++static const TypeInfo ipmi_bmc_type_info = {
+     .name = TYPE_IPMI_BMC,
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(IPMIBmc),
+diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
+index 7397b67156..933bc5e0c7 100644
+--- a/hw/mem/nvdimm.c
++++ b/hw/mem/nvdimm.c
+@@ -248,7 +248,7 @@ static void nvdimm_class_init(ObjectClass *oc, void *data)
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ }
+ 
+-static TypeInfo nvdimm_info = {
++static const TypeInfo nvdimm_info = {
+     .name          = TYPE_NVDIMM,
+     .parent        = TYPE_PC_DIMM,
+     .class_size    = sizeof(NVDIMMClass),
+diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
+index 48b913aba6..28af0d71b2 100644
+--- a/hw/mem/pc-dimm.c
++++ b/hw/mem/pc-dimm.c
+@@ -286,7 +286,7 @@ static void pc_dimm_class_init(ObjectClass *oc, void *data)
+     mdc->fill_device_info = pc_dimm_md_fill_device_info;
+ }
+ 
+-static TypeInfo pc_dimm_info = {
++static const TypeInfo pc_dimm_info = {
+     .name          = TYPE_PC_DIMM,
+     .parent        = TYPE_DEVICE,
+     .instance_size = sizeof(PCDIMMDevice),
+diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
+index 9f73cbd5e4..1908c152f6 100644
+--- a/hw/misc/bcm2835_mbox.c
++++ b/hw/misc/bcm2835_mbox.c
+@@ -324,7 +324,7 @@ static void bcm2835_mbox_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_mbox;
+ }
+ 
+-static TypeInfo bcm2835_mbox_info = {
++static const TypeInfo bcm2835_mbox_info = {
+     .name          = TYPE_BCM2835_MBOX,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835MboxState),
+diff --git a/hw/misc/bcm2835_powermgt.c b/hw/misc/bcm2835_powermgt.c
+index 25fa804cbd..976f3d34e5 100644
+--- a/hw/misc/bcm2835_powermgt.c
++++ b/hw/misc/bcm2835_powermgt.c
+@@ -144,7 +144,7 @@ static void bcm2835_powermgt_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_powermgt;
+ }
+ 
+-static TypeInfo bcm2835_powermgt_info = {
++static const TypeInfo bcm2835_powermgt_info = {
+     .name          = TYPE_BCM2835_POWERMGT,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835PowerMgtState),
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+index 76ea511d53..e94e951057 100644
+--- a/hw/misc/bcm2835_property.c
++++ b/hw/misc/bcm2835_property.c
+@@ -421,7 +421,7 @@ static void bcm2835_property_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_property;
+ }
+ 
+-static TypeInfo bcm2835_property_info = {
++static const TypeInfo bcm2835_property_info = {
+     .name          = TYPE_BCM2835_PROPERTY,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835PropertyState),
+diff --git a/hw/misc/bcm2835_rng.c b/hw/misc/bcm2835_rng.c
+index d0c4e64e88..b3c80cf186 100644
+--- a/hw/misc/bcm2835_rng.c
++++ b/hw/misc/bcm2835_rng.c
+@@ -131,7 +131,7 @@ static void bcm2835_rng_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_rng;
+ }
+ 
+-static TypeInfo bcm2835_rng_info = {
++static const TypeInfo bcm2835_rng_info = {
+     .name          = TYPE_BCM2835_RNG,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835RngState),
+diff --git a/hw/misc/pvpanic-isa.c b/hw/misc/pvpanic-isa.c
+index 7b66d58acc..a39fcdd1fc 100644
+--- a/hw/misc/pvpanic-isa.c
++++ b/hw/misc/pvpanic-isa.c
+@@ -77,7 +77,7 @@ static void pvpanic_isa_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+-static TypeInfo pvpanic_isa_info = {
++static const TypeInfo pvpanic_isa_info = {
+     .name          = TYPE_PVPANIC_ISA_DEVICE,
+     .parent        = TYPE_ISA_DEVICE,
+     .instance_size = sizeof(PVPanicISAState),
+diff --git a/hw/misc/pvpanic-pci.c b/hw/misc/pvpanic-pci.c
+index af8cbe2830..62e1be68c1 100644
+--- a/hw/misc/pvpanic-pci.c
++++ b/hw/misc/pvpanic-pci.c
+@@ -74,7 +74,7 @@ static void pvpanic_pci_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+-static TypeInfo pvpanic_pci_info = {
++static const TypeInfo pvpanic_pci_info = {
+     .name          = TYPE_PVPANIC_PCI_DEVICE,
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PVPanicPCIState),
+diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
+index bd9d62b559..e7fc082518 100644
+--- a/hw/net/fsl_etsec/etsec.c
++++ b/hw/net/fsl_etsec/etsec.c
+@@ -430,7 +430,7 @@ static void etsec_class_init(ObjectClass *klass, void *data)
+     dc->user_creatable = true;
+ }
+ 
+-static TypeInfo etsec_info = {
++static const TypeInfo etsec_info = {
+     .name                  = TYPE_ETSEC_COMMON,
+     .parent                = TYPE_SYS_BUS_DEVICE,
+     .instance_size         = sizeof(eTSEC),
+diff --git a/hw/ppc/prep_systemio.c b/hw/ppc/prep_systemio.c
+index b2bd783248..8c9b8dd67b 100644
+--- a/hw/ppc/prep_systemio.c
++++ b/hw/ppc/prep_systemio.c
+@@ -300,7 +300,7 @@ static void prep_systemio_class_initfn(ObjectClass *klass, void *data)
+     device_class_set_props(dc, prep_systemio_properties);
+ }
+ 
+-static TypeInfo prep_systemio800_info = {
++static const TypeInfo prep_systemio800_info = {
+     .name          = TYPE_PREP_SYSTEMIO,
+     .parent        = TYPE_ISA_DEVICE,
+     .instance_size = sizeof(PrepSystemIoState),
+diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
+index db01071858..81e5a1aea3 100644
+--- a/hw/ppc/spapr_iommu.c
++++ b/hw/ppc/spapr_iommu.c
+@@ -685,7 +685,7 @@ static void spapr_tce_table_class_init(ObjectClass *klass, void *data)
+     spapr_register_hypercall(H_STUFF_TCE, h_stuff_tce);
+ }
+ 
+-static TypeInfo spapr_tce_table_info = {
++static const TypeInfo spapr_tce_table_info = {
+     .name = TYPE_SPAPR_TCE_TABLE,
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(SpaprTceTable),
+diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+index 01b58ebc70..4b2bdd94b3 100644
+--- a/hw/s390x/s390-pci-bus.c
++++ b/hw/s390x/s390-pci-bus.c
+@@ -1392,7 +1392,7 @@ static const TypeInfo s390_pci_device_info = {
+     .class_init = s390_pci_device_class_init,
+ };
+ 
+-static TypeInfo s390_pci_iommu_info = {
++static const TypeInfo s390_pci_iommu_info = {
+     .name = TYPE_S390_PCI_IOMMU,
+     .parent = TYPE_OBJECT,
+     .instance_size = sizeof(S390PCIIOMMU),
+diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c
+index 89c30a8a91..eff74479f4 100644
+--- a/hw/s390x/sclp.c
++++ b/hw/s390x/sclp.c
+@@ -460,7 +460,7 @@ static void sclp_class_init(ObjectClass *oc, void *data)
+     sc->service_interrupt = service_interrupt;
+ }
+ 
+-static TypeInfo sclp_info = {
++static const TypeInfo sclp_info = {
+     .name = TYPE_SCLP,
+     .parent = TYPE_DEVICE,
+     .instance_init = sclp_init,
+diff --git a/hw/s390x/tod-kvm.c b/hw/s390x/tod-kvm.c
+index ec855811ae..9d0cbfbce2 100644
+--- a/hw/s390x/tod-kvm.c
++++ b/hw/s390x/tod-kvm.c
+@@ -147,7 +147,7 @@ static void kvm_s390_tod_init(Object *obj)
+     td->stopped = false;
+ }
+ 
+-static TypeInfo kvm_s390_tod_info = {
++static const TypeInfo kvm_s390_tod_info = {
+     .name = TYPE_KVM_S390_TOD,
+     .parent = TYPE_S390_TOD,
+     .instance_size = sizeof(S390TODState),
+diff --git a/hw/s390x/tod-tcg.c b/hw/s390x/tod-tcg.c
+index 9bb94ff72b..ad4993203d 100644
+--- a/hw/s390x/tod-tcg.c
++++ b/hw/s390x/tod-tcg.c
+@@ -73,7 +73,7 @@ static void qemu_s390_tod_init(Object *obj)
+     }
+ }
+ 
+-static TypeInfo qemu_s390_tod_info = {
++static const TypeInfo qemu_s390_tod_info = {
+     .name = TYPE_QEMU_S390_TOD,
+     .parent = TYPE_S390_TOD,
+     .instance_size = sizeof(S390TODState),
+diff --git a/hw/s390x/tod.c b/hw/s390x/tod.c
+index fd5a36bf24..c81b1c0338 100644
+--- a/hw/s390x/tod.c
++++ b/hw/s390x/tod.c
+@@ -123,7 +123,7 @@ static void s390_tod_class_init(ObjectClass *oc, void *data)
+     dc->user_creatable = false;
+ }
+ 
+-static TypeInfo s390_tod_info = {
++static const TypeInfo s390_tod_info = {
+     .name = TYPE_S390_TOD,
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(S390TODState),
+diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
+index 4c431adb77..c8773f73f7 100644
+--- a/hw/scsi/lsi53c895a.c
++++ b/hw/scsi/lsi53c895a.c
+@@ -2352,7 +2352,7 @@ static void lsi53c810_class_init(ObjectClass *klass, void *data)
+     k->device_id = PCI_DEVICE_ID_LSI_53C810;
+ }
+ 
+-static TypeInfo lsi53c810_info = {
++static const TypeInfo lsi53c810_info = {
+     .name          = TYPE_LSI53C810,
+     .parent        = TYPE_LSI53C895A,
+     .class_init    = lsi53c810_class_init,
+diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
+index de5bc49e68..041e45c680 100644
+--- a/hw/sd/allwinner-sdhost.c
++++ b/hw/sd/allwinner-sdhost.c
+@@ -835,7 +835,7 @@ static void allwinner_sdhost_sun5i_class_init(ObjectClass *klass, void *data)
+     sc->max_desc_size = 64 * KiB;
+ }
+ 
+-static TypeInfo allwinner_sdhost_info = {
++static const TypeInfo allwinner_sdhost_info = {
+     .name          = TYPE_AW_SDHOST,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_init = allwinner_sdhost_init,
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+index df1bdf1fa4..be8cafd65f 100644
+--- a/hw/sd/aspeed_sdhci.c
++++ b/hw/sd/aspeed_sdhci.c
+@@ -198,7 +198,7 @@ static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
+     device_class_set_props(dc, aspeed_sdhci_properties);
+ }
+ 
+-static TypeInfo aspeed_sdhci_info = {
++static const TypeInfo aspeed_sdhci_info = {
+     .name          = TYPE_ASPEED_SDHCI,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(AspeedSDHCIState),
+diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c
+index 088a7ac6ed..9431c35914 100644
+--- a/hw/sd/bcm2835_sdhost.c
++++ b/hw/sd/bcm2835_sdhost.c
+@@ -436,7 +436,7 @@ static void bcm2835_sdhost_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_sdhost;
+ }
+ 
+-static TypeInfo bcm2835_sdhost_info = {
++static const TypeInfo bcm2835_sdhost_info = {
+     .name          = TYPE_BCM2835_SDHOST,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835SDHostState),
+diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
+index 56b8bae1c3..75db34befe 100644
+--- a/hw/sd/cadence_sdhci.c
++++ b/hw/sd/cadence_sdhci.c
+@@ -175,7 +175,7 @@ static void cadence_sdhci_class_init(ObjectClass *classp, void *data)
+     dc->vmsd = &vmstate_cadence_sdhci;
+ }
+ 
+-static TypeInfo cadence_sdhci_info = {
++static const TypeInfo cadence_sdhci_info = {
+     .name          = TYPE_CADENCE_SDHCI,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(CadenceSDHCIState),
+diff --git a/hw/sd/npcm7xx_sdhci.c b/hw/sd/npcm7xx_sdhci.c
+index ef503365df..b2f5b4a542 100644
+--- a/hw/sd/npcm7xx_sdhci.c
++++ b/hw/sd/npcm7xx_sdhci.c
+@@ -166,7 +166,7 @@ static void npcm7xx_sdhci_instance_init(Object *obj)
+                             TYPE_SYSBUS_SDHCI);
+ }
+ 
+-static TypeInfo npcm7xx_sdhci_info = {
++static const TypeInfo npcm7xx_sdhci_info = {
+     .name = TYPE_NPCM7XX_SDHCI,
+     .parent = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(NPCM7xxSDHCIState),
+diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
+index c1d1694fd0..1e6ac76bef 100644
+--- a/hw/usb/dev-mtp.c
++++ b/hw/usb/dev-mtp.c
+@@ -2106,7 +2106,7 @@ static void usb_mtp_class_initfn(ObjectClass *klass, void *data)
+     device_class_set_props(dc, mtp_properties);
+ }
+ 
+-static TypeInfo mtp_info = {
++static const TypeInfo mtp_info = {
+     .name          = TYPE_USB_MTP,
+     .parent        = TYPE_USB_DEVICE,
+     .instance_size = sizeof(MTPState),
+diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
+index d0d46dd0a4..2b35cb6cdd 100644
+--- a/hw/usb/host-libusb.c
++++ b/hw/usb/host-libusb.c
+@@ -1801,7 +1801,7 @@ static void usb_host_class_initfn(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ }
+ 
+-static TypeInfo usb_host_dev_info = {
++static const TypeInfo usb_host_dev_info = {
+     .name          = TYPE_USB_HOST_DEVICE,
+     .parent        = TYPE_USB_DEVICE,
+     .instance_size = sizeof(USBHostDevice),
+diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
+index d4685709a3..afe3fe7efc 100644
+--- a/hw/vfio/igd.c
++++ b/hw/vfio/igd.c
+@@ -199,7 +199,7 @@ static void vfio_pci_igd_lpc_bridge_class_init(ObjectClass *klass, void *data)
+     k->class_id = PCI_CLASS_BRIDGE_ISA;
+ }
+ 
+-static TypeInfo vfio_pci_igd_lpc_bridge_info = {
++static const TypeInfo vfio_pci_igd_lpc_bridge_info = {
+     .name = "vfio-pci-igd-lpc-bridge",
+     .parent = TYPE_PCI_DEVICE,
+     .class_init = vfio_pci_igd_lpc_bridge_class_init,
+diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c
+index d1aeb90a31..5419dca75e 100644
+--- a/hw/virtio/virtio-pmem.c
++++ b/hw/virtio/virtio-pmem.c
+@@ -182,7 +182,7 @@ static void virtio_pmem_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ }
+ 
+-static TypeInfo virtio_pmem_info = {
++static const TypeInfo virtio_pmem_info = {
+     .name          = TYPE_VIRTIO_PMEM,
+     .parent        = TYPE_VIRTIO_DEVICE,
+     .class_size    = sizeof(VirtIOPMEMClass),
+diff --git a/qom/object.c b/qom/object.c
+index 4f0677cca9..9f7a33139d 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -2793,13 +2793,13 @@ static void object_class_init(ObjectClass *klass, void *data)
+ 
+ static void register_types(void)
+ {
+-    static TypeInfo interface_info = {
++    static const TypeInfo interface_info = {
+         .name = TYPE_INTERFACE,
+         .class_size = sizeof(InterfaceClass),
+         .abstract = true,
+     };
+ 
+-    static TypeInfo object_info = {
++    static const TypeInfo object_info = {
+         .name = TYPE_OBJECT,
+         .instance_size = sizeof(Object),
+         .class_init = object_class_init,
 -- 
-2.25.1
-
+2.34.1

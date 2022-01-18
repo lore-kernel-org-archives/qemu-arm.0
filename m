@@ -1,179 +1,291 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp3471076lfj;
-        Wed, 19 Jan 2022 01:22:05 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyWswCc13N5KR9XPwAitHPCKNu2YZJYG00Ed3rerYN7zVT94s0T7IxHweA29dPV2EipUBLN
-X-Received: by 2002:a05:620a:28d0:: with SMTP id l16mr13631241qkp.390.1642584125630;
-        Wed, 19 Jan 2022 01:22:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642584125; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp3210984lfj;
+        Tue, 18 Jan 2022 15:30:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwktY2z9D/G3qhEA86elwb7tMzO4djPOiC6ZhHlqOIspQ4nvfqL3Ooe4UoIj9IXaLBciK/I
+X-Received: by 2002:a17:906:4951:: with SMTP id f17mr835588ejt.420.1642548630098;
+        Tue, 18 Jan 2022 15:30:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642548630; cv=none;
         d=google.com; s=arc-20160816;
-        b=hr89heeWgFfG6KY5Chnc6xPvSePF8H8rvvt3snQ5ZV4N9w6NfHFxmsk49JZYzYDOFY
-         DcJIgcHBTGlhTQMJzPBfsiHFVlrjRaL2PWG6S9exF8khyZ1HgJUFLIBESNwt1xo6vqEl
-         QqwM8zyn2mtH2jeKWllvdZbTvKPLwpjF3HdDqBdl+42h3GTgxgsI+rhEqFtnsyfRqrj0
-         6El0Wll9vBusd+DDHAFHQ86cZ2nqgLWF8tWQPsQ/QG4QSo+4t/w2cRrpTSH1AtU4LeRm
-         0XYQ3jT5y5L+H+c+H/yL0pxQ3fLYMgByHKl+SfvTNQDL85Hmzca8FG/toP+lx+OVA8Pu
-         y+GA==
+        b=OYf7BSGirrRzxvU4LBb9EZuPTUqjjoguYsejvC4rDIVd511ovpruXaxha+b8yTEWtZ
+         Wzv3f9mW1bFjF/C5EtpAKXnCGYfQIroAHD8iom2vE/9rnUx2pyurlrlpqcTGMTeXBePn
+         o1m5oGFjF33Gm15TwREFXYZQYI8aS5KG10R1um1CsVCw9BUKYxe/ag71qHyJ62ShRYqW
+         fuvGVMoWT9rM0WAJtkodB0yh55fd0DzACYwJGkhYwx5tLbKyfUEySTDrtNATPGZ8SF5J
+         r5JGdfDoej2Y1YdV5Ch5jc2P21uWLEKDqUHD1PhMAOxSOMjXRsc70KTbTmA376ru2bHe
+         jf0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=8bqLBSkZoIP6Q1CpUf2DoTsZ7rv8sAUV8Lf79ej0hf8=;
-        b=S1Z1BB547luQYU/YISPEMLGmF4SK2CidE0YLfy5iYezvsK3S8BHUWGvtXAg+fhgYl0
-         QebO085el8a08N0f3uNOxb/gqTBNB7mpNxyZKBRSDY+n32o0QiZX4LTyiWQ37yj+Ox1o
-         ZLYzmx8ROWDh2XGgDbGZCMAvIjN2mbqX5K/Dc36m6HCELMnU3t/Zw6fJD+9+ng+EB2/i
-         rxHgTaX5UXevXfCfjkxaCLe82X+WdyeHoEWy81s3BuKnYpaDwZo7p3q1d3QSn9GoMGnZ
-         IboXuiFqvMIOkwYFBxuAXNQdF+KOEk2Ikl0/V0hvoMgS9EaMNGxuSV1jTb15h8slOf+b
-         ORCg==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=U8m1M+xBOkyRQ1BU0f9aNCDFPcc8R4e22ojCIQDk6uk=;
+        b=VRJAuaIL5PHEDvnSfU0s2CyeAvpSTi343ocUFR8Or9l4q6geTEbBL+772+aFdr1r7B
+         VnK1DtxAJNcUqdz1mLZleTP8wRUSqkPZAgfxRwfMHVmM9j+WZqGEOjpx0SI3W4nXnypA
+         BVr/7eTkMr5jxDkobCX8VjxyYBYw8JOfbkQ0H/yzBkkEL+0oYx9ivjrXGwPRuWFYfd3w
+         80ARvQ1uahKP73PNskzX49lsWx0R4MA3EethrBgynD/gy79lMb+MXYGvwAPF1loot22P
+         Jc4uJkIoIFR7MdrXQ/vrikyKbfe9ERY7zcbfM8ECDTWGVdBvHFhGv7tehoFX/wY9N2Bg
+         TlyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ADc6TxWF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17si8214329qkl.111.2022.01.19.01.22.05
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Jan 2022 01:22:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of andre.przywara@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=andre.przywara@arm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
+Return-Path: <andre.przywara@arm.com>
+Received: from foss.arm.com (foss.arm.com. [217.140.110.172])
+        by mx.google.com with ESMTP id r12si599296edd.122.2022.01.18.15.30.29;
+        Tue, 18 Jan 2022 15:30:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of andre.przywara@arm.com designates 217.140.110.172 as permitted sender) client-ip=217.140.110.172;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ADc6TxWF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50414 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nA7AL-0002n7-5y
-	for alex.bennee@linaro.org; Wed, 19 Jan 2022 04:22:05 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41496)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1nA6wz-0005Br-Iq; Wed, 19 Jan 2022 04:08:17 -0500
-Received: from [2a00:1450:4864:20::334] (port=54949
- helo=mail-wm1-x334.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1nA6wr-0000F5-WD; Wed, 19 Jan 2022 04:08:17 -0500
-Received: by mail-wm1-x334.google.com with SMTP id p18so3873270wmg.4;
- Wed, 19 Jan 2022 01:08:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=8bqLBSkZoIP6Q1CpUf2DoTsZ7rv8sAUV8Lf79ej0hf8=;
- b=ADc6TxWF170+K7LyDW7tSV4Kh5WEwYjK0oH2iaKeZOmy1R8rWkdAVbZaxW5f2ir85Q
- 0X6/C8MDYaGaJ/fbhwPK5cLK/GN2oprTXFvFpdYBfNKQwVgIxb+Bpc04trnJn3SHZuXg
- ngyVblf3t4yeczrA9ChUfbA/+2lSypu6E9ZCaVHImb6Kd8+Ds/JkL1biKFq0QJKdvRcn
- LX40l/b19htehPYYDehcxT769auUxNStip8nGUIlRYdeXmdZxT1s3Rkd0RMlQWrzPYwP
- HMIEdnnRjbICMRi4HQqLvMpoGBNIDrhmWaiZwzgn/5oqvmaSubrXlDjHVIcbB1SIahiq
- pajQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=8bqLBSkZoIP6Q1CpUf2DoTsZ7rv8sAUV8Lf79ej0hf8=;
- b=cischMwJ6T3TYQPJl3rrw1gOUBYm/4rHaa/t5UHPXbmn6RXM3ryDRzsOgNrCU0/cXE
- nSqrZWpziNBzo8TnStLa1B4ebjpqugcVVp3Sa1M/S+exjoh0SU/cAs0yuWud9kgvrZyT
- v19f0sxZ7PmUTmDkuQn2Kjw1jpuiXsU7BhaKAe1FWosmNE1bnZYGXsqemEhaC7afj8Hh
- g5dqW7IhrRv7wLAItW4pLr0ETrilZP9++Xpznd03mnXBAdN9wZmG8gcTZQKVt80/sIrl
- NCLf373jHZ45CNTxAUaVR9LsC28NzXYASMgPKM4HUXtoAixRKGVlf4aeWzQ9+iAYMttL
- Mhcg==
-X-Gm-Message-State: AOAM532HqVguObHxkSHUkOgLUAdJpvV14S2JDJjuccstUWzt6WU90B+S
- UMVKO8BZKhnIthRFF1eNp8s=
-X-Received: by 2002:a05:6000:1543:: with SMTP id
- 3mr23504334wry.98.1642583287364; 
- Wed, 19 Jan 2022 01:08:07 -0800 (PST)
-Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.googlemail.com with ESMTPSA id i8sm11552263wry.33.2022.01.19.01.08.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 19 Jan 2022 01:08:07 -0800 (PST)
-Message-ID: <4d892836-59e5-180e-cc3c-efdf79599bb2@redhat.com>
-Date: Wed, 19 Jan 2022 10:08:05 +0100
+       spf=pass (google.com: domain of andre.przywara@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=andre.przywara@arm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 86E1C1FB;
+	Tue, 18 Jan 2022 15:30:28 -0800 (PST)
+Received: from slackpad.fritz.box (unknown [172.31.20.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 53BCC3F766;
+	Tue, 18 Jan 2022 15:30:27 -0800 (PST)
+Date: Tue, 18 Jan 2022 23:29:35 +0000
+From: Andre Przywara <andre.przywara@arm.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Alex =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Shashi Mallela
+ <shashi.mallela@linaro.org>, Andrew Jones <drjones@redhat.com>, Eric Auger
+ <eric.auger@redhat.com>
+Subject: Re: [PATCH v2 00/13] arm gicv3 ITS: Various bug fixes and
+ refactorings
+Message-ID: <20220118232935.50ae1b25@slackpad.fritz.box>
+In-Reply-To: <CAFEAcA-ncYCtpH2aCjd4GWuN9SLcxGMQUOutBWyNHByD6_gG0w@mail.gmail.com>
+References: <20220111171048.3545974-1-peter.maydell@linaro.org>
+	<87pmop7xfw.fsf@linaro.org>
+	<CAFEAcA-ncYCtpH2aCjd4GWuN9SLcxGMQUOutBWyNHByD6_gG0w@mail.gmail.com>
+Organization: Arm Ltd.
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.31; x86_64-slackware-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [PATCH v2 6/6] tests/qtest/libqos: Add generic pci host bridge in
- arm-virt machine
-Content-Language: en-US
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- thuth@redhat.com, lvivier@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
- david@gibson.dropbear.id.au, clg@kaod.org, eesposit@redhat.com
-References: <20220118203833.316741-1-eric.auger@redhat.com>
- <20220118203833.316741-7-eric.auger@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <20220118203833.316741-7-eric.auger@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::334
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=paolo.bonzini@gmail.com; helo=mail-wm1-x334.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: igP0TStrEnts
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: eNqeqv/BBVW1
 
-On 1/18/22 21:38, Eric Auger wrote:
-> +
-> +typedef struct QGenericPCIBus {
-> +    QOSGraphObject obj;
-> +    QPCIBus bus;
-> +    uint64_t gpex_pio_base;
-> +    uint64_t ecam_alloc_ptr;
-> +} QGenericPCIBus;
-> +
-> +/*
-> + * qpci_init_generic():
-> + * @ret: A valid QGenericPCIBus * pointer
-> + * @qts: The %QTestState
-> + * @alloc: A previously initialized @alloc providing memory for @qts
-> + * @bool: devices can be hotplugged on this bus
-> + *
-> + * This function initializes an already allocated
-> + * QGenericPCIBus object.
-> + */
-> +void qpci_init_generic(QGenericPCIBus *ret, QTestState *qts,
-> +                       QGuestAllocator *alloc, bool hotpluggable);
-> +
-> +/* QGenericPCIHost */
-> +
-> +typedef struct QGenericPCIHost QGenericPCIHost;
-> +
-> +struct QGenericPCIHost {
-> +    QOSGraphObject obj;
-> +    QGenericPCIBus pci;
-> +};
-> +
-> +QOSGraphObject *generic_pcihost_get_device(void *obj, const char *device);
-> +void qos_create_generic_pcihost(QGenericPCIHost *host,
-> +                                QTestState *qts,
-> +                                QGuestAllocator *alloc);
-> +
-> +#endif
+On Tue, 18 Jan 2022 19:41:56 +0000
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Ok, now I understand why you had it in arm-virt-machine.c in v1 (the 
-hard-coded addresses). :)  But it's okay this way too, since you keep 
-the maybe I'll get to generalize it a bit later.
+Hi Peter, Alex,
 
-Paolo
+thanks for the heads up!
+
+> On Tue, 18 Jan 2022 at 17:42, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
+> >
+> >
+> > Peter Maydell <peter.maydell@linaro.org> writes:
+> > =20
+> > > I've been working on the ITS to add support for the GICv4 functionali=
+ty.
+> > > In the course of that I found a handful of bugs in it and also some
+> > > places where the code benefited from refactoring to make it a better
+> > > base to put in the GICv4 parts. This patchset is just the bugfixes
+> > > and cleanups, because there are enough patches here that I figured it
+> > > made sense to send them out now rather than holding on to them.
+> > >
+> > > Most of these patches were in v1 and have been reviewed already. =20
+> >
+> > I've reviewed the patches and they look good to me. kvm-unit-tests is
+> > still failing some tests but the ones it fails hasn't changed from
+> > before this patch:
+> >
+> >   =E2=9C=97  env QEMU=3D$HOME/lsrc/qemu.git/builds/arm.all/qemu-system-=
+aarch64 ./run_tests.sh -g gic
+> >   PASS gicv2-ipi (3 tests)
+> >   PASS gicv2-mmio (17 tests, 1 skipped)
+> >   FAIL gicv2-mmio-up (17 tests, 2 unexpected failures)
+> >   FAIL gicv2-mmio-3p (17 tests, 3 unexpected failures)
+> >   PASS gicv3-ipi (3 tests)
+> >   PASS gicv2-active (1 tests)
+> >   PASS gicv3-active (1 tests)
+> >
+> > That said running with -d unimp,guest_errors there are some things that
+> > should probably be double checked, e.g.: =20
+>=20
+> Almost all of the logging seems to be where the test code is
+> doing stuff that the GIC spec says isn't valid.
+
+That sounds like a plausible explanation for a unit test suite, but
+does not seem to be actually true in this case, see below.
+
+> Also, this
+> test is gicv2, which is unrelated to either the gicv3 code
+> or to the ITS...
+
+This is true.
+
+>=20
+> >   /home/alex/lsrc/qemu.git/builds/arm.all/qemu-system-aarch64 -nodefaul=
+ts -machine virt -accel tcg -cpu cortex-a57 -device virtio-serial-device -d=
+evice virtconsole,chardev=3D
+> >   ctd -chardev testdev,id=3Dctd -device pci-testdev -display none -seri=
+al stdio -kernel arm/gic.flat -machine gic-version=3D2 -smp 1 -append "mmio=
+" -d unimp,guest_errors
+> >   PASS: gicv2: mmio: all CPUs have interrupts
+> >   gic_dist_readb: Bad offset 8
+> >   gic_dist_readb: Bad offset 9
+> >   gic_dist_readb: Bad offset a
+> >   gic_dist_readb: Bad offset b =20
+>=20
+> This is GICD_IIDR, which is a 32-bit register. The test looks like it's
+> trying to read it as 4 separate bytes, which is out of spec, and
+> is why our implementation is warning about it.
+
+Looking at k-u-t's arm/gic.c and QEMU's hw/intc/arm_gic.c I see two
+problems here: QEMU implements word accesses as four successive calls to
+gic_dist_readb() - which is probably fine if that helps code design,
+but it won't allow it to actually spot access size issues. I just
+remember that we spent some brain cells and CPP macros on getting the
+access size right in KVM - hence those tests in kvm-unit-tests.
+=20
+But more importantly it looks like GICD_IIDR is actually not
+implemented: There is a dubious "if (offset < 0x08) return 0;" line,
+but IIDR (offset 0x8) would actually fall through, and hit the bad_reg
+label, which would return 0 (and cause the message, if enabled).
+Also the name and how it's called suggests that this deals with bytes
+only, but returns uint32_t, and for instance deals with bit 10 in
+TYPER. I see how this eventually falls into place magically (the upper
+three bytes return 0, and get ORed into the >8 bit result of offset 8),
+but those messages are definitely false alarm then.
+
+If that helps: from a GIC MMIO perspective 8-bit accesses are actually
+the exception rather than the norm (ARM IHI 0048B.b 4.1.4 GIC register
+access).
+
+> >   INFO: gicv2: mmio: IIDR: 0x00000000
+> >   gic_dist_writeb: Bad offset 4
+> >   gic_dist_writeb: Bad offset 5
+> >   gic_dist_writeb: Bad offset 6
+> >   gic_dist_writeb: Bad offset 7
+> >   gic_dist_writeb: Bad offset 4
+> >   gic_dist_writeb: Bad offset 5
+> >   gic_dist_writeb: Bad offset 6
+> >   gic_dist_writeb: Bad offset 7
+> >   gic_dist_writeb: Bad offset 4
+> >   gic_dist_writeb: Bad offset 5
+> >   gic_dist_writeb: Bad offset 6
+> >   gic_dist_writeb: Bad offset 7 =20
+>=20
+> These complaints are because the test is trying to write
+> to GICD_TYPER, which is not permitted.
+
+Writes are not permitted, yes, but k-u-t emits a proper str, so there
+should be only three lines, not twelve.
+
+> >   PASS: gicv2: mmio: GICD_TYPER is read-only
+> >   gic_dist_readb: Bad offset 8
+> >   gic_dist_readb: Bad offset 9
+> >   gic_dist_readb: Bad offset a
+> >   gic_dist_readb: Bad offset b =20
+>=20
+> More attempts to do byte accesses to a word-only register.
+
+The messages come actually again because IIDR is not handled at all,
+and there are only four of them because of the design of gic_dist_read().
+k-u-t issues a proper ldr here.
+I think we refrained from actually testing illegal access sizes,
+because that could trigger external aborts/SErrors on real hardware.
+
+> >   gic_dist_writeb: Bad offset 8
+> >   gic_dist_writeb: Bad offset 9
+> >   gic_dist_writeb: Bad offset a
+> >   gic_dist_writeb: Bad offset b
+> >   gic_dist_readb: Bad offset 8
+> >   gic_dist_readb: Bad offset 9
+> >   gic_dist_readb: Bad offset a
+> >   gic_dist_readb: Bad offset b
+> >   gic_dist_writeb: Bad offset 8
+> >   gic_dist_writeb: Bad offset 9
+> >   gic_dist_writeb: Bad offset a
+> >   gic_dist_writeb: Bad offset b
+> >   gic_dist_readb: Bad offset 8
+> >   gic_dist_readb: Bad offset 9
+> >   gic_dist_readb: Bad offset a
+> >   gic_dist_readb: Bad offset b
+> >   PASS: gicv2: mmio: GICD_IIDR is read-only
+> >   gic_dist_writeb: Bad offset fe8
+> >   gic_dist_writeb: Bad offset fe9
+> >   gic_dist_writeb: Bad offset fea
+> >   gic_dist_writeb: Bad offset feb
+> >   gic_dist_writeb: Bad offset fe8
+> >   gic_dist_writeb: Bad offset fe9
+> >   gic_dist_writeb: Bad offset fea
+> >   gic_dist_writeb: Bad offset feb
+> >   gic_dist_writeb: Bad offset fe8
+> >   gic_dist_writeb: Bad offset fe9
+> >   gic_dist_writeb: Bad offset fea
+> >   gic_dist_writeb: Bad offset feb =20
+>=20
+> Writing bytes to a register that is both read-only and also 32-bit only.
+
+Yes, the read-only violation is expected, but the code only does ldr.
+
+> >   PASS: gicv2: mmio: ICPIDR2 is read-only
+> >   INFO: gicv2: mmio: value of ICPIDR2: 0x0000002b
+> >   PASS: gicv2: mmio: IPRIORITYR: consistent priority masking
+> >   INFO: gicv2: mmio: IPRIORITYR: priority mask is 0xffffffff
+> >   PASS: gicv2: mmio: IPRIORITYR: implements at least 4 priority bits
+> >   INFO: gicv2: mmio: IPRIORITYR: 8 priority bits implemented
+> >   PASS: gicv2: mmio: IPRIORITYR: clearing priorities
+> >   gic_dist_readb: Bad offset 520
+> >   gic_dist_readb: Bad offset 521
+> >   gic_dist_readb: Bad offset 522
+> >   gic_dist_readb: Bad offset 523
+> >   gic_dist_writeb: Bad offset 520
+> >   gic_dist_writeb: Bad offset 521
+> >   gic_dist_writeb: Bad offset 522
+> >   gic_dist_writeb: Bad offset 523
+> >   gic_dist_readb: Bad offset 520
+> >   gic_dist_readb: Bad offset 521
+> >   gic_dist_readb: Bad offset 522
+> >   gic_dist_readb: Bad offset 523
+> >   gic_dist_writeb: Bad offset 520
+> >   gic_dist_writeb: Bad offset 521
+> >   gic_dist_writeb: Bad offset 522
+> >   gic_dist_writeb: Bad offset 523
+> >   gic_dist_readb: Bad offset 520
+> >   gic_dist_readb: Bad offset 521
+> >   gic_dist_readb: Bad offset 522
+> >   gic_dist_readb: Bad offset 523 =20
+>=20
+> I suspect from what the following test says that this is an
+> attempt to write beyond the end of the valid IPRIORITYR registers,
+> which isn't permitted.
+
+Trying to manipulate non-implemented SPIs is not really useful (and
+indeed typically points to guest bugs), but it is permitted by the
+GICv2 spec, which says: "A register field corresponding to an
+unimplemented interrupt is RAZ/WI." - which is actually what bad_reg
+implements - just minus the message.
+
+> >   PASS: gicv2: mmio: IPRIORITYR: accesses beyond limit RAZ/WI
+> >   PASS: gicv2: mmio: IPRIORITYR: accessing last SPIs
+> >   PASS: gicv2: mmio: IPRIORITYR: priorities are preserved
+> >   PASS: gicv2: mmio: IPRIORITYR: byte reads successful
+> >   PASS: gicv2: mmio: IPRIORITYR: byte writes successful
+> >   PASS: gicv2: mmio: ITARGETSR: bits for non-existent CPUs masked
+> >   INFO: gicv2: mmio: ITARGETSR: 7 non-existent CPUs
+> >   PASS: gicv2: mmio: ITARGETSR: accesses beyond limit RAZ/WI
+> >   FAIL: gicv2: mmio: ITARGETSR: register content preserved
+> >   INFO: gicv2: mmio: ITARGETSR: writing 01010001 reads back as 00000000
+> >   PASS: gicv2: mmio: ITARGETSR: byte reads successful
+> >   FAIL: gicv2: mmio: ITARGETSR: byte writes successful
+> >   INFO: gicv2: mmio: ITARGETSR: writing 0x1f into bytes 2 =3D> 0x000000=
+00
+> >   SUMMARY: 17 tests, 2 unexpected failures =20
+>=20
+> These ITARGETSR failures are not correct (or you're not running the
+> test case the way it's supposed to be). Your command line runs
+> only one CPU, and for a uniprocessor GIC the ITARGETRSn registers
+> are supposed to be RAZ/WI, whereas the test seems to be expecting
+> something else.
+
+Interesting, indeed the *whole* of GICD_ITARGETSRs are RAZ/WI on a
+uniprocessor implementation, where is also says that bits for
+non-implemented CPU interfaces as RAZ/WI, which would suggest that at
+least bit 0 is preserved (what this test checks).
+I will double check the spec again on what uniprocessor means
+precisely, and then send a kvm-unit-tests patch.
+
+But running with -smp [2..8] still reports issues - but we know of these
+for a while, I think, and they are not really critical.
+
+Cheers,
+Andre

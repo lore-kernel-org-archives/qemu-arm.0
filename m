@@ -1,132 +1,197 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp3002519lfj;
-        Tue, 18 Jan 2022 09:23:49 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw6DgbD8ILFIwvszhv5O04bm/AuBWjsg9b+XIgfsoa3Jze6OioOfpL12DuoAJTE8e7/HRER
-X-Received: by 2002:a25:7b44:: with SMTP id w65mr32606511ybc.59.1642526629784;
-        Tue, 18 Jan 2022 09:23:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642526629; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp3120851lfj;
+        Tue, 18 Jan 2022 12:39:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzee7onnSp69l5nVWFmT+cPaR/OUf0pGLhDHeluK+NYRejYjPXdZ+ahS/oqtFLEG1yOr8Fs
+X-Received: by 2002:a25:bb93:: with SMTP id y19mr35654874ybg.466.1642538356426;
+        Tue, 18 Jan 2022 12:39:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642538356; cv=none;
         d=google.com; s=arc-20160816;
-        b=VeA0TM6Qm+qs2pGQ5U2SUiWFEqsZExxoDw2D2V7IgPZjbkb/A/hCtWG5dCC4Z9T3Wy
-         6wML7ZsiWspFBDj/VhkI2+CcIk/fqo503tkkTpyXdS4lqmnhFliz+JewaM1JDxZxsla5
-         QMXazCZTgy97aSraMWcv/w2mzYRojm7exblzRYlujQbslt3UmQSoxM17zEdR6ZV4kRHf
-         AnDzrtlhoF1C7zzNwTdBfZkmjpnoVu7g0GZRWiqhuZDnUmZKFJrBT9ZpzePUjy9EVn3C
-         WVV8+yuJ8BVw64GDH6CogKvXvXQ1wNMDE0Ep099cEKWZ22laEelzxh7+JzLT3S15XQHg
-         G3JA==
+        b=iFNPFU1k2p3LyL6bJKYXUITpFU3FM2DpR/2uzraCCuIme++OXAwDf4Z6jAoMiFFy2g
+         u+obwhBZoJmgt0dcPcCbCtzZKitPfOYDSyIsTCJ4UC1bfsUmJbXlR3rl47/2rdPBVAvI
+         MdxqMYhLn4fhWkHYva4UO2nIcsVYJtqXDYA/UU+6BWjONe+6NaPItZTj/cyMQa2ZSXSc
+         COT7IJmBxZm8Xez/PYaLFJu+DXuGAegXGYT659XH00ESuwmWEvUTtnI/V+gTFOWMaLoP
+         US3jiDWNJID8YU9UQ+RWt65q19Xh81JGeVaxqnaps2vHKf9/5C5Nf3oSK84xZaQBfsuk
+         Mdhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=R6dk4guVTWEPPObRRkbsOIlxjm8MPJT/ZVpm3J9/HCs=;
-        b=WkSmYmtRw4wLs3jK7IBwk/srotQToaCymETzuwvy5krGC6BZMtFEEFCaxHvt/BjLWd
-         x53jYs+CbUVXdhz2qdk03J2yO58zPS/Aucr2suoShmO77DhxAyITm8aqdnbge46JbjYc
-         PXW1sA9zFVzRKrEMDylnTFYqK4QonP5vGdU7MT2IVTSTdhRT263JqBcCTwqmOynYDlL8
-         /M2I2fk7HQoGPGZU5tNO6itoL8A0H2BjKYkx52HH5rA5yTTsdjjrjoerUJWUBg4kKlP8
-         pISJP3BcipBULdJa2cYE2nbrJHhNsTnAY6rBTJLQ+ltsRdVCeJMTjpuhw+grQDPzN9H2
-         ++qA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=LWbn8cJRBl8h28Y1f7jyH+QyQPBZQzZ4BnrKe9dkZdY=;
+        b=aRayA5O4LVynOrMGe8si7UveYS2qY6kHCyOIHxX8JR7cHHKYN/O4WipeLQDN/5blSl
+         C2ulbmP8pL2YCso84dD75HNFrT7AYLwwyfnrg8RMz6jHJYvLgZwky0cQcdIBl1iVgEP3
+         S9P9KJJO5vZ9BTrbS1f+Is5hA6+ETAaso/fFi/usNdmP+mlpBfdR5XEAfxYM4hifmpGc
+         +hmqeUFv1C94vNV/586njuzDuhNI0lNPbDtks8o3cdSLOF5kqdkc44rGsqbr3SwPE0N1
+         MKU0vIXKFgdsyFMwRq7RNQcF58hEiiJBbWlAx7XGjj9MYST9Hj3bOn7g4+ZpgACGPDTm
+         enCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rmgGUvAO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T2Pv33pa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n130si9734368ybn.418.2022.01.18.09.23.49
+        by mx.google.com with ESMTPS id v7si12435178ybp.573.2022.01.18.12.39.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jan 2022 09:23:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Jan 2022 12:39:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rmgGUvAO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53718 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T2Pv33pa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52152 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n9sCz-0002oA-50
-	for alex.bennee@linaro.org; Tue, 18 Jan 2022 12:23:49 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51244)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1n9vG7-0005Ny-Qr
+	for alex.bennee@linaro.org; Tue, 18 Jan 2022 15:39:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45744)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1n9s8V-0005Sd-Cf
- for qemu-devel@nongnu.org; Tue, 18 Jan 2022 12:19:11 -0500
-Received: from [2a00:1450:4864:20::32b] (port=52810
- helo=mail-wm1-x32b.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1n9s8T-0004VL-JH
- for qemu-devel@nongnu.org; Tue, 18 Jan 2022 12:19:10 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id v123so29272906wme.2
- for <qemu-devel@nongnu.org>; Tue, 18 Jan 2022 09:19:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=R6dk4guVTWEPPObRRkbsOIlxjm8MPJT/ZVpm3J9/HCs=;
- b=rmgGUvAOH0mtA79+IACmwzZlknus8vD6VWzjaMRi52YpkCPWDg6lCDoGv5EI7qDy2D
- P5fWctTsdS3DDBZASuRmQ5MRDHJW2i+0sBFyt35ENDY9Lym2ob+EU1MfqThN3atzfsaN
- 7efL/st1CyK11E9iF8rkkfJXcTwAJXyR9W1Xu4dioxsbP5ysWyS924n2+QIAF4XpEK63
- VXd9TLoCpLpewHF4EMRZabl4GpG5L6rWWWb0r7rpRkeFfUrmZYo8hAQKOrI110WZLMue
- SUqNSB96wTxb+SQoInxR++N352KWYHo+pvXPSqh+MjPWwd8y2YVUpZXSHAUtoHUAfjIX
- io0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=R6dk4guVTWEPPObRRkbsOIlxjm8MPJT/ZVpm3J9/HCs=;
- b=zQpo+3riwodKNzXsS8sVKZA3weGqQxcRD8XcNzjBTcE+iSvQne3BKbz95p2W17jScl
- i1/1+9KZRvYFnAvIvF85nYOUTRr+YCofKCEx7LaZXvP++WffIkaXp3FmPqV5XJ0RxnUu
- AmMgRy/Nen5czB8GZHODv5AL4MK3iC9koUB2UfeOXZ0mzBHu4yJcu9wrI2G0XwSrcvWm
- k6t580Uvk6wfHDeOSrT2IB0U+88vyJm62PX+jm9o/CLOHI0UupB7gwjYKrk3x1R2A5Sg
- PCmupoXfVhzW3nyUqoUSyXaBZN2b6w48DzMQWaZdkfDkEWmA8hbdxie+zZrByzBEomf5
- 8wLg==
-X-Gm-Message-State: AOAM530pF344Xz9B9h7Zj0EDa7QTIldfeDegZSPmx4xpkJNL0Sevni6j
- qysM+3bjbsmDp20Gj53oBKGaC5hrG9P7Hxyz0V2p7g==
-X-Received: by 2002:a5d:64aa:: with SMTP id m10mr13904356wrp.295.1642526348116; 
- Tue, 18 Jan 2022 09:19:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1n9vFp-0005NU-DR
+ for qemu-arm@nongnu.org; Tue, 18 Jan 2022 15:38:57 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:38947)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1n9vFm-0003Fk-Ez
+ for qemu-arm@nongnu.org; Tue, 18 Jan 2022 15:38:56 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1642538333;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=LWbn8cJRBl8h28Y1f7jyH+QyQPBZQzZ4BnrKe9dkZdY=;
+ b=T2Pv33paZNmiRhroYe6zlrHXX0uwrIoKLMWgcsvF5xNCrirVgeo+LGV2A/ospd7RdyPi4V
+ aK71VjDgUitxBGGKraUUoj6CBig7HJpbuUeg9mwg64d/Qn+yeI1eY5nOlFe8MjV7N0YV2W
+ AnSwfLTBafF1/o0RLLkFNSyiMovSxv8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-288-00Vk_ObwNka5z6YvWPcd2g-1; Tue, 18 Jan 2022 15:38:50 -0500
+X-MC-Unique: 00Vk_ObwNka5z6YvWPcd2g-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0BEB919251A0;
+ Tue, 18 Jan 2022 20:38:49 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.194.124])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 64DE945D9A;
+ Tue, 18 Jan 2022 20:38:41 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, thuth@redhat.com,
+ pbonzini@redhat.com, lvivier@redhat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
+ david@gibson.dropbear.id.au, clg@kaod.org, eesposit@redhat.com
+Subject: [PATCH v2 0/6] qtests/libqos: Allow PCI tests to be run with
+ virt-machine
+Date: Tue, 18 Jan 2022 21:38:27 +0100
+Message-Id: <20220118203833.316741-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20220111172338.1525587-1-venture@google.com>
-In-Reply-To: <20220111172338.1525587-1-venture@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Jan 2022 17:18:57 +0000
-Message-ID: <CAFEAcA-U11hGUAJRPYQ_=fONyR_oKw+8igxGha7SuHQo+jrAOQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: kudo add lm75s behind bus 1 switch at 75
-To: Patrick Venture <venture@google.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32b
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Hao Wu <wuhaotsh@google.com>, kfting@nuvoton.com, qemu-arm@nongnu.org,
- hskinnemoen@google.com, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uYYjuLUTVQhs
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: jean-philippe@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: t8agUgeY5xrG
 
-On Tue, 11 Jan 2022 at 17:23, Patrick Venture <venture@google.com> wrote:
->
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> Signed-off-by: Patrick Venture <venture@google.com>
-> ---
->  hw/arm/npcm7xx_boards.c | 10 +++++++++-
->  1 file changed, 9 insertions(+), 1 deletion(-)
+Up to now the virt-machine node only contains a virtio-mmio
+driver node but no driver that eventually produces any pci-bus
+interface.
+
+Hence, PCI libqos tests cannot be run with aarch64 binary.
+
+This series brings the pieces needed to be able to run PCI tests
+with the aarch64 binary: a generic-pcihost driver node gets
+instantiated by the machine. This later contains a pci-bus-generic
+driver which produces a pci-bus interface. Then all tests
+consuming the pci-bus interface can be run with the libqos arm
+virt machine.
+
+One of the first goal was to be able to run the virtio-iommu-pci
+tests as the virtio-iommu was initially targetting ARM and it
+was awkard to be run the test with the pc machine. This is now
+possible.
+
+Only the tests doing hotplug cannot be run yet as hotplug is
+not possible on the root bus. This will be dealt with separately
+by adding a root port to the object tree.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/libqos-pci-arm-v2
+
+History
+
+v1 -> v2:
+- copyright updated to 2022
+- QPCIBusARM renamed into QGenericPCIBus
+- QGenericPCIHost declarations and definitions moved in the same
+  place as the generic pci implementation
+- rename pci-arm.c/h in generic-pcihost.c/h and remove any ref to
+  ARM there
+- remove qos_node_produces_opts, qpci_new_arm, qpci_free_arm
+- ecam_alloc_ptr now is a field of QGenericPCIBus and not QPCIBus
+- new libqos_init to create generic-pcihost driver that contains
+  pci-bus-generic
+- QGenericPCIHost moved in the same place as the generic pci
+  bindings
+- collected Thomas A-b/R-b
 
 
+Eric Auger (6):
+  tests/qtest/vhost-user-test.c: Use vhostforce=on
+  tests/qtest/libqos/pci: Introduce pio_limit
+  tests/qtest/libqos: Skip hotplug tests if pci root bus is not
+    hotpluggable
+  tests/qtest/vhost-user-blk-test: Setup MSIx to avoid error on aarch64
+  tests/qtest/vhost-user-blk-test: Factorize vq setup code
+  tests/qtest/libqos: Add generic pci host bridge in arm-virt machine
 
-Applied to target-arm.next, thanks.
+ tests/qtest/e1000e-test.c             |   6 +
+ tests/qtest/libqos/arm-virt-machine.c |  18 +-
+ tests/qtest/libqos/generic-pcihost.c  | 231 ++++++++++++++++++++++++++
+ tests/qtest/libqos/generic-pcihost.h  |  54 ++++++
+ tests/qtest/libqos/meson.build        |   1 +
+ tests/qtest/libqos/pci-pc.c           |   1 +
+ tests/qtest/libqos/pci-spapr.c        |   1 +
+ tests/qtest/libqos/pci.c              |  78 +++++----
+ tests/qtest/libqos/pci.h              |   6 +-
+ tests/qtest/vhost-user-blk-test.c     |  39 ++++-
+ tests/qtest/vhost-user-test.c         |   2 +-
+ tests/qtest/virtio-blk-test.c         |   5 +
+ tests/qtest/virtio-net-test.c         |   5 +
+ tests/qtest/virtio-rng-test.c         |   5 +
+ 14 files changed, 408 insertions(+), 44 deletions(-)
+ create mode 100644 tests/qtest/libqos/generic-pcihost.c
+ create mode 100644 tests/qtest/libqos/generic-pcihost.h
 
--- PMM
+-- 
+2.26.3
+

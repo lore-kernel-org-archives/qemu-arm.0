@@ -1,134 +1,127 @@
-Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp3125833lfj;
-        Tue, 18 Jan 2022 12:49:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyy/dqm6a15SdJsiBMvq7JjHz6fWdt5blHhaJ0tXKQzkMwTwiLmoE3w1H+N1DHATECdzmiY
-X-Received: by 2002:a25:248d:: with SMTP id k135mr8579040ybk.535.1642538957575;
-        Tue, 18 Jan 2022 12:49:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642538957; cv=none;
+Received: by 2002:a19:ca48:0:0:0:0:0 with SMTP id h8csp3780631lfj;
+        Wed, 19 Jan 2022 09:39:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzNiZYcPhHr/GMXrEDEIi7CG8bVmOStFplsblkZyiQ2tj1m+6CUugocrxjzs9W2KBLSQ1R8
+X-Received: by 2002:a05:620a:21dd:: with SMTP id h29mr22382533qka.80.1642613995700;
+        Wed, 19 Jan 2022 09:39:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642613995; cv=none;
         d=google.com; s=arc-20160816;
-        b=rDYcPKZyegX2jlWnppxjg8KzoGm99uoqRUWfQTwKFlG/Kp0n4Dk1K2nIi2IymByyvw
-         +IMEmmPv4uf5Dm0Ge2QtiYGn9AH+86TAn5ktxn4sDoIvFYzweFkC9TaniTAC7xCHU+s9
-         8vqBIeMvPIJ3jhcXwJQDP4Koh9zPB+dt0FFRDqXdVtF/pcsL6w8ITpwgHCtiRMIRpNLF
-         1HuOtOfk9tekCMsfMm8++9n3zz1qapM1C/Pab+G7tjXY7jCJGctOfHyExZEAvJveF7QS
-         cPws6erGYlYcJheBBPzwkMJdn0D0bSVaitgU444S/9RXVOHSpkNdHRkqYkHcPzV4iMxL
-         BYqw==
+        b=krOZEqivH8gNOvNtEMZxASjP6MMBSR9L+0cfll5sWnlkdFRV4Q5aTCER0i5Ht5u75j
+         dUCg3rJ51c935XdL6zZDRWMBshax/AdBavrsXPucEApWkBvu9poG1lmWDRowVM7SZt/e
+         2wqGcgd/LNUozSNqTjLp+oOTn838Wu4k21iqEMDFgdK/8i3L5dXGgP6/rhI7CCygKaUm
+         bcXW+b6SAgXyy/VwPzlSh+j2DSgMSFKa9rzJ7uPO7t5rSMcjEzhiDpg4vLS9fgz8pi/j
+         mud27DW0qWvLLeYeiHk77k6xroajSY0unQ9R8MnOQi1wEY+WQP1tkz0ouauLuoKo6UkT
+         6eUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=zncEUqUd4dBGTgj3TKShMWXThpqZ6yQR26GO114q1OE=;
-        b=frJaH9zopEMvdiAqc/cDBlQIKXry9YDHk4WO9WvLvTk6//t18Aq/T01yYxyOEmeSR2
-         dEe+ej3SEkc0jGZk9fJf4lJZIKA/6N4DPKR6SznGhtDN1UiygHicbLOumTRbGerQoTHF
-         ejVxVZP+aY6gkNzc3IG0mZsaz9VifBmXEJCRd1LWLc8g6f5n/zZzsum/NtMmXUynOEJJ
-         tUGN2EThnbcwYVgJkTjABd71bWRHlyDH4I6xAQtvallSm/1eXrnJ/nKj+MQVUrHkm137
-         gZ2fev9eslOyORxjb6/z/C3vatN56O8d5TrKJK2Adi6aY25BdK8auCk+kpgPxms9VP/P
-         qXZg==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=jZq3HSXyt3m0FVWiE70YNLHQpaa1ILRf8ubhjDauh3g=;
+        b=PvA+mJelSRNEvS5iUH1KCJXlxwhWX3xBS/OPx/mXOElBAJOGW+KIJPOIJ2wZ7qCfL6
+         XzZhpZvJcvxvsYISdcSk7QRMdQZUcxklnLB1mtQBHcDdBzVnnFlCMAtMy8yYKSss/zIg
+         exevI8ycFrmdmJIHePpNu5++5juj7fwJ1+txFPlZDlx36qRaoNG5jYNWToIcZi2vyzxp
+         pQ/jExjMM53f6Y2zIBjG5GI450yyjgz5RTGoUo0bc4jCpQ8OGyY1NSs1TSK/MD9CPVmf
+         puONRNNHCYBJtw4AgSqQ9gZjb6nUhUuzeb7cFSbIgnffbb/R4WZnPKM9S1XJMxD3uAtQ
+         KbKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i4KsuGD1;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=n7el9kvX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x82si12554955ybx.372.2022.01.18.12.49.17
+        by mx.google.com with ESMTPS id 42si256204qtf.494.2022.01.19.09.39.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jan 2022 12:49:17 -0800 (PST)
+        Wed, 19 Jan 2022 09:39:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i4KsuGD1;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=n7el9kvX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39478 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:52192 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1n9vPo-0007js-SK
-	for alex.bennee@linaro.org; Tue, 18 Jan 2022 15:49:16 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46382)
+	id 1nAEw7-0004qZ-2p
+	for alex.bennee@linaro.org; Wed, 19 Jan 2022 12:39:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1n9vHO-000783-Bi
- for qemu-devel@nongnu.org; Tue, 18 Jan 2022 15:40:38 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:47239)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1n9vHJ-0003ii-R1
- for qemu-devel@nongnu.org; Tue, 18 Jan 2022 15:40:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1642538429;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zncEUqUd4dBGTgj3TKShMWXThpqZ6yQR26GO114q1OE=;
- b=i4KsuGD1W3QMVNoth4IeNKLd9eCLm3b3bBfKJY2vr9l3lwnC/4Ai+6wIF1Tuiah2Q6fzBF
- EP1mZO/yryMVoFzplut8wwS4c4xxbgtHqZLIzM+fQUXVWT+eeNIvOQ3wR5VfiLT8xMvNap
- mAJwHeHPvs/Eb1zLvNVaFT74NAyCOsE=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-467-awe_-UeKOcCSu1k1ajyBHw-1; Tue, 18 Jan 2022 15:40:28 -0500
-X-MC-Unique: awe_-UeKOcCSu1k1ajyBHw-1
-Received: by mail-wm1-f71.google.com with SMTP id
- bg16-20020a05600c3c9000b0034bea12c043so2645595wmb.7
- for <qemu-devel@nongnu.org>; Tue, 18 Jan 2022 12:40:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nAEqh-00007j-Sw; Wed, 19 Jan 2022 12:34:20 -0500
+Received: from [2a00:1450:4864:20::334] (port=54928
+ helo=mail-wm1-x334.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nAEqf-0002vM-1N; Wed, 19 Jan 2022 12:34:19 -0500
+Received: by mail-wm1-x334.google.com with SMTP id p18so6553947wmg.4;
+ Wed, 19 Jan 2022 09:34:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=jZq3HSXyt3m0FVWiE70YNLHQpaa1ILRf8ubhjDauh3g=;
+ b=n7el9kvXYZ9W5UcXac8Wr41OM4I5ZN6bwPPUU/6fjwQy40BpsJW+sQLycndTl6t1Uq
+ GugTOpbiYz2lORO8Qs1+0iLx4jRaxluqvXFh+fEG1w+86zIHZTlDa4wmzEC9oHllkXe/
+ 0LumKVyA+AlgUQYIpS+9peVuN1RGYS7bNWvipd5XqwI4MWOj/YeelHUONBmeZWXfFBB0
+ LOuadv+QUgioc3Ub8FcO/Dn+2vz100OKxyIETQxQR2Lo1QLqn11sYvsESl1CQvqnu7nE
+ IhEXE2r9gOE8nYEo8UBYKuLFZLPX4VYfsNATsv/F4uScKRX0OK7uAzxCtyKi0mkO4tYo
+ DR6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=zncEUqUd4dBGTgj3TKShMWXThpqZ6yQR26GO114q1OE=;
- b=EMhKwQUz0timo7hacRsnMlzsiteNxCqhC0CwMbntT0iT6krlQqeGipzQn9Tvf/XfYJ
- L4GRdnsXIbcPzDPxY6ShSx9iJFoJXTECJaK9osVie8OkW1suhxzVu18e3iyCmOxFB3eK
- Hp3SfMmTgcNM+xNqNlNUotrwR7VV4WfED8GcOiQ/Kx1GTKauH7OoELe5E8lmMn3brHwG
- Ln1GhLr3frIxoHYuiiG7Wk/SZhU5KYHVO1chCz6+iB/8priJIzlxBTC9Vuz2GUEvcbv9
- ecS5Qei8NUy6FOffXiPM3YiXvvtS/b/wRBRgbky/TEiBYBXGVGyO6Yr64VsIm3LN3kBp
- EllQ==
-X-Gm-Message-State: AOAM5310rsf0DCHsF4DJnw/zRrd6OPYOmxASs7RpkqBGfxSRibxbnMur
- Dg14qhsrcjTk2a6EGWTVnGtrkp0jehOKYDJuAfxL5bdfFJmDXUMwrd+l7bhAy7pwGncTGRDfTH+
- LIIaQ1vdiyeQZ2co=
-X-Received: by 2002:a5d:55ce:: with SMTP id i14mr26235424wrw.224.1642538426920; 
- Tue, 18 Jan 2022 12:40:26 -0800 (PST)
-X-Received: by 2002:a5d:55ce:: with SMTP id i14mr26235406wrw.224.1642538426647; 
- Tue, 18 Jan 2022 12:40:26 -0800 (PST)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id c8sm10844621wri.69.2022.01.18.12.40.25
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=jZq3HSXyt3m0FVWiE70YNLHQpaa1ILRf8ubhjDauh3g=;
+ b=0j9FR0X0UxLB4W9qOm7IYy0EvhesQ2F/7I0mG7urf0M8GVM4rpzQ/f6L5qoC8crnuA
+ FhzEQYZ39RpjNx7ClJbRB00M28ByDGxHr70+cvryHFidpgV8HQcwiVd9KkDeJXwot8zf
+ BQxXRTkmSAgMtpKqqggSgln1euk0RPD8W68OoB7W9bpZkjW7yVxsruy76LRHKI8DG50j
+ leuqYsY7I0gIF/GvFep6SNCHFmkqJqDGpLhuFhHW+qsKr5BvdEPk4WnBWdax8+uPRZtt
+ PuuHA60p2dTD/bwRr9G4cDhXMqjPLn/ACA5HhKIl7VoSgxegXqX/kD/E1fbcAohs9g04
+ b1MQ==
+X-Gm-Message-State: AOAM531gULZb6if/sm2jCF+hE8ndzxjm2JADnmrAAG80NhnGDvBWHorK
+ QuyDUDuicwfeyVHStFiZeYQ=
+X-Received: by 2002:a5d:4288:: with SMTP id k8mr7232770wrq.657.1642613654523; 
+ Wed, 19 Jan 2022 09:34:14 -0800 (PST)
+Received: from [192.168.1.40] (154.red-83-50-83.dynamicip.rima-tde.net.
+ [83.50.83.154])
+ by smtp.gmail.com with ESMTPSA id s9sm157622wmh.35.2022.01.19.09.34.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Jan 2022 12:40:26 -0800 (PST)
-Subject: Re: [PATCH 6/6] tests/qtest/libqos: Add pci-arm and add a pci-arm
- producer in arm-virt machine
-To: Paolo Bonzini <pbonzini@redhat.com>, eric.auger.pro@gmail.com,
- thuth@redhat.com, lvivier@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
- david@gibson.dropbear.id.au, clg@kaod.org
-References: <20220110211915.2749082-1-eric.auger@redhat.com>
- <20220110211915.2749082-7-eric.auger@redhat.com>
- <664ba767-31c9-a8cd-066c-04c4ae874029@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <31c65b49-b364-a8d4-8aa6-48cc9743406b@redhat.com>
-Date: Tue, 18 Jan 2022 21:40:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ Wed, 19 Jan 2022 09:34:14 -0800 (PST)
+Message-ID: <4e3cdf08-b767-9a00-e4ca-70580bba4aa9@amsat.org>
+Date: Wed, 19 Jan 2022 18:34:12 +0100
 MIME-Version: 1.0
-In-Reply-To: <664ba767-31c9-a8cd-066c-04c4ae874029@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [RFC PATCH v3 1/3] hw/intc/arm_gicv3: Check for !MEMTX_OK instead
+ of MEMTX_ERROR
 Content-Language: en-US
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Li Qiang <liq3ea@gmail.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
+ Peter Xu <peterx@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
+ qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20211215182421.418374-1-philmd@redhat.com>
+ <20211215182421.418374-2-philmd@redhat.com>
+In-Reply-To: <20211215182421.418374-2-philmd@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::334
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,223 +134,60 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: jean-philippe@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hoCjIfT+euos
+Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-devel@nongnu.org>
+X-TUID: QZ9rwfdbSpa3
 
-Hi Paolo,
+Hi Peter,
 
-On 1/15/22 5:01 PM, Paolo Bonzini wrote:
-> On 1/10/22 22:19, Eric Auger wrote:
->> Up to now the virt-machine node contains a virtio-mmio node.
->> However no driver produces any PCI interface node. Hence, PCI
->> tests cannot be run with aarch64 binary.
->>
->> Add a GPEX driver node that produces a pci interface node. This latter
->> then can be consumed by all the pci tests. One of the first motivation
->> was to be able to run the virtio-iommu-pci tests.
->>
->> We still face an issue with pci hotplug tests as hotplug cannot happen
->> on the pcie root bus and require a generic root port. This will be
->> addressed later on.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->
-> Hey Eric,
->
-> it's great to have gpex support in libqos/qgraph!  On the next
-> versions you might also Cc Emanuele since he was the author of the
-> framework.
-sure!
->
->> ---
->>   tests/qtest/libqos/arm-virt-machine.c |  47 +++++-
->>   tests/qtest/libqos/meson.build        |   3 +
->>   tests/qtest/libqos/pci-arm.c          | 219 ++++++++++++++++++++++++++
->>   tests/qtest/libqos/pci-arm.h          |  56 +++++++
->>   tests/qtest/libqos/pci.h              |   1 +
->>   tests/qtest/libqos/qgraph.c           |   7 +
->>   tests/qtest/libqos/qgraph.h           |  15 ++
->>   7 files changed, 344 insertions(+), 4 deletions(-)
->>   create mode 100644 tests/qtest/libqos/pci-arm.c
->>   create mode 100644 tests/qtest/libqos/pci-arm.h
->>
->> diff --git a/tests/qtest/libqos/arm-virt-machine.c
->> b/tests/qtest/libqos/arm-virt-machine.c
->> index e0f59322845..130c45c51e2 100644
->> --- a/tests/qtest/libqos/arm-virt-machine.c
->> +++ b/tests/qtest/libqos/arm-virt-machine.c
->> @@ -22,6 +22,8 @@
->>   #include "malloc.h"
->>   #include "qgraph.h"
->>   #include "virtio-mmio.h"
->> +#include "pci-arm.h"
->> +#include "hw/pci/pci_regs.h"
->>     #define ARM_PAGE_SIZE               4096
->>   #define VIRTIO_MMIO_BASE_ADDR       0x0A003E00
->> @@ -30,13 +32,40 @@
->>   #define VIRTIO_MMIO_SIZE            0x00000200
->>     typedef struct QVirtMachine QVirtMachine;
->> +typedef struct QGenericPCIHost QGenericPCIHost;
->> +
->> +struct QGenericPCIHost {
->> +    QOSGraphObject obj;
->> +    QPCIBusARM pci;
->> +};
->
-> You can rename QPCIBusARM to QGenericPCIBus and move QGenericPCIHost
-> to the same file.  There's nothing ARM specific in either file, and
-> nothing specific to -M virt in QGenericPCIHost.
+Can you take this single patch via your arm tree?
 
-done
->
->>   struct QVirtMachine {
->>       QOSGraphObject obj;
->>       QGuestAllocator alloc;
->>       QVirtioMMIODevice virtio_mmio;
->> +    QGenericPCIHost bridge;
->>   };
->>   +/* QGenericPCIHost */
->> +
->> +static QOSGraphObject *generic_pcihost_get_device(void *obj, const
->> char *device)
->> +{
->> +    QGenericPCIHost *host = obj;
->> +    if (!g_strcmp0(device, "pci-bus-arm")) {
->> +        return &host->pci.obj;
->> +    }
->> +    fprintf(stderr, "%s not present in generic-pcihost\n", device);
->> +    g_assert_not_reached();
->> +}
->> +
->> +static void qos_create_generic_pcihost(QGenericPCIHost *host,
->> +                                       QTestState *qts,
->> +                                       QGuestAllocator *alloc)
->> +{
->> +    host->obj.get_device = generic_pcihost_get_device;
->> +    qpci_init_arm(&host->pci, qts, alloc, false);
->> +}
->> +
->>   static void virt_destructor(QOSGraphObject *obj)
->>   {
->>       QVirtMachine *machine = (QVirtMachine *) obj;
->
-> This should also be in the same file as the bus implementation.
-done
->
->> +    qos_node_create_driver("generic-pcihost", NULL);
->> +    qos_node_contains("generic-pcihost", "pci-bus-arm", NULL);
->
-> This too, with a new libqos_init.
-done
->
->
->> +static uint8_t qpci_arm_config_readb(QPCIBus *bus, int devfn,
->> uint8_t offset)
->> +{
->> +    uint64_t addr = bus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12)
->> | offset);
->
-> ecam_alloc_ptr should be in QPCIBusARM (to be renamed to
-> QGenericPCIBus), which you can retrieve from the "bus" QPCIBus* via
-> container_of.
-done
->
->> diff --git a/tests/qtest/libqos/pci-arm.h b/tests/qtest/libqos/pci-arm.h
->> new file mode 100644
->> index 00000000000..8cd49ec2969
->> --- /dev/null
->> +++ b/tests/qtest/libqos/pci-arm.h
->> @@ -0,0 +1,56 @@
->> +/*
->> + * libqos PCI bindings for ARM
->> + *
->> + * Copyright Red Hat Inc., 2021
->> + *
->> + * Authors:
->> + *  Eric Auger   <eric.auger@redhat.com>
->> + *
->> + * This work is licensed under the terms of the GNU GPL, version 2
->> or later.
->> + * See the COPYING file in the top-level directory.
->> + */
->> +
->> +#ifndef LIBQOS_PCI_ARM_H
->> +#define LIBQOS_PCI_ARM_H
->> +
->> +#include "pci.h"
->> +#include "malloc.h"
->> +#include "qgraph.h"
->> +
->> +typedef struct QPCIBusARM {
->> +    QOSGraphObject obj;
->> +    QPCIBus bus;
->> +    uint64_t gpex_pio_base;
->> +} QPCIBusARM;
->> +
->> +/*
->> + * qpci_init_arm():
->> + * @ret: A valid QPCIBusARM * pointer
->> + * @qts: The %QTestState for this ARM machine
->> + * @alloc: A previously initialized @alloc providing memory for @qts
->> + * @bool: devices can be hotplugged on this bus
->> + *
->> + * This function initializes an already allocated
->> + * QPCIBusARM object.
->> + */
->> +void qpci_init_arm(QPCIBusARM *ret, QTestState *qts,
->> +                   QGuestAllocator *alloc, bool hotpluggable);
->> +
->> +/*
->> + * qpci_arm_new():
->> + * @qts: The %QTestState for this ARM machine
->> + * @alloc: A previously initialized @alloc providing memory for @qts
->> + * @hotpluggable: the pci bus is hotpluggable
->> + *
->> + * This function creates a new QPCIBusARM object,
->> + * and properly initialize its fields.
->> + *
->> + * Returns the QPCIBus *bus field of a newly
->> + * allocated QPCIBusARM.
->> + */
->> +QPCIBus *qpci_new_arm(QTestState *qts, QGuestAllocator *alloc,
->> +                      bool hotpluggable);
->> +
->> +void qpci_free_arm(QPCIBus *bus);
->
-> These two functions are not needed now.  I'm not opposing non-qgraph
-> tests that use the gpex device, but the functions should be introduced
-> together with their users.
-removed
->
->> diff --git a/tests/qtest/libqos/qgraph.c b/tests/qtest/libqos/qgraph.c
->> index 109ff04e1e8..e03fad35241 100644
->> --- a/tests/qtest/libqos/qgraph.c
->> +++ b/tests/qtest/libqos/qgraph.c
->> @@ -667,6 +667,13 @@ void qos_node_produces(const char *producer,
->> const char *interface)
->>       add_edge(producer, interface, QEDGE_PRODUCES, NULL);
->>   }
->>   +void qos_node_produces_opts(const char *producer, const char
->> *interface,
->> +                            QOSGraphEdgeOptions *opts)
->> +{
->> +    create_interface(interface);
->> +    add_edge(producer, interface, QEDGE_PRODUCES, opts);
->> +}
->> +
->
-> This is not needed, I think.
-indeed, removed.
+Thanks,
 
-So you should see the above comments taken into account in just posted v2.
+Phil.
 
-Thank you for the review!
-
-Eric
->
-> Paolo
->
-
+On 12/15/21 19:24, Philippe Mathieu-Daudé wrote:
+> Quoting Peter Maydell:
+> 
+>  "These MEMTX_* aren't from the memory transaction
+>   API functions; they're just being used by gicd_readl() and
+>   friends as a way to indicate a success/failure so that the
+>   actual MemoryRegionOps read/write fns like gicv3_dist_read()
+>   can log a guest error."
+> 
+> We are going to introduce more MemTxResult bits, so it is
+> safer to check for !MEMTX_OK rather than MEMTX_ERROR.
+> 
+> Reviewed-by: Peter Xu <peterx@redhat.com>
+> Reviewed-by: David Hildenbrand <david@redhat.com>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  hw/intc/arm_gicv3_redist.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+> index c8ff3eca085..99b11ca5eee 100644
+> --- a/hw/intc/arm_gicv3_redist.c
+> +++ b/hw/intc/arm_gicv3_redist.c
+> @@ -462,7 +462,7 @@ MemTxResult gicv3_redist_read(void *opaque, hwaddr offset, uint64_t *data,
+>          break;
+>      }
+>  
+> -    if (r == MEMTX_ERROR) {
+> +    if (r != MEMTX_OK) {
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "%s: invalid guest read at offset " TARGET_FMT_plx
+>                        " size %u\n", __func__, offset, size);
+> @@ -521,7 +521,7 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
+>          break;
+>      }
+>  
+> -    if (r == MEMTX_ERROR) {
+> +    if (r != MEMTX_OK) {
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "%s: invalid guest write at offset " TARGET_FMT_plx
+>                        " size %u\n", __func__, offset, size);

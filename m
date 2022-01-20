@@ -1,136 +1,165 @@
-Received: by 2002:ac2:4c90:0:0:0:0:0 with SMTP id d16csp38477lfl;
-        Wed, 19 Jan 2022 13:15:49 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxgwFV34e1t17l70RohTGBkNeKAFYiwtTuPPscLOs2gv9gCAqHl3xfThcm1izDymeBqGnBc
-X-Received: by 2002:a05:6402:1686:: with SMTP id a6mr6886977edv.90.1642626949679;
-        Wed, 19 Jan 2022 13:15:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642626949; cv=none;
+Received: by 2002:ac2:4c90:0:0:0:0:0 with SMTP id d16csp669595lfl;
+        Thu, 20 Jan 2022 07:56:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwGs+D34jct2bRc07NmnUDn4cobf8QPvdvC33oiRalsp3j301odi7ggIt23XwiRqGqU2tRW
+X-Received: by 2002:ac8:5d93:: with SMTP id d19mr28755454qtx.191.1642694193993;
+        Thu, 20 Jan 2022 07:56:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642694193; cv=none;
         d=google.com; s=arc-20160816;
-        b=DPLY9OfQ/KDfZkeJGpWOJ9l9acTIlDJvCgXx44wGK0r8v7OwrA08CTseaxjx/rWfhj
-         hwovBObK5ip9ajMg/v7VYbROogZuJRB8nXKAaMe2eiNDa0dJ+fr0C/Aeij4YkH4+S39Y
-         a1r4HRpjSqaewMUBOMAlUnW1T9sK+xrgaXq125Zk2eQ2LbDVZ5uaIhJseVjM4sKkomOH
-         M97+eB7lcbzer9Fk4v8NRyqkQReT+uj7SN479ReozMXYED4LXNADA+snAC834V/14uHU
-         jAivtxSM64GxzgU6mEMdi5pHaEuk0sk5H2WnrXCTZSfeDUZKGKNXyjNKMs/7QYQUaVG6
-         SW1w==
+        b=XXkplywpZvE6sYYe/z075UqCN9G3ziRZqc3slXPAU6tvuxgLB22eknruHklO+97wcx
+         3tSBAb94adRugM+LP3VHvRFCnfupvThj9qCD8dRJa3tlP7nrkRXIPpVCmGJNLpx1FFlt
+         kW3elfKHPvyCpkUT4AiY9cBbEMTCcf9ylnRKKL13SOID8yNYsN5Q53m5Gqusf68cjV+y
+         fM32b8qo3eS/Ida6XyJ3MdTyrCz/8ef/GD5kic1Spb4ARFBut5wWMjO3dYckh5axlt2K
+         f90EDRM3jtQQ8V9O/Q5GnUAeCuc/PHC1PgEJh/SRUexyZ37YeEhewqQYBmDnFivvY/81
+         qdTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=S4Mc+Bj2M4K6QbPh7Tl9RSKCd3a3zACDDjMziCtb1r0=;
-        b=mQMBIxt8WO81/okv98eypY085QWN+MCJ24PkbqocMTF3VTVQnCI+0BvnUK8RpKSGUp
-         mForsLEmJQ5myzWM3hlFGDxWpxpjEdf0JnX1P5Nte/Axrk8hPEBz9N1KqY8w49oSJ3fu
-         W3FfymjJ/W89+ditmm7lXQ2rPcyJvV3GV/iAxJ76nIAp4K/7ZQ+8fVYj3osyXpPiR+Qj
-         g8pP7iimoZurZ8CqBqb4YjcwhSUL25xUj0Tcr/snz0clKR4nd4t7m/VDQS64pz0v5XIJ
-         ceMZyky33x0VePk5lo/mJKf5L9rQI9jZSnlH9foDedyX6gKDvf4dPIqrlHHdFTnGBGXx
-         KZdg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=PoFmUAe2U/9+Q8HlewAE973W1wbfT1HXpWq4wD7Fl4U=;
+        b=aBncNme9D501Lx9M8Ahl9jWyZfAzPD5FDAMlHom4hJpabnZPC9UEijK7FYyVkd7Dd4
+         QsBkzsqUI+Dc3pwEED9K/NwzDR+kVO08XUP0GIRMqys3jjuAL4HSUiWwLpoFW0v2EnB5
+         zRHtAMJAbM0TgNITMTHMdZb6on7dRmzz4gLEbrxTmAuRX1kOdKXeBL9zcSuoM9aBgsh9
+         b/m7pI5dkrTq1FXgu5eats/fHP5lVoNNGWdRI5BT8cfPefxCnhYYZsIzZsYFRnYu0csj
+         hvwUwzFiYOSIVzSyhg/njvC2M6TH/hCy7sxSEOATuLOTvnjhmAT4G66m07GrlqLghfH3
+         AaTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of andre.przywara@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=andre.przywara@arm.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
-Return-Path: <andre.przywara@arm.com>
-Received: from foss.arm.com (foss.arm.com. [217.140.110.172])
-        by mx.google.com with ESMTP id sd27si523533ejc.414.2022.01.19.13.15.49;
-        Wed, 19 Jan 2022 13:15:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of andre.przywara@arm.com designates 217.140.110.172 as permitted sender) client-ip=217.140.110.172;
+       dkim=pass header.i=@linaro.org header.s=google header.b=trAtQTtj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c11si1327318qtc.454.2022.01.20.07.56.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 20 Jan 2022 07:56:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of andre.przywara@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=andre.przywara@arm.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8081FED1;
-	Wed, 19 Jan 2022 13:15:48 -0800 (PST)
-Received: from slackpad.fritz.box (unknown [172.31.20.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 45FCB3F774;
-	Wed, 19 Jan 2022 13:15:47 -0800 (PST)
-Date: Wed, 19 Jan 2022 21:15:05 +0000
-From: Andre Przywara <andre.przywara@arm.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Alex =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Shashi Mallela
- <shashi.mallela@linaro.org>, Andrew Jones <drjones@redhat.com>, Eric Auger
- <eric.auger@redhat.com>
-Subject: Re: [PATCH v2 00/13] arm gicv3 ITS: Various bug fixes and
- refactorings
-Message-ID: <20220119211505.1895544d@slackpad.fritz.box>
-In-Reply-To: <CAFEAcA_BdvbTDp8sJyB32EicB=mNxndgKe7GyNZqE9ER5Ow+wg@mail.gmail.com>
-References: <20220111171048.3545974-1-peter.maydell@linaro.org>
-	<87pmop7xfw.fsf@linaro.org>
-	<CAFEAcA-ncYCtpH2aCjd4GWuN9SLcxGMQUOutBWyNHByD6_gG0w@mail.gmail.com>
-	<20220118232935.50ae1b25@slackpad.fritz.box>
-	<CAFEAcA_BdvbTDp8sJyB32EicB=mNxndgKe7GyNZqE9ER5Ow+wg@mail.gmail.com>
-Organization: Arm Ltd.
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.31; x86_64-slackware-linux-gnu)
+       dkim=pass header.i=@linaro.org header.s=google header.b=trAtQTtj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39826 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nAZnb-0005x1-Qt
+	for alex.bennee@linaro.org; Thu, 20 Jan 2022 10:56:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57464)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nAVpY-0003x2-QS
+ for qemu-arm@nongnu.org; Thu, 20 Jan 2022 06:42:16 -0500
+Received: from [2a00:1450:4864:20::336] (port=56036
+ helo=mail-wm1-x336.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nAVpX-0000Hi-7V
+ for qemu-arm@nongnu.org; Thu, 20 Jan 2022 06:42:16 -0500
+Received: by mail-wm1-x336.google.com with SMTP id c66so11455355wma.5
+ for <qemu-arm@nongnu.org>; Thu, 20 Jan 2022 03:42:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PoFmUAe2U/9+Q8HlewAE973W1wbfT1HXpWq4wD7Fl4U=;
+ b=trAtQTtjGtKTSG8jkqio6A5N2u6l+MX2UEDq2kFLocVm6luoS2zu4WP/4W7SMygDhI
+ xpj4NPMshAGXrnet1U+yuHySGx+MOnJeJf2OkrVz5vL4SldsJT0SyW0RQIlu6MKM2DZp
+ U8zaRAXp6CREUV+Phaj1pwInYURYpC89F3PCwsJguhyPFkcks7AMGpAFbifOSRSKFj6M
+ gWJY8of6Tr3aukufCa7z/VI0srj4/IDcgHv11TRe6dfG15W2IarbetmU5RrzXEz1rG6z
+ PwHqO3brbSJTbiK5/F68zhPzIUpY7cS36ir42DHTK+EH2a0PRdECWbu8rQR06SoOVn60
+ kXEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PoFmUAe2U/9+Q8HlewAE973W1wbfT1HXpWq4wD7Fl4U=;
+ b=yh5uQVgKPSsAhkl2oFnmU/MxjseuWaW0OgTVnIVCapB4YqeFTsrShzxffaU39y4Tfz
+ 77SZGG/gh3hMgYckVs9vU5mbFm9ui2RNp5xW7wpHh1jlxnlAqz6LX0rUhZdJcn93/+An
+ YuJZF/AMIf/tFYnSJCEBR/sJwDLJh2u5P40wX6ACpbyY0VDWmZfkFaALZAVKlrAoNPep
+ RqGpPDR/C9/JDUYqVnjnWKOTGTmn7eMLhAbdALMpE1L4AzFulIYRHuZsMDX84yC6WhoI
+ 09hAaUB7g3KD8HLO/HhixX+x4zJZ02bnPgIiHmFebDvNtjwMJcbAP2gbrSYFxMmAlt54
+ SiLA==
+X-Gm-Message-State: AOAM531FMA9SgoiSxI1OmzGQ1eSCnDqX5b9Ni/yrD4oTPavxvm9GbQXw
+ zcq7PnPRgKEdcstxv3Nm3crxXN+jkouB1vf+SEF7ZQ==
+X-Received: by 2002:a05:600c:d3:: with SMTP id
+ u19mr2826274wmm.37.1642678933707; 
+ Thu, 20 Jan 2022 03:42:13 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: lX2v1hEbNGa3
+References: <20220114004033.295199-1-idan.horowitz@gmail.com>
+In-Reply-To: <20220114004033.295199-1-idan.horowitz@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 Jan 2022 11:42:02 +0000
+Message-ID: <CAFEAcA96gKH8r_a2aV0bfcOR418WnRkmEsV73Uss0kDEQ2Tx4w@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Allow only specific instructions based on the
+ SCTLR_EL1.UCI bit
+To: Idan Horowitz <idan.horowitz@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::336
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cLbazFsrNCGZ
 
-On Wed, 19 Jan 2022 10:15:52 +0000
-Peter Maydell <peter.maydell@linaro.org> wrote:
+On Fri, 14 Jan 2022 at 00:40, Idan Horowitz <idan.horowitz@gmail.com> wrote:
+>
+> The SCTLR_EL1.UCI bit only affects a subset of cache maintenance
+> instructions as specified by the specification. Any other cache
+> maintenance instructions must still be trapped from EL0.
 
-Hi Peter,
+Hi; thanks for this patch. Do you have a test case which
+demonstrates this behaviour? From reading the patch I
+can't see any instructions where the patch changes the
+behaviour of the emulation.
 
-> On Tue, 18 Jan 2022 at 23:30, Andre Przywara <andre.przywara@arm.com> wrote:
-> > Looking at k-u-t's arm/gic.c and QEMU's hw/intc/arm_gic.c I see two
-> > problems here: QEMU implements word accesses as four successive calls to
-> > gic_dist_readb() - which is probably fine if that helps code design,
-> > but it won't allow it to actually spot access size issues. I just
-> > remember that we spent some brain cells and CPP macros on getting the
-> > access size right in KVM - hence those tests in kvm-unit-tests.  
-> 
-> Thanks for looking at this. I should have read the code rather
-> than dashing off a reply last thing in the evening based just
-> on the test case output! I think I was confusing how our GICv3
-> emulation handles register accesses (with separate functions for
-> byte/halfword/word/quad accesses) with the GICv2 emulation
-> (which as you say calls down into the byte emulation code
-> wherever it can).
+As far as I can see, the commit effectively changes the
+accessfn for the following instructions to one which does
+not check the UCI bit:
+AArch64
+ IC IALLUIS
+ IC IALLU
+ DC IVAC
+ DC IGVAC
+ DC IGDVAC
+AArch32
+ ICIALLUIS
+ ICIALLU
+ ICIMVAU
+ DCCMVAU
+ DCIMVAC
+ DCCMVAC
+ DCCIMVAC
 
-No worries!
+and it is true that the architecture says that UCI
+doesn't affect these instructions; they always UNDEF at EL0.
 
-> > But more importantly it looks like GICD_IIDR is actually not
-> > implemented: There is a dubious "if (offset < 0x08) return 0;" line,
-> > but IIDR (offset 0x8) would actually fall through, and hit the bad_reg
-> > label, which would return 0 (and cause the message, if enabled).  
-> 
-> Mmm. I actually have a patch in target-arm.next from Petr Pavlu
-> which implements GICC_IIDR, but we do indeed not implement the
-> distributor equivalent.
+But for all of these instructions the reginfo struct
+sets ".access = PL1_W". The .access field is always
+checked before the .accessfn, so for any of these instructions
+executed from EL0 I think we will always fail the .access
+check and UNDEF the insn without calling the .accessfn.
+So it doesn't matter that the .accessfn has "if EL0 then
+check SCTLR_EL1.UCI", because when running the accessfn
+for these insns we can never be in EL0.
 
-Well, returning 0 is actually not the worst idea. Using proper ID
-values might not even be feasible for QEMU, or would create some hassle
-with versioning. With 0 all a user can assume is spec compliance.
+Am I missing something?
 
-> > If that helps: from a GIC MMIO perspective 8-bit accesses are actually
-> > the exception rather than the norm (ARM IHI 0048B.b 4.1.4 GIC register
-> > access).  
-> 
-> Yes. We got this right in the GICv3 emulation design, where almost
-> all the logic is in the 32-bit accessor functions and the 8/16-bit
-> functions deal only with the very few registers that have to
-> permit non-word accesses.
-
-Indeed. I dusted off my old GICv3 MMIO patches for kvm-unit-tests, and
-QEMU passed with flying colours. With the debug switch I see it
-reporting exactly the violating accesses we except to see.
-Will send those patches ASAP.
-
-> The GICv2 code is a lot older (and to
-> be fair to it, started out as 11MPcore interrupt controller
-> emulation, and I bet the docs of that were not very specific about
-> what registers could or could not be accessed byte at a time).
-> Unless we want to rewrite all that logic in the GICv2 emulation
-> (which I at least do not :-))
-
-... and I can't ...
-
-> I think we'll have to live with
-> the warnings about bad-offsets reporting for each byte rather
-> than just once for the word access.
-
-Yeah, if those warnings appear only with that debug switch, there is
-probably little reason to change that code just because of this. At
-least it seemed to work quite well over the years.
-
-Cheers,
-Andre
-
-P.S. I changed k-u-t to special case the UP case, so that TCG passes.
-But now KVM fails, of course. So I will have to make a patch for the
-kernel ...
+thanks
+-- PMM

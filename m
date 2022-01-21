@@ -1,110 +1,110 @@
-Received: by 2002:ac2:4c90:0:0:0:0:0 with SMTP id d16csp859033lfl;
-        Thu, 20 Jan 2022 12:16:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwDvKtc5KTeTL3u2UIwFp5Xqi4vXV8UNZnCAYMFhRYZTxRDUjV/g8bxXfv0gtTCbzree33U
-X-Received: by 2002:a25:908e:: with SMTP id t14mr1208810ybl.636.1642709818305;
-        Thu, 20 Jan 2022 12:16:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642709818; cv=none;
+Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp541549qvl;
+        Thu, 20 Jan 2022 21:16:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxmKWmj8VyXFLmstG3HFuUhx8s3Wn1+6+3lmIhvZd7NwWcq7Y+mBLjYLLK2man0oyK5VP1g
+X-Received: by 2002:a25:d44a:: with SMTP id m71mr4173820ybf.173.1642742164702;
+        Thu, 20 Jan 2022 21:16:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642742164; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ava70FyMKENRndoGsbPIbRoJ/zd88Vvqm/8iE2U3VgIUBSU2PPatGD8/LaTEOl4cs7
-         l/j6U0iUzjwwWuOCVMCO37P/OTajgNmZN4GEsCXkxa8kD/0N2U2pYk1DYu/sKW9J/+rJ
-         XXTx5N5zcryx5Ts58oqBwrJ5Ih/KDWEHlAl9rpv0NMNESLZmNagVGGk2kk+prXR6WVPg
-         a1nncn52V+AYKv290G5AoJgQo5ColwgvvD4nUKylKAKspw3H0bnYRICxpibIg2063TMM
-         1ZXFFn7FVphWZ7FTY6Bif2+krFuyXCt6ImLy166xJvuQ1C7Jqs1+z9guE0ZzmmyFJ2z2
-         pfRw==
+        b=WzJFLm7q07bUl49uvLohYWvYxHptexKUZNcPOvNKb/EWGfT/Wd23sFwNfBHrTBhP27
+         gceJLQ2MxdlaBLEX1gHfCp71sFv5uik+QEI67jtfzWHXlOLgkeq7fkLIZfOXx7Vya62h
+         Zf8JsjAE99fmll8GHv1wZ7FdxSjhOfbGmvlxIOaZXbjdxopZLSPWEb/cHy1GIEb0/10O
+         fiplHj06m6TbPJEfCArFO4T2YuUiml0XebcIeLQjKRg6uuZJt6hLk9ZlGK7QqbUmkI5E
+         rh5t0aiNqPEma652n/xp+ZlrrY8N+2SYwYPvF7NyXCJo2gcmXJGwfbf5W6AnMs+TVYH7
+         3cwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=FcNzRDDLqUXh8SKulDhEdj/nqpA2o3Dbwbq+sgN0vNg=;
-        b=ohAObwvULAzbEbh1nYIAdvVjWNc6ayrON+kbvgfDL/IU0A4Nwp1HefICjTUT9nhAp3
-         UX6m5qlNPQNJPlMnG2RKYiC3K/z+Sa6znbAUyGLBGRsA2KmL+SaBmIGQfiP91ygrhCfQ
-         ePaBnJin9d0pche9/YG4S99GBQhPaDf43wQuPSq3tEIeSaVeHaseyK3TY6OKNbtTmFn1
-         geucArha5AOuYPtSG2Y2s/YxFJ9cK/B8ENRotLHbP238XWArdTI9DW/ESrYDCyveCXfU
-         qe5oYL5ARYYwUfgAu8miu0L/nMKmVVmI6I/3QqfWqs6Md+rXpyIn73h6S6KQp5rIbX0C
-         KcEQ==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:message-id:in-reply-to:subject:to:date:from
+         :dkim-signature;
+        bh=waInaIGAbto31AX/imfXOQT7MNMtN8ZiXY+dt3u/lLw=;
+        b=oc9dmb+lMNMbTDZttrbOj/zV/Uw4viOA18YhWyKta8Ho0qDH6Fv8F0blMjWQsodbTX
+         mjW0+znYhwHNjdXB6K9Zm4zhZ4zn5pX/OLAl0LQkUA/MYTVHapHR2zHLyFP4rydPd9dm
+         0Q5dUpjktCrSuTbXULMimjWghjwyAH3g8TPItMDHeMezdUiPpQXdF4tOSng4k16vYoKr
+         nGIOejetn8YVu7z2yaq4vz6LfVJsUKuEA8HKkJOwfzmdwiwdGjIxAvoe4oxELQ77hUYY
+         6ojzYhz/A0TLOArQZGCp6DdSwZB3P8sDleiOHDA3e0SMKgyj4XFyrPdSjSjsyBqEknhA
+         21sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZewIxEA1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@anisinha-ca.20210112.gappssmtp.com header.s=20210112 header.b=B3rh92+W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x8si4008381ybm.623.2022.01.20.12.16.58
+        by mx.google.com with ESMTPS id s186si1330623ywf.160.2022.01.20.21.16.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jan 2022 12:16:58 -0800 (PST)
+        Thu, 20 Jan 2022 21:16:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZewIxEA1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35808 helo=lists1p.gnu.org)
+       dkim=fail header.i=@anisinha-ca.20210112.gappssmtp.com header.s=20210112 header.b=B3rh92+W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41830 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nAdrd-0001u8-Nd
-	for alex.bennee@linaro.org; Thu, 20 Jan 2022 15:16:57 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52140)
+	id 1nAmHM-00031u-4V
+	for alex.bennee@linaro.org; Fri, 21 Jan 2022 00:16:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:43412)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nAZAz-0007i2-Vl
- for qemu-arm@nongnu.org; Thu, 20 Jan 2022 10:16:44 -0500
-Received: from [2a00:1450:4864:20::333] (port=41523
- helo=mail-wm1-x333.google.com)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1nAmGl-00031A-QN
+ for qemu-arm@nongnu.org; Fri, 21 Jan 2022 00:15:28 -0500
+Received: from [2607:f8b0:4864:20::433] (port=43832
+ helo=mail-pf1-x433.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nAZAj-0003OW-J6
- for qemu-arm@nongnu.org; Thu, 20 Jan 2022 10:16:33 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- q141-20020a1ca793000000b00347b48dfb53so14629184wme.0
- for <qemu-arm@nongnu.org>; Thu, 20 Jan 2022 07:16:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=FcNzRDDLqUXh8SKulDhEdj/nqpA2o3Dbwbq+sgN0vNg=;
- b=ZewIxEA1BzNUxoMoJEmAuxr2QDpTFmGWoYpJhbBxjTHst0Z9BhlCyAEfmvybhhiPNW
- pwBEMEGdRcRBjDWvAPsMG7GeZyv2Hx3FHcW8Z6bMH3LO2NpSzKL7oHCwHN9f8sZEQoIN
- NBgjUzSj67EPZacOugUlRryQ45LqZ0xtoQivt7rWFUeF1KEzpJm1AftJA6r7vx4E20L4
- xRNJ+74j5R1437gorGJX3I/NDNFiIUlPoDvE2zKa/8+GlI9fafHWu3787kIcXWz+UDn1
- QePcpkpEAW+tsOHaCJC06ZRax3M1/CaiLJYVTyDn/PwxBWDjBvc6N7Uda9lwKV85Emy6
- r8rw==
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1nAmGj-0005xO-UY
+ for qemu-arm@nongnu.org; Fri, 21 Jan 2022 00:15:27 -0500
+Received: by mail-pf1-x433.google.com with SMTP id u10so3328115pfg.10
+ for <qemu-arm@nongnu.org>; Thu, 20 Jan 2022 21:15:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
+ h=from:date:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=waInaIGAbto31AX/imfXOQT7MNMtN8ZiXY+dt3u/lLw=;
+ b=B3rh92+Wzeh/RPD8JAKc8++jFkWwFcca3etwnSmtjtvOatyFK89mwOCV4WH6TiH0sD
+ nZN0Tqq7c0TikBL/Uwu3dEqa2nlOCKbBzrahokaDwFC9+XBgztOjQulsSWY6PX7pDazj
+ g79S4G07lov5mHLzfGlXo9ZKl+eS1TAV9Cq5W+mpakH8fM2h4eALKml1sw8R664c5fpy
+ +fGQFovFXYvlsAq5BnQT5i4NRW1U15hQ2+rumDV+TNug32e+TOuwjiZvdSy60iNlvAcj
+ FPePfqy7whXbP+vw+UtlnIlfasTEZBGdIC9hxSwu+DleUOJdXyZ2o35dkrxmdjwFnomo
+ wzGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=FcNzRDDLqUXh8SKulDhEdj/nqpA2o3Dbwbq+sgN0vNg=;
- b=Kzk7o+0M3JaL0T45o0YnLomQIxy++g6lHrgUiWAgmpJVhbrmtEnviR0+IFgkw7O/Cz
- Y6xsdgT5VWyjpXsmqt0/pczE7UVfr7q7Ds2JvDSbok5b/RbHRWt7HQxcH1KHhTIbbojL
- 8rLYxXWFXOD5sL6ViIghNZ/PJuBCmexOD84dkWA3iIg/E+sObQQ7lvqIxmZ3dp/XX2Nh
- pjU4MtwEMh4uQZ7hkEb3bA8lLdoAWomTZdLX56rhZaMOgosX9LbwBagrNvZmq/uhxrMc
- rrySaPk/XbkxEXFfl/q5AfdxGG260QL3ICGghnUG1dLrmyeEQmvXMGQQbgvjsCpZ91HY
- JYJg==
-X-Gm-Message-State: AOAM531GkgNnpjqOgsSm9uZ15KeQiWmOjuiuCuVENPwjhSFBOSv5y4eJ
- EL/ih3VYZtAA7mn1YJ1Uuc3fxDdnlqzOTQ==
-X-Received: by 2002:a1c:7316:: with SMTP id d22mr9331490wmb.5.1642691771507;
- Thu, 20 Jan 2022 07:16:11 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id v5sm3984750wrx.114.2022.01.20.07.16.10
+ h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=waInaIGAbto31AX/imfXOQT7MNMtN8ZiXY+dt3u/lLw=;
+ b=e3vO9eYoutxYEnYEQ+RgbzA9HBjfnSd4UlioA2JeMme2Tkp9jjqJj90Dyz2Ssvs5BO
+ 6Ja111GH3r5cnqeTSPwE69J87jdo1SmDY6I+B0/FYUOAIzvCoo21pCmdoLj06F52yXCD
+ HhKBk5d8vKqicFU9jAt47Bx6gdoLF48pJkQWy6e7Ll2VVzvJxiJcQr+se3rI4Qr0axqo
+ gBbVJs20pxaAT/2/he32PDMP2hTNthvpyuhP/oGwYDxhAY7Nfdp1JIM7jXg8+xTf12fp
+ yhRtjhJB/+ITIY5jPbFTQ/oKIID9PLerqd66rW+t+ejASy8NKiT05ek1dPgIRWd8m2vy
+ 00QA==
+X-Gm-Message-State: AOAM531781+unCsbKUhVJIcphMPg0p7XS602ggR2x3VLVw+rwSfygbMt
+ hSW/JLJG2/ZFmc6A/QjBbYD4QQ==
+X-Received: by 2002:a63:e448:: with SMTP id i8mr1844643pgk.206.1642742124204; 
+ Thu, 20 Jan 2022 21:15:24 -0800 (PST)
+Received: from anisinha-lenovo ([203.163.243.216])
+ by smtp.googlemail.com with ESMTPSA id o2sm3723625pga.57.2022.01.20.21.15.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 Jan 2022 07:16:11 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] hw/armv7m: Fix broken VMStateDescription
-Date: Thu, 20 Jan 2022 15:16:09 +0000
-Message-Id: <20220120151609.433555-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ Thu, 20 Jan 2022 21:15:23 -0800 (PST)
+From: Ani Sinha <ani@anisinha.ca>
+X-Google-Original-From: Ani Sinha <anisinha@anisinha.ca>
+Date: Fri, 21 Jan 2022 10:45:17 +0530 (IST)
+X-X-Sender: anisinha@anisinha-lenovo
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/armv7m: Fix broken VMStateDescription
+In-Reply-To: <20220120151609.433555-1-peter.maydell@linaro.org>
+Message-ID: <alpine.DEB.2.22.394.2201211041540.889046@anisinha-lenovo>
+References: <20220120151609.433555-1-peter.maydell@linaro.org>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::333
+Content-Type: text/plain; charset=US-ASCII
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::433
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+Received-SPF: none client-ip=2607:f8b0:4864:20::433;
+ envelope-from=ani@anisinha.ca; helo=mail-pf1-x433.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,44 +117,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-stable@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-stable@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 27O732ZS1a++
+X-TUID: yoFha1T8NMUW
 
-In commit d5093d961585f02 we added a VMStateDescription to
-the TYPE_ARMV7M object, to handle migration of its Clocks.
-However a cut-and-paste error meant we used the wrong struct
-name in the VMSTATE_CLOCK() macro arguments. The result was
-that attempting a 'savevm' might result in an assertion
-failure.
 
-Cc: qemu-stable@nongnu.org
-Buglink: https://gitlab.com/qemu-project/qemu/-/issues/803
-Fixes: d5093d961585f02
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-It's a shame there's no way to type-check that the struct
-name used in the VMSTATE macros is correct...
----
- hw/arm/armv7m.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 8d08db80be8..ceb76df3cd4 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -520,8 +520,8 @@ static const VMStateDescription vmstate_armv7m = {
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
--        VMSTATE_CLOCK(refclk, SysTickState),
--        VMSTATE_CLOCK(cpuclk, SysTickState),
-+        VMSTATE_CLOCK(refclk, ARMv7MState),
-+        VMSTATE_CLOCK(cpuclk, ARMv7MState),
-         VMSTATE_END_OF_LIST()
-     }
- };
--- 
-2.25.1
+On Thu, 20 Jan 2022, Peter Maydell wrote:
 
+> In commit d5093d961585f02 we added a VMStateDescription to
+> the TYPE_ARMV7M object, to handle migration of its Clocks.
+> However a cut-and-paste error meant we used the wrong struct
+> name in the VMSTATE_CLOCK() macro arguments. The result was
+> that attempting a 'savevm' might result in an assertion
+> failure.
+>
+> Cc: qemu-stable@nongnu.org
+> Buglink: https://gitlab.com/qemu-project/qemu/-/issues/803
+> Fixes: d5093d961585f02
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Ani Sinha <ani@anisinha.ca>
+
+> ---
+> It's a shame there's no way to type-check that the struct
+> name used in the VMSTATE macros is correct...
+> ---
+>  hw/arm/armv7m.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> index 8d08db80be8..ceb76df3cd4 100644
+> --- a/hw/arm/armv7m.c
+> +++ b/hw/arm/armv7m.c
+> @@ -520,8 +520,8 @@ static const VMStateDescription vmstate_armv7m = {
+>      .version_id = 1,
+>      .minimum_version_id = 1,
+>      .fields = (VMStateField[]) {
+> -        VMSTATE_CLOCK(refclk, SysTickState),
+> -        VMSTATE_CLOCK(cpuclk, SysTickState),
+> +        VMSTATE_CLOCK(refclk, ARMv7MState),
+> +        VMSTATE_CLOCK(cpuclk, ARMv7MState),
+>          VMSTATE_END_OF_LIST()
+>      }
+>  };
+> --
+> 2.25.1
+>
+>
+>

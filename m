@@ -1,40 +1,40 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id a9sm2978893wmm.32.2022.01.20.07.37.50
+        by smtp.gmail.com with ESMTPSA id z24sm827912ejn.101.2022.01.21.04.19.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Jan 2022 07:37:50 -0800 (PST)
+        Fri, 21 Jan 2022 04:19:53 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id CC4E31FFB7;
-	Thu, 20 Jan 2022 15:37:49 +0000 (GMT)
-References: <20220118203833.316741-1-eric.auger@redhat.com>
- <20220118203833.316741-4-eric.auger@redhat.com>
+	by zen.linaroharston (Postfix) with ESMTP id 8AA3D1FFB7;
+	Fri, 21 Jan 2022 12:19:52 +0000 (GMT)
+References: <20220120151609.433555-1-peter.maydell@linaro.org>
 User-agent: mu4e 1.7.5; emacs 28.0.91
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, thuth@redhat.com, pbonzini@redhat.com,
- lvivier@redhat.com, qemu-devel@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, david@gibson.dropbear.id.au, clg@kaod.org,
- eesposit@redhat.com, jean-philippe@linaro.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 3/6] tests/qtest/libqos: Skip hotplug tests if pci
- root bus is not hotpluggable
-Date: Thu, 20 Jan 2022 15:37:45 +0000
-In-reply-to: <20220118203833.316741-4-eric.auger@redhat.com>
-Message-ID: <87mtjq7702.fsf@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-stable@nongnu.org, "Dr. David Alan Gilbert"
+ <dgilbert@redhat.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH] hw/armv7m: Fix broken VMStateDescription
+Date: Fri, 21 Jan 2022 12:19:46 +0000
+In-reply-to: <20220120151609.433555-1-peter.maydell@linaro.org>
+Message-ID: <87a6fp702f.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 7gd/WRHN8FkO
+X-TUID: 1uX8CyDua2GU
 
 
-Eric Auger <eric.auger@redhat.com> writes:
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-> ARM does not not support hotplug on pcie.0. Add a flag on the bus
-> which tells if devices can be hotplugged and skip hotplug tests
-> if the bus cannot be hotplugged. This is a temporary solution to
-> enable the other pci tests on aarch64.
+> In commit d5093d961585f02 we added a VMStateDescription to
+> the TYPE_ARMV7M object, to handle migration of its Clocks.
+> However a cut-and-paste error meant we used the wrong struct
+> name in the VMSTATE_CLOCK() macro arguments. The result was
+> that attempting a 'savevm' might result in an assertion
+> failure.
 >
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Acked-by: Thomas Huth <thuth@redhat.com>
+> Cc: qemu-stable@nongnu.org
+> Buglink: https://gitlab.com/qemu-project/qemu/-/issues/803
+> Fixes: d5093d961585f02
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 

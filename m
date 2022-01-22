@@ -1,105 +1,118 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp3536024lfk;
-        Wed, 26 Jan 2022 10:12:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxblS3GS5UPg1cA39jxSOavEIL40xmnW9MT/KxftE94uageJ3DUcfdXt9L7q5pbyCsSuI6F
-X-Received: by 2002:a37:a92:: with SMTP id 140mr11680877qkk.185.1643220755158;
-        Wed, 26 Jan 2022 10:12:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643220755; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp570119lfk;
+        Sat, 22 Jan 2022 01:51:43 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz50021KhGd+Cv14AhHjvXLCFtznfdVctVyGvWq9p0y96zKYdPaPZOK844e+J3e9lfn77hm
+X-Received: by 2002:a37:bc84:: with SMTP id m126mr5416201qkf.769.1642845103571;
+        Sat, 22 Jan 2022 01:51:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642845103; cv=none;
         d=google.com; s=arc-20160816;
-        b=YyUYT3lYhWBvq7mZycD2NpkSwhlz5/q7scIi69AfXZ6eIzwD0HtVAnaiMmn7nd6FQq
-         ocvGx6+O4m4oGt3EJBoAndW7bmX0+IJn6wd3GP5+DDi+NhQttdyThDSG48xuQ0+Sp/EK
-         bnSqlqm/dzf+zoWrTUdsVmhhTf24ZgdlZnjt5W8YN8Y5CZvVmBsNFjaDRq4RTe+uLzMH
-         R4ttXCwfi4y92aDg1IJybefMPzxsQha5IdIpNxyaWEdX2uVYTgi/p7b+rdrhNHQhorAJ
-         0kU+Oi8TvynNpBrA2QrrjtmEay6/1n1k3hHSQ/xp3pTT8vMTZVp5AbP9e34+7MpHfZsI
-         7rPQ==
+        b=KZsVqdXXxzdnZR2HH6KmYqeHkJcdrLn/cSxby1uiF5+R4C4n/ya50/P8aQm8pmQ2ww
+         S9h6Q4t/Y32HtFxbke1vTquNtA4Zp6TLiH0MqN5lp+MpaqVpQsnMuM5icbU2EDZO1MAA
+         2lDuDfP9khNhkgFDO3p4wGhln9Utnf7HImeOAe3qQCltAKM8GBggRFLFv+Gv8zDsHjoq
+         RkJKpoVPPnOdjHdqz3BN2dmJhYoKjXJUhDTUkIb7A2xOadETRjHvGUDnWvmQED+CxnHK
+         1Q0MYzzfiYbkkrdyWYg3K7ioLjl0LYUBSoXmjEHhCMu5MGJBcWSEbuPZCNDXZ2f0dnIa
+         kXlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=21tbACb1290jtk1zPwZdgD7KgkQFiOrqL1EkpKtXJPk=;
-        b=UjdTa/aUTcsIKQD0v5inlTDLsTOjQZ286jYlTtPGbKOmlE/ZiygzPIlbwan9dz0/9F
-         BqWbfpgrM4FHUEcwTYthV3Bcs6hqLiqDUKT0qXjw2E9zG8H2e4vD/mmcoI+MOSdVRrCI
-         KvAwkskJk3UJyOnIrvwktiui14X+m3cY1gBB5qQ4ogleWTMTrHeEHvMvcbSABVZ8WIZn
-         b62ULyMxXgKskjpkf+Q4d52wdNrtd8JXjtPGttdo9kvk0zq4pqgIdBQhBOXN/tghKW7U
-         xtmalnFJi69/yajNLbUoJzkh7kPFQSJxIEoFSfJbsJQY0n6sOwFv9/biEua0H7DkIeQT
-         dS1g==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=QAm6ksvOJzfVeZM3sUQgfO3LD5IAfeA+TNVSh1lfAII=;
+        b=XKmCwjrOup/b+JNCd7QgXE2pRENkHeKIELZez8HoghSTAHX7u5QTnGwqCsQmR97YSD
+         wmYmKVrePbIhdBH2tC2g8J8a5LDLlQSsZ2kLqWc8HR+bjaXYGqXdB3aZeBwtCKAKcp1o
+         j825h7VXvQBFY11Yf1/mGaskYRInkAnhaHwW5cAMfOFMXzbreEZWwlctVKcuC3FSM48s
+         O1VAjeG7PyT0CpARQpZTdiTvHCbZc9Zs/VDKmhRhO4C1EkSXENwmJX+t6GuDor9mYGq5
+         eW/qoHYX32Sr3X91ETAK8uTzIUQaWDqbg0yiNBbS2qbsiL/8GTI7mCKaldeZ7A/7QW2E
+         WJZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Z83oa0bx;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Vli4vcoF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jr10si1095414qvb.441.2022.01.26.10.12.35
+        by mx.google.com with ESMTPS id p1si3359647qvj.159.2022.01.22.01.51.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jan 2022 10:12:35 -0800 (PST)
+        Sat, 22 Jan 2022 01:51:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Z83oa0bx;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Vli4vcoF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40966 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:57686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nCmmY-0006dj-Gk
-	for alex.bennee@linaro.org; Wed, 26 Jan 2022 13:12:34 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53290)
+	id 1nBD3f-0002Fh-0Y
+	for alex.bennee@linaro.org; Sat, 22 Jan 2022 04:51:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nCmeF-0007Bc-Am
- for qemu-arm@nongnu.org; Wed, 26 Jan 2022 13:03:59 -0500
-Received: from [2a00:1450:4864:20::329] (port=53079
- helo=mail-wm1-x329.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nBD2w-0002D8-LC; Sat, 22 Jan 2022 04:50:59 -0500
+Received: from [2607:f8b0:4864:20::62c] (port=45580
+ helo=mail-pl1-x62c.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nCmeD-0001fG-B7
- for qemu-arm@nongnu.org; Wed, 26 Jan 2022 13:03:58 -0500
-Received: by mail-wm1-x329.google.com with SMTP id v123so220195wme.2
- for <qemu-arm@nongnu.org>; Wed, 26 Jan 2022 10:03:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=21tbACb1290jtk1zPwZdgD7KgkQFiOrqL1EkpKtXJPk=;
- b=Z83oa0bxNdElHZRS3ouXSWpwMboHgNeKu4ShewRPf1izAW153ZpWwQNiSK/dqgKlkI
- z5EXJIZGLMzNBhKqn5fbAZ0NvEuUYq2BGtZFkewVNMr6lr71X7p1lmkZ9f5t0y3PLZXJ
- f1bjsEX+0g54Ge7R8W6H7D5fmDuc5KiD+pEWSSfirGlvJTop6ghu6tDwCGFZprDo0Ge5
- SLc2uNwxx5T1nzALVztQ95GSe411dFaEHm8vpCdSrDQCSb0h9zn9E8AAbC5GExu8gkfg
- VbfZnzhuOYmfnIN/eAiJhetsWr6+jKi6yDz0WKlw14fkFLOoe1BpPX0Dw13biI9EbNcS
- KjOA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nBD2v-0000X2-0o; Sat, 22 Jan 2022 04:50:58 -0500
+Received: by mail-pl1-x62c.google.com with SMTP id d7so10909438plr.12;
+ Sat, 22 Jan 2022 01:50:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=QAm6ksvOJzfVeZM3sUQgfO3LD5IAfeA+TNVSh1lfAII=;
+ b=Vli4vcoF1pS9RySOQxlcuGK6nb7NmWKsRfrYECfcIF5ENrfVSwxtOkBfHA1xuWrGBq
+ CFvkVOhoUNlVLE/DxpmXBDo8N4rxclU/tI+PpA+hNt8bD7o/qDfLa75ASAgmHFARRWGK
+ Wz9aQbpd/GGmljcXEUkrWfwkmUjd5rvh0QsOoV+aAJBO0w1BaJoHXxhWTkINDW1RMwXR
+ uiwKrXEOeOaUASDXOJUI6W01WkXEOKEiLbfFfwXJ+rUjbhojici3jWL7a0qkLkuiPQtC
+ duGhb3bv1bOe9AKmgJSFPTBpjlv97MrrhOzxhQRk2dH0r5ojh560pCcouCchQ6u3HCsC
+ lbIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=21tbACb1290jtk1zPwZdgD7KgkQFiOrqL1EkpKtXJPk=;
- b=mY/YXjr6Wa/d97iq9ax3mbPzaxDm0/jOhq5oDgDdV++yOLS4Hhf5jzkJs14K1T8Lm/
- q2GQWWp+D0aEL7HEwNzojSP+L7CJwV/g+8dY5SjGyIYpMYixZQpieNX+TRiC2U/9Rro4
- rLaH2S6nNMIs7AWzuzz/bkcSy5zdWCv6l4u7IcHJNyjiFIk20iwkPtBwui7kLpWup0gC
- zTCbg6Ed1N4kC1QojI0V3LkGt23TK3UI3O0WMNwzZStU14cH88VdXJRm65UmmD69xubA
- jSDS6hwBkCA1+KLtUqcdtonUKolS1ZMIdUKB4s9DWRufDwfQ4lKkTxZQdGUYwhkbNuZV
- 8uuw==
-X-Gm-Message-State: AOAM5320D2t/L0id/ZsShh9CYU83+gvmlYZ0lf5NqQ/vyw1VUQu9yH2F
- 0Le0vs4HVWMYWYc70wHbajQyeFOKFqF0n+LyQ8lcxg==
-X-Received: by 2002:a1c:a90d:: with SMTP id s13mr95861wme.32.1643220235208;
- Wed, 26 Jan 2022 10:03:55 -0800 (PST)
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=QAm6ksvOJzfVeZM3sUQgfO3LD5IAfeA+TNVSh1lfAII=;
+ b=QhgjsirFiceyLVOZcGxf5rrZJyjM0qMaJsl38WVzh4sqauTMotJML91jKwVwS7F+uk
+ yQvWIziKoFLC7onZSfDisRDtI4wwuezVYAoFYDn9kBOyYhiRWhfOkGKatDvPcuCWH5pL
+ 4JLplwOxd+8tAN1pRwYtBhObgZbGIgRBZRrtvvB9AH4sp5WfbHpFYrSBWqeZNHdSADaG
+ 1sjPP4g4V73Arv1+ojlwdjW020ZuuNG5o0EMgLSospv5cQhSJQH9eA8PdKIpAQUBPMCb
+ 21XVdutuLA7+puN8RU/jydMVfPIL97+ol/bm96AEjCTolNS5d/qk9DLH/12HqmO7/uIM
+ Uaag==
+X-Gm-Message-State: AOAM533Ph5iA8Le6CQxcAW/ImXpU41snYwBZEZfItR28cXyJFKcP+g+q
+ fT4WhiWRvH78h4mGGZCR80E=
+X-Received: by 2002:a17:902:dacf:b0:14b:2081:1c20 with SMTP id
+ q15-20020a170902dacf00b0014b20811c20mr5231015plx.13.1642845055551; 
+ Sat, 22 Jan 2022 01:50:55 -0800 (PST)
+Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
+ [83.50.83.154])
+ by smtp.gmail.com with ESMTPSA id 25sm14426388pje.22.2022.01.22.01.50.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 22 Jan 2022 01:50:55 -0800 (PST)
+Message-ID: <e4466aa1-9fc7-a913-91e8-50c743cc4fe2@amsat.org>
+Date: Sat, 22 Jan 2022 10:50:51 +0100
 MIME-Version: 1.0
-References: <20220110214755.810343-1-venture@google.com>
- <CAFEAcA8Bki2dpyptkSibz5=t9Fvy-PN8SjD=Z0PwcssX3MprRA@mail.gmail.com>
- <CAFEAcA_OfpMLzG=eUuzw0O_V_cgb57=XADciyfiF7U1mK0FzxQ@mail.gmail.com>
- <CAFtMCFUbBhXMxtc7RN+3OhDtckB+x-HXWbWcmh8AyncnriNFxQ@mail.gmail.com>
-In-Reply-To: <CAFtMCFUbBhXMxtc7RN+3OhDtckB+x-HXWbWcmh8AyncnriNFxQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 26 Jan 2022 18:03:44 +0000
-Message-ID: <CAFEAcA9HckDH_7s5fpnHOBFQBi-fDfnhcrJ0Y9-=uDtj0bwuoQ@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Adds designware i2c module and adds it to virt arm
-To: Chris Rauer <crauer@google.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::329
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.0
+Subject: Re: [PATCH] hw/char/exynos4210_uart: Fix crash on trying to load VM
+ state
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Guenter Roeck <linux@roeck-us.net>
+References: <20220120151648.433736-1-peter.maydell@linaro.org>
+In-Reply-To: <20220120151648.433736-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::62c
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pl1-x62c.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -114,37 +127,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: mst@redhat.com, Patrick Venture <venture@google.com>, qemu-devel@nongnu.org,
- shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, ani@anisinha.ca,
- imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fawznSVEe90t
+Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-arm@nongnu.org>
+X-TUID: IhNfG8GkpYhG
 
-On Wed, 26 Jan 2022 at 17:12, Chris Rauer <crauer@google.com> wrote:
->
->> I need to see a pretty strong justification for why we should be
->> adding new kinds of devices to the virt machine,
->
-> The designware i2c controller is a very common controller on many
->  ARM SoCs.  It has device tree bindings and ACPI bindings which
-> makes it ideal for this platform.
+On 20/1/22 16:16, Peter Maydell wrote:
+> The exynos4210_uart_post_load() function assumes that it is passed
+> the Exynos4210UartState, but it has been attached to the
+> VMStateDescription for the Exynos4210UartFIFO type.  The result is a
+> SIGSEGV when attempting to load VM state for any machine type
+> including this device.
+> 
+> Fix the bug by attaching the post-load function to the VMSD for the
+> Exynos4210UartState.  This is the logical place for it, because the
+> actions it does relate to the entire UART state, not just the FIFO.
+> 
+> Thanks to the bug reporter @TrungNguyen1909 for the clear bug
+> description and the suggested fix.
+> 
+> Fixes: c9d3396d80fe7ece9b
+>     ("hw/char/exynos4210_uart: Implement post_load function")
+> Buglink: https://gitlab.com/qemu-project/qemu/-/issues/638
 
-No, I mean, why do we need an i2c controller on the virt
-board at all ?
+Apparently GitLab doesn't recognize "Buglink":
+https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#default-closing-pattern
+which might be why we use "Resolves: " to have GitLab
+automatically close issues.
 
-> >Forgot to mention, but my prefered approach for providing
-> >an i2c controller on the virt board would be to have a
-> >PCI i2c controller: that way users who do need it can plug it
-> >in with a -device command line option, and users who don't
-> >need it never have to worry about it.
+Otherwise:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> > (We seem to have an ICH9-SMB PCI device already; I have no idea if it's suitable.)
-> I didn't find that device suitable because it is part of the Intel
-> Southbridge, which may have some Intel platform quirks, and
-> we don't need all the things in that IO hub.
-
-That's a pity. Is there a different PCI I2C controller we could model ?
-
-thanks
--- PMM
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/char/exynos4210_uart.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)

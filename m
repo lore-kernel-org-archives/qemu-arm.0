@@ -1,195 +1,279 @@
-Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1732445qvl;
-        Sat, 22 Jan 2022 10:24:55 -0800 (PST)
-X-Received: by 2002:a5d:4201:: with SMTP id n1mr8186636wrq.239.1642875895159;
-        Sat, 22 Jan 2022 10:24:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642875895; cv=none;
+Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1732451qvl;
+        Sat, 22 Jan 2022 10:24:56 -0800 (PST)
+X-Received: by 2002:a05:600c:1911:: with SMTP id j17mr2224681wmq.143.1642875896048;
+        Sat, 22 Jan 2022 10:24:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642875896; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qgd5V0MiNTUClS1bRvfl2kf9UNnxYRh/dU/GlIBq/xnrTWUkO+d4q7Vn3MezhCs6yi
-         AKMlFWiZX6UcdLf5rkG2bxhLZ9pQGDDOB5hI7Xz66yuhGdhOoJmXhLgETk4xVtLqP+AW
-         AZ2tgroj3RWNYsmapfFsxdoOrw490oEsTf5uri9rI5odreM+2qy2lgQZfQ8EJuHyOBhz
-         OTxKx9K+t66ZZQBY3Nv0wtAlP77sOSNmHyUxuvVsx91CwzdKKy9uR+BxDJLDP96SsVQO
-         cBohYVLxcjsc/Wko9p94ir3s7YOjhCbuzMbEWVotT/IH9Oqt7+KH3wTa76gbL9DpACgk
-         Ql8A==
+        b=PjujnIEWegM6SQRdlGVCnrGo+uyIy9sdN0VDIGlAp2mYcgsPCQxOd2Ody9yeXJBuon
+         idKe8UhGIcbUsZtHSCSn2DqRfx4u4S1jdKrpWDHROCaBDMHceVTV4jzYU/cB04++RZBr
+         clAmroskO4GpRjSWEAdF8REbz0K8LrNQI7Vp29IzM7MC/uXnQV8Lpkmp4ovC2a/K7wY8
+         PthnuPGRadIYHE5jDHPnuMxPo8CJ/E6i7GWzCv7q89cLANQkVZVo0TJaHNch8qgyEZIn
+         VExQxusb+UIDfwkx81cb4QVwLub828mSCImjsLJ0rnp8WNFwVLyTpPYYx7JEDfn9oPU+
+         paJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=MVgp6Ydys3b4ZUYTxQ7NMxi3s2REQ8l+tqo9NG4Dx+g=;
-        b=U1tvml4QpaRZL64c9Nqs1KERQXu+LzM4cVO+EYEl7Tk4mXDcJG0yEuesBMadj6nqCH
-         epyJM6ZX9ek/j8nsnFpWA9owvspzFuaV8/dTVPAbjXMeKTBdRDoXU4ZX2WnWKqUAKawi
-         Ftsoe7qphrWTw6hzmzvECjk0+iQC+QT0iU/nEDmkdIAecwc0S/7kiv0OtLSh+j0LgPPG
-         USIvwlPSk/TNZGSZ8eGf0783OXfZ1hdTJ6iQ7ad/Q1awJfzu/ZyfnmQmzWAwpoNT1lqz
-         CybYGpcfPvsb5PVSPzm4EIavrKWv2EAz09RNntfvNf1fV5PVJYDuCasOI8olCxas4kM9
-         L0Mg==
+        bh=NmW5MPyGTPGnJ2dZTLAZgefhA7dKwEY4XGRobcyVNv4=;
+        b=LKE0U+NHjHdPYDTveO2rAEt2XcwGJSuy/5DRthRGn51ULs6DC+GkzNGbI9jm/JcsZL
+         E2HBNKoSaRm+JygVuPZ3kGW9tkUu/SFoRmM/NgtJHbo1Qogh0pE2Th4E9j9xw8Cva8Zt
+         xn0+wmbHTuEO9MGk9EuwnRaS68N/VS7HkacyNct6ltsTqJEP7MkG41X2AlGQIbBqKE8p
+         yg1wZTpfKkY74dVqjYNIbdntI4WqvQM8xoAddLmxmi0tYAmKoVfa8Hb1L9rtzSnjFuaG
+         qCObPFX0KUObF7CQaAeJna8r8z/GXcaloODfHyZWJ5kI5BXFMFwQlTTHvf1U0Z3UvsLe
+         a+RA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WEWtf1pr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OhiD1L+V;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q21sor5800068wra.37.2022.01.22.10.24.55
+        by mx.google.com with SMTPS id f1sor5583982wri.36.2022.01.22.10.24.55
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 22 Jan 2022 10:24:55 -0800 (PST)
+        Sat, 22 Jan 2022 10:24:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WEWtf1pr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OhiD1L+V;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=MVgp6Ydys3b4ZUYTxQ7NMxi3s2REQ8l+tqo9NG4Dx+g=;
-        b=WEWtf1prF/r0AoWHJ50DAOT1HyPSZWocu/NqtlB+sKgw96e2GmeHnQz462C7nShxyF
-         NzyqG5H/la+WTvVtBwL6nXg3dIdeNffsNpFTfJQTONeUtNNtX5NkwNU8ImaIhY2lTDR7
-         kEezG3Z5Q9gZcId5+suVJOKa9NrsTW/OpGuPRcFedmeriy2n4OdZ6j0sc6IaZ5+et5+Z
-         mhlbePPOfa/poK0PT64UEF7TPUVO1pO75ykF9OGA6p6uuWi7CGrhj8fwB+5lXApPQ+V0
-         EnUtHiYy3S/Ec9mzF+pff/8aRjD4pEIVT3HJzuNGpjP+tmOqppvRbK+rB8P0Y1LI0Ma2
-         4AqQ==
+        bh=NmW5MPyGTPGnJ2dZTLAZgefhA7dKwEY4XGRobcyVNv4=;
+        b=OhiD1L+VGbQ4RSRi6COzwbz4HHxAVFKiOZGbGE3GqSgyIHsMAgl2eglEDFD6JeL/fo
+         YHIcwsMYRyHBKliWJPP16G54/xSmHvBgToYjdf18hZTuANzmPbZc6NabGpia7yyg+6y0
+         EbacIfDl46N/Sn0Ppn46C6zPli6pSGksys3S1u5L76aYgF9e7sMRlylhHMTR0iaFTKbB
+         FKu99/gXj42hzXIsA58HygBt74uU8yWsUt/dJ7r50pRQKfz4FXS6ep6Qm8I86n+vC9/w
+         yPzcqSNz4ibpJU5gQR6ZS71kJ+Iu/5BXfPAvMAQkrNpVYfwzYLI/G015NYd3Dp8EZoHh
+         wkqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=MVgp6Ydys3b4ZUYTxQ7NMxi3s2REQ8l+tqo9NG4Dx+g=;
-        b=RJuSCU0zq9pjJbeg8eHa/IgM3n++jLzoTmn+3gQ9jvj4KQltX/+TtqfHVn5dnnPn/O
-         vaRn35llLf6nJOTz3NcYJwHuFlp/DVZbwZ2YbzXtj4ZwCQ+pP1c/+f/hpdAnrpD90dWI
-         j/xdEwflb6GKkkzTJ82NoBrZXWbEY2EcNTsJElAer3L8Z34XY1JVcX1xw6Z0VTgBASpD
-         J4AQH4Lnm/BQqpwplEUvzmu2WC0jiCwAZrz3Dm4vGBegPAWRwgHhw1MagZltOjmQ0CR1
-         +hWvaot+3tlUsXxEmKLQp8BZTJqfzIUyV19X3iHScN6LHppc6OIfFs8U2+ijRIf7Hi9F
-         Nitw==
-X-Gm-Message-State: AOAM531Bn6mJleG4MdGOpp5M3mvrI1qPsV5wLuod6EicRcTwp3hiIbxZ
-	Mh7AM0KQC2tqWln3nH/OCStMR4TrPn7t+hMS
-X-Google-Smtp-Source: ABdhPJyCIp6F5YifLPMjl8licT+rBw27eKwXgqyIOxNR9V4AdVPTFoEM+TXk2cNTMIaIkw7hGxYEGQ==
-X-Received: by 2002:a5d:6da1:: with SMTP id u1mr8235096wrs.592.1642875894841;
-        Sat, 22 Jan 2022 10:24:54 -0800 (PST)
+        bh=NmW5MPyGTPGnJ2dZTLAZgefhA7dKwEY4XGRobcyVNv4=;
+        b=aKnhv3ZLbPFGfQCVN6jY92hZbzlR+9QXTBBsVyZK4eudFGG75gGyCwDrS0JQ+TloFe
+         OgURblMn4Zcz0lLCYXy6HsBP4k77APB9/3UvtVtrEgWSyjSwZa22pIkb/PJaXivaWze+
+         pbqk5aV5CsvnwdO3L7at0BnWHoYOPNyuw7O+wbRe4+9wm1dKsIJq0iPrJDp8q0Xz7VZc
+         L6h1xZgrgmrx1F+r+URdZBVlRb6ux/xBuHUn80S7KrkB9CWyCanNg0j+Kvr3nqz8ocQ6
+         PUou+ZON1kdkaxf2Oao2ICuaB2HL0piB2GNS1mwGD+rF8LBEJkXg41PYT3zYfOSNiMrb
+         mhsg==
+X-Gm-Message-State: AOAM53263+LuwSq/3nJF5+J0k1w1fTqySUUCfRMoxzimnT6pKeb7eC+O
+	wph99bU4Ipra3zPpqucOjYDs+bbyLV9r2VxS
+X-Google-Smtp-Source: ABdhPJxjAN6FESHu6I4j+pVoTh1XL/GPcWBQGlrBht1GGQcmLT1D2fImGk+F960iZ0U4vB1TQd5uVw==
+X-Received: by 2002:a05:6000:156b:: with SMTP id 11mr8303386wrz.558.1642875895683;
+        Sat, 22 Jan 2022 10:24:55 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
         by smtp.gmail.com with ESMTPSA id 21sm8870774wmk.45.2022.01.22.10.24.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 22 Jan 2022 10:24:54 -0800 (PST)
+        Sat, 22 Jan 2022 10:24:55 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Shashi Mallela <shashi.mallela@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 12/14] hw/intc/arm_gicv3_its: Check table bounds against correct limit
-Date: Sat, 22 Jan 2022 18:24:42 +0000
-Message-Id: <20220122182444.724087-13-peter.maydell@linaro.org>
+Subject: [PATCH 13/14] hw/intc/arm_gicv3_its: Implement MOVALL
+Date: Sat, 22 Jan 2022 18:24:43 +0000
+Message-Id: <20220122182444.724087-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220122182444.724087-1-peter.maydell@linaro.org>
 References: <20220122182444.724087-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: OdYSKVK/IW10
+X-TUID: bXFrMQwIUhCm
 
-Currently when we fill in a TableDesc based on the value the guest
-has written to the GITS_BASER<n> register, we calculate both:
- * num_entries : the number of entries in the table, constrained
-   by the amount of memory the guest has given it
- * num_ids : the number of IDs we support for this table,
-   constrained by the implementation choices and the architecture
-   (eg DeviceIDs are 16 bits, so num_ids is 1 << 16)
+Implement the ITS MOVALL command, which takes all the pending
+interrupts on a source redistributor and makes the not-pending on
+that source redistributor and pending on a destination redistributor.
 
-When validating ITS commands, however, we check only num_ids,
-thus allowing a broken guest to specify table entries that
-index off the end of it. This will only corrupt guest memory,
-but the ITS is supposed to reject such commands as invalid.
-
-Instead of calculating both num_entries and num_ids, set
-num_entries to the minimum of the two limits, and check that.
+This is a GICv3 ITS command which we forgot to implement. (It is
+not used by Linux guests.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/intc/arm_gicv3_its_common.h |  1 -
- hw/intc/arm_gicv3_its.c                | 18 +++++++++---------
- 2 files changed, 9 insertions(+), 10 deletions(-)
+ hw/intc/gicv3_internal.h   | 16 +++++++++++
+ hw/intc/arm_gicv3_its.c    | 55 ++++++++++++++++++++++++++++++++++++++
+ hw/intc/arm_gicv3_redist.c | 54 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 125 insertions(+)
 
-diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
-index b32c697207f..3e2ad2dff60 100644
---- a/include/hw/intc/arm_gicv3_its_common.h
-+++ b/include/hw/intc/arm_gicv3_its_common.h
-@@ -47,7 +47,6 @@ typedef struct {
-     uint16_t entry_sz;
-     uint32_t page_sz;
-     uint32_t num_entries;
--    uint32_t num_ids;
-     uint64_t base_addr;
- } TableDesc;
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index a316f6c58a5..da45975d92b 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -324,6 +324,7 @@ FIELD(GITS_TYPER, CIL, 36, 1)
+ #define GITS_CMD_MAPI             0x0B
+ #define GITS_CMD_INV              0x0C
+ #define GITS_CMD_INVALL           0x0D
++#define GITS_CMD_MOVALL           0x0E
+ #define GITS_CMD_DISCARD          0x0F
+ 
+ /* MAPC command fields */
+@@ -355,6 +356,10 @@ FIELD(MAPC, RDBASE, 16, 32)
+ #define L2_TABLE_VALID_MASK       CMD_FIELD_VALID_MASK
+ #define TABLE_ENTRY_VALID_MASK    (1ULL << 0)
+ 
++/* MOVALL command fields */
++FIELD(MOVALL_2, RDBASE1, 16, 36)
++FIELD(MOVALL_3, RDBASE2, 16, 36)
++
+ /*
+  * 12 bytes Interrupt translation Table Entry size
+  * as per Table 5.3 in GICv3 spec
+@@ -497,6 +502,17 @@ void gicv3_redist_update_lpi(GICv3CPUState *cs);
+  * an incoming migration has loaded new state.
+  */
+ void gicv3_redist_update_lpi_only(GICv3CPUState *cs);
++/**
++ * gicv3_redist_movall_lpis:
++ * @src: source redistributor
++ * @dest: destination redistributor
++ *
++ * Scan the LPI pending table for @src, and for each pending LPI there
++ * mark it as not-pending for @src and pending for @dest, as required
++ * by the ITS MOVALL command.
++ */
++void gicv3_redist_movall_lpis(GICv3CPUState *src, GICv3CPUState *dest);
++
+ void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp, int irq, bool ns);
+ void gicv3_init_cpuif(GICv3State *s);
  
 diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index 237198845d7..3f2ead45369 100644
+index 3f2ead45369..ebc0403b3c7 100644
 --- a/hw/intc/arm_gicv3_its.c
 +++ b/hw/intc/arm_gicv3_its.c
-@@ -256,10 +256,10 @@ static ItsCmdResult process_its_cmd(GICv3ITSState *s, uint64_t value,
- 
-     eventid = (value & EVENTID_MASK);
- 
--    if (devid >= s->dt.num_ids) {
-+    if (devid >= s->dt.num_entries) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: invalid command attributes: devid %d>=%d",
--                      __func__, devid, s->dt.num_ids);
-+                      __func__, devid, s->dt.num_entries);
-         return CMD_CONTINUE;
-     }
- 
-@@ -300,7 +300,7 @@ static ItsCmdResult process_its_cmd(GICv3ITSState *s, uint64_t value,
-         return CMD_CONTINUE;
-     }
- 
--    if (icid >= s->ct.num_ids) {
-+    if (icid >= s->ct.num_entries) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: invalid ICID 0x%x in ITE (table corrupted?)\n",
-                       __func__, icid);
-@@ -384,10 +384,10 @@ static ItsCmdResult process_mapti(GICv3ITSState *s, uint64_t value,
- 
-     icid = value & ICID_MASK;
- 
--    if (devid >= s->dt.num_ids) {
-+    if (devid >= s->dt.num_entries) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: invalid command attributes: devid %d>=%d",
--                      __func__, devid, s->dt.num_ids);
-+                      __func__, devid, s->dt.num_entries);
-         return CMD_CONTINUE;
-     }
- 
-@@ -400,7 +400,7 @@ static ItsCmdResult process_mapti(GICv3ITSState *s, uint64_t value,
-     num_eventids = 1ULL << (FIELD_EX64(dte, DTE, SIZE) + 1);
-     num_intids = 1ULL << (GICD_TYPER_IDBITS + 1);
- 
--    if ((icid >= s->ct.num_ids)
-+    if ((icid >= s->ct.num_entries)
-             || !dte_valid || (eventid >= num_eventids) ||
-             (((pIntid < GICV3_LPI_INTID_START) || (pIntid >= num_intids)) &&
-              (pIntid != INTID_SPURIOUS))) {
-@@ -485,7 +485,7 @@ static ItsCmdResult process_mapc(GICv3ITSState *s, uint32_t offset)
- 
-     valid = (value & CMD_FIELD_VALID_MASK);
- 
--    if ((icid >= s->ct.num_ids) || (rdbase >= s->gicv3->num_cpu)) {
-+    if ((icid >= s->ct.num_entries) || (rdbase >= s->gicv3->num_cpu)) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "ITS MAPC: invalid collection table attributes "
-                       "icid %d rdbase %" PRIu64 "\n",  icid, rdbase);
-@@ -566,7 +566,7 @@ static ItsCmdResult process_mapd(GICv3ITSState *s, uint64_t value,
- 
-     valid = (value & CMD_FIELD_VALID_MASK);
- 
--    if ((devid >= s->dt.num_ids) ||
-+    if ((devid >= s->dt.num_entries) ||
-         (size > FIELD_EX64(s->typer, GITS_TYPER, IDBITS))) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "ITS MAPD: invalid device table attributes "
-@@ -791,7 +791,7 @@ static void extract_table_params(GICv3ITSState *s)
-                                   L1TABLE_ENTRY_SIZE) *
-                                  (page_sz / td->entry_sz));
-         }
--        td->num_ids = 1ULL << idbits;
-+        td->num_entries = MIN(td->num_entries, 1ULL << idbits);
-     }
+@@ -582,6 +582,58 @@ static ItsCmdResult process_mapd(GICv3ITSState *s, uint64_t value,
+     return update_dte(s, devid, valid, size, itt_addr) ? CMD_CONTINUE : CMD_STALL;
  }
  
++static ItsCmdResult process_movall(GICv3ITSState *s, uint64_t value,
++                                   uint32_t offset)
++{
++    AddressSpace *as = &s->gicv3->dma_as;
++    MemTxResult res = MEMTX_OK;
++    uint64_t rd1, rd2;
++
++    /* No fields in dwords 0 or 1 */
++    offset += NUM_BYTES_IN_DW;
++    offset += NUM_BYTES_IN_DW;
++    value = address_space_ldq_le(as, s->cq.base_addr + offset,
++                                 MEMTXATTRS_UNSPECIFIED, &res);
++    if (res != MEMTX_OK) {
++        return CMD_STALL;
++    }
++
++    rd1 = FIELD_EX64(value, MOVALL_2, RDBASE1);
++    if (rd1 >= s->gicv3->num_cpu) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: RDBASE1 %" PRId64
++                      " out of range (must be less than %d)\n",
++                      __func__, rd1, s->gicv3->num_cpu);
++        return CMD_CONTINUE;
++    }
++
++    offset += NUM_BYTES_IN_DW;
++    value = address_space_ldq_le(as, s->cq.base_addr + offset,
++                                 MEMTXATTRS_UNSPECIFIED, &res);
++    if (res != MEMTX_OK) {
++        return CMD_STALL;
++    }
++
++    rd2 = FIELD_EX64(value, MOVALL_3, RDBASE2);
++    if (rd2 >= s->gicv3->num_cpu) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: RDBASE2 %" PRId64
++                      " out of range (must be less than %d)\n",
++                      __func__, rd2, s->gicv3->num_cpu);
++        return CMD_CONTINUE;
++    }
++
++    if (rd1 == rd2) {
++        /* Move to same target must succeed as a no-op */
++        return CMD_CONTINUE;
++    }
++
++    /* Move all pending LPIs from redistributor 1 to redistributor 2 */
++    gicv3_redist_movall_lpis(&s->gicv3->cpu[rd1], &s->gicv3->cpu[rd2]);
++
++    return CMD_CONTINUE;
++}
++
+ /*
+  * Current implementation blocks until all
+  * commands are processed
+@@ -679,6 +731,9 @@ static void process_cmdq(GICv3ITSState *s)
+                 gicv3_redist_update_lpi(&s->gicv3->cpu[i]);
+             }
+             break;
++        case GITS_CMD_MOVALL:
++            result = process_movall(s, data, cq_offset);
++            break;
+         default:
+             break;
+         }
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index d81d8e5f076..d1645ba22c6 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -681,6 +681,60 @@ void gicv3_redist_process_lpi(GICv3CPUState *cs, int irq, int level)
+     gicv3_redist_lpi_pending(cs, irq, level);
+ }
+ 
++void gicv3_redist_movall_lpis(GICv3CPUState *src, GICv3CPUState *dest)
++{
++    /*
++     * We must move all pending LPIs from the source redistributor
++     * to the destination. That is, for every pending LPI X on
++     * src, we must set it not-pending on src and pending on dest.
++     * LPIs that are already pending on dest are not cleared.
++     *
++     * If LPIs are disabled on dest this is CONSTRAINED UNPREDICTABLE:
++     * we choose to NOP. If LPIs are disabled on source there's nothing
++     * to be transferred anyway.
++     */
++    AddressSpace *as = &src->gic->dma_as;
++    uint64_t idbits;
++    uint32_t pendt_size;
++    uint64_t src_baddr, dest_baddr;
++    int i;
++
++    if (!(src->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) ||
++        !(dest->gicr_ctlr & GICR_CTLR_ENABLE_LPIS)) {
++        return;
++    }
++
++    idbits = MIN(FIELD_EX64(src->gicr_propbaser, GICR_PROPBASER, IDBITS),
++                 GICD_TYPER_IDBITS);
++    idbits = MIN(FIELD_EX64(dest->gicr_propbaser, GICR_PROPBASER, IDBITS),
++                 idbits);
++
++    pendt_size = 1ULL << (idbits + 1);
++    src_baddr = src->gicr_pendbaser & R_GICR_PENDBASER_PHYADDR_MASK;
++    dest_baddr = dest->gicr_pendbaser & R_GICR_PENDBASER_PHYADDR_MASK;
++
++    for (i = GICV3_LPI_INTID_START / 8; i < pendt_size / 8; i++) {
++        uint8_t src_pend, dest_pend;
++
++        address_space_read(as, src_baddr + i, MEMTXATTRS_UNSPECIFIED,
++                           &src_pend, sizeof(src_pend));
++        if (!src_pend) {
++            continue;
++        }
++        address_space_read(as, dest_baddr + i, MEMTXATTRS_UNSPECIFIED,
++                           &dest_pend, sizeof(dest_pend));
++        dest_pend |= src_pend;
++        src_pend = 0;
++        address_space_write(as, src_baddr + i, MEMTXATTRS_UNSPECIFIED,
++                            &src_pend, sizeof(src_pend));
++        address_space_write(as, dest_baddr + i, MEMTXATTRS_UNSPECIFIED,
++                            &dest_pend, sizeof(dest_pend));
++    }
++
++    gicv3_redist_update_lpi(src);
++    gicv3_redist_update_lpi(dest);
++}
++
+ void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level)
+ {
+     /* Update redistributor state for a change in an external PPI input line */
 -- 
 2.25.1

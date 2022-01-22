@@ -1,154 +1,158 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp339233lfk;
-        Fri, 21 Jan 2022 15:44:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwf7oZTNGNsb4OW9qSKC3RVjxtzZ3pmUpVWwIlyNWH7XGztaJDoXP7OSJYHLxPEdx7Ob3nz
-X-Received: by 2002:a25:b747:: with SMTP id e7mr9306023ybm.38.1642808699565;
-        Fri, 21 Jan 2022 15:44:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642808699; cv=none;
+Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1732361qvl;
+        Sat, 22 Jan 2022 10:24:47 -0800 (PST)
+X-Received: by 2002:a05:6000:1d91:: with SMTP id bk17mr8072544wrb.684.1642875887261;
+        Sat, 22 Jan 2022 10:24:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642875887; cv=none;
         d=google.com; s=arc-20160816;
-        b=lzXdmb1TItDpa9dJlmxgSbPT5L6e419GXdMCsMwYvwFdmlpYR6JJjdbP+Bcnb0Rekt
-         9FhjJzD31gO6WcrYnWRbj+sTp0ihj731LrXcbLi7fki9t3e1mYkIxrXb6AL9QMQE8WBl
-         mYWbQhog2i+bKVwMqOtPUk3nsd0xlNkec4fT47E2hE4apO6cNYbCvqifSg75kxNosfcM
-         8DAEtOIa8sSV4OhEzppTqvZh9z6HGB9t7CUZN16R1nNydwwks+9vU8pWVfBdSM24Zlug
-         AMJDerHtI0bPeZDwCspKcJc+UaNZzuK3XKkPhIkVTpsnifZr+SD2s6IuderatDPpozUb
-         JfYg==
+        b=d+zZNCMwbF6kWLdM03Ckc0W8TkyZsuekPZLnT2ZhAdtl2fDeH/y2NQI1pnerDn486c
+         UzYw9lPCUQrPFZ125S7VUSbQFUl3GOXwUpgkKNJdKKMabM5HNnGtKVV2MJbn96G5MRn0
+         u71HDBhpnugBblPtX1ED55bItkITbUm24yDfnTaBN7io6atNbjpiO1UQ9kBXnD5AK00H
+         +eRKNF0wkEqZJ4P9ZM3cXmrVk3LKYpSzVOo7LUdgUQBxUZKC5izN66udMVmZ7csjq9kr
+         AByyTHQqQDrfY6FXXOf0toI7TGrLDpibdG5LajJZst9ZKim6ZM9yY94vs5u+BVBWH4se
+         9ZfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=1qE6iy7Mfl4Pc2W1cHzdtWYBwybt8reM0xmG+mSC7aE=;
-        b=i3Sfm+4MOdVtsi8EHG4oVmtBIPlNH/DfiFpOD9iBwibCjjHriXSpJdGwSowX6/tG3D
-         7Y93gfidK31SaUIIYwTsUl2rOT+wLO1+lHijg0JMSKs+YJ1yCRLNVMWdJJty1rxAosR2
-         rX9TdAiXeqtQA35wFnam06mQPllmjS711n+56zXcL9PJizpnmAGLuVDJhGs1VdmTho1g
-         zSmf/pvBfJu85aK6ZxbgJw1HaRpdX4BujjI6GpEqv1WZb1aH6c65hkRatGZ2q2BT28mU
-         s58NGRtGIGcNWrcwe6VRe3eFXIiJBfDn9ccsrdnAHriuIy30HJ0O2TzmaLaGFV+qmqct
-         ij4A==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=SCrj7rNy2XEjALr0o1+JBZ5xuS0aEYwNUaRqVuv6c+Y=;
+        b=OyQJIbTmkcGgz8HzxiykCFYUL5ltoLxRabkx+q5RCTQPfauGns41E0eV0P7ypaNzlj
+         HtLOmuu9sPNv80Y/PxVWvNB+LFAbA8UTgomh88LBM3Yl0kpPl8sTnz9Jt4h8o2crhkEk
+         0L2OYds9O5Rbsyh1OrOGF7sOr/O/ODN5zC9XSfHiz9sB8s1DMZujo0UMzXDJAAAA1Fao
+         2YpNFNgdhynJJPVnfaOuD9pUAHzb4QmlWYfB7XHhUYRNb0bMd17FEwBLmBwicSw1u+Tv
+         9lnQnonv8GEEz0wVXDV8jDLMu0qzFwrnKwjnoxrst1rgyNpLt2w/WEQEri5BIB9c00T3
+         Z1UQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=mWY2QxQM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d191si7459776ybh.285.2022.01.21.15.44.59
+       dkim=pass header.i=@linaro.org header.s=google header.b="p90Z/PKg";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o14sor5675677wrc.6.2022.01.22.10.24.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Jan 2022 15:44:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 22 Jan 2022 10:24:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=mWY2QxQM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:44424 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nB3aU-0000dX-PB
-	for alex.bennee@linaro.org; Fri, 21 Jan 2022 18:44:58 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35436)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nB3aD-0000dE-43; Fri, 21 Jan 2022 18:44:41 -0500
-Received: from [2607:f8b0:4864:20::634] (port=46820
- helo=mail-pl1-x634.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nB3a9-0006yM-FQ; Fri, 21 Jan 2022 18:44:40 -0500
-Received: by mail-pl1-x634.google.com with SMTP id u11so10059534plh.13;
- Fri, 21 Jan 2022 15:44:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=1qE6iy7Mfl4Pc2W1cHzdtWYBwybt8reM0xmG+mSC7aE=;
- b=mWY2QxQMW+lQRf6ZVWfOGme6AooQcxN3PIbycwp8fc+DFSmsw2GE6b5beA4dVTwtSp
- bUXo9XsyYjq7dufmshcPrd0Kycym6TTNVmvLGEcdewgg2hTRTXVgoYyU7vOeZfUktPaY
- +738ltJFmLZcjCiVXvoq9SJMu3ssevXiB6+NjYz9D0qEQaP1zcuAY/yGoE2R5H2WaFej
- D+E9BWOlM10lu169VwQS8RmXuDcEpmi6y3NMX1T8ZtRSwSFNRiejLLalnYYueoUiQoqX
- nyWFEqHd7hrS12SBQ3m1xVsEZ2kBJ/V9lXpHgjZEtQuDzz5UJgJdOJjBG09KgfMCcTaE
- ndiQ==
+       dkim=pass header.i=@linaro.org header.s=google header.b="p90Z/PKg";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=SCrj7rNy2XEjALr0o1+JBZ5xuS0aEYwNUaRqVuv6c+Y=;
+        b=p90Z/PKgAG2Ho6gU2HaBmCXKaLi2mbclp3rXSdOtHjljyoODr7eJGSLqMZmab3pYGQ
+         Oy1SC9AYR/GBiNucTdm0/QVW4DJWM5ufT3Zy8BPw1f4/XkTkq6otLx9P47ftLg3SlC8Y
+         4mJSOdoxB/ayWpSABFPRsIhtBM5zqKvuF+g+vZVTE8OYvDUk8Ka3SQZAfAfXcUy73PoL
+         +E92GJn6kBTcHzBwHnzb1S8mvUx+MvwQ+bU1YMPkkd+utTBWeKBTZscFkZG22kL8e+Ad
+         88wbcfEOiG/HyphbTlLZEYwZJi07W+BAPGMxErD8X6yBgz0AeiAtszXls3wTRHYuJ5rr
+         0p4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=1qE6iy7Mfl4Pc2W1cHzdtWYBwybt8reM0xmG+mSC7aE=;
- b=SuP0hvnFY5OcolpMkPiHTYiQB0SvHV3GBC3+IDBQajiCbcL6ZZ8pcHlHvuf+y0wcrC
- Zn71U1RXxdLttwIj8KgMam+Sxk5+x4AB7AOXb44fbZmZAnpf7RABV/x56P5Q3fjwTldi
- RnmaWZ1XLmoIpd20HSIg0z+4Q6rn3U+gzYwE7mOS+1RohQEoKA2fuLCqWGamqlzpSK6e
- xpUZS4r/jhlNnRGhBgTjCLw0AAZ3kvMgbvggjNnbpjNJ7+rhkOjiXxINFjB0zfl2ZD7K
- cPU4I4D7gmoZVn8CvmiI8H/gMwHVIHalk3tQP4wgvm+fFnNUWQU0DVYodKdcCl14JxPk
- rCjg==
-X-Gm-Message-State: AOAM531XDcngy3CrOlEWn/Iz/lBOp5aN7FjlkrKE4QSi2/9a6kAXM5Vb
- hPkH6F5y4renthABeQjpJMo=
-X-Received: by 2002:a17:903:124c:b0:149:b16d:917e with SMTP id
- u12-20020a170903124c00b00149b16d917emr5789536plh.91.1642808673085; 
- Fri, 21 Jan 2022 15:44:33 -0800 (PST)
-Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
- [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id pj6sm13289617pjb.21.2022.01.21.15.44.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Jan 2022 15:44:32 -0800 (PST)
-Message-ID: <818baf3c-6ac2-4e64-6fa0-dbf77bdad67a@amsat.org>
-Date: Sat, 22 Jan 2022 00:44:27 +0100
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=SCrj7rNy2XEjALr0o1+JBZ5xuS0aEYwNUaRqVuv6c+Y=;
+        b=FD6n1751qPSiqYca29U62uf1p5/DDphTadv5ytD7buk47ZWobQYZ9FuQA1er09POUs
+         wl9WyNf4nr1fRpARBUfKynAOQCEMCGvHhdkszfQS4GOwRpA7F9FPZ4r1WKwCiO7zQJ5v
+         Gazp2fUb9tQFQ9wECdIYupE2FKwkV8IiLvFeymdT07KbYW8MGCv+kyzuGe3sfML8RMgm
+         4xAiZyiSIwqV7WuNjjWyFN2lu0tkvaaTs7/3jzilG8j8qwRtJfLAxpqY1E5SpCyHyYb4
+         YSxqqOEQy9PVW+VgGO4f9ag7OrasPGrtgg8A32gDOFyVJOSSNUFP82VZYW45gHPvvxM8
+         VrQQ==
+X-Gm-Message-State: AOAM5321XGzoGG/aqivLdo/+B4rS8xZuNtfTzCEUhFpi4W8grAHxTaeA
+	vzAzPfPlZ4wGQCvE7HOIFJOWjUozk6qrM1FN
+X-Google-Smtp-Source: ABdhPJwQtm0NeE3oYJPBCWBy5upvnbKIwYNs4lZpMwn1Bg1KjHGiJ3U4i/uyZ/zJVco7n0yPCCDpSQ==
+X-Received: by 2002:a5d:52c4:: with SMTP id r4mr8613731wrv.521.1642875886981;
+        Sat, 22 Jan 2022 10:24:46 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by smtp.gmail.com with ESMTPSA id 21sm8870774wmk.45.2022.01.22.10.24.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 22 Jan 2022 10:24:46 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Shashi Mallela <shashi.mallela@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 01/14] target/arm: Log CPU index in 'Taking exception' log
+Date: Sat, 22 Jan 2022 18:24:31 +0000
+Message-Id: <20220122182444.724087-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220122182444.724087-1-peter.maydell@linaro.org>
+References: <20220122182444.724087-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.0
-Subject: Re: [PATCH] hw/armv7m: Fix broken VMStateDescription
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <20220120151609.433555-1-peter.maydell@linaro.org>
-In-Reply-To: <20220120151609.433555-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::634
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pl1-x634.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-arm@nongnu.org>
-X-TUID: Wky/JwyaP0+E
+X-TUID: UXHwl1qfLdvS
 
-On 20/1/22 16:16, Peter Maydell wrote:
-> In commit d5093d961585f02 we added a VMStateDescription to
-> the TYPE_ARMV7M object, to handle migration of its Clocks.
-> However a cut-and-paste error meant we used the wrong struct
-> name in the VMSTATE_CLOCK() macro arguments. The result was
-> that attempting a 'savevm' might result in an assertion
-> failure.
-> 
-> Cc: qemu-stable@nongnu.org
-> Buglink: https://gitlab.com/qemu-project/qemu/-/issues/803
-> Fixes: d5093d961585f02
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> It's a shame there's no way to type-check that the struct
-> name used in the VMSTATE macros is correct...
-> ---
->   hw/arm/armv7m.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+In an SMP system it can be unclear which CPU is taking an exception;
+add the CPU index (which is the same value used in the TCG 'Trace
+%d:' logging) to the "Taking exception" log line to clarify it.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/internals.h | 2 +-
+ target/arm/helper.c    | 9 ++++++---
+ target/arm/m_helper.c  | 2 +-
+ 3 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 89f7610ebc5..3f05748ea47 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1130,7 +1130,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+                    ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
+     __attribute__((nonnull));
+ 
+-void arm_log_exception(int idx);
++void arm_log_exception(CPUState *cs);
+ 
+ #endif /* !CONFIG_USER_ONLY */
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index cfca0f5ba6d..4df12394021 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9317,8 +9317,10 @@ uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
+     return target_el;
+ }
+ 
+-void arm_log_exception(int idx)
++void arm_log_exception(CPUState *cs)
+ {
++    int idx = cs->exception_index;
++
+     if (qemu_loglevel_mask(CPU_LOG_INT)) {
+         const char *exc = NULL;
+         static const char * const excnames[] = {
+@@ -9352,7 +9354,8 @@ void arm_log_exception(int idx)
+         if (!exc) {
+             exc = "unknown";
+         }
+-        qemu_log_mask(CPU_LOG_INT, "Taking exception %d [%s]\n", idx, exc);
++        qemu_log_mask(CPU_LOG_INT, "Taking exception %d [%s] on CPU %d\n",
++                      idx, exc, cs->cpu_index);
+     }
+ }
+ 
+@@ -10185,7 +10188,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+ 
+     assert(!arm_feature(env, ARM_FEATURE_M));
+ 
+-    arm_log_exception(cs->exception_index);
++    arm_log_exception(cs);
+     qemu_log_mask(CPU_LOG_INT, "...from EL%d to EL%d\n", arm_current_el(env),
+                   new_el);
+     if (qemu_loglevel_mask(CPU_LOG_INT)
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index 2c9922dc292..b11e927df1d 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -2206,7 +2206,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+     uint32_t lr;
+     bool ignore_stackfaults;
+ 
+-    arm_log_exception(cs->exception_index);
++    arm_log_exception(cs);
+ 
+     /*
+      * For exceptions we just mark as pending on the NVIC, and let that
+-- 
+2.25.1

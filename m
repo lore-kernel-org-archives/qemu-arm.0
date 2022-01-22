@@ -1,120 +1,129 @@
-Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1732407qvl;
-        Sat, 22 Jan 2022 10:24:51 -0800 (PST)
-X-Received: by 2002:a1c:1d44:: with SMTP id d65mr4692999wmd.96.1642875891513;
-        Sat, 22 Jan 2022 10:24:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642875891; cv=none;
+Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1732413qvl;
+        Sat, 22 Jan 2022 10:24:52 -0800 (PST)
+X-Received: by 2002:adf:f0c5:: with SMTP id x5mr8220292wro.686.1642875892208;
+        Sat, 22 Jan 2022 10:24:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642875892; cv=none;
         d=google.com; s=arc-20160816;
-        b=B9qyK8xtIKx+Z7in2qZ53wTaQIBu07Ko7wSXePakbhmPAsqUdDP+9dW3pxkhjMojx7
-         yHQsVfzYA+fP5IA8KXhW/Mo+5/g3gUVtthZMitiOtTEhRD7z2rhIQoRAjmJqwaHZR1G3
-         h+O7Bv2YpToH/m0sh0q35bukKuesK1EEfI+obDZ0SXtarjwZ96fKIdRAA6Xg5eKro2di
-         F4JLTopTTgz469wZdS++WpVV8jNPs0x3v/YvSHr2Zg/1PZ7K8kFGpb5LcdFRDXG9ACqo
-         ee7Dmz9hn67UYpv+1Z9f15XQAJNAmC2LjNZplNKuo/ann+6phlCVdWU9DV4BpA+tJuC5
-         fqZA==
+        b=n1qp/sgSTGR/9rY/W2pCZF7EHLpWW5s0rge0prHNFHFJ8j9z2L31VoKrU6WB5cc5/y
+         SkeedcwfqmvOjIB+2RDO9A9KbIgxoW444xhZQ5XJMa6t7OUmLlo980b3DqIsjLm/5n6i
+         eDbanR3Jerxs7g5MFQomq+jjA7zJ47xNXYsjO8dT+UTZg//C+MMvNpZzWJVAr/+Qssu9
+         ROTIWoEN2EgTp16jxQ+AawGyCxPUYbr5zwAuuukN26PCU4WDCg+z/M+mshywtKoFPgBq
+         xftp+N4ggliP1y5Sw9zj5eVUR5fLNg7kp2i6gK7lmzMZ9vDjf6qINxv97Lm5AzzHHZCK
+         GPiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=tHMZxZiFQJbI+EMs2+qLPMDXg/8YQrzz1SenT8sExVE=;
-        b=dwQLMy+z9MLbnirnzUEAtshvk285PFmSN+iR6HNYQMyErtTNZtHPtzqMRJSfgQPLT0
-         1ZI98LPL2tB0FMmHDwTSrmL0xSBtkeE+DJ+PcaKmHY5oT8APQaFagbL3PZok6HoEwT1/
-         BqHjBUlPCxxoVfHj8M/LOYh/eLCycUCD23AvUkAV341xRSBHoyxOhwUup0/9jbYUnHal
-         ccS2790uNDf9r8ackGUgLIbjvTZ5s1tB/yKrLLdnxye4twqZ5GeeQzJuvT2d3MqbRr7s
-         yLFsN50gK3NPRMWc7Rk1rWF/AubCepbmuAL+Rx8DmE+fSsq4jBwgEBwlySPQhj2MNreu
-         G0Rw==
+        bh=Lp1oJ9HFOvv8JUdUv/7QWvh4BnxCy5Ok7f/8j3T6Vxg=;
+        b=zYY7xhRVm1mb/TGGRaW8bhlorAWpVu7km0MqhK7tN4OukYGW0xYIxUd5tgbhasA+Id
+         vV+H9fo4GiImY3/DmS8Xxe81ycqc6F/mN+ElJ1Rjsqww7qVH/+EpAh9tjeX7wmSrZkEW
+         CdC9VdUIJSom9Cm9+HICM5d9z7gxOXYa5kz8GSBNft3n9R8iqS0TEjBFTla76H99RgEj
+         RVzt1vu1OFXxU97hDC21hvBulY6k4iyjy8rK0x80H+igKKIQHoSMyQx27b7PJ95F8tz/
+         Jd83gQsTODXXyDaaimT9JZhYS6oZmRmeTrAJ2CfMIcrx9SXh5ALAvxEKyFdUAFYYviwQ
+         qQMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xMa3V+Rm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Eu37rzdV;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n2sor5465150wrc.69.2022.01.22.10.24.51
+        by mx.google.com with SMTPS id w7sor5839465wrr.56.2022.01.22.10.24.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 22 Jan 2022 10:24:51 -0800 (PST)
+        Sat, 22 Jan 2022 10:24:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xMa3V+Rm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Eu37rzdV;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=tHMZxZiFQJbI+EMs2+qLPMDXg/8YQrzz1SenT8sExVE=;
-        b=xMa3V+Rmm47QybMRBrPrmrlxD2xIIicBVnqccGP5RwO1DZAizp/jDKC2KV2EClJDKl
-         ZZpya2BAKYdVHJ67tj3TtGfHy2zusIS0IUeabrHwTMXLq4xABSqszuZYLEGf5WI6cpLm
-         iANAw45AzUVhV5VyPe0SdhLUgrtyaMZdDLtSX9gJmP0Mrly5zp49yNNSFlpFTPgX6uXv
-         ev04MYzUhXtppq4qh42G6Qcu4KpzzyuEMgFbhvZy5cOoOsZzx06aNckRK6xBgM9698g0
-         J0s8KQa5zX/czx8NLtX6S0IIaBvs1ihzyRHSFf/AFbg1/R1h6g47YU8e/TLkSQS2nO8e
-         T2gw==
+        bh=Lp1oJ9HFOvv8JUdUv/7QWvh4BnxCy5Ok7f/8j3T6Vxg=;
+        b=Eu37rzdVMdIcpRW57Yo+pjUs+MZ7R8s8kyVcjaG14s8mW8ihQRHuMgbYAOgaEA+LIG
+         olYmx6aS6TH2amumu3AlOhpD1qPK5Y2oJGfojKQiEle1v1CZcJbqUlh4iC3o1rQ8cMhi
+         5BdYlJhdH2m1RoqPMHbooiMZi7cbWsnyXAsXJ3u5yZ5owzD/nTQeXgkpc5HeMqzcwo56
+         hqv1PS4ulbuDfYpPOhbFt52k2z7K+jpad2JNpqf7KdPtqUPwNUd6Hb5r4pDBn3irC/9w
+         wl6D08Dq2YkRyH/Xb4eSGAxUjw8UB66bIqimgok0fwLs5WeDEudGPkxOMWCIPAqNAJN4
+         kZUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=tHMZxZiFQJbI+EMs2+qLPMDXg/8YQrzz1SenT8sExVE=;
-        b=AKIyzg5iySPEiJ81UMQ8QGEn7VjaJqVujN1RQQBkVd+GoCTLTJo6y2XQ+o9KIHXACi
-         d4QpD0Z4OoEyx9n9YQhHAOom2lfez35u1iPK9ISGM5/64aNdZa19RLR0Dh4bfvMmHcAZ
-         +yLKchMIZTmybm6F6hA3KwwfKLizmMSjB39tpHgKHyXYZ8QTW8Ao1TgxTfF/lt9ORguQ
-         k3WhSizZP8D7aNfG5eUT/UAPoZlHEZn8CiGvP3mpxAoHaXri1GFF//LuhVunaLOKqVMb
-         ZXiT3uwWBTMLb3NEh8KdazjmZNkCD+hCE+BbPlLdIEJqeQC7WR72VqXVDz+1r/LHrTR2
-         jRew==
-X-Gm-Message-State: AOAM531bVzu+uA40YrmvFZTjw7ZiCW1oZEicEttaJ4TU1gbaOLcpz8XN
-	BoyLlPxR4i450RF+EDFR5xRnJ4PIlsoEqT9x
-X-Google-Smtp-Source: ABdhPJzB5qVOGymwJpQo/6zRMiZFGRAXIV/oIhAcVXasi3jFeRlxtHdG1O9tvPjvLzkVVAPLWTvpAQ==
-X-Received: by 2002:a5d:5585:: with SMTP id i5mr8139341wrv.174.1642875891175;
+        bh=Lp1oJ9HFOvv8JUdUv/7QWvh4BnxCy5Ok7f/8j3T6Vxg=;
+        b=BUqQBLbS2ruPmUEQ6maVNxO2ASVENlKo4cTuLLGr4xz+d2X4tBjb/TJ/bEbKqZ2bX8
+         1gUNqgEJq+fpiewQSNtasBkfN7Si1ps6YbxRzYv4SThlka7W6iCFnbI7Kw9WB4iCthrp
+         UbC1UNKWA/VyzUdUVm7rtkptOMQl9nRGCvSdRKj0o8ButlErK+WfQpt1z1Enu41U1a2q
+         oVPnKe/vRNcFFWsF4AmM1H+9P4C2B62YHPgTrQ109y6qeUCtInwnz1wyho30I9Rapi/U
+         120YmCZA/7Lwh+UU4YM46i8yv1fqz0tLV2ZheYgw/HcpDjwzR/v2L4LcuHRM/AtuCo/5
+         P3vg==
+X-Gm-Message-State: AOAM533GrqYPfmeTVu40s3XMFOXKX3JI3pWO/K2wt2HTWetC51nZWXF0
+	yocBSDVTybU7y4vMVX2AAsSDDbjW
+X-Google-Smtp-Source: ABdhPJymlfT3enirToNyVsbxWsTQoWh3gHnSbQWHXzQwRUihGy7WZ4waWDF8Lr4sPxVwnU6ZW8WKZQ==
+X-Received: by 2002:a05:6000:16c9:: with SMTP id h9mr8452070wrf.508.1642875891902;
         Sat, 22 Jan 2022 10:24:51 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id 21sm8870774wmk.45.2022.01.22.10.24.50
+        by smtp.gmail.com with ESMTPSA id 21sm8870774wmk.45.2022.01.22.10.24.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 22 Jan 2022 10:24:50 -0800 (PST)
+        Sat, 22 Jan 2022 10:24:51 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Shashi Mallela <shashi.mallela@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 07/14] hw/intc/arm_gicv3_its: Sort ITS command list into numeric order
-Date: Sat, 22 Jan 2022 18:24:37 +0000
-Message-Id: <20220122182444.724087-8-peter.maydell@linaro.org>
+Subject: [PATCH 08/14] hw/intc/arm_gicv3_redist: Remove unnecessary zero checks
+Date: Sat, 22 Jan 2022 18:24:38 +0000
+Message-Id: <20220122182444.724087-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220122182444.724087-1-peter.maydell@linaro.org>
 References: <20220122182444.724087-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: ZgWMaNaYghBW
+X-TUID: vBeZGxtLs1uf
 
-The list of #defines for the ITS command packet numbers is neither
-in alphabetical nor numeric order. Sort it into numeric order.
+The ITS-related parts of the redistributor code make some checks for
+whether registers like GICR_PROPBASER and GICR_PENDBASER are zero.
+There is no requirement in the specification for treating zeroes in
+these address registers specially -- they contain guest physical
+addresses and it is entirely valid (if unusual) for the guest to
+choose to put the tables they address at guest physical address zero.
+We use these values only to calculate guest addresses, and attempts
+by the guest to use a bad address will be handled by the
+address_space_* functions which we use to do the loads and stores.
+
+Remove the unnecessary checks.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/gicv3_internal.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ hw/intc/arm_gicv3_redist.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index 1eeb99035da..5394266aaf4 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -314,16 +314,16 @@ FIELD(GITS_TYPER, CIL, 36, 1)
- #define CMD_MASK                  0xff
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 99b11ca5eee..d81d8e5f076 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -591,8 +591,7 @@ void gicv3_redist_update_lpi_only(GICv3CPUState *cs)
+     idbits = MIN(FIELD_EX64(cs->gicr_propbaser, GICR_PROPBASER, IDBITS),
+                  GICD_TYPER_IDBITS);
  
- /* ITS Commands */
--#define GITS_CMD_CLEAR            0x04
--#define GITS_CMD_DISCARD          0x0F
- #define GITS_CMD_INT              0x03
--#define GITS_CMD_MAPC             0x09
-+#define GITS_CMD_CLEAR            0x04
-+#define GITS_CMD_SYNC             0x05
- #define GITS_CMD_MAPD             0x08
--#define GITS_CMD_MAPI             0x0B
-+#define GITS_CMD_MAPC             0x09
- #define GITS_CMD_MAPTI            0x0A
-+#define GITS_CMD_MAPI             0x0B
- #define GITS_CMD_INV              0x0C
- #define GITS_CMD_INVALL           0x0D
--#define GITS_CMD_SYNC             0x05
-+#define GITS_CMD_DISCARD          0x0F
+-    if (!(cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) || !cs->gicr_propbaser ||
+-        !cs->gicr_pendbaser) {
++    if (!(cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS)) {
+         return;
+     }
  
- /* MAPC command fields */
- #define ICID_LENGTH                  16
+@@ -673,9 +672,8 @@ void gicv3_redist_process_lpi(GICv3CPUState *cs, int irq, int level)
+     idbits = MIN(FIELD_EX64(cs->gicr_propbaser, GICR_PROPBASER, IDBITS),
+                  GICD_TYPER_IDBITS);
+ 
+-    if (!(cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) || !cs->gicr_propbaser ||
+-         !cs->gicr_pendbaser || (irq > (1ULL << (idbits + 1)) - 1) ||
+-         irq < GICV3_LPI_INTID_START) {
++    if (!(cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) ||
++        (irq > (1ULL << (idbits + 1)) - 1) || irq < GICV3_LPI_INTID_START) {
+         return;
+     }
+ 
 -- 
 2.25.1

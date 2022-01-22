@@ -1,178 +1,108 @@
-Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1732365qvl;
-        Sat, 22 Jan 2022 10:24:48 -0800 (PST)
-X-Received: by 2002:a05:600c:4e4e:: with SMTP id e14mr5331056wmq.98.1642875887999;
-        Sat, 22 Jan 2022 10:24:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642875887; cv=none;
+Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1732377qvl;
+        Sat, 22 Jan 2022 10:24:49 -0800 (PST)
+X-Received: by 2002:a7b:cb83:: with SMTP id m3mr5382577wmi.150.1642875889471;
+        Sat, 22 Jan 2022 10:24:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642875889; cv=none;
         d=google.com; s=arc-20160816;
-        b=y+SpVSes5Ao3nME/1Hlm7CnpntZv0lubU4k3T84A9MvntnWV2KVqjlLcUHqHpYf2OP
-         US82rnjc8imWKTWSAetO8e8Z3hq9sSzWzLIRLe2pXIjR4XIEr545fiGyRbq/0j0LynBL
-         64iCXNsQQAbkXEcefis/kqq75t25sR2Y2Wyijrs6CJS+fIBhLreeCBZxj2K2oyeFXpDn
-         erdMyLEVoDgACkpEJJuYd74jLV9ODUowQChDVYUGAFF/oXoMMPRuTEBIGmxY/Z4OmEM+
-         /Oyg3SfDrMHcKf5pTstN0D3WSRh/M6M38LR+EsdD9pk/YkV4rKX7Vj0s+ZksCbvcy4fZ
-         4Vyg==
+        b=UedKKQRrwxDq0roA3h/sCE/13YTRz579602CNe8qtebjaBP/3mkXMTVIf1PVvE9fGR
+         ukOJZNdpNAp5qykrAiD+e4Vbk8Y2GdvQBqX1jDSXwropIIiPFIpm+ilsb5pbJwsD6OeM
+         HHzv+tdcXuZ9eo/BEt/LiZm0PSF6BuqcuQop3AYV6E20zynPlj9XQqOp9fKso9p9siKB
+         40YMXzy+/3waqxm8sdsdJywVwneJXXso1Z0uL6woyBO9X6ktkDv31fuMKA8oKgjfF2Pq
+         mEU/08xNyQkpL+DLsm+3T3I0r0JDKNqPOy3ChO3xIQYNh/viYqpp9XjSuYmQrzzlgZ2i
+         fFxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Zh5iADESENSAPofEn1J+i6o1QEpzQBPyUBojzWQHFvY=;
-        b=NkRqUgn9DnpVM87tj5CnpwHyrKLnWvs3niXfxs4/vw04eZOXlByd8Z4kMav/bWyv8u
-         ELsAbjauxmbXbQcW62V21IjJCk/PkW8VUlfybZTuHPaYu9HAk8evr6mRpxT4VeW4Eksh
-         y+WYxnDkHZaO8xH1Zn2XSwuAEmU+pTp70OLi3BgErnrlcU2wvsN+SdpHNwpGvr4MLDJ3
-         kVmA/Xg1GyinvD8DwAL8zEVVkamYwyg3v7mrOpncWwX+bypQDc79sSaXhsFYMNlvqpIL
-         VZibetouDq/0wGhiyhFBoBSJUumvGquYzw/2whqUTAdcEpUi6kb66RbH6KnjWkFsbjQT
-         pw2Q==
+        bh=NxBpkMVebkfvJDaKJYbHagp3Kx3QPxuJ4FSTved8Gug=;
+        b=A+ArmT7+/4BlPVr/Tu9Gt/NTqw5sIE6Sevqi3TT58RonT3HJfsMNU8h8HRroAg0+kw
+         guFwi2KeedUeFk0TGXVzfZm28+0aqRputSsgmDABXAvcLrIHgEvCl10p5llpwFwDIy9I
+         6WiElRcWveMVCkKeCoW8OpqwaXgV7bcClPeu28xYWW/S3io7zVhr6hxRFxLSWLMKZMZs
+         8Xx5nsUQMND3W/mALtn2EhD2OhxVErA/Dv1r4ebTyghoXceCNyNZaOPs7HxXhjA6p0+0
+         8i+wXfqlq0lajHJrj8hiVOjqod69aVFk90PQ88qn/Txcc7FP2fVqPiXXyI3f+ryHmA3J
+         fOpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BNFyUlsd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LO6JD28S;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o9sor893766wry.73.2022.01.22.10.24.47
+        by mx.google.com with SMTPS id w15sor381842wrq.57.2022.01.22.10.24.49
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 22 Jan 2022 10:24:47 -0800 (PST)
+        Sat, 22 Jan 2022 10:24:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BNFyUlsd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LO6JD28S;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=Zh5iADESENSAPofEn1J+i6o1QEpzQBPyUBojzWQHFvY=;
-        b=BNFyUlsdZtICX3qNu/OFMR4H3TWGMjxBYjymkrm+M01/5kL5XdbSRJWn3k0mnmKZNP
-         oswBqIBc7l7kyjoZEtBq+hIuoYhC5rjSCMWcZ1nMKLpFpnL5cbKz32NW8sxoWjg8DGZI
-         zwiuENM5JRzp2h1xmQAIf4il7n6wmeiGEWQj5KLdeAy5AUpFcz/nCpbtp2M6mPRqoBdO
-         qPvhtx0QakcWYrI8DLtjq0U0v6DLhSytfJ+rZFGMpaPlPNc6XuAMYloppDOK39pw5K39
-         geswZUZmypqiUOW+Twn8zJ1+KgK72ishXAeolOAvgyK30YY3764fLw2GCg7s8UG5xmp1
-         4Lqg==
+        bh=NxBpkMVebkfvJDaKJYbHagp3Kx3QPxuJ4FSTved8Gug=;
+        b=LO6JD28SSRveVnVEfo4UpGmhleAw9kCGUklXWSWAgFkqsu0jt/qlOZ5BCFCqF2CJHI
+         I9UyZWvQzzmeGFQzLHYhourEfjI8Nc7Y4SoYJw5mhMQNkyY3WGvakRI6fQha0QFEbx/+
+         +8Hei9OocwARhVjS6T+pVXRPVwM2uk6ASPtPPH9jDMAE+d9AfSVc9BJHlulx/aU1XasW
+         HGYbm3qJZyw/K0TSv+3LhNXTroukQuqWFTXwfxqh4cI3+zlxCp8dMd3qo/7Uhr3pZiR2
+         WK/ggKFxdbtLjgvgfEH+rHHs9UHE7QV06M46EwNE8Cj17HvJrKdQymFIV3UDfcom6Fbu
+         nB5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=Zh5iADESENSAPofEn1J+i6o1QEpzQBPyUBojzWQHFvY=;
-        b=39zW6FBFeixq7NGS3wwhayPYktdJLlc6/cqA7mpPvOgmBrMNVUAl+icaqa3TwjeiA8
-         SHK59JpFl2oi4Wv0RAuOLnXddq7bsj/DberlTQxlgYXzIsrKH+6FTHdpYK/izykJO8Lm
-         8HjfYJNNwjhbCcFOdkDGn5f8iZCJpZhdQALOTx4i19Mc/J4gjos5ekuF/eVYkV1gyMY4
-         zeXiREuuQgfowkPDmwF9CnzCgbTaDQ+mMH231fKTnCpS8qiC7O2f+sCU3XjvJrWgzZHw
-         Y3NBIVFIHzwnS696fB/fcqhHGyQziKHLXz6Qbo/hOVvhQ+i9n7nZSm1O7yur7INmReZ0
-         R67A==
-X-Gm-Message-State: AOAM5334SVKpyeJM+KK4l2spvS4OVyPbfpiuyEEljoknj7pjoiv5n4It
-	ysaW6AiPzWGNSSGrMqe6j9luqiBdlCPkzjlT
-X-Google-Smtp-Source: ABdhPJw5Wa4eX6hnmBccyiVU+CbnB1Nx/DnUEijXJaMwQDewdt0cuymOeYburhnV1+/AMINqyd9ftQ==
-X-Received: by 2002:adf:fa8d:: with SMTP id h13mr8309558wrr.154.1642875887701;
-        Sat, 22 Jan 2022 10:24:47 -0800 (PST)
+        bh=NxBpkMVebkfvJDaKJYbHagp3Kx3QPxuJ4FSTved8Gug=;
+        b=Mz46PCCaQAh7fQATCBAGwDPS2r3Hf5ypQrUcF7NLHpLU2JtqGuAzqEriJJ2NzeuIan
+         un3dZcEgfgBAmruhCZ+n6GOjB8ydtSyOe05pHUxMgzBdCmY+IoXuEm3VQDAH/+CbQ9mZ
+         AUpVLnEn86Fq7LB/32kovKWvZw46BKOvuzruwsKmyyYRCnP7LJ49lzaZjCzNHLLWF78M
+         icjmOiGbOv32p69geieUIehTbzhADOldcEXeK5oYhepISugko1skOVAUafzcgCfKmFBb
+         StNrnMcLW/nysHXRd0qbktax1XocrTe1qqF/GoR746odhGg7g9J6vel8PIWSAdyh9aMM
+         GJEw==
+X-Gm-Message-State: AOAM530PyN78pSkkv3sWUpnHW0fI2V/d4PfdS6KYKlWjcg1LFcPbsSK8
+	GCELcobk3ETOqsRTOaRz3lYjuXIJ
+X-Google-Smtp-Source: ABdhPJwE1hCRNxWPHu+QxeUccvBHfki0iMe7vAfrQHmiyhI6zBcCE0F7P9pCAou2WjBgoH889JjEkw==
+X-Received: by 2002:a05:6000:1a8c:: with SMTP id f12mr8408980wry.352.1642875889199;
+        Sat, 22 Jan 2022 10:24:49 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id 21sm8870774wmk.45.2022.01.22.10.24.47
+        by smtp.gmail.com with ESMTPSA id 21sm8870774wmk.45.2022.01.22.10.24.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 22 Jan 2022 10:24:47 -0800 (PST)
+        Sat, 22 Jan 2022 10:24:48 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Shashi Mallela <shashi.mallela@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 02/14] hw/intc/arm_gicv3_its: Add tracepoints
-Date: Sat, 22 Jan 2022 18:24:32 +0000
-Message-Id: <20220122182444.724087-3-peter.maydell@linaro.org>
+Subject: [PATCH 04/14] hw/intc/arm_gicv3_its: Don't clear GITS_CREADR when GITS_CTLR.ENABLED is set
+Date: Sat, 22 Jan 2022 18:24:34 +0000
+Message-Id: <20220122182444.724087-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220122182444.724087-1-peter.maydell@linaro.org>
 References: <20220122182444.724087-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: wOMM9tlf22iT
+X-TUID: WuceRgi9iZ/t
 
-The ITS currently has no tracepoints; add a minimal set
-that allows basic monitoring of guest register accesses and
-reading of commands from the command queue.
+The current ITS code clears GITS_CREADR when GITS_CTLR.ENABLED is set.
+This is not correct -- guest code can validly clear ENABLED and then
+set it again and expect the ITS to continue processing where it left
+off. Remove the erroneous assignment.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_its.c | 11 +++++++++++
- hw/intc/trace-events    |  8 ++++++++
- 2 files changed, 19 insertions(+)
+ hw/intc/arm_gicv3_its.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index b2f6a8c7f00..6d2549e64b1 100644
+index 67f12d98af3..1763ba4a671 100644
 --- a/hw/intc/arm_gicv3_its.c
 +++ b/hw/intc/arm_gicv3_its.c
-@@ -13,6 +13,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/log.h"
-+#include "trace.h"
- #include "hw/qdev-properties.h"
- #include "hw/intc/arm_gicv3_its_common.h"
- #include "gicv3_internal.h"
-@@ -634,6 +635,8 @@ static void process_cmdq(GICv3ITSState *s)
- 
-         cmd = (data & CMD_MASK);
- 
-+        trace_gicv3_its_process_command(rd_offset, cmd);
-+
-         switch (cmd) {
-         case GITS_CMD_INT:
-             result = process_its_cmd(s, data, cq_offset, INTERRUPT);
-@@ -818,6 +821,8 @@ static MemTxResult gicv3_its_translation_write(void *opaque, hwaddr offset,
-     bool result = true;
-     uint32_t devid = 0;
- 
-+    trace_gicv3_its_translation_write(offset, data, size, attrs.requester_id);
-+
-     switch (offset) {
-     case GITS_TRANSLATER:
-         if (s->ctlr & R_GITS_CTLR_ENABLED_MASK) {
-@@ -1107,6 +1112,7 @@ static MemTxResult gicv3_its_read(void *opaque, hwaddr offset, uint64_t *data,
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: invalid guest read at offset " TARGET_FMT_plx
-                       "size %u\n", __func__, offset, size);
-+        trace_gicv3_its_badread(offset, size);
-         /*
-          * The spec requires that reserved registers are RAZ/WI;
-          * so use false returns from leaf functions as a way to
-@@ -1114,6 +1120,8 @@ static MemTxResult gicv3_its_read(void *opaque, hwaddr offset, uint64_t *data,
-          * the caller, or we'll cause a spurious guest data abort.
-          */
-         *data = 0;
-+    } else {
-+        trace_gicv3_its_read(offset, *data, size);
-     }
-     return MEMTX_OK;
- }
-@@ -1140,12 +1148,15 @@ static MemTxResult gicv3_its_write(void *opaque, hwaddr offset, uint64_t data,
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: invalid guest write at offset " TARGET_FMT_plx
-                       "size %u\n", __func__, offset, size);
-+        trace_gicv3_its_badwrite(offset, data, size);
-         /*
-          * The spec requires that reserved registers are RAZ/WI;
-          * so use false returns from leaf functions as a way to
-          * trigger the guest-error logging but don't return it to
-          * the caller, or we'll cause a spurious guest data abort.
-          */
-+    } else {
-+        trace_gicv3_its_write(offset, data, size);
-     }
-     return MEMTX_OK;
- }
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 9aba7e3a7a4..b28cda4e08e 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -169,6 +169,14 @@ gicv3_redist_badwrite(uint32_t cpu, uint64_t offset, uint64_t data, unsigned siz
- gicv3_redist_set_irq(uint32_t cpu, int irq, int level) "GICv3 redistributor 0x%x interrupt %d level changed to %d"
- gicv3_redist_send_sgi(uint32_t cpu, int irq) "GICv3 redistributor 0x%x pending SGI %d"
- 
-+# arm_gicv3_its.c
-+gicv3_its_read(uint64_t offset, uint64_t data, unsigned size) "GICv3 ITS read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+gicv3_its_badread(uint64_t offset, unsigned size) "GICv3 ITS read: offset 0x%" PRIx64 " size %u: error"
-+gicv3_its_write(uint64_t offset, uint64_t data, unsigned size) "GICv3 ITS write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+gicv3_its_badwrite(uint64_t offset, uint64_t data, unsigned size) "GICv3 ITS write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u: error"
-+gicv3_its_translation_write(uint64_t offset, uint64_t data, unsigned size, uint32_t requester_id) "GICv3 ITS TRANSLATER write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u requester_id 0x%x"
-+gicv3_its_process_command(uint32_t rd_offset, uint8_t cmd) "GICv3 ITS: processing command at offset 0x%x: 0x%x"
-+
- # armv7m_nvic.c
- nvic_recompute_state(int vectpending, int vectpending_prio, int exception_prio) "NVIC state recomputed: vectpending %d vectpending_prio %d exception_prio %d"
- nvic_recompute_state_secure(int vectpending, bool vectpending_is_s_banked, int vectpending_prio, int exception_prio) "NVIC state recomputed: vectpending %d is_s_banked %d vectpending_prio %d exception_prio %d"
+@@ -853,7 +853,6 @@ static bool its_writel(GICv3ITSState *s, hwaddr offset,
+             s->ctlr |= R_GITS_CTLR_ENABLED_MASK;
+             extract_table_params(s);
+             extract_cmdq_params(s);
+-            s->creadr = 0;
+             process_cmdq(s);
+         } else {
+             s->ctlr &= ~R_GITS_CTLR_ENABLED_MASK;
 -- 
 2.25.1

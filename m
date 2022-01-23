@@ -1,375 +1,103 @@
-Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1732464qvl;
-        Sat, 22 Jan 2022 10:24:57 -0800 (PST)
-X-Received: by 2002:a1c:3b55:: with SMTP id i82mr5387904wma.22.1642875896940;
-        Sat, 22 Jan 2022 10:24:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642875896; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1454866lfk;
+        Sun, 23 Jan 2022 14:01:09 -0800 (PST)
+X-Received: by 2002:a1c:4d01:: with SMTP id o1mr8998076wmh.170.1642975269500;
+        Sun, 23 Jan 2022 14:01:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642975269; cv=none;
         d=google.com; s=arc-20160816;
-        b=MP8bksFFwwv22QUtv9sR5QDWf2YkOmuWlD6pQ2gFto+n5/3mUNQWp8UykVHR7HiU/u
-         hFMacaY7r8fuKwFwbTUVVXP5L9c0rQRe2pAdyrE9ZvNw6Vq1BynRMxtI86qz/a4akc8b
-         JhgcRtjvnPuvUTrs+gfmhqQevTUpsN0KZ4a7E2Tv57K0l5IJmlvFntI8QlI3WR1fBu8C
-         TWVw9g7sSizFMULr9fJQok8Qtd73X4jRf11o01AjRgbC9oAjOWBtuIATviRK/Hv4Rdlw
-         OxBobR2ovet2pEc2gP4CbounY/uDEHuFmDCfH4BEUpMecZppHTbN5V4pXRu6Z1TadzPy
-         A1hw==
+        b=k9E+WMBNF3xcAoil47IUa/aTY356uEh6911SmbDeY7L7UrdCCIB2RkZuhksu1+gabr
+         7y7Nr2euMiBQPi88ixB8c51/eCUOho8yzesKe1MzSQY+9VN105cqlMKRfBFuZwqvZyhR
+         NVAk7733mykgLiqtIzFniisBax3g04eRDPHOBkAbKS8RKTsLQntdmEqlMlUUQL6xifrP
+         LTZhl0DWTahBygTu87IwMVZBhdid8s2yLPIhgfvf+XWroEuS7E8Yq0CvdSUA8gOJw/Hc
+         Fpsv5eOfDrGFaYK7fSSc9OhEYmVN95SqC+1Ib4FjD9lZR1ruRv2eEZm80dbHBgEtSl56
+         lHyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=QDK8B4Dq1xfGJouKuuAJ+UquJZW2SfG7Vdo6726q22Y=;
-        b=TROM/p2TGxDODWOX3MDEUlcLgmvZjsvMdR2HmDYm/xtFiuW0XGX1HIMmwe6cc2YiIb
-         clLvQTrKRO/309vRUNqwNaLv/QTWjyjxcv9ZWw3GLb5/vHebBwRY/WlCAJYp+FBO3FcC
-         jZvkmaWuietIHQ/fRdUEbadzGfBvTq86EZPuUbt8uCWOv+RKrwXjUIEdU0a3EfM66V2i
-         14nktQeNj7qfqLMbFzXVgRafH7oPxAOfa3DmNH0JcZu89DxlyIUHwHbRisshyX57xsPc
-         J9AaKxiHMEA66DZDwD7Cd5yB7S+lHDLKCnocJQVKgC76ilfocvSoYS9XohTFja2ATjo9
-         HScg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :sender:dkim-signature;
+        bh=pTGQX95Dv8AoDcbQQ93OOXTT6OP+9Q7MmFjvZWVUJdo=;
+        b=zqMWhVBD0wCoGxRfFFXZAp3xxKOceb0Kzp1D95R30l1G4GTTQ8bKKhCrO3j2iOQH2F
+         1UpgwIVbBjFZR/cyIpvcCeDpKhZhS7cPDKa7/+Yuhu6CMftxlJSWNn6R+9+fA8Py69yn
+         jTi7GJW4WrzFnxQ6PKHxxI2nMILo4NIga1W9C1xBspLvjs0sV8MItEjdPSwI45KpRMqO
+         a7Sz3/E3KhjOysMC6KUbpNjU6ei+CvNjfhdOnSJ6ci8/qxbYIwPRJnYT6QNaJkpyoCqu
+         oLS3Q1ItGupnz087LZ9lM3zD6P5Z8qdi9s6NtQM2+Q4mNvaUjdzlSGpNhwxkG0t68dfW
+         zBYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jtJwW4Di;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Yc9J0mWL;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q24sor5425581wrz.0.2022.01.22.10.24.56
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id o2sor2158304wmq.29.2022.01.23.14.01.09
         (Google Transport Security);
-        Sat, 22 Jan 2022 10:24:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sun, 23 Jan 2022 14:01:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jtJwW4Di;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Yc9J0mWL;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=QDK8B4Dq1xfGJouKuuAJ+UquJZW2SfG7Vdo6726q22Y=;
-        b=jtJwW4DiJE2oUAWC5iw8MRolHXjzeAoMC8KVoCQqwu28Jofe5lhffnZW621jyN0oD+
-         cuErblqUseOE/tm9Gaq0NXcETK6Uql60EPyVX78ECd2rh5llIesBwCsLD/HEawx+Z8RN
-         o8GevB9R6C3XiOCPzvAvZWHhDmwigveUcEB2miLPKYZGRnffZijfIadMnWTGJDZXiWO0
-         aj0QZmeeEiFf6NWjsiMbPgHkZdy7X5KZLD2DqUvrRjx/fs4ROXwUjda1HJrBY1gKDlk/
-         Y3ttK425qdOS6kBk6zqoB1fVLEJk8iyg+TE3gS9OTJCkwbYWAZmGhfgA7WpunbSAi77L
-         pXIQ==
+        d=gmail.com; s=20210112;
+        h=sender:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=pTGQX95Dv8AoDcbQQ93OOXTT6OP+9Q7MmFjvZWVUJdo=;
+        b=Yc9J0mWLtCvbP+9M2wsFmRmECI9gQ0hs3e1GGW4+XcSdh+A4Cs6pFuNYrW8USRfRFl
+         5J/y2Vz6vO9cEAeyd2s4eyrMk+2h6ourhDHrn/wzcqoiSDPUq1ts9RJZV9Z3l0AMrl6R
+         fXl0YUxTyDytOoAmKeb6mJw4JuMrvKlkTfoWjzrC/jr9pRxI0mQVUTK0jEeF1B4yoLHp
+         DdaXBCrpnjzJ7vH89/5h2/Ogx7WdNltu4peuKk3ji6tyYt3dWQ76Lv8WBDOevX+5SY0j
+         ulPgJGcXAOB+ny+7Z3GuZbEFTwE9m7yGSaQ4WRn6yjPZiFOs88uhv9axYM4HbGpVcQN7
+         3B8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=QDK8B4Dq1xfGJouKuuAJ+UquJZW2SfG7Vdo6726q22Y=;
-        b=nZZgIaXkzjjL45rVdoVU6ppv26xl5a7WUd8xywiVfyIbyznqvF/++PDPgyrFFFyq7B
-         j/R/St1KG27uXSKesHe9Ecot/qBwIpdq35SnhWYb2APjgzqGcFS7C2QoFM6ynjzVVEbS
-         Z5cJoabNOi0iUJ4LI0H5kDpoIppOH72PvbhqBowltU4ULeeINYWxWqiFGEQlXydHRiF0
-         jS/kJoA2nnqWKN3im6qf8e6jeU+2ynaWRXwF0ZErNtazvOl7LJVRka9SOJy+rnpaMXaQ
-         eayR0cGcikksQTyYH1plzlI2m6OndUjJeEqK1ltRxQL6B7awMhGH5Y9spCjA0K59slsC
-         P8OA==
-X-Gm-Message-State: AOAM532Og+1N2Hl+abemeBnyxPeHPmx+A/ify3fJ8YCKhqGelRyfRUdj
-	wZdwh0c0mBFMregr2Ln6fz6xu6Ni
-X-Google-Smtp-Source: ABdhPJwBsjdLoruHPanF92R/anMzaG/7vZEKqx08cnBUf5LZVm5YU0/q9N302+XnP7Q1tZg/+whXZw==
-X-Received: by 2002:a5d:59ad:: with SMTP id p13mr8556415wrr.16.1642875896636;
-        Sat, 22 Jan 2022 10:24:56 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id 21sm8870774wmk.45.2022.01.22.10.24.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 22 Jan 2022 10:24:56 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Shashi Mallela <shashi.mallela@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 14/14] hw/intc/arm_gicv3_its: Implement MOVI
-Date: Sat, 22 Jan 2022 18:24:44 +0000
-Message-Id: <20220122182444.724087-15-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220122182444.724087-1-peter.maydell@linaro.org>
-References: <20220122182444.724087-1-peter.maydell@linaro.org>
+        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+         :subject:content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=pTGQX95Dv8AoDcbQQ93OOXTT6OP+9Q7MmFjvZWVUJdo=;
+        b=wACnjOPd9R2xRI39SsAy+qKWCxamc/dXRkchKVIv1mR2QEIW2Rgmbv28Em34nH5Pu8
+         MF9xavguHr+BqtMlALloC8jqS/2EEngMG7gxWkeF7H0kWerYruPZrB+1KNUjT69o2vt6
+         rbXpf7StnASLGVoZNsXEwlQhLhV9dRaO6Ua4/8bSSlZSzhOUpodQWUWBAsCQiY36b6cr
+         Y4+xFDtbCj/NF4OuZ5LA2k8kmICmGmkCA70U028NKKGcaqQZ+aZ836RtI2eBcUCQQYxT
+         Ow8eEJOeY/FkDk1P+LqEl5KQLlHd58iUZ40u5u259blZn2MW3kQDtkso7QyCIGWm9Vio
+         j4Hg==
+X-Gm-Message-State: AOAM532OMXHIdi9TPTAotEiZfsauoOXjwSJc7WHj47x8MA55NBZ7ZFvK
+	zIoUfm8VarK6WOYNvc7L/Z+qhjLWfbU=
+X-Google-Smtp-Source: ABdhPJyL0qBRGYWkJi490QxLQFi1wDHy3EjHaSFNylC5L5IWIiJ8ez0s4kTo9vrRBg5lfNMYvUloyg==
+X-Received: by 2002:a1c:38c1:: with SMTP id f184mr8976682wma.153.1642975269078;
+        Sun, 23 Jan 2022 14:01:09 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net. [83.50.83.154])
+        by smtp.gmail.com with ESMTPSA id t14sm2236211wmq.21.2022.01.23.14.01.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 23 Jan 2022 14:01:08 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Message-ID: <701dc0cc-e633-e4ab-fcf0-e074c1a41423@amsat.org>
+Date: Sun, 23 Jan 2022 23:01:07 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.0
+Subject: Re: [PATCH 02/14] hw/intc/arm_gicv3_its: Add tracepoints
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Shashi Mallela <shashi.mallela@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20220122182444.724087-1-peter.maydell@linaro.org>
+ <20220122182444.724087-3-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220122182444.724087-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: DAziUYEJ+Nyd
+X-TUID: hxJVKdaAD1ku
 
-Implement the ITS MOVI command. This command specifies a (physical) LPI
-by DeviceID and EventID and provides a new ICID for it. The ITS must
-find the interrupt translation table entry for the LPI, which will
-tell it the old ICID. It then moves the pending state of the LPI from
-the old redistributor to the new one and updates the ICID field in
-the translation table entry.
+On 22/1/22 19:24, Peter Maydell wrote:
+> The ITS currently has no tracepoints; add a minimal set
+> that allows basic monitoring of guest register accesses and
+> reading of commands from the command queue.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/intc/arm_gicv3_its.c | 11 +++++++++++
+>   hw/intc/trace-events    |  8 ++++++++
+>   2 files changed, 19 insertions(+)
 
-This is another GICv3 ITS command that we forgot to implement.  Linux
-does use this one, but only if the guest powers off one of its CPUs.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-All the "validate guest command argument, log and return if bad"
-logic feels very clunky here...
----
- hw/intc/gicv3_internal.h   |  16 ++++
- hw/intc/arm_gicv3_its.c    | 146 +++++++++++++++++++++++++++++++++++++
- hw/intc/arm_gicv3_redist.c |  53 ++++++++++++++
- 3 files changed, 215 insertions(+)
-
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index da45975d92b..b1af26df9f4 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -315,6 +315,7 @@ FIELD(GITS_TYPER, CIL, 36, 1)
- #define CMD_MASK                  0xff
- 
- /* ITS Commands */
-+#define GITS_CMD_MOVI             0x01
- #define GITS_CMD_INT              0x03
- #define GITS_CMD_CLEAR            0x04
- #define GITS_CMD_SYNC             0x05
-@@ -360,6 +361,11 @@ FIELD(MAPC, RDBASE, 16, 32)
- FIELD(MOVALL_2, RDBASE1, 16, 36)
- FIELD(MOVALL_3, RDBASE2, 16, 36)
- 
-+/* MOVI command fields */
-+FIELD(MOVI_0, DEVICEID, 32, 32)
-+FIELD(MOVI_1, EVENTID, 0, 32)
-+FIELD(MOVI_2, ICID, 0, 16)
-+
- /*
-  * 12 bytes Interrupt translation Table Entry size
-  * as per Table 5.3 in GICv3 spec
-@@ -502,6 +508,16 @@ void gicv3_redist_update_lpi(GICv3CPUState *cs);
-  * an incoming migration has loaded new state.
-  */
- void gicv3_redist_update_lpi_only(GICv3CPUState *cs);
-+/**
-+ * gicv3_redist_mov_lpi:
-+ * @src: source redistributor
-+ * @dest: destination redistributor
-+ * @irq: LPI to update
-+ *
-+ * Move the pending state of the specified LPI from @src to @dest,
-+ * as required by the ITS MOVI command.
-+ */
-+void gicv3_redist_mov_lpi(GICv3CPUState *src, GICv3CPUState *dest, int irq);
- /**
-  * gicv3_redist_movall_lpis:
-  * @src: source redistributor
-diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index ebc0403b3c7..51d9be4ae6f 100644
---- a/hw/intc/arm_gicv3_its.c
-+++ b/hw/intc/arm_gicv3_its.c
-@@ -634,6 +634,149 @@ static ItsCmdResult process_movall(GICv3ITSState *s, uint64_t value,
-     return CMD_CONTINUE;
- }
- 
-+static ItsCmdResult process_movi(GICv3ITSState *s, uint64_t value,
-+                                 uint32_t offset)
-+{
-+    AddressSpace *as = &s->gicv3->dma_as;
-+    MemTxResult res = MEMTX_OK;
-+    uint32_t devid, eventid, intid;
-+    uint16_t old_icid, new_icid;
-+    uint64_t old_cte, new_cte;
-+    uint64_t old_rdbase, new_rdbase;
-+    uint64_t dte;
-+    bool dte_valid, ite_valid, cte_valid;
-+    uint64_t num_eventids;
-+    IteEntry ite = {};
-+
-+    devid = FIELD_EX64(value, MOVI_0, DEVICEID);
-+
-+    offset += NUM_BYTES_IN_DW;
-+    value = address_space_ldq_le(as, s->cq.base_addr + offset,
-+                                 MEMTXATTRS_UNSPECIFIED, &res);
-+    if (res != MEMTX_OK) {
-+        return CMD_STALL;
-+    }
-+    eventid = FIELD_EX64(value, MOVI_1, EVENTID);
-+
-+    offset += NUM_BYTES_IN_DW;
-+    value = address_space_ldq_le(as, s->cq.base_addr + offset,
-+                                 MEMTXATTRS_UNSPECIFIED, &res);
-+    if (res != MEMTX_OK) {
-+        return CMD_STALL;
-+    }
-+    new_icid = FIELD_EX64(value, MOVI_2, ICID);
-+
-+    if (devid >= s->dt.num_entries) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid command attributes: devid %d>=%d",
-+                      __func__, devid, s->dt.num_entries);
-+        return CMD_CONTINUE;
-+    }
-+    dte = get_dte(s, devid, &res);
-+    if (res != MEMTX_OK) {
-+        return CMD_STALL;
-+    }
-+
-+    dte_valid = FIELD_EX64(dte, DTE, VALID);
-+    if (!dte_valid) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid command attributes: "
-+                      "invalid dte: %"PRIx64" for %d\n",
-+                      __func__, dte, devid);
-+        return CMD_CONTINUE;
-+    }
-+
-+    num_eventids = 1ULL << (FIELD_EX64(dte, DTE, SIZE) + 1);
-+    if (eventid >= num_eventids) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid command attributes: eventid %d >= %"
-+                      PRId64 "\n",
-+                      __func__, eventid, num_eventids);
-+        return CMD_CONTINUE;
-+    }
-+
-+    ite_valid = get_ite(s, eventid, dte, &old_icid, &intid, &res);
-+    if (res != MEMTX_OK) {
-+        return CMD_STALL;
-+    }
-+
-+    if (!ite_valid) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid command attributes: invalid ITE\n",
-+                      __func__);
-+        return CMD_CONTINUE;
-+    }
-+
-+    if (old_icid >= s->ct.num_entries) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid ICID 0x%x in ITE (table corrupted?)\n",
-+                      __func__, old_icid);
-+        return CMD_CONTINUE;
-+    }
-+
-+    if (new_icid >= s->ct.num_entries) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid command attributes: ICID 0x%x\n",
-+                      __func__, new_icid);
-+        return CMD_CONTINUE;
-+    }
-+
-+    cte_valid = get_cte(s, old_icid, &old_cte, &res);
-+    if (res != MEMTX_OK) {
-+        return CMD_STALL;
-+    }
-+    if (!cte_valid) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid command attributes: "
-+                      "invalid cte: %"PRIx64"\n",
-+                      __func__, old_cte);
-+        return CMD_CONTINUE;
-+    }
-+
-+    cte_valid = get_cte(s, new_icid, &new_cte, &res);
-+    if (res != MEMTX_OK) {
-+        return CMD_STALL;
-+    }
-+    if (!cte_valid) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid command attributes: "
-+                      "invalid cte: %"PRIx64"\n",
-+                      __func__, new_cte);
-+        return CMD_CONTINUE;
-+    }
-+
-+    old_rdbase = FIELD_EX64(old_cte, CTE, RDBASE);
-+    if (old_rdbase >= s->gicv3->num_cpu) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: CTE has invalid rdbase 0x%"PRIx64"\n",
-+                      __func__, old_rdbase);
-+        return CMD_CONTINUE;
-+    }
-+
-+    new_rdbase = FIELD_EX64(new_cte, CTE, RDBASE);
-+    if (new_rdbase >= s->gicv3->num_cpu) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: CTE has invalid rdbase 0x%"PRIx64"\n",
-+                      __func__, new_rdbase);
-+        return CMD_CONTINUE;
-+    }
-+
-+    if (old_rdbase != new_rdbase) {
-+        /* Move the LPI from the old redistributor to the new one */
-+        gicv3_redist_mov_lpi(&s->gicv3->cpu[old_rdbase],
-+                             &s->gicv3->cpu[new_rdbase],
-+                             intid);
-+    }
-+
-+    /* Update the ICID field in the interrupt translation table entry */
-+    ite.itel = FIELD_DP64(ite.itel, ITE_L, VALID, 1);
-+    ite.itel = FIELD_DP64(ite.itel, ITE_L, INTTYPE, ITE_INTTYPE_PHYSICAL);
-+    ite.itel = FIELD_DP64(ite.itel, ITE_L, INTID, intid);
-+    ite.itel = FIELD_DP64(ite.itel, ITE_L, DOORBELL, INTID_SPURIOUS);
-+    ite.iteh = FIELD_DP32(ite.iteh, ITE_H, ICID, new_icid);
-+    return update_ite(s, eventid, dte, ite) ? CMD_CONTINUE : CMD_STALL;
-+}
-+
- /*
-  * Current implementation blocks until all
-  * commands are processed
-@@ -731,6 +874,9 @@ static void process_cmdq(GICv3ITSState *s)
-                 gicv3_redist_update_lpi(&s->gicv3->cpu[i]);
-             }
-             break;
-+        case GITS_CMD_MOVI:
-+            result = process_movi(s, data, cq_offset);
-+            break;
-         case GITS_CMD_MOVALL:
-             result = process_movall(s, data, cq_offset);
-             break;
-diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-index d1645ba22c6..412a04f59cf 100644
---- a/hw/intc/arm_gicv3_redist.c
-+++ b/hw/intc/arm_gicv3_redist.c
-@@ -681,6 +681,59 @@ void gicv3_redist_process_lpi(GICv3CPUState *cs, int irq, int level)
-     gicv3_redist_lpi_pending(cs, irq, level);
- }
- 
-+void gicv3_redist_mov_lpi(GICv3CPUState *src, GICv3CPUState *dest, int irq)
-+{
-+    /*
-+     * Move the specified LPI's pending state from the source redistributor
-+     * to the destination.
-+     *
-+     * If LPIs are disabled on dest this is CONSTRAINED UNPREDICTABLE:
-+     * we choose to NOP. If LPIs are disabled on source there's nothing
-+     * to be transferred anyway.
-+     */
-+    AddressSpace *as = &src->gic->dma_as;
-+    uint64_t idbits;
-+    uint32_t pendt_size;
-+    uint64_t src_baddr;
-+    uint8_t src_pend;
-+
-+    if (!(src->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) ||
-+        !(dest->gicr_ctlr & GICR_CTLR_ENABLE_LPIS)) {
-+        return;
-+    }
-+
-+    idbits = MIN(FIELD_EX64(src->gicr_propbaser, GICR_PROPBASER, IDBITS),
-+                 GICD_TYPER_IDBITS);
-+    idbits = MIN(FIELD_EX64(dest->gicr_propbaser, GICR_PROPBASER, IDBITS),
-+                 idbits);
-+
-+    pendt_size = 1ULL << (idbits + 1);
-+    if ((irq / 8) >= pendt_size) {
-+        return;
-+    }
-+
-+    src_baddr = src->gicr_pendbaser & R_GICR_PENDBASER_PHYADDR_MASK;
-+
-+    address_space_read(as, src_baddr + (irq / 8),
-+                       MEMTXATTRS_UNSPECIFIED, &src_pend, sizeof(src_pend));
-+    if (!extract32(src_pend, irq % 8, 1)) {
-+        /* Not pending on source, nothing to do */
-+        return;
-+    }
-+    src_pend &= ~(1 << (irq % 8));
-+    address_space_write(as, src_baddr + (irq / 8),
-+                        MEMTXATTRS_UNSPECIFIED, &src_pend, sizeof(src_pend));
-+    if (irq == src->hpplpi.irq) {
-+        /*
-+         * We just made this LPI not-pending so only need to update
-+         * if it was previously the highest priority pending LPI
-+         */
-+        gicv3_redist_update_lpi(src);
-+    }
-+    /* Mark it pending on the destination */
-+    gicv3_redist_lpi_pending(dest, irq, 1);
-+}
-+
- void gicv3_redist_movall_lpis(GICv3CPUState *src, GICv3CPUState *dest)
- {
-     /*
--- 
-2.25.1
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

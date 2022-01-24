@@ -1,126 +1,168 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1457010lfk;
-        Sun, 23 Jan 2022 14:04:59 -0800 (PST)
-X-Received: by 2002:a05:6000:1861:: with SMTP id d1mr10674602wri.497.1642975499324;
-        Sun, 23 Jan 2022 14:04:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642975499; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1960972lfk;
+        Mon, 24 Jan 2022 08:19:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzEw9q2sPbD08NEgRnpZMX2PkOyEDY2lyRsp0PzD9ATzajXQ1gm+V1kAUISC8Mw/9uGnv+T
+X-Received: by 2002:a05:620a:4304:: with SMTP id u4mr11677372qko.43.1643041145410;
+        Mon, 24 Jan 2022 08:19:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643041145; cv=none;
         d=google.com; s=arc-20160816;
-        b=KrCdyWQNSlWNQrhD+flORG9va5S78QCH4cv3jYtFuJLlRLr7NozlkQdlP5vdOUTdNb
-         rYNST5yVWnZ9Ko9WQiEE0pCkhYoQOxtkY2XSjCT3inkdIiR4P30anNE+ABsk71kWQ2Me
-         Z5IlTcHRYIEBfHbWpbk+HI+RTYQhcUt+q6RwJrnClfGYQMKJvLMBMpA7Q/nB0WfsuFK4
-         o9MIn6RRuC9VEp92+Wn4EfAWw8aRam+gFePMe1Ck4+U5aFqg1xm9ogQj45IFSIMZPElE
-         HxOoVuOn4luDYql+Pc1hwsVPxzRJXPRHnGDuY/6q8sY6RNQhkt2KWpJFehhpDVMNEgVA
-         Bwlg==
+        b=Q+1qskruwMkSd4TLgIa19R4O3e8WAgQ9h37Phwhd+MC2vPymjDiCmkXPt/maqXgnoG
+         N8ZxLrhP2F0ZH7+GK0R/NLtWDXW9d/yEhBnrrsAhAnIb1IAI+RlWb2pKcNacS0u6t+w7
+         KdyY8yeSID8VHorTJrAA4u3TS+x9QwTd2qunadHDpmJ2aeH7MrdQwWSLj6Gle//ZnZaN
+         wodOjJD5AjAOitbj/oaWP/9zmVSgcsB1HIIzMEO9SUfxCcISh1WbJVz5PjTQbuZ3Sefj
+         OmXW1HFEsCMK0MT4YHBO+797VqTPZsEdjS0kTjbaoddhjn3GP3LqplyImq+mOLjjgA+D
+         mGIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:dkim-signature;
-        bh=u+9a+qoPgaFH43blLPcea8uonm+E2/Hllm8gAUyGlT8=;
-        b=X0iZwnPhmsWVDaFtuS1BGeZSaEh7G+fKS86osPDOOsghGdJ/2uNZw1lsWdSufnwG3w
-         AkbUsLwMmZ304qaV9k+WrGyUGmAAH3oDhy2jKpIzlFH1t9UnYP63VxmrLuxhJs4/pCtE
-         gEC8gg3T7sMAfkH95JUFqItB7jk5MwHO+zoJ2YtV7Hwzz8oG/N+d01Ft83sC5tkgvKhS
-         2pbzmoeMZlbw+ggaOp662AHyzXV3rvUq9P+g9v1ksbpiYjY/cskmlV4Qih0FpGKcA2iH
-         bAzLy6b6t+LcCrqxMX3YEsrRlLqO2Cu5KS7XJ67MekvWOtXm77lVy8Iqj4DHXv3bmTVI
-         ZZkw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=tpUjLr5VT4kyG1FqogE5n95Sbb9JDhX0Wa5cGAbDuWw=;
+        b=mhuGspXYmNz9BR1JdZGLxLzqtKOPbdzbqbK29BK3kla3bBwvwmU23jbgau96XHREEE
+         lY/BV1z6O58Lq/jSRE1sRAgg9zcqPWWCiKG3xZYjtp12JUyV1Gy5qCd4BEjXChIzJqVe
+         aGahv+AvKsMsxgwJwuwz/j9Ow3nTejAEeiVxeT8PHS8WWX+Jfzz349tGXQH2PVDrYZgU
+         8UBru4GhYCMrMW/ujYKRJc2u3YyQC6btAeD0JIga8JOPDMj6YacRob8Z9bSkn9KLXQ3q
+         WE8NadyUhlaU0t9Ufm5j1twL5Q9jOZqCobJdw+/+etDozLigix/tm96Gc5z8bOGOr7TW
+         2CEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=S+Qo1nGP;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u17sor699449wmq.8.2022.01.23.14.04.59
-        (Google Transport Security);
-        Sun, 23 Jan 2022 14:04:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Xzn9lN2n;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x7si6393552qtw.249.2022.01.24.08.19.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 24 Jan 2022 08:19:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=S+Qo1nGP;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=sender:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=u+9a+qoPgaFH43blLPcea8uonm+E2/Hllm8gAUyGlT8=;
-        b=S+Qo1nGPRVX3YPETVdVK43kLTbiZ01okuwRPDQRmRf3qA1MEm0lGcu9u1hvhMPDTm7
-         YJzIhujigsvQpZ4c5RHg+eQJXNPtPYDErg/voMmSpdEYQ4xz8xncoVsVgseboeubG2lx
-         Ee9rzynEprBx1cJHHNP9iP3vgh7OxNK0bloYhUgsFyOpzINqkuv6hYkZnLkWHhlJaZ/U
-         +koTnbyl6zTt5P4iBe+iYXFp2csBlY8I7ExnjTgLIMoRnGEfKAsG5rD+ofdMH9E9/Laj
-         8ncBUx568/m2Mfmnlg1YJ2GaIBi5EQw/2WCSa5uPYK5gb9jwocrti/dcBEqVSt5oo4Eh
-         1xXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
-         :subject:content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=u+9a+qoPgaFH43blLPcea8uonm+E2/Hllm8gAUyGlT8=;
-        b=WfW1Ic0VCFJ2EHqksApADZoHg6PSv036MUA4y4LSWgVbFNnw00XJiVEw+kGBW/fZYh
-         z6BJ4w3mr7Iw9zd0XL3g9zR6iQxIvJiBmLPyUUwbTZbejXsUUi0Ub20pQXAnSdDobeYJ
-         GsVZW6pGaCKDa/BxB7GnN+T1a0LIr8LXsoSJGhnALqCIGRVfHIFfub0CxxUD8qq0vvuV
-         CDjBIG4Jse/KN8+/s8kqLs3AW12B9oCSK0rsptNDzq5e/ecqE7hhABHcAKnHjgCdqYNq
-         dKz4lrGimPpMacdLwVpj1pYTbB4XHJpfS3uTanzgRhp5sKgVFuCYRkJ05KK0doqB8Gn6
-         jVUA==
-X-Gm-Message-State: AOAM532wjn/ZC4fsg8dsUFTB+nsAAuQSHYlpRKABIwWxW2JpQoid/9r5
-	oXbPDMygZSiMF80FGrXy7fsMXwXSD6Q=
-X-Google-Smtp-Source: ABdhPJwdbRMVg1VllnbD3Z+oT6UdTEeEjgBzwpGi/5F0m+0c66mlmgTbBHzH4SBO03gUtvjq382CPQ==
-X-Received: by 2002:a05:600c:3485:: with SMTP id a5mr9459393wmq.13.1642975498718;
-        Sun, 23 Jan 2022 14:04:58 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net. [83.50.83.154])
-        by smtp.gmail.com with ESMTPSA id j4sm14122658wrq.81.2022.01.23.14.04.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 23 Jan 2022 14:04:58 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Message-ID: <c8c805cb-2f5c-c5d3-ebeb-5debdbf97c3c@amsat.org>
-Date: Sun, 23 Jan 2022 23:04:57 +0100
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Xzn9lN2n;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35820 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nC23a-00030X-6D
+	for alex.bennee@linaro.org; Mon, 24 Jan 2022 11:19:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41186)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1nC220-0002DG-Qp
+ for qemu-devel@nongnu.org; Mon, 24 Jan 2022 11:17:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51979)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1nC21x-0006tI-Mi
+ for qemu-devel@nongnu.org; Mon, 24 Jan 2022 11:17:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1643041040;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=tpUjLr5VT4kyG1FqogE5n95Sbb9JDhX0Wa5cGAbDuWw=;
+ b=Xzn9lN2n1qyC3vr1k1ltg0Su999Lc9XQpwObt15Ca5v0x1moOzLCL4IPgdPbex122JLz3R
+ uYjVynOGD/YyAMoEzT6wwZ1gen+wGHSbiml4nErpJ4HiJIG8AbRVd6x9xZqU8fHlegyLrF
+ 67oq0TuVI0ySC0tlm5rNqEYuz6PhQE0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-20--oIaEEh7OU23DiQysMi8Vw-1; Mon, 24 Jan 2022 11:17:16 -0500
+X-MC-Unique: -oIaEEh7OU23DiQysMi8Vw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AECFB1083F66;
+ Mon, 24 Jan 2022 16:17:14 +0000 (UTC)
+Received: from localhost (unknown [10.39.195.53])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 62C6274EAE;
+ Mon, 24 Jan 2022 16:16:28 +0000 (UTC)
+Date: Mon, 24 Jan 2022 16:16:27 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [RFC PATCH v3 3/3] softmmu/physmem: Introduce MemTxAttrs::memory
+ field and MEMTX_BUS_ERROR
+Message-ID: <Ye7Q24HKWs7B5ode@stefanha-x1.localdomain>
+References: <20211215182421.418374-1-philmd@redhat.com>
+ <20211215182421.418374-4-philmd@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.0
-Subject: Re: [PATCH 10/14] hw/intc/arm_gicv3_its: Provide read accessor for
- translation_ops
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Shashi Mallela <shashi.mallela@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20220122182444.724087-1-peter.maydell@linaro.org>
- <20220122182444.724087-11-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220122182444.724087-11-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: vKmpp1BaPRPD
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="Ji34wkwpYJK1vjdQ"
+Content-Disposition: inline
+In-Reply-To: <20211215182421.418374-4-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.158,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Li Qiang <liq3ea@gmail.com>, qemu-devel@nongnu.org,
+ Peter Xu <peterx@redhat.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
+ Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8H5nWgSIZMko
 
-On 22/1/22 19:24, Peter Maydell wrote:
-> The MemoryRegionOps gicv3_its_translation_ops currently provides only
-> a .write_with_attrs function, because the only register in this
-> region is the write-only GITS_TRANSLATER.  However, if you don't
-> provide a read function and the guest tries reading from this memory
-> region, QEMU will crash because
-> memory_region_read_with_attrs_accessor() calls a NULL pointer.
-> 
-> Add a read function which always returns 0, to cover both bogus
-> attempts to read GITS_TRANSLATER and also reads from the rest of the
-> region, which is documented to be reserved, RES0.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+--Ji34wkwpYJK1vjdQ
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Dec 15, 2021 at 07:24:21PM +0100, Philippe Mathieu-Daud=E9 wrote:
+> Add the 'memory' bit to the memory attributes to restrict bus
+> controller accesses to memories.
+>=20
+> Introduce flatview_access_allowed() to check bus permission
+> before running any bus transaction.
+>=20
+> Have read/write accessors return MEMTX_BUS_ERROR if an access is
+> restricted.
+>=20
+> There is no change for the default case where 'memory' is not set.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 > ---
->   hw/intc/arm_gicv3_its.c | 13 +++++++++++++
->   1 file changed, 13 insertions(+)
+>  include/exec/memattrs.h |  9 +++++++++
+>  softmmu/physmem.c       | 43 +++++++++++++++++++++++++++++++++++++++--
+>  2 files changed, 50 insertions(+), 2 deletions(-)
 
-> +static MemTxResult gicv3_its_translation_read(void *opaque, hwaddr offset,
-> +                                              uint64_t *data, unsigned size,
-> +                                              MemTxAttrs attrs)
-> +{
-> +    /*
-> +     * GITS_TRANSLATER is write-only, and all other addresses
-> +     * in the interrupt translation space frame are RES0.
-> +     */
-> +    *data = 0;
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Maybe log GUEST_ERROR?
+--Ji34wkwpYJK1vjdQ
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Otherwise,
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+-----BEGIN PGP SIGNATURE-----
 
-> +    return MEMTX_OK;
-> +}
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmHu0NsACgkQnKSrs4Gr
+c8gfvwgAmgAM2qyQhFncOB6OhEqtjkXn9HAN3sVNR+82ApnRUbvLXa+3mZhwKuyZ
+WImb157OnljaDPgoRBhk+w41VH6CJL3stIxFcZhtIcaImAsLGSvqCuMC+Bp0v0/g
+Ru4RsJ0HzFpcUshgzop0d3mLMhXODbPVDUdfSc72C3r79vMV/80kC8t24qWDL7Q5
+g89Wt/eLUgx8o0PEjolk1mRn5gmdfeoYl1pmQaV6EEfRDdcALCeMaz5M3ZY9o/v4
+UKYcCI91hWD8R13thdrxvx55f7wuD78hooEAwieomzju7BaZLr6jIIvunwk4WWLu
+9YQa8Z+wG8XZ+cens+AjvDD2k3Y9Og==
+=tfwu
+-----END PGP SIGNATURE-----
+
+--Ji34wkwpYJK1vjdQ--
+

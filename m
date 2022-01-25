@@ -1,110 +1,111 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2916045lfk;
-        Tue, 25 Jan 2022 13:56:13 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz1Q/ZTK3FjbvvT2/zqfQHN7K3pT6mjip08+g+JGlT8Iwl8IgGNUyiq5FhD+RxRkyS6X5sr
-X-Received: by 2002:a25:9b45:: with SMTP id u5mr17092722ybo.114.1643147773717;
-        Tue, 25 Jan 2022 13:56:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643147773; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2921789lfk;
+        Tue, 25 Jan 2022 14:05:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxqE/y9SD/je1x/tOPMbE0Yh8RjAkOyXiXFB+rGfk4+ApSgLbKBBoMjkzHSlhrXx1hIzX/0
+X-Received: by 2002:a25:d107:: with SMTP id i7mr31299574ybg.495.1643148357962;
+        Tue, 25 Jan 2022 14:05:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643148357; cv=none;
         d=google.com; s=arc-20160816;
-        b=kxJbUBjG73mh6sO/FF2bBNLEwZZzGP/7kaRW3T5NrOlSS1MY8td1oFxF5NGpKID/33
-         Y8a6cT39bxs3+GxpwvjrCT09Gtw92kWqFGUAsQrkbojz868d198RLcCs7IOHM2GUFu+f
-         oAlEzo5Ru5yvZmRoraQiAe5JbM6ZXt2dgWFa8XV0kLhHWLnA1pCsgvcCOZNXFjgx2Zxm
-         mE39fLz2Qtg3PuHq/n1tVJ1LDZCukaYYXgAzw3YtFjWQ8CozAVPmnQ5y+5mcKEi+wKdK
-         SLVsQch85DRgxvADx/cQ3QT99Dg4P7zt2MEIUA9vdaUWST3QJIZuMCrf1j1BpXv6KyFb
-         qG/g==
+        b=sOpp/1+bYWliqUoxNODkGRKUplcByI81ByKN94cBEVWU/x92KWGrnL8jxzrY+g+1W2
+         8xKkz4gQ/jw1GX832QoTICEX2Ku6UekzFxZTbME7XCfbhbg7PsKFuYaaJ+Yp5X92hWh7
+         /EZDCu2PvIuKahfoCWsPf9s1J9FvHKN//DaH8vo7Q9MW0Qb/RwffPTa9Nj+XIFTruFD0
+         hbVplAUIidZGai8OYj8g8xAECltk50J+rPzARnWyhss2mY6ikScSHgd7ZBCGSsXUNbV4
+         vIEb+qcolGbuHnLuYkO0pvUlBja9udtCyi/eAAcetjWrTIBn5uRwdRi5+FR9F2jN6hCA
+         R10Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=VIqU6uiOEXEPjU52Y7VBunIRJfFUvLIXvOVt0UC99oM=;
-        b=l1Egw1d/2qXu8Jp6RqlmfTQI440xrd2wRMW6XYhlLSBxjoxMZe7FmZu5S4U7YRJo4D
-         IlcPVShPSPtecC1IUwu/Psk6kS+45GgSc/O0IzNgBzstEtEjiyQR3yfzj+W6L7WPRNqB
-         G6+Kx4WBu/KzHO6bKz5ZAjFMD5PBRQ4EGzPpvdxFD6B4xvstYbf3TO456FTzx6e1Ug9e
-         hYCRzfaP/AYJrbcqysopGF+bAaCBM43vtV3WGcZdBB+OgHj/RRkWkteTSgtwEADKpRyn
-         u3Hg2MgI6utkP7OnHjVuQKMxAoFKb6mYB9xaemQ8f3+sbbw+e/TzY6NkVkTey4x5J/RU
-         OKgw==
+        bh=w8GUNRFxpYd/bcIzyufLqhzRsGPF8WCxeSif/KX8xcg=;
+        b=GohgSp1UQ8z4fCUbyeDW1DHyZ9XXMHwelU/t/w1E3lSbeMiccrnnrJWbCYjBUuhUg5
+         3n6mue10jWSoAwAiFh+natdCbYLaFkB0pTBFU/TAof6Fv9ZTutWO9J4uAiU+feCqgFMe
+         m/EAlppiA3u/h1zjeCZ20W6gnljUxXLIfZcxSL4j5EgRr1GSJx3pbgl2gFTedMG0wvID
+         JMPYzbkhEezu9y+rcoliRoq/OJh6rSzJaVlVAvbSwvvOJe1i9dGDmIPNwkvpC02jDBpr
+         lChTOTf1uGq8cBoOa/qSEd8eK2k3P+fQvNbbNeAs4bIoe3zbmVWEEWA7yZBhksyfe8rN
+         +jIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QW5wvvwL;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gvcmdkzp;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q8si18489850ybu.695.2022.01.25.13.56.13
+        by mx.google.com with ESMTPS id 130si16992823ybf.393.2022.01.25.14.05.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jan 2022 13:56:13 -0800 (PST)
+        Tue, 25 Jan 2022 14:05:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QW5wvvwL;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gvcmdkzp;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51838 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40068 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nCTnR-0007Xs-3K
-	for alex.bennee@linaro.org; Tue, 25 Jan 2022 16:56:13 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38598)
+	id 1nCTwr-000258-Cd
+	for alex.bennee@linaro.org; Tue, 25 Jan 2022 17:05:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42840)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nCTmi-0007Xb-0Y
- for qemu-devel@nongnu.org; Tue, 25 Jan 2022 16:55:28 -0500
-Received: from [2607:f8b0:4864:20::42d] (port=42711
- helo=mail-pf1-x42d.google.com)
+ id 1nCTwI-0001Jm-09
+ for qemu-devel@nongnu.org; Tue, 25 Jan 2022 17:05:23 -0500
+Received: from [2607:f8b0:4864:20::635] (port=33296
+ helo=mail-pl1-x635.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nCTmf-000228-UE
- for qemu-devel@nongnu.org; Tue, 25 Jan 2022 16:55:27 -0500
-Received: by mail-pf1-x42d.google.com with SMTP id i65so20980614pfc.9
- for <qemu-devel@nongnu.org>; Tue, 25 Jan 2022 13:55:25 -0800 (PST)
+ id 1nCTwF-0003WO-8s
+ for qemu-devel@nongnu.org; Tue, 25 Jan 2022 17:05:21 -0500
+Received: by mail-pl1-x635.google.com with SMTP id k17so3140241plk.0
+ for <qemu-devel@nongnu.org>; Tue, 25 Jan 2022 14:05:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=VIqU6uiOEXEPjU52Y7VBunIRJfFUvLIXvOVt0UC99oM=;
- b=QW5wvvwL4XOthkrdG/yQA7ljLSG7gxBPUrAv2mAyAkv+nVJmiRRIgt2kZsUSBwjcoj
- jOuw0uywNDncP+Us7qoX+LzDSVH9yeTIug2mmUMab5h6dZmWbnNYPyEG8uTNuBnqK1kf
- vCrGn4MhwdXoQwsc10IpZu3qLjSwHG85wJE+mgEfEbsEy1s4hZpmBKqeFmQXRJbNEyRg
- e/EzA9pAemycZAPmF/sUofW98QR6H/jt9NX8nP4EveFur8BHqXe3g3hv5zM1QJfUiDK5
- YQdAXRhzoY8iQe5nYqpBcbnW+yKsULN0hgz8Pr9qpSrL4kUPfB5VCxB4L+ksUlT/I2g+
- Ld6w==
+ bh=w8GUNRFxpYd/bcIzyufLqhzRsGPF8WCxeSif/KX8xcg=;
+ b=gvcmdkzp33piKiLwPy7gbcx9aDqMz0d7a6Tnwp6tAHkOELBAMmuVOHMQaewMsPTM93
+ Ou6oVmaHflJ89Pz4tv0+Z3ZOwviI544WJWrMfI9dsAgzVt1+HZZL771XT7ccgpBG05Hl
+ YlMbsXsOhEnnnY+ddYsUhcHImK47J3JxeEuBOuk9X4HwLV+sVmoVtwmHY3QmNd364cEx
+ 7UMEO6IKXl2xYvG0FGCCXH9aRTc0Wny4Oi994zrOaVpOx+GOxxG+MN1w/sM4p2al/RJ9
+ cZazWdSA40jm0x6WSSEpwM3WudE5ABUtiCjXoWpFhKGjHplCj5cKvYc/9qezS5WIdYv5
+ zlWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=VIqU6uiOEXEPjU52Y7VBunIRJfFUvLIXvOVt0UC99oM=;
- b=gOrvjGYtSRUi8oOc802PfHQxvmdQy7RI3Eh/tOqJoSGAcF/Odpkm6vs89Z4Q8wr4AO
- EwfOwYOJH76W90raTFneawwG/FMdWt+Nyb7wsr1NPLsivvA2ebI5NmirtI5DB5sp4jBn
- WLAZTN/XnwiJz4fTyH6SK9GvEtzy0MHHaAQ6A8A5THKAQFWbaxzTHXrb7zgQLmPjpTqY
- 2xxab9ugVxR3QBNwqySkytOPO1yB0leghxU0zuFTmw1ToMfmn3d68Y7NVdtnSlHH+p5x
- 1Wz9Gw0jmzfRpB9HJZ3BiCqOqp+uPFLvSjA+iNqiq2v+YxL33hmH7qaOkpa9Z5XeFcBf
- kZLA==
-X-Gm-Message-State: AOAM533z8LiK9aICnSeiR3ccKTEngD3y4uBqMPw34Z3pX/AS8um+On5F
- R/wo3JhamfJCCCda29nHHK6S1w==
-X-Received: by 2002:aa7:9f5c:0:b0:4c8:fc66:e4a1 with SMTP id
- h28-20020aa79f5c000000b004c8fc66e4a1mr11543109pfr.22.1643147724378; 
- Tue, 25 Jan 2022 13:55:24 -0800 (PST)
+ bh=w8GUNRFxpYd/bcIzyufLqhzRsGPF8WCxeSif/KX8xcg=;
+ b=VeGY9qChNqYDxw0nZ1+BaS18bo8TmjtHdcnTQistxDdiCUlV4CZXnoH5XzgopVWMaf
+ PZsbzKu/nIUeqMxq4V9bLX7osI2RWzbyZiFQCXGoTEJ+az5vGhFV8TlXeA3TNfmIp+yX
+ BGbIse2+L+SCr0qf1upBAwpI1zoAXA7sDvPd4OyQcQk156snvuWJx+/owRrmSnv2N7Oc
+ 3sCzFHjNo0g27zKRgq31ZdR4bMHuJdQzMgMcEq5HZtKmzSAVHTxxCOTXdDCgO2s0HUV5
+ C2lfkUaU3Iz6yc9SfTYuVvg01uyKWAeChPpdLqCQP2zOCMj6wHy1b/boZY8DEyuB+q5x
+ llFQ==
+X-Gm-Message-State: AOAM531JFM0euP2cymF2c3yCHtyeBeO7ntg85dm5pWs8FxGM9BrwM4bF
+ o8Yr+VQiIg7vqjMuj6ocdPyykQ==
+X-Received: by 2002:a17:90b:4f87:: with SMTP id
+ qe7mr5603469pjb.154.1643148316377; 
+ Tue, 25 Jan 2022 14:05:16 -0800 (PST)
 Received: from [192.168.15.44] (alanje.lnk.telstra.net. [120.151.179.201])
- by smtp.gmail.com with ESMTPSA id gb5sm1356711pjb.16.2022.01.25.13.55.21
+ by smtp.gmail.com with ESMTPSA id nk11sm1240093pjb.55.2022.01.25.14.05.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Jan 2022 13:55:23 -0800 (PST)
-Subject: Re: [PATCH 1/2] accel/tcg: Optimize jump cache flush during tlb range
- flush
+ Tue, 25 Jan 2022 14:05:16 -0800 (PST)
+Subject: Re: [PATCH 2/2] target/arm: Bail out early on 0-length tlb range
+ invalidate
 To: Idan Horowitz <idan.horowitz@gmail.com>, qemu-arm@nongnu.org
 References: <20220110164754.1066025-1-idan.horowitz@gmail.com>
+ <20220110164754.1066025-2-idan.horowitz@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <156b4c0b-a425-0121-cf91-4b118bd8dd3c@linaro.org>
-Date: Wed, 26 Jan 2022 08:55:18 +1100
+Message-ID: <0f211c09-4b4d-2c82-cff6-64711563c6d8@linaro.org>
+Date: Wed, 26 Jan 2022 09:05:11 +1100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.14.0
 MIME-Version: 1.0
-In-Reply-To: <20220110164754.1066025-1-idan.horowitz@gmail.com>
+In-Reply-To: <20220110164754.1066025-2-idan.horowitz@gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::42d
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::635
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -127,28 +128,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RUgzGA8KhR2O
+X-TUID: Kyw4IdG8fmAz
 
 On 1/11/22 3:47 AM, Idan Horowitz wrote:
-> +    /*
-> +     * If the length is larger than the jump cache size, then it will take
-> +     * longer to clear each entry individually than it will to clear it all.
-> +     */
-> +    if (d.len >= (TARGET_PAGE_SIZE * TB_JMP_CACHE_SIZE)) {
-> +        cpu_tb_jmp_cache_clear(cpu);
+> If the given range specifies no addresses to be flushed there's no reason
+> to schedule a function on all CPUs that does nothing.
+> 
+> Signed-off-by: Idan Horowitz <idan.horowitz@gmail.com>
+> ---
+>   target/arm/helper.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index cfca0f5ba6..1e819835c2 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -4564,6 +4564,10 @@ static void do_rvae_write(CPUARMState *env, uint64_t value,
+>       length = tlbi_aa64_range_get_length(env, value);
+>       bits = tlbbits_for_regime(env, one_idx, baseaddr);
+>   
+> +    if (length == 0) {
 > +        return;
 > +    }
 > +
->       for (target_ulong i = 0; i < d.len; i += TARGET_PAGE_SIZE) {
->           tb_flush_jmp_cache(cpu, d.addr + i);
->       }
+>       if (synced) {
+>           tlb_flush_range_by_mmuidx_all_cpus_synced(env_cpu(env),
+>                                                     baseaddr,
 > 
 
-Hmm.  Valid.  It looks like we could reasonably rewrite tb_flush_jmp_cache to be more 
-efficient, by passing down len.  But this is a decent intermediate step.
+Looks good.  I guess we could sort the extractions above so that we do
 
+     length = ...;
+     if (length == 0) {
+         return;
+     }
+
+     addr = ...
+     bits = ...
+
+Either way,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Queued to tcg-next.
 
 r~

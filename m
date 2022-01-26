@@ -1,105 +1,90 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4241114lfk;
-        Thu, 27 Jan 2022 09:13:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzUgxlXu6x90auHfIimc/XrnclfhZWcrLleGn7p92loms++VsjgRInzZqnz+lmrmYQJ4d78
-X-Received: by 2002:a05:6602:1541:: with SMTP id h1mr1300547iow.145.1643303613763;
-        Thu, 27 Jan 2022 09:13:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643303613; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp3136068lfk;
+        Tue, 25 Jan 2022 22:17:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxhCEjJvrfh667499rO+jqhu0adwajozuh3WgJSV3UNiRm1VIdb1sXiew7s3IMQGzmJituV
+X-Received: by 2002:a25:cb10:: with SMTP id b16mr32678192ybg.106.1643177859802;
+        Tue, 25 Jan 2022 22:17:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643177859; cv=none;
         d=google.com; s=arc-20160816;
-        b=KVoEN0RzDzwfDCGU+cI3whYk+++OESfhNlGXV6wImtDhxtHccgI7R6H3CrWXhVjH11
-         +XALN7Bh9lPNGQUpYiWPiDY8NfwGQK0Mhjclu99q+NpTSUsxxaRSNbnlN/DcLJ7s0SNP
-         qc1IJBIdrmAeKg9FqoEmoQfScn8+JTrWRBQZbMwIUKhwXHRgvBp1J0i6dp7ObD26pOYT
-         y8P12fw0y23tzQJT6ujHuza6LofHQLyysRxExdr/+OBpUUL0BNoE0ViKCJ/l8qDiTfiY
-         x1JzSa+2gv7SbE4F7Y3CgrObXhTvqs/DxvyCOAo5Q+Ov3tPvI9SsBXGmVOs2qYcUgShS
-         I+fw==
+        b=BWbfsWpZftdyGRn/siU0rxoXhbNAxmWNaqD+kaLEifjCY96J9CR3w7Gw/FxT5vWB4P
+         daF9Hf7Svve2771NJSiaNjkQFxyQWjivB4cofbstSGc/kghoWqsDxNvQE1e538HaPktK
+         hHfzi1wZeNVJNyLuJZuMRDY06/G2NoXQMQikJXcmutNL8cp/dXMsUIBQqtMjPhBf+t7D
+         Iw+Lf1uHZBo4QW9KP+nbFe8uPm4/zNn5P70aU2fCscfD0fvwXAIDU1TezFAHhxmfyenZ
+         7RNW2ti/zB3rBbZQ5NGxCGsjSgZIb+qv5+a2DBso+j1VfbCMwgolfDcDjUVcvZOtMCao
+         0yWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=fNiOAmQ420Z6ck2EPpcnI4GeChvrAMoNnPkgJzts4ks=;
-        b=pHtURTwEKhTc1nGeduOevDHVRTn4xlc4yPhf9w73wGnAgXICZVoVxscYz4AolACQZK
-         IY4PvRwP8k8jX0AHz2lCLTTe3Y8+fE18UUjqgbHkCHhxhMvesX3Cuk5pEEI7/q+z9eRt
-         9M5rNhA3C02Km2D1BPwsW2IpssIspQD81HSVlolWAsyiqdJRsEfBNaSs8wCEEsTUKlcL
-         Q8Zq5Z7A2B/Yu8jVXpJiHQaLCAOfyAKHOT3+GO8KK4ise0/pdkub/tiWI9+Xp79C7q1P
-         H7hiX0MauMxKVfjC+LqzQaAbTbBT9LBlPXx8UjerEV6/pTGs6XOph6/UYr/s7VRc1kwc
-         GciA==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:cc:references:to:subject;
+        bh=yEKKLNbp7L/go6bUVJOywPQrGP4X6QGDRM7GvPsal74=;
+        b=PmkkAPCE3TDKNy/cTCTAEBnrxy0JHqsf1aUlYXW8wiPsfMax8s5nUkHcgETijkOAr2
+         RI2fi9x9wHAdHx0MWtvBRUku6SPWXS3qnaUiiRYM3NdPdWzUqq4Rrpe8xFjx+ljQMmy/
+         L5dWguWMhXawQP7lkdLer8bW6HQqCQ++VoIVNIMZZKWaOTEmU6S66Bw+3wCUs77fspF4
+         G8rFVMkwHkq0/QpYtKXRb6N22MqUFA+MnyWcjmLy9ElDnms9MGnvpG/SbmZ+8/W70uJp
+         stOJuc0W6kZYHLkIZVeI5rMsZpL/7XBALEWFN9LYbo9kiAB84dhfa7jfubZkBUSXQfs3
+         FwrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=asfw1szO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r20si1664333iol.23.2022.01.27.09.13.33
+        by mx.google.com with ESMTPS id 3si18941216ybz.591.2022.01.25.22.17.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 09:13:33 -0800 (PST)
+        Tue, 25 Jan 2022 22:17:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=asfw1szO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46914 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:36944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD8Kz-0006GN-3b
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 12:13:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60202)
+	id 1nCbch-0006pk-2C
+	for alex.bennee@linaro.org; Wed, 26 Jan 2022 01:17:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56566)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD7gT-0003iJ-Cl
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 11:31:43 -0500
-Received: from [2a00:1450:4864:20::42c] (port=36503
- helo=mail-wr1-x42c.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD7gP-0006mR-QG
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 11:31:39 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id u15so5826357wrt.3
- for <qemu-devel@nongnu.org>; Thu, 27 Jan 2022 08:31:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
- bh=fNiOAmQ420Z6ck2EPpcnI4GeChvrAMoNnPkgJzts4ks=;
- b=asfw1szOoVSo88nALFIcwdBw6mhqCQefy1frIZq/RAC8/QdJyL51ua+3mrxZQ3uQ3Q
- ePKEW2bKBghQ/HVZLu9DE3TnI1PTxl5v1bFbRVkgipB4d/M0mq+Re/wGeJIaB7SH1+Ru
- Hjx1ppxz7LjiMBkzq9WieczR6lkpQAU9mZFG4edNX7Z0zcVquKLqji4xRAKOMYd5QrTn
- BlekohTRqw4OmttxHcLAl65FdVlsZU/wC6P0hXiy+HHaJwaoWgifOP/TzLtI4d6wJS3G
- 2hGdj6m+Z1lpJ32dq6csIfvO1HX/ZRSWRNkaCtVcWzWtDIIxNsW+RZovk/JPiI7Al2km
- w4kA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=fNiOAmQ420Z6ck2EPpcnI4GeChvrAMoNnPkgJzts4ks=;
- b=X8E9gBtOeIJBQBTAszAm9kMTznjURpPT68rYhPzTWd4ApSnnsQ56GnDqmOPic3vSjY
- NN6ME04ZSEGdFARdQ0W3CQOzUjypskFqH9gcXGIhnsWs8O9C/xhEMgjhbZXYDVSSL52t
- n7pSKNtjKUzUCWnBtvTGsRQG8kTVGPAVkiBu05L+Ni6mma/XmqhYUAy4AgoqxSq4rxzy
- Na4s45rayoU+gRi2vFiMN12thlEHIweKnpCzyEv3sqtoVNP3iDmMmv4VRnVsKt3GOm5/
- d+REINuRHv+aPjqbnndwILSYJVbbp/cKlszFbxM5QK+PG96bDXD3u7TOa8qGqIHVfxst
- c9IA==
-X-Gm-Message-State: AOAM53360ep4ipRUrBOBA4bttKOffVu1+3gfiVjD7XOoFIDURd37Qxxp
- H5efwAXNJ3JFegssWY2GJFtx+CyoSW1whih9/hersw==
-X-Received: by 2002:a5d:5343:: with SMTP id t3mr3738367wrv.521.1643301096132; 
- Thu, 27 Jan 2022 08:31:36 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <chenxiang66@hisilicon.com>)
+ id 1nCbc1-0006nl-Rh; Wed, 26 Jan 2022 01:16:57 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:5097)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <chenxiang66@hisilicon.com>)
+ id 1nCbbt-0006sK-8G; Wed, 26 Jan 2022 01:16:57 -0500
+Received: from dggeme756-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4JkD3Z32YYz9sYc;
+ Wed, 26 Jan 2022 14:15:22 +0800 (CST)
+Received: from [10.40.193.166] (10.40.193.166) by
+ dggeme756-chm.china.huawei.com (10.3.19.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2308.21; Wed, 26 Jan 2022 14:16:41 +0800
+Subject: Re: [PATCH] hw/arm/virt: Enable HMAT on arm virt machine
+To: Andrew Jones <drjones@redhat.com>
+References: <1643102134-15506-1-git-send-email-chenxiang66@hisilicon.com>
+ <20220125102603.3ssiffsqcyt7tlwr@gator>
+ <853b0152-8996-1097-1f01-d3ede7a2b0ca@hisilicon.com>
+ <20220125124658.yf6we6n4l6unducl@gator>
+CC: chenxiang via <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>,
+ <shannon.zhaosl@gmail.com>, <qemu-arm@nongnu.org>, <linuxarm@huawei.com>,
+ <imammedo@redhat.com>
+Message-ID: <dc1c073b-b2e0-1208-880f-e0ffd242ebbe@hisilicon.com>
+Date: Wed, 26 Jan 2022 14:16:41 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.2.0
 MIME-Version: 1.0
-References: <20220117131953.3936137-1-peter.maydell@linaro.org>
-In-Reply-To: <20220117131953.3936137-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Jan 2022 16:31:25 +0000
-Message-ID: <CAFEAcA8mXXg5tm=sD2_TS0vgSgG3M_yp1YWdjHtbCGZHKgv0kQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Use correct entrypoint for SVC taken from Hyp
- to Hyp
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42c
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20220125124658.yf6we6n4l6unducl@gator>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.40.193.166]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggeme756-chm.china.huawei.com (10.3.19.102)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=chenxiang66@hisilicon.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,64 +99,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NplWCHinMCav
+Reply-to:  "chenxiang (M)" <chenxiang66@hisilicon.com>
+From:  "chenxiang (M)" via <qemu-devel@nongnu.org>
+X-TUID: FGR4dWkSTO6w
 
-Ping for code review? This is a nice short easy one :-)
 
-thanks
--- PMM
 
-On Mon, 17 Jan 2022 at 13:19, Peter Maydell <peter.maydell@linaro.org> wrote:
+在 2022/1/25 20:46, Andrew Jones 写道:
+> On Tue, Jan 25, 2022 at 07:46:43PM +0800, chenxiang (M) wrote:
+>> Hi Andrew,
+>>
+>>
+>> 在 2022/1/25 18:26, Andrew Jones 写道:
+>>> On Tue, Jan 25, 2022 at 05:15:34PM +0800, chenxiang via wrote:
+>>>> From: Xiang Chen <chenxiang66@hisilicon.com>
+>>>>
+>>>> Since the patchset ("Build ACPI Heterogeneous Memory Attribute Table (HMAT)"),
+>>>> HMAT is supported, but only x86 is enabled. Enable HMAT on arm virt machine.
+>>> Hi Xiang,
+>>>
+>>> What QEMU commands lines have you tested with which Linux guest kernels?
+>> I tested it with following commands with guest kernel 5.16-rc1, and the boot
+>> log of guest kernel is as attached:
+> Thanks. Please consider adding HMAT tests, see tests/qtest/numa-test.c and
+> tests/qtest/bios-tables-test.c, for the virt machine type to this series.
+> Otherwise,
 >
-> The exception caused by an SVC instruction may be taken to AArch32
-> Hyp mode for two reasons:
->  * HCR.TGE indicates that exceptions from EL0 should trap to EL2
->  * we were already in Hyp mode
->
-> The entrypoint in the vector table to be used differs in these two
-> cases: for an exception routed to Hyp mode from EL0, we enter at the
-> common 0x14 "hyp trap" entrypoint.  For SVC from Hyp mode to Hyp
-> mode, we enter at the 0x08 (svc/hvc trap) entrypoint.
-> In the v8A Arm ARM pseudocode this is done in AArch32.TakeSVCException.
->
-> QEMU incorrectly routed both of these exceptions to the 0x14
-> entrypoint.  Correct the entrypoint for SVC from Hyp to Hyp by making
-> use of the existing logic which handles "normal entrypoint for
-> Hyp-to-Hyp, otherwise 0x14" for traps like UNDEF and data/prefetch
-> aborts (reproduced here since it's outside the visible context
-> in the diff for this commit):
->
->     if (arm_current_el(env) != 2 && addr < 0x14) {
->         addr = 0x14;
->     }
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/helper.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index cfca0f5ba6d..a898e400f6c 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -9655,7 +9655,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
->       * separately here.
->       *
->       * The vector table entry used is always the 0x14 Hyp mode entry point,
-> -     * unless this is an UNDEF/HVC/abort taken from Hyp to Hyp.
-> +     * unless this is an UNDEF/SVC/HVC/abort taken from Hyp to Hyp.
->       * The offset applied to the preferred return address is always zero
->       * (see DDI0487C.a section G1.12.3).
->       * PSTATE A/I/F masks are set based only on the SCR.EA/IRQ/FIQ values.
-> @@ -9669,7 +9669,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
->          addr = 0x04;
->          break;
->      case EXCP_SWI:
-> -        addr = 0x14;
-> +        addr = 0x08;
->          break;
->      case EXCP_BKPT:
->          /* Fall through to prefetch abort.  */
-> --
-> 2.25.1
->
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+
+Thanks, i will add those HMAT tests in v2.
+
+

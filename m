@@ -1,106 +1,109 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp3443073lfk;
-        Wed, 26 Jan 2022 07:48:43 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx46j3DiLT6EtiQlc9yJW3g3VUVhWBrtUdijJMD9f1DfF8IvP3AM1u4DvWXPr4bbjshWBnp
-X-Received: by 2002:a92:ca47:: with SMTP id q7mr14757683ilo.236.1643212123378;
-        Wed, 26 Jan 2022 07:48:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643212123; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp3506803lfk;
+        Wed, 26 Jan 2022 09:26:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzZCm/LjvY7pNyqyUqIYCpVCKHelaTXuCN3kZtNTmiFKKJYJUb9ELdADBBDkNhVOsa3IzOh
+X-Received: by 2002:a5b:a4c:: with SMTP id z12mr37096328ybq.490.1643217964085;
+        Wed, 26 Jan 2022 09:26:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643217964; cv=none;
         d=google.com; s=arc-20160816;
-        b=wM9hkcBzG/TGkfKdQFMVwhOOD6rVUnD3kx6JXJk4XTnzsnMScBm7QCIbv1f7iIgyIp
-         9HDmBGqYA1FqRJ9dEAgIJX47F+v5mEUNatABB33tsqLNnOrSN/oJW8/VpVyvdj4Nt91u
-         /ugb+eRQm1hh3WcV2U0epnXLlp9Sz/PN84ASJiWoMau81kvub/wDhLhiHNBllW7XAxkc
-         J91m4SY3aWRyKc2HJuv8UkxtD4i/qjTNAlooLahl1MEvx7Z69L9oII/KrDcmLWoeqWWN
-         6Vad8C5Ij+cs22JD1h73RyFQehFrEhYPlpddsZqBmF+KG7gE+oUc9i4zBNt4/0ofLvHk
-         27PA==
+        b=OCQuZJFzcLZFX+NhP9YBwvtO9+9PafpLnjLdysDeBmTQB950vkckw+ki7wZd2N4jVg
+         ZUgUgqdGd+tH1iTSWAoScZBk53EMIS4kSMIReFiv201APxKiPAPdEySLeuoIlYoScufT
+         yMaX0C1n+dpI03S9xXV8gwajvu3VGUX84qGWaXkwrIf7rYm9w8DbuxUZ5YlLvnsCD5yQ
+         AeLPQOJwXlNP8b1M31OagHkN8Ke+mqjup02NoEnBSBkSrdiD7WO9GQd1YEStsFB6BJXW
+         qn7zzsEAY7u/lGB251b8BSa8+9NtSOoWJaK85SI5a0hce7ksnYCahpkm1GGMOaZvmcSb
+         4cOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=b2OaMKlqJMcqNCG9nYd1C7PGNQe2mdlHd9ERFxOKQdA=;
-        b=ArM/bsSLTPCWYUr28rC4U0e0XYobOvTeMyEH3a/ZTy1cSr8knpEof97brp5dnxRCf/
-         8toCzEUrBPMNU6pGVadomiE9Otwv8LZbVPP4YE6uGoV0gRQkADfWBknC57P3a7/UmnuP
-         urPEDKFpvFOSbvvN114zCrhrwnqgLCAlnbouWHSe8z+Gpv/s5dlWqPyEkqWGWfVkrE7I
-         DW6d6vwQ8L2yD+wkdKTgr/GHw+YIOj+Ek2tsDq+r5uyDeXrcaE5uGDlDvGwovuPzjV08
-         9nPCRD6lDJkbrGKzrAphj9eElfOcKPTKcYHXRaODyB25Y9kQcvzdYkuH0lxlNkNI2Jfv
-         OHsA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=hsdGbdu5V8Ys7NMt9/YC8yj7jkKzQkF/kbpU0Z5TFyI=;
+        b=XuCOALLr4GnICgFNFcL9Z4SqjhF9Fs6BRJSpOGr202ezqzJiCvhP47XguO38s41lBD
+         2LH4JBNbYT9TKWTKwbdSkmS2c29LjArdsUhCG5Iphmlpzgqzf85b7ghrGHKu99fc/T5Y
+         cZHuH7pwLWSg2IaDwf80uAylQoa2xr71gc6OJmb4Yn+EWpfO/yeyuS8bcg5JUJeHAE+i
+         2Xfkya1QcVm6vVCBMBnrFL2zqMnG55I9qY5zZoCbSiKsrATRWjyT8DPJ9SZlH/HtPuh0
+         a7m6Qh6ibYSAXiB75swiZXwGdfDOQgx9unMHCsu9DgAeVYmHM/FWxaqEGKrtjgSZztDP
+         U5Rg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=V4luylvY;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=EQ+fgYrm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y5si15791992ilv.0.2022.01.26.07.48.43
+        by mx.google.com with ESMTPS id s78si22176339ybs.521.2022.01.26.09.26.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jan 2022 07:48:43 -0800 (PST)
+        Wed, 26 Jan 2022 09:26:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=V4luylvY;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=EQ+fgYrm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47936 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:37838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nCkXK-0000f1-O3
-	for alex.bennee@linaro.org; Wed, 26 Jan 2022 10:48:42 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46936)
+	id 1nCm3X-0003Eq-Du
+	for alex.bennee@linaro.org; Wed, 26 Jan 2022 12:26:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <abhijeetinamdar3005@gmail.com>)
- id 1nCkXA-0000ee-H5; Wed, 26 Jan 2022 10:48:32 -0500
-Received: from [2607:f8b0:4864:20::832] (port=43923
- helo=mail-qt1-x832.google.com)
+ (Exim 4.90_1) (envelope-from <crauer@google.com>) id 1nClqx-0004OB-Dw
+ for qemu-arm@nongnu.org; Wed, 26 Jan 2022 12:13:03 -0500
+Received: from [2a00:1450:4864:20::236] (port=35337
+ helo=mail-lj1-x236.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <abhijeetinamdar3005@gmail.com>)
- id 1nCkX8-0005KE-OH; Wed, 26 Jan 2022 10:48:31 -0500
-Received: by mail-qt1-x832.google.com with SMTP id k14so3424qtq.10;
- Wed, 26 Jan 2022 07:48:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <crauer@google.com>) id 1nClqv-0001V5-Hy
+ for qemu-arm@nongnu.org; Wed, 26 Jan 2022 12:13:02 -0500
+Received: by mail-lj1-x236.google.com with SMTP id q127so583956ljq.2
+ for <qemu-arm@nongnu.org>; Wed, 26 Jan 2022 09:12:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=b2OaMKlqJMcqNCG9nYd1C7PGNQe2mdlHd9ERFxOKQdA=;
- b=V4luylvYTylYzPHJPeFoZSlhMS31C7Uowue3e/nGDZOu4Mu4vkHVvewYi2G0R4PQrr
- b+cpih0AbuMiIKu8qNARTqi4WWYLJp0DdYsGTGwQIbwV62lvK2BgPLUCroCGt97D6GER
- DaNkRF8U8ysSMs+XH4uAbcGIEMTtdDYmO7MICbCrOvJxs0k5gpHyvGer7e7SHiGmkR1e
- 09604LeqSmScRghy40H8/Y2NOXaWMzC47J8sEmJ+5aIxxITBvC03o/83UOdtLGMLJbOf
- 8uQOORjpBwiATLfaliF83HzALV2RCCnnOeh377MaaN3yFzGOSxOsimENgNxCJwU9NUI5
- Qebw==
+ :cc; bh=hsdGbdu5V8Ys7NMt9/YC8yj7jkKzQkF/kbpU0Z5TFyI=;
+ b=EQ+fgYrmVeWHKXuenMjnmHSn5gG14Ir/EhBYTvXnDICUzZWm3jIhSEJlw9J4Hxba05
+ kt0EeUQtlmois3AjJjPO3z7uFnH+e95LIH7R7yGfnwME47i/r7jfiE6yEU4Bg+b/Vnws
+ kOhMTZS0C20IwJXsTfIK/Zs9rCw0QsJETG/K060a3LX5RPvvxjVVMmToyRsLG2W94IMf
+ Ad3IjTh0jTjQ5LmUhAZZut50Xy0So6ONlQYF8PROSgfFN3arDNGFSMj3FkXH8W4q1+LD
+ m+vVTrAQ5bwKpMVvuAZ5crzYcG0EdQ2+oRPnBe/IpEjwATVNzOedjjeYaG+ZTen7AGdq
+ E8CQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=b2OaMKlqJMcqNCG9nYd1C7PGNQe2mdlHd9ERFxOKQdA=;
- b=P/lNwRd7ZrL+3qova7UL0TYfzkdTfothHxVpri5ov6nJ7cYOS5UBvRltv02SM53eYM
- Laq8T+IsT7jcgyb+9oeIL3+hUW/+wxxtbZc7TtAxCFPhJh55/10kbSK+JJqxyM2rLWtl
- HXOXv+BpgN74rAQzKlRzF9CtKabUr+5ardeFGnJuLyIipqoQCZRErIFr29UNaxHj0JRE
- j0wJRchciCKGnVkOmxnDLCfYZEg39D3bol2JrVJqZme26ox4CH1t1XCGrwgxyIJldKEg
- FD69+Id8tPgHadvEWVHr/Pb1D8fjby2DqUnQTZdHcEt0d9B9ICXz50Vc3NJvADlDdAFh
- Mkww==
-X-Gm-Message-State: AOAM531syr9RH97FjFXDpsghgNPQy4ZyfvDlAX69Ilf4nLdnEE+3c0py
- ouzvh00rors18kMIHJ7AqExf83LV3AEpEwPvI4E=
-X-Received: by 2002:ac8:5b93:: with SMTP id a19mr20881307qta.224.1643212107939; 
- Wed, 26 Jan 2022 07:48:27 -0800 (PST)
+ bh=hsdGbdu5V8Ys7NMt9/YC8yj7jkKzQkF/kbpU0Z5TFyI=;
+ b=59uhEksxmq0N7kDQw/mE6q9VkYFsDN7hqMNtSGC103sM7G5dErSgdGSr9D2fu5WTIG
+ /lmvPJ4QxxaoB2fyxxP+R+DzywkCc2mJYuTlKxNmAEyl3DmgSVEtQ0m7bZ2ZmQOrnsdZ
+ ZI8xIEEJ5pyxt54xl9hogbslMct6557HS9UbZGd/urtSZYTdvDGdYMCaT8ptq6EuxakQ
+ K+rajgPkIPyo365EKyOcYxe9G37R6onFbWn49t16P1gDsQEcLxIyauc3BzsupOUQKDlp
+ rfUjZLU0gxCjQLydXmDPt9zQydjYlbTPCC/v1arlmStFukvjNWXsW6Mz1qLRo8aZOBsr
+ 42tA==
+X-Gm-Message-State: AOAM530bdLisQFaca8s/vvjDcGU6metIE21WVRRKVRmLHcT/CGFp4kUt
+ N/NpZdNo0b975bFTC4SJnHbnfNIkMs6DvmVTdIK3dg==
+X-Received: by 2002:a2e:9801:: with SMTP id a1mr3516487ljj.369.1643217158606; 
+ Wed, 26 Jan 2022 09:12:38 -0800 (PST)
 MIME-Version: 1.0
-References: <CAP4GjT1kgpr+EoecEVdXuX+sPL-27PKPm-9J-E3_DwaHwe12GA@mail.gmail.com>
- <c239b30e-fb83-25d1-2649-a5285f97f9ad@amsat.org>
- <CAP4GjT2wU_-N5jTwNWdmOL_5gVOwXh9sFK-=J=JR2xEYVmK6=w@mail.gmail.com>
- <a451141e-e5b6-6dce-270c-458bd3a32cbc@amsat.org>
-In-Reply-To: <a451141e-e5b6-6dce-270c-458bd3a32cbc@amsat.org>
-From: abhijeet inamdar <abhijeetinamdar3005@gmail.com>
-Date: Wed, 26 Jan 2022 16:48:16 +0100
-Message-ID: <CAP4GjT0DrW+1xdfiNHJdiGu83Mk3xP+MMwN9FE0Q8oVifBAm-w@mail.gmail.com>
-Subject: Re: Ast2600 emulation
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000fc025e05d67e212b"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::832
+References: <20220110214755.810343-1-venture@google.com>
+ <CAFEAcA8Bki2dpyptkSibz5=t9Fvy-PN8SjD=Z0PwcssX3MprRA@mail.gmail.com>
+ <CAFEAcA_OfpMLzG=eUuzw0O_V_cgb57=XADciyfiF7U1mK0FzxQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_OfpMLzG=eUuzw0O_V_cgb57=XADciyfiF7U1mK0FzxQ@mail.gmail.com>
+From: Chris Rauer <crauer@google.com>
+Date: Wed, 26 Jan 2022 09:12:27 -0800
+Message-ID: <CAFtMCFUbBhXMxtc7RN+3OhDtckB+x-HXWbWcmh8AyncnriNFxQ@mail.gmail.com>
+Subject: Re: [PATCH 0/2] Adds designware i2c module and adds it to virt arm
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Patrick Venture <venture@google.com>, mst@redhat.com, imammedo@redhat.com, 
+ ani@anisinha.ca, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000007ddd505d67f4f97"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::236
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::832;
- envelope-from=abhijeetinamdar3005@gmail.com; helo=mail-qt1-x832.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::236;
+ envelope-from=crauer@google.com; helo=mail-lj1-x236.google.com
+X-Spam_score_int: -167
+X-Spam_score: -16.8
+X-Spam_bar: ----------------
+X-Spam_report: (-16.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,107 +116,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-discuss <qemu-discuss@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k99Z//84VWHg
+X-TUID: UiCtDQk1uoYM
 
---000000000000fc025e05d67e212b
+--00000000000007ddd505d67f4f97
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-How do we implement Hardware Semaphore (HSEM) in QEMU for this type?
+>I need to see a pretty strong justification for why we should be adding
+new kinds of devices to the virt machine,
+The designware i2c controller is a very common controller on many ARM
+SoCs.  It has device tree bindings and ACPI bindings which makes it ideal
+for this platform.
 
-Any suggestions.
+>Forgot to mention, but my prefered approach for providing
+>an i2c controller on the virt board would be to have a
+>PCI i2c controller: that way users who do need it can plug it
+>in with a -device command line option, and users who don't
+>need it never have to worry about it.
+The device is enabled by a machine parameter, =E2=80=9C-machine virt,smbus=
+=3Dtrue=E2=80=9D,
+and is disabled by default.
 
-BR.
-Abhijeet.
+> (We seem to have an ICH9-SMB PCI device already; I have no idea if it's
+suitable.)
+I didn't find that device suitable because it is part of the Intel
+Southbridge, which may have some Intel platform quirks, and we don't need
+all the things in that IO hub.
 
-On Wed, 15 Dec, 2021, 23:20 Philippe Mathieu-Daud=C3=A9, <f4bug@amsat.org> =
-wrote:
+-Chris
 
-> On 12/15/21 23:10, abhijeet inamdar wrote:
-> > Thanks, I'll check it out.
-> >
-> > Can we do full system mode or qemu-sytem-arm ?
->
-> You should be able to do full system emulation (qemu-system-arm)
-> with 2 Cortex-A7 cores and 1 Cortex-M3 core.
->
-> >
-> > BR.
-> > Abhijeet
-> >
-> > On Wed, 15 Dec, 2021, 22:38 Philippe Mathieu-Daud=C3=A9, <f4bug@amsat.o=
-rg
-> > <mailto:f4bug@amsat.org>> wrote:
-> >
-> >     On 12/15/21 22:24, abhijeet inamdar wrote:
-> >     > Hi,
-> >     >
-> >     > I was going through the aspeed ast2600(not evb) it has Dual-core
-> >     Arm A7
-> >     > and embedded M3. How can extend it/implementation in the existing
-> one.
-> >     > 1) Is it possible ?
-> >
-> >     Yes.
-> >
-> >     > 2) How can I do it?
-> >
-> >     Look at the Xilinx ZynqMP ZCU102 board (4xA53s and 2xR5Fs):
-> >     hw/arm/xlnx-zcu102.c
-> >
->
-
---000000000000fc025e05d67e212b
+--00000000000007ddd505d67f4f97
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"auto">How do we implement Hardware Semaphore (HSEM) in QEMU for=
- this type?<div dir=3D"auto"><br></div><div dir=3D"auto">Any suggestions.</=
-div><div dir=3D"auto"><br></div><div dir=3D"auto">BR.</div><div dir=3D"auto=
-">Abhijeet.</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" clas=
-s=3D"gmail_attr">On Wed, 15 Dec, 2021, 23:20 Philippe Mathieu-Daud=C3=A9, &=
-lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; wrote:<br></d=
-iv><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left=
-:1px #ccc solid;padding-left:1ex">On 12/15/21 23:10, abhijeet inamdar wrote=
-:<br>
-&gt; Thanks, I&#39;ll check it out.=C2=A0<br>
-&gt; <br>
-&gt; Can we do full system mode or qemu-sytem-arm ?<br>
-<br>
-You should be able to do full system emulation (qemu-system-arm)<br>
-with 2 Cortex-A7 cores and 1 Cortex-M3 core.<br>
-<br>
-&gt; <br>
-&gt; BR.<br>
-&gt; Abhijeet<br>
-&gt; <br>
-&gt; On Wed, 15 Dec, 2021, 22:38 Philippe Mathieu-Daud=C3=A9, &lt;<a href=
-=3D"mailto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsa=
-t.org</a><br>
-&gt; &lt;mailto:<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank" rel=3D=
-"noreferrer">f4bug@amsat.org</a>&gt;&gt; wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On 12/15/21 22:24, abhijeet inamdar wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; Hi,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; I was going through the aspeed ast2600(not evb=
-) it has Dual-core<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Arm A7<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; and embedded M3. How can extend it/implementat=
-ion in the existing one.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; 1) Is it possible ?<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Yes.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; 2) How can I do it?<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Look at the Xilinx ZynqMP ZCU102 board (4xA53s and =
-2xR5Fs):<br>
-&gt;=C2=A0 =C2=A0 =C2=A0hw/arm/xlnx-zcu102.c<br>
-&gt; <br>
-</blockquote></div>
+<div dir=3D"ltr">&gt;I need to see a pretty strong justification for why we=
+ should be adding new kinds of devices to the virt machine,<br>The designwa=
+re i2c controller is a very common controller on many ARM SoCs.=C2=A0 It ha=
+s device tree bindings and ACPI bindings which makes it ideal for this plat=
+form.<br><br>&gt;Forgot to mention, but my prefered approach for providing<=
+br>&gt;an i2c controller on the virt board would be to have a<br>&gt;PCI i2=
+c controller: that way users who do need it can plug it<br>&gt;in with a -d=
+evice command line option, and users who don&#39;t<br>&gt;need it never hav=
+e to worry about it. <br>The device is enabled by a machine parameter, =E2=
+=80=9C-machine virt,smbus=3Dtrue=E2=80=9D, and is disabled by default.<br><=
+br>&gt; (We seem to have an ICH9-SMB PCI device already; I have no idea if =
+it&#39;s suitable.)<br>I didn&#39;t find that device suitable because it is=
+ part of the Intel Southbridge, which may have some Intel platform quirks, =
+and we don&#39;t need all the things in that IO hub.<br><br>-Chris<br></div=
+>
 
---000000000000fc025e05d67e212b--
+--00000000000007ddd505d67f4f97--

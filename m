@@ -1,107 +1,107 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4237490lfk;
-        Thu, 27 Jan 2022 09:08:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzu4EOdb7eMMV8MO8CG74HGFBYcm0XJ6SyazIliOZF08FCj1eshs8xZs+WAbLv1ZTKzdslC
-X-Received: by 2002:a05:6102:1611:: with SMTP id cu17mr2031449vsb.28.1643303332215;
-        Thu, 27 Jan 2022 09:08:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643303332; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4245578lfk;
+        Thu, 27 Jan 2022 09:20:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwEGV6iPIYEbBnBSMxV0A9QM80et+JxBZu3TqYo2vlHyKyOjQCeZ/eSY/kf7/cfAf/2xwiG
+X-Received: by 2002:a05:622a:406:: with SMTP id n6mr3539862qtx.361.1643304007335;
+        Thu, 27 Jan 2022 09:20:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643304007; cv=none;
         d=google.com; s=arc-20160816;
-        b=B+kdPAVxwT50weR0vpQLdppZAYjSbJjnvZ0wmRK4zwrZ/OK1bPflRZ+VlHgG6VFWhs
-         +nBbtexOCBX+xwFIr52zLtUGtGYoS6BPkWRIQPrjFe8+OzSmwdeOeP5c0b/vKAG7bzGl
-         UWB3rUo/HgOti+1utHaGQuCMvY6aujQP/XnnZGM4RdbBWimqJ37RSJGbJ6WSOfJJc+5R
-         AD9Vjx2noFDGngpgc79t0J+OuDUV8Sh46WFSypTA5sc+3QgCpyEG9MEFqCg4c88fQ/Ep
-         45sAv85gTVcVnb2+NFuKDRHvWkXNXUNvG8zGsW7zhN0C44EiqWvY5ZPNQWoKSDdbaiAK
-         ZCPw==
+        b=GQsvHrLUawoRiiKryZiLOR18XYZUL4DvGqWbVpQIaD4J0l56T69911WXJLzVVyELOV
+         GkSlCHGFm75IMW3DagJZa3p8zyz3Usu2uLH15JLipuBzsLv4mDxBjCWQN1bc2oy8HyqP
+         5VGHqwzZ8oFvuw6FwjJVdldxFrmDnmTkN8d+Ly/8rZRpZmxPYndIFZBzrKMOYHw1JwMa
+         XieFhZ88tBdff4xyraSaaAQE8bt8qEJnThK3WhrYLHGaDALm7v4F8gc4I9VffR1vFuwq
+         F4rprHrL8SPa1XOheHnVys/JB8zXiyQ+nU3hJ6iXdRvx4q5OpAbR/hwLtksLnEbkVGQz
+         szYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ZZJxnO0wXp3VlaW8QIoFJ6AD9P5ehX63O95QyB7R9Xw=;
-        b=eNQj89G+xh5tebE84mw/3r1x2XgvNZ8wEUFjCzu2nMsXBUOiCy2vEXNvLfUxSXc7BL
-         lBeTHXji6Fxxd4EgyS8n0+WEhv1Jo3IPbCxW9mLgH3N2Wd6owZky4JlBDGG1eoj0tGQJ
-         CarcF7Ygp7iFzNYKT1n2k6bzuOsdPlo3+DcWfwYqYxTDgy2VH2YpgpiZ46fgUB8CO4am
-         HEkuerFC4zZnMaXDv9GdBApAPePj8XFTzJu+NXRDxHg/h0f49mhguCAMlAaRo8n8W0RC
-         CLwNPUUFTY57ed5VgSgNDuGdDRfyF5adbKBhkwGtAqdRsmbG4jUS7wzAg3gndbChQFF9
-         rTAw==
+        bh=bffQ5wNElfir0ludySMWzcts+VnP8j4cL7Lwt5H0SMU=;
+        b=DY/lGCQVUF90rRbZlOtCvyg/oGzdOHh+ys/AgFu/DGFO4du8vZAAZ7J57UxccEQuPn
+         0Fsiu+0S5FwbVKYirRVb9Z5e6P2xWZvGPU89Lsv1Z+0ss3wVDQYy/7/hoqxAXPC1Fjey
+         V9Ksa6s+k7HkPuLm9t3lbURhndseCI30u3znwXstriheSKY8LwrhYsGxyS7nBiOa0kiP
+         W5Uv8Mb6FCXDuOv6/vG/K4jJy16c4XFRkW68Tbi25WIy6hymUBad8ckUSEVeKDjjVX8u
+         SbG9YD6rvkPPGmhQc3XZmGGF9+b47TFZHNyoKAZ2aAzLXgvGvKEzvdacMMglZLxcgxhM
+         u/Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GPWmK26o;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Be+gf7Gt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m2si1104544vsv.700.2022.01.27.09.08.52
+        by mx.google.com with ESMTPS id hr10si1280865qvb.136.2022.01.27.09.20.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 09:08:52 -0800 (PST)
+        Thu, 27 Jan 2022 09:20:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GPWmK26o;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Be+gf7Gt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42502 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60660 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD8GR-000373-Ba
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 12:08:51 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48786)
+	id 1nD8RK-0007wn-In
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 12:20:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48952)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6z2-0005mo-NX
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:46:48 -0500
-Received: from [2a00:1450:4864:20::331] (port=38789
- helo=mail-wm1-x331.google.com)
+ id 1nD6z9-0006Br-PA
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:46:55 -0500
+Received: from [2a00:1450:4864:20::32c] (port=42973
+ helo=mail-wm1-x32c.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6z0-0008Ev-3m
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:46:48 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- o30-20020a05600c511e00b0034f4c3186f4so6210733wms.3
- for <qemu-devel@nongnu.org>; Thu, 27 Jan 2022 07:46:45 -0800 (PST)
+ id 1nD6z8-0008Kd-2s
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:46:55 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ f202-20020a1c1fd3000000b0034dd403f4fbso2161967wmf.1
+ for <qemu-devel@nongnu.org>; Thu, 27 Jan 2022 07:46:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ZZJxnO0wXp3VlaW8QIoFJ6AD9P5ehX63O95QyB7R9Xw=;
- b=GPWmK26oRrRzo6qTxk1QnyLLJT4NOZ51/eaym8TtSnugj4hGzL90ExvfuzVc9g6u+f
- HrXACdgG3x9s3GHGKk8CbyemjfkS7+buruDKHg4tiHwujMWmwWagbBd0yth7bdLVndNd
- /H1Fmrcs0R3PCHv362NQL8bxgUGLeOuFTUAygmFUXaL1A3YPjFkeCHwmF/zNl5SpBnSn
- ojlNLnF582zccAm9AG0aluK5Iz03heLu5uKwJpSs6rrFPS+w5srepzXtsWO/2rs5HiFl
- H5PK4lyY6HjoTKkjrLBUtndHlj0/CEOaU0bZLHNXUTSbTkugLZ3M6igxI3ngvGn161Bs
- WYDw==
+ bh=bffQ5wNElfir0ludySMWzcts+VnP8j4cL7Lwt5H0SMU=;
+ b=Be+gf7GtfE6uRbuCvxwj2P/xRgW1+CtJ6DrAO+XM6hhd2zDoCkfX6VDEdZaxRH6Zzy
+ hGDa6aqKy6+JwJgSsS1HyZ8UVIXyuh5ob5ebiq7PBEx47WSCRxnM/nYa6MEQ/BtjYxex
+ UqvM49nun8ulO8y3AMPCuEJrERRkJyzQh7Pl0kgE0H2XnRHsI9dxyRGZCRKyKgP6LoO/
+ +lAJB1cnWiFzBo2dsoLo60gSM0RCGf4xAo+IoKoOa3CzexZzjEBuTJNxtdLJALLuGety
+ bLIBcXSOzCUO2i8RvItWUVTUrS4J+w5ksobkYskdcp0xUSLUqS4HAZ6ovQRHaEUAQ9Sp
+ WvBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ZZJxnO0wXp3VlaW8QIoFJ6AD9P5ehX63O95QyB7R9Xw=;
- b=L/ZOQ7uzIrv2FKuJizpataMvzsyOpbup946mWv3VncIRwvzJDRLzXgEYWloxqMa7ju
- PPUhHsWCx+mf08K79eVclwdk97/ANjvgWBrqxxXKykQMY9M8SxKd4FiBYiOMpM/UIpwq
- wuE2757sexdPRIpKWbOIQ/2Krh+7SRpv9eIa4pkJ2UbmKaAnBfPIg07jw7hNxwfgyU2K
- 3KuMYGBiqcIzeSZ63TrEOIGoAe+Y4sDoYhWVGaxXpcoVdEkeMyRvGoPHEDF7+HsscDC+
- uzz2CfXJuPGMPP/2W3U+Mu7bk7qfNVy0AWAm6ZIiSQ5bYdTho2nltaBn7M7XvwxNGL+0
- 8wAw==
-X-Gm-Message-State: AOAM531DzqvPr31OWA0HAcifmOMEf24CaPdu2Oy1JZTwi5AgVG4TTWkH
- gXj7Xn/YxioK3IWCel6vxDY7OA==
-X-Received: by 2002:a05:600c:a4b:: with SMTP id
- c11mr12437091wmq.135.1643298404398; 
- Thu, 27 Jan 2022 07:46:44 -0800 (PST)
+ bh=bffQ5wNElfir0ludySMWzcts+VnP8j4cL7Lwt5H0SMU=;
+ b=l/YlTgaeO799b+EbtrVmkPIzuQ+NCQHeKXZ6s5dkMM7oOuqMAswL/K+ui/fmd7A/SE
+ P+owqxbeKMR6/Un95AFty/kIKudjS1ohzzCWIGL1Q+q3sN3fhcYYjCB60x7tlFc+vzne
+ b+lSW1EsF/hsNlbk0GoPinDkVskN08KvB/lIpQFxyqK58CM/jBx1r7yT6dBiHbNwNA1C
+ bFmg+oiRhhMD3GIwqG/L+g0MsK02wopY9G7iCzY4bB2nnepTjo5KKaQLN+b9nEbNoF6/
+ A9jkMQjwAw5IVtgYz/YjgAg94M9qwcvrEji2X+ADoBjEY7HQmZvVvbLC+JTd+TG8KkVF
+ PZ7g==
+X-Gm-Message-State: AOAM533x9TXSeDQ9C162IUrd96MzoAqprz0f2MzNr0lvZjHf4r0n0Zxh
+ OTCLA78tyVjbWSMDlnEri5VluQ==
+X-Received: by 2002:a05:600c:3b11:: with SMTP id
+ m17mr3746087wms.192.1643298412766; 
+ Thu, 27 Jan 2022 07:46:52 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id w9sm6687667wmc.36.2022.01.27.07.46.43
+ by smtp.gmail.com with ESMTPSA id w9sm6687667wmc.36.2022.01.27.07.46.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jan 2022 07:46:44 -0800 (PST)
+ Thu, 27 Jan 2022 07:46:52 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/16] target/arm: make psci-conduit settable after realize
-Date: Thu, 27 Jan 2022 15:46:24 +0000
-Message-Id: <20220127154639.2090164-2-peter.maydell@linaro.org>
+Subject: [PATCH 07/16] hw/arm/versal: Let boot.c handle PSCI enablement
+Date: Thu, 27 Jan 2022 15:46:30 +0000
+Message-Id: <20220127154639.2090164-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220127154639.2090164-1-peter.maydell@linaro.org>
 References: <20220127154639.2090164-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::331
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32c
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -136,57 +136,97 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
  Andrey Smirnov <andrew.smirnov@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Eq/2N4iSFU8E
+X-TUID: bcbYwV4r2wAI
 
-We want to allow the psci-conduit property to be set after realize,
-because the parts of the code which are best placed to decide if it's
-OK to enable QEMU's builtin PSCI emulation (the board code and the
-arm_load_kernel() function are distant from the code which creates
-and realizes CPUs (typically inside an SoC object's init and realize
-method) and run afterwards.
+Instead of setting the CPU psci-conduit and start-powered-off
+properties in the xlnx-versal-virt board code, set the arm_boot_info
+psci_conduit field so that the boot.c code can do it.
 
-Since the DEFINE_PROP_* macros don't have support for creating
-properties which can be changed after realize, change the property to
-be created with object_property_add_uint32_ptr(), which is what we
-already use in this function for creating settable-after-realize
-properties like init-svtor and init-nsvtor.
+This will fix a corner case where we were incorrectly enabling PSCI
+emulation when booting guest code into EL3 because it was an ELF file
+passed to -kernel.  (EL3 guest code started via -bios, -pflash, or
+the generic loader was already being run with PSCI emulation
+disabled.)
 
-Note that it doesn't conceptually make sense to change the setting of
-the property after the machine has been completely initialized,
-beacuse this would mean that the behaviour of the machine when first
-started would differ from its behaviour when the system is
-subsequently reset.  (It would also require the underlying state to
-be migrated, which we don't do.)
+Note that EL3 guest code has no way to turn on the secondary CPUs
+because there's no emulated power controller, but this was already
+true for EL3 guest code run via -bios, -pflash, or the generic
+loader.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ include/hw/arm/xlnx-versal.h | 1 -
+ hw/arm/xlnx-versal-virt.c    | 6 ++++--
+ hw/arm/xlnx-versal.c         | 5 +----
+ 3 files changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index cdbc4cdd012..5a9c02a2561 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1317,6 +1317,11 @@ void arm_cpu_post_init(Object *obj)
-                                        OBJ_PROP_FLAG_READWRITE);
-     }
+diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+index 895ba12c61e..2de487564e4 100644
+--- a/include/hw/arm/xlnx-versal.h
++++ b/include/hw/arm/xlnx-versal.h
+@@ -89,7 +89,6 @@ struct Versal {
  
-+    /* Not DEFINE_PROP_UINT32: we want this to be settable after realize */
-+    object_property_add_uint32_ptr(obj, "psci-conduit",
-+                                   &cpu->psci_conduit,
-+                                   OBJ_PROP_FLAG_READWRITE);
-+
-     qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property);
+     struct {
+         MemoryRegion *mr_ddr;
+-        uint32_t psci_conduit;
+     } cfg;
+ };
  
-     if (arm_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER)) {
-@@ -1987,7 +1992,6 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
- }
+diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+index 0c5edc898e1..1b25342501b 100644
+--- a/hw/arm/xlnx-versal-virt.c
++++ b/hw/arm/xlnx-versal-virt.c
+@@ -626,6 +626,9 @@ static void versal_virt_init(MachineState *machine)
+      * When loading an OS, we turn on QEMU's PSCI implementation with SMC
+      * as the PSCI conduit. When there's no -kernel, we assume the user
+      * provides EL3 firmware to handle PSCI.
++     *
++     * Even if the user provides a kernel filename, arm_load_kernel()
++     * may suppress PSCI if it's going to boot that guest code at EL3.
+      */
+     if (machine->kernel_filename) {
+         psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+@@ -635,8 +638,6 @@ static void versal_virt_init(MachineState *machine)
+                             TYPE_XLNX_VERSAL);
+     object_property_set_link(OBJECT(&s->soc), "ddr", OBJECT(machine->ram),
+                              &error_abort);
+-    object_property_set_int(OBJECT(&s->soc), "psci-conduit", psci_conduit,
+-                            &error_abort);
+     sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
  
- static Property arm_cpu_properties[] = {
--    DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
-     DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
-     DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
-                         mp_affinity, ARM64_AFFINITY_INVALID),
+     fdt_create(s);
+@@ -677,6 +678,7 @@ static void versal_virt_init(MachineState *machine)
+     s->binfo.loader_start = 0x0;
+     s->binfo.get_dtb = versal_virt_get_dtb;
+     s->binfo.modify_dtb = versal_virt_modify_dtb;
++    s->binfo.psci_conduit = psci_conduit;
+     if (machine->kernel_filename) {
+         arm_load_kernel(&s->soc.fpd.apu.cpu[0], machine, &s->binfo);
+     } else {
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+index b2705b6925e..458ba33815f 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -35,10 +35,8 @@ static void versal_create_apu_cpus(Versal *s)
+         object_initialize_child(OBJECT(s), "apu-cpu[*]", &s->fpd.apu.cpu[i],
+                                 XLNX_VERSAL_ACPU_TYPE);
+         obj = OBJECT(&s->fpd.apu.cpu[i]);
+-        object_property_set_int(obj, "psci-conduit", s->cfg.psci_conduit,
+-                                &error_abort);
+         if (i) {
+-            /* Secondary CPUs start in PSCI powered-down state */
++            /* Secondary CPUs start in powered-down state */
+             object_property_set_bool(obj, "start-powered-off", true,
+                                      &error_abort);
+         }
+@@ -481,7 +479,6 @@ static void versal_init(Object *obj)
+ static Property versal_properties[] = {
+     DEFINE_PROP_LINK("ddr", Versal, cfg.mr_ddr, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
+-    DEFINE_PROP_UINT32("psci-conduit", Versal, cfg.psci_conduit, 0),
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
 -- 
 2.25.1
 

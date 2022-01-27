@@ -1,173 +1,119 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4201625lfk;
-        Thu, 27 Jan 2022 08:12:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzP9rc8g/pF1Vpchkg3r2KdL3IqXMgJ15FNGKO6uMyLTfLbPA88l/aO4fdvYYgpBPaDALa6
-X-Received: by 2002:a25:cb55:: with SMTP id b82mr6510522ybg.471.1643299975097;
-        Thu, 27 Jan 2022 08:12:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643299975; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4205487lfk;
+        Thu, 27 Jan 2022 08:18:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzR25ZbaFoBDy7v38oYUcnm/k83supIl1GQBBEuqTpJnzg4hexowaUcPOWYYPMFRwHrieyp
+X-Received: by 2002:a05:6638:28f:: with SMTP id c15mr2195483jaq.188.1643300308570;
+        Thu, 27 Jan 2022 08:18:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643300308; cv=none;
         d=google.com; s=arc-20160816;
-        b=zaepUYovAScqpbWt36Aq4cZGpA9bzIqaED9x5p2fkl5e/AQzjta9JlDh0ocJdQa/ZV
-         FfTRdjrwxbV49W4Qn/v7KKPTY6o6OUvGsg4kROED2qpADDpN45X+gA/FqJ2i1soO4J1M
-         z9kwt2Z/tHFuMTEdS+vzExk0a1iFbUB6E+X4W5h28IaIqLq37bZtNKbvBbFg/WDLETUX
-         WRuezS6SzcMmK3yqKCydVxkEPNwlab7iG9RVLuccUzWAtBvU7X7WEhOnL1e20zOcg9Ci
-         PQ2lNEs8LOjjtQ+mYQ4dQGg16Tm5AqhcibBbccI29RQtnkK2O/Ck/8C5CKCU/RN0LFsx
-         9Ovw==
+        b=vpCJYJ3z6jsYz6Y3RmnF1h9jr39BZu5pwckhsnAllK8hGjuxNK3Oql0B3jI3CL8e+8
+         yskCeFYUkK/SaSPtYb79w1pLnYjDNGMAXo2P3D5IwDM5CGka909z5w9aFxwUD+n5wFC9
+         NBhE2sxpKabrr+NsO7q+fcsyJVhPtulBlpyD9qTBgzN/gV9QCnfiBMuGz/DWHkUeNqTv
+         qLT7Ow3qCpa06f4YSdAlpyFOge93bZtSN4wP1Gz7B74H47dUgZ9/LMqsiIc97zu/DC8/
+         oJUjoFKakhNN6rAZZURcttRCj4H+Wbc1527z9qcTS8tkLkF+TLV9APBzaWd/dqwCArxK
+         DsGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=DUtLJ3E/Ba4f1f0VyVY15aJnRzdGGlTSP4JV0rpYGRw=;
-        b=CPY2/HI5DDmGdNSrzwdBl/MvhwqYviF8LYiCGUCaMNPPS+VlZKcLFjMIxnlpgVqNWv
-         ZIiGka6UmYiJJ1kcw+puxCSIfT8aUZKxLYmwsxmvtm1bgf2Yabg4Q62dSBFygHiT+bjU
-         jFc5Yxlg1kohn01+ILiFYL63mY4XPN2P7Hkfvx8rPq/ex/+9glvO9qXnRSSfzddQt2S8
-         UtM5P1CQNgSdIdbg+1ZDQhCJldHS5yGW2DLkj6MYMUik2FmwEgLoKs6SuOGlcsdi2M9R
-         8Sqv0eZyOmXeGLVoAX9OLMw+ozF8cTkzMYvBf6HXNUOa+rUkyTocWetq/eviO0N+VFf5
-         mjNw==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :content-disposition:mime-version:message-id:subject:to:from:date;
+        bh=YZCyydXJjVF9BFUjprEQACKJugo2h4kcEY90d6JuO+Q=;
+        b=xr093s4C5Hl0fKElZ57WmL0CktwPj5/2/Pk6oFRTtC+eDR/IlSTk9dZ86v2g1aJPl3
+         w1cy35q8ORg+eRq5p1Nd7TGGjO8iXFxvSvLK9wfBgt9kZlKy93l8eHPXRbAe6RZ6F7ga
+         wJhANXyR4IGCvLWKp72Fvst/HGcAoXuTJVHCP5vb1/312FcBVwdG7Gy2PihU4sTagt+1
+         qDobFaMuF5Ks9zVaq4gZRnc+iwQyNdVHoiDciejQ5FvNEV9N9RyjXY8bpRwEAovZWTpJ
+         1ZikyijpOiHDQuGX5YbuZ6RQzzMgk7k4oso0/RRBsoLewmqAZo9IHJRC6NePhuLqGCo+
+         HlpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="UVvFn/RG";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m63si19708351ybf.184.2022.01.27.08.12.54
+        by mx.google.com with ESMTPS id c2si2348103iow.100.2022.01.27.08.18.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 08:12:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Jan 2022 08:18:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="UVvFn/RG";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35582 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD7OI-00056B-Be
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 11:12:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40182)
+	(envelope-from <qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nD7Tf-0003sa-L1
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 11:18:27 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47556)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nD6V6-0007VH-Pe
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:15:52 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:27386)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nD6Uo-00036e-PI
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:15:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643296526;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DUtLJ3E/Ba4f1f0VyVY15aJnRzdGGlTSP4JV0rpYGRw=;
- b=UVvFn/RGWeMj/JIGv49eo8rsRO7BJpS/hofT24oZmGAQJWCu51o/HUUTe4CjkMaVNE4RkW
- FUdP6KHSP+k6WrFOq/OnXm4B7SRalOJRO4oDDYHjfH7rtATzfOL9BfD1jedKnGpDxHmZIz
- 9Xf26Eo2P50IXCici9YTlKYcGVrWrbg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-49-Zc4DnpovO1WhC5eyv4Nvyg-1; Thu, 27 Jan 2022 10:15:24 -0500
-X-MC-Unique: Zc4DnpovO1WhC5eyv4Nvyg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7051492500;
- Thu, 27 Jan 2022 15:15:21 +0000 (UTC)
-Received: from secure.mitica (unknown [10.39.194.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1F2AA70D4A;
- Thu, 27 Jan 2022 15:15:13 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PULL 22/38] migration: Report the error returned when
- save_live_iterate fails
-Date: Thu, 27 Jan 2022 16:05:32 +0100
-Message-Id: <20220127150548.20595-23-quintela@redhat.com>
-In-Reply-To: <20220127150548.20595-1-quintela@redhat.com>
-References: <20220127150548.20595-1-quintela@redhat.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.159,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <spamtrap@tmp.com.br>)
+ id 1nD6tC-0006X0-3O; Thu, 27 Jan 2022 10:40:47 -0500
+Received: from angmar.tmp.com.br ([188.40.49.187]:36044)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <spamtrap@tmp.com.br>)
+ id 1nD6t6-0007IB-R9; Thu, 27 Jan 2022 10:40:45 -0500
+Received: from angmar.tmp.com.br (localhost.localdomain [127.0.0.1])
+ by angmar.tmp.com.br (8.13.1/8.13.1) with ESMTP id 20RFhZ5j006220
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+ Thu, 27 Jan 2022 12:43:38 -0300
+Received: (from spamtrap@localhost)
+ by angmar.tmp.com.br (8.13.1/8.13.1/Submit) id 20RFhXSg006219;
+ Thu, 27 Jan 2022 12:43:33 -0300
+Date: Thu, 27 Jan 2022 12:43:33 -0300
+From: jmqemuml@durval.com
+To: qemu-arm@nongnu.org, qemu-discuss@nongnu.org
+Subject: How to create a Raspberry QEMU VM emulating the physical hardware as
+ close as possible
+Message-ID: <20220127154333.GC487@angmar.tmp.com.br>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.4.1i
+X-MailScanner-ID: 20RFhZ5j006220
+X-TMP-MailScanner: Not scanned: please contact your Internet E-Mail Service
+ Provider for details
+X-TMP-MailScanner-SpamCheck: 
+X-TMP-MailScanner-From: spamtrap@angmar.tmp.com.br
+X-TMP-MailScanner-To: jmqemuml@durval.com, qemu-arm@nongnu.org,
+ qemu-discuss@nongnu.org
+Received-SPF: none client-ip=188.40.49.187; envelope-from=spamtrap@tmp.com.br;
+ helo=angmar.tmp.com.br
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-discuss@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Eric Blake <eblake@redhat.com>, Hannes Reinecke <hare@suse.com>,
- Vikram Garhwal <fnu.vikram@xilinx.com>, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Markus Armbruster <armbru@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Alistair Francis <alistair@alistair23.me>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
- David Edmondson <david.edmondson@oracle.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Laurent Vivier <laurent@vivier.eu>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +p3hJLy3kd3B
+List-Id: <qemu-discuss.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-discuss>,
+ <mailto:qemu-discuss-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-discuss>
+List-Post: <mailto:qemu-discuss@nongnu.org>
+List-Help: <mailto:qemu-discuss-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-discuss>,
+ <mailto:qemu-discuss-request@nongnu.org?subject=subscribe>
+Reply-To: jmqemuml@durval.com
+Cc: jmqemuml@durval.com
+Errors-To: qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-discuss" <qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xNXaCDVcvAQm
 
-From: David Edmondson <david.edmondson@oracle.com>
+Hello everyone, 
 
-Should qemu_savevm_state_iterate() encounter a failure when calling a
-particular save_live_iterate function, report the error code returned
-by the function.
+I have a Raspberry Pi 4 model B v1.4 with 8GB RAM, and I need to create a VM in it as close to the physical hardware as possible (no need to be the exact RPi4 hardware, RPi3 or RPi2 would also work).
 
-Signed-off-by: David Edmondson <david.edmondson@oracle.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Signed-off-by: Juan Quintela <quintela@redhat.com>
----
- migration/savevm.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+The reason is because I need to run this semi-closed software which comes only in a bootable SD image: https://github.com/victronenergy/venus/wiki/raspberrypi-install-venus-image
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 0bef031acb..1599b02fbc 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -1298,8 +1298,9 @@ int qemu_savevm_state_iterate(QEMUFile *f, bool postcopy)
-         save_section_footer(f, se);
- 
-         if (ret < 0) {
--            error_report("failed to save SaveStateEntry with id(name): %d(%s)",
--                         se->section_id, se->idstr);
-+            error_report("failed to save SaveStateEntry with id(name): "
-+                         "%d(%s): %d",
-+                         se->section_id, se->idstr, ret);
-             qemu_file_set_error(f, ret);
-         }
-         if (ret <= 0) {
--- 
-2.34.1
+The host RPi is running Devuan Chimaera 4.0 (systemd-less Debian Bullseye derivative) and I'm using the QEMU v6.1 packages straight from its backports repo.
 
+I've got so far as to extracting the image and trying to run it with 
+
+        qemu-system-arm -M raspi2b -vnc :50 -drive file=~/tape/victron/venusos_rpi/venus-image-raspberrypi2-20210411203709-v2.66.rootfs.rpi-sdimg,format=raw,index=0,media=disk
+
+The result is that the QEMU process starts and keeps running, and I can connect via VNC to port 5950 to see the VM screen, but VNC shows only a black screen. 
+
+What am I doing wrong? Has anyone managed to emulate a physical RPi in QEMU yet?
+
+Additionally, hints on how to debug this or other things to try would be most welcome.
+
+Cheers, 
+--
+  Durval Menezes.

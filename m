@@ -1,206 +1,182 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4205962lfk;
-        Thu, 27 Jan 2022 08:19:09 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx9Jd6tEOICqUE/RfpaBpuTPiVKUP2/oVsTH/tPGv3bhjbkwfC+M5HNX+2d34+3Kh7ScNpk
-X-Received: by 2002:a05:6214:226c:: with SMTP id gs12mr4027304qvb.33.1643300349699;
-        Thu, 27 Jan 2022 08:19:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643300349; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4207744lfk;
+        Thu, 27 Jan 2022 08:21:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwwDueBiNQMScE3r29JMWYGgb3dF4SBS02ok6UEDxC6DLZXuIf08HFekqNbyEthQhcxe+hu
+X-Received: by 2002:a05:6214:27ed:: with SMTP id jt13mr4280465qvb.38.1643300513826;
+        Thu, 27 Jan 2022 08:21:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643300513; cv=none;
         d=google.com; s=arc-20160816;
-        b=qFpkAMgCyl8EGjm2ASz9lPrKvJuJqlU+MjPCXWtMSSL+e0QzF3GTDijopfZN/KZ5TR
-         Q+e55boZm4Fa8ZuWtsQRaLUPFwZeqEtGkZ95Lcle/T0uvhxpCR2ih1L/Aa1+VoNCNtNr
-         vGkGuKDT4kuiwjQ8wbrOWdQgoGC20ofPi4zpo656yQpL20EWmvxObxEKHzqI3v+MBvMi
-         SKJ7PQNX77n9KXQP6M7EqqPMdNZD5V3bIJD2MlOvwPgRqVmYOTHk18I3vTIe8gNlkxxe
-         opBfXbODRzY2lOizNUlYJXzn7ltqWigzjN8dKt9thWpR64BQK3QN6+z7/ckKcOjQIPAv
-         WBWA==
+        b=jy7GDXCpRrucOffZv/H2oXWLRFKzjpgrSgWFzgBdI1KN6BVYGFOoBS8JUoxN89k5lc
+         lrzJTDt+kAPVxdjZbTOlo1f+0YOqmxfWmnGMhKf+qS3PJPPwYSbddPj4Arf+NEg6gRen
+         KqGiZIp6vg81TPq2CDDd81O/wN2RNEZVAbx9/yMDzuYhqSaRt3JDj/rJzbQBy/GL1/tY
+         Hsb1n5Yp8LXtHPGcdqJoUogENBkDQ5CE3PCJBzL6INjdd9Virij4ogAXbJGetcm8aNfB
+         FpyY6XJpi9gSGo10zlWVRhanOeuIPbwMjhe1QmVvrj+z771a+4LlPxiOhBekDX1hhoD5
+         w3Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=1aqUKgcmvQE8aZsdzTIh/HJBOol3bJPDnt7wTDARukc=;
-        b=W2bFsoo+/9HCxBbAAfObX9QnpFgbMEpkayp5pFlCFRQD2cJdH5382gjwPapIGQLc6M
-         SRmLPGX96e5xQqvTqHV+wKS/ZiHBXvfMtCrlMkAb7d50t1Cp/DkP8UEWqljNxo7rNLXc
-         inQWOceItGX0W6qgsyI5cpHEH6x4XJj9YMHe5mh8tmuUTL+qOPjUyhFEdcrT3NSv72xA
-         rwlav3M2OOYiJMTScM7eM7p/ojvtfUq6aHiYrzJfb13kaGkgehOQswk1Ue0IO0mQQnBa
-         5Wim4R++lcfXooSdB839CmBqvfw18PPVSEvWZhds1ooBRtW1hCKKU8LRgRgXM6EgaT5u
-         9C7g==
+        bh=GkWkS3xp+0M05sMrGQxYgQctujCPIGIetcJubDJCE8Q=;
+        b=GiXhikjnX/EC+JhRN7IvLnHsj+xIH9+wUDi/4i3kn+Pq8hI+1a2y66+1IMbx97t27I
+         XcvEc4QH6S5FSyahW6Oz+eqYwW3yzwhyXKfjE69Twsw4GCGaXzMoDpZmCjEEZCN96qKp
+         Mk+rJrrlZx8LaiZkL78M3K6FvqROl0fHtgrM9qntfJj0bmfqsUQT+JXU5p1JYO2n+2Rt
+         QiXaTxlajNbuKR7148bjAHbq1/afJQTB5IyUEzgB9glockHGVGjkUL1Z4X0+pd1uUu88
+         fpQ5B6e7qp91Chl7UQDYIsSRuEFO0JA0YjgZcf5uM2EAxD7BHIlK1ZEF8xpcYHTEa+Sa
+         AK7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Cn44QfOn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NJk7dZZr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d8si10306582qtd.67.2022.01.27.08.19.09
+        by mx.google.com with ESMTPS id n8si10691482qkp.342.2022.01.27.08.21.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 08:19:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Jan 2022 08:21:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Cn44QfOn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47388 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NJk7dZZr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54814 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD7UL-0005Vb-36
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 11:19:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48802)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nD7Wy-0002Ho-TA
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 11:21:52 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42118)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6z2-0005nh-Us
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:46:48 -0500
-Received: from [2a00:1450:4864:20::42e] (port=38415
- helo=mail-wr1-x42e.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6z1-0008F5-5y
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:46:48 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id c23so5576526wrb.5
- for <qemu-devel@nongnu.org>; Thu, 27 Jan 2022 07:46:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=1aqUKgcmvQE8aZsdzTIh/HJBOol3bJPDnt7wTDARukc=;
- b=Cn44QfOnJG+10CY0wnxF80pK+FJRySFh9/1bfa4BL5l2M+oH7ur0a+xftzVc7YNVjd
- u8uDJ64ZooHtrDZkWCJIGe7SmyjBHp4nIwiUpJKNuPlyWDeXJry1LUyAun4S8mN8A1+K
- ZwUxEcaZvI2P2NogO6KiRQWS+vzpdsIqphkuru6ZYE+tn1cOiRS/Yc+KOwcTJVnmhHZM
- 1UVmfDyN9yDt68K07b4L7NkGho+sZ3mMRIzx5/smGJktS/xG4d84dbBiJd/etTObsZSY
- NkcFFfr75gZQ62/DRguCgQ4d0a7zKLXBQaDW8DHp/vamIzTtE7CqWar/ZOJ5uDhHLPUs
- I3gw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=1aqUKgcmvQE8aZsdzTIh/HJBOol3bJPDnt7wTDARukc=;
- b=4PBD0gc+cZnN59RsLLmqB81HCI1bmDgOsHu1BI740Cp9/DVW2AYgIsXmhH1aNB9QVE
- ZGNvdpmseom4so/AN067cpKO2JRML0NMgAZdwN+bAcQbsGWi5IpA0hg1HSdW2M7zCumr
- VjrpcP8c+3KE0b3J8SzeCYcDpb7X+kSVZfRjetQinw+fbZ7bCAXdLyxf20B3XWGOGXNG
- iTT7TsZ3f8swTjPal01j5CzP72shHs3MtFZtz08KJunuLlQFpqaF4XjHA7PQN/242yQX
- jBHKhjMBj/UozJAqF5LuURNLSa8q0YGP1thbNvWA1G6VS8OsY9f04s0XDM3JlW42CSqJ
- YJ1Q==
-X-Gm-Message-State: AOAM533MOOaMpGpk98wJK/SbbwuCXpKvzsGevl3FIAJMluMPGcS3oHcM
- CXfZgu74WbxI8vGptS55rBan2g==
-X-Received: by 2002:adf:dfcf:: with SMTP id q15mr3516389wrn.276.1643298405897; 
- Thu, 27 Jan 2022 07:46:45 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id w9sm6687667wmc.36.2022.01.27.07.46.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jan 2022 07:46:45 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 02/16] cpu.c: Make start-powered-off settable after realize
-Date: Thu, 27 Jan 2022 15:46:25 +0000
-Message-Id: <20220127154639.2090164-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220127154639.2090164-1-peter.maydell@linaro.org>
-References: <20220127154639.2090164-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1nD6ZW-0005VP-MB
+ for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:20:29 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:29148)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1nD6ZQ-00040r-Bp
+ for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:20:22 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1643296811;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=GkWkS3xp+0M05sMrGQxYgQctujCPIGIetcJubDJCE8Q=;
+ b=NJk7dZZrEk3yHODNV/+2XOx05W9lev4iwF7NtP5vnlD0OAnZuO8FbUZUx9olB2cALvGx01
+ fFFA60A3yDsNZf1P3L0fsm3Gi6BvEqPlmZG6IwnW93oDT54Kv+6Her+3kYEdsl3YJRDUEH
+ TXK9P6eT6fPa3tie/SR8NHHJ9d/YJSQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-664-BiLwoEHNOrKdNtrmqryKTg-1; Thu, 27 Jan 2022 10:20:08 -0500
+X-MC-Unique: BiLwoEHNOrKdNtrmqryKTg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F28DE19253C0;
+ Thu, 27 Jan 2022 15:20:04 +0000 (UTC)
+Received: from secure.mitica (unknown [10.39.194.185])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F12EC72FA2;
+ Thu, 27 Jan 2022 15:19:38 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 34/38] migration: No off-by-one for pss->page update in host
+ page size
+Date: Thu, 27 Jan 2022 16:05:44 +0100
+Message-Id: <20220127150548.20595-35-quintela@redhat.com>
+In-Reply-To: <20220127150548.20595-1-quintela@redhat.com>
+References: <20220127150548.20595-1-quintela@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42e
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.159,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Rob Herring <robh@kernel.org>,
- Andrew Jeffery <andrew@aj.id.au>, Andre Przywara <andre.przywara@arm.com>,
- Tyrone Ting <kfting@nuvoton.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Kunkun Jiang <jiangkunkun@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Peter Xu <peterx@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Yanan Wang <wangyanan55@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rI5jRhe31C3l
+ Gerd Hoffmann <kraxel@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ Eric Blake <eblake@redhat.com>, Andrey Gruzdev <andrey.gruzdev@virtuozzo.com>,
+ Hannes Reinecke <hare@suse.com>, Vikram Garhwal <fnu.vikram@xilinx.com>,
+ qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ Keqian Zhu <zhukeqian1@huawei.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Laurent Vivier <laurent@vivier.eu>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7POWLpcVehQn
 
-The CPU object's start-powered-off property is currently only
-settable before the CPU object is realized.  For arm machines this is
-awkward, because we would like to decide whether the CPU should be
-powered-off based on how we are booting the guest code, which is
-something done in the machine model code and in common code called by
-the machine model, which runs much later and in completely different
-parts of the codebase from the SoC object code that is responsible
-for creating and realizing the CPU objects.
+From: Peter Xu <peterx@redhat.com>
 
-Allow start-powered-off to be set after realize.  Since this isn't
-something that's supported by the DEFINE_PROP_* macros, we have to
-switch the property definition to use the
-object_class_property_add_bool() function.
+We used to do off-by-one fixup for pss->page when finished one host huge page
+transfer.  That seems to be unnecesary at all.  Drop it.
 
-Note that it doesn't conceptually make sense to change the setting of
-the property after the machine has been completely initialized,
-beacuse this would mean that the behaviour of the machine when first
-started would differ from its behaviour when the system is
-subsequently reset.  (It would also require the underlying state to
-be migrated, which we don't do.)
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Cc: Keqian Zhu <zhukeqian1@huawei.com>
+Cc: Kunkun Jiang <jiangkunkun@huawei.com>
+Cc: Andrey Gruzdev <andrey.gruzdev@virtuozzo.com>
+Signed-off-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- cpu.c | 22 +++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+ migration/ram.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/cpu.c b/cpu.c
-index 016bf06a1ae..3ea38aea707 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -196,13 +196,33 @@ static Property cpu_common_props[] = {
-     DEFINE_PROP_LINK("memory", CPUState, memory, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
- #endif
--    DEFINE_PROP_BOOL("start-powered-off", CPUState, start_powered_off, false),
-     DEFINE_PROP_END_OF_LIST(),
- };
+diff --git a/migration/ram.c b/migration/ram.c
+index ca879c744f..58adcaf430 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -1617,7 +1617,7 @@ static int ram_save_release_protection(RAMState *rs, PageSearchStatus *pss,
+     /* Check if page is from UFFD-managed region. */
+     if (pss->block->flags & RAM_UF_WRITEPROTECT) {
+         void *page_address = pss->block->host + (start_page << TARGET_PAGE_BITS);
+-        uint64_t run_length = (pss->page - start_page + 1) << TARGET_PAGE_BITS;
++        uint64_t run_length = (pss->page - start_page) << TARGET_PAGE_BITS;
  
-+static bool cpu_get_start_powered_off(Object *obj, Error **errp)
-+{
-+    CPUState *cpu = CPU(obj);
-+    return cpu->start_powered_off;
-+}
-+
-+static void cpu_set_start_powered_off(Object *obj, bool value, Error **errp)
-+{
-+    CPUState *cpu = CPU(obj);
-+    cpu->start_powered_off = value;
-+}
-+
- void cpu_class_init_props(DeviceClass *dc)
- {
-+    ObjectClass *oc = OBJECT_CLASS(dc);
-+
-     device_class_set_props(dc, cpu_common_props);
-+    /*
-+     * We can't use DEFINE_PROP_BOOL in the Property array for this
-+     * property, because we want this to be settable after realize.
-+     */
-+    object_class_property_add_bool(oc, "start-powered-off",
-+                                   cpu_get_start_powered_off,
-+                                   cpu_set_start_powered_off);
- }
+         /* Flush async buffers before un-protect. */
+         qemu_fflush(rs->f);
+@@ -2230,7 +2230,7 @@ static int ram_save_host_page(RAMState *rs, PageSearchStatus *pss)
+              offset_in_ramblock(pss->block,
+                                 ((ram_addr_t)pss->page) << TARGET_PAGE_BITS));
+     /* The offset we leave with is the min boundary of host page and block */
+-    pss->page = MIN(pss->page, hostpage_boundary) - 1;
++    pss->page = MIN(pss->page, hostpage_boundary);
  
- void cpu_exec_initfn(CPUState *cpu)
+     res = ram_save_release_protection(rs, pss, start_page);
+     return (res < 0 ? res : pages);
 -- 
-2.25.1
+2.34.1
 

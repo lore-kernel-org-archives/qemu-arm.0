@@ -1,87 +1,87 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4173515lfk;
-        Thu, 27 Jan 2022 07:29:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwjHNvamRMZtxUbGq2EF6kN1b1pQ/VdH0F7leZk+8PW47I9jTPYSd25n+ZZFrJ1E0vCVCvf
-X-Received: by 2002:a05:6e02:13ed:: with SMTP id w13mr2836900ilj.184.1643297362829;
-        Thu, 27 Jan 2022 07:29:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643297362; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4173722lfk;
+        Thu, 27 Jan 2022 07:29:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx4evCpK2SpIFvMKxf8uUY4A7dKMH+gVBnOWNCjIG23SmR1da1qUdzBr+5EHxBWX5bYW/Q8
+X-Received: by 2002:a25:50cb:: with SMTP id e194mr5941004ybb.541.1643297382203;
+        Thu, 27 Jan 2022 07:29:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643297382; cv=none;
         d=google.com; s=arc-20160816;
-        b=RxZW6AgCDJMEIrAMue6o7bS6XHXn0AxGnKmrkhEixnZTujNFbWQoV1nIa48+h0I8Bl
-         CQi/Png3sJ9IkHHNJleSyaUPaqc5cTz3p7or8EiIgRWX3gmC9AXfFUqHlzoFgKNCc/qQ
-         XMfvTxozNOCka2Uk3BLUp25ieP5/ky/VUOx9jkSWXvSyTC1dqZeS3Dx9x68QKaRDZr/n
-         dRpTxYueEKLVGBhBTqhXG3JTN/Ai/3I88pX4N9AWmaAywAj5yIQ5Ik2eW5CVwRJPw9cy
-         GNEtYqMKpuQPihZEVOqGqvV1ma/EefHlutYbRkBSNwJwQLKnrSgG/l4+zUhLcuSIvWZx
-         cPLg==
+        b=SuCx0IvlV7KkCOWDy7s+N4CRpLEdfQyEpeNox4TEKE6oO8tO2DyrrqChG2fvinE/NT
+         a16SDB66eg5f3eZwwaPFwU6H7pyAb+l0ov5cHuBGhRqsJNcBVgRkCpgiPsSul22Y42WD
+         kLx13IivxZRh3Zc5rzTgbhS96OQ2m512HhX2FnD+KT+U0oNRpQDYR00++dZWaEFlfrwh
+         YXwsW/FhGr15R9rOeTGbe6Udvq9oM/Jv+0OCZ9R9zoqNg941tVYilumR39baoLZsn/WC
+         fBPEhvFvGixbYsBUkMLAwwNdiWqks//Q4Mc6hdQN4M5aJyLrErI68ioocGupvRbvV2er
+         SY6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bsKREreB4LgJFdMcSyHUcfhSCbtvvI69hXnQz2Aotak=;
-        b=O4ETDgxZrMJ3DcjSPEeogf5cmSlWDWeoRWryn2/CH0yNpW0AnowGx5kA9gqCt+yhWm
-         kSXm1U4NOFKFTUru8W24kV+zrb0lnw20T83XWALazWomODwUyNcyj+iSoto2cEzm4+x1
-         cOS2zmdKkkjX4xBgb1tJdSyb3pLHlE8fjuldqT28XUCNmrscHti4Vsao7r8dldRIfX5f
-         l46UHsZVlYzm1NAq/sbHa5dgsg8jeSJNuPMspKO72+gYSrp9vChN9kTS0aF6T+M9sPf1
-         80500dILOUfZk2Qxzj14N9vEvI71pzFzIb1ZwEQaWYQDVGFRsFPdQqQxLcaCGHscOJj8
-         39TQ==
+        bh=jIfcME6eplHNShXh8/3HCLJjEvw8mfxrLh/NM8x7gzI=;
+        b=AMiMHpMy8hcrD1YI3Ev38u08PULx8YKff5tCEtfYzd8tzj38Mce0LIn7z3fyZUo9QM
+         POB6C268d6Pht18vSNapOAdjj83SotNI/OyJWBrTIKdksrvKNVBEXOsjqK3NbzFyUCi3
+         YGNVBGdmPkqN3wG0I6/LaBRrv8r79YHCKAkhwc6ruadjlfxC5HA8fqnC1agOi8ZtM1GD
+         UdWrgUu45fLKiAKH391KO4cjrV1vwmz0w6AbqwzylIErf2GvYgPzu289hUJbhOsso3Xq
+         4Vt7AdEsExEu+OdUgu1js+chekAKd/LBEm76bibASzvUpQm2sqC4B4jm7KuEO2soQFid
+         fY4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="NMaXmm5/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gLHJrUan;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k16si821170jav.23.2022.01.27.07.29.22
+        by mx.google.com with ESMTPS id c66si25237978ybc.799.2022.01.27.07.29.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 07:29:22 -0800 (PST)
+        Thu, 27 Jan 2022 07:29:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="NMaXmm5/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gLHJrUan;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40502 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41698 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD6iA-0007bc-5n
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 10:29:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38324)
+	id 1nD6iT-0008O7-CN
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 10:29:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38538)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nD6QZ-0002RB-ND
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:11:11 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:59085)
+ id 1nD6Qe-0002UU-9c
+ for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:11:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:44510)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nD6Pm-00020O-OI
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:11:10 -0500
+ id 1nD6Qb-0002IT-6J
+ for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:11:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643296197;
+ s=mimecast20190719; t=1643296271;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bsKREreB4LgJFdMcSyHUcfhSCbtvvI69hXnQz2Aotak=;
- b=NMaXmm5/mxRPGTe2A/XAsBjOniKJZLgqE+iXlfeQntGlOqya+WDCCguCxvHjkSl5lpN1zr
- IRzbf6JvDm7TfUgjHLaNYoklTCYNA55u0Y2j51SRSaHTjPXCB+JkZVW5ZkBn53n8tr75Hw
- YygTcq9HIgvCXQ8Lemf/S+bJZqEM8lA=
+ bh=jIfcME6eplHNShXh8/3HCLJjEvw8mfxrLh/NM8x7gzI=;
+ b=gLHJrUanQQva5FqPp6HrUr7Qp+e6yr813mjYQ2gOo9kElFZBzgLmwDfF2yuoQqz2gqhpeW
+ 00ja0Rt/JLg1AWSAssjsIFdl8SGtwBjc7zG35cKHthR8nHC87HaOMQzuN6gih3dw2nwkC3
+ oHvHDrK/TpKolg+wXNotIfStvkThLTI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-669-FcrSbXZSP6maWFHD3mBYJw-1; Thu, 27 Jan 2022 10:09:54 -0500
-X-MC-Unique: FcrSbXZSP6maWFHD3mBYJw-1
+ us-mta-556-Wb8p2HLZMEG6JHxZUsiMnA-1; Thu, 27 Jan 2022 10:11:08 -0500
+X-MC-Unique: Wb8p2HLZMEG6JHxZUsiMnA-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3EA60196E6CE;
- Thu, 27 Jan 2022 15:09:51 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D0CA0100C661;
+ Thu, 27 Jan 2022 15:11:05 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 71D0170D49;
- Thu, 27 Jan 2022 15:09:29 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 42B4470D53;
+ Thu, 27 Jan 2022 15:10:30 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 09/38] multifd: Make zlib use iov's
-Date: Thu, 27 Jan 2022 16:05:19 +0100
-Message-Id: <20220127150548.20595-10-quintela@redhat.com>
+Subject: [PULL 11/38] multifd: Remove send_write() method
+Date: Thu, 27 Jan 2022 16:05:21 +0100
+Message-Id: <20220127150548.20595-12-quintela@redhat.com>
 In-Reply-To: <20220127150548.20595-1-quintela@redhat.com>
 References: <20220127150548.20595-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -92,7 +92,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -100,7 +100,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.159,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,40 +134,147 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UVq3KCQJuuFj
+X-TUID: DjkdH87PGitB
+
+Everything use now iov's.
 
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 ---
- migration/multifd-zlib.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ migration/multifd.h      |  2 --
+ migration/multifd-zlib.c | 17 -----------------
+ migration/multifd-zstd.c | 17 -----------------
+ migration/multifd.c      | 20 ++------------------
+ 4 files changed, 2 insertions(+), 54 deletions(-)
 
+diff --git a/migration/multifd.h b/migration/multifd.h
+index c3f18af364..7496f951a7 100644
+--- a/migration/multifd.h
++++ b/migration/multifd.h
+@@ -164,8 +164,6 @@ typedef struct {
+     void (*send_cleanup)(MultiFDSendParams *p, Error **errp);
+     /* Prepare the send packet */
+     int (*send_prepare)(MultiFDSendParams *p, Error **errp);
+-    /* Write the send packet */
+-    int (*send_write)(MultiFDSendParams *p, uint32_t used, Error **errp);
+     /* Setup for receiving side */
+     int (*recv_setup)(MultiFDRecvParams *p, Error **errp);
+     /* Cleanup for receiving side */
 diff --git a/migration/multifd-zlib.c b/migration/multifd-zlib.c
-index a2fec4d01d..71480c82bb 100644
+index 71480c82bb..ba90f1aaf4 100644
 --- a/migration/multifd-zlib.c
 +++ b/migration/multifd-zlib.c
-@@ -143,6 +143,9 @@ static int zlib_send_prepare(MultiFDSendParams *p, Error **errp)
-         }
-         out_size += available - zs->avail_out;
-     }
-+    p->iov[p->iovs_num].iov_base = z->zbuff;
-+    p->iov[p->iovs_num].iov_len = out_size;
-+    p->iovs_num++;
-     p->next_packet_size = out_size;
-     p->flags |= MULTIFD_FLAG_ZLIB;
- 
-@@ -162,10 +165,7 @@ static int zlib_send_prepare(MultiFDSendParams *p, Error **errp)
-  */
- static int zlib_send_write(MultiFDSendParams *p, uint32_t used, Error **errp)
- {
--    struct zlib_data *z = p->data;
--
--    return qio_channel_write_all(p->c, (void *)z->zbuff, p->next_packet_size,
--                                 errp);
-+    return qio_channel_writev_all(p->c, p->iov, p->iovs_num, errp);
+@@ -152,22 +152,6 @@ static int zlib_send_prepare(MultiFDSendParams *p, Error **errp)
+     return 0;
  }
  
+-/**
+- * zlib_send_write: do the actual write of the data
+- *
+- * Do the actual write of the comprresed buffer.
+- *
+- * Returns 0 for success or -1 for error
+- *
+- * @p: Params for the channel that we are using
+- * @used: number of pages used
+- * @errp: pointer to an error
+- */
+-static int zlib_send_write(MultiFDSendParams *p, uint32_t used, Error **errp)
+-{
+-    return qio_channel_writev_all(p->c, p->iov, p->iovs_num, errp);
+-}
+-
  /**
+  * zlib_recv_setup: setup receive side
+  *
+@@ -307,7 +291,6 @@ static MultiFDMethods multifd_zlib_ops = {
+     .send_setup = zlib_send_setup,
+     .send_cleanup = zlib_send_cleanup,
+     .send_prepare = zlib_send_prepare,
+-    .send_write = zlib_send_write,
+     .recv_setup = zlib_recv_setup,
+     .recv_cleanup = zlib_recv_cleanup,
+     .recv_pages = zlib_recv_pages
+diff --git a/migration/multifd-zstd.c b/migration/multifd-zstd.c
+index bd393aee0d..757434d1ee 100644
+--- a/migration/multifd-zstd.c
++++ b/migration/multifd-zstd.c
+@@ -163,22 +163,6 @@ static int zstd_send_prepare(MultiFDSendParams *p, Error **errp)
+     return 0;
+ }
+ 
+-/**
+- * zstd_send_write: do the actual write of the data
+- *
+- * Do the actual write of the comprresed buffer.
+- *
+- * Returns 0 for success or -1 for error
+- *
+- * @p: Params for the channel that we are using
+- * @used: number of pages used
+- * @errp: pointer to an error
+- */
+-static int zstd_send_write(MultiFDSendParams *p, uint32_t used, Error **errp)
+-{
+-    return qio_channel_writev_all(p->c, p->iov, p->iovs_num, errp);
+-}
+-
+ /**
+  * zstd_recv_setup: setup receive side
+  *
+@@ -320,7 +304,6 @@ static MultiFDMethods multifd_zstd_ops = {
+     .send_setup = zstd_send_setup,
+     .send_cleanup = zstd_send_cleanup,
+     .send_prepare = zstd_send_prepare,
+-    .send_write = zstd_send_write,
+     .recv_setup = zstd_recv_setup,
+     .recv_cleanup = zstd_recv_cleanup,
+     .recv_pages = zstd_recv_pages
+diff --git a/migration/multifd.c b/migration/multifd.c
+index f75bd3c188..96b9cc0d8b 100644
+--- a/migration/multifd.c
++++ b/migration/multifd.c
+@@ -100,22 +100,6 @@ static int nocomp_send_prepare(MultiFDSendParams *p, Error **errp)
+     return 0;
+ }
+ 
+-/**
+- * nocomp_send_write: do the actual write of the data
+- *
+- * For no compression we just have to write the data.
+- *
+- * Returns 0 for success or -1 for error
+- *
+- * @p: Params for the channel that we are using
+- * @used: number of pages used
+- * @errp: pointer to an error
+- */
+-static int nocomp_send_write(MultiFDSendParams *p, uint32_t used, Error **errp)
+-{
+-    return qio_channel_writev_all(p->c, p->iov, p->iovs_num, errp);
+-}
+-
+ /**
+  * nocomp_recv_setup: setup receive side
+  *
+@@ -173,7 +157,6 @@ static MultiFDMethods multifd_nocomp_ops = {
+     .send_setup = nocomp_send_setup,
+     .send_cleanup = nocomp_send_cleanup,
+     .send_prepare = nocomp_send_prepare,
+-    .send_write = nocomp_send_write,
+     .recv_setup = nocomp_recv_setup,
+     .recv_cleanup = nocomp_recv_cleanup,
+     .recv_pages = nocomp_recv_pages
+@@ -690,7 +673,8 @@ static void *multifd_send_thread(void *opaque)
+             }
+ 
+             if (used) {
+-                ret = multifd_send_state->ops->send_write(p, used, &local_err);
++                ret = qio_channel_writev_all(p->c, p->iov, p->iovs_num,
++                                             &local_err);
+                 if (ret != 0) {
+                     break;
+                 }
 -- 
 2.34.1
 

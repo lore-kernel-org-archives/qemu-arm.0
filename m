@@ -1,87 +1,87 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4173924lfk;
-        Thu, 27 Jan 2022 07:30:00 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxUTPzq+raZ12IA9PaBejX3an2H34QoiFaapcoUNUWgpH9/xC9aLtJYYGNSD7MmWIRh3alN
-X-Received: by 2002:a25:188a:: with SMTP id 132mr6880055yby.616.1643297400764;
-        Thu, 27 Jan 2022 07:30:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643297400; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4174202lfk;
+        Thu, 27 Jan 2022 07:30:22 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJziXaw3T0yO9MMsckyyHCFiMcfLaPCrMCPj4Spv7Qm0FtzZbPG24pYCbcnb0VJV+Sh9HYdg
+X-Received: by 2002:a05:622a:11d0:: with SMTP id n16mr3101488qtk.13.1643297422138;
+        Thu, 27 Jan 2022 07:30:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643297422; cv=none;
         d=google.com; s=arc-20160816;
-        b=oIn6VWTt8OORg4TyrHcVRPOEk93HEgvrvUpyLMU2QGsoGFRDorm/KzSxvWLhW/8zPq
-         8iPz5UF1NCgaboT2GnvGpAERie4yDo4jIlw/6bWddnOgfzPVrQhBV2UAn0AJluMIN8aE
-         nTW16Gkba3CLF0isUh00Ljg42uvw5mxPxkQlMdfr0HSbqcSI0S5s8yjqmESZLAuLBVhW
-         HEQ4ox9S+lJ/xw/G69yZp9Zww7FJplM+3CR8pObL6UzqHhfqwz8Z3CIWIcoiupXDiptP
-         BU3Sqxg4bGfnDsA/ov934heckkZzKfGyG21wMGTARKXiMWAbUyqG722x8pq08IYu3wkS
-         4Aig==
+        b=EIDL4GTMD01Pp8vobpKFX/tEZwkZidL37kNTPj6l1sIcWzVC9ySCHRxD322hx/oRVt
+         w+P+rWhehBUO2Wjr72usgVmzkTfUCL4RribAQsaFKXdNt8vSly7EVfoHG8oGKi2TrfIg
+         6C651UmxEhSZmy/1r6oi7MDXpO11efiYvkTgY0v+N9gekEHYOcruYpvm6GMsMnVdcVQp
+         qyVUgMpP3GdFhbyJ9fGs6Akbzm5Dwe4Im85tYD0AfbOGunELXEOyllv/6uZRTnt8Oia0
+         VLUPKHC+4EzJNz9zix5DKGi4dqOt17gnAo+cgj9oxHxcZbmkVkPSQP4Z/rdVLGaI3SSZ
+         s0IQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=0hmgBIgw2vpYhvjWSpFcJn/+tADW2pBvjmWQdqRJQYc=;
-        b=zRG8Dvxl9iqFMt5+YRIE+Z3CCGuO4zDlcYiHMisAkQJCevg+cWH/dQxlOIPqDQR1VN
-         3K0/KrPni/ZaBD3elb8myMPcjhSthFM0qhXYq+jlASne4EK7gzqxl7K9mi+8kObQuICy
-         VGpCR/Nw2di/Lsml2WapSEco5LxHIENaXGRu/YH3n3ZntMKaNmA3w2QefDu2ErWnjbeb
-         /AAOeb4Q+wCdwpOlpIXZpSbWAAeKb+E7DTuJd8/24ZqXTkUIIjQcI/3IK85KDhfQT+Kz
-         FtcCKldnMtLC9u8bMdfH93wQsVRpWUNUR5X5q5ilh38M/i48chEg1qtWne8aUnXp+RoV
-         xTIA==
+        bh=tNPrpk19d5IB0vw46yUHcQziDYelLxLiw1tT27P4kV8=;
+        b=ErigW3dTdgKyPaM0cg0GAtbBTEFnCo3GQMMyzXTbgBUCUQH/WOeRTCVe39dxQmIz2a
+         kxeY6JcSCnL6J64Qn+afOx3XXD/biHdWRwuUjXpMCokQ99XCJlYq2VrDkVoV+AmfesIt
+         WqR3ugwwuwoLWGvsINy0VARMJF2juvZNZyrgt8rjM70P87bnSH36Ftyz7NQ3aNvEion/
+         MHJ2X+yMuQu2IB5R/ryfUIZ/sQAVFiG4k+rQQtKiH05Jb0Vn8GvJdAOGAGLgn0XPVVvX
+         b78MrpZfIF5TojWcXXLtg0vS1ouM8xj63Y0rvpXTBjSqH0Po96MrRgh64XfH3OJze86o
+         g7Ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MngCmIR6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gRENYBYO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p3si8379684ybu.20.2022.01.27.07.30.00
+        by mx.google.com with ESMTPS id o4si10303637qtw.606.2022.01.27.07.30.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 07:30:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Jan 2022 07:30:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MngCmIR6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gRENYBYO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42504 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43756 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD6im-0000VW-6W
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 10:30:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38872)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nD6j7-0001OL-CC
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 10:30:21 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nD6Rb-0005Cs-3X
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:12:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43799)
+ id 1nD6Rw-0005zj-EH
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:12:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:38449)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nD6RY-0002WR-TJ
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:12:14 -0500
+ id 1nD6Rt-0002Yr-97
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:12:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643296332;
+ s=mimecast20190719; t=1643296352;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0hmgBIgw2vpYhvjWSpFcJn/+tADW2pBvjmWQdqRJQYc=;
- b=MngCmIR6hxOqblooRaBk+lm8OxhOS4r6rBhZ2SOeMSPIxqwNzQIpRP5edmA6qHAHqp2nu1
- F3dP9uhJVFmOqJPkfmsE/GbVAEOQa2C3FoNNvqhKkojLEhrnRvULRvGqjf+/rXHI6ulmB+
- B4tFP3QRFmoUqK2dzu9ZU5H3crTqT8Q=
+ bh=tNPrpk19d5IB0vw46yUHcQziDYelLxLiw1tT27P4kV8=;
+ b=gRENYBYOYenM4KrZMj+UgWGVhlRoIYh/+Qp8soG5XKVgDOLtZuF3dgNQopL4dP5iCK+bei
+ C6Us4wSXRu3evYsoZ6drTvqOtFT9GKm9Jn+hppnUBcEjTOUfDZgRGCX6CEwfDbJ4Zz7+1e
+ Lb0/sfeq7dxSaci2fkuoeylqbCAop3k=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-378-_AblB7BWPOarLIbAnTpxhA-1; Thu, 27 Jan 2022 10:12:09 -0500
-X-MC-Unique: _AblB7BWPOarLIbAnTpxhA-1
+ us-mta-191-PlGmetz0P2SnomefKJjJEg-1; Thu, 27 Jan 2022 10:12:29 -0500
+X-MC-Unique: PlGmetz0P2SnomefKJjJEg-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 49E8886A060;
- Thu, 27 Jan 2022 15:12:06 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9E37C802C8F;
+ Thu, 27 Jan 2022 15:12:26 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7561772FA2;
- Thu, 27 Jan 2022 15:11:32 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A2F7F70D4D;
+ Thu, 27 Jan 2022 15:12:06 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 13/38] multifd: Unfold "used" variable by its value
-Date: Thu, 27 Jan 2022 16:05:23 +0100
-Message-Id: <20220127150548.20595-14-quintela@redhat.com>
+Subject: [PULL 14/38] multifd: Use normal pages array on the send side
+Date: Thu, 27 Jan 2022 16:05:24 +0100
+Message-Id: <20220127150548.20595-15-quintela@redhat.com>
 In-Reply-To: <20220127150548.20595-1-quintela@redhat.com>
 References: <20220127150548.20595-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -92,7 +92,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -100,81 +100,279 @@ X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.159,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Peter Xu <peterx@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Gerd Hoffmann <kraxel@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Eric Blake <eblake@redhat.com>, Hannes Reinecke <hare@suse.com>,
- Vikram Garhwal <fnu.vikram@xilinx.com>, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
+ Hannes Reinecke <hare@suse.com>, Vikram Garhwal <fnu.vikram@xilinx.com>,
+ qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
- Markus Armbruster <armbru@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Alistair Francis <alistair@alistair23.me>,
+ Markus Armbruster <armbru@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>, Alistair Francis <alistair@alistair23.me>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>, Laurent Vivier <laurent@vivier.eu>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 56VmKN7+hhFV
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6/JN0xPHrn1X
+
+We are only sending normal pages through multifd channels.
+Later on this series, we are going to also send zero pages.
+We are going to detect if a page is zero or non zero in the multifd
+channel thread, not on the main thread.
+
+So we receive an array of pages page->offset[N]
+
+And we will end with:
+
+p->normal[N - zero_pages]
+p->zero[zero_pages].
+
+In this patch, we just copy all the pages in offset to normal.
+
+for (i = 0; i < pages->num; i++) {
+    p->narmal[p->normal_num] = pages->offset[i];
+    p->normal_num++:
+}
+
+Later in the series this becomes:
+
+for (i = 0; i < pages->num; i++) {
+    if (buffer_is_zero(page->offset[i])) {
+        p->zerol[p->zero_num] = pages->offset[i];
+        p->zero_num++:
+    } else {
+        p->narmal[p->normal_num] = pages->offset[i];
+        p->normal_num++:
+    }
+}
 
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
----
- migration/multifd.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/migration/multifd.c b/migration/multifd.c
-index 1d4885e1a0..e5b1fa5015 100644
---- a/migration/multifd.c
-+++ b/migration/multifd.c
-@@ -1062,7 +1062,6 @@ static void *multifd_recv_thread(void *opaque)
-     rcu_register_thread();
+---
+
+Improving comment (dave)
+Renaming num_normal_pages to total_normal_pages (peter)
+---
+ migration/multifd.h      |  8 ++++++--
+ migration/multifd-zlib.c |  6 +++---
+ migration/multifd-zstd.c |  6 +++---
+ migration/multifd.c      | 30 +++++++++++++++++++-----------
+ migration/trace-events   |  4 ++--
+ 5 files changed, 33 insertions(+), 21 deletions(-)
+
+diff --git a/migration/multifd.h b/migration/multifd.h
+index 7496f951a7..7823199dbe 100644
+--- a/migration/multifd.h
++++ b/migration/multifd.h
+@@ -104,14 +104,18 @@ typedef struct {
+     /* thread local variables */
+     /* packets sent through this channel */
+     uint64_t num_packets;
+-    /* pages sent through this channel */
+-    uint64_t num_pages;
++    /* non zero pages sent through this channel */
++    uint64_t total_normal_pages;
+     /* syncs main thread and channels */
+     QemuSemaphore sem_sync;
+     /* buffers to send */
+     struct iovec *iov;
+     /* number of iovs used */
+     uint32_t iovs_num;
++    /* Pages that are not zero */
++    ram_addr_t *normal;
++    /* num of non zero pages */
++    uint32_t normal_num;
+     /* used for compression methods */
+     void *data;
+ }  MultiFDSendParams;
+diff --git a/migration/multifd-zlib.c b/migration/multifd-zlib.c
+index ba90f1aaf4..7f4fbef2c9 100644
+--- a/migration/multifd-zlib.c
++++ b/migration/multifd-zlib.c
+@@ -106,16 +106,16 @@ static int zlib_send_prepare(MultiFDSendParams *p, Error **errp)
+     int ret;
+     uint32_t i;
  
-     while (true) {
--        uint32_t used;
-         uint32_t flags;
+-    for (i = 0; i < p->pages->num; i++) {
++    for (i = 0; i < p->normal_num; i++) {
+         uint32_t available = z->zbuff_len - out_size;
+         int flush = Z_NO_FLUSH;
  
-         if (p->quit) {
-@@ -1085,17 +1084,16 @@ static void *multifd_recv_thread(void *opaque)
-             break;
+-        if (i == p->pages->num - 1) {
++        if (i == p->normal_num - 1) {
+             flush = Z_SYNC_FLUSH;
          }
  
--        used = p->pages->num;
-         flags = p->flags;
-         /* recv methods don't know how to handle the SYNC flag */
-         p->flags &= ~MULTIFD_FLAG_SYNC;
--        trace_multifd_recv(p->id, p->packet_num, used, flags,
-+        trace_multifd_recv(p->id, p->packet_num, p->pages->num, flags,
-                            p->next_packet_size);
-         p->num_packets++;
--        p->num_pages += used;
-+        p->num_pages += p->pages->num;
-         qemu_mutex_unlock(&p->mutex);
+         zs->avail_in = page_size;
+-        zs->next_in = p->pages->block->host + p->pages->offset[i];
++        zs->next_in = p->pages->block->host + p->normal[i];
  
--        if (used) {
-+        if (p->pages->num) {
-             ret = multifd_recv_state->ops->recv_pages(p, &local_err);
-             if (ret != 0) {
-                 break;
+         zs->avail_out = available;
+         zs->next_out = z->zbuff + out_size;
+diff --git a/migration/multifd-zstd.c b/migration/multifd-zstd.c
+index 757434d1ee..907d07805c 100644
+--- a/migration/multifd-zstd.c
++++ b/migration/multifd-zstd.c
+@@ -121,13 +121,13 @@ static int zstd_send_prepare(MultiFDSendParams *p, Error **errp)
+     z->out.size = z->zbuff_len;
+     z->out.pos = 0;
+ 
+-    for (i = 0; i < p->pages->num; i++) {
++    for (i = 0; i < p->normal_num; i++) {
+         ZSTD_EndDirective flush = ZSTD_e_continue;
+ 
+-        if (i == p->pages->num - 1) {
++        if (i == p->normal_num - 1) {
+             flush = ZSTD_e_flush;
+         }
+-        z->in.src = p->pages->block->host + p->pages->offset[i];
++        z->in.src = p->pages->block->host + p->normal[i];
+         z->in.size = page_size;
+         z->in.pos = 0;
+ 
+diff --git a/migration/multifd.c b/migration/multifd.c
+index e5b1fa5015..7b804928a2 100644
+--- a/migration/multifd.c
++++ b/migration/multifd.c
+@@ -89,13 +89,13 @@ static int nocomp_send_prepare(MultiFDSendParams *p, Error **errp)
+     MultiFDPages_t *pages = p->pages;
+     size_t page_size = qemu_target_page_size();
+ 
+-    for (int i = 0; i < p->pages->num; i++) {
+-        p->iov[p->iovs_num].iov_base = pages->block->host + pages->offset[i];
++    for (int i = 0; i < p->normal_num; i++) {
++        p->iov[p->iovs_num].iov_base = pages->block->host + p->normal[i];
+         p->iov[p->iovs_num].iov_len = page_size;
+         p->iovs_num++;
+     }
+ 
+-    p->next_packet_size = p->pages->num * page_size;
++    p->next_packet_size = p->normal_num * page_size;
+     p->flags |= MULTIFD_FLAG_NOCOMP;
+     return 0;
+ }
+@@ -262,7 +262,7 @@ static void multifd_send_fill_packet(MultiFDSendParams *p)
+ 
+     packet->flags = cpu_to_be32(p->flags);
+     packet->pages_alloc = cpu_to_be32(p->pages->allocated);
+-    packet->pages_used = cpu_to_be32(p->pages->num);
++    packet->pages_used = cpu_to_be32(p->normal_num);
+     packet->next_packet_size = cpu_to_be32(p->next_packet_size);
+     packet->packet_num = cpu_to_be64(p->packet_num);
+ 
+@@ -270,9 +270,9 @@ static void multifd_send_fill_packet(MultiFDSendParams *p)
+         strncpy(packet->ramblock, p->pages->block->idstr, 256);
+     }
+ 
+-    for (i = 0; i < p->pages->num; i++) {
++    for (i = 0; i < p->normal_num; i++) {
+         /* there are architectures where ram_addr_t is 32 bit */
+-        uint64_t temp = p->pages->offset[i];
++        uint64_t temp = p->normal[i];
+ 
+         packet->offset[i] = cpu_to_be64(temp);
+     }
+@@ -559,6 +559,8 @@ void multifd_save_cleanup(void)
+         p->packet = NULL;
+         g_free(p->iov);
+         p->iov = NULL;
++        g_free(p->normal);
++        p->normal = NULL;
+         multifd_send_state->ops->send_cleanup(p, &local_err);
+         if (local_err) {
+             migrate_set_error(migrate_get_current(), local_err);
+@@ -643,12 +645,17 @@ static void *multifd_send_thread(void *opaque)
+         qemu_mutex_lock(&p->mutex);
+ 
+         if (p->pending_job) {
+-            uint32_t used = p->pages->num;
+             uint64_t packet_num = p->packet_num;
+             uint32_t flags = p->flags;
+             p->iovs_num = 1;
++            p->normal_num = 0;
+ 
+-            if (used) {
++            for (int i = 0; i < p->pages->num; i++) {
++                p->normal[p->normal_num] = p->pages->offset[i];
++                p->normal_num++;
++            }
++
++            if (p->normal_num) {
+                 ret = multifd_send_state->ops->send_prepare(p, &local_err);
+                 if (ret != 0) {
+                     qemu_mutex_unlock(&p->mutex);
+@@ -658,12 +665,12 @@ static void *multifd_send_thread(void *opaque)
+             multifd_send_fill_packet(p);
+             p->flags = 0;
+             p->num_packets++;
+-            p->num_pages += used;
++            p->total_normal_pages += p->normal_num;
+             p->pages->num = 0;
+             p->pages->block = NULL;
+             qemu_mutex_unlock(&p->mutex);
+ 
+-            trace_multifd_send(p->id, packet_num, used, flags,
++            trace_multifd_send(p->id, packet_num, p->normal_num, flags,
+                                p->next_packet_size);
+ 
+             p->iov[0].iov_len = p->packet_len;
+@@ -713,7 +720,7 @@ out:
+     qemu_mutex_unlock(&p->mutex);
+ 
+     rcu_unregister_thread();
+-    trace_multifd_send_thread_end(p->id, p->num_packets, p->num_pages);
++    trace_multifd_send_thread_end(p->id, p->num_packets, p->total_normal_pages);
+ 
+     return NULL;
+ }
+@@ -913,6 +920,7 @@ int multifd_save_setup(Error **errp)
+         p->tls_hostname = g_strdup(s->hostname);
+         /* We need one extra place for the packet header */
+         p->iov = g_new0(struct iovec, page_count + 1);
++        p->normal = g_new0(ram_addr_t, page_count);
+         socket_send_channel_create(multifd_new_send_channel_async, p);
+     }
+ 
+diff --git a/migration/trace-events b/migration/trace-events
+index 5172cb3b3d..171a83a55d 100644
+--- a/migration/trace-events
++++ b/migration/trace-events
+@@ -124,13 +124,13 @@ multifd_recv_sync_main_wait(uint8_t id) "channel %u"
+ multifd_recv_terminate_threads(bool error) "error %d"
+ multifd_recv_thread_end(uint8_t id, uint64_t packets, uint64_t pages) "channel %u packets %" PRIu64 " pages %" PRIu64
+ multifd_recv_thread_start(uint8_t id) "%u"
+-multifd_send(uint8_t id, uint64_t packet_num, uint32_t used, uint32_t flags, uint32_t next_packet_size) "channel %u packet_num %" PRIu64 " pages %u flags 0x%x next packet size %u"
++multifd_send(uint8_t id, uint64_t packet_num, uint32_t normal, uint32_t flags, uint32_t next_packet_size) "channel %u packet_num %" PRIu64 " normal pages %u flags 0x%x next packet size %u"
+ multifd_send_error(uint8_t id) "channel %u"
+ multifd_send_sync_main(long packet_num) "packet num %ld"
+ multifd_send_sync_main_signal(uint8_t id) "channel %u"
+ multifd_send_sync_main_wait(uint8_t id) "channel %u"
+ multifd_send_terminate_threads(bool error) "error %d"
+-multifd_send_thread_end(uint8_t id, uint64_t packets, uint64_t pages) "channel %u packets %" PRIu64 " pages %"  PRIu64
++multifd_send_thread_end(uint8_t id, uint64_t packets, uint64_t normal_pages) "channel %u packets %" PRIu64 " normal pages %"  PRIu64
+ multifd_send_thread_start(uint8_t id) "%u"
+ multifd_tls_outgoing_handshake_start(void *ioc, void *tioc, const char *hostname) "ioc=%p tioc=%p hostname=%s"
+ multifd_tls_outgoing_handshake_error(void *ioc, const char *err) "ioc=%p err=%s"
 -- 
 2.34.1
 

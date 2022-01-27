@@ -1,88 +1,87 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4185497lfk;
-        Thu, 27 Jan 2022 07:48:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzQTDoItGZD4nJpRcnH+Abutdu/hS2sPQrOc7/+1sSZUK63s9VkU2jyvMnVI/+FT78tHzm4
-X-Received: by 2002:a25:ae0d:: with SMTP id a13mr6413768ybj.115.1643298513793;
-        Thu, 27 Jan 2022 07:48:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643298513; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4186379lfk;
+        Thu, 27 Jan 2022 07:50:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwrZflumE3DgG0efhr2RCMoTDWyGetASfmftoMhWkpLUZaYY6owB5pjKc9eLUnWlkekrcRX
+X-Received: by 2002:a05:6602:1541:: with SMTP id h1mr1038416iow.145.1643298600643;
+        Thu, 27 Jan 2022 07:50:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643298600; cv=none;
         d=google.com; s=arc-20160816;
-        b=oIZYuZhIT5VUKTDG0z3kom/YEdAwYfYIwTyDbfU3G+lTh8Ux62yCqku7KxI9LgzRGv
-         ZcRrziZn5N+0LrKs764XEwx8/BUhK3GvMVayRWLdMblpPTukIB0Q/eCmexxw5MjZZ3kp
-         4Ko1opFA6F5LRypn0j1h8/zJJ3bR/NsbSk52oHqCI5ii0LUQIL77DrczOk3El8jjOFsr
-         t/smu/+ooXzycW8w2Gk5/eTaU15LgirrlIGoD74suQPZD+wqpbZXRBZ+aU0xme/EOpUD
-         ZDxELSBTkh/ntwkYgQg5EoYF7oT57SsihpV6HmFte1Fi+ieg8NBZ6XSKPxSedQO/IDGC
-         +pTg==
+        b=EJv7EwPItQznipv2Rf15lSqqpFd96QmGAfdhh6auNeRSopnhwD+8hF2ryrg6JEZ4a9
+         GmCpLBG5nhcuA7rRDlM2Rap528B5zPA73HQDpypeaPtf+tLR03fD7VNkIeh1XjqfL5Yq
+         i6Ivo7txU/mJNoScY5B4lt7Q7dIti5Xrb9Eb1GkYufH4yI6kxddpyrj+ju0qbVgGla+4
+         VqQT8apIV2wzcifqinqh8JbTIrNldODc/GwkEwx9kb6BiFSEeVijCfzSJJ0NRg6PJihP
+         /jXPRiO55ZKwA2WvcN04wRYaIQSHGTEIubmBAHkoDjgh9gwoekEjkwWL1LTCue8CMpPV
+         qlfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=/osl7oqZ/l1nIb7N6ea0VQuADVcsGBk75aoqoxqFn4s=;
-        b=LHEiQQTtopF9nZgMdZUQ1Pxo67tMgWfh5WISPq4MkbdD06aNmjA9fFl6ok6ibqiIkO
-         Xl92hSVFm6hf9MTbxT4YbbLoa3UrAjDy32iFaeWfMxMFooSgdwLAXw+7CgcQ0JrQGJje
-         06ECB+FXefqrrZjbU5L5U/fZKiDbKUK03nqX3SJ7K8gtpEXgIDYt3mn8uaObRWyqBAZl
-         ZrWacYCSwBlPCpOprHRffvdxPPwSFBNzDde78rwKYgivDkXKeqBJvzbs6IFRzcH2kzr9
-         V325ADRXk7za7tyNl2bnZfZmr+L/5D6QPTqG54mz76VRXFgOtKfd4erWYUeQ5eaRXAQd
-         lM9w==
+        bh=yTQ4I0ZcTmklehXGFG8JWS5ZQcOuFKPVBWjAxpcMXkI=;
+        b=EVyBdT/snEMtZggPBPYdXDY8fchaW/KJMxipCZH8pv3sTbHN7iBCYdyoXxglR/Faei
+         viMf+v1D3fijEe9vR45D1Sgh8DxqeoER2kw1iTPRyMZ6tZD2uurQZndPqxi3+gTRM0Rh
+         YXf/TTUDu17E31lzNrVX+VOT4ccB4509vlkt1qcETINeP9iic+CtmV99Gnlkj4hZUZj3
+         ipBRCbruJLyziQ3I5TzDlJ/igxw5EABjnkTXYkAvMo8mz5j2SIYlmziEkvD3HzSEy9V8
+         rSoJsNv+5NctcVcbepfxEWrNgTANpoeTeu89t/Hq7WFkznaT+zoSZKbyPDNs8InGAnjI
+         YnRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eGNKF4mY;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AVTa4sx8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w2si19308145ybu.812.2022.01.27.07.48.33
+        by mx.google.com with ESMTPS id i8si1745625jak.67.2022.01.27.07.50.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 07:48:33 -0800 (PST)
+        Thu, 27 Jan 2022 07:50:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eGNKF4mY;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AVTa4sx8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49746 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52976 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD70j-0008QU-5V
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 10:48:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40160)
+	id 1nD728-0002Gt-16
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 10:50:00 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nD6V4-0007Ti-71
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:15:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:60717)
+ id 1nD6Vd-0007kl-TA
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:16:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:45176)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nD6Uo-00033t-Qy
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:15:37 -0500
+ id 1nD6VT-0003Ga-OL
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:16:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643296520;
+ s=mimecast20190719; t=1643296562;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/osl7oqZ/l1nIb7N6ea0VQuADVcsGBk75aoqoxqFn4s=;
- b=eGNKF4mYXgUxCruLyoLaQQ/19ns4f511QVtvl+ZuZLguUjunmsBET4w1XdadOBJJOlCRNy
- K7YMr5d/AmsowpIToYE4d1Dq63WRgluI5smTCH4TWsEiAbLpJoQuycklExgNvzlMVF/74/
- GS1lFXx0nFJyDdyGlmrQzp6LZstw0Fo=
+ bh=yTQ4I0ZcTmklehXGFG8JWS5ZQcOuFKPVBWjAxpcMXkI=;
+ b=AVTa4sx8tTfxui8lCIGBILTLVLctJYoySkGCdW/8E28qOJjLS4OvkXdzj5IEWTnPjLdHNo
+ ysdr/r/jcZgLrQR1OLxM539wdf/TzhlkAcwv9KEiRnD0RxoswNI8LQg/ZvVU/19TH9EEfa
+ nNi7Bw55OM6ggLMBr8BB3VOmQDHLnBs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-595-Nax2lDkyM8ugxTXn4ZGJxg-1; Thu, 27 Jan 2022 10:15:16 -0500
-X-MC-Unique: Nax2lDkyM8ugxTXn4ZGJxg-1
+ us-mta-542-C240IvzhOI-sakn0SvyGSA-1; Thu, 27 Jan 2022 10:16:01 -0500
+X-MC-Unique: C240IvzhOI-sakn0SvyGSA-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B68A680D693;
- Thu, 27 Jan 2022 15:15:13 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AEC44814249;
+ Thu, 27 Jan 2022 15:15:58 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A738F70D4C;
- Thu, 27 Jan 2022 15:15:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AF37D70D2D;
+ Thu, 27 Jan 2022 15:15:51 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 21/38] migration/migration.c: Remove the
- MIGRATION_STATUS_ACTIVE when migration finished
-Date: Thu, 27 Jan 2022 16:05:31 +0100
-Message-Id: <20220127150548.20595-22-quintela@redhat.com>
+Subject: [PULL 27/38] migration: Don't return for postcopy_chunk_hostpages()
+Date: Thu, 27 Jan 2022 16:05:37 +0100
+Message-Id: <20220127150548.20595-28-quintela@redhat.com>
 In-Reply-To: <20220127150548.20595-1-quintela@redhat.com>
 References: <20220127150548.20595-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -91,9 +90,9 @@ Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -123,49 +122,80 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Hannes Reinecke <hare@suse.com>, Vikram Garhwal <fnu.vikram@xilinx.com>,
  qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
- Markus Armbruster <armbru@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>, Alistair Francis <alistair@alistair23.me>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Alistair Francis <alistair@alistair23.me>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>, Laurent Vivier <laurent@vivier.eu>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Zhang Chen <chen.zhang@intel.com>, qemu-ppc@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6yREiwSpuR9Z
+X-TUID: DfMCZ98ZSOdW
 
-From: Zhang Chen <chen.zhang@intel.com>
+From: Peter Xu <peterx@redhat.com>
 
-The MIGRATION_STATUS_ACTIVE indicates that migration is running.
-Remove it to be handled by the default operation,
-It should be part of the unknown ending states.
+It always return zero, because it just can't go wrong so far.  Simplify the
+code with no functional change.
 
-Signed-off-by: Zhang Chen <chen.zhang@intel.com>
+Signed-off-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/migration.c | 6 ------
- 1 file changed, 6 deletions(-)
+ migration/ram.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index 5b2e3c66d1..3849b33108 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -3625,12 +3625,6 @@ static void migration_iteration_finish(MigrationState *s)
-                          "COLO enabled", __func__);
-         }
-         migrate_start_colo_process(s);
--         /* Fallthrough */
--    case MIGRATION_STATUS_ACTIVE:
--        /*
--         * We should really assert here, but since it's during
--         * migration, let's try to reduce the usage of assertions.
--         */
-         s->vm_was_running = true;
-         /* Fallthrough */
-     case MIGRATION_STATUS_FAILED:
+diff --git a/migration/ram.c b/migration/ram.c
+index 9a06ea6dd4..c60cf5ad83 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -2566,12 +2566,10 @@ static void postcopy_chunk_hostpages_pass(MigrationState *ms, RAMBlock *block)
+  * dirty host-page size chunks as all dirty.  In this case the host-page
+  * is the host-page for the particular RAMBlock, i.e. it might be a huge page
+  *
+- * Returns zero on success
+- *
+  * @ms: current migration state
+  * @block: block we want to work with
+  */
+-static int postcopy_chunk_hostpages(MigrationState *ms, RAMBlock *block)
++static void postcopy_chunk_hostpages(MigrationState *ms, RAMBlock *block)
+ {
+     postcopy_discard_send_init(ms, block->idstr);
+ 
+@@ -2581,7 +2579,6 @@ static int postcopy_chunk_hostpages(MigrationState *ms, RAMBlock *block)
+     postcopy_chunk_hostpages_pass(ms, block);
+ 
+     postcopy_discard_send_finish(ms);
+-    return 0;
+ }
+ 
+ /**
+@@ -2603,7 +2600,6 @@ int ram_postcopy_send_discard_bitmap(MigrationState *ms)
+ {
+     RAMState *rs = ram_state;
+     RAMBlock *block;
+-    int ret;
+ 
+     RCU_READ_LOCK_GUARD();
+ 
+@@ -2617,10 +2613,7 @@ int ram_postcopy_send_discard_bitmap(MigrationState *ms)
+ 
+     RAMBLOCK_FOREACH_NOT_IGNORED(block) {
+         /* Deal with TPS != HPS and huge pages */
+-        ret = postcopy_chunk_hostpages(ms, block);
+-        if (ret) {
+-            return ret;
+-        }
++        postcopy_chunk_hostpages(ms, block);
+     }
+     trace_ram_postcopy_send_discard_bitmap();
+ 
 -- 
 2.34.1
 

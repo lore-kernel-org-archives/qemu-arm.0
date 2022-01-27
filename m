@@ -1,105 +1,107 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4235127lfk;
-        Thu, 27 Jan 2022 09:05:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx3rljSYMMmmdSDbHE20YWNZjZ2egP/W7KbHH58GEF3CvSwFCOLcwJPKlwQdsKwRqLDQddO
-X-Received: by 2002:a67:3285:: with SMTP id y127mr2110276vsy.37.1643303157893;
-        Thu, 27 Jan 2022 09:05:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643303157; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4237490lfk;
+        Thu, 27 Jan 2022 09:08:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzu4EOdb7eMMV8MO8CG74HGFBYcm0XJ6SyazIliOZF08FCj1eshs8xZs+WAbLv1ZTKzdslC
+X-Received: by 2002:a05:6102:1611:: with SMTP id cu17mr2031449vsb.28.1643303332215;
+        Thu, 27 Jan 2022 09:08:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643303332; cv=none;
         d=google.com; s=arc-20160816;
-        b=bipswzasGBdWSfdXibzxcGWBs9LPxOYk5TeM2NqJvDEFSp0vSx8KfCpg4RixcZuABt
-         gEEd1KgXJQCJHB31nBEOKZ8f9aunhRV9NQAaAUX8qGW5/k3XDXBdux0/Y3ufLM7XMjvK
-         /Jb7R5EwuIdVfpsFZi4Tgr2l9T86kTvHfbnvWqH1m4kIBMYgEOstKv12Iy35aXQPDhSi
-         tN7snHRMC+YPZrQSckikehJWjyeCrinm3tcRoKU4TKlZsnXo0ScCLE/SE+Ehbk8qVR2S
-         Na9HwFwJMQ7mUHQsYqOkJRoBlsDGQxlrQK6j7OAfF9GH9f5cmjtjRYuI3AhtpxVwybJL
-         8AaQ==
+        b=B+kdPAVxwT50weR0vpQLdppZAYjSbJjnvZ0wmRK4zwrZ/OK1bPflRZ+VlHgG6VFWhs
+         +nBbtexOCBX+xwFIr52zLtUGtGYoS6BPkWRIQPrjFe8+OzSmwdeOeP5c0b/vKAG7bzGl
+         UWB3rUo/HgOti+1utHaGQuCMvY6aujQP/XnnZGM4RdbBWimqJ37RSJGbJ6WSOfJJc+5R
+         AD9Vjx2noFDGngpgc79t0J+OuDUV8Sh46WFSypTA5sc+3QgCpyEG9MEFqCg4c88fQ/Ep
+         45sAv85gTVcVnb2+NFuKDRHvWkXNXUNvG8zGsW7zhN0C44EiqWvY5ZPNQWoKSDdbaiAK
+         ZCPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=DfIhd8MoTLGoeHrJIwdVILwXtofxSeMFrV8DeNXbnjE=;
-        b=N1B4TVA4zO5GXmBWl0tevtndXwridGSkZPFVC5DwKxhfOREDBGlLoVw9LU7mxd7w67
-         DUrl4quUSaA/kttlcXlvnqfpP1+jOHmnOb/xsN4vHYwh1yQRUqkTLMCT8h1nAV9STT3B
-         OxM+dyaqQ7mg7sE+Qu7Zq3wpMTS7MCuvFBtpYGeAumsCaKuGWkcu2/afLS/9Si0GCuPY
-         3nkCxDXtJmi1bZGJg8O6q3fJ7KJA2tR//lfSUbJ1wydkn+x1CcqHmlv6Mg/oT0Db6FkF
-         a6AOGuya+8KbUMJGyILy+qlqr1V7Gna/VvmsTNd1twPQw3RjkLp+4saAtsHCx9e1kATe
-         XhFg==
+        bh=ZZJxnO0wXp3VlaW8QIoFJ6AD9P5ehX63O95QyB7R9Xw=;
+        b=eNQj89G+xh5tebE84mw/3r1x2XgvNZ8wEUFjCzu2nMsXBUOiCy2vEXNvLfUxSXc7BL
+         lBeTHXji6Fxxd4EgyS8n0+WEhv1Jo3IPbCxW9mLgH3N2Wd6owZky4JlBDGG1eoj0tGQJ
+         CarcF7Ygp7iFzNYKT1n2k6bzuOsdPlo3+DcWfwYqYxTDgy2VH2YpgpiZ46fgUB8CO4am
+         HEkuerFC4zZnMaXDv9GdBApAPePj8XFTzJu+NXRDxHg/h0f49mhguCAMlAaRo8n8W0RC
+         CLwNPUUFTY57ed5VgSgNDuGdDRfyF5adbKBhkwGtAqdRsmbG4jUS7wzAg3gndbChQFF9
+         rTAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EY26MJId;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GPWmK26o;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d9si2419596vke.85.2022.01.27.09.05.57
+        by mx.google.com with ESMTPS id m2si1104544vsv.700.2022.01.27.09.08.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 09:05:57 -0800 (PST)
+        Thu, 27 Jan 2022 09:08:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EY26MJId;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GPWmK26o;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35066 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42502 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD8Dd-0006Vw-8A
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 12:05:57 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49262)
+	id 1nD8GR-000373-Ba
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 12:08:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6zV-0006sy-Ch
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:47:17 -0500
-Received: from [2a00:1450:4864:20::42c] (port=33605
- helo=mail-wr1-x42c.google.com)
+ id 1nD6z2-0005mo-NX
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:46:48 -0500
+Received: from [2a00:1450:4864:20::331] (port=38789
+ helo=mail-wm1-x331.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6zQ-0008P5-Uh
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:47:16 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id e8so5674638wrc.0
- for <qemu-devel@nongnu.org>; Thu, 27 Jan 2022 07:47:09 -0800 (PST)
+ id 1nD6z0-0008Ev-3m
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:46:48 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ o30-20020a05600c511e00b0034f4c3186f4so6210733wms.3
+ for <qemu-devel@nongnu.org>; Thu, 27 Jan 2022 07:46:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=DfIhd8MoTLGoeHrJIwdVILwXtofxSeMFrV8DeNXbnjE=;
- b=EY26MJIdltYrrTH7zWb5KlQlfxK1uEGig84kew7gyMawNfiVI4HqXNvTOcX/zK2uqh
- 6UAPpu9Klq/GwvJHfnTu8uwSFRFY5/o1yWTj1jfQXLmwvRtAs6ZYFBHOc8ox34xqbi1O
- E4YCp9fKIId4o7t4m7FwP/UyR4KHj73/+Ru/5UJH1yTfcWNktd1bSPEziaYBAOKi8m+W
- 1wYjUgG8SYM1jjK0qrC48c3+cm6X8lg8W/4Ts3q5t/WOwAzaYNpLSvQMdqqJG9V5lWUh
- +dQgFsqMSEbOU1vIq17u9J8fj2h2hgUqrPhIucEldRf3VAZLK28cEAo8/dMbYNdDmfdb
- +0uw==
+ bh=ZZJxnO0wXp3VlaW8QIoFJ6AD9P5ehX63O95QyB7R9Xw=;
+ b=GPWmK26oRrRzo6qTxk1QnyLLJT4NOZ51/eaym8TtSnugj4hGzL90ExvfuzVc9g6u+f
+ HrXACdgG3x9s3GHGKk8CbyemjfkS7+buruDKHg4tiHwujMWmwWagbBd0yth7bdLVndNd
+ /H1Fmrcs0R3PCHv362NQL8bxgUGLeOuFTUAygmFUXaL1A3YPjFkeCHwmF/zNl5SpBnSn
+ ojlNLnF582zccAm9AG0aluK5Iz03heLu5uKwJpSs6rrFPS+w5srepzXtsWO/2rs5HiFl
+ H5PK4lyY6HjoTKkjrLBUtndHlj0/CEOaU0bZLHNXUTSbTkugLZ3M6igxI3ngvGn161Bs
+ WYDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=DfIhd8MoTLGoeHrJIwdVILwXtofxSeMFrV8DeNXbnjE=;
- b=KIPrOBPmt0sKF+t5VSLCjFbza/2RZESCyyRXNZijjvMfplgF4opfhJzyaqQK1ZKj1L
- /ctA7D0sQmE+s/dC3NL+IUUQQaHkF5ky/L29sUDAi9pWnTv4BNkyk2TZ9/NUL9xhGeFI
- HoI0w6EZ1xlsVzUhzclkw3ix4yI3rF9xsTwLD9actQyXWozNDQaxKRuZa8OESH587ZU4
- LU87HX1qNmKR6Omkjv7pJFTNuo/hHpOpwN0SoK02d7Nt8+aOBV3et+I5DHoyJnO2M9Al
- 5k5ClIP8gBRfu7UFKfgO16wT2UMTYBZ/2esgKTwWx+pkwFgt75lF/H9CU8VeNTGVvvL6
- eZVA==
-X-Gm-Message-State: AOAM532FLB7a/uXcoaoS7KvosD7gx+iXBr7uSupzr/GbrmwIG6bF9Wfb
- hz5an40DNS3Yx3Avr0mncI66zQ==
-X-Received: by 2002:adf:b610:: with SMTP id f16mr3530437wre.266.1643298428943; 
- Thu, 27 Jan 2022 07:47:08 -0800 (PST)
+ bh=ZZJxnO0wXp3VlaW8QIoFJ6AD9P5ehX63O95QyB7R9Xw=;
+ b=L/ZOQ7uzIrv2FKuJizpataMvzsyOpbup946mWv3VncIRwvzJDRLzXgEYWloxqMa7ju
+ PPUhHsWCx+mf08K79eVclwdk97/ANjvgWBrqxxXKykQMY9M8SxKd4FiBYiOMpM/UIpwq
+ wuE2757sexdPRIpKWbOIQ/2Krh+7SRpv9eIa4pkJ2UbmKaAnBfPIg07jw7hNxwfgyU2K
+ 3KuMYGBiqcIzeSZ63TrEOIGoAe+Y4sDoYhWVGaxXpcoVdEkeMyRvGoPHEDF7+HsscDC+
+ uzz2CfXJuPGMPP/2W3U+Mu7bk7qfNVy0AWAm6ZIiSQ5bYdTho2nltaBn7M7XvwxNGL+0
+ 8wAw==
+X-Gm-Message-State: AOAM531DzqvPr31OWA0HAcifmOMEf24CaPdu2Oy1JZTwi5AgVG4TTWkH
+ gXj7Xn/YxioK3IWCel6vxDY7OA==
+X-Received: by 2002:a05:600c:a4b:: with SMTP id
+ c11mr12437091wmq.135.1643298404398; 
+ Thu, 27 Jan 2022 07:46:44 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id w9sm6687667wmc.36.2022.01.27.07.47.07
+ by smtp.gmail.com with ESMTPSA id w9sm6687667wmc.36.2022.01.27.07.46.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jan 2022 07:47:08 -0800 (PST)
+ Thu, 27 Jan 2022 07:46:44 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 14/16] hw/arm/highbank: Drop unused secondary boot stub code
-Date: Thu, 27 Jan 2022 15:46:37 +0000
-Message-Id: <20220127154639.2090164-15-peter.maydell@linaro.org>
+Subject: [PATCH 01/16] target/arm: make psci-conduit settable after realize
+Date: Thu, 27 Jan 2022 15:46:24 +0000
+Message-Id: <20220127154639.2090164-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220127154639.2090164-1-peter.maydell@linaro.org>
 References: <20220127154639.2090164-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42c
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::331
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -134,109 +136,57 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
  Andrey Smirnov <andrew.smirnov@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0s9dxbWtkgcB
+X-TUID: Eq/2N4iSFU8E
 
-The highbank and midway board code includes boot-stub code for
-handling secondary CPU boot which keeps the secondaries in a pen
-until the primary writes to a known location with the address they
-should jump to.
+We want to allow the psci-conduit property to be set after realize,
+because the parts of the code which are best placed to decide if it's
+OK to enable QEMU's builtin PSCI emulation (the board code and the
+arm_load_kernel() function are distant from the code which creates
+and realizes CPUs (typically inside an SoC object's init and realize
+method) and run afterwards.
 
-This code is never used, because the boards enable QEMU's PSCI
-emulation, so secondary CPUs are kept powered off until the PSCI call
-which turns them on, and then start execution from the address given
-by the guest in that PSCI call.  Delete the unreachable code.
+Since the DEFINE_PROP_* macros don't have support for creating
+properties which can be changed after realize, change the property to
+be created with object_property_add_uint32_ptr(), which is what we
+already use in this function for creating settable-after-realize
+properties like init-svtor and init-nsvtor.
 
-(The code was wrong for midway in any case -- on the Cortex-A15 the
-GIC CPU interface registers are at a different offset from PERIPHBASE
-compared to the Cortex-A9, and the code baked-in the offsets for
-highbank's A9.)
-
-Note that this commit implicitly depends on the preceding "Don't
-write secondary boot stub if using PSCI" commit -- the default
-secondary-boot stub code overlaps with one of the highbank-specific
-bootcode rom blobs, so we must suppress the secondary-boot
-stub code entirely, not merely replace the highbank-specific
-version with the default.
+Note that it doesn't conceptually make sense to change the setting of
+the property after the machine has been completely initialized,
+beacuse this would mean that the behaviour of the machine when first
+started would differ from its behaviour when the system is
+subsequently reset.  (It would also require the underlying state to
+be migrated, which we don't do.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/highbank.c | 56 -----------------------------------------------
- 1 file changed, 56 deletions(-)
+ target/arm/cpu.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-index a21afd178d1..da681b15708 100644
---- a/hw/arm/highbank.c
-+++ b/hw/arm/highbank.c
-@@ -48,60 +48,6 @@
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index cdbc4cdd012..5a9c02a2561 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1317,6 +1317,11 @@ void arm_cpu_post_init(Object *obj)
+                                        OBJ_PROP_FLAG_READWRITE);
+     }
  
- /* Board init.  */
++    /* Not DEFINE_PROP_UINT32: we want this to be settable after realize */
++    object_property_add_uint32_ptr(obj, "psci-conduit",
++                                   &cpu->psci_conduit,
++                                   OBJ_PROP_FLAG_READWRITE);
++
+     qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property);
  
--static void hb_write_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
--{
--    int n;
--    uint32_t smpboot[] = {
--        0xee100fb0, /* mrc p15, 0, r0, c0, c0, 5 - read current core id */
--        0xe210000f, /* ands r0, r0, #0x0f */
--        0xe3a03040, /* mov r3, #0x40 - jump address is 0x40 + 0x10 * core id */
--        0xe0830200, /* add r0, r3, r0, lsl #4 */
--        0xe59f2024, /* ldr r2, privbase */
--        0xe3a01001, /* mov r1, #1 */
--        0xe5821100, /* str r1, [r2, #256] - set GICC_CTLR.Enable */
--        0xe3a010ff, /* mov r1, #0xff */
--        0xe5821104, /* str r1, [r2, #260] - set GICC_PMR.Priority to 0xff */
--        0xf57ff04f, /* dsb */
--        0xe320f003, /* wfi */
--        0xe5901000, /* ldr     r1, [r0] */
--        0xe1110001, /* tst     r1, r1 */
--        0x0afffffb, /* beq     <wfi> */
--        0xe12fff11, /* bx      r1 */
--        MPCORE_PERIPHBASE   /* privbase: MPCore peripheral base address.  */
--    };
--    for (n = 0; n < ARRAY_SIZE(smpboot); n++) {
--        smpboot[n] = tswap32(smpboot[n]);
--    }
--    rom_add_blob_fixed_as("smpboot", smpboot, sizeof(smpboot), SMP_BOOT_ADDR,
--                          arm_boot_address_space(cpu, info));
--}
--
--static void hb_reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
--{
--    CPUARMState *env = &cpu->env;
--
--    switch (info->nb_cpus) {
--    case 4:
--        address_space_stl_notdirty(&address_space_memory,
--                                   SMP_BOOT_REG + 0x30, 0,
--                                   MEMTXATTRS_UNSPECIFIED, NULL);
--        /* fallthrough */
--    case 3:
--        address_space_stl_notdirty(&address_space_memory,
--                                   SMP_BOOT_REG + 0x20, 0,
--                                   MEMTXATTRS_UNSPECIFIED, NULL);
--        /* fallthrough */
--    case 2:
--        address_space_stl_notdirty(&address_space_memory,
--                                   SMP_BOOT_REG + 0x10, 0,
--                                   MEMTXATTRS_UNSPECIFIED, NULL);
--        env->regs[15] = SMP_BOOT_ADDR;
--        break;
--    default:
--        break;
--    }
--}
--
- #define NUM_REGS      0x200
- static void hb_regs_write(void *opaque, hwaddr offset,
-                           uint64_t value, unsigned size)
-@@ -380,8 +326,6 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
-     highbank_binfo.board_id = -1;
-     highbank_binfo.nb_cpus = smp_cpus;
-     highbank_binfo.loader_start = 0;
--    highbank_binfo.write_secondary_boot = hb_write_secondary;
--    highbank_binfo.secondary_cpu_reset_hook = hb_reset_secondary;
-     highbank_binfo.board_setup_addr = BOARD_SETUP_ADDR;
-     highbank_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+     if (arm_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER)) {
+@@ -1987,7 +1992,6 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+ }
  
+ static Property arm_cpu_properties[] = {
+-    DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
+     DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
+     DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+                         mp_affinity, ARM64_AFFINITY_INVALID),
 -- 
 2.25.1
 

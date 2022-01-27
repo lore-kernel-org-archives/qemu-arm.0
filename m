@@ -1,111 +1,106 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp3663371lfk;
-        Wed, 26 Jan 2022 14:03:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz2TRppY2M/Pc4S+8vCRl+Kuyh1PHMQsHWZFRhJoLkijR8zzjd0E3jxajmWFfM/3ShaL+jl
-X-Received: by 2002:a05:6902:1022:: with SMTP id x2mr1521761ybt.327.1643234625672;
-        Wed, 26 Jan 2022 14:03:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643234625; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4317248lfk;
+        Thu, 27 Jan 2022 11:18:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzq8oWWSy/nFeqfQNgzzjXiZdgbtWFVwWnnBXW4JRyB7LPJvNtQa6b6zL6YhiWG5K1c9IEM
+X-Received: by 2002:a05:6e02:1e08:: with SMTP id g8mr3623716ila.278.1643311115897;
+        Thu, 27 Jan 2022 11:18:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643311115; cv=none;
         d=google.com; s=arc-20160816;
-        b=TYNCNoLjkUF0cOdrkjpdtSXC030OJVyfPYNGLII3yoxsBEDBy996d1L7A+CjigMpq3
-         qU+xJ/Fknl9g9I8BTi7N5cdlkEVSSloqA4oVHkkT3gIfGzPjQE9i8SbvZTNzI4ib8ywy
-         bMKORNw8onpbZCtRD8Fnkh6kV+Bsx8Buqrnk7I8l7DCIzF5oeRdxxjkregly0ptv6RHT
-         pJedbLQ8VPdiqVde2qWaNoJ/M00dqEbuo6uJccTWnKIhn4kIQPgDFuvYUOKDXX4ekoCH
-         xGXbBqXPSc8nlntBQnyJwQsZVFQKrPX5NTKmw4thZiLtXn1HJMv+W+d0qp20Kwo+C/3H
-         lZ/g==
+        b=hA5KCUK0r0aHq9xzX+GiB5tvQ76802BvPVmxf4acDQ8xvoPV0Sbd8X9WWFns1pumAG
+         ak3H+2CTBM5VBf6bZCVVclD4EOuRba1JshdIAXb/c5/il7EyJjCLUjZg7iA4+l9mbSp7
+         nh5wfahB3WN+Gb3+LtAwJUHXzgANjuLm6uuq7m/T39JKc4qLLpD3Q5RmzjVaZTR9FR3H
+         MV821O5iUE1tiL9QNDluxBt95Sxa2lSvYvTAFRrS4UfVLahlLDLtEn7kttuCI2+TT1hx
+         sKNwGu5Yw/BPUsU81gNGTDYxT5680V5WYtfBb1cmrsayVt4zHXe3nZM6THo0agPD500Q
+         yU8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=iG4B9BYN2vzb00pYirv/XQLSJy5meKxS3lgq4BE0IRk=;
-        b=hgx1owmCZQ4AGZJba4CmQQ5Y/6C8AFwFWPK9wBCAmIjhRZX7KDN3n08azyctgXPbFB
-         eoYU5coG/4qaR5srh8olKO50/yhVr82+zZuYdL2A4q5+0XHiWgPcFN/1J6adUJlIPmfA
-         uOJfyO83L9UAhnvtiqXsG0eKXEKLA0ZhAZ5H3rnd0qef5A0OfEYHsswCInMUXsvlO0Pm
-         VHB2aRTpfg4by9MHzMEcVvPj/F4I7F8TDVKQbjdvmZVnpqFl9tS1MuvfpBgTFbm4+80Z
-         mytIlZbXs21kQW6+cT5oFFqwGBEJjOXnmWZ3eOPahpjD1DUwumZPKOHLv6R+ia/u1yh9
-         xnDw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=9roIYjWvKNu6PLReU93w+dbnd7dQrlzsqensesQLNkc=;
+        b=ICC3zg81Bs4W+RuN+U0SXDXCKIfxNKZ7oCNjhkbWwC7ObtHea9DVI1YEsbYqzzjfiw
+         +sMop8YMsqTgezx3d4gR07FCoql1YMJgmsBQeTnRoD8zF/rrXl5ZGAPVeBrNNdmPwGNr
+         TgtnkIxrrlmAPo+0EfuzS3onoVel112dkxoR4Nw/DdOLqmIdvUDXB5woSUAXJPDIb6+k
+         ZBEYOquArte9kcfXTXkXiFbrVypIBpMbb1LuQ029vvHS40zwFENsGabA10cD18AiWSqh
+         IEhksBDJoCehinPMkFYvwCKPhzl1pSnkbPR3YjoCDvw4M9fv+AMogD1m/0756T0xUY0Z
+         2aEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=UBH5t8Ym;
+       dkim=fail header.i=@linaro.org header.s=google header.b=cHHQgwlz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i143si6858069ybg.497.2022.01.26.14.03.45
+        by mx.google.com with ESMTPS id q6si2772395ilv.114.2022.01.27.11.18.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jan 2022 14:03:45 -0800 (PST)
+        Thu, 27 Jan 2022 11:18:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=UBH5t8Ym;
+       dkim=fail header.i=@linaro.org header.s=google header.b=cHHQgwlz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:47992 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49858 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nCqOG-0000oy-NY
-	for alex.bennee@linaro.org; Wed, 26 Jan 2022 17:03:44 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50834)
+	id 1nDAHz-00064q-90
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 14:18:35 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <crauer@google.com>) id 1nCqMc-0005ib-JU
- for qemu-devel@nongnu.org; Wed, 26 Jan 2022 17:02:02 -0500
-Received: from [2a00:1450:4864:20::12d] (port=34482
- helo=mail-lf1-x12d.google.com)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nDA2W-0007C8-Sn
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 14:02:37 -0500
+Received: from [2a00:1450:4864:20::42a] (port=41824
+ helo=mail-wr1-x42a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <crauer@google.com>) id 1nCqMY-0004Yz-G6
- for qemu-devel@nongnu.org; Wed, 26 Jan 2022 17:02:01 -0500
-Received: by mail-lf1-x12d.google.com with SMTP id p27so1606599lfa.1
- for <qemu-devel@nongnu.org>; Wed, 26 Jan 2022 14:01:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nDA2S-0005GV-TC
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 14:02:35 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id h21so6478439wrb.8
+ for <qemu-devel@nongnu.org>; Thu, 27 Jan 2022 11:02:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iG4B9BYN2vzb00pYirv/XQLSJy5meKxS3lgq4BE0IRk=;
- b=UBH5t8YmcM8VNHLC0L95W1hfoPeWON8S1C/tJLKVRXzAizk9KY/3SDzqky3Edp5Gnc
- BZTQ+MVbo3KgtG5N6EW3TEDZToVqWMHH0sS/3veSt2/327K3BUAUiE1xPz5UWLmwNAiL
- 42tQAKIKN4fpe1RoOep1jOD6iPZFrweTBjjD3kR9VEpGDJEjONJ5wmGlPcv/GTCdCpv3
- tyOZyEzFGeUAidlLHdEosU/oc1rai904eOkhFO2m2+C7DcxK3mRaDgv77KcMPvoAH903
- 6FciECGy/mLzKCpbGJ9jO9sj75l00X4TWLOLr3zEZ22DANaitXe740ucPm5AOHJ4Xmul
- 5BVQ==
+ :cc; bh=9roIYjWvKNu6PLReU93w+dbnd7dQrlzsqensesQLNkc=;
+ b=cHHQgwlzD6rmy8BcBKAMxZPPNcpm/87Kpr5evGqVC87+aqaYc98ESVZ44ItLTeYBA8
+ IBcinVSK/3hXYE9zr1b7lw4dKW0PnrgD2dpYdupEu7t+GDZ7vNd1Y51SyQcuLjS9B567
+ KEUUkECHcZkNJmA8Hdis5v/elUwzqV7SIkUisCks/KOtlINGDMcs9KAbOWEqsU4kPEhs
+ 3/JNJhmNghgMn5uv18P3W+LT0QNYSdoArSEcIrvCjVuYW36ay7Qdw7e8B29oa53mCaB1
+ gNCXKDjTZLAgehY2/lPis020evxnns/uSrUV8840yWYxRsPNp66MeQDVdFEdTXOuzxKe
+ IyUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=iG4B9BYN2vzb00pYirv/XQLSJy5meKxS3lgq4BE0IRk=;
- b=GI0gLMZ6jp0C0UfTEOmf8rvjL5j69Qup4Cg+v7NfPQtMK5yiAeK3AlVOL7Q8+/qq1y
- 9svuuUF1AYQhZcJNkWEvYcHI+5wzos0t1SFiFoBdVov3UP/DZX6MnJ8p0T2LsW1l8lJU
- c53QfDbx4wlE2thF1BBT4De3pqUlMv+8TcGx29zXoKLnlpqhcFFcJhKM1eelW+0ZHq0D
- S2W0i4Fs+jvFG3LKXIDERW5RdvEDezYTkAA6jk0AL+eb7vJ+3bZtCxzKhO8mao1KgqAu
- 4HOtnBjFGFj3++V4vXl0U48QfTRaH+9NeWwF0AWkAxXsh2TatOFkKytjcapyKJBjWNEy
- zWfw==
-X-Gm-Message-State: AOAM530dS0QmyS4xDXHQWHb+58tD4z4aIoSFbsgbXaU5ZqMGO9ti5YJI
- x/wLx5adXZuNdv/aJ5ySX6sfSOo6QheeGQWXwCA7aQ==
-X-Received: by 2002:ac2:46d3:: with SMTP id p19mr796184lfo.164.1643234516203; 
- Wed, 26 Jan 2022 14:01:56 -0800 (PST)
+ bh=9roIYjWvKNu6PLReU93w+dbnd7dQrlzsqensesQLNkc=;
+ b=NG9a589afCtkN3xpnIp6NJrF+5eDFFRTOc8A9o3Ebv8C1Lh0DJKfu7XJKRdQs5e6k7
+ NPkVFthv5+O/yJZNxlZYwLzr5M5iT1uGDIYHwIM6H3AgNwKXUkMFd/2jer5xU0VGmdJl
+ 9OiJ6QBVMSydffARb2xAK/rm7tstt2F5yk4SXE6vaLEKlNzvDU2+NjSqxYjDaUrB/3ty
+ yMk1b+urx9O8dmESyxCXI8MbUHzoQJLBEqj5FMR7MUQ/Q9wW5TRXKggH66dPSmSHwRWf
+ Xq8DvX0o4SHdjTpGEgHmC35ym87GuCvsjafL0wJ/KDUcfbmMU9tmkH6Zrn39wcXdo+la
+ g/GQ==
+X-Gm-Message-State: AOAM531raHvPvL8RjDpwbYdQ8WcdBddecOS7lsjR6ovfUr3MtSQAyyMm
+ yV5KPfyl9ctmr0gZ/dz5lhTTA16lLwZtjQ7xp03zmA==
+X-Received: by 2002:a05:6000:258:: with SMTP id
+ m24mr4347582wrz.2.1643310148761; 
+ Thu, 27 Jan 2022 11:02:28 -0800 (PST)
 MIME-Version: 1.0
-References: <20220110214755.810343-1-venture@google.com>
- <CAFEAcA8Bki2dpyptkSibz5=t9Fvy-PN8SjD=Z0PwcssX3MprRA@mail.gmail.com>
- <CAFEAcA_OfpMLzG=eUuzw0O_V_cgb57=XADciyfiF7U1mK0FzxQ@mail.gmail.com>
- <CAFtMCFUbBhXMxtc7RN+3OhDtckB+x-HXWbWcmh8AyncnriNFxQ@mail.gmail.com>
- <CAFEAcA9HckDH_7s5fpnHOBFQBi-fDfnhcrJ0Y9-=uDtj0bwuoQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9HckDH_7s5fpnHOBFQBi-fDfnhcrJ0Y9-=uDtj0bwuoQ@mail.gmail.com>
-From: Chris Rauer <crauer@google.com>
-Date: Wed, 26 Jan 2022 14:01:44 -0800
-Message-ID: <CAFtMCFXyFY-=J+mAmtUCvYCyk1sy4Ps9p7shg6nvxHmjvpwKAA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Adds designware i2c module and adds it to virt arm
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Patrick Venture <venture@google.com>, mst@redhat.com, imammedo@redhat.com, 
- ani@anisinha.ca, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000009f5d0a05d68359f8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::12d
+References: <20220112002515.3991540-1-titusr@google.com>
+ <20220112002515.3991540-2-titusr@google.com>
+In-Reply-To: <20220112002515.3991540-2-titusr@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Jan 2022 19:02:17 +0000
+Message-ID: <CAFEAcA_kup2t2BKkE+EnSG1sMA6ttP0HhaQJOTzCr2tEYLLFHw@mail.gmail.com>
+Subject: Re: [PATCH 2/3] tests/qtest: add tests for MAX31790 fan controller
+To: Titus Rwantare <titusr@google.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42a
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=crauer@google.com; helo=mail-lf1-x12d.google.com
-X-Spam_score_int: -167
-X-Spam_score: -16.8
-X-Spam_bar: ----------------
-X-Spam_report: (-16.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,252 +113,28 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: minyard@acm.org, venture@google.com, qemu-devel@nongnu.org, f4bug@amsat.org,
+ Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S4BKcCYaZkbV
+X-TUID: IzlQnmaO8hyT
 
---0000000000009f5d0a05d68359f8
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
->>> I need to see a pretty strong justification for why we should be
-
->>> adding new kinds of devices to the virt machine,
-
->>
-
->> The designware i2c controller is a very common controller on many
-
->>  ARM SoCs.  It has device tree bindings and ACPI bindings which
-
->> makes it ideal for this platform.
-
+On Wed, 12 Jan 2022 at 00:25, Titus Rwantare <titusr@google.com> wrote:
 >
+> Signed-off-by: Titus Rwantare <titusr@google.com>
+> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> ---
+>  tests/qtest/max31790_fan_ctrl-test.c | 171 +++++++++++++++++++++++++++
+>  tests/qtest/meson.build              |   1 +
+>  2 files changed, 172 insertions(+)
+>  create mode 100644 tests/qtest/max31790_fan_ctrl-test.c
 
->No, I mean, why do we need an i2c controller on the virt
+Tests look OK to me, so
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
->board at all ?
+Is it worth adding a test of the address auto-increment logic,
+given that the 'increases modulo 8' behaviour is not completely
+trivial ?
 
-The use case we are interested in is to enable IPMI SSIF on the arm virt
-machine which is why I was interested in something with ACPI support.  That
-particular IPMI SSIF enablement patch is not in this series but I think it
-could be pulled into the series if necessary.
-
-> > >Forgot to mention, but my prefered approach for providing
-
-> > >an i2c controller on the virt board would be to have a
-
-> > >PCI i2c controller: that way users who do need it can plug it
-
-> > >in with a -device command line option, and users who don't
-
-> > >need it never have to worry about it.
-
->
-
-> > > (We seem to have an ICH9-SMB PCI device already; I have no idea if
-it's suitable.)
-
-> > I didn't find that device suitable because it is part of the Intel
-
-> > Southbridge, which may have some Intel platform quirks, and
-
-> > we don't need all the things in that IO hub.
-
->
-
-> That's a pity. Is there a different PCI I2C controller we could model ?
-
-I=E2=80=99m not aware of any standalone PCI I2C controllers.  I=E2=80=99ve =
-seen I2C
-controllers on PCI devices with other things but I don=E2=80=99t think thos=
-e could
-be used for IPMI SSIF or other general I2C use cases.   Do you know of a
-particular device I should take a look at?
-
-
--Chris
-
-
-On Wed, Jan 26, 2022 at 10:03 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On Wed, 26 Jan 2022 at 17:12, Chris Rauer <crauer@google.com> wrote:
-> >
-> >> I need to see a pretty strong justification for why we should be
-> >> adding new kinds of devices to the virt machine,
-> >
-> > The designware i2c controller is a very common controller on many
-> >  ARM SoCs.  It has device tree bindings and ACPI bindings which
-> > makes it ideal for this platform.
->
-> No, I mean, why do we need an i2c controller on the virt
-> board at all ?
->
-> > >Forgot to mention, but my prefered approach for providing
-> > >an i2c controller on the virt board would be to have a
-> > >PCI i2c controller: that way users who do need it can plug it
-> > >in with a -device command line option, and users who don't
-> > >need it never have to worry about it.
->
-> > > (We seem to have an ICH9-SMB PCI device already; I have no idea if
-> it's suitable.)
-> > I didn't find that device suitable because it is part of the Intel
-> > Southbridge, which may have some Intel platform quirks, and
-> > we don't need all the things in that IO hub.
->
-> That's a pity. Is there a different PCI I2C controller we could model ?
->
-> thanks
-> -- PMM
->
-
---0000000000009f5d0a05d68359f8
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><span id=3D"gmail-docs-internal-guid-434984a3-7fff-9741-5b=
-b2-31bb2055b78c"><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;ma=
-rgin-bottom:0pt"><span style=3D"font-size:11pt;font-family:Arial;font-varia=
-nt-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;wh=
-ite-space:pre-wrap">&gt;&gt;&gt; I need to see a pretty strong justificatio=
-n for why we should be</span></p><p dir=3D"ltr" style=3D"line-height:1.38;m=
-argin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:11pt;font-family:=
-Arial;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-a=
-lign:baseline;white-space:pre-wrap">&gt;&gt;&gt; adding new kinds of device=
-s to the virt machine,</span></p><p dir=3D"ltr" style=3D"line-height:1.38;m=
-argin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:11pt;font-family:=
-Arial;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-a=
-lign:baseline;white-space:pre-wrap">&gt;&gt;</span></p><p dir=3D"ltr" style=
-=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-=
-size:11pt;font-family:Arial;font-variant-numeric:normal;font-variant-east-a=
-sian:normal;vertical-align:baseline;white-space:pre-wrap">&gt;&gt; The desi=
-gnware i2c controller is a very common controller on many</span></p><p dir=
-=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span =
-style=3D"font-size:11pt;font-family:Arial;font-variant-numeric:normal;font-=
-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap">&gt=
-;&gt;=C2=A0 ARM SoCs.=C2=A0 It has device tree bindings and ACPI bindings w=
-hich</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;marg=
-in-bottom:0pt"><span style=3D"font-size:11pt;font-family:Arial;font-variant=
--numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;whit=
-e-space:pre-wrap">&gt;&gt; makes it ideal for this platform.</span></p><p d=
-ir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><spa=
-n style=3D"font-size:11pt;font-family:Arial;font-variant-numeric:normal;fon=
-t-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap">&=
-gt;</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margi=
-n-bottom:0pt"><span style=3D"font-size:11pt;font-family:Arial;font-variant-=
-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white=
--space:pre-wrap">&gt;No, I mean, why do we need an i2c controller on the vi=
-rt</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin=
--bottom:0pt"><span style=3D"font-size:11pt;font-family:Arial;font-variant-n=
-umeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-=
-space:pre-wrap">&gt;board at all ?</span></p><br><p dir=3D"ltr" style=3D"li=
-ne-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:1=
-1pt;font-family:Arial;font-variant-numeric:normal;font-variant-east-asian:n=
-ormal;vertical-align:baseline;white-space:pre-wrap">The use case we are int=
-erested in is to enable IPMI SSIF on the arm virt machine which is why I wa=
-s interested in something with ACPI support.=C2=A0 That particular IPMI SSI=
-F enablement patch is not in this series but I think it could be pulled int=
-o the series if necessary.</span></p><br><p dir=3D"ltr" style=3D"line-heigh=
-t:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:11pt;font=
--family:Arial;font-variant-numeric:normal;font-variant-east-asian:normal;ve=
-rtical-align:baseline;white-space:pre-wrap">&gt; &gt; &gt;Forgot to mention=
-, but my prefered approach for providing</span></p><p dir=3D"ltr" style=3D"=
-line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-size=
-:11pt;font-family:Arial;font-variant-numeric:normal;font-variant-east-asian=
-:normal;vertical-align:baseline;white-space:pre-wrap">&gt; &gt; &gt;an i2c =
-controller on the virt board would be to have a</span></p><p dir=3D"ltr" st=
-yle=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"fo=
-nt-size:11pt;font-family:Arial;font-variant-numeric:normal;font-variant-eas=
-t-asian:normal;vertical-align:baseline;white-space:pre-wrap">&gt; &gt; &gt;=
-PCI i2c controller: that way users who do need it can plug it</span></p><p =
-dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><sp=
-an style=3D"font-size:11pt;font-family:Arial;font-variant-numeric:normal;fo=
-nt-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap">=
-&gt; &gt; &gt;in with a -device command line option, and users who don&#39;=
-t</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-=
-bottom:0pt"><span style=3D"font-size:11pt;font-family:Arial;font-variant-nu=
-meric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-s=
-pace:pre-wrap">&gt; &gt; &gt;need it never have to worry about it.</span></=
-p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-"><span style=3D"font-size:11pt;font-family:Arial;font-variant-numeric:norm=
-al;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-w=
-rap">&gt;</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt=
-;margin-bottom:0pt"><span style=3D"font-size:11pt;font-family:Arial;font-va=
-riant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline=
-;white-space:pre-wrap">&gt; &gt; &gt; (We seem to have an ICH9-SMB PCI devi=
-ce already; I have no idea if it&#39;s suitable.)</span></p><p dir=3D"ltr" =
-style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"=
-font-size:11pt;font-family:Arial;font-variant-numeric:normal;font-variant-e=
-ast-asian:normal;vertical-align:baseline;white-space:pre-wrap">&gt; &gt; I =
-didn&#39;t find that device suitable because it is part of the Intel</span>=
-</p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0=
-pt"><span style=3D"font-size:11pt;font-family:Arial;font-variant-numeric:no=
-rmal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre=
--wrap">&gt; &gt; Southbridge, which may have some Intel platform quirks, an=
-d</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-=
-bottom:0pt"><span style=3D"font-size:11pt;font-family:Arial;font-variant-nu=
-meric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-s=
-pace:pre-wrap">&gt; &gt; we don&#39;t need all the things in that IO hub.</=
-span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bot=
-tom:0pt"><span style=3D"font-size:11pt;font-family:Arial;font-variant-numer=
-ic:normal;font-variant-east-asian:normal;vertical-align:baseline;white-spac=
-e:pre-wrap">&gt;</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-=
-top:0pt;margin-bottom:0pt"><span style=3D"font-size:11pt;font-family:Arial;=
-font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:b=
-aseline;white-space:pre-wrap">&gt; That&#39;s a pity. Is there a different =
-PCI I2C controller we could model ?</span></p><br><p dir=3D"ltr" style=3D"l=
-ine-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:=
-11pt;font-family:Arial;font-variant-numeric:normal;font-variant-east-asian:=
-normal;vertical-align:baseline;white-space:pre-wrap">I=E2=80=99m not aware =
-of any standalone PCI I2C controllers.=C2=A0 I=E2=80=99ve seen I2C controll=
-ers on PCI devices with other things but I don=E2=80=99t think those could =
-be used for IPMI SSIF or other general I2C use cases. =C2=A0 Do you know of=
- a particular device I should take a look at?</span></p><p dir=3D"ltr" styl=
-e=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font=
--size:11pt;font-family:Arial;font-variant-numeric:normal;font-variant-east-=
-asian:normal;vertical-align:baseline;white-space:pre-wrap"><br></span></p><=
-p style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=
-=3D"font-size:11pt;font-family:Arial;font-variant-numeric:normal;font-varia=
-nt-east-asian:normal;vertical-align:baseline;white-space:pre-wrap">-Chris</=
-span></p><br></span></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" c=
-lass=3D"gmail_attr">On Wed, Jan 26, 2022 at 10:03 AM Peter Maydell &lt;<a h=
-ref=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wr=
-ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Wed, 26 =
-Jan 2022 at 17:12, Chris Rauer &lt;<a href=3D"mailto:crauer@google.com" tar=
-get=3D"_blank">crauer@google.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt;&gt; I need to see a pretty strong justification for why we should be<b=
-r>
-&gt;&gt; adding new kinds of devices to the virt machine,<br>
-&gt;<br>
-&gt; The designware i2c controller is a very common controller on many<br>
-&gt;=C2=A0 ARM SoCs.=C2=A0 It has device tree bindings and ACPI bindings wh=
-ich<br>
-&gt; makes it ideal for this platform.<br>
-<br>
-No, I mean, why do we need an i2c controller on the virt<br>
-board at all ?<br>
-<br>
-&gt; &gt;Forgot to mention, but my prefered approach for providing<br>
-&gt; &gt;an i2c controller on the virt board would be to have a<br>
-&gt; &gt;PCI i2c controller: that way users who do need it can plug it<br>
-&gt; &gt;in with a -device command line option, and users who don&#39;t<br>
-&gt; &gt;need it never have to worry about it.<br>
-<br>
-&gt; &gt; (We seem to have an ICH9-SMB PCI device already; I have no idea i=
-f it&#39;s suitable.)<br>
-&gt; I didn&#39;t find that device suitable because it is part of the Intel=
-<br>
-&gt; Southbridge, which may have some Intel platform quirks, and<br>
-&gt; we don&#39;t need all the things in that IO hub.<br>
-<br>
-That&#39;s a pity. Is there a different PCI I2C controller we could model ?=
-<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---0000000000009f5d0a05d68359f8--
+thanks
+-- PMM

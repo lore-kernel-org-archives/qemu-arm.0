@@ -1,87 +1,87 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4182906lfk;
-        Thu, 27 Jan 2022 07:44:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwDEUap/CgjfiBa6I8IVuiLzXzE/5NXSk8uCVi2XHkpzh1t9MHCWjhX8GlpvMPhhPklaLzX
-X-Received: by 2002:a25:bd07:: with SMTP id f7mr5956720ybk.131.1643298243472;
-        Thu, 27 Jan 2022 07:44:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643298243; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4183278lfk;
+        Thu, 27 Jan 2022 07:44:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzddAEZxxnx+bif4lqoB0hnN3L7wCa4BkEYZCGx/+9iCoT18wjJO+0SYXLf1mlT3/4UXu18
+X-Received: by 2002:a05:6902:120c:: with SMTP id s12mr6634136ybu.66.1643298279760;
+        Thu, 27 Jan 2022 07:44:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643298279; cv=none;
         d=google.com; s=arc-20160816;
-        b=brnxZ+OZzD3Z6XtDFW+4PiOrRqsdYf+f9kzAtGt2zTRi98qxUwiD8FkCLv8irm/h/y
-         dDyDTFLO1Apxd/7sPREiCGmihR+/iUhquYwnX09ICkljImLogaUmBfXgY4ccmNvREMmi
-         ZXLll4SDh9OLbGZhMtS4volkwATr2sTGY/JpvmS/xZKjkqEtLF5Cz4U50cwTsOHYDoWL
-         UW9/pXReaJuZdlpiQbl4Eqt985NjaLr8cfBpq19P+/S2zm/wp6nsOMiUJD75a8kG/wqn
-         yEqRSUO5FksHoFeeOQY//eFl8YEgbk3M5DXykg5ygzRbfXdvvsVUentjY2orhj6Tboov
-         ci2w==
+        b=flEb1KkYm4r7NDyNbIhAYiVlQAglQFGOp1sC3eZdYjAHEYt6ielhsFeeK/GtkQK5XV
+         fi936b+mv8ASSZIlmULW0dp6eDWf6v5ENFFtE/ko3251CKBLTCR82/KfsExT6YHYk5M0
+         5FxVvchBf0NoGaM+koxJSQsNBZqNpDtWbzgWGOgqcrxLMWFskp/Ib9Yyehdv58k+Pqjw
+         tCaw2KnmYyg68NYLHO8rXku8onyU4NjKKS1vvPtuon2ew42oHLqQpKFg7KSHL8Yu684d
+         icGrcDedgIEk7V0NUtCqtUm4ik809TH6O8vKNuWXDJcESqe68nUmC+WnzD+TEcq+WXM0
+         1asg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=BxZJGFjvzfnO4nc8Ezc/UIUx/16McbMtv5t6g3KJrHs=;
-        b=KpcroMUVIixmIJbgtyhQObxcuxX05X7OP2kly4Oh6OtbG8b7R9hJQNfZdNlx3VFxTP
-         +2iFakocqsrN7U7QvngTy9i0AVW/fZRMUGyxIe9yPG2wy+oxYwujAzzkbVtFsH6gPbLf
-         jAyiFq8OoJ7D1B+anoftj1yf9NZYry97rLHq0SOweK3CZKMjVb/xGNBpszWoV+50THxs
-         a6ObrZxYdGsKbdN7RSLYXKz9urFPXB56JkJQHCsE8Jv5KcYMiZGyXjGXe5BQ8ao4wEyG
-         Vqw8uZ2GCLpmLqQlooZNUgXj9leiCKNZy8msIf79KC6eRLAP/OvtxgVbUpOMdVTC8Kcp
-         5MPQ==
+        bh=A2B2+TVQlWAuqvtCs7R9leG4MI6OE0bzrkXceQTNKVc=;
+        b=gTwgGs+/4HPF7pGaSIdTf5+e3TXEWk7vg9cBrkGzLjXYW4PtV9FK6Kh77vUpIRtoqw
+         b+UdIwk3NsYizTG9Rxs6AKxNgBmu1RFYe5Rungql7KQl9EIDdVmmKd8CE1T7pCnDSzRG
+         JpxRSQjxdw4z/EePAG+257vg2xFYe5YOdEX7Rmqz0kiyfvmJWfhPnhBU/lV9HPHG/dIU
+         zCcwu8UsSmoZmrBugGGc/eCL+/2bzglEYiniQ2c77LSeQ57aT2Kquw81q/Dj0VRX/12V
+         X/9R5DYVdcksZyRoFRhdH196wDuqrLC1GPluQoJTID9naQCPWpZAf3dTT3YdvUcYqmuv
+         ZKFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HHq1PnHR;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CqTZPONZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c186si10269352ybh.588.2022.01.27.07.44.03
+        by mx.google.com with ESMTPS id r184si22723926yba.596.2022.01.27.07.44.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 07:44:03 -0800 (PST)
+        Thu, 27 Jan 2022 07:44:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HHq1PnHR;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CqTZPONZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39448 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40626 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD6wM-00014u-TB
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 10:44:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40310)
+	id 1nD6wx-0001rK-1W
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 10:44:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nD6V9-0007bG-N9
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:15:57 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:22214)
+ id 1nD6VA-0007bN-Tk
+ for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:15:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41659)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nD6V6-0003AN-I5
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:15:55 -0500
+ id 1nD6V6-0003Ay-Ig
+ for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:15:56 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643296534;
+ s=mimecast20190719; t=1643296542;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BxZJGFjvzfnO4nc8Ezc/UIUx/16McbMtv5t6g3KJrHs=;
- b=HHq1PnHRjMVDrckf4s7tL2mJxBrCDOiDms2VuT53Rme+1y76dlKAJiuXrADtQLBTgvAGnu
- zqW8ViSWqjBLIV8Fq2bpKptETA4lBHSp15BLC+qx6+xurUXdq6974C9388NGSmrbAs2A0N
- 0QK/WXDrhfDcqxWlv8C9NlJMLOittoM=
+ bh=A2B2+TVQlWAuqvtCs7R9leG4MI6OE0bzrkXceQTNKVc=;
+ b=CqTZPONZp3kfFxjcrS4NNEBMfGhFllrfcULrIn7m9py5SA4g5icSblshfUKupoUWRa179x
+ QL3NA5F4bRT96OSI+hbhCYOR+WYMnK391mMjNTjHCBa64wIYVn8GWMPM4ZRbEzrycKUxLY
+ fa/k79n/FcttBRrqbX4Ni4st7uc3/GM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-607-KmQOE7eVM9aeyUuW0fnETw-1; Thu, 27 Jan 2022 10:15:31 -0500
-X-MC-Unique: KmQOE7eVM9aeyUuW0fnETw-1
+ us-mta-669-M5K2QLXNMW6CzHNaCfVpyQ-1; Thu, 27 Jan 2022 10:15:39 -0500
+X-MC-Unique: M5K2QLXNMW6CzHNaCfVpyQ-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C9079101F7A3;
- Thu, 27 Jan 2022 15:15:28 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1B57D101F7A3;
+ Thu, 27 Jan 2022 15:15:36 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CAC6270D2D;
- Thu, 27 Jan 2022 15:15:21 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3538D70D46;
+ Thu, 27 Jan 2022 15:15:29 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 23/38] migration: Add canary to VMSTATE_END_OF_LIST
-Date: Thu, 27 Jan 2022 16:05:33 +0100
-Message-Id: <20220127150548.20595-24-quintela@redhat.com>
+Subject: [PULL 24/38] migration: Perform vmsd structure check during tests
+Date: Thu, 27 Jan 2022 16:05:34 +0100
+Message-Id: <20220127150548.20595-25-quintela@redhat.com>
 In-Reply-To: <20220127150548.20595-1-quintela@redhat.com>
 References: <20220127150548.20595-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -90,8 +90,8 @@ Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
@@ -134,88 +134,85 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bQZTQspbWkQR
+X-TUID: m2Vnro2Rsjl+
 
 From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-We fairly regularly forget VMSTATE_END_OF_LIST markers off descriptions;
-given that the current check is only for ->name being NULL, sometimes
-we get unlucky and the code apparently works and no one spots the error.
+Perform a check on vmsd structures during test runs in the hope
+of catching any missing terminators and other simple screwups.
 
-Explicitly add a flag, VMS_END that should be set, and assert it is
-set during the traversal.
-
-Note: This can't go in until we update the copy of vmstate.h in slirp.
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- include/migration/vmstate.h | 7 ++++++-
- migration/savevm.c          | 1 +
- migration/vmstate.c         | 2 ++
- 3 files changed, 9 insertions(+), 1 deletion(-)
+ migration/savevm.c | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index 017c03675c..b50708e57a 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -147,6 +147,9 @@ enum VMStateFlags {
-      * VMStateField.struct_version_id to tell which version of the
-      * structure we are referencing to use. */
-     VMS_VSTRUCT           = 0x8000,
-+
-+    /* Marker for end of list */
-+    VMS_END = 0x10000
- };
- 
- typedef enum {
-@@ -1163,7 +1166,9 @@ extern const VMStateInfo vmstate_info_qlist;
-     VMSTATE_UNUSED_BUFFER(_test, 0, _size)
- 
- #define VMSTATE_END_OF_LIST()                                         \
--    {}
-+    {                     \
-+        .flags = VMS_END, \
-+    }
- 
- int vmstate_load_state(QEMUFile *f, const VMStateDescription *vmsd,
-                        void *opaque, int version_id);
 diff --git a/migration/savevm.c b/migration/savevm.c
-index 1599b02fbc..b17e624d3f 100644
+index b17e624d3f..302babc8cf 100644
 --- a/migration/savevm.c
 +++ b/migration/savevm.c
-@@ -620,6 +620,7 @@ static void dump_vmstate_vmsd(FILE *out_file,
-             field++;
-             first = false;
-         }
-+        assert(field->flags == VMS_END);
-         fprintf(out_file, "\n%*s]", indent, "");
-     }
-     if (vmsd->subsections != NULL) {
-diff --git a/migration/vmstate.c b/migration/vmstate.c
-index 05f87cdddc..181ba08c7d 100644
---- a/migration/vmstate.c
-+++ b/migration/vmstate.c
-@@ -160,6 +160,7 @@ int vmstate_load_state(QEMUFile *f, const VMStateDescription *vmsd,
-         }
-         field++;
-     }
-+    assert(field->flags == VMS_END);
-     ret = vmstate_subsection_load(f, vmsd, opaque);
-     if (ret != 0) {
-         return ret;
-@@ -413,6 +414,7 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
-         }
-         field++;
-     }
-+    assert(field->flags == VMS_END);
+@@ -66,6 +66,7 @@
+ #include "net/announce.h"
+ #include "qemu/yank.h"
+ #include "yank_functions.h"
++#include "sysemu/qtest.h"
  
-     if (vmdesc) {
-         json_writer_end_array(vmdesc);
+ const unsigned int postcopy_ram_discard_version;
+ 
+@@ -839,6 +840,39 @@ void unregister_savevm(VMStateIf *obj, const char *idstr, void *opaque)
+     }
+ }
+ 
++/*
++ * Perform some basic checks on vmsd's at registration
++ * time.
++ */
++static void vmstate_check(const VMStateDescription *vmsd)
++{
++    const VMStateField *field = vmsd->fields;
++    const VMStateDescription **subsection = vmsd->subsections;
++
++    if (field) {
++        while (field->name) {
++            if (field->flags & (VMS_STRUCT | VMS_VSTRUCT)) {
++                /* Recurse to sub structures */
++                vmstate_check(field->vmsd);
++            }
++            /* Carry on */
++            field++;
++        }
++        /* Check for the end of field list canary */
++        assert(field->flags == VMS_END);
++    }
++
++    while (subsection && *subsection) {
++        /*
++         * The name of a subsection should start with the name of the
++         * current object.
++         */
++        assert(!strncmp(vmsd->name, (*subsection)->name, strlen(vmsd->name)));
++        vmstate_check(*subsection);
++        subsection++;
++    }
++}
++
+ int vmstate_register_with_alias_id(VMStateIf *obj, uint32_t instance_id,
+                                    const VMStateDescription *vmsd,
+                                    void *opaque, int alias_id,
+@@ -884,6 +918,11 @@ int vmstate_register_with_alias_id(VMStateIf *obj, uint32_t instance_id,
+     } else {
+         se->instance_id = instance_id;
+     }
++
++    /* Perform a recursive sanity check during the test runs */
++    if (qtest_enabled()) {
++        vmstate_check(vmsd);
++    }
+     assert(!se->compat || se->instance_id == 0);
+     savevm_state_handler_insert(se);
+     return 0;
 -- 
 2.34.1
 

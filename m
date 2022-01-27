@@ -1,106 +1,105 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4234980lfk;
-        Thu, 27 Jan 2022 09:05:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwj+ijzRAJbYDqnKLWPw2VIeQ/fauBRgTR1aEY7GWPdIy+jORqy27NFRnfofzSrlizRmKVj
-X-Received: by 2002:ab0:3897:: with SMTP id z23mr2070278uav.136.1643303147151;
-        Thu, 27 Jan 2022 09:05:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643303147; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4235127lfk;
+        Thu, 27 Jan 2022 09:05:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx3rljSYMMmmdSDbHE20YWNZjZ2egP/W7KbHH58GEF3CvSwFCOLcwJPKlwQdsKwRqLDQddO
+X-Received: by 2002:a67:3285:: with SMTP id y127mr2110276vsy.37.1643303157893;
+        Thu, 27 Jan 2022 09:05:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643303157; cv=none;
         d=google.com; s=arc-20160816;
-        b=HaId9PVlJoLjHwu2w6DS83FtjnalPDtXFOZAkQ+U0gGRaCirH6tHkT6mt9bqNjc7Dh
-         lkAS2unQma8I/cCzJAlgTqoOj6UnsGs9gqFtLPyAGnkDuZoBh9opUhvVkUnMAHLhOBnS
-         XyTcwLlWYgzIaNRxlk8K4pjDvibU0nba6LXNllerLPNdNDm0eEvMijCMgILhZW/41soV
-         dKxhNPFqjFEkNVvo+VA+HT1w8xiO1A4TdroVejBLmujZ0mdkXSEidTBR4ILh+cdzkZqS
-         CGurqEzqlTXmcLgPmO62EDQUGOIF+rAnaSPQarHAWi1TESg7nizJZjR6gDcoAbPGDiL0
-         OsxA==
+        b=bipswzasGBdWSfdXibzxcGWBs9LPxOYk5TeM2NqJvDEFSp0vSx8KfCpg4RixcZuABt
+         gEEd1KgXJQCJHB31nBEOKZ8f9aunhRV9NQAaAUX8qGW5/k3XDXBdux0/Y3ufLM7XMjvK
+         /Jb7R5EwuIdVfpsFZi4Tgr2l9T86kTvHfbnvWqH1m4kIBMYgEOstKv12Iy35aXQPDhSi
+         tN7snHRMC+YPZrQSckikehJWjyeCrinm3tcRoKU4TKlZsnXo0ScCLE/SE+Ehbk8qVR2S
+         Na9HwFwJMQ7mUHQsYqOkJRoBlsDGQxlrQK6j7OAfF9GH9f5cmjtjRYuI3AhtpxVwybJL
+         8AaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=GqgP4SwQIrPKlkYfOd5ckQhmJONd0Xid1/b7aftDkZw=;
-        b=mBGBRUmqCu8Xb8WUsBXP2L3MFrXAe/KoOGsjd3RaI1vFn+gQVmfr2dThEcoOAGSWsF
-         0/bjflJoiUBzk9P44ZQpPyRQ6MNbjYmUqOmb1JdNw7Tz1L/F/+J5gl8/zqxAFJ0kIB0R
-         /lba+YEXeMlzfz7IXb0ifgP/AyNE4KNCqoiy7sG1RsdSvTkXTUHPHMdtw1+M5TO3zA8h
-         F9UEm0YkTbesifJEmtEQmhwUBexKQbd/sn24K47Bjn6dCdGdeHh0iqL5fqg+XDaI6Pwf
-         A+uoeMsk5rL4bk4EC+1Pp+cLSybMEVIRUNI62bGMnqRPmacZVA7a+O6vxGmINjEUcWE0
-         ILag==
+        bh=DfIhd8MoTLGoeHrJIwdVILwXtofxSeMFrV8DeNXbnjE=;
+        b=N1B4TVA4zO5GXmBWl0tevtndXwridGSkZPFVC5DwKxhfOREDBGlLoVw9LU7mxd7w67
+         DUrl4quUSaA/kttlcXlvnqfpP1+jOHmnOb/xsN4vHYwh1yQRUqkTLMCT8h1nAV9STT3B
+         OxM+dyaqQ7mg7sE+Qu7Zq3wpMTS7MCuvFBtpYGeAumsCaKuGWkcu2/afLS/9Si0GCuPY
+         3nkCxDXtJmi1bZGJg8O6q3fJ7KJA2tR//lfSUbJ1wydkn+x1CcqHmlv6Mg/oT0Db6FkF
+         a6AOGuya+8KbUMJGyILy+qlqr1V7Gna/VvmsTNd1twPQw3RjkLp+4saAtsHCx9e1kATe
+         XhFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="xe/aiDz9";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=EY26MJId;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k47si313497uad.131.2022.01.27.09.05.46
+        by mx.google.com with ESMTPS id d9si2419596vke.85.2022.01.27.09.05.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 09:05:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Jan 2022 09:05:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="xe/aiDz9";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=EY26MJId;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33850 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35066 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD8DS-0005Zk-0l
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 12:05:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49184)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nD8Dd-0006Vw-8A
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 12:05:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49262)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6zT-0006p9-Jf
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:47:16 -0500
-Received: from [2a00:1450:4864:20::42b] (port=37837
- helo=mail-wr1-x42b.google.com)
+ id 1nD6zV-0006sy-Ch
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:47:17 -0500
+Received: from [2a00:1450:4864:20::42c] (port=33605
+ helo=mail-wr1-x42c.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6zQ-0008PQ-R8
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:47:15 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id w11so5581599wra.4
- for <qemu-arm@nongnu.org>; Thu, 27 Jan 2022 07:47:11 -0800 (PST)
+ id 1nD6zQ-0008P5-Uh
+ for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:47:16 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id e8so5674638wrc.0
+ for <qemu-devel@nongnu.org>; Thu, 27 Jan 2022 07:47:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=GqgP4SwQIrPKlkYfOd5ckQhmJONd0Xid1/b7aftDkZw=;
- b=xe/aiDz9VR4SQeDBF54Mq74w9NGtNdIzDX49mbT3/t2X5wR7N7sjhrANcDbDVWDh30
- lQhdRRcRYgEetLZ+oL9cDq9CpC4WSeTwatzJdETpvr2EksZ8sY9xrGOj07IxsKlgRAnD
- OFdwg/k+byB4IvTonDhtF5rxdHun0DZu44XCpxBI8y3Z50MMH2xIcJT+vFWa4tBt+3Tz
- wJ5KbFedHmAyMKUMHCERriX7ejn/ugVRivk/FwIbsYcH/Pw8iqvCHam01ftw7HkPMJuK
- 3x+2s0h9PzQ+ckYpWnskzxYuXPvL4uVMbjhSpzxWIPQJTCF8zI91BVH5FH60fimXIAgn
- V39Q==
+ bh=DfIhd8MoTLGoeHrJIwdVILwXtofxSeMFrV8DeNXbnjE=;
+ b=EY26MJIdltYrrTH7zWb5KlQlfxK1uEGig84kew7gyMawNfiVI4HqXNvTOcX/zK2uqh
+ 6UAPpu9Klq/GwvJHfnTu8uwSFRFY5/o1yWTj1jfQXLmwvRtAs6ZYFBHOc8ox34xqbi1O
+ E4YCp9fKIId4o7t4m7FwP/UyR4KHj73/+Ru/5UJH1yTfcWNktd1bSPEziaYBAOKi8m+W
+ 1wYjUgG8SYM1jjK0qrC48c3+cm6X8lg8W/4Ts3q5t/WOwAzaYNpLSvQMdqqJG9V5lWUh
+ +dQgFsqMSEbOU1vIq17u9J8fj2h2hgUqrPhIucEldRf3VAZLK28cEAo8/dMbYNdDmfdb
+ +0uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=GqgP4SwQIrPKlkYfOd5ckQhmJONd0Xid1/b7aftDkZw=;
- b=FYcx1JaumdqCx7n6YS3nUPAAxzmajozisfTkdJClBfKJHI875OXprha1yDGoE0Uw9a
- MKWDdbXqnqqYyma33O0ICr23iHPJmsuxUvomvkLox72Ifn/w73rFihforpTGxWEyE+ph
- NE5BXdi2b+Mtu9Mv32aUKrfhOUSTxX+o5wRDIYkp88zI0f00cYCbXoq0LBM494nqb+Po
- YNvZvdMBkCvw7AVWIwKH2XsLor3ZhGKcGOTxoygsY1s393YNTyZIiXymxx3n0BfsRRms
- b4Qr1vyTJR5P4IZdQIlGDMSGSDlQLMWY9qZo26SzBQDo9C+q7zap72EZ7cM2gfqpMRoI
- oZhA==
-X-Gm-Message-State: AOAM533WkJ7umoqAclFOlq3k17mjtvDYb9su0YvYwcXf10cHcchLfRR1
- pYaCwr3bCYa3OGiH8OdxUOZwje5YmKdPzg==
-X-Received: by 2002:a05:6000:4d:: with SMTP id
- k13mr3529840wrx.625.1643298430425; 
- Thu, 27 Jan 2022 07:47:10 -0800 (PST)
+ bh=DfIhd8MoTLGoeHrJIwdVILwXtofxSeMFrV8DeNXbnjE=;
+ b=KIPrOBPmt0sKF+t5VSLCjFbza/2RZESCyyRXNZijjvMfplgF4opfhJzyaqQK1ZKj1L
+ /ctA7D0sQmE+s/dC3NL+IUUQQaHkF5ky/L29sUDAi9pWnTv4BNkyk2TZ9/NUL9xhGeFI
+ HoI0w6EZ1xlsVzUhzclkw3ix4yI3rF9xsTwLD9actQyXWozNDQaxKRuZa8OESH587ZU4
+ LU87HX1qNmKR6Omkjv7pJFTNuo/hHpOpwN0SoK02d7Nt8+aOBV3et+I5DHoyJnO2M9Al
+ 5k5ClIP8gBRfu7UFKfgO16wT2UMTYBZ/2esgKTwWx+pkwFgt75lF/H9CU8VeNTGVvvL6
+ eZVA==
+X-Gm-Message-State: AOAM532FLB7a/uXcoaoS7KvosD7gx+iXBr7uSupzr/GbrmwIG6bF9Wfb
+ hz5an40DNS3Yx3Avr0mncI66zQ==
+X-Received: by 2002:adf:b610:: with SMTP id f16mr3530437wre.266.1643298428943; 
+ Thu, 27 Jan 2022 07:47:08 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id w9sm6687667wmc.36.2022.01.27.07.47.09
+ by smtp.gmail.com with ESMTPSA id w9sm6687667wmc.36.2022.01.27.07.47.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jan 2022 07:47:10 -0800 (PST)
+ Thu, 27 Jan 2022 07:47:08 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 15/16] hw/arm/boot: Drop nb_cpus field from arm_boot_info
-Date: Thu, 27 Jan 2022 15:46:38 +0000
-Message-Id: <20220127154639.2090164-16-peter.maydell@linaro.org>
+Subject: [PATCH 14/16] hw/arm/highbank: Drop unused secondary boot stub code
+Date: Thu, 27 Jan 2022 15:46:37 +0000
+Message-Id: <20220127154639.2090164-15-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220127154639.2090164-1-peter.maydell@linaro.org>
 References: <20220127154639.2090164-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42b
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42c
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -109,17 +108,17 @@ X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Eduardo Habkost <eduardo@habkost.net>,
  Beniamino Galvani <b.galvani@gmail.com>,
  Alistair Francis <alistair@alistair23.me>, Rob Herring <robh@kernel.org>,
@@ -130,292 +129,114 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
  Yanan Wang <wangyanan55@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, Alexander Graf <agraf@csgraf.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Havard Skinnemoen <hskinnemoen@google.com>,
  Andrey Smirnov <andrew.smirnov@gmail.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wzrw5iATJxVd
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0s9dxbWtkgcB
 
-We use the arm_boot_info::nb_cpus field in only one place, and that
-place can easily get the number of CPUs locally rather than relying
-on the board code to have set the field correctly.  (At least one
-board, xlnx-versal-virt, does not set the field despite having more
-than one CPU.)
+The highbank and midway board code includes boot-stub code for
+handling secondary CPU boot which keeps the secondaries in a pen
+until the primary writes to a known location with the address they
+should jump to.
+
+This code is never used, because the boards enable QEMU's PSCI
+emulation, so secondary CPUs are kept powered off until the PSCI call
+which turns them on, and then start execution from the address given
+by the guest in that PSCI call.  Delete the unreachable code.
+
+(The code was wrong for midway in any case -- on the Cortex-A15 the
+GIC CPU interface registers are at a different offset from PERIPHBASE
+compared to the Cortex-A9, and the code baked-in the offsets for
+highbank's A9.)
+
+Note that this commit implicitly depends on the preceding "Don't
+write secondary boot stub if using PSCI" commit -- the default
+secondary-boot stub code overlaps with one of the highbank-specific
+bootcode rom blobs, so we must suppress the secondary-boot
+stub code entirely, not merely replace the highbank-specific
+version with the default.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/boot.h   | 1 -
- hw/arm/aspeed.c         | 1 -
- hw/arm/boot.c           | 7 +++----
- hw/arm/exynos4_boards.c | 1 -
- hw/arm/highbank.c       | 1 -
- hw/arm/imx25_pdk.c      | 3 +--
- hw/arm/kzm.c            | 1 -
- hw/arm/mcimx6ul-evk.c   | 1 -
- hw/arm/mcimx7d-sabre.c  | 1 -
- hw/arm/npcm7xx.c        | 3 ---
- hw/arm/orangepi.c       | 4 +---
- hw/arm/raspi.c          | 1 -
- hw/arm/realview.c       | 1 -
- hw/arm/sabrelite.c      | 1 -
- hw/arm/sbsa-ref.c       | 1 -
- hw/arm/vexpress.c       | 1 -
- hw/arm/virt.c           | 1 -
- hw/arm/xilinx_zynq.c    | 1 -
- 18 files changed, 5 insertions(+), 26 deletions(-)
+ hw/arm/highbank.c | 56 -----------------------------------------------
+ 1 file changed, 56 deletions(-)
 
-diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
-index 0cfc1c95c4e..c7ebae156ec 100644
---- a/include/hw/arm/boot.h
-+++ b/include/hw/arm/boot.h
-@@ -56,7 +56,6 @@ struct arm_boot_info {
-     hwaddr smp_loader_start;
-     hwaddr smp_bootreg_addr;
-     hwaddr gic_cpu_if_addr;
--    int nb_cpus;
-     int board_id;
-     /* ARM machines that support the ARM Security Extensions use this field to
-      * control whether Linux is booted as secure(true) or non-secure(false).
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index cf20ae0db5e..d911dc904fb 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -431,7 +431,6 @@ static void aspeed_machine_init(MachineState *machine)
- 
-     aspeed_board_binfo.ram_size = machine->ram_size;
-     aspeed_board_binfo.loader_start = sc->memmap[ASPEED_DEV_SDRAM];
--    aspeed_board_binfo.nb_cpus = sc->num_cpus;
- 
-     if (amc->i2c_init) {
-         amc->i2c_init(bmc);
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 184628ce564..b46f1fe889e 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -1030,9 +1030,6 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
-         elf_machine = EM_ARM;
-     }
- 
--    if (info->nb_cpus == 0)
--        info->nb_cpus = 1;
--
-     /* Assume that raw images are linux kernels, and ELF images are not.  */
-     kernel_size = arm_load_elf(info, &elf_entry, &image_low_addr,
-                                &image_high_addr, elf_machine, as);
-@@ -1291,6 +1288,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-     AddressSpace *as = arm_boot_address_space(cpu, info);
-     int boot_el;
-     CPUARMState *env = &cpu->env;
-+    int nb_cpus = 0;
- 
-     /*
-      * CPU objects (unlike devices) are not automatically reset on system
-@@ -1300,6 +1298,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-      */
-     for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
-         qemu_register_reset(do_cpu_reset, ARM_CPU(cs));
-+        nb_cpus++;
-     }
- 
-     /*
-@@ -1376,7 +1375,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-     }
- 
-     if (info->psci_conduit == QEMU_PSCI_CONDUIT_DISABLED &&
--        info->is_linux && info->nb_cpus > 1) {
-+        info->is_linux && nb_cpus > 1) {
-         /*
-          * We're booting Linux but not using PSCI, so for SMP we need
-          * to write a custom secondary CPU boot loader stub, and arrange
-diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-index 35dd9875da1..ef5bcbc212c 100644
---- a/hw/arm/exynos4_boards.c
-+++ b/hw/arm/exynos4_boards.c
-@@ -67,7 +67,6 @@ static unsigned long exynos4_board_ram_size[EXYNOS4_NUM_OF_BOARDS] = {
- static struct arm_boot_info exynos4_board_binfo = {
-     .loader_start     = EXYNOS4210_BASE_BOOT_ADDR,
-     .smp_loader_start = EXYNOS4210_SMP_BOOT_ADDR,
--    .nb_cpus          = EXYNOS4210_NCPUS,
-     .write_secondary_boot = exynos4210_write_secondary,
- };
- 
 diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-index da681b15708..f12aacea6b8 100644
+index a21afd178d1..da681b15708 100644
 --- a/hw/arm/highbank.c
 +++ b/hw/arm/highbank.c
-@@ -324,7 +324,6 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
-      * clear that the value is meaningless.
-      */
+@@ -48,60 +48,6 @@
+ 
+ /* Board init.  */
+ 
+-static void hb_write_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
+-{
+-    int n;
+-    uint32_t smpboot[] = {
+-        0xee100fb0, /* mrc p15, 0, r0, c0, c0, 5 - read current core id */
+-        0xe210000f, /* ands r0, r0, #0x0f */
+-        0xe3a03040, /* mov r3, #0x40 - jump address is 0x40 + 0x10 * core id */
+-        0xe0830200, /* add r0, r3, r0, lsl #4 */
+-        0xe59f2024, /* ldr r2, privbase */
+-        0xe3a01001, /* mov r1, #1 */
+-        0xe5821100, /* str r1, [r2, #256] - set GICC_CTLR.Enable */
+-        0xe3a010ff, /* mov r1, #0xff */
+-        0xe5821104, /* str r1, [r2, #260] - set GICC_PMR.Priority to 0xff */
+-        0xf57ff04f, /* dsb */
+-        0xe320f003, /* wfi */
+-        0xe5901000, /* ldr     r1, [r0] */
+-        0xe1110001, /* tst     r1, r1 */
+-        0x0afffffb, /* beq     <wfi> */
+-        0xe12fff11, /* bx      r1 */
+-        MPCORE_PERIPHBASE   /* privbase: MPCore peripheral base address.  */
+-    };
+-    for (n = 0; n < ARRAY_SIZE(smpboot); n++) {
+-        smpboot[n] = tswap32(smpboot[n]);
+-    }
+-    rom_add_blob_fixed_as("smpboot", smpboot, sizeof(smpboot), SMP_BOOT_ADDR,
+-                          arm_boot_address_space(cpu, info));
+-}
+-
+-static void hb_reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
+-{
+-    CPUARMState *env = &cpu->env;
+-
+-    switch (info->nb_cpus) {
+-    case 4:
+-        address_space_stl_notdirty(&address_space_memory,
+-                                   SMP_BOOT_REG + 0x30, 0,
+-                                   MEMTXATTRS_UNSPECIFIED, NULL);
+-        /* fallthrough */
+-    case 3:
+-        address_space_stl_notdirty(&address_space_memory,
+-                                   SMP_BOOT_REG + 0x20, 0,
+-                                   MEMTXATTRS_UNSPECIFIED, NULL);
+-        /* fallthrough */
+-    case 2:
+-        address_space_stl_notdirty(&address_space_memory,
+-                                   SMP_BOOT_REG + 0x10, 0,
+-                                   MEMTXATTRS_UNSPECIFIED, NULL);
+-        env->regs[15] = SMP_BOOT_ADDR;
+-        break;
+-    default:
+-        break;
+-    }
+-}
+-
+ #define NUM_REGS      0x200
+ static void hb_regs_write(void *opaque, hwaddr offset,
+                           uint64_t value, unsigned size)
+@@ -380,8 +326,6 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
      highbank_binfo.board_id = -1;
--    highbank_binfo.nb_cpus = smp_cpus;
+     highbank_binfo.nb_cpus = smp_cpus;
      highbank_binfo.loader_start = 0;
+-    highbank_binfo.write_secondary_boot = hb_write_secondary;
+-    highbank_binfo.secondary_cpu_reset_hook = hb_reset_secondary;
      highbank_binfo.board_setup_addr = BOARD_SETUP_ADDR;
      highbank_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
-index 6dff0001633..b4f7f4e8a7f 100644
---- a/hw/arm/imx25_pdk.c
-+++ b/hw/arm/imx25_pdk.c
-@@ -114,8 +114,7 @@ static void imx25_pdk_init(MachineState *machine)
  
-     imx25_pdk_binfo.ram_size = machine->ram_size;
-     imx25_pdk_binfo.loader_start = FSL_IMX25_SDRAM0_ADDR;
--    imx25_pdk_binfo.board_id = 1771,
--    imx25_pdk_binfo.nb_cpus = 1;
-+    imx25_pdk_binfo.board_id = 1771;
- 
-     for (i = 0; i < FSL_IMX25_NUM_ESDHCS; i++) {
-         BusState *bus;
-diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
-index 39559c44c29..b1b281c9acb 100644
---- a/hw/arm/kzm.c
-+++ b/hw/arm/kzm.c
-@@ -124,7 +124,6 @@ static void kzm_init(MachineState *machine)
-     }
- 
-     kzm_binfo.ram_size = machine->ram_size;
--    kzm_binfo.nb_cpus = 1;
- 
-     if (!qtest_enabled()) {
-         arm_load_kernel(&s->soc.cpu, machine, &kzm_binfo);
-diff --git a/hw/arm/mcimx6ul-evk.c b/hw/arm/mcimx6ul-evk.c
-index 8131518426a..d83c3c380e8 100644
---- a/hw/arm/mcimx6ul-evk.c
-+++ b/hw/arm/mcimx6ul-evk.c
-@@ -34,7 +34,6 @@ static void mcimx6ul_evk_init(MachineState *machine)
-         .loader_start = FSL_IMX6UL_MMDC_ADDR,
-         .board_id = -1,
-         .ram_size = machine->ram_size,
--        .nb_cpus = machine->smp.cpus,
-         .psci_conduit = QEMU_PSCI_CONDUIT_SMC,
-     };
- 
-diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
-index ba84fc21920..6182b15f190 100644
---- a/hw/arm/mcimx7d-sabre.c
-+++ b/hw/arm/mcimx7d-sabre.c
-@@ -36,7 +36,6 @@ static void mcimx7d_sabre_init(MachineState *machine)
-         .loader_start = FSL_IMX7_MMDC_ADDR,
-         .board_id = -1,
-         .ram_size = machine->ram_size,
--        .nb_cpus = machine->smp.cpus,
-         .psci_conduit = QEMU_PSCI_CONDUIT_SMC,
-     };
- 
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index 878c2208e07..d85cc027651 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -355,10 +355,7 @@ static struct arm_boot_info npcm7xx_binfo = {
- 
- void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc)
- {
--    NPCM7xxClass *sc = NPCM7XX_GET_CLASS(soc);
--
-     npcm7xx_binfo.ram_size = machine->ram_size;
--    npcm7xx_binfo.nb_cpus = sc->num_cpus;
- 
-     arm_load_kernel(&soc->cpu[0], machine, &npcm7xx_binfo);
- }
-diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-index 68fe9182414..3ace4748704 100644
---- a/hw/arm/orangepi.c
-+++ b/hw/arm/orangepi.c
-@@ -25,9 +25,7 @@
- #include "hw/qdev-properties.h"
- #include "hw/arm/allwinner-h3.h"
- 
--static struct arm_boot_info orangepi_binfo = {
--    .nb_cpus = AW_H3_NUM_CPUS,
--};
-+static struct arm_boot_info orangepi_binfo;
- 
- static void orangepi_init(MachineState *machine)
- {
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index b4dd6c1e99a..92d068d1f9d 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -204,7 +204,6 @@ static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
- 
-     s->binfo.board_id = MACH_TYPE_BCM2708;
-     s->binfo.ram_size = ram_size;
--    s->binfo.nb_cpus = machine->smp.cpus;
- 
-     if (processor_id <= PROCESSOR_ID_BCM2836) {
-         /*
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index ddc70b54a56..7b424e94a5f 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -363,7 +363,6 @@ static void realview_init(MachineState *machine,
-     memory_region_add_subregion(sysmem, SMP_BOOT_ADDR, ram_hack);
- 
-     realview_binfo.ram_size = ram_size;
--    realview_binfo.nb_cpus = smp_cpus;
-     realview_binfo.board_id = realview_board_id[board_type];
-     realview_binfo.loader_start = (board_type == BOARD_PB_A8 ? 0x70000000 : 0);
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &realview_binfo);
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index cce49aa25cf..41191245b81 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -93,7 +93,6 @@ static void sabrelite_init(MachineState *machine)
-     }
- 
-     sabrelite_binfo.ram_size = machine->ram_size;
--    sabrelite_binfo.nb_cpus = machine->smp.cpus;
-     sabrelite_binfo.secure_boot = true;
-     sabrelite_binfo.write_secondary_boot = sabrelite_write_secondary;
-     sabrelite_binfo.secondary_cpu_reset_hook = sabrelite_reset_secondary;
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index dd944553f78..23874019639 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -776,7 +776,6 @@ static void sbsa_ref_init(MachineState *machine)
-     create_secure_ec(secure_sysmem);
- 
-     sms->bootinfo.ram_size = machine->ram_size;
--    sms->bootinfo.nb_cpus = smp_cpus;
-     sms->bootinfo.board_id = -1;
-     sms->bootinfo.loader_start = sbsa_ref_memmap[SBSA_MEM].base;
-     sms->bootinfo.get_dtb = sbsa_ref_dtb;
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index 3e99b7918ab..e1d1983ae65 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -708,7 +708,6 @@ static void vexpress_common_init(MachineState *machine)
-     }
- 
-     daughterboard->bootinfo.ram_size = machine->ram_size;
--    daughterboard->bootinfo.nb_cpus = machine->smp.cpus;
-     daughterboard->bootinfo.board_id = VEXPRESS_BOARD_ID;
-     daughterboard->bootinfo.loader_start = daughterboard->loader_start;
-     daughterboard->bootinfo.smp_loader_start = map[VE_SRAM];
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 398145a7180..46bf7ceddf3 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2229,7 +2229,6 @@ static void machvirt_init(MachineState *machine)
-     }
- 
-     vms->bootinfo.ram_size = machine->ram_size;
--    vms->bootinfo.nb_cpus = smp_cpus;
-     vms->bootinfo.board_id = -1;
-     vms->bootinfo.loader_start = vms->memmap[VIRT_MEM].base;
-     vms->bootinfo.get_dtb = machvirt_dtb;
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 50e7268396c..3190cc0b8db 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -343,7 +343,6 @@ static void zynq_init(MachineState *machine)
-     sysbus_mmio_map(busdev, 0, 0xF8007000);
- 
-     zynq_binfo.ram_size = machine->ram_size;
--    zynq_binfo.nb_cpus = 1;
-     zynq_binfo.board_id = 0xd32;
-     zynq_binfo.loader_start = 0;
-     zynq_binfo.board_setup_addr = BOARD_SETUP_ADDR;
 -- 
 2.25.1
 

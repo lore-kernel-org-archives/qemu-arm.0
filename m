@@ -1,199 +1,276 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4221681lfk;
-        Thu, 27 Jan 2022 08:43:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwKtH8wuqYaa1p7B0OSeGRJvhnUSDuAvPeqPn3ZOPk9iV8n20WiBsL+2P3MVjQ7DeZswUdP
-X-Received: by 2002:a05:6214:e68:: with SMTP id jz8mr4377172qvb.114.1643301810095;
-        Thu, 27 Jan 2022 08:43:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643301810; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4223765lfk;
+        Thu, 27 Jan 2022 08:47:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwnJSqCC+hKWFKRIHw5Niy9PM0wX1pcA4UbicdS4c35DDH0FWmhJd/+egBlI1FLRRMkcN8p
+X-Received: by 2002:a05:6638:60f:: with SMTP id g15mr2310453jar.200.1643302030126;
+        Thu, 27 Jan 2022 08:47:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643302030; cv=none;
         d=google.com; s=arc-20160816;
-        b=xIx+YZxEhHwY2D4szjOPKLvaL7X+9BAAr2tIm55QzIRp9MeTIlyGEWE0rH3pDNgyg4
-         sF1O/B68cSM+sbe3hTjca3E55tVuclsxNvZnj8EcYklmSFq1OBk671CzAjCrLVR8RqV2
-         diCUjv2/K3PBWKn7Yee1/BQykZOmupUvvWNCApwc7d8w7PKCtyK9NQM7ouxrnrlumRby
-         lLiDij0svKErMFGa3KuH5FakKz6JyRnIiV4Vw+JQNnKrUMqfCR4s9Cj7nbtz6CgPenFp
-         mYuVvvAbTZOvtS54/av0Y8qLqyY+ztPTt3W8rOC5RF49lNjQy49H4n/h0PFcMRQvfQZ9
-         WKhQ==
+        b=zuc7Bna5rh4O5E6tyP+z6+iMOb4FvMZHh1hREQcXgY9TrjIq26NmIEHMW+8YQlvHuu
+         +/qM53wd02SGA1lYo9Fe6/HM71gqSnYncBNB49AAmsmFCJDQl5u0gZ796KCJ07H3Ux/g
+         aLnZOazzEERCmaCDLogIco/QWCsPUXtv1F2niEJsFh5Zy9CY1fHVPXEw2Cg91s9U6LW2
+         9h5sawS0Wu3c2wbIJkHcjE1d/HmSxYJw2Pphi99O0CF3ps/eED04Kda0C4y9y8X9oiSO
+         FXnc6JkHEPT4jBxLmJsHfp79vbcYfrwAIhcOxGjWUXqEBQg3GH+sFcWQCaHSoibUJBWm
+         yuqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=MUqrd0qjKKbwcA4BpGGoWMvbKVeAVH+zXdgNV8IRg1M=;
-        b=w11/xWFWo+w9dALvkK0/3wPFoY4o84aYL7hyN1mvRUkr4tdHz9EOxsKVGAskhpWXD/
-         NaNdjdx0KNt5LbLsBBlDl+USCaOBkJSsoCOOluw8iSi3llmmdjohPJTbGaQtX+6OvwBk
-         XefD4LdnpDKtXH7MjPmzcmVFMY/yj/yqn4oj2V2vq7LcEUOmEnSQqYjFHpQDoQ+2IfLl
-         m2Wtc1UgiQKCx5tbUDwRr6jEfJL6IUXGGAHfcX/Mka7lfvOS+6eodNBeFB+9xrFRkIML
-         1MZq4iLm9yRUyZxXa2YjbjkTRu6s5UMYln7qGf7+s1rgl0ZAmj35A3eZDFvDcFWySSw8
-         38bA==
+        bh=wq2DgU0T8TiyoW+AeqpkEASJI3l+VWw2yOgyjpGNPwo=;
+        b=Tdc26+3tSQXrWwJ1qHeJj0Vy1bKXGlGxoi31HrNcYknWiMbzaXVWqs0pC0a3Cj9ZBh
+         fikVDSbx9wTdx5GADmfFVCl2IJyw5RL2/gZvbk9+pZZYffzNSc+W9EeTGi3FMxUdZqSl
+         BoTUIeqAj3r4Efx0Uj5HFHUbJlebu/7xdzgBmhgEZymc6gUaiYbWvwRJETh4fhPDUp0n
+         0IDW4WYx02/3jAjzn1PtRFikqEBaqg5HZOj7d488AofqudsW3L5qLNBE8Nwzr4toBDem
+         r3pYo/RwImgWwiMZJ6RFMic83PsWXAEBUSmsx6TA3x9jIk8LZFND2/GccP7oThebgSCq
+         p0Ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MpiQUuWY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hNUw4YRE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o11si36052qtv.157.2022.01.27.08.43.29
+        by mx.google.com with ESMTPS id l11si2343451ios.91.2022.01.27.08.47.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 08:43:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Jan 2022 08:47:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MpiQUuWY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56196 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hNUw4YRE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD7rs-0006mu-1u
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 11:43:28 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49298)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nD7vR-0000ni-1q
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 11:47:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42748)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6zW-0006xk-Ii
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:47:18 -0500
-Received: from [2a00:1450:4864:20::32d] (port=50808
- helo=mail-wm1-x32d.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6zR-0008PY-4S
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:47:18 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id r186so329543wma.0
- for <qemu-devel@nongnu.org>; Thu, 27 Jan 2022 07:47:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=MUqrd0qjKKbwcA4BpGGoWMvbKVeAVH+zXdgNV8IRg1M=;
- b=MpiQUuWYdf8RgCJxJwU8ZI2PvZCFJzXI3qOTN4T5fs61j8yrsX5jKKekS4lUknZC8g
- gBzDuHRMOMC09RLEfvSjsVMYsyPMaPGU8hqiDo9gnHsZKeshQu4tiMJufM35eMkdStmY
- lldIDIUb9GU6kZKN3iUSNiyuJVywYGc3MkoU2olaJ8gJ29u6NoU9GcB4Ui6LHY1Xs3jS
- M3bJodZHZCh4MegQZ662kj45VIa1WEOhBC6wumcnNpkejr9RCpk62hOTedT201krBPek
- YAzP5THCJiO8wUqED7c6jlDVB863aULu8q5TVHtpYvPM6Nd71QmG6gF4IDKetdgSmoZR
- WlaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=MUqrd0qjKKbwcA4BpGGoWMvbKVeAVH+zXdgNV8IRg1M=;
- b=PDCRoDJK1kldFK0lzJO3dEBu8urKiRe50RxAzLVRVdtANKRTCHOzh9TEeMmkryfZ/F
- pmf1S2Lvla4DhZR67pzMo6MF0oQD3swY4z1hBQjPx7VZDx8fi8OpMlPZjobDxj0UMAYW
- 0qEepo3mA7eWOeXodI4MgQNKmi6Fh1kl8od7lCJJdW5Vc8nxk4CgqmvlMt8CB4nNU4z3
- Kd/28PN36hbG4TTVu3W+f282/JsMJtkrsNTWuAqlLNYV4GIBTya0qHoknDdjio/zIW66
- T19Zr9ywnUd4Twc8NaX27ePubxEDJvwBalv/UI+LmDnGcVWZ0Y2IY4LV7I5Yh392XWU3
- zUYg==
-X-Gm-Message-State: AOAM531mQSU2KBTWJp1WOEttQVMxlPBwnjiGqRkSsKdowCUbQFrzMxmS
- XAIxEOzz0UltrLUOGa8iw3TmRA==
-X-Received: by 2002:a05:600c:3c92:: with SMTP id
- bg18mr3777365wmb.161.1643298431828; 
- Thu, 27 Jan 2022 07:47:11 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id w9sm6687667wmc.36.2022.01.27.07.47.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jan 2022 07:47:11 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 16/16] hw/arm/boot: Drop existing dtb /psci node rather than
- retaining it
-Date: Thu, 27 Jan 2022 15:46:39 +0000
-Message-Id: <20220127154639.2090164-17-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220127154639.2090164-1-peter.maydell@linaro.org>
-References: <20220127154639.2090164-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1nD6bL-0008PF-Gn
+ for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:22:19 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:28143)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1nD6bJ-0004Ne-LG
+ for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:22:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1643296937;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wq2DgU0T8TiyoW+AeqpkEASJI3l+VWw2yOgyjpGNPwo=;
+ b=hNUw4YRE7BfN5iGKervKBdJ1Pxh8pgWovFgPdVnDq0PqqvnQhVpqG7+yK5FVNvRCJCs0dc
+ 4kpU17iMSE+ApCRsszc0Yt6Phy+Ct2MCfwqjFovT6hDkZzGE+vCm+GvYV9ZQB5xuNDzgE7
+ kN0lHIOUqLVpM51Tyb5WGdP6l3n0dsc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-45-Od9umRfTMvSEE8XdlFWZ4Q-1; Thu, 27 Jan 2022 10:22:14 -0500
+X-MC-Unique: Od9umRfTMvSEE8XdlFWZ4Q-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6AD2D8144E2;
+ Thu, 27 Jan 2022 15:22:08 +0000 (UTC)
+Received: from secure.mitica (unknown [10.39.194.185])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7AEF170D46;
+ Thu, 27 Jan 2022 15:22:01 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 38/38] migration: Move temp page setup and cleanup into
+ separate functions
+Date: Thu, 27 Jan 2022 16:05:48 +0100
+Message-Id: <20220127150548.20595-39-quintela@redhat.com>
+In-Reply-To: <20220127150548.20595-1-quintela@redhat.com>
+References: <20220127150548.20595-1-quintela@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32d
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.159,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Rob Herring <robh@kernel.org>,
- Andrew Jeffery <andrew@aj.id.au>, Andre Przywara <andre.przywara@arm.com>,
- Tyrone Ting <kfting@nuvoton.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Peter Xu <peterx@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Yanan Wang <wangyanan55@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3UheHmWiw3Br
+ Gerd Hoffmann <kraxel@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ Eric Blake <eblake@redhat.com>, Hannes Reinecke <hare@suse.com>,
+ Vikram Garhwal <fnu.vikram@xilinx.com>, qemu-block@nongnu.org,
+ Juan Quintela <quintela@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Laurent Vivier <laurent@vivier.eu>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: em5a3ZtUh+yF
 
-If we're using PSCI emulation, we add a /psci node to the device tree
-we pass to the guest.  At the moment, if the dtb already has a /psci
-node in it, we retain it, rather than replacing it. (This behaviour
-was added in commit c39770cd637765 in 2018.)
+From: Peter Xu <peterx@redhat.com>
 
-This is a problem if the existing node doesn't match our PSCI
-emulation.  In particular, it might specify the wrong method (HVC vs
-SMC), or wrong function IDs for cpu_suspend/cpu_off/etc, in which
-case the guest will not get the behaviour it wants when it makes PSCI
-calls.
+Temp pages will need to grow if we want to have multiple channels for postcopy,
+because each channel will need its own temp page to cache huge page data.
 
-An example of this is trying to boot the highbank or midway board
-models using the device tree supplied in the kernel sources: this
-device tree includes a /psci node that specifies function IDs that
-don't match the (PSCI 0.2 compliant) IDs that QEMU uses.  The dtb
-cpu_suspend function ID happens to match the PSCI 0.2 cpu_off ID, so
-the guest hangs after booting when the kernel tries to idle the CPU
-and instead it gets turned off.
+Before doing that, cleanup the related code.  No functional change intended.
 
-Instead of retaining an existing /psci node, delete it entirely
-and replace it with a node whose properties match QEMU's PSCI
-emulation behaviour. This matches the way we handle /memory nodes,
-where we also delete any existing nodes and write in ones that
-match the way QEMU is going to behave.
+Since at it, touch up the errno handling a little bit on the setup side.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
-I'm not confident about the FDT API to use to remove an
-existing node -- I used qemu_fdt_nop_node() as that matches the
-code in boot.c that's removing the memory nodes. There is
-also an fdt_del_node(), though...
----
- hw/arm/boot.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ migration/postcopy-ram.c | 82 +++++++++++++++++++++++++---------------
+ 1 file changed, 51 insertions(+), 31 deletions(-)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index b46f1fe889e..b1e95978f26 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -478,12 +478,13 @@ static void fdt_add_psci_node(void *fdt)
+diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
+index 2176ed68a5..e662dd05cc 100644
+--- a/migration/postcopy-ram.c
++++ b/migration/postcopy-ram.c
+@@ -523,6 +523,19 @@ int postcopy_ram_incoming_init(MigrationIncomingState *mis)
+     return 0;
+ }
+ 
++static void postcopy_temp_pages_cleanup(MigrationIncomingState *mis)
++{
++    if (mis->postcopy_tmp_page) {
++        munmap(mis->postcopy_tmp_page, mis->largest_page_size);
++        mis->postcopy_tmp_page = NULL;
++    }
++
++    if (mis->postcopy_tmp_zero_page) {
++        munmap(mis->postcopy_tmp_zero_page, mis->largest_page_size);
++        mis->postcopy_tmp_zero_page = NULL;
++    }
++}
++
+ /*
+  * At the end of a migration where postcopy_ram_incoming_init was called.
+  */
+@@ -564,14 +577,8 @@ int postcopy_ram_incoming_cleanup(MigrationIncomingState *mis)
+         }
      }
  
-     /*
--     * If /psci node is present in provided DTB, assume that no fixup
--     * is necessary and all PSCI configuration should be taken as-is
-+     * A pre-existing /psci node might specify function ID values
-+     * that don't match QEMU's PSCI implementation. Delete the whole
-+     * node and put our own in instead.
-      */
-     rc = fdt_path_offset(fdt, "/psci");
-     if (rc >= 0) {
--        return;
-+        qemu_fdt_nop_node(fdt, "/psci");
+-    if (mis->postcopy_tmp_page) {
+-        munmap(mis->postcopy_tmp_page, mis->largest_page_size);
+-        mis->postcopy_tmp_page = NULL;
+-    }
+-    if (mis->postcopy_tmp_zero_page) {
+-        munmap(mis->postcopy_tmp_zero_page, mis->largest_page_size);
+-        mis->postcopy_tmp_zero_page = NULL;
+-    }
++    postcopy_temp_pages_cleanup(mis);
++
+     trace_postcopy_ram_incoming_cleanup_blocktime(
+             get_postcopy_total_blocktime());
+ 
+@@ -1082,6 +1089,40 @@ retry:
+     return NULL;
+ }
+ 
++static int postcopy_temp_pages_setup(MigrationIncomingState *mis)
++{
++    int err;
++
++    mis->postcopy_tmp_page = mmap(NULL, mis->largest_page_size,
++                                  PROT_READ | PROT_WRITE,
++                                  MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++    if (mis->postcopy_tmp_page == MAP_FAILED) {
++        err = errno;
++        mis->postcopy_tmp_page = NULL;
++        error_report("%s: Failed to map postcopy_tmp_page %s",
++                     __func__, strerror(err));
++        return -err;
++    }
++
++    /*
++     * Map large zero page when kernel can't use UFFDIO_ZEROPAGE for hugepages
++     */
++    mis->postcopy_tmp_zero_page = mmap(NULL, mis->largest_page_size,
++                                       PROT_READ | PROT_WRITE,
++                                       MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++    if (mis->postcopy_tmp_zero_page == MAP_FAILED) {
++        err = errno;
++        mis->postcopy_tmp_zero_page = NULL;
++        error_report("%s: Failed to map large zero page %s",
++                     __func__, strerror(err));
++        return -err;
++    }
++
++    memset(mis->postcopy_tmp_zero_page, '\0', mis->largest_page_size);
++
++    return 0;
++}
++
+ int postcopy_ram_incoming_setup(MigrationIncomingState *mis)
+ {
+     /* Open the fd for the kernel to give us userfaults */
+@@ -1122,32 +1163,11 @@ int postcopy_ram_incoming_setup(MigrationIncomingState *mis)
+         return -1;
      }
  
-     qemu_fdt_add_subnode(fdt, "/psci");
+-    mis->postcopy_tmp_page = mmap(NULL, mis->largest_page_size,
+-                                  PROT_READ | PROT_WRITE, MAP_PRIVATE |
+-                                  MAP_ANONYMOUS, -1, 0);
+-    if (mis->postcopy_tmp_page == MAP_FAILED) {
+-        mis->postcopy_tmp_page = NULL;
+-        error_report("%s: Failed to map postcopy_tmp_page %s",
+-                     __func__, strerror(errno));
++    if (postcopy_temp_pages_setup(mis)) {
++        /* Error dumped in the sub-function */
+         return -1;
+     }
+ 
+-    /*
+-     * Map large zero page when kernel can't use UFFDIO_ZEROPAGE for hugepages
+-     */
+-    mis->postcopy_tmp_zero_page = mmap(NULL, mis->largest_page_size,
+-                                       PROT_READ | PROT_WRITE,
+-                                       MAP_PRIVATE | MAP_ANONYMOUS,
+-                                       -1, 0);
+-    if (mis->postcopy_tmp_zero_page == MAP_FAILED) {
+-        int e = errno;
+-        mis->postcopy_tmp_zero_page = NULL;
+-        error_report("%s: Failed to map large zero page %s",
+-                     __func__, strerror(e));
+-        return -e;
+-    }
+-    memset(mis->postcopy_tmp_zero_page, '\0', mis->largest_page_size);
+-
+     trace_postcopy_ram_enable_notify();
+ 
+     return 0;
 -- 
-2.25.1
+2.34.1
 

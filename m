@@ -1,106 +1,108 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4224065lfk;
-        Thu, 27 Jan 2022 08:47:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx5SY7WbstMTKcNIeWNuS+beV0AQ9agaLOFMpxAelrxucOQFIMPMNctuoxUTdtmgc+0U9UM
-X-Received: by 2002:a05:620a:bc1:: with SMTP id s1mr3273456qki.74.1643302065027;
-        Thu, 27 Jan 2022 08:47:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643302065; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4226874lfk;
+        Thu, 27 Jan 2022 08:53:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwoIr1Z7tbo3FKff93Xg6byHcm2GeGI7dePVu6ouCjbr/82W+tEpvhQzWuDUUZYQhPh0Ypq
+X-Received: by 2002:a05:6e02:1c8f:: with SMTP id w15mr3026809ill.69.1643302383470;
+        Thu, 27 Jan 2022 08:53:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643302383; cv=none;
         d=google.com; s=arc-20160816;
-        b=tFrsHv5X6Pkhwkrx0tIiIC3gnpjTtLWBgxXinmS9N7hTcPTxM4CVVtMFbkIDfmW1oG
-         Lx3ls9JCTN+1L9hNATdZyHpjBFZSq2wwAmmLCxQB2xutN2LoAWtZJfzW/x54Xem/J7rH
-         aivwtEWFx2TxL9QikpTfnVSWNG5/XTQgSbLzzs80GLayqoSK5N3pQDUvcoZtFG8yZnKv
-         6twEUMsMk3oSgS6DhZ44kw/NqUR6fabTvK6nn9YVxk8oqbX5rMJfD57D8cLtBPmq2Ki5
-         kam+jZiy9Q6rGcqmDDRkZHXf6mVafMnsPECWuPIJfZ7gRxRRFeW4gvyatBShSqCjwMp3
-         l7gQ==
+        b=gFwa0SLu7PDP3wdvwoXXnnqO9fyU66Oygp8LhoU17ExgT8ONXFQFCr2qKWM3r3KQhA
+         nETrL9sbwvdy1BuSCEAlfUspd4QKHP/h+RHqCcz7eNOpD+pxiqcANWQALxlRhYWEKNDD
+         fCrqyBvrNKQ2pBJ/MwpNF/sX3GaG+Ic0gv1CpYbVwomlEzvkD5mdVjZqVlBVJ+PmSCPO
+         +3ok8YyNdXOg6esFxz1vbGjVharJAfZG+/HmvBgez6yAHSi6ir7pzpgNfS1zHcy9+Rvg
+         G6Ec9XJ+oDZZXRkYnEeBF4rr8yXJDi+vRSCWEc2Ne9a+RNekltaSVH1x40ZGsrEm6klN
+         23Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=hqSSqW9mYLnln3gzM+pPhLBH+fYEcqnCz8mEiXgmBXs=;
-        b=pTnkD+s4YuK6rV/z572K6+CByw+4rNfR8+2MwbqiAhK1MULHHaOKZJOOjn0d72J+EB
-         3ulZcu4k6emgja60laXMfOoRTLMKJiiD4UDKx3Qw63DaXJR4gnnTifmZnyvYxXf4k070
-         aiqgtdjMLcVjEj/BCPGlEcJbBifkZYruvi0QEJ4JHUxL4ud1Wwqe9+cSx2nW7tezfWOU
-         XnxVofFF15ygs/s2nEbbNkoju9VXEymmpoELiMdJT3byrk2GiYc6h8OI4As2wLqMxZVQ
-         nPgBkh7xToBBju00emSnbRIwJr+wbkZYVohq2HFzo1QzKOJlo2wwpRBTFh7HpwpyJovy
-         jWOg==
+        bh=T+1ej9mTsCTQvcQ+nmnN96HZqUCNnh9Zhy+mdjh86Jk=;
+        b=Bfax9SkQaaq6oTEQeV7tZShnxlvDiWIPE+fWIi0N0Ya2EKI4n9bvvNURsLCW3/Ft+u
+         tMWUFACl2fYw51wtokOjlkquFmkXk4o5hjxPPk8RZWWGx4LHC8ZS9EyL/ApuoMBn2+EM
+         TnFVLbeFeGKBaVtNlzBQAMtipo008p18bqHKTdWHXhBK/FfUT//F8JP1g0IDCccJu19r
+         4POkTmcOcURZbN+/a9DoCwo8SlQ4HbFxlIPep7+rnIXF9HUrbMRbUQTYrE0xEAo9Wwnt
+         5sJ8O6eHb+HpmuM90bHjNaQegPTc5HxMbUnyhBUHU1lOtWfvDYt1y1JbHrn3WhkQbzjx
+         2H9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=owOrx5Fc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=THqGeUqq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12si1449283qvx.478.2022.01.27.08.47.44
+        by mx.google.com with ESMTPS id d9si2376360iow.72.2022.01.27.08.53.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 08:47:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Jan 2022 08:53:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=owOrx5Fc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=THqGeUqq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33710 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42250 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nD7vz-0002pX-PV
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 11:47:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48834)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nD818-0000MR-SI
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 11:53:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6z4-0005um-Nu
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:46:50 -0500
-Received: from [2a00:1450:4864:20::430] (port=34541
- helo=mail-wr1-x430.google.com)
+ id 1nD6z7-000630-5R
+ for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:46:53 -0500
+Received: from [2a00:1450:4864:20::32f] (port=38788
+ helo=mail-wm1-x32f.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nD6z2-0008FX-MC
- for qemu-devel@nongnu.org; Thu, 27 Jan 2022 10:46:50 -0500
-Received: by mail-wr1-x430.google.com with SMTP id f17so5618857wrx.1
- for <qemu-devel@nongnu.org>; Thu, 27 Jan 2022 07:46:48 -0800 (PST)
+ id 1nD6z5-0008HH-Be
+ for qemu-arm@nongnu.org; Thu, 27 Jan 2022 10:46:52 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ o30-20020a05600c511e00b0034f4c3186f4so6210951wms.3
+ for <qemu-arm@nongnu.org>; Thu, 27 Jan 2022 07:46:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=hqSSqW9mYLnln3gzM+pPhLBH+fYEcqnCz8mEiXgmBXs=;
- b=owOrx5FcfF+arn2fUABM8GImD2nGuHYE+8Whjp6gEmMTxtzfzUtL9REtCz7AG+PX0I
- 2QHJ95biicYSYnljURuWa0i7zpV9E59dA87NYUdh61Y6QaoaGn1/DMKSqQz0/HN1DyW0
- 4XBmEwsdl0SwF3tXaHCzRUEe9HYiiImb5T4nQ5YWt+PWtovbVWozy3o4jxO1jfV8SJ0+
- B6EJULnXqDkTVpqULJDjbNg9oaTxT6QkS5wmWIxolqBM065eGpUe8buoPrdtp8/aiiCf
- jB/EtNkQmvCjCYsfqum7CZxdRrIgrerub9dYjqP9rPUQqFGZbO9tPmbbhASjCVQUJNel
- C7rw==
+ bh=T+1ej9mTsCTQvcQ+nmnN96HZqUCNnh9Zhy+mdjh86Jk=;
+ b=THqGeUqq2zdo2r3+m43mKWhjXoiFyvNSWIM0eo3szXW5dt6lug3y5Dx8CjH8/i87xH
+ wP2vd6wKRq1dPUAPILT6LWFjni3OMnV3Nk7oHY7I2LcEv5eMZkCiFbcGZeJbhAsu6Jl5
+ OUBrYJRKzmN2IrLba01we7hxr1Dh31u2haIhGHGkS1dFuZHakfaNtP3EyEzOZhMsJyaO
+ emfa46nudIX/Cgx2nKX1hiAhdhGr6DHEV7Dcr9iXla9S+Be2pud7sEA94KcP4H3/sgqv
+ nc+yiZzvBVpAjekiWx3KWl0rzmZAyfMc9SHsX0Svq/ODh7bFDetnOMgl3V5hEHKaSjHH
+ btTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=hqSSqW9mYLnln3gzM+pPhLBH+fYEcqnCz8mEiXgmBXs=;
- b=b1JLEa6PYSOS68Rery4epLdd7wquMBmZnOwTQjcBXgZ8Kwc1mbTuJIDjPpjy8rOFBG
- XQwnbaFYYQYv2L3vZc1eyoBz9Y/rzeIknJdkeguVQMhjDVoy5sN8waoxRgXt0TfK7Ibe
- LkkW7lEOT4jJPtg+Iys+GRY97vaf1uvsVDsQ8YMV2EKxANtkhI4fATzZaw/5+e220HLW
- KfkI+5bHItqe+grTm8wvqRN9zzE7oQA7M7l6LPkPgaxAesFjkyUK5SmlySjm9b+qLFUP
- TwctJjiJBM4iiY7AatATd1egzXNqQPdRB1O2Q+vkTpS+dacYxwDaLlf2fGsRctyZ3/s9
- LSOg==
-X-Gm-Message-State: AOAM533ExxZQOnnY6G298VxXFTPk4PrHXwnz5kqG2vx20wViPog3mt9z
- comyPVeae6RpMqhDcRNhtFBBdQ==
-X-Received: by 2002:a5d:47cf:: with SMTP id o15mr3463388wrc.577.1643298407303; 
- Thu, 27 Jan 2022 07:46:47 -0800 (PST)
+ bh=T+1ej9mTsCTQvcQ+nmnN96HZqUCNnh9Zhy+mdjh86Jk=;
+ b=HL3xYMoyhboRhdpmWBlL8VhqvlVzS2NDhiz/cKsnx9GmZFgKguH1kwQlJWSosQZ+fy
+ syAiotioHtn3pygyM+8Ib0/KvnDIxBuTmh2Uc5xxU3tjc8Ulrp5Uuz+6liJPFgBA+bVb
+ Va3+64AuYcWkwOhn6BgCJ1pGEo/VeL2w7MmgGzDWouiINnDZygAh04jmKR8lOgFclPqs
+ zPYYDmf1uLKeyGe60D+FMUq8AxhoWMyEwRFPtTv1wf5JRe5X5WcApG3RoNAPkT02hqVE
+ +35tkgkQ9RD5DumF05K+R/C4VcgFVy5b7vCjZMwlE92ttSuh486r7EUGN/YdcUbo0jg1
+ VA5A==
+X-Gm-Message-State: AOAM5307uXN1WgMwMP8TtCj3fpj4MJf+g0qe/gtv85e6mpNtuWJmuzRq
+ QGBdLYMTKSiXyZw6QpRj4sKbtNQubMfzdQ==
+X-Received: by 2002:a05:600c:3005:: with SMTP id
+ j5mr3697280wmh.35.1643298410046; 
+ Thu, 27 Jan 2022 07:46:50 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id w9sm6687667wmc.36.2022.01.27.07.46.45
+ by smtp.gmail.com with ESMTPSA id w9sm6687667wmc.36.2022.01.27.07.46.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jan 2022 07:46:47 -0800 (PST)
+ Thu, 27 Jan 2022 07:46:49 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 03/16] hw/arm/boot: Support setting psci-conduit based on
- guest EL
-Date: Thu, 27 Jan 2022 15:46:26 +0000
-Message-Id: <20220127154639.2090164-4-peter.maydell@linaro.org>
+Subject: [PATCH 05/16] hw/arm: allwinner: Don't enable PSCI conduit when
+ booting guest in EL3
+Date: Thu, 27 Jan 2022 15:46:28 +0000
+Message-Id: <20220127154639.2090164-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220127154639.2090164-1-peter.maydell@linaro.org>
 References: <20220127154639.2090164-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32f
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -109,17 +111,17 @@ X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Eduardo Habkost <eduardo@habkost.net>,
  Beniamino Galvani <b.galvani@gmail.com>,
  Alistair Francis <alistair@alistair23.me>, Rob Herring <robh@kernel.org>,
@@ -130,169 +132,77 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
  Yanan Wang <wangyanan55@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, Alexander Graf <agraf@csgraf.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Havard Skinnemoen <hskinnemoen@google.com>,
  Andrey Smirnov <andrew.smirnov@gmail.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qQzwbaZMZiN6
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HpbCKfbWlr67
 
-Currently we expect board code to set the psci-conduit property on
-CPUs and ensure that secondary CPUs are created with the
-start-powered-off property set to false, if the board wishes to use
-QEMU's builtin PSCI emulation.  This worked OK for the virt board
-where we first wanted to use it, because the virt board directly
-creates its CPUs and is in a reasonable position to set those
-properties.  For other boards which model real hardware and use a
-separate SoC object, however, it is more awkward.  Most PSCI-using
-boards just set the psci-conduit board unconditionally.
+Change the allwinner-h3 based board to use the new boot.c
+functionality to allow us to enable psci-conduit only if the guest is
+being booted in EL1 or EL2, so that if the user runs guest EL3
+firmware code our PSCI emulation doesn't get in its way.
 
-This was never strictly speaking correct (because you would not be
-able to run EL3 guest firmware that itself provided the PSCI
-interface, as the QEMU implementation would overrule it), but mostly
-worked in practice because for non-PSCI SMC calls QEMU would emulate
-the SMC instruction as normal (by trapping to guest EL3).  However,
-we would like to make our PSCI emulation follow the part of the SMCC
-specification that mandates that SMC calls with unknown function
-identifiers return a failure code, which means that all SMC calls
-will be handled by the PSCI code and the "emulate as normal" path
-will no longer be taken.
+To do this we stop setting the psci-conduit property on the CPU
+objects in the SoC code, and instead set the psci_conduit field in
+the arm_boot_info struct to tell the common boot loader code that
+we'd like PSCI if the guest is starting at an EL that it makes sense
+with.
 
-We tried to implement that in commit 9fcd15b9193e81
-("arm: tcg: Adhere to SMCCC 1.3 section 5.2"), but this
-regressed attempts to run EL3 guest code on the affected boards:
- * mcimx6ul-evk, mcimx7d-sabre, orangepi, xlnx-zcu102
- * for the case only of EL3 code loaded via -kernel (and
-   not via -bios or -pflash), virt and xlnx-versal-virt
-so for the 7.0 release we reverted it (in commit 4825eaae4fdd56f).
+This affects the orangepi-pc board.
 
-This commit provides a mechanism that boards can use to arrange that
-psci-conduit is set if running guest code at a low enough EL but not
-if it would be running at the same EL that the conduit implies that
-the QEMU PSCI implementation is using.  (Later commits will convert
-individual board models to use this mechanism.)
-
-We do this by moving the setting of the psci-conduit and
-start-powered-off properties to arm_load_kernel().  Boards which want
-to potentially use emulated PSCI must set a psci_conduit field in the
-arm_boot_info struct to the type of conduit they want to use (SMC or
-HVC); arm_load_kernel() will then set the CPUs up accordingly if it
-is not going to start the guest code at the same or higher EL as the
-fake QEMU firmware would be at.
-
-Board/SoC code which uses this mechanism should no longer set the CPU
-psci-conduit property directly.  It should only set the
-start-powered-off property for secondaries if EL3 guest firmware
-running bare metal expects that rather than the alternative "all CPUs
-start executing the firmware at once".
-
-Note that when calculating whether we are going to run guest
-code at EL3, we ignore the setting of arm_boot_info::secure_board_setup,
-which might cause us to run a stub bit of guest code at EL3 which
-does some board-specific setup before dropping to EL2 or EL1 to
-run the guest kernel. This is OK because only one board that
-enables PSCI sets secure_board_setup (the highbank board), and
-the stub code it writes will behave the same way whether the
-one SMC call it makes is handled by "emulate the SMC" or by
-"PSCI default returns an error code". So we can leave that stub
-code in place until after we've changed the PSCI default behaviour;
-at that point we will remove it.
+This commit leaves the secondary CPUs in the powered-down state if
+the guest is booting at EL3, which is the same behaviour as before
+this commit.  The secondaries can no longer be started by that EL3
+code making a PSCI call but can still be started via the CPU
+Configuration Module registers (which we model in
+hw/misc/allwinner-cpucfg.c).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/boot.h | 10 +++++++++
- hw/arm/boot.c         | 50 +++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 60 insertions(+)
+If anybody knows for definite that the secondaries should be
+powered-down at startup for guest firmware, we can delete the TODO.
+The allwinner-cpucfg.c code makes the reset value for the
+REG_CPU*_RST_CTRL registers "CPUX_RESET_RELEASED", which might
+suggest otherwise, but that could easily just be a QEMU error.
+---
+ hw/arm/allwinner-h3.c | 9 ++++-----
+ hw/arm/orangepi.c     | 1 +
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
-index ce2b48b88bc..0bcb58babba 100644
---- a/include/hw/arm/boot.h
-+++ b/include/hw/arm/boot.h
-@@ -86,6 +86,16 @@ struct arm_boot_info {
-      * the user it should implement this hook.
-      */
-     void (*modify_dtb)(const struct arm_boot_info *info, void *fdt);
-+    /*
-+     * If a board wants to use the QEMU emulated-firmware PSCI support,
-+     * it should set this to QEMU_PSCI_CONDUIT_HVC or QEMU_PSCI_CONDUIT_SMC
-+     * as appropriate. arm_load_kernel() will set the psci-conduit and
-+     * start-powered-off properties on the CPUs accordingly.
-+     * Note that if the guest image is started at the same exception level
-+     * as the conduit specifies calls should go to (eg guest firmware booted
-+     * to EL3) then PSCI will not be enabled.
-+     */
-+    int psci_conduit;
-     /* Used internally by arm_boot.c */
-     int is_linux;
-     hwaddr initrd_start;
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 399f8e837ce..327e449f831 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -1299,6 +1299,8 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
- {
-     CPUState *cs;
-     AddressSpace *as = arm_boot_address_space(cpu, info);
-+    int boot_el;
-+    CPUARMState *env = &cpu->env;
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+index f9b7ed18711..f54aff6d2d2 100644
+--- a/hw/arm/allwinner-h3.c
++++ b/hw/arm/allwinner-h3.c
+@@ -235,11 +235,10 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+     /* CPUs */
+     for (i = 0; i < AW_H3_NUM_CPUS; i++) {
  
-     /*
-      * CPU objects (unlike devices) are not automatically reset on system
-@@ -1329,6 +1331,54 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-         arm_setup_direct_kernel_boot(cpu, info);
+-        /* Provide Power State Coordination Interface */
+-        qdev_prop_set_int32(DEVICE(&s->cpus[i]), "psci-conduit",
+-                            QEMU_PSCI_CONDUIT_SMC);
+-
+-        /* Disable secondary CPUs */
++        /*
++         * Disable secondary CPUs. TODO: check whether this is what
++         * guest EL3 firmware would really expect.
++         */
+         qdev_prop_set_bit(DEVICE(&s->cpus[i]), "start-powered-off",
+                           i > 0);
+ 
+diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+index e7963822367..68fe9182414 100644
+--- a/hw/arm/orangepi.c
++++ b/hw/arm/orangepi.c
+@@ -105,6 +105,7 @@ static void orangepi_init(MachineState *machine)
      }
+     orangepi_binfo.loader_start = h3->memmap[AW_H3_DEV_SDRAM];
+     orangepi_binfo.ram_size = machine->ram_size;
++    orangepi_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+     arm_load_kernel(ARM_CPU(first_cpu), machine, &orangepi_binfo);
+ }
  
-+    /*
-+     * Disable the PSCI conduit if it is set up to target the same
-+     * or a lower EL than the one we're going to start the guest code in.
-+     * This logic needs to agree with the code in do_cpu_reset() which
-+     * decides whether we're going to boot the guest in the highest
-+     * supported exception level or in a lower one.
-+     */
-+
-+    /* Boot into highest supported EL ... */
-+    if (arm_feature(env, ARM_FEATURE_EL3)) {
-+        boot_el = 3;
-+    } else if (arm_feature(env, ARM_FEATURE_EL2)) {
-+        boot_el = 2;
-+    } else {
-+        boot_el = 1;
-+    }
-+    /* ...except that if we're booting Linux we adjust the EL we boot into */
-+    if (info->is_linux && !info->secure_boot) {
-+        boot_el = arm_feature(env, ARM_FEATURE_EL2) ? 2 : 1;
-+    }
-+
-+    if ((info->psci_conduit == QEMU_PSCI_CONDUIT_HVC && boot_el >= 2) ||
-+        (info->psci_conduit == QEMU_PSCI_CONDUIT_SMC && boot_el == 3)) {
-+        info->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
-+    }
-+
-+    if (info->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
-+        for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
-+            Object *cpuobj = OBJECT(cs);
-+
-+            object_property_set_int(cpuobj, "psci-conduit", info->psci_conduit,
-+                                    &error_abort);
-+            /*
-+             * Secondary CPUs start in PSCI powered-down state. Like the
-+             * code in do_cpu_reset(), we assume first_cpu is the primary
-+             * CPU.
-+             */
-+            if (cs != first_cpu) {
-+                object_property_set_bool(cpuobj, "start-powered-off", true,
-+                                         &error_abort);
-+            }
-+        }
-+    }
-+
-+    /*
-+     * arm_load_dtb() may add a PSCI node so it must be called after we have
-+     * decided whether to enable PSCI and set the psci-conduit CPU properties.
-+     */
-     if (!info->skip_dtb_autoload && have_dtb(info)) {
-         if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as, ms) < 0) {
-             exit(1);
 -- 
 2.25.1
 

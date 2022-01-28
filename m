@@ -1,88 +1,87 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp550269lfk;
-        Fri, 28 Jan 2022 10:36:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzqdbYxa0Gzm59rVcv+euFRxtQsLNRbUx0YvwFCYc/nqw7WMBCNqmLiT0BLGYAMpTBgReeD
-X-Received: by 2002:a37:9e50:: with SMTP id h77mr6773718qke.699.1643395011342;
-        Fri, 28 Jan 2022 10:36:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643395011; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp550476lfk;
+        Fri, 28 Jan 2022 10:37:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzXqyPE6VKXNgtBQ8GTvVsdDuy1q/KbofkIaX3WbztE/xDAi4cRZQ6nXxd/FEw4eMik2e2T
+X-Received: by 2002:a05:622a:15ce:: with SMTP id d14mr7312340qty.330.1643395036723;
+        Fri, 28 Jan 2022 10:37:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643395036; cv=none;
         d=google.com; s=arc-20160816;
-        b=fjFurf5S+Du+w+2xV+b6MiWtiLn1UIKjxfMC0+oYahuyQZ7iQ3jAHUtGlob3L6MYkk
-         FNUWE50TlKXhE4W2xHD+dLaSTtc8W7RDHGuComZZTnjkTLGH6SmnBPX1oS16C1N7ZQHN
-         sAny80amE8vU12uk8R9rtSKpv4WT1FF5zMzKUrXC4hFJ/xGxeoc9Y8jJ6Ck81MDTPF+y
-         j7+XEGsOdu2aYYBWfHtn8WqbOfQlfAbI41vo9sWNRKI9E2oD0qNoprHOl0eZj281Wzig
-         VMvHZFxfR5+uE5D5Ug62RTuItJRDupwMc2/bQEOqKxB3Zf8r4O+yRIbGTHwBJOYEHEM/
-         GAyw==
+        b=VuYRYxqWMpXXFMt72yU/Q8MQ7v9UKnc7QB/TcG9frTMpH4ROkIwvH8t1yOfOiNAGWy
+         MeSuYvGffh3G+mOoPtrbMp2sWFb3Tuqo9EQbqLKRyQIyIHvUndo00AtAbsqfzlWNd5d0
+         jcpUbI2CedVNMzLcG8stJ2xah945ck5kQOwfFYW7bq79hCKi7DV6+bziXJOpSCMOuxsE
+         ETciqprhJqUKzqItth09NT/F5NTQkGF0BqQFEAd5vxGpvTA0Gb589MNgBWQrn7O5qYO3
+         BqrJ75vsvZlLOJPwsLSko4JwTu/ipTDjPwBCyVtR9UeKVuCUgbAg51q0po/uh0fNWXa/
+         UMeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=1khIyfNNFWc9VNX4/2nGIMdiIvZ8naJgz6DXohUCbMM=;
-        b=rj5w2bjBSXtBEjAsAFIasL2mbT315k4G6lT3MZDTrps9BJQD5pGSuWD+6FHJWxXbHQ
-         DYSV986fndjC/KtnDOHI9lOXO0yazgnsVT0BfZHQ0LGPjPGJ2zXEsxGXCyZs4s3k7IYv
-         0T56Sbm2HUi4lAlSbe0g1X4RVnU8rp/plO/E8k1dsN429CLIW5b/9mKer5P7hQ8qeK41
-         yp79XlVgIY39QapIei691xLeKOX0y8FsZQIDHozTZ0EfKjk5FgbHLxBw9omvxGvboYvM
-         6yZ1TQ048G/wv1Ws20RhVqeRNouVHDIKdJrji0gbOlqFrcStJ0XBAbayFJV4hmISZEhO
-         yylw==
+        bh=dSJDJ/uTmwSJ4RdPNgFLHa0xMl2gTxmT2BAl0JEJoTU=;
+        b=ZnzIalnvuPrBWIjEFa4DQHg8D+arUj4rXW86O2EvG/NCpIs0voY0r/HGWNIKndvZKj
+         cbvzyE6GmKL+bQ6OgDJIhi8cTdXeTGd5bA+zPttdBlzLxMYNMwcJwz25OvYP0v8xKwyN
+         4nIy1IVZPXbd4eP2t9vHg/RLrX45aNwd/Q/xG2MSk6FkugKdlIYDGLgSu/QReLpUU6AV
+         pomVIuFuko1vZiwZccxhX9uTEa7JQtknePWRoZck3aoGuggUWA80mDyFuixphLDyqHg0
+         3/MpW+j4ZS4IIVzOAUfgD4v6HnuiZv0U12g70h4iWcyGCZwBxEluyvj5WVVoMN4RGT5n
+         le4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IUTNNYUj;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dxeSyU02;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14si12672257qko.268.2022.01.28.10.36.51
+        by mx.google.com with ESMTPS id x22si12346667qko.577.2022.01.28.10.37.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Jan 2022 10:36:51 -0800 (PST)
+        Fri, 28 Jan 2022 10:37:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IUTNNYUj;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dxeSyU02;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42752 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43670 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nDW78-0006jM-P3
-	for alex.bennee@linaro.org; Fri, 28 Jan 2022 13:36:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46996)
+	id 1nDW7X-0007bp-Tj
+	for alex.bennee@linaro.org; Fri, 28 Jan 2022 13:37:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nDW5I-0006Hs-AJ
- for qemu-devel@nongnu.org; Fri, 28 Jan 2022 13:34:56 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:54753)
+ id 1nDW3k-0004RG-OZ
+ for qemu-devel@nongnu.org; Fri, 28 Jan 2022 13:33:20 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:44060)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nDW5F-00014S-WB
- for qemu-devel@nongnu.org; Fri, 28 Jan 2022 13:34:55 -0500
+ id 1nDW3f-0000uu-5q
+ for qemu-devel@nongnu.org; Fri, 28 Jan 2022 13:33:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643394891;
+ s=mimecast20190719; t=1643394792;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=1khIyfNNFWc9VNX4/2nGIMdiIvZ8naJgz6DXohUCbMM=;
- b=IUTNNYUjf9EE2lr6cphwGnyBDM1fIYKWTryjFZA7gCYjS/7IXhuXW0fL05doE7CYvN9Vuu
- QoXJ7aRpdYrDTCRwpXQz805H5oT/FCwOGmJQQejn/K24AfArNl4flnI+C8LWk5yWQPSzkr
- y/bx+mD18mvqLORRCRAjPKpZ3gE4eto=
+ bh=dSJDJ/uTmwSJ4RdPNgFLHa0xMl2gTxmT2BAl0JEJoTU=;
+ b=dxeSyU02QoTuCdhFV/vWXaDQRXkt6R2wGK0wepNxmnmvpiEIAyRNpup2eohgufctFC0tO0
+ W/6J/4MqXITZKYUQ4S+PRMsM9XNR3VrMNadNFZ8e/eTQjcRkmRg5C5n2XflZokeLMZChM5
+ Hp3SyzSar3HvOmCo2Otiv31/SiIhrkk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-629-xfysPz-mOni20Nwe28SDvw-1; Fri, 28 Jan 2022 13:34:48 -0500
-X-MC-Unique: xfysPz-mOni20Nwe28SDvw-1
+ us-mta-335-8WezpSgYPbSKznNzGUdN0Q-1; Fri, 28 Jan 2022 13:33:09 -0500
+X-MC-Unique: 8WezpSgYPbSKznNzGUdN0Q-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9FC9783DD20;
- Fri, 28 Jan 2022 18:34:45 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2944810247B1;
+ Fri, 28 Jan 2022 18:33:06 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CDB0977456;
- Fri, 28 Jan 2022 18:34:38 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7092277472;
+ Fri, 28 Jan 2022 18:31:49 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 06/36] migration: Move ram_release_pages() call to
- save_zero_page_to_file()
-Date: Fri, 28 Jan 2022 19:30:03 +0100
-Message-Id: <20220128183033.31998-7-quintela@redhat.com>
+Subject: [PULL 01/36] migration: All this fields are unsigned
+Date: Fri, 28 Jan 2022 19:29:58 +0100
+Message-Id: <20220128183033.31998-2-quintela@redhat.com>
 In-Reply-To: <20220128183033.31998-1-quintela@redhat.com>
 References: <20220128183033.31998-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -91,8 +90,8 @@ Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -10
@@ -124,8 +123,10 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Hannes Reinecke <hare@suse.com>, Vikram Garhwal <fnu.vikram@xilinx.com>,
  qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
- Markus Armbruster <armbru@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>, Alistair Francis <alistair@alistair23.me>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Alistair Francis <alistair@alistair23.me>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Igor Mammedov <imammedo@redhat.com>, Stafford Horne <shorne@gmail.com>,
@@ -134,77 +135,316 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2Rd57uF8VPiA
+X-TUID: YQea7rLne7ER
 
-We always need to call it when we find a zero page, so put it in a
-single place.
+So printing it as %d is wrong.  Notice that for the channel id, that
+is an uint8_t, but I changed it anyways for consistency.
 
 Signed-off-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: Peter Xu <peterx@redhat.com>
 ---
- migration/ram.c | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
+ migration/multifd-zlib.c | 20 ++++++++++----------
+ migration/multifd-zstd.c | 24 ++++++++++++------------
+ migration/multifd.c      | 16 ++++++++--------
+ migration/trace-events   | 26 +++++++++++++-------------
+ 4 files changed, 43 insertions(+), 43 deletions(-)
 
-diff --git a/migration/ram.c b/migration/ram.c
-index 422c6bce28..e9dcd3ca4e 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -1158,6 +1158,15 @@ static void migration_bitmap_sync_precopy(RAMState *rs)
+diff --git a/migration/multifd-zlib.c b/migration/multifd-zlib.c
+index da6201704c..9f6ebf1076 100644
+--- a/migration/multifd-zlib.c
++++ b/migration/multifd-zlib.c
+@@ -51,7 +51,7 @@ static int zlib_send_setup(MultiFDSendParams *p, Error **errp)
+     zs->opaque = Z_NULL;
+     if (deflateInit(zs, migrate_multifd_zlib_level()) != Z_OK) {
+         g_free(z);
+-        error_setg(errp, "multifd %d: deflate init failed", p->id);
++        error_setg(errp, "multifd %u: deflate init failed", p->id);
+         return -1;
      }
- }
- 
-+static void ram_release_page(const char *rbname, uint64_t offset)
-+{
-+    if (!migrate_release_ram() || !migration_in_postcopy()) {
-+        return;
-+    }
-+
-+    ram_discard_range(rbname, offset, TARGET_PAGE_SIZE);
-+}
-+
- /**
-  * save_zero_page_to_file: send the zero page to the file
-  *
-@@ -1179,6 +1188,7 @@ static int save_zero_page_to_file(RAMState *rs, QEMUFile *file,
-         len += save_page_header(rs, file, block, offset | RAM_SAVE_FLAG_ZERO);
-         qemu_put_byte(file, 0);
-         len += 1;
-+        ram_release_page(block->idstr, offset);
+     /* To be safe, we reserve twice the size of the packet */
+@@ -60,7 +60,7 @@ static int zlib_send_setup(MultiFDSendParams *p, Error **errp)
+     if (!z->zbuff) {
+         deflateEnd(&z->zs);
+         g_free(z);
+-        error_setg(errp, "multifd %d: out of memory for zbuff", p->id);
++        error_setg(errp, "multifd %u: out of memory for zbuff", p->id);
+         return -1;
      }
-     return len;
- }
-@@ -1204,15 +1214,6 @@ static int save_zero_page(RAMState *rs, RAMBlock *block, ram_addr_t offset)
-     return -1;
- }
- 
--static void ram_release_page(const char *rbname, uint64_t offset)
--{
--    if (!migrate_release_ram() || !migration_in_postcopy()) {
--        return;
--    }
--
--    ram_discard_range(rbname, offset, TARGET_PAGE_SIZE);
--}
--
- /*
-  * @pages: the number of pages written by the control path,
-  *        < 0 - error
-@@ -1344,7 +1345,6 @@ static bool do_compress_ram_page(QEMUFile *f, z_stream *stream, RAMBlock *block,
-     int ret;
- 
-     if (save_zero_page_to_file(rs, f, block, offset)) {
--        ram_release_page(block->idstr, offset);
-         return true;
-     }
- 
-@@ -2148,7 +2148,6 @@ static int ram_save_target_page(RAMState *rs, PageSearchStatus *pss)
-             xbzrle_cache_zero_page(rs, block->offset + offset);
-             XBZRLE_cache_unlock();
+     p->data = z;
+@@ -132,12 +132,12 @@ static int zlib_send_prepare(MultiFDSendParams *p, Error **errp)
+             ret = deflate(zs, flush);
+         } while (ret == Z_OK && zs->avail_in && zs->avail_out);
+         if (ret == Z_OK && zs->avail_in) {
+-            error_setg(errp, "multifd %d: deflate failed to compress all input",
++            error_setg(errp, "multifd %u: deflate failed to compress all input",
+                        p->id);
+             return -1;
          }
--        ram_release_page(block->idstr, offset);
-         return res;
+         if (ret != Z_OK) {
+-            error_setg(errp, "multifd %d: deflate returned %d instead of Z_OK",
++            error_setg(errp, "multifd %u: deflate returned %d instead of Z_OK",
+                        p->id, ret);
+             return -1;
+         }
+@@ -190,7 +190,7 @@ static int zlib_recv_setup(MultiFDRecvParams *p, Error **errp)
+     zs->avail_in = 0;
+     zs->next_in = Z_NULL;
+     if (inflateInit(zs) != Z_OK) {
+-        error_setg(errp, "multifd %d: inflate init failed", p->id);
++        error_setg(errp, "multifd %u: inflate init failed", p->id);
+         return -1;
+     }
+     /* To be safe, we reserve twice the size of the packet */
+@@ -198,7 +198,7 @@ static int zlib_recv_setup(MultiFDRecvParams *p, Error **errp)
+     z->zbuff = g_try_malloc(z->zbuff_len);
+     if (!z->zbuff) {
+         inflateEnd(zs);
+-        error_setg(errp, "multifd %d: out of memory for zbuff", p->id);
++        error_setg(errp, "multifd %u: out of memory for zbuff", p->id);
+         return -1;
+     }
+     return 0;
+@@ -247,7 +247,7 @@ static int zlib_recv_pages(MultiFDRecvParams *p, Error **errp)
+     int i;
+ 
+     if (flags != MULTIFD_FLAG_ZLIB) {
+-        error_setg(errp, "multifd %d: flags received %x flags expected %x",
++        error_setg(errp, "multifd %u: flags received %x flags expected %x",
+                    p->id, flags, MULTIFD_FLAG_ZLIB);
+         return -1;
+     }
+@@ -284,19 +284,19 @@ static int zlib_recv_pages(MultiFDRecvParams *p, Error **errp)
+         } while (ret == Z_OK && zs->avail_in
+                              && (zs->total_out - start) < page_size);
+         if (ret == Z_OK && (zs->total_out - start) < page_size) {
+-            error_setg(errp, "multifd %d: inflate generated too few output",
++            error_setg(errp, "multifd %u: inflate generated too few output",
+                        p->id);
+             return -1;
+         }
+         if (ret != Z_OK) {
+-            error_setg(errp, "multifd %d: inflate returned %d instead of Z_OK",
++            error_setg(errp, "multifd %u: inflate returned %d instead of Z_OK",
+                        p->id, ret);
+             return -1;
+         }
+     }
+     out_size = zs->total_out - out_size;
+     if (out_size != expected_size) {
+-        error_setg(errp, "multifd %d: packet size received %d size expected %d",
++        error_setg(errp, "multifd %u: packet size received %u size expected %u",
+                    p->id, out_size, expected_size);
+         return -1;
+     }
+diff --git a/migration/multifd-zstd.c b/migration/multifd-zstd.c
+index 2d5b61106c..cc4e991724 100644
+--- a/migration/multifd-zstd.c
++++ b/migration/multifd-zstd.c
+@@ -55,7 +55,7 @@ static int zstd_send_setup(MultiFDSendParams *p, Error **errp)
+     z->zcs = ZSTD_createCStream();
+     if (!z->zcs) {
+         g_free(z);
+-        error_setg(errp, "multifd %d: zstd createCStream failed", p->id);
++        error_setg(errp, "multifd %u: zstd createCStream failed", p->id);
+         return -1;
      }
  
+@@ -63,7 +63,7 @@ static int zstd_send_setup(MultiFDSendParams *p, Error **errp)
+     if (ZSTD_isError(res)) {
+         ZSTD_freeCStream(z->zcs);
+         g_free(z);
+-        error_setg(errp, "multifd %d: initCStream failed with error %s",
++        error_setg(errp, "multifd %u: initCStream failed with error %s",
+                    p->id, ZSTD_getErrorName(res));
+         return -1;
+     }
+@@ -73,7 +73,7 @@ static int zstd_send_setup(MultiFDSendParams *p, Error **errp)
+     if (!z->zbuff) {
+         ZSTD_freeCStream(z->zcs);
+         g_free(z);
+-        error_setg(errp, "multifd %d: out of memory for zbuff", p->id);
++        error_setg(errp, "multifd %u: out of memory for zbuff", p->id);
+         return -1;
+     }
+     return 0;
+@@ -144,12 +144,12 @@ static int zstd_send_prepare(MultiFDSendParams *p, Error **errp)
+         } while (ret > 0 && (z->in.size - z->in.pos > 0)
+                          && (z->out.size - z->out.pos > 0));
+         if (ret > 0 && (z->in.size - z->in.pos > 0)) {
+-            error_setg(errp, "multifd %d: compressStream buffer too small",
++            error_setg(errp, "multifd %u: compressStream buffer too small",
+                        p->id);
+             return -1;
+         }
+         if (ZSTD_isError(ret)) {
+-            error_setg(errp, "multifd %d: compressStream error %s",
++            error_setg(errp, "multifd %u: compressStream error %s",
+                        p->id, ZSTD_getErrorName(ret));
+             return -1;
+         }
+@@ -198,7 +198,7 @@ static int zstd_recv_setup(MultiFDRecvParams *p, Error **errp)
+     z->zds = ZSTD_createDStream();
+     if (!z->zds) {
+         g_free(z);
+-        error_setg(errp, "multifd %d: zstd createDStream failed", p->id);
++        error_setg(errp, "multifd %u: zstd createDStream failed", p->id);
+         return -1;
+     }
+ 
+@@ -206,7 +206,7 @@ static int zstd_recv_setup(MultiFDRecvParams *p, Error **errp)
+     if (ZSTD_isError(ret)) {
+         ZSTD_freeDStream(z->zds);
+         g_free(z);
+-        error_setg(errp, "multifd %d: initDStream failed with error %s",
++        error_setg(errp, "multifd %u: initDStream failed with error %s",
+                    p->id, ZSTD_getErrorName(ret));
+         return -1;
+     }
+@@ -217,7 +217,7 @@ static int zstd_recv_setup(MultiFDRecvParams *p, Error **errp)
+     if (!z->zbuff) {
+         ZSTD_freeDStream(z->zds);
+         g_free(z);
+-        error_setg(errp, "multifd %d: out of memory for zbuff", p->id);
++        error_setg(errp, "multifd %u: out of memory for zbuff", p->id);
+         return -1;
+     }
+     return 0;
+@@ -265,7 +265,7 @@ static int zstd_recv_pages(MultiFDRecvParams *p, Error **errp)
+     int i;
+ 
+     if (flags != MULTIFD_FLAG_ZSTD) {
+-        error_setg(errp, "multifd %d: flags received %x flags expected %x",
++        error_setg(errp, "multifd %u: flags received %x flags expected %x",
+                    p->id, flags, MULTIFD_FLAG_ZSTD);
+         return -1;
+     }
+@@ -297,19 +297,19 @@ static int zstd_recv_pages(MultiFDRecvParams *p, Error **errp)
+         } while (ret > 0 && (z->in.size - z->in.pos > 0)
+                          && (z->out.pos < page_size));
+         if (ret > 0 && (z->out.pos < page_size)) {
+-            error_setg(errp, "multifd %d: decompressStream buffer too small",
++            error_setg(errp, "multifd %u: decompressStream buffer too small",
+                        p->id);
+             return -1;
+         }
+         if (ZSTD_isError(ret)) {
+-            error_setg(errp, "multifd %d: decompressStream returned %s",
++            error_setg(errp, "multifd %u: decompressStream returned %s",
+                        p->id, ZSTD_getErrorName(ret));
+             return ret;
+         }
+         out_size += z->out.pos;
+     }
+     if (out_size != expected_size) {
+-        error_setg(errp, "multifd %d: packet size received %d size expected %d",
++        error_setg(errp, "multifd %u: packet size received %u size expected %u",
+                    p->id, out_size, expected_size);
+         return -1;
+     }
+diff --git a/migration/multifd.c b/migration/multifd.c
+index 3242f688e5..4d62850258 100644
+--- a/migration/multifd.c
++++ b/migration/multifd.c
+@@ -148,7 +148,7 @@ static int nocomp_recv_pages(MultiFDRecvParams *p, Error **errp)
+     uint32_t flags = p->flags & MULTIFD_FLAG_COMPRESSION_MASK;
+ 
+     if (flags != MULTIFD_FLAG_NOCOMP) {
+-        error_setg(errp, "multifd %d: flags received %x flags expected %x",
++        error_setg(errp, "multifd %u: flags received %x flags expected %x",
+                    p->id, flags, MULTIFD_FLAG_NOCOMP);
+         return -1;
+     }
+@@ -212,8 +212,8 @@ static int multifd_recv_initial_packet(QIOChannel *c, Error **errp)
+     }
+ 
+     if (msg.version != MULTIFD_VERSION) {
+-        error_setg(errp, "multifd: received packet version %d "
+-                   "expected %d", msg.version, MULTIFD_VERSION);
++        error_setg(errp, "multifd: received packet version %u "
++                   "expected %u", msg.version, MULTIFD_VERSION);
+         return -1;
+     }
+ 
+@@ -229,8 +229,8 @@ static int multifd_recv_initial_packet(QIOChannel *c, Error **errp)
+     }
+ 
+     if (msg.id > migrate_multifd_channels()) {
+-        error_setg(errp, "multifd: received channel version %d "
+-                   "expected %d", msg.version, MULTIFD_VERSION);
++        error_setg(errp, "multifd: received channel version %u "
++                   "expected %u", msg.version, MULTIFD_VERSION);
+         return -1;
+     }
+ 
+@@ -303,7 +303,7 @@ static int multifd_recv_unfill_packet(MultiFDRecvParams *p, Error **errp)
+     packet->version = be32_to_cpu(packet->version);
+     if (packet->version != MULTIFD_VERSION) {
+         error_setg(errp, "multifd: received packet "
+-                   "version %d and expected version %d",
++                   "version %u and expected version %u",
+                    packet->version, MULTIFD_VERSION);
+         return -1;
+     }
+@@ -317,7 +317,7 @@ static int multifd_recv_unfill_packet(MultiFDRecvParams *p, Error **errp)
+      */
+     if (packet->pages_alloc > pages_max * 100) {
+         error_setg(errp, "multifd: received packet "
+-                   "with size %d and expected a maximum size of %d",
++                   "with size %u and expected a maximum size of %u",
+                    packet->pages_alloc, pages_max * 100) ;
+         return -1;
+     }
+@@ -333,7 +333,7 @@ static int multifd_recv_unfill_packet(MultiFDRecvParams *p, Error **errp)
+     p->pages->num = be32_to_cpu(packet->pages_used);
+     if (p->pages->num > packet->pages_alloc) {
+         error_setg(errp, "multifd: received packet "
+-                   "with %d pages and expected maximum pages are %d",
++                   "with %u pages and expected maximum pages are %u",
+                    p->pages->num, packet->pages_alloc) ;
+         return -1;
+     }
+diff --git a/migration/trace-events b/migration/trace-events
+index b48d873b8a..5172cb3b3d 100644
+--- a/migration/trace-events
++++ b/migration/trace-events
+@@ -115,23 +115,23 @@ ram_write_tracking_ramblock_start(const char *block_id, size_t page_size, void *
+ ram_write_tracking_ramblock_stop(const char *block_id, size_t page_size, void *addr, size_t length) "%s: page_size: %zu addr: %p length: %zu"
+ 
+ # multifd.c
+-multifd_new_send_channel_async(uint8_t id) "channel %d"
+-multifd_recv(uint8_t id, uint64_t packet_num, uint32_t used, uint32_t flags, uint32_t next_packet_size) "channel %d packet_num %" PRIu64 " pages %d flags 0x%x next packet size %d"
+-multifd_recv_new_channel(uint8_t id) "channel %d"
++multifd_new_send_channel_async(uint8_t id) "channel %u"
++multifd_recv(uint8_t id, uint64_t packet_num, uint32_t used, uint32_t flags, uint32_t next_packet_size) "channel %u packet_num %" PRIu64 " pages %u flags 0x%x next packet size %u"
++multifd_recv_new_channel(uint8_t id) "channel %u"
+ multifd_recv_sync_main(long packet_num) "packet num %ld"
+-multifd_recv_sync_main_signal(uint8_t id) "channel %d"
+-multifd_recv_sync_main_wait(uint8_t id) "channel %d"
++multifd_recv_sync_main_signal(uint8_t id) "channel %u"
++multifd_recv_sync_main_wait(uint8_t id) "channel %u"
+ multifd_recv_terminate_threads(bool error) "error %d"
+-multifd_recv_thread_end(uint8_t id, uint64_t packets, uint64_t pages) "channel %d packets %" PRIu64 " pages %" PRIu64
+-multifd_recv_thread_start(uint8_t id) "%d"
+-multifd_send(uint8_t id, uint64_t packet_num, uint32_t used, uint32_t flags, uint32_t next_packet_size) "channel %d packet_num %" PRIu64 " pages %d flags 0x%x next packet size %d"
+-multifd_send_error(uint8_t id) "channel %d"
++multifd_recv_thread_end(uint8_t id, uint64_t packets, uint64_t pages) "channel %u packets %" PRIu64 " pages %" PRIu64
++multifd_recv_thread_start(uint8_t id) "%u"
++multifd_send(uint8_t id, uint64_t packet_num, uint32_t used, uint32_t flags, uint32_t next_packet_size) "channel %u packet_num %" PRIu64 " pages %u flags 0x%x next packet size %u"
++multifd_send_error(uint8_t id) "channel %u"
+ multifd_send_sync_main(long packet_num) "packet num %ld"
+-multifd_send_sync_main_signal(uint8_t id) "channel %d"
+-multifd_send_sync_main_wait(uint8_t id) "channel %d"
++multifd_send_sync_main_signal(uint8_t id) "channel %u"
++multifd_send_sync_main_wait(uint8_t id) "channel %u"
+ multifd_send_terminate_threads(bool error) "error %d"
+-multifd_send_thread_end(uint8_t id, uint64_t packets, uint64_t pages) "channel %d packets %" PRIu64 " pages %"  PRIu64
+-multifd_send_thread_start(uint8_t id) "%d"
++multifd_send_thread_end(uint8_t id, uint64_t packets, uint64_t pages) "channel %u packets %" PRIu64 " pages %"  PRIu64
++multifd_send_thread_start(uint8_t id) "%u"
+ multifd_tls_outgoing_handshake_start(void *ioc, void *tioc, const char *hostname) "ioc=%p tioc=%p hostname=%s"
+ multifd_tls_outgoing_handshake_error(void *ioc, const char *err) "ioc=%p err=%s"
+ multifd_tls_outgoing_handshake_complete(void *ioc) "ioc=%p"
 -- 
 2.34.1
 

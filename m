@@ -1,114 +1,195 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp75391lfk;
-        Thu, 27 Jan 2022 19:38:46 -0800 (PST)
-X-Received: by 2002:a17:902:694c:: with SMTP id k12mr6770248plt.98.1643341126731;
-        Thu, 27 Jan 2022 19:38:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643341126; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp156618lfk;
+        Thu, 27 Jan 2022 23:07:41 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz3UgDlBdLXABOgoq1VOYOFZPGhks3yvm72nICW6A/K1v0U5nJRNWxsXSlxDvs9STLUid+r
+X-Received: by 2002:a25:234f:: with SMTP id j76mr10268901ybj.338.1643353661757;
+        Thu, 27 Jan 2022 23:07:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643353661; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qr1Q8mT9EfQkKq7jmNUK9HcmyISq2DA0/fpKmvr6wA1FfHB1dkeNhqLQ+CP4XP6UFA
-         pH0CvVCuEF4ygod86L4q1peo11kBu+0s8S+NU4mVmBd3QvYz5CyCDzsdX/9HqJh57u+g
-         NUp27e/Figfig78exTM9hemaTgGKTMCDSynY76GvNbHRaiX8kvQJTWd3iewt/26tpQ26
-         U33uj7nrrqUGzl7QUSpx2vOQpfxJ395+7loSxA0LP53E7uhjLXP8iZeKXw+7NgyPEEQr
-         xmfw0Ji2zmTHX7TmJCOGA8Pmbdw6h6nbIf1/mEDLR759lImlFbWWRXOibbWc1X09cBN7
-         pNAg==
+        b=s5vlTdkOfBDGRYmlBTgka7ESxYRJjaWCQrnidkjhsQJmce9m9ekeubL+9/uNLU+wbQ
+         kE7inkoNpW+EseChcjLaevpTOQcBN9D4WFzAK3r3mR/V9l14/Imgvz0knbJE85Orr/2B
+         Uyss4PC3Exjw5CTFz1ErN2GLKoVrwMxXKiCJ7JosiJDV+zURd1fsGshByrAFLHEoMdPH
+         HKPGh910pzep0PT9ASGkvIJMLjuwrEFixnUgBO5mxLmYTSrVRZ2arZPHF+jD84tFcx+N
+         dqRvyP2uud2SlRdljnNNKpf9xrnkPUSFLmKGvOmSpglnj1jgIHSrJJoylRu/qgv6IgWW
+         iJ0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=1bNRYm61u3wzfZM74ZvYU9IkZ0YmO0e2GB7pf2XyzRw=;
-        b=PKfHsaALWQyvpHA/RU7JYCFieZFaRgqYkhs+nlbFOZYI9YBkwQ9N8FrYcT77zbxI3i
-         GgXiXIYsbtfGvv5AkTxeO1aZW7hSWQ2uklp+0S+eBO/hSFkXcZtnj72vvXG53V/xTJ8u
-         THUtB3aAiMfIPLUuEqdNVSCPWDeTwOCvpPiUMfww4QXWXRRCk4DuqB+vjSSa2cazJVEz
-         7s2hZWWZkVwuglrrE68+e+4knrwQcsLr/bbeZ7DjDdQl740DBmuEe3+cCd8YO/FbpN2D
-         VKn/7EmA/39/ROoXEshSuA5kj8A9GQSwIoxutuhdmVsowlX0La74jKmKzU8yffARm8j+
-         ZxLA==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:references:cc:to:subject;
+        bh=66as3YQZzguzltgp6io9Yoz5tjmRDtw+s0nV/8zYLLQ=;
+        b=YGeNI0xfuc7CQ3Tx0GNGub7AmPj+QqkhKXnY+fIW8Hd/kb3L2dSGgQQk+b6lg5U3dG
+         X9Rd7JrSb6NKEM9Y/fZDL0EuRnouWuUH8b115RKIDASJrMUyoZ3Dsnw8YQpBdZ9bg8hw
+         IeI8R9RXQsaIj1fEdh56aeRsp8je78DJSM++nEzhkvmM9/FIqRz+J/OvXXQUM/3eIU3l
+         6fmh/nQB7f9LGhWJfqSom4NvB0lKKxf8BDTW0bbUl/gKPqjHlZcaTKJfe7bukRDYUuue
+         82R7dGSefCQlLzq7LXzu/Br2vXP7uVOF/LgQezHEkJOro7kI+vZf4/J/crPNAfM9joor
+         KJyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rbtsbSvl;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x9sor2231952pga.16.2022.01.27.19.38.46
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d33si772864yba.794.2022.01.27.23.07.41
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 27 Jan 2022 19:38:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 27 Jan 2022 23:07:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rbtsbSvl;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=1bNRYm61u3wzfZM74ZvYU9IkZ0YmO0e2GB7pf2XyzRw=;
-        b=rbtsbSvl0E1y99+r0B9hL5xqdI2aaQCPO8y0scyfgCQjYT5VkdXkhmgmNrZC/3snNU
-         YCYxjk9RbbMD1+FTT708B6fBeTuot0tFzio82Ttnbxfcmn0d8/ZDJ3b0AyUredXjeq90
-         ZjjIPbHsEYB22VR+6VLSaif6KqJvD6HdmNkepVsxwts+EGicJzqw1hYAxh4Pma4krd49
-         MHjQr9+BfU/9mkzC4IxYPnCbQ5D7w8T3nl6atyqWaTMwTsIc839uSPs2jwcnrC+wTy81
-         69HAbv3KNzVPgnKRe0uXkEQUGtlvpTy6OiJ/c+MCW6jjcdqVwLuAqv9mCy5CWbJSqbXg
-         Y57Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=1bNRYm61u3wzfZM74ZvYU9IkZ0YmO0e2GB7pf2XyzRw=;
-        b=IBxexjju3HRtyu4qR34sldxZSKfZtPMBYE2fYw+xP6KQmV4c34IpD0clO6bb4n+/bX
-         XVtnnI1TpqGWhIZTo0Ll2ULJcmE2X2XNG18NGaGLyS4e98lWMRGFjDqAOPwDn9PQLT38
-         wWxiazUwya60k04l+UHFFN2mu0135JUQrEfzKpQeK+dCAxppwFvd7Uxr4qO9UaAn6asx
-         tHvJwTwO4eyNYici11o3Qy7E+Gpss8HZ94RTo0M3ESgV23zmO9KR4pUBJtO3tWKMukRY
-         Fy0U0UojFthLBEiieuIiQH8SIbnE39RHuPZB4y5Mv3EYr7j8dHUihwZy6BgldpkP1M4G
-         xoEQ==
-X-Gm-Message-State: AOAM533eMFKdAErrBoDgeQa1JP6ISNgsDeSpRZigmQOOw/yYH1PSxq6D
-	V2oZDV+AxbGGdEb18AXO4xY9J/7j
-X-Google-Smtp-Source: ABdhPJzQn2d37T0STfccpSxkLPAvQOiyIV6HLMDDYHV4+FokcOTIqM72ZUxvn7+TvarByyz7pcSOzw==
-X-Received: by 2002:a63:6cc9:: with SMTP id h192mr5004307pgc.486.1643341126235;
-        Thu, 27 Jan 2022 19:38:46 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.15.44] (alanje.lnk.telstra.net. [120.151.179.201])
-        by smtp.gmail.com with ESMTPSA id y191sm6913577pfb.114.2022.01.27.19.38.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Jan 2022 19:38:45 -0800 (PST)
-Message-ID: <cff79bec-6c8f-74e4-799f-cb9ae56b074e@linaro.org>
-Date: Fri, 28 Jan 2022 14:38:40 +1100
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:43846 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nDLMA-00038g-1y
+	for alex.bennee@linaro.org; Fri, 28 Jan 2022 02:07:38 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37692)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1nDLKb-00036A-HP; Fri, 28 Jan 2022 02:06:04 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:5098)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1nDLKK-0003TN-7r; Fri, 28 Jan 2022 02:05:51 -0500
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.53])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4JlT2j4Nvwz9sVV;
+ Fri, 28 Jan 2022 15:03:57 +0800 (CST)
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2308.21; Fri, 28 Jan 2022 15:05:18 +0800
+Subject: Re: [PATCH] hw/arm/virt: Fix CPU's default NUMA node ID
+To: Igor Mammedov <imammedo@redhat.com>, Gavin Shan <gshan@redhat.com>
+CC: <peter.maydell@linaro.org>, <drjones@redhat.com>,
+ <richard.henderson@linaro.org>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <shan.gavin@gmail.com>
+References: <20220126052410.36380-1-gshan@redhat.com>
+ <20220126101447.5d4f01f9@redhat.com>
+Message-ID: <f5780366-7c6e-1643-d471-1304ce6584ca@huawei.com>
+Date: Fri, 28 Jan 2022 15:05:18 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 14/14] hw/intc/arm_gicv3_its: Implement MOVI
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Shashi Mallela <shashi.mallela@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20220122182444.724087-1-peter.maydell@linaro.org>
- <20220122182444.724087-15-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220122182444.724087-15-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <20220126101447.5d4f01f9@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: QDMa8nN8jGZc
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme702-chm.china.huawei.com (10.1.199.98) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
+From:  "wangyanan (Y)" via <qemu-devel@nongnu.org>
+X-TUID: 3owkE6zkbLF4
 
-On 1/23/22 05:24, Peter Maydell wrote:
-> Implement the ITS MOVI command. This command specifies a (physical) LPI
-> by DeviceID and EventID and provides a new ICID for it. The ITS must
-> find the interrupt translation table entry for the LPI, which will
-> tell it the old ICID. It then moves the pending state of the LPI from
-> the old redistributor to the new one and updates the ICID field in
-> the translation table entry.
-> 
-> This is another GICv3 ITS command that we forgot to implement.  Linux
-> does use this one, but only if the guest powers off one of its CPUs.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
-> All the "validate guest command argument, log and return if bad"
-> logic feels very clunky here...
-> ---
->   hw/intc/gicv3_internal.h   |  16 ++++
->   hw/intc/arm_gicv3_its.c    | 146 +++++++++++++++++++++++++++++++++++++
->   hw/intc/arm_gicv3_redist.c |  53 ++++++++++++++
->   3 files changed, 215 insertions(+)
+Hi,
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+On 2022/1/26 17:14, Igor Mammedov wrote:
+> On Wed, 26 Jan 2022 13:24:10 +0800
+> Gavin Shan <gshan@redhat.com> wrote:
+>
+>> The default CPU-to-NUMA association is given by mc->get_default_cpu_node_id()
+>> when it isn't provided explicitly. However, the CPU topology isn't fully
+>> considered in the default association and it causes CPU topology broken
+>> warnings on booting Linux guest.
+>>
+>> For example, the following warning messages are observed when the Linux guest
+>> is booted with the following command lines.
+>>
+>>    /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+>>    -accel kvm -machine virt,gic-version=host               \
+>>    -cpu host                                               \
+>>    -smp 6,sockets=2,cores=3,threads=1                      \
+>>    -m 1024M,slots=16,maxmem=64G                            \
+>>    -object memory-backend-ram,id=mem0,size=128M            \
+>>    -object memory-backend-ram,id=mem1,size=128M            \
+>>    -object memory-backend-ram,id=mem2,size=128M            \
+>>    -object memory-backend-ram,id=mem3,size=128M            \
+>>    -object memory-backend-ram,id=mem4,size=128M            \
+>>    -object memory-backend-ram,id=mem4,size=384M            \
+>>    -numa node,nodeid=0,memdev=mem0                         \
+>>    -numa node,nodeid=1,memdev=mem1                         \
+>>    -numa node,nodeid=2,memdev=mem2                         \
+>>    -numa node,nodeid=3,memdev=mem3                         \
+>>    -numa node,nodeid=4,memdev=mem4                         \
+>>    -numa node,nodeid=5,memdev=mem5
+>>           :
+>>    alternatives: patching kernel code
+>>    BUG: arch topology borken
+>>    the CLS domain not a subset of the MC domain
+>>    <the above error log repeats>
+>>    BUG: arch topology borken
+>>    the DIE domain not a subset of the NODE domain
+>>
+>> With current implementation of mc->get_default_cpu_node_id(), CPU#0 to CPU#5
+>> are associated with NODE#0 to NODE#5 separately. That's incorrect because
+>> CPU#0/1/2 should be associated with same NUMA node because they're seated
+>> in same socket.
+>>
+>> This fixes the issue by considering the socket when default CPU-to-NUMA
+>> is given. With this applied, no more CPU topology broken warnings are seen
+>> from the Linux guest. The 6 CPUs are associated with NODE#0/1, but there are
+>> no CPUs associated with NODE#2/3/4/5.
+> >From migration point of view it looks fine to me, and doesn't need a compat knob
+> since NUMA data (on virt-arm) only used to construct ACPI tables (and we don't
+> version those unless something is broken by it).
+>
+>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>>   hw/arm/virt.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 141350bf21..b4a95522d3 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -2499,7 +2499,7 @@ virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+>>   
+>>   static int64_t virt_get_default_cpu_node_id(const MachineState *ms, int idx)
+>>   {
+>> -    return idx % ms->numa_state->num_nodes;
+>> +    return idx / (ms->smp.dies * ms->smp.clusters * ms->smp.cores * ms->smp.threads);
+> I'd like for ARM folks to confirm whether above is correct
+> (i.e. socket is NUMA node boundary and also if above topo vars
+> could have odd values. Don't look at horribly complicated x86
+> as example, but it showed that vendors could stash pretty much
+> anything there, so we should consider it here as well and maybe
+> forbid that in smp virt-arm parser)
+We now have a generic smp parser in machine-smp.c and it guarantees
+different machine boards a correct group of topo vars: supported topo
+vars being valid and value of unsupported ones being 1. I think it's safe
+to use them here. Or am I missing something else?
 
-r~
+Also, we may not need to include "dies" here because it's not supported
+on ARM virt machine. I believe we will always have "ms->smp.dies==1"
+for this machine.
+
+Thanks,
+Yanan
+>>   }
+>>   
+>>   static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>
+> .
+

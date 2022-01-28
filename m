@@ -1,98 +1,94 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp556628lfk;
-        Fri, 28 Jan 2022 10:49:20 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx821jlkeTOhL/om1A1A4wBIcbXP3qiH6Uqn3O4oahkaLRL5se80Mqil9TkRM2SGTpblAOV
-X-Received: by 2002:a6b:dd02:: with SMTP id f2mr6003556ioc.127.1643395760478;
-        Fri, 28 Jan 2022 10:49:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643395760; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp547559lfk;
+        Fri, 28 Jan 2022 10:32:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwUjrDYa4//XsR1+juGx8he8ejYZkAgK0klGdNYOIfQ5qviLpEqb0CFZbgum2PyZMK+P2GD
+X-Received: by 2002:a05:620a:4306:: with SMTP id u6mr6864281qko.436.1643394737712;
+        Fri, 28 Jan 2022 10:32:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643394737; cv=none;
         d=google.com; s=arc-20160816;
-        b=zo4LxZS4l+0HDlKfuObksmLnlSJ0r1sf2zsUI7B590+6bJvOd7CsI5jOl9I9wOiQjY
-         cFBtScnrXy4dRynBYSHjBLs1qbP1t1EWzJqpTd58Gn3Qejeoer5VMl3nLjv71TGElYr2
-         0Rq6Y/Pp/cZ53v4Qh8N+67jImVbPjeAQUE21gqPsDy1xVW7LmuBZTi2/SSktO52d9n+G
-         xZhQo2IopsmUeOa6C3VEmxH5zH3WxKmHtBCXhNNl+/ZZ8xcP7CK6jCDu5LYRiL/f9EuG
-         sJ6bSVdvqsChDqK8dK6+bZ1UWZs2jPOn85xjYL7p8UKJCf8x2VkiCCHMP60+CgjUNchx
-         RYPg==
+        b=wtXtSybkOi+n4m+HZpHqae/n+IeNbR5WnEjd6YBBEQMb7qpXJLQ2pcKPvof83nUqtm
+         T4RvF+rpWEfnXUo4tiD4nsIGxHjSECijD6ejD/uoEZZBCX78HxOXULrLOUwYeO+BoYWC
+         rl3FRsnVZhn0A0OBa0sYUxYq4B59v5s4AP/nVv5ksXFCWtCP7zeBYB6qKRpkWxefLEUx
+         Vc0HA2P+DXlYtJGKBounLhQGyd/FkTmswvb46IQ0c/xAIWKZCxgtyK3c46dScnUqcbkk
+         UXPsAJNdDjGPWFmKZXVLEurbH6dYUtNe+rMqWilIN16mtCo/u/X374DWaUcO2utpaM/8
+         UCTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=bsKREreB4LgJFdMcSyHUcfhSCbtvvI69hXnQz2Aotak=;
-        b=c08+90r94ygMZPFWHeGYKUw09XKjN4Q58f+QyLA+8OgIP/jPUUQf0VMbmZnPDpS0LX
-         OnQRGWPHOSVqP7AlrqqwE0DFgzrWvrqOBRqlF8wOyGl+hkcCpwz1LvJikip21OKWqNoK
-         MyXHIkxR7C2MIjfanmItdSN5qHZr6ps7ZImw8vLKRtnlD6ErnWqn8d1woCHZWKQPDSVX
-         at6ikn+k8e9YVsx6+L2+fRnOh1KuXj3iRVemsxx7MjENkr8kgpiaUmGfmQ+c1Afm9IUu
-         gjEAzQFjyjZHJhj/tIy1hbxjCl3Mm6V4kGGvBKWMHrLAOfmEm73strt6C3E4vUN+AgwS
-         CRXg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=W4TWj7QB+luGrN1sQHscPhqJ27DIpWsdT/o2ijiM99Q=;
+        b=CPGKNrcLMSxEjXvrSIlu2URasLYLdrF1q1A52lSGo9Wptwi+fDHMGSzjm8BGc2EXG+
+         0R/OXM+dehQmFFNb0B+b7J2Z9umak+LqH0w55o9q3QETEpkB5qmsIx+hDdJ7mexL0PXT
+         5h7Ok/P3KCfgVOaNvfabAtjuU+66z8dhNwmPVPdL79Xu9IjPnJnvgxjSVoxsutwsGpyE
+         7Ki8a8fxdSGShPIe1aguhsodMHH32eXvaqM/4nY6EJmN/pDp0uUziKnkCw0bBuFLMPT5
+         BmzYdhpk5NhtjWjvJlkHzUpMFwaaKYN8M43qts0mJoH2Qa2urCxhy3xoYabEKUfPfKFi
+         z/4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UmuPeXzu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MPrbGKGy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j28si5690461ila.160.2022.01.28.10.49.20
+        by mx.google.com with ESMTPS id k10si3070786qti.98.2022.01.28.10.32.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Jan 2022 10:49:20 -0800 (PST)
+        Fri, 28 Jan 2022 10:32:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UmuPeXzu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MPrbGKGy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48528 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36994 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nDWJC-0003qC-M2
-	for alex.bennee@linaro.org; Fri, 28 Jan 2022 13:49:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47384)
+	id 1nDW2j-0002f2-2y
+	for alex.bennee@linaro.org; Fri, 28 Jan 2022 13:32:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46258)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nDW6T-0007Ep-0a
- for qemu-arm@nongnu.org; Fri, 28 Jan 2022 13:36:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34972)
+ id 1nDW2W-0002aZ-0a
+ for qemu-arm@nongnu.org; Fri, 28 Jan 2022 13:32:04 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:32201)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nDW6L-0001J7-7c
- for qemu-arm@nongnu.org; Fri, 28 Jan 2022 13:36:08 -0500
+ id 1nDW2O-0000qV-M1
+ for qemu-arm@nongnu.org; Fri, 28 Jan 2022 13:32:00 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643394913;
+ s=mimecast20190719; t=1643394714;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bsKREreB4LgJFdMcSyHUcfhSCbtvvI69hXnQz2Aotak=;
- b=UmuPeXzuuGu0Z+X3nULzyorI0dhVwi1FlLtgGnqVLF8XmeRopR3VSyQczXTGiywaLv8+vB
- ZOTWqeKY5XpV5E6lTfbRfqFj1gFgpt7LxVNolehmFOotvJnFivZNQHcnIOy9HR66hDgpvM
- OSIyF6/j9C2/9xxHA4qSq73rvkbq4+o=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=W4TWj7QB+luGrN1sQHscPhqJ27DIpWsdT/o2ijiM99Q=;
+ b=MPrbGKGyUtC6+4AlNr8+ATq18pCGEaS4xgCfUnSgIK+V10Af1uDrsR6x2BOV6w7Q0Z8zzP
+ WEkCladSaWyReDz448wMW87mL/FJZRnU4SrdkiuwZbhlfzxV/U1SCsRE8nDPRmD6Zq8cXq
+ Kg3lzIVE1GTaJ/7Ldk1LeR0DixqG2Xw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-202--1BV6RxBNb69LHY8LjrVqA-1; Fri, 28 Jan 2022 13:35:10 -0500
-X-MC-Unique: -1BV6RxBNb69LHY8LjrVqA-1
+ us-mta-197-fqwIN2QOMvK-Pq6sGDxa2w-1; Fri, 28 Jan 2022 13:31:53 -0500
+X-MC-Unique: fqwIN2QOMvK-Pq6sGDxa2w-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 49D4B18B613A;
- Fri, 28 Jan 2022 18:35:07 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0FA54189DF41;
+ Fri, 28 Jan 2022 18:31:49 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 83C1C77456;
- Fri, 28 Jan 2022 18:35:00 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0665677468;
+ Fri, 28 Jan 2022 18:30:34 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 09/36] multifd: Make zlib use iov's
-Date: Fri, 28 Jan 2022 19:30:06 +0100
-Message-Id: <20220128183033.31998-10-quintela@redhat.com>
-In-Reply-To: <20220128183033.31998-1-quintela@redhat.com>
-References: <20220128183033.31998-1-quintela@redhat.com>
+Subject: [PULL 00/36] Migration 20220128 patches
+Date: Fri, 28 Jan 2022 19:29:57 +0100
+Message-Id: <20220128183033.31998-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
@@ -135,40 +131,130 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6WK8xrttJ9PY
+X-TUID: CzUNwo0dWce+
 
-Signed-off-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
----
- migration/multifd-zlib.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/migration/multifd-zlib.c b/migration/multifd-zlib.c
-index a2fec4d01d..71480c82bb 100644
---- a/migration/multifd-zlib.c
-+++ b/migration/multifd-zlib.c
-@@ -143,6 +143,9 @@ static int zlib_send_prepare(MultiFDSendParams *p, Error **errp)
-         }
-         out_size += available - zs->avail_out;
-     }
-+    p->iov[p->iovs_num].iov_base = z->zbuff;
-+    p->iov[p->iovs_num].iov_len = out_size;
-+    p->iovs_num++;
-     p->next_packet_size = out_size;
-     p->flags |= MULTIFD_FLAG_ZLIB;
- 
-@@ -162,10 +165,7 @@ static int zlib_send_prepare(MultiFDSendParams *p, Error **errp)
-  */
- static int zlib_send_write(MultiFDSendParams *p, uint32_t used, Error **errp)
- {
--    struct zlib_data *z = p->data;
--
--    return qio_channel_write_all(p->c, (void *)z->zbuff, p->next_packet_size,
--                                 errp);
-+    return qio_channel_writev_all(p->c, p->iov, p->iovs_num, errp);
- }
- 
- /**
--- 
-2.34.1
+The following changes since commit b367db48126d4ee14579af6cf5cdbffeb9496627=
+:=0D
+=0D
+  Merge remote-tracking branch 'remotes/aperard/tags/pull-xen-20220127' int=
+o staging (2022-01-28 11:05:29 +0000)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  https://gitlab.com/juan.quintela/qemu.git tags/migration-20220128-pull-re=
+quest=0D
+=0D
+for you to fetch changes up to 476ebf77fe8909ded10046edf26685bc28438162:=0D
+=0D
+  migration: Move temp page setup and cleanup into separate functions (2022=
+-01-28 15:38:23 +0100)=0D
+=0D
+----------------------------------------------------------------=0D
+Migration Pull request (Take 2)=0D
+=0D
+Hi=0D
+=0D
+This time I have disabled vmstate canary patches form Dave Gilbert.=0D
+=0D
+Let's see if it works.=0D
+=0D
+Later, Juan.=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+David Edmondson (3):=0D
+  migration: Report the error returned when save_live_iterate fails=0D
+  migration: Introduce ram_transferred_add()=0D
+  migration: Tally pre-copy, downtime and post-copy bytes independently=0D
+=0D
+Juan Quintela (17):=0D
+  migration: All this fields are unsigned=0D
+  migration: We only need last_stage in two places=0D
+  migration: ram_release_pages() always receive 1 page as argument=0D
+  migration: Remove masking for compression=0D
+  migration: simplify do_compress_ram_page=0D
+  migration: Move ram_release_pages() call to save_zero_page_to_file()=0D
+  multifd: Use proper maximum compression values=0D
+  multifd: Move iov from pages to params=0D
+  multifd: Make zlib use iov's=0D
+  multifd: Make zstd use iov's=0D
+  multifd: Remove send_write() method=0D
+  multifd: Use a single writev on the send side=0D
+  multifd: Unfold "used" variable by its value=0D
+  multifd: Use normal pages array on the send side=0D
+  multifd: Use normal pages array on the recv side=0D
+  multifd: recv side only needs the RAMBlock host address=0D
+  multifd: Rename pages_used to normal_pages=0D
+=0D
+Peter Maydell (1):=0D
+  Remove unnecessary minimum_version_id_old fields=0D
+=0D
+Peter Xu (10):=0D
+  migration: Drop dead code of ram_debug_dump_bitmap()=0D
+  migration: Don't return for postcopy_chunk_hostpages()=0D
+  migration: Drop postcopy_chunk_hostpages()=0D
+  migration: Do chunk page in postcopy_each_ram_send_discard()=0D
+  migration: Drop return code for disgard ram process=0D
+  migration: No off-by-one for pss->page update in host page size=0D
+  migration: Enable UFFD_FEATURE_THREAD_ID even without blocktime feat=0D
+  migration: Add postcopy_has_request()=0D
+  migration: Simplify unqueue_page()=0D
+  migration: Move temp page setup and cleanup into separate functions=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (1):=0D
+  migration: Don't return for postcopy_send_discard_bm_ram()=0D
+=0D
+Xu Zheng (1):=0D
+  migration/ram: clean up unused comment.=0D
+=0D
+Zhang Chen (3):=0D
+  migration/migration.c: Add missed default error handler for migration=0D
+    state=0D
+  migration/migration.c: Avoid COLO boot in postcopy migration=0D
+  migration/migration.c: Remove the MIGRATION_STATUS_ACTIVE when=0D
+    migration finished=0D
+=0D
+ qapi/migration.json           |  13 +-=0D
+ migration/multifd.h           |  33 ++--=0D
+ migration/ram.h               |   4 +-=0D
+ hw/acpi/cpu.c                 |   2 -=0D
+ hw/acpi/ich9.c                |   3 -=0D
+ hw/acpi/memory_hotplug.c      |   2 -=0D
+ hw/acpi/piix4.c               |   2 -=0D
+ hw/acpi/tco.c                 |   1 -=0D
+ hw/audio/pcspk.c              |   1 -=0D
+ hw/display/macfb.c            |   1 -=0D
+ hw/dma/xlnx-zdma.c            |   1 -=0D
+ hw/dma/xlnx_csu_dma.c         |   1 -=0D
+ hw/gpio/imx_gpio.c            |   1 -=0D
+ hw/misc/bcm2835_mbox.c        |   1 -=0D
+ hw/net/can/can_kvaser_pci.c   |   1 -=0D
+ hw/net/can/can_mioe3680_pci.c |   1 -=0D
+ hw/net/can/can_pcm3680_pci.c  |   1 -=0D
+ hw/net/can/can_sja1000.c      |   2 -=0D
+ hw/net/can/ctucan_core.c      |   2 -=0D
+ hw/net/can/ctucan_pci.c       |   1 -=0D
+ hw/ppc/ppc.c                  |   1 -=0D
+ hw/scsi/megasas.c             |   1 -=0D
+ hw/scsi/mptsas.c              |   1 -=0D
+ hw/virtio/virtio-mmio.c       |   1 -=0D
+ hw/virtio/virtio-pci.c        |   1 -=0D
+ hw/virtio/virtio.c            |   1 -=0D
+ migration/migration.c         |  26 ++-=0D
+ migration/multifd-zlib.c      |  61 +++----=0D
+ migration/multifd-zstd.c      |  63 +++-----=0D
+ migration/multifd.c           | 148 ++++++++---------=0D
+ migration/postcopy-ram.c      |  96 ++++++-----=0D
+ migration/ram.c               | 291 ++++++++++++----------------------=0D
+ migration/savevm.c            |   5 +-=0D
+ monitor/hmp-cmds.c            |  12 ++=0D
+ target/openrisc/machine.c     |   1 -=0D
+ target/ppc/machine.c          |   2 -=0D
+ target/sparc/machine.c        |   4 -=0D
+ migration/trace-events        |  29 ++--=0D
+ 38 files changed, 350 insertions(+), 468 deletions(-)=0D
+=0D
+--=20=0D
+2.34.1=0D
+=0D
 

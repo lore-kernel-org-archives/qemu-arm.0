@@ -1,87 +1,87 @@
-Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1030867qvl;
-        Fri, 28 Jan 2022 11:13:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyti3vdeRRgyZ5JFpE0Z+opPeivfiT8+WU+XE8N1+6c5t7WiKU+f85mnBss+1i9Vc8se3bi
-X-Received: by 2002:a25:7384:: with SMTP id o126mr14597445ybc.38.1643397202291;
-        Fri, 28 Jan 2022 11:13:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643397202; cv=none;
+Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1033286qvl;
+        Fri, 28 Jan 2022 11:16:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz16CKZKroS/adBKC3OB8tB0aw/rEltLc0GGUH/a5ghfG1WyFtrGWVe63futh0pTaL5oIpC
+X-Received: by 2002:a25:d0c8:: with SMTP id h191mr2270316ybg.316.1643397417701;
+        Fri, 28 Jan 2022 11:16:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643397417; cv=none;
         d=google.com; s=arc-20160816;
-        b=ezsglAl3Uwy9asjsj1FiRDUoSkEiuahcxNmPDmrzy/8pzNU3SXHXctem0SVYD/5m/W
-         CbRKfcXamUeqByqpn6eoaXhVOddeZKDewAUZMY8TyVZ+zyzHCn/AT3SBzHliuGW1cc8+
-         FZDpe4ITus2Pc7Me0MA44hU/ZHJQAbK0SIyFkOZEscovgIGW8lBLCEVuvtx6+M8E1vt5
-         mVErF0EJ7xn8gb3NiBQw97g1WQDUTVxjBWJVG7wKqSibgjKUHBxGKDLwhbuTWfDHQEpn
-         D8v4pQN3cwl9AEmZyVdfAEhsTNVM8L0Yps8lOd+pi20gShnlP/CH3oVKXpPWpqiFNQLp
-         3oiA==
+        b=FKGNjVcxxQvyn7jhM6Ec+p9KjXANiI4JcsNUrLZAvDx2BZDc3hKa8Q4fIkubqJZolm
+         rty+sq2DRH7MvBTVO0MJZJpiZxTh2mz1bCLyjMQVZkXog+Nb2K5A+mQCIZp6SMzJ0MNk
+         Aw84nTpSdIcEyYzwwO/vrLSwtOX6fW9yHDdKGUitqbnEOtt2nSRX0+aR8CknLn3uSxHK
+         ZHF+iEm6H15GhIddfu8kOUsFXayZsCN5Am6iWH8Mi3MQpm+Qv6MEIshhe/7vLCN5xmDf
+         cQ2NrAhaKWXWL2jFqZqJ1cAUzrgrlmL7E0bnYf8/X7QtusgPtBvMw+0P6OeGUVDms3uL
+         Z3mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=yTQ4I0ZcTmklehXGFG8JWS5ZQcOuFKPVBWjAxpcMXkI=;
-        b=QJdqh6ytfnkUgufs8ywJGSoXmNJ2r4Xj5Ip8ds3M/Wd0muCpW/wvg2vbHgP0zvtWSL
-         b8/xlTiCrbO6EMyXtzG2SlxEGR+cQlHH0R2rl5jPTLNfRh9A5elyHfJjHLjYJZQMATjE
-         JIwCJzOn5Rq4finkuXOO+T49ZRjagKwoqQE85zboonsTwV+Ezgi+AegB+Etm8l/jqwyx
-         lLcDJMyElJoTjLwJz3VMMLHFsHXePC8AnHc1aQWeJI6lu7NhuMMSmV6Hl49LJ8R5/eWA
-         mGviDl/22IklWhv3ZhJp58Y3HpS10Vq8vgFW3YPYY16AooVKFRBXU9Qzh2mz5/Y3Yogt
-         2vKQ==
+        bh=gDPLBE5SDiRcc3Ih58+8tD1mzhZBQRy31q4QaMFYHQg=;
+        b=WXsYUmv7TvHZYakyH3IZgl2Woq9aRuFdukANsdivxqv906XG83dy5qgAO8F/BSroLE
+         sojpNp961YfvPMqAwKx7QL084vCHyOsiS2q7KHVnFpABTaS4lqu2uUHa7TWPOMiukGbw
+         QDbpQnSXQMdr7EyhWyt85b8CxE4/RPoICG0U459OpQoY93ierB8+jJ6l2TxNh+FaNHgW
+         yGIDJ+cz+ZEEPmojZKIS8T/RjbV9DX5CV/xxLue0yYJB82J05SC1b93knHgXKJWWsqD7
+         8My9Karj6IpCUdgTbGlniJek03/LqecjAzlR1j6zj4woDlUXQlitRYKiZPxAXsbJA/58
+         8MKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="cMP7MSx/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RWAFVgee;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 184si28669144ybf.760.2022.01.28.11.13.22
+        by mx.google.com with ESMTPS id 4si25142612ybm.408.2022.01.28.11.16.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Jan 2022 11:13:22 -0800 (PST)
+        Fri, 28 Jan 2022 11:16:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="cMP7MSx/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RWAFVgee;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54704 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59310 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nDWgT-0003Qk-OJ
-	for alex.bennee@linaro.org; Fri, 28 Jan 2022 14:13:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48600)
+	id 1nDWjx-0006pS-5K
+	for alex.bennee@linaro.org; Fri, 28 Jan 2022 14:16:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nDW94-00018d-0h
+ id 1nDW94-00018e-19
  for qemu-arm@nongnu.org; Fri, 28 Jan 2022 13:38:57 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:59299)
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:42745)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nDW8w-0001re-Vu
- for qemu-arm@nongnu.org; Fri, 28 Jan 2022 13:38:46 -0500
+ id 1nDW8v-0001qA-7V
+ for qemu-arm@nongnu.org; Fri, 28 Jan 2022 13:38:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643395118;
+ s=mimecast20190719; t=1643395108;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=yTQ4I0ZcTmklehXGFG8JWS5ZQcOuFKPVBWjAxpcMXkI=;
- b=cMP7MSx/j/QXznGjPNnEJ64BRfym5AlKlEZfIcyddHIexq4LmV5/Ka6qHJpiieHOI1TZh/
- xh3u2m0yQVYSv7GjFnFHJBm1CBuYSow2Nrz0yaLF6lM/C15PRFW8PupFBDrilBPuJ7U+ss
- CbNXQVnweu7d/wDeScewqrMtOaKm25o=
+ bh=gDPLBE5SDiRcc3Ih58+8tD1mzhZBQRy31q4QaMFYHQg=;
+ b=RWAFVgeeKvHFx83dw/FdcNqzjsGh9KZI/mbdaKde/Hhd2YI/z+4Bn+7kC2ba7sRhCaOH5p
+ ELXuqlUQuDqlSr/AtKTKsL+3woeC1AMT7vR7/VVQRuVDVZFoVRADT0GZAybOU1KhNgqTjE
+ Gg42XTIiyvPIXqQUiKly0NwvmLDC5LU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-531-qVXYq7pkPRqAcMXjTGFNlQ-1; Fri, 28 Jan 2022 13:38:33 -0500
-X-MC-Unique: qVXYq7pkPRqAcMXjTGFNlQ-1
+ us-mta-670-ZYW1a5KnPmuJEtzU4zNf2A-1; Fri, 28 Jan 2022 13:38:25 -0500
+X-MC-Unique: ZYW1a5KnPmuJEtzU4zNf2A-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 215931923B83;
- Fri, 28 Jan 2022 18:38:30 +0000 (UTC)
-Received: from secure.mitica (unknown [10.39.194.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BD88077461;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5C6281091DAA;
  Fri, 28 Jan 2022 18:38:22 +0000 (UTC)
+Received: from secure.mitica (unknown [10.39.194.185])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3112377462;
+ Fri, 28 Jan 2022 18:38:15 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 25/36] migration: Don't return for postcopy_chunk_hostpages()
-Date: Fri, 28 Jan 2022 19:30:22 +0100
-Message-Id: <20220128183033.31998-26-quintela@redhat.com>
+Subject: [PULL 24/36] migration: Drop dead code of ram_debug_dump_bitmap()
+Date: Fri, 28 Jan 2022 19:30:21 +0100
+Message-Id: <20220128183033.31998-25-quintela@redhat.com>
 In-Reply-To: <20220128183033.31998-1-quintela@redhat.com>
 References: <20220128183033.31998-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -92,7 +92,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
@@ -136,12 +136,13 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SqQ2bA4XCq5c
+X-TUID: S8l+5NKCSscK
 
 From: Peter Xu <peterx@redhat.com>
 
-It always return zero, because it just can't go wrong so far.  Simplify the
-code with no functional change.
+I planned to add "#ifdef DEBUG_POSTCOPY" around the function too because
+otherwise it'll be compiled into qemu binary even if it'll never be used.  Then
+I found that maybe it's easier to just drop it for good..
 
 Signed-off-by: Peter Xu <peterx@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
@@ -149,52 +150,77 @@ Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 11 ++---------
- 1 file changed, 2 insertions(+), 9 deletions(-)
+ migration/ram.h |  2 --
+ migration/ram.c | 39 ---------------------------------------
+ 2 files changed, 41 deletions(-)
 
+diff --git a/migration/ram.h b/migration/ram.h
+index c515396a9a..f543e25765 100644
+--- a/migration/ram.h
++++ b/migration/ram.h
+@@ -55,8 +55,6 @@ void mig_throttle_counter_reset(void);
+ uint64_t ram_pagesize_summary(void);
+ int ram_save_queue_pages(const char *rbname, ram_addr_t start, ram_addr_t len);
+ void acct_update_position(QEMUFile *f, size_t size, bool zero);
+-void ram_debug_dump_bitmap(unsigned long *todump, bool expected,
+-                           unsigned long pages);
+ void ram_postcopy_migrated_memory_release(MigrationState *ms);
+ /* For outgoing discard bitmap */
+ int ram_postcopy_send_discard_bitmap(MigrationState *ms);
 diff --git a/migration/ram.c b/migration/ram.c
-index 9a06ea6dd4..c60cf5ad83 100644
+index b4477b8ee0..9a06ea6dd4 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -2566,12 +2566,10 @@ static void postcopy_chunk_hostpages_pass(MigrationState *ms, RAMBlock *block)
-  * dirty host-page size chunks as all dirty.  In this case the host-page
-  * is the host-page for the particular RAMBlock, i.e. it might be a huge page
-  *
-- * Returns zero on success
-- *
-  * @ms: current migration state
-  * @block: block we want to work with
-  */
--static int postcopy_chunk_hostpages(MigrationState *ms, RAMBlock *block)
-+static void postcopy_chunk_hostpages(MigrationState *ms, RAMBlock *block)
- {
-     postcopy_discard_send_init(ms, block->idstr);
+@@ -2394,40 +2394,6 @@ static void ram_state_reset(RAMState *rs)
  
-@@ -2581,7 +2579,6 @@ static int postcopy_chunk_hostpages(MigrationState *ms, RAMBlock *block)
-     postcopy_chunk_hostpages_pass(ms, block);
+ #define MAX_WAIT 50 /* ms, half buffered_file limit */
  
-     postcopy_discard_send_finish(ms);
--    return 0;
- }
- 
- /**
-@@ -2603,7 +2600,6 @@ int ram_postcopy_send_discard_bitmap(MigrationState *ms)
- {
-     RAMState *rs = ram_state;
-     RAMBlock *block;
--    int ret;
- 
-     RCU_READ_LOCK_GUARD();
- 
-@@ -2617,10 +2613,7 @@ int ram_postcopy_send_discard_bitmap(MigrationState *ms)
- 
-     RAMBLOCK_FOREACH_NOT_IGNORED(block) {
-         /* Deal with TPS != HPS and huge pages */
--        ret = postcopy_chunk_hostpages(ms, block);
--        if (ret) {
--            return ret;
+-/*
+- * 'expected' is the value you expect the bitmap mostly to be full
+- * of; it won't bother printing lines that are all this value.
+- * If 'todump' is null the migration bitmap is dumped.
+- */
+-void ram_debug_dump_bitmap(unsigned long *todump, bool expected,
+-                           unsigned long pages)
+-{
+-    int64_t cur;
+-    int64_t linelen = 128;
+-    char linebuf[129];
+-
+-    for (cur = 0; cur < pages; cur += linelen) {
+-        int64_t curb;
+-        bool found = false;
+-        /*
+-         * Last line; catch the case where the line length
+-         * is longer than remaining ram
+-         */
+-        if (cur + linelen > pages) {
+-            linelen = pages - cur;
 -        }
-+        postcopy_chunk_hostpages(ms, block);
+-        for (curb = 0; curb < linelen; curb++) {
+-            bool thisbit = test_bit(cur + curb, todump);
+-            linebuf[curb] = thisbit ? '1' : '.';
+-            found = found || (thisbit != expected);
+-        }
+-        if (found) {
+-            linebuf[curb] = '\0';
+-            fprintf(stderr,  "0x%08" PRIx64 " : %s\n", cur, linebuf);
+-        }
+-    }
+-}
+-
+ /* **** functions for postcopy ***** */
+ 
+ void ram_postcopy_migrated_memory_release(MigrationState *ms)
+@@ -2655,11 +2621,6 @@ int ram_postcopy_send_discard_bitmap(MigrationState *ms)
+         if (ret) {
+             return ret;
+         }
+-
+-#ifdef DEBUG_POSTCOPY
+-        ram_debug_dump_bitmap(block->bmap, true,
+-                              block->used_length >> TARGET_PAGE_BITS);
+-#endif
      }
      trace_ram_postcopy_send_discard_bitmap();
  

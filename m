@@ -1,87 +1,88 @@
-Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1024830qvl;
-        Fri, 28 Jan 2022 11:04:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwLy84DfOYcJ15pKTITnUDu87rbvReDqaOCQ8Dvz2qdLr3YUQBE6nqIZl14uh7O0h/n/BCI
-X-Received: by 2002:a05:6214:e8c:: with SMTP id hf12mr8634759qvb.48.1643396664689;
-        Fri, 28 Jan 2022 11:04:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643396664; cv=none;
+Received: by 2002:a0c:df87:0:0:0:0:0 with SMTP id w7csp1026686qvl;
+        Fri, 28 Jan 2022 11:06:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx3cKTPMjAa3/38IzNE393nT58QbBCr2mh8NjEgddPvEPMqI63oZo3TdhacZ2P8DMrMvny6
+X-Received: by 2002:a05:620a:178c:: with SMTP id ay12mr4340745qkb.101.1643396815806;
+        Fri, 28 Jan 2022 11:06:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643396815; cv=none;
         d=google.com; s=arc-20160816;
-        b=ni0fBzNkefnVNFfUaOgZADf1zUb2j5VyoWLZ/A/S1WtlBYnYvKW1r2Ydxafp8bbWIp
-         /uLYPUTJS+NYbuJkkFbhF1tXhfj2KViGv7D+6FQEPc6H5VHegIZV8iDZyGU+jSgjSi8f
-         N8x766gXtHWcKE6KBJFGxxDNYmSJ6kNhetAC077OdzHif4SNAfKXvNLBm6XB3FaRUjc9
-         2uC+aA4ZT33KXjzcWQwGQL+AB5LGJmgg4IyaMD2nrpLeBiQoPL6rIA0zNN1DELvrJi1I
-         RktlnIyOz1Sw2UP89G+YY14z+Gcw5GYAAbNEXf1PXkh/vf1QkcLKEhlSAd4EVtD0YMAp
-         LWQA==
+        b=vN0tTzca5UNWa78KBC9id12TeiR9vyCinyyKdSs6YtK9PHoNJHaPaeDVigxp+TN15Q
+         y3sviHVv/I7WB9eg5ulcdSUdu2X1IFx1ADyrbqfAhGvoCHKUl6JFq1RMd9DNPhBbEpiL
+         hpXEXSopoJxiflWNQRcbN3XBBz2EW0PGwprDv+DiEbzCP+yoFMnhLU/hb45LvI0CyKah
+         uFU74CyZk0QLrfxZt8t1IVD2Nz2y470qZ9jfGqKhWKR1RZqsDaEaGxp7ptq4JkIhwUR2
+         hs3RL5KPILVwOy3DPUwzqT5LLYrSJtTPjw7KqI1XACZ3mPU5a3vPbHFefHxbMHzPsRfK
+         g8dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ne+AnRV+/8FiQY8PQ0j8bn06mRqfAQEOP3LFhuiF/pQ=;
-        b=KG4pzowQZugnopc8Dmz8fe8V7brytZfO8CiaZX8brKpsihcSyyc4yZzwjJrqwtHFU7
-         IUWBKCirA4oQS9/Z947cGtJq5gvSJdOUgSIoRDxVtJHbqPfSbVY7DJ8mQ+cALSKrhOyr
-         ybe8EeUYyRC2q2RK/Jon1fmIFXSxLrR8yBXqVO2TnqW3Rn6o9wOyCcEVoNRyMfIcz4FT
-         S1635z+moN46iXGpgBvwS0BGMZkFx/SYhZNaT10jpgBSXKre8qtPdvoIMtT/Cmh5CIJV
-         G5sGE0vC1D/IAkJlj1tGTNlX34mNv9XyxPC0qB0vqxj1+UgI6lDMm/xnv2u3VhI1xnXG
-         Q5GQ==
+        bh=/osl7oqZ/l1nIb7N6ea0VQuADVcsGBk75aoqoxqFn4s=;
+        b=HOUjnKMeC2AgnYSm2Ye6X3HzWcBhvP31h1jrdF1l+ckbz5bCm+HkpioumQXj8FvaG3
+         LlN+nKdGZR1I2w71qMfBj+kpzU8A6DaWI1i7xeLNZJgzPr6cNIl+piAVp6RQjEamIhI2
+         l3GJDfZikMneMPuhwu70gSxacZ/WHi+gKzQ+fSr58WO7tCU3nK4feLpIrxrDw5TNTfRn
+         mal8FMrMmAj7hUrHloEtu0aEE8ETMA2S87bCb24VdltZEw8gp4TSYisEIjcj5howIhgh
+         TjfbfXO+Kaw5mqRN3ApxDTgRTe7Y4zLMGMI+YL+9GciI7hrMJsng333plaO6hVymZuWl
+         vOHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hw3NSxx6;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=M94tNf7c;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gv14si2392353qvb.84.2022.01.28.11.04.23
+        by mx.google.com with ESMTPS id u6si8212866ybj.815.2022.01.28.11.06.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Jan 2022 11:04:24 -0800 (PST)
+        Fri, 28 Jan 2022 11:06:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hw3NSxx6;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=M94tNf7c;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40458 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44764 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nDWXm-0001N1-Oh
-	for alex.bennee@linaro.org; Fri, 28 Jan 2022 14:04:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47518)
+	id 1nDWaF-0004O0-7W
+	for alex.bennee@linaro.org; Fri, 28 Jan 2022 14:06:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48294)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nDW6W-0007NJ-7z
- for qemu-devel@nongnu.org; Fri, 28 Jan 2022 13:36:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:60451)
+ id 1nDW8i-0000uM-4P
+ for qemu-devel@nongnu.org; Fri, 28 Jan 2022 13:38:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:56831)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nDW6O-0001KX-QR
- for qemu-devel@nongnu.org; Fri, 28 Jan 2022 13:36:11 -0500
+ id 1nDW8N-0001nO-NV
+ for qemu-devel@nongnu.org; Fri, 28 Jan 2022 13:38:11 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643394920;
+ s=mimecast20190719; t=1643395086;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ne+AnRV+/8FiQY8PQ0j8bn06mRqfAQEOP3LFhuiF/pQ=;
- b=Hw3NSxx6JeODvbD5V8+RqoCCohIj0aR8GXmgyt7EFmQnH2YW3IPspJRhoiiqpbcErgYm+Q
- E8v+Uzzno/HKocM9uFqwLomCfMNCP1gPoI4mxiR8NTq7ajfFiCOQcknzlEuLaiB4u9oZJ9
- MR5Ywq2xo2vsZ39aSSiEYd1S1TYQaDY=
+ bh=/osl7oqZ/l1nIb7N6ea0VQuADVcsGBk75aoqoxqFn4s=;
+ b=M94tNf7cP+DZcCmHk679hPWycJg+lmwlpqyfM1/hhxziV5qKqHVQ2Jezo3liuJ3gOK1uNa
+ GuHe7ZdR30+wdYQ5tQycvucC7stcMsNInyFMYo9urQpHkXRR+m9yQI9uSQswkWomnKplUJ
+ EwrIsUMoovZpRb+Iu8p3VdU6AmMOuGo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-55-d4u0Zks-PdiBRpxPn5uWtw-1; Fri, 28 Jan 2022 13:35:17 -0500
-X-MC-Unique: d4u0Zks-PdiBRpxPn5uWtw-1
+ us-mta-67-dMq-fhvhOcGW4jjCzuL6KA-1; Fri, 28 Jan 2022 13:38:02 -0500
+X-MC-Unique: dMq-fhvhOcGW4jjCzuL6KA-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6776910247B5;
- Fri, 28 Jan 2022 18:35:14 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9FAA894DC1;
+ Fri, 28 Jan 2022 18:37:59 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A65E577462;
- Fri, 28 Jan 2022 18:35:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 983F077462;
+ Fri, 28 Jan 2022 18:37:52 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 10/36] multifd: Make zstd use iov's
-Date: Fri, 28 Jan 2022 19:30:07 +0100
-Message-Id: <20220128183033.31998-11-quintela@redhat.com>
+Subject: [PULL 21/36] migration/migration.c: Remove the
+ MIGRATION_STATUS_ACTIVE when migration finished
+Date: Fri, 28 Jan 2022 19:30:18 +0100
+Message-Id: <20220128183033.31998-22-quintela@redhat.com>
 In-Reply-To: <20220128183033.31998-1-quintela@redhat.com>
 References: <20220128183033.31998-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -129,44 +130,43 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Igor Mammedov <imammedo@redhat.com>, Stafford Horne <shorne@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>, Laurent Vivier <laurent@vivier.eu>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Zhang Chen <chen.zhang@intel.com>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7ITsQxmB5Xl7
+X-TUID: PNmYY98ktfoT
 
+From: Zhang Chen <chen.zhang@intel.com>
+
+The MIGRATION_STATUS_ACTIVE indicates that migration is running.
+Remove it to be handled by the default operation,
+It should be part of the unknown ending states.
+
+Signed-off-by: Zhang Chen <chen.zhang@intel.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 ---
- migration/multifd-zstd.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ migration/migration.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/migration/multifd-zstd.c b/migration/multifd-zstd.c
-index 97c08367d0..bd393aee0d 100644
---- a/migration/multifd-zstd.c
-+++ b/migration/multifd-zstd.c
-@@ -154,6 +154,9 @@ static int zstd_send_prepare(MultiFDSendParams *p, Error **errp)
-             return -1;
+diff --git a/migration/migration.c b/migration/migration.c
+index 5b2e3c66d1..3849b33108 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -3625,12 +3625,6 @@ static void migration_iteration_finish(MigrationState *s)
+                          "COLO enabled", __func__);
          }
-     }
-+    p->iov[p->iovs_num].iov_base = z->zbuff;
-+    p->iov[p->iovs_num].iov_len = z->out.pos;
-+    p->iovs_num++;
-     p->next_packet_size = z->out.pos;
-     p->flags |= MULTIFD_FLAG_ZSTD;
- 
-@@ -173,10 +176,7 @@ static int zstd_send_prepare(MultiFDSendParams *p, Error **errp)
-  */
- static int zstd_send_write(MultiFDSendParams *p, uint32_t used, Error **errp)
- {
--    struct zstd_data *z = p->data;
--
--    return qio_channel_write_all(p->c, (void *)z->zbuff, p->next_packet_size,
--                                 errp);
-+    return qio_channel_writev_all(p->c, p->iov, p->iovs_num, errp);
- }
- 
- /**
+         migrate_start_colo_process(s);
+-         /* Fallthrough */
+-    case MIGRATION_STATUS_ACTIVE:
+-        /*
+-         * We should really assert here, but since it's during
+-         * migration, let's try to reduce the usage of assertions.
+-         */
+         s->vm_was_running = true;
+         /* Fallthrough */
+     case MIGRATION_STATUS_FAILED:
 -- 
 2.34.1
 

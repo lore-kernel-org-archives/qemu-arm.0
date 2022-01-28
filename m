@@ -1,107 +1,113 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp75001lfk;
-        Thu, 27 Jan 2022 19:37:45 -0800 (PST)
-X-Received: by 2002:a17:90b:1c8d:: with SMTP id oo13mr7639269pjb.59.1643341065676;
-        Thu, 27 Jan 2022 19:37:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643341065; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp75391lfk;
+        Thu, 27 Jan 2022 19:38:46 -0800 (PST)
+X-Received: by 2002:a17:902:694c:: with SMTP id k12mr6770248plt.98.1643341126731;
+        Thu, 27 Jan 2022 19:38:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643341126; cv=none;
         d=google.com; s=arc-20160816;
-        b=rbdxk0pKpqsOw47fbP/8ya8ifN7B63MXFaCxoMacvygbh2Nx0HLciWZeogazfAdhj9
-         TFWLjAxvaUS8z2YF5WKdlgls6c5Ekxf7gKSa2eRExpZvAkDPa59Zn5zAOu+3+xnt3zTk
-         jW4+3rB8yGP86IQtm6TJcSjb7zyR7qhtnE0kiTaD0ctxJdc0vCu+UHXBbHPXLsxWJ3NV
-         TDYX2C26T/DU92WopSsfRXqEUwccvm2y7qgrqmtlxqQpTmxL6sQHKRZGIxluMib6aSCW
-         PNEm8ZnuAjIquaO6T/1QhG0uDrxOMQu7NtWkw9UbXRbyLbEBRSQo1HWKqZDEMnZu7nBT
-         yssg==
+        b=Qr1Q8mT9EfQkKq7jmNUK9HcmyISq2DA0/fpKmvr6wA1FfHB1dkeNhqLQ+CP4XP6UFA
+         pH0CvVCuEF4ygod86L4q1peo11kBu+0s8S+NU4mVmBd3QvYz5CyCDzsdX/9HqJh57u+g
+         NUp27e/Figfig78exTM9hemaTgGKTMCDSynY76GvNbHRaiX8kvQJTWd3iewt/26tpQ26
+         U33uj7nrrqUGzl7QUSpx2vOQpfxJ395+7loSxA0LP53E7uhjLXP8iZeKXw+7NgyPEEQr
+         xmfw0Ji2zmTHX7TmJCOGA8Pmbdw6h6nbIf1/mEDLR759lImlFbWWRXOibbWc1X09cBN7
+         pNAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=lNViaG3CzaemUEEjM7cz4z3583QpDIPZEFSIoFDTiAY=;
-        b=Ffw3LbkmNBP4hU0S7npTASdEt1U40yACsOhbIwinBosdxM0UXwmE5fgIjev7LM3XBV
-         r/J+exVxnSco1OI0xWbCLf0QrKzjpJ5fJeNAfdUAGyMC8xCjKqDbHnQ8ZYdTmO9W3btd
-         /SQT98cjjrcTmVOjamibyGTtjZqFgqZT0w4jZnWLhPz+9Nwpz0jmUgjE1ZQvDeecuPYp
-         n/wG7LR3xy4ug5P598TBYalQrcFp/nmnYAviM+tGaJ54eh4bepGbBzWn7Wwt6SvBQjZI
-         chNyuCPrwuVLRlJRKngCAPAqPSL4qAG3FtquuTbcXGUJW0c9bp7sbOn53+xwqi7Jpoi8
-         gCcg==
+        bh=1bNRYm61u3wzfZM74ZvYU9IkZ0YmO0e2GB7pf2XyzRw=;
+        b=PKfHsaALWQyvpHA/RU7JYCFieZFaRgqYkhs+nlbFOZYI9YBkwQ9N8FrYcT77zbxI3i
+         GgXiXIYsbtfGvv5AkTxeO1aZW7hSWQ2uklp+0S+eBO/hSFkXcZtnj72vvXG53V/xTJ8u
+         THUtB3aAiMfIPLUuEqdNVSCPWDeTwOCvpPiUMfww4QXWXRRCk4DuqB+vjSSa2cazJVEz
+         7s2hZWWZkVwuglrrE68+e+4knrwQcsLr/bbeZ7DjDdQl740DBmuEe3+cCd8YO/FbpN2D
+         VKn/7EmA/39/ROoXEshSuA5kj8A9GQSwIoxutuhdmVsowlX0La74jKmKzU8yffARm8j+
+         ZxLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iJLNAaRs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rbtsbSvl;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f19sor2114744pfn.32.2022.01.27.19.37.45
+        by mx.google.com with SMTPS id x9sor2231952pga.16.2022.01.27.19.38.46
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 27 Jan 2022 19:37:45 -0800 (PST)
+        Thu, 27 Jan 2022 19:38:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iJLNAaRs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rbtsbSvl;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=lNViaG3CzaemUEEjM7cz4z3583QpDIPZEFSIoFDTiAY=;
-        b=iJLNAaRsZK72THhGO1LS6VmXVOSZamddccmLb4i3jjoXXtR/zPLM8WB4T3FOz1oQKz
-         f+GVXQc+v9IxgNRVMRs7aJ1T5mEhEvVSgdkhcZlcK2ksV6FMiZKLgTdgztaoLBd9SR8N
-         UAyGdszCqZc9rk6OWURc/IJt+kfU9bftBUmU0QTxlKf0/1Y8OumAA3+eBHTa/lpTRMF+
-         xzh3tKsYUZOeTePmwt62aeS3GMyJka82VwuTMdm14Wogibrd+M08YGMASLBsjVDVjYLX
-         N8+o2Sbo/o5V4bC6OJHbj9p1h2G4a8K+h4Vhy9ExNF4yOyXnXwdvcAJfO84qS+ytC6Ka
-         7MFg==
+        bh=1bNRYm61u3wzfZM74ZvYU9IkZ0YmO0e2GB7pf2XyzRw=;
+        b=rbtsbSvl0E1y99+r0B9hL5xqdI2aaQCPO8y0scyfgCQjYT5VkdXkhmgmNrZC/3snNU
+         YCYxjk9RbbMD1+FTT708B6fBeTuot0tFzio82Ttnbxfcmn0d8/ZDJ3b0AyUredXjeq90
+         ZjjIPbHsEYB22VR+6VLSaif6KqJvD6HdmNkepVsxwts+EGicJzqw1hYAxh4Pma4krd49
+         MHjQr9+BfU/9mkzC4IxYPnCbQ5D7w8T3nl6atyqWaTMwTsIc839uSPs2jwcnrC+wTy81
+         69HAbv3KNzVPgnKRe0uXkEQUGtlvpTy6OiJ/c+MCW6jjcdqVwLuAqv9mCy5CWbJSqbXg
+         Y57Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=lNViaG3CzaemUEEjM7cz4z3583QpDIPZEFSIoFDTiAY=;
-        b=JCs4XZfQCo56/ZLJdRdBIJQDPjlVT0O6jHDzkb3CZUjlJaNCqaMQPCFedNNcr0J6xR
-         TR8YT0sCDHJ+ZVfhTWBvdKIozg7F0G0nS1gnn9RDAhBczrdlP8sKYpEYbGFKF250fEn+
-         d5Zn9aKGyATjwVZeWtUtndmshf/NDLdWQjpYOU0lDj+Tw22/V5Yads9k1dapijnrlV5F
-         Bl20lpwPLXP6yL3BRk+PpOX042gP+2GjL/tORU7v7rsL+oCDjQBxQ846DGfZe4CdEXc3
-         GuctG5BL4GkKQExz7pYvHXjy3Qxgv6FxWW/IBMkfWs+RITQMYM0quVVZcGPEPu5iZwDW
-         CQjQ==
-X-Gm-Message-State: AOAM533GJvBbN9f/RnNZvgOUTqgNoh3Atv08J9fz68arLMqw8KbJ4fRE
-	3E7s4zGQN55I1YqZHBDVMtCubpRdBFZ4RES88ls=
-X-Google-Smtp-Source: ABdhPJzUQdZwWYM88AeWBcGD2TnAc+nobDHtxWFwv8rPfUwIjhtjW9Tg0kDfsnIuhWVQXJnTcZddAQ==
-X-Received: by 2002:a05:6a00:2493:: with SMTP id c19mr6180172pfv.29.1643341065175;
-        Thu, 27 Jan 2022 19:37:45 -0800 (PST)
+        bh=1bNRYm61u3wzfZM74ZvYU9IkZ0YmO0e2GB7pf2XyzRw=;
+        b=IBxexjju3HRtyu4qR34sldxZSKfZtPMBYE2fYw+xP6KQmV4c34IpD0clO6bb4n+/bX
+         XVtnnI1TpqGWhIZTo0Ll2ULJcmE2X2XNG18NGaGLyS4e98lWMRGFjDqAOPwDn9PQLT38
+         wWxiazUwya60k04l+UHFFN2mu0135JUQrEfzKpQeK+dCAxppwFvd7Uxr4qO9UaAn6asx
+         tHvJwTwO4eyNYici11o3Qy7E+Gpss8HZ94RTo0M3ESgV23zmO9KR4pUBJtO3tWKMukRY
+         Fy0U0UojFthLBEiieuIiQH8SIbnE39RHuPZB4y5Mv3EYr7j8dHUihwZy6BgldpkP1M4G
+         xoEQ==
+X-Gm-Message-State: AOAM533eMFKdAErrBoDgeQa1JP6ISNgsDeSpRZigmQOOw/yYH1PSxq6D
+	V2oZDV+AxbGGdEb18AXO4xY9J/7j
+X-Google-Smtp-Source: ABdhPJzQn2d37T0STfccpSxkLPAvQOiyIV6HLMDDYHV4+FokcOTIqM72ZUxvn7+TvarByyz7pcSOzw==
+X-Received: by 2002:a63:6cc9:: with SMTP id h192mr5004307pgc.486.1643341126235;
+        Thu, 27 Jan 2022 19:38:46 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.15.44] (alanje.lnk.telstra.net. [120.151.179.201])
-        by smtp.gmail.com with ESMTPSA id v17sm6958162pfm.10.2022.01.27.19.37.42
+        by smtp.gmail.com with ESMTPSA id y191sm6913577pfb.114.2022.01.27.19.38.43
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Jan 2022 19:37:44 -0800 (PST)
-Message-ID: <bae003f2-24c9-d65a-ddb9-ae0eb0fd14ec@linaro.org>
-Date: Fri, 28 Jan 2022 14:37:39 +1100
+        Thu, 27 Jan 2022 19:38:45 -0800 (PST)
+Message-ID: <cff79bec-6c8f-74e4-799f-cb9ae56b074e@linaro.org>
+Date: Fri, 28 Jan 2022 14:38:40 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH 13/14] hw/intc/arm_gicv3_its: Implement MOVALL
+Subject: Re: [PATCH 14/14] hw/intc/arm_gicv3_its: Implement MOVI
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Shashi Mallela <shashi.mallela@linaro.org>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20220122182444.724087-1-peter.maydell@linaro.org>
- <20220122182444.724087-14-peter.maydell@linaro.org>
+ <20220122182444.724087-15-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220122182444.724087-14-peter.maydell@linaro.org>
+In-Reply-To: <20220122182444.724087-15-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: TEtshtORl5G8
+X-TUID: QDMa8nN8jGZc
 
 On 1/23/22 05:24, Peter Maydell wrote:
-> Implement the ITS MOVALL command, which takes all the pending
-> interrupts on a source redistributor and makes the not-pending on
-> that source redistributor and pending on a destination redistributor.
+> Implement the ITS MOVI command. This command specifies a (physical) LPI
+> by DeviceID and EventID and provides a new ICID for it. The ITS must
+> find the interrupt translation table entry for the LPI, which will
+> tell it the old ICID. It then moves the pending state of the LPI from
+> the old redistributor to the new one and updates the ICID field in
+> the translation table entry.
 > 
-> This is a GICv3 ITS command which we forgot to implement. (It is
-> not used by Linux guests.)
+> This is another GICv3 ITS command that we forgot to implement.  Linux
+> does use this one, but only if the guest powers off one of its CPUs.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   hw/intc/gicv3_internal.h   | 16 +++++++++++
->   hw/intc/arm_gicv3_its.c    | 55 ++++++++++++++++++++++++++++++++++++++
->   hw/intc/arm_gicv3_redist.c | 54 +++++++++++++++++++++++++++++++++++++
->   3 files changed, 125 insertions(+)
+> All the "validate guest command argument, log and return if bad"
+> logic feels very clunky here...
+> ---
+>   hw/intc/gicv3_internal.h   |  16 ++++
+>   hw/intc/arm_gicv3_its.c    | 146 +++++++++++++++++++++++++++++++++++++
+>   hw/intc/arm_gicv3_redist.c |  53 ++++++++++++++
+>   3 files changed, 215 insertions(+)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

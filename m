@@ -1,112 +1,105 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4387317lfk;
-        Thu, 27 Jan 2022 13:28:25 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyQJzwF3rytFmC8xfZtKu4E4Z4+18qN7H0RY8tdf0aK4sgQvGAZ9pPKGm0q4RdQMDdoYitE
-X-Received: by 2002:a6b:fb01:: with SMTP id h1mr3318170iog.191.1643318905411;
-        Thu, 27 Jan 2022 13:28:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643318905; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4470910lfk;
+        Thu, 27 Jan 2022 16:08:46 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwt0Z7yc9Lg9XacLy+EuAtfCurtlUuhRDmvgSsJcNNuRAj0tyn9Qln8beP4PGw7LUEh92NT
+X-Received: by 2002:a05:622a:354:: with SMTP id r20mr4602681qtw.0.1643328525975;
+        Thu, 27 Jan 2022 16:08:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643328525; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sqhh2652etNV86h0braT+ps9NihHeIrYeu/gBrbm9UA3r3KbK6uq0gCv3/85FDLTJ/
-         hMbvv8aqGYyUWShlFm6QCzrwy2wEoPBxsovQm3tOG9hwyclFw9bnpqH9wJM1TtUBSNoi
-         gneXFqzsSz08RAUWcV3Dwzv4BjipZonR/r7jL8Wclo6tzghq2wv6xEfrololp0gcpp4a
-         NIG/9LnfzaUa+mA2z4qJZPLOlx0dDrKSiOXHvNlZJluGzD3/dE0jhRbVhW5+GgL9noAS
-         81rUFMpjINt8Ve4fwM3DVMoEkx7hQEYWWuG7/npHWMgnwT8R7ruIr3FXNhUbcVPMkyBS
-         fKHg==
+        b=xcZd7bb3N3jHvvTSe0GT12KCcXl6ljqplqFzDqsmBK1IHQgS1JInCw/Bbnk7jHQK17
+         nIVNDXAmmNVob/fm6FAWTLo8CpaKvNOeV/XEHq1X/f3v2br6OZU4IiDEk4Bjzb9lOwLC
+         SBzLedNwNdbGiWHouRO/zH8SFdtGdWRIqI49w6vCgr/+uTyY5Jl3OLANafxLeWkIqdKI
+         lQBXWxxTljJSGSawgF4knsQLvdGI0yoeeWMRxW2L7HSWc2nMGJE/YwGYV1MDWpJ7YzGV
+         SLxbsfjbi9L9f2jxl+Bn8yCFn8h6h2lMzUFtEyqJFdZosuRpZMw6H5NDTmyggcI7zYzI
+         3mBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=HFH5M2m9A2q6rcfIPGThsq/wvoCfYISRXeX64YN1/kk=;
-        b=NRuT10pcr8jIPb3adC2yD+cDuUXjc1E0s+xk3PPBfwvr4YWtDMtwJOwg/b5Nx3JX2E
-         UzKxuV5pS2PHxCOQH2p6T32ksFOgAgqTIAjtPfrj1cg2d6M0WFdDw70TnlHaLx9qJLlh
-         Xzru0mM9IaZK8xXKiztmieR7rtXcIsXParaoK4njN3zj4UcKWNpXzZTp6zB7ujhRlPar
-         NyZ7Kp8flPze1MhHp/jVTLs5Oww5mQ7NzcWwxuQuicl6nPmBLvs04fJgjHSUo/tCH/r7
-         Cb7/QmPbDfcdk2w83+HOoCfN+ICFX9wz4WVGtvQRzF7D5qVIXLAmfG24YFF2ppZmmUvP
-         gnGQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=w3rNTEJ7+GburITZ9I7rVXcYjyBHJl3VLpq5RpaH8oQ=;
+        b=C4q6j/Bh7jfsIas4lGsGoifHPUp08Tb3DpDhlc1PGaf81xoudaTf4hvkA1eO8f4yrG
+         v3Kyp8FaXl4L9Y9ZWSnOIUjp2nh+NOTKGkFkqrypZgKfGq9z6MLbvWcT0enRkkviNFTK
+         Z/MeeedOSACohVe2L44rBzSXSbQngpo5J1JLZa90U5SQWPlM2KJxBWUEwhph09eIgAgF
+         IpVEquyyHnIe5IjkW8KtXDuRMFz0cWXkj5UroFXj2dG4+O9SkhSJlFi/bVId56khvreP
+         vuNZ7X3yWZ8GCiPheuSphmrD1RiFi3e11jOjkag+UkNLP6tADTddEMqTGVwn0XGnQvwb
+         l/2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b="lN/JgQnI";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=T5gix9+m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f19si1823340iow.59.2022.01.27.13.28.25
+        by mx.google.com with ESMTPS id f3si11069954qtk.724.2022.01.27.16.08.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jan 2022 13:28:25 -0800 (PST)
+        Thu, 27 Jan 2022 16:08:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b="lN/JgQnI";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=T5gix9+m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:47508 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59048 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nDCJa-00072U-0C
-	for alex.bennee@linaro.org; Thu, 27 Jan 2022 16:28:24 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40220)
+	id 1nDEon-0000FR-Ao
+	for alex.bennee@linaro.org; Thu, 27 Jan 2022 19:08:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38606)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <venture@google.com>)
- id 1nDCJ8-00070f-Cv
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 16:27:55 -0500
-Received: from [2607:f8b0:4864:20::e2f] (port=36762
- helo=mail-vs1-xe2f.google.com)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1nDEoc-0000EN-Qm; Thu, 27 Jan 2022 19:08:34 -0500
+Received: from [2a00:1450:4864:20::52e] (port=38696
+ helo=mail-ed1-x52e.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <venture@google.com>)
- id 1nDCJ6-0001eh-Gv
- for qemu-arm@nongnu.org; Thu, 27 Jan 2022 16:27:54 -0500
-Received: by mail-vs1-xe2f.google.com with SMTP id l14so633158vsm.3
- for <qemu-arm@nongnu.org>; Thu, 27 Jan 2022 13:27:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1nDEoa-00071W-Th; Thu, 27 Jan 2022 19:08:34 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id j23so6242461edp.5;
+ Thu, 27 Jan 2022 16:08:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HFH5M2m9A2q6rcfIPGThsq/wvoCfYISRXeX64YN1/kk=;
- b=lN/JgQnItc0dx1eliWFNuO8pmt99lFNCpuVlwiMfIwscfVJhWR+nH93uuBuqX09KZk
- yJIKLGgHD30hHqyaaUlLZKVCo8sR244YxZQxz+hYnt4SZOOkQLYH92sp/Arja3rzmYoX
- ym1MjMJlwz1iRwb5iEE6FOK3GmLFO1f8sOi58cI8spqaEt3QC4fdu0bi/sm9Ozgow0qF
- gm6iYIWH8B2hejriJxb5RIQ+j2T/ct498bwarMGKN5GaVsZ1fQMRp4uPeRqDw5/GzM//
- JBZ2c3Uqz5OmgoDppxy6BsWVfCFiJAOCVW4PxZlaBvTefpeZkxwGaSF/coRzSz5J3vnq
- IYxg==
+ :cc; bh=w3rNTEJ7+GburITZ9I7rVXcYjyBHJl3VLpq5RpaH8oQ=;
+ b=T5gix9+mac5W6+IhEjXgyM3jnlykLh9q+ErQ2tZRibOMEWdlEqf7aPpITXMxccUpH7
+ Qr5HYue4KUZlPt5rgk5TAQFnz1wYp8wegqMKYD+VP9f1XdeAEhxXNxf1YpFZ+ef5/wj4
+ gQ5l0W22AGg9uLVMKuQa8hk7x08+Qp2S/r2BliMtAOsbxNZLpf92AqvbOZCQFicsz5Gk
+ W4wCUZRn8kBD4OkcXg6g6KpuT/IY9PaaG3jDchyjPNxSkWinNBlbyIgEZ0yUmlUbcmRu
+ 5lDXWFzBZuxgv/17YPbA9o9ZEZLd/AyiEY2DcyZIvPAj+1LM5wIq8H9JRbuOX1ShboxR
+ llvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=HFH5M2m9A2q6rcfIPGThsq/wvoCfYISRXeX64YN1/kk=;
- b=ksy2t0PaAnmrL8ihd8oQYTuv5fPQM16kD4ejnyF1P9LaKtbN4Bs/PDgbvBzuPl2wiS
- sJuPCi480rGOTEe0FGxvQnzhnD2HQRTh3uGUCS+og6G1FOO9FxXnNDQN7PsfN68exJ8Q
- 2+shjFJQ0pPJcjP3qIbiIHp27dQ6kmtb5PyHrpR5BfJBNIzzPoGCg1VcTkTXbwYX9gM0
- s2fyS74ZokZTOk6qOUsq/AGt2SAdiDVk/qOLmiBT+LqTXWcj9mw9Jxg+yCl2dMkOGdDO
- k378EyYrHkloAtWSwh6p8JrBdsOuoqoIaD7iiAbg8qCWZmvZ9IYSuumSQRsvFOKaJ/qB
- 2NhA==
-X-Gm-Message-State: AOAM532l53yU9ZKjCbr+bv5Tg7J9jKZrLoQ9QYV8Rgd5zbegEDYqgMdv
- 0lPsUkyTXFUgP+05eTGra6IrOvVUL6hFaCa1so34CA==
-X-Received: by 2002:a67:e0c2:: with SMTP id m2mr2705839vsl.49.1643318870262;
- Thu, 27 Jan 2022 13:27:50 -0800 (PST)
+ bh=w3rNTEJ7+GburITZ9I7rVXcYjyBHJl3VLpq5RpaH8oQ=;
+ b=3rybfaeTxz/n1+mXbDtHq+LSp8jk3MfjXRtK5EKy1LrJG+BAPGPQimB+mPsaNL1Q6P
+ 3j7EN/IzCS8e3ebjGErs/c4toBlUulxlV55/ek2nc/4Km2SKBdCyrjp6lNGyUUHPuKYL
+ 4qDb2jFgRU7lBGGZG9acVeXtC5kzon/Kd8rhw5+X3mf4zaP2J8l+juW7vVsWvgKAKP0Z
+ A9DzXsrCfESLKYlV5W0FujwRVs2WB/lbGSDmYrhEQJmrcDRfOuuZQwCb6m98PK8vg/Qs
+ ZXC0DCeFUH1Q2jtRbcb4yjCygtjWe3fegx/gY6dFkNU72z2Qh352zCTT5EyGLxpvuZJ9
+ WmHw==
+X-Gm-Message-State: AOAM532ZmKJNIE9e4b+cHbnGj20K9z+EfKr8uBB7ZT7SCs87C9K55ck7
+ Ea0tTNH62hmuBALUtparrZrj4BqXJd8lXPblAwQ=
+X-Received: by 2002:aa7:c6c8:: with SMTP id b8mr5832914eds.392.1643328510567; 
+ Thu, 27 Jan 2022 16:08:30 -0800 (PST)
 MIME-Version: 1.0
-References: <20220110175607.591401-1-venture@google.com>
- <20220110175607.591401-2-venture@google.com>
- <CAFEAcA-s4upQppain+2L-GOux8hN5cNVhqS5Q3u+J7fr_7exPw@mail.gmail.com>
-In-Reply-To: <CAFEAcA-s4upQppain+2L-GOux8hN5cNVhqS5Q3u+J7fr_7exPw@mail.gmail.com>
-From: Patrick Venture <venture@google.com>
-Date: Thu, 27 Jan 2022 13:27:39 -0800
-Message-ID: <CAO=notyufGXBEfg=CpUAT38V4wG22b7xGT1-u33QriLguZ3LhA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] hw/misc: Add Nuvoton's PCI Mailbox Module
+References: <20220117131953.3936137-1-peter.maydell@linaro.org>
+ <CAFEAcA8mXXg5tm=sD2_TS0vgSgG3M_yp1YWdjHtbCGZHKgv0kQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA8mXXg5tm=sD2_TS0vgSgG3M_yp1YWdjHtbCGZHKgv0kQ@mail.gmail.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Fri, 28 Jan 2022 01:08:19 +0100
+Message-ID: <CAJy5ezr74hTmWR_=Fj1ypWkz_f4XvL2VN75V6JjGv5b7BB6pSw@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Use correct entrypoint for SVC taken from Hyp
+ to Hyp
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Havard Skinnemoen <hskinnemoen@google.com>,
- CS20 KFTing <kfting@nuvoton.com>, 
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- Hao Wu <wuhaotsh@google.com>, Joe Komlodi <komlodi@google.com>
-Content-Type: multipart/alternative; boundary="00000000000084589305d696fd3e"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::e2f
+Content-Type: multipart/alternative; boundary="0000000000001f2c0405d6993c5e"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::52e
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e2f;
- envelope-from=venture@google.com; helo=mail-vs1-xe2f.google.com
-X-Spam_score_int: -167
-X-Spam_score: -16.8
-X-Spam_bar: ----------------
-X-Spam_report: (-16.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,167 +112,188 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zVk87Juo2AmA
+X-TUID: lpVRickRy1E6
 
---00000000000084589305d696fd3e
+--0000000000001f2c0405d6993c5e
 Content-Type: text/plain; charset="UTF-8"
 
-On Thu, Jan 27, 2022 at 10:37 AM Peter Maydell <peter.maydell@linaro.org>
+On Thu, Jan 27, 2022 at 6:14 PM Peter Maydell <peter.maydell@linaro.org>
 wrote:
 
-> On Mon, 10 Jan 2022 at 17:56, Patrick Venture <venture@google.com> wrote:
-> >
-> > From: Hao Wu <wuhaotsh@google.com>
-> >
-> > The PCI Mailbox Module is a high-bandwidth communcation module
-> > between a Nuvoton BMC and CPU. It features 16KB RAM that are both
-> > accessible by the BMC and core CPU. and supports interrupt for
-> > both sides.
-> >
-> > This patch implements the BMC side of the PCI mailbox module.
-> > Communication with the core CPU is emulated via a chardev and
-> > will be in a follow-up patch.
-> >
-> > Reviewed-by: Patrick Venture <venture@google.com>
-> > Reviewed-by: Joe Komlodi <komlodi@google.com>
->
-> Hi; this mostly looks good, but I have a question about s->content.
->
-> > +static void npcm7xx_pci_mbox_init(Object *obj)
-> > +{
-> > +    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(obj);
-> > +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> > +
-> > +    memory_region_init_ram_device_ptr(&s->ram, obj, "pci-mbox-ram",
-> > +                                      NPCM7XX_PCI_MBOX_RAM_SIZE,
-> s->content);
->
-> What's s->content for? Nothing in the rest of the device emulation
-> touches it, which seems odd.
+> Ping for code review? This is a nice short easy one :-)
 >
 
-Hao informed me that we can drop the content bit here, since it's not used
-until a later patch that we'll be sending up with a bit more detail when we
-get a chance. I sent this series up to land some of the groundwork.
+Looks good comparing with the Pseudocode. I tried reading the chapters
+about these exceptions but couldn't find a clear description :-)
 
-I can send out a v2 with that bit removed.
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-
->
-> memory_region_init_ram_device_ptr() is intended primarily
-> for "create a MemoryRegion corresponding to something like
-> a bit of a host device (eg a host PCI MMIO BAR). That doesn't
-> seem like what you're doing here. In particular, using it
-> means that you take on responsibility for ensuring that the
-> underlying memory gets migrated, which you're not doing.
->
-> If you just want a MemoryRegion that's backed by a bit of
-> host memory, use memory_region_init_ram().
->
-
-I think this is what we use it for in the future patches, when we add it
-back, it'll come with the context.
-
-
->
-> > +#define TYPE_NPCM7XX_PCI_MBOX "npcm7xx-pci-mbox"
-> > +#define NPCM7XX_PCI_MBOX(obj) \
-> > +    OBJECT_CHECK(NPCM7xxPCIMBoxState, (obj), TYPE_NPCM7XX_PCI_MBOX)
->
-> We prefer the OBJECT_DECLARE_SIMPLE_TYPE() macro rather than
-> hand-defining a cast macro these days.
->
-
-Ack.
 
 
 >
 > thanks
 > -- PMM
 >
+> On Mon, 17 Jan 2022 at 13:19, Peter Maydell <peter.maydell@linaro.org>
+> wrote:
+> >
+> > The exception caused by an SVC instruction may be taken to AArch32
+> > Hyp mode for two reasons:
+> >  * HCR.TGE indicates that exceptions from EL0 should trap to EL2
+> >  * we were already in Hyp mode
+> >
+> > The entrypoint in the vector table to be used differs in these two
+> > cases: for an exception routed to Hyp mode from EL0, we enter at the
+> > common 0x14 "hyp trap" entrypoint.  For SVC from Hyp mode to Hyp
+> > mode, we enter at the 0x08 (svc/hvc trap) entrypoint.
+> > In the v8A Arm ARM pseudocode this is done in AArch32.TakeSVCException.
+> >
+> > QEMU incorrectly routed both of these exceptions to the 0x14
+> > entrypoint.  Correct the entrypoint for SVC from Hyp to Hyp by making
+> > use of the existing logic which handles "normal entrypoint for
+> > Hyp-to-Hyp, otherwise 0x14" for traps like UNDEF and data/prefetch
+> > aborts (reproduced here since it's outside the visible context
+> > in the diff for this commit):
+> >
+> >     if (arm_current_el(env) != 2 && addr < 0x14) {
+> >         addr = 0x14;
+> >     }
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >  target/arm/helper.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/target/arm/helper.c b/target/arm/helper.c
+> > index cfca0f5ba6d..a898e400f6c 100644
+> > --- a/target/arm/helper.c
+> > +++ b/target/arm/helper.c
+> > @@ -9655,7 +9655,7 @@ static void
+> arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
+> >       * separately here.
+> >       *
+> >       * The vector table entry used is always the 0x14 Hyp mode entry
+> point,
+> > -     * unless this is an UNDEF/HVC/abort taken from Hyp to Hyp.
+> > +     * unless this is an UNDEF/SVC/HVC/abort taken from Hyp to Hyp.
+> >       * The offset applied to the preferred return address is always zero
+> >       * (see DDI0487C.a section G1.12.3).
+> >       * PSTATE A/I/F masks are set based only on the SCR.EA/IRQ/FIQ
+> values.
+> > @@ -9669,7 +9669,7 @@ static void
+> arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
+> >          addr = 0x04;
+> >          break;
+> >      case EXCP_SWI:
+> > -        addr = 0x14;
+> > +        addr = 0x08;
+> >          break;
+> >      case EXCP_BKPT:
+> >          /* Fall through to prefetch abort.  */
+> > --
+> > 2.25.1
+> >
+>
+>
 
-Thanks!
-
---00000000000084589305d696fd3e
+--0000000000001f2c0405d6993c5e
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jan 27, 2022 at 10:37 AM Pete=
-r Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@lin=
-aro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">On Mon, 10 Jan 2022 at 17:56, Patrick Venture &lt;<a href=3D"mailto:=
-venture@google.com" target=3D"_blank">venture@google.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; From: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" target=3D"_bla=
-nk">wuhaotsh@google.com</a>&gt;<br>
-&gt;<br>
-&gt; The PCI Mailbox Module is a high-bandwidth communcation module<br>
-&gt; between a Nuvoton BMC and CPU. It features 16KB RAM that are both<br>
-&gt; accessible by the BMC and core CPU. and supports interrupt for<br>
-&gt; both sides.<br>
-&gt;<br>
-&gt; This patch implements the BMC side of the PCI mailbox module.<br>
-&gt; Communication with the core CPU is emulated via a chardev and<br>
-&gt; will be in a follow-up patch.<br>
-&gt;<br>
-&gt; Reviewed-by: Patrick Venture &lt;<a href=3D"mailto:venture@google.com"=
- target=3D"_blank">venture@google.com</a>&gt;<br>
-&gt; Reviewed-by: Joe Komlodi &lt;<a href=3D"mailto:komlodi@google.com" tar=
-get=3D"_blank">komlodi@google.com</a>&gt;<br>
-<br>
-Hi; this mostly looks good, but I have a question about s-&gt;content.<br>
-<br>
-&gt; +static void npcm7xx_pci_mbox_init(Object *obj)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 NPCM7xxPCIMBoxState *s =3D NPCM7XX_PCI_MBOX(obj);<br>
-&gt; +=C2=A0 =C2=A0 SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 memory_region_init_ram_device_ptr(&amp;s-&gt;ram, obj, =
-&quot;pci-mbox-ram&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 NPCM7XX_PCI=
-_MBOX_RAM_SIZE, s-&gt;content);<br>
-<br>
-What&#39;s s-&gt;content for? Nothing in the rest of the device emulation<b=
-r>
-touches it, which seems odd.<br></blockquote><div><br></div><div>Hao inform=
-ed me that we can drop the content bit=C2=A0here, since it&#39;s not used u=
-ntil a later patch that we&#39;ll be sending up with a bit more detail when=
- we get a chance. I sent this series up to land some of the groundwork.</di=
-v><div><br></div><div>I can send out a v2 with that bit removed.</div><div>=
-=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
-.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-memory_region_init_ram_device_ptr() is intended primarily<br>
-for &quot;create a MemoryRegion corresponding to something like<br>
-a bit of a host device (eg a host PCI MMIO BAR). That doesn&#39;t<br>
-seem like what you&#39;re doing here. In particular, using it<br>
-means that you take on responsibility for ensuring that the<br>
-underlying memory gets migrated, which you&#39;re not doing.<br>
-<br>
-If you just want a MemoryRegion that&#39;s backed by a bit of<br>
-host memory, use memory_region_init_ram().<br></blockquote><div><br></div><=
-div>I think this is what we use it for in the future patches, when we add i=
-t back, it&#39;ll come with the context.</div><div>=C2=A0</div><blockquote =
-class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
-id rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +#define TYPE_NPCM7XX_PCI_MBOX &quot;npcm7xx-pci-mbox&quot;<br>
-&gt; +#define NPCM7XX_PCI_MBOX(obj) \<br>
-&gt; +=C2=A0 =C2=A0 OBJECT_CHECK(NPCM7xxPCIMBoxState, (obj), TYPE_NPCM7XX_P=
-CI_MBOX)<br>
-<br>
-We prefer the OBJECT_DECLARE_SIMPLE_TYPE() macro rather than<br>
-hand-defining a cast macro these days.<br></blockquote><div><br></div><div>=
-Ack.</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margi=
-n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
-">
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jan 27, 2022 at 6:14 PM Peter=
+ Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@lina=
+ro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">Ping for code review? This is a nice short easy one :-)<br></blockquo=
+te><div><br></div><div>Looks good comparing with the Pseudocode. I tried re=
+ading the chapters about these exceptions but couldn&#39;t find a clear des=
+cription :-)<br></div><div><br></div><div>Reviewed-by: Edgar E. Iglesias &l=
+t;<a href=3D"mailto:edgar.iglesias@xilinx.com">edgar.iglesias@xilinx.com</a=
+>&gt;</div><div><br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">
 <br>
 thanks<br>
--- PMM<br></blockquote><div><br></div><div>Thanks!=C2=A0</div></div></div>
+-- PMM<br>
+<br>
+On Mon, 17 Jan 2022 at 13:19, Peter Maydell &lt;<a href=3D"mailto:peter.may=
+dell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt; wrote:<=
+br>
+&gt;<br>
+&gt; The exception caused by an SVC instruction may be taken to AArch32<br>
+&gt; Hyp mode for two reasons:<br>
+&gt;=C2=A0 * HCR.TGE indicates that exceptions from EL0 should trap to EL2<=
+br>
+&gt;=C2=A0 * we were already in Hyp mode<br>
+&gt;<br>
+&gt; The entrypoint in the vector table to be used differs in these two<br>
+&gt; cases: for an exception routed to Hyp mode from EL0, we enter at the<b=
+r>
+&gt; common 0x14 &quot;hyp trap&quot; entrypoint.=C2=A0 For SVC from Hyp mo=
+de to Hyp<br>
+&gt; mode, we enter at the 0x08 (svc/hvc trap) entrypoint.<br>
+&gt; In the v8A Arm ARM pseudocode this is done in AArch32.TakeSVCException=
+.<br>
+&gt;<br>
+&gt; QEMU incorrectly routed both of these exceptions to the 0x14<br>
+&gt; entrypoint.=C2=A0 Correct the entrypoint for SVC from Hyp to Hyp by ma=
+king<br>
+&gt; use of the existing logic which handles &quot;normal entrypoint for<br=
+>
+&gt; Hyp-to-Hyp, otherwise 0x14&quot; for traps like UNDEF and data/prefetc=
+h<br>
+&gt; aborts (reproduced here since it&#39;s outside the visible context<br>
+&gt; in the diff for this commit):<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0if (arm_current_el(env) !=3D 2 &amp;&amp; addr &lt;=
+ 0x14) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0addr =3D 0x14;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0}<br>
+&gt;<br>
+&gt; Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
+o.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 target/arm/helper.c | 4 ++--<br>
+&gt;=C2=A0 1 file changed, 2 insertions(+), 2 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/target/arm/helper.c b/target/arm/helper.c<br>
+&gt; index cfca0f5ba6d..a898e400f6c 100644<br>
+&gt; --- a/target/arm/helper.c<br>
+&gt; +++ b/target/arm/helper.c<br>
+&gt; @@ -9655,7 +9655,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPU=
+State *cs)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* separately here.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0*<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* The vector table entry used is always the =
+0x14 Hyp mode entry point,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0* unless this is an UNDEF/HVC/abort taken from Hy=
+p to Hyp.<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* unless this is an UNDEF/SVC/HVC/abort taken fro=
+m Hyp to Hyp.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* The offset applied to the preferred return=
+ address is always zero<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* (see DDI0487C.a section G1.12.3).<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* PSTATE A/I/F masks are set based only on t=
+he SCR.EA/IRQ/FIQ values.<br>
+&gt; @@ -9669,7 +9669,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPU=
+State *cs)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 addr =3D 0x04;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 case EXCP_SWI:<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 addr =3D 0x14;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 addr =3D 0x08;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 case EXCP_BKPT:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Fall through to prefetch abort.=
+=C2=A0 */<br>
+&gt; --<br>
+&gt; 2.25.1<br>
+&gt;<br>
+<br>
+</blockquote></div></div>
 
---00000000000084589305d696fd3e--
+--0000000000001f2c0405d6993c5e--

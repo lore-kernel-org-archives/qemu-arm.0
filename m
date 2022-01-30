@@ -1,103 +1,102 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1871545lfk;
-        Sun, 30 Jan 2022 15:12:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwlhGXpQTt18bOQRmwJ55+QLu0edQFpPapzOt9YDrVWc/dhmkCHSZJJBCnyhyyEaE9Bkvh7
-X-Received: by 2002:a25:508c:: with SMTP id e134mr26638928ybb.416.1643584361072;
-        Sun, 30 Jan 2022 15:12:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643584361; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1871706lfk;
+        Sun, 30 Jan 2022 15:13:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwgGHeHbaYKuVViC96stsflOUUpsBbTwdkpM58AYKMGNooOXWFfZoT7WiEoBE9WRNjmrpvM
+X-Received: by 2002:a25:3c04:: with SMTP id j4mr24800784yba.74.1643584385266;
+        Sun, 30 Jan 2022 15:13:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643584385; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZnwF0hyrHGe+J+4ttkalKhAfTNhhQq1Ll/8aQJfXD/Tekzk1JQKJ/iE5BD+q9iAJT7
-         dGCKqCmLVaZZybxx47YF0w4rF18DbtLNVtov2uyNlRnMem5t2JgRW9RTwNzVZDNTp5TS
-         PQvTB5hRTut/uyCm4PE2JSI7h44/jl1TCfyXzctqG66LQEBLIPu7sarLVBdqsUmg+sLO
-         mE0XUG210bn7xul0hEjjLYdSkDSTIRPghRIIxEvagoeF4PM1p6rvNJNmcEOqn8vo56zM
-         lk2WnKFLPMbPXEMlz8/XZvbf75zNSJsy38JotiMh+97QAJHvR7NJ3JUv7E5bJPV/a4Sx
-         RH3A==
+        b=anVkoE0xCz/tYmd1Rbv39dXqXbehgg9vyCIUWm8Gxj4JPr5Wjkn8cWCGge26vE/YT1
+         mcN5LJCWV3SZ8DbldLg7lQ9pbKsPTzwhIpdlNFhYlzmPukLhVWUqq+uBAfIYtiRc8mhi
+         LU5Y6ScvnfKasurYBRNFiRTOl9ilw1EsyBe+fj3PzglASNTiHuFfWubciGtWyz24L6ty
+         8HStqqUTf/TzuF9pBqmT7dadaEcPIUaJZLEC+BsyTpUBTxZ6w7/ww9QPGM8NGW7d9RAE
+         nu/AhR0b1j1mSeJX072TUR44DW+m6cN7LVAOE0h4lLiFlrli7j0hZhcMIpdzkgcF99Qc
+         bMiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=tTZyIUevCXH2Qlf7sB3KRp92AJcYBR0HsOyIeM9vzxI=;
-        b=wbQbxX1l0vsGaPC5XS9ZQ7Jvy3F25h6HUDr3D9XLhqp8PkZrFYQLfAJ0yTUzjox7Y5
-         zGbLGdqlHlZc1atpN3RZHs0JGl2r6lraFCy3dBFATC7Xm2hFWqKanBJvH/8eJD5IAcFz
-         6bhkfGvxYAn4argAk2vDZOaw3fT7Iuk2vbXzsnX5uvGuh8vk69XxsC63A4Nc+Sxgyvrj
-         s0MucwDAfcCbV1SIFJSwc0mVS/HWZRh/jA9JSJNsV+7GwJRXebaUPsB+l+nfJj1I0GrY
-         p7perz0lppdR/tleKWlRX6/uMsIi/lydprplQfmbu3Ca1w7Hey4RNMAdSY6bXalc0aUv
-         lo5Q==
+        bh=awTWQmmNVu1OsQYeHrQ+A/19XUG6MkrMGcQv68t8Yp8=;
+        b=hUVY2uQEoOEKZTQXdYT66GlzLzmO2E0Dmuwl8qfdUsYAiidPmzY6KGS01udH3TKV9x
+         OjD1v6s1cborM90+9yvLuZ059KXBRHMRW094tn/0v+Q3UmIz9S+ZP+GOX5LUVUkjMgQv
+         rBemHVMq2y11KNLrOZJ71KQb2n7uwUFeF01s/2Kt1R3DCqoiA9W7KBLIy9pKQ6m8KDxb
+         dCazLmOheCQ5kqqMC0WTc/0ZDDKAz2Li1EmmDyJAYyd/s1sMVBtrFbcbK7rXHhOJ/efc
+         ZQvxWil8sZZPmAlHQ0pCiEinWSUr2bzzyEDdKpszTeB4WB41j8tAyIswjZyT+X2iCHM4
+         KheQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SHVhuHr1;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=RmnBQo7v;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 125si31444986ybf.206.2022.01.30.15.12.40
+        by mx.google.com with ESMTPS id l8si30925144ybo.254.2022.01.30.15.13.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Jan 2022 15:12:41 -0800 (PST)
+        Sun, 30 Jan 2022 15:13:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SHVhuHr1;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=RmnBQo7v;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39948 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39696 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEJNA-0003Mr-3L
-	for alex.bennee@linaro.org; Sun, 30 Jan 2022 18:12:40 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35016)
+	id 1nEJNY-00039m-N8
+	for alex.bennee@linaro.org; Sun, 30 Jan 2022 18:13:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34968)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nEJMs-0003Aj-5Q; Sun, 30 Jan 2022 18:12:22 -0500
-Received: from [2a00:1450:4864:20::130] (port=45621
- helo=mail-lf1-x130.google.com)
+ id 1nEJMq-00038J-Kf; Sun, 30 Jan 2022 18:12:20 -0500
+Received: from [2a00:1450:4864:20::232] (port=46805
+ helo=mail-lj1-x232.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nEJMn-0000wE-Bt; Sun, 30 Jan 2022 18:12:21 -0500
-Received: by mail-lf1-x130.google.com with SMTP id o12so23145146lfg.12;
- Sun, 30 Jan 2022 15:12:14 -0800 (PST)
+ id 1nEJMn-0000vr-Ab; Sun, 30 Jan 2022 18:12:20 -0500
+Received: by mail-lj1-x232.google.com with SMTP id c7so16533801ljr.13;
+ Sun, 30 Jan 2022 15:12:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=tTZyIUevCXH2Qlf7sB3KRp92AJcYBR0HsOyIeM9vzxI=;
- b=SHVhuHr16BGsCImrIYe+p3RGHHMS57vPXYgiciaHO+a3L8to0oKHQQXXQNUHlMSxiM
- J4f/S1zHn6ql7MF1CD30490HQAICUAfFvbEeYXpi9lGahtK9NZgntCmsxxfQZlf9WTco
- gCEEUv2p468oprsmwWZsSRf9dlO+myRp8wyrkRWYp6HbQnI1+M8vM8APpEJkp5F7eD+r
- i0oViSO8FopeMnAX0dj5942wHP7QDiWpmqhs3xfbXxYZRuul05jpxdxof5JMQCMPRLgV
- zc5lPC9LEA1V9pFmau501QYGhN84v7mXu89q2vbsq+mneSu4ougHk/Dm+ai+du2BAWda
- 1Fcw==
+ bh=awTWQmmNVu1OsQYeHrQ+A/19XUG6MkrMGcQv68t8Yp8=;
+ b=RmnBQo7vVn1qhe5KAdWyo1nyoMneJvUcxH/HDQP9SYJkGSVrjd8wngHObjluWbqoDe
+ G4uq0sEfuYMleDmLFAQc7w5x888YZrWMow7X1iFllgy2sPiPmYoII7tdxLFL0kcuHPFU
+ XCx52CH22S5kBiFKB2NUbsq+09dUWexywgaxX410J/lsQX89zYCS93iPTSqpvw/+xTIL
+ aDqjsr6y0/fJZyq7UyGx6S9qLSIvE7DbJsDys7FGMgi9BABiq9Q83XE2XHNtOZqOANrX
+ PGqxwUtUI+FV/1MKIE6sgF21ewM1dk/1NnNHu+AHCHIOJeIDZL7G9lHwUDpWFeNu6JFd
+ ceog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=tTZyIUevCXH2Qlf7sB3KRp92AJcYBR0HsOyIeM9vzxI=;
- b=h2U9amk1gHVAgdUOc0c7UKXWu1S/xOqZeXSHIdlQFHJ7beUaz9zk//v08iuGJZubci
- 7CVMl9tfEzexm22szomKkl4VDZejU4BFjddt1BtLFnkUSf23/PpWSBfz6dbkIPLuMgcp
- qofnNbfRP/U86sop94bLguZE8aY57E9KtjQYBXo6HPkJ2Rk7d1eI3oupg+3ZY+gFiqwq
- bESHBWI9d8UA8/oi+3AxHzzJwTVqq1u5KkgIar6ptb3fQM2UMKZU0DjOq4m5HBwqZCe2
- R3QP8WLnS38oVwDBDJ6n926PBvMhyICiL48tCURzNl64C7i0cMDq5rh/Wow8jpteGMJF
- xDcw==
-X-Gm-Message-State: AOAM533112nkfCzGdI2R51XllHSSfd22HQWsEN8l7HYxN6kRgmsUqOLj
- Gfhg5mFxsGLcxCvpSDM7xmJeeWtO7AUe6g==
-X-Received: by 2002:a05:6512:15a:: with SMTP id
- m26mr10249078lfo.501.1643584332686; 
- Sun, 30 Jan 2022 15:12:12 -0800 (PST)
+ bh=awTWQmmNVu1OsQYeHrQ+A/19XUG6MkrMGcQv68t8Yp8=;
+ b=SgQ1F9vaKtrQOhGDe4zerHrmZ3AwAafn5ASsp92PhvtoJ4yg6aNaHEzcHZV7h6kQYh
+ h5f89Ws25LnPie0AX3Fod90tDEUkZ3Nvd0/IgHvZn/YxIabmU/YYkxyx8cSFumloZdeY
+ pAfRCENKLRedH1OiLRBf0I8rTr5TYMLTJeZzAuQ7A7hI6S+SZNhzvLakrbJ3ejDBMuH3
+ bDe1MXo2QkGuRzRkbdg7HZfY7MxYI0g0I3iyUTLOGx3AiBIwatSAKuNqEmVCt2K8KMr5
+ MiQUAzFGQD90toIxIF/AJ8M3pOOx5cDuRb3NFiUt2h3eITe87fg2TN5Ssv6bL1WE/CiO
+ YaGg==
+X-Gm-Message-State: AOAM531KKeqxolPK+DPxuH1vwLokGXC7+L+AqPKRF8o4zcEs8+U1hEtp
+ RKbaGq0tCqUcuGvR+ywiQc+FV2OGtwJ0qg==
+X-Received: by 2002:a2e:b749:: with SMTP id k9mr12146762ljo.135.1643584328595; 
+ Sun, 30 Jan 2022 15:12:08 -0800 (PST)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id cf34sm1417574lfb.267.2022.01.30.15.12.12
+ by smtp.gmail.com with ESMTPSA id u18sm2568332lfg.0.2022.01.30.15.12.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 30 Jan 2022 15:12:12 -0800 (PST)
+ Sun, 30 Jan 2022 15:12:08 -0800 (PST)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v1 5/6] hw/misc: Add a model of the Xilinx ZynqMP APU Control
-Date: Mon, 31 Jan 2022 00:12:05 +0100
-Message-Id: <20220130231206.34035-6-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 1/6] hw/arm/xlnx-zynqmp: Add unimplemented SERDES area
+Date: Mon, 31 Jan 2022 00:12:01 +0100
+Message-Id: <20220130231206.34035-2-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220130231206.34035-1-edgar.iglesias@gmail.com>
 References: <20220130231206.34035-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::130
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::232
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::130;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x130.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::232;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x232.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -124,393 +123,53 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
  frederic.konrad@adacore.com, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kHRebbjokSza
+X-TUID: RcrSmxDfywnA
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Add a model of the Xilinx ZynqMP APU Control.
+Add unimplemented SERDES area.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- include/hw/misc/xlnx-zynqmp-apu-ctrl.h |  91 +++++++++
- hw/misc/xlnx-zynqmp-apu-ctrl.c         | 257 +++++++++++++++++++++++++
- hw/misc/meson.build                    |   1 +
- 3 files changed, 349 insertions(+)
- create mode 100644 include/hw/misc/xlnx-zynqmp-apu-ctrl.h
- create mode 100644 hw/misc/xlnx-zynqmp-apu-ctrl.c
+ include/hw/arm/xlnx-zynqmp.h | 2 +-
+ hw/arm/xlnx-zynqmp.c         | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/misc/xlnx-zynqmp-apu-ctrl.h b/include/hw/misc/xlnx-zynqmp-apu-ctrl.h
-new file mode 100644
-index 0000000000..44bf264cef
---- /dev/null
-+++ b/include/hw/misc/xlnx-zynqmp-apu-ctrl.h
-@@ -0,0 +1,91 @@
-+/*
-+ * QEMU model of ZynqMP APU Control.
-+ *
-+ * Copyright (c) 2013-2022 Xilinx Inc
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Written by Peter Crosthwaite <peter.crosthwaite@xilinx.com> and
-+ * Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-+ *
-+ */
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index 062e637fe4..99ceb8a609 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -84,7 +84,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+ /*
+  * Unimplemented mmio regions needed to boot some images.
+  */
+-#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 1
++#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 2
+ 
+ struct XlnxZynqMPState {
+     /*< private >*/
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 17305fe7b7..ba44e95899 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -51,6 +51,9 @@
+ #define QSPI_IRQ            15
+ #define QSPI_DMA_ADDR       0xff0f0800
+ 
++#define SERDES_ADDR         0xfd400000
++#define SERDES_SIZE         0x20000
 +
-+#include "hw/sysbus.h"
-+#include "hw/register.h"
-+#include "target/arm/cpu.h"
-+
-+#define TYPE_XLNX_ZYNQMP_APU_CTRL "xlnx.apu-ctrl"
-+
-+#define XLNX_ZYNQMP_APU(obj) \
-+     OBJECT_CHECK(XlnxZynqMPAPUCtrl, (obj), TYPE_XLNX_ZYNQMP_APU_CTRL)
-+
-+REG32(APU_ERR_CTRL, 0x0)
-+    FIELD(APU_ERR_CTRL, PSLVERR, 0, 1)
-+REG32(ISR, 0x10)
-+    FIELD(ISR, INV_APB, 0, 1)
-+REG32(IMR, 0x14)
-+    FIELD(IMR, INV_APB, 0, 1)
-+REG32(IEN, 0x18)
-+    FIELD(IEN, INV_APB, 0, 1)
-+REG32(IDS, 0x1c)
-+    FIELD(IDS, INV_APB, 0, 1)
-+REG32(CONFIG_0, 0x20)
-+    FIELD(CONFIG_0, CFGTE, 24, 4)
-+    FIELD(CONFIG_0, CFGEND, 16, 4)
-+    FIELD(CONFIG_0, VINITHI, 8, 4)
-+    FIELD(CONFIG_0, AA64NAA32, 0, 4)
-+REG32(CONFIG_1, 0x24)
-+    FIELD(CONFIG_1, L2RSTDISABLE, 29, 1)
-+    FIELD(CONFIG_1, L1RSTDISABLE, 28, 1)
-+    FIELD(CONFIG_1, CP15DISABLE, 0, 4)
-+REG32(RVBARADDR0L, 0x40)
-+    FIELD(RVBARADDR0L, ADDR, 2, 30)
-+REG32(RVBARADDR0H, 0x44)
-+    FIELD(RVBARADDR0H, ADDR, 0, 8)
-+REG32(RVBARADDR1L, 0x48)
-+    FIELD(RVBARADDR1L, ADDR, 2, 30)
-+REG32(RVBARADDR1H, 0x4c)
-+    FIELD(RVBARADDR1H, ADDR, 0, 8)
-+REG32(RVBARADDR2L, 0x50)
-+    FIELD(RVBARADDR2L, ADDR, 2, 30)
-+REG32(RVBARADDR2H, 0x54)
-+    FIELD(RVBARADDR2H, ADDR, 0, 8)
-+REG32(RVBARADDR3L, 0x58)
-+    FIELD(RVBARADDR3L, ADDR, 2, 30)
-+REG32(RVBARADDR3H, 0x5c)
-+    FIELD(RVBARADDR3H, ADDR, 0, 8)
-+REG32(ACE_CTRL, 0x60)
-+    FIELD(ACE_CTRL, AWQOS, 16, 4)
-+    FIELD(ACE_CTRL, ARQOS, 0, 4)
-+REG32(SNOOP_CTRL, 0x80)
-+    FIELD(SNOOP_CTRL, ACE_INACT, 4, 1)
-+    FIELD(SNOOP_CTRL, ACP_INACT, 0, 1)
-+REG32(PWRCTL, 0x90)
-+    FIELD(PWRCTL, CLREXMONREQ, 17, 1)
-+    FIELD(PWRCTL, L2FLUSHREQ, 16, 1)
-+    FIELD(PWRCTL, CPUPWRDWNREQ, 0, 4)
-+REG32(PWRSTAT, 0x94)
-+    FIELD(PWRSTAT, CLREXMONACK, 17, 1)
-+    FIELD(PWRSTAT, L2FLUSHDONE, 16, 1)
-+    FIELD(PWRSTAT, DBGNOPWRDWN, 0, 4)
-+
-+#define APU_R_MAX ((R_PWRSTAT) + 1)
-+
-+#define NUM_CPUS 4
-+
-+typedef struct XlnxZynqMPAPUCtrl {
-+    SysBusDevice busdev;
-+
-+    ARMCPU *cpus[NUM_CPUS];
-+    /* WFIs towards PMU. */
-+    qemu_irq wfi_out[4];
-+    /* CPU Power status towards INTC Redirect. */
-+    qemu_irq cpu_power_status[4];
-+    qemu_irq irq_imr;
-+
-+    uint8_t cpu_pwrdwn_req;
-+    uint8_t cpu_in_wfi;
-+
-+    RegisterInfoArray *reg_array;
-+    uint32_t regs[APU_R_MAX];
-+    RegisterInfo regs_info[APU_R_MAX];
-+} XlnxZynqMPAPUCtrl;
-diff --git a/hw/misc/xlnx-zynqmp-apu-ctrl.c b/hw/misc/xlnx-zynqmp-apu-ctrl.c
-new file mode 100644
-index 0000000000..c27b8b9253
---- /dev/null
-+++ b/hw/misc/xlnx-zynqmp-apu-ctrl.c
-@@ -0,0 +1,257 @@
-+/*
-+ * QEMU model of the ZynqMP APU Control.
-+ *
-+ * Copyright (c) 2013-2022 Xilinx Inc
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Written by Peter Crosthwaite <peter.crosthwaite@xilinx.com> and
-+ * Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+#include "migration/vmstate.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/sysbus.h"
-+#include "hw/irq.h"
-+#include "hw/register.h"
-+
-+#include "qemu/bitops.h"
-+#include "qapi/qmp/qerror.h"
-+
-+#include "hw/misc/xlnx-zynqmp-apu-ctrl.h"
-+
-+#ifndef XILINX_ZYNQMP_APU_ERR_DEBUG
-+#define XILINX_ZYNQMP_APU_ERR_DEBUG 1
-+#endif
-+
-+static void update_wfi_out(void *opaque)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(opaque);
-+    unsigned int i, wfi_pending;
-+
-+    wfi_pending = s->cpu_pwrdwn_req & s->cpu_in_wfi;
-+    for (i = 0; i < NUM_CPUS; i++) {
-+        qemu_set_irq(s->wfi_out[i], !!(wfi_pending & (1 << i)));
-+    }
-+}
-+
-+static void zynqmp_apu_rvbar_post_write(RegisterInfo *reg, uint64_t val)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(reg->opaque);
-+    int i;
-+
-+    for (i = 0; i < NUM_CPUS; ++i) {
-+        uint64_t rvbar = s->regs[R_RVBARADDR0L + 2 * i] +
-+                         ((uint64_t)s->regs[R_RVBARADDR0H + 2 * i] << 32);
-+        if (s->cpus[i]) {
-+            object_property_set_int(OBJECT(s->cpus[i]), "rvbar", rvbar,
-+                                    &error_abort);
-+        }
-+    }
-+}
-+
-+static void zynqmp_apu_pwrctl_post_write(RegisterInfo *reg, uint64_t val)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(reg->opaque);
-+    unsigned int i, new;
-+
-+    for (i = 0; i < NUM_CPUS; i++) {
-+        new = val & (1 << i);
-+        /* Check if CPU's CPUPWRDNREQ has changed. If yes, update GPIOs. */
-+        if (new != (s->cpu_pwrdwn_req & (1 << i))) {
-+            qemu_set_irq(s->cpu_power_status[i], !!new);
-+        }
-+        s->cpu_pwrdwn_req &= ~(1 << i);
-+        s->cpu_pwrdwn_req |= new;
-+    }
-+    update_wfi_out(s);
-+}
-+
-+static void imr_update_irq(XlnxZynqMPAPUCtrl *s)
-+{
-+    bool pending = s->regs[R_ISR] & ~s->regs[R_IMR];
-+    qemu_set_irq(s->irq_imr, pending);
-+}
-+
-+static void isr_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(reg->opaque);
-+    imr_update_irq(s);
-+}
-+
-+static uint64_t ien_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_IMR] &= ~val;
-+    imr_update_irq(s);
-+    return 0;
-+}
-+
-+static uint64_t ids_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_IMR] |= val;
-+    imr_update_irq(s);
-+    return 0;
-+}
-+
-+static const RegisterAccessInfo zynqmp_apu_regs_info[] = {
-+#define RVBAR_REGDEF(n) \
-+    {   .name = "RVBAR CPU " #n " Low",  .addr = A_RVBARADDR ## n ## L,    \
-+            .reset = 0xffff0000ul,                                         \
-+            .post_write = zynqmp_apu_rvbar_post_write,                     \
-+    },{ .name = "RVBAR CPU " #n " High", .addr = A_RVBARADDR ## n ## H,    \
-+            .post_write = zynqmp_apu_rvbar_post_write,                     \
-+    }
-+    {   .name = "ERR_CTRL",  .addr = A_APU_ERR_CTRL,
-+    },{ .name = "ISR",  .addr = A_ISR,
-+        .w1c = 0x1,
-+        .post_write = isr_postw,
-+    },{ .name = "IMR",  .addr = A_IMR,
-+        .reset = 0x1,
-+        .ro = 0x1,
-+    },{ .name = "IEN",  .addr = A_IEN,
-+        .pre_write = ien_prew,
-+    },{ .name = "IDS",  .addr = A_IDS,
-+        .pre_write = ids_prew,
-+    },{ .name = "CONFIG_0",  .addr = A_CONFIG_0,
-+        .reset = 0xf0f,
-+    },{ .name = "CONFIG_1",  .addr = A_CONFIG_1,
-+    },
-+    RVBAR_REGDEF(0),
-+    RVBAR_REGDEF(1),
-+    RVBAR_REGDEF(2),
-+    RVBAR_REGDEF(3),
-+    { .name = "ACE_CTRL",  .addr = A_ACE_CTRL,
-+        .reset = 0xf000f,
-+    },{ .name = "SNOOP_CTRL",  .addr = A_SNOOP_CTRL,
-+    },{ .name = "PWRCTL",  .addr = A_PWRCTL,
-+        .post_write = zynqmp_apu_pwrctl_post_write,
-+    },{ .name = "PWRSTAT",  .addr = A_PWRSTAT,
-+        .ro = 0x3000f,
-+    }
-+};
-+
-+static void zynqmp_apu_reset_enter(Object *obj, ResetType type)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(obj);
-+    int i;
-+
-+    for (i = 0; i < APU_R_MAX; ++i) {
-+        register_reset(&s->regs_info[i]);
-+    }
-+
-+    s->cpu_pwrdwn_req = 0;
-+    s->cpu_in_wfi = 0;
-+}
-+
-+static void zynqmp_apu_reset_hold(Object *obj)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(obj);
-+
-+    update_wfi_out(s);
-+    imr_update_irq(s);
-+}
-+
-+static const MemoryRegionOps zynqmp_apu_ops = {
-+    .read = register_read_memory,
-+    .write = register_write_memory,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    }
-+};
-+
-+static void zynqmp_apu_handle_wfi(void *opaque, int irq, int level)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(opaque);
-+
-+    s->cpu_in_wfi = deposit32(s->cpu_in_wfi, irq, 1, level);
-+    update_wfi_out(s);
-+}
-+
-+static void zynqmp_apu_init(Object *obj)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(obj);
-+    int i;
-+
-+    s->reg_array =
-+        register_init_block32(DEVICE(obj), zynqmp_apu_regs_info,
-+                              ARRAY_SIZE(zynqmp_apu_regs_info),
-+                              s->regs_info, s->regs,
-+                              &zynqmp_apu_ops,
-+                              XILINX_ZYNQMP_APU_ERR_DEBUG,
-+                              APU_R_MAX * 4);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->reg_array->mem);
-+    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq_imr);
-+
-+    for (i = 0; i < NUM_CPUS; ++i) {
-+        g_autofree gchar *prop_name = g_strdup_printf("cpu%d", i);
-+        object_property_add_link(obj, prop_name, TYPE_ARM_CPU,
-+                             (Object **)&s->cpus[i],
-+                             qdev_prop_allow_set_link_before_realize,
-+                             OBJ_PROP_LINK_STRONG);
-+    }
-+
-+    /* wfi_out is used to connect to PMU GPIs. */
-+    qdev_init_gpio_out_named(DEVICE(obj), s->wfi_out, "wfi_out", 4);
-+    /* CPU_POWER_STATUS is used to connect to INTC redirect. */
-+    qdev_init_gpio_out_named(DEVICE(obj), s->cpu_power_status,
-+                             "CPU_POWER_STATUS", 4);
-+    /* wfi_in is used as input from CPUs as wfi request. */
-+    qdev_init_gpio_in_named(DEVICE(obj), zynqmp_apu_handle_wfi, "wfi_in", 4);
-+}
-+
-+static void zynqmp_apu_finalize(Object *obj)
-+{
-+    XlnxZynqMPAPUCtrl *s = XLNX_ZYNQMP_APU(obj);
-+    register_finalize_block(s->reg_array);
-+}
-+
-+static const VMStateDescription vmstate_zynqmp_apu = {
-+    .name = TYPE_XLNX_ZYNQMP_APU_CTRL,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .minimum_version_id_old = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, XlnxZynqMPAPUCtrl, APU_R_MAX),
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static void zynqmp_apu_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_zynqmp_apu;
-+
-+    rc->phases.enter = zynqmp_apu_reset_enter;
-+    rc->phases.hold = zynqmp_apu_reset_hold;
-+}
-+
-+static const TypeInfo zynqmp_apu_info = {
-+    .name              = TYPE_XLNX_ZYNQMP_APU_CTRL,
-+    .parent            = TYPE_SYS_BUS_DEVICE,
-+    .instance_size     = sizeof(XlnxZynqMPAPUCtrl),
-+    .class_init        = zynqmp_apu_class_init,
-+    .instance_init     = zynqmp_apu_init,
-+    .instance_finalize = zynqmp_apu_finalize,
-+    .interfaces        = (InterfaceInfo[]) {
-+        { }
-+    },
-+};
-+
-+static void zynqmp_apu_register_types(void)
-+{
-+    type_register_static(&zynqmp_apu_info);
-+}
-+
-+type_init(zynqmp_apu_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 1927f13a5e..cf9d4cc618 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -85,6 +85,7 @@ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files(
- softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
- softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
- specific_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-crf.c'))
-+specific_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-apu-ctrl.c'))
- softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files(
-   'xlnx-versal-xramc.c',
-   'xlnx-versal-pmc-iou-slcr.c',
+ #define DP_ADDR             0xfd4a0000
+ #define DP_IRQ              113
+ 
+@@ -284,6 +287,7 @@ static void xlnx_zynqmp_create_unimp_mmio(XlnxZynqMPState *s)
+         hwaddr size;
+     } unimp_areas[ARRAY_SIZE(s->mr_unimp)] = {
+         { .name = "apu", APU_ADDR, APU_SIZE },
++        { .name = "serdes", SERDES_ADDR, SERDES_SIZE },
+     };
+     unsigned int nr;
+ 
 -- 
 2.25.1
 

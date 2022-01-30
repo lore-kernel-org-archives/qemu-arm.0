@@ -1,102 +1,103 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1871706lfk;
-        Sun, 30 Jan 2022 15:13:05 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwgGHeHbaYKuVViC96stsflOUUpsBbTwdkpM58AYKMGNooOXWFfZoT7WiEoBE9WRNjmrpvM
-X-Received: by 2002:a25:3c04:: with SMTP id j4mr24800784yba.74.1643584385266;
-        Sun, 30 Jan 2022 15:13:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643584385; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1871846lfk;
+        Sun, 30 Jan 2022 15:13:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxZgkp3z5Ce4o/n4S8hjg+jVuXmxOTAjsTDC2zOWh3BeaoGz66nejVd4NLtXba+lrYQMFem
+X-Received: by 2002:a25:508c:: with SMTP id e134mr26641171ybb.416.1643584410180;
+        Sun, 30 Jan 2022 15:13:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643584410; cv=none;
         d=google.com; s=arc-20160816;
-        b=anVkoE0xCz/tYmd1Rbv39dXqXbehgg9vyCIUWm8Gxj4JPr5Wjkn8cWCGge26vE/YT1
-         mcN5LJCWV3SZ8DbldLg7lQ9pbKsPTzwhIpdlNFhYlzmPukLhVWUqq+uBAfIYtiRc8mhi
-         LU5Y6ScvnfKasurYBRNFiRTOl9ilw1EsyBe+fj3PzglASNTiHuFfWubciGtWyz24L6ty
-         8HStqqUTf/TzuF9pBqmT7dadaEcPIUaJZLEC+BsyTpUBTxZ6w7/ww9QPGM8NGW7d9RAE
-         nu/AhR0b1j1mSeJX072TUR44DW+m6cN7LVAOE0h4lLiFlrli7j0hZhcMIpdzkgcF99Qc
-         bMiQ==
+        b=Zso7mluq8nF+cGXq2ySdAT5IjxTid7pEbz9cwr4YMOZuVc4mPnNrD+P3g+ZWxrY338
+         j9eR1fDaGi43+79bgtKNxRVqFkUU0MaU3OqTNoxAQMmZaNwVkFp6FOZLdyKqvZlX4orT
+         eISoyfAUg2qLUdcGeOc1A9Vu++RxRftpDnQaYsSrx8lfWZYV3sWrnDYCSqxCDiF+GI2V
+         v3rDnZKRvCXkWKCSgVJaWI8WKWh1MwQ6FZBuNV2KUSutsVfFuq7YNQbU1FPFuSJOFNf9
+         7D7LVg8dsMMei3b9SOTDtR097wmXv6azhnIo2voaDDronugiAhx0ZsYg4Ou5EKLgXuNo
+         ksOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=awTWQmmNVu1OsQYeHrQ+A/19XUG6MkrMGcQv68t8Yp8=;
-        b=hUVY2uQEoOEKZTQXdYT66GlzLzmO2E0Dmuwl8qfdUsYAiidPmzY6KGS01udH3TKV9x
-         OjD1v6s1cborM90+9yvLuZ059KXBRHMRW094tn/0v+Q3UmIz9S+ZP+GOX5LUVUkjMgQv
-         rBemHVMq2y11KNLrOZJ71KQb2n7uwUFeF01s/2Kt1R3DCqoiA9W7KBLIy9pKQ6m8KDxb
-         dCazLmOheCQ5kqqMC0WTc/0ZDDKAz2Li1EmmDyJAYyd/s1sMVBtrFbcbK7rXHhOJ/efc
-         ZQvxWil8sZZPmAlHQ0pCiEinWSUr2bzzyEDdKpszTeB4WB41j8tAyIswjZyT+X2iCHM4
-         KheQ==
+        bh=bd2AMWAUfiP5xzyAtAcOhyVGbieKTdY7Q9XEQbU5ajc=;
+        b=EXkIdIyP+RVnWEq9NZusNMIOFy/O39tS0xUzaTkdBapzokd4TM9e++DwZFj8fxKrSv
+         x/a5/xrfZWAE2e2OlAgY/iAjJdcAgqLaqscXGsr1gy9ETli01TQUCVGLk4iwwyhDfSeq
+         2+ahpy/UbVENRk6yTsQvstHl4HDnpAQ0ZCVz6lOUQDcR3fzoqV+5+DyG2GBCzuGNuyOR
+         1WHD08fqTr/qsXSeYzk4qCjhiMO5x3CV+lbPfmVNfVGQ6anvSyP08iY709pfhhtvP4Dw
+         CgqG0CA4MppJn4pwooClA8w01aYo7RxzyKG1YirLSZKTKo8Eqkiv8ekd30sjr7eujuE6
+         /gKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=RmnBQo7v;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=IEC9XlcF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l8si30925144ybo.254.2022.01.30.15.13.05
+        by mx.google.com with ESMTPS id f62si29634527ybb.574.2022.01.30.15.13.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Jan 2022 15:13:05 -0800 (PST)
+        Sun, 30 Jan 2022 15:13:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=RmnBQo7v;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=IEC9XlcF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39696 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEJNY-00039m-N8
-	for alex.bennee@linaro.org; Sun, 30 Jan 2022 18:13:04 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34968)
+	id 1nEJNx-0003wK-Ji
+	for alex.bennee@linaro.org; Sun, 30 Jan 2022 18:13:29 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nEJMq-00038J-Kf; Sun, 30 Jan 2022 18:12:20 -0500
-Received: from [2a00:1450:4864:20::232] (port=46805
- helo=mail-lj1-x232.google.com)
+ id 1nEJMr-00039u-Q3; Sun, 30 Jan 2022 18:12:21 -0500
+Received: from [2a00:1450:4864:20::135] (port=37810
+ helo=mail-lf1-x135.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nEJMn-0000vr-Ab; Sun, 30 Jan 2022 18:12:20 -0500
-Received: by mail-lj1-x232.google.com with SMTP id c7so16533801ljr.13;
- Sun, 30 Jan 2022 15:12:10 -0800 (PST)
+ id 1nEJMn-0000w9-Du; Sun, 30 Jan 2022 18:12:21 -0500
+Received: by mail-lf1-x135.google.com with SMTP id n8so23223490lfq.4;
+ Sun, 30 Jan 2022 15:12:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=awTWQmmNVu1OsQYeHrQ+A/19XUG6MkrMGcQv68t8Yp8=;
- b=RmnBQo7vVn1qhe5KAdWyo1nyoMneJvUcxH/HDQP9SYJkGSVrjd8wngHObjluWbqoDe
- G4uq0sEfuYMleDmLFAQc7w5x888YZrWMow7X1iFllgy2sPiPmYoII7tdxLFL0kcuHPFU
- XCx52CH22S5kBiFKB2NUbsq+09dUWexywgaxX410J/lsQX89zYCS93iPTSqpvw/+xTIL
- aDqjsr6y0/fJZyq7UyGx6S9qLSIvE7DbJsDys7FGMgi9BABiq9Q83XE2XHNtOZqOANrX
- PGqxwUtUI+FV/1MKIE6sgF21ewM1dk/1NnNHu+AHCHIOJeIDZL7G9lHwUDpWFeNu6JFd
- ceog==
+ bh=bd2AMWAUfiP5xzyAtAcOhyVGbieKTdY7Q9XEQbU5ajc=;
+ b=IEC9XlcFjS4A3HVSJUSMiqaecFuQAy2RFMt2seBqlSYVdCVRXO+WZcB9lQwqidpt15
+ mf/f3mKoVNJz2VdvDE+7EsP4xlvdKVZqRTVNokDuigAVV0AVK86wNJrQblMkGJF+SQUV
+ Nqos/FZJ1NYyD4UzZ7bOKca4cDoVQ94lobaFfVse42FKuIY0Js80sg6Owsqh8/9lyz8y
+ h/2drT/ZxpjSE9ESnoITT9l3qKFAuSJxnZvsN1a7BPM2/zM5WgwucwAaeCqQ6NT0Q2ce
+ dM3dt6C1jmXQYWpPR9uvA470fCDE88NbYFTEtLHrRSAMLS/NmaYY4fZBa1uaU/4ETeCT
+ xcNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=awTWQmmNVu1OsQYeHrQ+A/19XUG6MkrMGcQv68t8Yp8=;
- b=SgQ1F9vaKtrQOhGDe4zerHrmZ3AwAafn5ASsp92PhvtoJ4yg6aNaHEzcHZV7h6kQYh
- h5f89Ws25LnPie0AX3Fod90tDEUkZ3Nvd0/IgHvZn/YxIabmU/YYkxyx8cSFumloZdeY
- pAfRCENKLRedH1OiLRBf0I8rTr5TYMLTJeZzAuQ7A7hI6S+SZNhzvLakrbJ3ejDBMuH3
- bDe1MXo2QkGuRzRkbdg7HZfY7MxYI0g0I3iyUTLOGx3AiBIwatSAKuNqEmVCt2K8KMr5
- MiQUAzFGQD90toIxIF/AJ8M3pOOx5cDuRb3NFiUt2h3eITe87fg2TN5Ssv6bL1WE/CiO
- YaGg==
-X-Gm-Message-State: AOAM531KKeqxolPK+DPxuH1vwLokGXC7+L+AqPKRF8o4zcEs8+U1hEtp
- RKbaGq0tCqUcuGvR+ywiQc+FV2OGtwJ0qg==
-X-Received: by 2002:a2e:b749:: with SMTP id k9mr12146762ljo.135.1643584328595; 
- Sun, 30 Jan 2022 15:12:08 -0800 (PST)
+ bh=bd2AMWAUfiP5xzyAtAcOhyVGbieKTdY7Q9XEQbU5ajc=;
+ b=W5DkzzhtJ1RCdcf40ihV67nCo+a5x1gWJwrX+NBont50ICtrzC+KV9j+HoyuxFkFr7
+ Z4JE/cUa204vZLJ/me0jCZkj13KF9gPl7bJCzGj1oEsaYVmYeucB6UqTxJrmAhBlqQqM
+ UscvXJHj979y8kT5JH8iQyh6otO7uK1W6X0wWFtw0cpAymbaV2qj+GBY7XPjbBPq/6tB
+ NdJLECDw3RcpI5vZW3YDqvK8tYZLB+ZsSN3p8H7/N8/B0yi0tr492YRGSubMzirWPavU
+ LMkHeziMPVWKCr3uKNxQ2ZmeL0f05DnAsGD2srEKa1b3grddQfUFKib2zIWX7O+Deddz
+ 8zMg==
+X-Gm-Message-State: AOAM533kQNMx7ZfsfHwCI8D2pLxWLJ1ZRvra1mBe4/MDDR1rQQMxclKm
+ Rb+9v7+pgtdXKi0hW3SxQsCuxdi7cyXiZQ==
+X-Received: by 2002:a05:6512:305:: with SMTP id
+ t5mr13358174lfp.165.1643584331605; 
+ Sun, 30 Jan 2022 15:12:11 -0800 (PST)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id u18sm2568332lfg.0.2022.01.30.15.12.08
+ by smtp.gmail.com with ESMTPSA id f5sm154579ljm.84.2022.01.30.15.12.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 30 Jan 2022 15:12:08 -0800 (PST)
+ Sun, 30 Jan 2022 15:12:11 -0800 (PST)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v1 1/6] hw/arm/xlnx-zynqmp: Add unimplemented SERDES area
-Date: Mon, 31 Jan 2022 00:12:01 +0100
-Message-Id: <20220130231206.34035-2-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 4/6] hw/arm/xlnx-zynqmp: Connect the ZynqMP CRF
+Date: Mon, 31 Jan 2022 00:12:04 +0100
+Message-Id: <20220130231206.34035-5-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220130231206.34035-1-edgar.iglesias@gmail.com>
 References: <20220130231206.34035-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::232
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::135
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::232;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x232.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::135;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x135.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -123,53 +124,79 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
  frederic.konrad@adacore.com, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RcrSmxDfywnA
+X-TUID: 7yzjcxjK2RAt
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Add unimplemented SERDES area.
+Connect the ZynqMP CRF - Clock Reset FPD device.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- include/hw/arm/xlnx-zynqmp.h | 2 +-
- hw/arm/xlnx-zynqmp.c         | 4 ++++
- 2 files changed, 5 insertions(+), 1 deletion(-)
+ include/hw/arm/xlnx-zynqmp.h |  2 ++
+ hw/arm/xlnx-zynqmp.c         | 16 ++++++++++++++++
+ 2 files changed, 18 insertions(+)
 
 diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-index 062e637fe4..99ceb8a609 100644
+index 99ceb8a609..d5a3ad3df2 100644
 --- a/include/hw/arm/xlnx-zynqmp.h
 +++ b/include/hw/arm/xlnx-zynqmp.h
-@@ -84,7 +84,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
- /*
-  * Unimplemented mmio regions needed to boot some images.
-  */
--#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 1
-+#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 2
+@@ -38,6 +38,7 @@
+ #include "hw/dma/xlnx_csu_dma.h"
+ #include "hw/nvram/xlnx-bbram.h"
+ #include "hw/nvram/xlnx-zynqmp-efuse.h"
++#include "hw/misc/xlnx-zynqmp-crf.h"
  
- struct XlnxZynqMPState {
-     /*< private >*/
+ #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
+ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+@@ -122,6 +123,7 @@ struct XlnxZynqMPState {
+     XlnxZDMA gdma[XLNX_ZYNQMP_NUM_GDMA_CH];
+     XlnxZDMA adma[XLNX_ZYNQMP_NUM_ADMA_CH];
+     XlnxCSUDMA qspi_dma;
++    XlnxZynqMPCRF crf;
+ 
+     char *boot_cpu;
+     ARMCPU *boot_cpu_ptr;
 diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 17305fe7b7..ba44e95899 100644
+index ba44e95899..857d3c9636 100644
 --- a/hw/arm/xlnx-zynqmp.c
 +++ b/hw/arm/xlnx-zynqmp.c
 @@ -51,6 +51,9 @@
  #define QSPI_IRQ            15
  #define QSPI_DMA_ADDR       0xff0f0800
  
-+#define SERDES_ADDR         0xfd400000
-+#define SERDES_SIZE         0x20000
++#define CRF_ADDR            0xfd1a0000
++#define CRF_IRQ             120
 +
- #define DP_ADDR             0xfd4a0000
- #define DP_IRQ              113
+ #define SERDES_ADDR         0xfd400000
+ #define SERDES_SIZE         0x20000
  
-@@ -284,6 +287,7 @@ static void xlnx_zynqmp_create_unimp_mmio(XlnxZynqMPState *s)
-         hwaddr size;
-     } unimp_areas[ARRAY_SIZE(s->mr_unimp)] = {
-         { .name = "apu", APU_ADDR, APU_SIZE },
-+        { .name = "serdes", SERDES_ADDR, SERDES_SIZE },
-     };
-     unsigned int nr;
+@@ -279,6 +282,18 @@ static void xlnx_zynqmp_create_efuse(XlnxZynqMPState *s, qemu_irq *gic)
+     sysbus_connect_irq(sbd, 0, gic[EFUSE_IRQ]);
+ }
  
++static void xlnx_zynqmp_create_crf(XlnxZynqMPState *s, qemu_irq *gic)
++{
++    SysBusDevice *sbd;
++
++    object_initialize_child(OBJECT(s), "crf", &s->crf, TYPE_XLNX_ZYNQMP_CRF);
++    sbd = SYS_BUS_DEVICE(&s->crf);
++
++    sysbus_realize(sbd, &error_fatal);
++    sysbus_mmio_map(sbd, 0, CRF_ADDR);
++    sysbus_connect_irq(sbd, 0, gic[CRF_IRQ]);
++}
++
+ static void xlnx_zynqmp_create_unimp_mmio(XlnxZynqMPState *s)
+ {
+     static const struct UnimpInfo {
+@@ -682,6 +697,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     xlnx_zynqmp_create_bbram(s, gic_spi);
+     xlnx_zynqmp_create_efuse(s, gic_spi);
++    xlnx_zynqmp_create_crf(s, gic_spi);
+     xlnx_zynqmp_create_unimp_mmio(s);
+ 
+     for (i = 0; i < XLNX_ZYNQMP_NUM_GDMA_CH; i++) {
 -- 
 2.25.1
 

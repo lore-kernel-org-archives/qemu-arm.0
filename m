@@ -1,93 +1,94 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1873146lfk;
-        Sun, 30 Jan 2022 15:17:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwbpKRCz8hpBIaLASxK18h/irkNw06AS3KOrt3aingcvSpaTAYtkZewe43NFnsUiOlHbPA8
-X-Received: by 2002:a25:ab24:: with SMTP id u33mr16347731ybi.59.1643584626309;
-        Sun, 30 Jan 2022 15:17:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643584626; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1873218lfk;
+        Sun, 30 Jan 2022 15:17:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwwtklEcoXLKAtEMpa9vI6yShEEGINAfk7WAaFsA97Parr0KCEF5b+uy4nYh2bFFIyB/+nH
+X-Received: by 2002:a25:d211:: with SMTP id j17mr26569809ybg.350.1643584634680;
+        Sun, 30 Jan 2022 15:17:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643584634; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jp41/UnlS/HqEq8sAOsClXyQ3e9a05MEJyRnR6SrpAsK5G2f5TH+WgbN82uCCSsQDb
-         YzBkT5XYJhPBvUgy5DUAE3UvejrU0WaQPxiK+KSxmfXncZ69ztLUkGS4U2dI6MtghWK2
-         UH0J0HYF0PSimyroELaxafekZ6qtmUfwxrdSObPeomn7SXIvjhR/hnsZBq3kJ/dgha3G
-         w+lbFcTP6I79p0JabMrPYtzWOV64oVeHFJkQxalxtPcOXWOhJWnInZt8rLX7Fw4gYfaH
-         fwxf0YqG625qtoFXe+p8O8P4yBhrrZbn86pU7G/KkJKXmzOQa60zEGo3QqK+F74+QLOV
-         2lnQ==
+        b=lxObPSdOt+dP2HnRzAXnM27twE+jQFWfsBGyCuOX1Vi0PegqigLz1SGR4Pu8fXlSoX
+         LcBusq7CnWFL0o862fmFGkBoVhWHDZU87Q0dHJQs/z1lGNtvh29HABy/dk4GBh3LdS8L
+         PgNFgHEk0jSMzE+PR83by7mqbSXUrdKqCRpUzSKjBf1sbUxjE23nHSAuvfWeGPAnNwnR
+         K1WI5jfQCwMpLnSk2lTCL9vCKO/kpsqvJM9/+q4ivgRgy4mj04flaXe5gCrCf8vFWbDc
+         KQaE5pUBrk/Gqm+P+JneuFu0KGkZoOtlKKQRdzPbgo8fkQfNDEtfriNJ7TUxAyoAm7i7
+         eFjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=5cC47Sv0aLp7tnKjjmWCbq8mH4nDRh0G2Q/XihE2vyw=;
-        b=zKLabm9rf+Y8xjMhppAZulV9uUFrUUHsdHy9R0ZHq1mUUymf1mmPGd8hitA+Uhth2n
-         qlbIrLO+ZweGuTc18Oo3r39NBu9h25hm0wHEAMbEVQ62a7uafov5BgXkSASybol3eCC6
-         vSD7YSN0t89yGDT/CIRRxqx5HPzI+dqR6hr/ptaTNvpeYNcu0fpME17Pop5Na3nr8T9A
-         dtUWmmb5U8YembvnbecASw5x6MGwjn+4pC5ANKnayoDBB5+n/+FiIZdqK681LN7UMy+H
-         ck0c1p1S6d553GeISPJArsgy/qRGgAUAFb4qBEh0E8OXCzI5KV1Ca9OxNBrJEr7+jgll
-         1mCQ==
+        bh=I1F3+puTZr1DZ4kBGSmpA1htM6Qaj/R8hFIUIKtKfaE=;
+        b=zp0JZ+DPTh9wYSXexuhKMbnL+p/3XEre3l/x87YhnFjQccwY/XgWD9Jj2VYtis1MnY
+         RRh8IBE9RpkCE6yRknVT3deNMxQIHe/Pa1c7HpUrakFtiu0YMTnaejdl3JVySKtn4wAE
+         FbCk7e+lMMp/CoKVqWN5VPSoxPbV513cZs+AY0t80rH30oYi+0zK6+wHo+afbBh8/kfp
+         HEPU5F7MtBjekbw9vTRL4yv1BpZXZLQmxwrdoBA649jDezQQVvcKhn4ZHLkXhOCegvxO
+         NEz+0lDTgP6SpCv8f0u34PSkfPIcb83VTYNs/fuJTOz5BHXwKNYi6HeiMlJdzL9Bnjaj
+         SncQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=MWVBC2o6;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=pqeHBodZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c7si18022801ybn.472.2022.01.30.15.17.06
+        by mx.google.com with ESMTPS id h34si9352879ybi.476.2022.01.30.15.17.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Jan 2022 15:17:06 -0800 (PST)
+        Sun, 30 Jan 2022 15:17:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=MWVBC2o6;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=pqeHBodZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48324 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48768 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEJRR-0000lo-66
-	for alex.bennee@linaro.org; Sun, 30 Jan 2022 18:17:05 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34974)
+	id 1nEJRa-00015g-4A
+	for alex.bennee@linaro.org; Sun, 30 Jan 2022 18:17:14 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35010)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nEJMq-00038e-Nl; Sun, 30 Jan 2022 18:12:20 -0500
-Received: from [2a00:1450:4864:20::132] (port=42891
+ id 1nEJMr-00039j-NV; Sun, 30 Jan 2022 18:12:21 -0500
+Received: from [2a00:1450:4864:20::132] (port=36861
  helo=mail-lf1-x132.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nEJMn-0000vw-B0; Sun, 30 Jan 2022 18:12:20 -0500
-Received: by mail-lf1-x132.google.com with SMTP id y15so23156494lfa.9;
- Sun, 30 Jan 2022 15:12:10 -0800 (PST)
+ id 1nEJMn-0000wM-Dv; Sun, 30 Jan 2022 18:12:21 -0500
+Received: by mail-lf1-x132.google.com with SMTP id z4so23240250lft.3;
+ Sun, 30 Jan 2022 15:12:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=5cC47Sv0aLp7tnKjjmWCbq8mH4nDRh0G2Q/XihE2vyw=;
- b=MWVBC2o6Yv9eE+WjO14Gt9B3HpF4b0rBCQhjjdRWwFgoNgVucshfre5RGFNKEgHosn
- reN6UH1l+WPBvlyJbdpEWPS02u7d4kugvCQ0Yi7YYjhOL4ae+Ym7csbJptfzpLX1OMou
- UsC7r5dRRPeFcr8dl/OLVC3V+euSjGprBXGMi2bR0GscwwmK3/MVNCH11cEnxutmSabz
- 9G7JGhGHmjkkftPBsNG6dBksSb0Oc4dcP3o4JEVsks5ilyMjt5Js7iC30s7VoWFLoY83
- EkxaPQ7G4uimbuEYh/xyefQkwUUU1OPk1jYGbueMoIF5BnCgtZU+3b6SZ5PsHZL2tOdl
- +URQ==
+ bh=I1F3+puTZr1DZ4kBGSmpA1htM6Qaj/R8hFIUIKtKfaE=;
+ b=pqeHBodZSH4dS3zZIDc5IuI6ylBDlkyaKE9M0YDnFKaXr1wFgcENGaOGggVd3lVkhE
+ 7qgyEGX1DCvkEaKiNpt/PWcR+cXsdIsmv8jDKgv4Cg7uuVS8kOLE2B7nYRfY9RsMfxri
+ KIe7j/vInjR5EttHSh07e2FnALc1hRysjrG0ZnYsyTYenzJaDkZrYrOum1eLNppSIIs9
+ OBMGD1vy5y8w1EnQq/GaSmthP30eX+KhqD1Zua1MBXz3PZBAsroeXW4CoqUzEjpeDzR2
+ dqQNSWbYpdg3qCp7SjErJYALHMnyMwz952Xo2Moif/ygSgGCA3Q6LnT2mvou1mVlbknu
+ NfSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5cC47Sv0aLp7tnKjjmWCbq8mH4nDRh0G2Q/XihE2vyw=;
- b=i8KJRxOF5F6VG0UNZIbtKTPBwlZPf7AnZEviAO4wvpP3cowdXQmhl3lTo/wpPWW7jE
- MCLj8G7yuLD1+HlzHkYKXksN0rXDPtwxm0l9HQVmtxC9EgqA9WalvbHFLZSo6LKzD14G
- Otob43i7csZLLdHQaqKxRnv8SYo5gnEU9lDkpdWn3ZkUp5pmYGEPogQo4+tLS5PEb0n0
- y1xAKp+tVxpEo8lLXsk0PUD0qJheGR71SQP1ra6oUjtQBwWAPJM2sCSQaOI1gF134Xl9
- ZK8itY8eP4c/BEUnLDHUiw8Fety+v5CK0k8kDPvUOvd5WdaBcxxc/xmTD6OCNk9rzibI
- ojXg==
-X-Gm-Message-State: AOAM531t5AEOOdsknowS9FGyIqqi25LxjbUDvMCKnyFy8AT/++iJkgdE
- 93rHBYSurxtfyDKZjYaK67eWkQ7OdqKk8Q==
-X-Received: by 2002:ac2:4d4b:: with SMTP id 11mr13113193lfp.422.1643584329580; 
- Sun, 30 Jan 2022 15:12:09 -0800 (PST)
+ bh=I1F3+puTZr1DZ4kBGSmpA1htM6Qaj/R8hFIUIKtKfaE=;
+ b=tPbjg4V49o99u1UgpQdW1C2PzJVJRYveSo20ET88kaYwqDx8CTR5jAvlj4+b8d5gLW
+ UqsNk6Y13HPb8kxRcaYyTOLwGaPf8Rx/7G2kQyT5y0mOpkqGHqGjFZIC/zB5Y8loUYEw
+ wAC9bXJSaciyjVHy9pw4oI8cUVDJop6apUNfmeHPBsiQI77oEqPQDcfceMSAlixIoAP0
+ FxtbiWy0nxIZ+/QdN2QrC7WP8Sgz3Ag5raJVrvxEYngDmracLe/n0yF4UZMTRihATy1p
+ uz7CxpyiBIkRAVEMCHGEISLFKycl0s7Ti84q/3P56Bwjsc/tlYoo+SAjnalmfMlPlMxt
+ jnlA==
+X-Gm-Message-State: AOAM531FTHd5Fti+M354vLoKgemapwgjf15s2ku0uTMgauuEUXSXdK1k
+ 8ffgHHnJVIEDH62MBXMF4/e5iJF9dKj9Kw==
+X-Received: by 2002:a05:6512:2386:: with SMTP id
+ c6mr14116923lfv.299.1643584333683; 
+ Sun, 30 Jan 2022 15:12:13 -0800 (PST)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id v6sm1247091lfq.181.2022.01.30.15.12.08
+ by smtp.gmail.com with ESMTPSA id q6sm2986300lfr.171.2022.01.30.15.12.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 30 Jan 2022 15:12:09 -0800 (PST)
+ Sun, 30 Jan 2022 15:12:13 -0800 (PST)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v1 2/6] target/arm: Make rvbar settable after realize
-Date: Mon, 31 Jan 2022 00:12:02 +0100
-Message-Id: <20220130231206.34035-3-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 6/6] hw/arm/xlnx-zynqmp: Connect the ZynqMP APU Control
+Date: Mon, 31 Jan 2022 00:12:06 +0100
+Message-Id: <20220130231206.34035-7-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220130231206.34035-1-edgar.iglesias@gmail.com>
 References: <20220130231206.34035-1-edgar.iglesias@gmail.com>
@@ -123,43 +124,104 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
  frederic.konrad@adacore.com, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cPTvL+1hSucp
+X-TUID: UQPYJ1JvZOsc
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Make the rvbar property settable after realize. This is done
-in preparation to model the ZynqMP's runtime configurable rvbar.
+Connect the ZynqMP APU Control device.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- target/arm/cpu.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ include/hw/arm/xlnx-zynqmp.h |  4 +++-
+ hw/arm/xlnx-zynqmp.c         | 25 +++++++++++++++++++++++--
+ 2 files changed, 26 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5a9c02a256..e30ae088fe 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1128,9 +1128,6 @@ static Property arm_cpu_reset_cbar_property =
- static Property arm_cpu_reset_hivecs_property =
-             DEFINE_PROP_BOOL("reset-hivecs", ARMCPU, reset_hivecs, false);
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index d5a3ad3df2..05cd2128f3 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -38,6 +38,7 @@
+ #include "hw/dma/xlnx_csu_dma.h"
+ #include "hw/nvram/xlnx-bbram.h"
+ #include "hw/nvram/xlnx-zynqmp-efuse.h"
++#include "hw/misc/xlnx-zynqmp-apu-ctrl.h"
+ #include "hw/misc/xlnx-zynqmp-crf.h"
  
--static Property arm_cpu_rvbar_property =
--            DEFINE_PROP_UINT64("rvbar", ARMCPU, rvbar, 0);
--
- #ifndef CONFIG_USER_ONLY
- static Property arm_cpu_has_el2_property =
-             DEFINE_PROP_BOOL("has_el2", ARMCPU, has_el2, true);
-@@ -1233,7 +1230,9 @@ void arm_cpu_post_init(Object *obj)
-     }
+ #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
+@@ -85,7 +86,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+ /*
+  * Unimplemented mmio regions needed to boot some images.
+  */
+-#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 2
++#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 1
  
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
--        qdev_property_add_static(DEVICE(obj), &arm_cpu_rvbar_property);
-+        object_property_add_uint64_ptr(obj, "rvbar",
-+                                       &cpu->rvbar,
-+                                       OBJ_PROP_FLAG_READWRITE);
-     }
+ struct XlnxZynqMPState {
+     /*< private >*/
+@@ -123,6 +124,7 @@ struct XlnxZynqMPState {
+     XlnxZDMA gdma[XLNX_ZYNQMP_NUM_GDMA_CH];
+     XlnxZDMA adma[XLNX_ZYNQMP_NUM_ADMA_CH];
+     XlnxCSUDMA qspi_dma;
++    XlnxZynqMPAPUCtrl apu_ctrl;
+     XlnxZynqMPCRF crf;
  
- #ifndef CONFIG_USER_ONLY
+     char *boot_cpu;
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 857d3c9636..21c411cd77 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -64,7 +64,7 @@
+ #define DPDMA_IRQ           116
+ 
+ #define APU_ADDR            0xfd5c0000
+-#define APU_SIZE            0x100
++#define APU_IRQ             153
+ 
+ #define IPI_ADDR            0xFF300000
+ #define IPI_IRQ             64
+@@ -282,6 +282,27 @@ static void xlnx_zynqmp_create_efuse(XlnxZynqMPState *s, qemu_irq *gic)
+     sysbus_connect_irq(sbd, 0, gic[EFUSE_IRQ]);
+ }
+ 
++static void xlnx_zynqmp_create_apu_ctrl(XlnxZynqMPState *s, qemu_irq *gic)
++{
++    SysBusDevice *sbd;
++    int i;
++
++    object_initialize_child(OBJECT(s), "apu-ctrl", &s->apu_ctrl,
++                            TYPE_XLNX_ZYNQMP_APU_CTRL);
++    sbd = SYS_BUS_DEVICE(&s->apu_ctrl);
++
++    for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
++        g_autofree gchar *name = g_strdup_printf("cpu%d", i);
++
++        object_property_set_link(OBJECT(&s->apu_ctrl), name,
++                                 OBJECT(&s->apu_cpu[i]), &error_abort);
++    }
++
++    sysbus_realize(sbd, &error_fatal);
++    sysbus_mmio_map(sbd, 0, APU_ADDR);
++    sysbus_connect_irq(sbd, 0, gic[APU_IRQ]);
++}
++
+ static void xlnx_zynqmp_create_crf(XlnxZynqMPState *s, qemu_irq *gic)
+ {
+     SysBusDevice *sbd;
+@@ -301,7 +322,6 @@ static void xlnx_zynqmp_create_unimp_mmio(XlnxZynqMPState *s)
+         hwaddr base;
+         hwaddr size;
+     } unimp_areas[ARRAY_SIZE(s->mr_unimp)] = {
+-        { .name = "apu", APU_ADDR, APU_SIZE },
+         { .name = "serdes", SERDES_ADDR, SERDES_SIZE },
+     };
+     unsigned int nr;
+@@ -697,6 +717,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     xlnx_zynqmp_create_bbram(s, gic_spi);
+     xlnx_zynqmp_create_efuse(s, gic_spi);
++    xlnx_zynqmp_create_apu_ctrl(s, gic_spi);
+     xlnx_zynqmp_create_crf(s, gic_spi);
+     xlnx_zynqmp_create_unimp_mmio(s);
+ 
 -- 
 2.25.1
 

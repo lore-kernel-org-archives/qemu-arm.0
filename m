@@ -1,219 +1,172 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1850984lfk;
-        Sun, 30 Jan 2022 14:16:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyv5i4yuGKNznu+GRv0vQEcg982JsY+xhq1jt2tOC8sKdcMPRBmOpJzoai1A9lEjbgBDW2U
-X-Received: by 2002:a25:3b83:: with SMTP id i125mr26624247yba.742.1643580997794;
-        Sun, 30 Jan 2022 14:16:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643580997; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1530107lfk;
+        Sun, 30 Jan 2022 02:01:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzYV0O5VpHyOJDham1q73NNxX6dZXw98ifcWYi5D4ObRm3D+sGxO9aYWS0tSuvG8I+Psf2l
+X-Received: by 2002:a05:622a:1011:: with SMTP id d17mr11343245qte.377.1643536896396;
+        Sun, 30 Jan 2022 02:01:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643536896; cv=none;
         d=google.com; s=arc-20160816;
-        b=slbe4jNgFlGkFauNZ4G69i73Qn5ZaY2X+8yyccjUt77xBh15si5ke8M0klOwEEzRAS
-         l1Pv6j4j5yL2YzA8uXTFh25zdjlK55i5AtwE3YBlmpKfQngyRuQwcpVDfXjVMiPJViXf
-         /pyupfqHdNJtKUaSRr2havmCFVhvZiDZnDqLVz0JsicmwyYfi8CLtKoM/JJB04atTUPs
-         9P4ItY1UEO3ODrW9y19oiaVxKVFMp+nWDtZexkHFyQtvZyn+eg1UFmq8t/6oqzJ53fOM
-         coX+sF07oHRI8yKDU6LvvCkRurkdRYLaoNEVSEB1bXX4TgHDKXC1eHVeROGInYBlB8Aw
-         vnlg==
+        b=bFGTV2l5Vd8aJPp90ijIEUyJk9Ubcn4im++U00HfdAMW5s2HPFgghdk3AYIpXOoeAP
+         5I+Pur3tyreb6/zEObXMIsbi85R+TUATW2NoTcKd+PlebCHC0Eh3+9WJ7gTLs4Xo/sE9
+         3r/KqLKAJyK1O4DEWavzCbGAFPQB3Go/uR1YUeAaJ4FFgisCmJVQgjrH+xZn7PWHf7Uv
+         S7F4fUQa7p+H3Ozzgz4JM8Shm9iuDQkcbcDiqiWZeGM58Re+AoGph4OiaYSDfgUCNxtQ
+         UmvoINzKNhtM2w6EvV8Tg+1yjQV3cWIMvyJ3emqvTt1A1tZjEphBlCtLluatKYqbYf5R
+         tQSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=hTBvTaxCwRtCqwxIprtOuuKoCPAExvByAvPKwtkc1dY=;
-        b=Y68SmgJP87vnQn28tUzaSJ5BXKKU3Qo6N366TWvfM/fnG2Szy9NaoYeEFBeBmcbux7
-         GUaxvIGE6NRpkSH2qFR9Lh9daMXXtvMzvnsQDVUkh0iGs22j8BSobVemN/yoKHJ1zRCP
-         lPilMvc867Nml9/GkwjbsBeEAOU1MNXLGA+48gmvwYJ9IAc+wmRq3xZGeH4fGOGz1BxI
-         Cz5AHVyXuC9eXQibxoXPCEVfLFkT5ZSLk+s/8YU6TpIS5dmt86zYXnP6B2j3Dg0eJGkn
-         lqxOyUBw4QhVJAlK8KMVjEag0jcO+esSmMrL9EqB7lmDP/Za6EtwZnXTGvVaOxlZL+pH
-         f8mA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=D/Dq/n3a2cacFsRp7SbZgSYk7wKKH12wz9Xle0XJ+oQ=;
+        b=nKiUHkjVoIc5y3/VoIV9nFu5UWaO0dUzgYwGa7UkJ0jsEyP/WfwWByysTkuLKci53q
+         JV26FeWgMKaKC5b2Dzv3Wt1L9qWRgRUrZlO4HCtz5P76cJL/Ecaf1Gytf25HbktgDlve
+         RBZ+482Ij2lCPx3hp5PTkhah86/MhjD1/+LJob8kGJG+5uSljscJjJ5m8OL6H3hRh8jR
+         q+LKOQbIKYX4bsMY+gg8nBcjbsZq8lUu7+lHw6Me+DO6tbNSn3Q5vkyKshBbMk1ZJCqX
+         6vzR7dcTVOZBABOC3MbsMLfBaj7tn63osuoKqQSGeNleLLl7/GAmEWhOz262h0V4jmOg
+         KA4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uthbLygF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=IlAV81bO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k7si427211ybl.811.2022.01.30.14.16.37
+        by mx.google.com with ESMTPS id u5si3755676qvc.495.2022.01.30.02.01.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Jan 2022 14:16:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 30 Jan 2022 02:01:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uthbLygF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=IlAV81bO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40086 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEIUr-0004sg-AW
-	for alex.bennee@linaro.org; Sun, 30 Jan 2022 17:16:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45348)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nE71b-0003ie-6T
+	for alex.bennee@linaro.org; Sun, 30 Jan 2022 05:01:35 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nEIUH-0004rO-LO
- for qemu-devel@nongnu.org; Sun, 30 Jan 2022 17:15:57 -0500
-Received: from [2607:f8b0:4864:20::52f] (port=45569
- helo=mail-pg1-x52f.google.com)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nE70Y-0003i1-1S
+ for qemu-arm@nongnu.org; Sun, 30 Jan 2022 05:00:33 -0500
+Received: from [2a00:1450:4864:20::429] (port=35396
+ helo=mail-wr1-x429.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nEIUB-0008P8-FK
- for qemu-devel@nongnu.org; Sun, 30 Jan 2022 17:15:55 -0500
-Received: by mail-pg1-x52f.google.com with SMTP id z131so10512810pgz.12
- for <qemu-devel@nongnu.org>; Sun, 30 Jan 2022 14:15:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nE70T-00006E-9U
+ for qemu-arm@nongnu.org; Sun, 30 Jan 2022 05:00:26 -0500
+Received: by mail-wr1-x429.google.com with SMTP id e2so19723765wra.2
+ for <qemu-arm@nongnu.org>; Sun, 30 Jan 2022 02:00:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=hTBvTaxCwRtCqwxIprtOuuKoCPAExvByAvPKwtkc1dY=;
- b=uthbLygFpxwP+rr6edEegmXDQZIxuC+G+UxE6WeCHf0d64dW3e7dqP9ZX41G+Ip8dH
- XcM0Lmj4acdgbCJHlRl4AlKfaX8uop37tBQQDXI2YH7xg4EMYtQUEXuJgUc3k99sMjnS
- 2ZDcAy7xWfRsNgE7zG46U27gcO8E7Y3gEWSrzHeCJ7M/RNeVNQiCeCSqA2upKRE5PAbv
- UTPwt2cQNGNM98L3HhdBLj2m+xvkKgeyw7GGjnkkNW3lDvwVLvgAvjkm9iVyNBnNdac1
- 7kwdd3AoHoARkvNZj6owlXQYBDV0gfX1tBFQ1scIT4sQitAHxtkqjSRGvtYHuVl0hnwL
- EoCw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=D/Dq/n3a2cacFsRp7SbZgSYk7wKKH12wz9Xle0XJ+oQ=;
+ b=IlAV81bOnH586VIfR5jxQbw9gyw3OoEPSkzhuTeYXIMBOBCocM6tmiUxIkL/oMse+W
+ mKjGtQ04LtwASJ77zSiGJjjnx7Dk5jXERook1ZdYBhBhEeapTunaSCrl1gQnPpFNATxW
+ GGP/3QNrDvO+RjY69Zo+/HL9wPTpXO0vjnOXp9kafhwC4Ooh3vn7DacKEuqtf6G8awCK
+ iOcKMMbjTrM8BL09NXh75Qz9vEBaOjeRGtoD/OCFpy+d9hpLUp8UVt0JlUEzjU9uo7oK
+ ac2LRU76JwhXRoZ5+aBCJ7gNrlHRMLaQP+eO5mwhjwYMOqyVHHX0y2y2SrlrpXIuclOY
+ jrMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=hTBvTaxCwRtCqwxIprtOuuKoCPAExvByAvPKwtkc1dY=;
- b=af9hz0JAiS4uVLiJ4uAf2GXjX4bZDJVafdlgkpA659vNN1oCTBMmzSg26XOf8/p8yY
- 9wfaqIhdRDYrjF9IhtfLzgF/glHHgHIHRJOi8GSsMm0h0vZvZjfgh/S9otyAXRFkh6c+
- wVJ8hMnrZJuPQj6tQCIT0MkzruqRcPzjYXvnZOuFaE+++oQ6+Ck3RpDGoUVK0Yl5+r6i
- HI06ouHWI8zwVGj3vfi5CX8/qbAV/HfdQDtalPbpX0usfK570aBS8YKxmqFyl3MNMhX2
- zdwHTcH1zP3LpqAlu9doDq23pHBTgrL0ggw/AhY2VfI4krszB0Ra35yKg8a6bKKAaBzj
- HGwA==
-X-Gm-Message-State: AOAM533F3TnRqKKNhz1t2nrZwWiO5+/3lyb61INdbEYs2zh6BCUw/cdZ
- wMkTvQpZrLC/zdBjxrcqrIyKUw==
-X-Received: by 2002:a05:6a00:8d2:: with SMTP id
- s18mr17429512pfu.5.1643580927992; 
- Sun, 30 Jan 2022 14:15:27 -0800 (PST)
-Received: from [192.168.2.37] (240.194.168.125.sta.wbroadband.net.au.
- [125.168.194.240])
- by smtp.gmail.com with ESMTPSA id l26sm26671388pgm.73.2022.01.30.14.15.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 30 Jan 2022 14:15:27 -0800 (PST)
-Message-ID: <7d4dff61-f75b-4243-9008-506c9c715dea@linaro.org>
-Date: Mon, 31 Jan 2022 09:15:15 +1100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=D/Dq/n3a2cacFsRp7SbZgSYk7wKKH12wz9Xle0XJ+oQ=;
+ b=TP1pZMjLZgRpywd+XW3VLNqP5COeobogo65AJ8c6bylL1fKr0sZSXexMtvGCwV1S5H
+ c9eDOoQr8bTWYLWrDuDM4AUJyYXhKINN+HG74eKjdd1rbdwMPX1952DJpnuk+OF4IEL4
+ vtTgRCErW2BIpFYJnefAv/GC3YKmw7GoKxL1eW4IE3jEyq3l/Dmu25drzoTJS6S7r5fi
+ MbVF9DFJhLxP9aNeWmxeMDZFgf7UV4euDB9y+pC0IkunNSZtMerWn/skM7XItC5C6UM4
+ tb1yzQZ/psA5FvAWVodEnZJ2YDBo0n/56m7yBS4c/DnqNy4scsjphsYKjE++bAx0aS3h
+ rdWA==
+X-Gm-Message-State: AOAM532EdLCFZWhJW4h6pp8A5lmr2Tqyc729Z2kRumwwNMu/LII3o6U+
+ 6hgC7HvJJcltILww4BPLh63kXQOf26X8vPMg/zayTQ==
+X-Received: by 2002:a05:6000:15c7:: with SMTP id
+ y7mr4951191wry.319.1643536820056; 
+ Sun, 30 Jan 2022 02:00:20 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 03/16] hw/arm/boot: Support setting psci-conduit based on
- guest EL
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220127154639.2090164-1-peter.maydell@linaro.org>
- <20220127154639.2090164-4-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220127154639.2090164-4-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::52f
+References: <20220128183033.31998-1-quintela@redhat.com>
+In-Reply-To: <20220128183033.31998-1-quintela@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 30 Jan 2022 10:00:08 +0000
+Message-ID: <CAFEAcA_0DPM=cwn33jCB3j=ZKKRJtg6_GL6RHWPzY62S-w_RUQ@mail.gmail.com>
+Subject: Re: [PULL 00/36] Migration 20220128 patches
+To: Juan Quintela <quintela@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::429
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
 X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <eduardo@habkost.net>, Rob Herring <robh@kernel.org>,
- Andrew Jeffery <andrew@aj.id.au>, Andre Przywara <andre.przywara@arm.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Peter Xu <peterx@redhat.com>, Laurent Vivier <Laurent@vivier.eu>,
+ Gerd Hoffmann <kraxel@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ Eric Blake <eblake@redhat.com>, Hannes Reinecke <hare@suse.com>,
+ Vikram Garhwal <fnu.vikram@xilinx.com>, qemu-block@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
  Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Beniamino Galvani <b.galvani@gmail.com>, Tyrone Ting <kfting@nuvoton.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, Alexander Graf <agraf@csgraf.de>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Andrey Smirnov <andrew.smirnov@gmail.com>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j5AXPG6GOIHl
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Igor Mammedov <imammedo@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OCnPmET3gGBN
 
-On 1/28/22 02:46, Peter Maydell wrote:
-> Currently we expect board code to set the psci-conduit property on
-> CPUs and ensure that secondary CPUs are created with the
-> start-powered-off property set to false, if the board wishes to use
-> QEMU's builtin PSCI emulation.  This worked OK for the virt board
-> where we first wanted to use it, because the virt board directly
-> creates its CPUs and is in a reasonable position to set those
-> properties.  For other boards which model real hardware and use a
-> separate SoC object, however, it is more awkward.  Most PSCI-using
-> boards just set the psci-conduit board unconditionally.
-> 
-> This was never strictly speaking correct (because you would not be
-> able to run EL3 guest firmware that itself provided the PSCI
-> interface, as the QEMU implementation would overrule it), but mostly
-> worked in practice because for non-PSCI SMC calls QEMU would emulate
-> the SMC instruction as normal (by trapping to guest EL3).  However,
-> we would like to make our PSCI emulation follow the part of the SMCC
-> specification that mandates that SMC calls with unknown function
-> identifiers return a failure code, which means that all SMC calls
-> will be handled by the PSCI code and the "emulate as normal" path
-> will no longer be taken.
-> 
-> We tried to implement that in commit 9fcd15b9193e81
-> ("arm: tcg: Adhere to SMCCC 1.3 section 5.2"), but this
-> regressed attempts to run EL3 guest code on the affected boards:
->   * mcimx6ul-evk, mcimx7d-sabre, orangepi, xlnx-zcu102
->   * for the case only of EL3 code loaded via -kernel (and
->     not via -bios or -pflash), virt and xlnx-versal-virt
-> so for the 7.0 release we reverted it (in commit 4825eaae4fdd56f).
-> 
-> This commit provides a mechanism that boards can use to arrange that
-> psci-conduit is set if running guest code at a low enough EL but not
-> if it would be running at the same EL that the conduit implies that
-> the QEMU PSCI implementation is using.  (Later commits will convert
-> individual board models to use this mechanism.)
-> 
-> We do this by moving the setting of the psci-conduit and
-> start-powered-off properties to arm_load_kernel().  Boards which want
-> to potentially use emulated PSCI must set a psci_conduit field in the
-> arm_boot_info struct to the type of conduit they want to use (SMC or
-> HVC); arm_load_kernel() will then set the CPUs up accordingly if it
-> is not going to start the guest code at the same or higher EL as the
-> fake QEMU firmware would be at.
-> 
-> Board/SoC code which uses this mechanism should no longer set the CPU
-> psci-conduit property directly.  It should only set the
-> start-powered-off property for secondaries if EL3 guest firmware
-> running bare metal expects that rather than the alternative "all CPUs
-> start executing the firmware at once".
-> 
-> Note that when calculating whether we are going to run guest
-> code at EL3, we ignore the setting of arm_boot_info::secure_board_setup,
-> which might cause us to run a stub bit of guest code at EL3 which
-> does some board-specific setup before dropping to EL2 or EL1 to
-> run the guest kernel. This is OK because only one board that
-> enables PSCI sets secure_board_setup (the highbank board), and
-> the stub code it writes will behave the same way whether the
-> one SMC call it makes is handled by "emulate the SMC" or by
-> "PSCI default returns an error code". So we can leave that stub
-> code in place until after we've changed the PSCI default behaviour;
-> at that point we will remove it.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   include/hw/arm/boot.h | 10 +++++++++
->   hw/arm/boot.c         | 50 +++++++++++++++++++++++++++++++++++++++++++
->   2 files changed, 60 insertions(+)
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+On Fri, 28 Jan 2022 at 18:31, Juan Quintela <quintela@redhat.com> wrote:
+>
+> The following changes since commit b367db48126d4ee14579af6cf5cdbffeb9496627:
+>
+>   Merge remote-tracking branch 'remotes/aperard/tags/pull-xen-20220127' into staging (2022-01-28 11:05:29 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://gitlab.com/juan.quintela/qemu.git tags/migration-20220128-pull-request
+>
+> for you to fetch changes up to 476ebf77fe8909ded10046edf26685bc28438162:
+>
+>   migration: Move temp page setup and cleanup into separate functions (2022-01-28 15:38:23 +0100)
+>
+> ----------------------------------------------------------------
+> Migration Pull request (Take 2)
+>
+> Hi
+>
+> This time I have disabled vmstate canary patches form Dave Gilbert.
+>
+> Let's see if it works.
+>
+> Later, Juan.
+>
 
 
-r~
+
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/7.0
+for any user-visible changes.
+
+-- PMM

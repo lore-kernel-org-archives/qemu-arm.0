@@ -1,189 +1,427 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2404541lfk;
-        Mon, 31 Jan 2022 09:38:49 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwNIT55GVopLKixa0ryomBPtvB0Tlziv64zNbFHB60EEDRzD/ydv1OT7K2ZsVJO6btywvEn
-X-Received: by 2002:a05:6e02:1202:: with SMTP id a2mr12423712ilq.2.1643650729580;
-        Mon, 31 Jan 2022 09:38:49 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1643650729; cv=pass;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1858057lfk;
+        Sun, 30 Jan 2022 14:36:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxqRNf461i+KLEfAzR2aXj5hLZPFxKwnIwshgH8VToK9EbFhgo77keAEMYD2SCzPhQPuZ4f
+X-Received: by 2002:a25:80d3:: with SMTP id c19mr26425866ybm.741.1643582189364;
+        Sun, 30 Jan 2022 14:36:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643582189; cv=none;
         d=google.com; s=arc-20160816;
-        b=AHTgEX45CG6bl8y1An/G8a0FfiKriXOcS4Eh+9ofDabwNl+nrV5GlniDPSIS/qgApq
-         No9rYl9b4UGlS5b5kpOLHg/kcZUJLSh7QPbDQYbbQ6H8ul8W8BFknE5gNh1o6beKxODp
-         fA6eLvFaIzsByLcN87FNRi6WSUHnR1HX2az0Cqeu4agAJkggLDxfuEslGUHSY1OzQ/u1
-         pC659/MuaHhZvPKxpQmE367JQ+qP+Laq2aVkZA2Oq09WmdvYs2DwFeeLuxV2EhknxgI0
-         HD8Rv+YD3xu9jHDEr5GaCcgn+VHv1dgfYKSs9K2i+sTlyNnILDWmHTf1C/jt7V7xzJmt
-         aZwA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Tj3nzJQAuaruxHTjE7j0sdq1+YFnaoqIR9LxPG7wLwML1w+fBcT4qVnuBLPaWUkdC2
+         rfr+70A3Y7+fCLImQ69OZfq+1PkjiejlBMHjoYkq6U98djkW+vw3Z3frpapYyg1iBXRa
+         Qmv+i/YvfnR4RSgcI9GZQcIL9dcji2DYGTarxnbSv3MFhj+Hs8n3esqyFjC55Ihoo/60
+         10EthrCepiDk4jzKtdjsgkxeHJyjDMAbWQgmuC/N7xZLgwIOwHz9urUbYbIi6Ji8FHN+
+         T8/ysbKc2HZ4uRH4vEKXBibseM2HlxPc16lJJhZKS3Owi49TooiOrYy9dnaF/y/6QI6n
+         UMMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=s31XuQ47tyr5MQp875bYlH7i3ucmEm7pCgdQN81jIQs=;
-        b=cZR5mH8z6c0J50oSLPZCyLQ92kLqv7bu9t4dD8Ck6PgbCK7UrWZCpphIbtIbg/0aAY
-         rkMsr4z57QYmqshezujsnQUQEAlSW3NkZADk0sc1hQ/RBop3MyU5JKk5Aka27sYzGdpG
-         A1k1EL/cHGYRDoL7w9vOdxQX2LY0huJ5NrGPQ7GAsNnBqzMbMKPFfgRQ+gcmNcIqsWrR
-         HQlDarwk640cGLOWI+Dvj1uviGSwa8vPn+QCKlDZbQdBHyOanY9rsvfkIU/rbxmYwsh5
-         aeWhaE3KeQ8wTeGZ3DjyUxw6LwINz47U/eO0d8OJKGRTUljE6MPhQ61yBjkG0d4P/x0n
-         wbMQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=r3eYIEhd;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ioKHWG79iSdG7l5bCC5sSgAqTj/1Hte+cKrGSDliLX4=;
+        b=y70RFpMBLJBm3x4yPsiUPHi9kLfbFiiVAQSzYLCxzQ0NDfs3GOWnbyZDfYk/qyG0/w
+         LJ3vn9FobkDc1NLz7TFG+Q3zmf1lBgk9rlkzlIFK16ZLgephZFeDEtmdva/U8iTc+7n/
+         Q7ihXlDCI+MF1OkZUwiuwm7UElV4k3yS+vrfZk3X9sb7MhzDwfPikFOHQU3UQ8Gx7+ex
+         En3kOgTxjaKiR+2s7FOuqR2sGqo5dCUdB/YaqzlTEr3Y1XUEw8LXIwkx+ie8cxpidoOS
+         TTEOTNRcMLHXgprE2xQfJo6fZ4ubeNenAiP2dnpJhHz3QlhQbeR/GpbS4dnV2hu3JVmw
+         eWvQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=EikQVmww;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m14si1888812jap.76.2022.01.31.09.38.49
+        by mx.google.com with ESMTPS id h62si31423963ybb.813.2022.01.30.14.36.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jan 2022 09:38:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 30 Jan 2022 14:36:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=r3eYIEhd;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:41066 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=EikQVmww;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48536 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEadb-0002U3-Mu
-	for alex.bennee@linaro.org; Mon, 31 Jan 2022 12:38:48 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:56540)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nEIo8-0003wq-Oe
+	for alex.bennee@linaro.org; Sun, 30 Jan 2022 17:36:28 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1nEaWE-0008C2-Hq; Mon, 31 Jan 2022 12:31:11 -0500
-Received: from mail-mw2nam12on2082.outbound.protection.outlook.com
- ([40.107.244.82]:16641 helo=NAM12-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1nEaWC-0003Br-UC; Mon, 31 Jan 2022 12:31:10 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=AwdjFdhzdzXwQZ4LXQZCjFobqlpw+sJ7+n3D9w1AAJUhrm6djz9K1kquwNJvMHdK6afWowm0YUqQzJfDY7h+Dotvgov+fCPaX5tvhZc28JUCNu6/MgKpDhKBwMpyk9Nfsc4QlJ7u9ocbesnn0ZA9tMreEFsyX9gvXA0X3T4DnqxQRMpmr3GwgRI5fly9LGwLJh3eVSTUb6PWVbm3eXeETZlgPeSNikpMx9Xr1+0oIu5e38yyuJCiVRvneXhNvPzQJCjGWOlDCFywQigu1igyxguVpbNv5kD2+47+lT6kI+7QLp6uYmp8gIj+V274uh22ayI2Sgfd9GZi+8MoZPwoTQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=s31XuQ47tyr5MQp875bYlH7i3ucmEm7pCgdQN81jIQs=;
- b=PEvNKKd4l5xuaEV+5SPHiv7Is/qIeGKxoZJrxQFcFE9/bJ9jYb+wvZZsPmpUyVtevi0OTWkSY3DdNkazqatlGIK6ohv1qJJWM4Nr6rNvgpCEH64gSaeh0mN3M+xe9DVFuiX1F59mHZYqogN+hjrjkZE0hNVAZTyfnon1aU+/jJrYsqVogYvpqP3CZMCkZUxl/QekOqc1kDzQDEoh4VNZsEvSOkPDyISJ9ldHGTya6jg7kymyADBcCZmEWfh/F5zGIGKPycbMunp0+Iibs8v6Os1Ukjs8JkNviHx3Nrf7qYUrEDvQWYC3m3h2daQWafNsmus0gVg5UdH3oKM50t5Wmw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.62.198) smtp.rcpttodomain=linaro.org smtp.mailfrom=xilinx.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=s31XuQ47tyr5MQp875bYlH7i3ucmEm7pCgdQN81jIQs=;
- b=r3eYIEhd7M8mGvV/F3fZXHiN20AMHQANwAyWxsJg+zWT+XbmHMTldQRdSltXOR2349V6bKVRdXjokZhdp0DAjtECDOujMfj9NSCu2ORz2MCoqLZoZGLQgyXuX42xfXhkYT0QugTVFXEXpGWjtJNNESeNIMhzagDGv/2+voU+Mdc=
-Received: from SA9P221CA0010.NAMP221.PROD.OUTLOOK.COM (2603:10b6:806:25::15)
- by SJ0PR02MB8752.namprd02.prod.outlook.com (2603:10b6:a03:3d1::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4930.17; Mon, 31 Jan
- 2022 17:30:46 +0000
-Received: from SN1NAM02FT0004.eop-nam02.prod.protection.outlook.com
- (2603:10b6:806:25:cafe::6b) by SA9P221CA0010.outlook.office365.com
- (2603:10b6:806:25::15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4930.15 via Frontend
- Transport; Mon, 31 Jan 2022 17:30:46 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
- smtp.mailfrom=xilinx.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.62.198; helo=xsj-pvapexch01.xlnx.xilinx.com;
-Received: from xsj-pvapexch01.xlnx.xilinx.com (149.199.62.198) by
- SN1NAM02FT0004.mail.protection.outlook.com (10.97.4.226) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.4930.15 via Frontend Transport; Mon, 31 Jan 2022 17:30:45 +0000
-Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
- xsj-pvapexch01.xlnx.xilinx.com (172.19.86.40) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.14; Mon, 31 Jan 2022 09:30:42 -0800
-Received: from smtp.xilinx.com (172.19.127.95) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
- 15.1.2176.14 via Frontend Transport; Mon, 31 Jan 2022 09:30:42 -0800
-Received: from [10.71.119.88] (port=49929 helo=localhost)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <edgar@xilinx.com>)
- id 1nEaVF-0006Wq-6S; Mon, 31 Jan 2022 09:30:09 -0800
-Date: Mon, 31 Jan 2022 18:30:08 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v1 1/6] hw/arm/xlnx-zynqmp: Add unimplemented SERDES area
-Message-ID: <20220131173008.GF8684@toto>
-References: <20220130231206.34035-1-edgar.iglesias@gmail.com>
- <20220130231206.34035-2-edgar.iglesias@gmail.com>
- <CAFEAcA-UZp943LVdq5VMn9mvDxzieWMFn_3+B8F38g5x_nsKbw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1nEInl-0003pv-No; Sun, 30 Jan 2022 17:36:05 -0500
+Received: from [2607:f8b0:4864:20::102e] (port=43697
+ helo=mail-pj1-x102e.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1nEIni-0002wJ-Rc; Sun, 30 Jan 2022 17:36:05 -0500
+Received: by mail-pj1-x102e.google.com with SMTP id
+ qe6-20020a17090b4f8600b001b7aaad65b9so5852622pjb.2; 
+ Sun, 30 Jan 2022 14:35:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ioKHWG79iSdG7l5bCC5sSgAqTj/1Hte+cKrGSDliLX4=;
+ b=EikQVmwwEG/XEnY1O1D0x4+4Lu945Iw4w8MBRndZ9FRCvnfIW4t8JUs4Ft7M2KRwim
+ Zd2h5ohAgrG1BayEnQsgXPMV+4lm9Y9lZUMGfTS24qnKmzeorbfFcSCAynX7Z9EJyLSk
+ 5zyZk2/BHtbGfsvfJ5zjl434hKo3IVrXbAxMxDEvqElRuHAnxXJ1Etk0SKCK2VNMt56C
+ m/Iuq00ounFxJRoeEFfvoNQ9j+NqWliVReKW5fiB77Urz3lfKHp28mrMGH5qjdPHJxYe
+ SXpsV2iAjUycfcrm1GLUJDo8bnLa2iTCTtQ6m4A7AR1p9QiMC0jxKLIFQJRgv/ZVDBWm
+ hJuA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ioKHWG79iSdG7l5bCC5sSgAqTj/1Hte+cKrGSDliLX4=;
+ b=cR8+P4ubIH3KrSD9na512KJa5bQfT8UeVIgeP8kK14YJBHvo6MCeDUw1MB5mordMVc
+ 9jCKu1JcVOBLJP9D2QTEz2YoUKpF5yjV8ZKa/HepvaRnQrJtNsZI4bqVJwWpuQSyxRE9
+ YoHhXOZR3R45j0SCjkJzg6Lgroqp39/0x4sCk0kKQ1xjd0EKch9v/sxMKQCteW6aNmvQ
+ ZpuMBxZukEG0z5Y19tZ++FNKGAnsPAxh0521WB1RQHq8VXIOjn3xdT+ahW3Mb5yzdKRG
+ DBiUXPzwxyfPkxkcpXY7UPbGmGBBKu6FAZQPOQIZ0k1fymf0ZzGYgk63Bu59XE9gJkrz
+ v8GA==
+X-Gm-Message-State: AOAM530SSWmUQQgWMMAjkgO190u6k7lxT2TwZ30OPFPZk9nQqYUlbU4W
+ fEGd7CyrjLTCOXKSUCaBOQ5olbIZSN9tIuI37I8=
+X-Received: by 2002:a17:902:f54b:: with SMTP id
+ h11mr18299290plf.91.1643582148862; 
+ Sun, 30 Jan 2022 14:35:48 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-UZp943LVdq5VMn9mvDxzieWMFn_3+B8F38g5x_nsKbw@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c488b020-5e49-4b7e-ca66-08d9e4df6a0e
-X-MS-TrafficTypeDiagnostic: SJ0PR02MB8752:EE_
-X-Microsoft-Antispam-PRVS: <SJ0PR02MB87525B95D48AB4414A50202DC2259@SJ0PR02MB8752.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:2887;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: j6EyklbOmiihH2cy4j+s3C3DIC3Lkq7q1l0zSEacBAU/LZXEHnYvF1Az/PxBDNvVRb0/z+AD4sRuqhNcopdTJUxXwUEW/eOk71CX41kQNW5N0f7CRnrzjL0WKf70T60oVr6dTsOiolJuAAHvR82kRh5x+ix/5BO+dJUKFZsMxLB9PU1bKdV3IE0acekKleZzxbQE37oaQ5LR4nGQDzOlXOKhQV+a6z+wgZiQ+g0XDD7OvnCasm9p4Yr6YNxVswuZPQNW941lds5386j4JIGIbvIsLRnQvNbBccPR/ztCsF4lQZxPsTViSAeOGNdgbXsNyCOwglYOSUdPd9whBMen1Pl2Gt0cmjmN1FjTVjUBusjEMgFRCRfrsKgfQvozVCRvj6pVR4IZKnYRtEyaoq+dnVCa3MxDOrcnibUxEbL8JvJClHrWjvBOb6XhSvjQWT3E+ZChpTGvv8z6LxWsRS5vilRx6p+zIzl7Qh6yHtlGjb1olBjxMWHeoEAdH4kv0dFcU6aYr5KxHLkRldReAGeloEUXqjrGiWKWlBzX0T6GLp2imCmy3yX06I7IXqLM+NQueXwznu2hJTLOB2aER2q2J0Zgsk4uzmJ6JHlCezcNDPGKfoqew6Hf6X2OFg5nL3n9/0EdHmqnicn6oBob5E6enQ==
-X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapexch01.xlnx.xilinx.com;
- PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(13230001)(4636009)(7916004)(36840700001)(46966006)(83380400001)(36860700001)(316002)(6916009)(54906003)(1076003)(186003)(26005)(426003)(336012)(2906002)(47076005)(4744005)(107886003)(33716001)(7636003)(8936002)(33656002)(82310400004)(9686003)(4326008)(9786002)(5660300002)(508600001)(356005)(70586007)(8676002)(70206006)(20210929001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jan 2022 17:30:45.6267 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c488b020-5e49-4b7e-ca66-08d9e4df6a0e
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
- Helo=[xsj-pvapexch01.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: SN1NAM02FT0004.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR02MB8752
-Received-SPF: pass client-ip=40.107.244.82; envelope-from=edgar@xilinx.com;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+References: <20220127154639.2090164-1-peter.maydell@linaro.org>
+ <20220127154639.2090164-6-peter.maydell@linaro.org>
+In-Reply-To: <20220127154639.2090164-6-peter.maydell@linaro.org>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Sun, 30 Jan 2022 23:35:37 +0100
+Message-ID: <CAPan3WrPgyTqzgcP5Bc6zdvmqrQ7mN3xjowzo+Qo-UHH5miH0g@mail.gmail.com>
+Subject: Re: [PATCH 05/16] hw/arm: allwinner: Don't enable PSCI conduit when
+ booting guest in EL3
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="00000000000024666105d6d44a5b"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102e
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-pj1-x102e.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: luc@lmichel.fr, sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com,
- alistair@alistair23.me, richard.henderson@linaro.org, qemu-devel@nongnu.org,
- francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
- qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q9wX9YxsR5OZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Alexander Graf <agraf@csgraf.de>,
+ Rob Herring <robh@kernel.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Andre Przywara <andre.przywara@arm.com>, Tyrone Ting <kfting@nuvoton.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Yr4BRRxAeTdv
 
-On Mon, Jan 31, 2022 at 03:32:25PM +0000, Peter Maydell wrote:
-> On Sun, 30 Jan 2022 at 23:12, Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
-> >
-> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-> >
-> > Add unimplemented SERDES area.
-> 
-> What's a SERDES ? A brief description might be helpful in
-> the commit message or a comment.
+--00000000000024666105d6d44a5b
+Content-Type: text/plain; charset="UTF-8"
 
-These are config registers for the SER/DESerializers (for high-speed IO).
-This patch was not strictly needed to pass the test-case but it came up I'm guessing due to some SW dependency in the test-case itself...
+Hi Peter,
 
-I'll add a comment and mention it in the commit message.
 
-Thanks,
-Edgar
+
+On Thu, Jan 27, 2022 at 4:46 PM Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> Change the allwinner-h3 based board to use the new boot.c
+> functionality to allow us to enable psci-conduit only if the guest is
+> being booted in EL1 or EL2, so that if the user runs guest EL3
+> firmware code our PSCI emulation doesn't get in its way.
+>
+> To do this we stop setting the psci-conduit property on the CPU
+> objects in the SoC code, and instead set the psci_conduit field in
+> the arm_boot_info struct to tell the common boot loader code that
+> we'd like PSCI if the guest is starting at an EL that it makes sense
+> with.
+>
+> This affects the orangepi-pc board.
+>
+> This commit leaves the secondary CPUs in the powered-down state if
+> the guest is booting at EL3, which is the same behaviour as before
+> this commit.  The secondaries can no longer be started by that EL3
+> code making a PSCI call but can still be started via the CPU
+> Configuration Module registers (which we model in
+> hw/misc/allwinner-cpucfg.c).
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+
+While testing your patches on the orangepi-pc machine, I've found that two
+acceptance tests BootLinuxConsole.test_arm_orangepi_bionic_20_08 and
+BootLinuxConsole.test_arm_orangepi_uboot_netbsd9 of the orangepi-pc board
+are no longer passing on current master:
+
+  ARMBIAN_ARTIFACTS_CACHED=yes AVOCADO_ALLOW_LARGE_STORAGE=yes avocado
+--show=app,console run -t machine:orangepi-pc
+tests/avocado/boot_linux_console.py
+  ...
+ (4/5)
+tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_bionic_20_08:
+-console: U-Boot SPL 2020.04-armbian (Sep 02 2020 - 10:16:13 +0200)
+\console: DRAM:
+INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout
+reached\nOriginal status: ERROR\n{'name':
+'4-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_bionic_20_08',
+'logdi>
+ (5/5)
+tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_uboot_netbsd9:
+/console: U-Boot SPL 2020.01+dfsg-1 (Jan 08 2020 - 08:19:44 +0000)
+console: DRAM:
+INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout
+reached\nOriginal status: ERROR\n{'name':
+'5-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_uboot_netbsd9',
+'logd>
+RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 2 |
+CANCEL 0
+JOB TIME   : 221.25 s
+
+Bisecting the error I was able to trace it back to commit 5ead62185d
+("memory: Make memory_region_is_mapped() succeed when mapped via an alias").
+I'll try to find the original thread and respond to that with this
+information.
+
+However, with commit 5ead62185d reverted, all tested passed fine:
+
+ARMBIAN_ARTIFACTS_CACHED=yes AVOCADO_ALLOW_LARGE_STORAGE=yes avocado
+--show=app,console run -t machine:orangepi-pc
+tests/avocado/boot_linux_console.py
+...
+PASS (16.48 s)
+RESULTS    : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 |
+CANCEL 0
+JOB TIME   : 116.63 s
+
+So for the orangepi-pc and allwinner-h3:
+
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+
+> ---
+> If anybody knows for definite that the secondaries should be
+> powered-down at startup for guest firmware, we can delete the TODO.
+>
+
+Looking at the Allwinner H3 datasheet in 4.4.3.7 page 146, it says that
+for the CPU1 Status Register the default value indicates at least that its
+not in a
+wait for interrupt standby mode. And if I look in U-Boot's
+arm/arm/cpu/armv7/sunxi/psci.c code
+in the psci_cpu_on implementation, there is an explicit 'power on' part
+there, suggesting the secondary CPUs
+are by default off. So while I don't have any hard proof, these findings
+suggest we are modeling the correct behavior
+with secondary CPUs by default off.
+
+
+
+> The allwinner-cpucfg.c code makes the reset value for the
+> REG_CPU*_RST_CTRL registers "CPUX_RESET_RELEASED", which might
+> suggest otherwise, but that could easily just be a QEMU error.
+> ---
+>  hw/arm/allwinner-h3.c | 9 ++++-----
+>  hw/arm/orangepi.c     | 1 +
+>  2 files changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> index f9b7ed18711..f54aff6d2d2 100644
+> --- a/hw/arm/allwinner-h3.c
+> +++ b/hw/arm/allwinner-h3.c
+> @@ -235,11 +235,10 @@ static void allwinner_h3_realize(DeviceState *dev,
+> Error **errp)
+>      /* CPUs */
+>      for (i = 0; i < AW_H3_NUM_CPUS; i++) {
+>
+> -        /* Provide Power State Coordination Interface */
+> -        qdev_prop_set_int32(DEVICE(&s->cpus[i]), "psci-conduit",
+> -                            QEMU_PSCI_CONDUIT_SMC);
+> -
+> -        /* Disable secondary CPUs */
+> +        /*
+> +         * Disable secondary CPUs. TODO: check whether this is what
+> +         * guest EL3 firmware would really expect.
+> +         */
+>          qdev_prop_set_bit(DEVICE(&s->cpus[i]), "start-powered-off",
+>                            i > 0);
+>
+> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+> index e7963822367..68fe9182414 100644
+> --- a/hw/arm/orangepi.c
+> +++ b/hw/arm/orangepi.c
+> @@ -105,6 +105,7 @@ static void orangepi_init(MachineState *machine)
+>      }
+>      orangepi_binfo.loader_start = h3->memmap[AW_H3_DEV_SDRAM];
+>      orangepi_binfo.ram_size = machine->ram_size;
+> +    orangepi_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+>      arm_load_kernel(ARM_CPU(first_cpu), machine, &orangepi_binfo);
+>  }
+>
+> --
+> 2.25.1
+>
+>
+
+-- 
+Niek Linnenbank
+
+--00000000000024666105d6d44a5b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div>Hi Peter,</div><div><br></div><div><=
+br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gma=
+il_attr">On Thu, Jan 27, 2022 at 4:46 PM Peter Maydell &lt;<a href=3D"mailt=
+o:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex">Change the allwinner-h3=
+ based board to use the new boot.c<br>
+functionality to allow us to enable psci-conduit only if the guest is<br>
+being booted in EL1 or EL2, so that if the user runs guest EL3<br>
+firmware code our PSCI emulation doesn&#39;t get in its way.<br>
+<br>
+To do this we stop setting the psci-conduit property on the CPU<br>
+objects in the SoC code, and instead set the psci_conduit field in<br>
+the arm_boot_info struct to tell the common boot loader code that<br>
+we&#39;d like PSCI if the guest is starting at an EL that it makes sense<br=
+>
+with.<br>
+<br>
+This affects the orangepi-pc board.<br>
+<br>
+This commit leaves the secondary CPUs in the powered-down state if<br>
+the guest is booting at EL3, which is the same behaviour as before<br>
+this commit.=C2=A0 The secondaries can no longer be started by that EL3<br>
+code making a PSCI call but can still be started via the CPU<br>
+Configuration Module registers (which we model in<br>
+hw/misc/allwinner-cpucfg.c).<br>
+<br>
+Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
+" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br></blockquote><div><=
+br></div><div>While testing your patches on the orangepi-pc machine, I&#39;=
+ve found that two acceptance tests BootLinuxConsole.test_arm_orangepi_bioni=
+c_20_08 and</div><div>BootLinuxConsole.test_arm_orangepi_uboot_netbsd9 of t=
+he orangepi-pc board are no longer passing on current master:</div><div><br=
+></div><div>=C2=A0 ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORA=
+GE=3Dyes avocado --show=3Dapp,console run -t machine:orangepi-pc tests/avoc=
+ado/boot_linux_console.py<br>=C2=A0 ...</div><div>=C2=A0(4/5) tests/avocado=
+/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_bionic_20_08: -co=
+nsole: U-Boot SPL 2020.04-armbian (Sep 02 2020 - 10:16:13 +0200)<br>\consol=
+e: DRAM:<br>INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred=
+: Timeout reached\nOriginal status: ERROR\n{&#39;name&#39;: &#39;4-tests/av=
+ocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_bionic_20_08=
+&#39;, &#39;logdi&gt;<br>=C2=A0(5/5) tests/avocado/boot_linux_console.py:Bo=
+otLinuxConsole.test_arm_orangepi_uboot_netbsd9: /console: U-Boot SPL 2020.0=
+1+dfsg-1 (Jan 08 2020 - 08:19:44 +0000)<br>console: DRAM:<br>INTERRUPTED: T=
+est interrupted by SIGTERM\nRunner error occurred: Timeout reached\nOrigina=
+l status: ERROR\n{&#39;name&#39;: &#39;5-tests/avocado/boot_linux_console.p=
+y:BootLinuxConsole.test_arm_orangepi_uboot_netbsd9&#39;, &#39;logd&gt;<br>R=
+ESULTS =C2=A0 =C2=A0: PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRU=
+PT 2 | CANCEL 0<br>JOB TIME =C2=A0 : 221.25 s<br></div><div><br></div><div>=
+Bisecting the error I was able to trace it back to commit 5ead62185d (&quot=
+;memory: Make memory_region_is_mapped() succeed when mapped via an alias&qu=
+ot;).</div><div>I&#39;ll try to find the original thread and respond to tha=
+t with this information.<br></div><div><br></div><div>However, with commit =
+5ead62185d reverted, all tested passed fine:</div><div><br></div><div>ARMBI=
+AN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocado --show=
+=3Dapp,console run -t machine:orangepi-pc tests/avocado/boot_linux_console.=
+py<br>...<br>PASS (16.48 s)<br>RESULTS =C2=A0 =C2=A0: PASS 5 | ERROR 0 | FA=
+IL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0<br>JOB TIME =C2=A0 : 116.63=
+ s<br></div><div><br></div><div>So for the orangepi-pc and allwinner-h3:</d=
+iv><div><br></div><div>Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:n=
+ieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</div><div>Tested-=
+by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklin=
+nenbank@gmail.com</a>&gt;<br></div><div>=C2=A0</div><blockquote class=3D"gm=
+ail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,=
+204,204);padding-left:1ex">
+---<br>
+If anybody knows for definite that the secondaries should be<br>
+powered-down at startup for guest firmware, we can delete the TODO. <br></b=
+lockquote><div><br></div><div>Looking at the Allwinner H3 datasheet in 4.4.=
+3.7 page 146, it says that</div><div>for the CPU1 Status Register the defau=
+lt value indicates at least that its not in a</div><div>wait for interrupt =
+standby mode. And if I look in U-Boot&#39;s arm/arm/cpu/armv7/sunxi/psci.c =
+code</div><div>in the psci_cpu_on implementation, there is an explicit &#39=
+;power on&#39; part there, suggesting the secondary CPUs</div><div>are by d=
+efault off. So while I don&#39;t have any hard proof, these findings sugges=
+t we are modeling the correct behavior</div><div>with secondary CPUs by def=
+ault off.<br></div><div><br></div><div>=C2=A0</div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex">
+The allwinner-cpucfg.c code makes the reset value for the<br>
+REG_CPU*_RST_CTRL registers &quot;CPUX_RESET_RELEASED&quot;, which might<br=
+>
+suggest otherwise, but that could easily just be a QEMU error.<br>
+---<br>
+=C2=A0hw/arm/allwinner-h3.c | 9 ++++-----<br>
+=C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0| 1 +<br>
+=C2=A02 files changed, 5 insertions(+), 5 deletions(-)<br>
+<br>
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
+index f9b7ed18711..f54aff6d2d2 100644<br>
+--- a/hw/arm/allwinner-h3.c<br>
++++ b/hw/arm/allwinner-h3.c<br>
+@@ -235,11 +235,10 @@ static void allwinner_h3_realize(DeviceState *dev, Er=
+ror **errp)<br>
+=C2=A0 =C2=A0 =C2=A0/* CPUs */<br>
+=C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; AW_H3_NUM_CPUS; i++) {<br>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Provide Power State Coordination Interface =
+*/<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_int32(DEVICE(&amp;s-&gt;cpus[i])=
+, &quot;psci-conduit&quot;,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 QEMU_PSCI_CONDUIT_SMC);<br>
+-<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Disable secondary CPUs */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* Disable secondary CPUs. TODO: check wh=
+ether this is what<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* guest EL3 firmware would really expect=
+.<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_prop_set_bit(DEVICE(&amp;s-&gt;cpus[=
+i]), &quot;start-powered-off&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0i &gt; 0);<br>
+<br>
+diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
+index e7963822367..68fe9182414 100644<br>
+--- a/hw/arm/orangepi.c<br>
++++ b/hw/arm/orangepi.c<br>
+@@ -105,6 +105,7 @@ static void orangepi_init(MachineState *machine)<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0orangepi_binfo.loader_start =3D h3-&gt;memmap[AW_H3_DEV=
+_SDRAM];<br>
+=C2=A0 =C2=A0 =C2=A0orangepi_binfo.ram_size =3D machine-&gt;ram_size;<br>
++=C2=A0 =C2=A0 orangepi_binfo.psci_conduit =3D QEMU_PSCI_CONDUIT_SMC;<br>
+=C2=A0 =C2=A0 =C2=A0arm_load_kernel(ARM_CPU(first_cpu), machine, &amp;orang=
+epi_binfo);<br>
+=C2=A0}<br>
+<br>
+-- <br>
+2.25.1<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--00000000000024666105d6d44a5b--

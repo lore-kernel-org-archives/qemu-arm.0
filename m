@@ -1,111 +1,111 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2047120lfk;
-        Sun, 30 Jan 2022 23:07:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzOG8dqCjSUZJnpDKsDa7IPtI231Nd2N4JnQ/Q5AH6YWB+XDP0fpneuU7jPWIv9STGTQLgJ
-X-Received: by 2002:a05:6902:1545:: with SMTP id r5mr27998168ybu.297.1643612855237;
-        Sun, 30 Jan 2022 23:07:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643612855; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2049499lfk;
+        Sun, 30 Jan 2022 23:13:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxhRA0GoXU0VOCsriMbmiJPx9crq72a1iyH7rC7s4wslebrDTRdhKIUpICnrLIrLWPEVpMA
+X-Received: by 2002:a05:6902:1509:: with SMTP id q9mr32385959ybu.311.1643613199521;
+        Sun, 30 Jan 2022 23:13:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643613199; cv=none;
         d=google.com; s=arc-20160816;
-        b=nmZeC7OgqwLV6SefYTdPLVkuUqCCf3Ik14P0X+RGhxQfT5WPEJbEhe7JzwIpIVMspD
-         9eUxTNi//hR7u7csQqofNg54vK6xOEaRO+SoN3ImEh9Inmvhq/Y3JJEJaE5Inv5+WDCc
-         RAjdy5dLR/l7PFl1d9J0NOhgadN6DsG7uacGjDbIKo/KqP8OjJ5rmTJq+1dMYQT1llPs
-         TM3tyl2rpZF/iA74OdOSk/etaa6iRAu3H1VErab4iMyokh+2E1esjFXQCq3ivwabCXzE
-         Wz8n5qsfDu2xzGtfe47KNlFZaEZ+/p53OdVOfTAv50lfa86+tnm+7EcKoew7O3O0HsGT
-         2BLw==
+        b=Ai9MB2WXsC4z9znh2bOZWH8QWNMy5Yc/jovRtPrrOctZqYMtxONbF728egbsHeRuQ3
+         aNjarTBwedpOoYNt1qgj5otfwG9HColm4YSzHa+9bgughkBU48iyzAL5SdYh8pLOKAGf
+         yb2mP3CEqeV/zkn55JtgqMQWfZl47cr33EVDG16GVm3RX6EcoPbIxHqFqlSEAYuv+gOp
+         wvvWkJN5UWRz3o2ub6WW1hfoSRVwySwVzbnYymZiiyfvy408mPAPHhqtViR4e6/jZCSc
+         Ih9ZxuUgMM5RGjPH5uuOVWwhCwSf94g6rKKt9JT/pbXUkXt+7AchlZ6LQCLSgGEvpWEq
+         zenQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=nwro02bIn0SUXTmcmMiR7X5A1AHyjOlaOi2qufzf65A=;
-        b=BfkCH83nPGl+NjTtD+Ve5ZLOpqX4LKAzZlE6lHJEjIMZ0GHrSgxk+pDprczw3O4Ywt
-         LUfF+nPffPlNHTO02alJnECc3dM8uYloJkHYPAfrPgEfcT2LDZIjZLH2w0E5CTEHA4pT
-         X76YP+zE8keMtCOHLeHMnQrFJiL8lWKw3qrZZtJSY77f2WgYpOJOLzFKoYLKHAJMJmQf
-         guWI3KW050lvxXsSB7gdkWj++fNeBke0UvbtunAcQFcIYTotJgHWQ5R3NH4BVikXkqfu
-         ZgzGxNDJSsgadHlIovkp5mOOa9jgCleEj2SyIZJuqy3KUruf/0ItonVFEFln372+OUHR
-         8yTQ==
+        bh=EGLBiewxA4ODMDJfHjfpEX1VUMbqdhTUkvXm9+aeWf8=;
+        b=vw3O88z0mrwkkGwe0EDsf0BUeLthUhNJDIlOgo5iJltAMASl3iej0Zri3B4LtwcDzP
+         cjvMSjpmgezqZHt7A7G68PUBLYf1QKFNdCn7um1SocdrDQMH+dwRrihbP6KiX3w2G/Nj
+         iGQIQRrF+KRcROnvXhSXuDOo+7MQfdPfXWzRoDp6u+GyWJjiDRIg0i6yanEgWyHWiFl+
+         K8BJtFWbsfUR4g2XBFwDT+IaH9s9mpKhJDVRalAQnKbmPG0Fa+RbDRN+KnyPLbX/etO6
+         8zwy4jqSH7M164jq4VEjiojxBPaiebMvZdDg1J4pDevntGQ+p1tf1WUn+PIo67P7EOoG
+         GomQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="w/ZRhDim";
+       dkim=fail header.i=@linaro.org header.s=google header.b=c1MJvQ4j;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f65si8688100ybg.308.2022.01.30.23.07.35
+        by mx.google.com with ESMTPS id bu11si23848446ybb.390.2022.01.30.23.13.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Jan 2022 23:07:35 -0800 (PST)
+        Sun, 30 Jan 2022 23:13:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="w/ZRhDim";
+       dkim=fail header.i=@linaro.org header.s=google header.b=c1MJvQ4j;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48186 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51806 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEQmi-0002tI-Oz
-	for alex.bennee@linaro.org; Mon, 31 Jan 2022 02:07:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38436)
+	id 1nEQsI-0005ni-MX
+	for alex.bennee@linaro.org; Mon, 31 Jan 2022 02:13:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38912)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nEQYf-00088o-78
- for qemu-devel@nongnu.org; Mon, 31 Jan 2022 01:53:15 -0500
-Received: from [2607:f8b0:4864:20::52d] (port=42798
- helo=mail-pg1-x52d.google.com)
+ id 1nEQbY-0000Eu-8o
+ for qemu-devel@nongnu.org; Mon, 31 Jan 2022 01:56:04 -0500
+Received: from [2607:f8b0:4864:20::42d] (port=45596
+ helo=mail-pf1-x42d.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nEQYW-0002FB-U3
- for qemu-devel@nongnu.org; Mon, 31 Jan 2022 01:52:55 -0500
-Received: by mail-pg1-x52d.google.com with SMTP id g2so11379863pgo.9
- for <qemu-devel@nongnu.org>; Sun, 30 Jan 2022 22:52:46 -0800 (PST)
+ id 1nEQbT-0002hR-QX
+ for qemu-devel@nongnu.org; Mon, 31 Jan 2022 01:55:57 -0500
+Received: by mail-pf1-x42d.google.com with SMTP id 128so12077572pfe.12
+ for <qemu-devel@nongnu.org>; Sun, 30 Jan 2022 22:55:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=nwro02bIn0SUXTmcmMiR7X5A1AHyjOlaOi2qufzf65A=;
- b=w/ZRhDim2JqNHIHrrE7s9SvxrTdPQyK2oXf7/LS4SrseQbVoyjoQ61zQp//r07bFy3
- 0tACZ2hsdlnCllMFi2tYLQw+jX4yq8KAHXnupEfW/ZRBIsk5Xo45sB5l0icHOQu4PYfg
- ZaJ9izJbcx2IzfHm53jl3R+vSKwBKuRVieC4qF74XldV/I82MB6C7thPy1TWfiAhtv8s
- gnZRSUtq3gMPsHNHZ48dGVURkqhUD9IBzD6t8Hhrb5cifll5huCJ1a9ZvSK8RTaTasM4
- IQTIc2LPlhTZUl8ybPB1Nfelsc3obQuYCK0FwvcnJzP1K8MR9q1c0ZT3P/SAwyBw1FCj
- M1TQ==
+ bh=EGLBiewxA4ODMDJfHjfpEX1VUMbqdhTUkvXm9+aeWf8=;
+ b=c1MJvQ4jObhRrkpO5ufCBfJ5l3BVdpcj85hKCxsyq3t6S7LxlVJK9s01u2qIwLHzTc
+ 5ZL0U9L989JeGDCzRuYeHapF67qUWDhS7enq1HMstzW19Gbx3EaQ64wHHyuuDqVZRwl/
+ QGtRXvij+Ux0euxotI2BY+X10FnjFEzpVnsG/C4RDptiKn7Htb+nArr8nlwrFsXlVJzv
+ eeMtahn7AQ1s0lPk1OPD5qBQqX3Lu7xsl7Zh5cwO5pY5WTO4tT9pFS75tWx8jF2ktdXd
+ LlaLztHREY6BUioM801cpI78trMDV85elIng0OkAlCl46mGHX90z2mVJfF3xdgsUxrdb
+ 7oIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=nwro02bIn0SUXTmcmMiR7X5A1AHyjOlaOi2qufzf65A=;
- b=anB0sT6jdeUSfC2Bt+AJ4AwpYvZVuWi62qusDRXtulDMoUqQo2qk8kadOiOkbS3oXi
- XKooQcwih2jgcrDLSopF3dML01NphD4PoMQbgV51Oo4f1Fa13Fe3N5i/6xOpg+pqbp7J
- WU0aE7FIVnzfuKvJuIKmOULQKFcG/W3YHUE7SI1O0wgp31FjrNHTS5VeY0cc+vGPJZiv
- L8ii37qK21EBiPMGT4Ayf0Fpz7QAu4wQ9EO7dkrYzXo81jh+daN8FiY0pYwKW3OhaFY+
- n6r81jeED/xH3re0EBfgHWqrQIqne18ysxaQF0Db9sEObQxGNhn5w3eSu3+KJlG6Erg/
- 33lg==
-X-Gm-Message-State: AOAM530kEUXCGrhKDxuRhT0aiyVS3+gbDBSzZVdYcZxZOj/T/iIZfwvX
- K/JORMZComOURMxl62xuAKI8wQ==
-X-Received: by 2002:a05:6a00:1c4b:: with SMTP id
- s11mr19266947pfw.51.1643611965204; 
- Sun, 30 Jan 2022 22:52:45 -0800 (PST)
+ bh=EGLBiewxA4ODMDJfHjfpEX1VUMbqdhTUkvXm9+aeWf8=;
+ b=nKnfSn2yvE5kgF3ckPltcNRZEpoGKO8M2NUbSWSSNRpLE7BCVX29VA+U3RcIuUWvKO
+ kthyk5mtd2a7SQl22nQAO4jNqVNxORIaIiU5QNjutM1rRWGegJslVgL58ynYkVgHlnfz
+ 6mLADSg/NNfyCVgXVSOLeinkZJ1COiOTWnWALkj8Qt452orVjxp+pi7Voit8bfIF1NSH
+ QJMHWcMaoL0iSLKjBHNtdUFNI+S+WPelyVm3wAq5yZeiWamQSb9tF2pzCar5XSh4uNvE
+ 6oEZOuD1L/aB7mRmlIrInEVhRexec04bphKP61gL1tLtAHWLWNl6H+zZ8XPqSEmlQq0W
+ sX9w==
+X-Gm-Message-State: AOAM533uGXkOrYcwITtbz7gPaQ7cijZCrFJyTiFIS4vPvcmd44/AqBwO
+ oRW/BosP5/NZwtDGNUCHE8cCOw==
+X-Received: by 2002:a62:8fcb:: with SMTP id n194mr18934256pfd.29.1643612143612; 
+ Sun, 30 Jan 2022 22:55:43 -0800 (PST)
 Received: from [192.168.15.130] ([60.231.85.5])
- by smtp.gmail.com with ESMTPSA id e15sm9707309pjd.52.2022.01.30.22.52.38
+ by smtp.gmail.com with ESMTPSA id mv10sm9703027pjb.45.2022.01.30.22.55.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 30 Jan 2022 22:52:44 -0800 (PST)
-Message-ID: <b5b2e7b9-cf3f-25f8-885e-23c44fe4dc65@linaro.org>
-Date: Mon, 31 Jan 2022 17:52:35 +1100
+ Sun, 30 Jan 2022 22:55:43 -0800 (PST)
+Message-ID: <37d67db4-9617-8fb5-b80f-eaef9d63e24d@linaro.org>
+Date: Mon, 31 Jan 2022 17:55:33 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH 08/16] hw/arm/virt: Let boot.c handle PSCI enablement
+Subject: Re: [PATCH 09/16] hw/arm: highbank: For EL3 guests, don't enable
+ PSCI, start all cores
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20220127154639.2090164-1-peter.maydell@linaro.org>
- <20220127154639.2090164-9-peter.maydell@linaro.org>
+ <20220127154639.2090164-10-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220127154639.2090164-9-peter.maydell@linaro.org>
+In-Reply-To: <20220127154639.2090164-10-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::52d
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::42d
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -141,23 +141,35 @@ Cc: Eduardo Habkost <eduardo@habkost.net>, Rob Herring <robh@kernel.org>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xZvxOgUSkLGV
+X-TUID: SXrWLoYLMFzz
 
 On 1/28/22 02:46, Peter Maydell wrote:
-> Instead of setting the CPU psci-conduit and start-powered-off
-> properties in the virt board code, set the arm_boot_info psci_conduit
-> field so that the boot.c code can do it.
+> Change the highbank/midway boards to use the new boot.c functionality
+> to allow us to enable psci-conduit only if the guest is being booted
+> in EL1 or EL2, so that if the user runs guest EL3 firmware code our
+> PSCI emulation doesn't get in its way.
 > 
-> This will fix a corner case where we were incorrectly enabling PSCI
-> emulation when booting guest code into EL3 because it was an ELF file
-> passed to -kernel or to the generic loader.  (EL3 guest code started
-> via -bios or -pflash was already being run with PSCI emulation
-> disabled.)
+> To do this we stop setting the psci-conduit and start-powered-off
+> properties on the CPU objects in the board code, and instead set the
+> psci_conduit field in the arm_boot_info struct to tell the common
+> boot loader code that we'd like PSCI if the guest is starting at an
+> EL that it makes sense with (in which case it will set these
+> properties).
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> This means that when running guest code at EL3, all the cores
+> will start execution at once on poweron. This matches the
+> real hardware behaviour. (A brief description of the hardware
+> boot process is in the u-boot documentation for these boards:
+> https://u-boot.readthedocs.io/en/latest/board/highbank/highbank.html#boot-process
+>   -- in theory one might run the 'a9boot'/'a15boot' secure monitor
+> code in QEMU, though we probably don't emulate enough for that.)
+> 
+> This affects the highbank and midway boards.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   hw/arm/virt.c | 12 +-----------
->   1 file changed, 1 insertion(+), 11 deletions(-)
+>   hw/arm/highbank.c | 7 +------
+>   1 file changed, 1 insertion(+), 6 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

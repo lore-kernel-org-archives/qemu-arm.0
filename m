@@ -1,124 +1,115 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2351949lfk;
-        Mon, 31 Jan 2022 08:18:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx5hMcwuEMgktKlYgZ+Bomxa3z3RzMDyKEgwgcwBQ1NASrpgoXdQgMS9fbJM/mPK+ZUIE8M
-X-Received: by 2002:a5d:89c9:: with SMTP id a9mr11757081iot.124.1643645917836;
-        Mon, 31 Jan 2022 08:18:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643645917; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2266042lfk;
+        Mon, 31 Jan 2022 06:09:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxYYfF2PCczErh0Ph32fKkCazDg29poVbVtWIpig664osoLHj8DIvd5R0dCxscoYlU0ssuI
+X-Received: by 2002:a05:6808:190f:: with SMTP id bf15mr18135590oib.40.1643638175505;
+        Mon, 31 Jan 2022 06:09:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643638175; cv=none;
         d=google.com; s=arc-20160816;
-        b=c12PB75I/3Z51sAP34cENRKkfAZBvTPWRD0rgRtNI6s1DMvkwVdDb515DMkTp8TLPn
-         7bO2ngxPlEmriKId0Yi1kroPFalLImlQ8aNdlCNYrSsK4uQccOiAMzvSlw4D14cZFagv
-         5hWzSWnZWXgnvJ45L51wwiCyyRVv2VfvS8EHO+qwiKDtl/ay9q6PnVfulnbRvrtCW45u
-         t4TDgC+9o7siVFRwjkR2kARHDUcN6kHgSkWhBez7y5EWCP8TJBeihlWyGdhqzHUDXYya
-         7uU7GoTSbo16T8Nd2M++AlyxnoiLfaO1TeLxwqPr/yMiNcKLCtfEY7WWe7xqbLGjKAmA
-         lSvw==
+        b=lQ+ZwL6X195uIWEVZ2XH/Ygtx+gEbCy96Rb+VFH2j8FPxfcH9eX72NjQQjY+867/z2
+         voL5YQm6NU2SCa9IlrN2x2li5F+sAK68kjUqkGe+eElDopcvxYwXURKxl7wetqEIqjT2
+         NMrHguUoy1zrVFIfFUdXz9h2GqKBRvtoHadlKdsPAOO63YJwHhK8zq+ZcbXv/1FjBAA0
+         cmfFiRKqcqqRLqQYmS/1vnQvmTS2r+OBP2J8ahDztDzr8SPrPYLATAimClA6ectOigqQ
+         dT5DVFuEt55NSvHdDMO56i1tA01IPpzN2eCZ4BOU2v4f60zY5QuUL39BrvJScb36Uobg
+         RU9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=sYAAG9sJWNXlGL03Gi0NkUm02lL4CA3To8NqIppTjPQ=;
-        b=WnLRlnlUA6YdWCNH7sbWvnZwQkW/UrQV7dzn/ahFDbjuH2dpSXU4z7O+RRN4hq6ERC
-         aeC1k9fboMTY4DKI26+ipYBpxtCxbeqokikSbudPVgt5hS8LxOSEMRdQZo91lVCVkKxD
-         GHAZw6bduHd0CX/ywUI7XLXkFM8R2n4rerlX9oGV8dm2N/VTJxQF38zHWSgibR17hVMS
-         v7a4kPUUEtmF/ay3EHbljF2CUOn2hQoiGZmbx1DM9Gu6B+PadxaYWkL/cJ6Ae0ArCZWJ
-         G11UvXduIsHSICS3rKQSdCp8wotgAVbtcUW4ow8vUaNahidddd2QRRnUx9XAu1exN6tn
-         U7dQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=fx23SND8V1sz634UVepTS3wV09PRCsMKeba8kwWDipw=;
+        b=eT7ezX139obhs6s7jPhCIYr6fL1m76BF7pbMI1VD5Jo+MmQGoBv2pX4uuq7enJmASe
+         Yw1HniC6XVtDUqc29dqSoYmh9HKQnQXZcuIGb28hAzRtwlcSyPoeYza1XVf841N8e96+
+         43cpzOJD9soGtvNY10U/xJ3LuE2EvZ9H8D7w/oT8uH490t1iN4wYBU/YRMCsLMsZ8XQa
+         IfuCmhRY9N1e3eUGdx/NUCefSWnpKA3wBq+mhGMVhkTCIaY4XP+f3lKHCNf613H7sP/B
+         1vUAiE8Zi/RZP6dslzRvqe/Brmw6eOcv6bDmRtYOo5EnTQC8ZDQLUoBhGguLr/Z1LTTX
+         Q19A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WL3+UMkD;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Z4mb+qVP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s8si6739644ild.147.2022.01.31.08.18.37
+        by mx.google.com with ESMTPS id l12si10816682otu.269.2022.01.31.06.09.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jan 2022 08:18:37 -0800 (PST)
+        Mon, 31 Jan 2022 06:09:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WL3+UMkD;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Z4mb+qVP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46472 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:33562 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEZO1-00027q-5h
-	for alex.bennee@linaro.org; Mon, 31 Jan 2022 11:18:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57784)
+	id 1nEXN7-0005uG-EF
+	for alex.bennee@linaro.org; Mon, 31 Jan 2022 09:09:33 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48730)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1nEZ5p-0004kV-7b
- for qemu-devel@nongnu.org; Mon, 31 Jan 2022 10:59:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:29260)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1nEZ5k-0004Cz-RS
- for qemu-devel@nongnu.org; Mon, 31 Jan 2022 10:59:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643644783;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=sYAAG9sJWNXlGL03Gi0NkUm02lL4CA3To8NqIppTjPQ=;
- b=WL3+UMkDVy2UjM5uLdUAZpt7Bqt9M2txdMGzGlD8URQpaZ3YLtl6vKE/qJWBmfUkxCLdD4
- nDObf6TeJ95ShG06aTsiZX3fiTAAa3r+FOrQin1siZfJCgv9pcrlqJ1J6VAR6nXngDsTJO
- r0B6kbsbnl+Y06wRZHq/2BXFC6SFWOA=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-412-NaeZ3tiKOJeeegIbk2n4-A-1; Mon, 31 Jan 2022 10:59:40 -0500
-X-MC-Unique: NaeZ3tiKOJeeegIbk2n4-A-1
-Received: by mail-ed1-f71.google.com with SMTP id
- o5-20020a50c905000000b00403bbdcef64so6703631edh.14
- for <qemu-devel@nongnu.org>; Mon, 31 Jan 2022 07:59:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1nEVcd-0003og-0k; Mon, 31 Jan 2022 07:17:31 -0500
+Received: from [2a00:1450:4864:20::233] (port=38747
+ helo=mail-lj1-x233.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1nEVcb-0007r4-FN; Mon, 31 Jan 2022 07:17:26 -0500
+Received: by mail-lj1-x233.google.com with SMTP id e17so19153146ljk.5;
+ Mon, 31 Jan 2022 04:17:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=fx23SND8V1sz634UVepTS3wV09PRCsMKeba8kwWDipw=;
+ b=Z4mb+qVPH4E1bBUQoWaff1w7UOjslrxZIjDiX/QydsRgyZr/hiFaMZlcdN9AqTpkV8
+ 8W5vD5gJcKnQ2xZPpUzF2aYYkTPb6Z9Zv9YADb9HUdiIxBTj2n5uhqu1obQjCVQi5zo6
+ ncFc8N2a7xXuZvLrC0Oxfb/WiW2SQ0brneshbXAHXA6naNzy5oFhCuHexL70yteu3yJR
+ 8mifIskWoeYKcIMfBa3RhCxvxHsCynWpPYnwzTpMB1ZNeYyGS2CH/fBZQriYSijd0C6T
+ oIM0FPDL9ULwHbVM0U1cHYJM9RtzfZEzIvfEl8PX5AYNzCd8bTvzDg1VAHBoM/zIuByH
+ a9tA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=sYAAG9sJWNXlGL03Gi0NkUm02lL4CA3To8NqIppTjPQ=;
- b=TRwmbXpLIoFhb0Ra1x/5QV9hw14wiQH1sr8DWrNcT7pzg0OnmrZU5OmoKf3oPSE8wp
- rcUsUMfWgiJJsA/pX3mYEigQHHsAyFwHnYVlmF7wXNNFfmU0KIObspuhcpGnbjhiIQkl
- /eyQxWaySi/rOEFnLjB0UzbuD1GwDwGb+dI+oN4icCmexLKWdWSiHkpeouR6rp4WKlGZ
- 1/S6rZsr2r7BE3yMKfj3V377DdJTjSc5xc1XX+YepJCHf2olgR30C1aIhJoxadCG51GM
- ZL5sJMHB9F0N4nRSONksm9S2OruXf4OpuFkJBtMlGnhVk2nkh8ClDkYO0KFE43/gk2IW
- a1Jg==
-X-Gm-Message-State: AOAM530F5TIEgr2fozirUc0Cv4SemyaRzIDs/YAo9h7L8E6zBwLS5FYb
- LKk9YbgguzVSN1VEPEdw3VuXq/r3xZo7FLt8FWQMGVknbuwFSbGJlb/9MOuSJx0nOD8Vm7jQH89
- b6RdE0ygq3C+lxdY=
-X-Received: by 2002:a17:907:1690:: with SMTP id
- hc16mr18471033ejc.333.1643644779404; 
- Mon, 31 Jan 2022 07:59:39 -0800 (PST)
-X-Received: by 2002:a17:907:1690:: with SMTP id
- hc16mr18471006ejc.333.1643644779110; 
- Mon, 31 Jan 2022 07:59:39 -0800 (PST)
-Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
- by smtp.gmail.com with ESMTPSA id gg14sm13585780ejb.63.2022.01.31.07.59.38
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=fx23SND8V1sz634UVepTS3wV09PRCsMKeba8kwWDipw=;
+ b=BdRewiM9MW5t1gmD0JEVG//3Kj3dzLM30bpprNii3UmYQnKKDTwoSWJ5s6/366U1Uu
+ 5knngt9zlnMUYjQ6+6azqi1UBtSc0YujAWAAgpcJ7M70S/skI8Ms+XKZq8FE235fe0fx
+ naq6Qe+NMsqM9+Uq0D7cvZ0oE5ftOcblurrvWgAlr5uw/N+mELZZwlr2s+5NSBXWNQ7K
+ erN9MELBn/IilTs2F4+aA84litPWpvqrxQJvpsVO3eWJkeY6MwmMYRzjdzFNJi6y3/TB
+ cGlR+zuMgLLchCEaKbrY4g8uTb1qJFi9pO/c5jMzSyDWdyIkFtWbFtVAlUCyA5SQAAbI
+ CCCA==
+X-Gm-Message-State: AOAM530M68peY6rhGosK2CVeB6T7cxYDHTlNZE4q023a4rNDbkAZjHed
+ CfEcL+hIy3xOgu1Zu11+Ibg=
+X-Received: by 2002:a2e:8053:: with SMTP id p19mr12870082ljg.95.1643631441809; 
+ Mon, 31 Jan 2022 04:17:21 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id j2sm16165lfc.174.2022.01.31.04.17.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 Jan 2022 07:59:38 -0800 (PST)
-Date: Mon, 31 Jan 2022 16:59:36 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH 2/2] tests/qtest: Special case sbsa-ref and
- xlnx-versal-virt if !CONFIG_ARM_GIC_TCG
-Message-ID: <20220131155936.lm7jn32ihb2ndsf7@gator>
-References: <20220131154531.429533-1-eric.auger@redhat.com>
- <20220131154531.429533-3-eric.auger@redhat.com>
+ Mon, 31 Jan 2022 04:17:21 -0800 (PST)
+Date: Mon, 31 Jan 2022 13:17:20 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v1 5/6] hw/misc: Add a model of the Xilinx ZynqMP APU
+ Control
+Message-ID: <20220131121720.GS3586016@toto>
+References: <20220130231206.34035-1-edgar.iglesias@gmail.com>
+ <20220130231206.34035-6-edgar.iglesias@gmail.com>
+ <24f93c21-33a6-091f-206f-b80f505b6ddb@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20220131154531.429533-3-eric.auger@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <24f93c21-33a6-091f-206f-b80f505b6ddb@amsat.org>
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::233
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::233;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x233.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,76 +122,71 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: lvivier@redhat.com, peter.maydell@linaro.org, thuth@redhat.com,
- f4bug@amsat.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- pbonzini@redhat.com, eric.auger.pro@gmail.com
+Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
+ sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
+ qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r165ONMkbM9o
+X-TUID: kbDJ/CwxEc9J
 
-On Mon, Jan 31, 2022 at 04:45:31PM +0100, Eric Auger wrote:
-> qom-test and test-hmp shall not run tests on sbsa-ref and
-> xlnx-versal-virt if CONFIG_ARM_GIC_TCG is unset as those machines
-> always instantiate GICv3.
+On Mon, Jan 31, 2022 at 12:35:54AM +0100, Philippe Mathieu-Daudé wrote:
+> On 31/1/22 00:12, Edgar E. Iglesias wrote:
+> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+> > 
+> > Add a model of the Xilinx ZynqMP APU Control.
+> > 
+> > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> > ---
+> >   include/hw/misc/xlnx-zynqmp-apu-ctrl.h |  91 +++++++++
+> >   hw/misc/xlnx-zynqmp-apu-ctrl.c         | 257 +++++++++++++++++++++++++
+> >   hw/misc/meson.build                    |   1 +
+> >   3 files changed, 349 insertions(+)
+> >   create mode 100644 include/hw/misc/xlnx-zynqmp-apu-ctrl.h
+> >   create mode 100644 hw/misc/xlnx-zynqmp-apu-ctrl.c
+> > 
+> > diff --git a/include/hw/misc/xlnx-zynqmp-apu-ctrl.h b/include/hw/misc/xlnx-zynqmp-apu-ctrl.h
+> > new file mode 100644
+> > index 0000000000..44bf264cef
+> > --- /dev/null
+> > +++ b/include/hw/misc/xlnx-zynqmp-apu-ctrl.h
+> > @@ -0,0 +1,91 @@
+> > +/*
+> > + * QEMU model of ZynqMP APU Control.
+> > + *
+> > + * Copyright (c) 2013-2022 Xilinx Inc
+> > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > + *
+> > + * Written by Peter Crosthwaite <peter.crosthwaite@xilinx.com> and
+> > + * Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> > + *
+> > + */
+> > +
+> > +#include "hw/sysbus.h"
+> > +#include "hw/register.h"
+> > +#include "target/arm/cpu.h"
+> > +
+> > +#define TYPE_XLNX_ZYNQMP_APU_CTRL "xlnx.apu-ctrl"
+> > +
+> > +#define XLNX_ZYNQMP_APU(obj) \
+> > +     OBJECT_CHECK(XlnxZynqMPAPUCtrl, (obj), TYPE_XLNX_ZYNQMP_APU_CTRL)
+> ...
 > 
-> Otherwise the tests fail with
-> ERROR:../qom/object.c:715:object_new_with_type: assertion failed: (type != NULL)
+> > +#define APU_R_MAX ((R_PWRSTAT) + 1)
+> > +
+> > +#define NUM_CPUS 4
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Fixes: a8a5546798c3 ("hw/intc/arm_gicv3: Introduce CONFIG_ARM_GIC_TCG Kconfig selector")
-> ---
->  tests/qtest/libqtest.c | 6 ++++++
->  1 file changed, 6 insertions(+)
+> Hmm isn't it APU_MAX_CPU?
 > 
-> diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-> index 41f4da4e54..f53983a28e 100644
-> --- a/tests/qtest/libqtest.c
-> +++ b/tests/qtest/libqtest.c
-> @@ -1394,6 +1394,12 @@ void qtest_cb_for_every_machine(void (*cb)(const char *machine),
->              g_str_equal("xenpv", machines[i].name)) {
->              continue;
->          }
-> +#ifndef CONFIG_ARM_GIC_TCG
-> +        if (!strncmp("sbsa-ref", machines[i].name, 8) ||
-> +            !strncmp("xlnx-versal-virt", machines[i].name, 16)) {
-> +            continue;
-> +        }
-> +#endif
 
-Hmm, if these machine types completely depend on userspace gicv3
-emulation, i.e. no way to use in-kernel gic or another tcg gic
-model, then I guess they shouldn't be built at all when ARM_GIC_TCG
-isn't configured. I.e.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 2e0049196d6c..d7cc028b049d 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -209,6 +209,7 @@ config REALVIEW
- 
- config SBSA_REF
-     bool
-+    depends on ARM_GIC_TCG
-     imply PCI_DEVICES
-     select AHCI
-     select ARM_SMMUV3
-@@ -378,6 +379,7 @@ config XLNX_ZYNQMP_ARM
- 
- config XLNX_VERSAL
-     bool
-+    depends on ARM_GIC_TCG
-     select ARM_GIC
-     select PL011
-     select CADENCE
+Thanks Philippe. Yes, this was a little confusing. The values happen to be the
+same but they belong to different models. For example, the apu-ctrl model will be
+reused in Versal.
 
+Anyways, for v2 I've renamed the macros to CRF_MAX_CPU and APU_MAX_CPU respectevly.
+I hope that makes things clearer.
 
 Thanks,
-drew
-
->          if (!skip_old_versioned ||
->              !qtest_is_old_versioned_machine(machines[i].name)) {
->              cb(machines[i].name);
-> -- 
-> 2.26.3
-> 
-
+Edgar

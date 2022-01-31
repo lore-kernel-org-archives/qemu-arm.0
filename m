@@ -1,121 +1,107 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2040237lfk;
-        Sun, 30 Jan 2022 22:49:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxsruB0xEVzpLvD65NlmQYVes2BaxtFVB3inqCt483McqeOoYHOZ4YbyMoalNdpJT2f0wyh
-X-Received: by 2002:a25:2ac3:: with SMTP id q186mr28173644ybq.272.1643611774236;
-        Sun, 30 Jan 2022 22:49:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643611774; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2335767lfk;
+        Mon, 31 Jan 2022 07:55:21 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw6eonDy2DSdMC1w0QrEFSxR0dB3p/o8UYDqov8kN+eGi95TTx0GAEGuz+yX/rv15iiHhDa
+X-Received: by 2002:a05:6638:358b:: with SMTP id v11mr8232327jal.224.1643644520878;
+        Mon, 31 Jan 2022 07:55:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643644520; cv=none;
         d=google.com; s=arc-20160816;
-        b=VSnO6wT9LIRJaeBuPRPo4CWl7MUDTaqnmRv0hx7zlztsBZgR+VYFO9LE/woSY0Lgk1
-         Wb9hUsLtv8MIPAcrdTHt76nEvnoL47CertuZzy+yf9XM6XrPnTWV7R406XXa26XOvvMC
-         eZ7Nj9+l8saeqq+2L88AMUXOJTCg+pDFbVeRUhETZM5WGdS0k9i9+Llbr3fxuOVrxmEO
-         Nlhs6JgMrP98eyGa/YS6uhyQ//97PVkpSkJNwjFcPJdTE/EALee5ywHkO1RCJ6GZMYkj
-         LswpV0geEfjqtu1Q4FM9Q6cCS54tuTTrVDTQIGyVtDxu9/NTnmSf2bpyuJ44ZO6Ho4BY
-         RA0Q==
+        b=wOCeqTUHhAsnZRV+h+soYDnzJcuYhYmRD8qdIHwtXNPTEBV4uMx9Lo6m7M6IQByWMw
+         RZgt2vNNCb7CiKBUcd21MiOD5T74bia7DEYQSXSlik5RIJSAAhq1b+DydR813gFTGawf
+         dBFzjxtAnSTO2l1TpdZyfe9hCi8IiSzTu1BNoYbJJjKd9l8DlQNbXrm4zyzUprBXc691
+         LmJmWERNlWeSnJIYmWr+HEiWrKDkQKichbAF/NmzyXNmt9+PEKmbC+WGpenoa39oef2r
+         JkpgnTK3z12WglxutOzv/d7elO6FPG8DTnbEAcYIN8MmejDYOb39w/GR+P5+FKcEtUib
+         nYPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=O3KWhBCDPYFSkCGhIBtPmmlCDjr3D1zTasIv/6/wYd8=;
-        b=REhE8yMIAD0H11uW0HXWLsnLJnrond2YjgVLTkku+iENhdi1P8ThYCmBoVuWyjTWaa
-         NH+tc+BPus8zuMt2c2IGmDLIiY6A1bGahy8vl/XsTiW6kg24zsMD7WE6ssz3Vo0+kEQe
-         mnpWKoCWudgqrWm9pAGEQpLFofUqmeC9vBkXpW7xvhwX6Y33yoLmfiojV5kxFok+7BCV
-         kEt1Xv1GAZfGNnRmKExZuD65cg8SU5SpLgR5oEmWygVNFUL0yIBdEIi7g4zeOCpZE2hK
-         1vSNKglsZivkDl3js0R9ejQ8Qx5mGE3vk37ltP6Y+6HAHB01UChUU772do5N+YKfwbMc
-         LGDw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=bUNLEpFN+Ec9RUm+VjP9HI2fYZlpa9GA9vJvyz9yYmU=;
+        b=XgyRkPMyMbwKVR/5+W1TgjWXAF5/mENJhejiOBVd9ZhB9xK8lyuZRjTD+hmuzG119H
+         6mpboJWJLGCGxUv/fFQ0Xm32wiYlA16Rcpj+Jq82M5m4360BwqHZja+/SKcfT0QdDV64
+         RsBmrziII56sOCorfx+w6csCvWBKRibdAWxvsM/4gpNIe2t5LnRuhxO2RcyfFH2wjN3J
+         LXyRCbNOUN6SpLMyoDLm5BYIi1MeHyBh1hlWwnc1GNmSyAkIb3Rcvt1J7VxhrKisUueE
+         YEFFBX7kU15ymF0Qa1TrpgTiXKBFsQ40oWpi/60TruMrOxWxJHWpxRSMgOhtmETtIbV0
+         rnzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NJYIwiqk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bgr9KBsL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c8si32279368ybf.208.2022.01.30.22.49.34
+        by mx.google.com with ESMTPS id c7si8319593ile.23.2022.01.31.07.55.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Jan 2022 22:49:34 -0800 (PST)
+        Mon, 31 Jan 2022 07:55:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NJYIwiqk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bgr9KBsL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42916 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48404 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEQVI-0006kZ-Tf
-	for alex.bennee@linaro.org; Mon, 31 Jan 2022 01:49:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37118)
+	id 1nEZ1U-0000bw-7l
+	for alex.bennee@linaro.org; Mon, 31 Jan 2022 10:55:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53664)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nEQPe-0006ia-7N
- for qemu-arm@nongnu.org; Mon, 31 Jan 2022 01:43:45 -0500
-Received: from [2607:f8b0:4864:20::102e] (port=44692
- helo=mail-pj1-x102e.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nEQPZ-00010m-J5
- for qemu-arm@nongnu.org; Mon, 31 Jan 2022 01:43:39 -0500
-Received: by mail-pj1-x102e.google.com with SMTP id
- nn16-20020a17090b38d000b001b56b2bce31so12783427pjb.3
- for <qemu-arm@nongnu.org>; Sun, 30 Jan 2022 22:43:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=O3KWhBCDPYFSkCGhIBtPmmlCDjr3D1zTasIv/6/wYd8=;
- b=NJYIwiqkmUf43a8dAf7ML/19uujVldprdmhE8QVjci3qb9s6Y5cQKeBkkWab0bIZtx
- EKRI8degL981YBudPltTuYSVlR2foBUDlEdWDzVLqwbqmZ4w1VJoo01tw0pzPosFXmnM
- 0SO1TDQ9dGkp9hqPKK1LpQ3GM+6cOTh9PVll5oFS5Uf6+HMJn+70QBcuJdwXMEekod9A
- 3fGLjUHHX0yNY7EV5zrPelYRxUkoAQwiAaDep9C2bp+rUADTG/sJTd4SnGJXnSCW+vtb
- 1Wzn9NH59QQVFCy5gqM/rKIM2LCB0j1Pe1KKBsw4vQ8779GApNO20QKKYef8w188VeUy
- 3QpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=O3KWhBCDPYFSkCGhIBtPmmlCDjr3D1zTasIv/6/wYd8=;
- b=Mb8F41+EOrK7SkCmtS5UgKYUfpkmtmwS3dCEpEBGrdEBvFB3F4jQw7J59oDulSR6eN
- yZy7jTmcqKDlaDaw7rgQw0pxpWdJRDehsLWlEJ3AbngRoN6Bd4NfFf5Mo5ksndlQzCpb
- 2ymcRKdygz5r3lP3MvDcZnytCkIPCXS6+OJZaYh8GJfshzu8ALS1H3MbCF+PJrCJzehb
- evKPjiwXoeaQK0TjeWlZHklm3Gcf7GBrdvT/6Gzv1e4yzaFZOdXbBT+4Itk+cqpipPGB
- m6avbmOLR8RoySmqkzXDlfcerZItj4wsKs8Yh0BI6JBDS0AFlOez2nRemwKoIjZAUJJe
- DhwQ==
-X-Gm-Message-State: AOAM530bd9KHAb8F6dCj6KroCZkDbrm66xRrt3fcN+cIgc1K5ohY4KFC
- VfsBkHHKxO67vrXFiyIhUwH0yQ==
-X-Received: by 2002:a17:90a:8c8b:: with SMTP id
- b11mr434051pjo.197.1643611415092; 
- Sun, 30 Jan 2022 22:43:35 -0800 (PST)
-Received: from [192.168.15.130] ([60.231.85.5])
- by smtp.gmail.com with ESMTPSA id h17sm11695068pfv.198.2022.01.30.22.43.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 30 Jan 2022 22:43:34 -0800 (PST)
-Message-ID: <63a2ba3b-18fd-5a55-34f2-f9aa20466edf@linaro.org>
-Date: Mon, 31 Jan 2022 17:43:23 +1100
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1nEYsC-0000ll-8F
+ for qemu-arm@nongnu.org; Mon, 31 Jan 2022 10:45:48 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:57038)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1nEYsA-00021k-Hw
+ for qemu-arm@nongnu.org; Mon, 31 Jan 2022 10:45:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1643643941;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=bUNLEpFN+Ec9RUm+VjP9HI2fYZlpa9GA9vJvyz9yYmU=;
+ b=bgr9KBsLw8HPSM/7Vr3K20lc2BojjKaIiFcHKUW7GNs+wM3mc25PE6DlO0wayp13rExuLB
+ Ck8NQcCNDcnrK2Mob3IG7HEtajhxpiImTxK0YQKz9X9KkoY7kBjRI751jgcSt652cgvx4J
+ V4kOSUEJD8OzggRdusZQaifTjoTFFtg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-250-1ImHaqE1MAaOH6j2sKsLhg-1; Mon, 31 Jan 2022 10:45:36 -0500
+X-MC-Unique: 1ImHaqE1MAaOH6j2sKsLhg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3DF381083F60;
+ Mon, 31 Jan 2022 15:45:35 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.192.53])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BD2F67B9D1;
+ Mon, 31 Jan 2022 15:45:32 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, thuth@redhat.com,
+ lvivier@redhat.com, peter.maydell@linaro.org, drjones@redhat.com,
+ f4bug@amsat.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ pbonzini@redhat.com
+Subject: [PATCH 0/2] hw/arm/virt,
+ qtests: Fix make check-qtest-aarch64 when CONFIG_ARM_GIC_TCG is unset
+Date: Mon, 31 Jan 2022 16:45:29 +0100
+Message-Id: <20220131154531.429533-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 04/16] hw/arm: imx: Don't enable PSCI conduit when booting
- guest in EL3
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220127154639.2090164-1-peter.maydell@linaro.org>
- <20220127154639.2090164-5-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220127154639.2090164-5-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102e
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,57 +114,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <eduardo@habkost.net>, Rob Herring <robh@kernel.org>,
- Andrew Jeffery <andrew@aj.id.au>, Andre Przywara <andre.przywara@arm.com>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Beniamino Galvani <b.galvani@gmail.com>, Tyrone Ting <kfting@nuvoton.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, Alexander Graf <agraf@csgraf.de>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- Yanan Wang <wangyanan55@huawei.com>, Andrey Smirnov <andrew.smirnov@gmail.com>,
- Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /HplCMj2gIn0
+X-TUID: dmjy+/aDX+1L
 
-On 1/28/22 02:46, Peter Maydell wrote:
-> Change the iMX-SoC based boards to use the new boot.c functionality
-> to allow us to enable psci-conduit only if the guest is being booted
-> in EL1 or EL2, so that if the user runs guest EL3 firmware code our
-> PSCI emulation doesn't get in its way.
-> 
-> To do this we stop setting the psci-conduit property on the CPU
-> objects in the SoC code, and instead set the psci_conduit field in
-> the arm_boot_info struct to tell the common boot loader code that
-> we'd like PSCI if the guest is starting at an EL that it makes
-> sense with.
-> 
-> This affects the mcimx6ul-evk and mcimx7d-sabre boards.
-> 
-> Note that for the mcimx7d board, this means that when running guest
-> code at EL3 there is currently no way to power on the secondary CPUs,
-> because we do not currently have a model of the system reset
-> controller module which should be used to do that for the imx7 SoC,
-> only for the imx6 SoC.  (Previously EL3 code which knew it was
-> running on QEMU could use a PSCI call to do this.) This doesn't
-> affect the imx6ul-evk board because it is uniprocessor.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
-> I don't have the i.mx7 manual to hand, so I'm partly making
-> assumptions based on the i.mx6 behaviour. If somebody with the
-> manual could double-check that it does indeed start up with the
-> secondary CPUs powered down via the SRC that would be great.
-> ---
->   hw/arm/fsl-imx6ul.c    | 2 --
->   hw/arm/fsl-imx7.c      | 8 ++++----
->   hw/arm/mcimx6ul-evk.c  | 1 +
->   hw/arm/mcimx7d-sabre.c | 1 +
->   4 files changed, 6 insertions(+), 6 deletions(-)
+When CONFIG_ARM_GIC_TCG is unset, qtests fail with
+ERROR:../qom/object.c:715:object_new_with_type: assertion failed: (type != NULL)
 
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+This is due to the fact a bunch of tests currently depend on GICv3
+availability. qom-test and test-hmp try to launch sbsa-ref
+and xlnx-versal-virt which only support GICv3. Also a bunch of
+tests use gic-version=max which currectly selects GICv3,
+ignoring the fact this latter has been disabled.
 
-r~
+This series proposes to ignore sbsa-ref and xlnx-versal-virt during
+qos-test and test-hmp execution if CONFIG_ARM_GIC_TCG is unset.
+Also it selects GICv2 if gic-version=max and CONFIG_ARM_GIC_TCG is
+unset, in TCG mode. With those fixes make check passes.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/config_arm_gic_tcg_v1
+
+Eric Auger (2):
+  hw/arm/virt: Fix gic-version=max when CONFIG_ARM_GIC_TCG is unset
+  tests/qtest: Special case sbsa-ref and xlnx-versal-virt if
+    !CONFIG_ARM_GIC_TCG
+
+ hw/arm/virt.c          | 4 ++++
+ tests/qtest/libqtest.c | 6 ++++++
+ 2 files changed, 10 insertions(+)
+
+-- 
+2.26.3
+

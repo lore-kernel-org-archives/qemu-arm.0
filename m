@@ -1,273 +1,183 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2339427lfk;
-        Mon, 31 Jan 2022 08:01:20 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw8O4iR8FYxHFUx82ncWEmODGd2+MRjJxrnHVLyvYTMBt6S33ydTq1rinLV6esseLBql4jG
-X-Received: by 2002:a1f:2555:: with SMTP id l82mr8604633vkl.7.1643644880739;
-        Mon, 31 Jan 2022 08:01:20 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1643644880; cv=pass;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2341156lfk;
+        Mon, 31 Jan 2022 08:03:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwiSfZ20Fbv7R49h2YzfybDUnBRwR6FyqAb5nwXDpJUgph8+geXMBYuTMCVVYI/D63dQAb8
+X-Received: by 2002:a4a:cb98:: with SMTP id y24mr10499462ooq.24.1643645013437;
+        Mon, 31 Jan 2022 08:03:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643645013; cv=none;
         d=google.com; s=arc-20160816;
-        b=YDIfC3xsSVvVYsjsjM7D7bX0I0Z9DNg/1mWE7pxOqXG2cAb+igF6WjVj08LoNeTrl3
-         tTWmZmOrsNsmDxgn7If0r1ZeTNqigHkUgGM0PBthjgQu9j5KoePK3OQm6wb4+Htd/mp9
-         NU39v8v7W+nGIJ2ysv7nHKjkwDt5kYXSP9UU7N5zXxfzN6jl5X+3eGGbif5CNLN5u8y0
-         YVR4/12s6bMyvhRdVg9N8zVmjeape6A2TYUCuMOybELykI2sg6gFV/5Q/KHnSGF4zHc+
-         XyyrReKxIgoqXgg4umHCOjaQdPRqX17eJ1gXX7iCsZQW5Ei/wp1yJEwV/Om8TZ0btHXj
-         hT8Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=R6zFQZvAdXnyzC3/9Dstlu4SLlQXToc8CrrvCYcV0HZF6/ALsHxST7RQtd3BacyAtS
+         HgDv22p5Dz5ZERI5ScOj2il41WzKJtKmDaN2RgigMN2Chh2Ln6nP/6pTHwWQvir2EZ61
+         BF/0zSzzplnIev6y+alO7cwAH/BIJXxvyp8IwbrtVa2hewD0Y4gsOhOvtUQz/jZe2tGk
+         Nu7IyPaIyIs9VehXgLCVdoMOsN7GwCUvxJrlglHmcyj5C/64MgvxJH0RpAiCCK+QVUmG
+         iVFEEvWxAM5GUZfyORe+I1Df7WGTjxkg26xqdcSYbjpJVNrttbUiMOtFYej9VnxwOmAy
+         wVmg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=Pj1x9qiaiOSgj8GsMQ1ZrDRnTNE3CJOvI8OL0shx+Q0=;
-        b=QptMgtTk3oMWUXYKweFRdMSVDs72QrCvHU6iLfI3uzqIPwLTH3fvvq2Voj5XHoO4ad
-         rEXPftkQrLMoI4O+IM1ujkmOCez7/fOcpzQDKSUcCQirnKHZ6YVaCWefDqB2I1GRSa6P
-         PUVfPROQuvPZYXCJKAVWkcmGtNa1gXLi2H7mMeBotnRtDJQNVWQx81y0SK3Hd8CDfIDH
-         lzZyaFJ3XMZAV9IsA4PhQXf14DiML1s2qK6k/wDMzvsr3BiQ6VaZ4vMmxO3fEojvInyZ
-         fl4TKjcYbrAKHLnVofnNW4OpjUGjB8swnbZw+32/+qpDM5xUGCj1g9IzMc4CkP/GRblr
-         i5Dg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=H+kTxZJm;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=NZU1iHaiSTkaMqH8QBAwfDGqj3RCD8y2Zin05CM4oys=;
+        b=S3rYi9Douf21S0jTj/chsO2IIynpQH5BoHKPw2gwLLefmzU4gbEXP9ZhFbRTy8YEDh
+         xMhLqEfQLVaUIGqrAiD4zQvFPF1Il/d4uLeOdyspLA3Dnlg07fGMxsFBLQq/M0OB6QQi
+         MS+sdZVFfZddLvSRzwHFkuvsoPPoLhgFEXf64qeveFHMM3iZkuqjOilzF8PVtEFpaDCk
+         lLLQo7gZDM7CPTH2/idzhVIirDPm8pCMCi2QVQw3hRmqiVHhd9glAN4mx9Gl7e2LKApp
+         Ep6Jf0Eu+8VTDenEmq3NUWHxNf0MzqVnyUQvAaPsQf83uqXgtbFBZ6AYtc1XCVVA3z3X
+         NtRA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AMwJLs1o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11si3718464vsf.562.2022.01.31.08.01.20
+        by mx.google.com with ESMTPS id q20si1340241vsl.219.2022.01.31.08.03.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jan 2022 08:01:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 31 Jan 2022 08:03:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=H+kTxZJm;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:54384 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AMwJLs1o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57148 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEZ7G-0004vK-RA
-	for alex.bennee@linaro.org; Mon, 31 Jan 2022 11:01:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54746)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nEZ9Q-0006yZ-Ki
+	for alex.bennee@linaro.org; Mon, 31 Jan 2022 11:03:32 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <figlesia@xilinx.com>)
- id 1nEYvP-0003lJ-Ji; Mon, 31 Jan 2022 10:49:04 -0500
-Received: from mail-mw2nam10on2067.outbound.protection.outlook.com
- ([40.107.94.67]:1441 helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1nEYzU-0006we-Ar
+ for qemu-arm@nongnu.org; Mon, 31 Jan 2022 10:53:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:28760)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <figlesia@xilinx.com>)
- id 1nEYvM-0002ZU-Rm; Mon, 31 Jan 2022 10:49:02 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Hm2rl72Wn8jQeGL5iuwxG5VD61N3EGcmYU2SD0MIJJrI68/Xynywy7BjTM47KAlITFUzE2dBY4TE7TMojvyXW7nuiDMSihghoPWnaIgDNQukl/BRuMTIf0sz/oGl11+5omct22J55s7lO52nLlV2DA05Rc745abN09JeM/c2Woo26IeTzGqcOyq21L0D0E3TWH8AQU5Z0K0tcdfprFxM3Cn/sTI4c4QC/pdV0vBkLv40Twx/nQe6fTNM1KYnU6k3jUF3DqDpyhR0AqMD4E80ZMQ6+c7JeWMXa7I51BoSq2vjDlV5rPZDnMK54QoAbSyFpSIul1jWJq0yXfOzz1YBlw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Pj1x9qiaiOSgj8GsMQ1ZrDRnTNE3CJOvI8OL0shx+Q0=;
- b=QkQvenff1OQs3cZm+dc6NIk+6h8FkjU5+sKXOh9qX+rfk8vKKgkDSKK7+ojo/Fv7QAAKhfuMql2lN2fZKYVmIRGG7JFbmLRgUnXqmQxp1QliRhIcpdwyHZQNiw/R22nuYcOQx8ipxSMc/w4BbTYYLcpLKLLehtIsjbE+R4rc2tJUF+fRXBjRwrfkljLLjQUgfgb1Qbs1opeaXtJYTsFXz3MBowbRYPQoJhKw8k9/rr+A7RJgqaMjVsMf+K/DQ+09Id/zf7a71ZZbtGYb0GZkdMhdOFduechdtR5nFi9/4x4BmTlBGz/5a6vMM8h/iehJDrP7YnbJr/YAwn304PoROA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.62.198) smtp.rcpttodomain=gmail.com smtp.mailfrom=xilinx.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Pj1x9qiaiOSgj8GsMQ1ZrDRnTNE3CJOvI8OL0shx+Q0=;
- b=H+kTxZJm6EmI4Zx6b6pP60PO30rDKLMIosSTKYiOopmiMxlTbrqE4d1Lnn2RMLB1t+2Ux3nGy+mv3oXMT62cDdozhiSKP8OEK0KlCFK+hZ6uWrQKyclxDzz4YIiB3v5cMRukVTDNI5pMLtELP+/M3/nX2JmiT/d442LQdIyquEU=
-Received: from BN9PR03CA0915.namprd03.prod.outlook.com (2603:10b6:408:107::20)
- by CH0PR02MB8133.namprd02.prod.outlook.com (2603:10b6:610:10a::23)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4909.12; Mon, 31 Jan
- 2022 15:48:56 +0000
-Received: from BN1NAM02FT058.eop-nam02.prod.protection.outlook.com
- (2603:10b6:408:107:cafe::ac) by BN9PR03CA0915.outlook.office365.com
- (2603:10b6:408:107::20) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4930.15 via Frontend
- Transport; Mon, 31 Jan 2022 15:48:56 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
- smtp.mailfrom=xilinx.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.62.198; helo=xsj-pvapexch02.xlnx.xilinx.com;
-Received: from xsj-pvapexch02.xlnx.xilinx.com (149.199.62.198) by
- BN1NAM02FT058.mail.protection.outlook.com (10.13.2.166) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.4930.15 via Frontend Transport; Mon, 31 Jan 2022 15:48:56 +0000
-Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.14; Mon, 31 Jan 2022 07:48:53 -0800
-Received: from smtp.xilinx.com (172.19.127.95) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
- 15.1.2176.14 via Frontend Transport; Mon, 31 Jan 2022 07:48:53 -0800
-Received: from [10.23.120.116] (port=56721 helo=debian)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <francisco.iglesias@xilinx.com>)
- id 1nEYvF-000Dti-5W; Mon, 31 Jan 2022 07:48:53 -0800
-Date: Mon, 31 Jan 2022 15:48:50 +0000
-From: Francisco Iglesias <francisco.iglesias@xilinx.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v1 6/6] hw/arm/xlnx-zynqmp: Connect the ZynqMP APU Control
-Message-ID: <20220131154848.itmhkvnbfb7bxoun@debian>
-References: <20220130231206.34035-1-edgar.iglesias@gmail.com>
- <20220130231206.34035-7-edgar.iglesias@gmail.com>
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1nEYzS-0003Gx-Bg
+ for qemu-arm@nongnu.org; Mon, 31 Jan 2022 10:53:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1643644393;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=NZU1iHaiSTkaMqH8QBAwfDGqj3RCD8y2Zin05CM4oys=;
+ b=AMwJLs1o2+Dr49VSJquOnyvCzHdWZgbrYsPwTIsYvJyIn98tRJzlGCkEzvHunhczJzw3vT
+ XRioIHV8CA5X8K0lt+gvuA4mFa1CEZqzx1culoN3aFaZ5/NyO/LuVKuPa7S71rCNQBTZAZ
+ l4V1pVzd7JMKx3Etk3PZ7UXULjhB7C0=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-221-6G0h9B6CPx2C_qfv6j39tQ-1; Mon, 31 Jan 2022 10:53:06 -0500
+X-MC-Unique: 6G0h9B6CPx2C_qfv6j39tQ-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ l16-20020aa7c3d0000000b004070ea10e7fso7120178edr.3
+ for <qemu-arm@nongnu.org>; Mon, 31 Jan 2022 07:53:06 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=NZU1iHaiSTkaMqH8QBAwfDGqj3RCD8y2Zin05CM4oys=;
+ b=nakCVDMqW+rTc4cQFtrQ5dEAWdxatLuJYyg878ac5O9y6+x/80gNOal52oqOLMtEyC
+ sSPYYWiZCfe5GSW6xnJCVreLKoBZ36GLFJ9GtdCX7DYt+7nS1RGv5Q8wVzvmhSS6/79+
+ 3M9B834C+TOcKNCF37BbfX7c0kh2zXSILwqGd5BlmTV9escIyQFH4MFoydaFVJygJRk3
+ ACBOch0D6fKLO6gERTXPBzyAc2/hGJ1lPb1EmVREPBfVwyfNyQMbiVAyrEGSJPO4suCX
+ x+iGZdD5thP7dBeSo45CSjTmgIES8K3MyK3sp80wKOXLwZx8Tzl6OdnVop6eAIlwtPsv
+ PuqQ==
+X-Gm-Message-State: AOAM531zqQWimtje9w8pFM4sD9Q0HKmllwBU+g39OiJ0FNnY06Gyj2Kg
+ v9YE7kEKNp6+xZyUrkNEhdRZLo4W5srzcRf5azBsJhmLeLrQxqENQaZTFeox4U2K4FdfSo5kt/x
+ uTJt2s8A9JLTy
+X-Received: by 2002:a05:6402:440c:: with SMTP id
+ y12mr21166595eda.75.1643644385211; 
+ Mon, 31 Jan 2022 07:53:05 -0800 (PST)
+X-Received: by 2002:a05:6402:440c:: with SMTP id
+ y12mr21166572eda.75.1643644385013; 
+ Mon, 31 Jan 2022 07:53:05 -0800 (PST)
+Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
+ by smtp.gmail.com with ESMTPSA id d3sm7694772edq.13.2022.01.31.07.53.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 31 Jan 2022 07:53:04 -0800 (PST)
+Date: Mon, 31 Jan 2022 16:53:02 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH 1/2] hw/arm/virt: Fix gic-version=max when
+ CONFIG_ARM_GIC_TCG is unset
+Message-ID: <20220131155302.ud4kzxxi27zky4jn@gator>
+References: <20220131154531.429533-1-eric.auger@redhat.com>
+ <20220131154531.429533-2-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20220131154531.429533-2-eric.auger@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220130231206.34035-7-edgar.iglesias@gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: b3b33efd-7de2-4113-b3ce-08d9e4d1306f
-X-MS-TrafficTypeDiagnostic: CH0PR02MB8133:EE_
-X-Microsoft-Antispam-PRVS: <CH0PR02MB813368BFC32C017BE53CB592AD259@CH0PR02MB8133.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:83;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 68KulyGJ0bo8BeTitJti+G4/lo11daYwPs8OL9dm2QYJzOUkAb10BEmnKy4M9uSIbsFaHi+fgjhJt+Nry1pYtJC5hiVzA/KVcr348wh73xtJZJwsxm5ORjI6sOCEy5Y1BIMK2y7la8E41tZNkK6g5xGMKVTSY4kGTUmlb+VZAncD2uKcbs2wEQV7vRxfu1JcbXDi4rpZN4cMpJKqTzeKruy24IYSRvH1VikXe9sMhZPIB2R+7iJIBA0kRMHhAvzZH0xpPdpbWqd/E51RBbZrHcaVtlp/uk9XvBgNlzkfZeB1uaMstaq2g5O5hkuYigeRemL91uUPucnu5BgJ5D2rE2bjGpFYtB3xBagr4j77ooV2QcKwbaKyX7uHvtUxLUvbP77iz6FRUKqO28IU7C789meydAhHYJb3d/pBMxNIXubVGMiuKIzvdGqMHR355Thsj0gCgnQQ655xevcyBMK1V8kC0Jn4onybBrMujTZ14RQEcqyA5oawDBkbXIeTq8bOF8UVDLvlF4wu+JLkLDcORnF9NxE3/wrwSegQvDx/KzW/aIYHrpRhRdLf1wsc2lRoNotXWcbyue6gxUjpootrExA2lV6sJ3d5y7erjdRL7gI+AJkjCh0LnSe5N4h1xgpQX+1uOACcFWe9MkGRA7F1mLyA/Ge7LkOG4/E8nmxqZxJQ4XFidChNXhnvXkb50H3vK4yq+LQAsUH/Qjd4DVZBfg==
-X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapexch02.xlnx.xilinx.com;
- PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(4636009)(46966006)(36840700001)(7636003)(70206006)(1076003)(5660300002)(44832011)(107886003)(186003)(47076005)(9686003)(508600001)(54906003)(6916009)(426003)(2906002)(8676002)(83380400001)(36860700001)(70586007)(9576002)(8936002)(9786002)(26005)(33716001)(82310400004)(356005)(4326008)(316002)(336012);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jan 2022 15:48:56.0154 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b3b33efd-7de2-4113-b3ce-08d9e4d1306f
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
- Helo=[xsj-pvapexch02.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN1NAM02FT058.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR02MB8133
-Received-SPF: pass client-ip=40.107.94.67; envelope-from=figlesia@xilinx.com;
- helo=NAM10-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
- sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, qemu-devel@nongnu.org,
- frederic.konrad@adacore.com, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cndxjS7shQQx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: lvivier@redhat.com, peter.maydell@linaro.org, thuth@redhat.com,
+ f4bug@amsat.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 70Qy1tya+XQs
 
-On Mon, Jan 31, 2022 at 12:12:06AM +0100, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On Mon, Jan 31, 2022 at 04:45:30PM +0100, Eric Auger wrote:
+> In TCG mode, if gic-version=max we always select GICv3 even if
+> CONFIG_ARM_GIC_TCG is unset. We shall rather select GICv2.
+> This also brings the benefit of fixing qos tests errors for tests
+> using gic-version=max with CONFIG_ARM_GIC_TCG unset.
 > 
-> Connect the ZynqMP APU Control device.
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-Reviewed-by: Francisco Iglesias <francisco.iglesias@xilinx.com>
-
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Fixes: a8a5546798c3 ("hw/intc/arm_gicv3: Introduce CONFIG_ARM_GIC_TCG Kconfig selector")
 > ---
->  include/hw/arm/xlnx-zynqmp.h |  4 +++-
->  hw/arm/xlnx-zynqmp.c         | 25 +++++++++++++++++++++++--
->  2 files changed, 26 insertions(+), 3 deletions(-)
+>  hw/arm/virt.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index d5a3ad3df2..05cd2128f3 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -38,6 +38,7 @@
->  #include "hw/dma/xlnx_csu_dma.h"
->  #include "hw/nvram/xlnx-bbram.h"
->  #include "hw/nvram/xlnx-zynqmp-efuse.h"
-> +#include "hw/misc/xlnx-zynqmp-apu-ctrl.h"
->  #include "hw/misc/xlnx-zynqmp-crf.h"
->  
->  #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
-> @@ -85,7 +86,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
->  /*
->   * Unimplemented mmio regions needed to boot some images.
->   */
-> -#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 2
-> +#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 1
->  
->  struct XlnxZynqMPState {
->      /*< private >*/
-> @@ -123,6 +124,7 @@ struct XlnxZynqMPState {
->      XlnxZDMA gdma[XLNX_ZYNQMP_NUM_GDMA_CH];
->      XlnxZDMA adma[XLNX_ZYNQMP_NUM_ADMA_CH];
->      XlnxCSUDMA qspi_dma;
-> +    XlnxZynqMPAPUCtrl apu_ctrl;
->      XlnxZynqMPCRF crf;
->  
->      char *boot_cpu;
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 857d3c9636..21c411cd77 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -64,7 +64,7 @@
->  #define DPDMA_IRQ           116
->  
->  #define APU_ADDR            0xfd5c0000
-> -#define APU_SIZE            0x100
-> +#define APU_IRQ             153
->  
->  #define IPI_ADDR            0xFF300000
->  #define IPI_IRQ             64
-> @@ -282,6 +282,27 @@ static void xlnx_zynqmp_create_efuse(XlnxZynqMPState *s, qemu_irq *gic)
->      sysbus_connect_irq(sbd, 0, gic[EFUSE_IRQ]);
->  }
->  
-> +static void xlnx_zynqmp_create_apu_ctrl(XlnxZynqMPState *s, qemu_irq *gic)
-> +{
-> +    SysBusDevice *sbd;
-> +    int i;
-> +
-> +    object_initialize_child(OBJECT(s), "apu-ctrl", &s->apu_ctrl,
-> +                            TYPE_XLNX_ZYNQMP_APU_CTRL);
-> +    sbd = SYS_BUS_DEVICE(&s->apu_ctrl);
-> +
-> +    for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
-> +        g_autofree gchar *name = g_strdup_printf("cpu%d", i);
-> +
-> +        object_property_set_link(OBJECT(&s->apu_ctrl), name,
-> +                                 OBJECT(&s->apu_cpu[i]), &error_abort);
-> +    }
-> +
-> +    sysbus_realize(sbd, &error_fatal);
-> +    sysbus_mmio_map(sbd, 0, APU_ADDR);
-> +    sysbus_connect_irq(sbd, 0, gic[APU_IRQ]);
-> +}
-> +
->  static void xlnx_zynqmp_create_crf(XlnxZynqMPState *s, qemu_irq *gic)
->  {
->      SysBusDevice *sbd;
-> @@ -301,7 +322,6 @@ static void xlnx_zynqmp_create_unimp_mmio(XlnxZynqMPState *s)
->          hwaddr base;
->          hwaddr size;
->      } unimp_areas[ARRAY_SIZE(s->mr_unimp)] = {
-> -        { .name = "apu", APU_ADDR, APU_SIZE },
->          { .name = "serdes", SERDES_ADDR, SERDES_SIZE },
->      };
->      unsigned int nr;
-> @@ -697,6 +717,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->  
->      xlnx_zynqmp_create_bbram(s, gic_spi);
->      xlnx_zynqmp_create_efuse(s, gic_spi);
-> +    xlnx_zynqmp_create_apu_ctrl(s, gic_spi);
->      xlnx_zynqmp_create_crf(s, gic_spi);
->      xlnx_zynqmp_create_unimp_mmio(s);
->  
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 141350bf21..2f1d4d0230 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1852,7 +1852,11 @@ static void finalize_gic_version(VirtMachineState *vms)
+>          vms->gic_version = VIRT_GIC_VERSION_2;
+>          break;
+>      case VIRT_GIC_VERSION_MAX:
+> +#ifdef CONFIG_ARM_GIC_TCG
+>          vms->gic_version = VIRT_GIC_VERSION_3;
+> +#else
+> +        vms->gic_version = VIRT_GIC_VERSION_2;
+> +#endif
+>          break;
+>      case VIRT_GIC_VERSION_HOST:
+>          error_report("gic-version=host requires KVM");
 > -- 
-> 2.25.1
-> 
+> 2.26.3
+>
+
+Why is the config generically named "ARM_GIC_TCG" when it only controls
+Arm GICV3 TCG?
+
+Otherwise,
+
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+
+Thanks,
+drew
+

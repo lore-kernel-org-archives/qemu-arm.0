@@ -1,183 +1,165 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2341156lfk;
-        Mon, 31 Jan 2022 08:03:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwiSfZ20Fbv7R49h2YzfybDUnBRwR6FyqAb5nwXDpJUgph8+geXMBYuTMCVVYI/D63dQAb8
-X-Received: by 2002:a4a:cb98:: with SMTP id y24mr10499462ooq.24.1643645013437;
-        Mon, 31 Jan 2022 08:03:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643645013; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2357310lfk;
+        Mon, 31 Jan 2022 08:27:02 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwWTbZmRoXlvJ5vPkpfxL0QZ4Hkej84W5GUpuBW3SssA7OqTMSTkFpGUyITnv4riZJjpY7F
+X-Received: by 2002:a05:620a:1a18:: with SMTP id bk24mr13989366qkb.567.1643646422751;
+        Mon, 31 Jan 2022 08:27:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643646422; cv=none;
         d=google.com; s=arc-20160816;
-        b=R6zFQZvAdXnyzC3/9Dstlu4SLlQXToc8CrrvCYcV0HZF6/ALsHxST7RQtd3BacyAtS
-         HgDv22p5Dz5ZERI5ScOj2il41WzKJtKmDaN2RgigMN2Chh2Ln6nP/6pTHwWQvir2EZ61
-         BF/0zSzzplnIev6y+alO7cwAH/BIJXxvyp8IwbrtVa2hewD0Y4gsOhOvtUQz/jZe2tGk
-         Nu7IyPaIyIs9VehXgLCVdoMOsN7GwCUvxJrlglHmcyj5C/64MgvxJH0RpAiCCK+QVUmG
-         iVFEEvWxAM5GUZfyORe+I1Df7WGTjxkg26xqdcSYbjpJVNrttbUiMOtFYej9VnxwOmAy
-         wVmg==
+        b=wcnrm1e+32VOPqS1jG815iCO+fhtoo354IElQhFpoeszpZ4og+jGaWQtrGcGVNYqVB
+         WXNhGr0R7zyYq4yFRa+J2Rq6pvUkMCWNkGy9yKB3YdmHqNsvlfx8xeSbaA9HxmMT/J+9
+         A1ZD9CGZAznobt6JvXvLXQu+ujGJ8+eEzUhL1jzr/5z/TCgIWsGraLLFN25w+7ZAtYxG
+         rAAZ4wMlmN1VcfDdu8yss3PaAMb3RHogge/vk0AdhZuMII/5fzuJ8WfwxRmelXwZvTXw
+         PxfY0LPP/2kz63jVBor5g0JGiHHsLWr1jqgxDXr9s80U2Ik4wTXIGdCzMOTLcJhL2oN7
+         I1uw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=NZU1iHaiSTkaMqH8QBAwfDGqj3RCD8y2Zin05CM4oys=;
-        b=S3rYi9Douf21S0jTj/chsO2IIynpQH5BoHKPw2gwLLefmzU4gbEXP9ZhFbRTy8YEDh
-         xMhLqEfQLVaUIGqrAiD4zQvFPF1Il/d4uLeOdyspLA3Dnlg07fGMxsFBLQq/M0OB6QQi
-         MS+sdZVFfZddLvSRzwHFkuvsoPPoLhgFEXf64qeveFHMM3iZkuqjOilzF8PVtEFpaDCk
-         lLLQo7gZDM7CPTH2/idzhVIirDPm8pCMCi2QVQw3hRmqiVHhd9glAN4mx9Gl7e2LKApp
-         Ep6Jf0Eu+8VTDenEmq3NUWHxNf0MzqVnyUQvAaPsQf83uqXgtbFBZ6AYtc1XCVVA3z3X
-         NtRA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=vEfn2pojLozNmUMOwDvm6c+bChdP10HVlHqV/ePIIis=;
+        b=LtryOuThhWV3BIJN8I3Gwj+CVmmnpNFBo2bOYDgLJZriKCdG93/0xAM7i8R9nnasFe
+         DMkIfAl7amsp0Who3A9vUeL1Wwj2bML/LmlhpPj/nDVITblJ2cOSVuybyoBrCYIQ9PO+
+         HIxBENvjjXRedAMTiLIqZMhjUyHK45YuxbabCWg+1y842BVBGzauZjxSKCCuC8hRGqfC
+         IE+Xg9L1CBBIA0lKyLgqlR/Oz27uuflTawuT1QwFGYi2NtBs6rTYa9Vj4E729ZlqXxQT
+         2NFX9RMsuPbrqkT2lWsDWyH6kkINsGBwZf1LDMHJnnGmu6OacYxsMgxBKYzjSOtbJZ8m
+         99cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AMwJLs1o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=UIEW2nm5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q20si1340241vsl.219.2022.01.31.08.03.33
+        by mx.google.com with ESMTPS id l23si4694181qtu.171.2022.01.31.08.27.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jan 2022 08:03:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 31 Jan 2022 08:27:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AMwJLs1o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57148 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=UIEW2nm5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEZ9Q-0006yZ-Ki
-	for alex.bennee@linaro.org; Mon, 31 Jan 2022 11:03:32 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55872)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nEZWA-0003XH-2K
+	for alex.bennee@linaro.org; Mon, 31 Jan 2022 11:27:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59620)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1nEYzU-0006we-Ar
- for qemu-arm@nongnu.org; Mon, 31 Jan 2022 10:53:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:28760)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1nEYzS-0003Gx-Bg
- for qemu-arm@nongnu.org; Mon, 31 Jan 2022 10:53:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643644393;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=NZU1iHaiSTkaMqH8QBAwfDGqj3RCD8y2Zin05CM4oys=;
- b=AMwJLs1o2+Dr49VSJquOnyvCzHdWZgbrYsPwTIsYvJyIn98tRJzlGCkEzvHunhczJzw3vT
- XRioIHV8CA5X8K0lt+gvuA4mFa1CEZqzx1culoN3aFaZ5/NyO/LuVKuPa7S71rCNQBTZAZ
- l4V1pVzd7JMKx3Etk3PZ7UXULjhB7C0=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-221-6G0h9B6CPx2C_qfv6j39tQ-1; Mon, 31 Jan 2022 10:53:06 -0500
-X-MC-Unique: 6G0h9B6CPx2C_qfv6j39tQ-1
-Received: by mail-ed1-f72.google.com with SMTP id
- l16-20020aa7c3d0000000b004070ea10e7fso7120178edr.3
- for <qemu-arm@nongnu.org>; Mon, 31 Jan 2022 07:53:06 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nEZBp-0000T7-Er
+ for qemu-devel@nongnu.org; Mon, 31 Jan 2022 11:06:03 -0500
+Received: from [2a00:1450:4864:20::42b] (port=40534
+ helo=mail-wr1-x42b.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nEZBh-0005Gb-4Z
+ for qemu-devel@nongnu.org; Mon, 31 Jan 2022 11:05:59 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id s18so26337239wrv.7
+ for <qemu-devel@nongnu.org>; Mon, 31 Jan 2022 08:05:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vEfn2pojLozNmUMOwDvm6c+bChdP10HVlHqV/ePIIis=;
+ b=UIEW2nm5uDaHCbWYLNTF1bOI7+8HyoKZBqfNzjTpFnPyxbb4ivL6HLxDopwCfZvH+S
+ lab8pwBSaPGWqM5BwYn6sCjT5NUwtbtDsvjduccYojLpkbGlMwwyBgi5RSTMe303a4Q9
+ eiinGJQzQ33vwWa+2HOW3zG821V/YwyC9mXl/tljo0dvUqP4zo8ssVUNoRTaxHu3IDq8
+ wKyG6cmSVW7S5vaV8AficqPWRgzslRzQlDLfwQETpqh+HgzA22hORRUwCQhfYmW6fvBd
+ FXVN8PUbgtoyXW+Ov8eDSyEB9h9RGPYD9FFPB81tFsCrltRUwoSScBEQKEdY0BsGJP3+
+ g3LA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=NZU1iHaiSTkaMqH8QBAwfDGqj3RCD8y2Zin05CM4oys=;
- b=nakCVDMqW+rTc4cQFtrQ5dEAWdxatLuJYyg878ac5O9y6+x/80gNOal52oqOLMtEyC
- sSPYYWiZCfe5GSW6xnJCVreLKoBZ36GLFJ9GtdCX7DYt+7nS1RGv5Q8wVzvmhSS6/79+
- 3M9B834C+TOcKNCF37BbfX7c0kh2zXSILwqGd5BlmTV9escIyQFH4MFoydaFVJygJRk3
- ACBOch0D6fKLO6gERTXPBzyAc2/hGJ1lPb1EmVREPBfVwyfNyQMbiVAyrEGSJPO4suCX
- x+iGZdD5thP7dBeSo45CSjTmgIES8K3MyK3sp80wKOXLwZx8Tzl6OdnVop6eAIlwtPsv
- PuqQ==
-X-Gm-Message-State: AOAM531zqQWimtje9w8pFM4sD9Q0HKmllwBU+g39OiJ0FNnY06Gyj2Kg
- v9YE7kEKNp6+xZyUrkNEhdRZLo4W5srzcRf5azBsJhmLeLrQxqENQaZTFeox4U2K4FdfSo5kt/x
- uTJt2s8A9JLTy
-X-Received: by 2002:a05:6402:440c:: with SMTP id
- y12mr21166595eda.75.1643644385211; 
- Mon, 31 Jan 2022 07:53:05 -0800 (PST)
-X-Received: by 2002:a05:6402:440c:: with SMTP id
- y12mr21166572eda.75.1643644385013; 
- Mon, 31 Jan 2022 07:53:05 -0800 (PST)
-Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
- by smtp.gmail.com with ESMTPSA id d3sm7694772edq.13.2022.01.31.07.53.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 Jan 2022 07:53:04 -0800 (PST)
-Date: Mon, 31 Jan 2022 16:53:02 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH 1/2] hw/arm/virt: Fix gic-version=max when
- CONFIG_ARM_GIC_TCG is unset
-Message-ID: <20220131155302.ud4kzxxi27zky4jn@gator>
-References: <20220131154531.429533-1-eric.auger@redhat.com>
- <20220131154531.429533-2-eric.auger@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vEfn2pojLozNmUMOwDvm6c+bChdP10HVlHqV/ePIIis=;
+ b=jG3QhHCx5ykUmriyKYwLaX1FBW0q6TmAtzRR/BmqX5XdiqcVDIaIvycMd1BcwEI19V
+ ObYGZViBjAEYpt5g1jO95L1aBbIhXalHwJhQ2etctjT5mlFHA1Wet+bhm7+q68hmHyoG
+ xgcaLW7hM8WqjAhAuig8YzTi7fLaZHv3X9xqfu0vljDFPHfzoXwpMuOEgWFpgPDzVQN2
+ RGwIC164/oM6VRHyY2rUP69HHv+jwiUu2oDOxKtB2bzmBsv8d6THzdt8EwM0Vr71B8Ti
+ 6p70K6KP51anN+DP/rgDlrhB3rYQT5EAB4vsXKozWWs157FlRAb+tvB/4iXabYE5Xi9P
+ +x+A==
+X-Gm-Message-State: AOAM5317RXfK8bG+Znh++Sj/eZtfArezik8uICn4qiVGIT2+VfW9plJJ
+ zTRutpCI/uEXnbOhIg0MdCfSDXeufwMKRVdxQz+Ahw==
+X-Received: by 2002:a05:6000:1acb:: with SMTP id
+ i11mr18463071wry.172.1643645117182; 
+ Mon, 31 Jan 2022 08:05:17 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20220131154531.429533-2-eric.auger@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+References: <20220131154531.429533-1-eric.auger@redhat.com>
+ <20220131154531.429533-3-eric.auger@redhat.com>
+ <20220131155936.lm7jn32ihb2ndsf7@gator>
+In-Reply-To: <20220131155936.lm7jn32ihb2ndsf7@gator>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 31 Jan 2022 16:05:06 +0000
+Message-ID: <CAFEAcA-K3cAPMiAfHNCOaceRN2csH26W4w9RDOUUVhpKPMNh2Q@mail.gmail.com>
+Subject: Re: [PATCH 2/2] tests/qtest: Special case sbsa-ref and
+ xlnx-versal-virt if !CONFIG_ARM_GIC_TCG
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42b
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: lvivier@redhat.com, peter.maydell@linaro.org, thuth@redhat.com,
- f4bug@amsat.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: lvivier@redhat.com, thuth@redhat.com, f4bug@amsat.org,
+ qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
  pbonzini@redhat.com, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 70Qy1tya+XQs
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eKjWmdP3FjGw
 
-On Mon, Jan 31, 2022 at 04:45:30PM +0100, Eric Auger wrote:
-> In TCG mode, if gic-version=max we always select GICv3 even if
-> CONFIG_ARM_GIC_TCG is unset. We shall rather select GICv2.
-> This also brings the benefit of fixing qos tests errors for tests
-> using gic-version=max with CONFIG_ARM_GIC_TCG unset.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Fixes: a8a5546798c3 ("hw/intc/arm_gicv3: Introduce CONFIG_ARM_GIC_TCG Kconfig selector")
-> ---
->  hw/arm/virt.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 141350bf21..2f1d4d0230 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1852,7 +1852,11 @@ static void finalize_gic_version(VirtMachineState *vms)
->          vms->gic_version = VIRT_GIC_VERSION_2;
->          break;
->      case VIRT_GIC_VERSION_MAX:
-> +#ifdef CONFIG_ARM_GIC_TCG
->          vms->gic_version = VIRT_GIC_VERSION_3;
-> +#else
-> +        vms->gic_version = VIRT_GIC_VERSION_2;
-> +#endif
->          break;
->      case VIRT_GIC_VERSION_HOST:
->          error_report("gic-version=host requires KVM");
-> -- 
-> 2.26.3
+On Mon, 31 Jan 2022 at 15:59, Andrew Jones <drjones@redhat.com> wrote:
+> Hmm, if these machine types completely depend on userspace gicv3
+> emulation, i.e. no way to use in-kernel gic or another tcg gic
+> model, then I guess they shouldn't be built at all when ARM_GIC_TCG
+> isn't configured. I.e.
 >
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 2e0049196d6c..d7cc028b049d 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -209,6 +209,7 @@ config REALVIEW
+>
+>  config SBSA_REF
+>      bool
+> +    depends on ARM_GIC_TCG
+>      imply PCI_DEVICES
+>      select AHCI
+>      select ARM_SMMUV3
+> @@ -378,6 +379,7 @@ config XLNX_ZYNQMP_ARM
+>
+>  config XLNX_VERSAL
+>      bool
+> +    depends on ARM_GIC_TCG
+>      select ARM_GIC
+>      select PL011
+>      select CADENCE
 
-Why is the config generically named "ARM_GIC_TCG" when it only controls
-Arm GICV3 TCG?
+I kind of agree, but isn't this kind of mixing two things?
 
-Otherwise,
+(1) Both these machines require a GICv3 and a GICv2 won't do,
+so they should do something that says "if you want this
+machine type, you need a GICv3 device"
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+(2) Both these machines don't work with KVM or hvf, so if we're
+not building TCG then there's no point configuring in these
+machine models (a property they share with every other arm
+machine type except "virt", currently)
 
-Thanks,
-drew
-
+thanks
+-- PMM

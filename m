@@ -1,113 +1,113 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2077041lfk;
-        Mon, 31 Jan 2022 00:20:01 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyF+R9QDTMW0CoSGMa3KHHRFxfInC7bBnrpKZxG0oS1z4prDccN5ekWUtXipadquK/v9USG
-X-Received: by 2002:ac8:4612:: with SMTP id p18mr13886704qtn.492.1643617201216;
-        Mon, 31 Jan 2022 00:20:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643617201; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2077575lfk;
+        Mon, 31 Jan 2022 00:21:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyFjw+wWr/GJIBqFWnuho6SlgVg5o+RGZz/hWqFgbINSAguQf9xk+tvAHLncuYxwnVfsY6O
+X-Received: by 2002:a05:6214:23c8:: with SMTP id hr8mr16620554qvb.91.1643617267634;
+        Mon, 31 Jan 2022 00:21:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643617267; cv=none;
         d=google.com; s=arc-20160816;
-        b=TAs+YGboNJBiiRIxyjsaomOcar70/5jsFVhBR4qETG08FdsXprFU2CAGL5WCZE4tje
-         YEl3ApY2Pt3EFml1JHZalHzziMpXOfXF+MHXwxwAoi5MfSI/1hyFGa9TTl22XVH2KOua
-         14lhFsZtyA3gAHO2Rn52Oxq7Jz9c1iLoSDikuvgPOgOGT2774IVdEfCdSRY04BlYL4JZ
-         8BVrCbDwGLKEsX7VOtcmGQMgQy2CGm3Oir3nfMPKRsDTxoOLRBb4jus8AvWIwpDUlp7w
-         KRiOE3rZEg8epKm9CMviVhnPEKggYAzj8Jlo712jwx55oWTTAR7e6j5+v5DE4jaZcimQ
-         wxFw==
+        b=cyNTBtbKjUG59YHdpj1fSH5OoVygZQ+AUIvR88qLKjAgi0QIlkQOLuXi1ozq+4jNTX
+         CdUjf0vHiOWGQOkbaLBsU8rBmxODZG0ELNjuhZXInDXcT/NhavKL+8wnda6BI+tedx8b
+         l6vOQ/Sm7Lk71Mzi52gO/JCz+LdrbzFLywk3FhpVv4UmhLGAeo6e+8HugCroupdIFo7i
+         j9HI0W2HyLvrUOsjWvrzJAswlYhh5XO1zHkUqlmSAo8xRKcNR5FnvrbCP4ysdImtBIXZ
+         3E0rEoLWOeUP1COPf/T3z1FCLzvBDWXYrk0TchHhu0oNfO8zm4INNIKALXRSEFtH9UeS
+         68tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=11vXh06DaPqB1I/9NZYi7RmaGjHGevUylv7Gwci0JdM=;
-        b=K/R/1YYwh7jjR6CTnQtT8WLK+DgBrqQPYWIJIHe7ZUXmiyu7rTJW2gYslhWpqw9DzZ
-         JQS3X7PkXsiz0OEdXrcQJs/QVb6eEyx91KUWOHUq+3NHTdC2EypqbS/Ie8a0yzcqcO77
-         kxAEp64RNgKTR+D3xkWXfU63T7UKUjXj3L57n2UH9dQ/RADcOEJYMHxbRzvmol5KImQw
-         2Y9jKjGoNCa5YAfX16qXqWanWuTbIrdf8WR5HUuoXZ54g2T/e/b+jgB/CO197rxK6awA
-         XTU8oI/wWDMrvhxnwTId58jFj7rRR2KOgELS4iwrIla5TvPqBuxkOTGReqaaequvsdqm
-         t/NQ==
+        bh=hzdegvweuSj8obSW9UzeqPv2qiGpjMXm+KU1JMRAaAk=;
+        b=XHDuPCQMqXWgjD8qtXsv44n4wVng/lBLX9W29NvhkUQFWP9blhrOUUHyFzqaEW4X6L
+         uuWiUb7RkxJMB84GbDPSc8lIgH97pioUPRKTl6YHfqqKK9Oflfur58l7fmrIzNrgNU32
+         PwaWx6edkxhgF1CS4xqbcWlnDlSjNtxMoVydnhRoVPZeiBaS2Cj7JYMrdMRtPiEWSnzL
+         sVhLKOIRm9ZOJGYzCGNqG6l5yhoqppsIHsol8428JTplbxBCyzxu1ed1eu3q13JIEK6R
+         zAB/BmEQxWjrQandvSYxRuUOQDHwfDW98e/aOM4/USOSrJW6vQUOepCgTWnOOKifAaUy
+         tJXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZXmV26+e;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ixbYJ6ug;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si2944132qta.82.2022.01.31.00.20.01
+        by mx.google.com with ESMTPS id jx13si5249173qvb.169.2022.01.31.00.21.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jan 2022 00:20:01 -0800 (PST)
+        Mon, 31 Jan 2022 00:21:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZXmV26+e;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ixbYJ6ug;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35308 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36302 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nERuq-00047d-KD
-	for alex.bennee@linaro.org; Mon, 31 Jan 2022 03:20:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50422)
+	id 1nERvv-0004mS-2Z
+	for alex.bennee@linaro.org; Mon, 31 Jan 2022 03:21:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50866)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nERiQ-0004tV-V1
- for qemu-arm@nongnu.org; Mon, 31 Jan 2022 03:07:13 -0500
-Received: from [2607:f8b0:4864:20::102f] (port=40609
- helo=mail-pj1-x102f.google.com)
+ id 1nERjp-0005RG-1z
+ for qemu-arm@nongnu.org; Mon, 31 Jan 2022 03:08:37 -0500
+Received: from [2607:f8b0:4864:20::102d] (port=44690
+ helo=mail-pj1-x102d.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nERiN-0003sa-QU
- for qemu-arm@nongnu.org; Mon, 31 Jan 2022 03:07:10 -0500
-Received: by mail-pj1-x102f.google.com with SMTP id
- z10-20020a17090acb0a00b001b520826011so17568622pjt.5
- for <qemu-arm@nongnu.org>; Mon, 31 Jan 2022 00:07:06 -0800 (PST)
+ id 1nERjl-00045q-8N
+ for qemu-arm@nongnu.org; Mon, 31 Jan 2022 03:08:34 -0500
+Received: by mail-pj1-x102d.google.com with SMTP id
+ nn16-20020a17090b38d000b001b56b2bce31so12959030pjb.3
+ for <qemu-arm@nongnu.org>; Mon, 31 Jan 2022 00:08:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=11vXh06DaPqB1I/9NZYi7RmaGjHGevUylv7Gwci0JdM=;
- b=ZXmV26+ebPEMxPNu9XJcjJXormLaJBLNzzsjk7UnFe1vAi0Ex5Sfcq6VNbPHgTBY6j
- jIfpzp7BKM62zd24LLJPbKNJTiTUv4wggSL5zT8nwaXmb2Po/sPDVdRbyYE5hwm+LVL3
- EHnGP0dbwkWcgpZIzbQywYI1itb9T8v4FCoS7j4KieJj3HHdPwD5vsJyNM8u9GMCe6Ci
- B2zL1vyaBGWpRx3QoxDckfyXFpo0J4bKz938mX0MxB/zoAp92KCGgwngddJlumVpcpPg
- szo5nEa6QTxk1LulOyT46SKaYvcGZuOoTi5/s2Ok+aMiQAejaRnO6thJxntjs7uMVRq/
- 5G1w==
+ bh=hzdegvweuSj8obSW9UzeqPv2qiGpjMXm+KU1JMRAaAk=;
+ b=ixbYJ6ugNmG78rdBhvpH3YH/WKoXWNhK8bHeup6Nn44yPatfMaH/r9jGSfkZWhrJAk
+ KYsTeAhwt96AmrYH1lebL0y7kv0pFLCOH45sPk/IEpJHAw53kdexeowM96ucRKDWtIaT
+ BBz1DXSS/2z48DFNPNjvjXBUxg0Y5dzBgvH91xOZtnkzi8HZpfqHx6NQd4Gi92vJiYG0
+ XwDVPxVwLjJfiXo6jAG0J7JiU8SbUIXQAwiu953EBP5XWiq6uCwYlFD74aKau/4/eZ4e
+ kCX01xNMmeLSJlORcUgMziA4ecQWjTLxYIvs9fR0D9CXb3NgTd0HQEDcnX3wPY7DJ4eW
+ YYAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=11vXh06DaPqB1I/9NZYi7RmaGjHGevUylv7Gwci0JdM=;
- b=dbik+QrpLyNRtv+5BB/CNbidLky+04pPQ/PEUAq3U/V4qXHzEhIkCCq5OtnEy++jFt
- LbOolterbpMnSmGoPB2sqS/5V2f5qNvWlCsTqrsMeOOf2PK/1q16hLNm48AaHd+jizI5
- 6oVgEs4jW1XrH3EQn97o8OVxlJzc6Z7juDuG1ebQimxr/DVWOztA7t4j3Jva/d/2J6bC
- HVF8RSvGH0c96WG8Y1bA354KvpC+huJDXG34vs1+x9U+uwhCPVFF6e6uXH0c5FyoDAjJ
- u+R9WpY6Zzj3iMOlRov6jMmAx3vUzCv6XnA67dq7sG7v5c0YyTW7/qsPKYbvqTIUYD/K
- bW2g==
-X-Gm-Message-State: AOAM533Vwpnf3cNXisx5Cb+2oQhq0+9FwyP1AHn3Is4duChpV90SlcIE
- 2DqeM9mOrvLRsVTmUX3AostNvw==
-X-Received: by 2002:a17:902:ea86:: with SMTP id
- x6mr19780527plb.69.1643616425276; 
- Mon, 31 Jan 2022 00:07:05 -0800 (PST)
+ bh=hzdegvweuSj8obSW9UzeqPv2qiGpjMXm+KU1JMRAaAk=;
+ b=eTtMAXx2v5YF5bEM+uYBL1kZSeQQQRzGc43sJJrvVKG1gHZN9vBjGXOKIHYxi5iJrM
+ fv/uvEbXNX6DECanTfF2hFPiwG6dqHh24bMnGnJKEhZz887WU1AW698DWy5sPd9108RT
+ 0yZzEj/3vD1zcUNNrVaTKdfkBQYBv6jbbsu7FJl5YGEpWfZmOTfni11h1Z0stxzB35Vi
+ V366txrYxgz3SuwA+AXHwEdmqTj2EdCHTfFSO55Y6mHeuMwnwrkWgYhgMQbQBnPfRVgC
+ wtWb8PcNUb40gPYpV3RWOjgcHMZSm8dnT7Zm/+3tdLIM4FJn5UICKsKr7VyrbGBI0+Lv
+ b9Rw==
+X-Gm-Message-State: AOAM533ZdhJbYYbTvs0t/XbfYH2UM3BE3MphwJ1Uw4IuOvrlxi/Nukn7
+ 66hTiWBRS8b24aAVDe3Z4d3HSA==
+X-Received: by 2002:a17:90b:4ad0:: with SMTP id
+ mh16mr32071245pjb.89.1643616511969; 
+ Mon, 31 Jan 2022 00:08:31 -0800 (PST)
 Received: from [192.168.15.130] ([60.231.85.5])
- by smtp.gmail.com with ESMTPSA id m11sm27409779pgb.15.2022.01.31.00.06.58
+ by smtp.gmail.com with ESMTPSA id s12sm16960563pfd.112.2022.01.31.00.08.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 Jan 2022 00:07:04 -0800 (PST)
-Message-ID: <68831239-736d-f8d9-6f29-c0de72b3a15e@linaro.org>
-Date: Mon, 31 Jan 2022 19:06:54 +1100
+ Mon, 31 Jan 2022 00:08:31 -0800 (PST)
+Message-ID: <06314359-3790-8e73-30b3-62354f4783b4@linaro.org>
+Date: Mon, 31 Jan 2022 19:08:21 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH 13/16] hw/arm/boot: Don't write secondary boot stub if
- using PSCI
+Subject: Re: [PATCH 14/16] hw/arm/highbank: Drop unused secondary boot stub
+ code
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20220127154639.2090164-1-peter.maydell@linaro.org>
- <20220127154639.2090164-14-peter.maydell@linaro.org>
+ <20220127154639.2090164-15-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220127154639.2090164-14-peter.maydell@linaro.org>
+In-Reply-To: <20220127154639.2090164-15-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102f
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102d
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -142,28 +142,35 @@ Cc: Eduardo Habkost <eduardo@habkost.net>, Rob Herring <robh@kernel.org>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8TtSN4x2CJ8E
+X-TUID: W8iBTnf0jStL
 
 On 1/28/22 02:46, Peter Maydell wrote:
-> If we're using PSCI emulation to start secondary CPUs, there is no
-> point in writing the "secondary boot" stub code, because it will
-> never be used -- secondary CPUs start powered-off, and when powered
-> on are set to begin execution at the address specified by the guest's
-> power-on PSCI call, not at the stub.
+> The highbank and midway board code includes boot-stub code for
+> handling secondary CPU boot which keeps the secondaries in a pen
+> until the primary writes to a known location with the address they
+> should jump to.
 > 
-> Move the call to the hook that writes the secondary boot stub code so
-> that we can do it only if we're starting a Linux kernel and not using
-> PSCI.
+> This code is never used, because the boards enable QEMU's PSCI
+> emulation, so secondary CPUs are kept powered off until the PSCI call
+> which turns them on, and then start execution from the address given
+> by the guest in that PSCI call.  Delete the unreachable code.
 > 
-> (None of the users of the hook care about the ordering of its call
-> relative to anything else: they only use it to write a rom blob to
-> guest memory.)
+> (The code was wrong for midway in any case -- on the Cortex-A15 the
+> GIC CPU interface registers are at a different offset from PERIPHBASE
+> compared to the Cortex-A9, and the code baked-in the offsets for
+> highbank's A9.)
+> 
+> Note that this commit implicitly depends on the preceding "Don't
+> write secondary boot stub if using PSCI" commit -- the default
+> secondary-boot stub code overlaps with one of the highbank-specific
+> bootcode rom blobs, so we must suppress the secondary-boot
+> stub code entirely, not merely replace the highbank-specific
+> version with the default.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   include/hw/arm/boot.h |  3 +++
->   hw/arm/boot.c         | 35 ++++++++++++++++++++++++-----------
->   2 files changed, 27 insertions(+), 11 deletions(-)
+>   hw/arm/highbank.c | 56 -----------------------------------------------
+>   1 file changed, 56 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

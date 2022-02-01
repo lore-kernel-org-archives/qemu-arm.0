@@ -1,120 +1,201 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp472000lfk;
-        Tue, 1 Feb 2022 06:44:43 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzJAg32fAq9Oc3Ldy9mOCb8dkVB7ZTIqvAIfdKdC9Ya7Fvqp0DlzTNcYegMQxTAgLfLqfoU
-X-Received: by 2002:a25:7904:: with SMTP id u4mr35696589ybc.563.1643726683003;
-        Tue, 01 Feb 2022 06:44:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643726683; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Si6JrMgp71MmIS1hNppvDH1o/2Z5nVPeymWX+oXFLPPD8kTYcspCBb7UrPCJGQnjrQ
-         WdGs28ce2fa3N52KCRWm4P92hrxacEXEsSm9xnVqeSKKho7lqrcOpKkpDRTXbcwFFmgx
-         RYTcWD3/B9X9qCtiGEw1AfRt8LKG0bH7QK6wfbsgIPQFBB1T96dkxMWWlUlqkkSqX5iv
-         8mRWEVKn33Pty0o1hpcWNL1BAArtZbK+TOV5wj2dwBu4OlCJNmrLfgsKbAQDMHX85aRP
-         /xRVJKI9PU8e3TpIn28TWhojqELoz8Ixm5tsb3BnMQMIVsr87kj6iB/kosEtTgkkp5Ql
-         IGIg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=xPr60qxZCyURf1wWnO6jqTyKtFPYAeP8pg9MJVVWY5E=;
-        b=VH/WnnbEbRK3Q2IEiKmivLwsd0rYSWHmQdJncP3YLvGX2U2gygKBqTq0GcMALSqoyU
-         R6FxMo857g+qMX4lRJR6FdKXo0ZdHw14erGgDxIVyPRfs+ktCpSS+91H4dYgFOWLUvH9
-         v0+UpUArTarvolohh2MZ7CpCDBtMqEIQXSf5YFIYRwkdNJfVbLAv5jwS2z2wru2+DsCi
-         /KR/Dyej9b54Zh/hNZuWKZHWvO6jRHUENqz3mc7KQls/oianCt7DimbRbeq3N8hmYI/T
-         4OYWsNCIWzk1x/BGA3tLdh+xRVXY0pkYZNkIgSynpyLXHpgqIPHQe75Ok/aqAZSx+QYl
-         dNMg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i+HAYH5c;
-       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id k10si9809191ybp.674.2022.02.01.06.44.42
-        for <alex.bennee@linaro.org>
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp480780lfk;
+        Tue, 1 Feb 2022 06:58:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxvR8wA8lk79gwU09UzpWI5yeTzi39uTk4V08h2cn1oJqnbi/K6s8Z320Yc8quZFk7w7x7J
+X-Received: by 2002:a17:902:da81:: with SMTP id j1mr26810672plx.98.1643727509515;
+        Tue, 01 Feb 2022 06:58:29 -0800 (PST)
+Return-Path: <aaron@os.amperecomputing.com>
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (mail-mw2nam12on2113.outbound.protection.outlook.com. [40.107.244.113])
+        by mx.google.com with ESMTPS id v9si17592857plg.551.2022.02.01.06.58.29
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Feb 2022 06:44:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Tue, 01 Feb 2022 06:58:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of aaron@os.amperecomputing.com designates 40.107.244.113 as permitted sender) client-ip=40.107.244.113;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i+HAYH5c;
-       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1643726682;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xPr60qxZCyURf1wWnO6jqTyKtFPYAeP8pg9MJVVWY5E=;
-	b=i+HAYH5ch+qg91aKEEuUk3TLTK2yBB9IihnJX2d0FkUHD8bhxBumH9xSGRzF03LZZFqKxN
-	YqHuw+q3a39u78G6D5l6d8bVIiFCcblGv0SkhCJFfqD+JsVIw7lev11LwW3uuzFdgVkshr
-	Tcjfiow0UgA2q/9EZMES1P9NDVp1hM8=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-185-k6P93xnaOmu9KJvP49Vqtg-1; Tue, 01 Feb 2022 09:44:41 -0500
-X-MC-Unique: k6P93xnaOmu9KJvP49Vqtg-1
-Received: by mail-ed1-f71.google.com with SMTP id v15-20020a50a44f000000b004094f4a8f3bso8823836edb.0
-        for <alex.bennee@linaro.org>; Tue, 01 Feb 2022 06:44:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=xPr60qxZCyURf1wWnO6jqTyKtFPYAeP8pg9MJVVWY5E=;
-        b=XSz1n3iMQFRNn2QjcPrnflFf5RsMDl3wikJ4smpP2hTMX/NxRtpReJGYug6aj4M7Qj
-         EqAGhKFYkCfcGDVU9XjUKq3UqBnQ2OLVc6Uz+UF0Uy/MutUXm8oCKfBntwVEXmk32Z8Y
-         EP1jLWindJ6t8XnWfS1brdlLeJ0CEYAGno5b6c/hwHB94sUmI2nRhauAdTtEUv8lzEmt
-         1PMJeOhP2xhnCeBRCumyl2AKy3rTbNmEGYmhsGDtRfyqICOY0nt+BJqzMvgqqGqX6qkQ
-         Ng5fYp3yggLt3fuffuvkeFMBkwDOvWqz6X2PHgJn4KPC1/pWTIiyg/2sEL7Ju58SBZ/O
-         RuQw==
-X-Gm-Message-State: AOAM530K3RuVl6IXD6wrs54CwQon5r8McjC+nMqwos2s/DsB7kwWSWbS
-	e53QF/fmHtC6H0cXX92bTRw7wtZc+CThZjlmGYU8QCwZfiQAzAaoloGFrLxRDaEOFuN5M+4ITUB
-	QOlYaNBLoHh4O9o5QNmIMV5tQ3oRuvAOHP9Vr73mnviObHmjmuO+pTYLDv4ZCF1ecHCI=
-X-Received: by 2002:a17:906:7945:: with SMTP id l5mr21603469ejo.104.1643726680195;
-        Tue, 01 Feb 2022 06:44:40 -0800 (PST)
-X-Received: by 2002:a17:906:7945:: with SMTP id l5mr21603437ejo.104.1643726679954;
-        Tue, 01 Feb 2022 06:44:39 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
-        by smtp.gmail.com with ESMTPSA id m13sm14613223eja.160.2022.02.01.06.44.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Feb 2022 06:44:39 -0800 (PST)
-Date: Tue, 1 Feb 2022 15:44:37 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: kvm@vger.kernel.org, maz@kernel.org, shashi.mallela@linaro.org,
-	qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu,
-	linux-arm-kernel@lists.infradead.org, eric.auger@redhat.com
-Subject: Re: [kvm-unit-tests PATCH v3 0/3] GIC ITS tests
-Message-ID: <20220201144437.fw5fv7xfxspf7a6s@gator>
-References: <20211112114734.3058678-1-alex.bennee@linaro.org>
- <20211112132312.qrgmby55mlenj72p@gator.home>
- <87wnldfoul.fsf@linaro.org>
- <20211112145442.5ktlpwyolwdsxlnx@gator.home>
- <877dd4umy6.fsf@linaro.org>
- <20211119183059.jwrhb77jfjbv5rbz@gator.home>
- <87a6hlzq8t.fsf@linaro.org>
- <20211130143425.bh27yy47vpihllvs@gator.home>
- <87sft2yboq.fsf@linaro.org>
-MIME-Version: 1.0
-In-Reply-To: <87sft2yboq.fsf@linaro.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+       dkim=neutral (body hash did not verify) header.i=@os.amperecomputing.com header.s=selector2 header.b=MGMbIAUO;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 40.107.244.113 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=IKtfhrtn1K7mef32GTEithozSufiuQKZ03n03BVzR3HMx2UomzgVwXPprlRrZN4wpXcC4CVEiCRKNKNG+qv8NH9Y/Dyhd8ln0/PWSG/p+Eu07+zKsk08SktULNl+LqcP/ETY2XO/T3JKzk6+2ZHxbHnycPy6ajfmjhMadRmHkFag7tpBYY0PzHaWxxBGKexzRHiZo2uj1PBykZcU8M0/8Dx9rQIfkwww+FXdEY+y7SO4/pAyz7d8mbMbN7O2/WkhdTDBuLlkJejWG4W/fGyHe3vTyV33iN+HRT0yNmKmO8MFw6fuk3TIbhiZBlsg7aGiq4y3HTNlZmAobPsV3bM5jg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=VgtkvIqCWNJIIzK6L0ZB3FTk71sp4NZJG/jQ+E3x9TY=;
+ b=VaqFaYhFXdci6J6PGeD77goMMb97akana7i9KMdxYqk26hIE1ckOneMTPUiML4mvUxXcTC8Mj/6s6zQ/GC9bmuviqkwfJizkU428KOeuPLb+V2UIsygrgCC9qXOQfRRSdXRfb3A2QgX8heNcauXhyFfrBbG2gtKmSXIhawTlXTKVF5OOr7av/LAMSj6COPMBRxsVbsVWYHiIqvGQxVgTrHKSk/CrJwaaRVmjVFDhMJOYt6Jmkjj4QuC7x8NYgeet0EcNV2VOs6SjfqbOyweLE1TzanMFtWf7SfZ4xNuV+tdZBwq0r7yJeceVaMzXMDqc8OORJOkpl6ponZG9JHJz9g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=os.amperecomputing.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VgtkvIqCWNJIIzK6L0ZB3FTk71sp4NZJG/jQ+E3x9TY=;
+ b=MGMbIAUO0LcGPs6bAH/GnERIZ0MdjU7eIUex7SFqI7eHgVO1O13iT2i5B+GVXnPkRV2LymADiba6q0Lx98HXfKbIDP6ydkygIDMhth/nJdEVCTDpy3ahSLGZzvF5KE1HSCOoNs8pSXOk2WoIsixk0Nwt7zkZq7HZqyqSUt+rOKA=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
+Received: from CH0PR01MB7124.prod.exchangelabs.com (2603:10b6:610:f3::20) by
+ DM6PR01MB5162.prod.exchangelabs.com (2603:10b6:5:59::30) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4951.12; Tue, 1 Feb 2022 14:58:26 +0000
+Received: from CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::d949:6c64:e3fe:68d9]) by CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::d949:6c64:e3fe:68d9%4]) with mapi id 15.20.4930.022; Tue, 1 Feb 2022
+ 14:58:26 +0000
+Date: Tue, 1 Feb 2022 09:58:21 -0500
+From: Aaron Lindsay <aaron@os.amperecomputing.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	robhenry@microsoft.com, mahmoudabdalghany@outlook.com,
+	minyihh@uci.edu, cota@braap.org, Luke.Craig@ll.mit.edu,
+	Alexandre Iooss <erdnaxe@crans.org>, kuhn.chenqun@huawei.com,
+	ma.mandourr@gmail.com,
+	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Subject: Re: [PATCH v1 12/22] plugins: stxp test case from Aaron (!upstream)
+Message-ID: <YflKjbFKP1mak1Cy@strawberry.localdomain>
+References: <20220124201608.604599-1-alex.bennee@linaro.org>
+ <20220124201608.604599-13-alex.bennee@linaro.org>
+ <9e8b013c-5340-0cd4-0bee-7b48ba4dc525@redhat.com>
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: vG0mB0Y7XU9M
+In-Reply-To: <9e8b013c-5340-0cd4-0bee-7b48ba4dc525@redhat.com>
+X-ClientProxiedBy: CH0PR04CA0008.namprd04.prod.outlook.com
+ (2603:10b6:610:76::13) To CH0PR01MB7124.prod.exchangelabs.com
+ (2603:10b6:610:f3::20)
+Return-Path: aaron@os.amperecomputing.com
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 00ac0bc0-8100-4647-4947-08d9e5934cb2
+X-MS-TrafficTypeDiagnostic: DM6PR01MB5162:EE_
+X-Microsoft-Antispam-PRVS:
+	<DM6PR01MB516232EC38D064DE9BF948D88A269@DM6PR01MB5162.prod.exchangelabs.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	k3SqbBYOSQOeI5qiah41xAPqu2K6zGMQ7oUTWVbnNrx5aN9JCihk9DVPrc6leefInAx2XRxg9StakTihoi0+j3TxYMdSvdduNvQxZneS6GWZ0YMyygmXGLaQ/9EtvJcKHWM72T1jiEfSIYdUYatziiyrmtUJMxfswHvBpVU+Rps26tCRwsIbDGOMclIE/leXqCNbdFwjSct+fJnEEaIJ/QSe0HRxQw15YBGdLnd9v8CjsSFY4IF3F8ZONxDYmCfPg16fGen5mBPSdMz+/+nof8Ul++dB+Vrs4gzpLCSV2ltpn7KE4BmYjPS4cvTuuXY/Y5a200H62VriZQqJMFraWw/stmf07CebMkBBFN0uzut9H8Zq+5LZkByStHrvk0e5GiXnTCbRiSL3dgesKzH7S6oThIj1BdEIS6WWB+uDz4/xI7MmPFZAYfvq3NB0l/llBrHJSfCeT/p1pq4QK98DcSvEgAMyofxaNlhfVJZwMoXeI/eqlLdozlhsXDr9Xwkiasp9USVOGlUHwGaA/ac1DODI25Em+RegZp/ZXL5EmCStDKsvS5ORhbujrLeC/vliYoVSuDA6zZvNBr6nwcpKaCVyNwRLLlJgjTrCIGhplYV6nmw3qKCUvU6m3w8woJn2WRGzo3+JdNZ7zYOSOtDZVA5vNWlmj7jmki51PVtk04WzCo8EqeSNjvWOlU2CpRvptjjAXhuqBzq2sHUpXLKY3g==
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR01MB7124.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(6666004)(6512007)(6506007)(38100700002)(38350700002)(52116002)(9686003)(6486002)(508600001)(54906003)(316002)(26005)(66556008)(66476007)(186003)(66946007)(8676002)(8936002)(2906002)(4326008)(7416002)(5660300002)(86362001)(83380400001)(6916009)(20210929001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?iso-8859-1?Q?FXi+z6soNYmPTvjaQ6TBX3TAidmKwg0u1DPaktupZskEsM6VQTEQKRA3OQ?=
+ =?iso-8859-1?Q?kCLA5c3zduMKDUJR91apFsW5F9EVInjYxFlngisJf8q9CfrXEgrgW05805?=
+ =?iso-8859-1?Q?iAavs2mUno1fPgql8gH1M0jKxJ73Ujc6jtozA8OWzm1PIhIraWWeIPpoJL?=
+ =?iso-8859-1?Q?hZKKnq7IGR054xk3ObNwGtEdXRlAogu+pIMtIZgTmR8EVAroPbWFYE7P3k?=
+ =?iso-8859-1?Q?OaaNQsd/Ol8rAzqinatKw/HelVpwwwNNZTUeFe2a0K55E9T1A8ee6HH5ii?=
+ =?iso-8859-1?Q?6jMI1VAyEOK2gH5dhpqDGzgoZ4WzvKMLWGan3fNuG2qSLQVv6yQaYfH+E0?=
+ =?iso-8859-1?Q?MIh+l26DdUBhzELvEJV8f95zn0htfsHdaoiUWFlsRAcNuwZL70xq/g5j5+?=
+ =?iso-8859-1?Q?bEFbbslu3VZhBTCQ51DHIO+STCOvi/lUWyBOy7EF+9NA8qdAzdov6QK/V1?=
+ =?iso-8859-1?Q?fzTN6PDrtgbmVs1w6ZGyK55i19R7oj5rO3hYF5WcxKNn749yGESl85pmzI?=
+ =?iso-8859-1?Q?YUvBAiKy9mLT3yhqf5yRDwpHgud9D8ENdfE8N4/2RTJS1D04CpR/+sBCSd?=
+ =?iso-8859-1?Q?fsnkdvum4eml1pwsUgltYv7BhEWE6K01taKK4F3uYxO+1zpBNOr4fiVMIm?=
+ =?iso-8859-1?Q?kb4HlU8Q4kBn3Y9FGN/Rt0kYORCfH1z3vzeeClLJABzith5oQQ24lABYm+?=
+ =?iso-8859-1?Q?ro+vWwK9+sD5Pt1b8VimzplT0yAfm+LxBT05RB7c57Lu6SNNWlruDdp9un?=
+ =?iso-8859-1?Q?9XlC6dFOfVKya7olRSq+kWkwy0e7rN/cKSwtE+Kd5NejeWOs7UBViRCfBD?=
+ =?iso-8859-1?Q?1TXT3GVc3/rNPIqg5pli+fq9CRPeizOl6aktXOf5mn+ldKTpsfZKvrg00X?=
+ =?iso-8859-1?Q?NS2u4FQ4L8E10W2Quv1VPbO1a+LdqjSG8L1Xaf15MKqeaSIsT1X+NnHZzf?=
+ =?iso-8859-1?Q?z/NsSZlRH3Ewd98p5fw7RYEhqjQDstEOh82B6kzcmMyfBQ+OCxJUz7l9H4?=
+ =?iso-8859-1?Q?7SAebvok94hP3ZddVBchYm6BBOkkRwLBOHPjs4JRCsVQh90sjZQQenV2oI?=
+ =?iso-8859-1?Q?/9s9LA9UR+5Ky5Dc1CSc03ievpgyCwqyuFRMjU6EGk6EY55zPlmmPe4/+Q?=
+ =?iso-8859-1?Q?ss2C9G02c5Nqdm29YCLnOVDfF+APhh1Boi9MjE2inQHSiKDuMyYcoDdT04?=
+ =?iso-8859-1?Q?vdW4/vSuF7PhYcpElnJWNZQEP8XUOqO6OtKf08wmsG5OHkMOehrlPUKDBa?=
+ =?iso-8859-1?Q?XaS3zM4Ldv1mHTle+API7J5jMlF88v9HXUjUWVyHBvmoyMeJ25qy6yzyXK?=
+ =?iso-8859-1?Q?l2qO7A6ytLAhu6nPDFnCs197i3G68mSFK/yY8bFiQtPJNamZmjKx/q+QyU?=
+ =?iso-8859-1?Q?QlmPr0zfoOgAK/yTIiJJWDi90w5Z5kz+J7QAoDAYvnHRprBBrigaNZVt2i?=
+ =?iso-8859-1?Q?3NXslopSnR7e+0FR3dkXShpnj21AW14KiTNkrJDQsVcIk7FfxXhSP6Fu7Q?=
+ =?iso-8859-1?Q?bi0FNEPnxz56gj15nORG+BbEhu1v6DOTIj4iMRhtI0tucDZBQPfyjTaNm3?=
+ =?iso-8859-1?Q?/1TZTd0SfgguRy8GpIwHIhhiOfpE0taWTJsfL4KsAkzKNhsBZcYIVPx2D8?=
+ =?iso-8859-1?Q?Ktrn2wxsYQUvpjjPA9LLGKjhmmSpRrAr02cdtOVD9coBH3bTcdFWJhX/gL?=
+ =?iso-8859-1?Q?tNG45Ml2yHTc9n8groXuSHbzScfPOfMk82juWlM08/a7RTO9iCELI1w9V9?=
+ =?iso-8859-1?Q?vDdJX7bHTNU2JB1mOXsUWwoLTpdv3FFN6y/hChU63oBynfo8nagTwzyKS3?=
+ =?iso-8859-1?Q?9Lq0LqhPjw=3D=3D?=
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 00ac0bc0-8100-4647-4947-08d9e5934cb2
+X-MS-Exchange-CrossTenant-AuthSource: CH0PR01MB7124.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Feb 2022 14:58:26.3090
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2Hlh6JMVlL4yl5kFDZ2jagJQn6oyEwW5uj/F9bXjjf0BN57CWSdlyKWKcTtr9ZYsIN/VliivZzZ+3PHUZX6HbRGczeKtnlezfZyDQ8tn2Yb6zOo4aocqwFUyhg4OywmB
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB5162
+X-TUID: W6XTJXP7xCRy
 
-On Tue, Feb 01, 2022 at 01:10:13PM +0000, Alex Bennée wrote:
+On Jan 25 09:17, Thomas Huth wrote:
+> On 24/01/2022 21.15, Alex Bennée wrote:
+> > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> > Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
+> > Message-ID: <YXCA62xdRDeueQR6@strawberry.localdomain>
+> > 
+> > ---
+> > [AJB] this was for testing, I think you can show the same stuff with
+> > the much more complete execlog now.
+> > ---
+> >   contrib/plugins/stxp-plugin.c     | 50 +++++++++++++++++++++++++++++++
+> >   tests/tcg/aarch64/stxp.c          | 28 +++++++++++++++++
+> >   contrib/plugins/Makefile          |  1 +
+> >   tests/tcg/aarch64/Makefile.target |  3 ++
+> >   4 files changed, 82 insertions(+)
+> >   create mode 100644 contrib/plugins/stxp-plugin.c
+> >   create mode 100644 tests/tcg/aarch64/stxp.c
+> > 
+> > diff --git a/contrib/plugins/stxp-plugin.c b/contrib/plugins/stxp-plugin.c
+> > new file mode 100644
+> > index 0000000000..432cf8c1ed
+> > --- /dev/null
+> > +++ b/contrib/plugins/stxp-plugin.c
+> > @@ -0,0 +1,50 @@
+> > +#include <stdio.h>
+> > +#include <stdarg.h>
+> > +#include <qemu-plugin.h>
+> > +
+> > +QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
+> > +
+> > +void qemu_logf(const char *str, ...)
+> > +{
+> > +    char message[1024];
+> > +    va_list args;
+> > +    va_start(args, str);
+> > +    vsnprintf(message, 1023, str, args);
+> > +
+> > +    qemu_plugin_outs(message);
+> > +
+> > +    va_end(args);
+> > +}
+> > +
+> > +void before_insn_cb(unsigned int cpu_index, void *udata)
+> > +{
+> > +    uint64_t pc = (uint64_t)udata;
+> > +    qemu_logf("Executing PC: 0x%" PRIx64 "\n", pc);
+> > +}
+> > +
+> > +static void mem_cb(unsigned int cpu_index, qemu_plugin_meminfo_t meminfo, uint64_t va, void *udata)
 > 
-> Gentle ping, I'm trying to clear this off my internal JIRA so let me
-> know if you want me to do anything to help.
->
+> Could you please break the line to avoid checkpatch errors:
+> 
+> ERROR: line over 90 characters
+> #63: FILE: contrib/plugins/stxp-plugin.c:25:
+> +static void mem_cb(unsigned int cpu_index, qemu_plugin_meminfo_t meminfo,
+> uint64_t va, void *udata)
+> 
+> ERROR: line over 90 characters
+> #77: FILE: contrib/plugins/stxp-plugin.c:39:
+> +        qemu_plugin_register_vcpu_insn_exec_cb(insn, before_insn_cb,
+> QEMU_PLUGIN_CB_R_REGS, (void *)pc);
+> 
+> ERROR: line over 90 characters
+> #78: FILE: contrib/plugins/stxp-plugin.c:40:
+> +        qemu_plugin_register_vcpu_mem_cb(insn, mem_cb,
+> QEMU_PLUGIN_CB_NO_REGS, QEMU_PLUGIN_MEM_RW, (void*)pc);
+> 
+> ERROR: "(foo*)" should be "(foo *)"
+> #78: FILE: contrib/plugins/stxp-plugin.c:40:
+> +        qemu_plugin_register_vcpu_mem_cb(insn, mem_cb,
+> QEMU_PLUGIN_CB_NO_REGS, QEMU_PLUGIN_MEM_RW, (void*)pc);
+> 
+> total: 4 errors, 1 warnings, 92 lines checked
 
-Sorry Alex! I've been juggling too many balls lately and completely
-dropped this one. I'll rebase arm/queue now and run it through some
-sanity tests. If all it good, I'll do the MR right away.
+For whatever it's worth, I don't think Alex's intention is to upstream
+this code.
 
-Thanks,
-drew
+-Aaron

@@ -1,141 +1,144 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp768908lfk;
-        Tue, 1 Feb 2022 14:44:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyYqFvLzQAOv8ZrCW1U0nYtS462Secj2QNE9FDVc7bYbIfmTg+spJx23IOK8qDeFmzRSzGn
-X-Received: by 2002:a25:c285:: with SMTP id s127mr29690417ybf.36.1643755478942;
-        Tue, 01 Feb 2022 14:44:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643755478; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp660744lfk;
+        Tue, 1 Feb 2022 11:32:09 -0800 (PST)
+X-Received: by 2002:adf:fb4a:: with SMTP id c10mr22022891wrs.243.1643743929793;
+        Tue, 01 Feb 2022 11:32:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643743929; cv=none;
         d=google.com; s=arc-20160816;
-        b=nVNKWyXMnKkjEnQ1yokjfBiTjk1hcU1lQ/JILp9P/f9DuxaDqcZNV0yb7SlM6d8XHv
-         DioD+zUIgmZ6XUyaPcE/JCBV/fUCKXbE/q0WWbEB3dQ1Svj9N18aeFcrp543rx1/H+FD
-         jh5WScBWtfGJYT1vj6LWAwxa71md0CTOKL9OFZ4KIM3kztUbu/5g9fk8m4ZPOpzprSLG
-         Ht0GtIOuaeVrhKVmS06ChfuodB0FhIclTSbGCdTKlGT1vonOAUX8rAgQVokF3ZBoeoxy
-         r2+GIuwTvdQny6Zh6sTkEuk5cFllhSImHykLH1zdOB3MJxvzyxPTvdn6KrL3hpzte7aB
-         EL6g==
+        b=Dw1Ak8zIIwyYRtFFj+EqYZ/+FQzLwVvlsg9rY+mEuwaYtx2/VxxaBTkjDJuu2OYk4p
+         KmBObput7uVk6KiXsUFwl5fQkt67ZvWi4z0EXSQaKCrWFgfxXBBPE9smA1QChK7lAidU
+         CGMMMwRrNgjy5syj4bQ+pp3JRnvRmyLbNmnK0cJ2Adn8GudW1YMLfw27KMzFuaN4PrcQ
+         in2c9odQP0RjejMNiArY9jEu08Zj0TMigBZagGv3M/42JG3U3eE1w8yeIy6n6l+V4AE/
+         uFARfOhoChSU2dJx0Rbekg5H+c9um1V2RV1XQFWdBduIrEVVBt55sMeiayTcex/OMXdM
+         PLpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=5pW5hH+xYA8EmMHvu99M6jKraN0jTDjrufkxXyswi6c=;
-        b=h4v/1UX/SiPjutV1V86PKRG/7zeDg8VtXMrIoEF5Qtt3XIyiKaVPQ5nKLtkMDanDuG
-         u0pfD3gbvIWBVnBSktDR/RzmZPNyh5Yd8omqJDGN46GiA4smolM3wGXjPEt7d8/SM0xb
-         2HVZUeCBElQE4a4Ilxuvft+yzmRDurOGYJT0BRf2JAYn3NyHoOaruUXRWck6Ltk8Y3+w
-         Mo0mM1WXzgo9JbIPb/rdNybjbtu+0UMOqcaZYwfGkBSoEVtwmH6USYK8x/W1ybecvpPx
-         aitOiS4ZPVDWI8DsfG6yRBLvgTefr8XgONANRVA2MecswZ3NLqfJOltKbwoGiEUJVZmc
-         uXGA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=NNxoGTM339928Yo84PwOxlFiC7fEAQLsnAwUVkrE8PA=;
+        b=krqRhKLVPzwfxhHM1tl/myzgPvzPhG6zoU3fb0P7syT//UGMJbKvN/0wt4Fsv76hkP
+         C1uSA2GCbNlVj5/Qtg/2pCa/Um5S4evHJxD4oVJGXuuXMnCfS9B2PEpx/ioH1gUk3d+a
+         bCteGW6uHl9O/RbBVifNfn4NXNCLy58iyNVVlTzJzKpSbcY9dC++g+nkqtRW0MsGXvJI
+         HBpqevXZ83Ly/gUs2KPxDvxb8cfzWxUxnJoAKMWP6CfzBCR7q6hxfvFZKhiieEflUaaC
+         1ZW8lSeOEkk53N4cESAN9XjZOp5UmKWi6xMsrhHPM17C/NrNnsplahiBNXAS13gqI1n+
+         4vWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t3si36955712ybc.691.2022.02.01.14.44.38
+       dkim=pass header.i=@linaro.org header.s=google header.b=YF+9zX61;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n7sor1751013wms.11.2022.02.01.11.32.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Feb 2022 14:44:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 01 Feb 2022 11:32:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36194 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nF1t7-0001q4-VF
-	for alex.bennee@linaro.org; Tue, 01 Feb 2022 17:44:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59298)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <git@rpls.de>) id 1nEypD-0008Rd-Vg
- for qemu-devel@nongnu.org; Tue, 01 Feb 2022 14:28:23 -0500
-Received: from dia.uberspace.de ([185.26.156.221]:43288)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <git@rpls.de>) id 1nEypA-0001r4-I4
- for qemu-devel@nongnu.org; Tue, 01 Feb 2022 14:28:23 -0500
-Received: (qmail 21045 invoked by uid 989); 1 Feb 2022 19:28:10 -0000
-Authentication-Results: dia.uberspace.de;
-	auth=pass (plain)
-From: Richard Petri <git@rpls.de>
-To: 
-Subject: [PATCH] hw/timer/armv7m_systick: Update clock source before enabling
- timer
-Date: Tue,  1 Feb 2022 20:26:51 +0100
-Message-Id: <20220201192650.289584-1-git@rpls.de>
-X-Mailer: git-send-email 2.35.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=YF+9zX61;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=NNxoGTM339928Yo84PwOxlFiC7fEAQLsnAwUVkrE8PA=;
+        b=YF+9zX61KuTHcViYxllPrM+r4NAINAqlrcNFRCRBFo/vZllYIqWB6Vq3+GKKXCGnCR
+         /Yi1sqquVxG9KnkY/ONzpAx14v7lntfI82WmiHaIucDwROE8DVuumWCcBIiCdyokNOJm
+         LKTDLX82U51LQFhhHZNpc+YcEiCd3O/D3KjlPBdxKUugO3g+5h9k/6XHCTRMBI6fxdLL
+         2oDTaXHLyFWpRY1EKBO6KzIQlFsYBVZ/s92rQxlNq5xPZ4JcGLrWAde1ljpsldQOoAUF
+         rrS/hN2bu+iWXT/jVdXHOZh9mrrLIgsTkllMGh/Y98P7w+/neSZvItvDWnBLIbhhb33i
+         epzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=NNxoGTM339928Yo84PwOxlFiC7fEAQLsnAwUVkrE8PA=;
+        b=dbi82wGUouT4w57kxvZnG4sDfvPRDlCl9/7nrTWKzJ6Rw+zACwAwyVNtr7S5FXHyoQ
+         01lzOr5Cqz/FExYzsQwPi7PYOJImSuTJVxSnBsWAxQZLbFQSpcAPT6WZ/47hUozgvaEG
+         HXaIp3CHZizUDXGZNvtUU/rkaCRCeVVw3AGM2/AMcciP7JdUOG4fqcR5xWMtknwyHtIW
+         LOD67iHRMeZpRGOXpA5hOeX/MBK/TxuerGR0hZkxy2+Lgb/1A3cYkvb3uzp/j6WZV83C
+         h0qZMv4YU83ne44K9p6UifeQMKzN+9Z2Zx9esIca5jSRkSmAoee6MBs6okw0hiAZGbWe
+         unxA==
+X-Gm-Message-State: AOAM531V7ym2pvB3sYG4mh6HgoPESdehAsiWgrWf7MSkbWRzBx3jFruy
+	OurZt15WKYBhONDGraVDBM2FzzLm
+X-Google-Smtp-Source: ABdhPJxnrq5MRjRHns9Iuwfbrrx2hS0nXyA35zwy6u6qCh+vRUGukQjf3y2ZNzz/63koASUljN9d5A==
+X-Received: by 2002:a1c:a98f:: with SMTP id s137mr3163722wme.51.1643743929353;
+        Tue, 01 Feb 2022 11:32:09 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by smtp.gmail.com with ESMTPSA id z5sm3491265wmp.10.2022.02.01.11.32.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Feb 2022 11:32:08 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Shashi Mallela <shashi.mallela@linaro.org>
+Subject: [PATCH 00/13] hw/intc/arm_gicv3_its: more cleanups, bugfixes
+Date: Tue,  1 Feb 2022 19:31:54 +0000
+Message-Id: <20220201193207.2771604-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Rspamd-Bar: +
-X-Rspamd-Report: R_MISSING_CHARSET(0.5) MIME_GOOD(-0.1) MID_CONTAINS_FROM(1)
- BAYES_HAM(-0.038591)
-X-Rspamd-Score: 1.361408
-Received: from unknown (HELO unkown) (::1)
- by dia.uberspace.de (Haraka/2.8.28) with ESMTPSA;
- Tue, 01 Feb 2022 20:28:10 +0100
-Received-SPF: pass client-ip=185.26.156.221; envelope-from=git@rpls.de;
- helo=dia.uberspace.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, MSGID_FROM_MTA_HEADER=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 01 Feb 2022 17:05:16 -0500
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM cores" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Richard Petri <git@rpls.de>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M888CHywoPRP
+X-TUID: nNQgSBOoVRXb
 
-Starting the SysTick timer and changing the clock source a the same time
-will result in an error, if the previous clock period was zero. For exmaple,
-on the mps2-tz platforms, no refclk is present. Right after reset, the
-configured ptimer period is zero, and trying to enabling it will turn it off
-right away. E.g., code running on the platform setting
+This is another set of patches to the ITS emulation; mostly
+cleanups, but there are two bug fixes.
 
-    SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk;
+Cleanups:
 
-should change the clock source and enable the timer on real hardware, but
-resulted in an error in qemu.
+(1) Switch away from reading command packets by multiple separate
+calls to address_space_ldq_le(), and instead use
+address_space_map()/unmap() to get all 4 doublewords in the command
+packet at once in the top level queue-processing loop.  This gets all
+the handling of loading words out of the individual command-handling
+functions and makes them a lot easier to read IMHO. Plus it reduces
+the number of lines of code by about a hundred.
 
-Signed-off-by: Richard Petri <git@rpls.de>
----
- hw/timer/armv7m_systick.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+(2) Unify all of the get_foo()/update_foo() functions that we use
+for reading and writing the various in-guest-memory tables so that
+they use a single style of API rather than being confusingly
+different about how they indicate failure and how they return
+the interesting fields from the table entries.
 
-diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
-index 3bd951dd04..5dfe39afe3 100644
---- a/hw/timer/armv7m_systick.c
-+++ b/hw/timer/armv7m_systick.c
-@@ -149,6 +149,10 @@ static MemTxResult systick_write(void *opaque, hwaddr addr,
-         s->control &= 0xfffffff8;
-         s->control |= value & 7;
- 
-+        if ((oldval ^ value) & SYSTICK_CLKSOURCE) {
-+            systick_set_period_from_clock(s);
-+        }
-+
-         if ((oldval ^ value) & SYSTICK_ENABLE) {
-             if (value & SYSTICK_ENABLE) {
-                 ptimer_run(s->ptimer, 0);
-@@ -156,10 +160,6 @@ static MemTxResult systick_write(void *opaque, hwaddr addr,
-                 ptimer_stop(s->ptimer);
-             }
-         }
--
--        if ((oldval ^ value) & SYSTICK_CLKSOURCE) {
--            systick_set_period_from_clock(s);
--        }
-         ptimer_transaction_commit(s->ptimer);
-         break;
-     }
+(3) A handful of less exciting minor tweaks.
+
+Bugfixes:
+
+(1) We were mis-calculating the address to use for the
+last 4 bytes in an interrupt table entry, so they overwrote
+the middle 4 bytes... The fix for this one is slightly
+awkward because we need to handle migration from guests which
+have in-memory tables written using the buggy code.
+
+(2) We shouldn't validity-check rdbase in MAPC with V=0
+
+(3) MAPI/MAPTI with intid 1023 should be rejected
+
+thanks
+-- PMM
+
+Peter Maydell (13):
+  hw/intc/arm_gicv3_its: Use address_space_map() to access command queue
+    packets
+  hw/intc/arm_gicv3_its: Keep DTEs as a struct, not a raw uint64_t
+  hw/intc/arm_gicv3_its: Pass DTEntry to update_dte()
+  hw/intc/arm_gicv3_its: Keep CTEs as a struct, not a raw uint64_t
+  hw/intc/arm_gicv3_its: Pass CTEntry to update_cte()
+  hw/intc/arm_gicv3_its: Fix address calculation in get_ite() and
+    update_ite()
+  hw/intc/arm_gicv3_its: Avoid nested ifs in get_ite()
+  hw/intc/arm_gicv3_its: Pass ITE values back from get_ite() via a
+    struct
+  hw/intc/arm_gicv3_its: Make update_ite() use ITEntry
+  hw/intc/arm_gicv3_its: Drop TableDesc and CmdQDesc valid fields
+  hw/intc/arm_gicv3_its: In MAPC with V=0, don't check rdbase field
+  hw/intc/arm_gicv3_its: Don't allow intid 1023 in MAPI/MAPTI
+  hw/intc/arm_gicv3_its: Split error checks
+
+ hw/intc/gicv3_internal.h               |  23 +-
+ include/hw/intc/arm_gicv3_its_common.h |   2 -
+ hw/intc/arm_gicv3_its.c                | 696 +++++++++++--------------
+ 3 files changed, 328 insertions(+), 393 deletions(-)
+
 -- 
-2.35.1
-
+2.25.1

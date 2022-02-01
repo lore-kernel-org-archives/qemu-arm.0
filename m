@@ -1,282 +1,141 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp269294lfk;
-        Tue, 1 Feb 2022 00:38:02 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxO9dQGssLPsgLCmOgfGDevQl85OEOk1AA9wJQ7F6whQGFkSAkr731jScnVRX42reDNiixW
-X-Received: by 2002:ac8:4993:: with SMTP id f19mr18057815qtq.432.1643704681154;
-        Tue, 01 Feb 2022 00:38:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643704681; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp768908lfk;
+        Tue, 1 Feb 2022 14:44:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyYqFvLzQAOv8ZrCW1U0nYtS462Secj2QNE9FDVc7bYbIfmTg+spJx23IOK8qDeFmzRSzGn
+X-Received: by 2002:a25:c285:: with SMTP id s127mr29690417ybf.36.1643755478942;
+        Tue, 01 Feb 2022 14:44:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643755478; cv=none;
         d=google.com; s=arc-20160816;
-        b=sv9hF6Dx6lID7QkDEDiWipoAoQKMTdQpjyy2OintX7uAGK9qp0u4/KMUhpjBI8E5fS
-         FCU7PHZwJn9r2vZay/zcWIAY18DSue40DK/hHM5TOxi/hf+UQOG+iUKGtdwoIKdNXsUy
-         /oUXkcMFABF5d8wDnoxPVQZxRls3bnWZ3rf9JYsqNlBkqraRGwi4a9GPEpWYhGX1H9VR
-         FCjX8x1xd9prXK1E7ASMOMX1ttTvrYF87Whp56BQXru5SRexPAVPuazQeaFiAjDriscN
-         gTDBNabydGlusc3ODcbHO0HHj7rspse1n4ma1tc7twGpnHB3/Av3kO3BqIFZSCxBmkV7
-         eiYw==
+        b=nVNKWyXMnKkjEnQ1yokjfBiTjk1hcU1lQ/JILp9P/f9DuxaDqcZNV0yb7SlM6d8XHv
+         DioD+zUIgmZ6XUyaPcE/JCBV/fUCKXbE/q0WWbEB3dQ1Svj9N18aeFcrp543rx1/H+FD
+         jh5WScBWtfGJYT1vj6LWAwxa71md0CTOKL9OFZ4KIM3kztUbu/5g9fk8m4ZPOpzprSLG
+         Ht0GtIOuaeVrhKVmS06ChfuodB0FhIclTSbGCdTKlGT1vonOAUX8rAgQVokF3ZBoeoxy
+         r2+GIuwTvdQny6Zh6sTkEuk5cFllhSImHykLH1zdOB3MJxvzyxPTvdn6KrL3hpzte7aB
+         EL6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=yG3CRPJzIs6L8J5aXGQbq17iJcXioqWUbRYYu17N7hE=;
-        b=KCSIsBL3VyjzGGGfVG9i1vtr/qaxM/sVhtlBwG5zxoT+rkDiwLVs3xOk/HkQn8IwFD
-         4YexpcciYUiJmeLVrvgnxToUf7g3krVGNyDCi/TVUtsbV2u2jnEM93SPbJoinlz7AsYB
-         XPqKkUiTvKAn/o63h6tY2rMzup2za5eLDG4CydgpZuo/pdCXpJM85WbuBI6BiwlguWkH
-         N8/PL1uB9gOykeYWkVtyW3hwpLF+sjiR4U2tBCIy/6BbnUIIGFapGdXHUI8koCPz7VPb
-         nIhNCXTgVYhOhFWWsBbfq5LhmUzfzJiwDKIkZOb8rl+D1qVhpI0vrHPksERe8s19eqMB
-         Or0Q==
+         :mime-version:message-id:date:subject:to:from;
+        bh=5pW5hH+xYA8EmMHvu99M6jKraN0jTDjrufkxXyswi6c=;
+        b=h4v/1UX/SiPjutV1V86PKRG/7zeDg8VtXMrIoEF5Qtt3XIyiKaVPQ5nKLtkMDanDuG
+         u0pfD3gbvIWBVnBSktDR/RzmZPNyh5Yd8omqJDGN46GiA4smolM3wGXjPEt7d8/SM0xb
+         2HVZUeCBElQE4a4Ilxuvft+yzmRDurOGYJT0BRf2JAYn3NyHoOaruUXRWck6Ltk8Y3+w
+         Mo0mM1WXzgo9JbIPb/rdNybjbtu+0UMOqcaZYwfGkBSoEVtwmH6USYK8x/W1ybecvpPx
+         aitOiS4ZPVDWI8DsfG6yRBLvgTefr8XgONANRVA2MecswZ3NLqfJOltKbwoGiEUJVZmc
+         uXGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b5si6873915qkn.708.2022.02.01.00.38.00
+        by mx.google.com with ESMTPS id t3si36955712ybc.691.2022.02.01.14.44.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Feb 2022 00:38:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Feb 2022 14:44:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54770 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36194 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEofo-0001Tj-JW
-	for alex.bennee@linaro.org; Tue, 01 Feb 2022 03:38:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52752)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nF1t7-0001q4-VF
+	for alex.bennee@linaro.org; Tue, 01 Feb 2022 17:44:38 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59298)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nEoax-00081t-I8
- for qemu-arm@nongnu.org; Tue, 01 Feb 2022 03:32:59 -0500
-Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156]:54207)
+ (Exim 4.90_1) (envelope-from <git@rpls.de>) id 1nEypD-0008Rd-Vg
+ for qemu-devel@nongnu.org; Tue, 01 Feb 2022 14:28:23 -0500
+Received: from dia.uberspace.de ([185.26.156.221]:43288)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nEoau-0005FO-W4
- for qemu-arm@nongnu.org; Tue, 01 Feb 2022 03:32:59 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.83])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 807CE21D0F;
- Tue,  1 Feb 2022 08:32:52 +0000 (UTC)
-Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.18; Tue, 1 Feb
- 2022 09:32:51 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R0056f5597bc-9346-400d-a9de-2cb0edc4de79,
- FC28BB27814F05D37416E671BAFA2F1ED858982E) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <17b82ef5-5ac7-a6ec-a7e7-0553483cf939@kaod.org>
-Date: Tue, 1 Feb 2022 09:32:50 +0100
+ (Exim 4.90_1) (envelope-from <git@rpls.de>) id 1nEypA-0001r4-I4
+ for qemu-devel@nongnu.org; Tue, 01 Feb 2022 14:28:23 -0500
+Received: (qmail 21045 invoked by uid 989); 1 Feb 2022 19:28:10 -0000
+Authentication-Results: dia.uberspace.de;
+	auth=pass (plain)
+From: Richard Petri <git@rpls.de>
+To: 
+Subject: [PATCH] hw/timer/armv7m_systick: Update clock source before enabling
+ timer
+Date: Tue,  1 Feb 2022 20:26:51 +0100
+Message-Id: <20220201192650.289584-1-git@rpls.de>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [PATCH 00/16] arm: Fix handling of unrecognized functions in PSCI
- emulation
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-References: <20220127154639.2090164-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220127154639.2090164-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 70abd411-27cf-4eab-8c18-36e27cef8fdd
-X-Ovh-Tracer-Id: 17308459268668820435
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrgedvgdduvddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtoheprghnughrvgdrphhriiihfigrrhgrsegrrhhmrdgtohhm
-Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
- helo=3.mo548.mail-out.ovh.net
+X-Rspamd-Bar: +
+X-Rspamd-Report: R_MISSING_CHARSET(0.5) MIME_GOOD(-0.1) MID_CONTAINS_FROM(1)
+ BAYES_HAM(-0.038591)
+X-Rspamd-Score: 1.361408
+Received: from unknown (HELO unkown) (::1)
+ by dia.uberspace.de (Haraka/2.8.28) with ESMTPSA;
+ Tue, 01 Feb 2022 20:28:10 +0100
+Received-SPF: pass client-ip=185.26.156.221; envelope-from=git@rpls.de;
+ helo=dia.uberspace.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, MSGID_FROM_MTA_HEADER=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Tue, 01 Feb 2022 17:05:16 -0500
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Rob Herring <robh@kernel.org>,
- Andrew Jeffery <andrew@aj.id.au>, Andre Przywara <andre.przywara@arm.com>,
- Tyrone Ting <kfting@nuvoton.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Yanan Wang <wangyanan55@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, Alexander Graf <agraf@csgraf.de>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- Andrey Smirnov <andrew.smirnov@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EVXx7BhDhbVQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM cores" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ Richard Petri <git@rpls.de>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: M888CHywoPRP
 
-On 1/27/22 16:46, Peter Maydell wrote:
-> This series fixes our handling of PSCI calls where the function ID is
-> not recognized. These are supposed to return an error value, but
-> currently we instead emulate the SMC or HVC instruction to trap to the
-> guest at EL3 or EL2. Particularly of note for code review:
->   * patches 4-9 include some "is this the right behaviour for
->     this hardware" questions for the maintainers of those boards
->   * patch 15 has a DTB API question, as well as being a change in
->     what we edit in a DTB we are passed by the user
->   * testing of the affected machines would be welcome
-> 
-> We tried to fix that bug in commit 9fcd15b9193e819b, but ran into
-> regressions and so reverted it in commit 4825eaae4fdd56fba0f for
-> release 7.0.  This series fixes the underlying problems causing the
-> regressions and reverts the revert.  It also fixes some other bugs
-> that were preventing booting of guests on the midway board and that
-> meant that the Linux kernel I tested couldn't bring up the secondary
-> CPUs when running with more than one guest CPU.
-> 
-> The regressions happened on boards which enabled PSCI emulation while
-> still running guest code at EL3. This used to work (as long as the
-> guest code itself wasn't trying to implement PSCI!)  because of the
-> fall-through-to-emulate-the-insn behaviour, but once the PSCI
-> emulation handles all SMC calls, most EL3 guest code will stop working
-> correctly. The solution this patchset adopts is to avoid enabling
-> QEMU's PSCI emulation when running guest code at EL3.
-> 
-> The affected boards are:
->   * orangepi-pc, mcimx6ul-evk, mcimx7d-sabre, highbank, midway,
->     xlnx-zcu102 (for any EL3 guest code)
->   * xlnx-versal-virt (only for EL3 code run via -kernel)
->   * virt (only for EL3 code run via -kernel or generic-loader)
-> For all these cases we will no longer enable PSCI emulation.
-> (This might in theory break guest code that used to work because
-> it was relying on running under QEMU and having the PSCI emulation
-> despite being at EL3 itself, but hopefully such code is rare.)
-> 
-> In order to only enable PSCI emulation when the guest is running at an
-> exception level lower than the level that our PSCI emulation
-> "firmware" would be running at, we make the arm_load_kernel() code in
-> boot.c responsible for setting the CPU properties psci-conduit and
-> start-powered-off. This is because only that code knows what EL it is
-> going to start the guest at (which depends on things like whether it
-> has decided that the guest is a Linux kernel or not).
-> 
-> The complicated case in all of this is the highbank and midway board
-> models, because of all the boards which enable QEMU's PSCI emulation
-> only these also use the boot.c secure_board_setup flag to say "run a
-> fragment of QEMU-provided boot code in the guest at EL3 to set
-> something up before running the guest at EL2 or EL1". That fragment of
-> code includes use of the SMC instruction, so when PSCI emulation
-> starts making that a NOP rather than a trap-to-guest-EL3 the setup
-> code will change behaviour. Fortunately, for this specific board's use
-> case the NOP is fine. The purpose of the setup code is to arrange that
-> unknown SMCs act as NOPs, because guest code may use a
-> highbank/midway-specific SMC ABI to enable the L2x0 cache
-> controller. So when the PSCI emulation starts to NOP the unknown SMCs
-> the setup code won't actively break, and the guest behaviour will
-> still be OK. (See patch 11's commit message for fuller details.)
-> 
-> Patches 1 and 2 make the relevant CPU properties settable after the
-> CPU object has been realized. This is necessary because
-> arm_load_kernel() runs very late, after the whole machine (including
-> the CPU objects) has been fully initialized.  (It was the restriction
-> on setting these properties before realize that previously led us to
-> set them in the SoC emulation code and thus to do it unconditionally.)
-> 
-> Patch 3 provides the "set up psci conduit" functionality in the boot.c
-> code; this is opt-in per board by setting a field in the arm_boot_info
-> struct.
-> 
-> Patches 4 to 9 move the individual boards across to using the new
-> approach. In each case I had to make a decision about the behaviour of
-> secondary CPUs when running guest firmware at EL3 -- should the
-> secondaries start off powered-down (waiting for the guest to power
-> them up via some kind of emulated power-control device), or powered-up
-> (so they all start running the firmware at once)? In a few cases I was
-> able to find the answer to this; in the rest I have erred on the side
-> of retaining the current "start powered down" behaviour, and added a
-> TODO comment to that effect. If you know the actual hardware
-> behaviour, let me know.
-> 
-> Patch 10 is the revert-the-revert patch.
-> 
-> Patch 11 removes the highbank/midway board use of the secure_board_setup
-> functionality; the commit message has the details about why this is safe.
-> 
-> Patches 12 to 14 are more minor cleanups that allow, and follow on from,
-> dropping the highbank-specific secondary CPU boot stub code.
-> 
-> Patch 15 is a change that is somewhat unrelated, but is necessary to
-> get the highbank board to successfully boot in SMP and to get the
-> midway board to start a Linux guest at all.
-> 
-> I have tested this with make check/check-acceptance and also with some
-> test images I have locally (including highbank and midway), but I
-> don't have test images for most of these boards, and in particular I
-> don't really have anything that exercises "run guest EL3 code" for
-> most of them. Testing would be welcome.
+Starting the SysTick timer and changing the clock source a the same time
+will result in an error, if the previous clock period was zero. For exmaple,
+on the mps2-tz platforms, no refclk is present. Right after reset, the
+configured ptimer period is zero, and trying to enabling it will turn it off
+right away. E.g., code running on the platform setting
 
-for the Aspeed machines,
+    SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk;
 
-Tested-by: Cédric Le Goater <clg@kaod.org>
+should change the clock source and enable the timer on real hardware, but
+resulted in an error in qemu.
 
-Thanks,
+Signed-off-by: Richard Petri <git@rpls.de>
+---
+ hw/timer/armv7m_systick.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-C.
-
-> 
-> thanks
-> -- PMM
-> 
-> Peter Maydell (16):
->    target/arm: make psci-conduit settable after realize
->    cpu.c: Make start-powered-off settable after realize
->    hw/arm/boot: Support setting psci-conduit based on guest EL
->    hw/arm: imx: Don't enable PSCI conduit when booting guest in EL3
->    hw/arm: allwinner: Don't enable PSCI conduit when booting guest in EL3
->    hw/arm/xlnx-zcu102: Don't enable PSCI conduit when booting guest in
->      EL3
->    hw/arm/versal: Let boot.c handle PSCI enablement
->    hw/arm/virt: Let boot.c handle PSCI enablement
->    hw/arm: highbank: For EL3 guests, don't enable PSCI, start all cores
->    Revert "Revert "arm: tcg: Adhere to SMCCC 1.3 section 5.2""
->    hw/arm/highbank: Drop use of secure_board_setup
->    hw/arm/boot: Prevent setting both psci_conduit and secure_board_setup
->    hw/arm/boot: Don't write secondary boot stub if using PSCI
->    hw/arm/highbank: Drop unused secondary boot stub code
->    hw/arm/boot: Drop nb_cpus field from arm_boot_info
->    hw/arm/boot: Drop existing dtb /psci node rather than retaining it
-> 
->   include/hw/arm/boot.h        |  14 ++++-
->   include/hw/arm/xlnx-versal.h |   1 -
->   cpu.c                        |  22 ++++++-
->   hw/arm/allwinner-h3.c        |   9 ++-
->   hw/arm/aspeed.c              |   1 -
->   hw/arm/boot.c                | 107 +++++++++++++++++++++++++++++------
->   hw/arm/exynos4_boards.c      |   1 -
->   hw/arm/fsl-imx6ul.c          |   2 -
->   hw/arm/fsl-imx7.c            |   8 +--
->   hw/arm/highbank.c            |  72 +----------------------
->   hw/arm/imx25_pdk.c           |   3 +-
->   hw/arm/kzm.c                 |   1 -
->   hw/arm/mcimx6ul-evk.c        |   2 +-
->   hw/arm/mcimx7d-sabre.c       |   2 +-
->   hw/arm/npcm7xx.c             |   3 -
->   hw/arm/orangepi.c            |   5 +-
->   hw/arm/raspi.c               |   1 -
->   hw/arm/realview.c            |   1 -
->   hw/arm/sabrelite.c           |   1 -
->   hw/arm/sbsa-ref.c            |   1 -
->   hw/arm/vexpress.c            |   1 -
->   hw/arm/virt.c                |  13 +----
->   hw/arm/xilinx_zynq.c         |   1 -
->   hw/arm/xlnx-versal-virt.c    |   6 +-
->   hw/arm/xlnx-versal.c         |   5 +-
->   hw/arm/xlnx-zcu102.c         |   1 +
->   hw/arm/xlnx-zynqmp.c         |  13 +++--
->   target/arm/cpu.c             |   6 +-
->   target/arm/psci.c            |  35 ++----------
->   29 files changed, 164 insertions(+), 174 deletions(-)
-> 
+diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
+index 3bd951dd04..5dfe39afe3 100644
+--- a/hw/timer/armv7m_systick.c
++++ b/hw/timer/armv7m_systick.c
+@@ -149,6 +149,10 @@ static MemTxResult systick_write(void *opaque, hwaddr addr,
+         s->control &= 0xfffffff8;
+         s->control |= value & 7;
+ 
++        if ((oldval ^ value) & SYSTICK_CLKSOURCE) {
++            systick_set_period_from_clock(s);
++        }
++
+         if ((oldval ^ value) & SYSTICK_ENABLE) {
+             if (value & SYSTICK_ENABLE) {
+                 ptimer_run(s->ptimer, 0);
+@@ -156,10 +160,6 @@ static MemTxResult systick_write(void *opaque, hwaddr addr,
+                 ptimer_stop(s->ptimer);
+             }
+         }
+-
+-        if ((oldval ^ value) & SYSTICK_CLKSOURCE) {
+-            systick_set_period_from_clock(s);
+-        }
+         ptimer_transaction_commit(s->ptimer);
+         break;
+     }
+-- 
+2.35.1
 

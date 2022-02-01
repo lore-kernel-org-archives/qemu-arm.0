@@ -1,172 +1,282 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp30063lfk;
-        Mon, 31 Jan 2022 15:22:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyjVjwCIoXqNTLkcVniZwN3Em7PvO51cXdXpr7B77HRcWspwn39Sd9p1mKq0Lje72V/fhuA
-X-Received: by 2002:a05:6902:721:: with SMTP id l1mr18491551ybt.636.1643671323124;
-        Mon, 31 Jan 2022 15:22:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643671323; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp269294lfk;
+        Tue, 1 Feb 2022 00:38:02 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxO9dQGssLPsgLCmOgfGDevQl85OEOk1AA9wJQ7F6whQGFkSAkr731jScnVRX42reDNiixW
+X-Received: by 2002:ac8:4993:: with SMTP id f19mr18057815qtq.432.1643704681154;
+        Tue, 01 Feb 2022 00:38:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643704681; cv=none;
         d=google.com; s=arc-20160816;
-        b=YfDOJfgtmAUJxg+yK6+9ai0N0949dwIQdBEsm/e2HhPKKW7albpsmklTxNwDYMIp8i
-         Y9ElgkBd+u2QCAkji19naaYZY0plBJRBKD7TpeU1+W3I24pR/HbkBFnvkZxrD51RDXIM
-         EDRWjo9tb9vDtntaOSpibftfnfU8TVyZqLW6Fj2HBj8+90NvqSHBIx6y0hf+Ovyr8O7f
-         bHvmcHNfUvCuCQggwDbhXU7Wd1um/kC5PGPwsfNvdakOg9zOEA9jJwh/BqTyELMpM27W
-         G1fH1qinxlv8yq3LTddnqpKeXFDCQkqZEmSvtDs9Rzy42KXb8mha/N70mKesGc61F2Vp
-         8qig==
+        b=sv9hF6Dx6lID7QkDEDiWipoAoQKMTdQpjyy2OintX7uAGK9qp0u4/KMUhpjBI8E5fS
+         FCU7PHZwJn9r2vZay/zcWIAY18DSue40DK/hHM5TOxi/hf+UQOG+iUKGtdwoIKdNXsUy
+         /oUXkcMFABF5d8wDnoxPVQZxRls3bnWZ3rf9JYsqNlBkqraRGwi4a9GPEpWYhGX1H9VR
+         FCjX8x1xd9prXK1E7ASMOMX1ttTvrYF87Whp56BQXru5SRexPAVPuazQeaFiAjDriscN
+         gTDBNabydGlusc3ODcbHO0HHj7rspse1n4ma1tc7twGpnHB3/Av3kO3BqIFZSCxBmkV7
+         eiYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=cLkjlkZDQKxUgZ4qhm6Im4nNBukeTMwsITVuFiLt+zk=;
-        b=t4jVinjmsSU8MBBtEhU9ywCZtvEMYOHbPavfQYqsyFQRauGB0H8r6G9o2eJqEHQVAm
-         ReqLOmC9y0TuYjAlG1wfrdZLO6AsivHdMbMGDPQqm07Pt+TJMf4Q33/17MbVAG16u4oh
-         1dLZXWvZtBPUtcHbtAjYxL3tfGh1TsGs4iCK8lkjBWw0iNbGnXTMes2KBNg2Wn7VaZnK
-         Jqr7JhZ+y1z4EXGXO8bV7sQ/tvANDPjlAyLXlouh504fAya9QNFzR6VsgeXb8Pxad3gV
-         1rR+6Wm/A+X2Gkvw/4xU7Bw0ZthZTup+U3c6ZquFazJxhl3ihVJ7+ceO31VCBCVIHmhV
-         K7kg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=yG3CRPJzIs6L8J5aXGQbq17iJcXioqWUbRYYu17N7hE=;
+        b=KCSIsBL3VyjzGGGfVG9i1vtr/qaxM/sVhtlBwG5zxoT+rkDiwLVs3xOk/HkQn8IwFD
+         4YexpcciYUiJmeLVrvgnxToUf7g3krVGNyDCi/TVUtsbV2u2jnEM93SPbJoinlz7AsYB
+         XPqKkUiTvKAn/o63h6tY2rMzup2za5eLDG4CydgpZuo/pdCXpJM85WbuBI6BiwlguWkH
+         N8/PL1uB9gOykeYWkVtyW3hwpLF+sjiR4U2tBCIy/6BbnUIIGFapGdXHUI8koCPz7VPb
+         nIhNCXTgVYhOhFWWsBbfq5LhmUzfzJiwDKIkZOb8rl+D1qVhpI0vrHPksERe8s19eqMB
+         Or0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Lp83HdD0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v73si31145628ybb.178.2022.01.31.15.22.02
+        by mx.google.com with ESMTPS id b5si6873915qkn.708.2022.02.01.00.38.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jan 2022 15:22:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Feb 2022 00:38:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Lp83HdD0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:47580 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54770 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nEfzm-00010M-Io
-	for alex.bennee@linaro.org; Mon, 31 Jan 2022 18:22:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58210)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nEofo-0001Tj-JW
+	for alex.bennee@linaro.org; Tue, 01 Feb 2022 03:38:00 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEfz7-0000Ok-3m; Mon, 31 Jan 2022 18:21:21 -0500
-Received: from [2607:f8b0:4864:20::52a] (port=35453
- helo=mail-pg1-x52a.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEfz5-00071X-GS; Mon, 31 Jan 2022 18:21:20 -0500
-Received: by mail-pg1-x52a.google.com with SMTP id p125so13672901pga.2;
- Mon, 31 Jan 2022 15:21:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=cLkjlkZDQKxUgZ4qhm6Im4nNBukeTMwsITVuFiLt+zk=;
- b=Lp83HdD0reqhrOyCQB/M3B5CJ4qn2o0Q+yyrKskrfSPgkQUZMHbFoxUBTW6GX90JSo
- 3NDak5QvsurwcoT0T61TzkaEgoaqV3xf+X2FiOl5MzIAIbkg70Bf95BXiBiBDlb74o52
- LTiqIPZXTyL4Wu8vsnJhQU7r9JyWqe5vtIqYOeeRg0id+y9y5VSK1LUTLOt2tMonBDE2
- ikImZojsqYyuXzMAg3urGvubhIsg2qK9g6DGl1uZPqE6kXvcjHsUvbyeURUuO+EsCpLP
- RR1cHgYGp6c+ZU0Dcc+Q/LRh72J/SqutHfrlmJf1wrQBaXuscmYm21coKOMi1ymtKILh
- IG/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=cLkjlkZDQKxUgZ4qhm6Im4nNBukeTMwsITVuFiLt+zk=;
- b=ORzlNF/yW7VIyfqNOLj922FmUz73SPse3g7y/NZx7UxlSFBi/7UpDvRBk9qllfDH47
- fp9IlUyKxigBK6RVe57hQUNxCHQEU2hJHX7mF6ZtYezs4UsEhFk7upjdYZYCVXUjh0Er
- EEEj7WRN6I/Y3PFQsM1jb/bFx/08JMrDsqIixF08/FggbUHvFjMLB+FymERf3EB0PI0f
- H3HPn5YgKh1ybGDeM4pkIo5ublDcly7GqYtr1Cjemd+mqLVH4YuB5273pMrBoBV63nSd
- /Otwg/bMJqa8nOouaeDFkY7j3TmZprhhMpgikImRQ0sK1qr2PCRdaBHZdoKhxlEuChos
- HPig==
-X-Gm-Message-State: AOAM532+LwkjDvJUShiu6m0Q0Jrl+Y+UsWjEm8Wghc037XO2Iv2hD6sn
- hDYBI17S44Owe5X441L+dCE=
-X-Received: by 2002:a63:e04a:: with SMTP id n10mr18848537pgj.487.1643671273059; 
- Mon, 31 Jan 2022 15:21:13 -0800 (PST)
-Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
- [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id mz23sm378396pjb.2.2022.01.31.15.21.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 Jan 2022 15:21:12 -0800 (PST)
-Message-ID: <18c91f53-56b9-76d0-dd83-73c48d35bad1@amsat.org>
-Date: Tue, 1 Feb 2022 00:21:08 +0100
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nEoax-00081t-I8
+ for qemu-arm@nongnu.org; Tue, 01 Feb 2022 03:32:59 -0500
+Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156]:54207)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nEoau-0005FO-W4
+ for qemu-arm@nongnu.org; Tue, 01 Feb 2022 03:32:59 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.83])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 807CE21D0F;
+ Tue,  1 Feb 2022 08:32:52 +0000 (UTC)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.18; Tue, 1 Feb
+ 2022 09:32:51 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R0056f5597bc-9346-400d-a9de-2cb0edc4de79,
+ FC28BB27814F05D37416E671BAFA2F1ED858982E) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <17b82ef5-5ac7-a6ec-a7e7-0553483cf939@kaod.org>
+Date: Tue, 1 Feb 2022 09:32:50 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.0
-Subject: Re: [PATCH v1 5/6] hw/misc: Add a model of the Xilinx ZynqMP APU
- Control
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH 00/16] arm: Fix handling of unrecognized functions in PSCI
+ emulation
 Content-Language: en-US
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: qemu-devel@nongnu.org, edgar.iglesias@xilinx.com,
- peter.maydell@linaro.org, luc@lmichel.fr, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, francisco.iglesias@xilinx.com,
- frederic.konrad@adacore.com, qemu-arm@nongnu.org
-References: <20220130231206.34035-1-edgar.iglesias@gmail.com>
- <20220130231206.34035-6-edgar.iglesias@gmail.com>
- <24f93c21-33a6-091f-206f-b80f505b6ddb@amsat.org>
- <20220131121720.GS3586016@toto>
-In-Reply-To: <20220131121720.GS3586016@toto>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+References: <20220127154639.2090164-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220127154639.2090164-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::52a
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x52a.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 70abd411-27cf-4eab-8c18-36e27cef8fdd
+X-Ovh-Tracer-Id: 17308459268668820435
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrgedvgdduvddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtoheprghnughrvgdrphhriiihfigrrhgrsegrrhhmrdgtohhm
+Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
+ helo=3.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-devel@nongnu.org>
-X-TUID: slGNaY/LUuh1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Rob Herring <robh@kernel.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Andre Przywara <andre.przywara@arm.com>,
+ Tyrone Ting <kfting@nuvoton.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Yanan Wang <wangyanan55@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, Alexander Graf <agraf@csgraf.de>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EVXx7BhDhbVQ
 
-On 31/1/22 13:17, Edgar E. Iglesias wrote:
-> On Mon, Jan 31, 2022 at 12:35:54AM +0100, Philippe Mathieu-Daudé wrote:
->> On 31/1/22 00:12, Edgar E. Iglesias wrote:
->>> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->>>
->>> Add a model of the Xilinx ZynqMP APU Control.
->>>
->>> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
->>> ---
->>>    include/hw/misc/xlnx-zynqmp-apu-ctrl.h |  91 +++++++++
->>>    hw/misc/xlnx-zynqmp-apu-ctrl.c         | 257 +++++++++++++++++++++++++
->>>    hw/misc/meson.build                    |   1 +
->>>    3 files changed, 349 insertions(+)
->>>    create mode 100644 include/hw/misc/xlnx-zynqmp-apu-ctrl.h
->>>    create mode 100644 hw/misc/xlnx-zynqmp-apu-ctrl.c
+On 1/27/22 16:46, Peter Maydell wrote:
+> This series fixes our handling of PSCI calls where the function ID is
+> not recognized. These are supposed to return an error value, but
+> currently we instead emulate the SMC or HVC instruction to trap to the
+> guest at EL3 or EL2. Particularly of note for code review:
+>   * patches 4-9 include some "is this the right behaviour for
+>     this hardware" questions for the maintainers of those boards
+>   * patch 15 has a DTB API question, as well as being a change in
+>     what we edit in a DTB we are passed by the user
+>   * testing of the affected machines would be welcome
+> 
+> We tried to fix that bug in commit 9fcd15b9193e819b, but ran into
+> regressions and so reverted it in commit 4825eaae4fdd56fba0f for
+> release 7.0.  This series fixes the underlying problems causing the
+> regressions and reverts the revert.  It also fixes some other bugs
+> that were preventing booting of guests on the midway board and that
+> meant that the Linux kernel I tested couldn't bring up the secondary
+> CPUs when running with more than one guest CPU.
+> 
+> The regressions happened on boards which enabled PSCI emulation while
+> still running guest code at EL3. This used to work (as long as the
+> guest code itself wasn't trying to implement PSCI!)  because of the
+> fall-through-to-emulate-the-insn behaviour, but once the PSCI
+> emulation handles all SMC calls, most EL3 guest code will stop working
+> correctly. The solution this patchset adopts is to avoid enabling
+> QEMU's PSCI emulation when running guest code at EL3.
+> 
+> The affected boards are:
+>   * orangepi-pc, mcimx6ul-evk, mcimx7d-sabre, highbank, midway,
+>     xlnx-zcu102 (for any EL3 guest code)
+>   * xlnx-versal-virt (only for EL3 code run via -kernel)
+>   * virt (only for EL3 code run via -kernel or generic-loader)
+> For all these cases we will no longer enable PSCI emulation.
+> (This might in theory break guest code that used to work because
+> it was relying on running under QEMU and having the PSCI emulation
+> despite being at EL3 itself, but hopefully such code is rare.)
+> 
+> In order to only enable PSCI emulation when the guest is running at an
+> exception level lower than the level that our PSCI emulation
+> "firmware" would be running at, we make the arm_load_kernel() code in
+> boot.c responsible for setting the CPU properties psci-conduit and
+> start-powered-off. This is because only that code knows what EL it is
+> going to start the guest at (which depends on things like whether it
+> has decided that the guest is a Linux kernel or not).
+> 
+> The complicated case in all of this is the highbank and midway board
+> models, because of all the boards which enable QEMU's PSCI emulation
+> only these also use the boot.c secure_board_setup flag to say "run a
+> fragment of QEMU-provided boot code in the guest at EL3 to set
+> something up before running the guest at EL2 or EL1". That fragment of
+> code includes use of the SMC instruction, so when PSCI emulation
+> starts making that a NOP rather than a trap-to-guest-EL3 the setup
+> code will change behaviour. Fortunately, for this specific board's use
+> case the NOP is fine. The purpose of the setup code is to arrange that
+> unknown SMCs act as NOPs, because guest code may use a
+> highbank/midway-specific SMC ABI to enable the L2x0 cache
+> controller. So when the PSCI emulation starts to NOP the unknown SMCs
+> the setup code won't actively break, and the guest behaviour will
+> still be OK. (See patch 11's commit message for fuller details.)
+> 
+> Patches 1 and 2 make the relevant CPU properties settable after the
+> CPU object has been realized. This is necessary because
+> arm_load_kernel() runs very late, after the whole machine (including
+> the CPU objects) has been fully initialized.  (It was the restriction
+> on setting these properties before realize that previously led us to
+> set them in the SoC emulation code and thus to do it unconditionally.)
+> 
+> Patch 3 provides the "set up psci conduit" functionality in the boot.c
+> code; this is opt-in per board by setting a field in the arm_boot_info
+> struct.
+> 
+> Patches 4 to 9 move the individual boards across to using the new
+> approach. In each case I had to make a decision about the behaviour of
+> secondary CPUs when running guest firmware at EL3 -- should the
+> secondaries start off powered-down (waiting for the guest to power
+> them up via some kind of emulated power-control device), or powered-up
+> (so they all start running the firmware at once)? In a few cases I was
+> able to find the answer to this; in the rest I have erred on the side
+> of retaining the current "start powered down" behaviour, and added a
+> TODO comment to that effect. If you know the actual hardware
+> behaviour, let me know.
+> 
+> Patch 10 is the revert-the-revert patch.
+> 
+> Patch 11 removes the highbank/midway board use of the secure_board_setup
+> functionality; the commit message has the details about why this is safe.
+> 
+> Patches 12 to 14 are more minor cleanups that allow, and follow on from,
+> dropping the highbank-specific secondary CPU boot stub code.
+> 
+> Patch 15 is a change that is somewhat unrelated, but is necessary to
+> get the highbank board to successfully boot in SMP and to get the
+> midway board to start a Linux guest at all.
+> 
+> I have tested this with make check/check-acceptance and also with some
+> test images I have locally (including highbank and midway), but I
+> don't have test images for most of these boards, and in particular I
+> don't really have anything that exercises "run guest EL3 code" for
+> most of them. Testing would be welcome.
 
->>> +
->>> +#define NUM_CPUS 4
->>
->> Hmm isn't it APU_MAX_CPU?
->>
-> 
-> 
-> Thanks Philippe. Yes, this was a little confusing. The values happen to be the
-> same but they belong to different models. For example, the apu-ctrl model will be
-> reused in Versal.
-> 
-> Anyways, for v2 I've renamed the macros to CRF_MAX_CPU and APU_MAX_CPU respectevly.
-> I hope that makes things clearer.
+for the Aspeed machines,
 
-Thanks!
+Tested-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+> 
+> thanks
+> -- PMM
+> 
+> Peter Maydell (16):
+>    target/arm: make psci-conduit settable after realize
+>    cpu.c: Make start-powered-off settable after realize
+>    hw/arm/boot: Support setting psci-conduit based on guest EL
+>    hw/arm: imx: Don't enable PSCI conduit when booting guest in EL3
+>    hw/arm: allwinner: Don't enable PSCI conduit when booting guest in EL3
+>    hw/arm/xlnx-zcu102: Don't enable PSCI conduit when booting guest in
+>      EL3
+>    hw/arm/versal: Let boot.c handle PSCI enablement
+>    hw/arm/virt: Let boot.c handle PSCI enablement
+>    hw/arm: highbank: For EL3 guests, don't enable PSCI, start all cores
+>    Revert "Revert "arm: tcg: Adhere to SMCCC 1.3 section 5.2""
+>    hw/arm/highbank: Drop use of secure_board_setup
+>    hw/arm/boot: Prevent setting both psci_conduit and secure_board_setup
+>    hw/arm/boot: Don't write secondary boot stub if using PSCI
+>    hw/arm/highbank: Drop unused secondary boot stub code
+>    hw/arm/boot: Drop nb_cpus field from arm_boot_info
+>    hw/arm/boot: Drop existing dtb /psci node rather than retaining it
+> 
+>   include/hw/arm/boot.h        |  14 ++++-
+>   include/hw/arm/xlnx-versal.h |   1 -
+>   cpu.c                        |  22 ++++++-
+>   hw/arm/allwinner-h3.c        |   9 ++-
+>   hw/arm/aspeed.c              |   1 -
+>   hw/arm/boot.c                | 107 +++++++++++++++++++++++++++++------
+>   hw/arm/exynos4_boards.c      |   1 -
+>   hw/arm/fsl-imx6ul.c          |   2 -
+>   hw/arm/fsl-imx7.c            |   8 +--
+>   hw/arm/highbank.c            |  72 +----------------------
+>   hw/arm/imx25_pdk.c           |   3 +-
+>   hw/arm/kzm.c                 |   1 -
+>   hw/arm/mcimx6ul-evk.c        |   2 +-
+>   hw/arm/mcimx7d-sabre.c       |   2 +-
+>   hw/arm/npcm7xx.c             |   3 -
+>   hw/arm/orangepi.c            |   5 +-
+>   hw/arm/raspi.c               |   1 -
+>   hw/arm/realview.c            |   1 -
+>   hw/arm/sabrelite.c           |   1 -
+>   hw/arm/sbsa-ref.c            |   1 -
+>   hw/arm/vexpress.c            |   1 -
+>   hw/arm/virt.c                |  13 +----
+>   hw/arm/xilinx_zynq.c         |   1 -
+>   hw/arm/xlnx-versal-virt.c    |   6 +-
+>   hw/arm/xlnx-versal.c         |   5 +-
+>   hw/arm/xlnx-zcu102.c         |   1 +
+>   hw/arm/xlnx-zynqmp.c         |  13 +++--
+>   target/arm/cpu.c             |   6 +-
+>   target/arm/psci.c            |  35 ++----------
+>   29 files changed, 164 insertions(+), 174 deletions(-)
+> 
+

@@ -1,123 +1,112 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1398348lfk;
-        Wed, 2 Feb 2022 13:09:38 -0800 (PST)
-X-Received: by 2002:a63:5f48:: with SMTP id t69mr25587965pgb.98.1643836178522;
-        Wed, 02 Feb 2022 13:09:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643836178; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1403538lfk;
+        Wed, 2 Feb 2022 13:19:08 -0800 (PST)
+X-Received: by 2002:a17:902:6848:: with SMTP id f8mr32230230pln.54.1643836748604;
+        Wed, 02 Feb 2022 13:19:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643836748; cv=none;
         d=google.com; s=arc-20160816;
-        b=urmhBAOFKoLNU0Ppszw5vLTZ3YMl5acb4IkpSmknRYR63h8ioaVxSqCPOhH95HE31W
-         +Ig/PUPCEyb/qaLGmAtMlx6c7BSI6rX018kjvEZ/nviii4nyV0pHUMIbvmp9TSM8TCwp
-         H5jI4hxlekX7TvX1sqD7Ore4rWCCIhuo4ahCDPkba77qmWSPhGTXwtRTGClC9EhoM+pz
-         1iUz63Sf3dYNTu6aNIlMaxuwPrVJuMLvFZKohgSuo5OAWeIkUdcjpwFyXwFn8kMtK218
-         e21o62CH2qpOTQq4krxDFdlW5DLSibb2xIIJUng0DC2gzPN1uPHL4pJEv9evlLfw3fbV
-         GPSw==
+        b=BjTBlUkfTDd7KnKYUlFRcXTBtmHsL8lNsZ0R8x2B4TfhdeSJLEFPq4Vj8xi+svlziz
+         8BoM2DOksXW+Ih/eeP88VTcKxK0wwrZldKyXKbPbLWAEmuxkfO72UeI5c6f5sEZ+Zvra
+         mTrO2Qr4laTZEUtX13JjcWjMiqan7owjCteavngcT6LLUfDyIcRxhvvXbyathXienLh5
+         KLGCC1ye1w8avU2hV6reAQvI1VDSONFfZZD9M9UhJswX9Z0cQ1lySd7u92O6PRVyIjcE
+         lO2bcggXPGbRfIqAWIXZr3hjR5hKb7Lu80S9CDW4byuvTZGh9FN1dZKdejl5SG0hPhFu
+         EpCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=K5QUGTnFRnr1FYzfLIv85FR8GFW9imDBUoUo+I4Z5I0=;
-        b=pLpIki5QlSNHZb9+YonITR5YGQUfd0RNLjAxaRUkLQAwNmIJxRZ+VKOMNib5u4grnI
-         v+PabSanz16S5kRNYZvCmgvqX5MOMHvO+66o7ZSozs4B1yJ+U0N+ELeq+aj8dn7FJVlx
-         buFMlXjN3zvdEIWYsKzCblHhY0lbnAZoLXaAz9FIe9fHAPFH/Rxe1JhWpl3vVwNPbFcn
-         Nq3guhYhGPzHqxXaUCbjykfNzhguc1FULHNvOOnk1VJIZjs8HA56GxPoAT5gVBHgAq6C
-         M9BKeQKHyoZZ7HOJKbwMqjzsIMeiAySLBnvwNJvfIWKAk4XK0JNinlTnsiIBr/AOrE0l
-         FnmQ==
+        bh=W08u8gWV2kdB1gWVk9clc7MVV2ByJqztbieghMKqd88=;
+        b=VK+To+OeUJRn7rV0cjbOR4ArF6nS0nGPRewsa8RgPE/BoMWQBgMbwx6wrFEo7AbHFO
+         MIYnwXx8+rhlfkbZcXBgIqCUEAXQqV0x3NctBxkIugWGvvdf9QdNosU0amkw0Uqn7m8I
+         qsD9m16dVkntKNSg1LyCIpwbmbWGK9yEOrfRhZVdfZW++T2bYV7d+PoyAIkqd8DsiYUg
+         gHo8aMn9yog0VcV/9VJFAh9+uHeF0Yzin8nvq6t6YtPo2qbbuDeR2Bu4fjW2PKSpxBU9
+         zSSwG5wsrlsrEG2GIJkl78L4C1Wg5AxqSkZPKNQ66dMjL3lbQmpquZFGnxhCG293Xx99
+         4bDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RgG5+Zva;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dtQTBZ9E;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id w10sor10014362pff.92.2022.02.02.13.09.38
+        by mx.google.com with SMTPS id x27sor9775053pfr.61.2022.02.02.13.19.08
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 02 Feb 2022 13:09:38 -0800 (PST)
+        Wed, 02 Feb 2022 13:19:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RgG5+Zva;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dtQTBZ9E;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=K5QUGTnFRnr1FYzfLIv85FR8GFW9imDBUoUo+I4Z5I0=;
-        b=RgG5+Zva08Vzy+N43uf6bAqhLcnGbsBY8UIUu44/m2gp2/UtsLy777xHvIHbt/vqlG
-         7kYWwq1s2DW9uknTdMlObtEwMXeM1RTm7n8Zft1uHUmm53HYJKL4WRNjFVhLztfE0JQA
-         9feexWjlR/y32doeMD66i3ZFfYqUE/Ir9iodg40qHaYZ/1Z/+duY7UMOooFTSiLMy7nw
-         RARC4A9+hjZY2VRu5bLAPoRHSMRDzveqRuoHxbDqQRvTuLiRSdMbwQuLeBMy23NLTsly
-         ONstB5tBd5CKPe0FWvIv+mTepXNUxfahjhAGHQx/Bxddc2HVhfxGbxLlq96Js3CFScHV
-         EomA==
+        bh=W08u8gWV2kdB1gWVk9clc7MVV2ByJqztbieghMKqd88=;
+        b=dtQTBZ9E/WxLfWwENLRJmtM7P/eplbQKhi/+A4Q/oeFsZ8NdA8GGDcO/WDNbFECMfV
+         ERz1EJl7BdfIe/THxfk0IcjdC1ess6JllyRrwBnxD+7oQrcSI4zcP0/qcDHIrR5HzEv0
+         lU47Z/dxyXsOry9//OgGp8NkA1WKS43Dp4nd/wvLu1UQOk8arJnqdSYZ9UtgzNDGvqfA
+         1Dry6xT5Cz+6mxfxIAIC19HYT9VBxWRvcYd0RTC5d5qVMnr0tv/LP2dW36tpctmQsiJR
+         8c7Dwoiqtf6pGKSNdHrp2IPaV2RwsJnpVNBUXj5Cn6wp2kv+R+xWBO5c0MnpfstqsKPe
+         Ksfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=K5QUGTnFRnr1FYzfLIv85FR8GFW9imDBUoUo+I4Z5I0=;
-        b=U76pQ7+d8mTSyw8JxyVwlaY9SWtNg2Y5lvdTd0YS963NIIDz5KNE4jU7kNTnP/4d00
-         2gY0QvIrE+l2DxIHLgWLTtf7aZmCBmXbyU8rjv6xnSkan6zJlELdPZi/d7N/OdjbbyPB
-         stj3ew1214CyiTnR5N/21A+EX+QyLqyibafFLtTHmxTxDKOXZs9HmpTwdcLjkqHLh+Fq
-         6JjNthR6cRHANCofZekQ8m5iaC7pRUYwMxl6EiVKljNC8XIma39EMcfluhG+jykO5T0Q
-         Be+eU9ZbrZx5EcP4jMg2QNcIDF7XU8XXrYO8s8gudiI+n51J24mUMuDS6fWcuGiGbbox
-         lj0w==
-X-Gm-Message-State: AOAM532cDPN/tNTiRIp0AoaxWxSNXJN9HcgwviWEWfVCx6I3obtlGKMV
-	dM+LokjUbgonxhwxKvPF8rrE967TuDrqfAkXEHc=
-X-Google-Smtp-Source: ABdhPJyozcRdl1QlG2V7P6DDRq137LDTyyIu/6O8X0s21j+J24Rm7as1muvm/aYuNho3HqWEVSJCmw==
-X-Received: by 2002:a62:7c42:: with SMTP id x63mr31407200pfc.31.1643836178004;
-        Wed, 02 Feb 2022 13:09:38 -0800 (PST)
+        bh=W08u8gWV2kdB1gWVk9clc7MVV2ByJqztbieghMKqd88=;
+        b=0WzPPoY1CdLCyK3JFRVbaDw7Pp5mkQcEeR+ADM1+m2eTfgeXpFqGbbSQlrG43FdXxI
+         DgUo2hiK76QN15vgFWCynWAQrekfdojegZOeVlS6UZKoOwwaA1p3dVyVYH46ZgV3kKj0
+         STLq4MJF23DXb5vUxZ0J18HktrXEQKUL9QPvsHuKnxpxMyuV8BB/qHf0gSJ4fl9/pT2p
+         DDTQnsyIqhtXuZwdj0ghAmit3eBrpuoBn8VBQYnbwaaC4Q/9eJ3O8ABdsK9udRvfHQzQ
+         mlf0DlvGCsU7X4svN9wHLjCWcoSvKnmosIlgI3SqkxgwZelQWkCI7EvagbGjhAaUBY+J
+         DrwA==
+X-Gm-Message-State: AOAM532B/1vY0/jS9jul1aj25LWXynaNODamBUsduaEzmNoQ/wqC5Fvg
+	B0G12qwiAsClbsCBfuPaDEUak6s+iQOIeEXVYhI=
+X-Google-Smtp-Source: ABdhPJxfO6OzfiRHWI/Q1K6QMkASbHHoz1L46ouaUdRv08Cwyalx1rPRsBKJx1r517sdCfck1fptDg==
+X-Received: by 2002:a62:750d:: with SMTP id q13mr31322503pfc.43.1643836748135;
+        Wed, 02 Feb 2022 13:19:08 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from ?IPV6:2001:8003:3a49:fd00:420b:54a2:470e:6ebd? ([2001:8003:3a49:fd00:420b:54a2:470e:6ebd])
-        by smtp.gmail.com with ESMTPSA id s15sm27285589pfg.145.2022.02.02.13.09.33
+        by smtp.gmail.com with ESMTPSA id lt17sm6957073pjb.41.2022.02.02.13.19.04
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Feb 2022 13:09:37 -0800 (PST)
-Message-ID: <5e12ebf8-46dd-021d-69b6-cc8bc68f7504@linaro.org>
-Date: Thu, 3 Feb 2022 08:09:30 +1100
+        Wed, 02 Feb 2022 13:19:07 -0800 (PST)
+Message-ID: <2b280d2e-cc74-f02d-8b55-1c089cc16d4e@linaro.org>
+Date: Thu, 3 Feb 2022 08:19:01 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [RFC PATCH 2/4] tests/tcg: build sha1-vector for SVE and compare
+Subject: Re: [RFC PATCH 3/4] tests/tcg: add sha512 test
 Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, fam@euphon.net, berrange@redhat.com,
  f4bug@amsat.org, aurelien@aurel32.net, pbonzini@redhat.com,
- stefanha@redhat.com, crosa@redhat.com,
- Peter Maydell <peter.maydell@linaro.org>
+ stefanha@redhat.com, crosa@redhat.com
 References: <20220202191242.652607-1-alex.bennee@linaro.org>
- <20220202191242.652607-3-alex.bennee@linaro.org>
+ <20220202191242.652607-4-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220202191242.652607-3-alex.bennee@linaro.org>
+In-Reply-To: <20220202191242.652607-4-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: ePQZkblQxUkA
+X-TUID: kRa0EnLXspZX
 
 On 2/3/22 06:12, Alex Bennée wrote:
-> The aim of this is to test code generation for vectorised operations.
-> Unfortunately gcc struggles to do much with the messy sha1 code (try
-> -fopt-info-vec-missed to see why). However it's better than nothing.
+> This imports the sha512 algorithm and related tests from ccan which
+> offers a cleaner hash implementation with its own validation tests
+> with which we can exercise TCG code generations.
 > 
-> We assume the non-vectorised output is gold and baring compiler bugs
-> the outputs should match.
+> [AJB: this exercise in copy and paste does raise the question of
+> should we add ccan as a module to use for writing TCG tests?]
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
 > ---
->   tests/tcg/aarch64/Makefile.target | 12 ++++++++++++
->   1 file changed, 12 insertions(+)
-> 
-> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-> index 1d967901bd..a03844ce48 100644
-> --- a/tests/tcg/aarch64/Makefile.target
-> +++ b/tests/tcg/aarch64/Makefile.target
-> @@ -50,6 +50,18 @@ sysregs: CFLAGS+=-march=armv8.1-a+sve
->   AARCH64_TESTS += sve-ioctls
->   sve-ioctls: CFLAGS+=-march=armv8.1-a+sve
->   
-> +# Vector SHA1
-> +
-> +sha1-vector: CFLAGS=-march=armv8.1-a+sve -O3
+>   tests/tcg/multiarch/sha512.c | 990 +++++++++++++++++++++++++++++++++++
+>   1 file changed, 990 insertions(+)
+>   create mode 100644 tests/tcg/multiarch/sha512.c
 
-For testing host vector operations, sve is not ideal -- you'll wind up with too many 
-predicated operations that can't be vectorized by tcg.  (I wish sve had used a dedicated 
-"true" predicate, which could be detected at translation.  Alas...)
+I glanced through and didn't see anything odd.
+Could be a decent enough test.
+
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

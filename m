@@ -1,186 +1,108 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id r2sm4949187wmq.0.2022.02.01.07.31.09
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1040523lfk;
+        Wed, 2 Feb 2022 02:28:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyo1iOhIv1VA1Yk2N6m5vXzGZXoSlNlnnSS8d1bvG9nMUeq6DPFF2orkpCv2PfbbQWWjZT3
+X-Received: by 2002:aa7:d312:: with SMTP id p18mr28765374edq.49.1643797717587;
+        Wed, 02 Feb 2022 02:28:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643797717; cv=none;
+        d=google.com; s=arc-20160816;
+        b=yJyKTPIyDMGNSV5E+Hq9ZLb88YxE6lT7uopcxKo5x3mvbDgO89dHQ1ym1FbzD+svoD
+         Vw+VRh2v5UQ/vWMHRbd83bj7EkFEb9Dr0etYAWeyle8CtSpTYkyxUF3pyQgN09Y5e/k4
+         skETQVq0xn1c/ATjj/o0OdpCySuWmNXLpge34EbHay2Gsz1IPgYscZ/G4Cz7UbfwIQz8
+         jWjB5k7Jw1DbNw2wI2UmT7Lv4y253o/QCpNhVx/Ze7s6IrkuxHE/POzjub08i0ADg2a8
+         m7UabShqj6PvEDGIuyrkUKkWckL2WtYT+8Adpmaa7fGETCk8qty3dCVFLSgSGeUcnkdJ
+         Sa9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=txBz586yMEc/UeL7VfgrrVEPuCoLkUSjRn73MgpTE6Y=;
+        b=DbCoeOC0das0+rEUScaRYbNkmslmOnVq7uFcpGFZu2G8ZV/T5HUFA/IpW1z8iCLDl3
+         1N/VrbYipZi7Cm0UZJOAvNknzsN6oTInREz5IRytN//3BL7z+iV3te/8Mk0JbKWaFQ8i
+         Qyd5w1StYc9GqYa9wQE3sGW+7jwJBgCKdsUjDkpA2xDoHy+IySA9eEv3MWGwzercpPPb
+         ArdCzi7jntcjCojBtpC/g3bLnwNjnx+piX962KAfe12kDEBGfiB2rXJ6bZ/N+VfGuSe2
+         rREBIWgtnHEk5aGum8KcaGlJBamljUZtOgJzEGa/iYR1bDDGBkHjBNogBvz9c9PdNQj/
+         IXsA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U8uWZ7B1;
+       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id hs24si12099842ejc.295.2022.02.02.02.28.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 02 Feb 2022 02:28:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U8uWZ7B1;
+       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1643797716;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type;
+	bh=txBz586yMEc/UeL7VfgrrVEPuCoLkUSjRn73MgpTE6Y=;
+	b=U8uWZ7B1KerLSeQl9P1xY5QFHvxpNQ50mRpNCtXic/cA7G5qZrf4XMSFa1Oz5Qikc4y2V5
+	Rqc+DtrFlxIv6JHoaa+9eLBhrT69dDS4nhryFxxp/OiQENn4phP4K+FHhyY6bwBah5foPb
+	i0+ArTTLX5CN6lOr99YCyaoM27JvCJU=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-226-z6d_He8CMTeBDIXvLMKizA-1; Wed, 02 Feb 2022 05:28:35 -0500
+X-MC-Unique: z6d_He8CMTeBDIXvLMKizA-1
+Received: by mail-wr1-f72.google.com with SMTP id x4-20020adfbb44000000b001d83e815683so6663153wrg.8
+        for <alex.bennee@linaro.org>; Wed, 02 Feb 2022 02:28:35 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=txBz586yMEc/UeL7VfgrrVEPuCoLkUSjRn73MgpTE6Y=;
+        b=7Ia25eWDTonjb1fNp7ZLeAtL5TUt7voMSrz12Q8p275gdj3O0pLhKJ3abSDAJbMABL
+         BWJ3OzUXGU8PtcosZ6xWGsZGQglysDo1yMhU/kE4LgCLIZ8G/EC0Mwh/O1Cm7bEL0UUg
+         DngQzVM1v2Xa8nu1v3ScjMfA8Horo/4/a0N+ESd04Gea0/LOmVpKjvAkxSMAwr+ZcMYo
+         elQJ093dWHSYObwO0Jwwxqv5sZM5bGlR/IXepdhJmNZbTNP3kiaAhU2/OCEVrSBJhG9K
+         /o5XBTHRHhZQw18bta8aLFNnGeFN3VpabjuRhymmAd/0OQ6BP9YkgOtYMPPLx21K4v1A
+         qSmw==
+X-Gm-Message-State: AOAM531JQC5KsTMJn+yMFSJgpdbW6R41wduVbvdhULFUr4apQCje+LzQ
+	bIjsbS6x+7V7tmJ73S779+A6qI9J8ib28i2FIT8oE7TxS45JAmIvzCXZaIcjtqXN0SIMJQcbZtp
+	cuEj+/RF5wkigco/i
+X-Received: by 2002:a5d:6c64:: with SMTP id r4mr25069039wrz.659.1643797714384;
+        Wed, 02 Feb 2022 02:28:34 -0800 (PST)
+X-Received: by 2002:a5d:6c64:: with SMTP id r4mr25069027wrz.659.1643797714223;
+        Wed, 02 Feb 2022 02:28:34 -0800 (PST)
+Return-Path: <drjones@redhat.com>
+Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
+        by smtp.gmail.com with ESMTPSA id l10sm16789040wrz.20.2022.02.02.02.28.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Feb 2022 07:31:10 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 701421FFB7;
-	Tue,  1 Feb 2022 15:31:09 +0000 (GMT)
-References: <20220124201608.604599-1-alex.bennee@linaro.org>
- <20220124201608.604599-13-alex.bennee@linaro.org>
- <YflK+fSCdRCzmNrS@strawberry.localdomain>
-User-agent: mu4e 1.7.6; emacs 28.0.91
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Aaron Lindsay <aaron@os.amperecomputing.com>
-Cc: qemu-devel@nongnu.org, minyihh@uci.edu, ma.mandourr@gmail.com,
- Luke.Craig@ll.mit.edu, cota@braap.org, kuhn.chenqun@huawei.com,
- robhenry@microsoft.com, mahmoudabdalghany@outlook.com, Alexandre Iooss
- <erdnaxe@crans.org>, Peter Maydell <peter.maydell@linaro.org>, "open
- list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH  v1 12/22] plugins: stxp test case from Aaron (!upstream)
-Date: Tue, 01 Feb 2022 15:29:05 +0000
-In-reply-to: <YflK+fSCdRCzmNrS@strawberry.localdomain>
-Message-ID: <87o83qy56q.fsf@linaro.org>
+        Wed, 02 Feb 2022 02:28:33 -0800 (PST)
+Date: Wed, 2 Feb 2022 11:28:32 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: richard.henderson@linaro.org, alex.bennee@linaro.org,
+	peter.maydell@linaro.org, ricarkol@google.com
+Subject: arm: singlestep bug
+Message-ID: <20220202102832.lwiyc5huddau4i6a@gator>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: guMjqCWS2g54
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-TUID: UwrC51bOU7oJ
 
+Hello TCG developers,
 
-Aaron Lindsay <aaron@os.amperecomputing.com> writes:
+We have new debug test cases in kvm-unit-tests thanks to Ricardo Koller.
+The singlestep test cases are failing with TCG. Enabling TCG debug outputs
+the error
 
-> On Jan 24 20:15, Alex Benn=C3=A9e wrote:
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
->> Message-ID: <YXCA62xdRDeueQR6@strawberry.localdomain>
->>=20
->> ---
->> [AJB] this was for testing, I think you can show the same stuff with
->> the much more complete execlog now.
->
-> Is it true that execlog can also reproduce the duplicate loads which are
-> still an outstanding issue?
+  TCG hflags mismatch (current:(0x000004a1,0x0000000000004000) rebuilt:(0x000004a3,0x0000000000004000)
 
-Are we still seeing duplicate loads? I thought that had been fixed.
+I noticed that the test passed on an older QEMU, so I bisected it and
+found commit e979972a6a17 ("target/arm: Rely on hflags correct in
+cpu_get_tb_cpu_state"), which unfortunately doesn't tell us anything
+that the above error message didn't say already (apparently we can't
+currently depend on hflags being correct wrt singlestep at this point).
 
->
-> -Aaron
->
->> ---
->>  contrib/plugins/stxp-plugin.c     | 50 +++++++++++++++++++++++++++++++
->>  tests/tcg/aarch64/stxp.c          | 28 +++++++++++++++++
->>  contrib/plugins/Makefile          |  1 +
->>  tests/tcg/aarch64/Makefile.target |  3 ++
->>  4 files changed, 82 insertions(+)
->>  create mode 100644 contrib/plugins/stxp-plugin.c
->>  create mode 100644 tests/tcg/aarch64/stxp.c
->>=20
->> diff --git a/contrib/plugins/stxp-plugin.c b/contrib/plugins/stxp-plugin=
-.c
->> new file mode 100644
->> index 0000000000..432cf8c1ed
->> --- /dev/null
->> +++ b/contrib/plugins/stxp-plugin.c
->> @@ -0,0 +1,50 @@
->> +#include <stdio.h>
->> +#include <stdarg.h>
->> +#include <qemu-plugin.h>
->> +
->> +QEMU_PLUGIN_EXPORT int qemu_plugin_version =3D QEMU_PLUGIN_VERSION;
->> +
->> +void qemu_logf(const char *str, ...)
->> +{
->> +    char message[1024];
->> +    va_list args;
->> +    va_start(args, str);
->> +    vsnprintf(message, 1023, str, args);
->> +
->> +    qemu_plugin_outs(message);
->> +
->> +    va_end(args);
->> +}
->> +
->> +void before_insn_cb(unsigned int cpu_index, void *udata)
->> +{
->> +    uint64_t pc =3D (uint64_t)udata;
->> +    qemu_logf("Executing PC: 0x%" PRIx64 "\n", pc);
->> +}
->> +
->> +static void mem_cb(unsigned int cpu_index, qemu_plugin_meminfo_t meminf=
-o, uint64_t va, void *udata)
->> +{
->> +    uint64_t pc =3D (uint64_t)udata;
->> +    qemu_logf("PC 0x%" PRIx64 " accessed memory at 0x%" PRIx64 "\n", pc=
-, va);
->> +}
->> +
->> +static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *t=
-b)
->> +{
->> +    size_t n =3D qemu_plugin_tb_n_insns(tb);
->> +
->> +    for (size_t i =3D 0; i < n; i++) {
->> +        struct qemu_plugin_insn *insn =3D qemu_plugin_tb_get_insn(tb, i=
-);
->> +        uint64_t pc =3D qemu_plugin_insn_vaddr(insn);
->> +
->> +        qemu_plugin_register_vcpu_insn_exec_cb(insn, before_insn_cb, QE=
-MU_PLUGIN_CB_R_REGS, (void *)pc);
->> +        qemu_plugin_register_vcpu_mem_cb(insn, mem_cb, QEMU_PLUGIN_CB_N=
-O_REGS, QEMU_PLUGIN_MEM_RW, (void*)pc);
->> +    }
->> +}
->> +
->> +QEMU_PLUGIN_EXPORT
->> +int qemu_plugin_install(qemu_plugin_id_t id, const qemu_info_t *info,
->> +                        int argc, char **argv)
->> +{
->> +    qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
->> +    return 0;
->> +}
->> diff --git a/tests/tcg/aarch64/stxp.c b/tests/tcg/aarch64/stxp.c
->> new file mode 100644
->> index 0000000000..fb8ef6a46d
->> --- /dev/null
->> +++ b/tests/tcg/aarch64/stxp.c
->> @@ -0,0 +1,28 @@
->> +
->> +
->> +void stxp_issue_demo(void *arr)
->> +{
->> +    asm(".align 8\n\t"
->> +        "    mov x0, %[in]\n\t"
->> +        "    mov x18, 0x1000\n\t"
->> +        "    mov x2, 0x0\n\t"
->> +        "    mov x3, 0x0\n\t"
->> +        "loop:\n\t"
->> +        "    prfm  pstl1strm, [x0]\n\t"
->> +        "    ldxp  x16, x17, [x0]\n\t"
->> +        "    stxp  w16, x2, x3, [x0]\n\t"
->> +        "\n\t"
->> +        "    subs x18, x18, 1\n\t"
->> +        "    beq done\n\t"
->> +        "    b loop\n\t"
->> +        "done:\n\t"
->> +        : /* none out */
->> +        : [in] "r" (arr) /* in */
->> +        : "x0", "x2", "x3", "x16", "x17", "x18"); /* clobbers */
->> +}
->> +
->> +int main()
->> +{
->> +    char arr[16];
->> +    stxp_issue_demo(&arr);
->> +}
->> diff --git a/contrib/plugins/Makefile b/contrib/plugins/Makefile
->> index 54ac5ccd9f..576ed5875a 100644
->> --- a/contrib/plugins/Makefile
->> +++ b/contrib/plugins/Makefile
->> @@ -20,6 +20,7 @@ NAMES +=3D howvec
->>  NAMES +=3D lockstep
->>  NAMES +=3D hwprofile
->>  NAMES +=3D cache
->> +NAMES +=3D stxp-plugin
->>=20=20
->>  SONAMES :=3D $(addsuffix .so,$(addprefix lib,$(NAMES)))
->>=20=20
->> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makef=
-ile.target
->> index 1d967901bd..54b2e90d00 100644
->> --- a/tests/tcg/aarch64/Makefile.target
->> +++ b/tests/tcg/aarch64/Makefile.target
->> @@ -72,4 +72,7 @@ endif
->>=20=20
->>  endif
->>=20=20
->> +# Load/Store exclusive test
->> +AARCH64_TESTS +=3D stxp
->> +
->>  TESTS +=3D $(AARCH64_TESTS)
->> --=20
->> 2.30.2
->>=20
-
-
---=20
-Alex Benn=C3=A9e
+Thanks,
+drew

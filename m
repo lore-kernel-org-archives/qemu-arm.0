@@ -1,189 +1,150 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2016463lfk;
-        Thu, 3 Feb 2022 09:57:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwp6KvV1hUxlQRqN8i7G/y3ttGf1KCTHb9HtBxin0Htz4bxxzoWARC1nfB5m4jmesOcAzBl
-X-Received: by 2002:a63:2b4d:: with SMTP id r74mr15992171pgr.514.1643911048647;
-        Thu, 03 Feb 2022 09:57:28 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1643911048; cv=pass;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1938632lfk;
+        Thu, 3 Feb 2022 07:53:08 -0800 (PST)
+X-Received: by 2002:a5d:408e:: with SMTP id o14mr29431012wrp.83.1643903588586;
+        Thu, 03 Feb 2022 07:53:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643903588; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZSPVS/CLzK330kkUwN22op7HcDRr+VSPPobpfy12udZsQhf+VHLKGuhqNoUvpIozS1
-         4g+liH+v99pGp1WzKJtTfFw0afg0IGEMfYiTrLy6q/ec+N0ucezltrVEgBDac/I9bffL
-         WoPZilxCMVe8oaMARc6W3O9XRsFISDbET7kvXzLUyekzA8Ka/jf6RxTEfiDzam7X8DnC
-         kKOhTKPGtdh8pP/R3urGPJwKgBtfSeuKuw1rix2aF29HS8dEHClg/gJyYKZNc7El6foU
-         0GxbGm/ISDCjeNIWK/eEDzZbBXTyy3UIzy9naQB/RyK8/HvDC/ixzVyaJ0AgUI/zAfKZ
-         bvyA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=fpDhXhzeggEQ2IQQUcsWyXmSm1MGRla7F+YI56LwhKM=;
-        b=RP4hZaIUdyLJVU29+/3gp7utlqwLPKdwWskyYZKUYmClbkJT4pAr1xNevoYlfn1rCc
-         A1qp2YYMPG5eRJGWuoySmqD4/JwAWItkgRBOB3vB2ewGWKxRsxazHrSPGeyDa+m7+1R8
-         USyEZSmz+SE/hHeaAOLKJ8SjH4EJSQN3xTVyN7B7NfKmK1C1e66LM7/v46leEsW0jjBY
-         PMwpOTnYC1CM1F8spj+amKNvGEJcDhlorge+3y+zCpnQ4dkVziJ6MHPs1wjGiyu4rIlS
-         aG/lDbPfVcHNuSvCI1b3Kbi58DasU6WoQQdt1DzaPcsSsvY/iOBslt/QYmw6B5ZskJiQ
-         vY3Q==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qccesdkim1 header.b=iWV2qYof;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of tsimpson@quicinc.com designates 216.71.142.165 as permitted sender) smtp.mailfrom=tsimpson@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <tsimpson@quicinc.com>
-Received: from esa.hc3962-90.iphmx.com (esa.hc3962-90.iphmx.com. [216.71.142.165])
-        by mx.google.com with ESMTPS id mu14si9731357pjb.118.2022.02.03.09.57.28
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 03 Feb 2022 09:57:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of tsimpson@quicinc.com designates 216.71.142.165 as permitted sender) client-ip=216.71.142.165;
+        b=fKvV+ux0DYxF/d32GJaUBQkxa3/wibALFMN4fK5BGtKipc1CK/dgXqoKUuge0pSauD
+         M5xQlr+0fjiJgoMD2IFL2VaOKjDGVRXXlQgGjGohjzPEZpdc9QisFHcVa6rxaujUT1hl
+         8DVOHDck81Oj3VGnz2Fd1ymAp5el68T3sFz0+S2exBBclawWQICCJ9qRBA/nb+0CnCdP
+         kcOx7douy6hHW/Apte86WMgdl+M7VhGB7Hl3qZZxdwvtGqtYuU2zpdMXpLF1EbKTwJAL
+         eZvPYWrJIhaV75U7GkCb0IjOqt3sDpIgekUf6uTaRmEtB5iWrhnbPauJbuZJVny1Uaut
+         LNSw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:from:subject:mime-version:message-id:date:dkim-signature;
+        bh=hlcPZ7SXucwFodQrQPiBEc/tDIQ/hkwYn0I0gTD1PIQ=;
+        b=MbBFWzWrBH7zvOBr4vHbdwioyJ9Vl6Bb6fjcMW3eTHSLuQrGaLpBq/+0lHWFGTOoia
+         AOjFzJALhxuvLEPFQX32IyH5YAmN7AJJt72YOgdZmvNfoX8Gt9xN6hid2Io7U0TvLVUP
+         rVDiRM6HeimLwSJUy4pTEM+W7puIyAVMssnIma+ZxLl6DPwefAQGMAWyLCiHtqdfbuxe
+         xzbBMtgRpJyfezVhbyTB3Tyk6ebUlwrg3Ue2WzgGwGn0h57Mcsr4xxwNC+eRoEWbxgY0
+         32G9zO5ZbqbWp439lgds5Xit1Z8dkMHLRLohlR0LVXBEmEPKd4t1FaDchGKWtZshk7Qu
+         riuA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=oEjqBRJw;
+       spf=pass (google.com: domain of 3zpr7yq0kc18s7ibkqfkdefq7dlldib.9lj7ibu.8bkkbbifk7ol.lod@flex--valentinghita.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3ZPr7YQ0KC18S7IBKQFKDEFQ7DLLDIB.9LJ7IBU.8BKKBBIFK7OL.LOD@flex--valentinghita.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3ZPr7YQ0KC18S7IBKQFKDEFQ7DLLDIB.9LJ7IBU.8BKKBBIFK7OL.LOD@flex--valentinghita.bounces.google.com>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id w15sor4602238wrn.61.2022.02.03.07.53.08
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 03 Feb 2022 07:53:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3zpr7yq0kc18s7ibkqfkdefq7dlldib.9lj7ibu.8bkkbbifk7ol.lod@flex--valentinghita.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qccesdkim1 header.b=iWV2qYof;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of tsimpson@quicinc.com designates 216.71.142.165 as permitted sender) smtp.mailfrom=tsimpson@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dkim=pass header.i=@google.com header.s=20210112 header.b=oEjqBRJw;
+       spf=pass (google.com: domain of 3zpr7yq0kc18s7ibkqfkdefq7dlldib.9lj7ibu.8bkkbbifk7ol.lod@flex--valentinghita.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3ZPr7YQ0KC18S7IBKQFKDEFQ7DLLDIB.9LJ7IBU.8BKKBBIFK7OL.LOD@flex--valentinghita.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qccesdkim1;
-  t=1643911048; x=1644515848;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=fpDhXhzeggEQ2IQQUcsWyXmSm1MGRla7F+YI56LwhKM=;
-  b=iWV2qYofU6V6wjSBNsqiUsfgpaEpwg0f1vi2d1VzBW42wHFu2OlN2UJr
-   SyQIicO/5Sibk7BzhZlPv2VBGd7Q/oBMKowBsvDjo3zzaBkhTiMqLiUwL
-   KecAjZz4wmYGD6JxOAYEv8Lb9JJyJgzb3+j04iwfClWYhAB1ZSI9RaiDp
-   A=;
-Received: from mail-dm6nam12lp2173.outbound.protection.outlook.com (HELO NAM12-DM6-obe.outbound.protection.outlook.com) ([104.47.59.173])
-  by ob1.hc3962-90.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Feb 2022 17:57:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=A6Kst8PQqD/QYmJLDbicxSbHWkYdj/ckFdOPW2vZ5OC4Sqiop7j0JvrXzCfmCOLawwh65dZAwrQFoTlh/unu5viXiESCPvECIY89y+j9ajbfgf01Eqwc3IkV22aeKrOil361ehmw8Luf6fZlMl+ocBVjhkGzqux5hg1WbAnNk0RPi/9AAzG6QwqCROiA9PP2BZ8riRkQWkrkQr8XxwPoyJsU78U/ckpK1ZskkVZI9ZY8mPhOf/7EsBgUFqHYWw5JoMCETSPstkMnXQqOcuIjYZDnWt/ES95LrIg/Jgii3wkWfZr/TlkTlBwH+vta1kS/a0IVjZkI6B4qETuD+YVTkA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fpDhXhzeggEQ2IQQUcsWyXmSm1MGRla7F+YI56LwhKM=;
- b=GtisWBM8kjTt1cSCl2ZBNudTRmKmySjOCIlZOO6HyxXvDHwsYyuWvdGCAvtTgMSQYrQFqTL/W9zMjekHzdl43QekfuDI3EAAQiBaKIZ6nmxZdsq5OThUlfjSAsVWlNDIzaPNwP/FITzdnL7Ri+UcErfEUB3YM6dVwmk7wLcX8c+Tu3B/2478FKdku1SCVnOGxVdM53WlKpiFG31K4zooGiyw75AAmNarlJgMQ0QVZSdfAQ17DKqO59Qwu4DJB0VaA0qSgxqSlCte16t0w2Xt3MUTHHRWgmraVI8OrBmcLKof7bShhNZVga8TwyP8u0YXkF8+fW6qtivhx39sRCFsaA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Received: from SN4PR0201MB8808.namprd02.prod.outlook.com
- (2603:10b6:806:203::12) by PH0PR02MB7576.namprd02.prod.outlook.com
- (2603:10b6:510:5a::18) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4951.14; Thu, 3 Feb
- 2022 17:57:24 +0000
-Received: from SN4PR0201MB8808.namprd02.prod.outlook.com
- ([fe80::bd2b:92ca:d25e:9d10]) by SN4PR0201MB8808.namprd02.prod.outlook.com
- ([fe80::bd2b:92ca:d25e:9d10%6]) with mapi id 15.20.4951.014; Thu, 3 Feb 2022
- 17:57:24 +0000
-From: Taylor Simpson <tsimpson@quicinc.com>
-To: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-CC: "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "fam@euphon.net" <fam@euphon.net>,
-	"berrange@redhat.com" <berrange@redhat.com>, "f4bug@amsat.org"
-	<f4bug@amsat.org>, "aurelien@aurel32.net" <aurelien@aurel32.net>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>, "stefanha@redhat.com"
-	<stefanha@redhat.com>, "crosa@redhat.com" <crosa@redhat.com>
-Subject: RE: [RFC PATCH  0/4] improve coverage of vector backend
-Thread-Topic: [RFC PATCH  0/4] improve coverage of vector backend
-Thread-Index: AQHYGHGJHyYvQ8C+vki+6vd1G/AKz6yA5OuAgAApILCAAPft0IAAFiAAgAAAdCA=
-Date: Thu, 3 Feb 2022 17:57:24 +0000
-Message-ID:
- <SN4PR0201MB8808A6436C987408C04CED6BDE289@SN4PR0201MB8808.namprd02.prod.outlook.com>
-References: <20220202191242.652607-1-alex.bennee@linaro.org>
- <87k0ecvoxu.fsf@linaro.org>
- <SN4PR0201MB8808B91BF0F27E376C1872AEDE289@SN4PR0201MB8808.namprd02.prod.outlook.com>
- <SN4PR0201MB88089C0A52C660DC7A6D71E6DE289@SN4PR0201MB8808.namprd02.prod.outlook.com>
- <87pmo3sut4.fsf@linaro.org>
-In-Reply-To: <87pmo3sut4.fsf@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=quicinc.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 7ff445ca-dda8-4fcf-63cf-08d9e73ea20d
-x-ms-traffictypediagnostic: PH0PR02MB7576:EE_
-x-microsoft-antispam-prvs:
- <PH0PR02MB75766E1E01D4C148279C314FDE289@PH0PR02MB7576.namprd02.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6430;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info:
- ygRJEqrCpwpZQAj0wKs2lHiz+wGg2ptdIJ2Yb1BEP0YlZCxAUJ0z42coNg8DO2pLgbjDgSQyxMFYjcMIpQhAav2ltYsyC3ZPdGMHKytjakL0VpR3/IuQAw4HQBzEdpM047fbSHcjWiKj5yHc4q30N9X5W9hpu++n03nC7fO7w5QmcRZ2fiCvics90pxv2bkS+xOVhNeVBFPnYrvc82kVzAAQ9NmhwVET66IS3za3Dc2DhkVq2zvKSOwKEAm1XzRhES+P2dTKQIq0qvpcoLqth5dxqs2l57cB1KCcdt4QtasCSmO7lskZpbvxrnwBvMyrBKSgg3WIecF3eARd35HN5YrPB4GfsDeeKbfONni7uDClEGhJwu6SNj7cqlzOfIQb6r2TdEAEiOm4yf8VNh/nkFKbR5A97CNBLVRpuVY5Vt6DOELu1XY9IemSzJxZ4DBKV/VRqdSqEzVju83Mpgoy00WOVlQZVqicSndqrc/D4BYq/10PqkmXe3awoy1sUmjN46mCdBpp5XL2SSSJgAw5inQty6V2DUHtvC5eSiDseCZ0jCixf52deua9SZGyjeq7g0fuxuLvfR9AzGA+d67okEVyG2ZKATwBtEk9wmucH+szx9otSZHfn4IEc9yxT33j5hNbzD2dEzkDalnlYdBLGAxqIAW47tVRUgA70AIdyyVgOEXIRnign9csQCq5N0hUDr+rwb1/F99acZOPyGVFyQ==
-x-forefront-antispam-report:
- CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SN4PR0201MB8808.namprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(71200400001)(6916009)(5660300002)(122000001)(316002)(54906003)(33656002)(38070700005)(55016003)(2906002)(6506007)(66946007)(7416002)(64756008)(53546011)(66446008)(52536014)(7696005)(76116006)(9686003)(66556008)(66476007)(66574015)(86362001)(8936002)(26005)(186003)(83380400001)(508600001)(8676002)(4326008)(38100700002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0:
- =?utf-8?B?N3ZYL0p0bjhkOXl5M2F6aWNVemFJU3V1dTVqbm9pRmordlBqNlViaHVSRG8r?=
- =?utf-8?B?Z3oxOWp1c1FKOEFkK3o4aGhvcy9jNndxNWJubGpuQ0N6SVNpM0J1VGZqeUU3?=
- =?utf-8?B?U2hzeXVCbTVyc0c3bmphbEhzY0NCVUxzcjJJNFpuS1hpdlR2MGFNR2UybjhP?=
- =?utf-8?B?VmZCNlBwL05BZjZhNjlBeGJndFZXSHQ5SmlLWmFxeSt6YjNhZmpjOTFNOHBl?=
- =?utf-8?B?TExCaTRDalFaOWFXQ093VU9Sc1dvREhnanFXUFZpcFlFNG5RQWE3cUh2cmpp?=
- =?utf-8?B?cTdNaU5BMTEwakpMV3lLZWFHb244SDhJWFdzWnEzVmpLN2RQWGhCV2JrbjNv?=
- =?utf-8?B?eGlFS0lTOWIxeWNCcElPOTBLYWVTNXJ1c3hHQ1RpU3ViWDZVYjIrL3puNFVn?=
- =?utf-8?B?STJ4KzIvaEtsUW4rbFZMZXZLczcvdjVydGY4V0RYeXdwbkt2MFVvYWxNUjh4?=
- =?utf-8?B?aGZORTgwUU9VMDlMRzZGem9ZbVVkNjRwbEFJVUcyYmEvam4xZU5EeEIyOUJj?=
- =?utf-8?B?TzlXK01Cd3o1RW05MnhZZWJKOGlxRmtBaGNIdkltWSt3a2I4YWRMeFNhWkY1?=
- =?utf-8?B?OW9JUlFvdUNQZHZkOTBtbGt0SXRTUlNLTThmazNEY2lkTHBBY0ZQcGdMaHNG?=
- =?utf-8?B?cTk3bHpKUFduaktyNXlwbzBYNmxBeGl5Wi9zcHdBK21ic3piL0lremxBVHlM?=
- =?utf-8?B?UkptQVZtZUQ0cGZJNEJ2QzVKTzVVYjdEdjdXYkxISU8ycG5CWThSM1NtVGtn?=
- =?utf-8?B?WGVNU1N1UVdXQXBUdFFtRTVvOFNRUzBRMVFmc3MrTy9YK0pjbGx1VTdIV3Ri?=
- =?utf-8?B?Q0oyN2krNVlXRWdhdXN4ZkViUVpsbmpYelcxa05acUlaNVpiZjVZMmUwQUZE?=
- =?utf-8?B?a1lUQXluQnh5L21HK1RGUTh6NVVNWjE1eUdYdGxmeTZDVkN6Um8xeGVBWjVL?=
- =?utf-8?B?WHA1VW9Rb3lYNndWZ0R4V1UyNXdVU3VEL0w1SEptM0dhSjF3clo1aVQwaGhM?=
- =?utf-8?B?cnp6UGIwMFVkWm1qNzVKUUxXZldTVWNkYndWTDFhZm9scmF1K2hTc01QU3Bz?=
- =?utf-8?B?aDhNcW42L21LMXFqa1ZkM1JIQkIxekxiUDBLSURBWGl3NEZlR3BCWm1mY201?=
- =?utf-8?B?ckhwSThuY1BCUVlyNFk2SzlNQk95elkwM2ZuejVIRmFyZUttZExjUlNtMWVG?=
- =?utf-8?B?ZG94MytXVHlQVVNaU0RGMzFQUWVpZm13ZjBrRVBTUm54K1U1WGpvcmE0U2Ew?=
- =?utf-8?B?bzIvem42QStQZk9WS1pXTVg1OXNSMHBETzJ4Vy83OE5wQVNlUEdvRWFSYVdl?=
- =?utf-8?B?RzRIR1c4Z2UyRlFrNWs3Z0pqRElPNWN1TFpEOFl4K1pIUytBVWxBVk4wd2g1?=
- =?utf-8?B?MnF4eFNoSVpHMzZwaDI0OElOQ3V1Yzl6TWMzZmtoZTc0UFBLMHFhaUdqQTY2?=
- =?utf-8?B?UWUvTjZIT0tTZVRWK2Vkejh2TVZYR0JQNU1ENEkxY0VSRGFwdHZwalR3Qmpl?=
- =?utf-8?B?N0tlSVh1U0lMRWJ0VHdkcnVxQ1VyVis1ekRuTzBBVkcvem1pSUEwakNMR01a?=
- =?utf-8?B?K3pWUDRkT1llTldpMW5hOGFxVDhsb25RZHErWGJDRGNLM1JpMjFLbWE4SGVw?=
- =?utf-8?B?ejJQc2FjVDlObWt3UnltajRYS2dNclA4cTlEK0lKenJvekVxbm5wQ01rVUhx?=
- =?utf-8?B?QnB1bDladURFbklrcjh6aDJicDk4VXUwV05xZm14ZEdscVRicGc4b2VUVWQw?=
- =?utf-8?B?dldFb0V0ZExHK21Uc1MvMk9RdEM3VEJNSjhtNXR3ZlJhZW5lMk9ocURyTUhh?=
- =?utf-8?B?RnZSajRGSWhTYzRxb1NYTVk2ajBpMmxKL21uRm16Njkwb0Vxbi9XNXdyQjlF?=
- =?utf-8?B?RUo4RVRKNkFpNlpVK2NzMHJLcjlPemR2V1Q3QjdtWGFyWmd2M1loQmJUdWxX?=
- =?utf-8?B?Tm9uWVNMRlptbi9vOVJDQXNCVGZ5Y3JEeDYzK3MrbEthMEpRUndoTEl0UUxS?=
- =?utf-8?B?SG9Hdlg0b3RhTlJQZXJsVnBLc2Fnb055d2JoUUVBcUdRVlg5K3pKNmdQdHJ0?=
- =?utf-8?B?S21pbDExWmM3OTFnWGNNUjlEUmhTZWNDVmlpSnc5OE9sbVRUc1FLdHd0M0tY?=
- =?utf-8?B?U2RPcUVnM1ArL2lNcU16YlRsc1JrYnZLRUpBQWpPRytlNWI1OElNTEpBVDdM?=
- =?utf-8?Q?lICEX1FqHFZoCtXheL2DfvI=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: quicinc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SN4PR0201MB8808.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7ff445ca-dda8-4fcf-63cf-08d9e73ea20d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Feb 2022 17:57:24.1629
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 3fEdMK+t5jjTUWO+3yUaA2Pcp5shO3r4vdZ8B8xT3fZCblBSUNOhWB1NYZHMpK+m0Dj+vu7q1qv/fEmqu2CAtA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR02MB7576
-X-TUID: FVOy4pQmQeXo
+        d=google.com; s=20210112;
+        h=date:message-id:mime-version:subject:from:to:cc;
+        bh=hlcPZ7SXucwFodQrQPiBEc/tDIQ/hkwYn0I0gTD1PIQ=;
+        b=oEjqBRJwGyXfTp9iotik1mjTnMok/fF9l6jRzBcU8Z3w223U3PDy5qMJtowJ9WL6qS
+         /kIhrC78pKmYzC0c9vhxoe8yHNd7u2r2dyrGOq4F+LeqhnENfg9nZdJA1QXx8nAxYZAi
+         O4IpU/Exs4jyWL+yuq7fOhemGx8j5ynLsVI7lvhKuDEAu9NJE8X3ldoJ7sOoFlo55C7v
+         tLGHhvzQ+oazdhrVXX0FmDGelkU2LxkR6FSP5Itp+TG7JlxPycmwg44wameoUA/IhYqg
+         Q1COFjpjsua43pViPzT4Tx4dJULBV33cSZNStalXWf+aLYLWRgENHEfDiKeX49wpEOTd
+         d6SQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+        bh=hlcPZ7SXucwFodQrQPiBEc/tDIQ/hkwYn0I0gTD1PIQ=;
+        b=pMx1hBi3M5ZAiLQ+DR7eQEUXDpiyGRqcteqGuurj2q8gZKNidcWjAVadozgCufy8iX
+         2m1suJBGAgj/GGPnibxVdbIq8ZXYrDa45jvkad9mzYOJx0a9/8T65qplmtaxGcPpOPtr
+         pPARXNG52oAIxvPcMBGh+Tqv6w0mu3i+XlIZ0GoyWVSz4oYzNTrRw7/RC1c9sUnm6Kpa
+         3t4tuyfUTMQG5qgpOUrohFbHkJYRN0C6vd7QgapwC+MojxfcYjRCPgzDIcOwREt6+r9k
+         5/yWCBMwj7M3s+SyIaXsvyng5kxUzKRF0Pq+TKPHfS5L0iAxqarmyJm9Sjj8iSyRs4Oc
+         RS6w==
+X-Gm-Message-State: AOAM530jBlNjXzMOlW1uRVCauMXfV06XSCApNC9A5pX7+WLslej+0tFS
+	+MVXJFKtGZ3rZWO7rSCGMCMCLuIQASS6qIRih6fA
+X-Google-Smtp-Source: ABdhPJy/8G0GGD8SdbKSSTr86yO5UgCSa1yuHHjpxn14FvbxgdON/Z+RQU8pAd5fRy4onh/GhsEfbMjuoD2gtPc/GSqq
+X-Received: from valentinghita.c.googlers.com ([fda3:e722:ac3:cc00:28:9cb1:c0a8:1906])
+ (user=valentinghita job=sendgmr) by 2002:a05:6000:1564:: with SMTP id
+ 4mr24557965wrz.56.1643903588017; Thu, 03 Feb 2022 07:53:08 -0800 (PST)
+Date: Thu,  3 Feb 2022 15:53:04 +0000
+Message-Id: <20220203155304.2648009-1-valentinghita@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.35.0.263.gb82422642f-goog
+Subject: [PATCH] armv7m_nvic: set DHCSR.DEBUGEN when debugger is attached
+From: Valentin Ghita <valentinghita@google.com>
+To: qemu-devel@nongnu.org
+Cc: "=?UTF-8?q?Alex=20Benn=C3=A9e?=" <alex.bennee@linaro.org>, 
+	"=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=" <f4bug@amsat.org>, Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+	Valentin Ghita <valentinghita@google.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: wch/oop85FK1
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogQWxleCBCZW5uw6llIDxh
-bGV4LmJlbm5lZUBsaW5hcm8ub3JnPg0KPiBTZW50OiBUaHVyc2RheSwgRmVicnVhcnkgMywgMjAy
-MiAxMTo1MCBBTQ0KPiBUbzogVGF5bG9yIFNpbXBzb24gPHRzaW1wc29uQHF1aWNpbmMuY29tPg0K
-PiBDYzogcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3Jn
-OyBxZW11LQ0KPiBhcm1Abm9uZ251Lm9yZzsgZmFtQGV1cGhvbi5uZXQ7IGJlcnJhbmdlQHJlZGhh
-dC5jb207DQo+IGY0YnVnQGFtc2F0Lm9yZzsgYXVyZWxpZW5AYXVyZWwzMi5uZXQ7IHBib256aW5p
-QHJlZGhhdC5jb207DQo+IHN0ZWZhbmhhQHJlZGhhdC5jb207IGNyb3NhQHJlZGhhdC5jb20NCj4g
-U3ViamVjdDogUmU6IFtSRkMgUEFUQ0ggMC80XSBpbXByb3ZlIGNvdmVyYWdlIG9mIHZlY3RvciBi
-YWNrZW5kDQo+IA0KPiBUYXlsb3IgU2ltcHNvbiA8dHNpbXBzb25AcXVpY2luYy5jb20+IHdyaXRl
-czoNCj4gDQo+ID4gUXVpY2sgdXBkYXRlIC0gSSByYW4gdGhlIHRlc3Qgb24gdGhlIGhhcmR3YXJl
-IGFuZCBoYXZlIHRoZSBzYW1lIGVycm9yDQo+IG1lc3NhZ2VzLg0KPiA+DQo+ID4gU28sIGl0IGRv
-ZXNuJ3QgbG9vayBsaWtlIGEgUUVNVSBwcm9ibGVtLiAgSSdsbCBpbnZlc3RpZ2F0ZSBpZiB0aGUN
-Cj4gPiBwcm9ibGVtIGlzIGR1ZSB0byBzb21ldGhpbmcgaW4gdGhlIHRvb2xjaGFpbi4NCj4gDQo+
-IFRoYXQgcmVtaW5kcyBtZSB3aGF0IGlzIHRoZSBzdGF0dXMgb2YgdGhlIGJpbmFyeSB0b29sY2hh
-aW4uIFRoZSBsYXN0IGF0dGVtcHQNCj4gaGFkIHNvbWUgaXNzdWVzIHNvIHdlIGFyZSBzdGlsbCB1
-c2luZyB0aGUgaGFuZC1idWlsdCBvbmUgdXBzdHJlYW0uDQoNCk5vIHByb2dyZXNzIG9uIHRoYXQu
-ICBUaGUgdGVhbSBoYXNuJ3QgaGFkIHRoZSBiYW5kd2lkdGggdG8gd29yayBvbiBpdC4NCg0KSG93
-ZXZlciwgSSdtIGxlc3Mgc3VzcGljaW91cyBvZiB0aGUgdG9vbGNoYWluIG5vdy4gIEkgYnVpbHQg
-d2l0aCBhIGNvdXBsZSBvZiBkaWZmZXJlbnQgY29tcGlsZXIgb3B0aW9ucyBhbmQgYSBjb3VwbGUg
-b2YgZGlmZmVyZW50IHZlcnNpb25zIG9mIHRoZSB0b29sY2hhaW4sIGluY2x1ZGluZyB0aGUgQyBs
-aWJyYXJ5IHRoYXQgcnVucyBpbiBwcm9kdWN0aW9uLiAgSW4gYWxsIGNhc2VzLCBJIHNlZSB0aGUg
-c2FtZSByZXN1bHQuDQoNCkFueSBjaGFuY2UgdGhlIHByb2JsZW0gaXMgaW4gdGhlIHRlc3QgaXRz
-ZWxmIChlLmcuLCBzb21lIHNvcnQgb2YgdW5kZWZpbmVkIGJlaGF2aW9yIG9yIGEgNjQtYml0IHZz
-IDMyLWJpdCBkaWZmZXJlbmNlKT8NCg0KVGhhbmtzLA0KVGF5bG9yDQoNCg==
+The DEBUGEN bit is set by the debugger when it is connected to the
+core.  Software can use this bit to check if a debug session is active.
+
+Add a function in gdbstub to check if the debugger is attached to a CPU
+and use this information when the DHCSR register is read in armv7m_nvic.
+
+Signed-off-by: Valentin Ghita <valentinghita@google.com>
+---
+ gdbstub.c              | 10 ++++++++++
+ hw/intc/armv7m_nvic.c  |  4 ++++
+ include/exec/gdbstub.h |  6 ++++++
+ 3 files changed, 20 insertions(+)
+
+diff --git a/gdbstub.c b/gdbstub.c
+index 3c14c6a038..d4e39db8e7 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -3585,6 +3585,16 @@ int gdbserver_start(const char *device)
+     return 0;
+ }
+ 
++bool gdb_attached(CPUState *cpu)
++{
++    GDBProcess *process = gdb_get_cpu_process(cpu);
++    if (process != NULL) {
++        return process->attached;
++    }
++
++    return false;
++}
++
+ static void register_types(void)
+ {
+     type_register_static(&char_gdb_type_info);
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 13df002ce4..d6fff94bca 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -21,6 +21,7 @@
+ #include "sysemu/runstate.h"
+ #include "target/arm/cpu.h"
+ #include "exec/exec-all.h"
++#include "exec/gdbstub.h"
+ #include "exec/memop.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+@@ -1510,6 +1511,9 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+         }
+         /* We provide minimal-RAS only: RFSR is RAZ/WI */
+         return 0;
++    case 0xdf0: /* DHCSR */
++        /* Bit 0: DEBUGEN. */
++        return gdb_attached(CPU(cpu)) ? 1 : 0;
+     case 0xf34: /* FPCCR */
+         if (!cpu_isar_feature(aa32_vfp_simd, cpu)) {
+             return 0;
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index a024a0350d..383f4e5224 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -177,6 +177,12 @@ static inline uint8_t * gdb_get_reg_ptr(GByteArray *buf, int len)
+  */
+ int gdbserver_start(const char *port_or_device);
+ 
++/**
++ * gdb_attached: check if GDB is attached to a given CPU.
++ * @cpu: the CPU to check if GDB is attached to.
++ */
++bool gdb_attached(CPUState *cpu);
++
+ /**
+  * gdb_has_xml:
+  * This is an ugly hack to cope with both new and old gdb.
+-- 
+2.35.0.263.gb82422642f-goog

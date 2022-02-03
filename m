@@ -1,172 +1,165 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4469852lfk;
-        Mon, 7 Feb 2022 06:02:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzhKGanXSXkVjPFbL8UU7smQj1ufOcy39STHWeddyQTVGivj3cqL7dLx7woSAAa1LLXsCCE
-X-Received: by 2002:a05:620a:210d:: with SMTP id l13mr6264871qkl.276.1644242542175;
-        Mon, 07 Feb 2022 06:02:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644242542; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1867967lfk;
+        Thu, 3 Feb 2022 06:02:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJweEIaz8XJNEGVxQXZCfLcVsrbmxL+dwGnkEZhvvNEF1VZ+pc0kOIg/aT1Op6rwKfUKi7VQ
+X-Received: by 2002:a25:7d02:: with SMTP id y2mr45609003ybc.23.1643896954233;
+        Thu, 03 Feb 2022 06:02:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643896954; cv=none;
         d=google.com; s=arc-20160816;
-        b=VFugrGKcgY78TUxsYJIiVeghz+rMAI77PuTv8OrURDltbp9VKWugZpskoJoIq5dyzB
-         DxwaaxqZsy/tqgXClotA/oVb6RY6+maTE58/ExVKGLFgciygdkbUtj8pc1WBipojv9u3
-         GZce3S5mKLOwGcouEZ67mj5kXZt1m3rYbcwjJJOHDNjhjRQrkUzESaWHYgDwH+OFl790
-         QGbFP8WDViXxQB0+qx+luu1h/LrWtzb5dHpIQ6ax3qOCXpiaOfScR6aBIAbLjky8c2mz
-         BB+NdZ/JB9rUq0VhqDuECinUStZtz+ylbIKKa0Pd7otiZbIKImlJ9w/rtsXOjTgDC7St
-         A/hw==
+        b=Fez77+tgTC5bHinsYCKB2q78Z1eZxrKvIq8UzYH1gW/fCX4rB0p5vA7CV38SJ22glu
+         W5Nlo3GvEGbXkczRcmbzjGKjWw8tOIFJcm/dypZM4YIHEeQK1GivnT5gTwQ39yi1UR7k
+         ceeeXI05n0kx3ej0hQgBFRS0ioAlhihYuAbpn1jQVrB0L0Z1Qi5RSBGf00g7Xvd77Mcr
+         PYb6XaiZT91RRL+1+4pY3ZGmcYlFEWcswgnjwafAaiLmc25AKbzCIuoUfJMJF5F6Wnau
+         YJh8/kaVUCEm6oqnYvHEcywYCEFsVz1hIh/pbLsKwyZRerclayt9XyuQIHLRInXxLEJd
+         mExw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Sd7RW5xW5ASHrCH8lYA6A1bzj3dh8tftpaIEiRyJzPk=;
-        b=zrZfpkHbKbLh4zxgGFkBJiWE3Qc27oxuscAJWVAaWQsRILxYwYhzovawRSJJJtq7om
-         t+51yR8tCxcDfHMON+OjR3+69oovEvPyAwInEd4QVFxJy0cWr6H0oRAyCDg+emXIpaSz
-         RWXItKpjKFeYhYsqX6Q3BQNBHbyh2sC9+jz4MMjinO4LjZ2IVJHWB/uRzehkyVLQXj/b
-         IOUH0agPQj5vmVbhz3WFCHP/eLsyZHY27fwsmnDNPNQ68UEjmheCG6nDHNG25DtLFAbt
-         dpI4paqiCavImOWftZdsRkiEfoJMmGLoU/SUmSuZsZI7OYV6sa/hffhNGeBbC2odjeP4
-         MwEA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=5cC47Sv0aLp7tnKjjmWCbq8mH4nDRh0G2Q/XihE2vyw=;
+        b=iz3QLIWuoZnNtHuFDJ/zXxzja2HWWrMRKX6fWgrx7hUtoErrZq204pseC24mDtCvsd
+         EIlVr8hvnk3/75dUcKTdv0fmxDO5ivJmOOwn1GfY1Oh0tov5SBMrsA10NfWG6zx9SW5G
+         qTHbMlWLQPbOCLREDHRNAfcUOy5QloWFaRPv+6FxpZtrdanye7ygswr4WxgeSIYNveKx
+         HUCWK+UbqcvpLP0JiLNjJBOU6oWMW93s3H0Hwc+QPbQ/ZwWsYjOFDabnDrSefrjwCf2A
+         wsWjlfuvipjmDsVnfNnfzwmqhvSUeHUMLSJY1685bnpZg8KBa3uvZm1g57yfbLpSCT56
+         mdqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vsNVSbsh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="QX/hLqxS";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b13si2251272qkp.205.2022.02.07.06.02.21
+        by mx.google.com with ESMTPS id l10si1534387ywm.126.2022.02.03.06.02.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Feb 2022 06:02:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Feb 2022 06:02:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vsNVSbsh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57630 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="QX/hLqxS";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59210 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nH4az-0007Qe-GS
-	for alex.bennee@linaro.org; Mon, 07 Feb 2022 09:02:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46558)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nFcgy-0005QK-IB
+	for alex.bennee@linaro.org; Thu, 03 Feb 2022 09:02:32 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52802)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nH4Jc-0000Dm-Pz
- for qemu-devel@nongnu.org; Mon, 07 Feb 2022 08:44:24 -0500
-Received: from [2a00:1450:4864:20::432] (port=36586
- helo=mail-wr1-x432.google.com)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1nFcgG-0005Ja-T1; Thu, 03 Feb 2022 09:01:48 -0500
+Received: from [2a00:1450:4864:20::12d] (port=43891
+ helo=mail-lf1-x12d.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nH4Ja-000645-MQ
- for qemu-devel@nongnu.org; Mon, 07 Feb 2022 08:44:24 -0500
-Received: by mail-wr1-x432.google.com with SMTP id i15so2482292wrb.3
- for <qemu-devel@nongnu.org>; Mon, 07 Feb 2022 05:44:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Sd7RW5xW5ASHrCH8lYA6A1bzj3dh8tftpaIEiRyJzPk=;
- b=vsNVSbshJ+bnEz8vYLK8ORK7CoOgi+9GG6Wc7ylTBTTs6lSE4xC7fGzJegPNCcKw94
- alCWF9LF8dwh/NY/YlUuhHhuE7P8RSkpYJuGpD+QIQI8kw5E3SgO6PA4p7S2eTUeZ09v
- MLEXs4ITA28EIcWJ8veguJOfWfJzfSB3F+4P6T0oGbtlP9KgTaR5YXBl9u0V4krphLt2
- yfy0JY/uBfnspr5hgKJPtYO29MVH505L4hH9R9OVqR6DCc2/qY+2mU+0jc4GqHJNNzsi
- 033mVabWwD3RFZWLsFp63taVamsh/in8xgpyOJiWjYNZ3KSeywDfjL1TRb45wR2J1z0Q
- vZ6w==
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1nFcgE-0000Qc-QS; Thu, 03 Feb 2022 09:01:48 -0500
+Received: by mail-lf1-x12d.google.com with SMTP id u6so6128867lfm.10;
+ Thu, 03 Feb 2022 06:01:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=5cC47Sv0aLp7tnKjjmWCbq8mH4nDRh0G2Q/XihE2vyw=;
+ b=QX/hLqxS2NbvscfGj2aexAHUqdN9LWP7vxOKm6EE1H7JUWJnxARzeW2vUHyVWDT5SF
+ YDPQWzDZ+MKGXSzPVeF3s63UcY1twUBOXRK02Zqzd0NgmoYZffqwXzekadsUmCH5GFVK
+ dvO+SzJxsDMKC+zNLSj7qNo1JWze4uNgOLK5blgnrTtGrZdYCBydck2cWmU4MIkYIOJi
+ P6BUboat5aFa1i5k6r3/cLDTqdil0a4SuFXE+ejk12ZYlZkNxL5UAYqv0QjQY5OOZeMK
+ vw714jkmv7bddKLXwIPAv6WrtVudiheTFbVnFDqkT0+crY3IIblhA1du87sXe434KdTy
+ DWgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Sd7RW5xW5ASHrCH8lYA6A1bzj3dh8tftpaIEiRyJzPk=;
- b=U7Sfae0wx2XVM/7JssYz0bLPZdrg/B2EbmZ9QRO78Ovenk0aomKrTIvn0T8E5sTy+o
- dLwvx6F8Oe/63ANjrI7vUmn5hDlDIJUQcp8nZ+x8oVB/VWN2sASgBpuodYdrIoSpXYUx
- xFd6F89Y08qBgpH5EXsfUIcGyvRNq3YnDTrxfEY8rc0/hn4OR/33yOCmQagGW8YeMLhl
- z3qPBSaf2JCwtGLe81HZyjP9yHn++Z+XfygJoHJnszSoMG5L9bRLCefx2ZB036618Dhb
- HUGGlpyNK56Gz/NhlUkDiJyajvI9LKdSHTEgh1h63ko0Uj5iuVykVW2BcS8UpmUf1UZE
- /XTQ==
-X-Gm-Message-State: AOAM530rbG8ttiNDH1DlN42eUZK60OPVu/+JUt+c3o46RF9SpbBLrPwY
- 9igdYResd9vLssbSU8TXSwPREHCq8atcw2KRa/ybQg==
-X-Received: by 2002:adf:a51b:: with SMTP id i27mr6544960wrb.172.1644241459314; 
- Mon, 07 Feb 2022 05:44:19 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=5cC47Sv0aLp7tnKjjmWCbq8mH4nDRh0G2Q/XihE2vyw=;
+ b=kJIme+0kLjx3FVM1HKjXqGFSa+mU8mceyVlqor2lyxSpgF3lNFdRcWCP7Xxx9FTwqK
+ ipDXBvkkBj+IrRXn9c1Pjp5XG25HDHrjMzRxN/oPCHxNMl3bzK3uUVkDG4DcYqkIE20F
+ m5H1GW5wuGWBY2StHaq5igW5tOygYv/f6JU88cPRGvIcNq44bsFYdKdB8FAI/CqXWVa0
+ iqvpwbGTB/4dmP1J/Si3qz//cVSD/isItM0yokEmXG2XOJDbbqmW3sbEI9COcClVG11Z
+ ZDJP3RqnVVAf5jvEC/Grg9lUZvTf3jSLmFeTyJVHybwYy5rliHVyGL+hrCnyWRjqzRx7
+ 0HBQ==
+X-Gm-Message-State: AOAM531/U2EfydiQwqLhO4Eoym/QWFrJVfSS5gbKQ4eQ02Em+jTzE7X8
+ BY9b9EsnMcJmbND+4sIQNZE/meeeeTXnJA==
+X-Received: by 2002:ac2:4346:: with SMTP id o6mr25925287lfl.296.1643896904593; 
+ Thu, 03 Feb 2022 06:01:44 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id j23sm4379218lfh.35.2022.02.03.06.01.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Feb 2022 06:01:44 -0800 (PST)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 2/6] target/arm: Make rvbar settable after realize
+Date: Thu,  3 Feb 2022 15:01:37 +0100
+Message-Id: <20220203140141.310870-3-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220203140141.310870-1-edgar.iglesias@gmail.com>
+References: <20220203140141.310870-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
-References: <662aca02-da99-524f-d9df-cd61427ca520@ispras.ru>
-In-Reply-To: <662aca02-da99-524f-d9df-cd61427ca520@ispras.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 7 Feb 2022 13:44:08 +0000
-Message-ID: <CAFEAcA_U1hgz55mGX7DZp36aOHGriU0wjr9Dvt4Y=f2EGNgF+A@mail.gmail.com>
-Subject: Re: target/arm: cp15.dacr migration
-To: Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::432
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::12d
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x12d.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
 X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qfkb4jl6EO1a
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
+ sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, f4bug@amsat.org, francisco.iglesias@xilinx.com,
+ frederic.konrad@adacore.com, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fmckNctap5/U
 
-On Mon, 7 Feb 2022 at 12:13, Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru> wrote:
->
-> I recently encountered a problem with cp15.dacr register.
-> It has _s and _ns versions. During the migration only dacr_ns is
-> saved/loaded.
-> But both of the values are used in get_phys_addr_v5 and get_phys_addr_v6
-> functions. Therefore VM behavior becomes incorrect after loading the
-> vmstate.
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Yes, we don't correctly save and restore the Secure banked
-registers. This is a long standing bug (eg it is the
-cause of https://gitlab.com/qemu-project/qemu/-/issues/467).
-Almost nobody notices this, because almost nobody both runs
-Secure-world AArch32 code and also tries migration or save/restore.
+Make the rvbar property settable after realize. This is done
+in preparation to model the ZynqMP's runtime configurable rvbar.
 
-> I found that kvm_to_cpreg_id is responsible for disabling dacr_s
-> migration, because it always selects ns variant.
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+---
+ target/arm/cpu.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index c6a4d50e82..d3ffef3640 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -2510,11 +2510,6 @@ static inline uint32_t kvm_to_cpreg_id(uint64_t
-> kvmid)
->           if ((kvmid & CP_REG_SIZE_MASK) == CP_REG_SIZE_U64) {
->               cpregid |= (1 << 15);
->           }
-> -
-> -        /* KVM is always non-secure so add the NS flag on AArch32 register
-> -         * entries.
-> -         */
-> -         cpregid |= 1 << CP_REG_NS_SHIFT;
->       }
->       return cpregid;
->   }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5a9c02a256..e30ae088fe 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1128,9 +1128,6 @@ static Property arm_cpu_reset_cbar_property =
+ static Property arm_cpu_reset_hivecs_property =
+             DEFINE_PROP_BOOL("reset-hivecs", ARMCPU, reset_hivecs, false);
+ 
+-static Property arm_cpu_rvbar_property =
+-            DEFINE_PROP_UINT64("rvbar", ARMCPU, rvbar, 0);
+-
+ #ifndef CONFIG_USER_ONLY
+ static Property arm_cpu_has_el2_property =
+             DEFINE_PROP_BOOL("has_el2", ARMCPU, has_el2, true);
+@@ -1233,7 +1230,9 @@ void arm_cpu_post_init(Object *obj)
+     }
+ 
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+-        qdev_property_add_static(DEVICE(obj), &arm_cpu_rvbar_property);
++        object_property_add_uint64_ptr(obj, "rvbar",
++                                       &cpu->rvbar,
++                                       OBJ_PROP_FLAG_READWRITE);
+     }
+ 
+ #ifndef CONFIG_USER_ONLY
+-- 
+2.25.1
 
-This change is wrong, or at least incomplete -- as the comment notes,
-a guest running under KVM is always NonSecure, so when KVM says "this is
-DACR" (or whatever) it always means "this is the NS banked DACR".
-(Though now AArch32 KVM support has been dropped we have some flexibility
-to not necessarily use KVM register ID values that exactly match what
-the kernel uses, if we need to do that.)
-Also, kvm_to_cpreg_id() and cpreg_to_kvm_id() are supposed to be
-inverses of each other -- at the moment they are not, hence
-this bug, but I think your change has probably resulted in both
-the S and the NS banked versions of each register being treated
-as the S banked version, which will have a different set of problems.
-
-There is also the question of migration compatibility to consider
-in any change in this area.
-
-thanks
--- PMM

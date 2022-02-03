@@ -1,221 +1,147 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2134105lfk;
-        Thu, 3 Feb 2022 13:34:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyu1Wwgx9iu2TwGmTPZnOHmf78j2S20TDT9ZkOMxbvftruzcoeVFWfiTzrFH8UPfg9y+rTk
-X-Received: by 2002:a25:d288:: with SMTP id j130mr151900ybg.96.1643924066448;
-        Thu, 03 Feb 2022 13:34:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643924066; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2148597lfk;
+        Thu, 3 Feb 2022 14:02:24 -0800 (PST)
+X-Received: by 2002:a63:393:: with SMTP id 141mr74285pgd.267.1643925744004;
+        Thu, 03 Feb 2022 14:02:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643925744; cv=none;
         d=google.com; s=arc-20160816;
-        b=papS8sUmlbvezV5TWTzTCudnQD3q4MiaxcUb1mVVjYEW+RaVLHHQ9rvEiiK6sejPOF
-         R+zmqIHa0dl2JqFMUaz5ZQZDodjZPqISmjLYtKDKzevwCsHq/CIS6TLuxP3wZNHD1myM
-         Qm1+tDjBuxpgitwQUOHEowwCflDY8oZSqCit4tCLrWx2bx9ykJp7E91HFngc/TxiiJrc
-         Mdyntu21mbs5RZq03h/BYjhpsWTiID5uRsNuynsYciuW7zjAtPdufleLzNlGHqj/AL0N
-         YyYh6cE2PvEzHuxTdarFBs1ZZjke3/UMTQR76g7LgYO37DxOHcHTpECbNt7wQhDqlt67
-         TtfQ==
+        b=xY/D6TYxCy+aDWUBcZxeev2K1V1GGx+/RTZOhTbmw8w0eX+SOl9hi9AnqZWFu7Zspv
+         +rSLxK4ED49ZfYrNi87/5xcnrHz3eqZb30OUlvtYhQrGJwMmTgM6FVU2IIwLk3bQncnH
+         Vneo0b8aubx8TmxFgNVyBcvBltVXVv550Sjf8f82/sLgyRgimYpBx7VCpmEtnh1fC9Z5
+         kYoMl6IQuLSuk9dnMJMB9uwayt84834Sp9NbfIAAACRn4Xgl4Qu8DYzqTKiPMnr/GUY/
+         GCkkTIpA863l3DCxy+P+LdbCEOaYmmq381r3XT5r95iPHJCPoHFHJdkIUHDz02AnxRXO
+         aQ6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=z5zsn668D25SmDjjloLbdJI/Fei8Ao+RDEBHJgSojN0=;
-        b=Q1O1mwYQIbMOcn97a2zU4wkEUyrsRYMPN8vg0pJ0OzyQzMfiikINgSk9COdMeb7OwT
-         88eB03WhapKvH7gyDmkP/oWWtCuPRsogH7RCKGlvGUWLOzSjS5Jff5+LdipsiQULP5c9
-         17vVfldfvbAvsAQo09y8h2cztoz2OWOcWdE3Q4c3Se2XCHttbzz2FDofWvjOTUNnQWn0
-         nUz6IZDGlOuZQmbyEk59N7jYxK5rK+2AMMZUTQaEy4N8hlcg6/Fnph6OuPRdBf2BMLDB
-         XXPfsstmSzEXkH8JsrisP0rLvGe5wtZ+9yBZOfHGTkmmBNzXRULM+IwUd3CVLzibWCJT
-         3AoA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Hlvm+MjaT3L/Zf1f3awZy/er0qThgJL2b/6l9FAGleo=;
+        b=NMQyZyt80ew2joLc7IsWFKsl1TWfPiG27Fok2xq/Ch5jhUIZ6rGJnwufSujQg05pS8
+         7H7oModJSK01VsKS23gpFmqg+ydj7TeyPlaX3TD/xKp6cohS07USzvLOGNpQ42XoAimG
+         BjEo8PEQHWo/HNtD1rpOGhv/wjvEiZuE/dXJh5wkY+lj7IE5LYWjfSJSO6H+yEx09ti8
+         SJpwIkYte1YWnGDN62meTEDxTDHZ6FKj9q8jJWr9g0zRXJ56LBmJsmLgQ7MBoj0Fy0uG
+         L1JTyqBU4BNNF8uAlitj4UJeXuxuctBkCfrN02H+WCWbZ0VAT+vvnk9jZiOzYmjXlRJR
+         WRFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=SQZk3HSu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 132si1140397ybl.254.2022.02.03.13.34.26
+       dkim=pass header.i=@linaro.org header.s=google header.b=oGyyhyVs;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l142sor55595pfd.74.2022.02.03.14.02.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Feb 2022 13:34:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 03 Feb 2022 14:02:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=SQZk3HSu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:47840 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nFjkH-0006H3-Rv
-	for alex.bennee@linaro.org; Thu, 03 Feb 2022 16:34:25 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42870)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1nFj0J-0004Sw-GM; Thu, 03 Feb 2022 15:46:57 -0500
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:50264)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1nFj0A-0007Dc-LF; Thu, 03 Feb 2022 15:46:50 -0500
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id D1F46C60912;
- Thu,  3 Feb 2022 21:46:36 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1643921196;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=z5zsn668D25SmDjjloLbdJI/Fei8Ao+RDEBHJgSojN0=;
- b=SQZk3HSuYFm1eyr/q8cyZY223UineroENAWeRSbFN/vU8lDLg3GBF5b25DDo+WD/j/qiWl
- 2yrDvAkWH2vu7ICJ14y6uMNK42dlICLIF0cKwifd2LSLWbQ2C3JS1p8GntWl1QenV8RAER
- zkTbDntvpm97g+DkETCUvmqaotUBQFY65+g7P5EYg7WYjNsuRblsahTBPYizc5f64q83s6
- xeqwQHb12jQ5SbsLOT9sCPUhGY/BQuHL0lfqhc1Nb+GvIEbe+ga4R7g70m7376x5xBFBVW
- 3HADROOgSR6AOuuJR9CoA0kEuwyl5n6cvPjBHd8JCQVIo7C3A2pz/NTTpbJTtg==
-Date: Thu, 3 Feb 2022 21:46:36 +0100
-From: Luc Michel <luc@lmichel.fr>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v2 6/6] hw/arm/xlnx-zynqmp: Connect the ZynqMP APU Control
-Message-ID: <Yfw/LIm8mk3WOuEO@sekoia-pc.home.lmichel.fr>
-References: <20220203140141.310870-1-edgar.iglesias@gmail.com>
- <20220203140141.310870-7-edgar.iglesias@gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=oGyyhyVs;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=Hlvm+MjaT3L/Zf1f3awZy/er0qThgJL2b/6l9FAGleo=;
+        b=oGyyhyVs2yKdO2Vo8yMUZYhPdwZqaytlHZs76/x+0qNj8glDkCJttvxMeDXFxc0Mtm
+         BgWU2HzYuETWbjnw6Ka43q7osxuGdPdv/fHKlMrgISiZQ2g18GtGrl+k0qkWGxmrb5P/
+         sjQFXUbPbENZ2WVoCuavArg9xlPvzzs6xShZoq707DRVt63yuOwEkCpzWf0Av4c50EuN
+         kbzfodo27sp0fDN6dsvWxwzWftX0nY140krV16bqaQhggidkbx2P38C8lJBTOMpKJKhs
+         M+HjIU3OJcKoqd9g9eo8w2LCKfzkl/ju62YbeuOE2Xm5aBsH4CPlX7f4aA/cPQa1Upu5
+         E2kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=Hlvm+MjaT3L/Zf1f3awZy/er0qThgJL2b/6l9FAGleo=;
+        b=tBnDoWOzzuv1segGBS7sgFVpmLyrwVXK4DTn2mJluPOuQCGMVk137RVcdFuNccUfxn
+         P/IPkjvzqNfu0/d5qTTmMIx/7SPqYJ3gpSgZ/+uE8LFrDtJiaKufMMBSbCjh4DeCfXoH
+         MwnAT4f+F+0RGUZ5+TsSfcDEb3O2io7YZVNtpN7SJdPTP+mYiPAqd8d/RDIllb0bt15N
+         LMGJmQQ/KUr9/I4k2CclBolUUe704/BGbt5E2TRWKJ0l48Wv+GWKF6VyWLGOF435B+5z
+         iERVWfSRUEG4O0EQaPlFdf2/FN7PsgnLbOrxZsWrPeg0mpDRf8Hk8z5P7vw8Xl/7BLBu
+         x4Bw==
+X-Gm-Message-State: AOAM530Zy7HU4Xy8Mx3AEbe91UBJsAPun9Y0+ZTCL+pQYFYYK4itRpD6
+	czMLv570RoefHepihIb05nz8OC/y
+X-Google-Smtp-Source: ABdhPJzySfDHhEt33vTN9Kq1KKhs5TYX98Il0UgKZ+FVT62vjBs/nx9coeEEqexw1cJGWWCEjEW/pw==
+X-Received: by 2002:a05:6a00:b42:: with SMTP id p2mr184345pfo.50.1643925741913;
+        Thu, 03 Feb 2022 14:02:21 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPV6:2001:8003:3a49:fd00:e4a0:3bb7:a616:35c9? ([2001:8003:3a49:fd00:e4a0:3bb7:a616:35c9])
+        by smtp.gmail.com with ESMTPSA id z13sm8229pfh.45.2022.02.03.14.02.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 03 Feb 2022 14:02:21 -0800 (PST)
+Message-ID: <2b1358f1-0447-4805-d7e2-e01eb1b3ed9d@linaro.org>
+Date: Fri, 4 Feb 2022 09:02:16 +1100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220203140141.310870-7-edgar.iglesias@gmail.com>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
- sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, f4bug@amsat.org,
- francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
- qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jfg5JK2Xr+gE
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH 06/13] hw/intc/arm_gicv3_its: Fix address calculation in
+ get_ite() and update_ite()
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Shashi Mallela <shashi.mallela@linaro.org>
+References: <20220201193207.2771604-1-peter.maydell@linaro.org>
+ <20220201193207.2771604-7-peter.maydell@linaro.org>
+ <afbbee74-b6fc-7b55-f7e4-c5ae926f7519@linaro.org>
+ <CAFEAcA9Dj0K5T677__5wBA5=T5c1qOxNxwW5hkZU9-vDCP-76Q@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA9Dj0K5T677__5wBA5=T5c1qOxNxwW5hkZU9-vDCP-76Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: bDCCVj5fG7L9
 
-Hi Edgar,
-
-On 15:01 Thu 03 Feb     , Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On 2/3/22 21:45, Peter Maydell wrote:
+> On Thu, 3 Feb 2022 at 03:59, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> On 2/2/22 06:32, Peter Maydell wrote:
+>>> In get_ite() and update_ite() we work with a 12-byte in-guest-memory
+>>> table entry, which we intend to handle as an 8-byte value followed by
+>>> a 4-byte value.  Unfortunately the calculation of the address of the
+>>> 4-byte value is wrong, because we write it as:
+>>>
+>>>    table_base_address + (index * entrysize) + 4
+>>> (obfuscated by the way the expression has been written)
+>>>
+>>> when it should be + 8.  This bug meant that we overwrote the top
+>>> bytes of the 8-byte value with the 4-byte value.  There are no
+>>> guest-visible effects because the top half of the 8-byte value
+>>> contains only the doorbell interrupt field, which is used only in
+>>> GICv4, and the two bugs in the "write ITE" and "read ITE" codepaths
+>>> cancel each other out.
+>>>
+>>> We can't simply change the calculation, because this would break
+>>> migration of a (TCG) guest from the old version of QEMU which had
+>>> in-guest-memory interrupt tables written using the buggy version of
+>>> update_ite().  We must also at the same time change the layout of the
+>>> fields within the ITE_L and ITE_H values so that the in-memory
+>>> locations of the fields we care about (VALID, INTTYPE, INTID and
+>>> ICID) stay the same.
 > 
-> Connect the ZynqMP APU Control device.
-
-Somehow you don't seem to connect the "wfi_in" pins. I guess it's
-because currently QEMU ARM CPUs do not expose a "wfi_out" pin right?
-
-Reviewed-by: Luc Michel <luc@lmichel.fr>
-
+>> This is confusing: 5-3 is titled "example of the number of bits that might be stored in an
+>> ITE"?  Surely there must be a true architected format for this table, the one real
+>> hardware uses.  Surely tcg will simply have to suck it up and break migration to fix this
+>> properly.
 > 
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Reviewed-by: Francisco Iglesias <francisco.iglesias@xilinx.com>
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
->  include/hw/arm/xlnx-zynqmp.h |  4 +++-
->  hw/arm/xlnx-zynqmp.c         | 25 +++++++++++++++++++++++--
->  2 files changed, 26 insertions(+), 3 deletions(-)
-> 
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index d5a3ad3df2..05cd2128f3 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -38,6 +38,7 @@
->  #include "hw/dma/xlnx_csu_dma.h"
->  #include "hw/nvram/xlnx-bbram.h"
->  #include "hw/nvram/xlnx-zynqmp-efuse.h"
-> +#include "hw/misc/xlnx-zynqmp-apu-ctrl.h"
->  #include "hw/misc/xlnx-zynqmp-crf.h"
->  
->  #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
-> @@ -85,7 +86,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
->  /*
->   * Unimplemented mmio regions needed to boot some images.
->   */
-> -#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 2
-> +#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 1
->  
->  struct XlnxZynqMPState {
->      /*< private >*/
-> @@ -123,6 +124,7 @@ struct XlnxZynqMPState {
->      XlnxZDMA gdma[XLNX_ZYNQMP_NUM_GDMA_CH];
->      XlnxZDMA adma[XLNX_ZYNQMP_NUM_ADMA_CH];
->      XlnxCSUDMA qspi_dma;
-> +    XlnxZynqMPAPUCtrl apu_ctrl;
->      XlnxZynqMPCRF crf;
->  
->      char *boot_cpu;
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 9f433ee5d8..2fa8c77dfd 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -65,7 +65,7 @@
->  #define DPDMA_IRQ           116
->  
->  #define APU_ADDR            0xfd5c0000
-> -#define APU_SIZE            0x100
-> +#define APU_IRQ             153
->  
->  #define IPI_ADDR            0xFF300000
->  #define IPI_IRQ             64
-> @@ -283,6 +283,27 @@ static void xlnx_zynqmp_create_efuse(XlnxZynqMPState *s, qemu_irq *gic)
->      sysbus_connect_irq(sbd, 0, gic[EFUSE_IRQ]);
->  }
->  
-> +static void xlnx_zynqmp_create_apu_ctrl(XlnxZynqMPState *s, qemu_irq *gic)
-> +{
-> +    SysBusDevice *sbd;
-> +    int i;
-> +
-> +    object_initialize_child(OBJECT(s), "apu-ctrl", &s->apu_ctrl,
-> +                            TYPE_XLNX_ZYNQMP_APU_CTRL);
-> +    sbd = SYS_BUS_DEVICE(&s->apu_ctrl);
-> +
-> +    for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
-> +        g_autofree gchar *name = g_strdup_printf("cpu%d", i);
-> +
-> +        object_property_set_link(OBJECT(&s->apu_ctrl), name,
-> +                                 OBJECT(&s->apu_cpu[i]), &error_abort);
-> +    }
-> +
-> +    sysbus_realize(sbd, &error_fatal);
-> +    sysbus_mmio_map(sbd, 0, APU_ADDR);
-> +    sysbus_connect_irq(sbd, 0, gic[APU_IRQ]);
-> +}
-> +
->  static void xlnx_zynqmp_create_crf(XlnxZynqMPState *s, qemu_irq *gic)
->  {
->      SysBusDevice *sbd;
-> @@ -302,7 +323,6 @@ static void xlnx_zynqmp_create_unimp_mmio(XlnxZynqMPState *s)
->          hwaddr base;
->          hwaddr size;
->      } unimp_areas[ARRAY_SIZE(s->mr_unimp)] = {
-> -        { .name = "apu", APU_ADDR, APU_SIZE },
->          { .name = "serdes", SERDES_ADDR, SERDES_SIZE },
->      };
->      unsigned int nr;
-> @@ -698,6 +718,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->  
->      xlnx_zynqmp_create_bbram(s, gic_spi);
->      xlnx_zynqmp_create_efuse(s, gic_spi);
-> +    xlnx_zynqmp_create_apu_ctrl(s, gic_spi);
->      xlnx_zynqmp_create_crf(s, gic_spi);
->      xlnx_zynqmp_create_unimp_mmio(s);
->  
-> -- 
-> 2.25.1
-> 
+> No, the ITE format is implementation-defined, like that of the other
+> in-guest-memory tables the ITS uses. It's UNPREDICTABLE for a guest
+> to try to directly access the tables in memory -- they are only ever
+> written or read by the ITS itself in response to incoming commands,
+> so it's not a problem for the format in memory to be impdef. This
+> flexibility in the spec allows implementations to minimize the size
+> of their data tables based on how large an ID size they support and
+> other potentially-configurable parameters. For instance if you look
+> at the values for the GITS_BASER* for the GIC-700 in its TRM you
+> can see that its Collection Table entry size is only 2 bytes, since
+> it uses the "rdbase is a CPU number" format; an ITS that used the
+> "rdbase is a physical address" implementation choice would need
+> more bytes there. (QEMU also uses "rdbase is a CPU number", but
+> we have rather profligately opted to use 8 bytes per collection
+> table entry.)
 
--- 
+Ah, right.  In which case,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

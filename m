@@ -1,188 +1,130 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2709376lfk;
-        Fri, 4 Feb 2022 09:02:27 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxgYeH+MjVwS2WDcKL9utElY+JSOf0X1bGJBlJfRNagZ54OtIsoKUrbgyyL5IwVTf6h1QMe
-X-Received: by 2002:a25:e5c7:: with SMTP id c190mr18420ybh.175.1643994146858;
-        Fri, 04 Feb 2022 09:02:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643994146; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1756890lfk;
+        Thu, 3 Feb 2022 02:45:32 -0800 (PST)
+X-Received: by 2002:adf:f582:: with SMTP id f2mr29157869wro.161.1643885132208;
+        Thu, 03 Feb 2022 02:45:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643885132; cv=none;
         d=google.com; s=arc-20160816;
-        b=tjpqef/T5W4SQEan5IzuPHj9eS2KDnBE03kZvvG6YA8jlyRqX660wVVBKofNLmC47w
-         0P7l6dDg5ArfCTARBhlX6BbSLYVG8MI9T4tJj7BSjWGkuMHXjK4cVecU9aQ3YllEj8gy
-         RdEy3euMrwuNhmhhnG98BhoCaDORUgknogyIytT8WE4m4iHphmQsm1ujAxfkgE4siQ70
-         0TWKf3a1kg14sEUsoO8/u+yxH8GAgUf7nCY8a5keA84al7eCfGBe3ZnJelt+oJkb+why
-         FMQMpWx9Domp7sfG8FxBIDUd5gJs0mhsV7WaTk92+1f0LCcJ4Esvaw9buE1GaIkMJaVV
-         lrlQ==
+        b=GeywuUqkxgZguypxJTONvX8kzfrMw3LUmfqprmPjPt6HnMCEnA2ph/BqMtE3khlA4t
+         AFiTl8YnTJ2+J1GY5kh+P6cXyLUDo0rlAi3aD3B08QlonTOn0aBRIh45g9/rSYlHulLQ
+         O2k8QvElqT0OwLrrHbNXmfRgTfr5lnWSYAuf77kELdBqQ1xJcD2CMOXAoZbGAsz7KcB3
+         49HY4eRRn8Q/EctAxPYyOJH1ewdTKBbZ1wl+YpmQOwA99WC8PFzgfOmGoHthtyGagzyb
+         uWGk9sVWOk2T1u2bAsFxcq4qZMejl1xSh2eU7UIrEeRIjGQ5dvfwnqmkLtbJ4vL3kX6A
+         nx4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=q3lEtc5flDNZqu3pjs5Zh2F0vIL0PpXE6vU56vUELAY=;
-        b=sGfEOw8ryFkzCioh2nl9VrkpQYmjoaoVzDbUAdkQwyhBdNFEVuvlCCq0WJIu2Xuu6B
-         iDxwpAS4zU8Ajnt6oDs3K+q38Q/LaQOWySF+Ra2Ksd70WwQlCJqsMumefofBWfP9o1sS
-         uidIFd3n/B8uf5RR6w1muLtwPLMmvP51dK3IT3ntxv7Qv8jd/utQJJRoHNTiE3NtEk85
-         nLN71GlusXaCBq1qKWkVCFwTT2lZHsJtENt/kJkDmbBbVQLtsirSsAl8W/+LsdaKPQ85
-         0154Fg9la4QqIWnH4xNJyn5KZg7+/1tIiVE+dghHrgOgt/yJBRv/kPNDk1Log1cKo4vq
-         sX7g==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=BCn/bBH/9rDiq4cqAadL0VdAEadNPEIEhhF2HZJ4TO0=;
+        b=vd0TjmpWInv7cRgE4LmToqGcbQ8JJkogtIcpEzKfjsJOJVPmELZivMsI7XdZQuroEb
+         kfbfm1xgMtaZl8zfIJ9HlqH81e768M5dVgQDQwOZyqRMMgQ1YtYYKQA+GUoLMS1zIs91
+         ItY0wOD58FxsoDmGGvHLQYsBi2+vh4Xunm9XyWTAUL00etRyv8Ox1Ivq31gCUkCs26E6
+         YaNbjJzIYfOzR45h1hMJ5ELtgIz6xAawhD/LcDewPwxHIe5K9HoNuNjL6R5/RqcdjOaO
+         gHvq3z7Ni/3zgC4tKSooOxjwAZiOtHZA+/JQ5j8n89Fi/lb0Cbybf0pXUZP7Uky0h8xD
+         erpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qMiNaxDC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k188si1748521ywb.1.2022.02.04.09.02.26
+       dkim=pass header.i=@linaro.org header.s=google header.b=rhgLG1bt;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g17sor26011635wrv.76.2022.02.03.02.45.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Feb 2022 09:02:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 03 Feb 2022 02:45:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qMiNaxDC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39920 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nG1yc-0000P4-8s
-	for alex.bennee@linaro.org; Fri, 04 Feb 2022 12:02:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53666)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nG1s0-0002h5-7f
- for qemu-arm@nongnu.org; Fri, 04 Feb 2022 11:55:36 -0500
-Received: from [2a00:1450:4864:20::434] (port=38561
- helo=mail-wr1-x434.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nG1rn-0003Ch-Mu
- for qemu-arm@nongnu.org; Fri, 04 Feb 2022 11:55:34 -0500
-Received: by mail-wr1-x434.google.com with SMTP id s10so9900892wra.5
- for <qemu-arm@nongnu.org>; Fri, 04 Feb 2022 08:55:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=q3lEtc5flDNZqu3pjs5Zh2F0vIL0PpXE6vU56vUELAY=;
- b=qMiNaxDCdLYY+0bp2GFATzDbwVh9oh4no7rnM4RUGCQf9bqIOrLdiRabeI7iSA6RUY
- l21pkwzUHwxks9whV8LWWGDO/mcW94f7WkW+cG4ny82IFsweX6il0f3ZiuJfAQzgUQ25
- rSyK1QNlCgao38UCh55GmWx3KuSjJwjD48EWkm8CBirFdgnIbglwbe1PVLjLM8gj7BjN
- L80gq5T8/4chIVC4iG7wYcMvgZGOaokWygDxKeOrBhWHEPVObG9to7eqNuVW+FrVkuWr
- oPy63lppSGJEbzQHJUG0gynqExMBsU0PpmtLS+vNFYA+RK5DN27xKyrIA5uk/OTo/2BX
- mCUg==
+       dkim=pass header.i=@linaro.org header.s=google header.b=rhgLG1bt;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=BCn/bBH/9rDiq4cqAadL0VdAEadNPEIEhhF2HZJ4TO0=;
+        b=rhgLG1btCNuXGP2638V46xfUaCF3dmy7TCcoikko3FBxrFRz9xUpUxVLFxuHwtunnp
+         5+ZaCT/x2gE98Fu8RyfMaNKuA+NaSyV7DIpP+TiKT8KHc6e7rnf06TOgS6X4QW4iXSmZ
+         GyQBPf2DHRuCRZnJnS2//uFrxN2WCfR09XmmJWw5aK3jBXQZfvMQoUD3mey1v/ZqvntZ
+         v1RHiXHyph+7InFrSl7ZEevXFMxH96E533sp3uOaoDigjEut0E5GIQFjLDaW9fjAQhDw
+         e3+RB4hkkDHpkbciLgzO/y0JKrmRwSajP67QlFgxqfr3RTVt7PQKkDyqDwxd1JLfRNHO
+         j/gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=q3lEtc5flDNZqu3pjs5Zh2F0vIL0PpXE6vU56vUELAY=;
- b=2dQnIihMpY2LxHXq9GdCin14JMDE+P4vHKdm1sDLjHrQgOUddYLDTWlLU4dnhOZUdT
- UL4Hfv5ZiO/uYmDtc6OTaE7XL6ERfcSE594OMMsYiRuFA3N/2uI9U/XDzeqW6xpos++w
- JS5D6h9f7XdXmvzJVvCpWxQkQH6q+Q19IR2/wbsE+7qJ5+RjuNymjhNsNkdr35FpqOfv
- k9igKgjrsizWrOvxoxLN95xStZZ6eJ6xAXF4A8IdgGuDvaXl8PKGWf3/h/Goc7JD0tae
- pvRlG1ywZVyw/m6ZYen0NSQAp8lS88VKsNGtayb3GBXWdtTaBlSpRfeiIe1TMa5OIeQR
- f11A==
-X-Gm-Message-State: AOAM530/bDGgf/CifjDqDcoUtNZdoiCBgHjzS6VxWL6RpB6gLY0zhFHh
- WNUQx8ICgjzKAAzHT2cjhTDxpOvFLzHvdQ==
-X-Received: by 2002:a05:6000:184f:: with SMTP id
- c15mr3204888wri.218.1643993710666; 
- Fri, 04 Feb 2022 08:55:10 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id f12sm2486254wrs.1.2022.02.04.08.55.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Feb 2022 08:55:10 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 3/6] target/arm: Make KVM -cpu max exactly like -cpu host
-Date: Fri,  4 Feb 2022 16:55:03 +0000
-Message-Id: <20220204165506.2846058-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220204165506.2846058-1-peter.maydell@linaro.org>
-References: <20220204165506.2846058-1-peter.maydell@linaro.org>
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=BCn/bBH/9rDiq4cqAadL0VdAEadNPEIEhhF2HZJ4TO0=;
+        b=A2UNoKGSGuh8vU2scYIvS/OH1hxsWchtWX/x5dMCtRBJCRKQYZn2ZEke9prVnDL26w
+         ai27dbYwJUb2FWuCQB7UGh9yUqIY2YoMxdaoiaGXHmlYS5i+orK53akoIw3mLK+QpaJH
+         lBG2gig1h2M6Q+XkxWYE6zsa/+ZCTJYpxVTjGc6LpSap98l3Db4/XL8f/2TWP0pbXsvh
+         5EGWxcYADT2yudvafm5FqFktmDzEzznPpDIreahDpiuaPshpMnTNHUZvhMQ1nyEIkRBe
+         czFpC9CQ5PtVQLILZgHqsy5a6WShg+4x4smOHtQyBKKM+YkPi4U/6p5T2BfzXfcse71H
+         8AKQ==
+X-Gm-Message-State: AOAM5314lei6ns4aUwReJTCd0SRSGMeJjQmMlkh7iVcHJSMw5fhR1Hjb
+	No/U9sFKErOyQ1UJfT2n42HcR01PqZy6oBXj3sEPznap
+X-Google-Smtp-Source: ABdhPJzIETsTVyzHDV4S/CheMuhDu5lAV+4M5e/nnf/uX/Q7gRuTRfn/C2ACmiChu/1epuJ2LUFrATp+3KvNAMWdTKs=
+X-Received: by 2002:a05:6000:258:: with SMTP id m24mr29663952wrz.2.1643885131879;
+ Thu, 03 Feb 2022 02:45:31 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::434
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Alexander Graf <agraf@csgraf.de>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MmHeprYppLRv
+References: <20220201193207.2771604-1-peter.maydell@linaro.org>
+ <20220201193207.2771604-7-peter.maydell@linaro.org> <afbbee74-b6fc-7b55-f7e4-c5ae926f7519@linaro.org>
+In-Reply-To: <afbbee74-b6fc-7b55-f7e4-c5ae926f7519@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 3 Feb 2022 10:45:20 +0000
+Message-ID: <CAFEAcA9Dj0K5T677__5wBA5=T5c1qOxNxwW5hkZU9-vDCP-76Q@mail.gmail.com>
+Subject: Re: [PATCH 06/13] hw/intc/arm_gicv3_its: Fix address calculation in
+ get_ite() and update_ite()
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Shashi Mallela <shashi.mallela@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 6IyY5+IA2G+a
 
-Currently for KVM the intention is that '-cpu max' and '-cpu host'
-are the same thing, but because we did this with two separate
-pieces of code they have got a little bit out of sync. Specifically,
-'max' has a 'sve-max-vq' property, and 'host' does not.
+On Thu, 3 Feb 2022 at 03:59, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 2/2/22 06:32, Peter Maydell wrote:
+> > In get_ite() and update_ite() we work with a 12-byte in-guest-memory
+> > table entry, which we intend to handle as an 8-byte value followed by
+> > a 4-byte value.  Unfortunately the calculation of the address of the
+> > 4-byte value is wrong, because we write it as:
+> >
+> >   table_base_address + (index * entrysize) + 4
+> > (obfuscated by the way the expression has been written)
+> >
+> > when it should be + 8.  This bug meant that we overwrote the top
+> > bytes of the 8-byte value with the 4-byte value.  There are no
+> > guest-visible effects because the top half of the 8-byte value
+> > contains only the doorbell interrupt field, which is used only in
+> > GICv4, and the two bugs in the "write ITE" and "read ITE" codepaths
+> > cancel each other out.
+> >
+> > We can't simply change the calculation, because this would break
+> > migration of a (TCG) guest from the old version of QEMU which had
+> > in-guest-memory interrupt tables written using the buggy version of
+> > update_ite().  We must also at the same time change the layout of the
+> > fields within the ITE_L and ITE_H values so that the in-memory
+> > locations of the fields we care about (VALID, INTTYPE, INTID and
+> > ICID) stay the same.
 
-Bring the two together by having the initfn for 'max' actually
-call the initfn for 'host'. This will result in 'max' no longer
-exposing the 'sve-max-vq' property when using KVM.
+> This is confusing: 5-3 is titled "example of the number of bits that might be stored in an
+> ITE"?  Surely there must be a true architected format for this table, the one real
+> hardware uses.  Surely tcg will simply have to suck it up and break migration to fix this
+> properly.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu64.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+No, the ITE format is implementation-defined, like that of the other
+in-guest-memory tables the ITS uses. It's UNPREDICTABLE for a guest
+to try to directly access the tables in memory -- they are only ever
+written or read by the ITS itself in response to incoming commands,
+so it's not a problem for the format in memory to be impdef. This
+flexibility in the spec allows implementations to minimize the size
+of their data tables based on how large an ID size they support and
+other potentially-configurable parameters. For instance if you look
+at the values for the GITS_BASER* for the GIC-700 in its TRM you
+can see that its Collection Table entry size is only 2 bytes, since
+it uses the "rdbase is a CPU number" format; an ITS that used the
+"rdbase is a physical address" implementation choice would need
+more bytes there. (QEMU also uses "rdbase is a CPU number", but
+we have rather profligately opted to use 8 bytes per collection
+table entry.)
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 590ac562714..ae2e431247f 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -682,22 +682,22 @@ void aarch64_add_pauth_properties(Object *obj)
-     }
- }
- 
--#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
- static void aarch64_host_initfn(Object *obj)
- {
-+#if defined(CONFIG_KVM)
-     ARMCPU *cpu = ARM_CPU(obj);
--
--#ifdef CONFIG_KVM
-     kvm_arm_set_cpu_features_from_host(cpu);
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         aarch64_add_sve_properties(obj);
-         aarch64_add_pauth_properties(obj);
-     }
--#else
-+#elif defined(CONFIG_HVF)
-+    ARMCPU *cpu = ARM_CPU(obj);
-     hvf_arm_set_cpu_features_from_host(cpu);
-+#else
-+    g_assert_not_reached();
- #endif
- }
--#endif
- 
- /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
-  * otherwise, a CPU with as many features enabled as our emulation supports.
-@@ -709,7 +709,9 @@ static void aarch64_max_initfn(Object *obj)
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-     if (kvm_enabled()) {
--        kvm_arm_set_cpu_features_from_host(cpu);
-+        /* With KVM, '-cpu max' is identical to '-cpu host' */
-+        aarch64_host_initfn(obj);
-+        return;
-     } else {
-         uint64_t t;
-         uint32_t u;
--- 
-2.25.1
-
+thanks
+-- PMM

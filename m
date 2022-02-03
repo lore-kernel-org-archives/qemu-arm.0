@@ -1,229 +1,140 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1882873lfk;
-        Thu, 3 Feb 2022 06:23:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyGvVgyoOHEXN+XWxjZociyOmGp81nxbOyVmJfBj2nEK4ZFKPuEmi9j2lV6QCPAv3ErCvFT
-X-Received: by 2002:a81:c54:: with SMTP id 81mr4816238ywm.464.1643898217506;
-        Thu, 03 Feb 2022 06:23:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643898217; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1897424lfk;
+        Thu, 3 Feb 2022 06:47:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy70khbmGYhLcXgVwUXQro+bOIwAT1z3dNnyjgQyi9bvpIX78iuhUXgDoltDVu4F8if9pI3
+X-Received: by 2002:a81:1d8f:: with SMTP id d137mr4483039ywd.383.1643899627742;
+        Thu, 03 Feb 2022 06:47:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643899627; cv=none;
         d=google.com; s=arc-20160816;
-        b=R+1a+Og9jEDS1vWDei/Tbdxgde2mENHTmqg8X4iXCbXOxgMrol108qJEWJM9wgQ62J
-         iNalfq0m0Cr50/O8CkET7DCBadKbI3HVLARywLxZN6Qv6HAAr4dLnHJPKcjtOVkG6X1C
-         vdx30JvNcrbhXW1PEyWkEcS3URjWZoD8Xm7lS1lNkCPXVXrKPADR96OArWoXgcrCGpvx
-         p3EgRSt7CC3ucqXKjq7s92dxwuYUJbfgqX90F46HxnzwNr0YEgc5ekKAiPfrA03zKqXs
-         SSLLZKs0mCVAo5gSXhN0jqmT2cpK5/7iSE+Iq0sVwOJha+v7QIlL0PzZtVBUv2vm5s/I
-         FckQ==
+        b=E4LZOH1ivsPtH+o0c2KWoNiCW8oypdpP5Ksu237A6PFaQrxpW9tNdEiNcba6PuwUwR
+         gty6iF/Xsuy2EgSZ9eeCUYTu7kmvrUAz4/00zwUzJ1ZAWXRKD7CDN1/wPdsV9jfJpikE
+         5V7WvQntuK+Js12z/ih/lFNcRFwaC6MX1YLRrpcgbGsbNqjQvV9IXFov4SwtlM9wzI0g
+         POm43i+NjS21Wpewachk+8/1UkpfKYVBbuSZ5kKKDPuzxbo/HTsF+poafGKBuNhAk5Fj
+         Vebd5Dd8BENi2bzQ4A4RX4ZAt41dsPxlM/yWyBO/5jjr9pG2UltN7fEdFve0nHmotVIz
+         uUzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=QhwFreweWKPsGkVibsWY4YbrMuhumktWTk/WOqkoz90=;
-        b=UGpeXqNLBPffV6Xa6fHprifkn336o7RuAqfAmJUwbW453FngVqufanHFmImCLBJD4/
-         Pc4064YWKfXhe5+/o9IM5Uo43N7MZXgpKoJsKH2v5WvwCTztGbOEeyGsYXJPFqhOtTS5
-         N+pcL0ARZ1zu6l2jWZRFwJJ9h8mED3xrZCnt0xgVcNgvro0U5GMZBVk8lDlF53uNMrpz
-         Sn6dHnHvoBnrbmMYTMfmvLrjP5lXeSvhVSNFKa55GWrKwLyKEfmcCyDvPxopzDyzjfsy
-         2ycjx0f5T81BUARmNj+Z+f5AGmkmsBSi8GHnBmOKE8BrYqaP7d3yjJ/ZfHg93El3Xnpu
-         iyJg==
+         :mime-version:message-id:date:subject:to:from;
+        bh=TOWoguJq/mWVhBJ7miyvfGycpXiSxjlmqB6T3zm3ALQ=;
+        b=sSCww715lrKbUzB6DFfobJ//wtIQj5OYrOcYZQVAsG+N7pqBxljSTpk+4IvL7SYLT/
+         ouMnFxnxZgydR0gYo7H22iM7jOnj2PGkiWaENPEjp4mwTCw79rpsrnGmymiJCHvG7p6u
+         RizHB1yNj0iuYTGbPEAIHBN/j2K8hwNSCM8DNhcoxWzJ5wTSqRN4dBAP/CpNLOeAlXjG
+         DHZYCXFkoO+XSTkfBfIlTXoohCQNMK63Xx++3l+apPriN1aPuW2mFbLc2uQdKQke00/x
+         o34sxnQ/He5WQIW7Fla3W+PZ2jYigweNg7bmwJMS3vB05/vyXP5NVJTskO1YH/tt0tEU
+         qczQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=pdnmw1uu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p15si12382192ybc.702.2022.02.03.06.23.37
+        by mx.google.com with ESMTPS id i205si34726653ybc.499.2022.02.03.06.47.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Feb 2022 06:23:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Feb 2022 06:47:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=pdnmw1uu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49596 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36774 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nFd1M-00029g-Se
-	for alex.bennee@linaro.org; Thu, 03 Feb 2022 09:23:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52878)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nFdO7-00073t-3C
+	for alex.bennee@linaro.org; Thu, 03 Feb 2022 09:47:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59302)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nFcgO-0005bQ-Ox; Thu, 03 Feb 2022 09:01:56 -0500
-Received: from [2a00:1450:4864:20::22e] (port=36377
- helo=mail-lj1-x22e.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nFcgJ-0000Ss-AI; Thu, 03 Feb 2022 09:01:56 -0500
-Received: by mail-lj1-x22e.google.com with SMTP id j14so4069260lja.3;
- Thu, 03 Feb 2022 06:01:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=QhwFreweWKPsGkVibsWY4YbrMuhumktWTk/WOqkoz90=;
- b=pdnmw1uuIZDpJftwM8cHTkBXGJhD6wV7u8tGrv0rkOp7oPloGdc/Rc8XLaVhBTIOC0
- J6TPgtsWnJysSdHvz2G4j5+5uq3wTgrsww8fFHW3BvGGvfXeomeNXZODhh2pRz9DofT3
- o9yS/T33RTpGwsC1Bcd53jHBXnjOmBQSb7UoXZZPiN39Gs1p/T2nCuPQV4K7V3nPPGJx
- HTTTpd7nedc0O5ssF+7e3haKvPMs2wp4HJFaE+TMo3xuhHeAPzUn0368udgzKBf/WscX
- 8U204sWNUIfQ0L6wql0PhTpLH4fGWM4UDCAAlub45akrbX+IZu7sJJ8sp8acfXI4tK05
- B98Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=QhwFreweWKPsGkVibsWY4YbrMuhumktWTk/WOqkoz90=;
- b=K0LTdn8cM1dnCIB1OljbcbyHxB+V5Ypy0UDGuf9MXXy8Oe0PQObmieIMI9p7AR8ody
- YWR0IKxpj9dwsjI/2E7/bEf82LQXUQH+2LLO8fLEZPK98xFULaki5pXCLsgSMxv8ICHe
- 1hijFnNILzhqVlELl8DV1wu4pr41Au8g8d6S7apVsnJF51GeM5iAWHHMdSx6s/5z9jJm
- f5oBGIKDoE3VBvAMQBroI1PFA/WCYwK39rCdqHQ4g6m1BESmQoLd397J97noIyXvTlcJ
- xrdbndQYgrxQmRoX96dINsJLDqXVUwHMKSHmYuB4r3k2ZOuPnVfULDw1YZ6ftRX5NT0Y
- 3HQA==
-X-Gm-Message-State: AOAM531f7HSWNd/fH+v4i/j0bTxHZBSDIcErwkNn2dfWCT77oJvNkTjh
- 6Nu49mtMxq+gpOsoHkdyCiA4b6+3sBvq2w==
-X-Received: by 2002:a2e:b0cc:: with SMTP id g12mr23093283ljl.21.1643896908999; 
- Thu, 03 Feb 2022 06:01:48 -0800 (PST)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id k2sm5072649lfe.213.2022.02.03.06.01.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Feb 2022 06:01:48 -0800 (PST)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1nFd1I-00028R-Cv; Thu, 03 Feb 2022 09:23:32 -0500
+Received: from mail.csgraf.de ([85.25.223.15]:34076 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1nFd1G-0007FO-EE; Thu, 03 Feb 2022 09:23:32 -0500
+Received: from localhost.localdomain
+ (dynamic-095-114-033-227.95.114.pool.telefonica.de [95.114.33.227])
+ by csgraf.de (Postfix) with ESMTPSA id 39B4F6080DA9;
+ Thu,  3 Feb 2022 15:23:22 +0100 (CET)
+From: Alexander Graf <agraf@csgraf.de>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 6/6] hw/arm/xlnx-zynqmp: Connect the ZynqMP APU Control
-Date: Thu,  3 Feb 2022 15:01:41 +0100
-Message-Id: <20220203140141.310870-7-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220203140141.310870-1-edgar.iglesias@gmail.com>
-References: <20220203140141.310870-1-edgar.iglesias@gmail.com>
+Subject: [PATCH] hvf: arm: Add simple dirty bitmap tracking
+Date: Thu,  3 Feb 2022 15:23:20 +0100
+Message-Id: <20220203142320.33022-1-agraf@csgraf.de>
+X-Mailer: git-send-email 2.32.0 (Apple Git-132)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::22e
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::22e;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x22e.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
- sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, f4bug@amsat.org, francisco.iglesias@xilinx.com,
- frederic.konrad@adacore.com, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6TQUOIPDxYVg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: i7OoEjDkCHq3
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+The actual tracking of dirty bitmap updates is happening in architecture code.
+So far, the aarch64 hvf code has not updated QEMU's dirty bitmap at all. The
+net result of that is that the VGA device's framebuffer would not update.
 
-Connect the ZynqMP APU Control device.
+This patch adds simplistic dirty bitmap updates. Unfortunately hvf can only set
+permissions per full region, so we have to mark the complete region as dirty
+when only a single byte was modified inside.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Francisco Iglesias <francisco.iglesias@xilinx.com>
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+We also handle the write protect update logic before we handle any writes.
+This allows us to even handle non-ISV instructions on dirty logging enabled
+memory regions: Once we flip the region to writable again, we just rerun
+the trapping instruction.
+
+Signed-off-by: Alexander Graf <agraf@csgraf.de>
 ---
- include/hw/arm/xlnx-zynqmp.h |  4 +++-
- hw/arm/xlnx-zynqmp.c         | 25 +++++++++++++++++++++++--
- 2 files changed, 26 insertions(+), 3 deletions(-)
+ target/arm/hvf/hvf.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-index d5a3ad3df2..05cd2128f3 100644
---- a/include/hw/arm/xlnx-zynqmp.h
-+++ b/include/hw/arm/xlnx-zynqmp.h
-@@ -38,6 +38,7 @@
- #include "hw/dma/xlnx_csu_dma.h"
- #include "hw/nvram/xlnx-bbram.h"
- #include "hw/nvram/xlnx-zynqmp-efuse.h"
-+#include "hw/misc/xlnx-zynqmp-apu-ctrl.h"
- #include "hw/misc/xlnx-zynqmp-crf.h"
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 0dc96560d3..92ad0d29c4 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1163,6 +1163,28 @@ int hvf_vcpu_exec(CPUState *cpu)
+             break;
+         }
  
- #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
-@@ -85,7 +86,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
- /*
-  * Unimplemented mmio regions needed to boot some images.
-  */
--#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 2
-+#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 1
- 
- struct XlnxZynqMPState {
-     /*< private >*/
-@@ -123,6 +124,7 @@ struct XlnxZynqMPState {
-     XlnxZDMA gdma[XLNX_ZYNQMP_NUM_GDMA_CH];
-     XlnxZDMA adma[XLNX_ZYNQMP_NUM_ADMA_CH];
-     XlnxCSUDMA qspi_dma;
-+    XlnxZynqMPAPUCtrl apu_ctrl;
-     XlnxZynqMPCRF crf;
- 
-     char *boot_cpu;
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 9f433ee5d8..2fa8c77dfd 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -65,7 +65,7 @@
- #define DPDMA_IRQ           116
- 
- #define APU_ADDR            0xfd5c0000
--#define APU_SIZE            0x100
-+#define APU_IRQ             153
- 
- #define IPI_ADDR            0xFF300000
- #define IPI_IRQ             64
-@@ -283,6 +283,27 @@ static void xlnx_zynqmp_create_efuse(XlnxZynqMPState *s, qemu_irq *gic)
-     sysbus_connect_irq(sbd, 0, gic[EFUSE_IRQ]);
- }
- 
-+static void xlnx_zynqmp_create_apu_ctrl(XlnxZynqMPState *s, qemu_irq *gic)
-+{
-+    SysBusDevice *sbd;
-+    int i;
++        /*
++         * Dirty log updates work without isv as well. We just run the write
++         * again with write permissions set. So handle them before the assert.
++         */
++        if (iswrite) {
++            uint64_t gpa = hvf_exit->exception.physical_address;
++            hvf_slot *slot = hvf_find_overlap_slot(gpa, 1);
 +
-+    object_initialize_child(OBJECT(s), "apu-ctrl", &s->apu_ctrl,
-+                            TYPE_XLNX_ZYNQMP_APU_CTRL);
-+    sbd = SYS_BUS_DEVICE(&s->apu_ctrl);
++            if (slot && slot->flags & HVF_SLOT_LOG) {
++                /*
++                 * HVF can only set a full region's permissions, so let's just
++                 * mark the full region as dirty.
++                 */
++                memory_region_set_dirty(slot->region, 0, slot->size);
++                hv_vm_protect(slot->start, slot->size, HV_MEMORY_READ |
++                              HV_MEMORY_WRITE | HV_MEMORY_EXEC);
 +
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
-+        g_autofree gchar *name = g_strdup_printf("cpu%d", i);
++                /* Run the same instruction again, without write faulting */
++                break;
++            }
++        }
 +
-+        object_property_set_link(OBJECT(&s->apu_ctrl), name,
-+                                 OBJECT(&s->apu_cpu[i]), &error_abort);
-+    }
-+
-+    sysbus_realize(sbd, &error_fatal);
-+    sysbus_mmio_map(sbd, 0, APU_ADDR);
-+    sysbus_connect_irq(sbd, 0, gic[APU_IRQ]);
-+}
-+
- static void xlnx_zynqmp_create_crf(XlnxZynqMPState *s, qemu_irq *gic)
- {
-     SysBusDevice *sbd;
-@@ -302,7 +323,6 @@ static void xlnx_zynqmp_create_unimp_mmio(XlnxZynqMPState *s)
-         hwaddr base;
-         hwaddr size;
-     } unimp_areas[ARRAY_SIZE(s->mr_unimp)] = {
--        { .name = "apu", APU_ADDR, APU_SIZE },
-         { .name = "serdes", SERDES_ADDR, SERDES_SIZE },
-     };
-     unsigned int nr;
-@@ -698,6 +718,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         assert(isv);
  
-     xlnx_zynqmp_create_bbram(s, gic_spi);
-     xlnx_zynqmp_create_efuse(s, gic_spi);
-+    xlnx_zynqmp_create_apu_ctrl(s, gic_spi);
-     xlnx_zynqmp_create_crf(s, gic_spi);
-     xlnx_zynqmp_create_unimp_mmio(s);
- 
+         if (iswrite) {
 -- 
-2.25.1
+2.32.0 (Apple Git-132)
 

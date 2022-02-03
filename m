@@ -1,114 +1,189 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1545501lfk;
-        Wed, 2 Feb 2022 18:23:26 -0800 (PST)
-X-Received: by 2002:a17:902:c102:: with SMTP id 2mr33152504pli.92.1643855006188;
-        Wed, 02 Feb 2022 18:23:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643855006; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2016463lfk;
+        Thu, 3 Feb 2022 09:57:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwp6KvV1hUxlQRqN8i7G/y3ttGf1KCTHb9HtBxin0Htz4bxxzoWARC1nfB5m4jmesOcAzBl
+X-Received: by 2002:a63:2b4d:: with SMTP id r74mr15992171pgr.514.1643911048647;
+        Thu, 03 Feb 2022 09:57:28 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1643911048; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ZGmx44QvV9Yg9lP+ppIMwXgu+vy3BSH7/GIqH1M7mBhZ5RorfnsIOD6gDYBFFnIxo0
-         5D3zQ9YjmGmjINFVIpH5MxlT5srjVNADNFajGRyDN9qujTzry72AbVbce7ifv/X1eZhr
-         Ub6hEarwomBqv83dnaiYGVZSlQu6lyv4aEWSuyEz7luzhJR7rDduCKreK5nVHp4hicAj
-         ZtvX/FzAAyGVwNWauVwRejoVUuO+QxG7gjeb0yk9CwZf8r6FQRXRW8IMpkSyzF5TMtOz
-         JRT/Jyoz3awFlPNTvKa7XHRlb8ALaiSc637wwDO3KYYEbTHqckp7R5i+0ysBNPXlQo1K
-         7OCA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=tIofPPFKxe5KjVvoF9VUePFaya6n4ldKVA9gyauPOAw=;
-        b=hAa4mc05AkKLg1e/a5cHk2tUAk9IjLZyIf/W1ISMF2XjoF+Uh8xjZ9hlFN9z/Nd3Sq
-         +eJYb3QHS2CmGskBviN8aJkr6u459qj0w8ho7woGthwrWO9qkFYMT+6aCVwo8NwmUDuV
-         MPJUDeJT5dpvOuQpYB55l7TGJcTfPg7rLTzJwQfP0jFYyhzL7n4EpNKU6vYwj4B48rMK
-         en0IWETrtfiz2gtQqAz6gL2FpuXE6NPevlKCQ/7AczpY/42Rsi6yFRnsd9k3JgAzn//S
-         spvQVFck1CucE7nCykyxHipI6okexi4v55/N+XC9I6NR5iTSL57WgElqU8tqvy/uy1Ph
-         Io0g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GkzxAmxQ;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u1sor9223787plk.63.2022.02.02.18.23.25
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 02 Feb 2022 18:23:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        b=ZSPVS/CLzK330kkUwN22op7HcDRr+VSPPobpfy12udZsQhf+VHLKGuhqNoUvpIozS1
+         4g+liH+v99pGp1WzKJtTfFw0afg0IGEMfYiTrLy6q/ec+N0ucezltrVEgBDac/I9bffL
+         WoPZilxCMVe8oaMARc6W3O9XRsFISDbET7kvXzLUyekzA8Ka/jf6RxTEfiDzam7X8DnC
+         kKOhTKPGtdh8pP/R3urGPJwKgBtfSeuKuw1rix2aF29HS8dEHClg/gJyYKZNc7El6foU
+         0GxbGm/ISDCjeNIWK/eEDzZbBXTyy3UIzy9naQB/RyK8/HvDC/ixzVyaJ0AgUI/zAfKZ
+         bvyA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=fpDhXhzeggEQ2IQQUcsWyXmSm1MGRla7F+YI56LwhKM=;
+        b=RP4hZaIUdyLJVU29+/3gp7utlqwLPKdwWskyYZKUYmClbkJT4pAr1xNevoYlfn1rCc
+         A1qp2YYMPG5eRJGWuoySmqD4/JwAWItkgRBOB3vB2ewGWKxRsxazHrSPGeyDa+m7+1R8
+         USyEZSmz+SE/hHeaAOLKJ8SjH4EJSQN3xTVyN7B7NfKmK1C1e66LM7/v46leEsW0jjBY
+         PMwpOTnYC1CM1F8spj+amKNvGEJcDhlorge+3y+zCpnQ4dkVziJ6MHPs1wjGiyu4rIlS
+         aG/lDbPfVcHNuSvCI1b3Kbi58DasU6WoQQdt1DzaPcsSsvY/iOBslt/QYmw6B5ZskJiQ
+         vY3Q==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@quicinc.com header.s=qccesdkim1 header.b=iWV2qYof;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of tsimpson@quicinc.com designates 216.71.142.165 as permitted sender) smtp.mailfrom=tsimpson@quicinc.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <tsimpson@quicinc.com>
+Received: from esa.hc3962-90.iphmx.com (esa.hc3962-90.iphmx.com. [216.71.142.165])
+        by mx.google.com with ESMTPS id mu14si9731357pjb.118.2022.02.03.09.57.28
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 03 Feb 2022 09:57:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of tsimpson@quicinc.com designates 216.71.142.165 as permitted sender) client-ip=216.71.142.165;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GkzxAmxQ;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@quicinc.com header.s=qccesdkim1 header.b=iWV2qYof;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of tsimpson@quicinc.com designates 216.71.142.165 as permitted sender) smtp.mailfrom=tsimpson@quicinc.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=tIofPPFKxe5KjVvoF9VUePFaya6n4ldKVA9gyauPOAw=;
-        b=GkzxAmxQjs4BFwJfQYqxGhyZcfYsK3mMnUQjYahziyTmxLqTLZsKt4dO53yjk4Ftzx
-         PiJjC0bVUaiJsHASJf7GWuuXHB+3zEwlBxTgc3SScbNBYFaLBJfosth1gVYdlj61g6ik
-         UMv0tthUoCXI+75SdQKX70iowvnNj2xCUYxYrfTGbxP1qgFuUzpvejmqb6ZZEq5MscIH
-         J0fe6igDP+I+rIHnyllbWm0USgmLUT7ttVemblgJUmmN/jX3f84dqCPbq8z033NFnEA/
-         ONWyEgSGs3FcbeFmrp5wTbBm7z+0+2MN7Y9J8XnlK89YVogbyb2RS+SuMxo4kFq0dNdW
-         uUkw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=tIofPPFKxe5KjVvoF9VUePFaya6n4ldKVA9gyauPOAw=;
-        b=aNYPsviaLi9dzZLbV6z2GxOs9t9obcrEsV6W2XG23Xz6/DH4FCA13ZwXPS4zA/Pbz9
-         JukIDmlR15NscEq6Ckk9oTRUH20UfQG+d2EDVpfWL8J2Y7CRN6dTu2/uHnuVXXHt5qhO
-         qpA1Odrems87FT+nDUuLlVkBhh20JSmsvxwMbUUoSMcVk3rkJJ3jZzZEjdMQTHhMg+Yq
-         h3Ul6xZfaM/bmjsLLL79NBEq9Z7nfvuqzvkCyhR4mNmN0D9O0KXQpRzHeEYX3RwMKGvh
-         L5FMdUBeadQQIlLYPIaDrK45mSfQCyiRPDR5pAWvAkv6luo6tCT6PMZHyKvqnG5PkPlW
-         fkcg==
-X-Gm-Message-State: AOAM532TzxjLnb+uxY4BlVnhFUpWyTfHJi0JnI3ysY5Bnd+6Tj7W0xI+
-	sr/m3YukTdkp5sQe0rbjbarl+IRF
-X-Google-Smtp-Source: ABdhPJwZ0O0Hs7ESKHYCi44AMYSTFUZEB1Tp6Kn4j5yU0Y6vOai7vte5ni10yrH5vd00d/VX0OjB/w==
-X-Received: by 2002:a17:902:8c92:: with SMTP id t18mr7404042plo.11.1643855005646;
-        Wed, 02 Feb 2022 18:23:25 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2001:8003:3a49:fd00:801:72a7:386c:deca? ([2001:8003:3a49:fd00:801:72a7:386c:deca])
-        by smtp.gmail.com with ESMTPSA id pc4sm8954145pjb.3.2022.02.02.18.23.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Feb 2022 18:23:25 -0800 (PST)
-Message-ID: <4d102117-f62c-825d-e686-d5b3331078c2@linaro.org>
-Date: Thu, 3 Feb 2022 13:23:19 +1100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 02/13] hw/intc/arm_gicv3_its: Keep DTEs as a struct, not a
- raw uint64_t
+  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qccesdkim1;
+  t=1643911048; x=1644515848;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=fpDhXhzeggEQ2IQQUcsWyXmSm1MGRla7F+YI56LwhKM=;
+  b=iWV2qYofU6V6wjSBNsqiUsfgpaEpwg0f1vi2d1VzBW42wHFu2OlN2UJr
+   SyQIicO/5Sibk7BzhZlPv2VBGd7Q/oBMKowBsvDjo3zzaBkhTiMqLiUwL
+   KecAjZz4wmYGD6JxOAYEv8Lb9JJyJgzb3+j04iwfClWYhAB1ZSI9RaiDp
+   A=;
+Received: from mail-dm6nam12lp2173.outbound.protection.outlook.com (HELO NAM12-DM6-obe.outbound.protection.outlook.com) ([104.47.59.173])
+  by ob1.hc3962-90.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Feb 2022 17:57:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=A6Kst8PQqD/QYmJLDbicxSbHWkYdj/ckFdOPW2vZ5OC4Sqiop7j0JvrXzCfmCOLawwh65dZAwrQFoTlh/unu5viXiESCPvECIY89y+j9ajbfgf01Eqwc3IkV22aeKrOil361ehmw8Luf6fZlMl+ocBVjhkGzqux5hg1WbAnNk0RPi/9AAzG6QwqCROiA9PP2BZ8riRkQWkrkQr8XxwPoyJsU78U/ckpK1ZskkVZI9ZY8mPhOf/7EsBgUFqHYWw5JoMCETSPstkMnXQqOcuIjYZDnWt/ES95LrIg/Jgii3wkWfZr/TlkTlBwH+vta1kS/a0IVjZkI6B4qETuD+YVTkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fpDhXhzeggEQ2IQQUcsWyXmSm1MGRla7F+YI56LwhKM=;
+ b=GtisWBM8kjTt1cSCl2ZBNudTRmKmySjOCIlZOO6HyxXvDHwsYyuWvdGCAvtTgMSQYrQFqTL/W9zMjekHzdl43QekfuDI3EAAQiBaKIZ6nmxZdsq5OThUlfjSAsVWlNDIzaPNwP/FITzdnL7Ri+UcErfEUB3YM6dVwmk7wLcX8c+Tu3B/2478FKdku1SCVnOGxVdM53WlKpiFG31K4zooGiyw75AAmNarlJgMQ0QVZSdfAQ17DKqO59Qwu4DJB0VaA0qSgxqSlCte16t0w2Xt3MUTHHRWgmraVI8OrBmcLKof7bShhNZVga8TwyP8u0YXkF8+fW6qtivhx39sRCFsaA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+Received: from SN4PR0201MB8808.namprd02.prod.outlook.com
+ (2603:10b6:806:203::12) by PH0PR02MB7576.namprd02.prod.outlook.com
+ (2603:10b6:510:5a::18) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4951.14; Thu, 3 Feb
+ 2022 17:57:24 +0000
+Received: from SN4PR0201MB8808.namprd02.prod.outlook.com
+ ([fe80::bd2b:92ca:d25e:9d10]) by SN4PR0201MB8808.namprd02.prod.outlook.com
+ ([fe80::bd2b:92ca:d25e:9d10%6]) with mapi id 15.20.4951.014; Thu, 3 Feb 2022
+ 17:57:24 +0000
+From: Taylor Simpson <tsimpson@quicinc.com>
+To: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+CC: "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "fam@euphon.net" <fam@euphon.net>,
+	"berrange@redhat.com" <berrange@redhat.com>, "f4bug@amsat.org"
+	<f4bug@amsat.org>, "aurelien@aurel32.net" <aurelien@aurel32.net>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>, "stefanha@redhat.com"
+	<stefanha@redhat.com>, "crosa@redhat.com" <crosa@redhat.com>
+Subject: RE: [RFC PATCH  0/4] improve coverage of vector backend
+Thread-Topic: [RFC PATCH  0/4] improve coverage of vector backend
+Thread-Index: AQHYGHGJHyYvQ8C+vki+6vd1G/AKz6yA5OuAgAApILCAAPft0IAAFiAAgAAAdCA=
+Date: Thu, 3 Feb 2022 17:57:24 +0000
+Message-ID:
+ <SN4PR0201MB8808A6436C987408C04CED6BDE289@SN4PR0201MB8808.namprd02.prod.outlook.com>
+References: <20220202191242.652607-1-alex.bennee@linaro.org>
+ <87k0ecvoxu.fsf@linaro.org>
+ <SN4PR0201MB8808B91BF0F27E376C1872AEDE289@SN4PR0201MB8808.namprd02.prod.outlook.com>
+ <SN4PR0201MB88089C0A52C660DC7A6D71E6DE289@SN4PR0201MB8808.namprd02.prod.outlook.com>
+ <87pmo3sut4.fsf@linaro.org>
+In-Reply-To: <87pmo3sut4.fsf@linaro.org>
+Accept-Language: en-US
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Shashi Mallela <shashi.mallela@linaro.org>
-References: <20220201193207.2771604-1-peter.maydell@linaro.org>
- <20220201193207.2771604-3-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220201193207.2771604-3-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: r8OymSOXgcv5
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=quicinc.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 7ff445ca-dda8-4fcf-63cf-08d9e73ea20d
+x-ms-traffictypediagnostic: PH0PR02MB7576:EE_
+x-microsoft-antispam-prvs:
+ <PH0PR02MB75766E1E01D4C148279C314FDE289@PH0PR02MB7576.namprd02.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6430;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:
+ ygRJEqrCpwpZQAj0wKs2lHiz+wGg2ptdIJ2Yb1BEP0YlZCxAUJ0z42coNg8DO2pLgbjDgSQyxMFYjcMIpQhAav2ltYsyC3ZPdGMHKytjakL0VpR3/IuQAw4HQBzEdpM047fbSHcjWiKj5yHc4q30N9X5W9hpu++n03nC7fO7w5QmcRZ2fiCvics90pxv2bkS+xOVhNeVBFPnYrvc82kVzAAQ9NmhwVET66IS3za3Dc2DhkVq2zvKSOwKEAm1XzRhES+P2dTKQIq0qvpcoLqth5dxqs2l57cB1KCcdt4QtasCSmO7lskZpbvxrnwBvMyrBKSgg3WIecF3eARd35HN5YrPB4GfsDeeKbfONni7uDClEGhJwu6SNj7cqlzOfIQb6r2TdEAEiOm4yf8VNh/nkFKbR5A97CNBLVRpuVY5Vt6DOELu1XY9IemSzJxZ4DBKV/VRqdSqEzVju83Mpgoy00WOVlQZVqicSndqrc/D4BYq/10PqkmXe3awoy1sUmjN46mCdBpp5XL2SSSJgAw5inQty6V2DUHtvC5eSiDseCZ0jCixf52deua9SZGyjeq7g0fuxuLvfR9AzGA+d67okEVyG2ZKATwBtEk9wmucH+szx9otSZHfn4IEc9yxT33j5hNbzD2dEzkDalnlYdBLGAxqIAW47tVRUgA70AIdyyVgOEXIRnign9csQCq5N0hUDr+rwb1/F99acZOPyGVFyQ==
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SN4PR0201MB8808.namprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(71200400001)(6916009)(5660300002)(122000001)(316002)(54906003)(33656002)(38070700005)(55016003)(2906002)(6506007)(66946007)(7416002)(64756008)(53546011)(66446008)(52536014)(7696005)(76116006)(9686003)(66556008)(66476007)(66574015)(86362001)(8936002)(26005)(186003)(83380400001)(508600001)(8676002)(4326008)(38100700002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ =?utf-8?B?N3ZYL0p0bjhkOXl5M2F6aWNVemFJU3V1dTVqbm9pRmordlBqNlViaHVSRG8r?=
+ =?utf-8?B?Z3oxOWp1c1FKOEFkK3o4aGhvcy9jNndxNWJubGpuQ0N6SVNpM0J1VGZqeUU3?=
+ =?utf-8?B?U2hzeXVCbTVyc0c3bmphbEhzY0NCVUxzcjJJNFpuS1hpdlR2MGFNR2UybjhP?=
+ =?utf-8?B?VmZCNlBwL05BZjZhNjlBeGJndFZXSHQ5SmlLWmFxeSt6YjNhZmpjOTFNOHBl?=
+ =?utf-8?B?TExCaTRDalFaOWFXQ093VU9Sc1dvREhnanFXUFZpcFlFNG5RQWE3cUh2cmpp?=
+ =?utf-8?B?cTdNaU5BMTEwakpMV3lLZWFHb244SDhJWFdzWnEzVmpLN2RQWGhCV2JrbjNv?=
+ =?utf-8?B?eGlFS0lTOWIxeWNCcElPOTBLYWVTNXJ1c3hHQ1RpU3ViWDZVYjIrL3puNFVn?=
+ =?utf-8?B?STJ4KzIvaEtsUW4rbFZMZXZLczcvdjVydGY4V0RYeXdwbkt2MFVvYWxNUjh4?=
+ =?utf-8?B?aGZORTgwUU9VMDlMRzZGem9ZbVVkNjRwbEFJVUcyYmEvam4xZU5EeEIyOUJj?=
+ =?utf-8?B?TzlXK01Cd3o1RW05MnhZZWJKOGlxRmtBaGNIdkltWSt3a2I4YWRMeFNhWkY1?=
+ =?utf-8?B?OW9JUlFvdUNQZHZkOTBtbGt0SXRTUlNLTThmazNEY2lkTHBBY0ZQcGdMaHNG?=
+ =?utf-8?B?cTk3bHpKUFduaktyNXlwbzBYNmxBeGl5Wi9zcHdBK21ic3piL0lremxBVHlM?=
+ =?utf-8?B?UkptQVZtZUQ0cGZJNEJ2QzVKTzVVYjdEdjdXYkxISU8ycG5CWThSM1NtVGtn?=
+ =?utf-8?B?WGVNU1N1UVdXQXBUdFFtRTVvOFNRUzBRMVFmc3MrTy9YK0pjbGx1VTdIV3Ri?=
+ =?utf-8?B?Q0oyN2krNVlXRWdhdXN4ZkViUVpsbmpYelcxa05acUlaNVpiZjVZMmUwQUZE?=
+ =?utf-8?B?a1lUQXluQnh5L21HK1RGUTh6NVVNWjE1eUdYdGxmeTZDVkN6Um8xeGVBWjVL?=
+ =?utf-8?B?WHA1VW9Rb3lYNndWZ0R4V1UyNXdVU3VEL0w1SEptM0dhSjF3clo1aVQwaGhM?=
+ =?utf-8?B?cnp6UGIwMFVkWm1qNzVKUUxXZldTVWNkYndWTDFhZm9scmF1K2hTc01QU3Bz?=
+ =?utf-8?B?aDhNcW42L21LMXFqa1ZkM1JIQkIxekxiUDBLSURBWGl3NEZlR3BCWm1mY201?=
+ =?utf-8?B?ckhwSThuY1BCUVlyNFk2SzlNQk95elkwM2ZuejVIRmFyZUttZExjUlNtMWVG?=
+ =?utf-8?B?ZG94MytXVHlQVVNaU0RGMzFQUWVpZm13ZjBrRVBTUm54K1U1WGpvcmE0U2Ew?=
+ =?utf-8?B?bzIvem42QStQZk9WS1pXTVg1OXNSMHBETzJ4Vy83OE5wQVNlUEdvRWFSYVdl?=
+ =?utf-8?B?RzRIR1c4Z2UyRlFrNWs3Z0pqRElPNWN1TFpEOFl4K1pIUytBVWxBVk4wd2g1?=
+ =?utf-8?B?MnF4eFNoSVpHMzZwaDI0OElOQ3V1Yzl6TWMzZmtoZTc0UFBLMHFhaUdqQTY2?=
+ =?utf-8?B?UWUvTjZIT0tTZVRWK2Vkejh2TVZYR0JQNU1ENEkxY0VSRGFwdHZwalR3Qmpl?=
+ =?utf-8?B?N0tlSVh1U0lMRWJ0VHdkcnVxQ1VyVis1ekRuTzBBVkcvem1pSUEwakNMR01a?=
+ =?utf-8?B?K3pWUDRkT1llTldpMW5hOGFxVDhsb25RZHErWGJDRGNLM1JpMjFLbWE4SGVw?=
+ =?utf-8?B?ejJQc2FjVDlObWt3UnltajRYS2dNclA4cTlEK0lKenJvekVxbm5wQ01rVUhx?=
+ =?utf-8?B?QnB1bDladURFbklrcjh6aDJicDk4VXUwV05xZm14ZEdscVRicGc4b2VUVWQw?=
+ =?utf-8?B?dldFb0V0ZExHK21Uc1MvMk9RdEM3VEJNSjhtNXR3ZlJhZW5lMk9ocURyTUhh?=
+ =?utf-8?B?RnZSajRGSWhTYzRxb1NYTVk2ajBpMmxKL21uRm16Njkwb0Vxbi9XNXdyQjlF?=
+ =?utf-8?B?RUo4RVRKNkFpNlpVK2NzMHJLcjlPemR2V1Q3QjdtWGFyWmd2M1loQmJUdWxX?=
+ =?utf-8?B?Tm9uWVNMRlptbi9vOVJDQXNCVGZ5Y3JEeDYzK3MrbEthMEpRUndoTEl0UUxS?=
+ =?utf-8?B?SG9Hdlg0b3RhTlJQZXJsVnBLc2Fnb055d2JoUUVBcUdRVlg5K3pKNmdQdHJ0?=
+ =?utf-8?B?S21pbDExWmM3OTFnWGNNUjlEUmhTZWNDVmlpSnc5OE9sbVRUc1FLdHd0M0tY?=
+ =?utf-8?B?U2RPcUVnM1ArL2lNcU16YlRsc1JrYnZLRUpBQWpPRytlNWI1OElNTEpBVDdM?=
+ =?utf-8?Q?lICEX1FqHFZoCtXheL2DfvI=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: quicinc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN4PR0201MB8808.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7ff445ca-dda8-4fcf-63cf-08d9e73ea20d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Feb 2022 17:57:24.1629
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 3fEdMK+t5jjTUWO+3yUaA2Pcp5shO3r4vdZ8B8xT3fZCblBSUNOhWB1NYZHMpK+m0Dj+vu7q1qv/fEmqu2CAtA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR02MB7576
+X-TUID: FVOy4pQmQeXo
 
-On 2/2/22 06:31, Peter Maydell wrote:
-> In the ITS, a DTE is an entry in the device table, which contains
-> multiple fields. Currently the function get_dte() which reads one
-> entry from the device table returns it as a raw 64-bit integer,
-> which we then pass around in that form, only extracting fields
-> from it as we need them.
-> 
-> Create a real C struct with the same fields as the DTE, and
-> populate it in get_dte(), so that that function and update_dte()
-> are the only ones that need to care about the in-guest-memory
-> format of the DTE.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
-> This isn't a massive gain for the DTE, though I do think it
-> looks a bit nicer. The real benefit is in aligning all the
-> get_{cte,dte,ite} functions to have the same shaped API:
-> currently get_ite() is different from all the rest.
-> ---
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-r~
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogQWxleCBCZW5uw6llIDxh
+bGV4LmJlbm5lZUBsaW5hcm8ub3JnPg0KPiBTZW50OiBUaHVyc2RheSwgRmVicnVhcnkgMywgMjAy
+MiAxMTo1MCBBTQ0KPiBUbzogVGF5bG9yIFNpbXBzb24gPHRzaW1wc29uQHF1aWNpbmMuY29tPg0K
+PiBDYzogcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3Jn
+OyBxZW11LQ0KPiBhcm1Abm9uZ251Lm9yZzsgZmFtQGV1cGhvbi5uZXQ7IGJlcnJhbmdlQHJlZGhh
+dC5jb207DQo+IGY0YnVnQGFtc2F0Lm9yZzsgYXVyZWxpZW5AYXVyZWwzMi5uZXQ7IHBib256aW5p
+QHJlZGhhdC5jb207DQo+IHN0ZWZhbmhhQHJlZGhhdC5jb207IGNyb3NhQHJlZGhhdC5jb20NCj4g
+U3ViamVjdDogUmU6IFtSRkMgUEFUQ0ggMC80XSBpbXByb3ZlIGNvdmVyYWdlIG9mIHZlY3RvciBi
+YWNrZW5kDQo+IA0KPiBUYXlsb3IgU2ltcHNvbiA8dHNpbXBzb25AcXVpY2luYy5jb20+IHdyaXRl
+czoNCj4gDQo+ID4gUXVpY2sgdXBkYXRlIC0gSSByYW4gdGhlIHRlc3Qgb24gdGhlIGhhcmR3YXJl
+IGFuZCBoYXZlIHRoZSBzYW1lIGVycm9yDQo+IG1lc3NhZ2VzLg0KPiA+DQo+ID4gU28sIGl0IGRv
+ZXNuJ3QgbG9vayBsaWtlIGEgUUVNVSBwcm9ibGVtLiAgSSdsbCBpbnZlc3RpZ2F0ZSBpZiB0aGUN
+Cj4gPiBwcm9ibGVtIGlzIGR1ZSB0byBzb21ldGhpbmcgaW4gdGhlIHRvb2xjaGFpbi4NCj4gDQo+
+IFRoYXQgcmVtaW5kcyBtZSB3aGF0IGlzIHRoZSBzdGF0dXMgb2YgdGhlIGJpbmFyeSB0b29sY2hh
+aW4uIFRoZSBsYXN0IGF0dGVtcHQNCj4gaGFkIHNvbWUgaXNzdWVzIHNvIHdlIGFyZSBzdGlsbCB1
+c2luZyB0aGUgaGFuZC1idWlsdCBvbmUgdXBzdHJlYW0uDQoNCk5vIHByb2dyZXNzIG9uIHRoYXQu
+ICBUaGUgdGVhbSBoYXNuJ3QgaGFkIHRoZSBiYW5kd2lkdGggdG8gd29yayBvbiBpdC4NCg0KSG93
+ZXZlciwgSSdtIGxlc3Mgc3VzcGljaW91cyBvZiB0aGUgdG9vbGNoYWluIG5vdy4gIEkgYnVpbHQg
+d2l0aCBhIGNvdXBsZSBvZiBkaWZmZXJlbnQgY29tcGlsZXIgb3B0aW9ucyBhbmQgYSBjb3VwbGUg
+b2YgZGlmZmVyZW50IHZlcnNpb25zIG9mIHRoZSB0b29sY2hhaW4sIGluY2x1ZGluZyB0aGUgQyBs
+aWJyYXJ5IHRoYXQgcnVucyBpbiBwcm9kdWN0aW9uLiAgSW4gYWxsIGNhc2VzLCBJIHNlZSB0aGUg
+c2FtZSByZXN1bHQuDQoNCkFueSBjaGFuY2UgdGhlIHByb2JsZW0gaXMgaW4gdGhlIHRlc3QgaXRz
+ZWxmIChlLmcuLCBzb21lIHNvcnQgb2YgdW5kZWZpbmVkIGJlaGF2aW9yIG9yIGEgNjQtYml0IHZz
+IDMyLWJpdCBkaWZmZXJlbmNlKT8NCg0KVGhhbmtzLA0KVGF5bG9yDQoNCg==

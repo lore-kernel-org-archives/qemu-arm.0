@@ -1,81 +1,81 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2123577lfk;
-        Thu, 3 Feb 2022 13:14:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxmy1lICzatSz8myfguEdxOpAwi4USq0kOWHrmw3430kMSDVlLZhmtvdJH/zAv0cmt3lZKR
-X-Received: by 2002:a25:a04:: with SMTP id 4mr39619ybk.528.1643922866699;
-        Thu, 03 Feb 2022 13:14:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643922866; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2128804lfk;
+        Thu, 3 Feb 2022 13:24:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJytsnZF1Qj3jhXu0yb15C6AwXFvhjThhyp1wnYoGHwxtylveb5bDbrpGhaB0dK2a0T7rp0v
+X-Received: by 2002:a05:6102:34cd:: with SMTP id a13mr6412839vst.64.1643923476203;
+        Thu, 03 Feb 2022 13:24:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643923476; cv=none;
         d=google.com; s=arc-20160816;
-        b=uJq+jTzas7p6ktJotGxKfE62Do43L7wBW9nuB7RF8kbzQ92pX2R4V4xXcwTl4i2Onq
-         cpdUcz+gdIcdsg7f+sK/8KQshegG8Py+CQ6fmCkP1BlHaOUjDuOsp4P5iPODTqqQ3nUn
-         +xvOVvb6Dr7CDCLeBzXew6CKDVwPTAuhv1F3JgaZpRN/XSCJdnETwW1aQHONfSs+Ri8Q
-         UTgNGrrLohjjIf1GWY/azWdaGEjJJ8CPjS/ZCrQCI1KfeY48KtzFoOoWnBzIWcn7FSeZ
-         jPOq27RqXtq5xj6tGFT/vfZn42mrm67fjhcLbiCT/lK84T6+MxSuFV8eB0M257uE65Ee
-         VzXw==
+        b=xtj6NsjoMoFv1U3o7tDpIqxxSeRcWPohM4j1SYz7xxuXYhsHys3z9vuKXGm5sUvDgQ
+         E9wOb5aKNpPdeLTEMWuaQIkFRMKvPZDgPYSvtnnYzhh9rwBVb9DS/EiwrmHnEXsiQ72n
+         Ug7ptdfonAjSvLDiJxYXHlR9YuL3mXyUSjB2A2bgdjGoeX1ROqGlo0lMVJMiDBXwTJkP
+         lr0pvLqW/hOfiMpnHkaOcRNSde59LXit/5kGW6FmuplGVCBeQE6BwISm0HJ3H2EZuhjg
+         FJEu+FeuG5uyxsgcsEnci74FXKB1yBCzfPsNxR/Mq3PpHscQY6SRHEEe7GTTJIvC19da
+         bMvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=SG4mfTgcMbx+MjII4dHrn/5Edc9LwRsHIYmlJ+CMbwU=;
-        b=fT0G10s24MIcL8H7qIZ+c+N7Q3xqpi5D6EZVkBYQ0N7sZPYxBOwqZ2FRkg/dMhSyT8
-         57SSZ+lnsP55tLCnhSN4lddZkKecfZT5QgnOLnyzisBdpWXh4u/RqpvjwlHnynuAFX7G
-         IVWQ12NpEsL0iYqLHmEkAzOG968+HUZB6XEmNdyEqjCW5LNotIOf5T/STOrun9/xSzZ1
-         91b2phbUWWYPbLr8n9LK0cJfFmjg1vUqO5X+9X7psiBAXeVevM9aA8v87oalmr0n0oTy
-         pPsgl8yNHpKNyr7ePjOF99OosmOqtzqu3+c382vkJ+e9p0fGr4AMHc+LdlKrEUgkPL3I
-         qpLg==
+        bh=23ghNXj2cokyojP3FkXbJypqWLELVpWdmnT3PoTP2IY=;
+        b=lGsOFzyudWM0Zq9QpgiSgWA5d0jpiBVzpsgNhzqiclYFFKS1AqEJVi4oq1JUnbGXQ3
+         m6lpt7F1RZVHAsB6o7D/zoEGYP5D/sWJuoI/Reljy9E+jAIkioVCVj91A9q/Ab0rt5DK
+         Rf0E9j8vUrL5qjWc7lVZARgXvrX3TCBDHYW0zNQfVSsyKDmSgJ7qb3/gbTwkmHirqv86
+         g8kV3C64ynsxl901OqqRPdIFJuv9flThWkFWwoxl2JQJuS9rgyzN/dBtNKYfJ6nRRo3E
+         stYQfMGLEp4ZPc0os3AW94bqsMHKX3bHaRLvVXfhZ/jwqPjyBRxgIWana87ax55ocXfb
+         W+Aw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=ETll3oEp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=fIIeWjgO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f187si39737399ybc.423.2022.02.03.13.14.26
+        by mx.google.com with ESMTPS id s4si2174032uao.276.2022.02.03.13.24.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Feb 2022 13:14:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Feb 2022 13:24:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=ETll3oEp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=fIIeWjgO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:41720 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60362 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nFjQw-0007AY-1y
-	for alex.bennee@linaro.org; Thu, 03 Feb 2022 16:14:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40382)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nFjal-0003Yz-Le
+	for alex.bennee@linaro.org; Thu, 03 Feb 2022 16:24:35 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1nFinW-00053v-62; Thu, 03 Feb 2022 15:33:42 -0500
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:50260)
+ id 1nFibQ-0005oz-CI; Thu, 03 Feb 2022 15:21:12 -0500
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:50250)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1nFinU-0003Ih-F5; Thu, 03 Feb 2022 15:33:41 -0500
+ id 1nFibN-0001Oi-PU; Thu, 03 Feb 2022 15:21:12 -0500
 Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 2D846C60912;
- Thu,  3 Feb 2022 21:33:36 +0100 (CET)
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 3B290C60912;
+ Thu,  3 Feb 2022 21:21:05 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1643920416;
+ t=1643919665;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=SG4mfTgcMbx+MjII4dHrn/5Edc9LwRsHIYmlJ+CMbwU=;
- b=ETll3oEpeUSAKVp49eD7XqNynxRay9lHopInJZNubOHRLn7b5Nu5n9vpYvGDOSJpfB3PNq
- wXwCosW1Ti3MI5wnhx4GQXo1zsn3lwEjc3+IetirbgwSZM7Pzk3myztAtVy0mGlfEvrWiV
- eRDMwixKt8+oPrNUkBkjUvsJoV6TalFv3FIVJI6OURvZPVTdBrsCCx99kmIvL3XC8Y7r1k
- nMZ8C6vCTd6oy/GYOeLCTI1RsA2b1Si6AfxOMsiib4RlCVo3lOHEqB9QXuTYaO8TlwjDA4
- 5NKYRyuMcur2dmU5DzxbWKVsWsnPNeDbC/NbhJDszfuUu/qsZrCbDspgA7RepA==
-Date: Thu, 3 Feb 2022 21:33:35 +0100
+ bh=23ghNXj2cokyojP3FkXbJypqWLELVpWdmnT3PoTP2IY=;
+ b=fIIeWjgORkk3iIJj8/ULkyWdxrc2Ve+rzkHQhk7kI5yPEnK82JTrEyzfk0vY1CyTbFiHJC
+ RZndANZwSW6HwXb+DF13UIyFvHPOm4HTX2VGwP5yW+eIFUOd1xWk3bVRZykZ5G5Te3nPU+
+ zgpDiBJbOydsYBd3NwvX9rzGeUSE8yNlkLTvg3hQ7B/d3f3ALMbq1ifgPLMKI34SItLhdn
+ DegoE/ItG/Sf//WghNOBSwTCojeffkDo8bNmlYIV0botz9xWI8hy064Zk8t243UFBxxXTi
+ m99WLs/o0xJsGZ1XBLv0NW5E0hW3Hagry71UwUX/bX649XeVVR5nxO2ka/CKzQ==
+Date: Thu, 3 Feb 2022 21:21:04 +0100
 From: Luc Michel <luc@lmichel.fr>
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v2 2/6] target/arm: Make rvbar settable after realize
-Message-ID: <Yfw8H/zcSshP4omo@sekoia-pc.home.lmichel.fr>
-References: <20220203140141.310870-1-edgar.iglesias@gmail.com>
- <20220203140141.310870-3-edgar.iglesias@gmail.com>
+Subject: Re: [PATCH v1 2/6] target/arm: Make rvbar settable after realize
+Message-ID: <Yfw5MBPA0AOPfa3a@sekoia-pc.home.lmichel.fr>
+References: <20220130231206.34035-1-edgar.iglesias@gmail.com>
+ <20220130231206.34035-3-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220203140141.310870-3-edgar.iglesias@gmail.com>
+In-Reply-To: <20220130231206.34035-3-edgar.iglesias@gmail.com>
 Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
  helo=pharaoh.lmichel.fr
 X-Spam_score_int: -20
@@ -85,31 +85,29 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
  sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, f4bug@amsat.org,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org,
  francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
  qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qrFARqvSpMrI
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Umdcp/hGTOUn
 
 Hi Edgar,
 
-Oops I mistakenly answered on v1 :)
-
-On 15:01 Thu 03 Feb     , Edgar E. Iglesias wrote:
+On 00:12 Mon 31 Jan     , Edgar E. Iglesias wrote:
 > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > 
 > Make the rvbar property settable after realize. This is done
@@ -142,7 +140,6 @@ On 15:01 Thu 03 Feb     , Edgar E. Iglesias wrote:
 > +        object_property_add_uint64_ptr(obj, "rvbar",
 > +                                       &cpu->rvbar,
 > +                                       OBJ_PROP_FLAG_READWRITE);
-
 I think you may have a problem here. cpu->rvbar is used to define the
 reset value of the rvbar_elx registers in register_cp_regs_for_features.
 This is done at realize time. Changing the rvbar property after realize
@@ -153,7 +150,6 @@ those registers.
 
 -- 
 Luc
-
 
 >      }
 >  

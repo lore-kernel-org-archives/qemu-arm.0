@@ -1,304 +1,106 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2415390lfk;
-        Fri, 4 Feb 2022 00:33:22 -0800 (PST)
-X-Received: by 2002:a17:906:c14d:: with SMTP id dp13mr1626303ejc.188.1643963602582;
-        Fri, 04 Feb 2022 00:33:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643963602; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2446848lfk;
+        Fri, 4 Feb 2022 01:42:23 -0800 (PST)
+X-Received: by 2002:a7b:c153:: with SMTP id z19mr1497166wmi.118.1643967743158;
+        Fri, 04 Feb 2022 01:42:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643967743; cv=none;
         d=google.com; s=arc-20160816;
-        b=AIoiQU6GVSYvXhFK51gR8l2o5IBdwNJ453E22UUJ8eFRC5Ii+wMz8/rFrN9bduNey3
-         w3gb8rHlcpvbT/lbY3TW0jyjZbdaRqVPRB7fYUQhz5D/LbiBIhxuijiyAvd3MVVNV3Nd
-         VS6U9PFvc1arTr1WpASEbHyAXnnYBlyhsDrJRXl0lF/O2n8LVncyQ5SQdtXY+dLW4kCE
-         yj+XCLSf2BzhWu9OsunspFQGv4e83I7Wi1YjTBGUOBRbPOsmobEhZkfRAh8SS8qWgvMR
-         V2CKZTbyvcg3+nTFznNvg1VGlOQ+q82Tx98iXMkjdWmn/U6csPlEDzica0a5cpVMF4vD
-         48Ug==
+        b=pQ+T1jlZcH9n5S7ug1zZaj6rvynM+gKIUoLnJ/gQ/imNO0/FKVISYiwZWBCuYF7O/m
+         P79KuT7PaYe36GkNm/I+8y3HBZU0yHkrMHSwXKbLhj28IJbBgmQFemT1G5j92CJJaSg9
+         bzMG5UY+YteOm2ARdJNFpLgQgj9GqrQnrCZloCk1mf9KUBgh9QJVpHSiXdmGsnxN2jOW
+         eesEY3cQN59MoQJnJUzQeTArHuAbqdAUgs6mos0TlOtQJ3o18h5xb2QlSEHQ4+LkKjq1
+         95EwfrV3dcsIWfWB+lIedT8DvVNCcd1DszpntGBllMYcq/zFMkIfFctofLG1WV8U5fu4
+         hfJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=77KThg+cYeye+WaZ44dPyN8Q4xZRJF6Uybo0js+f3Mk=;
-        b=zfaq9a3EhhdLdIiIXEwVwwEuXGI6Pxq3q5/ywONqS9kuD7qSsMLoacVcpvKjszmaAe
-         tzHlxHC642+vWYAHrCP2t+Wt3iPUGWr/cxv3p/VpYAdpZ91uDW1DXEU4V+ZfuDT1oT6j
-         feBdkJLwOr2lq6oIU/oDPGc6jda+iQTo+RLmt096EV6JrPjOrcN8fzQ/m+X9+l6+1iId
-         BigUzkGn3VWVS/BBqi25yB9VhNuCcqiOdysEX+PFejOxLIxsYLlXr6U+h3Y0po3Z4O9Z
-         FY1/0BgyfkU6HheR5rmtpA4s9TAJ3WrjOeQ3qVch4TX4sKWiSdw5ZhsKa/zFxzvGXJhl
-         v1Sg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=jUZbZuTpM9tSZcxKB5Ny81cj9O/YNi38VWB2rnBTkSg=;
+        b=CXnbYpXTnJmhKqvUWkwwrd+qDFlSw2dD8qstiLlyij61iZdzQGnAinWtw4CvuXdlc6
+         41kAM/JM510k7Lx69XEq1qAOlzUjqgAO7RQWwpVgNbSc0rINsnMpNrG7V9O0PDkLq3Es
+         2bhmD4Zls4xSAnR6vIU5fBbQ3TBEZ1t8Qe5aTJXhLYm7XOPe0BTbFogWc57r2X44Svs9
+         arLm4zhAXo000XgIgzh3WLM+V2hfTzEjLFb/enq3d/ZHL5hu1h6SSd8eNlDAWrKVdG0i
+         g02/g9m0XNleMVMuTV5MJztSN3cOeQ3nOr1GWjvlrIASECfLV3yyiv6Zw+7oF5nnCJ9C
+         enng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=dT1SrlCq;
-       spf=pass (google.com: domain of valentinghita@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=valentinghita@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <valentinghita@google.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ex3kIydH;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id hp19sor669464ejc.11.2022.02.04.00.33.22
+        by mx.google.com with SMTPS id j10sor5803050wmq.0.2022.02.04.01.42.23
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 04 Feb 2022 00:33:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of valentinghita@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 04 Feb 2022 01:42:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=dT1SrlCq;
-       spf=pass (google.com: domain of valentinghita@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=valentinghita@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ex3kIydH;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112;
+        d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=77KThg+cYeye+WaZ44dPyN8Q4xZRJF6Uybo0js+f3Mk=;
-        b=dT1SrlCq1UVbN7z2gv0Iwvkk+OslzGqAOlOUCazMLo4jq/2AX9bamQaw3LTB1Xi7dG
-         8whetVWNEQw7vlEridhI3bqr/VSItexQj3dUrT0D56Qr9l4ZrhSGJuIbMMSo46A38Gwx
-         QRPIrm1Tw6nmVE7NqHc6Lxvw15IZ12kw96AkqVleXNfKRl4cZQyoWYyd6W70S/bkXNbI
-         FR9iz+84+AeHudhzF1ZfFF1rVZosuly/ihIRY5Y5ivpW9EO8uvOICaDNrTkq8qgXuWR3
-         jQDqucKpo3U5ovPy9JEZO4D4dzPxZkpjN7JrK7BVV2Z6Lffq1WzCKrSkOaz1VbCoUgMb
-         k93A==
+         :cc:content-transfer-encoding;
+        bh=jUZbZuTpM9tSZcxKB5Ny81cj9O/YNi38VWB2rnBTkSg=;
+        b=Ex3kIydHlN5qU+6mhJVfGBGTzY0mHnO5bcy/DtqDd8zVf2WgjpIgVDl5Rks5i2kn7G
+         gMYGjjccJ2uOGIjj0z5rlRRXVR88fubQI1LKKjX3eYvmSeS/Lkz4+LCHhJfbXwIK6YSI
+         07n5uWPNZGDAR7zWTnet8/v86dynIXsX3L7A+Vcquj9sS5blA98RF5sxGORz8N6aq9D8
+         3fCrv5JpkbJOxCqHPwNKvvqyDHNttT7vJPWwgPTrw4edBAfBRcJpzi3NvXz1lwoWkgel
+         hVBMTXoOfi9Y+LynIpQaqIBxbecONIjPobJqgME5fTyzFOyElJEiL0pzG7ErOs2YRikn
+         GzFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=77KThg+cYeye+WaZ44dPyN8Q4xZRJF6Uybo0js+f3Mk=;
-        b=nra8JQCUYge4krTuYm+aqNWC6FDJrBAa+pFyL+Wy18aPlSw9SGNUFyFP5EpLKmj1O/
-         RPVv2pCTOAB7/874ztB6c3RIunOnVPUD/qt9HPc93tLzhrVXYBquzNpeqdSrxl0rmxif
-         qha7oGEVUfDJHmMCu1vWGrG39Wxt5RYcntKhRLXCAdswrohRuLZo3aflmFjtEL6c0r3a
-         eeElCRlUSplLqH8uofcQt2i0Hn9kTMx4xvW6XROfTI+0SSgkdt8ME3I+MdlFkDUREXu3
-         92iZaE9b9GwYqKP84Gg1azJdo8vxi2c1Xj6dzlcS5PyZ6Udig9Z9t8nuzjTxS0sC3+ml
-         RYlw==
-X-Gm-Message-State: AOAM533bQmzSXbgGrkvxW+SJd2RunPYPa9NKs1LDtMFJf7RRL9bklOEB
-	9Zf03xvB+tjhITy9GhtENE66N8KiF8UMsxR+43/YZaYTD9cwcA==
-X-Google-Smtp-Source: ABdhPJzwkpSgN1kKPDBQQYmJwdaxwULNJUM61xS/g2xApFZvNoQxFRWaLroSQQytI8wfltyVWX1iAPu8nwwtyeBZPb0=
-X-Received: by 2002:a17:907:2511:: with SMTP id y17mr1520713ejl.123.1643963602010;
- Fri, 04 Feb 2022 00:33:22 -0800 (PST)
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=jUZbZuTpM9tSZcxKB5Ny81cj9O/YNi38VWB2rnBTkSg=;
+        b=euqraX2GrqC0kyMdLADSnM9YZHE0Si/yl9V1h+PJK5XPPUzNjMQ6XjnHmFLY35gQ9l
+         ycoPNLCes+ktfk0E/766HjFrV4/BjQfpqE54R03UDhh4YEGnaoii6usmjPwQN9g7GISv
+         KRdQ8Jl7x4hMGL7oPzF5j0/GKM8L2O2yB49tCuF8ETna/+cllE+jjI75Uas1Teg+3pRZ
+         dqgtomlGaTnToNqLMBR/5CmrTtzsR9WaMUzSdMsU8wLfsCrniZuukzuAFVWiiMd/e+f5
+         LdDGH6qdXeDsMWkQ+4qfmjHcEFXdx3qtt14qsZatqICCa3Ds4TIendB/jrxj5gEwQHDa
+         qp7w==
+X-Gm-Message-State: AOAM53338yctiSN3cPosUFBoXTUyVfZgDL366FsN+FeFpav6Dsa11GWt
+	2X7chVQDxsBB2ZsgptiBuMX0KcziAY3sjW+HlZJFSMy1FWfFmw==
+X-Google-Smtp-Source: ABdhPJy5D5Y4Gh2DsWYuHOBnAhiOq/wdIlcGKj8K/MHL1FuRaVyacGajJ9KNFm5g2JirVh0G5ipVP4rKwS7IBSp4+T0=
+X-Received: by 2002:a05:600c:3552:: with SMTP id i18mr1535488wmq.21.1643967742852;
+ Fri, 04 Feb 2022 01:42:22 -0800 (PST)
 MIME-Version: 1.0
-References: <20220203155304.2648009-1-valentinghita@google.com> <87tudfsv80.fsf@linaro.org>
-In-Reply-To: <87tudfsv80.fsf@linaro.org>
-From: Valentin Ghita <valentinghita@google.com>
-Date: Fri, 4 Feb 2022 10:33:10 +0200
-Message-ID: <CAKddhtYyZrEFveatS-o1YORdrUa-o53fBe3kwo9RVjXB2ovpyw@mail.gmail.com>
+References: <20220203155304.2648009-1-valentinghita@google.com>
+ <87tudfsv80.fsf@linaro.org> <CAKddhtYyZrEFveatS-o1YORdrUa-o53fBe3kwo9RVjXB2ovpyw@mail.gmail.com>
+ <87czk3rnfl.fsf@linaro.org>
+In-Reply-To: <87czk3rnfl.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Feb 2022 09:42:11 +0000
+Message-ID: <CAFEAcA9y1F5X1BQOwzbJgJKPYvroHFM7ivSUOE-07d3S-GE7DA@mail.gmail.com>
 Subject: Re: [PATCH] armv7m_nvic: set DHCSR.DEBUGEN when debugger is attached
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000085db0605d72d1ac6"
-X-TUID: uRbePC3xgXI1
-
---00000000000085db0605d72d1ac6
+Cc: Valentin Ghita <valentinghita@google.com>, qemu-devel@nongnu.org, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-TUID: ZXjHZp/E/y1i
 
-On Thu, Feb 3, 2022 at 7:42 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
-
+On Fri, 4 Feb 2022 at 09:28, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+> Assuming you are happy for the device to act as though a external
+> debugger is attached regardless of the gdbstub state you could use a CPU
+> property on the command line to enable this behaviour. We have some
+> examples for SVE for the 64 bit CPUs (see object_property_add for
+> sve-max-vq). So something like:
 >
-> Valentin Ghita <valentinghita@google.com> writes:
+>   -cpu cortex-m3,dhscr=3Dtrue
 >
-> > The DEBUGEN bit is set by the debugger when it is connected to the
-> > core.  Software can use this bit to check if a debug session is active.
-> >
-> > Add a function in gdbstub to check if the debugger is attached to a CPU
-> > and use this information when the DHCSR register is read in armv7m_nvic=
-.
-> >
-> > Signed-off-by: Valentin Ghita <valentinghita@google.com>
->
-> Nack - use of the gdbstub should be transparent to the guest. It is not
-> trying to model any real JTAG/External debug hardware here.
->
->
-The goal was to support the following piece of code:
+> You would probably want to model the behaviour of DHSCR.C_HALT as well
+> because that is something the core might do to itself if it detects it
+> is running under debug.
 
-if (DHCSR.C_DEBUGEN) {
-    __asm ("bkpt");
-}
+This is sounding pretty hacky to me. I think we should either have
+a proper implementation of all of halting debug (probably opt-in,
+with the default being that the gdbstub is transparent to the guest),
+or we should just say that no, this isn't something we support,
+and if you want gdb to get control when a particular bit of code
+is executed then you should set a breakpoint there.
 
-And I have another patch which handles the bkpt exception when the DEBUGEN
-bit is set, by interrupting the CPU.
+We don't even implement the guest-visible debug parts of the
+architecture (eg architected single-step) yet, incidentally.
 
-Any suggestions on how we can achieve this?
-
-Thank you,
-Valentin.
-
-> ---
-> >  gdbstub.c              | 10 ++++++++++
-> >  hw/intc/armv7m_nvic.c  |  4 ++++
-> >  include/exec/gdbstub.h |  6 ++++++
-> >  3 files changed, 20 insertions(+)
-> >
-> > diff --git a/gdbstub.c b/gdbstub.c
-> > index 3c14c6a038..d4e39db8e7 100644
-> > --- a/gdbstub.c
-> > +++ b/gdbstub.c
-> > @@ -3585,6 +3585,16 @@ int gdbserver_start(const char *device)
-> >      return 0;
-> >  }
-> >
-> > +bool gdb_attached(CPUState *cpu)
-> > +{
-> > +    GDBProcess *process =3D gdb_get_cpu_process(cpu);
-> > +    if (process !=3D NULL) {
-> > +        return process->attached;
-> > +    }
-> > +
-> > +    return false;
-> > +}
-> > +
-> >  static void register_types(void)
-> >  {
-> >      type_register_static(&char_gdb_type_info);
-> > diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> > index 13df002ce4..d6fff94bca 100644
-> > --- a/hw/intc/armv7m_nvic.c
-> > +++ b/hw/intc/armv7m_nvic.c
-> > @@ -21,6 +21,7 @@
-> >  #include "sysemu/runstate.h"
-> >  #include "target/arm/cpu.h"
-> >  #include "exec/exec-all.h"
-> > +#include "exec/gdbstub.h"
-> >  #include "exec/memop.h"
-> >  #include "qemu/log.h"
-> >  #include "qemu/module.h"
-> > @@ -1510,6 +1511,9 @@ static uint32_t nvic_readl(NVICState *s, uint32_t
-> offset, MemTxAttrs attrs)
-> >          }
-> >          /* We provide minimal-RAS only: RFSR is RAZ/WI */
-> >          return 0;
-> > +    case 0xdf0: /* DHCSR */
-> > +        /* Bit 0: DEBUGEN. */
-> > +        return gdb_attached(CPU(cpu)) ? 1 : 0;
-> >      case 0xf34: /* FPCCR */
-> >          if (!cpu_isar_feature(aa32_vfp_simd, cpu)) {
-> >              return 0;
-> > diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-> > index a024a0350d..383f4e5224 100644
-> > --- a/include/exec/gdbstub.h
-> > +++ b/include/exec/gdbstub.h
-> > @@ -177,6 +177,12 @@ static inline uint8_t * gdb_get_reg_ptr(GByteArray
-> *buf, int len)
-> >   */
-> >  int gdbserver_start(const char *port_or_device);
-> >
-> > +/**
-> > + * gdb_attached: check if GDB is attached to a given CPU.
-> > + * @cpu: the CPU to check if GDB is attached to.
-> > + */
-> > +bool gdb_attached(CPUState *cpu);
-> > +
-> >  /**
-> >   * gdb_has_xml:
-> >   * This is an ugly hack to cope with both new and old gdb.
->
->
-> --
-> Alex Benn=C3=A9e
->
-
---00000000000085db0605d72d1ac6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Feb 3, 2022 at 7:42 PM Alex B=
-enn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org">alex.bennee@linaro=
-.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
-ex"><br>
-Valentin Ghita &lt;<a href=3D"mailto:valentinghita@google.com" target=3D"_b=
-lank">valentinghita@google.com</a>&gt; writes:<br>
-<br>
-&gt; The DEBUGEN bit is set by the debugger when it is connected to the<br>
-&gt; core.=C2=A0 Software can use this bit to check if a debug session is a=
-ctive.<br>
-&gt;<br>
-&gt; Add a function in gdbstub to check if the debugger is attached to a CP=
-U<br>
-&gt; and use this information when the DHCSR register is read in armv7m_nvi=
-c.<br>
-&gt;<br>
-&gt; Signed-off-by: Valentin Ghita &lt;<a href=3D"mailto:valentinghita@goog=
-le.com" target=3D"_blank">valentinghita@google.com</a>&gt;<br>
-<br>
-Nack - use of the gdbstub should be transparent to the guest. It is not<br>
-trying to model any real JTAG/External debug hardware here.<br>
-<br></blockquote><div><br></div><div>The goal was to support the following =
-piece of code:</div><div><br></div><div>if (DHCSR.C_DEBUGEN) {</div><div>=
-=C2=A0 =C2=A0 __asm (&quot;bkpt&quot;);</div><div>}</div><div>=C2=A0</div><=
-div>And I have another patch which handles the bkpt exception when the DEBU=
-GEN</div><div>bit is set, by interrupting the CPU.</div><div><br></div><div=
->Any suggestions on how we can achieve this?</div><div><br></div><div>Thank=
- you,</div><div>Valentin.</div><div><br></div><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
-4);padding-left:1ex">
-&gt; ---<br>
-&gt;=C2=A0 gdbstub.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 10 +=
-+++++++++<br>
-&gt;=C2=A0 hw/intc/armv7m_nvic.c=C2=A0 |=C2=A0 4 ++++<br>
-&gt;=C2=A0 include/exec/gdbstub.h |=C2=A0 6 ++++++<br>
-&gt;=C2=A0 3 files changed, 20 insertions(+)<br>
-&gt;<br>
-&gt; diff --git a/gdbstub.c b/gdbstub.c<br>
-&gt; index 3c14c6a038..d4e39db8e7 100644<br>
-&gt; --- a/gdbstub.c<br>
-&gt; +++ b/gdbstub.c<br>
-&gt; @@ -3585,6 +3585,16 @@ int gdbserver_start(const char *device)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt;=C2=A0 }<br>
-&gt;=C2=A0 <br>
-&gt; +bool gdb_attached(CPUState *cpu)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 GDBProcess *process =3D gdb_get_cpu_process(cpu);<br>
-&gt; +=C2=A0 =C2=A0 if (process !=3D NULL) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return process-&gt;attached;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return false;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt;=C2=A0 static void register_types(void)<br>
-&gt;=C2=A0 {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 type_register_static(&amp;char_gdb_type_info);<br>
-&gt; diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c<br>
-&gt; index 13df002ce4..d6fff94bca 100644<br>
-&gt; --- a/hw/intc/armv7m_nvic.c<br>
-&gt; +++ b/hw/intc/armv7m_nvic.c<br>
-&gt; @@ -21,6 +21,7 @@<br>
-&gt;=C2=A0 #include &quot;sysemu/runstate.h&quot;<br>
-&gt;=C2=A0 #include &quot;target/arm/cpu.h&quot;<br>
-&gt;=C2=A0 #include &quot;exec/exec-all.h&quot;<br>
-&gt; +#include &quot;exec/gdbstub.h&quot;<br>
-&gt;=C2=A0 #include &quot;exec/memop.h&quot;<br>
-&gt;=C2=A0 #include &quot;qemu/log.h&quot;<br>
-&gt;=C2=A0 #include &quot;qemu/module.h&quot;<br>
-&gt; @@ -1510,6 +1511,9 @@ static uint32_t nvic_readl(NVICState *s, uint32_=
-t offset, MemTxAttrs attrs)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* We provide minimal-RAS only: RFSR=
- is RAZ/WI */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; +=C2=A0 =C2=A0 case 0xdf0: /* DHCSR */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Bit 0: DEBUGEN. */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return gdb_attached(CPU(cpu)) ? 1 : 0;<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 case 0xf34: /* FPCCR */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!cpu_isar_feature(aa32_vfp_simd,=
- cpu)) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h<br>
-&gt; index a024a0350d..383f4e5224 100644<br>
-&gt; --- a/include/exec/gdbstub.h<br>
-&gt; +++ b/include/exec/gdbstub.h<br>
-&gt; @@ -177,6 +177,12 @@ static inline uint8_t * gdb_get_reg_ptr(GByteArra=
-y *buf, int len)<br>
-&gt;=C2=A0 =C2=A0*/<br>
-&gt;=C2=A0 int gdbserver_start(const char *port_or_device);<br>
-&gt;=C2=A0 <br>
-&gt; +/**<br>
-&gt; + * gdb_attached: check if GDB is attached to a given CPU.<br>
-&gt; + * @cpu: the CPU to check if GDB is attached to.<br>
-&gt; + */<br>
-&gt; +bool gdb_attached(CPUState *cpu);<br>
-&gt; +<br>
-&gt;=C2=A0 /**<br>
-&gt;=C2=A0 =C2=A0* gdb_has_xml:<br>
-&gt;=C2=A0 =C2=A0* This is an ugly hack to cope with both new and old gdb.<=
-br>
-<br>
-<br>
--- <br>
-Alex Benn=C3=A9e<br>
-</blockquote></div></div>
-
---00000000000085db0605d72d1ac6--
+-- PMM

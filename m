@@ -1,107 +1,97 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2705523lfk;
-        Fri, 4 Feb 2022 08:57:00 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwAwz7mv0gz1/WgiU4yn8oBnLZSBbcdJlTU4OvpBq//pAkPYlHYsD/hVqsXHbMFnqbu1q0s
-X-Received: by 2002:a25:5c7:: with SMTP id 190mr9265ybf.554.1643993820669;
-        Fri, 04 Feb 2022 08:57:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643993820; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp2722479lfk;
+        Fri, 4 Feb 2022 09:16:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyor40uhOquyJJRyYvdPGC/o01rDdUOzVNXGHhXCtWwxTU2hwf11KcCv1D1ObYfShhe+uLi
+X-Received: by 2002:a81:b608:: with SMTP id u8mr3956460ywh.502.1643994979303;
+        Fri, 04 Feb 2022 09:16:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643994979; cv=none;
         d=google.com; s=arc-20160816;
-        b=W3jgXTOz33iLKsTt6nL3J8HveCMnibTEtVDVNHT35PTfrMZDQoVgMj63OxuqbvzyYG
-         sB1yrQSYnsqYAhatwvdcUKma69oKsX4hVb6PumrMiDFsklaPh+s8Cd7MHuRvaRMvtDl6
-         MIa5moHncEm7+ut7wjp8OYjvy0J8l+NPx/DiicvYwD1MhNkXf4K8WlwwqXgcY2GlpvTg
-         KAMG3p+XctoKRkXgKHOQnpgHwyjhdFmuw2bovfY0Wezb6Oxp80thbH+LItsqGyoxdFvy
-         N8+8UvsHzhUBAjG64MUtbNwCS5DmWzwpVNrut2FyrEdQ0B5BlujU5lhnbwywMW5MZDXT
-         A44g==
+        b=UiQQG6xUDZAtRuqpT12x8vl6/8fXivoKZkxWbu+CM3E1rGDc16QQItbgmrFIHENIUr
+         WSjE52uuYGSXJ9z8OomCkncfeGwKU62GHTfcWWAczsF+eTVaVT7nDCJAU6dcpntCL48u
+         BTY76rC5xDzkWrb8x8Q1y+0bAAYdGg/AgRloxdkrHAJjeYpHveA7vuY7XbzC2Z6UuEJK
+         u51mW1KxyYle6686WNtKN53SV1NkGUik46c3aU2g9Q+mBvwW2oZ3WYiM/cdKA4Nzpym1
+         Wt6yRDGPii3+t1F+eOhsFJ4r+1EVYcxNTQ7cLDELhMKJpek9Llj9rTvyPaLUveK0LuYq
+         IcNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=GEq+WVisRup7DDWYvHMkPo67hjMY0sbprx528SyyNTQ=;
-        b=eNVoPw+tuj3ctFCezcdcGkHf1XElSyC6pTsr7HcBk3wN2XCApCwwhZtcU78bbfPpYU
-         Euu6/1eREMFe39SFap9xfHDevHM7ozTh22y1ppxVk9KnMEBxAH6Hfl5Vm1hqXaEGMDum
-         8ff5HYRQ1Zk5rt26VwTRZEDB1woeUmhSc8XFB5k/5KcBpvOw/evHtbqJdhMltR1eyPGx
-         TDw4UEMaRDA+OdiiFjUVYpRDbt17uK2NdVvalyOxKMJ4PFQlyJlhUleLplvwSgGxCMBZ
-         qcJyjjIEqAXYp7qsdNELnZPVsIdCLl3WDCUdoG0/ch2DmZ9OYu2yCSVwBhbisy5IMYA3
-         qzqA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=3cMp5GXWifbsDRQz/PRIW9EDidnx8bTrMAZ88QWFGhs=;
+        b=fFbyaT2icyHZi3+BL87MBtBX/cpe6PFrQZu9hmUHF1wYeK+j9fpvmlYKcX7BpohTn2
+         at3H5Qd3lGG+aXhL29IUN7nrxK1RdBHv+A+9PXRfwms9LhpUpL0wJlR7Qeewemdcew/i
+         2u4qbbIybnNo4IZk85TOH3rHOtX9kbnqXvLp0huUhEqwrQU9MzLonedYur8EWVrRSVFB
+         YRVpJcBSCJkMpXRF8GUv1ZANRJe/Q6QtUiPbEduBFy2RJPexeR5mRh0zPZv59gwAhJGh
+         S/7FvABM3lTBTv5XEojUCc8UcgSvLBuRvQq3TxHXZwbn/9QGYPnwwp4qJJP7UZBz4uZc
+         L1zA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PQW6Y+Kh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mx4AEzxX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t187si1598126ywt.527.2022.02.04.08.57.00
+        by mx.google.com with ESMTPS id n204si1766571ybb.399.2022.02.04.09.16.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Feb 2022 08:57:00 -0800 (PST)
+        Fri, 04 Feb 2022 09:16:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PQW6Y+Kh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mx4AEzxX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60884 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59594 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nG1tL-0003hH-PQ
-	for alex.bennee@linaro.org; Fri, 04 Feb 2022 11:56:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53830)
+	id 1nG2C2-0005Vt-Mw
+	for alex.bennee@linaro.org; Fri, 04 Feb 2022 12:16:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nG1sH-0002xt-Ka
- for qemu-arm@nongnu.org; Fri, 04 Feb 2022 11:55:53 -0500
-Received: from [2a00:1450:4864:20::32e] (port=44994
- helo=mail-wm1-x32e.google.com)
+ id 1nG2AI-0005TP-Gg
+ for qemu-arm@nongnu.org; Fri, 04 Feb 2022 12:14:31 -0500
+Received: from [2a00:1450:4864:20::42f] (port=40600
+ helo=mail-wr1-x42f.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nG1rt-0003D8-H3
- for qemu-arm@nongnu.org; Fri, 04 Feb 2022 11:55:40 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- l35-20020a05600c1d2300b0034d477271c1so4138447wms.3
- for <qemu-arm@nongnu.org>; Fri, 04 Feb 2022 08:55:13 -0800 (PST)
+ id 1nG2AG-0006Wl-QB
+ for qemu-arm@nongnu.org; Fri, 04 Feb 2022 12:14:30 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id s18so12561828wrv.7
+ for <qemu-arm@nongnu.org>; Fri, 04 Feb 2022 09:14:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=GEq+WVisRup7DDWYvHMkPo67hjMY0sbprx528SyyNTQ=;
- b=PQW6Y+Khj/Qrk/sc1YwfoCROKa8j6BW6/7xmrhbN8wqRmSbSkVsTSnrD5ufGRVtcfa
- ZfVORtiCLtcxI1/yTmDSQ/ZKSOZoyPkXHnI/9+TqSj2vSqMyzNGpeIWa9K5huorHG0PZ
- rt8ET0hlnowomjeeY545wWe4f/1QtW0axvsSio2RdayhkzLMEYxp+CQjv/zbQqq2Xcpo
- kixIi1HEQyEiRp3bVI3INtT7pnmBICcReryzz+X0FmVO86appphrGR2lqvRHD5iY9KCg
- BELIJg/GUM0Kyz1V1xOFkWLvs2yVcK9lerlDcx1EOWi/tQ66iREdivNdbDQgUHMQbq7Z
- VNQg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=3cMp5GXWifbsDRQz/PRIW9EDidnx8bTrMAZ88QWFGhs=;
+ b=mx4AEzxXO+KH4gqSV5pSxi+FtoG0k9daWV747HZDQ1BkUiDkvfgwaibWpWZwZZz5/K
+ sBiieHh01krhQn5JyuUkWVLYCMFiq6tOD4XR+Q9rv0SKO1BMdidTHUD0N/Zdb9QXU9rW
+ 9W4O+4wVXTDaeUf1u0Sq2utIi4KiP6ZXau6U4eh9V5Tw2PeaJR2ynLirgE8jz9Uf14Ft
+ kNFr4tBkoyXr56uCXce3FMfUP4rFeYsGj0uBNfBn57vMj1NL+V2/o89nS+27OCKtKhvf
+ wIVDkM4F7nNjww2hvRfATDeALwRxsHm7he9R1Un1mQFowlGkXuaTFlrqEfnRwSYI5X7q
+ L5bA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=GEq+WVisRup7DDWYvHMkPo67hjMY0sbprx528SyyNTQ=;
- b=ry0CCdVn0QR/pTv4jmtXX02JAD6+4DrySnGRJRDE1eHoqY5kaa2nrebPeeAxlupABt
- +DLjGglBaErGek+o0sIfEQsTQvAGymg9WgjWTb4WQtS7EZ6RIewkkXLsbzdnfiLIPC7M
- +Iv6mYfSSGMiXlZMChUI1iIHuNQm33G3EKS+Dbk69irMCI4ccIwq0DKoHjTkhCCM7NdX
- 6OtOonK5ls/xya96Z69mjnQ7KwuITH153HBQ2Kjq+XJDv43k/pxlnuqafxNDnb943Aix
- mfkmVv44taJI4kFUiPwTh2VDhrlyOLTeBaTRShdj2xYv3aks2TA3jtgkahTdmdrL92a1
- najw==
-X-Gm-Message-State: AOAM532XTIq5ndWivX6VQlc7dZLT7674SgNhANUq9L9Qvygj79K0XYNU
- f93pep7Hw2CQzm+kXYP0M37e6BsBT3pebA==
-X-Received: by 2002:a05:600c:3ac5:: with SMTP id
- d5mr2997821wms.101.1643993712352; 
- Fri, 04 Feb 2022 08:55:12 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id f12sm2486254wrs.1.2022.02.04.08.55.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Feb 2022 08:55:12 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 5/6] target/arm: Fix '-cpu max' for HVF
-Date: Fri,  4 Feb 2022 16:55:05 +0000
-Message-Id: <20220204165506.2846058-6-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220204165506.2846058-1-peter.maydell@linaro.org>
-References: <20220204165506.2846058-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=3cMp5GXWifbsDRQz/PRIW9EDidnx8bTrMAZ88QWFGhs=;
+ b=muIyxQXzyi0rEmIntxg7P7TMlD92iuVIDHq9JMxAUWSPq+5g2WZRqbjlMYFblx6i7u
+ eT6B/JErwNiEk0bNSe0rS7VVrLrlzvti0lxlEAs7Oepm2BXiB9QcpK7GFOSIxnLQimXq
+ nQiTcsHC2HtZ/asWdePkhYRzrjQc91o/6BQjP264vmDPFGuxXJ1aEFiQ2x2tOHe3DHJK
+ WQitD5s/Ur9CzhTwXSzz/ElTjR9kDvF3uiiNkfX5R9rL1dGlbriZZpv7G0TpxLIOHHJ/
+ nxuP7iZInRSodIkwkidNtaKihX0dCOYOZEvZgsdJWGRWcfc60f4P++JjtM6sm1BZl1dX
+ bL/A==
+X-Gm-Message-State: AOAM5308IADe2CFeH5RheCwLm6NW0cGP24BPFsatGnaTq9K0vRIYsNXQ
+ yNVh2R8FUmofQ/lkleVWmH4/WItJkPxM18TTFYckNw==
+X-Received: by 2002:a5d:448b:: with SMTP id j11mr3376410wrq.172.1643994866983; 
+ Fri, 04 Feb 2022 09:14:26 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32e
+References: <20220202152323.2529767-1-jimmy.brisson@linaro.org>
+In-Reply-To: <20220202152323.2529767-1-jimmy.brisson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Feb 2022 17:14:16 +0000
+Message-ID: <CAFEAcA-bn0mQw5Xsn4+-b6_Qa67TViKsVK4uVmNmNkkcq5FqTw@mail.gmail.com>
+Subject: Re: [PATCH v1] an547: Correct typo that swaps ahb and apb peripherals
+To: Jimmy Brisson <jimmy.brisson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42f
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -122,47 +112,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Alexander Graf <agraf@csgraf.de>
+Cc: "open list:MPS2" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0vdSfVT/Y1a4
+X-TUID: PETDReSgPaIU
 
-Currently when using hvf we mishandle '-cpu max': we fall through to
-the TCG version of its initfn, which then sets a lot of feature bits
-that the real host CPU doesn't have. The hvf accelerator code then
-exposes these bogus ID register values to the guest because it
-doesn't check that the host really has the features.
+On Wed, 2 Feb 2022 at 15:23, Jimmy Brisson <jimmy.brisson@linaro.org> wrote:
+>
+> Turns out that this manifests in being unable to configure
+> the ethernet access permissions, as the IotKitPPC looks
+> these up by name.
+>
+> With this fix, eth is configurable
+>
+> Signed-off-by: Jimmy Brisson <jimmy.brisson@linaro.org>
 
-Make '-cpu host' be like '-cpu max' for hvf, as we do with kvm.
+Can you explain the issue here in more detail, and maybe
+provide a repro case ? The AN547 document definitely thinks
+that APB PPC EXP 0 has the Memory Protection Controllers and
+AHB PPC EXP 0 has the GPIO, USB and Ethernet devices:
+https://developer.arm.com/-/media/Arm%20Developer%20Community/PDF/DAI0547B_SSE300_PLUS_U55_FPGA_for_mps3.pdf
+(tables 6-2 to 6-4 on pages 35, 36).
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu64.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index bc25a2567bf..fd611c97116 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -29,6 +29,7 @@
- #include "hw/loader.h"
- #endif
- #include "sysemu/kvm.h"
-+#include "sysemu/hvf.h"
- #include "kvm_arm.h"
- #include "hvf_arm.h"
- #include "qapi/visitor.h"
-@@ -710,8 +711,8 @@ static void aarch64_max_initfn(Object *obj)
-     uint64_t t;
-     uint32_t u;
- 
--    if (kvm_enabled()) {
--        /* With KVM, '-cpu max' is identical to '-cpu host' */
-+    if (kvm_enabled() || hvf_enabled()) {
-+        /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
-         aarch64_host_initfn(obj);
-         return;
-     }
--- 
-2.25.1
-
+thanks
+-- PMM

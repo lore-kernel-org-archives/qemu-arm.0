@@ -1,105 +1,112 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp104021lfk;
-        Mon, 7 Feb 2022 09:59:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJygO/mXmsVLw31CEowOhWHjl/WCMvrgXKpq2JPWzWBn8dc2NKALZACgMN/IiVIhtAO8TFJo
-X-Received: by 2002:a25:558a:: with SMTP id j132mr979086ybb.85.1644256797526;
-        Mon, 07 Feb 2022 09:59:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644256797; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp113911lfk;
+        Mon, 7 Feb 2022 10:14:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzjeBZOT5a6NG94M2Fiip/eIS05ZatpNOM5+gM3CMa+ibMX6HlzUWdFfOipL7e4Ah7XxAmD
+X-Received: by 2002:a81:3795:: with SMTP id e143mr1116383ywa.514.1644257691153;
+        Mon, 07 Feb 2022 10:14:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644257691; cv=none;
         d=google.com; s=arc-20160816;
-        b=bw22jcfme7vfvdvbL4mFxDvtob1AIF8WRrXv3KqQivQcZaFZx9d8+N2Uf0yjrqXEWQ
-         VvFwZB1dCZkADECbckjtw3IeaEZf41BUeiCtJcsTyww5HZGeJgnhNqy9wvtXELq63aGC
-         DYWsueZVH4zNfF//AxFha13jVMGURBo82GmZKmucTQWMq3WmvzA34qtAyMrtMrkJY++L
-         YnWtTWVA9pcKWGFyEpggP4Ig/L6T/NncKK50TXGcI0+xDGdD5imT6PrTMB09q9i6tf4G
-         1mSMIopWda6ImucjN6DXuLBkTNCUBdTxBwZG1qsLbSSoP5fdyeBiECJkKj7xEn3YGx1m
-         3Ubw==
+        b=TqqLv6T7Qrk5tiU5w9j/fO1xuHv5ShngSCsjSTZ3re8bta/wyFOFk3KQPnDxcV8+Wx
+         YVux2DArbNXvNwporC6D1b4Je9r9ggxSy3OGPSV24GKU7cAlSfaqY7GY8RgoPLktG2cD
+         BT7urLWNY/NiBGIhC9S96LjmkMYWk8aZY1dlv/vh8y9M8F5rDnG4rS5hch50nA92Jrl+
+         cPJtG8ZxzSzuskxppckkTDippcVex8Ys9/6VxKphs+ILlu67+72HfZXg84+yLgaRfiDp
+         lalPs5AdrT5mdcJDO/91Hf2AONEwukKxRbzGm1BVNuVV6C4/TtdP0BTcxVkdl/Qh5wT8
+         B/Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=sU0KP4W5nwhsy8Qd0XAZbxiNLH82BEYFHnL0QzVeSXw=;
-        b=EdbdKVLnJb8CqfRMR19wtc9NzpSZg4Yexp+Q6tbxSlnAVWCdP3nkO5pcj7nIy8VOa5
-         lUp5pRlkxZnfsjV6aWlbWY1B0gxUr74VT/8xwMezrcU4WvXMcpABNfecqElTXjfEpj1t
-         TAhYIIsMsGtYNHmYAAhaFb1sIl0A5pyVM6hLpfMdhqPMfz8bWg4mKdywsv4Gkpa8+ixE
-         F+YreTF9g/PLauAd2d1qt2XYmnhj5DMxH7UyREYUgVzXTGxtrrBGPGgAsgmc7UypDBG9
-         NPF3JJYxAjoM4SAnn1A0fFp/ZfrYOBexD/h3O0NpN3ey3zdqEkzDVm4+ofIp0djvMdfg
-         mnSw==
+        bh=wb9dBraKpgrMXCbZr4lBlIjU73NZos0THJRDSbS4ev8=;
+        b=1AC6OPiAqoyBEbcpm0M6P9P33LXyANu8lgjg8d0bbWkbWn1NGcF3gVkhSlt3r9yyBh
+         SCLZ7b9AeoBoFmA7qp7VLxjwjzSHebIdgGo2qNZuhIH0EWfUDmi83MFXw8Do2ymSmDUl
+         WAZWBzDPaV9wZlvfkBvRXP04uQ3sv8vHw8J1v8PUC4vz8Itir7bW8g6btasFzL6VbZgI
+         c/LDstMnOtKIPNm1yW1wmovadQm5so9dXCaEGg/mkbbPYyVMgcGl+7MdE7nSUE3INK2x
+         hhfnckbyOHYyfqoc1PMyVS1IQZr7AsXvIn74eax2LgXHRublcuNcuXH0+WErve0bJH7A
+         7BIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pwcmca+X;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=joZBVSyq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h127si7742964ywd.132.2022.02.07.09.59.57
+        by mx.google.com with ESMTPS id q193si5950654ybg.188.2022.02.07.10.14.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Feb 2022 09:59:57 -0800 (PST)
+        Mon, 07 Feb 2022 10:14:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pwcmca+X;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=joZBVSyq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47032 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35366 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nH8Iu-0000ks-SP
-	for alex.bennee@linaro.org; Mon, 07 Feb 2022 12:59:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42856)
+	id 1nH8XK-0004DN-Ao
+	for alex.bennee@linaro.org; Mon, 07 Feb 2022 13:14:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nH7uC-000839-Cj
- for qemu-arm@nongnu.org; Mon, 07 Feb 2022 12:34:25 -0500
-Received: from [2a00:1450:4864:20::42e] (port=35532
- helo=mail-wr1-x42e.google.com)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1nH8Wz-0004Ad-7P; Mon, 07 Feb 2022 13:14:30 -0500
+Received: from [2a00:1450:4864:20::634] (port=46957
+ helo=mail-ej1-x634.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nH7u7-0007hJ-Km
- for qemu-arm@nongnu.org; Mon, 07 Feb 2022 12:34:23 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id m5so8888382wrb.2
- for <qemu-arm@nongnu.org>; Mon, 07 Feb 2022 09:34:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1nH8Wq-0006bU-5C; Mon, 07 Feb 2022 13:14:28 -0500
+Received: by mail-ej1-x634.google.com with SMTP id o12so44547201eju.13;
+ Mon, 07 Feb 2022 10:14:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sU0KP4W5nwhsy8Qd0XAZbxiNLH82BEYFHnL0QzVeSXw=;
- b=pwcmca+XTUtr6P40X6E1x0B7Evs1a724sdynQUc1dgItDMkxhbMi315eWm5gzE4L89
- IBHWWpwyhGG1zk3kdl6wR4gvdA8jr+l9TV/H6zjFnXv79bN7qNeaAB7v+kewf1uTU6xo
- f99rO/D/g3kMMuILQvG2yaoCELJ4awGqc1SbGndbz0MS9Y4QMHSlvm4D8OoPYFf6oVzy
- ntQe0qaUo72dQsZk1AbkAtFQ1OHf+ErDooODuL08+7+6149zCEnDg2hos63ZvRDAf0uk
- Zne9sCBjoG+UDwn536B5+Fuev6n30r3XDoefvCPl9jiXC9SpSYV2W9KKcWPKepdEsFow
- Davw==
+ :cc; bh=wb9dBraKpgrMXCbZr4lBlIjU73NZos0THJRDSbS4ev8=;
+ b=joZBVSyqXxgJQ4NFv6gtwnNUsPgrIcy9jm0FL3FoBPUr43BJUMnS4Oxg3/Ew0jEHAV
+ jZEiZxPMkpf6FNtOFWthqr7y20nOaVc+PkN1vNBIrDFBwNKNDM3rxEI7BLp/skYHrYsp
+ 4s16EzqAL6Xf9gF4/GyrQHNvuNxQUj9W44wbbyyyCgJuR1AkyucvlN+KhqPODh0xJ2Af
+ v4CPpC7aeli3mMA/3If7miFM9aohylwo7Tq1sJtGxb5gHBjgjpa4i4gUzQlinJtLDfGc
+ afq9SVey7zN2D9ZVF/l7TYlhYhcVrD+Ivxb6TWLNc+zR6/yR4sqSqLplPHLezgoPARbh
+ qI1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=sU0KP4W5nwhsy8Qd0XAZbxiNLH82BEYFHnL0QzVeSXw=;
- b=X/7xvtNYtCaTAOIl8uWQy6zTCQ0GvgAzy8hWnf3RhQdWlWUVizNn/XFCVFcKvxtcrl
- 2RyS2F6Q/VuR7BELKfqSWnTkhDYKPmlzE731f4CNvC8JlYrQl+jk16j3TlfHWZXaOxc9
- 5MGl6iBblqQzii3p0DuCHfarBjS/LVbtqnDHZFkzoobsinARmb/3KszE+tPzrkH/VT6D
- bgTj6jVE+BruprJBXfCPBXK93PnSHg7dOrI7dWX+D+dtjob4M3nUi3J/hH24LdsEhUcy
- Zi9/WtWdiM3g2XqQXYev2LaIVQ89UWvnCMRj+uKLHt+nSKNpFsychBKJEKnxPYlros72
- wX9A==
-X-Gm-Message-State: AOAM530ME8325oHeyd1quTGan6VIIFVooOUsfIiTcvJotPaOrZXaS2hH
- bCjWo5cH9v/yt8pdvSJOikudyEnfBnPWp+GnXFuftw==
-X-Received: by 2002:a05:6000:15c7:: with SMTP id
- y7mr409099wry.319.1644255257352; 
- Mon, 07 Feb 2022 09:34:17 -0800 (PST)
+ bh=wb9dBraKpgrMXCbZr4lBlIjU73NZos0THJRDSbS4ev8=;
+ b=Osr9fqXy0o+X5UCQqPFL2SsdNeouHIv1F2JcJl+W9wcWZ2lXw92X7III4BZHs2Hz9d
+ SX7KUNUIfK8ubUsgW4aIo4Vi6YRjmL2rgg4XX9P99LbDmIn/FkTAwS8C4WrIMtnfQG5r
+ iZlQ3P5bfOyoBWWrV2tUdEWzfFxAOxkuijdxCWsNF2gwOEkqiz8Tsavtx6YkbH+oneWa
+ +Qy8LVOZat8ytspRfrEWVO9T56F8ayMgbQK6SThZeDtBn4uW56VGlnI+a/B4PlXcx7xr
+ Sg90g3r3YTJnKzvQoku3E3gLc/OVUHoQZVJzaArRXZpG1EaS2A6DYZdwWcPF23hM5Ndf
+ 4nkA==
+X-Gm-Message-State: AOAM531gJ0PQJIWPew1v4P3Gfw6ZNj0QKTg2FqaBBj6tp8AacSJWpGwQ
+ d9mduKNyek6qqg97v+T12INzM6fZGsX4zG3G+Cg=
+X-Received: by 2002:a17:907:1c9f:: with SMTP id
+ nb31mr753976ejc.24.1644257643651; 
+ Mon, 07 Feb 2022 10:14:03 -0800 (PST)
 MIME-Version: 1.0
-References: <20220206014120.2871459-1-venture@google.com>
-In-Reply-To: <20220206014120.2871459-1-venture@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 7 Feb 2022 17:34:06 +0000
-Message-ID: <CAFEAcA_k0y3gtzpi_0JG7TM=VaAa8+mb=tLSu7UHCRYhDWajZg@mail.gmail.com>
-Subject: Re: [PATCH v2] tests/qtest: add qtests for npcm7xx sdhci
-To: Patrick Venture <venture@google.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42e
+References: <20220127154639.2090164-1-peter.maydell@linaro.org>
+ <20220127154639.2090164-7-peter.maydell@linaro.org>
+ <2c67bde5-65b2-0af0-afde-7353a4fe2a1b@csgraf.de>
+ <CAFEAcA9DcHXRkA7gCihU6LrOc40EOHnVnTeEcf4+xSfG22eJ-g@mail.gmail.com>
+ <44ec9504-a7ef-6805-ae94-4435e5a37735@csgraf.de>
+ <CAJy5ezqUtLphzH_WKmW8dR34=k-g5dmuevuZY42GfnD-R-uCqg@mail.gmail.com>
+ <a6caa3b0-89ae-d482-62f5-2cada740a60e@csgraf.de>
+ <cc73e2f0-97e1-f9c5-1a89-45ff2b0a2aeb@amsat.org>
+ <0da64aa5-97b3-540b-0fc9-cb9bf670d487@csgraf.de>
+In-Reply-To: <0da64aa5-97b3-540b-0fc9-cb9bf670d487@csgraf.de>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Mon, 7 Feb 2022 19:13:52 +0100
+Message-ID: <CAJy5ezrEFifPUWUmSmEmqqUsSdeQpEG+KjyCDJFJROFSKGFDVA@mail.gmail.com>
+Subject: Re: [PATCH 06/16] hw/arm/xlnx-zcu102: Don't enable PSCI conduit when
+ booting guest in EL3
+To: Alexander Graf <agraf@csgraf.de>
+Content-Type: multipart/alternative; boundary="000000000000c4e84e05d7719003"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::634
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
 X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,36 +120,155 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: lvivier@redhat.com, thuth@redhat.com, Shengtan Mao <stmao@google.com>,
- qemu-devel@nongnu.org, hskinnemoen@google.com, Hao Wu <wuhaotsh@google.com>,
- kfting@nuvoton.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
- Chris Rauer <crauer@google.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>, Havard Skinnemoen <hskinnemoen@google.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Rob Herring <robh@kernel.org>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Michal Simek <michal.simek@xilinx.com>, Joel Stanley <joel@jms.id.au>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Andre Przywara <andre.przywara@arm.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Tyrone Ting <kfting@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XWzMziTTz9c+
+X-TUID: 68M+CCAIaf+Q
 
-On Sun, 6 Feb 2022 at 01:41, Patrick Venture <venture@google.com> wrote:
+--000000000000c4e84e05d7719003
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Feb 7, 2022 at 5:24 PM Alexander Graf <agraf@csgraf.de> wrote:
+
 >
-> From: Shengtan Mao <stmao@google.com>
+> On 07.02.22 17:06, Philippe Mathieu-Daud=C3=A9 wrote:
+> > On 7/2/22 16:59, Alexander Graf wrote:
+> >>
+> >> On 07.02.22 16:52, Edgar E. Iglesias wrote:
+> >
+> >>> Both Versal and ZynqMP require MicroBlaze firmware to run the
+> >>> reference implementations of Trusted Firmware. We never supported
+> >>> this in upstream QEMU but we do support it with our fork (by running
+> >>> multiple QEMU instances co-simulating).
+> >>>
+> >>> Having said that, we do have tons of EL3 test-cases that we use to
+> >>> validate QEMU that run with EL3 enabled in upstream.
+> >>>
+> >>> So there's two user flows:
+> >>> 1. Direct boots using QEMUs builtin PSCI (Most users use this to run
+> >>> Linux, Xen, U-boot, etc)
+> >>> 2. Firmware boot at EL3 without QEMUs builtin PSCI (Mostly used by
+> >>> test-code)
+> >>>
+> >>> Number #2 is the one affected here and that by accident used to have
+> >>> the builtin PSCI support enabled but now requires more power control
+> >>> modelling to keep working.
+> >>> Unless I'm missing something, the -kernel boots will continue to use
+> >>> the builtin PSCI implementation.
+> >>
+> >>
+> >> So nobody is using upstream QEMU to validate and prototype
+> >> ATF/EL1s/EL0s code? That's a shame :). I suppose there is little
+> >> value without the bitstream emulation and R cluster. Do you have
+> >> plans to bring multi process emulation upstream some day to enable
+> >> these there?
+> >
+> > The R cluster is already in mainstream, isn't it?
 >
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> Reviewed-by: Chris Rauer <crauer@google.com>
-> Signed-off-by: Shengtan Mao <stmao@google.com>
-> Signed-off-by: Patrick Venture <venture@google.com>
-> ---
-> v2:
->  * update copyright year
->  * check result of open
->  * use g_free instead of free
->  * move declarations to the top
->  * use g_file_open_tmp
+>
+> In that case, wouldn't it make sense to build an emulation model of the
+> PMU behavior so that normal ATF works out of the box?
+>
+>
+> Thanks,
+>
+> Alex
+>
 
-Fails to compile:
+Yes, that makes sense and there are several ways to implement it. To fully
+support the programmability of the PMU we'd need to model the MicroBlazes
+together with the ARM cores.
 
-../../tests/qtest/npcm7xx_sdhci-test.c:121:32: error: use of
-undeclared identifier 'NPCM7XX_REG_SIZE'
-    uint64_t end_addr = addr + NPCM7XX_REG_SIZE;
-                               ^
+But PMU support does not really conflict with this patch series, or is
+there something I'm missing?
 
+Cheers,
+Edgar
 
--- PMM
+--000000000000c4e84e05d7719003
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Mon, Feb 7, 2022 at 5:24 PM Alexander =
+Graf &lt;<a href=3D"mailto:agraf@csgraf.de">agraf@csgraf.de</a>&gt; wrote:<=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><br>
+On 07.02.22 17:06, Philippe Mathieu-Daud=C3=A9 wrote:<br>
+&gt; On 7/2/22 16:59, Alexander Graf wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; On 07.02.22 16:52, Edgar E. Iglesias wrote:<br>
+&gt;<br>
+&gt;&gt;&gt; Both Versal and ZynqMP require MicroBlaze firmware to run the =
+<br>
+&gt;&gt;&gt; reference implementations of Trusted Firmware. We never suppor=
+ted <br>
+&gt;&gt;&gt; this in upstream QEMU but we do support it with our fork (by r=
+unning <br>
+&gt;&gt;&gt; multiple QEMU instances co-simulating).<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; Having said that, we do have tons of EL3 test-cases that we us=
+e to <br>
+&gt;&gt;&gt; validate QEMU that run with EL3 enabled in upstream.<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; So there&#39;s two user flows:<br>
+&gt;&gt;&gt; 1. Direct boots using QEMUs builtin PSCI (Most users use this =
+to run <br>
+&gt;&gt;&gt; Linux, Xen, U-boot, etc)<br>
+&gt;&gt;&gt; 2. Firmware boot at EL3 without QEMUs builtin PSCI (Mostly use=
+d by <br>
+&gt;&gt;&gt; test-code)<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; Number #2 is the one affected here and that by accident used t=
+o have <br>
+&gt;&gt;&gt; the builtin PSCI support enabled but now requires more power c=
+ontrol <br>
+&gt;&gt;&gt; modelling to keep working.<br>
+&gt;&gt;&gt; Unless I&#39;m missing something, the -kernel boots will conti=
+nue to use <br>
+&gt;&gt;&gt; the builtin PSCI implementation.<br>
+&gt;&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; So nobody is using upstream QEMU to validate and prototype <br>
+&gt;&gt; ATF/EL1s/EL0s code? That&#39;s a shame :). I suppose there is litt=
+le <br>
+&gt;&gt; value without the bitstream emulation and R cluster. Do you have <=
+br>
+&gt;&gt; plans to bring multi process emulation upstream some day to enable=
+ <br>
+&gt;&gt; these there?<br>
+&gt;<br>
+&gt; The R cluster is already in mainstream, isn&#39;t it?<br>
+<br>
+<br>
+In that case, wouldn&#39;t it make sense to build an emulation model of the=
+ <br>
+PMU behavior so that normal ATF works out of the box?<br>
+<br>
+<br>
+Thanks,<br>
+<br>
+Alex<br></blockquote><div><br></div><div>Yes, that makes sense and there ar=
+e several ways to implement it. To fully support the programmability of the=
+ PMU we&#39;d need to model the MicroBlazes together with the ARM cores.</d=
+iv><div><br></div><div>But PMU support does not really conflict with this p=
+atch series, or is there something I&#39;m missing?</div><div>=C2=A0</div><=
+div>Cheers,</div><div>Edgar</div></div></div>
+
+--000000000000c4e84e05d7719003--

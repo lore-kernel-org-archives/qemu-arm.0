@@ -1,130 +1,172 @@
-Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp1756890lfk;
-        Thu, 3 Feb 2022 02:45:32 -0800 (PST)
-X-Received: by 2002:adf:f582:: with SMTP id f2mr29157869wro.161.1643885132208;
-        Thu, 03 Feb 2022 02:45:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1643885132; cv=none;
+Received: by 2002:ac2:54ba:0:0:0:0:0 with SMTP id w26csp4469852lfk;
+        Mon, 7 Feb 2022 06:02:22 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzhKGanXSXkVjPFbL8UU7smQj1ufOcy39STHWeddyQTVGivj3cqL7dLx7woSAAa1LLXsCCE
+X-Received: by 2002:a05:620a:210d:: with SMTP id l13mr6264871qkl.276.1644242542175;
+        Mon, 07 Feb 2022 06:02:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644242542; cv=none;
         d=google.com; s=arc-20160816;
-        b=GeywuUqkxgZguypxJTONvX8kzfrMw3LUmfqprmPjPt6HnMCEnA2ph/BqMtE3khlA4t
-         AFiTl8YnTJ2+J1GY5kh+P6cXyLUDo0rlAi3aD3B08QlonTOn0aBRIh45g9/rSYlHulLQ
-         O2k8QvElqT0OwLrrHbNXmfRgTfr5lnWSYAuf77kELdBqQ1xJcD2CMOXAoZbGAsz7KcB3
-         49HY4eRRn8Q/EctAxPYyOJH1ewdTKBbZ1wl+YpmQOwA99WC8PFzgfOmGoHthtyGagzyb
-         uWGk9sVWOk2T1u2bAsFxcq4qZMejl1xSh2eU7UIrEeRIjGQ5dvfwnqmkLtbJ4vL3kX6A
-         nx4g==
+        b=VFugrGKcgY78TUxsYJIiVeghz+rMAI77PuTv8OrURDltbp9VKWugZpskoJoIq5dyzB
+         DxwaaxqZsy/tqgXClotA/oVb6RY6+maTE58/ExVKGLFgciygdkbUtj8pc1WBipojv9u3
+         GZce3S5mKLOwGcouEZ67mj5kXZt1m3rYbcwjJJOHDNjhjRQrkUzESaWHYgDwH+OFl790
+         QGbFP8WDViXxQB0+qx+luu1h/LrWtzb5dHpIQ6ax3qOCXpiaOfScR6aBIAbLjky8c2mz
+         BB+NdZ/JB9rUq0VhqDuECinUStZtz+ylbIKKa0Pd7otiZbIKImlJ9w/rtsXOjTgDC7St
+         A/hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=BCn/bBH/9rDiq4cqAadL0VdAEadNPEIEhhF2HZJ4TO0=;
-        b=vd0TjmpWInv7cRgE4LmToqGcbQ8JJkogtIcpEzKfjsJOJVPmELZivMsI7XdZQuroEb
-         kfbfm1xgMtaZl8zfIJ9HlqH81e768M5dVgQDQwOZyqRMMgQ1YtYYKQA+GUoLMS1zIs91
-         ItY0wOD58FxsoDmGGvHLQYsBi2+vh4Xunm9XyWTAUL00etRyv8Ox1Ivq31gCUkCs26E6
-         YaNbjJzIYfOzR45h1hMJ5ELtgIz6xAawhD/LcDewPwxHIe5K9HoNuNjL6R5/RqcdjOaO
-         gHvq3z7Ni/3zgC4tKSooOxjwAZiOtHZA+/JQ5j8n89Fi/lb0Cbybf0pXUZP7Uky0h8xD
-         erpg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Sd7RW5xW5ASHrCH8lYA6A1bzj3dh8tftpaIEiRyJzPk=;
+        b=zrZfpkHbKbLh4zxgGFkBJiWE3Qc27oxuscAJWVAaWQsRILxYwYhzovawRSJJJtq7om
+         t+51yR8tCxcDfHMON+OjR3+69oovEvPyAwInEd4QVFxJy0cWr6H0oRAyCDg+emXIpaSz
+         RWXItKpjKFeYhYsqX6Q3BQNBHbyh2sC9+jz4MMjinO4LjZ2IVJHWB/uRzehkyVLQXj/b
+         IOUH0agPQj5vmVbhz3WFCHP/eLsyZHY27fwsmnDNPNQ68UEjmheCG6nDHNG25DtLFAbt
+         dpI4paqiCavImOWftZdsRkiEfoJMmGLoU/SUmSuZsZI7OYV6sa/hffhNGeBbC2odjeP4
+         MwEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rhgLG1bt;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g17sor26011635wrv.76.2022.02.03.02.45.32
+       dkim=fail header.i=@linaro.org header.s=google header.b=vsNVSbsh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b13si2251272qkp.205.2022.02.07.06.02.21
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 03 Feb 2022 02:45:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 07 Feb 2022 06:02:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rhgLG1bt;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=BCn/bBH/9rDiq4cqAadL0VdAEadNPEIEhhF2HZJ4TO0=;
-        b=rhgLG1btCNuXGP2638V46xfUaCF3dmy7TCcoikko3FBxrFRz9xUpUxVLFxuHwtunnp
-         5+ZaCT/x2gE98Fu8RyfMaNKuA+NaSyV7DIpP+TiKT8KHc6e7rnf06TOgS6X4QW4iXSmZ
-         GyQBPf2DHRuCRZnJnS2//uFrxN2WCfR09XmmJWw5aK3jBXQZfvMQoUD3mey1v/ZqvntZ
-         v1RHiXHyph+7InFrSl7ZEevXFMxH96E533sp3uOaoDigjEut0E5GIQFjLDaW9fjAQhDw
-         e3+RB4hkkDHpkbciLgzO/y0JKrmRwSajP67QlFgxqfr3RTVt7PQKkDyqDwxd1JLfRNHO
-         j/gg==
+       dkim=fail header.i=@linaro.org header.s=google header.b=vsNVSbsh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57630 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nH4az-0007Qe-GS
+	for alex.bennee@linaro.org; Mon, 07 Feb 2022 09:02:21 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46558)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nH4Jc-0000Dm-Pz
+ for qemu-devel@nongnu.org; Mon, 07 Feb 2022 08:44:24 -0500
+Received: from [2a00:1450:4864:20::432] (port=36586
+ helo=mail-wr1-x432.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nH4Ja-000645-MQ
+ for qemu-devel@nongnu.org; Mon, 07 Feb 2022 08:44:24 -0500
+Received: by mail-wr1-x432.google.com with SMTP id i15so2482292wrb.3
+ for <qemu-devel@nongnu.org>; Mon, 07 Feb 2022 05:44:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Sd7RW5xW5ASHrCH8lYA6A1bzj3dh8tftpaIEiRyJzPk=;
+ b=vsNVSbshJ+bnEz8vYLK8ORK7CoOgi+9GG6Wc7ylTBTTs6lSE4xC7fGzJegPNCcKw94
+ alCWF9LF8dwh/NY/YlUuhHhuE7P8RSkpYJuGpD+QIQI8kw5E3SgO6PA4p7S2eTUeZ09v
+ MLEXs4ITA28EIcWJ8veguJOfWfJzfSB3F+4P6T0oGbtlP9KgTaR5YXBl9u0V4krphLt2
+ yfy0JY/uBfnspr5hgKJPtYO29MVH505L4hH9R9OVqR6DCc2/qY+2mU+0jc4GqHJNNzsi
+ 033mVabWwD3RFZWLsFp63taVamsh/in8xgpyOJiWjYNZ3KSeywDfjL1TRb45wR2J1z0Q
+ vZ6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=BCn/bBH/9rDiq4cqAadL0VdAEadNPEIEhhF2HZJ4TO0=;
-        b=A2UNoKGSGuh8vU2scYIvS/OH1hxsWchtWX/x5dMCtRBJCRKQYZn2ZEke9prVnDL26w
-         ai27dbYwJUb2FWuCQB7UGh9yUqIY2YoMxdaoiaGXHmlYS5i+orK53akoIw3mLK+QpaJH
-         lBG2gig1h2M6Q+XkxWYE6zsa/+ZCTJYpxVTjGc6LpSap98l3Db4/XL8f/2TWP0pbXsvh
-         5EGWxcYADT2yudvafm5FqFktmDzEzznPpDIreahDpiuaPshpMnTNHUZvhMQ1nyEIkRBe
-         czFpC9CQ5PtVQLILZgHqsy5a6WShg+4x4smOHtQyBKKM+YkPi4U/6p5T2BfzXfcse71H
-         8AKQ==
-X-Gm-Message-State: AOAM5314lei6ns4aUwReJTCd0SRSGMeJjQmMlkh7iVcHJSMw5fhR1Hjb
-	No/U9sFKErOyQ1UJfT2n42HcR01PqZy6oBXj3sEPznap
-X-Google-Smtp-Source: ABdhPJzIETsTVyzHDV4S/CheMuhDu5lAV+4M5e/nnf/uX/Q7gRuTRfn/C2ACmiChu/1epuJ2LUFrATp+3KvNAMWdTKs=
-X-Received: by 2002:a05:6000:258:: with SMTP id m24mr29663952wrz.2.1643885131879;
- Thu, 03 Feb 2022 02:45:31 -0800 (PST)
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Sd7RW5xW5ASHrCH8lYA6A1bzj3dh8tftpaIEiRyJzPk=;
+ b=U7Sfae0wx2XVM/7JssYz0bLPZdrg/B2EbmZ9QRO78Ovenk0aomKrTIvn0T8E5sTy+o
+ dLwvx6F8Oe/63ANjrI7vUmn5hDlDIJUQcp8nZ+x8oVB/VWN2sASgBpuodYdrIoSpXYUx
+ xFd6F89Y08qBgpH5EXsfUIcGyvRNq3YnDTrxfEY8rc0/hn4OR/33yOCmQagGW8YeMLhl
+ z3qPBSaf2JCwtGLe81HZyjP9yHn++Z+XfygJoHJnszSoMG5L9bRLCefx2ZB036618Dhb
+ HUGGlpyNK56Gz/NhlUkDiJyajvI9LKdSHTEgh1h63ko0Uj5iuVykVW2BcS8UpmUf1UZE
+ /XTQ==
+X-Gm-Message-State: AOAM530rbG8ttiNDH1DlN42eUZK60OPVu/+JUt+c3o46RF9SpbBLrPwY
+ 9igdYResd9vLssbSU8TXSwPREHCq8atcw2KRa/ybQg==
+X-Received: by 2002:adf:a51b:: with SMTP id i27mr6544960wrb.172.1644241459314; 
+ Mon, 07 Feb 2022 05:44:19 -0800 (PST)
 MIME-Version: 1.0
-References: <20220201193207.2771604-1-peter.maydell@linaro.org>
- <20220201193207.2771604-7-peter.maydell@linaro.org> <afbbee74-b6fc-7b55-f7e4-c5ae926f7519@linaro.org>
-In-Reply-To: <afbbee74-b6fc-7b55-f7e4-c5ae926f7519@linaro.org>
+References: <662aca02-da99-524f-d9df-cd61427ca520@ispras.ru>
+In-Reply-To: <662aca02-da99-524f-d9df-cd61427ca520@ispras.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Feb 2022 10:45:20 +0000
-Message-ID: <CAFEAcA9Dj0K5T677__5wBA5=T5c1qOxNxwW5hkZU9-vDCP-76Q@mail.gmail.com>
-Subject: Re: [PATCH 06/13] hw/intc/arm_gicv3_its: Fix address calculation in
- get_ite() and update_ite()
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Shashi Mallela <shashi.mallela@linaro.org>
+Date: Mon, 7 Feb 2022 13:44:08 +0000
+Message-ID: <CAFEAcA_U1hgz55mGX7DZp36aOHGriU0wjr9Dvt4Y=f2EGNgF+A@mail.gmail.com>
+Subject: Re: target/arm: cp15.dacr migration
+To: Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: 6IyY5+IA2G+a
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::432
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qfkb4jl6EO1a
 
-On Thu, 3 Feb 2022 at 03:59, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Mon, 7 Feb 2022 at 12:13, Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru> wrote:
 >
-> On 2/2/22 06:32, Peter Maydell wrote:
-> > In get_ite() and update_ite() we work with a 12-byte in-guest-memory
-> > table entry, which we intend to handle as an 8-byte value followed by
-> > a 4-byte value.  Unfortunately the calculation of the address of the
-> > 4-byte value is wrong, because we write it as:
-> >
-> >   table_base_address + (index * entrysize) + 4
-> > (obfuscated by the way the expression has been written)
-> >
-> > when it should be + 8.  This bug meant that we overwrote the top
-> > bytes of the 8-byte value with the 4-byte value.  There are no
-> > guest-visible effects because the top half of the 8-byte value
-> > contains only the doorbell interrupt field, which is used only in
-> > GICv4, and the two bugs in the "write ITE" and "read ITE" codepaths
-> > cancel each other out.
-> >
-> > We can't simply change the calculation, because this would break
-> > migration of a (TCG) guest from the old version of QEMU which had
-> > in-guest-memory interrupt tables written using the buggy version of
-> > update_ite().  We must also at the same time change the layout of the
-> > fields within the ITE_L and ITE_H values so that the in-memory
-> > locations of the fields we care about (VALID, INTTYPE, INTID and
-> > ICID) stay the same.
+> I recently encountered a problem with cp15.dacr register.
+> It has _s and _ns versions. During the migration only dacr_ns is
+> saved/loaded.
+> But both of the values are used in get_phys_addr_v5 and get_phys_addr_v6
+> functions. Therefore VM behavior becomes incorrect after loading the
+> vmstate.
 
-> This is confusing: 5-3 is titled "example of the number of bits that might be stored in an
-> ITE"?  Surely there must be a true architected format for this table, the one real
-> hardware uses.  Surely tcg will simply have to suck it up and break migration to fix this
-> properly.
+Yes, we don't correctly save and restore the Secure banked
+registers. This is a long standing bug (eg it is the
+cause of https://gitlab.com/qemu-project/qemu/-/issues/467).
+Almost nobody notices this, because almost nobody both runs
+Secure-world AArch32 code and also tries migration or save/restore.
 
-No, the ITE format is implementation-defined, like that of the other
-in-guest-memory tables the ITS uses. It's UNPREDICTABLE for a guest
-to try to directly access the tables in memory -- they are only ever
-written or read by the ITS itself in response to incoming commands,
-so it's not a problem for the format in memory to be impdef. This
-flexibility in the spec allows implementations to minimize the size
-of their data tables based on how large an ID size they support and
-other potentially-configurable parameters. For instance if you look
-at the values for the GITS_BASER* for the GIC-700 in its TRM you
-can see that its Collection Table entry size is only 2 bytes, since
-it uses the "rdbase is a CPU number" format; an ITS that used the
-"rdbase is a physical address" implementation choice would need
-more bytes there. (QEMU also uses "rdbase is a CPU number", but
-we have rather profligately opted to use 8 bytes per collection
-table entry.)
+> I found that kvm_to_cpreg_id is responsible for disabling dacr_s
+> migration, because it always selects ns variant.
+
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index c6a4d50e82..d3ffef3640 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2510,11 +2510,6 @@ static inline uint32_t kvm_to_cpreg_id(uint64_t
+> kvmid)
+>           if ((kvmid & CP_REG_SIZE_MASK) == CP_REG_SIZE_U64) {
+>               cpregid |= (1 << 15);
+>           }
+> -
+> -        /* KVM is always non-secure so add the NS flag on AArch32 register
+> -         * entries.
+> -         */
+> -         cpregid |= 1 << CP_REG_NS_SHIFT;
+>       }
+>       return cpregid;
+>   }
+
+This change is wrong, or at least incomplete -- as the comment notes,
+a guest running under KVM is always NonSecure, so when KVM says "this is
+DACR" (or whatever) it always means "this is the NS banked DACR".
+(Though now AArch32 KVM support has been dropped we have some flexibility
+to not necessarily use KVM register ID values that exactly match what
+the kernel uses, if we need to do that.)
+Also, kvm_to_cpreg_id() and cpreg_to_kvm_id() are supposed to be
+inverses of each other -- at the moment they are not, hence
+this bug, but I think your change has probably resulted in both
+the S and the NS banked versions of each register being treated
+as the S banked version, which will have a different set of problems.
+
+There is also the question of migration compatibility to consider
+in any change in this area.
 
 thanks
 -- PMM

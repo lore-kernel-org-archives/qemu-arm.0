@@ -1,205 +1,292 @@
-Received: by 2002:a05:6214:430:0:0:0:0 with SMTP id a16csp1111568qvy;
-        Mon, 7 Feb 2022 06:58:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxaELW91GdOvZsYOBA/2/XhBEXypBecyJzRZPi92MekdFbuwrDa41tmzjNWtB09UGrGzVgy
-X-Received: by 2002:a25:e0c7:: with SMTP id x190mr50964ybg.642.1644245938063;
-        Mon, 07 Feb 2022 06:58:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644245938; cv=none;
+Received: by 2002:a05:6214:430:0:0:0:0 with SMTP id a16csp1119707qvy;
+        Mon, 7 Feb 2022 07:07:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwSTtGBR0XnDa78qBhDwM6+DMyyEJp2AOMzQHkynhB5dQ9DiPoTP4/XAjT0BLHI854q6TfS
+X-Received: by 2002:a81:1d8f:: with SMTP id d137mr154877ywd.383.1644246427810;
+        Mon, 07 Feb 2022 07:07:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644246427; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hfg8XUyjxj1UQ7/znUdwS35itmxgV16GVFLXrh4N6Nhlft7/7IgRm5izZdqpv0e6aw
-         nzJxFaF2+Pua5ayFTFvS5hX4KeBfzGH7EB45oi03s0s+EFJWlJl30P34GDzfY4fhffFl
-         uqXCyGAkSj1fG/SVrJ/lgZ0Z1Itnhq/sfFkcisrMpp/6HUjP32oE6uo2HdQk5y7XLv+0
-         W7iL18tUs8rHqpfx5n+8HpL/tCIaqKqg7gH7pEtbFuY/l/Vzq87o7y1F6eO84O0kXDQ7
-         ckpqHvI40MddPhsGRZaAnqljzDhdMKCq6u5LOZegd0QvRWh6zg6FyKoVtbcVcsezJKpk
-         XNiA==
+        b=ltsVYtd6eRWJV0vfYGER+wVTIP2rNIKTSSBtYBja1V6dnu5xyOdHaLG8tysz6mCEcN
+         INNmqIWBNYmx6WhY6gQqlavR/qxOZDp7kwStgH92hoFQ1P9mpmhPK9x8ajdz5oqdK2s0
+         TrEeAcZSmjtjdJblwoPtjDb9y7LSDMwSzvTC6HwWxsMverQmZl5iT/ENFykjmFjzfMc8
+         DKnDFs7BaJeN+WSINM/oCG0i3+cnUFZLkzw0+nJ7m/93lGhs3AkD1e2wZIBxQ3Bk2N7z
+         mDyNU83IXlew1O/6q5erUT+C42TyoS0koh2hzeHmUnDU2EsamcaYpUsYhgYJMbY3GzQu
+         kSEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:subject:user-agent:mime-version:date
-         :message-id;
-        bh=mt8jjThMcT0DtpZ3Op8hZFR1KHhaYtBPmInK5G4KGIg=;
-        b=JaiQFPl8NaygvPBC0wMCfUYWUZQnMA2Kfm9bhHSYS6LqzfRqaNTFBNB1XrfOpYZjDj
-         n/p2haiHggG704uRv+uVW+DLxP0tIcmKT8Ct6BI5XlZzmmjw/3qrQhpce0HPoQ187gGV
-         BjzKrHENCY2xrvFrIEJSWdkVq7U0dCpHw3CCUz+zn5Wj35MTeZlFZKBir/NX9u8dzhV7
-         tD92ZsvMJLn0IkDe4ygx/o3P0mi0th35U1RmCcm549ys42nzAw/HtWgVAuXdvQo8ggn2
-         SMsfqB6D2wDXbj9ZFxCUvE5ZcSzeHLxalmYIC25Mjkc6VEOAJXaQZtrQi2OKO9lK4pIr
-         C+3A==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature:dkim-signature;
+        bh=DdRMvPKHeZixKcamiXTuJrB5BVbNhd3EsmNNBzsQ7yk=;
+        b=v/DIpM8aVI3HBmnSsvRAszhOdD4iSxKOJns9QUUOpeIYZ5UtuzC1yiBrhnC/2rgBfB
+         KN1zfdv0ZJiUO4LIv2jqG4YQEUSDUbmBRN4Hw+LivcXxqBoa23w1G/erWxLAVLu3lwvZ
+         MeyPg+7hMOVPJwM9SpGyNgCXsNRRRR1i+h9SL3jTrPP5t9W44l1Q5U/3XKtmVyspdmbi
+         pAsb4W5eV+2tWNFPd5huK+cH2h0rWBfuULD1o2KGj6jyO5aumhQSIJhdqB6bz84aJ1Et
+         QVfLGShVDgjzUQwgj4cXFLEK5HF2uuaClgUAFX1TmheWKhKUmEZGLZ7sUrjxgXo9u8Jr
+         1pVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=FimZaoYE;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=NatKFMQm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k65si4255148ywb.473.2022.02.07.06.58.58
+        by mx.google.com with ESMTPS id w7si9197201ybt.49.2022.02.07.07.07.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Feb 2022 06:58:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Feb 2022 07:07:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42426 helo=lists1p.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=FimZaoYE;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=NatKFMQm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47478 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nH5Tl-0000oY-Iu
-	for alex.bennee@linaro.org; Mon, 07 Feb 2022 09:58:57 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58704)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nH5bf-0004Xb-8i
+	for alex.bennee@linaro.org; Mon, 07 Feb 2022 10:07:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41202)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1nH4yI-0005JJ-VF; Mon, 07 Feb 2022 09:26:27 -0500
-Received: from mail.csgraf.de ([85.25.223.15]:33714 helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1nH4yB-0006Gy-JB; Mon, 07 Feb 2022 09:26:24 -0500
-Received: from [0.0.0.0] (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com
- [3.122.114.9]) by csgraf.de (Postfix) with ESMTPSA id 510C36080D88;
- Mon,  7 Feb 2022 15:26:12 +0100 (CET)
-Message-ID: <76af11e5-8727-86da-cd09-d15002dc0427@csgraf.de>
-Date: Mon, 7 Feb 2022 15:26:11 +0100
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1nH5ZC-0004PN-02; Mon, 07 Feb 2022 10:04:37 -0500
+Received: from wout1-smtp.messagingengine.com ([64.147.123.24]:50087)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1nH5Z8-0004cA-MG; Mon, 07 Feb 2022 10:04:33 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.west.internal (Postfix) with ESMTP id 4D8193202133;
+ Mon,  7 Feb 2022 10:04:28 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Mon, 07 Feb 2022 10:04:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
+ :cc:content-transfer-encoding:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm2; bh=DdRMvPKHeZixKcamiXTuJrB5BVbNhd
+ 3EsmNNBzsQ7yk=; b=FimZaoYE+XltOh2eTk+KE3VxwPQmV3Oj6D0V1BHYm0AzaC
+ otNPCC1ZJCnsVN2Boa1fx96XG4ErSjrFl/+wqmEDUoV9UBvb7cuSQMHrjobQwRpW
+ C5ewJA5aq4E2pdGJop0N7XYlq69Q7qm9JmlQw9/7E9hYiBfudz4wFqCNuC7DhvaI
+ FELDUeS9IvW2ODkzIgrJlxo/5LMZx6PS2B+afBfwU5sH0ciU0UB/q8/Bx+bDacDS
+ czHR+z+u+ZmAQuSdltbHemOpLMmEYBQ1YnlgsgwvcrDUE9XYuVvQoVAX2ns7F13X
+ Vxx8u3FgwBBb4xs2xhSER+STyLhVkZboAFFQV2bQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=DdRMvP
+ KHeZixKcamiXTuJrB5BVbNhd3EsmNNBzsQ7yk=; b=NatKFMQma2JSbokelaK8Z+
+ Jsdh2jz97NprGy3w4pIAOX21vpG+50qE/MziurZTGphCAaACrsyiYK2ib/WKUDAN
+ RVhWGFi+Gw0DkujYFYYxHhRd+hBiq1My7ctBn8QS0GKpvj9GqYoItYPHK6sk/gkJ
+ Lmo17jHCn86E9sslO2jEXttj5NUtrlMVl7bjKwOgsuiTO67IGj3nr8MOvqKPvGxU
+ Y9IN0mbxAxk9nbNfT4GuzH+x6nKVikWxVpdsiIJbc1C7dDdINE8q7sD7XLdB3cN0
+ cElE4lOufQN7nYV27XtAfe9Je0iOsk4j1+mdS4RV65kgFXSOx+8SazkH/pc3EsVw
+ ==
+X-ME-Sender: <xms:-zQBYhISHFEu6g1pbPUFnDwVwl3OXbef5HcYMv00Ywi1Q8-5NckY7A>
+ <xme:-zQBYtL5vU26LidEo50Stez0XbagOiYszAYCi4E71ZwPiZ_u6Pz576S4iJpGfV3Zy
+ scbGrF1gYaHujMtNg>
+X-ME-Received: <xmr:-zQBYptiTimPNNDBF6n64n-MdLYWzREJ80QXYzBMNp84bt2eRUNJEe-5T-kp5UVio3DmzIc26wzHL3qh3XXjUonWHJzcBREY2j_cktgyJaOr7I_w8fsjQ1sHliWngzo3>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrheehgdeilecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffojghfggfgsedtkeertd
+ ertddtnecuhfhrohhmpeetnhgurhgvficulfgvfhhfvghrhicuoegrnhgurhgvfiesrghj
+ rdhiugdrrghuqeenucggtffrrghtthgvrhhnpeejgfdvveehteekveeggeellefgleette
+ ejffelffdvudduveeiffegteelvefhteenucevlhhushhtvghrufhiiigvpedtnecurfgr
+ rhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghu
+X-ME-Proxy: <xmx:-zQBYiaqvphtXmcjBVAqGdfqVD_oXCkML0wnPxKG6DCaKHwG8NY3aw>
+ <xmx:-zQBYoZaWGH0c7J5jRdsxYydwmvTngdmob0jmfLYmo9zLohJ9jYvtg>
+ <xmx:-zQBYmCLYfyxuspsiQE7L85-eHWPHdD9Hhs16PpO-JuYSpwxzw4Nfw>
+ <xmx:-zQBYvU-Cepf5gqDcWtgabEXYcq1_pduhemsVO-a_yUTafk_LBuERA>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 7 Feb 2022 10:04:25 -0500 (EST)
+From: Andrew Jeffery <andrew@aj.id.au>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 2/3] hw: aspeed_gpio: Split GPIOSet handling from accessors
+Date: Tue,  8 Feb 2022 01:34:08 +1030
+Message-Id: <20220207150409.358888-3-andrew@aj.id.au>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220207150409.358888-1-andrew@aj.id.au>
+References: <20220207150409.358888-1-andrew@aj.id.au>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.1
-Subject: Re: [PATCH 07/16] hw/arm/versal: Let boot.c handle PSCI enablement
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220127154639.2090164-1-peter.maydell@linaro.org>
- <20220127154639.2090164-8-peter.maydell@linaro.org>
-From: Alexander Graf <agraf@csgraf.de>
-In-Reply-To: <20220127154639.2090164-8-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=64.147.123.24; envelope-from=andrew@aj.id.au;
+ helo=wout1-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Rob Herring <robh@kernel.org>,
- Andrew Jeffery <andrew@aj.id.au>, Andre Przywara <andre.przywara@arm.com>,
- Tyrone Ting <kfting@nuvoton.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Yanan Wang <wangyanan55@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: br07P1mx1GDJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, openbmc@lists.ozlabs.org, qemu-arm@nongnu.org,
+ clg@kaod.org, joel@jms.id.au
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rQnT2tTJNgbd
 
+Pave the way for implementing the new register interface for GPIO
+control provided by the AST2600. We need a consistent data model, so
+do some work to enable use of the AspeedGPIOReg / GPIOSets data
+structures for both.
 
-On 27.01.22 16:46, Peter Maydell wrote:
-> Instead of setting the CPU psci-conduit and start-powered-off
-> properties in the xlnx-versal-virt board code, set the arm_boot_info
-> psci_conduit field so that the boot.c code can do it.
->
-> This will fix a corner case where we were incorrectly enabling PSCI
-> emulation when booting guest code into EL3 because it was an ELF file
-> passed to -kernel.  (EL3 guest code started via -bios, -pflash, or
-> the generic loader was already being run with PSCI emulation
-> disabled.)
->
-> Note that EL3 guest code has no way to turn on the secondary CPUs
-> because there's no emulated power controller, but this was already
-> true for EL3 guest code run via -bios, -pflash, or the generic
-> loader.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+---
+ hw/gpio/aspeed_gpio.c | 105 ++++++++++++++++++++++++------------------
+ 1 file changed, 60 insertions(+), 45 deletions(-)
 
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index c63634d3d3e2..1d4d1aedc4b5 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -516,28 +516,11 @@ static const AspeedGPIOReg aspeed_1_8v_gpios[GPIO_1_8V_REG_ARRAY_SIZE] = {
+     [GPIO_1_8V_E_INPUT_MASK] =     {1, gpio_reg_input_mask},
+ };
+ 
+-static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
++static uint64_t
++aspeed_gpio_set_read(const AspeedGPIOState *s, const AspeedGPIOReg *reg)
+ {
+-    AspeedGPIOState *s = ASPEED_GPIO(opaque);
+-    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
+-    uint64_t idx = -1;
+-    const AspeedGPIOReg *reg;
+-    GPIOSets *set;
++    const GPIOSets *set = &s->sets[reg->set_idx];
+ 
+-    idx = offset >> 2;
+-    if (idx >= GPIO_DEBOUNCE_TIME_1 && idx <= GPIO_DEBOUNCE_TIME_3) {
+-        idx -= GPIO_DEBOUNCE_TIME_1;
+-        return (uint64_t) s->debounce_regs[idx];
+-    }
+-
+-    reg = &agc->reg_table[idx];
+-    if (reg->set_idx >= agc->nr_gpio_sets) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
+-                      HWADDR_PRIx"\n", __func__, offset);
+-        return 0;
+-    }
+-
+-    set = &s->sets[reg->set_idx];
+     switch (reg->type) {
+     case gpio_reg_data_value:
+         return set->data_value;
+@@ -567,37 +550,44 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
+         return set->data_read;
+     case gpio_reg_input_mask:
+         return set->input_mask;
+-    default:
++    case gpio_not_a_reg:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid register: %d\n", __func__,
++                      reg->type);
++    }
++
++    return 0;
++}
++
++static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
++{
++    AspeedGPIOState *s = ASPEED_GPIO(opaque);
++    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
++    const AspeedGPIOReg *reg;
++    uint64_t idx = -1;
++
++    idx = offset >> 2;
++    if (idx >= GPIO_DEBOUNCE_TIME_1 && idx <= GPIO_DEBOUNCE_TIME_3) {
++        idx -= GPIO_DEBOUNCE_TIME_1;
++        return (uint64_t) s->debounce_regs[idx];
++    }
++
++    reg = &agc->reg_table[idx];
++    if (reg->set_idx >= agc->nr_gpio_sets) {
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
+                       HWADDR_PRIx"\n", __func__, offset);
+         return 0;
+     }
++
++    return aspeed_gpio_set_read(s, reg);
+ }
+ 
+-static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+-                              uint32_t size)
++static void aspeed_gpio_set_write(AspeedGPIOState *s, const AspeedGPIOReg *reg,
++                                  uint32_t data)
+ {
+-    AspeedGPIOState *s = ASPEED_GPIO(opaque);
+     AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
+     const GPIOSetProperties *props;
+-    uint64_t idx = -1;
+-    const AspeedGPIOReg *reg;
+-    GPIOSets *set;
+     uint32_t cleared;
+-
+-    idx = offset >> 2;
+-    if (idx >= GPIO_DEBOUNCE_TIME_1 && idx <= GPIO_DEBOUNCE_TIME_3) {
+-        idx -= GPIO_DEBOUNCE_TIME_1;
+-        s->debounce_regs[idx] = (uint32_t) data;
+-        return;
+-    }
+-
+-    reg = &agc->reg_table[idx];
+-    if (reg->set_idx >= agc->nr_gpio_sets) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
+-                      HWADDR_PRIx"\n", __func__, offset);
+-        return;
+-    }
++    GPIOSets *set;
+ 
+     set = &s->sets[reg->set_idx];
+     props = &agc->props[reg->set_idx];
+@@ -678,13 +668,38 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+          */
+          set->input_mask = data & props->input;
+         break;
+-    default:
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
+-                      HWADDR_PRIx"\n", __func__, offset);
++    case gpio_not_a_reg:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid register: %d\n", __func__,
++                      reg->type);
+         return;
+     }
++
+     aspeed_gpio_update(s, set, set->data_value);
+-    return;
++}
++
++static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
++                              uint32_t size)
++{
++    AspeedGPIOState *s = ASPEED_GPIO(opaque);
++    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
++    const AspeedGPIOReg *reg;
++    uint64_t idx = -1;
++
++    idx = offset >> 2;
++    if (idx >= GPIO_DEBOUNCE_TIME_1 && idx <= GPIO_DEBOUNCE_TIME_3) {
++        idx -= GPIO_DEBOUNCE_TIME_1;
++        s->debounce_regs[idx] = (uint32_t) data;
++        return;
++    }
++
++    reg = &agc->reg_table[idx];
++    if (reg->set_idx >= agc->nr_gpio_sets) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
++                      HWADDR_PRIx"\n", __func__, offset);
++        return;
++    }
++
++    aspeed_gpio_set_write(s, reg, data);
+ }
+ 
+ static int get_set_idx(AspeedGPIOState *s, const char *group, int *group_idx)
+-- 
+2.32.0
 
-Let's try with the same CCs here too - Versal uses the same mechanism as 
-ZynqMP :)
-
-
-Alex
-
-
-> ---
->   include/hw/arm/xlnx-versal.h | 1 -
->   hw/arm/xlnx-versal-virt.c    | 6 ++++--
->   hw/arm/xlnx-versal.c         | 5 +----
->   3 files changed, 5 insertions(+), 7 deletions(-)
->
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index 895ba12c61e..2de487564e4 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -89,7 +89,6 @@ struct Versal {
->   
->       struct {
->           MemoryRegion *mr_ddr;
-> -        uint32_t psci_conduit;
->       } cfg;
->   };
->   
-> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-> index 0c5edc898e1..1b25342501b 100644
-> --- a/hw/arm/xlnx-versal-virt.c
-> +++ b/hw/arm/xlnx-versal-virt.c
-> @@ -626,6 +626,9 @@ static void versal_virt_init(MachineState *machine)
->        * When loading an OS, we turn on QEMU's PSCI implementation with SMC
->        * as the PSCI conduit. When there's no -kernel, we assume the user
->        * provides EL3 firmware to handle PSCI.
-> +     *
-> +     * Even if the user provides a kernel filename, arm_load_kernel()
-> +     * may suppress PSCI if it's going to boot that guest code at EL3.
->        */
->       if (machine->kernel_filename) {
->           psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-> @@ -635,8 +638,6 @@ static void versal_virt_init(MachineState *machine)
->                               TYPE_XLNX_VERSAL);
->       object_property_set_link(OBJECT(&s->soc), "ddr", OBJECT(machine->ram),
->                                &error_abort);
-> -    object_property_set_int(OBJECT(&s->soc), "psci-conduit", psci_conduit,
-> -                            &error_abort);
->       sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
->   
->       fdt_create(s);
-> @@ -677,6 +678,7 @@ static void versal_virt_init(MachineState *machine)
->       s->binfo.loader_start = 0x0;
->       s->binfo.get_dtb = versal_virt_get_dtb;
->       s->binfo.modify_dtb = versal_virt_modify_dtb;
-> +    s->binfo.psci_conduit = psci_conduit;
->       if (machine->kernel_filename) {
->           arm_load_kernel(&s->soc.fpd.apu.cpu[0], machine, &s->binfo);
->       } else {
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index b2705b6925e..458ba33815f 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -35,10 +35,8 @@ static void versal_create_apu_cpus(Versal *s)
->           object_initialize_child(OBJECT(s), "apu-cpu[*]", &s->fpd.apu.cpu[i],
->                                   XLNX_VERSAL_ACPU_TYPE);
->           obj = OBJECT(&s->fpd.apu.cpu[i]);
-> -        object_property_set_int(obj, "psci-conduit", s->cfg.psci_conduit,
-> -                                &error_abort);
->           if (i) {
-> -            /* Secondary CPUs start in PSCI powered-down state */
-> +            /* Secondary CPUs start in powered-down state */
->               object_property_set_bool(obj, "start-powered-off", true,
->                                        &error_abort);
->           }
-> @@ -481,7 +479,6 @@ static void versal_init(Object *obj)
->   static Property versal_properties[] = {
->       DEFINE_PROP_LINK("ddr", Versal, cfg.mr_ddr, TYPE_MEMORY_REGION,
->                        MemoryRegion *),
-> -    DEFINE_PROP_UINT32("psci-conduit", Versal, cfg.psci_conduit, 0),
->       DEFINE_PROP_END_OF_LIST()
->   };
->   

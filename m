@@ -1,157 +1,171 @@
-Received: by 2002:a05:6214:430:0:0:0:0 with SMTP id a16csp1134817qvy;
-        Mon, 7 Feb 2022 07:26:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJynbgXxxaC1UqxwtfsdoJqj3v2J9ZyVDRMhlHkFnJMlEXUyy6xRt1SbefTrbIBw+LYNaGIJ
-X-Received: by 2002:a05:6902:1205:: with SMTP id s5mr223336ybu.676.1644247594106;
-        Mon, 07 Feb 2022 07:26:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644247594; cv=none;
+Received: by 2002:a05:6214:430:0:0:0:0 with SMTP id a16csp1139746qvy;
+        Mon, 7 Feb 2022 07:33:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy3itMOLhyVGwLnf+ExSP5p4mYholGiBPbxj47o0aMbSPQzOAVuLaJS2N27EEEYd0hBuXEZ
+X-Received: by 2002:a81:56c2:: with SMTP id k185mr370217ywb.94.1644247998184;
+        Mon, 07 Feb 2022 07:33:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644247998; cv=none;
         d=google.com; s=arc-20160816;
-        b=e3Tk9V0Wt9JOR7cYI+Tn0Uf3Oal3veqy5nh13+xq5Vq/BnTBvkMSZqt8fv+v8rtG+p
-         wesBozQ8QO22Zv2KSz5+4CrM/tUWVi3jC/hI2XvCSW6RiECL/Z7ZcSjsLptFoJxrY/vI
-         Om9DzJrIFTFUy1dS1GlbhWMMOf/dMva9drSQ6SRzZxgVt0Ti43xHulyZMPsXQAnMIGBw
-         CTPX8IpKHIYFFQg6MHHsucRV3FOOoka73Km46VoJQgMvKZuAnAcodxXoHuhusQ8Vrhvg
-         YbdCmOa4UhX+lL1FsgPAb2I1wpxawA95bLJFiqtx/Cz4CuEccPjPyT5onJWoOUTqZN9H
-         0EQQ==
+        b=SNM8p9YaE8stpp3SNqa4K3ZRIWLm9JEJfHqwfAQ7it0JlrCIvjr4FE0l+l5HoA9JMc
+         KhJFU5/1nrUs6oR+ZKyAbT77nOCmYx3MImAcL+ZzrPiihBF9pPGRBmn32kAH0IIh66mO
+         1MtlhZ7T7f986M1bVGzjH4CKthMQ6XVJcGkLe2mE0RmsYjuMEZpydTn3GqJN1AdAKufD
+         AnBo8YJHGEqeWdIeUKlbt4NZT+RLStiSz8zhShdFUee6JLortJsFyNa7d6qSXaBxq9vM
+         K/L6+XevyqZVqGJhK48LqTCsEd4zGKBVPSAiXJJ2FqBVegJ3y+uJ98PiO0FeCWrASpcM
+         E8eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature:dkim-signature;
-        bh=1qgKl6N4zhoA08lqEXx3+JopS52gVwbVnOMx+Ef8nCE=;
-        b=VPrDgwo/jhhvStYff1j6VPyZYVVkyZ/7uJ12oLKXY8tSfVLMsyAIiWZVv6vlXtP9cR
-         vGe0588Hc8a2uVJiqetTYb7AimeU5H/ebzQ0bm9fC7oO5AI3CIAMuDoaPvJSbhgq7Bst
-         AXZz5aHt+HlG7mWDyakEr6tIqLENRPOsroafLHBwC3NN4a+rgdR/AewnZvMkLrWorSvC
-         w+9ij94sqoKeM4TYJCXVYIgELkYZ60zY6dy9z7ejVxgVpbNZe8JisaqIeEZqTjhFrjmQ
-         EV8NWqvWDDo5vdNOFsFE2IXsX3+F/O4lvLbbDmex76zjrLxmh2mVUif7gqU6wc7t32J0
-         hQcw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=17Y6SImHH3S/OQfwbWHmEwaQDhoZn7pbL9oytXMX2ew=;
+        b=xNL889YTtBmrugVcFnPmfPPFMOJr1tSSVpTU1JVCVvUGRixhlw2NqVDGocTFt3feFF
+         f32PjtBtoqC5Jm8BptpVQij+/LEgFBlEl134jEYpFCALJ46hnib5Q00C9KpWlHKT45+/
+         ZeEsKbqKfmw30/OZhn4aDsfaMNAVaiaS/DspOi8efd98iVGrQ8dLPRSe8NStjV+iYPmP
+         qDcERXVNqFJLavCfB3I6tLXJs5hgz8i2v5Of0VHErgR+U0XDSoApUulm1KSNS9SkDCKb
+         /ttPgw88gy3ZKRvRHGGx9gG+G92UnHuKgqKUy2GdC2hmno3/zt2MrGPZ4Wc8V0PcR1Qv
+         oU0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=cfNWMuY6;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=aafy2FxS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=xNc1mBDs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h4si7214119ybh.202.2022.02.07.07.26.34
+        by mx.google.com with ESMTPS id e18si3930420ybq.31.2022.02.07.07.33.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Feb 2022 07:26:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Feb 2022 07:33:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=cfNWMuY6;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=aafy2FxS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51818 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=xNc1mBDs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33650 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nH5uT-0002kt-Fu
-	for alex.bennee@linaro.org; Mon, 07 Feb 2022 10:26:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41142)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nH60z-0001No-Mj
+	for alex.bennee@linaro.org; Mon, 07 Feb 2022 10:33:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47144)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1nH5ZA-0004On-3V; Mon, 07 Feb 2022 10:04:32 -0500
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24]:44725)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1nH5Z7-0004bZ-S2; Mon, 07 Feb 2022 10:04:31 -0500
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.west.internal (Postfix) with ESMTP id 539D33202113;
- Mon,  7 Feb 2022 10:04:24 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Mon, 07 Feb 2022 10:04:24 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
- :cc:content-transfer-encoding:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm2; bh=1qgKl6N4zhoA08lqEXx3+JopS52gVw
- bVnOMx+Ef8nCE=; b=cfNWMuY6bn2cbE5GXg6eXa1VSQOR+ThxsfvZ0cJ1BjU3h5
- UrgduaiM6eJfUZJnOWszsEHklVeyymXHsdTXgXL2YbDFOJASdhxnT+0hxj6slL78
- fuYd0HRZEV6OGnKrJVntwoEC35vqc+CumI27bfq6a1tgnpyP+c/60HR2Z267k9fE
- Pyg3QKROFY0fPugoHD5bq9U7WJHhsox4qMVNgPRvATUrvlvH4SnRDkJWU4Yh/gpt
- TaTE7zH/17Xb9ObMOfroE9N2BXgexh16GqlsoRW1xj27BDzcOi9jAtoSke5hdIiH
- AmxZMvi4KwWSlstFh3tDhsWp3xkRS0lYba2Rc09g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:sender:subject:subject:to:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=1qgKl6
- N4zhoA08lqEXx3+JopS52gVwbVnOMx+Ef8nCE=; b=aafy2FxSQV8kYNGHr8Mg45
- VddEOuX98QyJscW8U4UKLI6kdm8Mz2T1BKSmUmMJ0umqJhTK8ohqDcNc7/inJe2b
- j3riFjgkN5rF/LjZyykwrkHA2T9DM+EORWpmLDVWeFPNT0EZwu3v3s1T2G8Hyu20
- mx5MQ0aktcbaPn4WJKU1zyi4PEXp7606buTi0dam4QFuh0ul7vIbVBOufqxGeoP/
- CxH2a05UXoM6Gjn/NKEpKZhczHnQX3hpLpx1pKKTjtGqiY0Tu4z+dqKKaob+7xG3
- Q1HZsoRvnk+yjbd4/phGo3/WGtSkuui1VqJ0DUmVEfhtKw+gvQMdoCiGztEJmoyw
- ==
-X-ME-Sender: <xms:9zQBYm6mYqvsZgsKrv3E6vyta8dULu4fsZt9ensvBA7E0XZ9Qt7ILQ>
- <xme:9zQBYv7M5bMkzstoa4cS1ZbxNGj5eg9wbBFrgHApS3HnBq1LGhuyB5TBGwEhDksGD
- ZE3mdZmAAT6EqGFkQ>
-X-ME-Received: <xmr:9zQBYlfUjER9ToP3gv9TUlS1FqOUHahXJqOm648HdTkXp1z6ANIWRLBDgSN9mBAQGO_e7X-CiwN2bP9eMbuYZTZ6O55s084VmYlvmga74A9fItF73_qtxW3ZqEobGPVw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrheehgdeilecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffojghfggfgsedtkeertd
- ertddtnecuhfhrohhmpeetnhgurhgvficulfgvfhhfvghrhicuoegrnhgurhgvfiesrghj
- rdhiugdrrghuqeenucggtffrrghtthgvrhhnpeejgfdvveehteekveeggeellefgleette
- ejffelffdvudduveeiffegteelvefhteenucevlhhushhtvghrufhiiigvpedtnecurfgr
- rhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghu
-X-ME-Proxy: <xmx:9zQBYjL_0y1KWApWHv5BX1xBLKSfIaaPA0uiMXbaOEacM-0L_bAJzA>
- <xmx:9zQBYqJY5tTqGxPr3eaITxy6Fr5oOyVX0va9yUG-V1fiMxIOgo-H3g>
- <xmx:9zQBYkzl80s14q74bpXW0F8CYP7i2SJfUCpGAeRY8uCgvHm3nPmzBA>
- <xmx:9zQBYvHDhd7ALB-CV9x8SuYJdubB7TKMQYEHsfBUAhFqp0o3HgL3yQ>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 7 Feb 2022 10:04:20 -0500 (EST)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 1/3] hw: aspeed_gpio: Cleanup stray semicolon after switch
-Date: Tue,  8 Feb 2022 01:34:07 +1030
-Message-Id: <20220207150409.358888-2-andrew@aj.id.au>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220207150409.358888-1-andrew@aj.id.au>
-References: <20220207150409.358888-1-andrew@aj.id.au>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nH5rC-0007MC-GY
+ for qemu-devel@nongnu.org; Mon, 07 Feb 2022 10:23:10 -0500
+Received: from [2a00:1450:4864:20::429] (port=41852
+ helo=mail-wr1-x429.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nH5rA-0008Ao-7E
+ for qemu-devel@nongnu.org; Mon, 07 Feb 2022 10:23:10 -0500
+Received: by mail-wr1-x429.google.com with SMTP id k1so8920010wrd.8
+ for <qemu-devel@nongnu.org>; Mon, 07 Feb 2022 07:23:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=17Y6SImHH3S/OQfwbWHmEwaQDhoZn7pbL9oytXMX2ew=;
+ b=xNc1mBDsLFha6//Og3LkPHo1X36T9/xnGIMy6Qc7nc32dvjkBbIjOJOXySRl4SSJq8
+ luqniylhM4bGfFV0AOog8GMN74zrGfL14wEtllrImxNrIFKMKoPJygZ0fw9C9Ub96g00
+ GU2Mi4kGDqTnjzZZZHHHJL9dbvEqZ6kcrwCHwcZzb0s6G77IBYFstUGDg/gL52fDWkCF
+ xWaXFwA9V3iEanF8NjeS+wAbwOw6WsBNqZLi/E0WyhklVlkXiqvla97dzOFolJ+zvOeJ
+ 3EhWZ5nGuaB4gHYbdFidJQ225hSJ6VGSYJY+BkfLzQzwMm51dYDQlMwtYqUdaljqynWd
+ mngQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=17Y6SImHH3S/OQfwbWHmEwaQDhoZn7pbL9oytXMX2ew=;
+ b=PLAE+P5BVzH2GgXOu1Zi00SGvkfWWcNTafJ89ay9amRMddzfc/XZYRmSOxKeQVwzAt
+ caK66L3tTJfcpTJiOt4tyvXFa/xrc8AXQFEVgeh2sMgNbePV1l4JppRP0GCAJSNXWifB
+ iD1ZcOd39XBLgUPoQuQPZlNomhzVT2fLDV6m4hs9ZL9WfGqnQZq8n8WTaGiJEoldMXIO
+ bZe+yPBKbewWlcbAJVF1sCWIbekf3C2AAAFB97QV2h3GDi8nHUnUD3b+7lM/tZDoN5eT
+ 4Nyh2f3Kw4NuPTRavAXV/voaxlXRtXGj1SdWrvDs39mBT5dJAm8y1GjyrrkGG6h+IeRM
+ kNlA==
+X-Gm-Message-State: AOAM533mSJYQPoVsBywsriwmEt3W7v3qi3WminAHV0vCXgaMDLmieg81
+ qlRNQ52eiyADkeoiV40rvda+Tu9LIzmdkYXcplETwQ==
+X-Received: by 2002:a05:6000:258:: with SMTP id m24mr7708wrz.2.1644247386814; 
+ Mon, 07 Feb 2022 07:23:06 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=64.147.123.24; envelope-from=andrew@aj.id.au;
- helo=wout1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20220127154639.2090164-1-peter.maydell@linaro.org>
+ <20220127154639.2090164-7-peter.maydell@linaro.org>
+ <2c67bde5-65b2-0af0-afde-7353a4fe2a1b@csgraf.de>
+In-Reply-To: <2c67bde5-65b2-0af0-afde-7353a4fe2a1b@csgraf.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 7 Feb 2022 15:22:55 +0000
+Message-ID: <CAFEAcA9DcHXRkA7gCihU6LrOc40EOHnVnTeEcf4+xSfG22eJ-g@mail.gmail.com>
+Subject: Re: [PATCH 06/16] hw/arm/xlnx-zcu102: Don't enable PSCI conduit when
+ booting guest in EL3
+To: Alexander Graf <agraf@csgraf.de>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::429
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, openbmc@lists.ozlabs.org, qemu-arm@nongnu.org,
- clg@kaod.org, joel@jms.id.au
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K1pgKHeNuNYD
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org, Havard Skinnemoen <hskinnemoen@google.com>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring <robh@kernel.org>,
+ sstabellini@kernel.org, Andrey Smirnov <andrew.smirnov@gmail.com>,
+ michal.simek@xilinx.com, Joel Stanley <joel@jms.id.au>,
+ Andre Przywara <andre.przywara@arm.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Tyrone Ting <kfting@nuvoton.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CgvbdGv0yRDV
 
-Not sure how that got there.
+On Mon, 7 Feb 2022 at 14:21, Alexander Graf <agraf@csgraf.de> wrote:
+>
+>
+> On 27.01.22 16:46, Peter Maydell wrote:
+> > Change the Xilinx ZynqMP-based board xlnx-zcu102 to use the new
+> > boot.c functionality to allow us to enable psci-conduit only if
+> > the guest is being booted in EL1 or EL2, so that if the user runs
+> > guest EL3 firmware code our PSCI emulation doesn't get in its
+> > way.
+> >
+> > To do this we stop setting the psci-conduit property on the CPU
+> > objects in the SoC code, and instead set the psci_conduit field in
+> > the arm_boot_info struct to tell the common boot loader code that
+> > we'd like PSCI if the guest is starting at an EL that it makes
+> > sense with.
+> >
+> > Note that this means that EL3 guest code will have no way
+> > to power on secondary cores, because we don't model any
+> > kind of power controller that does that on this SoC.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+>
+> It's been a while since I worked with ZynqMP, but typically your ATF in
+> EL3 will want to talk to a microblaze firmware blob on the PMU.
+>
+> I only see a stand alone PMU machine for microblaze and a PMU IRQ
+> handling I/O block in QEMU, but nothing that would listen to the events.
+> So I'm fairly sure it will be broken after this patch - and really only
+> worked by accident before.
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
- hw/gpio/aspeed_gpio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Edgar submitted a power-control model patchset:
+https://patchew.org/QEMU/20220203140141.310870-1-edgar.iglesias@gmail.com/
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 911d21c8cfbe..c63634d3d3e2 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -571,7 +571,7 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
-                       HWADDR_PRIx"\n", __func__, offset);
-         return 0;
--    };
-+    }
- }
- 
- static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
--- 
-2.32.0
-
+thanks
+-- PMM

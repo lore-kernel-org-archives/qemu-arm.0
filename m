@@ -1,138 +1,175 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp39344lfk;
-        Tue, 8 Feb 2022 02:59:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwdNg9HB8ed3NdoboncE7hUtdzstyCMdfGQTmwW2fpJJHER+kZIQV3376ZCzlxNaxQoFfyB
-X-Received: by 2002:a81:34d7:: with SMTP id b206mr4022392ywa.489.1644317962766;
-        Tue, 08 Feb 2022 02:59:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644317962; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp208986lfk;
+        Tue, 8 Feb 2022 07:44:41 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzJswnufx+kQnqTWIf8m82ea/vyNBSo18pOKjbnlV0MqOZckMcwVxHXH0V/5ceSBx7F8W3N
+X-Received: by 2002:a81:7c2:: with SMTP id 185mr5319754ywh.114.1644335081836;
+        Tue, 08 Feb 2022 07:44:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644335081; cv=none;
         d=google.com; s=arc-20160816;
-        b=oFzQiqi143cZa/c4TTj/cWMJxB6ietwk70ibb/kdzMc0kYJBoJOxcSYG4gSdX7M0Gq
-         0x8/+2CLoSp/hpHWNqoAc100IcZcYwHZWAZ28cCYgD1SgOqCnuOTAs61klphfOTW+Ts/
-         PTC9EOCkBlwaDCwrJHiav+uica+eMW+qE8FdLMl64l3e7/R/SkNBSrsWjRdugG9dqpyW
-         AlmwzJUiH0GSgt0x84eOAntf17LrPfUVUYrsHqmuoCZa6hAkISz+enMnP9eJIfFXl2PV
-         O4wdQJjN0TsFQG5U/+Ax+xLWHLz1yy4DkKa2WQrVsCzGHKJQx2cnencLM5hsZ+kcv846
-         e8wA==
+        b=u2IL6n7lf6R5TUj4bzF/XAUnEVOEgPCI1ByRcYAOmOdCNvmPJJGc6VSMaQO5B5fLuY
+         HcgeoHroLwo3AlLtBJMNVb/S55RxzYddAeDvI/GsPuoLWHFglI5VCTQq3HoIKI2KJ8SG
+         6EWukSVunA8XIKG4StvPNOwd8iIg9eErINfny2/h79nVEsR7Sw9mkcOinRoPtJ6BU8XY
+         BjUY3yWmUQVqiYKQ5/CNGhdGZGMGzXLQvzLCtevWEUZvcfMAUCGSht2I6ivcD1OeCUfg
+         UawYkJGKbKUN3peCMG7V7MMFrHUgV3Utasuv0dWpM2ZUqQKh+1hxOPayJBgItVaYHTxD
+         fGVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=sJ3Q82x/YobghFe5BqteEfYb2maPKduHQkzYXhyhnbg=;
-        b=LDr+1gLNtLh4nvQBoEB+AUUBylX6AcXpZLIT355W+mXUkyleMkbUz6M+21qDRm6hdM
-         j7KLrNT3K4y7FYDj73tgYZKnYNwr951NmF0fXvnJaf4bgiQRwa8p5qv0ILKxgQYvuEzW
-         t/++1CBSiIoxADWwVPExw0syLjXUGDdiTL/VN4fSmsfbrvstICw2tHAaNetoi+/oYB2w
-         2LgFlBGJEInKzsDTJQ14DgdEe6cCwVpcvz31zyc2GunBAiChn40EQSscYK4vF7ocBSNC
-         jve/ucv9H1ARiJfwZZRXoWtsmb4aVjAtto9feohbcdlGfoDqnkBpYKJPYl+bKE7elDN9
-         gMng==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=YGfCX8v7fTh3GisZPNvDk3SROq82HKbmfnFE9drJiNw=;
+        b=N8qiSgLTHg99U5xRLtlmXKbuP+O4x9SgRl3SWKOL5IymHXbMtSXJZQc5ZL2bE/3kVJ
+         YcW/xXrRS2CkBA3WP6HdPTRTcs5D34Bc1g/A3IhyDCRCNXH10oRnZD67QDBviTMwqtC1
+         IlidPB7n4ucPRxzlFRTlm4zFRj/1HWD9Ub85WwR1vt+5pkw0BaoJF9WotnOC7LGoRpeI
+         Wh/+NYHbSE4mS4bqiHfPWHWV3ZJcMKMgKbOG1j7Fbyjl1ArF0ST/YlzhhhuA3j7bNii/
+         eOhXHS1k9QagSLaR0U7codgO4A+/tyJMX0mdSWWZmz19W+WqQkfQAQb8iiZ+ZYZRVG67
+         0eFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=cLuxSPws;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 79si5535192ybf.447.2022.02.08.02.59.22
+        by mx.google.com with ESMTPS id e20si5587377ybb.150.2022.02.08.07.44.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Feb 2022 02:59:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Feb 2022 07:44:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53492 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=cLuxSPws;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nHODS-0004Q9-71
-	for alex.bennee@linaro.org; Tue, 08 Feb 2022 05:59:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42436)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nHSfZ-0007Hu-7L
+	for alex.bennee@linaro.org; Tue, 08 Feb 2022 10:44:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1nHNif-0007nU-G8; Tue, 08 Feb 2022 05:27:35 -0500
-Received: from mail.csgraf.de ([85.25.223.15]:34486 helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1nHNib-0005tS-PK; Tue, 08 Feb 2022 05:27:31 -0500
-Received: from localhost.localdomain
- (dynamic-077-002-106-089.77.2.pool.telefonica.de [77.2.106.89])
- by csgraf.de (Postfix) with ESMTPSA id C97E1608091C;
- Tue,  8 Feb 2022 11:27:25 +0100 (CET)
-From: Alexander Graf <agraf@csgraf.de>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2] hvf: arm: Handle unknown ID registers as RES0
-Date: Tue,  8 Feb 2022 11:27:24 +0100
-Message-Id: <20220208102724.34451-1-agraf@csgraf.de>
-X-Mailer: git-send-email 2.32.0 (Apple Git-132)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nHRcD-0003uI-Px
+ for qemu-devel@nongnu.org; Tue, 08 Feb 2022 09:37:10 -0500
+Received: from [2a00:1450:4864:20::334] (port=46700
+ helo=mail-wm1-x334.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nHRc7-0008Ti-6n
+ for qemu-devel@nongnu.org; Tue, 08 Feb 2022 09:37:09 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ l67-20020a1c2546000000b00353951c3f62so1812744wml.5
+ for <qemu-devel@nongnu.org>; Tue, 08 Feb 2022 06:36:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YGfCX8v7fTh3GisZPNvDk3SROq82HKbmfnFE9drJiNw=;
+ b=cLuxSPwsiT4HzXMjLgMBqi++TeBBlgcpWgFJLL+2llB2SD93+fUGjtzcCYH8IEHkiV
+ Yj5DKzwhHuOANj/Z6TVydLGNoF/N7pvlioXmG3evCeecwl54iI+/1ggnuOasBnu9TWRN
+ JqobHkIsUkmJ35Q0k8bipN+CK1etLsophjCQdEEY5Um9vgZ0LruJyT39R78fC47QOBr/
+ rbId3cu16F1Q5BJl4+Oub1BUGeJQ9eILUPAw7n0nljQ6rpn1hqCOV2/gc2OVGztQV1IR
+ bNfCdjr8vAhFikakS8okXy1cKl+cB6XvS5IFHt7C2DowhQ/t+y8VviG+V44RD7q3b9mG
+ UxMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YGfCX8v7fTh3GisZPNvDk3SROq82HKbmfnFE9drJiNw=;
+ b=KC58mf8WTRFCLS3Ph3GAvbS4noZUOCCwSwnLAl/DZoFy9f9+fEP1ONBw8fIKCfLLUc
+ M3ot1nlR6SC7oXbW4Yof2QNy0HgQ+7dVNeKDftyu0yxinxoNErP8HwHR7/ANssuVDrdk
+ Gw8diBXp7ixZQmQ+HOGT0xJGvrpUj5WDe7xkJAyxRnAXdHggrZD0PME7XV7IOn7mdnDJ
+ ZzDYfSKM9mKK5dviniYFsXFR1oKUELASP/dhOHugAo1Ib/eFqYfJYs199lU0/tSQMDQb
+ OSHmh6FCevCMqwRunoVULOwaHFcZKfsWHvkqukImKUTWOM6YHG72B5O5dE386BLu/rz/
+ xHmw==
+X-Gm-Message-State: AOAM530pBMmzn3I7IedVhQWEiHXd2bDhtnLnl1R2lL6sCPpM4PLlAD/w
+ tKpwJEO9iFEAQ0JO8QrZgmkuwBpx3PtqNijPG/ELOA==
+X-Received: by 2002:a05:600c:2d05:: with SMTP id
+ x5mr1366180wmf.133.1644330994485; 
+ Tue, 08 Feb 2022 06:36:34 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+References: <20220208102724.34451-1-agraf@csgraf.de>
+In-Reply-To: <20220208102724.34451-1-agraf@csgraf.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 8 Feb 2022 14:36:23 +0000
+Message-ID: <CAFEAcA-0DvRJRaxWNKxPGEkJn+wBUDJ-MaV5ysqoq1nCFiLP3Q@mail.gmail.com>
+Subject: Re: [PATCH v2] hvf: arm: Handle unknown ID registers as RES0
+To: Alexander Graf <agraf@csgraf.de>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::334
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-stable@nongnu.org, Cameron Esfahani <dirty@apple.com>,
  qemu-devel@nongnu.org, Roman Bolshakov <r.bolshakov@yadro.com>,
  qemu-arm@nongnu.org, Ivan Babrou <ivan@cloudflare.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qeR/Qt3kmvLi
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xZZ99Wzm+ybS
 
-Recent Linux versions added support to read ID_AA64ISAR2_EL1. On M1,
-those reads trap into QEMU which handles them as faults.
+On Tue, 8 Feb 2022 at 10:27, Alexander Graf <agraf@csgraf.de> wrote:
+>
+> Recent Linux versions added support to read ID_AA64ISAR2_EL1. On M1,
+> those reads trap into QEMU which handles them as faults.
+>
+> However, AArch64 ID registers should always read as RES0. Let's
+> handle them accordingly.
+>
+> This fixes booting Linux 5.17 guests.
+>
+> Cc: qemu-stable@nongnu.org
+> Reported-by: Ivan Babrou <ivan@cloudflare.com>
+> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> ---
+>  target/arm/hvf/hvf.c | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
+>
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 92ad0d29c4..39c3e0d85f 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -729,6 +729,17 @@ static bool hvf_handle_psci_call(CPUState *cpu)
+>      return true;
+>  }
+>
+> +static bool is_id_sysreg(uint32_t reg)
+> +{
+> +    uint32_t op0 = (reg >> 20) & 0x3;
+> +    uint32_t op1 = (reg >> 14) & 0x7;
+> +    uint32_t crn = (reg >> 10) & 0xf;
+> +    uint32_t crm = (reg >> 1) & 0xf;
+> +    uint32_t op2 = (reg >> 7) & 0x7;
 
-However, AArch64 ID registers should always read as RES0. Let's
-handle them accordingly.
+This is now the fifth place where we unpack the fields
+of a bad-sysreg syndrome register value (we already do
+it in the tracing for handled and unhandled sysreg reads
+and writes). Seems like a good time to define some
+abstractions for it rather than using a lot of hard-coded
+constant values.
 
-This fixes booting Linux 5.17 guests.
+To demonstrate the value of this, you have the shift value
+for op2 wrong -- it starts at bit 17, not 7.
 
-Cc: qemu-stable@nongnu.org
-Reported-by: Ivan Babrou <ivan@cloudflare.com>
-Signed-off-by: Alexander Graf <agraf@csgraf.de>
----
- target/arm/hvf/hvf.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+> +
+> +    return op0 == 3 && op1 == 0 && crn == 0 && crm >= 1 && crm < 8 && op2 < 8;
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 92ad0d29c4..39c3e0d85f 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -729,6 +729,17 @@ static bool hvf_handle_psci_call(CPUState *cpu)
-     return true;
- }
- 
-+static bool is_id_sysreg(uint32_t reg)
-+{
-+    uint32_t op0 = (reg >> 20) & 0x3;
-+    uint32_t op1 = (reg >> 14) & 0x7;
-+    uint32_t crn = (reg >> 10) & 0xf;
-+    uint32_t crm = (reg >> 1) & 0xf;
-+    uint32_t op2 = (reg >> 7) & 0x7;
-+
-+    return op0 == 3 && op1 == 0 && crn == 0 && crm >= 1 && crm < 8 && op2 < 8;
-+}
-+
- static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
- {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-@@ -781,6 +792,11 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
-         /* Dummy register */
-         break;
-     default:
-+        if (is_id_sysreg(reg)) {
-+            /* ID system registers read as RES0 */
-+            val = 0;
-+            break;
-+        }
-         cpu_synchronize_state(cpu);
-         trace_hvf_unhandled_sysreg_read(env->pc, reg,
-                                         (reg >> 20) & 0x3,
--- 
-2.32.0 (Apple Git-132)
+The last clause in this condition can never be false,
+because op2 is only a 3 bit field.
 
+
+thanks
+-- PMM

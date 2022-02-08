@@ -1,99 +1,102 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp208986lfk;
-        Tue, 8 Feb 2022 07:44:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzJswnufx+kQnqTWIf8m82ea/vyNBSo18pOKjbnlV0MqOZckMcwVxHXH0V/5ceSBx7F8W3N
-X-Received: by 2002:a81:7c2:: with SMTP id 185mr5319754ywh.114.1644335081836;
-        Tue, 08 Feb 2022 07:44:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644335081; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp262094lfk;
+        Tue, 8 Feb 2022 09:09:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJylu6Qw47z2IbKZrM3oF4EzOW4RArwvieiXojWfxqccs8zgMcMueFxF76EGoMLVu2ALPwtF
+X-Received: by 2002:a25:4b07:: with SMTP id y7mr5376273yba.315.1644340176420;
+        Tue, 08 Feb 2022 09:09:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644340176; cv=none;
         d=google.com; s=arc-20160816;
-        b=u2IL6n7lf6R5TUj4bzF/XAUnEVOEgPCI1ByRcYAOmOdCNvmPJJGc6VSMaQO5B5fLuY
-         HcgeoHroLwo3AlLtBJMNVb/S55RxzYddAeDvI/GsPuoLWHFglI5VCTQq3HoIKI2KJ8SG
-         6EWukSVunA8XIKG4StvPNOwd8iIg9eErINfny2/h79nVEsR7Sw9mkcOinRoPtJ6BU8XY
-         BjUY3yWmUQVqiYKQ5/CNGhdGZGMGzXLQvzLCtevWEUZvcfMAUCGSht2I6ivcD1OeCUfg
-         UawYkJGKbKUN3peCMG7V7MMFrHUgV3Utasuv0dWpM2ZUqQKh+1hxOPayJBgItVaYHTxD
-         fGVA==
+        b=QY1TI4ae79Trw7kRc/SReRPqx48w4YRwmHYOkxsvont3y9/1Hk+I4XMQOqB5kuwc+4
+         a9EL4kCNGKqGg5amFTdyQESXvNyqWwsNkl4hrbTTKZxvwYOu0fInPb7s8Ryfc6o60afs
+         tek8JZKTcsrJdoEoXOyNA2ciC/N0k2tOR/fT1Q1kPrGNWC6+b+/xghMUqdqejFA+FKXM
+         L7PzmhUz+/+jIu1xJGdsj8Kki4AU1cG/ph1Fot3z/RYbo+/x1AD6t04Bx+C6gZ6n/z/H
+         kkXkXdxP2PUHP+td2HHQBBnYiHoctoINRT1sH04Zh+nIT5LsaWgsDrtF9tgMBRdOP4WX
+         LH8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=YGfCX8v7fTh3GisZPNvDk3SROq82HKbmfnFE9drJiNw=;
-        b=N8qiSgLTHg99U5xRLtlmXKbuP+O4x9SgRl3SWKOL5IymHXbMtSXJZQc5ZL2bE/3kVJ
-         YcW/xXrRS2CkBA3WP6HdPTRTcs5D34Bc1g/A3IhyDCRCNXH10oRnZD67QDBviTMwqtC1
-         IlidPB7n4ucPRxzlFRTlm4zFRj/1HWD9Ub85WwR1vt+5pkw0BaoJF9WotnOC7LGoRpeI
-         Wh/+NYHbSE4mS4bqiHfPWHWV3ZJcMKMgKbOG1j7Fbyjl1ArF0ST/YlzhhhuA3j7bNii/
-         eOhXHS1k9QagSLaR0U7codgO4A+/tyJMX0mdSWWZmz19W+WqQkfQAQb8iiZ+ZYZRVG67
-         0eFQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=e1F3cyiPfCm2qK9gtGdMvd6m3L6XeAhMZslq6HsdFCI=;
+        b=UjJUgoK7P63OtDQsplwZBCL2rtH2qE3VjcXKvbjD7YrKcs85dYrOv+lJ+s8o2TdrTI
+         9y0SNGmZ0gcteMKD2qZWXJLByr1FPnvMgPugdsXO+FnIoLXlIr4G1c6QBmpI0ah8gtVA
+         2BXzOjWxqXEtKaqDv6ozCR0JsHClYhKMvWYbdj+liZnbajWLy+CjeRPnljANB4QtCP3i
+         7OUQag6S0IfiSrjHg3pB4YBjw8w00ay2MIGoMHkl84ssVaBP8k0RF+JeN+bIjaVfgEda
+         3jzfwzwyRZNHTRpqiEk9I9k/9d6vBwNwiqFEGbvvayU43nDR26wcmNo32ziPr3XMk6jH
+         tV4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cLuxSPws;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kbJdx77z;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e20si5587377ybb.150.2022.02.08.07.44.41
+        by mx.google.com with ESMTPS id 187si9791344ybk.749.2022.02.08.09.09.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Feb 2022 07:44:41 -0800 (PST)
+        Tue, 08 Feb 2022 09:09:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cLuxSPws;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kbJdx77z;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35662 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53472 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nHSfZ-0007Hu-7L
-	for alex.bennee@linaro.org; Tue, 08 Feb 2022 10:44:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55792)
+	id 1nHTzj-0002CS-RE
+	for alex.bennee@linaro.org; Tue, 08 Feb 2022 12:09:35 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54538)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nHRcD-0003uI-Px
- for qemu-devel@nongnu.org; Tue, 08 Feb 2022 09:37:10 -0500
-Received: from [2a00:1450:4864:20::334] (port=46700
- helo=mail-wm1-x334.google.com)
+ id 1nHStr-0008MP-Ox
+ for qemu-devel@nongnu.org; Tue, 08 Feb 2022 10:59:27 -0500
+Received: from [2a00:1450:4864:20::42e] (port=46723
+ helo=mail-wr1-x42e.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nHRc7-0008Ti-6n
- for qemu-devel@nongnu.org; Tue, 08 Feb 2022 09:37:09 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- l67-20020a1c2546000000b00353951c3f62so1812744wml.5
- for <qemu-devel@nongnu.org>; Tue, 08 Feb 2022 06:36:35 -0800 (PST)
+ id 1nHSto-0006Cv-9R
+ for qemu-devel@nongnu.org; Tue, 08 Feb 2022 10:59:27 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id q7so3425413wrc.13
+ for <qemu-devel@nongnu.org>; Tue, 08 Feb 2022 07:59:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YGfCX8v7fTh3GisZPNvDk3SROq82HKbmfnFE9drJiNw=;
- b=cLuxSPwsiT4HzXMjLgMBqi++TeBBlgcpWgFJLL+2llB2SD93+fUGjtzcCYH8IEHkiV
- Yj5DKzwhHuOANj/Z6TVydLGNoF/N7pvlioXmG3evCeecwl54iI+/1ggnuOasBnu9TWRN
- JqobHkIsUkmJ35Q0k8bipN+CK1etLsophjCQdEEY5Um9vgZ0LruJyT39R78fC47QOBr/
- rbId3cu16F1Q5BJl4+Oub1BUGeJQ9eILUPAw7n0nljQ6rpn1hqCOV2/gc2OVGztQV1IR
- bNfCdjr8vAhFikakS8okXy1cKl+cB6XvS5IFHt7C2DowhQ/t+y8VviG+V44RD7q3b9mG
- UxMw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=e1F3cyiPfCm2qK9gtGdMvd6m3L6XeAhMZslq6HsdFCI=;
+ b=kbJdx77zrg5OTfkhsZOWHlrxyxfWnozCkf3Br1fkSVC/lQwu6FSxUSHtD30BBDcq/2
+ XXWPqPmqGfJfvnVkIyqgwSiGN7sAAOZvh19oGy2uXc8cnXjw7nzutwKXQpywoED2+5Bn
+ ltW6vTfiRDvGeMdq6CWiVmG1lJDmX+BpweJqQ4kzqXp40+EQE5AEN0A57CjTvyWBjD+V
+ wPaBDeABxt68+tc5nB7I45+nG5MZiBfcL3IBCbbYLx1UKC+mShlaY9Y75Dnup8R5yzil
+ KVkWPDgwahWsVi+ZtL697SRMOfK2IWH+G5k9n3Wjv5vvFRQxLFTuTfxekz3lXTZlgZNY
+ 1V0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YGfCX8v7fTh3GisZPNvDk3SROq82HKbmfnFE9drJiNw=;
- b=KC58mf8WTRFCLS3Ph3GAvbS4noZUOCCwSwnLAl/DZoFy9f9+fEP1ONBw8fIKCfLLUc
- M3ot1nlR6SC7oXbW4Yof2QNy0HgQ+7dVNeKDftyu0yxinxoNErP8HwHR7/ANssuVDrdk
- Gw8diBXp7ixZQmQ+HOGT0xJGvrpUj5WDe7xkJAyxRnAXdHggrZD0PME7XV7IOn7mdnDJ
- ZzDYfSKM9mKK5dviniYFsXFR1oKUELASP/dhOHugAo1Ib/eFqYfJYs199lU0/tSQMDQb
- OSHmh6FCevCMqwRunoVULOwaHFcZKfsWHvkqukImKUTWOM6YHG72B5O5dE386BLu/rz/
- xHmw==
-X-Gm-Message-State: AOAM530pBMmzn3I7IedVhQWEiHXd2bDhtnLnl1R2lL6sCPpM4PLlAD/w
- tKpwJEO9iFEAQ0JO8QrZgmkuwBpx3PtqNijPG/ELOA==
-X-Received: by 2002:a05:600c:2d05:: with SMTP id
- x5mr1366180wmf.133.1644330994485; 
- Tue, 08 Feb 2022 06:36:34 -0800 (PST)
-MIME-Version: 1.0
-References: <20220208102724.34451-1-agraf@csgraf.de>
-In-Reply-To: <20220208102724.34451-1-agraf@csgraf.de>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=e1F3cyiPfCm2qK9gtGdMvd6m3L6XeAhMZslq6HsdFCI=;
+ b=xmSkH88jKJ4N85o2UKP1wnCdWMgnS/+zvrKX7wx+Fu0ynt/0sjEWHlgvnuWOXrc6tN
+ IhS+1sNaL7ER3+kXfBYxqPY3p0ukMiZRA/kWm3WrLDp/2g6ZsJ9omyh5yYkb7RS2BsJ/
+ MAKDjwlizrMAHqYIHBwgydo8TC7U4N9I+JgZRdoWYd2VewMjlqcXAXF4PEJesD2dRatg
+ VH82YTlhzP3atCWNA8tOhFg2CuToY47ToYK3Rw7pMnP70+spTbahVyUukB0CRErXEo3e
+ mNHovvKWbNhq1RdCq2oZXp2rH6WYo+o+UgNKwSz+2rYrHfFpG+kvtuUt6oA7srZuPdDj
+ goRg==
+X-Gm-Message-State: AOAM531zaJHtEbMteq6J8Ud7Tx8GWNTQE3FyEX7UqGGsOhG6fUS/6BKT
+ WsuMt6al+5R3QExH5ASqUpqEUA==
+X-Received: by 2002:adf:d183:: with SMTP id v3mr4112237wrc.538.1644335953474; 
+ Tue, 08 Feb 2022 07:59:13 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id f5sm14805125wry.64.2022.02.08.07.59.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Feb 2022 07:59:13 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 Feb 2022 14:36:23 +0000
-Message-ID: <CAFEAcA-0DvRJRaxWNKxPGEkJn+wBUDJ-MaV5ysqoq1nCFiLP3Q@mail.gmail.com>
-Subject: Re: [PATCH v2] hvf: arm: Handle unknown ID registers as RES0
-To: Alexander Graf <agraf@csgraf.de>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::334
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 0/2] Kconfig: Add an I2C_DEVICES device group
+Date: Tue,  8 Feb 2022 15:59:09 +0000
+Message-Id: <20220208155911.3408455-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42e
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -114,62 +117,54 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-stable@nongnu.org, Cameron Esfahani <dirty@apple.com>,
- qemu-devel@nongnu.org, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm@nongnu.org, Ivan Babrou <ivan@cloudflare.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Kevin Townsend <kevin.townsend@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xZZ99Wzm+ybS
+X-TUID: Bc2Hkvk4SegL
 
-On Tue, 8 Feb 2022 at 10:27, Alexander Graf <agraf@csgraf.de> wrote:
->
-> Recent Linux versions added support to read ID_AA64ISAR2_EL1. On M1,
-> those reads trap into QEMU which handles them as faults.
->
-> However, AArch64 ID registers should always read as RES0. Let's
-> handle them accordingly.
->
-> This fixes booting Linux 5.17 guests.
->
-> Cc: qemu-stable@nongnu.org
-> Reported-by: Ivan Babrou <ivan@cloudflare.com>
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> ---
->  target/arm/hvf/hvf.c | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
->
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 92ad0d29c4..39c3e0d85f 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -729,6 +729,17 @@ static bool hvf_handle_psci_call(CPUState *cpu)
->      return true;
->  }
->
-> +static bool is_id_sysreg(uint32_t reg)
-> +{
-> +    uint32_t op0 = (reg >> 20) & 0x3;
-> +    uint32_t op1 = (reg >> 14) & 0x7;
-> +    uint32_t crn = (reg >> 10) & 0xf;
-> +    uint32_t crm = (reg >> 1) & 0xf;
-> +    uint32_t op2 = (reg >> 7) & 0x7;
+This patchset adds a new Kconfig "device group" for I2C devices which
+a user might reasonably want to plug in to an arbitrary i2c bus via
+the command line.  This follows the approach we use for PCI devices:
+generally-usable i2c devices have
+       default y if I2C_DEVICES
+and board models with user-accessible i2c buses have
+       imply I2C_DEVICES
 
-This is now the fifth place where we unpack the fields
-of a bad-sysreg syndrome register value (we already do
-it in the tracing for handled and unhandled sysreg reads
-and writes). Seems like a good time to define some
-abstractions for it rather than using a lot of hard-coded
-constant values.
+This means that when building a board model that pulls in the device
+group, the devices are all compiled in and available for use. 
+(Previously they would happen to be present and usable only if some
+other board that explicitly pulled that device in happened to also be
+built into the same QEMU binary.)
 
-To demonstrate the value of this, you have the shift value
-for op2 wrong -- it starts at bit 17, not 7.
+I have been fairly conservative in marking devices as being in the
+group and in marking board models as pulling in the group; feel free
+to suggest changes.
 
-> +
-> +    return op0 == 3 && op1 == 0 && crn == 0 && crm >= 1 && crm < 8 && op2 < 8;
+In particular I've only added 'imply I2C_DEVICES' to arm boards. 
+Grepping through Kconfig files I only found the PPC boards e500 and
+ppc44x that enable some kind of i2c controller anyway.
 
-The last clause in this condition can never be false,
-because op2 is only a 3 bit field.
-
+The immediate motivation here is that the recently added lsm303dlhc
+magnetometer isn't currently built unless the user manually adds it
+to their config, because as it happens no boards have it as a
+hard-wired device.
 
 thanks
 -- PMM
+
+Peter Maydell (2):
+  Kconfig: Add I2C_DEVICES device group
+  Kconfig: Add 'imply I2C_DEVICES' on boards with available i2c bus
+
+ docs/devel/kconfig.rst |  8 ++++++--
+ hw/arm/Kconfig         | 10 ++++++++++
+ hw/i2c/Kconfig         |  5 +++++
+ hw/rtc/Kconfig         |  2 ++
+ hw/sensor/Kconfig      |  5 +++++
+ 5 files changed, 28 insertions(+), 2 deletions(-)
+
+-- 
+2.25.1
+

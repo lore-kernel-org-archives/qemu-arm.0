@@ -1,102 +1,105 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp280774lfk;
-        Tue, 8 Feb 2022 09:39:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy/hXJlOqIE88jmY/oer9BOCz4w6Zdu2YUsweS32imIoEpL9mDUieBBZJcrKbQH9UZHsRmw
-X-Received: by 2002:a25:e0c1:: with SMTP id x184mr5684609ybg.500.1644341997745;
-        Tue, 08 Feb 2022 09:39:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644341997; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp288609lfk;
+        Tue, 8 Feb 2022 09:55:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwEaw5gC4MY9vdfsQnKBdE/SR8KbYaQm4AepHKCXsNumhYp36uaV/6ualT3bBDd0MNlJznF
+X-Received: by 2002:a25:9c02:: with SMTP id c2mr1591059ybo.685.1644342925489;
+        Tue, 08 Feb 2022 09:55:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644342925; cv=none;
         d=google.com; s=arc-20160816;
-        b=LWiGNxcg5XV9ni9v7PJWOS1Pb5J+u/lNBPF3MZARsGNt958Fm7MW3UTN6ngYGaYtJ1
-         oPsjkliAhsmIOhxZO3+iia1Ly6QSHHfXZcMTX8e5wTvG4Bc9/DUr0JpYZoMOh7MyuVnn
-         1f913vba8Lrr12LpVbFvctwPDapoPEU/ZgEOB8xiMch7bn78mabgAIm2yT6LtFMJg7Hd
-         n52tyGOZJkVN799r2CIe616pBTrhIVM1DS4ho1e3xtYs9/GbhIQ/Wo432Lg8Km5eI1D0
-         fOlPYTlcVnIWlMXzFDzdoZIrfVEvKuz97BHkPCRR4Zlk/KI50gkMkqArwivXctGon/Gd
-         i39g==
+        b=u5my2tc5E6JxRznISheRW3thJjO+Q//bi+byHzDrVEIIS8QCHtfCWPyoS/qI00pmQF
+         s4h4I6Fkx0CuwGDJyj6scETf8qlTaD5V/33eA1cv6IqMJLAiIySuApXQJsKbO8PvZIrQ
+         Hbj6fsySVFlfcc0DJcLMnixZ9OO1KymcvYazPJH65HvJP6g9XNiaEmjhNs3cbLl7hPUm
+         CKHTcoXSlEEefRdNUoupUAGzeNHc6kf0AXF7wvC7ReSAtxZngN2RU1lkbwPCVdc7smZK
+         H6TIeuyXt4L+GKFQAkj6WNjahd9KPzGxx+2xZgpCjOPzW22d8WAZM94P/uhqf3fGBpY9
+         4LNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=X+5q8Q245RMXKO+FXIQP2z10d5lBl/C2tAq9zh99WDw=;
-        b=Y7CfJisX7INgBPlMg8bPF+yMtT/lTD4ZMuyqHnVVLt0ZkZbsWgwmdNO32u5Y1NK0i+
-         4AUR45I84DuiWfIVLZkKdaORla+Z7Ij9cz0GEu/EaVuVs4C3DXeSfDkDq5QezjeKgpLi
-         sSkZE2wqrIJdjmCsNSWMBzcdXYmYiGOaPj9KBwsQGhTQqm0DgviQ3sUOLtBMvwzPak19
-         RIEOJYa6dVl3sMIe01/zzKyFyTG8SpGvVTB8zHF/5SGG8X9gt7xS4j1/5ABK1QTqlVx2
-         WcUEqeSLj/0kWe0Oz3ogxfHJ1JFBXRyxMIwhGiAS9uPhQIr/qYp4IgEsYv0QllOGYjxu
-         SBoA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=TeGZ3fztF9Kc3mfAQS9k9SzN001AUn+r3TkwGe9HSwM=;
+        b=FH6Udv8W1K3QSffakjIK+TA4DtFCMQ7ZmUVwkUzqEGUUr5DxHJA6e3QK0Y7nMI6xY7
+         XUB5mMR1sMguEmryMzAv7hXPy4bqdIYnyxfNaAay/Y0ixCtxsUygkppHo4wc03I3SOod
+         qe6KY1jLsRrkEoREzVs2C6bMUB2YbgRH3AJgzdY0PsuowtqFIr1Ca2rDL67BwV5EK2d5
+         kpyI8wJA7TzFU1LkEpP30lVNNRzWNlt9fvxez6FI0HvDBXnZVU6uUqgdyN/dfiwcy2Ca
+         81UIp7MI3YKoJ4qxuNR6aygnlVN1DVUdJ2BTF4skNCgzXf7sLa3+tDP6e2/5SGrO8ebP
+         dT8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IClUJYyQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y5mBnwxt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i186si9634689ywf.204.2022.02.08.09.39.57
+        by mx.google.com with ESMTPS id 12si4347398ybf.813.2022.02.08.09.55.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Feb 2022 09:39:57 -0800 (PST)
+        Tue, 08 Feb 2022 09:55:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IClUJYyQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y5mBnwxt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56124 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nHUT7-0002Mo-4u
-	for alex.bennee@linaro.org; Tue, 08 Feb 2022 12:39:57 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48490)
+	id 1nHUi4-0007iH-Ri
+	for alex.bennee@linaro.org; Tue, 08 Feb 2022 12:55:24 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54518)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nHU6l-0003fW-5c
- for qemu-arm@nongnu.org; Tue, 08 Feb 2022 12:16:51 -0500
-Received: from [2a00:1450:4864:20::435] (port=42864
- helo=mail-wr1-x435.google.com)
+ id 1nHStq-0008JP-B8
+ for qemu-arm@nongnu.org; Tue, 08 Feb 2022 10:59:26 -0500
+Received: from [2a00:1450:4864:20::430] (port=41951
+ helo=mail-wr1-x430.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nHU6h-0002NR-Uz
- for qemu-arm@nongnu.org; Tue, 08 Feb 2022 12:16:50 -0500
-Received: by mail-wr1-x435.google.com with SMTP id h6so13307688wrb.9
- for <qemu-arm@nongnu.org>; Tue, 08 Feb 2022 09:16:47 -0800 (PST)
+ id 1nHSto-0006D4-5D
+ for qemu-arm@nongnu.org; Tue, 08 Feb 2022 10:59:26 -0500
+Received: by mail-wr1-x430.google.com with SMTP id k1so15067004wrd.8
+ for <qemu-arm@nongnu.org>; Tue, 08 Feb 2022 07:59:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=X+5q8Q245RMXKO+FXIQP2z10d5lBl/C2tAq9zh99WDw=;
- b=IClUJYyQkhtkPpKMZmFwxgEZnJBygzTsZLIKirMwPUI2NacdoEtEgkdIDA9AzNB50e
- KUJrEQAi1I2euB9pBYGW5IpPbeWrsvpXFaQ2Y3/NHWItXjpCMwO1Q2OEKly/TVFkR8iH
- WTKOnWJuHpXK7uj0agXsJPgaExzGkdp5FNkBZSSovjmy7xQ/OsDuYU4rd7PHHv603lQh
- p8vQ7sNK/CfvLSzQ1DTu7f/6Pw7vk8KGtKoDAU8rY8fZqsRCShHa6nehwyTxtNaIpjU+
- Du0LyeKOw3ipugoWJDQcWWnBrXfO2rJBOvil4ZAd0BCVhCq/GdSoBkt96GnA77VhH0um
- h6Ow==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=TeGZ3fztF9Kc3mfAQS9k9SzN001AUn+r3TkwGe9HSwM=;
+ b=y5mBnwxtsdEc/etd5FFlV7OqB6PdtHZ2xkQgAEFIdA6mfDVUnQLQdIJiFSQEqDClJw
+ 9kYUlf9qj7FdbQL9NAQsx4k3Z0151D5GmyXwyHZ2fufz67lgWmFfVO6uYfxX0+1RKznu
+ +Hx4NQjsqRb9EAfRPWIka5xZYvu3fzW/WoiasMq552FGXpIhv+8A+KgVNKRRkgSkeU6q
+ kvawiMBwnVQdi+CeB3FoXhF+T07K8LYstOeV05MCrFzW/dGi21BTSfrFcLbhzHkyP4Vr
+ FynouAHWFxYWstFyCtl03Pw/+i7XnqFLwBMStwNY8vQFYJEbPPj9pkxQS5V6srNzJeSl
+ xXIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=X+5q8Q245RMXKO+FXIQP2z10d5lBl/C2tAq9zh99WDw=;
- b=525qIqV17GYtJoGA20pis5wVUlAd05YLqH3NoRyHBvATZWl1FG8uhQ884DmVwpcGsd
- 5MiLi0KnLjYXR5o4UuZhE4UiOOo2snP8mcm9JKIyEDfHKPuUDTEI2tcGBqOONBDOfOY+
- Ni9lyVymiz8kMrnTlt4XMSFW8O06te7hxyWcDsYXI5pqiVTjNafRA9WVdpAvPpbMCT9O
- UsJx3rbOtBVqXXRvnLgj9nihIDStC190jjHtmg7ilbRRFF/SW/+YrW2dwrs/FyqlT4qs
- yLqGkFpkD0w//aHgSJtELjhfksaHsOnz4TgmRfl9rLE+VoQaEMEFrI/+PY29JjMO+QLG
- soIA==
-X-Gm-Message-State: AOAM530QcZZ9pkDpfvHIaFb3t24R+sKCzD13jTLJhSg8asW5SN5AWQdo
- ZG5GBgc743H1+qnCVcu5xrOGxCSnFOCxlQ==
-X-Received: by 2002:a5d:4089:: with SMTP id o9mr2689911wrp.634.1644340605938; 
- Tue, 08 Feb 2022 09:16:45 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=TeGZ3fztF9Kc3mfAQS9k9SzN001AUn+r3TkwGe9HSwM=;
+ b=p0zPLc8A3hX9mgarUj5+90z9wnzbxmUS/P9DZCLw4RZ6kymCFq2x0bes8jOlWz/Jbt
+ Tbkb5LuAAshyNHJinU4MlM5mNl5iG5rwoJVNX9m7KepFpJcoyitSm1FbqpVuI05FBc8z
+ 0EVGO3ItuTdOBig8RZYACy7szGoxx+wfuI8IEgFOxqwPocDx4yrdnoM4MBuiSYiWXhVQ
+ xQji4WyvVj1s21ltpRvMvTazUkHtBBUCTOrOlPpzJQPGnYSD9898cdZ3mzN/Y6XWqo+O
+ 50dvXOduoTpffPzpfQYMlKuEEVEF4CDotL6GSiP89W07A9Xkf2F+/W/rhIYRmzZzdMjE
+ vtWw==
+X-Gm-Message-State: AOAM530cbMH2LvYmos+zq6no4xNNwka1omUv/IGIaUs/dCq/FX7tnBd3
+ m6l1Rqey2NXJ30NQov6hagH5WOXaxRioUA==
+X-Received: by 2002:a5d:4528:: with SMTP id j8mr4167273wra.544.1644335954279; 
+ Tue, 08 Feb 2022 07:59:14 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id t14sm2718680wmq.43.2022.02.08.09.16.45
+ by smtp.gmail.com with ESMTPSA id f5sm14805125wry.64.2022.02.08.07.59.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Feb 2022 09:16:45 -0800 (PST)
+ Tue, 08 Feb 2022 07:59:13 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/armv7m: Handle disconnected clock inputs
-Date: Tue,  8 Feb 2022 17:16:43 +0000
-Message-Id: <20220208171643.3486277-1-peter.maydell@linaro.org>
+Subject: [PATCH 1/2] Kconfig: Add I2C_DEVICES device group
+Date: Tue,  8 Feb 2022 15:59:10 +0000
+Message-Id: <20220208155911.3408455-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220208155911.3408455-1-peter.maydell@linaro.org>
+References: <20220208155911.3408455-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::435
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -117,83 +120,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-stable@nongnu.org, Richard Petri <git@rpls.de>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Kevin Townsend <kevin.townsend@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SbnnEYS59fZX
+X-TUID: EilNu8mKwcUu
 
-In the armv7m object, handle clock inputs that aren't connected.
-This is always an error for 'cpuclk'. For 'refclk' it is OK for this
-to be disconnected, but we need to handle it by not trying to connect
-a sourceless-clock to the systick device.
+Currently there is no way for a board model's Kconfig stanza to
+say "I have an i2c bus which the user can plug an i2c device into,
+build all the free-standing i2c devices". The Kconfig mechanism
+for this is the "device group". Add an I2C_DEVICES group along
+the same lines as the existing PCI_DEVICES. Simple free-standing
+i2c devices which a user might plausibly want to be able to
+plug in on the QEMU commandline should have
+   default y if I2C_DEVICES
+and board models which have an i2c bus that is user-accessible
+should use
+   imply I2C_DEVICES
+to cause those pluggable devices to be built.
 
-This fixes a bug where on the mps2-an521 and similar boards (which
-do not have a refclk) the systick device incorrectly reset with
-SYST_CSR.CLKSOURCE 0 ("use refclk") rather than 1 ("use CPU clock").
+In this commit we mark only a fairly conservative set of i2c devices
+as belonging to the I2C_DEVICES group: the simple sensors and RTCs
+(not including PMBus devices or devices which need GPIO lines to be
+connected).
 
-Cc: qemu-stable@nongnu.org
-Reported-by: Richard Petri <git@rpls.de>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-The other option would be to have clock_has_source() look not
-just at clk->source but somehow walk up the clock tree to see
-if it can find something that looks like a "root". That seems
-overcomplicated...
+Feel free to suggest other i2c devices that should be marked
+as in the group; as I say, I erred on the side of not putting
+devices in the group.
 ---
- hw/arm/armv7m.c | 26 ++++++++++++++++++++++----
- 1 file changed, 22 insertions(+), 4 deletions(-)
+ docs/devel/kconfig.rst | 8 ++++++--
+ hw/i2c/Kconfig         | 5 +++++
+ hw/rtc/Kconfig         | 2 ++
+ hw/sensor/Kconfig      | 5 +++++
+ 4 files changed, 18 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index ceb76df3cd4..41cfca0f223 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -284,6 +284,12 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-         return;
-     }
+diff --git a/docs/devel/kconfig.rst b/docs/devel/kconfig.rst
+index a1cdbec7512..aa5042f1569 100644
+--- a/docs/devel/kconfig.rst
++++ b/docs/devel/kconfig.rst
+@@ -192,11 +192,15 @@ declares its dependencies in different ways:
+   no directive and are not used in the Makefile either; they only appear
+   as conditions for ``default y`` directives.
  
-+    /* cpuclk must be connected; refclk is optional */
-+    if (!clock_has_source(s->cpuclk)) {
-+        error_setg(errp, "armv7m: cpuclk must be connected");
-+        return;
-+    }
+-  QEMU currently has two device groups, ``PCI_DEVICES`` and
+-  ``TEST_DEVICES``.  PCI devices usually have a ``default y if
++  QEMU currently has three device groups, ``PCI_DEVICES``, ``I2C_DEVICES``,
++  and ``TEST_DEVICES``.  PCI devices usually have a ``default y if
+   PCI_DEVICES`` directive rather than just ``default y``.  This lets
+   some boards (notably s390) easily support a subset of PCI devices,
+   for example only VFIO (passthrough) and virtio-pci devices.
++  ``I2C_DEVICES`` is similar to ``PCI_DEVICES``. It contains i2c devices
++  that users might reasonably want to plug in to an i2c bus on any
++  board (and not ones which are very board-specific or that need
++  to be wired up in a way that can't be done on the command line).
+   ``TEST_DEVICES`` instead is used for devices that are rarely used on
+   production virtual machines, but provide useful hooks to test QEMU
+   or KVM.
+diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
+index 8217cb50411..9bb8870517f 100644
+--- a/hw/i2c/Kconfig
++++ b/hw/i2c/Kconfig
+@@ -1,6 +1,11 @@
+ config I2C
+     bool
+ 
++config I2C_DEVICES
++    # Device group for i2c devices which can reasonably be user-plugged
++    # to any board's i2c bus
++    bool
 +
-     memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -1);
+ config SMBUS
+     bool
+     select I2C
+diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
+index f06e133b8a2..730c272bc54 100644
+--- a/hw/rtc/Kconfig
++++ b/hw/rtc/Kconfig
+@@ -1,10 +1,12 @@
+ config DS1338
+     bool
+     depends on I2C
++    default y if I2C_DEVICES
  
-     s->cpu = ARM_CPU(object_new_with_props(s->cpu_type, OBJECT(s), "cpu",
-@@ -420,8 +426,18 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-                                     &s->sysreg_ns_mem);
-     }
+ config M41T80
+     bool
+     depends on I2C
++    default y if I2C_DEVICES
  
--    /* Create and map the systick devices */
--    qdev_connect_clock_in(DEVICE(&s->systick[M_REG_NS]), "refclk", s->refclk);
-+    /*
-+     * Create and map the systick devices. Note that we only connect
-+     * refclk if it has been connected to us; otherwise the systick
-+     * device gets the wrong answer for clock_has_source(refclk), because
-+     * it has an immediate source (the ARMv7M's clock object) but not
-+     * an ultimate source, and then it won't correctly auto-select the
-+     * CPU clock as its only possible clock source.
-+     */
-+    if (clock_has_source(s->refclk)) {
-+        qdev_connect_clock_in(DEVICE(&s->systick[M_REG_NS]), "refclk",
-+                              s->refclk);
-+    }
-     qdev_connect_clock_in(DEVICE(&s->systick[M_REG_NS]), "cpuclk", s->cpuclk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->systick[M_REG_NS]), errp)) {
-         return;
-@@ -438,8 +454,10 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-          */
-         object_initialize_child(OBJECT(dev), "systick-reg-s",
-                                 &s->systick[M_REG_S], TYPE_SYSTICK);
--        qdev_connect_clock_in(DEVICE(&s->systick[M_REG_S]), "refclk",
--                              s->refclk);
-+        if (clock_has_source(s->refclk)) {
-+            qdev_connect_clock_in(DEVICE(&s->systick[M_REG_S]), "refclk",
-+                                  s->refclk);
-+        }
-         qdev_connect_clock_in(DEVICE(&s->systick[M_REG_S]), "cpuclk",
-                               s->cpuclk);
+ config M48T59
+     bool
+diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
+index b317f91b7b4..215944decc7 100644
+--- a/hw/sensor/Kconfig
++++ b/hw/sensor/Kconfig
+@@ -1,18 +1,22 @@
+ config TMP105
+     bool
+     depends on I2C
++    default y if I2C_DEVICES
  
+ config TMP421
+     bool
+     depends on I2C
++    default y if I2C_DEVICES
+ 
+ config DPS310
+     bool
+     depends on I2C
++    default y if I2C_DEVICES
+ 
+ config EMC141X
+     bool
+     depends on I2C
++    default y if I2C_DEVICES
+ 
+ config ADM1272
+     bool
+@@ -25,3 +29,4 @@ config MAX34451
+ config LSM303DLHC_MAG
+     bool
+     depends on I2C
++    default y if I2C_DEVICES
 -- 
 2.25.1
 

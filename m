@@ -1,104 +1,97 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp27007lfk;
-        Tue, 8 Feb 2022 02:31:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw8Xwmo3AKYZ2r8TMAN4uMo2zLXymNvammsYMLci0r3/yGMNpPjtJDb922soWNq1T75Hc5P
-X-Received: by 2002:a37:6296:: with SMTP id w144mr2025794qkb.160.1644316283335;
-        Tue, 08 Feb 2022 02:31:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644316283; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp38000lfk;
+        Tue, 8 Feb 2022 02:56:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxoL9t7q9ZQ9yAlElZD9VhDZlj5oNP0jyDddcWT15O1gBkAoX5TIDubv/UVTt58mepCjlaD
+X-Received: by 2002:a05:620a:2408:: with SMTP id d8mr2251133qkn.446.1644317765027;
+        Tue, 08 Feb 2022 02:56:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644317765; cv=none;
         d=google.com; s=arc-20160816;
-        b=zR9qw9S8uU6NFKgP6CmvPwH++5krsxQK5Hd66zRN/DELQhXdbQJlS4LVvuxhS6Q1ju
-         pgKz8LAWvszREueLLdFpRSTH3e+j3oZ50am2OZCEYo86RvXdxs+szahIkESRtL7YImJ+
-         oFbKyQuj8pktWY2Xw+4UxYM3BMoqGuSrx9H6oa9/et/n3DKwALXITvGXT9qX3a7qICGS
-         6JkUEzMrfoSWoHrC4zDB6kL3P4nwF7SDKtJFyqwje+3AiEkTAHE2GM9RNUCPkTWulxep
-         30RmtI3UxpDsZWpMNqOgMj9bMZivKLGfjdOPB2LSJGUP7AyOKTBbtb0riZrYvq6a6HaI
-         eXeA==
+        b=OGxSDux3SwFwmEc5RrbPm1zztsY+KdgGXoRnDBn1Q8+A6EguBYvCmgsV0dREU07sy8
+         yC86Bhbnn4943Vk45DQTo5swj1r2ukpEer/R8ASc12XKWpoZdKl6/5ECvdJbGYRd5wYY
+         tWKj++2oc6YPqsMSj7iUDTtxRXltyWpanoRqpFIv6IKMoAjkXnkfBKUABr6gZs+F6xOm
+         7hJwDFo0DdJ1Nt/z4vRYkTCXrQm5VeRpyTRqd7BBdIBj2YnlGTQVWgzxiudlxxWN3Fiu
+         CKC+tbEnm9n4ch196jE1e9Taw3PTcXkmMietziqJnugdp1TxjHJ3j37VqrPMvyZrC5SR
+         cEAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=IH6yAsLMVdRFXjPY8pvbfzsfwX92nWnxV4aGxqiPQKA=;
-        b=KHPBTvtw5JoH3d7heoBPpzm7XDlvnfOd2Ps3JpMej8LVt+mnLo8VGVSbiF6wVxsGSi
-         D+E4Ve/V+udSSE4kN+Sski+URM15XVhYOGJ5m+1w1lgLNoVGN9IAputIJt8qt70rX7nS
-         kC/Wm9ib60UbbXKb9WiaK0YmxbBnaTD0Mk/jwrLcl1T9eiGQ1VzE4NcAhAk/61Qp945K
-         xc8FktsHm5oUy0BoYqwzvUUK8wui/xD3qIR8vZtM6FpXBycP+iwCZGnxJ5SRy3a3r5yS
-         y6jC7Vesb+ZNk6Sb8gdxMPN8NhS7/7Rt5hBYe59egrDR8y/0vTro/cW7LcAjHSPf5MTW
-         WXpQ==
+        bh=J6uVuRGWOjq8ZvJaXqdO3OwyDPlGcjes7iAlDFFhl1Y=;
+        b=ifoH+JH8Ii2uwzQwB4XehzOmSBKYs+mFxqPMPo0JyDTxxR3UfsrbNDr6BTCf3YIK/2
+         IlUBlaTpOJaQPHv2APkzuP4fgEwLSTlQVx4ETbidUULybElShbpggbArbBoqJTezZSV+
+         8ZX7Qe69PZyYZYfUnHsOSuCZfNwUsyt/ttUjFWU1sEfO3/xV/DpPGfwHbktb2h81m0mv
+         UbVcHavjVjpHIkX76I31wvwSD2M6gZH/MzewAT2ZS+3St5mIYKSGeUnpBJmGf/c5tIJK
+         wFIMdq+3O9Ip2eDueYaWfFhbFe9EzEMtQ4kPp7qDwulJ3pI7lz6WB0yxlT5eDiNXPF5A
+         5gVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kkyvBGnJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@jms.id.au header.s=google header.b=BibJHtOU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n17si2931158qtx.718.2022.02.08.02.31.23
+        by mx.google.com with ESMTPS id f19si2683084qke.638.2022.02.08.02.56.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Feb 2022 02:31:23 -0800 (PST)
+        Tue, 08 Feb 2022 02:56:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kkyvBGnJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34124 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=BibJHtOU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48010 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nHNmM-0004w1-Rq
-	for alex.bennee@linaro.org; Tue, 08 Feb 2022 05:31:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40552)
+	id 1nHOAF-0000TU-S8
+	for alex.bennee@linaro.org; Tue, 08 Feb 2022 05:56:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48198)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nHNa3-0005Xj-5l
- for qemu-devel@nongnu.org; Tue, 08 Feb 2022 05:18:39 -0500
-Received: from [2a00:1450:4864:20::336] (port=35555
- helo=mail-wm1-x336.google.com)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1nHO1R-0005q1-R2; Tue, 08 Feb 2022 05:46:57 -0500
+Received: from [2607:f8b0:4864:20::82c] (port=42604
+ helo=mail-qt1-x82c.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nHNa1-0004Kq-AH
- for qemu-devel@nongnu.org; Tue, 08 Feb 2022 05:18:38 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- l123-20020a1c2581000000b0037b9d960079so1043981wml.0
- for <qemu-devel@nongnu.org>; Tue, 08 Feb 2022 02:18:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1nHO1N-0001Rd-Ur; Tue, 08 Feb 2022 05:46:57 -0500
+Received: by mail-qt1-x82c.google.com with SMTP id s1so14327724qtw.9;
+ Tue, 08 Feb 2022 02:46:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=IH6yAsLMVdRFXjPY8pvbfzsfwX92nWnxV4aGxqiPQKA=;
- b=kkyvBGnJMrKW2ByfoH5Z7lN73QM8V8tD+J7rC8pgb98EiSt5I03CFrgo/TCjaIpVIE
- JJHqX5y8BnhrdKO3nQG/ElCzBfru0rF8SPIxHoYBH51j30VdOu2j5sXYduG9wy/6oY3L
- zJTY0uUFjOtKzvemm/XQ06F/cOxFY7g3wSoXv1cXBisMGIDhGX/uA5WB/HJq9H3Y72A8
- yg4zfJ2JdEpJHcB6br3rdsflRXTShkkR0YIgu1mCtWvZeTOY3SUU7NNDDgj2tnNyHj1X
- GJd7lLdKP8P8AJ0tLK2p6fLZNYR664iIFRYrVOcybmx5iBOfAzrvhH6HocLXZ2C7KXfv
- s9NQ==
+ :cc; bh=J6uVuRGWOjq8ZvJaXqdO3OwyDPlGcjes7iAlDFFhl1Y=;
+ b=BibJHtOUa8EmkYTkDGeX9XNrpamCjyDu539zYeRvvZJ2Mp2KKh0PqO2TAZtuLrjBBX
+ wQF1FD0+tISS+FwCD5pMZKo2ZqnnuXzKrB8UCv3kHBoLtKbWj//Y6zmL2UNUzj8BkILL
+ IQ//R5WxcsjhQO9ugUIAZ7IG8oYeFGjVaxoXs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=IH6yAsLMVdRFXjPY8pvbfzsfwX92nWnxV4aGxqiPQKA=;
- b=xtVSE0smUaoeqEviFtjG5PTGESKQ586i9wn6tH0jq2W8iopqwlmAIBhMmMxf2gn668
- d1X4fpZ2gPfYUkva/2+SlT+UAndD8MxE1fjP9M19BTEL1IEXPGxVQijc7VwAXTbw0mpn
- fkQsKMYkubAAJ2QTiaMzzq/izrPXHrmljZFiuQIDb8jMPAQfPymLULdXe6MVNrKw0bKE
- bgAw46bnLUyRphz5/U0OJXthb7D9EDME0vy3FMmcINGr/JVg2nagt/a25IefxDHoOTT2
- WuI1DQZsgF4guo9ul3pm9vBiVSOEQYIGUHJ8hrlsn4r2CJ+MZe4WB/IAep9s5+rvDVTg
- fiug==
-X-Gm-Message-State: AOAM532ai/1RHyPqjoSTypkZhz1rL4X8VV5bbstnF2YQ4kK8Xj4kYML+
- fQoRSIU114yXSxwYQwdt9IkywyhgCclzhVY72IFuNg==
-X-Received: by 2002:a05:600c:3552:: with SMTP id
- i18mr499980wmq.21.1644315515345; 
- Tue, 08 Feb 2022 02:18:35 -0800 (PST)
+ bh=J6uVuRGWOjq8ZvJaXqdO3OwyDPlGcjes7iAlDFFhl1Y=;
+ b=X0xPZftMWBT3nzG/7qtanRR9kZwjEpWVRNKWetzAMgdlp1RLP+m2G8uBXqBvcvNx6f
+ G8leVn13j3vEyhIv6mPbdyvjr8293jqAXXr26rpv4oz/6SEltor1YzCAmOCtwP08zC6T
+ g8MchfzB4YolhxQIw2IfREr1lVlHPQ8eh9O+Ff7NbsBtDmJReWaswOiOHIZJK3PtrKqT
+ SEaHr0jl+CbF+JLyo+XUNjegxgVVgAWHVI4MPpE27wJALZ4ksSDEjUc0eDT1Qe6+/ZaJ
+ 4DKJEi94SFdUk7ODWMoU6GDWHGfje/EZSgAajmvMfR8aJ+lWfDnEv8nbZz8nVFisQ1yd
+ A4jg==
+X-Gm-Message-State: AOAM5326qpsQPFndTKlXjjR+0HO5dWBteAa8ZUdCHHwLVRWESKroZm1m
+ wTEDH0OiQFuG4wK7tlQm91VuXtiMslBqcpK8v6Q=
+X-Received: by 2002:ac8:7c4c:: with SMTP id o12mr2459305qtv.475.1644317212286; 
+ Tue, 08 Feb 2022 02:46:52 -0800 (PST)
 MIME-Version: 1.0
-References: <20220207225211.15281-1-agraf@csgraf.de>
-In-Reply-To: <20220207225211.15281-1-agraf@csgraf.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 Feb 2022 10:18:24 +0000
-Message-ID: <CAFEAcA8g5c2=ueHvxQ706_Q2ggJeMtkh-Wd0w-MG5+2E=kizxA@mail.gmail.com>
-Subject: Re: [PATCH] hvf: arm: Handle ID_AA64ISAR2_EL1 reads
-To: Alexander Graf <agraf@csgraf.de>
+References: <20220112080937.366835-1-troy_lee@aspeedtech.com>
+ <20220112080937.366835-2-troy_lee@aspeedtech.com>
+In-Reply-To: <20220112080937.366835-2-troy_lee@aspeedtech.com>
+From: Joel Stanley <joel@jms.id.au>
+Date: Tue, 8 Feb 2022 10:46:38 +0000
+Message-ID: <CACPK8XeVROgaTAKvFMC_RSYF7Kjb0ra2xS0ZeJtU-wWWo9wo3g@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] hw/misc: Supporting AST2600 HACE accumulative mode
+To: Troy Lee <troy_lee@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::336
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::82c
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82c;
+ envelope-from=joel.stan@gmail.com; helo=mail-qt1-x82c.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
@@ -114,52 +107,200 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
- Ivan Babrou <ivan@cloudflare.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ QEMU Developers <qemu-devel@nongnu.org>, hailin.wu@aspeedtech.com,
+ leetroy@gmail.com, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VEpKhSyyhyD/
+X-TUID: XIcFXwYo4MMD
 
-On Mon, 7 Feb 2022 at 22:52, Alexander Graf <agraf@csgraf.de> wrote:
+Hello Troy,
+
+On Wed, 12 Jan 2022 at 08:10, Troy Lee <troy_lee@aspeedtech.com> wrote:
 >
-> Recent Linux versions added support to read ID_AA64ISAR2_EL1. On M1,
-> those reads trap into QEMU which handles them as faults.
+> Accumulative mode will supply a initial state and append padding bit at
+> the end of hash stream.  However, the crypto library will padding those
+> bit automatically, so ripped it off from iov array.
 >
-> However, according to the ARMv8 spec (issue D17783), reads on this
-> register in older ARMv8 revisions should be RES0. So let's treat it
-> as such instead.
+> The aspeed ast2600 acculumative mode is described in datasheet
+> ast2600v10.pdf section 25.6.4:
+>  1. Allocationg and initiating accumulative hash digest write buffer
+>     with initial state.
+>     * Since QEMU crypto/hash api doesn't provide the API to set initial
+>       state of hash library, and the initial state is already setted by
+>       crypto library (gcrypt/glib/...), so skip this step.
+>  2. Calculating accumulative hash digest.
+>     (a) When receiving the last accumulative data, software need to add
+>         padding message at the end of the accumulative data. Padding
+>         message described in specific of MD5, SHA-1, SHA224, SHA256,
+>         SHA512, SHA512/224, SHA512/256.
+>         * Since the crypto library (gcrypt/glib) already pad the
+>           padding message internally.
+>         * This patch is to remove the padding message which fed byguest
+>           machine driver.
+
+
+I tested the latest aspeed SDK u-boot, loaded form mmc (with our mmc
+model that lives in Cedric's tree) and qemu crashed:
+
+#0  0x00007fe867d44932 in ?? () from /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0
+#1  0x0000557aba2b6e22 in qcrypto_glib_hash_bytesv (alg=<optimized
+out>, iov=0x7fe8662ee0b0, niov=1, result=0x7fe8662ee0a8,
+resultlen=0x7fe8662ee0a0, errp=0x0) at ../crypto/hash-glib.c:68
+#2  0x0000557ab9f549ea in do_hash_operation (s=s@entry=0x7fe866e1b3b0,
+algo=5, sg_mode=sg_mode@entry=true, acc_mode=acc_mode@entry=true) at
+../hw/misc/aspeed_hace.c:161
+#3  0x0000557ab9f54dd1 in aspeed_hace_write (opaque=<optimized out>,
+addr=12, data=262504, size=<optimized out>) at
+../hw/misc/aspeed_hace.c:260
+
+WIthout your patch applied the HACE operation fails, as we do not have
+support for accumulative mode, but we do not crash.
+
 >
-> Reported-by: Ivan Babrou <ivan@cloudflare.com>
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> Changes in v2:
+> - Coding style
+> - Add accumulative mode description in comment
+>
+> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 > ---
->  target/arm/hvf/hvf.c | 5 +++++
->  1 file changed, 5 insertions(+)
+>  hw/misc/aspeed_hace.c         | 43 ++++++++++++++++++++++++++++-------
+>  include/hw/misc/aspeed_hace.h |  1 +
+>  2 files changed, 36 insertions(+), 8 deletions(-)
 >
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 92ad0d29c4..045ec69c7c 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -54,6 +54,7 @@
->  #define SYSREG_PMCEID1_EL0    SYSREG(3, 3, 9, 12, 7)
->  #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
->  #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
-> +#define SYSREG_ID_AA64ISAR2_EL1 SYSREG(3, 0, 0, 6, 2)
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> index 10f00e65f4..0710f44621 100644
+> --- a/hw/misc/aspeed_hace.c
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -11,6 +11,7 @@
+>  #include "qemu/osdep.h"
+>  #include "qemu/log.h"
+>  #include "qemu/error-report.h"
+> +#include "qemu/bswap.h"
+>  #include "hw/misc/aspeed_hace.h"
+>  #include "qapi/error.h"
+>  #include "migration/vmstate.h"
+> @@ -27,6 +28,7 @@
 >
->  #define WFX_IS_WFE (1 << 0)
+>  #define R_HASH_SRC      (0x20 / 4)
+>  #define R_HASH_DEST     (0x24 / 4)
+> +#define R_HASH_KEY_BUFF (0x28 / 4)
+>  #define R_HASH_SRC_LEN  (0x2c / 4)
 >
-> @@ -780,6 +781,10 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
->      case SYSREG_OSDLR_EL1:
->          /* Dummy register */
+>  #define R_HASH_CMD      (0x30 / 4)
+> @@ -94,7 +96,8 @@ static int hash_algo_lookup(uint32_t reg)
+>      return -1;
+>  }
+>
+> -static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
+> +static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+> +                              bool acc_mode)
+>  {
+>      struct iovec iov[ASPEED_HACE_MAX_SG];
+>      g_autofree uint8_t *digest_buf;
+> @@ -103,6 +106,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
+>
+>      if (sg_mode) {
+>          uint32_t len = 0;
+> +        uint32_t total_len = 0;
+>
+>          for (i = 0; !(len & SG_LIST_LEN_LAST); i++) {
+>              uint32_t addr, src;
+> @@ -123,10 +127,26 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
+>                                          MEMTXATTRS_UNSPECIFIED, NULL);
+>              addr &= SG_LIST_ADDR_MASK;
+>
+> -            iov[i].iov_len = len & SG_LIST_LEN_MASK;
+> -            plen = iov[i].iov_len;
+> +            plen = len & SG_LIST_LEN_MASK;
+>              iov[i].iov_base = address_space_map(&s->dram_as, addr, &plen, false,
+>                                                  MEMTXATTRS_UNSPECIFIED);
+> +
+> +            if (acc_mode) {
+> +                total_len += plen;
+> +
+> +                if (len & SG_LIST_LEN_LAST) {
+> +                    /*
+> +                     * In the padding message, the last 64/128 bit represents
+> +                     * the total length of bitstream in big endian.
+> +                     * SHA-224, SHA-256 are 64 bit
+> +                     * SHA-384, SHA-512, SHA-512/224, SHA-512/256 are 128 bit
+> +                     * However, we would not process such a huge bit stream.
+> +                     */
+> +                    plen -= total_len - (ldq_be_p(iov[i].iov_base + plen - 8) / 8);
+> +                }
+> +            }
+> +
+> +            iov[i].iov_len = plen;
+>          }
+>      } else {
+>          hwaddr len = s->regs[R_HASH_SRC_LEN];
+> @@ -210,6 +230,9 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+>      case R_HASH_DEST:
+>          data &= ahc->dest_mask;
 >          break;
-> +    case SYSREG_ID_AA64ISAR2_EL1:
-> +        /* We do not support any of the ISAR2 features yet */
-> +        val = 0;
+> +    case R_HASH_KEY_BUFF:
+> +        data &= ahc->key_mask;
 > +        break;
->      default:
-
-We should handle all the architected "this should RAZ/WI"
-ID register space, if hvf doesn't do the right thing internally.
-
-thanks
--- PMM
+>      case R_HASH_SRC_LEN:
+>          data &= 0x0FFFFFFF;
+>          break;
+> @@ -229,12 +252,13 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+>          }
+>          algo = hash_algo_lookup(data);
+>          if (algo < 0) {
+> -                qemu_log_mask(LOG_GUEST_ERROR,
+> -                        "%s: Invalid hash algorithm selection 0x%"PRIx64"\n",
+> -                        __func__, data & ahc->hash_mask);
+> -                break;
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                    "%s: Invalid hash algorithm selection 0x%"PRIx64"\n",
+> +                    __func__, data & ahc->hash_mask);
+> +            break;
+>          }
+> -        do_hash_operation(s, algo, data & HASH_SG_EN);
+> +        do_hash_operation(s, algo, data & HASH_SG_EN,
+> +                ((data & HASH_HMAC_MASK) == HASH_DIGEST_ACCUM));
+>
+>          if (data & HASH_IRQ_EN) {
+>              qemu_irq_raise(s->irq);
+> @@ -333,6 +357,7 @@ static void aspeed_ast2400_hace_class_init(ObjectClass *klass, void *data)
+>
+>      ahc->src_mask = 0x0FFFFFFF;
+>      ahc->dest_mask = 0x0FFFFFF8;
+> +    ahc->key_mask = 0x0FFFFFC0;
+>      ahc->hash_mask = 0x000003ff; /* No SG or SHA512 modes */
+>  }
+>
+> @@ -351,6 +376,7 @@ static void aspeed_ast2500_hace_class_init(ObjectClass *klass, void *data)
+>
+>      ahc->src_mask = 0x3fffffff;
+>      ahc->dest_mask = 0x3ffffff8;
+> +    ahc->key_mask = 0x3FFFFFC0;
+>      ahc->hash_mask = 0x000003ff; /* No SG or SHA512 modes */
+>  }
+>
+> @@ -369,6 +395,7 @@ static void aspeed_ast2600_hace_class_init(ObjectClass *klass, void *data)
+>
+>      ahc->src_mask = 0x7FFFFFFF;
+>      ahc->dest_mask = 0x7FFFFFF8;
+> +    ahc->key_mask = 0x7FFFFFF8;
+>      ahc->hash_mask = 0x00147FFF;
+>  }
+>
+> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+> index 94d5ada95f..2242945eb4 100644
+> --- a/include/hw/misc/aspeed_hace.h
+> +++ b/include/hw/misc/aspeed_hace.h
+> @@ -37,6 +37,7 @@ struct AspeedHACEClass {
+>
+>      uint32_t src_mask;
+>      uint32_t dest_mask;
+> +    uint32_t key_mask;
+>      uint32_t hash_mask;
+>  };
+>
+> --
+> 2.25.1
+>

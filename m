@@ -1,113 +1,111 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp308013lfk;
-        Tue, 8 Feb 2022 10:27:01 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwyd7MvM6VVEM5o2HqqM116xyFZx3sK0DDJ4q1Zww3R7aeTGWlRHwbX5jCrjHUFXdmQCnE4
-X-Received: by 2002:a25:cb4b:: with SMTP id b72mr5924129ybg.430.1644344821281;
-        Tue, 08 Feb 2022 10:27:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644344821; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp310914lfk;
+        Tue, 8 Feb 2022 10:32:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxANHEw4DwxjKNEsszskaHDwMoP9H8XiEKLopJHfn9Gpjx/1NwwkRuFMkSS52Zs58kReJ4e
+X-Received: by 2002:a81:ae66:: with SMTP id g38mr6240395ywk.205.1644345135122;
+        Tue, 08 Feb 2022 10:32:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644345135; cv=none;
         d=google.com; s=arc-20160816;
-        b=oV49391urwrNjPP6raZUs+yahyqVMx3yHyATrp2CSFtHgeaiWaatLFeCx8ViURgZx1
-         pjGLmqEdwAvGckOjCAMxu3Hu9CB+xZOcizceck05WXelsUVoX33ekPE62Qs4jf0O7PBx
-         Fkap0QnjIsjXhx+f7+VVzRFawcpWVBXiQ/Bdm16OCx7yzPC+hgBhyiKRGkgTo9r+PofP
-         ghgytFZMU+aVEDBD7pLWH7Lf+RGF48UFgV1xQMSRAeB4cgRg8PGZhHtz6pHdmCetQ4xo
-         V9uKCEJrCFTAHgE44FdjWrw9LJezs+TeAXuqxWU8dCdEdGrGpfned1WriB9eXzVZjiJ0
-         0cxA==
+        b=tSDRM9MZWO8amcHMGupUCtF9zbWR/HLuEylImjtXy0iS+F5/dyF7ypfCwocVAimjsZ
+         +gKor9YTxvZebQoopFoSpZBf486lR0DFKmJecU3eVC4H50/kqMYklwol6ZpqEugkMJNw
+         6ZIUKhAmD7kVwZTIUTexflDxqATBN0lIXnV/EIxlPj0nd9tTraXqjIssB9Cr2aWW6S/q
+         oxy1Ze3so0pG5JP0KgELPpzpYTko8J0N5op2BTtCnH7RH7OtZn7CW0gRWGOxG4/Tzg4O
+         D0W4P4CM7AAzJRRcHhotXCK5mxOgmQXdGBG9mHdzsyS0SiNV6j/5B32PJ15d72FgjqW6
+         9bdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=RuuFqDYjqNvfgIon7b50T7CV8uuveMRdBkCHrWVub2Y=;
-        b=RTkq5bZLddpoi2uOHx537WO9uHdSYQU3gtB1JYRZ98EFVpL9JhgeFMMRwiZBgfbMPd
-         KK4gm41Fl+NCqE4DWyXGRsrXKme8P8JD1I5oTlcXbUHmxH3Gg+oBJd7HJxvR1Pj967c3
-         sW0D2JtFT2ZFfbAGngyJ63C+7TWWDcurgdEoCb1HBumG2XXeewDvH2uATxf+K1jkXC/M
-         xtdBLptEby3/lNbZbw93xLsLSE1isgp0nv4GA8SRSUwzTqWT9QCfGouZGakiY91yHw96
-         f3Km20+NGq6GfW7iDDl7AHZBcGaCxxImCBqB9rlCMw+5C1bE9ULr2scKy8vf58O1nKnv
-         ecSA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=PvO7aXxHuo4TqNYcWBh9NPbrtlj5hd51105+ivRzLIo=;
+        b=GSS5avd/+vmrM3w355N8CQ0sD4/uJFBCJHzzk90X1pg7TWOoPZJTccQ1KdfiTZOsqT
+         KCj0feXj2exPi03Sa+3eBJAJQ5mj0xWxTqf0Gm22Dr7oVMiAhyoyLInVEG+pKoef+bk3
+         Y6Aso4I94BDeOU5lhSSBuTK1AZk1gy4ioIqb573Y5tJFhhoHHzGOmuIoJdOtAAY2CMuw
+         6q9es+IA4Qz+2nMpLtCVtkKOHP6CabpA2Q97tSyetQHYMS29cVbbMv1QJzTpZWcX+LwT
+         e4OiHWXJ1u7yPQUdtq4Mm0Ji/GxSYcCKW/yl/MNf/4aSpMmPmwGcnNoWFWo0L6yhF3SI
+         Vigg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=ZcsYPvkm;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=nu4qRtt+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i203si9816978ywb.519.2022.02.08.10.27.01
+        by mx.google.com with ESMTPS id y201si5818784ywa.182.2022.02.08.10.32.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Feb 2022 10:27:01 -0800 (PST)
+        Tue, 08 Feb 2022 10:32:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=ZcsYPvkm;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=nu4qRtt+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:36908 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nHVCe-00084B-GN
-	for alex.bennee@linaro.org; Tue, 08 Feb 2022 13:27:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43448)
+	id 1nHVHi-0005pZ-6g
+	for alex.bennee@linaro.org; Tue, 08 Feb 2022 13:32:14 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3BrQCYgcKCI8Ex6CDAxz77z4x.v759x5D-tA5676z6D.7Az@flex--venture.bounces.google.com>)
- id 1nHVAm-0007Qx-QD
- for qemu-arm@nongnu.org; Tue, 08 Feb 2022 13:25:04 -0500
-Received: from [2607:f8b0:4864:20::24a] (port=56881
- helo=mail-oi1-x24a.google.com)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1nHUqT-0003RB-2G
+ for qemu-arm@nongnu.org; Tue, 08 Feb 2022 13:04:05 -0500
+Received: from [2a00:1450:4864:20::230] (port=34420
+ helo=mail-lj1-x230.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3BrQCYgcKCI8Ex6CDAxz77z4x.v759x5D-tA5676z6D.7Az@flex--venture.bounces.google.com>)
- id 1nHVAk-0006Br-QO
- for qemu-arm@nongnu.org; Tue, 08 Feb 2022 13:25:04 -0500
-Received: by mail-oi1-x24a.google.com with SMTP id
- r15-20020a056808210f00b002d0d8b35b4eso6404728oiw.23
- for <qemu-arm@nongnu.org>; Tue, 08 Feb 2022 10:25:02 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1nHUqF-0002ni-9F
+ for qemu-arm@nongnu.org; Tue, 08 Feb 2022 13:03:58 -0500
+Received: by mail-lj1-x230.google.com with SMTP id o17so82431ljp.1
+ for <qemu-arm@nongnu.org>; Tue, 08 Feb 2022 10:03:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=RuuFqDYjqNvfgIon7b50T7CV8uuveMRdBkCHrWVub2Y=;
- b=ZcsYPvkmJJ76JXstOh0Q1ugiY3g7Ev2xeS5NayD2vGd/FVE6ybBrNagcQa90knNh4n
- NJxULcp/CCwU1VdN6xp0yxETTvvKkzs/W+GG4eEhYXyPin7AAvSTECgobSDE0nhfAdOe
- z19LKAIFt7TU7lr8BPyfVk04twaPISlQnz3m9sTHQ9cJYFhve9TIYds4vCse38du8NE/
- hC8cJL9AaM8cQ7ducqKrmkX/WKExoFcrfTxijj/M9HNS3PglR7Y3Jh/K8fpNFvGivnJb
- CEAwjS6xjzSJ/9ZPlAe8rqMfCMN2/wXoBbKzs+VT5/XFQNJeEZPkDP9ygGnm1CxqS86i
- 07uQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PvO7aXxHuo4TqNYcWBh9NPbrtlj5hd51105+ivRzLIo=;
+ b=nu4qRtt+Q5///hzL9Kh3wEkETq/fI4Dxc+sFsmWHQtCsYUeop1XnSP7ZViMhG2uNj4
+ hi6UDvwk97uhBMpDiGF9EI8ooAy+prqHgQRMVsU4AopNByBZFqugZAIGdZ1TLXUMx7ut
+ m9gZyy8VrviGOOP86LIHycexSvBOGOhsOxFM1NJ0rs9EMimEsEuI2mBEdikw5Kb5GyMU
+ ONqxhpapulmcfHp6C0LWjBj9q8Z8+h0QmF/zi6KN5UsKgGv/lIoaYtC3yIGVknM6oLbH
+ /+d839NJNDLV6n8VbajH8w2ukcbvI/rLbQN24v3BTVdcYb7DWTBHxs36XHLyB8qF+FGf
+ SVvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=RuuFqDYjqNvfgIon7b50T7CV8uuveMRdBkCHrWVub2Y=;
- b=llWzvJfdKt3SXjAbTWNJJHbKRx1RzHvvmNaGwFhaFbTyaF0IaNIjeZNxE+pBziRKVn
- czk1mCY+cbKUnVq+67r852eOIKulaqehj94JZCoBc9rsptM/cf9l1m8czP3zAE/2iQ+C
- YaTTSx2/yIdVXyyT7CUC7nt8xQLrFVBCYFRdMt9IznEbUViMD+F4xRf0/StzIrLQqrg+
- g2ySzbxhBCSWMAfzFsivfu7me/qA5Oh9GqUqVvPRSs8ModgqcYgCD/OQ9jXIGcv/yQqK
- ASR0WAA5i3zXJfqha53and8o5+hiQB16vHiLAcrdOIFMx0RpmGxp/RADF7vSCxPVddGr
- 1O2w==
-X-Gm-Message-State: AOAM530ceMLVH/3MHRsh33Yk0pJA6G6dHylR6hLHpauqj9FL+G1IZ4gZ
- R0Nw/SYcvLHbuD5p5Z2v3TXmcdKUvPJO
-X-Received: from venture.svl.corp.google.com
- ([2620:15c:2a3:200:d062:ceeb:6333:edcf])
- (user=venture job=sendgmr) by 2002:a81:e908:: with SMTP id
- d8mr6136238ywm.82.1644344326756; Tue, 08 Feb 2022 10:18:46 -0800 (PST)
-Date: Tue,  8 Feb 2022 10:18:43 -0800
-Message-Id: <20220208181843.4003568-1-venture@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.35.0.263.gb82422642f-goog
-Subject: [PATCH v3] tests/qtest: add qtests for npcm7xx sdhci
-From: Patrick Venture <venture@google.com>
-To: thuth@redhat.com, peter.maydell@linaro.org, lvivier@redhat.com, 
- pbonzini@redhat.com
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Shengtan Mao <stmao@google.com>, Hao Wu <wuhaotsh@google.com>,
- Chris Rauer <crauer@google.com>, Patrick Venture <venture@google.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::24a
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PvO7aXxHuo4TqNYcWBh9NPbrtlj5hd51105+ivRzLIo=;
+ b=vBtnyL+6/f2uHjKhd7dsNZkWZQjEYHpWvNI5eu1oJh+8Ddvzpvw+jiZl9P7Tq+XC//
+ eDujSvvFscHY2qYPFfAQ5A7xWYBxqJLESk7J4fJWdYE2p1dlhILemy0qDWL8v5EYokPS
+ wCsHdm1/3MyhyKxsEtr4NNSdRcda5Zum0V7eDylqvtJS5D7OKEHBMG0hn+wHwPChFvd5
+ Mft4wch2X0oR7SSm1zO6AkU/sPOaPqMJmXy+NjrOxlHG3f8uD2FEw27j7tKykkFM/67A
+ SNufQWWSEJvcbmIiLwtN7oLc09cQmiokFqjVmPI0A2i4g91vcMtBFnGw7B9BmsJ+r97T
+ zPQg==
+X-Gm-Message-State: AOAM530Kmrs2L+JCISG+jLqQud3grLVewHaXRfOzNELm6qDhufiQr1nZ
+ Amq1CrtGilNMhMMXm2Ldm47t31hNXOCbSr7TK4+X8w==
+X-Received: by 2002:a05:651c:1247:: with SMTP id
+ h7mr3544346ljh.207.1644343427139; 
+ Tue, 08 Feb 2022 10:03:47 -0800 (PST)
+MIME-Version: 1.0
+References: <20220208155911.3408455-1-peter.maydell@linaro.org>
+ <20220208155911.3408455-2-peter.maydell@linaro.org>
+In-Reply-To: <20220208155911.3408455-2-peter.maydell@linaro.org>
+From: Hao Wu <wuhaotsh@google.com>
+Date: Tue, 8 Feb 2022 10:03:35 -0800
+Message-ID: <CAGcCb10fkz+-Eu1uJG+W74KWtzC9wCqJseCX431QiWRYZ3+Sgw@mail.gmail.com>
+Subject: Re: [PATCH 1/2] Kconfig: Add I2C_DEVICES device group
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Kevin Townsend <kevin.townsend@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000ddc3c905d78589de"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::230
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::24a;
- envelope-from=3BrQCYgcKCI8Ex6CDAxz77z4x.v759x5D-tA5676z6D.7Az@flex--venture.bounces.google.com;
- helo=mail-oi1-x24a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::230;
+ envelope-from=wuhaotsh@google.com; helo=mail-lj1-x230.google.com
 X-Spam_score_int: -87
 X-Spam_score: -8.8
 X-Spam_bar: --------
 X-Spam_report: (-8.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
+ HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01, USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,262 +120,291 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1FzwP4oAJAG1
+X-TUID: 7Q5E2FAbuO57
 
-From: Shengtan Mao <stmao@google.com>
+--000000000000ddc3c905d78589de
+Content-Type: text/plain; charset="UTF-8"
 
+On Tue, Feb 8, 2022 at 9:55 AM Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> Currently there is no way for a board model's Kconfig stanza to
+> say "I have an i2c bus which the user can plug an i2c device into,
+> build all the free-standing i2c devices". The Kconfig mechanism
+> for this is the "device group". Add an I2C_DEVICES group along
+> the same lines as the existing PCI_DEVICES. Simple free-standing
+> i2c devices which a user might plausibly want to be able to
+> plug in on the QEMU commandline should have
+>    default y if I2C_DEVICES
+> and board models which have an i2c bus that is user-accessible
+> should use
+>    imply I2C_DEVICES
+> to cause those pluggable devices to be built.
+>
+> In this commit we mark only a fairly conservative set of i2c devices
+> as belonging to the I2C_DEVICES group: the simple sensors and RTCs
+> (not including PMBus devices or devices which need GPIO lines to be
+> connected).
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
 Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Chris Rauer <crauer@google.com>
-Signed-off-by: Shengtan Mao <stmao@google.com>
-Signed-off-by: Patrick Venture <venture@google.com>
----
-v3:
- * fixup compilation from missing macro value
-v2:
- * update copyright year
- * check result of open
- * use g_free instead of free
- * move declarations to the top
- * use g_file_open_tmp
----
- tests/qtest/meson.build          |   1 +
- tests/qtest/npcm7xx_sdhci-test.c | 215 +++++++++++++++++++++++++++++++
- 2 files changed, 216 insertions(+)
- create mode 100644 tests/qtest/npcm7xx_sdhci-test.c
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 842b1df420..2b566999cd 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -189,6 +189,7 @@ qtests_npcm7xx = \
-    'npcm7xx_gpio-test',
-    'npcm7xx_pwm-test',
-    'npcm7xx_rng-test',
-+   'npcm7xx_sdhci-test',
-    'npcm7xx_smbus-test',
-    'npcm7xx_timer-test',
-    'npcm7xx_watchdog_timer-test'] + \
-diff --git a/tests/qtest/npcm7xx_sdhci-test.c b/tests/qtest/npcm7xx_sdhci-test.c
-new file mode 100644
-index 0000000000..7de28f900b
---- /dev/null
-+++ b/tests/qtest/npcm7xx_sdhci-test.c
-@@ -0,0 +1,215 @@
-+/*
-+ * QTests for NPCM7xx SD-3.0 / MMC-4.51 Host Controller
-+ *
-+ * Copyright (c) 2022 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/sd/npcm7xx_sdhci.h"
-+
-+#include "libqos/libqtest.h"
-+#include "libqtest-single.h"
-+#include "libqos/sdhci-cmd.h"
-+
-+#define NPCM7XX_REG_SIZE 0x100
-+#define NPCM7XX_MMC_BA 0xF0842000
-+#define NPCM7XX_BLK_SIZE 512
-+#define NPCM7XX_TEST_IMAGE_SIZE (1 << 30)
-+
-+char *sd_path;
-+
-+static QTestState *setup_sd_card(void)
-+{
-+    QTestState *qts = qtest_initf(
-+        "-machine kudo-bmc "
-+        "-device sd-card,drive=drive0 "
-+        "-drive id=drive0,if=none,file=%s,format=raw,auto-read-only=off",
-+        sd_path);
-+
-+    qtest_writew(qts, NPCM7XX_MMC_BA + SDHC_SWRST, SDHC_RESET_ALL);
-+    qtest_writew(qts, NPCM7XX_MMC_BA + SDHC_CLKCON,
-+                 SDHC_CLOCK_SDCLK_EN | SDHC_CLOCK_INT_STABLE |
-+                     SDHC_CLOCK_INT_EN);
-+    sdhci_cmd_regs(qts, NPCM7XX_MMC_BA, 0, 0, 0, 0, SDHC_APP_CMD);
-+    sdhci_cmd_regs(qts, NPCM7XX_MMC_BA, 0, 0, 0x41200000, 0, (41 << 8));
-+    sdhci_cmd_regs(qts, NPCM7XX_MMC_BA, 0, 0, 0, 0, SDHC_ALL_SEND_CID);
-+    sdhci_cmd_regs(qts, NPCM7XX_MMC_BA, 0, 0, 0, 0, SDHC_SEND_RELATIVE_ADDR);
-+    sdhci_cmd_regs(qts, NPCM7XX_MMC_BA, 0, 0, 0x45670000, 0,
-+                   SDHC_SELECT_DESELECT_CARD);
-+
-+    return qts;
-+}
-+
-+static void write_sdread(QTestState *qts, const char *msg)
-+{
-+    int fd, ret;
-+    size_t len = strlen(msg);
-+    char *rmsg = g_malloc(len);
-+
-+    /* write message to sd */
-+    fd = open(sd_path, O_WRONLY);
-+    g_assert(fd >= 0);
-+    ret = write(fd, msg, len);
-+    close(fd);
-+    g_assert(ret == len);
-+
-+    /* read message using sdhci */
-+    ret = sdhci_read_cmd(qts, NPCM7XX_MMC_BA, rmsg, len);
-+    g_assert(ret == len);
-+    g_assert(!strcmp(rmsg, msg));
-+
-+    g_free(rmsg);
-+}
-+
-+/* Check MMC can read values from sd */
-+static void test_read_sd(void)
-+{
-+    QTestState *qts = setup_sd_card();
-+
-+    write_sdread(qts, "hello world");
-+    write_sdread(qts, "goodbye");
-+
-+    qtest_quit(qts);
-+}
-+
-+static void sdwrite_read(QTestState *qts, const char *msg)
-+{
-+    int fd, ret;
-+    size_t len = strlen(msg);
-+    char *rmsg = g_malloc(len);
-+
-+    /* write message using sdhci */
-+    sdhci_write_cmd(qts, NPCM7XX_MMC_BA, msg, len, NPCM7XX_BLK_SIZE);
-+
-+    /* read message from sd */
-+    fd = open(sd_path, O_RDONLY);
-+    g_assert(fd >= 0);
-+    ret = read(fd, rmsg, len);
-+    close(fd);
-+    g_assert(ret == len);
-+
-+    g_assert(!strcmp(rmsg, msg));
-+
-+    g_free(rmsg);
-+}
-+
-+/* Check MMC can write values to sd */
-+static void test_write_sd(void)
-+{
-+    QTestState *qts = setup_sd_card();
-+
-+    sdwrite_read(qts, "hello world");
-+    sdwrite_read(qts, "goodbye");
-+
-+    qtest_quit(qts);
-+}
-+
-+/* Check SDHCI has correct default values. */
-+static void test_reset(void)
-+{
-+    QTestState *qts = qtest_init("-machine kudo-bmc");
-+    uint64_t addr = NPCM7XX_MMC_BA;
-+    uint64_t end_addr = addr + NPCM7XX_REG_SIZE;
-+    uint16_t prstvals_resets[] = {NPCM7XX_PRSTVALS_0_RESET,
-+                                  NPCM7XX_PRSTVALS_1_RESET,
-+                                  0,
-+                                  NPCM7XX_PRSTVALS_3_RESET,
-+                                  0,
-+                                  0};
-+    int i;
-+    uint32_t mask;
-+
-+    while (addr < end_addr) {
-+        switch (addr - NPCM7XX_MMC_BA) {
-+        case SDHC_PRNSTS:
-+            /*
-+             * ignores bits 20 to 24: they are changed when reading registers
-+             */
-+            mask = 0x1f00000;
-+            g_assert_cmphex(qtest_readl(qts, addr) | mask, ==,
-+                            NPCM7XX_PRSNTS_RESET | mask);
-+            addr += 4;
-+            break;
-+        case SDHC_BLKGAP:
-+            g_assert_cmphex(qtest_readb(qts, addr), ==, NPCM7XX_BLKGAP_RESET);
-+            addr += 1;
-+            break;
-+        case SDHC_CAPAB:
-+            g_assert_cmphex(qtest_readq(qts, addr), ==, NPCM7XX_CAPAB_RESET);
-+            addr += 8;
-+            break;
-+        case SDHC_MAXCURR:
-+            g_assert_cmphex(qtest_readq(qts, addr), ==, NPCM7XX_MAXCURR_RESET);
-+            addr += 8;
-+            break;
-+        case SDHC_HCVER:
-+            g_assert_cmphex(qtest_readw(qts, addr), ==, NPCM7XX_HCVER_RESET);
-+            addr += 2;
-+            break;
-+        case NPCM7XX_PRSTVALS:
-+            for (i = 0; i < NPCM7XX_PRSTVALS_SIZE; ++i) {
-+                g_assert_cmphex(qtest_readw(qts, addr + 2 * i), ==,
-+                                prstvals_resets[i]);
-+            }
-+            addr += NPCM7XX_PRSTVALS_SIZE * 2;
-+            break;
-+        default:
-+            g_assert_cmphex(qtest_readb(qts, addr), ==, 0);
-+            addr += 1;
-+        }
-+    }
-+
-+    qtest_quit(qts);
-+}
-+
-+static void drive_destroy(void)
-+{
-+    unlink(sd_path);
-+    g_free(sd_path);
-+}
-+
-+static void drive_create(void)
-+{
-+    int fd, ret;
-+    GError *error = NULL;
-+
-+    /* Create a temporary raw image */
-+    fd = g_file_open_tmp("sdhci_XXXXXX", &sd_path, &error);
-+    if (fd == -1) {
-+        fprintf(stderr, "unable to create sdhci file: %s\n", error->message);
-+        g_error_free(error);
-+    }
-+    g_assert(sd_path != NULL);
-+
-+    ret = ftruncate(fd, NPCM7XX_TEST_IMAGE_SIZE);
-+    g_assert_cmpint(ret, ==, 0);
-+    g_message("%s", sd_path);
-+    close(fd);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+
-+    drive_create();
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_add_func("npcm7xx_sdhci/reset", test_reset);
-+    qtest_add_func("npcm7xx_sdhci/write_sd", test_write_sd);
-+    qtest_add_func("npcm7xx_sdhci/read_sd", test_read_sd);
-+
-+    ret = g_test_run();
-+    drive_destroy();
-+    return ret;
-+}
--- 
-2.35.0.263.gb82422642f-goog
+> ---
+> Feel free to suggest other i2c devices that should be marked
+> as in the group; as I say, I erred on the side of not putting
+> devices in the group.
+> ---
+>  docs/devel/kconfig.rst | 8 ++++++--
+>  hw/i2c/Kconfig         | 5 +++++
+>  hw/rtc/Kconfig         | 2 ++
+>  hw/sensor/Kconfig      | 5 +++++
+>  4 files changed, 18 insertions(+), 2 deletions(-)
+>
+> diff --git a/docs/devel/kconfig.rst b/docs/devel/kconfig.rst
+> index a1cdbec7512..aa5042f1569 100644
+> --- a/docs/devel/kconfig.rst
+> +++ b/docs/devel/kconfig.rst
+> @@ -192,11 +192,15 @@ declares its dependencies in different ways:
+>    no directive and are not used in the Makefile either; they only appear
+>    as conditions for ``default y`` directives.
+>
+> -  QEMU currently has two device groups, ``PCI_DEVICES`` and
+> -  ``TEST_DEVICES``.  PCI devices usually have a ``default y if
+> +  QEMU currently has three device groups, ``PCI_DEVICES``,
+> ``I2C_DEVICES``,
+> +  and ``TEST_DEVICES``.  PCI devices usually have a ``default y if
+>    PCI_DEVICES`` directive rather than just ``default y``.  This lets
+>    some boards (notably s390) easily support a subset of PCI devices,
+>    for example only VFIO (passthrough) and virtio-pci devices.
+> +  ``I2C_DEVICES`` is similar to ``PCI_DEVICES``. It contains i2c devices
+> +  that users might reasonably want to plug in to an i2c bus on any
+> +  board (and not ones which are very board-specific or that need
+> +  to be wired up in a way that can't be done on the command line).
+>    ``TEST_DEVICES`` instead is used for devices that are rarely used on
+>    production virtual machines, but provide useful hooks to test QEMU
+>    or KVM.
+> diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
+> index 8217cb50411..9bb8870517f 100644
+> --- a/hw/i2c/Kconfig
+> +++ b/hw/i2c/Kconfig
+> @@ -1,6 +1,11 @@
+>  config I2C
+>      bool
+>
+> +config I2C_DEVICES
+> +    # Device group for i2c devices which can reasonably be user-plugged
+> +    # to any board's i2c bus
+> +    bool
+> +
+>  config SMBUS
+>      bool
+>      select I2C
+> diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
+> index f06e133b8a2..730c272bc54 100644
+> --- a/hw/rtc/Kconfig
+> +++ b/hw/rtc/Kconfig
+> @@ -1,10 +1,12 @@
+>  config DS1338
+>      bool
+>      depends on I2C
+> +    default y if I2C_DEVICES
+>
+>  config M41T80
+>      bool
+>      depends on I2C
+> +    default y if I2C_DEVICES
+>
+>  config M48T59
+>      bool
+> diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
+> index b317f91b7b4..215944decc7 100644
+> --- a/hw/sensor/Kconfig
+> +++ b/hw/sensor/Kconfig
+> @@ -1,18 +1,22 @@
+>  config TMP105
+>      bool
+>      depends on I2C
+> +    default y if I2C_DEVICES
+>
+>  config TMP421
+>      bool
+>      depends on I2C
+> +    default y if I2C_DEVICES
+>
+>  config DPS310
+>      bool
+>      depends on I2C
+> +    default y if I2C_DEVICES
+>
+>  config EMC141X
+>      bool
+>      depends on I2C
+> +    default y if I2C_DEVICES
+>
+>  config ADM1272
+>      bool
+> @@ -25,3 +29,4 @@ config MAX34451
+>  config LSM303DLHC_MAG
+>      bool
+>      depends on I2C
+> +    default y if I2C_DEVICES
+> --
+> 2.25.1
+>
+>
+>
 
+--000000000000ddc3c905d78589de
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 8, 2022 at 9:55 AM Peter =
+Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linar=
+o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">Currently there is no way for a board model&#39;s Kconfig stanza to<br=
+>
+say &quot;I have an i2c bus which the user can plug an i2c device into,<br>
+build all the free-standing i2c devices&quot;. The Kconfig mechanism<br>
+for this is the &quot;device group&quot;. Add an I2C_DEVICES group along<br=
+>
+the same lines as the existing PCI_DEVICES. Simple free-standing<br>
+i2c devices which a user might plausibly want to be able to<br>
+plug in on the QEMU commandline should have<br>
+=C2=A0 =C2=A0default y if I2C_DEVICES<br>
+and board models which have an i2c bus that is user-accessible<br>
+should use<br>
+=C2=A0 =C2=A0imply I2C_DEVICES<br>
+to cause those pluggable devices to be built.<br>
+<br>
+In this commit we mark only a fairly conservative set of i2c devices<br>
+as belonging to the I2C_DEVICES group: the simple sensors and RTCs<br>
+(not including PMBus devices or devices which need GPIO lines to be<br>
+connected).<br>
+<br>
+Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
+" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br></blockquote><div>R=
+eviewed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@goog=
+le.com</a>&gt;=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
+>
+---<br>
+Feel free to suggest other i2c devices that should be marked<br>
+as in the group; as I say, I erred on the side of not putting<br>
+devices in the group.<br>
+---<br>
+=C2=A0docs/devel/kconfig.rst | 8 ++++++--<br>
+=C2=A0hw/i2c/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 5 +++++<br>
+=C2=A0hw/rtc/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 ++<br>
+=C2=A0hw/sensor/Kconfig=C2=A0 =C2=A0 =C2=A0 | 5 +++++<br>
+=C2=A04 files changed, 18 insertions(+), 2 deletions(-)<br>
+<br>
+diff --git a/docs/devel/kconfig.rst b/docs/devel/kconfig.rst<br>
+index a1cdbec7512..aa5042f1569 100644<br>
+--- a/docs/devel/kconfig.rst<br>
++++ b/docs/devel/kconfig.rst<br>
+@@ -192,11 +192,15 @@ declares its dependencies in different ways:<br>
+=C2=A0 =C2=A0no directive and are not used in the Makefile either; they onl=
+y appear<br>
+=C2=A0 =C2=A0as conditions for ``default y`` directives.<br>
+<br>
+-=C2=A0 QEMU currently has two device groups, ``PCI_DEVICES`` and<br>
+-=C2=A0 ``TEST_DEVICES``.=C2=A0 PCI devices usually have a ``default y if<b=
+r>
++=C2=A0 QEMU currently has three device groups, ``PCI_DEVICES``, ``I2C_DEVI=
+CES``,<br>
++=C2=A0 and ``TEST_DEVICES``.=C2=A0 PCI devices usually have a ``default y =
+if<br>
+=C2=A0 =C2=A0PCI_DEVICES`` directive rather than just ``default y``.=C2=A0 =
+This lets<br>
+=C2=A0 =C2=A0some boards (notably s390) easily support a subset of PCI devi=
+ces,<br>
+=C2=A0 =C2=A0for example only VFIO (passthrough) and virtio-pci devices.<br=
+>
++=C2=A0 ``I2C_DEVICES`` is similar to ``PCI_DEVICES``. It contains i2c devi=
+ces<br>
++=C2=A0 that users might reasonably want to plug in to an i2c bus on any<br=
+>
++=C2=A0 board (and not ones which are very board-specific or that need<br>
++=C2=A0 to be wired up in a way that can&#39;t be done on the command line)=
+.<br>
+=C2=A0 =C2=A0``TEST_DEVICES`` instead is used for devices that are rarely u=
+sed on<br>
+=C2=A0 =C2=A0production virtual machines, but provide useful hooks to test =
+QEMU<br>
+=C2=A0 =C2=A0or KVM.<br>
+diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig<br>
+index 8217cb50411..9bb8870517f 100644<br>
+--- a/hw/i2c/Kconfig<br>
++++ b/hw/i2c/Kconfig<br>
+@@ -1,6 +1,11 @@<br>
+=C2=A0config I2C<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+<br>
++config I2C_DEVICES<br>
++=C2=A0 =C2=A0 # Device group for i2c devices which can reasonably be user-=
+plugged<br>
++=C2=A0 =C2=A0 # to any board&#39;s i2c bus<br>
++=C2=A0 =C2=A0 bool<br>
++<br>
+=C2=A0config SMBUS<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+=C2=A0 =C2=A0 =C2=A0select I2C<br>
+diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig<br>
+index f06e133b8a2..730c272bc54 100644<br>
+--- a/hw/rtc/Kconfig<br>
++++ b/hw/rtc/Kconfig<br>
+@@ -1,10 +1,12 @@<br>
+=C2=A0config DS1338<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+=C2=A0 =C2=A0 =C2=A0depends on I2C<br>
++=C2=A0 =C2=A0 default y if I2C_DEVICES<br>
+<br>
+=C2=A0config M41T80<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+=C2=A0 =C2=A0 =C2=A0depends on I2C<br>
++=C2=A0 =C2=A0 default y if I2C_DEVICES<br>
+<br>
+=C2=A0config M48T59<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig<br>
+index b317f91b7b4..215944decc7 100644<br>
+--- a/hw/sensor/Kconfig<br>
++++ b/hw/sensor/Kconfig<br>
+@@ -1,18 +1,22 @@<br>
+=C2=A0config TMP105<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+=C2=A0 =C2=A0 =C2=A0depends on I2C<br>
++=C2=A0 =C2=A0 default y if I2C_DEVICES<br>
+<br>
+=C2=A0config TMP421<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+=C2=A0 =C2=A0 =C2=A0depends on I2C<br>
++=C2=A0 =C2=A0 default y if I2C_DEVICES<br>
+<br>
+=C2=A0config DPS310<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+=C2=A0 =C2=A0 =C2=A0depends on I2C<br>
++=C2=A0 =C2=A0 default y if I2C_DEVICES<br>
+<br>
+=C2=A0config EMC141X<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+=C2=A0 =C2=A0 =C2=A0depends on I2C<br>
++=C2=A0 =C2=A0 default y if I2C_DEVICES<br>
+<br>
+=C2=A0config ADM1272<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+@@ -25,3 +29,4 @@ config MAX34451<br>
+=C2=A0config LSM303DLHC_MAG<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+=C2=A0 =C2=A0 =C2=A0depends on I2C<br>
++=C2=A0 =C2=A0 default y if I2C_DEVICES<br>
+-- <br>
+2.25.1<br>
+<br>
+<br>
+</blockquote></div></div>
+
+--000000000000ddc3c905d78589de--

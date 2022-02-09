@@ -1,182 +1,210 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp721597lfk;
-        Wed, 9 Feb 2022 02:33:17 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzvRAZqqpVO7dVuZ/2UIbMG6d5x/cM73jhT547Cs56S+7aAxxcOj+PU7sS8pXLPe/HfCFF9
-X-Received: by 2002:ac8:5b8a:: with SMTP id a10mr797149qta.469.1644402797737;
-        Wed, 09 Feb 2022 02:33:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644402797; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp791534lfk;
+        Wed, 9 Feb 2022 04:48:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxGzIFdIqALejViEW2HyXwQ9pbXvOFqW6Dkg3datqJMKQeLmbfmi0yWOBo55AtoMUtq0sSc
+X-Received: by 2002:a25:a3a1:: with SMTP id e30mr1790530ybi.463.1644410885282;
+        Wed, 09 Feb 2022 04:48:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644410885; cv=none;
         d=google.com; s=arc-20160816;
-        b=h1hJSLAl6nk8fx4iieX0Sjz8iebIewYSbOdgQFru8fYdhNZX8ML+XMjJXEujcjlpyX
-         92/InIEOmCbcv8TS8hGZtbW1P2+9co71b0XvjCkJ0oQ/CBEUWAn+4YzOIpU4D23+8O9s
-         SkQ1ZfXY6ETY343dHjEZ0wxpf2pEsxtEOdxt67FHiDOuuSweDaD3KmX3CAsI3oAzM5pI
-         RJGNbdQ7UG4H+miy8vTNRbAzPE7LMnIhU7eTHF10HpTPSUnzsditu4C5wnEvLxM/oWMr
-         W0RxeX5yKXmgtw629M3an3HVzqeMJNq6tB2hNqFrkkfpihNXSuqRQkCBKG7ZISrBFL8N
-         rQxw==
+        b=AWKS6oQQtE0sMpvYwXFg+TflQ1G7JNtnXyfxRTvorLKSOPChaqeuXtSwXAKLAFULuu
+         2Ps4TWekibA21x2YjX1Zt6pH86g2mIY1B1HnmirESSWQTppHd46yzIwJtUZ7obHsqZ/Z
+         kzcWHWm9RPwxNpAXUYfAj1R/VAMuvOF8gLsqNj4AEt2/uNHByxrX6Qul/+eE/IcMKfH+
+         oqwB/KSL6Td+58+qu2ZxNxfWWcAlEylTug8pjwUul3FKPwWrrKtOGPTh60yu0Tv+khS5
+         5Ua0OwfECsdvwx55EdTTIM2QxLFz05FAjwJmgqRKlypgTW2/9cq7/rNopAEX1YuQdY2z
+         Pprw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=nAvwtPb3s9sVeSO+W3MxfAcX9bWNXjvDWeMiIpP3PjI=;
-        b=UYBm1XKot8uMeKVehIrSfDRvQpuSHmaS01LoAj+QQ7WyHTsHqt+bStoWJezGfvoOuz
-         4w7IOAtbf6Dlfn07L6CPQnYfjXBH1znJ0+zDS490iNSeVEB4r8H+i0OskBJHTUW6vUIu
-         +o+/TBVbHiC8QBmb4J9fY0DBiZqUBRA7ETGXJqEg5IiMmtyFM6a5JHT+ph5DPz6j0qK3
-         XOozUTRF63tP38aIcbqOg4QdeJEYOvRmhr9pufVqEj3DT6b0ixT1BXkM3NRazCVR3//6
-         TnbYLnt8VmuyH3wPQyUX7DgLoUPr74AARTXFdEY88BND45wZyywOQ11R/m4q6HCQbdYZ
-         638w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=yYbY5k/pJI/uj0RtI0R8qQ9W56xHavG6QrIMf/tx7Go=;
+        b=eE4RYg9v7BzBt0VajW7gQGJa0X3w3aL9R9EC8T/UafCseYgdT6YnLOnVcFL3yV8IA2
+         sqheRCbsY1I8cdXMYozVmv5NdIEqhSwKFga8zsNkaq/VIQOONpBqn5bzxHIoo/wGqKjh
+         9HIil10Gtb6EyRFQj+p6xPFUWxi9bFwxVRBUYI1KAGJtQLh2XxKrSQ6XNj4y+qF10Rdp
+         m6qSWPLdGAAHdDnq92F6FTkz/GL8ZV0VW5IJaAqqlUgDACQKOiaLTPw43dik10GVCyRl
+         lgNeN73QOa8kvi8oEL4oYKoKtDNYgRO4K7zVHE9YS6uuI5qr+gzKIIvbL8DVaKouIM5t
+         uNsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OnN5WLn+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u14si3900146qki.254.2022.02.09.02.33.17
+        by mx.google.com with ESMTPS id i16si12105309ybh.693.2022.02.09.04.48.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Feb 2022 02:33:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Feb 2022 04:48:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OnN5WLn+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41352 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nHkHl-0001Ch-6r
-	for alex.bennee@linaro.org; Wed, 09 Feb 2022 05:33:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34126)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nHmOC-0000NT-Mz
+	for alex.bennee@linaro.org; Wed, 09 Feb 2022 07:48:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45628)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1nHkFB-00070T-9U
- for qemu-arm@nongnu.org; Wed, 09 Feb 2022 05:30:37 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58755)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1nHkF9-0002oS-2B
- for qemu-arm@nongnu.org; Wed, 09 Feb 2022 05:30:36 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1644402631;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=nAvwtPb3s9sVeSO+W3MxfAcX9bWNXjvDWeMiIpP3PjI=;
- b=OnN5WLn+7qaZhf4nYow+s0rG8s5qJbYL7QStgjQ49FAdp7798KjQbuRRskwZuVgBlyqeM6
- KHS6DVkhzqBdK6bXUlM2mawdBGvlW1RvZ2mSHnLob52cQuufrIg0sGI81T5TblzF9vgtO6
- PRCgWW2UbXlcRGXd+yq41QOK5YdgcOM=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-646-K4TRNHI8MP-bvFQNWHGOOQ-1; Wed, 09 Feb 2022 05:30:30 -0500
-X-MC-Unique: K4TRNHI8MP-bvFQNWHGOOQ-1
-Received: by mail-ej1-f71.google.com with SMTP id
- ka12-20020a170907990c00b006c41c582397so977167ejc.11
- for <qemu-arm@nongnu.org>; Wed, 09 Feb 2022 02:30:29 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=nAvwtPb3s9sVeSO+W3MxfAcX9bWNXjvDWeMiIpP3PjI=;
- b=hJf/R9zMLMkytBpoma2r3cVrb5KN6g6XsclcnsxirC8V4ackWea+U5obrSYoELMvki
- NRqes+RdE/ESEdOJ+eBkcy6sveYhovf776zxEXCL0ZccjAuLAjXCGS/dKccLTLlLTejn
- 5IswWz76EPT1cEn4Wron98NMNuMrLlL7WQvNYulWbpsN5wZD24Ip9laCDMhvAsdyjBjl
- kRFXWGJS/uuJ+XDcxVnR9JAqq5isaHNynj9bRy6IAXulMqxJsjluSDUiv9zU3Lsz8wO1
- uwzeohkxbeWsUB7g/qwCbzGRaewVnQAlhQBv6WVPMR4t2mwm1z/JKgxZQilK+JcI48RM
- 3uTQ==
-X-Gm-Message-State: AOAM530rz46FUlUJSxC9eDt4y2U0vPiek2wAMIsJhMk+U66RDlTqXrch
- l0gRE03g/iKfvrEwMDL3L82iQR8KdDUrRMwpu/pqGAz4ABfaF58X9YVy34Iu4T3HIZkLMgGUX5S
- K0F0W+GwBcfeq
-X-Received: by 2002:a17:907:72d0:: with SMTP id
- du16mr1298259ejc.506.1644402628912; 
- Wed, 09 Feb 2022 02:30:28 -0800 (PST)
-X-Received: by 2002:a17:907:72d0:: with SMTP id
- du16mr1298243ejc.506.1644402628676; 
- Wed, 09 Feb 2022 02:30:28 -0800 (PST)
-Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
- by smtp.gmail.com with ESMTPSA id qf6sm1918676ejc.113.2022.02.09.02.30.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Feb 2022 02:30:28 -0800 (PST)
-Date: Wed, 9 Feb 2022 11:30:26 +0100
-From: Andrew Jones <drjones@redhat.com>
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1nHmIW-0000KM-3O; Wed, 09 Feb 2022 07:42:12 -0500
+Received: from mail.csgraf.de ([85.25.223.15]:35084 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1nHmIS-0006zB-By; Wed, 09 Feb 2022 07:42:11 -0500
+Received: from localhost.localdomain
+ (dynamic-095-115-119-071.95.115.pool.telefonica.de [95.115.119.71])
+ by csgraf.de (Postfix) with ESMTPSA id 2F8A860806B1;
+ Wed,  9 Feb 2022 13:41:36 +0100 (CET)
+From: Alexander Graf <agraf@csgraf.de>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 0/6] target/arm: -cpu host/max KVM and HVF fixes
-Message-ID: <20220209103026.sf2tcko2w5govafq@gator>
-References: <20220204165506.2846058-1-peter.maydell@linaro.org>
+Subject: [PATCH v3 1/2] hvf: arm: Use macros for sysreg shift/masking
+Date: Wed,  9 Feb 2022 13:41:34 +0100
+Message-Id: <20220209124135.69183-1-agraf@csgraf.de>
+X-Mailer: git-send-email 2.32.0 (Apple Git-132)
 MIME-Version: 1.0
-In-Reply-To: <20220204165506.2846058-1-peter.maydell@linaro.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Alexander Graf <agraf@csgraf.de>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vo1qqaKz+wK6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
+ Ivan Babrou <ivan@cloudflare.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DQoSFrgCwenI
 
-On Fri, Feb 04, 2022 at 04:55:00PM +0000, Peter Maydell wrote:
-> This patchset fixes various minor bugs in KVM and HVF
-> -cpu host and -cpu max:
-> 
-> (1) KVM -cpu max was incorrectly adding a 'sve-max-vq' property
-> that wouldn't work and which doesn't exist in KVM -cpu host
-> 
-> (2) HVF -cpu max was using all the TCG ID fields and thus
-> promising the guest more than the host CPU can actually do
-> 
-> (3) HVF -cpu host wasn't setting up the PAuth properties, so
-> it defaulted to not telling the guest about PAuth support
-> 
-> This series fixes (1) by moving the '-cpu host' code to
-> cpu64.c since it's aarch64-specific anyway, which lets us
-> reuse it from the '-cpu max' init function. It fixes
-> (2) and (3) mostly by making HVF use the same bits of code
-> that KVM does for -cpu max and PAuth.
-> 
-> thanks
-> -- PMM
-> 
-> Peter Maydell (6):
->   target/arm: Move '-cpu host' code to cpu64.c
->   target/arm: Use aarch64_cpu_register() for 'host' CPU type
->   target/arm: Make KVM -cpu max exactly like -cpu host
->   target/arm: Unindent unnecessary else-clause
->   target/arm: Fix '-cpu max' for HVF
->   target/arm: Support PAuth extension for hvf
-> 
->  target/arm/cpu.c   |  30 -----
->  target/arm/cpu64.c | 330 +++++++++++++++++++++++++--------------------
->  2 files changed, 181 insertions(+), 179 deletions(-)
-> 
-> -- 
-> 2.25.1
->
+We are parsing the syndrome field for sysregs in multiple places across
+the hvf code, but repeat shift/mask operations with hard coded constants
+every time. This is an error prone approach and makes it harder to reason
+about the correctness of these operations.
 
-For the series
+Let's introduce macros that allow us to unify the constants used as well
+as create new helpers to extract fields from the sysreg value.
+
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Alexander Graf <agraf@csgraf.de>
+---
+ target/arm/hvf/hvf.c | 69 ++++++++++++++++++++++++++++++--------------
+ 1 file changed, 47 insertions(+), 22 deletions(-)
+
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 92ad0d29c4..8d0447ab01 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -35,9 +35,34 @@
+         ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
+ #define PL1_WRITE_MASK 0x4
  
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-
-Thanks,
-drew
++#define SYSREG_OP0_SHIFT      20
++#define SYSREG_OP0_MASK       0x3
++#define SYSREG_OP0(sysreg)    ((sysreg >> SYSREG_OP0_SHIFT) & SYSREG_OP0_MASK)
++#define SYSREG_OP1_SHIFT      14
++#define SYSREG_OP1_MASK       0x7
++#define SYSREG_OP1(sysreg)    ((sysreg >> SYSREG_OP1_SHIFT) & SYSREG_OP1_MASK)
++#define SYSREG_CRN_SHIFT      10
++#define SYSREG_CRN_MASK       0xf
++#define SYSREG_CRN(sysreg)    ((sysreg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK)
++#define SYSREG_CRM_SHIFT      1
++#define SYSREG_CRM_MASK       0xf
++#define SYSREG_CRM(sysreg)    ((sysreg >> SYSREG_CRM_SHIFT) & SYSREG_CRM_MASK)
++#define SYSREG_OP2_SHIFT      17
++#define SYSREG_OP2_MASK       0x7
++#define SYSREG_OP2(sysreg)    ((sysreg >> SYSREG_OP2_SHIFT) & SYSREG_OP2_MASK)
++
+ #define SYSREG(op0, op1, crn, crm, op2) \
+-    ((op0 << 20) | (op2 << 17) | (op1 << 14) | (crn << 10) | (crm << 1))
+-#define SYSREG_MASK           SYSREG(0x3, 0x7, 0xf, 0xf, 0x7)
++    ((op0 << SYSREG_OP0_SHIFT) | \
++     (op1 << SYSREG_OP1_SHIFT) | \
++     (crn << SYSREG_CRN_SHIFT) | \
++     (crm << SYSREG_CRM_SHIFT) | \
++     (op2 << SYSREG_OP2_SHIFT))
++#define SYSREG_MASK \
++    SYSREG(SYSREG_OP0_MASK, \
++           SYSREG_OP1_MASK, \
++           SYSREG_CRN_MASK, \
++           SYSREG_CRM_MASK, \
++           SYSREG_OP2_MASK)
+ #define SYSREG_OSLAR_EL1      SYSREG(2, 0, 1, 0, 4)
+ #define SYSREG_OSLSR_EL1      SYSREG(2, 0, 1, 1, 4)
+ #define SYSREG_OSDLR_EL1      SYSREG(2, 0, 1, 3, 4)
+@@ -783,21 +808,21 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
+     default:
+         cpu_synchronize_state(cpu);
+         trace_hvf_unhandled_sysreg_read(env->pc, reg,
+-                                        (reg >> 20) & 0x3,
+-                                        (reg >> 14) & 0x7,
+-                                        (reg >> 10) & 0xf,
+-                                        (reg >> 1) & 0xf,
+-                                        (reg >> 17) & 0x7);
++                                        SYSREG_OP0(reg),
++                                        SYSREG_OP1(reg),
++                                        SYSREG_CRN(reg),
++                                        SYSREG_CRM(reg),
++                                        SYSREG_OP2(reg));
+         hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
+         return 1;
+     }
+ 
+     trace_hvf_sysreg_read(reg,
+-                          (reg >> 20) & 0x3,
+-                          (reg >> 14) & 0x7,
+-                          (reg >> 10) & 0xf,
+-                          (reg >> 1) & 0xf,
+-                          (reg >> 17) & 0x7,
++                          SYSREG_OP0(reg),
++                          SYSREG_OP1(reg),
++                          SYSREG_CRN(reg),
++                          SYSREG_CRM(reg),
++                          SYSREG_OP2(reg),
+                           val);
+     hvf_set_reg(cpu, rt, val);
+ 
+@@ -886,11 +911,11 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     CPUARMState *env = &arm_cpu->env;
+ 
+     trace_hvf_sysreg_write(reg,
+-                           (reg >> 20) & 0x3,
+-                           (reg >> 14) & 0x7,
+-                           (reg >> 10) & 0xf,
+-                           (reg >> 1) & 0xf,
+-                           (reg >> 17) & 0x7,
++                           SYSREG_OP0(reg),
++                           SYSREG_OP1(reg),
++                           SYSREG_CRN(reg),
++                           SYSREG_CRM(reg),
++                           SYSREG_OP2(reg),
+                            val);
+ 
+     switch (reg) {
+@@ -960,11 +985,11 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     default:
+         cpu_synchronize_state(cpu);
+         trace_hvf_unhandled_sysreg_write(env->pc, reg,
+-                                         (reg >> 20) & 0x3,
+-                                         (reg >> 14) & 0x7,
+-                                         (reg >> 10) & 0xf,
+-                                         (reg >> 1) & 0xf,
+-                                         (reg >> 17) & 0x7);
++                                         SYSREG_OP0(reg),
++                                         SYSREG_OP1(reg),
++                                         SYSREG_CRN(reg),
++                                         SYSREG_CRM(reg),
++                                         SYSREG_OP2(reg));
+         hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
+         return 1;
+     }
+-- 
+2.32.0 (Apple Git-132)
 

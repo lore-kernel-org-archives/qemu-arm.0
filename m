@@ -1,159 +1,182 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp683214lfk;
-        Wed, 9 Feb 2022 01:12:13 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx38cR8aSkQsC0jyqSm79fZ9s+KiEgyJZZYNpsR9JTj+9B0w63/GzzBA1BPXg3sRxt/lUKt
-X-Received: by 2002:ac8:57cc:: with SMTP id w12mr683764qta.155.1644397933303;
-        Wed, 09 Feb 2022 01:12:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644397933; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp721597lfk;
+        Wed, 9 Feb 2022 02:33:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzvRAZqqpVO7dVuZ/2UIbMG6d5x/cM73jhT547Cs56S+7aAxxcOj+PU7sS8pXLPe/HfCFF9
+X-Received: by 2002:ac8:5b8a:: with SMTP id a10mr797149qta.469.1644402797737;
+        Wed, 09 Feb 2022 02:33:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644402797; cv=none;
         d=google.com; s=arc-20160816;
-        b=u3WzC2+s7A/03E0bmZQdeHpc745u8siZkGiQj3quYzuc/6BJscIPtDK2NvHiszwSUf
-         /sp3wMw7vwjA9ifRU48zIFYkWsCZE6YGL9jsvD15kqLpnDEX49SB+TSs3KKcwaNaZxMr
-         LAMLJyLM1JJ8SOsbGS1uJRyGfmPI6v5i96OIwLxKWsi121Hr3QMZq2ajgvelvQC3Rf2n
-         /CVf66sLG7VjE4yPEFgOOYX4EKmRDmm+IDvaYzfjnWxOE0EJjsnRKESt3XMb8iDectqO
-         ybp337fIz/MHkqv/ZPxDqUB4r0CoNSCLd6KRvh7gBqMr/06XuhyNJheT++h9uDr4wYYQ
-         83gA==
+        b=h1hJSLAl6nk8fx4iieX0Sjz8iebIewYSbOdgQFru8fYdhNZX8ML+XMjJXEujcjlpyX
+         92/InIEOmCbcv8TS8hGZtbW1P2+9co71b0XvjCkJ0oQ/CBEUWAn+4YzOIpU4D23+8O9s
+         SkQ1ZfXY6ETY343dHjEZ0wxpf2pEsxtEOdxt67FHiDOuuSweDaD3KmX3CAsI3oAzM5pI
+         RJGNbdQ7UG4H+miy8vTNRbAzPE7LMnIhU7eTHF10HpTPSUnzsditu4C5wnEvLxM/oWMr
+         W0RxeX5yKXmgtw629M3an3HVzqeMJNq6tB2hNqFrkkfpihNXSuqRQkCBKG7ZISrBFL8N
+         rQxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=cZYLUiM/YTmEl6yW0I3nfYFoQTR9WUJtLxN/+BkcgTk=;
-        b=eRPmoWNKekQuSkWx3IQw6/9epLXPqGxe6WxB7+eEGZYi/i4L40SO69SED2p2RmhB0+
-         HmWsKqSDvVW3EtEdaWBgQiwyegowTkBsqsRNGluoi+JP6bzTc3kA3KHZ827oyTwF/Znu
-         hCBeR/IQS8EVRnJjLVam68hyvttjJBFG5o6V/Nm/vI9TGuYnakmatx106TWGPdA8ROv5
-         wrfzRSIYrfxFES5Nyv6GfEFoaezUrp4d4gj1w+LqLYq0OGHpd1BHGhluDdwXrRtHoopN
-         TAbLBx5aqwwNls6Ih/I4mrOipqqYMa/AnWEFBQzQjt3L48z5uwsAe5MDmsHjJ+1Kr0X1
-         g0zg==
+        bh=nAvwtPb3s9sVeSO+W3MxfAcX9bWNXjvDWeMiIpP3PjI=;
+        b=UYBm1XKot8uMeKVehIrSfDRvQpuSHmaS01LoAj+QQ7WyHTsHqt+bStoWJezGfvoOuz
+         4w7IOAtbf6Dlfn07L6CPQnYfjXBH1znJ0+zDS490iNSeVEB4r8H+i0OskBJHTUW6vUIu
+         +o+/TBVbHiC8QBmb4J9fY0DBiZqUBRA7ETGXJqEg5IiMmtyFM6a5JHT+ph5DPz6j0qK3
+         XOozUTRF63tP38aIcbqOg4QdeJEYOvRmhr9pufVqEj3DT6b0ixT1BXkM3NRazCVR3//6
+         TnbYLnt8VmuyH3wPQyUX7DgLoUPr74AARTXFdEY88BND45wZyywOQ11R/m4q6HCQbdYZ
+         638w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=pTpYLoFj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OnN5WLn+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k4si3343260qki.714.2022.02.09.01.12.13
+        by mx.google.com with ESMTPS id u14si3900146qki.254.2022.02.09.02.33.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Feb 2022 01:12:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Feb 2022 02:33:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=pTpYLoFj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:41244 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OnN5WLn+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41352 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nHj1I-0005K4-Ob
-	for alex.bennee@linaro.org; Wed, 09 Feb 2022 04:12:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57238)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nHkHl-0001Ch-6r
+	for alex.bennee@linaro.org; Wed, 09 Feb 2022 05:33:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nHiyh-0005Fg-QB; Wed, 09 Feb 2022 04:09:32 -0500
-Received: from [2a00:1450:4864:20::333] (port=37745
- helo=mail-wm1-x333.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nHiyg-0007rc-A2; Wed, 09 Feb 2022 04:09:31 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- l12-20020a7bc34c000000b003467c58cbdfso2750551wmj.2; 
- Wed, 09 Feb 2022 01:09:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=cZYLUiM/YTmEl6yW0I3nfYFoQTR9WUJtLxN/+BkcgTk=;
- b=pTpYLoFjW671v7gvIv7TxDaBcUmPe8t1tGWWgLvc2NLPS2CRs7QF3zB/WUI3paeYBY
- hPlF6w09lBew+BPpiS/Ov5Q6+MR3Q9wSz2aVlzGPgVydIu70cZdE6mqK6iPHbFHoylNv
- obyPzsLtrJ3vN9aRiFwvspBR8UYEeUcj38iJ+vAjE0MTIs3tfKmZiMVOCeYRFGSxo0hx
- 0Chh9y8nDKijuxZGqpD7oNzake7Ziz/kPl1zZxWrYgglKGBWsgwH6I9GFOOrxB7RWy1+
- PN7RftqY95Mrxmni0eQ2Zwwx6tylTnrGPvcZlV1U11FLdfJx3jwkg41gBBkbKHgarSns
- Q35Q==
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1nHkFB-00070T-9U
+ for qemu-arm@nongnu.org; Wed, 09 Feb 2022 05:30:37 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58755)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1nHkF9-0002oS-2B
+ for qemu-arm@nongnu.org; Wed, 09 Feb 2022 05:30:36 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1644402631;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=nAvwtPb3s9sVeSO+W3MxfAcX9bWNXjvDWeMiIpP3PjI=;
+ b=OnN5WLn+7qaZhf4nYow+s0rG8s5qJbYL7QStgjQ49FAdp7798KjQbuRRskwZuVgBlyqeM6
+ KHS6DVkhzqBdK6bXUlM2mawdBGvlW1RvZ2mSHnLob52cQuufrIg0sGI81T5TblzF9vgtO6
+ PRCgWW2UbXlcRGXd+yq41QOK5YdgcOM=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-646-K4TRNHI8MP-bvFQNWHGOOQ-1; Wed, 09 Feb 2022 05:30:30 -0500
+X-MC-Unique: K4TRNHI8MP-bvFQNWHGOOQ-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ ka12-20020a170907990c00b006c41c582397so977167ejc.11
+ for <qemu-arm@nongnu.org>; Wed, 09 Feb 2022 02:30:29 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=cZYLUiM/YTmEl6yW0I3nfYFoQTR9WUJtLxN/+BkcgTk=;
- b=kPJ6IBTfO16mNxJeX8d9/4Tp1Z8SgRXyz+613GM+WLnaLVIHOmmNIZMdYh1oGZF1VG
- UL0WAFZfO7SIhtqlh+t+HkhIyuHCwvwvIvXoEx600hejshY0DgGQXEbWVbHXcxwBLECX
- 30XBGZoXQnPKDFL3Kju0VSWlGFK6TnrFrS/Wxbr6snguJV8wBUMc3QnN2DStSZfYlYkM
- mqQw8jvAsRZNkKpiAnFuuBc/KZJxCrgESRLpzlzlsTJAkMoS78tn2ojUKvyxymId8nOi
- bOz0KTP715V19KqIhO3UDpPnTzM6Oxt0HIXDbxnrqWATmPTl+ma+pFcA4aw0FDM7puds
- lZQg==
-X-Gm-Message-State: AOAM5325BV7x3hiclrbsLs+WTykOshHFLrmOI50QAdMHnahsD1qlIaIg
- SmAPCkVSUPujeilg+h4iB9U=
-X-Received: by 2002:a05:600c:1e09:: with SMTP id
- ay9mr1158606wmb.162.1644397766824; 
- Wed, 09 Feb 2022 01:09:26 -0800 (PST)
-Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
- [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id i6sm16417259wry.33.2022.02.09.01.09.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Feb 2022 01:09:26 -0800 (PST)
-Message-ID: <bc6829d9-58ae-9fde-2c8d-756ac4eccb77@amsat.org>
-Date: Wed, 9 Feb 2022 10:09:25 +0100
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=nAvwtPb3s9sVeSO+W3MxfAcX9bWNXjvDWeMiIpP3PjI=;
+ b=hJf/R9zMLMkytBpoma2r3cVrb5KN6g6XsclcnsxirC8V4ackWea+U5obrSYoELMvki
+ NRqes+RdE/ESEdOJ+eBkcy6sveYhovf776zxEXCL0ZccjAuLAjXCGS/dKccLTLlLTejn
+ 5IswWz76EPT1cEn4Wron98NMNuMrLlL7WQvNYulWbpsN5wZD24Ip9laCDMhvAsdyjBjl
+ kRFXWGJS/uuJ+XDcxVnR9JAqq5isaHNynj9bRy6IAXulMqxJsjluSDUiv9zU3Lsz8wO1
+ uwzeohkxbeWsUB7g/qwCbzGRaewVnQAlhQBv6WVPMR4t2mwm1z/JKgxZQilK+JcI48RM
+ 3uTQ==
+X-Gm-Message-State: AOAM530rz46FUlUJSxC9eDt4y2U0vPiek2wAMIsJhMk+U66RDlTqXrch
+ l0gRE03g/iKfvrEwMDL3L82iQR8KdDUrRMwpu/pqGAz4ABfaF58X9YVy34Iu4T3HIZkLMgGUX5S
+ K0F0W+GwBcfeq
+X-Received: by 2002:a17:907:72d0:: with SMTP id
+ du16mr1298259ejc.506.1644402628912; 
+ Wed, 09 Feb 2022 02:30:28 -0800 (PST)
+X-Received: by 2002:a17:907:72d0:: with SMTP id
+ du16mr1298243ejc.506.1644402628676; 
+ Wed, 09 Feb 2022 02:30:28 -0800 (PST)
+Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
+ by smtp.gmail.com with ESMTPSA id qf6sm1918676ejc.113.2022.02.09.02.30.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 09 Feb 2022 02:30:28 -0800 (PST)
+Date: Wed, 9 Feb 2022 11:30:26 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 0/6] target/arm: -cpu host/max KVM and HVF fixes
+Message-ID: <20220209103026.sf2tcko2w5govafq@gator>
+References: <20220204165506.2846058-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.1
-Subject: Re: [PATCH] hw/arm/armv7m: Handle disconnected clock inputs
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, Richard Petri <git@rpls.de>
-References: <20220208171643.3486277-1-peter.maydell@linaro.org>
-In-Reply-To: <20220208171643.3486277-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::333
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+In-Reply-To: <20220204165506.2846058-1-peter.maydell@linaro.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-devel@nongnu.org>
-X-TUID: NfqmVW9aASW3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Vo1qqaKz+wK6
 
-On 8/2/22 18:16, Peter Maydell wrote:
-> In the armv7m object, handle clock inputs that aren't connected.
-> This is always an error for 'cpuclk'. For 'refclk' it is OK for this
-> to be disconnected, but we need to handle it by not trying to connect
-> a sourceless-clock to the systick device.
+On Fri, Feb 04, 2022 at 04:55:00PM +0000, Peter Maydell wrote:
+> This patchset fixes various minor bugs in KVM and HVF
+> -cpu host and -cpu max:
 > 
-> This fixes a bug where on the mps2-an521 and similar boards (which
-> do not have a refclk) the systick device incorrectly reset with
-> SYST_CSR.CLKSOURCE 0 ("use refclk") rather than 1 ("use CPU clock").
+> (1) KVM -cpu max was incorrectly adding a 'sve-max-vq' property
+> that wouldn't work and which doesn't exist in KVM -cpu host
 > 
-> Cc: qemu-stable@nongnu.org
-> Reported-by: Richard Petri <git@rpls.de>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> The other option would be to have clock_has_source() look not
-> just at clk->source but somehow walk up the clock tree to see
-> if it can find something that looks like a "root". That seems
-> overcomplicated...
-> ---
->   hw/arm/armv7m.c | 26 ++++++++++++++++++++++----
->   1 file changed, 22 insertions(+), 4 deletions(-)
+> (2) HVF -cpu max was using all the TCG ID fields and thus
+> promising the guest more than the host CPU can actually do
+> 
+> (3) HVF -cpu host wasn't setting up the PAuth properties, so
+> it defaulted to not telling the guest about PAuth support
+> 
+> This series fixes (1) by moving the '-cpu host' code to
+> cpu64.c since it's aarch64-specific anyway, which lets us
+> reuse it from the '-cpu max' init function. It fixes
+> (2) and (3) mostly by making HVF use the same bits of code
+> that KVM does for -cpu max and PAuth.
+> 
+> thanks
+> -- PMM
+> 
+> Peter Maydell (6):
+>   target/arm: Move '-cpu host' code to cpu64.c
+>   target/arm: Use aarch64_cpu_register() for 'host' CPU type
+>   target/arm: Make KVM -cpu max exactly like -cpu host
+>   target/arm: Unindent unnecessary else-clause
+>   target/arm: Fix '-cpu max' for HVF
+>   target/arm: Support PAuth extension for hvf
+> 
+>  target/arm/cpu.c   |  30 -----
+>  target/arm/cpu64.c | 330 +++++++++++++++++++++++++--------------------
+>  2 files changed, 181 insertions(+), 179 deletions(-)
+> 
+> -- 
+> 2.25.1
+>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+For the series
+ 
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+
+Thanks,
+drew
+

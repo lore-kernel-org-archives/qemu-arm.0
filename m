@@ -1,445 +1,119 @@
-Received: by 2002:a05:6214:430:0:0:0:0 with SMTP id a16csp1121590qvy;
-        Mon, 7 Feb 2022 07:09:14 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxY4eWSAxxTCsNbryaFU5zrQTEMvOBCqQvzfq7N01o5jlC5eoxIba0xjcJX9v2YI8iVkRTg
-X-Received: by 2002:a92:d602:: with SMTP id w2mr5964ilm.2.1644246554666;
-        Mon, 07 Feb 2022 07:09:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644246554; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp794915lfk;
+        Wed, 9 Feb 2022 04:54:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwj+Hi17aP7x2e7Og57tHKCLQf9bMqX9KBGM6nX3jeqFZME18Iokbff/ld8MiFekl6J1wsU
+X-Received: by 2002:a81:aa4c:: with SMTP id z12mr1743498ywk.446.1644411288256;
+        Wed, 09 Feb 2022 04:54:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644411288; cv=none;
         d=google.com; s=arc-20160816;
-        b=tNctYSi0Cn2Nl3pxzy+7Chbit74bx8UiSgwlnvbFPfTM9qTr1Jh17ty4pyZT7STCTN
-         MzAAf+U8LP8AoqMYdKA6+htVZgO8EBPFwhanbYe9oReGbXiT+EsE6AhHVun/VmatGtHz
-         uvMdiQEBpe3arrpdE9vhrhnN7dD3Om82c7MPYvbIuP6dU+PgkO8iUE00KFiqGQ5bb1WI
-         ziSugtgw6FrMXd04nbI4UzzqEZshqFfATakRI0lyvhwbxUHB3oei00PGCzYqaITfoUcJ
-         JEISrbA6lPze2zh5kP3E426KilEWaYJXccNSstHzocSRYQWxGL6kh1/uHbylEdYDxQVt
-         A+2A==
+        b=sht1oMUjHysRaharcgTFzylRJnU8EwWkqcw5joa5MLZdfQOWUPWAdidnDLu6eE+FTf
+         Fg4nwoaDchhTFjIlUNIk0iCB+lV6iRxixsFiYqtrVQcC3V3Wql1m/5Ls8wcMiHQ4oE3W
+         9Bz5Rnni4uyJdyKKTj8T/OziQBw7ku8y+/2mU4/pDnskd/oS2PXegcG+145nzSbTpAf0
+         aNdnPKUViV1TaaNQmxfyVgVCNe/CTrEPjmg7OE2oIzdsGAilA+JsE+bKV0AVk5uhNNn+
+         y7ZnE5ql1y4XSsHsctEBIvh/lNg1KMBYikZp3i1V1+JRGtfwOCpCrxcBtLT+3BSd1AQB
+         FSeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature:dkim-signature;
-        bh=7MjPO5nUgLFK0Cvckcmu3g8aLoa3V5+ZQlcgb0uJvoE=;
-        b=vLpHFrtPmzjqsKCExy3W7qoiw3kd31vt/5CchUHRf7VxcjUL1UgpKSgCLa1AR5Dq85
-         lWFpJJmfA8gYGkjoZyIJWevL744D5D40lCBcxWqLGjzzj9xc0Luv8HHIDaowNxpJ9w2z
-         2sOzBEyJKWPEWPdXnebnfw9kAY7pOnBlFrseYa6V5JFgRoYvEAxNkapMELcaqZDnGB8p
-         nDrime7jLK3wy6FHakbhES3odkH35+axFleig08eSwLapifznmFl6uVZRMISsFK++ePj
-         lmitS2PmYIP9tnRqwP2uCHz/O1MsYbuXgtaAXjkUn85KXkZbJwp42ARfEgHKWPANbP7A
-         mRpg==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=cwlYwIfAODLg9KoB/EI4oYvRtIqj/s5OxKf7vNDzgNQ=;
+        b=GcGh/6MYfah6QJBtGsMwNy+AR9t/ObO0whgK5qaygNSPoAHhcLGys8mdHc2dSMvTM8
+         vohAg//gbYVWKLvjnMrECVtGRXculVTGUy4YhfVEDVrnFotZxCZx5tkt10VuwdxnoT5W
+         ZqRfM0oPzX09NsIXxBwEJg/yYGjHVgydpgkKrSr9Yc0UX9UUPJ4NCEehfWiurZCPzNgN
+         DKlfo9DSgqMnEBmlXyQMAcs/xzx5+b9YFgVJcB7nz4MONYCg9BT3dStzbNFiwjAXrXtv
+         cnr4dRkY3/kFV0eNMUcu3H8jO4dXLgpsIsSomuvxSIgYwgK6Q3mvW1GmIGPyWlsiBbC/
+         6E7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=SeVOcPo9;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=m7ojEBZC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j14si5080409ils.1.2022.02.07.07.09.14
+        by mx.google.com with ESMTPS id 2si10644826ybt.584.2022.02.09.04.54.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Feb 2022 07:09:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Feb 2022 04:54:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=SeVOcPo9;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=m7ojEBZC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51926 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nH5di-0007kr-2H
-	for alex.bennee@linaro.org; Mon, 07 Feb 2022 10:09:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41274)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nHmUh-0003VD-M5
+	for alex.bennee@linaro.org; Wed, 09 Feb 2022 07:54:47 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47032)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1nH5ZK-0004Pw-98; Mon, 07 Feb 2022 10:04:42 -0500
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24]:50263)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1nH5ZD-0004eJ-RO; Mon, 07 Feb 2022 10:04:38 -0500
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.west.internal (Postfix) with ESMTP id 3B3BE32019B4;
- Mon,  7 Feb 2022 10:04:32 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Mon, 07 Feb 2022 10:04:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
- :cc:content-transfer-encoding:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm2; bh=7MjPO5nUgLFK0Cvckcmu3g8aLoa3V5
- +ZQlcgb0uJvoE=; b=SeVOcPo9R09RynfzyZ7UA27yQB85OdMuFph1LWz07yuWmx
- shTJIUo1kdX2BbplS3k0ggY35w387k/cNUINbqe85SWSSVhHNZaCONkCpo0+rQlP
- w77tNNyeR1lLvxW3Sx3z3wvWsgWSCJwL1ta0QPlYL4eeR3phW534rmuv00uFDKrY
- w0Zagd6Jf+IJh+7aNTMFB9YKxtqvUgPuSJo/lW9k2yv0C0P++hopZCX3Jb/ftYEK
- AB3vfWoAgUIHMX+aR0JlQ50lTCPYX9bPGt6tLw5BS1jVh0NbO2LICMXvIL57ccuR
- KhPPvkAqFeA3H3OEBTqC5atBdgogiow6vtdhrpVg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:sender:subject:subject:to:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=7MjPO5
- nUgLFK0Cvckcmu3g8aLoa3V5+ZQlcgb0uJvoE=; b=m7ojEBZCcDb1ESP8XcUb1+
- g6rv+gsfrNRWI5FWdRM8sS7IqNqwqpNdMcL6RywwqDU746uJ+k3ArviMvZv7AVpk
- 5KPee0HhKMINgPlZaVeZT/WIJwUjYK1yUyxdQ8ERU7CyTLRyT8wzDTQt11BPqKXu
- +JrPBOgri+H9WQ+hITvmQWEEsHczo+/fyCfofH6O4b67DLGcN7XhmEzG1gqqVOfz
- LwCgXfv4VAc4wTUIdQS14jiWVwXvnLTHjp+k38bb0gm5deKSDa7T0KYg4upf/d3C
- 3y6zfM2ApJKxdcY81+FVHRxI1Fy3OTU2sAOQBzGD7jhbr+U1A8sk1j/Ufz5fOUrA
- ==
-X-ME-Sender: <xms:_zQBYgnQpfin5z--0wfcfrLE5yG0yL7PuEd_DumarR4Pdie6zjQWQA>
- <xme:_zQBYv3Fw7VW-fHefO2NEeGSJEBjSSVahnMuCkKtKM7lKfjcILyl-O0vSTfSLXl_Q
- VChAPNbIMbkD9_wgg>
-X-ME-Received: <xmr:_zQBYury2Co97epfpnBqt7FXzu1Bun6mNs1A_VvvR1q_mrJ4X9p0K7dI3JmaoEYfh1yY1QBcWf5doAPid8kh00RaFIhUQA2bxPGxDRUXdA88xVu9s0kvXnzGLMjuROJ9>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrheehgdeilecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffojghfggfgsedtkeertd
- ertddtnecuhfhrohhmpeetnhgurhgvficulfgvfhhfvghrhicuoegrnhgurhgvfiesrghj
- rdhiugdrrghuqeenucggtffrrghtthgvrhhnpeejgfdvveehteekveeggeellefgleette
- ejffelffdvudduveeiffegteelvefhteenucevlhhushhtvghrufhiiigvpedunecurfgr
- rhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghu
-X-ME-Proxy: <xmx:_zQBYskVOUlxU4Atv_I0-Wclyf99JTiIXIdcNESDFsIwe5C1BacusQ>
- <xmx:_zQBYu2gcBasiq3YWJHojJXLVP_P8B2knxrnLvHMsGOM--AC6eyrUw>
- <xmx:_zQBYjsP7B-MJ4wafWegvvXvpBcTUJTHwgnl2jcaAqaMq1YmoRf_SA>
- <xmx:_zQBYhQOF6Sjd3lSaEgVSpafHeMnCvUaIo-rSO7kwFP5DvgMU5rYAg>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 7 Feb 2022 10:04:29 -0500 (EST)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 3/3] hw: aspeed_gpio: Support the AST2600's indexed register
- interface
-Date: Tue,  8 Feb 2022 01:34:09 +1030
-Message-Id: <20220207150409.358888-4-andrew@aj.id.au>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220207150409.358888-1-andrew@aj.id.au>
-References: <20220207150409.358888-1-andrew@aj.id.au>
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1nHmQ8-0002jx-8U; Wed, 09 Feb 2022 07:50:04 -0500
+Received: from mail.csgraf.de ([85.25.223.15]:35102 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1nHmQ6-0001d9-3t; Wed, 09 Feb 2022 07:50:03 -0500
+Received: from [192.168.106.118]
+ (dynamic-095-115-119-071.95.115.pool.telefonica.de [95.115.119.71])
+ by csgraf.de (Postfix) with ESMTPSA id 26DCC60806B1;
+ Wed,  9 Feb 2022 13:50:00 +0100 (CET)
+Message-ID: <a3c45c0a-83be-57c5-cab0-98ffdaef00cb@csgraf.de>
+Date: Wed, 9 Feb 2022 13:49:59 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=64.147.123.24; envelope-from=andrew@aj.id.au;
- helo=wout1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.1
+Subject: Re: [PATCH 0/6] target/arm: -cpu host/max KVM and HVF fixes
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20220204165506.2846058-1-peter.maydell@linaro.org>
+From: Alexander Graf <agraf@csgraf.de>
+In-Reply-To: <20220204165506.2846058-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, openbmc@lists.ozlabs.org, qemu-arm@nongnu.org,
- clg@kaod.org, joel@jms.id.au
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AhYMoUYbH42g
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QPR8GNoMqJT9
 
-A new register interface was added to the AST2600 GPIO controller that
-allows a single 32 bit register to drive configuration of up to 208
-GPIOs. This makes way for a very simple driver implementation in
-early-boot firmware such as u-boot. The old register interface required
-drivers implement a tedious data model, but allowed efficient multi-line
-bit-banging.
 
-Either way, the hardware model in qemu becomes quite complex, though it
-would have been less so had the new interface been the only one
-available.
+On 04.02.22 17:55, Peter Maydell wrote:
+> This patchset fixes various minor bugs in KVM and HVF
+> -cpu host and -cpu max:
+>
+> (1) KVM -cpu max was incorrectly adding a 'sve-max-vq' property
+> that wouldn't work and which doesn't exist in KVM -cpu host
+>
+> (2) HVF -cpu max was using all the TCG ID fields and thus
+> promising the guest more than the host CPU can actually do
+>
+> (3) HVF -cpu host wasn't setting up the PAuth properties, so
+> it defaulted to not telling the guest about PAuth support
+>
+> This series fixes (1) by moving the '-cpu host' code to
+> cpu64.c since it's aarch64-specific anyway, which lets us
+> reuse it from the '-cpu max' init function. It fixes
+> (2) and (3) mostly by making HVF use the same bits of code
+> that KVM does for -cpu max and PAuth.
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
- hw/gpio/aspeed_gpio.c         | 202 +++++++++++++++++++++++++++++++++-
- include/hw/gpio/aspeed_gpio.h |   3 +
- 2 files changed, 202 insertions(+), 3 deletions(-)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 1d4d1aedc4b5..cee1a9a2e065 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -160,7 +160,42 @@
- #define GPIO_YZAAAB_DIRECTION      (0x1E4 >> 2)
- #define GPIO_AC_DATA_VALUE         (0x1E8 >> 2)
- #define GPIO_AC_DIRECTION          (0x1EC >> 2)
--#define GPIO_3_3V_MEM_SIZE         0x1F0
-+#define GPIO_INDEX                 (0x2AC >> 2)
-+#define  GPIO_INDEX_DATA_SHIFT     20
-+#define  GPIO_INDEX_DATA_LEN       12
-+#define   GPIO_INDEX_DATA_DATA     20
-+#define   GPIO_INDEX_DATA_DIR      20
-+#define   GPIO_INDEX_DATA_IRQ_EN   20
-+#define   GPIO_INDEX_DATA_IRQ_TY0  21
-+#define   GPIO_INDEX_DATA_IRQ_TY1  22
-+#define   GPIO_INDEX_DATA_IRQ_TY2  23
-+#define   GPIO_INDEX_DATA_IRQ_STS  24
-+#define   GPIO_INDEX_DATA_DB1      20
-+#define   GPIO_INDEX_DATA_DB2      21
-+#define   GPIO_INDEX_DATA_TOL      20
-+#define   GPIO_INDEX_DATA_SRC0     20
-+#define   GPIO_INDEX_DATA_SRC1     20
-+#define   GPIO_INDEX_DATA_INPUT    20
-+#define   GPIO_INDEX_DATA_WR_SRC   20
-+#define  GPIO_INDEX_TYPE_SHIFT     16
-+#define  GPIO_INDEX_TYPE_LEN       4
-+#define   GPIO_INDEX_TYPE_DATA     0
-+#define   GPIO_INDEX_TYPE_DIR      1
-+#define   GPIO_INDEX_TYPE_IRQ      2
-+#define   GPIO_INDEX_TYPE_DEBOUNCE 3
-+#define   GPIO_INDEX_TYPE_TOL      4
-+#define   GPIO_INDEX_TYPE_SRC      5
-+#define   GPIO_INDEX_TYPE_INPUT    6
-+#define   GPIO_INDEX_TYPE_RSVD     7
-+#define   GPIO_INDEX_TYPE_WR_SRC   8
-+#define   GPIO_INDEX_TYPE_RD_SRC   9
-+#define  GPIO_INDEX_CMD_SHIFT      12
-+#define  GPIO_INDEX_CMD_LEN        1
-+#define   GPIO_INDEX_CMD_WRITE     0
-+#define   GPIO_INDEX_CMD_READ      1
-+#define  GPIO_INDEX_NR_SHIFT       0
-+#define  GPIO_INDEX_NR_LEN         8
-+#define GPIO_3_3V_MEM_SIZE         0x2B0
- #define GPIO_3_3V_REG_ARRAY_SIZE   (GPIO_3_3V_MEM_SIZE >> 2)
- 
- /* AST2600 only - 1.8V gpios */
-@@ -571,6 +606,11 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
-         return (uint64_t) s->debounce_regs[idx];
-     }
- 
-+    /* This is a (new, indirect) register interface for configuring GPIOs */
-+    if (agc->have_index_reg && idx == GPIO_INDEX) {
-+        return (uint64_t) s->index;
-+    }
-+
-     reg = &agc->reg_table[idx];
-     if (reg->set_idx >= agc->nr_gpio_sets) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
-@@ -581,8 +621,73 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
-     return aspeed_gpio_set_read(s, reg);
- }
- 
--static void aspeed_gpio_set_write(AspeedGPIOState *s, const AspeedGPIOReg *reg,
--                                  uint32_t data)
-+static int aspeed_gpio_set_offset_read(AspeedGPIOState *s, int set, enum GPIORegType reg,
-+                                       int offset)
-+{
-+    return !!(aspeed_gpio_set_read(s, &(AspeedGPIOReg){set, reg}) & BIT(offset));
-+}
-+
-+static const enum GPIORegType aspeed_gpio_index_type_map[] = {
-+   [GPIO_INDEX_TYPE_DATA] = gpio_reg_data_value,
-+   [GPIO_INDEX_TYPE_DIR] = gpio_reg_direction,
-+   [GPIO_INDEX_TYPE_TOL] = gpio_reg_reset_tolerant,
-+   [GPIO_INDEX_TYPE_INPUT] = gpio_reg_input_mask,
-+   [GPIO_INDEX_TYPE_WR_SRC] = gpio_reg_input_mask /* See GPIO2AC doc */
-+};
-+
-+static void
-+aspeed_gpio_index_read(AspeedGPIOState *s, uint32_t type, uint32_t number)
-+{
-+    int pin = number % 32;
-+    int set = number / 32;
-+
-+    /* Clear the data field so we can OR into it without further data dependencies */
-+    s->index = deposit32(s->index, GPIO_INDEX_DATA_SHIFT, GPIO_INDEX_DATA_LEN, 0);
-+
-+    switch (type) {
-+    case GPIO_INDEX_TYPE_DATA:
-+    case GPIO_INDEX_TYPE_DIR:
-+    case GPIO_INDEX_TYPE_TOL:
-+    case GPIO_INDEX_TYPE_INPUT:
-+    case GPIO_INDEX_TYPE_WR_SRC:
-+    {
-+        enum GPIORegType reg = aspeed_gpio_index_type_map[type];
-+        s->index |= deposit32(0, GPIO_INDEX_DATA_SHIFT, GPIO_INDEX_DATA_LEN,
-+                              aspeed_gpio_set_offset_read(s, set, reg, pin));
-+        break;
-+    }
-+    case GPIO_INDEX_TYPE_IRQ:
-+        s->index |= deposit32(0, GPIO_INDEX_DATA_IRQ_EN, 1,
-+                        aspeed_gpio_set_offset_read(s, set, gpio_reg_int_enable, pin));
-+        s->index |= deposit32(0, GPIO_INDEX_DATA_IRQ_TY0, 1,
-+                        aspeed_gpio_set_offset_read(s, set, gpio_reg_int_sens_0, pin));
-+        s->index |= deposit32(0, GPIO_INDEX_DATA_IRQ_TY1, 1,
-+                        aspeed_gpio_set_offset_read(s, set, gpio_reg_int_sens_1, pin));
-+        s->index |= deposit32(0, GPIO_INDEX_DATA_IRQ_TY2, 1,
-+                        aspeed_gpio_set_offset_read(s, set, gpio_reg_int_sens_2, pin));
-+        s->index |= deposit32(0, GPIO_INDEX_DATA_IRQ_STS, 1,
-+                        aspeed_gpio_set_offset_read(s, set, gpio_reg_int_status, pin));
-+        break;
-+    case GPIO_INDEX_TYPE_DEBOUNCE:
-+        s->index |= deposit32(0, GPIO_INDEX_DATA_DB1, 1,
-+                        aspeed_gpio_set_offset_read(s, set, gpio_reg_debounce_1, pin));
-+        s->index |= deposit32(0, GPIO_INDEX_DATA_DB2, 1,
-+                        aspeed_gpio_set_offset_read(s, set, gpio_reg_debounce_2, pin));
-+        break;
-+    case GPIO_INDEX_TYPE_SRC:
-+        s->index |= deposit32(0, GPIO_INDEX_DATA_SRC0, 1,
-+                        aspeed_gpio_set_offset_read(s, set, gpio_reg_cmd_source_0, pin));
-+        s->index |= deposit32(0, GPIO_INDEX_DATA_SRC1, 1,
-+                        aspeed_gpio_set_offset_read(s, set, gpio_reg_cmd_source_1, pin));
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: no such command type: %" PRIu32 "\n",
-+                      __func__, type);
-+    }
-+}
-+
-+static void
-+aspeed_gpio_set_write(AspeedGPIOState *s, const AspeedGPIOReg *reg, uint32_t data)
- {
-     AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
-     const GPIOSetProperties *props;
-@@ -677,6 +782,87 @@ static void aspeed_gpio_set_write(AspeedGPIOState *s, const AspeedGPIOReg *reg,
-     aspeed_gpio_update(s, set, set->data_value);
- }
- 
-+static void
-+aspeed_gpio_set_offset_write(AspeedGPIOState *s, int set, enum GPIORegType reg,
-+                             int offset, int val)
-+{
-+    AspeedGPIOReg agr = { set, reg };
-+    uint32_t data;
-+
-+    data = aspeed_gpio_set_read(s, &agr);
-+    data = deposit32(data, offset, 1, val);
-+    aspeed_gpio_set_write(s, &agr, data);
-+}
-+
-+static void
-+aspeed_gpio_index_write(AspeedGPIOState *s, uint32_t type, uint32_t number, uint32_t data)
-+{
-+    int pin = number % 32;
-+    int set = number / 32;
-+
-+    switch (type) {
-+    case GPIO_INDEX_TYPE_DATA:
-+    case GPIO_INDEX_TYPE_DIR:
-+    case GPIO_INDEX_TYPE_TOL:
-+    case GPIO_INDEX_TYPE_INPUT:
-+    case GPIO_INDEX_TYPE_WR_SRC:
-+    {
-+        enum GPIORegType reg = aspeed_gpio_index_type_map[type];
-+        aspeed_gpio_set_offset_write(s, set, reg, pin, data);
-+        break;
-+    }
-+    case GPIO_INDEX_TYPE_IRQ:
-+        aspeed_gpio_set_offset_write(s, set, gpio_reg_int_enable, pin,
-+                                     extract32(data, GPIO_INDEX_DATA_IRQ_EN, 1));
-+        aspeed_gpio_set_offset_write(s, set, gpio_reg_int_sens_0, pin,
-+                                     extract32(data, GPIO_INDEX_DATA_IRQ_TY0, 1));
-+        aspeed_gpio_set_offset_write(s, set, gpio_reg_int_sens_1, pin,
-+                                     extract32(data, GPIO_INDEX_DATA_IRQ_TY1, 1));
-+        aspeed_gpio_set_offset_write(s, set, gpio_reg_int_sens_2, pin,
-+                                     extract32(data, GPIO_INDEX_DATA_IRQ_TY2, 1));
-+        aspeed_gpio_set_offset_write(s, set, gpio_reg_int_status, pin,
-+                                     extract32(data, GPIO_INDEX_DATA_IRQ_STS, 1));
-+        break;
-+    case GPIO_INDEX_TYPE_DEBOUNCE:
-+        aspeed_gpio_set_offset_write(s, set, gpio_reg_debounce_1, pin,
-+                                     extract32(data, GPIO_INDEX_DATA_DB1, 1));
-+        aspeed_gpio_set_offset_write(s, set, gpio_reg_debounce_2, pin,
-+                                     extract32(data, GPIO_INDEX_DATA_DB2, 1));
-+        break;
-+    case GPIO_INDEX_TYPE_SRC:
-+        aspeed_gpio_set_offset_write(s, set, gpio_reg_cmd_source_0, pin,
-+                                     extract32(data, GPIO_INDEX_DATA_SRC0, 1));
-+        aspeed_gpio_set_offset_write(s, set, gpio_reg_cmd_source_1, pin,
-+                                     extract32(data, GPIO_INDEX_DATA_SRC1, 1));
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: no such command type: %" PRIu32 "\n",
-+                      __func__, type);
-+    };
-+}
-+
-+static void aspeed_gpio_index_command(AspeedGPIOState *s, uint32_t index)
-+{
-+    uint32_t command, number, type;
-+
-+    s->index = index;
-+
-+    command = extract32(index, GPIO_INDEX_CMD_SHIFT, GPIO_INDEX_CMD_LEN);
-+    number = extract32(index, GPIO_INDEX_NR_SHIFT, GPIO_INDEX_NR_LEN);
-+    type = extract32(index, GPIO_INDEX_TYPE_SHIFT, GPIO_INDEX_TYPE_LEN);
-+
-+    if (command == GPIO_INDEX_CMD_WRITE) {
-+        uint32_t data;
-+
-+        data = extract32(index, GPIO_INDEX_DATA_SHIFT, GPIO_INDEX_DATA_LEN);
-+        aspeed_gpio_index_write(s, type, number, data);
-+
-+        return;
-+    }
-+
-+    aspeed_gpio_index_read(s, type, number);
-+}
-+
- static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-                               uint32_t size)
- {
-@@ -692,6 +878,12 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-         return;
-     }
- 
-+    /* This is a (new, indirect) register interface for configuring GPIOs */
-+    if (agc->have_index_reg && idx == GPIO_INDEX) {
-+        aspeed_gpio_index_command(s, data);
-+        return;
-+    }
-+
-     reg = &agc->reg_table[idx];
-     if (reg->set_idx >= agc->nr_gpio_sets) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
-@@ -930,6 +1122,7 @@ static void aspeed_gpio_ast2400_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_pins = 216;
-     agc->nr_gpio_sets = 7;
-     agc->reg_table = aspeed_3_3v_gpios;
-+    agc->have_index_reg = false;
- }
- 
- static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-@@ -940,6 +1133,7 @@ static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_pins = 228;
-     agc->nr_gpio_sets = 8;
-     agc->reg_table = aspeed_3_3v_gpios;
-+    agc->have_index_reg = false;
- }
- 
- static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
-@@ -950,6 +1144,7 @@ static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_pins = 208;
-     agc->nr_gpio_sets = 7;
-     agc->reg_table = aspeed_3_3v_gpios;
-+    agc->have_index_reg = true;
- }
- 
- static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
-@@ -960,6 +1155,7 @@ static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_pins = 36;
-     agc->nr_gpio_sets = 2;
-     agc->reg_table = aspeed_1_8v_gpios;
-+    agc->have_index_reg = true;
- }
- 
- static const TypeInfo aspeed_gpio_info = {
-diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-index 801846befb3b..57188fcb4098 100644
---- a/include/hw/gpio/aspeed_gpio.h
-+++ b/include/hw/gpio/aspeed_gpio.h
-@@ -61,6 +61,7 @@ struct AspeedGPIOClass {
-     uint32_t nr_gpio_pins;
-     uint32_t nr_gpio_sets;
-     const AspeedGPIOReg *reg_table;
-+    bool have_index_reg;
- };
- 
- struct AspeedGPIOState {
-@@ -91,6 +92,8 @@ struct AspeedGPIOState {
-         uint32_t debounce_2;
-         uint32_t input_mask;
-     } sets[ASPEED_GPIO_MAX_NR_SETS];
-+
-+    uint32_t index;
- };
- 
- #endif /* _ASPEED_GPIO_H_ */
--- 
-2.32.0
+Reviewed-by: Alexander Graf <agraf@csgraf.de>
+
+
+Alex
+
 

@@ -1,160 +1,253 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp1492587lfk;
-        Thu, 10 Feb 2022 03:48:29 -0800 (PST)
-X-Received: by 2002:a17:90a:be02:: with SMTP id a2mr2360918pjs.113.1644493709662;
-        Thu, 10 Feb 2022 03:48:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644493709; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp1674999lfk;
+        Thu, 10 Feb 2022 08:39:43 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwSP9jq2lGxlixU7zPayM1QhcjO97WtVIYjIa9qipmMfuMjFDjFKt5Fffe7FyWxqlVISJ0e
+X-Received: by 2002:a0d:ec44:: with SMTP id r4mr7841530ywn.391.1644511183362;
+        Thu, 10 Feb 2022 08:39:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644511183; cv=none;
         d=google.com; s=arc-20160816;
-        b=a6MRoRg1ftPaBR4/uAdxWepNKQVJtIrK/NMvWX2ZV+j5rVKKpBHSnIlg9IXsQrxJZP
-         A+pfUdd9OGuikgqmW+LS7fAT9e0Cd5b+vYK6MrjdPmC2ywDgIx5emocL1oK305g19R5y
-         adotdD0GgRaVQFJ50vpKj/i62G/szgcof3WCcpDkfw+ThOJl/JvqKjoy67iZshhTj4xB
-         dfexRn2UjMX3kaPjE9uULJmjh+X5rs+HRJlVjX3czgxSVQua82Gl2nSbrMgjlWeuQZBb
-         cD/FCKuAHkpmsFUjU6BNz9h86dy4ogJFDys4VXF2IrwKh1C9o4TCYQSjBlPApY+itSxn
-         m6mg==
+        b=ouAre0xMm5p8oqH9lPspFm16mpYkjA0pyfBWC9bCAjuFW3llLCxhqdAM4h+ArPEqyy
+         5v/msTVNZ80pXFhSoKz0R4kUW9wkuGXzK3ySgeY7mlsLSsZa5302Zi1zhgGX/kUrJaDT
+         HhKBOUaNDH4sE43nkOptrdJesnfp12+srG9+fyDzQ/3KgLh0C4czveBCwHo0x5qwCSk1
+         PjD/qtJvZwNTFRbEPligLyHOzJLK1TZO+uH6xkGa/LzD9J/UTOwu58nYrmp4x3imCLfz
+         untQ9fErrjXti0iiqKIfWeanNR3MmJleracfO1M9RC4YJEnn7nyTVjB/192cUKK/zm9u
+         yN/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:dkim-signature;
-        bh=ig9kZqZZfQ9sqdXBPM1U4qU1I9hGNtkiVI/BPqhhhKc=;
-        b=ySJzYSwzQkV3MjLTXqvfR98eJ8Fqwa0RIxMxK8v6hz8nERg4vD5RSjiPPVaeDekfdv
-         uXHVpeXdf6MOzrGcw4m+fTrsos3z6i/rqNnBsHj7rQv6bWWPP1LTKa9ZaGyRCvwHwwVu
-         H3jOWSPFXqMrKpjKYPZlh3G1ZUUZnk7itzOioqSv/zDZwUuvK2zuW18cc6wAjJfT7Bbi
-         y9/xQTMp5+Ed/IxM6UmDmWlcOQ0I3q26OxufhRDvv5gL4PaOpsgm4QWgPaGDgtHOGi3s
-         rLpqZ3CI+UyO5F3Rt1aA591PjWmMnUWUjXdL9oLfjHNjQEuMgMn2a9iTDa5shZLknMHT
-         Lsyg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=KCL4s1oWVVgFbaSzYuwDwQsNuFYm6/osfpXc/Qc+HkY=;
+        b=rbCop+yfkL73ejKEyqONXFQkvSqMpcRd4WYmY+JMDf1BtLNIM/wum4mCCdLxXHVFBF
+         CV/qiWHuTBJCUe2ZKaD5Xox3dMJiAYeBPSzxRWkAKQ2GZA/3FoGCxPAtI9Z4U40nmC2n
+         JgooNu372Xn1D1Y4n+YqA2TsfiS6mcCtP4urR3Ep1vvBKjAL50DehX9Dq2WEiTvGH7cj
+         06INHYv0MLyta4R6SGYpgXtNBSeC7EVCu0rSEomo43W8gpd1QneZpcOr3udr0hkQXmUx
+         NyGru+SmfY7sh8Em5XwccbTTPzI47x4zWMXapSUZtfOKRmilYFap/UX/MV354k7vOvGR
+         HPgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gHjRR3KM;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 185sor3820315pga.82.2022.02.10.03.48.29
-        (Google Transport Security);
-        Thu, 10 Feb 2022 03:48:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E39j4g2a;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 7si14120810ybz.400.2022.02.10.08.39.43
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 10 Feb 2022 08:39:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gHjRR3KM;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=sender:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=ig9kZqZZfQ9sqdXBPM1U4qU1I9hGNtkiVI/BPqhhhKc=;
-        b=gHjRR3KMMjr4GXyMMVsj3qIoQ3XUIZ2LRHojh/SBKk1/ArKNECiBKc5YaqBzLpyafw
-         ctys2nLhQQJGtWNe/3YCjlaj5BbUhLndnm9jW774Y1ZJpyiS2f6a/1DxUQgTNNYJamMP
-         Mc03HT5MjPZae88D4Busv49cFPFInz22dvTl+0C77PE1n38BdM8/MhKvt5syZBIA2sxX
-         gVBKC79gv+bwdPxd8OH4DOJanVUyWNarHLWtAijgFSgLNsPO/Dr5ziEmdIQNuZUulHyM
-         0uhJvvHjo2h8BBqTB1ZEHPSDrtA805xtP7TTNInMHO/BQX85U1iU0EG/xwgnnAhzxmAk
-         CCRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
-         :subject:content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=ig9kZqZZfQ9sqdXBPM1U4qU1I9hGNtkiVI/BPqhhhKc=;
-        b=CvyxlDWu6Ut4nWCSBCpcaKy127BqWhPaH0PaJV+q11+tSUB75W+yN/2vbV56nRtG2c
-         pvBB4/GJvz5LmCNAjxke/6No7ut0m49GfaoSEzGPMPp3i3jTqS3Gztu88BVBCkquZEtq
-         qV5c7ekEX0Fe7cXgGIPZCpQNPrkpwdP4LtybX7OeOWH1nnTNkC7jfi7sk6n0mkccI/1+
-         zL8bQX3TkDy4zVysHD1OUESchnQPLcU08Ind2LTAJq7flnoB8uhuFTX9JnCqfSU/waIx
-         uVD6ay2Yohi3Zw2Indi2eLB3QALx+IoTcixWnr9GyQQbUeuVHQgB18LFQuBpV/MNGiUY
-         ErNQ==
-X-Gm-Message-State: AOAM533mNE4Vx7I2ZT6YIkQY0q/z4paJEUw8vLtygvUd/6aLZB9tIoJz
-	wfZqR94Pzq1APaiZssxQL/WPNf2F1mA=
-X-Google-Smtp-Source: ABdhPJyNmSG1WvX/xGGiQo/Pq5Dam0pcZhc5srG3p4my1VTiE6XGONLTPkpC3kWLf0Vf6ceOEUA/jw==
-X-Received: by 2002:a63:28d:: with SMTP id 135mr5934362pgc.517.1644493708996;
-        Thu, 10 Feb 2022 03:48:28 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net. [83.50.83.154])
-        by smtp.gmail.com with ESMTPSA id k12sm24462870pfc.107.2022.02.10.03.48.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Feb 2022 03:48:28 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Message-ID: <8b6fca38-8a4e-af35-f202-86a5a3f98e47@amsat.org>
-Date: Thu, 10 Feb 2022 12:48:24 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E39j4g2a;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51236 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nICTs-0003w8-Up
+	for alex.bennee@linaro.org; Thu, 10 Feb 2022 11:39:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40832)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1nIAp5-0005mn-Ss
+ for qemu-devel@nongnu.org; Thu, 10 Feb 2022 09:53:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:47468)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1nIAp1-00047O-82
+ for qemu-devel@nongnu.org; Thu, 10 Feb 2022 09:53:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1644504795;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KCL4s1oWVVgFbaSzYuwDwQsNuFYm6/osfpXc/Qc+HkY=;
+ b=E39j4g2aaSU0e4oOQs/qbDNRt/589hf7pnmru83gTMJ6hUrobbS5NlyUxWGD8/FTJhSt/g
+ g2WzS3SViPk3Un5FE1BS4pqOz28gj77XOcaA07fjmBIIcqdo0QYU8VEUhdyJ/KNBZBZ2Xh
+ dt6qAK26NVE59zx75HXv5RayMLR5uiE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-35-kHWeboeaPZ2KiNrWl8Hamw-1; Thu, 10 Feb 2022 09:53:12 -0500
+X-MC-Unique: kHWeboeaPZ2KiNrWl8Hamw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CF6D21006AA0;
+ Thu, 10 Feb 2022 14:53:10 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.195.249])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0018E70D5F;
+ Thu, 10 Feb 2022 14:53:07 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, pbonzini@redhat.com,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
+ david@gibson.dropbear.id.au, clg@kaod.org, eesposit@redhat.com,
+ Coiby.Xu@gmail.com, stefanha@redhat.com
+Subject: [PATCH v3 3/5] tests/qtest/libqos: Skip hotplug tests if pci root bus
+ is not hotpluggable
+Date: Thu, 10 Feb 2022 15:52:52 +0100
+Message-Id: <20220210145254.157790-4-eric.auger@redhat.com>
+In-Reply-To: <20220210145254.157790-1-eric.auger@redhat.com>
+References: <20220210145254.157790-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.1
-Subject: Re: [PATCH v5 1/2] semihosting/arm-compat: replace heuristic for
- softmmu SYS_HEAPINFO
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, peter.maydell@linaro.org
-Cc: Andrew Strauss <astrauss11@gmail.com>, Keith Packard <keithp@keithp.com>,
- qemu-arm@nongnu.org
-References: <20220210113021.3799514-1-alex.bennee@linaro.org>
- <20220210113021.3799514-2-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220210113021.3799514-2-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-TUID: 5C4XbJfx1I/U
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: jean-philippe@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0akEwHX7MmVV
 
-Hi Alex,
+ARM does not not support hotplug on pcie.0. Add a flag on the bus
+which tells if devices can be hotplugged and skip hotplug tests
+if the bus cannot be hotplugged. This is a temporary solution to
+enable the other pci tests on aarch64.
 
-On 10/2/22 12:30, Alex Bennée wrote:
-> The previous numbers were a guess at best and rather arbitrary without
-> taking into account anything that might be loaded. Instead of using
-> guesses based on the state of registers implement a new function that:
-> 
->   a) scans the MemoryRegions for the largest RAM block
->   b) iterates through all "ROM" blobs looking for the biggest gap
-> 
-> The "ROM" blobs include all code loaded via -kernel and the various
-> -device loader techniques.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Andrew Strauss <astrauss11@gmail.com>
-> Cc: Keith Packard <keithp@keithp.com>
-> Message-Id: <20210601090715.22330-1-alex.bennee@linaro.org>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Acked-by: Thomas Huth <thuth@redhat.com>
 
-> +static LayoutInfo common_semi_find_bases(CPUState *cs)
->   {
-> -    MemoryRegion *subregion;
-> +    FlatView *fv;
-> +    LayoutInfo info = { 0, 0, 0, 0 };
-> +
-> +    RCU_READ_LOCK_GUARD();
-> +
-> +    fv = address_space_to_flatview(cs->as);
+---
 
-Why are we using the CPU view and not address_space_memory?
+v1 ->v2:
+- reword g_test_skip msg into "pci bus does not support hotplug"
+---
+ tests/qtest/e1000e-test.c         |  6 ++++++
+ tests/qtest/libqos/pci.h          |  1 +
+ tests/qtest/vhost-user-blk-test.c | 10 ++++++++++
+ tests/qtest/virtio-blk-test.c     |  5 +++++
+ tests/qtest/virtio-net-test.c     |  5 +++++
+ tests/qtest/virtio-rng-test.c     |  5 +++++
+ 6 files changed, 32 insertions(+)
 
-Does this function really need a CPUState argument?
+diff --git a/tests/qtest/e1000e-test.c b/tests/qtest/e1000e-test.c
+index 0273fe4c15..48f3dbb0fd 100644
+--- a/tests/qtest/e1000e-test.c
++++ b/tests/qtest/e1000e-test.c
+@@ -235,6 +235,12 @@ static void test_e1000e_multiple_transfers(void *obj, void *data,
+ static void test_e1000e_hotplug(void *obj, void *data, QGuestAllocator * alloc)
+ {
+     QTestState *qts = global_qtest;  /* TODO: get rid of global_qtest here */
++    QE1000E_PCI *dev = obj;
++
++    if (dev->pci_dev.bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
+ 
+     qtest_qmp_device_add(qts, "e1000e", "e1000e_net", "{'addr': '0x06'}");
+     qpci_unplug_acpi_device_test(qts, "e1000e_net", 0x06);
+diff --git a/tests/qtest/libqos/pci.h b/tests/qtest/libqos/pci.h
+index 44f6806fe4..6a28b40522 100644
+--- a/tests/qtest/libqos/pci.h
++++ b/tests/qtest/libqos/pci.h
+@@ -52,6 +52,7 @@ struct QPCIBus {
+     uint64_t pio_alloc_ptr, pio_limit;
+     uint64_t mmio_alloc_ptr, mmio_limit;
+     bool has_buggy_msi; /* TRUE for spapr, FALSE for pci */
++    bool not_hotpluggable; /* TRUE if devices cannot be hotplugged */
+ 
+ };
+ 
+diff --git a/tests/qtest/vhost-user-blk-test.c b/tests/qtest/vhost-user-blk-test.c
+index 62e670f39b..1316aae0fa 100644
+--- a/tests/qtest/vhost-user-blk-test.c
++++ b/tests/qtest/vhost-user-blk-test.c
+@@ -676,6 +676,11 @@ static void pci_hotplug(void *obj, void *data, QGuestAllocator *t_alloc)
+     QVirtioPCIDevice *dev;
+     QTestState *qts = dev1->pdev->bus->qts;
+ 
++    if (dev1->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     /* plug secondary disk */
+     qtest_qmp_device_add(qts, "vhost-user-blk-pci", "drv1",
+                          "{'addr': %s, 'chardev': 'char2'}",
+@@ -703,6 +708,11 @@ static void multiqueue(void *obj, void *data, QGuestAllocator *t_alloc)
+     uint64_t features;
+     uint16_t num_queues;
+ 
++    if (pdev1->pdev->bus->not_hotpluggable) {
++        g_test_skip("bus pci.0 does not support hotplug");
++        return;
++    }
++
+     /*
+      * The primary device has 1 queue and VIRTIO_BLK_F_MQ is not enabled. The
+      * VIRTIO specification allows VIRTIO_BLK_F_MQ to be enabled when there is
+diff --git a/tests/qtest/virtio-blk-test.c b/tests/qtest/virtio-blk-test.c
+index 2a23698211..acb44c9fb8 100644
+--- a/tests/qtest/virtio-blk-test.c
++++ b/tests/qtest/virtio-blk-test.c
+@@ -701,6 +701,11 @@ static void pci_hotplug(void *obj, void *data, QGuestAllocator *t_alloc)
+     QVirtioPCIDevice *dev;
+     QTestState *qts = dev1->pdev->bus->qts;
+ 
++    if (dev1->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     /* plug secondary disk */
+     qtest_qmp_device_add(qts, "virtio-blk-pci", "drv1",
+                          "{'addr': %s, 'drive': 'drive1'}",
+diff --git a/tests/qtest/virtio-net-test.c b/tests/qtest/virtio-net-test.c
+index 8bf74e516c..af3027144f 100644
+--- a/tests/qtest/virtio-net-test.c
++++ b/tests/qtest/virtio-net-test.c
+@@ -174,6 +174,11 @@ static void hotplug(void *obj, void *data, QGuestAllocator *t_alloc)
+     QTestState *qts = dev->pdev->bus->qts;
+     const char *arch = qtest_get_arch();
+ 
++    if (dev->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     qtest_qmp_device_add(qts, "virtio-net-pci", "net1",
+                          "{'addr': %s}", stringify(PCI_SLOT_HP));
+ 
+diff --git a/tests/qtest/virtio-rng-test.c b/tests/qtest/virtio-rng-test.c
+index e6b8cd8e0c..5ce444ad72 100644
+--- a/tests/qtest/virtio-rng-test.c
++++ b/tests/qtest/virtio-rng-test.c
+@@ -20,6 +20,11 @@ static void rng_hotplug(void *obj, void *data, QGuestAllocator *alloc)
+     QVirtioPCIDevice *dev = obj;
+     QTestState *qts = dev->pdev->bus->qts;
+ 
++   if (dev->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     const char *arch = qtest_get_arch();
+ 
+     qtest_qmp_device_add(qts, "virtio-rng-pci", "rng1",
+-- 
+2.26.3
 
-Trying to find a counter example, if used on the ZynqMP, could a
-A-profile core would report one heap layout, and a R-profile core
-another layout?
-
-Now if we want the per-CPU AS, shouldn't we pass the CPU AS ID and
-call cpu_get_address_space() instead of cs->as?
-
-> +    flatview_for_each_range(fv, find_ram_cb, &info);
->   
->       /*
-> -     * Find the chunk of R/W memory containing the address.  This is
-> -     * used for the SYS_HEAPINFO semihosting call, which should
-> -     * probably be using information from the loaded application.
-> +     * If we have found the RAM lets iterate through the ROM blobs to
-> +     * workout the best place for the remainder of RAM and split it
-> +     * equally between stack and heap.
->        */
-> -    QTAILQ_FOREACH(subregion, &get_system_memory()->subregions,
-> -                   subregions_link) {
-> -        if (subregion->ram && !subregion->readonly) {
-> -            Int128 top128 = int128_add(int128_make64(subregion->addr),
-> -                                       subregion->size);
-> -            Int128 addr128 = int128_make64(addr);
-> -            if (subregion->addr <= addr && int128_lt(addr128, top128)) {
-> -                return subregion->addr;
-> -            }
-> -        }
-> +    if (info.rambase || info.ramsize > 0) {
-> +        RomGap gap = rom_find_largest_gap_between(info.rambase, info.ramsize);
-> +        info.heapbase = gap.base;
-> +        info.heaplimit = gap.base + gap.size;
->       }
-> -    return 0;
-> +
-> +    return info;
->   }

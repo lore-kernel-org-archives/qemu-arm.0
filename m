@@ -1,118 +1,103 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp1477970lfk;
-        Thu, 10 Feb 2022 03:20:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzHxU5/X9ImPsinXsWFXIrGNkiSuu9keURmurkm7kPupqi46J98VUj19QfevdfndkDUeXke
-X-Received: by 2002:a05:6902:1248:: with SMTP id t8mr6541101ybu.347.1644492044880;
-        Thu, 10 Feb 2022 03:20:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644492044; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp1686353lfk;
+        Thu, 10 Feb 2022 08:59:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwmJutxug6AT4q/3uQVVCE0VYpCfGrsG2e0fWd73TIS3i5U1x/JevK0c6M3a05C/K7gDKyB
+X-Received: by 2002:a81:c44a:: with SMTP id s10mr8136244ywj.204.1644512357776;
+        Thu, 10 Feb 2022 08:59:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644512357; cv=none;
         d=google.com; s=arc-20160816;
-        b=vErSi6Qsde0nX9EEKsuTNJCwuD3lGSfjU7RmdCfTxHeW3h4TcIcSbm53oMYHTEzVps
-         4DwL0P+ok9o0XoCCaALoGZvYwXzcf5FKOdsS9qBrcNC8GmxHpZ70vCdCoNwDDkGv3emo
-         /u0O8Cuf3TuIZgyHQjbdYiZ63eJr1bB+RORf6rxb5jvJXgKIVr0dMNYtEPMQZD+igSOO
-         8iXB5sU3fRRqfbFG9ojt5mHNrsrfv1KHD+art0wytn7rbS0d5+iX9hQ2bn9TEjOatVDe
-         Obwc5+AuA6I1e451cXu8OGAmpqBuKV6Tl3qKC2wf+JMZQ73aiUGDFyu04WvDzooMtgq6
-         mi7w==
+        b=Mdib+hhbQcaNbX+jdJG2S9z7zJsV51dwFp7DS2Gn5foPKq+fDkCEk4pTelNuElIuZC
+         tf2inAYUEC6XwEKw7d8RMPLmXUSckTWbgKF6ix0SHTy+cj4OvRBSlQBIQIPSIO5LeWBp
+         z4zQ9sKMULp0FwyDBq2NNFrM3oXOZO9cLmYbvd/uKUqvm9OBncaWu0Ic99quDPuV3BXh
+         yyajGJgn97GY1heB119aKb3XiCWeRo9TjkS/aWniQm+3Zsp+ofqzJ0iniFIvsKtusuma
+         0uve0tMP3/qm8RGFEYA65pWHuHHbrxffPAOP+b1wYlyb34GXwhgPQB7r8KBKD8WkCjFw
+         xhAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=3OBTDh3vWlqPwn7p6kiDt3hHRWZFLjw2UFZP5XM5Mqk=;
-        b=afZ9T7LlZ19vpLsYdtfnf/v6IxSUdoXWLu1cR7413+KiuIzX54i5Omr5CWfs7mJ8zb
-         aq5ciLhy+XzW2VwaTPu3TwaDwllL0Q6Zs7UU1J5w976m/xp7HYaXIVePFDULr8i+ESnd
-         RKkihefAXKkL56CvTO9s53IrPq2/AyqHbD4/HosdbOMNEu0FERWhRdZhCDwzaKw6gw4p
-         +pgKs1gYcDi2g5tVDICQOqAsFq+CZwL4v6j/cNoHP7812s6udNMjvpedO6j9IsDfsFaz
-         Pi2FYv6OKSAhcqHfxTsGsRJzwugGoJKxBSIt8Emz0rQ54/8ItHO/rebg+IRQODpg49Ga
-         Ruuw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=emrbA/kK/sBgGq0LRqqAp+3DdCqPcwtQAE8h2LQeKQc=;
+        b=HCrOvxp7VV7XSQkwqvBIBESF1BfCd0yW5X95NfHsu+VycNvLyQg4eNytXBSoIZpXP2
+         geHOJOCToP/S1HGy0Z4TQ+zqv4GAKJV+HLBe8oVxYPO1CyN7MOaNItXZSpmFCWCSZmNq
+         SOVFJQMoFx336KnMcY1FXkk8/O3ZLxFM+s3vqYSEl4j0h8u3KxfbRSY7UhujM/LBRV5Q
+         m5WU9UoEpjto4PzBK9Z2WJI2pe6iydSismVS/nAjSVvJuHRw70gWDZyUFqsG95ZHOoFM
+         NIfcms4QO6m7L4D+cAXgcoTgT+OR34HBoBp7k/wbHZGqQhbgtMEQIROyXBDi5RiqYVJF
+         TEPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BFhN92Cs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=J8shXCfq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r3si7423465ybu.445.2022.02.10.03.20.44
+        by mx.google.com with ESMTPS id i11si4005347ybu.91.2022.02.10.08.59.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Feb 2022 03:20:44 -0800 (PST)
+        Thu, 10 Feb 2022 08:59:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BFhN92Cs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=J8shXCfq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:44762 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50656 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nI7VC-0002DA-Lz
-	for alex.bennee@linaro.org; Thu, 10 Feb 2022 06:20:42 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39784)
+	id 1nICmp-0006CN-UM
+	for alex.bennee@linaro.org; Thu, 10 Feb 2022 11:59:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46156)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nI7UH-00029u-5W; Thu, 10 Feb 2022 06:19:45 -0500
-Received: from [2607:f8b0:4864:20::633] (port=40849
- helo=mail-pl1-x633.google.com)
+ (Exim 4.90_1) (envelope-from <jimmy.brisson@linaro.org>)
+ id 1nIB8l-00028e-6c
+ for qemu-devel@nongnu.org; Thu, 10 Feb 2022 10:13:47 -0500
+Received: from [2607:f8b0:4864:20::436] (port=45918
+ helo=mail-pf1-x436.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nI7UF-0000G1-Aq; Thu, 10 Feb 2022 06:19:44 -0500
-Received: by mail-pl1-x633.google.com with SMTP id y17so1538722plg.7;
- Thu, 10 Feb 2022 03:19:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=3OBTDh3vWlqPwn7p6kiDt3hHRWZFLjw2UFZP5XM5Mqk=;
- b=BFhN92Cs6TgdtLXfLTzN1aW586wRxoKYISyMrOHErfjUCAuHHD+rZCAG4GP7MayEpj
- A+cmAeoKM08gPKVCFM0y/HMyNteDl2TNsaVJ/XaUJ7k3gO1w6k6yMjMfkCmHbqbImhg7
- UPZNJV82kRhtoB6nhsqiTKvcae6PLnYmbDjKmHFQaoKk3Ec5HuEhidKcnfa+4mJuz1yJ
- UWhfOIs/VwZmX6iC9ntA7xJXBMFq7g4RnLMllmWk6Jqj+J6ZHNdZYEBo+C+86bDZpeHT
- UirXYtTS44KgFeO7vGOkzN0jK7WS+dM4gEr/r7LRoBVOq/XF0BD0HMW1OzfAxpDs1+aI
- mecw==
+ (Exim 4.90_1) (envelope-from <jimmy.brisson@linaro.org>)
+ id 1nIB8j-0001X4-GX
+ for qemu-devel@nongnu.org; Thu, 10 Feb 2022 10:13:46 -0500
+Received: by mail-pf1-x436.google.com with SMTP id 9so7878827pfx.12
+ for <qemu-devel@nongnu.org>; Thu, 10 Feb 2022 07:13:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=emrbA/kK/sBgGq0LRqqAp+3DdCqPcwtQAE8h2LQeKQc=;
+ b=J8shXCfq/b/lI4BqNvPpefnxj3uZTN9z5WMQDTFQspk+FMf3wScuKm0BH1WAWGHOzs
+ 20PVw6uaFyzKN5XM7HEUUlCOzWy/RdShdMeL746CLw5iOB3/RJtl576xQWdByhyud1Zi
+ wbyTFYm/CFagXbODz58jT/IlITHtvRmIv3urw3pVwNb7UalEtNfqz8FuWcCjk1N0uCKI
+ gAWG7+VCouQNFBa/VwREXBo+bU3RbP++9KBOJ36q97kNkYNjd2wlVJY1vYY5OhgABuQc
+ LLFoY2Hw88+Pg5iP4+F8P8ZDOV08/dZzTQ6fhMAQYFHWHxa0xlvqfQdXD9hoSEqlGGLb
+ bi2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=3OBTDh3vWlqPwn7p6kiDt3hHRWZFLjw2UFZP5XM5Mqk=;
- b=Xg4QV5kRV8nVplph8TPgWoCmfyqMOrNLcs8ddBfdVj64vg7ohPQ1OxF+aLI/z7AVWD
- WKcYreiFL7yNktdDB5/OWrCjwIVasKe01v0l/qxaX7Ws4wJ9zLFQEqWOLqYR4r2U6vZy
- lZLfFXU5Krz+ILetpRYdnixuIMtkbvmzNqP+H5FF2iqoe9qIYLLAbjClXh/7YbbAhCWr
- PWwLXvQvrPDSwLHBZavOnjjgdSutMpgxZkDegaCZhFws9LXnV5Oi2aEW6kxeg5blBxA0
- 7ptkuNEVTC0cb0AfFh11eX/igxNC8zfImlR+Qrjfzrc+8guU02ZzFNUzE0PZZHj6StaU
- AceQ==
-X-Gm-Message-State: AOAM531ybslNqvAIoxFJEK8yIPHtk/2WBIrOYhVVBFJGreJRv40YIRaV
- yLzJnozV98AmpBpIsCMvke4=
-X-Received: by 2002:a17:90b:3802:: with SMTP id
- mq2mr2243298pjb.236.1644491981728; 
- Thu, 10 Feb 2022 03:19:41 -0800 (PST)
-Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
- [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id b85sm2464527pfb.136.2022.02.10.03.19.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Feb 2022 03:19:41 -0800 (PST)
-Message-ID: <2c0a236e-cb5b-5373-4f15-5b2f5b539905@amsat.org>
-Date: Thu, 10 Feb 2022 12:19:37 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=emrbA/kK/sBgGq0LRqqAp+3DdCqPcwtQAE8h2LQeKQc=;
+ b=Mtr3oNhK6LYrIsRk4J4Yx8hwnuifG/0JO74ivLYDWQVpd1uKNn0Gq+PktImx8LijQe
+ spsRznRja9ZIq6Fmf0/MWNUH7nHaXUXMhSoACStFfgwRdesDeBP6wOYJFysxd9Bd0+zh
+ 2b+LKE4nVswRNgT1b4Xg0GRm/DxsiGXfSNU2ndI8FPfCYxIR0gJ57wwLHiA90c+sawlf
+ 45VKjRpMiNdZs+HaJdGdAHCYVRzObfbdsooOL6JoLTSm4hDPvT+Bx+nPNjqnZM2qW4Ua
+ J8XlVQThqPsMLE1A6GSah3KMLkOvrAl6JDgxiu1SDYjfsFpJzY1s4/cwvyUQhPOsOGh4
+ +YCQ==
+X-Gm-Message-State: AOAM532QMzm1lPmQ5IyoJzRHc/NVWCtpjsZbTeiaPT7gjcKnBpD5031p
+ Y5nV0Y1bljduQiAP9ZhcSq0XrgvIfiRDas9fIFifyA==
+X-Received: by 2002:aa7:9576:: with SMTP id x22mr8155528pfq.56.1644506020642; 
+ Thu, 10 Feb 2022 07:13:40 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.1
-Subject: Re: [PATCH 0/2] Kconfig: Add an I2C_DEVICES device group
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Kevin Townsend <kevin.townsend@linaro.org>
-References: <20220208155911.3408455-1-peter.maydell@linaro.org>
-In-Reply-To: <20220208155911.3408455-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::633
+References: <20220202152323.2529767-1-jimmy.brisson@linaro.org>
+ <CAFEAcA-bn0mQw5Xsn4+-b6_Qa67TViKsVK4uVmNmNkkcq5FqTw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-bn0mQw5Xsn4+-b6_Qa67TViKsVK4uVmNmNkkcq5FqTw@mail.gmail.com>
+From: Jimmy Brisson <jimmy.brisson@linaro.org>
+Date: Thu, 10 Feb 2022 09:13:29 -0600
+Message-ID: <CAH8FvQuJAkum69p6dX6mCR0kKZ7zZaM4GikcahCbsJxC3LBXsA@mail.gmail.com>
+Subject: Re: [PATCH v1] an547: Correct typo that swaps ahb and apb peripherals
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::436
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pl1-x633.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=jimmy.brisson@linaro.org; helo=mail-pf1-x436.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
@@ -128,26 +113,61 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "open list:MPS2" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-devel@nongnu.org>
-X-TUID: 7dGKgppZc9/x
+X-TUID: 0qRUKt1QTNEs
 
-On 8/2/22 16:59, Peter Maydell wrote:
+On Fri, 4 Feb 2022 at 11:14, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Wed, 2 Feb 2022 at 15:23, Jimmy Brisson <jimmy.brisson@linaro.org> wrote:
+> >
+> > Turns out that this manifests in being unable to configure
+> > the ethernet access permissions, as the IotKitPPC looks
+> > these up by name.
+> >
+> > With this fix, eth is configurable
+> >
+> > Signed-off-by: Jimmy Brisson <jimmy.brisson@linaro.org>
+>
+> Can you explain the issue here in more detail, and maybe
+> provide a repro case ?
 
-> Peter Maydell (2):
->    Kconfig: Add I2C_DEVICES device group
->    Kconfig: Add 'imply I2C_DEVICES' on boards with available i2c bus
-> 
->   docs/devel/kconfig.rst |  8 ++++++--
->   hw/arm/Kconfig         | 10 ++++++++++
->   hw/i2c/Kconfig         |  5 +++++
->   hw/rtc/Kconfig         |  2 ++
->   hw/sensor/Kconfig      |  5 +++++
->   5 files changed, 28 insertions(+), 2 deletions(-)
+Sure. I documented how I found this on my blog here:
+https://theotherjimmy.github.io/blog/blog/2022-01-31-debug-qemu-eth.html
+It's long, so I'll provide a quick summary here.
 
-Series:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+My reproducer is the following zephyr example:
+
+```
+west build -p auto -b mps3_an547_ns zephyr/samples/net/dhcpv4_client \
+  -d build/mps3_an547_ns/net/dhcpv4_client -- \
+  -DOVERLAY_CONFIG=overlay-smsc911x.conf \
+  -DCONFIG_NET_QEMU_USER=y \
+  -DCONFIG_BUILD_WITH_TFM=y \
+  -DCOONFIG_TFM_IPC=y
+```
+
+As part of my debugging, I was using gdb on both the guest (tfm &
+zephyr and host qemu).
+I was able to reproduce this quickly by dumping the associated
+smsc911x struct in guest gdb, and
+watching the breakpoints in the `tz_ppc_read` function. Digging
+through, it seems that when setting
+up the peripheral access control in `iotkit_secctl_update_ppc_ap`, it
+wrote the lowest 3 bits of the ap
+and ignored the rest. This matches the expected behavior from the APB PPC EXT0.
+
+Let me know if you have further questions,
+Jimmy
 
 
+> The AN547 document definitely thinks
+> that APB PPC EXP 0 has the Memory Protection Controllers and
+> AHB PPC EXP 0 has the GPIO, USB and Ethernet devices:
+> https://developer.arm.com/-/media/Arm%20Developer%20Community/PDF/DAI0547B_SSE300_PLUS_U55_FPGA_for_mps3.pdf
+> (tables 6-2 to 6-4 on pages 35, 36).
+>
+> thanks
+> -- PMM

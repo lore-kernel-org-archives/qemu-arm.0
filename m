@@ -1,132 +1,160 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp1287640lfk;
-        Wed, 9 Feb 2022 20:04:33 -0800 (PST)
-X-Received: by 2002:a17:903:300d:: with SMTP id o13mr5486932pla.27.1644465873465;
-        Wed, 09 Feb 2022 20:04:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644465873; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp1287657lfk;
+        Wed, 9 Feb 2022 20:04:36 -0800 (PST)
+X-Received: by 2002:a17:90a:ea0f:: with SMTP id w15mr720741pjy.181.1644465876176;
+        Wed, 09 Feb 2022 20:04:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644465876; cv=none;
         d=google.com; s=arc-20160816;
-        b=iKOdB6F+coWA1mwHovwTTGi83YOtTDlCteV0EpmObk7A1kOqoGVfMuAYowjtGzYJFQ
-         IJRe1WoG4L4oHtCdGEzD3MSQ5CDoSQqwfHuI87tKzm/JpdZNt8DCFKW8RvVhFKE1TDq0
-         qhib0hA92pO16W+jBnRBV8sKWtgj1xSYOVE7Nn+7F+LOI2P6fAyMOlQAGwOPSCquoxI/
-         +O/vGw4g1lW/72EQ1ogcG/CjqPm3OPvQIpU9LgiXzoRafR0jqDSQTKVyBkQA4kKQNGBe
-         PfkmytoQ2gVbYtubmYRlHyb9MvRLeCj5xKb+Etxxj+KF3k8B42J6dSVVz2U+p8/xajt2
-         eQQA==
+        b=QzuJmaJLiBl8d2lXqLVNb9WZuLEJ2Zp2Bo39wfbyslMMV5jNRr2W1IGql3o+0BHwuZ
+         PTCZ2F6fqeD6sQsgtk4hgLSALc3Oxf3SRVfuzAalEUZj2ZcNl/sUZ6oUlkGXohgENIK4
+         W/CbuCtA8LlYGts3ZgpRwsg96cdLyf8klXZfiJ0F7HNRMFR+ZCTI8Z2lEHeZAEWtmBO4
+         Su0AuvUBvL+rrPgPCfeFfATm+K+3XOV/CD/YCMrVF3zUEx8GOdudz6GgdjIagOWJfN+u
+         Q1C12qhuv4syyBiQiNhsQK/jkES9r85WHYmHF61ci9V2IkNLfAor/5D7nLk4D3hULsim
+         HVrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=JBv8QVPyT6gYycDLYC5k+pqAGDzqvUkpcUy2Ood6pn8=;
-        b=0qrTQXB8PMBYNEqvBQrRqdfRufYY6Q7unuffkC0QAB0uMYaPjPHjzf/7KtefReXTQ4
-         KwbqG8zOHQuL2t/qYyGd91RpEsyGHXhINo99Hmn7KZogmdyF+XKQsO3Ww56PwVynH+ze
-         lc3UvT9WST2DncBVtzWAAZtx8bgliQESg2OBRXIzS8WzFYqALlOLzuN1BgoUTQ4xtgrw
-         QpKuyJMAfylVLiczzPZbqyD06Xrbks4NKGxalgLJUUt6VHnThMQ8P5A41OD+NGL4tAf9
-         +622C8OfAmYMZ7vt+4XYwPWI0oNnSCQ2NTwHe+GDepKWBk/2PHc+UymwbkW06j0DR1hz
-         IRwA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=AwzX6nehTYEJJpMljDUaZpO2r34jA4Ju646jiPXQlwk=;
+        b=x6Vcf1EXtiIKxoDnDzzAr86A03g/OK+Eejl1MiCPTd3miHVtQcIE94zYpq42ZICJv5
+         K6qpR1bjHeylSObQY2x/MiX/Jdsd0QRbsd1LdWa5xr3kj+WXx46vs685nL3LrfGsrZBM
+         Bc4J+w8BniTEITAvMhb5gYN6ufTHSInnSS0dstXrg5n6uEbuZp6aSgHr6tSnnSBZGf7o
+         qtLAzMk2u+j4XkfJazWZp2iF+gRNFLHY1Uas5ICA5viIn/+/rSm4MsSdVBxYg3trGkEN
+         3cSRqIO6QY/WKvkjMzF+AdohXVNoqTI4nuVA47lT3nYZYlrQEl7Ipp9QVQhgA8yPjTcZ
+         NScA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pzwKf2zc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fxoubPLN;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 140sor233938pga.60.2022.02.09.20.04.33
+        by mx.google.com with SMTPS id pg14sor82355pjb.25.2022.02.09.20.04.35
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 09 Feb 2022 20:04:33 -0800 (PST)
+        Wed, 09 Feb 2022 20:04:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pzwKf2zc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fxoubPLN;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=JBv8QVPyT6gYycDLYC5k+pqAGDzqvUkpcUy2Ood6pn8=;
-        b=pzwKf2zck0ziE0CNJKVWDiLQRCdqeDoJRIA+mEhoOq7We2iirlHJABaRtxBkXIYP5Q
-         dr7XBMlx6MBgHxqLzN8XXX6vcS6yGOPDcEyx1e+gFaYD4/3o5DsusM3wEb0RiDmoFw5x
-         nkeUgoo/nvCD/hUKLEsASPdahqOsVGGW5rNtDs5/35fX04Ya3QQOuW7LALbaE9n4A6FP
-         ajLCrug4BS2M0a5+RZZZnBZ06GjhgA5CHSCDFyapWkkAFZTsfiikAkXv207dGPKGBxO/
-         ykz8iMzQvHhOjwP/kzCvwWva6Tv6bjsNKBg0+Vh5/kQErOjPgOgHPzM4EApE7V63CFKf
-         j1aw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=AwzX6nehTYEJJpMljDUaZpO2r34jA4Ju646jiPXQlwk=;
+        b=fxoubPLNEogn+zHRnWFJWC+02DY723o0fq2mD8X6E2s1xgD8o6Q8a3eI/T8JVd8rtq
+         9ZT1LBBeJTKrH1XeHWmzn1q/QJX9IjQMkZlmav6rW0XnrofDTCUk/+Ck5IJm94cA6Gsg
+         SDBBWqh9qQ9RgT+ewtFxdOk4c1Grp9f4tLZH9kDGC4660fg89EMBZNgkruKqmyL8rTIe
+         Z1RkqS2X/006oeS+5XAXAivHdihTmQYjNZpGtW9FdDsJjUJDasBgtgXhzbNUUW8L0wxY
+         lo4wUWS2/Pa6s2PHUsTMGCJIDeoQLm/Am+lDVd2VJY6vQs7Vi2VAIe0cMqOQO+yIEPkq
+         uL8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=JBv8QVPyT6gYycDLYC5k+pqAGDzqvUkpcUy2Ood6pn8=;
-        b=sUYcjmuKEuscsvcuc+zi2SHnVV5eky/lfupHG/jDhjzrwpOwpJ/A/bMXf2W9zpCVlw
-         dd7OAmhSwZQHhQ0ZXLHuysncp2tHBn2WrK51WcoiD17i9V9esob82tRFQjP4swjSom2g
-         xUVjZNIOh92yznvHBP0AI/plQHji8rhRi0uqP4FQBAlyymC0ObLPaTUk4ZPBj8CmbRKj
-         UCg0b2XoWBbeF2pR6P5BWxh0dMHQU5givSxAV6UdtIOYmPPfdDOZkLDLfkAIRCjHAm1T
-         PHUzmcy8vFS7Doz9kpfaUZXqTUALqfVlJYNr0s2cbJ04yapdeC0+29X0M8RBKYqIhjm8
-         RJhQ==
-X-Gm-Message-State: AOAM533bVpTEbyR9S7a/dCNPKPsI++YCPNbqupta/btxhKH0Lv/ngiFh
-	Z59Gxdm7WUv1pQETU9tLQmeycZaI
-X-Google-Smtp-Source: ABdhPJy3IK6l5Ey5uGUCNTyNXqXYOSq3is/yqxM6s/cKqHXsu0WGei8AWanRjyL8Ofiwg5MJrbGdZw==
-X-Received: by 2002:a63:8942:: with SMTP id v63mr4631816pgd.222.1644465872899;
-        Wed, 09 Feb 2022 20:04:32 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=AwzX6nehTYEJJpMljDUaZpO2r34jA4Ju646jiPXQlwk=;
+        b=vSCCIIYUxauANNb+sRAEhNCAlUbq2EjB8KG8zEV0CsodAqiuTq4iN5avZF/pGHuSFu
+         XAgiMGkTbhkH0xSlFOh639Tqtdbn6ZADbyGkTUidIxqJTusRB+o04m+UGMhCKYWzBjQ/
+         VDIJBoy7kQ0xii5nU4xgNQvkSXDr8JqSp/Xio1y3QLlTJ3+XIYdDq5f7pBAF6Az9Ufr5
+         ZzRW5hJJfuQ5Dy3OZlpo0J62Yp17pp4KvWa5jtVPEou49MnjN1FAJYw9V5TY1sT+JlLT
+         vsrhaflu29THQdJAXzptYRC5GIuvsp6mIGZn7JuhZvF58hYaD9R8TKkOwowNJExbPFot
+         phBg==
+X-Gm-Message-State: AOAM532XZA9WURIlOkmr0reU8bbehfVUTk8ShSKRvUB/FGdt6U0CoKoR
+	XCTLoIJAaRf3cof84NhaglClup0p
+X-Google-Smtp-Source: ABdhPJz0KVvI1mTb0oODJrEK+YKDaIymbE6d50ZoWXQ2NLmSdivXc3vxFLGoaYYn2FgKTCdxQElB7Q==
+X-Received: by 2002:a17:90b:2243:: with SMTP id hk3mr750212pjb.244.1644465875665;
+        Wed, 09 Feb 2022 20:04:35 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain ([124.189.222.164])
-        by smtp.gmail.com with ESMTPSA id y4sm9749814pgp.5.2022.02.09.20.04.29
+        by smtp.gmail.com with ESMTPSA id y4sm9749814pgp.5.2022.02.09.20.04.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Feb 2022 20:04:32 -0800 (PST)
+        Wed, 09 Feb 2022 20:04:35 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v2 00/15] target/arm: Implement LVA, LPA, LPA2 features
-Date: Thu, 10 Feb 2022 15:04:08 +1100
-Message-Id: <20220210040423.95120-1-richard.henderson@linaro.org>
+Subject: [PATCH v2 01/15] hw/registerfields: Add FIELD_SEX<N> and FIELD_SDP<N>
+Date: Thu, 10 Feb 2022 15:04:09 +1100
+Message-Id: <20220210040423.95120-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220210040423.95120-1-richard.henderson@linaro.org>
+References: <20220210040423.95120-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3JTbcllkEJpY
+X-TUID: qmsU1a0ZfRnu
 
-Changes for v2:
-  * Introduce FIELD_SEX64, instead of open-coding w/ sextract64.
-  * Set TCR_EL1 more completely for user-only.
-  * Continue to bound tsz within aa64_va_parameters;
-    provide an out-of-bound indicator for raising AddressSize fault.
-  * Split IPS patch.
-  * Fix debug registers for LVA.
-  * Fix long-format fsc for LPA2.
-  * Fix TLBI page shift.
-  * Validate TLBI granule vs TCR granule.
+Add new macros to manipulate signed fields within the register.
 
-Not done:
-  * Validate translation levels which accept blocks.
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/hw/registerfields.h | 48 ++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 47 insertions(+), 1 deletion(-)
 
-There is still no upstream kernel support for FEAT_LPA2,
-so that is essentially untested.
-
-
-r~
-
-
-Richard Henderson (15):
-  hw/registerfields: Add FIELD_SEX<N> and FIELD_SDP<N>
-  target/arm: Set TCR_EL1.TSZ for user-only
-  target/arm: Fault on invalid TCR_ELx.TxSZ
-  target/arm: Move arm_pamax out of line
-  target/arm: Pass outputsize down to check_s2_mmu_setup
-  target/arm: Use MAKE_64BIT_MASK to compute indexmask
-  target/arm: Honor TCR_ELx.{I}PS
-  target/arm: Prepare DBGBVR and DBGWVR for FEAT_LVA
-  target/arm: Implement FEAT_LVA
-  target/arm: Implement FEAT_LPA
-  target/arm: Extend arm_fi_to_lfsc to level -1
-  target/arm: Introduce tlbi_aa64_get_range
-  target/arm: Fix TLBIRange.base for 16k and 64k pages
-  target/arm: Validate tlbi TG matches translation granule in use
-  target/arm: Implement FEAT_LPA2
-
- include/hw/registerfields.h |  48 +++++-
- target/arm/cpu-param.h      |   4 +-
- target/arm/cpu.h            |  27 +++
- target/arm/internals.h      |  58 ++++---
- target/arm/cpu.c            |   3 +-
- target/arm/cpu64.c          |   7 +-
- target/arm/helper.c         | 332 ++++++++++++++++++++++++++++--------
- 7 files changed, 378 insertions(+), 101 deletions(-)
-
+diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
+index f2a3c9c41f..3a88e135d0 100644
+--- a/include/hw/registerfields.h
++++ b/include/hw/registerfields.h
+@@ -59,6 +59,19 @@
+     extract64((storage), R_ ## reg ## _ ## field ## _SHIFT,               \
+               R_ ## reg ## _ ## field ## _LENGTH)
+ 
++#define FIELD_SEX8(storage, reg, field)                                   \
++    sextract8((storage), R_ ## reg ## _ ## field ## _SHIFT,               \
++              R_ ## reg ## _ ## field ## _LENGTH)
++#define FIELD_SEX16(storage, reg, field)                                  \
++    sextract16((storage), R_ ## reg ## _ ## field ## _SHIFT,              \
++               R_ ## reg ## _ ## field ## _LENGTH)
++#define FIELD_SEX32(storage, reg, field)                                  \
++    sextract32((storage), R_ ## reg ## _ ## field ## _SHIFT,              \
++               R_ ## reg ## _ ## field ## _LENGTH)
++#define FIELD_SEX64(storage, reg, field)                                  \
++    sextract64((storage), R_ ## reg ## _ ## field ## _SHIFT,              \
++               R_ ## reg ## _ ## field ## _LENGTH)
++
+ /* Extract a field from an array of registers */
+ #define ARRAY_FIELD_EX32(regs, reg, field)                                \
+     FIELD_EX32((regs)[R_ ## reg], reg, field)
+@@ -95,7 +108,40 @@
+     _d; })
+ #define FIELD_DP64(storage, reg, field, val) ({                           \
+     struct {                                                              \
+-        uint64_t v:R_ ## reg ## _ ## field ## _LENGTH;                \
++        uint64_t v:R_ ## reg ## _ ## field ## _LENGTH;                    \
++    } _v = { .v = val };                                                  \
++    uint64_t _d;                                                          \
++    _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
++                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
++    _d; })
++
++#define FIELD_SDP8(storage, reg, field, val) ({                           \
++    struct {                                                              \
++        signed int v:R_ ## reg ## _ ## field ## _LENGTH;                  \
++    } _v = { .v = val };                                                  \
++    uint8_t _d;                                                           \
++    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
++                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
++    _d; })
++#define FIELD_SDP16(storage, reg, field, val) ({                          \
++    struct {                                                              \
++        signed int v:R_ ## reg ## _ ## field ## _LENGTH;                  \
++    } _v = { .v = val };                                                  \
++    uint16_t _d;                                                          \
++    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
++                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
++    _d; })
++#define FIELD_SDP32(storage, reg, field, val) ({                          \
++    struct {                                                              \
++        signed int v:R_ ## reg ## _ ## field ## _LENGTH;                  \
++    } _v = { .v = val };                                                  \
++    uint32_t _d;                                                          \
++    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
++                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
++    _d; })
++#define FIELD_SDP64(storage, reg, field, val) ({                          \
++    struct {                                                              \
++        int64_t v:R_ ## reg ## _ ## field ## _LENGTH;                     \
+     } _v = { .v = val };                                                  \
+     uint64_t _d;                                                          \
+     _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
 -- 
 2.25.1

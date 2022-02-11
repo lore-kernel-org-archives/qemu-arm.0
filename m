@@ -1,125 +1,131 @@
-Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp154561lfl;
-        Tue, 15 Feb 2022 00:33:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwvy8ndEhd4BL+q7Ry6BQWCKUex2aQGYVVlwM2rIKEz8E5Zjtt571h/7M2tzxPk9NkQ8cv3
-X-Received: by 2002:a05:622a:1ba6:: with SMTP id bp38mr1921572qtb.259.1644913992506;
-        Tue, 15 Feb 2022 00:33:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644913992; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp2132205lfk;
+        Fri, 11 Feb 2022 00:39:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx/dXWbUQftipmx9/FxPBoxny76Zorp9+sa33nJpaCsb0yMv/+OQEtwOqJVBoFQG+6NFJst
+X-Received: by 2002:ac8:570a:: with SMTP id 10mr345092qtw.313.1644568778071;
+        Fri, 11 Feb 2022 00:39:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644568778; cv=none;
         d=google.com; s=arc-20160816;
-        b=xjaekc/0/E01jriUvv6GdyUtTZAgH4vvGROc4Z/MR41tFxV/+6QXhRvpOxHB2RUQco
-         vIoVpb5UOwyjgZX5tnl7YfwvinqdtpGi6QUJfvGrLImQNYbEPwRw9Fkc3qTK5qAc4pWp
-         N3ax4MM/A8h339U4cOmvuEOhI4+7iUN/J7nTZsRfVDaFHGc2rZX5IeDJdKhTA7wsa++n
-         YAg5l2QikJfKgp5IQogrzr5BuBosOnzx7t+Y+KwIL40CqZQFgrK7Tv64+dMd+eXxN2/g
-         L2dN220jLpuzL503WpQJBbNt8yTlrtlOxVhfsPQ9DwggvYMrOU3rptVaJ4JGKmlppv2o
-         ZpsQ==
+        b=PDMjjzYogQKBHAvzRL5IADHp4HSeVRuB8EBkhw1vhgptdNJ1a798oNM3eEk+nPmJsY
+         nGv/oKdBo52CYMIG6uUlBvFBwqzLZBY0m1p+PqqBaD9meLiqn4EcvIxjup0o9xKXaFwz
+         iv9GC/jQ4UJ7E4JWHgDvNQC2m3cZ+LePswOlE8TBnbLjGS/slrbLnTzFWe95zJPa1ucf
+         d14QRkJf3wjqN6QZXwOFvv4lx6hCuT3Y7VdDCT5dypxcMw+Jc0yiHoA0xuoDBoGbJSoM
+         jaRZvuNoWeM+bAcx0BZ/JszrbyRA+Um0pyY7UiMpc8hQQhd3L89xus3ZjnlDPUIiT8Tj
+         rSKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=/lYuj1q0G/e5fohAucU6CRJsUenht4hAdP+PjzymoR8=;
-        b=ahTxrNG5qlvpj7rU6ch6jF5DXPdTUtPQYPXQewiHmDDi1myqLIJ/N/MulwELREpbbH
-         THyTU1Lb6hoa6aYLNYixXj9XZCvmXbbgldmuwB06yyBAoO0cX0V1W+/8vIhtoPSERS3O
-         dftxW37mUUZRQ3gjYBdKHzmf5ClWmdfhqfSQxEw3plP6K5d2aNKj2AdX4BJ/2hV/a6IQ
-         2c8I+3UJWkpTYDQiKK1dqumMUbCgISmrpg2G73tTGOtT3rxROUmULz8wNYe6QQCjGNta
-         k6FOqQa9J+OWngSfMfwwlCnYMQ14KzQYtX4LshUb58rAMiYDzfLXJGM/Cvro+GQ0lXz5
-         htMQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:references:to:cc:in-reply-to
+         :date:subject:mime-version:message-id:from:dkim-signature;
+        bh=iZyi4xXuF3PPPzSZuRL8OFv9T9UNlpEcXPpOevnd0js=;
+        b=E3/O4DISBli/8jhgb5T9CdDXrur9/e+U8agiel3R3GCMxSmoHKu+xWgEzRFhTrVfei
+         1aHNTeB5MEs31cvjZmL0QZghVmsUfAQvQ7yJdrQywfpenrfr74L9QnoQAR9rtzD2++c+
+         ydVrkR0uiCarnkxOxmHXG6DTC0EupGk62RZCH0MaRzZmXk8+EBB3odaA7TH6SYXfPnnv
+         0E5jXTpVw4nmafB8ymWa1pzyBYhs0/ZWR3EbfhoxkMCj5QHS3TDu/MRKJwAIy5AC3wTx
+         /xAP+ZgU73jOFdqg4a5AXAd3TN8+adM18rRWFqNgqmxNujCYLAhOtK2VDdAjt9Y3ZFiy
+         Vx/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Lmp9ff2t;
+       dkim=pass header.i=@apple.com header.s=20180706 header.b=P7rev9Nl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s21si8430928qki.302.2022.02.15.00.33.12
+        by mx.google.com with ESMTPS id jl15si902024qvb.85.2022.02.11.00.39.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Feb 2022 00:33:12 -0800 (PST)
+        Fri, 11 Feb 2022 00:39:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Lmp9ff2t;
+       dkim=pass header.i=@apple.com header.s=20180706 header.b=P7rev9Nl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42438 helo=lists1p.gnu.org)
+       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
+Received: from localhost ([::1]:37572 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nJtGq-00004s-0F
-	for alex.bennee@linaro.org; Tue, 15 Feb 2022 03:33:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38002)
+	id 1nIRSr-00039R-Go
+	for alex.bennee@linaro.org; Fri, 11 Feb 2022 03:39:37 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60538)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1nJtGV-0008Sq-Ab
- for qemu-devel@nongnu.org; Tue, 15 Feb 2022 03:32:54 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:49966)
+ (Exim 4.90_1) (envelope-from <dirty@apple.com>)
+ id 1nIR46-0007Wj-ES; Fri, 11 Feb 2022 03:14:02 -0500
+Received: from rn-mailsvcp-ppex-lapp35.rno.apple.com ([17.179.253.44]:50956
+ helo=rn-mailsvcp-ppex-lapp35.apple.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1nJtGM-0006cZ-VX
- for qemu-devel@nongnu.org; Tue, 15 Feb 2022 03:32:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1644913961;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/lYuj1q0G/e5fohAucU6CRJsUenht4hAdP+PjzymoR8=;
- b=Lmp9ff2t/WjbAnlwrOY//tPAOMmgSCnR2+S+ENJyIJHC7nzekx8YCyfkPNANoRQmQVDt19
- rSraHyy8EzMTA7GM2qelqslHbYBM8gFTa2oYlh7f13gKFBK62jQjv3fpCfNNqFwtHoOPGS
- YSUpuvA5RYzCMpJ9uTZhgWv9PGGrouQ=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-325-46sj8ZzmPnms2Ai94L_Fwg-1; Tue, 15 Feb 2022 03:32:39 -0500
-X-MC-Unique: 46sj8ZzmPnms2Ai94L_Fwg-1
-Received: by mail-ej1-f70.google.com with SMTP id
- 13-20020a170906328d00b006982d0888a4so6908120ejw.9
- for <qemu-devel@nongnu.org>; Tue, 15 Feb 2022 00:32:39 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=/lYuj1q0G/e5fohAucU6CRJsUenht4hAdP+PjzymoR8=;
- b=5dUYS6o10VjaKGbRt/UIAEoKUBNSJc08hOCdqVp5gWtbD6O3nVnm8hTtiYpo9vskVM
- lzypyyB0mmxjAMMgVMZ2wA8PCNgpyGDyqQfMvp5XrnqvV95c8d4YKnVauVLUMu3SrpnI
- MdAabA1Iph3ZFu+7Q6IXnEzo1m1xIxJs61GqqBczyVAtsZ5kuPrHKBW+SI+itDXfwbns
- UEA0uLpKJ0yNsdjeW++Jc1jEBKVgzW+gCXFI0d77tbEfVjR0tX6bGkrQ8b+nTBB158qy
- /h4TpKrHX0IxK3maY0TzljraiFhlQJ+Yv9YXYEfy5dD4W3xbS6tNHsrQs6q1XGGw70ol
- nNzA==
-X-Gm-Message-State: AOAM531Zt9v1ZjpoCeygBE6enCyC1ERUYeNtQhl2/iEho2fhl5kvICvY
- 7+Gr2SO8+OnFRdBXGRy2MKLLI+iaW1xflgHVebSuTOmtaCfLddhkotRPFX18S7BKX07Svp0aKJB
- xGyIFxg9QP02/XD8=
-X-Received: by 2002:a17:906:7812:: with SMTP id
- u18mr2043040ejm.335.1644913958756; 
- Tue, 15 Feb 2022 00:32:38 -0800 (PST)
-X-Received: by 2002:a17:906:7812:: with SMTP id
- u18mr2043027ejm.335.1644913958540; 
- Tue, 15 Feb 2022 00:32:38 -0800 (PST)
-Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
- by smtp.gmail.com with ESMTPSA id z6sm6153812edb.69.2022.02.15.00.32.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Feb 2022 00:32:38 -0800 (PST)
-Date: Tue, 15 Feb 2022 09:32:36 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH] hw/arm/virt: Fix CPU's default NUMA node ID
-Message-ID: <20220215083236.tt2ajffkdq3psmxw@gator>
-References: <20220126052410.36380-1-gshan@redhat.com>
- <20220126101447.5d4f01f9@redhat.com>
- <f5780366-7c6e-1643-d471-1304ce6584ca@huawei.com>
- <5c99b245-e118-f7bd-4a4f-2c865bacaa75@redhat.com>
-MIME-Version: 1.0
-In-Reply-To: <5c99b245-e118-f7bd-4a4f-2c865bacaa75@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.083,
+ (Exim 4.90_1) (envelope-from <dirty@apple.com>)
+ id 1nIR43-00066z-M8; Fri, 11 Feb 2022 03:14:02 -0500
+Received: from pps.filterd (rn-mailsvcp-ppex-lapp35.rno.apple.com [127.0.0.1])
+ by rn-mailsvcp-ppex-lapp35.rno.apple.com (8.16.1.2/8.16.1.2) with
+ SMTP id 21B85olK018265; Fri, 11 Feb 2022 00:13:47 -0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=apple.com;
+ h=from : message-id :
+ content-type : mime-version : subject : date : in-reply-to : cc : to :
+ references; s=20180706; bh=iZyi4xXuF3PPPzSZuRL8OFv9T9UNlpEcXPpOevnd0js=;
+ b=P7rev9NlfolzM5mELDcSe4wWxH0AKxYo5eKLc+uczyjk4HIzSf9HdOtaz9qCTqvnds7w
+ b7pGIq/OskHiQVO3u/dUIQAs4JTuMP8ZE35Yj0zpD9WcHuqYmOmymuv83Y4NBtZ6zkQk
+ a1FIhWGGKv5hWhZrbMaL/mW40cW7ZgxImMjsddiiy58F86pQCF7Md9P3lxAD1ZIuyScF
+ hy1AqyyAa2DI6A6ePJjfX/2337PmxksXC1Pa6iG+U6dFhEaJ6rUUwAW0ypqI3BT2vCok
+ 5jywKC50c6BB3g0ACl88HrONMDexk7VxR2aiHMItsxnTOEDXMqzsYiru+aCv82tPWr+c yg== 
+Received: from rn-mailsvcp-mta-lapp04.rno.apple.com
+ (rn-mailsvcp-mta-lapp04.rno.apple.com [10.225.203.152])
+ by rn-mailsvcp-ppex-lapp35.rno.apple.com with ESMTP id 3e1nnancb3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NO);
+ Fri, 11 Feb 2022 00:13:47 -0800
+Received: from rn-mailsvcp-mmp-lapp04.rno.apple.com
+ (rn-mailsvcp-mmp-lapp04.rno.apple.com [17.179.253.17])
+ by rn-mailsvcp-mta-lapp04.rno.apple.com
+ (Oracle Communications Messaging Server 8.1.0.12.20210903 64bit (built Sep 3
+ 2021)) with ESMTPS id <0R7400TB2S6Y3500@rn-mailsvcp-mta-lapp04.rno.apple.com>; 
+ Fri, 11 Feb 2022 00:13:46 -0800 (PST)
+Received: from process_milters-daemon.rn-mailsvcp-mmp-lapp04.rno.apple.com by
+ rn-mailsvcp-mmp-lapp04.rno.apple.com
+ (Oracle Communications Messaging Server 8.1.0.12.20210903 64bit (built Sep 3
+ 2021)) id <0R7400C00RKB3500@rn-mailsvcp-mmp-lapp04.rno.apple.com>; Fri,
+ 11 Feb 2022 00:13:46 -0800 (PST)
+X-Va-A: 
+X-Va-T-CD: 36ada07b7a139d1d8d110642d73fd830
+X-Va-E-CD: 1e5226b2a545567d0e6b6d4dd8f881bb
+X-Va-R-CD: f485095505b245ac501be825f1a226b6
+X-Va-CD: 0
+X-Va-ID: 978f8608-730a-4f91-b925-a86647a4847c
+X-V-A: 
+X-V-T-CD: 36ada07b7a139d1d8d110642d73fd830
+X-V-E-CD: 1e5226b2a545567d0e6b6d4dd8f881bb
+X-V-R-CD: f485095505b245ac501be825f1a226b6
+X-V-CD: 0
+X-V-ID: 4c4158fc-6748-4fc1-ae9a-705a94974a36
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.425, 18.0.816
+ definitions=2022-02-11_02:2022-02-09,
+ 2022-02-11 signatures=0
+Received: from smtpclient.apple ([17.149.237.74])
+ by rn-mailsvcp-mmp-lapp04.rno.apple.com
+ (Oracle Communications Messaging Server 8.1.0.12.20210903 64bit (built Sep 3
+ 2021))
+ with ESMTPSA id <0R740050TS6WV700@rn-mailsvcp-mmp-lapp04.rno.apple.com>; Fri,
+ 11 Feb 2022 00:13:45 -0800 (PST)
+From: Cameron Esfahani <dirty@apple.com>
+Message-id: <5E67FE9D-C7A3-463D-B1EF-9D80E076C839@apple.com>
+Content-type: multipart/alternative;
+ boundary="Apple-Mail=_F3A54FC7-D6CF-41D0-951A-83052767C38C"
+MIME-version: 1.0 (Mac OS X Mail 15.0 \(3693.20.0.1.32\))
+Subject: Re: [PATCH v3 1/2] hvf: arm: Use macros for sysreg shift/masking
+Date: Fri, 11 Feb 2022 00:13:44 -0800
+In-reply-to: <20220209124135.69183-1-agraf@csgraf.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Cameron Esfahani via <qemu-devel@nongnu.org>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, Ivan Babrou <ivan@cloudflare.com>
+To: Alexander Graf <agraf@csgraf.de>
+References: <20220209124135.69183-1-agraf@csgraf.de>
+X-Mailer: Apple Mail (2.3693.20.0.1.32)
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.425, 18.0.816
+ definitions=2022-02-11_02:2022-02-09,
+ 2022-02-11 signatures=0
+Received-SPF: pass client-ip=17.179.253.44; envelope-from=dirty@apple.com;
+ helo=rn-mailsvcp-ppex-lapp35.apple.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,31 +138,422 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, "wangyanan \(Y\)" <wangyanan55@huawei.com>,
- qemu-arm@nongnu.org, shan.gavin@gmail.com, Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lrmGDx8iYIY4
+X-TUID: e+AvQI8iQ2Sa
 
-On Tue, Feb 15, 2022 at 04:19:01PM +0800, Gavin Shan wrote:
-> The issue isn't related to CPU topology directly. It's actually related
-> to the fact: the default NUMA node ID will be picked for one particular
-> CPU if the associated NUMA node ID isn't provided by users explicitly.
-> So it's related to the CPU-to-NUMA association.
-> 
-> For example, the CPU-to-NUMA association is breaking socket boundary
-> without the code change included in this patch when the guest is booted
-> with the command lines like below. With this patch applied, the CPU-to-NUMA
-> association is following socket boundary, to make Linux guest happy.
 
-Gavin,
+--Apple-Mail=_F3A54FC7-D6CF-41D0-951A-83052767C38C
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
 
-Please look at Igor's request for more information. Are we sure that a
-socket is a NUMA node boundary? Are we sure we can assume an even
-distribution for sockets to nodes or nodes to sockets? If so, where is
-that documented?
+LGTM
 
-Thanks,
-drew
+Reviewed-by: Cameron Esfahani <dirty@apple.com <mailto:dirty@apple.com>>
 
+Cameron
+
+> On Feb 9, 2022, at 4:41 AM, Alexander Graf <agraf@csgraf.de> wrote:
+>=20
+> We are parsing the syndrome field for sysregs in multiple places =
+across
+> the hvf code, but repeat shift/mask operations with hard coded =
+constants
+> every time. This is an error prone approach and makes it harder to =
+reason
+> about the correctness of these operations.
+>=20
+> Let's introduce macros that allow us to unify the constants used as =
+well
+> as create new helpers to extract fields from the sysreg value.
+>=20
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> ---
+> target/arm/hvf/hvf.c | 69 ++++++++++++++++++++++++++++++--------------
+> 1 file changed, 47 insertions(+), 22 deletions(-)
+>=20
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 92ad0d29c4..8d0447ab01 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -35,9 +35,34 @@
+>         ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, =
+op2)
+> #define PL1_WRITE_MASK 0x4
+>=20
+> +#define SYSREG_OP0_SHIFT      20
+> +#define SYSREG_OP0_MASK       0x3
+> +#define SYSREG_OP0(sysreg)    ((sysreg >> SYSREG_OP0_SHIFT) & =
+SYSREG_OP0_MASK)
+> +#define SYSREG_OP1_SHIFT      14
+> +#define SYSREG_OP1_MASK       0x7
+> +#define SYSREG_OP1(sysreg)    ((sysreg >> SYSREG_OP1_SHIFT) & =
+SYSREG_OP1_MASK)
+> +#define SYSREG_CRN_SHIFT      10
+> +#define SYSREG_CRN_MASK       0xf
+> +#define SYSREG_CRN(sysreg)    ((sysreg >> SYSREG_CRN_SHIFT) & =
+SYSREG_CRN_MASK)
+> +#define SYSREG_CRM_SHIFT      1
+> +#define SYSREG_CRM_MASK       0xf
+> +#define SYSREG_CRM(sysreg)    ((sysreg >> SYSREG_CRM_SHIFT) & =
+SYSREG_CRM_MASK)
+> +#define SYSREG_OP2_SHIFT      17
+> +#define SYSREG_OP2_MASK       0x7
+> +#define SYSREG_OP2(sysreg)    ((sysreg >> SYSREG_OP2_SHIFT) & =
+SYSREG_OP2_MASK)
+> +
+> #define SYSREG(op0, op1, crn, crm, op2) \
+> -    ((op0 << 20) | (op2 << 17) | (op1 << 14) | (crn << 10) | (crm << =
+1))
+> -#define SYSREG_MASK           SYSREG(0x3, 0x7, 0xf, 0xf, 0x7)
+> +    ((op0 << SYSREG_OP0_SHIFT) | \
+> +     (op1 << SYSREG_OP1_SHIFT) | \
+> +     (crn << SYSREG_CRN_SHIFT) | \
+> +     (crm << SYSREG_CRM_SHIFT) | \
+> +     (op2 << SYSREG_OP2_SHIFT))
+> +#define SYSREG_MASK \
+> +    SYSREG(SYSREG_OP0_MASK, \
+> +           SYSREG_OP1_MASK, \
+> +           SYSREG_CRN_MASK, \
+> +           SYSREG_CRM_MASK, \
+> +           SYSREG_OP2_MASK)
+> #define SYSREG_OSLAR_EL1      SYSREG(2, 0, 1, 0, 4)
+> #define SYSREG_OSLSR_EL1      SYSREG(2, 0, 1, 1, 4)
+> #define SYSREG_OSDLR_EL1      SYSREG(2, 0, 1, 3, 4)
+> @@ -783,21 +808,21 @@ static int hvf_sysreg_read(CPUState *cpu, =
+uint32_t reg, uint32_t rt)
+>     default:
+>         cpu_synchronize_state(cpu);
+>         trace_hvf_unhandled_sysreg_read(env->pc, reg,
+> -                                        (reg >> 20) & 0x3,
+> -                                        (reg >> 14) & 0x7,
+> -                                        (reg >> 10) & 0xf,
+> -                                        (reg >> 1) & 0xf,
+> -                                        (reg >> 17) & 0x7);
+> +                                        SYSREG_OP0(reg),
+> +                                        SYSREG_OP1(reg),
+> +                                        SYSREG_CRN(reg),
+> +                                        SYSREG_CRM(reg),
+> +                                        SYSREG_OP2(reg));
+>         hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
+>         return 1;
+>     }
+>=20
+>     trace_hvf_sysreg_read(reg,
+> -                          (reg >> 20) & 0x3,
+> -                          (reg >> 14) & 0x7,
+> -                          (reg >> 10) & 0xf,
+> -                          (reg >> 1) & 0xf,
+> -                          (reg >> 17) & 0x7,
+> +                          SYSREG_OP0(reg),
+> +                          SYSREG_OP1(reg),
+> +                          SYSREG_CRN(reg),
+> +                          SYSREG_CRM(reg),
+> +                          SYSREG_OP2(reg),
+>                           val);
+>     hvf_set_reg(cpu, rt, val);
+>=20
+> @@ -886,11 +911,11 @@ static int hvf_sysreg_write(CPUState *cpu, =
+uint32_t reg, uint64_t val)
+>     CPUARMState *env =3D &arm_cpu->env;
+>=20
+>     trace_hvf_sysreg_write(reg,
+> -                           (reg >> 20) & 0x3,
+> -                           (reg >> 14) & 0x7,
+> -                           (reg >> 10) & 0xf,
+> -                           (reg >> 1) & 0xf,
+> -                           (reg >> 17) & 0x7,
+> +                           SYSREG_OP0(reg),
+> +                           SYSREG_OP1(reg),
+> +                           SYSREG_CRN(reg),
+> +                           SYSREG_CRM(reg),
+> +                           SYSREG_OP2(reg),
+>                            val);
+>=20
+>     switch (reg) {
+> @@ -960,11 +985,11 @@ static int hvf_sysreg_write(CPUState *cpu, =
+uint32_t reg, uint64_t val)
+>     default:
+>         cpu_synchronize_state(cpu);
+>         trace_hvf_unhandled_sysreg_write(env->pc, reg,
+> -                                         (reg >> 20) & 0x3,
+> -                                         (reg >> 14) & 0x7,
+> -                                         (reg >> 10) & 0xf,
+> -                                         (reg >> 1) & 0xf,
+> -                                         (reg >> 17) & 0x7);
+> +                                         SYSREG_OP0(reg),
+> +                                         SYSREG_OP1(reg),
+> +                                         SYSREG_CRN(reg),
+> +                                         SYSREG_CRM(reg),
+> +                                         SYSREG_OP2(reg));
+>         hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
+>         return 1;
+>     }
+> --=20
+> 2.32.0 (Apple Git-132)
+>=20
+
+
+--Apple-Mail=_F3A54FC7-D6CF-41D0-951A-83052767C38C
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=us-ascii
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3Dus-ascii"></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; line-break: after-white-space;" class=3D""><div =
+class=3D"">LGTM</div><div class=3D""><br class=3D""></div>Reviewed-by: =
+Cameron Esfahani &lt;<a href=3D"mailto:dirty@apple.com" =
+class=3D"">dirty@apple.com</a>&gt;<div class=3D""><br =
+class=3D""></div><div class=3D"">Cameron<br class=3D""><div><br =
+class=3D""><blockquote type=3D"cite" class=3D""><div class=3D"">On Feb =
+9, 2022, at 4:41 AM, Alexander Graf &lt;<a href=3D"mailto:agraf@csgraf.de"=
+ class=3D"">agraf@csgraf.de</a>&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div class=3D""><div class=3D"">We =
+are parsing the syndrome field for sysregs in multiple places across<br =
+class=3D"">the hvf code, but repeat shift/mask operations with hard =
+coded constants<br class=3D"">every time. This is an error prone =
+approach and makes it harder to reason<br class=3D"">about the =
+correctness of these operations.<br class=3D""><br class=3D"">Let's =
+introduce macros that allow us to unify the constants used as well<br =
+class=3D"">as create new helpers to extract fields from the sysreg =
+value.<br class=3D""><br class=3D"">Suggested-by: Peter Maydell &lt;<a =
+href=3D"mailto:peter.maydell@linaro.org" =
+class=3D"">peter.maydell@linaro.org</a>&gt;<br class=3D"">Signed-off-by: =
+Alexander Graf &lt;<a href=3D"mailto:agraf@csgraf.de" =
+class=3D"">agraf@csgraf.de</a>&gt;<br class=3D"">---<br class=3D""> =
+target/arm/hvf/hvf.c | 69 =
+++++++++++++++++++++++++++++++--------------<br class=3D""> 1 file =
+changed, 47 insertions(+), 22 deletions(-)<br class=3D""><br =
+class=3D"">diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c<br =
+class=3D"">index 92ad0d29c4..8d0447ab01 100644<br class=3D"">--- =
+a/target/arm/hvf/hvf.c<br class=3D"">+++ b/target/arm/hvf/hvf.c<br =
+class=3D"">@@ -35,9 +35,34 @@<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENCODE_AA64_CP_REG(CP_REG_=
+ARM64_SYSREG_CP, crn, crm, op0, op1, op2)<br class=3D""> #define =
+PL1_WRITE_MASK 0x4<br class=3D""><br class=3D"">+#define =
+SYSREG_OP0_SHIFT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20<br class=3D"">+#define =
+SYSREG_OP0_MASK &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x3<br =
+class=3D"">+#define SYSREG_OP0(sysreg) &nbsp;&nbsp;&nbsp;((sysreg =
+&gt;&gt; SYSREG_OP0_SHIFT) &amp; SYSREG_OP0_MASK)<br class=3D"">+#define =
+SYSREG_OP1_SHIFT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14<br class=3D"">+#define =
+SYSREG_OP1_MASK &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x7<br =
+class=3D"">+#define SYSREG_OP1(sysreg) &nbsp;&nbsp;&nbsp;((sysreg =
+&gt;&gt; SYSREG_OP1_SHIFT) &amp; SYSREG_OP1_MASK)<br class=3D"">+#define =
+SYSREG_CRN_SHIFT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10<br class=3D"">+#define =
+SYSREG_CRN_MASK &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0xf<br =
+class=3D"">+#define SYSREG_CRN(sysreg) &nbsp;&nbsp;&nbsp;((sysreg =
+&gt;&gt; SYSREG_CRN_SHIFT) &amp; SYSREG_CRN_MASK)<br class=3D"">+#define =
+SYSREG_CRM_SHIFT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br class=3D"">+#define =
+SYSREG_CRM_MASK &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0xf<br =
+class=3D"">+#define SYSREG_CRM(sysreg) &nbsp;&nbsp;&nbsp;((sysreg =
+&gt;&gt; SYSREG_CRM_SHIFT) &amp; SYSREG_CRM_MASK)<br class=3D"">+#define =
+SYSREG_OP2_SHIFT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;17<br class=3D"">+#define =
+SYSREG_OP2_MASK &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x7<br =
+class=3D"">+#define SYSREG_OP2(sysreg) &nbsp;&nbsp;&nbsp;((sysreg =
+&gt;&gt; SYSREG_OP2_SHIFT) &amp; SYSREG_OP2_MASK)<br class=3D"">+<br =
+class=3D""> #define SYSREG(op0, op1, crn, crm, op2) \<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;((op0 &lt;&lt; 20) | (op2 &lt;&lt; 17) | (op1 &lt;&lt; =
+14) | (crn &lt;&lt; 10) | (crm &lt;&lt; 1))<br class=3D"">-#define =
+SYSREG_MASK =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SYSREG(0x3, =
+0x7, 0xf, 0xf, 0x7)<br class=3D"">+ &nbsp;&nbsp;&nbsp;((op0 &lt;&lt; =
+SYSREG_OP0_SHIFT) | \<br class=3D"">+ &nbsp;&nbsp;&nbsp;&nbsp;(op1 =
+&lt;&lt; SYSREG_OP1_SHIFT) | \<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;(crn &lt;&lt; SYSREG_CRN_SHIFT) | \<br =
+class=3D"">+ &nbsp;&nbsp;&nbsp;&nbsp;(crm &lt;&lt; SYSREG_CRM_SHIFT) | =
+\<br class=3D"">+ &nbsp;&nbsp;&nbsp;&nbsp;(op2 &lt;&lt; =
+SYSREG_OP2_SHIFT))<br class=3D"">+#define SYSREG_MASK \<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;SYSREG(SYSREG_OP0_MASK, \<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SYSREG_OP1_MAS=
+K, \<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SYSREG_CRN_MAS=
+K, \<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SYSREG_CRM_MAS=
+K, \<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SYSREG_OP2_MAS=
+K)<br class=3D""> #define SYSREG_OSLAR_EL1 =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SYSREG(2, 0, 1, 0, 4)<br class=3D""> =
+#define SYSREG_OSLSR_EL1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SYSREG(2, 0, 1, =
+1, 4)<br class=3D""> #define SYSREG_OSDLR_EL1 =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SYSREG(2, 0, 1, 3, 4)<br class=3D"">@@ =
+-783,21 +808,21 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t =
+reg, uint32_t rt)<br class=3D""> &nbsp;&nbsp;&nbsp;&nbsp;default:<br =
+class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cpu_synchronize_state(cpu)=
+;<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace_hvf_unhandled_sysreg=
+_read(env-&gt;pc, reg,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;(reg &gt;&gt; 20) &amp; 0x3,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;(reg &gt;&gt; 14) &amp; 0x7,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;(reg &gt;&gt; 10) &amp; 0xf,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;(reg &gt;&gt; 1) &amp; 0xf,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;(reg &gt;&gt; 17) &amp; 0x7);<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;SYSREG_OP0(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;SYSREG_OP1(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;SYSREG_CRN(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;SYSREG_CRM(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;SYSREG_OP2(reg));<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hvf_raise_exception(cpu, =
+EXCP_UDEF, syn_uncategorized());<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;}<br class=3D""><br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;trace_hvf_sysreg_read(reg,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;(reg &gt;&gt; 20) &amp; 0x3,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;(reg &gt;&gt; 14) &amp; 0x7,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;(reg &gt;&gt; 10) &amp; 0xf,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;(reg &gt;&gt; 1) &amp; 0xf,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;(reg &gt;&gt; 17) &amp; 0x7,<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;SYSREG_OP0(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;SYSREG_OP1(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;SYSREG_CRN(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;SYSREG_CRM(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;SYSREG_OP2(reg),<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;val);<br class=3D""> &nbsp;&nbsp;&nbsp;&nbsp;hvf_set_reg(cpu, =
+rt, val);<br class=3D""><br class=3D"">@@ -886,11 +911,11 @@ static int =
+hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)<br class=3D"">=
+ &nbsp;&nbsp;&nbsp;&nbsp;CPUARMState *env =3D &amp;arm_cpu-&gt;env;<br =
+class=3D""><br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;trace_hvf_sysreg_write(reg,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;(reg &gt;&gt; 20) &amp; 0x3,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;(reg &gt;&gt; 14) &amp; 0x7,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;(reg &gt;&gt; 10) &amp; 0xf,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;(reg &gt;&gt; 1) &amp; 0xf,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;(reg &gt;&gt; 17) &amp; 0x7,<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;SYSREG_OP0(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;SYSREG_OP1(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;SYSREG_CRN(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;SYSREG_CRM(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;SYSREG_OP2(reg),<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;val);<br class=3D""><br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;switch (reg) {<br class=3D"">@@ -960,11 +985,11 =
+@@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t =
+val)<br class=3D""> &nbsp;&nbsp;&nbsp;&nbsp;default:<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cpu_synchronize_state(cpu)=
+;<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace_hvf_unhandled_sysreg=
+_write(env-&gt;pc, reg,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;(reg &gt;&gt; 20) &amp; 0x3,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;(reg &gt;&gt; 14) &amp; 0x7,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;(reg &gt;&gt; 10) &amp; 0xf,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;(reg &gt;&gt; 1) &amp; 0xf,<br class=3D"">- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;(reg &gt;&gt; 17) &amp; 0x7);<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;SYSREG_OP0(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;SYSREG_OP1(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;SYSREG_CRN(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;SYSREG_CRM(reg),<br class=3D"">+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;SYSREG_OP2(reg));<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hvf_raise_exception(cpu, =
+EXCP_UDEF, syn_uncategorized());<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br class=3D""> =
+&nbsp;&nbsp;&nbsp;&nbsp;}<br class=3D"">-- <br class=3D"">2.32.0 (Apple =
+Git-132)<br class=3D""><br class=3D""></div></div></blockquote></div><br =
+class=3D""></div></body></html>=
+
+--Apple-Mail=_F3A54FC7-D6CF-41D0-951A-83052767C38C--

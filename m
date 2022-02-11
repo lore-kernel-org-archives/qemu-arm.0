@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id f16sm7703389eds.0.2022.02.11.08.03.10
+        by smtp.gmail.com with ESMTPSA id 5sm22328ejr.200.2022.02.11.08.03.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 11 Feb 2022 08:03:10 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B25611FFB8;
+	by zen.linaroharston (Postfix) with ESMTP id 9A2F21FFB7;
 	Fri, 11 Feb 2022 16:03:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -16,91 +16,68 @@ Cc: fam@euphon.net,
 	stefanha@redhat.com,
 	crosa@redhat.com,
 	qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH  v1 01/11] tests/docker: restore TESTS/IMAGES filtering
-Date: Fri, 11 Feb 2022 16:02:59 +0000
-Message-Id: <20220211160309.335014-2-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH  v1 00/11] testing/next (docker, lcitool, ci, tcg)
+Date: Fri, 11 Feb 2022 16:02:58 +0000
+Message-Id: <20220211160309.335014-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220211160309.335014-1-alex.bennee@linaro.org>
-References: <20220211160309.335014-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: wgMn2U+iyTUe
+X-TUID: g8URa0+AnGF6
 
-This was broken in the re-factor:
+Hi,
 
-  e86c9a64f4 ("tests/docker/Makefile.include: add a generic docker-run target")
+This is the current state of my testing/next tree which introduces a
+few different things:
 
-Rather than unwind the changes just apply the filters to the total set
-of available images and tests. That way we don't inadvertently build
-images only not to use them later.
+ - some cleanups to IMAGE/TEST filtering
+ - use lcitool to generate a new debian-arm64-cross
+ - a messy attempt to enable aarch32 gitlab runners
+ - some tests to better exercise TCGv_vec code
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reported-by: Alex Williamson <alex.williamson@redhat.com>
----
- tests/docker/Makefile.include | 20 ++++++++++++--------
- 1 file changed, 12 insertions(+), 8 deletions(-)
+All patches could do with some review.
 
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index f1a0c5db7a..0ec59b2193 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -8,13 +8,19 @@ COMMA := ,
- 
- HOST_ARCH = $(if $(ARCH),$(ARCH),$(shell uname -m))
- 
-+# These variables can be set by the user to limit the set of docker
-+# images and tests to a more restricted subset
-+TESTS ?= %
-+IMAGES ?= %
-+
- DOCKER_SUFFIX := .docker
- DOCKER_FILES_DIR := $(SRC_PATH)/tests/docker/dockerfiles
- # we don't run tests on intermediate images (used as base by another image)
- DOCKER_PARTIAL_IMAGES := debian10 debian11
- # we don't directly build virtual images (they are used to build other images)
- DOCKER_VIRTUAL_IMAGES := debian-bootstrap debian-toolchain empty
--DOCKER_IMAGES := $(sort $(filter-out $(DOCKER_VIRTUAL_IMAGES), $(notdir $(basename $(wildcard $(DOCKER_FILES_DIR)/*.docker)))))
-+__IMAGES := $(sort $(filter-out $(DOCKER_VIRTUAL_IMAGES), $(notdir $(basename $(wildcard $(DOCKER_FILES_DIR)/*.docker)))))
-+DOCKER_IMAGES := $(if $(IMAGES), $(filter $(IMAGES), $(__IMAGES)), $(__IMAGES))
- DOCKER_TARGETS := $(patsubst %,docker-image-%,$(DOCKER_IMAGES))
- # Use a global constant ccache directory to speed up repetitive builds
- DOCKER_CCACHE_DIR := $$HOME/.cache/qemu-docker-ccache
-@@ -23,16 +29,14 @@ DOCKER_DEFAULT_REGISTRY := registry.gitlab.com/qemu-project/qemu
- endif
- DOCKER_REGISTRY := $(if $(REGISTRY),$(REGISTRY),$(DOCKER_DEFAULT_REGISTRY))
- 
--DOCKER_TESTS := $(notdir $(shell \
--	find $(SRC_PATH)/tests/docker/ -name 'test-*' -type f))
-+__TESTS := $(notdir $(shell \
-+		find $(SRC_PATH)/tests/docker/ -name 'test-*' -type f))
-+DOCKER_TESTS := $(if $(TESTS), $(filter $(TESTS), $(__TESTS)), $(__TESTS))
- 
- ENGINE := auto
- 
- DOCKER_SCRIPT=$(SRC_PATH)/tests/docker/docker.py --engine $(ENGINE)
- 
--TESTS ?= %
--IMAGES ?= %
--
- CUR_TIME := $(shell date +%Y-%m-%d-%H.%M.%S.$$$$)
- DOCKER_SRC_COPY := $(BUILD_DIR)/docker-src.$(CUR_TIME)
- 
-@@ -274,8 +278,8 @@ endif
- 	@echo '    TARGET_LIST=a,b,c    Override target list in builds.'
- 	@echo '    EXTRA_CONFIGURE_OPTS="..."'
- 	@echo '                         Extra configure options.'
--	@echo '    IMAGES="a b c ..":   Filters which images to build or run.'
--	@echo '    TESTS="x y z .."     Filters which tests to run (for docker-test).'
-+	@echo '    IMAGES="a b c ..":   Restrict available images to subset.'
-+	@echo '    TESTS="x y z .."     Restrict available tests to subset.'
- 	@echo '    J=[0..9]*            Overrides the -jN parameter for make commands'
- 	@echo '                         (default is 1)'
- 	@echo '    DEBUG=1              Stop and drop to shell in the created container'
+Alex Bennée (11):
+  tests/docker: restore TESTS/IMAGES filtering
+  tests/docker: add NOUSER for alpine image
+  tests/lcitool: update to latest version
+  tests/docker: update debian-arm64-cross with lci-tool
+  tests/docker: introduce debian-riscv64-test-cross
+  scripts/ci: add build env rules for aarch32 on aarch64
+  scripts/ci: allow for a secondary runner
+  gitlab: add a new aarch32 custom runner definition
+  tests/tcg: build sha1-vector with O3 and compare
+  tests/tcg: add sha512 test
+  tests/tcg: add vectorised sha512 versions
+
+ docs/devel/ci-jobs.rst.inc                    |   7 +
+ tests/tcg/multiarch/sha512.c                  | 990 ++++++++++++++++++
+ .gitlab-ci.d/container-cross.yml              |  17 +-
+ .../custom-runners/ubuntu-20.40-aarch32.yml   |  23 +
+ scripts/ci/setup/build-environment.yml        |  25 +
+ scripts/ci/setup/gitlab-runner.yml            |  34 +
+ tests/docker/Makefile.include                 |  28 +-
+ .../dockerfiles/debian-arm64-cross.docker     | 186 +++-
+ .../debian-arm64-test-cross.docker            |  13 -
+ .../debian-riscv64-test-cross.docker          |  12 +
+ tests/docker/dockerfiles/opensuse-leap.docker |   3 +-
+ tests/docker/dockerfiles/ubuntu1804.docker    |   3 +-
+ tests/docker/dockerfiles/ubuntu2004.docker    |   3 +-
+ tests/lcitool/libvirt-ci                      |   2 +-
+ tests/lcitool/refresh                         |  11 +
+ tests/tcg/aarch64/Makefile.target             |  17 +
+ tests/tcg/arm/Makefile.target                 |  17 +
+ tests/tcg/configure.sh                        |   4 +-
+ tests/tcg/i386/Makefile.target                |   6 +
+ tests/tcg/ppc64le/Makefile.target             |   5 +-
+ tests/tcg/s390x/Makefile.target               |   9 +
+ tests/tcg/x86_64/Makefile.target              |   7 +
+ 22 files changed, 1353 insertions(+), 69 deletions(-)
+ create mode 100644 tests/tcg/multiarch/sha512.c
+ create mode 100644 .gitlab-ci.d/custom-runners/ubuntu-20.40-aarch32.yml
+ delete mode 100644 tests/docker/dockerfiles/debian-arm64-test-cross.docker
+ create mode 100644 tests/docker/dockerfiles/debian-riscv64-test-cross.docker
+
 -- 
 2.30.2

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id e18sm11586801edj.85.2022.02.11.08.03.10
+        by smtp.gmail.com with ESMTPSA id j6sm11090893edl.98.2022.02.11.08.03.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 11 Feb 2022 08:03:14 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id ECC0E1FFBB;
-	Fri, 11 Feb 2022 16:03:09 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 4ACC41FFBE;
+	Fri, 11 Feb 2022 16:03:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: fam@euphon.net,
@@ -20,75 +20,71 @@ Cc: fam@euphon.net,
 	Thomas Huth <thuth@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH  v1 03/11] tests/lcitool: update to latest version
-Date: Fri, 11 Feb 2022 16:03:01 +0000
-Message-Id: <20220211160309.335014-4-alex.bennee@linaro.org>
+Subject: [PATCH  v1 06/11] scripts/ci: add build env rules for aarch32 on aarch64
+Date: Fri, 11 Feb 2022 16:03:04 +0000
+Message-Id: <20220211160309.335014-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220211160309.335014-1-alex.bennee@linaro.org>
 References: <20220211160309.335014-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: RVsOAeZC0WqX
+X-TUID: OrGRta/JrJmj
 
-We will need an update shortly for some new images.
+At least the current crop of Aarch64 HW can support running 32 bit EL0
+code. Before we can build and test we need a minimal set of packages
+installed. We can't use "apt build-dep" because it currently gets
+confused trying to keep two sets of build-deps installed at once.
+Instead we install a minimal set of libraries that will allow us to
+continue.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/dockerfiles/opensuse-leap.docker | 3 +--
- tests/docker/dockerfiles/ubuntu1804.docker    | 3 +--
- tests/docker/dockerfiles/ubuntu2004.docker    | 3 +--
- tests/lcitool/libvirt-ci                      | 2 +-
- 4 files changed, 4 insertions(+), 7 deletions(-)
+ scripts/ci/setup/build-environment.yml | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/tests/docker/dockerfiles/opensuse-leap.docker b/tests/docker/dockerfiles/opensuse-leap.docker
-index 1b78d8369a..e1ad9434a3 100644
---- a/tests/docker/dockerfiles/opensuse-leap.docker
-+++ b/tests/docker/dockerfiles/opensuse-leap.docker
-@@ -127,8 +127,7 @@ RUN zypper update -y && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/g++ && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
+diff --git a/scripts/ci/setup/build-environment.yml b/scripts/ci/setup/build-environment.yml
+index 599896cc5b..9182e0c253 100644
+--- a/scripts/ci/setup/build-environment.yml
++++ b/scripts/ci/setup/build-environment.yml
+@@ -19,6 +19,13 @@
+           - '((ansible_version.major == 2) and (ansible_version.minor >= 8)) or (ansible_version.major >= 3)'
+         msg: "Unsuitable ansible version, please use version 2.8.0 or later"
  
--RUN pip3 install \
--         meson==0.56.0
-+RUN pip3 install meson==0.56.0
++    - name: Add armhf foreign architecture to aarch64 hosts
++      command: dpkg --add-architecture armhf
++      when:
++        - ansible_facts['distribution'] == 'Ubuntu'
++        - ansible_facts['architecture'] == 'aarch64'
++        - ansible_facts['distribution_version'] == '20.04'
++
+     - name: Update apt cache / upgrade packages via apt
+       apt:
+         update_cache: yes
+@@ -115,6 +122,24 @@
+         - ansible_facts['distribution'] == 'Ubuntu'
+         - ansible_facts['distribution_version'] == '20.04'
  
- ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
-diff --git a/tests/docker/dockerfiles/ubuntu1804.docker b/tests/docker/dockerfiles/ubuntu1804.docker
-index 699f2dfc6a..0a622b467c 100644
---- a/tests/docker/dockerfiles/ubuntu1804.docker
-+++ b/tests/docker/dockerfiles/ubuntu1804.docker
-@@ -134,8 +134,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/g++ && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
- 
--RUN pip3 install \
--         meson==0.56.0
-+RUN pip3 install meson==0.56.0
- 
- ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
-diff --git a/tests/docker/dockerfiles/ubuntu2004.docker b/tests/docker/dockerfiles/ubuntu2004.docker
-index 87513125b8..b9d06cb040 100644
---- a/tests/docker/dockerfiles/ubuntu2004.docker
-+++ b/tests/docker/dockerfiles/ubuntu2004.docker
-@@ -136,8 +136,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/g++ && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
- 
--RUN pip3 install \
--         meson==0.56.0
-+RUN pip3 install meson==0.56.0
- 
- ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
-diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
-index 6dd9b6fab1..f83b916d5e 160000
---- a/tests/lcitool/libvirt-ci
-+++ b/tests/lcitool/libvirt-ci
-@@ -1 +1 @@
--Subproject commit 6dd9b6fab1fe081b16bc975485d7a02c81ba5fbe
-+Subproject commit f83b916d5efa4bd33fbf4b7ea41bf6d535cc63fb
++    - name: Install armhf cross-compile packages to build QEMU on AArch64 Ubuntu 20.04
++      package:
++        name:
++          - binutils-arm-linux-gnueabihf
++          - gcc-arm-linux-gnueabihf
++          - libblkid-dev:armhf
++          - libc6-dev:armhf
++          - libffi-dev:armhf
++          - libglib2.0-dev:armhf
++          - libmount-dev:armhf
++          - libpcre2-dev:armhf
++          - libpixman-1-dev:armhf
++          - zlib1g-dev:armhf
++      when:
++        - ansible_facts['distribution'] == 'Ubuntu'
++        - ansible_facts['distribution_version'] == '20.04'
++        - ansible_facts['architecture'] == 'aarch64'
++
+     - name: Install basic packages to build QEMU on EL8
+       dnf:
+         # This list of packages start with tests/docker/dockerfiles/centos8.docker
 -- 
 2.30.2

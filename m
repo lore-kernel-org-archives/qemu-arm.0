@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id gk6sm5210778ejb.159.2022.02.11.08.03.12
+        by smtp.gmail.com with ESMTPSA id c10sm6891142edr.6.2022.02.11.08.03.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Feb 2022 08:03:14 -0800 (PST)
+        Fri, 11 Feb 2022 08:03:23 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6B2FF1FFBF;
+	by zen.linaroharston (Postfix) with ESMTP id 92E321FFC1;
 	Fri, 11 Feb 2022 16:03:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -17,73 +17,72 @@ Cc: fam@euphon.net,
 	crosa@redhat.com,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH  v1 07/11] scripts/ci: allow for a secondary runner
-Date: Fri, 11 Feb 2022 16:03:05 +0000
-Message-Id: <20220211160309.335014-8-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v1 09/11] tests/tcg: build sha1-vector with O3 and compare
+Date: Fri, 11 Feb 2022 16:03:07 +0000
+Message-Id: <20220211160309.335014-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220211160309.335014-1-alex.bennee@linaro.org>
 References: <20220211160309.335014-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: UfiIFq699LBU
+X-TUID: Xo+IRV3kjXlP
 
-Some HW can run multiple architecture profiles so we can install a
-secondary runner to build and run tests for those profiles. This
-allows setting up secondary service.
+The aim of this is to test code generation for vectorised operations.
+Unfortunately gcc struggles to do much with the messy sha1 code (try
+-fopt-info-vec-missed to see why). However it's better than nothing.
 
-[AJB: this is a fairly ugly hack, I'm sure this could be expressed in
-a neater way]
+We assume the non-vectorised output is gold and baring compiler bugs
+the outputs should match.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20220202191242.652607-3-alex.bennee@linaro.org>
 ---
- scripts/ci/setup/gitlab-runner.yml | 34 ++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ tests/tcg/aarch64/Makefile.target | 10 ++++++++++
+ tests/tcg/arm/Makefile.target     |  9 +++++++++
+ 2 files changed, 19 insertions(+)
 
-diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
-index 1127db516f..19bfd68f7e 100644
---- a/scripts/ci/setup/gitlab-runner.yml
-+++ b/scripts/ci/setup/gitlab-runner.yml
-@@ -69,3 +69,37 @@
-         name: gitlab-runner
-         state: started
-         enabled: yes
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 1d967901bd..df3f8e9438 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -50,6 +50,16 @@ sysregs: CFLAGS+=-march=armv8.1-a+sve
+ AARCH64_TESTS += sve-ioctls
+ sve-ioctls: CFLAGS+=-march=armv8.1-a+sve
+ 
++# Vector SHA1
++sha1-vector: CFLAGS=-O3
++sha1-vector: sha1.c
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
++run-sha1-vector: sha1-vector run-sha1
++	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<, "$< on $(TARGET_NAME)")
++	$(call diff-out, sha1-vector, sha1.out)
 +
-+    - name: Download secondary gitlab-runner
-+      get_url:
-+        dest: /usr/local/bin/gitlab-runner-arm
-+        url: "https://s3.amazonaws.com/gitlab-runner-downloads/v{{ gitlab_runner_version  }}/binaries/gitlab-runner-{{ gitlab_runner_os }}-arm"
-+        owner: gitlab-runner
-+        group: gitlab-runner
-+        mode: u=rwx,g=rwx,o=rx
-+      when:
-+        - ansible_facts['distribution'] == 'Ubuntu'
-+        - ansible_facts['architecture'] == 'aarch64'
-+        - ansible_facts['distribution_version'] == '20.04'
++TESTS += sha1-vector
 +
-+    - name: Register secondary gitlab-runner
-+      command: "/usr/local/bin/gitlab-runner-arm register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list aarch32,{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
+ ifneq ($(HAVE_GDB_BIN),)
+ GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
+ 
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index f509d823d4..2dc94931c3 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -70,6 +70,15 @@ endif
+ 
+ ARM_TESTS += commpage
+ 
++# Vector SHA1
++sha1-vector: CFLAGS=-O3
++sha1-vector: sha1.c
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
++run-sha1-vector: sha1-vector run-sha1
++	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<, "$< on $(TARGET_NAME)")
++	$(call diff-out, sha1-vector, sha1.out)
 +
-+    - name: Install the secondary gitlab-runner service using its own functionality
-+      command: /usr/local/bin/gitlab-runner-arm install --user gitlab-runner --working-directory /home/gitlab-runner/arm -n gitlab-runner-arm
-+      register: gitlab_runner_install_service_result
-+      failed_when: "gitlab_runner_install_service_result.rc != 0 and \"already exists\" not in gitlab_runner_install_service_result.stderr"
-+      when:
-+        - ansible_facts['distribution'] == 'Ubuntu'
-+        - ansible_facts['architecture'] == 'aarch64'
-+        - ansible_facts['distribution_version'] == '20.04'
-+
-+    - name: Enable the secondary gitlab-runner service
-+      service:
-+        name: gitlab-runner-arm
-+        state: started
-+        enabled: yes
-+      when:
-+        - ansible_facts['distribution'] == 'Ubuntu'
-+        - ansible_facts['architecture'] == 'aarch64'
-+        - ansible_facts['distribution_version'] == '20.04'
++ARM_TESTS += sha1-vector
+ TESTS += $(ARM_TESTS)
+ 
+ # On ARM Linux only supports 4k pages
 -- 
 2.30.2

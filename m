@@ -1,169 +1,113 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp2459719lfk;
-        Fri, 11 Feb 2022 10:09:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwXJXNSlbQRzYYVDbRgFi+xwcINYEV/ycjzOc5eXvqoOvNF7pUV8qMmNJAkKvhS673Zz0Ew
-X-Received: by 2002:a81:7046:: with SMTP id l67mr2966230ywc.303.1644602963229;
-        Fri, 11 Feb 2022 10:09:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644602963; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp2557998lfk;
+        Fri, 11 Feb 2022 13:08:50 -0800 (PST)
+X-Received: by 2002:a05:6a00:14cf:: with SMTP id w15mr3421405pfu.53.1644613730266;
+        Fri, 11 Feb 2022 13:08:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644613730; cv=none;
         d=google.com; s=arc-20160816;
-        b=VSJmBBiqt/SarxbZptzHFBcHU4dEEeanRVVJoQOjapX+UbkeXbuStG8XqrBZo2IWty
-         Vmjesg4dPz3KIHLES98N9alLeGlBVMgolXfrGrp/heaFpPLmsbhhuUdCCk712X3Ligua
-         Wk0jbkS3SNvuV+PYFhqfchbbiK3hHXC24dk+0RjVSIAzQ3wu/SJqJxoD0i1A+vfbf99T
-         pzwaz7YEcy8/F1kH/npF9U9UzT4JdSv+xgzfd177mvXWmw0V25HS7l/CMAmbQfzVj5K7
-         T8evrSnjuK9LMqKAg2IYvTL4/wvdsPHvpCJhgzXaqexBvG4R1DiAo7wj6akC2sxhcRUq
-         QjJg==
+        b=u5ubyK4+eXA9nypGi9cOnpDq5McV48x9ClL/8RvU7MwegmkKy9Z8oTjoUtNBEFFL1v
+         pOMZXEJ3Z2ovFxlQ5jtE34drmaM+3iXrLgIf7nr6tKVYWVRl1/Ns8rqb6TJdz364gtr+
+         WSb5wKK59MRWcz9p5otccrq71sPzY/b7EaX1/eBmLo67r+Azi9R/OI5WOqi43uHZiNhI
+         6mQE+O6aLplrtiPSPDrhd8wGnlqEvUi0kgM4Cf5oseK5GLnYyW1Fdpnrv50HaPo+/0PK
+         VNymv3gN7clDcCycKeIW99q/DyJAL5vk7s3c1rtn0FvjDrxCyf6bGD0LSlzdCyKIKbt6
+         NM6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-disposition:user-agent
-         :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=AeU/fB1grqCZm2OZfuQDH//aao0QgUotcd6h2nL3858=;
-        b=DkrBgtP2u/84+HToF81Ap0BYoNylEQ8f7PU0EK1OP7PhnAxztCXZYnA/lkOteRzBTX
-         x/AV/bte8NwBgGjPody2zcVNVH5XdqenZWAREt+o/03QHTyqVHrQ12YStDyydd5wZKHJ
-         /lYytYL1iZAz+LioI3hSSq/ddv0cD1jwEryTD88f7GBfYQhcSmrIcAensNsWVCCYguHx
-         vDjQhuB1Z1OYEr+l575ftibr9zpwKFd+E8TAe0XuUN+vEfNlsUduCJFisn4p1OspJQ8k
-         FCUwF1r6585BXmPcnTcvYhGY1FOlb8aE2E/jNy5esm+Qcdti4H8Kcxe3/FBMzBTGDhJR
-         hFVg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=KvBmh/CZ/sWwt72gvRM5m4DRUd8nt0syzXPJsN+auJ8=;
+        b=eynCYPye7+Qn/88W0s03qIRYGkin1PHaFlsaxEdEWeMvEihgBaA9wWmpe1QAA6ukzF
+         gu/VhbsoHyoNU50eW8oYxAR48Iqu63KvQXoSn0UEslFMEoz9FmiI1XOOlaHn2AVwwR8Z
+         ZsQ1RZMCvNVh3Wu+yP75K2Qkii7KN67vzIvtmpqvDyw6+21AoPBnT/AX0TVcqhVo6smJ
+         hglujFO6nPhUMjAtKXKRFXtxBpN+ChP2o4q7KLoRhsRvDlFeOA289LvKMvi4dWHSbKSP
+         h2XCt9oV1ltBcrWvlSMlv7Lp1AM+adyOJrw4/jmpSKC0RyQpUx2wpHzAYcl0FEJvDCDh
+         F5oQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S0l1fArt;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id v184si16655135ybc.287.2022.02.11.10.09.22
+       dkim=pass header.i=@linaro.org header.s=google header.b="AOs/PwuR";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i3sor11779384pgq.18.2022.02.11.13.08.49
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 11 Feb 2022 10:09:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Fri, 11 Feb 2022 13:08:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S0l1fArt;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1644602962;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AeU/fB1grqCZm2OZfuQDH//aao0QgUotcd6h2nL3858=;
-	b=S0l1fArtoyovl/YTHSLoR2DBrULclUqZW+ggboM3s83o3rn/FsSvy4xQ1XLDorofdTMWcu
-	97khFtKmKXaK+tSdr/xrlpScXkkvMXu+5nj9dj2wPfX8xPs/cSREKvBLo37b48EkecjknB
-	6hJQecfG0b+2pJxHWa3fHsxqSZ9rAlM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-119-Owi-pmM0ODqIV9Capm-wig-1; Fri, 11 Feb 2022 13:09:14 -0500
-X-MC-Unique: Owi-pmM0ODqIV9Capm-wig-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1B1448144E0;
-	Fri, 11 Feb 2022 18:09:13 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.156])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 258E77E11E;
-	Fri, 11 Feb 2022 18:08:50 +0000 (UTC)
-Date: Fri, 11 Feb 2022 18:08:48 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, fam@euphon.net, f4bug@amsat.org,
-	aurelien@aurel32.net, pbonzini@redhat.com, stefanha@redhat.com,
-	crosa@redhat.com, qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: Re: [PATCH  v1 02/11] tests/docker: add NOUSER for alpine image
-Message-ID: <YgamMKSpfg9Zskc0@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20220211160309.335014-1-alex.bennee@linaro.org>
- <20220211160309.335014-3-alex.bennee@linaro.org>
- <YgaNZyojexpreBWj@redhat.com>
- <87o83dcmjl.fsf@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="AOs/PwuR";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=KvBmh/CZ/sWwt72gvRM5m4DRUd8nt0syzXPJsN+auJ8=;
+        b=AOs/PwuRLawJZ+D4XIJnBJHG9YUlqHod8Qk4EoWV7iJauIS9PRyz97NrfhB7bp+DhM
+         Xm3NpNN91Fn+touE8m8MgoRGZki4zTtwjl8KHxPSNzUFOaZXr7waVv03OQQTMpMU+Xd3
+         K7K36PYTx3zWdABj1bTrdJ55J1sgRPVgZou0BJR3KDsQnIMXAaMwYFqrk2lTk/M6bUI2
+         9Xik+e35PGVogtjXB4aG63d2vEaBADbQaoRJeRyAiFfXP9pOZ/Xpzc/l+k1j5ZiBw3jB
+         RmJmY89LJZXLW3ugdk7BvoBRYxX2VWOjs/TLDm0Pv+Oba1uoqIUHbUz9oxqudENw7Jdm
+         f4Fg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=KvBmh/CZ/sWwt72gvRM5m4DRUd8nt0syzXPJsN+auJ8=;
+        b=lpmmjuKj9IjVnwTME5S8biSULZ29twU4+ORgF5GF9U3UvtXybLldJitHNvG4Mm5eOK
+         r2RxYbYpYcmWFi24OWU8821qniImIsPC6+z1Ld6jx/Fteaue25wqMQee//FxdQJRG0Ss
+         PEIGRrpnUESRzcUhoQmcbP5r2kTTGndzO9N+hBn4l3jU5sXsHkg1n3r/Vx8q8qNi2w/Q
+         wByj+EJkrEXcDAHB4xayrBx0st8bDM4Mjs470+gicrOraAtyyz0otgyKArsjXcfaAuMd
+         owvfGGXXo/kKfkDNLCEz1UdxRev/z2afaaHFFT5aTmP4zhs0f0EjlsLsKloCxVNXxlb3
+         JzdA==
+X-Gm-Message-State: AOAM5309nAdi5pufr2Lors85cvhlXQhxTq1+QK5vaNegOr+DECNrkuya
+	SkIrP9aq2hrQzcir/Hd2pkh17CoR5t6l1imbEs8=
+X-Google-Smtp-Source: ABdhPJweSddqvOBLG7DbRTZePJO2Msv0n/5fqZ6ytcxNkJw5D9VNmTrBA3RyJLmW4N4g4lQosygGdA==
+X-Received: by 2002:a63:69c1:: with SMTP id e184mr2829747pgc.495.1644613729695;
+        Fri, 11 Feb 2022 13:08:49 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [10.0.0.163] ([124.189.222.164])
+        by smtp.gmail.com with ESMTPSA id h10sm29238609pfc.103.2022.02.11.13.08.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Feb 2022 13:08:48 -0800 (PST)
+Message-ID: <f89c70d5-6159-9dd0-0bd2-00efdca12b3c@linaro.org>
+Date: Sat, 12 Feb 2022 08:08:36 +1100
 MIME-Version: 1.0
-In-Reply-To: <87o83dcmjl.fsf@linaro.org>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v1 04/11] tests/docker: update debian-arm64-cross with
+ lci-tool
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: fam@euphon.net, Thomas Huth <thuth@redhat.com>, berrange@redhat.com,
+ Beraldo Leal <bleal@redhat.com>, f4bug@amsat.org,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
+ stefanha@redhat.com, crosa@redhat.com, pbonzini@redhat.com,
+ aurelien@aurel32.net
+References: <20220211160309.335014-1-alex.bennee@linaro.org>
+ <20220211160309.335014-5-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220211160309.335014-5-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: u5Wrikjg22WQ
+X-TUID: mZAoBEF54HMY
 
-On Fri, Feb 11, 2022 at 05:51:25PM +0000, Alex Bennée wrote:
+On 2/12/22 03:03, Alex Bennée wrote:
+> Using lci-tool update debian-arm64-cross to a Debian 11 based system.
+> As a result we can drop debian-arm64-test-cross just for building
+> tests.
 > 
-> Daniel P. Berrangé <berrange@redhat.com> writes:
-> 
-> > On Fri, Feb 11, 2022 at 04:03:00PM +0000, Alex Bennée wrote:
-> >> The alpine image doesn't have a standard useradd binary so disable
-> >> this convenience feature for it.
-> >
-> > Hmm, can you elaborate on the problem here ?
-> >
-> > IIUC, the NOUSER env was just about controlling what docker
-> > flags we added. I didn't know it had a dependancy on stuff
-> > inside the image ?
-> 
-> The docker.py script expands the dockerfiles with a:
-> 
->   "RUN id %s 2>/dev/null || useradd -u %d -U %s"
-> 
-> when they are built so when they are invoked for building TCG tests they
-> won't mess up permissions of the final files. It is a useful convenience
-> for the other images as well so you can access compilers and tools with
-> something like:
-> 
->   docker run --rm -it -u (id -u) -v $HOME:$HOME -w (pwd) qemu/debian-arm64-cross /bin/bash
-> 
-> however it's not required for the normal cross-compile tests as they are
-> all done inside the docker image. The alpine image being slim doesn't
-> have this nicety although there is an adduser binary. However given we
-> don't use alpine for TCG tests I demurred from adding more complexity to
-> docker.py to handle it.
+> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
+> ---
+>   .gitlab-ci.d/container-cross.yml              |  10 +-
+>   tests/docker/Makefile.include                 |   3 -
+>   .../dockerfiles/debian-arm64-cross.docker     | 186 +++++++++++++++---
+>   .../debian-arm64-test-cross.docker            |  13 --
+>   tests/lcitool/refresh                         |  11 ++
+>   tests/tcg/configure.sh                        |   2 +-
+>   6 files changed, 173 insertions(+), 52 deletions(-)
+>   delete mode 100644 tests/docker/dockerfiles/debian-arm64-test-cross.docker
 
-Ah, I understand now, so
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-
-
-
-> 
-> >
-> >> 
-> >> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> >> ---
-> >>  tests/docker/Makefile.include | 3 +++
-> >>  1 file changed, 3 insertions(+)
-> >> 
-> >> diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-> >> index 0ec59b2193..286f0ac5b5 100644
-> >> --- a/tests/docker/Makefile.include
-> >> +++ b/tests/docker/Makefile.include
-> >> @@ -158,6 +158,9 @@ docker-image-debian-native: DOCKER_REGISTRY=
-> >>  docker-image-debian10: NOUSER=1
-> >>  docker-image-debian11: NOUSER=1
-> >>  
-> >> +# alpine has no adduser
-> >> +docker-image-alpine: NOUSER=1
-> >> +
-> >>  #
-> >>  # The build rule for hexagon-cross is special in so far for most of
-> >>  # the time we don't want to build it. While dockers caching does avoid
-> >> -- 
-> >> 2.30.2
-> >> 
-> >
-> > Regards,
-> > Daniel
-> 
-> 
-> -- 
-> Alex Bennée
-> 
-
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+r~

@@ -1,543 +1,97 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp1678778lfk;
-        Thu, 10 Feb 2022 08:46:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwdgCuXWMZNLmz07uX1SwlNxI16V0YIEhdRPJITxFvoQOMqfTagg3gHssGuNB6G1h2Oe75e
-X-Received: by 2002:a25:e30b:: with SMTP id z11mr7923117ybd.69.1644511582290;
-        Thu, 10 Feb 2022 08:46:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644511582; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp3020106lfk;
+        Sat, 12 Feb 2022 07:57:13 -0800 (PST)
+X-Received: by 2002:a05:600c:1d06:: with SMTP id l6mr4534620wms.80.1644681433872;
+        Sat, 12 Feb 2022 07:57:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644681433; cv=none;
         d=google.com; s=arc-20160816;
-        b=czzuA4IsUy9IpXmXnkqABVPXWpRLT41FQqRtBt5VKpbof2k4M+fncUDI0UMYzD9U87
-         ZZCaDZcR+X3N7Wjttl9zSrb/4zwNIN10wevlw5Yl5XYcWSj7DMlJMGL9V49KCFiwK/Q/
-         bc49ziLLow7ejw59s5a9+pxJFEMIjLCoaGO7DZsmgL0Zf6ENRi6rzI6pAIfwbF+4s/tA
-         /+V+IBnoVE04tDHyfivjfznpruXhP563JCcVQFslzQbRtC/+cSTTZhizr3yCB6SazuKn
-         pDhE7XgOYWk0BWbkJsPc/k4TSxTSkoXKUyQ7N9syCrlMnUbxMyETVIbFvDQX9gCYhrRH
-         1pTQ==
+        b=GiHjdzt9tdK2seWBNNpkl2IP7nzEToJMs3GFPIt1A3ktkKja1HJK4YbHfN9dHxYxCw
+         JF+5J3Z1oi2n5T/JvJmKhwh3m/5GyE50l5VOlkx+XVfP1r8AUT69fYVCC76hPnr9XNdT
+         SCrXOvIkNComv3nDeRklZYtEkSMMw4t96zDvY4wu8Td+ez7kVv2sBGsYx/lc5jt+bJr6
+         oolS6dOZjSSmC80UN1OudgMPa1Y8PYjOueMmJ+ImUGo9D1FmHvE6crDgo7kcycynLEP6
+         pri01iNOG3DogkyY6mSi5A8Alpm5k8R4agACYFZtjDLsRnVxCfDakQnOE0gbvAyeisIT
+         sadg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=+aCh2kkJvhknLLztC2p4DXn6jhAqv+mgMprKYHjVA/w=;
-        b=ZbnHz4LbjdAnFe4yURRILzWPGPgTwymexAUA1lJXQVyx7nCC10BwxDFVo3JztvgBHl
-         YJ1ea0Y9eFKCnUxJNJ7Zfl21FhT7MgqBhaAWqSiHLYh6xBhEh8hae/rXt0yQUsebu8yI
-         H04OrGCtTTA8wCF04C5WCme2Z9xO3YEHEANLI5r5BHKGtovwokMNiFb3BEFa12e8MMNj
-         gaIfgYUA9XsYwcvAVfkGmWzRntL3TUHOxDku/KPkNFuXoEsBiM7G9wlo8e3Wt9sJWbxT
-         vqfjpMYINFajOPZzFDq4BzVuQUHRuXeHa/SKkLn1bkRBgMckxyDD3ZQs5Vf2IuopBce1
-         tnjw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=t1LWITgrvs85fgPYirZp9xebI6hwkvRq7J6ySJXpOig=;
+        b=qc5LvM23WGMjgnQtImBn4M1gPxsRS88at//qflk94OOzJuHMTfwgnTYIF+y5ebOZ33
+         44OHC8wNdKNTJxer9my6RA19kUioOLL/DwIW1u01t5sP9AVXf3QcJDJKPr+CpnWGumlJ
+         WRoyJw1R/jodHi2uyBz8RBauPh3RyU1v2jw5A81jGG++GgmRJ5WFuSJqjMM/R3FPGIeA
+         XHhEt4tLYVqrgT4ZWHZTCQooivjmVxws+Y3nSrVOa+fCsWfcQB8R80f4Sw1Af6thNV0D
+         jQ2AvZByYD3YnUDrDgrXWcgac2cofNFvt9SIM0eNXV8wH48L1wQe3oIvBEta9naJgzXW
+         5mcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O1i05BZU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i187si14515160ybc.289.2022.02.10.08.46.22
+       dkim=pass header.i=@linaro.org header.s=google header.b=g302h8Pr;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l2sor3494621wmq.22.2022.02.12.07.57.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Feb 2022 08:46:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 12 Feb 2022 07:57:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O1i05BZU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35308 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nICaK-0003mP-LA
-	for alex.bennee@linaro.org; Thu, 10 Feb 2022 11:46:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40836)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1nIAp6-0005pJ-Hw
- for qemu-arm@nongnu.org; Thu, 10 Feb 2022 09:53:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:25112)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1nIAp1-000481-7w
- for qemu-arm@nongnu.org; Thu, 10 Feb 2022 09:53:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1644504802;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+aCh2kkJvhknLLztC2p4DXn6jhAqv+mgMprKYHjVA/w=;
- b=O1i05BZUFcCVm4uAP78KSgRKBspgvr4CndQKlq94bKxMWV13iDyJn7HK397lpfaoJVSnmd
- M8hM5aNLlMwDyRHAKwCtPyFC+xrn2LBeGeTUzATs6eeuBrOePfuWCNPhK5KvAmMsFva/K0
- 0Kb2/3HU2wE/uVfK4Kj27PrquMa0DdY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-638-kw47Dy0nNbiYbKVgoRIk-Q-1; Thu, 10 Feb 2022 09:53:18 -0500
-X-MC-Unique: kw47Dy0nNbiYbKVgoRIk-Q-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1329F83DEA8;
- Thu, 10 Feb 2022 14:53:17 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.195.249])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4B23470D5F;
- Thu, 10 Feb 2022 14:53:14 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, pbonzini@redhat.com,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
- david@gibson.dropbear.id.au, clg@kaod.org, eesposit@redhat.com,
- Coiby.Xu@gmail.com, stefanha@redhat.com
-Subject: [PATCH v3 5/5] tests/qtest/libqos: Add generic pci host bridge in
- arm-virt machine
-Date: Thu, 10 Feb 2022 15:52:54 +0100
-Message-Id: <20220210145254.157790-6-eric.auger@redhat.com>
-In-Reply-To: <20220210145254.157790-1-eric.auger@redhat.com>
-References: <20220210145254.157790-1-eric.auger@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=g302h8Pr;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=t1LWITgrvs85fgPYirZp9xebI6hwkvRq7J6ySJXpOig=;
+        b=g302h8PrW4Wcq6pvg54iZqLBmDdi4YxJVRVIxkmuqZ8gCmQZSdYDtrpzRzMC8UvWsJ
+         vgL7SF2z4q5t0pngsGQq87cppWy1qRkQgqDA4Cupp8c0CMOoExNnoRkKtJ+WbtAk4Gog
+         LE0sMgKIEOIC8FVDnxVqLmEHu49Xuj+JQRFM762FxlyWpJ7AdQwv+c8Ue1R7XLiVtnrt
+         e95FY4FtEJNNLKPCyEmD2y/oQA6Jg18ScBwAhJ8aD1SrCxv9i8bOcvZokAS1ARVgoEPS
+         IZp5XMYoJRLZrzeGr0aFdKQB62HBgqYy1WNj+cJx3jshqL8Qitsl4TTUM5PvH5dmJDgC
+         8FPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=t1LWITgrvs85fgPYirZp9xebI6hwkvRq7J6ySJXpOig=;
+        b=ASmykm7YGZ+QXk+4mwoEPdfS2lmIFHGfT49g69Lylcdmx1jG62SmKOFoL4k4vBF5NM
+         2qUFs4n04sm+SiUNf1XtolRAdGf1YBhFSGt3wQLBwPXWULvF5TB+MJ/u9/53UUOGXilV
+         W5BDjmH36Yl5eEW6b6XxXxrYfnePBL6boIsFlHiCt9qHCWAgl04Pfeo96AQwTSrytQxz
+         0KVgKA6jZLCeRjqOe9JHnaz/KPD2STdNtKtvjiQwJRpTOkA80VfM8nY6MJPIq60PrDJ8
+         F6eT/0tNy/9R/hkcRAlGERUubLZVBDsufk2f5F7DQ32MLaLQvYepGDsyl7dwhamWa2Ed
+         Ks+Q==
+X-Gm-Message-State: AOAM531GOZYTc0f0EwQreqe5V5gd/tzqNqU1OaYrXYuHaEB38R7n4o9o
+	x58gvste40kSs797ikM0FG92j5h5WPnN5w4MppAMWoj6
+X-Google-Smtp-Source: ABdhPJxxWwW7APq7RdMr+AtBeZLjSok6T/9iIhZrNlRrVEt6NEG/BoPKCC8XrzP+79RrcC2JfP3MbjvJZTMbB6w5TfU=
+X-Received: by 2002:a05:600c:354c:: with SMTP id i12mr4625001wmq.21.1644681433573;
+ Sat, 12 Feb 2022 07:57:13 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gdcIr5/iNCaB
+References: <20220210113021.3799514-1-alex.bennee@linaro.org>
+ <20220210113021.3799514-2-alex.bennee@linaro.org> <8b6fca38-8a4e-af35-f202-86a5a3f98e47@amsat.org>
+ <CAFEAcA-2=TD9FeOn9ZJLBmJJBfQhOKSTRWpOXEw0AVktWmE6vA@mail.gmail.com>
+ <878ruhedv0.fsf@linaro.org> <a45108c0-c5ed-3d98-77d2-c8b9c5c26be8@amsat.org>
+In-Reply-To: <a45108c0-c5ed-3d98-77d2-c8b9c5c26be8@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 12 Feb 2022 15:57:02 +0000
+Message-ID: <CAFEAcA_y1RLqzip15b1tFzYsSJ_2AvZjwxavJC=LAqn+vM+7dA@mail.gmail.com>
+Subject: Re: [PATCH v5 1/2] semihosting/arm-compat: replace heuristic for
+ softmmu SYS_HEAPINFO
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-devel@nongnu.org, Andrew Strauss <astrauss11@gmail.com>, 
+	Keith Packard <keithp@keithp.com>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: N6ObSub39XYH
 
-Up to now the virt-machine node contains a virtio-mmio node.
-However no driver produces any PCI interface node. Hence, PCI
-tests cannot be run with aarch64 binary.
+On Fri, 11 Feb 2022 at 16:18, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+> For user-mode, this patch makes sense. For system-mode it is
+> not obvious to make sense of SYS_HEAPINFO (except focusing in
+> cores targeting embedded systems eventually).
 
-Add a GPEX driver node that produces a pci interface node. This latter
-then can be consumed by all the pci tests. One of the first motivation
-was to be able to run the virtio-iommu-pci tests.
+The main user of semihosting in system mode is standalone
+binaries compiled with the gnu toolchain using a newlib
+that targets semihosting. These generally use SYS_HEAPINFO
+on startup to find out where to put the stack etc, rather
+than hardwiring it in the linker map. This applies to both
+M-profile and A-profile.
 
-We still face an issue with pci hotplug tests as hotplug cannot happen
-on the pcie root bus and require a generic root port. This will be
-addressed later on.
-
-We force cpu=max along with aarch64/virt machine as some PCI tests
-require high MMIO regions to be available.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
----
-v2 -> v3:
-- force cpu=max with aarch64/virt
-
-v1 -> v2:
-- copyright updated to 2022
-- QPCIBusARM renamed into QGenericPCIBus
-- QGenericPCIHost declarations and definitions moved in the same
-  place as the generic pci implementation
-- rename pci-arm.c/h in generic-pcihost.c/h and remove any ref to
-  ARM there
-- remove qos_node_produces_opts, qpci_new_arm, qpci_free_arm
-- ecam_alloc_ptr now is a field of QGenericPCIBus and not QPCIBus
-- new libqos_init to create generic-pcihost driver that contains
-  pci-bus-generic
-- QGenericPCIHost moved in the same place as the generic pci
-  bindings
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- tests/qtest/libqos/arm-virt-machine.c |  19 ++-
- tests/qtest/libqos/generic-pcihost.c  | 231 ++++++++++++++++++++++++++
- tests/qtest/libqos/generic-pcihost.h  |  54 ++++++
- tests/qtest/libqos/meson.build        |   1 +
- 4 files changed, 301 insertions(+), 4 deletions(-)
- create mode 100644 tests/qtest/libqos/generic-pcihost.c
- create mode 100644 tests/qtest/libqos/generic-pcihost.h
-
-diff --git a/tests/qtest/libqos/arm-virt-machine.c b/tests/qtest/libqos/arm-virt-machine.c
-index e0f5932284..96da0dde54 100644
---- a/tests/qtest/libqos/arm-virt-machine.c
-+++ b/tests/qtest/libqos/arm-virt-machine.c
-@@ -22,6 +22,8 @@
- #include "malloc.h"
- #include "qgraph.h"
- #include "virtio-mmio.h"
-+#include "generic-pcihost.h"
-+#include "hw/pci/pci_regs.h"
- 
- #define ARM_PAGE_SIZE               4096
- #define VIRTIO_MMIO_BASE_ADDR       0x0A003E00
-@@ -35,6 +37,7 @@ struct QVirtMachine {
-     QOSGraphObject obj;
-     QGuestAllocator alloc;
-     QVirtioMMIODevice virtio_mmio;
-+    QGenericPCIHost bridge;
- };
- 
- static void virt_destructor(QOSGraphObject *obj)
-@@ -57,11 +60,13 @@ static void *virt_get_driver(void *object, const char *interface)
- static QOSGraphObject *virt_get_device(void *obj, const char *device)
- {
-     QVirtMachine *machine = obj;
--    if (!g_strcmp0(device, "virtio-mmio")) {
-+    if (!g_strcmp0(device, "generic-pcihost")) {
-+        return &machine->bridge.obj;
-+    } else if (!g_strcmp0(device, "virtio-mmio")) {
-         return &machine->virtio_mmio.obj;
-     }
- 
--    fprintf(stderr, "%s not present in arm/virtio\n", device);
-+    fprintf(stderr, "%s not present in arm/virt\n", device);
-     g_assert_not_reached();
- }
- 
-@@ -76,16 +81,22 @@ static void *qos_create_machine_arm_virt(QTestState *qts)
-     qvirtio_mmio_init_device(&machine->virtio_mmio, qts, VIRTIO_MMIO_BASE_ADDR,
-                              VIRTIO_MMIO_SIZE);
- 
-+    qos_create_generic_pcihost(&machine->bridge, qts, &machine->alloc);
-+
-     machine->obj.get_device = virt_get_device;
-     machine->obj.get_driver = virt_get_driver;
-     machine->obj.destructor = virt_destructor;
-     return machine;
- }
- 
--static void virtio_mmio_register_nodes(void)
-+static void virt_machine_register_nodes(void)
- {
-     qos_node_create_machine("arm/virt", qos_create_machine_arm_virt);
-     qos_node_contains("arm/virt", "virtio-mmio", NULL);
-+
-+    qos_node_create_machine_args("aarch64/virt", qos_create_machine_arm_virt,
-+                                 " -cpu max");
-+    qos_node_contains("aarch64/virt", "generic-pcihost", NULL);
- }
- 
--libqos_init(virtio_mmio_register_nodes);
-+libqos_init(virt_machine_register_nodes);
-diff --git a/tests/qtest/libqos/generic-pcihost.c b/tests/qtest/libqos/generic-pcihost.c
-new file mode 100644
-index 0000000000..704bbc3473
---- /dev/null
-+++ b/tests/qtest/libqos/generic-pcihost.c
-@@ -0,0 +1,231 @@
-+/*
-+ * libqos PCI bindings for generic PCI
-+ *
-+ * Copyright Red Hat Inc., 2022
-+ *
-+ * Authors:
-+ *  Eric Auger   <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+#include "generic-pcihost.h"
-+#include "qapi/qmp/qdict.h"
-+#include "hw/pci/pci_regs.h"
-+
-+#include "qemu/module.h"
-+
-+/* QGenericPCIHost */
-+
-+QOSGraphObject *generic_pcihost_get_device(void *obj, const char *device)
-+{
-+    QGenericPCIHost *host = obj;
-+    if (!g_strcmp0(device, "pci-bus-generic")) {
-+        return &host->pci.obj;
-+    }
-+    fprintf(stderr, "%s not present in generic-pcihost\n", device);
-+    g_assert_not_reached();
-+}
-+
-+void qos_create_generic_pcihost(QGenericPCIHost *host,
-+                                QTestState *qts,
-+                                QGuestAllocator *alloc)
-+{
-+    host->obj.get_device = generic_pcihost_get_device;
-+    qpci_init_generic(&host->pci, qts, alloc, false);
-+}
-+
-+static uint8_t qpci_generic_pio_readb(QPCIBus *bus, uint32_t addr)
-+{
-+    QGenericPCIBus *s = container_of(bus, QGenericPCIBus, bus);
-+
-+    return qtest_readb(bus->qts, s->gpex_pio_base + addr);
-+}
-+
-+static void qpci_generic_pio_writeb(QPCIBus *bus, uint32_t addr, uint8_t val)
-+{
-+    QGenericPCIBus *s = container_of(bus, QGenericPCIBus, bus);
-+
-+    qtest_writeb(bus->qts, s->gpex_pio_base + addr,  val);
-+}
-+
-+static uint16_t qpci_generic_pio_readw(QPCIBus *bus, uint32_t addr)
-+{
-+    QGenericPCIBus *s = container_of(bus, QGenericPCIBus, bus);
-+
-+    return qtest_readw(bus->qts, s->gpex_pio_base + addr);
-+}
-+
-+static void qpci_generic_pio_writew(QPCIBus *bus, uint32_t addr, uint16_t val)
-+{
-+    QGenericPCIBus *s = container_of(bus, QGenericPCIBus, bus);
-+
-+    qtest_writew(bus->qts, s->gpex_pio_base + addr, val);
-+}
-+
-+static uint32_t qpci_generic_pio_readl(QPCIBus *bus, uint32_t addr)
-+{
-+    QGenericPCIBus *s = container_of(bus, QGenericPCIBus, bus);
-+
-+    return qtest_readl(bus->qts, s->gpex_pio_base + addr);
-+}
-+
-+static void qpci_generic_pio_writel(QPCIBus *bus, uint32_t addr, uint32_t val)
-+{
-+    QGenericPCIBus *s = container_of(bus, QGenericPCIBus, bus);
-+
-+    qtest_writel(bus->qts, s->gpex_pio_base + addr, val);
-+}
-+
-+static uint64_t qpci_generic_pio_readq(QPCIBus *bus, uint32_t addr)
-+{
-+    QGenericPCIBus *s = container_of(bus, QGenericPCIBus, bus);
-+
-+    return qtest_readq(bus->qts, s->gpex_pio_base + addr);
-+}
-+
-+static void qpci_generic_pio_writeq(QPCIBus *bus, uint32_t addr, uint64_t val)
-+{
-+    QGenericPCIBus *s = container_of(bus, QGenericPCIBus, bus);
-+
-+    qtest_writeq(bus->qts, s->gpex_pio_base + addr, val);
-+}
-+
-+static void qpci_generic_memread(QPCIBus *bus, uint32_t addr, void *buf, size_t len)
-+{
-+    qtest_memread(bus->qts, addr, buf, len);
-+}
-+
-+static void qpci_generic_memwrite(QPCIBus *bus, uint32_t addr,
-+                                  const void *buf, size_t len)
-+{
-+    qtest_memwrite(bus->qts, addr, buf, len);
-+}
-+
-+static uint8_t qpci_generic_config_readb(QPCIBus *bus, int devfn, uint8_t offset)
-+{
-+    QGenericPCIBus *gbus = container_of(bus, QGenericPCIBus, bus);
-+    uint64_t addr = gbus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint8_t val;
-+
-+    qtest_memread(bus->qts, addr, &val, 1);
-+    return val;
-+}
-+
-+static uint16_t qpci_generic_config_readw(QPCIBus *bus, int devfn, uint8_t offset)
-+{
-+    QGenericPCIBus *gbus = container_of(bus, QGenericPCIBus, bus);
-+    uint64_t addr = gbus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint16_t val;
-+
-+    qtest_memread(bus->qts, addr, &val, 2);
-+    return val;
-+}
-+
-+static uint32_t qpci_generic_config_readl(QPCIBus *bus, int devfn, uint8_t offset)
-+{
-+    QGenericPCIBus *gbus = container_of(bus, QGenericPCIBus, bus);
-+    uint64_t addr = gbus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint32_t val;
-+
-+    qtest_memread(bus->qts, addr, &val, 4);
-+    return val;
-+}
-+
-+static void
-+qpci_generic_config_writeb(QPCIBus *bus, int devfn, uint8_t offset, uint8_t value)
-+{
-+    QGenericPCIBus *gbus = container_of(bus, QGenericPCIBus, bus);
-+    uint64_t addr = gbus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint32_t val = value;
-+
-+    qtest_memwrite(bus->qts, addr, &val, 1);
-+}
-+
-+static void
-+qpci_generic_config_writew(QPCIBus *bus, int devfn, uint8_t offset, uint16_t value)
-+{
-+    QGenericPCIBus *gbus = container_of(bus, QGenericPCIBus, bus);
-+    uint64_t addr = gbus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint32_t val = value;
-+
-+    qtest_memwrite(bus->qts, addr, &val, 2);
-+}
-+
-+static void
-+qpci_generic_config_writel(QPCIBus *bus, int devfn, uint8_t offset, uint32_t value)
-+{
-+    QGenericPCIBus *gbus = container_of(bus, QGenericPCIBus, bus);
-+    uint64_t addr = gbus->ecam_alloc_ptr + ((0 << 20) | (devfn << 12) | offset);
-+    uint32_t val = value;
-+
-+    qtest_memwrite(bus->qts, addr, &val, 4);
-+}
-+
-+static void *qpci_generic_get_driver(void *obj, const char *interface)
-+{
-+    QGenericPCIBus *qpci = obj;
-+    if (!g_strcmp0(interface, "pci-bus")) {
-+        return &qpci->bus;
-+    }
-+    fprintf(stderr, "%s not present in pci-bus-generic\n", interface);
-+    g_assert_not_reached();
-+}
-+
-+void qpci_init_generic(QGenericPCIBus *qpci, QTestState *qts,
-+                       QGuestAllocator *alloc, bool hotpluggable)
-+{
-+    assert(qts);
-+
-+    qpci->gpex_pio_base = 0x3eff0000;
-+    qpci->bus.not_hotpluggable = !hotpluggable;
-+    qpci->bus.has_buggy_msi = false;
-+
-+    qpci->bus.pio_readb = qpci_generic_pio_readb;
-+    qpci->bus.pio_readw = qpci_generic_pio_readw;
-+    qpci->bus.pio_readl = qpci_generic_pio_readl;
-+    qpci->bus.pio_readq = qpci_generic_pio_readq;
-+
-+    qpci->bus.pio_writeb = qpci_generic_pio_writeb;
-+    qpci->bus.pio_writew = qpci_generic_pio_writew;
-+    qpci->bus.pio_writel = qpci_generic_pio_writel;
-+    qpci->bus.pio_writeq = qpci_generic_pio_writeq;
-+
-+    qpci->bus.memread = qpci_generic_memread;
-+    qpci->bus.memwrite = qpci_generic_memwrite;
-+
-+    qpci->bus.config_readb = qpci_generic_config_readb;
-+    qpci->bus.config_readw = qpci_generic_config_readw;
-+    qpci->bus.config_readl = qpci_generic_config_readl;
-+
-+    qpci->bus.config_writeb = qpci_generic_config_writeb;
-+    qpci->bus.config_writew = qpci_generic_config_writew;
-+    qpci->bus.config_writel = qpci_generic_config_writel;
-+
-+    qpci->bus.qts = qts;
-+    qpci->bus.pio_alloc_ptr = 0x0000;
-+    qpci->bus.pio_limit = 0x10000;
-+    qpci->bus.mmio_alloc_ptr = 0x10000000;
-+    qpci->bus.mmio_limit = 0x2eff0000;
-+    qpci->ecam_alloc_ptr = 0x4010000000;
-+
-+    qpci->obj.get_driver = qpci_generic_get_driver;
-+}
-+
-+static void qpci_generic_register_nodes(void)
-+{
-+    qos_node_create_driver("pci-bus-generic", NULL);
-+    qos_node_produces("pci-bus-generic", "pci-bus");
-+}
-+
-+static void qpci_generic_pci_register_nodes(void)
-+{
-+    qos_node_create_driver("generic-pcihost", NULL);
-+    qos_node_contains("generic-pcihost", "pci-bus-generic", NULL);
-+}
-+
-+libqos_init(qpci_generic_register_nodes);
-+libqos_init(qpci_generic_pci_register_nodes);
-diff --git a/tests/qtest/libqos/generic-pcihost.h b/tests/qtest/libqos/generic-pcihost.h
-new file mode 100644
-index 0000000000..c693c769df
---- /dev/null
-+++ b/tests/qtest/libqos/generic-pcihost.h
-@@ -0,0 +1,54 @@
-+/*
-+ * libqos Generic PCI bindings and generic pci host bridge
-+ *
-+ * Copyright Red Hat Inc., 2022
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef LIBQOS_GENERIC_PCIHOST_H
-+#define LIBQOS_GENERIC_PCIHOST_H
-+
-+#include "pci.h"
-+#include "malloc.h"
-+#include "qgraph.h"
-+
-+typedef struct QGenericPCIBus {
-+    QOSGraphObject obj;
-+    QPCIBus bus;
-+    uint64_t gpex_pio_base;
-+    uint64_t ecam_alloc_ptr;
-+} QGenericPCIBus;
-+
-+/*
-+ * qpci_init_generic():
-+ * @ret: A valid QGenericPCIBus * pointer
-+ * @qts: The %QTestState
-+ * @alloc: A previously initialized @alloc providing memory for @qts
-+ * @bool: devices can be hotplugged on this bus
-+ *
-+ * This function initializes an already allocated
-+ * QGenericPCIBus object.
-+ */
-+void qpci_init_generic(QGenericPCIBus *ret, QTestState *qts,
-+                       QGuestAllocator *alloc, bool hotpluggable);
-+
-+/* QGenericPCIHost */
-+
-+typedef struct QGenericPCIHost QGenericPCIHost;
-+
-+struct QGenericPCIHost {
-+    QOSGraphObject obj;
-+    QGenericPCIBus pci;
-+};
-+
-+QOSGraphObject *generic_pcihost_get_device(void *obj, const char *device);
-+void qos_create_generic_pcihost(QGenericPCIHost *host,
-+                                QTestState *qts,
-+                                QGuestAllocator *alloc);
-+
-+#endif
-diff --git a/tests/qtest/libqos/meson.build b/tests/qtest/libqos/meson.build
-index e988d15791..8c8ee15553 100644
---- a/tests/qtest/libqos/meson.build
-+++ b/tests/qtest/libqos/meson.build
-@@ -42,6 +42,7 @@ libqos_srcs = files('../libqtest.c',
-         'virtio-scsi.c',
-         'virtio-serial.c',
-         'virtio-iommu.c',
-+        'generic-pcihost.c',
- 
-         # qgraph machines:
-         'aarch64-xlnx-zcu102-machine.c',
--- 
-2.26.3
-
+-- PMM

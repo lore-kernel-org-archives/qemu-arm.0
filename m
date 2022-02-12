@@ -1,332 +1,178 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp2975827lfk;
-        Sat, 12 Feb 2022 06:24:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx4rX6+a0qnz2kemcYZRQd2O0+1GBJYXUorOGcF/ePYEmjQZb8+OFdiB1x8MYUKIfQvD2nk
-X-Received: by 2002:a05:6902:724:: with SMTP id l4mr5861191ybt.564.1644675847957;
-        Sat, 12 Feb 2022 06:24:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644675847; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp3029555lfk;
+        Sat, 12 Feb 2022 08:13:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxhayBrDzpAlR47ODPTDym6X530BcObj0XPXCusRBV0zQVSHHGp8Vo4aHS1UXCaerUsByCG
+X-Received: by 2002:a81:9f0a:: with SMTP id s10mr6875969ywn.438.1644682420558;
+        Sat, 12 Feb 2022 08:13:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644682420; cv=none;
         d=google.com; s=arc-20160816;
-        b=oNoc88Fu33yGF4s4eWZrmdpZ3AxDzrPhIpmpgyZ1uIlKuBNk+4DvfWtXEO8CGrKVes
-         RIdsEJk5Tw0o50j/6ufTf9jOkBUAwYhcx2yjJVCBmz1m+5ln1z1jWY/ewE6ER5T34+fz
-         KvQ9WoN0MAXS60rnCVOKcIK83yJUQVUhJnb1OiE/5b10qC6egZZ9Cl/hEqalV1CzOKgW
-         NIUxIU9bsSHpbv4/ai44V2vKlauswMi07a1Q2XPIAlvjlctLrmadb06Tix6o3Ga1H/uV
-         cEii+jo1QEpBG+yi1VPhiMTEnExmLeS4WzOgAkct3oI9rsyQJ6HmNuNw9/doRZOzcips
-         Wd/g==
+        b=YoNfUxbHW4EWLyT/0ruM/X2PszKYFNmQ37soveVj1kSA8arQeMPRtJVhry9e8k6W8k
+         3tFPMG50YY+g7zrG3feZbgCtCkjQ2A0hOOATRLUXvcV0e0tfINPrqIslBGHn/ZDhUbAp
+         WZ+m3FPvs/w9/QHMtzqLlZGxh8yA/mDg13tsHe9x8ILb2iaEpdHqzSE1rK73qfMujQev
+         dMP5F66h3LIEV5wr5OM08/QD9TjdoXHTFTZm41aBuCv2nyfGZeteQ89Apo8H0Q8XR9N3
+         +ZbvrB0OKA/ZOB49xzw360gCU08RspimV6a9a4xJZpYCRl5Uz+vYB+f+qoiZ/ti47OVs
+         Kfug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=0MCVYJrs80iOFzWxFMQjhD4GuU5WRwOdK+fN3DXZ5Ok=;
-        b=qRU44pJODVIFhqtaB1tfIGRIIkmo8jbsggsG0pFTFpJH4tdYlNoEv8HgQnI3vOM60n
-         O+Pt8HYEK168D+RdPFR3BcvWxnQeKYCSh3yB8T6mutbYGTaW42ajGzN8wSPhATgilig7
-         38LVSUhFj21IAb8YKrl3F2xjkUnDhInCgHjCm8FnDLTiG4q3QorYYHsqLCKjMs7ThdpC
-         qNGjSDh37OdLa9/v0qfDTGit3qASYtQi95SA4x+BMbDu9A8fJ69jZpeFxzYi5EspoAoO
-         SAhzPDvfYRJMBRvvEoyPrZWRqeKBqgEYOvbraSEXTc1+ataGlWmjQgaxWE71PLuCkspb
-         fdyg==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:to:from:date;
+        bh=2FSZgUrOGIdlwttP7zarzvkgKiV5jn9zGCxGrW7wIaU=;
+        b=kfVIpb0VTgShPxMZCm4G+Rx6EKXuz6B53zBw6rsaSH5mmiLhS2qAEihjkKi97CPf7Q
+         QFSmkR4k05rgHy9OxMkaE3NwDBF//lOFqK6Sz8+080wJz+jKoRTqWMl5X6tROEATt//u
+         BoFqUgAcrhjpC34/6Acy5IKtlZUktTt/OFYUv2oh8tJ8uAjKvelaYdQstOMufqxDTTk1
+         z4WcbU6Z0StgY2Vgsq3niYn1GM9xf7xJePzEKdVxah2qzA0xQGV3iCbBDJtnGWawbjtp
+         BJD61dVOqxXEhqNX6s4FCgMjUj2kOVKKMAO4RbW6yyNX5chHGT280h/WrXgt3CfcTk0j
+         Jhvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="hvfi0bo/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c20si16520987ywa.289.2022.02.12.06.24.07
+        by mx.google.com with ESMTPS id t15si24199356ybu.667.2022.02.12.08.13.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 12 Feb 2022 06:24:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 12 Feb 2022 08:13:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="hvfi0bo/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39684 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from localhost ([::1]:58200 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nItJn-0006ky-B1
-	for alex.bennee@linaro.org; Sat, 12 Feb 2022 09:24:07 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35216)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nIv1n-0001fY-SZ
+	for alex.bennee@linaro.org; Sat, 12 Feb 2022 11:13:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53968)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nItJa-0006k2-Ch; Sat, 12 Feb 2022 09:23:54 -0500
-Received: from [2a00:1450:4864:20::12d] (port=40759
- helo=mail-lf1-x12d.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nItJY-0001pW-BM; Sat, 12 Feb 2022 09:23:54 -0500
-Received: by mail-lf1-x12d.google.com with SMTP id 13so21870055lfp.7;
- Sat, 12 Feb 2022 06:23:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=0MCVYJrs80iOFzWxFMQjhD4GuU5WRwOdK+fN3DXZ5Ok=;
- b=hvfi0bo/6Kcdr2RJGcqeLgAjH+nxaiukA+z7QiXF5fPgMCi5lePc0P+a9mKfmUOa8R
- qXr4TWCHbGcHrYeQEQvDP4+ujcSnnF/5ao8SxEkgVMpdy41T0GF+mM+d4JZwe32hXhf6
- Jo0SV13bSeDA7sTdqRUHhwl2HEt3EdWjJDhkfwYQTlRJluEOpiIa3khlANxsVxEBMR/l
- Ua5EHSOh03Oqh/+nAvKwHUO/QQMs1C/0JPClZNPNr+8wxUQVTwGa+F8OAc7qjvI83sbP
- BfC48KJ52zdoQBRQX6puvNcWcpHFoWSjGXsVlBk1xdg4XADz+USu5o95ERCnVgvqqXXD
- qgjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=0MCVYJrs80iOFzWxFMQjhD4GuU5WRwOdK+fN3DXZ5Ok=;
- b=rfrob4XVZ6x1DJ9j4nsgWJRHimBFAOs2fSHssWskVCt9HZDH96PEACA7nce2R0do9+
- K5J72zGaNzmrGgO3KTYk/N6/ctqzGsxZjtoSDOnOhdMtUzz8WkX13ekJm5VAanqbcbpp
- 6dynCOkjbF5a9+6dz9gEjSg7G5gXM+F1gEwOAz1YV+FzQufvpAn0wvp7JWbDWcRF1njJ
- s8O9hY+FJmYYv6nd8piSpj36uX+MIgfgqUyOLvj2OFZ589jdmke7QkFDgr+xJV49DIMd
- 3zfCHuzH7Xg8p4vvY3JD5q3NMzxxiq1qeF7blxB3WUzmC6oqzOU/8rKt8LGMvYrDonII
- hNuA==
-X-Gm-Message-State: AOAM533Nkg9magsqGV3cMFzgXXZ8+UFll0vBZqBUrbSo2pd9K3uMsEFj
- e5iNPdgfTfX4dOQEP/VfENzfinibUq2V/LsEoCg=
-X-Received: by 2002:a05:6512:ac3:: with SMTP id
- n3mr4559557lfu.274.1644675829824; 
- Sat, 12 Feb 2022 06:23:49 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1nIv1i-0001fL-9X; Sat, 12 Feb 2022 11:13:34 -0500
+Received: from [2001:738:2001:2001::2001] (port=31416 helo=zero.eik.bme.hu)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1nIv1e-0004lJ-QH; Sat, 12 Feb 2022 11:13:33 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 1050A74635C;
+ Sat, 12 Feb 2022 17:13:20 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id DAF08746324; Sat, 12 Feb 2022 17:13:19 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id D8C3E7456E3;
+ Sat, 12 Feb 2022 17:13:19 +0100 (CET)
+Date: Sat, 12 Feb 2022 17:13:19 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Bernhard Beschow <shentey@gmail.com>
+Subject: Re: [PATCH v2 2/5] pci: Always pass own DeviceState to
+ pci_map_irq_fn's
+In-Reply-To: <CAG4p6K7Z=h+LkNhL+Ex3USDS1SEnh-MGvx_FUF5CoKaHOgRm_g@mail.gmail.com>
+Message-ID: <d13634a-b414-7663-42c-6390c5d58a1e@eik.bme.hu>
 References: <20220212113519.69527-1-shentey@gmail.com>
  <20220212113519.69527-3-shentey@gmail.com>
  <d6e47199-343e-46c0-d44f-64bc8d6e8385@eik.bme.hu>
-In-Reply-To: <d6e47199-343e-46c0-d44f-64bc8d6e8385@eik.bme.hu>
-From: Bernhard Beschow <shentey@gmail.com>
-Date: Sat, 12 Feb 2022 15:23:30 +0100
-Message-ID: <CAG4p6K7Z=h+LkNhL+Ex3USDS1SEnh-MGvx_FUF5CoKaHOgRm_g@mail.gmail.com>
-Subject: Re: [PATCH v2 2/5] pci: Always pass own DeviceState to
- pci_map_irq_fn's
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::12d
+ <CAG4p6K7Z=h+LkNhL+Ex3USDS1SEnh-MGvx_FUF5CoKaHOgRm_g@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="3866299591-1240981976-1644682399=:90120"
+X-Spam-Probability: 9%
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2001:738:2001:2001::2001
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=shentey@gmail.com; helo=mail-lf1-x12d.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -10
+X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
  Magnus Damm <magnus.damm@gmail.com>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
  "open list:Versatile PB" <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>,
  "open list:ppc4xx" <qemu-ppc@nongnu.org>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 668x/M8nX2SI
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: edloy3YZfgOJ
 
-Am 12. Februar 2022 14:27:32 MEZ schrieb BALATON Zoltan <balaton@eik.bme.hu=
->:
->On Sat, 12 Feb 2022, Bernhard Beschow wrote:
->> Passing own DeviceState rather than just the IRQs allows for resolving
->> global variables.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--3866299591-1240981976-1644682399=:90120
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+
+On Sat, 12 Feb 2022, Bernhard Beschow wrote:
+> Am 12. Februar 2022 14:27:32 MEZ schrieb BALATON Zoltan <balaton@eik.bme.hu>:
+>> On Sat, 12 Feb 2022, Bernhard Beschow wrote:
+>>> Passing own DeviceState rather than just the IRQs allows for resolving
+>>> global variables.
+>>
+>> Do you mean pci_set_irq_fn instead of pci_map_irq_fn in the patch title?
 >
->Do you mean pci_set_irq_fn instead of pci_map_irq_fn in the patch title?
-
-I'm referring to the typedef in pci.h because the patch establishes
-consistency across the board.
-
->> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->> hw/isa/piix4.c          | 6 +++---
->> hw/pci-host/sh_pci.c    | 6 +++---
->> hw/pci-host/versatile.c | 6 +++---
->> hw/ppc/ppc440_pcix.c    | 6 +++---
->> hw/ppc/ppc4xx_pci.c     | 6 +++---
->> 5 files changed, 15 insertions(+), 15 deletions(-)
+> I'm referring to the typedef in pci.h because the patch establishes
+> consistency across the board.
 >
->You don't seem to change any global function definition that reqires this
->change in all these devices so why can't these decide on their own what
->their preferred opaque data is for their set irq function and only change
->piix4? Am I missing something? I'm not opposed to this change but it seems
->to be unnecessary to touch other device implementations for this and may
->just make them more complex for no good reason.
+>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>>> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> ---
+>>> hw/isa/piix4.c          | 6 +++---
+>>> hw/pci-host/sh_pci.c    | 6 +++---
+>>> hw/pci-host/versatile.c | 6 +++---
+>>> hw/ppc/ppc440_pcix.c    | 6 +++---
+>>> hw/ppc/ppc4xx_pci.c     | 6 +++---
+>>> 5 files changed, 15 insertions(+), 15 deletions(-)
+>>
+>> You don't seem to change any global function definition that reqires this
+>> change in all these devices so why can't these decide on their own what
+>> their preferred opaque data is for their set irq function and only change
+>> piix4? Am I missing something? I'm not opposed to this change but it seems
+>> to be unnecessary to touch other device implementations for this and may
+>> just make them more complex for no good reason.
+>
+> This patch is a segway into a direction where the type of the opaque parameter
+> of the pci_map_irq_fn typedef could be changed from void* to DeviceState* in
 
-This patch is a segway into a direction where the type of the opaque parame=
-ter
-of the pci_map_irq_fn typedef could be changed from void* to DeviceState* i=
-n
-order to facilitate the more typesafe QOM casting. I see, though, why this =
-is
-confusing in the context of this patch series. I don't have strong feelings=
- for
-converting the other devices or not. So I can only change piix4 if desired.
+I'm still not quite sure what you mean considering these typedefs in 
+include/hw/pci/pci.h:
+
+typedef void (*pci_set_irq_fn)(void *opaque, int irq_num, int level);
+typedef int (*pci_map_irq_fn)(PCIDevice *pci_dev, int irq_num);
+typedef PCIINTxRoute (*pci_route_irq_fn)(void *opaque, int pin);
+
+pci_map_irq_fn already has PCIDevice *, it's pci_set_irq_fn that has void 
+*opaque and is what this patch appears to be changing. Am I looking at the 
+wrong typedefs?
+
+> order to facilitate the more typesafe QOM casting. I see, though, why this is
+> confusing in the context of this patch series. I don't have strong feelings for
+> converting the other devices or not. So I can only change piix4 if desired.
+
+Yes that seems to be an independent cahange so maybe it's better to just 
+change piix4 in this series and then have a separate patch for changing 
+the void *opaque to DeviceState * independent of this series. But I'm not 
+sure that's necessarily a good idea. It may give some more checks but for 
+callbacks used internally by device implementations I think it can be 
+expected that code that registers the callback also knows what its opaque 
+data should be so it does not have to be checked additionally, especially 
+in code that may be called frequently. Although in a similar via-ide 
+callback I could not measure a big penalty the last time I tried but I 
+suspect there still mey be some overhead involving QOM casts (maybe there 
+are just bigger bottle necks in ide emulation so it was masked) so I'm not 
+sure it's worth the added complexity but if others prefer that I'm not 
+that much opposed to it but it's clearer as a separate change anyway.
 
 Regards,
-Bernhard
-
->
->Regards,
->BALATON Zoltan
->
->> diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
->> index 5a86308689..a31e9714cf 100644
->> --- a/hw/isa/piix4.c
->> +++ b/hw/isa/piix4.c
->> @@ -60,7 +60,7 @@ static int pci_irq_levels[4];
->> static void piix4_set_irq(void *opaque, int irq_num, int level)
->> {
->>     int i, pic_irq, pic_level;
->> -    qemu_irq *pic =3D opaque;
->> +    PIIX4State *s =3D opaque;
->>
->>     pci_irq_levels[irq_num] =3D level;
->>
->> @@ -75,7 +75,7 @@ static void piix4_set_irq(void *opaque, int irq_num, i=
-nt level)
->>                 pic_level |=3D pci_irq_levels[i];
->>             }
->>         }
->> -        qemu_set_irq(pic[pic_irq], pic_level);
->> +        qemu_set_irq(s->i8259[pic_irq], pic_level);
->>     }
->> }
->>
->> @@ -323,7 +323,7 @@ DeviceState *piix4_create(PCIBus *pci_bus, ISABus **=
-isa_bus, I2CBus **smbus)
->>                                NULL, 0, NULL);
->>     }
->>
->> -    pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s->i8259, 4=
-);
->> +    pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s, 4);
->>
->>     for (int i =3D 0; i < ISA_NUM_IRQS; i++) {
->>         s->i8259[i] =3D qdev_get_gpio_in_named(dev, "isa", i);
->> diff --git a/hw/pci-host/sh_pci.c b/hw/pci-host/sh_pci.c
->> index 719d6ca2a6..ae0aa462b3 100644
->> --- a/hw/pci-host/sh_pci.c
->> +++ b/hw/pci-host/sh_pci.c
->> @@ -111,9 +111,9 @@ static int sh_pci_map_irq(PCIDevice *d, int irq_num)
->>
->> static void sh_pci_set_irq(void *opaque, int irq_num, int level)
->> {
->> -    qemu_irq *pic =3D opaque;
->> +    SHPCIState *s =3D opaque;
->>
->> -    qemu_set_irq(pic[irq_num], level);
->> +    qemu_set_irq(s->irq[irq_num], level);
->> }
->>
->> static void sh_pci_device_realize(DeviceState *dev, Error **errp)
->> @@ -128,7 +128,7 @@ static void sh_pci_device_realize(DeviceState *dev, =
-Error **errp)
->>     }
->>     phb->bus =3D pci_register_root_bus(dev, "pci",
->>                                      sh_pci_set_irq, sh_pci_map_irq,
->> -                                     s->irq,
->> +                                     s,
->>                                      get_system_memory(),
->>                                      get_system_io(),
->>                                      PCI_DEVFN(0, 0), 4, TYPE_PCI_BUS);
->> diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
->> index f66384fa02..5fbcb72d7d 100644
->> --- a/hw/pci-host/versatile.c
->> +++ b/hw/pci-host/versatile.c
->> @@ -362,9 +362,9 @@ static int pci_vpb_rv_map_irq(PCIDevice *d, int irq_=
-num)
->>
->> static void pci_vpb_set_irq(void *opaque, int irq_num, int level)
->> {
->> -    qemu_irq *pic =3D opaque;
->> +    PCIVPBState *s =3D opaque;
->>
->> -    qemu_set_irq(pic[irq_num], level);
->> +    qemu_set_irq(s->irq[irq_num], level);
->> }
->>
->> static void pci_vpb_reset(DeviceState *d)
->> @@ -422,7 +422,7 @@ static void pci_vpb_realize(DeviceState *dev, Error =
-**errp)
->>         mapfn =3D pci_vpb_map_irq;
->>     }
->>
->> -    pci_bus_irqs(&s->pci_bus, pci_vpb_set_irq, mapfn, s->irq, 4);
->> +    pci_bus_irqs(&s->pci_bus, pci_vpb_set_irq, mapfn, s, 4);
->>
->>     /* Our memory regions are:
->>      * 0 : our control registers
->> diff --git a/hw/ppc/ppc440_pcix.c b/hw/ppc/ppc440_pcix.c
->> index 788d25514a..291c1bfbe7 100644
->> --- a/hw/ppc/ppc440_pcix.c
->> +++ b/hw/ppc/ppc440_pcix.c
->> @@ -431,14 +431,14 @@ static int ppc440_pcix_map_irq(PCIDevice *pci_dev,=
- int irq_num)
->>
->> static void ppc440_pcix_set_irq(void *opaque, int irq_num, int level)
->> {
->> -    qemu_irq *pci_irq =3D opaque;
->> +    PPC440PCIXState *s =3D opaque;
->>
->>     trace_ppc440_pcix_set_irq(irq_num);
->>     if (irq_num < 0) {
->>         error_report("%s: PCI irq %d", __func__, irq_num);
->>         return;
->>     }
->> -    qemu_set_irq(*pci_irq, level);
->> +    qemu_set_irq(s->irq, level);
->> }
->>
->> static AddressSpace *ppc440_pcix_set_iommu(PCIBus *b, void *opaque, int =
-devfn)
->> @@ -492,7 +492,7 @@ static void ppc440_pcix_realize(DeviceState *dev, Er=
-ror **errp)
->>     sysbus_init_irq(sbd, &s->irq);
->>     memory_region_init(&s->busmem, OBJECT(dev), "pci bus memory", UINT64=
-_MAX);
->>     h->bus =3D pci_register_root_bus(dev, NULL, ppc440_pcix_set_irq,
->> -                         ppc440_pcix_map_irq, &s->irq, &s->busmem,
->> +                         ppc440_pcix_map_irq, s, &s->busmem,
->>                          get_system_io(), PCI_DEVFN(0, 0), 1, TYPE_PCI_B=
-US);
->>
->>     s->dev =3D pci_create_simple(h->bus, PCI_DEVFN(0, 0), "ppc4xx-host-b=
-ridge");
->> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
->> index 5df97e6d15..f6718746a1 100644
->> --- a/hw/ppc/ppc4xx_pci.c
->> +++ b/hw/ppc/ppc4xx_pci.c
->> @@ -256,11 +256,11 @@ static int ppc4xx_pci_map_irq(PCIDevice *pci_dev, =
-int irq_num)
->>
->> static void ppc4xx_pci_set_irq(void *opaque, int irq_num, int level)
->> {
->> -    qemu_irq *pci_irqs =3D opaque;
->> +    PPC4xxPCIState *s =3D opaque;
->>
->>     trace_ppc4xx_pci_set_irq(irq_num);
->>     assert(irq_num >=3D 0 && irq_num < PPC4xx_PCI_NUM_DEVS);
->> -    qemu_set_irq(pci_irqs[irq_num], level);
->> +    qemu_set_irq(s->irq[irq_num], level);
->> }
->>
->> static const VMStateDescription vmstate_pci_master_map =3D {
->> @@ -319,7 +319,7 @@ static void ppc4xx_pcihost_realize(DeviceState *dev,=
- Error **errp)
->>     }
->>
->>     b =3D pci_register_root_bus(dev, NULL, ppc4xx_pci_set_irq,
->> -                              ppc4xx_pci_map_irq, s->irq, get_system_me=
-mory(),
->> +                              ppc4xx_pci_map_irq, s, get_system_memory(=
-),
->>                               get_system_io(), 0, ARRAY_SIZE(s->irq),
->>                               TYPE_PCI_BUS);
->>     h->bus =3D b;
->>
+BALATON Zoltan
+--3866299591-1240981976-1644682399=:90120--

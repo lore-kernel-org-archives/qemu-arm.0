@@ -1,90 +1,90 @@
-Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp3264276lfk;
-        Sat, 12 Feb 2022 18:10:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy50wnrAQVtDIEyL+nrc+sRHWdXVyAeZRYR0eOogBzQxt0w6DS8ezPi4o31Is1TOSd60/fi
-X-Received: by 2002:a17:906:7381:: with SMTP id f1mr1130961ejl.181.1644718221353;
-        Sat, 12 Feb 2022 18:10:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644718221; cv=none;
+Received: by 2002:a05:6512:40d:0:0:0:0 with SMTP id u13csp3301693lfk;
+        Sat, 12 Feb 2022 19:58:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyZkJUxf6VD+ew0J/+jdCXqnL4UGF4phiOeJ1FbZEZFliym2da2sQjIoQvuciwLzEh0tdhN
+X-Received: by 2002:a17:90a:b906:: with SMTP id p6mr7905407pjr.212.1644724685047;
+        Sat, 12 Feb 2022 19:58:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644724685; cv=none;
         d=google.com; s=arc-20160816;
-        b=hLyEmA5KojF8HuMHx41wMih7/Ej9HNw6zXYzbKrDWX+wX7O29yUFbDxH8GsLU0C5E3
-         o4MBflm6R6kem7Kz4vrI3oeUnGSNsO1vdYctM15BhOtno1oxvh/mAzBK2gh+yGpvP2Fu
-         XDpcPgb8rrFuSRH/0OskKJiuRfg5gmYtwr0Mxmn+i5/9viJhGsrmzsar+q7B2+GX0z0+
-         pVW4CTNk8VJ0n01i1pkNtQxZ+aSao/SZVVj4n+Y0KB8tDPWqNMqtBaUVFCC5QGLUqzNh
-         b+yqNQrOmskRbbCjMPn6cUw82NTcnui4ag5emnHRgq5uiffzykCSdvxSmgtZl08GCYcc
-         3xlg==
+        b=WqllpqNikeBFDDdjAcMxxLoj5jShpCkoisKPFl6EO0OTtjvB3k/VmWObvbVxzFl5Lw
+         /Vk0WL3lt5KHgMWysL93/OuwETrDDWsW1kICQS5xShLRxtluHcA6uTVk6GZnmS0Auh5b
+         uzyatl2C2jyAb28Gz5hYkbPr5x74r8XzAgRFaQwLzlYamOjfJNUWY6M3zjJ/PRSs3zUH
+         jI2/GGdLn5sF/ns/Z5LTetZ6lPYVD6LMcmZ2q3e3FRCJVOLofa92gmct5SZ41Q0j7qj+
+         zyB91ZOBqP3oK/5AwRsLrzng8Rmc7C5Zw80AgszcoXORA5VCTu2UZu1iNQmp5sG9sxRE
+         Fs9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:to:content-transfer-encoding:mime-version
          :message-id:date:subject:cc:from:dkim-signature;
-        bh=fhu1l4FABvpHBSneW96cVCVrV6Q0B9EJKekNgpZAq+s=;
-        b=p5WJK9QSI+pKHChSGwQ0WTPB+qQ6U9F05VssiexH7Kd/mBlVEZhJyNQ9EiJ69E6CYc
-         r81CnMUVyqv7pHptVdhR3332tgFCkBtmz7mkrNJKEnFpJdbf6b8+ArdGPaVtFodrx2VA
-         osBHnPA7odPbN1fU/FqbTduUgVkdQk+GFjM/ee1QbhA8rizElzOU5GDs88dqFzw4Wj16
-         odwpVPXgLj8GhRmHzbD2IJmmvlzqnV1H7nH9S7Q2YdLJwwtfcQpVRhcURjcBr2zBpjXt
-         cfHV7x7e8OctrJ3infIpqYt4+rUM95oSKIKBkl4N1Fy+5uh2L3SvdeTYgIWwLzN9zhUk
-         PGgw==
+        bh=hgKkhyGa1MZG+6xTJAHxPgWUd5NWDxfubWdlwv7McIM=;
+        b=fcudXQ/A9nh9koJ7G7PoX/kfGmHJytNS4AktPoSLKxztJ5ArBXmg3gNd0rW9DNh7Yr
+         JJq/36sb6esyTwPKPXCnhkEFZy7xQZfoLIlxhjp+va2T0Boqhxu35QKP7ClF7egOfwRz
+         HKzC0iUgaaXdFoWSfbM6kcuZuVOJecgRGRpbN+/yZqsch54m0iZjfQyBLFRmwgRz3LrK
+         lNN9cjrjR3WUgRQfNWKkJwFeCmEzCGECyVgygjffkKPUHScVZkqDgP91GjgsKVgH9kku
+         wN6yqh5b+adueU+a6qIYcBaEHpu+zoQApDArEnv7fgrlVUdh13AmzA2E7PZn9Ng4XHLm
+         vUVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=F5BiOWrF;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=NOain2WZ;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id sa35si8702263ejc.897.2022.02.12.18.10.20;
-        Sat, 12 Feb 2022 18:10:21 -0800 (PST)
+        by mx.google.com with ESMTP id t186si1950702pgd.416.2022.02.12.19.58.04;
+        Sat, 12 Feb 2022 19:58:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=F5BiOWrF;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=NOain2WZ;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S232893AbiBMCKX (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 3 others); Sat, 12 Feb 2022 21:10:23 -0500
-Received: from mxb-00190b01.gslb.pphosted.com ([23.128.96.19]:34482 "EHLO
+        id S233343AbiBMD6H (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Sat, 12 Feb 2022 22:58:07 -0500
+Received: from mxb-00190b01.gslb.pphosted.com ([23.128.96.19]:47128 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S230179AbiBMCKW (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sat, 12 Feb 2022 21:10:22 -0500
+        with ESMTP id S232021AbiBMD6F (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sat, 12 Feb 2022 22:58:05 -0500
 Received: from mail-pf1-x430.google.com (mail-pf1-x430.google.com [IPv6:2607:f8b0:4864:20::430])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id F31565FF20
-        for <kvm@vger.kernel.org>; Sat, 12 Feb 2022 18:10:14 -0800 (PST)
-Received: by mail-pf1-x430.google.com with SMTP id i30so23073201pfk.8
-        for <kvm@vger.kernel.org>; Sat, 12 Feb 2022 18:10:14 -0800 (PST)
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 945EA5F27C
+        for <kvm@vger.kernel.org>; Sat, 12 Feb 2022 19:58:00 -0800 (PST)
+Received: by mail-pf1-x430.google.com with SMTP id f6so2350169pfj.11
+        for <kvm@vger.kernel.org>; Sat, 12 Feb 2022 19:58:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=fhu1l4FABvpHBSneW96cVCVrV6Q0B9EJKekNgpZAq+s=;
-        b=F5BiOWrFvVmvdsZ3+D0ZN7rrWo+PXntvMnlNJOhlfmOERvl3M2s0M/au3zGkj4/1iX
-         8FmKYN9mwS5Hb98V0k9tn/M6eYQTk/14sGSctM3Y2CHiZSvS34hzPsHq5L5fLp6dacwe
-         hA0lq2Ilx4142Ysdq+hSTapf2k1gQnyxFlwHJtcxaGx4UGcOI5xKKPNc0Dk4UlVb7xth
-         jFnSAfdvE0Lmqcq8tixLWC0aXfw9p0c5ClrAfsK/KREVUqVaKUJwepAXzQEpdzbVrbRw
-         2bzlcTDiNrJhkbo/Kpj/A3vOwBuKm4K5uGzY1SLoJUkse56CxxQNcYBQ3lmSgVM1qVdx
-         bJAg==
+        bh=hgKkhyGa1MZG+6xTJAHxPgWUd5NWDxfubWdlwv7McIM=;
+        b=NOain2WZKo0UUaeoGAXjeJSPdxoXs4d9np2wGC3boKhJUSsooQtcMosFPYDy4scrBR
+         F8Tr/IEQCouXe2lKM1fuEA1a0fX7bi5AjiXimIc3A7drox1lntoZRmSn0o/fv9WgQsB9
+         33BaM08X7nrBWuG43a6ZL3uJqNt6L/fjLJ/9xmLADAebFTEgVR1cXWDjlaykiaOlbti6
+         z5XrGzYbWv7sebEna2sDCmYpZU31GeEc40R1EBPSHzPuPHWaP4DcmFEI/OFv8bzqO92e
+         /LWawO1QInloMR5suHGFrSdytiWyHIqIWMjA2yBxPiDPXrVqSc9GBI1CYUF8IS5yQ+ll
+         DePA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=fhu1l4FABvpHBSneW96cVCVrV6Q0B9EJKekNgpZAq+s=;
-        b=UjzDCHRUCXHLP9+Bba5uxuxe1DlBsiJ4XhV5sNdSdlPJhchcinf9SMlHTJztCJImez
-         x5paGRPz/mG/SzdwfAtSsd3+ScE72MI8bwG+QHhyphxo0JBncP42rtNDtFhxtG4WC36v
-         Vfzq6t9jdalEI7//QbOlg5YU4YCIJRc351lux9IN49n+1m8l9Ev6wGPOUWaR4G2zmCaJ
-         QIO0BJK6IgVVvdBzWqJt7q/P4X7+IidKXrqPZoJpNgp8bkOynMQQ3ow6gZCRrH65lTSG
-         cbcH9Bt2PMLvLnbDsfU6HAVHFPc8uWwf2dRZ9gKsTZb1exR0+rCU4ryEn8GK6mPJRibB
-         tR/Q==
-X-Gm-Message-State: AOAM531YjVWUTx1W3jiHa8g2iBaso/TLToH9UpbXmX6W4RxsvjumFzKS
-        5sdTPbeby3BbKgjocUS1GbQ=
-X-Received: by 2002:a62:f207:: with SMTP id m7mr8241612pfh.44.1644718214430;
-        Sat, 12 Feb 2022 18:10:14 -0800 (PST)
+        bh=hgKkhyGa1MZG+6xTJAHxPgWUd5NWDxfubWdlwv7McIM=;
+        b=kAvqi5/KIZzvNXvQv0l6NorVpryVGdw19mXL//xNUivvjPyQNHl2rGoQY/ha9rcDuD
+         SquS5MIk6A1jfGmXMyvkFK27S5DlT6zy3jAbxSsZJvnJiTDQNc4DbUoRQ3YqM5kAw/hQ
+         OATNTwFqwpaSYbHE/cLDTb1lUaGQ4PHNKrbL52hmaFaBqMWxLVeRAjKX0SE+1sBmWnVx
+         0xBcOTVzs3QuGAOhbvYZaP/oVPPhXpZ8mhvcvd9t9JIZTqSnHanIQLM1KjIFQCIHSmLc
+         knb/Dftt4uPpcLORqMBd+07+uLXrgMzu0fA7MzIdJAiRNm9CRkykNRpL11o6zzzhd0PK
+         ldBg==
+X-Gm-Message-State: AOAM532QgIjED/075CTSi2j1XfI7p9SVw+yDkqYqyX9eTidkFNFulHqb
+        tSH2+z6X5PipZJsschWz7lI=
+X-Received: by 2002:a63:6a87:: with SMTP id f129mr7042808pgc.0.1644724680089;
+        Sat, 12 Feb 2022 19:58:00 -0800 (PST)
 Received: from localhost.localdomain ([2400:4050:c360:8200:d85b:35dd:dae2:b7a9])
-        by smtp.gmail.com with ESMTPSA id h21sm31615566pfv.135.2022.02.12.18.10.12
+        by smtp.gmail.com with ESMTPSA id u13sm33581348pfg.151.2022.02.12.19.57.58
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sat, 12 Feb 2022 18:10:14 -0800 (PST)
+        Sat, 12 Feb 2022 19:57:59 -0800 (PST)
 From:   Akihiko Odaki <akihiko.odaki@gmail.com>
 Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
         Peter Maydell <peter.maydell@linaro.org>,
         Paolo Bonzini <pbonzini@redhat.com>,
         Alexander Graf <agraf@csgraf.de>,
         Akihiko Odaki <akihiko.odaki@gmail.com>
-Subject: [PATCH] target/arm: Support PSCI 1.1 and SMCCC 1.0
-Date:   Sun, 13 Feb 2022 11:10:04 +0900
-Message-Id: <20220213021004.1761-1-akihiko.odaki@gmail.com>
+Subject: [PATCH v2] target/arm: Support PSCI 1.1 and SMCCC 1.0
+Date:   Sun, 13 Feb 2022 12:57:53 +0900
+Message-Id: <20220213035753.34577-1-akihiko.odaki@gmail.com>
 X-Mailer: git-send-email 2.32.0 (Apple Git-132)
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -98,35 +98,28 @@ To:     unlisted-recipients:; (no To-header on input)
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: H2O1O4Mzrgim
+X-TUID: cWpO1VA5TKZA
 
-Support the latest PSCI on TCG and HVF. It has optional functions and
-none of them are implemented. Unimplemented functions now return
-NOT_SUPPORTED, which automatically makes TCG compliant to SMC Calling
-Convention 1.0.  HVF had already complied to SMCCC 1.0 for the
-compatibility with Windows and this change eliminates the inconsistency
-between TCG and HVF.
+Support the latest PSCI on TCG and HVF. A 64-bit function called from
+AArch32 now returns NOT_SUPPORTED, which is necessary to adhere to SMC
+Calling Convention 1.0. It is still not compliant with SMCCC 1.3 since
+they do not implement mandatory functions.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@gmail.com>
 ---
- hw/arm/boot.c                  | 12 +++--
- target/arm/cpu.c               |  5 +-
- target/arm/helper.c            |  4 +-
- target/arm/hvf/hvf.c           | 33 +++++++++++--
- target/arm/internals.h         | 29 +++++++++--
- target/arm/kvm-consts.h        |  8 ++-
- target/arm/kvm64.c             |  2 +-
- target/arm/meson.build         |  2 +-
- target/arm/op_helper.c         | 19 +++-----
- target/arm/{psci.c => smccc.c} | 89 +++++++++++++---------------------
- 10 files changed, 116 insertions(+), 87 deletions(-)
- rename target/arm/{psci.c => smccc.c} (76%)
+ hw/arm/boot.c           | 12 +++++++++---
+ target/arm/cpu.c        |  5 +++--
+ target/arm/hvf/hvf.c    | 27 ++++++++++++++++++++++++++-
+ target/arm/kvm-consts.h |  8 ++++++--
+ target/arm/kvm64.c      |  2 +-
+ target/arm/psci.c       | 35 ++++++++++++++++++++++++++++++++---
+ 6 files changed, 77 insertions(+), 12 deletions(-)
 
 diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 399f8e837ce..0269d2aba03 100644
+index b1e95978f26..0eeef94ceb5 100644
 --- a/hw/arm/boot.c
 +++ b/hw/arm/boot.c
-@@ -487,9 +487,15 @@ static void fdt_add_psci_node(void *fdt)
+@@ -488,9 +488,15 @@ static void fdt_add_psci_node(void *fdt)
      }
  
      qemu_fdt_add_subnode(fdt, "/psci");
@@ -146,7 +139,7 @@ index 399f8e837ce..0269d2aba03 100644
          cpu_off_fn = QEMU_PSCI_0_2_FN_CPU_OFF;
          if (arm_feature(&armcpu->env, ARM_FEATURE_AARCH64)) {
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a211804fd3d..e108fb0abb8 100644
+index 5a9c02a2561..307a83a7bb6 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
 @@ -1110,11 +1110,12 @@ static void arm_cpu_initfn(Object *obj)
@@ -164,23 +157,8 @@ index a211804fd3d..e108fb0abb8 100644
      }
  }
  
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index cfca0f5ba6d..f844f4d41f7 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -10195,8 +10195,8 @@ void arm_cpu_do_interrupt(CPUState *cs)
-                       env->exception.syndrome);
-     }
- 
--    if (arm_is_psci_call(cpu, cs->exception_index)) {
--        arm_handle_psci_call(cpu);
-+    if (arm_is_smccc_call(cpu, cs->exception_index)) {
-+        arm_handle_smccc_call(cpu);
-         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-         return;
-     }
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 0dc96560d34..e8ac9a6d14e 100644
+index 0dc96560d34..1701fb8bbdb 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
 @@ -653,7 +653,7 @@ static bool hvf_handle_psci_call(CPUState *cpu)
@@ -212,11 +190,11 @@ index 0dc96560d34..e8ac9a6d14e 100644
 +        case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
 +        case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
 +        case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
-+        case QEMU_PSCI_0_1_FN_MIGRATE:
-+        case QEMU_PSCI_0_2_FN_MIGRATE:
 +        case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
 +            ret = 0;
 +            break;
++        case QEMU_PSCI_0_1_FN_MIGRATE:
++        case QEMU_PSCI_0_2_FN_MIGRATE:
 +        default:
 +            ret = QEMU_PSCI_RET_NOT_SUPPORTED;
 +        }
@@ -224,75 +202,6 @@ index 0dc96560d34..e8ac9a6d14e 100644
      default:
          return false;
      }
-@@ -1208,8 +1233,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-         if (arm_cpu->psci_conduit == QEMU_PSCI_CONDUIT_HVC) {
-             if (!hvf_handle_psci_call(cpu)) {
-                 trace_hvf_unknown_hvc(env->xregs[0]);
--                /* SMCCC 1.3 section 5.2 says every unknown SMCCC call returns -1 */
--                env->xregs[0] = -1;
-+                env->xregs[0] = SMCCC_RET_NOT_SUPPORTED;
-             }
-         } else {
-             trace_hvf_unknown_hvc(env->xregs[0]);
-@@ -1223,8 +1247,7 @@ int hvf_vcpu_exec(CPUState *cpu)
- 
-             if (!hvf_handle_psci_call(cpu)) {
-                 trace_hvf_unknown_smc(env->xregs[0]);
--                /* SMCCC 1.3 section 5.2 says every unknown SMCCC call returns -1 */
--                env->xregs[0] = -1;
-+                env->xregs[0] = SMCCC_RET_NOT_SUPPORTED;
-             }
-         } else {
-             trace_hvf_unknown_smc(env->xregs[0]);
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 89f7610ebc5..a6f143b3e13 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -306,20 +306,39 @@ vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len);
- /* Callback function for when a watchpoint or breakpoint triggers. */
- void arm_debug_excp_handler(CPUState *cs);
- 
-+/* ARM DEN 0028B section 5.2 says every unknown SMCCC call returns -1 */
-+#define SMCCC_RET_NOT_SUPPORTED -1
-+
- #if defined(CONFIG_USER_ONLY) || !defined(CONFIG_TCG)
--static inline bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
-+static inline bool arm_is_smccc_call(ARMCPU *cpu, int excp_type)
- {
-     return false;
- }
--static inline void arm_handle_psci_call(ARMCPU *cpu)
-+static inline void arm_handle_smccc_call(ARMCPU *cpu)
- {
-     g_assert_not_reached();
- }
- #else
- /* Return true if the r0/x0 value indicates that this SMC/HVC is a PSCI call. */
--bool arm_is_psci_call(ARMCPU *cpu, int excp_type);
--/* Actually handle a PSCI call */
--void arm_handle_psci_call(ARMCPU *cpu);
-+static inline bool arm_is_smccc_call(ARMCPU *cpu, int excp_type)
-+{
-+    /* Return true if the exception type matches the configured PSCI conduit.
-+     * This is called before the SMC/HVC instruction is executed, to decide
-+     * whether we should treat it as a SMCCC-compliant call or with the
-+     * architecturally defined behaviour for an SMC or HVC (which might be
-+     * UNDEF or trap to EL2 or to EL3).
-+     */
-+    switch (excp_type) {
-+    case EXCP_HVC:
-+        return cpu->psci_conduit == QEMU_PSCI_CONDUIT_HVC;
-+    case EXCP_SMC:
-+        return cpu->psci_conduit == QEMU_PSCI_CONDUIT_SMC;
-+    default:
-+        return false;
-+    }
-+}
-+/* Actually handle a SMCCC-compliant call */
-+void arm_handle_smccc_call(ARMCPU *cpu);
- #endif
- 
- /**
 diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
 index 580f1c1fee0..ee877aa3a5c 100644
 --- a/target/arm/kvm-consts.h
@@ -326,10 +235,10 @@ index 580f1c1fee0..ee877aa3a5c 100644
  MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
  MISMATCH_CHECK(QEMU_PSCI_0_2_RET_VERSION_0_2,
 diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index e790d6c9a57..8adefb3434a 100644
+index 71c3ca69717..64d48bfb19d 100644
 --- a/target/arm/kvm64.c
 +++ b/target/arm/kvm64.c
-@@ -847,7 +847,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+@@ -864,7 +864,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
      }
      if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
@@ -338,140 +247,11 @@ index e790d6c9a57..8adefb3434a 100644
          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PSCI_0_2;
      }
      if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 50f152214af..c71624d7f30 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -57,7 +57,7 @@ arm_softmmu_ss.add(files(
-   'arm-powerctl.c',
-   'machine.c',
-   'monitor.c',
--  'psci.c',
-+  'smccc.c',
- ))
- 
- subdir('hvf')
-diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index 70b42b55fd0..3e2173e49cc 100644
---- a/target/arm/op_helper.c
-+++ b/target/arm/op_helper.c
-@@ -778,9 +778,9 @@ void HELPER(pre_hvc)(CPUARMState *env)
-     bool secure = false;
-     bool undef;
- 
--    if (arm_is_psci_call(cpu, EXCP_HVC)) {
--        /* If PSCI is enabled and this looks like a valid PSCI call then
--         * that overrides the architecturally mandated HVC behaviour.
-+    if (arm_is_smccc_call(cpu, EXCP_HVC)) {
-+        /* If SMCCC is supported then that overrides the architecturally
-+         * mandated HVC behaviour.
-          */
-         return;
-     }
-@@ -826,24 +826,21 @@ void HELPER(pre_smc)(CPUARMState *env, uint32_t syndrome)
-      *  -> ARM_FEATURE_EL3 and !SMD
-      *                           HCR_TSC && NS EL1   !HCR_TSC || !NS EL1
-      *
--     *  Conduit SMC, valid call  Trap to EL2         PSCI Call
--     *  Conduit SMC, inval call  Trap to EL2         Trap to EL3
-+     *  Conduit SMC              Trap to EL2         SMCCC-compliant Call
-      *  Conduit not SMC          Trap to EL2         Trap to EL3
-      *
-      *
-      *  -> ARM_FEATURE_EL3 and SMD
-      *                           HCR_TSC && NS EL1   !HCR_TSC || !NS EL1
-      *
--     *  Conduit SMC, valid call  Trap to EL2         PSCI Call
--     *  Conduit SMC, inval call  Trap to EL2         Undef insn
-+     *  Conduit SMC              Trap to EL2         SMCCC-compliant Call
-      *  Conduit not SMC          Trap to EL2         Undef insn
-      *
-      *
-      *  -> !ARM_FEATURE_EL3
-      *                           HCR_TSC && NS EL1   !HCR_TSC || !NS EL1
-      *
--     *  Conduit SMC, valid call  Trap to EL2         PSCI Call
--     *  Conduit SMC, inval call  Trap to EL2         Undef insn
-+     *  Conduit SMC              Trap to EL2         SMCCC-compliant Call
-      *  Conduit not SMC          Undef insn          Undef insn
-      */
- 
-@@ -881,10 +878,10 @@ void HELPER(pre_smc)(CPUARMState *env, uint32_t syndrome)
-     }
- 
-     /* Catch the two remaining "Undef insn" cases of the previous table:
--     *    - PSCI conduit is SMC but we don't have a valid PCSI call,
-+     *    - SMCCC conduit is SMC but we don't have a valid SMCCC-compliant call,
-      *    - We don't have EL3 or SMD is set.
-      */
--    if (!arm_is_psci_call(cpu, EXCP_SMC) &&
-+    if (!arm_is_smccc_call(cpu, EXCP_SMC) &&
-         (smd || !arm_feature(env, ARM_FEATURE_EL3))) {
-         raise_exception(env, EXCP_UDEF, syn_uncategorized(),
-                         exception_target_el(env));
-diff --git a/target/arm/psci.c b/target/arm/smccc.c
-similarity index 76%
-rename from target/arm/psci.c
-rename to target/arm/smccc.c
-index 6709e280133..ce3f608ee3e 100644
+diff --git a/target/arm/psci.c b/target/arm/psci.c
+index b279c0b9a45..6c1239bb968 100644
 --- a/target/arm/psci.c
-+++ b/target/arm/smccc.c
-@@ -25,61 +25,11 @@
- #include "internals.h"
- #include "arm-powerctl.h"
- 
--bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
--{
--    /* Return true if the r0/x0 value indicates a PSCI call and
--     * the exception type matches the configured PSCI conduit. This is
--     * called before the SMC/HVC instruction is executed, to decide whether
--     * we should treat it as a PSCI call or with the architecturally
--     * defined behaviour for an SMC or HVC (which might be UNDEF or trap
--     * to EL2 or to EL3).
--     */
--    CPUARMState *env = &cpu->env;
--    uint64_t param = is_a64(env) ? env->xregs[0] : env->regs[0];
--
--    switch (excp_type) {
--    case EXCP_HVC:
--        if (cpu->psci_conduit != QEMU_PSCI_CONDUIT_HVC) {
--            return false;
--        }
--        break;
--    case EXCP_SMC:
--        if (cpu->psci_conduit != QEMU_PSCI_CONDUIT_SMC) {
--            return false;
--        }
--        break;
--    default:
--        return false;
--    }
--
--    switch (param) {
--    case QEMU_PSCI_0_2_FN_PSCI_VERSION:
--    case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
--    case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
--    case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
--    case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
--    case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
--    case QEMU_PSCI_0_1_FN_CPU_ON:
--    case QEMU_PSCI_0_2_FN_CPU_ON:
--    case QEMU_PSCI_0_2_FN64_CPU_ON:
--    case QEMU_PSCI_0_1_FN_CPU_OFF:
--    case QEMU_PSCI_0_2_FN_CPU_OFF:
--    case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
--    case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
--    case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
--    case QEMU_PSCI_0_1_FN_MIGRATE:
--    case QEMU_PSCI_0_2_FN_MIGRATE:
--        return true;
--    default:
--        return false;
--    }
--}
--
--void arm_handle_psci_call(ARMCPU *cpu)
-+void arm_handle_smccc_call(ARMCPU *cpu)
++++ b/target/arm/psci.c
+@@ -57,7 +57,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
  {
      /*
       * This function partially implements the logic for dispatching Power State
@@ -480,16 +260,16 @@ index 6709e280133..ce3f608ee3e 100644
       * to the extent required for bringing up and taking down secondary cores,
       * and for handling reset and poweroff requests.
       * Additional information about the calling convention used is available in
-@@ -102,7 +52,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+@@ -80,7 +80,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
      }
  
      if ((param[0] & QEMU_PSCI_0_2_64BIT) && !is_a64(env)) {
 -        ret = QEMU_PSCI_RET_INVALID_PARAMS;
-+        ret = SMCCC_RET_NOT_SUPPORTED;
++        ret = QEMU_PSCI_RET_NOT_SUPPORTED;
          goto err;
      }
  
-@@ -111,7 +61,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+@@ -89,7 +89,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
          ARMCPU *target_cpu;
  
      case QEMU_PSCI_0_2_FN_PSCI_VERSION:
@@ -498,9 +278,9 @@ index 6709e280133..ce3f608ee3e 100644
          break;
      case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
          ret = QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED; /* No trusted OS */
-@@ -196,8 +146,37 @@ void arm_handle_psci_call(ARMCPU *cpu)
-     case QEMU_PSCI_0_2_FN_MIGRATE:
-         ret = QEMU_PSCI_RET_NOT_SUPPORTED;
+@@ -170,6 +170,35 @@ void arm_handle_psci_call(ARMCPU *cpu)
+         }
+         helper_wfi(env, 4);
          break;
 +    case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
 +        switch (param[1]) {
@@ -518,24 +298,21 @@ index 6709e280133..ce3f608ee3e 100644
 +        case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
 +        case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
 +        case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
-+        case QEMU_PSCI_0_1_FN_MIGRATE:
-+        case QEMU_PSCI_0_2_FN_MIGRATE:
 +        case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
 +            if (!(param[1] & QEMU_PSCI_0_2_64BIT) || is_a64(env)) {
 +                ret = 0;
 +                break;
 +            }
 +            /* fallthrough */
++        case QEMU_PSCI_0_1_FN_MIGRATE:
++        case QEMU_PSCI_0_2_FN_MIGRATE:
 +        default:
 +            ret = QEMU_PSCI_RET_NOT_SUPPORTED;
 +            break;
 +        }
 +        break;
+     case QEMU_PSCI_0_1_FN_MIGRATE:
+     case QEMU_PSCI_0_2_FN_MIGRATE:
      default:
--        g_assert_not_reached();
-+        ret = SMCCC_RET_NOT_SUPPORTED;
-     }
- 
- err:
 -- 
 2.32.0 (Apple Git-132)

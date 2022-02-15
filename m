@@ -1,95 +1,91 @@
-Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp611490lfl;
-        Tue, 15 Feb 2022 13:52:08 -0800 (PST)
-X-Received: by 2002:adf:fd0d:: with SMTP id e13mr690442wrr.403.1644961928241;
-        Tue, 15 Feb 2022 13:52:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644961928; cv=none;
+Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp627218lfl;
+        Tue, 15 Feb 2022 14:24:37 -0800 (PST)
+X-Received: by 2002:adf:82d0:0:b0:1e2:a961:1aea with SMTP id 74-20020adf82d0000000b001e2a9611aeamr68922wrc.706.1644963876917;
+        Tue, 15 Feb 2022 14:24:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644963876; cv=none;
         d=google.com; s=arc-20160816;
-        b=TxBQCKf6aabbfCpfg/XwNjE/XYJ+jlFMEVph6dO93Pbmn2vwcMC3F3Aaa/pkaoPr/m
-         UEXfcFeDdIxLAzzR7FiyS4zc8tax+p48l5zHuZjYzep3DQX7rBZ9fr6IdXI/C73NNE23
-         6e4lvEPA3AGV+sNrp9/SIABnHazRblyU02oz4Du0lk2AKUlSGFtN5kTjp38ep/jdgctu
-         D2Er1wrlvoNfQBdRgTgamJHH70NBF2YfQ67MuYeS0cIBAqHGDPh6R6Y+VHD6gm+hgG9N
-         TpLOyUZXDJrlChbXOI6sYmAexBw6nulinr4R3C163OAxf75Zm1v+3iT/HPpdbUoX/o7f
-         M6jQ==
+        b=DRtc4RzjitX4h3hZJAaWE6AribWWJ+LekU3ABwBoVi0+fzq1C4toGEB8nCS26eALcM
+         ExVvUjEnOnCfGl3lnKCqP/+RFmhJ+KQX/dP2YQ6S5M9gYG5qp5W6c1j8OGsFIGajQf86
+         BZUoNfW+EKgdtu+aQpIHlKn0U4UrnQhdzuJlG7wiXJ2NodvxL1UBKNR7II6YrTI7Krvr
+         DhRR6pp6ctoO89FKVBU6TB7D7zYKzcd5eqRoLIUjLTHRMYxzaCTc5ZXyd/T4sxfjZKX4
+         Kqcrkqk9ODEBefo/rgTAEfPFmjsMp/0m3VG/+wcSRWmuaxZly1BwmSLy56BRvoHsGPJs
+         Pipg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=T07S4JHhtp008CEFdV/z8mu7sXcuQjmjrMpL3M/sk3E=;
-        b=Pq910kiOWo8HUYYkbflJrKTrdgLbggNL4wEfvEHHJIZjlFZsfZdssBsLaN2+m52++2
-         1tMPjCYUoqfCwrcJwu/4uNvaGaG8x4xyHmF4l51bXYUM3GvkY45FTmGiKuGXVBvSmWCl
-         vPJD6RQxHM4IQn9bD4JTfd+hx3TjtPgJXWN1w1OS69prJzSebiKXzIJXewZja7YRnU5T
-         NEjGNdqxhD8QXLKLw2VQZph+tZ61tgZZs0Eze2fsWq1AubEhwi9IWMQEZpQ5i5e6fVpW
-         RNsH+XSBqtoUu3vfYXLT+nr0v97B4hNYkQ5sOWIbsDWmUWvyWs9dy8r64t/arhpNBOSd
-         5odA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=X0XGzw/JpnzzkJGvYBeoA5oz+SbPnjkG+OYo4X70usc=;
+        b=CoEkzWocOhYDpaBZ9pYF/SF6S6IQGoY/rzliFV5/wcPbNDkOcnxy88O62GmBFge01K
+         MlPC5UiJ3SOMtO38fNUDsJDUg27BTvR8cho0eTmtz8Ru5RA1A8ygejXJblQBNnm9LIg4
+         mp3vIMvxeWL72Lin5FIw3Mlmm2L7ZnTF0jLzRUjTji6igcthNyOnAR8YRYLzsSmsbBRv
+         6B05bMfRvJ3R/bA2Dxh/ditEWXvOR6239Cdw0VLvsDHK3G5hE8Z5MHA9pBgYkFTNFDiI
+         94wdG+EXthQcUPvTKqzBHd9MV6MX4OhvaND7BrsuqJzRSnQNKO/YXWCXhIAiyKKLo4do
+         XPqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EOS1zmsX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YbFoL6+0;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 13sor5082808wrz.7.2022.02.15.13.52.08
+        by mx.google.com with SMTPS id m4sor16269786wro.8.2022.02.15.14.24.36
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 15 Feb 2022 13:52:08 -0800 (PST)
+        Tue, 15 Feb 2022 14:24:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EOS1zmsX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YbFoL6+0;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=T07S4JHhtp008CEFdV/z8mu7sXcuQjmjrMpL3M/sk3E=;
-        b=EOS1zmsXUXOWj20dnyzgn0EfdBJZ5Fw5+T35RRlqxajcnyEDr1kguR6LyTpb3lYO0U
-         DM0BeR6h8D3NrUSZkkjFPVVlDg6I/D1HLkoEkB63/HjFYc87X4/FrMW2jX/dxp/atc3R
-         2DPHbDlVNQ54hixwSDw9Q+rAhm6zJa4Ql+38PebyIsnQUOedOistfguSWn2wHWuurNUb
-         bC8sTiDRdzJ3jbHD0f6kykl36GAvjouvMtskhE1N/TiZwCGpEDzvKA9fGK3C4pE1Pkx3
-         u13ADx3IPm2F0gkHiEHYsZLdP4gh9t7yKEH8IwiDQOHbHOeyx2eyQgVZGjtEK092s9dN
-         VXAw==
+         :cc;
+        bh=X0XGzw/JpnzzkJGvYBeoA5oz+SbPnjkG+OYo4X70usc=;
+        b=YbFoL6+0T0lgS7kNjEY30Frub+A4kZKc3AOLmUlF5LX2BCVa2j/GGedptBl0jMVhkv
+         8ooG8ULUr7Av+k8QaNGKUlbMQYyQK5kZNRXrNAZdtmqOgfxQbYnkaGSK7TcAr/6Y1JP4
+         UfhhT+cugdg1YvqIWEuzQF9j9Z+iLVWmsm4ZAkrWMXVVtqmfrqCc125leZGLlDpLE2KE
+         y8yDai5d/1C6TwWVc/FEd+0iqLykngs7aHaCztkbO1p954aNoXisFuFJReaw0xKt1Gmp
+         uehW4HB5LGHL94m4XdT6Az0Cb8CGxgh2RcDLCMfGSRo/mV53lV2FvQ8YSQu5YOm5aDFz
+         Md/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=T07S4JHhtp008CEFdV/z8mu7sXcuQjmjrMpL3M/sk3E=;
-        b=c30I41zD2T0p6zZRKkbCx3ckBx2knXfNnKxkRwxvgmyGlrTCBwTZawL68aigDYHNgp
-         uM1TlBufe3S8q2+gLA1hnvdsSostVuE62WDuIp2wLMvWLUbcNHj6+30eo7zVzm1tQZR9
-         cNiDABhni7lZXCNG7VTJc/t77Z6tWcd/4sldwpM/MVh0XafbHHN1AZwKd7yrZHjrxFa+
-         fVKXkl6NwXbVaEPsiByPfOkcZv22KTnTmP9YmC891r6hHMhUZWHtGOOk5WF+UimM/RoI
-         UpdROEzdFpgasLFqdWD1qqh7MQJZo0CoR4OOBWjN7ST9mYvx0lM2/BFpw8ojFgvNb562
-         YfRw==
-X-Gm-Message-State: AOAM531lU+3ejk+ij/K8aQ16yoMne78m8Dze9pUxIO4JZ2fbbbFiWwck
-	VRDFu+H5LEmV+Vvc2TMiv5cF0k+NVSGity3DGCSimxzZ
-X-Google-Smtp-Source: ABdhPJyIgODgzgCYo5XBtTD9O6/9bnf7/2/8LieuUZxaOrNZRr53K2hXNKLSsrIJIEhinJsMK9NkqDVX712ZRaBTmFI=
-X-Received: by 2002:a5d:4534:0:b0:1e4:9d38:2d4f with SMTP id
- j20-20020a5d4534000000b001e49d382d4fmr57174wra.2.1644961927988; Tue, 15 Feb
- 2022 13:52:07 -0800 (PST)
+         :message-id:subject:to:cc;
+        bh=X0XGzw/JpnzzkJGvYBeoA5oz+SbPnjkG+OYo4X70usc=;
+        b=AXQDzvu76QCGLhotw0sSgJRj/WwIFKQg4iNR7QK8B/XZX7f478cakh2grGVIusBv+O
+         NjDpXLzGwBfq0kNWtxK5T3mvbsoVnva+Do47Zw//tSEn1WYjw8aIbQsGEFd7BYR/kb8D
+         oyGomgUxtMoPvwYXESlrP0ss02xhVZC9SjwvbSBUV2XDRAnetA10HJbLq01wYKKFTPf7
+         9ijL7Y2nB2irU0Z2kPANHDi9Xx+oPjKqBUtgb5Td1FMETFXXZhdDVumloXAMHKWFapfd
+         +DvkpxnMZS+XXu/55TeN2pftIPp721Txo/Xqi6QQiwubn6myFTXJXkCCRdnTC1grvYgk
+         GAog==
+X-Gm-Message-State: AOAM5333SiLag3G4lFZszJJQcM4EkdbuurV82IX6hAwNqrRBqjrmE3jd
+	X48jcnl12MpE7YDZtcKNYCvpEkGqYu+IX+YOexBaYNjU
+X-Google-Smtp-Source: ABdhPJxINqrtldMAfp1RuixdZBh3yrpqU3wibiRBYHWZZ2prTtx2oNoZo5e8bE9mh4PCnGhMiX9pm5uK3uybxQQxIFs=
+X-Received: by 2002:a5d:59ac:0:b0:1e4:9b6e:eac7 with SMTP id
+ p12-20020a5d59ac000000b001e49b6eeac7mr114451wrr.172.1644963876691; Tue, 15
+ Feb 2022 14:24:36 -0800 (PST)
 MIME-Version: 1.0
-References: <20220210040423.95120-1-richard.henderson@linaro.org> <20220210040423.95120-5-richard.henderson@linaro.org>
-In-Reply-To: <20220210040423.95120-5-richard.henderson@linaro.org>
+References: <20220210040423.95120-1-richard.henderson@linaro.org> <20220210040423.95120-15-richard.henderson@linaro.org>
+In-Reply-To: <20220210040423.95120-15-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Feb 2022 21:51:57 +0000
-Message-ID: <CAFEAcA-4+F9uv-tG777tqZo-k1d6dg_NhPdQZ4cChTKpUT5TDw@mail.gmail.com>
-Subject: Re: [PATCH v2 04/15] target/arm: Move arm_pamax out of line
+Date: Tue, 15 Feb 2022 22:24:25 +0000
+Message-ID: <CAFEAcA_yJeqQ0rA582cZhCZYxsFL4bVrMYeUvy5mBEQQ9m7ZKA@mail.gmail.com>
+Subject: Re: [PATCH v2 14/15] target/arm: Validate tlbi TG matches translation
+ granule in use
 To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: ZijjayKmFuyX
+X-TUID: dQqlYzCeYYx8
 
-On Thu, 10 Feb 2022 at 04:04, Richard Henderson
+On Thu, 10 Feb 2022 at 04:05, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> We will shortly share parts of this function with other portions
-> of address translation.
+> For FEAT_LPA2, we will need other ARMVAParameters, which themselves
+> depend on the translation granule in use.  We might as well validate
+> that the given TG matches; the architecture "does not require that
+> the instruction invalidates any entries" if this is not true.
 >
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/internals.h | 19 +------------------
->  target/arm/helper.c    | 22 ++++++++++++++++++++++
->  2 files changed, 23 insertions(+), 18 deletions(-)
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

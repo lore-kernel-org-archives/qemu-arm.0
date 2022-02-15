@@ -1,147 +1,173 @@
-Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp460827lfl;
-        Tue, 15 Feb 2022 09:20:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw0OSLBoCgpIa9x98RcD2vHMfz9sEb3yFREKwfmZsUVzbnrnr8DVXxXjuiexyHxNCmNX5g9
-X-Received: by 2002:a81:e445:: with SMTP id t5mr5024477ywl.481.1644945653175;
-        Tue, 15 Feb 2022 09:20:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644945653; cv=none;
+Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp470628lfl;
+        Tue, 15 Feb 2022 09:34:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwXNZ90d7zE59Mw3Q9yKQcDbMchIo/Tdv62oPK9m7HAdMvEdN0cnMUitWInShL53zG3O5mN
+X-Received: by 2002:a81:ff08:: with SMTP id k8mr4922889ywn.287.1644946495453;
+        Tue, 15 Feb 2022 09:34:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644946495; cv=none;
         d=google.com; s=arc-20160816;
-        b=q8CgtVsFCQwhF7JXbiSyTnjvvfc2KS9UKptzSIwkNzH3aQjXktnr44vzZMpXdkX8RY
-         540HR9AV2tc3X9JGf6RtNCK5Unz2meWEJKURAqVSOc5uNET5VyDhXW2wykylSb8be+wo
-         vuImu5SBZaiUgZofI97EPnINCs7wvb98KJu5V0IgSCVVImfYxDzz73NmxvGIWygqcSEd
-         t9P8eUdmK6vsP+hnZ5OKKAJ9YZHr6sAzKmsXR3Fg0z4tooXIGXVD7B+7U4ZS2U4BMadt
-         zGtTVzSRdMEy3U/zrzkMMF63Ew6QtugxxgBTF6gp9XZyMJVfq/xGAbbSqpN2//R1csek
-         gDDg==
+        b=SfP4yoVQfIljMmorXDsHbzTggRXPq7sG73CEtmFBfdS70UEdKQoTYV2YQCuv5frG9C
+         mBE5/dCgAcY1Cyy2ZJl55Ufi+MxmAwgOm4OYCiJe7FBfX1XwxxYmxa0btPmPLfRLVIcr
+         A5C0lxqd5lraKtVSaTSDAd8IESU4wpmdmwiSKTlfSRD4x4hFmr3ArI7cN4IAb9iBbR4S
+         LZpE38X6BXCphlvoomWIvBfj8Ptmii89zgmQ5LMlBDyH1B/pJc8Gdlx5LcfHAo6oiRBS
+         m/fYffEmDmahc9MX4Pp6Ooi/p/8R7GWVwsBbGwm/CMEKmUunjJk+fnF6dtaAbjuG7qt4
+         dW3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=+xW2NA4HjdNDSVneT7gb2AWfKKEzJpSpqZHLRk7Sv6U=;
-        b=ngdj0lplgkqbiBeI26X3TAX/er1SO+Iii/W/31V9sfsH0yeTTnYpPO1tto/3tC90o7
-         DVOif2kpIOdu4btYQtMtebQvzkZoyxnxH5CuEl86A+JjN+FO0Gms3NcqIOuMHmy1LAK0
-         ssXRwYBCY8D3PL7MwXHxM0R7Suz3gFNOqrXQx6itEj8ZQFOcfLbWIXjgvpZb0bnyxzBz
-         zU/dU++HlrTyqGl6PtkVwYUkOlIChXuAO95sRlilAz58TIAzFqfHbvRQA39kX3p6az0E
-         cOBwp5uPt0bc/urEjiQFCY96/bVIiNR9+jFKSR2ilcLQmGgELDL5QoMzOVX/5Vaq5MKK
-         oi/Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=KGeQ+XbsNFdBY75cPNCI4lANDxBXDJZWktLhxWtNZQc=;
+        b=Ehi9dyeJq3mAUIdUizpAzoJgd6a2Fm52eJVr8e4hVPWkWXi93V2RH0nz4NGsJlrmVB
+         J4St+hl8PtieIwkzRa7PgwrFXD+EPG6c3HsfZrrIIPKGytIsuWeeoTuInf3Ea+JM4scK
+         eeLXJV1P5/FkkuvdHO+3io5QdSLzkEh9q69m1YXuJxkzFgOW60k2kizJTBPy0ygPvd0l
+         KLUrKWj4RHrI6hCeZD+EvA2Ggr72NfhtZt+iPVVSvqqSVQy6ypre0SnZMdCeq8Ndmjnq
+         c0xIKHkxMID/Nyuoo0xmY8WA0ns5WKq+IZcuUq/6YuOLVgCgp/D3lGcr6APPmvZLqQH0
+         SbJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Q1/shm1h";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a128si26277028ywh.34.2022.02.15.09.20.52
+        by mx.google.com with ESMTPS id a71si8629009ybg.254.2022.02.15.09.34.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Feb 2022 09:20:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Feb 2022 09:34:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Q1/shm1h";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45426 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43136 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nK1VU-0003hq-As
-	for alex.bennee@linaro.org; Tue, 15 Feb 2022 12:20:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37830)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nK1j4-0002gG-Rp
+	for alex.bennee@linaro.org; Tue, 15 Feb 2022 12:34:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41888)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nK1V4-0003cV-Eo
- for qemu-arm@nongnu.org; Tue, 15 Feb 2022 12:20:26 -0500
-Received: from [2a00:1450:4864:20::430] (port=34473
- helo=mail-wr1-x430.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nK1V2-0002Eh-3B
- for qemu-arm@nongnu.org; Tue, 15 Feb 2022 12:20:26 -0500
-Received: by mail-wr1-x430.google.com with SMTP id s10so19770743wrb.1
- for <qemu-arm@nongnu.org>; Tue, 15 Feb 2022 09:20:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+xW2NA4HjdNDSVneT7gb2AWfKKEzJpSpqZHLRk7Sv6U=;
- b=Q1/shm1h639n7ZHPAgESNZW1I6yGncAI3y/c2/NkQJR9bAG8zbt+YoouXiyCaG6apE
- Z6wK+kPFAmp5vxaq+GE+ClIH2d/YxVUb8SpSfsOOUIz+hTCz5g2/LL57dzIoJ9v0v9p+
- VTIje7CNc6rH+tvvy0Ex0XyEPDa7/hdrLa3BaHkdSV0KANv/geVzmzIncSW8ozqQFOkS
- wKCz/LnRdqETPmUHOp4HMhmdAr/PjraW9kNYMt8W5iUnbVOHGx1uwO2uA0uqRoAPU1Bq
- Yk63wi0UCsa1XkUZoLly4k2XRkbUKqXExAGPd1kaxlEXxhKRK7pHJL5oHR7IwDOYlw7N
- A+PQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=+xW2NA4HjdNDSVneT7gb2AWfKKEzJpSpqZHLRk7Sv6U=;
- b=h9zoM3yjWPvJl0uQQaA3XvBuS/CqkrZil04l7PmZJhZW2YHVxd2gLhya+kbbNlR1Xx
- za+E4gMXB2AhWaKUw2VT8FETrinh5DVbgl6pGffMax4uQHzrG1GU7Ifzf6AnfFOBeLC8
- Vh2GhZlaiRmWB7sY6eWoZq2N7F9K11lURH101T3Vw4vGuljsrd9oiEnvE8aYY8lTrh5K
- IT2wjoUkqlT1NGuWeEb0tqluhpHvYDftaaQWLyA4F8k7Tg67wjPJUhYxIvrizF4m0MsO
- TJPw/0rAwevN+7lrNb5tOADdlz4DdtZ68/g8BvjUhtEbr+V01mEiUDWUH2Qq3OPYFbGS
- 5v/w==
-X-Gm-Message-State: AOAM533Dakk9AU/y3SyHNCjbGZtGc1NjcAjWC7RSTpWn7yjJZPqnpdDB
- WI5gnj+PAPlkp8IBH2WSnqjiSXPCxdiML4wt8MH0Ug==
-X-Received: by 2002:a5d:62c4:: with SMTP id o4mr4037941wrv.319.1644945622416; 
- Tue, 15 Feb 2022 09:20:22 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1nK1il-0002cp-43; Tue, 15 Feb 2022 12:34:35 -0500
+Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173]:60317)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1nK1ii-0004Wu-4y; Tue, 15 Feb 2022 12:34:34 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.221])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id A20E0E01AC26;
+ Tue, 15 Feb 2022 18:34:24 +0100 (CET)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.18; Tue, 15 Feb
+ 2022 18:34:22 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002b9c6eb6b-41ce-4948-a076-45ad149065b6,
+ 9E61FECBC99B7F84222AE0DB6991604CA8A139D0) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <7e091698-d5db-689c-4c19-b5a7eede51f3@kaod.org>
+Date: Tue, 15 Feb 2022 18:34:22 +0100
 MIME-Version: 1.0
-References: <20220203140141.310870-1-edgar.iglesias@gmail.com>
- <20220203140141.310870-4-edgar.iglesias@gmail.com>
-In-Reply-To: <20220203140141.310870-4-edgar.iglesias@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Feb 2022 17:20:10 +0000
-Message-ID: <CAFEAcA-mkZ5EuAhcVVN01q_6Mcr7QR2Gn4Q37nN1GZtBK8MM7g@mail.gmail.com>
-Subject: Re: [PATCH v2 3/6] hw/misc: Add a model of the Xilinx ZynqMP CRF
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.904, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PULL 18/38] Remove unnecessary minimum_version_id_old fields
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, Juan Quintela
+ <quintela@redhat.com>
+References: <20220127150548.20595-1-quintela@redhat.com>
+ <20220127150548.20595-19-quintela@redhat.com>
+ <CAFEAcA8+ri-ndQv0b10yfUjSJZwH5Ec08S10_-2k5C8_OMYYDg@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CAFEAcA8+ri-ndQv0b10yfUjSJZwH5Ec08S10_-2k5C8_OMYYDg@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: a0e9bd5f-8265-454b-ad3c-242cbf61b7ad
+X-Ovh-Tracer-Id: 16438138642480139127
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrjeeggddutddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhephffhleegueektdetffdvffeuieeugfekkeelheelteeftdfgtefffeehueegleehnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdeljeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehgrhhouhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, luc@lmichel.fr, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, f4bug@amsat.org,
- francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
- qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5N84XHj7M0UX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Peter Xu <peterx@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
+ Hannes Reinecke <hare@suse.com>, Vikram Garhwal <fnu.vikram@xilinx.com>,
+ qemu-block@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>, Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Laurent Vivier <Laurent@vivier.eu>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hkmKcM0OLjro
 
-On Thu, 3 Feb 2022 at 14:01, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
->
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->
-> Add a model of the Xilinx ZynqMP CRF. At the moment this
-> is mostly a stub model.
+On 2/15/22 18:13, Peter Maydell wrote:
+> On Thu, 27 Jan 2022 at 15:14, Juan Quintela <quintela@redhat.com> wrote:
+>>
+>> From: Peter Maydell <peter.maydell@linaro.org>
+>>
+>> The migration code will not look at a VMStateDescription's
+>> minimum_version_id_old field unless that VMSD has set the
+>> load_state_old field to something non-NULL.  (The purpose of
+>> minimum_version_id_old is to specify what migration version is needed
+>> for the code in the function pointed to by load_state_old to be able
+>> to handle it on incoming migration.)
+>>
+>> We have exactly one VMSD which still has a load_state_old,
+>> in the PPC CPU; every other VMSD which sets minimum_version_id_old
+>> is doing so unnecessarily. Delete all the unnecessary ones.
+>>
+>> Commit created with:
+>>    sed -i '/\.minimum_version_id_old/d' $(git grep -l '\.minimum_version_id_old')
+>> with the one legitimate use then hand-edited back in.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> Reviewed-by: Juan Quintela <quintela@redhat.com>
+>>
+>> Signed-off-by: Juan Quintela <quintela@redhat.com>
+>>
+>> ---
+>>
+>> It missed vmstate_ppc_cpu.
+> 
+> No, as the commit message notes, it deliberately did not change
+> that one vmstate, because at the time of writing the patch
+> that was the one vmstate that really was still using
+> load_state_old. As it happens commit 8f91aca7ff0044b hit
+> master first, removing that use of load_state_old (but
+> forgetting to remove the minimum_version_id_old field along
+> with it), 
 
-> +static const VMStateDescription vmstate_crf = {
-> +    .name = TYPE_XLNX_ZYNQMP_CRF,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .minimum_version_id_old = 1,
+If I remember well, at the time of this patch, we were both working
+on the same part and I thought that removing all minimum_version_id_old
+in one go was better. Anyhow,
 
-This is still on my to-review list to look at properly, but
-this setting of .minimum_version_id_old is incorrect. The
-field is only used if the VMStateDescription sets a non-NULL
-load_state_old function, which this one does not.
+> so this commit as it hit master is OK.
 
-We cleaned this up in commit 17e313406126, and I'm about
-to send a patch which drops the fields entirely.
+yes.
 
-thanks
--- PMM
+Thanks,
+
+C.

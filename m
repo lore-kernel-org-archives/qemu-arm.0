@@ -1,214 +1,223 @@
-Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp543305lfl;
-        Tue, 15 Feb 2022 11:38:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy6lNECxsNFCquIq9SNrM1vwQFzgMXun0VUUqLzzlD8wVjrKLmFF1uUfL5XqqlpLDr19Wag
-X-Received: by 2002:a81:c40c:: with SMTP id j12mr432110ywi.37.1644953890019;
-        Tue, 15 Feb 2022 11:38:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644953890; cv=none;
+Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp873168lfl;
+        Wed, 16 Feb 2022 00:08:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyAA2hFQwEGST9V4Ap0UyaIgH12058OBaaIJ074qXwxoaC0nbRpOCvLLB1gEgNZm9OGEI4K
+X-Received: by 2002:ac8:5a4e:0:b0:2d3:2732:17ac with SMTP id o14-20020ac85a4e000000b002d3273217acmr1122331qta.461.1644998919766;
+        Wed, 16 Feb 2022 00:08:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644998919; cv=none;
         d=google.com; s=arc-20160816;
-        b=h+SJBrTdO8LPTLfFIDxFpWKkBg6Mv7sAweeoOoKDd75Xc0y4VnMfuIIQIFAKtTEa4C
-         Rw2xYc7ewp+WuuNr0vhtZ9yUBJX7r/nIu8tP2W20BU2xbP/13MHPDgmfCsqRWOh+V+G/
-         JLEjTDur9G9neYdZOEKskW+8Cumfm42YbE5agIxTTFp1LQZhnxRCKevzm8SrldPVfExE
-         4ZXKCe8mtblnLRZrv8jbYsWaUrrffLDKTn03ikb+/u0pZGu8g0HXLJxp5nubB49dH2Zo
-         QDgmqKq4/vZAtcFudQD8/ShhMZ9pBCSb1VqHGJ16aQiCTOO74sH6s5Jnjj5030FfVi/3
-         SQdw==
+        b=tnLfThS4HKPb0o5SRbr1QhvoMLEyYoYDbye9XBz77Z6Xx8lqr2zbfp3z+Q/n2UYiPd
+         GsW1/D08Bmjqc7nWQNIYPFmR7by/A0NIQNXHZjr62AAd1hPvM+th+nU2zSqcpjA4aoi3
+         yWFM3+rUByKusULadJkFRPhqeLrxSTJ8n9wqDvHuDJFEi4koaK7ruKKE2trAAgSEjauS
+         xFXddXkPzXg2vI1bkfmXPMHnJFckjwHPLxl7QRu/XvatA2RAEXqe/nuI0g4h7C6h9CwS
+         EmbuClpE2xl3OStrvz66MYiF02vn2M6oe+hTkSIAnFrBLyzWe18UXkZDheFty/ARep+3
+         ZHoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=RdilMSZ5G3Q8UmLpPWoOtg0YYs6Zcoyt8d2cNdM4CWI=;
-        b=vXKOU1yNz/Kee0zr93oMcTUd+rI+EokbjmIHPBEG+Y1U8bxRk9JE3iuQBrOZGRGaHJ
-         zrdrzgwKWUADegFg2z/SAg1JtlHOhCix69J08zHAALEuKXUY7NRJI2qUVdtLzItxGqU6
-         NkNtKG+OBPVC212d6a+Zt/O/mYLtNkEEKW8naRlca1SDRdbW3tLTKX2fzcCCNBEsVnpw
-         uLD3olGXO1h53LGZqwfVaXMftP0ln2hgfz6JrDXG+uSipPlxuJtqVttdJY1+DA1bEKCO
-         KrSAPx18ae5COE3SyOoOdPht380reb2z0s1mxwzI//XCSKlK9GCHd1eXnZBwXn4VcCbh
-         WyQA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=eMEPjrP9y57U7J65ci5n/jTlAjdYa97KNo48unGH2+k=;
+        b=iBlaK/tgPuj6XbLXajsvXssv2h0hc5TOgILEu3WjEXmcKqiu1zq7rD5hCVYEgQvQYB
+         jUuXgMz/0+RS6rrDnIxaw4r5Rht7FPb24pgF5sVH6Aq0TPSYFcT5x0blMqLBzyB/A5f9
+         eFgMpbtgk4Ghz1Pe37K2WrQ7nNCPGMCFiJESRwjJKvPBZ5SbjR3ySkV7FgXicNlcTUfZ
+         fDc/g3Ti3Adfga7feixH+xNmkBly93cQrXe7MC860HZjWhFPpMzW7Fo415gyxxhxVqaO
+         uuJF7CyiSRotfeqC61fXE8sYcoFJ/X1xn2AcTXPAP/cE8vhZ6qYzr/keFX/UFnNAVOvc
+         HKtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xrKqTA7X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BM1hsLy6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bd28si2545487ywb.394.2022.02.15.11.38.09
+        by mx.google.com with ESMTPS id gy12si2119740qvb.309.2022.02.16.00.08.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Feb 2022 11:38:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Feb 2022 00:08:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xrKqTA7X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54730 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BM1hsLy6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nK3eK-00010k-6D
-	for alex.bennee@linaro.org; Tue, 15 Feb 2022 14:38:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39458)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nKFMd-0005o5-1P
+	for alex.bennee@linaro.org; Wed, 16 Feb 2022 03:08:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37338)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nK3UY-0007yU-CO
- for qemu-arm@nongnu.org; Tue, 15 Feb 2022 14:28:03 -0500
-Received: from [2a00:1450:4864:20::430] (port=45591
- helo=mail-wr1-x430.google.com)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1nKFIM-0005lR-EC; Wed, 16 Feb 2022 03:04:17 -0500
+Received: from [2607:f8b0:4864:20::1031] (port=46956
+ helo=mail-pj1-x1031.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nK3UW-0006Lp-7D
- for qemu-arm@nongnu.org; Tue, 15 Feb 2022 14:28:01 -0500
-Received: by mail-wr1-x430.google.com with SMTP id p9so13297052wra.12
- for <qemu-arm@nongnu.org>; Tue, 15 Feb 2022 11:27:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=RdilMSZ5G3Q8UmLpPWoOtg0YYs6Zcoyt8d2cNdM4CWI=;
- b=xrKqTA7XAoAIFcFhicQoLKBkY2ypGMJE6hrsNeosZh2xCwsRs6tob9GLjq0g9FiGh8
- fpTbAFZBdUEnM2m7MYsGZeE5HpfvvzcQeDAxaGqvRw+xMrAbQQWx63a+4TnEziYdTR6j
- mfoYad3c922Z9+vGOWYRo4i2reDHGTERHDh8HFhYBbr5sKN5xuiEr7wzXh7vklAjF5C5
- E/Hmgn15JPRxBeCiW+XAApZ1ZsKLc6p0kBGOLYwNp4pHEcLjRrUzvctk9bXHsBkLAZXi
- yGRnq/3AcDenlEs3hA+qSiqZ5CON46UunLR03YZH/nr8czblCtbgUcKkz5yadpZOJ+ba
- 4rBw==
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1nKFIG-00006m-Ak; Wed, 16 Feb 2022 03:04:10 -0500
+Received: by mail-pj1-x1031.google.com with SMTP id
+ t4-20020a17090a510400b001b8c4a6cd5dso1660678pjh.5; 
+ Wed, 16 Feb 2022 00:04:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=eMEPjrP9y57U7J65ci5n/jTlAjdYa97KNo48unGH2+k=;
+ b=BM1hsLy6KRbK3NGD0y1nokvxrUK+klP1DV/wTUlLDuUx2Y3b2/TlyDITDOGjdk/9aw
+ JKmV3C91EvsdZbKwCNu37mHmLj427hEYNVm0Vjk3Zxp13lKaUJbGqvSllc85Uspg9guE
+ 1EzJmuBwU0KzzOSC6tgBdY6bneEoqqTWYXaogpzqkfuGZcjuwy7S7f4mCVd2npfAkeDc
+ pseaLJ8Ofwt0p5lfrai+P12WQ4CkhxTZwITD5A3xBFvl6YHZ+w3pNLlXsb+7OgQKyq/h
+ Sm32uaBP+4Iw/2haP4AFeLHY/+rOCeAKOzGSKgoN5gOcFLSuvXL1LlXdHosifyfvIkKu
+ FjqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=RdilMSZ5G3Q8UmLpPWoOtg0YYs6Zcoyt8d2cNdM4CWI=;
- b=2fXZqAj3ebv9/2ACoU45vyBYEXe3/+h7ixQ+AsSXhfBqlM1uFBJwk214ghzDoAKTIH
- GV8ewC7jsU4BDUzMZiXsuwUNUoC1byhmZ6aOlMP84BtyxcE70+v+KrqviT239fxV8v81
- sVoEln8/fta+fqFoKjQsyGohebeAPsXqZAEmTL55T5k5GzCrbxEyRQJ7HuIHTBjDEv+o
- 1uJxGu7nyitxKlZPr8v3jUq/bxZMyJD7xaHfz0D/J5e6cJHlsQ7gEd+U2sGxmtK92bAM
- dNJemwilZnXpr6deRf5btl1Htjc3G4/oKfMOA2/PcTFBHJXuSPuYPZdxLscU9TzWAdS2
- ngAw==
-X-Gm-Message-State: AOAM530s2vewKC+pgWsJG+ziwPZ89IUbTePG67fKEySBUkApzpDnKSlc
- IZJhGDaVtPeEJJhYrYVXqGwaULERZNOXwdm6yZOJkw==
-X-Received: by 2002:a5d:6d8d:: with SMTP id l13mr348387wrs.295.1644953275419; 
- Tue, 15 Feb 2022 11:27:55 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=eMEPjrP9y57U7J65ci5n/jTlAjdYa97KNo48unGH2+k=;
+ b=KnybQl7XpPvLnqbvP1qcYAm9Yw0WZ5yDtfjCvUDGHC2O3IdygnRDhQSBFpG06zmVi8
+ YEsiUidbm9kHLzjQe5K+7a76Osj9vsQmZ1OhZPsTxR30YowP4nOzNXy73b4dZz+Jr0M5
+ g9oOX/fiUHZ46yj8MgArmEceGCgeYNpxY2w4B8PNCedC58G5M1hG262Eh/T1Y3i9TQ2+
+ ykLzY3d5oVpFRQexrRduLol8wlGnXaah5zzyuW4tQ1bpSho0tIJzwd3o42cz9iq4cnIo
+ yAbd6TfMIluerk2drzs0dASxkpy0pUYOqB2yKaSy9AF7EDzFipRVbKaHcMDfiBvOgblR
+ RsaQ==
+X-Gm-Message-State: AOAM531HcjTHhmONTYRTTZkt1ALwCmUjAMq3vJGlBMq1scT6UHSK6Ikb
+ wW/BC3FM5Y1nWBVS/tUZY4I=
+X-Received: by 2002:a17:902:cecf:b0:149:4c30:6dd2 with SMTP id
+ d15-20020a170902cecf00b001494c306dd2mr1379115plg.93.1644998646157; 
+ Wed, 16 Feb 2022 00:04:06 -0800 (PST)
+Received: from localhost.localdomain ([45.124.203.14])
+ by smtp.gmail.com with ESMTPSA id om1sm20249023pjb.55.2022.02.16.00.04.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Feb 2022 00:04:05 -0800 (PST)
+From: Joel Stanley <joel@jms.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] arm: Remove swift-bmc machine
+Date: Wed, 16 Feb 2022 18:33:54 +1030
+Message-Id: <20220216080354.65257-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20220203142320.33022-1-agraf@csgraf.de>
-In-Reply-To: <20220203142320.33022-1-agraf@csgraf.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Feb 2022 19:27:44 +0000
-Message-ID: <CAFEAcA99M7M2vOiOZ+vYNorGyK3kvZ8AhYfZ2=FGzaqQgZRN+A@mail.gmail.com>
-Subject: Re: [PATCH] hvf: arm: Add simple dirty bitmap tracking
-To: Alexander Graf <agraf@csgraf.de>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1031
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=joel.stan@gmail.com; helo=mail-pj1-x1031.google.com
+X-Spam_score_int: 2
+X-Spam_score: 0.2
 X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.904, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, PDS_HP_HELO_NORDNS=0.904,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: blAAnZAtprC1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MCqgyjoG1Lp/
 
-On Thu, 3 Feb 2022 at 14:23, Alexander Graf <agraf@csgraf.de> wrote:
->
-> The actual tracking of dirty bitmap updates is happening in architecture code.
-> So far, the aarch64 hvf code has not updated QEMU's dirty bitmap at all. The
-> net result of that is that the VGA device's framebuffer would not update.
->
-> This patch adds simplistic dirty bitmap updates. Unfortunately hvf can only set
-> permissions per full region, so we have to mark the complete region as dirty
-> when only a single byte was modified inside.
->
-> We also handle the write protect update logic before we handle any writes.
-> This allows us to even handle non-ISV instructions on dirty logging enabled
-> memory regions: Once we flip the region to writable again, we just rerun
-> the trapping instruction.
->
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> ---
->  target/arm/hvf/hvf.c | 22 ++++++++++++++++++++++
->  1 file changed, 22 insertions(+)
->
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 0dc96560d3..92ad0d29c4 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -1163,6 +1163,28 @@ int hvf_vcpu_exec(CPUState *cpu)
->              break;
->          }
->
-> +        /*
-> +         * Dirty log updates work without isv as well. We just run the write
-> +         * again with write permissions set. So handle them before the assert.
-> +         */
+It was scheduled for removal in 7.0.
 
-I'm not 100% sure, but I think that this check should come before
-the "is this fault caused by a cache maintenance operation, if so
-skip it" check, not after. Some cache operations (eg DC IVAC)
-require write permission (as opposed to merely announcing themselves
-in the syndrome WnR as writes), and we want to really execute them,
-not skip them, if we're doing a cache op to RAM rather than to MMIO space.
-(My somewhat shaky reading of the KVM kernel sources is that it
-effectively does this too.)
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ docs/system/arm/aspeed.rst |  1 -
+ hw/arm/aspeed.c            | 53 --------------------------------------
+ 2 files changed, 54 deletions(-)
 
-> +        if (iswrite) {
-> +            uint64_t gpa = hvf_exit->exception.physical_address;
-> +            hvf_slot *slot = hvf_find_overlap_slot(gpa, 1);
-> +
-> +            if (slot && slot->flags & HVF_SLOT_LOG) {
-> +                /*
-> +                 * HVF can only set a full region's permissions, so let's just
-> +                 * mark the full region as dirty.
-> +                 */
-> +                memory_region_set_dirty(slot->region, 0, slot->size);
-> +                hv_vm_protect(slot->start, slot->size, HV_MEMORY_READ |
-> +                              HV_MEMORY_WRITE | HV_MEMORY_EXEC);
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index d8b102fa0ad0..60ed94f18759 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -22,7 +22,6 @@ AST2500 SoC based machines :
+ - ``romulus-bmc``          OpenPOWER Romulus POWER9 BMC
+ - ``witherspoon-bmc``      OpenPOWER Witherspoon POWER9 BMC
+ - ``sonorapass-bmc``       OCP SonoraPass BMC
+-- ``swift-bmc``            OpenPOWER Swift BMC POWER9 (to be removed in v7.0)
+ - ``fp5280g2-bmc``         Inspur FP5280G2 BMC
+ - ``g220a-bmc``            Bytedance G220A BMC
+ 
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index d911dc904fb3..9789a489047b 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -544,35 +544,6 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
+ }
+ 
+-static void swift_bmc_i2c_init(AspeedMachineState *bmc)
+-{
+-    AspeedSoCState *soc = &bmc->soc;
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "pca9552", 0x60);
+-
+-    /* The swift board expects a TMP275 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "tmp105", 0x48);
+-    /* The swift board expects a pca9551 but a pca9552 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552", 0x60);
+-
+-    /* The swift board expects an Epson RX8900 RTC but a ds1338 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "ds1338", 0x32);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552", 0x60);
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
+-    /* The swift board expects a pca9539 but a pca9552 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "pca9552", 0x74);
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
+-    /* The swift board expects a pca9539 but a pca9552 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "pca9552",
+-                     0x74);
+-
+-    /* The swift board expects a TMP275 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105", 0x48);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105", 0x4a);
+-}
+-
+ static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = &bmc->soc;
+@@ -1102,26 +1073,6 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+-static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
+-{
+-    MachineClass *mc = MACHINE_CLASS(oc);
+-    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-
+-    mc->desc       = "OpenPOWER Swift BMC (ARM1176)";
+-    amc->soc_name  = "ast2500-a1";
+-    amc->hw_strap1 = SWIFT_BMC_HW_STRAP1;
+-    amc->fmc_model = "mx66l1g45g";
+-    amc->spi_model = "mx66l1g45g";
+-    amc->num_cs    = 2;
+-    amc->i2c_init  = swift_bmc_i2c_init;
+-    mc->default_ram_size       = 512 * MiB;
+-    mc->default_cpus = mc->min_cpus = mc->max_cpus =
+-        aspeed_soc_num_cpus(amc->soc_name);
+-
+-    mc->deprecation_reason = "redundant system. Please use a similar "
+-        "OpenPOWER BMC, Witherspoon or Romulus.";
+-};
+-
+ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1277,10 +1228,6 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("romulus-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_romulus_class_init,
+-    }, {
+-        .name          = MACHINE_TYPE_NAME("swift-bmc"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_swift_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("sonorapass-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+-- 
+2.34.1
 
-This looks OK I think, but it is also not the same as the x86 hvf
-code. There we have:
-
-    if (write && slot) {
-        if (slot->flags & HVF_SLOT_LOG) {
-            memory_region_set_dirty(slot->region, gpa - slot->start, 1);
-            hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
-                          HV_MEMORY_READ | HV_MEMORY_WRITE);
-        }
-    }
-
-which only marks 'dirty' the 1 byte at the address being accessed,
-not the entire slot. Is that a bug in the x86 hvf code, or something
-we should also be doing here ?
-
-Also, when we initially set up slots, we pick the permissions like this:
-    if (area->readonly ||
-        (!memory_region_is_ram(area) && memory_region_is_romd(area))) {
-        flags = HV_MEMORY_READ | HV_MEMORY_EXEC;
-    } else {
-        flags = HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;
-    }
-
-Are we guaranteed that we never try to mark the non-writeable
-(because readonly or romd) slots for dirty-logging, or do we need
-to somehow track whether this is a read-only slot so we don't
-incorrectly enable writes for it?
-
-(It does make sense that dirty-logging on a read-only area is a bit
-pointless, so maybe we do guarantee never to do it.)
-
-> +
-> +                /* Run the same instruction again, without write faulting */
-> +                break;
-> +            }
-> +        }
-
-thanks
--- PMM

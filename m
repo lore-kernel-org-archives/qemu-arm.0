@@ -1,108 +1,110 @@
-Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp909798lfl;
-        Wed, 16 Feb 2022 01:31:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzOC/5qSnu1uH2BZBQuaawNWx0xSv51Z27Xa1vmpeRhIRzYBTaZO1j+6F1RgZ49cy4P/A46
-X-Received: by 2002:ac8:5dcd:0:b0:2cb:9749:c82 with SMTP id e13-20020ac85dcd000000b002cb97490c82mr1391241qtx.146.1645003918025;
-        Wed, 16 Feb 2022 01:31:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645003918; cv=none;
+Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp911234lfl;
+        Wed, 16 Feb 2022 01:35:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxaX2yzxQTVkPwCIKB5JcYGPxOgpiNHXd0O8Z/4N7qcq7xhKpOEatpcpDXfVuBEOz/KxXBG
+X-Received: by 2002:ac8:5bc7:0:b0:2ca:bfc4:7b85 with SMTP id b7-20020ac85bc7000000b002cabfc47b85mr1336948qtb.359.1645004119383;
+        Wed, 16 Feb 2022 01:35:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645004119; cv=none;
         d=google.com; s=arc-20160816;
-        b=kTY0sEPD4b9A7nORxY0e3aFJlrfv1+gN5A6/novFknih9xNg0X4su0oPPuT8lcS4Pp
-         kUmrZ3yHFR0Aev7MZxmafcsmyD8F9d4DMcxhIynDXs5ap+E7baJfI7DPilSXMfASpBKG
-         NwfJXS+7yGk0ShQNj9zUacTrJylnXjQk0yceco2PyPp2i8JDoDQs97sUUFB7nWOTQIcq
-         yfngQtsHEXbA2+niHl4J5ty2+FgvUPEtjHM/JiL4mHhJch6Ziwy4+sQeOG8LJ0wyNffq
-         LREZIJuEoC/dkDDyxJRbgNfQnoZeLuvWfrOrtcZegrinyPsSj/s9FevIgoOhxhOr/+Jj
-         iYxw==
+        b=VMvo5azEwLKLhbBtXon7Hwsx4QEga0UMoBbjR4r+0afqjh1juDQuVdtMDcGmXSmrNa
+         JnfZbzBMd6Iim1TifFxmudOmrewapwvUtbMPjyFLLByj9t33DQYw/pMpvU2C+jUG+yFD
+         pJhkGLEBEnGdI0jXgViHBfRiNZl95nfDEbMY2DUeY+u8OpT7MDP6h3f31A8D5KEJ09xP
+         nncNvu4k7sRCnRh96FFRC6FwSh2zEEY1pBHjRDmNXfbZWU4aWpAXDXkz34Jz7n1iVtSc
+         Km3zDaOxhoDl3TEK9HPEl/851E6OnewyKTWvXFAg1n4THNaRFEdj2OsDYnIDIATO7yh2
+         4YQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=EtHlIBW949QibmpCPIpeII2w6z+VsRwz7rC3Y/976i0=;
-        b=xO/I6nIsj6UdNCLgMWsDPyQ5Pu/TolRurSy/Swd6KyDOqDaJdi01vEhXwy/BBiePG8
-         9cwtINe85HOcHXUcxMv7zN2JDUlgU0jmFoAmuKdREI1nLV0bJgul9FXc8ASXgXQpFN/5
-         L+ik2MoJzKqLcNbB19vl6EIfMmjKtCbrDR6/qIAaiOUxL0XjlNXj00jL1AaUXrM9hwsP
-         xX18WuOb99nrIO8XuHlEI6wW8tkDqgd6TBGv/cQ95C7eWSmKHr0OQqnu5qhnE4CVz4Ga
-         ZyldErnZEM78b1RuDwtwfNNVM7+BLGrFFUSzydqQn/FPcDzYJ84IfkDHnrNesljj1lhW
-         WxxA==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:references:in-reply-to:message-id:date
+         :subject:to:from;
+        bh=X77pKIFB1Kd6jWHCOvdrNyHCq9Yk+59sz6aC7uSj/JI=;
+        b=WIOoxqqH6zYIQpNZe5rEjY4KqZaNX/uE/3hSd9M8pQ3922nk1e5Ho2ovjT2bmfb8zd
+         spOsasK9yNepM/tK/W67bcWBRurFGOnU0p3UyYAevq2TBr9oHZk7awlzMl7HJhJpLrIU
+         zGhz5Wro2ZytS91ERnDHa5HgCjRLYX6O4GGXxk+iHXZKgztRP/1zcnoiolv9RqzmYMRd
+         IK7bCHooAj0idQwjiU6vFGyY+pFiAcz82WzPkdwbfmTcLeYL73qCRRuZCgf3AnFmpp2Z
+         B2UhXgRLtBXd7tWOPaiNhAGu9Y9LHIaMdQoifGnf9EFuYCQ4lqFm3TlFQwM6lSNe60oq
+         e2Wg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20si7888047qkg.124.2022.02.16.01.31.57
+        by mx.google.com with ESMTPS id u5si7290252qvg.520.2022.02.16.01.35.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Feb 2022 01:31:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Feb 2022 01:35:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36198 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44844 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nKGfF-0000fq-GM
-	for alex.bennee@linaro.org; Wed, 16 Feb 2022 04:31:57 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:56964)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nKGiU-0006O3-Sz
+	for alex.bennee@linaro.org; Wed, 16 Feb 2022 04:35:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57040)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nKGV9-0003Ux-1p; Wed, 16 Feb 2022 04:21:31 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:63808)
+ id 1nKGVE-0003YZ-41; Wed, 16 Feb 2022 04:21:37 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:50290)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nKGV6-00009R-I2; Wed, 16 Feb 2022 04:21:30 -0500
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 21G9Bshv020586; 
- Wed, 16 Feb 2022 09:21:21 GMT
+ id 1nKGVB-0000E4-Kz; Wed, 16 Feb 2022 04:21:35 -0500
+Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 21G8kf8T010072; 
+ Wed, 16 Feb 2022 09:21:20 GMT
 Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
  [169.51.49.98])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3e8xdur6fy-1
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3e8x2brur5-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
  Wed, 16 Feb 2022 09:21:20 +0000
 Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 21G9Ii2E024728;
- Wed, 16 Feb 2022 09:21:18 GMT
+ by ppma03ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 21G9IjGG024731;
+ Wed, 16 Feb 2022 09:21:17 GMT
 Received: from b06cxnps4076.portsmouth.uk.ibm.com
  (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
- by ppma03ams.nl.ibm.com with ESMTP id 3e64ha6hfe-1
+ by ppma03ams.nl.ibm.com with ESMTP id 3e64ha6hfc-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 16 Feb 2022 09:21:18 +0000
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com
- (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
+ Wed, 16 Feb 2022 09:21:17 +0000
+Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
+ [9.149.105.59])
  by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 21G9LFKP38273334
+ 21G9LFm044237310
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 16 Feb 2022 09:21:16 GMT
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id CE795A4066;
+ Wed, 16 Feb 2022 09:21:15 GMT
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2F2A9A405B;
  Wed, 16 Feb 2022 09:21:15 +0000 (GMT)
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 9600CA4062;
- Wed, 16 Feb 2022 09:21:15 +0000 (GMT)
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E9844A4069;
+ Wed, 16 Feb 2022 09:21:14 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Wed, 16 Feb 2022 09:21:15 +0000 (GMT)
+ by d06av23.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Wed, 16 Feb 2022 09:21:14 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.91.22])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id DC3FD2201E5;
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 3AC69220032;
  Wed, 16 Feb 2022 10:21:14 +0100 (CET)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH 3/6] aspeed: rainier: Add i2c LED devices
-Date: Wed, 16 Feb 2022 10:21:08 +0100
-Message-Id: <20220216092111.237896-4-clg@kaod.org>
+Subject: [PATCH 2/6] ast2600: Add Secure Boot Controller model
+Date: Wed, 16 Feb 2022 10:21:07 +0100
+Message-Id: <20220216092111.237896-3-clg@kaod.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220216092111.237896-1-clg@kaod.org>
 References: <20220216092111.237896-1-clg@kaod.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: B6KLMSINhrWqoAd3cLx9QsDo3Jk4sPqD
-X-Proofpoint-GUID: B6KLMSINhrWqoAd3cLx9QsDo3Jk4sPqD
+X-Proofpoint-ORIG-GUID: pOu1TAxQhdwMeosPL4Oe4ZnVGV5g_viF
+X-Proofpoint-GUID: pOu1TAxQhdwMeosPL4Oe4ZnVGV5g_viF
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.816,Hydra:6.0.425,FMLib:17.11.62.513
  definitions=2022-02-16_04,2022-02-14_04,2021-12-02_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 impostorscore=0
- mlxlogscore=754 spamscore=0 clxscore=1034 lowpriorityscore=0 adultscore=0
- phishscore=0 mlxscore=0 priorityscore=1501 malwarescore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2201110000
- definitions=main-2202160051
+ bulkscore=0 clxscore=1034
+ priorityscore=1501 phishscore=0 mlxscore=0 spamscore=0 impostorscore=0
+ suspectscore=0 adultscore=0 lowpriorityscore=0 mlxlogscore=999
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2201110000 definitions=main-2202160051
 Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -11
@@ -112,133 +114,310 @@ X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FH2BMq/JEZBL
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pzmVjIWGTNmP
 
 From: Joel Stanley <joel@jms.id.au>
 
-This helps quieten booting the current Rainier kernel.
+Just a stub that indicates the system has booted in secure boot mode.
+Used for testing the driver:
+
+ https://lore.kernel.org/all/20211019080608.283324-1-joel@jms.id.au/
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ include/hw/arm/aspeed_soc.h  |   3 +
+ include/hw/misc/aspeed_sbc.h |  33 ++++++++
+ hw/arm/aspeed_ast2600.c      |   9 +++
+ hw/misc/aspeed_sbc.c         | 141 +++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build          |   1 +
+ 5 files changed, 187 insertions(+)
+ create mode 100644 include/hw/misc/aspeed_sbc.h
+ create mode 100644 hw/misc/aspeed_sbc.c
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 9789a489047b..0e5e5c31d59c 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -723,6 +723,8 @@ static void rainier_bmc_i2c_init(AspeedMachineState *=
-bmc)
-=20
-     aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51, 32 * KiB)=
-;
-=20
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "pca9552",=
- 0x61);
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index cae9906684cb..da043dcb454d 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -24,6 +24,7 @@
+ #include "hw/misc/aspeed_i3c.h"
+ #include "hw/ssi/aspeed_smc.h"
+ #include "hw/misc/aspeed_hace.h"
++#include "hw/misc/aspeed_sbc.h"
+ #include "hw/watchdog/wdt_aspeed.h"
+ #include "hw/net/ftgmac100.h"
+ #include "target/arm/cpu.h"
+@@ -60,6 +61,7 @@ struct AspeedSoCState {
+     AspeedSMCState fmc;
+     AspeedSMCState spi[ASPEED_SPIS_NUM];
+     EHCISysBusState ehci[ASPEED_EHCIS_NUM];
++    AspeedSBCState sbc;
+     AspeedSDMCState sdmc;
+     AspeedWDTState wdt[ASPEED_WDTS_NUM];
+     FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
+@@ -109,6 +111,7 @@ enum {
+     ASPEED_DEV_SDMC,
+     ASPEED_DEV_SCU,
+     ASPEED_DEV_ADC,
++    ASPEED_DEV_SBC,
+     ASPEED_DEV_VIDEO,
+     ASPEED_DEV_SRAM,
+     ASPEED_DEV_SDHCI,
+diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
+new file mode 100644
+index 000000000000..e47333cb55db
+--- /dev/null
++++ b/include/hw/misc/aspeed_sbc.h
+@@ -0,0 +1,33 @@
++/*
++ * sASPEED Secure Boot Controller
++ *
++ * Copyright (C) 2021 IBM Corp.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-     /* The rainier expects a TMP275 but a TMP105 is compatible */
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
-5,
-                      0x48);
-@@ -735,11 +737,14 @@ static void rainier_bmc_i2c_init(AspeedMachineState=
- *bmc)
-     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
-     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x52, 64 * KiB);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "pca9552",=
- 0x60);
++#ifndef ASPEED_SBC_H
++#define ASPEED_SBC_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_ASPEED_SBC "aspeed.sbc"
++#define TYPE_ASPEED_AST2600_SBC TYPE_ASPEED_SBC "-ast2600"
++OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
++
++#define ASPEED_SBC_NR_REGS (0x93c >> 2)
++
++struct AspeedSBCState {
++    SysBusDevice parent;
++
++    MemoryRegion iomem;
++
++    uint32_t regs[ASPEED_SBC_NR_REGS];
++};
++
++
++struct AspeedSBCClass {
++    SysBusDeviceClass parent_class;
++};
++
++#endif /* _ASPEED_SBC_H_ */
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 12f6edc081fd..21cd3342c578 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -47,6 +47,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
+     [ASPEED_DEV_XDMA]      =3D 0x1E6E7000,
+     [ASPEED_DEV_ADC]       =3D 0x1E6E9000,
+     [ASPEED_DEV_DP]        =3D 0x1E6EB000,
++    [ASPEED_DEV_SBC]       =3D 0x1E6F2000,
+     [ASPEED_DEV_VIDEO]     =3D 0x1E700000,
+     [ASPEED_DEV_SDHCI]     =3D 0x1E740000,
+     [ASPEED_DEV_EMMC]      =3D 0x1E750000,
+@@ -227,6 +228,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
+     object_initialize_child(obj, "hace", &s->hace, typename);
 =20
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP10=
-5,
-                      0x48);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP10=
-5,
-                      0x49);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "pca9552",=
- 0x60);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "pca9552",=
- 0x61);
-     i2c_mux =3D i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5)=
-,
-                                       "pca9546", 0x70);
-     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-@@ -758,7 +763,12 @@ static void rainier_bmc_i2c_init(AspeedMachineState =
-*bmc)
-     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
-     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
-=20
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552",=
- 0x30);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552",=
- 0x31);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552",=
- 0x32);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552",=
- 0x33);
-     /* Bus 7: TODO max31785@52 */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552",=
- 0x60);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552",=
- 0x61);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "dps310", =
-0x76);
-     /* Bus 7: TODO si7021-a20@20 */
-@@ -773,6 +783,7 @@ static void rainier_bmc_i2c_init(AspeedMachineState *=
-bmc)
-                      0x4a);
-     aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * KiB)=
-;
-     aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * KiB)=
-;
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552",=
- 0x60);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552",=
- 0x61);
-     /* Bus 8: ucd90320@11 */
-     /* Bus 8: ucd90320@b */
-@@ -794,13 +805,17 @@ static void rainier_bmc_i2c_init(AspeedMachineState=
- *bmc)
-                                       "pca9546", 0x70);
-     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "pca9552"=
-, 0x60);
-=20
-=20
-     aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50, 64 * KiB=
-);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13), "pca9552"=
-, 0x60);
-=20
-     aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 14), 0x50, 64 * KiB=
-);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 14), "pca9552"=
-, 0x60);
-=20
-     aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB=
-);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 15), "pca9552"=
-, 0x60);
+     object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
++
++    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
  }
 =20
- static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
+ /*
+@@ -539,6 +542,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *de=
+v, Error **errp)
+         /* The AST2600 I3C controller has one IRQ per bus. */
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i3c.devices[i]), 0, irq);
+     }
++
++    /* Secure Boot Controller */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sbc), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]=
+);
+ }
+=20
+ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+new file mode 100644
+index 000000000000..e5ac35eb975b
+--- /dev/null
++++ b/hw/misc/aspeed_sbc.c
+@@ -0,0 +1,141 @@
++/*
++ * ASPEED Secure Boot Controller
++ *
++ * Copyright (C) 2021 IBM Corp.
++ *
++ * Joel Stanley <joel@jms.id.au>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/error-report.h"
++#include "hw/misc/aspeed_sbc.h"
++#include "qapi/error.h"
++#include "migration/vmstate.h"
++
++#define R_PROT          (0x000 / 4)
++#define R_STATUS        (0x014 / 4)
++
++static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int si=
+ze)
++{
++    AspeedSBCState *s =3D ASPEED_SBC(opaque);
++
++    addr >>=3D 2;
++
++    if (addr >=3D ASPEED_SBC_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "=
+\n",
++                      __func__, addr << 2);
++        return 0;
++    }
++
++    return s->regs[addr];
++}
++
++static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
++                              unsigned int size)
++{
++    AspeedSBCState *s =3D ASPEED_SBC(opaque);
++
++    addr >>=3D 2;
++
++    if (addr >=3D ASPEED_SBC_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx =
+"\n",
++                      __func__, addr << 2);
++        return;
++    }
++
++    switch (addr) {
++    case R_STATUS:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: write to read only register 0x%" HWADDR_PRIx "\=
+n",
++                      __func__, addr << 2);
++        return;
++    default:
++        break;
++    }
++
++    s->regs[addr] =3D data;
++}
++
++static const MemoryRegionOps aspeed_sbc_ops =3D {
++    .read =3D aspeed_sbc_read,
++    .write =3D aspeed_sbc_write,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
++    .valid =3D {
++        .min_access_size =3D 1,
++        .max_access_size =3D 4,
++    },
++};
++
++static void aspeed_sbc_reset(DeviceState *dev)
++{
++    struct AspeedSBCState *s =3D ASPEED_SBC(dev);
++
++    memset(s->regs, 0, sizeof(s->regs));
++
++    /* Set secure boot enabled, and boot from emmc/spi */
++    s->regs[R_STATUS] =3D 1 << 6 | 1 << 5;
++}
++
++static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
++{
++    AspeedSBCState *s =3D ASPEED_SBC(dev);
++    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sbc_ops, s,
++            TYPE_ASPEED_SBC, 0x1000);
++
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static const VMStateDescription vmstate_aspeed_sbc =3D {
++    .name =3D TYPE_ASPEED_SBC,
++    .version_id =3D 1,
++    .minimum_version_id =3D 1,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, AspeedSBCState, ASPEED_SBC_NR_REGS),
++        VMSTATE_END_OF_LIST(),
++    }
++};
++
++static void aspeed_sbc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->realize =3D aspeed_sbc_realize;
++    dc->reset =3D aspeed_sbc_reset;
++    dc->vmsd =3D &vmstate_aspeed_sbc;
++}
++
++static const TypeInfo aspeed_sbc_info =3D {
++    .name =3D TYPE_ASPEED_SBC,
++    .parent =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size =3D sizeof(AspeedSBCState),
++    .class_init =3D aspeed_sbc_class_init,
++    .class_size =3D sizeof(AspeedSBCClass)
++};
++
++static void aspeed_ast2600_sbc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->desc =3D "AST2600 Secure Boot Controller";
++}
++
++static const TypeInfo aspeed_ast2600_sbc_info =3D {
++    .name =3D TYPE_ASPEED_AST2600_SBC,
++    .parent =3D TYPE_ASPEED_SBC,
++    .class_init =3D aspeed_ast2600_sbc_class_init,
++};
++
++static void aspeed_sbc_register_types(void)
++{
++    type_register_static(&aspeed_ast2600_sbc_info);
++    type_register_static(&aspeed_sbc_info);
++}
++
++type_init(aspeed_sbc_register_types);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 6dcbe044f3f0..645585371a8b 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -111,6 +111,7 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: file=
+s(
+   'aspeed_i3c.c',
+   'aspeed_lpc.c',
+   'aspeed_scu.c',
++  'aspeed_sbc.c',
+   'aspeed_sdmc.c',
+   'aspeed_xdma.c'))
+=20
 --=20
 2.34.1
 

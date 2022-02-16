@@ -1,160 +1,158 @@
-Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp921073lfl;
-        Wed, 16 Feb 2022 01:58:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwvwgpYyPl4nQPUMXCxWRW6VM75AIDdP6mBJNISF0qJCHJVA5JMQJNyu8TkBOplqBYGlmhB
-X-Received: by 2002:a05:622a:243:b0:2d5:3c1d:107 with SMTP id c3-20020a05622a024300b002d53c1d0107mr1370205qtx.123.1645005533955;
-        Wed, 16 Feb 2022 01:58:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645005533; cv=none;
+Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp951228lfl;
+        Wed, 16 Feb 2022 02:59:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyrGHTiEzFlfxo4+0nTQkyb/C28F+Eb0n23IBtBRv+/H2iTqbZLpSz1m5tGpjP9eDqseVcU
+X-Received: by 2002:a81:4f14:0:b0:2ca:287c:6cff with SMTP id d20-20020a814f14000000b002ca287c6cffmr1844826ywb.420.1645009143227;
+        Wed, 16 Feb 2022 02:59:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645009143; cv=none;
         d=google.com; s=arc-20160816;
-        b=UmOPJhRtICEAQuUNB1vHfh6UMY60sTTxVy2lNHbfA0aKOvvlawySNQ2d+t2MbQatBU
-         qrReb7nDXjUcmnxVJU54CRaTfdgFmvnqve56INbnnYqA6piaig74WHxAXlOlxO7ewPxa
-         qsDjBSUsGVoMz7c5HXxYi7keczCQvFfgAmsUALVBako7iN6pEjBSLAVU7wKsOAXTQ9mB
-         PhQmTHavHYlPtp3HJF2mWyWqlDb0Jqbs3VTM9jaNKDQ6j2Pi6oXmjONpadWZFYbSR724
-         vB/yCQ2pIKoTWmJ2e1cuGXQQRfmCSDWxIXJHP+XNWh05QCaxRKpGriRVZYQBkjouMK0R
-         esuQ==
+        b=ffxpJR7u+qkWNy6fOxcdAO6Zx9UEiYPJGFra5mESZDjnr4SM6eVlpgeTxk2bqYgohm
+         GZhv0tw7vcIfrWRHUxw+lSy3Jq4HpihidXyHNOPxYf4S9kpY0c+r9QoNZr6BcinSjqiz
+         /D19j+DIwlW58d8+PvaHv+dsdgs6PAy7TLUBf+TiDHFDnGkVesf43pSlNIkV1UGf3K1l
+         yzxrp7n+GVZNwmL+bmsWL2NjRpS8oD3PffLuWPqyEt4UVZkxERD70c+a2BhdC/dbT31R
+         yaaOXYJoDFqt7Yucv0NIQKY+yBjLinS3QHLQIGocp0TKeCbL7fPA+xcAs40e1QMKk8rJ
+         A99w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-disposition:user-agent:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=D84HDI1be0FrZTS0rLpqgBSuTvwKzxB3F1cGlx/SrLY=;
-        b=XlVwEXrR8ROBJ6zbM8+bdUVOQQnEbJdmQda/Yjb2HIt+uSdiCI7n/BdvUY4qpz4YGT
-         9UIO3hjQqqcFohlNoKdJpm+mRW8mXsTxVYoXUr9JG8xhWQFShXUdgC02YAqbTXAcvYhR
-         +6Z4jCClEuwFshxCGEx/rIf6zYkphrDHSPhfMZ5ZQn96GbuOATN7oX7ZixD5KbDmHhB2
-         Mz6ooaM3KNrRGSX6i4qmm3L1nEH2/oyjP6TYVj0NxH1sgkBDDhBAT/juxxlzW71SaZdI
-         x0BXYRBl/est5OD3ra6S1vVu5j6KGzYfoeLg5dfusfjKqBYAXw407ikg3N3g3UjmZnGy
-         rN2Q==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=DRgsYMjYbI1Ay3UK3ILtrWH6+oLsAgC5jLQlX2z1sZI=;
+        b=qwBVmcLdB9uPm6tv490gDCO20qMr6IAwbu8u4WGp+i5E9u1LiSDIxUAAO3Xv0qQi4P
+         mtHFMmQn/vf/NjGwoRmDhjAoIUGRgOX1JmNm9607VgrbjDu+VqxIJte37W5Loc0mMNJR
+         UjdFGE1a8DU2LPRBcygeDQ5QNpQI9suDN9lvEcHmr74bW9EaIf7u92jfgsAVSMvBbPVZ
+         xC+kOOQaQv6SQGDulSOdd5uctENbJneZyeT/WbgEqeP7U3To3ubGTONo2qbI8piCX62O
+         Cl8DDcsKFDU9DpBybhzjAZ/abqS8XpCbgutgBA+WPk7lbAWBhjKfKOwBFnIzKgfVTDAp
+         TKIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WOjI6fOw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UkeYEamV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v13si9234501qtx.343.2022.02.16.01.58.53
+        by mx.google.com with ESMTPS id x9si19846644ybm.706.2022.02.16.02.59.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Feb 2022 01:58:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Feb 2022 02:59:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WOjI6fOw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UkeYEamV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35842 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44390 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nKH5J-0005sW-EX
-	for alex.bennee@linaro.org; Wed, 16 Feb 2022 04:58:53 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37072)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nKI1W-000654-M1
+	for alex.bennee@linaro.org; Wed, 16 Feb 2022 05:59:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54138)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nKH2A-00088d-Oc
- for qemu-devel@nongnu.org; Wed, 16 Feb 2022 04:55:38 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:58172)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nKI0u-00064W-NS
+ for qemu-arm@nongnu.org; Wed, 16 Feb 2022 05:58:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:54935)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nKH28-000732-Vs
- for qemu-devel@nongnu.org; Wed, 16 Feb 2022 04:55:38 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nKI0s-0002sB-0n
+ for qemu-arm@nongnu.org; Wed, 16 Feb 2022 05:58:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1645005336;
+ s=mimecast20190719; t=1645009101;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=D84HDI1be0FrZTS0rLpqgBSuTvwKzxB3F1cGlx/SrLY=;
- b=WOjI6fOwXbh3XaGaIlvIh7wF5kPsh+OZwF4pamWw9hv3YxSwoHChG4r3SFlgA/QlIrRB7D
- ejrhVtrVVeUSO117Wg30Vdradb0xx25Pa+ANUxpqgrleLYaHv1OUFNlRdLTn4VVYiS+/9T
- jhHV+j8l+HY2lHin2MzjCNZ9Dok0mJU=
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DRgsYMjYbI1Ay3UK3ILtrWH6+oLsAgC5jLQlX2z1sZI=;
+ b=UkeYEamVONs14KVGLJmdzQZWqgi2j5JNK7dvipUQmufd4WfTNC+BtTIxaXgs7NTccHdi42
+ kxHb1ec6c2tLpEJyLqUtpdxdIkGU+GRAXxhFFVl0w1dyHz6KRh7vOYHw5GiZz8re1VTjeJ
+ otC9kJTuo/k5QU5J1FDwNPVjDibrIhA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-241-z-PdfPTaPRSKfbmcxXTn0g-1; Wed, 16 Feb 2022 04:55:33 -0500
-X-MC-Unique: z-PdfPTaPRSKfbmcxXTn0g-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-287-kHJjpWteM5C8rbO7Qzjf1Q-1; Wed, 16 Feb 2022 05:58:20 -0500
+X-MC-Unique: kHJjpWteM5C8rbO7Qzjf1Q-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D1DED2F44;
- Wed, 16 Feb 2022 09:55:31 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.226])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CAA0856A81;
- Wed, 16 Feb 2022 09:55:29 +0000 (UTC)
-Date: Wed, 16 Feb 2022 09:55:26 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Joel Stanley <joel@jms.id.au>
-Subject: Re: [PATCH v2] arm: Remove swift-bmc machine
-Message-ID: <YgzKDo8A8g6hkyde@redhat.com>
-References: <20220216080947.65955-1-joel@jms.id.au>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D398E8143EA;
+ Wed, 16 Feb 2022 10:58:18 +0000 (UTC)
+Received: from [10.72.13.24] (ovpn-13-24.pek2.redhat.com [10.72.13.24])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8C6E01084186;
+ Wed, 16 Feb 2022 10:58:12 +0000 (UTC)
+Subject: Re: [PATCH] hw/arm/virt: Fix CPU's default NUMA node ID
+To: Andrew Jones <drjones@redhat.com>
+References: <20220126052410.36380-1-gshan@redhat.com>
+ <20220126101447.5d4f01f9@redhat.com>
+ <f5780366-7c6e-1643-d471-1304ce6584ca@huawei.com>
+ <5c99b245-e118-f7bd-4a4f-2c865bacaa75@redhat.com>
+ <20220215083236.tt2ajffkdq3psmxw@gator>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <3e5d1d3e-ee3a-6f66-6b8a-26628e3bd53b@redhat.com>
+Date: Wed, 16 Feb 2022 18:58:08 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20220216080947.65955-1-joel@jms.id.au>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <20220215083236.tt2ajffkdq3psmxw@gator>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.083,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KMZ1Vo0/A15T
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, "wangyanan \(Y\)" <wangyanan55@huawei.com>,
+ qemu-arm@nongnu.org, shan.gavin@gmail.com, Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bh/XY+4uHl0X
 
-On Wed, Feb 16, 2022 at 06:39:47PM +1030, Joel Stanley wrote:
-> It was scheduled for removal in 7.0.
+On 2/15/22 4:32 PM, Andrew Jones wrote:
+> On Tue, Feb 15, 2022 at 04:19:01PM +0800, Gavin Shan wrote:
+>> The issue isn't related to CPU topology directly. It's actually related
+>> to the fact: the default NUMA node ID will be picked for one particular
+>> CPU if the associated NUMA node ID isn't provided by users explicitly.
+>> So it's related to the CPU-to-NUMA association.
+>>
+>> For example, the CPU-to-NUMA association is breaking socket boundary
+>> without the code change included in this patch when the guest is booted
+>> with the command lines like below. With this patch applied, the CPU-to-NUMA
+>> association is following socket boundary, to make Linux guest happy.
 > 
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> ---
-> v2: also remove from docs/about/deprecated.rst
+> Gavin,
 > 
->  docs/about/deprecated.rst  |  7 -----
->  docs/system/arm/aspeed.rst |  1 -
->  hw/arm/aspeed.c            | 53 --------------------------------------
->  3 files changed, 61 deletions(-)
+> Please look at Igor's request for more information. Are we sure that a
+> socket is a NUMA node boundary? Are we sure we can assume an even
+> distribution for sockets to nodes or nodes to sockets? If so, where is
+> that documented?
 > 
-> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-> index 26d00812ba94..85773db631c1 100644
-> --- a/docs/about/deprecated.rst
-> +++ b/docs/about/deprecated.rst
-> @@ -315,13 +315,6 @@ Use the more generic event ``DEVICE_UNPLUG_GUEST_ERROR`` instead.
->  System emulator machines
->  ------------------------
->  
-> -Aspeed ``swift-bmc`` machine (since 6.1)
-> -''''''''''''''''''''''''''''''''''''''''
-> -
-> -This machine is deprecated because we have enough AST2500 based OpenPOWER
-> -machines. It can be easily replaced by the ``witherspoon-bmc`` or the
-> -``romulus-bmc`` machines.
-> -
 
-An equivalent note needs to be added to removed-features.rst
+Yes, I was investigating the code for Igor's questions, but I didn't
+reach to conclusion when I replied to Yanan. I will reply to Igor's
+thread and lets discuss it through over thread.
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Thanks,
+Gavin
+
 

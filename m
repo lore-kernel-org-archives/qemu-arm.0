@@ -1,423 +1,152 @@
-Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp911234lfl;
-        Wed, 16 Feb 2022 01:35:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxaX2yzxQTVkPwCIKB5JcYGPxOgpiNHXd0O8Z/4N7qcq7xhKpOEatpcpDXfVuBEOz/KxXBG
-X-Received: by 2002:ac8:5bc7:0:b0:2ca:bfc4:7b85 with SMTP id b7-20020ac85bc7000000b002cabfc47b85mr1336948qtb.359.1645004119383;
-        Wed, 16 Feb 2022 01:35:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645004119; cv=none;
+Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp919634lfl;
+        Wed, 16 Feb 2022 01:55:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxAym+5gQkeKdxFQqRuhSLTBAj9KSfUwTIxIF33p9GSDZNxwTVs81Jg4+d45/LXxwC3RJit
+X-Received: by 2002:a05:6214:29cd:b0:42c:9506:f91e with SMTP id gh13-20020a05621429cd00b0042c9506f91emr1146427qvb.128.1645005316778;
+        Wed, 16 Feb 2022 01:55:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645005316; cv=none;
         d=google.com; s=arc-20160816;
-        b=VMvo5azEwLKLhbBtXon7Hwsx4QEga0UMoBbjR4r+0afqjh1juDQuVdtMDcGmXSmrNa
-         JnfZbzBMd6Iim1TifFxmudOmrewapwvUtbMPjyFLLByj9t33DQYw/pMpvU2C+jUG+yFD
-         pJhkGLEBEnGdI0jXgViHBfRiNZl95nfDEbMY2DUeY+u8OpT7MDP6h3f31A8D5KEJ09xP
-         nncNvu4k7sRCnRh96FFRC6FwSh2zEEY1pBHjRDmNXfbZWU4aWpAXDXkz34Jz7n1iVtSc
-         Km3zDaOxhoDl3TEK9HPEl/851E6OnewyKTWvXFAg1n4THNaRFEdj2OsDYnIDIATO7yh2
-         4YQg==
+        b=iJp+2LUtaCr4T2puJT/nkm5BHx6L9h0VzoXN+DvQbwVNujIyR9ng2S9R220OF8dARY
+         EezNwo2aEjFpergkc1Jn67IOkWIE2xdw012fXGHVC4AeSSs2M859ETQSUxeBkT8dInkm
+         kaC6YHQTdbAGQphhxN24qG0KltAevV0xOM3ver43ywqZEbvwJ0OIxlGxHDf3gFhqNBal
+         lV5dTdEYXMOh4hUkzT1KjQuymUgCG6wGO4cg60+AKea7iqEfwBq3Deku+ETw2iuBB1tq
+         5vENfc7SXJCQZwenKw4vKlznrBtmLnvPK9+6ikzXDz867vO7EvoR2iLUK8l/j4DbMmbi
+         IjtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:to:from;
-        bh=X77pKIFB1Kd6jWHCOvdrNyHCq9Yk+59sz6aC7uSj/JI=;
-        b=WIOoxqqH6zYIQpNZe5rEjY4KqZaNX/uE/3hSd9M8pQ3922nk1e5Ho2ovjT2bmfb8zd
-         spOsasK9yNepM/tK/W67bcWBRurFGOnU0p3UyYAevq2TBr9oHZk7awlzMl7HJhJpLrIU
-         zGhz5Wro2ZytS91ERnDHa5HgCjRLYX6O4GGXxk+iHXZKgztRP/1zcnoiolv9RqzmYMRd
-         IK7bCHooAj0idQwjiU6vFGyY+pFiAcz82WzPkdwbfmTcLeYL73qCRRuZCgf3AnFmpp2Z
-         B2UhXgRLtBXd7tWOPaiNhAGu9Y9LHIaMdQoifGnf9EFuYCQ4lqFm3TlFQwM6lSNe60oq
-         e2Wg==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=gg00B06aTknkpn8geNnM+A4n6+3DatSu4o6FliRQU78=;
+        b=Lm5x1twvLsGjmPdSWgPtsEJ4zQesjaw4eQiwRQ1kDo9G+3nKo3zMMHee6CeoI5GoYU
+         1oncvGQdOxpvxwXgAZYRE20aCsdhgx70x0AH6hOCUVnQP2wuLEdKlLRmqIKwTLw3Eg1J
+         uK1cC77b2Z696swRGjchtleyRWrXynQOUmwIxB3fKZhlQ123/60sDvgWDsRl5RZSDqyl
+         w7hf/4IPpDJ6N2H0+/aaf+Nhz/W8trZsZYLGRteGs46Sivy/HwdTaqxmuMyLoKz/VbjE
+         lWrTuG9llYYZGIwsDyyxIqhc2TWUkyhLEfOOJtP8vwlQ3BRgUV1rZOo8V0PL3uixe0z6
+         Xryg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FgzRpOF+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5si7290252qvg.520.2022.02.16.01.35.19
+        by mx.google.com with ESMTPS id x16si200554qkm.396.2022.02.16.01.55.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Feb 2022 01:35:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Feb 2022 01:55:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44844 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FgzRpOF+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52802 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nKGiU-0006O3-Sz
-	for alex.bennee@linaro.org; Wed, 16 Feb 2022 04:35:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57040)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nKH1o-0006kx-9P
+	for alex.bennee@linaro.org; Wed, 16 Feb 2022 04:55:16 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36850)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nKGVE-0003YZ-41; Wed, 16 Feb 2022 04:21:37 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:50290)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1nKH1d-0006ht-PS
+ for qemu-devel@nongnu.org; Wed, 16 Feb 2022 04:55:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:31474)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nKGVB-0000E4-Kz; Wed, 16 Feb 2022 04:21:35 -0500
-Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 21G8kf8T010072; 
- Wed, 16 Feb 2022 09:21:20 GMT
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.98])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3e8x2brur5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 16 Feb 2022 09:21:20 +0000
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 21G9IjGG024731;
- Wed, 16 Feb 2022 09:21:17 GMT
-Received: from b06cxnps4076.portsmouth.uk.ibm.com
- (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
- by ppma03ams.nl.ibm.com with ESMTP id 3e64ha6hfc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 16 Feb 2022 09:21:17 +0000
-Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
- [9.149.105.59])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 21G9LFm044237310
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 16 Feb 2022 09:21:15 GMT
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2F2A9A405B;
- Wed, 16 Feb 2022 09:21:15 +0000 (GMT)
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E9844A4069;
- Wed, 16 Feb 2022 09:21:14 +0000 (GMT)
-Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av23.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Wed, 16 Feb 2022 09:21:14 +0000 (GMT)
-Received: from yukon.ibmuc.com (unknown [9.171.91.22])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 3AC69220032;
- Wed, 16 Feb 2022 10:21:14 +0100 (CET)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH 2/6] ast2600: Add Secure Boot Controller model
-Date: Wed, 16 Feb 2022 10:21:07 +0100
-Message-Id: <20220216092111.237896-3-clg@kaod.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220216092111.237896-1-clg@kaod.org>
-References: <20220216092111.237896-1-clg@kaod.org>
-Content-Type: text/plain; charset=UTF-8
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: pOu1TAxQhdwMeosPL4Oe4ZnVGV5g_viF
-X-Proofpoint-GUID: pOu1TAxQhdwMeosPL4Oe4ZnVGV5g_viF
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1nKH1b-0006n3-Gj
+ for qemu-devel@nongnu.org; Wed, 16 Feb 2022 04:55:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1645005297;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gg00B06aTknkpn8geNnM+A4n6+3DatSu4o6FliRQU78=;
+ b=FgzRpOF+BEBFBX28Vk9b585ZkEA881yGhht9USQ6Ku7mThUs/SvNavpCzBMps9cvSgnvB4
+ t1pDyEppIF6Pw/5I2hsnSj6pzINg3lQMdna79H8/IbukCnLn7xIXSyvLy94Bl2cYeU/Bnl
+ /d8hOMxhHw04EcvAY3C5QSM5/u0ddcE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-227-Ep2aWn76NliEnxb5IYd-dg-1; Wed, 16 Feb 2022 04:54:54 -0500
+X-MC-Unique: Ep2aWn76NliEnxb5IYd-dg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C049F814245;
+ Wed, 16 Feb 2022 09:54:52 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.226])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DA27254532;
+ Wed, 16 Feb 2022 09:54:50 +0000 (UTC)
+Date: Wed, 16 Feb 2022 09:54:47 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Joel Stanley <joel@jms.id.au>
+Subject: Re: [PATCH] arm: Remove swift-bmc machine
+Message-ID: <YgzJ5zUBOg+LDfUX@redhat.com>
+References: <20220216080354.65257-1-joel@jms.id.au>
+ <142d4fb5-c33f-5902-0aec-a21af01c717c@kaod.org>
+ <CACPK8XcE7DS30nS-VmUXRJ4O8tj6KVC4KFV_Jx4ff-a6xFW2DA@mail.gmail.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.816,Hydra:6.0.425,FMLib:17.11.62.513
- definitions=2022-02-16_04,2022-02-14_04,2021-12-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 clxscore=1034
- priorityscore=1501 phishscore=0 mlxscore=0 spamscore=0 impostorscore=0
- suspectscore=0 adultscore=0 lowpriorityscore=0 mlxlogscore=999
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2201110000 definitions=main-2202160051
-Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+In-Reply-To: <CACPK8XcE7DS30nS-VmUXRJ4O8tj6KVC4KFV_Jx4ff-a6xFW2DA@mail.gmail.com>
+User-Agent: Mutt/2.1.5 (2021-12-30)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.083,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pzmVjIWGTNmP
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Iud3n1uC+R+5
 
-From: Joel Stanley <joel@jms.id.au>
+On Wed, Feb 16, 2022 at 08:08:46AM +0000, Joel Stanley wrote:
+> On Wed, 16 Feb 2022 at 08:07, Cédric Le Goater <clg@kaod.org> wrote:
+> >
+> > On 2/16/22 09:03, Joel Stanley wrote:
+> > > It was scheduled for removal in 7.0.
+> > >
+> > > Signed-off-by: Joel Stanley <joel@jms.id.au>
+> >
+> > Could you please send a v2 with an update of docs/about/deprecated.rst ?
+> 
+> Sure. Do we remove the machine from the list once they're gone?
 
-Just a stub that indicates the system has booted in secure boot mode.
-Used for testing the driver:
+The note in deprecated.rst should be moved to removed-features.rst
 
- https://lore.kernel.org/all/20211019080608.283324-1-joel@jms.id.au/
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- include/hw/arm/aspeed_soc.h  |   3 +
- include/hw/misc/aspeed_sbc.h |  33 ++++++++
- hw/arm/aspeed_ast2600.c      |   9 +++
- hw/misc/aspeed_sbc.c         | 141 +++++++++++++++++++++++++++++++++++
- hw/misc/meson.build          |   1 +
- 5 files changed, 187 insertions(+)
- create mode 100644 include/hw/misc/aspeed_sbc.h
- create mode 100644 hw/misc/aspeed_sbc.c
-
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index cae9906684cb..da043dcb454d 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -24,6 +24,7 @@
- #include "hw/misc/aspeed_i3c.h"
- #include "hw/ssi/aspeed_smc.h"
- #include "hw/misc/aspeed_hace.h"
-+#include "hw/misc/aspeed_sbc.h"
- #include "hw/watchdog/wdt_aspeed.h"
- #include "hw/net/ftgmac100.h"
- #include "target/arm/cpu.h"
-@@ -60,6 +61,7 @@ struct AspeedSoCState {
-     AspeedSMCState fmc;
-     AspeedSMCState spi[ASPEED_SPIS_NUM];
-     EHCISysBusState ehci[ASPEED_EHCIS_NUM];
-+    AspeedSBCState sbc;
-     AspeedSDMCState sdmc;
-     AspeedWDTState wdt[ASPEED_WDTS_NUM];
-     FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
-@@ -109,6 +111,7 @@ enum {
-     ASPEED_DEV_SDMC,
-     ASPEED_DEV_SCU,
-     ASPEED_DEV_ADC,
-+    ASPEED_DEV_SBC,
-     ASPEED_DEV_VIDEO,
-     ASPEED_DEV_SRAM,
-     ASPEED_DEV_SDHCI,
-diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-new file mode 100644
-index 000000000000..e47333cb55db
---- /dev/null
-+++ b/include/hw/misc/aspeed_sbc.h
-@@ -0,0 +1,33 @@
-+/*
-+ * sASPEED Secure Boot Controller
-+ *
-+ * Copyright (C) 2021 IBM Corp.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_SBC_H
-+#define ASPEED_SBC_H
-+
-+#include "hw/sysbus.h"
-+
-+#define TYPE_ASPEED_SBC "aspeed.sbc"
-+#define TYPE_ASPEED_AST2600_SBC TYPE_ASPEED_SBC "-ast2600"
-+OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
-+
-+#define ASPEED_SBC_NR_REGS (0x93c >> 2)
-+
-+struct AspeedSBCState {
-+    SysBusDevice parent;
-+
-+    MemoryRegion iomem;
-+
-+    uint32_t regs[ASPEED_SBC_NR_REGS];
-+};
-+
-+
-+struct AspeedSBCClass {
-+    SysBusDeviceClass parent_class;
-+};
-+
-+#endif /* _ASPEED_SBC_H_ */
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 12f6edc081fd..21cd3342c578 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -47,6 +47,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
-     [ASPEED_DEV_XDMA]      =3D 0x1E6E7000,
-     [ASPEED_DEV_ADC]       =3D 0x1E6E9000,
-     [ASPEED_DEV_DP]        =3D 0x1E6EB000,
-+    [ASPEED_DEV_SBC]       =3D 0x1E6F2000,
-     [ASPEED_DEV_VIDEO]     =3D 0x1E700000,
-     [ASPEED_DEV_SDHCI]     =3D 0x1E740000,
-     [ASPEED_DEV_EMMC]      =3D 0x1E750000,
-@@ -227,6 +228,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
-     object_initialize_child(obj, "hace", &s->hace, typename);
-=20
-     object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
-+
-+    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
- }
-=20
- /*
-@@ -539,6 +542,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *de=
-v, Error **errp)
-         /* The AST2600 I3C controller has one IRQ per bus. */
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i3c.devices[i]), 0, irq);
-     }
-+
-+    /* Secure Boot Controller */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sbc), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]=
-);
- }
-=20
- static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-new file mode 100644
-index 000000000000..e5ac35eb975b
---- /dev/null
-+++ b/hw/misc/aspeed_sbc.c
-@@ -0,0 +1,141 @@
-+/*
-+ * ASPEED Secure Boot Controller
-+ *
-+ * Copyright (C) 2021 IBM Corp.
-+ *
-+ * Joel Stanley <joel@jms.id.au>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/error-report.h"
-+#include "hw/misc/aspeed_sbc.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+
-+#define R_PROT          (0x000 / 4)
-+#define R_STATUS        (0x014 / 4)
-+
-+static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int si=
-ze)
-+{
-+    AspeedSBCState *s =3D ASPEED_SBC(opaque);
-+
-+    addr >>=3D 2;
-+
-+    if (addr >=3D ASPEED_SBC_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "=
-\n",
-+                      __func__, addr << 2);
-+        return 0;
-+    }
-+
-+    return s->regs[addr];
-+}
-+
-+static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
-+                              unsigned int size)
-+{
-+    AspeedSBCState *s =3D ASPEED_SBC(opaque);
-+
-+    addr >>=3D 2;
-+
-+    if (addr >=3D ASPEED_SBC_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx =
-"\n",
-+                      __func__, addr << 2);
-+        return;
-+    }
-+
-+    switch (addr) {
-+    case R_STATUS:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: write to read only register 0x%" HWADDR_PRIx "\=
-n",
-+                      __func__, addr << 2);
-+        return;
-+    default:
-+        break;
-+    }
-+
-+    s->regs[addr] =3D data;
-+}
-+
-+static const MemoryRegionOps aspeed_sbc_ops =3D {
-+    .read =3D aspeed_sbc_read,
-+    .write =3D aspeed_sbc_write,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-+    .valid =3D {
-+        .min_access_size =3D 1,
-+        .max_access_size =3D 4,
-+    },
-+};
-+
-+static void aspeed_sbc_reset(DeviceState *dev)
-+{
-+    struct AspeedSBCState *s =3D ASPEED_SBC(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+
-+    /* Set secure boot enabled, and boot from emmc/spi */
-+    s->regs[R_STATUS] =3D 1 << 6 | 1 << 5;
-+}
-+
-+static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedSBCState *s =3D ASPEED_SBC(dev);
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sbc_ops, s,
-+            TYPE_ASPEED_SBC, 0x1000);
-+
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_aspeed_sbc =3D {
-+    .name =3D TYPE_ASPEED_SBC,
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AspeedSBCState, ASPEED_SBC_NR_REGS),
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static void aspeed_sbc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->realize =3D aspeed_sbc_realize;
-+    dc->reset =3D aspeed_sbc_reset;
-+    dc->vmsd =3D &vmstate_aspeed_sbc;
-+}
-+
-+static const TypeInfo aspeed_sbc_info =3D {
-+    .name =3D TYPE_ASPEED_SBC,
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(AspeedSBCState),
-+    .class_init =3D aspeed_sbc_class_init,
-+    .class_size =3D sizeof(AspeedSBCClass)
-+};
-+
-+static void aspeed_ast2600_sbc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->desc =3D "AST2600 Secure Boot Controller";
-+}
-+
-+static const TypeInfo aspeed_ast2600_sbc_info =3D {
-+    .name =3D TYPE_ASPEED_AST2600_SBC,
-+    .parent =3D TYPE_ASPEED_SBC,
-+    .class_init =3D aspeed_ast2600_sbc_class_init,
-+};
-+
-+static void aspeed_sbc_register_types(void)
-+{
-+    type_register_static(&aspeed_ast2600_sbc_info);
-+    type_register_static(&aspeed_sbc_info);
-+}
-+
-+type_init(aspeed_sbc_register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 6dcbe044f3f0..645585371a8b 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -111,6 +111,7 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: file=
-s(
-   'aspeed_i3c.c',
-   'aspeed_lpc.c',
-   'aspeed_scu.c',
-+  'aspeed_sbc.c',
-   'aspeed_sdmc.c',
-   'aspeed_xdma.c'))
-=20
---=20
-2.34.1
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

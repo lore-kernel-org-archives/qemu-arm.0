@@ -1,110 +1,106 @@
-Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp1496327lfl;
-        Wed, 16 Feb 2022 18:15:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJya0oGhU09iQvUvs41Rj/EGcxiXrXWZSkR4zIQS4UO4c2ZNDJMDEpN9zsmis1GM47lk27kd
-X-Received: by 2002:a81:cf02:0:b0:2d0:b68c:cf30 with SMTP id u2-20020a81cf02000000b002d0b68ccf30mr719077ywi.510.1645064144400;
-        Wed, 16 Feb 2022 18:15:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645064144; cv=none;
+Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp64847lfl;
+        Thu, 17 Feb 2022 02:35:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxkTCNcbbFu8osSEDq32DNGy3+A4Fva+W4GEBMr3ohva45tiYt3K3LIFQmmvzRF61NBOTc0
+X-Received: by 2002:a0c:ea24:0:b0:430:1e5b:cb1c with SMTP id t4-20020a0cea24000000b004301e5bcb1cmr1489843qvp.37.1645094144068;
+        Thu, 17 Feb 2022 02:35:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645094144; cv=none;
         d=google.com; s=arc-20160816;
-        b=eKiOD4CnYqNz6Uh1irgh60OVsqMAN6THivh6luNg1amcP+ewzEENQzxdLMNf7uM4tU
-         1VtbuB7Bi3E+3QDAczrjtMbPXKg4tpMKk4froXg1dWhQK1ef320PRxWG5nPBkoeJNivZ
-         rduwmsAqrH6yM4dPBLZemPFbGEEq71Ip7XnlRpkm32emCSieicL6u6NLobKr61xHdxCf
-         NM7zNiaoRUdDPWN9ijeels5a7lu25T94+Cbh50o7Sqy/To2dNV9nMgYwJDZtQZXnx7Hw
-         iIDAea8NQIW8ZvvBHV7KmEMmBEcqUYNwD+JVwImG2WT4BnPo8SWUoNmHC6VUCHAHgYPx
-         S/cA==
+        b=LvrISiPvMBrLTejcJoimV6IJUGhkLFQjriP2PTmiBCGqtrrNCM+pqIIVzckwhlD+id
+         8BBArA6KvwM/1IxAM2C9/ePRAwfYA3HQZHBjaDprFzGtILi3u4Z1mHztlTq5VlLUEgD5
+         2zirQNMnlQWoCHhY7qw2jNxHGxLH6dvbvEJlZg41fQiXMKSq/mNs3vCQRZVqrMMDi63E
+         dZdNBZcvVH0kyAab7AzY3U0WyFw0ct8bj6a2WjPIT4Kyv7CJddnJTfEv0jwnp6YY2qrM
+         WzLC0Kj6GhNi6heGnCxTe4EIZbVPdXLK+On8pqE8WoMLWN7wDLlw1IMUXlhFvFRRUH/D
+         kf1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=zula+PXSQblh46QPK9jKUrgI5KitJ7yQrx1SpAD10qg=;
-        b=omTnw9kf9/j5tppzF1OUE8dyWS7pj4oOA3u0aQoGhOno2lJHGTNnFT417xR9UeE0yA
-         g7/KYIAp0jJquTxgMYf5XE4iP9oRVTkCFjdOKpV4SOnrcRy0N5/4J8khuNGT8/wRn8Ft
-         NmDVmBkm3LFIFvaeTsmDT0YZiCwljg3JfF8njxZwyszqbyW7fxS6iAdw/3PR1Nqq8EKY
-         /8uSC86yun5rV7hFF0TLM9I9rxiLZQr4PsKCFkgzL1hRoHvZm/bzCgFbOceGRC646cRu
-         zJSoxn1BkaoyZqj/UtE91H1V3SoLLQJ71sg8BPciTV/HWDfeiwtG5T0rQwpVd/MBb6fh
-         Y4RA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=Q1hFrB3/1Vkn+cfwbERChzPhdXnxcaeuz5jslwTFo7Y=;
+        b=hCO+r/S05cI/YMJdvFWFX/2sBueRW+PtPCrFH1XhXnv0y1QJstoRVS+6XKCpZQ6K0P
+         mqEvKfStosDJMUePmo264XZJDWJsF65zjsE/webgVQMAAW4Qzf+HS+xKVg5sgQBOW/wG
+         YhAzTw/+a4GzSRRg74bM0ONwR8SQB+4uOQ9X45ZUbQ2MytKt3hx9Op8bsDnrBayLcadA
+         Rl2g3ojBxXqaR0iGyxfwkOuiyEj6Wp5nqGKz8uruAxL7CWd15bMfzEslgsubLvpAX+Il
+         MtvCogXJloZdXIOM6871xd/HZi5PfneP7IJP2SkSqcM7kKoWJtBV5NQlsPx4x2AUnclD
+         Ex9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RzqKq9Lm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=HraHczVi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q8si341947ybu.243.2022.02.16.18.15.44
+        by mx.google.com with ESMTPS id k2si9271039qtj.23.2022.02.17.02.35.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Feb 2022 18:15:44 -0800 (PST)
+        Thu, 17 Feb 2022 02:35:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RzqKq9Lm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36256 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=HraHczVi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33266 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nKWKd-0000gD-QX
-	for alex.bennee@linaro.org; Wed, 16 Feb 2022 21:15:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48292)
+	id 1nKe8V-0003Vo-EQ
+	for alex.bennee@linaro.org; Thu, 17 Feb 2022 05:35:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50072)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nKWJy-0000fn-UR
- for qemu-arm@nongnu.org; Wed, 16 Feb 2022 21:15:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55782)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nKWJv-0008G5-45
- for qemu-arm@nongnu.org; Wed, 16 Feb 2022 21:15:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1645064098;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zula+PXSQblh46QPK9jKUrgI5KitJ7yQrx1SpAD10qg=;
- b=RzqKq9LmX60Mp0ws8VbuLKGcDcyQaAt4T9VR+4fNtb5uZ2SS9sL9FqwwFyhMoQ+qojyjnk
- 9WfNvYbRQvaSx/391GL8dRM/6sE6OJWs/ACyL/2XYaAVmH4u3/56MJMrkq7hMES/KZ4M5h
- 8jFKi1UlZVrZh7tzbtoc7KBvLSc2mbs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-626-o2wsiEbxOSOdtQmj3tNNww-1; Wed, 16 Feb 2022 21:14:57 -0500
-X-MC-Unique: o2wsiEbxOSOdtQmj3tNNww-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 752FD1091DA0;
- Thu, 17 Feb 2022 02:14:55 +0000 (UTC)
-Received: from [10.72.13.24] (ovpn-13-24.pek2.redhat.com [10.72.13.24])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 95C8845D9A;
- Thu, 17 Feb 2022 02:14:47 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/virt: Fix CPU's default NUMA node ID
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20220126052410.36380-1-gshan@redhat.com>
- <20220126101447.5d4f01f9@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <aa22b9ba-6b5a-a728-870d-e5efbea67c5d@redhat.com>
-Date: Thu, 17 Feb 2022 10:14:45 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1nKe4v-0001JF-5H; Thu, 17 Feb 2022 05:32:01 -0500
+Received: from [2607:f8b0:4864:20::62d] (port=39672
+ helo=mail-pl1-x62d.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1nKe4s-0004bZ-5s; Thu, 17 Feb 2022 05:32:00 -0500
+Received: by mail-pl1-x62d.google.com with SMTP id w1so4285797plb.6;
+ Thu, 17 Feb 2022 02:31:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Q1hFrB3/1Vkn+cfwbERChzPhdXnxcaeuz5jslwTFo7Y=;
+ b=HraHczViMI4J3J10KHBs0O8YFAVGiQLrQAdIZ39KPNOqe7NO15/4xJpplKNAxHIirb
+ zsP7jGIED6DGZRpxtZ7swqrROpVyvByHGbDMIGxasI7biB1lPSkYPf9C8/A1f7DHbREu
+ ykcemlCr+9LXG5FPqH1gRjxz5Ym63lzOryu/VsvsMqkPkJbJNGZp18JgL0yDF5/M9r9v
+ 5TFC0fFVkAnG1mXsQxbuGCCp9fBcKLLtwzzX5wS493OSbBfBlhy7ANe5rM5pL80ZEJE2
+ +1dnNrG/QnGa2X5/zr+hCfr3QvXc9JRcaDHJXHIplFPht4yprCIHYPkq0wGiurtXgtMC
+ CZcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=Q1hFrB3/1Vkn+cfwbERChzPhdXnxcaeuz5jslwTFo7Y=;
+ b=zbYY67UZSWvkvOXprJDQWe2dyLn1LPqGzvMt13MC4+h4RHjiWjN5T3Uj++O5hXjpvh
+ IZnaFlsGHaOII3kOFcx9voHjvoGW83GB+gIHqUktcDVm0QUoTGsusQfx+uRKiGdEC//y
+ QjLB6EqFdrzikSCtIAUOmO0jfUqsqXMQxso1EvLeCjwzfIt4+1GMVF2EOZVGkex48Yvm
+ 1IfShYE6NvaDbRAgSWf53I9WUBw0kZ9bexsnsph/UdG1KyKNyMpJcI5G5xtoaS84BwcE
+ /HAe9Eh/Pz6Z8/I6r0YWr7pjDNIJeMzFnwkanaHpV4AoO/sy9YQ3I5pwl7xeSmAlia/Y
+ 9E1w==
+X-Gm-Message-State: AOAM5334qhfZ2m2G/p34Rcsi7o8xgTqa7Gpz49GwEj/mDM2HSf9S+vMD
+ EHjyWpa3Tqq1CJPoIVqiESc=
+X-Received: by 2002:a17:902:7c13:b0:14f:177b:c51d with SMTP id
+ x19-20020a1709027c1300b0014f177bc51dmr2352538pll.116.1645093914547; 
+ Thu, 17 Feb 2022 02:31:54 -0800 (PST)
+Received: from voyager.lan ([45.124.203.14])
+ by smtp.gmail.com with ESMTPSA id k9sm44047933pfi.134.2022.02.17.02.31.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 17 Feb 2022 02:31:53 -0800 (PST)
+From: Joel Stanley <joel@jms.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3] arm: Remove swift-bmc machine
+Date: Thu, 17 Feb 2022 21:01:41 +1030
+Message-Id: <20220217103141.385345-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-In-Reply-To: <20220126101447.5d4f01f9@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.083,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::62d
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=joel.stan@gmail.com; helo=mail-pl1-x62d.google.com
+X-Spam_score_int: 3
+X-Spam_score: 0.3
+X-Spam_bar: /
+X-Spam_report: (0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, PDS_HP_HELO_NORDNS=0.978,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,126 +113,167 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, "wangyanan \(Y\)" <wangyanan55@huawei.com>,
- qemu-arm@nongnu.org, shan.gavin@gmail.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0OA7Ai/x8haX
+X-TUID: ux/P0Xs/qpwy
 
-On 1/26/22 5:14 PM, Igor Mammedov wrote:
-> On Wed, 26 Jan 2022 13:24:10 +0800
-> Gavin Shan <gshan@redhat.com> wrote:
-> 
->> The default CPU-to-NUMA association is given by mc->get_default_cpu_node_id()
->> when it isn't provided explicitly. However, the CPU topology isn't fully
->> considered in the default association and it causes CPU topology broken
->> warnings on booting Linux guest.
->>
->> For example, the following warning messages are observed when the Linux guest
->> is booted with the following command lines.
->>
->>    /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
->>    -accel kvm -machine virt,gic-version=host               \
->>    -cpu host                                               \
->>    -smp 6,sockets=2,cores=3,threads=1                      \
->>    -m 1024M,slots=16,maxmem=64G                            \
->>    -object memory-backend-ram,id=mem0,size=128M            \
->>    -object memory-backend-ram,id=mem1,size=128M            \
->>    -object memory-backend-ram,id=mem2,size=128M            \
->>    -object memory-backend-ram,id=mem3,size=128M            \
->>    -object memory-backend-ram,id=mem4,size=128M            \
->>    -object memory-backend-ram,id=mem4,size=384M            \
->>    -numa node,nodeid=0,memdev=mem0                         \
->>    -numa node,nodeid=1,memdev=mem1                         \
->>    -numa node,nodeid=2,memdev=mem2                         \
->>    -numa node,nodeid=3,memdev=mem3                         \
->>    -numa node,nodeid=4,memdev=mem4                         \
->>    -numa node,nodeid=5,memdev=mem5
->>           :
->>    alternatives: patching kernel code
->>    BUG: arch topology borken
->>    the CLS domain not a subset of the MC domain
->>    <the above error log repeats>
->>    BUG: arch topology borken
->>    the DIE domain not a subset of the NODE domain
->>
->> With current implementation of mc->get_default_cpu_node_id(), CPU#0 to CPU#5
->> are associated with NODE#0 to NODE#5 separately. That's incorrect because
->> CPU#0/1/2 should be associated with same NUMA node because they're seated
->> in same socket.
->>
->> This fixes the issue by considering the socket when default CPU-to-NUMA
->> is given. With this applied, no more CPU topology broken warnings are seen
->> from the Linux guest. The 6 CPUs are associated with NODE#0/1, but there are
->> no CPUs associated with NODE#2/3/4/5.
-> 
->>>From migration point of view it looks fine to me, and doesn't need a compat knob
-> since NUMA data (on virt-arm) only used to construct ACPI tables (and we don't
-> version those unless something is broken by it).
-> 
-> 
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   hw/arm/virt.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 141350bf21..b4a95522d3 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -2499,7 +2499,7 @@ virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
->>   
->>   static int64_t virt_get_default_cpu_node_id(const MachineState *ms, int idx)
->>   {
->> -    return idx % ms->numa_state->num_nodes;
->> +    return idx / (ms->smp.dies * ms->smp.clusters * ms->smp.cores * ms->smp.threads);
-> 
-> I'd like for ARM folks to confirm whether above is correct
-> (i.e. socket is NUMA node boundary and also if above topo vars
-> could have odd values. Don't look at horribly complicated x86
-> as example, but it showed that vendors could stash pretty much
-> anything there, so we should consider it here as well and maybe
-> forbid that in smp virt-arm parser)
-> 
+It was scheduled for removal in 7.0.
 
-After doing some investigation, I don't think the socket is NUMA node boundary.
-Unfortunately, I didn't find it's documented like this in any documents after
-checking device-tree specification, Linux CPU topology and NUMA binding documents.
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+--
+v2: also remove from docs/about/deprecated.rst
+v3: remove strap define, add note to removed-features.rst
+---
+ docs/about/deprecated.rst       |  7 ----
+ docs/about/removed-features.rst |  5 +++
+ docs/system/arm/aspeed.rst      |  1 -
+ hw/arm/aspeed.c                 | 64 ---------------------------------
+ 4 files changed, 5 insertions(+), 72 deletions(-)
 
-However, there are two options here according to Linux (guest) kernel code:
-(A) socket is NUMA node boundary  (B) CPU die is NUMA node boundary. They are
-equivalent as CPU die isn't supported on arm/virt machine. Besides, the topology
-of one-to-one association between socket and NUMA node sounds natural and simplified.
-So I think (A) is the best way to go.
-
-Another thing I want to explain here is how the changes affect the memory
-allocation in Linux guest. Taking the command lines included in the commit
-log as an example, the first two NUMA nodes are bound to CPUs while the other
-4 NUMA nodes are regarded as remote NUMA nodes to CPUs. The remote NUMA node
-won't accommodate the memory allocation until the memory in the near (local)
-NUMA node becomes exhausted. However, it's uncertain how the memory is hosted
-if memory binding isn't applied.
-
-Besides, I think the code should be improved like below to avoid overflow on
-ms->numa_state->num_nodes.
-
-  static int64_t virt_get_default_cpu_node_id(const MachineState *ms, int idx)
-  {
--    return idx % ms->numa_state->num_nodes;
-+    int node_idx;
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 26d00812ba94..85773db631c1 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -315,13 +315,6 @@ Use the more generic event ``DEVICE_UNPLUG_GUEST_ERROR`` instead.
+ System emulator machines
+ ------------------------
+ 
+-Aspeed ``swift-bmc`` machine (since 6.1)
+-''''''''''''''''''''''''''''''''''''''''
+-
+-This machine is deprecated because we have enough AST2500 based OpenPOWER
+-machines. It can be easily replaced by the ``witherspoon-bmc`` or the
+-``romulus-bmc`` machines.
+-
+ PPC 405 ``taihu`` machine (since 7.0)
+ '''''''''''''''''''''''''''''''''''''
+ 
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index cb0575fd4975..4b831ea29176 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -588,6 +588,11 @@ The Raspberry Pi machines come in various models (A, A+, B, B+). To be able
+ to distinguish which model QEMU is implementing, the ``raspi2`` and ``raspi3``
+ machines have been renamed ``raspi2b`` and ``raspi3b``.
+ 
++Aspeed ``swift-bmc`` machine (removed in 7.0)
++'''''''''''''''''''''''''''''''''''''''''''''
 +
-+    node_idx = idx / (ms->smp.dies * ms->smp.clusters * ms->smp.cores * ms->smp.threads);
-+    return node_idx % ms->numa_state->num_nodes;
-  }
-
-
->>   }
->>   
->>   static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-> 
-
-Thanks,
-Gavin
++This machine was removed because it was unused. Alternative AST2500 based
++OpenPOWER machines are ``witherspoon-bmc`` and ``romulus-bmc``.
+ 
+ linux-user mode CPUs
+ --------------------
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index d8b102fa0ad0..60ed94f18759 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -22,7 +22,6 @@ AST2500 SoC based machines :
+ - ``romulus-bmc``          OpenPOWER Romulus POWER9 BMC
+ - ``witherspoon-bmc``      OpenPOWER Witherspoon POWER9 BMC
+ - ``sonorapass-bmc``       OCP SonoraPass BMC
+-- ``swift-bmc``            OpenPOWER Swift BMC POWER9 (to be removed in v7.0)
+ - ``fp5280g2-bmc``         Inspur FP5280G2 BMC
+ - ``g220a-bmc``            Bytedance G220A BMC
+ 
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index d911dc904fb3..faf7a9fd6863 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -106,17 +106,6 @@ struct AspeedMachineState {
+         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+         SCU_AST2500_HW_STRAP_RESERVED1)
+ 
+-/* Swift hardware value: 0xF11AD206 */
+-#define SWIFT_BMC_HW_STRAP1 (                                           \
+-        AST2500_HW_STRAP1_DEFAULTS |                                    \
+-        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
+-        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
+-        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
+-        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
+-        SCU_H_PLL_BYPASS_EN |                                           \
+-        SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
+-        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
+-
+ #define G220A_BMC_HW_STRAP1 (                                      \
+         SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
+         SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
+@@ -544,35 +533,6 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
+ }
+ 
+-static void swift_bmc_i2c_init(AspeedMachineState *bmc)
+-{
+-    AspeedSoCState *soc = &bmc->soc;
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "pca9552", 0x60);
+-
+-    /* The swift board expects a TMP275 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "tmp105", 0x48);
+-    /* The swift board expects a pca9551 but a pca9552 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552", 0x60);
+-
+-    /* The swift board expects an Epson RX8900 RTC but a ds1338 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "ds1338", 0x32);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552", 0x60);
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
+-    /* The swift board expects a pca9539 but a pca9552 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "pca9552", 0x74);
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
+-    /* The swift board expects a pca9539 but a pca9552 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "pca9552",
+-                     0x74);
+-
+-    /* The swift board expects a TMP275 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105", 0x48);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105", 0x4a);
+-}
+-
+ static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = &bmc->soc;
+@@ -1102,26 +1062,6 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+-static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
+-{
+-    MachineClass *mc = MACHINE_CLASS(oc);
+-    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-
+-    mc->desc       = "OpenPOWER Swift BMC (ARM1176)";
+-    amc->soc_name  = "ast2500-a1";
+-    amc->hw_strap1 = SWIFT_BMC_HW_STRAP1;
+-    amc->fmc_model = "mx66l1g45g";
+-    amc->spi_model = "mx66l1g45g";
+-    amc->num_cs    = 2;
+-    amc->i2c_init  = swift_bmc_i2c_init;
+-    mc->default_ram_size       = 512 * MiB;
+-    mc->default_cpus = mc->min_cpus = mc->max_cpus =
+-        aspeed_soc_num_cpus(amc->soc_name);
+-
+-    mc->deprecation_reason = "redundant system. Please use a similar "
+-        "OpenPOWER BMC, Witherspoon or Romulus.";
+-};
+-
+ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1277,10 +1217,6 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("romulus-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_romulus_class_init,
+-    }, {
+-        .name          = MACHINE_TYPE_NAME("swift-bmc"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_swift_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("sonorapass-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+-- 
+2.34.1
 

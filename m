@@ -1,104 +1,108 @@
-Received: by 2002:a0c:dd83:0:0:0:0:0 with SMTP id v3csp870711qvk;
-        Wed, 23 Feb 2022 01:19:54 -0800 (PST)
-X-Received: by 2002:a5b:7c6:0:b0:60b:a0ce:19b with SMTP id t6-20020a5b07c6000000b0060ba0ce019bmr26552462ybq.407.1645607994439;
-        Wed, 23 Feb 2022 01:19:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645607994; cv=none;
+Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp142632lfl;
+        Thu, 17 Feb 2022 04:46:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxW7qgWHambkpCahKqRspuxo0Er/ytpTNCc6JRMkruAhlkJuDhFLJkwLOEq3yxOafFQYbTp
+X-Received: by 2002:a05:6870:58a3:b0:ce:c0c9:625 with SMTP id be35-20020a05687058a300b000cec0c90625mr2131328oab.119.1645101984453;
+        Thu, 17 Feb 2022 04:46:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645101984; cv=none;
         d=google.com; s=arc-20160816;
-        b=HytJTEYvS1yJugieUw7S3l4pg5zyFyiB1PgM4xM8KEMia0/RYlPgY4rPrXIjBDfwTG
-         0syOrMWl32D4nACYCVwyTBPAUBkO9j4fztXd1w8sit6Gy2xnxitgPIlWmANcn1s9q5SU
-         vzdxe9J88RYIORruyphTnEFgqugYbWIC3Mxt/LU1J6WWcBxWBSF4TcFg1dv52chorlaW
-         s4JvrkF3cIm6Qry17Xg0gQap6kVh+vdm0kw8xl7QeaYcjVCwnjNFpyzoErNuIoV2tRuI
-         xBO6cLThe6aICBvrC5inHjTLS4HAIfh9z0ucDGs9Gl3jvk4yMYWZKWOF0RkIQv9+kL35
-         vTHQ==
+        b=priO9Xz9+h582ryCSMW9Q/NoerdQuGqg+Us4Xadd7wgDtU6xVDvcGdv0LDgnreHMHk
+         C1yWP/OoGARea6sOp5yEztcK5aNEsATwEnQ+1jpnb0rjOpSY+7RqpyhZlz2UWSSd+HC4
+         Hnxl89muGiPscMdPTP6fOzWMMST+oBiag50UbNIWLCVcB/oZ3dAPpUZn8MJJVRYOzY1u
+         skLMvvekmQuUjAnKrYgoIpdR7dwav4uBxLdrL69t+RYT6OR/VW+2FuphnY3ErSvxpKHy
+         mp6TEppVWWuiHgX7yjrZgzfU4iHuaFE2C1H8M7bcYlncMn2TDVYo9hNkGDoY2JOxx2Si
+         SRAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=nXCLXxB6HCrscA7vtjaiHnkKr4QrAkuVD/lkEVxIKbQ=;
-        b=qweqNoefHderp1ZWM8eFJ/UjtTl8X2OtB5VL/e37whY+SikP/tz8OjG5v19tBSs+QR
-         S58qE3ERDdY0eCI55Sm2XiLyeFuEgb0RS8b3wxErmVjkkieDsf6dMyplh3HMSPaOChMg
-         Zir+3UTAUTxAfpDChgx+mtld5NOh+SH7hemptYdTrlux1d2U/atX9Q0zOzv2r0Ihx5DK
-         GnKJ4IzF6gCDN2ebkpAGXyySDvbSGAklQwK5AeeVeTX9mJdgI16YM+KUIdRDcB1aY3mh
-         eTYE4rnw5m/2z5V41wQDbt2MycpALQJ7VKZQQcdYkYdwXgMfdEKMUNU+ZV2GCgrsp/EU
-         d0ZQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=Ks+EB+X+CQr2iWUWIb9Xm9tAPCCuDuGDpstm28VRpME=;
+        b=uxfo4WHQxDULV1bfYq+AFKA/Lu3risMn36uqoYmJ5Cx2D+27wZly8ma7drYGdED0Sl
+         ceCmqSEEva6jskx/8W2VVAnSxZi5Ck6I44LyLFSuW0hDTi87TXc94vO/2toEFfPatLeu
+         jILhYfZz5qq802SiTj8WfYmypLrwf0EcZ1GO6qgQsZw4h3ltp4OfoMO3GhmCf6XKO90D
+         +Taa2nmTnPYh8l6Cq7pI/1Fo6XzVxFFDopelBMxDbs4PeHhS5A3WtBHRmps8lgF1YDhT
+         dbLZAckf3OzPlz2DxYAtlvx4KZv0RmYUsVEC8tN9gpSfmntsI883Kc7bBgdFDLVvaue5
+         GeLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UaQxdwj5;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k188sor12917369ywb.84.2022.02.23.01.19.54
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 23 Feb 2022 01:19:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of matheus.ferst@eldorado.org.br designates 187.72.171.209 as permitted sender) smtp.mailfrom=matheus.ferst@eldorado.org.br
+Return-Path: <matheus.ferst@eldorado.org.br>
+Received: from outlook.eldorado.org.br ([187.72.171.209])
+        by mx.google.com with ESMTP id a20si3014370oap.394.2022.02.17.04.46.23;
+        Thu, 17 Feb 2022 04:46:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of matheus.ferst@eldorado.org.br designates 187.72.171.209 as permitted sender) client-ip=187.72.171.209;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UaQxdwj5;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=nXCLXxB6HCrscA7vtjaiHnkKr4QrAkuVD/lkEVxIKbQ=;
-        b=UaQxdwj5S87gVF8hhKphMX9feVRNS3B/SQYGSeSld9mFvZyTcbDJt1S4aD+ZECTuby
-         tiUxdGddedY2/AyxRLqRVVqNZQkoj+vonwzSq3ahQKVvy15C7VBkrUxKXq2xdr19yAfb
-         PjMdJbeV58AS30Iy/nc7uX3wpEN0lWQoWtcX3O0kvBYPry27zv6qz42neodsQ2F9huYC
-         z8xaXsbiJ1O2G4xV9wM4vuOMhP0KZPrjhhezTl764reuLyvc6sKG6QoF798rKO7iFTSk
-         LzQBRyAWYIwGXlVSMzdeJNWkBNT+4Hn9qupAMyVB/rjjy4Xq5y0YNN/9sI7vWE7iW7u0
-         yhkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=nXCLXxB6HCrscA7vtjaiHnkKr4QrAkuVD/lkEVxIKbQ=;
-        b=2Fi+jls8LAH60Jrp74qKMnemmCSqMH/HgjnR/xvYMEeYlWrUG1hWY2QgosoS6pV5s3
-         rMLsEH8zVtF3HEv5TV8OnTaHeJpiU37gzWJkCi2L/yHu1lTqtcvqU2tfNYCMNSTW6nT7
-         8PwXdqk4Qd+tFMKM3dOZ3eL9hP0+DQAGY4dmRpTtQ0G5wAAYOExUVOuy2C5CnRVrp6c2
-         A/HuyUkyYSDLD88va19Nf9smE5k3RMQFxAMeFkNvd5poVvtPpsjNoP0OsGT+5ctorzxe
-         /m5+CSWAREHqHV7gsK9bdNYgSyOURSBMtoWtRIQvrLKVkPJ5TCg2s1maG+SgQNfpJ1VW
-         iUrA==
-X-Gm-Message-State: AOAM5300yDJPgvJDU5oM1oaT93fW12z/+COGLaboAqvCe8TO5UVBYwIP
-	z8zFpHv9RsXEQ1rlnax4pRfk1tzoB6J5WofWj+BmqW1w
-X-Google-Smtp-Source: ABdhPJxDgGmwRBqn1ahZJ0PCC2VvSxMzsYtzf26mSUSYz7qFYhAWXzEZL9V2rTXOh6EmJtJNzX6KEEg6ubNXVCJDfb0=
-X-Received: by 2002:a81:a748:0:b0:2d6:1f8b:23a9 with SMTP id
- e69-20020a81a748000000b002d61f8b23a9mr28274883ywh.329.1645607994047; Wed, 23
- Feb 2022 01:19:54 -0800 (PST)
+       spf=pass (google.com: domain of matheus.ferst@eldorado.org.br designates 187.72.171.209 as permitted sender) smtp.mailfrom=matheus.ferst@eldorado.org.br
+Received: from p9ibm ([10.10.71.235]) by outlook.eldorado.org.br over TLS secured channel with Microsoft SMTPSVC(8.5.9600.16384);
+	 Thu, 17 Feb 2022 09:46:22 -0300
+Received: from [127.0.0.1] (unknown [10.10.70.45])
+	by p9ibm (Postfix) with ESMTP id B4A338001F1;
+	Thu, 17 Feb 2022 09:46:21 -0300 (-03)
+Message-ID: <5c23b766-e436-b1cb-2f54-d2b1ef71e540@eldorado.org.br>
+Date: Thu, 17 Feb 2022 09:46:21 -0300
 MIME-Version: 1.0
-References: <874k4xbqvp.fsf@linaro.org> <878ru2nacq.fsf@linaro.org>
- <YhURfqMvRT4xbiz6@redhat.com> <96bafa75-a0c6-f431-a6d8-fe98d438d0f9@gmail.com>
-In-Reply-To: <96bafa75-a0c6-f431-a6d8-fe98d438d0f9@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 23 Feb 2022 09:19:43 +0000
-Message-ID: <CAFEAcA8mNt_-nZoV7RL4_UQUV=nPQsDM8KBTA8qAGmiNtXWx9g@mail.gmail.com>
-Subject: Re: Analysis of slow distro boots in check-avocado (BootLinuxAarch64.test_virt_tcg*)
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel <qemu-devel@nongnu.org>, Laszlo Ersek <lersek@redhat.com>, 
-	Cleber Rosa <cleber@redhat.com>, Oleg Vasilev <me@svin.in>, 
-	Richard Henderson <richard.henderson@linaro.org>, Emilio Cota <cota@braap.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Idan Horowitz <idan.horowitz@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Igor Mammedov <imammedo@redhat.com>, Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: xMzu6Mj5Yrn0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v1 11/11] tests/tcg: add vectorised sha512 versions
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, fam@euphon.net,
+ Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
+ David Hildenbrand <david@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, f4bug@amsat.org,
+ Eduardo Habkost <eduardo@habkost.net>,
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>, qemu-arm@nongnu.org,
+ stefanha@redhat.com, crosa@redhat.com, pbonzini@redhat.com,
+ aurelien@aurel32.net
+References: <20220211160309.335014-1-alex.bennee@linaro.org>
+ <20220211160309.335014-12-alex.bennee@linaro.org>
+ <f8164a77-80d1-86fa-7fc9-6089d6b4f34b@eldorado.org.br>
+ <87v8xhcwdf.fsf@linaro.org>
+From: "Matheus K. Ferst" <matheus.ferst@eldorado.org.br>
+In-Reply-To: <87v8xhcwdf.fsf@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+Return-Path: matheus.ferst@eldorado.org.br
+X-OriginalArrivalTime: 17 Feb 2022 12:46:22.0255 (UTC) FILETIME=[5DF5CBF0:01D823FC]
+X-TUID: du2mYkb6h3Wp
 
-On Tue, 22 Feb 2022 at 17:33, Philippe Mathieu-Daud=C3=A9
-<philippe.mathieu.daude@gmail.com> wrote:
-> We need the DEBUG profile to ensure the bios-tables-tests work.
->
-> If you want to boot a guest using EDK2, you should use the images
-> build by your distribution (/usr/share/qemu/edk2-aarch64-code.fd),
-> not these images.
-
-Do we have any other images in pc-bios that are silently
-"do not use these images, they are only for a very specific
-test case and nothing else" ?
-
-Also, "make install" installs these EDK2 images, which doesn't
-seem like the right thing for "this is only for one test case".
-
-thanks
--- PMM
+T24gMTQvMDIvMjAyMiAxMjoxNCwgQWxleCBCZW5uw6llIHdyb3RlOg0KPiAiTWF0aGV1cyBL
+LiBGZXJzdCIgPG1hdGhldXMuZmVyc3RAZWxkb3JhZG8ub3JnLmJyPiB3cml0ZXM6DQo+IA0K
+Pj4gT24gMTEvMDIvMjAyMiAxMzowMywgQWxleCBCZW5uw6llIHdyb3RlOg0KPj4+IFRoaXMg
+YnVpbGRzIHZlY3RvcmlzZWQgdmVyc2lvbnMgb2Ygc2hhNTEyIHRvIGV4ZXJjaXNlIHRoZSB2
+ZWN0b3IgY29kZToNCj4+PiAgICAgLSBhYXJjaDY0IChBZHZTaW1kKQ0KPj4+ICAgICAtIGkz
+ODYgKFNTRSkNCj4+PiAgICAgLSBzMzkweCAoTVZYKQ0KPj4+ICAgICAtIHBwYzY0ICh2ZWN0
+b3IpDQo+Pj4gU2lnbmVkLW9mZi1ieTogQWxleCBCZW5uw6llIDxhbGV4LmJlbm5lZUBsaW5h
+cm8ub3JnPg0KPj4+IFJldmlld2VkLWJ5OiBSaWNoYXJkIEhlbmRlcnNvbiA8cmljaGFyZC5o
+ZW5kZXJzb25AbGluYXJvLm9yZz4NCj4+PiBNZXNzYWdlLUlkOiA8MjAyMjAyMDIxOTEyNDIu
+NjUyNjA3LTUtYWxleC5iZW5uZWVAbGluYXJvLm9yZz4NCj4+PiAtLS0NCj4+PiB2Mg0KPj4+
+ICAgICAtIHVzZSAtbXNzZTQuMSAtTzMgaW5zdGVhZCBvZiAtcGVudGl1bTQgZm9yIGkzODYg
+YnVpbGQNCj4+PiAtLS0NCj4+PiAgICB0ZXN0cy90Y2cvbXVsdGlhcmNoL3NoYTUxMi5jICAg
+ICAgfCAyICstDQo+Pj4gICAgdGVzdHMvdGNnL2FhcmNoNjQvTWFrZWZpbGUudGFyZ2V0IHwg
+NyArKysrKysrDQo+Pj4gICAgdGVzdHMvdGNnL2FybS9NYWtlZmlsZS50YXJnZXQgICAgIHwg
+OCArKysrKysrKw0KPj4+ICAgIHRlc3RzL3RjZy9pMzg2L01ha2VmaWxlLnRhcmdldCAgICB8
+IDYgKysrKysrDQo+Pj4gICAgdGVzdHMvdGNnL3BwYzY0bGUvTWFrZWZpbGUudGFyZ2V0IHwg
+NSArKysrLQ0KPj4+ICAgIHRlc3RzL3RjZy9zMzkweC9NYWtlZmlsZS50YXJnZXQgICB8IDkg
+KysrKysrKysrDQo+Pj4gICAgdGVzdHMvdGNnL3g4Nl82NC9NYWtlZmlsZS50YXJnZXQgIHwg
+NyArKysrKysrDQo+Pj4gICAgNyBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNlcnRpb25zKCspLCAy
+IGRlbGV0aW9ucygtKQ0KPj4+DQo+Pg0KPj4gPHNuaXA+DQo+Pg0KPj4+IGRpZmYgLS1naXQg
+YS90ZXN0cy90Y2cvcHBjNjRsZS9NYWtlZmlsZS50YXJnZXQgYi90ZXN0cy90Y2cvcHBjNjRs
+ZS9NYWtlZmlsZS50YXJnZXQNCj4+PiBpbmRleCA0ODBmZjA4OThkLi40ZjFkMDNkZmNmIDEw
+MDY0NA0KPj4+IC0tLSBhL3Rlc3RzL3RjZy9wcGM2NGxlL01ha2VmaWxlLnRhcmdldA0KPj4+
+ICsrKyBiL3Rlc3RzL3RjZy9wcGM2NGxlL01ha2VmaWxlLnRhcmdldA0KPj4+IEBAIC01LDEw
+ICs1LDEzIEBADQo+Pj4gICAgVlBBVEggKz0gJChTUkNfUEFUSCkvdGVzdHMvdGNnL3BwYzY0
+bGUNCj4+PiAgICBpZm5lcSAoJChET0NLRVJfSU1BR0UpJChDUk9TU19DQ19IQVNfUE9XRVI4
+X1ZFQ1RPUiksKQ0KPj4+IC1QUEM2NExFX1RFU1RTPWJjZHN1YiBub25fc2lnbmFsbGluZ194
+c2N2DQo+Pj4gK1BQQzY0TEVfVEVTVFM9YmNkc3ViIG5vbl9zaWduYWxsaW5nX3hzY3Ygc2hh
+NTEyLXZlY3Rvcg0KPj4+ICAgIGVuZGlmDQo+Pj4gICAgJChQUEM2NExFX1RFU1RTKTogQ0ZM
+QUdTICs9IC1tcG93ZXI4LXZlY3Rvcg0KPj4+DQo+Pg0KPj4gU2luY2UgdGhpcyB0ZXN0IGRv
+ZXMgbm90IHRhcmdldCBhIHNwZWNpZmljIGluc3RydWN0aW9uLCBtYXliZSBpdA0KPj4gc2hv
+dWxkIHVzZSAtbXZzeC8tbWFsdGl2ZWMgdG8gYWxsb3cgdGhlIGNvbXBpbGVyIHRvIHVzZSBu
+ZXdlcg0KPj4gaW5zdHJ1Y3Rpb25zLg0KPiANCj4gSSB3YXNuJ3Qgc3VyZSB3aGljaCB2ZWN0
+b3IgaW5zdHJ1Y3Rpb25zIGFyZSBzdXBwb3J0ZWQgYnkgdGhlIFRDRyBmcm9udA0KPiBlbmRz
+IHNvIGlmIHRoZSBhYm92ZSBmbGFncyB3b24ndCB0cmlwIHVwIHRoZSBUQ0cgSSBjYW4gYWRk
+IHRoZW0gdG8gdGhlDQo+IGNmbGFncy4NCj4gDQoNCkFGQUlDVCwgd2Ugc2hvdWxkIGhhdmUg
+YWxsIHZlY3RvciBpbnN0cnVjdGlvbiB1bnRpbCBQT1dFUjkuIFBPV0VSMTAgaXMgDQpXSVAs
+IGJ1dCBjdXJyZW50IHZlcnNpb25zIG9mIEdDQy9DbGFuZyBhcmUgbm90IGVtaXR0aW5nIGFu
+eSBvZiB0aGUgDQptaXNzaW5nIGluc3RydWN0aW9ucywgZXZlbiB3aXRoIC1tY3B1PXBvd2Vy
+MTANCg0KVGhhbmtzLA0KTWF0aGV1cyBLLiBGZXJzdA0KSW5zdGl0dXRvIGRlIFBlc3F1aXNh
+cyBFTERPUkFETyA8aHR0cDovL3d3dy5lbGRvcmFkby5vcmcuYnIvPg0KQW5hbGlzdGEgZGUg
+U29mdHdhcmUNCkF2aXNvIExlZ2FsIC0gRGlzY2xhaW1lciA8aHR0cHM6Ly93d3cuZWxkb3Jh
+ZG8ub3JnLmJyL2Rpc2NsYWltZXIuaHRtbD4NCg==

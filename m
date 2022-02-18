@@ -1,279 +1,186 @@
-Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp64847lfl;
-        Thu, 17 Feb 2022 02:35:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxkTCNcbbFu8osSEDq32DNGy3+A4Fva+W4GEBMr3ohva45tiYt3K3LIFQmmvzRF61NBOTc0
-X-Received: by 2002:a0c:ea24:0:b0:430:1e5b:cb1c with SMTP id t4-20020a0cea24000000b004301e5bcb1cmr1489843qvp.37.1645094144068;
-        Thu, 17 Feb 2022 02:35:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645094144; cv=none;
-        d=google.com; s=arc-20160816;
-        b=LvrISiPvMBrLTejcJoimV6IJUGhkLFQjriP2PTmiBCGqtrrNCM+pqIIVzckwhlD+id
-         8BBArA6KvwM/1IxAM2C9/ePRAwfYA3HQZHBjaDprFzGtILi3u4Z1mHztlTq5VlLUEgD5
-         2zirQNMnlQWoCHhY7qw2jNxHGxLH6dvbvEJlZg41fQiXMKSq/mNs3vCQRZVqrMMDi63E
-         dZdNBZcvVH0kyAab7AzY3U0WyFw0ct8bj6a2WjPIT4Kyv7CJddnJTfEv0jwnp6YY2qrM
-         WzLC0Kj6GhNi6heGnCxTe4EIZbVPdXLK+On8pqE8WoMLWN7wDLlw1IMUXlhFvFRRUH/D
-         kf1g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Q1hFrB3/1Vkn+cfwbERChzPhdXnxcaeuz5jslwTFo7Y=;
-        b=hCO+r/S05cI/YMJdvFWFX/2sBueRW+PtPCrFH1XhXnv0y1QJstoRVS+6XKCpZQ6K0P
-         mqEvKfStosDJMUePmo264XZJDWJsF65zjsE/webgVQMAAW4Qzf+HS+xKVg5sgQBOW/wG
-         YhAzTw/+a4GzSRRg74bM0ONwR8SQB+4uOQ9X45ZUbQ2MytKt3hx9Op8bsDnrBayLcadA
-         Rl2g3ojBxXqaR0iGyxfwkOuiyEj6Wp5nqGKz8uruAxL7CWd15bMfzEslgsubLvpAX+Il
-         MtvCogXJloZdXIOM6871xd/HZi5PfneP7IJP2SkSqcM7kKoWJtBV5NQlsPx4x2AUnclD
-         Ex9A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=HraHczVi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1086224lfq;
+        Fri, 18 Feb 2022 15:55:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz7TKSrEFXBILcdsHQiTes/xJDdt1zrRa0zfdpdqgmiouKtT/nCiAdnRR7huh/D4QZGDlIY
+X-Received: by 2002:a37:9b84:0:b0:46d:7cef:dbf9 with SMTP id d126-20020a379b84000000b0046d7cefdbf9mr6079387qke.21.1645228511353;
+        Fri, 18 Feb 2022 15:55:11 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k2si9271039qtj.23.2022.02.17.02.35.43
+        by mx.google.com with ESMTPS id f17si833095qka.330.2022.02.18.15.55.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Feb 2022 02:35:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Feb 2022 15:55:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=HraHczVi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33266 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=PslAfi3q;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+Received: from localhost ([::1]:56262 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nKe8V-0003Vo-EQ
-	for alex.bennee@linaro.org; Thu, 17 Feb 2022 05:35:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50072)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nLD5i-0008Ve-Nl
+	for alex.bennee@linaro.org; Fri, 18 Feb 2022 18:55:10 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47442)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1nKe4v-0001JF-5H; Thu, 17 Feb 2022 05:32:01 -0500
-Received: from [2607:f8b0:4864:20::62d] (port=39672
- helo=mail-pl1-x62d.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1nKe4s-0004bZ-5s; Thu, 17 Feb 2022 05:32:00 -0500
-Received: by mail-pl1-x62d.google.com with SMTP id w1so4285797plb.6;
- Thu, 17 Feb 2022 02:31:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Q1hFrB3/1Vkn+cfwbERChzPhdXnxcaeuz5jslwTFo7Y=;
- b=HraHczViMI4J3J10KHBs0O8YFAVGiQLrQAdIZ39KPNOqe7NO15/4xJpplKNAxHIirb
- zsP7jGIED6DGZRpxtZ7swqrROpVyvByHGbDMIGxasI7biB1lPSkYPf9C8/A1f7DHbREu
- ykcemlCr+9LXG5FPqH1gRjxz5Ym63lzOryu/VsvsMqkPkJbJNGZp18JgL0yDF5/M9r9v
- 5TFC0fFVkAnG1mXsQxbuGCCp9fBcKLLtwzzX5wS493OSbBfBlhy7ANe5rM5pL80ZEJE2
- +1dnNrG/QnGa2X5/zr+hCfr3QvXc9JRcaDHJXHIplFPht4yprCIHYPkq0wGiurtXgtMC
- CZcQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=Q1hFrB3/1Vkn+cfwbERChzPhdXnxcaeuz5jslwTFo7Y=;
- b=zbYY67UZSWvkvOXprJDQWe2dyLn1LPqGzvMt13MC4+h4RHjiWjN5T3Uj++O5hXjpvh
- IZnaFlsGHaOII3kOFcx9voHjvoGW83GB+gIHqUktcDVm0QUoTGsusQfx+uRKiGdEC//y
- QjLB6EqFdrzikSCtIAUOmO0jfUqsqXMQxso1EvLeCjwzfIt4+1GMVF2EOZVGkex48Yvm
- 1IfShYE6NvaDbRAgSWf53I9WUBw0kZ9bexsnsph/UdG1KyKNyMpJcI5G5xtoaS84BwcE
- /HAe9Eh/Pz6Z8/I6r0YWr7pjDNIJeMzFnwkanaHpV4AoO/sy9YQ3I5pwl7xeSmAlia/Y
- 9E1w==
-X-Gm-Message-State: AOAM5334qhfZ2m2G/p34Rcsi7o8xgTqa7Gpz49GwEj/mDM2HSf9S+vMD
- EHjyWpa3Tqq1CJPoIVqiESc=
-X-Received: by 2002:a17:902:7c13:b0:14f:177b:c51d with SMTP id
- x19-20020a1709027c1300b0014f177bc51dmr2352538pll.116.1645093914547; 
- Thu, 17 Feb 2022 02:31:54 -0800 (PST)
-Received: from voyager.lan ([45.124.203.14])
- by smtp.gmail.com with ESMTPSA id k9sm44047933pfi.134.2022.02.17.02.31.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Feb 2022 02:31:53 -0800 (PST)
-From: Joel Stanley <joel@jms.id.au>
+ (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
+ id 1nLD5c-0008V7-UM; Fri, 18 Feb 2022 18:55:04 -0500
+Received: from [2a01:111:f400:7ea9::60b] (port=32435
+ helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
+ id 1nLD5D-0001tY-BL; Fri, 18 Feb 2022 18:55:03 -0500
+Received: from CH0PR02MB8027.namprd02.prod.outlook.com (2603:10b6:610:108::13)
+ by MN2PR02MB6685.namprd02.prod.outlook.com (2603:10b6:208:1d5::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4995.17; Fri, 18 Feb
+ 2022 22:21:27 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QKMYWTlCRIO0r0mt7yhRCXytb6vrHU336VptcwCp4mKkVe6E7jO15c176zrQCby6kuNLwRJSR2onF/r0REWiQYpdAhbbhBjb82UbqDYy52ifGGN1R9FdE9ERem1DqibVhZd8Guhz5nfsiiYxXJmjzfZaxW3EQmd4Iqeu2FtjG5wW7mytYtHZpoZeAwvNmSFLqKI4mJLk8TfCcXCYl4wkefAZka9/shv0+jpTJ4/Vi2J1/rVTESrccZODALeyh1K+gQZ8Km+VphSGQncfh/ZgmU7gBZsro8sqw7wslsXcmqac5H+8GZ8E7eUmaQw7VSx1WgpB6g5Gvs1njDZZ6Ql1XQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=M/574YRC021P9YMuvZiJW49bZoNFoEp500MFyFh8mis=;
+ b=M1I5KrdUdBK7zmg8aUG58DaTHiW5QHf2isKgeuVv9fGTLO5uBhkTpP5lBdRzFJ6QndnQO1bNmU23uyijZsiJPfFzevd3qJSnChAbN1XRj54LHQWdk9VD28+HRfzeeqvOH4y86m2u9KPf4cXbX/Yloxz4U4NsFYGhQvCi7oPjFLfflQZ30kvN+/3vcv6E0gY02AuAVEaeHRLQ01dYB6dQpxP0pSpIpPZMX72kRRGHmqXIx8dGsYfZ9SnGez+YgzTlIp4BLZQvHE/9i9dGRyXjc31cQ6ORx9nktE8xfh6uTG3Sx8jEdQVmSeAn/jGh1RFh7QLa2PgMhcTctsZcJ6/fWg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.62.198) smtp.rcpttodomain=linaro.org smtp.mailfrom=xilinx.com;
+ dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=M/574YRC021P9YMuvZiJW49bZoNFoEp500MFyFh8mis=;
+ b=PslAfi3q56Xxvvgx5caXIXyE2bJC1/zbKsG4FAbEvLFis6LNA8sZOyIEWOEn2O3/80sUuqROIG9cvK+tJGh8oum2kejrWk96QSbLprDUkA7C69/jK2U1HtrcPRnicpWH5S1NIJE+5ZhveKeBcTAIZaT2+A6T30PGD2mK6AWEX8s=
+Received: from DM5PR13CA0022.namprd13.prod.outlook.com (2603:10b6:3:23::32) by
+ CH0PR02MB8027.namprd02.prod.outlook.com (2603:10b6:610:108::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4975.18; Fri, 18 Feb
+ 2022 22:00:23 +0000
+Received: from DM3NAM02FT043.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:3:23::4) by DM5PR13CA0022.outlook.office365.com
+ (2603:10b6:3:23::32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5017.8 via Frontend
+ Transport; Fri, 18 Feb 2022 22:00:23 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
+ smtp.mailfrom=xilinx.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.62.198; helo=xsj-pvapexch01.xlnx.xilinx.com;
+Received: from xsj-pvapexch01.xlnx.xilinx.com (149.199.62.198) by
+ DM3NAM02FT043.mail.protection.outlook.com (10.13.4.237) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.4995.19 via Frontend Transport; Fri, 18 Feb 2022 22:00:22 +0000
+Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
+ xsj-pvapexch01.xlnx.xilinx.com (172.19.86.40) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.14; Fri, 18 Feb 2022 14:00:17 -0800
+Received: from smtp.xilinx.com (172.19.127.95) by
+ xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
+ 15.1.2176.14 via Frontend Transport; Fri, 18 Feb 2022 14:00:16 -0800
+Received: from [10.23.120.168] (port=55473 helo=localhost)
+ by smtp.xilinx.com with esmtp (Exim 4.90)
+ (envelope-from <edgar@xilinx.com>)
+ id 1nLBIW-0001e5-IO; Fri, 18 Feb 2022 14:00:16 -0800
+Date: Fri, 18 Feb 2022 23:00:16 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3] arm: Remove swift-bmc machine
-Date: Thu, 17 Feb 2022 21:01:41 +1030
-Message-Id: <20220217103141.385345-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.34.1
+Subject: Re: [PATCH v2 3/6] hw/misc: Add a model of the Xilinx ZynqMP CRF
+Message-ID: <20220218150649.GB7092@toto>
+References: <20220203140141.310870-1-edgar.iglesias@gmail.com>
+ <20220203140141.310870-4-edgar.iglesias@gmail.com>
+ <CAFEAcA9joHJr=tekZAV4fUX-y7nHcOq5JHTUFDFDhxpsFr1=ug@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::62d
+In-Reply-To: <CAFEAcA9joHJr=tekZAV4fUX-y7nHcOq5JHTUFDFDhxpsFr1=ug@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 8864b161-27bf-49f4-2a23-08d9f32a0f97
+X-MS-TrafficTypeDiagnostic: CH0PR02MB8027:EE_|MN2PR02MB6685:EE_
+X-Microsoft-Antispam-PRVS: <CH0PR02MB8027106BBCE15609D2F13CB2C2379@CH0PR02MB8027.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:6430;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: KP/zrI/4qjCgfV4MT45kOLY8C6ioOz2PTDM03aH7Ff40ecdyjD4DPshELIDGRjvIh4ohXpZ5TxxlR3xXL8Jc73j2th854e+qwfzFu8tMLoZG2Nlcl6gqeLrNhksv22VYI8Dz7Jc+6qBgKRXq2RqLbzFwosHQcV1+MiFl2cNBVMqvSTyOD+HqSW3Hn4JgtGTAC1wJsV1aKqNuZYDHBfFsvzecDPkQgTUlwZ7dCshjlyK4eBAh/SqiQ8k59r8laHL7Ec/FevkfmsxuBms2BIkgaHd0x4fEbtLSzqWisaxujJQcdH5g+VuTKIwfRLg43PdFoFW7Y4EMjZJiKZGq2IByXhO2NNOYMaUC+W7ONyt0FiIovtQ4nFOItGIBxsGXw6AMqXgxYZ6vgiaNfHNIj449f0V3WBb2t9A06WovHD9JWZ0eJ8GCYwV7D60uPeMQohq/KteKvOVqqiIHGqtDRk7cb7KacwpjZHMMx2LXLtALRbfR26aRS9rRdLuihJGV0ISv38+8LIHFDfYBv5WsqUUNvquUYlN1hUNBnYQPSolIqo7FlXMQ5j8gJfZKAgCE0ivQnnX7j7i7giXtJwj6GobttLSme0goKVi4Ng/tIFlj3LbIDE4NBIzCIF6dtesh4C39YBSshdAGOhkH3SWInTojX+8zQ2201fOAqo/TBCDnDsD4DJphWbCKcZ8xuOu0IMj8
+X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapexch01.xlnx.xilinx.com;
+ PTR:unknown-62-198.xilinx.com; CAT:NONE;
+ SFS:(13230001)(7916004)(4636009)(46966006)(40470700004)(36840700001)(4326008)(6916009)(54906003)(356005)(186003)(7416002)(70206006)(5660300002)(9786002)(33716001)(8676002)(2906002)(7636003)(82310400004)(33656002)(70586007)(9686003)(40460700003)(508600001)(26005)(426003)(8936002)(107886003)(47076005)(336012)(36860700001)(316002)(1076003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Feb 2022 22:00:22.4439 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8864b161-27bf-49f4-2a23-08d9f32a0f97
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
+ Helo=[xsj-pvapexch01.xlnx.xilinx.com]
+X-MS-Exchange-CrossTenant-AuthSource: DM3NAM02FT043.eop-nam02.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR02MB8027
+X-OriginatorOrg: xilinx.com
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a01:111:f400:7ea9::60b
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=joel.stan@gmail.com; helo=mail-pl1-x62d.google.com
-X-Spam_score_int: 3
-X-Spam_score: 0.3
+Received-SPF: pass client-ip=2a01:111:f400:7ea9::60b;
+ envelope-from=edgar@xilinx.com;
+ helo=NAM02-SN1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -2
+X-Spam_score: -0.3
 X-Spam_bar: /
-X-Spam_report: (0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, PDS_HP_HELO_NORDNS=0.978,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, PDS_HP_HELO_NORDNS=0.659, RDNS_NONE=0.793,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ux/P0Xs/qpwy
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: luc@lmichel.fr, sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com,
+ alistair@alistair23.me, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ f4bug@amsat.org, francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
+ qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8MPWz1zZWmcQ
 
-It was scheduled for removal in 7.0.
+On Fri, Feb 18, 2022 at 01:37:51PM +0000, Peter Maydell wrote:
+> On Thu, 3 Feb 2022 at 14:01, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> >
+> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+> >
+> > Add a model of the Xilinx ZynqMP CRF. At the moment this
+> > is mostly a stub model.
+> >
+> > Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> > ---
+> 
+> 
+> > +#define TYPE_XLNX_ZYNQMP_CRF "xlnx.zynqmp_crf"
+> > +
+> > +#define XILINX_CRF(obj) \
+> > +     OBJECT_CHECK(XlnxZynqMPCRF, (obj), TYPE_XLNX_ZYNQMP_CRF)
+> 
+> We prefer the OBJECT_DECLARE_SIMPLE_TYPE rather than directly
+> defining a cast macro these days. (It also provides a typedef
+> for you, among other things.)
+> 
+> Apart from that, and dropping minimum_version_id_old,
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
---
-v2: also remove from docs/about/deprecated.rst
-v3: remove strap define, add note to removed-features.rst
----
- docs/about/deprecated.rst       |  7 ----
- docs/about/removed-features.rst |  5 +++
- docs/system/arm/aspeed.rst      |  1 -
- hw/arm/aspeed.c                 | 64 ---------------------------------
- 4 files changed, 5 insertions(+), 72 deletions(-)
+Thanks Peter and Luc for review comments.
+Sorry, things have been very busy around here, I'll try to get a new version posted next week addressing all comments I've seen so far.
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 26d00812ba94..85773db631c1 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -315,13 +315,6 @@ Use the more generic event ``DEVICE_UNPLUG_GUEST_ERROR`` instead.
- System emulator machines
- ------------------------
- 
--Aspeed ``swift-bmc`` machine (since 6.1)
--''''''''''''''''''''''''''''''''''''''''
--
--This machine is deprecated because we have enough AST2500 based OpenPOWER
--machines. It can be easily replaced by the ``witherspoon-bmc`` or the
--``romulus-bmc`` machines.
--
- PPC 405 ``taihu`` machine (since 7.0)
- '''''''''''''''''''''''''''''''''''''
- 
-diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index cb0575fd4975..4b831ea29176 100644
---- a/docs/about/removed-features.rst
-+++ b/docs/about/removed-features.rst
-@@ -588,6 +588,11 @@ The Raspberry Pi machines come in various models (A, A+, B, B+). To be able
- to distinguish which model QEMU is implementing, the ``raspi2`` and ``raspi3``
- machines have been renamed ``raspi2b`` and ``raspi3b``.
- 
-+Aspeed ``swift-bmc`` machine (removed in 7.0)
-+'''''''''''''''''''''''''''''''''''''''''''''
-+
-+This machine was removed because it was unused. Alternative AST2500 based
-+OpenPOWER machines are ``witherspoon-bmc`` and ``romulus-bmc``.
- 
- linux-user mode CPUs
- --------------------
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index d8b102fa0ad0..60ed94f18759 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -22,7 +22,6 @@ AST2500 SoC based machines :
- - ``romulus-bmc``          OpenPOWER Romulus POWER9 BMC
- - ``witherspoon-bmc``      OpenPOWER Witherspoon POWER9 BMC
- - ``sonorapass-bmc``       OCP SonoraPass BMC
--- ``swift-bmc``            OpenPOWER Swift BMC POWER9 (to be removed in v7.0)
- - ``fp5280g2-bmc``         Inspur FP5280G2 BMC
- - ``g220a-bmc``            Bytedance G220A BMC
- 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index d911dc904fb3..faf7a9fd6863 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -106,17 +106,6 @@ struct AspeedMachineState {
-         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-         SCU_AST2500_HW_STRAP_RESERVED1)
- 
--/* Swift hardware value: 0xF11AD206 */
--#define SWIFT_BMC_HW_STRAP1 (                                           \
--        AST2500_HW_STRAP1_DEFAULTS |                                    \
--        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
--        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
--        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
--        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
--        SCU_H_PLL_BYPASS_EN |                                           \
--        SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
--        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
--
- #define G220A_BMC_HW_STRAP1 (                                      \
-         SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
-         SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
-@@ -544,35 +533,6 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
- }
- 
--static void swift_bmc_i2c_init(AspeedMachineState *bmc)
--{
--    AspeedSoCState *soc = &bmc->soc;
--
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "pca9552", 0x60);
--
--    /* The swift board expects a TMP275 but a TMP105 is compatible */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "tmp105", 0x48);
--    /* The swift board expects a pca9551 but a pca9552 is compatible */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552", 0x60);
--
--    /* The swift board expects an Epson RX8900 RTC but a ds1338 is compatible */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "ds1338", 0x32);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552", 0x60);
--
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
--    /* The swift board expects a pca9539 but a pca9552 is compatible */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "pca9552", 0x74);
--
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
--    /* The swift board expects a pca9539 but a pca9552 is compatible */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "pca9552",
--                     0x74);
--
--    /* The swift board expects a TMP275 but a TMP105 is compatible */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105", 0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105", 0x4a);
--}
--
- static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-@@ -1102,26 +1062,6 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
- 
--static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
--
--    mc->desc       = "OpenPOWER Swift BMC (ARM1176)";
--    amc->soc_name  = "ast2500-a1";
--    amc->hw_strap1 = SWIFT_BMC_HW_STRAP1;
--    amc->fmc_model = "mx66l1g45g";
--    amc->spi_model = "mx66l1g45g";
--    amc->num_cs    = 2;
--    amc->i2c_init  = swift_bmc_i2c_init;
--    mc->default_ram_size       = 512 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
--
--    mc->deprecation_reason = "redundant system. Please use a similar "
--        "OpenPOWER BMC, Witherspoon or Romulus.";
--};
--
- static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -1277,10 +1217,6 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("romulus-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_romulus_class_init,
--    }, {
--        .name          = MACHINE_TYPE_NAME("swift-bmc"),
--        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_swift_class_init,
-     }, {
-         .name          = MACHINE_TYPE_NAME("sonorapass-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
--- 
-2.34.1
-
+Best regards,
+Edgar 

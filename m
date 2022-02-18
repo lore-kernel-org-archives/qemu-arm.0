@@ -1,121 +1,92 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp3496245lfq;
-        Tue, 22 Feb 2022 04:57:27 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx7TQJYrYcNDVeZL7UwVTOM9XKQ3IKsx5IKc9cHZXLjfuE4R1tWea+F+b2YrMT78/8DGGTQ
-X-Received: by 2002:a05:6214:27c9:b0:42d:f6b8:2a17 with SMTP id ge9-20020a05621427c900b0042df6b82a17mr19033524qvb.113.1645534647023;
-        Tue, 22 Feb 2022 04:57:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645534647; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp532834lfq;
+        Fri, 18 Feb 2022 00:09:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxpdqc/VKF5vYyqYZfVmSGXC68jR95GD08lJ1WMo8pMyn1/JIF63PdhPMyHWNMqXC2KYoGd
+X-Received: by 2002:a05:6214:27e6:b0:42f:f387:ff31 with SMTP id jt6-20020a05621427e600b0042ff387ff31mr4736734qvb.29.1645171789521;
+        Fri, 18 Feb 2022 00:09:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645171789; cv=none;
         d=google.com; s=arc-20160816;
-        b=0gUa6v8kU6ueSkERQuciHwoZwys2xIXKjbJUpXJUIlYyC/rhVO6FKcZn3QMOEPaMXM
-         qQOEM4t5gU0CyWQFz+wDMOetUuThfuuR7SjlW0n77ox+4zJIujOgDhx7wJ42bzM3MviO
-         82IYoe/L/4tnjw8vu9MgeCqZhO6Pax2cAm9iZB3Z7MxN+gazaRC+m2T3Em1jbuTDCUiL
-         tkWgr6/0S2oyOgie5ZNq64FkzqwuwZW7RzPGsDr2B4wA3LlqArdEV18xTZoAPWA6ojiC
-         AsYIhX6iB8W1X0SjF7KbHdjQ6cZximEvSXB0KAycI2p6aSV+i5mXUPZJbD+TdztXa5gm
-         gTZQ==
+        b=DaSoyx3FIbJeMbBpd+sKv8zzUSXMt4GjbIYxkodu0RfG+R8Bq1UI30nepV0IYClYZo
+         rvDvJR333H9GWUJQd9Sdax80zVLkNAVPgNS0wxYDiOxswH6tF6BcIT4Sc08QRH53TFxV
+         YnCdFHkS2I7km2pXUOJDIMN9z3KlpBt9e1NjTynUxqbBibiAjwcE+pOzHxKqoa98iNv5
+         i/i8GC7AqNowTdXkjELaTrjKMBjEGUP84qmUlxfFTVAHJzwA7hi1sLd1LdLxStYXbNp0
+         SOsoOScqiEH0n2n+hnuiwfB4samom1h+gAjw1bsyWzX4JkQ8AhGDxr8GQTEvmAwAifPS
+         qN0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=Iah40A1SFHkIFZB5vYT6jrRzqwQ5PoS37XlIWydOnRE=;
-        b=dnWFsQLmcV00oldbSGkouQb7x9cMy8hulYQC4wJgOSQLqpZSN84OfgoCL/l4zWZa7L
-         hz/LCL6h916aqniXjRGerohE4kK6Rwkdj1WqEw3PWcPuvW5mT+zqzZCnhYPbcC7Hdrzd
-         lGaQv3EMlJOuzsfepL6Mn/9VzrdclDLBqp995s9xCrirlNs0I7dSJyPdkUWozjvUJZXh
-         +ziM3K4w47yOZsIItHizJa14qKRD/gw4ooVM3Bxti4gxoc9oSnRYavRsmBRaS513FvMd
-         Fv6QBqp2B0OY9ZA7bpNe3GdBX8kv9KVQ7wqTQlEPyv5tVklF3R1gt0pWyrvVKVvWO2r5
-         6SSg==
+         :mime-version:date:message-id;
+        bh=0mq0RP94bczdQqcY7PMpP5Sm2nHx3gvHV1GzoHY339k=;
+        b=NiMB5RKl4H9C3n5aiL7+j97nMSebQTrM34ePyn+D7cqyyPqm1AX9SsLD2EJL6Ac9OU
+         2lyF2IOlcztejyV9PStnE+kydJKlSheM+KyUmo/G/qMspa+mb4uX0lCGm2341YCBuoZl
+         wKHDkmWt11u/mh6PE/QzoMtlcZDLivvS+7/jEw4C+m9xgSRbw4wlMuNrZ62GEtwQ9rIh
+         QWgZU6kOnrKUiF2jiSPDCVpWKNRkVH+gz/SXv57VqfHrQrb79BOI1MxychRV4HYpYaqe
+         CVwWu1ixg0/5w+Qiwl43pYm2/lX6tzfJopeVac3Z8h4JFJBd/GShTTG08cmoqtFoxBDt
+         l7Yg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lvLJ1Z1s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq44si2697403qkb.584.2022.02.22.04.57.26
+        by mx.google.com with ESMTPS id u11si10583660qtg.486.2022.02.18.00.09.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Feb 2022 04:57:27 -0800 (PST)
+        Fri, 18 Feb 2022 00:09:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lvLJ1Z1s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37668 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nMUjO-0003Fs-Ga
-	for alex.bennee@linaro.org; Tue, 22 Feb 2022 07:57:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39242)
+	id 1nKyKr-0002jF-1g
+	for alex.bennee@linaro.org; Fri, 18 Feb 2022 03:09:49 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38676)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nMUiR-00039y-0g; Tue, 22 Feb 2022 07:56:27 -0500
-Received: from [2a00:1450:4864:20::32c] (port=45642
- helo=mail-wm1-x32c.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nMUiD-0000c2-6w; Tue, 22 Feb 2022 07:56:15 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- az26-20020a05600c601a00b0037c078db59cso1746104wmb.4; 
- Tue, 22 Feb 2022 04:56:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=Iah40A1SFHkIFZB5vYT6jrRzqwQ5PoS37XlIWydOnRE=;
- b=lvLJ1Z1sztPORD6IDuhAR40ThraTwjNm293U8lTyQUbctLgLCibyk1CMLlzFDjMTXH
- b3Y4tF2r7c5Gl+JE0KTQfb50YLorypTkalGPo/yibJt2xG0ngnTrxo+jXwsqvygCAbJ/
- DHMNbI7TEyQUX0wMTmqWAk9hvED6qczac82ISs2csaKaHtamz8t8gP6QPwi9bRWVrU5s
- tcwl+qg0QYNjhjAza5eUl/2AbyqgKkhGi0YTOVRxYrS2BZ/SWz2FTPfVIhhVayjWBiul
- RDEBTP15BlingsAVF+NqyoupwfQkHJiuyAd2Fhesq60SDVmMOS5zT0v1NynGueknXy5n
- CCMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Iah40A1SFHkIFZB5vYT6jrRzqwQ5PoS37XlIWydOnRE=;
- b=l8OxBQ/qiTRwwxrehX13reDJvQb33COgSpCF6HGDtxRaAdL/qI/tgPcsAawa1Vm+Zi
- 2x1RIlDfzy1Ts6AD0hzrOeu+fKTEgMMZJ79MKdO/ThsbG2ly8rF9Iy+FTLwhnd0dJ3y6
- K76F0ugYsAO0taAoK0JF4N7WwkxQmPi+wKhqI8PFCCKZ/VxvxDS5XvImubM8yiwP+Rk6
- hiY+iUj3BpLOE9Nx9opMnRBeZ7AtPu5c3uzROASK7esjQV6UR+/RvW/h2mxADdPJHbpo
- 8kYjxxsg3dogUeVxK67+7gNSgqxCod8yjNgjNJmsCbYq8bVY8LsJGXvbsE4BzHXepBkF
- JYPg==
-X-Gm-Message-State: AOAM530QL4BDj+putSuquVEaHRaXpuf4fZWMJh2fqDCJTldQ2SFBJS20
- Nu/OZv52YSWg+EQxBE1LAbc=
-X-Received: by 2002:a1c:26c3:0:b0:37b:b566:4c46 with SMTP id
- m186-20020a1c26c3000000b0037bb5664c46mr3307419wmm.42.1645534563608; 
- Tue, 22 Feb 2022 04:56:03 -0800 (PST)
-Received: from [192.168.1.35] (71.red-83-50-68.dynamicip.rima-tde.net.
- [83.50.68.71])
- by smtp.gmail.com with ESMTPSA id c5sm22250186wrq.102.2022.02.22.04.56.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 22 Feb 2022 04:56:03 -0800 (PST)
-Message-ID: <043096b3-aadf-4f2a-b5e2-c219d2344821@gmail.com>
-Date: Tue, 22 Feb 2022 13:56:01 +0100
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nKyKF-0002iz-E6
+ for qemu-arm@nongnu.org; Fri, 18 Feb 2022 03:09:11 -0500
+Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231]:44677)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nKyKC-0007Xg-CD
+ for qemu-arm@nongnu.org; Fri, 18 Feb 2022 03:09:10 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.93])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 90FE5231FC;
+ Fri, 18 Feb 2022 08:09:04 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.18; Fri, 18 Feb
+ 2022 09:09:03 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G00285d26a04-92a2-4f89-86cc-a5fad62ba93f,
+ 07432D932CF505C4D002BA4105FABD7408393EAD) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <db222e82-3474-dca7-7f00-40e3d1bceb91@kaod.org>
+Date: Fri, 18 Feb 2022 09:09:02 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.0
-Subject: Re: [PATCH RFC 4/4] rtc: Have event RTC_CHANGE identify the RTC by
- QOM path
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v3] arm: Remove swift-bmc machine
 Content-Language: en-US
-To: Markus Armbruster <armbru@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20220221192123.749970-1-peter.maydell@linaro.org>
- <87a6ejnm80.fsf@pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <87a6ejnm80.fsf@pond.sub.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32c
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
+References: <20220217103141.385345-1-joel@jms.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220217103141.385345-1-joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: a5862fc5-154f-4e89-a791-d8dda47d8744
+X-Ovh-Tracer-Id: 6061845099494476707
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrjeelgdduudejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdeljeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
+ helo=8.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,37 +99,174 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, Greg Kurz <groug@kaod.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Di2w3rxbMEQO
+X-TUID: FeY/JxxiuL8M
 
-Hi Markus,
-
-On 22/2/22 13:02, Markus Armbruster wrote:
-> Event RTC_CHANGE is "emitted when the guest changes the RTC time" (and
-> the RTC supports the event).  What if there's more than one RTC?
-
-w.r.t. RTC, a machine having multiple RTC devices is silly...
-
-Assuming one wants to emulate that; shouldn't all QMP events have a
-qom-path by default? Or have a generic "event-from-multiple-sources"
-flag which automatically add this field?
-
-> Which one changed?  New @qom-path identifies it.
+On 2/17/22 11:31, Joel Stanley wrote:
+> It was scheduled for removal in 7.0.
 > 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+> --
+> v2: also remove from docs/about/deprecated.rst
+> v3: remove strap define, add note to removed-features.rst
 > ---
-> RFC because it's compile-tested only.  Worthwhile?  Let me know what you
-> think.
+>   docs/about/deprecated.rst       |  7 ----
+>   docs/about/removed-features.rst |  5 +++
+>   docs/system/arm/aspeed.rst      |  1 -
+>   hw/arm/aspeed.c                 | 64 ---------------------------------
+>   4 files changed, 5 insertions(+), 72 deletions(-)
 > 
->   qapi/misc.json       | 4 +++-
->   hw/ppc/spapr_rtc.c   | 4 +++-
->   hw/rtc/mc146818rtc.c | 3 ++-
->   hw/rtc/pl031.c       | 3 ++-
->   4 files changed, 10 insertions(+), 4 deletions(-)
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index 26d00812ba94..85773db631c1 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -315,13 +315,6 @@ Use the more generic event ``DEVICE_UNPLUG_GUEST_ERROR`` instead.
+>   System emulator machines
+>   ------------------------
+>   
+> -Aspeed ``swift-bmc`` machine (since 6.1)
+> -''''''''''''''''''''''''''''''''''''''''
+> -
+> -This machine is deprecated because we have enough AST2500 based OpenPOWER
+> -machines. It can be easily replaced by the ``witherspoon-bmc`` or the
+> -``romulus-bmc`` machines.
+> -
+>   PPC 405 ``taihu`` machine (since 7.0)
+>   '''''''''''''''''''''''''''''''''''''
+>   
+> diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+> index cb0575fd4975..4b831ea29176 100644
+> --- a/docs/about/removed-features.rst
+> +++ b/docs/about/removed-features.rst
+> @@ -588,6 +588,11 @@ The Raspberry Pi machines come in various models (A, A+, B, B+). To be able
+>   to distinguish which model QEMU is implementing, the ``raspi2`` and ``raspi3``
+>   machines have been renamed ``raspi2b`` and ``raspi3b``.
+>   
+> +Aspeed ``swift-bmc`` machine (removed in 7.0)
+> +'''''''''''''''''''''''''''''''''''''''''''''
+> +
+> +This machine was removed because it was unused. Alternative AST2500 based
+> +OpenPOWER machines are ``witherspoon-bmc`` and ``romulus-bmc``.
+>   
+>   linux-user mode CPUs
+>   --------------------
+> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+> index d8b102fa0ad0..60ed94f18759 100644
+> --- a/docs/system/arm/aspeed.rst
+> +++ b/docs/system/arm/aspeed.rst
+> @@ -22,7 +22,6 @@ AST2500 SoC based machines :
+>   - ``romulus-bmc``          OpenPOWER Romulus POWER9 BMC
+>   - ``witherspoon-bmc``      OpenPOWER Witherspoon POWER9 BMC
+>   - ``sonorapass-bmc``       OCP SonoraPass BMC
+> -- ``swift-bmc``            OpenPOWER Swift BMC POWER9 (to be removed in v7.0)
+>   - ``fp5280g2-bmc``         Inspur FP5280G2 BMC
+>   - ``g220a-bmc``            Bytedance G220A BMC
+>   
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index d911dc904fb3..faf7a9fd6863 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -106,17 +106,6 @@ struct AspeedMachineState {
+>           SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+>           SCU_AST2500_HW_STRAP_RESERVED1)
+>   
+> -/* Swift hardware value: 0xF11AD206 */
+> -#define SWIFT_BMC_HW_STRAP1 (                                           \
+> -        AST2500_HW_STRAP1_DEFAULTS |                                    \
+> -        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
+> -        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
+> -        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
+> -        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
+> -        SCU_H_PLL_BYPASS_EN |                                           \
+> -        SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
+> -        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
+> -
+>   #define G220A_BMC_HW_STRAP1 (                                      \
+>           SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
+>           SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
+> @@ -544,35 +533,6 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+>       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
+>   }
+>   
+> -static void swift_bmc_i2c_init(AspeedMachineState *bmc)
+> -{
+> -    AspeedSoCState *soc = &bmc->soc;
+> -
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "pca9552", 0x60);
+> -
+> -    /* The swift board expects a TMP275 but a TMP105 is compatible */
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "tmp105", 0x48);
+> -    /* The swift board expects a pca9551 but a pca9552 is compatible */
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552", 0x60);
+> -
+> -    /* The swift board expects an Epson RX8900 RTC but a ds1338 is compatible */
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "ds1338", 0x32);
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552", 0x60);
+> -
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
+> -    /* The swift board expects a pca9539 but a pca9552 is compatible */
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "pca9552", 0x74);
+> -
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
+> -    /* The swift board expects a pca9539 but a pca9552 is compatible */
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "pca9552",
+> -                     0x74);
+> -
+> -    /* The swift board expects a TMP275 but a TMP105 is compatible */
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105", 0x48);
+> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105", 0x4a);
+> -}
+> -
+>   static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+>   {
+>       AspeedSoCState *soc = &bmc->soc;
+> @@ -1102,26 +1062,6 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
+>           aspeed_soc_num_cpus(amc->soc_name);
+>   };
+>   
+> -static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
+> -{
+> -    MachineClass *mc = MACHINE_CLASS(oc);
+> -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> -
+> -    mc->desc       = "OpenPOWER Swift BMC (ARM1176)";
+> -    amc->soc_name  = "ast2500-a1";
+> -    amc->hw_strap1 = SWIFT_BMC_HW_STRAP1;
+> -    amc->fmc_model = "mx66l1g45g";
+> -    amc->spi_model = "mx66l1g45g";
+> -    amc->num_cs    = 2;
+> -    amc->i2c_init  = swift_bmc_i2c_init;
+> -    mc->default_ram_size       = 512 * MiB;
+> -    mc->default_cpus = mc->min_cpus = mc->max_cpus =
+> -        aspeed_soc_num_cpus(amc->soc_name);
+> -
+> -    mc->deprecation_reason = "redundant system. Please use a similar "
+> -        "OpenPOWER BMC, Witherspoon or Romulus.";
+> -};
+> -
+>   static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
+>   {
+>       MachineClass *mc = MACHINE_CLASS(oc);
+> @@ -1277,10 +1217,6 @@ static const TypeInfo aspeed_machine_types[] = {
+>           .name          = MACHINE_TYPE_NAME("romulus-bmc"),
+>           .parent        = TYPE_ASPEED_MACHINE,
+>           .class_init    = aspeed_machine_romulus_class_init,
+> -    }, {
+> -        .name          = MACHINE_TYPE_NAME("swift-bmc"),
+> -        .parent        = TYPE_ASPEED_MACHINE,
+> -        .class_init    = aspeed_machine_swift_class_init,
+>       }, {
+>           .name          = MACHINE_TYPE_NAME("sonorapass-bmc"),
+>           .parent        = TYPE_ASPEED_MACHINE,
+

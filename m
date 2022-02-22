@@ -1,119 +1,104 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2964596lfq;
-        Mon, 21 Feb 2022 11:33:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw/YHwJeCwkb+989480hmtjnWwYwDgOfSywZlHwbO5mb1sbiGZ92lkx0YDIv1gqrOHt4oIF
-X-Received: by 2002:a05:622a:cd:b0:2de:2b96:278c with SMTP id p13-20020a05622a00cd00b002de2b96278cmr5628299qtw.449.1645472008492;
-        Mon, 21 Feb 2022 11:33:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645472008; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp3315678lfq;
+        Mon, 21 Feb 2022 23:22:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxYZ0WameXlmvBTSqR7klDukbl6rwJ3NaPdMEPn9VWRJVBBh9NEi90j2EldaJI8Ec+QwNoJ
+X-Received: by 2002:a05:622a:1787:b0:2d1:83d8:411f with SMTP id s7-20020a05622a178700b002d183d8411fmr20828064qtk.10.1645514520780;
+        Mon, 21 Feb 2022 23:22:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645514520; cv=none;
         d=google.com; s=arc-20160816;
-        b=RyjgUJLULM1DU5ZkjSsGeRCnQ+gm7RivYRPo23KJZCgczNGGEfVu8Spm6KT5B/NPo8
-         J4C4tMjsmyl23+hzUU1GduL1SfQVupGoNjt4LHVfFtnVnn8WnBIA7A/Uo0/NGTKWFvUK
-         T5OTmkrzOI6B/8/+MA5XrV2HuRAh0w5zSQfYnWs26s0FzwgSpmitZHAu81korNSm6hbn
-         suJF5FukrfAJFg5qQu2GHErp6gQI7Hy2BFgO6jQBr5TnArVP+v2Vdxos7FRU2pWjR5s1
-         ZI9TLh4Eg4xrT13zN7b9cu95e4XJ/rhTYWWIJTqwCIyHS1qA8iVCRDGI1XC+lY9d9+rf
-         7B9Q==
+        b=juHaAAzmunVGSI/0iK9ubZl9lHqHlvyRbO5QogIUt1MPgpiaN6ISc8JkGBe+pwjABH
+         kE4wPopUWKuAuFx1JjctXwXb1do459+YdhEe44+IEV6hU1URkmOHV6xAcQiuNnaxCHX4
+         XlPCFqLacWxAOUjIgLRHjpKUhQDlsGr9kwNNxZRJcPVoOrZnM+g6Zfo2QHeuYjOPDO/e
+         RhDKKa/+O9541PK4YzK+SWm794SvCqPfSxvl+I+53oTwesA4fbiP6FrN3PoOZLW2yQPI
+         3yuKWxIrODFsDEUUJUx3VSpZ2/tzUBhmzAosdbEGupUPXxc2qZfc3t6EdiaGGesdsrEe
+         FlHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=G9ZtRisj5qdEyxbcjxfWjt6PCOG02wNAxTqLy7KlnoA=;
-        b=hd+c0n6qj5SH2D2Y41DRFsrpwHzxo0ULL1ZVA2t9rvF/WGJwubHqfCUo9hXkslRaP1
-         bfrmTBGkLQ00rZpLzCDhUG4iLOo46SeIJHov4oXKcxwRo0ZIoCv10b2rrFzbvSZ133Ft
-         NT9TRJtvX0392s0n4We6+dIiCQavzSDhmsh8rxOhH32rQigZyY8Oa6KbKxtCVTQNvnMm
-         MhbZpF49vMYLoUwBmVjrg6jBKj/7CLW1hkgT7GV0z6Yr41VIr8U4thjOZvlcPwnYH2Aw
-         ssw1kBrAuRo49D0Whi4Fv8ipzNpNR1mHTG6b/FKchiXJPdqbjNoOQXlKhfmzCwwowx8q
-         D24A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ZTxq2O7p3CYHqAUrR+1cQVu5DPU0BJmWgFrTXPzw/+s=;
+        b=fvh2RDXk+mMf336cbGuQqcgmgE1ahDziGt2yqhHuaaR69IGKGj86RnXQllLB9bAaBh
+         BxhZsCd1opiEQEb+yIlGGCtcQBliqUwD/seBAxQmyDNDnGu5XJZtc2dyZ7mlZhzXoffX
+         f692Y9PqME1KkZ9Id4ZfuyYWshlMcprz3cnsJN76OYYj9CjuAD32IwF1cyfc9ZWsL2+l
+         2AXSciAvrPTUDHae6d4kdjlBFPF/eQ5hm+yVTw9/Q+7r0gTUQSRvXiYJu2H8lm2J6Onf
+         +21ioaNoaX2rsKPxEcTP2nbxKcOWoP3TX/qVTTxn5sEJJp4ljRyPXSiZS0IkEEJ0EQy2
+         u8yg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ipND2NSU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@anisinha-ca.20210112.gappssmtp.com header.s=20210112 header.b=WiymcIE+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o14si42816qtr.96.2022.02.21.11.33.28
+        by mx.google.com with ESMTPS id r4si17031909qta.570.2022.02.21.23.22.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Feb 2022 11:33:28 -0800 (PST)
+        Mon, 21 Feb 2022 23:22:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ipND2NSU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39624 helo=lists1p.gnu.org)
+       dkim=fail header.i=@anisinha-ca.20210112.gappssmtp.com header.s=20210112 header.b=WiymcIE+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33382 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nMER4-0008TV-Rg
-	for alex.bennee@linaro.org; Mon, 21 Feb 2022 14:33:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59210)
+	id 1nMPUm-0002Bm-4H
+	for alex.bennee@linaro.org; Tue, 22 Feb 2022 02:22:00 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48526)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nMEMB-0004yO-J7; Mon, 21 Feb 2022 14:28:24 -0500
-Received: from [2607:f8b0:4864:20::536] (port=40503
- helo=mail-pg1-x536.google.com)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1nMPTn-00026M-L4
+ for qemu-arm@nongnu.org; Tue, 22 Feb 2022 02:20:59 -0500
+Received: from [2a00:1450:4864:20::632] (port=33348
+ helo=mail-ej1-x632.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nMEM3-0003Uh-65; Mon, 21 Feb 2022 14:28:22 -0500
-Received: by mail-pg1-x536.google.com with SMTP id w37so8721446pga.7;
- Mon, 21 Feb 2022 11:28:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=G9ZtRisj5qdEyxbcjxfWjt6PCOG02wNAxTqLy7KlnoA=;
- b=ipND2NSUAxJviPFgRAiHVXRsUJXfxtFmZ8HBcxjxcH+nvpMRHwo69qz1L94DOz4yfB
- A0BpDSq9XEWMzLI6LQBjdpRj8IpZggy5jGfjEUX0lMvbkssPSbe36RQWhUuuLhxOD06+
- dtNAZcyv/gbRpqk2Re+ZLRwlvXLwOF86Pq+D9HrVfwL9pFbAQ5FKr6srnOGLUS+IY2Yx
- g1jtMxx+8MUPaBHdlOYlrx7Fd2IPyTlVOZenHS5KwCeS4HunEHON9va+VWY61ICTJrH+
- xUKbSf66DUWJUOig9yHTd+3gLDRWBaafF3ofVnzJ073obnsnaCeZxLE3CoCJ9UZqSdrP
- pYug==
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1nMPTl-0002cm-LQ
+ for qemu-arm@nongnu.org; Tue, 22 Feb 2022 02:20:59 -0500
+Received: by mail-ej1-x632.google.com with SMTP id vz16so40071188ejb.0
+ for <qemu-arm@nongnu.org>; Mon, 21 Feb 2022 23:20:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZTxq2O7p3CYHqAUrR+1cQVu5DPU0BJmWgFrTXPzw/+s=;
+ b=WiymcIE+5eK4MtzDUrXKHdDlOUuC49V9dP1O3WKp5OTxzB3FYGeqOiT6jN+fdQ37gP
+ JANs1dsVtonnDMV7hvi/Qvm99ZxGUoz0yycQ8lSbRE2+k7QbkccZGXIRvFGrgnW98qDS
+ JXg/jaCpQQGWGtJL0LUNQXzjp/6vtDdnAyYWAOqTZLpEsieTq+AI35eIcEs5NiQYBNuj
+ wjVODA1aLX+5AGDxH7pU1PoTa/SjFueyvj4RG47RSf7EhXasO2uDYmwI+AZP39K/C64b
+ Jks91OAr44iWdPPUWHsm5b4OC/Me2eTFdOTVyU7yLP2ngGKysHyRV71IGfmLTyMZMC4c
+ mCng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=G9ZtRisj5qdEyxbcjxfWjt6PCOG02wNAxTqLy7KlnoA=;
- b=sj4j0Y7gphws8D34Y16MxTvWueHBr3l8sIqBwIM0ojqNSxHBesB3b0CnDLXMFq2b6m
- FmIno/6YUiesyXaLNE8yJMyxHO6k3GUBrivtxKlx+q1fGRUlBKajtqbAlBnWvYfqVotr
- bdgHEDpLR2T9GBG0Bh/kcpN7Zd2YVB2fPotOU9WrcW5uR0mbQJOYHLjQ3nICA24hXPfp
- p8kLY6pUYijuhWwbXrHyaoY+LAg9SdUMggqjm8h1T4BhdILolGjs90pPLBKUabqb7Hp7
- v1tI6C9UdbD/pJASIMB1lHpRR6nzM1O40/nVZA7EDl3abrcIzF4Do+2OA4qpjyhD5Jh3
- 72ag==
-X-Gm-Message-State: AOAM531aOJwLQj/IoSyKpAk9nHf7Nz4oIyoO5HDd9ANOsusrKeyjpx5i
- maGLAlyNWRnQ7M2GIPw4+Ho=
-X-Received: by 2002:a65:41c3:0:b0:363:5711:e234 with SMTP id
- b3-20020a6541c3000000b003635711e234mr17124152pgq.386.1645471692815; 
- Mon, 21 Feb 2022 11:28:12 -0800 (PST)
-Received: from [192.168.1.35] (71.red-83-50-68.dynamicip.rima-tde.net.
- [83.50.68.71])
- by smtp.gmail.com with ESMTPSA id u39sm14647431pfg.195.2022.02.21.11.28.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Feb 2022 11:28:12 -0800 (PST)
-Message-ID: <d292fa72-292c-99d4-9f45-8b15dde71edf@gmail.com>
-Date: Mon, 21 Feb 2022 20:28:09 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZTxq2O7p3CYHqAUrR+1cQVu5DPU0BJmWgFrTXPzw/+s=;
+ b=qgTDBC/AbOAfU9tGZnHY54oXpDEoHaAcWI6fNuCam3VZe5NzRYE4jYoVzwkOcBd0+v
+ 1uUHpSf3FnU6hX3vRSZjz6+fjQLM2rUCdFF4ZfGqohc1TnK4ArDHC3fxJgpaJomaXGFr
+ lL9jaz1nGGu05r6aoJ1ErigXkX4bokNo7ChQwK4XIIgWwMNhKFswitKIgSAckenEGPJ9
+ PpM8vkhuIhY9nZyjaCGURZstQRTbJOfcOU6LdBt/3072YWcMpYDEHef5F7jZqV5KeVJe
+ KyRLfUSs7DN36n74jJigJMwh/DiOUI6NlZBpm/Jr1VKtDvtOKmG5IBDQLfXmF/CKboUs
+ JDEQ==
+X-Gm-Message-State: AOAM5317IoCl4PG3PkMr1/iKHpsk7/wu35CX4LcNTazEGyvt8bztJPN0
+ 8wGPZVV5MrJgPzx8JJdHaOfIXhC64d1+bIkDZYVuPA==
+X-Received: by 2002:a17:906:abd4:b0:6bb:8aee:92c5 with SMTP id
+ kq20-20020a170906abd400b006bb8aee92c5mr19048187ejb.660.1645514455646; Mon, 21
+ Feb 2022 23:20:55 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.0
-Subject: Re: [PATCH v2 2/3] qapi: Document some missing details of RTC_CHANGE
- event
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220221192123.749970-1-peter.maydell@linaro.org>
- <20220221192123.749970-3-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <20220221192123.749970-3-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::536
+References: <20220221191323.617323-1-liavalb@gmail.com>
+ <20220221191323.617323-3-liavalb@gmail.com>
+ <alpine.DEB.2.22.394.2202221154300.697295@anisinha-lenovo>
+In-Reply-To: <alpine.DEB.2.22.394.2202221154300.697295@anisinha-lenovo>
+From: Ani Sinha <ani@anisinha.ca>
+Date: Tue, 22 Feb 2022 12:50:44 +0530
+Message-ID: <CAARzgwxC0g6HWGY_=roU5kbRbDR24vNDrwXAsSVXDkBReZY7sw@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] hw/acpi: add indication for i8042 in IA-PC boot
+ flags of the FADT table
+To: Liav Albani <liavalb@gmail.com>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::632
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x536.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
+Received-SPF: none client-ip=2a00:1450:4864:20::632;
+ envelope-from=ani@anisinha.ca; helo=mail-ej1-x632.google.com
+X-Spam_score_int: -4
+X-Spam_score: -0.5
 X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -127,22 +112,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Cc: imammedo@redhat.com, qemu-devel@nongnu.org, mst@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iO/BQi0QItPD
+X-TUID: CmrYnhQAwro+
 
-On 21/2/22 20:21, Peter Maydell wrote:
-> The RTC_CHANGE event's documentation is missing some details:
->   * the offset argument is in units of seconds
->   * it isn't guaranteed that the RTC will implement the event
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> v1->v2: add the "RTC might not implement this" note
-> ---
->   qapi/misc.json | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
+> > index 68ca7e7fc2..756c69b3b0 100644
+> > --- a/hw/i386/acpi-microvm.c
+> > +++ b/hw/i386/acpi-microvm.c
+> > @@ -189,6 +189,11 @@ static void acpi_build_microvm(AcpiBuildTables *tables,
+> >          .reset_val = ACPI_GED_RESET_VALUE,
+> >      };
+> >
+> > +    if (isa_check_device_existence("i8042")) {
+> > +        /* Indicates if i8042 is present or not */
+> > +        pmfadt.iapc_boot_arch = (1 << 1);
+> > +    }
+> > +
+> >      table_offsets = g_array_new(false, true /* clear */,
+> >                                          sizeof(uint32_t));
+>
+>
+> We should do the same thing for arm architecture as well?
+> hw/arm/virt-acpi-build.c .
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Probably not since the spec says
+"These flags pertain only to IA-PC platforms. On other system
+architectures, the entire field should be set
+to 0."
 
+adding qemu-arm for confirmation.

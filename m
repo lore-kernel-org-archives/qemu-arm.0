@@ -1,139 +1,127 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp3650097lfq;
-        Tue, 22 Feb 2022 08:38:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwmP6iWsUaPvl3lpxWHhgo1nZat8m1XpDfqqQ+zjs++XyA7sk3yBY4AZ7s42eCD9zeptML0
-X-Received: by 2002:a05:6402:3553:b0:412:d0aa:e7b0 with SMTP id f19-20020a056402355300b00412d0aae7b0mr20619430edd.309.1645547915719;
-        Tue, 22 Feb 2022 08:38:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645547915; cv=none;
+X-Received: by 2002:a05:600c:4f14:b0:353:32b7:b47 with SMTP id l20-20020a05600c4f1400b0035332b70b47mr4451797wmq.126.1645551223260;
+        Tue, 22 Feb 2022 09:33:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645551223; cv=none;
         d=google.com; s=arc-20160816;
-        b=F5Bh9Dbftys7XGAHj4ahyphL7JGbQ/Pg7cba9KGYTFxQRr5P6RWOC/TaFVDsVTT1YU
-         cSnRIx3DMp7P6cNnM4Vx+l1WKtrGie5LOyx+s7yfdpajcIFIf+oII2E+ijaY43M8+zVR
-         O2ZTWarnwHys383ryrIUhC3NG9cfGn4nweL+mPRKe6KowYxJhiSB6JSJba7LmrMXBXEg
-         LpwIvNE75i430ZtOEKW2H4v/cFQdSmuK8DYiwJh+rPjA2+wPUbG/WS5FZbb51bdL9IP4
-         ncRZUI/0XKNdlxzMN3m2hV271+Fv/3TtJfV/tcXU6MUFcsZhKOakl1bHOs6l7zGJU2NR
-         27bQ==
+        b=swN1e8+s41t3++9MZOhpR1avLaauEVJFL1Ld1/P8f2OX2EplAqO0gwSvs+3L6HRp7C
+         yqKliRPX5whwOhsFkebiGwxSsa/u7FM38y6UaWDn30suvvjrbQ62C42NLjXDRbVF5ne9
+         /SYlxhLvnkWiVSFMibW7Ub/l4gLUzyOCUSFZk7VosO0vNGJWnHZZ8jda4ovX9exBgv6j
+         gtEBS6LflScMXwtJImmC7MC8gHZc2fS5UbxUqkJUJgnZiIlkYXGfaLBLP7OQ1htcuRve
+         72bMaOJSJYotAVTEsLf1yCLDlz0c9mwyWCIx1M3S1GRPhHOpIhenWn6aVToxAYsDU2Fa
+         cTiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-disposition:user-agent
-         :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=LYa4rHDhYe14xmC6555n1VmRCeOY76oa4WNCVke9MWk=;
-        b=TALz2i4sAtwH2rm4ReCU2ZxqM110KzouTRMttgs4o7XVSIu9mwJrcRyFZGb+XL2TtP
-         Q6eAGh6LYucqVqjoscKmTdS4D/4yc6pviZT4q6VGztzqFKQ2F24Hh/GpG9/CVBSepyOw
-         rVzwfTIR8jRL7fOEIlvpIMD4w/1PLXhvq94SRwvSlS5uxxF+hxm9HS1GC26i8pU3z2xo
-         inO6VbR5hAAatug1O3/B70SdOcvlaedbOVZnNk8u3Sbg+238nRKlyS0/fS632kfbnIRw
-         YIJONRrlbvvy6UQbKSZtW/1krO2bYl11Fbb11J7QGe0X3bD0k4EGScFGss645Mzj4ER9
-         enSg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=qZLmnfjrVWGUsUh3atQSO7JD7Pzw6Vtie5hI2woz6dI=;
+        b=tq/6R8zidPQjAhL4ZOAUs8kxAwjhSt2yXkk/S0kccMkPAebQJvFERCILJOCean2qnA
+         GNQhtkbF0fsU58aGOENbz2AKmA0sOna50BDSKlSUJBPw17tvZ2YE6ORH460bBNhPnoH5
+         /mNP5kH70Q5kt4TyEq9uI1VucCA5pCX47pcpqq3nOb1ZAoItivAVIuSWVv7I/DA8z6y8
+         qrw4Civv6kuRZDjzS9ssQSqPgON/JQZPhgi8lLC63qikrppSz5kI/brXIqpn0v6IFQJl
+         VOY5ioXHf6yqIa6dd1NU1L/Z81kBuIa59aUBiH1hj/BvmnYcM7KydEsDL08NrkMqzOtP
+         Dvjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XLSkfvNj;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id b25si12826135edy.68.2022.02.22.08.38.35
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 Feb 2022 08:38:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=acT60s1l;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id s67-20020a1ca946000000b0037bffca3591sor1453913wme.1.2022.02.22.09.33.43
+        (Google Transport Security);
+        Tue, 22 Feb 2022 09:33:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XLSkfvNj;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1645547914;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LYa4rHDhYe14xmC6555n1VmRCeOY76oa4WNCVke9MWk=;
-	b=XLSkfvNjXzRy90Y26t+3s/Q2Zn5uoSajsNa3TnCfSPtxUakrfAz476Z58CxiXs6fm954TN
-	uDSFo2fu4Ln/y4CrpEiQsaynbVLNfjYBOWJlvmmV41SBbiAj3Qww4s9w3p0rvzbYZKQRWX
-	wkjVpss/XE/0o2gRzmqtZkDrq8u3oIg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-146-n-nHbnUDOoC3-ZeOPZv5AQ-1; Tue, 22 Feb 2022 11:38:31 -0500
-X-MC-Unique: n-nHbnUDOoC3-ZeOPZv5AQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3624D100CC84;
-	Tue, 22 Feb 2022 16:38:29 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.195.93])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id CD182348B8;
-	Tue, 22 Feb 2022 16:38:25 +0000 (UTC)
-Date: Tue, 22 Feb 2022 16:38:22 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>, Laszlo Ersek <lersek@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Cleber Rosa <cleber@redhat.com>, Oleg Vasilev <me@svin.in>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Emilio Cota <cota@braap.org>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Idan Horowitz <idan.horowitz@gmail.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=acT60s1l;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=qZLmnfjrVWGUsUh3atQSO7JD7Pzw6Vtie5hI2woz6dI=;
+        b=acT60s1lSiIGzhyqvZorD1b69R4aBJSZ+QAnwADjvGVMECGa50/CE3Sq70tclgN6+D
+         eY0Ene6yPWxAFVxUAY4tfAig5R1VSoZ2x4YItuj7j3zyFlgZeasANCGGvbNq+0oQzuYl
+         RtZFrPF7nvAQOYrFIumyTnhNmIxgj5yhMcNHtYhpEsY3jeXwVk5sRhdH/CQ3tfvRgirT
+         UnEEsudpNRvwX6/I/iHJDugXLkcmJjYdjouB7J61wIEVSE5PLL60CXGK9LSdRzglGOkd
+         ANaBhOgFqhBn1hrPXXG7FXKSaMUBa9LzEbiNLHp6WVYqPrUtFhVPq8ZiioWsS1jiFVy2
+         Zp+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=qZLmnfjrVWGUsUh3atQSO7JD7Pzw6Vtie5hI2woz6dI=;
+        b=zyi8A2yEsulCRC7Y+xHxQYPdCjJ6Pw7LsdsdSqf4FALwC0jfDrbNGgFLa7d6xgTT3L
+         ylDKsLAQl75DRjPHe/Ft+JEArO1IxgUX+9lmvbln11bJqtH9c4Uty/vwkYO8oE/OLTbQ
+         tbkAI2wd2EPnYW5kJsU8VTG5aYRloe/Tw0k5NsGiy/pl89Zs58wpTtIbFdBYPiZLjIiy
+         d6A+WefV03s5YtMCvsnyhcQls/N9iNBC72TO8so0/wt+vrNVk7VPO261xVoqzpe5zki6
+         V55WIMpjATORzbujTr/IuU4wQooDHNX05E7jJcv2/nUsSLexAVYMJkb1w0IsqCS5BC2I
+         2ajw==
+X-Gm-Message-State: AOAM532TGNfeRqf0PNc/Yy9KVv104+LoUwV9gXQkcUy63WM3whde+d6Z
+	zj0hekp5ekR7ztG71bSj/Xw=
+X-Google-Smtp-Source: ABdhPJx2QZMXe6tpcpZ30/gE56mY+F/lIGiBc9njhTNS7xX2No62I1ck7SjkOaA33z3q/mLtUYLz/w==
+X-Received: by 2002:a05:600c:240a:b0:34d:c8ad:dc07 with SMTP id 10-20020a05600c240a00b0034dc8addc07mr4214655wmp.145.1645551222836;
+        Tue, 22 Feb 2022 09:33:42 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.35] (71.red-83-50-68.dynamicip.rima-tde.net. [83.50.68.71])
+        by smtp.gmail.com with ESMTPSA id i9sm33308870wrf.79.2022.02.22.09.33.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 22 Feb 2022 09:33:42 -0800 (PST)
+Message-ID: <96bafa75-a0c6-f431-a6d8-fe98d438d0f9@gmail.com>
+Date: Tue, 22 Feb 2022 18:33:41 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.6.0
 Subject: Re: Analysis of slow distro boots in check-avocado
  (BootLinuxAarch64.test_virt_tcg*)
-Message-ID: <YhURfqMvRT4xbiz6@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <874k4xbqvp.fsf@linaro.org>
- <878ru2nacq.fsf@linaro.org>
-MIME-Version: 1.0
-In-Reply-To: <878ru2nacq.fsf@linaro.org>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Language: en-US
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, Laszlo Ersek <lersek@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <cleber@redhat.com>,
+ Oleg Vasilev <me@svin.in>, Richard Henderson <richard.henderson@linaro.org>,
+ Emilio Cota <cota@braap.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Idan Horowitz
+ <idan.horowitz@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Andrew Jones <drjones@redhat.com>
+References: <874k4xbqvp.fsf@linaro.org> <878ru2nacq.fsf@linaro.org>
+ <YhURfqMvRT4xbiz6@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <YhURfqMvRT4xbiz6@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: M0N+a1N5ucH6
+X-TUID: x93EHuGHKoDL
 
-On Tue, Feb 22, 2022 at 04:17:23PM +0000, Alex Bennée wrote:
-> 
-> Alex Bennée <alex.bennee@linaro.org> writes:
-> 
-> > Hi,
-> >
-> > TL;DR:
-> >
-> >   - pc-bios/edk2-aarch64-code.fd should be rebuilt without debug
-> 
-> Laszlo,
-> 
-> Would it be possible to do a less debug enabled version of EDK2 on the
-> next update to pc-bios/edk2-*?
++Igor/MST for UEFI tests.
 
-NB, Laszlo is no longer  maintaining EDK2 in QEMU, it was handed
-over to Philippe.  I'm CC'ing Gerd too since he's a reviewer and
-an EDK2 contributor taking over from Lazslo in EDK2 community
+On 22/2/22 17:38, Daniel P. Berrangé wrote:
+> On Tue, Feb 22, 2022 at 04:17:23PM +0000, Alex Bennée wrote:
+>>
+>> Alex Bennée <alex.bennee@linaro.org> writes:
+>>
+>>> Hi,
+>>>
+>>> TL;DR:
+>>>
+>>>    - pc-bios/edk2-aarch64-code.fd should be rebuilt without debug
+>>
+>> Laszlo,
+>>
+>> Would it be possible to do a less debug enabled version of EDK2 on the
+>> next update to pc-bios/edk2-*?
+> 
+> NB, Laszlo is no longer  maintaining EDK2 in QEMU, it was handed
+> over to Philippe.  I'm CC'ing Gerd too since he's a reviewer and
+> an EDK2 contributor taking over from Lazslo in EDK2 community
 
-> 
-> >
-> > So my working theory is:
-> >
-> >   - booting with EFI leaves a number stale code pages
-> >   - as the kernel boots it clears these pages triggering lots of
-> >     slow-path writes
-> >   - result very slow boot
-> >
-> > I think the only real solution is to improve our TB invalidation code
-> > but perhaps another approach would be to detect a high TB invalidation
-> > churn and just tb_flush the whole thing and start again?
-> >
-> > Any thoughts or ideas?
-> 
-> 
-> -- 
-> Alex Bennée
-> 
+We need the DEBUG profile to ensure the bios-tables-tests work.
+
+If you want to boot a guest using EDK2, you should use the images
+build by your distribution (/usr/share/qemu/edk2-aarch64-code.fd),
+not these images.
 
 Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+
+Phil.

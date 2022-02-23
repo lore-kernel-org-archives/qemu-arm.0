@@ -1,196 +1,113 @@
-X-Received: by 2002:a17:90a:5b06:b0:1b8:b705:470b with SMTP id o6-20020a17090a5b0600b001b8b705470bmr1518039pji.168.1645655520502;
-        Wed, 23 Feb 2022 14:32:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645655520; cv=none;
+X-Received: by 2002:a17:902:d892:b0:14e:e074:7ff7 with SMTP id b18-20020a170902d89200b0014ee0747ff7mr1684865plz.29.1645655521970;
+        Wed, 23 Feb 2022 14:32:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645655521; cv=none;
         d=google.com; s=arc-20160816;
-        b=gBe/B4WeQbmAipZYKLDJLHSYtwHQJnDBbgy8E0xJbq/d7xRU/g4jay/Bb/QaOeeK0w
-         /pjqsXb+mlpOBV8u74gsoWeS+mrqmGvVtW15aK5rV6WtGmBFAMNHvdpT8As0N3wllU1g
-         F7oEjclDAoa5YxGfCxaceYFgeoEr6ccHoFyZWJccpMr1o2UutS3ryRPY1HFATCuliEFy
-         j1GRwWA3O9X4lpcv8jJJBaLzDrplFb2KJoJJP+b7LBW5jzmRewUU4Tw7RGgAaAVtpe8g
-         5nKi7JBnjQ+mFQmOF//vW74DtLZslRD1uQW2GYZCCaO+P/jfVzKQg46A2JFlqnkxwhUw
-         iG5g==
+        b=uLdm+GnBQm5GuYehYQ9px/2tBn/kt7hG3HgkHeMfFIvrgErgMDtXms0jttI5X/xc8x
+         bhuGbUsRPf1Pw3/Q4EMDeW5JfnOCY/Tziu2chXhrE7ONow070A+w7QgwLSDnYjYHgCdz
+         w3/YoRmMdQOjpTs5OQ5P0xzCsRz3nEQLKu+U/olFYTquWc8NeZ7jfbm2bjBUyprRUPEf
+         16AOq8yNX+3Xfst9ZL54y5xIeG+0ndSFiQe+7WCcJhZNWd701TcanBRi+XWFThKmCEDJ
+         A4J+l2rAN3LCmAMfvJv4T7Z9unR54p+vj84Lft1gKZfLDnOX/f48tqsMy8NvRYID/LT7
+         jGMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Uavi3yQmU7TEij7jJpcySVBC3+TVvlm3sHX3b1s1W6c=;
-        b=J4pfr+Fv/PcoK11Vf8uuPufEGK976bYIWXv8sKbtmMRYgOegLBNlg0Qdv0lT8W+DAq
-         RscbOVR/wjC7XeEM1tHYD+wRp3CoUNHGorN0vuoZUYnI/PGNxdU1TkG9h2hW1gMCtyJS
-         xz2F9p6jozBdwkBKFlpTpEmO8sMngOM6GjSEiRx5lys9qHBcd/YSDePvbkSvu/qJ+KyC
-         QsbY3NWK4TJ9XZsYtSo2c4QsQed2jlPWUFUddLsqVHVT6Mm5DzrzyiTH3iz1fgOD/mfY
-         yOJxFWlFzKWk0NM7HP0WKf/tA6tcMoYd4QcX/3NkfWUcFc1fVxsHarkSzl/t9R4amCuz
-         m7yg==
+        bh=iuG8ohkKwqyyIJ7svsXNRHI3s70BPYfliw43HdSQEsk=;
+        b=xcBJqu0EIOCxOgYyumf5ayqi/qsAIX+sgRZbsW6LaMbw4hGh1sHFqsoZgYw2oNo9E9
+         zUn+aQmbGE1ES7wciDJbvwTXy5A26hAoh6u2ULDVNW2iUhU1LxhgwN2GujNNjHJeR+T4
+         OAHoii4MahXi9xdoQ7n/qvEthAY7RoiWKqj3zcQJ8ismTkIorE1Px3dovF5BXJWuv6kb
+         c0N9kqK0dJ85/1NzVerSMwizx9N6oZ3xpWM4jIGY80TLiiLJaIMX9S5EPXpH4GYWDupK
+         Cr/nnbF1dNgCqK30WjmXrtoCRwfcyA8oTKf6nOXQBejyNRov8AIcdkwr3sFjYGgQdBrR
+         5dAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E4feHmkw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WddS2ivj;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id mr6-20020a17090b238600b001b899f81802sor1944692pjb.43.2022.02.23.14.32.00
+        by mx.google.com with SMTPS id n32-20020a17090a5aa300b001bc9f0fff4asor1244551pji.25.2022.02.23.14.32.01
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 23 Feb 2022 14:32:00 -0800 (PST)
+        Wed, 23 Feb 2022 14:32:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E4feHmkw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WddS2ivj;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=Uavi3yQmU7TEij7jJpcySVBC3+TVvlm3sHX3b1s1W6c=;
-        b=E4feHmkw/CmFwD/8fElw2/hS3oCNmfdUHVZDn3IWXTB7dIjgwUZi0XJAmOQNRegIrz
-         28lSFtVcpbFJhChctH0KvNC6hhURRAY5Y+axEGoOwMJNodSBAsf25ZxjXk81nUgVgeGy
-         vB8IvZTfWPkecl0hniL82TztDa6Uhpn1wtVqm8sRb5PVVGnJfDP70d0ewDYpgY0Oalaz
-         EDD2JnlE3+OOfSXF5Wsoea459gs7XrxGteBsSFR+WrrcOx5Pcovx23uz3tAFri6Z8I05
-         k5kUIvFx7L9vInfJi69uv8Wg1ZdFiqH/jy6zrk3Ht9qmwQkxv2V8nIQ760oIyzeUyDDv
-         Vr0A==
+        bh=iuG8ohkKwqyyIJ7svsXNRHI3s70BPYfliw43HdSQEsk=;
+        b=WddS2ivjSWfNCTiD1OOwywbmtXYERS9f9cKw9sBPsqwsdwF13gXFDZQXznIoHcZ6Z6
+         VQyCOG8v3AIC8azqObcb5p1dJP4zfkF31qkZiNoGUpICs1dEeyge0k0egcw27mUk+1+G
+         ZonCBG9cj/spNu8efQYMwJO0gZAVWYP/+ThksB3Cr9G0xgYPv1QrNAPT7iGieyS+nKsp
+         wuHI/Aa+rIX+6PdRKmlm7b/toLTQ2r1sQtyJM2bckxJXM3t4BDGO53Albqq2N5sRin+n
+         1F6vAsntLlGT/B78qOj2I3pbAG6husIZN2qPjs23rJMvmvKC4pKBZgyP/cUmjzIvHWL9
+         nkIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=Uavi3yQmU7TEij7jJpcySVBC3+TVvlm3sHX3b1s1W6c=;
-        b=Ds6IRBe56+DMrE0G9DNOyuBx3RK5GyQBkA+AysCu8Q5SeAIgqAv7WNiXonIrQ/x8x7
-         n1Kz9W7DpDPs+Sxgg/Scee886ZTW/LydN5n0R/io8KUlRYLZedAW8loF0NCgNM3iq3d1
-         wJ2puMTcYjF9KIHHasCyI0RYixLK05V/4MH4MLfkV9KHbIcp3EENFUdjM40MGkQh4ahn
-         SjW7xPnSyNwT+M7E4usw43al9fkyXv4sKx4bfRMR4oK1hozEdiRPFZtv/Ktgg2odJVMx
-         6gb75O+SK0idxVAkEwM1bGIcZSBpbRsIKR7101Z8FR8ieMPpL1FEPCJR6h6FH32X6BWQ
-         6prA==
-X-Gm-Message-State: AOAM533filznF48sWRzjyMB1Mo9uvpoWStv3Bydb+eEVBb4gyX7+iDA/
-	K9TCaNT0CSVuKX0WDCseDbZKidWF
-X-Google-Smtp-Source: ABdhPJxb4tQh/Aqc00UJdkf3ZPWL5HdNfaPw1YifBNDGI05bexFevqqPyY+XrbGa6GviaQhGQvIuog==
-X-Received: by 2002:a17:90b:d91:b0:1bc:ade1:54e3 with SMTP id bg17-20020a17090b0d9100b001bcade154e3mr3020272pjb.8.1645655520073;
-        Wed, 23 Feb 2022 14:32:00 -0800 (PST)
+        bh=iuG8ohkKwqyyIJ7svsXNRHI3s70BPYfliw43HdSQEsk=;
+        b=DeG/8ketBHyOsJVuS7qbURnsRx3lNOrIaqvizsfdJ1x3NQGniLF9rm3VZwXzGSHqeo
+         bzsndsOb06/Sjps0EgHAXaXIsGFcmgjJGTUy6ZFlOlokKNUedc4XLPedgV2gt2OWY7Va
+         ZUQWh2n7blpxdMdaMAs52mqggIi/HTCQKilbjGWk6A7nxnAbOy7ARlqc7/AqwbVk9Z14
+         iQL8MQ2s9VOXr5cg3GijceR6ffcqm5JLsQ7ue0C7+B4hA5mi0uPTP86pfISCrGFtnMkS
+         vzeSKWXKewpKc1VALdGqS5/JtyS1CoYZ1IWVb+QFKXRMzwWyeZ73VxUuabOKoqTPCM2K
+         KdoA==
+X-Gm-Message-State: AOAM53215SLldgo8oewlLbqkYdn7DyJjMVlLHf1oHRRdUbtjc2ecdLuN
+	IUffR8ByuDlKWaBxUtRJb1kshmPwu8ww4a1e
+X-Google-Smtp-Source: ABdhPJwmGB7nO0T90zWZHjoGI3XAZh3emi1m3aJnIDJp2hxS6HdgwuBWUC4k9XZj+LAFEjQl4fbZrg==
+X-Received: by 2002:a17:90a:4043:b0:1bc:450:df68 with SMTP id k3-20020a17090a404300b001bc0450df68mr11308406pjg.120.1645655521450;
+        Wed, 23 Feb 2022 14:32:01 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (cpe-50-113-46-110.hawaii.res.rr.com. [50.113.46.110])
-        by smtp.gmail.com with ESMTPSA id f8sm533815pfv.100.2022.02.23.14.31.58
+        by smtp.gmail.com with ESMTPSA id f8sm533815pfv.100.2022.02.23.14.32.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Feb 2022 14:31:59 -0800 (PST)
+        Wed, 23 Feb 2022 14:32:01 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v3 12/17] target/arm: Introduce tlbi_aa64_get_range
-Date: Wed, 23 Feb 2022 12:31:32 -1000
-Message-Id: <20220223223137.114264-13-richard.henderson@linaro.org>
+Subject: [PATCH v3 13/17] target/arm: Fix TLBIRange.base for 16k and 64k pages
+Date: Wed, 23 Feb 2022 12:31:33 -1000
+Message-Id: <20220223223137.114264-14-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220223223137.114264-1-richard.henderson@linaro.org>
 References: <20220223223137.114264-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: sVD3mHUxgSMt
+X-TUID: BuTMOJo+LYIs
 
-Merge tlbi_aa64_range_get_length and tlbi_aa64_range_get_base,
-returning a structure containing both results.  Pass in the
-ARMMMUIdx, rather than the digested two_ranges boolean.
+The shift of the BaseADDR field depends on the translation
+granule in use.
 
-This is in preparation for FEAT_LPA2, where the interpretation
-of 'value' depends on the effective value of DS for the regime.
-
+Fixes: 84940ed8255 ("target/arm: Add support for FEAT_TLBIRANGE")
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 58 +++++++++++++++++++--------------------------
- 1 file changed, 24 insertions(+), 34 deletions(-)
+ target/arm/helper.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 950f56599e..31c2a716f2 100644
+index 31c2a716f2..e455397fb5 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -4511,70 +4511,60 @@ static void tlbi_aa64_vae3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
- }
+@@ -4538,10 +4538,11 @@ static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
+     ret.length = (num + 1) << (exponent + page_shift);
  
- #ifdef TARGET_AARCH64
--static uint64_t tlbi_aa64_range_get_length(CPUARMState *env,
--                                           uint64_t value)
--{
--    unsigned int page_shift;
--    unsigned int page_size_granule;
--    uint64_t num;
--    uint64_t scale;
--    uint64_t exponent;
-+typedef struct {
-+    uint64_t base;
-     uint64_t length;
-+} TLBIRange;
-+
-+static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
-+                                     uint64_t value)
-+{
-+    unsigned int page_size_granule, page_shift, num, scale, exponent;
-+    TLBIRange ret = { };
- 
--    num = extract64(value, 39, 5);
--    scale = extract64(value, 44, 2);
-     page_size_granule = extract64(value, 46, 2);
- 
-     if (page_size_granule == 0) {
-         qemu_log_mask(LOG_GUEST_ERROR, "Invalid page size granule %d\n",
-                       page_size_granule);
--        return 0;
-+        return ret;
-     }
- 
-     page_shift = (page_size_granule - 1) * 2 + 12;
--
-+    num = extract64(value, 39, 5);
-+    scale = extract64(value, 44, 2);
-     exponent = (5 * scale) + 1;
--    length = (num + 1) << (exponent + page_shift);
- 
--    return length;
--}
-+    ret.length = (num + 1) << (exponent + page_shift);
- 
--static uint64_t tlbi_aa64_range_get_base(CPUARMState *env, uint64_t value,
--                                        bool two_ranges)
--{
--    /* TODO: ARMv8.7 FEAT_LPA2 */
--    uint64_t pageaddr;
--
--    if (two_ranges) {
--        pageaddr = sextract64(value, 0, 37) << TARGET_PAGE_BITS;
-+    if (regime_has_2_ranges(mmuidx)) {
-+        ret.base = sextract64(value, 0, 37) << TARGET_PAGE_BITS;
+     if (regime_has_2_ranges(mmuidx)) {
+-        ret.base = sextract64(value, 0, 37) << TARGET_PAGE_BITS;
++        ret.base = sextract64(value, 0, 37);
      } else {
--        pageaddr = extract64(value, 0, 37) << TARGET_PAGE_BITS;
-+        ret.base = extract64(value, 0, 37) << TARGET_PAGE_BITS;
+-        ret.base = extract64(value, 0, 37) << TARGET_PAGE_BITS;
++        ret.base = extract64(value, 0, 37);
      }
++    ret.base <<= page_shift;
  
--    return pageaddr;
-+    return ret;
+     return ret;
  }
- 
- static void do_rvae_write(CPUARMState *env, uint64_t value,
-                           int idxmap, bool synced)
- {
-     ARMMMUIdx one_idx = ARM_MMU_IDX_A | ctz32(idxmap);
--    bool two_ranges = regime_has_2_ranges(one_idx);
--    uint64_t baseaddr, length;
-+    TLBIRange range;
-     int bits;
- 
--    baseaddr = tlbi_aa64_range_get_base(env, value, two_ranges);
--    length = tlbi_aa64_range_get_length(env, value);
--    bits = tlbbits_for_regime(env, one_idx, baseaddr);
-+    range = tlbi_aa64_get_range(env, one_idx, value);
-+    bits = tlbbits_for_regime(env, one_idx, range.base);
- 
-     if (synced) {
-         tlb_flush_range_by_mmuidx_all_cpus_synced(env_cpu(env),
--                                                  baseaddr,
--                                                  length,
-+                                                  range.base,
-+                                                  range.length,
-                                                   idxmap,
-                                                   bits);
-     } else {
--        tlb_flush_range_by_mmuidx(env_cpu(env), baseaddr,
--                                  length, idxmap, bits);
-+        tlb_flush_range_by_mmuidx(env_cpu(env), range.base,
-+                                  range.length, idxmap, bits);
-     }
- }
- 
 -- 
 2.25.1

@@ -1,161 +1,110 @@
-X-Received: by 2002:a17:902:f70b:b0:14d:643d:9c99 with SMTP id h11-20020a170902f70b00b0014d643d9c99mr1941106plo.18.1645655502482;
-        Wed, 23 Feb 2022 14:31:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645655502; cv=none;
+X-Received: by 2002:a17:90a:ab08:b0:1b9:c59:82c3 with SMTP id m8-20020a17090aab0800b001b90c5982c3mr11338082pjq.95.1645655503945;
+        Wed, 23 Feb 2022 14:31:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645655503; cv=none;
         d=google.com; s=arc-20160816;
-        b=sCtVfqZUOVd4JwDtALzLjgXeWEWhg4sIVGZbNyd1tbfoVeXuQI8cVB5rw88GylRNr7
-         9YC+djwx6+SQzDb7x5epm2BdK7zdoRDrULioTc6c+Gxzu6msQpri8wQCs54OZg6m/YhE
-         fOUiBVpBJveD8pDIr2tDLSLYwFjkpqva/Iwt1fnn8nmC5eo6oTtJ5hkqeLMg+soXQj5H
-         IxnqQzXYDAiDG5uXYrpPQwfBEmyVBMtcjScjqfnjtmhZqqU9ZHTZW2sVL3qm8I95QBAw
-         LtSNqhYsHzvfuPes98k1Z7gYWDGs/iCCvqym5DkG89rjXW7IGC9H89v7Gwni89yjxJOo
-         1EXw==
+        b=aR93DYrkgeigwpUNUhI8NDDvLgtvOa4sAOCNiGDTkWFpmWtdCjhT5YWQnmH3Pqz4dj
+         sDKLnWtgXzHnbstUYvJGrgRAv+CExOBn+UXbJsYkONZGjdJCxhvHJ8a1DIT2Qim6eSw+
+         GBTKbFYmMWT4ZFxJNP2qjus7l4Pmy8cl+lfzPNg4YFzn6jl/kDQUPpOdEUkq4Ua3RiFr
+         NsZ5+IZaYmop7tl411oWaxihVW1jprYzRidcBrN+bFd09q4jtKS1H1B+Zc8uk3e3wUIj
+         8JVJSYmslw0p0tITPz0cXOMp3Xd+lak5fDaRNVkGq7TvtfMq/kro6dBiB9vg1rwQkNtQ
+         91GQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zkNbMXCqLzhadKWhMyb5sf6Jtr4mvpt/QguB9jnfEUo=;
-        b=IZgy0clq/SSMEkDmmn0rGTLaT5kku60smMTXvzSguseUL1uMbXJovCCvyThR6AT1iQ
-         NV+kt2zW0sdwhRzxuK9cwcRxt0Xe8RPq8gTP2JHW7aF/2UjNtAAeWJMCxxIXWQ4bpzxk
-         C4Jmiy6ftsVoFXUwNpvqazcRPo4/p7IKIRvRDJ+VvudbYfz9WWWK7TYLfIcENHBtY8lN
-         o6BqALnx51MEpmdmn9qCTNDWbPLzhb20h/q9U13/VKFBPu91XR0xgs1sDiGlMrGxlAWi
-         H5KrwBsEuLRdrCA4lcJJ0Vyc38pIpDWZ3o1w5T2xHBxEArwJK/XhcKY6T0eGaFShqnX8
-         2cTw==
+        bh=E1rlJYYazfRdVeynNKa6RTb/vpD+L0sCNF3QpW/Zvp8=;
+        b=qDpJ86FSTge4VfPsVneh8l9gRSK9Ab4itHu7Iv45jA//V1Qqq6rkNzGOVQHsNjt/WJ
+         S/zFMhSwQXfhjic+tfRpCJg7aPSLjYTYJxz5LcC32+mKDX8ajhn5ReN9oekyblc3jl8V
+         IghcZk4Mfteub3DzKssrg4x+t7mDg7zdkAN82eF33aFd3m5i10WuhJ/qpbJMS1nTDnTK
+         qYniBUjdGX34HjSbT3O2Us8FQ/znuYCzD9zNP8Vvj6CL6pX+ZxwxyQB6yetMMnZjDxkI
+         yP2YQQqyObx7J0A7FvQQJpXlgR/GiUGgt9CBIryI5zHO+E5NpgTAdChDCOMKSO2uXDDw
+         Z1vA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="GS/BLDrj";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jb8iHIsI;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2sor610701pfj.18.2022.02.23.14.31.42
+        by mx.google.com with SMTPS id z10sor1350101plo.98.2022.02.23.14.31.43
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 23 Feb 2022 14:31:42 -0800 (PST)
+        Wed, 23 Feb 2022 14:31:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="GS/BLDrj";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jb8iHIsI;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=zkNbMXCqLzhadKWhMyb5sf6Jtr4mvpt/QguB9jnfEUo=;
-        b=GS/BLDrj8tq/Y/FvD6oIutunQTHV7Aq4Yq5oZ8yBsyY8Ao3Fs0T1bNcdVSpuIFrmCd
-         rildfh9CGSnMx7gJCN8Y0ieS6GI3OvwFDB7+dRkZQeWbHj8Ye5a+AfeV2eqXFRMT0tZS
-         EDzYTc1oT+odORAUJQJKIN/tfGlTji5+FiFN6kV3+NIa7bAvM07m5Xt/6SpvyBj2AH2y
-         nmBo7peAfdLqUkWekemf5rr0asnaoGIpzsTxWD3B7e68P/yEsq0QzYLSqZ1M3EtTNroA
-         4oe8WR1TeARGvvy5buXDyKZJ9FaiiKzTA6V9WI74o6dcg3SgtTCc13UaFJBqC3/lNQmB
-         ELiA==
+        bh=E1rlJYYazfRdVeynNKa6RTb/vpD+L0sCNF3QpW/Zvp8=;
+        b=Jb8iHIsIPgJb0kC0LfCP9SJnJck4aqWMbmw/XpGeid3EnFq4BbyLek50qTwCz4jzsL
+         MbLEYLA9kl71q2MqYL45ut7A977P1YFzlla+viEkLLGv53epD6EbGxqsR5YlLaOzc5Y0
+         2aiQAkjaUCgPaCIW/GMSfoI4py9OvHalkO2IQbrfzYd8jyGH4/qeXzLb4wlJSBkcIwhX
+         s3HY8pubrIuFbaKlMonhNG7e+5DB0eClggee4SrKDdIkXjlLJLpshZj2CvwLMJQ1YcU1
+         yMv4tTvk90wGhhqvx7765UA1NM1EF3NPU4qRSP2hw6E2eeDUQtDQiGdGY3xvCEYAd20+
+         XTdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=zkNbMXCqLzhadKWhMyb5sf6Jtr4mvpt/QguB9jnfEUo=;
-        b=jHCuMU5fEYDQI9uD+NPZiyQC3zUY4WBLUuCb5Zq74sp2Omivz6sXPLUtKQ6kWcfBxq
-         YF22sVdglyeHnqvnfZi01XT0SS7GtLrIUJgLzgsnNQTaJClFCf+LJBLfF3Wf2aZBIYn9
-         WpIFp+q/1R2NV1eu/HBji2BasbJS5arQfMLrfzXKkpEHeP8a7OP0shNx/uetVeykFcv+
-         8N/TyjrVbMLZjsHBiQaWa1xa4DE8q3foNUqJ5VKrne37EZZeZP4gSGeZcXvsCZTQssBB
-         vqVCj+cAJUyNEMEC8qqKkdzT7+Ol66EeKkKuM6WSj+ehBzk5nsjmrW2bt4UBt8w4596x
-         fMWg==
-X-Gm-Message-State: AOAM531XM8naN6wOzjXhr0RovK2IIP/Ilv7jb/G31sOeSiRBoyH/4vGJ
-	Y/dhDcZ4E+DmtvVOs335qsf/plIK
-X-Google-Smtp-Source: ABdhPJyhdBZ2JUwklUGo4Rmwi8cTu0S+gCWIVK4fVMOcy1nIuCgEQu16rPdnUjkp1dAqOzsO2pU+YQ==
-X-Received: by 2002:a65:57c9:0:b0:375:7489:1bac with SMTP id q9-20020a6557c9000000b0037574891bacmr1354243pgr.349.1645655502045;
-        Wed, 23 Feb 2022 14:31:42 -0800 (PST)
+        bh=E1rlJYYazfRdVeynNKa6RTb/vpD+L0sCNF3QpW/Zvp8=;
+        b=lyFNXCR+rk8c53ii3K8de6o9D6Lp5Zr1jsyFSsaNTd/b3qjjmvhWDgbAfvgiGLX6tX
+         kJPrTX2yXRUQqaMkAc8VjomaI9wY5E0jsW3YgKxwbbFhKjwNJ4xkL6YyF4ekdauNhKOc
+         vTlzGQ+LeSLFH4kdnZwwfuvVEJaERkv1HwlH468/Y3GOPtJydCQ4M86nBgxJ16Nbj1zI
+         qqh4eZ46BjTXGD0dkgB2MNTmT7CKxFiuSXZv9KA3jLUwpBLLJ6yRPEPzqzYwSkKlnoHk
+         rp8YDZnKBQamv+XAid3cGf8BcYXJ4OLQ7Aev5Bb5bykMdvl6JuSbMfxSUHaRsNIaZ3ms
+         ibpQ==
+X-Gm-Message-State: AOAM533hlYyGrvpcfWM5x64UYnm1BPEcHYQdud1m/O71rviTY3HvkPI5
+	zj/UCWRMvyh1UbA/EKickfrsfjHfHrfbaJrM
+X-Google-Smtp-Source: ABdhPJyQT2mwJELw7spYq2ce9Y8IPCO1lNtgttw5A6uBgkG+gRYRwzkvrSpqwV+7z/E3M3nuHZv17w==
+X-Received: by 2002:a17:903:11cc:b0:14d:a0d5:76f with SMTP id q12-20020a17090311cc00b0014da0d5076fmr1687482plh.109.1645655503471;
+        Wed, 23 Feb 2022 14:31:43 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (cpe-50-113-46-110.hawaii.res.rr.com. [50.113.46.110])
-        by smtp.gmail.com with ESMTPSA id f8sm533815pfv.100.2022.02.23.14.31.40
+        by smtp.gmail.com with ESMTPSA id f8sm533815pfv.100.2022.02.23.14.31.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Feb 2022 14:31:41 -0800 (PST)
+        Wed, 23 Feb 2022 14:31:43 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
-	alex.bennee@linaro.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v3 01/17] hw/registerfields: Add FIELD_SEX<N> and FIELD_SDP<N>
-Date: Wed, 23 Feb 2022 12:31:21 -1000
-Message-Id: <20220223223137.114264-2-richard.henderson@linaro.org>
+	alex.bennee@linaro.org
+Subject: [PATCH v3 02/17] target/arm: Set TCR_EL1.TSZ for user-only
+Date: Wed, 23 Feb 2022 12:31:22 -1000
+Message-Id: <20220223223137.114264-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220223223137.114264-1-richard.henderson@linaro.org>
 References: <20220223223137.114264-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: yqIkeQNqvTNp
+X-TUID: r2nruV80y0LE
 
-Add new macros to manipulate signed fields within the register.
+Set this as the kernel would, to 48 bits, to keep the computation
+of the address space correct for PAuth.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/hw/registerfields.h | 48 ++++++++++++++++++++++++++++++++++++-
- 1 file changed, 47 insertions(+), 1 deletion(-)
+ target/arm/cpu.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
-index f2a3c9c41f..3a88e135d0 100644
---- a/include/hw/registerfields.h
-+++ b/include/hw/registerfields.h
-@@ -59,6 +59,19 @@
-     extract64((storage), R_ ## reg ## _ ## field ## _SHIFT,               \
-               R_ ## reg ## _ ## field ## _LENGTH)
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index c085dc10ee..e251f0df4b 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -206,10 +206,11 @@ static void arm_cpu_reset(DeviceState *dev)
+                 aarch64_sve_zcr_get_valid_len(cpu, cpu->sve_default_vq - 1);
+         }
+         /*
++         * Enable 48-bit address space (TODO: take reserved_va into account).
+          * Enable TBI0 but not TBI1.
+          * Note that this must match useronly_clean_ptr.
+          */
+-        env->cp15.tcr_el[1].raw_tcr = (1ULL << 37);
++        env->cp15.tcr_el[1].raw_tcr = 5 | (1ULL << 37);
  
-+#define FIELD_SEX8(storage, reg, field)                                   \
-+    sextract8((storage), R_ ## reg ## _ ## field ## _SHIFT,               \
-+              R_ ## reg ## _ ## field ## _LENGTH)
-+#define FIELD_SEX16(storage, reg, field)                                  \
-+    sextract16((storage), R_ ## reg ## _ ## field ## _SHIFT,              \
-+               R_ ## reg ## _ ## field ## _LENGTH)
-+#define FIELD_SEX32(storage, reg, field)                                  \
-+    sextract32((storage), R_ ## reg ## _ ## field ## _SHIFT,              \
-+               R_ ## reg ## _ ## field ## _LENGTH)
-+#define FIELD_SEX64(storage, reg, field)                                  \
-+    sextract64((storage), R_ ## reg ## _ ## field ## _SHIFT,              \
-+               R_ ## reg ## _ ## field ## _LENGTH)
-+
- /* Extract a field from an array of registers */
- #define ARRAY_FIELD_EX32(regs, reg, field)                                \
-     FIELD_EX32((regs)[R_ ## reg], reg, field)
-@@ -95,7 +108,40 @@
-     _d; })
- #define FIELD_DP64(storage, reg, field, val) ({                           \
-     struct {                                                              \
--        uint64_t v:R_ ## reg ## _ ## field ## _LENGTH;                \
-+        uint64_t v:R_ ## reg ## _ ## field ## _LENGTH;                    \
-+    } _v = { .v = val };                                                  \
-+    uint64_t _d;                                                          \
-+    _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-+                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-+    _d; })
-+
-+#define FIELD_SDP8(storage, reg, field, val) ({                           \
-+    struct {                                                              \
-+        signed int v:R_ ## reg ## _ ## field ## _LENGTH;                  \
-+    } _v = { .v = val };                                                  \
-+    uint8_t _d;                                                           \
-+    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-+                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-+    _d; })
-+#define FIELD_SDP16(storage, reg, field, val) ({                          \
-+    struct {                                                              \
-+        signed int v:R_ ## reg ## _ ## field ## _LENGTH;                  \
-+    } _v = { .v = val };                                                  \
-+    uint16_t _d;                                                          \
-+    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-+                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-+    _d; })
-+#define FIELD_SDP32(storage, reg, field, val) ({                          \
-+    struct {                                                              \
-+        signed int v:R_ ## reg ## _ ## field ## _LENGTH;                  \
-+    } _v = { .v = val };                                                  \
-+    uint32_t _d;                                                          \
-+    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-+                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-+    _d; })
-+#define FIELD_SDP64(storage, reg, field, val) ({                          \
-+    struct {                                                              \
-+        int64_t v:R_ ## reg ## _ ## field ## _LENGTH;                     \
-     } _v = { .v = val };                                                  \
-     uint64_t _d;                                                          \
-     _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+         /* Enable MTE */
+         if (cpu_isar_feature(aa64_mte, cpu)) {
 -- 
 2.25.1

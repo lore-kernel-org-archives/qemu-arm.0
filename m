@@ -1,178 +1,161 @@
-X-Received: by 2002:a17:902:f546:b0:14f:7b6a:e02a with SMTP id h6-20020a170902f54600b0014f7b6ae02amr1702113plf.9.1645655505435;
-        Wed, 23 Feb 2022 14:31:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645655505; cv=none;
+X-Received: by 2002:a17:90a:5d0b:b0:1b9:4720:6f9e with SMTP id s11-20020a17090a5d0b00b001b947206f9emr1543986pji.72.1645655508236;
+        Wed, 23 Feb 2022 14:31:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645655508; cv=none;
         d=google.com; s=arc-20160816;
-        b=wLRPzPHzCxx3/ijcD7qxipCXe+BnDpr+SyEV5pDj62SoHwbd5Oi8GH5L44jE6DX8d7
-         e6iNIKia81dLfX4KG0BHs96b8ZNSXsOwLX4HOtoApFGO6y9k8O8GFiQd+7Wo0ehfS82b
-         wlFhu/jXUXX9mdo0vxpRP+MwGSf0d9/X54F1+Kmp2BzUT62lbDXG2X4ODEqMHHqoN27c
-         IfGXXQDT8RfiGuFSNc1nv9x8Uev4wE8w+7D7I+BeS7qJZk5c+oMcSmG7f9klKj/WRsVO
-         +k6ZZU2e3tieoKAP5IlJiCQhyIfJkr8kx9eXe2HPPhm3wTpkZwtD7OJedLhZ1m82aN2S
-         CE3A==
+        b=uxujejaXu6oUdzVHuI81zwVDaiH8LMilvgTNdaWSimPUyHjJUDWvtzdXQUJUQO93jW
+         W/SIOAlsIzM0M4yYsY4TWVShmy2pEcvwee9QLRLXS7PV5EWudV/V3phTfvpomRf9Ji0v
+         wUVRAkWyUL/folExoVlLPkobvZMKZ1b19bmxZoWus2LkbaUoh2PT3C+i1GMqfYrPXjSR
+         PfInMcP0XdfBV0CKMRg+KrQuQQ+cmAn5RJF9AD2STTlUoDeM+QPXj65kJ4GQGC6ttIEz
+         G3tOmOf5Xf5ZtlZFrlrLy/XFQ9A+1SP2B/a2rcQcS5h7ueYZ9dqBIKzIG5PSNrg6W8F4
+         9eIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8FniAxzNq9R5C3PUa8crK2rtgbWJQ/YT25+L7bxil2U=;
-        b=qPpkWB/stK5dFatB/m5J1XzizpinLKuYctZoa6SQPDnX4QFGHLYf2ADWuNRbrmQyhl
-         pQbNhsaVo5EC+i3enNjUZ6fdJNhbkq3ZGkJAwwAU2ASNCH7m0E3aSHzo4BxzAiQsgxZ+
-         8awqX/ev8HXtT5Vdse96mbK0tbYLDStrarO7HSmsY7gV1cJnIzgySdBxVsHVFfSPWzZP
-         WSpehDPoRHZ95v7q3EvaTtaKA9AG3OMv5msB6+A5GWTu7fYKGHu5qEixjUMoUtV2a3sr
-         l2ID5nuQY4kOk47TYjeAMGSL6fK67khAZiw3pDR1dQSgycRpLsZVfJxQUXY9bYPFJfa8
-         QQ9Q==
+        bh=+DAMlpqsE9DmBwY1s+cP0r+gi8rLuchADVNtgdDMW7U=;
+        b=UJEtMUDKhQq8JkvoBRban0uBNcfL7KVDR3Ef7ByGBVrPfz7tjsPR+xO76kSzpq6G/N
+         ZWFiYyWlDeshmZjVLJsXZNFu3/kAset35EI6LhnT4ZCJ5FgoJtlDicS7k71G8+qvdvvv
+         RwjkncHDjXhYydj8mMHTNHq0/q2Q1qpRs2lWQNndhPjVNrjUJyA/CNEnNhdzZYjsJNNQ
+         HVSHiLLSj1KDs+fRATZuwA8NYctEqMPkZ1wzL0xADg+r6xqRFP9vE+ol1AEGyS6wE1Q4
+         ud10CDXqSpof91X6Wve8O8YqSUBpbuix2Zhh4Ed4xZm+SX8bhaRayYksnjFRz/Ax5u3E
+         lVqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mMRtQwqR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gOBGPyjn;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e6sor1307821plx.93.2022.02.23.14.31.45
+        by mx.google.com with SMTPS id g16sor583321pfj.37.2022.02.23.14.31.47
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 23 Feb 2022 14:31:45 -0800 (PST)
+        Wed, 23 Feb 2022 14:31:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mMRtQwqR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gOBGPyjn;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=8FniAxzNq9R5C3PUa8crK2rtgbWJQ/YT25+L7bxil2U=;
-        b=mMRtQwqR+JIHKhxGCA+TZ6Lh4RIplVAtW7d2GOe2aabcU2ObhZz8nFysChL+X81uYZ
-         HWxG1Bf7IW7vFrk3yTQm6igrjA8s2+t2b8iGEUjJ9Ndrh1UktS2JBDucZreqGrtciHF9
-         t077h2otJGdRO0C6HLeXi2car4sGQKJ7xY1xjENA9oSzNqV6mSxFq9s2imG1OJ+cMTdN
-         OOyL2vNQ61SK9HcsHkabx0zrh1OmdoL8s1c8mYP0Ec5oFmefRJ1YcA6leHt8A8lzXdep
-         AV4rUJbjhlbxtlkYAbpPEXV2fCzAEYI4W7CWLqaO4q3JXrYG7E3xI/9iA/M/gpzZdyxc
-         LmVA==
+        bh=+DAMlpqsE9DmBwY1s+cP0r+gi8rLuchADVNtgdDMW7U=;
+        b=gOBGPyjn86roSjbkFP/FeauGD6Wio1CL1j62VVkw5N+cd1nPvuU+a8gbscsbUsdlcp
+         bpeaNJtqMh52Kvz0Vw2Swi/5geIG5SOfKnfn7xcvHkYUAyeZK3sc72N/0MYOj59FgN3C
+         n0P3neo5bnMiobjkcQle4cgJ9d7WMCt0fwqnpLHAJi2yKrNg2aXfZCvdMq5KxUFBrku/
+         6hIPZSOMA43MbhRSntvkJFN1i70RyftJoRZ8ALXnFBsgR4XeKJu1SJljuUgs5/Cb+C1k
+         xD7eeGXz5Hst/U0vPQgo4jx8mD5ie3lZdmyh0DQzxtXzXdi8X2SAhNgbaez48KUX2Ufp
+         2lGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=8FniAxzNq9R5C3PUa8crK2rtgbWJQ/YT25+L7bxil2U=;
-        b=UlG+EA6SW13mXLK9K3xqqYgK8ZXjjW5IaIpu4EPtUozWB64S53J6FsFSdJTNmgxRjW
-         w8zFMCftOC8dSn+X1c2rOcMjL3bIOoAECcY3eCKlojK53Fjs2Vws1WKOeBN+0qRbP6Pn
-         Ot+zxfFUFUmJ7nR758yLxqUe8F9UHe/GPNwlwzqJFg4GowhBGgObkdMkj2M8+V4vmtuD
-         zlrZ8c5TXYFhkYOS6KF5xQtSFJm0PNK78c9IvgUlIFIRIStIrPPf/tRC/I8erQSGbofp
-         nsHGq5hpZV8mYMaoIsAMrRZbP2jK2FkErBI6CazVOSzJ3ztGzP8H0r6RqFsPLXUC8K5y
-         ojhg==
-X-Gm-Message-State: AOAM533zV7jNGZkrq3h/xTcmK+LyhPPKJcJtzWrXgQZr9MV33ID2oCKn
-	nxAO6v16o2N44EgT6YZFgTOsHAxV3cabRy8I
-X-Google-Smtp-Source: ABdhPJyYcA4ug90zs8VD1oXohXbp67GE+oYX9HyhG2qVKKg6rllJgm7PYlttiAJuvsNHPOUAcSuipw==
-X-Received: by 2002:a17:902:dcc9:b0:14f:edff:7df3 with SMTP id t9-20020a170902dcc900b0014fedff7df3mr1704151pll.154.1645655504906;
-        Wed, 23 Feb 2022 14:31:44 -0800 (PST)
+        bh=+DAMlpqsE9DmBwY1s+cP0r+gi8rLuchADVNtgdDMW7U=;
+        b=qJDkaOmrlCz/BvzNZfE0gJGdEZk+EHM8fUN4kqQYnW7qJYXuX6lBC10jIGWM+otShV
+         SNdBIc7jLBB7BraFOe8BUuDYsFrRB+zhP6VkpWEu2Vl0FpNGft5+mF5/OD37qbTSEdgM
+         pWr/XstIGEQ1ngM0fXtX8imHCcPsUFQDQgSBnzLcoFiYQFaGBiNY6iBQryiH9zUhpHQ5
+         tm1aLWC00W9gMlF3q+LPRYaClQDNsIFFugVgL4w3MH/16WJ9l5GUcgbBL2kndTwjT6Sh
+         GBuZR7MB9F7Ls2GtyYp71TGBODKVLUJSnwFRNG1CZ5aAzPiifN3ZvSIUSUjeZ154savX
+         vRQQ==
+X-Gm-Message-State: AOAM530TfZr99ueDtXb3BEJzn51Xbs5l9qO5ibCqn27p+lbcU8PpckBM
+	mKPzwpo0F/AuebJoH2a39QIX3h99
+X-Google-Smtp-Source: ABdhPJwCIpRZ3UJPxNOtTx/4M2JERi08FovPiaBmDhPCwz1w+KDdwVp+6JVw+jmw5wwaAk3sUwejvQ==
+X-Received: by 2002:a63:e747:0:b0:372:c757:c569 with SMTP id j7-20020a63e747000000b00372c757c569mr1401082pgk.516.1645655507689;
+        Wed, 23 Feb 2022 14:31:47 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (cpe-50-113-46-110.hawaii.res.rr.com. [50.113.46.110])
-        by smtp.gmail.com with ESMTPSA id f8sm533815pfv.100.2022.02.23.14.31.43
+        by smtp.gmail.com with ESMTPSA id f8sm533815pfv.100.2022.02.23.14.31.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Feb 2022 14:31:44 -0800 (PST)
+        Wed, 23 Feb 2022 14:31:47 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v3 03/17] target/arm: Fault on invalid TCR_ELx.TxSZ
-Date: Wed, 23 Feb 2022 12:31:23 -1000
-Message-Id: <20220223223137.114264-4-richard.henderson@linaro.org>
+	alex.bennee@linaro.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v3 04/17] target/arm: Move arm_pamax out of line
+Date: Wed, 23 Feb 2022 12:31:24 -1000
+Message-Id: <20220223223137.114264-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220223223137.114264-1-richard.henderson@linaro.org>
 References: <20220223223137.114264-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: V4w9Sx82P0ci
+X-TUID: 2LZ1mXSmOUEQ
 
-Without FEAT_LVA, the behaviour of programming an invalid value
-is IMPLEMENTATION DEFINED.  With FEAT_LVA, programming an invalid
-minimum value requires a Translation fault.
-
-It is most self-consistent to choose to generate the fault always.
+We will shortly share parts of this function with other portions
+of address translation.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2: Continue to bound in aa64_va_parameters, so that PAuth gets
-    something it can use, but provide a flag for get_phys_addr_lpae
-    to raise a fault.
----
- target/arm/internals.h |  1 +
- target/arm/helper.c    | 32 ++++++++++++++++++++++++++++----
- 2 files changed, 29 insertions(+), 4 deletions(-)
+ target/arm/internals.h | 19 +------------------
+ target/arm/helper.c    | 22 ++++++++++++++++++++++
+ 2 files changed, 23 insertions(+), 18 deletions(-)
 
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 3f05748ea4..ef6c25d8cb 100644
+index ef6c25d8cb..fefd1fb8d8 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -1055,6 +1055,7 @@ typedef struct ARMVAParameters {
-     bool hpd        : 1;
-     bool using16k   : 1;
-     bool using64k   : 1;
-+    bool tsz_oob    : 1;  /* tsz has been clamped to legal range */
- } ARMVAParameters;
+@@ -243,24 +243,7 @@ static inline void update_spsel(CPUARMState *env, uint32_t imm)
+  * Returns the implementation defined bit-width of physical addresses.
+  * The ARMv8 reference manuals refer to this as PAMax().
+  */
+-static inline unsigned int arm_pamax(ARMCPU *cpu)
+-{
+-    static const unsigned int pamax_map[] = {
+-        [0] = 32,
+-        [1] = 36,
+-        [2] = 40,
+-        [3] = 42,
+-        [4] = 44,
+-        [5] = 48,
+-    };
+-    unsigned int parange =
+-        FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
+-
+-    /* id_aa64mmfr0 is a read-only register so values outside of the
+-     * supported mappings can be considered an implementation error.  */
+-    assert(parange < ARRAY_SIZE(pamax_map));
+-    return pamax_map[parange];
+-}
++unsigned int arm_pamax(ARMCPU *cpu);
  
- ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+ /* Return true if extended addresses are enabled.
+  * This is always the case if our translation regime is 64 bit,
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7bf50fdd76..dd4d95bda2 100644
+index dd4d95bda2..71e575f352 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -11190,8 +11190,8 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-                                    ARMMMUIdx mmu_idx, bool data)
- {
-     uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
--    bool epd, hpd, using16k, using64k;
--    int select, tsz, tbi, max_tsz;
-+    bool epd, hpd, using16k, using64k, tsz_oob;
-+    int select, tsz, tbi, max_tsz, min_tsz;
- 
-     if (!regime_has_2_ranges(mmu_idx)) {
-         select = 0;
-@@ -11232,9 +11232,17 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-     } else {
-         max_tsz = 39;
-     }
-+    min_tsz = 16;  /* TODO: ARMv8.2-LVA  */
- 
--    tsz = MIN(tsz, max_tsz);
--    tsz = MAX(tsz, 16);  /* TODO: ARMv8.2-LVA  */
-+    if (tsz > max_tsz) {
-+        tsz = max_tsz;
-+        tsz_oob = true;
-+    } else if (tsz < min_tsz) {
-+        tsz = min_tsz;
-+        tsz_oob = true;
-+    } else {
-+        tsz_oob = false;
-+    }
- 
-     /* Present TBI as a composite with TBID.  */
-     tbi = aa64_va_parameter_tbi(tcr, mmu_idx);
-@@ -11251,6 +11259,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         .hpd = hpd,
-         .using16k = using16k,
-         .using64k = using64k,
-+        .tsz_oob = tsz_oob,
-     };
+@@ -11152,6 +11152,28 @@ static uint8_t convert_stage2_attrs(CPUARMState *env, uint8_t s2attrs)
  }
+ #endif /* !CONFIG_USER_ONLY */
  
-@@ -11374,6 +11383,21 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-         param = aa64_va_parameters(env, address, mmu_idx,
-                                    access_type != MMU_INST_FETCH);
-         level = 0;
++/* The cpu-specific constant value of PAMax; also used by hw/arm/virt. */
++unsigned int arm_pamax(ARMCPU *cpu)
++{
++    static const unsigned int pamax_map[] = {
++        [0] = 32,
++        [1] = 36,
++        [2] = 40,
++        [3] = 42,
++        [4] = 44,
++        [5] = 48,
++    };
++    unsigned int parange =
++        FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
 +
-+        /*
-+         * If TxSZ is programmed to a value larger than the maximum,
-+         * or smaller than the effective minimum, it is IMPLEMENTATION
-+         * DEFINED whether we behave as if the field were programmed
-+         * within bounds, or if a level 0 Translation fault is generated.
-+         *
-+         * With FEAT_LVA, fault on less than minimum becomes required,
-+         * so our choice is to always raise the fault.
-+         */
-+        if (param.tsz_oob) {
-+            fault_type = ARMFault_Translation;
-+            goto do_fault;
-+        }
++    /*
++     * id_aa64mmfr0 is a read-only register so values outside of the
++     * supported mappings can be considered an implementation error.
++     */
++    assert(parange < ARRAY_SIZE(pamax_map));
++    return pamax_map[parange];
++}
 +
-         addrsize = 64 - 8 * param.tbi;
-         inputsize = 64 - param.tsz;
-     } else {
+ static int aa64_va_parameter_tbi(uint64_t tcr, ARMMMUIdx mmu_idx)
+ {
+     if (regime_has_2_ranges(mmu_idx)) {
 -- 
 2.25.1

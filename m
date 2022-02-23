@@ -1,143 +1,161 @@
-X-Google-Smtp-Source: ABdhPJxCQNK2LkW/r4jfeL6efAu/piHYeTTUI0nWa9GDyAEezZYoozPA8iGcxHHaxRr9BnK7QnKx
-X-Received: by 2002:ae9:ee16:0:b0:49b:7b4e:63d7 with SMTP id i22-20020ae9ee16000000b0049b7b4e63d7mr621193qkg.492.1645639271323;
-        Wed, 23 Feb 2022 10:01:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645639271; cv=none;
+X-Received: by 2002:a17:902:f70b:b0:14d:643d:9c99 with SMTP id h11-20020a170902f70b00b0014d643d9c99mr1941106plo.18.1645655502482;
+        Wed, 23 Feb 2022 14:31:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645655502; cv=none;
         d=google.com; s=arc-20160816;
-        b=oMDlXbHIPIZS4CbSTmhbVLFq+TTvYzytNgdCqDIAUm20Tf+SeVYEuxRzRL9hhFushP
-         JiWmNFqY5/W6UxXNo0MzLi60MQazbqW4r+jc4KA6nzxWBi0c/0Zr+Q+90szk9X2B2sta
-         h/QN6UVO0B9tpgkRRhARakjP75YPrS7V9w96low1ad64VOkgv7lJsHfqP4rK59glyVwI
-         YsaDZsIZW6TirT6mNG3sNtOwT6CSr2x7L4IAcLjvfmhxuotvduU7RwEwCfPLwId0HnvX
-         /pJNUdRl+brU3FQGZZ3VyLIz87hoUSAnoAmmJAIkIwWM+VhbLrE5yZWBEiQiiKo7Bfal
-         0sjw==
+        b=sCtVfqZUOVd4JwDtALzLjgXeWEWhg4sIVGZbNyd1tbfoVeXuQI8cVB5rw88GylRNr7
+         9YC+djwx6+SQzDb7x5epm2BdK7zdoRDrULioTc6c+Gxzu6msQpri8wQCs54OZg6m/YhE
+         fOUiBVpBJveD8pDIr2tDLSLYwFjkpqva/Iwt1fnn8nmC5eo6oTtJ5hkqeLMg+soXQj5H
+         IxnqQzXYDAiDG5uXYrpPQwfBEmyVBMtcjScjqfnjtmhZqqU9ZHTZW2sVL3qm8I95QBAw
+         LtSNqhYsHzvfuPes98k1Z7gYWDGs/iCCvqym5DkG89rjXW7IGC9H89v7Gwni89yjxJOo
+         1EXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=vViioc6whi6P49ivwRhJSPIhbXGE0YKlZsDXyAhMF1M=;
-        b=KZ0q1ILlOtTm8NiuZAQ9UsB/l0UzS8zRCkjIKhD67A1IWUu5qek8fexVzU5y8uTjsH
-         aMLiVeb/lWEQhBAnAOn2gPEDpN6X5/dSNJl8p9W239yUo7ERuX/GzQwwVcyCABAMwJuh
-         i/U4ek5cTwuQt9akPRGQwkSN7gV3IcMSxj1dxSM+mLUkSYDQuW/HazJM2nnZ0LWJoLZ7
-         8bqUpi6PXeSGd8bQp1OWOGiz5vqjWt0sH7/NeJYUZ/iQZdb768QuaaPzMCh9HUM+pdB+
-         YySmJlju1pfqtQHe4yn2ipO3G1sUe8MDwJa113yLZQMKYEVR5vBf4CwW3Jw5K3H4nk0c
-         VFNA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=zkNbMXCqLzhadKWhMyb5sf6Jtr4mvpt/QguB9jnfEUo=;
+        b=IZgy0clq/SSMEkDmmn0rGTLaT5kku60smMTXvzSguseUL1uMbXJovCCvyThR6AT1iQ
+         NV+kt2zW0sdwhRzxuK9cwcRxt0Xe8RPq8gTP2JHW7aF/2UjNtAAeWJMCxxIXWQ4bpzxk
+         C4Jmiy6ftsVoFXUwNpvqazcRPo4/p7IKIRvRDJ+VvudbYfz9WWWK7TYLfIcENHBtY8lN
+         o6BqALnx51MEpmdmn9qCTNDWbPLzhb20h/q9U13/VKFBPu91XR0xgs1sDiGlMrGxlAWi
+         H5KrwBsEuLRdrCA4lcJJ0Vyc38pIpDWZ3o1w5T2xHBxEArwJK/XhcKY6T0eGaFShqnX8
+         2cTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w3si182740qkj.152.2022.02.23.10.01.11
+       dkim=pass header.i=@linaro.org header.s=google header.b="GS/BLDrj";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2sor610701pfj.18.2022.02.23.14.31.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Feb 2022 10:01:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 23 Feb 2022 14:31:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58444 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nMvws-0006MO-RC
-	for alex.bennee@linaro.org; Wed, 23 Feb 2022 13:01:10 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60936)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nMvwM-0006Jm-BV
- for qemu-arm@nongnu.org; Wed, 23 Feb 2022 13:00:38 -0500
-Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156]:43919)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nMvwJ-00012n-Ps
- for qemu-arm@nongnu.org; Wed, 23 Feb 2022 13:00:38 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.98])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 0340423CA8;
- Wed, 23 Feb 2022 18:00:23 +0000 (UTC)
-Received: from kaod.org (37.59.142.95) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.18; Wed, 23 Feb
- 2022 19:00:22 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-95G00100310ca7-9ec1-402b-aaac-cfe6068dea7a,
- B99DB1D1B0B873888386AAA9583771E84E582508) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.58.215.209
-Message-ID: <47a30c46-a3ef-72b0-0834-79f1547c6e45@kaod.org>
-Date: Wed, 23 Feb 2022 19:00:20 +0100
+       dkim=pass header.i=@linaro.org header.s=google header.b="GS/BLDrj";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=zkNbMXCqLzhadKWhMyb5sf6Jtr4mvpt/QguB9jnfEUo=;
+        b=GS/BLDrj8tq/Y/FvD6oIutunQTHV7Aq4Yq5oZ8yBsyY8Ao3Fs0T1bNcdVSpuIFrmCd
+         rildfh9CGSnMx7gJCN8Y0ieS6GI3OvwFDB7+dRkZQeWbHj8Ye5a+AfeV2eqXFRMT0tZS
+         EDzYTc1oT+odORAUJQJKIN/tfGlTji5+FiFN6kV3+NIa7bAvM07m5Xt/6SpvyBj2AH2y
+         nmBo7peAfdLqUkWekemf5rr0asnaoGIpzsTxWD3B7e68P/yEsq0QzYLSqZ1M3EtTNroA
+         4oe8WR1TeARGvvy5buXDyKZJ9FaiiKzTA6V9WI74o6dcg3SgtTCc13UaFJBqC3/lNQmB
+         ELiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=zkNbMXCqLzhadKWhMyb5sf6Jtr4mvpt/QguB9jnfEUo=;
+        b=jHCuMU5fEYDQI9uD+NPZiyQC3zUY4WBLUuCb5Zq74sp2Omivz6sXPLUtKQ6kWcfBxq
+         YF22sVdglyeHnqvnfZi01XT0SS7GtLrIUJgLzgsnNQTaJClFCf+LJBLfF3Wf2aZBIYn9
+         WpIFp+q/1R2NV1eu/HBji2BasbJS5arQfMLrfzXKkpEHeP8a7OP0shNx/uetVeykFcv+
+         8N/TyjrVbMLZjsHBiQaWa1xa4DE8q3foNUqJ5VKrne37EZZeZP4gSGeZcXvsCZTQssBB
+         vqVCj+cAJUyNEMEC8qqKkdzT7+Ol66EeKkKuM6WSj+ehBzk5nsjmrW2bt4UBt8w4596x
+         fMWg==
+X-Gm-Message-State: AOAM531XM8naN6wOzjXhr0RovK2IIP/Ilv7jb/G31sOeSiRBoyH/4vGJ
+	Y/dhDcZ4E+DmtvVOs335qsf/plIK
+X-Google-Smtp-Source: ABdhPJyhdBZ2JUwklUGo4Rmwi8cTu0S+gCWIVK4fVMOcy1nIuCgEQu16rPdnUjkp1dAqOzsO2pU+YQ==
+X-Received: by 2002:a65:57c9:0:b0:375:7489:1bac with SMTP id q9-20020a6557c9000000b0037574891bacmr1354243pgr.349.1645655502045;
+        Wed, 23 Feb 2022 14:31:42 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain (cpe-50-113-46-110.hawaii.res.rr.com. [50.113.46.110])
+        by smtp.gmail.com with ESMTPSA id f8sm533815pfv.100.2022.02.23.14.31.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Feb 2022 14:31:41 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	alex.bennee@linaro.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v3 01/17] hw/registerfields: Add FIELD_SEX<N> and FIELD_SDP<N>
+Date: Wed, 23 Feb 2022 12:31:21 -1000
+Message-Id: <20220223223137.114264-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220223223137.114264-1-richard.henderson@linaro.org>
+References: <20220223223137.114264-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH RFC 4/4] rtc: Have event RTC_CHANGE identify the RTC by
- QOM path
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philippe.mathieu.daude@gmail.com>
-References: <20220221192123.749970-1-peter.maydell@linaro.org>
- <87a6ejnm80.fsf@pond.sub.org>
- <043096b3-aadf-4f2a-b5e2-c219d2344821@gmail.com>
- <CAFEAcA8OMB_+rxrS1pk4YJ0avj-ZSdyEROJyppOT1+0s6447MQ@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CAFEAcA8OMB_+rxrS1pk4YJ0avj-ZSdyEROJyppOT1+0s6447MQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.95]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 51562f3d-fc7e-42ec-958c-1273ba1dcf91
-X-Ovh-Tracer-Id: 8518277220518235128
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrledtgddutdeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeejuedutdetteeljeekudeiffehgeekhffffeejffegheefheefieduudeuheevnecuffhomhgrihhnpeguvggsihgrnhdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepghhrohhugheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
- helo=8.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org,
- Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hzGNQd/kfzHv
+X-TUID: yqIkeQNqvTNp
 
-On 2/22/22 14:06, Peter Maydell wrote:
-> On Tue, 22 Feb 2022 at 12:56, Philippe Mathieu-Daudé
-> <philippe.mathieu.daude@gmail.com> wrote:
->> On 22/2/22 13:02, Markus Armbruster wrote:
->>> Event RTC_CHANGE is "emitted when the guest changes the RTC time" (and
->>> the RTC supports the event).  What if there's more than one RTC?
->>
->> w.r.t. RTC, a machine having multiple RTC devices is silly...
-> 
-> I don't think we have any examples in the tree currently, but
-> I bet real hardware like that does exist: the most plausible
-> thing would be a board where there's an RTC built into the SoC
-> but the board designers put an external RTC on the board (perhaps
-> because it was better/more accurate/easier to make battery-backed).
+Add new macros to manipulate signed fields within the register.
 
-Yes. like Aspeed machines.
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/hw/registerfields.h | 48 ++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 47 insertions(+), 1 deletion(-)
 
-C.
-
-
-> 
-> In fact, here's an old bug report from a user trying to get
-> their Debian system to use the battery-backed RTC as the
-> "real" one rather than the non-battery-backed RTC device
-> that's also part of the arm board they're using:
-> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=785445
-> 
-> -- PMM
-
+diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
+index f2a3c9c41f..3a88e135d0 100644
+--- a/include/hw/registerfields.h
++++ b/include/hw/registerfields.h
+@@ -59,6 +59,19 @@
+     extract64((storage), R_ ## reg ## _ ## field ## _SHIFT,               \
+               R_ ## reg ## _ ## field ## _LENGTH)
+ 
++#define FIELD_SEX8(storage, reg, field)                                   \
++    sextract8((storage), R_ ## reg ## _ ## field ## _SHIFT,               \
++              R_ ## reg ## _ ## field ## _LENGTH)
++#define FIELD_SEX16(storage, reg, field)                                  \
++    sextract16((storage), R_ ## reg ## _ ## field ## _SHIFT,              \
++               R_ ## reg ## _ ## field ## _LENGTH)
++#define FIELD_SEX32(storage, reg, field)                                  \
++    sextract32((storage), R_ ## reg ## _ ## field ## _SHIFT,              \
++               R_ ## reg ## _ ## field ## _LENGTH)
++#define FIELD_SEX64(storage, reg, field)                                  \
++    sextract64((storage), R_ ## reg ## _ ## field ## _SHIFT,              \
++               R_ ## reg ## _ ## field ## _LENGTH)
++
+ /* Extract a field from an array of registers */
+ #define ARRAY_FIELD_EX32(regs, reg, field)                                \
+     FIELD_EX32((regs)[R_ ## reg], reg, field)
+@@ -95,7 +108,40 @@
+     _d; })
+ #define FIELD_DP64(storage, reg, field, val) ({                           \
+     struct {                                                              \
+-        uint64_t v:R_ ## reg ## _ ## field ## _LENGTH;                \
++        uint64_t v:R_ ## reg ## _ ## field ## _LENGTH;                    \
++    } _v = { .v = val };                                                  \
++    uint64_t _d;                                                          \
++    _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
++                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
++    _d; })
++
++#define FIELD_SDP8(storage, reg, field, val) ({                           \
++    struct {                                                              \
++        signed int v:R_ ## reg ## _ ## field ## _LENGTH;                  \
++    } _v = { .v = val };                                                  \
++    uint8_t _d;                                                           \
++    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
++                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
++    _d; })
++#define FIELD_SDP16(storage, reg, field, val) ({                          \
++    struct {                                                              \
++        signed int v:R_ ## reg ## _ ## field ## _LENGTH;                  \
++    } _v = { .v = val };                                                  \
++    uint16_t _d;                                                          \
++    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
++                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
++    _d; })
++#define FIELD_SDP32(storage, reg, field, val) ({                          \
++    struct {                                                              \
++        signed int v:R_ ## reg ## _ ## field ## _LENGTH;                  \
++    } _v = { .v = val };                                                  \
++    uint32_t _d;                                                          \
++    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
++                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
++    _d; })
++#define FIELD_SDP64(storage, reg, field, val) ({                          \
++    struct {                                                              \
++        int64_t v:R_ ## reg ## _ ## field ## _LENGTH;                     \
+     } _v = { .v = val };                                                  \
+     uint64_t _d;                                                          \
+     _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+-- 
+2.25.1

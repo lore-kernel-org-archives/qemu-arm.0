@@ -1,172 +1,153 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp417042lfq;
-        Thu, 17 Feb 2022 19:48:02 -0800 (PST)
-X-Received: by 2002:a62:1507:0:b0:4e1:5bc7:840b with SMTP id 7-20020a621507000000b004e15bc7840bmr5931565pfv.21.1645156082627;
-        Thu, 17 Feb 2022 19:48:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645156082; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp140499lfq;
+        Wed, 23 Feb 2022 05:44:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy2HSZTJ5usMeFIqM2LcnzN61SwQ4XMJrUhC0sDI/pItHzYztW7erUa1CPtRtHegC873BsY
+X-Received: by 2002:ac8:5a86:0:b0:2de:3ced:312c with SMTP id c6-20020ac85a86000000b002de3ced312cmr10653671qtc.73.1645623856118;
+        Wed, 23 Feb 2022 05:44:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645623856; cv=none;
         d=google.com; s=arc-20160816;
-        b=L3XGSmgeljLkIsWlAULUTVzCq1/ZOxDXqtF4kDErT5Igd0SjFz63UUFxIBKhANUUZA
-         rf4VzM4CjRRR05SnuXtsGWwOyQw2rz8n9XLSxW9l5ypitm0T8Gh6rp+NZyrVQz0TE6ru
-         0QM17uzy8+oO3Ikwr0w1InCM5im72qbFtII/Yv2HatYJj3RZ2We/kmrq99XmFTkRZl/T
-         lTIyE1d/otzgIMybpL1jWzIOyc1hc0t9k/OiA9GqHUvQ9BCw++aGADNLaF86T4m8rnED
-         2zJhYPF2IbSUNkVDTAyN5xtv399gUV1ScsWygUtAWVCQ2sdqpWP21Rfg/aVlibzzr/iQ
-         Hcug==
+        b=votpIbIVzSK44GbPLlq7H+Xt465XkJAKLIjlMILxRSAqfou2c0U8C+55UeCYrtwUK1
+         H7DvC8REUb9m0PBppqFPE8OAKokssMk0X87MWww6c7aFQHf7UGwyjT/iTs+fiqdDd2Oe
+         17VlEK8BATjeh+yfIE02RzRVoITOTmBZM6T7UV5vgg1so5xKidBXUSs05Vk5VwiVV90d
+         iJnLYZEk6RX9mk1g2fzKbqfKe4QY6xdP0KEDMUcBEnkDHLGVuJiTr0b4Ykf4swrELpBj
+         rQu7UfSwI4Ck+gnCKBHrL4hRwfY1BS6Q1xpyB7JCa5mddxmTeD0lVjJHUh9tnfwpTYxv
+         Ke3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=6N1EnLMGnEq8wQ5a/od9AfA+7poSeJEV510Fw3dyECY=;
-        b=T70MoggJ8aHFT2b1Vm+4IVoiu1toAO9smhosrVDu0/GfWnXttK0eS97B9EdP0x/iFX
-         l2b66nuN9A+o+FxnKQQDNp3BQxjmlpfxqJBHvfd1wpiiBGDlK66d6WyAoz3fLGO2imS0
-         F3D/Pg3gn6U1Pd+nh47LtSD5sd+JsoW9PAXzToUl2snnHpKEkjY1bpAzS9Wt9OfKfJxy
-         BbN9kfX+2qw2oZiJ8Qea6SwwS7W7I1UokbSaoFPeIutuFwm50O8nG+G54BYVO8ABKcDG
-         BeT53ld0x43Ygq/VyMZiG2WLtKyb6Tlb0V1yaW6vU7S8bq8JHs69LccpIedzthGzuPJ6
-         aA5w==
+        h=content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=gvRF6Bk2Hdl11kNRsEVHwxmqlwLQr1+buD9hdb+CiuQ=;
+        b=XezES7q4ZWF5qfdUU22NPLjiJYyFNLb6bG8BmhHcNO/VaPQJQ1sdZvGgKmIp7+nHPP
+         p8Hu4CoQizbevyp39adFaJxik2iSJ29k1tV0w+OlFKAskKaMYL1ehFUt2adFtFNPLIDL
+         Cu+hwq5XtjnRawgBFR1/egR0HX5AcLCOZ7gzSg2ZiVTG/4QqmwAyyBjfYxnstjDUK/lN
+         yuj0kz6QyzhLu3abM8UKmBMvjdizBgH3e8YJYq5GSpoDH9DoOvuQRmHrH/gjkdM5hwdZ
+         SE4+XZqnBHn3ZYkbgez/XVD9/UX3JRsVzyVRDvZWkeyuOaseOX30gEsTACt8CV5mR5NU
+         8D7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aBnWBbRO;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t39sor821669pfg.45.2022.02.17.19.48.02
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QJBN8C6T;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id bk1si1308244qkb.192.2022.02.23.05.44.15
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 17 Feb 2022 19:48:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 23 Feb 2022 05:44:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aBnWBbRO;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=6N1EnLMGnEq8wQ5a/od9AfA+7poSeJEV510Fw3dyECY=;
-        b=aBnWBbRO91L74bZC61aTdvoUO7mw3c9WEATCetT84kAPTIx91AoAtrFRLoM3feAGdp
-         KUBrNPpTaBN1ODp6u7+CNFgj0Nqgay8YG3QZqbsCDS2Mi+Q4gS+repA0BP3Z4HoprNAu
-         7aI0/NmQHt/rY2Hj85N1FYt0hKNbyRyho7mgWIw0nUq2NbkOeLXUCFS2rSj/+caOB5y1
-         C3iS6yfW89BSkVUSpwm04EdG5iqc+PATGt8VUQ5Le0Ji0K7iy6dHoXqdbnT+W39tc2mS
-         6wJxh+1Zb+6vE9r0mCSFeqP6oH8hqYcfRyh/vEWQ96ZXdQRD1mPdJoYODSMo9og0juEW
-         Kd+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=6N1EnLMGnEq8wQ5a/od9AfA+7poSeJEV510Fw3dyECY=;
-        b=1uqNgog4y9thTUyvHJoVWOKT7vKSnR++tkfT5qcDCLdypg0/yvsHLx+xAxlM4AMB9S
-         +11Vh8jdoP08F3hv1mdhwid5LaYm0PB5NvK+WtdQ3q4Tb5wsRs6vowFPBXFr4MmVXVcx
-         IGAfgGoWtXjhwkOrAn5poWtnHB1+nQKLfEoHPhKHRMf5INze2BkTn5KOqmgFcuiGVSWo
-         Q1d158Ik96MdcwFe8k2nA5TrwqHTD0ERuMsZ+klEXD2TzQ1eDY6yWvAJ/TkxBlRXtx97
-         PthIxEgO8wP6L+zdabRm4X2BNLdhePoiSXCQTpBl4EU4I7a97dhUaDIPRpln0/iQ58Nk
-         tkNQ==
-X-Gm-Message-State: AOAM531tFUuk8chh25+QcN/njJbeJpxg1iktwp1CEMeebtlDaezZd1iv
-	03G4HdvRcTfCr8I2VyeT+O3KthOqR9RfQtQt6LU=
-X-Google-Smtp-Source: ABdhPJwH+pXR+AhVLQLP7IZ6GXvkosY0yrJgigrFJp+kgmd9tMeK7pWtXkLq75pkayH1vT3MIIDFAw==
-X-Received: by 2002:a63:ce51:0:b0:362:c4fd:273b with SMTP id r17-20020a63ce51000000b00362c4fd273bmr4817719pgi.540.1645156082068;
-        Thu, 17 Feb 2022 19:48:02 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.15.44] (alanje.lnk.telstra.net. [120.151.179.201])
-        by smtp.gmail.com with ESMTPSA id c23sm1001460pfi.136.2022.02.17.19.47.59
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 17 Feb 2022 19:48:01 -0800 (PST)
-Message-ID: <a8dd9d30-843c-0510-db1c-de965220778f@linaro.org>
-Date: Fri, 18 Feb 2022 14:47:56 +1100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QJBN8C6T;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1645623855;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=gvRF6Bk2Hdl11kNRsEVHwxmqlwLQr1+buD9hdb+CiuQ=;
+	b=QJBN8C6Tj0Snk0vPItKdkuF1cUsGDuLQICtJQBXbUBNEpeDEyPQF66kQftmUV1xJQlfoqs
+	2SUestdHZ1RKqcd7Z7DWwRw+BMa5s7hf0GDf3LQ6Hfi6ExiY2WKN2wMJlhRjzON5JcUvSp
+	WsEhuWsjIpbu7Bwn0yz2FAM8uWYijHE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-259-dEL1MJ0-NnalQwfY-YFTDQ-1; Wed, 23 Feb 2022 08:43:55 -0500
+X-MC-Unique: dEL1MJ0-NnalQwfY-YFTDQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6DE2510247A6;
+	Wed, 23 Feb 2022 13:43:53 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.195.66])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8E7FF84974;
+	Wed, 23 Feb 2022 13:43:07 +0000 (UTC)
+Date: Wed, 23 Feb 2022 13:43:04 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-devel <qemu-devel@nongnu.org>,
+	Laszlo Ersek <lersek@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Cleber Rosa <cleber@redhat.com>, Oleg Vasilev <me@svin.in>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Emilio Cota <cota@braap.org>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	Idan Horowitz <idan.horowitz@gmail.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Andrew Jones <drjones@redhat.com>
+Subject: Re: Analysis of slow distro boots in check-avocado
+ (BootLinuxAarch64.test_virt_tcg*)
+Message-ID: <YhY56KLLPrqGWtBM@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <874k4xbqvp.fsf@linaro.org>
+ <878ru2nacq.fsf@linaro.org>
+ <YhURfqMvRT4xbiz6@redhat.com>
+ <96bafa75-a0c6-f431-a6d8-fe98d438d0f9@gmail.com>
+ <YhYVVnVSL8K1S4MC@redhat.com>
+ <e9f70381-03f2-9582-8ad6-e9252d3195ab@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v2 00/15] target/arm: Implement LVA, LPA, LPA2 features
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220210040423.95120-1-richard.henderson@linaro.org>
- <CAFEAcA_m1Hobh8M+RBto_uECQdq1BN7nvMFOsCbrkL773MEr1Q@mail.gmail.com>
- <87v8xd9yw9.fsf@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <87v8xd9yw9.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <e9f70381-03f2-9582-8ad6-e9252d3195ab@gmail.com>
+User-Agent: Mutt/2.1.5 (2021-12-30)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: t0D1yNLCxA+s
+X-TUID: X7b77GQLoj0z
 
-On 2/18/22 04:37, Alex Bennée wrote:
+On Wed, Feb 23, 2022 at 02:34:23PM +0100, Philippe Mathieu-Daudé wrote:
+> On 23/2/22 12:07, Daniel P. Berrangé wrote:
+> > On Tue, Feb 22, 2022 at 06:33:41PM +0100, Philippe Mathieu-Daudé wrote:
+> > > +Igor/MST for UEFI tests.
+> > > 
+> > > On 22/2/22 17:38, Daniel P. Berrangé wrote:
+> > > > On Tue, Feb 22, 2022 at 04:17:23PM +0000, Alex Bennée wrote:
+> > > > > 
+> > > > > Alex Bennée <alex.bennee@linaro.org> writes:
+> > > > > 
+> > > > > > Hi,
+> > > > > > 
+> > > > > > TL;DR:
+> > > > > > 
+> > > > > >     - pc-bios/edk2-aarch64-code.fd should be rebuilt without debug
+> > > > > 
+> > > > > Laszlo,
+> > > > > 
+> > > > > Would it be possible to do a less debug enabled version of EDK2 on the
+> > > > > next update to pc-bios/edk2-*?
+> > > > 
+> > > > NB, Laszlo is no longer  maintaining EDK2 in QEMU, it was handed
+> > > > over to Philippe.  I'm CC'ing Gerd too since he's a reviewer and
+> > > > an EDK2 contributor taking over from Lazslo in EDK2 community
+> > > 
+> > > We need the DEBUG profile to ensure the bios-tables-tests work.
+> > 
+> > Can you elaborate on what bios-tables-tests needs this for, and
+> > what coverage we would loose by disabling DEBUG.
 > 
-> Peter Maydell <peter.maydell@linaro.org> writes:
+> Maybe it was only required when the tests were developed...
+> I'll defer that question to Igor.
 > 
->> On Thu, 10 Feb 2022 at 04:04, Richard Henderson
->> <richard.henderson@linaro.org> wrote:
->>>
->>> Changes for v2:
->>>    * Introduce FIELD_SEX64, instead of open-coding w/ sextract64.
->>>    * Set TCR_EL1 more completely for user-only.
->>>    * Continue to bound tsz within aa64_va_parameters;
->>>      provide an out-of-bound indicator for raising AddressSize fault.
->>>    * Split IPS patch.
->>>    * Fix debug registers for LVA.
->>>    * Fix long-format fsc for LPA2.
->>>    * Fix TLBI page shift.
->>>    * Validate TLBI granule vs TCR granule.
->>>
->>> Not done:
->>>    * Validate translation levels which accept blocks.
->>>
->>> There is still no upstream kernel support for FEAT_LPA2,
->>> so that is essentially untested.
->>
->> This series seems to break 'make check-acceptance':
->>
->>   (01/59) tests/avocado/boot_linux.py:BootLinuxAarch64.test_virt_tcg_gicv2:
->> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
->> Timeout reached\nOriginal status: ERROR\n{'name':
->> '01-tests/avocado/boot_linux.py:BootLinuxAarch64.test_virt_tcg_gicv2',
->> 'logdir': '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/results/j...
->> (900.74 s)
->>   (02/59) tests/avocado/boot_linux.py:BootLinuxAarch64.test_virt_tcg_gicv3:
->> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
->> Timeout reached\nOriginal status: ERROR\n{'name':
->> '02-tests/avocado/boot_linux.py:BootLinuxAarch64.test_virt_tcg_gicv3',
->> 'logdir': '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/results/j...
->> (900.71 s)
->>
->> UEFI runs in the guest and seems to launch the kernel, but there's
->> no output from the kernel itself in the logfile. Last thing it
->> prints is:
->>
->> EFI stub: Booting Linux Kernel...
->> EFI stub: EFI_RNG_PROTOCOL unavailable, no randomness supplied
->> EFI stub: Using DTB from configuration table
->> EFI stub: Exiting boot services and installing virtual address map...
->> SetUefiImageMemoryAttributes - 0x000000007F500000 - 0x0000000000040000
->> (0x0000000000000008)
->> SetUefiImageMemoryAttributes - 0x000000007C190000 - 0x0000000000040000
->> (0x0000000000000008)
->> SetUefiImageMemoryAttributes - 0x000000007C140000 - 0x0000000000040000
->> (0x0000000000000008)
->> SetUefiImageMemoryAttributes - 0x000000007F4C0000 - 0x0000000000030000
->> (0x0000000000000008)
->> SetUefiImageMemoryAttributes - 0x000000007C0F0000 - 0x0000000000040000
->> (0x0000000000000008)
->> SetUefiImageMemoryAttributes - 0x000000007BFB0000 - 0x0000000000040000
->> (0x0000000000000008)
->> SetUefiImageMemoryAttributes - 0x000000007BE00000 - 0x0000000000030000
->> (0x0000000000000008)
->> SetUefiImageMemoryAttributes - 0x000000007BDC0000 - 0x0000000000030000
->> (0x0000000000000008)
->>
->> This ought to be followed by the usual kernel boot log
->> [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x000f0510]
->> etc but it isn't. Probably the kernel is crashing in early bootup
->> before it gets round to printing anything.
+> > It may well be a better tradeoff to sacrifice part of bios-tables-tests
+> > in favour of shipping more broadly usable images without DEBUG.
 > 
-> As this test runs under -cpu max it is likely exercising the new
-> features (and failing).
+> Why not, if users are aware/happy to use a unsafe image with various
+> unfixed CVEs.
 
-I would have thought so too.  However...
-
-I've bisected this to the final LPA2 patch.  I have not tracked down what exactly is going 
-on with this, but it's definitely not the guest exercising the new feature -- there is no 
-upstream support for LPA2.
-
-I'll keep looking.
+Note there's nothing special about EDK2 in regard of CVE fixes (or lack
+thereof). The same applies to every other firmware we ship, as well as
+QEMU code itself.
 
 
-r~
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

@@ -1,147 +1,325 @@
-Received: by 2002:ac2:446b:0:0:0:0:0 with SMTP id y11csp1244684lfl;
-        Wed, 16 Feb 2022 10:27:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJztepPF2PBSVwYKdww3diPVgq+bJAyMPyTu3vLwdyNy8GEST35rZFczj4aBBndCuwcIlHEl
-X-Received: by 2002:a25:a329:0:b0:622:5214:69ec with SMTP id d38-20020a25a329000000b00622521469ecmr3368349ybi.600.1645036050044;
-        Wed, 16 Feb 2022 10:27:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645036050; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp978540lfq;
+        Thu, 24 Feb 2022 06:37:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwkhu7NvTm07hEaBT58QqWs6Yh/cdb/x9iWsze0QMa97p8sO2y4s/xZsJe2j6kSNmQ1DtvE
+X-Received: by 2002:a17:90a:7385:b0:1b9:6492:c107 with SMTP id j5-20020a17090a738500b001b96492c107mr3061308pjg.103.1645713446857;
+        Thu, 24 Feb 2022 06:37:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645713446; cv=none;
         d=google.com; s=arc-20160816;
-        b=YKdGtcBrVXuw6WIG/NDDROiTSm21/3pSNEDDN3R/FbGelb2tkNccYDYkl/wjILy7lB
-         k4f0bjNlgVxHKcg0CQJfumqz77VqPOAXz4d2i6L97wiBig8lGA4xhcUBbLNkxrNQ55Gi
-         iTjinSTBzeoeCi6OThKnRwxBzmG5KWKkhbdWN1kzvTEAk+/B2m4kq0DLegxnAfat9sLk
-         JdujeCdrOI0w56C581JDdneGsjJx+8EfJ3q3xSCG6ur3H0xGs56mczc6A0Nu8BgHuePf
-         Dem72a9tTt00dH+amxa1WUnh7muiO+wLwWitBCxjnzhsCjVFymrjVoiWDXxmlN/G6MYo
-         gr6w==
+        b=Woe6UGu86zP5MAO1FcREN8Tetih+PwUtnXzay6ueCQWL+SALntQGvPSCt7zkY9Eggh
+         GLVkfM19opa558/r4VAc6L1RXPq9UXRWUUmGHzlvyA/BNEkoEF7XXeYc+TWYhFQSSGU6
+         6mjgo/No4eAOYLsobfciBdhNKfq5G+qJzNiSZp7Ch1d55YEkMbTMktpogP989i5mJDFc
+         7x5IlQNJDFbhBlY0GDC8feF3xjyfuKsjEc6WFgnbnVWApqXn+WfE4eo+7B35Ouk7BQIX
+         TBZsTRxEDd4XUEkr9YOkDjJdCSSxVPLTwB+o6qZhB5bxPldPASaBN/Ml0GMNtixKjGq7
+         5jHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=r+YgHGwFPax1FUNSCNvzxDCUVq5ImnLpu3aR7U63VFY=;
-        b=0gSZy5nGDWbD8opKkaEsXKvuFCE0a4oVD8HZP/O2x8IcTRl7GMNx20dJvngNgxAgXi
-         FhJYV1YAYq5bfobZnCHgiaXI/iizB7a4GAwW6og8FDgL8cFRwJT1ubf0DtKZTyvdO5Py
-         S5oPuX4f0XbxHfEQ1ADYkCxcETG3oxEiJNxpBZ9K1/aGqRD0MGGTYy73SrV1WeYVOpNA
-         /pAt0NsyB9xIKX6+FbbvrStTmWV01gvEGsRxCpxz+l6k8iWhSFEd//YwsMiKH1SIDUT2
-         MSLgWnSIZr42kuuooADchA9lZsJORiQ38JpZtq973XW7vef4G6bVwlilWOUvB5u6GzKn
-         WsxA==
+        h=list-id:precedence:to:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:from:dkim-signature;
+        bh=poAZtHyLvs6wdh05wh10xP5cMccFcvYZDzxd4P/umwQ=;
+        b=wtGhD9YbEZ2qyP0alanOUGmnBnM9suYONvpBFMMIbUi9khS22aHiEMIWgyezcsQLld
+         6irZvfXNvulRqdrGdRKPyg9jcp8yU9B1uMtLI48UZ+Qs64VcrXU9UWXjZ94M5Po7+Ez4
+         0DIpdTGybDV/bejORw2c+RmzG+A1lkKX81Gql3ebf8/IJZLwc7Gy2X+y6VZsybBsAZhH
+         sngTDwRkWtdpFwLDJ1usWv6PwqCEFoo8Dq9iFQmNWFuPg7QUK1XTqJWRfPc0ODbMjpn6
+         wrdUobIqxy6l/Qf1itqnCh538nnsZgaDCgV59RpOk1Uh8ArsTXKeqwRUrRrGzdwJW5t/
+         wMFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q81si2915944ybc.737.2022.02.16.10.27.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Feb 2022 10:27:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WgyQRQSo;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id w24si2411941pgi.85.2022.02.24.06.37.26;
+        Thu, 24 Feb 2022 06:37:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57042 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nKP1V-0007Iy-EZ
-	for alex.bennee@linaro.org; Wed, 16 Feb 2022 13:27:29 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38554)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nKP1R-0007IL-Lq
- for qemu-devel@nongnu.org; Wed, 16 Feb 2022 13:27:25 -0500
-Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156]:48185)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nKP1P-0000nE-G7
- for qemu-devel@nongnu.org; Wed, 16 Feb 2022 13:27:25 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.158])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id C01D820BA9;
- Wed, 16 Feb 2022 18:27:12 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.18; Wed, 16 Feb
- 2022 19:27:12 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001acf52506-8023-4576-a2ab-1ca8780858a9,
- CB3E44AF90526EF3DA3218D7163352937EBBBEE5) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <6981675c-3630-94a6-514f-03aeeb8a015f@kaod.org>
-Date: Wed, 16 Feb 2022 19:27:04 +0100
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WgyQRQSo;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S235543AbiBXOhz (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Thu, 24 Feb 2022 09:37:55 -0500
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:54552 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S233389AbiBXOhy (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 24 Feb 2022 09:37:54 -0500
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com [IPv6:2607:f8b0:4864:20::62d])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id B82CD52E4D
+        for <kvm@vger.kernel.org>; Thu, 24 Feb 2022 06:37:23 -0800 (PST)
+Received: by mail-pl1-x62d.google.com with SMTP id q1so1878685plx.4
+        for <kvm@vger.kernel.org>; Thu, 24 Feb 2022 06:37:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=poAZtHyLvs6wdh05wh10xP5cMccFcvYZDzxd4P/umwQ=;
+        b=WgyQRQSotkNEBJy5EQiuCugh7EDBW4AbeheFmDhVdLtcQfD5mPwihE9UC5tFco02+k
+         mH3TbfNW1Ubw0aOjmESks4XumAprgpK8iS5wleJqzHltXQHgMd9SMxL53Wx7PsWyTx4r
+         ppsvk1ecMWkjhZ7EX82pPuTuYdJJAm0k/OIDJVeOY+KzP/oSeQT0IqCodf+o9YWZ0ODU
+         Ao++JVYXWx4hkpXXTYbld4FWhT9FSZFVr1MFCqHJdadt9244qoguqwAf7tO0NXa5zgnN
+         6K5PWXW0uuXRfmQNOLki1e5OoIactRToLslEjkARwJI3WNNlaENTBuO/ucs5uKSo7I2H
+         NCag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=poAZtHyLvs6wdh05wh10xP5cMccFcvYZDzxd4P/umwQ=;
+        b=lATIYyKovW7XjCLZdgqnwyIsFB8VuGepMZ6Wg0AnWS2Q5mTVytc5YwjTolfyHFSAjp
+         +iMwf4rPhmHlWmgwlm92I8+rvsVTYFM/X8bNfacbdY9oYe76b/HOULssWAMkJx58HYEL
+         rFrqP56GnagxKh19QSVcCiUx91kDxLW9t1/ma/8KjVuNM9FbUbUD7hIEXtmPZ1QRmeMk
+         9J7OEH0n/4deK2i/k93YQ87LSRYPH7YV/Hvp5NyGYgdKmxLLo+dZO/eJWUCxREGxXcrA
+         CfvMXNVU/9LraTJ41oiLKph+VnHJFTW8rFyAhd7eU/zVUS954EiJmVTNQerO5wJ2ydiW
+         wbbg==
+X-Gm-Message-State: AOAM533/+P2+FEQYF/wQQzsNIhWezyarIjldYGsMGqw9s5B1e5iQDbgn
+        5mIHO+iR3ILQLonrdlPgWG4=
+X-Received: by 2002:a17:902:ea86:b0:14f:b4be:6f83 with SMTP id x6-20020a170902ea8600b0014fb4be6f83mr2772830plb.99.1645713443203;
+        Thu, 24 Feb 2022 06:37:23 -0800 (PST)
+Received: from localhost.localdomain ([2400:4050:c360:8200:4544:3648:f893:1e45])
+        by smtp.gmail.com with ESMTPSA id 19sm3721882pfz.153.2022.02.24.06.37.21
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 24 Feb 2022 06:37:22 -0800 (PST)
+From:   Akihiko Odaki <akihiko.odaki@gmail.com>
+Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Alexander Graf <agraf@csgraf.de>,
+        Akihiko Odaki <akihiko.odaki@gmail.com>
+Subject: [PATCH v2] target/arm: Support PSCI 1.1 and SMCCC 1.0
+Date:   Thu, 24 Feb 2022 23:37:16 +0900
+Message-Id: <20220224143716.14576-1-akihiko.odaki@gmail.com>
+X-Mailer: git-send-email 2.32.0 (Apple Git-132)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 1/6] arm: Remove swift-bmc machine
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-References: <20220216092111.237896-1-clg@kaod.org>
- <20220216092111.237896-2-clg@kaod.org>
- <e356a02a-133b-8aac-b28a-9daf8c27c3a7@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <e356a02a-133b-8aac-b28a-9daf8c27c3a7@amsat.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: ba49a27f-40bb-44ed-ad15-55928d895e6a
-X-Ovh-Tracer-Id: 4755801206598241062
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrjeeigdduuddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruh
-Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
- helo=3.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2lNWB+KB+fAd
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FROM,
+        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+To:     unlisted-recipients:; (no To-header on input)
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: z1ybt39FFQp/
 
-On 2/16/22 16:02, Philippe Mathieu-Daudé wrote:
-> On 16/2/22 10:21, Cédric Le Goater wrote:
->> From: Joel Stanley <joel@jms.id.au>
->>
->> It was scheduled for removal in 7.0.
->>
->> Signed-off-by: Joel Stanley <joel@jms.id.au>
->> Message-Id: <20220216080947.65955-1-joel@jms.id.au>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>   docs/about/deprecated.rst  |  7 -----
->>   docs/system/arm/aspeed.rst |  1 -
->>   hw/arm/aspeed.c            | 53 --------------------------------------
->>   3 files changed, 61 deletions(-)
-> 
->>   static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
->>   {
->>       AspeedSoCState *soc = &bmc->soc;
->> @@ -1102,26 +1073,6 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
->>           aspeed_soc_num_cpus(amc->soc_name);
->>   };
->> -static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
->> -{
->> -    MachineClass *mc = MACHINE_CLASS(oc);
->> -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
->> -
->> -    mc->desc       = "OpenPOWER Swift BMC (ARM1176)";
->> -    amc->soc_name  = "ast2500-a1";
->> -    amc->hw_strap1 = SWIFT_BMC_HW_STRAP1;
-> 
-> Can we also remove this definition?
+Support the latest PSCI on TCG and HVF. A 64-bit function called from
+AArch32 now returns NOT_SUPPORTED, which is necessary to adhere to SMC
+Calling Convention 1.0. It is still not compliant with SMCCC 1.3 since
+they do not implement mandatory functions.
 
-Indeed.
+Signed-off-by: Akihiko Odaki <akihiko.odaki@gmail.com>
+---
+ hw/arm/boot.c           | 12 +++++++++---
+ target/arm/cpu.c        |  5 +++--
+ target/arm/hvf/hvf.c    | 27 ++++++++++++++++++++++++++-
+ target/arm/kvm-consts.h | 13 +++++++++----
+ target/arm/kvm64.c      |  2 +-
+ target/arm/psci.c       | 35 ++++++++++++++++++++++++++++++++---
+ 6 files changed, 80 insertions(+), 14 deletions(-)
 
-Thanks,
-
-C.
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index b1e95978f26..0eeef94ceb5 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -488,9 +488,15 @@ static void fdt_add_psci_node(void *fdt)
+     }
+ 
+     qemu_fdt_add_subnode(fdt, "/psci");
+-    if (armcpu->psci_version == 2) {
+-        const char comp[] = "arm,psci-0.2\0arm,psci";
+-        qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
++    if (armcpu->psci_version == QEMU_PSCI_VERSION_0_2 ||
++        armcpu->psci_version == QEMU_PSCI_VERSION_1_1) {
++        if (armcpu->psci_version == QEMU_PSCI_VERSION_0_2) {
++            const char comp[] = "arm,psci-0.2\0arm,psci";
++            qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
++        } else {
++            const char comp[] = "arm,psci-1.0\0arm,psci-0.2\0arm,psci";
++            qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
++        }
+ 
+         cpu_off_fn = QEMU_PSCI_0_2_FN_CPU_OFF;
+         if (arm_feature(&armcpu->env, ARM_FEATURE_AARCH64)) {
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5a9c02a2561..307a83a7bb6 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1110,11 +1110,12 @@ static void arm_cpu_initfn(Object *obj)
+      * picky DTB consumer will also provide a helpful error message.
+      */
+     cpu->dtb_compatible = "qemu,unknown";
+-    cpu->psci_version = 1; /* By default assume PSCI v0.1 */
++    cpu->psci_version = QEMU_PSCI_VERSION_0_1; /* By default assume PSCI v0.1 */
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
+ 
+     if (tcg_enabled() || hvf_enabled()) {
+-        cpu->psci_version = 2; /* TCG and HVF implement PSCI 0.2 */
++        /* TCG and HVF implement PSCI 1.1 */
++        cpu->psci_version = QEMU_PSCI_VERSION_1_1;
+     }
+ }
+ 
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 0dc96560d34..1701fb8bbdb 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -653,7 +653,7 @@ static bool hvf_handle_psci_call(CPUState *cpu)
+ 
+     switch (param[0]) {
+     case QEMU_PSCI_0_2_FN_PSCI_VERSION:
+-        ret = QEMU_PSCI_0_2_RET_VERSION_0_2;
++        ret = QEMU_PSCI_VERSION_1_1;
+         break;
+     case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
+         ret = QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED; /* No trusted OS */
+@@ -721,6 +721,31 @@ static bool hvf_handle_psci_call(CPUState *cpu)
+     case QEMU_PSCI_0_2_FN_MIGRATE:
+         ret = QEMU_PSCI_RET_NOT_SUPPORTED;
+         break;
++    case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
++        switch (param[1]) {
++        case QEMU_PSCI_0_2_FN_PSCI_VERSION:
++        case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
++        case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
++        case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
++        case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
++        case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
++        case QEMU_PSCI_0_1_FN_CPU_ON:
++        case QEMU_PSCI_0_2_FN_CPU_ON:
++        case QEMU_PSCI_0_2_FN64_CPU_ON:
++        case QEMU_PSCI_0_1_FN_CPU_OFF:
++        case QEMU_PSCI_0_2_FN_CPU_OFF:
++        case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
++        case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
++        case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
++        case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
++            ret = 0;
++            break;
++        case QEMU_PSCI_0_1_FN_MIGRATE:
++        case QEMU_PSCI_0_2_FN_MIGRATE:
++        default:
++            ret = QEMU_PSCI_RET_NOT_SUPPORTED;
++        }
++        break;
+     default:
+         return false;
+     }
+diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+index 580f1c1fee0..241e02562e1 100644
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -77,6 +77,8 @@ MISMATCH_CHECK(QEMU_PSCI_0_1_FN_MIGRATE, KVM_PSCI_FN_MIGRATE);
+ #define QEMU_PSCI_0_2_FN64_AFFINITY_INFO QEMU_PSCI_0_2_FN64(4)
+ #define QEMU_PSCI_0_2_FN64_MIGRATE QEMU_PSCI_0_2_FN64(5)
+ 
++#define QEMU_PSCI_1_0_FN_PSCI_FEATURES QEMU_PSCI_0_2_FN(10)
++
+ MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_SUSPEND, PSCI_0_2_FN_CPU_SUSPEND);
+ MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_OFF, PSCI_0_2_FN_CPU_OFF);
+ MISMATCH_CHECK(QEMU_PSCI_0_2_FN_CPU_ON, PSCI_0_2_FN_CPU_ON);
+@@ -84,18 +86,21 @@ MISMATCH_CHECK(QEMU_PSCI_0_2_FN_MIGRATE, PSCI_0_2_FN_MIGRATE);
+ MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_CPU_SUSPEND, PSCI_0_2_FN64_CPU_SUSPEND);
+ MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_CPU_ON, PSCI_0_2_FN64_CPU_ON);
+ MISMATCH_CHECK(QEMU_PSCI_0_2_FN64_MIGRATE, PSCI_0_2_FN64_MIGRATE);
++MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES, PSCI_1_0_FN_PSCI_FEATURES);
+ 
+ /* PSCI v0.2 return values used by TCG emulation of PSCI */
+ 
+ /* No Trusted OS migration to worry about when offlining CPUs */
+ #define QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED        2
+ 
+-/* We implement version 0.2 only */
+-#define QEMU_PSCI_0_2_RET_VERSION_0_2                       2
++#define QEMU_PSCI_VERSION_0_1                     0x00001
++#define QEMU_PSCI_VERSION_0_2                     0x00002
++#define QEMU_PSCI_VERSION_1_1                     0x10001
+ 
+ MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
+-MISMATCH_CHECK(QEMU_PSCI_0_2_RET_VERSION_0_2,
+-               (PSCI_VERSION_MAJOR(0) | PSCI_VERSION_MINOR(2)));
++MISMATCH_CHECK(QEMU_PSCI_VERSION_0_1, PSCI_VERSION(0, 1));
++MISMATCH_CHECK(QEMU_PSCI_VERSION_0_2, PSCI_VERSION(0, 2));
++MISMATCH_CHECK(QEMU_PSCI_VERSION_1_1, PSCI_VERSION(1, 1));
+ 
+ /* PSCI return values (inclusive of all PSCI versions) */
+ #define QEMU_PSCI_RET_SUCCESS                     0
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 71c3ca69717..64d48bfb19d 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -864,7 +864,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
+     }
+     if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
+-        cpu->psci_version = 2;
++        cpu->psci_version = QEMU_PSCI_VERSION_0_2;
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PSCI_0_2;
+     }
+     if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+diff --git a/target/arm/psci.c b/target/arm/psci.c
+index b279c0b9a45..6c1239bb968 100644
+--- a/target/arm/psci.c
++++ b/target/arm/psci.c
+@@ -57,7 +57,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+ {
+     /*
+      * This function partially implements the logic for dispatching Power State
+-     * Coordination Interface (PSCI) calls (as described in ARM DEN 0022B.b),
++     * Coordination Interface (PSCI) calls (as described in ARM DEN 0022D.b),
+      * to the extent required for bringing up and taking down secondary cores,
+      * and for handling reset and poweroff requests.
+      * Additional information about the calling convention used is available in
+@@ -80,7 +80,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+     }
+ 
+     if ((param[0] & QEMU_PSCI_0_2_64BIT) && !is_a64(env)) {
+-        ret = QEMU_PSCI_RET_INVALID_PARAMS;
++        ret = QEMU_PSCI_RET_NOT_SUPPORTED;
+         goto err;
+     }
+ 
+@@ -89,7 +89,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+         ARMCPU *target_cpu;
+ 
+     case QEMU_PSCI_0_2_FN_PSCI_VERSION:
+-        ret = QEMU_PSCI_0_2_RET_VERSION_0_2;
++        ret = QEMU_PSCI_VERSION_1_1;
+         break;
+     case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
+         ret = QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED; /* No trusted OS */
+@@ -170,6 +170,35 @@ void arm_handle_psci_call(ARMCPU *cpu)
+         }
+         helper_wfi(env, 4);
+         break;
++    case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
++        switch (param[1]) {
++        case QEMU_PSCI_0_2_FN_PSCI_VERSION:
++        case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
++        case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
++        case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
++        case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
++        case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
++        case QEMU_PSCI_0_1_FN_CPU_ON:
++        case QEMU_PSCI_0_2_FN_CPU_ON:
++        case QEMU_PSCI_0_2_FN64_CPU_ON:
++        case QEMU_PSCI_0_1_FN_CPU_OFF:
++        case QEMU_PSCI_0_2_FN_CPU_OFF:
++        case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
++        case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
++        case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
++        case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
++            if (!(param[1] & QEMU_PSCI_0_2_64BIT) || is_a64(env)) {
++                ret = 0;
++                break;
++            }
++            /* fallthrough */
++        case QEMU_PSCI_0_1_FN_MIGRATE:
++        case QEMU_PSCI_0_2_FN_MIGRATE:
++        default:
++            ret = QEMU_PSCI_RET_NOT_SUPPORTED;
++            break;
++        }
++        break;
+     case QEMU_PSCI_0_1_FN_MIGRATE:
+     case QEMU_PSCI_0_2_FN_MIGRATE:
+     default:
+-- 
+2.32.0 (Apple Git-132)

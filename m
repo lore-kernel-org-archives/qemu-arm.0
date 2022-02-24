@@ -1,145 +1,139 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp3705919lfq;
-        Tue, 22 Feb 2022 10:05:45 -0800 (PST)
-X-Received: by 2002:a05:6000:3ce:b0:1e4:b2ba:e3e3 with SMTP id b14-20020a05600003ce00b001e4b2bae3e3mr20416673wrg.204.1645553145091;
-        Tue, 22 Feb 2022 10:05:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645553145; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp981452lfq;
+        Thu, 24 Feb 2022 06:41:50 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxl73ZDBvyyhX2b+RmC4OgfQAKQiZJj2YFsEOgoHNxQj6C5Ht72Q6pDq6j7eY9Lw4VYVyMo
+X-Received: by 2002:ac8:5b0d:0:b0:2dd:d863:8a70 with SMTP id m13-20020ac85b0d000000b002ddd8638a70mr2590008qtw.562.1645713710664;
+        Thu, 24 Feb 2022 06:41:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645713710; cv=none;
         d=google.com; s=arc-20160816;
-        b=bkA/8gv9TxebfNB9pQ0IZz+khfI0FCc+EarBieK6pjKbahQDm5dIP2dqVz828pZ2g4
-         0JCc3aDg7utQuI8l/3n1q5O9gTd6W1U9YDXwsCh5Vb/6oOK/JQuHHhaidtqraPs7ZcCN
-         JQDBPMrILz7IZRRE3oqzzyao92MP8tmbf61HpLduZRP5uWcZZNUQh/MebOm8RdTm5liS
-         IeLcNr/JP5nmUDkTTXQzVGYXxXvBIBpN/sXqGGZ4gsGcFUkxcMQU3WrpdR5U50JcdY1H
-         5k2iV7oDv0PYkbpTtWfOPAm0yTgZw/p9Ay2aVDYTXshDV+mzrLN3inVVGoCLClEwlDCE
-         e3QQ==
+        b=sYsYcvjCtT6UICfcrUAcnXsAWbo/T/vmLXKJLKCvtBUva63EHtXDi5aRgBv2L3KydF
+         jpiAx1wPd5LFCGai0F9mqoLQGQnigfpd1hyLU9o3kTL1gVG9T6MIcQSgQJeXBz73IvIo
+         MCwxIEUmInnvJ4FMNUCy4E0AkLQLit/4AkW1a6u2pwKbwqo6YZjx3deCFsyGLnl1dZlE
+         ifLsKdcx+bHRm9MeMiueTls4W7jkwWVmEP+MGlJUsWvi5psO6j1QDiy6yaDNiJElnBQO
+         LQqzk/wd31z0Kwgf0rHTbqaZbS8cYMtzz1qxTMZ0l0Puv/1GEL92KPldWkCDiFTr5aWT
+         VjyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=mRAZx+qBLptrMsABYuCHJiK2Ruy1YgoCHlrcO7wjtFo=;
-        b=hFGPFldTFDKIwpp8uI7srGxOQIWdm2K77tDbQTI5Nu6WdEb8po2gV+SlgZL6G6OzZW
-         XfswEAnGvJrNLPDjSoeHPj2L6GAh/UTdMObcHm35YAA9rk1eC622Jg8350rds+fFzIBw
-         no04l2j/+1BdNIWnM6fsp61mV3plm1TllLiWJW1U84AJXP3I1ju4S02fv5VO4GheqT/C
-         goSdnmnvR4xQ6xD60TInMwl6rdpdqaFFyXwD013nJrDX77h02NGvcaaWFRTigacvV5N4
-         uvL0qmjzJ5E0T6BrjQBcVwpG9SoVhdaCraANV98Bb7AsPgJx0VG6r22Il49qbIqNPL1e
-         64+g==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:message-id:user-agent:references
+         :in-reply-to:subject:cc:to:date:mime-version:dkim-signature;
+        bh=DLWwjRhS8yQiPjtMsVJtTCM9VYOmb4BHAapEKlvomqU=;
+        b=nQV28urLf3TdnLZNdG9JkbuOn2oYaFW/2oMUW3/Bzbb/GtOU9gFrgy51bFsJBABJh6
+         lYKPNA+HtnxCsuWkz1Sfv1SfoCXvgmI+3plUFLUE+T9db+Rw0gFE97PbC5A0h8ziu1jF
+         TgmuPNSQjaH7TIEsB2gyntjJHMwUHiVT7liL01/rXnrgM6mjqrbimEjm1E46YoBJcNk6
+         9ZsZiUxy5VZ6u0bCp3Dc4x+orgij4IDGVg9TWf4HaXFnkbNj6VyFY7ArZlKIvB9v8UjE
+         zLDTkynXJ9tvAGeXsuxMs15TEMx2n+lLqDGBctJBeyv3rnOOh8Ns91VoGzHVqbuTN510
+         oz7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=g1Ezq218;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l20sor1506215wmq.27.2022.02.22.10.05.44
-        (Google Transport Security);
-        Tue, 22 Feb 2022 10:05:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@misterjones.org header.s=dkim20211231 header.b=s562ZlRQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 75si1126078qtg.771.2022.02.24.06.41.50
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 24 Feb 2022 06:41:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=g1Ezq218;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=mRAZx+qBLptrMsABYuCHJiK2Ruy1YgoCHlrcO7wjtFo=;
-        b=g1Ezq218nbiTSWOkvPTUMFNE9+eYyNPAlzRd+nPtGUnd5Gn/9zQf7w1ITKU0Jl3p6w
-         rVwHZvrDXWAwXleZzOBNxqxqj9i04+AS3b33c3VBlq4EwpfWe/djlXnNiZTtquL2h3eN
-         ppNcEvqCqLBQEwrV/zvdC0yEgFcz9u9tl8ZBfV6mIrcGhsqrkUUfP97O9owdgRt9iR+e
-         PGqjhei1zwxCqJ9cHTAHERnyod5yhXEW/VTgzIU920MYeSjec3SiQb6JJRAniE96X6LN
-         aQJrW2GFQ6kqyKQ6f0GGeA7TEXUxKupGf2HyEyW1HCjja3E2+cs9fSkoAEt+ZZyH/4nM
-         TILQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=mRAZx+qBLptrMsABYuCHJiK2Ruy1YgoCHlrcO7wjtFo=;
-        b=18/kKeK85+ojp98fuBzdZuV8E/q0ZpXuOfN77s0NCIm6impVUJF7mSKKa8lkeWzxm/
-         mK98HVtGJ/mE8xf4kkwB3R5G13CdhyRkgd9ktggKBtOyGFM+0GL59ZlTPmgmEOpazKgc
-         i3jD3nbpMgsUkjC7w8hl6YBUXHSp6IToVZ9r9u4hwRyYsLCrfebs7ywTJ3CC62Lm/Inc
-         EajkdcRvhOHUx9f+poNLUos74mFz7mYNM/gvJu33ZttKS+8btAxp1KGhtJVaMol0XEAz
-         WO/H+0KT2hW+Vpzk/UwLlBX2SM4rH4AmopAK6EcxmIt/YGnjA6O+H5Mhj92oCg5n5mN3
-         5b+A==
-X-Gm-Message-State: AOAM532PYY3r2YD8IBdvXHTmrKrlfU54RMZciiDVgqEDKapbuI0ygVKz
-	QyUNcsdGyFbPRqbFodKZTZvIhrNV2z8=
-X-Google-Smtp-Source: ABdhPJxPMVmWeKIk1PnivZ4ueeSi4igbIxxqxP5arTICVF7BgnRTnffslpr44ezg4UsOdPEeGjBvkw==
-X-Received: by 2002:a1c:7518:0:b0:37c:7eb:f255 with SMTP id o24-20020a1c7518000000b0037c07ebf255mr4378114wmc.29.1645553144317;
-        Tue, 22 Feb 2022 10:05:44 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.35] (71.red-83-50-68.dynamicip.rima-tde.net. [83.50.68.71])
-        by smtp.gmail.com with ESMTPSA id f7sm47199807wrz.40.2022.02.22.10.05.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Feb 2022 10:05:43 -0800 (PST)
-Message-ID: <d26a877d-f3ad-6186-6a22-1e09f93a3fae@gmail.com>
-Date: Tue, 22 Feb 2022 19:05:42 +0100
+       dkim=fail header.i=@misterjones.org header.s=dkim20211231 header.b=s562ZlRQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:48700 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nNFJW-0006aN-6N
+	for alex.bennee@linaro.org; Thu, 24 Feb 2022 09:41:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52840)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@misterjones.org>)
+ id 1nNFIg-0006Zh-Qh; Thu, 24 Feb 2022 09:40:59 -0500
+Received: from disco-boy.misterjones.org ([51.254.78.96]:33762)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@misterjones.org>)
+ id 1nNFIe-0005dF-G6; Thu, 24 Feb 2022 09:40:58 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=misterjones.org; s=dkim20211231; h=Content-Transfer-Encoding:Content-Type:
+ Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:MIME-Version:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=DLWwjRhS8yQiPjtMsVJtTCM9VYOmb4BHAapEKlvomqU=; b=s562ZlRQDTsBUrW4bTO7X96pG6
+ bFA9su5aBxvz4g+Ec/lqeJ+XItaqoDZM/dKZMchNESx9M7OrX/yAMjva/WKkbCfCkwfIOKm+0drqN
+ SNeL+FkFcbQUIQrRWA93jhBGE9Z4AAIZKKLbIAtGij6Q3UTbxhVGqdbem3iD4TvVz5HspNlvjaFYB
+ Ck1FPILTfv64k87bDogHY8s5xjItZ+1cGuvCna1G5M1+ZE0yWdpbcVMK9pAIlRXTRVlZCbcCH0YhY
+ NuI/nrB6frMLC07wIS+lScIRq7EAs7EqM2Z9oja4l9PlOrw1n2bCVWfmt0BvACDeJGfw7S4oKCelP
+ 2kUqa5Fg==;
+Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <maz@misterjones.org>)
+ id 1nNFIQ-00ACsc-2q; Thu, 24 Feb 2022 14:40:42 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.0
-Subject: Re: Analysis of slow distro boots in check-avocado
- (BootLinuxAarch64.test_virt_tcg*)
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa
- <cleber@redhat.com>, Beraldo Leal <bleal@redhat.com>
-Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
- Laszlo Ersek <lersek@redhat.com>, Oleg Vasilev <me@svin.in>,
- Richard Henderson <richard.henderson@linaro.org>,
- Emilio Cota <cota@braap.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Idan Horowitz
- <idan.horowitz@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Andrew Jones <drjones@redhat.com>
-References: <874k4xbqvp.fsf@linaro.org> <878ru2nacq.fsf@linaro.org>
- <YhURfqMvRT4xbiz6@redhat.com>
- <96bafa75-a0c6-f431-a6d8-fe98d438d0f9@gmail.com>
- <CAFEAcA8ggE0HHXwLAu4vCA=kLwo4moN1CvTJbjph=OTmnfOONg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <CAFEAcA8ggE0HHXwLAu4vCA=kLwo4moN1CvTJbjph=OTmnfOONg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: e2ykINHhK8G7
+Date: Thu, 24 Feb 2022 14:40:41 +0000
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Akihiko Odaki
+ <akihiko.odaki@gmail.com>
+Subject: Re: [PATCH] target/arm: Report KVM's actual PSCI version to guest in
+ dtb
+In-Reply-To: <20220224134655.1207865-1-peter.maydell@linaro.org>
+References: <20220224134655.1207865-1-peter.maydell@linaro.org>
+User-Agent: Roundcube Webmail/1.4.13
+Message-ID: <fa8cb571a44372389e4fa131f4b1897c@misterjones.org>
+X-Sender: maz@misterjones.org
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 51.254.78.96
+X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, akihiko.odaki@gmail.com
+X-SA-Exim-Mail-From: maz@misterjones.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=51.254.78.96; envelope-from=maz@misterjones.org;
+ helo=disco-boy.misterjones.org
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  Marc Zyngier <maz@misterjones.org>
+From:  Marc Zyngier via <qemu-devel@nongnu.org>
+X-TUID: wX3NJGRaXted
 
-+Beraldo
-
-On 22/2/22 18:37, Peter Maydell wrote:
-> On Tue, 22 Feb 2022 at 17:33, Philippe Mathieu-Daudé
-> <philippe.mathieu.daude@gmail.com> wrote:
->>
->> +Igor/MST for UEFI tests.
->>
->> On 22/2/22 17:38, Daniel P. Berrangé wrote:
->>> On Tue, Feb 22, 2022 at 04:17:23PM +0000, Alex Bennée wrote:
->>>>
->>>> Alex Bennée <alex.bennee@linaro.org> writes:
->>>>
->>>>> Hi,
->>>>>
->>>>> TL;DR:
->>>>>
->>>>>     - pc-bios/edk2-aarch64-code.fd should be rebuilt without debug
->>>>
->>>> Laszlo,
->>>>
->>>> Would it be possible to do a less debug enabled version of EDK2 on the
->>>> next update to pc-bios/edk2-*?
+On 2022-02-24 13:46, Peter Maydell wrote:
+> When we're using KVM, the PSCI implementation is provided by the
+> kernel, but QEMU has to tell the guest about it via the device tree.
+> Currently we look at the KVM_CAP_ARM_PSCI_0_2 capability to determine
+> if the kernel is providing at least PSCI 0.2, but if the kernel
+> provides a newer version than that we will still only tell the guest
+> it has PSCI 0.2.  (This is fairly harmless; it just means the guest
+> won't use newer parts of the PSCI API.)
 > 
->> We need the DEBUG profile to ensure the bios-tables-tests work.
->>
->> If you want to boot a guest using EDK2, you should use the images
->> build by your distribution (/usr/share/qemu/edk2-aarch64-code.fd),
->> not these images.
+> The kernel exposes the specific PSCI version it is implementing via
+> the ONE_REG API; use this to report in the dtb that the PSCI
+> implementation is 1.0-compatible if appropriate.  (The device tree
+> binding currently only distinguishes "pre-0.2", "0.2-compatible" and
+> "1.0-compatible".)
 > 
-> But we're booting guests using EDK2 as part of our avocado tests:
-> if we say "booting guests with EDK2 should be done with non-debug
-> images" we need to also be building and providing those in
-> pc-bios for the avocado tests.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Then we should add edk2-aarch64 and edk2-ovmf to lcitool, to have
-the distrib images in our generated Docker images.
+Reviewed-by: Marc Zyngier <maz@kernel.org>
 
-Cleber, you added this test in commit 6fd52d671d ("Acceptance test:
-add "boot_linux" tests"), can you have a look?
-
-Thanks,
-
-Phil.
+         M.
+-- 
+Who you jivin' with that Cosmik Debris?

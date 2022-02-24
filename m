@@ -1,152 +1,165 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp934410lfq;
-        Thu, 24 Feb 2022 05:33:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJydAkRGGMCwA91L5zBZbmvmzNxnqJtvhSQhMRcSnEIHNkPjo7DlTUV7MJnCmTMYO0YCbEEv
-X-Received: by 2002:a17:906:22cf:b0:6cd:2c02:45fc with SMTP id q15-20020a17090622cf00b006cd2c0245fcmr2334833eja.295.1645709588620;
-        Thu, 24 Feb 2022 05:33:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645709588; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1135301lfq;
+        Thu, 24 Feb 2022 10:19:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxmfAZQg8apRD3lZ0YDsBtYESQTrqChDoDi/9Zge31yS23OP5DSMXtZsdrJNjqAeAidUPCp
+X-Received: by 2002:a37:5506:0:b0:5f1:91c0:eee8 with SMTP id j6-20020a375506000000b005f191c0eee8mr2524961qkb.22.1645726784216;
+        Thu, 24 Feb 2022 10:19:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645726784; cv=none;
         d=google.com; s=arc-20160816;
-        b=rsufNTRSIE7hOrBI6/jc4VSfjHn6QamFBeCBFLikQvLJtW1BtA4cUvjEl2j7t3Kf5e
-         4i7jSVQMrf9k0f32DdqL7aS2I+o7VFl3M8v9GhHdff+FCjCz7/e8I7fNRBED8WKfOtme
-         VxF5gJjoxOXHWgOOVI+7AEaHNpGPa25Kia45IAlt3lrieQxVCP/XKFhL4ZlyscniYsOw
-         kar9KObfsvmeEkcWF1Zt5f4fPMfVLJQYTjxhexcYbhcAaIdl7rHj1SikYeKa1PGitrX9
-         MyHz6e8vsY37UBW/i3gUGwEicuqiPwOdJJh+BI005V0J3OxvmDhH5t03XpFVT9ZweXkT
-         tifQ==
+        b=FwQJDs6Dd+F7NkwjuGkSsfryMlkzV/Uk0b/DNyrAZeP7PV174yapWmmlcx5dQV0/f7
+         u81OuLlEJEQ/9w0getlEaJoqxzw0Q+viWPiPtJR94pJF/1EY5D2G4sIc0FWRRDCHBuz3
+         eSvKdQUQT7LNrK9StAiZObLAPkDp4aHaRuZU3m+skh0YCIIr0nyap65ohp3nzBQaFNl8
+         E2m25+4yLDc7/5lmV8f3qmD6P5SdemZM/AjOoam4H4KKO/tpvqq4lCoTlIXjhKv9EjYj
+         /roWgNLKZ4TIfFvoMLXojIldQOxwwvLrF0DxI6SOOoOBzcdK6wQpA8xusdCmqh24J2o7
+         bu5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=2oR3jzkZF1FuTCdkP1d7JXrysRcu+SsDR6/8Luarz0U=;
-        b=ZOAaKBKUt0LAiKhE3msVUxvtVUiPKDq5u51SKCpbHx3vxSUkVEP5GKE8u4ISy6vXgV
-         NwEY6fJfflCMANKVtgCubWrbpf6WMS399VRLvAlVNTLVVKaU0jCuUyTvfnhLdqjnaNXX
-         QBeMxCUKIuX227UzPr7h/f8gQ2o9UN4LINJuMmcneG29GAmDcaKV1usCxIBsSl8q/U6R
-         EhpRiy6WC0XddVMRbg9bsYM3z9O6S6ZuoNx6ap8HpG3aDKtyRFYEeEJ8dxOs7wztoOjP
-         svq74/MAWI6yDIX0jkkpJMcCvX7/MGBE2WrnvcWvsi0lG4xa8HkZYV462+5Alp4UGro1
-         LoLQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=3IxVseU8l7XDXRxTi9N1V8Pou/lNos7YBlEUolAvfns=;
+        b=gBwEr4w3i0Fbm40Ml+NWYOtLNmfIEQFTB5YHBX3IZSLWI5epzd5uIWqzo9YGRPPxLZ
+         cX2vOfMcFsmdO5xrJjadwVDYhdl7S/ZeICvvFLvBJNVC+38a8DETVJs44y7CAq2bZGZ7
+         8vJpXSTz0S0Tf+leOpGZ1Rb5NbLjYzbY3ZJO38O/XSRJKgMSWwHXB+93mpnIw8up4VL6
+         l5LBV9gMbj11LAGz3KnB+KNf6IbPaBpnNOEXhYo2BX/UqsKoyEF8h1m7DKKjCgQTVm00
+         3LkYddOR/hbfkCGguzeq0actspXaIR0aCs9+desVSii64xhxCLGHkqbKLjs4/e7woxhb
+         /50g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PrRPm7fA;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fht8bSa4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id u7si1573537eju.755.2022.02.24.05.33.08;
-        Thu, 24 Feb 2022 05:33:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z24-20020a0ca958000000b0042c3e710ccasi149711qva.285.2022.02.24.10.19.44
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 24 Feb 2022 10:19:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PrRPm7fA;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fht8bSa4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S231572AbiBXNdg (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 3 others); Thu, 24 Feb 2022 08:33:36 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:50068 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S235058AbiBXNdf (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 24 Feb 2022 08:33:35 -0500
-Received: from mail-yw1-x1136.google.com (mail-yw1-x1136.google.com [IPv6:2607:f8b0:4864:20::1136])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 47329178687
-        for <kvm@vger.kernel.org>; Thu, 24 Feb 2022 05:33:05 -0800 (PST)
-Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-2d66f95f1d1so25866287b3.0
-        for <kvm@vger.kernel.org>; Thu, 24 Feb 2022 05:33:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=2oR3jzkZF1FuTCdkP1d7JXrysRcu+SsDR6/8Luarz0U=;
-        b=PrRPm7fAuyTg06LTBnrcrsqUBKoiRV8VM8NAOR3gG+5DLfT4rIBtve85Jdlaz1RUI7
-         H7YLNvUNOtIO2SGXrudoaXRz+UtcS6ZqRHOKwdaDb5IkRzotRO6onju4RCEUwRfOdYc3
-         tdPp0sM2d+bUQ8Sa0gc07Y7n/qEmq9ixqXbKjFUr99IeU4NIj+SFDsNXkyewEUI7aOTx
-         P7VfiyCaQX8mAlFod22V06QQYEO1HhdL14Ld0Z9Ra+1ZqFSKImNGkxl3XaIjLGFKQ/di
-         qclQE3sCzFXmMG2ZCmIg1ApN8agpz6FNPjUuVwhcQPfqQgqVCoC8TgczC98S57KmWEHN
-         tJ8w==
+Received: from localhost ([::1]:60864 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nNIiN-00058y-No
+	for alex.bennee@linaro.org; Thu, 24 Feb 2022 13:19:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48346)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nNIiJ-00057l-LR
+ for qemu-devel@nongnu.org; Thu, 24 Feb 2022 13:19:39 -0500
+Received: from [2607:f8b0:4864:20::1036] (port=40928
+ helo=mail-pj1-x1036.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nNIiI-0008WJ-36
+ for qemu-devel@nongnu.org; Thu, 24 Feb 2022 13:19:39 -0500
+Received: by mail-pj1-x1036.google.com with SMTP id
+ em10-20020a17090b014a00b001bc3071f921so6385232pjb.5
+ for <qemu-devel@nongnu.org>; Thu, 24 Feb 2022 10:19:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=3IxVseU8l7XDXRxTi9N1V8Pou/lNos7YBlEUolAvfns=;
+ b=Fht8bSa4B2VXnHnqa8wOJub4zfZb7EiKg2nf25HByvMbLQfmcH8UJjkAkfW3+IL940
+ tEfvSW84BV8z4VNjILNHLamJBPQMwjEoXFMM496JloS7lyXyaxRnLBXEZ8s6qKqcrNc1
+ mhnsFsOe1RybgWHfX6UKwHIoSjPovMWoMJ2ftsFDiGQKOQs4E2Qw/X5/ZomPtpBPCUVh
+ /gxa8uX322pkrOQHS83jt4UQs6h9pWJS/AOA2n1RqOHz+3nXSFGPkpe782jExCI5L8ZY
+ +gNtwnOPaEEpmTxnM7dDWmhvhHB+RpNmZc40rwXjm29Hl/7T8TbYg4IRfTWja3JKqB8l
+ wfDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=2oR3jzkZF1FuTCdkP1d7JXrysRcu+SsDR6/8Luarz0U=;
-        b=gauWh5X4wMMQS0vJH9Q8AsA9VaFppgbc6ULTUwfKgJdwwr9xU2Kbu3dJu2OG6+gfCq
-         noXKNsZzL6xEmYt53gqBRsDYeYmbZPPJNVWjlz1d6+Nf1vOO1Eh73OWqS/DhIwGoE15z
-         yOdtbiHJn6ANfEKC5AOzVVlw3UdU7x9CDJ7XFA3J0anK/6ri8UR0nKmxzZw3v2y4iUU3
-         9WfBPbK9AQcmBqHWhYhfDvL9BDRREvbn10ji/fPCTSLcfXmkY229TI9LjNXLScWwGmDG
-         UQnhv2RRdsEbOS2KJcdSBLRS4DzAghLHifqLA6RYu6IGQWy5iWF3ncZU3PTDAs6g+q7P
-         i1Yg==
-X-Gm-Message-State: AOAM5314rjYDSaxyGXVdOk6OAys5mbK+4DstO4GyrVqrWIZSy092pha7
-        PHYlRYZp3hiQt9r8W3e275QJNxV8Q1xVBPA/ymEnwA==
-X-Received: by 2002:a05:690c:314:b0:2d6:b95b:bf41 with SMTP id
- bg20-20020a05690c031400b002d6b95bbf41mr2316666ywb.64.1645709584519; Thu, 24
- Feb 2022 05:33:04 -0800 (PST)
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=3IxVseU8l7XDXRxTi9N1V8Pou/lNos7YBlEUolAvfns=;
+ b=EOFHCuMOnOAEvXNMYssO6gwhG6VY2p+yMl8YwHC/e+4qBAXj1jTWNzRsutQo8lYUym
+ x6p+DBReFR9l64lzKcl3VdckJnFg+bzHEvJYSxoDcvcyUW3wRTEluNNw5/3/yvB0s/4W
+ i68+i44v+1e2qFjzcKi5Yuh7aeOgKBGbctnxnKbedDR6zK/eynPy15+/s+DHkKfPOyxx
+ IHv8t57oSxi9p7ecdeserO4jmuVwlidZjfLivECxFq2CQAjiHpGatYkCOpgR1eaxVNRq
+ KgRxdrZHn9q8HWdEFxp26kD4L/a0UzBpUlD+mQtDF4ywsDcdC/wbq7kGKjM1DVAxFXR0
+ O+pg==
+X-Gm-Message-State: AOAM533/vSV+7MK3/4Z3v93PdJ6ieCkJIbkqgi67DB9OvbQYbbZEXU87
+ wLIaUI9/2cawi68gApq91gmpxg==
+X-Received: by 2002:a17:902:e5c3:b0:14f:a4ff:34b8 with SMTP id
+ u3-20020a170902e5c300b0014fa4ff34b8mr3751617plf.24.1645726775954; 
+ Thu, 24 Feb 2022 10:19:35 -0800 (PST)
+Received: from [192.168.4.112] (cpe-50-113-46-110.hawaii.res.rr.com.
+ [50.113.46.110]) by smtp.gmail.com with ESMTPSA id
+ s9-20020a056a00194900b004e1583f88a2sm189577pfk.0.2022.02.24.10.19.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 24 Feb 2022 10:19:35 -0800 (PST)
+Message-ID: <f820b1ca-53de-08bc-e886-e1be157b8da5@linaro.org>
+Date: Thu, 24 Feb 2022 08:19:32 -1000
 MIME-Version: 1.0
-References: <20220213035753.34577-1-akihiko.odaki@gmail.com> <CAFEAcA8_VgsR=Bcn1wxxaLotxQH3sumYMt1=3NxwHcdQFLPYqA@mail.gmail.com>
-In-Reply-To: <CAFEAcA8_VgsR=Bcn1wxxaLotxQH3sumYMt1=3NxwHcdQFLPYqA@mail.gmail.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Thu, 24 Feb 2022 13:32:53 +0000
-Message-ID: <CAFEAcA9vbaQ+3XHNDtN79b=Y36M8q5WH9yTxXOX-zt+wh5qQow@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: Support PSCI 1.1 and SMCCC 1.0
-To:     Akihiko Odaki <akihiko.odaki@gmail.com>
-Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Alexander Graf <agraf@csgraf.de>
-Content-Type: text/plain; charset="UTF-8"
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: auA/IvhvErS7
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH] target/arm: Report KVM's actual PSCI version to guest in
+ dtb
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20220224134655.1207865-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220224134655.1207865-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1036
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Akihiko Odaki <akihiko.odaki@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: r6MpxSBSQgim
 
-On Thu, 24 Feb 2022 at 13:25, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Sun, 13 Feb 2022 at 03:58, Akihiko Odaki <akihiko.odaki@gmail.com> wrote:
-> >
-> > Support the latest PSCI on TCG and HVF. A 64-bit function called from
-> > AArch32 now returns NOT_SUPPORTED, which is necessary to adhere to SMC
-> > Calling Convention 1.0. It is still not compliant with SMCCC 1.3 since
-> > they do not implement mandatory functions.
->
-> >  /* PSCI v0.2 return values used by TCG emulation of PSCI */
-> >
-> >  /* No Trusted OS migration to worry about when offlining CPUs */
-> >  #define QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED        2
-> >
-> > -/* We implement version 0.2 only */
-> > -#define QEMU_PSCI_0_2_RET_VERSION_0_2                       2
-> > +#define QEMU_PSCI_VERSION_0_1                     0x00001
-> > +#define QEMU_PSCI_VERSION_0_2                     0x00002
-> > +#define QEMU_PSCI_VERSION_1_1                     0x10001
->
-> Just noticed that there's a minor issue with this change -- it
-> deletes the definition of QEMU_PSCI_0_2_RET_VERSION_0_2, but
-> it is still used below:
->
-> >
-> >  MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
-> >  MISMATCH_CHECK(QEMU_PSCI_0_2_RET_VERSION_0_2,
->
-> here ^^  which means that this breaks compilation on Arm hosts.
->
-> I'll squash in the fix:
->
-> --- a/target/arm/kvm-consts.h
-> +++ b/target/arm/kvm-consts.h
-> @@ -98,8 +98,11 @@ MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES,
-> PSCI_1_0_FN_PSCI_FEATURES);
->  #define QEMU_PSCI_VERSION_1_1                     0x10001
->
->  MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
-> -MISMATCH_CHECK(QEMU_PSCI_0_2_RET_VERSION_0_2,
-> +/* We don't bother to check every possible version value */
-> +MISMATCH_CHECK(QEMU_PSCI_VERSION_0_2,
->                 (PSCI_VERSION_MAJOR(0) | PSCI_VERSION_MINOR(2)));
-> +MISMATCH_CHECK(QEMU_PSCI_VERSION_1_1,
-> +               (PSCI_VERSION_MAJOR(1) | PSCI_VERSION_MINOR(1)));
+On 2/24/22 03:46, Peter Maydell wrote:
+> When we're using KVM, the PSCI implementation is provided by the
+> kernel, but QEMU has to tell the guest about it via the device tree.
+> Currently we look at the KVM_CAP_ARM_PSCI_0_2 capability to determine
+> if the kernel is providing at least PSCI 0.2, but if the kernel
+> provides a newer version than that we will still only tell the guest
+> it has PSCI 0.2.  (This is fairly harmless; it just means the guest
+> won't use newer parts of the PSCI API.)
+> 
+> The kernel exposes the specific PSCI version it is implementing via
+> the ONE_REG API; use this to report in the dtb that the PSCI
+> implementation is 1.0-compatible if appropriate.  (The device tree
+> binding currently only distinguishes "pre-0.2", "0.2-compatible" and
+> "1.0-compatible".)
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+> Based-on:20220213035753.34577-1-akihiko.odaki@gmail.com
+> ("[PATCH v2] target/arm: Support PSCI 1.1 and SMCCC 1.0")
+> though note that to compile on arm hosts you'll need the
+> bugfix to that patch from which I describe in a reply to it.
+> 
+>   target/arm/kvm-consts.h |  1 +
+>   hw/arm/boot.c           |  5 ++---
+>   target/arm/kvm64.c      | 12 ++++++++++++
+>   3 files changed, 15 insertions(+), 3 deletions(-)
 
-Ha, turns out the existing check line was wrong : it ORs together
-the major and minor, which only works if the major happens to be 0.
-Actually working lines:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-MISMATCH_CHECK(QEMU_PSCI_VERSION_0_2, PSCI_VERSION(0, 2));
-MISMATCH_CHECK(QEMU_PSCI_VERSION_1_1, PSCI_VERSION(1, 1));
-
--- PMM
+r~

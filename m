@@ -1,125 +1,139 @@
-X-Received: by 2002:a63:e543:0:b0:373:efe3:6f46 with SMTP id z3-20020a63e543000000b00373efe36f46mr1395706pgj.183.1645655500896;
-        Wed, 23 Feb 2022 14:31:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645655500; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp778138lfq;
+        Thu, 24 Feb 2022 01:10:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx9+OwjHOs6CBX+QwgJT/MiAMaXHxcJj+cNEypH2i25tPRCSRWi3t14yKHSxRBYsszDZ+KW
+X-Received: by 2002:a17:906:5804:b0:6ce:3f17:bf35 with SMTP id m4-20020a170906580400b006ce3f17bf35mr1474846ejq.346.1645693825694;
+        Thu, 24 Feb 2022 01:10:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645693825; cv=none;
         d=google.com; s=arc-20160816;
-        b=SwEjVs148BBGx0bbDFosC28WUJ3/AlXvx96O81PvotBfdzJL9Azz4elC4UZwVrgsnx
-         uSGsmgXy26fqKgIHI5K9csHtNW1mJVkFzhKvyvmvFhMbWL8Thqr2geQtuhCIGsk9ZIas
-         Smf83A27yjW+Bc9HzJU75lCRYeHCKpZ5YBVGXelPdid7mZMNVmHFsPJcHgHMLbJfqYBQ
-         D0SCVSMHPA8uBst4GhGuMDoQgDgncsfYt5Hki75MUosZ99cb0+mzote+lSZ5gX2RUVFS
-         xxfCQu3MfGJ5OShWLr5MC+Zx02GJNpDTqrR01xjIGxSrzBMetM2dTj/4mWRis6dv1LW4
-         TwXg==
+        b=ohHa/vObNEHdWihqX/DsJSbYYZ/IvoKBDEbpF2yaCQMn+fLE20kGUEu8GxDIhJS+z3
+         LTeV9X8sTHwKVFUU+CSgEZNGiorYmmhX/ridNkdTLQwgB95A0DorK6XRue9kyeOKGHJp
+         wvzgFKYGqekL+Wa7cO/+gCNAF4DJMEL85TYDtic0r4yJHGx6Dh1ViG4GecSJg2Up0+Oz
+         ub/3V4Wz1/ExX4PsFCqq1pFG8n4HgucZHjjwlevps6yNh/LDJrGpKtsBqYVNmW3CQGmG
+         nY6wy34hrbowFzstROzpNBBYsk3narqi1a3o+NoJENP5gR4w3vsH1s9xVEdyO25iTrha
+         DKuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=rchUU4zOX0BPe/9YEpHNPbaJ9WTLO7q01iqF+jngknc=;
-        b=gUQwxEeWNZzFxETf+e4D6r8rYRMOBZCNAFcih/Po8mSjckKS+TUG2mGQKr9pxhFlb6
-         KZgSNu36dJEiMPJ3+RHiDZoEvH9sKLD6RQl3EZQzXB7IevfDT/tXABRGKiLF5YaIe22W
-         IAj8tQ86GBDhPz9qZabrNODLHV3zFRiYaWrpLjTfMcuhkvWylrzWPFPiPnc021OJxHUq
-         q8ODV5VDqdAZ4wNxLb+a76XhD033a+LuFv1HmpABsft3RYQ4dy56Ge3XqYS+qjBszH7w
-         z/hqohvoiwgTmAzVqw81cv5CAQzsylgpHwMZ+J3k5MS3TrmVhxuAcHjE9FbO5s0x9wlU
-         Ce/g==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=+rdqagwISMbbUFbBupZKEqJKpOvZ7RrKc9RcjpzaC+M=;
+        b=xB41sq8FVHMDtyxgTrr3KNTMyF9CXfus1kpNIBW/pi3WO9qSQeBDBq9gX323dYxq4H
+         s33WkUBFpMOe2e/Fp/j1ZAAE7XuRCbT2QM+ST84yaMKjl65NmAlYg9mp+t9P8whWPJC9
+         GrxF53sbikUhBuUAHwh9yn0jr6v2FOLirSV+SKIpWA3mSOHtrFLIYRyDfZimixhYfPgz
+         NMeWAv7VgY28v4BbnEB0sSX2oQmcxjcsWhoFZHEg03wMsx0K7hPjb5wuSe66zk7SHjSl
+         lv7Qn4/JeLCh5DCIchF/KzkRSBqehU5mQ8uRRjghPf+aADu3nCAcquJV/a2BG/JzZtOp
+         4MXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sr84YBsS;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 133sor586333pfw.72.2022.02.23.14.31.40
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ghaup9fX;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 5si1234450ejh.215.2022.02.24.01.10.25
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 23 Feb 2022 14:31:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 24 Feb 2022 01:10:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sr84YBsS;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=rchUU4zOX0BPe/9YEpHNPbaJ9WTLO7q01iqF+jngknc=;
-        b=sr84YBsS3UhI193reYUNlrpbz1BB3SE0Uio3w14BppvEDCj5d1bPawlf/wh2wKQfFl
-         9h2BrihJAxylrkfOCbLOibgU0zJoTQToZ66fkISS9misUsnxc/RrxCtXw7e08spg17GJ
-         Q95q5/eHVCi0iOnw9iDRNpQ+boVRxLRKU587gzyDO2NWZqR1K2KIAJdkQ1jrj8BkXqtL
-         stk+rm/3JMQSQjWo04tSPgEcJsizc2aV1mQnlmnlOVnWozzNuMpmEtsmnmPCjIhU3k49
-         AmdfSixKPZg/AMiFHnfUsj1rAr+UZmkZ3O70L/VSFkJvsD/TBDw9NwrsOUJ3liFuZ2mV
-         Z3Qg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ghaup9fX;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1645693824;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+rdqagwISMbbUFbBupZKEqJKpOvZ7RrKc9RcjpzaC+M=;
+	b=Ghaup9fXitus/lZv4tkI4DAKu78I/ppQ3ZMEgmNAd9NkslReHfbf0xLY2ae7jWiu7YfTUD
+	+egpP2wicHIXprvUTeojtYCT/Pof3TE0LR4JHkdtfA0XSYStn6quf3rb0qlvkefneZjfqm
+	ua6L7Upv6BvH6AE0PQpjUndpk2NB5qA=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-8-fHAtPDhoPvOKiAIDDRHo4Q-1; Thu, 24 Feb 2022 04:10:23 -0500
+X-MC-Unique: fHAtPDhoPvOKiAIDDRHo4Q-1
+Received: by mail-ed1-f69.google.com with SMTP id b13-20020a056402278d00b0041311e02a9bso441332ede.13
+        for <alex.bennee@linaro.org>; Thu, 24 Feb 2022 01:10:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=rchUU4zOX0BPe/9YEpHNPbaJ9WTLO7q01iqF+jngknc=;
-        b=JTHakk6WkUepcrw71VrcJqCQbu7CyZNO0n5kSku01/6VdOXbsbnfQpfgHTNIyN6l3A
-         kXFfBegL878VHsp0YptsZL9VdiYIgMGrz2pmmIJVX6j76wA8a/UCA3SGDhG4/G3DCxUS
-         qX1j0Jyis1FqF8JRs3VULL7Ywt8x93llhhtT+MAehz9ujbwHsC5Xpc5PdtykHN68uV5x
-         ZPKR7EUM1ZRVYYWcmafwVarRPWDFfb4r1xi/6Expf63uVz1vsWQmf7QJtanw53FV2PF4
-         F5rfXUCnyaiqJpkMlTr1kJ+JyDSoL3RX6XluLZ7vtSEbcgXzBJeX2jX4wtjMFINaTCEQ
-         RxcA==
-X-Gm-Message-State: AOAM530pUMikPFSFaZobnu/hV4s3Ws3fwEmOjBgMVZcHKwpTsEQQoJvr
-	MEryALhTfaR2vBwvI0u+SqpnLxfl
-X-Google-Smtp-Source: ABdhPJxJ7JSuqO8yDmIZuHMWOwO70U0ClbEVxPLemGmKSnV6c9daLtqo+FI/zOdsr3Mj1u+0yMFSvA==
-X-Received: by 2002:a62:7ad5:0:b0:4e1:5bda:823b with SMTP id v204-20020a627ad5000000b004e15bda823bmr1786609pfc.75.1645655500355;
-        Wed, 23 Feb 2022 14:31:40 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (cpe-50-113-46-110.hawaii.res.rr.com. [50.113.46.110])
-        by smtp.gmail.com with ESMTPSA id f8sm533815pfv.100.2022.02.23.14.31.39
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=+rdqagwISMbbUFbBupZKEqJKpOvZ7RrKc9RcjpzaC+M=;
+        b=uXD+msbz38Eb8TjLDuDjTWSkvvMkvsuwJ+0JFc2QIb3ftFwtn9tLzhUQxJZGRgfCyd
+         FjHRYkHGcK/A/pUoErWT366VdzXCJF2/6AjYKGgw6q+tX5RuYDrmutvPPQLpsOU3hPn5
+         mrQxq+g5w4HuhuYxjh+JdMzU1cMxX8dT/Uut66SziJiGj/W9M6WJYSgcYc0banqBANB0
+         ehj5EMxkBgLiYaaQppRJ4EmojEjPRpB9y2ngG5G6xVgKT2p9n5hS8e2UrNdK2m0dg7zo
+         jhfwEJGnHHIDHIDtvwAbD1jHuptUtcgeLBKyjCey1+Wd5f3om6eAtZ7h7sO1SFxBSVsb
+         ARNw==
+X-Gm-Message-State: AOAM531BT9eQ0UrgaejTIae5L4ChhcUPapLVlSqU/sPtCfMIwxT9ydP6
+	KVQaiRQrs7s4n0EPaGiIrczDgG3+k2qR2m7Q/OAj2VOkq8oKW13oTCcE86Nl7tmEUSW6v0j0brD
+	xgZ1gM4rc18fxaS7O
+X-Received: by 2002:a17:906:280b:b0:6ce:f3c7:688f with SMTP id r11-20020a170906280b00b006cef3c7688fmr1473063ejc.468.1645693822149;
+        Thu, 24 Feb 2022 01:10:22 -0800 (PST)
+X-Received: by 2002:a17:906:280b:b0:6ce:f3c7:688f with SMTP id r11-20020a170906280b00b006cef3c7688fmr1473046ejc.468.1645693821991;
+        Thu, 24 Feb 2022 01:10:21 -0800 (PST)
+Return-Path: <imammedo@redhat.com>
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id h5sm1037267ejk.188.2022.02.24.01.10.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Feb 2022 14:31:39 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v3 00/17] target/arm: Implement LVA, LPA, LPA2 features
-Date: Wed, 23 Feb 2022 12:31:20 -1000
-Message-Id: <20220223223137.114264-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
+        Thu, 24 Feb 2022 01:10:21 -0800 (PST)
+Date: Thu, 24 Feb 2022 10:10:20 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
+ <philippe.mathieu.daude@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?="
+ <berrange@redhat.com>, Alex =?UTF-8?B?QmVubsOpZQ==?=
+ <alex.bennee@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel
+ <qemu-devel@nongnu.org>, Laszlo Ersek <lersek@redhat.com>, Cleber Rosa
+ <cleber@redhat.com>, Oleg Vasilev <me@svin.in>, Richard Henderson
+ <richard.henderson@linaro.org>, Emilio Cota <cota@braap.org>, Philippe
+ =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>, qemu-arm
+ <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Idan Horowitz
+ <idan.horowitz@gmail.com>, Andrew Jones <drjones@redhat.com>
+Subject: Re: Analysis of slow distro boots in check-avocado
+ (BootLinuxAarch64.test_virt_tcg*)
+Message-ID: <20220224101020.2dd35c16@redhat.com>
+In-Reply-To: <20220223115042.lvxgrjirr5avzkzw@sirius.home.kraxel.org>
+References: <874k4xbqvp.fsf@linaro.org>
+	<878ru2nacq.fsf@linaro.org>
+	<YhURfqMvRT4xbiz6@redhat.com>
+	<96bafa75-a0c6-f431-a6d8-fe98d438d0f9@gmail.com>
+	<CAFEAcA8mNt_-nZoV7RL4_UQUV=nPQsDM8KBTA8qAGmiNtXWx9g@mail.gmail.com>
+	<afd92ed6-4392-3181-5875-5e42ad5f41b9@gmail.com>
+	<20220223115042.lvxgrjirr5avzkzw@sirius.home.kraxel.org>
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.31; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: FySA+GeECWpI
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: kfgjLerdVKhZ
 
-Changes for v3:
-  * Update emulation.rst.
-  * Split out separate update to ID_AA64MMFR0.
-  * Hack for avocado.
+On Wed, 23 Feb 2022 12:50:42 +0100
+Gerd Hoffmann <kraxel@redhat.com> wrote:
 
-If the avocado hack isn't acceptable, perhaps just drop the
-last two patches for now?
+>   Hi,
+> 
+> > > Also, "make install" installs these EDK2 images, which doesn't
+> > > seem like the right thing for "this is only for one test case".  
+> > 
+> > Well I'd prefer we never had them installed. Today I don't remember
+> > why it ended that way.  
+> 
+> Probably to behave simliar to other firmware, which makes sense to me.
+> 
+> So maybe do non-debug builds for install and debug builds for the test
+> cases?  Why do the test cases need debug builds btw?
+
+wrt bios-tables-test, it doesn't need debug version and should work fine
+with non-debug builds.
+(if memory serves me right it's this test case that prompted to add
+uefi images to qemu)
 
 
-r~
-
-
-Richard Henderson (17):
-  hw/registerfields: Add FIELD_SEX<N> and FIELD_SDP<N>
-  target/arm: Set TCR_EL1.TSZ for user-only
-  target/arm: Fault on invalid TCR_ELx.TxSZ
-  target/arm: Move arm_pamax out of line
-  target/arm: Pass outputsize down to check_s2_mmu_setup
-  target/arm: Use MAKE_64BIT_MASK to compute indexmask
-  target/arm: Honor TCR_ELx.{I}PS
-  target/arm: Prepare DBGBVR and DBGWVR for FEAT_LVA
-  target/arm: Implement FEAT_LVA
-  target/arm: Implement FEAT_LPA
-  target/arm: Extend arm_fi_to_lfsc to level -1
-  target/arm: Introduce tlbi_aa64_get_range
-  target/arm: Fix TLBIRange.base for 16k and 64k pages
-  target/arm: Validate tlbi TG matches translation granule in use
-  target/arm: Advertise all page sizes for -cpu max
-  tests/avocado: Limit test_virt_tcg_gicv[23] to cortex-a72
-  target/arm: Implement FEAT_LPA2
-
- docs/system/arm/emulation.rst |   3 +
- include/hw/registerfields.h   |  48 ++++-
- target/arm/cpu-param.h        |   4 +-
- target/arm/cpu.h              |  27 +++
- target/arm/internals.h        |  58 +++---
- target/arm/cpu.c              |   3 +-
- target/arm/cpu64.c            |   8 +-
- target/arm/helper.c           | 332 ++++++++++++++++++++++++++--------
- tests/avocado/boot_linux.py   |   4 +-
- 9 files changed, 384 insertions(+), 103 deletions(-)
-
--- 
-2.25.1
+> 
+> take care,
+>   Gerd
+> 

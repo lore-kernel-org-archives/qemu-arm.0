@@ -1,405 +1,147 @@
-X-Received: by 2002:a17:902:d510:b0:150:10a7:cba with SMTP id b16-20020a170902d51000b0015010a70cbamr736592plg.87.1645655528566;
-        Wed, 23 Feb 2022 14:32:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645655528; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp929562lfq;
+        Thu, 24 Feb 2022 05:25:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzlrr1Q1ST/OgyOGeZTKS/e505rGkFFW5RF1JiMP/iybL/UH2aw2oMpOYdHtZdBYGGY2VJ6
+X-Received: by 2002:a17:906:b0f:b0:6ce:e79:75c2 with SMTP id u15-20020a1709060b0f00b006ce0e7975c2mr2330772ejg.668.1645709133761;
+        Thu, 24 Feb 2022 05:25:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645709133; cv=none;
         d=google.com; s=arc-20160816;
-        b=EpiNiEFZaf/Xtad7hxNA5KOZ6kZnF+zQ5RTfLY22JG55GesusPcS1xeHagquyH4HWi
-         Y+DYaSSTR9c1EI/2ogHkMbCTCiCghc//d6klBeXhm9a5/UFdpFEAp4tYiu5g3u0cCKtB
-         J3Nx5h8rfcv9hikaaLOlHMrO/Ygi9vHBCGvAN4tMsLOhZ/3kBC5QyfDSD/V54uAfVgYT
-         zOYQD6PSyKq9hmI7BtQAK2kgeanpy8e11isYXM72TAk7Q5e7YsarFV00Fy+7a2bBESqT
-         krGD1wka5yoBUeU9UH78cSAKSzEKtdSPTbTVJ80MgI6wJPK8pkRy5dBsTWATBx2V/YWi
-         /suw==
+        b=OiTSgw5QiK1mPuJ430XA6knk0LqxSBoh5a+svIY65AmGqCoLSmI80DNrFV7a1IHHD8
+         WvoBrU5kgg/bdPAVhdFqo1PQ+SEEeTh9cvehKpurHWGvwX8jKSkWh1bAzEGJz864UNn7
+         ytwzfUTjqUUQRiCzgfMpjVlrLvZxwfi1UstbmuaDfG3Q7TsuwBEPGOLuFkcLScvncyDj
+         yVF9QHqKhQwzba5XXFyIv8EFFEK8vIOBzu0Um8F5RmylwT7mZqQmDL/4m+VuAgE5EL5M
+         3Z5HHfsPbY0AfSoISKhdc8sF4TZJ3E158QDJI+A0RG1LxMI27WlanLpmYe3hD/ZEfN2o
+         ykUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=19hfjB18qiT1jmcGWmvL02wOHBgHmeraSiuqJSfuTKE=;
-        b=IpZaLWpSr69jrNOBf8qEFLFIzd3yMG+c9NzfxK/WleXtRclklVv4sB8PMAJHE/cBMO
-         ZiNS3GZx3NjZkHAOLgRgGRij1uI5fmogIWLZTxkKZG+9WokqCtTjJZ1VPpcm5oOeRReD
-         oXw44aAv2qHoGWG+Tg9d2JnQxkmIJZr37sSKZ83vmnvhaevS3V5SQI5m9hZz6TJ3X1zp
-         +lcpJ4JUmcsbXXrpI3dvnTxFDG5R87LYPoSSgBsevEFBoNt4uU9xFefqe5POFP1PC63A
-         CRi917kjiKN7MH0ScqYlDjLkyfNo9iD1Q1uMo4rUXzxSl2I83fZ7Zk3/IZ/QTa3CKeyc
-         /rUg==
+        h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=vyDGyW/NXfqLIjC1WzN0Ar/TYLrZ09tcsez/yWwu874=;
+        b=R6q7bELiNJEkUb2+bEMb4GAH8H7FmJE0WIFakKX5my7Zxjpm7z0GEfC25uCQtf3EmD
+         habn8CiTu8ZFa1J/Isr73hdmu+ac+KCaDreBj5sjbDRM2cv8UpunmtlI2uvkVS0+uJUt
+         GTmGmiY9Tge8yvJbo5UhXjrLFqSORJln9hd+N1Cw7NzEKMbFFDb0t0xUxMFe62MKS+nq
+         xxmMZUFtZAQjPXUI/YW7ga9dw4rNIjuyCl8MPItrnUntad0rsEw69cz5B2VQ5eQ+eQUk
+         +33DAYgo+q1pHu0XXh/uaiYtrlRx5H0UU2oMUDcftPd91Z48QZFd9XVZIC/uCyCSk5WG
+         JidA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fboG4XYx;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CEnyKn0g;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s40sor561631pfg.91.2022.02.23.14.32.08
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 23 Feb 2022 14:32:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id a6si1364361edx.470.2022.02.24.05.25.33;
+        Thu, 24 Feb 2022 05:25:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fboG4XYx;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CEnyKn0g;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S234815AbiBXN0A (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Thu, 24 Feb 2022 08:26:00 -0500
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:33910 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S231328AbiBXNZ7 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 24 Feb 2022 08:25:59 -0500
+Received: from mail-yb1-xb35.google.com (mail-yb1-xb35.google.com [IPv6:2607:f8b0:4864:20::b35])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 0B0F715F615
+        for <kvm@vger.kernel.org>; Thu, 24 Feb 2022 05:25:30 -0800 (PST)
+Received: by mail-yb1-xb35.google.com with SMTP id d21so3742318yba.11
+        for <kvm@vger.kernel.org>; Thu, 24 Feb 2022 05:25:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=19hfjB18qiT1jmcGWmvL02wOHBgHmeraSiuqJSfuTKE=;
-        b=fboG4XYxuwhNIrOwWSpRKkeUdgCF6i5/UsCu2/T7o3XMrZAAXpWIDsITLMURkhlSfn
-         CHNe7H6UkjTvcuzUknyU+p2rvdzOH5fAvUaA0EkNR9NCcj5+kQrzIgsMM/PGIXeAJHk8
-         yW2dZDlT3duyECfo+EjVqgWGtdQlg+PDQxmOo5hwcC92kLHJPuh3y846DHYLkyYhTvbk
-         QVh/ABHm/Txdy4KoQdJh66U0HT4XjHJZghJQTen9A4k8k4lcuYvsxcl+D802ev1WURuM
-         fnTUPQuvFg5clDh/XA9L/bKU1As2ZvBRcwyhhfcNGG38q29qjG2u25QuQ8bbl4y6Bfyv
-         nT4w==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=vyDGyW/NXfqLIjC1WzN0Ar/TYLrZ09tcsez/yWwu874=;
+        b=CEnyKn0gygVuk2jLKONBs8a122NU2vu3Rl1cNd/9pRLD/04312NIGfwb19lxBCK/iM
+         YtK40cD02Dqyb/y0wvLpMKOJGMvk3akGnUComBdcvIC0SEXkRaIsZKVC/ce61pNE1XcS
+         qYft+XGbTBaJzPb4lbT0bbJPR+LoITgtzQSfNxviHb/lajxnz2k+wOlaMy7eJHhUV21k
+         rKhLZheZsKBkSE9e1dZPz9iGCfN4Kw0ohLuaL0ZNaitBF8CkFyoxLCIU+l7sosUxMzc0
+         fymv+5cdpcOX9dzTDhFxMQ7ObzRwNcVwFPEJFCdApqBGAutRrFvxyIQVyqqlCbFfgoN2
+         2MZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=19hfjB18qiT1jmcGWmvL02wOHBgHmeraSiuqJSfuTKE=;
-        b=hQ/5HDkWNkM3eryagqXxH+maTu/h/3sx9HBxO3RiOT/BfrPSBE5RAh8565a8OYymRa
-         wNu5JtKQJtp0vg9thPQ/8AqUKSBLPSdctbYpDkjHbvn+IDgU0Axr3ynbZo3ckFwJOZET
-         2wk5SGVhXOzmCnH0eXOkwFYPMlc89ox5pp3xNPqwWlzvirpMvefyr2n0Mv+rSdZgOWxu
-         7eOnJ0eQCOemEqQfkXJoH6gUC2n/ehhlS0IdmwT+/Xq0kKGO8aK+PVP8flTjwMxRwjvI
-         mc1tqlW+YHyBD7DAPBuLOaxtd+aKkgsMuS+r37KMwkbTktkSdjnSCYJ+hQ/MJSdsSN7v
-         gH9w==
-X-Gm-Message-State: AOAM530r60W9gnv/OBszRACK+lUXG/TepK9fYRAFbZo/AMFpzQGLMGby
-	+nACOXZVZdQuVZgxvg5Ew9NTbC0W
-X-Google-Smtp-Source: ABdhPJw/LpsNzAyJGKb5C2SXFQt5j2Gpw5SSK2M4fLvzNdlrn4QsxkNWEY3aSCgCeUcTHYUthTYpKw==
-X-Received: by 2002:a05:6a00:2311:b0:4e1:52bf:e466 with SMTP id h17-20020a056a00231100b004e152bfe466mr1903687pfh.77.1645655527993;
-        Wed, 23 Feb 2022 14:32:07 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (cpe-50-113-46-110.hawaii.res.rr.com. [50.113.46.110])
-        by smtp.gmail.com with ESMTPSA id f8sm533815pfv.100.2022.02.23.14.32.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Feb 2022 14:32:07 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v3 17/17] target/arm: Implement FEAT_LPA2
-Date: Wed, 23 Feb 2022 12:31:37 -1000
-Message-Id: <20220223223137.114264-18-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220223223137.114264-1-richard.henderson@linaro.org>
-References: <20220223223137.114264-1-richard.henderson@linaro.org>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=vyDGyW/NXfqLIjC1WzN0Ar/TYLrZ09tcsez/yWwu874=;
+        b=m7cqHlAOMsvrajjh1HlCk4E6LnzPuwJ4Ab4P2y3st2bwnIIuMIa+Zcgb9h+WJ0aWaO
+         heEogizTK4EG8i7ipG0I7f/BfhDKBYgn6XpLaYBEqSajZyKx/RivckH70mlN5R87GDoe
+         hqMnCQDOeEcje1GidTkZw65xUyF8L4bjpocwAaFEj+FTtfbK8/gGxkV9JMphoiFbYlBp
+         yrSDotdPeUiAOrSBPiXKxXYXfhY9/Byb9xdNpyBPgFqEUqILVvvNZ3eyhFXDroPM0bZI
+         nqQRVVqTvEsJ4qZMnkeRBzMhA2zCNv9V1Tf69OpTANMKYO/9qNHBkj/gjZ6SSOlnR7RL
+         JTTw==
+X-Gm-Message-State: AOAM53194uolX+iKmAdaG0IqiHS/9BcKXLvMbuQ0+lN90ogqid7i/aZi
+        AJdQd6urADHCiWhrlSiey8BbYJ/5RTyIj2ley5H5sQ==
+X-Received: by 2002:a25:69c4:0:b0:624:4ee4:a142 with SMTP id
+ e187-20020a2569c4000000b006244ee4a142mr2429006ybc.85.1645709129260; Thu, 24
+ Feb 2022 05:25:29 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: GLlVGnhAUDBw
+References: <20220213035753.34577-1-akihiko.odaki@gmail.com>
+In-Reply-To: <20220213035753.34577-1-akihiko.odaki@gmail.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Thu, 24 Feb 2022 13:25:18 +0000
+Message-ID: <CAFEAcA8_VgsR=Bcn1wxxaLotxQH3sumYMt1=3NxwHcdQFLPYqA@mail.gmail.com>
+Subject: Re: [PATCH v2] target/arm: Support PSCI 1.1 and SMCCC 1.0
+To:     Akihiko Odaki <akihiko.odaki@gmail.com>
+Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Alexander Graf <agraf@csgraf.de>
+Content-Type: text/plain; charset="UTF-8"
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE autolearn=ham
+        autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 011JnjzhxQx/
 
-This feature widens physical addresses (and intermediate physical
-addresses for 2-stage translation) from 48 to 52 bits, when using
-4k or 16k pages.
+On Sun, 13 Feb 2022 at 03:58, Akihiko Odaki <akihiko.odaki@gmail.com> wrote:
+>
+> Support the latest PSCI on TCG and HVF. A 64-bit function called from
+> AArch32 now returns NOT_SUPPORTED, which is necessary to adhere to SMC
+> Calling Convention 1.0. It is still not compliant with SMCCC 1.3 since
+> they do not implement mandatory functions.
 
-This introduces the DS bit to TCR_ELx, which is RES0 unless the
-page size is enabled and supports LPA2, resulting in the effective
-value of DS for a given table walk.  The DS bit changes the format
-of the page table descriptor slightly, moving the PS field out to
-TCR so that all pages have the same sharability and repurposing
-those bits of the page table descriptor for the highest bits of
-the output address.
+>  /* PSCI v0.2 return values used by TCG emulation of PSCI */
+>
+>  /* No Trusted OS migration to worry about when offlining CPUs */
+>  #define QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED        2
+>
+> -/* We implement version 0.2 only */
+> -#define QEMU_PSCI_0_2_RET_VERSION_0_2                       2
+> +#define QEMU_PSCI_VERSION_0_1                     0x00001
+> +#define QEMU_PSCI_VERSION_0_2                     0x00002
+> +#define QEMU_PSCI_VERSION_1_1                     0x10001
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
-v2: Check DS in tlbi_aa64_get_range.
-    Check TGRAN4_2 and TGRAN16_2.
----
- docs/system/arm/emulation.rst |   1 +
- target/arm/cpu.h              |  22 ++++++++
- target/arm/internals.h        |   2 +
- target/arm/cpu64.c            |   7 ++-
- target/arm/helper.c           | 102 +++++++++++++++++++++++++++++-----
- 5 files changed, 116 insertions(+), 18 deletions(-)
+Just noticed that there's a minor issue with this change -- it
+deletes the definition of QEMU_PSCI_0_2_RET_VERSION_0_2, but
+it is still used below:
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 0053ddce20..520fd39071 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -25,6 +25,7 @@ the following architecture extensions:
- - FEAT_JSCVT (JavaScript conversion instructions)
- - FEAT_LOR (Limited ordering regions)
- - FEAT_LPA (Large Physical Address space)
-+- FEAT_LPA2 (Large Physical and virtual Address space v2)
- - FEAT_LRCPC (Load-acquire RCpc instructions)
- - FEAT_LRCPC2 (Load-acquire RCpc instructions v2)
- - FEAT_LSE (Large System Extensions)
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c52d56f669..24d9fff170 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -4284,6 +4284,28 @@ static inline bool isar_feature_aa64_i8mm(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, I8MM) != 0;
- }
- 
-+static inline bool isar_feature_aa64_tgran4_lpa2(const ARMISARegisters *id)
-+{
-+    return FIELD_SEX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4) >= 1;
-+}
-+
-+static inline bool isar_feature_aa64_tgran4_2_lpa2(const ARMISARegisters *id)
-+{
-+    unsigned t = FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4_2);
-+    return t >= 3 || (t == 0 && isar_feature_aa64_tgran4_lpa2(id));
-+}
-+
-+static inline bool isar_feature_aa64_tgran16_lpa2(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN16) >= 2;
-+}
-+
-+static inline bool isar_feature_aa64_tgran16_2_lpa2(const ARMISARegisters *id)
-+{
-+    unsigned t = FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN16_2);
-+    return t >= 3 || (t == 0 && isar_feature_aa64_tgran16_lpa2(id));
-+}
-+
- static inline bool isar_feature_aa64_ccidx(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, CCIDX) != 0;
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 00af41d792..a34be2e459 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1056,6 +1056,7 @@ static inline uint32_t aarch64_pstate_valid_mask(const ARMISARegisters *id)
- typedef struct ARMVAParameters {
-     unsigned tsz    : 8;
-     unsigned ps     : 3;
-+    unsigned sh     : 2;
-     unsigned select : 1;
-     bool tbi        : 1;
-     bool epd        : 1;
-@@ -1063,6 +1064,7 @@ typedef struct ARMVAParameters {
-     bool using16k   : 1;
-     bool using64k   : 1;
-     bool tsz_oob    : 1;  /* tsz has been clamped to legal range */
-+    bool ds         : 1;
- } ARMVAParameters;
- 
- ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 2fdc16bf18..fc3c65ab2a 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -796,10 +796,11 @@ static void aarch64_max_initfn(Object *obj)
- 
-     t = cpu->isar.id_aa64mmfr0;
-     t = FIELD_DP64(t, ID_AA64MMFR0, PARANGE, 6); /* FEAT_LPA: 52 bits */
--    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16, 1);   /* 16k pages supported */
--    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16_2, 2); /* 16k stage2 supported */
-+    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16, 2);   /* 16k pages w/ LPA2 */
-+    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN4, 1);    /*  4k pages w/ LPA2 */
-+    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16_2, 3); /* 16k stage2 w/ LPA2 */
-+    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN4_2, 3);  /*  4k stage2 w/ LPA2 */
-     t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN64_2, 2); /* 64k stage2 supported */
--    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN4_2, 2);  /*  4k stage2 supported */
-     cpu->isar.id_aa64mmfr0 = t;
- 
-     t = cpu->isar.id_aa64mmfr1;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 3a7f5cf6f0..088956eecf 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4546,6 +4546,14 @@ static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
-     } else {
-         ret.base = extract64(value, 0, 37);
-     }
-+    if (param.ds) {
-+        /*
-+         * With DS=1, BaseADDR is always shifted 16 so that it is able
-+         * to address all 52 va bits.  The input address is perforce
-+         * aligned on a 64k boundary regardless of translation granule.
-+         */
-+        page_shift = 16;
-+    }
-     ret.base <<= page_shift;
- 
-     return ret;
-@@ -11081,8 +11089,13 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
-     const int grainsize = stride + 3;
-     int startsizecheck;
- 
--    /* Negative levels are never allowed.  */
--    if (level < 0) {
-+    /*
-+     * Negative levels are usually not allowed...
-+     * Except for FEAT_LPA2, 4k page table, 52-bit address space, which
-+     * begins with level -1.  Note that previous feature tests will have
-+     * eliminated this combination if it is not enabled.
-+     */
-+    if (level < (inputsize == 52 && stride == 9 ? -1 : 0)) {
-         return false;
-     }
- 
-@@ -11223,8 +11236,9 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-                                    ARMMMUIdx mmu_idx, bool data)
- {
-     uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
--    bool epd, hpd, using16k, using64k, tsz_oob;
--    int select, tsz, tbi, max_tsz, min_tsz, ps;
-+    bool epd, hpd, using16k, using64k, tsz_oob, ds;
-+    int select, tsz, tbi, max_tsz, min_tsz, ps, sh;
-+    ARMCPU *cpu = env_archcpu(env);
- 
-     if (!regime_has_2_ranges(mmu_idx)) {
-         select = 0;
-@@ -11238,7 +11252,9 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-             hpd = extract32(tcr, 24, 1);
-         }
-         epd = false;
-+        sh = extract32(tcr, 12, 2);
-         ps = extract32(tcr, 16, 3);
-+        ds = extract64(tcr, 32, 1);
-     } else {
-         /*
-          * Bit 55 is always between the two regions, and is canonical for
-@@ -11248,6 +11264,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         if (!select) {
-             tsz = extract32(tcr, 0, 6);
-             epd = extract32(tcr, 7, 1);
-+            sh = extract32(tcr, 12, 2);
-             using64k = extract32(tcr, 14, 1);
-             using16k = extract32(tcr, 15, 1);
-             hpd = extract64(tcr, 41, 1);
-@@ -11257,24 +11274,51 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-             using64k = tg == 3;
-             tsz = extract32(tcr, 16, 6);
-             epd = extract32(tcr, 23, 1);
-+            sh = extract32(tcr, 28, 2);
-             hpd = extract64(tcr, 42, 1);
-         }
-         ps = extract64(tcr, 32, 3);
-+        ds = extract64(tcr, 59, 1);
-     }
- 
--    if (cpu_isar_feature(aa64_st, env_archcpu(env))) {
-+    if (cpu_isar_feature(aa64_st, cpu)) {
-         max_tsz = 48 - using64k;
-     } else {
-         max_tsz = 39;
-     }
- 
-+    /*
-+     * DS is RES0 unless FEAT_LPA2 is supported for the given page size;
-+     * adjust the effective value of DS, as documented.
-+     */
-     min_tsz = 16;
-     if (using64k) {
--        if (cpu_isar_feature(aa64_lva, env_archcpu(env))) {
-+        if (cpu_isar_feature(aa64_lva, cpu)) {
-+            min_tsz = 12;
-+        }
-+        ds = false;
-+    } else if (ds) {
-+        switch (mmu_idx) {
-+        case ARMMMUIdx_Stage2:
-+        case ARMMMUIdx_Stage2_S:
-+            if (using16k) {
-+                ds = cpu_isar_feature(aa64_tgran16_2_lpa2, cpu);
-+            } else {
-+                ds = cpu_isar_feature(aa64_tgran4_2_lpa2, cpu);
-+            }
-+            break;
-+        default:
-+            if (using16k) {
-+                ds = cpu_isar_feature(aa64_tgran16_lpa2, cpu);
-+            } else {
-+                ds = cpu_isar_feature(aa64_tgran4_lpa2, cpu);
-+            }
-+            break;
-+        }
-+        if (ds) {
-             min_tsz = 12;
-         }
-     }
--    /* TODO: FEAT_LPA2 */
- 
-     if (tsz > max_tsz) {
-         tsz = max_tsz;
-@@ -11296,6 +11340,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-     return (ARMVAParameters) {
-         .tsz = tsz,
-         .ps = ps,
-+        .sh = sh,
-         .select = select,
-         .tbi = tbi,
-         .epd = epd,
-@@ -11303,6 +11348,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         .using16k = using16k,
-         .using64k = using64k,
-         .tsz_oob = tsz_oob,
-+        .ds = ds,
-     };
- }
- 
-@@ -11528,10 +11574,19 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-          * VTCR_EL2.SL0 field (whose interpretation depends on the page size)
-          */
-         uint32_t sl0 = extract32(tcr->raw_tcr, 6, 2);
-+        uint32_t sl2 = extract64(tcr->raw_tcr, 33, 1);
-         uint32_t startlevel;
-         bool ok;
- 
--        if (!aarch64 || stride == 9) {
-+        /* SL2 is RES0 unless DS=1 & 4kb granule. */
-+        if (param.ds && stride == 9 && sl2) {
-+            if (sl0 != 0) {
-+                level = 0;
-+                fault_type = ARMFault_Translation;
-+                goto do_fault;
-+            }
-+            startlevel = -1;
-+        } else if (!aarch64 || stride == 9) {
-             /* AArch32 or 4KB pages */
-             startlevel = 2 - sl0;
- 
-@@ -11585,10 +11640,12 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-      * for both v7 and v8.  However, for v8 the SBZ bits [47:40] must be 0
-      * or an AddressSize fault is raised.  So for v8 we extract those SBZ
-      * bits as part of the address, which will be checked via outputsize.
--     * For AArch64, the address field always goes up to bit 47 (with extra
--     * bits for FEAT_LPA placed elsewhere).  AArch64 implies v8.
-+     * For AArch64, the address field goes up to bit 47, or 49 with FEAT_LPA2;
-+     * the highest bits of a 52-bit output are placed elsewhere.
-      */
--    if (arm_feature(env, ARM_FEATURE_V8)) {
-+    if (param.ds) {
-+        descaddrmask = MAKE_64BIT_MASK(0, 50);
-+    } else if (arm_feature(env, ARM_FEATURE_V8)) {
-         descaddrmask = MAKE_64BIT_MASK(0, 48);
-     } else {
-         descaddrmask = MAKE_64BIT_MASK(0, 40);
-@@ -11623,11 +11680,16 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
- 
-         /*
-          * For FEAT_LPA and PS=6, bits [51:48] of descaddr are in [15:12]
--         * of descriptor.  Otherwise, if descaddr is out of range, raise
--         * AddressSizeFault.
-+         * of descriptor.  For FEAT_LPA2 and effective DS, bits [51:50] of
-+         * descaddr are in [9:8].  Otherwise, if descaddr is out of range,
-+         * raise AddressSizeFault.
-          */
-         if (outputsize > 48) {
--            descaddr |= extract64(descriptor, 12, 4) << 48;
-+            if (param.ds) {
-+                descaddr |= extract64(descriptor, 8, 2) << 50;
-+            } else {
-+                descaddr |= extract64(descriptor, 12, 4) << 48;
-+            }
-         } else if (descaddr >> outputsize) {
-             fault_type = ARMFault_AddressSize;
-             goto do_fault;
-@@ -11721,7 +11783,17 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-         assert(attrindx <= 7);
-         cacheattrs->attrs = extract64(mair, attrindx * 8, 8);
-     }
--    cacheattrs->shareability = extract32(attrs, 6, 2);
-+
-+    /*
-+     * For FEAT_LPA2 and effective DS, the SH field in the attributes
-+     * was re-purposed for output address bits.  The SH attribute in
-+     * that case comes from TCR_ELx, which we extracted earlier.
-+     */
-+    if (param.ds) {
-+        cacheattrs->shareability = param.sh;
-+    } else {
-+        cacheattrs->shareability = extract32(attrs, 6, 2);
-+    }
- 
-     *phys_ptr = descaddr;
-     *page_size_ptr = page_size;
--- 
-2.25.1
+>
+>  MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
+>  MISMATCH_CHECK(QEMU_PSCI_0_2_RET_VERSION_0_2,
+
+here ^^  which means that this breaks compilation on Arm hosts.
+
+I'll squash in the fix:
+
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -98,8 +98,11 @@ MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES,
+PSCI_1_0_FN_PSCI_FEATURES);
+ #define QEMU_PSCI_VERSION_1_1                     0x10001
+
+ MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
+-MISMATCH_CHECK(QEMU_PSCI_0_2_RET_VERSION_0_2,
++/* We don't bother to check every possible version value */
++MISMATCH_CHECK(QEMU_PSCI_VERSION_0_2,
+                (PSCI_VERSION_MAJOR(0) | PSCI_VERSION_MINOR(2)));
++MISMATCH_CHECK(QEMU_PSCI_VERSION_1_1,
++               (PSCI_VERSION_MAJOR(1) | PSCI_VERSION_MINOR(1)));
+
+ /* PSCI return values (inclusive of all PSCI versions) */
+ #define QEMU_PSCI_RET_SUCCESS                     0
+
+thanks
+-- PMM

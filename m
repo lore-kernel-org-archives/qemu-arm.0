@@ -1,37 +1,10 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1924505lfq;
-        Fri, 25 Feb 2022 09:20:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=Ns+fYWljoLwi6Vr9txF+6QpXpSI1wN1Odp6zKAkN3xM=;
-        b=mElp9feFVLRiU8AnVqG5imkSHn/hXUNVoCNeTyBFOUP/OnAaYY8i9DLqfMvypQPnIH
-         MKgoeWz3Zj2wn3GCqS2U5pi5WWb7ve4Te1XIy2SmFRNlUTplQ1MHdLC+Y6Ad+1yOpsnl
-         y0TJ7my6Rmr+S9X9RRhnLvwX1JVChZj+jW0JSfre0OAn2SajtwHzIoGKIp4z72oS/2TG
-         /WIzXTvX14jfxOfnxdS/G5CCkC/TsEbizepv4exNOy8wnV/YkxnxtCIKL7bu+VZyaTKh
-         7//auBYyNKWeYQZJgQohzUyvJIquZ9jXid+I7LBC/fGb25sn2WE0R9B2O7H7YxLeMlYw
-         dTPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=Ns+fYWljoLwi6Vr9txF+6QpXpSI1wN1Odp6zKAkN3xM=;
-        b=B+7DfQ5LSEsIYC4fQ/dElWNgXykL7c3yd79Ludvl9yle2Q6NIuN/OYcUyWDb9+tep6
-         Rm+YnAGfuG/Bt9W66kIjbf+zePHLlSFtNooWtck1jQlLuqK1ucSf90nuvLsCuy0xvF1m
-         BpwVTRBdAcvMKn05aVHKqkapANw3MhogV06oju/y1g9d21z91xZb0NFySlX3HHEnT4nj
-         EVjJWgdAiOK8peOM9+pvLyCTIYWuenCbBz27ri6A/lAOb9hglj5SCFVG5mehp7NM7Byc
-         dDHq/3dkPSG/UG/123u5CqhHWfKxb9aCMfEkZIN8ceUAEwZOZOa5gcUwirU2r16Ttv6R
-         66Ug==
-X-Google-Smtp-Source: ABdhPJx8FAP6F8AOH0xapCoWbOy6K5jD7XciJgJ20BJpxMUkH4IfWMS4Fet1VM0FfCcyXzGryfxqCw==
-X-Received: by 2002:a05:6402:40c1:b0:412:b240:dfeb with SMTP id z1-20020a05640240c100b00412b240dfebmr7809739edb.239.1645809632251;
-        Fri, 25 Feb 2022 09:20:32 -0800 (PST)
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id 17-20020a170906059100b006cee1bceddasm1202190ejn.130.2022.02.25.09.20.27
+        by smtp.gmail.com with ESMTPSA id el9-20020a170907284900b006cf8e3c83e3sm1246265ejc.168.2022.02.25.09.26.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Feb 2022 09:20:32 -0800 (PST)
+        Fri, 25 Feb 2022 09:26:16 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 055B51FFC2;
+	by zen.linaroharston (Postfix) with ESMTP id 7345C1FFC7;
 	Fri, 25 Feb 2022 17:20:23 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -45,54 +18,146 @@ Cc: fam@euphon.net,
 	qemu-arm@nongnu.org,
 	richard.henderson@linaro.org,
 	sw@weilnetz.de,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v2 10/18] tests/tcg/ppc64: clean-up handling of byte-reverse
-Date: Fri, 25 Feb 2022 17:20:13 +0000
-Message-Id: <20220225172021.3493923-11-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	qemu-s390x@nongnu.org (open list:S390 general arch...)
+Subject: [PATCH  v2 15/18] gitlab: upgrade the job definition for s390x to 20.04
+Date: Fri, 25 Feb 2022 17:20:18 +0000
+Message-Id: <20220225172021.3493923-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220225172021.3493923-1-alex.bennee@linaro.org>
 References: <20220225172021.3493923-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: n8yNc5rhBhIL
+X-TUID: NBpzWBzc7rH7
 
-Rather than having an else leg for the missing compiler case we can
-simply just not add the test - the same way as is done for ppc64le.
-Also while we are at it fix up the compiler invocation.
+The new s390x machine has more of everything including the OS. As
+18.04 will soon be going we might as well get onto something moderately
+modern.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Acked-by: Christian Borntraeger <borntraeger@de.ibm.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Cornelia Huck <cohuck@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/tcg/ppc64/Makefile.target | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+ .gitlab-ci.d/custom-runners.yml               |  2 +-
+ ...18.04-s390x.yml => ubuntu-20.04-s390x.yml} | 28 +++++++++----------
+ 2 files changed, 15 insertions(+), 15 deletions(-)
+ rename .gitlab-ci.d/custom-runners/{ubuntu-18.04-s390x.yml => ubuntu-20.04-s390x.yml} (87%)
 
-diff --git a/tests/tcg/ppc64/Makefile.target b/tests/tcg/ppc64/Makefile.target
-index 0368007028..9d6dfc1e26 100644
---- a/tests/tcg/ppc64/Makefile.target
-+++ b/tests/tcg/ppc64/Makefile.target
-@@ -10,19 +10,14 @@ PPC64_TESTS=bcdsub non_signalling_xscv
- endif
- $(PPC64_TESTS): CFLAGS += -mpower8-vector
+diff --git a/.gitlab-ci.d/custom-runners.yml b/.gitlab-ci.d/custom-runners.yml
+index 056c374619..3e76a2034a 100644
+--- a/.gitlab-ci.d/custom-runners.yml
++++ b/.gitlab-ci.d/custom-runners.yml
+@@ -14,6 +14,6 @@ variables:
+   GIT_STRATEGY: clone
  
--PPC64_TESTS += byte_reverse
- PPC64_TESTS += mtfsf
-+
- ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_POWER10),)
-+PPC64_TESTS += byte_reverse
-+endif
-+byte_reverse: CFLAGS += -mcpu=power10
- run-byte_reverse: QEMU_OPTS+=-cpu POWER10
- run-plugin-byte_reverse-with-%: QEMU_OPTS+=-cpu POWER10
--else
--byte_reverse:
--	$(call skip-test, "BUILD of $@", "missing compiler support")
--run-byte_reverse:
--	$(call skip-test, "RUN of byte_reverse", "not built")
--run-plugin-byte_reverse-with-%:
--	$(call skip-test, "RUN of byte_reverse ($*)", "not built")
--endif
+ include:
+-  - local: '/.gitlab-ci.d/custom-runners/ubuntu-18.04-s390x.yml'
++  - local: '/.gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml'
+   - local: '/.gitlab-ci.d/custom-runners/ubuntu-20.04-aarch64.yml'
+   - local: '/.gitlab-ci.d/custom-runners/centos-stream-8-x86_64.yml'
+diff --git a/.gitlab-ci.d/custom-runners/ubuntu-18.04-s390x.yml b/.gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml
+similarity index 87%
+rename from .gitlab-ci.d/custom-runners/ubuntu-18.04-s390x.yml
+rename to .gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml
+index f39d874a1e..0333872113 100644
+--- a/.gitlab-ci.d/custom-runners/ubuntu-18.04-s390x.yml
++++ b/.gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml
+@@ -1,12 +1,12 @@
+-# All ubuntu-18.04 jobs should run successfully in an environment
++# All ubuntu-20.04 jobs should run successfully in an environment
+ # setup by the scripts/ci/setup/build-environment.yml task
+-# "Install basic packages to build QEMU on Ubuntu 18.04/20.04"
++# "Install basic packages to build QEMU on Ubuntu 20.04/20.04"
  
- PPC64_TESTS += signal_save_restore_xer
+-ubuntu-18.04-s390x-all-linux-static:
++ubuntu-20.04-s390x-all-linux-static:
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_18.04
++ - ubuntu_20.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+@@ -21,11 +21,11 @@ ubuntu-18.04-s390x-all-linux-static:
+  - make --output-sync -j`nproc` check V=1
+  - make --output-sync -j`nproc` check-tcg V=1
  
+-ubuntu-18.04-s390x-all:
++ubuntu-20.04-s390x-all:
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_18.04
++ - ubuntu_20.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+@@ -37,11 +37,11 @@ ubuntu-18.04-s390x-all:
+  - make --output-sync -j`nproc`
+  - make --output-sync -j`nproc` check V=1
+ 
+-ubuntu-18.04-s390x-alldbg:
++ubuntu-20.04-s390x-alldbg:
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_18.04
++ - ubuntu_20.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+@@ -58,11 +58,11 @@ ubuntu-18.04-s390x-alldbg:
+  - make --output-sync -j`nproc`
+  - make --output-sync -j`nproc` check V=1
+ 
+-ubuntu-18.04-s390x-clang:
++ubuntu-20.04-s390x-clang:
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_18.04
++ - ubuntu_20.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+@@ -78,11 +78,11 @@ ubuntu-18.04-s390x-clang:
+  - make --output-sync -j`nproc`
+  - make --output-sync -j`nproc` check V=1
+ 
+-ubuntu-18.04-s390x-tci:
++ubuntu-20.04-s390x-tci:
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_18.04
++ - ubuntu_20.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+@@ -97,11 +97,11 @@ ubuntu-18.04-s390x-tci:
+  - ../configure --disable-libssh --enable-tcg-interpreter
+  - make --output-sync -j`nproc`
+ 
+-ubuntu-18.04-s390x-notcg:
++ubuntu-20.04-s390x-notcg:
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_18.04
++ - ubuntu_20.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
 -- 
 2.30.2

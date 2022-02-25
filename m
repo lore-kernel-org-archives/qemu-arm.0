@@ -1,113 +1,120 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1948461lfq;
-        Fri, 25 Feb 2022 09:57:33 -0800 (PST)
-X-Received: by 2002:a25:a467:0:b0:61e:1b4a:7700 with SMTP id f94-20020a25a467000000b0061e1b4a7700mr8344345ybi.390.1645811853265;
-        Fri, 25 Feb 2022 09:57:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645811853; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2041777lfq;
+        Fri, 25 Feb 2022 12:26:03 -0800 (PST)
+X-Received: by 2002:a63:4e14:0:b0:374:4a37:4966 with SMTP id c20-20020a634e14000000b003744a374966mr7541797pgb.118.1645820762836;
+        Fri, 25 Feb 2022 12:26:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645820762; cv=none;
         d=google.com; s=arc-20160816;
-        b=qbbl2Ao52KShH9AHWaiDk15G/iUp9Zi80h+eSec0NEyAtYt/XB+DdVHAP6LN9hlnhR
-         wkQu12WWsbPCgYNdQTi1wo+QoDXabOSgOR1mneTbM8maM3cDEbGMXIM8zyPvN158Lkvn
-         fMRbRRzy3LoH/EgILIvWt3p1t9eNlOkK+WCBRm8+ly2JHACqVWyzJtMR7pR6/qMT4gfT
-         IbIrJnEYqkNe6x0ff+ylmPQkwbzkMQv3ImG7slhuI58OfW56nF9HQSPhLR7DomCbPLoU
-         GL/Cg6SjNrXx6IwIbf8iYplPvUA9WXkfljws1uefa1OFDuuazz18T1py4ltpx/iusmkE
-         NK3w==
+        b=MVdCnM6dM+7Cv7sVAP0JtK6LmtvZ33NwsvtJXF9Su/H4oc9OpfFTVavRxvHhS3ztT8
+         EUTTHnKlVqPKrZenEn//9gOKpzwvLbxYPa+EGGMzNiUa48CEz/WX2WlOj+EXUiRg1xpS
+         5jz3z8q1AUYBiqRCthPT3vsTftJjrjbLeMQtpX0dcaC+sX/ODOXlN2wpIfAjOFhYH3nB
+         nJsTf227JdrjZtxFyYHImM/yYZnN13XJqeJ9JSqBhXIpn2VLxp1HJKpuTZpG/t0+ykcI
+         MYQeAoQWGybGnQLiwmv1vl6Jm0ow5xEnxgX/WaA3myphWhKJlvIusGPw/xlwz3Z0JuWP
+         jW2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=TbDhTR7G0bzWRyZi1swxpGARwyW/b/53IV/Y4M0uj3s=;
-        b=UeumL8/NLCNrSMWRRrw01hNjodHffVUaaOzYbc5bJK3zEaVxQT7URSbmWckNRklIiA
-         jElfvfgMe70fNVVLOCwysviZTdufJkloV8bcM35ChcZf3ScjQLGj7UQzCghsNBdQyyyi
-         0Q26Vg+9OtXNBmeVdI3BfMojevRheSUExUaQAe77RDsiztQGqpekxaQH2aW04XnMRbmx
-         tSj0xvR4400eaRWHha9h8FcCKace8nXndZSa5eUrRcmiK2EO0JIyl8wI5WgBAeBqboO2
-         +J5AxYBj5NUWmqvmUAYXkH/ZaDno33x1mM1BA9+YovDL+z0VdV3NNBvgoxouk/I/KFRM
-         X3Fg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=k98AsEPV/ivVoIvbylNpjeLEa0XyMim+clW4kmDPBqI=;
+        b=wsvc18UjhtMkfSCW8SZH/OfjsrKtOCPJwxOI2oLyeaDDdPfDFLCsIPWFk7H0g3MaRJ
+         NnzECRV5e6EhwrGJahYdfc7fYc8MAUChM7A4O6A7jLfpcfRGuQOwfOpz0u87eNfG3t93
+         7/fjuXWUJTez6b4/mvgggXl22h9cxAvjdDXBJzyw5xVQD2dPKHJED0I53zTKFfC110wt
+         H0C6izX7Sf/k3XF+xD964p+b5mhDxc6ULwbixEV2JReZRPIFytiSkkJu9y6AB7u+0lyC
+         s7oY60bcIzDbROYcTteI1o/whCb8JFnQRJaKeZVcavCEUj/tkBxykIlbt8JLt0skQi63
+         MAog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iPZP5pTa;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d+nYpLE8;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f11-20020a5b0d4b000000b0062441fda5f9sor2385549ybr.167.2022.02.25.09.57.33
+        by mx.google.com with SMTPS id d18-20020a170902b71200b0014fe928998fsor2532996pls.63.2022.02.25.12.26.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 25 Feb 2022 09:57:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 25 Feb 2022 12:26:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iPZP5pTa;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d+nYpLE8;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=TbDhTR7G0bzWRyZi1swxpGARwyW/b/53IV/Y4M0uj3s=;
-        b=iPZP5pTarRnx9XopRgzpZWOHKN6XbT6MM2sb2sKcj8GrHSM0YNp/6TKew7oMHHLYXr
-         PA/kcGGXGjqjfUWbejlOV+BHlLQajPlHd9UW/K3iDUCwpOlC4bkd29XMjaz0o0JIVIU3
-         jye6uMJfXW2URnPjBdA0xkKY+RhpQrHmE0HeW39Sx4ynbGddmPZvzBohM9orRzKBfpW3
-         P7KWoncK5Y+D5BUCdHyCvg6V1yrRyqyRaf18GMX9PKFqvx/bJ3U3lhSpHsqvZl2MX9dd
-         WQbPufjcyrRyukU+YUcndGSufvnJqgMhExtKhnKtHm14iROIpEYLSsSqoFnzg46XEaYl
-         MZPg==
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=k98AsEPV/ivVoIvbylNpjeLEa0XyMim+clW4kmDPBqI=;
+        b=d+nYpLE84VtNyn3TzhJ56hS8ZJjJjiZqTAtkiU5RFxrjKLnP4PKqRoJbG8+s4IBzr3
+         4iYSk9tsUe5dtVjY3ottfWZcXrIGkjJtCAdCm1w9cgVN6jDQJlBEkiGLFf3aocI+/x7O
+         SMGNNnePFdngmEhvyCH2pgtVvIMMusyMJFesB9jHne7aLR5nX3VOXsS2+QaoFGwDfnpG
+         cyP7dC+oh58wyekS4ddzMsS16scQkdygnHxA9XHX/VUWsAQddbRcdjLV1/blffJUK40f
+         juP9MxdXP/ydEs9s3wMW6FXwjFf+jeuB6i//opRRfmMIe19FBx9v/v6qqkq45vXa0Gjl
+         0nYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=TbDhTR7G0bzWRyZi1swxpGARwyW/b/53IV/Y4M0uj3s=;
-        b=1drQw1khX24CJu+sD/fYePVftT9covlkYSJ+fTXH9iHwFy+QFFpiDbdujTh/RCxrAJ
-         SBNQCP8J9goc4mIraKbGMF3OHwXEe7RWZMEC3//WbRApgoWUhlPc1hTwbqmJgqKtb+AZ
-         v0Uc/sDDxQKjOjjJ6M/DAE4DFbeb66iIRMMjvyUmAlIaj/yEzEDiLd9Dk2oHYd428sK0
-         1R5hgs43Cbw/vOgW6jX2Kgh96CIH6p1d/7pkbKrwpeINVjLuJXhe6izBfoSqM6CBAVIo
-         4opZo4gaOkKzhoY4g7W4YXaZWjpSQ0FCrR0jDEpVsadeRs2Smtliftam+++8c+wA6/tf
-         6WHA==
-X-Gm-Message-State: AOAM5330HZ3Ln6Pg58Lfq/lGxLRa7t8cyZnBWtvUTS9owl8Ea0AR5aQi
-	yn1QCjdVO+pF61Tftmv1c5Omlrt8HJodgJfy03HjIaCo0sGCeA==
-X-Google-Smtp-Source: ABdhPJwZCdDUKRyrwVFGiKzVDDxHR0IqYbUr9eixpkuH/KxK3Iey9u1RGuUpPVjuGDm5zuQ8I7AjdjMKHZaFCpJBEsQ=
-X-Received: by 2002:a5b:745:0:b0:622:1c46:3c19 with SMTP id
- s5-20020a5b0745000000b006221c463c19mr8524396ybq.479.1645811852780; Fri, 25
- Feb 2022 09:57:32 -0800 (PST)
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=k98AsEPV/ivVoIvbylNpjeLEa0XyMim+clW4kmDPBqI=;
+        b=A8/kR+Hac2pwLnpfglS5+lpZst+JgvUQslwPKvadQ2LgdET/HlTc5M6Q9r/xMmZL2J
+         Xa1xI8ovvlRvuYSVBjIOBtHMXvsC52kFOgrhKfn2vh0fWFxSKe8owyhVOokX8SwNBZUQ
+         ZQq0GNyCkDgdbaIzcrOV2bLA9QXvKQom3ScQ5YNG26qp53bVvHj37KSj/BQK/xxreCp1
+         Uo4ccnc+4TEjGOGuXcS8kEFkyqNupFLRz4FvBSABFBrRjL/JtjJYf+ZjHeLBVe/6QbJf
+         n+DyIHUTPnaQXF4NfdnLLvMnb20nXyyxbStpBZ8KdUocbjn7wFJ6iU9HEtF4APs37dqV
+         kdtQ==
+X-Gm-Message-State: AOAM5316BLkpdJNLNlG/XhFp3LT4RaME67qH4JiHCVdcmlu37pbBl6km
+	zt3mmdjLQFRun/9MvKLcrl+7pJs5Fe/70l33
+X-Google-Smtp-Source: ABdhPJyTda4iGtdnimeKspMsF8tOEajfqPdMBgRkKI4JARI6h8c7fzrJx9hx0LVJng1SCshg+cZVfQ==
+X-Received: by 2002:a17:902:aa8a:b0:14f:460d:bf2e with SMTP id d10-20020a170902aa8a00b0014f460dbf2emr9129105plr.144.1645820762290;
+        Fri, 25 Feb 2022 12:26:02 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.4.112] (cpe-50-113-46-110.hawaii.res.rr.com. [50.113.46.110])
+        by smtp.gmail.com with ESMTPSA id s33-20020a056a0017a100b004bf85a94ef2sm4431536pfg.183.2022.02.25.12.25.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 25 Feb 2022 12:26:01 -0800 (PST)
+Message-ID: <69321870-5536-f5cb-b2e3-27ae82e376ed@linaro.org>
+Date: Fri, 25 Feb 2022 10:25:57 -1000
 MIME-Version: 1.0
-References: <20220225172021.3493923-1-alex.bennee@linaro.org> <20220225172021.3493923-4-alex.bennee@linaro.org>
-In-Reply-To: <20220225172021.3493923-4-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 25 Feb 2022 17:57:21 +0000
-Message-ID: <CAFEAcA_xh58hX-bXPOQzkjUEuWsfXYc9K27HRCQ+tH3+Xt85PA@mail.gmail.com>
-Subject: Re: [PATCH v2 03/18] tests/lcitool: update to latest version
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, fam@euphon.net, Thomas Huth <thuth@redhat.com>, 
-	berrange@redhat.com, Beraldo Leal <bleal@redhat.com>, sw@weilnetz.de, 
-	richard.henderson@linaro.org, f4bug@amsat.org, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org, stefanha@redhat.com, 
-	crosa@redhat.com, pbonzini@redhat.com, aurelien@aurel32.net
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 6UtTdmb2WJTf
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v2 09/18] gitlab: add a new aarch32 custom runner
+ definition
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: fam@euphon.net, berrange@redhat.com, f4bug@amsat.org,
+ aurelien@aurel32.net, pbonzini@redhat.com, stefanha@redhat.com,
+ crosa@redhat.com, qemu-arm@nongnu.org, sw@weilnetz.de,
+ Thomas Huth <thuth@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>
+References: <20220225172021.3493923-1-alex.bennee@linaro.org>
+ <20220225172021.3493923-10-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220225172021.3493923-10-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: K06xwvB9RP66
 
-On Fri, 25 Feb 2022 at 17:36, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> We will need an update shortly for some new images.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Message-Id: <20220211160309.335014-4-alex.bennee@linaro.org>
-> ---
->  tests/docker/dockerfiles/opensuse-leap.docker | 3 +--
->  tests/docker/dockerfiles/ubuntu1804.docker    | 3 +--
->  tests/docker/dockerfiles/ubuntu2004.docker    | 3 +--
->  tests/lcitool/libvirt-ci                      | 2 +-
->  4 files changed, 4 insertions(+), 7 deletions(-)
->
-> diff --git a/tests/docker/dockerfiles/opensuse-leap.docker b/tests/docker=
-/dockerfiles/opensuse-leap.docker
-> index 1b78d8369a..e1ad9434a3 100644
-> --- a/tests/docker/dockerfiles/opensuse-leap.docker
-> +++ b/tests/docker/dockerfiles/opensuse-leap.docker
-> @@ -127,8 +127,7 @@ RUN zypper update -y && \
->      ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/g++ && \
->      ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
->
-> -RUN pip3 install \
-> -         meson=3D=3D0.56.0
-> +RUN pip3 install meson=3D=3D0.56.0
+On 2/25/22 07:20, Alex Bennée wrote:
+> +++ b/.gitlab-ci.d/custom-runners/ubuntu-20.40-aarch32.yml
+> @@ -0,0 +1,23 @@
+> +# All ubuntu-20.04 jobs should run successfully in an environment
+> +# setup by the scripts/ci/setup/qemu/build-environment.yml task
+> +# "Install basic packages to build QEMU on Ubuntu 18.04/20.04"
+> +
+> +ubuntu-20.04-aarch32-all:
+> + needs: []
+> + stage: build
+> + tags:
+> + - ubuntu_20.04
+> + - aarch32
+> + rules:
+> + - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+> +   when: manual
+> +   allow_failure: true
 
-Why are these formatting changes to the dockerfiles in this commit ?
+Why only manually run?
 
-thanks
--- PMM
+We do this for some, but not all, of the aarch64 jobs, to cut down on the runner load. 
+However this is the only job defined for aarch32.
+
+
+r~

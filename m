@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id l21-20020a056402231500b0041327b58030sm1669973eda.2.2022.02.25.09.20.22
+        by smtp.gmail.com with ESMTPSA id u1-20020aa7d0c1000000b004132c0a9ee3sm1596730edo.84.2022.02.25.09.20.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 25 Feb 2022 09:20:22 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 2ADCF1FFBA;
+	by zen.linaroharston (Postfix) with ESMTP id 3CACA1FFBB;
 	Fri, 25 Feb 2022 17:20:22 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -22,40 +22,76 @@ Cc: fam@euphon.net,
 	Thomas Huth <thuth@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH  v2 02/18] tests/docker: add NOUSER for alpine image
-Date: Fri, 25 Feb 2022 17:20:05 +0000
-Message-Id: <20220225172021.3493923-3-alex.bennee@linaro.org>
+Subject: [PATCH  v2 03/18] tests/lcitool: update to latest version
+Date: Fri, 25 Feb 2022 17:20:06 +0000
+Message-Id: <20220225172021.3493923-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220225172021.3493923-1-alex.bennee@linaro.org>
 References: <20220225172021.3493923-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: X/VMxdtteCqZ
+X-TUID: kG/ad1VR+FSW
 
-The alpine image doesn't have a standard useradd binary so disable
-this convenience feature for it.
+We will need an update shortly for some new images.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20220211160309.335014-3-alex.bennee@linaro.org>
+Message-Id: <20220211160309.335014-4-alex.bennee@linaro.org>
 ---
- tests/docker/Makefile.include | 3 +++
- 1 file changed, 3 insertions(+)
+ tests/docker/dockerfiles/opensuse-leap.docker | 3 +--
+ tests/docker/dockerfiles/ubuntu1804.docker    | 3 +--
+ tests/docker/dockerfiles/ubuntu2004.docker    | 3 +--
+ tests/lcitool/libvirt-ci                      | 2 +-
+ 4 files changed, 4 insertions(+), 7 deletions(-)
 
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index 0ec59b2193..286f0ac5b5 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -158,6 +158,9 @@ docker-image-debian-native: DOCKER_REGISTRY=
- docker-image-debian10: NOUSER=1
- docker-image-debian11: NOUSER=1
+diff --git a/tests/docker/dockerfiles/opensuse-leap.docker b/tests/docker/dockerfiles/opensuse-leap.docker
+index 1b78d8369a..e1ad9434a3 100644
+--- a/tests/docker/dockerfiles/opensuse-leap.docker
++++ b/tests/docker/dockerfiles/opensuse-leap.docker
+@@ -127,8 +127,7 @@ RUN zypper update -y && \
+     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/g++ && \
+     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
  
-+# alpine has no adduser
-+docker-image-alpine: NOUSER=1
-+
- #
- # The build rule for hexagon-cross is special in so far for most of
- # the time we don't want to build it. While dockers caching does avoid
+-RUN pip3 install \
+-         meson==0.56.0
++RUN pip3 install meson==0.56.0
+ 
+ ENV LANG "en_US.UTF-8"
+ ENV MAKE "/usr/bin/make"
+diff --git a/tests/docker/dockerfiles/ubuntu1804.docker b/tests/docker/dockerfiles/ubuntu1804.docker
+index 699f2dfc6a..0a622b467c 100644
+--- a/tests/docker/dockerfiles/ubuntu1804.docker
++++ b/tests/docker/dockerfiles/ubuntu1804.docker
+@@ -134,8 +134,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/g++ && \
+     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
+ 
+-RUN pip3 install \
+-         meson==0.56.0
++RUN pip3 install meson==0.56.0
+ 
+ ENV LANG "en_US.UTF-8"
+ ENV MAKE "/usr/bin/make"
+diff --git a/tests/docker/dockerfiles/ubuntu2004.docker b/tests/docker/dockerfiles/ubuntu2004.docker
+index 87513125b8..b9d06cb040 100644
+--- a/tests/docker/dockerfiles/ubuntu2004.docker
++++ b/tests/docker/dockerfiles/ubuntu2004.docker
+@@ -136,8 +136,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/g++ && \
+     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
+ 
+-RUN pip3 install \
+-         meson==0.56.0
++RUN pip3 install meson==0.56.0
+ 
+ ENV LANG "en_US.UTF-8"
+ ENV MAKE "/usr/bin/make"
+diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
+index 6dd9b6fab1..f83b916d5e 160000
+--- a/tests/lcitool/libvirt-ci
++++ b/tests/lcitool/libvirt-ci
+@@ -1 +1 @@
+-Subproject commit 6dd9b6fab1fe081b16bc975485d7a02c81ba5fbe
++Subproject commit f83b916d5efa4bd33fbf4b7ea41bf6d535cc63fb
 -- 
 2.30.2

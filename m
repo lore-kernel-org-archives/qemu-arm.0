@@ -1,135 +1,148 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1431600lfq;
-        Thu, 24 Feb 2022 19:36:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz7LaLMMu+ooRMt/X4unXa/j8dN9JPPIrW16hsDFbsCo1DRD4pyIc60wVfOL+Fbne9U3WJz
-X-Received: by 2002:a17:906:53d2:b0:6ce:791a:31a0 with SMTP id p18-20020a17090653d200b006ce791a31a0mr4558187ejo.59.1645760206960;
-        Thu, 24 Feb 2022 19:36:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645760206; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1590681lfq;
+        Fri, 25 Feb 2022 01:05:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzbQQIT7wSFddD6vAu6qC5sYf91V4INoDT+gYVJT1R/0r0cyufjLYKlYoR1d1YxNf/rit0S
+X-Received: by 2002:a05:620a:13a9:b0:47c:cf9:b4c2 with SMTP id m9-20020a05620a13a900b0047c0cf9b4c2mr3872392qki.580.1645779923504;
+        Fri, 25 Feb 2022 01:05:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645779923; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZbqUja0QIioGEvdvAOcRGINhi8I4FNjDjmyuC9LPVCrYRvVI+2xnRq+7VI7qU2FKra
-         FyAtAv7WqbNsxWPg7wro66rD1BFNQddMm58n2/HUG6Fr8e80r0Ch6rJJNRKGAYRrPk5p
-         KthtGjgVbzfWm377nMC3VOgYMmdPI96E+x6WOQDkXHPuDKp63tHU0NzpyWqqK1L27T67
-         7/V9ba0k2OIUzqhkg+EvmsPJs5X76+rVyWJhPOMEHFDAfaPddES/08oTuz+hSySXgSTn
-         mgJJeOV8PePCO0TxSDy25mR8fL0M/nNtFvPx9ZRgej3x9sbjPW8zm4iLK46BrCnB76ZM
-         v5IA==
+        b=eGWA2vZZ1GcY5bxIJXQbHLeXcbUn2qiBEICyslpDFb6B4kIPcpVuNFqrCEVf2CcSdd
+         hA+XbSkXfEhoqmEfAHcSeFqjTW1NWW6xaxrLq/rIybiWnrCw5nvOCvvj2EOEb0uFqJ7F
+         TSWrQD2BE9jmh+UawW9nzP7UYUktK51xA9/BZcfvYRJg37tOckK8JhaUVM+YC68VBgfz
+         +GMkA6eJ2W3VTG/15zWFByOy1Yx8Go1Ilos4rGw2BJMhXRjSPA8Z7/B65/wqyazWOzg1
+         ryet8YXBCmFhSmS/LnBz0HC2QaIQlPhWPji/vTrSd5aq5rFYnR9bvg+2NNEISkhKwoRP
+         CGtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=x9jeapprFa4Ot11+WrwuDjIQF4aWPgBZK6dfh3JGtlA=;
-        b=UznOxLL93rionmXQvPxGUPlWo0FsFl76hnqb4558rxzBE/Ryu44Rz4Lrpfc4JPj95M
-         J+w/FC/i19JD8tnoRVKbYIa+pMCcJAUIWKyoNzCtei3J0ZoU4yEEA4wMualMDurTtCHw
-         VQ2I8z62uOItydIyompWU0T1PxVG9qEHHI6uAvc95kdCf5kqKMML4abSGx/VXqbHUVEs
-         x5nI24gOJQO4FAYnu9EaIMdFkU5ykDRGrCGVF4In1mxfn29qa8rrSTif5PAkgxCi9wVX
-         q03QZXahq3HsczchbbHM6k57OTZfp1rAFEottjUokc7cXoTcyFbwNcWIftnXayOh2zq1
-         wRrA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from
+         :dkim-signature;
+        bh=XyoBzNuBjbFrXyWiyXL/sZikTrTg/nXanqdjCdeMwCc=;
+        b=S2/OzfDxTV+b811/cK5mr4XyTLqvh3uIZmlImgo+zKsT1IvjTP7XcmYf+/aR63LZfT
+         +l5Hs77rMCI4gYPYC2QBZ2Te0GfZ6dXcodvtt5VCI7yWNHlidmf/UJ4TmfhdySJJj4UF
+         BzlKCRvW8h18n2S1pvuIT5ZWB8cdipHRi1GRKw/Dnn7+gY8fZsVEurxzFy9cxedfVIZS
+         Lj4jwhktQJZSbZiDqWeAC9/MCJ86kKrhnvo+SZC9fHrzRCaisKNJ56HJ+ZPAjKh2BCFb
+         NHbyHRhpdLZanAwXnsn4S+rsLc01H8RGv46n+gLlTX1YtFbbVepLSW2opWqLW0hDVu4e
+         aIgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=drYROIeH;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id eb10-20020a0564020d0a00b00412a6ee095asi1224843edb.37.2022.02.24.19.36.46;
-        Thu, 24 Feb 2022 19:36:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RrDtEB3N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o4-20020ad44564000000b0042c9cbae6fesi1026481qvu.521.2022.02.25.01.05.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 25 Feb 2022 01:05:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=drYROIeH;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S236945AbiBYDhP (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 3 others); Thu, 24 Feb 2022 22:37:15 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47572 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S236588AbiBYDhO (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 24 Feb 2022 22:37:14 -0500
-Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com [IPv6:2607:f8b0:4864:20::62a])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D1844193E9
-        for <kvm@vger.kernel.org>; Thu, 24 Feb 2022 19:36:41 -0800 (PST)
-Received: by mail-pl1-x62a.google.com with SMTP id q11so3664330pln.11
-        for <kvm@vger.kernel.org>; Thu, 24 Feb 2022 19:36:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=x9jeapprFa4Ot11+WrwuDjIQF4aWPgBZK6dfh3JGtlA=;
-        b=drYROIeHuUTxLgzFN+yTzzk8Yf365zr+d2chD+7xxOd75jmN94EZaygfq6K6UtQ734
-         HerHGAaIXcF9E2EswWW05Td/hQDowfpRFVJ736TGjJPt3EvIVVLfkNgzJdO87XnUbDOo
-         K4DmAyQqFdFPGs1XfejLum0Z826+l4ambf8P0/S+lhmi0mKFalT3UzJSnj7/ZVVo33c5
-         TaJjenRVbRp6PyV4ujJbk5FumZUbCzhZKkEry1WAg1pIjRoNUhgTpaDdf0829qKJ1/+U
-         wV9627M5tr8hflNhDuTpC+ghFfS/rTsglWUUgjQzEP0iMheIoAYMoR8E4vYx01tkDyzC
-         i2bA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=x9jeapprFa4Ot11+WrwuDjIQF4aWPgBZK6dfh3JGtlA=;
-        b=uWxn+HPZMZdQRNXAAdktHX/mblqKCOIkvgaR/TddWYjfcB/CQtsAvFurtpp5/VFn64
-         WAi3mxB9fS6FiLOYxlvjH1PEejXjHgf5yeVJreRq5SDu2MwBwl+ox+fO4M9ttqeCLeW7
-         DGWTqs3yMd8G1r8eWBIKUJ5xACXs4qBe0HUxPqlytMiNrAWmUittnxnLT4wVV9prhgdl
-         zjX4/F3gbAYZ61C6wdXVUSqE5S9NjuMeMgwAIzx8lV/7WNzQ0PbZlxTtSU6//343Mhvm
-         +0MrFjdGkvpkHYpC8CHs6ZTe6kvIw49enIs7RVeClNQN4PkH1V2TppWsU0Ve7LLK0p4e
-         FTbg==
-X-Gm-Message-State: AOAM531XOfp2j94Gd6bkZm5U9ZodLgorurQVg50dC0VR7yTmABDmiiwk
-        exXpkiF7Q8Hgk+y5ZyCRJAQ=
-X-Received: by 2002:a17:90b:4f4b:b0:1b9:3798:85f8 with SMTP id pj11-20020a17090b4f4b00b001b9379885f8mr1241067pjb.139.1645760201295;
-        Thu, 24 Feb 2022 19:36:41 -0800 (PST)
-Received: from [192.168.66.3] (p912131-ipoe.ipoe.ocn.ne.jp. [153.243.13.130])
-        by smtp.gmail.com with ESMTPSA id d7-20020a056a0024c700b004bd03c5045asm967835pfv.138.2022.02.24.19.36.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 24 Feb 2022 19:36:40 -0800 (PST)
-Message-ID: <9223d640-3f50-1258-1bdb-e3ca5d635981@gmail.com>
-Date:   Fri, 25 Feb 2022 12:36:40 +0900
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RrDtEB3N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41626 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nNWXR-0000Pw-Oe
+	for alex.bennee@linaro.org; Fri, 25 Feb 2022 04:05:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53420)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1nNW7f-0000TH-6H
+ for qemu-arm@nongnu.org; Fri, 25 Feb 2022 03:38:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:57372)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1nNW7b-0003ls-Kq
+ for qemu-arm@nongnu.org; Fri, 25 Feb 2022 03:38:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1645778317;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=XyoBzNuBjbFrXyWiyXL/sZikTrTg/nXanqdjCdeMwCc=;
+ b=RrDtEB3NmtIiKBgTNFfSjpEz/PjglYm6hUV5cz1/IkPy7LMqqRE5pjU3kx/vxoW5A41ltd
+ 8xm6dA+u2zcXEDembaDVOlLLlnKU2loAhu4OB+TFkM9Z/we7jhGLjbXuT9AsTUnQ4PJ2P5
+ MuglYrQD44758/2Wn5VTzWvl3kds2RM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-578-DSNWbNX8MW6ZvGhZH-4ffw-1; Fri, 25 Feb 2022 03:38:36 -0500
+X-MC-Unique: DSNWbNX8MW6ZvGhZH-4ffw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2C9A91091DA3;
+ Fri, 25 Feb 2022 08:38:35 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.36.112.3])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6D6A9691B5;
+ Fri, 25 Feb 2022 08:38:23 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id EAF9B21E6A00; Fri, 25 Feb 2022 09:38:21 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v2 0/3] qapi: Move RTC_CHANGE back out of target schema
+References: <20220221192123.749970-1-peter.maydell@linaro.org>
+Date: Fri, 25 Feb 2022 09:38:21 +0100
+In-Reply-To: <20220221192123.749970-1-peter.maydell@linaro.org> (Peter
+ Maydell's message of "Mon, 21 Feb 2022 19:21:20 +0000")
+Message-ID: <8735k7nxxe.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v2] target/arm: Support PSCI 1.1 and SMCCC 1.0
-Content-Language: en-US
-To:     Peter Maydell <peter.maydell@linaro.org>
-Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Alexander Graf <agraf@csgraf.de>
-References: <20220213035753.34577-1-akihiko.odaki@gmail.com>
- <CAFEAcA9eXpxC7R_qcDsBh4C9Aur5417kTzAhs4c7p2YRCFQUKQ@mail.gmail.com>
-From:   Akihiko Odaki <akihiko.odaki@gmail.com>
-In-Reply-To: <CAFEAcA9eXpxC7R_qcDsBh4C9Aur5417kTzAhs4c7p2YRCFQUKQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FROM,NICE_REPLY_A,
-        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: JscYiYv2oPja
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2tn+MJW8bOu8
 
-On 2022/02/24 21:53, Peter Maydell wrote:
-> On Sun, 13 Feb 2022 at 03:58, Akihiko Odaki <akihiko.odaki@gmail.com> wrote:
->>
->> Support the latest PSCI on TCG and HVF. A 64-bit function called from
->> AArch32 now returns NOT_SUPPORTED, which is necessary to adhere to SMC
->> Calling Convention 1.0. It is still not compliant with SMCCC 1.3 since
->> they do not implement mandatory functions.
->>
->> Signed-off-by: Akihiko Odaki <akihiko.odaki@gmail.com>
->> ---
-> 
-> Applied, thanks.
-> 
-> Please update the changelog at https://wiki.qemu.org/ChangeLog/7.0
-> for any user-visible changes.
-> 
-> (I noticed while reviewing this that we report KVM's PSCI via
-> the DTB as only 0.2 even if KVM's actually implementing better
-> than that; I'll write a patch to clean that up.)
-> 
-> -- PMM
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-I don't have an account on https://wiki.qemu.org/ so can you create one? 
-I'll update the changelog once I get access to the account.
+> This patchset moves RTC_CHANGE back to misc.json, effectively
+> reverting commit 183e4281a30962, which moved the RTC_CHANGE event to
+> the target schema.  That change was an attempt to make the event
+> target-specific to improve introspection, but the event isn't really
+> target-specific: it's machine or device specific.  Putting RTC_CHANGE
+> in the target schema with an ifdef list reduces maintainability (by
+> adding an if: list with a long list of targets that needs to be
+> manually updated as architectures are added or removed or as new
+> devices gain the RTC_CHANGE functionality) and increases compile time
+> (by preventing RTC devices which emit the event from being "compile
+> once" rather than "compile once per target", because
+> qapi-events-misc-target.h uses TARGET_* ifdefs, which are poisoned in
+> "compile once" files.)
+>
+> Patch 2 fixes some minor documentation issues for the RTC_CHANGE
+> event, noticed during development of the patchset.
+>
+> Patch 3 makes the pl031 a build-once file again, which was the
+> initial motivation for the series.
 
-Regards,
-Akihiko Odaki
+Queued including my PATCH 4.  Happy to unqueue it if there are
+objections, or the entire thing if you'd rather take it through the ARM
+tree.  Thanks!
+

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id dt24-20020a170906b79800b006d57e9289f2sm1228264ejb.49.2022.02.25.09.20.25
+        by smtp.gmail.com with ESMTPSA id b14-20020a1709063f8e00b006ae0a666c02sm1234540ejj.96.2022.02.25.09.20.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Feb 2022 09:20:29 -0800 (PST)
+        Fri, 25 Feb 2022 09:20:32 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9E5811FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id DFF731FFC1;
 	Fri, 25 Feb 2022 17:20:22 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -22,100 +22,90 @@ Cc: fam@euphon.net,
 	Thomas Huth <thuth@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH  v2 06/18] tests/docker: introduce debian-riscv64-test-cross
-Date: Fri, 25 Feb 2022 17:20:09 +0000
-Message-Id: <20220225172021.3493923-7-alex.bennee@linaro.org>
+Subject: [PATCH  v2 09/18] gitlab: add a new aarch32 custom runner definition
+Date: Fri, 25 Feb 2022 17:20:12 +0000
+Message-Id: <20220225172021.3493923-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220225172021.3493923-1-alex.bennee@linaro.org>
 References: <20220225172021.3493923-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Sr8G7E+sY2x2
+X-TUID: ia2RepZXqNaR
 
-Cross building QEMU for riscv64 still involves messing about with sid
-and ports. However for building tests we can have a slimmer compiler
-only container which should be more stable.
+Although running on aarch64 hardware we can still target 32bit builds
+with a cross compiler and run the resulting binaries.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20220211160309.335014-6-alex.bennee@linaro.org>
+Message-Id: <20220211160309.335014-9-alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/container-cross.yml                     |  7 +++++++
- tests/docker/Makefile.include                        |  2 ++
- .../dockerfiles/debian-riscv64-test-cross.docker     | 12 ++++++++++++
- tests/tcg/configure.sh                               |  2 +-
- 4 files changed, 22 insertions(+), 1 deletion(-)
- create mode 100644 tests/docker/dockerfiles/debian-riscv64-test-cross.docker
+ docs/devel/ci-jobs.rst.inc                    |  7 ++++++
+ .../custom-runners/ubuntu-20.40-aarch32.yml   | 23 +++++++++++++++++++
+ scripts/ci/setup/gitlab-runner.yml            |  4 ++++
+ 3 files changed, 34 insertions(+)
+ create mode 100644 .gitlab-ci.d/custom-runners/ubuntu-20.40-aarch32.yml
 
-diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
-index d38f657131..e622ac2d21 100644
---- a/.gitlab-ci.d/container-cross.yml
-+++ b/.gitlab-ci.d/container-cross.yml
-@@ -131,6 +131,13 @@ riscv64-debian-cross-container:
-   variables:
-     NAME: debian-riscv64-cross
+diff --git a/docs/devel/ci-jobs.rst.inc b/docs/devel/ci-jobs.rst.inc
+index db3f571d5f..92e25872aa 100644
+--- a/docs/devel/ci-jobs.rst.inc
++++ b/docs/devel/ci-jobs.rst.inc
+@@ -44,6 +44,13 @@ If you've got access to an aarch64 host that can be used as a gitlab-CI
+ runner, you can set this variable to enable the tests that require this
+ kind of host. The runner should be tagged with "aarch64".
  
-+# we can however build TCG tests using a non-sid base
-+riscv64-debian-test-cross-container:
-+  extends: .container_job_template
-+  stage: containers-layer2
-+  variables:
-+    NAME: debian-riscv64-test-cross
++AARCH32_RUNNER_AVAILABLE
++~~~~~~~~~~~~~~~~~~~~~~~~
++If you've got access to an armhf host or an arch64 host that can run
++aarch32 EL0 code to be used as a gitlab-CI runner, you can set this
++variable to enable the tests that require this kind of host. The
++runner should be tagged with "aarch32".
 +
- s390x-debian-cross-container:
-   extends: .container_job_template
-   stage: containers
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index cce9faab36..e495b163a0 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -214,6 +214,7 @@ docker-image-debian-all-test-cross: docker-image-debian10
- docker-image-debian-microblaze-cross: docker-image-debian10
- docker-image-debian-nios2-cross: docker-image-debian10
- docker-image-debian-powerpc-test-cross: docker-image-debian11
-+docker-image-debian-riscv64-test-cross: docker-image-debian11
- 
- # These images may be good enough for building tests but not for test builds
- DOCKER_PARTIAL_IMAGES += debian-alpha-cross
-@@ -222,6 +223,7 @@ DOCKER_PARTIAL_IMAGES += debian-hppa-cross
- DOCKER_PARTIAL_IMAGES += debian-m68k-cross debian-mips64-cross
- DOCKER_PARTIAL_IMAGES += debian-microblaze-cross
- DOCKER_PARTIAL_IMAGES += debian-nios2-cross
-+DOCKER_PARTIAL_IMAGES += debian-riscv64-test-cross
- DOCKER_PARTIAL_IMAGES += debian-sh4-cross debian-sparc64-cross
- DOCKER_PARTIAL_IMAGES += debian-tricore-cross
- DOCKER_PARTIAL_IMAGES += debian-xtensa-cross
-diff --git a/tests/docker/dockerfiles/debian-riscv64-test-cross.docker b/tests/docker/dockerfiles/debian-riscv64-test-cross.docker
+ S390X_RUNNER_AVAILABLE
+ ~~~~~~~~~~~~~~~~~~~~~~
+ If you've got access to an IBM Z host that can be used as a gitlab-CI
+diff --git a/.gitlab-ci.d/custom-runners/ubuntu-20.40-aarch32.yml b/.gitlab-ci.d/custom-runners/ubuntu-20.40-aarch32.yml
 new file mode 100644
-index 0000000000..1d90901298
+index 0000000000..9c589bc4cf
 --- /dev/null
-+++ b/tests/docker/dockerfiles/debian-riscv64-test-cross.docker
-@@ -0,0 +1,12 @@
-+#
-+# Docker cross-compiler target
-+#
-+# This docker target builds on the Debian Bullseye base image.
-+#
-+FROM qemu/debian11
++++ b/.gitlab-ci.d/custom-runners/ubuntu-20.40-aarch32.yml
+@@ -0,0 +1,23 @@
++# All ubuntu-20.04 jobs should run successfully in an environment
++# setup by the scripts/ci/setup/qemu/build-environment.yml task
++# "Install basic packages to build QEMU on Ubuntu 18.04/20.04"
 +
-+RUN apt update && \
-+    DEBIAN_FRONTEND=noninteractive eatmydata \
-+    apt install -y --no-install-recommends \
-+        gcc-riscv64-linux-gnu \
-+        libc6-dev-riscv64-cross
-diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
-index adc95d6a44..0663bd19f4 100755
---- a/tests/tcg/configure.sh
-+++ b/tests/tcg/configure.sh
-@@ -180,7 +180,7 @@ for target in $target_list; do
-       ;;
-     riscv64-*)
-       container_hosts=x86_64
--      container_image=debian-riscv64-cross
-+      container_image=debian-riscv64-test-cross
-       container_cross_cc=riscv64-linux-gnu-gcc
-       ;;
-     s390x-*)
++ubuntu-20.04-aarch32-all:
++ needs: []
++ stage: build
++ tags:
++ - ubuntu_20.04
++ - aarch32
++ rules:
++ - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
++   when: manual
++   allow_failure: true
++ - if: "$AARCH32_RUNNER_AVAILABLE"
++   when: manual
++   allow_failure: true
++ script:
++ - mkdir build
++ - cd build
++ - ../configure --cross-prefix=arm-linux-gnueabihf-
++ - make --output-sync -j`nproc`
++ - make --output-sync -j`nproc` check V=1
+diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
+index 19bfd68f7e..33128be85d 100644
+--- a/scripts/ci/setup/gitlab-runner.yml
++++ b/scripts/ci/setup/gitlab-runner.yml
+@@ -84,6 +84,10 @@
+ 
+     - name: Register secondary gitlab-runner
+       command: "/usr/local/bin/gitlab-runner-arm register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list aarch32,{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
++      when:
++        - ansible_facts['distribution'] == 'Ubuntu'
++        - ansible_facts['architecture'] == 'aarch64'
++        - ansible_facts['distribution_version'] == '20.04'
+ 
+     - name: Install the secondary gitlab-runner service using its own functionality
+       command: /usr/local/bin/gitlab-runner-arm install --user gitlab-runner --working-directory /home/gitlab-runner/arm -n gitlab-runner-arm
 -- 
 2.30.2

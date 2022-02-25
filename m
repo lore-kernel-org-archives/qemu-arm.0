@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id h12-20020a056402280c00b00412ca9508b7sm1667727ede.17.2022.02.25.09.20.22
+        by smtp.gmail.com with ESMTPSA id g16-20020a170906521000b006d58773e992sm1230799ejm.188.2022.02.25.09.20.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Feb 2022 09:20:27 -0800 (PST)
+        Fri, 25 Feb 2022 09:20:29 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 13F531FFB8;
+	by zen.linaroharston (Postfix) with ESMTP id AA4B51FFBF;
 	Fri, 25 Feb 2022 17:20:22 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -19,91 +19,75 @@ Cc: fam@euphon.net,
 	richard.henderson@linaro.org,
 	sw@weilnetz.de,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alex Williamson <alex.williamson@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH  v2 01/18] tests/docker: restore TESTS/IMAGES filtering
-Date: Fri, 25 Feb 2022 17:20:04 +0000
-Message-Id: <20220225172021.3493923-2-alex.bennee@linaro.org>
+Subject: [PATCH  v2 07/18] scripts/ci: add build env rules for aarch32 on aarch64
+Date: Fri, 25 Feb 2022 17:20:10 +0000
+Message-Id: <20220225172021.3493923-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220225172021.3493923-1-alex.bennee@linaro.org>
 References: <20220225172021.3493923-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7XHNucQ42uAn
+X-TUID: an4h9dRYO6tc
 
-This was broken in the re-factor:
-
-  e86c9a64f4 ("tests/docker/Makefile.include: add a generic docker-run target")
-
-Rather than unwind the changes just apply the filters to the total set
-of available images and tests. That way we don't inadvertently build
-images only not to use them later.
+At least the current crop of Aarch64 HW can support running 32 bit EL0
+code. Before we can build and test we need a minimal set of packages
+installed. We can't use "apt build-dep" because it currently gets
+confused trying to keep two sets of build-deps installed at once.
+Instead we install a minimal set of libraries that will allow us to
+continue.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reported-by: Alex Williamson <alex.williamson@redhat.com>
-Message-Id: <20220211160309.335014-2-alex.bennee@linaro.org>
+Message-Id: <20220211160309.335014-7-alex.bennee@linaro.org>
 ---
- tests/docker/Makefile.include | 20 ++++++++++++--------
- 1 file changed, 12 insertions(+), 8 deletions(-)
+ scripts/ci/setup/build-environment.yml | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index f1a0c5db7a..0ec59b2193 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -8,13 +8,19 @@ COMMA := ,
+diff --git a/scripts/ci/setup/build-environment.yml b/scripts/ci/setup/build-environment.yml
+index 599896cc5b..9182e0c253 100644
+--- a/scripts/ci/setup/build-environment.yml
++++ b/scripts/ci/setup/build-environment.yml
+@@ -19,6 +19,13 @@
+           - '((ansible_version.major == 2) and (ansible_version.minor >= 8)) or (ansible_version.major >= 3)'
+         msg: "Unsuitable ansible version, please use version 2.8.0 or later"
  
- HOST_ARCH = $(if $(ARCH),$(ARCH),$(shell uname -m))
- 
-+# These variables can be set by the user to limit the set of docker
-+# images and tests to a more restricted subset
-+TESTS ?= %
-+IMAGES ?= %
++    - name: Add armhf foreign architecture to aarch64 hosts
++      command: dpkg --add-architecture armhf
++      when:
++        - ansible_facts['distribution'] == 'Ubuntu'
++        - ansible_facts['architecture'] == 'aarch64'
++        - ansible_facts['distribution_version'] == '20.04'
 +
- DOCKER_SUFFIX := .docker
- DOCKER_FILES_DIR := $(SRC_PATH)/tests/docker/dockerfiles
- # we don't run tests on intermediate images (used as base by another image)
- DOCKER_PARTIAL_IMAGES := debian10 debian11
- # we don't directly build virtual images (they are used to build other images)
- DOCKER_VIRTUAL_IMAGES := debian-bootstrap debian-toolchain empty
--DOCKER_IMAGES := $(sort $(filter-out $(DOCKER_VIRTUAL_IMAGES), $(notdir $(basename $(wildcard $(DOCKER_FILES_DIR)/*.docker)))))
-+__IMAGES := $(sort $(filter-out $(DOCKER_VIRTUAL_IMAGES), $(notdir $(basename $(wildcard $(DOCKER_FILES_DIR)/*.docker)))))
-+DOCKER_IMAGES := $(if $(IMAGES), $(filter $(IMAGES), $(__IMAGES)), $(__IMAGES))
- DOCKER_TARGETS := $(patsubst %,docker-image-%,$(DOCKER_IMAGES))
- # Use a global constant ccache directory to speed up repetitive builds
- DOCKER_CCACHE_DIR := $$HOME/.cache/qemu-docker-ccache
-@@ -23,16 +29,14 @@ DOCKER_DEFAULT_REGISTRY := registry.gitlab.com/qemu-project/qemu
- endif
- DOCKER_REGISTRY := $(if $(REGISTRY),$(REGISTRY),$(DOCKER_DEFAULT_REGISTRY))
+     - name: Update apt cache / upgrade packages via apt
+       apt:
+         update_cache: yes
+@@ -115,6 +122,24 @@
+         - ansible_facts['distribution'] == 'Ubuntu'
+         - ansible_facts['distribution_version'] == '20.04'
  
--DOCKER_TESTS := $(notdir $(shell \
--	find $(SRC_PATH)/tests/docker/ -name 'test-*' -type f))
-+__TESTS := $(notdir $(shell \
-+		find $(SRC_PATH)/tests/docker/ -name 'test-*' -type f))
-+DOCKER_TESTS := $(if $(TESTS), $(filter $(TESTS), $(__TESTS)), $(__TESTS))
- 
- ENGINE := auto
- 
- DOCKER_SCRIPT=$(SRC_PATH)/tests/docker/docker.py --engine $(ENGINE)
- 
--TESTS ?= %
--IMAGES ?= %
--
- CUR_TIME := $(shell date +%Y-%m-%d-%H.%M.%S.$$$$)
- DOCKER_SRC_COPY := $(BUILD_DIR)/docker-src.$(CUR_TIME)
- 
-@@ -274,8 +278,8 @@ endif
- 	@echo '    TARGET_LIST=a,b,c    Override target list in builds.'
- 	@echo '    EXTRA_CONFIGURE_OPTS="..."'
- 	@echo '                         Extra configure options.'
--	@echo '    IMAGES="a b c ..":   Filters which images to build or run.'
--	@echo '    TESTS="x y z .."     Filters which tests to run (for docker-test).'
-+	@echo '    IMAGES="a b c ..":   Restrict available images to subset.'
-+	@echo '    TESTS="x y z .."     Restrict available tests to subset.'
- 	@echo '    J=[0..9]*            Overrides the -jN parameter for make commands'
- 	@echo '                         (default is 1)'
- 	@echo '    DEBUG=1              Stop and drop to shell in the created container'
++    - name: Install armhf cross-compile packages to build QEMU on AArch64 Ubuntu 20.04
++      package:
++        name:
++          - binutils-arm-linux-gnueabihf
++          - gcc-arm-linux-gnueabihf
++          - libblkid-dev:armhf
++          - libc6-dev:armhf
++          - libffi-dev:armhf
++          - libglib2.0-dev:armhf
++          - libmount-dev:armhf
++          - libpcre2-dev:armhf
++          - libpixman-1-dev:armhf
++          - zlib1g-dev:armhf
++      when:
++        - ansible_facts['distribution'] == 'Ubuntu'
++        - ansible_facts['distribution_version'] == '20.04'
++        - ansible_facts['architecture'] == 'aarch64'
++
+     - name: Install basic packages to build QEMU on EL8
+       dnf:
+         # This list of packages start with tests/docker/dockerfiles/centos8.docker
 -- 
 2.30.2

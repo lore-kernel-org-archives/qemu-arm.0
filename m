@@ -1,63 +1,64 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2063100lfq;
-        Fri, 25 Feb 2022 13:03:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz7ypOS4t1h3h0Fz0/trxSWJmOU3MjrwUlYpkkDlJRRPJD9pzPa/i6MX1QzJqvOTGggL45r
-X-Received: by 2002:ad4:5cec:0:b0:432:75f1:3fa2 with SMTP id iv12-20020ad45cec000000b0043275f13fa2mr7355513qvb.24.1645822986010;
-        Fri, 25 Feb 2022 13:03:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645822986; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2063160lfq;
+        Fri, 25 Feb 2022 13:03:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzp0TOnt37ppukpUaJsIJdbZI8TESJfTwPCAjRLAZOckYaVUepCJSpMcCCXogiUrDJWAWX1
+X-Received: by 2002:ac8:7c4b:0:b0:2d1:bff6:e9ef with SMTP id o11-20020ac87c4b000000b002d1bff6e9efmr8662466qtv.22.1645822990296;
+        Fri, 25 Feb 2022 13:03:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645822990; cv=none;
         d=google.com; s=arc-20160816;
-        b=t63C/80YBHSok8SWJ+E7s9UgljLvcfjB7Us5hHhf0uwZs5POFTVYdV6LanP3DBBO3L
-         Us6o4Fo6XJ+HKZm/+Xgh47Ckw39BSZVOdgRXxPbsVlJSlpSHm6mPJiiapWmnfxL7TXpU
-         x7m5j3JjXDOnwwN9uBx4g4EMQD3XS8ft/HmIAjrI0HvlMqtElvBS5A2F93bq+YeZuvnb
-         wBGcfSAjzOcUPuwKJ3TnOmCe0jy7JqCaqBloGjJVNjg25yFNKLOdDxRao6E6Lx68eTEE
-         W8JUHK8C/qCETt2I9T+twKy2ks6VmyUGUXoPxWo+q0i5Wj+BVfEAxjzl762QeNg4cHvh
-         AfgQ==
+        b=lS5Qe2/S+9gCOYD+lwCO/zgcidTk4eiMIID29cchoDLpvbIrJ0pWSHVErza3HJfryO
+         3lKiieA/NFVaBrAkzA5kKUO+wEy0gvEyDt4OiQtCx4dGnGFWqKVxhf5nYyI0ETIbwLav
+         846VyziPH30K54D8DG0qsy393ckxMSPh/dyHOzAFbNdAzgN8VroqvmocoyPUAv2MVVDm
+         /1AU7RBLewTt5Uw961gmRzym2nOZEFQ2n/Z7Fz5Y6E41Vz9xtufSExEQ1FlLvMC3sRGY
+         qKBPI3/Ru9qV3O91g5V+LCtK4rx39Or52OGx9CTgU2RRUKoAJDWP2jBz9kqvq46WNAK3
+         OpAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=+2Dt1lT9Scd1l2FLzZxR50BVG4rXXdKWj0GOBfUSf6Y=;
-        b=eCnsN9XDH7U9o5gvHeQNwFq+zusO7dNBb3GQhlUmqQ1WfrCdg/SlEq4lqsvmZIPGt6
-         11o6GAM0iSFtVhgScyyO/TpK2tNIwFsQvGsR6Qn6lI3opabLJACIkCvEqx5W5KcRNLsA
-         dlwffud7iSeW6GrCL4P0STPtCpe8ggU5xgPftORWL7hjvXmTQqTKqmUqccNeAOsZMXCB
-         Si6TQixIUjXly3saLAtQ+AfdFMf5EZKi9JmjTdvcuMBZUOnQD9sFPChCz+1CJksr9LlW
-         CnGI7xoVU/7E+EyL6ilRvwLSoUI7G4fUC1ce82VobhTAwdJyafgu93/k4ceQ4jyqIhsx
-         q1SA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=f1B/ExmGCc3kNjbey2HtHUXNy2IapyW5A0JVDq6/Ncg=;
+        b=C3eanq6CJGLJ5if9EUaWLAQrJY9WUMYp6Gq1Wmv0hCxISx7uTjDjizzgm7/sVxn6WT
+         5RxbhsG4fN9ZDrwDE9B5WKquQ++6rJN4VwmJvtnWjuk5SwcW7XuUhNBL2eHS2pBnXWsl
+         sL2KqNjO2accfWaLcONAaNS1yXaJSUn9fimHmP6vUAe5ZE49T72IAHK7luK8+3Gljrjg
+         L8o6Y9jj3q7G+YvIgX4bxa44aHyGIHU8wvOsefB3t6UXneciJmgvI9rIgW0fSahRGD85
+         Oh4sPltqB7+bccoFlGehA3o/9lAVtUH/KZg5MmDjuw6VY1Xjih32b9VXn7rHQZgJblxX
+         UjFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TradzdrV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MgbfbvYK;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id x1-20020a05620a448100b006492139a4ccsi1921165qkp.495.2022.02.25.13.03.05
+        by mx.google.com with ESMTPS id p5-20020a05621421e500b00432670e6f3bsi1718566qvj.412.2022.02.25.13.03.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 25 Feb 2022 13:03:05 -0800 (PST)
+        Fri, 25 Feb 2022 13:03:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TradzdrV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MgbfbvYK;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1645822985;
+	s=mimecast20190719; t=1645822989;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=+2Dt1lT9Scd1l2FLzZxR50BVG4rXXdKWj0GOBfUSf6Y=;
-	b=TradzdrVoapNEqTaf3h+xOzRtKOSTiHlC4kSR5fQWCg7VLUzxlcUsOm8yRDoVJLh8fyzVB
-	4q8fdE2doV1I7mXuc+3tH6cDAgeWyOX2o4jRZanoXHMFPBPYho52wOK/DwH7WFZBzy62OR
-	bUB2fk8Wf/C58yr5tejQcFEL0W4TrnM=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=f1B/ExmGCc3kNjbey2HtHUXNy2IapyW5A0JVDq6/Ncg=;
+	b=MgbfbvYKbVdaKoI/QbiW6MHGiHfVHmtT6Ei9mzqptoToLH3WZydmpo7kcQmB4aWrW15yaZ
+	Jv59bzl6TEGpxmfAJoBh0SKDUORMD5w+2td8+nNw36G50i/XY4LKKPIUGzXZmYc3mLYfhc
+	SLvTihUGfNm8uGCE9t5TiizefSJDTdE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-407-ov4IEeldP0yszeT4MjFVsA-1; Fri, 25 Feb 2022 16:03:00 -0500
-X-MC-Unique: ov4IEeldP0yszeT4MjFVsA-1
+ us-mta-483-9IINanKgObSAFai1K7GrWg-1; Fri, 25 Feb 2022 16:03:08 -0500
+X-MC-Unique: 9IINanKgObSAFai1K7GrWg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 740D11006AA5;
-	Fri, 25 Feb 2022 21:02:55 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0603D801AAD;
+	Fri, 25 Feb 2022 21:03:05 +0000 (UTC)
 Received: from p50.localhost.localdomain.com (unknown [10.22.16.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id CB4B32ED79;
-	Fri, 25 Feb 2022 21:02:01 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9C9592ED8A;
+	Fri, 25 Feb 2022 21:02:55 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -94,112 +95,130 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Huacai Chen <chenhuacai@kernel.org>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Eric Farman <farman@linux.ibm.com>
-Subject: [PATCH 0/9] Avocado tests: filter out tests using TCG booting full blown distros
-Date: Fri, 25 Feb 2022 16:01:47 -0500
-Message-Id: <20220225210156.2032055-1-crosa@redhat.com>
+Subject: [PATCH 1/9] Avocado GitLab CI jobs: don't reset TARGETS and simplify commands
+Date: Fri, 25 Feb 2022 16:01:48 -0500
+Message-Id: <20220225210156.2032055-2-crosa@redhat.com>
+In-Reply-To: <20220225210156.2032055-1-crosa@redhat.com>
+References: <20220225210156.2032055-1-crosa@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 7iiLyFhu779d
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+X-TUID: 3lqdz7yh7JUL
 
-It was previously reported[1] and discussed that tests booting full=0D
-blown distros and relying on TCG would take too much time to run,=0D
-especially in the environments given by GitLab CI's shared runners.=0D
-=0D
-This is an implementation of a proposal to exclude those tests from=0D
-being run by default on `make check-avocado` invocations.  To make it=0D
-extra clear, all tests are still available, but those that are tagged=0D
-with "accel:tcg" and "boots:distro", are filtered out by default on=0D
-`make check-avocado`.=0D
-=0D
-This is the situation of the Avocado GitLab CI jobs with and without=0D
-the changes in this PS:=0D
-=0D
-                         +------------------+--- ----------------+=0D
-                         |        Now[2]    |       Before[3]    |=0D
-+------------------------+------------------+--------------------+=0D
-|          Job           |  Length |  Tests |  Length  |  Tests  |=0D
-|         Name           | (mm:ss) |   Run  |  (mm:ss) |   Run   |=0D
-+------------------------+------------------+-------------------+=0D
-|avocado-system-alpine   |  06:33      16   |   20:30       18   |=0D
-|avocado-system-debian   |  12:06      24   |   13:05       24   |=0D
-|avocado-system-centos   |  09:58      41   |   24:15       44   |=0D
-|avocado-system-fedora   |  08:50      35   |   08:59       35   |=0D
-|avocado-system-opensuse |  08:09      38   |   27:21       42   |=0D
-|avocado-system-ubuntu   |  06:52      16   |   18:52       18   |=0D
-|avocado-cfi-x86_64      |  05:43      27   |   15:07       29   |=0D
-+------------------------+------------------+--------------------+=0D
-|TOTALS                  |  58:11     197   | 2:08:09      210   |=0D
-+------------------------+------------------+--------------------+=0D
-=0D
-Assuming the jobs run in parallel, the overall wait time for all the=0D
-Avocado jobs to complete is now ~12 minutes.=0D
-=0D
-[1] https://lists.gnu.org/archive/html/qemu-devel/2021-07/msg07271.html=0D
-[2] https://gitlab.com/cleber.gnu/qemu/-/pipelines/479720240=0D
-[3] https://gitlab.com/qemu-project/qemu/-/pipelines/478580581=0D
-=0D
-Cleber Rosa (9):=0D
-  Avocado GitLab CI jobs: don't reset TARGETS and simplify commands=0D
-  Avocado tests: use logging namespace that is preserved in test logs=0D
-  Avocado migration test: adapt to "utils.network" API namespace change=0D
-  Avocado: bump to version 95.0=0D
-  tests/avocado/linux_ssh_mips_malta.py: add missing accel (tcg) tag=0D
-  tests/avocado/virtiofs_submounts.py: shared_dir may not exist=0D
-  Avocado tests: improve documentation on tag filtering=0D
-  Avocado tests: classify tests based on what it's booted=0D
-  Avocado tests: don't run tests with TCG that boot full blown distros=0D
-=0D
- .gitlab-ci.d/buildtest-template.yml       |  3 ++=0D
- .gitlab-ci.d/buildtest.yml                |  9 ----=0D
- docs/devel/testing.rst                    | 22 +++++++++=0D
- tests/Makefile.include                    |  6 ++-=0D
- tests/avocado/avocado_qemu/__init__.py    | 10 ++---=0D
- tests/avocado/boot_linux.py               |  4 ++=0D
- tests/avocado/boot_linux_console.py       | 54 +++++++++++++++++++++++=0D
- tests/avocado/boot_xen.py                 |  3 ++=0D
- tests/avocado/hotplug_cpu.py              |  1 +=0D
- tests/avocado/intel_iommu.py              |  1 +=0D
- tests/avocado/linux_initrd.py             |  5 ++-=0D
- tests/avocado/linux_ssh_mips_malta.py     |  5 +++=0D
- tests/avocado/machine_arm_canona1100.py   |  1 +=0D
- tests/avocado/machine_arm_integratorcp.py |  7 ++-=0D
- tests/avocado/machine_arm_n8x0.py         |  2 +=0D
- tests/avocado/machine_avr6.py             |  1 +=0D
- tests/avocado/machine_m68k_nextcube.py    |  1 +=0D
- tests/avocado/machine_microblaze.py       |  1 +=0D
- tests/avocado/machine_mips_fuloong2e.py   |  1 +=0D
- tests/avocado/machine_mips_loongson3v.py  |  1 +=0D
- tests/avocado/machine_mips_malta.py       |  6 ++-=0D
- tests/avocado/machine_rx_gdbsim.py        |  2 +=0D
- tests/avocado/machine_s390_ccw_virtio.py  |  4 ++=0D
- tests/avocado/machine_sparc64_sun4u.py    |  1 +=0D
- tests/avocado/machine_sparc_leon3.py      |  1 +=0D
- tests/avocado/migration.py                |  4 +-=0D
- tests/avocado/multiprocess.py             |  4 ++=0D
- tests/avocado/ppc_405.py                  |  2 +=0D
- tests/avocado/ppc_bamboo.py               |  2 +=0D
- tests/avocado/ppc_mpc8544ds.py            |  1 +=0D
- tests/avocado/ppc_prep_40p.py             |  1 +=0D
- tests/avocado/ppc_pseries.py              |  1 +=0D
- tests/avocado/ppc_virtex_ml507.py         |  1 +=0D
- tests/avocado/replay_kernel.py            | 33 ++++++++++++--=0D
- tests/avocado/replay_linux.py             |  6 +--=0D
- tests/avocado/reverse_debugging.py        |  6 +--=0D
- tests/avocado/smmu.py                     |  1 +=0D
- tests/avocado/tcg_plugins.py              |  3 ++=0D
- tests/avocado/tesseract_utils.py          |  6 +--=0D
- tests/avocado/virtio-gpu.py               |  2 +=0D
- tests/avocado/virtio_check_params.py      |  3 +-=0D
- tests/avocado/virtiofs_submounts.py       |  8 ++--=0D
- tests/requirements.txt                    |  2 +-=0D
- 43 files changed, 197 insertions(+), 41 deletions(-)=0D
-=0D
---=20=0D
-2.35.1=0D
-=0D
+The Avocado tests rely on the TARGETS variable, which is computed
+based on the built targets.  The current set of commands on the
+inherited scripts section will reset those, leaving TARGETS empty and
+consequently the AVOCADO_CMDLINE_TAGS empty too.
+
+This is causing the list of tests to have no filtering by tags, which
+can be seen by the large number of CANCEL/SKIP statuses (because of
+the lack of a matching qemu-system-$(ARCH) binary).
+
+With this change, the TARGETS variable is properly computed, and so is
+the AVOCADO_CMDLINE_TAGS.  This causes a reduction in the number of
+tests attempted to be run on each job, and less noise on the test
+results.
+
+Signed-off-by: Cleber Rosa <crosa@redhat.com>
+---
+ .gitlab-ci.d/buildtest-template.yml | 3 +++
+ .gitlab-ci.d/buildtest.yml          | 9 ---------
+ 2 files changed, 3 insertions(+), 9 deletions(-)
+
+diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
+index 2c7980a4f6..c038a0910f 100644
+--- a/.gitlab-ci.d/buildtest-template.yml
++++ b/.gitlab-ci.d/buildtest-template.yml
+@@ -64,6 +64,9 @@
+         du -chs ${CI_PROJECT_DIR}/avocado-cache ;
+       fi
+     - export AVOCADO_ALLOW_UNTRUSTED_CODE=1
++  script:
++    - cd build
++    - make check-avocado
+   after_script:
+     - cd build
+     - du -chs ${CI_PROJECT_DIR}/avocado-cache
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index 0aa70213fb..d0bed9c382 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -33,7 +33,6 @@ avocado-system-alpine:
+       artifacts: true
+   variables:
+     IMAGE: alpine
+-    MAKE_CHECK_ARGS: check-avocado
+ 
+ build-system-ubuntu:
+   extends: .native_build_job_template
+@@ -66,7 +65,6 @@ avocado-system-ubuntu:
+       artifacts: true
+   variables:
+     IMAGE: ubuntu2004
+-    MAKE_CHECK_ARGS: check-avocado
+ 
+ build-system-debian:
+   extends: .native_build_job_template
+@@ -98,7 +96,6 @@ avocado-system-debian:
+       artifacts: true
+   variables:
+     IMAGE: debian-amd64
+-    MAKE_CHECK_ARGS: check-avocado
+ 
+ crash-test-debian:
+   extends: .native_test_job_template
+@@ -143,7 +140,6 @@ avocado-system-fedora:
+       artifacts: true
+   variables:
+     IMAGE: fedora
+-    MAKE_CHECK_ARGS: check-avocado
+ 
+ crash-test-fedora:
+   extends: .native_test_job_template
+@@ -189,7 +185,6 @@ avocado-system-centos:
+       artifacts: true
+   variables:
+     IMAGE: centos8
+-    MAKE_CHECK_ARGS: check-avocado
+ 
+ build-system-opensuse:
+   extends: .native_build_job_template
+@@ -221,7 +216,6 @@ avocado-system-opensuse:
+       artifacts: true
+   variables:
+     IMAGE: opensuse-leap
+-    MAKE_CHECK_ARGS: check-avocado
+ 
+ 
+ # This jobs explicitly disable TCG (--disable-tcg), KVM is detected by
+@@ -382,7 +376,6 @@ avocado-cfi-aarch64:
+       artifacts: true
+   variables:
+     IMAGE: fedora
+-    MAKE_CHECK_ARGS: check-avocado
+ 
+ build-cfi-ppc64-s390x:
+   extends: .native_build_job_template
+@@ -424,7 +417,6 @@ avocado-cfi-ppc64-s390x:
+       artifacts: true
+   variables:
+     IMAGE: fedora
+-    MAKE_CHECK_ARGS: check-avocado
+ 
+ build-cfi-x86_64:
+   extends: .native_build_job_template
+@@ -460,7 +452,6 @@ avocado-cfi-x86_64:
+       artifacts: true
+   variables:
+     IMAGE: fedora
+-    MAKE_CHECK_ARGS: check-avocado
+ 
+ tsan-build:
+   extends: .native_build_job_template
+-- 
+2.35.1

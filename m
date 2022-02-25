@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id el9-20020a170907284900b006cf8e3c83e3sm1246265ejc.168.2022.02.25.09.26.16
+        by smtp.gmail.com with ESMTPSA id w7-20020a056402268700b0040ed0e91a82sm1611919edd.102.2022.02.25.09.26.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 25 Feb 2022 09:26:16 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 7345C1FFC7;
+	by zen.linaroharston (Postfix) with ESMTP id 99A691FFC9;
 	Fri, 25 Feb 2022 17:20:23 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -19,145 +19,347 @@ Cc: fam@euphon.net,
 	richard.henderson@linaro.org,
 	sw@weilnetz.de,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	qemu-s390x@nongnu.org (open list:S390 general arch...)
-Subject: [PATCH  v2 15/18] gitlab: upgrade the job definition for s390x to 20.04
-Date: Fri, 25 Feb 2022 17:20:18 +0000
-Message-Id: <20220225172021.3493923-16-alex.bennee@linaro.org>
+	Andrew Strauss <astrauss11@gmail.com>,
+	Keith Packard <keithp@keithp.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v2 17/18] semihosting/arm-compat: replace heuristic for softmmu SYS_HEAPINFO
+Date: Fri, 25 Feb 2022 17:20:20 +0000
+Message-Id: <20220225172021.3493923-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220225172021.3493923-1-alex.bennee@linaro.org>
 References: <20220225172021.3493923-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: NBpzWBzc7rH7
+X-TUID: S1l2vhenVgvO
 
-The new s390x machine has more of everything including the OS. As
-18.04 will soon be going we might as well get onto something moderately
-modern.
+The previous numbers were a guess at best and rather arbitrary without
+taking into account anything that might be loaded. Instead of using
+guesses based on the state of registers implement a new function that:
+
+ a) scans the MemoryRegions for the largest RAM block
+ b) iterates through all "ROM" blobs looking for the biggest gap
+
+The "ROM" blobs include all code loaded via -kernel and the various
+-device loader techniques.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Acked-by: Christian Borntraeger <borntraeger@de.ibm.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Cornelia Huck <cohuck@redhat.com>
+Cc: Andrew Strauss <astrauss11@gmail.com>
+Cc: Keith Packard <keithp@keithp.com>
+Message-Id: <20210601090715.22330-1-alex.bennee@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>
----
- .gitlab-ci.d/custom-runners.yml               |  2 +-
- ...18.04-s390x.yml => ubuntu-20.04-s390x.yml} | 28 +++++++++----------
- 2 files changed, 15 insertions(+), 15 deletions(-)
- rename .gitlab-ci.d/custom-runners/{ubuntu-18.04-s390x.yml => ubuntu-20.04-s390x.yml} (87%)
+Message-Id: <20220210113021.3799514-2-alex.bennee@linaro.org>
 
-diff --git a/.gitlab-ci.d/custom-runners.yml b/.gitlab-ci.d/custom-runners.yml
-index 056c374619..3e76a2034a 100644
---- a/.gitlab-ci.d/custom-runners.yml
-+++ b/.gitlab-ci.d/custom-runners.yml
-@@ -14,6 +14,6 @@ variables:
-   GIT_STRATEGY: clone
+---
+v7
+  - remove stray comment
+---
+ include/hw/loader.h           |  14 ++++
+ hw/core/loader.c              |  86 +++++++++++++++++++++++
+ semihosting/arm-compat-semi.c | 124 +++++++++++++++++-----------------
+ 3 files changed, 163 insertions(+), 61 deletions(-)
+
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 4fa485bd61..5572108ba5 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -343,4 +343,18 @@ int rom_add_option(const char *file, int32_t bootindex);
+  * overflow on real hardware too. */
+ #define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
  
- include:
--  - local: '/.gitlab-ci.d/custom-runners/ubuntu-18.04-s390x.yml'
-+  - local: '/.gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml'
-   - local: '/.gitlab-ci.d/custom-runners/ubuntu-20.04-aarch64.yml'
-   - local: '/.gitlab-ci.d/custom-runners/centos-stream-8-x86_64.yml'
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-18.04-s390x.yml b/.gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml
-similarity index 87%
-rename from .gitlab-ci.d/custom-runners/ubuntu-18.04-s390x.yml
-rename to .gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml
-index f39d874a1e..0333872113 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-18.04-s390x.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml
-@@ -1,12 +1,12 @@
--# All ubuntu-18.04 jobs should run successfully in an environment
-+# All ubuntu-20.04 jobs should run successfully in an environment
- # setup by the scripts/ci/setup/build-environment.yml task
--# "Install basic packages to build QEMU on Ubuntu 18.04/20.04"
-+# "Install basic packages to build QEMU on Ubuntu 20.04/20.04"
++typedef struct RomGap {
++    hwaddr base;
++    size_t size;
++} RomGap;
++
++/**
++ * rom_find_largest_gap_between: return largest gap between ROMs in given range
++ *
++ * Given a range of addresses, this function finds the largest
++ * contiguous subrange which has no ROMs loaded to it. That is,
++ * it finds the biggest gap which is free for use for other things.
++ */
++RomGap rom_find_largest_gap_between(hwaddr base, size_t size);
++
+ #endif
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 19edb928e9..ca2f2431fb 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -1333,6 +1333,92 @@ static Rom *find_rom(hwaddr addr, size_t size)
+     return NULL;
+ }
  
--ubuntu-18.04-s390x-all-linux-static:
-+ubuntu-20.04-s390x-all-linux-static:
-  needs: []
-  stage: build
-  tags:
-- - ubuntu_18.04
-+ - ubuntu_20.04
-  - s390x
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-@@ -21,11 +21,11 @@ ubuntu-18.04-s390x-all-linux-static:
-  - make --output-sync -j`nproc` check V=1
-  - make --output-sync -j`nproc` check-tcg V=1
++typedef struct RomSec {
++    hwaddr base;
++    int se; /* start/end flag */
++} RomSec;
++
++
++/*
++ * Sort into address order. We break ties between rom-startpoints
++ * and rom-endpoints in favour of the startpoint, by sorting the 0->1
++ * transition before the 1->0 transition. Either way round would
++ * work, but this way saves a little work later by avoiding
++ * dealing with "gaps" of 0 length.
++ */
++static gint sort_secs(gconstpointer a, gconstpointer b)
++{
++    RomSec *ra = (RomSec *) a;
++    RomSec *rb = (RomSec *) b;
++
++    if (ra->base == rb->base) {
++        return ra->se - rb->se;
++    }
++    return ra->base > rb->base ? 1 : -1;
++}
++
++static GList *add_romsec_to_list(GList *secs, hwaddr base, int se)
++{
++   RomSec *cand = g_new(RomSec, 1);
++   cand->base = base;
++   cand->se = se;
++   return g_list_prepend(secs, cand);
++}
++
++RomGap rom_find_largest_gap_between(hwaddr base, size_t size)
++{
++    Rom *rom;
++    RomSec *cand;
++    RomGap res = {0, 0};
++    hwaddr gapstart = base;
++    GList *it, *secs = NULL;
++    int count = 0;
++
++    QTAILQ_FOREACH(rom, &roms, next) {
++        /* Ignore blobs being loaded to special places */
++        if (rom->mr || rom->fw_file) {
++            continue;
++        }
++        /* ignore anything finishing bellow base */
++        if (rom->addr + rom->romsize <= base) {
++            continue;
++        }
++        /* ignore anything starting above the region */
++        if (rom->addr >= base + size) {
++            continue;
++        }
++
++        /* Save the start and end of each relevant ROM */
++        secs = add_romsec_to_list(secs, rom->addr, 1);
++
++        if (rom->addr + rom->romsize < base + size) {
++            secs = add_romsec_to_list(secs, rom->addr + rom->romsize, -1);
++        }
++    }
++
++    /* sentinel */
++    secs = add_romsec_to_list(secs, base + size, 1);
++
++    secs = g_list_sort(secs, sort_secs);
++
++    for (it = g_list_first(secs); it; it = g_list_next(it)) {
++        cand = (RomSec *) it->data;
++        if (count == 0 && count + cand->se == 1) {
++            size_t gap = cand->base - gapstart;
++            if (gap > res.size) {
++                res.base = gapstart;
++                res.size = gap;
++            }
++        } else if (count == 1 && count + cand->se == 0) {
++            gapstart = cand->base;
++        }
++        count += cand->se;
++    }
++
++    g_list_free_full(secs, g_free);
++    return res;
++}
++
+ /*
+  * Copies memory from registered ROMs to dest. Any memory that is contained in
+  * a ROM between addr and addr + size is copied. Note that this can involve
+diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
+index 37963becae..7a51fd0737 100644
+--- a/semihosting/arm-compat-semi.c
++++ b/semihosting/arm-compat-semi.c
+@@ -44,6 +44,7 @@
+ #define COMMON_SEMI_HEAP_SIZE (128 * 1024 * 1024)
+ #else
+ #include "qemu/cutils.h"
++#include "hw/loader.h"
+ #ifdef TARGET_ARM
+ #include "hw/arm/boot.h"
+ #endif
+@@ -144,33 +145,69 @@ typedef struct GuestFD {
+ static GArray *guestfd_array;
  
--ubuntu-18.04-s390x-all:
-+ubuntu-20.04-s390x-all:
-  needs: []
-  stage: build
-  tags:
-- - ubuntu_18.04
-+ - ubuntu_20.04
-  - s390x
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-@@ -37,11 +37,11 @@ ubuntu-18.04-s390x-all:
-  - make --output-sync -j`nproc`
-  - make --output-sync -j`nproc` check V=1
+ #ifndef CONFIG_USER_ONLY
+-#include "exec/address-spaces.h"
+-/*
+- * Find the base of a RAM region containing the specified address
++
++/**
++ * common_semi_find_bases: find information about ram and heap base
++ *
++ * This function attempts to provide meaningful numbers for RAM and
++ * HEAP base addresses. The rambase is simply the lowest addressable
++ * RAM position. For the heapbase we ask the loader to scan the
++ * address space and the largest available gap by querying the "ROM"
++ * regions.
++ *
++ * Returns: a structure with the numbers we need.
+  */
+-static inline hwaddr
+-common_semi_find_region_base(hwaddr addr)
++
++typedef struct LayoutInfo {
++    target_ulong rambase;
++    size_t ramsize;
++    hwaddr heapbase;
++    hwaddr heaplimit;
++} LayoutInfo;
++
++static bool find_ram_cb(Int128 start, Int128 len, const MemoryRegion *mr,
++                        hwaddr offset_in_region, void *opaque)
+ {
+-    MemoryRegion *subregion;
++    LayoutInfo *info = (LayoutInfo *) opaque;
++    uint64_t size = int128_get64(len);
++
++    if (!mr->ram || mr->readonly) {
++        return false;
++    }
++
++    if (size > info->ramsize) {
++        info->rambase = int128_get64(start);
++        info->ramsize = size;
++    }
++
++    /* search exhaustively for largest RAM */
++    return false;
++}
++
++static LayoutInfo common_semi_find_bases(CPUState *cs)
++{
++    FlatView *fv;
++    LayoutInfo info = { 0, 0, 0, 0 };
++
++    RCU_READ_LOCK_GUARD();
++
++    fv = address_space_to_flatview(cs->as);
++    flatview_for_each_range(fv, find_ram_cb, &info);
  
--ubuntu-18.04-s390x-alldbg:
-+ubuntu-20.04-s390x-alldbg:
-  needs: []
-  stage: build
-  tags:
-- - ubuntu_18.04
-+ - ubuntu_20.04
-  - s390x
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-@@ -58,11 +58,11 @@ ubuntu-18.04-s390x-alldbg:
-  - make --output-sync -j`nproc`
-  - make --output-sync -j`nproc` check V=1
+     /*
+-     * Find the chunk of R/W memory containing the address.  This is
+-     * used for the SYS_HEAPINFO semihosting call, which should
+-     * probably be using information from the loaded application.
++     * If we have found the RAM lets iterate through the ROM blobs to
++     * work out the best place for the remainder of RAM and split it
++     * equally between stack and heap.
+      */
+-    QTAILQ_FOREACH(subregion, &get_system_memory()->subregions,
+-                   subregions_link) {
+-        if (subregion->ram && !subregion->readonly) {
+-            Int128 top128 = int128_add(int128_make64(subregion->addr),
+-                                       subregion->size);
+-            Int128 addr128 = int128_make64(addr);
+-            if (subregion->addr <= addr && int128_lt(addr128, top128)) {
+-                return subregion->addr;
+-            }
+-        }
++    if (info.rambase || info.ramsize > 0) {
++        RomGap gap = rom_find_largest_gap_between(info.rambase, info.ramsize);
++        info.heapbase = gap.base;
++        info.heaplimit = gap.base + gap.size;
+     }
+-    return 0;
++
++    return info;
+ }
++
+ #endif
  
--ubuntu-18.04-s390x-clang:
-+ubuntu-20.04-s390x-clang:
-  needs: []
-  stage: build
-  tags:
-- - ubuntu_18.04
-+ - ubuntu_20.04
-  - s390x
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-@@ -78,11 +78,11 @@ ubuntu-18.04-s390x-clang:
-  - make --output-sync -j`nproc`
-  - make --output-sync -j`nproc` check V=1
+ #ifdef TARGET_ARM
+@@ -204,28 +241,6 @@ common_semi_sys_exit_extended(CPUState *cs, int nr)
+     return (nr == TARGET_SYS_EXIT_EXTENDED || is_a64(cs->env_ptr));
+ }
  
--ubuntu-18.04-s390x-tci:
-+ubuntu-20.04-s390x-tci:
-  needs: []
-  stage: build
-  tags:
-- - ubuntu_18.04
-+ - ubuntu_20.04
-  - s390x
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-@@ -97,11 +97,11 @@ ubuntu-18.04-s390x-tci:
-  - ../configure --disable-libssh --enable-tcg-interpreter
-  - make --output-sync -j`nproc`
+-#ifndef CONFIG_USER_ONLY
+-#include "hw/arm/boot.h"
+-static inline target_ulong
+-common_semi_rambase(CPUState *cs)
+-{
+-    CPUArchState *env = cs->env_ptr;
+-    const struct arm_boot_info *info = env->boot_info;
+-    target_ulong sp;
+-
+-    if (info) {
+-        return info->loader_start;
+-    }
+-
+-    if (is_a64(env)) {
+-        sp = env->xregs[31];
+-    } else {
+-        sp = env->regs[13];
+-    }
+-    return common_semi_find_region_base(sp);
+-}
+-#endif
+-
+ #endif /* TARGET_ARM */
  
--ubuntu-18.04-s390x-notcg:
-+ubuntu-20.04-s390x-notcg:
-  needs: []
-  stage: build
-  tags:
-- - ubuntu_18.04
-+ - ubuntu_20.04
-  - s390x
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+ #ifdef TARGET_RISCV
+@@ -251,17 +266,6 @@ common_semi_sys_exit_extended(CPUState *cs, int nr)
+     return (nr == TARGET_SYS_EXIT_EXTENDED || sizeof(target_ulong) == 8);
+ }
+ 
+-#ifndef CONFIG_USER_ONLY
+-
+-static inline target_ulong
+-common_semi_rambase(CPUState *cs)
+-{
+-    RISCVCPU *cpu = RISCV_CPU(cs);
+-    CPURISCVState *env = &cpu->env;
+-    return common_semi_find_region_base(env->gpr[xSP]);
+-}
+-#endif
+-
+ #endif
+ 
+ /*
+@@ -1165,12 +1169,12 @@ target_ulong do_common_semihosting(CPUState *cs)
+     case TARGET_SYS_HEAPINFO:
+         {
+             target_ulong retvals[4];
+-            target_ulong limit;
+             int i;
+ #ifdef CONFIG_USER_ONLY
+             TaskState *ts = cs->opaque;
++            target_ulong limit;
+ #else
+-            target_ulong rambase = common_semi_rambase(cs);
++            LayoutInfo info = common_semi_find_bases(cs);
+ #endif
+ 
+             GET_ARG(0);
+@@ -1201,12 +1205,10 @@ target_ulong do_common_semihosting(CPUState *cs)
+             retvals[2] = ts->stack_base;
+             retvals[3] = 0; /* Stack limit.  */
+ #else
+-            limit = current_machine->ram_size;
+-            /* TODO: Make this use the limit of the loaded application.  */
+-            retvals[0] = rambase + limit / 2;
+-            retvals[1] = rambase + limit;
+-            retvals[2] = rambase + limit; /* Stack base */
+-            retvals[3] = rambase; /* Stack limit.  */
++            retvals[0] = info.heapbase;  /* Heap Base */
++            retvals[1] = info.heaplimit; /* Heap Limit */
++            retvals[2] = info.heaplimit; /* Stack base */
++            retvals[3] = info.heapbase;  /* Stack limit.  */
+ #endif
+ 
+             for (i = 0; i < ARRAY_SIZE(retvals); i++) {
 -- 
 2.30.2

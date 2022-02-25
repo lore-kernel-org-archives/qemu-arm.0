@@ -1,64 +1,64 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2063341lfq;
-        Fri, 25 Feb 2022 13:03:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx/tk/v47PMLTVplRiESnS7hUtC3rqRTdWulqEsyRaCYwAu7mwZ/SWKEvP0ey9SNqkewGfv
-X-Received: by 2002:a05:6402:42c6:b0:412:8cbc:8f3d with SMTP id i6-20020a05640242c600b004128cbc8f3dmr8914245edc.310.1645823002258;
-        Fri, 25 Feb 2022 13:03:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645823002; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2063520lfq;
+        Fri, 25 Feb 2022 13:03:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzIxoM6ZG0ElfzW8IzPX0jeBzGcV4OAQODa7ljnDxLshe6X7DdXcVnEd/nN770yFBfrLn5M
+X-Received: by 2002:ad4:596e:0:b0:42c:33e4:e496 with SMTP id eq14-20020ad4596e000000b0042c33e4e496mr7388884qvb.35.1645823017168;
+        Fri, 25 Feb 2022 13:03:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645823017; cv=none;
         d=google.com; s=arc-20160816;
-        b=fG/BoKXLDNOJI7pQHz7gSYn04HwYVfNfMSPJcoS0ihhnhmVlvXe++Kj8FudCN5UThn
-         OeXo8Ddrmn+lVN8qJFUV3q8xcIMz/ITX/a+plHgr1wLATzw6l5uJvgOtaGRWuVKrR3Sr
-         /THuGesZWiyTpbvyGmcyIvXoSYh805bG4Zm5hXkuJD9pshKQbgzhk78DVRSStEuSIayV
-         3zwIbpupHj7jcnAUEhMi8iOWcHfvDovO9Len4SxKXEfpOo19n5Lp5mZG9eAEO3knf+Ff
-         ekO+UdjUikVpk/m5G5Z1o6S8g3UD5BuEmMWtLOtmwJQ39f1b8sOvOeA0nVyuO3KKeZyy
-         XzGQ==
+        b=IXru40RGP0+0mQF2UVnu2jr0d3BKmxXO7elPtixH8lTuwDzdy7c7h7cgqjrG3rlrg+
+         qkd229v1PonvrcEvpDrHbLWe45pa7gPKgB1BRUYx5xrH/pAOeQlstnWMDBuE0jtSgYkM
+         1GQQ8o4tQD8zWEN6UuKnBBzNp9hu9J/kFW4LSR2r5AoUYs2DMLPOYqp2Jmcu/uwNyPJ4
+         0iRfp23tiBJpRWu/3LhFlap+SSBS257/ZN4cJI7j6CfrU11xfpfY7ykHO0XxAIQRm6QP
+         QCfGN1d/JH+/Q7MXjYybEQSnoutZyxKoOiuLjmhUmRw4GbBixgD7cTFcZmSVxTKcgu6v
+         mHjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=uOuOLyLdCnh99/oAfl/tDKSBuWvbul9urTxuUFywBmo=;
-        b=f3aQvcDZMaRLhM85ypa1Vq/MMj+j9r+9i8N5CKQ12CFCy7FZfBvS118BtBP62wlD2x
-         lxUsk4lOelO0PoR9rVSvN48geW2u0jyUmRoCP/ZBpXvTKox6kjWav+/G4PMBEW4xnkhu
-         Zal0zN47+mQW7QKqdq1cU/7rkRk2RuRBSd7+QxBzW2aJda74b0Gjs8e5WiMgkbM25zAW
-         wma1qhLR35wKPezsNlMot96E2p34CKgod30HApjIwHp/D30ALY9ve47ryrQU/y5hINhe
-         Num/lR+AP45Nr9Du3HpN8BeNTj5+6Z+RikIL0cmA8atVRCJxp6SHY3VaMb3/jREC5kPy
-         Vq6Q==
+        bh=pab33bVOuXSFeRJwLzNTvMzu0uHABihopxaPUGjTWBg=;
+        b=fzncxRQZlP3AIK3IklvZDn1Qwx13tCq1RvLVclV/+++vRQz9EfD1eSKaJQ9I3KOklp
+         drlTDTkQlgMCIoOITTkF/5jZWjJmxHCbE6iyuVyj5uihRe7Ab27wRkm/mPdJP4EhGHnQ
+         u2hZWuSz2tAfSRDdWkgIosSixPUMobpkIlXVaw8KM6OKJ083Ezl0UGzyN0ttY59PLjC/
+         CbYcc1SO+PjjZa6jBi//G+lro6NDylv2eX7tLQZEiGP2B60BIO3O17IBe4iV7rZ4bqjH
+         Uw2fqkKB0c9/s+Bja17RTPVaFFPvoJzIujQzl08nZBu/pNPvyOoZkjV7BI0ZHr5y9olP
+         mKuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fRKslDtU;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HOp0QtKR;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id g5-20020a50d5c5000000b0041080ddd1b9si2505118edj.649.2022.02.25.13.03.21
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 23-20020ac856f7000000b002deb28d4cf9si2012803qtu.257.2022.02.25.13.03.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 25 Feb 2022 13:03:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 25 Feb 2022 13:03:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fRKslDtU;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HOp0QtKR;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1645823001;
+	s=mimecast20190719; t=1645823016;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=uOuOLyLdCnh99/oAfl/tDKSBuWvbul9urTxuUFywBmo=;
-	b=fRKslDtUkcJ8jsai0HcXG0cnto8EsEsecoQM3X9u9A3dWUACexlbnvQ55KyZ1UXVzvm8MA
-	2eR44W5nu0VGmE6gwMED5Zem7iHjLg3/y+JPGZS9aVElbOzIMURcS/wzznfY6Ehpu6IPWt
-	exp2kQa35rW39Ata/XQ/Gvk4d7yNQ60=
+	bh=pab33bVOuXSFeRJwLzNTvMzu0uHABihopxaPUGjTWBg=;
+	b=HOp0QtKRZaUFOdGy9nZYv39gJx9fEbCO+yz2rVUhVjKNu1+Cw5XePCXNcSCvfaLHqkSrgg
+	nYGA5iqE/cOxTTcfMrREas0iHhieBpLN0FuXni81uNYQm2L+vIEuPSG9rU+zxRzjE2Wu9/
+	Y+Op0u5euGaHKOfycKv9Gm8w7gXlIUI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-468-UId7-3ZXMN23XF5Kag9G0Q-1; Fri, 25 Feb 2022 16:03:18 -0500
-X-MC-Unique: UId7-3ZXMN23XF5Kag9G0Q-1
+ us-mta-527-Fp9uRNVmN1adrKrF6jR4Pw-1; Fri, 25 Feb 2022 16:03:34 -0500
+X-MC-Unique: Fp9uRNVmN1adrKrF6jR4Pw-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7AD5D801AAD;
-	Fri, 25 Feb 2022 21:03:15 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B56AB1006AA5;
+	Fri, 25 Feb 2022 21:03:30 +0000 (UTC)
 Received: from p50.localhost.localdomain.com (unknown [10.22.16.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 60C0A2ED79;
-	Fri, 25 Feb 2022 21:03:08 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9F8702ED79;
+	Fri, 25 Feb 2022 21:03:15 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -95,9 +95,9 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Huacai Chen <chenhuacai@kernel.org>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Eric Farman <farman@linux.ibm.com>
-Subject: [PATCH 3/9] Avocado migration test: adapt to "utils.network" API namespace change
-Date: Fri, 25 Feb 2022 16:01:50 -0500
-Message-Id: <20220225210156.2032055-4-crosa@redhat.com>
+Subject: [PATCH 4/9] Avocado: bump to version 95.0
+Date: Fri, 25 Feb 2022 16:01:51 -0500
+Message-Id: <20220225210156.2032055-5-crosa@redhat.com>
 In-Reply-To: <20220225210156.2032055-1-crosa@redhat.com>
 References: <20220225210156.2032055-1-crosa@redhat.com>
 MIME-Version: 1.0
@@ -108,67 +108,46 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-X-TUID: vr+bbdja+AIw
+X-TUID: f1SoDkkOaA3H
 
-Since Avocado 94.0[1], the "avocado.utils.network" dropped a lot of
-previously deprecated API names, having the new names into a finer
-grained structure.
+Even though there have been a number of improvements (and some pretty
+deep internal changes) since Avocado 88.1, only one change should
+affect "make check-avocado".
 
-This simply uses the new API names for the network port utility
-module.
-
-[1] - https://avocado-framework.readthedocs.io/en/latest/releases/94_0.html#utility-apis
+With the nrunner architecture, test execution happens in parallel by
+default.  But, tests may fail due to insufficient timeouts or similar
+reasons when run under systems with limited or shared resources.  To
+avoid breakages, especially on CI, let's keep the serial execution
+until proven that it won't impact the CI jobs.
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/avocado/avocado_qemu/__init__.py | 5 +++--
- tests/avocado/migration.py             | 4 ++--
- 2 files changed, 5 insertions(+), 4 deletions(-)
+ tests/Makefile.include | 1 +
+ tests/requirements.txt | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
-index 88cec83e5c..3f15c8a222 100644
---- a/tests/avocado/avocado_qemu/__init__.py
-+++ b/tests/avocado/avocado_qemu/__init__.py
-@@ -17,7 +17,8 @@
- import uuid
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index e7153c8e91..676aa0d944 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -135,6 +135,7 @@ check-avocado: check-venv $(TESTS_RESULTS_DIR) get-vm-images
+             $(if $(AVOCADO_TAGS),, --filter-by-tags-include-empty \
+ 			--filter-by-tags-include-empty-key) \
+             $(AVOCADO_CMDLINE_TAGS) \
++            --nrunner-max-parallel-tasks=1 \
+             $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), \
+             "AVOCADO", "tests/avocado")
  
- import avocado
--from avocado.utils import cloudinit, datadrainer, network, process, ssh, vmimage
-+from avocado.utils import cloudinit, datadrainer, process, ssh, vmimage
-+from avocado.utils.network import ports
- from avocado.utils.path import find_command
- 
- #: The QEMU build root directory.  It may also be the source directory
-@@ -601,7 +602,7 @@ def prepare_cloudinit(self, ssh_pubkey=None):
-         self.log.info('Preparing cloudinit image')
-         try:
-             cloudinit_iso = os.path.join(self.workdir, 'cloudinit.iso')
--            self.phone_home_port = network.find_free_port()
-+            self.phone_home_port = ports.find_free_port()
-             pubkey_content = None
-             if ssh_pubkey:
-                 with open(ssh_pubkey) as pubkey:
-diff --git a/tests/avocado/migration.py b/tests/avocado/migration.py
-index 584d6ef53f..4b25680c50 100644
---- a/tests/avocado/migration.py
-+++ b/tests/avocado/migration.py
-@@ -14,7 +14,7 @@
- from avocado_qemu import QemuSystemTest
- from avocado import skipUnless
- 
--from avocado.utils import network
-+from avocado.utils.network import ports
- from avocado.utils import wait
- from avocado.utils.path import find_command
- 
-@@ -57,7 +57,7 @@ def do_migrate(self, dest_uri, src_uri=None):
-         self.assert_migration(source_vm, dest_vm)
- 
-     def _get_free_port(self):
--        port = network.find_free_port()
-+        port = ports.find_free_port()
-         if port is None:
-             self.cancel('Failed to find a free port')
-         return port
+diff --git a/tests/requirements.txt b/tests/requirements.txt
+index a21b59b443..49aa0fd6f6 100644
+--- a/tests/requirements.txt
++++ b/tests/requirements.txt
+@@ -1,5 +1,5 @@
+ # Add Python module requirements, one per line, to be installed
+ # in the tests/venv Python virtual environment. For more info,
+ # refer to: https://pip.pypa.io/en/stable/user_guide/#id1
+-avocado-framework==88.1
++avocado-framework==95.0
+ pycdlib==1.11.0
 -- 
 2.35.1

@@ -1,64 +1,64 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2063520lfq;
-        Fri, 25 Feb 2022 13:03:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzIxoM6ZG0ElfzW8IzPX0jeBzGcV4OAQODa7ljnDxLshe6X7DdXcVnEd/nN770yFBfrLn5M
-X-Received: by 2002:ad4:596e:0:b0:42c:33e4:e496 with SMTP id eq14-20020ad4596e000000b0042c33e4e496mr7388884qvb.35.1645823017168;
-        Fri, 25 Feb 2022 13:03:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1645823017; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2063635lfq;
+        Fri, 25 Feb 2022 13:03:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxZkslPbcaa3J6ObxyPbSbMHUoC+aZccIIQaeqrgn+ra9GuxoAQ9FejI5dL62doxIo1dyLH
+X-Received: by 2002:ac8:5994:0:b0:2b4:b4e7:69ff with SMTP id e20-20020ac85994000000b002b4b4e769ffmr8607130qte.653.1645823024772;
+        Fri, 25 Feb 2022 13:03:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645823024; cv=none;
         d=google.com; s=arc-20160816;
-        b=IXru40RGP0+0mQF2UVnu2jr0d3BKmxXO7elPtixH8lTuwDzdy7c7h7cgqjrG3rlrg+
-         qkd229v1PonvrcEvpDrHbLWe45pa7gPKgB1BRUYx5xrH/pAOeQlstnWMDBuE0jtSgYkM
-         1GQQ8o4tQD8zWEN6UuKnBBzNp9hu9J/kFW4LSR2r5AoUYs2DMLPOYqp2Jmcu/uwNyPJ4
-         0iRfp23tiBJpRWu/3LhFlap+SSBS257/ZN4cJI7j6CfrU11xfpfY7ykHO0XxAIQRm6QP
-         QCfGN1d/JH+/Q7MXjYybEQSnoutZyxKoOiuLjmhUmRw4GbBixgD7cTFcZmSVxTKcgu6v
-         mHjg==
+        b=cpsYsTRlHhzBMN/meIzsISfa6BpvdVvpcDU8kBLHjZItZ55tFDP/xTq3ONysMlBQJn
+         ShLiFwH8+8qCgD2og9jLGkUZiln9bIy78+YJfZzTK2jTvlroT4cKDeE1R5WeDUjUZshJ
+         LB6N+kur7QRenhWZoRx4d+KUCfK+K6TJNSc2jqjb9TihhRTSOnhdKw3XNZij3IbuHG0k
+         Wc2oLXtRD3x25jIif9KAhFBaTLKrw1UlB3v+1VGH6u7VnAKvI4MY2awJPCtGYjH/yAW4
+         rprfGbt2jIXIDdZOiDNxlhnawXDVW4LkmerLPkO1lgPaX/Lp3MNixR8BRDUUmjtG5y5x
+         yPCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=pab33bVOuXSFeRJwLzNTvMzu0uHABihopxaPUGjTWBg=;
-        b=fzncxRQZlP3AIK3IklvZDn1Qwx13tCq1RvLVclV/+++vRQz9EfD1eSKaJQ9I3KOklp
-         drlTDTkQlgMCIoOITTkF/5jZWjJmxHCbE6iyuVyj5uihRe7Ab27wRkm/mPdJP4EhGHnQ
-         u2hZWuSz2tAfSRDdWkgIosSixPUMobpkIlXVaw8KM6OKJ083Ezl0UGzyN0ttY59PLjC/
-         CbYcc1SO+PjjZa6jBi//G+lro6NDylv2eX7tLQZEiGP2B60BIO3O17IBe4iV7rZ4bqjH
-         Uw2fqkKB0c9/s+Bja17RTPVaFFPvoJzIujQzl08nZBu/pNPvyOoZkjV7BI0ZHr5y9olP
-         mKuA==
+        bh=IVbnLlwQRb4NIz3ZEah/GxCpbHss72iluxasg8Q0AMo=;
+        b=CBPo0sQVVJHqNDvJoouipHnZt89bhMi2Kwl2zvVayojcfaly+ru2mEBTB47cTuRfpE
+         U1Yw9+K6fTfyuacbefvDEyp9R6LxylMpzDNiE5IKuvo6w1m8CxmrF2/gs7OgPxyM7HeI
+         XxFGthtUmgqWUrYTCVP7G2FGM7Za98tEDzVTj0XuCvO5gQS/1LumgJBdut2vqECi2bdj
+         XBpLPeXSJWtqcw5Li0CcY0C/xLv9SKWz2ielPoSTUiu63ISsi3I6EUKJtQGCKdc9ufNm
+         Iqy3cE0uC+phhxz7wQ9yOcJ+fzLuf+Y4HlpBKP/E90IVC8rwmmKBqLDP334sC44Wn9+T
+         GC4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HOp0QtKR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OSDCnPwf;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 23-20020ac856f7000000b002deb28d4cf9si2012803qtu.257.2022.02.25.13.03.36
+        by mx.google.com with ESMTPS id h14-20020a0cf44e000000b0042c01fa5d28si1849327qvm.290.2022.02.25.13.03.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 25 Feb 2022 13:03:37 -0800 (PST)
+        Fri, 25 Feb 2022 13:03:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HOp0QtKR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OSDCnPwf;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1645823016;
+	s=mimecast20190719; t=1645823024;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=pab33bVOuXSFeRJwLzNTvMzu0uHABihopxaPUGjTWBg=;
-	b=HOp0QtKRZaUFOdGy9nZYv39gJx9fEbCO+yz2rVUhVjKNu1+Cw5XePCXNcSCvfaLHqkSrgg
-	nYGA5iqE/cOxTTcfMrREas0iHhieBpLN0FuXni81uNYQm2L+vIEuPSG9rU+zxRzjE2Wu9/
-	Y+Op0u5euGaHKOfycKv9Gm8w7gXlIUI=
+	bh=IVbnLlwQRb4NIz3ZEah/GxCpbHss72iluxasg8Q0AMo=;
+	b=OSDCnPwf5TwcK0ritCRbq4UXvVWaQt2XMeT/Bx43nUEO17yTxxIjO1pl/UJel9viLOyTj4
+	7A1a+UbW6K8xFZ+O7YTs+CCRTaCh/TGVMbnp+2cZpE5pOJbX4R+cXKdEft4cXRefyY1Gi6
+	ieI/NociYq1oNZ1HGJwMKC6sLayMhso=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-527-Fp9uRNVmN1adrKrF6jR4Pw-1; Fri, 25 Feb 2022 16:03:34 -0500
-X-MC-Unique: Fp9uRNVmN1adrKrF6jR4Pw-1
+ us-mta-357-8SSmJYa6MVS7mAE-xYonJg-1; Fri, 25 Feb 2022 16:03:41 -0500
+X-MC-Unique: 8SSmJYa6MVS7mAE-xYonJg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B56AB1006AA5;
-	Fri, 25 Feb 2022 21:03:30 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CB83E180FD72;
+	Fri, 25 Feb 2022 21:03:37 +0000 (UTC)
 Received: from p50.localhost.localdomain.com (unknown [10.22.16.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9F8702ED79;
-	Fri, 25 Feb 2022 21:03:15 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id D86632ED79;
+	Fri, 25 Feb 2022 21:03:30 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -95,9 +95,9 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Huacai Chen <chenhuacai@kernel.org>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Eric Farman <farman@linux.ibm.com>
-Subject: [PATCH 4/9] Avocado: bump to version 95.0
-Date: Fri, 25 Feb 2022 16:01:51 -0500
-Message-Id: <20220225210156.2032055-5-crosa@redhat.com>
+Subject: [PATCH 5/9] tests/avocado/linux_ssh_mips_malta.py: add missing accel (tcg) tag
+Date: Fri, 25 Feb 2022 16:01:52 -0500
+Message-Id: <20220225210156.2032055-6-crosa@redhat.com>
 In-Reply-To: <20220225210156.2032055-1-crosa@redhat.com>
 References: <20220225210156.2032055-1-crosa@redhat.com>
 MIME-Version: 1.0
@@ -108,46 +108,30 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-X-TUID: f1SoDkkOaA3H
+X-TUID: jX8OfA3hIfEW
 
-Even though there have been a number of improvements (and some pretty
-deep internal changes) since Avocado 88.1, only one change should
-affect "make check-avocado".
-
-With the nrunner architecture, test execution happens in parallel by
-default.  But, tests may fail due to insufficient timeouts or similar
-reasons when run under systems with limited or shared resources.  To
-avoid breakages, especially on CI, let's keep the serial execution
-until proven that it won't impact the CI jobs.
+Being explicit about the accelerator used on these tests is a good
+thing in itself, but it will also be used in the filtering rules
+applied on "make check-avocado".
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/Makefile.include | 1 +
- tests/requirements.txt | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ tests/avocado/linux_ssh_mips_malta.py | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index e7153c8e91..676aa0d944 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -135,6 +135,7 @@ check-avocado: check-venv $(TESTS_RESULTS_DIR) get-vm-images
-             $(if $(AVOCADO_TAGS),, --filter-by-tags-include-empty \
- 			--filter-by-tags-include-empty-key) \
-             $(AVOCADO_CMDLINE_TAGS) \
-+            --nrunner-max-parallel-tasks=1 \
-             $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), \
-             "AVOCADO", "tests/avocado")
+diff --git a/tests/avocado/linux_ssh_mips_malta.py b/tests/avocado/linux_ssh_mips_malta.py
+index c0f0be5ade..0179d8a6ca 100644
+--- a/tests/avocado/linux_ssh_mips_malta.py
++++ b/tests/avocado/linux_ssh_mips_malta.py
+@@ -23,6 +23,9 @@
+ @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+ @skipUnless(ssh.SSH_CLIENT_BINARY, 'No SSH client available')
+ class LinuxSSH(QemuSystemTest, LinuxSSHMixIn):
++    """
++    :avocado: tags=accel:tcg
++    """
  
-diff --git a/tests/requirements.txt b/tests/requirements.txt
-index a21b59b443..49aa0fd6f6 100644
---- a/tests/requirements.txt
-+++ b/tests/requirements.txt
-@@ -1,5 +1,5 @@
- # Add Python module requirements, one per line, to be installed
- # in the tests/venv Python virtual environment. For more info,
- # refer to: https://pip.pypa.io/en/stable/user_guide/#id1
--avocado-framework==88.1
-+avocado-framework==95.0
- pycdlib==1.11.0
+     timeout = 150 # Not for 'configure --enable-debug --enable-debug-tcg'
+ 
 -- 
 2.35.1

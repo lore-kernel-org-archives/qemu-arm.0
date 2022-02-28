@@ -1,62 +1,63 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1810905lfq;
-        Mon, 28 Feb 2022 06:08:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxJ5GMXUNhEq+Ya/3AuJP5YlGoloj71V3QOTNgTe2y/jNmKVWqbp40pLfR2nEA/3HhRDclx
-X-Received: by 2002:ac8:7d56:0:b0:2de:4d01:4754 with SMTP id h22-20020ac87d56000000b002de4d014754mr16829434qtb.187.1646057304553;
-        Mon, 28 Feb 2022 06:08:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646057304; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1811222lfq;
+        Mon, 28 Feb 2022 06:08:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxF2Qp+y0T1xZ/FZENfmwlkowZQCyYc97m+9/ztNlq7Mo/ccNPa2lRv7622illEdFKzvthQ
+X-Received: by 2002:a05:6214:10e8:b0:42c:6e7:c7d2 with SMTP id q8-20020a05621410e800b0042c06e7c7d2mr13813498qvt.56.1646057334871;
+        Mon, 28 Feb 2022 06:08:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646057334; cv=none;
         d=google.com; s=arc-20160816;
-        b=eS5GusvMKVtOm14IqsNOWvtXqwtXFxmXJo1nDxdsZ95TmfQ7MqIgB4JLE/hizoNzYw
-         K+pyswBGXhfxkeZma/BmVxsy/Ug5AseV9smgLYR6LIYum8Sk2eD+72dIhNK5nON9wQnf
-         raLCbHC911FFWqzNhfrjhyDppsvng2TkKqPlCHdinMwOmEMw5ECsVtrg6OaDGjQxrwn0
-         diGPiJH1i+fMU+Yqso/ZBlIQqo+411mQJZDWTs4ApV3Q3Gf03rh8Hy4CrEgVGY01WAxR
-         21bksY9TKY8sOiyeX+4gxb86yHNaWgZus0EqMiKbciyQhLlyBcTJc23HBa1uW3BcTO4V
-         weLg==
+        b=sgCXoRRsAb/E2oPIM9DScWHDaVlXxmqyUD1qXwjB3Un1eSFdt1KKWTpfKuAe/atlun
+         bTVsYsGL8ZzLjZTdosWSO1WHantYAgvgGsKaghKMReYTYbGHIzevmR6kIuEDHrYFUTiO
+         HlW0GUnHVL3KMs2yHcly51cORPhOwlnK7poenJRVs1ctZaqau+DVdat7F+DdfQPiUAcF
+         Kmnxm0xZBvO58jOQgEtYsoITj9hxBNKace8z1w9ByB82AXXItfsZKSrW37XVhp40OEjp
+         l5Ed81nBokgv9GbhFc0u6KFdttmFixaIYJ++wIw7hCeX8K9qdTZgqZakE/mpB4YwKSLB
+         l07w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:to:in-reply-to:message-id:subject:date
          :from;
-        bh=9QWbcrGNPWtrhLIvLdYB/+wGU/sVq+tRUIOtVuLDnvI=;
-        b=LNzwuP/h4YC9/3frz4DLKAg41BVrKwU1Z0Z5s+Hui1ObXnOEWNnwTa/TTZ9wBxFIZ+
-         zdujhvdRQozEjglLgr6GZNqRFcNg6jU3xhKzCJ5mpAV8YDoNBAToOYCRX+ibOfBg4oqz
-         13IguKex0Hr71YPyjWCF3fyDnrW96UsQW9u3II3S5bqbnS1fQZi1AdXfn4bzdEH/EiCr
-         QPUd4CxmO3QbMglX4Y2pJxinsLjcefVTOUmILB2g/vbK7181MqzF8fZ17w7uTz8RgrxX
-         hQ2PP3NlemJXrUX6XTNWYD3Fyei9VlrfRtX2Ka3xexrr+7K+srht5yxQ48r/ktZfaUF5
-         pzbw==
+        bh=f4mplBu/TRpw0rxKU7mgmCHZInUAQVBvyBFzvd8yXt8=;
+        b=TQQVU2/i+38GjgiXjYDMa/iSs2b/gpMWd+VdfdQZBDucEeMaCPdumYQ9oD6psZRF5t
+         +00ZnT2M7q5eLpa1geqxAqeiGsg+oOQXAlfXVYWZdE0oirj44WoFpMLVByrpRSZKVM5D
+         ZD23Mv6u9J+7HO+2ucXZllXblbZf0kUqoaHHOJStIFcubiIeLXMTWnktvdHdZrs1VFqH
+         3sPaxC9yRBPggw7Woc3ftZBzGCyA8cWMfKVAYafm1DbxGxyoabkUJHBniOVauWUqFusX
+         3/yVo6EIPNiUABtI/0L9hc3ah16u/K1DZ9cg5oFNpscq+kHKjERqg0wSM0mEdQmXNqoN
+         hrBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n25-20020a05620a223900b00648c82c2288si3208845qkh.156.2022.02.28.06.08.24
+        by mx.google.com with ESMTPS id t3-20020a05620a450300b006044a21be09si4054897qkp.129.2022.02.28.06.08.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Feb 2022 06:08:24 -0800 (PST)
+        Mon, 28 Feb 2022 06:08:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
-Received: from localhost ([::1]:54988 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56156 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nOghL-0000nA-R2
-	for alex.bennee@linaro.org; Mon, 28 Feb 2022 09:08:23 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47838)
+	id 1nOghq-0001ZA-7w
+	for alex.bennee@linaro.org; Mon, 28 Feb 2022 09:08:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1nOZn8-0001ZY-8r; Mon, 28 Feb 2022 01:45:54 -0500
-Received: from mail-b.sr.ht ([173.195.146.151]:58204)
+ id 1nOZn9-0001af-4i; Mon, 28 Feb 2022 01:45:55 -0500
+Received: from mail-b.sr.ht ([173.195.146.151]:58206)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1nOZn5-0003JL-9c; Mon, 28 Feb 2022 01:45:53 -0500
+ id 1nOZn6-0003Ji-Ma; Mon, 28 Feb 2022 01:45:54 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 5478211EF52;
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 97B9E11EF54;
  Mon, 28 Feb 2022 06:45:46 +0000 (UTC)
 From: ~ubzeme <ubzeme@git.sr.ht>
-Date: Mon, 28 Feb 2022 09:28:00 +0800
-Subject: [PATCH qemu 5/7] hvf: fix memory dirty-tracking
-Message-ID: <164603074537.20094.1732342403585879912-5@git.sr.ht>
+Date: Mon, 28 Feb 2022 09:47:25 +0800
+Subject: [PATCH qemu 7/7] hvf: use GTree to store memory slots instead of
+ fixed-size array
+Message-ID: <164603074537.20094.1732342403585879912-7@git.sr.ht>
 X-Mailer: git.sr.ht
 In-Reply-To: <164603074537.20094.1732342403585879912-0@git.sr.ht>
 To: qemu-devel@nongnu.org
@@ -90,265 +91,145 @@ Cc: Yan-Jie Wang <ubzeme@gmail.com>, qemu-devel@nongnu.org,
  Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Emxd5y2CgzBd
+X-TUID: wWn7Dt40Dgb/
 
 From: Yan-Jie Wang <ubzeme@gmail.com>
 
-Dirty-tracking in HVF is not properly implemented.
+Currently, there are only 32 memory slots in the fixed size array.
+It is not scalable. Instead of using fixed size array, use GTree
+(from glib library) and dynamically-allocated structures to store
+memory slots.
 
-On Intel Macs, Ubuntu ISO boot menu does not show properly.
-
-On Apple Silicon, using bochs-display may cause the guest crashes because
-the guest may uses load/store instructions on framebuffer which causes
-vmexits and the exception register does not contain enough information
-(ESR_EL2.ISV =3D 0) for QEMU to emulate the memory operation.
-
-The strategy to log the dirty pages is to write-protect the memory regions
-that are being dirty-tracked.
-
-When the guest is trapped to the host because of memory write, check whether
-the address being written is being dirty-tracked.
-
-If it is being dirty-tracked, restore the write permission of the page and
-mark the accessed page dirty, and resume the guest without increasing
-program counter, and then the same instruction will be execute again.
-
-This patch fixes the problem and make the dirty-tracking work properly.
-
-Buglink: https://bugs.launchpad.net/qemu/+bug/1827005
 Signed-off-by: Yan-Jie Wang <ubzeme@gmail.com>
 ---
- accel/hvf/hvf-mem.c      | 62 ++++++++++++++++++++++++++++++++++++----
- include/sysemu/hvf_int.h | 14 +--------
- target/arm/hvf/hvf.c     |  5 ++++
- target/i386/hvf/hvf.c    | 25 ++++------------
- 4 files changed, 68 insertions(+), 38 deletions(-)
+ accel/hvf/hvf-mem.c | 63 +++++++++++++++++++++++----------------------
+ 1 file changed, 32 insertions(+), 31 deletions(-)
 
 diff --git a/accel/hvf/hvf-mem.c b/accel/hvf/hvf-mem.c
-index 36ae1abc06..b8d8bf6799 100644
+index 4948578adf..2f70ceb307 100644
 --- a/accel/hvf/hvf-mem.c
 +++ b/accel/hvf/hvf-mem.c
-@@ -30,9 +30,21 @@
+@@ -28,8 +28,6 @@
 =20
- #define HVF_NUM_SLOTS 32
+ /* Memory slots */
 =20
-+/* HVFSlot flags */
-+#define HVF_SLOT_LOG (1 << 0)
-+#define HVF_SLOT_READONLY (1 << 1)
-+
-+typedef struct HVFSlot {
-+    hwaddr start;
-+    hwaddr size;  /* 0 if the slot is free */
-+    hwaddr offset;  /* offset within memory region */
-+    uint32_t flags;
-+    MemoryRegion *region;
-+} HVFSlot;
-+
- static HVFSlot memslots[HVF_NUM_SLOTS];
+-#define HVF_NUM_SLOTS 32
+-
+ /* HVFSlot flags */
+ #define HVF_SLOT_LOG (1 << 0)
+ #define HVF_SLOT_READONLY (1 << 1)
+@@ -42,35 +40,24 @@ typedef struct HVFSlot {
+     MemoryRegion *region;
+ } HVFSlot;
 =20
--HVFSlot *hvf_find_overlap_slot(hwaddr start, hwaddr size)
-+static HVFSlot *hvf_find_overlap_slot(hwaddr start, hwaddr size)
+-static HVFSlot memslots[HVF_NUM_SLOTS];
++static GTree *memslots;
+ static QemuMutex memlock;
+=20
+ static HVFSlot *hvf_find_overlap_slot(hwaddr start, hwaddr size)
  {
-     HVFSlot *slot;
-     int x;
-@@ -194,7 +206,7 @@ static void hvf_set_dirty_tracking(MemoryRegionSection *s=
-ection, bool on)
- static void hvf_log_start(MemoryListener *listener,
-                           MemoryRegionSection *section, int old, int new)
- {
--    if (old !=3D 0) {
-+    if (old =3D=3D new) {
-         return;
-     }
-=20
-@@ -211,12 +223,12 @@ static void hvf_log_stop(MemoryListener *listener,
-     hvf_set_dirty_tracking(section, 0);
+-    HVFSlot *slot;
+-    int x;
+-    for (x =3D 0; x < HVF_NUM_SLOTS; ++x) {
+-        slot =3D &memslots[x];
+-        if (slot->size && start < (slot->start + slot->size) &&
+-            (start + size) > slot->start) {
+-            return slot;
+-        }
+-    }
+-    return NULL;
++    HVFSlot key =3D {.start =3D start, .size =3D 1};
++    return g_tree_lookup(memslots, &key);
  }
 =20
--static void hvf_log_sync(MemoryListener *listener,
-+static void hvf_log_clear(MemoryListener *listener,
-                          MemoryRegionSection *section)
+-static HVFSlot *hvf_find_free_slot(void)
++static void hvf_insert_slot(HVFSlot *slot)
  {
-     /*
--     * sync of dirty pages is handled elsewhere; just make sure we keep
--     * tracking the region.
-+     * The dirty bits are being cleared.
-+     * Make the section write-protected again.
-      */
-     hvf_set_dirty_tracking(section, 1);
- }
-@@ -240,9 +252,47 @@ static MemoryListener hvf_memory_listener =3D {
-     .region_del =3D hvf_region_del,
-     .log_start =3D hvf_log_start,
-     .log_stop =3D hvf_log_stop,
--    .log_sync =3D hvf_log_sync,
-+    .log_clear =3D hvf_log_clear,
- };
+-    HVFSlot *slot;
+-    int x;
+-    for (x =3D 0; x < HVF_NUM_SLOTS; x++) {
+-        slot =3D &memslots[x];
+-        if (!slot->size) {
+-            return slot;
+-        }
+-    }
++    g_tree_insert(memslots, slot, slot);
++}
 =20
-+
-+/*
-+ * The function is called when the guest is accessing memory causing vmexit.
-+ * Check whether the guest can access the memory directly and
-+ * also mark the accessed page being written dirty
-+ * if the page is being dirty-tracked.
-+ *
-+ * Return true if the access is within the mapped region,
-+ * otherwise return false.
-+ */
-+bool hvf_access_memory(hwaddr address, bool write)
+-    return slot;
++static bool hvf_remove_slot(hwaddr start)
 +{
-+    HVFSlot *slot;
-+    hv_return_t ret;
-+    hwaddr start, size;
++    HVFSlot key =3D {.start =3D start, .size =3D 1};
++    return g_tree_remove(memslots, &key);
+ }
+=20
+ /*
+@@ -141,9 +128,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *section=
+, bool add)
+         readonly =3D memory_region_is_rom(area) || memory_region_is_romd(are=
+a);
+=20
+         /* setup a slot */
+-        qemu_mutex_lock(&memlock);
+-
+-        slot =3D hvf_find_free_slot();
++        slot =3D g_new0(HVFSlot, 1);
+         if (!slot) {
+             error_report("No free slots");
+             abort();
+@@ -170,6 +155,10 @@ static void hvf_set_phys_mem(MemoryRegionSection *sectio=
+n, bool add)
+             flags =3D HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;
+         }
+=20
++        qemu_mutex_lock(&memlock);
 +
-+    slot =3D hvf_find_overlap_slot(address, 1);
++        hvf_insert_slot(slot);
 +
-+    if (!slot || (write && slot->flags & HVF_SLOT_READONLY)) {
-+        /* MMIO or unmapped area, return false */
-+        return false;
+         ret =3D hv_vm_map(host_addr, start, size, flags);
+         assert_hvf_ok(ret);
+=20
+@@ -178,13 +167,9 @@ static void hvf_set_phys_mem(MemoryRegionSection *sectio=
+n, bool add)
+         /* remove memory region */
+         qemu_mutex_lock(&memlock);
+=20
+-        slot =3D hvf_find_overlap_slot(start, size);
+-
+-        if (slot) {
++        if (hvf_remove_slot(start)) {
+             ret =3D hv_vm_unmap(start, size);
+             assert_hvf_ok(ret);
+-
+-            slot->size =3D 0;
+         }
+=20
+         qemu_mutex_unlock(&memlock);
+@@ -310,8 +295,24 @@ bool hvf_access_memory(hwaddr address, bool write)
+     return true;
+ }
+=20
++/* compare function for GTree */
++static gint _hvf_slot_compare(gconstpointer a, gconstpointer b, gpointer dat=
+a)
++{
++    const HVFSlot *m1 =3D (const HVFSlot *)a;
++    const HVFSlot *m2 =3D (const HVFSlot *)b;
++
++    if (m2->start >=3D m1->start + m1->size) {
++        return -1;
++    } else if (m1->start >=3D m2->start + m2->size) {
++        return 1;
 +    }
 +
-+    if (write && (slot->flags & HVF_SLOT_LOG)) {
-+        /* The slot is being dirty-tracked. Mark the accessed page dirty. */
-+        start =3D address & qemu_real_host_page_mask;
-+        size =3D qemu_real_host_page_size;
-+
-+        memory_region_set_dirty(slot->region,
-+                                start - slot->start + slot->offset, size);
-+        ret =3D hv_vm_protect(start, size,
-+                    HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);
-+        assert_hvf_ok(ret);
-+    }
-+
-+    return true;
++    return 0;
 +}
 +
  void hvf_init_memslots(void)
  {
+     qemu_mutex_init(&memlock);
++    memslots =3D g_tree_new_full(_hvf_slot_compare, NULL, g_free, NULL);
      memory_listener_register(&hvf_memory_listener, &address_space_memory);
-diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index 0aafbc9357..16e5faf0ff 100644
---- a/include/sysemu/hvf_int.h
-+++ b/include/sysemu/hvf_int.h
-@@ -17,18 +17,6 @@
- #include <Hypervisor/hv.h>
- #endif
-=20
--/* HVFSlot flags */
--#define HVF_SLOT_LOG (1 << 0)
--#define HVF_SLOT_READONLY (1 << 1)
--
--typedef struct HVFSlot {
--    hwaddr start;
--    hwaddr size;  /* 0 if the slot is free */
--    hwaddr offset;  /* offset within memory region */
--    uint32_t flags;
--    MemoryRegion *region;
--} HVFSlot;
--
- typedef struct hvf_vcpu_caps {
-     uint64_t vmx_cap_pinbased;
-     uint64_t vmx_cap_procbased;
-@@ -58,11 +46,11 @@ int hvf_arch_init(void);
- int hvf_arch_init_vcpu(CPUState *cpu);
- void hvf_arch_vcpu_destroy(CPUState *cpu);
- int hvf_vcpu_exec(CPUState *);
--HVFSlot *hvf_find_overlap_slot(hwaddr, hwaddr);
- int hvf_put_registers(CPUState *);
- int hvf_get_registers(CPUState *);
- void hvf_kick_vcpu_thread(CPUState *cpu);
-=20
-+bool hvf_access_memory(hwaddr address, bool write);
- void hvf_init_memslots(void);
-=20
- #endif
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 0dc96560d3..e40efbc33e 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1163,6 +1163,11 @@ int hvf_vcpu_exec(CPUState *cpu)
-             break;
-         }
-=20
-+        if (iswrite &&
-+            hvf_access_memory(hvf_exit->exception.physical_address, 1)) {
-+            break;
-+        }
-+
-         assert(isv);
-=20
-         if (iswrite) {
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index 2ddb4fc825..c4c544dc54 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -113,7 +113,7 @@ void hvf_handle_io(CPUArchState *env, uint16_t port, void=
- *buffer,
-     }
  }
-=20
--static bool ept_emulation_fault(HVFSlot *slot, uint64_t gpa, uint64_t ept_qu=
-al)
-+static bool ept_emulation_fault(uint64_t gpa, uint64_t ept_qual)
- {
-     int read, write;
-=20
-@@ -129,14 +129,6 @@ static bool ept_emulation_fault(HVFSlot *slot, uint64_t =
-gpa, uint64_t ept_qual)
-         return false;
-     }
-=20
--    if (write && slot) {
--        if (slot->flags & HVF_SLOT_LOG) {
--            memory_region_set_dirty(slot->region, gpa - slot->start, 1);
--            hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
--                          HV_MEMORY_READ | HV_MEMORY_WRITE);
--        }
--    }
--
-     /*
-      * The EPT violation must have been caused by accessing a
-      * guest-physical address that is a translation of a guest-linear
-@@ -147,14 +139,11 @@ static bool ept_emulation_fault(HVFSlot *slot, uint64_t=
- gpa, uint64_t ept_qual)
-         return false;
-     }
-=20
--    if (!slot) {
--        return true;
--    }
--    if (!memory_region_is_ram(slot->region) &&
--        !(read && memory_region_is_romd(slot->region))) {
--        return true;
-+    if (hvf_access_memory(gpa, write)) {
-+        return false;
-     }
--    return false;
-+
-+    return true;
- }
-=20
- void hvf_arch_vcpu_destroy(CPUState *cpu)
-@@ -469,7 +458,6 @@ int hvf_vcpu_exec(CPUState *cpu)
-         /* Need to check if MMIO or unmapped fault */
-         case EXIT_REASON_EPT_FAULT:
-         {
--            HVFSlot *slot;
-             uint64_t gpa =3D rvmcs(cpu->hvf->fd, VMCS_GUEST_PHYSICAL_ADDRESS=
-);
-=20
-             if (((idtvec_info & VMCS_IDT_VEC_VALID) =3D=3D 0) &&
-@@ -477,9 +465,8 @@ int hvf_vcpu_exec(CPUState *cpu)
-                 vmx_set_nmi_blocking(cpu);
-             }
-=20
--            slot =3D hvf_find_overlap_slot(gpa, 1);
-             /* mmio */
--            if (ept_emulation_fault(slot, gpa, exit_qual)) {
-+            if (ept_emulation_fault(gpa, exit_qual)) {
-                 struct x86_decode decode;
-=20
-                 load_regs(cpu);
 --=20
 2.34.1
-

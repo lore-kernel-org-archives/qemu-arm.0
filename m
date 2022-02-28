@@ -1,79 +1,107 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1812597lfq;
-        Mon, 28 Feb 2022 06:10:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz+Ed9nqEFyUa6IaGOG4b8c6x8LKW3RIG0Y3WxiPFiqjSZxkQLa8xmb9lB1DSrkDGMWfSSh
-X-Received: by 2002:a81:32c4:0:b0:2db:c993:169c with SMTP id y187-20020a8132c4000000b002dbc993169cmr497989ywy.79.1646057432510;
-        Mon, 28 Feb 2022 06:10:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646057432; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1813428lfq;
+        Mon, 28 Feb 2022 06:11:45 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxz4USYMHCmCKvGk0XZAaDB4eBrVwm4JbEC9Ztid7WxSWRC1JSHP6HGrUJ5H3ASCHmLUX+5
+X-Received: by 2002:a05:622a:1192:b0:2d1:e58e:7659 with SMTP id m18-20020a05622a119200b002d1e58e7659mr16735335qtk.41.1646057504887;
+        Mon, 28 Feb 2022 06:11:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646057504; cv=none;
         d=google.com; s=arc-20160816;
-        b=bUwgjtTIZvaGGOdN7YpHv5UCwcQ4H5sHr7KLnjdyMjCD19/K92Ce/q6lvC5ZMJUymj
-         1QOlTkaW5ine/zGfWDDqUhP2FjA8h3wP1uTs9jfx/usGcw4GalMakfH495vzOxt6RT3o
-         PSBrT3mhzYESRJLjw/apqQUCVeZw6aNeJlSZcI/J/vTos44/8oRav8vggg2QTwrktfDF
-         uEk6QCrmA3qKmKYVPMR/KSucLyQxMnqjXHzH6O9VbgA0R8BUcRLGStICb+Rr1xhenJRU
-         OZM/K6gHM4KoygolZmFetrv13rNl3qRvKM9qz8/f+agSpCwAWJ6Cpmxwmdgd4uXPqR7Y
-         5iRA==
+        b=SndSr6lO3UXN3xZ2ATMnoVOpZ+BC35vBpJ8XCpnB5rLhcrHoCc3NbufNNUvMTYdaW8
+         OtcJaYSPzjssidvw2Yl+6x5JrdzBe3nzxb5qpw3fHCTpbQseYxOsZnykNvlMceqj4YB5
+         qlX9o8/roWQzB+QSyrLNdMW4xNUv23wLD6JrkHj2GFw5lHVuCdwMQhcthkj6GTEahSvh
+         IIWjdaZCFNeuxAhfFRY71MruZshB5lBZ1qaRLMVt/HobBnz4ofUf8RNWxVwclQKzR2N6
+         wLxzScLMbKHfj+jJYnVwvGsRsMOyuVBAeWoOHFqt7wZnK2n4Vke4ULnNG67egpGyjHi9
+         iadQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:to:in-reply-to:message-id:subject:date
-         :from;
-        bh=9k3jnKyIISTk423WCOP3dnXED/jDnmes7ktLHSmylsI=;
-        b=cI+7vpqbzg/znf3SGAyHci7cwaXUAlrCsojMFNySvvJ1qzSfS11E91dhxy2fVQsP/y
-         /XOzhwpyySndZ94VfHzZl8MDeaHggDMQ3RRUNtRuFu5CtVhEFmsbsNZNOcdBCJrV/g72
-         PlbPqYHbma8iWUFZ1t+LySi1hM6YHnDZ6o7CJ1aXUL6Ul6RwMCP5vQjwnaP4W+NBTJt6
-         yEbFdK9L92r3kf669QPya2Vtn4CoAX7rwUy7TkoRE7evpsuqRxcFdCMZnyc9WDPc3KBl
-         GWF5ubB7HvYcZ76428jMvzePVyXbXGvNxKUpQ8F4dsQCFK3+5/9Y6Q+TKXXLDLbhpZDL
-         ecCw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=B5d5msIFGx1HjfhBhxyVTL5iGoQDzjnp43Drgtpwj6I=;
+        b=poG/4icX4zqu9kHwArkeYnKAaux/7QV0j6MUdbocDLZBDakZxL12m2xhCOEiiv3Fr0
+         CtbUwdUNVdycgF46mon+3InyGHyPvlAmsU/X7lzidcOYKt7bsvFxFGjJSYL9J80708OT
+         sEMF8138RKcnDAZOqQjZVnWvRaPN+cUvmf5+e/RZRbJFWyJ0OmbNlLGSfCRobvDvFTFu
+         4VjlJBJP5qgThbyzyVIUSzfdsU2ZS2hf0dseNwyINShuLpd4lBG/l4gl3btUgW2ex5yQ
+         nVKBeTiCkfzLWrvV9zBW+HakikTtLc8+Vt1aYCNiCcXmYO1mOYHoCzV6Xj4K9FtYAnnh
+         gddA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ALEMk5M6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t37-20020a25aaa8000000b00627eab17ffbsi6960756ybi.530.2022.02.28.06.10.32
+        by mx.google.com with ESMTPS id bf18-20020a05690c029200b002d035ccf98csi8520479ywb.48.2022.02.28.06.11.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Feb 2022 06:10:32 -0800 (PST)
+        Mon, 28 Feb 2022 06:11:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ALEMk5M6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
-Received: from localhost ([::1]:59796 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36178 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nOgjP-00042j-SF
-	for alex.bennee@linaro.org; Mon, 28 Feb 2022 09:10:31 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47764)
+	id 1nOgka-0007Ey-9R
+	for alex.bennee@linaro.org; Mon, 28 Feb 2022 09:11:44 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45198)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1nOZn4-0001Ya-Oj; Mon, 28 Feb 2022 01:45:52 -0500
-Received: from mail-b.sr.ht ([173.195.146.151]:58196)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1nOZn2-0003IN-E9; Mon, 28 Feb 2022 01:45:50 -0500
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id E6A5711EF24;
- Mon, 28 Feb 2022 06:45:45 +0000 (UTC)
-From: ~ubzeme <ubzeme@git.sr.ht>
-Date: Mon, 28 Feb 2022 09:07:49 +0800
-Subject: [PATCH qemu 2/7] hvf: simplify data structures and codes of memory
- related functions
-Message-ID: <164603074537.20094.1732342403585879912-2@git.sr.ht>
-X-Mailer: git.sr.ht
-In-Reply-To: <164603074537.20094.1732342403585879912-0@git.sr.ht>
-To: qemu-devel@nongnu.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nOgkH-0007CN-SZ
+ for qemu-devel@nongnu.org; Mon, 28 Feb 2022 09:11:25 -0500
+Received: from [2607:f8b0:4864:20::b2b] (port=38565
+ helo=mail-yb1-xb2b.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nOgkG-0008CV-1s
+ for qemu-devel@nongnu.org; Mon, 28 Feb 2022 09:11:25 -0500
+Received: by mail-yb1-xb2b.google.com with SMTP id u3so20743568ybh.5
+ for <qemu-devel@nongnu.org>; Mon, 28 Feb 2022 06:11:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=B5d5msIFGx1HjfhBhxyVTL5iGoQDzjnp43Drgtpwj6I=;
+ b=ALEMk5M6NVPo7o6CdTOdn5+shEkJzZ43/5YC7O5yzFx6uSfeW60IAFPZmKRVUnEHcb
+ xn93IfX6yuPbf0ah6n7dPUpOzyoYv/hb5d7/NUBoKugU938ag1ESe+MUgThMX2my2+Vz
+ iRVkyt4gwxiIWJ0MEZ+8tfAYGA6LAGuVx4W0VBClh4DpLBXy8PwNuXvTgUqxHDSlSb0F
+ EN6TQgj1I4xn0874+CIFqeOefjZkkogsf4lSRGWho8LDYNxrG5/VlDqQUMPtEEPCw2Z7
+ FWFmtbLnUVbp8GFFjuYf604Jym/DdpbpeyXr9dJjwraQeMxVVs1H+vxIMwlXuly51xvp
+ /iZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=B5d5msIFGx1HjfhBhxyVTL5iGoQDzjnp43Drgtpwj6I=;
+ b=cNnt0DtWxVKbE2xNfBilLH/Qwenuq4s7Hx35G8EKNB1x8+3vnXtHXG0dyU2bfkXu2R
+ 92bJil8LMEBrl0Djxbs02zPs5NS8xP6jw56CnZANvxaGjTFIe1FJZQ8odb6JM0k/vluJ
+ q2GIQmSo0JenBNJihtFmdIuCeweU0A7ctajFgu7xnV7hjcVZdnURrFGeD+iUEqnhS3MX
+ V+ZwpiJvKA52enzMVjlJ17tAVpuTeZNwC9UsaUGFOV0dZ33iVEgNhWXqkcFKg4dCmCa2
+ 67W7IasDQWBIfaPtBKmureize5IydxTeSZo0go9KM+Vd865QqEHkMA8koFiGLUHiFwYZ
+ V88g==
+X-Gm-Message-State: AOAM531PIoBDxMpYdHDOovQ2xeyGpIgjOAHKJRU4GKWkGy+1f6IAupoB
+ rKAjX1YNEUcEICvmBBwwcdMmGz4yNBhtl9nx3d7krw==
+X-Received: by 2002:a25:8084:0:b0:5fe:cadd:2532 with SMTP id
+ n4-20020a258084000000b005fecadd2532mr19148766ybk.193.1646057483040; Mon, 28
+ Feb 2022 06:11:23 -0800 (PST)
 MIME-Version: 1.0
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: 18
-X-Spam_score: 1.8
-X-Spam_bar: +
-X-Spam_report: (1.8 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
- FREEMAIL_FORGED_REPLYTO=2.095, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+References: <164603074537.20094.1732342403585879912-0@git.sr.ht>
+In-Reply-To: <164603074537.20094.1732342403585879912-0@git.sr.ht>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 28 Feb 2022 14:11:11 +0000
+Message-ID: <CAFEAcA8hWy3rfGtYkyQjJSGgsX448_t01xmM4cwyCO0op4h1xw@mail.gmail.com>
+Subject: Re: [PATCH qemu 0/7] Many improvements to HVF memory-related codes
+To: "~ubzeme" <ubzeme@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b2b
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2b.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 28 Feb 2022 09:07:40 -0500
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,337 +113,25 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: ~ubzeme <ubzeme@gmail.com>
-Cc: Yan-Jie Wang <ubzeme@gmail.com>, qemu-devel@nongnu.org,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org
+Cc: Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yDndnKE1UHcC
+X-TUID: PxAY1yIQPdx5
 
-From: Yan-Jie Wang <ubzeme@gmail.com>
+On Mon, 28 Feb 2022 at 14:07, ~ubzeme <ubzeme@git.sr.ht> wrote:
+>
+> I recently bought a Mac with M1 Pro chip, and use QEMU to setup a Linux
+> virtual machine.  QEMU crashed when I started a VM with HVF accelerator
+> enabled and with the device, bochs-display, added.
+>
+> After digging into the source code, I found that dirty-tracking in HVF
+> did not work properly, which made QEMU crashed. Therefore I made this
+> series of patches to fix the problem.
 
-* Remove mac_slot and use hvf_slot only. The function of the two structures
-  are similar.
+How does this series compare with Alex's patch to enable
+hvf dirty tracking for target/arm/hvf ?
+https://patchew.org/QEMU/20220203142320.33022-1-agraf@csgraf.de/
 
-* Refactor function hvf_set_phys_mem():
- - Remove unnecessary checks because any modified memory sections
-   will be removed first (region_del called first) before being added.
-   Therefore, new sections do not overlap with existing sections.
- - Try to align memory sections first before giving up sections that are not
-   aligned to host page size.
-
-Signed-off-by: Yan-Jie Wang <ubzeme@gmail.com>
----
- accel/hvf/hvf-accel-ops.c |   1 -
- accel/hvf/hvf-mem.c       | 197 +++++++++++++++++++-------------------
- include/sysemu/hvf_int.h  |   8 +-
- 3 files changed, 100 insertions(+), 106 deletions(-)
-
-diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index 50a563bfe0..c77f142f2b 100644
---- a/accel/hvf/hvf-accel-ops.c
-+++ b/accel/hvf/hvf-accel-ops.c
-@@ -49,7 +49,6 @@
-=20
- #include "qemu/osdep.h"
- #include "qemu/main-loop.h"
--#include "exec/address-spaces.h"
- #include "exec/exec-all.h"
- #include "sysemu/cpus.h"
- #include "sysemu/hvf.h"
-diff --git a/accel/hvf/hvf-mem.c b/accel/hvf/hvf-mem.c
-index 3712731ed9..c60303c84e 100644
---- a/accel/hvf/hvf-mem.c
-+++ b/accel/hvf/hvf-mem.c
-@@ -28,12 +28,16 @@
-=20
- /* Memory slots */
-=20
-+#define HVF_NUM_SLOTS 32
-+
-+static hvf_slot memslots[HVF_NUM_SLOTS];
-+
- hvf_slot *hvf_find_overlap_slot(uint64_t start, uint64_t size)
- {
-     hvf_slot *slot;
-     int x;
--    for (x =3D 0; x < hvf_state->num_slots; ++x) {
--        slot =3D &hvf_state->slots[x];
-+    for (x =3D 0; x < HVF_NUM_SLOTS; ++x) {
-+        slot =3D &memslots[x];
-         if (slot->size && start < (slot->start + slot->size) &&
-             (start + size) > slot->start) {
-             return slot;
-@@ -42,128 +46,130 @@ hvf_slot *hvf_find_overlap_slot(uint64_t start, uint64_=
-t size)
-     return NULL;
- }
-=20
--struct mac_slot {
--    int present;
--    uint64_t size;
--    uint64_t gpa_start;
--    uint64_t gva;
--};
-+static hvf_slot *hvf_find_free_slot(void)
-+{
-+    hvf_slot *slot;
-+    int x;
-+    for (x =3D 0; x < HVF_NUM_SLOTS; x++) {
-+        slot =3D &memslots[x];
-+        if (!slot->size) {
-+            return slot;
-+        }
-+    }
-=20
--struct mac_slot mac_slots[32];
-+    return slot;
-+}
-=20
--static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
-+/*
-+ * Hypervisor.framework requires that the host virtual address,
-+ * the guest physical address and the size of memory regions are aligned
-+ * to the host page size.
-+ *
-+ * The function here tries to align the guest physical address and the size.
-+ *
-+ * The return value is the aligned size.
-+ * The aligned guest physical address will be written to `start'.
-+ * The delta between the aligned address and the original address will be
-+ * written to `delta'.
-+ */
-+static hwaddr hvf_align_section(MemoryRegionSection *section,
-+                              hwaddr *start, hwaddr *delta)
- {
--    struct mac_slot *macslot;
--    hv_return_t ret;
--
--    macslot =3D &mac_slots[slot->slot_id];
-+    hwaddr unaligned, _start, size, _delta;
-=20
--    if (macslot->present) {
--        if (macslot->size !=3D slot->size) {
--            macslot->present =3D 0;
--            ret =3D hv_vm_unmap(macslot->gpa_start, macslot->size);
--            assert_hvf_ok(ret);
--        }
--    }
-+    unaligned =3D section->offset_within_address_space;
-+    size =3D int128_get64(section->size);
-+    _start =3D ROUND_UP(unaligned, qemu_real_host_page_size);
-+    _delta =3D _start - unaligned;
-+    size =3D (size - _delta) & qemu_real_host_page_mask;
-=20
--    if (!slot->size) {
--        return 0;
--    }
-+    *start =3D _start;
-+    *delta =3D _delta;
-=20
--    macslot->present =3D 1;
--    macslot->gpa_start =3D slot->start;
--    macslot->size =3D slot->size;
--    ret =3D hv_vm_map(slot->mem, slot->start, slot->size, flags);
--    assert_hvf_ok(ret);
--    return 0;
-+    return size;
- }
-=20
- static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
- {
--    hvf_slot *mem;
-+    hvf_slot *slot;
-+    hwaddr start, size, offset, delta;
-+    uint8_t *host_addr;
-     MemoryRegion *area =3D section->mr;
--    bool writeable =3D !area->readonly && !area->rom_device;
-+    bool readonly, dirty_tracking;
-     hv_memory_flags_t flags;
--    uint64_t page_size =3D qemu_real_host_page_size;
-+    hv_return_t ret;
-=20
--    if (!memory_region_is_ram(area)) {
--        if (writeable) {
--            return;
--        } else if (!memory_region_is_romd(area)) {
--            /*
--             * If the memory device is not in romd_mode, then we actually wa=
-nt
--             * to remove the hvf memory slot so all accesses will trap.
--             */
--             add =3D false;
--        }
-+    if (add && !memory_region_is_ram(area) && !memory_region_is_romd(area)) {
-+        /*
-+         * If the memory region is not RAM and is in ROMD mode,
-+         * do not map it to the guest.
-+         */
-+        return;
-     }
-=20
--    if (!QEMU_IS_ALIGNED(int128_get64(section->size), page_size) ||
--        !QEMU_IS_ALIGNED(section->offset_within_address_space, page_size)) {
--        /* Not page aligned, so we can not map as RAM */
--        add =3D false;
-+    size =3D hvf_align_section(section, &start, &delta);
-+
-+    if (!size) {
-+        /* The size is 0 after aligned. Do not map the region */
-+        return;
-     }
-=20
--    mem =3D hvf_find_overlap_slot(
--            section->offset_within_address_space,
--            int128_get64(section->size));
-+    if (add) {
-+        /* add memory region */
-+        offset =3D section->offset_within_region + delta;
-+        host_addr =3D memory_region_get_ram_ptr(area) + offset;
-=20
--    if (mem && add) {
--        if (mem->size =3D=3D int128_get64(section->size) &&
--            mem->start =3D=3D section->offset_within_address_space &&
--            mem->mem =3D=3D (memory_region_get_ram_ptr(area) +
--            section->offset_within_region)) {
--            return; /* Same region was attempted to register, go away. */
-+        if (!QEMU_PTR_IS_ALIGNED(host_addr, qemu_real_host_page_size)) {
-+            /* The host virtual address is not aligned. It cannot be mapped =
-*/
-+            return;
-         }
--    }
-=20
--    /* Region needs to be reset. set the size to 0 and remap it. */
--    if (mem) {
--        mem->size =3D 0;
--        if (do_hvf_set_memory(mem, 0)) {
--            error_report("Failed to reset overlapping slot");
-+        dirty_tracking =3D !!memory_region_get_dirty_log_mask(area);
-+        readonly =3D memory_region_is_rom(area) || memory_region_is_romd(are=
-a);
-+
-+        /* setup a slot */
-+        slot =3D hvf_find_free_slot();
-+        if (!slot) {
-+            error_report("No free slots");
-             abort();
-         }
--    }
-=20
--    if (!add) {
--        return;
--    }
-+        slot->start =3D start;
-+        slot->size =3D size;
-+        slot->offset =3D offset;
-+        slot->flags =3D 0;
-+        slot->region =3D area;
-=20
--    if (area->readonly ||
--        (!memory_region_is_ram(area) && memory_region_is_romd(area))) {
--        flags =3D HV_MEMORY_READ | HV_MEMORY_EXEC;
--    } else {
--        flags =3D HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;
--    }
-+        if (readonly) {
-+            slot->flags |=3D HVF_SLOT_READONLY;
-+        }
-=20
--    /* Now make a new slot. */
--    int x;
-+        if (dirty_tracking) {
-+            slot->flags |=3D HVF_SLOT_LOG;
-+        }
-=20
--    for (x =3D 0; x < hvf_state->num_slots; ++x) {
--        mem =3D &hvf_state->slots[x];
--        if (!mem->size) {
--            break;
-+        /* set Hypervisor.framework memory mapping flags */
-+        if (readonly || dirty_tracking) {
-+            flags =3D HV_MEMORY_READ | HV_MEMORY_EXEC;
-+        } else {
-+            flags =3D HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;
-         }
--    }
-=20
--    if (x =3D=3D hvf_state->num_slots) {
--        error_report("No free slots");
--        abort();
--    }
-+        ret =3D hv_vm_map(host_addr, start, size, flags);
-+        assert_hvf_ok(ret);
-+    } else {
-+        /* remove memory region */
-+        slot =3D hvf_find_overlap_slot(start, size);
-=20
--    mem->size =3D int128_get64(section->size);
--    mem->mem =3D memory_region_get_ram_ptr(area) + section->offset_within_re=
-gion;
--    mem->start =3D section->offset_within_address_space;
--    mem->region =3D area;
-+        if (slot) {
-+            ret =3D hv_vm_unmap(start, size);
-+            assert_hvf_ok(ret);
-=20
--    if (do_hvf_set_memory(mem, flags)) {
--        error_report("Error registering new memory slot");
--        abort();
-+            slot->size =3D 0;
-+        }
-     }
- }
-=20
--
- static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
- {
-     hvf_slot *slot;
-@@ -239,14 +245,5 @@ static MemoryListener hvf_memory_listener =3D {
-=20
- void hvf_init_memslots(void)
- {
--    int x;
--    HVFState *s =3D hvf_state;
--
--    s->num_slots =3D ARRAY_SIZE(s->slots);
--    for (x =3D 0; x < s->num_slots; ++x) {
--        s->slots[x].size =3D 0;
--        s->slots[x].slot_id =3D x;
--    }
--
-     memory_listener_register(&hvf_memory_listener, &address_space_memory);
- }
-diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index cef20d750d..8ee31a16ac 100644
---- a/include/sysemu/hvf_int.h
-+++ b/include/sysemu/hvf_int.h
-@@ -19,12 +19,12 @@
-=20
- /* hvf_slot flags */
- #define HVF_SLOT_LOG (1 << 0)
-+#define HVF_SLOT_READONLY (1 << 1)
-=20
- typedef struct hvf_slot {
-     uint64_t start;
--    uint64_t size;
--    uint8_t *mem;
--    int slot_id;
-+    uint64_t size;  /* 0 if the slot is free */
-+    uint64_t offset;  /* offset within memory region */
-     uint32_t flags;
-     MemoryRegion *region;
- } hvf_slot;
-@@ -40,8 +40,6 @@ typedef struct hvf_vcpu_caps {
-=20
- struct HVFState {
-     AccelState parent;
--    hvf_slot slots[32];
--    int num_slots;
-=20
-     hvf_vcpu_caps *hvf_caps;
-     uint64_t vtimer_offset;
---=20
-2.34.1
-
+thanks
+-- PMM

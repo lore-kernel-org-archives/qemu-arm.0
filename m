@@ -1,85 +1,83 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1635304lfq;
-        Mon, 28 Feb 2022 01:20:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzvO129xmRf9K5CESNUG1oo8ZAwW+N9bN6fCqTO6zyNMxg9IjkAi6TGj1fZL8Ih4cbLiDlo
-X-Received: by 2002:ac8:5c53:0:b0:2de:4d85:9d49 with SMTP id j19-20020ac85c53000000b002de4d859d49mr15578711qtj.263.1646040041453;
-        Mon, 28 Feb 2022 01:20:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646040041; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1639644lfq;
+        Mon, 28 Feb 2022 01:28:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwljhPxyIy2DBMYcWtl1snNpGhEX7BeZ7LRhqkd6yOmEYZGQVsIXKBpUibzH7k8S3qAAIkB
+X-Received: by 2002:a05:6402:3553:b0:412:d0aa:e7b0 with SMTP id f19-20020a056402355300b00412d0aae7b0mr18352930edd.309.1646040533276;
+        Mon, 28 Feb 2022 01:28:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646040533; cv=none;
         d=google.com; s=arc-20160816;
-        b=QPUhHCUX+/07kvVqeKsXbbPlvI0jA1+n3KgiXzJiQYOrtL9w2axmwFqT7xsX2ogSkD
-         1XRKiKpdFoS8WklA638ym+zpybXBXlG1m3SWgyfh/u/p6Jb6I1dQWMDrd7zteChsrQqJ
-         6/H+/H6b9rjNaVfV3d4ysZK3RGWMuA3JAebaaCsDtKunoAJ1OpFVfyUUP4xkbF4YbQMP
-         Sw7kqyQGk0PCLOGvWtHXsRu+OW2TW3inahRFQTrgjQ0MrnzYdnbyk05+8SMepyqOjdsq
-         x+lMy9RVsuYzS4vPPPm3WpkuBUAWukwQJ88TRZBQFY7BVGlUrsXRPVLAUD50xSSFoYZC
-         49xw==
+        b=U4YK6BA+u87KAXoRrahZEvh9nRSJiks5qSpBmD7kfLkeqwf6Reo+SqnRm0X9nSp3oH
+         ojL/EL/HhrAGE2EYGQisr3vx78qI4knjEheV4QLHd2Ho3WI56sX+dPu1JG0ICN5lq3d2
+         GocnFOdF/UxXapXA2gy3eHMProSeRhu5XRPUAc0b5biUnbg0JS6e8wnGECck4tR9jK79
+         kk1INwob2IZ7KyUw71jjf3eVjOc//scSvGbY/q4heXmGIqAolP4ZV5zZQFheIvvnPW/p
+         1mqPwkQIoDmrsJFRMsSgzNbnjXN7bHIB8zYo7CuAr6pcJDjfA5PBFxcSN04kDV8S6jZF
+         Pz5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-disposition:user-agent
          :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=mV00cQFeAzEdf1MAOS8mMi+Z50cMsM1e1rQywXdIkwo=;
-        b=hALe5L4tlyhBJRIoIsJKpoPdF1kBHlBF597lpvdY21MTJo9Mc+Ca6Ef6gCpTPniPIf
-         F1FAnMoocq+OGTwpLT8qe6o8xjnyCaQ71jAiW0jqKtGwAcZBMccHRSWXNyDeJofzljeg
-         CoNRKady9sN/6vIAJAkqmd/ciLVXFCFxJYtJXvDebv/g+XSOg+9YTchlDuZzuXTYbjjo
-         nQVrANpKlEUSYa+IkCPZVo5msJF8rYSNGmdaFcdrJfz6j6VkTx+/Z6eKDBqV+I4XExIR
-         GZKUXsP9FAZB0EfSBL8yqlMspW4lrxcFU5jRBWL/Fc/TeTtYHHKJILkN0klkHs1rQLcH
-         QNXA==
+        bh=fdFgyfcjFJL7uHjJh2hFC6j/gqcMm0zr52Fdpw7GRm4=;
+        b=TS/kgfyrj9LJG+dMaxqkx6cAoqXS2P67BEDdVhuW6R/r2sQBLTYnIqhMOqSOx+M0yH
+         xvfx1N7bXZN0DbJFjLyrIgLxOGSMB2AQEmT8uQKp7/b1pdPO3nZpZHYXOWV604WXIixY
+         WO+/pusblW6KYyWKp0BZN0YE/jTRq5tPMCAAdR6nJVwy39Lz5tV/4dLULq1+pbHhui6G
+         unXdem4IaOGTH4Mrd77L54aU+hLZEXZLykTJfrkflVQSIk23uTP7DnYihEV6LR5XNbzb
+         yXKgCoWUIHAP6LeSWC3VSgiDLrXCMsY9tY+93QEfoentx3OiQHBsZUMYBSkTzlLfTqbF
+         WeFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KBvkiMov;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LH17n0na;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id n4-20020a0cbe84000000b0042bf4348f6dsi3263744qvi.147.2022.02.28.01.20.41
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id t21-20020a170906609500b006b305f73cbfsi5389199ejj.922.2022.02.28.01.28.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 28 Feb 2022 01:20:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 28 Feb 2022 01:28:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KBvkiMov;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LH17n0na;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1646040041;
+	s=mimecast20190719; t=1646040532;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=mV00cQFeAzEdf1MAOS8mMi+Z50cMsM1e1rQywXdIkwo=;
-	b=KBvkiMovLk1e4vgvLlEGTbZwJit5yQX7zZ6sFt+5jk5yGzz54JlcTktsXa9VJjdhi3TJRo
-	78nuV5ilRrOm3+2tWfKVOHTCfbwYSY7CSmSz03MyW2nUoeh1yzBALMP4wLtUM5Wt0IM12b
-	FXd9qMpxz/t1a7m6MXOX9r1Q5fM8iyI=
+	bh=fdFgyfcjFJL7uHjJh2hFC6j/gqcMm0zr52Fdpw7GRm4=;
+	b=LH17n0naQHWNYFidysz1MULOR3vQRgl6Mmo+RcWPHPhyH0qwh32E5nL/HH4BMxVZHUHPFp
+	xioYTJ67gUDDRDWS5EyL0i7/Ptg3j18ntF2i1U6A7SPzuWmlm/8yXewa5EfgIuAvGJl/aA
+	ZkmIEfvTCMNle8eJmUG8OLF5SO60Ku0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-85-hKpaEPh7PaWP6OFwy1nYqg-1; Mon, 28 Feb 2022 04:20:35 -0500
-X-MC-Unique: hKpaEPh7PaWP6OFwy1nYqg-1
+ us-mta-520-bTi-LPoKN5qz57wu1p1AMw-1; Mon, 28 Feb 2022 04:28:49 -0500
+X-MC-Unique: bTi-LPoKN5qz57wu1p1AMw-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 932251854E2A;
-	Mon, 28 Feb 2022 09:20:33 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7AA7F1854E26;
+	Mon, 28 Feb 2022 09:28:47 +0000 (UTC)
 Received: from redhat.com (unknown [10.33.36.149])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4BAEF7AB7D;
-	Mon, 28 Feb 2022 09:20:20 +0000 (UTC)
-Date: Mon, 28 Feb 2022 09:20:17 +0000
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id ED8647AB7C;
+	Mon, 28 Feb 2022 09:28:31 +0000 (UTC)
+Date: Mon, 28 Feb 2022 09:28:28 +0000
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, fam@euphon.net, f4bug@amsat.org,
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, fam@euphon.net, f4bug@amsat.org,
 	aurelien@aurel32.net, pbonzini@redhat.com, stefanha@redhat.com,
 	crosa@redhat.com, qemu-arm@nongnu.org, richard.henderson@linaro.org,
-	sw@weilnetz.de, Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	David Hildenbrand <dhildenb@redhat.com>
-Subject: Re: [PATCH v2 04/18] tests/docker: update debian-arm64-cross with
+	sw@weilnetz.de, Thomas Huth <thuth@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>
+Subject: Re: [PATCH  v2 04/18] tests/docker: update debian-arm64-cross with
  lci-tool
-Message-ID: <YhyT0aOAF34FtEFR@redhat.com>
+Message-ID: <YhyVvAv0M8WwiK2A@redhat.com>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20220225172021.3493923-1-alex.bennee@linaro.org>
  <20220225172021.3493923-5-alex.bennee@linaro.org>
- <38a14acc-ffbe-e61a-3186-44a57273427a@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <38a14acc-ffbe-e61a-3186-44a57273427a@redhat.com>
+In-Reply-To: <20220225172021.3493923-5-alex.bennee@linaro.org>
 User-Agent: Mutt/2.1.5 (2021-12-30)
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
@@ -89,198 +87,123 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: GZwwbTajCGmi
+X-TUID: YG1oDhz14qZy
 
-On Mon, Feb 28, 2022 at 09:39:29AM +0100, Thomas Huth wrote:
-> On 25/02/2022 18.20, Alex Bennée wrote:
-> > Using lci-tool update debian-arm64-cross to a Debian 11 based system.
-> > As a result we can drop debian-arm64-test-cross just for building
-> > tests.
-> 
-> Good idea!
-> 
-> One comment below...
-> 
-> [...]
-> > diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
-> > index 166e24df13..589510a7be 100644
-> > --- a/tests/docker/dockerfiles/debian-arm64-cross.docker
-> > +++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
-> > @@ -1,32 +1,166 @@
-> > +# THIS FILE WAS AUTO-GENERATED
-> >   #
-> > -# Docker arm64 cross-compiler target
-> > +#  $ lcitool dockerfile --layers all --cross aarch64 debian-11 qemu
-> >   #
-> > -# This docker target builds on the debian Buster base image.
-> > -#
-> > -FROM qemu/debian10
-> > +# https://gitlab.com/libvirt/libvirt-ci
-> > -# Add the foreign architecture we want and install dependencies
-> > -RUN dpkg --add-architecture arm64
-> > -RUN apt update && \
-> > -    DEBIAN_FRONTEND=noninteractive eatmydata \
-> > -    apt install -y --no-install-recommends \
-> > -        crossbuild-essential-arm64
-> > -RUN apt update && \
-> > -    DEBIAN_FRONTEND=noninteractive eatmydata \
-> > -    apt build-dep -yy -a arm64 --arch-only qemu
-> > +FROM docker.io/library/debian:11-slim
-> > -# Specify the cross prefix for this image (see tests/docker/common.rc)
-> > -ENV QEMU_CONFIGURE_OPTS --cross-prefix=aarch64-linux-gnu-
-> > -ENV DEF_TARGET_LIST aarch64-softmmu,aarch64-linux-user
-> > +RUN export DEBIAN_FRONTEND=noninteractive && \
-> > +    apt-get update && \
-> > +    apt-get install -y eatmydata && \
-> > +    eatmydata apt-get dist-upgrade -y && \
-> > +    eatmydata apt-get install --no-install-recommends -y \
-> > +            bash \
-> > +            bc \
-> > +            bsdextrautils \
-> > +            bzip2 \
-> > +            ca-certificates \
-> > +            ccache \
-> > +            dbus \
-> > +            debianutils \
-> > +            diffutils \
-> > +            exuberant-ctags \
-> > +            findutils \
-> > +            gcovr \
-> > +            genisoimage \
-> > +            gettext \
-> > +            git \
-> > +            hostname \
-> > +            libpcre2-dev \
-> > +            libspice-protocol-dev \
-> > +            libtest-harness-perl \
-> > +            llvm \
-> > +            locales \
-> > +            make \
-> > +            meson \
-> > +            ncat \
-> > +            ninja-build \
-> > +            openssh-client \
-> > +            perl-base \
-> > +            pkgconf \
-> > +            python3 \
-> > +            python3-numpy \
-> > +            python3-opencv \
-> > +            python3-pillow \
-> > +            python3-pip \
-> > +            python3-sphinx \
-> > +            python3-sphinx-rtd-theme \
-> > +            python3-venv \
-> > +            python3-yaml \
-> > +            rpm2cpio \
-> > +            sed \
-> > +            sparse \
-> > +            tar \
-> > +            tesseract-ocr \
-> > +            tesseract-ocr-eng \
-> > +            texinfo && \
-> > +    eatmydata apt-get autoremove -y && \
-> > +    eatmydata apt-get autoclean -y && \
-> > +    sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
-> > +    dpkg-reconfigure locales
-> > -RUN apt update && \
-> > -    DEBIAN_FRONTEND=noninteractive eatmydata \
-> > -    apt install -y --no-install-recommends \
-> > -        libbz2-dev:arm64 \
-> > -        liblzo2-dev:arm64 \
-> > -        librdmacm-dev:arm64 \
-> > -        libsnappy-dev:arm64 \
-> > -        libxen-dev:arm64
-> > +ENV LANG "en_US.UTF-8"
-> > +ENV MAKE "/usr/bin/make"
-> > +ENV NINJA "/usr/bin/ninja"
-> > +ENV PYTHON "/usr/bin/python3"
-> > +ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
-> > -# nettle
-> > -ENV QEMU_CONFIGURE_OPTS $QEMU_CONFIGURE_OPTS --enable-nettle
-> > +RUN export DEBIAN_FRONTEND=noninteractive && \
-> > +    dpkg --add-architecture arm64 && \
-> > +    eatmydata apt-get update && \
-> > +    eatmydata apt-get dist-upgrade -y && \
-> > +    eatmydata apt-get install --no-install-recommends -y dpkg-dev && \
-> > +    eatmydata apt-get install --no-install-recommends -y \
-> > +            g++-aarch64-linux-gnu \
-> > +            gcc-aarch64-linux-gnu \
-> > +            libaio-dev:arm64 \
-> > +            libasan5:arm64 \
-> > +            libasound2-dev:arm64 \
-> > +            libattr1-dev:arm64 \
-> > +            libbpf-dev:arm64 \
-> > +            libbrlapi-dev:arm64 \
-> > +            libbz2-dev:arm64 \
-> > +            libc6-dev:arm64 \
-> > +            libcacard-dev:arm64 \
-> > +            libcap-ng-dev:arm64 \
-> > +            libcapstone-dev:arm64 \
-> > +            libcurl4-gnutls-dev:arm64 \
-> > +            libdaxctl-dev:arm64 \
-> > +            libdrm-dev:arm64 \
-> > +            libepoxy-dev:arm64 \
-> > +            libfdt-dev:arm64 \
-> > +            libffi-dev:arm64 \
-> > +            libfuse3-dev:arm64 \
-> > +            libgbm-dev:arm64 \
-> > +            libgcrypt20-dev:arm64 \
-> > +            libglib2.0-dev:arm64 \
-> > +            libglusterfs-dev:arm64 \
-> > +            libgnutls28-dev:arm64 \
-> > +            libgtk-3-dev:arm64 \
-> > +            libibumad-dev:arm64 \
-> > +            libibverbs-dev:arm64 \
-> > +            libiscsi-dev:arm64 \
-> > +            libjemalloc-dev:arm64 \
-> > +            libjpeg62-turbo-dev:arm64 \
-> > +            liblttng-ust-dev:arm64 \
-> > +            liblzo2-dev:arm64 \
-> > +            libncursesw5-dev:arm64 \
-> > +            libnfs-dev:arm64 \
-> > +            libnuma-dev:arm64 \
-> > +            libpam0g-dev:arm64 \
-> > +            libpixman-1-dev:arm64 \
-> > +            libpng-dev:arm64 \
-> > +            libpulse-dev:arm64 \
-> > +            librbd-dev:arm64 \
-> > +            librdmacm-dev:arm64 \
-> > +            libsasl2-dev:arm64 \
-> > +            libsdl2-dev:arm64 \
-> > +            libsdl2-image-dev:arm64 \
-> > +            libseccomp-dev:arm64 \
-> > +            libselinux1-dev:arm64 \
-> > +            libslirp-dev:arm64 \
-> > +            libsnappy-dev:arm64 \
-> > +            libspice-server-dev:arm64 \
-> > +            libssh-gcrypt-dev:arm64 \
-> > +            libsystemd-dev:arm64 \
-> > +            libtasn1-6-dev:arm64 \
-> > +            libubsan1:arm64 \
-> > +            libudev-dev:arm64 \
-> > +            liburing-dev:arm64 \
-> > +            libusb-1.0-0-dev:arm64 \
-> > +            libusbredirhost-dev:arm64 \
-> > +            libvdeplug-dev:arm64 \
-> > +            libvirglrenderer-dev:arm64 \
-> > +            libvte-2.91-dev:arm64 \
-> > +            libxen-dev:arm64 \
-> > +            libzstd-dev:arm64 \
-> > +            nettle-dev:arm64 \
-> > +            systemtap-sdt-dev:arm64 \
-> > +            xfslibs-dev:arm64 \
-> > +            zlib1g-dev:arm64 && \
-> > +    eatmydata apt-get autoremove -y && \
-> > +    eatmydata apt-get autoclean -y && \
-> > +    mkdir -p /usr/local/share/meson/cross && \
-> > +    echo "[binaries]\n\
-> > +c = '/usr/bin/aarch64-linux-gnu-gcc'\n\
-> 
-> Is it really just "c =" or should this be "cc =" ?
+$SUBJECT  =~ s/lci-tool/lcitool/
 
-I believe this really does want to be 'c', as in this is the path
-for the 'c' programming language  in Meson.
+On Fri, Feb 25, 2022 at 05:20:07PM +0000, Alex Bennée wrote:
+> Using lci-tool update debian-arm64-cross to a Debian 11 based system.
 
+Likewise
+
+> As a result we can drop debian-arm64-test-cross just for building
+> tests.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Message-Id: <20220211160309.335014-5-alex.bennee@linaro.org>
+> ---
+>  .gitlab-ci.d/container-cross.yml              |  10 +-
+>  tests/docker/Makefile.include                 |   3 -
+>  .../dockerfiles/debian-arm64-cross.docker     | 186 +++++++++++++++---
+>  .../debian-arm64-test-cross.docker            |  13 --
+>  tests/lcitool/refresh                         |  11 ++
+>  tests/tcg/configure.sh                        |   2 +-
+>  6 files changed, 173 insertions(+), 52 deletions(-)
+>  delete mode 100644 tests/docker/dockerfiles/debian-arm64-test-cross.docker
+> 
+
+
+
+> +RUN export DEBIAN_FRONTEND=noninteractive && \
+> +    apt-get update && \
+> +    apt-get install -y eatmydata && \
+> +    eatmydata apt-get dist-upgrade -y && \
+> +    eatmydata apt-get install --no-install-recommends -y \
+> +            bash \
+
+    ...snip native packages...
+
+> +            texinfo && \
+> +    eatmydata apt-get autoremove -y && \
+> +    eatmydata apt-get autoclean -y && \
+> +    sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
+> +    dpkg-reconfigure locales
+>  
+> -RUN apt update && \
+> -    DEBIAN_FRONTEND=noninteractive eatmydata \
+> -    apt install -y --no-install-recommends \
+> -        libbz2-dev:arm64 \
+> -        liblzo2-dev:arm64 \
+> -        librdmacm-dev:arm64 \
+> -        libsnappy-dev:arm64 \
+> -        libxen-dev:arm64
+> +ENV LANG "en_US.UTF-8"
+> +ENV MAKE "/usr/bin/make"
+> +ENV NINJA "/usr/bin/ninja"
+> +ENV PYTHON "/usr/bin/python3"
+> +ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
+>  
+> -# nettle
+> -ENV QEMU_CONFIGURE_OPTS $QEMU_CONFIGURE_OPTS --enable-nettle
+> +RUN export DEBIAN_FRONTEND=noninteractive && \
+> +    dpkg --add-architecture arm64 && \
+> +    eatmydata apt-get update && \
+> +    eatmydata apt-get dist-upgrade -y && \
+> +    eatmydata apt-get install --no-install-recommends -y dpkg-dev && \
+> +    eatmydata apt-get install --no-install-recommends -y \
+> +            g++-aarch64-linux-gnu \
+
+  ...snip cross packages...
+
+> +            zlib1g-dev:arm64 && \
+> +    eatmydata apt-get autoremove -y && \
+> +    eatmydata apt-get autoclean -y && \
+> +    mkdir -p /usr/local/share/meson/cross && \
+> +    echo "[binaries]\n\
+> +c = '/usr/bin/aarch64-linux-gnu-gcc'\n\
+> +ar = '/usr/bin/aarch64-linux-gnu-gcc-ar'\n\
+> +strip = '/usr/bin/aarch64-linux-gnu-strip'\n\
+> +pkgconfig = '/usr/bin/aarch64-linux-gnu-pkg-config'\n\
+> +\n\
+> +[host_machine]\n\
+> +system = 'linux'\n\
+> +cpu_family = 'aarch64'\n\
+> +cpu = 'aarch64'\n\
+> +endian = 'little'" > /usr/local/share/meson/cross/aarch64-linux-gnu && \
+> +    dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt && \
+> +    mkdir -p /usr/libexec/ccache-wrappers && \
+> +    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/aarch64-linux-gnu-c++ && \
+> +    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/aarch64-linux-gnu-cc && \
+> +    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/aarch64-linux-gnu-g++ && \
+> +    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/aarch64-linux-gnu-gcc
+> +
+> +ENV ABI "aarch64-linux-gnu"
+> +ENV MESON_OPTS "--cross-file=aarch64-linux-gnu"
+> +ENV QEMU_CONFIGURE_OPTS --cross-prefix=aarch64-linux-gnu-
+> +ENV DEF_TARGET_LIST aarch64-softmmu,aarch64-linux-user
+
+This cross dockerfile is a fully self-contained image.
+
+Traditionally QEMU has had a split image for Debian cross targets,
+where there is a base with common native packages, and then a
+layer for the cross packages.
+
+lcitool is capable of generating the image in this split format
+using the arg
+
+   --layers {all,native,foreign}
+
+Personally I think it is simpler to just use the fully self
+contained image, as it would simplify our gitlab pipeline
+to only need 1 build stage for containers.  The cost is that
+we'll not be sharing layers for native packages and more wall
+clock time building since we're installing the same native
+packages over & over.
+
+I'm not saying to change your patch, I just wanted to point
+out the possibility in case someone cares strongly about
+keeping a split layer model for cross containers.
 
 Regards,
 Daniel

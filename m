@@ -1,118 +1,117 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1574409lfq;
-        Sun, 27 Feb 2022 23:15:27 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz4q3KPSYyyhVBYmbmyEKdm49o7AadBOInWsCi9mAp2RucYpUsKXci33I3zT0kTjX92li6T
-X-Received: by 2002:a05:622a:447:b0:2df:f698:f1f1 with SMTP id o7-20020a05622a044700b002dff698f1f1mr6355692qtx.572.1646032527101;
-        Sun, 27 Feb 2022 23:15:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646032527; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1576009lfq;
+        Sun, 27 Feb 2022 23:19:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwoOutnxMqJVuTNbjbnbN6yN0bfSFxMsamkIOhMgbjU2Z+Ouys3CaCY6PEz4Xr4BccOYuTO
+X-Received: by 2002:a05:622a:15cc:b0:2de:8dbd:8b3 with SMTP id d12-20020a05622a15cc00b002de8dbd08b3mr15402032qty.524.1646032739998;
+        Sun, 27 Feb 2022 23:18:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646032739; cv=none;
         d=google.com; s=arc-20160816;
-        b=f6SsRa9kMZUfGgqzlN8e9/kn8fNwbeccZeSJTD+WW9MorJtsbpV/9kJaXCX2+wvPgO
-         Oxo6LwMqApQP9l0zBAXFy5GnotErqgVuQ4IQX9r7f4j6Eo7Ir702lSAxguYKt7KF+Lfv
-         9nFlMUp4mw2cV6rOqoirQxWN/8W42bi8OsJcSN5AmWjhS+g3DBMcPcyAVuhRdO+n4WDw
-         l2MISa+CLrZ8vBhgbylaepZTBhjddE5bPbBSkhqDcWosbkduUy4JJDLT43tJge8u6Dq8
-         gd6eULFvdYv7svv4n87R/5h4ndId5DRr2bNFm6iGH+Fm3bA8FkhGeSB1vo8ZRVtixtKT
-         /QDg==
+        b=KRfzsd26gZGiMQ2SMDO0fa288DRjsq/g3NCrW7WJNCNk/lzi6380f6BCuWe3hRRcd8
+         pmzt4Bl7+AUgTprwoCBto+enZbx25igsm6pM+4IifVdmJu6EhEyWa0JjCcZoAWHp0Q1b
+         Q09pHQ5ZE5SQD8AiFuI4dczrV7YDmOM10re0b49lNQb1FJ8R7CCEGEqa0ElbQxI6/R/A
+         0q+1Xm77qoo4NlHR45Me9nwB4WvzcB6lPNmgf9Idi4UaDTotm+b4mYREm9fqOa8HAggw
+         oIfSndBCL7hdi7RxqGRxqltugX0AV2AP0hksNTFsULPG1/Ijnmt7+6+/nN3JXw4flTuN
+         wOwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:to:from;
-        bh=nim6uIFVv4dKe7nH7wRNAtGyEWFDEMBPFWbCyGzZWVk=;
-        b=aGug8JTLxVW0wnagZTwAm5J/iu0GOE0LwjJ/T8eaNtx7EMgpTf6zLj1D5ZM2dzt2JP
-         ISnVteQBU31GiM9eemN27yKwdyfqYpzJ8GTj2jBSF9yXUiQ4Mwwf+xIDSe4OUr5ABaZ0
-         2xdeYBkGoosUznv/FtYTatAUxP9qDcul7PusaaSXQiGrdmD1n6azbPrjnC4tbzt1TWW8
-         26OmqIdScPI+zRpD00lD3Dmbmr2Ei80PrfU9/XX6RXeLcuO2SHrdczY2YdnODZ0Zas8b
-         bWzj2/oQ/f2xLj7oADIaKngseA8RcsLNTaSBrQPjbzzbf6xjXKco4xKbiraujrjmH1K5
-         vMPw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=IRVc8UrucN2KS+qj+oRxu6Qx/29ynOHMayuhDFTns10=;
+        b=cTk8X41DKdyRzkEp8tSvnT7+BN9nGfGcE/FY6X86TnZsDKnxqVa+XSyyIGs6xH9CW/
+         pDTt60DAw9gP5QX4fWvKkCX/KocyYnAcSV3jrm0Hh3qDF/3P0J2134BjGbO362eCiUOC
+         zud537YwHVhSR4xuPagfB/AYxYEVKqv5aurc7tVpbU5wCU5IGzzP68w1n8aoFPpp0tet
+         9CoQ9OMITjjRvveO95vte1AAjbja8B1oIc7sqft5CTe4PATcwU6u69dzbZbelQSJdQSq
+         2P8weK/TI4rIhSt40AhwxswC4UyiQLPXrBthm54596qlE5et7Pf39LZYrj/Rlg+BWfl5
+         dHCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s15-20020a05622a1a8f00b002de046e2c99si3706469qtc.320.2022.02.27.23.15.26
+        by mx.google.com with ESMTPS id q89-20020a0c9162000000b004325ec49312si3095127qvq.554.2022.02.27.23.18.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 27 Feb 2022 23:15:27 -0800 (PST)
+        Sun, 27 Feb 2022 23:18:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33308 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39012 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nOaFi-0006Gh-CV
-	for alex.bennee@linaro.org; Mon, 28 Feb 2022 02:15:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51794)
+	id 1nOaJ9-0001tW-FW
+	for alex.bennee@linaro.org; Mon, 28 Feb 2022 02:18:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51742)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nOaDa-0004Nv-8r; Mon, 28 Feb 2022 02:13:15 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:39822)
+ id 1nOaDW-0004KF-Qj; Mon, 28 Feb 2022 02:13:10 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:51738
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nOaDX-0004Hg-Qb; Mon, 28 Feb 2022 02:13:14 -0500
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 21S6IbKe003968; 
+ id 1nOaDU-0004HQ-RV; Mon, 28 Feb 2022 02:13:10 -0500
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 21S5cShh004878; 
  Mon, 28 Feb 2022 07:12:51 GMT
-Received: from ppma04fra.de.ibm.com (6a.4a.5195.ip4.static.sl-reverse.com
- [149.81.74.106])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3egrgjj5bw-1
+Received: from ppma05fra.de.ibm.com (6c.4a.5195.ip4.static.sl-reverse.com
+ [149.81.74.108])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 3egnvjw90n-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 28 Feb 2022 07:12:50 +0000
-Received: from pps.filterd (ppma04fra.de.ibm.com [127.0.0.1])
- by ppma04fra.de.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 21S77Mlu019726;
- Mon, 28 Feb 2022 07:12:48 GMT
-Received: from b06avi18626390.portsmouth.uk.ibm.com
- (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
- by ppma04fra.de.ibm.com with ESMTP id 3efbu8nxm9-1
+ Mon, 28 Feb 2022 07:12:51 +0000
+Received: from pps.filterd (ppma05fra.de.ibm.com [127.0.0.1])
+ by ppma05fra.de.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 21S77GuO029085;
+ Mon, 28 Feb 2022 07:12:49 GMT
+Received: from b06cxnps4074.portsmouth.uk.ibm.com
+ (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
+ by ppma05fra.de.ibm.com with ESMTP id 3efbu960ea-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 28 Feb 2022 07:12:48 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 21S71tOC47186392
+ Mon, 28 Feb 2022 07:12:49 +0000
+Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
+ [9.149.105.60])
+ by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 21S7ClRr52298108
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Feb 2022 07:01:55 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B582D11C04A;
- Mon, 28 Feb 2022 07:12:45 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6B83311C050;
- Mon, 28 Feb 2022 07:12:45 +0000 (GMT)
+ Mon, 28 Feb 2022 07:12:47 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 17AB64203F;
+ Mon, 28 Feb 2022 07:12:47 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D34D742041;
+ Mon, 28 Feb 2022 07:12:46 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Mon, 28 Feb 2022 07:12:45 +0000 (GMT)
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Mon, 28 Feb 2022 07:12:46 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.85.32])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id B31712201B4;
- Mon, 28 Feb 2022 08:12:44 +0100 (CET)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 1B2CC2201B4;
+ Mon, 28 Feb 2022 08:12:46 +0100 (CET)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PULL 2/7] ast2600: Add Secure Boot Controller model
-Date: Mon, 28 Feb 2022 08:12:34 +0100
-Message-Id: <20220228071239.404171-3-clg@kaod.org>
+Subject: [PULL 4/7] aspeed: rainier: Add strap values taken from hardware
+Date: Mon, 28 Feb 2022 08:12:36 +0100
+Message-Id: <20220228071239.404171-5-clg@kaod.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220228071239.404171-1-clg@kaod.org>
 References: <20220228071239.404171-1-clg@kaod.org>
-Content-Type: text/plain; charset=UTF-8
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 8NFO-04Jj_BAUMSympsIvt4_JMEQ8eWa
-X-Proofpoint-ORIG-GUID: 8NFO-04Jj_BAUMSympsIvt4_JMEQ8eWa
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: 9AQomKxjT844uBZMcCIzfN5ATGHKtaln
+X-Proofpoint-ORIG-GUID: 9AQomKxjT844uBZMcCIzfN5ATGHKtaln
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.816,Hydra:6.0.425,FMLib:17.11.64.514
  definitions=2022-02-28_02,2022-02-26_01,2022-02-23_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 mlxscore=0
- suspectscore=0 spamscore=0 priorityscore=1501 clxscore=1034 phishscore=0
- malwarescore=0 adultscore=0 lowpriorityscore=0 mlxlogscore=999 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2201110000
- definitions=main-2202280040
-Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
+ adultscore=0 spamscore=0
+ lowpriorityscore=0 malwarescore=0 bulkscore=0 impostorscore=0
+ suspectscore=0 mlxlogscore=390 mlxscore=0 priorityscore=1501 clxscore=1034
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2201110000 definitions=main-2202280040
+Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
+X-Spam_score_int: -10
+X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, KHOP_HELO_FCRDNS=0.187,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,295 +129,49 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qUmnqXxBUmCv
+X-TUID: gny+glzUo/Nq
 
 From: Joel Stanley <joel@jms.id.au>
 
-Just a stub that indicates the system has booted in secure boot mode.
-Used for testing the driver:
+When time permits, we should introduce defines for the HW strapping
+registers to cleanly decode the values.
 
- https://lore.kernel.org/all/20211019080608.283324-1-joel@jms.id.au/
+SCU500 =3D 0x00422016
+  Disable ARM JTAG trusted world debug: 0x1
+  Disable ARM JTAG debug: 0x1
+  VGA Memory Size: 0x1 [16MB]
+  Cortex M3: 0x1 [Disabled]
+  Boot device: 0x1 [eMMC]
+  Reserved: 0x1
+
+SCU510 =3D 0x80000848
+  Secure Boot Enable: 0x1
+  Enable boot SPI or eMMC ABR (second boot): 0x1
+  Enable LPC mode: 0x1 [LPC]
+  Disable LPC SuperIO 0x2e/0x4e: 0x1
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
-[ clg: - Fixed typo
-       - Adjusted Copyright dates ]
+[ clg: rewrote the commit log ]
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- include/hw/arm/aspeed_soc.h  |   3 +
- include/hw/misc/aspeed_sbc.h |  32 ++++++++
- hw/arm/aspeed_ast2600.c      |   9 +++
- hw/misc/aspeed_sbc.c         | 141 +++++++++++++++++++++++++++++++++++
- hw/misc/meson.build          |   1 +
- 5 files changed, 186 insertions(+)
- create mode 100644 include/hw/misc/aspeed_sbc.h
- create mode 100644 hw/misc/aspeed_sbc.c
+ hw/arm/aspeed.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index cae9906684cb..da043dcb454d 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -24,6 +24,7 @@
- #include "hw/misc/aspeed_i3c.h"
- #include "hw/ssi/aspeed_smc.h"
- #include "hw/misc/aspeed_hace.h"
-+#include "hw/misc/aspeed_sbc.h"
- #include "hw/watchdog/wdt_aspeed.h"
- #include "hw/net/ftgmac100.h"
- #include "target/arm/cpu.h"
-@@ -60,6 +61,7 @@ struct AspeedSoCState {
-     AspeedSMCState fmc;
-     AspeedSMCState spi[ASPEED_SPIS_NUM];
-     EHCISysBusState ehci[ASPEED_EHCIS_NUM];
-+    AspeedSBCState sbc;
-     AspeedSDMCState sdmc;
-     AspeedWDTState wdt[ASPEED_WDTS_NUM];
-     FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
-@@ -109,6 +111,7 @@ enum {
-     ASPEED_DEV_SDMC,
-     ASPEED_DEV_SCU,
-     ASPEED_DEV_ADC,
-+    ASPEED_DEV_SBC,
-     ASPEED_DEV_VIDEO,
-     ASPEED_DEV_SRAM,
-     ASPEED_DEV_SDHCI,
-diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-new file mode 100644
-index 000000000000..651747e28f3a
---- /dev/null
-+++ b/include/hw/misc/aspeed_sbc.h
-@@ -0,0 +1,32 @@
-+/*
-+ * ASPEED Secure Boot Controller
-+ *
-+ * Copyright (C) 2021-2022 IBM Corp.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_SBC_H
-+#define ASPEED_SBC_H
-+
-+#include "hw/sysbus.h"
-+
-+#define TYPE_ASPEED_SBC "aspeed.sbc"
-+#define TYPE_ASPEED_AST2600_SBC TYPE_ASPEED_SBC "-ast2600"
-+OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
-+
-+#define ASPEED_SBC_NR_REGS (0x93c >> 2)
-+
-+struct AspeedSBCState {
-+    SysBusDevice parent;
-+
-+    MemoryRegion iomem;
-+
-+    uint32_t regs[ASPEED_SBC_NR_REGS];
-+};
-+
-+struct AspeedSBCClass {
-+    SysBusDeviceClass parent_class;
-+};
-+
-+#endif /* _ASPEED_SBC_H_ */
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 12f6edc081fd..21cd3342c578 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -47,6 +47,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
-     [ASPEED_DEV_XDMA]      =3D 0x1E6E7000,
-     [ASPEED_DEV_ADC]       =3D 0x1E6E9000,
-     [ASPEED_DEV_DP]        =3D 0x1E6EB000,
-+    [ASPEED_DEV_SBC]       =3D 0x1E6F2000,
-     [ASPEED_DEV_VIDEO]     =3D 0x1E700000,
-     [ASPEED_DEV_SDHCI]     =3D 0x1E740000,
-     [ASPEED_DEV_EMMC]      =3D 0x1E750000,
-@@ -227,6 +228,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
-     object_initialize_child(obj, "hace", &s->hace, typename);
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 7590b36bb017..f71a5d87473f 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -160,8 +160,8 @@ struct AspeedMachineState {
+ #define TACOMA_BMC_HW_STRAP2  0x00000040
 =20
-     object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
-+
-+    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
- }
+ /* Rainier hardware value: (QEMU prototype) */
+-#define RAINIER_BMC_HW_STRAP1 0x00000000
+-#define RAINIER_BMC_HW_STRAP2 0x00000000
++#define RAINIER_BMC_HW_STRAP1 0x00422016
++#define RAINIER_BMC_HW_STRAP2 0x80000848
 =20
- /*
-@@ -539,6 +542,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *de=
-v, Error **errp)
-         /* The AST2600 I3C controller has one IRQ per bus. */
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i3c.devices[i]), 0, irq);
-     }
-+
-+    /* Secure Boot Controller */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sbc), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]=
-);
- }
-=20
- static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-new file mode 100644
-index 000000000000..40f2a8c6312f
---- /dev/null
-+++ b/hw/misc/aspeed_sbc.c
-@@ -0,0 +1,141 @@
-+/*
-+ * ASPEED Secure Boot Controller
-+ *
-+ * Copyright (C) 2021-2022 IBM Corp.
-+ *
-+ * Joel Stanley <joel@jms.id.au>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/error-report.h"
-+#include "hw/misc/aspeed_sbc.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+
-+#define R_PROT          (0x000 / 4)
-+#define R_STATUS        (0x014 / 4)
-+
-+static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int si=
-ze)
-+{
-+    AspeedSBCState *s =3D ASPEED_SBC(opaque);
-+
-+    addr >>=3D 2;
-+
-+    if (addr >=3D ASPEED_SBC_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "=
-\n",
-+                      __func__, addr << 2);
-+        return 0;
-+    }
-+
-+    return s->regs[addr];
-+}
-+
-+static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
-+                              unsigned int size)
-+{
-+    AspeedSBCState *s =3D ASPEED_SBC(opaque);
-+
-+    addr >>=3D 2;
-+
-+    if (addr >=3D ASPEED_SBC_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx =
-"\n",
-+                      __func__, addr << 2);
-+        return;
-+    }
-+
-+    switch (addr) {
-+    case R_STATUS:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: write to read only register 0x%" HWADDR_PRIx "\=
-n",
-+                      __func__, addr << 2);
-+        return;
-+    default:
-+        break;
-+    }
-+
-+    s->regs[addr] =3D data;
-+}
-+
-+static const MemoryRegionOps aspeed_sbc_ops =3D {
-+    .read =3D aspeed_sbc_read,
-+    .write =3D aspeed_sbc_write,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-+    .valid =3D {
-+        .min_access_size =3D 1,
-+        .max_access_size =3D 4,
-+    },
-+};
-+
-+static void aspeed_sbc_reset(DeviceState *dev)
-+{
-+    struct AspeedSBCState *s =3D ASPEED_SBC(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+
-+    /* Set secure boot enabled, and boot from emmc/spi */
-+    s->regs[R_STATUS] =3D 1 << 6 | 1 << 5;
-+}
-+
-+static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedSBCState *s =3D ASPEED_SBC(dev);
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sbc_ops, s,
-+            TYPE_ASPEED_SBC, 0x1000);
-+
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_aspeed_sbc =3D {
-+    .name =3D TYPE_ASPEED_SBC,
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AspeedSBCState, ASPEED_SBC_NR_REGS),
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static void aspeed_sbc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->realize =3D aspeed_sbc_realize;
-+    dc->reset =3D aspeed_sbc_reset;
-+    dc->vmsd =3D &vmstate_aspeed_sbc;
-+}
-+
-+static const TypeInfo aspeed_sbc_info =3D {
-+    .name =3D TYPE_ASPEED_SBC,
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(AspeedSBCState),
-+    .class_init =3D aspeed_sbc_class_init,
-+    .class_size =3D sizeof(AspeedSBCClass)
-+};
-+
-+static void aspeed_ast2600_sbc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->desc =3D "AST2600 Secure Boot Controller";
-+}
-+
-+static const TypeInfo aspeed_ast2600_sbc_info =3D {
-+    .name =3D TYPE_ASPEED_AST2600_SBC,
-+    .parent =3D TYPE_ASPEED_SBC,
-+    .class_init =3D aspeed_ast2600_sbc_class_init,
-+};
-+
-+static void aspeed_sbc_register_types(void)
-+{
-+    type_register_static(&aspeed_ast2600_sbc_info);
-+    type_register_static(&aspeed_sbc_info);
-+}
-+
-+type_init(aspeed_sbc_register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 6dcbe044f3f0..645585371a8b 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -111,6 +111,7 @@ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: file=
-s(
-   'aspeed_i3c.c',
-   'aspeed_lpc.c',
-   'aspeed_scu.c',
-+  'aspeed_sbc.c',
-   'aspeed_sdmc.c',
-   'aspeed_xdma.c'))
-=20
+ /* Fuji hardware value */
+ #define FUJI_BMC_HW_STRAP1    0x00000000
 --=20
 2.34.1
 

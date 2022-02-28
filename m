@@ -1,68 +1,68 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1811222lfq;
-        Mon, 28 Feb 2022 06:08:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxF2Qp+y0T1xZ/FZENfmwlkowZQCyYc97m+9/ztNlq7Mo/ccNPa2lRv7622illEdFKzvthQ
-X-Received: by 2002:a05:6214:10e8:b0:42c:6e7:c7d2 with SMTP id q8-20020a05621410e800b0042c06e7c7d2mr13813498qvt.56.1646057334871;
-        Mon, 28 Feb 2022 06:08:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646057334; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1811816lfq;
+        Mon, 28 Feb 2022 06:09:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwBF8riyylLDd3DMuc4B6R9jzk6ZC2xuyLUXRphXgR0D2G0jwGhhMopr40utvVI6EBOnM8F
+X-Received: by 2002:ab0:654d:0:b0:347:27e5:cb4a with SMTP id x13-20020ab0654d000000b0034727e5cb4amr1918739uap.67.1646057377868;
+        Mon, 28 Feb 2022 06:09:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646057377; cv=none;
         d=google.com; s=arc-20160816;
-        b=sgCXoRRsAb/E2oPIM9DScWHDaVlXxmqyUD1qXwjB3Un1eSFdt1KKWTpfKuAe/atlun
-         bTVsYsGL8ZzLjZTdosWSO1WHantYAgvgGsKaghKMReYTYbGHIzevmR6kIuEDHrYFUTiO
-         HlW0GUnHVL3KMs2yHcly51cORPhOwlnK7poenJRVs1ctZaqau+DVdat7F+DdfQPiUAcF
-         Kmnxm0xZBvO58jOQgEtYsoITj9hxBNKace8z1w9ByB82AXXItfsZKSrW37XVhp40OEjp
-         l5Ed81nBokgv9GbhFc0u6KFdttmFixaIYJ++wIw7hCeX8K9qdTZgqZakE/mpB4YwKSLB
-         l07w==
+        b=xceTCt5sjrpHxUfDjVbcIespCb5wUSqIxgadGW18gNEjazORy0VJY0jz3MofGlk76j
+         sDY2U11notNwwyJiqmVF4birQfCzz9IeCeKMWS+MQo+0AJLSM7IjZYVcpnDRUZDhsQyS
+         uyfQ8+pKAOBNZ8BMepgSHBREEV9mm3sYY5JmbK1Th1t3C3iTp1/7Olcl0pexPFiqK89X
+         oab/2ltUDxi+U9Qmnpm8xUiRe8nvgQSDVNCXmk5tboRUZeOtWONvW8eg1Shl1Pwk9WOW
+         MQzDGP6dyehtpnq5j7WDixyJfbClTO2zGSXI1L5zFqC8NBnu1X71agiSL3Btl1dooY17
+         r+DA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:to:in-reply-to:message-id:subject:date
          :from;
-        bh=f4mplBu/TRpw0rxKU7mgmCHZInUAQVBvyBFzvd8yXt8=;
-        b=TQQVU2/i+38GjgiXjYDMa/iSs2b/gpMWd+VdfdQZBDucEeMaCPdumYQ9oD6psZRF5t
-         +00ZnT2M7q5eLpa1geqxAqeiGsg+oOQXAlfXVYWZdE0oirj44WoFpMLVByrpRSZKVM5D
-         ZD23Mv6u9J+7HO+2ucXZllXblbZf0kUqoaHHOJStIFcubiIeLXMTWnktvdHdZrs1VFqH
-         3sPaxC9yRBPggw7Woc3ftZBzGCyA8cWMfKVAYafm1DbxGxyoabkUJHBniOVauWUqFusX
-         3/yVo6EIPNiUABtI/0L9hc3ah16u/K1DZ9cg5oFNpscq+kHKjERqg0wSM0mEdQmXNqoN
-         hrBQ==
+        bh=qb3lGYsAsgoEWJ7i34tl9T0samNKessC2ncln3vMbm0=;
+        b=u7ooYDTZhV3aEARdZlhvQv9AElFZ7AKPScI51ox3XRPLkpQ5hpe4mTjvBqDePda8G3
+         wty142L941qkYdbPy7N/HTagYtolvvMv0+kLbYNwKX0w/szla1vNnWKkhOz2kzf0O9a5
+         iSDXFlY2UyxyAHYaGIApAzdt/piCKE7Oy+3Y2Tt4nlgcOLnMdbK11BsX5c7kB4tUl41I
+         4oITr7iOLw9FDnD1Y7jPTsn/LYldv6q+6WmDSYE45DnuaVlOk6I2WIpwxRP/wO/mksZo
+         cOARtAzxGwjTD9vC1/Us3jkIBRnxlt0QH6+5xl4W6laWfoaK42t5RPCiFnQJfGUSxxLc
+         8m1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t3-20020a05620a450300b006044a21be09si4054897qkp.129.2022.02.28.06.08.54
+        by mx.google.com with ESMTPS id h30-20020a056102209e00b0031bdd425532si638967vsr.191.2022.02.28.06.09.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Feb 2022 06:08:54 -0800 (PST)
+        Mon, 28 Feb 2022 06:09:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
-Received: from localhost ([::1]:56156 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58436 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nOghq-0001ZA-7w
-	for alex.bennee@linaro.org; Mon, 28 Feb 2022 09:08:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47842)
+	id 1nOgiW-00035C-8Q
+	for alex.bennee@linaro.org; Mon, 28 Feb 2022 09:09:37 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47806)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1nOZn9-0001af-4i; Mon, 28 Feb 2022 01:45:55 -0500
-Received: from mail-b.sr.ht ([173.195.146.151]:58206)
+ id 1nOZn6-0001Yd-B4; Mon, 28 Feb 2022 01:45:52 -0500
+Received: from mail-b.sr.ht ([173.195.146.151]:58198)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1nOZn6-0003Ji-Ma; Mon, 28 Feb 2022 01:45:54 -0500
+ id 1nOZn2-0003IO-LJ; Mon, 28 Feb 2022 01:45:51 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 97B9E11EF54;
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 1120D11EF38;
  Mon, 28 Feb 2022 06:45:46 +0000 (UTC)
 From: ~ubzeme <ubzeme@git.sr.ht>
-Date: Mon, 28 Feb 2022 09:47:25 +0800
-Subject: [PATCH qemu 7/7] hvf: use GTree to store memory slots instead of
- fixed-size array
-Message-ID: <164603074537.20094.1732342403585879912-7@git.sr.ht>
+Date: Mon, 28 Feb 2022 09:12:14 +0800
+Subject: [PATCH qemu 3/7] hvf: use correct data types for addresses in memory
+ related functions
+Message-ID: <164603074537.20094.1732342403585879912-3@git.sr.ht>
 X-Mailer: git.sr.ht
 In-Reply-To: <164603074537.20094.1732342403585879912-0@git.sr.ht>
 To: qemu-devel@nongnu.org
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 MIME-Version: 1.0
 Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
  helo=mail-b.sr.ht
@@ -73,7 +73,7 @@ X-Spam_report: (1.8 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
  FREEMAIL_FORGED_REPLYTO=2.095, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 28 Feb 2022 09:07:21 -0500
+X-Mailman-Approved-At: Mon, 28 Feb 2022 09:07:18 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,145 +91,57 @@ Cc: Yan-Jie Wang <ubzeme@gmail.com>, qemu-devel@nongnu.org,
  Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wWn7Dt40Dgb/
+X-TUID: iaWIDxY6/Nht
 
 From: Yan-Jie Wang <ubzeme@gmail.com>
 
-Currently, there are only 32 memory slots in the fixed size array.
-It is not scalable. Instead of using fixed size array, use GTree
-(from glib library) and dynamically-allocated structures to store
-memory slots.
+Follow the QEMU coding style. Use hwaddr for guest physical address.
 
 Signed-off-by: Yan-Jie Wang <ubzeme@gmail.com>
 ---
- accel/hvf/hvf-mem.c | 63 +++++++++++++++++++++++----------------------
- 1 file changed, 32 insertions(+), 31 deletions(-)
+ accel/hvf/hvf-mem.c      | 2 +-
+ include/sysemu/hvf_int.h | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/accel/hvf/hvf-mem.c b/accel/hvf/hvf-mem.c
-index 4948578adf..2f70ceb307 100644
+index c60303c84e..e8cd6b9251 100644
 --- a/accel/hvf/hvf-mem.c
 +++ b/accel/hvf/hvf-mem.c
-@@ -28,8 +28,6 @@
-=20
- /* Memory slots */
-=20
--#define HVF_NUM_SLOTS 32
--
- /* HVFSlot flags */
- #define HVF_SLOT_LOG (1 << 0)
+@@ -32,7 +32,7 @@
+ 
+ static hvf_slot memslots[HVF_NUM_SLOTS];
+ 
+-hvf_slot *hvf_find_overlap_slot(uint64_t start, uint64_t size)
++hvf_slot *hvf_find_overlap_slot(hwaddr start, hwaddr size)
+ {
+     hvf_slot *slot;
+     int x;
+diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
+index 8ee31a16ac..2c4a97debe 100644
+--- a/include/sysemu/hvf_int.h
++++ b/include/sysemu/hvf_int.h
+@@ -22,9 +22,9 @@
  #define HVF_SLOT_READONLY (1 << 1)
-@@ -42,35 +40,24 @@ typedef struct HVFSlot {
+ 
+ typedef struct hvf_slot {
+-    uint64_t start;
+-    uint64_t size;  /* 0 if the slot is free */
+-    uint64_t offset;  /* offset within memory region */
++    hwaddr start;
++    hwaddr size;  /* 0 if the slot is free */
++    hwaddr offset;  /* offset within memory region */
+     uint32_t flags;
      MemoryRegion *region;
- } HVFSlot;
-=20
--static HVFSlot memslots[HVF_NUM_SLOTS];
-+static GTree *memslots;
- static QemuMutex memlock;
-=20
- static HVFSlot *hvf_find_overlap_slot(hwaddr start, hwaddr size)
- {
--    HVFSlot *slot;
--    int x;
--    for (x =3D 0; x < HVF_NUM_SLOTS; ++x) {
--        slot =3D &memslots[x];
--        if (slot->size && start < (slot->start + slot->size) &&
--            (start + size) > slot->start) {
--            return slot;
--        }
--    }
--    return NULL;
-+    HVFSlot key =3D {.start =3D start, .size =3D 1};
-+    return g_tree_lookup(memslots, &key);
- }
-=20
--static HVFSlot *hvf_find_free_slot(void)
-+static void hvf_insert_slot(HVFSlot *slot)
- {
--    HVFSlot *slot;
--    int x;
--    for (x =3D 0; x < HVF_NUM_SLOTS; x++) {
--        slot =3D &memslots[x];
--        if (!slot->size) {
--            return slot;
--        }
--    }
-+    g_tree_insert(memslots, slot, slot);
-+}
-=20
--    return slot;
-+static bool hvf_remove_slot(hwaddr start)
-+{
-+    HVFSlot key =3D {.start =3D start, .size =3D 1};
-+    return g_tree_remove(memslots, &key);
- }
-=20
- /*
-@@ -141,9 +128,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *section=
-, bool add)
-         readonly =3D memory_region_is_rom(area) || memory_region_is_romd(are=
-a);
-=20
-         /* setup a slot */
--        qemu_mutex_lock(&memlock);
--
--        slot =3D hvf_find_free_slot();
-+        slot =3D g_new0(HVFSlot, 1);
-         if (!slot) {
-             error_report("No free slots");
-             abort();
-@@ -170,6 +155,10 @@ static void hvf_set_phys_mem(MemoryRegionSection *sectio=
-n, bool add)
-             flags =3D HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;
-         }
-=20
-+        qemu_mutex_lock(&memlock);
-+
-+        hvf_insert_slot(slot);
-+
-         ret =3D hv_vm_map(host_addr, start, size, flags);
-         assert_hvf_ok(ret);
-=20
-@@ -178,13 +167,9 @@ static void hvf_set_phys_mem(MemoryRegionSection *sectio=
-n, bool add)
-         /* remove memory region */
-         qemu_mutex_lock(&memlock);
-=20
--        slot =3D hvf_find_overlap_slot(start, size);
--
--        if (slot) {
-+        if (hvf_remove_slot(start)) {
-             ret =3D hv_vm_unmap(start, size);
-             assert_hvf_ok(ret);
--
--            slot->size =3D 0;
-         }
-=20
-         qemu_mutex_unlock(&memlock);
-@@ -310,8 +295,24 @@ bool hvf_access_memory(hwaddr address, bool write)
-     return true;
- }
-=20
-+/* compare function for GTree */
-+static gint _hvf_slot_compare(gconstpointer a, gconstpointer b, gpointer dat=
-a)
-+{
-+    const HVFSlot *m1 =3D (const HVFSlot *)a;
-+    const HVFSlot *m2 =3D (const HVFSlot *)b;
-+
-+    if (m2->start >=3D m1->start + m1->size) {
-+        return -1;
-+    } else if (m1->start >=3D m2->start + m2->size) {
-+        return 1;
-+    }
-+
-+    return 0;
-+}
-+
- void hvf_init_memslots(void)
- {
-     qemu_mutex_init(&memlock);
-+    memslots =3D g_tree_new_full(_hvf_slot_compare, NULL, g_free, NULL);
-     memory_listener_register(&hvf_memory_listener, &address_space_memory);
- }
---=20
+ } hvf_slot;
+@@ -58,7 +58,7 @@ int hvf_arch_init(void);
+ int hvf_arch_init_vcpu(CPUState *cpu);
+ void hvf_arch_vcpu_destroy(CPUState *cpu);
+ int hvf_vcpu_exec(CPUState *);
+-hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
++hvf_slot *hvf_find_overlap_slot(hwaddr, hwaddr);
+ int hvf_put_registers(CPUState *);
+ int hvf_get_registers(CPUState *);
+ void hvf_kick_vcpu_thread(CPUState *cpu);
+-- 
 2.34.1
+

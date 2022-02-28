@@ -1,107 +1,78 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1813428lfq;
-        Mon, 28 Feb 2022 06:11:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxz4USYMHCmCKvGk0XZAaDB4eBrVwm4JbEC9Ztid7WxSWRC1JSHP6HGrUJ5H3ASCHmLUX+5
-X-Received: by 2002:a05:622a:1192:b0:2d1:e58e:7659 with SMTP id m18-20020a05622a119200b002d1e58e7659mr16735335qtk.41.1646057504887;
-        Mon, 28 Feb 2022 06:11:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646057504; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp1814480lfq;
+        Mon, 28 Feb 2022 06:13:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyWo/vX56qPlXErEnZnuTEQAXVIhqi+uGqQM7NKrqWHfEiIj7ClA3yCexGr0Cva/52vJFJ6
+X-Received: by 2002:a81:1784:0:b0:2d6:b6cc:8f75 with SMTP id 126-20020a811784000000b002d6b6cc8f75mr20498210ywx.46.1646057587952;
+        Mon, 28 Feb 2022 06:13:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646057587; cv=none;
         d=google.com; s=arc-20160816;
-        b=SndSr6lO3UXN3xZ2ATMnoVOpZ+BC35vBpJ8XCpnB5rLhcrHoCc3NbufNNUvMTYdaW8
-         OtcJaYSPzjssidvw2Yl+6x5JrdzBe3nzxb5qpw3fHCTpbQseYxOsZnykNvlMceqj4YB5
-         qlX9o8/roWQzB+QSyrLNdMW4xNUv23wLD6JrkHj2GFw5lHVuCdwMQhcthkj6GTEahSvh
-         IIWjdaZCFNeuxAhfFRY71MruZshB5lBZ1qaRLMVt/HobBnz4ofUf8RNWxVwclQKzR2N6
-         wLxzScLMbKHfj+jJYnVwvGsRsMOyuVBAeWoOHFqt7wZnK2n4Vke4ULnNG67egpGyjHi9
-         iadQ==
+        b=PLKNMb9oKpwR1FCgpJwzatEFMLS8zKVO2JZeijl5rLPYX6WSzaap1dWnKlBj2Au/od
+         4KCST4qwclbOT8KHyoZiefSqRxkctUImKjdcZWJiqW/ExLzvvs0jT/p5K2jHzJPW7/qO
+         vtEbFpo1UNnYqTIpFxW1usMx+sC1NjBsCJDHJOj+Uenov6AX/5mQlR4XlLxXdyAWHAq+
+         PJ7fAVzQz3JQ1mksXJaJzuuJjJvsJPj5oV1CYomMcZIXZ+TVAPHMAiB+88Gc9jxdKFnr
+         m9CfcvuLTxZSAA+e3R2pjat/4sdYIp/TcWJzL9hDBEAgSVSjdR5kX626J6+3FKpFWz9/
+         YXXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=B5d5msIFGx1HjfhBhxyVTL5iGoQDzjnp43Drgtpwj6I=;
-        b=poG/4icX4zqu9kHwArkeYnKAaux/7QV0j6MUdbocDLZBDakZxL12m2xhCOEiiv3Fr0
-         CtbUwdUNVdycgF46mon+3InyGHyPvlAmsU/X7lzidcOYKt7bsvFxFGjJSYL9J80708OT
-         sEMF8138RKcnDAZOqQjZVnWvRaPN+cUvmf5+e/RZRbJFWyJ0OmbNlLGSfCRobvDvFTFu
-         4VjlJBJP5qgThbyzyVIUSzfdsU2ZS2hf0dseNwyINShuLpd4lBG/l4gl3btUgW2ex5yQ
-         nVKBeTiCkfzLWrvV9zBW+HakikTtLc8+Vt1aYCNiCcXmYO1mOYHoCzV6Xj4K9FtYAnnh
-         gddA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:to:in-reply-to:message-id:subject:date
+         :from;
+        bh=ZxBm8emsh1bG46e6+DVXu+9bXaeo4IkAD+sD9oC+S1A=;
+        b=uuRqkqoJzMMryXCiVXk2fWBHuKuAXRz8kpfq64bdkpz5aWJ5/dehaXLm14lMTj/ycd
+         E1ZL+yX3XUWDHuX4hA5u+3XNttplwYz1FNoFpoAPaAc9A67ylkemLBDz3Egyan+ZUJmY
+         BbI6axIJjZ4C/kjhn1R6cDGEhLGVHHYgIuAe+B0lg0nFIGfvOkxXRgGzyRFpNa1EZI4E
+         c/Swu1o8zW1BJAj2Up/c0oM8hdLP+XsVARljlKHdhZdN9+UKKWxN0LCh4wQRmQtCRem2
+         aRuwaBXKrITO8v7L4LCqZLtPjCfwsh+/dhAUgZWHGwvgACuv7SWdjRSEQnwSza+lcdpi
+         LHZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ALEMk5M6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bf18-20020a05690c029200b002d035ccf98csi8520479ywb.48.2022.02.28.06.11.44
+        by mx.google.com with ESMTPS id d17-20020a5b00d1000000b006220e248ea7si9016539ybp.433.2022.02.28.06.13.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Feb 2022 06:11:44 -0800 (PST)
+        Mon, 28 Feb 2022 06:13:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ALEMk5M6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36178 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Received: from localhost ([::1]:39988 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nOgka-0007Ey-9R
-	for alex.bennee@linaro.org; Mon, 28 Feb 2022 09:11:44 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45198)
+	id 1nOglv-0001Px-9c
+	for alex.bennee@linaro.org; Mon, 28 Feb 2022 09:13:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nOgkH-0007CN-SZ
- for qemu-devel@nongnu.org; Mon, 28 Feb 2022 09:11:25 -0500
-Received: from [2607:f8b0:4864:20::b2b] (port=38565
- helo=mail-yb1-xb2b.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nOgkG-0008CV-1s
- for qemu-devel@nongnu.org; Mon, 28 Feb 2022 09:11:25 -0500
-Received: by mail-yb1-xb2b.google.com with SMTP id u3so20743568ybh.5
- for <qemu-devel@nongnu.org>; Mon, 28 Feb 2022 06:11:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=B5d5msIFGx1HjfhBhxyVTL5iGoQDzjnp43Drgtpwj6I=;
- b=ALEMk5M6NVPo7o6CdTOdn5+shEkJzZ43/5YC7O5yzFx6uSfeW60IAFPZmKRVUnEHcb
- xn93IfX6yuPbf0ah6n7dPUpOzyoYv/hb5d7/NUBoKugU938ag1ESe+MUgThMX2my2+Vz
- iRVkyt4gwxiIWJ0MEZ+8tfAYGA6LAGuVx4W0VBClh4DpLBXy8PwNuXvTgUqxHDSlSb0F
- EN6TQgj1I4xn0874+CIFqeOefjZkkogsf4lSRGWho8LDYNxrG5/VlDqQUMPtEEPCw2Z7
- FWFmtbLnUVbp8GFFjuYf604Jym/DdpbpeyXr9dJjwraQeMxVVs1H+vxIMwlXuly51xvp
- /iZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=B5d5msIFGx1HjfhBhxyVTL5iGoQDzjnp43Drgtpwj6I=;
- b=cNnt0DtWxVKbE2xNfBilLH/Qwenuq4s7Hx35G8EKNB1x8+3vnXtHXG0dyU2bfkXu2R
- 92bJil8LMEBrl0Djxbs02zPs5NS8xP6jw56CnZANvxaGjTFIe1FJZQ8odb6JM0k/vluJ
- q2GIQmSo0JenBNJihtFmdIuCeweU0A7ctajFgu7xnV7hjcVZdnURrFGeD+iUEqnhS3MX
- V+ZwpiJvKA52enzMVjlJ17tAVpuTeZNwC9UsaUGFOV0dZ33iVEgNhWXqkcFKg4dCmCa2
- 67W7IasDQWBIfaPtBKmureize5IydxTeSZo0go9KM+Vd865QqEHkMA8koFiGLUHiFwYZ
- V88g==
-X-Gm-Message-State: AOAM531PIoBDxMpYdHDOovQ2xeyGpIgjOAHKJRU4GKWkGy+1f6IAupoB
- rKAjX1YNEUcEICvmBBwwcdMmGz4yNBhtl9nx3d7krw==
-X-Received: by 2002:a25:8084:0:b0:5fe:cadd:2532 with SMTP id
- n4-20020a258084000000b005fecadd2532mr19148766ybk.193.1646057483040; Mon, 28
- Feb 2022 06:11:23 -0800 (PST)
-MIME-Version: 1.0
-References: <164603074537.20094.1732342403585879912-0@git.sr.ht>
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1nOZn6-0001Ye-Ks; Mon, 28 Feb 2022 01:45:52 -0500
+Received: from mail-b.sr.ht ([173.195.146.151]:58200)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1nOZn2-0003IP-Lm; Mon, 28 Feb 2022 01:45:51 -0500
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 37CDE11EF41;
+ Mon, 28 Feb 2022 06:45:46 +0000 (UTC)
+From: ~ubzeme <ubzeme@git.sr.ht>
+Date: Mon, 28 Feb 2022 09:15:36 +0800
+Subject: [PATCH qemu 4/7] hvf: rename struct hvf_slot to HVFSlot
+Message-ID: <164603074537.20094.1732342403585879912-4@git.sr.ht>
+X-Mailer: git.sr.ht
 In-Reply-To: <164603074537.20094.1732342403585879912-0@git.sr.ht>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Feb 2022 14:11:11 +0000
-Message-ID: <CAFEAcA8hWy3rfGtYkyQjJSGgsX448_t01xmM4cwyCO0op4h1xw@mail.gmail.com>
-Subject: Re: [PATCH qemu 0/7] Many improvements to HVF memory-related codes
-To: "~ubzeme" <ubzeme@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b2b
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2b.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+To: qemu-devel@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: 18
+X-Spam_score: 1.8
+X-Spam_bar: +
+X-Spam_report: (1.8 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
+ FREEMAIL_FORGED_REPLYTO=2.095, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 28 Feb 2022 09:07:40 -0500
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,25 +84,136 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>
+Reply-To: ~ubzeme <ubzeme@gmail.com>
+Cc: Yan-Jie Wang <ubzeme@gmail.com>, qemu-devel@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PxAY1yIQPdx5
+X-TUID: cYnt4VZMZTqy
 
-On Mon, 28 Feb 2022 at 14:07, ~ubzeme <ubzeme@git.sr.ht> wrote:
->
-> I recently bought a Mac with M1 Pro chip, and use QEMU to setup a Linux
-> virtual machine.  QEMU crashed when I started a VM with HVF accelerator
-> enabled and with the device, bochs-display, added.
->
-> After digging into the source code, I found that dirty-tracking in HVF
-> did not work properly, which made QEMU crashed. Therefore I made this
-> series of patches to fix the problem.
+From: Yan-Jie Wang <ubzeme@gmail.com>
 
-How does this series compare with Alex's patch to enable
-hvf dirty tracking for target/arm/hvf ?
-https://patchew.org/QEMU/20220203142320.33022-1-agraf@csgraf.de/
+Follow the QEMU coding style. Structured type names are in CamelCase.
 
-thanks
--- PMM
+Signed-off-by: Yan-Jie Wang <ubzeme@gmail.com>
+---
+ accel/hvf/hvf-mem.c      | 14 +++++++-------
+ include/sysemu/hvf_int.h |  8 ++++----
+ target/i386/hvf/hvf.c    |  4 ++--
+ 3 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/accel/hvf/hvf-mem.c b/accel/hvf/hvf-mem.c
+index e8cd6b9251..36ae1abc06 100644
+--- a/accel/hvf/hvf-mem.c
++++ b/accel/hvf/hvf-mem.c
+@@ -30,11 +30,11 @@
+=20
+ #define HVF_NUM_SLOTS 32
+=20
+-static hvf_slot memslots[HVF_NUM_SLOTS];
++static HVFSlot memslots[HVF_NUM_SLOTS];
+=20
+-hvf_slot *hvf_find_overlap_slot(hwaddr start, hwaddr size)
++HVFSlot *hvf_find_overlap_slot(hwaddr start, hwaddr size)
+ {
+-    hvf_slot *slot;
++    HVFSlot *slot;
+     int x;
+     for (x =3D 0; x < HVF_NUM_SLOTS; ++x) {
+         slot =3D &memslots[x];
+@@ -46,9 +46,9 @@ hvf_slot *hvf_find_overlap_slot(hwaddr start, hwaddr size)
+     return NULL;
+ }
+=20
+-static hvf_slot *hvf_find_free_slot(void)
++static HVFSlot *hvf_find_free_slot(void)
+ {
+-    hvf_slot *slot;
++    HVFSlot *slot;
+     int x;
+     for (x =3D 0; x < HVF_NUM_SLOTS; x++) {
+         slot =3D &memslots[x];
+@@ -91,7 +91,7 @@ static hwaddr hvf_align_section(MemoryRegionSection *sectio=
+n,
+=20
+ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
+ {
+-    hvf_slot *slot;
++    HVFSlot *slot;
+     hwaddr start, size, offset, delta;
+     uint8_t *host_addr;
+     MemoryRegion *area =3D section->mr;
+@@ -172,7 +172,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *section=
+, bool add)
+=20
+ static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
+ {
+-    hvf_slot *slot;
++    HVFSlot *slot;
+=20
+     slot =3D hvf_find_overlap_slot(
+             section->offset_within_address_space,
+diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
+index 2c4a97debe..0aafbc9357 100644
+--- a/include/sysemu/hvf_int.h
++++ b/include/sysemu/hvf_int.h
+@@ -17,17 +17,17 @@
+ #include <Hypervisor/hv.h>
+ #endif
+=20
+-/* hvf_slot flags */
++/* HVFSlot flags */
+ #define HVF_SLOT_LOG (1 << 0)
+ #define HVF_SLOT_READONLY (1 << 1)
+=20
+-typedef struct hvf_slot {
++typedef struct HVFSlot {
+     hwaddr start;
+     hwaddr size;  /* 0 if the slot is free */
+     hwaddr offset;  /* offset within memory region */
+     uint32_t flags;
+     MemoryRegion *region;
+-} hvf_slot;
++} HVFSlot;
+=20
+ typedef struct hvf_vcpu_caps {
+     uint64_t vmx_cap_pinbased;
+@@ -58,7 +58,7 @@ int hvf_arch_init(void);
+ int hvf_arch_init_vcpu(CPUState *cpu);
+ void hvf_arch_vcpu_destroy(CPUState *cpu);
+ int hvf_vcpu_exec(CPUState *);
+-hvf_slot *hvf_find_overlap_slot(hwaddr, hwaddr);
++HVFSlot *hvf_find_overlap_slot(hwaddr, hwaddr);
+ int hvf_put_registers(CPUState *);
+ int hvf_get_registers(CPUState *);
+ void hvf_kick_vcpu_thread(CPUState *cpu);
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 4ba6e82fab..2ddb4fc825 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -113,7 +113,7 @@ void hvf_handle_io(CPUArchState *env, uint16_t port, void=
+ *buffer,
+     }
+ }
+=20
+-static bool ept_emulation_fault(hvf_slot *slot, uint64_t gpa, uint64_t ept_q=
+ual)
++static bool ept_emulation_fault(HVFSlot *slot, uint64_t gpa, uint64_t ept_qu=
+al)
+ {
+     int read, write;
+=20
+@@ -469,7 +469,7 @@ int hvf_vcpu_exec(CPUState *cpu)
+         /* Need to check if MMIO or unmapped fault */
+         case EXIT_REASON_EPT_FAULT:
+         {
+-            hvf_slot *slot;
++            HVFSlot *slot;
+             uint64_t gpa =3D rvmcs(cpu->hvf->fd, VMCS_GUEST_PHYSICAL_ADDRESS=
+);
+=20
+             if (((idtvec_info & VMCS_IDT_VEC_VALID) =3D=3D 0) &&
+--=20
+2.34.1
+

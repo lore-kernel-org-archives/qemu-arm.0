@@ -1,157 +1,153 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2508073lfq;
-        Tue, 1 Mar 2022 02:43:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyQcle54F79O+tvH2HuOaN5tsidUG0HtsTuxaXSIo6Tf8RBLKrhQ/dQnhFJJ2Cp/GCl+L8Y
-X-Received: by 2002:ac8:5c86:0:b0:2de:54b1:2631 with SMTP id r6-20020ac85c86000000b002de54b12631mr19430613qta.466.1646131430825;
-        Tue, 01 Mar 2022 02:43:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646131430; cv=none;
+Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2544528lfq;
+        Tue, 1 Mar 2022 03:43:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxqqm4ByMso6KyTWO0pqn7ZNgxkahoNR962ziNOp565WlW441AznozZ2jnobv2O5rWfft4p
+X-Received: by 2002:a0d:fa85:0:b0:2d6:5e44:d104 with SMTP id k127-20020a0dfa85000000b002d65e44d104mr24212047ywf.450.1646135006737;
+        Tue, 01 Mar 2022 03:43:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646135006; cv=none;
         d=google.com; s=arc-20160816;
-        b=IDyQz8cymZma2jmsbYo7qROD7p45HUvHKH/2YIhZgC9J9kahwK8Qgteo7VG56d2Tv/
-         CMfUawRysRisnbohJe9YnP/AiT04kZzp0A/f9WX1IzRWilXjvnG4MxZv5hn2JqTVWDfl
-         duKbBPY9Ky8Mw3CxwHEZ2v8Vf01pgje8zDPLVT4chlkWx7ub1BFViLx/xpIDUD+2Pzm5
-         o81FXVlDxW5slrD/q3EOFXdktwbPsZqE9BC+mY8Y5PxIVvEZ6qc3ymfoX5daP6vAz97D
-         iSEr1ea+t3OkqX+aL+jCCtVVWucQSDJkb87SyESlpwj8MiD1h5TNE1gB+EyurZ0fPkVm
-         MX9w==
+        b=IObAqJ9+pxWTn9KMSe5r4wlrZPKdVti+zdrxMwqsDbbs0QL3fDYgl1kC58ihHMj1zu
+         jF2r7c8XEW2ILVIrwuUzufFw8Szku9F9/t1QGmivCndN0ua2L2vzpxhhngZdkoKhc7t6
+         gb9c4+5FHfCcOSgkSFfknBU/U2lRc1S7JAJK4sGlV02U8AwkbmDvgtvLB5wYFvG9BNvk
+         GiQdCWRIOL0yPAzLrLZZD2DcnpUWmU3SgRyEx5shLA8zyzpeOlyk2etTNc+kmaTp8O7i
+         b9oDgoUehc6EvsUf924eRhBydroQ75kfDr88YukV0NN9njzgJ1x8edvcd5wf/mqhIA4i
+         5IQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=34jaHwAsn1GS4jiZzitztpzhzuRyuPyDxEqyib98OVc=;
-        b=SZGioLqZ6tRvQcIXPIijjgA0JmhVN+xsjdyIVGAeNLzM3RTxo3Ikl+44gZWOlcRTKj
-         0zAoji9FHIXLlaA1Pa+mNIC9t+kYgbOHeQ666nBvjMGOEKPqzxl04rA/ZyA7UUKvKvPI
-         S5B2UmAdiAfkXSvKDYS1i4cOPtZegELQjeLxelxH4eTkWqkJ0toMDlk/7yS/J0T8tU5c
-         +x7FScNBZ81dz7DsT4P9WXnlEn1/egbh/8oBjnLNf50wZ+e4FWkmQB1KrrUlxxLreqNi
-         G2OxUSTm7Vja49OBzyW31mYdFtuIya7ne/vFOqZ/A9vAwVp8FTH4XysoCq94+Q8V/4GM
-         9J0w==
+        bh=T8qUw0aZc89WB3HLkLrOvKMzHeBgIYFfgkgMCMIafM4=;
+        b=qnr///xgQlgOAqS5pa58+wBPDISKtqytz7+ehUu7EGcufSaxkwT+xVhKtS38dcS6qV
+         D7JbElq/vDem58FBh+/kSVCvKnvEfGWAVItvcZv/6eMrS/bqaFUlIn0vsYZoAaYrhKZE
+         f0lL+nxc/NdpFc3OVwO+6u78r+fPWjcTnDBIihZcSJQG+pZtnqySZzLI9Pz0kmBZipQy
+         VLCFlBsxTL5uQVvjbezlsbuX+AOLkZKEjWJ1+AIoqYVEtafdVyPHRn0kk6I+i3PZDN9x
+         hKCS02H8jL71rCIloF/5nD2A3HBOZvbU76ZWDLZqahBxJP+5kgCDxgOP/aeZq44+IJbd
+         fEKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uuy6ZnTc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ts8HOah3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i12-20020ac8764c000000b002de79a1e2e2si3835078qtr.758.2022.03.01.02.43.50
+        by mx.google.com with ESMTPS id x192-20020a81a0c9000000b002d63fb5d6a1si10951520ywg.441.2022.03.01.03.43.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Mar 2022 02:43:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Mar 2022 03:43:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uuy6ZnTc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60586 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ts8HOah3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51830 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nOzyw-00050S-Bm
-	for alex.bennee@linaro.org; Tue, 01 Mar 2022 05:43:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40846)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nP0uc-0006ti-6A
+	for alex.bennee@linaro.org; Tue, 01 Mar 2022 06:43:26 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55810)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nOzyl-0004yw-Eq
- for qemu-arm@nongnu.org; Tue, 01 Mar 2022 05:43:39 -0500
-Received: from [2607:f8b0:4864:20::1131] (port=35151
- helo=mail-yw1-x1131.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nOzyj-0005Yr-NT
- for qemu-arm@nongnu.org; Tue, 01 Mar 2022 05:43:39 -0500
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-2d07ae0b1c0so139813597b3.2
- for <qemu-arm@nongnu.org>; Tue, 01 Mar 2022 02:43:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=34jaHwAsn1GS4jiZzitztpzhzuRyuPyDxEqyib98OVc=;
- b=uuy6ZnTcCF2SiSE71N3OcYKnZ2VTs8AwDtzgUeSdAUuyf4ssB4a9SmH9NIyRE7HH4D
- HRlLBAFc0sBPtFr2fv5qVzplI5R0i7giL92OxTncgbJ6ZDQ7dHZvEOLwqkR8KIs45rAq
- 6ezzIMm1TUDhZCNy6IqT8glDoVt6NCXWVyQhqEHRkDHNhBiNHqVzxwv2i0h5AY4fH5mR
- h/xRr/JfydfmWb1bGauBn/GeD3+hbEHLPoYWTJwMnAu58g9ugqxizGSvChWq1NUqoYf7
- mRqmpG+vsMoET0Scq/eHHzmQ6ovxCKwNhUhKHtSPgmctmh/lTPqKNAoKdOJ0Sj0YA5dA
- 3m3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=34jaHwAsn1GS4jiZzitztpzhzuRyuPyDxEqyib98OVc=;
- b=uVOPBv8JbRRx/+OLO832SNn/5OZxj+xyLG1TT6nWNrzfWQaQBNtXqYOfVPNINdUGhs
- YtARm/UhixIRptyd4myWCjPVhqEbUwpuNTLEf3LQSy+a9BNydsf8llkIm3H+3wflKYAH
- aBhSAgdHi+aqBN/c9iIBq9RkphSzbjk/cjAtsyxi0d/VBHHNjNj+FeZBowTLeE2XVRsf
- /haSne1OUhRCN+H3b5fsfI+egGYo/uiR/VeCydu9kaTWlxJsdgbSbnpwWGTqMSRYl3fB
- V2vnYfg95sJZNxIffl6/beDp76m+ndKJs0kZ1SbmNKf56NiwKSQweLj68743U0WCJxrx
- VtQQ==
-X-Gm-Message-State: AOAM533IiUwP3FaH7qOP+J+JkSGq0fF34H13KgyggvXfl4ciFK4qAqfq
- uFO/901+XjRVhnmEtWJDVi6EJFp8wrwDXp3GW/E1dhcP27w=
-X-Received: by 2002:a81:b49:0:b0:2db:f472:dfca with SMTP id
- 70-20020a810b49000000b002dbf472dfcamr573650ywl.455.1646131416589; Tue, 01 Mar
- 2022 02:43:36 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1nP0uQ-0006sn-1N
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 06:43:14 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:53656)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1nP0uN-0002lh-6e
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 06:43:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1646134990;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=T8qUw0aZc89WB3HLkLrOvKMzHeBgIYFfgkgMCMIafM4=;
+ b=Ts8HOah3a7lMO4/y7vA+DDR0Xhl5hJDVU/d4wDw/CjrC0/mXJ66Q3GftBnXtHavVLFj7S7
+ AwFTpxKgxDfq7ofnsT6PrlDlpBghd69SJHpT/0z3EdY/IrKqx6ciInNuPsbyYK8XrgsSCQ
+ RLdxS1qu6gmLbffvukuo9RaDLGoi8jM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-182-fq1kLM9KNcGWB1r-tMRKzQ-1; Tue, 01 Mar 2022 06:43:07 -0500
+X-MC-Unique: fq1kLM9KNcGWB1r-tMRKzQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3316A1854E21;
+ Tue,  1 Mar 2022 11:43:06 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.195.81])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B5A291053B1A;
+ Tue,  1 Mar 2022 11:42:59 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id EE344180039D; Tue,  1 Mar 2022 12:42:57 +0100 (CET)
+Date: Tue, 1 Mar 2022 12:42:57 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH] hw/arm/virt: Validate memory size on the first NUMA node
+Message-ID: <20220301114257.2bppjnjqj7dgxztc@sirius.home.kraxel.org>
+References: <20220228075203.60064-1-gshan@redhat.com>
+ <20220228100820.477e2311@redhat.com>
+ <41eb791c-a74a-7ed6-df05-cd1867ecbb5f@redhat.com>
 MIME-Version: 1.0
-References: <20220228071239.404171-1-clg@kaod.org>
-In-Reply-To: <20220228071239.404171-1-clg@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Mar 2022 10:43:25 +0000
-Message-ID: <CAFEAcA8Lj9yUdmWGMme0-wuMD0BWLCKzWPfdfo069W276Z5Rpg@mail.gmail.com>
-Subject: Re: [PULL 0/7] aspeed queue
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1131
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+In-Reply-To: <41eb791c-a74a-7ed6-df05-cd1867ecbb5f@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qY/Bdgk8jEUk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Shan Gavin <shan.gavin@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YuEQDu//53ay
 
-On Mon, 28 Feb 2022 at 07:12, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> The following changes since commit c13b8e9973635f34f3ce4356af27a311c99372=
-9c:
->
->   Merge remote-tracking branch 'remotes/alistair/tags/pull-riscv-to-apply=
--20220216' into staging (2022-02-16 09:57:11 +0000)
->
-> are available in the Git repository at:
->
->   https://github.com/legoater/qemu/ tags/pull-aspeed-20220227
->
-> for you to fetch changes up to 3671342a38f21316a2bda62e7d607bbaedd60fd8:
->
->   aspeed/sdmc: Add trace events (2022-02-26 18:40:51 +0100)
->
-> ----------------------------------------------------------------
-> aspeed queue:
->
-> * Removal of the swift-bmc machine
-> * New Secure Boot Controller model
-> * Improvements on the rainier machine
-> * Various small cleanups
->
+  Hi,
 
+> > Unless it architecturally wrong thing i.e. (node size less than 128Mb)
+> > ,in which case limiting it in QEMU would be justified, I'd prefer
+> > firmware being fixed or it reporting more useful for user error message.
+> 
+> [include EDK2 developers]
+> 
+> I don't think 128MB node memory size is architecturally required.
+> I also thought EDK2 would be better place to provide a precise error
+> mesage and discussed it through with EDK2 developers. Lets see what
+> are their thoughts this time.
 
-Applied, thanks.
+Useful error reporting that early in the firmware initialization is a
+rather hard problem, it's much easier for qemu to catch those problems
+and print a useful error message.
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/7.0
-for any user-visible changes.
+Fixing the firmware would be possible.  The firmware simply uses the
+memory of the first numa note in the early initialization phase, which
+could be changed to look for additional numa nodes.  It's IMHO simply
+not worth the trouble though.  numa nodes with less memory than 128M
+simply doesn't happen in practice, except when QE does questionable
+scaleability testing (scale up the number of numa nodes without also
+scaling up the total amount of memory, ending up with rather tiny
+numa nodes and a configuration nobody actually uses in practice).
 
--- PMM
+take care,
+  Gerd
+

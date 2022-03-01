@@ -1,178 +1,111 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp209769lfo;
-        Tue, 1 Mar 2022 14:00:11 -0800 (PST)
-X-Received: by 2002:a17:90b:228a:b0:1bc:7ca4:efaf with SMTP id kx10-20020a17090b228a00b001bc7ca4efafmr24171068pjb.245.1646172011609;
-        Tue, 01 Mar 2022 14:00:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646172011; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp209787lfo;
+        Tue, 1 Mar 2022 14:00:13 -0800 (PST)
+X-Received: by 2002:a17:902:cf04:b0:14d:79fd:a2c9 with SMTP id i4-20020a170902cf0400b0014d79fda2c9mr27775675plg.104.1646172013220;
+        Tue, 01 Mar 2022 14:00:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646172013; cv=none;
         d=google.com; s=arc-20160816;
-        b=vy1ki8lOm5Lde3ULtx4wf/kFjjtebGDq6zpYVWdvpbo0HX3WRiUv7BbKMZmDJmXAcS
-         wn2VCMckc8LqFnXXD2IcuRcre5CZ5iZxnzUrjLiY49a07xAPioBEc644iXDy9fi9reo2
-         I1fninr2kUx9DE2K93yDBqlh8XU2o1pD4qM+ZVUJ8nFakFx0744WEYYj/1BUi6OsR9iY
-         CFPy7axmn6GvO+PPKO6Xfx3a6p3YgwM1dyV6Mao5wC3F4fK8tjeuTY08QK0xfc/vpRvv
-         NDO9WB3908OQ1hslwxAxI1QTQ3Omk5Ij52YmazuFgzew441YBnVGbysJ0c4KxlBjhYMY
-         MTgw==
+        b=m7cLASpeaMKFq+ceMkJoUAyK1hUyOwUMnVYYOmFe8daMxin0BCOnMa6LZrRBtkO6hg
+         /febZ2Yn0MAFr1HEpUEuac7RZoZBx4uGsMKZFKXJp6xJFjeC6w1t5UapizW9WJqD/A6C
+         tXF6HOoVRoc3+s1giOCMRcxr0/UoudDcEKiAFyU+3zon5kPApsaVMoSNBM2FrVnT1V7g
+         ubIULj3oSzHqXXPamqjE5QRGRWxRz5AFKY0VedVj0QKFcrw1xvm0nQA4WY05B+1Pto6N
+         hqav7I1DvSbw43Ypj37Y8SyYqL5bCBKiOX+P09+WtBCPQBAJBbGdg42+UmDP+8/g65Gx
+         RHTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=TAU62jUEHWqZmP/omH+DP65D27WXovgj7reF6QpCfzg=;
-        b=zUvckGkOCFaB7QL/nqq9OJPudZZh3+2YRCd1pin2G/n73pYX39roX5HmoIqle2IalB
-         ojA0Dea/Jwo7VDNhmtXJZ6cOlNevREwjfkXmKjMWsMcs7sgpyjLY4zpcdYbnmpQpLNV/
-         pE1BYh0CVAJF8fwQD9E6MCGvaYXp23m0jjJTWOMeo4Kh2EHAUG6mUXd4M9mOkCXqt1dk
-         6jNQT/XpnoOptvcz3AY50JVNqvvY8Gw9iQrHqjlmRZUjgtXlKv3N3XylX54FUTspmlUx
-         3l9DWlFmDrhFlaIdjqAogym5TowwMO44yUaysCb7bRVpai7GPGcPHnbFRntr6XnOZ0rf
-         cwGw==
+        bh=gIGj1SBy99bk76FDyotKqntArH5MW9KjKA2GprTkmIQ=;
+        b=Am6DC+GjaTycvaCvWvT25Pj4csekMdb5vW0SJHG6N4za8X+1U3reZzPLgzaQdom3UA
+         vEV/tsbzqxJJeqJC82Tbxszga/CEAgYzU5QCGpj4QZQSPKSSSET70FMj6wshOWSwvhha
+         re0XgN2Fe1MVYn1jJVMDbymvmm12LyETv01kAvjgecPh22INYfiCNI/fpOHsIlRoCFCt
+         JhM2062wLJAq+u8lNDGOp1VWndpvtXRhpIgmnTaGy4HbiR8JayjbstfanV5vKu4qGBif
+         iz2oGEsHoRIGX3XCOy2PZXyq8rtkT5Fz0mUnf8G8yH60lDBSi3Xy6OqbIR7eOhIctjni
+         9Oqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="lx/zx7CQ";
+       dkim=pass header.i=@linaro.org header.s=google header.b="ufj/OzUb";
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d17-20020a639911000000b00373d9816d81sor8300626pge.20.2022.03.01.14.00.11
+        by mx.google.com with SMTPS id l17-20020a056a0016d100b004f3bc62a660sor7579164pfc.15.2022.03.01.14.00.12
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 01 Mar 2022 14:00:11 -0800 (PST)
+        Tue, 01 Mar 2022 14:00:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="lx/zx7CQ";
+       dkim=pass header.i=@linaro.org header.s=google header.b="ufj/OzUb";
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=TAU62jUEHWqZmP/omH+DP65D27WXovgj7reF6QpCfzg=;
-        b=lx/zx7CQmy7S+laRnK1Ai9SXcDDOkBCpkt2dczgZncBdqZ8lXGbfpdGWs31V1X8yhG
-         HclFvpk0Ug62EJjCY0ghcLZjHEhn6BXaNy8/kvFnsueZANzfl3nSXkPvA68mwGWrerQz
-         ktk6iw5s7bn83YEOC0y8LK6wljjLWdFcr2X4SgkSnmBjH3zdVJLqdL0Eda8hnJ4fXkia
-         gaEbT/+jERDSi0nEKZSaCLb2ZADCDgNYNnNfRsBzufQiDRduaHrfJkEdeVt8ajfUKmOg
-         dWm3Tbyfp4xgU6Q89PT+L92eD57PnpWdpk/hXKuRpOeM/P7j6ATwF7TIktxUQ+gzKZDm
-         Ef3g==
+        bh=gIGj1SBy99bk76FDyotKqntArH5MW9KjKA2GprTkmIQ=;
+        b=ufj/OzUbqqQUDuTaXi3d9MgYlKLV9cHEpkT37DK9zFn+XCtbqYVLdyNow4JjEbF3Qq
+         QvI5lk8sM5Gkg1wnVXxNS2KAa+rFlcrCR0x1Qr/AgFjfmwJ5k3qQ8xBtSF8TDNlDdtN8
+         yxXl+BTunQiP+U0vrBVX3CUyhPGITo8PaWJxSiPQp3Lt5E19VyyZs/pBLAQgRKLYmv46
+         nFjtKrh1ynLQAgmNyk3xNpKTZ4Rk9WM+644t00CrAiswWsU7YKLTiaE5LvFAe4lVK4Lr
+         FKRZJEFhNhZNTSBrDg83ZycGZ00yB/5FSoStrNLXbRdsH2XBlKhSx6roiHSO3GPRW/fM
+         RQfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=TAU62jUEHWqZmP/omH+DP65D27WXovgj7reF6QpCfzg=;
-        b=sZgmv+lnvyhXIjpEm75LgpoeYIkeFMQm3ePU452NOQrOTFfofI/1vzI4Ayf38b/oti
-         Cu6Eq2B1G7QZStv16J+XJVdwZRXGACOmNMP58gyuyAhPc89pxZC1HzJktVP4N/RrdHkd
-         tF1RtoPi5jT+jAC4AtoPJTYDD258L/laSolwvV3dKK21RKxF5IKub9068nHL68GslyWO
-         X6nx06ODBYiYOSt+N+SvjjEBmv6iAVHgO6/It2nvCR+25LGfU/tWq24fCKVl2ICeMxlt
-         chVUku5uGtOBwkq5WujtR8ms7EAXvTCaQLCpSuf+a3JD0wi9ZwrG66sTuCmiFfEoGFdr
-         Hxag==
-X-Gm-Message-State: AOAM533SB5m3WI2XaKoDI/GaaK9iayf0SUv7NAPVRe5ZpHALgfhMxjMh
-	IZY2kH0q6evoIyXuw4OjWWR1FsBu
-X-Google-Smtp-Source: ABdhPJwK0vGv5f4s3xA2uSrWs43eUyFt+yvSf7JTEiAnizyYMy9tCvouJHferqBSVV1X978KmdJePg==
-X-Received: by 2002:a65:6d0a:0:b0:373:9242:3a13 with SMTP id bf10-20020a656d0a000000b0037392423a13mr23744681pgb.452.1646172011103;
-        Tue, 01 Mar 2022 14:00:11 -0800 (PST)
+        bh=gIGj1SBy99bk76FDyotKqntArH5MW9KjKA2GprTkmIQ=;
+        b=M0nNki8i7wakiahBJJH/IUcz3S9tOn85baVXXwXleIuYgB/bVTScb1x7hnzLFcg0He
+         irqST5/kdd0OaegRSRay9hlJJUiy8JzZ7zfyKFD/MS21mjHySTX2SrcZKj3bLwa2B1qE
+         lUBAiLzvn9/jqMURdCzOdo8phUu/0blaBIvz9hR7aJNPxgkHt9Jy6Gu3rdLtSQKgnYhI
+         ybyfq47p59nN+AoKTzZsbn73/lU+AXPVzxDp17jAM7Z18ATJ4zErqMYh11ZOhsuXBwe1
+         yN2i29WHaumjIdH1QR3D01dgPvhnhkjj5zPGPQR8nzdcGJcsCkkT9YcId/0l8jBy2C+C
+         bIMQ==
+X-Gm-Message-State: AOAM531j/cUWIQ248DI3SOvgESiz2rFEveLX3jOjK5hrVshsmQl9kUO5
+	kaLTt9BYhCMoM3+DLAwKlDP/qjaM
+X-Google-Smtp-Source: ABdhPJx+/TTro2gia4SBDzgt3CLjBM2Oz0FOLhj0Dj5OMoAs5Cmz0cFRO9RGOW1v5n8ZxuLeLtuoGA==
+X-Received: by 2002:a63:2c14:0:b0:373:7200:d07d with SMTP id s20-20020a632c14000000b003737200d07dmr23393129pgs.617.1646172012700;
+        Tue, 01 Mar 2022 14:00:12 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (cpe-50-113-46-110.hawaii.res.rr.com. [50.113.46.110])
-        by smtp.gmail.com with ESMTPSA id m4-20020a17090a7f8400b001bef3fc3938sm284392pjl.49.2022.03.01.14.00.09
+        by smtp.gmail.com with ESMTPSA id m4-20020a17090a7f8400b001bef3fc3938sm284392pjl.49.2022.03.01.14.00.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Mar 2022 14:00:10 -0800 (PST)
+        Tue, 01 Mar 2022 14:00:12 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v4 05/18] target/arm: Pass outputsize down to check_s2_mmu_setup
-Date: Tue,  1 Mar 2022 11:59:45 -1000
-Message-Id: <20220301215958.157011-6-richard.henderson@linaro.org>
+	alex.bennee@linaro.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v4 06/18] target/arm: Use MAKE_64BIT_MASK to compute indexmask
+Date: Tue,  1 Mar 2022 11:59:46 -1000
+Message-Id: <20220301215958.157011-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220301215958.157011-1-richard.henderson@linaro.org>
 References: <20220301215958.157011-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ilzBmPQ4nlMf
+X-TUID: N9YFN0VJ6DYD
 
-Pass down the width of the output address from translation.
-For now this is still just PAMax, but a subsequent patch will
-compute the correct value from TCR_ELx.{I}PS.
+The macro is a bit more readable than the inlined computation.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
+ target/arm/helper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 71e575f352..431b0c1405 100644
+index 431b0c1405..675aec4bf3 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -11065,7 +11065,7 @@ do_fault:
-  * false otherwise.
-  */
- static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
--                               int inputsize, int stride)
-+                               int inputsize, int stride, int outputsize)
- {
-     const int grainsize = stride + 3;
-     int startsizecheck;
-@@ -11081,22 +11081,19 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
+@@ -11518,8 +11518,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+         level = startlevel;
      }
  
-     if (is_aa64) {
--        CPUARMState *env = &cpu->env;
--        unsigned int pamax = arm_pamax(cpu);
--
-         switch (stride) {
-         case 13: /* 64KB Pages.  */
--            if (level == 0 || (level == 1 && pamax <= 42)) {
-+            if (level == 0 || (level == 1 && outputsize <= 42)) {
-                 return false;
-             }
-             break;
-         case 11: /* 16KB Pages.  */
--            if (level == 0 || (level == 1 && pamax <= 40)) {
-+            if (level == 0 || (level == 1 && outputsize <= 40)) {
-                 return false;
-             }
-             break;
-         case 9: /* 4KB Pages.  */
--            if (level == 0 && pamax <= 42) {
-+            if (level == 0 && outputsize <= 42) {
-                 return false;
-             }
-             break;
-@@ -11105,8 +11102,8 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
-         }
+-    indexmask_grainsize = (1ULL << (stride + 3)) - 1;
+-    indexmask = (1ULL << (inputsize - (stride * (4 - level)))) - 1;
++    indexmask_grainsize = MAKE_64BIT_MASK(0, stride + 3);
++    indexmask = MAKE_64BIT_MASK(0, inputsize - (stride * (4 - level)));
  
-         /* Inputsize checks.  */
--        if (inputsize > pamax &&
--            (arm_el_is_aa64(env, 1) || inputsize > 40)) {
-+        if (inputsize > outputsize &&
-+            (arm_el_is_aa64(&cpu->env, 1) || inputsize > 40)) {
-             /* This is CONSTRAINED UNPREDICTABLE and we choose to fault.  */
-             return false;
-         }
-@@ -11392,7 +11389,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-     target_ulong page_size;
-     uint32_t attrs;
-     int32_t stride;
--    int addrsize, inputsize;
-+    int addrsize, inputsize, outputsize;
-     TCR *tcr = regime_tcr(env, mmu_idx);
-     int ap, ns, xn, pxn;
-     uint32_t el = regime_el(env, mmu_idx);
-@@ -11422,11 +11419,13 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
- 
-         addrsize = 64 - 8 * param.tbi;
-         inputsize = 64 - param.tsz;
-+        outputsize = arm_pamax(cpu);
-     } else {
-         param = aa32_va_parameters(env, address, mmu_idx);
-         level = 1;
-         addrsize = (mmu_idx == ARMMMUIdx_Stage2 ? 40 : 32);
-         inputsize = addrsize - param.tsz;
-+        outputsize = 40;
-     }
- 
-     /*
-@@ -11511,7 +11510,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
- 
-         /* Check that the starting level is valid. */
-         ok = check_s2_mmu_setup(cpu, aarch64, startlevel,
--                                inputsize, stride);
-+                                inputsize, stride, outputsize);
-         if (!ok) {
-             fault_type = ARMFault_Translation;
-             goto do_fault;
+     /* Now we can extract the actual base address from the TTBR */
+     descaddr = extract64(ttbr, 0, 48);
 -- 
 2.25.1

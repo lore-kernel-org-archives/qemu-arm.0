@@ -1,120 +1,138 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2745814lfq;
-        Tue, 1 Mar 2022 08:30:42 -0800 (PST)
-X-Received: by 2002:a25:a223:0:b0:621:1238:68b1 with SMTP id b32-20020a25a223000000b00621123868b1mr24997573ybi.370.1646152241842;
-        Tue, 01 Mar 2022 08:30:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646152241; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp210006lfo;
+        Tue, 1 Mar 2022 14:00:32 -0800 (PST)
+X-Received: by 2002:a17:90b:702:b0:1bc:6d8a:70e0 with SMTP id s2-20020a17090b070200b001bc6d8a70e0mr23703586pjz.137.1646172032045;
+        Tue, 01 Mar 2022 14:00:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646172032; cv=none;
         d=google.com; s=arc-20160816;
-        b=vOMwXzhaeBO760B4B4vR9Yxy+wRHAUwFlK6x/XNMVyWIO6xLek0BGkCIikmHQC1p7T
-         gQJQQRH+GE79Hi0gThQEEg1fdunyuF5gpNzaJ98v6EY9egpKw98gnVZBEsKLfp0VDuAr
-         bw7mtr/qQbMbgpIViylYywCYaMvdqewKsbVeYNDscvPKJrveIdu/RT4VAutS096afLvm
-         duRlbC+WNsUv3M1nO5d4wNYGDCb8i0KPD6UYraAZwf13I5FIMppE3a4mvrnRuuHBk+9p
-         1FMsU6dXTO6uYeq3M/c5IOMj4RrIRGpBMEf6Fjic0ZAJmkXfFzGBCCqLye4FgAjVxyaK
-         j5+Q==
+        b=zNQkyUCOeZ66w1swo54Ptb8yDDfZZYGtSNEzcXgzTSgWE4189orrxdqKfl6YrZUN8B
+         13yb4xj0kzHnZiWUMspLtwcAv2CcmoDTyCDeQs3/qHFCGmAUyABqv7XHXsqdoWNcAiH4
+         i8Y+tDvRZ5/WcXlUmHV/jNU7IROPAlhqHiEyPf4WeVI2oHoUbNenU6UFB3P6Nu6Jzplq
+         k7ggYKY5QR2h8gGTdfPj3SnnRf8a9c703Nft+HM5P84HQpH2W0Mgk3JFvkhvxArEq0B/
+         rzqgdrPoDOCkYUy5ftAVUDsgMp7Y/PQV8esMIZBH7aJgPifbDCU73EV48X8jiZPHCzx6
+         QjoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=bKVk10tObS6Zdp/IbgEapmTajXCeX0hwnk+7DEiX7gk=;
-        b=n6xIB9nSJUPbhHLgraqKDIa8nOCz2IoYcCu87ULRu/PGfOSXg+34hMnlJPbJoSX37A
-         Vm0FJuil8pqFjN5kn4xdoK43YEwvz6RMZf8wbq2aqdq7Eugcp41x/QeEO3bxhiqLEekl
-         3N14+wOF0m+To61wQsZBPsYffG6H/L8WrPSTdvltyXtT/SdfK2TMcva7rafYc8IXuzAE
-         xSqxu/SXWcrKTh5dnCSraTMi0wpAtTj5aMmvXXlzaPX7mFyIRJjQtQuOPg6T3QXpvhpT
-         wWl32gKhLiACVlqIoq0EZuRW00QN+RxarB/WAe6aoib9474mdX6sLjUfFAx2SP6BDY2Y
-         7QiQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=iLI26UK0ClZ5ceLdr/V+YxsQZY+vXN5fVFJqBZWb1js=;
+        b=a7XsvekwxZhGW+pMu8OJ6Ucs2OWE9jIozwyQhS67UluXZi+aWvCjfW8HLuAajXupWE
+         hy16dfG+YsVfkmTX7qbmKWynEhuA29rl+KcgX9uvo13NCsaAIDJdM8G6aeTlPyU6VD8J
+         OvfyzbjudF4ILcr0ueD9Sd7Jrws1ryqLsohHv/Ve9dSBRNEWWRhsO9dsssXjQMioqwtA
+         l9Hm/GkxIzEUOQ8JrQsLsT6OJKOYEhGmozGh3D7wBEBth4pi87uvGtzKIHjZISv0Nxuu
+         wCmNsEBdTtgL5CQCZMzng1tG6RYxZ7aKpexngaLf1PMf0GU+p48NhIjB+Lkdbtu9iawM
+         A/QA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=b3KJsZCB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GfFDE2bF;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y62-20020a257d41000000b006247a89ae5dsor6890286ybc.53.2022.03.01.08.30.41
+        by mx.google.com with SMTPS id h7-20020a170902b94700b0014fe928999fsor7158886pls.79.2022.03.01.14.00.31
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 01 Mar 2022 08:30:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Tue, 01 Mar 2022 14:00:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=b3KJsZCB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GfFDE2bF;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=bKVk10tObS6Zdp/IbgEapmTajXCeX0hwnk+7DEiX7gk=;
-        b=b3KJsZCBZbZnrqH3KJ2XoWS1MTM/RX8dGQzNjc67HVxH9ML0fun2YyMlHAnoL0LAza
-         MhnXPKQ4l+OW9tzyBBA36rzM1NWuoEqLVayehzW0cLa44culfa4DJ+erMdNwqpnPNUSi
-         apaxiPu9QN4c7f3s9K4OQgY7/OPjHgTJOPsrlpDu9b0/vR4PgijUfnZ/FD1DUnNDnrg7
-         qoeQfihrv0+RrNTQB/xtoeJKv9VU4K4KaxQdcnv37224Ky7X9FCvdWT1auhSJrIiSRq3
-         kC/iCoiY8eQC7Fl+TciddYJEGO8BBTb2j8rSCUc5TIviJsIyOsDAdUVogwb/IAFc8ScY
-         LxLg==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=iLI26UK0ClZ5ceLdr/V+YxsQZY+vXN5fVFJqBZWb1js=;
+        b=GfFDE2bFDZ+5PPhFBgKKvyFW2AVfDfF5JcHtKMFiV2VTtvKhIC9AcyMWZQf1ubJnVK
+         TOYfmT954iUkgtYMP2oDkexrhe+lVgu9nttCCNB5evxfWm/4kiBaGu0cvpowwMiKXfQy
+         FJbIvZirlcjatMpvCRwYDWy29Yrl0canwp9rQ2H6EcNXtdr15bWBhvq8I+D5N2ZwjZVb
+         hIIYYv4vV/yu5EfXyLjgV+gMN5SsCMTMvnzOkrWYY3PPVaWRzBAm8bEPCGj7LyT/hS4s
+         yG2p5g/gSp6oYsuPRq8ebLkgCy43k+/PZ6CS15Vgz0rzDXagSesqvFP2xdnJV7hiShmK
+         9Ojw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=bKVk10tObS6Zdp/IbgEapmTajXCeX0hwnk+7DEiX7gk=;
-        b=GykOnzZPGB01+x8OJUA1FXo029IRkgpOieV09locGbYPJxSvAmRMSSwpGJrBzwUYdq
-         2Tgt3IznkBd5Sq2i4cXsObksmnpnRzjiIgBHZGjixt6aXRNEDY8g4SbDnoEbIvyWAp6a
-         q5RpEZEG84NiViLAQNaP5fb/HANGmVPXmeN3aWh5G+2xNbSqocmtouyT+jzV7+xi7LxS
-         LdpktVeVkpiziJYKDSeuo8MEbL1WyRhAAo8LQ3dZf8djerIncG6+/AdoEiPI/tTeq7IG
-         JZQgaSsWRM9GIi9UosrXL7WlbV4ZbJmfMjFICuEoQLmmQIPHApjVP/3m57GoO4ofjg2B
-         BsHQ==
-X-Gm-Message-State: AOAM531Oa9BPs19xWZL4QayPBXp1tUAQdvagZ819ms9g8xeDKyodgLWQ
-	wB9eL3bmmXL8IPiLGIvkBgkjoTpU3lqasKVDlg+flSOQ
-X-Google-Smtp-Source: ABdhPJxBZU//e2cY51NLwGh9hDDqJQNvpYmkNU8IoxFgRGwwjRegsPZSI/LwN1+7TcvEOcrY/lPjiZZGo8w5zwNmM+4=
-X-Received: by 2002:a05:6902:83:b0:61a:709b:d841 with SMTP id
- h3-20020a056902008300b0061a709bd841mr23693445ybs.140.1646152241450; Tue, 01
- Mar 2022 08:30:41 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=iLI26UK0ClZ5ceLdr/V+YxsQZY+vXN5fVFJqBZWb1js=;
+        b=nlOnuD6Qv5gRx1OS7agH8JB+JxRSg59Yzmua5F/sgpFvW8YIHzxV74JUJMb8nciNI6
+         QZ8teLm0IE05CtilzSy3o92agZVUQPILnYjrvrz9fs/+NjzEpDCSqJjJK0N39bXKTbi5
+         QXvTBz1GeFjxiNbSLBW12jwLvYWVrryMmCeJpeFEsmDRhhIy0jFC2HUggm7tIM4H5tH4
+         dEkoN1x/wl0m+MYZjl7g6KbCcr+DEd8Nj8dJTWYAcsn/BG3S6SyfVjfw8bVcO0qOlKZV
+         q5ZvJAaz6xTBz0C8RVob9tdxP7vqXAQKEL4h3em2kfmwullESYOHi7AREkT2PJwD6stZ
+         HEvw==
+X-Gm-Message-State: AOAM530+iynz7oCLsPuQz7tONKBtFJ7SpalK8k4gQJPT2ZQDMlAbRqWQ
+	WAYOhZnT1QiOatC7Y+iS6CaNZ0hu
+X-Google-Smtp-Source: ABdhPJygwAFOEOCRH+heEJWiAr3FTKgqIS8lf27Ehxa4julYAdm0dNBwHw1PCfAby02wmqOOISTeaQ==
+X-Received: by 2002:a17:902:ea05:b0:150:1294:cd91 with SMTP id s5-20020a170902ea0500b001501294cd91mr28201707plg.112.1646172031520;
+        Tue, 01 Mar 2022 14:00:31 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain (cpe-50-113-46-110.hawaii.res.rr.com. [50.113.46.110])
+        by smtp.gmail.com with ESMTPSA id m4-20020a17090a7f8400b001bef3fc3938sm284392pjl.49.2022.03.01.14.00.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Mar 2022 14:00:31 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	alex.bennee@linaro.org,
+	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v4 18/18] hw/arm/virt: Disable LPA2 for -machine virt-6.2
+Date: Tue,  1 Mar 2022 11:59:58 -1000
+Message-Id: <20220301215958.157011-19-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220301215958.157011-1-richard.henderson@linaro.org>
+References: <20220301215958.157011-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20220223223137.114264-1-richard.henderson@linaro.org>
- <CAFEAcA84cFnF9EygS6Xun3VorjeGKf+Lw7zRdkBbcRp6YT_OeQ@mail.gmail.com>
- <CAFEAcA_+70hkNaRhbT=ZT457x+cgD-qSad5QoJY8VAEds5UKeA@mail.gmail.com> <Yh5Jqg8oDDfPZ2c9@redhat.com>
-In-Reply-To: <Yh5Jqg8oDDfPZ2c9@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Mar 2022 16:30:30 +0000
-Message-ID: <CAFEAcA-6C9XmP_HGwL8CarBrcuvg6n1wbR5Ys0jZBC-RrA0-AA@mail.gmail.com>
-Subject: Re: [PATCH v3 00/17] target/arm: Implement LVA, LPA, LPA2 features
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
-	alex.bennee@linaro.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: LqcW+a/YgiTY
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: uq/fwjB/O/tn
 
-On Tue, 1 Mar 2022 at 16:28, Daniel P. Berrang=C3=A9 <berrange@redhat.com> =
-wrote:
->
-> On Tue, Mar 01, 2022 at 04:16:25PM +0000, Peter Maydell wrote:
-> > On Tue, 1 Mar 2022 at 16:08, Peter Maydell <peter.maydell@linaro.org> w=
-rote:
-> > >
-> > > On Wed, 23 Feb 2022 at 22:31, Richard Henderson
-> > > <richard.henderson@linaro.org> wrote:
-> > > >
-> > > > Changes for v3:
-> > > >   * Update emulation.rst.
-> > > >   * Split out separate update to ID_AA64MMFR0.
-> > > >   * Hack for avocado.
-> > > >
-> > > > If the avocado hack isn't acceptable, perhaps just drop the
-> > > > last two patches for now?
-> > >
-> > > I think that given that there are Linux kernels out there
-> > > that won't boot if LPA2 is enabled, we should probably have
-> > > a -cpu command line option to disable it. Otherwise we might
-> > > get a bunch of "why did my kernel stop booting" bug reports.
-> >
-> > ...and should using a versioned machine type also default
-> > -cpu max to not enabling that? Not sure what x86 or other
-> > precedent is there.
->
-> I don't recall us coming across an important scenario where a guest
-> would fail to boot when we /enable/ a given CPU feature on x86,
-> requiring us to hide it from -cpu max/host.
->
-> Assuming the QEMU/KVM implementation of a CPU feature is correct
-> per the relevant spec, then artificially hiding it by default from
-> -cpu max feels questionable, as that penalizes non-buggy guest OS.
+There is a Linux kernel bug present until v5.12 that prevents
+booting with FEAT_LPA2 enabled.  As a workaround for TCG,
+disable this feature for machine versions prior to 7.0.
 
-Yeah. It's just unfortunate that "buggy guest OS" here is
-"every Linux up to 5.11".
+Cc: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/hw/arm/virt.h | 1 +
+ hw/arm/virt.c         | 7 +++++++
+ 2 files changed, 8 insertions(+)
 
--- PMM
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index c1ea17d0de..7e76ee2619 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -132,6 +132,7 @@ struct VirtMachineClass {
+     bool no_secure_gpio;
+     /* Machines < 6.2 have no support for describing cpu topology to guest */
+     bool no_cpu_topology;
++    bool no_tcg_lpa2;
+ };
+ 
+ struct VirtMachineState {
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 46bf7ceddf..46a42502bc 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2102,6 +2102,10 @@ static void machvirt_init(MachineState *machine)
+             object_property_set_bool(cpuobj, "pmu", false, NULL);
+         }
+ 
++        if (vmc->no_tcg_lpa2 && object_property_find(cpuobj, "lpa2")) {
++            object_property_set_bool(cpuobj, "lpa2", false, NULL);
++        }
++
+         if (object_property_find(cpuobj, "reset-cbar")) {
+             object_property_set_int(cpuobj, "reset-cbar",
+                                     vms->memmap[VIRT_CPUPERIPHS].base,
+@@ -3020,8 +3024,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(7, 0)
+ 
+ static void virt_machine_6_2_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_7_0_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_6_2, hw_compat_6_2_len);
++    vmc->no_tcg_lpa2 = true;
+ }
+ DEFINE_VIRT_MACHINE(6, 2)
+ 
+-- 
+2.25.1

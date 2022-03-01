@@ -1,108 +1,119 @@
-Received: by 2002:ac2:5cd0:0:0:0:0:0 with SMTP id f16csp2544528lfq;
-        Tue, 1 Mar 2022 03:43:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxqqm4ByMso6KyTWO0pqn7ZNgxkahoNR962ziNOp565WlW441AznozZ2jnobv2O5rWfft4p
-X-Received: by 2002:a0d:fa85:0:b0:2d6:5e44:d104 with SMTP id k127-20020a0dfa85000000b002d65e44d104mr24212047ywf.450.1646135006737;
-        Tue, 01 Mar 2022 03:43:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646135006; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp419lfo;
+        Tue, 1 Mar 2022 08:34:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxDG+FIgx4VGye7/0XuLNfxtb+bnzXnVzexnVtnuXFJCc8KzqzjMBlvcnvwzoAVObl+2PrF
+X-Received: by 2002:a81:91d4:0:b0:2d6:b671:e71c with SMTP id i203-20020a8191d4000000b002d6b671e71cmr25446451ywg.312.1646152495052;
+        Tue, 01 Mar 2022 08:34:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646152495; cv=none;
         d=google.com; s=arc-20160816;
-        b=IObAqJ9+pxWTn9KMSe5r4wlrZPKdVti+zdrxMwqsDbbs0QL3fDYgl1kC58ihHMj1zu
-         jF2r7c8XEW2ILVIrwuUzufFw8Szku9F9/t1QGmivCndN0ua2L2vzpxhhngZdkoKhc7t6
-         gb9c4+5FHfCcOSgkSFfknBU/U2lRc1S7JAJK4sGlV02U8AwkbmDvgtvLB5wYFvG9BNvk
-         GiQdCWRIOL0yPAzLrLZZD2DcnpUWmU3SgRyEx5shLA8zyzpeOlyk2etTNc+kmaTp8O7i
-         b9oDgoUehc6EvsUf924eRhBydroQ75kfDr88YukV0NN9njzgJ1x8edvcd5wf/mqhIA4i
-         5IQQ==
+        b=CRqCl+13OxcxSAoYxcLBJc/r1psVxlvrrMC8ZsqjPgX/XNSo+NKC6oHKDhqVBTUtWs
+         hGdHrf1SdaqJ7M5x/GCMJvlPxwE8tK0clSGQ1cHvPcUpyWnVHYYyuL43SxBHMa5WlRDy
+         swq+11j4tig7Kg0n07Jtrc+oNXaz739c/S5DpHbfK1xnrEEKjdNyeWzTUzymN6c+fSNu
+         1qnZCS3eAf2Lwy6xHVoX8ln4Jy+I/aFaplSCDqisZMWDOdFeA+lb3UyAz8eCAh0jGul+
+         j+Kfr6WSsSEwbM196IUPOdvtCTOwj02kdmbyU/K4PQtvbBpdZQo0w5h7gc5QzGpV1954
+         2qcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=T8qUw0aZc89WB3HLkLrOvKMzHeBgIYFfgkgMCMIafM4=;
-        b=qnr///xgQlgOAqS5pa58+wBPDISKtqytz7+ehUu7EGcufSaxkwT+xVhKtS38dcS6qV
-         D7JbElq/vDem58FBh+/kSVCvKnvEfGWAVItvcZv/6eMrS/bqaFUlIn0vsYZoAaYrhKZE
-         f0lL+nxc/NdpFc3OVwO+6u78r+fPWjcTnDBIihZcSJQG+pZtnqySZzLI9Pz0kmBZipQy
-         VLCFlBsxTL5uQVvjbezlsbuX+AOLkZKEjWJ1+AIoqYVEtafdVyPHRn0kk6I+i3PZDN9x
-         hKCS02H8jL71rCIloF/5nD2A3HBOZvbU76ZWDLZqahBxJP+5kgCDxgOP/aeZq44+IJbd
-         fEKA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:content-language:references:to:subject:from:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=zMs6geIRZGUb21w3O6Ms1ZjgZzSB7UuC0q+zp+Woh2E=;
+        b=VN/X1EvnZ04YaAO09an8llGAIlkqXv7V/HQeAcL+BcBz9mgcLMLyarCRQlfHT5uR1r
+         +fCbAV8+ySQx97ov1F/6miCLWQCsDf1iOxeUcMhtdQrcVEBIZ6I6bG+Xk4TE32nw9u9u
+         nUwEg6K200xbEkUaiWqQny0qvKMGlS3rxaJcMYIAjm6HkH3cbb4ei9oX4qt92yPgR0DI
+         H8p1THVci1YC1X6RQ3LQaaF2B+quanVqlpKgnYbACNRgZdDPSjkyBgifGlYqmRTugcu+
+         C1AEHJdr49Tc0fpkiSev7nyaDerIfrORCLc4sk0w8QoEmiOKi97t61Vukh/MZGVNdFjf
+         jNYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ts8HOah3;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=oksVQSMR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x192-20020a81a0c9000000b002d63fb5d6a1si10951520ywg.441.2022.03.01.03.43.26
+        by mx.google.com with ESMTPS id e192-20020a25d3c9000000b0062873b3b89esi2825776ybf.603.2022.03.01.08.34.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Mar 2022 03:43:26 -0800 (PST)
+        Tue, 01 Mar 2022 08:34:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ts8HOah3;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=oksVQSMR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51830 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57804 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nP0uc-0006ti-6A
-	for alex.bennee@linaro.org; Tue, 01 Mar 2022 06:43:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55810)
+	id 1nP5Sc-0004dW-SQ
+	for alex.bennee@linaro.org; Tue, 01 Mar 2022 11:34:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56890)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1nP0uQ-0006sn-1N
- for qemu-devel@nongnu.org; Tue, 01 Mar 2022 06:43:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:53656)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1nP0uN-0002lh-6e
- for qemu-devel@nongnu.org; Tue, 01 Mar 2022 06:43:12 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1646134990;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=T8qUw0aZc89WB3HLkLrOvKMzHeBgIYFfgkgMCMIafM4=;
- b=Ts8HOah3a7lMO4/y7vA+DDR0Xhl5hJDVU/d4wDw/CjrC0/mXJ66Q3GftBnXtHavVLFj7S7
- AwFTpxKgxDfq7ofnsT6PrlDlpBghd69SJHpT/0z3EdY/IrKqx6ciInNuPsbyYK8XrgsSCQ
- RLdxS1qu6gmLbffvukuo9RaDLGoi8jM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-182-fq1kLM9KNcGWB1r-tMRKzQ-1; Tue, 01 Mar 2022 06:43:07 -0500
-X-MC-Unique: fq1kLM9KNcGWB1r-tMRKzQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3316A1854E21;
- Tue,  1 Mar 2022 11:43:06 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.195.81])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B5A291053B1A;
- Tue,  1 Mar 2022 11:42:59 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id EE344180039D; Tue,  1 Mar 2022 12:42:57 +0100 (CET)
-Date: Tue, 1 Mar 2022 12:42:57 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH] hw/arm/virt: Validate memory size on the first NUMA node
-Message-ID: <20220301114257.2bppjnjqj7dgxztc@sirius.home.kraxel.org>
-References: <20220228075203.60064-1-gshan@redhat.com>
- <20220228100820.477e2311@redhat.com>
- <41eb791c-a74a-7ed6-df05-cd1867ecbb5f@redhat.com>
+ (Exim 4.90_1) (envelope-from <ubzeme@gmail.com>)
+ id 1nP5SA-0004dK-JX; Tue, 01 Mar 2022 11:34:22 -0500
+Received: from [2607:f8b0:4864:20::52e] (port=33458
+ helo=mail-pg1-x52e.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ubzeme@gmail.com>)
+ id 1nP5S5-0004Sk-5Z; Tue, 01 Mar 2022 11:34:20 -0500
+Received: by mail-pg1-x52e.google.com with SMTP id 12so14822539pgd.0;
+ Tue, 01 Mar 2022 08:34:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:from:subject:to:cc
+ :references:content-language:in-reply-to:content-transfer-encoding;
+ bh=zMs6geIRZGUb21w3O6Ms1ZjgZzSB7UuC0q+zp+Woh2E=;
+ b=oksVQSMRhuFOTUwhQuWKaHCCZlwBDXjljSc7bxSnHT7t8T1NE+BLoW24ELYGzpiUda
+ dvE4+Hmdq3UaM+WzIbQJJrrTxpRRO7Raar2c0W8yD9JXagt4KPCKJaLDLnbzQKEuiX3b
+ 1BsGtp4vVeUQl6Su04yf6Sv841yBpX9DQ0BjEWWtjvpByL9m+HPPpNA3p0yylxx0zK2f
+ jv5cMOM9wLItmbF7359CY8OnP2qhZfdFR+ZBi5oYVCW+Mc+VFWSv/E2QHhJn0oL0CGa4
+ H38drHFVkmmj5mb5w8AXm2HKOtWjGk/6FNM4aeCkJmNaobC/V9/UZczGlqOEUTu98dFf
+ 14Ag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:from
+ :subject:to:cc:references:content-language:in-reply-to
+ :content-transfer-encoding;
+ bh=zMs6geIRZGUb21w3O6Ms1ZjgZzSB7UuC0q+zp+Woh2E=;
+ b=7KwOHVMODb8fWnEGwe2ddNkNGsy3npXghl8vbkGEvGhEYsywCXdn1NnHjjccsPZZMZ
+ OWTMOkENVr82qtD2wgsp/pEpwpuBmYaA9FTTFocsICgvoA5aoV25bL8loULbLn22888w
+ Prx1gHPSEGY0d26xj1OoVjzQDC69QMaOX5EStrgaXN3EKpoiU58I5lETUgSQQcDmomgv
+ O/ycrnOxreOoRxTaBNbGLBdKyG5reKLQACIXgXuLGUjwovNj1hyYBqmMoa3BBtuinvww
+ HkG+L/Bfv24my+SbtFs1DC8oapZGZ6XzupNVwiJpp8uczyeU1Ao1ZH2aqFkarXDHHF5u
+ nL7w==
+X-Gm-Message-State: AOAM533Tf2FSleuan8w0hx5rmTLwqxrxRlkE2xhW8kfwDfHHsQKbgxJz
+ RwymlMBzQsfWZ92kGb1ZY9Q=
+X-Received: by 2002:a62:7990:0:b0:4e0:5ae8:6c11 with SMTP id
+ u138-20020a627990000000b004e05ae86c11mr28623358pfc.34.1646152452829; 
+ Tue, 01 Mar 2022 08:34:12 -0800 (PST)
+Received: from ?IPV6:2001:b011:e000:59d7:401f:1cea:ecc0:9594?
+ (2001-b011-e000-59d7-401f-1cea-ecc0-9594.dynamic-ip6.hinet.net.
+ [2001:b011:e000:59d7:401f:1cea:ecc0:9594])
+ by smtp.gmail.com with ESMTPSA id
+ e30-20020a056a0000de00b004ef299a4f89sm18172590pfj.180.2022.03.01.08.34.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Mar 2022 08:34:12 -0800 (PST)
+Message-ID: <2da2f0bc-6c54-0a26-aafb-1f866cf93de8@gmail.com>
+Date: Wed, 2 Mar 2022 00:34:09 +0800
 MIME-Version: 1.0
-In-Reply-To: <41eb791c-a74a-7ed6-df05-cd1867ecbb5f@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.6.1
+From: Yan-Jie Wang <ubzeme@gmail.com>
+Subject: Re: [PATCH qemu 0/7] Many improvements to HVF memory-related codes
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <164603074537.20094.1732342403585879912-0@git.sr.ht>
+ <CAFEAcA8hWy3rfGtYkyQjJSGgsX448_t01xmM4cwyCO0op4h1xw@mail.gmail.com>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA8hWy3rfGtYkyQjJSGgsX448_t01xmM4cwyCO0op4h1xw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::52e
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
+ envelope-from=ubzeme@gmail.com; helo=mail-pg1-x52e.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,39 +126,72 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Shan Gavin <shan.gavin@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
+Cc: Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YuEQDu//53ay
+X-TUID: HUetE+Jm1ZL3
 
-  Hi,
+For the dirty-tracking part in my patch series, the major difference 
+between this patch and Alex's patch is that the dirty-tracking logic in 
+my patch will only mark the page being written dirty instead of marking 
+the whole memory slot dirty, and will only restore the write permission 
+to the page being written instead of the whole memory slot.
 
-> > Unless it architecturally wrong thing i.e. (node size less than 128Mb)
-> > ,in which case limiting it in QEMU would be justified, I'd prefer
-> > firmware being fixed or it reporting more useful for user error message.
-> 
-> [include EDK2 developers]
-> 
-> I don't think 128MB node memory size is architecturally required.
-> I also thought EDK2 would be better place to provide a precise error
-> mesage and discussed it through with EDK2 developers. Lets see what
-> are their thoughts this time.
+When memory regions overlap, "region_add" in memory listeners may be 
+called with structure MemoryRegionSection containing non-zero 
+offset_within_region.  This makes the start address of memory slots 
+(member "start" in struct hvf_slot) not the same as the start address of 
+the memory region. However, the dirty-tracking logics in both 
+target/i386/hvf and Alex's patch assume that they are the same.
 
-Useful error reporting that early in the firmware initialization is a
-rather hard problem, it's much easier for qemu to catch those problems
-and print a useful error message.
+Currently, there is a bug in the dirty-tracking logic in 
+target/i386/hvf. I modified codes in target/i386/hvf to fix the problem.
 
-Fixing the firmware would be possible.  The firmware simply uses the
-memory of the first numa note in the early initialization phase, which
-could be changed to look for additional numa nodes.  It's IMHO simply
-not worth the trouble though.  numa nodes with less memory than 128M
-simply doesn't happen in practice, except when QE does questionable
-scaleability testing (scale up the number of numa nodes without also
-scaling up the total amount of memory, ending up with rather tiny
-numa nodes and a configuration nobody actually uses in practice).
+On the x86 platform, Ubuntu ISO boot menu did not show properly.
 
-take care,
-  Gerd
+The link of the bug is https://bugs.launchpad.net/qemu/+bug/1827005
 
+The modified codes use the new function, "hvf_access_memory",
+introduced in this patch series to handle dirty-tracking.
+
+Following is the dirty-tracking logic in original codes in
+target/i386/hvf.
+
+     if (write && slot) {
+         if (slot->flags & HVF_SLOT_LOG) {
+             memory_region_set_dirty(slot->region, gpa - slot->start, 1);
+             hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
+                           HV_MEMORY_READ | HV_MEMORY_WRITE);
+         }
+     }
+
+The problem of the above code is:
+
+'memory_region_set_dirty' sets only the page that is being written 
+dirty, but hv_vm_protect makes the whole memory slot writable.
+
+Any write to the memory slot excluding the previous written page
+and before the next call to "log_sync" in memory listener
+will not be correctly tracked.
+
+
+On Mon, Feb 28, 2022 at 10:11 PM Peter Maydell 
+<peter.maydell@linaro.org> wrote:
+>
+> On Mon, 28 Feb 2022 at 14:07, ~ubzeme <ubzeme@git.sr.ht> wrote:
+> >
+> > I recently bought a Mac with M1 Pro chip, and use QEMU to setup a Linux
+> > virtual machine.  QEMU crashed when I started a VM with HVF accelerator
+> > enabled and with the device, bochs-display, added.
+> >
+> > After digging into the source code, I found that dirty-tracking in HVF
+> > did not work properly, which made QEMU crashed. Therefore I made this
+> > series of patches to fix the problem.
+>
+> How does this series compare with Alex's patch to enable
+> hvf dirty tracking for target/arm/hvf ?
+> https://patchew.org/QEMU/20220203142320.33022-1-agraf@csgraf.de/
+>
+> thanks
+> -- PMM

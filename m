@@ -1,391 +1,1023 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp209969lfo;
-        Tue, 1 Mar 2022 14:00:28 -0800 (PST)
-X-Received: by 2002:a17:902:db0f:b0:151:5fbb:5f4b with SMTP id m15-20020a170902db0f00b001515fbb5f4bmr14186321plx.36.1646172028443;
-        Tue, 01 Mar 2022 14:00:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646172028; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp289028lfo;
+        Tue, 1 Mar 2022 16:25:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzIFCAiMnW3FvK2TTz1/n8GYxHSLowqo79JxfwHYEH9rt4WqDKt89r9nq/VVxFa7fuFQaQR
+X-Received: by 2002:a81:410c:0:b0:2d0:c3ba:c799 with SMTP id o12-20020a81410c000000b002d0c3bac799mr27791857ywa.193.1646180700336;
+        Tue, 01 Mar 2022 16:25:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646180700; cv=none;
         d=google.com; s=arc-20160816;
-        b=YhfIA7SXumqH097x2xr1Z20g4tIhsyGL9UcXYNo3D94SluzAAH1gDbInqPqjMh4cgH
-         2c7hfJsQD0aVlXnuvZhNjKBbaRuVu/x5jKhKggK0fTunPRTTe4fiygnuw4/q6mbZ/8S7
-         HLv0NClr6ySEKGDamiiNZb9PtaJkJEHNqOFw9tpY9wupuAKATDvziq624SbNGXGvnnn+
-         U3nEbkmZEeLacskBmAH0vfT7alSjbEEeyG2EP86RO40Y7MuKV/dMadjmB+5TR6C7wXE7
-         BToK7lVBPFidso4HUUxCNMtcGCyGuroY/ZS+JFlXXJ1TkgHDjbeOO7ql0rpKsmbTvhjU
-         nQJw==
+        b=saV8zhUcnaIu186hsVlxysIL1mITlk/L4O9Otx8fa/IyeKAxjIjV27mApoZIBx0bC/
+         Yr56kvB6ZyzYnLQyTuWxPgUzC8nmZAa2qa0J+7G8gjkxcnwrOenIrILAW/VOh3DYLDv/
+         a57UID0xHJxJ88GFEb9JGTXbQ389obN+nW/RUiYNIHX8H8p1M6h7NKEeWqxgbJ4cn2c6
+         6k83ZPRws9L6jMijfWzp+w75DGiPpRGZxVUAY2dDn19AUqBd1+Uv/9qaCef8oAJPJr/H
+         I8pqW6Wson6Ort9gWlGVGaurxFaZXxclRhDKggnZB9cEC4ddSlqqXknSANW+oQYp0787
+         Mx3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CqWbvRTBAjyoO5+H2KGfyQ/yLbqHW7L7/zJop3eBZiU=;
-        b=gfRedcFRbdBAazD2AhCM1f9bHzXn3oZxPyfgzSdBXGI85RZtmsjeQFqieIWNxaNpY6
-         DAF58acE7eYfJ+cGbduPKhVlKcGZ1ZvUad7/x8X6lGHf6R1RKTrSlXGOExrsAOBSE5fn
-         qZmLOUfSgu0qUK2V2IF5x3sanWH1JIjvEnnQWeesHAl0vMgksukLbSmVJxAADp1oaP4l
-         hm25qY8eTy33b9XY0N0qWiEdyDVew3BvsbsszZLr2+kvO4EQHKJy4elAAtOfMeQ11Kgs
-         fY8Mv86mtMFPw9Xy5B70NO6rPId/o3MEIGzpHY7UtIMAmoDyHpvb0pFJ8p9W32uYOV92
-         iEXQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :from:subject:references:mime-version:message-id:in-reply-to:date
+         :dkim-signature;
+        bh=Rsi2sb3KIuB7mW1QTXlIf0TcyFFB1RqtDSydPOsqiIQ=;
+        b=l8RXhMrDtoVvzEqg9MRC4RvBNC5NGYm9v8JrWwYNbNxngeUplPEMq83upgq8uXdGfU
+         KgER7GMnY9Oy+LTOlDvMBghVSd4wwp3VtlOStT2mQ4OQIvuuS2BVv4GiwxrOM6KWwfAS
+         AN23HqtBiMkH7QwOwUrhOvN6WDS1yD6CKf3nTVJ73Vud9Mj5ypY2xVASX5tcPPcbvuYE
+         6UqEIwvok/UqD2a0kYukcb6Ba9g2ZNb3o4WETFUyWu7yCafY8BzjZ/lZ9Z7NzEbfxjEo
+         DTatfsVtCIYlKZF5WXTrYU6lHxTg1PEGKJPcj9iwg7oW6rf5JRRFLSOsRi/pIiOlaXcB
+         L2+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P6tHwF2v;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id m18-20020a170902bb9200b00151615233basor3624140pls.62.2022.03.01.14.00.28
+       dkim=pass header.i=@google.com header.s=20210112 header.b=MYLtH8L+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q13-20020a25b00d000000b00619f0251b4csi12721249ybf.681.2022.03.01.16.25.00
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 01 Mar 2022 14:00:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 01 Mar 2022 16:25:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P6tHwF2v;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=CqWbvRTBAjyoO5+H2KGfyQ/yLbqHW7L7/zJop3eBZiU=;
-        b=P6tHwF2vCGgnCi7lGTV9pMrRViWdXTKfVkldxD6QdF0F3J2FK8wjn8hfwBNP0dU9DQ
-         8l0Se+tcH/P2siFNOIb676b/KuZmV/wppPp9TrhNBFUl8tRdqadvON4SaZoxYGcHjOlx
-         SYcDPHBy7SAssxfWx8p+hLHq4Q22bEPUSZ5wNeRHvFLmx4nI7PImeKgwMPalPufRX9xf
-         Ua/7fBf3RgQo+1VsnQcuzjc7zvB86/ga6ZMwMKQMoL78Ipxa0cCzAy2mtkNeSfdcmED6
-         vsH7K9s5Cy6K4Lb+c/RYaq8rcCJYtclSGAlJCgApXktWPWrIs/PQA8RJnuapVkctwDR3
-         k1Aw==
+       dkim=pass header.i=@google.com header.s=20210112 header.b=MYLtH8L+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:43778 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nPCnb-0001MH-N3
+	for alex.bennee@linaro.org; Tue, 01 Mar 2022 19:24:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37106)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <3DbkeYgYKCBIB0BCA9y66y3w.u648w4C-s94565y5C.69y@flex--titusr.bounces.google.com>)
+ id 1nPCmQ-0008Tk-GX
+ for qemu-arm@nongnu.org; Tue, 01 Mar 2022 19:23:47 -0500
+Received: from [2607:f8b0:4864:20::b4a] (port=34362
+ helo=mail-yb1-xb4a.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3DbkeYgYKCBIB0BCA9y66y3w.u648w4C-s94565y5C.69y@flex--titusr.bounces.google.com>)
+ id 1nPCmN-0003Q6-AZ
+ for qemu-arm@nongnu.org; Tue, 01 Mar 2022 19:23:46 -0500
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ w6-20020a25c706000000b006287a0164f2so60765ybe.1
+ for <qemu-arm@nongnu.org>; Tue, 01 Mar 2022 16:23:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc:content-transfer-encoding;
+ bh=Rsi2sb3KIuB7mW1QTXlIf0TcyFFB1RqtDSydPOsqiIQ=;
+ b=MYLtH8L+TmuPscz3h1h2wAvTfAyOUWNzW0tDd45riDGHcAc3pJq1hXjXx5zTc12HY2
+ gFs4Vg2CcHeJTIqYJarKF+i0IMod/o60knujqcVbvkzBYaMRArToFrsWqvlg+YGojRBW
+ 3HQX+h3uyeXXuKWUkmtK9OdhUCPncEFPs3lpM85MFdlemqguzAmcitfCh/IupaWWjtNe
+ Ptw+pWiJTm+5jOwMe8iY0nRkg9doSinMMLFDzP9uDaoV0HRpLtZVC5p0gwgqS+gzzXM9
+ oBXzQQ6i0UXWwAzLoDJU2HI+gcaDXqzwR2Kq2ERc0YSOs/wPoLEUsRapVUZyALqENzRW
+ 9u2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=CqWbvRTBAjyoO5+H2KGfyQ/yLbqHW7L7/zJop3eBZiU=;
-        b=QIrJvZkZxtdAVMwHYKc+eVs4ORbss6DcWbww32xP1KWy2Hh9mvAAegYnv1DdbAIOgm
-         IU2iI1kROs43h8lKdvE88OLg2tVZXqcH8Rrws3ZmjnJGsdiQhFHCDRIZugiN3xZe8cec
-         NNSKVopt2BV0yyR0dHm77+nmO/IMpYJeYPOqhahkKWRUjIp0oZ/tFI01NaibCduj/sXU
-         WtTYRfyXo+5wa+fZOuZYjMuSP0nr2GcFXrWT5qiIZzgprw+PXxdNcePWTNJFbWVBTjhl
-         1TjDE67Oo4RQPFSfsLCDIPiuwxnPZDkXDLiNXLS4yteB310wviUZsGDaTXSHV3WXzrz4
-         JiZQ==
-X-Gm-Message-State: AOAM5335OMqZ2KyV+9WqzaiiHlkmjcCOb+m8ECbnRDPAxAxq3BhpsqjG
-	giY+YwH7ZVDnMTnslEEQFxmX9qhb
-X-Google-Smtp-Source: ABdhPJy22u83AbdnlKUpKGw9oeMll0lfirmY2wz615lBp85fuwuxl5TWMbbXFAQwzqsg59LBqjGJzQ==
-X-Received: by 2002:a17:902:cec7:b0:151:9615:5ab0 with SMTP id d7-20020a170902cec700b0015196155ab0mr217949plg.145.1646172027892;
-        Tue, 01 Mar 2022 14:00:27 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (cpe-50-113-46-110.hawaii.res.rr.com. [50.113.46.110])
-        by smtp.gmail.com with ESMTPSA id m4-20020a17090a7f8400b001bef3fc3938sm284392pjl.49.2022.03.01.14.00.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Mar 2022 14:00:27 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v4 16/18] target/arm: Implement FEAT_LPA2
-Date: Tue,  1 Mar 2022 11:59:56 -1000
-Message-Id: <20220301215958.157011-17-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220301215958.157011-1-richard.henderson@linaro.org>
-References: <20220301215958.157011-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: YCPMeYngeDrA
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc:content-transfer-encoding;
+ bh=Rsi2sb3KIuB7mW1QTXlIf0TcyFFB1RqtDSydPOsqiIQ=;
+ b=NtygKvKTDwPAlTbiufrpACOiv8JSY05n84Pcv8ufWjpAFReUeq47SsPIsKL35pCPnO
+ bw3lHRqLGjWBpZNDJua0Y3txVFHoIricl4IjYG3VEY5DV4WHPlguhSgbtp3TukkUnMiC
+ 7f4zgTjPzXEMxfiGvVTMRb4CFjqERzc12eRiLfJzF+1nqjL0xfwe4TIoqAb6PR9p83PQ
+ GWq8nafLr+5R/tZ2/R0+ReqqPC0fWOq76hYV8XFdadixaDUWVsR/Npmp8q09xmLWGnkZ
+ fUXOTyOY18lEp57GU70UjKMzCjSckF0qbC6NkCUbyXJH6dpi8BtVng0KsZ8LKcorlBZA
+ oSLg==
+X-Gm-Message-State: AOAM533ScnBio7mH/+C1EBK7MdSPFH4lxBDo8pSgCdgVYF7WoFiyPhhe
+ hkpGHH1JGJ9jgJnBHjeiopHxxAVd0es=
+X-Received: from titusr.svl.corp.google.com
+ ([2620:15c:2a3:201:3a0a:5449:c096:dc84])
+ (user=titusr job=sendgmr) by 2002:a81:5710:0:b0:2d6:b987:d358 with SMTP id
+ l16-20020a815710000000b002d6b987d358mr27220346ywb.6.1646180621998; Tue, 01
+ Mar 2022 16:23:41 -0800 (PST)
+Date: Tue,  1 Mar 2022 16:23:07 -0800
+In-Reply-To: <20220302002307.1895616-1-titusr@google.com>
+Message-Id: <20220302002307.1895616-10-titusr@google.com>
+Mime-Version: 1.0
+References: <20220302002307.1895616-1-titusr@google.com>
+X-Mailer: git-send-email 2.35.1.616.g0bdcbb4464-goog
+Subject: [PATCH v2 9/9] hw/sensor: rename isl_pmbus to isl_pmbus_vr
+From: Titus Rwantare <titusr@google.com>
+To: Corey Minyard <minyard@acm.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
+ wuhaotsh@google.com, venture@google.com, Titus Rwantare <titusr@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b4a
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3DbkeYgYKCBIB0BCA9y66y3w.u648w4C-s94565y5C.69y@flex--titusr.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
+X-Spam_score_int: -81
+X-Spam_score: -8.2
+X-Spam_bar: --------
+X-Spam_report: (-8.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gVy1feDyam6M
 
-This feature widens physical addresses (and intermediate physical
-addresses for 2-stage translation) from 48 to 52 bits, when using
-4k or 16k pages.
-
-This introduces the DS bit to TCR_ELx, which is RES0 unless the
-page size is enabled and supports LPA2, resulting in the effective
-value of DS for a given table walk.  The DS bit changes the format
-of the page table descriptor slightly, moving the PS field out to
-TCR so that all pages have the same sharability and repurposing
-those bits of the page table descriptor for the highest bits of
-the output address.
-
-Do not yet enable FEAT_LPA2; we need extra plumbing to avoid
-tickling an old kernel bug.
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Titus Rwantare <titusr@google.com>
 ---
-v2: Check DS in tlbi_aa64_get_range.
-    Check TGRAN4_2 and TGRAN16_2.
-v4: Do not enable the feature yet.
----
- docs/system/arm/emulation.rst |   1 +
- target/arm/cpu.h              |  22 ++++++++
- target/arm/internals.h        |   2 +
- target/arm/helper.c           | 102 +++++++++++++++++++++++++++++-----
- 4 files changed, 112 insertions(+), 15 deletions(-)
+ MAINTAINERS                                   |   6 +-
+ hw/arm/Kconfig                                |   2 +-
+ hw/sensor/Kconfig                             |   2 +-
+ hw/sensor/{isl_pmbus.c =3D> isl_pmbus_vr.c}     |  77 ++---
+ hw/sensor/meson.build                         |   2 +-
+ .../hw/sensor/{isl_pmbus.h =3D> isl_pmbus_vr.h} |   4 +-
+ .../{isl_pmbus-test.c =3D> isl_pmbus_vr-test.c} | 263 +++++++++---------
+ tests/qtest/meson.build                       |   2 +-
+ 8 files changed, 180 insertions(+), 178 deletions(-)
+ rename hw/sensor/{isl_pmbus.c =3D> isl_pmbus_vr.c} (80%)
+ rename include/hw/sensor/{isl_pmbus.h =3D> isl_pmbus_vr.h} (96%)
+ rename tests/qtest/{isl_pmbus-test.c =3D> isl_pmbus_vr-test.c} (55%)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 0053ddce20..520fd39071 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -25,6 +25,7 @@ the following architecture extensions:
- - FEAT_JSCVT (JavaScript conversion instructions)
- - FEAT_LOR (Limited ordering regions)
- - FEAT_LPA (Large Physical Address space)
-+- FEAT_LPA2 (Large Physical and virtual Address space v2)
- - FEAT_LRCPC (Load-acquire RCpc instructions)
- - FEAT_LRCPC2 (Load-acquire RCpc instructions v2)
- - FEAT_LSE (Large System Extensions)
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c52d56f669..24d9fff170 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -4284,6 +4284,28 @@ static inline bool isar_feature_aa64_i8mm(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, I8MM) != 0;
- }
- 
-+static inline bool isar_feature_aa64_tgran4_lpa2(const ARMISARegisters *id)
-+{
-+    return FIELD_SEX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4) >= 1;
-+}
-+
-+static inline bool isar_feature_aa64_tgran4_2_lpa2(const ARMISARegisters *id)
-+{
-+    unsigned t = FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4_2);
-+    return t >= 3 || (t == 0 && isar_feature_aa64_tgran4_lpa2(id));
-+}
-+
-+static inline bool isar_feature_aa64_tgran16_lpa2(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN16) >= 2;
-+}
-+
-+static inline bool isar_feature_aa64_tgran16_2_lpa2(const ARMISARegisters *id)
-+{
-+    unsigned t = FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN16_2);
-+    return t >= 3 || (t == 0 && isar_feature_aa64_tgran16_lpa2(id));
-+}
-+
- static inline bool isar_feature_aa64_ccidx(const ARMISARegisters *id)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3df8e938e0..364a844045 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3140,13 +3140,13 @@ M: Titus Rwantare <titusr@google.com>
+ S: Maintained
+ F: hw/i2c/pmbus_device.c
+ F: hw/sensor/adm1272.c
+-F: hw/sensor/isl_pmbus.c
++F: hw/sensor/isl_pmbus_vr.c
+ F: hw/sensor/max34451.c
+ F: include/hw/i2c/pmbus_device.h
+-F: include/hw/sensor/isl_pmbus.h
++F: include/hw/sensor/isl_pmbus_vr.h
+ F: tests/qtest/adm1272-test.c
+ F: tests/qtest/max34451-test.c
+-F: tests/qtest/isl_pmbus-test.c
++F: tests/qtest/isl_pmbus_vr-test.c
+=20
+ Firmware schema specifications
+ M: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 8047ad6378..97f3b38019 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -400,7 +400,7 @@ config NPCM7XX
+     select SMBUS
+     select AT24C  # EEPROM
+     select MAX34451
+-    select ISL_PMBUS
++    select ISL_PMBUS_VR
+     select PL310  # cache controller
+     select PMBUS
+     select SERIAL
+diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
+index 70fb335789..a834d2f814 100644
+--- a/hw/sensor/Kconfig
++++ b/hw/sensor/Kconfig
+@@ -31,7 +31,7 @@ config LSM303DLHC_MAG
+     depends on I2C
+     default y if I2C_DEVICES
+=20
+-config ISL_PMBUS
++config ISL_PMBUS_VR
+     bool
+     depends on I2C
+=20
+diff --git a/hw/sensor/isl_pmbus.c b/hw/sensor/isl_pmbus_vr.c
+similarity index 80%
+rename from hw/sensor/isl_pmbus.c
+rename to hw/sensor/isl_pmbus_vr.c
+index e3b42b119e..df7c003ea6 100644
+--- a/hw/sensor/isl_pmbus.c
++++ b/hw/sensor/isl_pmbus_vr.c
+@@ -7,13 +7,13 @@
+  */
+=20
+ #include "qemu/osdep.h"
+-#include "hw/sensor/isl_pmbus.h"
++#include "hw/sensor/isl_pmbus_vr.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/visitor.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+=20
+-static uint8_t isl_pmbus_read_byte(PMBusDevice *pmdev)
++static uint8_t isl_pmbus_vr_read_byte(PMBusDevice *pmdev)
  {
-     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, CCIDX) != 0;
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 00af41d792..a34be2e459 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1056,6 +1056,7 @@ static inline uint32_t aarch64_pstate_valid_mask(const ARMISARegisters *id)
- typedef struct ARMVAParameters {
-     unsigned tsz    : 8;
-     unsigned ps     : 3;
-+    unsigned sh     : 2;
-     unsigned select : 1;
-     bool tbi        : 1;
-     bool epd        : 1;
-@@ -1063,6 +1064,7 @@ typedef struct ARMVAParameters {
-     bool using16k   : 1;
-     bool using64k   : 1;
-     bool tsz_oob    : 1;  /* tsz has been clamped to legal range */
-+    bool ds         : 1;
- } ARMVAParameters;
- 
- ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 3a7f5cf6f0..088956eecf 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4546,6 +4546,14 @@ static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
-     } else {
-         ret.base = extract64(value, 0, 37);
+     qemu_log_mask(LOG_GUEST_ERROR,
+                   "%s: reading from unsupported register: 0x%02x\n",
+@@ -21,7 +21,7 @@ static uint8_t isl_pmbus_read_byte(PMBusDevice *pmdev)
+     return 0xFF;
+ }
+=20
+-static int isl_pmbus_write_data(PMBusDevice *pmdev, const uint8_t *buf,
++static int isl_pmbus_vr_write_data(PMBusDevice *pmdev, const uint8_t *buf,
+                               uint8_t len)
+ {
+     qemu_log_mask(LOG_GUEST_ERROR,
+@@ -31,13 +31,13 @@ static int isl_pmbus_write_data(PMBusDevice *pmdev, con=
+st uint8_t *buf,
+ }
+=20
+ /* TODO: Implement coefficients support in pmbus_device.c for qmp */
+-static void isl_pmbus_get(Object *obj, Visitor *v, const char *name,
++static void isl_pmbus_vr_get(Object *obj, Visitor *v, const char *name,
+                                      void *opaque, Error **errp)
+ {
+     visit_type_uint16(v, name, (uint16_t *)opaque, errp);
+ }
+=20
+-static void isl_pmbus_set(Object *obj, Visitor *v, const char *name,
++static void isl_pmbus_vr_set(Object *obj, Visitor *v, const char *name,
+                                  void *opaque, Error **errp)
+ {
+     PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
+@@ -51,7 +51,7 @@ static void isl_pmbus_set(Object *obj, Visitor *v, const =
+char *name,
+     pmbus_check_limits(pmdev);
+ }
+=20
+-static void isl_pmbus_exit_reset(Object *obj)
++static void isl_pmbus_vr_exit_reset(Object *obj)
+ {
+     PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
+=20
+@@ -92,7 +92,7 @@ static void isl_pmbus_exit_reset(Object *obj)
+ /* The raa228000 uses different direct mode coefficents from most isl devi=
+ces */
+ static void raa228000_exit_reset(Object *obj)
+ {
+-    isl_pmbus_exit_reset(obj);
++    isl_pmbus_vr_exit_reset(obj);
+=20
+     PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
+=20
+@@ -107,70 +107,70 @@ static void raa228000_exit_reset(Object *obj)
+     pmdev->pages[0].read_temperature_3 =3D 0;
+ }
+=20
+-static void isl_pmbus_add_props(Object *obj, uint64_t *flags, uint8_t page=
+s)
++static void isl_pmbus_vr_add_props(Object *obj, uint64_t *flags, uint8_t p=
+ages)
+ {
+     PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
+     for (int i =3D 0; i < pages; i++) {
+         if (flags[i] & PB_HAS_VIN) {
+             object_property_add(obj, "vin[*]", "uint16",
+-                                isl_pmbus_get,
+-                                isl_pmbus_set,
++                                isl_pmbus_vr_get,
++                                isl_pmbus_vr_set,
+                                 NULL, &pmdev->pages[i].read_vin);
+         }
+=20
+         if (flags[i] & PB_HAS_VOUT) {
+             object_property_add(obj, "vout[*]", "uint16",
+-                                isl_pmbus_get,
+-                                isl_pmbus_set,
++                                isl_pmbus_vr_get,
++                                isl_pmbus_vr_set,
+                                 NULL, &pmdev->pages[i].read_vout);
+         }
+=20
+         if (flags[i] & PB_HAS_IIN) {
+             object_property_add(obj, "iin[*]", "uint16",
+-                                isl_pmbus_get,
+-                                isl_pmbus_set,
++                                isl_pmbus_vr_get,
++                                isl_pmbus_vr_set,
+                                 NULL, &pmdev->pages[i].read_iin);
+         }
+=20
+         if (flags[i] & PB_HAS_IOUT) {
+             object_property_add(obj, "iout[*]", "uint16",
+-                                isl_pmbus_get,
+-                                isl_pmbus_set,
++                                isl_pmbus_vr_get,
++                                isl_pmbus_vr_set,
+                                 NULL, &pmdev->pages[i].read_iout);
+         }
+=20
+         if (flags[i] & PB_HAS_PIN) {
+             object_property_add(obj, "pin[*]", "uint16",
+-                                isl_pmbus_get,
+-                                isl_pmbus_set,
++                                isl_pmbus_vr_get,
++                                isl_pmbus_vr_set,
+                                 NULL, &pmdev->pages[i].read_pin);
+         }
+=20
+         if (flags[i] & PB_HAS_POUT) {
+             object_property_add(obj, "pout[*]", "uint16",
+-                                isl_pmbus_get,
+-                                isl_pmbus_set,
++                                isl_pmbus_vr_get,
++                                isl_pmbus_vr_set,
+                                 NULL, &pmdev->pages[i].read_pout);
+         }
+=20
+         if (flags[i] & PB_HAS_TEMPERATURE) {
+             object_property_add(obj, "temp1[*]", "uint16",
+-                                isl_pmbus_get,
+-                                isl_pmbus_set,
++                                isl_pmbus_vr_get,
++                                isl_pmbus_vr_set,
+                                 NULL, &pmdev->pages[i].read_temperature_1)=
+;
+         }
+=20
+         if (flags[i] & PB_HAS_TEMP2) {
+             object_property_add(obj, "temp2[*]", "uint16",
+-                                isl_pmbus_get,
+-                                isl_pmbus_set,
++                                isl_pmbus_vr_get,
++                                isl_pmbus_vr_set,
+                                 NULL, &pmdev->pages[i].read_temperature_2)=
+;
+         }
+=20
+         if (flags[i] & PB_HAS_TEMP3) {
+             object_property_add(obj, "temp3[*]", "uint16",
+-                                isl_pmbus_get,
+-                                isl_pmbus_set,
++                                isl_pmbus_vr_get,
++                                isl_pmbus_vr_set,
+                                 NULL, &pmdev->pages[i].read_temperature_3)=
+;
+         }
      }
-+    if (param.ds) {
-+        /*
-+         * With DS=1, BaseADDR is always shifted 16 so that it is able
-+         * to address all 52 va bits.  The input address is perforce
-+         * aligned on a 64k boundary regardless of translation granule.
-+         */
-+        page_shift = 16;
-+    }
-     ret.base <<= page_shift;
- 
+@@ -192,7 +192,7 @@ static void raa22xx_init(Object *obj)
+=20
+     pmbus_page_config(pmdev, 0, flags[0]);
+     pmbus_page_config(pmdev, 1, flags[1]);
+-    isl_pmbus_add_props(obj, flags, 2);
++    isl_pmbus_vr_add_props(obj, flags, 2);
+ }
+=20
+ static void raa228000_init(Object *obj)
+@@ -206,14 +206,15 @@ static void raa228000_init(Object *obj)
+                PB_HAS_TEMP2 | PB_HAS_TEMP3 | PB_HAS_STATUS_MFR_SPECIFIC;
+=20
+     pmbus_page_config(pmdev, 0, flags[0]);
+-    isl_pmbus_add_props(obj, flags, 1);
++    isl_pmbus_vr_add_props(obj, flags, 1);
+ }
+=20
+-static void isl_pmbus_class_init(ObjectClass *klass, void *data, uint8_t p=
+ages)
++static void isl_pmbus_vr_class_init(ObjectClass *klass, void *data,
++                                    uint8_t pages)
+ {
+     PMBusDeviceClass *k =3D PMBUS_DEVICE_CLASS(klass);
+-    k->write_data =3D isl_pmbus_write_data;
+-    k->receive_byte =3D isl_pmbus_read_byte;
++    k->write_data =3D isl_pmbus_vr_write_data;
++    k->receive_byte =3D isl_pmbus_vr_read_byte;
+     k->device_num_pages =3D pages;
+ }
+=20
+@@ -222,8 +223,8 @@ static void isl69260_class_init(ObjectClass *klass, voi=
+d *data)
+     ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+     dc->desc =3D "Renesas ISL69260 Digital Multiphase Voltage Regulator";
+-    rc->phases.exit =3D isl_pmbus_exit_reset;
+-    isl_pmbus_class_init(klass, data, 2);
++    rc->phases.exit =3D isl_pmbus_vr_exit_reset;
++    isl_pmbus_vr_class_init(klass, data, 2);
+ }
+=20
+ static void raa228000_class_init(ObjectClass *klass, void *data)
+@@ -232,7 +233,7 @@ static void raa228000_class_init(ObjectClass *klass, vo=
+id *data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+     dc->desc =3D "Renesas 228000 Digital Multiphase Voltage Regulator";
+     rc->phases.exit =3D raa228000_exit_reset;
+-    isl_pmbus_class_init(klass, data, 1);
++    isl_pmbus_vr_class_init(klass, data, 1);
+ }
+=20
+ static void raa229004_class_init(ObjectClass *klass, void *data)
+@@ -240,8 +241,8 @@ static void raa229004_class_init(ObjectClass *klass, vo=
+id *data)
+     ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+     dc->desc =3D "Renesas 229004 Digital Multiphase Voltage Regulator";
+-    rc->phases.exit =3D isl_pmbus_exit_reset;
+-    isl_pmbus_class_init(klass, data, 2);
++    rc->phases.exit =3D isl_pmbus_vr_exit_reset;
++    isl_pmbus_vr_class_init(klass, data, 2);
+ }
+=20
+ static const TypeInfo isl69260_info =3D {
+@@ -268,11 +269,11 @@ static const TypeInfo raa228000_info =3D {
+     .class_init =3D raa228000_class_init,
+ };
+=20
+-static void isl_pmbus_register_types(void)
++static void isl_pmbus_vr_register_types(void)
+ {
+     type_register_static(&isl69260_info);
+     type_register_static(&raa228000_info);
+     type_register_static(&raa229004_info);
+ }
+=20
+-type_init(isl_pmbus_register_types)
++type_init(isl_pmbus_vr_register_types)
+diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
+index 2e82991ff1..12b6992bc8 100644
+--- a/hw/sensor/meson.build
++++ b/hw/sensor/meson.build
+@@ -5,4 +5,4 @@ softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc1=
+41x.c'))
+ softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
+ softmmu_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
+ softmmu_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_m=
+ag.c'))
+-softmmu_ss.add(when: 'CONFIG_ISL_PMBUS', if_true: files('isl_pmbus.c'))
++softmmu_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true: files('isl_pmbus_vr.c=
+'))
+diff --git a/include/hw/sensor/isl_pmbus.h b/include/hw/sensor/isl_pmbus_vr=
+.h
+similarity index 96%
+rename from include/hw/sensor/isl_pmbus.h
+rename to include/hw/sensor/isl_pmbus_vr.h
+index 7ead1dc4a2..3e47ff7e48 100644
+--- a/include/hw/sensor/isl_pmbus.h
++++ b/include/hw/sensor/isl_pmbus_vr.h
+@@ -6,8 +6,8 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+=20
+-#ifndef HW_MISC_ISL_PMBUS_H
+-#define HW_MISC_ISL_PMBUS_H
++#ifndef HW_MISC_ISL_PMBUS_VR_H
++#define HW_MISC_ISL_PMBUS_VR_H
+=20
+ #include "hw/i2c/pmbus_device.h"
+ #include "qom/object.h"
+diff --git a/tests/qtest/isl_pmbus-test.c b/tests/qtest/isl_pmbus_vr-test.c
+similarity index 55%
+rename from tests/qtest/isl_pmbus-test.c
+rename to tests/qtest/isl_pmbus_vr-test.c
+index ea62cd4e07..5553ea410a 100644
+--- a/tests/qtest/isl_pmbus-test.c
++++ b/tests/qtest/isl_pmbus_vr-test.c
+@@ -17,7 +17,7 @@
+ #include "qemu/osdep.h"
+ #include <math.h>
+ #include "hw/i2c/pmbus_device.h"
+-#include "hw/sensor/isl_pmbus.h"
++#include "hw/sensor/isl_pmbus_vr.h"
+ #include "libqtest-single.h"
+ #include "libqos/qgraph.h"
+ #include "libqos/i2c.h"
+@@ -25,10 +25,10 @@
+ #include "qapi/qmp/qnum.h"
+ #include "qemu/bitops.h"
+=20
+-#define TEST_ID "isl_pmbus-test"
++#define TEST_ID "isl_pmbus_vr-test"
+ #define TEST_ADDR (0x43)
+=20
+-static uint16_t qmp_isl_pmbus_get(const char *id, const char *property)
++static uint16_t qmp_isl_pmbus_vr_get(const char *id, const char *property)
+ {
+     QDict *response;
+     uint64_t ret;
+@@ -41,7 +41,7 @@ static uint16_t qmp_isl_pmbus_get(const char *id, const c=
+har *property)
      return ret;
-@@ -11081,8 +11089,13 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
-     const int grainsize = stride + 3;
-     int startsizecheck;
- 
--    /* Negative levels are never allowed.  */
--    if (level < 0) {
-+    /*
-+     * Negative levels are usually not allowed...
-+     * Except for FEAT_LPA2, 4k page table, 52-bit address space, which
-+     * begins with level -1.  Note that previous feature tests will have
-+     * eliminated this combination if it is not enabled.
-+     */
-+    if (level < (inputsize == 52 && stride == 9 ? -1 : 0)) {
-         return false;
-     }
- 
-@@ -11223,8 +11236,9 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-                                    ARMMMUIdx mmu_idx, bool data)
- {
-     uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
--    bool epd, hpd, using16k, using64k, tsz_oob;
--    int select, tsz, tbi, max_tsz, min_tsz, ps;
-+    bool epd, hpd, using16k, using64k, tsz_oob, ds;
-+    int select, tsz, tbi, max_tsz, min_tsz, ps, sh;
-+    ARMCPU *cpu = env_archcpu(env);
- 
-     if (!regime_has_2_ranges(mmu_idx)) {
-         select = 0;
-@@ -11238,7 +11252,9 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-             hpd = extract32(tcr, 24, 1);
-         }
-         epd = false;
-+        sh = extract32(tcr, 12, 2);
-         ps = extract32(tcr, 16, 3);
-+        ds = extract64(tcr, 32, 1);
-     } else {
-         /*
-          * Bit 55 is always between the two regions, and is canonical for
-@@ -11248,6 +11264,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         if (!select) {
-             tsz = extract32(tcr, 0, 6);
-             epd = extract32(tcr, 7, 1);
-+            sh = extract32(tcr, 12, 2);
-             using64k = extract32(tcr, 14, 1);
-             using16k = extract32(tcr, 15, 1);
-             hpd = extract64(tcr, 41, 1);
-@@ -11257,24 +11274,51 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-             using64k = tg == 3;
-             tsz = extract32(tcr, 16, 6);
-             epd = extract32(tcr, 23, 1);
-+            sh = extract32(tcr, 28, 2);
-             hpd = extract64(tcr, 42, 1);
-         }
-         ps = extract64(tcr, 32, 3);
-+        ds = extract64(tcr, 59, 1);
-     }
- 
--    if (cpu_isar_feature(aa64_st, env_archcpu(env))) {
-+    if (cpu_isar_feature(aa64_st, cpu)) {
-         max_tsz = 48 - using64k;
-     } else {
-         max_tsz = 39;
-     }
- 
-+    /*
-+     * DS is RES0 unless FEAT_LPA2 is supported for the given page size;
-+     * adjust the effective value of DS, as documented.
-+     */
-     min_tsz = 16;
-     if (using64k) {
--        if (cpu_isar_feature(aa64_lva, env_archcpu(env))) {
-+        if (cpu_isar_feature(aa64_lva, cpu)) {
-+            min_tsz = 12;
-+        }
-+        ds = false;
-+    } else if (ds) {
-+        switch (mmu_idx) {
-+        case ARMMMUIdx_Stage2:
-+        case ARMMMUIdx_Stage2_S:
-+            if (using16k) {
-+                ds = cpu_isar_feature(aa64_tgran16_2_lpa2, cpu);
-+            } else {
-+                ds = cpu_isar_feature(aa64_tgran4_2_lpa2, cpu);
-+            }
-+            break;
-+        default:
-+            if (using16k) {
-+                ds = cpu_isar_feature(aa64_tgran16_lpa2, cpu);
-+            } else {
-+                ds = cpu_isar_feature(aa64_tgran4_lpa2, cpu);
-+            }
-+            break;
-+        }
-+        if (ds) {
-             min_tsz = 12;
-         }
-     }
--    /* TODO: FEAT_LPA2 */
- 
-     if (tsz > max_tsz) {
-         tsz = max_tsz;
-@@ -11296,6 +11340,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-     return (ARMVAParameters) {
-         .tsz = tsz,
-         .ps = ps,
-+        .sh = sh,
-         .select = select,
-         .tbi = tbi,
-         .epd = epd,
-@@ -11303,6 +11348,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         .using16k = using16k,
-         .using64k = using64k,
-         .tsz_oob = tsz_oob,
-+        .ds = ds,
-     };
  }
- 
-@@ -11528,10 +11574,19 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-          * VTCR_EL2.SL0 field (whose interpretation depends on the page size)
-          */
-         uint32_t sl0 = extract32(tcr->raw_tcr, 6, 2);
-+        uint32_t sl2 = extract64(tcr->raw_tcr, 33, 1);
-         uint32_t startlevel;
-         bool ok;
- 
--        if (!aarch64 || stride == 9) {
-+        /* SL2 is RES0 unless DS=1 & 4kb granule. */
-+        if (param.ds && stride == 9 && sl2) {
-+            if (sl0 != 0) {
-+                level = 0;
-+                fault_type = ARMFault_Translation;
-+                goto do_fault;
-+            }
-+            startlevel = -1;
-+        } else if (!aarch64 || stride == 9) {
-             /* AArch32 or 4KB pages */
-             startlevel = 2 - sl0;
- 
-@@ -11585,10 +11640,12 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-      * for both v7 and v8.  However, for v8 the SBZ bits [47:40] must be 0
-      * or an AddressSize fault is raised.  So for v8 we extract those SBZ
-      * bits as part of the address, which will be checked via outputsize.
--     * For AArch64, the address field always goes up to bit 47 (with extra
--     * bits for FEAT_LPA placed elsewhere).  AArch64 implies v8.
-+     * For AArch64, the address field goes up to bit 47, or 49 with FEAT_LPA2;
-+     * the highest bits of a 52-bit output are placed elsewhere.
-      */
--    if (arm_feature(env, ARM_FEATURE_V8)) {
-+    if (param.ds) {
-+        descaddrmask = MAKE_64BIT_MASK(0, 50);
-+    } else if (arm_feature(env, ARM_FEATURE_V8)) {
-         descaddrmask = MAKE_64BIT_MASK(0, 48);
-     } else {
-         descaddrmask = MAKE_64BIT_MASK(0, 40);
-@@ -11623,11 +11680,16 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
- 
-         /*
-          * For FEAT_LPA and PS=6, bits [51:48] of descaddr are in [15:12]
--         * of descriptor.  Otherwise, if descaddr is out of range, raise
--         * AddressSizeFault.
-+         * of descriptor.  For FEAT_LPA2 and effective DS, bits [51:50] of
-+         * descaddr are in [9:8].  Otherwise, if descaddr is out of range,
-+         * raise AddressSizeFault.
-          */
-         if (outputsize > 48) {
--            descaddr |= extract64(descriptor, 12, 4) << 48;
-+            if (param.ds) {
-+                descaddr |= extract64(descriptor, 8, 2) << 50;
-+            } else {
-+                descaddr |= extract64(descriptor, 12, 4) << 48;
-+            }
-         } else if (descaddr >> outputsize) {
-             fault_type = ARMFault_AddressSize;
-             goto do_fault;
-@@ -11721,7 +11783,17 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-         assert(attrindx <= 7);
-         cacheattrs->attrs = extract64(mair, attrindx * 8, 8);
-     }
--    cacheattrs->shareability = extract32(attrs, 6, 2);
-+
-+    /*
-+     * For FEAT_LPA2 and effective DS, the SH field in the attributes
-+     * was re-purposed for output address bits.  The SH attribute in
-+     * that case comes from TCR_ELx, which we extracted earlier.
-+     */
-+    if (param.ds) {
-+        cacheattrs->shareability = param.sh;
-+    } else {
-+        cacheattrs->shareability = extract32(attrs, 6, 2);
-+    }
- 
-     *phys_ptr = descaddr;
-     *page_size_ptr = page_size;
--- 
-2.25.1
+=20
+-static void qmp_isl_pmbus_set(const char *id,
++static void qmp_isl_pmbus_vr_set(const char *id,
+                             const char *property,
+                             uint16_t value)
+ {
+@@ -54,7 +54,7 @@ static void qmp_isl_pmbus_set(const char *id,
+ }
+=20
+ /* PMBus commands are little endian vs i2c_set16 in i2c.h which is big end=
+ian */
+-static uint16_t isl_pmbus_i2c_get16(QI2CDevice *i2cdev, uint8_t reg)
++static uint16_t isl_pmbus_vr_i2c_get16(QI2CDevice *i2cdev, uint8_t reg)
+ {
+     uint8_t resp[2];
+     i2c_read_block(i2cdev, reg, resp, sizeof(resp));
+@@ -62,7 +62,8 @@ static uint16_t isl_pmbus_i2c_get16(QI2CDevice *i2cdev, u=
+int8_t reg)
+ }
+=20
+ /* PMBus commands are little endian vs i2c_set16 in i2c.h which is big end=
+ian */
+-static void isl_pmbus_i2c_set16(QI2CDevice *i2cdev, uint8_t reg, uint16_t =
+value)
++static void isl_pmbus_vr_i2c_set16(QI2CDevice *i2cdev, uint8_t reg,
++                                   uint16_t value)
+ {
+     uint8_t data[2];
+=20
+@@ -76,28 +77,28 @@ static void test_defaults(void *obj, void *data, QGuest=
+Allocator *alloc)
+     uint16_t value, i2c_value;
+     QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
+=20
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "vout[0]");
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "vout[0]");
+     g_assert_cmpuint(value, =3D=3D, ISL_READ_VOUT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IOUT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_IOUT);
+     g_assert_cmpuint(i2c_value, =3D=3D, ISL_READ_IOUT_DEFAULT);
+=20
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "pout[0]");
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "pout[0]");
+     g_assert_cmpuint(value, =3D=3D, ISL_READ_POUT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VIN);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_VIN);
+     g_assert_cmpuint(i2c_value, =3D=3D, ISL_READ_VIN_DEFAULT);
+=20
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "iin[0]");
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "iin[0]");
+     g_assert_cmpuint(value, =3D=3D, ISL_READ_IIN_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_PIN);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_PIN);
+     g_assert_cmpuint(i2c_value, =3D=3D, ISL_READ_PIN_DEFAULT);
+=20
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "temp1[0]");
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "temp1[0]");
+     g_assert_cmpuint(value, =3D=3D, ISL_READ_TEMP_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_2);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_2)=
+;
+     g_assert_cmpuint(i2c_value, =3D=3D, ISL_READ_TEMP_DEFAULT);
+=20
+     i2c_value =3D i2c_get8(i2cdev, PMBUS_CAPABILITY);
+@@ -112,37 +113,37 @@ static void test_defaults(void *obj, void *data, QGue=
+stAllocator *alloc)
+     i2c_value =3D i2c_get8(i2cdev, PMBUS_VOUT_MODE);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MODE_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_COMMAND);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_COMMAND);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_COMMAND_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MAX);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MAX);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MAX_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MARGIN_HIGH_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MARGIN_LOW_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_TRANSITION_RATE);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_TRANSITION_RAT=
+E);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_TRANSITION_RATE_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT=
+);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_OV_FAULT_LIMIT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_OT_FAULT_LIMIT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_OT_WARN_LIMIT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_OV_WARN_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VIN_OV_WARN_LIMIT);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VIN_OV_WARN_LIMIT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_UV_WARN_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VIN_UV_WARN_LIMIT);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VIN_UV_WARN_LIMIT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT)=
+;
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_IIN_OC_FAULT_LIMIT_DEFAULT);
+=20
+     i2c_value =3D i2c_get8(i2cdev, PMBUS_REVISION);
+@@ -155,13 +156,13 @@ static void raa228000_test_defaults(void *obj, void *=
+data,
+     uint16_t value, i2c_value;
+     QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
+=20
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "vout[0]");
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "vout[0]");
+     g_assert_cmpuint(value, =3D=3D, 0);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IOUT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_IOUT);
+     g_assert_cmpuint(i2c_value, =3D=3D, 0);
+=20
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "pout[0]");
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "pout[0]");
+     g_assert_cmpuint(value, =3D=3D, 0);
+=20
+     i2c_value =3D i2c_get8(i2cdev, PMBUS_CAPABILITY);
+@@ -176,37 +177,37 @@ static void raa228000_test_defaults(void *obj, void *=
+data,
+     i2c_value =3D i2c_get8(i2cdev, PMBUS_VOUT_MODE);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MODE_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_COMMAND);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_COMMAND);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_COMMAND_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MAX);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MAX);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MAX_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MARGIN_HIGH_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MARGIN_LOW_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_TRANSITION_RATE);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_TRANSITION_RAT=
+E);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_TRANSITION_RATE_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT=
+);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_OV_FAULT_LIMIT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_OT_FAULT_LIMIT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_OT_WARN_LIMIT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_OV_WARN_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VIN_OV_WARN_LIMIT);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VIN_OV_WARN_LIMIT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_UV_WARN_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VIN_UV_WARN_LIMIT);
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_VIN_UV_WARN_LIMIT_DEFAULT);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT)=
+;
+     g_assert_cmphex(i2c_value, =3D=3D, ISL_IIN_OC_FAULT_LIMIT_DEFAULT);
+=20
+     i2c_value =3D i2c_get8(i2cdev, PMBUS_REVISION);
+@@ -219,49 +220,49 @@ static void test_tx_rx(void *obj, void *data, QGuestA=
+llocator *alloc)
+     uint16_t i2c_value, value;
+     QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
+=20
+-    qmp_isl_pmbus_set(TEST_ID, "vin[0]", 200);
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "vin[0]");
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VIN);
++    qmp_isl_pmbus_vr_set(TEST_ID, "vin[0]", 200);
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "vin[0]");
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_VIN);
+     g_assert_cmpuint(value, =3D=3D, i2c_value);
+=20
+-    qmp_isl_pmbus_set(TEST_ID, "vout[0]", 2500);
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "vout[0]");
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++    qmp_isl_pmbus_vr_set(TEST_ID, "vout[0]", 2500);
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "vout[0]");
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_VOUT);
+     g_assert_cmpuint(value, =3D=3D, i2c_value);
+=20
+-    qmp_isl_pmbus_set(TEST_ID, "iin[0]", 300);
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "iin[0]");
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IIN);
++    qmp_isl_pmbus_vr_set(TEST_ID, "iin[0]", 300);
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "iin[0]");
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_IIN);
+     g_assert_cmpuint(value, =3D=3D, i2c_value);
+=20
+-    qmp_isl_pmbus_set(TEST_ID, "iout[0]", 310);
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "iout[0]");
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IOUT);
++    qmp_isl_pmbus_vr_set(TEST_ID, "iout[0]", 310);
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "iout[0]");
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_IOUT);
+     g_assert_cmpuint(value, =3D=3D, i2c_value);
+=20
+-    qmp_isl_pmbus_set(TEST_ID, "pin[0]", 100);
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "pin[0]");
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_PIN);
++    qmp_isl_pmbus_vr_set(TEST_ID, "pin[0]", 100);
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "pin[0]");
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_PIN);
+     g_assert_cmpuint(value, =3D=3D, i2c_value);
+=20
+-    qmp_isl_pmbus_set(TEST_ID, "pout[0]", 95);
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "pout[0]");
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_POUT);
++    qmp_isl_pmbus_vr_set(TEST_ID, "pout[0]", 95);
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "pout[0]");
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_POUT);
+     g_assert_cmpuint(value, =3D=3D, i2c_value);
+=20
+-    qmp_isl_pmbus_set(TEST_ID, "temp1[0]", 26);
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "temp1[0]");
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++    qmp_isl_pmbus_vr_set(TEST_ID, "temp1[0]", 26);
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "temp1[0]");
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1)=
+;
+     g_assert_cmpuint(value, =3D=3D, i2c_value);
+=20
+-    qmp_isl_pmbus_set(TEST_ID, "temp2[0]", 27);
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "temp2[0]");
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_2);
++    qmp_isl_pmbus_vr_set(TEST_ID, "temp2[0]", 27);
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "temp2[0]");
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_2)=
+;
+     g_assert_cmpuint(value, =3D=3D, i2c_value);
+=20
+-    qmp_isl_pmbus_set(TEST_ID, "temp3[0]", 28);
+-    value =3D qmp_isl_pmbus_get(TEST_ID, "temp3[0]");
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_3);
++    qmp_isl_pmbus_vr_set(TEST_ID, "temp3[0]", 28);
++    value =3D qmp_isl_pmbus_vr_get(TEST_ID, "temp3[0]");
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_3)=
+;
+     g_assert_cmpuint(value, =3D=3D, i2c_value);
+=20
+ }
+@@ -272,64 +273,64 @@ static void test_rw_regs(void *obj, void *data, QGues=
+tAllocator *alloc)
+     uint16_t i2c_value;
+     QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_COMMAND, 0x1234);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_COMMAND);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_COMMAND, 0x1234);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_COMMAND);
+     g_assert_cmphex(i2c_value, =3D=3D, 0x1234);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_TRIM, 0x4567);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_TRIM);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_TRIM, 0x4567);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_TRIM);
+     g_assert_cmphex(i2c_value, =3D=3D, 0x4567);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_MAX, 0x9876);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MAX);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_MAX, 0x9876);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MAX);
+     g_assert_cmphex(i2c_value, =3D=3D, 0x9876);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_HIGH, 0xABCD);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_HIGH, 0xABCD);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
+     g_assert_cmphex(i2c_value, =3D=3D, 0xABCD);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_LOW, 0xA1B2);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_LOW, 0xA1B2);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
+     g_assert_cmphex(i2c_value, =3D=3D, 0xA1B2);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_TRANSITION_RATE, 0xDEF1);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_TRANSITION_RATE);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_TRANSITION_RATE, 0xDEF1);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_TRANSITION_RAT=
+E);
+     g_assert_cmphex(i2c_value, =3D=3D, 0xDEF1);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_DROOP, 0x5678);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_DROOP);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_DROOP, 0x5678);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_DROOP);
+     g_assert_cmphex(i2c_value, =3D=3D, 0x5678);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_MIN, 0x1234);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MIN);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_MIN, 0x1234);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MIN);
+     g_assert_cmphex(i2c_value, =3D=3D, 0x1234);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT, 0x2345);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT, 0x2345);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT=
+);
+     g_assert_cmphex(i2c_value, =3D=3D, 0x2345);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT, 0xFA12);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT, 0xFA12);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT=
+);
+     g_assert_cmphex(i2c_value, =3D=3D, 0xFA12);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_OT_FAULT_LIMIT, 0xF077);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_OT_FAULT_LIMIT, 0xF077);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
+     g_assert_cmphex(i2c_value, =3D=3D, 0xF077);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_OT_WARN_LIMIT, 0x7137);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_OT_WARN_LIMIT, 0x7137);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
+     g_assert_cmphex(i2c_value, =3D=3D, 0x7137);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VIN_OV_FAULT_LIMIT, 0x3456);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_OV_FAULT_LIMIT);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VIN_OV_FAULT_LIMIT, 0x3456);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VIN_OV_FAULT_LIMIT)=
+;
+     g_assert_cmphex(i2c_value, =3D=3D, 0x3456);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VIN_UV_FAULT_LIMIT, 0xBADA);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_UV_FAULT_LIMIT);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VIN_UV_FAULT_LIMIT, 0xBADA);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VIN_UV_FAULT_LIMIT)=
+;
+     g_assert_cmphex(i2c_value, =3D=3D, 0xBADA);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT, 0xB1B0);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT, 0xB1B0);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT)=
+;
+     g_assert_cmphex(i2c_value, =3D=3D, 0xB1B0);
+=20
+     i2c_set8(i2cdev, PMBUS_OPERATION, 0xA);
+@@ -362,49 +363,49 @@ static void test_ro_regs(void *obj, void *data, QGues=
+tAllocator *alloc)
+     uint16_t i2c_init_value, i2c_value;
+     QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
+=20
+-    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VIN);
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_VIN, 0xBEEF);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VIN);
++    i2c_init_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_VIN);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_READ_VIN, 0xBEEF);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_VIN);
+     g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
+=20
+-    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IIN);
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_IIN, 0xB00F);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IIN);
++    i2c_init_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_IIN);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_READ_IIN, 0xB00F);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_IIN);
+     g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
+=20
+-    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VOUT);
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_VOUT, 0x1234);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++    i2c_init_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_READ_VOUT, 0x1234);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_VOUT);
+     g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
+=20
+-    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IOUT);
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_IOUT, 0x6547);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IOUT);
++    i2c_init_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_IOUT);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_READ_IOUT, 0x6547);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_IOUT);
+     g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
+=20
+-    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_=
+1);
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_1, 0x1597);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++    i2c_init_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_TEMPERATU=
+RE_1);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_1, 0x1597);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1)=
+;
+     g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
+=20
+-    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_=
+2);
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_2, 0x1897);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_2);
++    i2c_init_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_TEMPERATU=
+RE_2);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_2, 0x1897);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_2)=
+;
+     g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
+=20
+-    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_=
+3);
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_3, 0x1007);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_3);
++    i2c_init_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_TEMPERATU=
+RE_3);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_3, 0x1007);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_3)=
+;
+     g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
+=20
+-    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_PIN);
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_PIN, 0xDEAD);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_PIN);
++    i2c_init_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_PIN);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_READ_PIN, 0xDEAD);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_PIN);
+     g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
+=20
+-    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_POUT);
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_POUT, 0xD00D);
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_POUT);
++    i2c_init_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_POUT);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_READ_POUT, 0xD00D);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_POUT);
+     g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
+ }
+=20
+@@ -415,29 +416,29 @@ static void test_voltage_faults(void *obj, void *data=
+, QGuestAllocator *alloc)
+     uint8_t i2c_byte;
+     QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT, 5000);
+-    qmp_isl_pmbus_set(TEST_ID, "vout[0]", 5100);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT, 5000);
++    qmp_isl_pmbus_vr_set(TEST_ID, "vout[0]", 5100);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
+     i2c_byte =3D i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
+     g_assert_true((i2c_value & PB_STATUS_VOUT) !=3D 0);
+     g_assert_true((i2c_byte & PB_STATUS_VOUT_OV_WARN) !=3D 0);
+=20
+-    qmp_isl_pmbus_set(TEST_ID, "vout[0]", 4500);
++    qmp_isl_pmbus_vr_set(TEST_ID, "vout[0]", 4500);
+     i2c_set8(i2cdev, PMBUS_CLEAR_FAULTS, 0);
+     i2c_byte =3D i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
+     g_assert_true((i2c_byte & PB_STATUS_VOUT_OV_WARN) =3D=3D 0);
+=20
+-    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT, 4600);
++    isl_pmbus_vr_i2c_set16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT, 4600);
+=20
+-    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
++    i2c_value =3D isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
+     i2c_byte =3D i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
+     g_assert_true((i2c_value & PB_STATUS_VOUT) !=3D 0);
+     g_assert_true((i2c_byte & PB_STATUS_VOUT_UV_WARN) !=3D 0);
+=20
+ }
+=20
+-static void isl_pmbus_register_nodes(void)
++static void isl_pmbus_vr_register_nodes(void)
+ {
+     QOSGraphEdgeOptions opts =3D {
+         .extra_device_opts =3D "id=3D" TEST_ID ",address=3D0x43"
+@@ -470,4 +471,4 @@ static void isl_pmbus_register_nodes(void)
+     qos_add_test("test_rw_regs", "raa228000", test_rw_regs, NULL);
+     qos_add_test("test_ov_faults", "raa228000", test_voltage_faults, NULL)=
+;
+ }
+-libqos_init(isl_pmbus_register_nodes);
++libqos_init(isl_pmbus_vr_register_nodes);
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 9a6cc93c16..98b5969a38 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -244,7 +244,7 @@ qos_test_ss.add(
+   'es1370-test.c',
+   'ipoctal232-test.c',
+   'lsm303dlhc-mag-test.c',
+-  'isl_pmbus-test.c',
++  'isl_pmbus_vr-test.c',
+   'max34451-test.c',
+   'megasas-test.c',
+   'ne2000-test.c',
+--=20
+2.35.1.616.g0bdcbb4464-goog
+

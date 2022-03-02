@@ -1,119 +1,122 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp339866lfo;
-        Tue, 1 Mar 2022 17:59:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxPQSkAxKnGF/C4LW/eH2jrxg3c5LY2F9J89BYvTqKqJVTc2RM+SHOKn2TFMmArk67QxGrM
-X-Received: by 2002:a81:b89:0:b0:2db:c3d0:ae32 with SMTP id 131-20020a810b89000000b002dbc3d0ae32mr8703157ywl.436.1646186386907;
-        Tue, 01 Mar 2022 17:59:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646186386; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp528274lfo;
+        Wed, 2 Mar 2022 00:33:59 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzuLxlxtEvCje6SsbDXQKLUdbH9LEJp7tpPYqgIK+N+SeePpVm8jAsnijZXpBQPG1VX/+iw
+X-Received: by 2002:a05:6214:4015:b0:433:bc7:2ec8 with SMTP id kd21-20020a056214401500b004330bc72ec8mr9860540qvb.12.1646210038865;
+        Wed, 02 Mar 2022 00:33:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646210038; cv=none;
         d=google.com; s=arc-20160816;
-        b=WATiRVbR3I0+is19C7PSSaW3+ikNnB1pTg8wwO4BFZTQ1lDVz+g4VVlNI5MclJ1Nrg
-         lV3+uNR0/899IB1ZxgNUV9ZJZ3iuuFBQcggkHHvw3+zykyyGFD9QVVaWrTcdyP687o+g
-         TWZwXLy9rgOXPMY0zf3Ksx6WovCywSC767xJgsw3sgv7G3jUUQqYyI7h04v7LEidJHQS
-         gCE+nphzihPoN9LxTji9Sg4KFdqS68Bd179AFiPe6LQ8mfRbVU8/U7QkTJW/5qkMFQ5z
-         SVyiVz4ohyO+aZDYP+Ok/T7GaM7tYo1siRLAQDy6kjPtHL0lqzbjOVqjgjv6ZNMzBo2w
-         E9Lw==
+        b=sgcDvhiWAZOGijMFUEl0F4s83mqtKagMkWTe4XUvomyKSbuQ4N1akGiEwXLoUEg9px
+         A7Xdf1ovhdKZWPNGBb+CdTEB8CZhtTOTEI026AaGPBqURYZmwVIiUcaWOZAg2FxXdDqU
+         nhiis47scKhN6hEn6U8RUUagQSpoLKxlIoPBILuMN4OSeFq4VgD2/2Wz/smKYwIoWdWM
+         IV3u3NQ4bNiJXv1njP+G0QDa/8WQNrgT98LEJ/RqDHRG1bOtoKWrnVjLnTWVnSCl2f5X
+         A+6Ud7tW/4mWHWnLOHy+IR/jKswh4R5fC1ZKKwsT+OkCZJzwKl8/Vdvrn0n8kVa7KOT3
+         vfyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :from:subject:references:mime-version:message-id:in-reply-to:date
-         :dkim-signature;
-        bh=SsuwZhWo+ed7nVZvOpG/H3KPAbRwMjbTiNEUiQeQcno=;
-        b=mbNLw6kk178RqDqmKrFqvb+I2aQiUgbelDdqF2iPyotNGIy7fI4B5Fqvp8BfsE+kyk
-         D/0+mAO31bhzZGvuvjR0G8mv7xrOFjaETgeutNUJL3+3kleF39NWH876GBGmLd0RmcHK
-         mzYueCQjxL3CyJ+luQ6GCgFAjy/xuaCEh8HsFtTtpX7vMgOwXuiTMaWIevdZgtmEmYJj
-         R77yW6BoGiYJa1Mw3NIYPmPgxzzGkv0vDSLR/AncIvycffK4HYolkWxo0JHfkvkBJNir
-         /9+p0CwklC++7E9AWogoGMhUmltzaLFiAymyrYVf+ujV0xLofuaiLcfmuRDdcFaWov9p
-         +Vag==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=ins25LCy0g297xla4c9bcObqHdkMT+xeB37D32YWW8I=;
+        b=mFajlaO/7NRE8sj/hlXVzjNo8iobUBDAprV5gtfFBq81EBs/9YTtONQYw3yqaocTUq
+         PBgL0iNEOqigHTonDUHLCVxifMbpb4ePf/TIYzrhtzSh+Na6hKltA8Z4kSKOYbLvfilq
+         X2/3iInXo9XHM8y1lXwANQE+zKwXRmvcVTll41xMQoDWNF1XHJGcepB5k8Hc1SUZB/CQ
+         yyH+xQOQqzKdSSTLpnWiAvS4MNut31aUpIsBmAQqoebrX3qT1CI6sA70EIgOUmMWCYx9
+         bpPskzvWI+XuuhMHAHh4B0x5VcbWqhYx+TrrbR/6krssXX95B22pNi7BU3TPS6ULDL8b
+         fGHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=je6Ogwc0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d192-20020a8136c9000000b002d7dbcdd480si12709648ywa.41.2022.03.01.17.59.46
+        by mx.google.com with ESMTPS id fv1-20020a056214240100b0043518a29909si993944qvb.82.2022.03.02.00.33.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Mar 2022 17:59:46 -0800 (PST)
+        Wed, 02 Mar 2022 00:33:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=je6Ogwc0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:55210 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nPEHK-000228-9I
-	for alex.bennee@linaro.org; Tue, 01 Mar 2022 20:59:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35444)
+	id 1nPKQo-0006A1-6g
+	for alex.bennee@linaro.org; Wed, 02 Mar 2022 03:33:58 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51018)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3kM0eYgYKCL0wlwxvujrrjoh.frpthpx-dupqrqjqx.ruj@flex--titusr.bounces.google.com>)
- id 1nPEGt-0001jd-71
- for qemu-arm@nongnu.org; Tue, 01 Mar 2022 20:59:20 -0500
-Received: from [2607:f8b0:4864:20::b49] (port=38512
- helo=mail-yb1-xb49.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3kM0eYgYKCL0wlwxvujrrjoh.frpthpx-dupqrqjqx.ruj@flex--titusr.bounces.google.com>)
- id 1nPEGq-0008Jy-UC
- for qemu-arm@nongnu.org; Tue, 01 Mar 2022 20:59:18 -0500
-Received: by mail-yb1-xb49.google.com with SMTP id
- i6-20020a255406000000b006241e97e420so209632ybb.5
- for <qemu-arm@nongnu.org>; Tue, 01 Mar 2022 17:59:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc:content-transfer-encoding;
- bh=SsuwZhWo+ed7nVZvOpG/H3KPAbRwMjbTiNEUiQeQcno=;
- b=je6Ogwc0aUtFCzQUa/h4EBtoFJY8KIyyIqElzA2HgJz0x4u4zcwNzny3T3AOlWTdej
- 6r8MfwGys6lFwgIai8dEVIHzAdUoCbo9UFT7TI6r+6aV3z+SA29978Mo2CqMyd9RyE6f
- fPUF42Kxii4ITceibIJqGvZ0sW+z5y8mQT91uFhEZSUqwyVc6KW1rDhgobpOBcvK/S+F
- iafBSHVTnZYAmt5tF0Pa9QunASYubO++T6ees55xcI2XvXPylC2ZRcRVkl7AgsLnVRXU
- mCqhXD5MqKClBW0wf8gG32JtqPieknznf3U7TKpkmk8IaaehZ85CKPnzSKWn4dNWVuAb
- oklQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc:content-transfer-encoding;
- bh=SsuwZhWo+ed7nVZvOpG/H3KPAbRwMjbTiNEUiQeQcno=;
- b=7KjZVb/0LqroWLQyVzSwaRAEUUlgFdrSrHJa3IHyk4S5TbY/eoMMMUtQ0/wtx8RTBl
- V0Pxt2L3vSyki0bJ8+kkJSlvzUb2OuA8WQ9XyLUKVD4seuTpQuiLYZ2HPRxmWP/jI7G6
- zTxS8q5fZ2nH6i4Wi60dWmnxRPRhjsAc3n5A0d1vkktqHWA9HiDi16H0h1ZSSpsPOW0t
- LwV0PJNo/Sy/o7T9vOeiqLO6l5IWCxGx3BN6dddTyaqVN4naZ9A9euSJ5O4gdGb5d2Zh
- a5HJ3Pey2Dtgk2H5vb8QvVw/+bXPiGdCgQD1gWZ/3PalFVaxy+QgPu7PRFbJlY2PnYfr
- ChBg==
-X-Gm-Message-State: AOAM532wluh0QspNjsOL5vPne8Bd12dbovDZOn3tn302mbX/IJr0kY02
- kthvYn2IKXrF54JOzJkASEwjrJ8cqec=
-X-Received: from titusr.svl.corp.google.com
- ([2620:15c:2a3:201:3a0a:5449:c096:dc84])
- (user=titusr job=sendgmr) by 2002:a25:2087:0:b0:623:249a:73b6 with SMTP id
- g129-20020a252087000000b00623249a73b6mr26619843ybg.139.1646185872616; Tue, 01
- Mar 2022 17:51:12 -0800 (PST)
-Date: Tue,  1 Mar 2022 17:50:49 -0800
-In-Reply-To: <20220302015053.1984165-1-titusr@google.com>
-Message-Id: <20220302015053.1984165-6-titusr@google.com>
-Mime-Version: 1.0
-References: <20220302015053.1984165-1-titusr@google.com>
-X-Mailer: git-send-email 2.35.1.616.g0bdcbb4464-goog
-Subject: [PATCH v3 5/9] hw/i2c: pmbus: update MAINTAINERS
-From: Titus Rwantare <titusr@google.com>
-To: Corey Minyard <minyard@acm.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
- wuhaotsh@google.com, venture@google.com, peter.maydell@linaro.org, 
- Titus Rwantare <titusr@google.com>
-Content-Type: text/plain; charset="UTF-8"
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1nPKQb-00068r-Rg; Wed, 02 Mar 2022 03:33:45 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:5396
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1nPKQa-0004GU-5d; Wed, 02 Mar 2022 03:33:45 -0500
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 2227sWuQ015405; 
+ Wed, 2 Mar 2022 08:33:16 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 3ej4kwgnpw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 02 Mar 2022 08:33:16 +0000
+Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 2228Tlse024410;
+ Wed, 2 Mar 2022 08:33:15 GMT
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.102])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 3ej4kwgnpd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 02 Mar 2022 08:33:15 +0000
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+ by ppma06ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 2228ScF5015760;
+ Wed, 2 Mar 2022 08:33:14 GMT
+Received: from b06avi18626390.portsmouth.uk.ibm.com
+ (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
+ by ppma06ams.nl.ibm.com with ESMTP id 3efbfjp2sw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 02 Mar 2022 08:33:13 +0000
+Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
+ [9.149.105.61])
+ by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 2228MG5b35455290
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 2 Mar 2022 08:22:16 GMT
+Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 55C0011C04A;
+ Wed,  2 Mar 2022 08:33:11 +0000 (GMT)
+Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 0440711C04C;
+ Wed,  2 Mar 2022 08:33:11 +0000 (GMT)
+Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
+ by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Wed,  2 Mar 2022 08:33:10 +0000 (GMT)
+Received: from yukon.ibmuc.com (unknown [9.171.58.125])
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id E42302201C1;
+ Wed,  2 Mar 2022 09:33:09 +0100 (CET)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH] aspeed: Fix a potential memory leak bug in write_boot_rom()
+Date: Wed,  2 Mar 2022 09:33:08 +0100
+Message-Id: <20220302083308.820072-1-clg@kaod.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b49
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3kM0eYgYKCL0wlwxvujrrjoh.frpthpx-dupqrqjqx.ruj@flex--titusr.bounces.google.com;
- helo=mail-yb1-xb49.google.com
-X-Spam_score_int: -81
-X-Spam_score: -8.2
-X-Spam_bar: --------
-X-Spam_report: (-8.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: KxdqpoCxck4pB0R8u3v9h1gUpNGNFnz-
+X-Proofpoint-ORIG-GUID: vfjEnt29jw4TqKeEmmdnvzXM79LHObnR
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.816,Hydra:6.0.425,FMLib:17.11.64.514
+ definitions=2022-03-02_01,2022-02-26_01,2022-02-23_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 bulkscore=0
+ mlxlogscore=843 lowpriorityscore=0 suspectscore=0 phishscore=0 spamscore=0
+ clxscore=1034 adultscore=0 malwarescore=0 priorityscore=1501 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2201110000
+ definitions=main-2203020034
+Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, KHOP_HELO_FCRDNS=0.187,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,39 +129,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Wentao_Liang <Wentao_Liang_g@163.com>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G7wDzZRHKpEC
+X-TUID: EOx1hNb2PWNv
 
-add self to MAINTAINERS for the PMBus subsystem and related sensors,
-and set PMBus as maintained.
+From: Wentao_Liang <Wentao_Liang_g@163.com>
 
-Signed-off-by: Titus Rwantare <titusr@google.com>
+A memory chunk is allocated with g_new0() and assigned to the variable
+'storage'. However, if the branch takes true, there will be only an
+error report but not a free operation for 'storage' before function
+returns. As a result, a memory leak bug is triggered.
+
+Use g_autofree to fix the issue.
+
+Suggested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Signed-off-by: Wentao_Liang <Wentao_Liang_g@163.com>
+[ clg: reworked the commit log ]
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- MAINTAINERS | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ hw/arm/aspeed.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index fa8adc2618..3601984b5d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3135,6 +3135,16 @@ F: include/hw/i2c/smbus_master.h
- F: include/hw/i2c/smbus_slave.h
- F: include/hw/i2c/smbus_eeprom.h
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 11558b327bc9..b71bc2559baa 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -246,7 +246,7 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr a=
+ddr, size_t rom_size,
+                            Error **errp)
+ {
+     BlockBackend *blk =3D blk_by_legacy_dinfo(dinfo);
+-    uint8_t *storage;
++    g_autofree void *storage =3D NULL;
+     int64_t size;
 =20
-+PMBus
-+M: Titus Rwantare <titusr@google.com>
-+S: Maintained
-+F: hw/i2c/pmbus_device.c
-+F: hw/sensor/adm1272.c
-+F: hw/sensor/max34451.c
-+F: include/hw/i2c/pmbus_device.h
-+F: tests/qtest/adm1272-test.c
-+F: tests/qtest/max34451-test.c
-+
- Firmware schema specifications
- M: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
- R: Daniel P. Berrange <berrange@redhat.com>
+     /* The block backend size should have already been 'validated' by
+@@ -262,14 +262,13 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr=
+ addr, size_t rom_size,
+         rom_size =3D size;
+     }
+=20
+-    storage =3D g_new0(uint8_t, rom_size);
++    storage =3D g_malloc0(rom_size);
+     if (blk_pread(blk, 0, storage, rom_size) < 0) {
+         error_setg(errp, "failed to read the initial flash content");
+         return;
+     }
+=20
+     rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
+-    g_free(storage);
+ }
+=20
+ static void aspeed_board_init_flashes(AspeedSMCState *s,
 --=20
-2.35.1.616.g0bdcbb4464-goog
+2.34.1
 

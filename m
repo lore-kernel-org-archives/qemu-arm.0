@@ -1,106 +1,116 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp312229lfo;
-        Tue, 1 Mar 2022 17:08:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwvZZRWzHMK8Rdd+sEjFNJ3W45BHaEdx1X3O/2H3lAWcfBBr0n5OWGEdSqJIVqjrrdxea8M
-X-Received: by 2002:a81:5254:0:b0:2dc:59a:c6b5 with SMTP id g81-20020a815254000000b002dc059ac6b5mr1505259ywb.375.1646183322383;
-        Tue, 01 Mar 2022 17:08:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646183322; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp335468lfo;
+        Tue, 1 Mar 2022 17:51:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxn88G0f3Wb5y5X1po2LjvWkoFWLz3SaXZHh1FAfcRXIkSmiNNqi59uV0gDUQd3ulZGc/yk
+X-Received: by 2002:a25:374d:0:b0:611:a6c1:b948 with SMTP id e74-20020a25374d000000b00611a6c1b948mr26605671yba.21.1646185876537;
+        Tue, 01 Mar 2022 17:51:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646185876; cv=none;
         d=google.com; s=arc-20160816;
-        b=qXvmNe3Jiv8HElVKP3nmaL3XTpQOv71UAqMKuGtL2iYuuQTdpuA/g+OAHT5/DDKFki
-         QdmZ1ZxnA88W/Qwr9MBlXhGzz/ZexZHQ3TunMeRrOurCzFt+8sfeB2ojuz1uLkIZ5547
-         /t+z6xKmtK62SeS+OhkjzDW+3uZvc26u7OEPMDOZFPSPyyEKH8e6LohC8ncIOE58N21W
-         HSppBvGv7AeonapfdhZ7i7yJvn3ktXTbOnZDYRLoqXuBH5Ouoe9kdhgNUwA4GGhHGT5e
-         Q8QNIlu0WP4s14x3PJWF6CJnkdmQ5zNJyIuyxPZ+SJeScgsJw8dRdaWAs2GjRCEW5OYk
-         Qq4A==
+        b=F0A3xQfvpNfO0BrpR42NuvVJfHj2Hhb4tWpYEHnBMUFm8r7LlK0r0T7H7kEdrViZBL
+         uqIcvoTSUdHhhny6HrSCzNPLMQnXjnpFALbRU41/GX3e1kMa/AbZRT1edyWhJr6NRu01
+         IWqBrfZVkXcSs2Ug7a1O9oNK9V7MPVER2jeBIiv7bCLxDwYTFWtxGpz0xVDNmtqZoiAW
+         KCbMldvHh8kpDai/4oXbBpCvs9wavAwYoDlbTLa3xdaEBqTNzROYlK7kPTnf3gqlxoHR
+         uUNxp7B7Mlq8mvP2F6n8ppP2Fktr3+dzjhh0xrdfy5D40qbRIFekkx/+fAsr6o+7X4h4
+         /E4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=k33shDE0BkPTxMfWJ2qk+GhZxHWflVkUE5/xT7BcFfg=;
-        b=jqH8yj3lwqcFwxNQpxiJ8x4UGwW1MmZ4QKngavi1bG0cfHV4FYN8rPItvTMbFi2mTT
-         vpQVt4X1etns5Tf7NPRJg7ZQKRekNgAE4Qo/4x7OGgo25aZRiRUu6r6kVhs/ep89eS3D
-         HlikQtUMr97tDSQ+NWXROy9SE6JLQ3YDva3bb5X8tM9aPRoOLOg72O64iuTKrA60h5y4
-         37GkYwWXO+yyrlmJAM1VLQVWeoZowAQ4EZTeo6/M1tJiFBpN1PG/AEjD5vGLFWQy3rb3
-         K79jnl3dzu3rG1mZjm0WgF9e36vntyWgJ1cUUxs/EyFn0atRkdQOXIXG9eWCBQbqyVQW
-         yt3Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
+         :mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=psSMCNKv2yqoyBWLtLGO59oWBEWLqDJSO6USW3rcrSM=;
+        b=Sk73GF765Bv8xUtiMvz7oeQh6Vz4A3b+AHsAy4tV4hj3YnsUno7EJzRYLNSgVeCC5A
+         dXEUGmPUxCSP48+MwHqas0KDV6JdYISq+o7XSUg7zLZKx+Dir2LuQGqTM2M/jN9tj8LW
+         kY/eO+QeXljY/92a3yrimkSl/6+JdsDPmYMzKYnKsk2PQUfjHpn9TeAPQpdB8bW+xQm3
+         GkkHxdfMfoPYmuIQLoxE0o0R2zul0Q3rLI7sVb9TyUnXqJlaaHG6I/8+rxKs5ddZMDmW
+         xhhHwCWDDrPyZIWZKGkSL0Ze73euAxsNkWjtxBLrSkymmsOS2srgniQXhODxK/mqXZPX
+         AxlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=VNBHhJsJ;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=qbAA0sUf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s198-20020a252ccf000000b0062875d90815si3565719ybs.366.2022.03.01.17.08.23
+        by mx.google.com with ESMTPS id k15-20020a258c0f000000b00627ec8860c8si10252457ybl.126.2022.03.01.17.51.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Mar 2022 17:08:42 -0800 (PST)
+        Tue, 01 Mar 2022 17:51:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=VNBHhJsJ;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=qbAA0sUf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54922 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:38762 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nPDTZ-0004rP-9o
-	for alex.bennee@linaro.org; Tue, 01 Mar 2022 20:08:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47736)
+	id 1nPE95-0007MY-Ud
+	for alex.bennee@linaro.org; Tue, 01 Mar 2022 20:51:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59738)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ubzeme@gmail.com>)
- id 1nPDTN-0004qr-U1; Tue, 01 Mar 2022 20:08:09 -0500
-Received: from [2a00:1450:4864:20::531] (port=39846
- helo=mail-ed1-x531.google.com)
+ (Exim 4.90_1) (envelope-from
+ <3h80eYgYKCrQncnomlaiiafY.WigkYgo-XYpYfhihaho.ila@flex--titusr.bounces.google.com>)
+ id 1nPE90-0007M2-Pt
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 20:51:10 -0500
+Received: from [2607:f8b0:4864:20::b4a] (port=56150
+ helo=mail-yb1-xb4a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ubzeme@gmail.com>)
- id 1nPDTL-0003Py-KS; Tue, 01 Mar 2022 20:08:09 -0500
-Received: by mail-ed1-x531.google.com with SMTP id g20so178426edw.6;
- Tue, 01 Mar 2022 17:08:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=k33shDE0BkPTxMfWJ2qk+GhZxHWflVkUE5/xT7BcFfg=;
- b=VNBHhJsJtNjuprgAOe1bfv95cWPdkFtwIvelRoxzge7cVGEVG7+cfsyqe8TjDWvv/b
- FLj+Y/CFEGv4GLQEg3+ZTB6mv+l2PNIKxcljjDvUmqHwLwBUVNLn9A0xSV4GpEZos+Pn
- 0+H9hsivIhU67gItU3eF4HqooXnH6xtSNmE6aE1CieKzjOZ0oAVHWYGlzGpaHKyPT6uQ
- jHCeM942wd/wZlwMJEyFWVvOvCssdoFOEbzm9NJ/0ECKJaB+9/Ju5IXFDVvmN6pyJCK2
- TPvxp/uB1Uh7duQ7Ppk6BxfI5IXsIdWgjUrwlHcUsADH2TXi57oQH1Fyw6mjYLWuebsK
- LmTw==
+ (Exim 4.90_1) (envelope-from
+ <3h80eYgYKCrQncnomlaiiafY.WigkYgo-XYpYfhihaho.ila@flex--titusr.bounces.google.com>)
+ id 1nPE8x-0004xX-Bd
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 20:51:10 -0500
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ b18-20020a25fa12000000b0062412a8200eso153507ybe.22
+ for <qemu-devel@nongnu.org>; Tue, 01 Mar 2022 17:51:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=psSMCNKv2yqoyBWLtLGO59oWBEWLqDJSO6USW3rcrSM=;
+ b=qbAA0sUfF1cD7Aex3ZpkZvhuGVfeNsbCKuFI2FSM8NVDF3kUX/zdo+h8BC9J1uSSui
+ RFuMF/4OZ/Hzi3t/2eT0awPiaf/XBJ5ewgSlF3o7qBoxk0LmmWzFB9dx2uVdfkKP1C8p
+ Q0BX9a2H8NWffhNHkulwgQA+Os8at++jkdXGukbXLbCh4M1bHdC0jltR1Eivr9PjuoxM
+ OUAG5RX09mSy9CYEvpdIySEGkW38TF3AyT9az7hqyntHEF9Q46URLgWB3kY8umQTzIKW
+ +1LEbc+lx/6vkF9i0GCC5H/iQfzL8FMcKrC/Y2zdpokMzVotAYo3uvUNjeNCSeUQpKOv
+ 07NA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=k33shDE0BkPTxMfWJ2qk+GhZxHWflVkUE5/xT7BcFfg=;
- b=FknpYEwmAQYX58rt2MqlkSDZfdcr5qT9QmD9P3al7rQE9miTQh/Gr0MHkWoyHyUTsj
- JnsR/kfqU5RJ+VH10Zq6W4sA7KHxN3Fn8qX0DO/CZsNQ0ZMptuSbnYi2k1OxaBLz8Pmy
- myUHvUZGwJWSQqmXfxvxoidY0fTVBQ/KtXxzFffrRByegmrmR59SQ6UWp6wN18DQo1nj
- 9G9pJLF/1RPDC9oMNjXk/4wMPMUvjKiahZl/Ezi8pVTPM7L+Q3wKcdOx0OZsx7YGRgtV
- QvW40g2GJGXF+XFG2bWyx8InL49CuPJGDi5qHTWzBLAL3x0HKQftCtQuBG/HVGVXFu84
- 6z/Q==
-X-Gm-Message-State: AOAM530RWQwJj1CgpG+qXPU74IPVEsF3iFdJih6cf59xk1Ltr/95R+I8
- e+v8Odwrlf5jNq+k/9jbfNkeXZcs1IMlbDpF6Tw=
-X-Received: by 2002:a50:fb91:0:b0:408:5100:b4a7 with SMTP id
- e17-20020a50fb91000000b004085100b4a7mr26722583edq.311.1646183284488; Tue, 01
- Mar 2022 17:08:04 -0800 (PST)
-MIME-Version: 1.0
-References: <164603074537.20094.1732342403585879912-0@git.sr.ht>
- <CAFEAcA8hWy3rfGtYkyQjJSGgsX448_t01xmM4cwyCO0op4h1xw@mail.gmail.com>
- <2da2f0bc-6c54-0a26-aafb-1f866cf93de8@gmail.com>
-In-Reply-To: <2da2f0bc-6c54-0a26-aafb-1f866cf93de8@gmail.com>
-From: Yan-Jie Wang <ubzeme@gmail.com>
-Date: Wed, 2 Mar 2022 09:07:28 +0800
-Message-ID: <CADyX+6p2QY5EL_JJnWUzVezagBfb1Pv9Byx6YXJK8jT7vNHvnA@mail.gmail.com>
-Subject: Re: [PATCH qemu 0/7] Many improvements to HVF memory-related codes
-To: Peter Maydell <peter.maydell@linaro.org>
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=psSMCNKv2yqoyBWLtLGO59oWBEWLqDJSO6USW3rcrSM=;
+ b=esbydNq75Fb93DAZuoz5NcWFfNbtejQniMU8g75+C7axWirCFfZr2FQw0Ck6rylgil
+ s8d/CHrJ1F9IbwwyhpLXGALLu9fNCGl4Wadkx+SSaFNW3TOPCMRNAz5Smu0s/d5xObe/
+ IeNVNYxe3/dpRr3MGQjHbs2TqqyhT5LXJCR5ttVE94g9FPgl+A/t27plpUgw3b9VaM1j
+ YLDBkjO9M/nCUf85pkXKWhb70QYoF/+kfPyZXuFbZCj7SUMvria2XEKdmSaWO1gu8XKQ
+ pBUmCeqnMrjinWXqkLMObl8Q6lrjnZcM468B65uDwF0M6yUHLJLFU3w+7YvZTCc1MViR
+ 0okA==
+X-Gm-Message-State: AOAM530agixzGjqdnDW0cHI1SSima2LYF5kvpCHBTX+JnMyR5VNTPH/P
+ 7JiMcZ11TharusRzx3dEhogVZnPQfhg=
+X-Received: from titusr.svl.corp.google.com
+ ([2620:15c:2a3:201:3a0a:5449:c096:dc84])
+ (user=titusr job=sendgmr) by 2002:a25:a1e4:0:b0:620:f638:3eeb with SMTP id
+ a91-20020a25a1e4000000b00620f6383eebmr27581480ybi.392.1646185863148; Tue, 01
+ Mar 2022 17:51:03 -0800 (PST)
+Date: Tue,  1 Mar 2022 17:50:45 -0800
+In-Reply-To: <20220302015053.1984165-1-titusr@google.com>
+Message-Id: <20220302015053.1984165-2-titusr@google.com>
+Mime-Version: 1.0
+References: <20220302015053.1984165-1-titusr@google.com>
+X-Mailer: git-send-email 2.35.1.616.g0bdcbb4464-goog
+Subject: [PATCH v3 1/9] hw/i2c: pmbus: add registers
+From: Titus Rwantare <titusr@google.com>
+To: Corey Minyard <minyard@acm.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
+ wuhaotsh@google.com, venture@google.com, peter.maydell@linaro.org, 
+ Titus Rwantare <titusr@google.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::531
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b4a
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=ubzeme@gmail.com; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3h80eYgYKCrQncnomlaiiafY.WigkYgo-XYpYfhihaho.ila@flex--titusr.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
+X-Spam_score_int: -81
+X-Spam_score: -8.2
+X-Spam_bar: --------
+X-Spam_report: (-8.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,29 +123,102 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WHkln2OHs4Y4
+X-TUID: qwffQ/b5xHXE
 
-Sorry, I made a mistake.
-The last line in the function, hvf_find_free_slot, introduced in this
-commit "hvf: simplify data structures and codes of memory related
-functions" should be "return NULL;"
+   - add the VOUT_MIN and STATUS_MFR registers
 
-static hvf_slot *hvf_find_free_slot(void)
-{
-    hvf_slot *slot;
-    int x;
-    for (x = 0; x < HVF_NUM_SLOTS; x++) {
-        slot = &memslots[x];
-        if (!slot->size) {
-            return slot;
-        }
-    }
+Signed-off-by: Titus Rwantare <titusr@google.com>
+---
+ hw/i2c/pmbus_device.c         | 24 ++++++++++++++++++++++++
+ include/hw/i2c/pmbus_device.h |  3 +++
+ 2 files changed, 27 insertions(+)
 
-    return NULL;   // <---- This line is changed
-}
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index 24f8f522d9..07a45c99f9 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -368,6 +368,14 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
+         }
+         break;
+ 
++    case PMBUS_VOUT_MIN:        /* R/W word */
++        if (pmdev->pages[index].page_flags & PB_HAS_VOUT_RATING) {
++            pmbus_send16(pmdev, pmdev->pages[index].vout_min);
++        } else {
++            goto passthough;
++        }
++        break;
++
+     /* TODO: implement coefficients support */
+ 
+     case PMBUS_POUT_MAX:                  /* R/W word */
+@@ -708,6 +716,10 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
+         pmbus_send8(pmdev, pmdev->pages[index].status_other);
+         break;
+ 
++    case PMBUS_STATUS_MFR_SPECIFIC:       /* R/W byte */
++        pmbus_send8(pmdev, pmdev->pages[index].status_mfr_specific);
++        break;
++
+     case PMBUS_READ_EIN:                  /* Read-Only block 5 bytes */
+         if (pmdev->pages[index].page_flags & PB_HAS_EIN) {
+             pmbus_send(pmdev, pmdev->pages[index].read_ein, 5);
+@@ -1149,6 +1161,14 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
+         }
+         break;
+ 
++    case PMBUS_VOUT_MIN:                  /* R/W word */
++        if (pmdev->pages[index].page_flags & PB_HAS_VOUT_RATING) {
++            pmdev->pages[index].vout_min = pmbus_receive16(pmdev);
++        } else {
++            goto passthrough;
++        }
++        break;
++
+     case PMBUS_POUT_MAX:                  /* R/W word */
+         if (pmdev->pages[index].page_flags & PB_HAS_VOUT) {
+             pmdev->pages[index].pout_max = pmbus_receive16(pmdev);
+@@ -1482,6 +1502,10 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
+         pmdev->pages[index].status_other = pmbus_receive8(pmdev);
+         break;
+ 
++    case PMBUS_STATUS_MFR_SPECIFIC:        /* R/W byte */
++        pmdev->pages[index].status_mfr_specific = pmbus_receive8(pmdev);
++        break;
++
+     case PMBUS_PAGE_PLUS_READ:            /* Block Read-only */
+     case PMBUS_CAPABILITY:                /* Read-Only byte */
+     case PMBUS_COEFFICIENTS:              /* Read-only block 5 bytes */
+diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
+index 62bd38c83f..72c0483149 100644
+--- a/include/hw/i2c/pmbus_device.h
++++ b/include/hw/i2c/pmbus_device.h
+@@ -43,6 +43,7 @@ enum pmbus_registers {
+     PMBUS_VOUT_DROOP                = 0x28, /* R/W word */
+     PMBUS_VOUT_SCALE_LOOP           = 0x29, /* R/W word */
+     PMBUS_VOUT_SCALE_MONITOR        = 0x2A, /* R/W word */
++    PMBUS_VOUT_MIN                  = 0x2B, /* R/W word */
+     PMBUS_COEFFICIENTS              = 0x30, /* Read-only block 5 bytes */
+     PMBUS_POUT_MAX                  = 0x31, /* R/W word */
+     PMBUS_MAX_DUTY                  = 0x32, /* R/W word */
+@@ -255,6 +256,7 @@ OBJECT_DECLARE_TYPE(PMBusDevice, PMBusDeviceClass,
+ #define PB_HAS_TEMP3               BIT_ULL(42)
+ #define PB_HAS_TEMP_RATING         BIT_ULL(43)
+ #define PB_HAS_MFR_INFO            BIT_ULL(50)
++#define PB_HAS_STATUS_MFR_SPECIFIC BIT_ULL(51)
+ 
+ struct PMBusDeviceClass {
+     SMBusDeviceClass parent_class;
+@@ -295,6 +297,7 @@ typedef struct PMBusPage {
+     uint16_t vout_droop;               /* R/W word */
+     uint16_t vout_scale_loop;          /* R/W word */
+     uint16_t vout_scale_monitor;       /* R/W word */
++    uint16_t vout_min;                 /* R/W word */
+     uint8_t coefficients[5];           /* Read-only block 5 bytes */
+     uint16_t pout_max;                 /* R/W word */
+     uint16_t max_duty;                 /* R/W word */
+-- 
+2.35.1.616.g0bdcbb4464-goog
 
-I will submit a new version of the patch series after I go home.

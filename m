@@ -1,122 +1,110 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp528274lfo;
-        Wed, 2 Mar 2022 00:33:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzuLxlxtEvCje6SsbDXQKLUdbH9LEJp7tpPYqgIK+N+SeePpVm8jAsnijZXpBQPG1VX/+iw
-X-Received: by 2002:a05:6214:4015:b0:433:bc7:2ec8 with SMTP id kd21-20020a056214401500b004330bc72ec8mr9860540qvb.12.1646210038865;
-        Wed, 02 Mar 2022 00:33:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646210038; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp703558lfo;
+        Wed, 2 Mar 2022 05:34:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzwGPRn1apIvaxLI/bJuOxR1Nn0iXssCM2AHWEF4THa9HdE7Nj85o/1xct/j69S5qKjXOhh
+X-Received: by 2002:a5b:804:0:b0:61d:8129:eadf with SMTP id x4-20020a5b0804000000b0061d8129eadfmr29884913ybp.331.1646228047188;
+        Wed, 02 Mar 2022 05:34:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646228047; cv=none;
         d=google.com; s=arc-20160816;
-        b=sgcDvhiWAZOGijMFUEl0F4s83mqtKagMkWTe4XUvomyKSbuQ4N1akGiEwXLoUEg9px
-         A7Xdf1ovhdKZWPNGBb+CdTEB8CZhtTOTEI026AaGPBqURYZmwVIiUcaWOZAg2FxXdDqU
-         nhiis47scKhN6hEn6U8RUUagQSpoLKxlIoPBILuMN4OSeFq4VgD2/2Wz/smKYwIoWdWM
-         IV3u3NQ4bNiJXv1njP+G0QDa/8WQNrgT98LEJ/RqDHRG1bOtoKWrnVjLnTWVnSCl2f5X
-         A+6Ud7tW/4mWHWnLOHy+IR/jKswh4R5fC1ZKKwsT+OkCZJzwKl8/Vdvrn0n8kVa7KOT3
-         vfyg==
+        b=gqbrGIOZjvYWfVldACSUlDW4e4MXUo86YNq1a4qaOXIoqxPMhTMEdSo0aK3rT+ezXu
+         ARXrs4q9r5IHcd/ZI8fg5Wf0d1aXiaIhvyZeyBNwgqx3Jv3Fb3orycUlarSMv1RvVIY/
+         Q8QyTE24sujIgfFaqr5qI1rWDTw4YhxkBBZUGOzaDHFFsLU4L9m7dX3PWQMNPdXDspI8
+         h24IgTF9GHQTYMueWJSkpWr4i2N6eC4Ex+8PN95nonkRmJxVywDCEAoNWSm3ocdwqsw+
+         LB944PBa9cClQa4CMoQhQaiiPUtNUgdvMEC6WSZofIRQxlbeRN4Z2OOe4IZuPbclWHRK
+         PeGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=ins25LCy0g297xla4c9bcObqHdkMT+xeB37D32YWW8I=;
-        b=mFajlaO/7NRE8sj/hlXVzjNo8iobUBDAprV5gtfFBq81EBs/9YTtONQYw3yqaocTUq
-         PBgL0iNEOqigHTonDUHLCVxifMbpb4ePf/TIYzrhtzSh+Na6hKltA8Z4kSKOYbLvfilq
-         X2/3iInXo9XHM8y1lXwANQE+zKwXRmvcVTll41xMQoDWNF1XHJGcepB5k8Hc1SUZB/CQ
-         yyH+xQOQqzKdSSTLpnWiAvS4MNut31aUpIsBmAQqoebrX3qT1CI6sA70EIgOUmMWCYx9
-         bpPskzvWI+XuuhMHAHh4B0x5VcbWqhYx+TrrbR/6krssXX95B22pNi7BU3TPS6ULDL8b
-         fGHg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=Nhm9oD3n5qmfahefXmVTgi6LkffTknx2hqFEXijf4a4=;
+        b=mMBNuYOYAblvLvOewZgwD+9WDxU93r4zsxHiDvIalSpLljX7aAr3/WdK/kcQAS8Cf+
+         wcVt3n2YIqd1eXDWI/kLbHdJNj0Psogqsnro7pP9KryMA/KVZHonMqYPjjmBFJk7R18x
+         8qINZURfEXx0atUyiPZQLWABxeahfgK6vk9FsQ9AcZ/xRYwO+v81Xj23U2vyvSBtHgVa
+         0YDjB4KkbxV4EmElE2dRmm3l1hjd7gDpV/ZK++ZRMPjFOjhN60HXhAjsaEGXb/ONrqkj
+         4Brqf0KKCpEiKfAxEfr3kumGTLFabgl73wetE8IMwTUprt+0iP6Yhiz5NhHJtW/Mk1xE
+         XF9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=QE0s2qcN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fv1-20020a056214240100b0043518a29909si993944qvb.82.2022.03.02.00.33.58
+        by mx.google.com with ESMTPS id a8-20020a056902144800b0062883ba25e6si3631908ybv.685.2022.03.02.05.34.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Mar 2022 00:33:58 -0800 (PST)
+        Wed, 02 Mar 2022 05:34:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39164 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=QE0s2qcN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nPKQo-0006A1-6g
-	for alex.bennee@linaro.org; Wed, 02 Mar 2022 03:33:58 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51018)
+	id 1nPP7G-0002Dp-Jd
+	for alex.bennee@linaro.org; Wed, 02 Mar 2022 08:34:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48430)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nPKQb-00068r-Rg; Wed, 02 Mar 2022 03:33:45 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:5396
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nPKQa-0004GU-5d; Wed, 02 Mar 2022 03:33:45 -0500
-Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 2227sWuQ015405; 
- Wed, 2 Mar 2022 08:33:16 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 3ej4kwgnpw-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 02 Mar 2022 08:33:16 +0000
-Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 2228Tlse024410;
- Wed, 2 Mar 2022 08:33:15 GMT
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.102])
- by mx0b-001b2d01.pphosted.com with ESMTP id 3ej4kwgnpd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 02 Mar 2022 08:33:15 +0000
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
- by ppma06ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 2228ScF5015760;
- Wed, 2 Mar 2022 08:33:14 GMT
-Received: from b06avi18626390.portsmouth.uk.ibm.com
- (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
- by ppma06ams.nl.ibm.com with ESMTP id 3efbfjp2sw-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 02 Mar 2022 08:33:13 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 2228MG5b35455290
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 2 Mar 2022 08:22:16 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 55C0011C04A;
- Wed,  2 Mar 2022 08:33:11 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0440711C04C;
- Wed,  2 Mar 2022 08:33:11 +0000 (GMT)
-Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Wed,  2 Mar 2022 08:33:10 +0000 (GMT)
-Received: from yukon.ibmuc.com (unknown [9.171.58.125])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id E42302201C1;
- Wed,  2 Mar 2022 09:33:09 +0100 (CET)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH] aspeed: Fix a potential memory leak bug in write_boot_rom()
-Date: Wed,  2 Mar 2022 09:33:08 +0100
-Message-Id: <20220302083308.820072-1-clg@kaod.org>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nPO7E-0000Ti-BK
+ for qemu-arm@nongnu.org; Wed, 02 Mar 2022 07:30:00 -0500
+Received: from [2607:f8b0:4864:20::b2f] (port=34507
+ helo=mail-yb1-xb2f.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nPO7C-00016w-Rg
+ for qemu-arm@nongnu.org; Wed, 02 Mar 2022 07:30:00 -0500
+Received: by mail-yb1-xb2f.google.com with SMTP id h126so3065661ybc.1
+ for <qemu-arm@nongnu.org>; Wed, 02 Mar 2022 04:29:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Nhm9oD3n5qmfahefXmVTgi6LkffTknx2hqFEXijf4a4=;
+ b=QE0s2qcNyO1UmhydFEn/J8buLTqtB3PRwXSzhNq0pqKXzaf3fxGlilBDlfUSsl5q9v
+ d+JP4roaF1R6p+h+LGg0BD0j/X9hIyWNF0He2pxtG36zceT7csgngInWtgvTZejLojGY
+ 3nu6aIooA10WGWdg6lGGjLbEs21dblILsRP86Vacj3qo+8Q4mYeEx2u025NVG99OM56O
+ kq+EMSBCraun6aRp8fifxlyyxAm+Lh9TDv/SXJRzzUgyWkIUUfFUfdnM3HD+7WdIz9kV
+ 3BBOwJ8ovB1Rmvp4EZSEApmHGJbqCq6lafJNst43Trw8vU+plPs6MQzCcV48LEwOb75i
+ X95Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Nhm9oD3n5qmfahefXmVTgi6LkffTknx2hqFEXijf4a4=;
+ b=is5jOhXfS/QB1oqcjCwSw9MnGo6lFzrFWASLLLiLI3Mv92YVahNZ4L/Jn/jaVyr00Z
+ 9JRjBQIYDzhgcSiTbniwWjMHWNSC0Z+Yb98K14RLbtmOS3heI4oMNlR96r99E5kKLd3F
+ gjU4WVPG2f1S9/T8fQiJCyEocVajdlgCywqx24s5aC+kG18WupEKNF++iFFmzKEdKUg7
+ BRLuEV9+jxBlX/vz1LMpZDhGvU4Dzh/hu+cIAQHlyJlHNqcDAUOJCCXJ982nJMzmJD7Y
+ ZCyJu1koZPZ1FeWxBRkzDgyFO085CHLKFGviCsZ72DGRykzVKg57XvssKXjXe/Jrfucv
+ gQrQ==
+X-Gm-Message-State: AOAM531NPpPVqfiPiD5NbM8m7Su/rhaBSEyQgslXlQv2sggrs+dg6+e4
+ y9ZvWBQc67mpm3ZGfioxmrJ0U1YVS8jvUYPW1/ooIA==
+X-Received: by 2002:a25:6e84:0:b0:628:97de:9430 with SMTP id
+ j126-20020a256e84000000b0062897de9430mr4111637ybc.288.1646224197848; Wed, 02
+ Mar 2022 04:29:57 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+References: <20220302083308.820072-1-clg@kaod.org>
+In-Reply-To: <20220302083308.820072-1-clg@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 2 Mar 2022 12:29:46 +0000
+Message-ID: <CAFEAcA8V+Jc4eXF+CYay_OoSrZPj7yTGFiGL0omt7+0D-0GQ8w@mail.gmail.com>
+Subject: Re: [PATCH] aspeed: Fix a potential memory leak bug in
+ write_boot_rom()
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: KxdqpoCxck4pB0R8u3v9h1gUpNGNFnz-
-X-Proofpoint-ORIG-GUID: vfjEnt29jw4TqKeEmmdnvzXM79LHObnR
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.816,Hydra:6.0.425,FMLib:17.11.64.514
- definitions=2022-03-02_01,2022-02-26_01,2022-02-23_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 bulkscore=0
- mlxlogscore=843 lowpriorityscore=0 suspectscore=0 phishscore=0 spamscore=0
- clxscore=1034 adultscore=0 malwarescore=0 priorityscore=1501 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2201110000
- definitions=main-2203020034
-Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, KHOP_HELO_FCRDNS=0.187,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b2f
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2f.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,63 +117,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Wentao_Liang <Wentao_Liang_g@163.com>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: Wentao_Liang <Wentao_Liang_g@163.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EOx1hNb2PWNv
+X-TUID: KbLAZ+bJWr9g
 
-From: Wentao_Liang <Wentao_Liang_g@163.com>
+On Wed, 2 Mar 2022 at 08:33, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> From: Wentao_Liang <Wentao_Liang_g@163.com>
+>
+> A memory chunk is allocated with g_new0() and assigned to the variable
+> 'storage'. However, if the branch takes true, there will be only an
+> error report but not a free operation for 'storage' before function
+> returns. As a result, a memory leak bug is triggered.
+>
+> Use g_autofree to fix the issue.
+>
+> Suggested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Signed-off-by: Wentao_Liang <Wentao_Liang_g@163.com>
+> [ clg: reworked the commit log ]
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-A memory chunk is allocated with g_new0() and assigned to the variable
-'storage'. However, if the branch takes true, there will be only an
-error report but not a free operation for 'storage' before function
-returns. As a result, a memory leak bug is triggered.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Use g_autofree to fix the issue.
-
-Suggested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Signed-off-by: Wentao_Liang <Wentao_Liang_g@163.com>
-[ clg: reworked the commit log ]
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 11558b327bc9..b71bc2559baa 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -246,7 +246,7 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr a=
-ddr, size_t rom_size,
-                            Error **errp)
- {
-     BlockBackend *blk =3D blk_by_legacy_dinfo(dinfo);
--    uint8_t *storage;
-+    g_autofree void *storage =3D NULL;
-     int64_t size;
-=20
-     /* The block backend size should have already been 'validated' by
-@@ -262,14 +262,13 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr=
- addr, size_t rom_size,
-         rom_size =3D size;
-     }
-=20
--    storage =3D g_new0(uint8_t, rom_size);
-+    storage =3D g_malloc0(rom_size);
-     if (blk_pread(blk, 0, storage, rom_size) < 0) {
-         error_setg(errp, "failed to read the initial flash content");
-         return;
-     }
-=20
-     rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
--    g_free(storage);
- }
-=20
- static void aspeed_board_init_flashes(AspeedSMCState *s,
---=20
-2.34.1
-
+thanks
+-- PMM

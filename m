@@ -1,97 +1,97 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp335868lfo;
-        Tue, 1 Mar 2022 17:52:00 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyOeEDFRlgXDedQxZg0bd9n38jA353WR14tZFoUwQGQ7s6RURDIZhKIlaQ4GyvKVGQX9lwW
-X-Received: by 2002:a0d:dd01:0:b0:2dc:2a9:9429 with SMTP id g1-20020a0ddd01000000b002dc02a99429mr2818069ywe.457.1646185919968;
-        Tue, 01 Mar 2022 17:51:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646185919; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp337102lfo;
+        Tue, 1 Mar 2022 17:54:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwoeO2BFkELBYNgxccf76jdY78YCdXY1r6fnRVeBq0d4V22MDGWJAvAh59YUa1zGOwFFLFU
+X-Received: by 2002:a81:a394:0:b0:2db:d877:7415 with SMTP id a142-20020a81a394000000b002dbd8777415mr7034243ywh.446.1646186073961;
+        Tue, 01 Mar 2022 17:54:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646186073; cv=none;
         d=google.com; s=arc-20160816;
-        b=QK1zoLjM+InmaW6Unwzi4iyWas+zyxDm1sNli1PpL/XqZ3Ns0aCZY4y1Y0VtUvUXuh
-         BL2cHX+DWpymWRyG5kFaI1kYBIi+VSsRrXnTVkfj93yesAIptJCw79w2efTQTFNvajh4
-         IovD1ACIS4IVpWqYNcfGvziqVXS1GMuQpEWLxS3m7yuiVYK4/XlppTRSlgsEtEt0I71E
-         /VTsVLZBeXM5IeGsmEB0I88MhfAa/E2qVf5jYX48X2d6kgvSEjF//98KITGmqKpGaJXD
-         nn1TLjbG1N6vxBts45/SPQKLR1mE9TC8sVjYTogju7RHkZ0ukn0IneEwKuE5ifhvK12v
-         EWUA==
+        b=s2gUEqlkedLwVHL8135Wj9J+8dlxb1KYbIrdwvABOP24862OzBtqZs8uhPvVHhLjj0
+         nGf6ZYoUweC5yXQIWdkIY0LVgcVsqCHXt+8qshuLzWAp9198lZCxsoDQNurOONwhuOod
+         obaivKOx6O2CFs2Fcjv+AXHDTNw+61qys+AdFACsk5jnvNhHWaJy50ZRs4+KmMWHrhUP
+         GJPnT79H2qFlDwJ0huTAV4Ow/KKiNUuvIJQzIrxi4TxkkDfhhRMl1FmleUpC9Z/rxT8s
+         NE2FHjGXoaFsir//FWDvR2BimIGOT/5ohXs22/sQxyijSfwZXNKFB9Gp5aBZZdzLFNKy
+         JZjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
          :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=XYN59VvRX2AT2pHQ1lvOa3ZDRpcLJvwu4TLeEW0HOpM=;
-        b=uqhtVqLNkorv/L78PDoYSs7pSihMLqwP0O128I33XO1/CyHoSD3NKn40YuJQi6VnU7
-         FWw+1P0eUfgB6eB8fgOtRrhyfTAVSKBi701PM+JDq2NpdYApRJuDPUpc3D7jhAsLYaOB
-         jGtGhIbD8Vp4rdj0b7ZjaLbn8r3+Ob7SnC+XRqSEyGkP4o3IWGX4aS5ZPAlGW4nAXld1
-         lIhF1dOKU0pPeicRCPVmPxz1gMwMLotuJKHqDpu2ztlamjUXcqcTLOvfTshzi3RrHTdh
-         bH2HyUtElxJLDWWXj/Wz1m47nugPAwIBbpTucRT48vVBMY7xnV7a59U01hEGHmMI+Uyz
-         Zt4w==
+        bh=ApmW83I1y/dWKJM+pAqI6WOG1YyRSlMqjhVaQd8jSwk=;
+        b=dzKJglNvGwGxEAC7pFaXT593BnIG1VBfLcG3UYMVWV6Lm9OBJ+8bTBbdpGC3JKqxit
+         /egQjoEILFMxScbmtcKwoRZKnNpwxyAQqOvP6bLAYQK9qzd80PJIXw5Sbfygzq69+VFb
+         mf8eHwPdVlto+IL6PDmL8/hpIdzk3nQIDEDVQnnNhEQ9/Op0CIMOga1w576OFZjYF/+9
+         fKiq4/REkBCe12QrFK6ZHzrdCPuE5HWBPc0R1ZiutaiEZWAB3YqsGaafBbtRi6DF/cMT
+         vEk+C/IbFYs0SBg/yrVjFli5xMtTmvd8bn2uVrlkB4cCX0BrddPdhewYBhI616XrXPSG
+         K61Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b="MV+po+e/";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=SqIoliy3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y80-20020a253253000000b00628780bdce4si3033001yby.178.2022.03.01.17.51.59
+        by mx.google.com with ESMTPS id x5-20020a056902102500b006288efa6743si3072570ybt.424.2022.03.01.17.54.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Mar 2022 17:51:59 -0800 (PST)
+        Tue, 01 Mar 2022 17:54:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b="MV+po+e/";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=SqIoliy3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:40002 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46810 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nPE9n-0008FR-CJ
-	for alex.bennee@linaro.org; Tue, 01 Mar 2022 20:51:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59968)
+	id 1nPECH-0004T4-Bq
+	for alex.bennee@linaro.org; Tue, 01 Mar 2022 20:54:33 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59782)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3l80eYgYKCsQ3s3421qyyqvo.myw0ow4-no5ovxyxqx4.y1q@flex--titusr.bounces.google.com>)
- id 1nPE9E-000805-RB
- for qemu-devel@nongnu.org; Tue, 01 Mar 2022 20:51:25 -0500
-Received: from [2607:f8b0:4864:20::b49] (port=34564
+ <3js0eYgYKCrsujuvtshpphmf.dpnrfnv-efwfmopohov.psh@flex--titusr.bounces.google.com>)
+ id 1nPE93-0007Ol-58
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 20:51:13 -0500
+Received: from [2607:f8b0:4864:20::b49] (port=50796
  helo=mail-yb1-xb49.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3l80eYgYKCsQ3s3421qyyqvo.myw0ow4-no5ovxyxqx4.y1q@flex--titusr.bounces.google.com>)
- id 1nPE9A-00052F-NW
- for qemu-devel@nongnu.org; Tue, 01 Mar 2022 20:51:24 -0500
+ <3js0eYgYKCrsujuvtshpphmf.dpnrfnv-efwfmopohov.psh@flex--titusr.bounces.google.com>)
+ id 1nPE91-0004z7-K0
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 20:51:12 -0500
 Received: by mail-yb1-xb49.google.com with SMTP id
- w6-20020a25c706000000b006287a0164f2so233710ybe.1
- for <qemu-devel@nongnu.org>; Tue, 01 Mar 2022 17:51:19 -0800 (PST)
+ l3-20020a25ad43000000b0062462e2af34so169523ybe.17
+ for <qemu-devel@nongnu.org>; Tue, 01 Mar 2022 17:51:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=XYN59VvRX2AT2pHQ1lvOa3ZDRpcLJvwu4TLeEW0HOpM=;
- b=MV+po+e/sBetw1KkpnnzutywaPCPIZtFE/1tcNOBan4KGh/Q7ODhe62/a2tfvSl96w
- NS1I0UvJE4sx3FuIg3jr0oZG654mni+rU6ua3G07hl7Uc6XAtldIVuX6uJ5BbjnGjUF0
- /FOV0Xko5BbZ2DKuSY7ZKTlLsNOVyggU51pWgJGWBIW8nYjAJjhucTjz48VuU6SvpKHS
- dNIJm9UX+rkSlkSheu3d6RgMrA++Rb8VjPKKsM5T0usoyaj/aO+0eRfKljkjOqQGPYPI
- 8pdoLuir+/a3pMV3gGcG+ivy1kXWmbT5Q2DBJ+Lt8tfXH8Kec2z9hu9s3LYShWWXKrj3
- fFFQ==
+ :cc; bh=ApmW83I1y/dWKJM+pAqI6WOG1YyRSlMqjhVaQd8jSwk=;
+ b=SqIoliy3lDusv4uqOdSc0uOQoZy32GKDrdvHUOEkJ00ezi/isXq+XJNHxj1U2RlswW
+ 6Y7Op4BYTD3ADaHy/6uRHn6KtjYYDvIxuOMPvI5lkyu5pDTZNl/nejQ1jUqICWVKy/xz
+ RrwIzKo0AOoHk22JULXfQD9F3d/gz592yentVM9pBy3bqVApjuI7+/q2IeIbt0FhRg2S
+ gZMU7kYn7b4Tq5cGIk71OUq4Z0M9UXXzhCqxEALiGbXI3/U84g70oQZ7ZrE02dP9YNzs
+ ysAd5cUFXcOP/yjEfI4pZNP+As1r2G3UbTg7PqEgLdJOog4lQX/Tgb5rPeLKh0DVoK78
+ QEgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=XYN59VvRX2AT2pHQ1lvOa3ZDRpcLJvwu4TLeEW0HOpM=;
- b=UENxp5u78pqg/tSmWvDu2yorduhPOTIHBaqy9Z1ioP4CgH7VuZopaBuXr2+N1a6P5b
- UcmssKrcnGEzr4aJrCYAhxA2AWFOqpMdnZ7dZjqB077MkCFB7oPpR4NmseQMpRtOY4Qe
- JFs5jPI7JOPs4Tc0X7ngm0fy6bMpF7WsfStfeZWbV2Rx/jUqBaWjkoHog2cuyItRHQV8
- 354rT4EboOv1fq9nwqy6vuvCvPISXXTExS8C5GRmMzejBfENTMjGKM4dQTuq+hpzFtmC
- OkLnKnFPVXMUHS5kxdDWWwYoNHjed5aNcIljXM4/2c5a/8yyEGxo7NI8xJsvzU1mhv8O
- cYqw==
-X-Gm-Message-State: AOAM533R7IjmhAd0AWrmJqckVht9CxLOYBk55gjQlbhlsijMpnbp8nOq
- E/Pc8+2HaNXbQXnJt/msiNajWxFBKE8=
+ bh=ApmW83I1y/dWKJM+pAqI6WOG1YyRSlMqjhVaQd8jSwk=;
+ b=VnxsDAlN8/ukTCNcZ7QT4OxX1PmoEb2ZhlSFq9NuQUmelxc4AtxflfNGz9hCrrLu2g
+ CNJCp7oB7xVYxIHXZ500PF2UgRpLXDfrve9NcL2x9zvxk1Zq9r/vC36BWODXV0YmHB+n
+ x+kcDHhVbmb3eBeDouT8sJY+L+ty9wFLii+sC3e94PxU71M9CHMDhl5GdcohKFxNeVb1
+ ESEMPzYDjCHJNiD9rTND+MISXlCCcq6g5jirgw5+gDEKd7R9O/2LEg0LrjpwWn/MBpJw
+ zwJAUd0vxWiV/FKMIV3TaG7oWY9oGzP/ToS1xR3Vu5Q1e9vxN6Eaeo+52EkkQ87TyyCv
+ DL+w==
+X-Gm-Message-State: AOAM533siLgtJki6SVo+t2AyChNv0eG/Sgae/6RD3lookWPshGXftlVq
+ TlgRaYxVfA5kDf6z04mRWiDyyilj7a8=
 X-Received: from titusr.svl.corp.google.com
  ([2620:15c:2a3:201:3a0a:5449:c096:dc84])
- (user=titusr job=sendgmr) by 2002:a81:d85:0:b0:2d1:1b8d:f236 with SMTP id
- 127-20020a810d85000000b002d11b8df236mr27961440ywn.212.1646185879400; Tue, 01
- Mar 2022 17:51:19 -0800 (PST)
-Date: Tue,  1 Mar 2022 17:50:52 -0800
+ (user=titusr job=sendgmr) by 2002:a25:ae06:0:b0:624:42b0:3c7b with SMTP id
+ a6-20020a25ae06000000b0062442b03c7bmr27615822ybj.535.1646185870175; Tue, 01
+ Mar 2022 17:51:10 -0800 (PST)
+Date: Tue,  1 Mar 2022 17:50:48 -0800
 In-Reply-To: <20220302015053.1984165-1-titusr@google.com>
-Message-Id: <20220302015053.1984165-9-titusr@google.com>
+Message-Id: <20220302015053.1984165-5-titusr@google.com>
 Mime-Version: 1.0
 References: <20220302015053.1984165-1-titusr@google.com>
 X-Mailer: git-send-email 2.35.1.616.g0bdcbb4464-goog
-Subject: [PATCH v3 8/9] hw/sensor: add Renesas raa229004 PMBus device
+Subject: [PATCH v3 4/9] hw/i2c: pmbus: refactor uint handling
 From: Titus Rwantare <titusr@google.com>
 To: Corey Minyard <minyard@acm.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
@@ -101,7 +101,7 @@ Content-Type: text/plain; charset="UTF-8"
 X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b49
  (failed)
 Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3l80eYgYKCsQ3s3421qyyqvo.myw0ow4-no5ovxyxqx4.y1q@flex--titusr.bounces.google.com;
+ envelope-from=3js0eYgYKCrsujuvtshpphmf.dpnrfnv-efwfmopohov.psh@flex--titusr.bounces.google.com;
  helo=mail-yb1-xb49.google.com
 X-Spam_score_int: -81
 X-Spam_score: -8.2
@@ -125,93 +125,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ewoJa6uMHN/Q
+X-TUID: AJCFEETu7qOb
 
-The Renesas RAA229004 is a PMBus Multiphase Voltage Regulator
+This change cleans up the inputs to pmbus_receive uint, the length of
+received data is contained in PMBusDevice state and doesn't need to be
+passed around.
 
 Signed-off-by: Titus Rwantare <titusr@google.com>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
 ---
- hw/sensor/isl_pmbus_vr.c         | 18 ++++++++++++++++++
- include/hw/sensor/isl_pmbus_vr.h |  1 +
- tests/qtest/isl_pmbus_vr-test.c  |  8 ++++++++
- 3 files changed, 27 insertions(+)
+ hw/i2c/pmbus_device.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
-index b3d24e40ab..e260faeac3 100644
---- a/hw/sensor/isl_pmbus_vr.c
-+++ b/hw/sensor/isl_pmbus_vr.c
-@@ -195,6 +195,15 @@ static void isl69260_class_init(ObjectClass *klass, void *data)
-     isl_pmbus_vr_class_init(klass, data, 2);
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index 6eeb0731d7..3beb02afad 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -89,16 +89,16 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
  }
  
-+static void raa229004_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->desc = "Renesas 229004 Digital Multiphase Voltage Regulator";
-+    rc->phases.exit = isl_pmbus_vr_exit_reset;
-+    isl_pmbus_vr_class_init(klass, data, 2);
-+}
-+
- static const TypeInfo isl69260_info = {
-     .name = TYPE_ISL69260,
-     .parent = TYPE_PMBUS_DEVICE,
-@@ -203,9 +212,18 @@ static const TypeInfo isl69260_info = {
-     .class_init = isl69260_class_init,
- };
  
-+static const TypeInfo raa229004_info = {
-+    .name = TYPE_RAA229004,
-+    .parent = TYPE_PMBUS_DEVICE,
-+    .instance_size = sizeof(ISLState),
-+    .instance_init = raa22xx_init,
-+    .class_init = raa229004_class_init,
-+};
-+
- static void isl_pmbus_vr_register_types(void)
+-static uint64_t pmbus_receive_uint(const uint8_t *buf, uint8_t len)
++static uint64_t pmbus_receive_uint(PMBusDevice *pmdev)
  {
-     type_register_static(&isl69260_info);
-+    type_register_static(&raa229004_info);
+     uint64_t ret = 0;
+ 
+     /* Exclude command code from return value */
+-    buf++;
+-    len--;
++    pmdev->in_buf++;
++    pmdev->in_buf_len--;
+ 
+-    for (int i = len - 1; i >= 0; i--) {
+-        ret = ret << 8 | buf[i];
++    for (int i = pmdev->in_buf_len - 1; i >= 0; i--) {
++        ret = ret << 8 | pmdev->in_buf[i];
+     }
+     return ret;
+ }
+@@ -110,7 +110,7 @@ uint8_t pmbus_receive8(PMBusDevice *pmdev)
+                       "%s: length mismatch. Expected 1 byte, got %d bytes\n",
+                       __func__, pmdev->in_buf_len - 1);
+     }
+-    return pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
++    return pmbus_receive_uint(pmdev);
  }
  
- type_init(isl_pmbus_vr_register_types)
-diff --git a/include/hw/sensor/isl_pmbus_vr.h b/include/hw/sensor/isl_pmbus_vr.h
-index 4e12e95efb..233916f70a 100644
---- a/include/hw/sensor/isl_pmbus_vr.h
-+++ b/include/hw/sensor/isl_pmbus_vr.h
-@@ -13,6 +13,7 @@
- #include "qom/object.h"
- 
- #define TYPE_ISL69260   "isl69260"
-+#define TYPE_RAA229004  "raa229004"
- 
- struct ISLState {
-     PMBusDevice parent;
-diff --git a/tests/qtest/isl_pmbus_vr-test.c b/tests/qtest/isl_pmbus_vr-test.c
-index f77732ae96..a33dfb6135 100644
---- a/tests/qtest/isl_pmbus_vr-test.c
-+++ b/tests/qtest/isl_pmbus_vr-test.c
-@@ -384,11 +384,19 @@ static void isl_pmbus_vr_register_nodes(void)
-     qos_node_create_driver("isl69260", i2c_device_create);
-     qos_node_consumes("isl69260", "i2c-bus", &opts);
- 
-+    qos_node_create_driver("raa229004", i2c_device_create);
-+    qos_node_consumes("raa229004", "i2c-bus", &opts);
-+
-     qos_add_test("test_defaults", "isl69260", test_defaults, NULL);
-     qos_add_test("test_tx_rx", "isl69260", test_tx_rx, NULL);
-     qos_add_test("test_rw_regs", "isl69260", test_rw_regs, NULL);
-     qos_add_test("test_pages_rw", "isl69260", test_pages_rw, NULL);
-     qos_add_test("test_ro_regs", "isl69260", test_ro_regs, NULL);
-     qos_add_test("test_ov_faults", "isl69260", test_voltage_faults, NULL);
-+
-+    qos_add_test("test_tx_rx", "raa229004", test_tx_rx, NULL);
-+    qos_add_test("test_rw_regs", "raa229004", test_rw_regs, NULL);
-+    qos_add_test("test_pages_rw", "raa229004", test_pages_rw, NULL);
-+    qos_add_test("test_ov_faults", "raa229004", test_voltage_faults, NULL);
+ uint16_t pmbus_receive16(PMBusDevice *pmdev)
+@@ -120,7 +120,7 @@ uint16_t pmbus_receive16(PMBusDevice *pmdev)
+                       "%s: length mismatch. Expected 2 bytes, got %d bytes\n",
+                       __func__, pmdev->in_buf_len - 1);
+     }
+-    return pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
++    return pmbus_receive_uint(pmdev);
  }
- libqos_init(isl_pmbus_vr_register_nodes);
+ 
+ uint32_t pmbus_receive32(PMBusDevice *pmdev)
+@@ -130,7 +130,7 @@ uint32_t pmbus_receive32(PMBusDevice *pmdev)
+                       "%s: length mismatch. Expected 4 bytes, got %d bytes\n",
+                       __func__, pmdev->in_buf_len - 1);
+     }
+-    return pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
++    return pmbus_receive_uint(pmdev);
+ }
+ 
+ uint64_t pmbus_receive64(PMBusDevice *pmdev)
+@@ -140,7 +140,7 @@ uint64_t pmbus_receive64(PMBusDevice *pmdev)
+                       "%s: length mismatch. Expected 8 bytes, got %d bytes\n",
+                       __func__, pmdev->in_buf_len - 1);
+     }
+-    return pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
++    return pmbus_receive_uint(pmdev);
+ }
+ 
+ static uint8_t pmbus_out_buf_pop(PMBusDevice *pmdev)
 -- 
 2.35.1.616.g0bdcbb4464-goog
 

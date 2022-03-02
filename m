@@ -1,108 +1,108 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp338244lfo;
-        Tue, 1 Mar 2022 17:56:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxn2zy9llLZbW8eRSWZ/05UzEB/qETC9tG9MFVbA1e84fSpSzOYdLWGoJibOnOv5occ5I+e
-X-Received: by 2002:a81:5d02:0:b0:2d1:41bb:38b1 with SMTP id r2-20020a815d02000000b002d141bb38b1mr28445096ywb.5.1646186211019;
-        Tue, 01 Mar 2022 17:56:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646186211; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp338650lfo;
+        Tue, 1 Mar 2022 17:57:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxr7MzcT8PigR7p6LakOaDh/meKQQclRbQJMmQEGxuKRuAK/adnBwNdH9FIskMw0q/R33wA
+X-Received: by 2002:a25:bf90:0:b0:621:1a13:48f with SMTP id l16-20020a25bf90000000b006211a13048fmr26767787ybk.46.1646186252672;
+        Tue, 01 Mar 2022 17:57:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646186252; cv=none;
         d=google.com; s=arc-20160816;
-        b=YhNkH2D0z/7EAey6Q0Cp6OcVGrIroclsaBjkbN5Drn3fRYi+jBt6zuxyLDUVtxHo8L
-         7JJTLb1WztnBC3eldsuB7MFIvHO6pcjPoqh6kBPHZDMHnXkNehg0KRn9iq6tGKxrYa1g
-         DTENuOnXQWA2fSxluqas+b06WljdKSGFvUoPCTe4MLJWgmPDlLzuI+p2TFJqvUyM+D0u
-         S+0eDJryGw80fderKAfq1MunpmeOSphopLptyk/qUZYI1vCpJ+ZDJgXIJYvq0dG+fy4y
-         WfKIOHKSK4dYbfxFQoQFjK0no+eh0/iqxkRzd+hNVsHqmEcGkZ+kaCeNR+fHcLaqfJm9
-         6Mmg==
+        b=KpkzlYnm70+2h2xEgJap6nGRPnsmO9JoD8QLS7i1cHniHp/K/n0ZTsHCjH+8hrqilr
+         8QQ6hsDPmRKpGZm7S884UKiGZETjZ9sWUlfmw/2AobEdCDzqhUGgl8zT7oEqI3JJg3o/
+         qe7w5xxPL7jp300fD8Frg+DC/J2J5k9kAcX7804yE/LjgLhMzKBhrMqAUc2gGBsXN1OH
+         H9D5DHez8x5erutjKGF9QK0JnVIU6X2VHs82NDU3oNxpr8usZuLeBDJYqe6LEgfpWoGz
+         PW5OtWGvnG7RX6QG/Ed8/vwlBQvvtkx7M7NRGFDVwU4u6IsfKR61NbDgxZfaDRhjODOL
+         L4Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
          :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=Y2EUdWJWmuYng2riwpVs90eiRzjJjFCIkE+E1jmTD+Y=;
-        b=BaxflAG36jW1BfaLBA53kWrnM3UDrYLA15DO2Lbpk4KZnUuzRgdf9x3bTQ/9YzfYhX
-         qtKtrMhSnQ1nmh21Yb8SXMvBCQJ0gwgPWcmxzv1rwu+9UrRMQFnDom03vKV/8k9WdPDP
-         MbTNdLW+CyqUiN/p6v5Y5D+mokZB61ftjSiThOwx8vl1SfAoXIRqA+VIrVzkPicGMRuR
-         o0ztPUR3Gzi9mkPJuOOpGFdgcmb9TGBSlz+aoZM6OxaDX5gguIkhElyL4YP/9FZc/Qqq
-         PjnuZqSVrsb+/2bdHnvquQmvBKM1vxWaIp0VCP7gfIuasXToeZJshS2jfMmidi2beIqj
-         j89w==
+        bh=iGy5AoMooNtuvyOeDJtUyYLQNLcqWDLIcHmLmUhSrng=;
+        b=U/p3AXIzAvZ9acrRlnn9y0Qm7ACodfyAuCJFUIt3B4D3VFzX8faYfWeH5fElk44h/R
+         2uOrfg1IS4nui0+zPgwPYnzhW2bkZo5nxckk5veQemroCRQagqXk7Hr6OXy2iAzzPgG1
+         ttImVktH8m7HEO2G/iY0fu3e061mWOmE/xCmKh79lWh4hKe89Jb+eTHka/LQH5nukAwo
+         ZFqA1smKILOriDXW2gmKoknTLuN62zvnbxyjWctJpAoa4UWRRpBjihyTv3mFTSf0Q6Bg
+         5BGwWslIbHzRlz5migpE04cX3YmFbn7vyuNe8itYl99EoUz4D9AkYOwQC1NXudbE70Ir
+         wK5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=qEl+OFcT;
+       dkim=pass header.i=@google.com header.s=20210112 header.b="emM/uglx";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x129-20020a81a087000000b002d035ccfa84si12670768ywg.296.2022.03.01.17.56.50
+        by mx.google.com with ESMTPS id h5-20020a812105000000b002dc022c4109si1754235ywh.312.2022.03.01.17.57.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Mar 2022 17:56:51 -0800 (PST)
+        Tue, 01 Mar 2022 17:57:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=qEl+OFcT;
+       dkim=pass header.i=@google.com header.s=20210112 header.b="emM/uglx";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:50208 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50876 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nPEEU-0006wI-Fk
-	for alex.bennee@linaro.org; Tue, 01 Mar 2022 20:56:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34598)
+	id 1nPEF9-0007PW-Rh
+	for alex.bennee@linaro.org; Tue, 01 Mar 2022 20:57:32 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34800)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3ic0eYgYKCrYpepqonckkcha.Ykimaiq-Zarahjkjcjq.knc@flex--titusr.bounces.google.com>)
- id 1nPEEI-0006tZ-2f
- for qemu-devel@nongnu.org; Tue, 01 Mar 2022 20:56:38 -0500
-Received: from [2607:f8b0:4864:20::114a] (port=49593
- helo=mail-yw1-x114a.google.com)
+ <3mc0eYgYKCsY5u5643s00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--titusr.bounces.google.com>)
+ id 1nPEF4-0007Lh-OK
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 20:57:26 -0500
+Received: from [2607:f8b0:4864:20::1049] (port=47020
+ helo=mail-pj1-x1049.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3ic0eYgYKCrYpepqonckkcha.Ykimaiq-Zarahjkjcjq.knc@flex--titusr.bounces.google.com>)
- id 1nPEEG-00071l-If
- for qemu-devel@nongnu.org; Tue, 01 Mar 2022 20:56:37 -0500
-Received: by mail-yw1-x114a.google.com with SMTP id
- 00721157ae682-2d7b96d74f8so1601827b3.16
- for <qemu-devel@nongnu.org>; Tue, 01 Mar 2022 17:56:32 -0800 (PST)
+ <3mc0eYgYKCsY5u5643s00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--titusr.bounces.google.com>)
+ id 1nPEF2-00077t-Vl
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 20:57:26 -0500
+Received: by mail-pj1-x1049.google.com with SMTP id
+ m3-20020a17090a3f8300b001bd33af55f2so342681pjc.1
+ for <qemu-devel@nongnu.org>; Tue, 01 Mar 2022 17:57:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=Y2EUdWJWmuYng2riwpVs90eiRzjJjFCIkE+E1jmTD+Y=;
- b=qEl+OFcT9yLNf7Mf4ZBx0+iKJjmHzm1punbcHsKE3Fe7aiFV5geWkEG69ADOph1W56
- 9govhiEtUvun7rCaJ9mdMfxi/u5XTX6ThAic9HabYDHl9KMICSMhHE34Rrj/tt180wWm
- wlvo1//imQ8NqsiPfhVy+9QuM+D7grqMgPe+9xRhSRkDhM6fSBE2raixHCJ/SZx7EmaT
- HXw1rf81m1C5doG3AjrZXLQnlrEowppQ4jl8k/ppttmCMBKju68hU6vWuWbtZ3Q58fBL
- 9bL/7G7kAXwrE2YkgGhSfSlyfKG146l7AuTqBFai5WJaKXxo+MInjSaVRyBgmXIaSOCv
- yp3Q==
+ :cc; bh=iGy5AoMooNtuvyOeDJtUyYLQNLcqWDLIcHmLmUhSrng=;
+ b=emM/uglxYA8a1mQ4OM6kZupI/AnoPIzZpWwJTEQJzJVv1LXNolOhIEk+Sxikmo3ahJ
+ MWNvMgk5El5OajGL3KzRwtQOFlRrfSZgaQmxSELxfbhWjFiZ/mbYB1DeTGCN8CoE6bGt
+ zCpF12t3vLXh0JiQztIWntEV4nBSLEgKlxsJomCxaH4C39qF4KxHEz7L3SgZUeQjO+6k
+ lstu8KVPM+kFX9ZtXvyxLgKjtqoJUEc5rlplkGex7xP9R/3c1br/bXxNAxGR5BTpgSBS
+ zfZx+r+QQzbSEcZ44kqlTOv2uihPmMoojPDAJj8uRo3FSvNFdanbqcAZn8u210dycQlH
+ m+sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=Y2EUdWJWmuYng2riwpVs90eiRzjJjFCIkE+E1jmTD+Y=;
- b=1mccq0AQ3jrpyDaFVROb8T/nYj3lQ4zI8nW234HR/Ga1xJLEVofnkobTx5DqzNdRKv
- ussIU2RhPhLdSzlq0pb9LaT6J2vN98/XsxRCNYptZKH1YTrZ/jHPBRYSo9VndaovitUw
- IlBHI4ugo5t2EwFNsvDnZrU5YpE1PO8BXQ6tSokaTXkWaUn9imZRxjhyLQTNj8D6Aru8
- IzyOgV5gDop3IglUMmH5PKII1l/brAfVNrLDP5kcOt49isQPeaPX4fhpNdHk8eFYLbxQ
- gG2qTni4nFNQSbKquDsADCzklGRKBF9k9NIQXfRLBqnFWYrdyBrrBYLObqEozPD7aojx
- niBw==
-X-Gm-Message-State: AOAM530g9P/cJxoU9Dq3Agld5goSdxPA4lsJkah468HP/qd0wrcMketf
- +yA/dIXbXhj+Ipd4LAHd2jO+N0G5t5s=
+ bh=iGy5AoMooNtuvyOeDJtUyYLQNLcqWDLIcHmLmUhSrng=;
+ b=ZXxuwtw5iRmSUMmoZBfyrPoF/3brCmV/Si36UwCIN4/JSdNl/EAFehH4gYB3t5Y1Ol
+ eO2hx6wXcEbnv/cG9ULMmOJBn05fbubLL21ewuE0Hc+FTnF/t45E9ywU0nzdsiF1v50g
+ izA51fiWnJfrk93sQQrFCyb9dxXDZK8MLbQHcEe1aI7UGuLTg7/KZpXVuCHCEJUZ2rbn
+ /dd7IQNHDOMepKermHP4BNCnliPTHszvuc3U/ss7mHNVIQIva2tUqO6lVeMkRFK0sIQ3
+ MV12gAm8vFgCvmhF7135BjeUkLgBq9RIDcj7MoLq6WCMesvqGNiq3DVbfgQksw5+XbIN
+ SP/A==
+X-Gm-Message-State: AOAM5313zTMmynMy/wxD6QbDrUNHPvYgC3WoINEL9PqLgWax2QWcwGTg
+ ruAnoDAQSPp9zSMpk9LfXnymuX1KlmM=
 X-Received: from titusr.svl.corp.google.com
  ([2620:15c:2a3:201:3a0a:5449:c096:dc84])
- (user=titusr job=sendgmr) by 2002:a25:8886:0:b0:624:50e0:3428 with SMTP id
- d6-20020a258886000000b0062450e03428mr26995177ybl.552.1646185865540; Tue, 01
- Mar 2022 17:51:05 -0800 (PST)
-Date: Tue,  1 Mar 2022 17:50:46 -0800
+ (user=titusr job=sendgmr) by 2002:a63:1f42:0:b0:378:7fb4:6491 with SMTP id
+ q2-20020a631f42000000b003787fb46491mr13665534pgm.478.1646185881975; Tue, 01
+ Mar 2022 17:51:21 -0800 (PST)
+Date: Tue,  1 Mar 2022 17:50:53 -0800
 In-Reply-To: <20220302015053.1984165-1-titusr@google.com>
-Message-Id: <20220302015053.1984165-3-titusr@google.com>
+Message-Id: <20220302015053.1984165-10-titusr@google.com>
 Mime-Version: 1.0
 References: <20220302015053.1984165-1-titusr@google.com>
 X-Mailer: git-send-email 2.35.1.616.g0bdcbb4464-goog
-Subject: [PATCH v3 2/9] hw/i2c: pmbus: guard against out of range accesses
+Subject: [PATCH v3 9/9] hw/sensor: add Renesas raa228000 device
 From: Titus Rwantare <titusr@google.com>
 To: Corey Minyard <minyard@acm.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
  wuhaotsh@google.com, venture@google.com, peter.maydell@linaro.org, 
  Titus Rwantare <titusr@google.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::114a
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1049
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
- envelope-from=3ic0eYgYKCrYpepqonckkcha.Ykimaiq-Zarahjkjcjq.knc@flex--titusr.bounces.google.com;
- helo=mail-yw1-x114a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
+ envelope-from=3mc0eYgYKCsY5u5643s00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--titusr.bounces.google.com;
+ helo=mail-pj1-x1049.google.com
 X-Spam_score_int: -81
 X-Spam_score: -8.2
 X-Spam_bar: --------
@@ -125,90 +125,219 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uJeFqXYnm56f
+X-TUID: t3vJt5LLvsAA
 
 Signed-off-by: Titus Rwantare <titusr@google.com>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
 ---
- hw/i2c/pmbus_device.c | 41 ++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 40 insertions(+), 1 deletion(-)
+ hw/sensor/isl_pmbus_vr.c         | 50 ++++++++++++++++++++
+ include/hw/sensor/isl_pmbus_vr.h |  1 +
+ tests/qtest/isl_pmbus_vr-test.c  | 78 ++++++++++++++++++++++++++++++--
+ 3 files changed, 126 insertions(+), 3 deletions(-)
 
-diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index 07a45c99f9..93c746bab3 100644
---- a/hw/i2c/pmbus_device.c
-+++ b/hw/i2c/pmbus_device.c
-@@ -243,18 +243,47 @@ void pmbus_check_limits(PMBusDevice *pmdev)
+diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
+index e260faeac3..df7c003ea6 100644
+--- a/hw/sensor/isl_pmbus_vr.c
++++ b/hw/sensor/isl_pmbus_vr.c
+@@ -89,6 +89,24 @@ static void isl_pmbus_vr_exit_reset(Object *obj)
      }
  }
  
-+/* assert the status_cml error upon receipt of malformed command */
-+static void pmbus_cml_error(PMBusDevice *pmdev)
++/* The raa228000 uses different direct mode coefficents from most isl devices */
++static void raa228000_exit_reset(Object *obj)
 +{
-+    for (int i = 0; i < pmdev->num_pages; i++) {
-+        pmdev->pages[i].status_word |= PMBUS_STATUS_CML;
-+        pmdev->pages[i].status_cml |= PB_CML_FAULT_INVALID_CMD;
-+    }
++    isl_pmbus_vr_exit_reset(obj);
++
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++
++    pmdev->pages[0].read_vout = 0;
++    pmdev->pages[0].read_iout = 0;
++    pmdev->pages[0].read_pout = 0;
++    pmdev->pages[0].read_vin = 0;
++    pmdev->pages[0].read_iin = 0;
++    pmdev->pages[0].read_pin = 0;
++    pmdev->pages[0].read_temperature_1 = 0;
++    pmdev->pages[0].read_temperature_2 = 0;
++    pmdev->pages[0].read_temperature_3 = 0;
 +}
 +
- static uint8_t pmbus_receive_byte(SMBusDevice *smd)
+ static void isl_pmbus_vr_add_props(Object *obj, uint64_t *flags, uint8_t pages)
  {
-     PMBusDevice *pmdev = PMBUS_DEVICE(smd);
-     PMBusDeviceClass *pmdc = PMBUS_DEVICE_GET_CLASS(pmdev);
-     uint8_t ret = 0xFF;
--    uint8_t index = pmdev->page;
-+    uint8_t index;
+     PMBusDevice *pmdev = PMBUS_DEVICE(obj);
+@@ -177,6 +195,20 @@ static void raa22xx_init(Object *obj)
+     isl_pmbus_vr_add_props(obj, flags, 2);
+ }
  
-     if (pmdev->out_buf_len != 0) {
-         ret = pmbus_out_buf_pop(pmdev);
-         return ret;
-     }
- 
-+    /*
-+     * Reading from all pages will return the value from page 0,
-+     * this is unspecified behaviour in general.
-+     */
-+    if (pmdev->page == PB_ALL_PAGES) {
-+        index = 0;
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: tried to read from all pages\n",
-+                      __func__);
-+        pmbus_cml_error(pmdev);
-+    } else if (pmdev->page > pmdev->num_pages - 1) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: page %d is out of range\n",
-+                      __func__, pmdev->page);
-+        pmbus_cml_error(pmdev);
-+        return -1;
-+    } else {
-+        index = pmdev->page;
-+    }
++static void raa228000_init(Object *obj)
++{
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++    uint64_t flags[1];
 +
-     switch (pmdev->code) {
-     case PMBUS_PAGE:
-         pmbus_send8(pmdev, pmdev->page);
-@@ -1038,6 +1067,7 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
-         pmdev->page = pmbus_receive8(pmdev);
-         return 0;
-     }
++    flags[0] = PB_HAS_VIN | PB_HAS_VOUT | PB_HAS_VOUT_MODE |
++               PB_HAS_VOUT_RATING | PB_HAS_VOUT_MARGIN | PB_HAS_IIN |
++               PB_HAS_IOUT | PB_HAS_PIN | PB_HAS_POUT | PB_HAS_TEMPERATURE |
++               PB_HAS_TEMP2 | PB_HAS_TEMP3 | PB_HAS_STATUS_MFR_SPECIFIC;
 +
-     /* loop through all the pages when 0xFF is received */
-     if (pmdev->page == PB_ALL_PAGES) {
-         for (int i = 0; i < pmdev->num_pages; i++) {
-@@ -1048,6 +1078,15 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
-         return 0;
-     }
- 
-+    if (pmdev->page > pmdev->num_pages - 1) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                        "%s: page %u is out of range\n",
-+                        __func__, pmdev->page);
-+        pmdev->page = 0; /* undefined behaviour - reset to page 0 */
-+        pmbus_cml_error(pmdev);
-+        return -1;
-+    }
++    pmbus_page_config(pmdev, 0, flags[0]);
++    isl_pmbus_vr_add_props(obj, flags, 1);
++}
 +
-     index = pmdev->page;
+ static void isl_pmbus_vr_class_init(ObjectClass *klass, void *data,
+                                     uint8_t pages)
+ {
+@@ -195,6 +227,15 @@ static void isl69260_class_init(ObjectClass *klass, void *data)
+     isl_pmbus_vr_class_init(klass, data, 2);
+ }
  
-     switch (pmdev->code) {
++static void raa228000_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    dc->desc = "Renesas 228000 Digital Multiphase Voltage Regulator";
++    rc->phases.exit = raa228000_exit_reset;
++    isl_pmbus_vr_class_init(klass, data, 1);
++}
++
+ static void raa229004_class_init(ObjectClass *klass, void *data)
+ {
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
+@@ -220,9 +261,18 @@ static const TypeInfo raa229004_info = {
+     .class_init = raa229004_class_init,
+ };
+ 
++static const TypeInfo raa228000_info = {
++    .name = TYPE_RAA228000,
++    .parent = TYPE_PMBUS_DEVICE,
++    .instance_size = sizeof(ISLState),
++    .instance_init = raa228000_init,
++    .class_init = raa228000_class_init,
++};
++
+ static void isl_pmbus_vr_register_types(void)
+ {
+     type_register_static(&isl69260_info);
++    type_register_static(&raa228000_info);
+     type_register_static(&raa229004_info);
+ }
+ 
+diff --git a/include/hw/sensor/isl_pmbus_vr.h b/include/hw/sensor/isl_pmbus_vr.h
+index 233916f70a..3e47ff7e48 100644
+--- a/include/hw/sensor/isl_pmbus_vr.h
++++ b/include/hw/sensor/isl_pmbus_vr.h
+@@ -13,6 +13,7 @@
+ #include "qom/object.h"
+ 
+ #define TYPE_ISL69260   "isl69260"
++#define TYPE_RAA228000  "raa228000"
+ #define TYPE_RAA229004  "raa229004"
+ 
+ struct ISLState {
+diff --git a/tests/qtest/isl_pmbus_vr-test.c b/tests/qtest/isl_pmbus_vr-test.c
+index a33dfb6135..5553ea410a 100644
+--- a/tests/qtest/isl_pmbus_vr-test.c
++++ b/tests/qtest/isl_pmbus_vr-test.c
+@@ -150,6 +150,70 @@ static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
+     g_assert_cmphex(i2c_value, ==, ISL_REVISION_DEFAULT);
+ }
+ 
++static void raa228000_test_defaults(void *obj, void *data,
++                                    QGuestAllocator *alloc)
++{
++    uint16_t value, i2c_value;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++
++    value = qmp_isl_pmbus_vr_get(TEST_ID, "vout[0]");
++    g_assert_cmpuint(value, ==, 0);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_READ_IOUT);
++    g_assert_cmpuint(i2c_value, ==, 0);
++
++    value = qmp_isl_pmbus_vr_get(TEST_ID, "pout[0]");
++    g_assert_cmpuint(value, ==, 0);
++
++    i2c_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
++    g_assert_cmphex(i2c_value, ==, ISL_CAPABILITY_DEFAULT);
++
++    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
++    g_assert_cmphex(i2c_value, ==, ISL_OPERATION_DEFAULT);
++
++    i2c_value = i2c_get8(i2cdev, PMBUS_ON_OFF_CONFIG);
++    g_assert_cmphex(i2c_value, ==, ISL_ON_OFF_CONFIG_DEFAULT);
++
++    i2c_value = i2c_get8(i2cdev, PMBUS_VOUT_MODE);
++    g_assert_cmphex(i2c_value, ==, ISL_VOUT_MODE_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_COMMAND);
++    g_assert_cmphex(i2c_value, ==, ISL_VOUT_COMMAND_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MAX);
++    g_assert_cmphex(i2c_value, ==, ISL_VOUT_MAX_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
++    g_assert_cmphex(i2c_value, ==, ISL_VOUT_MARGIN_HIGH_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
++    g_assert_cmphex(i2c_value, ==, ISL_VOUT_MARGIN_LOW_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_TRANSITION_RATE);
++    g_assert_cmphex(i2c_value, ==, ISL_VOUT_TRANSITION_RATE_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, ==, ISL_VOUT_OV_FAULT_LIMIT_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, ==, ISL_OT_FAULT_LIMIT_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
++    g_assert_cmphex(i2c_value, ==, ISL_OT_WARN_LIMIT_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VIN_OV_WARN_LIMIT);
++    g_assert_cmphex(i2c_value, ==, ISL_VIN_OV_WARN_LIMIT_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_VIN_UV_WARN_LIMIT);
++    g_assert_cmphex(i2c_value, ==, ISL_VIN_UV_WARN_LIMIT_DEFAULT);
++
++    i2c_value = isl_pmbus_vr_i2c_get16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, ==, ISL_IIN_OC_FAULT_LIMIT_DEFAULT);
++
++    i2c_value = i2c_get8(i2cdev, PMBUS_REVISION);
++    g_assert_cmphex(i2c_value, ==, ISL_REVISION_DEFAULT);
++}
++
+ /* test qmp access */
+ static void test_tx_rx(void *obj, void *data, QGuestAllocator *alloc)
+ {
+@@ -384,9 +448,6 @@ static void isl_pmbus_vr_register_nodes(void)
+     qos_node_create_driver("isl69260", i2c_device_create);
+     qos_node_consumes("isl69260", "i2c-bus", &opts);
+ 
+-    qos_node_create_driver("raa229004", i2c_device_create);
+-    qos_node_consumes("raa229004", "i2c-bus", &opts);
+-
+     qos_add_test("test_defaults", "isl69260", test_defaults, NULL);
+     qos_add_test("test_tx_rx", "isl69260", test_tx_rx, NULL);
+     qos_add_test("test_rw_regs", "isl69260", test_rw_regs, NULL);
+@@ -394,9 +455,20 @@ static void isl_pmbus_vr_register_nodes(void)
+     qos_add_test("test_ro_regs", "isl69260", test_ro_regs, NULL);
+     qos_add_test("test_ov_faults", "isl69260", test_voltage_faults, NULL);
+ 
++    qos_node_create_driver("raa229004", i2c_device_create);
++    qos_node_consumes("raa229004", "i2c-bus", &opts);
++
+     qos_add_test("test_tx_rx", "raa229004", test_tx_rx, NULL);
+     qos_add_test("test_rw_regs", "raa229004", test_rw_regs, NULL);
+     qos_add_test("test_pages_rw", "raa229004", test_pages_rw, NULL);
+     qos_add_test("test_ov_faults", "raa229004", test_voltage_faults, NULL);
++
++    qos_node_create_driver("raa228000", i2c_device_create);
++    qos_node_consumes("raa228000", "i2c-bus", &opts);
++
++    qos_add_test("test_defaults", "raa228000", raa228000_test_defaults, NULL);
++    qos_add_test("test_tx_rx", "raa228000", test_tx_rx, NULL);
++    qos_add_test("test_rw_regs", "raa228000", test_rw_regs, NULL);
++    qos_add_test("test_ov_faults", "raa228000", test_voltage_faults, NULL);
+ }
+ libqos_init(isl_pmbus_vr_register_nodes);
 -- 
 2.35.1.616.g0bdcbb4464-goog
 

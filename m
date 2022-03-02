@@ -1,97 +1,97 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp288501lfo;
-        Tue, 1 Mar 2022 16:23:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwhjpVW2BGfY2ysxtXwyCB88Hgvq0PAn0PaVOKwokqjg6OUAU7059qF9bx9JONshlGD8NqR
-X-Received: by 2002:a05:6902:1109:b0:628:233e:31f8 with SMTP id o9-20020a056902110900b00628233e31f8mr14199649ybu.170.1646180636798;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp288503lfo;
+        Tue, 1 Mar 2022 16:23:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxONYOAG2jTbikVglURnLKWYIPJ4+8FQ5e1yGvo4VPxL2yzhUe6z9xAsltoGM0O/sVyZvt/
+X-Received: by 2002:a81:1784:0:b0:2d6:b6cc:8f75 with SMTP id 126-20020a811784000000b002d6b6cc8f75mr28268281ywx.46.1646180636922;
         Tue, 01 Mar 2022 16:23:56 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1646180636; cv=none;
         d=google.com; s=arc-20160816;
-        b=zAbVHP4zkTWJ0+DBNXhoD1Zs2NTik1IJHu4O3Oxeh5tDu8GTFNHHHnOlhdS/6wRmyF
-         Y6nfNKJNzk3M/ZcFwhjxUVDTrYYLqpvRFB5REAJaBhMZpzZsq85qDYkdntSW1RdGXvEA
-         U1Y2Yl5ugPLGgXzNUzIOJ1M6G5stqha4Za8fmoBHrFGLWvwhwG7rjv0CaOdXF8VLZp6b
-         2OkkHjKbnb0wHKTTC6xuAiuACu92hfMLavH4JQgm900zR1emZEMwzEuJmlwOxOmGQL4g
-         uT/imTO1ewCdxt+heA9ol7jwIpqcN5d3MEq4VKM+3ZrxOeHsxtKfNhB5hzXD3YNIXZ5M
-         kJQw==
+        b=ODSGDDIh1+IdVYbqnNoOHIt/NOD/n11oykm9E9BKhbGooJ3EjDQwN3VX6XuLN+HHWP
+         tumlR1uJ0eJhL1xHE3aOLSqbCykgL7rTdqjaay8+uCWm0kDbU72fb1N8AgwIGaF7r9RX
+         ItDXpRwKX7G5P0lsE13zXC5fg96k43iO7ffzLjnFvJBdCJMRFnS7w3Ab24RbdCKv2ZPm
+         owY/iY+tlMNfNo3B/u9WmHXqeg9gdBfGX3b6m7LA4dPZqNlTiLE2ZPqvLHwNcKNY78pF
+         0V5A7zMWEDMf9vHHbDUEgiNSuFCUGJVMDXIjCZxozxNB7e5GEI//ybBYORAaBDeJlFdZ
+         GQEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
          :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=psSMCNKv2yqoyBWLtLGO59oWBEWLqDJSO6USW3rcrSM=;
-        b=xpwOtjwpuDuXOA/F2PYBK2khbars4gfdcxWkcXvU0mWZxUTZupoKa8gBF2k0c2vJxO
-         QV7ZhWP48AaUVdfAi0ZwU08rNBkHp53aHjl9A7JZMflluPjc7PNNCkj09uDQ04wRNGBq
-         q72uBWjhw1FLJVqiINh7OdGch5ZqIt/nGTlORpDDDpqheKoFpLfr18V9sbHvcdoQu+Il
-         lI9sQEyPva9ffXPuNldcHN6geqkk0gJYTz5vj9dQqZX7K9hEUs630XQJ5h7aktA/YAXS
-         LPrIhjQ5avP6AFgUjvI+TbKLNMlvI63ftnTPLRbtuIfwJ9xdE+FuNlBlJjnSI5Aik9tJ
-         E+gQ==
+        bh=GlIJF2b8Drq45++1hxBTKoEZIPJ8E+QjOj/1FgeYUhM=;
+        b=fqRcPy3QJ6VRAfN+PC2mLnG01Tcgp7Jp9CbsVASYLtjVOzy1yc6stTEpASJlmTqSMi
+         FgqADEl8o20YL9y+nMb+yZMaV/ANX1gLzxwD2ykIL8zwTPlS3VSBu8Zoiltc3duYaJtA
+         oXAnVqr85FnzV1KulMQzRSJvsrp5zfeflOu2qnF2kgZahoRjQL++86/hp+FIg2csGu1a
+         1NbPNyviXjra64619fkWvZkUJfd6Grx/2Ej3rWyGb89icFuMO5nQ0vovc7lyxv1EmPx1
+         QJMzdWxEBCx1qT84QA5Huiruuc3wBLy2mQTQly0cMa9yxzapohpjNc3wukEhUEQlW0gE
+         xFaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=NrYikGjO;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=sn1nKXYa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z67-20020a813346000000b002dbdc797937si3130474ywz.250.2022.03.01.16.23.56
+        by mx.google.com with ESMTPS id bh25-20020a05690c039900b002db77a26f46si10175725ywb.59.2022.03.01.16.23.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 01 Mar 2022 16:23:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=NrYikGjO;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=sn1nKXYa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:41712 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nPCma-0008JI-78
+	id 1nPCma-0008Kk-Av
 	for alex.bennee@linaro.org; Tue, 01 Mar 2022 19:23:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36900)
+Received: from eggs.gnu.org ([209.51.188.92]:36948)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3-7geYgYKCv4zoz0yxmuumrk.iuswks0-jk1krtutmt0.uxm@flex--titusr.bounces.google.com>)
- id 1nPCmB-0008GS-DZ
- for qemu-devel@nongnu.org; Tue, 01 Mar 2022 19:23:31 -0500
-Received: from [2607:f8b0:4864:20::b49] (port=45844
+ <3ALkeYgYKCgUynyzxwlttlqj.htrvjrz-ij0jqstslsz.twl@flex--titusr.bounces.google.com>)
+ id 1nPCmD-0008Iu-6u
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 19:23:33 -0500
+Received: from [2607:f8b0:4864:20::b49] (port=46638
  helo=mail-yb1-xb49.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3-7geYgYKCv4zoz0yxmuumrk.iuswks0-jk1krtutmt0.uxm@flex--titusr.bounces.google.com>)
- id 1nPCm9-0002s4-2v
- for qemu-devel@nongnu.org; Tue, 01 Mar 2022 19:23:30 -0500
+ <3ALkeYgYKCgUynyzxwlttlqj.htrvjrz-ij0jqstslsz.twl@flex--titusr.bounces.google.com>)
+ id 1nPCmA-000368-Un
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 19:23:32 -0500
 Received: by mail-yb1-xb49.google.com with SMTP id
- n66-20020a254045000000b0062883b59ddbso7174yba.12
- for <qemu-devel@nongnu.org>; Tue, 01 Mar 2022 16:23:24 -0800 (PST)
+ 11-20020a25030b000000b00628660166e7so4773ybd.13
+ for <qemu-devel@nongnu.org>; Tue, 01 Mar 2022 16:23:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=psSMCNKv2yqoyBWLtLGO59oWBEWLqDJSO6USW3rcrSM=;
- b=NrYikGjOJl8t65tlIniPGLOU191nooF40+SCiQeHRIlQNsIHB/wmc5VxsvfsGyB7fL
- kmHL3VorhDzwnefbDhHZAXTSokO7bD2gAv5qyMuuhPuloD1pLF5PXgtedip0aZ24Nah7
- dCBbagpmnd+cyjPbqS3LTvxR7MpD+ZhvgA9UivD6JsljIrnvtVJaCdw8S65gpOvHWgJr
- R0NEzKbolAOSSWxaQs30ZrzHH2RoKjgpsjRxpPvGJ/AMe0ZVNTB03kOi3oCdAlGQJOXc
- L0XsiWG/B4LXuDWbxJfYLUbuNL6uI7xpfZK4qCUo7ZcJ+gmQa+0+vUNMXGZZnTbw0pzX
- GLYw==
+ :cc; bh=GlIJF2b8Drq45++1hxBTKoEZIPJ8E+QjOj/1FgeYUhM=;
+ b=sn1nKXYaHzsRMxB1TWRuNZo3V+b3m3c5sqABtfOcwgHgmYMYoruKixCjWKdJ8MhvD1
+ qflGtQbnXthz7Qv2A9r2uGrD/AhDTjFvxqRau02kv+vwD5wRiG+MCdGK1sVx7ZleH9Sn
+ 6qPn19pPXzBO7fOpG/VYKF580j95KYtA3Q+A/j6U3lZJ6/+9YtwWJ6oJ2yUtowEKLozv
+ hzLYE1d5sj8tc2VSVhGB349cHVtgCl17V+PhJddZpE5yrYt+kC4Ay5m3h+UIGH2AI3tL
+ s/6Ewbl96Cl2abf7nhuKcYupa/gw30W/nBPybfGcwEuMN/4k2sRLSKGYqTsl8ldpwX/B
+ SyYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=psSMCNKv2yqoyBWLtLGO59oWBEWLqDJSO6USW3rcrSM=;
- b=T60W3fqY26EOg35YocT/03epO+5T2a6ztk6CHmsJR9mA2QKXwI8qBaB0Ad9cjddgK6
- QxLTxx/AkiDYovgxhIjP4setTU+fEBCKSHnBP/QwI9BG96UlPMobQ9+OlJMyBKjQu7v3
- 7n3btYcSggSGqKzA9Ls1CBKJydnC15pLoHEgzrBVRmAReeU1wbQrMM85WLxV0YthfS+p
- nCy72+DYR8mNHrjM7M9eMablTr5mYT3fPm3cyAPYM2AXwdaRl3xePaWOAseEh+FTSylJ
- B9uCuqGArQhMc0INherU6cJSeY1iw2GnLtsf1dVbx3t/Q94sNcmP+yCStDestLWaPeEg
- YuCg==
-X-Gm-Message-State: AOAM530BWxzMjsEDjG9IZMkIBQ6otowz0PbeRg1+u7tNaAx/spat3xgo
- 5yaCoNtrdYgXGUHqlvLi1Vv2GYEbPUc=
+ bh=GlIJF2b8Drq45++1hxBTKoEZIPJ8E+QjOj/1FgeYUhM=;
+ b=uDmRI3ctwYocGGEA9ukpC01/AaRxy4XgM5zcbmhsi1YUGiLI/micwZdu//X9FcHme/
+ gEkVbeolKTuQNXY0H1BGI+Ctz/vZsjntRuYwh8jH0AyVw8bwBb1bZuf9tLBNbwHrBcde
+ Uvfa2p/1FYW27wAtoqNiU66qlPK6f+I5QRzuX2yIxD21wsZcDFRwAK2J7dJmniV4YRZF
+ 1HTrZhWN3M3UPAf6ma8HobaijsID/3SY1wZT7/2Ugbvcjb7A9R1LI/Uf1Pwb1f9K1s4m
+ BmqCX6UuHAaPm3/nAIUgFoarSI8OLBtvFgaTVOP7Ov3ygJODznzl5Yn61Q2f/R29xDVp
+ j7tA==
+X-Gm-Message-State: AOAM532AGuT4XFiz6TpFQank94hREm8ffRJ3JfhtvNnsFUUJkLG//rfe
+ 6xQea0CQmK7pKiyTFWdKLjYkDDpP/Gg=
 X-Received: from titusr.svl.corp.google.com
  ([2620:15c:2a3:201:3a0a:5449:c096:dc84])
- (user=titusr job=sendgmr) by 2002:a25:20c5:0:b0:611:a36c:41d with SMTP id
- g188-20020a2520c5000000b00611a36c041dmr26196026ybg.71.1646180603724; Tue, 01
- Mar 2022 16:23:23 -0800 (PST)
-Date: Tue,  1 Mar 2022 16:22:59 -0800
+ (user=titusr job=sendgmr) by 2002:a0d:cac2:0:b0:2db:fc7f:7dfa with SMTP id
+ m185-20020a0dcac2000000b002dbfc7f7dfamr3562025ywd.362.1646180608119; Tue, 01
+ Mar 2022 16:23:28 -0800 (PST)
+Date: Tue,  1 Mar 2022 16:23:01 -0800
 In-Reply-To: <20220302002307.1895616-1-titusr@google.com>
-Message-Id: <20220302002307.1895616-2-titusr@google.com>
+Message-Id: <20220302002307.1895616-4-titusr@google.com>
 Mime-Version: 1.0
 References: <20220302002307.1895616-1-titusr@google.com>
 X-Mailer: git-send-email 2.35.1.616.g0bdcbb4464-goog
-Subject: [PATCH v2 1/9] hw/i2c: pmbus: add registers
+Subject: [PATCH v2 3/9] hw/i2c: pmbus: add PEC unsupported warning
 From: Titus Rwantare <titusr@google.com>
 To: Corey Minyard <minyard@acm.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
@@ -100,7 +100,7 @@ Content-Type: text/plain; charset="UTF-8"
 X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b49
  (failed)
 Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3-7geYgYKCv4zoz0yxmuumrk.iuswks0-jk1krtutmt0.uxm@flex--titusr.bounces.google.com;
+ envelope-from=3ALkeYgYKCgUynyzxwlttlqj.htrvjrz-ij0jqstslsz.twl@flex--titusr.bounces.google.com;
  helo=mail-yb1-xb49.google.com
 X-Spam_score_int: -81
 X-Spam_score: -8.2
@@ -124,100 +124,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ANarESsB8aMm
-
-   - add the VOUT_MIN and STATUS_MFR registers
+X-TUID: E4/bjgx79+KU
 
 Signed-off-by: Titus Rwantare <titusr@google.com>
 ---
- hw/i2c/pmbus_device.c         | 24 ++++++++++++++++++++++++
- include/hw/i2c/pmbus_device.h |  3 +++
- 2 files changed, 27 insertions(+)
+ hw/i2c/pmbus_device.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index 24f8f522d9..07a45c99f9 100644
+index 93c746bab3..6eeb0731d7 100644
 --- a/hw/i2c/pmbus_device.c
 +++ b/hw/i2c/pmbus_device.c
-@@ -368,6 +368,14 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
-         }
-         break;
+@@ -307,6 +307,11 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
  
-+    case PMBUS_VOUT_MIN:        /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_VOUT_RATING) {
-+            pmbus_send16(pmdev, pmdev->pages[index].vout_min);
-+        } else {
-+            goto passthough;
+     case PMBUS_CAPABILITY:
+         pmbus_send8(pmdev, pmdev->capability);
++        if (pmdev->capability & BIT(7)) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: PEC is enabled but not yet supported.\n",
++                          __func__);
 +        }
-+        break;
-+
-     /* TODO: implement coefficients support */
- 
-     case PMBUS_POUT_MAX:                  /* R/W word */
-@@ -708,6 +716,10 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
-         pmbus_send8(pmdev, pmdev->pages[index].status_other);
          break;
  
-+    case PMBUS_STATUS_MFR_SPECIFIC:       /* R/W byte */
-+        pmbus_send8(pmdev, pmdev->pages[index].status_mfr_specific);
-+        break;
-+
-     case PMBUS_READ_EIN:                  /* Read-Only block 5 bytes */
-         if (pmdev->pages[index].page_flags & PB_HAS_EIN) {
-             pmbus_send(pmdev, pmdev->pages[index].read_ein, 5);
-@@ -1149,6 +1161,14 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
-         }
-         break;
- 
-+    case PMBUS_VOUT_MIN:                  /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_VOUT_RATING) {
-+            pmdev->pages[index].vout_min = pmbus_receive16(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
-+
-     case PMBUS_POUT_MAX:                  /* R/W word */
-         if (pmdev->pages[index].page_flags & PB_HAS_VOUT) {
-             pmdev->pages[index].pout_max = pmbus_receive16(pmdev);
-@@ -1482,6 +1502,10 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
-         pmdev->pages[index].status_other = pmbus_receive8(pmdev);
-         break;
- 
-+    case PMBUS_STATUS_MFR_SPECIFIC:        /* R/W byte */
-+        pmdev->pages[index].status_mfr_specific = pmbus_receive8(pmdev);
-+        break;
-+
-     case PMBUS_PAGE_PLUS_READ:            /* Block Read-only */
-     case PMBUS_CAPABILITY:                /* Read-Only byte */
-     case PMBUS_COEFFICIENTS:              /* Read-only block 5 bytes */
-diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-index 62bd38c83f..72c0483149 100644
---- a/include/hw/i2c/pmbus_device.h
-+++ b/include/hw/i2c/pmbus_device.h
-@@ -43,6 +43,7 @@ enum pmbus_registers {
-     PMBUS_VOUT_DROOP                = 0x28, /* R/W word */
-     PMBUS_VOUT_SCALE_LOOP           = 0x29, /* R/W word */
-     PMBUS_VOUT_SCALE_MONITOR        = 0x2A, /* R/W word */
-+    PMBUS_VOUT_MIN                  = 0x2B, /* R/W word */
-     PMBUS_COEFFICIENTS              = 0x30, /* Read-only block 5 bytes */
-     PMBUS_POUT_MAX                  = 0x31, /* R/W word */
-     PMBUS_MAX_DUTY                  = 0x32, /* R/W word */
-@@ -255,6 +256,7 @@ OBJECT_DECLARE_TYPE(PMBusDevice, PMBusDeviceClass,
- #define PB_HAS_TEMP3               BIT_ULL(42)
- #define PB_HAS_TEMP_RATING         BIT_ULL(43)
- #define PB_HAS_MFR_INFO            BIT_ULL(50)
-+#define PB_HAS_STATUS_MFR_SPECIFIC BIT_ULL(51)
- 
- struct PMBusDeviceClass {
-     SMBusDeviceClass parent_class;
-@@ -295,6 +297,7 @@ typedef struct PMBusPage {
-     uint16_t vout_droop;               /* R/W word */
-     uint16_t vout_scale_loop;          /* R/W word */
-     uint16_t vout_scale_monitor;       /* R/W word */
-+    uint16_t vout_min;                 /* R/W word */
-     uint8_t coefficients[5];           /* Read-only block 5 bytes */
-     uint16_t pout_max;                 /* R/W word */
-     uint16_t max_duty;                 /* R/W word */
+     case PMBUS_VOUT_MODE:                 /* R/W byte */
 -- 
 2.35.1.616.g0bdcbb4464-goog
 

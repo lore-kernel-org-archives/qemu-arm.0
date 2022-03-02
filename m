@@ -1,235 +1,141 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp303041lfo;
-        Tue, 1 Mar 2022 16:52:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwd9nTmGB/F5f72vrVBs+XYsXlziIlpJjfHzMNBUwRh62EZ5WIbh9KTXYvQQgj0bxp3zSoC
-X-Received: by 2002:a0d:e607:0:b0:2d1:3b67:3942 with SMTP id p7-20020a0de607000000b002d13b673942mr27138266ywe.67.1646182343425;
-        Tue, 01 Mar 2022 16:52:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646182343; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp312229lfo;
+        Tue, 1 Mar 2022 17:08:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwvZZRWzHMK8Rdd+sEjFNJ3W45BHaEdx1X3O/2H3lAWcfBBr0n5OWGEdSqJIVqjrrdxea8M
+X-Received: by 2002:a81:5254:0:b0:2dc:59a:c6b5 with SMTP id g81-20020a815254000000b002dc059ac6b5mr1505259ywb.375.1646183322383;
+        Tue, 01 Mar 2022 17:08:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646183322; cv=none;
         d=google.com; s=arc-20160816;
-        b=rtU6ZwdPDy3zynTURGTbyVjw8jQlHYEv+yium2GMROM7eHETngZeL8JzyrE3+tSCAj
-         +VBKQXuggZNHR6PtiWaJ4uIUKD7zM6SJpt2DhR2Yx06X9dOvTxf6NFZ1XWvtdReD+ap4
-         wO34mcezP6/cJANLjlUYjDLYX6uqcKLU2/mQOTIqo8hQt7ohu2L4JLkFQavKmvgTLCk9
-         512aq7YN82A+us91otwoqq2Sa3o6/osH2vusQ4+6rgiOj255uSNrSoVkGIZAdjmdP6Jc
-         FQZlEYhHNCiVckZbOx3UXQGvC5bJFgpXUS0Qjtp28AnMRWgv0hRC0dFS9CXYVaeonRPI
-         Tr8w==
+        b=qXvmNe3Jiv8HElVKP3nmaL3XTpQOv71UAqMKuGtL2iYuuQTdpuA/g+OAHT5/DDKFki
+         QdmZ1ZxnA88W/Qwr9MBlXhGzz/ZexZHQ3TunMeRrOurCzFt+8sfeB2ojuz1uLkIZ5547
+         /t+z6xKmtK62SeS+OhkjzDW+3uZvc26u7OEPMDOZFPSPyyEKH8e6LohC8ncIOE58N21W
+         HSppBvGv7AeonapfdhZ7i7yJvn3ktXTbOnZDYRLoqXuBH5Ouoe9kdhgNUwA4GGhHGT5e
+         Q8QNIlu0WP4s14x3PJWF6CJnkdmQ5zNJyIuyxPZ+SJeScgsJw8dRdaWAs2GjRCEW5OYk
+         Qq4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=ZUBmdUWfX+qczDlR5u0jlX5KTVEuBKxWWlt2RPJq4OM=;
-        b=Ty6722OouXhnixfzLo4kvWTA8PH20jn3RewzUHNRcKZoMX+PhdaAt1k/dv1rLE4A1K
-         KAi487ahyR9waowJrTSMFVihAHaqsv2r63RlhazXmNLXMvU7OexsBjDoO1j64H/8b/ZL
-         JeNg5q/NHXV+DBUWffVFUOUOpvN55VKcCrWwmcuXjEq2SLSliK7jvdSVURhrgquOYylt
-         DK9ssPUtDmHjxu1NgDTTCMfB4fA3htgjLkUBVOVff7vF/EAMcjOwQnmzwIgz1ujrJC5M
-         ZkA6MEfHDAczHUj/TJfLjAIkaUxRE14CWPjHMPCG1fZ2Viswvq70Q+q2v7xpTc/gHjQa
-         Z44Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=k33shDE0BkPTxMfWJ2qk+GhZxHWflVkUE5/xT7BcFfg=;
+        b=jqH8yj3lwqcFwxNQpxiJ8x4UGwW1MmZ4QKngavi1bG0cfHV4FYN8rPItvTMbFi2mTT
+         vpQVt4X1etns5Tf7NPRJg7ZQKRekNgAE4Qo/4x7OGgo25aZRiRUu6r6kVhs/ep89eS3D
+         HlikQtUMr97tDSQ+NWXROy9SE6JLQ3YDva3bb5X8tM9aPRoOLOg72O64iuTKrA60h5y4
+         37GkYwWXO+yyrlmJAM1VLQVWeoZowAQ4EZTeo6/M1tJiFBpN1PG/AEjD5vGLFWQy3rb3
+         K79jnl3dzu3rG1mZjm0WgF9e36vntyWgJ1cUUxs/EyFn0atRkdQOXIXG9eWCBQbqyVQW
+         yt3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WDm2Ec3V;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=VNBHhJsJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 62-20020a250841000000b0061da537da7dsi11322112ybi.3.2022.03.01.16.52.23
+        by mx.google.com with ESMTPS id s198-20020a252ccf000000b0062875d90815si3565719ybs.366.2022.03.01.17.08.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Mar 2022 16:52:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Mar 2022 17:08:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WDm2Ec3V;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44062 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=VNBHhJsJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nPDE6-00059Z-Cl
-	for alex.bennee@linaro.org; Tue, 01 Mar 2022 19:52:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40790)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nPDTZ-0004rP-9o
+	for alex.bennee@linaro.org; Tue, 01 Mar 2022 20:08:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47736)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1nPD14-00072B-4A; Tue, 01 Mar 2022 19:38:55 -0500
-Received: from [2607:f8b0:4864:20::f2d] (port=37672
- helo=mail-qv1-xf2d.google.com)
+ (Exim 4.90_1) (envelope-from <ubzeme@gmail.com>)
+ id 1nPDTN-0004qr-U1; Tue, 01 Mar 2022 20:08:09 -0500
+Received: from [2a00:1450:4864:20::531] (port=39846
+ helo=mail-ed1-x531.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1nPD11-0001SK-35; Tue, 01 Mar 2022 19:38:52 -0500
-Received: by mail-qv1-xf2d.google.com with SMTP id f11so338139qvz.4;
- Tue, 01 Mar 2022 16:38:38 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ubzeme@gmail.com>)
+ id 1nPDTL-0003Py-KS; Tue, 01 Mar 2022 20:08:09 -0500
+Received: by mail-ed1-x531.google.com with SMTP id g20so178426edw.6;
+ Tue, 01 Mar 2022 17:08:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to; bh=ZUBmdUWfX+qczDlR5u0jlX5KTVEuBKxWWlt2RPJq4OM=;
- b=WDm2Ec3Vz+3JWmGaaL7/iCqdg2XXHb2N0C+daLKIrma3v9xnH8R2y5M3WCwL2IH76g
- qMRAd66alX54lsTdnby7LERuj8k8YDfaV0aac7wpEd3rXnVDUjooXNPSw2Hfh22n8gPZ
- 2NjHYBx2DVXqD8V5DxnCXdA/AKVJoeTMuDcSLp1Y+eqQGra0p5uen6xG+ri8x8luV7B4
- cerdXnS+H0/azWJWDxqa9Ro4Zyal7XWLNu+Oh2EYCUWawGriNuC5I3l+zidY03x8xIWp
- /fvFA3YreWD8/iUFlyRalkPJrPUMLg73oqOVuE0yy7xwOb24UgbvJ2fhBdWxJp+t+Bxw
- 30cQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=k33shDE0BkPTxMfWJ2qk+GhZxHWflVkUE5/xT7BcFfg=;
+ b=VNBHhJsJtNjuprgAOe1bfv95cWPdkFtwIvelRoxzge7cVGEVG7+cfsyqe8TjDWvv/b
+ FLj+Y/CFEGv4GLQEg3+ZTB6mv+l2PNIKxcljjDvUmqHwLwBUVNLn9A0xSV4GpEZos+Pn
+ 0+H9hsivIhU67gItU3eF4HqooXnH6xtSNmE6aE1CieKzjOZ0oAVHWYGlzGpaHKyPT6uQ
+ jHCeM942wd/wZlwMJEyFWVvOvCssdoFOEbzm9NJ/0ECKJaB+9/Ju5IXFDVvmN6pyJCK2
+ TPvxp/uB1Uh7duQ7Ppk6BxfI5IXsIdWgjUrwlHcUsADH2TXi57oQH1Fyw6mjYLWuebsK
+ LmTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition
- :content-transfer-encoding:in-reply-to;
- bh=ZUBmdUWfX+qczDlR5u0jlX5KTVEuBKxWWlt2RPJq4OM=;
- b=YANPj/kbTWQ9KVsvk3PWrvOD2+EOi9ITMbSl08kV9jPxIQYpKq5xE1tacEWcJkZ7C6
- 5W4i2Re11vRomfdc6/mI0yVYfJ1aZod8Kg29j5NrrxMOyw7eqcInrkeGbrvImZbB/Yyf
- 7Xip7R9bXCOVAMmAhpX5DQWP+jrVxgKbopzBfZZH1npvI4BEA0H1ooJC+eQ/3B9zcC1u
- 8CjPicwelYUAqwm6GcEF2s7+p/vLXaX+FmvFZryBFh0kxrRv32qT8hCbTFD5CRMnb5uA
- Qo+55LNmWNDYqCsui0sXIFpCmoPyvI/zG6rsMpXLH9t12BphQNrc0lreS01nMGNFLvNB
- HRSg==
-X-Gm-Message-State: AOAM532ZI5n+u83i7SEBFeX98CQimcsXjI0awF47/Jk8j/4i61vvpA/L
- T02EpBBY+qrog9JM99/wLQ==
-X-Received: by 2002:ad4:4bb2:0:b0:434:febe:c813 with SMTP id
- i18-20020ad44bb2000000b00434febec813mr4384263qvw.51.1646181517382; 
- Tue, 01 Mar 2022 16:38:37 -0800 (PST)
-Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
- by smtp.gmail.com with ESMTPSA id
- i3-20020a05620a074300b006630cbe7ec0sm3607671qki.90.2022.03.01.16.38.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Mar 2022 16:38:36 -0800 (PST)
-Received: from minyard.net (unknown
- [IPv6:2001:470:b8f6:1b:fd74:8a86:f056:f7b9])
- by serve.minyard.net (Postfix) with ESMTPSA id AC4BE1800D7;
- Wed,  2 Mar 2022 00:38:35 +0000 (UTC)
-Date: Tue, 1 Mar 2022 18:38:34 -0600
-From: Corey Minyard <minyard@acm.org>
-To: Titus Rwantare <titusr@google.com>
-Subject: Re: [PATCH v2 4/9] hw/i2c: pmbus: refactor uint handling and update
- MAINTAINERS
-Message-ID: <20220302003834.GF3457@minyard.net>
-References: <20220302002307.1895616-1-titusr@google.com>
- <20220302002307.1895616-5-titusr@google.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=k33shDE0BkPTxMfWJ2qk+GhZxHWflVkUE5/xT7BcFfg=;
+ b=FknpYEwmAQYX58rt2MqlkSDZfdcr5qT9QmD9P3al7rQE9miTQh/Gr0MHkWoyHyUTsj
+ JnsR/kfqU5RJ+VH10Zq6W4sA7KHxN3Fn8qX0DO/CZsNQ0ZMptuSbnYi2k1OxaBLz8Pmy
+ myUHvUZGwJWSQqmXfxvxoidY0fTVBQ/KtXxzFffrRByegmrmR59SQ6UWp6wN18DQo1nj
+ 9G9pJLF/1RPDC9oMNjXk/4wMPMUvjKiahZl/Ezi8pVTPM7L+Q3wKcdOx0OZsx7YGRgtV
+ QvW40g2GJGXF+XFG2bWyx8InL49CuPJGDi5qHTWzBLAL3x0HKQftCtQuBG/HVGVXFu84
+ 6z/Q==
+X-Gm-Message-State: AOAM530RWQwJj1CgpG+qXPU74IPVEsF3iFdJih6cf59xk1Ltr/95R+I8
+ e+v8Odwrlf5jNq+k/9jbfNkeXZcs1IMlbDpF6Tw=
+X-Received: by 2002:a50:fb91:0:b0:408:5100:b4a7 with SMTP id
+ e17-20020a50fb91000000b004085100b4a7mr26722583edq.311.1646183284488; Tue, 01
+ Mar 2022 17:08:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220302002307.1895616-5-titusr@google.com>
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::f2d
+References: <164603074537.20094.1732342403585879912-0@git.sr.ht>
+ <CAFEAcA8hWy3rfGtYkyQjJSGgsX448_t01xmM4cwyCO0op4h1xw@mail.gmail.com>
+ <2da2f0bc-6c54-0a26-aafb-1f866cf93de8@gmail.com>
+In-Reply-To: <2da2f0bc-6c54-0a26-aafb-1f866cf93de8@gmail.com>
+From: Yan-Jie Wang <ubzeme@gmail.com>
+Date: Wed, 2 Mar 2022 09:07:28 +0800
+Message-ID: <CADyX+6p2QY5EL_JJnWUzVezagBfb1Pv9Byx6YXJK8jT7vNHvnA@mail.gmail.com>
+Subject: Re: [PATCH qemu 0/7] Many improvements to HVF memory-related codes
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::531
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2d;
- envelope-from=tcminyard@gmail.com; helo=mail-qv1-xf2d.google.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=ubzeme@gmail.com; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
 X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
-Cc: wuhaotsh@google.com, venture@google.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, f4bug@amsat.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fNwpi2jwoD99
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WHkln2OHs4Y4
 
-On Tue, Mar 01, 2022 at 04:23:02PM -0800, Titus Rwantare wrote:
-> Signed-off-by: Titus Rwantare <titusr@google.com>
-> ---
->  MAINTAINERS           | 10 ++++++++++
->  hw/i2c/pmbus_device.c | 18 +++++++++---------
->  2 files changed, 19 insertions(+), 9 deletions(-)
+Sorry, I made a mistake.
+The last line in the function, hvf_find_free_slot, introduced in this
+commit "hvf: simplify data structures and codes of memory related
+functions" should be "return NULL;"
 
-This makes sense, but can you split it into two patches and give a bit
-more explaination about the uint handling.  Usually patches without
-explaination are frowned upon, even if it's kind of obvious.
+static hvf_slot *hvf_find_free_slot(void)
+{
+    hvf_slot *slot;
+    int x;
+    for (x = 0; x < HVF_NUM_SLOTS; x++) {
+        slot = &memslots[x];
+        if (!slot->size) {
+            return slot;
+        }
+    }
 
--corey
+    return NULL;   // <---- This line is changed
+}
 
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index fa8adc2618..3601984b5d 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -3135,6 +3135,16 @@ F: include/hw/i2c/smbus_master.h
->  F: include/hw/i2c/smbus_slave.h
->  F: include/hw/i2c/smbus_eeprom.h
->  
-> +PMBus
-> +M: Titus Rwantare <titusr@google.com>
-> +S: Maintained
-> +F: hw/i2c/pmbus_device.c
-> +F: hw/sensor/adm1272.c
-> +F: hw/sensor/max34451.c
-> +F: include/hw/i2c/pmbus_device.h
-> +F: tests/qtest/adm1272-test.c
-> +F: tests/qtest/max34451-test.c
-> +
->  Firmware schema specifications
->  M: Philippe Mathieu-Daudé <f4bug@amsat.org>
->  R: Daniel P. Berrange <berrange@redhat.com>
-> diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-> index 6eeb0731d7..3beb02afad 100644
-> --- a/hw/i2c/pmbus_device.c
-> +++ b/hw/i2c/pmbus_device.c
-> @@ -89,16 +89,16 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
->  }
->  
->  
-> -static uint64_t pmbus_receive_uint(const uint8_t *buf, uint8_t len)
-> +static uint64_t pmbus_receive_uint(PMBusDevice *pmdev)
->  {
->      uint64_t ret = 0;
->  
->      /* Exclude command code from return value */
-> -    buf++;
-> -    len--;
-> +    pmdev->in_buf++;
-> +    pmdev->in_buf_len--;
->  
-> -    for (int i = len - 1; i >= 0; i--) {
-> -        ret = ret << 8 | buf[i];
-> +    for (int i = pmdev->in_buf_len - 1; i >= 0; i--) {
-> +        ret = ret << 8 | pmdev->in_buf[i];
->      }
->      return ret;
->  }
-> @@ -110,7 +110,7 @@ uint8_t pmbus_receive8(PMBusDevice *pmdev)
->                        "%s: length mismatch. Expected 1 byte, got %d bytes\n",
->                        __func__, pmdev->in_buf_len - 1);
->      }
-> -    return pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
-> +    return pmbus_receive_uint(pmdev);
->  }
->  
->  uint16_t pmbus_receive16(PMBusDevice *pmdev)
-> @@ -120,7 +120,7 @@ uint16_t pmbus_receive16(PMBusDevice *pmdev)
->                        "%s: length mismatch. Expected 2 bytes, got %d bytes\n",
->                        __func__, pmdev->in_buf_len - 1);
->      }
-> -    return pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
-> +    return pmbus_receive_uint(pmdev);
->  }
->  
->  uint32_t pmbus_receive32(PMBusDevice *pmdev)
-> @@ -130,7 +130,7 @@ uint32_t pmbus_receive32(PMBusDevice *pmdev)
->                        "%s: length mismatch. Expected 4 bytes, got %d bytes\n",
->                        __func__, pmdev->in_buf_len - 1);
->      }
-> -    return pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
-> +    return pmbus_receive_uint(pmdev);
->  }
->  
->  uint64_t pmbus_receive64(PMBusDevice *pmdev)
-> @@ -140,7 +140,7 @@ uint64_t pmbus_receive64(PMBusDevice *pmdev)
->                        "%s: length mismatch. Expected 8 bytes, got %d bytes\n",
->                        __func__, pmdev->in_buf_len - 1);
->      }
-> -    return pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
-> +    return pmbus_receive_uint(pmdev);
->  }
->  
->  static uint8_t pmbus_out_buf_pop(PMBusDevice *pmdev)
-> -- 
-> 2.35.1.616.g0bdcbb4464-goog
-> 
+I will submit a new version of the patch series after I go home.

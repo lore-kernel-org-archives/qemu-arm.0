@@ -1,107 +1,110 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp292334lfo;
-        Tue, 1 Mar 2022 16:31:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzMbs7iMcVjCKLezckLimcgS0LsV73lAhfc57L/u4Q+vY+nQqaqOlDWZvrApZshBxg3UOK+
-X-Received: by 2002:a81:f011:0:b0:2d1:1212:faf4 with SMTP id p17-20020a81f011000000b002d11212faf4mr27616880ywm.183.1646181100403;
-        Tue, 01 Mar 2022 16:31:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646181100; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp293413lfo;
+        Tue, 1 Mar 2022 16:33:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzHeHtcbsvYIEvqCRx5kLS2hjN8a4c9UBSFDfXCRMGXf1/S6IjNjNNHNVIYZQfelLXQdsIN
+X-Received: by 2002:a25:2842:0:b0:627:f536:fe76 with SMTP id o63-20020a252842000000b00627f536fe76mr17831711ybo.343.1646181224405;
+        Tue, 01 Mar 2022 16:33:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646181224; cv=none;
         d=google.com; s=arc-20160816;
-        b=RYtylovKP13c7VFjWZljL0Z3Kj9KQGjfIYMUGEb4erSqSoeMY7DKv9h/k9iHG8vRjT
-         UGRYH9UQfuhi6pd8NW3wxI0cwvF/nQHBnoNT8Iybb7kcaBVqLDuGxCjVX2PnBUrHWhHs
-         7IHi3F+DKKI9xgcpFGbWzjPk6q7GANynTY2Ak7rHZEHsFf7vcK9VySRObyGZ0+rvQ0XJ
-         MMPoIYPQ6w9th9NOK6U0oU9rp9BEX0VFdAq1G8H7ROSwT3JVgDzowhkQMSVnkLCnS+Ox
-         v0VRs7/KxzJEXMzomZRcsPxiVCORuh/w+dexuj/2Ih88L4XCA4az+cvizunxLl0HPlpp
-         VGhg==
+        b=q/CPoC8IC8JO8bFPzK7aaXySJPM6d2BoL6Rkz0IA5hOKNbcyZGeOJIR2/HqcWfDtMq
+         cMTuxHvpJMKqvuUE9XKoOOkn+8wNSJREcgJV4qBiD6guGIDAmXJbbKxqsJHXlvBkK/6Q
+         kKwJW4YZwG8nG+qIrXCWGhom2dV0yStsqayKEiPff+yujDWbDhLU/XpWSMvPGn6IhICJ
+         aa1G2hJghYIBaxQvXNBxBfHvsuZapPVAht72uiKx7bb14/W4njBaM3+9dd0g4fz9WlIJ
+         m57yrK54C61ABts75DZRPdo7ABkpuhLSB57UqTs73qU+T26n6d13LitpqwVPXEHR5iHs
+         UA1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
-         :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=sxHwCFQ7GN3iQdwu0G1IfNe7Yi5+zoqZ7WtImg1yT/U=;
-        b=YHTljtFVMRglFoconHcN7ijb+thgcc//ZVLrW4dXp+sDhm48ab7Yefi9yUlyfIE7Xs
-         3uR8MJtlGgDSM9sye/babNgCgKNeAe/dpyG7ul+V5zKpKYPmm9+9T+xqT2l/klMq2cEp
-         pzRRVNTSDMy0QaGLOhqTYBsfaiYazOUEcHL2yjmk1cANh4aLTr+3qdrrhyocF7g1OIK4
-         p19HA9VnQXaPUj0AvGDuEinaGj1jrI151V9DujnHjOyeIXvKZkC9P+0rldqa4iZ/AVbM
-         y0ugywCYLiaXlLJ38kLuv0gqhD/+iQb5PP5sFN5qMGDfVQAkPkku0+iFXAeOO7+4fZ+Q
-         cmow==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :from:subject:references:mime-version:message-id:in-reply-to:date
+         :dkim-signature;
+        bh=ORgyDoOCIEOUL8U3dnyT06mU04ZD6Ohk7/GG6LMS5t4=;
+        b=g1W88g7qpSCARoKeWFcAbW4oTOJmOxdG3QR127afTYJA4RjAK4LITBCn4KeihOdfoj
+         HdZzb8+fdworb7XIuqI85Og2ITuy6olF+cbp27Z2mE+JdkcPYc5Vwrjm75uD30jDq2TA
+         dfkVmLiKWSpIrL5U2vLmJpoIrsNwxJumC8Qjg9ykMNLS3/fuRgDAWC8ra1n3MTcs4/NM
+         Y8g+T+eDV/5bwu66xqmg07VKh8wcs+fyWSoPMw7PaX1WU/uOLVOFurs+oCMTqcC8Qbyu
+         /YJtupPhDN6wY3rxgDno5xd8KHKSM2cnvfHzZwPG15sDCMd2yju3kkDR9iuWKI6R3EJ+
+         zdZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=g8odv4LE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=iPEkWtbt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1-20020a0de801000000b002dbdc6471d8si3302163ywe.355.2022.03.01.16.31.40
+        by mx.google.com with ESMTPS id 23-20020a811717000000b002dc07c0efa0si491986ywx.146.2022.03.01.16.33.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Mar 2022 16:31:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Mar 2022 16:33:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=g8odv4LE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=iPEkWtbt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:53624 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57882 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nPCu3-0008J3-Pt
-	for alex.bennee@linaro.org; Tue, 01 Mar 2022 19:31:39 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38760)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nPCw3-0002sl-Pm
+	for alex.bennee@linaro.org; Tue, 01 Mar 2022 19:33:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3C7keYgYKCBA9y9A87w44w1u.s426u2A-q72343w3A.47w@flex--titusr.bounces.google.com>)
- id 1nPCte-0008EW-3M
- for qemu-arm@nongnu.org; Tue, 01 Mar 2022 19:31:14 -0500
-Received: from [2607:f8b0:4864:20::949] (port=40745
- helo=mail-ua1-x949.google.com)
+ <3B7keYgYKCgw5u5643s00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--titusr.bounces.google.com>)
+ id 1nPCmM-0008QY-K7
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 19:23:45 -0500
+Received: from [2607:f8b0:4864:20::b4a] (port=45846
+ helo=mail-yb1-xb4a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3C7keYgYKCBA9y9A87w44w1u.s426u2A-q72343w3A.47w@flex--titusr.bounces.google.com>)
- id 1nPCtb-00005D-Re
- for qemu-arm@nongnu.org; Tue, 01 Mar 2022 19:31:13 -0500
-Received: by mail-ua1-x949.google.com with SMTP id
- z1-20020ab05641000000b00341f2a589deso155055uaa.7
- for <qemu-arm@nongnu.org>; Tue, 01 Mar 2022 16:31:10 -0800 (PST)
+ <3B7keYgYKCgw5u5643s00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--titusr.bounces.google.com>)
+ id 1nPCmJ-0003GQ-Ey
+ for qemu-devel@nongnu.org; Tue, 01 Mar 2022 19:23:42 -0500
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ n66-20020a254045000000b0062883b59ddbso7454yba.12
+ for <qemu-devel@nongnu.org>; Tue, 01 Mar 2022 16:23:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=sxHwCFQ7GN3iQdwu0G1IfNe7Yi5+zoqZ7WtImg1yT/U=;
- b=g8odv4LEGBlbxjoumC6gP90rfFOR6RXtjWoQ8LbyrRdAXVzk3x0q4bjd2VjTm0UWBE
- 6dKx5pPi0KLrKV4bljJnugi//VErsS9QVevNMfLOQjaBWYOBtX3wfAOcghp+El4IiuY1
- DzSv3cY7Vk65WiFEZYJX9xyTmu89QhHahm3OkD6zdxTu5OyAQCmM83qPr0YbPdrou7WM
- wCr6yMqg8qfUJGLU4lrY6XZeGauWNEU/t4liIJxpK9n+b6PeLUz/Q9LeK6mDvInXVBXn
- EmA21OPA5jKVQEuSUrzjDPIkLG2EQwNv5pf/j4YxguZyZaVIoF0/xNRUscvp3N4aVxGo
- 2wxg==
+ :cc:content-transfer-encoding;
+ bh=ORgyDoOCIEOUL8U3dnyT06mU04ZD6Ohk7/GG6LMS5t4=;
+ b=iPEkWtbtXd3RXJczgUw7zNMR5U+vWtC5rXfDZLw6VgeXfpduhSI3AEavfGqDQA2pVs
+ ufDtwmV56wOwbbXB9Th7HJyjfVnkgrc9DI8p83c6i51tGy1hUYvpXW82OuYuRUVo+K0h
+ mgNj6kV12PGBJjGrkzqvhfxFrfDNtU9IyG1eTJWZcIPzwR0gob9cDyFe53cbPEwH/LWP
+ FdRMTuV/GjVT76N0No/zAgZrJQc88df2nkh1otcL2qiMaF9l7c+MpIyfCnFYTga/JIXu
+ CudL4qGF638S/nZgUVcUnVCQ+CHcS2F6VYS9ZK+za9JiuNrspRUMRF80cQznVTohhvix
+ KdPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=sxHwCFQ7GN3iQdwu0G1IfNe7Yi5+zoqZ7WtImg1yT/U=;
- b=GeF/CKXq7jd1maydydfVBClRNE6RjUYih0ThWfYE4ubT/NqLq+O68aOVSHSh2hJ8ZA
- 7icBlyNc6R/tfoSnoFFL6VFzVDI0WjdGBH+u56BuT+VQ8CIDEUCGAhg8hbMouraG0IcD
- /em/gPCOd32b1SHB16J+liVTe6J+GqNJhC9Cm0Tfve7PzpcZiJ3tLyCgHCaGX0DAIZox
- Er8wnEYelwBbFUpbuHtHq3r7yhTtxmiIpTFUfAgaX6vLa9QSm8SXA2wiXhRLEqX/C6pS
- wodUlD9SBc0RSB7etsv+isUwFMyDMmkZTPVDtb9lZPtSS7zZdgKuuDM4TBq5UoOaxSk8
- xOXw==
-X-Gm-Message-State: AOAM531YgXSwLEs9ba97jpmTks8N1LwCmGsrH2YP1Z9wszJZuwA6TRDF
- eihy9/J50fddMPcibiiw5UctCudy83Q=
+ :references:subject:from:to:cc:content-transfer-encoding;
+ bh=ORgyDoOCIEOUL8U3dnyT06mU04ZD6Ohk7/GG6LMS5t4=;
+ b=bpFLQmqp2LLwX7m037arfPZ3vtHf8gxhFN9MTFmVbxJCnzPxm6/+mLS+HIyfpd/yOb
+ PzBqDGAxZOFh/L38tBXpADlwicB4d4ZIVCrxwpyWtiG7R5M1b0RkkbqywrC1YYZeX8wu
+ 3LOaSthaskxg/4MsMidsctJ9jsSyXP4CpZ+e8kkeZODDa1VWzDhKZFQn2L9U6R1PehaG
+ iffRq9Ag58EpOr64nikGyujlewPo7x5tpUhGiuhjTIxPpfFL9fXuXNWLsh4YTpklYAhN
+ sEVmRxssOCf2kHXWqFKuaQ5EfpwGUcPcezaYzz8FBTWr6CPhbT9iX7iPyDD4904RPHcX
+ tsUg==
+X-Gm-Message-State: AOAM532TvjW3xDqInYk3DvnfLC5ptByOA4r4q955u6RswTCp3YMtHHig
+ Q0jBSzB1ARr2GUXECyXyZ5UteXx+G2Q=
 X-Received: from titusr.svl.corp.google.com
  ([2620:15c:2a3:201:3a0a:5449:c096:dc84])
- (user=titusr job=sendgmr) by 2002:a05:6902:2:b0:624:4cb5:fd3b with SMTP id
- l2-20020a056902000200b006244cb5fd3bmr27492489ybh.1.1646180619713; Tue, 01 Mar
- 2022 16:23:39 -0800 (PST)
-Date: Tue,  1 Mar 2022 16:23:06 -0800
+ (user=titusr job=sendgmr) by 2002:a81:4a08:0:b0:2d1:19d7:1902 with SMTP id
+ x8-20020a814a08000000b002d119d71902mr27614032ywa.337.1646180615152; Tue, 01
+ Mar 2022 16:23:35 -0800 (PST)
+Date: Tue,  1 Mar 2022 16:23:04 -0800
 In-Reply-To: <20220302002307.1895616-1-titusr@google.com>
-Message-Id: <20220302002307.1895616-9-titusr@google.com>
+Message-Id: <20220302002307.1895616-7-titusr@google.com>
 Mime-Version: 1.0
 References: <20220302002307.1895616-1-titusr@google.com>
 X-Mailer: git-send-email 2.35.1.616.g0bdcbb4464-goog
-Subject: [PATCH v2 8/9] hw/sensor: add Renesas raa228000 device
+Subject: [PATCH v2 6/9] hw/sensor: add Intersil ISL69260 device model
 From: Titus Rwantare <titusr@google.com>
 To: Corey Minyard <minyard@acm.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
  wuhaotsh@google.com, venture@google.com, Titus Rwantare <titusr@google.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::949
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b4a
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::949;
- envelope-from=3C7keYgYKCBA9y9A87w44w1u.s426u2A-q72343w3A.47w@flex--titusr.bounces.google.com;
- helo=mail-ua1-x949.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3B7keYgYKCgw5u5643s00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--titusr.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
 X-Spam_score_int: -81
 X-Spam_score: -8.2
 X-Spam_bar: --------
@@ -111,232 +114,796 @@ X-Spam_report: (-8.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CtfhQzQsT2kK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: taS1sIBx6ncw
 
 Signed-off-by: Titus Rwantare <titusr@google.com>
 Reviewed-by: Hao Wu <wuhaotsh@google.com>
 ---
- hw/sensor/isl_pmbus.c         | 50 ++++++++++++++++++++++
- include/hw/sensor/isl_pmbus.h |  1 +
- tests/qtest/isl_pmbus-test.c  | 78 +++++++++++++++++++++++++++++++++--
- 3 files changed, 126 insertions(+), 3 deletions(-)
+ MAINTAINERS                   |   3 +
+ hw/arm/Kconfig                |   1 +
+ hw/sensor/Kconfig             |   5 +
+ hw/sensor/isl_pmbus.c         | 210 ++++++++++++++++++
+ hw/sensor/meson.build         |   1 +
+ include/hw/sensor/isl_pmbus.h |  50 +++++
+ tests/qtest/isl_pmbus-test.c  | 393 ++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build       |   1 +
+ 8 files changed, 664 insertions(+)
+ create mode 100644 hw/sensor/isl_pmbus.c
+ create mode 100644 include/hw/sensor/isl_pmbus.h
+ create mode 100644 tests/qtest/isl_pmbus-test.c
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3601984b5d..3df8e938e0 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3140,10 +3140,13 @@ M: Titus Rwantare <titusr@google.com>
+ S: Maintained
+ F: hw/i2c/pmbus_device.c
+ F: hw/sensor/adm1272.c
++F: hw/sensor/isl_pmbus.c
+ F: hw/sensor/max34451.c
+ F: include/hw/i2c/pmbus_device.h
++F: include/hw/sensor/isl_pmbus.h
+ F: tests/qtest/adm1272-test.c
+ F: tests/qtest/max34451-test.c
++F: tests/qtest/isl_pmbus-test.c
+=20
+ Firmware schema specifications
+ M: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 6945330030..8047ad6378 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -400,6 +400,7 @@ config NPCM7XX
+     select SMBUS
+     select AT24C  # EEPROM
+     select MAX34451
++    select ISL_PMBUS
+     select PL310  # cache controller
+     select PMBUS
+     select SERIAL
+diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
+index 215944decc..70fb335789 100644
+--- a/hw/sensor/Kconfig
++++ b/hw/sensor/Kconfig
+@@ -30,3 +30,8 @@ config LSM303DLHC_MAG
+     bool
+     depends on I2C
+     default y if I2C_DEVICES
++
++config ISL_PMBUS
++    bool
++    depends on I2C
++
 diff --git a/hw/sensor/isl_pmbus.c b/hw/sensor/isl_pmbus.c
-index 4ff848f663..e3b42b119e 100644
---- a/hw/sensor/isl_pmbus.c
+new file mode 100644
+index 0000000000..8cc7220a57
+--- /dev/null
 +++ b/hw/sensor/isl_pmbus.c
-@@ -89,6 +89,24 @@ static void isl_pmbus_exit_reset(Object *obj)
-     }
- }
- 
-+/* The raa228000 uses different direct mode coefficents from most isl devices */
-+static void raa228000_exit_reset(Object *obj)
+@@ -0,0 +1,210 @@
++/*
++ * PMBus device for Renesas Digital Multiphase Voltage Regulators
++ *
++ * Copyright 2021 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/sensor/isl_pmbus.h"
++#include "hw/qdev-properties.h"
++#include "qapi/visitor.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++
++static uint8_t isl_pmbus_read_byte(PMBusDevice *pmdev)
 +{
-+    isl_pmbus_exit_reset(obj);
-+
-+    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-+
-+    pmdev->pages[0].read_vout = 0;
-+    pmdev->pages[0].read_iout = 0;
-+    pmdev->pages[0].read_pout = 0;
-+    pmdev->pages[0].read_vin = 0;
-+    pmdev->pages[0].read_iin = 0;
-+    pmdev->pages[0].read_pin = 0;
-+    pmdev->pages[0].read_temperature_1 = 0;
-+    pmdev->pages[0].read_temperature_2 = 0;
-+    pmdev->pages[0].read_temperature_3 = 0;
++    qemu_log_mask(LOG_GUEST_ERROR,
++                  "%s: reading from unsupported register: 0x%02x\n",
++                  __func__, pmdev->code);
++    return 0xFF;
 +}
 +
- static void isl_pmbus_add_props(Object *obj, uint64_t *flags, uint8_t pages)
- {
-     PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-@@ -177,6 +195,20 @@ static void raa22xx_init(Object *obj)
-     isl_pmbus_add_props(obj, flags, 2);
- }
- 
-+static void raa228000_init(Object *obj)
++static int isl_pmbus_write_data(PMBusDevice *pmdev, const uint8_t *buf,
++                              uint8_t len)
 +{
-+    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-+    uint64_t flags[1];
++    qemu_log_mask(LOG_GUEST_ERROR,
++                  "%s: write to unsupported register: 0x%02x\n",
++                  __func__, pmdev->code);
++    return 0xFF;
++}
 +
-+    flags[0] = PB_HAS_VIN | PB_HAS_VOUT | PB_HAS_VOUT_MODE |
++/* TODO: Implement coefficients support in pmbus_device.c for qmp */
++static void isl_pmbus_get(Object *obj, Visitor *v, const char *name,
++                                     void *opaque, Error **errp)
++{
++    visit_type_uint16(v, name, (uint16_t *)opaque, errp);
++}
++
++static void isl_pmbus_set(Object *obj, Visitor *v, const char *name,
++                                 void *opaque, Error **errp)
++{
++    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
++    uint16_t *internal =3D opaque;
++    uint16_t value;
++    if (!visit_type_uint16(v, name, &value, errp)) {
++        return;
++    }
++
++    *internal =3D value;
++    pmbus_check_limits(pmdev);
++}
++
++static void isl_pmbus_exit_reset(Object *obj)
++{
++    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
++
++    pmdev->page =3D 0;
++    pmdev->capability =3D ISL_CAPABILITY_DEFAULT;
++    for (int i =3D 0; i < pmdev->num_pages; i++) {
++        pmdev->pages[i].operation =3D ISL_OPERATION_DEFAULT;
++        pmdev->pages[i].on_off_config =3D ISL_ON_OFF_CONFIG_DEFAULT;
++        pmdev->pages[i].vout_mode =3D ISL_VOUT_MODE_DEFAULT;
++        pmdev->pages[i].vout_command =3D ISL_VOUT_COMMAND_DEFAULT;
++        pmdev->pages[i].vout_max =3D ISL_VOUT_MAX_DEFAULT;
++        pmdev->pages[i].vout_margin_high =3D ISL_VOUT_MARGIN_HIGH_DEFAULT;
++        pmdev->pages[i].vout_margin_low =3D ISL_VOUT_MARGIN_LOW_DEFAULT;
++        pmdev->pages[i].vout_transition_rate =3D ISL_VOUT_TRANSITION_RATE_=
+DEFAULT;
++        pmdev->pages[i].vout_ov_fault_limit =3D ISL_VOUT_OV_FAULT_LIMIT_DE=
+FAULT;
++        pmdev->pages[i].ot_fault_limit =3D ISL_OT_FAULT_LIMIT_DEFAULT;
++        pmdev->pages[i].ot_warn_limit =3D ISL_OT_WARN_LIMIT_DEFAULT;
++        pmdev->pages[i].vin_ov_warn_limit =3D ISL_VIN_OV_WARN_LIMIT_DEFAUL=
+T;
++        pmdev->pages[i].vin_uv_warn_limit =3D ISL_VIN_UV_WARN_LIMIT_DEFAUL=
+T;
++        pmdev->pages[i].iin_oc_fault_limit =3D ISL_IIN_OC_FAULT_LIMIT_DEFA=
+ULT;
++        pmdev->pages[i].ton_delay =3D ISL_TON_DELAY_DEFAULT;
++        pmdev->pages[i].ton_rise =3D ISL_TON_RISE_DEFAULT;
++        pmdev->pages[i].toff_fall =3D ISL_TOFF_FALL_DEFAULT;
++        pmdev->pages[i].revision =3D ISL_REVISION_DEFAULT;
++
++        pmdev->pages[i].read_vout =3D ISL_READ_VOUT_DEFAULT;
++        pmdev->pages[i].read_iout =3D ISL_READ_IOUT_DEFAULT;
++        pmdev->pages[i].read_pout =3D ISL_READ_POUT_DEFAULT;
++        pmdev->pages[i].read_vin =3D ISL_READ_VIN_DEFAULT;
++        pmdev->pages[i].read_iin =3D ISL_READ_IIN_DEFAULT;
++        pmdev->pages[i].read_pin =3D ISL_READ_PIN_DEFAULT;
++        pmdev->pages[i].read_temperature_1 =3D ISL_READ_TEMP_DEFAULT;
++        pmdev->pages[i].read_temperature_2 =3D ISL_READ_TEMP_DEFAULT;
++        pmdev->pages[i].read_temperature_3 =3D ISL_READ_TEMP_DEFAULT;
++    }
++}
++
++static void isl_pmbus_add_props(Object *obj, uint64_t *flags, uint8_t page=
+s)
++{
++    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
++    for (int i =3D 0; i < pages; i++) {
++        if (flags[i] & PB_HAS_VIN) {
++            object_property_add(obj, "vin[*]", "uint16",
++                                isl_pmbus_get,
++                                isl_pmbus_set,
++                                NULL, &pmdev->pages[i].read_vin);
++        }
++
++        if (flags[i] & PB_HAS_VOUT) {
++            object_property_add(obj, "vout[*]", "uint16",
++                                isl_pmbus_get,
++                                isl_pmbus_set,
++                                NULL, &pmdev->pages[i].read_vout);
++        }
++
++        if (flags[i] & PB_HAS_IIN) {
++            object_property_add(obj, "iin[*]", "uint16",
++                                isl_pmbus_get,
++                                isl_pmbus_set,
++                                NULL, &pmdev->pages[i].read_iin);
++        }
++
++        if (flags[i] & PB_HAS_IOUT) {
++            object_property_add(obj, "iout[*]", "uint16",
++                                isl_pmbus_get,
++                                isl_pmbus_set,
++                                NULL, &pmdev->pages[i].read_iout);
++        }
++
++        if (flags[i] & PB_HAS_PIN) {
++            object_property_add(obj, "pin[*]", "uint16",
++                                isl_pmbus_get,
++                                isl_pmbus_set,
++                                NULL, &pmdev->pages[i].read_pin);
++        }
++
++        if (flags[i] & PB_HAS_POUT) {
++            object_property_add(obj, "pout[*]", "uint16",
++                                isl_pmbus_get,
++                                isl_pmbus_set,
++                                NULL, &pmdev->pages[i].read_pout);
++        }
++
++        if (flags[i] & PB_HAS_TEMPERATURE) {
++            object_property_add(obj, "temp1[*]", "uint16",
++                                isl_pmbus_get,
++                                isl_pmbus_set,
++                                NULL, &pmdev->pages[i].read_temperature_1)=
+;
++        }
++
++        if (flags[i] & PB_HAS_TEMP2) {
++            object_property_add(obj, "temp2[*]", "uint16",
++                                isl_pmbus_get,
++                                isl_pmbus_set,
++                                NULL, &pmdev->pages[i].read_temperature_2)=
+;
++        }
++
++        if (flags[i] & PB_HAS_TEMP3) {
++            object_property_add(obj, "temp3[*]", "uint16",
++                                isl_pmbus_get,
++                                isl_pmbus_set,
++                                NULL, &pmdev->pages[i].read_temperature_3)=
+;
++        }
++    }
++}
++
++static void raa22xx_init(Object *obj)
++{
++    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
++    uint64_t flags[2];
++
++    flags[0] =3D PB_HAS_VIN | PB_HAS_VOUT | PB_HAS_VOUT_MODE |
 +               PB_HAS_VOUT_RATING | PB_HAS_VOUT_MARGIN | PB_HAS_IIN |
-+               PB_HAS_IOUT | PB_HAS_PIN | PB_HAS_POUT | PB_HAS_TEMPERATURE |
++               PB_HAS_IOUT | PB_HAS_PIN | PB_HAS_POUT | PB_HAS_TEMPERATURE=
+ |
 +               PB_HAS_TEMP2 | PB_HAS_TEMP3 | PB_HAS_STATUS_MFR_SPECIFIC;
++    flags[1] =3D PB_HAS_IIN | PB_HAS_PIN | PB_HAS_TEMPERATURE | PB_HAS_TEM=
+P3 |
++               PB_HAS_VOUT | PB_HAS_VOUT_MODE | PB_HAS_VOUT_MARGIN |
++               PB_HAS_VOUT_RATING | PB_HAS_IOUT | PB_HAS_POUT |
++               PB_HAS_STATUS_MFR_SPECIFIC;
 +
 +    pmbus_page_config(pmdev, 0, flags[0]);
-+    isl_pmbus_add_props(obj, flags, 1);
++    pmbus_page_config(pmdev, 1, flags[1]);
++    isl_pmbus_add_props(obj, flags, 2);
 +}
 +
- static void isl_pmbus_class_init(ObjectClass *klass, void *data, uint8_t pages)
- {
-     PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
-@@ -194,6 +226,15 @@ static void isl69260_class_init(ObjectClass *klass, void *data)
-     isl_pmbus_class_init(klass, data, 2);
- }
- 
-+static void raa228000_class_init(ObjectClass *klass, void *data)
++static void isl_pmbus_class_init(ObjectClass *klass, void *data, uint8_t p=
+ages)
 +{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->desc = "Renesas 228000 Digital Multiphase Voltage Regulator";
-+    rc->phases.exit = raa228000_exit_reset;
-+    isl_pmbus_class_init(klass, data, 1);
++    PMBusDeviceClass *k =3D PMBUS_DEVICE_CLASS(klass);
++    k->write_data =3D isl_pmbus_write_data;
++    k->receive_byte =3D isl_pmbus_read_byte;
++    k->device_num_pages =3D pages;
 +}
 +
- static void raa229004_class_init(ObjectClass *klass, void *data)
- {
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
-@@ -219,9 +260,18 @@ static const TypeInfo raa229004_info = {
-     .class_init = raa229004_class_init,
- };
- 
-+static const TypeInfo raa228000_info = {
-+    .name = TYPE_RAA228000,
-+    .parent = TYPE_PMBUS_DEVICE,
-+    .instance_size = sizeof(ISLState),
-+    .instance_init = raa228000_init,
-+    .class_init = raa228000_class_init,
++static void isl69260_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    dc->desc =3D "Renesas ISL69260 Digital Multiphase Voltage Regulator";
++    rc->phases.exit =3D isl_pmbus_exit_reset;
++    isl_pmbus_class_init(klass, data, 2);
++}
++
++static const TypeInfo isl69260_info =3D {
++    .name =3D TYPE_ISL69260,
++    .parent =3D TYPE_PMBUS_DEVICE,
++    .instance_size =3D sizeof(ISLState),
++    .instance_init =3D raa22xx_init,
++    .class_init =3D isl69260_class_init,
 +};
 +
- static void isl_pmbus_register_types(void)
- {
-     type_register_static(&isl69260_info);
-+    type_register_static(&raa228000_info);
-     type_register_static(&raa229004_info);
- }
- 
-diff --git a/include/hw/sensor/isl_pmbus.h b/include/hw/sensor/isl_pmbus.h
-index a947fd3903..7ead1dc4a2 100644
---- a/include/hw/sensor/isl_pmbus.h
-+++ b/include/hw/sensor/isl_pmbus.h
-@@ -13,6 +13,7 @@
- #include "qom/object.h"
- 
- #define TYPE_ISL69260   "isl69260"
-+#define TYPE_RAA228000  "raa228000"
- #define TYPE_RAA229004  "raa229004"
- 
- struct ISLState {
-diff --git a/tests/qtest/isl_pmbus-test.c b/tests/qtest/isl_pmbus-test.c
-index 80d6c24ec7..ea62cd4e07 100644
---- a/tests/qtest/isl_pmbus-test.c
-+++ b/tests/qtest/isl_pmbus-test.c
-@@ -149,6 +149,70 @@ static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
-     g_assert_cmphex(i2c_value, ==, ISL_REVISION_DEFAULT);
- }
- 
-+static void raa228000_test_defaults(void *obj, void *data,
-+                                    QGuestAllocator *alloc)
++static void isl_pmbus_register_types(void)
 +{
-+    uint16_t value, i2c_value;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    value = qmp_isl_pmbus_get(TEST_ID, "vout[0]");
-+    g_assert_cmpuint(value, ==, 0);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IOUT);
-+    g_assert_cmpuint(i2c_value, ==, 0);
-+
-+    value = qmp_isl_pmbus_get(TEST_ID, "pout[0]");
-+    g_assert_cmpuint(value, ==, 0);
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
-+    g_assert_cmphex(i2c_value, ==, ISL_CAPABILITY_DEFAULT);
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
-+    g_assert_cmphex(i2c_value, ==, ISL_OPERATION_DEFAULT);
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_ON_OFF_CONFIG);
-+    g_assert_cmphex(i2c_value, ==, ISL_ON_OFF_CONFIG_DEFAULT);
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_VOUT_MODE);
-+    g_assert_cmphex(i2c_value, ==, ISL_VOUT_MODE_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_COMMAND);
-+    g_assert_cmphex(i2c_value, ==, ISL_VOUT_COMMAND_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MAX);
-+    g_assert_cmphex(i2c_value, ==, ISL_VOUT_MAX_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
-+    g_assert_cmphex(i2c_value, ==, ISL_VOUT_MARGIN_HIGH_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
-+    g_assert_cmphex(i2c_value, ==, ISL_VOUT_MARGIN_LOW_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_TRANSITION_RATE);
-+    g_assert_cmphex(i2c_value, ==, ISL_VOUT_TRANSITION_RATE_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ISL_VOUT_OV_FAULT_LIMIT_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ISL_OT_FAULT_LIMIT_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ISL_OT_WARN_LIMIT_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_OV_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ISL_VIN_OV_WARN_LIMIT_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_UV_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ISL_VIN_UV_WARN_LIMIT_DEFAULT);
-+
-+    i2c_value = isl_pmbus_i2c_get16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ISL_IIN_OC_FAULT_LIMIT_DEFAULT);
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_REVISION);
-+    g_assert_cmphex(i2c_value, ==, ISL_REVISION_DEFAULT);
++    type_register_static(&isl69260_info);
 +}
 +
- /* test qmp access */
- static void test_tx_rx(void *obj, void *data, QGuestAllocator *alloc)
- {
-@@ -383,9 +447,6 @@ static void isl_pmbus_register_nodes(void)
-     qos_node_create_driver("isl69260", i2c_device_create);
-     qos_node_consumes("isl69260", "i2c-bus", &opts);
- 
--    qos_node_create_driver("raa229004", i2c_device_create);
--    qos_node_consumes("raa229004", "i2c-bus", &opts);
--
-     qos_add_test("test_defaults", "isl69260", test_defaults, NULL);
-     qos_add_test("test_tx_rx", "isl69260", test_tx_rx, NULL);
-     qos_add_test("test_rw_regs", "isl69260", test_rw_regs, NULL);
-@@ -393,9 +454,20 @@ static void isl_pmbus_register_nodes(void)
-     qos_add_test("test_ro_regs", "isl69260", test_ro_regs, NULL);
-     qos_add_test("test_ov_faults", "isl69260", test_voltage_faults, NULL);
- 
-+    qos_node_create_driver("raa229004", i2c_device_create);
-+    qos_node_consumes("raa229004", "i2c-bus", &opts);
++type_init(isl_pmbus_register_types)
+diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
+index d1bba290da..2e82991ff1 100644
+--- a/hw/sensor/meson.build
++++ b/hw/sensor/meson.build
+@@ -5,3 +5,4 @@ softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc1=
+41x.c'))
+ softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
+ softmmu_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
+ softmmu_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_m=
+ag.c'))
++softmmu_ss.add(when: 'CONFIG_ISL_PMBUS', if_true: files('isl_pmbus.c'))
+diff --git a/include/hw/sensor/isl_pmbus.h b/include/hw/sensor/isl_pmbus.h
+new file mode 100644
+index 0000000000..8115aaa698
+--- /dev/null
++++ b/include/hw/sensor/isl_pmbus.h
+@@ -0,0 +1,50 @@
++/*
++ * PMBus device for Renesas Digital Multiphase Voltage Regulators
++ *
++ * Copyright 2022 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-     qos_add_test("test_tx_rx", "raa229004", test_tx_rx, NULL);
-     qos_add_test("test_rw_regs", "raa229004", test_rw_regs, NULL);
-     qos_add_test("test_pages_rw", "raa229004", test_pages_rw, NULL);
-     qos_add_test("test_ov_faults", "raa229004", test_voltage_faults, NULL);
++#ifndef HW_MISC_ISL_PMBUS_H
++#define HW_MISC_ISL_PMBUS_H
 +
-+    qos_node_create_driver("raa228000", i2c_device_create);
-+    qos_node_consumes("raa228000", "i2c-bus", &opts);
++#include "hw/i2c/pmbus_device.h"
++#include "qom/object.h"
 +
-+    qos_add_test("test_defaults", "raa228000", raa228000_test_defaults, NULL);
-+    qos_add_test("test_tx_rx", "raa228000", test_tx_rx, NULL);
-+    qos_add_test("test_rw_regs", "raa228000", test_rw_regs, NULL);
-+    qos_add_test("test_ov_faults", "raa228000", test_voltage_faults, NULL);
- }
- libqos_init(isl_pmbus_register_nodes);
--- 
++#define TYPE_ISL69260   "isl69260"
++
++struct ISLState {
++    PMBusDevice parent;
++};
++
++OBJECT_DECLARE_SIMPLE_TYPE(ISLState, ISL69260)
++
++#define ISL_CAPABILITY_DEFAULT                 0x40
++#define ISL_OPERATION_DEFAULT                  0x80
++#define ISL_ON_OFF_CONFIG_DEFAULT              0x16
++#define ISL_VOUT_MODE_DEFAULT                  0x40
++#define ISL_VOUT_COMMAND_DEFAULT               0x0384
++#define ISL_VOUT_MAX_DEFAULT                   0x08FC
++#define ISL_VOUT_MARGIN_HIGH_DEFAULT           0x0640
++#define ISL_VOUT_MARGIN_LOW_DEFAULT            0xFA
++#define ISL_VOUT_TRANSITION_RATE_DEFAULT       0x64
++#define ISL_VOUT_OV_FAULT_LIMIT_DEFAULT        0x076C
++#define ISL_OT_FAULT_LIMIT_DEFAULT             0x7D
++#define ISL_OT_WARN_LIMIT_DEFAULT              0x07D0
++#define ISL_VIN_OV_WARN_LIMIT_DEFAULT          0x36B0
++#define ISL_VIN_UV_WARN_LIMIT_DEFAULT          0x1F40
++#define ISL_IIN_OC_FAULT_LIMIT_DEFAULT         0x32
++#define ISL_TON_DELAY_DEFAULT                  0x14
++#define ISL_TON_RISE_DEFAULT                   0x01F4
++#define ISL_TOFF_FALL_DEFAULT                  0x01F4
++#define ISL_REVISION_DEFAULT                   0x33
++#define ISL_READ_VOUT_DEFAULT                  1000
++#define ISL_READ_IOUT_DEFAULT                  40
++#define ISL_READ_POUT_DEFAULT                  4
++#define ISL_READ_TEMP_DEFAULT                  25
++#define ISL_READ_VIN_DEFAULT                   1100
++#define ISL_READ_IIN_DEFAULT                   40
++#define ISL_READ_PIN_DEFAULT                   4
++
++#endif
+diff --git a/tests/qtest/isl_pmbus-test.c b/tests/qtest/isl_pmbus-test.c
+new file mode 100644
+index 0000000000..59fa67f110
+--- /dev/null
++++ b/tests/qtest/isl_pmbus-test.c
+@@ -0,0 +1,393 @@
++/*
++ * QTests for the ISL_PMBUS digital voltage regulators
++ *
++ * Copyright 2021 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WIT=
+HOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "qemu/osdep.h"
++#include <math.h>
++#include "hw/i2c/pmbus_device.h"
++#include "hw/sensor/isl_pmbus.h"
++#include "libqtest-single.h"
++#include "libqos/qgraph.h"
++#include "libqos/i2c.h"
++#include "qapi/qmp/qdict.h"
++#include "qapi/qmp/qnum.h"
++#include "qemu/bitops.h"
++
++#define TEST_ID "isl_pmbus-test"
++#define TEST_ADDR (0x43)
++
++static uint16_t qmp_isl_pmbus_get(const char *id, const char *property)
++{
++    QDict *response;
++    uint64_t ret;
++
++    response =3D qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %s, "
++                   "'property': %s } }", id, property);
++    g_assert(qdict_haskey(response, "return"));
++    ret =3D qnum_get_uint(qobject_to(QNum, qdict_get(response, "return")))=
+;
++    qobject_unref(response);
++    return ret;
++}
++
++static void qmp_isl_pmbus_set(const char *id,
++                            const char *property,
++                            uint16_t value)
++{
++    QDict *response;
++
++    response =3D qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
++                   "'property': %s, 'value': %u } }", id, property, value)=
+;
++    g_assert(qdict_haskey(response, "return"));
++    qobject_unref(response);
++}
++
++/* PMBus commands are little endian vs i2c_set16 in i2c.h which is big end=
+ian */
++static uint16_t isl_pmbus_i2c_get16(QI2CDevice *i2cdev, uint8_t reg)
++{
++    uint8_t resp[2];
++    i2c_read_block(i2cdev, reg, resp, sizeof(resp));
++    return (resp[1] << 8) | resp[0];
++}
++
++/* PMBus commands are little endian vs i2c_set16 in i2c.h which is big end=
+ian */
++static void isl_pmbus_i2c_set16(QI2CDevice *i2cdev, uint8_t reg, uint16_t =
+value)
++{
++    uint8_t data[2];
++
++    data[0] =3D value & 255;
++    data[1] =3D value >> 8;
++    i2c_write_block(i2cdev, reg, data, sizeof(data));
++}
++
++static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t value, i2c_value;
++    QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
++
++    value =3D qmp_isl_pmbus_get(TEST_ID, "vout[0]");
++    g_assert_cmpuint(value, =3D=3D, ISL_READ_VOUT_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IOUT);
++    g_assert_cmpuint(i2c_value, =3D=3D, ISL_READ_IOUT_DEFAULT);
++
++    value =3D qmp_isl_pmbus_get(TEST_ID, "pout[0]");
++    g_assert_cmpuint(value, =3D=3D, ISL_READ_POUT_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VIN);
++    g_assert_cmpuint(i2c_value, =3D=3D, ISL_READ_VIN_DEFAULT);
++
++    value =3D qmp_isl_pmbus_get(TEST_ID, "iin[0]");
++    g_assert_cmpuint(value, =3D=3D, ISL_READ_IIN_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_PIN);
++    g_assert_cmpuint(i2c_value, =3D=3D, ISL_READ_PIN_DEFAULT);
++
++    value =3D qmp_isl_pmbus_get(TEST_ID, "temp1[0]");
++    g_assert_cmpuint(value, =3D=3D, ISL_READ_TEMP_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_2);
++    g_assert_cmpuint(i2c_value, =3D=3D, ISL_READ_TEMP_DEFAULT);
++
++    i2c_value =3D i2c_get8(i2cdev, PMBUS_CAPABILITY);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_CAPABILITY_DEFAULT);
++
++    i2c_value =3D i2c_get8(i2cdev, PMBUS_OPERATION);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_OPERATION_DEFAULT);
++
++    i2c_value =3D i2c_get8(i2cdev, PMBUS_ON_OFF_CONFIG);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_ON_OFF_CONFIG_DEFAULT);
++
++    i2c_value =3D i2c_get8(i2cdev, PMBUS_VOUT_MODE);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MODE_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_COMMAND);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_COMMAND_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MAX);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MAX_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MARGIN_HIGH_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_MARGIN_LOW_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_TRANSITION_RATE);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_TRANSITION_RATE_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_VOUT_OV_FAULT_LIMIT_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_OT_FAULT_LIMIT_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_OT_WARN_LIMIT_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_OV_WARN_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_VIN_OV_WARN_LIMIT_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_UV_WARN_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_VIN_UV_WARN_LIMIT_DEFAULT);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_IIN_OC_FAULT_LIMIT_DEFAULT);
++
++    i2c_value =3D i2c_get8(i2cdev, PMBUS_REVISION);
++    g_assert_cmphex(i2c_value, =3D=3D, ISL_REVISION_DEFAULT);
++}
++
++/* test qmp access */
++static void test_tx_rx(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t i2c_value, value;
++    QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
++
++    qmp_isl_pmbus_set(TEST_ID, "vin[0]", 200);
++    value =3D qmp_isl_pmbus_get(TEST_ID, "vin[0]");
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VIN);
++    g_assert_cmpuint(value, =3D=3D, i2c_value);
++
++    qmp_isl_pmbus_set(TEST_ID, "vout[0]", 2500);
++    value =3D qmp_isl_pmbus_get(TEST_ID, "vout[0]");
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++    g_assert_cmpuint(value, =3D=3D, i2c_value);
++
++    qmp_isl_pmbus_set(TEST_ID, "iin[0]", 300);
++    value =3D qmp_isl_pmbus_get(TEST_ID, "iin[0]");
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IIN);
++    g_assert_cmpuint(value, =3D=3D, i2c_value);
++
++    qmp_isl_pmbus_set(TEST_ID, "iout[0]", 310);
++    value =3D qmp_isl_pmbus_get(TEST_ID, "iout[0]");
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IOUT);
++    g_assert_cmpuint(value, =3D=3D, i2c_value);
++
++    qmp_isl_pmbus_set(TEST_ID, "pin[0]", 100);
++    value =3D qmp_isl_pmbus_get(TEST_ID, "pin[0]");
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_PIN);
++    g_assert_cmpuint(value, =3D=3D, i2c_value);
++
++    qmp_isl_pmbus_set(TEST_ID, "pout[0]", 95);
++    value =3D qmp_isl_pmbus_get(TEST_ID, "pout[0]");
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_POUT);
++    g_assert_cmpuint(value, =3D=3D, i2c_value);
++
++    qmp_isl_pmbus_set(TEST_ID, "temp1[0]", 26);
++    value =3D qmp_isl_pmbus_get(TEST_ID, "temp1[0]");
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++    g_assert_cmpuint(value, =3D=3D, i2c_value);
++
++    qmp_isl_pmbus_set(TEST_ID, "temp2[0]", 27);
++    value =3D qmp_isl_pmbus_get(TEST_ID, "temp2[0]");
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_2);
++    g_assert_cmpuint(value, =3D=3D, i2c_value);
++
++    qmp_isl_pmbus_set(TEST_ID, "temp3[0]", 28);
++    value =3D qmp_isl_pmbus_get(TEST_ID, "temp3[0]");
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_3);
++    g_assert_cmpuint(value, =3D=3D, i2c_value);
++
++}
++
++/* test r/w registers */
++static void test_rw_regs(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t i2c_value;
++    QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_COMMAND, 0x1234);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_COMMAND);
++    g_assert_cmphex(i2c_value, =3D=3D, 0x1234);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_TRIM, 0x4567);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_TRIM);
++    g_assert_cmphex(i2c_value, =3D=3D, 0x4567);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_MAX, 0x9876);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MAX);
++    g_assert_cmphex(i2c_value, =3D=3D, 0x9876);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_HIGH, 0xABCD);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
++    g_assert_cmphex(i2c_value, =3D=3D, 0xABCD);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_LOW, 0xA1B2);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
++    g_assert_cmphex(i2c_value, =3D=3D, 0xA1B2);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_TRANSITION_RATE, 0xDEF1);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_TRANSITION_RATE);
++    g_assert_cmphex(i2c_value, =3D=3D, 0xDEF1);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_DROOP, 0x5678);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_DROOP);
++    g_assert_cmphex(i2c_value, =3D=3D, 0x5678);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_MIN, 0x1234);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_MIN);
++    g_assert_cmphex(i2c_value, =3D=3D, 0x1234);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT, 0x2345);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, 0x2345);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT, 0xFA12);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, 0xFA12);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_OT_FAULT_LIMIT, 0xF077);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, 0xF077);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_OT_WARN_LIMIT, 0x7137);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, 0x7137);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VIN_OV_FAULT_LIMIT, 0x3456);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_OV_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, 0x3456);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VIN_UV_FAULT_LIMIT, 0xBADA);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_VIN_UV_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, 0xBADA);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT, 0xB1B0);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_IIN_OC_FAULT_LIMIT);
++    g_assert_cmphex(i2c_value, =3D=3D, 0xB1B0);
++
++    i2c_set8(i2cdev, PMBUS_OPERATION, 0xA);
++    i2c_value =3D i2c_get8(i2cdev, PMBUS_OPERATION);
++    g_assert_cmphex(i2c_value, =3D=3D, 0xA);
++
++    i2c_set8(i2cdev, PMBUS_ON_OFF_CONFIG, 0x42);
++    i2c_value =3D i2c_get8(i2cdev, PMBUS_ON_OFF_CONFIG);
++    g_assert_cmphex(i2c_value, =3D=3D, 0x42);
++}
++
++/* test that devices with multiple pages can switch between them */
++static void test_pages_rw(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t i2c_value;
++    QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
++
++    i2c_set8(i2cdev, PMBUS_PAGE, 1);
++    i2c_value =3D i2c_get8(i2cdev, PMBUS_PAGE);
++    g_assert_cmphex(i2c_value, =3D=3D, 1);
++
++    i2c_set8(i2cdev, PMBUS_PAGE, 0);
++    i2c_value =3D i2c_get8(i2cdev, PMBUS_PAGE);
++    g_assert_cmphex(i2c_value, =3D=3D, 0);
++}
++
++/* test read-only registers */
++static void test_ro_regs(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t i2c_init_value, i2c_value;
++    QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
++
++    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VIN);
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_VIN, 0xBEEF);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VIN);
++    g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
++
++    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IIN);
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_IIN, 0xB00F);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IIN);
++    g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
++
++    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_VOUT, 0x1234);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++    g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
++
++    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IOUT);
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_IOUT, 0x6547);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_IOUT);
++    g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
++
++    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_=
+1);
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_1, 0x1597);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++    g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
++
++    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_=
+2);
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_2, 0x1897);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_2);
++    g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
++
++    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_=
+3);
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_3, 0x1007);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_3);
++    g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
++
++    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_PIN);
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_PIN, 0xDEAD);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_PIN);
++    g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
++
++    i2c_init_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_POUT);
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_READ_POUT, 0xD00D);
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_READ_POUT);
++    g_assert_cmphex(i2c_init_value, =3D=3D, i2c_value);
++}
++
++/* test voltage fault handling */
++static void test_voltage_faults(void *obj, void *data, QGuestAllocator *al=
+loc)
++{
++    uint16_t i2c_value;
++    uint8_t i2c_byte;
++    QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT, 5000);
++    qmp_isl_pmbus_set(TEST_ID, "vout[0]", 5100);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
++    i2c_byte =3D i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
++    g_assert_true((i2c_value & PB_STATUS_VOUT) !=3D 0);
++    g_assert_true((i2c_byte & PB_STATUS_VOUT_OV_WARN) !=3D 0);
++
++    qmp_isl_pmbus_set(TEST_ID, "vout[0]", 4500);
++    i2c_set8(i2cdev, PMBUS_CLEAR_FAULTS, 0);
++    i2c_byte =3D i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
++    g_assert_true((i2c_byte & PB_STATUS_VOUT_OV_WARN) =3D=3D 0);
++
++    isl_pmbus_i2c_set16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT, 4600);
++
++    i2c_value =3D isl_pmbus_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
++    i2c_byte =3D i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
++    g_assert_true((i2c_value & PB_STATUS_VOUT) !=3D 0);
++    g_assert_true((i2c_byte & PB_STATUS_VOUT_UV_WARN) !=3D 0);
++
++}
++
++static void isl_pmbus_register_nodes(void)
++{
++    QOSGraphEdgeOptions opts =3D {
++        .extra_device_opts =3D "id=3D" TEST_ID ",address=3D0x43"
++    };
++    add_qi2c_address(&opts, &(QI2CAddress) { TEST_ADDR });
++
++    qos_node_create_driver("isl69260", i2c_device_create);
++    qos_node_consumes("isl69260", "i2c-bus", &opts);
++
++    qos_add_test("test_defaults", "isl69260", test_defaults, NULL);
++    qos_add_test("test_tx_rx", "isl69260", test_tx_rx, NULL);
++    qos_add_test("test_rw_regs", "isl69260", test_rw_regs, NULL);
++    qos_add_test("test_pages_rw", "isl69260", test_pages_rw, NULL);
++    qos_add_test("test_ro_regs", "isl69260", test_ro_regs, NULL);
++    qos_add_test("test_ov_faults", "isl69260", test_voltage_faults, NULL);
++}
++libqos_init(isl_pmbus_register_nodes);
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index f33d84d19b..9a6cc93c16 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -244,6 +244,7 @@ qos_test_ss.add(
+   'es1370-test.c',
+   'ipoctal232-test.c',
+   'lsm303dlhc-mag-test.c',
++  'isl_pmbus-test.c',
+   'max34451-test.c',
+   'megasas-test.c',
+   'ne2000-test.c',
+--=20
 2.35.1.616.g0bdcbb4464-goog
 

@@ -1,97 +1,138 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp613441lfo;
-        Wed, 2 Mar 2022 03:08:53 -0800 (PST)
-X-Received: by 2002:a81:178c:0:b0:2d7:8d37:a83 with SMTP id 134-20020a81178c000000b002d78d370a83mr28468711ywx.205.1646219333264;
-        Wed, 02 Mar 2022 03:08:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646219333; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp676090lfo;
+        Thu, 3 Mar 2022 04:23:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxY6owP+U0t9nL3Bfkql1Tvcydbudm6JTRxQWgHkPxwFh63k6VImihyl6YHKPbXrpqxIChj
+X-Received: by 2002:a17:906:66cb:b0:6cf:e4f7:9504 with SMTP id k11-20020a17090666cb00b006cfe4f79504mr27266626ejp.142.1646310220761;
+        Thu, 03 Mar 2022 04:23:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646310220; cv=none;
         d=google.com; s=arc-20160816;
-        b=J6IruvWZcfZiY68MYgc7CjOcs9gSs/EOEsu6WyU9gQa7L0wEBAyty2I44fJXqypJRe
-         9mnGeTSbZ4ned22Fxs3uRLAcadYCFxWV9dfT3UGIH1HdKX5sIgQoFkiL2/YYlQoPYwFh
-         K9zniO28eBQSqBdaDz95hZU6I1PYt1CcmW+42QnZG4WNe8LJ/osYZOCnMjBNaRlqdEQe
-         igdkzdsK2rvYcytiUw9/YXSFTfmsfrTFCKO0llx9021coVfCHGvtDMekbETPLaNrQSaW
-         ai3T/jkqIvBXfqpBDRlqLAXC3Oqj29EhTlMnnsShMxBzItP9l9mpyULVOAqEx0nslGD0
-         887w==
+        b=FFyLgCzYyBMKwY1KsGUPj7lVrdqBqkkygM5GbYgDRbnKQZi1g3Z5fpQjnwlSrHN5Mt
+         oNTdsPl/lS48QIRe3zplB1TCiVlbKn9z208/v4MHm//PvsnB75AWCgwIgd4rL42c9QLW
+         1v+Wx/ssNIaktkNNw7Jy5/BOnX326qhvVqoL6OLA0etlVqJKBXeI5u5xOVnfqz5wdZ81
+         QlofvDMvk1GQW3o94WqlOoy48VPjcSsUyF2cLK5QdQ2Wac1rV7T+yu5WVe7J1tuiFSzQ
+         9ASR/fWzlIsomdpDrIqkAz2LcEhdTWto3AJMZWCAgzy9in7f0bHxhHRJ5TObXwk4E4f9
+         UpfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=aoaE2JNk7pDFmBahG5UX1vgTn40WfvyEsSed8FaQ2Jw=;
-        b=PmunsD5cVJacPR7nuWur/1oC9pKuDL0iD2L7Sy5IDzdoBCRW+1lxMqRcl5OoHaPuWj
-         4qgzuEl1Nirlj/hYgvIZLr6Is/jYfmooEW/GxrAXcwIlM1UYICNdhKbO/bmyMw2e/Cti
-         WpKCWTMDJO5nG3jTeVP8nmDDAtHTKbiGmXt4SOJXmAfIsJ/ELiv2kz41NuieQpWrifdM
-         hnjUenOmZEXQknBWb0t19utxK2IRSbYGkFVbBtrXNTSNbby/gCNZVgdZp2LPoZhRviQa
-         A8Wa6j8Fnkurc9x/U0RUmevK+A6LeBGbZ03F57ioER1xW5oW5WojgqadYJq7B4xMWw5C
-         UYPQ==
+        h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+         :subject:cc:to:from:user-agent:references:dkim-signature;
+        bh=xqB53/OlukljnakrlD0/NJ34F7CHmRudeq/p9wfXyzQ=;
+        b=GfrLc9O6q5Lt4gqIyFemU6hiAYTM5d6/wqHisXe98juyOb6zMRzKYLespK2UoRYS5C
+         bhwFlgEVIdbNADHTHnNziMAjj5RvR8Bm/jWpZZenRoesv9ZQFp3w0YHD9izN+iuH9KOh
+         wqkKSH+V4WZbQkW6hIb+xRvB/pkTzX6L9oF43KeJVvRq4Gmiw7JgGny4LuetlzEkrLFJ
+         /NeakyljPNRtTdLY/4+UDaee+vok75rfGtD2KjDkLHvtJh/P9VY51jxfwBfKFNvHsHPn
+         cxpjE98rnFOL+cHNguxTRIz7O0bgJRl5TJ6tXyKJQcfVoxisudgNVGGYrDbloVcjoV8i
+         QVfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MjacDy4T;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u15-20020a25790f000000b0062441fda571sor7849188ybc.31.2022.03.02.03.08.53
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YhfpJuJH;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <crosa@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id cz2-20020a0564021ca200b00412b83c8daesi1072932edb.552.2022.03.03.04.23.40
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 02 Mar 2022 03:08:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 03 Mar 2022 04:23:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MjacDy4T;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=aoaE2JNk7pDFmBahG5UX1vgTn40WfvyEsSed8FaQ2Jw=;
-        b=MjacDy4TwOV0srnXkZlksZuiPf4FFj2Ng+mlspUsOs/pRfc9mEoDd8NqB27nlphEIR
-         sWdKjMPgmTt7By+hfmsRH0wVnNxvImnea9EJMfGmoarQbBMt8eW5uUSKpbjY7Wzke7cn
-         ijGOTrkDb+L9buLmmVwXNpxb1gFLLdZBFKmDcUnuIc8C84RqTiWY1CAIAfDCKavOAOok
-         wIFk4KffD1+dSOQCGpO8N+DTepbHJK7N+VAOdMRHm0Ezdggl5XYPbLY/7TQl7eUA829l
-         UzojkXvy/pk17BgxLgG47dF1XN+mAQtZWRYWVcdogE8ghAjV8IDAAgFvwG9whbhhmbnl
-         P2kA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=aoaE2JNk7pDFmBahG5UX1vgTn40WfvyEsSed8FaQ2Jw=;
-        b=odFRvkm0k7jIDWJJl6FsrqDgPTkzgtKKmRdfPh6/Hxcu82RF6pXDKjKJrLqLTMEdpc
-         /FTG5a/mybgU0hJW/QUHvEw5p9f0q1AkFzwspeR0up3NVzc8v1hpKElmP1vieMWXLKZ6
-         PGAbu0ff7JV/4e27hueGwpV+HJyAsqsxvSpGu8V/R0maw3QGLeQ0/VRs79EiMGcGQH66
-         uka/J2eYWeNsK+tpuOvbQHtyLon+exLkkgMnWeixT2sAyARPY/+r6mJlAVXJYn5Qnv2s
-         fHbU0/dT8kaoNRarWgZJenIuGtmB1gi8f8vrkofvd+rv8DFtAiuVnJXdmOh7qj/hRqRf
-         tGsw==
-X-Gm-Message-State: AOAM532HvV25Ly6zxXaM7mCIoLJc0m4MmPCKwPijVB2cYNClUj+y4dzF
-	akcl3B7SJ3hmhI1MtbBtfQ3y2ybc9aYnmZ07BB6X+KM8
-X-Google-Smtp-Source: ABdhPJwl25Ctm7tC6lL7bAu5zZRNcU27s8Gxcy4c1aaLou7CDXc6v2/t+ZExyPAu3/F9skzLmxkWCmKsGsWYe0n8/TI=
-X-Received: by 2002:a25:9c08:0:b0:628:a472:30f4 with SMTP id
- c8-20020a259c08000000b00628a47230f4mr1273088ybo.67.1646219332910; Wed, 02 Mar
- 2022 03:08:52 -0800 (PST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YhfpJuJH;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1646310219;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xqB53/OlukljnakrlD0/NJ34F7CHmRudeq/p9wfXyzQ=;
+	b=YhfpJuJHXaEU0spY+oLArIvVgwOuQdTrOgiyPHSc27wYFm3l4nKBouVB0oivlSuOThwAcy
+	vztt+MXUBNAVFDbmS9UY5HkAtnX15D5ZxeUUkziuao4ONkdE+Ei6Wn9JAYqRDKjaFv1XqO
+	3Mep0dr+QPaWCmeo1BzddbjMxDDX5is=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-540-tQLhhOIDMvC_5mYdQvLgDw-1; Thu, 03 Mar 2022 07:23:36 -0500
+X-MC-Unique: tQLhhOIDMvC_5mYdQvLgDw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 707291006AA6;
+	Thu,  3 Mar 2022 12:23:32 +0000 (UTC)
+Received: from p50.localhost.localdomain.some.host.somewhere.org (unknown [10.22.32.111])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 772987B6FD;
+	Thu,  3 Mar 2022 12:23:05 +0000 (UTC)
+References: <20220225210156.2032055-1-crosa@redhat.com>
+ <20220225210156.2032055-6-crosa@redhat.com>
+ <aa0e1eb4-ef43-b386-e7a3-c034f666181b@gmail.com>
+User-agent: mu4e 1.6.6; emacs 27.2
+From: Cleber Rosa <crosa@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Cc: qemu-devel@nongnu.org, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, =?utf-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ =?utf-8?Q?Herv=C3=A9?=
+ Poussineau <hpoussin@reactos.org>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Christian Borntraeger
+ <borntraeger@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-ppc@nongnu.org, Fabien Chouteau <chouteau@adacore.com>, Antony Pavlov
+ <antonynpavlov@gmail.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>, Michael Rolnik
+ <mrolnik@gmail.com>, Greg Kurz <groug@kaod.org>, =?utf-8?Q?C=C3=A9dric?= Le
+ Goater
+ <clg@kaod.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Pavel Dovgalyuk
+ <pavel.dovgaluk@ispras.ru>, David Gibson <david@gibson.dropbear.id.au>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>, Daniel Henrique Barboza
+ <danielhb413@gmail.com>, Beraldo Leal <bleal@redhat.com>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, KONRAD Frederic <frederic.konrad@adacore.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, qemu-s390x@nongnu.org, "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Eric Farman
+ <farman@linux.ibm.com>
+Subject: Re: [PATCH 5/9] tests/avocado/linux_ssh_mips_malta.py: add missing
+ accel (tcg) tag
+Date: Thu, 03 Mar 2022 07:13:43 -0500
+In-reply-to: <aa0e1eb4-ef43-b386-e7a3-c034f666181b@gmail.com>
+Message-ID: <8735jzmdib.fsf@p50.localhost.localdomain>
 MIME-Version: 1.0
-References: <20220301215958.157011-1-richard.henderson@linaro.org>
-In-Reply-To: <20220301215958.157011-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 2 Mar 2022 11:08:41 +0000
-Message-ID: <CAFEAcA8E49vV9bGxMMXM=NBSCm0R1toUptrvt4=v2rM69u9o7w@mail.gmail.com>
-Subject: Re: [PATCH v4 00/18] target/arm: Implement LVA, LPA, LPA2 features
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: tU3qF9+Muezw
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Pm2PYPEDbFsa
 
-On Tue, 1 Mar 2022 at 22:00, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+
+Philippe Mathieu-Daud=C3=A9 <philippe.mathieu.daude@gmail.com> writes:
+
+> On 25/2/22 22:01, Cleber Rosa wrote:
+>> Being explicit about the accelerator used on these tests is a good
+>> thing in itself, but it will also be used in the filtering rules
+>> applied on "make check-avocado".
+>> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+>> ---
+>>   tests/avocado/linux_ssh_mips_malta.py | 3 +++
+>>   1 file changed, 3 insertions(+)
+>> diff --git a/tests/avocado/linux_ssh_mips_malta.py
+>> b/tests/avocado/linux_ssh_mips_malta.py
+>> index c0f0be5ade..0179d8a6ca 100644
+>> --- a/tests/avocado/linux_ssh_mips_malta.py
+>> +++ b/tests/avocado/linux_ssh_mips_malta.py
+>> @@ -23,6 +23,9 @@
+>>   @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout=
+')
 >
-> Changes for v4:
->   * Add cpu property for lpa2.
->   * Disable that property for -machine virt-6.2 and previous.
->
-> Changes for v3:
->   * Update emulation.rst.
->   * Split out separate update to ID_AA64MMFR0.
->   * Hack for avocado.
+> Should we remove this line then? ^^^
 >
 
-I've applied patches 1-16 to target-arm.next now, since they're
-all already reviewed. 17 and 18 are still on my list to review
-so we should be able to get those in (ie actually enable LPA2)
-for this release.
+Yes, we definitely should.  But, I thought it should be a next step.
+The reason being that manual invocations of avocado or a custom list of
+tests to "make check-avocado" will still respect that at this point.
 
-thanks
--- PMM
+What do you think?
+
+Cheers,
+- Cleber.

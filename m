@@ -1,108 +1,104 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp646878lfo;
-        Thu, 3 Mar 2022 03:38:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwB11bONPf9MjHUY/mTV6eAW9GPnmD2MWd1126rkgExvbF9tlkcVZFsM5mwMtaz8oLuLBoa
-X-Received: by 2002:a81:3dd2:0:b0:2db:5c5d:8145 with SMTP id k201-20020a813dd2000000b002db5c5d8145mr22987258ywa.279.1646307487324;
-        Thu, 03 Mar 2022 03:38:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646307487; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp647246lfo;
+        Thu, 3 Mar 2022 03:38:46 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzYBzFFBBl/OSRlKVbk7a0GWspW+k4gbaSI91EM7ETs7QhqSn/e34ZxQt/sahoSjklIqvQd
+X-Received: by 2002:a25:d04:0:b0:628:9da7:f01e with SMTP id 4-20020a250d04000000b006289da7f01emr7332187ybn.307.1646307526084;
+        Thu, 03 Mar 2022 03:38:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646307526; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z3Nz7aIjDN5ca4FgnhQGiBGiiqEI7H9xi3t1Td1xskplPIMPz6mS6AQTZzfrgCTPQ3
-         mtg+YUsa86dlbhk8z+HcgBzp9AtzIOFI2GmlVg9PeMIrIJwiPRoEktV38wOtBXk2swHM
-         VZQT7xyZxRG/Wk7NcqOXxIv3dUEDn485s9dO1vx7beYC5l/tOGcE3P+X0Chouk3I2krn
-         HzbjyivOVb4U5urU9A47OaRTnMJEmF5qOurUZqJjc4yTmNKfXg/tr0S4n0Fe6aO2B4up
-         toHUwOfR4EA0mVgP3/mDznW0UnZtlWGr1xoIuSsEyeHW8S/gFhyqXJrx7FR2tqAXDa73
-         XIxA==
+        b=o+7Qb8btglbmV7PY7GHSHXHFaXbifG8/oG2ZPZBPUI+xteI27hChr3/YqHxs9dt9gi
+         5dWyxYxc5gQQZ33/QnZ8k0KLDENDjXPRR/MJt7C2RI95BaHZwMoy7iTIZ7htj0u9j08c
+         N6xLjJLF/u057uJ9qvDh/SvTH7hvOPKFxOODxEZIiE7ZfM6SzFtzLsv6TfCF9S3PhgpE
+         P8/cOvJXNUQiZngezR5Rv/36HHnajGETYGeq0kICHxPgOTZ6PMpL0eqB1FowuLbVJ1OE
+         jCICRULeNqR8ZMdM6T5vhY/xpN4kJFQi/LaGPIdOtsmvDqIBZHvfQqrGJoiiaTGbeXaI
+         0MzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=nsvhK/ifUeSvWeX1rdfKJDrF5hLi+OAvYK2zDd+7vVs=;
-        b=uxPXC5AZd0QuFYpL+AA2Q8zgh7VFwZRpSdmz6lYPVRZmMYdNVoMH+RAn/2ZlMsJca8
-         i7rlrg+K7XTCsjyaIOBP7grCZuQRuyIACBwKTHvIaBbuQWtqw9aW/44I7AqGkrRoO607
-         n6qa6YXm3Serz8ZOpk8KhnDgGmh52xCNRYvpYGKxnKgmazt7NTK8q8aEqLVk2+5oiwwk
-         CW+sJyb2DPAeVqdbL/xSumwcmkwTIWNu8+gBNr51WhnW9peUixui7cNxUz0RGrZY1box
-         mY1Bc8C7JfXXfqNmZ2fzFgSrEvtAndo9JZOsbBCSyMxvqRLZn/Rr3Vg/jVacqGmymB60
-         Zyaw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=4mO1Zd1MidHNDt81S1MFFJvdc/ZgF3DzmlxETtyHGXY=;
+        b=QQ2flmUby211cC7NoJdrXIgiTEBROF3H24vInU2V5AJcqqT1CqMzankPgD4iv0H5+C
+         11GrRSVm/e4eMvsVX34j4QoM9XCQAVtWWAtFCA2yFult79uwo/MsWhM8Xf5+JQWKeC+e
+         u1GSf1kHrySJOojJg8NexL0unsaCsWK6m0ob06cPnIA9AkWNCxdgP1W/4GegXP00eyPf
+         fX2efk+HfnXWv3IDdqzYuMc5v67zdK3ZTay+p4QQCzRUOWKAXbcSlqStAnIxp1xgpKx5
+         UdnfmcWCXYNfMH5UzXbX/lqlQDJuPu9apeg/S5+jaIFRc3zLmzj7VT/HkcK8h4SFVnND
+         2aRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H7lcVf0F;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ij0o33Cb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n7-20020a819e47000000b002dc1841c9basi1328550ywj.194.2022.03.03.03.38.07
+        by mx.google.com with ESMTPS id e124-20020a255082000000b00628726495b1si1447965ybb.104.2022.03.03.03.38.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Mar 2022 03:38:07 -0800 (PST)
+        Thu, 03 Mar 2022 03:38:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H7lcVf0F;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ij0o33Cb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53958 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56494 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nPjmY-0002Pw-Ni
-	for alex.bennee@linaro.org; Thu, 03 Mar 2022 06:38:06 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60240)
+	id 1nPjnB-00046i-GK
+	for alex.bennee@linaro.org; Thu, 03 Mar 2022 06:38:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nPjmH-0002KY-Fk
+ id 1nPjmG-0002K5-4w
  for qemu-arm@nongnu.org; Thu, 03 Mar 2022 06:37:49 -0500
-Received: from [2a00:1450:4864:20::42d] (port=35517
- helo=mail-wr1-x42d.google.com)
+Received: from [2a00:1450:4864:20::32e] (port=51019
+ helo=mail-wm1-x32e.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nPjmF-0006VM-9k
- for qemu-arm@nongnu.org; Thu, 03 Mar 2022 06:37:49 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id b5so7389770wrr.2
- for <qemu-arm@nongnu.org>; Thu, 03 Mar 2022 03:37:46 -0800 (PST)
+ id 1nPjmD-0006V2-PP
+ for qemu-arm@nongnu.org; Thu, 03 Mar 2022 06:37:47 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id y5so3000898wmi.0
+ for <qemu-arm@nongnu.org>; Thu, 03 Mar 2022 03:37:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=nsvhK/ifUeSvWeX1rdfKJDrF5hLi+OAvYK2zDd+7vVs=;
- b=H7lcVf0FuhiLUwxNtWR1RDNJgta9PoZ3PPESl5zQ58stQXj/YtwEgScfD0I1AmbzQR
- oBT5b540dFeqbNii6iIq0GQe0bek44KK61RHD6P9UvaAvDgbJtXYEQ3jiAjVTUfz0QDr
- Yfa7pZnrbw1nk+T7ijqO4jLnp59GC34AXJJvRcxkCpYLtLzhLsi27AKW14pj3pTco+ci
- LpjriDhnRLy/Db8GoWeCghU4OWCdp0hTl8NbpfllMaKDy56iN+DI0zTgoUKT/ADFSud/
- NHCP430n26hm6f6NWL8H0V7m7BIQo4qenYF+nNq61Iol3v282fFxvOu1gKJUJpbCdQh6
- 3NRQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=4mO1Zd1MidHNDt81S1MFFJvdc/ZgF3DzmlxETtyHGXY=;
+ b=Ij0o33Cb9pDrd7faqK7mi+TeyTniZ9FoEkQeo85fC2xlrjBKb4tEqTFQ1WUDl33a/B
+ 1mv6qSBaB2lyvSGbweOxKx0+4+PiMJZXcCYZlQx01nJaXKfKE+rziGBhoEZWpRh1jHlG
+ tRGiPXbUjphpCFP9120UHSSmcKh7z9zGCkvJCFAz3Q2XBImxMEk4KFAjk/sY8heWCXFZ
+ kcP5Sqbx0got/6BvYiRLUyXXGB8U9rhvByWEerOflkHkf18vNeTez05+gGsf3LeOgWpB
+ IqONMUaVyBW84OnKTrRq5+cSl9k5TS25PqtZ9r+EIcLNEYgROT+iaqzGzMUeV9nQCX2Z
+ GlVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=nsvhK/ifUeSvWeX1rdfKJDrF5hLi+OAvYK2zDd+7vVs=;
- b=nHlMMnw3/iXZPb8lv5t1o1iOmtYSp2i9EHnqBxwDMmFWHd50vd4PI4rmFpA44MDaLS
- P25ZZmH8AZ+dm723bPsmTe8osggOC6pJawhewqZA+J5Dm4IqnBPonfTwHfcGhgGpsqUW
- 7DE+OxmX8mnuNfyK5fyerTIplx3EpNaLYkyJmeZHF5QOCUFSESkVr/cDUiaGDHehPKuO
- EIPo4jMr1OLsOHn8jh5ziFA1kxRuVnKAk2DJPSGGtRTMRYiUlZr+UgHAlVV/l4Hy+mNw
- 2syFsdVknONBGpABXKZdWALVkeED38gTTdFayYsApwrStPuXJQztoQ2tqPwMwLJ2NArc
- Osxw==
-X-Gm-Message-State: AOAM530Wt9z3IdWXyesOLHucpvQ5ASphB8eXYToskNAt/9LZsy5ED/RQ
- PKrgnz00Bsrj3saKAwqQeZDmPJVYMy0Y0Q==
-X-Received: by 2002:adf:fa8c:0:b0:1f0:47ef:a04 with SMTP id
- h12-20020adffa8c000000b001f047ef0a04mr3764509wrr.398.1646307465738; 
- Thu, 03 Mar 2022 03:37:45 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=4mO1Zd1MidHNDt81S1MFFJvdc/ZgF3DzmlxETtyHGXY=;
+ b=1EGb6/f+JYaYYXiXJgwNLYjtZDtdOv75jkkCF9wj+IX6U9V8o+ub+w8mkX0vRbDrdy
+ Yem2Q8e6YNWb3zniW16fXZ2i5O8/DYsn8vxeUGzb3gPpS2pdp1CFrtkDfnHpjk/sYzs7
+ tdXvGpt4byQw72JKl98Xz24bB4VEEDlONdrH5zdOhmbKCMlGcqkBoHSXFFlpvoV/rzqn
+ AHVFv/gW60ssg+eWEYUcrMqOxpd40nbtlsHpeq7zeNeGPL7pXHvXwgzs3T7cXk6vGSAu
+ qs/82E1dTo3WPowPrsnFPtTpwrLgtFsL70i+trlMyFfvI0RHQEye1cWocQamQUcDpkMo
+ zAwg==
+X-Gm-Message-State: AOAM530kVC8FNJjWrLNQ2f1QFgSQJpXpun+cFgdSlvJ1CqMx28YpjXGa
+ dBbc+Kmda4XRB4LodFWSQK8nfuk6VAcFdg==
+X-Received: by 2002:a1c:ed0e:0:b0:380:fa8c:da99 with SMTP id
+ l14-20020a1ced0e000000b00380fa8cda99mr3431422wmh.135.1646307464011; 
+ Thu, 03 Mar 2022 03:37:44 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- bg20-20020a05600c3c9400b0037fa5c422c8sm10240093wmb.48.2022.03.03.03.37.44
+ bg20-20020a05600c3c9400b0037fa5c422c8sm10240093wmb.48.2022.03.03.03.37.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Mar 2022 03:37:45 -0800 (PST)
+ Thu, 03 Mar 2022 03:37:43 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/2] target/arm/translate-neon: Simplify align field check for
- VLD3
-Date: Thu,  3 Mar 2022 11:37:41 +0000
-Message-Id: <20220303113741.2156877-3-peter.maydell@linaro.org>
+Subject: [PATCH 0/2] target/arm: Check Neon VLD1/VST1 stride bits are zero
+Date: Thu,  3 Mar 2022 11:37:39 +0000
+Message-Id: <20220303113741.2156877-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220303113741.2156877-1-peter.maydell@linaro.org>
-References: <20220303113741.2156877-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42d
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32e
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -126,50 +122,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZuYAtOrLeYFD
+X-TUID: NkrKp9wNTBbC
 
-For VLD3 (single 3-element structure to one lane), there is no
-alignment specification and the alignment bits in the instruction
-must be zero.  This is bit [4] for the size=0 and size=1 cases, and
-bits [5:4] for the size=2 case.  We do this check correctly in
-VLDST_single(), but we write it a bit oddly: in the 'case 3' code we
-check for bit 0 of a->align (bit [4] of the insn), and then we fall
-through to the 'case 2' code which checks bit 1 of a->align (bit [5]
-of the insn) in the size 2 case.  Replace this with just checking "is
-a->align non-zero" for VLD3, which lets us drop the fall-through and
-put the cases in this switch in numerical order.
+In the Neon VLD*/VST* "load/store single N-element structure to/from
+one lane" instructions the encodings include bits to specify a
+"stride" value, which specifies the separation between the Neon
+registers which hold the different elements of the structure.  For
+VLD1/VST1 there is only a single element and thus only one Neon
+register is involved.  This means "stride" is not meaningful, and the
+architecture requires that the bits that would encode it must be zero
+(which is to say, must encode a stride value of 1).  We weren't
+making this encoding check, so would incorrectly treat some
+instruction patterns as being a VLD1/VST1 when they should UNDEF. 
+(https://gitlab.com/qemu-project/qemu/-/issues/890)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate-neon.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Patch 1 fixes that bug.  Patch 2 is a minor cleanup of the align bits
+check for VLD3/VST3 -- we had this logically correct (all the align
+bits must be zero) but wrote it in a confusing way.
 
-diff --git a/target/arm/translate-neon.c b/target/arm/translate-neon.c
-index 072fdc1e6ee..384604c0095 100644
---- a/target/arm/translate-neon.c
-+++ b/target/arm/translate-neon.c
-@@ -665,16 +665,16 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
-             return false;
-         }
-         break;
--    case 3:
--        if ((a->align & 1) != 0) {
--            return false;
--        }
--        /* fall through */
-     case 2:
-         if (a->size == 2 && (a->align & 2) != 0) {
-             return false;
-         }
-         break;
-+    case 3:
-+        if (a->align != 0) {
-+            return false;
-+        }
-+        break;
-     case 4:
-         if (a->size == 2 && a->align == 3) {
-             return false;
+Richard: I tested this against your simple test case in the bug
+report; if you could run it through your risu tests as well that
+would be great.
+
+thanks
+-- PMM
+
+Peter Maydell (2):
+  target/arm/translate-neon: UNDEF if VLD1/VST1 stride bits are non-zero
+  target/arm/translate-neon: Simplify align field check for VLD3
+
+ target/arm/translate-neon.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
 -- 
 2.25.1
 

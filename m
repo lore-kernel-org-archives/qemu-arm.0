@@ -1,108 +1,109 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1009385lfo;
-        Thu, 3 Mar 2022 12:24:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxCbDZjsHoetPwLlOw41d7p33oKTQ7lGHateATkvOVwwa9syfcoFWCqldQsW0J5bpOCMXAj
-X-Received: by 2002:a5b:e83:0:b0:628:d4c0:1b16 with SMTP id z3-20020a5b0e83000000b00628d4c01b16mr2400337ybr.65.1646339069442;
-        Thu, 03 Mar 2022 12:24:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646339069; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1010807lfo;
+        Thu, 3 Mar 2022 12:26:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwbGeEXQWBial0kn5rygkz7HyiVZetIOGiUhtUqbOQy2asb9VCcNBYzZ+cclZkjUPPj+svx
+X-Received: by 2002:a0d:c3c1:0:b0:2db:e196:74c with SMTP id f184-20020a0dc3c1000000b002dbe196074cmr14658651ywd.35.1646339206919;
+        Thu, 03 Mar 2022 12:26:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646339206; cv=none;
         d=google.com; s=arc-20160816;
-        b=uiy6T0geUN0mOepHIph4uNFgIP9+OYTpyNRxlom/f1BV+JK3CGTSo5eTG3mtQFHpF+
-         PhUcnGFDcruWL8nGFB7zoU+2DR+PtRTLgIwTYDl4tsJzayJBZOLGoj8iwrwiOK1CiUcg
-         3sPo4fTS4Nlo+GeJP7k9PGaW4/hvuQSV5Qd2CmWg7N1PSFjI9/7es+55Ch8nCHwlHP4j
-         cpMsg6QvG7RW+x8d1cNB7vK+kEy2C18iyDfODGrACqYhLYJzCKgAvZrLxik3Yn1J3g+1
-         N39Vn1tdwLiwUzIqNrvX+Wwt12uW/euLC8Cs9bZD960iG3byoSmd1cjBSvwMFgvG318Q
-         Kf4w==
+        b=d7lQ6g7leKJfYzF+G2Jnad2/cm//IANAPJSvoZTakFIS6Wf5v6iY9ycRLVKuk6bxd7
+         hdliY6bb5hywqwWw/GUPFFC9KPby/iq+s1ihGMxFxOrsCa6rv3xBcz150S0Qf8uniAT/
+         +G/EUxUzeeu/qOHcskNq0g8uk1rWEdkM9NqgJVieUrhEiVwO/JaRzWL4RyMg870TTdNp
+         BlTbrhNJYYqkiZMKqXy94hmAFbW3iCTYVlN8cwPZobqVgBdnNx/L9Y4USBwMtCMQoUZm
+         RmIly68oLkQT0uqS8EZScVNHYlkpkH4JwZuOuOfKHBAbWvsISMQsE9bR/RyHZVdmn07Z
+         w4qA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cuehPBnSig6Jq64CPU+VvGsY4ITWKqf7FpYjraZi08c=;
-        b=dTO6cv8bM9kpiEuNJdMao+x24OldCtVH7JwAVQna4/iPprzKJgPRGHFNleWo8FsS1P
-         LVl539UGGuv/GpEjXquITo+5sii5Iej52zh1deuKa3kCT86Dldd5o5p4gKHEPncu7w5B
-         K4OpdYfKSAD+emUAc330jiyOcd+My8/j51diK3ZtGUztlXXruVMDNvLRzH/LLbdsTOOJ
-         heJwFK11q4mwPWjiMfS+A4qPjz9VbocrwzUsgKrI2OsMvgIYPk9eK5Gu56m+1n1exBag
-         lxr8X0vOfXL0IHChzgutv+fjamCgDG66IMGcwr8jLLOj5fgxk4Y08LrObTN/L26110dD
-         9xRA==
+        bh=uXh/JEg5Ojwyym5i/HIshpVVO/CoNEWjAFuxDcAMKaM=;
+        b=hVM8MmCj8p9cFLH2x2/B0Rs+dI/DLarVCN+Y20OlXHDF3nDYtG8l+wlNA72nInJRFR
+         xqI/Yc0/zLyoaDmkIUuW2vaEM3aeI6hBPFzOI2n7ONG2AxgGVRnEHvh62F2dFzmVIu8o
+         aqKYv1fIZdDjPOhZgI0TNbNWEl4fUSzq3f5UkJKawsYUGqoB8nSK9BU6pTnPPyn6hsl3
+         UiT2MUgCwoflpg9apd0b8wwptvImP9Whno6fWJ+mlxcBZ2kHpqbh/cRB6yJ2RtiwY5so
+         uR3sszM45V6mlzFpNz0XGiURX4L8n2ohH7gWCV+S7nx/48rkWo4TkaUxhEw6UynU83iV
+         BUMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lh2DXkHp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=t0kvC9pL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i69-20020a816d48000000b002dc4243a9c8si1611676ywc.227.2022.03.03.12.24.29
+        by mx.google.com with ESMTPS id t184-20020a815fc1000000b002d7ee4f797asi2658159ywb.137.2022.03.03.12.26.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Mar 2022 12:24:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Mar 2022 12:26:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lh2DXkHp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=t0kvC9pL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34322 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nPrzw-000390-OY
-	for alex.bennee@linaro.org; Thu, 03 Mar 2022 15:24:28 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49256)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nPs2A-0007ef-Au
+	for alex.bennee@linaro.org; Thu, 03 Mar 2022 15:26:46 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nPrzK-0001uo-IA
- for qemu-devel@nongnu.org; Thu, 03 Mar 2022 15:23:50 -0500
-Received: from [2a00:1450:4864:20::436] (port=40665
- helo=mail-wr1-x436.google.com)
+ id 1nPrzL-0001wU-Q9
+ for qemu-arm@nongnu.org; Thu, 03 Mar 2022 15:23:52 -0500
+Received: from [2a00:1450:4864:20::330] (port=42723
+ helo=mail-wm1-x330.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nPrzH-0001Ze-Dj
- for qemu-devel@nongnu.org; Thu, 03 Mar 2022 15:23:49 -0500
-Received: by mail-wr1-x436.google.com with SMTP id k24so89370wrd.7
- for <qemu-devel@nongnu.org>; Thu, 03 Mar 2022 12:23:47 -0800 (PST)
+ id 1nPrzK-0001aG-9f
+ for qemu-arm@nongnu.org; Thu, 03 Mar 2022 15:23:51 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ r187-20020a1c2bc4000000b003810e6b192aso3942601wmr.1
+ for <qemu-arm@nongnu.org>; Thu, 03 Mar 2022 12:23:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=cuehPBnSig6Jq64CPU+VvGsY4ITWKqf7FpYjraZi08c=;
- b=lh2DXkHpu6gA7JtD0EIV9dIIJ5LkgmiGkyMK+H1hF33HZpC+Z0TgjMe7lDUijwCjiW
- rqjh2K/6f4DC/jYVS+dXQvXtdhQiPYELPmqEV5U40b+lwhCU6MJUG5ndq2+S2k/EXbAp
- qEgfuWJr9PFMwygugz65LxWJgEaGqG3rpoDB5L2XsHeYwQf3PqVW4tfmDYKqDr/+/YJp
- JS96ZM/Ho9HXowBrQxzpa3cNb3JVV0kyvc6o9rWUdO5qgnOF34jD2qkCzEqkaPuEFw6x
- rHv9NY0ovvYhcJL4qPR8yO0vW/idiKXJzYNwWAizO5P0Kvj2hpbf8fTTTg9sykD9dyeb
- tuyA==
+ bh=uXh/JEg5Ojwyym5i/HIshpVVO/CoNEWjAFuxDcAMKaM=;
+ b=t0kvC9pLVwUMkJQ4I3iU4/DxiKZBqLj20I4aoau3o5xkZgwlCdfX2ZlTIRvHvQwfRF
+ tEXJNPIWlWRJcBMltI6ueZSYuuCT7tVlUjbP3SlIa9GujD92TkSOqPa7v5Tm5/MBSgVY
+ DGksTdMhOuabrknUVRT9F83S3AkafioBQ5FrGy0ntl7myl/8+ossWuhBMkygXHGeOO70
+ NCEcExPJsnysQrkDrn2zAiAYyPF3w4vih+wWdCWsCB/CeC2EvvU9TfNXh0dRWuuccbwD
+ 5By4sgoegm2ZepJ6fO1e6Stf9H225tjpqPqIESF7nAJ73CAvYhgzSC1K/KEI8pvlkg1Q
+ cqWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cuehPBnSig6Jq64CPU+VvGsY4ITWKqf7FpYjraZi08c=;
- b=B2RGmdursagLNYpJAylSGsZzl+XPVYe7wefFOCeC8VodB0T/Wc3ybA/UQkSqNrkOIE
- oV22Tlh6esIMBtYCVA4Z96rHp7eVT8pmfFg9olPmhe+UFDQiEuJ77uBQbrjZTZrXr9oH
- g+Xmr52brgOaYKpEySC35M7Ek4Tt8EgZfoyu4iO68rObuEK3lV4WB20jhLI6Ux7bYU/d
- 1K5RXZum8cpAS3wPiVvKchSVUD3lAGuu4hjuDu5pGd8zgMPG2UuOUjTVcw/0hgC++SlO
- K8M1mEKImJU6ii9qTXjTZR/NSly7IseAp0F9ZYQ+JOQgNEfb8mdzsfCTFOLlH/otwlK9
- YCHQ==
-X-Gm-Message-State: AOAM532VKj3zmvTyyhrghNp5xtxwgsA+Lvuq/Bhr1tCnl48O8BqUxnty
- /O3FRxDuy94Q7v5pdmGsPCVwaA==
-X-Received: by 2002:adf:d089:0:b0:1ed:9e86:2144 with SMTP id
- y9-20020adfd089000000b001ed9e862144mr27167687wrh.363.1646339026067; 
- Thu, 03 Mar 2022 12:23:46 -0800 (PST)
+ bh=uXh/JEg5Ojwyym5i/HIshpVVO/CoNEWjAFuxDcAMKaM=;
+ b=JMaevecHFS0LCT0gZsH49EgUFuIwrct74Gsvzer5a4VgBUVdVQxButddapg1kkbfMm
+ aCDMqqgkH5EZdIB+wIVAq5HhjS0mVDW8WeRM68mApjoDppVFwdu97WRUokWFKBuZhR1P
+ YAaUEhtcvhP007kATPjSuOjPMmKAyKNvO258dBfOO2lf0YOxrlfBLfPsAIlGgbap/aZC
+ GsX2MhY+l/iJLTbslT7iE0BQ8chz1l7y+vE+7sR/AnLDkH//iF9nNrb8OmMG+Z9qjgr/
+ y+wD0XIH5MWXBIN0MRgK9XNRY3RYCBjU6/Jb0sq2RMCgYcHUzzjLZA3iiIQM5PJIFoN8
+ /g6A==
+X-Gm-Message-State: AOAM533VjdWqqjIxYh6eaymLz0kYgJdkrawFftn6NrHsiUkxP+3WLllC
+ 7LY9s/Q0MULLR69Bhq8NOpCX8ylU5eV/GA==
+X-Received: by 2002:a7b:c347:0:b0:37e:68e6:d85c with SMTP id
+ l7-20020a7bc347000000b0037e68e6d85cmr5022675wmj.176.1646339027932; 
+ Thu, 03 Mar 2022 12:23:47 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- t5-20020adff045000000b001f0684c3404sm517060wro.11.2022.03.03.12.23.45
+ t5-20020adff045000000b001f0684c3404sm517060wro.11.2022.03.03.12.23.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Mar 2022 12:23:45 -0800 (PST)
+ Thu, 03 Mar 2022 12:23:47 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/5] hw/intc/arm_gicv3_its: Add trace events for table reads
- and writes
-Date: Thu,  3 Mar 2022 20:23:38 +0000
-Message-Id: <20220303202341.2232284-3-peter.maydell@linaro.org>
+Subject: [PATCH 4/5] hw/intc/arm_gicv3: Fix missing spaces in error log
+ messages
+Date: Thu,  3 Mar 2022 20:23:40 +0000
+Message-Id: <20220303202341.2232284-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220303202341.2232284-1-peter.maydell@linaro.org>
 References: <20220303202341.2232284-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::436
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::330
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -112,160 +113,77 @@ X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q0IX5V82kpam
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: o3fa0PX69jDb
 
-For debugging guest use of the ITS, it can be helpful to trace
-when the ITS reads and writes the in-memory tables.
+We forgot a space in some log messages, so the output ended
+up looking like
+gicv3_dist_write: invalid guest write at offset 0000000000008000size 8
+
+with a missing space before "size". Add the missing spaces.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_its.c | 37 +++++++++++++++++++++++++++++++------
- hw/intc/trace-events    |  9 +++++++++
- 2 files changed, 40 insertions(+), 6 deletions(-)
+ hw/intc/arm_gicv3_dist.c | 4 ++--
+ hw/intc/arm_gicv3_its.c  | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
+index 4164500ea96..28d913b2114 100644
+--- a/hw/intc/arm_gicv3_dist.c
++++ b/hw/intc/arm_gicv3_dist.c
+@@ -838,7 +838,7 @@ MemTxResult gicv3_dist_read(void *opaque, hwaddr offset, uint64_t *data,
+     if (!r) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: invalid guest read at offset " TARGET_FMT_plx
+-                      "size %u\n", __func__, offset, size);
++                      " size %u\n", __func__, offset, size);
+         trace_gicv3_dist_badread(offset, size, attrs.secure);
+         /* The spec requires that reserved registers are RAZ/WI;
+          * so use MEMTX_ERROR returns from leaf functions as a way to
+@@ -879,7 +879,7 @@ MemTxResult gicv3_dist_write(void *opaque, hwaddr offset, uint64_t data,
+     if (!r) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: invalid guest write at offset " TARGET_FMT_plx
+-                      "size %u\n", __func__, offset, size);
++                      " size %u\n", __func__, offset, size);
+         trace_gicv3_dist_badwrite(offset, data, size, attrs.secure);
+         /* The spec requires that reserved registers are RAZ/WI;
+          * so use MEMTX_ERROR returns from leaf functions as a way to
 diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index 77dc702734b..9f4df6a8cbb 100644
+index 9f4df6a8cbb..b96b874afdf 100644
 --- a/hw/intc/arm_gicv3_its.c
 +++ b/hw/intc/arm_gicv3_its.c
-@@ -161,16 +161,22 @@ static MemTxResult get_cte(GICv3ITSState *s, uint16_t icid, CTEntry *cte)
-     if (entry_addr == -1) {
-         /* No L2 table entry, i.e. no valid CTE, or a memory error */
-         cte->valid = false;
--        return res;
-+        goto out;
-     }
- 
-     cteval = address_space_ldq_le(as, entry_addr, MEMTXATTRS_UNSPECIFIED, &res);
-     if (res != MEMTX_OK) {
--        return res;
-+        goto out;
-     }
-     cte->valid = FIELD_EX64(cteval, CTE, VALID);
-     cte->rdbase = FIELD_EX64(cteval, CTE, RDBASE);
--    return MEMTX_OK;
-+out:
-+    if (res != MEMTX_OK) {
-+        trace_gicv3_its_cte_read_fault(icid);
-+    } else {
-+        trace_gicv3_its_cte_read(icid, cte->valid, cte->rdbase);
-+    }
-+    return res;
- }
- 
- /*
-@@ -187,6 +193,10 @@ static bool update_ite(GICv3ITSState *s, uint32_t eventid, const DTEntry *dte,
-     uint64_t itel = 0;
-     uint32_t iteh = 0;
- 
-+    trace_gicv3_its_ite_write(dte->ittaddr, eventid, ite->valid,
-+                              ite->inttype, ite->intid, ite->icid,
-+                              ite->vpeid, ite->doorbell);
-+
-     if (ite->valid) {
-         itel = FIELD_DP64(itel, ITE_L, VALID, 1);
-         itel = FIELD_DP64(itel, ITE_L, INTTYPE, ite->inttype);
-@@ -221,11 +231,13 @@ static MemTxResult get_ite(GICv3ITSState *s, uint32_t eventid,
- 
-     itel = address_space_ldq_le(as, iteaddr, MEMTXATTRS_UNSPECIFIED, &res);
-     if (res != MEMTX_OK) {
-+        trace_gicv3_its_ite_read_fault(dte->ittaddr, eventid);
-         return res;
-     }
- 
-     iteh = address_space_ldl_le(as, iteaddr + 8, MEMTXATTRS_UNSPECIFIED, &res);
-     if (res != MEMTX_OK) {
-+        trace_gicv3_its_ite_read_fault(dte->ittaddr, eventid);
-         return res;
-     }
- 
-@@ -235,6 +247,9 @@ static MemTxResult get_ite(GICv3ITSState *s, uint32_t eventid,
-     ite->icid = FIELD_EX64(itel, ITE_L, ICID);
-     ite->vpeid = FIELD_EX64(itel, ITE_L, VPEID);
-     ite->doorbell = FIELD_EX64(iteh, ITE_H, DOORBELL);
-+    trace_gicv3_its_ite_read(dte->ittaddr, eventid, ite->valid,
-+                             ite->inttype, ite->intid, ite->icid,
-+                             ite->vpeid, ite->doorbell);
-     return MEMTX_OK;
- }
- 
-@@ -254,17 +269,23 @@ static MemTxResult get_dte(GICv3ITSState *s, uint32_t devid, DTEntry *dte)
-     if (entry_addr == -1) {
-         /* No L2 table entry, i.e. no valid DTE, or a memory error */
-         dte->valid = false;
--        return res;
-+        goto out;
-     }
-     dteval = address_space_ldq_le(as, entry_addr, MEMTXATTRS_UNSPECIFIED, &res);
-     if (res != MEMTX_OK) {
--        return res;
-+        goto out;
-     }
-     dte->valid = FIELD_EX64(dteval, DTE, VALID);
-     dte->size = FIELD_EX64(dteval, DTE, SIZE);
-     /* DTE word field stores bits [51:8] of the ITT address */
-     dte->ittaddr = FIELD_EX64(dteval, DTE, ITTADDR) << ITTADDR_SHIFT;
--    return MEMTX_OK;
-+out:
-+    if (res != MEMTX_OK) {
-+        trace_gicv3_its_dte_read_fault(devid);
-+    } else {
-+        trace_gicv3_its_dte_read(devid, dte->valid, dte->size, dte->ittaddr);
-+    }
-+    return res;
- }
- 
- /*
-@@ -465,6 +486,8 @@ static bool update_cte(GICv3ITSState *s, uint16_t icid, const CTEntry *cte)
-     uint64_t cteval = 0;
-     MemTxResult res = MEMTX_OK;
- 
-+    trace_gicv3_its_cte_write(icid, cte->valid, cte->rdbase);
-+
-     if (cte->valid) {
-         /* add mapping entry to collection table */
-         cteval = FIELD_DP64(cteval, CTE, VALID, 1);
-@@ -524,6 +547,8 @@ static bool update_dte(GICv3ITSState *s, uint32_t devid, const DTEntry *dte)
-     uint64_t dteval = 0;
-     MemTxResult res = MEMTX_OK;
- 
-+    trace_gicv3_its_dte_write(devid, dte->valid, dte->size, dte->ittaddr);
-+
-     if (dte->valid) {
-         /* add mapping entry to device table */
-         dteval = FIELD_DP64(dteval, DTE, VALID, 1);
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index e92662b405c..53414aa1979 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -188,6 +188,15 @@ gicv3_its_cmd_inv(void) "GICv3 ITS: command INV or INVALL"
- gicv3_its_cmd_movall(uint64_t rd1, uint64_t rd2) "GICv3 ITS: command MOVALL RDbase1 0x%" PRIx64 " RDbase2 0x%" PRIx64
- gicv3_its_cmd_movi(uint32_t devid, uint32_t eventid, uint32_t icid) "GICv3 ITS: command MOVI DeviceID 0x%x EventID 0x%x ICID 0x%x"
- gicv3_its_cmd_unknown(unsigned cmd) "GICv3 ITS: unknown command 0x%x"
-+gicv3_its_cte_read(uint32_t icid, int valid, uint32_t rdbase) "GICv3 ITS: Collection Table read for ICID 0x%x: valid %d RDBase 0x%x"
-+gicv3_its_cte_write(uint32_t icid, int valid, uint32_t rdbase) "GICv3 ITS: Collection Table write for ICID 0x%x: valid %d RDBase 0x%x"
-+gicv3_its_cte_read_fault(uint32_t icid) "GICv3 ITS: Collection Table read for ICID 0x%x: faulted"
-+gicv3_its_ite_read(uint64_t ittaddr, uint32_t eventid, int valid, int inttype, uint32_t intid, uint32_t icid, uint32_t vpeid, uint32_t doorbell) "GICv3 ITS: Interrupt Table read for ITTaddr 0x%" PRIx64 " EventID 0x%x: valid %d inttype %d intid 0x%x ICID 0x%x vPEID 0x%x doorbell 0x%x"
-+gicv3_its_ite_read_fault(uint64_t ittaddr, uint32_t eventid) "GICv3 ITS: Interrupt Table read for ITTaddr 0x%" PRIx64 " EventID 0x%x: faulted"
-+gicv3_its_ite_write(uint64_t ittaddr, uint32_t eventid, int valid, int inttype, uint32_t intid, uint32_t icid, uint32_t vpeid, uint32_t doorbell) "GICv3 ITS: Interrupt Table write for ITTaddr 0x%" PRIx64 " EventID 0x%x: valid %d inttype %d intid 0x%x ICID 0x%x vPEID 0x%x doorbell 0x%x"
-+gicv3_its_dte_read(uint32_t devid, int valid, uint32_t size, uint64_t ittaddr) "GICv3 ITS: Device Table read for DeviceID 0x%x: valid %d size 0x%x ITTaddr 0x%" PRIx64
-+gicv3_its_dte_write(uint32_t devid, int valid, uint32_t size, uint64_t ittaddr) "GICv3 ITS: Device Table write for DeviceID 0x%x: valid %d size 0x%x ITTaddr 0x%" PRIx64
-+gicv3_its_dte_read_fault(uint32_t devid) "GICv3 ITS: Device Table read for DeviceID 0x%x: faulted"
- 
- # armv7m_nvic.c
- nvic_recompute_state(int vectpending, int vectpending_prio, int exception_prio) "NVIC state recomputed: vectpending %d vectpending_prio %d exception_prio %d"
+@@ -1313,7 +1313,7 @@ static MemTxResult gicv3_its_read(void *opaque, hwaddr offset, uint64_t *data,
+     if (!result) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: invalid guest read at offset " TARGET_FMT_plx
+-                      "size %u\n", __func__, offset, size);
++                      " size %u\n", __func__, offset, size);
+         trace_gicv3_its_badread(offset, size);
+         /*
+          * The spec requires that reserved registers are RAZ/WI;
+@@ -1349,7 +1349,7 @@ static MemTxResult gicv3_its_write(void *opaque, hwaddr offset, uint64_t data,
+     if (!result) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: invalid guest write at offset " TARGET_FMT_plx
+-                      "size %u\n", __func__, offset, size);
++                      " size %u\n", __func__, offset, size);
+         trace_gicv3_its_badwrite(offset, data, size);
+         /*
+          * The spec requires that reserved registers are RAZ/WI;
 -- 
 2.25.1
 

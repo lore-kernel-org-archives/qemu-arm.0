@@ -1,108 +1,114 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1428809lfo;
-        Mon, 7 Mar 2022 03:55:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy0kM+9c01M/xjRWDJYFqmOQz7+GwyaW9ppiPvD0ZW4eTW/3UhK6Mv6eVKgIwD01e+9kflz
-X-Received: by 2002:a81:2f89:0:b0:2d6:fefe:8096 with SMTP id v131-20020a812f89000000b002d6fefe8096mr8185165ywv.416.1646654146675;
-        Mon, 07 Mar 2022 03:55:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646654146; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1741821lfo;
+        Mon, 7 Mar 2022 11:31:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwQFgOga0h9lzW+Ev3qbhY7UlLEpri6CP472nHE7zOJFQojLXKjpn7xt8BwRLrL9nwZ2bXM
+X-Received: by 2002:a5b:f8d:0:b0:628:620c:a45f with SMTP id q13-20020a5b0f8d000000b00628620ca45fmr8788482ybh.17.1646681476123;
+        Mon, 07 Mar 2022 11:31:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646681476; cv=none;
         d=google.com; s=arc-20160816;
-        b=MOd70ezP2iTpmJhCCtGHpIG1ov6bTwNP6vy4wBSMrGwxf08zoh/I3AJAsIj9frlz+z
-         YuNyDtI5ibW8p18rPRfXWc37HtvJXHEkD2B1bQ661hSvvikNr0MRIdvQ2UGufO0JxoJc
-         K32TtIseXrCKgDIp46AohgHW1u5QDimY/YQpTxzQvJEZa+K/CJzXKpDo2pCNaLuNljuB
-         hjArUfPMHBgnt4dYRunlwcQiimp0VE/yf8Rwk6EiwI6vzxMgPWxm8/E+Nnb9DOnnmDCU
-         Hf3Nk3Bm40grJDUE2txG6BcwSVg6eU1G8ptlkyVOkbqocHlIckkKf/+eXcF4+2kjwZ2v
-         thew==
+        b=DfSw+fW+IfwyohS6hPc8kPJiwKe66QD9wCepyLX514Lzx6fNOvVktIap8luQl5qwuz
+         FD8atgHgekCoDbaTQ4aggdYoykspwCXYTA+EarsIRX29k8pxkN3qIIaNDB46fsIFkT76
+         oynYRa6AvydqfbD+/e9INdrJj7ofvTMHrsXiQt8qADG1tj962irxMai8YrMdLTnzXGsd
+         YTBI4fbEvqbH8jkj2XqFprHfijqDM2DIc2FllDZlwNRzRzF5S4pGZoYsFkNuBXvvMyXn
+         a8PhNNCmh52zxpjI9dCxEtxt5pYRHqt8Yb0kHlR092B8/XEO2QaOYfGsObzwMRR+L/Az
+         /3+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=CH4ROQP0Jn8gRzHTrF2cj/pge9GwMwt4SFzaDfpgkts=;
-        b=gXy3zZeZRsCXry+n1PsBMkfpajJvSFmz904tF3pLdw4xsorP2Th3J0E4B6oiyyeoaI
-         m5VlQ5h1yjHRfeKkIcQ5BUcV9PqV++bced0u4TInZ4f3sajaroiMBy6GUZc3QuCys1Rf
-         kKHiiEVOxuPFFBZTwjcjnRMMYV4glwkCkMoaZaSsBVggC/AjmHuwT8TU9cwa4SheqOIt
-         S8F1+LWeugOIW5Twl4eFFSZkK3x8XzdTIsv0BJ4lPugG+ZixBrEhXvSJKWiu+0ERnZ8U
-         UUKOAG+VXtFan8tNg1evmMtkDcJNrIsXMxqfOmPU5DBSzTK/YNwtYf7kemBaA0Buydqt
-         5Y1Q==
+        bh=b+5Q/BguSUazMSqVhw2SH2qkG5kNVZqZ2CMecoqrJkk=;
+        b=WA4VBDy4NZ7Ab0PbrIty8r1o2v6hhE7EaAjicmuwxKf+Hbejq/c3NAIjv99opg/2qF
+         IBgZ903LYUeQsNRMRso2ZYQpaim/A9AGbb6Vs8Sym7HrbtNT8Apeiz4rIObt5LGRcOdc
+         C1UMbxykE+74n3iMrEjQOmOicjnbbK+82NeeIBi4wgG0o5/D3FRc6cDYdxdFceUFmzyr
+         zAE1oZ95VrmckRgSTvQDYNyxaNoBYF/+fqBl0/bQXpxQHbSa8I6Pg1tpjgUzuRu0H7MI
+         jmRc0EWDiomH2ceG0KsoSFDLXupZChtNlRq8zo5zbnx9uw/hiY2qHA2l3Y24znWwq5wL
+         qG3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=aGnj6asi;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=l03Mnlk5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10-20020a25dc0a000000b006291815babbsi3051213ybe.63.2022.03.07.03.55.46
+        by mx.google.com with ESMTPS id y135-20020a814b8d000000b002dc0a3a3a9asi9308696ywa.381.2022.03.07.11.31.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Mar 2022 03:55:46 -0800 (PST)
+        Mon, 07 Mar 2022 11:31:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=aGnj6asi;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=l03Mnlk5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58336 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:58994 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nRBxq-0003Xe-2z
-	for alex.bennee@linaro.org; Mon, 07 Mar 2022 06:55:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49082)
+	id 1nRJ4d-0000Ww-FC
+	for alex.bennee@linaro.org; Mon, 07 Mar 2022 14:31:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41086)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1nRBDs-0001jf-JU; Mon, 07 Mar 2022 06:08:16 -0500
-Received: from [2607:f8b0:4864:20::d2a] (port=35764
- helo=mail-io1-xd2a.google.com)
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1nRJ46-0000RQ-9T
+ for qemu-arm@nongnu.org; Mon, 07 Mar 2022 14:30:42 -0500
+Received: from [2a00:1450:4864:20::62b] (port=33782
+ helo=mail-ej1-x62b.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1nRBDq-0004Ty-Le; Mon, 07 Mar 2022 06:08:16 -0500
-Received: by mail-io1-xd2a.google.com with SMTP id s20so3184629iol.2;
- Mon, 07 Mar 2022 03:08:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1nRJ44-0008B4-He
+ for qemu-arm@nongnu.org; Mon, 07 Mar 2022 14:30:41 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id kt27so34373820ejb.0
+ for <qemu-arm@nongnu.org>; Mon, 07 Mar 2022 11:30:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=CH4ROQP0Jn8gRzHTrF2cj/pge9GwMwt4SFzaDfpgkts=;
- b=aGnj6asijY7wH3hV2zF2jicaBsFr/dj+RlTrCYWwuukntvhZgSornqiuslQVixhSli
- vNVcsDTfrIw2ht/Rg0m4OxWOBva5a1nkxwz7Hh6BPjAN3vxzMTcPxe4mP8HYLWLUcEbU
- 9Gl4Wxs3I3F/IZxAgtyCIlkXvPvjE9xiYyo4V3kg3zXCrJRKLx5Hvh7lgzAf9HJ2FNhM
- rfpv7ON8I4Kds4d59D2IuRX8YvQ7VoqNQNBdjqoHSKAqxaPZCu2xFVt8cxUun3fZ/mof
- rZJL4CGPYasKkU3rJZ2lYUhzreTMAwvAtw1QtgO9t/3etpbfdcGbUuCoYqGm6qZwYcFZ
- 59Mw==
+ bh=b+5Q/BguSUazMSqVhw2SH2qkG5kNVZqZ2CMecoqrJkk=;
+ b=l03Mnlk5JVYSevtecOmRl5/anrJeBQ6FIOsxF3FUbWvsJyYCvXfWPS23BxKle8ERXC
+ XtLMRMwiJssZvQifrI9dip3CgFJ2oWy8ifG5bm/iVqY3vaQX5BqTypuQ6oBvUabd0unV
+ Ms917FGKIHeN1GDFET2nue0ALaPokAiYMwngFmQCfGrUYOZ0lHkrudZBXqnhOjbG+nT0
+ KVOLq3iah6ZGrLHREChY+MMs4c/2NgXBuY80nQsLRL4khzkstt2atSLP4sPM6/3T8kSJ
+ co/yT9n6X2V0TqmWT3lwY8GPQcYdMvQs5tC/Wr+mf7CcfWn+rRmJLbDa8cMFbzN73n2k
+ kveA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=CH4ROQP0Jn8gRzHTrF2cj/pge9GwMwt4SFzaDfpgkts=;
- b=6BxmymflUeicJDMPz4TJvz1jBwMiXXiBI71hG03FwIo9Y/C5TLcTgT5Aj/cAjQbWQ8
- ZHnITZKLb969GF9+mmdb9ZSJH0qha7oXmXU93FbHJ7RsFToCINylp4UWqy6RxWqcJrSX
- golB0/XhhLDJZsPKDIISGrmjO3Z2gd3iV/AXJVUKZoFbQyAdxGZ68Lh4BLFsZyICO3zw
- 3IyhLMQ98/tdmNmK9TkkEDJCq+zmeKqC5vS2pgmBHDMvXzq6ADloOwWildDztzEFOyRx
- zHrQRVPt7+X+/KQHSkpeBddV5Vxo3VRXowhV0bzDPizHuMApYz3FTzPCqRYhgi/gYbkE
- nd5A==
-X-Gm-Message-State: AOAM531oMKB5DJu4kHkeisvgFIJ+1VXmZoMyf6l+isfUYWWBh2b7ljC5
- fbmf21hMYzwW4Ag7ic00H4F2g4eyE8IiVeDQTgY=
-X-Received: by 2002:a05:6602:2c0b:b0:63d:dfb2:9a95 with SMTP id
- w11-20020a0566022c0b00b0063ddfb29a95mr9957195iov.93.1646651293107; Mon, 07
- Mar 2022 03:08:13 -0800 (PST)
+ bh=b+5Q/BguSUazMSqVhw2SH2qkG5kNVZqZ2CMecoqrJkk=;
+ b=ET5AEmz5XBQyMIo6FdljiVWY8DoTKT8rjAUVEQP+nKFfi7+qFXS8BJYtYi3SsFmOhQ
+ 2dtSOXfCURsVHosBlmNMndRE3XSsoICqqjm6kQFMo9LGf8JmPgtUdAgH4mVWhQltDacR
+ Lb503kD0Bqb2Dl6ju+NI5UB4+wE/Fy48gWg8RBCSTsRQ23RguSFOybzSGh/UDHoUp2Qz
+ MH4OpOjX+aGVQh1gRxBOnOEUUPpphaFYhN9ZlX1m+JQ/8v3Yg+rZj/jfsg+tq4eMgEys
+ 2Vrr0pTChoQjfSGJcUIWwETi+0/HEksVKMdGOTYgYCwzdQq0TiN2OUtLMoKNm2RHlf8k
+ Todg==
+X-Gm-Message-State: AOAM53279Zj14i0vXvoIX5aZMCSaY/QdwRZsrIYafFDCpST/UgfsuCQ8
+ K9+qiVHlDWkfkau3xUcO2MF3mO+fsn+/YT3WvL3MAA==
+X-Received: by 2002:a17:906:49d4:b0:6d6:e5ec:9a23 with SMTP id
+ w20-20020a17090649d400b006d6e5ec9a23mr10270392ejv.79.1646681436938; Mon, 07
+ Mar 2022 11:30:36 -0800 (PST)
 MIME-Version: 1.0
-References: <20220307071856.1410731-1-clg@kaod.org>
- <20220307071856.1410731-5-clg@kaod.org>
-In-Reply-To: <20220307071856.1410731-5-clg@kaod.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 7 Mar 2022 21:07:47 +1000
-Message-ID: <CAKmqyKPew7zz92LPSP_H3NWfNreVZUa6kaBGgTT6amovyUgGGg@mail.gmail.com>
-Subject: Re: [PATCH 4/6] aspeed/smc: Rename 'max_peripherals' to 'max_cs'
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+References: <20220302015053.1984165-1-titusr@google.com>
+ <20220302015053.1984165-3-titusr@google.com>
+ <8524997d-48a4-9a00-8d94-b6e4d922a82e@gmail.com>
+In-Reply-To: <8524997d-48a4-9a00-8d94-b6e4d922a82e@gmail.com>
+From: Titus Rwantare <titusr@google.com>
+Date: Mon, 7 Mar 2022 11:30:00 -0800
+Message-ID: <CAMvPwGpiyw3MhSY8AQkT-5WpsdgONDJz7St_WDwEiEM5j_b+qw@mail.gmail.com>
+Subject: Re: [PATCH v3 2/9] hw/i2c: pmbus: guard against out of range accesses
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Cc: Corey Minyard <minyard@acm.org>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ f4bug@amsat.org, wuhaotsh@google.com, venture@google.com, 
+ peter.maydell@linaro.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d2a
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::62b
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2a;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd2a.google.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, PDS_HP_HELO_NORDNS=0.659,
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=titusr@google.com; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -161
+X-Spam_score: -16.2
+X-Spam_bar: ----------------
+X-Spam_report: (-16.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, PDS_HP_HELO_NORDNS=0.659,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,236 +121,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EX70To3XmZY1
+X-TUID: 9qULc7C+omtp
 
-On Mon, Mar 7, 2022 at 5:37 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> The naming makes more sense in a SPI controller model.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Ack. All errors for PMBus should
+ideally be reflected in status and status_cml registers instead of
+carrying meaning in return values. I'll have to separately go through
+the existing code to make it consistent.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Alistair
-
-> ---
->  include/hw/ssi/aspeed_smc.h |  2 +-
->  hw/ssi/aspeed_smc.c         | 42 ++++++++++++++++++-------------------
->  2 files changed, 22 insertions(+), 22 deletions(-)
+On Fri, 4 Mar 2022 at 16:08, Philippe Mathieu-Daud=C3=A9
+<philippe.mathieu.daude@gmail.com> wrote:
 >
-> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-> index 4a9354e13c7f..6501a04b8f3e 100644
-> --- a/include/hw/ssi/aspeed_smc.h
-> +++ b/include/hw/ssi/aspeed_smc.h
-> @@ -95,7 +95,7 @@ struct AspeedSMCClass {
->      uint8_t r_timings;
->      uint8_t nregs_timings;
->      uint8_t conf_enable_w0;
-> -    uint8_t max_peripherals;
-> +    uint8_t max_cs;
->      const uint32_t *resets;
->      const AspeedSegments *segments;
->      uint32_t segment_addr_mask;
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 6859f061c8be..f194182beacf 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -224,7 +224,7 @@ static bool aspeed_smc_flash_overlap(const AspeedSMCS=
-tate *s,
->      AspeedSegments seg;
->      int i;
+> On 2/3/22 02:50, Titus Rwantare wrote:
+> > Signed-off-by: Titus Rwantare <titusr@google.com>
+> > ---
+> >   hw/i2c/pmbus_device.c | 41 ++++++++++++++++++++++++++++++++++++++++-
+> >   1 file changed, 40 insertions(+), 1 deletion(-)
 >
-> -    for (i =3D 0; i < asc->max_peripherals; i++) {
-> +    for (i =3D 0; i < asc->max_cs; i++) {
->          if (i =3D=3D cs) {
->              continue;
->          }
-> @@ -290,7 +290,7 @@ static void aspeed_smc_flash_set_segment(AspeedSMCSta=
-te *s, int cs,
->       */
->      if ((asc->segments =3D=3D aspeed_2500_spi1_segments ||
->           asc->segments =3D=3D aspeed_2500_spi2_segments) &&
-> -        cs =3D=3D asc->max_peripherals &&
-> +        cs =3D=3D asc->max_cs &&
->          seg.addr + seg.size !=3D asc->segments[cs].addr +
->          asc->segments[cs].size) {
->          aspeed_smc_error("Tried to change CS%d end address to 0x%"
-> @@ -693,13 +693,13 @@ static void aspeed_smc_reset(DeviceState *d)
->      }
+> >   static uint8_t pmbus_receive_byte(SMBusDevice *smd)
+> >   {
+> >       PMBusDevice *pmdev =3D PMBUS_DEVICE(smd);
+> >       PMBusDeviceClass *pmdc =3D PMBUS_DEVICE_GET_CLASS(pmdev);
+> >       uint8_t ret =3D 0xFF;
+> > -    uint8_t index =3D pmdev->page;
+> > +    uint8_t index;
+> >
+> >       if (pmdev->out_buf_len !=3D 0) {
+> >           ret =3D pmbus_out_buf_pop(pmdev);
+> >           return ret;
+> >       }
+> >
+> > +    /*
+> > +     * Reading from all pages will return the value from page 0,
+> > +     * this is unspecified behaviour in general.
+> > +     */
+> > +    if (pmdev->page =3D=3D PB_ALL_PAGES) {
+> > +        index =3D 0;
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: tried to read from all pages\n",
+> > +                      __func__);
+> > +        pmbus_cml_error(pmdev);
+> > +    } else if (pmdev->page > pmdev->num_pages - 1) {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: page %d is out of range\n",
+> > +                      __func__, pmdev->page);
+> > +        pmbus_cml_error(pmdev);
+> > +        return -1;
 >
->      /* Unselect all peripherals */
-> -    for (i =3D 0; i < asc->max_peripherals; ++i) {
-> +    for (i =3D 0; i < asc->max_cs; ++i) {
->          s->regs[s->r_ctrl0 + i] |=3D CTRL_CE_STOP_ACTIVE;
->          qemu_set_irq(s->cs_lines[i], true);
->      }
+> This file returns a mix of 0xFF/-1 for error. It would be nice
+> to pick one. Adding a definition (PMBUS_ERR_BYTE?) could help.
 >
->      /* setup the default segment register values and regions for all */
-> -    for (i =3D 0; i < asc->max_peripherals; ++i) {
-> +    for (i =3D 0; i < asc->max_cs; ++i) {
->          aspeed_smc_flash_set_segment_region(s, i,
->                      asc->segment_to_reg(s, &asc->segments[i]));
->      }
-> @@ -729,8 +729,8 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr =
-addr, unsigned int size)
->          (aspeed_smc_has_dma(asc) && addr =3D=3D R_DMA_LEN) ||
->          (aspeed_smc_has_dma(asc) && addr =3D=3D R_DMA_CHECKSUM) ||
->          (addr >=3D R_SEG_ADDR0 &&
-> -         addr < R_SEG_ADDR0 + asc->max_peripherals) ||
-> -        (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + asc->max_peripheral=
-s)) {
-> +         addr < R_SEG_ADDR0 + asc->max_cs) ||
-> +        (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + asc->max_cs)) {
->
->          trace_aspeed_smc_read(addr << 2, size, s->regs[addr]);
->
-> @@ -1042,11 +1042,11 @@ static void aspeed_smc_write(void *opaque, hwaddr=
- addr, uint64_t data,
->           addr < s->r_timings + asc->nregs_timings) ||
->          addr =3D=3D s->r_ce_ctrl) {
->          s->regs[addr] =3D value;
-> -    } else if (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + asc->max_peri=
-pherals) {
-> +    } else if (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + asc->max_cs) =
-{
->          int cs =3D addr - s->r_ctrl0;
->          aspeed_smc_flash_update_ctrl(&s->flashes[cs], value);
->      } else if (addr >=3D R_SEG_ADDR0 &&
-> -               addr < R_SEG_ADDR0 + asc->max_peripherals) {
-> +               addr < R_SEG_ADDR0 + asc->max_cs) {
->          int cs =3D addr - R_SEG_ADDR0;
->
->          if (value !=3D s->regs[R_SEG_ADDR0 + cs]) {
-> @@ -1090,7 +1090,7 @@ static void aspeed_smc_instance_init(Object *obj)
->      AspeedSMCClass *asc =3D ASPEED_SMC_GET_CLASS(s);
->      int i;
->
-> -    for (i =3D 0; i < asc->max_peripherals; i++) {
-> +    for (i =3D 0; i < asc->max_cs; i++) {
->          object_initialize_child(obj, "flash[*]", &s->flashes[i],
->                                  TYPE_ASPEED_SMC_FLASH);
->      }
-> @@ -1133,9 +1133,9 @@ static void aspeed_smc_realize(DeviceState *dev, Er=
-ror **errp)
->      s->spi =3D ssi_create_bus(dev, "spi");
->
->      /* Setup cs_lines for peripherals */
-> -    s->cs_lines =3D g_new0(qemu_irq, asc->max_peripherals);
-> +    s->cs_lines =3D g_new0(qemu_irq, asc->max_cs);
->
-> -    for (i =3D 0; i < asc->max_peripherals; ++i) {
-> +    for (i =3D 0; i < asc->max_cs; ++i) {
->          sysbus_init_irq(sbd, &s->cs_lines[i]);
->      }
->
-> @@ -1168,7 +1168,7 @@ static void aspeed_smc_realize(DeviceState *dev, Er=
-ror **errp)
->       * module behind to handle the memory accesses. This depends on
->       * the board configuration.
->       */
-> -    for (i =3D 0; i < asc->max_peripherals; ++i) {
-> +    for (i =3D 0; i < asc->max_cs; ++i) {
->          AspeedSMCFlash *fl =3D &s->flashes[i];
->
->          if (!object_property_set_link(OBJECT(fl), "controller", OBJECT(s=
-),
-> @@ -1314,7 +1314,7 @@ static void aspeed_2400_smc_class_init(ObjectClass =
-*klass, void *data)
->      asc->r_timings         =3D R_TIMINGS;
->      asc->nregs_timings     =3D 1;
->      asc->conf_enable_w0    =3D CONF_ENABLE_W0;
-> -    asc->max_peripherals   =3D 1;
-> +    asc->max_cs            =3D 1;
->      asc->segments          =3D aspeed_2400_smc_segments;
->      asc->flash_window_base =3D 0x10000000;
->      asc->flash_window_size =3D 0x6000000;
-> @@ -1359,7 +1359,7 @@ static void aspeed_2400_fmc_class_init(ObjectClass =
-*klass, void *data)
->      asc->r_timings         =3D R_TIMINGS;
->      asc->nregs_timings     =3D 1;
->      asc->conf_enable_w0    =3D CONF_ENABLE_W0;
-> -    asc->max_peripherals   =3D 5;
-> +    asc->max_cs            =3D 5;
->      asc->segments          =3D aspeed_2400_fmc_segments;
->      asc->segment_addr_mask =3D 0xffff0000;
->      asc->resets            =3D aspeed_2400_fmc_resets;
-> @@ -1401,7 +1401,7 @@ static void aspeed_2400_spi1_class_init(ObjectClass=
- *klass, void *data)
->      asc->r_timings         =3D R_SPI_TIMINGS;
->      asc->nregs_timings     =3D 1;
->      asc->conf_enable_w0    =3D SPI_CONF_ENABLE_W0;
-> -    asc->max_peripherals   =3D 1;
-> +    asc->max_cs            =3D 1;
->      asc->segments          =3D aspeed_2400_spi1_segments;
->      asc->flash_window_base =3D 0x30000000;
->      asc->flash_window_size =3D 0x10000000;
-> @@ -1442,7 +1442,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass =
-*klass, void *data)
->      asc->r_timings         =3D R_TIMINGS;
->      asc->nregs_timings     =3D 1;
->      asc->conf_enable_w0    =3D CONF_ENABLE_W0;
-> -    asc->max_peripherals   =3D 3;
-> +    asc->max_cs            =3D 3;
->      asc->segments          =3D aspeed_2500_fmc_segments;
->      asc->segment_addr_mask =3D 0xffff0000;
->      asc->resets            =3D aspeed_2500_fmc_resets;
-> @@ -1480,7 +1480,7 @@ static void aspeed_2500_spi1_class_init(ObjectClass=
- *klass, void *data)
->      asc->r_timings         =3D R_TIMINGS;
->      asc->nregs_timings     =3D 1;
->      asc->conf_enable_w0    =3D CONF_ENABLE_W0;
-> -    asc->max_peripherals   =3D 2;
-> +    asc->max_cs            =3D 2;
->      asc->segments          =3D aspeed_2500_spi1_segments;
->      asc->segment_addr_mask =3D 0xffff0000;
->      asc->flash_window_base =3D 0x30000000;
-> @@ -1515,7 +1515,7 @@ static void aspeed_2500_spi2_class_init(ObjectClass=
- *klass, void *data)
->      asc->r_timings         =3D R_TIMINGS;
->      asc->nregs_timings     =3D 1;
->      asc->conf_enable_w0    =3D CONF_ENABLE_W0;
-> -    asc->max_peripherals   =3D 2;
-> +    asc->max_cs            =3D 2;
->      asc->segments          =3D aspeed_2500_spi2_segments;
->      asc->segment_addr_mask =3D 0xffff0000;
->      asc->flash_window_base =3D 0x38000000;
-> @@ -1597,7 +1597,7 @@ static void aspeed_2600_fmc_class_init(ObjectClass =
-*klass, void *data)
->      asc->r_timings         =3D R_TIMINGS;
->      asc->nregs_timings     =3D 1;
->      asc->conf_enable_w0    =3D CONF_ENABLE_W0;
-> -    asc->max_peripherals   =3D 3;
-> +    asc->max_cs            =3D 3;
->      asc->segments          =3D aspeed_2600_fmc_segments;
->      asc->segment_addr_mask =3D 0x0ff00ff0;
->      asc->resets            =3D aspeed_2600_fmc_resets;
-> @@ -1636,7 +1636,7 @@ static void aspeed_2600_spi1_class_init(ObjectClass=
- *klass, void *data)
->      asc->r_timings         =3D R_TIMINGS;
->      asc->nregs_timings     =3D 2;
->      asc->conf_enable_w0    =3D CONF_ENABLE_W0;
-> -    asc->max_peripherals   =3D 2;
-> +    asc->max_cs            =3D 2;
->      asc->segments          =3D aspeed_2600_spi1_segments;
->      asc->segment_addr_mask =3D 0x0ff00ff0;
->      asc->flash_window_base =3D 0x30000000;
-> @@ -1675,7 +1675,7 @@ static void aspeed_2600_spi2_class_init(ObjectClass=
- *klass, void *data)
->      asc->r_timings         =3D R_TIMINGS;
->      asc->nregs_timings     =3D 3;
->      asc->conf_enable_w0    =3D CONF_ENABLE_W0;
-> -    asc->max_peripherals   =3D 3;
-> +    asc->max_cs            =3D 3;
->      asc->segments          =3D aspeed_2600_spi2_segments;
->      asc->segment_addr_mask =3D 0x0ff00ff0;
->      asc->flash_window_base =3D 0x50000000;
-> --
-> 2.34.1
->
->
+> Preferably with error unified:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>

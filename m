@@ -1,111 +1,112 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1392464lfo;
-        Mon, 7 Mar 2022 02:54:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwTniA8POgjbhZ47HbiYuXqLtulZ+C3GrYBh1CjNFqymo5rakgN9gphsHIGYY3+24AcooWr
-X-Received: by 2002:a05:622a:203:b0:2de:64f:6231 with SMTP id b3-20020a05622a020300b002de064f6231mr8631643qtx.291.1646650447067;
-        Mon, 07 Mar 2022 02:54:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646650447; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1394086lfo;
+        Mon, 7 Mar 2022 02:57:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzDee0wynVCAz1R4QllIyJg7q7YyNGROdSG7uut7XqBa8MTKlfaLENTSHKQZS5qxu/aBaya
+X-Received: by 2002:ac8:24d:0:b0:2d5:e1f1:d492 with SMTP id o13-20020ac8024d000000b002d5e1f1d492mr8938241qtg.348.1646650636128;
+        Mon, 07 Mar 2022 02:57:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646650636; cv=none;
         d=google.com; s=arc-20160816;
-        b=rYOtYmbb2RF9OdVMwvkCreOwxiTlDg9U8y1u3PUMFsMrPKN6ElM9bElGOmJ72nGpie
-         trRQh62bWs3Dxe4xIczZk4xC5aoQ+et40KwAAnFgY8XQWJDre/LTu4ICitLOtrQ+cywN
-         4nX/VUhIYQI2oPlorYf1DKRYSHrtbp/WHETi9qYefaaqCV88ahZIuDh6EObcUol0w7T7
-         xx2kDPGCnFAa+KCvMP9jH9nzu0qHqDzmV2e9tW6oxdtPbnuRxruGkaRyg2jkCQRJdIL3
-         OZW9BrzRTPuMFU8+R/yrcZjy7hoS1XtDeoEWdiOwrtllQumnQHyOrILCw8Pz00zKOVcM
-         GaQw==
+        b=Hmp+wMVqcRcnTVjvV/6xoNpw3fAHheEymMcC074oZbZhkN9vEMcuQWUUDUJ+H5EHQa
+         /z0EFneP8l+bvBZlWlUhzktHGpLqyiYlhKA2BEdyzvk2NSMDbhl5GgeWanOvJxKwxg+V
+         tHZwGJygsc5p4riwy6bsRfX1GcGlWs07vBCnuONRf3dZc35kfw+hywhZ+Xa/BzHiDHqh
+         oVCKHAQ2ML4QmF4evnlqReQVTPA10F2K1gdnvUj974EkEP1YEEm/wAIOxm8+NCvImDIA
+         82aVCEheygUndDR47dlu8Hw8vsX1spay9m0YIo6Q0O0ONSnINh6Jzi+R5/2Nw96U7TKc
+         iRTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=ugN4OVB69Pzb7ae2Ovj1PuLnR10o/eCKGQfhZZtVqzI=;
-        b=HCVr3VzyIJTyMW8Qxt5w7pedks17SM5ywp+z4qIURdOM0ISXwuT3Tf2XJH9hSsuhEw
-         eOAgQAtXaW2ZIs1cz2xSP5oO26rvZzd4JfKLVCLekq9gzKrUGsFuzRPLsdNVdnpuIB/g
-         R4i5DVTNohnk99p81LwoVscVn20kvg1Ri7/nyaJFYXHex7AB4krCx83p/UA8Ez0IYbli
-         NaGXKQeU/C95tU6AuLLpJFW89QrsyJyhkIHq7w8eT7iYGtwivZOuq0N/whZBdukSz2pK
-         GVW75ct17zhLGRY28Ci0DCA8W/K2OhJEASlw9VgQTvjEGGyk5geRNUdKWkzvKwpykUl4
-         ceZA==
+        bh=BlQMjy4mGCEF9d6fQa+rvUeu0OeQVFwNd42LJKCEUeI=;
+        b=CgtIj8/sYdalpq4JL8QZI8kCCb92ikG4YleykiG2ilWyckPKczTLlE4F2mEoOqXHTL
+         U5WDt2bNSLbj+Zm/JxmoHuaspMpTbL8Qo+0udRXnUE+ReRH1XSoI2gvg0zAZ2hSXhsLi
+         g2ZmrFvEsbfJAkqxJ4BKFDf8AzTgK3mm1Q3jG7lp5aPeo8llrEMVKdVSTEiG2FCFTwDQ
+         w91SccmqIBBxImLSku0z4HPOV8yN+23tfY82kZ4V7PBovfuaD0Vad+zVYxTASfBExvRG
+         xb+3kUMJYv8anPugmWKjspAwIb/T6Y/4gnWE55U1hbvFtylGVvwpEA+ouDVciTi5zuxU
+         0izQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=PgAN4uxo;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="kvg6G/vQ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t26-20020ac8761a000000b002e05fe3f58asi2206892qtq.473.2022.03.07.02.54.06
+        by mx.google.com with ESMTPS id cv2-20020ad44d82000000b0042d7ca5fd68si5048463qvb.551.2022.03.07.02.57.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Mar 2022 02:54:07 -0800 (PST)
+        Mon, 07 Mar 2022 02:57:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=PgAN4uxo;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="kvg6G/vQ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48458 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57528 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nRB0A-0002Wf-JU
-	for alex.bennee@linaro.org; Mon, 07 Mar 2022 05:54:06 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38990)
+	id 1nRB3D-0000FY-JR
+	for alex.bennee@linaro.org; Mon, 07 Mar 2022 05:57:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39610)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nRASr-0006p0-O5; Mon, 07 Mar 2022 05:19:42 -0500
-Received: from [2a00:1450:4864:20::42b] (port=35592
- helo=mail-wr1-x42b.google.com)
+ id 1nRAV8-0001v2-LW; Mon, 07 Mar 2022 05:22:02 -0500
+Received: from [2a00:1450:4864:20::32d] (port=36388
+ helo=mail-wm1-x32d.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nRASq-0005KP-46; Mon, 07 Mar 2022 05:19:41 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id b5so22427829wrr.2;
- Mon, 07 Mar 2022 02:19:39 -0800 (PST)
+ id 1nRAV7-0005sS-9F; Mon, 07 Mar 2022 05:22:02 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ h127-20020a1c2185000000b003898fc06f1eso102991wmh.1; 
+ Mon, 07 Mar 2022 02:21:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=ugN4OVB69Pzb7ae2Ovj1PuLnR10o/eCKGQfhZZtVqzI=;
- b=PgAN4uxoLl65tGsjLZER1fJYHFRN/fpouS8T00rHVoou/7sMuBdwMU/8KguIFJh93T
- 0uocjLSlrA829pBQ/1uDHIqxN+Tu1URHSaPmDIajYmazmbHXad6lbeyQ9QUW08igWS3h
- IqVGZOpvRIxqrd4Q0qrMpR944ELeEDF3YrlSchH/joOxutKB/+zOTUoP84FPhgziCLBK
- lTe58SF/jfVqXl/C2ynexdrElIqS+O3wo2baQ71G0UPjxlifseripSqQ9OLXIi5U8C5h
- xPptnvcTa9OjbUE1/dmiL33ju+XAQuVOCyKaZzCV27qy97UufGtdxz32/T79I66PSt2d
- YlRQ==
+ bh=BlQMjy4mGCEF9d6fQa+rvUeu0OeQVFwNd42LJKCEUeI=;
+ b=kvg6G/vQ5j2PzrVJSFtjfWkAwdHZU1v8DTETkf1MKbJReG2KkM9oyyPb3FE5SqaHtK
+ +Cr8KyO0axoJu0XIyuRHro2zMlc07auNXhwlpQVS1fcwDVpBBbjHSb18cM/OehUZWfQY
+ gn3owApfE7UrqUMqT+6eCfSAWpe8OML/sqHKI0R3rB/9lU68reqlL8pdAQgPXh1CHw0W
+ 20GcndVQq6n3LvVe2rR83R8HG5OHcUEQ6ohboF+z6I4KA/dG0k7Q6yHzdsMFFFo63x7/
+ RjrI6Ii9FUu2WoR26lqf1ifna+dA42mC8CDn/Yhha3dZfdp+SOLF0Q5/TJ3zNwIKTnP2
+ EBFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=ugN4OVB69Pzb7ae2Ovj1PuLnR10o/eCKGQfhZZtVqzI=;
- b=4XyyoXJGm5ih3gkddTHrh/KbeO6Hnuvbrb83kCYXzEctXGKx33PxO+KpS3FpJAu0SK
- 3Qb5T/fw5bEUZ2ebiD2c1ldels8J6RpTPPn9nuC9OMmnldcohSeeAlIzZnrZGFyLTGTF
- GHdIb14vcxDbrvWyECDtFF0YFHLkrVrgEND+W+Qgy+6ZAxA+CI0mgRKAfM+ym0kBD2+F
- MsK7zmtztQB6L/M1emUYsBS4b7ORSu1HzVLkLy9stbmYXeytO5SNuu1oNJXZ2O7yjeq7
- FV2//Szu+tFcxWpIOqccIOZ2pd6nmV1PNchm6C9KTbNYb2wvIZW0d3shmA4Ppzq9usiC
- CFPg==
-X-Gm-Message-State: AOAM530+FAQ4W81Ak2F94OvOaZjAETdlGwgqRR+NgP75g2Jw+1RdCbzy
- 1NS6cqXH4fnkAwL1RiUU5tk=
-X-Received: by 2002:a05:6000:1448:b0:1f0:6620:968f with SMTP id
- v8-20020a056000144800b001f06620968fmr7863312wrx.714.1646648378299; 
- Mon, 07 Mar 2022 02:19:38 -0800 (PST)
+ bh=BlQMjy4mGCEF9d6fQa+rvUeu0OeQVFwNd42LJKCEUeI=;
+ b=kRVY46dqaQNPeHe71wQsRxRvxNbmj/tQKMPtq5PWN1nWI5zUTbrLSl7vAq5SVE0iIu
+ VdW8UCRhdzsCw6nAW/ABAW9RpvPg1w5ozvt2LydjrMEUwUMiyPUlC8u5E4rOAYIBHfRh
+ LZG2OLVVIWRHbQYjf4FMNcQjKHkD9O5SY/FQqNmj0yGqND0TE3GBpdB1P2LKrjXScBSD
+ E67IDXvuMNT0Ng0wqyUinRiXh54A80RHDfLoI8hvbOiO2dy+VKJsndpN2ONP3HKQXGA/
+ YyRXr3oRd79GG2iVMZvVweldylo493BN37xwd/WlwMJh3n1LBUva3u97ZLE4T2RbRum9
+ IU6A==
+X-Gm-Message-State: AOAM530pIu7/l6pU8OkbhqHQ7wRLRts0ezq6RLw+SvJ25PvhzTSHd8Ho
+ AXTxIbMpvhYi5VPCWfkroVo=
+X-Received: by 2002:a7b:c5d6:0:b0:381:4127:84d3 with SMTP id
+ n22-20020a7bc5d6000000b00381412784d3mr17635257wmk.24.1646648518679; 
+ Mon, 07 Mar 2022 02:21:58 -0800 (PST)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- 7-20020a05600c228700b00389865c646dsm16003865wmf.14.2022.03.07.02.19.37
+ p16-20020adff210000000b001f062b80091sm9814801wro.34.2022.03.07.02.21.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Mar 2022 02:19:37 -0800 (PST)
-Message-ID: <8e649dbd-f410-6b76-e0bf-64415e427186@gmail.com>
-Date: Mon, 7 Mar 2022 11:19:36 +0100
+ Mon, 07 Mar 2022 02:21:58 -0800 (PST)
+Message-ID: <0fe56065-4ceb-c9db-8231-1a7ae441dbce@gmail.com>
+Date: Mon, 7 Mar 2022 11:21:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.6.1
-Subject: Re: [PATCH 1/6] aspeed/smc: Use max number of CE instead of 'num_cs'
+Subject: Re: [PATCH 2/6] aspeed: Rework aspeed_board_init_flashes() interface
 Content-Language: en-US
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20220307071856.1410731-1-clg@kaod.org>
- <20220307071856.1410731-2-clg@kaod.org>
+ <20220307071856.1410731-3-clg@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
  <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <20220307071856.1410731-2-clg@kaod.org>
+In-Reply-To: <20220307071856.1410731-3-clg@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42b
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32d
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -130,21 +131,33 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zdf6A8rgVDD0
+X-TUID: hrprweMFXS/U
 
 On 7/3/22 08:18, Cédric Le Goater wrote:
-> The Aspeed SMC model uses the 'num_cs' field to allocate resources
-> fitting the number of devices of the machine. This is a small
-> optimization without real need in the controller. Simplify modelling
-> and use the max_peripherals field instead.
-
-"(which by the way is not very descriptive, but we are going to
-rename it to 'cs_num_max' in a pair of commits)."
-
+> Currently, the allocation of the flash devices uses the number of
+> slave selects configured in the SoC realize routine. It is simpler to
+> use directly the number of FMC devices defined in the machine class
+> and 1 for spi devices (which is what the SoC does in the back of the
+> machine).
 > 
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->   hw/ssi/aspeed_smc.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
+>   hw/arm/aspeed.c | 11 +++++------
+>   1 file changed, 5 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 02918a594d24..be24508a9854 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -276,9 +276,8 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
+>       rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
+>   }
+>   
+> -static void aspeed_board_init_flashes(AspeedSMCState *s,
+> -                                      const char *flashtype,
+> -                                      int unit0)
+> +static void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+> +                                      int count, int unit0)
 
+'unsigned count', otherwise:
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

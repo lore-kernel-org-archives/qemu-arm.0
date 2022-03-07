@@ -1,121 +1,113 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1090015lfo;
-        Sun, 6 Mar 2022 16:00:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwaogODGt+XqZigUhT23uMsBa6s57D1G/0C53RWnFA8afXKYTOyOvcCgAzqDLOudNTgxduT
-X-Received: by 2002:a25:31c4:0:b0:629:f72:99cc with SMTP id x187-20020a2531c4000000b006290f7299ccmr5809909ybx.549.1646611233655;
-        Sun, 06 Mar 2022 16:00:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646611233; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1282346lfo;
+        Sun, 6 Mar 2022 23:16:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyiFBcJrb0ZdCvnixwCZhLg8lPGtY1DAqSFZZZx3kEarYB5XwUny/WbNc/ZrXS798XVHRNN
+X-Received: by 2002:a05:622a:3c9:b0:2dd:7c32:7b9a with SMTP id k9-20020a05622a03c900b002dd7c327b9amr8189256qtx.589.1646637411615;
+        Sun, 06 Mar 2022 23:16:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646637411; cv=none;
         d=google.com; s=arc-20160816;
-        b=nR8zrbAPhXELBvzwJEDWwUaXHqazG3RxyJwoy3h1eatK61FfoKoLbuP0hf1mX/OO/c
-         i9tCE7eSsNrjY1b7XbrfcrxvoQb7RMWWwTQQiAzkAodDs3ZY8XZjhgCAtVzjFs7qXQO8
-         f7y+Uov/xc/nBZt5EAw+OM2Gn52y9gAh4agycUEE2gxmc9CkYTl5M686oBJvJyDgvhxn
-         CS2BceOr29WITkAbU04mo0f7uRTooZJr7o+Vs/GZu72DZdBONrxCNR7HxoMMDbTELGFX
-         dmJLl+4H7t8jrvZHIHks6o3SRLE/HedmJhzj61/50g4sNwkdTDzCooZU+5XDNDcKKdYS
-         L6+w==
+        b=SU9oaEETbsKLSXrV1dPud3zzhqSAlBdMmv7I7bQ8sBJAMzvJd7zznrOD1xQJbZXC6S
+         lGa/vKaT4Rv3v0LRa1F4FqKyEOPkr6ejSMnPQ2VCEGXwntza4sgxy60UsIEaicJgvFQc
+         32BUJoN7XPUhpDb9anx3cL3XdWhdWgO2Ap0ECMX0iQy13xGpz+MegdYOvJ3x9+x1i1hz
+         7HgOeYD8W3BEXTF8tgsiXb7P2jDbnJMAXebH5tgEQ5RiPfNRPKZbu3rj7S+e48zxyAPs
+         jvrl2w6pphXmoVlFAy8U8ZMokAxwqvk8u9NUS2FjVwrP6++Y6lKCyIWy1orP3U9x/eb5
+         1hCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=9jUzM3h68dB2doXx5iieL8MIWnihNaAzc5IOtQGPZXM=;
-        b=P/TSdEY5HxwVbOKHcXGNTs07s1mlYRK2l/8R1vGiA/SfkN0S33g904gln2dc5t7dZf
-         y3xv3YYtyPiC1jABfVIuP2uknnOs4UqnJn5MaBjD7GNwekaiKMi+AQj1W3WAK3E0C9+1
-         pFRurJEpuDHfpUF13fGhlhpGtA5urE7c7qdZeOzXkAbCwQhIacxfrsoBv1qBtnqEC//M
-         xKAdnNp6/9aQoXuCZADxdKd034Wqje6jEOIoDjACNxW8JnCmgZXCztvqGjYxqUyCUgvS
-         XRcO0x0Jo6P3iR076YVrhKZSxoVoHed8VBRLkuVNmP3Ex2lKxwXkp8cQRW4VamWdzQ0v
-         Q4gQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=M376ZoWuJVPIrPaAWwAv2L61Ez2Yca85DioMcP11gPc=;
+        b=VTBHfWLdeSo2HDVFsoZBWGrbf8xmfYwr2r0K5fv3UO814bpeSUfrfDRsOI85QoqHco
+         FEYZre8HLhqNxDRC2vO3+6kdf5rqE6hyS1DX2LQ93lUVJ0mV9bhOgvO7ml26k+r352QI
+         PYxRiV6rscrBju+6LklBUlpju8crAuuqBK6yPhQYtwnClczblOl9v+kdfge8sudVLijx
+         4AGsx4n/H7eX8cchnpBf+KWBkV11oCjCXTaRbgwl7t/EJPXSSbXm5rBSMjTgkZewMSNM
+         NYfgRKUS/z9uH+wa3uT/6OiqgwFLcFUHA2Dral5zxSpNTPk1Y6fimIk5GgjsHlkCjsJw
+         zQzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lTWP00Gj;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="lqA4Gy/u";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k18-20020a25bed2000000b0061d8cb92f23si7909643ybm.84.2022.03.06.16.00.33
+        by mx.google.com with ESMTPS id b40-20020a05620a272800b006493f18b45bsi4003134qkp.673.2022.03.06.23.16.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 06 Mar 2022 16:00:33 -0800 (PST)
+        Sun, 06 Mar 2022 23:16:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lTWP00Gj;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="lqA4Gy/u";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53948 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49644 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nR0nh-0000TC-3G
-	for alex.bennee@linaro.org; Sun, 06 Mar 2022 19:00:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55524)
+	id 1nR7bv-0000OI-4l
+	for alex.bennee@linaro.org; Mon, 07 Mar 2022 02:16:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33966)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nR0nH-0000So-EG; Sun, 06 Mar 2022 19:00:07 -0500
-Received: from [2a00:1450:4864:20::42f] (port=35570
- helo=mail-wr1-x42f.google.com)
+ (Exim 4.90_1) (envelope-from <shan.gavin@gmail.com>)
+ id 1nR7ZH-0006Gx-Ou; Mon, 07 Mar 2022 02:14:09 -0500
+Received: from [2607:f8b0:4864:20::631] (port=42506
+ helo=mail-pl1-x631.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nR0nF-0005WD-TV; Sun, 06 Mar 2022 19:00:07 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id b5so20762808wrr.2;
- Sun, 06 Mar 2022 16:00:05 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shan.gavin@gmail.com>)
+ id 1nR7ZG-0002F3-AD; Mon, 07 Mar 2022 02:14:07 -0500
+Received: by mail-pl1-x631.google.com with SMTP id p17so12959469plo.9;
+ Sun, 06 Mar 2022 23:14:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=9jUzM3h68dB2doXx5iieL8MIWnihNaAzc5IOtQGPZXM=;
- b=lTWP00GjQdR0GKejhKwJUk5eR70uHt4KwgMssBVU3QtfaDS3vAMmqQNMTmk3ag7EI0
- GQGXdetV8g/YyfXOlLbxsectvTgdpQObnS2xPGdE0TXgiOlbaY1i5Vu2hwIiIfpX7hqO
- HxQldOgNkhzDKL+pafGV3TPXrI2Q8fByR8IryVp6VKqXBZ63Ory8toNrKDWVQdeha6LY
- Tg4wW40vVqXWvxuGrerbDas2sxKKogPQC2Tk1VKAc+6VhYpXz7yyHGsQsvfTS5txXSdl
- /LtBi2eaFibJ3/4Dxvxiwku8jQNMJsZzCR7lhchWkVJrL8PvRjT+QYGCv76apJk16NxN
- NClw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=M376ZoWuJVPIrPaAWwAv2L61Ez2Yca85DioMcP11gPc=;
+ b=lqA4Gy/ujeQUEE/0lfuFCGUSNxkXnM6/cdIesnv3F2BvxJXhrh+9UYevUJAq9RBj+9
+ vIAAVoNSggOzwfcRDwUiX/o2FgpBJ2X7Ax3lbLWHmJt/T5cAxO+q8psGoDlxh0JeeRh+
+ E1UcleI5+FsvY0iavxdo7xxsAsskfNDf9YdGpZ4PZHkJ064DF+MC9cnlrly+d+5LJ0ha
+ nY0Z+Vm/hS0UjYB+ZY7+1Yhmq6rbutZ/z59UwxUjZCuU9/St8tlHnSF9JYzcCyO5U6oB
+ 9zdSdgP3FaAGvANU38vXz0BpIKiev2oBlD4AWboGmeAkdUWOpM6tCT3vGxQII7aXWvpo
+ 1gkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=9jUzM3h68dB2doXx5iieL8MIWnihNaAzc5IOtQGPZXM=;
- b=BvinT7fD+z24GJUqYM8B031xR9gi8dBdEacLXEPCgoabn75TOK8ypY7khFOZUd6SW5
- WHjf/PlTmPRN9F6y2moo20TeqjceJZm4zMLFH5Rxw+jq79m1f8Wz2Tp+iAGa5qYqSMBb
- oxU5OsfE9SErsbs/SYGxPSS7Z1H4z2zQFiX1O4pEUs+1MdCwljM6XBzuJ97ps5Q/Mh3Y
- 139SV7bAxWOalHxKOkKfJ9nQBe4H3x49/HNoYUV8Lpq0h2MndHnNF6I8NPMegtg8PAMn
- jJkeYidhUjwpWTSIwZiuhDCnlPSmPDTuM8jhT88HsjPu8gJ8R83hDXsln/cryow0McZR
- rIWQ==
-X-Gm-Message-State: AOAM532TcOPs+wqIq3x/EM+8MAnybaRGTPQa4JyIbooHaUCmJOWU9lo4
- 4qQfFGQ7m+CsviMGyK85wN0=
-X-Received: by 2002:a05:6000:22c:b0:1f0:ff85:948d with SMTP id
- l12-20020a056000022c00b001f0ff85948dmr6234508wrz.494.1646611203879; 
- Sun, 06 Mar 2022 16:00:03 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- m3-20020a5d6a03000000b001f06621641fsm7786226wru.96.2022.03.06.16.00.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 06 Mar 2022 16:00:03 -0800 (PST)
-Message-ID: <1af23dba-8f7a-8d93-706d-6e16067cdce2@gmail.com>
-Date: Mon, 7 Mar 2022 01:00:02 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=M376ZoWuJVPIrPaAWwAv2L61Ez2Yca85DioMcP11gPc=;
+ b=h+SanQjKtMfPVUhnqycTM/3IR1884jDIh4Qse6RUGVrN9ejhb0yK+m3LurXNQBMmtF
+ uKDoEU8Ga2CD6vp7c6nVTwS9CtBfyahRc/5y6CCDfc3ute7r3gUM1SP8/tH9vzL1wRVB
+ axirQ/2JaUTK5U7fBiIk291s45PtWt7Su60QAnbYKK+v21pC5JJXXRPfn4WCyWqvMSmv
+ OGdjVoCmG7Kl1xDxoW4xCNPLLblK5F/pBxwmCdLNCbBzD1qFpSjuZ4wT4W22AzaS2dy6
+ d7DnybC7xvQ0zv6zPtsmxiV32sARPGmG1lByB9OQyotHYfOQuAHUW0AEM52zA+uBcPVd
+ Tc8w==
+X-Gm-Message-State: AOAM531ZTQFmw2637lsY9zsJGXjTUfh32oY0C2aejbLn/uap8qdEDtkw
+ ppbfSp3GkgmTjXOMhnv8dnIoxuoTdZ70jzHhAMw=
+X-Received: by 2002:a17:90a:880e:b0:1bc:650b:6be5 with SMTP id
+ s14-20020a17090a880e00b001bc650b6be5mr23641595pjn.34.1646637243429; Sun, 06
+ Mar 2022 23:14:03 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.1
-Subject: Re: [PATCH v3 0/9] This patch series contains updates to PMBus in
- QEMU along with some PMBus device models for Renesas regulators. I have also
- added myself to MAINTAINERS as this code is in use daily, where I am
- responsible for it.
-Content-Language: en-US
-To: Titus Rwantare <titusr@google.com>, minyard@acm.org
-References: <20220302015053.1984165-1-titusr@google.com>
- <20220304214354.GL3457@minyard.net>
- <CAMvPwGpzO3VyCqGJY28QVQoo9AwYxxrvP3RqPS6JTgpTk8ojtw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <CAMvPwGpzO3VyCqGJY28QVQoo9AwYxxrvP3RqPS6JTgpTk8ojtw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42f
+References: <20220228075203.60064-1-gshan@redhat.com>
+ <20220228100820.477e2311@redhat.com>
+ <41eb791c-a74a-7ed6-df05-cd1867ecbb5f@redhat.com>
+ <20220301114257.2bppjnjqj7dgxztc@sirius.home.kraxel.org>
+ <ee76dcac-8914-2f24-9920-9d93aa29c22d@redhat.com>
+ <20220304115240.71d241ad@redhat.com>
+ <CAFEAcA8BwRnziYaO2ZP7e_hNuAPBV7UOViX-nDu=ae2_7CemKw@mail.gmail.com>
+ <1abedac8-00c8-3039-ccfe-783f5eab9439@redhat.com>
+In-Reply-To: <1abedac8-00c8-3039-ccfe-783f5eab9439@redhat.com>
+From: Shan Gavin <shan.gavin@gmail.com>
+Date: Mon, 7 Mar 2022 15:13:52 +0800
+Message-ID: <CAOL5Tw=E1iEALPt3H5-T9Tizg3DMpUH8dueiPuuiSvz51AY8UQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/virt: Validate memory size on the first NUMA node
+To: Laszlo Ersek <lersek@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::631
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=shan.gavin@gmail.com; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -129,42 +121,47 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, venture@google.com, qemu-devel@nongnu.org,
- f4bug@amsat.org, wuhaotsh@google.com, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Gavin Shan <gshan@redhat.com>, richard.henderson@linaro.org,
+ QEMU <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4YumHNfRDf2V
+X-TUID: nr4kTgl675fR
 
-On 5/3/22 00:42, Titus Rwantare wrote:
-> On Fri, 4 Mar 2022 at 13:43, Corey Minyard <minyard@acm.org> wrote:
->>
->> On Tue, Mar 01, 2022 at 05:50:44PM -0800, Titus Rwantare wrote:
->>> v2:
->>>    - split PMBus commit with updates into individual fixes
->>>    - renamed isl_pmbus[.ch] adding _vr for voltage regulators
->>>
->>> v3:
->>>    - split uint refactor commit and removed commit renaming files
->>>    - rename rolled into preceding commits
->>>    - update commit description for uint refactoring change
->>
->> This all looks good to me:
->>
->> Acked-by: Corey Minyard <cminyard@mvista.com>
->>
->> Do you have a plan for getting this in to qemu?  Like through the ARM
->> tree?  I could take it into an I2C tree, but there's really not much
->> activity or work there.
->>
->> -corey
-> 
-> In general PMBus is more specific to i2c than ARM, but I'm not sure of
-> the QEMU implications.
+Hi Laszlo,
 
-Titus, could you address my comments?
+Yes, I think it's enough to provide the user-friendly error message in EDK2=
+.
+The command lines to start the VM/guest can be adjusted to have more than
+128MB memory associated for NUMA node#0 when it's seen by users.
 
-Corey, if you are busy, I can take care of this series.
+Thanks,
+Gavin
 
-Regards,
-
-Phil.
+Laszlo Ersek <lersek@redhat.com> =E4=BA=8E2022=E5=B9=B43=E6=9C=884=E6=97=A5=
+=E5=91=A8=E4=BA=94 22:24=E5=86=99=E9=81=93=EF=BC=9A
+>
+> Gerd,
+>
+> On 03/04/22 11:58, Peter Maydell wrote:
+> > On Fri, 4 Mar 2022 at 10:52, Igor Mammedov <imammedo@redhat.com> wrote:
+> >> if firmware is not an option, I wouldn't opposed to printing warning
+> >> message from QEMU if you can detect that you are running broken edk2
+> >> and under condition that no new infa/hooks are invented for this.
+> >> (assuming it's worth all the effort at all)
+> >
+> > I am definitely not in favour of that. QEMU should provide the
+> > emulated hardware and let the firmware deal with detecting if
+> > it's missing important stuff. It should as far as is possible
+> > not have special-case detection-of-broken-guests handling.
+> >
+> > thanks
+> > -- PMM
+> >
+>
+> It's probably simplest if you replace the ASSERT()s in question; please
+> see the attachment. (Only smoke tested.) Gavin indicated up-thread he'd
+> be OK with an easier-to-understand error message.
+>
+> Laszlo

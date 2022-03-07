@@ -1,89 +1,92 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1804884lfo;
-        Mon, 7 Mar 2022 13:16:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzmK7NpumJSDks01lu4BwKGotGDu9a+B9/ObCABK+2lvklFMg09lylZD5PK6cImFJAfeANL
-X-Received: by 2002:a81:106:0:b0:2d0:e682:8a7a with SMTP id 6-20020a810106000000b002d0e6828a7amr10779272ywb.257.1646687772472;
-        Mon, 07 Mar 2022 13:16:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646687772; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1805479lfo;
+        Mon, 7 Mar 2022 13:17:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz4bo5OACI22q0jL1OvogVGGyaMf9lhKUvdfjwhADEgiPKqyjFIsL6vDvikTHyg+u0iK0kM
+X-Received: by 2002:a0d:efc7:0:b0:2db:d952:1f7e with SMTP id y190-20020a0defc7000000b002dbd9521f7emr10258482ywe.117.1646687830756;
+        Mon, 07 Mar 2022 13:17:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646687830; cv=none;
         d=google.com; s=arc-20160816;
-        b=cgoSK4ItPgi7MfhaAw/HB+cqNfqRjeUdGmRCIVBBXL+PtCuByFVtQ6hj6He2RDXR3s
-         P+XWssMvk3iVEeNttHGKmB4iE/TsYeSJ1+1wTxJEJMay0nib42adWOluiPnUDNkv1fKs
-         OvcEEVL9EMvXf+8j+A5roRekAEa2gl+MC/HP8Nb2FRE2z+TQ5TcF9KcZPsSji5RPm3Os
-         6qxNyL/lltn09pEmGHwJpElsJtSDEUFndKIlSdDqILmzsHwaPPWAx69ywAdQQ9sD3k1S
-         hKzqviMTmpAvMwexqoF7JbUB4YXvm/jgVqGgsYOmtWU5/QIVsp4Z9mJwYH1m1OJZIbjm
-         UKeg==
+        b=Jj9mn0afvOLVBc3fk7cI1ZM/1lRRmbmfrnPLj66TDCca6H8/pr238dI5D0G725Bh0+
+         k0pbiNVvVqkN1Sld60fvL+A8GFuSgj0xo4k+nqL7cXiIa6v4uaZ4s1F1J6lZm0YBvlI0
+         S0h9v2TZtEDCppaIgnziiZMHb/NoPQJiC1sgy0JUleEVfzg+b83ZU3nV3axG8hPAkFyw
+         fMc1Or9xbxxbd3e3M0VvxTLWBabvzTlQWllEZsFl4ZgCkOwiljPLoYHLMx7GuJhGwUlK
+         z+v+y/J1khApAPJXPyWxXgE3vhwk5V6Vuc8YCCszX/dGWzMjSIrMwOYD7Kg/mAXEqk4x
+         AMng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=LuIRBUJIF3lR1ttcw4d+d9kJl02qfVr8WPni09dQPHw=;
-        b=yRG3vMb1/qISj6Wycz9ZSzx8ow/0XCwYPa8brJgg7sxK6iehHShyvaTSO5NBaygCdY
-         E7Eti5QG6Xebv8hq7zNy7CLoOTiNDgNJ3qSD11f+uAlXc1v0cinL2F0QLV2AQR8RLh0k
-         84Dy0mlDopqPcB0rffAVkv07ofVxJOnQYf+g7SJ90T7cgv2azPgxhtwIiA23mFnQTGIw
-         tFXkrpMZDSr7//ddbYJalKethQAmdu3kTywdeYJQ9Ic0N88h+cB2CUTte4wqdezyvUT/
-         Xwcxj3AO04iGxtkWj/ir5tUEfcQnZoUUn0I19WPAxH3/DsjDDS41NCYo1/wWf+IutzfW
-         qLKw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=fENC+O3UhoRJJhdlv001UiHe5IQNH33OXw44Tup2W2k=;
+        b=WFSbB1XgFOyTqX4DsT+zfFvQ4uVQ1TsFGcAj1HdSdGJwK19uR6zHONJl+KSk3g2lT+
+         kduQMl/AAzbwhvF3OK+wE+198fMfTQ/nBHbCMkkXaeANs1aRAmlvKaDV6titX+VKKBmT
+         7ppwRPMUefWvO7GJ9p5Zch5+KsOMwucxKELCNmr9Nghtg5DtqR2Z8d/BIx1zMlCIks2R
+         oAxR0+/lV6P5Zv9/MeVE70K+FANMLsRJApRn/oTv9jtAev8c7j5t7tukVDpEYKCrr6fN
+         r7hVZ0YQ2aQyHb1W9U83vNksNzcbVta9VG7uds0aivsFZl8kiCio7X8KCksjcgvsClaF
+         TcWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S44k3cIu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="I4HnJYG/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i188-20020a0dc6c5000000b002dc10549cd0si11443914ywd.399.2022.03.07.13.16.12
+        by mx.google.com with ESMTPS id bh23-20020a05690c039700b002dc7fe7fbc8si7258697ywb.403.2022.03.07.13.17.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Mar 2022 13:16:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Mar 2022 13:17:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S44k3cIu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="I4HnJYG/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37830 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38906 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nRKiB-0007fZ-TN
-	for alex.bennee@linaro.org; Mon, 07 Mar 2022 16:16:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34832)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nRKj8-0008Nz-5B
+	for alex.bennee@linaro.org; Mon, 07 Mar 2022 16:17:10 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1nRKhs-0007fF-Mn
- for qemu-arm@nongnu.org; Mon, 07 Mar 2022 16:15:52 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:41881)
+ id 1nRKiQ-0008Id-0b
+ for qemu-devel@nongnu.org; Mon, 07 Mar 2022 16:16:26 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:34297)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1nRKhp-0000J9-Qn
- for qemu-arm@nongnu.org; Mon, 07 Mar 2022 16:15:51 -0500
+ id 1nRKiN-0000SP-QM
+ for qemu-devel@nongnu.org; Mon, 07 Mar 2022 16:16:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1646687748;
+ s=mimecast20190719; t=1646687783;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=LuIRBUJIF3lR1ttcw4d+d9kJl02qfVr8WPni09dQPHw=;
- b=S44k3cIuA7ZUuyr9+/+nC6TbxeeyntVG4+qtsjY9DthL/X8nWyNWRTU8Ro1W/DUh6Ss/AY
- aTTcEgjoSjK5zcVFWV8m2YwvP/QhF244yD3fMuhjBH1Qpc1KjoMgFy/yOkWm50b9oGCWiP
- 5btF8VmL1CErYbNRSSupFEt5bXK6VHA=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fENC+O3UhoRJJhdlv001UiHe5IQNH33OXw44Tup2W2k=;
+ b=I4HnJYG/9/l80oVdrr+KC5luGPB768Mlb9zHDHv8qN022j0b75g4wQFkppP2KwS3yRVm15
+ tQqpJit4WOdN6DTTO0pIdXgjol/sPsOo3bHCbAH7QPoJoyZBicaofnxG4V9fI5nxn9+WCV
+ l5XSVdCBPBpz2Ff2/1ygqS90UNWkYQ0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-86-7Y_23IAjN_KF36dWCWnmeg-1; Mon, 07 Mar 2022 16:15:44 -0500
-X-MC-Unique: 7Y_23IAjN_KF36dWCWnmeg-1
+ us-mta-155-dkl68td4N6mFolciK1oozA-1; Mon, 07 Mar 2022 16:16:22 -0500
+X-MC-Unique: dkl68td4N6mFolciK1oozA-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6773851E0;
- Mon,  7 Mar 2022 21:15:43 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 82EAD51DF;
+ Mon,  7 Mar 2022 21:16:20 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.192.90])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DED2B1BC7F;
- Mon,  7 Mar 2022 21:14:40 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C13DF2D1F7;
+ Mon,  7 Mar 2022 21:15:43 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, pbonzini@redhat.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
  david@gibson.dropbear.id.au, clg@kaod.org, eesposit@redhat.com,
  Coiby.Xu@gmail.com, stefanha@redhat.com
-Subject: [PATCH v4 0/4] qtests/libqos: Allow PCI tests to be run with
- virt-machine
-Date: Mon,  7 Mar 2022 22:14:35 +0100
-Message-Id: <20220307211439.213133-1-eric.auger@redhat.com>
+Subject: [PATCH v4 1/4] tests/qtest/libqos/pci: Introduce pio_limit
+Date: Mon,  7 Mar 2022 22:14:36 +0100
+Message-Id: <20220307211439.213133-2-eric.auger@redhat.com>
+In-Reply-To: <20220307211439.213133-1-eric.auger@redhat.com>
+References: <20220307211439.213133-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
@@ -92,7 +95,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -103,124 +106,281 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7lYhMRCzy0LN
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: G66e9odoHFSf
 
-Up to now the virt-machine node only contains a virtio-mmio
-driver node but no driver that eventually produces any pci-bus
-interface.
+At the moment the IO space limit is hardcoded to
+QPCI_PIO_LIMIT = 0x10000. When accesses are performed to a bar,
+the base address of this latter is compared against the limit
+to decide whether we perform an IO or a memory access.
 
-Hence, PCI libqos tests cannot be run with aarch64 binary.
+On ARM, we cannot keep this PIO limit as the arm-virt machine
+uses [0x3eff0000, 0x3f000000 ] for the IO space map and we
+are mandated to allocate at 0x0.
 
-This series brings the pieces needed to be able to run PCI tests
-with the aarch64 binary: a generic-pcihost driver node gets
-instantiated by the machine. This later contains a pci-bus-generic
-driver which produces a pci-bus interface. Then all tests
-consuming the pci-bus interface can be run with the libqos arm
-virt machine.
+Add a new flag in QPCIBar indicating whether it is an IO bar
+or a memory bar. This flag is set on QPCIBar allocation and
+provisionned based on the BAR configuration. Then the new flag
+is used in access functions and in iomap() function.
 
-One of the first goal was to be able to run the virtio-iommu-pci
-tests as the virtio-iommu was initially targetting ARM and it
-was awkard to be run the test with the pc machine. This is now
-possible.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/qtest/libqos/pci-pc.c    |  1 +
+ tests/qtest/libqos/pci-spapr.c |  1 +
+ tests/qtest/libqos/pci.c       | 78 ++++++++++++++++++++++------------
+ tests/qtest/libqos/pci.h       |  5 +--
+ 4 files changed, 54 insertions(+), 31 deletions(-)
 
-Only the tests doing hotplug cannot be run yet as hotplug is
-not possible on the root bus. This will be dealt with separately
-by adding a root port to the object tree.
-
-Also I have some trouble with 2 of the vhost-user-blk-tests. I am
-obliged to hack them in "tests/qtest/vhost-user-blk-test: Temporary
-hack to get tests passing on aarch64". Looks like a memory
-allocation issue, which at first sight seems unrelated to the
-aarch64 pci libqos enablement but we are never sure. Calling for
-help on this issue, if some vhost-user specialists can dedicate
-some cycles on this. Otherwise I will try my best to further debug.
-
-To reproduce the issue, revert the above hack and run
-
-QTEST_QEMU_STORAGE_DAEMON_BINARY=build/storage-daemon/qemu-storage-daemon QTEST_QEMU_BINARY=build/aarch64-softmmu/qemu-system-aarch64 build/tests/qtest/qos-test
-
-you should get:
-
-    ERROR:../tests/qtest/libqos/virtio.c:224:qvirtio_wait_used_elem:
-    assertion failed (got_desc_idx == desc_idx): (50331648 == 0)
-    Bail out! ERROR:../tests/qtest/libqos/virtio.c:224: qvirtio_wait_used_elem:
-    assertion failed (got_desc_idx == desc_idx): (50331648 == 0)
-
-Best Regards
-
-Eric
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/libqos-pci-arm-v4
-
-History
-
-v3 -> v4:
-- handle endianess when accessing the cfg space (fix PPC64
-  BE failure). Tested on such machine.
-
-v2 -> v3:
-- force -cpu=max along with aarch64/virt
-- reduced the vhost-user-block-pci issue workaround to a
-  single guest_alloc() instead of enabling MSIs. Call for
-  help on this specific issue. The 2 tests which fail are:
-  test_basic and indirect.
-
-v1 -> v2:
-- copyright updated to 2022
-- QPCIBusARM renamed into QGenericPCIBus
-- QGenericPCIHost declarations and definitions moved in the same
-  place as the generic pci implementation
-- rename pci-arm.c/h in generic-pcihost.c/h and remove any ref to
-  ARM there
-- remove qos_node_produces_opts, qpci_new_arm, qpci_free_arm
-- ecam_alloc_ptr now is a field of QGenericPCIBus and not QPCIBus
-- new libqos_init to create generic-pcihost driver that contains
-  pci-bus-generic
-- QGenericPCIHost moved in the same place as the generic pci
-  bindings
-- collected Thomas A-b/R-b
-
-
-Eric Auger (4):
-  tests/qtest/libqos/pci: Introduce pio_limit
-  tests/qtest/libqos: Skip hotplug tests if pci root bus is not
-    hotpluggable
-  tests/qtest/vhost-user-blk-test: Temporary hack to get tests passing
-    on aarch64
-  tests/qtest/libqos: Add generic pci host bridge in arm-virt machine
-
- tests/qtest/e1000e-test.c             |   6 +
- tests/qtest/libqos/arm-virt-machine.c |  19 ++-
- tests/qtest/libqos/generic-pcihost.c  | 231 ++++++++++++++++++++++++++
- tests/qtest/libqos/generic-pcihost.h  |  54 ++++++
- tests/qtest/libqos/meson.build        |   1 +
- tests/qtest/libqos/pci-pc.c           |   1 +
- tests/qtest/libqos/pci-spapr.c        |   1 +
- tests/qtest/libqos/pci.c              |  78 +++++----
- tests/qtest/libqos/pci.h              |   6 +-
- tests/qtest/vhost-user-blk-test.c     |  16 ++
- tests/qtest/virtio-blk-test.c         |   5 +
- tests/qtest/virtio-net-test.c         |   5 +
- tests/qtest/virtio-rng-test.c         |   5 +
- 13 files changed, 393 insertions(+), 35 deletions(-)
- create mode 100644 tests/qtest/libqos/generic-pcihost.c
- create mode 100644 tests/qtest/libqos/generic-pcihost.h
-
+diff --git a/tests/qtest/libqos/pci-pc.c b/tests/qtest/libqos/pci-pc.c
+index f97844289f..8051a0881a 100644
+--- a/tests/qtest/libqos/pci-pc.c
++++ b/tests/qtest/libqos/pci-pc.c
+@@ -150,6 +150,7 @@ void qpci_init_pc(QPCIBusPC *qpci, QTestState *qts, QGuestAllocator *alloc)
+ 
+     qpci->bus.qts = qts;
+     qpci->bus.pio_alloc_ptr = 0xc000;
++    qpci->bus.pio_limit = 0x10000;
+     qpci->bus.mmio_alloc_ptr = 0xE0000000;
+     qpci->bus.mmio_limit = 0x100000000ULL;
+ 
+diff --git a/tests/qtest/libqos/pci-spapr.c b/tests/qtest/libqos/pci-spapr.c
+index 262226985f..870ffdd8b5 100644
+--- a/tests/qtest/libqos/pci-spapr.c
++++ b/tests/qtest/libqos/pci-spapr.c
+@@ -197,6 +197,7 @@ void qpci_init_spapr(QPCIBusSPAPR *qpci, QTestState *qts,
+ 
+     qpci->bus.qts = qts;
+     qpci->bus.pio_alloc_ptr = 0xc000;
++    qpci->bus.pio_limit = 0x10000;
+     qpci->bus.mmio_alloc_ptr = qpci->mmio32.pci_base;
+     qpci->bus.mmio_limit = qpci->mmio32.pci_base + qpci->mmio32.size;
+ 
+diff --git a/tests/qtest/libqos/pci.c b/tests/qtest/libqos/pci.c
+index 3a9076ae58..b23d72346b 100644
+--- a/tests/qtest/libqos/pci.c
++++ b/tests/qtest/libqos/pci.c
+@@ -398,44 +398,56 @@ void qpci_config_writel(QPCIDevice *dev, uint8_t offset, uint32_t value)
+ 
+ uint8_t qpci_io_readb(QPCIDevice *dev, QPCIBar token, uint64_t off)
+ {
+-    if (token.addr < QPCI_PIO_LIMIT) {
+-        return dev->bus->pio_readb(dev->bus, token.addr + off);
++    QPCIBus *bus = dev->bus;
++
++    if (token.is_io) {
++        return bus->pio_readb(bus, token.addr + off);
+     } else {
+         uint8_t val;
+-        dev->bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
++
++        bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
+         return val;
+     }
+ }
+ 
+ uint16_t qpci_io_readw(QPCIDevice *dev, QPCIBar token, uint64_t off)
+ {
+-    if (token.addr < QPCI_PIO_LIMIT) {
+-        return dev->bus->pio_readw(dev->bus, token.addr + off);
++    QPCIBus *bus = dev->bus;
++
++    if (token.is_io) {
++        return bus->pio_readw(bus, token.addr + off);
+     } else {
+         uint16_t val;
+-        dev->bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
++
++        bus->memread(bus, token.addr + off, &val, sizeof(val));
+         return le16_to_cpu(val);
+     }
+ }
+ 
+ uint32_t qpci_io_readl(QPCIDevice *dev, QPCIBar token, uint64_t off)
+ {
+-    if (token.addr < QPCI_PIO_LIMIT) {
+-        return dev->bus->pio_readl(dev->bus, token.addr + off);
++    QPCIBus *bus = dev->bus;
++
++    if (token.is_io) {
++        return bus->pio_readl(bus, token.addr + off);
+     } else {
+         uint32_t val;
+-        dev->bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
++
++        bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
+         return le32_to_cpu(val);
+     }
+ }
+ 
+ uint64_t qpci_io_readq(QPCIDevice *dev, QPCIBar token, uint64_t off)
+ {
+-    if (token.addr < QPCI_PIO_LIMIT) {
+-        return dev->bus->pio_readq(dev->bus, token.addr + off);
++    QPCIBus *bus = dev->bus;
++
++    if (token.is_io) {
++        return bus->pio_readq(bus, token.addr + off);
+     } else {
+         uint64_t val;
+-        dev->bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
++
++        bus->memread(bus, token.addr + off, &val, sizeof(val));
+         return le64_to_cpu(val);
+     }
+ }
+@@ -443,57 +455,65 @@ uint64_t qpci_io_readq(QPCIDevice *dev, QPCIBar token, uint64_t off)
+ void qpci_io_writeb(QPCIDevice *dev, QPCIBar token, uint64_t off,
+                     uint8_t value)
+ {
+-    if (token.addr < QPCI_PIO_LIMIT) {
+-        dev->bus->pio_writeb(dev->bus, token.addr + off, value);
++    QPCIBus *bus = dev->bus;
++
++    if (token.is_io) {
++        bus->pio_writeb(bus, token.addr + off, value);
+     } else {
+-        dev->bus->memwrite(dev->bus, token.addr + off, &value, sizeof(value));
++        bus->memwrite(bus, token.addr + off, &value, sizeof(value));
+     }
+ }
+ 
+ void qpci_io_writew(QPCIDevice *dev, QPCIBar token, uint64_t off,
+                     uint16_t value)
+ {
+-    if (token.addr < QPCI_PIO_LIMIT) {
+-        dev->bus->pio_writew(dev->bus, token.addr + off, value);
++    QPCIBus *bus = dev->bus;
++
++    if (token.is_io) {
++        bus->pio_writew(bus, token.addr + off, value);
+     } else {
+         value = cpu_to_le16(value);
+-        dev->bus->memwrite(dev->bus, token.addr + off, &value, sizeof(value));
++        bus->memwrite(bus, token.addr + off, &value, sizeof(value));
+     }
+ }
+ 
+ void qpci_io_writel(QPCIDevice *dev, QPCIBar token, uint64_t off,
+                     uint32_t value)
+ {
+-    if (token.addr < QPCI_PIO_LIMIT) {
+-        dev->bus->pio_writel(dev->bus, token.addr + off, value);
++    QPCIBus *bus = dev->bus;
++
++    if (token.is_io) {
++        bus->pio_writel(bus, token.addr + off, value);
+     } else {
+         value = cpu_to_le32(value);
+-        dev->bus->memwrite(dev->bus, token.addr + off, &value, sizeof(value));
++        bus->memwrite(bus, token.addr + off, &value, sizeof(value));
+     }
+ }
+ 
+ void qpci_io_writeq(QPCIDevice *dev, QPCIBar token, uint64_t off,
+                     uint64_t value)
+ {
+-    if (token.addr < QPCI_PIO_LIMIT) {
+-        dev->bus->pio_writeq(dev->bus, token.addr + off, value);
++    QPCIBus *bus = dev->bus;
++
++    if (token.is_io) {
++        bus->pio_writeq(bus, token.addr + off, value);
+     } else {
+         value = cpu_to_le64(value);
+-        dev->bus->memwrite(dev->bus, token.addr + off, &value, sizeof(value));
++        bus->memwrite(bus, token.addr + off, &value, sizeof(value));
+     }
+ }
+ 
+ void qpci_memread(QPCIDevice *dev, QPCIBar token, uint64_t off,
+                   void *buf, size_t len)
+ {
+-    g_assert(token.addr >= QPCI_PIO_LIMIT);
++    g_assert(!token.is_io);
+     dev->bus->memread(dev->bus, token.addr + off, buf, len);
+ }
+ 
+ void qpci_memwrite(QPCIDevice *dev, QPCIBar token, uint64_t off,
+                    const void *buf, size_t len)
+ {
+-    g_assert(token.addr >= QPCI_PIO_LIMIT);
++    g_assert(!token.is_io);
+     dev->bus->memwrite(dev->bus, token.addr + off, buf, len);
+ }
+ 
+@@ -534,9 +554,10 @@ QPCIBar qpci_iomap(QPCIDevice *dev, int barno, uint64_t *sizeptr)
+         loc = QEMU_ALIGN_UP(bus->pio_alloc_ptr, size);
+ 
+         g_assert(loc >= bus->pio_alloc_ptr);
+-        g_assert(loc + size <= QPCI_PIO_LIMIT); /* Keep PIO below 64kiB */
++        g_assert(loc + size <= bus->pio_limit);
+ 
+         bus->pio_alloc_ptr = loc + size;
++        bar.is_io = true;
+ 
+         qpci_config_writel(dev, bar_reg, loc | PCI_BASE_ADDRESS_SPACE_IO);
+     } else {
+@@ -547,6 +568,7 @@ QPCIBar qpci_iomap(QPCIDevice *dev, int barno, uint64_t *sizeptr)
+         g_assert(loc + size <= bus->mmio_limit);
+ 
+         bus->mmio_alloc_ptr = loc + size;
++        bar.is_io = false;
+ 
+         qpci_config_writel(dev, bar_reg, loc);
+     }
+@@ -562,7 +584,7 @@ void qpci_iounmap(QPCIDevice *dev, QPCIBar bar)
+ 
+ QPCIBar qpci_legacy_iomap(QPCIDevice *dev, uint16_t addr)
+ {
+-    QPCIBar bar = { .addr = addr };
++    QPCIBar bar = { .addr = addr, .is_io = true };
+     return bar;
+ }
+ 
+diff --git a/tests/qtest/libqos/pci.h b/tests/qtest/libqos/pci.h
+index becb800f9e..44f6806fe4 100644
+--- a/tests/qtest/libqos/pci.h
++++ b/tests/qtest/libqos/pci.h
+@@ -16,8 +16,6 @@
+ #include "libqtest.h"
+ #include "qgraph.h"
+ 
+-#define QPCI_PIO_LIMIT    0x10000
+-
+ #define QPCI_DEVFN(dev, fn) (((dev) << 3) | (fn))
+ 
+ typedef struct QPCIDevice QPCIDevice;
+@@ -51,7 +49,7 @@ struct QPCIBus {
+                           uint8_t offset, uint32_t value);
+ 
+     QTestState *qts;
+-    uint16_t pio_alloc_ptr;
++    uint64_t pio_alloc_ptr, pio_limit;
+     uint64_t mmio_alloc_ptr, mmio_limit;
+     bool has_buggy_msi; /* TRUE for spapr, FALSE for pci */
+ 
+@@ -59,6 +57,7 @@ struct QPCIBus {
+ 
+ struct QPCIBar {
+     uint64_t addr;
++    bool is_io;
+ };
+ 
+ struct QPCIDevice
 -- 
 2.26.3
 

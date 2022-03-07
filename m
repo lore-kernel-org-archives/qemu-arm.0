@@ -1,100 +1,102 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1413660lfo;
-        Mon, 7 Mar 2022 03:30:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy2Hy6fX0AaSG0xYJbTQN7VCjkilGeBWc2pGsimf2RhBLDFG20DDnri6jOmvss1Z3cmSq0m
-X-Received: by 2002:a81:848e:0:b0:2dc:1f07:948d with SMTP id u136-20020a81848e000000b002dc1f07948dmr7728302ywf.434.1646652606927;
-        Mon, 07 Mar 2022 03:30:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646652606; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1416033lfo;
+        Mon, 7 Mar 2022 03:33:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwWszE8hcYbRCikOwsMkSxhc/kCnYjK+hj3hGgF2esJMmuadbuLZek2NSrBfNWNAW2WypYe
+X-Received: by 2002:a05:622a:10f:b0:2e0:29ea:5ea1 with SMTP id u15-20020a05622a010f00b002e029ea5ea1mr9252572qtw.670.1646652838130;
+        Mon, 07 Mar 2022 03:33:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646652838; cv=none;
         d=google.com; s=arc-20160816;
-        b=lHJebSPGhRp4vH5epd65gFKjF27c0NK98lYW2+UoO1YtPTst0r5RkHbSkrBJ9gf8i4
-         7+NdaiAA9gr2l3YGQSvxyM2lFSrSjU5mGrvMpPnqhauf8c1hEgJ8rOTDP9M0AT3JnEpC
-         NLHvopHk/cWVlFouBlBcnjs2ucK/lusdSJ536tn3TmIHqOyx667qN2ybB4aFnGHjj+rW
-         TqTrk8pzAU+06u7GGg099soxhR75A0fgmQ+JIhkUBxSLnirnUWgAhkGla48wTuQVT1HH
-         eI8kO6Uws0B7WQ5CYAJzcY632dnqPxup79rxs3GjTaC1nySA01dqCua3sL85D3vGNCRs
-         g+uA==
+        b=DfqVW93W/kHF9dHaGHRYweH3IR9vd9ZRPCxJS7PzEo+FOYYg1RMwc23REuP6uQyBcs
+         NFVve8mwrUddLDCUMMU5MHanYXOv9UQdvPUmShxjUEvC6cB2UvtMfSN4qajhVlPa0AuK
+         M16VL/3Tkd/cWI/Ahq6QouHE2IDxuu9eT73ERlL9J+PXbRwQv3hifK0CbyH5gmINlz6A
+         YzECphilFKJkyPXdv8LEXVLRCaY/kEj2YPqxDtOikUN4NOAatlP8xLlGAiBZ3S6LnaU9
+         /MsK/4pFfzJKJKVBWHmUPICho8fWYff11qvL4jEVCx34uZQygUz6wHRJ7WyJKvWkpVhH
+         jcCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=pVy4AzLXXvS7qLKcHtZ5i12l2K5nNvv7Rm0g9B5H27c=;
-        b=ZuCv5Ojjtfubkj9KonJ60d0wzUEDy1WCuZSv1fyG8uGbJG2aapkXjYGZYW+HUUVlHo
-         pDAVchQiAuWE8unYwu8k/VXEsgZzCV3nWV9K9flCqn9ICrdrWlL1j5UY0FokhVWw9uv9
-         ITDZ52H3Vc+IixXglnp6bjrQ1XFhn+IxLFTE0sO3tQcQwbs6EJHN+7UEZ5SQwOPs3CZR
-         zIlZ4gf5qYr7cuky7gZZu2uleH+Nt5JMBVbvzBK0pi7iMJwjEdNPLyEGSIxC+xVtCgk6
-         yKRSHiNH5BBy0Pr4OLv7peAVuS644PhthoT3R5xbp9XvDvXzIXb103QCkOPFeyP3brHR
-         45Yg==
+        bh=ouAmCle6B3dbO/a12UFjmEanteOsMmT+/TxjMSS+W/M=;
+        b=KK4mecG1fLkPTQG5dVth42sA9bJIRWC6wWUhNaqRCtrT5EXIGeJuNHP2S8VF4Rlh8D
+         zsQYJHU8QUxgufYxijFmXd1/moF0t4t+Gs4dqY5P4SugfY/eCA/BrQWK5dLmdxB9xK8J
+         JRJvvfMirZ/Pd+07y02sq+g/gLkuISmKKeM2XLly/Agde3VBJ6MTsYG8FUppysWZJSxD
+         pKLxX8o12BIC29q6F5iUEyckm5NmrTx2Ro68ocAiM80im1osVtmVZv9A+YEfofB3EXX0
+         DCfBuA00C7f9d37km/VFSldqMzRKcZKy85Yow0ZL1kg+HqnReiRVMzY9xxlr2ZRlOHYE
+         wzYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JO0VUQT7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="hKj/QB+K";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b17-20020a25cb11000000b0062941df496dsi1545212ybg.365.2022.03.07.03.30.06
+        by mx.google.com with ESMTPS id o5-20020ac85a45000000b002de9f1c02e3si5408124qta.641.2022.03.07.03.33.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Mar 2022 03:30:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Mar 2022 03:33:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JO0VUQT7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="hKj/QB+K";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51808 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60578 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nRBZ0-00038v-7R
-	for alex.bennee@linaro.org; Mon, 07 Mar 2022 06:30:06 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48692)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nRBcj-0000e7-71
+	for alex.bennee@linaro.org; Mon, 07 Mar 2022 06:33:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49736)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1nRBBZ-0004Ry-69; Mon, 07 Mar 2022 06:05:53 -0500
-Received: from [2607:f8b0:4864:20::12f] (port=45593
- helo=mail-il1-x12f.google.com)
+ id 1nRBGj-0007kp-4v
+ for qemu-arm@nongnu.org; Mon, 07 Mar 2022 06:11:13 -0500
+Received: from [2607:f8b0:4864:20::830] (port=40839
+ helo=mail-qt1-x830.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1nRBBX-0004Ei-J4; Mon, 07 Mar 2022 06:05:52 -0500
-Received: by mail-il1-x12f.google.com with SMTP id h2so910525ila.12;
- Mon, 07 Mar 2022 03:05:50 -0800 (PST)
+ id 1nRBGh-000547-Jg
+ for qemu-arm@nongnu.org; Mon, 07 Mar 2022 06:11:12 -0500
+Received: by mail-qt1-x830.google.com with SMTP id t28so12874736qtc.7
+ for <qemu-arm@nongnu.org>; Mon, 07 Mar 2022 03:11:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=pVy4AzLXXvS7qLKcHtZ5i12l2K5nNvv7Rm0g9B5H27c=;
- b=JO0VUQT7aUKfGbM7SwAGLqACa7ETHP6C/SyH60uX91wQNjo+qYHNA5eg8Q24y1Ub2X
- hP2mRxyIw9uW3gsFDIwfW3lJgS4H04doS+h3sNsHqIQDvJhz7811z8WQFofuilJArx3N
- x1lw2onF7CDQEZE2Sj+ikiqk0DYuE6SJr2u2RxE9cqzhTEekfOjTQRYbx2sCTjT9uTA5
- /Gv4alXE029xXPeiUCvGl5Cy3uHgrYItVVCGwjLMXF40eih0SAByuGZm3mncScPbcGqA
- h4vSkL1Sbu9+QhTGaVrYP+PDh6MpjYyYudp2HDzU3+30OKelXpYQiRvmH1kZ0VD/R6Ol
- 9u2Q==
+ bh=ouAmCle6B3dbO/a12UFjmEanteOsMmT+/TxjMSS+W/M=;
+ b=hKj/QB+KMDi5aW3JGCO+0lA2ZWW0GX2kyULzS+IHRbBAiuh5acdyVwfvXsXpgQGyGX
+ 1R/VOFKR1eo/hTfDlJ3GrShzPHsYq24qayyrn4m87hkITZ25XVrlES9Psue0pJn8g4lb
+ sDNCvXPdgThC880B3kiczkePnmi8L9bBWD950Xu5aUd9M2F8L1Ty8HUHOBGhhk/5Asw5
+ vX2Y6uD4WAekCEpaEQZeU+WYP8ORmOaBt++cOQGsgeFHltTh6OoONFxxSPmJMga055WA
+ C9KLPEiBPn1/jV42RtLW2ACWn1eE8JBoQmeer2mtBI00ZDSlhFrvnSySjMZFlcxWxBQo
+ rABQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=pVy4AzLXXvS7qLKcHtZ5i12l2K5nNvv7Rm0g9B5H27c=;
- b=BLTaGsYSqh9WY66SIj6QmtCR5R8UhLL7Xvg3mFfdP1uouMA1NN7+jNM3l/gQiL7KxR
- mcXS2wzxZVB+t1W6qYtfVD6kY2nv+Pc4b/Uef1eY07I7S07K1pZwlysMtdjSQRxfQyDi
- Ocudt+iY2dwF1bhNTKoQrhIx1SlRJTIqJN0xOSxFNUJJUxa/j9Y0R4uifJ0StHIkJsxx
- 3+moVQBoDm1frzLiinH10uDqqrfreDwOa3KHrBdpTPwxQqqfomOybvAC9JYNZqeUcQ0f
- zf6mQIAVCmqG6ZieNrUJziE8emXzV1u7JMY4l1AK1U4lNR15DEPygWGUnib6kybAzRYe
- 2Kjg==
-X-Gm-Message-State: AOAM53122zLPOzYn8/25nU+fwSvZJJn+22dIvUpDRek5bRjS8OwsGMgB
- iub0IcNBFPOXVW/Ojjib+llwRZ9mHPia/B0TUdBIrQijNqU=
-X-Received: by 2002:a05:6e02:154c:b0:2c6:4ffa:57ec with SMTP id
- j12-20020a056e02154c00b002c64ffa57ecmr775720ilu.55.1646651149711; Mon, 07 Mar
- 2022 03:05:49 -0800 (PST)
+ bh=ouAmCle6B3dbO/a12UFjmEanteOsMmT+/TxjMSS+W/M=;
+ b=pk/V0LyrOZnTOysvPi98tD9/FtR+9wMmbKny1IQGUMifpb1ah80gsRI75TWpiMLG9h
+ 54mO7HARXqAM4a3kJ9yNGD7d23Y3IxqVPUA+sp9eQmxQkqfngQwXQtvAkT807BkOZqd2
+ +g0gydZW2E9TiJV47xIkjMtOTlsom8DJhbRQbD/00dE0GxE2vYkNlhO0PIUd/BocquCl
+ uYcnAuYPIUgVsVdvSrpBOTg+XwIOG++D7I04mLwR3mfiDZa0hvA1lUpd1/S2JzcvaPrM
+ /oMAv7jnZ0UEqZsOUcAF52zzZW7gqvuqCjMDYigAki2+AmVM0csPdVpbQZuXdsE/xPAm
+ 3svQ==
+X-Gm-Message-State: AOAM530Ry+2abmabHJoF5eYHJzQHHjzvkoRHMa8BXFiE//uRHD9ELdZh
+ BAxbdzDx4kQ03z7vem0qCkSgKOnZf5noXds+Tx4eFcNNSHc=
+X-Received: by 2002:a05:6638:15ce:b0:317:b681:157b with SMTP id
+ i14-20020a05663815ce00b00317b681157bmr5976456jat.66.1646651056037; Mon, 07
+ Mar 2022 03:04:16 -0800 (PST)
 MIME-Version: 1.0
 References: <20220307071856.1410731-1-clg@kaod.org>
- <20220307071856.1410731-4-clg@kaod.org>
-In-Reply-To: <20220307071856.1410731-4-clg@kaod.org>
+ <20220307071856.1410731-2-clg@kaod.org>
+In-Reply-To: <20220307071856.1410731-2-clg@kaod.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 7 Mar 2022 21:05:23 +1000
-Message-ID: <CAKmqyKNTyqEAo+7YZ9vTzfnpaFksJ1ErOe4E2+EXcW9TESy5kg@mail.gmail.com>
-Subject: Re: [PATCH 3/6] aspeed/smc: Remove 'num_cs' field
+Date: Mon, 7 Mar 2022 21:03:49 +1000
+Message-ID: <CAKmqyKPqpB-QjTJGKL-3=6DHg1Siq1TA7xeUW9deW2HKn_ZX=g@mail.gmail.com>
+Subject: Re: [PATCH 1/6] aspeed/smc: Use max number of CE instead of 'num_cs'
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::12f
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::830
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12f;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x12f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::830;
+ envelope-from=alistair23@gmail.com; helo=mail-qt1-x830.google.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
@@ -104,28 +106,31 @@ X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  Alistair Francis <alistair@alistair23.me>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cdtilLL46QYh
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9f5Cd4Ny6u9B
 
-On Mon, Mar 7, 2022 at 5:19 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Mon, Mar 7, 2022 at 5:43 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> It is not used anymore.
+> The Aspeed SMC model uses the 'num_cs' field to allocate resources
+> fitting the number of devices of the machine. This is a small
+> optimization without real need in the controller. Simplify modelling
+> and use the max_peripherals field instead.
 >
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
@@ -134,115 +139,46 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  include/hw/ssi/aspeed_smc.h | 1 -
->  hw/arm/aspeed.c             | 2 --
->  hw/arm/aspeed_ast2600.c     | 2 --
->  hw/arm/aspeed_soc.c         | 2 --
->  hw/ssi/aspeed_smc.c         | 7 -------
->  5 files changed, 14 deletions(-)
+>  hw/ssi/aspeed_smc.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 >
-> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-> index cad73ddc13f2..4a9354e13c7f 100644
-> --- a/include/hw/ssi/aspeed_smc.h
-> +++ b/include/hw/ssi/aspeed_smc.h
-> @@ -57,7 +57,6 @@ struct AspeedSMCState {
->
->      qemu_irq irq;
->
-> -    uint32_t num_cs;
->      qemu_irq *cs_lines;
->      bool inject_failure;
->
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index be24508a9854..8f14738676f6 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -352,8 +352,6 @@ static void aspeed_machine_init(MachineState *machine=
-)
->                              &error_abort);
->      object_property_set_int(OBJECT(&bmc->soc), "hw-strap2", amc->hw_stra=
-p2,
->                              &error_abort);
-> -    object_property_set_int(OBJECT(&bmc->soc), "num-cs", amc->num_cs,
-> -                            &error_abort);
->      object_property_set_link(OBJECT(&bmc->soc), "dram",
->                               OBJECT(machine->ram), &error_abort);
->      if (machine->kernel_filename) {
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 21cd3342c578..c1e15e37739c 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -163,7 +163,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
->
->      snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
->      object_initialize_child(obj, "fmc", &s->fmc, typename);
-> -    object_property_add_alias(obj, "num-cs", OBJECT(&s->fmc), "num-cs");
->
->      for (i =3D 0; i < sc->spis_num; i++) {
->          snprintf(typename, sizeof(typename), "aspeed.spi%d-%s", i + 1, s=
-ocname);
-> @@ -383,7 +382,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
-ev, Error **errp)
->      for (i =3D 0; i < sc->spis_num; i++) {
->          object_property_set_link(OBJECT(&s->spi[i]), "dram",
->                                   OBJECT(s->dram_mr), &error_abort);
-> -        object_property_set_int(OBJECT(&s->spi[i]), "num-cs", 1, &error_=
-abort);
->          if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
->              return;
->          }
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 7d53cf2f5133..58714cb2a01d 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -170,7 +170,6 @@ static void aspeed_soc_init(Object *obj)
->
->      snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
->      object_initialize_child(obj, "fmc", &s->fmc, typename);
-> -    object_property_add_alias(obj, "num-cs", OBJECT(&s->fmc), "num-cs");
->
->      for (i =3D 0; i < sc->spis_num; i++) {
->          snprintf(typename, sizeof(typename), "aspeed.spi%d-%s", i + 1, s=
-ocname);
-> @@ -327,7 +326,6 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
-r **errp)
->
->      /* SPI */
->      for (i =3D 0; i < sc->spis_num; i++) {
-> -        object_property_set_int(OBJECT(&s->spi[i]), "num-cs", 1, &error_=
-abort);
->          if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
->              return;
->          }
 > diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index a5d8bb717fc7..6859f061c8be 100644
+> index d899be17fd71..a5d8bb717fc7 100644
 > --- a/hw/ssi/aspeed_smc.c
 > +++ b/hw/ssi/aspeed_smc.c
-> @@ -1127,12 +1127,6 @@ static void aspeed_smc_realize(DeviceState *dev, E=
-rror **errp)
->      s->r_timings =3D asc->r_timings;
->      s->conf_enable_w0 =3D asc->conf_enable_w0;
+> @@ -693,7 +693,7 @@ static void aspeed_smc_reset(DeviceState *d)
+>      }
 >
-> -    /* Enforce some real HW limits */
-> -    if (s->num_cs > asc->max_peripherals) {
-> -        aspeed_smc_error("num_cs cannot exceed: %d", asc->max_peripheral=
-s);
-> -        s->num_cs =3D asc->max_peripherals;
-> -    }
-> -
->      /* DMA irq. Keep it first for the initialization in the SoC */
->      sysbus_init_irq(sbd, &s->irq);
+>      /* Unselect all peripherals */
+> -    for (i =3D 0; i < s->num_cs; ++i) {
+> +    for (i =3D 0; i < asc->max_peripherals; ++i) {
+>          s->regs[s->r_ctrl0 + i] |=3D CTRL_CE_STOP_ACTIVE;
+>          qemu_set_irq(s->cs_lines[i], true);
+>      }
+> @@ -1042,7 +1042,7 @@ static void aspeed_smc_write(void *opaque, hwaddr a=
+ddr, uint64_t data,
+>           addr < s->r_timings + asc->nregs_timings) ||
+>          addr =3D=3D s->r_ce_ctrl) {
+>          s->regs[addr] =3D value;
+> -    } else if (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs) {
+> +    } else if (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + asc->max_peri=
+pherals) {
+>          int cs =3D addr - s->r_ctrl0;
+>          aspeed_smc_flash_update_ctrl(&s->flashes[cs], value);
+>      } else if (addr >=3D R_SEG_ADDR0 &&
+> @@ -1139,9 +1139,9 @@ static void aspeed_smc_realize(DeviceState *dev, Er=
+ror **errp)
+>      s->spi =3D ssi_create_bus(dev, "spi");
 >
-> @@ -1211,7 +1205,6 @@ static const VMStateDescription vmstate_aspeed_smc =
-=3D {
->  };
+>      /* Setup cs_lines for peripherals */
+> -    s->cs_lines =3D g_new0(qemu_irq, s->num_cs);
+> +    s->cs_lines =3D g_new0(qemu_irq, asc->max_peripherals);
 >
->  static Property aspeed_smc_properties[] =3D {
-> -    DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
->      DEFINE_PROP_BOOL("inject-failure", AspeedSMCState, inject_failure, f=
-alse),
->      DEFINE_PROP_LINK("dram", AspeedSMCState, dram_mr,
->                       TYPE_MEMORY_REGION, MemoryRegion *),
+> -    for (i =3D 0; i < s->num_cs; ++i) {
+> +    for (i =3D 0; i < asc->max_peripherals; ++i) {
+>          sysbus_init_irq(sbd, &s->cs_lines[i]);
+>      }
+>
 > --
 > 2.34.1
 >

@@ -1,147 +1,146 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1088884lfo;
-        Sun, 6 Mar 2022 15:57:42 -0800 (PST)
-X-Received: by 2002:adf:d0c8:0:b0:1f0:771f:20d8 with SMTP id z8-20020adfd0c8000000b001f0771f20d8mr6400625wrh.210.1646611062834;
-        Sun, 06 Mar 2022 15:57:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646611062; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1326923lfo;
+        Mon, 7 Mar 2022 00:54:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy7A/c0qKHbhjMcla4v3tXYkNi/gGPQIH6oCxLAYpjRu3k0gvEotabThZEZyO2tR5rEIinW
+X-Received: by 2002:a05:620a:1a1d:b0:648:af1f:90d7 with SMTP id bk29-20020a05620a1a1d00b00648af1f90d7mr6229186qkb.340.1646643263452;
+        Mon, 07 Mar 2022 00:54:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646643263; cv=none;
         d=google.com; s=arc-20160816;
-        b=pYnRrYSqKEDkpXfev2HyIL9gmGDYGlgNNIf2VPr7DpLbnfpFVrX29mN2qQfAZG8KUw
-         2NrMPvkYmo9hUTbutnrVicoQw0qlmYr2JCmSJHozkqGt0evRPFHTuJvXdDV6i/cgsH/u
-         oPzMpIe0FuhljQuxUiICuHbpHSSqc0M9igC8ZpuAXRr1VSs1HxXx5n7mCG3lVw/1iQqa
-         BFcYNwYak/a8IFN1/7iFeh9ssYdMeMQ2ri0Rrzl9w6Y1i6zC7joO+WUB8b9dRgNCHYgd
-         7wNGWpSwfX2EDswO/iN1BaUsAeX4nPqsBpEujRmntNGHd9ZvhKR9/FyOjEA5BYd1/1+o
-         n6sw==
+        b=kwxT6y9cBu2V4HSU2ELCLguvw/DxOokC/xmJuXN67Z+eqOVJNvzj2jgy37w1e9cB4W
+         oUuev9/bRnyqmlmKvKQeyBhyYsy9EqOZsYGmGwjI3KBZy8pNmpMvgUwmK1nUIrcC34L1
+         FeiHLm2UkS1gWc80MNhLmMd0+u0DpT6JSw5Ziktrg6wkvr5l1LqfZS9uRULgtYh9TzKi
+         zO7M44pM+T2mgX3agYQS9ScehnL/GUz/hhc6ge7gMub8eVUK8Ze4B3TCYRScI8M7Qvi4
+         U6AiqmWnQmp+cg8v2mJ0G8A3DXOZ3GP3tRjKbq6d2nNZdwsoAw7mc7TZUKYIFWXAjf9c
+         VJQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=FmGKt5Ps8WkmvlQS52E59Eh5O0glI+V8imZ9k49DHxc=;
-        b=lDmthryQojA+v2B5mNdlZi5ujZdHn0BRy/dirUMW8QqImwPH8aWO1jDw1R8h5f896C
-         51ICXl8B2wDNhyl2yqqjiOiO9mm6CJ2+mgDE1qq4aSaanHlCIRHpF9WzZDEWuCMGKSBS
-         li7lK2y46/vXVBF3VWx0s6IrdRXyIEtwjkrkx7jgs8yETK+5mT8Q96uKTIIFjktq+z+M
-         eGu0FjZcVc/Kr+rOADTczUTE3vmIE7EdaGB3jegV/DxqvX2aubKCcLSvfPMyfESpIGSU
-         /N1ozgywMcLqcvN6bNi5SeY4ojd1gq8PE3pLl7FBm1S4SAql9hMdOiUOaKAbizbwUDum
-         20SQ==
+        bh=12DEsos71s7FzxClC55Kye3X3h2NxMC98zQc/5X7pS0=;
+        b=GSzTsDbdsTE/filfTjadgF9C1thDYPRYh24cEdS8Hq0Zlsgpjfr/tnXEotA4A6GAjQ
+         x6m9BY0fPmGRpjJdwlqbPbrQ7Tz5IHjZwFAx6ffqJmGig7lNtX+AKHEbOUcMduR349Ym
+         vcCuVovAnVfOSO4h7T2iMUhpryi+okCf7n1Et4EU5VnXEVQevoa7YChvOtFeMetOgwme
+         vCf1J1/7rZSyakILW8HOhn2N2RqDBAPp0C9pVvqRR436jLkzsYoLKyXIADauTE8ZRznu
+         UuyHSJOF8EpHuqk4u+HmULGXts8RMrQk8uXV+wIFp0nFMd5xj5SAq3WdxRiBZmho1v4w
+         SWFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dj7fDrSb;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a4-20020a05600c348400b0038113e131b8sor3396498wmq.7.2022.03.06.15.57.42
-        (Google Transport Security);
-        Sun, 06 Mar 2022 15:57:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LLujrvwG;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id j14-20020a05621419ce00b0042c42447e5bsi4819654qvc.293.2022.03.07.00.54.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 07 Mar 2022 00:54:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dj7fDrSb;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=FmGKt5Ps8WkmvlQS52E59Eh5O0glI+V8imZ9k49DHxc=;
-        b=dj7fDrSbEaeuHyaV9gkz2aKUEgcAgNCyWtYNEq6zt+TT3ytxp6/5ET6pmvM0/icJfL
-         UN2bbO8X3WaQD4dAAy/5s/7/lIvemgeiVCfm5rZ7iimqQ207vbLdsDY7NzO4By0qOwGM
-         g5UtMcju4adhcZ96R98gDPTHIItu7rV65Q7kUQCyXsRQMjOWTT5l0VBZ30PVAtfg+q7v
-         WF0Oz/LuIkD9bOUFaWV2bgBeUPiKawzP8HtU9w0WPXiWw6zMeYd9mTlYPqRuV8ZnB7lQ
-         733ZtdDX4rTAVhi5LLWcVI5MCCM5qu3CYf9Sj8bANlJ+2Wl7Y8nV0IGQHcTSUUOZeCoF
-         yRIg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LLujrvwG;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1646643263;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=12DEsos71s7FzxClC55Kye3X3h2NxMC98zQc/5X7pS0=;
+	b=LLujrvwGyGdGVs71ZPuiFfHqAmBe+KkmFW1m1nRIhdd2P6a8GKKLuwqQSp+xCYfGwVDeMH
+	fEUytKyVs6UjYvIRcxyPk/4HDITr1J2UuT1j9sncMvdOBxJN/A9LoJnYXzH9Z+r08W1nFs
+	CemAt7jCQ0zWpa/jTkPjYX9lR6HtlOo=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-401-ygjr8OFrO8WmE9NINPx_Rg-1; Mon, 07 Mar 2022 03:54:22 -0500
+X-MC-Unique: ygjr8OFrO8WmE9NINPx_Rg-1
+Received: by mail-wm1-f71.google.com with SMTP id v67-20020a1cac46000000b00383e71bb26fso4898774wme.1
+        for <alex.bennee@linaro.org>; Mon, 07 Mar 2022 00:54:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=FmGKt5Ps8WkmvlQS52E59Eh5O0glI+V8imZ9k49DHxc=;
-        b=TAfJDpYUyg1ttTzcfA57qEGRt9+QP9QO4gioAsAnucylg9giD2xI0iCBQCuZEaYMnF
-         aMhkPTOjSyJC/RDhYAkk5+APeZmYhAZGGXPBr/9kzJ7I6TBIj3uzt2y7D/0X7QTfAFYY
-         VP6q3t3mHmBv1rYFkv5EUmpKqvhlPd+zF89cKdGUp7Z7oZ3n3U2QlhkxffVVgrxH2thS
-         KeZWp/Bqwz61V1Jl5voWMHdfs8r5fQJFQxr5+5Sq03JfkqicDAEIVXNpx/JAmbHngRrA
-         eC9j/5Sc+3n7rOCkdeLWH6SYER/7ssnFLzPxSooj+/EES8hI4PVTGwusKP93LPHuBx97
-         PzdA==
-X-Gm-Message-State: AOAM531SpeHl2A7FcBikYciBx40zQJOiQlXZ/JOfSIssGdMdV8avNAPZ
-	7HoLkAEXsQWWsuHhr7WsUhI=
-X-Google-Smtp-Source: ABdhPJxdhuQJ4Pq0gW6+ZNM47/OcltWQ4Zp2crQzg/pAlHwLXbif5ugMVm165ljTo5dAZuwo+oFZfA==
-X-Received: by 2002:a05:600c:35c2:b0:381:6cbc:7192 with SMTP id r2-20020a05600c35c200b003816cbc7192mr6767816wmq.146.1646611062561;
-        Sun, 06 Mar 2022 15:57:42 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.115] ([185.126.107.38])
-        by smtp.gmail.com with ESMTPSA id v124-20020a1cac82000000b0037c3d08e0e7sm18143399wme.29.2022.03.06.15.57.39
+        bh=12DEsos71s7FzxClC55Kye3X3h2NxMC98zQc/5X7pS0=;
+        b=Op/UgEXwKvyMPus8Sza8BGwM3rnP1VTR0rog8MRqDM71j8FZEkohN29mzDSeJV0XkJ
+         pwgJAJTACEEIevDmWTzTlGsa+ThfTUnDEZkfbE8RtvJ3Y+1QXQt1Bf4y1sxxzD3Qxit/
+         R4rcwMlYvQ0+PGP3nOpadizLlc+ZT0pKT7Pu32Q8SEeAG/Ouu6YCpf5oV82xFwnA25ZK
+         ZOyVPaV7rJmFoc9Ax4Gb0ciroVssCHnIP7/CDQ4p6Ye+ad8XmF4jyN3b4aQllGe7ZsBP
+         l6a0asLQ5Jz4QvjiNL3fSXCbpfjeg4coGX/1eJsGBWL1d0D6kucEIqBcWLhCeNYPbmFZ
+         Vakg==
+X-Gm-Message-State: AOAM533MKWwlnpiXUfDqTcxib82gBTIJ9WJ5dqAgAZhceXn+r/Tkt9x4
+	jOvuvUYuHrPILakKHGQPu5vjlCupECBnBDZrj/DwB2RjEh1tLbI9QQPiOkvDehdIOwwpTya6Uvn
+	RWpgntduy1cGHYyv6SGM1bch1zxipK+yCFD5ztXCe/tSMxHORQsrqnn5zeqH4+ZEO
+X-Received: by 2002:a5d:538b:0:b0:1f1:e60b:20c2 with SMTP id d11-20020a5d538b000000b001f1e60b20c2mr5254591wrv.294.1646643260991;
+        Mon, 07 Mar 2022 00:54:20 -0800 (PST)
+X-Received: by 2002:a5d:538b:0:b0:1f1:e60b:20c2 with SMTP id d11-20020a5d538b000000b001f1e60b20c2mr5254574wrv.294.1646643260796;
+        Mon, 07 Mar 2022 00:54:20 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [10.33.192.183] (nat-pool-str-t.redhat.com. [149.14.88.106])
+        by smtp.gmail.com with ESMTPSA id z6-20020a1cf406000000b0037c4e2d3baesm19217100wma.19.2022.03.07.00.54.19
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 06 Mar 2022 15:57:42 -0800 (PST)
-Message-ID: <8f7d11b1-528c-e49d-ee5f-ed64ed5c5336@gmail.com>
-Date: Mon, 7 Mar 2022 00:57:39 +0100
+        Mon, 07 Mar 2022 00:54:20 -0800 (PST)
+Message-ID: <162f6b45-8b3a-9672-2e5e-f28e867eff31@redhat.com>
+Date: Mon, 7 Mar 2022 09:54:19 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.1
-Subject: Re: [PATCH 5/9] tests/avocado/linux_ssh_mips_malta.py: add missing
- accel (tcg) tag
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.0
+Subject: Re: [PULL 13/18] tests/tcg: add vectorised sha512 versions
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ David Hildenbrand <david@redhat.com>
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, peter.maydell@linaro.org
+References: <20220301094715.550871-1-alex.bennee@linaro.org>
+ <20220301094715.550871-14-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20220301094715.550871-14-alex.bennee@linaro.org>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Cleber Rosa <crosa@redhat.com>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
- Fabien Chouteau <chouteau@adacore.com>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- Michael Rolnik <mrolnik@gmail.com>, Greg Kurz <groug@kaod.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- David Gibson <david@gibson.dropbear.id.au>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Beraldo Leal <bleal@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Alexandre Iooss <erdnaxe@crans.org>, qemu-s390x@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Huacai Chen <chenhuacai@kernel.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Eric Farman <farman@linux.ibm.com>
-References: <20220225210156.2032055-1-crosa@redhat.com>
- <20220225210156.2032055-6-crosa@redhat.com>
- <aa0e1eb4-ef43-b386-e7a3-c034f666181b@gmail.com>
- <8735jzmdib.fsf@p50.localhost.localdomain>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <8735jzmdib.fsf@p50.localhost.localdomain>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: OuvYZ1BrCVTo
+X-TUID: 0rJjWRh3aBxZ
 
-On 3/3/22 13:13, Cleber Rosa wrote:
+On 01/03/2022 10.47, Alex Bennée wrote:
+> This builds vectorised versions of sha512 to exercise the vector code:
 > 
-> Philippe Mathieu-Daudé <philippe.mathieu.daude@gmail.com> writes:
+>    - aarch64 (AdvSimd)
+>    - i386 (SSE)
+>    - s390x (MVX)
+>    - ppc64/ppc64le (power10 vectors)
 > 
->> On 25/2/22 22:01, Cleber Rosa wrote:
->>> Being explicit about the accelerator used on these tests is a good
->>> thing in itself, but it will also be used in the filtering rules
->>> applied on "make check-avocado".
->>> Signed-off-by: Cleber Rosa <crosa@redhat.com>
->>> ---
->>>    tests/avocado/linux_ssh_mips_malta.py | 3 +++
->>>    1 file changed, 3 insertions(+)
->>> diff --git a/tests/avocado/linux_ssh_mips_malta.py
->>> b/tests/avocado/linux_ssh_mips_malta.py
->>> index c0f0be5ade..0179d8a6ca 100644
->>> --- a/tests/avocado/linux_ssh_mips_malta.py
->>> +++ b/tests/avocado/linux_ssh_mips_malta.py
->>> @@ -23,6 +23,9 @@
->>>    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
->>
->> Should we remove this line then? ^^^
->>
-> 
-> Yes, we definitely should.  But, I thought it should be a next step.
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Message-Id: <20220225172021.3493923-14-alex.bennee@linaro.org>
+[...]
+> diff --git a/tests/tcg/s390x/Makefile.target b/tests/tcg/s390x/Makefile.target
+> index 1a7238b4eb..e53b599b22 100644
+> --- a/tests/tcg/s390x/Makefile.target
+> +++ b/tests/tcg/s390x/Makefile.target
+> @@ -25,3 +25,12 @@ run-gdbstub-signals-s390x: signals-s390x
+>   
+>   EXTRA_RUNS += run-gdbstub-signals-s390x
+>   endif
+> +
+> +# MVX versions of sha512
+> +sha512-mvx: CFLAGS=-march=z13 -mvx -O3
+> +sha512-mvx: sha512.c
+> +	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+> +
+> +run-sha512-mvx: QEMU_OPTS+=-cpu max
+> +
+> +TESTS+=sha512-mvx
 
-OK.
+When running "make check-tcg" on my s390x host, I'm now getting this error:
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+  TEST    sha512-mvx on s390x
+qemu-s390x: warning: 'msa5-base' requires 'kimd-sha-512'.
+qemu-s390x: warning: 'msa5-base' requires 'klmd-sha-512'.
+make[2]: *** [../Makefile.target:156: run-sha512-mvx] Error 10
 
-And queued to mips-next.
+Any ideas how to fix this?
+
+  Thomas

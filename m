@@ -1,91 +1,91 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1805735lfo;
-        Mon, 7 Mar 2022 13:17:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx1yEnlmgDzKKd7jgzd0YN3PuX+MN6GJr2RcVVToMMOy7XoN9kRRDLusZNEg/hYf//qHuXB
-X-Received: by 2002:a25:bec7:0:b0:623:c838:2f4 with SMTP id k7-20020a25bec7000000b00623c83802f4mr9170528ybm.99.1646687855518;
-        Mon, 07 Mar 2022 13:17:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646687855; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1806632lfo;
+        Mon, 7 Mar 2022 13:18:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxKzlgQTv8F+YwUD4WnmeFsmjqhzsYla3cVZ9EYseUMJrQu+VHd9jNzARPfbsl1kB9xO6yf
+X-Received: by 2002:a81:19c5:0:b0:2dc:a22f:80ab with SMTP id 188-20020a8119c5000000b002dca22f80abmr8018425ywz.229.1646687938345;
+        Mon, 07 Mar 2022 13:18:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646687938; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZPUkNHbFfb4rPxGJLnK3Ikh7HGOYPihnxxWetYO1mcIDZp7cDNGm3KkjvoIEEVUWLY
-         eUY50CQdmHaLWNJ4hCdsWt9qfH498FCTwQLfA97kRFWvgnx6C9h0fgwIrzomNVHNznhK
-         bAU5S1limo4YH8eHLNSf4KSOfKV/Lq5q3lrU6bdN9G0ZdT9lfnYq3rtzNu/jnb26//6H
-         5zIsipefLE2gq8PjAW99mdYqsvdqMxmeFNjzFX35JN3W29qXnmeBpHpIcQZtx5nWy477
-         gl/a4821ckxJArd9EIWwH0v790ETfRkjd7AIxnXYcMozpnoWhythxVcQEqoqQPwEgR8b
-         8Rlg==
+        b=P4xm1mxRPvaAdT1TvpuJG4bfhW7Q70cgH6H93jR7ZDgtTlRHNHdiP2uJcUtKG0nV3w
+         4uRWgk/F1QaDcY4J0xDvzd6IBkXaaZfGPYSSctHaKNacKCtHYQE+LWPo1AmGcbX4OIcF
+         pci56ZsXXAX8cEaHPcR02LqbtWvf5PlKC5SKMSkLmJLgqqxhT+po1Q2X+ir5V3+Hh3BA
+         zGqW+37V7SvVe702b+Ep+vvsskxMTRz3CW+WbKMnBNw5VF+U2wdE3H8NfnHBYa3GWoJp
+         0zTjbk3BubWHZBqtou2t50pBY8RD/JA25TAQTcO+RbSLyAuldqTWpFAYLkn3S3DkayiS
+         W8ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=YS8AdaXznpl0s+jpJfJaFLskj44LUxutIBBNWaw69ss=;
-        b=nyxuISpASOSPxDA1fuM5naAsvVH/F9NbQaTm2iJZLJ1QoHmKnaEW+4ukzJNiP/Pf6R
-         mV4IeZDWO73K9BbxOdD5/5lvoOSkgunZtLDrxqoE+XqdMIN/HZtuHBt3U43y3DXJYyTc
-         XCH4EFS0HCQPc8TbGVB7w0hHeGXUerVQ31G3LL6G2icYYGZ/0ESfFTYNuuJLG5N4Sqfl
-         XIxjYWx76LyMloS7BBRM8ac6x0iF2itREq9F5yBl7sQbKdM5FCH5doKveNxEDjXOcthh
-         tM1R1YyUlfCDhu8y7teBpKWqODsbeopv8kQsph/eUZ9baPLZEA9nJj0auTn4WBZ9t3Oi
-         KXxA==
+        bh=KCL4s1oWVVgFbaSzYuwDwQsNuFYm6/osfpXc/Qc+HkY=;
+        b=b1+k5GV1BDmhaEOmCYDnYkIbXyX4r7+8uZDOtKUjCLmPGHFvDhpxt1NgG3etJ0iZIq
+         sRp9+9Dgju5IrJ8XhNLJzIKR667MW6HkdsWyDeRhJm0ejGeV7OsMLSPOdln1N1ZDx3iw
+         EPUSt0hDMKxJB3Sc5Ha/PNi/uecHCDrL5vVLiwtGLTVGjNiZoh2Cp270yjJJUhPPVeLT
+         mObw8Yhls0TNBNL9DOzmOYwH8JYoJBRnXR4VAn0DoVQMdPgzoESEnRslnmVICsbCYbY9
+         CI+XvQ0GOy6pSl8AoOqUMBMNLB6Ns8llsLXo1JvT5gEBq5q/Eb6+cYLJNSYM0xQ19nds
+         DeKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fz0NSXqo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=agXMvomz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w11-20020a25b88b000000b0061e20f0d955si10031210ybj.150.2022.03.07.13.17.35
+        by mx.google.com with ESMTPS id s82-20020a815e55000000b002d0b69ae567si9318257ywb.307.2022.03.07.13.18.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Mar 2022 13:17:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Mar 2022 13:18:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fz0NSXqo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=agXMvomz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40546 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44886 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nRKjW-000162-Uw
-	for alex.bennee@linaro.org; Mon, 07 Mar 2022 16:17:34 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35166)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nRKkr-0003ws-NT
+	for alex.bennee@linaro.org; Mon, 07 Mar 2022 16:18:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35128)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1nRKjH-00011k-8H
- for qemu-devel@nongnu.org; Mon, 07 Mar 2022 16:17:19 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:53863)
+ id 1nRKiv-0000Kl-Am
+ for qemu-arm@nongnu.org; Mon, 07 Mar 2022 16:16:57 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:35461)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1nRKjC-0000bN-2i
- for qemu-devel@nongnu.org; Mon, 07 Mar 2022 16:17:15 -0500
+ id 1nRKit-0000aW-KI
+ for qemu-arm@nongnu.org; Mon, 07 Mar 2022 16:16:57 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1646687833;
+ s=mimecast20190719; t=1646687811;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YS8AdaXznpl0s+jpJfJaFLskj44LUxutIBBNWaw69ss=;
- b=Fz0NSXqoKHPsj1ZLloC7pWesXLgAsg7vSdzxB1f9dnw7lueODIR7ch0vYc6yVvvGKOT+fV
- KayYEbOBQohHRAR/tMtRvSVFGsofWy5WdFZTuREYoHYcgmsCtw99e8QM508ny2ykL2fK51
- r9bWs/PeOhwVcNeI3adkAFRrdtf6gaY=
+ bh=KCL4s1oWVVgFbaSzYuwDwQsNuFYm6/osfpXc/Qc+HkY=;
+ b=agXMvomzCOLljm6dNo4Eul0kCy347IOg7eFDZYaE7lPOkA42JmjJpMfhgLKOtvsAfcTAIw
+ BphcufdT1MvuqGrTN0xFq+T/aEAyeQ0PhFEec9XxA3rKH/QR51P1sSUs4JgoCfG8tTnql5
+ UQuj0wudBACGs78RVK3BB8JOyWZr+/U=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-599-dM6kSQN8NoCzBx6HhGM8XQ-1; Mon, 07 Mar 2022 16:17:10 -0500
-X-MC-Unique: dM6kSQN8NoCzBx6HhGM8XQ-1
+ us-mta-18-8X7OzYSuMJqHE_NGPpKqjA-1; Mon, 07 Mar 2022 16:16:48 -0500
+X-MC-Unique: 8X7OzYSuMJqHE_NGPpKqjA-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 166341091DA2;
- Mon,  7 Mar 2022 21:17:09 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.192.90])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 70B4A64185;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1847C1006AA5;
  Mon,  7 Mar 2022 21:16:47 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.192.90])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DBEE02D1F1;
+ Mon,  7 Mar 2022 21:16:20 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, pbonzini@redhat.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
  david@gibson.dropbear.id.au, clg@kaod.org, eesposit@redhat.com,
  Coiby.Xu@gmail.com, stefanha@redhat.com
-Subject: [PATCH v4 3/4] tests/qtest/vhost-user-blk-test: Temporary hack to get
- tests passing on aarch64
-Date: Mon,  7 Mar 2022 22:14:38 +0100
-Message-Id: <20220307211439.213133-4-eric.auger@redhat.com>
+Subject: [PATCH v4 2/4] tests/qtest/libqos: Skip hotplug tests if pci root bus
+ is not hotpluggable
+Date: Mon,  7 Mar 2022 22:14:37 +0100
+Message-Id: <20220307211439.213133-3-eric.auger@redhat.com>
 In-Reply-To: <20220307211439.213133-1-eric.auger@redhat.com>
 References: <20220307211439.213133-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -96,7 +96,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -107,64 +107,148 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Dj5u/KfJqKx+
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QO4YMKn4KpZv
 
-When run on ARM, basic and indirect tests currently fail with the
-following error:
-
-ERROR:../tests/qtest/libqos/virtio.c:224:qvirtio_wait_used_elem:
-assertion failed (got_desc_idx == desc_idx): (50331648 == 0)
-Bail out! ERROR:../tests/qtest/libqos/virtio.c:224: qvirtio_wait_used_elem:
-assertion failed (got_desc_idx == desc_idx): (50331648 == 0)
-
-I noticed it worked when I set up MSI and I further reduced the
-code to a simple guest_alloc() that removes the error. At the moment
-I am not able to identify where ths issue is and this blocks the
-whole pci/aarch64 enablement.
+ARM does not not support hotplug on pcie.0. Add a flag on the bus
+which tells if devices can be hotplugged and skip hotplug tests
+if the bus cannot be hotplugged. This is a temporary solution to
+enable the other pci tests on aarch64.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- tests/qtest/vhost-user-blk-test.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Acked-by: Thomas Huth <thuth@redhat.com>
 
+---
+
+v1 ->v2:
+- reword g_test_skip msg into "pci bus does not support hotplug"
+---
+ tests/qtest/e1000e-test.c         |  6 ++++++
+ tests/qtest/libqos/pci.h          |  1 +
+ tests/qtest/vhost-user-blk-test.c | 10 ++++++++++
+ tests/qtest/virtio-blk-test.c     |  5 +++++
+ tests/qtest/virtio-net-test.c     |  5 +++++
+ tests/qtest/virtio-rng-test.c     |  5 +++++
+ 6 files changed, 32 insertions(+)
+
+diff --git a/tests/qtest/e1000e-test.c b/tests/qtest/e1000e-test.c
+index 0273fe4c15..48f3dbb0fd 100644
+--- a/tests/qtest/e1000e-test.c
++++ b/tests/qtest/e1000e-test.c
+@@ -235,6 +235,12 @@ static void test_e1000e_multiple_transfers(void *obj, void *data,
+ static void test_e1000e_hotplug(void *obj, void *data, QGuestAllocator * alloc)
+ {
+     QTestState *qts = global_qtest;  /* TODO: get rid of global_qtest here */
++    QE1000E_PCI *dev = obj;
++
++    if (dev->pci_dev.bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
+ 
+     qtest_qmp_device_add(qts, "e1000e", "e1000e_net", "{'addr': '0x06'}");
+     qpci_unplug_acpi_device_test(qts, "e1000e_net", 0x06);
+diff --git a/tests/qtest/libqos/pci.h b/tests/qtest/libqos/pci.h
+index 44f6806fe4..6a28b40522 100644
+--- a/tests/qtest/libqos/pci.h
++++ b/tests/qtest/libqos/pci.h
+@@ -52,6 +52,7 @@ struct QPCIBus {
+     uint64_t pio_alloc_ptr, pio_limit;
+     uint64_t mmio_alloc_ptr, mmio_limit;
+     bool has_buggy_msi; /* TRUE for spapr, FALSE for pci */
++    bool not_hotpluggable; /* TRUE if devices cannot be hotplugged */
+ 
+ };
+ 
 diff --git a/tests/qtest/vhost-user-blk-test.c b/tests/qtest/vhost-user-blk-test.c
-index 1316aae0fa..cf8057fb57 100644
+index 62e670f39b..1316aae0fa 100644
 --- a/tests/qtest/vhost-user-blk-test.c
 +++ b/tests/qtest/vhost-user-blk-test.c
-@@ -225,6 +225,9 @@ static QVirtQueue *test_basic(QVirtioDevice *dev, QGuestAllocator *alloc)
-     QTestState *qts = global_qtest;
-     QVirtQueue *vq;
+@@ -676,6 +676,11 @@ static void pci_hotplug(void *obj, void *data, QGuestAllocator *t_alloc)
+     QVirtioPCIDevice *dev;
+     QTestState *qts = dev1->pdev->bus->qts;
  
-+    /* temporary hack to let the test pass on aarch64 */
-+    guest_alloc(alloc, 4);
++    if (dev1->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
 +
-     features = qvirtio_get_features(dev);
-     features = features & ~(QVIRTIO_F_BAD_FEATURE |
-                     (1u << VIRTIO_RING_F_INDIRECT_DESC) |
-@@ -469,6 +472,9 @@ static void indirect(void *obj, void *u_data, QGuestAllocator *t_alloc)
-     char *data;
-     QTestState *qts = global_qtest;
+     /* plug secondary disk */
+     qtest_qmp_device_add(qts, "vhost-user-blk-pci", "drv1",
+                          "{'addr': %s, 'chardev': 'char2'}",
+@@ -703,6 +708,11 @@ static void multiqueue(void *obj, void *data, QGuestAllocator *t_alloc)
+     uint64_t features;
+     uint16_t num_queues;
  
-+    /* temporary hack to let the test pass on aarch64 */
-+    guest_alloc(t_alloc, 4);
++    if (pdev1->pdev->bus->not_hotpluggable) {
++        g_test_skip("bus pci.0 does not support hotplug");
++        return;
++    }
 +
-     features = qvirtio_get_features(dev);
-     g_assert_cmphex(features & (1u << VIRTIO_RING_F_INDIRECT_DESC), !=, 0);
-     features = features & ~(QVIRTIO_F_BAD_FEATURE |
+     /*
+      * The primary device has 1 queue and VIRTIO_BLK_F_MQ is not enabled. The
+      * VIRTIO specification allows VIRTIO_BLK_F_MQ to be enabled when there is
+diff --git a/tests/qtest/virtio-blk-test.c b/tests/qtest/virtio-blk-test.c
+index 2a23698211..acb44c9fb8 100644
+--- a/tests/qtest/virtio-blk-test.c
++++ b/tests/qtest/virtio-blk-test.c
+@@ -701,6 +701,11 @@ static void pci_hotplug(void *obj, void *data, QGuestAllocator *t_alloc)
+     QVirtioPCIDevice *dev;
+     QTestState *qts = dev1->pdev->bus->qts;
+ 
++    if (dev1->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     /* plug secondary disk */
+     qtest_qmp_device_add(qts, "virtio-blk-pci", "drv1",
+                          "{'addr': %s, 'drive': 'drive1'}",
+diff --git a/tests/qtest/virtio-net-test.c b/tests/qtest/virtio-net-test.c
+index 8bf74e516c..af3027144f 100644
+--- a/tests/qtest/virtio-net-test.c
++++ b/tests/qtest/virtio-net-test.c
+@@ -174,6 +174,11 @@ static void hotplug(void *obj, void *data, QGuestAllocator *t_alloc)
+     QTestState *qts = dev->pdev->bus->qts;
+     const char *arch = qtest_get_arch();
+ 
++    if (dev->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     qtest_qmp_device_add(qts, "virtio-net-pci", "net1",
+                          "{'addr': %s}", stringify(PCI_SLOT_HP));
+ 
+diff --git a/tests/qtest/virtio-rng-test.c b/tests/qtest/virtio-rng-test.c
+index e6b8cd8e0c..5ce444ad72 100644
+--- a/tests/qtest/virtio-rng-test.c
++++ b/tests/qtest/virtio-rng-test.c
+@@ -20,6 +20,11 @@ static void rng_hotplug(void *obj, void *data, QGuestAllocator *alloc)
+     QVirtioPCIDevice *dev = obj;
+     QTestState *qts = dev->pdev->bus->qts;
+ 
++   if (dev->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     const char *arch = qtest_get_arch();
+ 
+     qtest_qmp_device_add(qts, "virtio-rng-pci", "rng1",
 -- 
 2.26.3
 

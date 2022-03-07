@@ -1,153 +1,249 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1407266lfo;
-        Mon, 7 Mar 2022 03:18:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwBnxepqIbjA5uLAeZrjtFr/6/yMLyfi7gwuMbN7tNjSKMhIWvailrDqyvpayZL9KI6eMk7
-X-Received: by 2002:a81:410c:0:b0:2d0:c3ba:c799 with SMTP id o12-20020a81410c000000b002d0c3bac799mr8058499ywa.193.1646651930036;
-        Mon, 07 Mar 2022 03:18:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646651930; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1413660lfo;
+        Mon, 7 Mar 2022 03:30:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy2Hy6fX0AaSG0xYJbTQN7VCjkilGeBWc2pGsimf2RhBLDFG20DDnri6jOmvss1Z3cmSq0m
+X-Received: by 2002:a81:848e:0:b0:2dc:1f07:948d with SMTP id u136-20020a81848e000000b002dc1f07948dmr7728302ywf.434.1646652606927;
+        Mon, 07 Mar 2022 03:30:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646652606; cv=none;
         d=google.com; s=arc-20160816;
-        b=bXsacIvAKEbgcBdCvZ/OKIIhXjdUC1FRnouDhUbceQT4NpDGZoA7C/VNTuRjE0XjpP
-         reknWpoKPMeyl00yF/owMA6osodo31RebtzzeINGvk47UBlswxNwfiG5pFw8Oz98V5nq
-         mXlmbEZqgFtdutln7N/aERRM68rHdoWZePp8rNCYNUFN+4bPLXcPz9EYe6p6kZ1+3m0x
-         Q2mclTX8dUsN2IBQWSJJB1XqvdEmTR8/X1p6scffvBL6B7MSrBWCpF0XeFwIiVPJN4xN
-         btu9DPCh3J/XfTS/NfOXs8HhWKXrSctkmPYE6MiElQfFhqDe25myJ6eGEkCRJGSKCdUC
-         mcYQ==
+        b=lHJebSPGhRp4vH5epd65gFKjF27c0NK98lYW2+UoO1YtPTst0r5RkHbSkrBJ9gf8i4
+         7+NdaiAA9gr2l3YGQSvxyM2lFSrSjU5mGrvMpPnqhauf8c1hEgJ8rOTDP9M0AT3JnEpC
+         NLHvopHk/cWVlFouBlBcnjs2ucK/lusdSJ536tn3TmIHqOyx667qN2ybB4aFnGHjj+rW
+         TqTrk8pzAU+06u7GGg099soxhR75A0fgmQ+JIhkUBxSLnirnUWgAhkGla48wTuQVT1HH
+         eI8kO6Uws0B7WQ5CYAJzcY632dnqPxup79rxs3GjTaC1nySA01dqCua3sL85D3vGNCRs
+         g+uA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=dNpfhumn0Dc6jxdcMXYsNb6R54SUHbRQ9h2w39lLTBw=;
-        b=HsNCEecM+dq1Kh5ACi7798ri+FIM3rjQFuOqELlERAhA12wPFqjAxlfw7DOr/g1/ls
-         MWBkz2EgvSD+5eJfPy1d9LCaMGKtwzdQ0+fIcEHirOVb1xGnMXev276i15A5EYJGNhyr
-         nFekt7kXFrBz2BD96egRHl8AEDEeXWtmu4pU6D7nb55k2ENsuROEHkcV3HkN99/Wvpda
-         uibNTu0AkRRLbsaRvMRioM30VMAWycnkAKSWAR9DDcC0pNSeOrjEg7pY8ywsmCyVy/of
-         XTDHP5gNNzHxYtDBfWOqaoQV+WjqeWpBF/04hSHa7cdyhQv/LqrbqUWR5VE7GqYfYyzU
-         Ur9g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=pVy4AzLXXvS7qLKcHtZ5i12l2K5nNvv7Rm0g9B5H27c=;
+        b=ZuCv5Ojjtfubkj9KonJ60d0wzUEDy1WCuZSv1fyG8uGbJG2aapkXjYGZYW+HUUVlHo
+         pDAVchQiAuWE8unYwu8k/VXEsgZzCV3nWV9K9flCqn9ICrdrWlL1j5UY0FokhVWw9uv9
+         ITDZ52H3Vc+IixXglnp6bjrQ1XFhn+IxLFTE0sO3tQcQwbs6EJHN+7UEZ5SQwOPs3CZR
+         zIlZ4gf5qYr7cuky7gZZu2uleH+Nt5JMBVbvzBK0pi7iMJwjEdNPLyEGSIxC+xVtCgk6
+         yKRSHiNH5BBy0Pr4OLv7peAVuS644PhthoT3R5xbp9XvDvXzIXb103QCkOPFeyP3brHR
+         45Yg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=CzDxUvKU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JO0VUQT7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m187-20020a2526c4000000b00628e50438cdsi5818279ybm.494.2022.03.07.03.18.49
+        by mx.google.com with ESMTPS id b17-20020a25cb11000000b0062941df496dsi1545212ybg.365.2022.03.07.03.30.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Mar 2022 03:18:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Mar 2022 03:30:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=CzDxUvKU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51946 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JO0VUQT7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51808 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nRBO2-00014A-Ge
-	for alex.bennee@linaro.org; Mon, 07 Mar 2022 06:18:48 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40352)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nRBZ0-00038v-7R
+	for alex.bennee@linaro.org; Mon, 07 Mar 2022 06:30:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nRAYf-0002el-Ln; Mon, 07 Mar 2022 05:25:42 -0500
-Received: from [2a00:1450:4864:20::32f] (port=33240
- helo=mail-wm1-x32f.google.com)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1nRBBZ-0004Ry-69; Mon, 07 Mar 2022 06:05:53 -0500
+Received: from [2607:f8b0:4864:20::12f] (port=45593
+ helo=mail-il1-x12f.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nRAYe-0006TM-9x; Mon, 07 Mar 2022 05:25:41 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- n33-20020a05600c3ba100b003832caf7f3aso6367326wms.0; 
- Mon, 07 Mar 2022 02:25:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1nRBBX-0004Ei-J4; Mon, 07 Mar 2022 06:05:52 -0500
+Received: by mail-il1-x12f.google.com with SMTP id h2so910525ila.12;
+ Mon, 07 Mar 2022 03:05:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=dNpfhumn0Dc6jxdcMXYsNb6R54SUHbRQ9h2w39lLTBw=;
- b=CzDxUvKUbch/gCT3BTyVziT7fjfF7nJkGGRF0hD5C+c5it+6ePgTJUIGFiW8GpnOXA
- 4zGxzpgf8KnN2ujCIBzeUZwWfLALr5LJJcY9cc8o/tc7aihZLcdlXYww/fcaCaH2cbvL
- nsvUShnmccFbLI3P8ismUI6AElPvpZ9K0Vf9v0XG9AEefRYV3wBf0VChICndqDfuymSi
- ium6WMOCdS92/QTb+FcGydLtxjFT6hgEHDt0mJ+9JfwKGFXP1Vgy4gp10ArOr4FovIvf
- ZgmwRiZmsQ434xRC799NBN9RI1e/knWWAJG0rtXrFJAgSy+dy9hYrsiwVzTh+rISLfa3
- jNHw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=pVy4AzLXXvS7qLKcHtZ5i12l2K5nNvv7Rm0g9B5H27c=;
+ b=JO0VUQT7aUKfGbM7SwAGLqACa7ETHP6C/SyH60uX91wQNjo+qYHNA5eg8Q24y1Ub2X
+ hP2mRxyIw9uW3gsFDIwfW3lJgS4H04doS+h3sNsHqIQDvJhz7811z8WQFofuilJArx3N
+ x1lw2onF7CDQEZE2Sj+ikiqk0DYuE6SJr2u2RxE9cqzhTEekfOjTQRYbx2sCTjT9uTA5
+ /Gv4alXE029xXPeiUCvGl5Cy3uHgrYItVVCGwjLMXF40eih0SAByuGZm3mncScPbcGqA
+ h4vSkL1Sbu9+QhTGaVrYP+PDh6MpjYyYudp2HDzU3+30OKelXpYQiRvmH1kZ0VD/R6Ol
+ 9u2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=dNpfhumn0Dc6jxdcMXYsNb6R54SUHbRQ9h2w39lLTBw=;
- b=2DVc9eNLLnHQt+Hu43Q0kVY9DNscMCZ9iYBQ1Q8QGMOUiBiOM/sWNbWyAJdSqB1ukH
- 2Y9kDxI2lxl+t4+nQJGsZNTQWp8JyH84I/SjPmvAdPcpVtu7wM6D1w5TGzSvpFylYS1P
- XyCKkj0grlZQrWW/Qvvvp3gH8Bq2r3PrU+xBiLLhswNM89pdWTjQw2R7HfVObll7w94A
- 9r6GUXVlztoQAXhkKSJO/InY8yVh+r6KANH86iAf95bM3/ITOAFj/lZVPPo2EVjS5lul
- 8DIzl7ir16dxByz4gz5DL5C9AMdfhyY+NaFdkh7+1/ghNVEEes45RHBKnH+BRIg/qeUs
- h2AA==
-X-Gm-Message-State: AOAM531kfo32/3UxepEZLkx2J44hLCSjTj4EJq2pCJnuKP1ohuBoIat5
- ndgbsy93pMBsRxsymT4xqSo=
-X-Received: by 2002:a7b:c381:0:b0:37b:e01f:c1c0 with SMTP id
- s1-20020a7bc381000000b0037be01fc1c0mr17647373wmj.98.1646648738666; 
- Mon, 07 Mar 2022 02:25:38 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- f20-20020a05600c4e9400b003898e252cd4sm7883810wmq.12.2022.03.07.02.25.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Mar 2022 02:25:38 -0800 (PST)
-Message-ID: <ab0657d6-c841-d72d-8073-b58dabe36a65@gmail.com>
-Date: Mon, 7 Mar 2022 11:25:37 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=pVy4AzLXXvS7qLKcHtZ5i12l2K5nNvv7Rm0g9B5H27c=;
+ b=BLTaGsYSqh9WY66SIj6QmtCR5R8UhLL7Xvg3mFfdP1uouMA1NN7+jNM3l/gQiL7KxR
+ mcXS2wzxZVB+t1W6qYtfVD6kY2nv+Pc4b/Uef1eY07I7S07K1pZwlysMtdjSQRxfQyDi
+ Ocudt+iY2dwF1bhNTKoQrhIx1SlRJTIqJN0xOSxFNUJJUxa/j9Y0R4uifJ0StHIkJsxx
+ 3+moVQBoDm1frzLiinH10uDqqrfreDwOa3KHrBdpTPwxQqqfomOybvAC9JYNZqeUcQ0f
+ zf6mQIAVCmqG6ZieNrUJziE8emXzV1u7JMY4l1AK1U4lNR15DEPygWGUnib6kybAzRYe
+ 2Kjg==
+X-Gm-Message-State: AOAM53122zLPOzYn8/25nU+fwSvZJJn+22dIvUpDRek5bRjS8OwsGMgB
+ iub0IcNBFPOXVW/Ojjib+llwRZ9mHPia/B0TUdBIrQijNqU=
+X-Received: by 2002:a05:6e02:154c:b0:2c6:4ffa:57ec with SMTP id
+ j12-20020a056e02154c00b002c64ffa57ecmr775720ilu.55.1646651149711; Mon, 07 Mar
+ 2022 03:05:49 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.1
-Subject: Re: [PATCH 5/6] aspeed/smc: Let the SSI core layer define the bus name
-Content-Language: en-US
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
 References: <20220307071856.1410731-1-clg@kaod.org>
- <20220307071856.1410731-6-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <20220307071856.1410731-6-clg@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32f
+ <20220307071856.1410731-4-clg@kaod.org>
+In-Reply-To: <20220307071856.1410731-4-clg@kaod.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 7 Mar 2022 21:05:23 +1000
+Message-ID: <CAKmqyKNTyqEAo+7YZ9vTzfnpaFksJ1ErOe4E2+EXcW9TESy5kg@mail.gmail.com>
+Subject: Re: [PATCH 3/6] aspeed/smc: Remove 'num_cs' field
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::12f
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
+Received-SPF: pass client-ip=2607:f8b0:4864:20::12f;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x12f.google.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
 X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, PDS_HP_HELO_NORDNS=0.659,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yrRvtXwjZRV8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cdtilLL46QYh
 
-On 7/3/22 08:18, Cédric Le Goater wrote:
-> If no id is provided, qdev automatically assigns a unique ename with
+On Mon, Mar 7, 2022 at 5:19 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> It is not used anymore.
+>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-"an unique name"?
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-> the following pattern "<type>.<index>".
+Alistair
 
-Maybe complete with smth like:
-
-"which avoid bus name collision when using multiple buses."
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> 
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->   hw/ssi/aspeed_smc.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>  include/hw/ssi/aspeed_smc.h | 1 -
+>  hw/arm/aspeed.c             | 2 --
+>  hw/arm/aspeed_ast2600.c     | 2 --
+>  hw/arm/aspeed_soc.c         | 2 --
+>  hw/ssi/aspeed_smc.c         | 7 -------
+>  5 files changed, 14 deletions(-)
+>
+> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+> index cad73ddc13f2..4a9354e13c7f 100644
+> --- a/include/hw/ssi/aspeed_smc.h
+> +++ b/include/hw/ssi/aspeed_smc.h
+> @@ -57,7 +57,6 @@ struct AspeedSMCState {
+>
+>      qemu_irq irq;
+>
+> -    uint32_t num_cs;
+>      qemu_irq *cs_lines;
+>      bool inject_failure;
+>
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index be24508a9854..8f14738676f6 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -352,8 +352,6 @@ static void aspeed_machine_init(MachineState *machine=
+)
+>                              &error_abort);
+>      object_property_set_int(OBJECT(&bmc->soc), "hw-strap2", amc->hw_stra=
+p2,
+>                              &error_abort);
+> -    object_property_set_int(OBJECT(&bmc->soc), "num-cs", amc->num_cs,
+> -                            &error_abort);
+>      object_property_set_link(OBJECT(&bmc->soc), "dram",
+>                               OBJECT(machine->ram), &error_abort);
+>      if (machine->kernel_filename) {
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index 21cd3342c578..c1e15e37739c 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -163,7 +163,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>
+>      snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
+>      object_initialize_child(obj, "fmc", &s->fmc, typename);
+> -    object_property_add_alias(obj, "num-cs", OBJECT(&s->fmc), "num-cs");
+>
+>      for (i =3D 0; i < sc->spis_num; i++) {
+>          snprintf(typename, sizeof(typename), "aspeed.spi%d-%s", i + 1, s=
+ocname);
+> @@ -383,7 +382,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
+ev, Error **errp)
+>      for (i =3D 0; i < sc->spis_num; i++) {
+>          object_property_set_link(OBJECT(&s->spi[i]), "dram",
+>                                   OBJECT(s->dram_mr), &error_abort);
+> -        object_property_set_int(OBJECT(&s->spi[i]), "num-cs", 1, &error_=
+abort);
+>          if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
+>              return;
+>          }
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 7d53cf2f5133..58714cb2a01d 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -170,7 +170,6 @@ static void aspeed_soc_init(Object *obj)
+>
+>      snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
+>      object_initialize_child(obj, "fmc", &s->fmc, typename);
+> -    object_property_add_alias(obj, "num-cs", OBJECT(&s->fmc), "num-cs");
+>
+>      for (i =3D 0; i < sc->spis_num; i++) {
+>          snprintf(typename, sizeof(typename), "aspeed.spi%d-%s", i + 1, s=
+ocname);
+> @@ -327,7 +326,6 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
+r **errp)
+>
+>      /* SPI */
+>      for (i =3D 0; i < sc->spis_num; i++) {
+> -        object_property_set_int(OBJECT(&s->spi[i]), "num-cs", 1, &error_=
+abort);
+>          if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
+>              return;
+>          }
+> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> index a5d8bb717fc7..6859f061c8be 100644
+> --- a/hw/ssi/aspeed_smc.c
+> +++ b/hw/ssi/aspeed_smc.c
+> @@ -1127,12 +1127,6 @@ static void aspeed_smc_realize(DeviceState *dev, E=
+rror **errp)
+>      s->r_timings =3D asc->r_timings;
+>      s->conf_enable_w0 =3D asc->conf_enable_w0;
+>
+> -    /* Enforce some real HW limits */
+> -    if (s->num_cs > asc->max_peripherals) {
+> -        aspeed_smc_error("num_cs cannot exceed: %d", asc->max_peripheral=
+s);
+> -        s->num_cs =3D asc->max_peripherals;
+> -    }
+> -
+>      /* DMA irq. Keep it first for the initialization in the SoC */
+>      sysbus_init_irq(sbd, &s->irq);
+>
+> @@ -1211,7 +1205,6 @@ static const VMStateDescription vmstate_aspeed_smc =
+=3D {
+>  };
+>
+>  static Property aspeed_smc_properties[] =3D {
+> -    DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
+>      DEFINE_PROP_BOOL("inject-failure", AspeedSMCState, inject_failure, f=
+alse),
+>      DEFINE_PROP_LINK("dram", AspeedSMCState, dram_mr,
+>                       TYPE_MEMORY_REGION, MemoryRegion *),
+> --
+> 2.34.1
+>
+>

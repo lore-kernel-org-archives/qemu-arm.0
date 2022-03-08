@@ -1,184 +1,170 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2548384lfo;
-        Tue, 8 Mar 2022 10:09:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxeBwCoJptbstBrr4R9iJqKTxyZ6XETV00coZSagsd4NN8nguHTCrfzPfRxu5WBhVQ79ldl
-X-Received: by 2002:a25:ab02:0:b0:628:63f0:95ff with SMTP id u2-20020a25ab02000000b0062863f095ffmr13431359ybi.29.1646762944286;
-        Tue, 08 Mar 2022 10:09:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646762944; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2560335lfo;
+        Tue, 8 Mar 2022 10:25:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw3U3o1flm6PZ3I/qdhHlB9W5i6d1FW761J85EY5YUnogQzd4ticoAY/ej7sjwYTifDrF+H
+X-Received: by 2002:a25:3746:0:b0:628:b457:9ab with SMTP id e67-20020a253746000000b00628b45709abmr13420342yba.433.1646763944072;
+        Tue, 08 Mar 2022 10:25:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646763944; cv=none;
         d=google.com; s=arc-20160816;
-        b=hEriNN91ctedGnc3HXSZ89Lu9aiOqK4ey7APzn8wVYVvmTCb5Rm+0WWtx7p/0Sb9YG
-         jpIL52hj5Tf0mDLYC7ZWYCoLj4kr4GMv/sAVteChGTZyPaOYBpf700E1L5cLOGUlW6VS
-         OM+bYQy3SoPDr79QNlcI/JHBeHRBvQ9oWB4nZeeXuv/rkCdU1Xlnb3ll/MnP+Lh7IxHK
-         yOkDUggAUhtWMHMM0cP3DTFjTuJJygwSBZIKNRW2dYGf7c9O6+q1MNp1pRuBVDBcqAqL
-         E0+ibhTxoRD3AJVNawdIr58zW6tYMwquO0psoLOjz6HNBSvlkB+TjhXfkkmF4cnM5DQz
-         BqJA==
+        b=Lq14swv9MnV4BC/3+nyhzXzq7f9XoHY8F6MLtdlaI5U7DazLVczW00hkkTcZtXf1zf
+         rMqojQwaOs8Mirb0OJN835CV0C74g0Je8cDU71xiDf3BF6kfKhke9/udOKCFsF0paCyf
+         S5F6i+8KZwIOi6BERSxAItLDNe1km5nvUk7riHhvtG5+DYANRf7QenDIvDmZG1+imHao
+         mhW5BOXRBKMdd0DcMN7hFGvKOFT995zQrfzHT1Glf9m2GJhErRBY+kaJ1epfwWEnyNss
+         k2RNoOkqwci3B8QSZf7KggtRJcaFgDN968l16HRBQATIv199cFaQfxj3sQD4y5p+U/Fp
+         1v/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=tMbQPQmNCJpXJZVpub/5ENhMlycIfgXJrOoUE5B7Dl4=;
-        b=sdbQ9HID7ksfAkv0YT4RGYnnCZ6kVB2zPouK4im8n6+ZVWKpfV9FhMngvbzDGy71WQ
-         CgEs/aoqg3AvB/iZqc2vlFJRQK81UE+s3I5vu3bqyS1biDyCn2pCMJvNSTHg83SeMAS3
-         tN09zK/goxmCOu10UmDkXP0D6/94mN0hg8K7C7DfZCUguz3MX4nNxB8rLsKqu/TVYKV3
-         6FLl08l7bR84RFBpkTn63AHLbuzovk7oWi3ekVZKEP6FhC+gaeqUhLSu/va8IlS3bG6T
-         Nlw5jc5qp/93VSTchhe3uT6hhRXFLwAiEe1FxCBM0edjUxtWF3mC//hdXciPd/5iABOy
-         ++ZQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=9eHzE2Oeiv8GnAde9Vlt7vdxFQ1ZbGYXgwrANjAz7Fo=;
+        b=vVt0sMNnSQhiuW7yZeGp1xgUThAKMHVpVzPDFGVq8m33Atz4TtTLtWlveznQfGH6pp
+         /4uR0b5IX1ToAC4hME3diaZiqc5IHpIRm5P2m07UhtQH+zRyd3ODvPfbas7CHPP6+wFR
+         l2jtDgve3synOLs4JxBkrgfelVCECbrxLrXHM/j7lL6UOaKzdEJoxf5UdY2Q/tiHtmMz
+         UNwAmGd3OSlUMbmYe0nlI0BvrZBNSoEdLOUY5l5+H65BHV+pwv0oOaEVYd+h/uPAYcCK
+         zCTGvnczNzJma2K/7/Tfka0W/zuYiWlTHL6K9JIcOgjth+YgIUYpa7zeUllsdJXfmAOP
+         A+Xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=QjvBaB0D;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Yr/815ma";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d4-20020a251d04000000b00612926cb5ecsi12152479ybd.583.2022.03.08.10.09.04
+        by mx.google.com with ESMTPS id o1-20020a81ef01000000b002d6b7fe8c7fsi11326444ywm.434.2022.03.08.10.25.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Mar 2022 10:09:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Mar 2022 10:25:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=QjvBaB0D;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59602 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Yr/815ma";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50064 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nReGd-0008K6-L7
-	for alex.bennee@linaro.org; Tue, 08 Mar 2022 13:09:03 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34468)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nReWl-0007kj-Es
+	for alex.bennee@linaro.org; Tue, 08 Mar 2022 13:25:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39024)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nReGR-0008Hc-Iw; Tue, 08 Mar 2022 13:08:51 -0500
-Received: from [2607:f8b0:4864:20::102e] (port=39634
- helo=mail-pj1-x102e.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nReGQ-0000vE-63; Tue, 08 Mar 2022 13:08:51 -0500
-Received: by mail-pj1-x102e.google.com with SMTP id
- mr24-20020a17090b239800b001bf0a375440so2893521pjb.4; 
- Tue, 08 Mar 2022 10:08:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=tMbQPQmNCJpXJZVpub/5ENhMlycIfgXJrOoUE5B7Dl4=;
- b=QjvBaB0DahMCCa9Zqkscw6x8G+DY69EZ/JYA54g+9nmKhuhJivlgo4eU4Ez7QuNzg7
- IL0wCHCLJ/T+GvU04444LRrk234dPjy0h6LEN2MPUgimePf4NnxQKqRcTqNvF/IROtZ8
- w9OEGWnJNIfRZSTgZEUXvYAXAj8fHMJo2tfLwhq4LNSB4PmbqWJSD3HHhC1srV5tZoRO
- rRA0a5EUgkTBuulXoga1mIYtY3nlIebet464pAJ8QJ6rSggoqvz1p2HyNUm8HKMVNTk7
- BGOS086cgs1ACG3AcbjMfs4yDO2SD42Pg9CWuM9HEEaYD5NGYZ7bhChdiAO/L2oCiB7N
- 5dig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=tMbQPQmNCJpXJZVpub/5ENhMlycIfgXJrOoUE5B7Dl4=;
- b=lKOMLK+w7GK9XMb9ER/STmmwu725ngJH5iuvmxiqSE0tIuRqW95U/bDtJ5IUfZ31lG
- cawF0s/V7/r2qJKow6aDKRMOPXfWl2dIwmnKK/p/GAE0Z1h8Eaf4uAARWNkq7V3o2Huq
- MuFS+8500To2qJbwQyrwPaFoEBPKLkcDe23duFSKudscoK31rzNgKRXtu4xrhef7VzmP
- 3SvYsnmBhuluisK8iM8nmMUyKwGpDApn74IH5l0x5zSCf78ZSM26ZPDd9N/T9Pdv7SYS
- Q3DR3SqR4iGMDRb89YyGzVJlg+89OQe/JDm9ZJgtLtCBuUCtIL+w5+SQfYBbY8QdNKy5
- 8JfQ==
-X-Gm-Message-State: AOAM532D97bg6geZ3PwOoIKdV33ngKkn3ASrKuRukaQNBXggsZSNF7Rl
- vP+y2ZBlUnwW9gKKXyduLoQ=
-X-Received: by 2002:a17:90a:bd04:b0:1bf:951d:5bf2 with SMTP id
- y4-20020a17090abd0400b001bf951d5bf2mr2932285pjr.18.1646762928507; 
- Tue, 08 Mar 2022 10:08:48 -0800 (PST)
-Received: from [192.168.1.35] (71.red-83-50-68.dynamicip.rima-tde.net.
- [83.50.68.71]) by smtp.gmail.com with ESMTPSA id
- h2-20020a056a00170200b004e0f0c0e13esm20914906pfc.66.2022.03.08.10.08.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Mar 2022 10:08:48 -0800 (PST)
-Message-ID: <e670a39d-5aea-a580-e78d-099dcc01aea9@gmail.com>
-Date: Tue, 8 Mar 2022 19:08:44 +0100
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1nReWB-0007Zg-IF
+ for qemu-arm@nongnu.org; Tue, 08 Mar 2022 13:25:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46722)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1nReW7-0003uZ-Gf
+ for qemu-arm@nongnu.org; Tue, 08 Mar 2022 13:25:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1646763902;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9eHzE2Oeiv8GnAde9Vlt7vdxFQ1ZbGYXgwrANjAz7Fo=;
+ b=Yr/815mabaMlPFXAvF10/SWPzJhLLSlA/FfKcsnA1xd2m6u5ZYUnTgfSU8czAmpOONCdEb
+ 87sHJF5NWWvr6JvzHR+fUirQ1TOnsP1iNbWoyluCHWV4hY/z/0vHfHXwH4L47xgkvWtChJ
+ 7fZwC/r+Zjbj7uCT74AhCeWqAXuEdv8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-660-fOlLW5j6MVqtDN7bLz3lTA-1; Tue, 08 Mar 2022 13:24:59 -0500
+X-MC-Unique: fOlLW5j6MVqtDN7bLz3lTA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7C37C1800D50;
+ Tue,  8 Mar 2022 18:24:58 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.192.90])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B902886C44;
+ Tue,  8 Mar 2022 18:24:56 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+ drjones@redhat.com, f4bug@amsat.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: [PATCH 1/2] hw/intc: Rename CONFIG_ARM_GIC_TCG into
+ CONFIG_ARM_GICV3_TCG
+Date: Tue,  8 Mar 2022 19:24:51 +0100
+Message-Id: <20220308182452.223473-2-eric.auger@redhat.com>
+In-Reply-To: <20220308182452.223473-1-eric.auger@redhat.com>
+References: <20220308182452.223473-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.1
-Subject: Re: [PATCH v3 0/9] This patch series contains updates to PMBus in
- QEMU along with some PMBus device models for Renesas regulators. I have also
- added myself to MAINTAINERS as this code is in use daily, where I am
- responsible for it.
-Content-Language: en-US
-To: minyard@acm.org
-References: <20220302015053.1984165-1-titusr@google.com>
- <20220304214354.GL3457@minyard.net>
- <CAMvPwGpzO3VyCqGJY28QVQoo9AwYxxrvP3RqPS6JTgpTk8ojtw@mail.gmail.com>
- <1af23dba-8f7a-8d93-706d-6e16067cdce2@gmail.com>
- <20220308135324.GU3457@minyard.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <20220308135324.GU3457@minyard.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102e
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102e.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Titus Rwantare <titusr@google.com>,
- venture@google.com, f4bug@amsat.org, qemu-devel@nongnu.org,
- wuhaotsh@google.com, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l227Yx4/XqBB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tUBhquuNfdcl
 
-On 8/3/22 14:53, Corey Minyard wrote:
-> On Mon, Mar 07, 2022 at 01:00:02AM +0100, Philippe Mathieu-Daudé wrote:
->> On 5/3/22 00:42, Titus Rwantare wrote:
->>> On Fri, 4 Mar 2022 at 13:43, Corey Minyard <minyard@acm.org> wrote:
->>>>
->>>> On Tue, Mar 01, 2022 at 05:50:44PM -0800, Titus Rwantare wrote:
->>>>> v2:
->>>>>     - split PMBus commit with updates into individual fixes
->>>>>     - renamed isl_pmbus[.ch] adding _vr for voltage regulators
->>>>>
->>>>> v3:
->>>>>     - split uint refactor commit and removed commit renaming files
->>>>>     - rename rolled into preceding commits
->>>>>     - update commit description for uint refactoring change
->>>>
->>>> This all looks good to me:
->>>>
->>>> Acked-by: Corey Minyard <cminyard@mvista.com>
->>>>
->>>> Do you have a plan for getting this in to qemu?  Like through the ARM
->>>> tree?  I could take it into an I2C tree, but there's really not much
->>>> activity or work there.
->>>>
->>>> -corey
->>>
->>> In general PMBus is more specific to i2c than ARM, but I'm not sure of
->>> the QEMU implications.
->>
->> Titus, could you address my comments?
->>
->> Corey, if you are busy, I can take care of this series.
-> 
-> It's not a "too busy" sort of thing, the i2c tree doesn't get much
-> traffic.  I can take it, but it's not much different than just pulling
-> it directly.
-> 
-> So it's probably best if you take it.
+CONFIG_ARM_GIC_TCG actually guards the compilation of TCG GICv3
+specific files. So let's rename it into CONFIG_ARM_GICV3_TCG
 
-OK. I'll send a pullreq shortly.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/intc/Kconfig     | 2 +-
+ hw/intc/meson.build | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-Regards,
+diff --git a/hw/intc/Kconfig b/hw/intc/Kconfig
+index ec8d4cec29..a7cf301eab 100644
+--- a/hw/intc/Kconfig
++++ b/hw/intc/Kconfig
+@@ -25,7 +25,7 @@ config APIC
+     select MSI_NONBROKEN
+     select I8259
+ 
+-config ARM_GIC_TCG
++config ARM_GICV3_TCG
+     bool
+     default y
+     depends on ARM_GIC && TCG
+diff --git a/hw/intc/meson.build b/hw/intc/meson.build
+index 81ccdb0d78..d6d012fb26 100644
+--- a/hw/intc/meson.build
++++ b/hw/intc/meson.build
+@@ -6,7 +6,7 @@ softmmu_ss.add(when: 'CONFIG_ARM_GIC', if_true: files(
+   'arm_gicv3_common.c',
+   'arm_gicv3_its_common.c',
+ ))
+-softmmu_ss.add(when: 'CONFIG_ARM_GIC_TCG', if_true: files(
++softmmu_ss.add(when: 'CONFIG_ARM_GICV3_TCG', if_true: files(
+   'arm_gicv3.c',
+   'arm_gicv3_dist.c',
+   'arm_gicv3_its.c',
+@@ -28,7 +28,7 @@ softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP_PMU', if_true: files('xlnx-pmu-iomod-in
+ specific_ss.add(when: 'CONFIG_ALLWINNER_A10_PIC', if_true: files('allwinner-a10-pic.c'))
+ specific_ss.add(when: 'CONFIG_APIC', if_true: files('apic.c', 'apic_common.c'))
+ specific_ss.add(when: 'CONFIG_ARM_GIC', if_true: files('arm_gicv3_cpuif_common.c'))
+-specific_ss.add(when: 'CONFIG_ARM_GIC_TCG', if_true: files('arm_gicv3_cpuif.c'))
++specific_ss.add(when: 'CONFIG_ARM_GICV3_TCG', if_true: files('arm_gicv3_cpuif.c'))
+ specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
+ specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'TARGET_AARCH64'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
+ specific_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_nvic.c'))
+-- 
+2.26.3
 
-Phil.

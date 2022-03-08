@@ -1,163 +1,185 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2306406lfo;
-        Tue, 8 Mar 2022 04:39:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyrGuEfmCeH4Lga1VWvfr/Hjz6K+NihFzsed/n42dqE7IkIjPmqpSs6CsG9RzZXYcCEFpGU
-X-Received: by 2002:a0d:fe84:0:b0:2d6:c652:6aa8 with SMTP id o126-20020a0dfe84000000b002d6c6526aa8mr12572110ywf.57.1646743190649;
-        Tue, 08 Mar 2022 04:39:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646743190; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2362107lfo;
+        Tue, 8 Mar 2022 06:03:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxpN4SGvE+Iws8mrB2U48AhLAvPSYx4sRFnbF51R5JMHRe3vv6+Skw46gS/937Dnj85CSlm
+X-Received: by 2002:a05:6102:5cc:b0:320:9bd2:3823 with SMTP id v12-20020a05610205cc00b003209bd23823mr6003150vsf.81.1646748203241;
+        Tue, 08 Mar 2022 06:03:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646748203; cv=none;
         d=google.com; s=arc-20160816;
-        b=nMkaWyAdoVuN6Vu7iWozEQde506RqNblSm2Mw5VKDr3GVpFje/MGxdbiUgakVgsbkE
-         yK45AKQqtl+FAYhdJSsAhFLnuujxiJgQsFoB6rWoUehosL72w7QZYB5Wweeno5fvMS5w
-         UM9Zs4vNfFNQhCpy+QC7K21hUBQBQRWk5FzqOIa0vzIYgTJxhmh1gOzByM0oVgOj50Ui
-         XnIq1O4qO/wc7Lcqs0VSuQWVNOhJFg2IKFuTD5ehwF4rf9Rr1RIktxYI1+Mh3rrtb5Bx
-         E4eTAUQpdtG5xH7mCZx+/JsoFo5Fg7Qqq7UPLPpM2C6opVn+fHgPS/Yx8sD5n5bm1usJ
-         J2QQ==
+        b=InjEty7+cGRsSpBf+KoYCryYsx8FT66pHCVBKddepifmmCQT0vPe4ZOgtFJEHtPJJ5
+         mWS/1JCe4DDUccKqdaXwlTzF67CLMMK0SPvYtLbSkRmfvvCfG24Tm2DZuX+ede5kCmbk
+         uWdnlWJMV7IioouhH3pyklx9yCNLUOi3X0OcAhlbCEtUyzb1VgtY4nl9cWPfsujC441t
+         /NZEIyEGsVSSMaXlufJ2gFeCJCff4mjSv6KeSADCJKh1Sr2TedNea1oMDvKRPhQi1IsE
+         vEmILChTM58HGXxKBgcPuY4hdzSQ0oN4sQWrqDUaHFlBIQP2N7njQvI2g7dqyARRtRi8
+         F1Og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=2ICtqt/7RmdWXOnhd+FhytFMDh+WuDCPo2IjLro1Jec=;
-        b=jEstZwKohDNMy/SDm0k6lK61f/jXh6eYQ4i1b4T/MpuYnamHTXXLVCpC3lcUzJXcIM
-         LMvt3d0PV0yOb/wO8cQGocsPwOux+CAIuOy/UAx/klBYzl+XtMuo4l9vq/eegl2wOIuZ
-         hU5ZQGqOzxMV36UN/1hWFi7HHyXyPPH/lq37E2QXqz02jP5H+Bi31gSnEVBGoA1N86Qy
-         Lb5rmfOV/mxD1gqqNFrfjX6zFlmjE16V/FGAu1SE5/OHwYx7G0W+nI7RmH8ToWGJlvUF
-         YI0JrX3t1/ftjguLUSwM8DXvTQ3QPsgpao0obndBl8RgyKq8gpARzBw4Mr1AWBZBI+dK
-         IAQQ==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=YQrUVaqHJM9HWSAZ1hemk/z4wOBte6SO+9I0vIiF5tw=;
+        b=osBI2mwzFoS864VXcCeEaSaSeXPhLTEK8AYl9YzQ4iXNO0p7jy9ptgubAji157A/WY
+         bPMUql0xA2r0xfEMrCJZ3jQIoU1SKa86auKdFVQnq3eWa7NKn9wBnprcFvRUC4gpM8o+
+         CrL0wWQInHv0qYKQNa1OhIG2Obe/K+cux2LzwGwFoDhFxkMn7C+OA9OC/S4qK1fB6EyC
+         gNxw7GlpE93uRZ0uQ0iUm0zqAE6ntZcQyQ6Ynwj/T2/crVlbcdU9ArLIe4EboHF/226K
+         0MYPjZx3E9Go1HLVQBVy/3A+5To0PSw7ThNHX2WDknzf6Oqr3SREFNlTF+Glpj3AWdLZ
+         I48Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=o7FudXFs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3-20020a253503000000b0062c1233ea5asi143838yba.130.2022.03.08.04.39.50
+        by mx.google.com with ESMTPS id q18-20020ab06c52000000b0034a0f561726si1354526uas.29.2022.03.08.06.03.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Mar 2022 04:39:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Mar 2022 06:03:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46982 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=o7FudXFs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34846 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nRZ80-0004I7-2W
-	for alex.bennee@linaro.org; Tue, 08 Mar 2022 07:39:49 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55564)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nRaQs-0001EJ-Jd
+	for alex.bennee@linaro.org; Tue, 08 Mar 2022 09:03:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nRYr8-0000iD-0q; Tue, 08 Mar 2022 07:22:22 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:12498
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nRYr6-0006Hp-EQ; Tue, 08 Mar 2022 07:22:21 -0500
-Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 228C0C2u029007; 
- Tue, 8 Mar 2022 12:22:05 GMT
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.102])
- by mx0b-001b2d01.pphosted.com with ESMTP id 3ep10672qr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 08 Mar 2022 12:22:04 +0000
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
- by ppma06ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 228C9374019222;
- Tue, 8 Mar 2022 12:22:00 GMT
-Received: from b06cxnps4074.portsmouth.uk.ibm.com
- (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
- by ppma06ams.nl.ibm.com with ESMTP id 3eky4hygre-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 08 Mar 2022 12:22:00 +0000
-Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
- [9.149.105.62])
- by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 228CLwed41353670
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 8 Mar 2022 12:21:58 GMT
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 3C313AE053;
- Tue,  8 Mar 2022 12:21:58 +0000 (GMT)
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id EE7EDAE04D;
- Tue,  8 Mar 2022 12:21:57 +0000 (GMT)
-Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av26.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Tue,  8 Mar 2022 12:21:57 +0000 (GMT)
-Received: from yukon.ibmuc.com (unknown [9.171.87.238])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 35C492201DC;
- Tue,  8 Mar 2022 13:21:57 +0100 (CET)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PULL 06/11] aspeed/smc: Let the SSI core layer define the bus name
-Date: Tue,  8 Mar 2022 13:21:44 +0100
-Message-Id: <20220308122149.1602798-7-clg@kaod.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220308122149.1602798-1-clg@kaod.org>
-References: <20220308122149.1602798-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1nRaHK-0007Vq-Of; Tue, 08 Mar 2022 08:53:30 -0500
+Received: from [2607:f8b0:4864:20::829] (port=39437
+ helo=mail-qt1-x829.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1nRaHJ-00053p-1O; Tue, 08 Mar 2022 08:53:30 -0500
+Received: by mail-qt1-x829.google.com with SMTP id u29so611302qtc.6;
+ Tue, 08 Mar 2022 05:53:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:date:from:to:cc:subject:message-id:reply-to:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to; bh=YQrUVaqHJM9HWSAZ1hemk/z4wOBte6SO+9I0vIiF5tw=;
+ b=o7FudXFshCVYt8GFlJF6lJq7KE/QXSc9igtFIFEU2uCmEx8ca9PfAr1Ls/y+2+cCfG
+ YPxesYU65EObEUTsJaOG99L8RzBvHWePZwpdEO3FIdj2jfLdzYw2rBIkypaPDEcVYrhF
+ D8QK+412OWwPWY2TWVp1WkjtdvF3Z9YDyBRo8sWuDeWNz2LuSlcC94xw82J8jPBL3nhE
+ Jfg0Qt0TlZh9TbM557S8W1dWLP5GT7AU9921jTUZ+U88ShhH7/g9kOHPEg4bZmiIrG6b
+ ++e/vhUTHl/qSkY6F1eTR4ERLKZ8DmaEGxF6xFu1BSRY+qw5VzOl38suvOePuPwoRpZq
+ jbfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :reply-to:references:mime-version:content-disposition
+ :content-transfer-encoding:in-reply-to;
+ bh=YQrUVaqHJM9HWSAZ1hemk/z4wOBte6SO+9I0vIiF5tw=;
+ b=8RkdKtxmg47vFlhLCV4AJ1RW+Yeh/hQz+A49w58UMOvmjgQ5phDN14hrzseoSCTzOT
+ 6mf4KyAgcExjRG08c39JJMVVydilSSusRXwNb0tGof4vZht4ADejRQYRjbU+czfuB5XJ
+ DS47dHza95lFNo5FT9CdoZSjk2bw1GZ3qtscRL2gP4o6cw9EyeIlcJkXttqrjfwNWXfz
+ KpzwcA6GU17c26SIiig01+PiVEyO2SPCeTCnmxlsyrP5R6sJGMnOUFJrE4AS50r4pHRP
+ tANErf1GOk4ZKOm+vuZwO+oGrvhOP5zU1xryCGs4Rn76mRHTs8Lsz+4i7B8VOD2q79uh
+ jVzw==
+X-Gm-Message-State: AOAM532+oAIduSsb9Br9wl7QhDnRqa8dCjOEfQOKf7on9G4d0N6J8Vr5
+ s1UtmpfKShYnAcGx9cJtFJh0fONBJA==
+X-Received: by 2002:ac8:5f91:0:b0:2de:2c33:53a0 with SMTP id
+ j17-20020ac85f91000000b002de2c3353a0mr13535812qta.86.1646747607209; 
+ Tue, 08 Mar 2022 05:53:27 -0800 (PST)
+Received: from serve.minyard.net ([47.184.144.75])
+ by smtp.gmail.com with ESMTPSA id
+ x12-20020a05620a14ac00b0060deaee7a21sm7618790qkj.51.2022.03.08.05.53.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Mar 2022 05:53:26 -0800 (PST)
+Received: from minyard.net (unknown [IPv6:2001:470:b8f6:1b:c14:fa13:8678:3728])
+ by serve.minyard.net (Postfix) with ESMTPSA id 0EB0D1800BC;
+ Tue,  8 Mar 2022 13:53:26 +0000 (UTC)
+Date: Tue, 8 Mar 2022 07:53:24 -0600
+From: Corey Minyard <minyard@acm.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v3 0/9] This patch series contains updates to PMBus in
+ QEMU along with some PMBus device models for Renesas regulators. I have also
+ added myself to MAINTAINERS as this code is in use daily, where I am
+ responsible for it.
+Message-ID: <20220308135324.GU3457@minyard.net>
+References: <20220302015053.1984165-1-titusr@google.com>
+ <20220304214354.GL3457@minyard.net>
+ <CAMvPwGpzO3VyCqGJY28QVQoo9AwYxxrvP3RqPS6JTgpTk8ojtw@mail.gmail.com>
+ <1af23dba-8f7a-8d93-706d-6e16067cdce2@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: MT7cD_J1yAEjeVJqmGTaex4LhWrqaqg6
-X-Proofpoint-GUID: MT7cD_J1yAEjeVJqmGTaex4LhWrqaqg6
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.816,Hydra:6.0.425,FMLib:17.11.64.514
- definitions=2022-03-08_03,2022-03-04_01,2022-02-23_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 lowpriorityscore=0
- suspectscore=0 phishscore=0 mlxlogscore=999 malwarescore=0 impostorscore=0
- clxscore=1034 spamscore=0 adultscore=0 priorityscore=1501 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
- definitions=main-2203080063
-Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, KHOP_HELO_FCRDNS=0.187,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1af23dba-8f7a-8d93-706d-6e16067cdce2@gmail.com>
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::829
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::829;
+ envelope-from=tcminyard@gmail.com; helo=mail-qt1-x829.google.com
+X-Spam_score_int: 0
+X-Spam_score: -0.1
+X-Spam_bar: /
+X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X1JeL1YVsGTO
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: minyard@acm.org
+Cc: peter.maydell@linaro.org, Titus Rwantare <titusr@google.com>,
+ venture@google.com, f4bug@amsat.org, qemu-devel@nongnu.org,
+ wuhaotsh@google.com, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lG0ajqJSiYRw
 
-If no id is provided, qdev automatically assigns an unique name with
-the following pattern "<type>.<index>" which avoids bus name collision
-when using multiple buses.
+On Mon, Mar 07, 2022 at 01:00:02AM +0100, Philippe Mathieu-Daudé wrote:
+> On 5/3/22 00:42, Titus Rwantare wrote:
+> > On Fri, 4 Mar 2022 at 13:43, Corey Minyard <minyard@acm.org> wrote:
+> > > 
+> > > On Tue, Mar 01, 2022 at 05:50:44PM -0800, Titus Rwantare wrote:
+> > > > v2:
+> > > >    - split PMBus commit with updates into individual fixes
+> > > >    - renamed isl_pmbus[.ch] adding _vr for voltage regulators
+> > > > 
+> > > > v3:
+> > > >    - split uint refactor commit and removed commit renaming files
+> > > >    - rename rolled into preceding commits
+> > > >    - update commit description for uint refactoring change
+> > > 
+> > > This all looks good to me:
+> > > 
+> > > Acked-by: Corey Minyard <cminyard@mvista.com>
+> > > 
+> > > Do you have a plan for getting this in to qemu?  Like through the ARM
+> > > tree?  I could take it into an I2C tree, but there's really not much
+> > > activity or work there.
+> > > 
+> > > -corey
+> > 
+> > In general PMBus is more specific to i2c than ARM, but I'm not sure of
+> > the QEMU implications.
+> 
+> Titus, could you address my comments?
+> 
+> Corey, if you are busy, I can take care of this series.
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20220307071856.1410731-6-clg@kaod.org>
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- hw/ssi/aspeed_smc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+It's not a "too busy" sort of thing, the i2c tree doesn't get much
+traffic.  I can take it, but it's not much different than just pulling
+it directly.
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index f1b5644aaa34..dc6d4a169df8 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -1130,7 +1130,7 @@ static void aspeed_smc_realize(DeviceState *dev, Er=
-ror **errp)
-     /* DMA irq. Keep it first for the initialization in the SoC */
-     sysbus_init_irq(sbd, &s->irq);
-=20
--    s->spi =3D ssi_create_bus(dev, "spi");
-+    s->spi =3D ssi_create_bus(dev, NULL);
-=20
-     /* Setup cs_lines for peripherals */
-     s->cs_lines =3D g_new0(qemu_irq, asc->cs_num_max);
---=20
-2.34.1
+So it's probably best if you take it.
 
+Thanks,
+
+-corey
+
+> 
+> Regards,
+> 
+> Phil.
+> 

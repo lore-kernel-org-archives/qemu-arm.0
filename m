@@ -1,93 +1,331 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id 9-20020a05600c268900b00381394d74a1sm13630637wmt.9.2022.03.07.09.22.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Mar 2022 09:22:54 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C8D461FFB7;
-	Mon,  7 Mar 2022 17:22:53 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2010310lfo;
+        Mon, 7 Mar 2022 19:17:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxPLJL6HKUGynoeB47ISSAc4uybfCOXQT02ZdiJjbUg7NQuEyTidkDF9mhwIk3mLyGN8p0W
+X-Received: by 2002:a81:9210:0:b0:2dc:27d2:292e with SMTP id j16-20020a819210000000b002dc27d2292emr11476809ywg.20.1646709436446;
+        Mon, 07 Mar 2022 19:17:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646709436; cv=none;
+        d=google.com; s=arc-20160816;
+        b=BuoQS3vH/pmPOEZpDY1yf1qHzH3TJLgVrfLKvohrFJqlGzViphZ/EDPoMHz3bF3B4z
+         y/e7MNZX4FtbchUO3159TeNH8RCBELiUbuwHuTriReIh5zZnqP/SyFb3xYgZOCTVsh4X
+         2SRdIgGuCtKxMDfA52iECTdQI+fRBxit+zgrJqAJlePQCRvGxPTsXoCauuO9TLt3d6cp
+         PbUJh9v5/FPRu2FXPBEc5akIu/xXk5hLlqg2v/VMfwS2CVZnsI8IOZWZiKSB/ofxKkU+
+         hArDgjKt9IRBLYEg1nPkPih5I/LsDTj8tHRLhzD7FGSlIKQsdFordjAkjU3JvxBjw011
+         drRg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=WGpBiuxkYDy2QqVFmBdSCdMA/haDSHr6IWIkXWGMiDk=;
+        b=SfIh2KtJHXHSp1TaOmYvql90QxCWr8JUDDIYcCYxIZ0AWRdihx92s5pDob6ujOvqdk
+         yxdaOMNHtHInJFJw3UlrbCernB0Dv5btLSddvWwKsDozdaA3BPkt6rMXsV2rhDkrfViw
+         SzpY4Fn0A//atkxw20kZw7Eg2bNCkm9YDjdc7XVM8avIzeN/uI89RBXum4djjqyLXNsw
+         Y3+hIc2OO5gG1vTMdVCKvWyMiHTxLovHi/PxLedz4wqjaHELLi7MqIyvdJIr0h5QdVL7
+         Kjb++C59MKBx1ns09wOlQt+9FfzMAX3LZkHQIQYiAELskYb4KIWsgik0oNdv1iF2HSYz
+         g0TA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=l+flD66x;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q186-20020a8199c3000000b002dbdfd95009si9550973ywg.452.2022.03.07.19.17.16
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 07 Mar 2022 19:17:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=l+flD66x;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43346 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nRQLb-00023y-QQ
+	for alex.bennee@linaro.org; Mon, 07 Mar 2022 22:17:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38530)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nRQLQ-00023I-T0
+ for qemu-devel@nongnu.org; Mon, 07 Mar 2022 22:17:04 -0500
+Received: from [2607:f8b0:4864:20::52c] (port=35690
+ helo=mail-pg1-x52c.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nRQLN-0003hh-78
+ for qemu-devel@nongnu.org; Mon, 07 Mar 2022 22:17:04 -0500
+Received: by mail-pg1-x52c.google.com with SMTP id e6so15251886pgn.2
+ for <qemu-devel@nongnu.org>; Mon, 07 Mar 2022 19:17:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WGpBiuxkYDy2QqVFmBdSCdMA/haDSHr6IWIkXWGMiDk=;
+ b=l+flD66x/PNwDCPn2PDq/CWIsduFs0Z04vvDsfQYH64zWlcmdcJVEKpRu3o9CkEZeS
+ uM8Q9jZRQ8UkwDmxKpJFssOcWG9KZzkQeZxI/e17kbtTLlN5S5GF3xfIqJLQD+lVvrZo
+ LYRBHFknmRfPBGqCNLatgEK/8JdtoOIAIdB0Y9XIPggIS6g7OQkXkyQZSdUwesSeEeh1
+ rRMV9R4BU7Qs6tfjAk/DrcvoXwYznnYIzv+kLgMbOHwmAyGAbkr+Etqjw01IIMDFaZ0V
+ CVu+Xxq/JfoJG4hgu0nGLUQMATyn4+sZkjhRfB9AAvugjFXDyj7mmShp1scXyrJUHEa2
+ YmIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WGpBiuxkYDy2QqVFmBdSCdMA/haDSHr6IWIkXWGMiDk=;
+ b=QEZzeVdhuYGI8U+3eXnB4V1P77F1v0omqO6JYb8dBz6/w6+eOkIbMzmIGmjgc/uVoY
+ xI17CC/0HWeyn0TDzTDne3+zOes+/RL6kBR/Ykl0t5Sy3Ej3r5i6sz1E13a4JsLRksIS
+ KpnCrvGYNAlunrSwSffw+n4UasOEsVtzIv8Y35rQ0SZRGQbeapr85E4vqjhYVES85baN
+ 35M+m8cstJanENMndaGvttqzETH7n3NQUDUpc/xbpQwVqSdUkhM9PywBb1ED4gTD/KeL
+ me7VQekZAIB+zxWQYROAO4rle3BRQ3kxmd81BbyJTiKX2smgDETuyRAu2SESD3NWM7Z1
+ NlPg==
+X-Gm-Message-State: AOAM5332tL8o7xMff6PWYAJ2xxIiSWHPL1esvNSz/qMbk/wgrbeU4Z7K
+ f/lkBrr6fDjOr6U4aRiwH6BcPlFH2WS5Rw==
+X-Received: by 2002:a63:2204:0:b0:378:9f08:206d with SMTP id
+ i4-20020a632204000000b003789f08206dmr12666660pgi.3.1646709419521; 
+ Mon, 07 Mar 2022 19:16:59 -0800 (PST)
+Received: from localhost.localdomain (cpe-50-113-46-110.hawaii.res.rr.com.
+ [50.113.46.110]) by smtp.gmail.com with ESMTPSA id
+ h5-20020a056a001a4500b004e177b8cbfdsm17801830pfv.197.2022.03.07.19.16.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Mar 2022 19:16:58 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [RFC PATCH] tests/avocado: update aarch64_virt test to exercise -cpu max
-Date: Mon,  7 Mar 2022 17:22:49 +0000
-Message-Id: <20220307172249.3125779-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.30.2
+Subject: [PATCH v3] target/arm: Fix sve2 ldnt1 and stnt1
+Date: Mon,  7 Mar 2022 17:16:55 -1000
+Message-Id: <20220308031655.240710-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: OnFPT8R6H2in
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::52c
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gxzb6o4o5pVp
 
-The Fedora 29 kernel is quite old and importantly fails when running
-in LPA2 scenarios. As it's not really exercising much of the CPU space
-replace it with a custom 5.16.12 kernel with all the architecture
-options turned on. There is a minimal buildroot initramfs included in
-the kernel which has a few tools for stress testing the memory
-subsystem. The userspace also targets the Neoverse N1 processor so
-will fail without additional v8.x+ features.
+For both ldnt1 and stnt1, the meaning of the Rn and Rm are different
+from ld1 and st1: the vector and integer registers are reversed, and
+the integer register 31 refers to XZR instead of SP.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Secondly, the 64-bit version of ldnt1 was being interpreted as
+32-bit unpacked unscaled offset instead of 64-bit unscaled offset,
+which discarded the upper 32 bits of the address coming from
+the vector argument.
+
+Thirdly, validate that the memory element size is in range for the
+vector element size for ldnt1.  For ld1, we do this via independent
+decode patterns, but for ldnt1 we need to do it manually.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/826
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/avocado/boot_linux_console.py | 22 ++++++++++++++--------
- 1 file changed, 14 insertions(+), 8 deletions(-)
+ target/arm/sve.decode             |  5 ++-
+ target/arm/translate-sve.c        | 51 +++++++++++++++++++++++++++++--
+ tests/tcg/aarch64/test-826.c      | 50 ++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  4 +++
+ tests/tcg/configure.sh            |  4 +++
+ 5 files changed, 109 insertions(+), 5 deletions(-)
+ create mode 100644 tests/tcg/aarch64/test-826.c
 
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 9c618d4809..ca3a40e91d 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -12,6 +12,7 @@
- import lzma
- import gzip
- import shutil
-+import time
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index c60b9f0fec..0388cce3bd 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -1575,10 +1575,9 @@ USDOT_zzzz      01000100 .. 0 ..... 011 110 ..... .....  @rda_rn_rm
  
- from avocado import skip
- from avocado import skipUnless
-@@ -330,25 +331,30 @@ def test_aarch64_virt(self):
-         :avocado: tags=arch:aarch64
-         :avocado: tags=machine:virt
-         :avocado: tags=accel:tcg
--        :avocado: tags=cpu:cortex-a53
-+        :avocado: tags=cpu:max
-         """
--        kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
--                      '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
--                      '/vmlinuz')
--        kernel_hash = '8c73e469fc6ea06a58dc83a628fc695b693b8493'
-+        kernel_url = ('https://fileserver.linaro.org/s/'
-+                      'z6B2ARM7DQT3HWN/download')
+ ### SVE2 Memory Gather Load Group
+ 
+-# SVE2 64-bit gather non-temporal load
+-#   (scalar plus unpacked 32-bit unscaled offsets)
++# SVE2 64-bit gather non-temporal load (scalar plus 64-bit unscaled offsets)
+ LDNT1_zprz      1100010 msz:2 00 rm:5 1 u:1 0 pg:3 rn:5 rd:5 \
+-                &rprr_gather_load xs=0 esz=3 scale=0 ff=0
++                &rprr_gather_load xs=2 esz=3 scale=0 ff=0
+ 
+ # SVE2 32-bit gather non-temporal load (scalar plus 32-bit unscaled offsets)
+ LDNT1_zprz      1000010 msz:2 00 rm:5 10 u:1 pg:3 rn:5 rd:5 \
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 33ca1bcfac..2c23459e76 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -6487,10 +6487,33 @@ static bool trans_LD1_zpiz(DisasContext *s, arg_LD1_zpiz *a)
+ 
+ static bool trans_LDNT1_zprz(DisasContext *s, arg_LD1_zprz *a)
+ {
++    gen_helper_gvec_mem_scatter *fn = NULL;
++    bool be = s->be_data == MO_BE;
++    bool mte = s->mte_active[0];
 +
-+        kernel_hash = 'ed11daab50c151dde0e1e9c9cb8b2d9bd3215347'
-         kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
- 
-         self.vm.set_console()
-         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-                                'console=ttyAMA0')
-         self.require_accelerator("tcg")
--        self.vm.add_args('-cpu', 'cortex-a53',
-+        self.vm.add_args('-cpu', 'max,pauth-impdef=on',
-                          '-accel', 'tcg',
-                          '-kernel', kernel_path,
-                          '-append', kernel_command_line)
-         self.vm.launch()
--        console_pattern = 'Kernel command line: %s' % kernel_command_line
--        self.wait_for_console_pattern(console_pattern)
-+        self.wait_for_console_pattern('Welcome to Buildroot')
-+        time.sleep(0.1)
-+        exec_command(self, 'root')
-+        time.sleep(0.1)
-+        exec_command(self, 'cat /proc/self/maps')
-+        time.sleep(0.1)
++    if (a->esz < a->msz + !a->u) {
++        return false;
++    }
+     if (!dc_isar_feature(aa64_sve2, s)) {
+         return false;
+     }
+-    return trans_LD1_zprz(s, a);
++    if (!sve_access_check(s)) {
++        return true;
++    }
 +
++    switch (a->esz) {
++    case MO_32:
++        fn = gather_load_fn32[mte][be][0][0][a->u][a->msz];
++        break;
++    case MO_64:
++        fn = gather_load_fn64[mte][be][0][2][a->u][a->msz];
++        break;
++    }
++    assert(fn != NULL);
++
++    do_mem_zpz(s, a->rd, a->pg, a->rn, 0,
++               cpu_reg(s, a->rm), a->msz, false, fn);
++    return true;
+ }
  
-     def test_aarch64_xlnx_versal_virt(self):
-         """
+ /* Indexed by [mte][be][xs][msz].  */
+@@ -6647,10 +6670,34 @@ static bool trans_ST1_zpiz(DisasContext *s, arg_ST1_zpiz *a)
+ 
+ static bool trans_STNT1_zprz(DisasContext *s, arg_ST1_zprz *a)
+ {
++    gen_helper_gvec_mem_scatter *fn;
++    bool be = s->be_data == MO_BE;
++    bool mte = s->mte_active[0];
++
++    if (a->esz < a->msz) {
++        return false;
++    }
+     if (!dc_isar_feature(aa64_sve2, s)) {
+         return false;
+     }
+-    return trans_ST1_zprz(s, a);
++    if (!sve_access_check(s)) {
++        return true;
++    }
++
++    switch (a->esz) {
++    case MO_32:
++        fn = scatter_store_fn32[mte][be][0][a->msz];
++        break;
++    case MO_64:
++        fn = scatter_store_fn64[mte][be][2][a->msz];
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    do_mem_zpz(s, a->rd, a->pg, a->rn, 0,
++               cpu_reg(s, a->rm), a->msz, true, fn);
++    return true;
+ }
+ 
+ /*
+diff --git a/tests/tcg/aarch64/test-826.c b/tests/tcg/aarch64/test-826.c
+new file mode 100644
+index 0000000000..f59740a8c5
+--- /dev/null
++++ b/tests/tcg/aarch64/test-826.c
+@@ -0,0 +1,50 @@
++#include <sys/mman.h>
++#include <unistd.h>
++#include <signal.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <assert.h>
++
++static void *expected;
++
++void sigsegv(int sig, siginfo_t *info, void *vuc)
++{
++    ucontext_t *uc = vuc;
++
++    assert(info->si_addr == expected);
++    uc->uc_mcontext.pc += 4;
++}
++
++int main()
++{
++    struct sigaction sa = {
++        .sa_sigaction = sigsegv,
++        .sa_flags = SA_SIGINFO
++    };
++
++    void *page;
++    long ofs;
++
++    if (sigaction(SIGSEGV, &sa, NULL) < 0) {
++        perror("sigaction");
++        return EXIT_FAILURE;
++    }
++
++    page = mmap(0, getpagesize(), PROT_NONE, MAP_PRIVATE | MAP_ANON, -1, 0);
++    if (page == MAP_FAILED) {
++        perror("mmap");
++        return EXIT_FAILURE;
++    }
++
++    ofs = 0x124;
++    expected = page + ofs;
++
++    asm("ptrue p0.d, vl1\n\t"
++        "dup z0.d, %0\n\t"
++        "ldnt1h {z1.d}, p0/z, [z0.d, %1]\n\t"
++        "dup z1.d, %1\n\t"
++        "ldnt1h {z0.d}, p0/z, [z1.d, %0]"
++        : : "r"(page), "r"(ofs) : "v0", "v1");
++
++    return EXIT_SUCCESS;
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index ac07acde66..f7121cb4d8 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -86,7 +86,11 @@ run-gdbstub-sve-ioctls: sve-ioctls
+ 
+ EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls
+ endif
++endif
+ 
++ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE2),)
++AARCH64_TESTS += test-826
++test-826: CFLAGS+=-march=armv8.1-a+sve2
+ endif
+ 
+ TESTS += $(AARCH64_TESTS)
+diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
+index ed4b5ccb1f..84f928f7f8 100755
+--- a/tests/tcg/configure.sh
++++ b/tests/tcg/configure.sh
+@@ -299,6 +299,10 @@ for target in $target_list; do
+                              -march=armv8.1-a+sve -o $TMPE $TMPC; then
+                   echo "CROSS_CC_HAS_SVE=y" >> $config_target_mak
+               fi
++              if do_compiler "$target_compiler" $target_compiler_cflags \
++                             -march=armv8.1-a+sve2 -o $TMPE $TMPC; then
++                  echo "CROSS_CC_HAS_SVE2=y" >> $config_target_mak
++              fi
+               if do_compiler "$target_compiler" $target_compiler_cflags \
+                              -march=armv8.3-a -o $TMPE $TMPC; then
+                   echo "CROSS_CC_HAS_ARMV8_3=y" >> $config_target_mak
 -- 
-2.30.2
+2.25.1
+

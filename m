@@ -1,119 +1,124 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2547946lfo;
-        Tue, 8 Mar 2022 10:08:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyYXPhDswM5kxHsSNueFuYu7eyOaSDMzGjdaNJWfOiEBRlJUCKqQcBXVIMKsxYbaSH+k0v7
-X-Received: by 2002:a25:2453:0:b0:629:1914:9526 with SMTP id k80-20020a252453000000b0062919149526mr12412801ybk.504.1646762906348;
-        Tue, 08 Mar 2022 10:08:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646762906; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2548384lfo;
+        Tue, 8 Mar 2022 10:09:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxeBwCoJptbstBrr4R9iJqKTxyZ6XETV00coZSagsd4NN8nguHTCrfzPfRxu5WBhVQ79ldl
+X-Received: by 2002:a25:ab02:0:b0:628:63f0:95ff with SMTP id u2-20020a25ab02000000b0062863f095ffmr13431359ybi.29.1646762944286;
+        Tue, 08 Mar 2022 10:09:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646762944; cv=none;
         d=google.com; s=arc-20160816;
-        b=YSORYo1OXqP+8cu0NggoBVTfDDvgpM+ZS347O777SJyI8rBrCEWD28Ifl7K3wrTpfI
-         A7GkiaBZ+wrIP1HKR/vqmc7N/+PsU3j97+bTWDXV75+U5F3yXEZ3J1cQXKQMuMeu0ttz
-         tnTk6jCqnN27kY+tOGCKkWwZS/3dn4nMJT1RoqCtsqJO0A0Xl/GhUmtEPEqYJv1QqOr4
-         /3eZimSkhlAj0Z2bB+5b6imPOfgeRFadck0fxFgbWM80qNR7z/2bmiRJwQJ+b6U1lfH4
-         G13pL21UKRiqejmpZblESUF7MIXnXp9mYMqU6NAZ3I7fi29KOVz/fOdecyqs8/mSOFIp
-         tmRQ==
+        b=hEriNN91ctedGnc3HXSZ89Lu9aiOqK4ey7APzn8wVYVvmTCb5Rm+0WWtx7p/0Sb9YG
+         jpIL52hj5Tf0mDLYC7ZWYCoLj4kr4GMv/sAVteChGTZyPaOYBpf700E1L5cLOGUlW6VS
+         OM+bYQy3SoPDr79QNlcI/JHBeHRBvQ9oWB4nZeeXuv/rkCdU1Xlnb3ll/MnP+Lh7IxHK
+         yOkDUggAUhtWMHMM0cP3DTFjTuJJygwSBZIKNRW2dYGf7c9O6+q1MNp1pRuBVDBcqAqL
+         E0+ibhTxoRD3AJVNawdIr58zW6tYMwquO0psoLOjz6HNBSvlkB+TjhXfkkmF4cnM5DQz
+         BqJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=s178kYbz/1pYxP7yDcXtb3upTerNKtjydWGDzNN6GNc=;
-        b=qwGoW7e66VPXdPU9amhr5gWpdcRFBgycPqOwv+s2xfmTaLBdNvtyHKd7qPMN5qFsHB
-         0SDuQ09TuS+NxLwJSQ+tZqtHGSUmAPeLJufaBa6w3tAXCM34So6ajFznQE9NAZJXjvRL
-         EkFqispK+soMamWaOB7VQ5WA5kYiOuh7jlXQNH2WcRIpePtzighoPJAvSRUTlrmUTmP2
-         +2Jfs+H9ViFa+m+muMoyB/rNwcQuNAIoIqLeVTe2XATvpnMAqnBZqQcsFASUNbgZGKLC
-         /gLStFhCxNyjo8nbu56cLJXNAq3XJShRcDtZSawALFwbrnwhXU23ibJF+pDlAKmtU5X5
-         lBQw==
+        bh=tMbQPQmNCJpXJZVpub/5ENhMlycIfgXJrOoUE5B7Dl4=;
+        b=sdbQ9HID7ksfAkv0YT4RGYnnCZ6kVB2zPouK4im8n6+ZVWKpfV9FhMngvbzDGy71WQ
+         CgEs/aoqg3AvB/iZqc2vlFJRQK81UE+s3I5vu3bqyS1biDyCn2pCMJvNSTHg83SeMAS3
+         tN09zK/goxmCOu10UmDkXP0D6/94mN0hg8K7C7DfZCUguz3MX4nNxB8rLsKqu/TVYKV3
+         6FLl08l7bR84RFBpkTn63AHLbuzovk7oWi3ekVZKEP6FhC+gaeqUhLSu/va8IlS3bG6T
+         Nlw5jc5qp/93VSTchhe3uT6hhRXFLwAiEe1FxCBM0edjUxtWF3mC//hdXciPd/5iABOy
+         ++ZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KR41liDH;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=QjvBaB0D;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e20-20020a813714000000b002d692364214si11617378ywa.536.2022.03.08.10.08.26
+        by mx.google.com with ESMTPS id d4-20020a251d04000000b00612926cb5ecsi12152479ybd.583.2022.03.08.10.09.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Mar 2022 10:08:26 -0800 (PST)
+        Tue, 08 Mar 2022 10:09:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KR41liDH;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=QjvBaB0D;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58590 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59602 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nReG1-0007cl-Qn
-	for alex.bennee@linaro.org; Tue, 08 Mar 2022 13:08:25 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50990)
+	id 1nReGd-0008K6-L7
+	for alex.bennee@linaro.org; Tue, 08 Mar 2022 13:09:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nRdXJ-000771-Je
- for qemu-devel@nongnu.org; Tue, 08 Mar 2022 12:22:13 -0500
-Received: from [2607:f8b0:4864:20::535] (port=33676
- helo=mail-pg1-x535.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nReGR-0008Hc-Iw; Tue, 08 Mar 2022 13:08:51 -0500
+Received: from [2607:f8b0:4864:20::102e] (port=39634
+ helo=mail-pj1-x102e.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nRdX0-000170-30
- for qemu-devel@nongnu.org; Tue, 08 Mar 2022 12:21:55 -0500
-Received: by mail-pg1-x535.google.com with SMTP id 6so12501027pgg.0
- for <qemu-devel@nongnu.org>; Tue, 08 Mar 2022 09:21:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nReGQ-0000vE-63; Tue, 08 Mar 2022 13:08:51 -0500
+Received: by mail-pj1-x102e.google.com with SMTP id
+ mr24-20020a17090b239800b001bf0a375440so2893521pjb.4; 
+ Tue, 08 Mar 2022 10:08:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=s178kYbz/1pYxP7yDcXtb3upTerNKtjydWGDzNN6GNc=;
- b=KR41liDHUnRevMXk7SQF7tlxftfhnN4WqLyWMRAWEQOp8WE6Xk74BuCTnUE0hPyvZb
- 7LjapdI5oX3c/snDTrSmHpxu2j/NrcoAlRZtDkBVa1PWIPVJXS9rEL4DhkDD+xlXAdfG
- YgZ+Acis5xKyML58WKLiD+Ph9Mk8yUht4tp7sh6xJ4tVODac5xI0pEaJqUTti3lv5Rt7
- F95Xyad0rheiitRXDZSiTrzYbVd+D8ES624uFxvTTcD7D8fMnqCQc6C6xzAnv/GaUXfG
- HQ6UHfM7mkJQyFL1zhHBUHLYBL/i4wKQc7DeLWWpLsGl6H17REcegdP+eFFSdqa7FiXu
- 5oKQ==
+ bh=tMbQPQmNCJpXJZVpub/5ENhMlycIfgXJrOoUE5B7Dl4=;
+ b=QjvBaB0DahMCCa9Zqkscw6x8G+DY69EZ/JYA54g+9nmKhuhJivlgo4eU4Ez7QuNzg7
+ IL0wCHCLJ/T+GvU04444LRrk234dPjy0h6LEN2MPUgimePf4NnxQKqRcTqNvF/IROtZ8
+ w9OEGWnJNIfRZSTgZEUXvYAXAj8fHMJo2tfLwhq4LNSB4PmbqWJSD3HHhC1srV5tZoRO
+ rRA0a5EUgkTBuulXoga1mIYtY3nlIebet464pAJ8QJ6rSggoqvz1p2HyNUm8HKMVNTk7
+ BGOS086cgs1ACG3AcbjMfs4yDO2SD42Pg9CWuM9HEEaYD5NGYZ7bhChdiAO/L2oCiB7N
+ 5dig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=s178kYbz/1pYxP7yDcXtb3upTerNKtjydWGDzNN6GNc=;
- b=0fuF7omgc6YeI6lefKL/hSAvsVnK9kcjYZB+hswshtiRqwW1JNzL01QR2aOEz4poSQ
- TOR4VMBLdclvqDfSt+Z44omc3CW3wOFd+VCmM2AtVDB0RaoxUwZ+NSih8hnx0fK+5sLA
- PyK7f/EjAwBiurrVBB7axU3kPVItVhWMwnWvrW4I6+WoZu6g/d7Ys25znx5OtS5GZvKL
- zRF74Mz1xgObKDrTHJpWshSxn18nAmjESU1ff/mp0REJUiGuhBA3Pj52TiP8h0EERxWj
- U25pfhGPPPdxTHlZiMSXAPLSfj8mpdYFzcWti2CszFXgPJAclVdAES1azk9xklJkzZnB
- 4vRA==
-X-Gm-Message-State: AOAM533gEBjaEiFpm/Q7W9v5w+n4giTFBPJIt+u5WFZBjexEp2JCQFBT
- 1qiI8QnnIeA2RH9wkr3Y0CRgRQ==
-X-Received: by 2002:a63:e716:0:b0:380:85d1:656c with SMTP id
- b22-20020a63e716000000b0038085d1656cmr5052333pgi.321.1646760112659; 
- Tue, 08 Mar 2022 09:21:52 -0800 (PST)
-Received: from [192.168.4.112] (cpe-50-113-46-110.hawaii.res.rr.com.
- [50.113.46.110]) by smtp.gmail.com with ESMTPSA id
- k21-20020aa788d5000000b004f71bff2893sm5375707pff.67.2022.03.08.09.21.51
+ bh=tMbQPQmNCJpXJZVpub/5ENhMlycIfgXJrOoUE5B7Dl4=;
+ b=lKOMLK+w7GK9XMb9ER/STmmwu725ngJH5iuvmxiqSE0tIuRqW95U/bDtJ5IUfZ31lG
+ cawF0s/V7/r2qJKow6aDKRMOPXfWl2dIwmnKK/p/GAE0Z1h8Eaf4uAARWNkq7V3o2Huq
+ MuFS+8500To2qJbwQyrwPaFoEBPKLkcDe23duFSKudscoK31rzNgKRXtu4xrhef7VzmP
+ 3SvYsnmBhuluisK8iM8nmMUyKwGpDApn74IH5l0x5zSCf78ZSM26ZPDd9N/T9Pdv7SYS
+ Q3DR3SqR4iGMDRb89YyGzVJlg+89OQe/JDm9ZJgtLtCBuUCtIL+w5+SQfYBbY8QdNKy5
+ 8JfQ==
+X-Gm-Message-State: AOAM532D97bg6geZ3PwOoIKdV33ngKkn3ASrKuRukaQNBXggsZSNF7Rl
+ vP+y2ZBlUnwW9gKKXyduLoQ=
+X-Received: by 2002:a17:90a:bd04:b0:1bf:951d:5bf2 with SMTP id
+ y4-20020a17090abd0400b001bf951d5bf2mr2932285pjr.18.1646762928507; 
+ Tue, 08 Mar 2022 10:08:48 -0800 (PST)
+Received: from [192.168.1.35] (71.red-83-50-68.dynamicip.rima-tde.net.
+ [83.50.68.71]) by smtp.gmail.com with ESMTPSA id
+ h2-20020a056a00170200b004e0f0c0e13esm20914906pfc.66.2022.03.08.10.08.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Mar 2022 09:21:52 -0800 (PST)
-Message-ID: <1293fd43-c952-8c23-a903-485a15ec6366@linaro.org>
-Date: Tue, 8 Mar 2022 07:21:49 -1000
+ Tue, 08 Mar 2022 10:08:48 -0800 (PST)
+Message-ID: <e670a39d-5aea-a580-e78d-099dcc01aea9@gmail.com>
+Date: Tue, 8 Mar 2022 19:08:44 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH] hw/misc/npcm7xx_clk: Don't leak string in
- npcm7xx_clk_sel_init()
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.6.1
+Subject: Re: [PATCH v3 0/9] This patch series contains updates to PMBus in
+ QEMU along with some PMBus device models for Renesas regulators. I have also
+ added myself to MAINTAINERS as this code is in use daily, where I am
+ responsible for it.
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220308170302.2582820-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220308170302.2582820-1-peter.maydell@linaro.org>
+To: minyard@acm.org
+References: <20220302015053.1984165-1-titusr@google.com>
+ <20220304214354.GL3457@minyard.net>
+ <CAMvPwGpzO3VyCqGJY28QVQoo9AwYxxrvP3RqPS6JTgpTk8ojtw@mail.gmail.com>
+ <1af23dba-8f7a-8d93-706d-6e16067cdce2@gmail.com>
+ <20220308135324.GU3457@minyard.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <20220308135324.GU3457@minyard.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::535
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102e
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x535.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -127,23 +132,53 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Tyrone Ting <kfting@nuvoton.com>,
- Havard Skinnemoen <hskinnemoen@google.com>
+Cc: peter.maydell@linaro.org, Titus Rwantare <titusr@google.com>,
+ venture@google.com, f4bug@amsat.org, qemu-devel@nongnu.org,
+ wuhaotsh@google.com, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NgLciAf1bHbc
+X-TUID: l227Yx4/XqBB
 
-On 3/8/22 07:03, Peter Maydell wrote:
-> In npcm7xx_clk_sel_init() we allocate a string with g_strdup_printf().
-> Use g_autofree so we free it rather than leaking it.
+On 8/3/22 14:53, Corey Minyard wrote:
+> On Mon, Mar 07, 2022 at 01:00:02AM +0100, Philippe Mathieu-Daudé wrote:
+>> On 5/3/22 00:42, Titus Rwantare wrote:
+>>> On Fri, 4 Mar 2022 at 13:43, Corey Minyard <minyard@acm.org> wrote:
+>>>>
+>>>> On Tue, Mar 01, 2022 at 05:50:44PM -0800, Titus Rwantare wrote:
+>>>>> v2:
+>>>>>     - split PMBus commit with updates into individual fixes
+>>>>>     - renamed isl_pmbus[.ch] adding _vr for voltage regulators
+>>>>>
+>>>>> v3:
+>>>>>     - split uint refactor commit and removed commit renaming files
+>>>>>     - rename rolled into preceding commits
+>>>>>     - update commit description for uint refactoring change
+>>>>
+>>>> This all looks good to me:
+>>>>
+>>>> Acked-by: Corey Minyard <cminyard@mvista.com>
+>>>>
+>>>> Do you have a plan for getting this in to qemu?  Like through the ARM
+>>>> tree?  I could take it into an I2C tree, but there's really not much
+>>>> activity or work there.
+>>>>
+>>>> -corey
+>>>
+>>> In general PMBus is more specific to i2c than ARM, but I'm not sure of
+>>> the QEMU implications.
+>>
+>> Titus, could you address my comments?
+>>
+>> Corey, if you are busy, I can take care of this series.
 > 
-> (Detected with the clang leak sanitizer.)
+> It's not a "too busy" sort of thing, the i2c tree doesn't get much
+> traffic.  I can take it, but it's not much different than just pulling
+> it directly.
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   hw/misc/npcm7xx_clk.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> So it's probably best if you take it.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+OK. I'll send a pullreq shortly.
 
-r~
+Regards,
+
+Phil.

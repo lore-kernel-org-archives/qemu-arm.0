@@ -1,112 +1,104 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2579659lfo;
-        Tue, 8 Mar 2022 10:53:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzdZJ6wmhz+rkHz7zdgrMrWo7afvqDHP615JwzvquDquknVzEvPkxb1OuBEUuQkgiqokObs
-X-Received: by 2002:a25:254:0:b0:629:6709:2cc6 with SMTP id 81-20020a250254000000b0062967092cc6mr6513056ybc.357.1646765623929;
-        Tue, 08 Mar 2022 10:53:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646765623; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2669051lfo;
+        Tue, 8 Mar 2022 13:16:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyR62hiXcJ4hEcn5/rQgKtaCkHZow3oRUmSbok6so98TMS29iipq6UbakAr8ANnwk0nwNig
+X-Received: by 2002:a0d:f542:0:b0:2dd:ace:e654 with SMTP id e63-20020a0df542000000b002dd0acee654mr4336215ywf.93.1646774216518;
+        Tue, 08 Mar 2022 13:16:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646774216; cv=none;
         d=google.com; s=arc-20160816;
-        b=0dSaWY5SX1Al0fPgoj3FTO3htuKFSq9vHwry0Enzc0m8xHDKWJACnT3XO9pmN16GMM
-         8NJAHMSkk0unBevU488S1l1ZC9iJRP/fOuMh1vKfbenaOycDRQNfB1dDl4wzSwcWWPEf
-         10tSAer0CxFZoW7C8EL6BcpeUYwki5qnC/MgLaUCOFdPbEGdE/8+HIfeKpbv47UOeUKN
-         2WS/B1dCg+YbHW09TOeGSTk8gFieP1O3wMqqcijg8TT2Z4FJGqhiSc+HW9/IAxfEah7q
-         6gQ7AIh+or6/aetUMNwja7dTDHNiUb7b8Jwos6Qg02ylnlkwSVT59ywdWAZUPnNmcS8L
-         lQ2g==
+        b=xpqh0Cavf3G0J9RFWlJy6lESAw5kyTxRI+V2uUrhGrms3JRrZJ9sJ6PBbD8us8qJd3
+         KwmTBotZZ3RbJLRMELfHzxM5Zl14LqcASzJmW510jo/WFkibtU7t/t4CQflj3Z8GNHkM
+         X1O9usRAOvpPvqWVa/uk0+6xMRPAWJ9TjiSW/WYVwFl8t9YDDqoSzckHX7qao7n0sUKN
+         jMJlJIoSQ/eaFSZ7xwCTqES0HFlY6lqtQsb06zHSP4kvlrMIKBZCwcMWBg9psP/hUp6Z
+         XdI6nSnGALtfx10ZtxH9zBZZv9WZ2ZnbDPjhHr43xtXGI7Zz2z2ne6WbYoAOnfu6QCK/
+         QbkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=phJ0KRh+qoV1VJHIW3W94dQ7PhLGPjLfVmNNIu3Cxyw=;
-        b=Bf8PgUh+AwJRjtvfE85WWrLnqUBCh6XJt0Uzc5CFn2rwmg1fRLDnXIg872ILOm3fYY
-         xmYElPstG2gR06mqz4KxgFkzU4CFiigyeGZPMt9tA9S/QmeQmy7m6+L8CrVY2QLuDF+D
-         6+AXtnhn1gsEQLLFlIq2QTcOVLYaMB5g1SdP9gc/9T0kGgR6lkddn9abzVeEKam8Up3k
-         RjZLYu66uL08+aNyqIdx1iwjBLL4NFY8cCYoI50lKKz5ik1EGyemu3jaktucKPcp27Bf
-         LdgFe8OkcbtOCub2HhUMv9OA56gpKaukVY42V46s0YDrKeXhZRR/PCGYFR6wYuF0qmIO
-         Q9jg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=YwKpku3BVx+BrgAqGnfP+BDFhVYHBi8pIul22C+zMZM=;
+        b=aQGF8tGoAuoJYDsnsrtBm51xAZMIWtuVJTLiH+AnxAM+TRVzKdh3CRBbB9BMrbs2m7
+         Su/7/y+Tg4iEqY4KKZNXJ8t5tPO3m/GrIZonf4c0ZrEPJjwHRYkMuuXP0e05MnQInOh3
+         1spAEyEyRm6Y5M2xVUwbp2WBxQ09qWYreyAU0u+WbQsesLoX/EwP4hNXG/e5dKha64EI
+         UXrViFILSYJfaGTXhOFuZbqCoDKKCpExxDR07AeVeoZHCUtCH/Gntrg4pWYRaTWoUt0R
+         XxcZm1EegwiBcgcKE2oUr5ntRQOVUYkNf5pzVipWIo0i2a4cZAWaLz1ru845IC2yVYob
+         ErFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=X1ZhfdEu;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UNccynrh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p12-20020a056902114c00b0061d975f7c27si15127557ybu.355.2022.03.08.10.53.43
+        by mx.google.com with ESMTPS id u62-20020a256041000000b0061c46402128si37024ybb.422.2022.03.08.13.16.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Mar 2022 10:53:43 -0800 (PST)
+        Tue, 08 Mar 2022 13:16:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=X1ZhfdEu;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UNccynrh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:43918 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54384 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nRexr-0006uv-Cg
-	for alex.bennee@linaro.org; Tue, 08 Mar 2022 13:53:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46388)
+	id 1nRhCR-0003Bt-UF
+	for alex.bennee@linaro.org; Tue, 08 Mar 2022 16:16:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1nRexR-0006rH-O0
- for qemu-devel@nongnu.org; Tue, 08 Mar 2022 13:53:17 -0500
-Received: from [2607:f8b0:4864:20::f30] (port=33499
- helo=mail-qv1-xf30.google.com)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1nRhCL-00039Q-LK; Tue, 08 Mar 2022 16:16:50 -0500
+Received: from [2607:f8b0:4864:20::12a] (port=40642
+ helo=mail-il1-x12a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1nRexQ-0000LA-6o
- for qemu-devel@nongnu.org; Tue, 08 Mar 2022 13:53:17 -0500
-Received: by mail-qv1-xf30.google.com with SMTP id jq9so210257qvb.0
- for <qemu-devel@nongnu.org>; Tue, 08 Mar 2022 10:53:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1nRhCJ-0005wD-V0; Tue, 08 Mar 2022 16:16:49 -0500
+Received: by mail-il1-x12a.google.com with SMTP id i1so107134ila.7;
+ Tue, 08 Mar 2022 13:16:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=phJ0KRh+qoV1VJHIW3W94dQ7PhLGPjLfVmNNIu3Cxyw=;
- b=X1ZhfdEusdA/Jy/RCobfJfhMXKtaRlBvCOYE8r1NCRNmEIOEXNxvFrOYlpkRt7l2sj
- 9TDnwn6z62xqqASfwaBoUUYfYauQKncAmFF4owMTmfYUNzizKcc869+MTI2UFKOefXje
- AA4pbV6k1a7alBbadAYU4uokSkxHPJEgFUh3ddgN9pXMFZQFuUVdHSNQwleUDvexDQWL
- rZABXI16fE+RCClJk+X0fbGYEtp7I6/k09xmRyYM92pfQFNwMeGxB1StmBJLgIWTr/dC
- LaqVrdQv14Bsc6Kv6/0Dvs9X6vET2xv9XoRmNbBb4RskRoK9jz5Uozw51YIx0p9T5/59
- ZxPg==
+ :cc; bh=YwKpku3BVx+BrgAqGnfP+BDFhVYHBi8pIul22C+zMZM=;
+ b=UNccynrhK9DcEAbgZExCRA3zx29ztNaQv+A/p7fDBi4eQKSVSbBBYAxscazSrBgb/6
+ 7/loHmeQAqLmcm5RfHJvbixZfqU1yVFHQFah9OpoUcZYRfzVJNCR+TWs1hyYrIHKOLcx
+ NWpbeBni4s3sEfNwdKkgUz5HApfWEJ397BPPJ3lENtI8GLder+CHlqCDoMgIV+j4pXzg
+ NF76YSqugr2pEvGZcWAd4Ot7UJ4KtKaKVJJccF3Xl3U5FymSBI2SO3ALDHMri+nK4v5C
+ qOiz9fAIT+66uo+lsRwgIAyHKi6wXtU37Io9tzsHfSF4qlQRiNI2lf5b42sk9bKmkoAp
+ FPdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=phJ0KRh+qoV1VJHIW3W94dQ7PhLGPjLfVmNNIu3Cxyw=;
- b=hDsf6T1i86jk1uTvDJEoVOdRDTf/TxQf9d/TUkJMD3LPOO9cYpRh7L4UHlp5U36S13
- vE0Vuk2dNU8oQn7SFPGPVZZt2jNd5oQ2Gfea6X+vHVHkyegt6HlRkVropjit0/7bedmN
- luPNiKhfGP10aRltLMpdzK+sZKulC/bJjNdSRDorOQ5sQYNXHqgwnbR+QVNSaG5A6zdd
- KDWZUiUHgaxiFUrg5fbmZht2RFc4qos54lH4F4xNbg7zk3468Ju7IZJOEjL64WryP5tl
- KXPgp2F0hndJN/V7TQocIVcHvUUqgtaE2FqrYRCDT8BOWc+28D5AycHnKAduIm7gLJWZ
- ncag==
-X-Gm-Message-State: AOAM5326oxvEhzom5WPAN9I+fWAkihbvUgvJy3Lm8468c9GWnAKyC4+i
- kELFUAR6cPHQu91fwIpk0l5q00mXrBo0dHwey1TUNg==
-X-Received: by 2002:ad4:5ba5:0:b0:435:ac65:b179 with SMTP id
- 5-20020ad45ba5000000b00435ac65b179mr3346006qvq.97.1646765593211; Tue, 08 Mar
- 2022 10:53:13 -0800 (PST)
+ bh=YwKpku3BVx+BrgAqGnfP+BDFhVYHBi8pIul22C+zMZM=;
+ b=O01RHhtOYA/lcuLe8d4gnKUsTK++5I/lNH0e5pcfR5PfjYSZAewlfwG+8QQl0wDkFu
+ 0Sr3aESFIC67/bbu3gntsIgJ07HhyYdBqyIcIeQY7TAfP/1CsfUrcqqZJDc4PmHCzGIn
+ vMXUB6v6VrmjEA/tbR/wvI/YVZU31qAXoF8ap3wtw7LSPA/TUjtyHShSjug0vD0yv84T
+ 49wPrLEf8fnwPCZLkbBYLg/VVei9EQfYfI+pqiKH0FI/LjFUlVVEPVxoJp7T/dgiHJ3F
+ pJl+C7PIMkdbGZPNad8TK+dW/7VOYMVZA+8GDrCm+saHzund4JXCgj+yjD257X34mDZm
+ SR7Q==
+X-Gm-Message-State: AOAM533e/GLCC+CCoKBq8K0gSl+ycMMUUO50tsEL1lKC1ZBqTeO9iQbW
+ 47VlofNs+matjjfCDHBbt9nsmdKM/sdODR/yPIk=
+X-Received: by 2002:a92:d80c:0:b0:2c2:c40c:7bd4 with SMTP id
+ y12-20020a92d80c000000b002c2c40c7bd4mr17183247ilm.310.1646774206466; Tue, 08
+ Mar 2022 13:16:46 -0800 (PST)
 MIME-Version: 1.0
-References: <20220308170302.2582820-1-peter.maydell@linaro.org>
- <1293fd43-c952-8c23-a903-485a15ec6366@linaro.org>
-In-Reply-To: <1293fd43-c952-8c23-a903-485a15ec6366@linaro.org>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Tue, 8 Mar 2022 10:53:02 -0800
-Message-ID: <CAGcCb11FYaAEXDUc==FLYbVhL3eZgCTn_dwhd46SxjobGnF3Qg@mail.gmail.com>
-Subject: Re: [PATCH] hw/misc/npcm7xx_clk: Don't leak string in
- npcm7xx_clk_sel_init()
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>, Tyrone Ting <kfting@nuvoton.com>, 
- Havard Skinnemoen <hskinnemoen@google.com>
-Content-Type: multipart/alternative; boundary="00000000000036d10105d9b97ec2"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::f30
+References: <20220308150207.2546272-1-peter.maydell@linaro.org>
+In-Reply-To: <20220308150207.2546272-1-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 9 Mar 2022 07:16:20 +1000
+Message-ID: <CAKmqyKMs72r7Ccii87Qp90GmDz09LerbS3DLSoTnKzX0tDQJqg@mail.gmail.com>
+Subject: Re: [PATCH] hw/dma/xlnx_csu_dma: Set TYPE_XLNX_CSU_DMA class_size
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::12a
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f30;
- envelope-from=wuhaotsh@google.com; helo=mail-qv1-xf30.google.com
-X-Spam_score_int: -161
-X-Spam_score: -16.2
-X-Spam_bar: ----------------
-X-Spam_report: (-16.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.659,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::12a;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x12a.google.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, PDS_HP_HELO_NORDNS=0.659,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,65 +111,71 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Francisco Iglesias <francisco.iglesias@xilinx.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YA7Xp47IMARO
+X-TUID: o62dkXA2OgQW
 
---00000000000036d10105d9b97ec2
-Content-Type: text/plain; charset="UTF-8"
-
-On Tue, Mar 8, 2022 at 10:09 AM Richard Henderson <
-richard.henderson@linaro.org> wrote:
-
-> On 3/8/22 07:03, Peter Maydell wrote:
-> > In npcm7xx_clk_sel_init() we allocate a string with g_strdup_printf().
-> > Use g_autofree so we free it rather than leaking it.
-> >
-> > (Detected with the clang leak sanitizer.)
-> >
-> > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> > ---
-> >   hw/misc/npcm7xx_clk.c | 4 ++--
-> >   1 file changed, 2 insertions(+), 2 deletions(-)
+On Wed, Mar 9, 2022 at 1:07 AM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> In commit 00f05c02f9e7342f we gave the TYPE_XLNX_CSU_DMA object its
+> own class struct, but forgot to update the TypeInfo::class_size
+> accordingly.  This meant that not enough memory was allocated for the
+> class struct, and the initialization of xcdc->read in the class init
+> function wrote off the end of the memory. Add the missing line.
 >
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> Found by running 'check-qtest-aarch64' with a clang
+> address-sanitizer build, which complains:
+>
+> ==2542634==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x61000000ab00 at pc 0x559a20aebc29 bp 0x7fff97df74d0 sp 0x7fff97df74c8
+> WRITE of size 8 at 0x61000000ab00 thread T0
+>     #0 0x559a20aebc28 in xlnx_csu_dma_class_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/../../hw/dma/xlnx_csu_dma.c:722:16
+>     #1 0x559a21bf297c in type_initialize /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/../../qom/object.c:365:9
+>     #2 0x559a21bf3442 in object_class_foreach_tramp /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/../../qom/object.c:1070:5
+>     #3 0x7f09bcb641b7 in g_hash_table_foreach (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x401b7)
+>     #4 0x559a21bf3c27 in object_class_foreach /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/../../qom/object.c:1092:5
+>     #5 0x559a21bf3c27 in object_class_get_list /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/../../qom/object.c:1149:5
+>     #6 0x559a2081a2fd in select_machine /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/../../softmmu/vl.c:1661:24
+>     #7 0x559a2081a2fd in qemu_create_machine /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/../../softmmu/vl.c:2146:35
+>     #8 0x559a2081a2fd in qemu_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/../../softmmu/vl.c:3706:5
+>     #9 0x559a20720ed5 in main /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/../../softmmu/main.c:49:5
+>     #10 0x7f09baec00b2 in __libc_start_main /build/glibc-sMfBJT/glibc-2.31/csu/../csu/libc-start.c:308:16
+>     #11 0x559a2067673d in _start (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/qemu-system-aarch64+0xf4b73d)
+>
+> 0x61000000ab00 is located 0 bytes to the right of 192-byte region [0x61000000aa40,0x61000000ab00)
+> allocated by thread T0 here:
+>     #0 0x559a206eeff2 in calloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/qemu-system-aarch64+0xfc3ff2)
+>     #1 0x7f09bcb7bef0 in g_malloc0 (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x57ef0)
+>     #2 0x559a21bf3442 in object_class_foreach_tramp /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/san/../../qom/object.c:1070:5
+>
+> Fixes: 00f05c02f9e7342f ("hw/dma/xlnx_csu_dma: Support starting a read transfer through a class method")
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-> r~
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
+> ---
+>  hw/dma/xlnx_csu_dma.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
+> index 84f782fcdc0..60ada3286b4 100644
+> --- a/hw/dma/xlnx_csu_dma.c
+> +++ b/hw/dma/xlnx_csu_dma.c
+> @@ -744,6 +744,7 @@ static const TypeInfo xlnx_csu_dma_info = {
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(XlnxCSUDMA),
+>      .class_init    = xlnx_csu_dma_class_init,
+> +    .class_size    = sizeof(XlnxCSUDMAClass),
+>      .instance_init = xlnx_csu_dma_init,
+>      .interfaces = (InterfaceInfo[]) {
+>          { TYPE_STREAM_SINK },
+> --
+> 2.25.1
 >
 >
-
---00000000000036d10105d9b97ec2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Mar 8, 2022 at 10:09 AM Richa=
-rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
-nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">On 3/8/22 07:03, Peter Maydell wrote:<br>
-&gt; In npcm7xx_clk_sel_init() we allocate a string with g_strdup_printf().=
-<br>
-&gt; Use g_autofree so we free it rather than leaking it.<br>
-&gt; <br>
-&gt; (Detected with the clang leak sanitizer.)<br>
-&gt; <br>
-&gt; Signed-off-by: Peter Maydell&lt;<a href=3D"mailto:peter.maydell@linaro=
-.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0hw/misc/npcm7xx_clk.c | 4 ++--<br>
-&gt;=C2=A0 =C2=A01 file changed, 2 insertions(+), 2 deletions(-)<br>
-<br>
-Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
-ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
-<br></blockquote><div>Reviewed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@go=
-ogle.com">wuhaotsh@google.com</a>&gt;=C2=A0</div><blockquote class=3D"gmail=
-_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
-,204);padding-left:1ex">
-r~<br>
-<br>
-</blockquote></div></div>
-
---00000000000036d10105d9b97ec2--

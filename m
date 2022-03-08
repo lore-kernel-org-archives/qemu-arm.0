@@ -1,112 +1,161 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2307887lfo;
-        Tue, 8 Mar 2022 04:42:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzfZ7+psvPRPcB3GESzziXulayDWQ3EOfIYOWI/RMp8dDP4+bnWUL5sI8Q86yajBMJqpkDn
-X-Received: by 2002:a05:620a:4544:b0:67b:d13:be96 with SMTP id u4-20020a05620a454400b0067b0d13be96mr8469933qkp.596.1646743348548;
-        Tue, 08 Mar 2022 04:42:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646743348; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2510165lfo;
+        Tue, 8 Mar 2022 09:16:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxt9S1GeNUFZMCnvXYJlyQLrAFFUBAfis2QnIcD5gP0QFUqJWhbWXO8bZFYHTiAvY+kOW7V
+X-Received: by 2002:a5b:350:0:b0:628:86b8:6e09 with SMTP id q16-20020a5b0350000000b0062886b86e09mr12672056ybp.39.1646759782855;
+        Tue, 08 Mar 2022 09:16:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646759782; cv=none;
         d=google.com; s=arc-20160816;
-        b=Poi7flDZ9Svt/O7byMK3GW9VxKmuWOGe1TeZJnCNUQxnZU4yyv1fsV0bh6F2mwzwvl
-         rubT8haViHqLhGsnxM68RIXrPZo1ekqBCUg5kfNl7hIimmdpDMlut1o69+NilcB+oqEe
-         KXvTKU0+RSDhHKcum5cEaOc5n4YzFX/VCZLzh4B/FxAA0xP9Up3YkArVp8IJDb/s40Jk
-         iYMe++JZ3KI/SRE9y6YIZuYvo54Bc2KSxfAEio0yvJ/owA+zTCUJj6yAHqIGD4tESHvP
-         eOaDIf4ZUymQezKfRDesqC14floc6gjXLCEKynwOVQxqcHO3XZ6bHts58anI/dWoX435
-         9iEA==
+        b=yk0jv9fKoB6RZgVtwk5ewvDqbczJQF7dkbeykQPcXWryd7Xex//dbRuwW6ADmo31qu
+         Esvp2gFFDEOT/dG3u975rN+VQUQ4SKDtPu1vKUz1zgqL83cbiQbSwMxj1VvVuK5sz1I8
+         u7PrV6w59KE4+1JK9itxWbnPmxk8gYlgdk56bvUdPxhKyiyNB4xSuZY6mQfey6qf6VyC
+         6l/+oGnHJmuTj0V4rwLGmaXMx7if0PZL+UFh7rI6/qOCqJRJHcYjhSuKZihXpgvkx6jb
+         9IrDlTbVgRi0StF21pNQlsEeNjIH2IXGPhoDbsAlxhu5OLj9P9nROp0lBQA+O0NczZ5s
+         kJBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=UdfQgfn4MByN1Ca5FSEAlA7o/VrsqX4RLKSBZV9fino=;
-        b=F0meyAvqJ04zuWTF8dF4Rw7gI9nvVtvaf3JyYNvbe1U5MaO3Gw3luWcLNUWNT5o5NS
-         8HVfLChy4Lt9DyVuUWe1dLcBt2or6HZi3hbXhcL/trOwgox/wSIgyuwPEUBqS1cfsW8H
-         ElzOAgxCVGeaPwNYBnersGE/gbKbhbJVX+IrGdD+c7beDjxcHV8V99OKzMkGd7vADQzl
-         r/WicaU9zJ6X4QeaJBTAk/zjBgS349P+D2zL1ns+E16I01+y2nhTbiNzE4FbLOB+feu0
-         DxvFFy750qWXsLcxMuehvSXrGzKNOYaXcewkIe1MjcAoqUfBP7E27Lm7oYcCYFtmWT9c
-         GiMQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=FbKkt2GMChw/gdDM2BH8Sw69CAIU+pcQBfXhPGI96HA=;
+        b=S++DPmanNpfnrHibYDbMCXsyssOLezdLDZX3XA2hUq35HtQZDGfMAa/x224ynyokPa
+         dXm6hR2ha2XCE0j3wEYuSALfh1x4uOszcYljmK9yHxQwCLFEpeopm+ZhQhGHN/pCy6aF
+         pZ+7m9kZctim8XQDq6qphcO+ZqhVlyI45ydXQ0k+cHq0ed6I2EVvCh8qe8H0IIotM8NT
+         6xul8GRGqydi3P3HPUs5SXqh31MnJqjJtWSH+F4YLgR3ZWs/qsRuGMYONvr4YnLIZgM/
+         PR98hwinnibvGJfjQxNhiJojb8HPYhLO73y6ZImJTgdww5qbgPRd4N4AVngD7ZHhM6aH
+         EE5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PiQN5JcZ;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kraxel@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id x20-20020a0cb214000000b0042c2d96794dsi6209541qvd.374.2022.03.08.04.42.28
+       dkim=fail header.i=@linaro.org header.s=google header.b=nKEAhxFM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i201-20020a25d1d2000000b00628771a886dsi11032746ybg.223.2022.03.08.09.16.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Mar 2022 04:42:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 08 Mar 2022 09:16:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PiQN5JcZ;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1646743348;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=UdfQgfn4MByN1Ca5FSEAlA7o/VrsqX4RLKSBZV9fino=;
-	b=PiQN5JcZ9RNMOIYEIJ4kHBHEIAhvF1H6Wi8jkNmfc5bcdZHO0Di1m0L7IU+o3aQ7vuez/N
-	rCMMP4zwvAqQ62/uGm5HCi8Uoy/2Yzkr/xcG7qFrKkwzwjArdlNwEDyefECdQy/+9dG116
-	8aUm8xxQhAxdiUNwg4K+xjNonMQ1m2M=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-665-8fkVLVQnNw-TvxHcNmydQg-1; Tue, 08 Mar 2022 07:42:25 -0500
-X-MC-Unique: 8fkVLVQnNw-TvxHcNmydQg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 497C2800050;
-	Tue,  8 Mar 2022 12:42:23 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.99])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0E992105C885;
-	Tue,  8 Mar 2022 12:42:07 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id D385118003A3; Tue,  8 Mar 2022 13:42:04 +0100 (CET)
-Date: Tue, 8 Mar 2022 13:42:04 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philippe.mathieu.daude@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-devel <qemu-devel@nongnu.org>,
-	Laszlo Ersek <lersek@redhat.com>, Cleber Rosa <cleber@redhat.com>,
-	Oleg Vasilev <me@svin.in>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Emilio Cota <cota@braap.org>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Idan Horowitz <idan.horowitz@gmail.com>,
-	Andrew Jones <drjones@redhat.com>
-Subject: Re: Analysis of slow distro boots in check-avocado
- (BootLinuxAarch64.test_virt_tcg*)
-Message-ID: <20220308124204.arfr6yuwojwksizh@sirius.home.kraxel.org>
-References: <874k4xbqvp.fsf@linaro.org>
- <878ru2nacq.fsf@linaro.org>
- <YhURfqMvRT4xbiz6@redhat.com>
- <96bafa75-a0c6-f431-a6d8-fe98d438d0f9@gmail.com>
- <CAFEAcA8mNt_-nZoV7RL4_UQUV=nPQsDM8KBTA8qAGmiNtXWx9g@mail.gmail.com>
- <afd92ed6-4392-3181-5875-5e42ad5f41b9@gmail.com>
- <20220223115042.lvxgrjirr5avzkzw@sirius.home.kraxel.org>
- <20220224101020.2dd35c16@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=nKEAhxFM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49822 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nRdRe-0004hX-9Y
+	for alex.bennee@linaro.org; Tue, 08 Mar 2022 12:16:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48944)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nRdOH-0002J8-PW
+ for qemu-arm@nongnu.org; Tue, 08 Mar 2022 12:12:53 -0500
+Received: from [2607:f8b0:4864:20::435] (port=37442
+ helo=mail-pf1-x435.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nRdOE-0007xg-Jj
+ for qemu-arm@nongnu.org; Tue, 08 Mar 2022 12:12:53 -0500
+Received: by mail-pf1-x435.google.com with SMTP id t5so17880589pfg.4
+ for <qemu-arm@nongnu.org>; Tue, 08 Mar 2022 09:12:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=FbKkt2GMChw/gdDM2BH8Sw69CAIU+pcQBfXhPGI96HA=;
+ b=nKEAhxFMOswT4o5bqehniY4rTDJQ85DhSiozppLwcNUSR25luVv5yZlTu+ubrE8P16
+ i+uxUp3ZKjBB9vv30Iy0LH/sRUfYK4PlSTGsHS++lHpPvlitf7UeOe6hKOn7hVzC51Kz
+ DysENi4pUDAyZ8Q8ZAB5asElk2px97gsSk+ZfxvdV0ebWSiRGI8c03+xwbxkQkkDCBc/
+ csJzPL1TFKfewcZzMfn1VJ5BBMQN7Yku42uNcT/rVHbouSONUtvS3Dv3YfhxadAWs8rZ
+ hkPMmw6MCi02cSf4ksU1fNdN+kFzyDdEEsURArBjpdcl2hnR1kAxN9bydwr1tN3d4r3G
+ xw2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=FbKkt2GMChw/gdDM2BH8Sw69CAIU+pcQBfXhPGI96HA=;
+ b=mp3N64pMHi6LTAhp+zGj9l9CbdfeKM5ijLYFmNkHsYWY31zsmyoPb4y7XCaqscx3Vv
+ yNJ+GttGopm3Zpae9NjvoraO2JbI1IAaEi7z31keA439MDV6wfuEuMbewPeqBaUJ9RVl
+ EsvhauqRrcwhGa7iaZVddp3HmeTTEs8Q5UEMB8mcfTYjeu/sFlxjrb4jDj3PhsutlM71
+ BzfYiWvd0WRntIowWbov0JxodqZBCcT2EVXCjzTb7juSQekDw4/K9yb8dqRUo6Q3xUxC
+ XKD55EL6BSvM8GnO3y4VWMtjMC0MgQclygwEtY98CDUD2hD+Kl5JH/sMaLvbgCzDTF95
+ apdg==
+X-Gm-Message-State: AOAM532YusJDHH8CHYg8eip0HiRWY6Orqr1Tk/B0di5PTfjxyBaBbHq3
+ fg36fwsl6vQRPw1/j4J/w3+QaQ==
+X-Received: by 2002:a63:e303:0:b0:380:83f6:55a2 with SMTP id
+ f3-20020a63e303000000b0038083f655a2mr5268218pgh.519.1646759569188; 
+ Tue, 08 Mar 2022 09:12:49 -0800 (PST)
+Received: from [192.168.4.112] (cpe-50-113-46-110.hawaii.res.rr.com.
+ [50.113.46.110]) by smtp.gmail.com with ESMTPSA id
+ b2-20020a056a000a8200b004e1414f0bb1sm21337815pfl.135.2022.03.08.09.12.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Mar 2022 09:12:48 -0800 (PST)
+Message-ID: <a6489f6f-24da-aa1b-3845-a4b441bf80a2@linaro.org>
+Date: Tue, 8 Mar 2022 07:12:41 -1000
 MIME-Version: 1.0
-In-Reply-To: <20220224101020.2dd35c16@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-TUID: OuddvGb5PgRQ
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v3] target/arm: Fix sve2 ldnt1 and stnt1
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20220308031655.240710-1-richard.henderson@linaro.org>
+ <CAFEAcA8fKkf4T0AhyhrFZS2=vGKBJ7ZtBBtZwEfpzWqztZ0xeA@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA8fKkf4T0AhyhrFZS2=vGKBJ7ZtBBtZwEfpzWqztZ0xeA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::435
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: smRMysXFWxYX
 
-On Thu, Feb 24, 2022 at 10:10:20AM +0100, Igor Mammedov wrote:
+On 3/8/22 01:56, Peter Maydell wrote:
+>> -# SVE2 64-bit gather non-temporal load
+>> -#   (scalar plus unpacked 32-bit unscaled offsets)
+>> +# SVE2 64-bit gather non-temporal load (scalar plus 64-bit unscaled offsets)
+>>   LDNT1_zprz      1100010 msz:2 00 rm:5 1 u:1 0 pg:3 rn:5 rd:5 \
+>> -                &rprr_gather_load xs=0 esz=3 scale=0 ff=0
+>> +                &rprr_gather_load xs=2 esz=3 scale=0 ff=0
+> 
+> We correct the xs= value here...
+...
+>> +    switch (a->esz) {
+>> +    case MO_32:
+>> +        fn = gather_load_fn32[mte][be][0][0][a->u][a->msz];
+>> +        break;
+>> +    case MO_64:
+>> +        fn = gather_load_fn64[mte][be][0][2][a->u][a->msz];
+>> +        break;
+>> +    }
+> 
+> ...but then instead of using it we hard code use of 0 or 2 here,
+> which makes the change above a bit moot.
 
-> wrt bios-tables-test, it doesn't need debug version and should work fine
-> with non-debug builds.
+Yeah, sorry for that.  I was in the middle of reducing the argument set collected by those 
+decode patterns, then decided there was little advantage, and left something in the middle.
 
-Well, almost.  Using non-debug builds changes the memory layout enough
-that we see a change in the memory hotplug ssdt (patch series should
-follow later today or tomorrow).
 
-take care,
-  Gerd
+
+r~

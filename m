@@ -1,107 +1,116 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp837351lfo;
-        Wed, 9 Mar 2022 21:22:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwTB8A6QmOV6+/ZfkILyxkDiWb8ngWk5x3AAFIDjyljBcxG1Zn2n6ob7/lVE3rEdVjUuidC
-X-Received: by 2002:a0d:d6c2:0:b0:2dc:a9b0:d22 with SMTP id y185-20020a0dd6c2000000b002dca9b00d22mr2704393ywd.194.1646889754643;
-        Wed, 09 Mar 2022 21:22:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646889754; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1023583lfo;
+        Thu, 10 Mar 2022 03:21:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyvsI/Kp7si8roWRHnwXijq2+q28VPQa6ymWruvC+bjExhLHiNA6GbnFCyEB5fH20sGkOWB
+X-Received: by 2002:a25:7803:0:b0:628:a8bc:785f with SMTP id t3-20020a257803000000b00628a8bc785fmr3360372ybc.126.1646911311331;
+        Thu, 10 Mar 2022 03:21:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646911311; cv=none;
         d=google.com; s=arc-20160816;
-        b=i6jCgtz4ZM8Mox0mnwNtcRgfMXnShkaqmJIHRDzFQ1QEt9B5YTDB7cT+OSy7bNBbez
-         Zdolmld4DitGLo33J8d8Z4D7re9zD8UBEaz7SJ/yNUoaE9EKhx2RZ+5xx9uhXJg7mQkX
-         m320v8a5iI+fo+y0bK4UfVVOMQDs+j2oTcvrjtlqWw0nGd3xbTaU4KBKV5TBk8FBKEBN
-         ItHuN4ycVwdwHv5sPelX+JQeHdVM80V3rudTkH6mT+SzP3k9TXFaC7zHYyn4sSXoqzhT
-         280T+0INKMetYHhBDP+dVNVYc2jxJKyVqqhsLjHZXfUc5Ccri2uTuH3IuZcZD9ZtiuQE
-         15Pg==
+        b=GRIyqLk+a0JG2bWJZGBTbJwRabRqrQJNmxmeUG4IGRoMAuUSOdnI4bVhTOQ+m5e5h8
+         9TIdiOtCXlCa8zPQ5iqYlZCKBUbKDubEIXsJvt5Omrf0YdHgRN2rVMWaOPW1ENBRJ9gi
+         c0ZUg6zFmxbvSnsJzwgMcyVWaAmPdsxgKgkShS4Gcd9keXDoTwubL2dcl9gq3Q6gvphK
+         gWB7lD9lMfYn9eXZ2YrkTl7XqOgiLRht7q7Guf/gX601pBtZPT5vQP8zpPbaepgv0gvu
+         Iu/DVPArSh101Z/AdiEe+H/NoINKmkqQ2QafKIh/B8+QFQWAJWe4DNvi8b330TPbpdsp
+         fZ4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=OBQTtlB0KqlIMhJnql0rNU1+jRIZv2h/2JcGaWNnNiA=;
-        b=PRq+6UD58UzVqzcIC6FBj4ttBtG5Eck6uS3qzjPFO32/ak7vYuegP4SSNv77tK64H0
-         ntAFlrUmXCVidfYccvGeQPbFs5DhsmE3zVfSgxeAbfzgs+0aJGFMPoPbuaHdMChFuHE+
-         2ijauGCMQs7AxNOcTOS9awrQg7vbauA9bIq6rXNd8OhLv1V0Ycqt2X+1H1zP5z70fA/P
-         gV51mO5tzadjoFZTw4bBgTQ19S3xmLf+4wKCC08lMfpF5cjIPIPCCP0DonwELqoTU9SG
-         lASUALcmJ3ZN5q0deJOSYIbQ12TUgTpHDyZPtkonjnNKmI1c7MXNvgnXvr+qmOeo2H7L
-         81cw==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=AkDUsd9f2jJKyhhLCYmTpPnLxE8wygUV2dtn2KQglew=;
+        b=THR1l/STOUUdmE4mlZU/rQVRSClbTD+DaiGJNemBzk4UDNGHw9CunPFNbPCCGJ3ICw
+         oVAr5pDHQqEp0Dq/LHcEzJizUdQ19CpkPg1/bw4Hgykt9YcSHlIxNwj3egk2Uf06jyiq
+         lTZA1cyjDgoVaIv/an8fQktr0zXL6FJJHlnag+2kljVsEvxXw6FJebIDpVeCo4Keze+4
+         JdKieK3YT8LGfqzm9kUuxQgLnZgvvuOOUXoIX4K2SAvbfQPDnqWzs8j7BcLbxLlAeHp3
+         jrryhTnaDd/JCWLw+I5fccFQDuoZ5lq3AJ2GgLBFc5NLReUUodN/0oEtsMqMunSd5Hr0
+         hbZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JIrXjceN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bSTw1Usp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l206-20020a8125d7000000b002dc5913fc58si2157515ywl.478.2022.03.09.21.22.34
+        by mx.google.com with ESMTPS id 6-20020a250206000000b006288f1238d4si2641204ybc.89.2022.03.10.03.21.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Mar 2022 21:22:34 -0800 (PST)
+        Thu, 10 Mar 2022 03:21:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JIrXjceN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47744 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bSTw1Usp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nSBFx-0003c0-Vu
-	for alex.bennee@linaro.org; Thu, 10 Mar 2022 00:22:34 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58080)
+	id 1nSGre-0005gY-P7
+	for alex.bennee@linaro.org; Thu, 10 Mar 2022 06:21:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48894)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1nSBFj-0003bT-My; Thu, 10 Mar 2022 00:22:19 -0500
-Received: from [2607:f8b0:4864:20::436] (port=44608
- helo=mail-pf1-x436.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nSGrE-0005dQ-7B; Thu, 10 Mar 2022 06:21:24 -0500
+Received: from [2a00:1450:4864:20::432] (port=45640
+ helo=mail-wr1-x432.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1nSBFh-0000ze-Gd; Thu, 10 Mar 2022 00:22:19 -0500
-Received: by mail-pf1-x436.google.com with SMTP id u17so1987472pfk.11;
- Wed, 09 Mar 2022 21:22:16 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nSGrC-0006f7-JT; Thu, 10 Mar 2022 06:21:23 -0500
+Received: by mail-wr1-x432.google.com with SMTP id p9so7381462wra.12;
+ Thu, 10 Mar 2022 03:21:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=OBQTtlB0KqlIMhJnql0rNU1+jRIZv2h/2JcGaWNnNiA=;
- b=JIrXjceNk7xl5elE6naIXZ06Umw8/iT7fhV9k6CsQPFEBBM8WSsg+Pp9pkLh+2OdCv
- +ncyV6F0Lmk8mC4OZWi4abmPwq6/+rOQ+VA6n6dSkWR8Tgp+PcpdNhtA4Vz8JU/J6gO5
- PLz1MUDp9JdYNOYQEeEFZrNzZULo2z8n4q7TKEEWH3Uplm46ko82XHodGeTfzINyz2R+
- 5X1vXQSgIAMUpjY5bmBSI3jPJrO7vQ6c4boeICwY/C3ZfJofi+L7IGuJTnbrlP807hTS
- 8Pj8yk1niivYbv5FBjHJVYRX6VU3YIroa0eTea72538oTDLTi/ywX1IucVTjxouawONg
- 1lJw==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=AkDUsd9f2jJKyhhLCYmTpPnLxE8wygUV2dtn2KQglew=;
+ b=bSTw1UsppGF7Mg29j/XtJekdRN7e2PVKfWfv3KJ608DriS2nksCu4ECMkbbdcRWlMu
+ GdjlPKBL7vQ3Pac5P07XvNIqdszW31y+jD7bZLp21ENh4QTap5ccTv85dQyJoP4eAbl5
+ Fjp91TpTkRI2k0yd54kmF/gex8bBDziWJDlMinKhIVUfarDRQP3W/Qwx2wntxFEU0Nar
+ s2TRjUYT7pZozK6+W+WkCPuQ89bD9OAEBS/vV64g8AgqP96P+PW/Q4Oi1wvnaHsvFjCR
+ FTU5JrRxPImUHqSnn833DJ3hJEslkrVXoX0qpNUl1WhaS/CMax4kyk4TJBTy5rlN0EMY
+ D6Ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=OBQTtlB0KqlIMhJnql0rNU1+jRIZv2h/2JcGaWNnNiA=;
- b=p4Upw86EkyGNKRohygEqieFuDi+XuBV5gbNG3abPmW595/YrFSpNw9D2BV3t6OcHQA
- j29vE1wjm0DydTNqbRhh3FmhiuEG6Dcx9/APCksCXmPbiJAcr9xfzBMZ1NBpZRppEi5L
- fxBjPLFjYQFOdQYNAUBaAqv37onhyuyBuOSigo3r20J9qKHZayczhKGYExfDz0S0kYst
- YzXkcKSGkB32FFQEdbiqbaBKz7I1/KuHtfm8zr+Ug2+LSyLWJQ5wnD5qc2tdn2J1b2XR
- amdckXHHT/boUzCaeWutWblO5Jw14nwYf+qrnBcBdBstttGDLKQK/b0V07R0qlbbtawQ
- Im5A==
-X-Gm-Message-State: AOAM530vLNW1VKN3y5llHSdTj4ncdvDQBfbJePT4+0zh1yLWbfTed9Ei
- y2JeczRjtoAsYuRClZfatpc=
-X-Received: by 2002:a63:7158:0:b0:37d:f96f:3c78 with SMTP id
- b24-20020a637158000000b0037df96f3c78mr2601238pgn.378.1646889734784; 
- Wed, 09 Mar 2022 21:22:14 -0800 (PST)
-Received: from localhost.localdomain ([45.124.203.14])
- by smtp.gmail.com with ESMTPSA id
- o5-20020a056a0015c500b004f76735be68sm2237242pfu.216.2022.03.09.21.22.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Mar 2022 21:22:13 -0800 (PST)
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] aspeed: sbc: Correct default reset values
-Date: Thu, 10 Mar 2022 15:51:59 +1030
-Message-Id: <20220310052159.183975-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.34.1
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=AkDUsd9f2jJKyhhLCYmTpPnLxE8wygUV2dtn2KQglew=;
+ b=HdsZJ6X2oWlVQ1+PnirKLRC0J1YxrfAykx8IHVWPrE/HUHoCECfwGe9tfSPhZuimvQ
+ wI1rI1LztJ5DA4HBgh7XSQbpmDAg0NQlE/rlV9hB4I+5FhTR0SXoTs/16ri7vbXzz/br
+ s0mQaR5ReG/ZAkvJMB/n/AUY1rdu26nTFwIWlBUDAQo2sXKsaBumpVtTGDjkNdanRUEC
+ 4wzGTNBH2kyff/oiMSEy3lTOaJVRJd1EhoyKTJa1tpkGQo0z+3L0aLYW0VYviF5qvecC
+ iWaKZIC7ZzaZGWHCZL+ty6/qQ/AS+kOCP79ln2n/nj2Or+2SJ/Ec8A9q5FrgSMdeAB69
+ Youw==
+X-Gm-Message-State: AOAM531qoqC96NVX/erjGsTQkBRa7gaaMTbBLWib+YjdVlaW1uw9OLh6
+ ESX4qlpkbZe4lCmZVhYwRSE=
+X-Received: by 2002:adf:f1cb:0:b0:1f0:62ff:bd0 with SMTP id
+ z11-20020adff1cb000000b001f062ff0bd0mr3186672wro.53.1646911279847; 
+ Thu, 10 Mar 2022 03:21:19 -0800 (PST)
+Received: from [192.168.1.34] (71.red-83-50-68.dynamicip.rima-tde.net.
+ [83.50.68.71]) by smtp.gmail.com with ESMTPSA id
+ w7-20020a1cf607000000b00389a5390180sm4320982wmc.25.2022.03.10.03.21.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 10 Mar 2022 03:21:19 -0800 (PST)
+Message-ID: <b479ce08-dede-9cdb-ebb5-21454f6e35d4@gmail.com>
+Date: Thu, 10 Mar 2022 12:21:18 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.6.1
+Subject: Re: [PATCH-for-7.0] aspeed: sbc: Correct default reset values
+Content-Language: en-US
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
+References: <20220310052159.183975-1-joel@jms.id.au>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <20220310052159.183975-1-joel@jms.id.au>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::436
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::432
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=joel.stan@gmail.com; helo=mail-pf1-x436.google.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
 X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -116,56 +125,23 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YP/u49JjTW9m
+X-TUID: w9PSw4R7tTTw
 
-In order to correctly report secure boot running firmware, these values
-must be set. They are taken from a running machine when secure boot is
-enabled.
+On 10/3/22 06:21, Joel Stanley wrote:
+> In order to correctly report secure boot running firmware, these values
+> must be set. They are taken from a running machine when secure boot is
+> enabled.
+> 
+> We don't yet have documentation from ASPEED on what they mean. Set the
+> raw values for now, and in the future improve the model with properties
+> to set these on a per-machine basis.
+> 
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> ---
+>   hw/misc/aspeed_sbc.c | 7 +++++--
+>   1 file changed, 5 insertions(+), 2 deletions(-)
 
-We don't yet have documentation from ASPEED on what they mean. Set the
-raw values for now, and in the future improve the model with properties
-to set these on a per-machine basis.
-
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
- hw/misc/aspeed_sbc.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-index 40f2a8c6312f..857a947b68a2 100644
---- a/hw/misc/aspeed_sbc.c
-+++ b/hw/misc/aspeed_sbc.c
-@@ -17,6 +17,7 @@
- 
- #define R_PROT          (0x000 / 4)
- #define R_STATUS        (0x014 / 4)
-+#define R_QSR           (0x040 / 4)
- 
- static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
- {
-@@ -50,6 +51,7 @@ static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
- 
-     switch (addr) {
-     case R_STATUS:
-+    case R_QSR:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: write to read only register 0x%" HWADDR_PRIx "\n",
-                       __func__, addr << 2);
-@@ -77,8 +79,9 @@ static void aspeed_sbc_reset(DeviceState *dev)
- 
-     memset(s->regs, 0, sizeof(s->regs));
- 
--    /* Set secure boot enabled, and boot from emmc/spi */
--    s->regs[R_STATUS] = 1 << 6 | 1 << 5;
-+    /* Set secure boot enabled with RSA4096_SHA256 and enable eMMC ABR */
-+    s->regs[R_STATUS] = 0x000044C6;
-+    s->regs[R_QSR] = 0x07C07C89;
- }
- 
- static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
--- 
-2.34.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

@@ -1,126 +1,108 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp67866lfo;
-        Tue, 8 Mar 2022 23:14:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxuQDD93IPeob9fURb/Bn0PxAbTIIz1cpV9QtckfxTPD7n9SqvdzjvHAkHFTxCH747i5+VH
-X-Received: by 2002:ad4:5eca:0:b0:435:3687:7d7a with SMTP id jm10-20020ad45eca000000b0043536877d7amr15775181qvb.110.1646810069314;
-        Tue, 08 Mar 2022 23:14:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1646810069; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp837351lfo;
+        Wed, 9 Mar 2022 21:22:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwTB8A6QmOV6+/ZfkILyxkDiWb8ngWk5x3AAFIDjyljBcxG1Zn2n6ob7/lVE3rEdVjUuidC
+X-Received: by 2002:a0d:d6c2:0:b0:2dc:a9b0:d22 with SMTP id y185-20020a0dd6c2000000b002dca9b00d22mr2704393ywd.194.1646889754643;
+        Wed, 09 Mar 2022 21:22:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646889754; cv=none;
         d=google.com; s=arc-20160816;
-        b=O2eFzOIMCu2RUJnXdGoXBsQd+fA6RhgO3b5j+0Guth6cbQR50RgbWoE0qwj+YtyovX
-         wJTRnTPshX6mvFOExfG023q4C0TYmFRq0+rcUTv6y/V2T/pl/JZX4PwEJ+sKiwAgi46f
-         Z4Py2pW4HKrruGRaK1lGrRuEBurUUtswvgvQRdKVK5hC5rboKBs/p/oq1s2QBd0ryD6W
-         ydT7DOqf6fMMoFnQ004z3viuAwNZmGFB0xp94tM6M6KMIAyAZE/2Gw/tugPfSodJ8g6u
-         rOW/OIs0inZ5H6llmOXu2Xp2PeYZMWFiSV6p/1/tpUd8hjnZiQfidC5oTyoKrtd6iopU
-         paUg==
+        b=i6jCgtz4ZM8Mox0mnwNtcRgfMXnShkaqmJIHRDzFQ1QEt9B5YTDB7cT+OSy7bNBbez
+         Zdolmld4DitGLo33J8d8Z4D7re9zD8UBEaz7SJ/yNUoaE9EKhx2RZ+5xx9uhXJg7mQkX
+         m320v8a5iI+fo+y0bK4UfVVOMQDs+j2oTcvrjtlqWw0nGd3xbTaU4KBKV5TBk8FBKEBN
+         ItHuN4ycVwdwHv5sPelX+JQeHdVM80V3rudTkH6mT+SzP3k9TXFaC7zHYyn4sSXoqzhT
+         280T+0INKMetYHhBDP+dVNVYc2jxJKyVqqhsLjHZXfUc5Ccri2uTuH3IuZcZD9ZtiuQE
+         15Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=5JgZcxSv3la9rP68BHTPhrJuqsMM8rMeiXHb00jlMdY=;
-        b=l/kVJOJKjUOTDU7DqcwLoLIWIq4eZcyFIG8JQYrJTAe0fMzfQNJd8Xq+OgK5yETBew
-         86CZHOOzxMYaBzmkTdxY49WXbnRZsINTtVJXQMg2l4QbLD6NMQGdLJJyi00tu6d+2wL3
-         TgWjm2YyLwLY2XuyjvhGpINLLbhQGcfEkHIbGMvtYOP1HGm24n8+LCAOdVxKB2kKr6ua
-         4O1O+rvZYh0cHY5ZDAOeetvfcIBf/sqzX+O8zteR7P/L73noLz4I0X7p/mW5rlogaZAS
-         8B0+dbU7BRCPFdDio2m8wIitWKw7HNXJyzpwWkss1SRWC782RfvtaXZQiJ474H6pOyIa
-         iEtA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=OBQTtlB0KqlIMhJnql0rNU1+jRIZv2h/2JcGaWNnNiA=;
+        b=PRq+6UD58UzVqzcIC6FBj4ttBtG5Eck6uS3qzjPFO32/ak7vYuegP4SSNv77tK64H0
+         ntAFlrUmXCVidfYccvGeQPbFs5DhsmE3zVfSgxeAbfzgs+0aJGFMPoPbuaHdMChFuHE+
+         2ijauGCMQs7AxNOcTOS9awrQg7vbauA9bIq6rXNd8OhLv1V0Ycqt2X+1H1zP5z70fA/P
+         gV51mO5tzadjoFZTw4bBgTQ19S3xmLf+4wKCC08lMfpF5cjIPIPCCP0DonwELqoTU9SG
+         lASUALcmJ3ZN5q0deJOSYIbQ12TUgTpHDyZPtkonjnNKmI1c7MXNvgnXvr+qmOeo2H7L
+         81cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IGG4hvQB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JIrXjceN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7-20020a05622a15c700b002e06b62714dsi488675qty.636.2022.03.08.23.14.29
+        by mx.google.com with ESMTPS id l206-20020a8125d7000000b002dc5913fc58si2157515ywl.478.2022.03.09.21.22.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Mar 2022 23:14:29 -0800 (PST)
+        Wed, 09 Mar 2022 21:22:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IGG4hvQB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38842 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JIrXjceN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47744 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nRqWi-0008JC-Rj
-	for alex.bennee@linaro.org; Wed, 09 Mar 2022 02:14:28 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36302)
+	id 1nSBFx-0003c0-Vu
+	for alex.bennee@linaro.org; Thu, 10 Mar 2022 00:22:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58080)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1nRqWX-0008FZ-8Q
- for qemu-devel@nongnu.org; Wed, 09 Mar 2022 02:14:17 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:25297)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1nRqWS-00075j-PE
- for qemu-devel@nongnu.org; Wed, 09 Mar 2022 02:14:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1646810051;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=5JgZcxSv3la9rP68BHTPhrJuqsMM8rMeiXHb00jlMdY=;
- b=IGG4hvQBddKCeuwoN5HPCdt3DfEE3AymwB80J0D8d1hOTREKqyUOs+QEVUf6LJD8poZ1xe
- 9p6Lx86LY1xfUkqjBi5QwYW4WXnrOlHreeUMY3Auh+4/mKDPpwsFD2GO8iWlfmHnvnei47
- DQmSgaGlI1aBl/iXIML0POSCG4TS+Fc=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-570-ovWlUuoaNty9jpQC-Uz8Zw-1; Wed, 09 Mar 2022 02:14:09 -0500
-X-MC-Unique: ovWlUuoaNty9jpQC-Uz8Zw-1
-Received: by mail-ed1-f72.google.com with SMTP id
- bd4-20020a056402206400b004162b6d8618so757551edb.19
- for <qemu-devel@nongnu.org>; Tue, 08 Mar 2022 23:14:09 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1nSBFj-0003bT-My; Thu, 10 Mar 2022 00:22:19 -0500
+Received: from [2607:f8b0:4864:20::436] (port=44608
+ helo=mail-pf1-x436.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1nSBFh-0000ze-Gd; Thu, 10 Mar 2022 00:22:19 -0500
+Received: by mail-pf1-x436.google.com with SMTP id u17so1987472pfk.11;
+ Wed, 09 Mar 2022 21:22:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=OBQTtlB0KqlIMhJnql0rNU1+jRIZv2h/2JcGaWNnNiA=;
+ b=JIrXjceNk7xl5elE6naIXZ06Umw8/iT7fhV9k6CsQPFEBBM8WSsg+Pp9pkLh+2OdCv
+ +ncyV6F0Lmk8mC4OZWi4abmPwq6/+rOQ+VA6n6dSkWR8Tgp+PcpdNhtA4Vz8JU/J6gO5
+ PLz1MUDp9JdYNOYQEeEFZrNzZULo2z8n4q7TKEEWH3Uplm46ko82XHodGeTfzINyz2R+
+ 5X1vXQSgIAMUpjY5bmBSI3jPJrO7vQ6c4boeICwY/C3ZfJofi+L7IGuJTnbrlP807hTS
+ 8Pj8yk1niivYbv5FBjHJVYRX6VU3YIroa0eTea72538oTDLTi/ywX1IucVTjxouawONg
+ 1lJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=5JgZcxSv3la9rP68BHTPhrJuqsMM8rMeiXHb00jlMdY=;
- b=hi4kCPffrGntD4Jt7+N5E1r1dScIS+Sk506HmmqxoCHUGtWiJb/6076RBLZnTQbHpc
- /TmIOmhIJFr31y0oFVWVrKHJ6Ef/1vwr4b/PncmCR78Fugr1LA4K+YoOCY9qM7h+c9Hw
- NXsXf4JEkFa6+6oZvXAM1rITpmbmQTgsUyqTITuSQXZaqKrjK7CAnndTE/2JY5wjIvHl
- obmEnKRrIaLL9lpM6VvZVHu9VOhJv1SRZ91HiCrM6zoWSqWyWyzPA9ZSWzTgs/pjWjI9
- w8kXfu3cxtXrtdNxeit2sL8kqOVdomAn3kbjTLsSoWp/lLWfwMlvJwz0heTnB+MKJ4SU
- x2kw==
-X-Gm-Message-State: AOAM530mBNehV4KVrXCJGknTHq8SCY+WVMuV0ZIS8PCSB4dy+U1V5kAC
- ICItlHHs6SaFGvbUpH2/EX7Sny/jYovmSTY6JRHD6uyQfV8MJ9KcCftqByqjiv5TSD3NE42ctxv
- UExCJVfWyrOlpFA0=
-X-Received: by 2002:a05:6402:1435:b0:410:d2e1:e6dc with SMTP id
- c21-20020a056402143500b00410d2e1e6dcmr19282163edx.138.1646810048732; 
- Tue, 08 Mar 2022 23:14:08 -0800 (PST)
-X-Received: by 2002:a05:6402:1435:b0:410:d2e1:e6dc with SMTP id
- c21-20020a056402143500b00410d2e1e6dcmr19282142edx.138.1646810048385; 
- Tue, 08 Mar 2022 23:14:08 -0800 (PST)
-Received: from gator (cst-prg-8-40.cust.vodafone.cz. [46.135.8.40])
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=OBQTtlB0KqlIMhJnql0rNU1+jRIZv2h/2JcGaWNnNiA=;
+ b=p4Upw86EkyGNKRohygEqieFuDi+XuBV5gbNG3abPmW595/YrFSpNw9D2BV3t6OcHQA
+ j29vE1wjm0DydTNqbRhh3FmhiuEG6Dcx9/APCksCXmPbiJAcr9xfzBMZ1NBpZRppEi5L
+ fxBjPLFjYQFOdQYNAUBaAqv37onhyuyBuOSigo3r20J9qKHZayczhKGYExfDz0S0kYst
+ YzXkcKSGkB32FFQEdbiqbaBKz7I1/KuHtfm8zr+Ug2+LSyLWJQ5wnD5qc2tdn2J1b2XR
+ amdckXHHT/boUzCaeWutWblO5Jw14nwYf+qrnBcBdBstttGDLKQK/b0V07R0qlbbtawQ
+ Im5A==
+X-Gm-Message-State: AOAM530vLNW1VKN3y5llHSdTj4ncdvDQBfbJePT4+0zh1yLWbfTed9Ei
+ y2JeczRjtoAsYuRClZfatpc=
+X-Received: by 2002:a63:7158:0:b0:37d:f96f:3c78 with SMTP id
+ b24-20020a637158000000b0037df96f3c78mr2601238pgn.378.1646889734784; 
+ Wed, 09 Mar 2022 21:22:14 -0800 (PST)
+Received: from localhost.localdomain ([45.124.203.14])
  by smtp.gmail.com with ESMTPSA id
- d11-20020a170906c20b00b006d584a09b9fsm366774ejz.98.2022.03.08.23.14.07
+ o5-20020a056a0015c500b004f76735be68sm2237242pfu.216.2022.03.09.21.22.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Mar 2022 23:14:07 -0800 (PST)
-Date: Wed, 9 Mar 2022 08:14:05 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH 2/2] hw/arm/virt: Fix gic-version=max when
- CONFIG_ARM_GICV3_TCG is unset
-Message-ID: <20220309071405.z2j2hcpzkbvwl3zh@gator>
-References: <20220308182452.223473-1-eric.auger@redhat.com>
- <20220308182452.223473-3-eric.auger@redhat.com>
+ Wed, 09 Mar 2022 21:22:13 -0800 (PST)
+From: Joel Stanley <joel@jms.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] aspeed: sbc: Correct default reset values
+Date: Thu, 10 Mar 2022 15:51:59 +1030
+Message-Id: <20220310052159.183975-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-In-Reply-To: <20220308182452.223473-3-eric.auger@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::436
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=joel.stan@gmail.com; helo=mail-pf1-x436.google.com
+X-Spam_score_int: 0
+X-Spam_score: -0.1
+X-Spam_bar: /
+X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,51 +115,57 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- f4bug@amsat.org, eric.auger.pro@gmail.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 42pGCL3tPoSb
+X-TUID: YP/u49JjTW9m
 
-On Tue, Mar 08, 2022 at 07:24:52PM +0100, Eric Auger wrote:
-> In TCG mode, if gic-version=max we always select GICv3 even if
-> CONFIG_ARM_GICV3_TCG is unset. We shall rather select GICv2.
-> This also brings the benefit of fixing qos tests errors for tests
-> using gic-version=max with CONFIG_ARM_GICV3_TCG unset.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> v2 -> v3:
-> - Use module_object_class_by_name() and refer to the renamed
->   CONFIG_ARM_GICV3_TCG config
-> ---
->  hw/arm/virt.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 46bf7ceddf..39790d29d2 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1852,7 +1852,12 @@ static void finalize_gic_version(VirtMachineState *vms)
->          vms->gic_version = VIRT_GIC_VERSION_2;
->          break;
->      case VIRT_GIC_VERSION_MAX:
-> -        vms->gic_version = VIRT_GIC_VERSION_3;
-> +        if (module_object_class_by_name("arm-gicv3")) {
-> +            /* CONFIG_ARM_GICV3_TCG was set */
-> +            vms->gic_version = VIRT_GIC_VERSION_3;
-> +        } else {
-> +            vms->gic_version = VIRT_GIC_VERSION_2;
-> +        }
->          break;
->      case VIRT_GIC_VERSION_HOST:
->          error_report("gic-version=host requires KVM");
-> -- 
-> 2.26.3
->
+In order to correctly report secure boot running firmware, these values
+must be set. They are taken from a running machine when secure boot is
+enabled.
 
+We don't yet have documentation from ASPEED on what they mean. Set the
+raw values for now, and in the future improve the model with properties
+to set these on a per-machine basis.
+
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ hw/misc/aspeed_sbc.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+index 40f2a8c6312f..857a947b68a2 100644
+--- a/hw/misc/aspeed_sbc.c
++++ b/hw/misc/aspeed_sbc.c
+@@ -17,6 +17,7 @@
  
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+ #define R_PROT          (0x000 / 4)
+ #define R_STATUS        (0x014 / 4)
++#define R_QSR           (0x040 / 4)
+ 
+ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+@@ -50,6 +51,7 @@ static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
+ 
+     switch (addr) {
+     case R_STATUS:
++    case R_QSR:
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: write to read only register 0x%" HWADDR_PRIx "\n",
+                       __func__, addr << 2);
+@@ -77,8 +79,9 @@ static void aspeed_sbc_reset(DeviceState *dev)
+ 
+     memset(s->regs, 0, sizeof(s->regs));
+ 
+-    /* Set secure boot enabled, and boot from emmc/spi */
+-    s->regs[R_STATUS] = 1 << 6 | 1 << 5;
++    /* Set secure boot enabled with RSA4096_SHA256 and enable eMMC ABR */
++    s->regs[R_STATUS] = 0x000044C6;
++    s->regs[R_QSR] = 0x07C07C89;
+ }
+ 
+ static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
+-- 
+2.34.1
 

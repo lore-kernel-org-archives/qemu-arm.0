@@ -1,146 +1,156 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2371731lfo;
-        Mon, 14 Mar 2022 12:33:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyVI+9O+M6arNNvW+8fGIzyvuVLK5tsr8rHB+p9rD1nPTJCiedGFBmv1FRJmwlEAyuPEMZ7
-X-Received: by 2002:a25:3482:0:b0:628:c004:56a8 with SMTP id b124-20020a253482000000b00628c00456a8mr20032306yba.637.1647286428540;
-        Mon, 14 Mar 2022 12:33:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647286428; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rrD/jyRMRceYX8RYT1Jtgx9e+Ov5VJRn/s/AuPruX39ComkS7TCzbmjpXAk5Qblj+c
-         AExf7JBQzOzV/DjKZfOwIp1ICDPzBXFqF4K361BRZI/WBPh5n6H5HqUbjWn9czzE+JBC
-         yqg5mV+YrAvIYNkhwQqJ/5UBuAr8OzRehT+XRYwESKS7WzhEzYNGp06PwHzooQXOk0fx
-         F88S28hVk1XDf4PBcS6ldXsSFR3NJzykrpXqubADbWahmTn6mDzFGEPOaOit5UdjVe03
-         vUS6UEWHxhEOebLW+tfkwAT4BuMq5RWvmVzxmx5V8fHWGHnE9dsOIYSnewerjTK8OqNs
-         e4GA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=NypDElBryCRX8rDkQJfbavXCt788KUUXgH9C0LgqFNE=;
-        b=IgNFBjjDtTDrbKKgXzIjeBHmSZKjdEMad8DWlsORJaej7to2ATI0YhTU36S8qt7thy
-         Ch0851X5DUBDPZn7G/q8/sZJ3aPmvcM/8j4Yvl/f4HPPQ9PtOWVpaoQ1vWeyrlSx4GVg
-         87bhrb92AGjoJQQ0uVelBLQQShmDZdpmBOPqMh1KRPcpE/RFM+K4LrbArUJeTbbq+WIp
-         iY0EAzeLtrXQe+Vc5E9MDpLF4p5plLITI0zag1fZsZYQSoEmUsGqtkatcSWi2O08BBGz
-         ZcNU/TE89TcHgyYp6OFU9s/Hd4LRbvuECib5eCc0N3zmus6AU8RC7/H5RiOpqftujAeH
-         ziqg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DrU6HamT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r20-20020a25ac54000000b0062916a10393si10299290ybd.296.2022.03.14.12.33.48
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Mar 2022 12:33:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DrU6HamT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49766 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nTqRv-0007cQ-VC
-	for alex.bennee@linaro.org; Mon, 14 Mar 2022 15:33:48 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37196)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nTqRm-0007aE-8H
- for qemu-arm@nongnu.org; Mon, 14 Mar 2022 15:33:38 -0400
-Received: from [2607:f8b0:4864:20::112d] (port=43251
- helo=mail-yw1-x112d.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nTqRk-0000r2-Rp
- for qemu-arm@nongnu.org; Mon, 14 Mar 2022 15:33:37 -0400
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-2e580bb920aso7414177b3.10
- for <qemu-arm@nongnu.org>; Mon, 14 Mar 2022 12:33:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NypDElBryCRX8rDkQJfbavXCt788KUUXgH9C0LgqFNE=;
- b=DrU6HamTshFRaIZTya+xqU3GdMLM09HLrgsWdLcyiCgRcMXhMh2/VLj+oLCRWZsmzj
- 5DsAfH7c/TuhmCnDm50EbYdfHNwI6aomXt9rQcloOUFoChNz16fFu7Znh1RL6yQz3pQS
- 7ZuZH6SAZAcwo6RpEjkPkxt5zdR5GG3hj65oSKk+D3Dxd0glmRL0btuumz21vkg015lw
- 4HsGwo1yL7NuhpqhZfLoQXEcwd2VmobiG86YIl16O3Zc9UAwZbr47k85vlVnbJxcPmsP
- FmrnWRJNNeXl6nUqqcf6mVfi79/viHE0eeXTHQJdMlhmJGTGSiTEAmHlXHMGhJ/hFmLQ
- e9mA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NypDElBryCRX8rDkQJfbavXCt788KUUXgH9C0LgqFNE=;
- b=kKATiPvJpjhW/tBycnWijpcXadupM9FIXZu0vamK11IxjOl5DQvbORq7510PBWWyFd
- RRQOY7ewHMBMR3h+a9vpd2xtw9c3IHu/ndZEyhaTYT1ryXqmzwv94kE0FO7cwq2r3cGE
- FVyoUnz9mIMSAy+ZAu4uAFPeJQjI7kts26cnEqWfKSmmWkUO9tO8uW3NPN+LljBGUiPT
- iMR3wZTAbieGhbB/s9EAGyk7OB4v7aK66ozTB27hNOR22CX4WjADLLeOZGjmusYqW3Ug
- of7HBxVTZoqTdjSWIPlXiowFJFAJsl7XnFXhcktYqtGslsZtRsrUCI6qmBcPhJsuGNtA
- 2nfQ==
-X-Gm-Message-State: AOAM530NrSLtcn9CgRxzmaitoCOkueHu3bUt3hUqFJGZbyqLxsMmYjgk
- Ewm0vLnZIKM+juOTCuS5dNx3Yp1TI/YLWDgrbPchiw==
-X-Received: by 2002:a81:a748:0:b0:2d6:1f8b:23a9 with SMTP id
- e69-20020a81a748000000b002d61f8b23a9mr20088001ywh.329.1647286415838; Mon, 14
- Mar 2022 12:33:35 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id r23-20020aa7da17000000b00415a1431488sm8701634eds.4.2022.03.14.13.09.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Mar 2022 13:09:49 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 1FAB51FFB7;
+	Mon, 14 Mar 2022 20:09:49 +0000 (GMT)
+References: <20220314160108.1440470-1-armbru@redhat.com>
+ <20220314160108.1440470-4-armbru@redhat.com>
+User-agent: mu4e 1.7.10; emacs 28.0.92
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Richard
+ Henderson <richard.henderson@linaro.org>, Gerd Hoffmann
+ <kraxel@redhat.com>, Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>, =?utf-8?Q?Marc-Andr=C3=A9?=
+ Lureau
+ <marcandre.lureau@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, Igor
+ Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>, Laurent
+ Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>, Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>, Corey Minyard <cminyard@mvista.com>,
+ Patrick Venture <venture@google.com>, Eduardo Habkost
+ <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Xu <peterx@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ =?utf-8?Q?C=C3=A9dric?= Le
+ Goater <clg@kaod.org>, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, Jean-Christophe
+ Dubois
+ <jcd@tribudubois.net>, Keith Busch <kbusch@kernel.org>, Klaus Jensen
+ <its@irrelevant.dk>, Yuval Shaia <yuval.shaia.ml@gmail.com>, Yoshinori
+ Sato <ysato@users.sourceforge.jp>, Magnus Damm <magnus.damm@gmail.com>,
+ Fabien Chouteau <chouteau@adacore.com>, KONRAD Frederic
+ <frederic.konrad@adacore.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Alex Williamson <alex.williamson@redhat.com>, Eric Auger
+ <eric.auger@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>, Juan Quintela
+ <quintela@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Konstantin Kostiuk <kkostiuk@redhat.com>, Michael Roth
+ <michael.roth@amd.com>, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Pavel
+ Dovgalyuk <pavel.dovgaluk@ispras.ru>, David Hildenbrand
+ <david@redhat.com>, Wenchao Wang <wenchao.wang@intel.com>, Kamil
+ Rytarowski <kamil@netbsd.org>, Reinoud Zandijk <reinoud@netbsd.org>, Sunil
+ Muthuswamy <sunilmut@microsoft.com>, Cornelia Huck <cohuck@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eric Blake <eblake@redhat.com>, Vladimir
+ Sementsov-Ogievskiy <vsementsov@virtuozzo.com>, John Snow
+ <jsnow@redhat.com>, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org,
+ qemu-block@nongnu.org, haxm-team@intel.com, qemu-s390x@nongnu.org
+Subject: Re: [PATCH 3/3] Use g_new() & friends where that makes obvious sense
+Date: Mon, 14 Mar 2022 19:48:47 +0000
+In-reply-to: <20220314160108.1440470-4-armbru@redhat.com>
+Message-ID: <877d8w5m9e.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20220304165628.2345765-1-peter.maydell@linaro.org>
- <942e09d4-13c9-d36a-b54c-920e570dcd38@linaro.org>
-In-Reply-To: <942e09d4-13c9-d36a-b54c-920e570dcd38@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Mar 2022 19:33:24 +0000
-Message-ID: <CAFEAcA99ZLFZedFaVXrEHM-1bVw9=HmU3f0SW4Csjh=L9hV0dA@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Fix handling of LPAE block descriptors
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::112d
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fd6N0Q8Bv7s6
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 5MTjjTf37q2W
 
-On Mon, 14 Mar 2022 at 19:29, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+
+Markus Armbruster <armbru@redhat.com> writes:
+
+> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+> for two reasons.  One, it catches multiplication overflowing size_t.
+> Two, it returns T * rather than void *, which lets the compiler catch
+> more type errors.
 >
-> On 3/4/22 08:56, Peter Maydell wrote:
-> >           page_size = (1ULL << ((stride * (4 - level)) + 3));
-> > +        descaddr &= ~(page_size - 1);
-> >           descaddr |= (address & (page_size - 1));
+> This commit only touches allocations with size arguments of the form
+> sizeof(T).
 >
-> As is,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Patch created mechanically with:
 >
-> though I wonder if it reads better as
+>     $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
+> 	     --macro-file scripts/cocci-macro-file.h FILES...
 >
->      page_bits = stride * (4 - level) + 3;
->      descaddr = deposit64(descaddr, 0, page_bits, address);
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+<snip>
+> --- a/audio/jackaudio.c
+> +++ b/audio/jackaudio.c
+> @@ -97,9 +97,9 @@ static void qjack_buffer_create(QJackBuffer *buffer, in=
+t channels, int frames)
+>      buffer->used     =3D 0;
+>      buffer->rptr     =3D 0;
+>      buffer->wptr     =3D 0;
+> -    buffer->data     =3D g_malloc(channels * sizeof(float *));
+> +    buffer->data     =3D g_new(float *, channels);
+>      for (int i =3D 0; i < channels; ++i) {
+> -        buffer->data[i] =3D g_malloc(frames * sizeof(float));
+> +        buffer->data[i] =3D g_new(float, frames);
 
-I thought about that, but we specifically need page_size
-anyway to return it later:
+Are these actually buffers of pointers to floats? I guess I leave that
+to the JACK experts...
 
-    *page_size_ptr = page_size;
+>      }
+>  }
+>=20=20
+> @@ -453,7 +453,7 @@ static int qjack_client_init(QJackClient *c)
+>      jack_on_shutdown(c->client, qjack_shutdown, c);
+>=20=20
+>      /* allocate and register the ports */
+> -    c->port =3D g_malloc(sizeof(jack_port_t *) * c->nchannels);
+> +    c->port =3D g_new(jack_port_t *, c->nchannels);
+>      for (int i =3D 0; i < c->nchannels; ++i) {
 
-and calculating both page_bits and page_size felt a bit awkward.
+I guess JACK just likes double indirection...
 
--- PMM
+>=20=20
+>          char port_name[16];
+<snip>
+> --- a/hw/pci/pcie_sriov.c
+> +++ b/hw/pci/pcie_sriov.c
+> @@ -177,7 +177,7 @@ static void register_vfs(PCIDevice *dev)
+>      assert(sriov_cap > 0);
+>      num_vfs =3D pci_get_word(dev->config + sriov_cap + PCI_SRIOV_NUM_VF);
+>=20=20
+> -    dev->exp.sriov_pf.vf =3D g_malloc(sizeof(PCIDevice *) * num_vfs);
+> +    dev->exp.sriov_pf.vf =3D g_new(PCIDevice *, num_vfs);
+>      assert(dev->exp.sriov_pf.vf);
+
+So what I find confusing about the conversion of sizeof(foo *) is that
+while the internal sizeof in g_new is unaffected I think the casting
+ends up as
+
+ foo **
+
+but I guess the compiler would have complained so maybe I don't
+understand the magic enough.
+
+<snip>
+> index 42130667a7..598e6adc5e 100644
+> --- a/hw/rdma/vmw/pvrdma_dev_ring.c
+> +++ b/hw/rdma/vmw/pvrdma_dev_ring.c
+> @@ -41,7 +41,7 @@ int pvrdma_ring_init(PvrdmaRing *ring, const char *name=
+, PCIDevice *dev,
+>      qatomic_set(&ring->ring_state->cons_head, 0);
+>      */
+>      ring->npages =3D npages;
+> -    ring->pages =3D g_malloc0(npages * sizeof(void *));
+> +    ring->pages =3D g_new0(void *, npages);
+
+At least here ring->pages agrees about void ** being the result.
+
+<snip>
+
+So other than my queries about the sizeof(foo *) which I'd like someone
+to assuage me of my concerns it looks like the script has done a
+thorough mechanical job as all good scripts should ;-)
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--=20
+Alex Benn=C3=A9e

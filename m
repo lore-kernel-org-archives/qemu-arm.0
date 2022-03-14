@@ -1,199 +1,76 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2346422lfo;
-        Mon, 14 Mar 2022 11:47:19 -0700 (PDT)
-X-Received: by 2002:a17:90a:2d0:b0:1bc:4fc0:6fb7 with SMTP id d16-20020a17090a02d000b001bc4fc06fb7mr627377pjd.196.1647283638997;
-        Mon, 14 Mar 2022 11:47:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647283638; cv=none;
-        d=google.com; s=arc-20160816;
-        b=wesBtKVuHec4k4e/altykMupTWoJHl2tRuumaZDEIw91pRhkJPmfbHrbZ8QyVOyIzK
-         dSn1DR4zZdJhiBeNcs1vSqEyBaGF1zf63n2LJjCzNWqX35WsUcyxvThr7TYD1bBr8oft
-         F0h01Jkt2qXCzHwNXCHtV4/8s1wlfRBqjrOOdvHIZLLQXVUSrTCWC+QFlzVZFPiKKOd2
-         1a3ZOtPPP8TliqYMcznDlhKEWgOp/rkYCKyk1iNIyaftFWa3rwfU7SozNjE0jnLm2eDc
-         BPQWKuj6eQ7RcUIoqH5sLr6WXuvzGuoFpyVjyh27rjWOzaKI1KJLjSEEP5VpkESyoG+v
-         xnhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=3D0LjBNgeX0U7Mj4vXtRyZDTtfua4bw8Cy52CIrKEcE=;
-        b=aztK2I6LGMIe92XlERvKj8ulvWSPjYZqeVOe3w2/Nkq9Fgb4heCl3tvFuEEi4FCSVp
-         +IvTso7jPpn9D+mhoslvawqHDuBWXZtmIoezVqLqsowYD5jGIc6AioAzkaRwHre8/WzX
-         WGgdN9PL18YC08PoKPLmDMEVm7QyouD2Qd3vI3WPMnqsJY/sWgyhtJwRDHlZeDgGE+lu
-         ishxmLQ6EPBkY6AfGoPIp+PpxsHmXmGHeCYngxJSF7taiVxZ6CBf11agPk0mwDPcqswC
-         WlxWp2AmmsPISf49GiNbng5EFqNIJCw7uELvaEaQeQ9E75SHtMbBt3gQO4RaZMTBasBM
-         44zw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bfJjZ7cZ;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u26-20020a63455a000000b00373d9816d98sor6661618pgk.43.2022.03.14.11.47.18
-        (Google Transport Security);
-        Mon, 14 Mar 2022 11:47:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bfJjZ7cZ;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=3D0LjBNgeX0U7Mj4vXtRyZDTtfua4bw8Cy52CIrKEcE=;
-        b=bfJjZ7cZndCjiv9SqHZ+gz/0oKTvtPYtt1gyUvSRswS4RFTsSgGz7nyM7i3zTsn0l7
-         TrXxYHSA7bX7Fzgiv1e9Iq6gmhINLk7AIsPQriBACClelMz0NCtN/89NlMGaZHFIEEHe
-         /OhsYPq9qlQnLm0YMaVyIacmu7wCbANhH2Z2P4N0wSykFtKrau7nb3gBpQsmYUKVBk6m
-         E8WpjP0G7/3p45G4eCysz94M/86UmhtbyPnn54CCc6qGUdooPX6Yp49QzyFe0M/Xy3jo
-         1qqQkUXRdKhFns65phIRg7cAgWHXb57FXw5ZrQBHTbqa96fWU7mOCIdjQB+niAOpUT4z
-         co/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=3D0LjBNgeX0U7Mj4vXtRyZDTtfua4bw8Cy52CIrKEcE=;
-        b=BvW/QlbI1CQhF2QRqXWOdpRyh1PkAM1MwBWGBluWGEhJPOEpy17vxDr2H3DhehOYxY
-         D+PaPcinC6slJYPSn2l4pfPoscCrgOclnUeWVr8ju7/PHPpnvV3nRNLN2hKgwlM0EeUW
-         MAQ6mbasp/NGFlrn4RtQFo85dBX1kjxSudQ8ZzHV5S2YWOFzNzhka3bb+fbHCn1Gc8Yb
-         HJYhGjaEm2hFpqGFnHxp0fk+L4evqFgcKScQW42DA0soOaEe26+Z1oTPNCu6Kji9v+o2
-         fRcWZv9/L/wLFvurnSY8zGSKqT3jFS4xm4bKoT8kfa8ymvDZm7qq962jEMrh5wy/4m3X
-         Um7g==
-X-Gm-Message-State: AOAM531rUnwbdNp+lItUrB+R6s8pLL4EaahK6chqhw72+GHlm1xjXrNB
-	ecz5fBAfKPCwWG88+W519PI=
-X-Google-Smtp-Source: ABdhPJwzbMEzP8c3c5sDX3mZK/oaJ86+KZMRKvtRIkv5Sn/gYzmdRImdNKkSWPP0IhMCI2ss///OUA==
-X-Received: by 2002:a63:ba47:0:b0:380:493a:7ed6 with SMTP id l7-20020a63ba47000000b00380493a7ed6mr20860797pgu.355.1647283638334;
-        Mon, 14 Mar 2022 11:47:18 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.115] ([185.126.107.38])
-        by smtp.gmail.com with ESMTPSA id k14-20020a056a00134e00b004f83f05608esm2061600pfu.31.2022.03.14.11.47.01
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 14 Mar 2022 11:47:17 -0700 (PDT)
-Message-ID: <78a0febe-348a-8398-c57a-4b58038d041d@gmail.com>
-Date: Mon, 14 Mar 2022 19:46:59 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.1
-Subject: Re: [PATCH 2/3] 9pfs: Use g_new() & friends where that makes obvious
- sense
-Content-Language: en-US
-To: Christian Schoenebeck <qemu_oss@crudebyte.com>, qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, kvm@vger.kernel.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Peter Xu <peterx@redhat.com>,
- Klaus Jensen <its@irrelevant.dk>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Konstantin Kostiuk <kkostiuk@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Ani Sinha <ani@anisinha.ca>, Reinoud Zandijk <reinoud@netbsd.org>,
- Eric Blake <eblake@redhat.com>, Sunil Muthuswamy <sunilmut@microsoft.com>,
- Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Juan Quintela <quintela@redhat.com>, John Snow <jsnow@redhat.com>,
- Paul Durrant <paul@xen.org>, Magnus Damm <magnus.damm@gmail.com>,
- Kamil Rytarowski <kamil@netbsd.org>, "Gonglei (Arei)"
- <arei.gonglei@huawei.com>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
- <hpoussin@reactos.org>, Mich ael Roth <michael.roth@amd.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, Amit Shah
- <amit@kernel.org>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- haxm-team@intel.com, Richard Henderson <richard.henderson@linaro.org>,
- Greg Kurz <groug@kaod.org>, Fabien Chouteau <chouteau@adacore.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>,
- qemu-ppc@nongnu.org, David Hildenbrand <david@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Eduardo Habkost <eduardo@habkost.net>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-block@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>,
- qemu-s390x@nongnu.org, Patrick Venture <venture@google.com>,
- Cornelia Huck <cohuck@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Jean-Christophe Dubois <jcd@tribudubois.net>,
- Corey Minyard <cminyard@mvista.com>, Wenchao Wang <wenchao.wang@intel.com>,
- Igor Mammedov <imammedo@redhat.com>, Colin Xu <colin.xu@intel.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id z23-20020a170906435700b006b0e62bee84sm7117295ejm.115.2022.03.14.12.22.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Mar 2022 12:22:15 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 0921D1FFB7;
+	Mon, 14 Mar 2022 19:22:15 +0000 (GMT)
 References: <20220314160108.1440470-1-armbru@redhat.com>
- <20220314160108.1440470-3-armbru@redhat.com> <2292394.T0kE68JRDY@silver>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <2292394.T0kE68JRDY@silver>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: EvS3+DKKI0q6
+ <20220314160108.1440470-2-armbru@redhat.com>
+User-agent: mu4e 1.7.10; emacs 28.0.92
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Richard
+ Henderson <richard.henderson@linaro.org>, Gerd Hoffmann
+ <kraxel@redhat.com>, Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>, =?utf-8?Q?Marc-Andr=C3=A9?=
+ Lureau
+ <marcandre.lureau@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, Igor
+ Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>, Laurent
+ Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>, Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>, Corey Minyard <cminyard@mvista.com>,
+ Patrick Venture <venture@google.com>, Eduardo Habkost
+ <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Xu <peterx@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ =?utf-8?Q?C=C3=A9dric?= Le
+ Goater <clg@kaod.org>, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, Jean-Christophe
+ Dubois
+ <jcd@tribudubois.net>, Keith Busch <kbusch@kernel.org>, Klaus Jensen
+ <its@irrelevant.dk>, Yuval Shaia <yuval.shaia.ml@gmail.com>, Yoshinori
+ Sato <ysato@users.sourceforge.jp>, Magnus Damm <magnus.damm@gmail.com>,
+ Fabien Chouteau <chouteau@adacore.com>, KONRAD Frederic
+ <frederic.konrad@adacore.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Alex Williamson <alex.williamson@redhat.com>, Eric Auger
+ <eric.auger@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>, Juan Quintela
+ <quintela@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Konstantin Kostiuk <kkostiuk@redhat.com>, Michael Roth
+ <michael.roth@amd.com>, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Pavel
+ Dovgalyuk <pavel.dovgaluk@ispras.ru>, David Hildenbrand
+ <david@redhat.com>, Wenchao Wang <wenchao.wang@intel.com>, Colin Xu
+ <colin.xu@intel.com>, Kamil Rytarowski <kamil@netbsd.org>, Reinoud Zandijk
+ <reinoud@netbsd.org>, Sunil Muthuswamy <sunilmut@microsoft.com>, Cornelia
+ Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>, Eric Blake
+ <eblake@redhat.com>, Vladimir Sementsov-Ogievskiy
+ <vsementsov@virtuozzo.com>, John Snow <jsnow@redhat.com>,
+ kvm@vger.kernel.org, qemu-arm@nongnu.org, xen-devel@lists.xenproject.org,
+ qemu-ppc@nongnu.org, qemu-block@nongnu.org, haxm-team@intel.com,
+ qemu-s390x@nongnu.org
+Subject: Re: [PATCH 1/3] scripts/coccinelle: New use-g_new-etc.cocci
+Date: Mon, 14 Mar 2022 19:22:09 +0000
+In-reply-to: <20220314160108.1440470-2-armbru@redhat.com>
+Message-ID: <87ilsg5ogp.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: NRbKM9mp4Kkf
 
-Hi Christian,
 
-On 14/3/22 17:42, Christian Schoenebeck wrote:
-> On Montag, 14. März 2022 17:01:07 CET Markus Armbruster wrote:
->> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
->> for two reasons.  One, it catches multiplication overflowing size_t.
->> Two, it returns T * rather than void *, which lets the compiler catch
->> more type errors.
->>
->> This commit only touches allocations with size arguments of the form
->> sizeof(T).
->>
->> Patch created mechanically with:
->>
->>      $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
->> 	     --macro-file scripts/cocci-macro-file.h FILES...
->>
->> Except this uncovers a typing error:
->>
->>      ../hw/9pfs/9p.c:855:13: warning: incompatible pointer types assigning to
->> 'QpfEntry *' from 'QppEntry *' [-Wincompatible-pointer-types] val =
->> g_new0(QppEntry, 1);
->> 		^ ~~~~~~~~~~~~~~~~~~~
->>      1 warning generated.
->>
->> Harmless, because QppEntry is larger than QpfEntry.  Fix to allocate a
->> QpfEntry instead.
->>
->> Cc: Greg Kurz <groug@kaod.org>
->> Cc: Christian Schoenebeck <qemu_oss@crudebyte.com>
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->> ---
-> 
-> Reviewed-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
+Markus Armbruster <armbru@redhat.com> writes:
 
-FYI your domain is also quarantined by Google:
+> This is the semantic patch from commit b45c03f585 "arm: Use g_new() &
+> friends where that makes obvious sense".
+>
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
-ARC-Authentication-Results: i=1; mx.google.com;
-        dkim=fail header.i=@crudebyte.com header.s=lizzy header.b=olij9WvS;
-        spf=softfail (google.com: domain of transitioning 
-qemu_oss@crudebyte.com does not designate 172.105.152.211 as permitted 
-sender) smtp.mailfrom=qemu_oss@crudebyte.com;
-        dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) 
-header.from=crudebyte.com
-Received-SPF: softfail (google.com: domain of transitioning 
-qemu_oss@crudebyte.com does not designate 172.105.152.211 as permitted 
-sender) client-ip=172.105.152.211;
-Authentication-Results: mx.google.com;
-        dkim=fail header.i=@crudebyte.com header.s=lizzy header.b=olij9WvS;
-        spf=softfail (google.com: domain of transitioning 
-qemu_oss@crudebyte.com does not designate 172.105.152.211 as permitted 
-sender) smtp.mailfrom=qemu_oss@crudebyte.com;
-        dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) 
-header.from=crudebyte.com
-X-Rspamd-Queue-Id: AC61617709E
-X-Spamd-Result: default: False [-2.01 / 7.00]; 
-BAYES_HAM(-3.00)[100.00%]; SUSPICIOUS_RECIPS(1.50)[]; 
-DMARC_POLICY_ALLOW(-0.50)[crudebyte.com,quarantine]; 
-MID_RHS_NOT_FQDN(0.50)[]; R_DKIM_ALLOW(-0.20)[crudebyte.com:s=lizzy]; 
-R_SPF_ALLOW(-0.20)[+ip4:91.194.90.13]; MIME_GOOD(-0.10)[text/plain]; 
-MX_GOOD(-0.01)[]; RCVD_COUNT_ZERO(0.00)[0]; ASN(0.00)[asn:51167, 
-ipnet:91.194.90.0/23, country:DE]; MIME_TRACE(0.00)[0:+]; 
-FREEMAIL_CC(0.00)[redhat.com,linaro.org,gmail.com,vger.kernel.org,irrelevant.dk,adacore.com,anisinha.ca,netbsd.org,microsoft.com,kernel.org,lists.xenproject.org,users.sourceforge.jp,xen.org,huawei.com,reactos.org,amd.com,citrix.com,syrmia.com,ilande.co.uk,intel.com,kaod.org,nongnu.org,ispras.ru,gibson.dropbear.id.au,habkost.net,virtuozzo.com,google.com,amsat.org,tribudubois.net,mvista.com]; 
-FROM_EQ_ENVFROM(0.00)[]; NEURAL_HAM(-0.00)[-0.923]; ARC_NA(0.00)[]; 
-DKIM_TRACE(0.00)[crudebyte.com:+]; FROM_HAS_DN(0.00)[]; 
-RCPT_COUNT_GT_50(0.00)[66]; TO_DN_SOME(0.00)[]; 
-TO_MATCH_ENVRCPT_SOME(0.00)[]; TAGGED_RCPT(0.00)[]; 
-RCVD_IN_DNSWL_FAIL(0.00)[91.194.90.13:server fail]
-X-Rspamd-Server: atlanta189
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--=20
+Alex Benn=C3=A9e

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id r23-20020aa7da17000000b00415a1431488sm8701634eds.4.2022.03.14.13.09.49
+        by smtp.gmail.com with ESMTPSA id f7-20020a17090631c700b006b293ddbca1sm7314593ejf.35.2022.03.14.15.55.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Mar 2022 13:09:49 -0700 (PDT)
+        Mon, 14 Mar 2022 15:55:10 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1FAB51FFB7;
-	Mon, 14 Mar 2022 20:09:49 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 47A0E1FFB7;
+	Mon, 14 Mar 2022 22:55:09 +0000 (GMT)
 References: <20220314160108.1440470-1-armbru@redhat.com>
  <20220314160108.1440470-4-armbru@redhat.com>
 User-agent: mu4e 1.7.10; emacs 28.0.92
@@ -44,22 +44,23 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Richard
  <michael.roth@amd.com>, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
  <berrange@redhat.com>, Pavel
  Dovgalyuk <pavel.dovgaluk@ispras.ru>, David Hildenbrand
- <david@redhat.com>, Wenchao Wang <wenchao.wang@intel.com>, Kamil
- Rytarowski <kamil@netbsd.org>, Reinoud Zandijk <reinoud@netbsd.org>, Sunil
- Muthuswamy <sunilmut@microsoft.com>, Cornelia Huck <cohuck@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eric Blake <eblake@redhat.com>, Vladimir
- Sementsov-Ogievskiy <vsementsov@virtuozzo.com>, John Snow
- <jsnow@redhat.com>, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org,
- qemu-block@nongnu.org, haxm-team@intel.com, qemu-s390x@nongnu.org
+ <david@redhat.com>, Wenchao Wang <wenchao.wang@intel.com>, Colin Xu
+ <colin.xu@intel.com>, Kamil Rytarowski <kamil@netbsd.org>, Reinoud Zandijk
+ <reinoud@netbsd.org>, Sunil Muthuswamy <sunilmut@microsoft.com>, Cornelia
+ Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>, Eric Blake
+ <eblake@redhat.com>, Vladimir Sementsov-Ogievskiy
+ <vsementsov@virtuozzo.com>, John Snow <jsnow@redhat.com>,
+ kvm@vger.kernel.org, qemu-arm@nongnu.org, xen-devel@lists.xenproject.org,
+ qemu-ppc@nongnu.org, qemu-block@nongnu.org, haxm-team@intel.com,
+ qemu-s390x@nongnu.org
 Subject: Re: [PATCH 3/3] Use g_new() & friends where that makes obvious sense
-Date: Mon, 14 Mar 2022 19:48:47 +0000
+Date: Mon, 14 Mar 2022 22:52:52 +0000
 In-reply-to: <20220314160108.1440470-4-armbru@redhat.com>
-Message-ID: <877d8w5m9e.fsf@linaro.org>
+Message-ID: <87y21c401e.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 5MTjjTf37q2W
+X-TUID: ZscR6zjZ3Hbs
 
 
 Markus Armbruster <armbru@redhat.com> writes:
@@ -69,88 +70,30 @@ Markus Armbruster <armbru@redhat.com> writes:
 > Two, it returns T * rather than void *, which lets the compiler catch
 > more type errors.
 >
-> This commit only touches allocations with size arguments of the form
-> sizeof(T).
->
-> Patch created mechanically with:
->
->     $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
-> 	     --macro-file scripts/cocci-macro-file.h FILES...
->
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 <snip>
-> --- a/audio/jackaudio.c
-> +++ b/audio/jackaudio.c
-> @@ -97,9 +97,9 @@ static void qjack_buffer_create(QJackBuffer *buffer, in=
-t channels, int frames)
->      buffer->used     =3D 0;
->      buffer->rptr     =3D 0;
->      buffer->wptr     =3D 0;
-> -    buffer->data     =3D g_malloc(channels * sizeof(float *));
-> +    buffer->data     =3D g_new(float *, channels);
->      for (int i =3D 0; i < channels; ++i) {
-> -        buffer->data[i] =3D g_malloc(frames * sizeof(float));
-> +        buffer->data[i] =3D g_new(float, frames);
+> diff --git a/semihosting/config.c b/semihosting/config.c
+> index 137171b717..6d48ec9566 100644
+> --- a/semihosting/config.c
+> +++ b/semihosting/config.c
+> @@ -98,7 +98,7 @@ static int add_semihosting_arg(void *opaque,
+>      if (strcmp(name, "arg") =3D=3D 0) {
+>          s->argc++;
+>          /* one extra element as g_strjoinv() expects NULL-terminated arr=
+ay */
+> -        s->argv =3D g_realloc(s->argv, (s->argc + 1) * sizeof(void *));
+> +        s->argv =3D g_renew(void *, s->argv, s->argc + 1);
 
-Are these actually buffers of pointers to floats? I guess I leave that
-to the JACK experts...
+This did indeed break CI because s->argv is an array of *char:
 
->      }
->  }
->=20=20
-> @@ -453,7 +453,7 @@ static int qjack_client_init(QJackClient *c)
->      jack_on_shutdown(c->client, qjack_shutdown, c);
->=20=20
->      /* allocate and register the ports */
-> -    c->port =3D g_malloc(sizeof(jack_port_t *) * c->nchannels);
-> +    c->port =3D g_new(jack_port_t *, c->nchannels);
->      for (int i =3D 0; i < c->nchannels; ++i) {
+../semihosting/config.c:101:17: error: assignment to =E2=80=98const char **=
+=E2=80=99 from incompatible pointer type =E2=80=98void **=E2=80=99 [-Werror=
+=3Dincompatible-pointer-types]
+  101 |         s->argv =3D g_renew(void *, s->argv, s->argc + 1);
+      |                 ^
+cc1: all warnings being treated as errors
 
-I guess JACK just likes double indirection...
+So it did the job of type checking but failed to build ;-)
 
->=20=20
->          char port_name[16];
-<snip>
-> --- a/hw/pci/pcie_sriov.c
-> +++ b/hw/pci/pcie_sriov.c
-> @@ -177,7 +177,7 @@ static void register_vfs(PCIDevice *dev)
->      assert(sriov_cap > 0);
->      num_vfs =3D pci_get_word(dev->config + sriov_cap + PCI_SRIOV_NUM_VF);
->=20=20
-> -    dev->exp.sriov_pf.vf =3D g_malloc(sizeof(PCIDevice *) * num_vfs);
-> +    dev->exp.sriov_pf.vf =3D g_new(PCIDevice *, num_vfs);
->      assert(dev->exp.sriov_pf.vf);
-
-So what I find confusing about the conversion of sizeof(foo *) is that
-while the internal sizeof in g_new is unaffected I think the casting
-ends up as
-
- foo **
-
-but I guess the compiler would have complained so maybe I don't
-understand the magic enough.
-
-<snip>
-> index 42130667a7..598e6adc5e 100644
-> --- a/hw/rdma/vmw/pvrdma_dev_ring.c
-> +++ b/hw/rdma/vmw/pvrdma_dev_ring.c
-> @@ -41,7 +41,7 @@ int pvrdma_ring_init(PvrdmaRing *ring, const char *name=
-, PCIDevice *dev,
->      qatomic_set(&ring->ring_state->cons_head, 0);
->      */
->      ring->npages =3D npages;
-> -    ring->pages =3D g_malloc0(npages * sizeof(void *));
-> +    ring->pages =3D g_new0(void *, npages);
-
-At least here ring->pages agrees about void ** being the result.
-
-<snip>
-
-So other than my queries about the sizeof(foo *) which I'd like someone
-to assuage me of my concerns it looks like the script has done a
-thorough mechanical job as all good scripts should ;-)
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 --=20
 Alex Benn=C3=A9e

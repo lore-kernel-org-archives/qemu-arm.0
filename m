@@ -1,182 +1,143 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2308114lfo;
-        Mon, 14 Mar 2022 10:39:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxmjpaTgFzCFQlMTwoF/mzWJbh2TRnUX+vkAzhI39UhZhOSs9uePU1XX/OsWX8aF3Sf3wNs
-X-Received: by 2002:a17:906:6693:b0:6cf:3cb:89c9 with SMTP id z19-20020a170906669300b006cf03cb89c9mr19698577ejo.23.1647279591908;
-        Mon, 14 Mar 2022 10:39:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647279591; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1843024lfo;
+        Sun, 13 Mar 2022 21:44:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbEvdEzY4/8EBdQqreD0RLzgJ55nKRx/Q+z8E8Cw7A7+Hxnwjt+OInb/NcV46c/xM8fhpZ
+X-Received: by 2002:a81:154:0:b0:2dd:1e6a:d509 with SMTP id 81-20020a810154000000b002dd1e6ad509mr17582480ywb.339.1647233040710;
+        Sun, 13 Mar 2022 21:44:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647233040; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pb5wW67/eTpar4dfQsnuc+255v0qnmA+D7Af0IhrykLQuRMa+s22aLU17YF8oRWCXb
-         ljkTGl3Zf1TVBCoYGV35GeNCcOV3lBIOeWcKhJ4sfuCOe2+2oBcPX/9pfNb/XFm7cGIV
-         1IQz0FO+By66OQUyCYuTsvEewQFNq7Ug6Erx11+7Cqn92zM9VLwzf4i7So4NPBisxlxz
-         Y9o7KN5uwgZvAhD60YY/bLkvd+ztfPzBQXZZkT/L56DUh+Cfrf/0wZEVsKyUbIjHSD4L
-         +KDjt7N+KxmAuvw+Zgj9uoBUqAlVIh4wSYS3OQwpHfT02v4Cz6WC3v3gRu4bC232Of+7
-         D+zg==
+        b=tC2VXaCX5kZZoy0pegDGCWAl5zqvsnFKerdy7fJDlvif9wr0BZOC6NzT40khQRGzqX
+         gQtTL21BBCGc6QWd/llykxkrfvmahvftYUp6yucC0HkRQk88gljpMLTeGaAisSJIdsnT
+         vaHV6Ce/reVK/auxPwzZ3+ox+9UODk4LEHbGevz/zmNo0vb/k7c25u/lDrDhgl8mH0T+
+         YeXMbE0MAzPMk3rEzkI9jqU3I8bgU2bp+d9yS/suCvbSXfQPOyV+Otm5MjA1rAfaS58d
+         xyRB4VqDSMVRgvgw1y+clEfzAjTp8dR4e+eK6DtLtmjK/Kquy+0AyWrAc27cBGAPmYVZ
+         kMog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=FuV+LXYAzCN8GlqarfyjrOMJEbdlSdj/IkmrSiaMB84=;
-        b=0RCRHzBFR4fk96NX5Kg/IXGfZqFu7UqQktA9Fpq58SN3ygkTC5BgX5yu1oLKf8KAuR
-         FDQ3eeqNPXGArfNQqfieUZzIt4PeQ5dSh6CPcYi/Aw05PbkGADCn+hQ108mO4Pn5RG16
-         MDiwSsTGPHRjjfo5H0oFdGAvkjH0bMu5zsttXdUKBXQ/qD6/mPSW17s7gEvdZ7I0jaUn
-         5M/xDxCVPYNsxy5QHcSqBWo7jqNKqI2pkjRRg7g1WbSAprWVYuhqvLpFbjCD8JLAsuEH
-         0Yy6zAEfYS//zfTvnU2qPSDgj7u9O91TYfZieFueKYZbLli6Itxu1nS6aTb1F6uvjwmo
-         /lEQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=21EFikrziO7J83eRzQSZ9JPnz4I2+1dw7lofMY4wC44=;
+        b=m87nLIfZTO4MHOd+H4zYl/N8ht2HJSXUZrisVTOxzGsXLnU1qnYSWQDxQhCNo5BVdr
+         gOF+ctI2JYhuadctY4PjdqAhvYC4hgggtK6+CmS4x5BjlgCejzffOV45guYNEp9fK9ZO
+         FxymUYQ9k+7Ber1HgcFobpSQj2eqsBQLSoIEFaNQi9FyIRDlZGWsqd+tI7osrSr3Druf
+         z4vyEV76z7cx3vwAqzpp5r/ZiaKULviZi24davqsgrazBllWB1m74B+kAIO4EZ522yiu
+         +AIHf1gWN2yMcvQclt60M6Iz2zhD6L31cSeqZbnWsIO/jMSGrueTnE9mW1AjO/Oe5Y32
+         Nq/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="crJ5J/E7";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id di10-20020a170906730a00b006da6b6bebcdsi10931647ejc.941.2022.03.14.10.39.51
+       dkim=pass header.i=@linaro.org header.s=google header.b=A7+qViOI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o127-20020a257385000000b00628af0bdc1esi8804404ybc.414.2022.03.13.21.44.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 14 Mar 2022 10:39:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 13 Mar 2022 21:44:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="crJ5J/E7";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1647279590;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=FuV+LXYAzCN8GlqarfyjrOMJEbdlSdj/IkmrSiaMB84=;
-	b=crJ5J/E7HiGU0wkJMFZIpC1obqquf6p48A22+ZZkT9mIkg/IA8VHiBWkuTZEs9xYeYCjXT
-	XAyebj7B6FXFp1SyMB0j++lRkq8keIwEiM92RubjQJbcAZFdIIWugWUVlUG837vqh432XI
-	MLS2UzS4R2cGMamsEQOjmodJOaU/+HE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-614-5i1UFKH3MraiAoloP0STSQ-1; Mon, 14 Mar 2022 13:39:47 -0400
-X-MC-Unique: 5i1UFKH3MraiAoloP0STSQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6CE36180139E;
-	Mon, 14 Mar 2022 17:39:44 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.154])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D155F140EBFE;
-	Mon, 14 Mar 2022 17:39:32 +0000 (UTC)
-Date: Mon, 14 Mar 2022 17:39:30 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Christian Schoenebeck <qemu_oss@crudebyte.com>,
-	"Gonglei (Arei)" <arei.gonglei@huawei.com>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
-	Laurent Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Paul Durrant <paul@xen.org>,
-	=?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Corey Minyard <cminyard@mvista.com>,
-	Patrick Venture <venture@google.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Peter Xu <peterx@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
-	Yuval Shaia <yuval.shaia.ml@gmail.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Fabien Chouteau <chouteau@adacore.com>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Juan Quintela <quintela@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	David Hildenbrand <david@redhat.com>,
-	Wenchao Wang <wenchao.wang@intel.com>,
-	Kamil Rytarowski <kamil@netbsd.org>,
-	Reinoud Zandijk <reinoud@netbsd.org>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Eric Blake <eblake@redhat.com>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
-	John Snow <jsnow@redhat.com>, kvm@vger.kernel.org,
-	qemu-arm@nongnu.org, xen-devel@lists.xenproject.org,
-	qemu-ppc@nongnu.org, qemu-block@nongnu.org, haxm-team@intel.com,
-	qemu-s390x@nongnu.org
-Subject: Re: [PATCH 3/3] Use g_new() & friends where that makes obvious sense
-Message-ID: <Yi990ucCF/ZWeDbU@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20220314160108.1440470-1-armbru@redhat.com>
- <20220314160108.1440470-4-armbru@redhat.com>
- <CAFEAcA8Tb7e+mJGaietc5si7_xZWxbTixcTSvNpB9wH_LQJ7kQ@mail.gmail.com>
- <87k0cwqxwv.fsf@pond.sub.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=A7+qViOI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40806 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nTcYq-0003Dv-4k
+	for alex.bennee@linaro.org; Mon, 14 Mar 2022 00:44:00 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49970)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nTcY2-0003Cx-5X
+ for qemu-devel@nongnu.org; Mon, 14 Mar 2022 00:43:10 -0400
+Received: from [2607:f8b0:4864:20::632] (port=46829
+ helo=mail-pl1-x632.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nTcY0-0004OW-QM
+ for qemu-devel@nongnu.org; Mon, 14 Mar 2022 00:43:09 -0400
+Received: by mail-pl1-x632.google.com with SMTP id w4so12489481ply.13
+ for <qemu-devel@nongnu.org>; Sun, 13 Mar 2022 21:43:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=21EFikrziO7J83eRzQSZ9JPnz4I2+1dw7lofMY4wC44=;
+ b=A7+qViOIFGTVdV3BzhxhhB4JVkNwHSwpF1cd7iz6y16MvocEoAyOHd9DOBUDP1wFkV
+ biepDQax1Zbvcg9t5Lih6jEGTSl2b6imB37JqX2ko6DgE/rY0R/mjoyG5y9iy8D2kUuH
+ An7RFE8O2JAl7OUEkReQ0Me85jLy+u9giU4OKwK+ZtCgu+vsdO4s7N4IJUWtIme8FEFW
+ zZvoK9bKB6W/WIM2AA1XWzpbZVgBH7MLmSMqtUnJazavBIDcDPhkOChekcVpbGKoO9XC
+ WV+Pxb4nBcX1iChX4PmHEJ3G6nSh9iwzdbkEcjyEueJ3/tP9wT09nThXcoRhJiwkOanz
+ Daog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=21EFikrziO7J83eRzQSZ9JPnz4I2+1dw7lofMY4wC44=;
+ b=onErhuri2QAq+XD15wRoFr70AcmuBy3FnlW7dXwwsNyhlc3L7b8vqzz33G7K6/zmqU
+ QE7Yp8rwuK9yv2lGb8VqlT74WgHkhajegFTUDUTWuVTtO5GGgM389ODGK+8nufGNdWlb
+ fn2hLQ8g4EGdeUc4s2Utim7Udlk2X8zCwpDycPHn26HobkW5It7dpn1BmTdPwKlzSgZQ
+ 5YkBP1wqK0elf55snl9kjzaSujlVKHRm59/v7bzCPxiADaGefJQP7WYEq4C2DbmwQVxs
+ smFKxEYZ4ArpCQkeuAyAJCfrl3ndNdQK5xAW1xOMLrh7Sg80wxGPOkJ/tlVV3RIEKMsy
+ cvhQ==
+X-Gm-Message-State: AOAM533R8jNuRkeQ/D2AI6qaPWShSLuO87JY8xLT44Y/u8xqFiNW6eGi
+ l3OfiiCoJ0HvLOZO3WmrR5LkOo3WO0n7bw==
+X-Received: by 2002:a17:902:ee53:b0:151:ec64:4ee7 with SMTP id
+ 19-20020a170902ee5300b00151ec644ee7mr22008616plo.89.1647232987140; 
+ Sun, 13 Mar 2022 21:43:07 -0700 (PDT)
+Received: from localhost.localdomain (174-21-142-130.tukw.qwest.net.
+ [174.21.142.130]) by smtp.gmail.com with ESMTPSA id
+ l18-20020a056a00141200b004f75395b2cesm18258153pfu.150.2022.03.13.21.43.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 13 Mar 2022 21:43:06 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/3] linux-user/arm: Improvements for commpage atomics
+Date: Sun, 13 Mar 2022 21:43:02 -0700
+Message-Id: <20220314044305.138794-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <87k0cwqxwv.fsf@pond.sub.org>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
-X-TUID: hNwRGuNx/WWS
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::632
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, laurent@vivier.eu
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MeL/QqH8W8Ce
 
-On Mon, Mar 14, 2022 at 05:52:32PM +0100, Markus Armbruster wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> 
-> > On Mon, 14 Mar 2022 at 16:01, Markus Armbruster <armbru@redhat.com> wrote:
-> >>
-> >> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
-> >> for two reasons.  One, it catches multiplication overflowing size_t.
-> >> Two, it returns T * rather than void *, which lets the compiler catch
-> >> more type errors.
-> >>
-> >> This commit only touches allocations with size arguments of the form
-> >> sizeof(T).
-> >>
-> >> Patch created mechanically with:
-> >>
-> >>     $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
-> >>              --macro-file scripts/cocci-macro-file.h FILES...
-> >>
-> >> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> >> ---
-> >
-> >>  104 files changed, 197 insertions(+), 202 deletions(-)
-> >
-> > I'm not going to say you must split this patch up. I'm just going to
-> > say that I personally am not looking at it, because it's too big
-> > for me to deal with.
-> 
-> As with all big but trivial Coccinelle patches, reviewing the Coccinelle
-> script and a reasonably representative sample of its output is almost
-> certainly a better use of reviewer time than attempting to get all the
-> patches reviewed.  They are mind-numbingly dull!
-> 
-> For what it's worth, we've used this script several times before.  Last
-> in commit bdd81addf4.
+Only the memory_barrer one is a bug; the rest improve system-wide
+interaction, and would only affect pre-armv6.
 
-This Coccinelle is simple enough to understand, that I'd suggest that
-once we merge the Coccinelle script itself, then for ongoing usage,
-its output can be considered effectively pre-reviewed.
 
-The reviewer can just re-run the Coccinelle script themselves to prove
-it has the same output as the submitter claims, to validate no manual
-changes are hidden in the middle of the automated patch.
+r~
 
-Regards,
-Daniel
+
+Richard Henderson (3):
+  linux-user/arm: Implement __kernel_memory_barrier
+  linux-user/arm: Implement __kernel_cmpxchg with host atomics
+  linux-user/arm: Implement __kernel_cmpxchg64 with host atomics
+
+ linux-user/arm/cpu_loop.c | 166 +++++++++++++++++++++++---------------
+ 1 file changed, 99 insertions(+), 67 deletions(-)
+
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.25.1
+

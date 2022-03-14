@@ -1,13 +1,13 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id z23-20020a170906435700b006b0e62bee84sm7117295ejm.115.2022.03.14.12.22.15
+        by smtp.gmail.com with ESMTPSA id l20-20020a1709066b9400b006dabdbc8350sm7157034ejr.30.2022.03.14.12.23.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Mar 2022 12:22:15 -0700 (PDT)
+        Mon, 14 Mar 2022 12:23:10 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 0921D1FFB7;
-	Mon, 14 Mar 2022 19:22:15 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 117581FFB7;
+	Mon, 14 Mar 2022 19:23:10 +0000 (GMT)
 References: <20220314160108.1440470-1-armbru@redhat.com>
- <20220314160108.1440470-2-armbru@redhat.com>
+ <20220314160108.1440470-3-armbru@redhat.com>
 User-agent: mu4e 1.7.10; emacs 28.0.92
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Markus Armbruster <armbru@redhat.com>
@@ -53,21 +53,45 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Richard
  kvm@vger.kernel.org, qemu-arm@nongnu.org, xen-devel@lists.xenproject.org,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, haxm-team@intel.com,
  qemu-s390x@nongnu.org
-Subject: Re: [PATCH 1/3] scripts/coccinelle: New use-g_new-etc.cocci
-Date: Mon, 14 Mar 2022 19:22:09 +0000
-In-reply-to: <20220314160108.1440470-2-armbru@redhat.com>
-Message-ID: <87ilsg5ogp.fsf@linaro.org>
+Subject: Re: [PATCH 2/3] 9pfs: Use g_new() & friends where that makes
+ obvious sense
+Date: Mon, 14 Mar 2022 19:23:04 +0000
+In-reply-to: <20220314160108.1440470-3-armbru@redhat.com>
+Message-ID: <87ee345of5.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: NRbKM9mp4Kkf
+X-TUID: zIxMcB6hNcGR
 
 
 Markus Armbruster <armbru@redhat.com> writes:
 
-> This is the semantic patch from commit b45c03f585 "arm: Use g_new() &
-> friends where that makes obvious sense".
+> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+> for two reasons.  One, it catches multiplication overflowing size_t.
+> Two, it returns T * rather than void *, which lets the compiler catch
+> more type errors.
 >
+> This commit only touches allocations with size arguments of the form
+> sizeof(T).
+>
+> Patch created mechanically with:
+>
+>     $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
+> 	     --macro-file scripts/cocci-macro-file.h FILES...
+>
+> Except this uncovers a typing error:
+>
+>     ../hw/9pfs/9p.c:855:13: warning: incompatible pointer types assigning=
+ to 'QpfEntry *' from 'QppEntry *' [-Wincompatible-pointer-types]
+> 	    val =3D g_new0(QppEntry, 1);
+> 		^ ~~~~~~~~~~~~~~~~~~~
+>     1 warning generated.
+>
+> Harmless, because QppEntry is larger than QpfEntry.  Fix to allocate a
+> QpfEntry instead.
+>
+> Cc: Greg Kurz <groug@kaod.org>
+> Cc: Christian Schoenebeck <qemu_oss@crudebyte.com>
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>

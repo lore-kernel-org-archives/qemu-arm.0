@@ -1,227 +1,158 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2273794lfo;
-        Mon, 14 Mar 2022 09:43:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz9MQbmje9Uj9HOeyTi7bKNtpwXTbR8wO2hKI5AIVWmMumLQW4T6gqMraWrF7CovNvjZr6Q
-X-Received: by 2002:a05:6214:d84:b0:435:2f91:8c3e with SMTP id e4-20020a0562140d8400b004352f918c3emr17927771qve.106.1647276217035;
-        Mon, 14 Mar 2022 09:43:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647276217; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2278902lfo;
+        Mon, 14 Mar 2022 09:52:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy4SVq0CgZSUy0GUOuBhp3j2LEbz1pPMHO1iJCO00B7WEyxVae+bep+DvMLKU5QL1CNOEre
+X-Received: by 2002:a17:907:a0c8:b0:6db:5733:aebf with SMTP id hw8-20020a170907a0c800b006db5733aebfmr19122087ejc.263.1647276758444;
+        Mon, 14 Mar 2022 09:52:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647276758; cv=none;
         d=google.com; s=arc-20160816;
-        b=U7zPhgZbA4RWBGNZ4nw2eT44f0+xxQAdvwq0VEIVocua2d5SSWipARF7lykjbMqjhQ
-         mFRbCN0FjhU7zaQxdRRNIvxGDirLquktP2cA2ZD99WuuW7rIS0TexVryLpHHbhJ4Po7I
-         p3fgTJ9IlfdP0SDITOzq7itasxHMUDUewM19Gw95eOM/qlGa5Rm3s+WfAbU2m9IUF+RR
-         4gd/s0JuCQExcMSoOe/0nAPMUGP2iklLq18JSR+7cFsQBw3HRjjtq2f3xjUdg8Btm71J
-         FnqFxtKdixGzgAfjGyOd1H8XvhjYCPhnWrq92OXdspxC0Bt6W9Xxnwnkvhxy69hGATnj
-         xJ9Q==
+        b=S7sTYq2rmLBW63gNIWCJMHeBWfEW4ZVD0p8g6rG2RdxiMwal0mPRwOkuxmEy21x1MW
+         ItA7KXGJUQoXbXcZrp/g77KGBAf2ynSkqiYVBcNPRyrk1rNLGGThfdVF14TvItpQVxeQ
+         x7Ppw7inSWxI899mVecUgDHkEf/ii3rhs5XYiXewMAoT7IY8Q36uQZxC/oKkX/ROJR0C
+         ANuw7ADCFFNq6V/sjN0tvxP+9ILjf26COvtPEwjArVQ35SnAgPYN2+YSR+zRtiPXLlZi
+         CbeL97VcG75Q569CUxYmS1wpTs7iO3CpXFgL8t8+4G+c4sePyLwZCfnbV9xbxcCZGXdi
+         7DFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=X9tSXtWCri/hff0a9zIvHAJ+K/ajCEfv9fmgag7jonU=;
-        b=UEg2BHkTeqXrpUa7IHTTMLKt40rWXstH8r2AFYmMSZLLXKVmRZRkicFEFljUgqzzHh
-         Nj2OSLxsfuxvAOiwYvI/NHJOuivlv4UpVFrgrDw26NycovwTx9Zrln7JW4Y8EY3OWIU9
-         +S1lvcHqX6Wk6EnTPOksYIAg7Npwqd6vcnbSH+vkgRTMmN/15zZNP2SbXfcRRFylXOA1
-         mFlCVNrXWM39MnOl/aKOh/LUO77yZrf15od+Dt6lvdfkvtrKZBFXKsCOblHLpJJ/eg1+
-         +XOpw+5npcLNkUZHy83llFbqtJt7HOhJ+zSWloR5ZQs59zSR2KqL2k/Jhf2YlXx6K9zH
-         AWFA==
+        h=mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=hoVbdS414dD8S5HvfKlVfGNq0xYQ8aEfO5LCXtdVxms=;
+        b=DbuqxRHv511szPpPKopxJvvW8EaCs6ODeynE1wOnBVvN2IXVweYkqUDNe6xod6JNTs
+         Eti7VkA91HRnmS5vOQ03N+sr7LjGhpuhOggxXh5z2F40Rk0d6m+38c2nTcOqtrGRwgMV
+         g7wZ/ppz7P7fSJivssLHKyLlFC5Mzld1oCORKt6JaYGzhHoxSfJRR7Fj+0wnpXqhx0o7
+         9W+9FnAnme8IeHTwa+ZXtxHqO4JZ/P7kq0pUgOoheoDdJRMZ5o9Ke0mwsBpNLMkZIGJ6
+         LKQqaOTcOhf+lx842g/HJKmQupez5IU64urY1IIjlo2WFEAd8esypYccsxsm9pKQCPiI
+         v29A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@crudebyte.com header.s=lizzy header.b=olij9WvS;
-       spf=pass (google.com: domain of qemu_oss@crudebyte.com designates 91.194.90.13 as permitted sender) smtp.mailfrom=qemu_oss@crudebyte.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=crudebyte.com
-Return-Path: <qemu_oss@crudebyte.com>
-Received: from lizzy.crudebyte.com (lizzy.crudebyte.com. [91.194.90.13])
-        by mx.google.com with ESMTPS id kd17-20020a056214401100b00435d01ef5e6si6098371qvb.352.2022.03.14.09.43.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Mar 2022 09:43:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu_oss@crudebyte.com designates 91.194.90.13 as permitted sender) client-ip=91.194.90.13;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XG3499nn;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id eb10-20020a0564020d0a00b004161b4c6143si10676781edb.599.2022.03.14.09.52.38
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 14 Mar 2022 09:52:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@crudebyte.com header.s=lizzy header.b=olij9WvS;
-       spf=pass (google.com: domain of qemu_oss@crudebyte.com designates 91.194.90.13 as permitted sender) smtp.mailfrom=qemu_oss@crudebyte.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=crudebyte.com
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=crudebyte.com; s=lizzy; h=Content-Type:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Content-ID:Content-Description;
-	bh=X9tSXtWCri/hff0a9zIvHAJ+K/ajCEfv9fmgag7jonU=; b=olij9WvSjv6xdim1cbGpj8UPsg
-	FY1Ws1a9cPilYbWq3IW7INBPNKYmbbJ4XPtSJhNExhYjIizE+2j2YqCTb9hNuwpqxBITJDgq8N4AW
-	SBv/hqAvxfYpS70Dww12ZXL0bKIikp7ImlQUsEzTM5FPfx7yqjr0C7HxZUwOTKMjVFBSYWCeVmIMS
-	BsCQrcWpRL78fJPmuJaAmF77cB2Tm+OnXAZAlGchUBblvAxZXfcGqa8EV6L4Vax829SPU0Ah4kMhO
-	0qDKLota/IjpNlwPx+FNLMji5CMsztm+/q73XD+5zYQ1ntHFEjA++9KNh+xQoiFEy3hlpY784hCOQ
-	Hd4Rw+dg==;
-From: Christian Schoenebeck <qemu_oss@crudebyte.com>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Daniel Henrique Barboza <danielhb413@gmail.com>, kvm@vger.kernel.org, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>, Yuval Shaia <yuval.shaia.ml@gmail.com>, Peter Xu <peterx@redhat.com>, Klaus Jensen <its@irrelevant.dk>, KONRAD Frederic <frederic.konrad@adacore.com>, Konstantin Kostiuk <kkostiuk@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Ani Sinha <ani@anisinha.ca>, Reinoud Zandijk <reinoud@netbsd.org>, Eric Blake <eblake@redhat.com>, Sunil Muthuswamy <sunilmut@microsoft.com>, Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org, Yoshinori Sato <ysato@users.sourceforge.jp>, Juan Quintela <quintela@redhat.com>, John Snow <jsnow@redhat.com>, Paul Durrant <paul@xen.org>, Magnus Damm <magnus.damm@gmail.com>, Kamil Rytarowski <kamil@netbsd.org>, "Gonglei (Arei)" <arei.gonglei@huawei.com>, =?ISO-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>, Michael Roth <michael.roth@amd.com>, Anthony Perard <anthony.perard@citrix.com>, =?ISO-8859-1?Q?Marc=2DAndr=E9?= Lureau <marcandre.lureau@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, Amit Shah <amit@kernel.org>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, haxm-team@intel.com, Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>, Fabien Chouteau <chouteau@adacore.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Thomas Huth <thuth@redhat.com>, Eric Auger <eric.auger@redhat.com>, Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org, =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>, qemu-ppc@nongnu.org, David Hildenbrand <david@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>, David Gibson <david@gibson.dropbear.id.au>, Eduardo Habkost <eduardo@habkost.net>, Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>, Daniel =?ISO-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>, qemu-block@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>, qemu-s390x@nongnu.org, Patrick Venture <venture@google.com>, Cornelia Huck <cohuck@redhat.com>, Philippe =?ISO-8859-1?Q?Mathieu=2DDaud=E9?= <f4bug@amsat.org>, Jean-Christophe Dubois <jcd@tribudubois.net>, Corey Minyard <cminyard@mvista.com>, Wenchao Wang <wenchao.wang@intel.com>, Igor Mammedov <imammedo@redhat.com>, Colin Xu <colin.xu@intel.com>
-Subject: Re: [PATCH 2/3] 9pfs: Use g_new() & friends where that makes obvious sense
-Date: Mon, 14 Mar 2022 17:42:49 +0100
-Message-ID: <2292394.T0kE68JRDY@silver>
-In-Reply-To: <20220314160108.1440470-3-armbru@redhat.com>
-References: <20220314160108.1440470-1-armbru@redhat.com> <20220314160108.1440470-3-armbru@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XG3499nn;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1647276757;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=hoVbdS414dD8S5HvfKlVfGNq0xYQ8aEfO5LCXtdVxms=;
+	b=XG3499nnTatsMPDMTbFpCMpbjY6G1YBx3fWhZiqGJjID5p4RAhr4oXTc4kG9yTtNOwGtMK
+	3HbiGiVANS4sFip//5DAS7mPICDz1EyJ3ZtLdAtJwqzGGXq6TLvrqIxequ5aEgcOaLJ0dt
+	3IzzmQziLHa/oyRXAMD/iEQYw9I6DAg=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-278-N1xO-bcsMhWHXGmr0LX6PA-1; Mon, 14 Mar 2022 12:52:36 -0400
+X-MC-Unique: N1xO-bcsMhWHXGmr0LX6PA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3E815801585;
+	Mon, 14 Mar 2022 16:52:34 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.36.112.3])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5D70AC50942;
+	Mon, 14 Mar 2022 16:52:33 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 30A6821E66C8; Mon, 14 Mar 2022 17:52:32 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Markus Armbruster <armbru@redhat.com>,  qemu-devel@nongnu.org,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Gerd Hoffmann <kraxel@redhat.com>,
+  Christian Schoenebeck <qemu_oss@crudebyte.com>,  "Gonglei (Arei)"
+ <arei.gonglei@huawei.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
+  Igor Mammedov <imammedo@redhat.com>,  Ani Sinha <ani@anisinha.ca>,
+  Laurent Vivier <lvivier@redhat.com>,  Amit Shah <amit@kernel.org>,
+  Stefano Stabellini <sstabellini@kernel.org>,  Anthony Perard
+ <anthony.perard@citrix.com>,  Paul Durrant <paul@xen.org>,  =?utf-8?Q?Her?=
+ =?utf-8?Q?v=C3=A9?=
+ Poussineau <hpoussin@reactos.org>,  Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>,  Corey Minyard <cminyard@mvista.com>,
+  Patrick Venture <venture@google.com>,  Eduardo Habkost
+ <eduardo@habkost.net>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+  Peter Xu <peterx@redhat.com>,  Jason Wang <jasowang@redhat.com>,
+  =?utf-8?Q?C=C3=A9dric?=
+ Le Goater <clg@kaod.org>,  Daniel Henrique Barboza
+ <danielhb413@gmail.com>,  David Gibson <david@gibson.dropbear.id.au>,
+  Greg Kurz <groug@kaod.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>,
+  Jean-Christophe Dubois <jcd@tribudubois.net>,  Keith Busch
+ <kbusch@kernel.org>,  Klaus Jensen <its@irrelevant.dk>,  Yuval Shaia
+ <yuval.shaia.ml@gmail.com>,  Yoshinori Sato <ysato@users.sourceforge.jp>,
+  Magnus Damm <magnus.damm@gmail.com>,  Fabien Chouteau
+ <chouteau@adacore.com>,  KONRAD Frederic <frederic.konrad@adacore.com>,
+  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Artyom Tarasenko
+ <atar4qemu@gmail.com>,  Alex Williamson <alex.williamson@redhat.com>,
+  Eric Auger <eric.auger@redhat.com>,  Max Filippov <jcmvbkbc@gmail.com>,
+  Juan Quintela <quintela@redhat.com>,  "Dr. David Alan Gilbert"
+ <dgilbert@redhat.com>,  Konstantin Kostiuk <kkostiuk@redhat.com>,  Michael
+ Roth <michael.roth@amd.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+  Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  David Hildenbrand <david@redhat.com>,  Wenchao
+ Wang <wenchao.wang@intel.com>,  Kamil Rytarowski <kamil@netbsd.org>,
+  Reinoud Zandijk <reinoud@netbsd.org>,  Sunil Muthuswamy
+ <sunilmut@microsoft.com>,  Cornelia Huck <cohuck@redhat.com>,  Thomas Huth
+ <thuth@redhat.com>,  Eric Blake <eblake@redhat.com>,  Vladimir
+ Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,  John Snow
+ <jsnow@redhat.com>,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
+  xen-devel@lists.xenproject.org,  qemu-ppc@nongnu.org,
+  qemu-block@nongnu.org,  haxm-team@intel.com,  qemu-s390x@nongnu.org
+Subject: Re: [PATCH 3/3] Use g_new() & friends where that makes obvious sense
+References: <20220314160108.1440470-1-armbru@redhat.com>
+	<20220314160108.1440470-4-armbru@redhat.com>
+	<CAFEAcA8Tb7e+mJGaietc5si7_xZWxbTixcTSvNpB9wH_LQJ7kQ@mail.gmail.com>
+Date: Mon, 14 Mar 2022 17:52:32 +0100
+In-Reply-To: <CAFEAcA8Tb7e+mJGaietc5si7_xZWxbTixcTSvNpB9wH_LQJ7kQ@mail.gmail.com>
+	(Peter Maydell's message of "Mon, 14 Mar 2022 16:08:15 +0000")
+Message-ID: <87k0cwqxwv.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
-X-TUID: 6gB3LaxLccc1
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+X-TUID: MRLe9gPfCNFA
 
-On Montag, 14. M=E4rz 2022 17:01:07 CET Markus Armbruster wrote:
-> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
-> for two reasons.  One, it catches multiplication overflowing size_t.
-> Two, it returns T * rather than void *, which lets the compiler catch
-> more type errors.
->=20
-> This commit only touches allocations with size arguments of the form
-> sizeof(T).
->=20
-> Patch created mechanically with:
->=20
->     $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
-> 	     --macro-file scripts/cocci-macro-file.h FILES...
->=20
-> Except this uncovers a typing error:
->=20
->     ../hw/9pfs/9p.c:855:13: warning: incompatible pointer types assigning=
- to
-> 'QpfEntry *' from 'QppEntry *' [-Wincompatible-pointer-types] val =3D
-> g_new0(QppEntry, 1);
-> 		^ ~~~~~~~~~~~~~~~~~~~
->     1 warning generated.
->=20
-> Harmless, because QppEntry is larger than QpfEntry.  Fix to allocate a
-> QpfEntry instead.
->=20
-> Cc: Greg Kurz <groug@kaod.org>
-> Cc: Christian Schoenebeck <qemu_oss@crudebyte.com>
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Reviewed-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
+> On Mon, 14 Mar 2022 at 16:01, Markus Armbruster <armbru@redhat.com> wrote:
+>>
+>> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+>> for two reasons.  One, it catches multiplication overflowing size_t.
+>> Two, it returns T * rather than void *, which lets the compiler catch
+>> more type errors.
+>>
+>> This commit only touches allocations with size arguments of the form
+>> sizeof(T).
+>>
+>> Patch created mechanically with:
+>>
+>>     $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
+>>              --macro-file scripts/cocci-macro-file.h FILES...
+>>
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> ---
+>
+>>  104 files changed, 197 insertions(+), 202 deletions(-)
+>
+> I'm not going to say you must split this patch up. I'm just going to
+> say that I personally am not looking at it, because it's too big
+> for me to deal with.
 
->  hw/9pfs/9p-proxy.c           | 2 +-
->  hw/9pfs/9p-synth.c           | 4 ++--
->  hw/9pfs/9p.c                 | 8 ++++----
->  hw/9pfs/codir.c              | 6 +++---
->  tests/qtest/virtio-9p-test.c | 4 ++--
->  5 files changed, 12 insertions(+), 12 deletions(-)
->=20
-> diff --git a/hw/9pfs/9p-proxy.c b/hw/9pfs/9p-proxy.c
-> index 8b4b5cf7dc..4c5e0fc217 100644
-> --- a/hw/9pfs/9p-proxy.c
-> +++ b/hw/9pfs/9p-proxy.c
-> @@ -1187,7 +1187,7 @@ static int proxy_parse_opts(QemuOpts *opts,
-> FsDriverEntry *fs, Error **errp)
->=20
->  static int proxy_init(FsContext *ctx, Error **errp)
->  {
-> -    V9fsProxy *proxy =3D g_malloc(sizeof(V9fsProxy));
-> +    V9fsProxy *proxy =3D g_new(V9fsProxy, 1);
->      int sock_id;
->=20
->      if (ctx->export_flags & V9FS_PROXY_SOCK_NAME) {
-> diff --git a/hw/9pfs/9p-synth.c b/hw/9pfs/9p-synth.c
-> index b3080e415b..d99d263985 100644
-> --- a/hw/9pfs/9p-synth.c
-> +++ b/hw/9pfs/9p-synth.c
-> @@ -49,7 +49,7 @@ static V9fsSynthNode *v9fs_add_dir_node(V9fsSynthNode
-> *parent, int mode,
->=20
->      /* Add directory type and remove write bits */
->      mode =3D ((mode & 0777) | S_IFDIR) & ~(S_IWUSR | S_IWGRP | S_IWOTH);
-> -    node =3D g_malloc0(sizeof(V9fsSynthNode));
-> +    node =3D g_new0(V9fsSynthNode, 1);
->      if (attr) {
->          /* We are adding .. or . entries */
->          node->attr =3D attr;
-> @@ -128,7 +128,7 @@ int qemu_v9fs_synth_add_file(V9fsSynthNode *parent, i=
-nt
-> mode, }
->      /* Add file type and remove write bits */
->      mode =3D ((mode & 0777) | S_IFREG);
-> -    node =3D g_malloc0(sizeof(V9fsSynthNode));
-> +    node =3D g_new0(V9fsSynthNode, 1);
->      node->attr         =3D &node->actual_attr;
->      node->attr->inode  =3D synth_node_count++;
->      node->attr->nlink  =3D 1;
-> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-> index a6d6b3f835..8e9d4aea73 100644
-> --- a/hw/9pfs/9p.c
-> +++ b/hw/9pfs/9p.c
-> @@ -324,7 +324,7 @@ static V9fsFidState *alloc_fid(V9fsState *s, int32_t
-> fid) return NULL;
->          }
->      }
-> -    f =3D g_malloc0(sizeof(V9fsFidState));
-> +    f =3D g_new0(V9fsFidState, 1);
->      f->fid =3D fid;
->      f->fid_type =3D P9_FID_NONE;
->      f->ref =3D 1;
-> @@ -804,7 +804,7 @@ static int qid_inode_prefix_hash_bits(V9fsPDU *pdu,
-> dev_t dev)
->=20
->      val =3D qht_lookup(&pdu->s->qpd_table, &lookup, hash);
->      if (!val) {
-> -        val =3D g_malloc0(sizeof(QpdEntry));
-> +        val =3D g_new0(QpdEntry, 1);
->          *val =3D lookup;
->          affix =3D affixForIndex(pdu->s->qp_affix_next);
->          val->prefix_bits =3D affix.bits;
-> @@ -852,7 +852,7 @@ static int qid_path_fullmap(V9fsPDU *pdu, const struct
-> stat *stbuf, return -ENFILE;
->          }
->=20
-> -        val =3D g_malloc0(sizeof(QppEntry));
-> +        val =3D g_new0(QpfEntry, 1);
->          *val =3D lookup;
->=20
->          /* new unique inode and device combo */
-> @@ -928,7 +928,7 @@ static int qid_path_suffixmap(V9fsPDU *pdu, const str=
-uct
-> stat *stbuf, return -ENFILE;
->          }
->=20
-> -        val =3D g_malloc0(sizeof(QppEntry));
-> +        val =3D g_new0(QppEntry, 1);
->          *val =3D lookup;
->=20
->          /* new unique inode affix and device combo */
-> diff --git a/hw/9pfs/codir.c b/hw/9pfs/codir.c
-> index 75148bc985..93ba44fb75 100644
-> --- a/hw/9pfs/codir.c
-> +++ b/hw/9pfs/codir.c
-> @@ -141,9 +141,9 @@ static int do_readdir_many(V9fsPDU *pdu, V9fsFidState
-> *fidp,
->=20
->          /* append next node to result chain */
->          if (!e) {
-> -            *entries =3D e =3D g_malloc0(sizeof(V9fsDirEnt));
-> +            *entries =3D e =3D g_new0(V9fsDirEnt, 1);
->          } else {
-> -            e =3D e->next =3D g_malloc0(sizeof(V9fsDirEnt));
-> +            e =3D e->next =3D g_new0(V9fsDirEnt, 1);
->          }
->          e->dent =3D qemu_dirent_dup(dent);
->=20
-> @@ -163,7 +163,7 @@ static int do_readdir_many(V9fsPDU *pdu, V9fsFidState
-> *fidp, break;
->              }
->=20
-> -            e->st =3D g_malloc0(sizeof(struct stat));
-> +            e->st =3D g_new0(struct stat, 1);
->              memcpy(e->st, &stbuf, sizeof(struct stat));
->          }
->=20
-> diff --git a/tests/qtest/virtio-9p-test.c b/tests/qtest/virtio-9p-test.c
-> index 01ca076afe..e28c71bd8f 100644
-> --- a/tests/qtest/virtio-9p-test.c
-> +++ b/tests/qtest/virtio-9p-test.c
-> @@ -468,12 +468,12 @@ static void v9fs_rreaddir(P9Req *req, uint32_t *cou=
-nt,
-> uint32_t *nentries, togo -=3D 13 + 8 + 1 + 2 + slen, ++n)
->      {
->          if (!e) {
-> -            e =3D g_malloc(sizeof(struct V9fsDirent));
-> +            e =3D g_new(struct V9fsDirent, 1);
->              if (entries) {
->                  *entries =3D e;
->              }
->          } else {
-> -            e =3D e->next =3D g_malloc(sizeof(struct V9fsDirent));
-> +            e =3D e->next =3D g_new(struct V9fsDirent, 1);
->          }
->          e->next =3D NULL;
->          /* qid[13] offset[8] type[1] name[s] */
+As with all big but trivial Coccinelle patches, reviewing the Coccinelle
+script and a reasonably representative sample of its output is almost
+certainly a better use of reviewer time than attempting to get all the
+patches reviewed.  They are mind-numbingly dull!
 
+For what it's worth, we've used this script several times before.  Last
+in commit bdd81addf4.

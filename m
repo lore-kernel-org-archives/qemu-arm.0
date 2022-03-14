@@ -1,186 +1,199 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2327983lfo;
-        Mon, 14 Mar 2022 11:13:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyWoYMMd5EABYKb4JU4IRBcN7rgEUwcnuzBDcDMFTg8pPrmyB4GsMNsiUCVQ5QS+uPvTLx/
-X-Received: by 2002:a25:7544:0:b0:629:33a2:b142 with SMTP id q65-20020a257544000000b0062933a2b142mr19453271ybc.136.1647281628265;
-        Mon, 14 Mar 2022 11:13:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647281628; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2346422lfo;
+        Mon, 14 Mar 2022 11:47:19 -0700 (PDT)
+X-Received: by 2002:a17:90a:2d0:b0:1bc:4fc0:6fb7 with SMTP id d16-20020a17090a02d000b001bc4fc06fb7mr627377pjd.196.1647283638997;
+        Mon, 14 Mar 2022 11:47:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647283638; cv=none;
         d=google.com; s=arc-20160816;
-        b=vmdv+T08ryn51y/nkplY+WqBDDgnU+DEM99v6Jl+oYnCF7i0CDZT0BaEDPd0uvI9uW
-         BI9i812yvbjJW7ETIPmnNg9IZwROp14es3C+VopC0m4P7I3r06VgbzNS6zy3F+AyXiB9
-         vUny2W5+Qyb6sYeE2tRM7XuJFE4BvltB61gnbohhjspJTU3ihuT+/Mk/EluaoSVe0nwj
-         TmnTjGHea6fOSQQFaR06xG5VY1EfRajjTMwnucl2zfb6VpOlZGgbEV7Z1amxhW/oiQen
-         V1jwAJ/nTGTmqsbR01REuOHwi6YANz2XOiDrXoTVhBzPZTYCgLZyGr8LH4NwBKTbBnvM
-         jUjQ==
+        b=wesBtKVuHec4k4e/altykMupTWoJHl2tRuumaZDEIw91pRhkJPmfbHrbZ8QyVOyIzK
+         dSn1DR4zZdJhiBeNcs1vSqEyBaGF1zf63n2LJjCzNWqX35WsUcyxvThr7TYD1bBr8oft
+         F0h01Jkt2qXCzHwNXCHtV4/8s1wlfRBqjrOOdvHIZLLQXVUSrTCWC+QFlzVZFPiKKOd2
+         1a3ZOtPPP8TliqYMcznDlhKEWgOp/rkYCKyk1iNIyaftFWa3rwfU7SozNjE0jnLm2eDc
+         BPQWKuj6eQ7RcUIoqH5sLr6WXuvzGuoFpyVjyh27rjWOzaKI1KJLjSEEP5VpkESyoG+v
+         xnhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=QaQ+Boi0mU+Pp7EhfQK7kgD4tno7V88QKhgpvqtno3c=;
-        b=p2xWw1YSEMhIQXFrpoUjKkt7PDxm4CwH2KZmYsp0oG5uJ7GeiI/KQEe1tkHtS6q1JH
-         Z593jkkXBNfojgGRorXe1bpcf94DLd0w6FpxTXE4yGyVpC30uJA6x7sQtNUEntKugLbt
-         cELSUcTt29s1Ze9FDiVAX4jkWONX4stDv1+U8X4DZY0lu8PJJLOiR60aNg0uX2lZd3+t
-         y8ELOtaO0rkR4znfr7wo6beTzYyJtSNDLsuTb8WXMxZmOd2cxudCqudySrOZXz2uReLQ
-         sLcRtxKlltwwE5IDhqmqTGh50OPG9ZyGVx+dM1Zf6ffKC3Kws1lWpuvY3psopGE/DfzC
-         hXQQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=3D0LjBNgeX0U7Mj4vXtRyZDTtfua4bw8Cy52CIrKEcE=;
+        b=aztK2I6LGMIe92XlERvKj8ulvWSPjYZqeVOe3w2/Nkq9Fgb4heCl3tvFuEEi4FCSVp
+         +IvTso7jPpn9D+mhoslvawqHDuBWXZtmIoezVqLqsowYD5jGIc6AioAzkaRwHre8/WzX
+         WGgdN9PL18YC08PoKPLmDMEVm7QyouD2Qd3vI3WPMnqsJY/sWgyhtJwRDHlZeDgGE+lu
+         ishxmLQ6EPBkY6AfGoPIp+PpxsHmXmGHeCYngxJSF7taiVxZ6CBf11agPk0mwDPcqswC
+         WlxWp2AmmsPISf49GiNbng5EFqNIJCw7uELvaEaQeQ9E75SHtMbBt3gQO4RaZMTBasBM
+         44zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ztn9mtNK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14-20020a5b074e000000b00628ba65c4ddsi8963675ybq.7.2022.03.14.11.13.48
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Mar 2022 11:13:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bfJjZ7cZ;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u26-20020a63455a000000b00373d9816d98sor6661618pgk.43.2022.03.14.11.47.18
+        (Google Transport Security);
+        Mon, 14 Mar 2022 11:47:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ztn9mtNK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43982 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nTpCV-0001j2-LH
-	for alex.bennee@linaro.org; Mon, 14 Mar 2022 14:13:47 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47676)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nTpBI-0001Bx-Ds
- for qemu-arm@nongnu.org; Mon, 14 Mar 2022 14:12:36 -0400
-Received: from [2607:f8b0:4864:20::b2b] (port=43649
- helo=mail-yb1-xb2b.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nTpBG-0005Ec-O5
- for qemu-arm@nongnu.org; Mon, 14 Mar 2022 14:12:32 -0400
-Received: by mail-yb1-xb2b.google.com with SMTP id g26so32412130ybj.10
- for <qemu-arm@nongnu.org>; Mon, 14 Mar 2022 11:12:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QaQ+Boi0mU+Pp7EhfQK7kgD4tno7V88QKhgpvqtno3c=;
- b=ztn9mtNK1qXxF4dQjeHeOhbGhahQ97fKCZYVVuzYQzEWGts7klHGllORMRDXQ5uJoY
- 8U7MoYfg+ixINGPBIb9fd1dNR1ocSkWNXUuRRB9On3nidw4rvKdjmUebq5TYuItPiJOW
- mB4D275DjsHwxoiyUZKUsuwzG7E4vlDEwO4SRSJLR/eyc1fQRtwew7CYVfNsqEurVBci
- 1TzKbGMZRuk0/vSgEKb3NwbH6ada//9mcBEp1qeR9sdb+E2TZMd8ihC0RhxK80+HhowO
- I7OuzpCSO3wDNoCOpRtP9Uu00UFTbN5KHT5UReYJeUpXaVSYiNefszbkuexMB7we/peD
- 5fNQ==
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bfJjZ7cZ;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=3D0LjBNgeX0U7Mj4vXtRyZDTtfua4bw8Cy52CIrKEcE=;
+        b=bfJjZ7cZndCjiv9SqHZ+gz/0oKTvtPYtt1gyUvSRswS4RFTsSgGz7nyM7i3zTsn0l7
+         TrXxYHSA7bX7Fzgiv1e9Iq6gmhINLk7AIsPQriBACClelMz0NCtN/89NlMGaZHFIEEHe
+         /OhsYPq9qlQnLm0YMaVyIacmu7wCbANhH2Z2P4N0wSykFtKrau7nb3gBpQsmYUKVBk6m
+         E8WpjP0G7/3p45G4eCysz94M/86UmhtbyPnn54CCc6qGUdooPX6Yp49QzyFe0M/Xy3jo
+         1qqQkUXRdKhFns65phIRg7cAgWHXb57FXw5ZrQBHTbqa96fWU7mOCIdjQB+niAOpUT4z
+         co/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QaQ+Boi0mU+Pp7EhfQK7kgD4tno7V88QKhgpvqtno3c=;
- b=kcFdHFuifWOH1BoA6d3lKvoVUlnbRVVwaKp1WzSHNxa9yZjcu/4IFkBrpC9sXrN7GO
- POzAF6J0Kef4tfYQHt4vx8dRWgkmC2M55tXObbmmYGXBZxjvfW3dVcCdAUqz5cHCTthg
- HJ3GjW4dA8pTDn9R2/eM2TAT2uVWsp2+X8m2ekcw408GRmJWqc/rtJFP0eW60DlcT3Ow
- NvgPhsXqnXCFy9MhOhuBcBV/janqyjrLfIYpKd6wzaw/Fdz2ohyITF2UaTI+bearEXJC
- 0CSqLgO5CqY37Wu5eIS3rD+Hq9UA9qQy64S10akJOtmuEkDZ8lO86OtjMkVf+ZvV31C2
- G3+g==
-X-Gm-Message-State: AOAM531//RzcCtP8Vs77YTS4PmmlDhUxiXejYGeVfq8kBwQXdismQ2UF
- stsfQl1GF4xJbQTpkTZMJjpZzIWfio01G/WnhQH0EeI16pKwsQ==
-X-Received: by 2002:a25:32c6:0:b0:629:130:a037 with SMTP id
- y189-20020a2532c6000000b006290130a037mr18719807yby.193.1647281549785; Mon, 14
- Mar 2022 11:12:29 -0700 (PDT)
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=3D0LjBNgeX0U7Mj4vXtRyZDTtfua4bw8Cy52CIrKEcE=;
+        b=BvW/QlbI1CQhF2QRqXWOdpRyh1PkAM1MwBWGBluWGEhJPOEpy17vxDr2H3DhehOYxY
+         D+PaPcinC6slJYPSn2l4pfPoscCrgOclnUeWVr8ju7/PHPpnvV3nRNLN2hKgwlM0EeUW
+         MAQ6mbasp/NGFlrn4RtQFo85dBX1kjxSudQ8ZzHV5S2YWOFzNzhka3bb+fbHCn1Gc8Yb
+         HJYhGjaEm2hFpqGFnHxp0fk+L4evqFgcKScQW42DA0soOaEe26+Z1oTPNCu6Kji9v+o2
+         fRcWZv9/L/wLFvurnSY8zGSKqT3jFS4xm4bKoT8kfa8ymvDZm7qq962jEMrh5wy/4m3X
+         Um7g==
+X-Gm-Message-State: AOAM531rUnwbdNp+lItUrB+R6s8pLL4EaahK6chqhw72+GHlm1xjXrNB
+	ecz5fBAfKPCwWG88+W519PI=
+X-Google-Smtp-Source: ABdhPJwzbMEzP8c3c5sDX3mZK/oaJ86+KZMRKvtRIkv5Sn/gYzmdRImdNKkSWPP0IhMCI2ss///OUA==
+X-Received: by 2002:a63:ba47:0:b0:380:493a:7ed6 with SMTP id l7-20020a63ba47000000b00380493a7ed6mr20860797pgu.355.1647283638334;
+        Mon, 14 Mar 2022 11:47:18 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.115] ([185.126.107.38])
+        by smtp.gmail.com with ESMTPSA id k14-20020a056a00134e00b004f83f05608esm2061600pfu.31.2022.03.14.11.47.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 14 Mar 2022 11:47:17 -0700 (PDT)
+Message-ID: <78a0febe-348a-8398-c57a-4b58038d041d@gmail.com>
+Date: Mon, 14 Mar 2022 19:46:59 +0100
 MIME-Version: 1.0
-References: <20220304165628.2345765-1-peter.maydell@linaro.org>
-In-Reply-To: <20220304165628.2345765-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Mar 2022 18:12:18 +0000
-Message-ID: <CAFEAcA-7XPoeeO92C6YhR_1Cq3vsjR6vjJSSQqRTmvp34nhkbA@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Fix handling of LPAE block descriptors
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b2b
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2b.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BPv+U08Pws2D
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.6.1
+Subject: Re: [PATCH 2/3] 9pfs: Use g_new() & friends where that makes obvious
+ sense
+Content-Language: en-US
+To: Christian Schoenebeck <qemu_oss@crudebyte.com>, qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, kvm@vger.kernel.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Peter Xu <peterx@redhat.com>,
+ Klaus Jensen <its@irrelevant.dk>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Konstantin Kostiuk <kkostiuk@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Ani Sinha <ani@anisinha.ca>, Reinoud Zandijk <reinoud@netbsd.org>,
+ Eric Blake <eblake@redhat.com>, Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Juan Quintela <quintela@redhat.com>, John Snow <jsnow@redhat.com>,
+ Paul Durrant <paul@xen.org>, Magnus Damm <magnus.damm@gmail.com>,
+ Kamil Rytarowski <kamil@netbsd.org>, "Gonglei (Arei)"
+ <arei.gonglei@huawei.com>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
+ <hpoussin@reactos.org>, Mich ael Roth <michael.roth@amd.com>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, Amit Shah
+ <amit@kernel.org>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ haxm-team@intel.com, Richard Henderson <richard.henderson@linaro.org>,
+ Greg Kurz <groug@kaod.org>, Fabien Chouteau <chouteau@adacore.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ qemu-ppc@nongnu.org, David Hildenbrand <david@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-block@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-s390x@nongnu.org, Patrick Venture <venture@google.com>,
+ Cornelia Huck <cohuck@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Corey Minyard <cminyard@mvista.com>, Wenchao Wang <wenchao.wang@intel.com>,
+ Igor Mammedov <imammedo@redhat.com>, Colin Xu <colin.xu@intel.com>
+References: <20220314160108.1440470-1-armbru@redhat.com>
+ <20220314160108.1440470-3-armbru@redhat.com> <2292394.T0kE68JRDY@silver>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <2292394.T0kE68JRDY@silver>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: EvS3+DKKI0q6
 
-Ping for review, please?
+Hi Christian,
 
-thanks
--- PMM
+On 14/3/22 17:42, Christian Schoenebeck wrote:
+> On Montag, 14. März 2022 17:01:07 CET Markus Armbruster wrote:
+>> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+>> for two reasons.  One, it catches multiplication overflowing size_t.
+>> Two, it returns T * rather than void *, which lets the compiler catch
+>> more type errors.
+>>
+>> This commit only touches allocations with size arguments of the form
+>> sizeof(T).
+>>
+>> Patch created mechanically with:
+>>
+>>      $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
+>> 	     --macro-file scripts/cocci-macro-file.h FILES...
+>>
+>> Except this uncovers a typing error:
+>>
+>>      ../hw/9pfs/9p.c:855:13: warning: incompatible pointer types assigning to
+>> 'QpfEntry *' from 'QppEntry *' [-Wincompatible-pointer-types] val =
+>> g_new0(QppEntry, 1);
+>> 		^ ~~~~~~~~~~~~~~~~~~~
+>>      1 warning generated.
+>>
+>> Harmless, because QppEntry is larger than QpfEntry.  Fix to allocate a
+>> QpfEntry instead.
+>>
+>> Cc: Greg Kurz <groug@kaod.org>
+>> Cc: Christian Schoenebeck <qemu_oss@crudebyte.com>
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> ---
+> 
+> Reviewed-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
 
-On Fri, 4 Mar 2022 at 16:56, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> LPAE descriptors come in three forms:
->
->  * table descriptors, giving the address of the next level page table
->  * page descriptors, which occur only at level 3 and describe the
->    mapping of one page (which might be 4K, 16K or 64K)
->  * block descriptors, which occur at higher page table levels, and
->    describe the mapping of huge pages
->
-> QEMU's page-table-walk code treats block and page entries
-> identically, simply ORing in a number of bits from the input virtual
-> address that depends on the level of the page table that we stopped
-> at; we depend on the previous masking of descaddr with descaddrmask
-> to have already cleared out the low bits of the descriptor word.
->
-> This is not quite right: the address field in a block descriptor is
-> smaller, and so there are bits which are valid address bits in a page
-> descriptor or a table descriptor but which are not supposed to be
-> part of the address in a block descriptor, and descaddrmask does not
-> clear them.  We previously mostly got away with this because those
-> descriptor bits are RES0; however with FEAT_BBM (part of Armv8.4)
-> block descriptor bit 16 is defined to be the nT bit.  No emulated
-> QEMU CPU has FEAT_BBM yet, but if the host CPU has it then we might
-> see it when using KVM or hvf.
->
-> Explicitly zero out all the descaddr bits we're about to OR vaddr
-> bits into.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/790
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/helper.c | 10 ++++++++--
->  1 file changed, 8 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 088956eecf0..b5c8caafe84 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -11706,11 +11706,17 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
->              indexmask = indexmask_grainsize;
->              continue;
->          }
-> -        /* Block entry at level 1 or 2, or page entry at level 3.
-> +        /*
-> +         * Block entry at level 1 or 2, or page entry at level 3.
->           * These are basically the same thing, although the number
-> -         * of bits we pull in from the vaddr varies.
-> +         * of bits we pull in from the vaddr varies. Note that although
-> +         * descaddrmask masks enough of the low bits of the descriptor
-> +         * to give a correct page or table address, the address field
-> +         * in a block descriptor is smaller; so we need to explicitly
-> +         * clear the lower bits here before ORing in the low vaddr bits.
->           */
->          page_size = (1ULL << ((stride * (4 - level)) + 3));
-> +        descaddr &= ~(page_size - 1);
->          descaddr |= (address & (page_size - 1));
->          /* Extract attributes from the descriptor */
->          attrs = extract64(descriptor, 2, 10)
-> --
-> 2.25.1
+FYI your domain is also quarantined by Google:
+
+ARC-Authentication-Results: i=1; mx.google.com;
+        dkim=fail header.i=@crudebyte.com header.s=lizzy header.b=olij9WvS;
+        spf=softfail (google.com: domain of transitioning 
+qemu_oss@crudebyte.com does not designate 172.105.152.211 as permitted 
+sender) smtp.mailfrom=qemu_oss@crudebyte.com;
+        dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) 
+header.from=crudebyte.com
+Received-SPF: softfail (google.com: domain of transitioning 
+qemu_oss@crudebyte.com does not designate 172.105.152.211 as permitted 
+sender) client-ip=172.105.152.211;
+Authentication-Results: mx.google.com;
+        dkim=fail header.i=@crudebyte.com header.s=lizzy header.b=olij9WvS;
+        spf=softfail (google.com: domain of transitioning 
+qemu_oss@crudebyte.com does not designate 172.105.152.211 as permitted 
+sender) smtp.mailfrom=qemu_oss@crudebyte.com;
+        dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) 
+header.from=crudebyte.com
+X-Rspamd-Queue-Id: AC61617709E
+X-Spamd-Result: default: False [-2.01 / 7.00]; 
+BAYES_HAM(-3.00)[100.00%]; SUSPICIOUS_RECIPS(1.50)[]; 
+DMARC_POLICY_ALLOW(-0.50)[crudebyte.com,quarantine]; 
+MID_RHS_NOT_FQDN(0.50)[]; R_DKIM_ALLOW(-0.20)[crudebyte.com:s=lizzy]; 
+R_SPF_ALLOW(-0.20)[+ip4:91.194.90.13]; MIME_GOOD(-0.10)[text/plain]; 
+MX_GOOD(-0.01)[]; RCVD_COUNT_ZERO(0.00)[0]; ASN(0.00)[asn:51167, 
+ipnet:91.194.90.0/23, country:DE]; MIME_TRACE(0.00)[0:+]; 
+FREEMAIL_CC(0.00)[redhat.com,linaro.org,gmail.com,vger.kernel.org,irrelevant.dk,adacore.com,anisinha.ca,netbsd.org,microsoft.com,kernel.org,lists.xenproject.org,users.sourceforge.jp,xen.org,huawei.com,reactos.org,amd.com,citrix.com,syrmia.com,ilande.co.uk,intel.com,kaod.org,nongnu.org,ispras.ru,gibson.dropbear.id.au,habkost.net,virtuozzo.com,google.com,amsat.org,tribudubois.net,mvista.com]; 
+FROM_EQ_ENVFROM(0.00)[]; NEURAL_HAM(-0.00)[-0.923]; ARC_NA(0.00)[]; 
+DKIM_TRACE(0.00)[crudebyte.com:+]; FROM_HAS_DN(0.00)[]; 
+RCPT_COUNT_GT_50(0.00)[66]; TO_DN_SOME(0.00)[]; 
+TO_MATCH_ENVRCPT_SOME(0.00)[]; TAGGED_RCPT(0.00)[]; 
+RCVD_IN_DNSWL_FAIL(0.00)[91.194.90.13:server fail]
+X-Rspamd-Server: atlanta189

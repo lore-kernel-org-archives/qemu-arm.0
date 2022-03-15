@@ -1,174 +1,148 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2898954lfo;
-        Tue, 15 Mar 2022 07:07:56 -0700 (PDT)
-X-Received: by 2002:a17:90b:228a:b0:1bc:7ca4:efaf with SMTP id kx10-20020a17090b228a00b001bc7ca4efafmr4807959pjb.245.1647353276302;
-        Tue, 15 Mar 2022 07:07:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647353276; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2904840lfo;
+        Tue, 15 Mar 2022 07:16:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxilI3o4Fsvph85tIn3BnO+aiNWoteVRwZVn1Me8uvrO8HCIxcWtW5Gbp8lLzCtzQMQz1i7
+X-Received: by 2002:a05:6214:e6f:b0:440:c472:febe with SMTP id jz15-20020a0562140e6f00b00440c472febemr2564677qvb.9.1647353763407;
+        Tue, 15 Mar 2022 07:16:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647353763; cv=none;
         d=google.com; s=arc-20160816;
-        b=tZv9FisdT4u3Ebcd3MNUzl8qDgHA2aXOrw5aKEh7jd4FNa5xgQsfox93urFAhepAwX
-         LJB/xuv+tRGRj5iKA6cWPhqmS5gUKcFVyNcHwfy2CagJ9ME1w6Sdj0ruQR6hhOp20vOI
-         +eaYVwG1/G0qDAdaOb6MUkFhAdH+TsGk2QMgJHcW5rMA7w9C0p2pOkaIohkHu44rEQpd
-         NWhjSdw+qkMTZ3DDz+l5bOD6TXC0E8gOGS1Un3Z/qJcGFzmMlY8xaNlQg15FInnZKBt7
-         kyKHFHnj7419O+MoQ1LvEgMYK77UF2derw3f2wrSGc70SHwdcXvNVbTimQZX1w99Kd/x
-         33uA==
+        b=dWhB/SlYDRSIL0jcXmT2Qa2FN3DYsuVehdZB7jHCUjEwvdLGK81hYmMMnJDTysKk0A
+         pYoHOFFK1ass1GcVnaYaXVuDalSACggz5pH9lppKeopSu8nNkgLVtagm7HiYIcbwIRZK
+         XZKDd4rXfzzOvnAc0Gqf7sydMv7OtIAMQLNrJsLciDhRFAqo8yGad3Kzip+x1U5FQoU+
+         FlLkXQyw/KUCBq+oQMIg8X4CTPb2HeGItuwQC1PLNA8q4XBKhN6axlJqruQy8P8WRbXY
+         FIn3oMy9KPduHcXzD9nO2USn99KRvtJYoQT2HO44G2GBbw4NTMwg2D3uMgNyvyn34Pwh
+         zW7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=n5RJV7EKOnS1kazx80dECSrxKL3JUdNPyUQ+rH9sbVY=;
-        b=SGoOzPO57UmGl0bP8u+jCFQ+Is+tmOBV+0xVnW5M6Vz2RwPXgVrcJHUCQG1AiTJJfy
-         WVQTMcypYqGiyhowX7UM+Xuwjw5NgIFAjYGhIGf4J4qrfSBZmPI4f/7Aet/MkaSPCHjm
-         jG3FC1RsZfQ4BOhDu+zHogH3XwnDVWik5iVSrvxJJ9HzpcOg7DOUZ+x+AshwDc3SrzxW
-         z+LrbAKt2PpyKmFZXlKq5Z+3ZyrLTCAFihTVyMz7Qe+l8fnO4dJ+p9MwPo0uWu2Vefgo
-         qXf5VUNBQfsMkdd93T7qoUPD+lL/dJFXKAJtemUE97z4cu7m9K2GO7CfeGm7LMdMTXBc
-         BHLw==
+        h=content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=G34M2wqplRWeWarXP0G90H9Fcumln5YneSZGyKEyuqA=;
+        b=qu5OCI+g12OtdiYWM6mKJKDfV0V/v78vqNJTmFfuRBkDx7VxecvpYE4CsLVBD1Z6tE
+         Ipp6Bh3hnQbDP1FzCSF/gM81vVcLF707VLGUBD/cf7vgPjWNu3eNTV3MkxgeQqW+ZXhC
+         1TCCP3aVN3PJlNl69jZ19PBdm6nhEi1YmAfKLN+Jkohs0hv34bZOf/j2KVYBjr/L+Kgl
+         ZJn6oueL0SN9K3/1hBuJrwIFBjiKdZwDEdLBAycA7BSujlHt5QYAiq1J8TacsGRui2zd
+         vMGlFC8c1zXYmdDMhtRPRNbDIibzqvIG08fb6CBzXHSiNlSnWRzhEMG3ywshPuerQZgm
+         Zs/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HJForaCG;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q5-20020a170902eb8500b0014fe92899fdsor6725995plg.173.2022.03.15.07.07.56
-        (Google Transport Security);
-        Tue, 15 Mar 2022 07:07:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fOY8R8QL;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id p5-20020a05621421e500b00440a03e9f38si3348485qvj.129.2022.03.15.07.16.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 15 Mar 2022 07:16:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HJForaCG;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=n5RJV7EKOnS1kazx80dECSrxKL3JUdNPyUQ+rH9sbVY=;
-        b=HJForaCGjZ8+I/OPktEd9hFdMN585TTk+jl0Z7jRfAN/CjsP95sSEv7t3CUHUya9Fq
-         cmUxhqCxwnY8Jq9ZkM9jf+mTNdryW8tioEHIGLTnxomd2LGvSvmFeOEFu1+TJUQv/gsA
-         YaORRHawDzG1lXX9EHWybS1bRAYDLNtJF2kJHqL54XciTXijv6ZA3GOWFkvtFiHLZ+SA
-         4kf26f+rEExuA6NlZ1qB3stka8I1CYBJz/5JQegh/lDX4u2BnNEce4wHmJ5LrJiopGsP
-         QZQsfwz8N7g6wzUwgwsojTXJm7WfA39eegwwQBtQsfwcFCsGITjD3GnOhrtFtvdHKflj
-         KUvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=n5RJV7EKOnS1kazx80dECSrxKL3JUdNPyUQ+rH9sbVY=;
-        b=jpsl1W5QGkrLp/r4vSdNRW84ATAieW5SJRQ7DkanVFdquY2OctvbBO4H1ztoTmeXyy
-         PzzqeGhnUfS02F0tLKh/E12FsQ3+Y3IgUAGckxbmw/NmS6iTVeHd/1yfBQwExruXQU8Z
-         gA9MEV/8uc1jwbkCzeg5xvH5SNMbrE+iRaJQ4OUyf2V9IDzZrYp++Zq5un62LMHkS5H8
-         46LC+okW8mu44glySW8LP1H89VYquwiBSCDUdQBePpaq0HDms35MsXN+Sob5McPANNhm
-         nI6mYHngLLQgP69eCYQ2pLX9bhU2tkE502yGYpmVhcSp+A0oxD7X0tHNFrFIA1+yYgBK
-         snmw==
-X-Gm-Message-State: AOAM531pqbJyHTCf64IhbW85GB4syplJYCbZdpX3+mI5ZMpl7wznuGX7
-	ZK0seHcB+9ymCs7ouyIiYII=
-X-Google-Smtp-Source: ABdhPJzx03KXda7KzQgJ08jUr9c6CHZ/lPdQQFMd5dF0oFpdZHS7Vx/Bjs3VhxRjXoejIy7drn4agA==
-X-Received: by 2002:a17:902:9b97:b0:153:85ac:abc0 with SMTP id y23-20020a1709029b9700b0015385acabc0mr7132480plp.100.1647353275700;
-        Tue, 15 Mar 2022 07:07:55 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.115] ([185.126.107.38])
-        by smtp.gmail.com with ESMTPSA id m125-20020a628c83000000b004f7baad5c20sm10671055pfd.144.2022.03.15.07.07.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Mar 2022 07:07:55 -0700 (PDT)
-Message-ID: <02307072-4bff-dbbb-67fb-ca9800c34b3c@gmail.com>
-Date: Tue, 15 Mar 2022 15:07:36 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fOY8R8QL;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1647353762;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=G34M2wqplRWeWarXP0G90H9Fcumln5YneSZGyKEyuqA=;
+	b=fOY8R8QLuJspw0+Fzrdgpk6Z5cximYBufsAqchzMPmC4+gWvxSBdtp0b2N2MDIgBBS3wTf
+	OxqT0Vhwa2M2RCc3wxIL0zefRPqL7SWuC/QTTwWug3ZINLuHmji0heDwk/3Q8umBP3aIWO
+	J0tB65TQL6BKE6lGYKnSkJnvQ/n3kp8=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-595-damje9vXMueOcGOcWhJQuA-1; Tue, 15 Mar 2022 10:15:48 -0400
+X-MC-Unique: damje9vXMueOcGOcWhJQuA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0A4903C11C7A;
+	Tue, 15 Mar 2022 14:15:48 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.154])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 049DF41136E2;
+	Tue, 15 Mar 2022 14:15:44 +0000 (UTC)
+Date: Tue, 15 Mar 2022 14:15:42 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philippe.mathieu.daude@gmail.com>,
+	qemu-devel@nongnu.org, fam@euphon.net, f4bug@amsat.org,
+	aurelien@aurel32.net, pbonzini@redhat.com, stefanha@redhat.com,
+	crosa@redhat.com, qemu-arm@nongnu.org, richard.henderson@linaro.org,
+	sw@weilnetz.de
+Subject: Re: [PATCH v1 7/8] semihosting: clean up handling of expanded argv
+Message-ID: <YjCfjmxMnGZYGGv6@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20220315121251.2280317-1-alex.bennee@linaro.org>
+ <20220315121251.2280317-8-alex.bennee@linaro.org>
+ <6c7bdb98-ad58-e48e-caa5-a9747b8ad90b@gmail.com>
+ <87a6dr48n2.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.1
-Subject: Re: [PATCH 3/3] Use g_new() & friends where that makes obvious sense
-Content-Language: en-US
-To: Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <ani@anisinha.ca>, Laurent Vivier <lvivier@redhat.com>,
- Amit Shah <amit@kernel.org>, Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Corey Minyard <cminyard@mvista.com>, Patrick Venture <venture@google.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Peter Xu <peterx@redhat.com>,
- Jason Wang <jasowang@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, Keith Busch
- <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, Fabien Chouteau <chouteau@adacore.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Konstantin Kostiuk <kkostiuk@redhat.com>, Michael Roth
- <michael.roth@amd.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- David Hildenbrand <david@redhat.com>, Wenchao Wang <wenchao.wang@intel.com>,
- Colin Xu <colin.xu@intel.com>, Kamil Rytarowski <kamil@netbsd.org>,
- Reinoud Zandijk <reinoud@netbsd.org>,
- Sunil Muthuswamy <sunilmut@microsoft.com>, Cornelia Huck
- <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eric Blake <eblake@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- John Snow <jsnow@redhat.com>, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- haxm-team@intel.com, qemu-s390x@nongnu.org
-References: <20220314160108.1440470-1-armbru@redhat.com>
- <20220314160108.1440470-4-armbru@redhat.com> <87y21c401e.fsf@linaro.org>
- <875yofl3k3.fsf@pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <875yofl3k3.fsf@pond.sub.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <87a6dr48n2.fsf@linaro.org>
+User-Agent: Mutt/2.1.5 (2021-12-30)
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: v9W0ieFSB0Mi
+X-TUID: QGZQwFxK7vFQ
 
-On 15/3/22 14:59, Markus Armbruster wrote:
-> Alex Bennée <alex.bennee@linaro.org> writes:
+On Tue, Mar 15, 2022 at 01:59:59PM +0000, Alex Bennée wrote:
 > 
->> Markus Armbruster <armbru@redhat.com> writes:
->>
->>> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
->>> for two reasons.  One, it catches multiplication overflowing size_t.
->>> Two, it returns T * rather than void *, which lets the compiler catch
->>> more type errors.
->>>
->> <snip>
->>> diff --git a/semihosting/config.c b/semihosting/config.c
->>> index 137171b717..6d48ec9566 100644
->>> --- a/semihosting/config.c
->>> +++ b/semihosting/config.c
->>> @@ -98,7 +98,7 @@ static int add_semihosting_arg(void *opaque,
->>>       if (strcmp(name, "arg") == 0) {
->>>           s->argc++;
->>>           /* one extra element as g_strjoinv() expects NULL-terminated array */
->>> -        s->argv = g_realloc(s->argv, (s->argc + 1) * sizeof(void *));
->>> +        s->argv = g_renew(void *, s->argv, s->argc + 1);
->>
->> This did indeed break CI because s->argv is an array of *char:
->>
->> ../semihosting/config.c:101:17: error: assignment to ‘const char **’ from incompatible pointer type ‘void **’ [-Werror=incompatible-pointer-types]
->>    101 |         s->argv = g_renew(void *, s->argv, s->argc + 1);
->>        |                 ^
->> cc1: all warnings being treated as errors
->>
->> So it did the job of type checking but failed to build ;-)
+> Philippe Mathieu-Daudé <philippe.mathieu.daude@gmail.com> writes:
 > 
-> You found a hole in my compile testing, thanks!
+> > On 15/3/22 13:12, Alex Bennée wrote:
+> >> Another cleanup patch tripped over the fact we weren't being careful
+> >> in our casting. Fix the casts, allow for a non-const and switch from
+> >> g_realloc to g_renew.
+> >> The whole semihosting argument handling could do with some tests
+> >> though.
+> >> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> >> ---
+> >>   semihosting/config.c | 6 +++---
+> >>   1 file changed, 3 insertions(+), 3 deletions(-)
+> >> diff --git a/semihosting/config.c b/semihosting/config.c
+> >> index 137171b717..50d82108e6 100644
+> >> --- a/semihosting/config.c
+> >> +++ b/semihosting/config.c
+> >> @@ -51,7 +51,7 @@ typedef struct SemihostingConfig {
+> >>       bool enabled;
+> >>       SemihostingTarget target;
+> >>       Chardev *chardev;
+> >> -    const char **argv;
+> >> +    char **argv;
+> >>       int argc;
+> >>       const char *cmdline; /* concatenated argv */
+> >>   } SemihostingConfig;
+> >> @@ -98,8 +98,8 @@ static int add_semihosting_arg(void *opaque,
+> >>       if (strcmp(name, "arg") == 0) {
+> >>           s->argc++;
+> >>           /* one extra element as g_strjoinv() expects NULL-terminated array */
+> >> -        s->argv = g_realloc(s->argv, (s->argc + 1) * sizeof(void *));
+> >> -        s->argv[s->argc - 1] = val;
+> >> +        s->argv = g_renew(char *, s->argv, s->argc + 1);
+> >> +        s->argv[s->argc - 1] = g_strdup(val);
+> >
+> > Why strdup()?
 > 
-> I got confused about the configuration of my build trees.  Catching such
-> mistakes is what CI is for :)
+> The compiler was having issues with adding a const char * into the array
+> and it was the quickest way to stop it complaining. I'm not sure what
+> guarantees you can make about a const char * after you leave the scope
+> of the function.
 
-FYI Alex fixed this here:
-https://lore.kernel.org/qemu-devel/20220315121251.2280317-8-alex.bennee@linaro.org/
+No guarantees at all. This method was implicitly relying on the caller
+never free'ing the const arg it passed in. That is indeed the case here,
+because the arg came from a QemuOpts list. It is bad practice to rely
+on such things though, so adding the strdup is sane IMHO.
 
-So your series could go on top (modulo the Coverity change).
+I would have split the strdup out from the realloc -> renew change
+though, since it is an independent cleanup.
+
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

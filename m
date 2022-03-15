@@ -1,221 +1,151 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2169160lfo;
-        Mon, 14 Mar 2022 07:14:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzRxC1/avgd4YAdUIs9TStDII5DilmD7xWEW1WIV27vVJhU4vG3NpW3HrVgdv3b2wIvo9hI
-X-Received: by 2002:a05:6902:51:b0:61e:1a26:3243 with SMTP id m17-20020a056902005100b0061e1a263243mr17688813ybh.57.1647267265032;
-        Mon, 14 Mar 2022 07:14:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647267265; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2558042lfo;
+        Mon, 14 Mar 2022 19:12:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxWki9+qAv+ZtmbZX/mXyDujd8PfSAQxUAZt/ze+gZiDWJachX15ZhhXRO7e60nJFDD8bpN
+X-Received: by 2002:a25:e0cc:0:b0:629:17d1:7ba9 with SMTP id x195-20020a25e0cc000000b0062917d17ba9mr20657169ybg.200.1647310340978;
+        Mon, 14 Mar 2022 19:12:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647310340; cv=none;
         d=google.com; s=arc-20160816;
-        b=T6R0HKWNgLR9fzXDWtq4ulxNgFNuzrUulJdHCKLvQuHjS68MNpsvWw0d4vZSkfR/QL
-         GIn2HsAoyCH/PLRoEr76F7LLbpDjGW8fzEeFMPZXDdJuY9MP2Veoh78BosiJjK6lNk58
-         VgCXjZFKdVU/znMn98+dO/OdhDGs5bVi+AHgCrEoWOIxcM4cCxpyzi9L5XnvN5LsTyiw
-         d9KUssSuN4thCiSi29RDoCN67GegwdldeGGFXV46F1ArzIAMFrXN6i/yPT57AxBqrQPz
-         h3g24E1k3mNwzOBWCBL4nqWLBOpFbE6zZtoZZr1TkTO4b/wVbxuI4JcijNOpnZZ3Tq/t
-         Komw==
+        b=dXnfBtz/Ly1OoKMJUp2AXFK/qdlKcQdWk/IofgbRtnUPD4hIebfWG9lTfCz36RXyct
+         1pvdcA/OkuD3ZnSzSuCA0+F8MqZGgJKIoONKdiS8PIPBRTQly+W9JPe9qr9/tkHM64a8
+         BCnNNglYn0y+0t0elQUZkEYQdkEVNsU2nCUdicD2ZaVj3PNjWdPckY3Mfz3Lx4QJvMLZ
+         a8mSxo8fWERKAiiGw8FZkPmm2lJhOLYJ/w0jKaUEFgfsHjj8bYLU7WD+EO5WXPLenJo4
+         ce8brLdAPrj5W8UcCSo3EBZmzbPNkzWFKSd0tVVEdWIBNB4jiKtXq+a2uqgpNY2/jHql
+         NO4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=4WrrmMUq8xmo2rxzHHzESYuB1YlDG0ekjf/PWSPZDSw=;
-        b=Vcd0KsHudriwS/ikmuOCmgQy1l5rIbfHal24XGGdtqdSXHZZzT5JAJ8MR7ckiXyShN
-         OioSGmdISC4BqT/QXDrIuFm/tGHuKaztyfODPOdIL5WGfJcg6u1rUaTc8BvJGCgN59LJ
-         gEkXZzzfXshxlvb4xbx7d1cu5LYJYbfiCSV5+zj++vOvV2MHuR6dQMJbIAeQDQxiX/ny
-         naKBPSq6B2tQqVZZd174iuTmdMTs8URcq01ynfavBW26Gm33PZtfgcUweUwwjFSpoaMR
-         uMFoU6aBA2vlu1fKHzM6Mfg1xMLaeT0QOx9vuMp61RNfnAXmZZ5eKlqbHd5CeLJtfYL6
-         kv6w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=nPCyHm7z8svGYiIpoMfMBWpG43kIvw3IKZt4zZOcxVM=;
+        b=eP8SN4QeuZqoOEg9nZB7ib6mmYqqVRkUOrp/v19Zyx0mUDHc6Ha2VXDRVbQzULg3jm
+         HxZXj8Py8kcRQmZkmJDd4t6/Vo61Tf4BNZSwDgmuI5Z9XbFadwEjw73i2Bw625b+Rnyq
+         CIVz+gLP+ew2w7btUcroy84qiS9kkLx5HNOt4YZ1o2C+1kzIJxK8EBFgMWZ6dCttcJr6
+         RGGaN+Zvl4MPd5G2TmEprc1yIFVUcQSiPg8h7RAxUXqAUgXlR27YjUAWIJ1svjrSPC7A
+         hMLqXweCfAYknMvPGupb6tNJx3E5kqy4zMDLmAsT7bEZG4IWDig8yefyL3NNWRoCRIPf
+         PeuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=esMDmjzB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v65-20020a254844000000b0061da917cd23si8201148yba.35.2022.03.14.07.14.24
+        by mx.google.com with ESMTPS id w2-20020a5b08c2000000b00628eb0793f1si10853650ybq.507.2022.03.14.19.12.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Mar 2022 07:14:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Mar 2022 19:12:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34944 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=esMDmjzB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nTlSq-0004QA-Cr
-	for alex.bennee@linaro.org; Mon, 14 Mar 2022 10:14:24 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53886)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nTwfc-0007pA-C7
+	for alex.bennee@linaro.org; Mon, 14 Mar 2022 22:12:20 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1nThQY-0002Cz-5Q; Mon, 14 Mar 2022 05:55:46 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:48745)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1nThQU-0003d4-Uu; Mon, 14 Mar 2022 05:55:45 -0400
-Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 22E9iodD039520;
- Mon, 14 Mar 2022 17:44:50 +0800 (GMT-8)
- (envelope-from steven_lee@aspeedtech.com)
-Received: from localhost.localdomain (192.168.70.100) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 14 Mar
- 2022 17:54:52 +0800
-From: Steven Lee <steven_lee@aspeedtech.com>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-Subject: [PATCH v1 1/1] hw: aspeed_scu: Add AST2600 hpll calculation function
-Date: Mon, 14 Mar 2022 17:54:49 +0800
-Message-ID: <20220314095449.22089-2-steven_lee@aspeedtech.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20220314095449.22089-1-steven_lee@aspeedtech.com>
-References: <20220314095449.22089-1-steven_lee@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nTwfS-0007of-Em
+ for qemu-arm@nongnu.org; Mon, 14 Mar 2022 22:12:10 -0400
+Received: from [2607:f8b0:4864:20::431] (port=44585
+ helo=mail-pf1-x431.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nTwfQ-0001Vv-DT
+ for qemu-arm@nongnu.org; Mon, 14 Mar 2022 22:12:09 -0400
+Received: by mail-pf1-x431.google.com with SMTP id u17so15033723pfk.11
+ for <qemu-arm@nongnu.org>; Mon, 14 Mar 2022 19:12:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=nPCyHm7z8svGYiIpoMfMBWpG43kIvw3IKZt4zZOcxVM=;
+ b=esMDmjzBs04dA7xZCyR2KqjXxrFbluzpRqqBgIWk85c6wQdIIfSHirInLMmPOHVpD1
+ SVBL9awRcugYYkU1KIKLJb0PgWy2Tt1sK0pVMPGkDQ/ppTTsLpDv2hxq9qKDVzZ24FO6
+ N6AZLf+ICLSHY9KV1vN7BrY72q9QrsUjhWa15UynRjNXa/iFmtztnMSzGqaA8JMSEX5k
+ UF0y9FwEyZuDdRNNAQ6ci/xLUMaV+VkWguj0yb9AZ00UndzaSegYHLYN7JCvjhMRSqfv
+ 45oQ/jqHTKwO/SxEVTy7j8RBtxY3o0igf5fDJHBYFfcCT6MWSx9vlMDanu8iioq/uFL3
+ 4Ouw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=nPCyHm7z8svGYiIpoMfMBWpG43kIvw3IKZt4zZOcxVM=;
+ b=nqlOe+ujB4BEO9AtAcHhNcFKATonkroyY9DCpwecp+XClQ0OnDzivdhhc8UKFoFArb
+ xoX0HwN/L6C8hzoxHKTkudcQuoNHNzbOWzY8lbe3cjSblxdjUhKJdvAjuLVxTQgVsMQE
+ 9BSiBpdnD1xm8iiMd7J7FG1yf0c5flTQQ4IPkQjW/LAGGbWGvyGD5K6ym64xMDQ/YY9l
+ WivFTS1KyxBNr+2dX3u3AmjcrHdKF/TJ5pnpcEtfoVmTVKMmEPRF8akI1v/VNLVaqM0F
+ Ncef+vuzGeIOZ85qTcT9t08rVg0uStl4TCEi/W+c2Bnq//6SttzyAdE9Tcm6CioxzZEm
+ T22A==
+X-Gm-Message-State: AOAM533lSCoR7dG/2M2wYF8an9qR/UXQBD3nIxf/F9VzlFByNP8juxfU
+ qZtGiuDfy8soWAwQNaE6uhLIJ6FsZsGEQg==
+X-Received: by 2002:a05:6a00:309c:b0:4f7:a5ca:4e20 with SMTP id
+ bh28-20020a056a00309c00b004f7a5ca4e20mr14817106pfb.26.1647310326480; 
+ Mon, 14 Mar 2022 19:12:06 -0700 (PDT)
+Received: from localhost.localdomain (174-21-142-130.tukw.qwest.net.
+ [174.21.142.130]) by smtp.gmail.com with ESMTPSA id
+ 10-20020a17090a004a00b001c44ffccebdsm802627pjb.43.2022.03.14.19.12.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Mar 2022 19:12:06 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Fix pauth_check_trap vs SEL2
+Date: Mon, 14 Mar 2022 19:12:05 -0700
+Message-Id: <20220315021205.342768-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [192.168.70.100]
-X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
- (192.168.0.24)
-X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 22E9iodD039520
-Received-SPF: pass client-ip=211.20.114.71;
- envelope-from=steven_lee@aspeedtech.com; helo=twspam01.aspeedtech.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::431
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 14 Mar 2022 10:11:08 -0400
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
- steven_lee@aspeedtech.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BKN7ETMZICnz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ezjx34l6NmzN
 
-AST2600's HPLL register offset and bit definition are different from
-AST2500. Add a hpll calculation function for ast2600 and modify apb frequency
-calculation function based on SCU200 register description in ast2600v11.pdf.
+When arm_is_el2_enabled was introduced, we missed
+updating pauth_check_trap.
 
-Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/788
+Fixes: e6ef0169264b ("target/arm: use arm_is_el2_enabled() where applicable")
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/misc/aspeed_scu.c         | 43 ++++++++++++++++++++++++++++++++----
- include/hw/misc/aspeed_scu.h | 17 ++++++++++++++
- 2 files changed, 56 insertions(+), 4 deletions(-)
+ target/arm/pauth_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index d06e179a6e..3b11e98d66 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -205,6 +205,8 @@ static const uint32_t ast2500_a1_resets[ASPEED_SCU_NR_REGS] = {
-      [BMC_DEV_ID]      = 0x00002402U
- };
+diff --git a/target/arm/pauth_helper.c b/target/arm/pauth_helper.c
+index cd6df18150..739aa520dd 100644
+--- a/target/arm/pauth_helper.c
++++ b/target/arm/pauth_helper.c
+@@ -390,7 +390,7 @@ static void QEMU_NORETURN pauth_trap(CPUARMState *env, int target_el,
  
-+static uint32_t aspeed_2600_scu_calc_hpll(AspeedSCUState *s, uint32_t hpll_reg);
-+
- static uint32_t aspeed_scu_get_random(void)
+ static void pauth_check_trap(CPUARMState *env, int el, uintptr_t ra)
  {
-     uint32_t num;
-@@ -215,9 +217,19 @@ static uint32_t aspeed_scu_get_random(void)
- uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s)
- {
-     AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(s);
--    uint32_t hpll = asc->calc_hpll(s, s->regs[HPLL_PARAM]);
-+    uint32_t hpll, hpll_reg, clk_sel_reg;
-+
-+    if (asc->calc_hpll == aspeed_2600_scu_calc_hpll) {
-+        hpll_reg = s->regs[AST2600_HPLL_PARAM];
-+        clk_sel_reg = s->regs[AST2600_CLK_SEL];
-+    } else {
-+        hpll_reg = s->regs[HPLL_PARAM];
-+        clk_sel_reg = s->regs[CLK_SEL];
-+    }
-+
-+    hpll = asc->calc_hpll(s, hpll_reg);
- 
--    return hpll / (SCU_CLK_GET_PCLK_DIV(s->regs[CLK_SEL]) + 1)
-+    return hpll / (SCU_CLK_GET_PCLK_DIV(clk_sel_reg) + 1)
-         / asc->apb_divider;
- }
- 
-@@ -357,7 +369,10 @@ static const MemoryRegionOps aspeed_ast2500_scu_ops = {
- 
- static uint32_t aspeed_scu_get_clkin(AspeedSCUState *s)
- {
--    if (s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN) {
-+    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(s);
-+
-+    if (s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN ||
-+        asc->calc_hpll == aspeed_2600_scu_calc_hpll) {
-         return 25000000;
-     } else if (s->hw_strap1 & SCU_HW_STRAP_CLK_48M_IN) {
-         return 48000000;
-@@ -426,6 +441,26 @@ static uint32_t aspeed_2500_scu_calc_hpll(AspeedSCUState *s, uint32_t hpll_reg)
-     return clkin * multiplier;
- }
- 
-+static uint32_t aspeed_2600_scu_calc_hpll(AspeedSCUState *s, uint32_t hpll_reg)
-+{
-+    uint32_t multiplier = 1;
-+    uint32_t clkin = aspeed_scu_get_clkin(s);
-+
-+    if (hpll_reg & SCU_AST2600_H_PLL_OFF) {
-+        return 0;
-+    }
-+
-+    if (!(hpll_reg & SCU_H_PLL_BYPASS_EN)) {
-+        uint32_t p = (hpll_reg >> 19) & 0xf;
-+        uint32_t n = (hpll_reg >> 13) & 0x3f;
-+        uint32_t m = hpll_reg & 0x1fff;
-+
-+        multiplier = ((m + 1) / (n + 1)) / (p + 1);
-+    }
-+
-+    return clkin * multiplier;
-+}
-+
- static void aspeed_scu_reset(DeviceState *dev)
- {
-     AspeedSCUState *s = ASPEED_SCU(dev);
-@@ -716,7 +751,7 @@ static void aspeed_2600_scu_class_init(ObjectClass *klass, void *data)
-     dc->desc = "ASPEED 2600 System Control Unit";
-     dc->reset = aspeed_ast2600_scu_reset;
-     asc->resets = ast2600_a3_resets;
--    asc->calc_hpll = aspeed_2500_scu_calc_hpll; /* No change since AST2500 */
-+    asc->calc_hpll = aspeed_2600_scu_calc_hpll;
-     asc->apb_divider = 4;
-     asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
-     asc->ops = &aspeed_ast2600_scu_ops;
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index c14aff2bcb..91c500c5bc 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -316,4 +316,21 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
-         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-         SCU_AST2500_HW_STRAP_RESERVED1)
- 
-+/* SCU200   H-PLL Parameter Register (for Aspeed AST2600 SOC)
-+ *
-+ *  28:26  H-PLL Parameters
-+ *  25     Enable H-PLL reset
-+ *  24     Enable H-PLL bypass mode
-+ *  23     Turn off H-PLL
-+ *  22:19  H-PLL Post Divider (P)
-+ *  18:13   H-PLL Numerator (M)
-+ *  12:0    H-PLL Denumerator (N)
-+ *
-+ *  (Output frequency) = CLKIN(25MHz) * [(M+1) / (N+1)] / (P+1)
-+ *
-+ * The default frequency is 1200Mhz when CLKIN = 25MHz
-+ */
-+#define SCU_AST2600_H_PLL_BYPASS_EN                        (0x1 << 24)
-+#define SCU_AST2600_H_PLL_OFF                              (0x1 << 23)
-+
- #endif /* ASPEED_SCU_H */
+-    if (el < 2 && arm_feature(env, ARM_FEATURE_EL2)) {
++    if (el < 2 && arm_is_el2_enabled(env)) {
+         uint64_t hcr = arm_hcr_el2_eff(env);
+         bool trap = !(hcr & HCR_API);
+         if (el == 0) {
 -- 
-2.17.1
+2.25.1
 

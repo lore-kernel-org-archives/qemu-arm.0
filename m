@@ -1,304 +1,126 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2925606lfo;
-        Tue, 15 Mar 2022 07:42:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxCUAn7iqOqg3d5FEquXrN5lj9PJU8ZK3hvHo9pU+muRtGRg2TRl3xw6z490RRG9tzu8x6U
-X-Received: by 2002:ac8:5743:0:b0:2e1:cee6:f15 with SMTP id 3-20020ac85743000000b002e1cee60f15mr8636526qtx.634.1647355323129;
-        Tue, 15 Mar 2022 07:42:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647355323; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2942228lfo;
+        Tue, 15 Mar 2022 08:07:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyOMwi/zAyxFycs7RROpQjqTo5pekvh0LTXDjJyPknF1nYNbvDNYd9FmMuHS6+xWF7E5x9F
+X-Received: by 2002:a05:6e02:15c6:b0:2c2:5ab0:948 with SMTP id q6-20020a056e0215c600b002c25ab00948mr22395324ilu.171.1647356821594;
+        Tue, 15 Mar 2022 08:07:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647356821; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dc1uYRteKer3OxG+jPlpUuKRF0JJ+r2wVGcfbmZn/Lu0nbqmzGwcFgqYam0llKc089
-         x/kFvgGogdPHIeBnfq0Loxy5rmnqlO1uCj/p4+7Yt1Y4ngC0eK0SBXDniY1XkgqbdjnJ
-         WFT4P6gKcU9DFcN3Z6GNEJsLeYllinYmuP34TRwAMOH4EKu0kGAZrI4xMREAZ2RVy6b8
-         9kcAQz1GEqsBNTagctW0KLkITS+H1iCrtZKbS4vq5EzyImRT+q3rorMDWZsz9jWcMzay
-         nJNvQ2HcEW0ahbzl7GI33+DmO+XF2SuCQ1R1nJZfPdmsV66j+1WIqX2zYB0m3ZQRHCdc
-         r4yg==
+        b=UeoDC1IT0dAThzX4HVecxETBF729gLoZz5siYmoklDjpMY++8Hucg9SZAzkSRUXCrl
+         pY/rhe70BbzJ/Lz7W3LQjDnODqmb4X/siDC2pkPvCMJ74httgAnb7HyiCdw1zJWncely
+         iilmV+xBGN1Nwtel/ZtrSFHoFC/o4twzjJ/mrZENXnHIAxdE/KXYmcN4wFtPsIxln/Z8
+         TW97jGyX2hKs3d9h9s+syhj8G0qQYtS+RUq/Vid44N5xbGD79jgb/gdce2WZSGlVmY/R
+         hI7pIEW6Y4rMVYGA5zpqxyeYaCU3kZy/ZGrmSKAHJUPE73Y74Ft6iKAOLVYu/IS4kklC
+         p/Nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=iLfyluImzysLOPkiTvJo2zm+5FjLUH+6CI5H86s0TvU=;
-        b=FFRAFP316csXKsv921Oo1Y+cZRHZdBgpHPbF5YkathrZLfEeVidncIWXei+vJDmrGX
-         QGy2Gth8EcPfEzVbCO/cEwjPNSACO7KazZ38CJjPqhUcRHp0yLtKku/It5NjTo68wOfN
-         PQXwpg5Rmmx7vhfxZUICREWX+ftB5PjA976xF6q82YKF/rRiqTlpdi6SoeXTIpryvD3w
-         rtAZCJth1q3cT9OkcZ3LgzTpuD/hbo3UPk9zoY5Q4Ti/TBltkDYiDyUTGZxcvQEuEhUv
-         VONZhbzOg++7bB9mHgBmPVWaTm0L21D1nETyK5khc1dnTKpA/7ReYP9fOJ85W9x4BrdO
-         FUIQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:organization:message-id:date
+         :subject:to:from;
+        bh=b1vtrqtreGEjTX28OgdREfjdZTT2OuSjlmz6kED2+DE=;
+        b=k53uX68wbvyT2VdlUhF1KE9lPbHYNozMvuPZGeeuESd0vpTWnjDQctBVatSj2dS3gd
+         WoKZq1ibEye3VuInRjv2UpDQjXcKie4op2/x2Hu0NbyYsITQ+bcFENwOhr4ReMMrqAw0
+         XHCU8l3EMA9cSa0oMkZ0II4DYnM48KFcbwJYuZEMHhgqWXJL5f29enjYaZPZ7Gm9vzkh
+         LsFyyBuM0LXYZDRCW8cdrrv0pV99rwlrKvyp3ETI+/br25nZpzpsVQgEgF9XZatpARap
+         UtRLBo3PUNgwAWyp3NVc5Z7kWzPOUgTMg7LTJ+umdt9pR2SJFq1v+ALgSJqihqsQti8m
+         0tsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ERV5yuTH;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <armbru@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id c13-20020a05620a200d00b0067d2a4aa613si7671311qka.742.2022.03.15.07.42.02
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m6-20020a056e020de600b002bc6f27c19csi7740855ilj.156.2022.03.15.08.07.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 15 Mar 2022 07:42:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 15 Mar 2022 08:07:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ERV5yuTH;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1647355322;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=iLfyluImzysLOPkiTvJo2zm+5FjLUH+6CI5H86s0TvU=;
-	b=ERV5yuTHo16lD/0D4SgrNWtldjf+jt812GLaWHU/5niI+mLkOMbmWZ9Ydyont0SSJtrM4c
-	98rOoKKGnuOshBMY8lz668lmZDjZMTh5S6v6J/h1g951n0DI49wtvk+4YCpcU5gJB7wcGD
-	C4UYt09PSfdnlRxswQBG6MSkOzEKLho=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-539-B7jc6o2xM2CidF8CYWCU4w-1; Tue, 15 Mar 2022 10:42:01 -0400
-X-MC-Unique: B7jc6o2xM2CidF8CYWCU4w-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com [10.11.54.2])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DA65E10184A3;
-	Tue, 15 Mar 2022 14:41:58 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.36.112.3])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E64E540FF40A;
-	Tue, 15 Mar 2022 14:41:57 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id C792F21D1F57; Tue, 15 Mar 2022 15:41:56 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Christian Schoenebeck <qemu_oss@crudebyte.com>,
-	"Gonglei (Arei)" <arei.gonglei@huawei.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Ani Sinha <ani@anisinha.ca>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Amit Shah <amit@kernel.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Paul Durrant <paul@xen.org>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Corey Minyard <cminyard@mvista.com>,
-	Patrick Venture <venture@google.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Peter Xu <peterx@redhat.com>,
-	Jason Wang <jasowang@redhat.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Keith Busch <kbusch@kernel.org>,
-	Klaus Jensen <its@irrelevant.dk>,
-	Yuval Shaia <yuval.shaia.ml@gmail.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Fabien Chouteau <chouteau@adacore.com>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Juan Quintela <quintela@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	David Hildenbrand <david@redhat.com>,
-	Wenchao Wang <wenchao.wang@intel.com>,
-	Kamil Rytarowski <kamil@netbsd.org>,
-	Reinoud Zandijk <reinoud@netbsd.org>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Eric Blake <eblake@redhat.com>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
-	John Snow <jsnow@redhat.com>,
-	kvm@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	xen-devel@lists.xenproject.org,
-	qemu-ppc@nongnu.org,
-	qemu-block@nongnu.org,
-	haxm-team@intel.com,
-	qemu-s390x@nongnu.org
-Subject: [PATCH v2 2/3] 9pfs: Use g_new() & friends where that makes obvious sense
-Date: Tue, 15 Mar 2022 15:41:55 +0100
-Message-Id: <20220315144156.1595462-3-armbru@redhat.com>
-In-Reply-To: <20220315144156.1595462-1-armbru@redhat.com>
-References: <20220315144156.1595462-1-armbru@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46890 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nU8lJ-0004Hl-0x
+	for alex.bennee@linaro.org; Tue, 15 Mar 2022 11:07:01 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35396)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1nU8l4-0004HI-7Q; Tue, 15 Mar 2022 11:06:46 -0400
+Received: from vps-a2bccee9.vps.ovh.net ([51.75.19.47]:50262
+ helo=ursule.remlab.net) by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1nU8l2-0005XU-6b; Tue, 15 Mar 2022 11:06:45 -0400
+Received: from ursule.remlab.net (localhost [IPv6:::1])
+ by ursule.remlab.net (Postfix) with ESMTP id 8FD3EC0233;
+ Tue, 15 Mar 2022 17:06:40 +0200 (EET)
+Received: from basile.remlab.net ([2001:14ba:a080:a501:23a6:ebae:8f2a:4d73])
+ by ursule.remlab.net with ESMTPSA id OpAGIICrMGIKLxYAwZXkwQ
+ (envelope-from <remi@remlab.net>); Tue, 15 Mar 2022 17:06:40 +0200
+From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi@remlab.net>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [PATCH] target/arm: Fix pauth_check_trap vs SEL2
+Date: Tue, 15 Mar 2022 17:06:40 +0200
+Message-ID: <2620199.mvXUDI8C0e@basile.remlab.net>
+Organization: Remlab
+In-Reply-To: <20220315021205.342768-1-richard.henderson@linaro.org>
+References: <20220315021205.342768-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.2
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 46OkD692AOPK
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=51.75.19.47; envelope-from=remi@remlab.net;
+ helo=ursule.remlab.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: U3cYbfu85QbZ
 
-g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
-for two reasons.  One, it catches multiplication overflowing size_t.
-Two, it returns T * rather than void *, which lets the compiler catch
-more type errors.
+Le tiistaina 15. maaliskuuta 2022, 4.12.05 EET Richard Henderson a =C3=A9cr=
+it :
+> When arm_is_el2_enabled was introduced, we missed
+> updating pauth_check_trap.
+>=20
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/788
+> Fixes: e6ef0169264b ("target/arm: use arm_is_el2_enabled() where
+> applicable") Signed-off-by: Richard Henderson
+> <richard.henderson@linaro.org>
+> ---
+>  target/arm/pauth_helper.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/target/arm/pauth_helper.c b/target/arm/pauth_helper.c
+> index cd6df18150..739aa520dd 100644
+> --- a/target/arm/pauth_helper.c
+> +++ b/target/arm/pauth_helper.c
+> @@ -390,7 +390,7 @@ static void QEMU_NORETURN pauth_trap(CPUARMState *env,
+> int target_el,
+>=20
+>  static void pauth_check_trap(CPUARMState *env, int el, uintptr_t ra)
+>  {
+> -    if (el < 2 && arm_feature(env, ARM_FEATURE_EL2)) {
+> +    if (el < 2 && arm_is_el2_enabled(env)) {
+>          uint64_t hcr =3D arm_hcr_el2_eff(env);
+>          bool trap =3D !(hcr & HCR_API);
+>          if (el =3D=3D 0) {
 
-This commit only touches allocations with size arguments of the form
-sizeof(T).
+Ack.
 
-Initial patch created mechanically with:
+=2D-=20
+R=C3=A9mi Denis-Courmont
+http://www.remlab.net/
 
-    $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
-	     --macro-file scripts/cocci-macro-file.h FILES...
 
-This uncovers a typing error:
 
-    ../hw/9pfs/9p.c: In function ‘qid_path_fullmap’:
-    ../hw/9pfs/9p.c:855:13: error: assignment to ‘QpfEntry *’ from incompatible pointer type ‘QppEntry *’ [-Werror=incompatible-pointer-types]
-      855 |         val = g_new0(QppEntry, 1);
-	  |             ^
-
-Harmless, because QppEntry is larger than QpfEntry.  Manually fixed to
-allocate a QpfEntry instead.
-
-Cc: Greg Kurz <groug@kaod.org>
-Cc: Christian Schoenebeck <qemu_oss@crudebyte.com>
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Greg Kurz <groug@kaod.org>
----
- hw/9pfs/9p-proxy.c           | 2 +-
- hw/9pfs/9p-synth.c           | 4 ++--
- hw/9pfs/9p.c                 | 8 ++++----
- hw/9pfs/codir.c              | 6 +++---
- tests/qtest/virtio-9p-test.c | 4 ++--
- 5 files changed, 12 insertions(+), 12 deletions(-)
-
-diff --git a/hw/9pfs/9p-proxy.c b/hw/9pfs/9p-proxy.c
-index 8b4b5cf7dc..4c5e0fc217 100644
---- a/hw/9pfs/9p-proxy.c
-+++ b/hw/9pfs/9p-proxy.c
-@@ -1187,7 +1187,7 @@ static int proxy_parse_opts(QemuOpts *opts, FsDriverEntry *fs, Error **errp)
- 
- static int proxy_init(FsContext *ctx, Error **errp)
- {
--    V9fsProxy *proxy = g_malloc(sizeof(V9fsProxy));
-+    V9fsProxy *proxy = g_new(V9fsProxy, 1);
-     int sock_id;
- 
-     if (ctx->export_flags & V9FS_PROXY_SOCK_NAME) {
-diff --git a/hw/9pfs/9p-synth.c b/hw/9pfs/9p-synth.c
-index b3080e415b..d99d263985 100644
---- a/hw/9pfs/9p-synth.c
-+++ b/hw/9pfs/9p-synth.c
-@@ -49,7 +49,7 @@ static V9fsSynthNode *v9fs_add_dir_node(V9fsSynthNode *parent, int mode,
- 
-     /* Add directory type and remove write bits */
-     mode = ((mode & 0777) | S_IFDIR) & ~(S_IWUSR | S_IWGRP | S_IWOTH);
--    node = g_malloc0(sizeof(V9fsSynthNode));
-+    node = g_new0(V9fsSynthNode, 1);
-     if (attr) {
-         /* We are adding .. or . entries */
-         node->attr = attr;
-@@ -128,7 +128,7 @@ int qemu_v9fs_synth_add_file(V9fsSynthNode *parent, int mode,
-     }
-     /* Add file type and remove write bits */
-     mode = ((mode & 0777) | S_IFREG);
--    node = g_malloc0(sizeof(V9fsSynthNode));
-+    node = g_new0(V9fsSynthNode, 1);
-     node->attr         = &node->actual_attr;
-     node->attr->inode  = synth_node_count++;
-     node->attr->nlink  = 1;
-diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-index a6d6b3f835..8e9d4aea73 100644
---- a/hw/9pfs/9p.c
-+++ b/hw/9pfs/9p.c
-@@ -324,7 +324,7 @@ static V9fsFidState *alloc_fid(V9fsState *s, int32_t fid)
-             return NULL;
-         }
-     }
--    f = g_malloc0(sizeof(V9fsFidState));
-+    f = g_new0(V9fsFidState, 1);
-     f->fid = fid;
-     f->fid_type = P9_FID_NONE;
-     f->ref = 1;
-@@ -804,7 +804,7 @@ static int qid_inode_prefix_hash_bits(V9fsPDU *pdu, dev_t dev)
- 
-     val = qht_lookup(&pdu->s->qpd_table, &lookup, hash);
-     if (!val) {
--        val = g_malloc0(sizeof(QpdEntry));
-+        val = g_new0(QpdEntry, 1);
-         *val = lookup;
-         affix = affixForIndex(pdu->s->qp_affix_next);
-         val->prefix_bits = affix.bits;
-@@ -852,7 +852,7 @@ static int qid_path_fullmap(V9fsPDU *pdu, const struct stat *stbuf,
-             return -ENFILE;
-         }
- 
--        val = g_malloc0(sizeof(QppEntry));
-+        val = g_new0(QpfEntry, 1);
-         *val = lookup;
- 
-         /* new unique inode and device combo */
-@@ -928,7 +928,7 @@ static int qid_path_suffixmap(V9fsPDU *pdu, const struct stat *stbuf,
-             return -ENFILE;
-         }
- 
--        val = g_malloc0(sizeof(QppEntry));
-+        val = g_new0(QppEntry, 1);
-         *val = lookup;
- 
-         /* new unique inode affix and device combo */
-diff --git a/hw/9pfs/codir.c b/hw/9pfs/codir.c
-index 75148bc985..93ba44fb75 100644
---- a/hw/9pfs/codir.c
-+++ b/hw/9pfs/codir.c
-@@ -141,9 +141,9 @@ static int do_readdir_many(V9fsPDU *pdu, V9fsFidState *fidp,
- 
-         /* append next node to result chain */
-         if (!e) {
--            *entries = e = g_malloc0(sizeof(V9fsDirEnt));
-+            *entries = e = g_new0(V9fsDirEnt, 1);
-         } else {
--            e = e->next = g_malloc0(sizeof(V9fsDirEnt));
-+            e = e->next = g_new0(V9fsDirEnt, 1);
-         }
-         e->dent = qemu_dirent_dup(dent);
- 
-@@ -163,7 +163,7 @@ static int do_readdir_many(V9fsPDU *pdu, V9fsFidState *fidp,
-                 break;
-             }
- 
--            e->st = g_malloc0(sizeof(struct stat));
-+            e->st = g_new0(struct stat, 1);
-             memcpy(e->st, &stbuf, sizeof(struct stat));
-         }
- 
-diff --git a/tests/qtest/virtio-9p-test.c b/tests/qtest/virtio-9p-test.c
-index 01ca076afe..e28c71bd8f 100644
---- a/tests/qtest/virtio-9p-test.c
-+++ b/tests/qtest/virtio-9p-test.c
-@@ -468,12 +468,12 @@ static void v9fs_rreaddir(P9Req *req, uint32_t *count, uint32_t *nentries,
-          togo -= 13 + 8 + 1 + 2 + slen, ++n)
-     {
-         if (!e) {
--            e = g_malloc(sizeof(struct V9fsDirent));
-+            e = g_new(struct V9fsDirent, 1);
-             if (entries) {
-                 *entries = e;
-             }
-         } else {
--            e = e->next = g_malloc(sizeof(struct V9fsDirent));
-+            e = e->next = g_new(struct V9fsDirent, 1);
-         }
-         e->next = NULL;
-         /* qid[13] offset[8] type[1] name[s] */
--- 
-2.35.1

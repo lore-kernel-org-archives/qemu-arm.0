@@ -1,106 +1,120 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp3068033lfo;
-        Tue, 15 Mar 2022 11:14:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz2rIzPkAXV460LnK+o4NtGPJwiBQ8/eisSYflqYFar93KtI+hiddGH/Iv4LTZTxrn8oyq/
-X-Received: by 2002:a81:118d:0:b0:2e5:88ca:35f4 with SMTP id 135-20020a81118d000000b002e588ca35f4mr4620333ywr.293.1647368072282;
-        Tue, 15 Mar 2022 11:14:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647368072; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp3082596lfo;
+        Tue, 15 Mar 2022 11:40:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZJGEmwjyuWWROT/OJxSuedrPwhcGawDn4uyf0eplc+gwMMTD+qJ+S7QlEKJul9wQM8nq7
+X-Received: by 2002:a25:af8e:0:b0:622:c778:c0a2 with SMTP id g14-20020a25af8e000000b00622c778c0a2mr25389321ybh.50.1647369600246;
+        Tue, 15 Mar 2022 11:40:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647369600; cv=none;
         d=google.com; s=arc-20160816;
-        b=wfahOavenP2itNLIYxNE+h9hR0tAvIPnf5ZGGijc4IznggDGJIUxUZC/lsP2fywygT
-         LDmzxW3/XN5jy4tB8FFDuhCiLOr8fAL2FHRWBswC23tzahtMAkeIAkv93goUXnh61VlV
-         GbUfD96MWfD7Pnd7+GdIxRPWbY9C/N2KwEzBDPvHJeT24rkgZmoNl5VadJ6fmxB+XozW
-         0EFZtmvbSIXb5lf2R/NzlDOAA0hxIcRx0jkKuD7u8fDhf2Qu9T4mzKkd67+nqFVPzmTL
-         lWkKDfi2BhnMWoupuUq+odxxSWlLLuPP2qaQLJ5c7IL60VxrhLcZpFVIxVy5SETNtNfG
-         vPsg==
+        b=m1NRSs3nFeb1U9SYSuWque/TWKtg961F9Zo3fE/oJMUAtJ3r8iViMM97Gmgnreyw/X
+         nAb85ii2KTQgfX8yzCl5otAGw7QUlEPoD6k0o62ICoXmQQ+G36XJun9KQUh0LglSRCkp
+         LRDsKs+d93HuSOWMWdD9FnQaYEuXcY77/xU07qqodcPy7/y2sdKtLAcXheC1mcoZ8JsY
+         EsXofHerTmagQu0Mj84ZILZ6wxsbbQ8zMFhBtHKWlfUg+WSZpDULODNeeBaDqzW3OGvZ
+         UFtZyALOrgiyucCWl7OyT2FoYGL1971qfZF8ahHL3xvoAjSDVc3wIVLxHn4Plh+mJ9tN
+         CiIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Q+q1fHTKoAJ5LoKENwJ+pzp10VXd/AEYNtUdotqTQrA=;
-        b=WNaUo/7WtEW+ZNThYkZp19VhoMeAqKjlMULDNot8CLZS52yj26smMtbHS8Xmde2nlH
-         ezcor76xmIlecJy5ulJG6DEjAu26X1l94P94hg2I9tko2MLvedg9KgL/ynxsfgDhg62b
-         6ri3c/P8oYa2Uj16ZabSYG00x5KI9zp998uUYm3IS0+nSHZKOGtYpUHt+z+YdMERplYP
-         qSakqwAjAND4UYTC/dwgCsY9WGX+dWKSngIT0YK52lugc0s534cSp2xIpvl7Zin1oxFU
-         iX9ZPLmuDlzz3MFwHgPH5w1puyZK4j76fx1A6gI/T3xzvP4BIM406OluCPv8dnnvc3po
-         qK7A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=1r8IaytRp27ExjX9rB0D2iSm3KjyZx3WPI58s3YMr4A=;
+        b=vZiyADCPjCTwVLOoJxorYG9YXpOkdykeygc/4suMGNAJOgODG3xHGioLhDVKNt5H5O
+         gWwFUZ/qX3Ge7kO06v5aV4+55reAH+Jc9dIz4XjdAG6TdYIf3frZCRG99/ndGPfwqEoO
+         JD7tK66RNdPXYOSvHQZ23wPqf5huL3754JGLM/PUMvqu/GS54bivZsNmq6AkRoCBBUQS
+         VCGi2Rkqf7VCJzMw2p4NezKZW87UX8dbs/f0Q5aBdz5Jf57vK/j98oyJFGfcXYtOpX7I
+         5kd+9TMnTtP66T96p13QESVwm/2CGcn9dEhkIawQjBOOzJdSCRdGUT4A96XEAEXmgt0c
+         ttmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IqUWOd8C;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AvSjhMHW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v65-20020a254844000000b0061da917cd23si11021544yba.35.2022.03.15.11.14.32
+        by mx.google.com with ESMTPS id o1-20020a056902110100b0062952218f94si15628899ybu.704.2022.03.15.11.40.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Mar 2022 11:14:32 -0700 (PDT)
+        Tue, 15 Mar 2022 11:40:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IqUWOd8C;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AvSjhMHW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35208 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nUBgl-0001km-Lp
-	for alex.bennee@linaro.org; Tue, 15 Mar 2022 14:14:31 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47776)
+	id 1nUC5P-0002dV-Lk
+	for alex.bennee@linaro.org; Tue, 15 Mar 2022 14:39:59 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54308)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nUBc7-0007GW-9r
- for qemu-arm@nongnu.org; Tue, 15 Mar 2022 14:09:43 -0400
-Received: from [2607:f8b0:4864:20::b29] (port=43988
- helo=mail-yb1-xb29.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nUC54-0002bq-LF; Tue, 15 Mar 2022 14:39:39 -0400
+Received: from [2607:f8b0:4864:20::102f] (port=51058
+ helo=mail-pj1-x102f.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nUBc5-0000M0-Fp
- for qemu-arm@nongnu.org; Tue, 15 Mar 2022 14:09:42 -0400
-Received: by mail-yb1-xb29.google.com with SMTP id v35so64707ybi.10
- for <qemu-arm@nongnu.org>; Tue, 15 Mar 2022 11:09:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Q+q1fHTKoAJ5LoKENwJ+pzp10VXd/AEYNtUdotqTQrA=;
- b=IqUWOd8CpMJrTfN37kQbbRWWcpP/SOwuMDXPFnv4zA1Vu6jdixbtFBmugPX0toaN0H
- d2I6H9AY1BYumbw14j+5PP+/V5m1FJHci87REvHMzllRu5HuXr5F63sIkJX0W7VXgVLj
- PVe2IhkJwpBxjGGsxJFINpPQWW4lW51SWEmX5NEb4uOl8r183Uw2K/PEMEb3DMPkt0qU
- 6+8yvVDmKFTfG+GGaRnkLP8fKeymcTHZMQavf+45giRGjx7Z73S93VgjIhLYx7bcVPgZ
- 8amGRtlBe81dSHVvdsDyAktCq+9Sy4NGXkBFlUoMjhvrqnqQEzraqTgZ9qPRDcPIgltS
- Xb5w==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nUC4z-0004rU-Gv; Tue, 15 Mar 2022 14:39:35 -0400
+Received: by mail-pj1-x102f.google.com with SMTP id m22so270778pja.0;
+ Tue, 15 Mar 2022 11:39:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :references:from:in-reply-to:content-transfer-encoding;
+ bh=1r8IaytRp27ExjX9rB0D2iSm3KjyZx3WPI58s3YMr4A=;
+ b=AvSjhMHWAZeWS730g98AZs7HWBYJl0E/OeXqjymZMPCH3TKDaP2ThKl/qPP0xdDhGL
+ JLpRnJt2bGbff42ZwV+b24S9ypehOK+MQVuCpY5ISEJSn/YvGG4btG6AA4eLqZYRgUXl
+ cjPM5z1qBOIdsuHZtA6xbmRwRMo+mjdl6o9zFSVxHGkHTXKlRKP17xsP0B6bmdT4JlP1
+ peBQbKwn6DyW+qg9MSR4DvLYv87VUnotK6iZUrgUq+yvZs3rcHP4lFgvhEktM5dDQdCC
+ J9WQL8OYacBZ2agYGeKV08vPlFoCImxxX0fsHskGf4GpLjIE/xM24CqQqC4w8sbTkC31
+ +Low==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Q+q1fHTKoAJ5LoKENwJ+pzp10VXd/AEYNtUdotqTQrA=;
- b=tG0tam+8iqCzKlJpda8HqQ9zq5Dh6634GhzhwvGaF7sDd42rEHPo2seYmkUNQ/oRq4
- K2lrPzs4qHBGlffLAT5QtFijZXrRxrIQQ1YcQJhNnwO1kNKEyCJZlpIGx5mAMQrc8d1b
- M6shFZpUR6XHF2PuC1dyYvDFQbRB442vI+rv9hJzOC448uSQKElxudlli53NSLfr/R7j
- k33UAtVgrWZr/9MT9vWe3XRDHnK2KzQqsRVMc6kzzrEjaL1xUf3iX+fT9zlTRkucrhsK
- xmMGPgmBIvUZrtiIU7iMku9WVBGG52yz8th+C/6McuLxgvUJ9zLw9Y30WNZMjIoX1dLw
- KFOQ==
-X-Gm-Message-State: AOAM53371yj4WRYc+HNPr/uUP/8rzb2GDirWRSLhpoOPHlHit7aJJr2/
- V+Ag5hErPLdMuIhYWYdN4uEweN0dB2jLFeIrVYCT7g==
-X-Received: by 2002:a05:6902:83:b0:61a:709b:d841 with SMTP id
- h3-20020a056902008300b0061a709bd841mr23695691ybs.140.1647367780196; Tue, 15
- Mar 2022 11:09:40 -0700 (PDT)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=1r8IaytRp27ExjX9rB0D2iSm3KjyZx3WPI58s3YMr4A=;
+ b=COegzL9mii+HjQevdoxpkUxEYxzxPQTCB+wNTfZkwDGrpCPd1fQfjtPejNiYYEW3/j
+ eQnGU9QBgkYZey6odPgCZNnjRQ60ExK6oYXaBlVpDCF2DPrnyUo7PPhoiTfSGOHqwnE3
+ VgHzNfddmkig2dtwGXQYogdNUW4CDk3pbKwhPFHZ9fzb5wiw5JY+Peh9oDatsg8++cW8
+ EMar/NP14n1rOC3qu/DlVjuMYDFP5/AhGeteWmZeIhuLkG7Syv3IlZxTp2RNpD9G5RqH
+ 0N2k+KceB0di8eGtnXsxnvgbzowhh3uWPz89d0M8fa7JSwt1U+6gChDrmh1kVsi67zEU
+ OzVw==
+X-Gm-Message-State: AOAM530m+CkCEOhQmvY+bVHVhfIXpQxLBZi45nf5HmHB3SbjywDvCJiM
+ erIAwlYEjkTCFyjZ7x8TIoo=
+X-Received: by 2002:a17:902:f686:b0:151:ca86:e1be with SMTP id
+ l6-20020a170902f68600b00151ca86e1bemr30105422plg.16.1647369571278; 
+ Tue, 15 Mar 2022 11:39:31 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ oo16-20020a17090b1c9000b001b89e05e2b2sm4118325pjb.34.2022.03.15.11.39.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Mar 2022 11:39:30 -0700 (PDT)
+Message-ID: <206283a0-3977-894f-6907-e9c51db554ba@gmail.com>
+Date: Tue, 15 Mar 2022 19:39:26 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
+Subject: Re: [PATCH 2/2] hw/arm/virt: Fix gic-version=max when
+ CONFIG_ARM_GICV3_TCG is unset
+Content-Language: en-US
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ peter.maydell@linaro.org, drjones@redhat.com, f4bug@amsat.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20220308182452.223473-1-eric.auger@redhat.com>
-In-Reply-To: <20220308182452.223473-1-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Mar 2022 18:09:28 +0000
-Message-ID: <CAFEAcA8fAWcqf6K5pdh2_ufBEkaHESbJ+jC3xvG0b15JSGGUeQ@mail.gmail.com>
-Subject: Re: [PATCH 0/2] hw/arm/virt: Fix make check-qtest-aarch64 when
- CONFIG_ARM_GIC_TCG is unset
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b29
+ <20220308182452.223473-3-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <20220308182452.223473-3-eric.auger@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102f
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb29.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102f.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,29 +128,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, drjones@redhat.com, qemu-arm@nongnu.org,
- f4bug@amsat.org, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5FGoNmjQBtpv
+X-TUID: +eT7ccGx3qIR
 
-On Tue, 8 Mar 2022 at 18:25, Eric Auger <eric.auger@redhat.com> wrote:
->
-> When CONFIG_ARM_GIC_TCG is unset, qtests fail with
-> ERROR:../qom/object.c:715:object_new_with_type: assertion failed: (type != NULL)
->
-> This is due to the fact a bunch tests use gic-version=max which
-> currectly unconditionally selects GICv3, ignoring the fact this
-> latter may have been disabled.
->
-> This series renames CONFIG_ARM_GIC_TCG into CONFIG_ARM_GICv3_TCG.
-> Also it selects GICv2 if gic-version=max and CONFIG_ARM_GICV3_TCG is
-> unset, in TCG mode. With those fixes qtests pass along with
-> virt machine node.
+On 8/3/22 19:24, Eric Auger wrote:
+> In TCG mode, if gic-version=max we always select GICv3 even if
+> CONFIG_ARM_GICV3_TCG is unset. We shall rather select GICv2.
+> This also brings the benefit of fixing qos tests errors for tests
+> using gic-version=max with CONFIG_ARM_GICV3_TCG unset.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> ---
+> 
+> v2 -> v3:
+> - Use module_object_class_by_name() and refer to the renamed
+>    CONFIG_ARM_GICV3_TCG config
+> ---
+>   hw/arm/virt.c | 7 ++++++-
+>   1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 46bf7ceddf..39790d29d2 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1852,7 +1852,12 @@ static void finalize_gic_version(VirtMachineState *vms)
+>           vms->gic_version = VIRT_GIC_VERSION_2;
+>           break;
+>       case VIRT_GIC_VERSION_MAX:
+> -        vms->gic_version = VIRT_GIC_VERSION_3;
+> +        if (module_object_class_by_name("arm-gicv3")) {
 
-The use of module_object_class_by_name() looks much neater than
-the ifdefs.
+Too late, but why not use TYPE_ARM_GICV3?
 
-Applied to target-arm.next, thanks.
+> +            /* CONFIG_ARM_GICV3_TCG was set */
+> +            vms->gic_version = VIRT_GIC_VERSION_3;
+> +        } else {
+> +            vms->gic_version = VIRT_GIC_VERSION_2;
+> +        }
+>           break;
+>       case VIRT_GIC_VERSION_HOST:
+>           error_report("gic-version=host requires KVM");
 
--- PMM

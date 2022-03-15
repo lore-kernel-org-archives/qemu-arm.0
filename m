@@ -1,104 +1,108 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp3152698lfo;
-        Tue, 15 Mar 2022 13:43:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJydmLRpcYK2RscYbDlMlqM7QZSVE5pdeHS0nweF2CxsZVQImNzewkXvqX7RgsxL9FaxsgnN
-X-Received: by 2002:a25:d85:0:b0:633:7522:fa30 with SMTP id 127-20020a250d85000000b006337522fa30mr5076752ybn.152.1647377028803;
-        Tue, 15 Mar 2022 13:43:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647377028; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp3152885lfo;
+        Tue, 15 Mar 2022 13:44:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw//No5YjN5EKr3AOZr+VcjNRQZxbIsVkAdS9REBcaM5X76sk3fECR4FcGuEeXW7v9DaRHZ
+X-Received: by 2002:a0d:dd01:0:b0:2dc:2a9:9429 with SMTP id g1-20020a0ddd01000000b002dc02a99429mr27275783ywe.457.1647377050135;
+        Tue, 15 Mar 2022 13:44:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647377050; cv=none;
         d=google.com; s=arc-20160816;
-        b=uUT9hFCBt1074Tez0mnS3QEKXlTgogpyS3iGzOiSnPy5yRZ8SMhRVmvVS1SGU8jvlg
-         X/fZMWN8sPyRhVAOq1Ymnon/KA8rzv1ta1SS6QeG4FNRgUSdun8uiQiK4AifUcFyRriG
-         Xid35+cecE1A4aiiAHRRekPZCyJwEHlOz/G36g6n3BtjqxEJ90ssVxvo7oYHhfYCVL5J
-         V5TaNoy/68y9swqpZ1rvbAzfOCbYyPOMGPT/BT6lJ5jz72yE43puZegIsZEDxk/uY2tC
-         +gs3iP9yFJgHgalLwqu8uBwR43rMjSqUAUYnO0gfPqlV2lY8qdGMBKsr+CjPBuKBnpUx
-         2yrQ==
+        b=PVPvIz64TiZC8xJ/tcjrqJCR9sgsab7mfpgCqEvLJGbNXYrUKLtQ0MSAAWN8EH5VsQ
+         XWShpAPJSGPE5qJaKDMsmyLvR0HmHnw09JLgiYyjMNVKyuWJutk6NSthGMW5KDIQwBMM
+         cXMNq++HIdtJYhHKKwrKArpItTyqyPECjaAavKobcdYUuYi9A2ci+HR8FJw/rprPYiym
+         LaC3oa5qGdi3y7Hhve0rnMcS5HtaHjz+c9FGYz1Gs6hSHen9ccK9HGHwgqmYJGI36jQV
+         G7imvGseZ8y8tDiskeBCDTTF4U475Mm1HSuY8keH7TdPeB5/PBa6ESzF68kEPFzUyyn2
+         fvDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=WjoW4TuhrLDh3vJbD36hIEHEEGiSVoyg+GX+kjzhoEI=;
-        b=hTygvvobQgpbIiDtZISa6UvUrPzqGG/TbUcIRfl+SnRhyxVE5FxGoutOsnsJ3vRtGg
-         0wAEYvSUBp7BHZsHuOv4fX3jNPi20tckjS8a6gIDYPPNVrf86zK/wK7HEIncpTb+8bV/
-         xT28QcUWhMX/GFEgfc2u4abfqB7qIIXmnoLHNZeH/Amez3vf1kQL8OeA3dvXDlQ5AlD7
-         esMN/kWS/7yfzuLfrliwqMOH2QD31tvjF+mN7I8ZCh1VIG136UuA1uLy14FxzfgZcKKH
-         r8mYR6I+37SN7JiIzfF9XbX8xaPFi22+4QC5418lpgxQC/6an3gSETJpLdWetDypxQir
-         3A7g==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=SPgrXoGzy3toqKLy1djjjTzE0Y4JQdTSNnsnsRObao8=;
+        b=bLZOB1jMzOaDH9XuInqrVEYql5kEXFwt9ifaQIHGEb2owPkidy8LKIpUWjfx+llnEz
+         pOzqiPvxxsoUKNBQ2FEFlwdbMHyeorbPtGf/JhAug21gpk5sgB4OHCX91gjqf+k2riJm
+         A1XXdVXqHafojXpNgrD0EjKp7uWrmcmYfsW3AdMphsqwR1jrxhug7qpxchfYx3BozL9U
+         eUQpLe7suDeAmSa7+aJSsX0OS3NzKlwIDaY712g5yUDisxWPHWOT5Y93RtFAeBw8s0CO
+         hSZF+fc9i4K/fxWvjvMbP7baqgi+gyuYS8JZUnsfJivSjImd3j5YNBUMyVX/16UDwDb/
+         y8UA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KboKxyOI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=E5cURpH9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c189-20020a8135c6000000b002e59cda2e93si54840ywa.287.2022.03.15.13.43.48
+        by mx.google.com with ESMTPS id b7-20020a81db47000000b002d035ccf9e6si80106ywn.138.2022.03.15.13.44.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Mar 2022 13:43:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Mar 2022 13:44:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KboKxyOI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=E5cURpH9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39262 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39490 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nUE1D-0006PV-MF
-	for alex.bennee@linaro.org; Tue, 15 Mar 2022 16:43:47 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51836)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nUE1Z-0006aQ-GX
+	for alex.bennee@linaro.org; Tue, 15 Mar 2022 16:44:09 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51878)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nUE0e-0006PC-MT
- for qemu-arm@nongnu.org; Tue, 15 Mar 2022 16:43:12 -0400
-Received: from [2a00:1450:4864:20::429] (port=33381
- helo=mail-wr1-x429.google.com)
+ id 1nUE0l-0006Vb-UE
+ for qemu-devel@nongnu.org; Tue, 15 Mar 2022 16:43:19 -0400
+Received: from [2a00:1450:4864:20::335] (port=42945
+ helo=mail-wm1-x335.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nUE0c-0008Fd-Rw
- for qemu-arm@nongnu.org; Tue, 15 Mar 2022 16:43:12 -0400
-Received: by mail-wr1-x429.google.com with SMTP id j17so311163wrc.0
- for <qemu-arm@nongnu.org>; Tue, 15 Mar 2022 13:43:10 -0700 (PDT)
+ id 1nUE0d-0008Fj-Cu
+ for qemu-devel@nongnu.org; Tue, 15 Mar 2022 16:43:16 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ r190-20020a1c2bc7000000b0038a1013241dso301196wmr.1
+ for <qemu-devel@nongnu.org>; Tue, 15 Mar 2022 13:43:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=WjoW4TuhrLDh3vJbD36hIEHEEGiSVoyg+GX+kjzhoEI=;
- b=KboKxyOIUCopYWDgAigdTqExkbNXpYShjD/bZX5N9r2fvO+G17d8vYG+95seS6gyeY
- mxgPtpy3lR3T9UwbUSSQu8GR24GHB54k46peKKypI2VB/4pGGNQ9cA/wK4Aatr3L9Ysm
- n9ya6KkCYdSNXTLgGsARqrpDkHF0KXx3yw16DdlY8heGzgGv3uWD4sKPIfnAd2hOb49O
- eTPOfrmrJSXzpGWboOcE5bRnsRJNaFozQKytGd0/MoxkDOPEYceekV7lD42nxOmeAL4z
- 5fE7/CPDjRIQedwW7TTC1whknIj9MpQftPxAVri1chsp+prbNDsGV3Pb7U01TusCKdkd
- LsuA==
+ bh=SPgrXoGzy3toqKLy1djjjTzE0Y4JQdTSNnsnsRObao8=;
+ b=E5cURpH99duc/CeE31J0jsJDxe1aoqIOe/y6lXjo4eRuSJGXjzCsKwTP6R+gzWq1T5
+ MyHyQKfAQlI1vx7XMcVF/xcRkoWe9Ii6sFUVWmUpOE9V9M288VyIUXvyuPAleRk0Z3Tg
+ FjUKjN5XcoHPPkKzb3jXz7PFe14hsRIJ7eY9GCkHwB87bX76xniBY6eQ/tg9LTKaecrj
+ F12+v+sj3YjJTAyIFBV9q1+7c8ezuR++HKhtwGl2spsfnGBid2NVRcm8sTmKnides5LC
+ f6JrEl3HiHwAB2cHmCEhNkDhbUtXtuO6ePaqIpll4bF4Mvbw2ndo/iFmVtDKNoxSirPT
+ zG5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WjoW4TuhrLDh3vJbD36hIEHEEGiSVoyg+GX+kjzhoEI=;
- b=LBRmRJikkLr3Eq9oW7jfrmdz5IWf11waDF1Wnhu5JRS4Wyrd+C6g6KUDtL01/J73n8
- iZjpKuqYVvw3W82242GlrHseOplIX/A9UFFQUUWvt0opaKhIz+Vl/ZzO0Zco8ZVlUV/D
- AfZ+Bn9hTcCco/ALvbc1ZxFymgwrpEdxAZltHA32/4/JNBNoXDqvEU8q/FYm/roROVH9
- j+QJehZQTgg+mNgT290G9BcR0ZD20NHZv9YIAcmIpErV9c/I5Tl38LJ6u04kiHuyqn45
- WT+5qIww7QxSNovmgPc9Y5hZSs3iS0ZsuGhr2jeyE4bIdfYZJvhJN5smIqf1JTcNeujw
- 9SEg==
-X-Gm-Message-State: AOAM53169hIXFS6I78MCUWla4aykDzO5unRywzGDuuBBtUKo5iGijp0t
- jwcxjAUbRYGUbHPA+T1//HJy+xFuevQDIQ==
-X-Received: by 2002:a05:6000:16ca:b0:1f1:dfd6:723d with SMTP id
- h10-20020a05600016ca00b001f1dfd6723dmr21281905wrf.127.1647376988881; 
- Tue, 15 Mar 2022 13:43:08 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=SPgrXoGzy3toqKLy1djjjTzE0Y4JQdTSNnsnsRObao8=;
+ b=iz1o1j3sD+D9yB04jtml9XTaePjkq0Rc9/Yvog37Q1sm4NfhDPIQJAl4oOOd6nRche
+ MdV9WzxU1f3DXSzga5qIfZ/hlOBFPnSa8zn4oVkBv2G+x4KqJGr/PBd2uX7r2soMuf3d
+ 8xazQ3RC/9drB4U9cpWY21WioitsXwVYP/6JkaLnYgNWawaQFSxgN6q7dA9p+3RC9a6x
+ M/T8eKwt+WKARyfIUwaZ7cmShzhVxKRaWCBgcNMMCHLKOLe7+ybMCf4zP7c8nYLjaADq
+ GSA6WLFZLMrHfWdbpco94Kpm2qGH0vwEIZ8/sqqo1rj4GyEASDFUAKleqzgeFJvFs+pq
+ oTXA==
+X-Gm-Message-State: AOAM532t++YG3hDkZa4Oaov4fG5sluLZ0qzUUs8MUQ8mmmhcU/XAwZeP
+ kGf9RjpQcsKMQ+Vf4Fgk2f7Epuws5w6Trg==
+X-Received: by 2002:a7b:ca42:0:b0:38c:6d09:1362 with SMTP id
+ m2-20020a7bca42000000b0038c6d091362mr298407wml.103.1647376989709; 
+ Tue, 15 Mar 2022 13:43:09 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- h11-20020a05600c414b00b0038c6c3eaee9sm465208wmm.1.2022.03.15.13.43.08
+ h11-20020a05600c414b00b0038c6c3eaee9sm465208wmm.1.2022.03.15.13.43.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Mar 2022 13:43:08 -0700 (PDT)
+ Tue, 15 Mar 2022 13:43:09 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 0/2] target/arm: Improve M-profile exception logging
-Date: Tue, 15 Mar 2022 20:43:04 +0000
-Message-Id: <20220315204306.2797684-1-peter.maydell@linaro.org>
+Subject: [PATCH 1/2] target/arm: Log M-profile vector table accesses
+Date: Tue, 15 Mar 2022 20:43:05 +0000
+Message-Id: <20220315204306.2797684-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220315204306.2797684-1-peter.maydell@linaro.org>
+References: <20220315204306.2797684-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::429
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::335
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -108,84 +112,98 @@ X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rDkcUoesZBUl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Q4rYw/kJ6Br3
 
-Our current logging for M-profile exceptions has a couple of holes
-which are particularly confusing for the case of an exception taken
-immediately out of reset:
- * we don't log the initial PC/SP loaded from the vector table
- * we don't log the PC we load from the vector table when
-   we take an exception
- * we don't log the address for i-side aborts
+Currently the CPU_LOG_INT logging misses some useful information
+about loads from the vector table.  Add logging where we load vector
+table entries.  This is particularly helpful for cases where the user
+has accidentally not put a vector table in their image at all, which
+can result in confusing guest crashes at startup.
 
-This case is quite common where the user has failed to provide a
-vector table in their ELF file and QEMU thus loads garbage for the
-initial PC. At the moment the logging looks like:
+Here's an example of the new logging for a case where
+the vector table contains garbage:
 
-$ qemu-system-arm [...] -d in_asm,cpu,exec,int
-Taking exception 3 [Prefetch Abort] on CPU 0
-...with CFSR.IACCVIOL
-...BusFault with BFSR.STKERR
-...taking pending nonsecure exception 3
-----------------
-IN: 
-0x20000558:  08000079  stmdaeq  r0, {r0, r3, r4, r5, r6}
-
-
-After this patchset it looks like:
-
-$ qemu-system-arm [...] -d in_asm,cpu,exec,int
 Loaded reset SP 0x0 PC 0x0 from vector table
 Loaded reset SP 0xd008f8df PC 0xf000bf00 from vector table
 Taking exception 3 [Prefetch Abort] on CPU 0
-...at fault address 0xf000bf00
 ...with CFSR.IACCVIOL
 ...BusFault with BFSR.STKERR
 ...taking pending nonsecure exception 3
 ...loading from element 3 of non-secure vector table at 0xc
 ...loaded new PC 0x20000558
 ----------------
-IN: 
+IN:
 0x20000558:  08000079  stmdaeq  r0, {r0, r3, r4, r5, r6}
 
-and I think it is somewhat clearer that we loaded a bogus
-PC from the vector table at reset, faulted at that address,
-loaded the HardFault entry point which was bogus but at
-least readable, and started executing code from there.
+(The double reset logging is the result of our long-standing
+"CPUs all get reset twice" weirdness; it looks a bit ugly
+but it'll go away if we ever fix that :-))
 
-The double-logging of the reset loads is the result of
-the way we currently reset the CPU twice on QEMU startup.
-If we ever manage to fix that silliness it'll go away.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.c      | 5 +++++
+ target/arm/m_helper.c | 5 +++++
+ 2 files changed, 10 insertions(+)
 
-
-(Patchset inspired by a stackexchange question:
-https://stackoverflow.com/questions/71486314/loading-an-elf-file-into-qemu
-)
-
-thanks
--- PMM
-
-Peter Maydell (2):
-  target/arm: Log M-profile vector table accesses
-  target/arm: Log fault address for M-profile faults
-
- target/arm/cpu.c      |  5 +++++
- target/arm/m_helper.c | 11 +++++++++++
- 2 files changed, 16 insertions(+)
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 185d4e774d5..498fb9f71b3 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -21,6 +21,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/qemu-print.h"
+ #include "qemu/timer.h"
++#include "qemu/log.h"
+ #include "qemu-common.h"
+ #include "target/arm/idau.h"
+ #include "qemu/module.h"
+@@ -366,6 +367,10 @@ static void arm_cpu_reset(DeviceState *dev)
+             initial_pc = ldl_phys(s->as, vecbase + 4);
+         }
+ 
++        qemu_log_mask(CPU_LOG_INT,
++                      "Loaded reset SP 0x%x PC 0x%x from vector table\n",
++                      initial_msp, initial_pc);
++
+         env->regs[13] = initial_msp & 0xFFFFFFFC;
+         env->regs[15] = initial_pc & ~1;
+         env->thumb = initial_pc & 1;
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index 648a3b3fc16..3bd16c0c465 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -679,6 +679,10 @@ static bool arm_v7m_load_vector(ARMCPU *cpu, int exc, bool targets_secure,
+     ARMMMUIdx mmu_idx;
+     bool exc_secure;
+ 
++    qemu_log_mask(CPU_LOG_INT,
++                  "...loading from element %d of %s vector table at 0x%x\n",
++                  exc, targets_secure ? "secure" : "non-secure", addr);
++
+     mmu_idx = arm_v7m_mmu_idx_for_secstate_and_priv(env, targets_secure, true);
+ 
+     /*
+@@ -719,6 +723,7 @@ static bool arm_v7m_load_vector(ARMCPU *cpu, int exc, bool targets_secure,
+         goto load_fail;
+     }
+     *pvec = vector_entry;
++    qemu_log_mask(CPU_LOG_INT, "...loaded new PC 0x%x\n", *pvec);
+     return true;
+ 
+ load_fail:
 -- 
 2.25.1
 

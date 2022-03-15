@@ -1,148 +1,148 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2904840lfo;
-        Tue, 15 Mar 2022 07:16:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxilI3o4Fsvph85tIn3BnO+aiNWoteVRwZVn1Me8uvrO8HCIxcWtW5Gbp8lLzCtzQMQz1i7
-X-Received: by 2002:a05:6214:e6f:b0:440:c472:febe with SMTP id jz15-20020a0562140e6f00b00440c472febemr2564677qvb.9.1647353763407;
-        Tue, 15 Mar 2022 07:16:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647353763; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2909682lfo;
+        Tue, 15 Mar 2022 07:20:21 -0700 (PDT)
+X-Received: by 2002:a25:9e07:0:b0:633:4e64:6dac with SMTP id m7-20020a259e07000000b006334e646dacmr7301657ybq.234.1647354021245;
+        Tue, 15 Mar 2022 07:20:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647354021; cv=none;
         d=google.com; s=arc-20160816;
-        b=dWhB/SlYDRSIL0jcXmT2Qa2FN3DYsuVehdZB7jHCUjEwvdLGK81hYmMMnJDTysKk0A
-         pYoHOFFK1ass1GcVnaYaXVuDalSACggz5pH9lppKeopSu8nNkgLVtagm7HiYIcbwIRZK
-         XZKDd4rXfzzOvnAc0Gqf7sydMv7OtIAMQLNrJsLciDhRFAqo8yGad3Kzip+x1U5FQoU+
-         FlLkXQyw/KUCBq+oQMIg8X4CTPb2HeGItuwQC1PLNA8q4XBKhN6axlJqruQy8P8WRbXY
-         FIn3oMy9KPduHcXzD9nO2USn99KRvtJYoQT2HO44G2GBbw4NTMwg2D3uMgNyvyn34Pwh
-         zW7Q==
+        b=a0n+u/dNy2Eo9E0AigpwTo4JdcmGBv+thj+T9iU/P9hX32yim7rguo8QfM9HovBHrG
+         9up/PiArqTTY1ux3UG3In5cN/aMCBDxFKIcdBHrYdDNxt1Ei/GbpUcfFnzwvpz+8HvfG
+         xZ3YHTJMJyEk6ZCMtaE2EycvXaD4av3wkKWMgVv9NTQwz7m15p1P7h6Vj3UKrMLFpswO
+         nH7FbftbOzKIOcERbK19zJBcIOWUyXJ3gDODGnJREkupR/gP1V5t+W8s7BofYb3JMfIu
+         W6YoxdnV8ALojpuEicAKASAnEJBnn8/fy98MVx6WlKgPVMSoM4/7zH19miyOlJq/148t
+         PCFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-disposition:user-agent
-         :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=G34M2wqplRWeWarXP0G90H9Fcumln5YneSZGyKEyuqA=;
-        b=qu5OCI+g12OtdiYWM6mKJKDfV0V/v78vqNJTmFfuRBkDx7VxecvpYE4CsLVBD1Z6tE
-         Ipp6Bh3hnQbDP1FzCSF/gM81vVcLF707VLGUBD/cf7vgPjWNu3eNTV3MkxgeQqW+ZXhC
-         1TCCP3aVN3PJlNl69jZ19PBdm6nhEi1YmAfKLN+Jkohs0hv34bZOf/j2KVYBjr/L+Kgl
-         ZJn6oueL0SN9K3/1hBuJrwIFBjiKdZwDEdLBAycA7BSujlHt5QYAiq1J8TacsGRui2zd
-         vMGlFC8c1zXYmdDMhtRPRNbDIibzqvIG08fb6CBzXHSiNlSnWRzhEMG3ywshPuerQZgm
-         Zs/w==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=YVr8I6Yaf2Ll04R67Hiej1534JqHavBw2eqlkNxSfEY=;
+        b=H49klDPnw3QMG0YMiOhOK6Fu4pBv5LA9mSGWlwwyIP7ToW5wFmfT9G4Yc6SlbicdUS
+         HDo2Vt6TmEqj/vwQoY0pEpOqR204niGVVNQeZ90eAmDICtP5iBaG4969qxwmR9SybVnw
+         T0lTm7JXg/pujNQs8C1+mGnVTwb6N+cwiRlNcdpzrDItIt99EFSWZDoFx8H+7PqLpLqM
+         iu8Xcyz/6JjnMG2q469jqjkuvqjUael1yh4KPo/dJEex5XCVuJ0xjsOyWfk/o7Vckf4a
+         tbSBQWOeixlohuf+GI9ng/sbMZZZNX4uEHCj/L5maAlMypdekOIFEFskuSH+No5jczSp
+         2w3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fOY8R8QL;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id p5-20020a05621421e500b00440a03e9f38si3348485qvj.129.2022.03.15.07.16.03
+       dkim=pass header.i=@linaro.org header.s=google header.b=daty5pFP;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a5-20020a056902144500b0062d7b57e856sor6351669ybv.23.2022.03.15.07.20.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 15 Mar 2022 07:16:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Tue, 15 Mar 2022 07:20:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fOY8R8QL;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1647353762;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=G34M2wqplRWeWarXP0G90H9Fcumln5YneSZGyKEyuqA=;
-	b=fOY8R8QLuJspw0+Fzrdgpk6Z5cximYBufsAqchzMPmC4+gWvxSBdtp0b2N2MDIgBBS3wTf
-	OxqT0Vhwa2M2RCc3wxIL0zefRPqL7SWuC/QTTwWug3ZINLuHmji0heDwk/3Q8umBP3aIWO
-	J0tB65TQL6BKE6lGYKnSkJnvQ/n3kp8=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-595-damje9vXMueOcGOcWhJQuA-1; Tue, 15 Mar 2022 10:15:48 -0400
-X-MC-Unique: damje9vXMueOcGOcWhJQuA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0A4903C11C7A;
-	Tue, 15 Mar 2022 14:15:48 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.154])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 049DF41136E2;
-	Tue, 15 Mar 2022 14:15:44 +0000 (UTC)
-Date: Tue, 15 Mar 2022 14:15:42 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philippe.mathieu.daude@gmail.com>,
-	qemu-devel@nongnu.org, fam@euphon.net, f4bug@amsat.org,
-	aurelien@aurel32.net, pbonzini@redhat.com, stefanha@redhat.com,
-	crosa@redhat.com, qemu-arm@nongnu.org, richard.henderson@linaro.org,
-	sw@weilnetz.de
-Subject: Re: [PATCH v1 7/8] semihosting: clean up handling of expanded argv
-Message-ID: <YjCfjmxMnGZYGGv6@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20220315121251.2280317-1-alex.bennee@linaro.org>
- <20220315121251.2280317-8-alex.bennee@linaro.org>
- <6c7bdb98-ad58-e48e-caa5-a9747b8ad90b@gmail.com>
- <87a6dr48n2.fsf@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=daty5pFP;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=YVr8I6Yaf2Ll04R67Hiej1534JqHavBw2eqlkNxSfEY=;
+        b=daty5pFPeKVLwW66A8PTCvY4KwsCtztYM8vcFPHitTiJsJ9KFPZr+6OA0GCM5QiW+q
+         Mrbm4D/u9WZvVaQBH9ImqjGPmnb8kWIqkdOo0wuTrY8sbjCDW95Tvhl3mPHg/xnhcyln
+         kCknIsip8UZfH9RDt3ikCyx05ZLDGEcRVPdY19tyZ+2Ce+RLwHcQt90I47cckZE/d5rW
+         0/yLVI7H9F4tDTpQp3XA/PG/OLGc+0Eb7xcLSYLyRujHcVmr0oCKqQ4AVmIquJnTLcNj
+         bIFWOi3HOZSCy+Xu15OMrMtuW8uooQVKxnfHhiHTu/VUn9meXKpAvtaRIRReWuOBAG/o
+         53hg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=YVr8I6Yaf2Ll04R67Hiej1534JqHavBw2eqlkNxSfEY=;
+        b=cQ1Nd7CSmvfpWYljUVvAXRBalwcsYZZrgSVpEOvRyZMTXTt3nkX9j8teA97g7GHNTP
+         Yrcz4Tg/SOa0QfIwViMAy23iscg4JvXYgTgV1huIfRh4BP1h4i+WJNGjS14ZvM8ycUfH
+         RbTuoFLnlwMdf0pOGbUp2GUE6filr8sKm3xywLgvotBiBFPZbfnivH0BIo27R4heIC5x
+         mnHdXUFzHY+tRlNZYwODTHRGWfNz3XMaP7iqElO1X/SGLmgwyHlj0m+RMKe1APiXW4O9
+         Wb0YuDTf4Y3lGaZMXXYUIoRSgRZGqxt16w8fbPvG8nWM4hv+wdjFNoNmha5GPXhXKcC8
+         sUgA==
+X-Gm-Message-State: AOAM530R68yqbOtUw39DLtQe2c1b96pqJtEtE4m8yclw9ByFYDUaFt7E
+	Eoz1Drj2+G+tj4D4CKMe7jrRHUB9dVvhUuyuQROi+OEB
+X-Google-Smtp-Source: ABdhPJzvjXM2jvcOh5i44u6iVG5gYBklqIZZXOvZ+Y1YRlumZgR4PSK0EsoPh2/d73SVdDCoQ1L5AfoX2ozMRyqRDmA=
+X-Received: by 2002:a5b:350:0:b0:628:86b8:6e09 with SMTP id
+ q16-20020a5b0350000000b0062886b86e09mr22961499ybp.39.1647354020849; Tue, 15
+ Mar 2022 07:20:20 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87a6dr48n2.fsf@linaro.org>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-X-TUID: QGZQwFxK7vFQ
+References: <20220315121251.2280317-1-alex.bennee@linaro.org>
+ <20220315121251.2280317-8-alex.bennee@linaro.org> <6c7bdb98-ad58-e48e-caa5-a9747b8ad90b@gmail.com>
+ <87a6dr48n2.fsf@linaro.org> <YjCfjmxMnGZYGGv6@redhat.com>
+In-Reply-To: <YjCfjmxMnGZYGGv6@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 15 Mar 2022 14:20:09 +0000
+Message-ID: <CAFEAcA9RbUKCKXFwrXDLbsRFF7dzMG8v47XuNcNzzGqtdc2j3g@mail.gmail.com>
+Subject: Re: [PATCH v1 7/8] semihosting: clean up handling of expanded argv
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, fam@euphon.net, 
+	sw@weilnetz.de, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
+	f4bug@amsat.org, qemu-arm@nongnu.org, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>, 
+	stefanha@redhat.com, crosa@redhat.com, pbonzini@redhat.com, 
+	aurelien@aurel32.net
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 6ls/LVXkeVgN
 
-On Tue, Mar 15, 2022 at 01:59:59PM +0000, Alex Bennée wrote:
-> 
-> Philippe Mathieu-Daudé <philippe.mathieu.daude@gmail.com> writes:
-> 
-> > On 15/3/22 13:12, Alex Bennée wrote:
-> >> Another cleanup patch tripped over the fact we weren't being careful
-> >> in our casting. Fix the casts, allow for a non-const and switch from
-> >> g_realloc to g_renew.
-> >> The whole semihosting argument handling could do with some tests
-> >> though.
-> >> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> >> ---
-> >>   semihosting/config.c | 6 +++---
-> >>   1 file changed, 3 insertions(+), 3 deletions(-)
-> >> diff --git a/semihosting/config.c b/semihosting/config.c
-> >> index 137171b717..50d82108e6 100644
-> >> --- a/semihosting/config.c
-> >> +++ b/semihosting/config.c
-> >> @@ -51,7 +51,7 @@ typedef struct SemihostingConfig {
-> >>       bool enabled;
-> >>       SemihostingTarget target;
-> >>       Chardev *chardev;
-> >> -    const char **argv;
-> >> +    char **argv;
-> >>       int argc;
-> >>       const char *cmdline; /* concatenated argv */
-> >>   } SemihostingConfig;
-> >> @@ -98,8 +98,8 @@ static int add_semihosting_arg(void *opaque,
-> >>       if (strcmp(name, "arg") == 0) {
-> >>           s->argc++;
-> >>           /* one extra element as g_strjoinv() expects NULL-terminated array */
-> >> -        s->argv = g_realloc(s->argv, (s->argc + 1) * sizeof(void *));
-> >> -        s->argv[s->argc - 1] = val;
-> >> +        s->argv = g_renew(char *, s->argv, s->argc + 1);
-> >> +        s->argv[s->argc - 1] = g_strdup(val);
+On Tue, 15 Mar 2022 at 14:16, Daniel P. Berrang=C3=A9 <berrange@redhat.com>=
+ wrote:
+>
+> On Tue, Mar 15, 2022 at 01:59:59PM +0000, Alex Benn=C3=A9e wrote:
 > >
-> > Why strdup()?
-> 
-> The compiler was having issues with adding a const char * into the array
-> and it was the quickest way to stop it complaining. I'm not sure what
-> guarantees you can make about a const char * after you leave the scope
-> of the function.
+> > Philippe Mathieu-Daud=C3=A9 <philippe.mathieu.daude@gmail.com> writes:
+> >
+> > > On 15/3/22 13:12, Alex Benn=C3=A9e wrote:
+> > >> Another cleanup patch tripped over the fact we weren't being careful
+> > >> in our casting. Fix the casts, allow for a non-const and switch from
+> > >> g_realloc to g_renew.
+> > >> The whole semihosting argument handling could do with some tests
+> > >> though.
+> > >> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> > >> ---
+> > >>   semihosting/config.c | 6 +++---
+> > >>   1 file changed, 3 insertions(+), 3 deletions(-)
+> > >> diff --git a/semihosting/config.c b/semihosting/config.c
+> > >> index 137171b717..50d82108e6 100644
+> > >> --- a/semihosting/config.c
+> > >> +++ b/semihosting/config.c
+> > >> @@ -51,7 +51,7 @@ typedef struct SemihostingConfig {
+> > >>       bool enabled;
+> > >>       SemihostingTarget target;
+> > >>       Chardev *chardev;
+> > >> -    const char **argv;
+> > >> +    char **argv;
+> > >>       int argc;
+> > >>       const char *cmdline; /* concatenated argv */
+> > >>   } SemihostingConfig;
+> > >> @@ -98,8 +98,8 @@ static int add_semihosting_arg(void *opaque,
+> > >>       if (strcmp(name, "arg") =3D=3D 0) {
+> > >>           s->argc++;
+> > >>           /* one extra element as g_strjoinv() expects NULL-terminat=
+ed array */
+> > >> -        s->argv =3D g_realloc(s->argv, (s->argc + 1) * sizeof(void =
+*));
+> > >> -        s->argv[s->argc - 1] =3D val;
+> > >> +        s->argv =3D g_renew(char *, s->argv, s->argc + 1);
+> > >> +        s->argv[s->argc - 1] =3D g_strdup(val);
+> > >
+> > > Why strdup()?
+> >
+> > The compiler was having issues with adding a const char * into the arra=
+y
+> > and it was the quickest way to stop it complaining. I'm not sure what
+> > guarantees you can make about a const char * after you leave the scope
+> > of the function.
+>
+> No guarantees at all. This method was implicitly relying on the caller
+> never free'ing the const arg it passed in. That is indeed the case here,
+> because the arg came from a QemuOpts list. It is bad practice to rely
+> on such things though, so adding the strdup is sane IMHO.
+>
+> I would have split the strdup out from the realloc -> renew change
+> though, since it is an independent cleanup.
 
-No guarantees at all. This method was implicitly relying on the caller
-never free'ing the const arg it passed in. That is indeed the case here,
-because the arg came from a QemuOpts list. It is bad practice to rely
-on such things though, so adding the strdup is sane IMHO.
+If we ever move the glib minimum-version up to 2.68, we could use
+the g_strv_builder_new()/g_strv_builder_add() APIs in glib which
+do exactly this job of "build up a NULL-terminated array of strings,
+one string at a time".
 
-I would have split the strdup out from the realloc -> renew change
-though, since it is an independent cleanup.
-
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+-- PMM

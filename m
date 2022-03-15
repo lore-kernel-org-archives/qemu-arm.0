@@ -1,126 +1,138 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2942228lfo;
-        Tue, 15 Mar 2022 08:07:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOMwi/zAyxFycs7RROpQjqTo5pekvh0LTXDjJyPknF1nYNbvDNYd9FmMuHS6+xWF7E5x9F
-X-Received: by 2002:a05:6e02:15c6:b0:2c2:5ab0:948 with SMTP id q6-20020a056e0215c600b002c25ab00948mr22395324ilu.171.1647356821594;
-        Tue, 15 Mar 2022 08:07:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647356821; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp3061333lfo;
+        Tue, 15 Mar 2022 11:04:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzx6EkrDzLybVLde2bxoezyeZTGTuohtWhqyvdbQsQDdpCgOYqBViJXXhT8ezgPTSHRmIvc
+X-Received: by 2002:a5b:94d:0:b0:629:31c4:232d with SMTP id x13-20020a5b094d000000b0062931c4232dmr24507688ybq.455.1647367491991;
+        Tue, 15 Mar 2022 11:04:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647367491; cv=none;
         d=google.com; s=arc-20160816;
-        b=UeoDC1IT0dAThzX4HVecxETBF729gLoZz5siYmoklDjpMY++8Hucg9SZAzkSRUXCrl
-         pY/rhe70BbzJ/Lz7W3LQjDnODqmb4X/siDC2pkPvCMJ74httgAnb7HyiCdw1zJWncely
-         iilmV+xBGN1Nwtel/ZtrSFHoFC/o4twzjJ/mrZENXnHIAxdE/KXYmcN4wFtPsIxln/Z8
-         TW97jGyX2hKs3d9h9s+syhj8G0qQYtS+RUq/Vid44N5xbGD79jgb/gdce2WZSGlVmY/R
-         hI7pIEW6Y4rMVYGA5zpqxyeYaCU3kZy/ZGrmSKAHJUPE73Y74Ft6iKAOLVYu/IS4kklC
-         p/Nw==
+        b=sS2Vre2EvSqgP5zWyPxE6Zl67rfVdFPLrGaj0YT1j0lrrM1dL2uoutSmZdpAmeOawA
+         keMh7Qz23GshKmaebl5mn7ZtdvJ6OJTUnW+8I6d52SjoVp5PvagvebPGsIKLlQODxkmd
+         sq14Jjv7/nHKs5pnVYb6QEjUhSZDK263aNz79h5D9PIzILDItQnpQXE7Di6raIA41m7R
+         tmeXhOM+doATWzVCAYEj2PGdHN9unpQTJDdicVn18fWLAJxFFY0FBOb2qaMvn9V1xEuF
+         7dayQOGEmV8+fZVQdb5oFhd5CzULwq0Taj1sGrE01OSpW32Vusja+EhWVPCtFLWENZij
+         OOxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:organization:message-id:date
-         :subject:to:from;
-        bh=b1vtrqtreGEjTX28OgdREfjdZTT2OuSjlmz6kED2+DE=;
-        b=k53uX68wbvyT2VdlUhF1KE9lPbHYNozMvuPZGeeuESd0vpTWnjDQctBVatSj2dS3gd
-         WoKZq1ibEye3VuInRjv2UpDQjXcKie4op2/x2Hu0NbyYsITQ+bcFENwOhr4ReMMrqAw0
-         XHCU8l3EMA9cSa0oMkZ0II4DYnM48KFcbwJYuZEMHhgqWXJL5f29enjYaZPZ7Gm9vzkh
-         LsFyyBuM0LXYZDRCW8cdrrv0pV99rwlrKvyp3ETI+/br25nZpzpsVQgEgF9XZatpARap
-         UtRLBo3PUNgwAWyp3NVc5Z7kWzPOUgTMg7LTJ+umdt9pR2SJFq1v+ALgSJqihqsQti8m
-         0tsg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=AOMr+XdYiP5/I68wcT4SaN1Qr9IFxn1qG8JehcCtBN0=;
+        b=amIgW8396t7BlN7n1HM13Y9o0asvjXo09k7AdhVnHXWQnRtoJqxHM2anP7Zef2s07v
+         XKULfpbhKs0BBE4QHPbbafIwLMQ6hlZgjozZSVFV8UpSv3b3dpFMDt1GQb+yIthsbilf
+         9IkV3BTDo1eNsYoSB8Rm57rbO59C+GMGfudUkN/ed6/MkVyRatR2eAeyt4B9a+e23DuN
+         h6QwylNIaovB08bmb+X1htt/O75u8FyTor61x+IGaBn7uTUNXdqm5CvBsiQRTcZpz3Ul
+         51X9JeuXqVGPmf8XwcQr727v6ZqL65G4s4x9OfqsjXUPEkk80o8YvcWdpACU4SjPxAq6
+         gtSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=vt4yU6Ov;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m6-20020a056e020de600b002bc6f27c19csi7740855ilj.156.2022.03.15.08.07.01
+        by mx.google.com with ESMTPS id 137-20020a81038f000000b002d0697e5700si11153397ywd.306.2022.03.15.11.04.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Mar 2022 08:07:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Mar 2022 11:04:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46890 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=vt4yU6Ov;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51474 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nU8lJ-0004Hl-0x
-	for alex.bennee@linaro.org; Tue, 15 Mar 2022 11:07:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35396)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nUBXP-0001gJ-Ck
+	for alex.bennee@linaro.org; Tue, 15 Mar 2022 14:04:51 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46656)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1nU8l4-0004HI-7Q; Tue, 15 Mar 2022 11:06:46 -0400
-Received: from vps-a2bccee9.vps.ovh.net ([51.75.19.47]:50262
- helo=ursule.remlab.net) by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>)
- id 1nU8l2-0005XU-6b; Tue, 15 Mar 2022 11:06:45 -0400
-Received: from ursule.remlab.net (localhost [IPv6:::1])
- by ursule.remlab.net (Postfix) with ESMTP id 8FD3EC0233;
- Tue, 15 Mar 2022 17:06:40 +0200 (EET)
-Received: from basile.remlab.net ([2001:14ba:a080:a501:23a6:ebae:8f2a:4d73])
- by ursule.remlab.net with ESMTPSA id OpAGIICrMGIKLxYAwZXkwQ
- (envelope-from <remi@remlab.net>); Tue, 15 Mar 2022 17:06:40 +0200
-From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi@remlab.net>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH] target/arm: Fix pauth_check_trap vs SEL2
-Date: Tue, 15 Mar 2022 17:06:40 +0200
-Message-ID: <2620199.mvXUDI8C0e@basile.remlab.net>
-Organization: Remlab
-In-Reply-To: <20220315021205.342768-1-richard.henderson@linaro.org>
-References: <20220315021205.342768-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nUBXI-0001fF-2g
+ for qemu-devel@nongnu.org; Tue, 15 Mar 2022 14:04:44 -0400
+Received: from [2607:f8b0:4864:20::b2c] (port=40795
+ helo=mail-yb1-xb2c.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nUBXF-00084S-E9
+ for qemu-devel@nongnu.org; Tue, 15 Mar 2022 14:04:43 -0400
+Received: by mail-yb1-xb2c.google.com with SMTP id z8so66414ybh.7
+ for <qemu-devel@nongnu.org>; Tue, 15 Mar 2022 11:04:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AOMr+XdYiP5/I68wcT4SaN1Qr9IFxn1qG8JehcCtBN0=;
+ b=vt4yU6OvwR+fbnbLwYTcpgOaJqle9xKGpYke075A3R/SG2jTMPadpGRnVzUSupsd5L
+ IyAhzJNrVwYirC8SU/qj7v9nuaRlaDcneu7PkKvYI0Num2hZKEIkEquyPZFyhTi5f2Dn
+ PLCMbrEZ+5YhYUSP+b+3dyVtWaUfFPgKEbGgM3KB1BxUOeOoIScPJ5OFLvYEEy4LQVSf
+ XlZVoY2/LqUUlSJ4EOHs2d8YlWFqGHWMqvKmR7OxG4ly5mejP6UoPeYrjX0sGBF7nJIi
+ DgJpLvUop9YCCPA0yImMvmgthDLNgB5HKrQGfhBVWMGEBN2wtrExkGRC5fOjL97F0WeA
+ jX+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AOMr+XdYiP5/I68wcT4SaN1Qr9IFxn1qG8JehcCtBN0=;
+ b=isA0O8bq70M8jDMz4IvD62jtuxr0xzWezRboW+U1ql5ManM/GuMm91PmeThPuwUg89
+ MBUTaSijlWmGgRN+Xug2PP8LFDM2O+74NB0CwkNP34wtk1n7WesQtRPV+c0etVAYmPW/
+ MYTW4xJkAQSmmTCSwH27KMLsre57DVMFLB12oRvpQcAL9N0gNVp57vM8wEZqeNDDM/S4
+ hWaLtpoZjgG2E78JhnvCIsQFoYdO8iCKf8r+vOZ+BR7NIBfAACsUyvKKndqZM8mAPiLe
+ K008IuRXSjrB5WJnkVbTfNbEGTYXBXm9SNztDOZP5ApFQ8VedDhv601YhZO0VZQIhuGm
+ lunA==
+X-Gm-Message-State: AOAM530NGwSHBENrklHnQ7zo2emB7VoAcZXjQ599JECMVTduZnjDwsUw
+ +JJj2LnYFMj1IQplvVvvimqCdM6nR/mYqa/pn5By1A==
+X-Received: by 2002:a5b:745:0:b0:622:1c46:3c19 with SMTP id
+ s5-20020a5b0745000000b006221c463c19mr24875421ybq.479.1647367479921; Tue, 15
+ Mar 2022 11:04:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+References: <20220315021205.342768-1-richard.henderson@linaro.org>
+In-Reply-To: <20220315021205.342768-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 15 Mar 2022 18:04:28 +0000
+Message-ID: <CAFEAcA8dbf7PwgH0Wg=HR6DU5jpUOBeMneNGNdMwaWG893sfOw@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Fix pauth_check_trap vs SEL2
+To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=51.75.19.47; envelope-from=remi@remlab.net;
- helo=ursule.remlab.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b2c
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2c.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U3cYbfu85QbZ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E1PrdLv6SJBd
 
-Le tiistaina 15. maaliskuuta 2022, 4.12.05 EET Richard Henderson a =C3=A9cr=
-it :
+On Tue, 15 Mar 2022 at 02:12, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
 > When arm_is_el2_enabled was introduced, we missed
 > updating pauth_check_trap.
->=20
+>
 > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/788
-> Fixes: e6ef0169264b ("target/arm: use arm_is_el2_enabled() where
-> applicable") Signed-off-by: Richard Henderson
-> <richard.henderson@linaro.org>
+> Fixes: e6ef0169264b ("target/arm: use arm_is_el2_enabled() where applicable")
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
 >  target/arm/pauth_helper.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/target/arm/pauth_helper.c b/target/arm/pauth_helper.c
-> index cd6df18150..739aa520dd 100644
-> --- a/target/arm/pauth_helper.c
-> +++ b/target/arm/pauth_helper.c
-> @@ -390,7 +390,7 @@ static void QEMU_NORETURN pauth_trap(CPUARMState *env,
-> int target_el,
->=20
->  static void pauth_check_trap(CPUARMState *env, int el, uintptr_t ra)
->  {
-> -    if (el < 2 && arm_feature(env, ARM_FEATURE_EL2)) {
-> +    if (el < 2 && arm_is_el2_enabled(env)) {
->          uint64_t hcr =3D arm_hcr_el2_eff(env);
->          bool trap =3D !(hcr & HCR_API);
->          if (el =3D=3D 0) {
-
-Ack.
-
-=2D-=20
-R=C3=A9mi Denis-Courmont
-http://www.remlab.net/
 
 
 
+Applied to target-arm.next, thanks.
+
+-- PMM

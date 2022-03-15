@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id n19-20020a170906165300b006a625c583b9sm8137120ejd.155.2022.03.15.05.12.52
+        by smtp.gmail.com with ESMTPSA id cn27-20020a0564020cbb00b00418b0c7fbbfsm777256edb.32.2022.03.15.05.12.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 15 Mar 2022 05:12:52 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id EC4BE1FFB7;
-	Tue, 15 Mar 2022 12:12:51 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 23B081FFBA;
+	Tue, 15 Mar 2022 12:12:52 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: fam@euphon.net,
@@ -18,61 +18,85 @@ Cc: fam@euphon.net,
 	qemu-arm@nongnu.org,
 	richard.henderson@linaro.org,
 	sw@weilnetz.de,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH for 7.0 v1 0/8] misc testing, i386, docs, gitdm, gitlab
-Date: Tue, 15 Mar 2022 12:12:43 +0000
-Message-Id: <20220315121251.2280317-1-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>
+Subject: [PATCH  v1 2/8] tests/avocado: update aarch64_virt test to exercise -cpu max
+Date: Tue, 15 Mar 2022 12:12:45 +0000
+Message-Id: <20220315121251.2280317-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220315121251.2280317-1-alex.bennee@linaro.org>
+References: <20220315121251.2280317-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ujSL+o4F/kvm
+X-TUID: p8PT8hFgkTwK
 
-Hi,
+The Fedora 29 kernel is quite old and importantly fails when running
+in LPA2 scenarios. As it's not really exercising much of the CPU space
+replace it with a custom 5.16.12 kernel with all the architecture
+options turned on. There is a minimal buildroot initramfs included in
+the kernel which has a few tools for stress testing the memory
+subsystem. The userspace also targets the Neoverse N1 processor so
+will fail without additional v8.x+ features.
 
-As per usual here are the collection of random fixes and tweaks as we
-go through the release process. Most of these patches have been posted
-individually before although the semihosting and gitlab patches are
-new.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20220307172249.3125779-1-alex.bennee@linaro.org>
+---
+ tests/avocado/boot_linux_console.py | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
 
-The following need review:
-
- - gitlab: include new aarch32 job in custom-runners
- - semihosting: clean up handling of expanded argv
- - tests/avocado: update aarch64_virt test to exercise -cpu max
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 9c618d4809..ca3a40e91d 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -12,6 +12,7 @@
+ import lzma
+ import gzip
+ import shutil
++import time
  
-Alex Bennée (7):
-  tests/avocado: update aarch64_virt test to exercise -cpu max
-  target/i386: force maximum rounding precision for fildl[l]
-  tests/tcg: drop -cpu max from s390x sha512-mvx invocation
-  mailmap/gitdm: more fixes for bad tags and authors
-  docs/devel: try and impose some organisation
-  semihosting: clean up handling of expanded argv
-  gitlab: include new aarch32 job in custom-runners
-
-Thomas Huth (1):
-  tests/Makefile.include: Let "make clean" remove the TCG tests, too
-
- docs/devel/index-api.rst            | 15 ++++++++++
- docs/devel/index-build.rst          | 19 ++++++++++++
- docs/devel/index-internals.rst      | 21 +++++++++++++
- docs/devel/index-process.rst        | 17 +++++++++++
- docs/devel/index-tcg.rst            | 16 ++++++++++
- docs/devel/index.rst                | 46 +++++------------------------
- semihosting/config.c                |  6 ++--
- target/i386/tcg/fpu_helper.c        | 13 ++++++++
- .gitlab-ci.d/custom-runners.yml     |  1 +
- .mailmap                            |  6 ++++
- contrib/gitdm/aliases               |  4 ++-
- tests/Makefile.include              |  2 +-
- tests/avocado/boot_linux_console.py | 22 +++++++++-----
- tests/tcg/s390x/Makefile.target     |  2 --
- 14 files changed, 136 insertions(+), 54 deletions(-)
- create mode 100644 docs/devel/index-api.rst
- create mode 100644 docs/devel/index-build.rst
- create mode 100644 docs/devel/index-internals.rst
- create mode 100644 docs/devel/index-process.rst
- create mode 100644 docs/devel/index-tcg.rst
-
+ from avocado import skip
+ from avocado import skipUnless
+@@ -330,25 +331,30 @@ def test_aarch64_virt(self):
+         :avocado: tags=arch:aarch64
+         :avocado: tags=machine:virt
+         :avocado: tags=accel:tcg
+-        :avocado: tags=cpu:cortex-a53
++        :avocado: tags=cpu:max
+         """
+-        kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
+-                      '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
+-                      '/vmlinuz')
+-        kernel_hash = '8c73e469fc6ea06a58dc83a628fc695b693b8493'
++        kernel_url = ('https://fileserver.linaro.org/s/'
++                      'z6B2ARM7DQT3HWN/download')
++
++        kernel_hash = 'ed11daab50c151dde0e1e9c9cb8b2d9bd3215347'
+         kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
+ 
+         self.vm.set_console()
+         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+                                'console=ttyAMA0')
+         self.require_accelerator("tcg")
+-        self.vm.add_args('-cpu', 'cortex-a53',
++        self.vm.add_args('-cpu', 'max,pauth-impdef=on',
+                          '-accel', 'tcg',
+                          '-kernel', kernel_path,
+                          '-append', kernel_command_line)
+         self.vm.launch()
+-        console_pattern = 'Kernel command line: %s' % kernel_command_line
+-        self.wait_for_console_pattern(console_pattern)
++        self.wait_for_console_pattern('Welcome to Buildroot')
++        time.sleep(0.1)
++        exec_command(self, 'root')
++        time.sleep(0.1)
++        exec_command(self, 'cat /proc/self/maps')
++        time.sleep(0.1)
++
+ 
+     def test_aarch64_xlnx_versal_virt(self):
+         """
 -- 
 2.30.2

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id w10-20020aa7da4a000000b004161eea5ae7sm9477228eds.40.2022.03.15.05.12.55
+        by smtp.gmail.com with ESMTPSA id qa44-20020a17090786ac00b006dbe1ca23casm1817451ejc.45.2022.03.15.05.12.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 15 Mar 2022 05:12:58 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E21601FFC0;
+	by zen.linaroharston (Postfix) with ESMTP id C02601FFBF;
 	Tue, 15 Mar 2022 12:12:52 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -18,38 +18,53 @@ Cc: fam@euphon.net,
 	qemu-arm@nongnu.org,
 	richard.henderson@linaro.org,
 	sw@weilnetz.de,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH  v1 8/8] gitlab: include new aarch32 job in custom-runners
-Date: Tue, 15 Mar 2022 12:12:51 +0000
-Message-Id: <20220315121251.2280317-9-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH  v1 7/8] semihosting: clean up handling of expanded argv
+Date: Tue, 15 Mar 2022 12:12:50 +0000
+Message-Id: <20220315121251.2280317-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220315121251.2280317-1-alex.bennee@linaro.org>
 References: <20220315121251.2280317-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /v1y0fg5tveQ
+X-TUID: 9q+HWMkSV5xU
 
-Without linking it in it won't be presented on the UI.
+Another cleanup patch tripped over the fact we weren't being careful
+in our casting. Fix the casts, allow for a non-const and switch from
+g_realloc to g_renew.
 
-Fixes: cc44a16002 ("gitlab: add a new aarch32 custom runner definition")
+The whole semihosting argument handling could do with some tests
+though.
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/custom-runners.yml | 1 +
- 1 file changed, 1 insertion(+)
+ semihosting/config.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/.gitlab-ci.d/custom-runners.yml b/.gitlab-ci.d/custom-runners.yml
-index 3e76a2034a..15aaccc481 100644
---- a/.gitlab-ci.d/custom-runners.yml
-+++ b/.gitlab-ci.d/custom-runners.yml
-@@ -16,4 +16,5 @@ variables:
- include:
-   - local: '/.gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml'
-   - local: '/.gitlab-ci.d/custom-runners/ubuntu-20.04-aarch64.yml'
-+  - local: '/.gitlab-ci.d/custom-runners/ubuntu-20.04-aarch32.yml'
-   - local: '/.gitlab-ci.d/custom-runners/centos-stream-8-x86_64.yml'
+diff --git a/semihosting/config.c b/semihosting/config.c
+index 137171b717..50d82108e6 100644
+--- a/semihosting/config.c
++++ b/semihosting/config.c
+@@ -51,7 +51,7 @@ typedef struct SemihostingConfig {
+     bool enabled;
+     SemihostingTarget target;
+     Chardev *chardev;
+-    const char **argv;
++    char **argv;
+     int argc;
+     const char *cmdline; /* concatenated argv */
+ } SemihostingConfig;
+@@ -98,8 +98,8 @@ static int add_semihosting_arg(void *opaque,
+     if (strcmp(name, "arg") == 0) {
+         s->argc++;
+         /* one extra element as g_strjoinv() expects NULL-terminated array */
+-        s->argv = g_realloc(s->argv, (s->argc + 1) * sizeof(void *));
+-        s->argv[s->argc - 1] = val;
++        s->argv = g_renew(char *, s->argv, s->argc + 1);
++        s->argv[s->argc - 1] = g_strdup(val);
+         s->argv[s->argc] = NULL;
+     }
+     return 0;
 -- 
 2.30.2

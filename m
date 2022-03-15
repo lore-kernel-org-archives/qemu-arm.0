@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id n15-20020a05640206cf00b0041655b577f1sm9718271edy.25.2022.03.15.05.12.52
+        by smtp.gmail.com with ESMTPSA id gv9-20020a170906f10900b006d7128b2e6fsm8061677ejb.162.2022.03.15.05.12.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Mar 2022 05:12:52 -0700 (PDT)
+        Tue, 15 Mar 2022 05:12:58 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3E0B81FFBB;
+	by zen.linaroharston (Postfix) with ESMTP id 4A01D1FFBC;
 	Tue, 15 Mar 2022 12:12:52 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -19,70 +19,44 @@ Cc: fam@euphon.net,
 	richard.henderson@linaro.org,
 	sw@weilnetz.de,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>
-Subject: [PATCH  v1 3/8] target/i386: force maximum rounding precision for fildl[l]
-Date: Tue, 15 Mar 2022 12:12:46 +0000
-Message-Id: <20220315121251.2280317-4-alex.bennee@linaro.org>
+	David Hildenbrand <david@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
+Subject: [PATCH  v1 4/8] tests/tcg: drop -cpu max from s390x sha512-mvx invocation
+Date: Tue, 15 Mar 2022 12:12:47 +0000
+Message-Id: <20220315121251.2280317-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220315121251.2280317-1-alex.bennee@linaro.org>
 References: <20220315121251.2280317-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: rs8ouY8W51zf
+X-TUID: mYA7iqzZ19dW
 
-The instruction description says "It is loaded without rounding
-errors." which implies we should have the widest rounding mode
-possible.
+With -cpu max we get a warning:
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/888
+  qemu-s390x: warning: 'msa5-base' requires 'kimd-sha-512'.
+
+But dropping the -cpu max and it still runs fine.
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>
 ---
- target/i386/tcg/fpu_helper.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ tests/tcg/s390x/Makefile.target | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/target/i386/tcg/fpu_helper.c b/target/i386/tcg/fpu_helper.c
-index cdd8e9f947..ebf5e73df9 100644
---- a/target/i386/tcg/fpu_helper.c
-+++ b/target/i386/tcg/fpu_helper.c
-@@ -237,24 +237,37 @@ void helper_fldl_ST0(CPUX86State *env, uint64_t val)
-     merge_exception_flags(env, old_flags);
- }
+diff --git a/tests/tcg/s390x/Makefile.target b/tests/tcg/s390x/Makefile.target
+index 257c568c58..7aa502a557 100644
+--- a/tests/tcg/s390x/Makefile.target
++++ b/tests/tcg/s390x/Makefile.target
+@@ -34,6 +34,4 @@ sha512-mvx: CFLAGS=-march=z13 -mvx -O3
+ sha512-mvx: sha512.c
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
  
-+static FloatX80RoundPrec tmp_maximise_precision(float_status *st)
-+{
-+    FloatX80RoundPrec old = get_floatx80_rounding_precision(st);
-+    set_floatx80_rounding_precision(floatx80_precision_x, st);
-+    return old;
-+}
-+
- void helper_fildl_ST0(CPUX86State *env, int32_t val)
- {
-     int new_fpstt;
-+    FloatX80RoundPrec old = tmp_maximise_precision(&env->fp_status);
- 
-     new_fpstt = (env->fpstt - 1) & 7;
-     env->fpregs[new_fpstt].d = int32_to_floatx80(val, &env->fp_status);
-     env->fpstt = new_fpstt;
-     env->fptags[new_fpstt] = 0; /* validate stack entry */
-+
-+    set_floatx80_rounding_precision(old, &env->fp_status);
- }
- 
- void helper_fildll_ST0(CPUX86State *env, int64_t val)
- {
-     int new_fpstt;
-+    FloatX80RoundPrec old = tmp_maximise_precision(&env->fp_status);
- 
-     new_fpstt = (env->fpstt - 1) & 7;
-     env->fpregs[new_fpstt].d = int64_to_floatx80(val, &env->fp_status);
-     env->fpstt = new_fpstt;
-     env->fptags[new_fpstt] = 0; /* validate stack entry */
-+
-+    set_floatx80_rounding_precision(old, &env->fp_status);
- }
- 
- uint32_t helper_fsts_ST0(CPUX86State *env)
+-run-sha512-mvx: QEMU_OPTS+=-cpu max
+-
+ TESTS+=sha512-mvx
 -- 
 2.30.2

@@ -1,218 +1,182 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2726932lfo;
-        Tue, 15 Mar 2022 02:15:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZHpTeLf/ETVxSg6E8ciDFUNfgzqD41bPAFk74fiVKSoixP0WbGnb/CT184IqXwLPEgs8r
-X-Received: by 2002:a37:b54:0:b0:67b:31fd:fd09 with SMTP id 81-20020a370b54000000b0067b31fdfd09mr17084697qkl.370.1647335749052;
-        Tue, 15 Mar 2022 02:15:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647335749; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2732104lfo;
+        Tue, 15 Mar 2022 02:26:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxeb8fwl4k8/Inh2W9wSN1cxh3baBEdICgNa8QdNE7sVddAlynjqgx5dm2tFbZP2zazOKRE
+X-Received: by 2002:ac8:5787:0:b0:2e1:c602:cff2 with SMTP id v7-20020ac85787000000b002e1c602cff2mr14372799qta.133.1647336394961;
+        Tue, 15 Mar 2022 02:26:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647336394; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ad1VcMplBOv/JU4IjXjYP0GvxtdyUYqpfAuSs5hTWfbRGGJReWTGKmWNo/OLrORKPw
-         8kMdp5ZM+mgg/tfFvw6jxO1CcunQobL4pbLiIqioPKWyGL7pac6gLnNbPEyfv22fP1aj
-         WvpuXRqMQWPGP3tf8W9KMDJzz/gBf3GINkgu9IhALk4LEMVcIjh44V89YlPDeV5XnIHF
-         yu5htNqSc3h0PCnrvqhF9OQwyLIG6i2HDTm/t5miEQz8aAHSzuNuN2baTMadKa41iFfG
-         X8W72WLDyxq0oXBVYS908NSk3TRsBrBkF2Kwttc8avtQjmn/UcaCshmmf3joFulzRP+E
-         VDzA==
+        b=zgaeMzBlG2OJMZp+v/XlPIbx/smAcH4uaPX9OVks8jCq5ihZINSi8EmU/UMwPTTxrx
+         ujgIi0AXRp0aJqoTqH9Uwl6J2t/AgrYPZUw6IjpC+Msxv27gzJke8LzQJxRlxYmLoWo+
+         aY2YHnAR3BubaPA7aKdUXfjVih2+nw4Xhg8Hh2bYdsNVyt59ToLws/NH2kPr3XrMUgfN
+         mYG10uoWPn7KlhQpTGgQAY7B6s59U0xubXoxArZP79sMQVy4DOE7i1ld4A5KamP4aX7F
+         3niKKAsxvNCTF+Lrb2DeizCmjc+1rejPPsviwNZ3c1SrEPuiLNC4DeVGLyVbDozOwTuH
+         016Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id;
-        bh=uHOWVy/I9Lhvz0/IxVppJNGDW2QMq6NoxMnF7pIGly0=;
-        b=NnpVpfo6YJCJ4XGAPgIQ1dT512Ihn59wNHwvvZ6wL8P7VDLzD2d5RvxwJ7Q3BfXZ7D
-         zzNv/q8eaD9e3s/jjq5vhayV/6k9ZdI8kG1BimBM9Y3bHCnQyJ3VIe6eFoW1vvagGKlA
-         6VdaYpFJoBrIQAXzVSJWSWKVYZa3YztTDZLiV2avRu2ZV/0DdvLyQ7xwGT9/PYkNiqc4
-         0bBAPTTDvl+U+KLq39gYoyDz7SsfU83ddNfaM1Glvpn0LZxjJfp4en9DNVZGI6dAgR1L
-         lTLs3vxLA+8Fb966JXKfg3Zn9JFX/KByAWecM9A43yjN+tYvrsqxDB43gSW4IvjHvktO
-         7WAA==
+        bh=8Xss5jw9pco5VDHQMFKiIM3e8wykraCrgSORtIfqnMI=;
+        b=zZ6TAprXjUVrBoFa6ViLig0ysWqLXt24VElRUjB2nG8C+8y0hsxBJCToUYN9dhfJ59
+         KxlHJTq9Bt/R+2igArPFy9t12vdFJVIkidji+TfVFzC5ze99BWS3Z+fIAyaSo1xPkWUp
+         QfWNHuRxLTGRXI20ncwiteYoNJ+gPfQVonYlGsOOHrFFi+YTtu5xfDEGwhTITnfHxWyW
+         PDJlmRACNrtIN+sNvpp+uikRvtYwszzUceupdOfFTtn3j69M0IbZ36OXGv5SYwPPQUuN
+         QMFlPz06+uMbeZyzuA/LjLb0BPxqIU9B0OLENtFH9Abxal/+Vxu+VvG3P2D3zUH1EbKe
+         ygqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o9-20020ac85549000000b002e062adf4ffsi6639250qtr.557.2022.03.15.02.15.48
+        by mx.google.com with ESMTPS id k12-20020a05620a414c00b0067ddce1966bsi1871355qko.362.2022.03.15.02.26.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Mar 2022 02:15:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Mar 2022 02:26:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42218 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nU3HQ-0006vg-5S
-	for alex.bennee@linaro.org; Tue, 15 Mar 2022 05:15:48 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56830)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nU3Ro-0005aC-H3
+	for alex.bennee@linaro.org; Tue, 15 Mar 2022 05:26:33 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nU31s-0006q9-5j
- for qemu-devel@nongnu.org; Tue, 15 Mar 2022 04:59:45 -0400
-Received: from 10.mo552.mail-out.ovh.net ([87.98.187.244]:34187)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nU2ok-0003RX-7v
+ for qemu-arm@nongnu.org; Tue, 15 Mar 2022 04:46:10 -0400
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:52303)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nU31o-0007Rt-G3
- for qemu-devel@nongnu.org; Tue, 15 Mar 2022 04:59:43 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.250])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id BA41223BEC;
- Tue, 15 Mar 2022 08:59:36 +0000 (UTC)
-Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nU2og-0005VR-Ui
+ for qemu-arm@nongnu.org; Tue, 15 Mar 2022 04:46:09 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.180])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id DC209EA19B91;
+ Tue, 15 Mar 2022 09:46:02 +0100 (CET)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Tue, 15 Mar
- 2022 09:59:35 +0100
+ 2022 09:46:02 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-101G0044854ad77-95e7-412f-8b16-d36e0a6a28f1,
+ (GARM-99G003976f5711-98e0-4acb-b8f3-43dc6153c14e,
  5DBA5639B77BD7FE35D3F16CFE7686729AB21D01) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <5310d336-2267-f505-3d09-e9e16c91b211@kaod.org>
-Date: Tue, 15 Mar 2022 09:59:34 +0100
+Message-ID: <39ab9dc0-8581-8c27-698c-51ec2c65d104@kaod.org>
+Date: Tue, 15 Mar 2022 09:46:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.6.2
-Subject: Re: [PATCH v2 0/2] hw: aspeed_scu: Add AST2600 hpll calculation
- function
+Subject: Re: [PATCH v2 2/2] hw: aspeed_scu: Introduce clkin_25Mhz attribute
 Content-Language: en-US
 To: Steven Lee <steven_lee@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
  <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
  list:All patches CC here" <qemu-devel@nongnu.org>
 References: <20220315075753.8591-1-steven_lee@aspeedtech.com>
+ <20220315075753.8591-3-steven_lee@aspeedtech.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220315075753.8591-1-steven_lee@aspeedtech.com>
+In-Reply-To: <20220315075753.8591-3-steven_lee@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 141652f0-9d91-40cc-900f-42117088ccbc
-X-Ovh-Tracer-Id: 6158391016882932588
+X-Ovh-Tracer-GUID: b168ada6-2129-4559-9348-38f960535b95
+X-Ovh-Tracer-Id: 5929551860001573740
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddruddvledguddvhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpefgffdtueeftddthffgfeevfeejfeeivdfhhfeggeegleejjeeggfejhffhheffkeenucffohhmrghinheprhgvrgguthhhvgguohgtshdrihhonecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepjhgrmhhinhgplhhinhesrghsphgvvgguthgvtghhrdgtohhm
-Received-SPF: pass client-ip=87.98.187.244; envelope-from=clg@kaod.org;
- helo=10.mo552.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddruddvledguddvvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeigedvffekgeeftedutddttdevudeihfegudffkeeitdekkeetkefhffelveelleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepjhgrmhhinhgplhhinhesrghsphgvvgguthgvtghhrdgtohhm
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: troy_lee@aspeedtech.com, jamin_lin@aspeedtech.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p31Ji5iSEjIU
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9QB8s2grAlIk
 
 On 3/15/22 08:57, Steven Lee wrote:
-> AST2600's HPLL register offset and bit definition are different from AST2500.
-> The patch series adds a hpll calculation function for ast2600 and modify apb frequency
-> calculation function based on SCU200 register description and note in ast2600v11.pdf.
+> AST2600 clkin is always 25MHz, introduce clkin_25Mhz attribute
+> for aspeed_scu_get_clkin() to return the correct clkin for ast2600.
 > 
-> Changes since v1:
-> - introduce ast2400 and ast2600 get_apb_freq class handlers.
-> - introduce clkin_25Mhz attribute.
-> 
+> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 
-Looks good. They are queued for QEMU 7.1.
 
-Something I never had time to look at is the clock hierarchy in QEMU
-Aspeed machines :
-
-   https://qemu.readthedocs.io/en/latest/devel/clocks.html
-
-It would be very useful to start the tree with clkin and the obvious
-derived clocks.
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
 Thanks,
 
 C.
 
-# cat  /sys/kernel/debug/clk/clk_summary
-                                  enable  prepare  protect                                duty  hardware
-    clock                          count    count    count        rate   accuracy phase  cycle    enable
--------------------------------------------------------------------------------------------------------
-  fsiclk-gate                          1        1        0           0          0     0  50000         Y
-  i3cclk-gate                          0        0        0           0          0     0  50000         N
-  emmcclk-gate                         1        1        0           0          0     0  50000         Y
-  sdclk-gate                           1        1        0           0          0     0  50000         Y
-  rvasclk-gate                         0        0        0           0          0     0  50000         N
-  rsaclk-gate                          0        0        0           0          0     0  50000         N
-  usb-port2-gate                       1        1        0           0          0     0  50000         Y
-  usb-port1-gate                       1        1        0           0          0     0  50000         Y
-  usb-uhci-gate                        1        1        0           0          0     0  50000         Y
-  espiclk-gate                         0        0        0           0          0     0  50000         N
-  yclk-gate                            0        0        0           0          0     0  50000         N
-  lclk-gate                            0        0        0           0          0     0  50000         N
-  dclk-gate                            1        1        0           0          0     0  50000         Y
-  vclk-gate                            0        0        0           0          0     0  50000         N
-  gclk-gate                            0        0        0           0          0     0  50000         N
-  eclk                                 0        0        0           0          0     0  50000         Y
-     eclk-gate                         0        0        0           0          0     0  50000         N
-  uartx                                0        0        0     1846153          0     0  50000         Y
-     uart13clk-gate                    0        0        0     1846153          0     0  50000         N
-     uart12clk-gate                    0        0        0     1846153          0     0  50000         N
-     uart11clk-gate                    0        0        0     1846153          0     0  50000         N
-     uart10clk-gate                    0        0        0     1846153          0     0  50000         N
-     uart9clk-gate                     0        0        0     1846153          0     0  50000         N
-     uart8clk-gate                     0        0        0     1846153          0     0  50000         N
-     uart7clk-gate                     0        0        0     1846153          0     0  50000         N
-     uart6clk-gate                     0        0        0     1846153          0     0  50000         N
-  uart                                 1        1        0    24000000          0     0  50000         Y
-     uart5clk-gate                     1        1        0    24000000          0     0  50000         Y
-     uart4clk-gate                     0        0        0    24000000          0     0  50000         N
-     uart3clk-gate                     0        0        0    24000000          0     0  50000         N
-     uart2clk-gate                     0        0        0    24000000          0     0  50000         N
-     uart1clk-gate                     0        0        0    24000000          0     0  50000         N
-  usb-phy-40m                          0        0        0    40000000          0     0  50000         Y
-  clkin                                4        4        0    25000000          0     0  50000         Y
-     ref1clk-gate                      1        1        0    25000000          0     0  50000         Y
-     ref0clk-gate                      1        1        0    25000000          0     0  50000         Y
-     apll                              0        0        0   800000000          0     0  50000         Y
-     epll                              0        0        0  1000000000          0     0  50000         Y
-     dpll                              0        0        0    50000000          0     0  50000         Y
-        vclk                           0        0        0    50000000          0     0  50000         Y
-     mpll                              2        2        0   400000000          0     0  50000         Y
-        mclk-gate                      1        1        0   400000000          0     0  50000         Y
-        emmc_extclk_mux                1        1        0   400000000          0     0  50000         Y
-           emmc_extclk_gate            1        1        0   400000000          0     0  50000         Y
-              emmc_extclk              1        1        0   200000000          0     0  50000         Y
-     hpll                              4        4        0  1200000000          0     0  50000         Y
-        bclk                           1        1        0   150000000          0     0  50000         Y
-           bclk-gate                   1        1        0   150000000          0     0  50000         Y
-        lhclk                          0        0        0   150000000          0     0  50000         Y
-           lhclk-gate                  0        0        0   150000000          0     0  50000         N
-        mac34                          2        2        0   300000000          0     0  50000         Y
-           mac4clk-gate                1        1        0   300000000          0     0  50000         Y
-           mac3clk-gate                1        1        0   300000000          0     0  50000         Y
-        mac12                          2        2        0   200000000          0     0  50000         Y
-           mac2clk-gate                1        1        0   200000000          0     0  50000         Y
-           mac1clk-gate                1        1        0   200000000          0     0  50000         Y
-        mac12rclk                      0        0        0    50000000          0     0  50000         Y
-           mac2rclk                    0        0        0    50000000          0     0  50000         N
-           mac1rclk                    0        0        0    50000000          0     0  50000         N
-        sd_extclk_gate                 0        0        0  1200000000          0     0  50000         N
-           sd_extclk                   0        0        0   150000000          0     0  50000         Y
-        emmc_extclk_hpll_in            0        0        0   600000000          0     0  50000         Y
-        apb1                           0        0        0    37500000          0     0  50000         Y
-        ahb                            3        3        0   200000000          0     0  50000         Y
-           i3cclk                      0        0        0   200000000          0     0  50000         Y
-              i3c6clk-gate             0        0        0   200000000          0     0  50000         N
-              i3c5clk-gate             0        0        0   200000000          0     0  50000         N
-              i3c4clk-gate             0        0        0   200000000          0     0  50000         N
-              i3c3clk-gate             0        0        0   200000000          0     0  50000         N
-              i3c2clk-gate             0        0        0   200000000          0     0  50000         N
-              i3c1clk-gate             0        0        0   200000000          0     0  50000         N
-              i3c0clk-gate             0        0        0   200000000          0     0  50000         N
-           apb2                        0        0        0   100000000          0     0  50000         Y
-  d1clk                                0        0        0           0          0     0  50000         Y
-     d1clk-gate                        0        0        0           0          0     0  50000         N
-  mac34rclk                            0        0        0           0          0     0  50000         Y
-     mac4rclk                          0        0        0    50000000          0     0  50000         N
-     mac3rclk                          0        0        0    50000000          0     0  50000         N
+
+
+> ---
+>   hw/misc/aspeed_scu.c         | 6 +++++-
+>   include/hw/misc/aspeed_scu.h | 1 +
+>   2 files changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index d65f86df3d..150567f98a 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -371,7 +371,8 @@ static const MemoryRegionOps aspeed_ast2500_scu_ops = {
+>   
+>   static uint32_t aspeed_scu_get_clkin(AspeedSCUState *s)
+>   {
+> -    if (s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN) {
+> +    if (s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN ||
+> +        ASPEED_SCU_GET_CLASS(s)->clkin_25Mhz) {
+>           return 25000000;
+>       } else if (s->hw_strap1 & SCU_HW_STRAP_CLK_48M_IN) {
+>           return 48000000;
+> @@ -562,6 +563,7 @@ static void aspeed_2400_scu_class_init(ObjectClass *klass, void *data)
+>       asc->get_apb = aspeed_2400_scu_get_apb_freq;
+>       asc->apb_divider = 2;
+>       asc->nr_regs = ASPEED_SCU_NR_REGS;
+> +    asc->clkin_25Mhz = false;
+>       asc->ops = &aspeed_ast2400_scu_ops;
+>   }
+>   
+> @@ -583,6 +585,7 @@ static void aspeed_2500_scu_class_init(ObjectClass *klass, void *data)
+>       asc->get_apb = aspeed_2400_scu_get_apb_freq;
+>       asc->apb_divider = 4;
+>       asc->nr_regs = ASPEED_SCU_NR_REGS;
+> +    asc->clkin_25Mhz = false;
+>       asc->ops = &aspeed_ast2500_scu_ops;
+>   }
+>   
+> @@ -756,6 +759,7 @@ static void aspeed_2600_scu_class_init(ObjectClass *klass, void *data)
+>       asc->get_apb = aspeed_2600_scu_get_apb_freq;
+>       asc->apb_divider = 4;
+>       asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
+> +    asc->clkin_25Mhz = true;
+>       asc->ops = &aspeed_ast2600_scu_ops;
+>   }
+>   
+> diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+> index 6bf67589e8..fdc721846c 100644
+> --- a/include/hw/misc/aspeed_scu.h
+> +++ b/include/hw/misc/aspeed_scu.h
+> @@ -59,6 +59,7 @@ struct AspeedSCUClass {
+>       uint32_t (*get_apb)(AspeedSCUState *s);
+>       uint32_t apb_divider;
+>       uint32_t nr_regs;
+> +    bool clkin_25Mhz;
+>       const MemoryRegionOps *ops;
+>   };
+>   
 

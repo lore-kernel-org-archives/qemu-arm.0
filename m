@@ -1,66 +1,66 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2886470lfo;
-        Tue, 15 Mar 2022 06:49:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzwbBJGGN6suMRSKuay+og88lZMX6CTBot2iGsee8fL7n4Gq2fCBfq4TNP0OxmrtATux4c1
-X-Received: by 2002:a17:907:94c6:b0:6da:9561:ce0 with SMTP id dn6-20020a17090794c600b006da95610ce0mr21912675ejc.342.1647352182327;
-        Tue, 15 Mar 2022 06:49:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647352182; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp2891871lfo;
+        Tue, 15 Mar 2022 06:59:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxiVw4IMHA1jVo0DCZGKuuX1M3BGTdOG21wsghaTM22PNBYb67Vs4He7/isF1z1B55C2bVD
+X-Received: by 2002:a05:622a:1a24:b0:2e0:722c:b13a with SMTP id f36-20020a05622a1a2400b002e0722cb13amr22369708qtb.519.1647352771987;
+        Tue, 15 Mar 2022 06:59:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647352771; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vf4s9PP1qKlieSA9fbf/QpYOy22y2j7yUz5m/znko1yj5N9zZCpjL3QCwSEanUVuq9
-         Cyv0R3Y4MBmvovCG+3WHDsZGyHTXIsvHQNvQixyI4t/FFFbpshx3Ye7sQPnnErsD+rw3
-         2yIOHWahtCtyIn/wJgux6TbL8ooNzqy+Sp33zlj5/FUEp9LkbnIGil82/BkG9yX8KyXF
-         pkcwq5EBv1nZANl+9KUBGruYJFwPtsagiyZW0UZe+RdeVy0Fo7sxNMvVMZeufYbbRX7N
-         bWnzQWIGc0dlvpQ/RtcROS+DlvfFW+JbyJ/YjWoOCr1WMQyrgz/BgS3iYanswacudIHR
-         Ss2w==
+        b=SONdGHW5jdvB99egaZjzuboW6IJ+IOH8YOStkdANippijiJ8n0yHlF13egv+52w+vq
+         yqldTyGyEF7Wo2SPATtxkARsRfecX/Zmj75Pe0iTea9VEDoO/6BzUccALfU2wMiWeBh4
+         KGI7MFCJtqfIUVH8OxtD44v1Px5FawyB20f9YTTv5a5YZxjp9ua1vbxhG/ci8+G2Yqjd
+         wbYbbIlHYGVCYUUSdddHkbWdBcZEN2UQhcvWxgwkeqqqudRr92vIBqFLMYaww9hjqI0C
+         3oqv/BRRNv5M5sfddNznbmpCU16Znd27RgzwAqBjcQxUvy/LlTwU8UoIvo7KVYMJWTX+
+         msrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:user-agent:message-id
          :in-reply-to:date:references:subject:cc:to:from:dkim-signature;
-        bh=5HlQ4H+cbLWxhYmsVyucCORxv3SL1m40NFO11ExzIrY=;
-        b=Qu19dFp2OTu+DqHk+wpAso7rn/Y2hUbE9U3O3xfPJ7PesD8tfaZxee+nFOutYmizeV
-         ENXmMhpOvxP1+hRwp3AXW+y+gll9z1g0G8jML+Yey2lduoqGkfOHtmFOOi2O+weanl9H
-         n0YUEMnoKjEY1XpHhbl5AnXsSnHrTGt/j1DNFVET6ld/wpldsTHHTbkrEER2UmFqK0x8
-         /nj5J6md8lB9xS6CbLTah75g2jjb50ElEpA+d3ZBmZxE7osRsML40pT+wWaiffJk6RPU
-         CcWvLVMGDXkrg6PYbXNgqgQgLEkD0fepkOBMHohyUrLQIdTFas64ny2KjBNZ258NOqFU
-         grpQ==
+        bh=10cE4rX5AbTqcs0aOxAVWmDdYLmGBY4pMBpqNlvJA4U=;
+        b=l7kIWEvBFGn2zoVz+li6A0ED4RHP8d+g4brA5Mr6o123M93itww1LbNpROa8jrConH
+         FHave05Ccj7dTogAyeBFAKpeZzWwNJ/C9fk2ngNumO8plAObwrSEhW/PnqePAnahiSW6
+         Kq1Z4Hc+1RGKhL1E3dDQrrVQw5Vj1yDMT1XwL5fh7DZU+qG1rSk1P7L0LCtKu7+9/XlI
+         lFf4nCfYVywlyZT5lPtIt0oCnGug1Kyvbjhi/jowd/vbAXw8a1d1285CaXTOCQIvAKov
+         gCGM8qwuZjOJnrYZ/4eqsCm2gTCx1nuFel381NUYOWKkOK+Fu89l/YT4UFMlKSP+6+N6
+         m76A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GVufNkua;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WYCmK2Ic;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <armbru@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id q7-20020a17090676c700b006adefdfba73si11102575ejn.729.2022.03.15.06.49.42
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id gi15-20020a056214248f00b00440abc3b9a6si2871727qvb.231.2022.03.15.06.59.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 15 Mar 2022 06:49:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Tue, 15 Mar 2022 06:59:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GVufNkua;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WYCmK2Ic;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1647352181;
+	s=mimecast20190719; t=1647352771;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=5HlQ4H+cbLWxhYmsVyucCORxv3SL1m40NFO11ExzIrY=;
-	b=GVufNkuacXagA8pTrioB7mXvyo1bkE8zJShX2HqpG9YrvxaXSibhwqBTizjTQbrreectpL
-	PcHp1DEVrSKs2hopZC8JwujY8Qi2Y0WfSydcdn/7UAwx5En1UK1jsPr0Zvvvqvm2OKGXMm
-	jwWrzQxcE6fMwQy+GfwntEsO+qiC4aY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=10cE4rX5AbTqcs0aOxAVWmDdYLmGBY4pMBpqNlvJA4U=;
+	b=WYCmK2IcLNHwAKFunA/FTv3SAsln3J9aZDgV1sewl6qRTnsW12ZIHChi+YbUwtGIRci7AU
+	uGTqRwhG/ydrVMuBKKLcqkNzkFd3F7yDNN4ZcMbHcTah4xT+NZeFdMmldjFoTGVIHGg/6w
+	HnvwJ0PnC6QiKOKyvM6x6BmpnwY2g7I=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-562-LiPRJB8QPOiCtDGK4ztl3A-1; Tue, 15 Mar 2022 09:49:38 -0400
-X-MC-Unique: LiPRJB8QPOiCtDGK4ztl3A-1
+ us-mta-297-Upv_Mb-OOSWIHvms5WArsw-1; Tue, 15 Mar 2022 09:59:27 -0400
+X-MC-Unique: Upv_Mb-OOSWIHvms5WArsw-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3195780281B;
-	Tue, 15 Mar 2022 13:49:36 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E16CB3C18527;
+	Tue, 15 Mar 2022 13:59:25 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.36.112.3])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 56CE3C44AE5;
-	Tue, 15 Mar 2022 13:49:35 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6292CC50943;
+	Tue, 15 Mar 2022 13:59:25 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 2DEBE21E66CE; Tue, 15 Mar 2022 14:49:34 +0100 (CET)
+	id 1623721E6821; Tue, 15 Mar 2022 14:59:24 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Richard
@@ -97,11 +97,11 @@ Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Richard
  Roth <michael.roth@amd.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
  <berrange@redhat.com>,
   Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,  David Hildenbrand
- <david@redhat.com>,  Wenchao Wang <wenchao.wang@intel.com>,  Kamil
- Rytarowski <kamil@netbsd.org>,  Reinoud Zandijk <reinoud@netbsd.org>,
-  Sunil Muthuswamy <sunilmut@microsoft.com>,  Cornelia Huck
- <cohuck@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Eric Blake
- <eblake@redhat.com>,  Vladimir Sementsov-Ogievskiy
+ <david@redhat.com>,  Wenchao Wang <wenchao.wang@intel.com>,  Colin Xu
+ <colin.xu@intel.com>,  Kamil Rytarowski <kamil@netbsd.org>,  Reinoud
+ Zandijk <reinoud@netbsd.org>,  Sunil Muthuswamy <sunilmut@microsoft.com>,
+  Cornelia Huck <cohuck@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Eric
+ Blake <eblake@redhat.com>,  Vladimir Sementsov-Ogievskiy
  <vsementsov@virtuozzo.com>,  John Snow <jsnow@redhat.com>,
   kvm@vger.kernel.org,  qemu-arm@nongnu.org,
   xen-devel@lists.xenproject.org,  qemu-ppc@nongnu.org,
@@ -109,12 +109,12 @@ Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Richard
 Subject: Re: [PATCH 3/3] Use g_new() & friends where that makes obvious sense
 References: <20220314160108.1440470-1-armbru@redhat.com>
 	<20220314160108.1440470-4-armbru@redhat.com>
-	<877d8w5m9e.fsf@linaro.org>
-Date: Tue, 15 Mar 2022 14:49:34 +0100
-In-Reply-To: <877d8w5m9e.fsf@linaro.org> ("Alex =?utf-8?Q?Benn=C3=A9e=22's?=
+	<87y21c401e.fsf@linaro.org>
+Date: Tue, 15 Mar 2022 14:59:24 +0100
+In-Reply-To: <87y21c401e.fsf@linaro.org> ("Alex =?utf-8?Q?Benn=C3=A9e=22's?=
  message of "Mon, 14
-	Mar 2022 19:48:47 +0000")
-Message-ID: <87ilsfl40h.fsf@pond.sub.org>
+	Mar 2022 22:52:52 +0000")
+Message-ID: <875yofl3k3.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
@@ -124,7 +124,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: knmbs70rslR8
+X-TUID: jCDqUuHtO89e
 
 Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
@@ -135,75 +135,31 @@ Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 >> Two, it returns T * rather than void *, which lets the compiler catch
 >> more type errors.
 >>
->> This commit only touches allocations with size arguments of the form
->> sizeof(T).
->>
->> Patch created mechanically with:
->>
->>     $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci=
- \
->> =09     --macro-file scripts/cocci-macro-file.h FILES...
->>
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-
-[...]
-
->> --- a/hw/pci/pcie_sriov.c
->> +++ b/hw/pci/pcie_sriov.c
->> @@ -177,7 +177,7 @@ static void register_vfs(PCIDevice *dev)
->>      assert(sriov_cap > 0);
->>      num_vfs =3D pci_get_word(dev->config + sriov_cap + PCI_SRIOV_NUM_VF=
-);
->> =20
->> -    dev->exp.sriov_pf.vf =3D g_malloc(sizeof(PCIDevice *) * num_vfs);
->> +    dev->exp.sriov_pf.vf =3D g_new(PCIDevice *, num_vfs);
->>      assert(dev->exp.sriov_pf.vf);
->
-> So what I find confusing about the conversion of sizeof(foo *) is that
-> while the internal sizeof in g_new is unaffected I think the casting
-> ends up as
->
->  foo **
-
-Yes.  g_malloc(...) returns void *.  g_new(T, ...) returns T *.
-
-> but I guess the compiler would have complained so maybe I don't
-> understand the magic enough.
-
-It doesn't complain here because dev->exp.sriov_pf.vf is of type
-PCIDevice **:
-
-    struct PCIESriovPF {
-        uint16_t num_vfs;   /* Number of virtual functions created */
-        uint8_t vf_bar_type[PCI_NUM_REGIONS];   /* Store type for each VF b=
-ar */
-        const char *vfname; /* Reference to the device type used for the VF=
-s */
-        PCIDevice **vf;     /* Pointer to an array of num_vfs VF devices */
-    };
-
-It does complain when the types don't match, as shown in PATCH 2.
-
 > <snip>
->> index 42130667a7..598e6adc5e 100644
->> --- a/hw/rdma/vmw/pvrdma_dev_ring.c
->> +++ b/hw/rdma/vmw/pvrdma_dev_ring.c
->> @@ -41,7 +41,7 @@ int pvrdma_ring_init(PvrdmaRing *ring, const char *nam=
-e, PCIDevice *dev,
->>      qatomic_set(&ring->ring_state->cons_head, 0);
->>      */
->>      ring->npages =3D npages;
->> -    ring->pages =3D g_malloc0(npages * sizeof(void *));
->> +    ring->pages =3D g_new0(void *, npages);
+>> diff --git a/semihosting/config.c b/semihosting/config.c
+>> index 137171b717..6d48ec9566 100644
+>> --- a/semihosting/config.c
+>> +++ b/semihosting/config.c
+>> @@ -98,7 +98,7 @@ static int add_semihosting_arg(void *opaque,
+>>      if (strcmp(name, "arg") =3D=3D 0) {
+>>          s->argc++;
+>>          /* one extra element as g_strjoinv() expects NULL-terminated ar=
+ray */
+>> -        s->argv =3D g_realloc(s->argv, (s->argc + 1) * sizeof(void *));
+>> +        s->argv =3D g_renew(void *, s->argv, s->argc + 1);
 >
-> At least here ring->pages agrees about void ** being the result.
+> This did indeed break CI because s->argv is an array of *char:
 >
-> <snip>
+> ../semihosting/config.c:101:17: error: assignment to =E2=80=98const char =
+**=E2=80=99 from incompatible pointer type =E2=80=98void **=E2=80=99 [-Werr=
+or=3Dincompatible-pointer-types]
+>   101 |         s->argv =3D g_renew(void *, s->argv, s->argc + 1);
+>       |                 ^
+> cc1: all warnings being treated as errors
 >
-> So other than my queries about the sizeof(foo *) which I'd like someone
-> to assuage me of my concerns it looks like the script has done a
-> thorough mechanical job as all good scripts should ;-)
->
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> So it did the job of type checking but failed to build ;-)
 
-Thanks!
+You found a hole in my compile testing, thanks!
+
+I got confused about the configuration of my build trees.  Catching such
+mistakes is what CI is for :)

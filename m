@@ -1,241 +1,191 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp3614517lfo;
-        Wed, 16 Mar 2022 06:11:51 -0700 (PDT)
-X-Received: by 2002:a05:600c:4295:b0:38c:7165:89f0 with SMTP id v21-20020a05600c429500b0038c716589f0mr1557579wmc.170.1647436311599;
-        Wed, 16 Mar 2022 06:11:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647436311; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp468590lfo;
+        Wed, 16 Mar 2022 22:01:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyoz3YaqSCTNvWyf1LOjet71fvOSmsr6Vt+OKQGFyPE5f8Sh6P7fqrvmVkbt/0VayeNHZmf
+X-Received: by 2002:ac2:4e0d:0:b0:449:602b:c5c3 with SMTP id e13-20020ac24e0d000000b00449602bc5c3mr1672093lfr.585.1647493271617;
+        Wed, 16 Mar 2022 22:01:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647493271; cv=none;
         d=google.com; s=arc-20160816;
-        b=oAJ8ujm889whR9mNvC3gbUZNPDiNgmiIFOvYI90NgkFIqYVKqEn6QRxZj/l61yTqnB
-         CbO2hEjjIbO9AjwgWMk6Z6WQPeAzYZQSfyUd/Mkxvln+qEZs5RZ1E12Oc2movgOmy6wH
-         C0VXePY88c85LTM/qExY5X6kD0gonQacDtAQQg8na+5PC8t4tGyC2CpilPxv4C4EFbTf
-         VjAevYSwqML8lVUrnXSafgORWjo09UHwmmHuJul+0kByjVSVAjEbyhKtzfZLj/TDM4eo
-         3m1l8PdHqOLgI1Utd5h4qd2a46koYEoxnoNGxV2FnM/EJItrgklHLd812buVXkXyCtZ4
-         +jzg==
+        b=OeWVlcn51dVPGgQPHNJ4TaHTfnnZrPK0udf2GNbB2CEtVrR+LKOsB7r23LzeSaFB3y
+         tst5UZ3pz+C0Ct+1wxEL1jmaR1wK5wkpqT5gyUkLGC1At2JYs9qVrHL5rhT4fSsCR5VZ
+         r/RxZxXOGmwx5NGz5/J4I3G1wSVismnUCjvmbRlfMZ/yNCeZeFFCswyNfkbc5u9aFHhN
+         /eDhqHj8Q6S2yRVEVdeev+DNx+gYpgmFVDqfVP4qCSACmQwTSl7dxosGuCjEhO2h6izW
+         QHKmcu+9o9yiCfe5UpBw5vzQxFl1QAK6fGVFmZblGEqFmZU+AvjBU7F+FySTCYgMUNUs
+         HBLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=2i83XDmm2Ev/BgrOHivtFmnY20KZApSWVPqEjlo6vMc=;
-        b=dZRgm99icamv3zZolLNG/iKcru1r1PG0Qbm+SwEJntJP/TAAER4DPaSE1KMZEa4quZ
-         Q7AqQhi3qCh5U8o5b0Kkq1S6ipmNiPCh9Y8FqN5jhoULiF8S9xeqL4yu3XNW4xey0cJu
-         hifCEMcUKLpxFXCU0wOY8K5WrzZz4vj/SL2IuBavhAQNNMDhMgL0mSluW0cFbTd1gc3u
-         RhUXH4skJ7NDCXw57c6UfZcZ4imjHggC/fFGu7+VlxOqgpTA2qWbjwgFSleLEgMI4hBJ
-         1XEcpfa9pLqomFm2Tmlinf9q9Lqjb+BpYEbS+pCQul7y7NXgJq4AHiRySjBVowk2lL25
-         uj4Q==
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=Y1LHWw1Cf6QRftWzJwqMxgG2s//v7WPB1DNwZtJNEj4=;
+        b=kZeCV+FgkdX3M/c40yIJj1KLwNnbUWh4SVY4/CapQRwaGzmi6ufRNS8IqGlk0Ixazl
+         NK/8d3H7lYkj6Z6p8HjL9PU1zm0c2ImfNpFfV4rFxUE+iK04HQWp3sWILajeRzKv1dvR
+         DrQbSLRzdnSHmdkAOuj+HBFCyRdas6zEYKBUOc2gP3h4wEROTVazJlecSVofPDymFL2t
+         5cSYVw1K88k52uzoUX3Yz+JppQyNrvZYDG4XHXKyR1gfMfEGch+wS7ddclxVS8IOK0Mr
+         o77pffW/0/aPJ5C8Uz0EvifuTPxt9u/KAznihjwXczUollp0XSoM4K8+pccGCcJCLeHT
+         2+SQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=I0LoEtV7;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l25-20020a05600c1d1900b00389e840cb33sor1704858wms.31.2022.03.16.06.11.51
-        (Google Transport Security);
-        Wed, 16 Mar 2022 06:11:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of pavel.dovgalyuk@ispras.ru designates 83.149.199.84 as permitted sender) smtp.mailfrom=pavel.dovgalyuk@ispras.ru;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ispras.ru
+Return-Path: <pavel.dovgalyuk@ispras.ru>
+Received: from mail.ispras.ru (mail.ispras.ru. [83.149.199.84])
+        by mx.google.com with ESMTPS id k7-20020a05651c10a700b002492216fc1fsi3357914ljn.56.2022.03.16.22.01.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 16 Mar 2022 22:01:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pavel.dovgalyuk@ispras.ru designates 83.149.199.84 as permitted sender) client-ip=83.149.199.84;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=I0LoEtV7;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=2i83XDmm2Ev/BgrOHivtFmnY20KZApSWVPqEjlo6vMc=;
-        b=I0LoEtV7ZSyQLZGg+c/ATH4O2ixcWNJOqGH0TXOK79vAFZNjBonSFVp592r0T/7Stp
-         V+v8h5sbrekisgQegIG1FCeFUr22cuWgwFhHMikTRbJ45KfuWPiKQEZUaecWbjihlhrx
-         MENjFnu75doFLFEX9a55JgbJOnVSV6OtSabROElRY3xK6lLAJ0aw2ZocBBCx1KmRY1VD
-         648ynNf+mKMPV5CTv2HEH+9v293oTdsnnSTnEk0PsarBG61B1m+EG2Rv5QMxNLE7csxd
-         stJ/6g1t4tZgZJ4JBasNOBwNeLtT4Uo9ttgG0df9r/Eq5ADZA5ynkNXA22esMLxs2Ako
-         mZlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=2i83XDmm2Ev/BgrOHivtFmnY20KZApSWVPqEjlo6vMc=;
-        b=pKNdkEBQO+4m/V0VPFBYmJRoODlOC21KpegnaAFPwqOvb0QXZUpnxgaBKdJmEVAGEt
-         tFZJbRVupNrgSR+GUHD8ESw9w39x39sBdGPodC2ZkW163YPl7pkxER7vdJxzcrCGSIHs
-         aqOQi1BjthEzlJ3tbIkygVEVnugioEe/JIey96aHj8HpG26naDqup60/S4975/mjplPM
-         cO7FWciwSusx0q8yarv5yLsgUBpe3SnCA6KEj6xp4iPFG6gXXczEc662+tHAPdhqhNFo
-         4A8JVSwFHDA6mvVgQh9d3tfM1e23hUD5FyigEauAhzRG1T4+iaabMzEZwl4IHtuVyF+D
-         SvRQ==
-X-Gm-Message-State: AOAM533AByVfe7LegPHaPJP+sR7qy3e7BGqPr+8S1hg62WB8wEU7tDZz
-	YCP6FcXMcXnqzDLadkF4T7o=
-X-Google-Smtp-Source: ABdhPJysxaC/TdNQa5HjTO1GOAcmUA/36gHHMfIT3uAptuoqQ0hHz0TwXQvnu9ctJ9Q0e5U7gtlggA==
-X-Received: by 2002:a05:600c:1994:b0:38c:48dd:23ba with SMTP id t20-20020a05600c199400b0038c48dd23bamr4557931wmq.206.1647436311078;
-        Wed, 16 Mar 2022 06:11:51 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.115] ([185.126.107.38])
-        by smtp.gmail.com with ESMTPSA id t14-20020a05600c198e00b0038bb71518c1sm1689996wmq.42.2022.03.16.06.11.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Mar 2022 06:11:50 -0700 (PDT)
-Message-ID: <e1f049be-8f98-04a3-6532-995e55fe7471@gmail.com>
-Date: Wed, 16 Mar 2022 14:11:47 +0100
+       spf=pass (google.com: domain of pavel.dovgalyuk@ispras.ru designates 83.149.199.84 as permitted sender) smtp.mailfrom=pavel.dovgalyuk@ispras.ru;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ispras.ru
+Received: from [10.12.102.111] (unknown [85.142.117.226])
+	by mail.ispras.ru (Postfix) with ESMTPSA id 5A3F1405A19B;
+	Thu, 17 Mar 2022 05:01:08 +0000 (UTC)
+Message-ID: <0a1fbad0-0e4d-661d-c25a-7a7d70896eb2@ispras.ru>
+Date: Thu, 17 Mar 2022 08:01:08 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.7.0
-Subject: Re: [PATCH 10/27] Replace config-time define HOST_WORDS_BIGENDIAN
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v2 3/3] Use g_new() & friends where that makes obvious
+ sense
 Content-Language: en-US
-To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Vikram Garhwal <fnu.vikram@xilinx.com>, Jason Wang <jasowang@redhat.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eric Farman <farman@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
- Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Laurent Vivier <laurent@vivier.eu>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <ani@anisinha.ca>, Laurent Vivier <lvivier@redhat.com>,
+ Amit Shah <amit@kernel.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Corey Minyard <cminyard@mvista.com>, Patrick Venture <venture@google.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Peter Xu <peterx@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, Daniel Henrique Barboza <danielhb413@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Keith Busch
+ <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>, Fabien Chouteau <chouteau@adacore.com>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Huacai Chen <chenhuacai@kernel.org>, Coiby Xu <Coiby.Xu@gmail.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- "open list:Overall KVM CPUs" <kvm@vger.kernel.org>,
- "open list:ARM PrimeCell and..." <qemu-arm@nongnu.org>,
- "open list:S390 SCLP-backed..." <qemu-s390x@nongnu.org>,
- "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
- "open list:virtio-blk" <qemu-block@nongnu.org>
-References: <20220316095308.2613651-1-marcandre.lureau@redhat.com>
- <e709547a-a0c2-d1bd-7145-d03e9fd1776a@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <e709547a-a0c2-d1bd-7145-d03e9fd1776a@gmail.com>
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Konstantin Kostiuk <kkostiuk@redhat.com>, Michael Roth
+ <michael.roth@amd.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Wenchao Wang <wenchao.wang@intel.com>,
+ Kamil Rytarowski <kamil@netbsd.org>, Reinoud Zandijk <reinoud@netbsd.org>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>, Cornelia Huck
+ <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Eric Blake <eblake@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ John Snow <jsnow@redhat.com>, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
+ haxm-team@intel.com, qemu-s390x@nongnu.org
+References: <20220315144156.1595462-1-armbru@redhat.com>
+ <20220315144156.1595462-4-armbru@redhat.com>
+From: Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>
+In-Reply-To: <20220315144156.1595462-4-armbru@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: +4uqjqiHhVK7
+X-TUID: rISJ6jPWcyt+
 
-On 16/3/22 14:04, Philippe Mathieu-Daudé wrote:
-> On 16/3/22 10:53, marcandre.lureau@redhat.com wrote:
->> From: Marc-André Lureau <marcandre.lureau@redhat.com>
->>
->> Replace a config-time define with a compile time condition
->> define (compatible with clang and gcc) that must be declared prior to
->> its usage. This avoids having a global configure time define, but also
->> prevents from bad usage, if the config header wasn't included before.
->>
->> This can help to make some code independent from qemu too.
->>
->> gcc supports __BYTE_ORDER__ from about 4.6 and clang from 3.2.
->>
->> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
->> ---
->>   meson.build                             |  1 -
->>   accel/tcg/atomic_template.h             |  4 +-
->>   audio/audio.h                           |  2 +-
->>   hw/display/pl110_template.h             |  6 +--
->>   hw/net/can/ctucan_core.h                |  2 +-
->>   hw/net/vmxnet3.h                        |  4 +-
->>   include/exec/cpu-all.h                  |  4 +-
->>   include/exec/cpu-common.h               |  2 +-
->>   include/exec/memop.h                    |  2 +-
->>   include/exec/memory.h                   |  2 +-
->>   include/fpu/softfloat-types.h           |  2 +-
->>   include/hw/core/cpu.h                   |  2 +-
->>   include/hw/i386/intel_iommu.h           |  6 +--
->>   include/hw/i386/x86-iommu.h             |  4 +-
->>   include/hw/virtio/virtio-access.h       |  6 +--
->>   include/hw/virtio/virtio-gpu-bswap.h    |  2 +-
->>   include/libdecnumber/dconfig.h          |  2 +-
->>   include/net/eth.h                       |  2 +-
->>   include/qemu/bswap.h                    |  8 ++--
->>   include/qemu/compiler.h                 |  2 +
->>   include/qemu/host-utils.h               |  2 +-
->>   include/qemu/int128.h                   |  2 +-
->>   include/ui/qemu-pixman.h                |  2 +-
->>   net/util.h                              |  2 +-
->>   target/arm/cpu.h                        |  8 ++--
->>   target/arm/translate-a64.h              |  2 +-
->>   target/arm/vec_internal.h               |  2 +-
->>   target/i386/cpu.h                       |  2 +-
->>   target/mips/cpu.h                       |  2 +-
->>   target/ppc/cpu.h                        |  2 +-
->>   target/s390x/tcg/vec.h                  |  2 +-
->>   target/xtensa/cpu.h                     |  2 +-
->>   tests/fp/platform.h                     |  4 +-
->>   accel/kvm/kvm-all.c                     |  4 +-
->>   audio/dbusaudio.c                       |  2 +-
->>   disas.c                                 |  2 +-
->>   hw/core/loader.c                        |  4 +-
->>   hw/display/artist.c                     |  6 +--
->>   hw/display/pxa2xx_lcd.c                 |  2 +-
->>   hw/display/vga.c                        | 12 +++---
->>   hw/display/virtio-gpu-gl.c              |  2 +-
->>   hw/s390x/event-facility.c               |  2 +-
->>   hw/virtio/vhost.c                       |  2 +-
->>   linux-user/arm/nwfpe/double_cpdo.c      |  4 +-
->>   linux-user/arm/nwfpe/fpa11_cpdt.c       |  4 +-
->>   linux-user/ppc/signal.c                 |  3 +-
->>   linux-user/syscall.c                    |  6 +--
->>   net/net.c                               |  4 +-
->>   target/alpha/translate.c                |  2 +-
->>   target/arm/crypto_helper.c              |  2 +-
->>   target/arm/helper.c                     |  2 +-
->>   target/arm/kvm64.c                      |  4 +-
->>   target/arm/neon_helper.c                |  2 +-
->>   target/arm/sve_helper.c                 |  4 +-
->>   target/arm/translate-sve.c              |  6 +--
->>   target/arm/translate-vfp.c              |  2 +-
->>   target/arm/translate.c                  |  2 +-
->>   target/hppa/translate.c                 |  2 +-
->>   target/i386/tcg/translate.c             |  2 +-
->>   target/mips/tcg/lmmi_helper.c           |  2 +-
->>   target/mips/tcg/msa_helper.c            | 54 ++++++++++++-------------
->>   target/ppc/arch_dump.c                  |  2 +-
->>   target/ppc/int_helper.c                 | 22 +++++-----
->>   target/ppc/kvm.c                        |  4 +-
->>   target/ppc/mem_helper.c                 |  2 +-
->>   target/riscv/vector_helper.c            |  2 +-
->>   target/s390x/tcg/translate.c            |  2 +-
->>   target/sparc/vis_helper.c               |  4 +-
->>   tcg/tcg-op.c                            |  4 +-
->>   tcg/tcg.c                               | 12 +++---
->>   tests/qtest/vhost-user-blk-test.c       |  2 +-
->>   tests/qtest/virtio-blk-test.c           |  2 +-
->>   ui/vdagent.c                            |  2 +-
->>   ui/vnc.c                                |  2 +-
->>   util/bitmap.c                           |  2 +-
->>   util/host-utils.c                       |  2 +-
->>   target/ppc/translate/vmx-impl.c.inc     |  4 +-
->>   target/ppc/translate/vsx-impl.c.inc     |  2 +-
->>   target/riscv/insn_trans/trans_rvv.c.inc |  4 +-
->>   target/s390x/tcg/translate_vx.c.inc     |  2 +-
->>   tcg/aarch64/tcg-target.c.inc            |  4 +-
->>   tcg/arm/tcg-target.c.inc                |  4 +-
->>   tcg/mips/tcg-target.c.inc               |  2 +-
->>   tcg/ppc/tcg-target.c.inc                | 10 ++---
->>   tcg/riscv/tcg-target.c.inc              |  4 +-
->>   85 files changed, 173 insertions(+), 173 deletions(-)
->>
->> diff --git a/meson.build b/meson.build
->> index f20712cb93d7..88df1bc42973 100644
->> --- a/meson.build
->> +++ b/meson.build
->> @@ -1591,7 +1591,6 @@ config_host_data.set('QEMU_VERSION_MICRO', 
->> meson.project_version().split('.')[2]
->>   config_host_data.set_quoted('CONFIG_HOST_DSOSUF', host_dsosuf)
->>   config_host_data.set('HAVE_HOST_BLOCK_DEVICE', have_host_block_device)
->> -config_host_data.set('HOST_WORDS_BIGENDIAN', host_machine.endian() == 
->> 'big')
+On 15.03.2022 17:41, Markus Armbruster wrote:
+> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+> for two reasons.  One, it catches multiplication overflowing size_t.
+> Two, it returns T * rather than void *, which lets the compiler catch
+> more type errors.
 > 
-> Can we poison HOST_WORDS_BIGENDIAN definition to force cleaning old
-> patches before merging them?
+> This commit only touches allocations with size arguments of the form
+> sizeof(T).
+> 
+> Patch created mechanically with:
+> 
+>      $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
+> 	     --macro-file scripts/cocci-macro-file.h FILES...
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> Acked-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> ---
+>   replay/replay-char.c                     |  4 +--
+>   replay/replay-events.c                   | 10 +++---
+> 
 
-Now noticed elsewhere a patch #11 doing exactly that.
+Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
 
-Addressing Halil comment in "exec/cpu-all.h":
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> diff --git a/replay/replay-char.c b/replay/replay-char.c
+> index dc0002367e..d2025948cf 100644
+> --- a/replay/replay-char.c
+> +++ b/replay/replay-char.c
+> @@ -50,7 +50,7 @@ void replay_register_char_driver(Chardev *chr)
+>   
+>   void replay_chr_be_write(Chardev *s, uint8_t *buf, int len)
+>   {
+> -    CharEvent *event = g_malloc0(sizeof(CharEvent));
+> +    CharEvent *event = g_new0(CharEvent, 1);
+>   
+>       event->id = find_char_driver(s);
+>       if (event->id < 0) {
+> @@ -85,7 +85,7 @@ void replay_event_char_read_save(void *opaque)
+>   
+>   void *replay_event_char_read_load(void)
+>   {
+> -    CharEvent *event = g_malloc0(sizeof(CharEvent));
+> +    CharEvent *event = g_new0(CharEvent, 1);
+>   
+>       event->id = replay_get_byte();
+>       replay_get_array_alloc(&event->buf, &event->len);
+> diff --git a/replay/replay-events.c b/replay/replay-events.c
+> index 15983dd250..ac47c89834 100644
+> --- a/replay/replay-events.c
+> +++ b/replay/replay-events.c
+> @@ -119,7 +119,7 @@ void replay_add_event(ReplayAsyncEventKind event_kind,
+>           return;
+>       }
+>   
+> -    Event *event = g_malloc0(sizeof(Event));
+> +    Event *event = g_new0(Event, 1);
+>       event->event_kind = event_kind;
+>       event->opaque = opaque;
+>       event->opaque2 = opaque2;
+> @@ -243,17 +243,17 @@ static Event *replay_read_event(int checkpoint)
+>           }
+>           break;
+>       case REPLAY_ASYNC_EVENT_INPUT:
+> -        event = g_malloc0(sizeof(Event));
+> +        event = g_new0(Event, 1);
+>           event->event_kind = replay_state.read_event_kind;
+>           event->opaque = replay_read_input_event();
+>           return event;
+>       case REPLAY_ASYNC_EVENT_INPUT_SYNC:
+> -        event = g_malloc0(sizeof(Event));
+> +        event = g_new0(Event, 1);
+>           event->event_kind = replay_state.read_event_kind;
+>           event->opaque = 0;
+>           return event;
+>       case REPLAY_ASYNC_EVENT_CHAR_READ:
+> -        event = g_malloc0(sizeof(Event));
+> +        event = g_new0(Event, 1);
+>           event->event_kind = replay_state.read_event_kind;
+>           event->opaque = replay_event_char_read_load();
+>           return event;
+> @@ -263,7 +263,7 @@ static Event *replay_read_event(int checkpoint)
+>           }
+>           break;
+>       case REPLAY_ASYNC_EVENT_NET:
+> -        event = g_malloc0(sizeof(Event));
+> +        event = g_new0(Event, 1);
+>           event->event_kind = replay_state.read_event_kind;
+>           event->opaque = replay_event_net_load();
+>           return event;

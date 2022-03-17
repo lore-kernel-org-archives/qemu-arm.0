@@ -1,191 +1,200 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp468590lfo;
-        Wed, 16 Mar 2022 22:01:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyoz3YaqSCTNvWyf1LOjet71fvOSmsr6Vt+OKQGFyPE5f8Sh6P7fqrvmVkbt/0VayeNHZmf
-X-Received: by 2002:ac2:4e0d:0:b0:449:602b:c5c3 with SMTP id e13-20020ac24e0d000000b00449602bc5c3mr1672093lfr.585.1647493271617;
-        Wed, 16 Mar 2022 22:01:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647493271; cv=none;
+Received: by 2002:a05:6214:21e7:0:0:0:0 with SMTP id p7csp526489qvj;
+        Thu, 17 Mar 2022 04:31:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzvq9tVsQuFGUAhvrc9LvhBr18g0FgeJN8YLGgRuEZY5eps+RloXmWJ7bw2jTJd4T1Phq9y
+X-Received: by 2002:a5d:6d83:0:b0:203:6a0e:8854 with SMTP id l3-20020a5d6d83000000b002036a0e8854mr3549004wrs.259.1647516671916;
+        Thu, 17 Mar 2022 04:31:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647516671; cv=none;
         d=google.com; s=arc-20160816;
-        b=OeWVlcn51dVPGgQPHNJ4TaHTfnnZrPK0udf2GNbB2CEtVrR+LKOsB7r23LzeSaFB3y
-         tst5UZ3pz+C0Ct+1wxEL1jmaR1wK5wkpqT5gyUkLGC1At2JYs9qVrHL5rhT4fSsCR5VZ
-         r/RxZxXOGmwx5NGz5/J4I3G1wSVismnUCjvmbRlfMZ/yNCeZeFFCswyNfkbc5u9aFHhN
-         /eDhqHj8Q6S2yRVEVdeev+DNx+gYpgmFVDqfVP4qCSACmQwTSl7dxosGuCjEhO2h6izW
-         QHKmcu+9o9yiCfe5UpBw5vzQxFl1QAK6fGVFmZblGEqFmZU+AvjBU7F+FySTCYgMUNUs
-         HBLg==
+        b=JDZNvv/8qK3lroMitzGtN6ieAjFV6bg1HErpI2KrOZAuzBEn0Fv/8TSJ+dLuMpwGYJ
+         Dh4iRrHOYQKJNXjAsskrOSSPoy9l8+NfWs41xuRPsGZBDNl6cdxM93hh/QcuHPzXJgIi
+         VvgtsWWwNYVDes+NJNW5JjNoaEMT98rPgAW5p6Nia9GOcy8rt3Dr1zZQ9s8s14kqJDcY
+         mm2iSdABhlPhT4zl/jnjQ8mxFjPF6CV7vqa0Ou17bB184vxZrs3PHixBddvipunaDJhz
+         y4tS3vv0JTsTcJmmEsrRQN33HhnAwDPx7nCjaS8FbnOklmdzsOx6nOMHtaCQFAfU34l0
+         hI3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=Y1LHWw1Cf6QRftWzJwqMxgG2s//v7WPB1DNwZtJNEj4=;
-        b=kZeCV+FgkdX3M/c40yIJj1KLwNnbUWh4SVY4/CapQRwaGzmi6ufRNS8IqGlk0Ixazl
-         NK/8d3H7lYkj6Z6p8HjL9PU1zm0c2ImfNpFfV4rFxUE+iK04HQWp3sWILajeRzKv1dvR
-         DrQbSLRzdnSHmdkAOuj+HBFCyRdas6zEYKBUOc2gP3h4wEROTVazJlecSVofPDymFL2t
-         5cSYVw1K88k52uzoUX3Yz+JppQyNrvZYDG4XHXKyR1gfMfEGch+wS7ddclxVS8IOK0Mr
-         o77pffW/0/aPJ5C8Uz0EvifuTPxt9u/KAznihjwXczUollp0XSoM4K8+pccGCcJCLeHT
-         2+SQ==
+        bh=4y0/Oc4osxSfioQUL4XYLsmQ/2dDdYl0gEEyJ8sV3L4=;
+        b=QkxYzN4MjFCRV5jkO7wBPqf48ZsRo5lUTCCJ/UYl4z3xvZUKTP/u49uDeima8WnaRO
+         hZK1hXjG8uAvoOxhVm3ZbuRGHwQdeOCxI4zv8SNTk63b24yjLxt2/TEmEN4qZsicnUq8
+         wywpdxcLxBzewdWvl2L1qOU2QfZuor451IEGcYGIvQoM3+2RtWg6SmsAJPvIQ0X7kOpn
+         bkuNoz4TSrPnI+g7UbQUZlOHd1LoMbU5yD/JpLaalrpqq1mMv0hirjNHN+LnyXF6ohk+
+         4EKL/34KPHDLa5/Rrj7gjtWBR+Xde9TzWAscwkz1cdLdQq9f9o2DCv+/DuKRhWoC2kCL
+         xgRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of pavel.dovgalyuk@ispras.ru designates 83.149.199.84 as permitted sender) smtp.mailfrom=pavel.dovgalyuk@ispras.ru;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ispras.ru
-Return-Path: <pavel.dovgalyuk@ispras.ru>
-Received: from mail.ispras.ru (mail.ispras.ru. [83.149.199.84])
-        by mx.google.com with ESMTPS id k7-20020a05651c10a700b002492216fc1fsi3357914ljn.56.2022.03.16.22.01.11
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 16 Mar 2022 22:01:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pavel.dovgalyuk@ispras.ru designates 83.149.199.84 as permitted sender) client-ip=83.149.199.84;
+       spf=pass (google.com: domain of clg@kaod.org designates 46.105.54.81 as permitted sender) smtp.mailfrom=clg@kaod.org
+Return-Path: <clg@kaod.org>
+Received: from smtpout3.mo529.mail-out.ovh.net (smtpout3.mo529.mail-out.ovh.net. [46.105.54.81])
+        by mx.google.com with ESMTPS id 1-20020a056000154100b001fca87bd454si3167874wry.426.2022.03.17.04.31.11
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 17 Mar 2022 04:31:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of clg@kaod.org designates 46.105.54.81 as permitted sender) client-ip=46.105.54.81;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of pavel.dovgalyuk@ispras.ru designates 83.149.199.84 as permitted sender) smtp.mailfrom=pavel.dovgalyuk@ispras.ru;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ispras.ru
-Received: from [10.12.102.111] (unknown [85.142.117.226])
-	by mail.ispras.ru (Postfix) with ESMTPSA id 5A3F1405A19B;
-	Thu, 17 Mar 2022 05:01:08 +0000 (UTC)
-Message-ID: <0a1fbad0-0e4d-661d-c25a-7a7d70896eb2@ispras.ru>
-Date: Thu, 17 Mar 2022 08:01:08 +0300
+       spf=pass (google.com: domain of clg@kaod.org designates 46.105.54.81 as permitted sender) smtp.mailfrom=clg@kaod.org
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.35])
+	by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 44086EB32323;
+	Thu, 17 Mar 2022 12:31:09 +0100 (CET)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 17 Mar
+ 2022 12:31:07 +0100
+Authentication-Results: garm.ovh; auth=pass (GARM-102R0040d7befd2-d587-4337-9758-2bcf085c86e9,
+                    0530BE337510AE92842F4B01C4CA167143738EB5) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <1b0f4be3-84e3-3188-63c9-8235e4dfc5ce@kaod.org>
+Date: Thu, 17 Mar 2022 12:31:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v2 3/3] Use g_new() & friends where that makes obvious
- sense
+ Thunderbird/91.6.2
+Subject: Re: [PATCH 10/27] Replace config-time define HOST_WORDS_BIGENDIAN
 Content-Language: en-US
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <ani@anisinha.ca>, Laurent Vivier <lvivier@redhat.com>,
- Amit Shah <amit@kernel.org>, Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Corey Minyard <cminyard@mvista.com>, Patrick Venture <venture@google.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Peter Xu <peterx@redhat.com>,
- Jason Wang <jasowang@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, Keith Busch
- <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, Fabien Chouteau <chouteau@adacore.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Konstantin Kostiuk <kkostiuk@redhat.com>, Michael Roth
- <michael.roth@amd.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- David Hildenbrand <david@redhat.com>, Wenchao Wang <wenchao.wang@intel.com>,
- Kamil Rytarowski <kamil@netbsd.org>, Reinoud Zandijk <reinoud@netbsd.org>,
- Sunil Muthuswamy <sunilmut@microsoft.com>, Cornelia Huck
- <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eric Blake <eblake@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- John Snow <jsnow@redhat.com>, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- haxm-team@intel.com, qemu-s390x@nongnu.org
-References: <20220315144156.1595462-1-armbru@redhat.com>
- <20220315144156.1595462-4-armbru@redhat.com>
-From: Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>
-In-Reply-To: <20220315144156.1595462-4-armbru@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: <marcandre.lureau@redhat.com>, <qemu-devel@nongnu.org>
+CC: Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson
+	<richard.henderson@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>, Peter
+ Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Pavel Pisa <pisa@cmp.felk.cvut.cz>, Vikram Garhwal <fnu.vikram@xilinx.com>,
+	Jason Wang <jasowang@redhat.com>, Dmitry Fleytman
+	<dmitry.fleytman@gmail.com>, Halil Pasic <pasic@linux.ibm.com>, Christian
+ Borntraeger <borntraeger@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, Eric Farman <farman@linux.ibm.com>, David
+ Hildenbrand <david@redhat.com>, Peter Xu <peterx@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Aurelien Jarno
+	<aurelien@aurel32.net>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+	<alex.bennee@linaro.org>, Eduardo Habkost <eduardo@habkost.net>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Yanan Wang <wangyanan55@huawei.com>,
+	Laurent Vivier <laurent@vivier.eu>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, Daniel Henrique Barboza
+	<danielhb413@gmail.com>, David Gibson <david@gibson.dropbear.id.au>, Greg
+ Kurz <groug@kaod.org>, Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis
+	<alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>, Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko
+	<atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>, Huacai Chen
+	<chenhuacai@kernel.org>, Coiby Xu <Coiby.Xu@gmail.com>, Stefan Hajnoczi
+	<stefanha@redhat.com>, "open list:Overall KVM CPUs" <kvm@vger.kernel.org>,
+	"open list:ARM PrimeCell and..." <qemu-arm@nongnu.org>, "open list:S390
+ SCLP-backed..." <qemu-s390x@nongnu.org>, "open list:PowerPC TCG CPUs"
+	<qemu-ppc@nongnu.org>, "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
+	"open list:virtio-blk" <qemu-block@nongnu.org>
+References: <20220316095308.2613651-1-marcandre.lureau@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220316095308.2613651-1-marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: rISJ6jPWcyt+
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 66bfd7d2-5c46-48ea-8d2c-a21dc2d819c4
+X-Ovh-Tracer-Id: 2016768211438242587
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudefgedgvdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepghhrohhugheskhgrohgurdhorhhg
+X-TUID: z3Bz9TNZqGQu
 
-On 15.03.2022 17:41, Markus Armbruster wrote:
-> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
-> for two reasons.  One, it catches multiplication overflowing size_t.
-> Two, it returns T * rather than void *, which lets the compiler catch
-> more type errors.
+On 3/16/22 10:53, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
-> This commit only touches allocations with size arguments of the form
-> sizeof(T).
+> Replace a config-time define with a compile time condition
+> define (compatible with clang and gcc) that must be declared prior to
+> its usage. This avoids having a global configure time define, but also
+> prevents from bad usage, if the config header wasn't included before.
 > 
-> Patch created mechanically with:
+> This can help to make some code independent from qemu too.
 > 
->      $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
-> 	     --macro-file scripts/cocci-macro-file.h FILES...
+> gcc supports __BYTE_ORDER__ from about 4.6 and clang from 3.2.
 > 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Reviewed-by: Cédric Le Goater <clg@kaod.org>
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-> Acked-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > ---
->   replay/replay-char.c                     |  4 +--
->   replay/replay-events.c                   | 10 +++---
-> 
+>   meson.build                             |  1 -
+>   accel/tcg/atomic_template.h             |  4 +-
+>   audio/audio.h                           |  2 +-
+>   hw/display/pl110_template.h             |  6 +--
+>   hw/net/can/ctucan_core.h                |  2 +-
+>   hw/net/vmxnet3.h                        |  4 +-
+>   include/exec/cpu-all.h                  |  4 +-
+>   include/exec/cpu-common.h               |  2 +-
+>   include/exec/memop.h                    |  2 +-
+>   include/exec/memory.h                   |  2 +-
+>   include/fpu/softfloat-types.h           |  2 +-
+>   include/hw/core/cpu.h                   |  2 +-
+>   include/hw/i386/intel_iommu.h           |  6 +--
+>   include/hw/i386/x86-iommu.h             |  4 +-
+>   include/hw/virtio/virtio-access.h       |  6 +--
+>   include/hw/virtio/virtio-gpu-bswap.h    |  2 +-
+>   include/libdecnumber/dconfig.h          |  2 +-
+>   include/net/eth.h                       |  2 +-
+>   include/qemu/bswap.h                    |  8 ++--
+>   include/qemu/compiler.h                 |  2 +
+>   include/qemu/host-utils.h               |  2 +-
+>   include/qemu/int128.h                   |  2 +-
+>   include/ui/qemu-pixman.h                |  2 +-
+>   net/util.h                              |  2 +-
+>   target/arm/cpu.h                        |  8 ++--
+>   target/arm/translate-a64.h              |  2 +-
+>   target/arm/vec_internal.h               |  2 +-
+>   target/i386/cpu.h                       |  2 +-
+>   target/mips/cpu.h                       |  2 +-
+>   target/ppc/cpu.h                        |  2 +-
+>   target/s390x/tcg/vec.h                  |  2 +-
+>   target/xtensa/cpu.h                     |  2 +-
+>   tests/fp/platform.h                     |  4 +-
+>   accel/kvm/kvm-all.c                     |  4 +-
+>   audio/dbusaudio.c                       |  2 +-
+>   disas.c                                 |  2 +-
+>   hw/core/loader.c                        |  4 +-
+>   hw/display/artist.c                     |  6 +--
+>   hw/display/pxa2xx_lcd.c                 |  2 +-
+>   hw/display/vga.c                        | 12 +++---
+>   hw/display/virtio-gpu-gl.c              |  2 +-
+>   hw/s390x/event-facility.c               |  2 +-
+>   hw/virtio/vhost.c                       |  2 +-
+>   linux-user/arm/nwfpe/double_cpdo.c      |  4 +-
+>   linux-user/arm/nwfpe/fpa11_cpdt.c       |  4 +-
+>   linux-user/ppc/signal.c                 |  3 +-
+>   linux-user/syscall.c                    |  6 +--
+>   net/net.c                               |  4 +-
+>   target/alpha/translate.c                |  2 +-
+>   target/arm/crypto_helper.c              |  2 +-
+>   target/arm/helper.c                     |  2 +-
+>   target/arm/kvm64.c                      |  4 +-
+>   target/arm/neon_helper.c                |  2 +-
+>   target/arm/sve_helper.c                 |  4 +-
+>   target/arm/translate-sve.c              |  6 +--
+>   target/arm/translate-vfp.c              |  2 +-
+>   target/arm/translate.c                  |  2 +-
+>   target/hppa/translate.c                 |  2 +-
+>   target/i386/tcg/translate.c             |  2 +-
+>   target/mips/tcg/lmmi_helper.c           |  2 +-
+>   target/mips/tcg/msa_helper.c            | 54 ++++++++++++-------------
+>   target/ppc/arch_dump.c                  |  2 +-
+>   target/ppc/int_helper.c                 | 22 +++++-----
+>   target/ppc/kvm.c                        |  4 +-
+>   target/ppc/mem_helper.c                 |  2 +-
+>   target/riscv/vector_helper.c            |  2 +-
+>   target/s390x/tcg/translate.c            |  2 +-
+>   target/sparc/vis_helper.c               |  4 +-
+>   tcg/tcg-op.c                            |  4 +-
+>   tcg/tcg.c                               | 12 +++---
+>   tests/qtest/vhost-user-blk-test.c       |  2 +-
+>   tests/qtest/virtio-blk-test.c           |  2 +-
+>   ui/vdagent.c                            |  2 +-
+>   ui/vnc.c                                |  2 +-
+>   util/bitmap.c                           |  2 +-
+>   util/host-utils.c                       |  2 +-
+>   target/ppc/translate/vmx-impl.c.inc     |  4 +-
+>   target/ppc/translate/vsx-impl.c.inc     |  2 +-
+>   target/riscv/insn_trans/trans_rvv.c.inc |  4 +-
+>   target/s390x/tcg/translate_vx.c.inc     |  2 +-
+>   tcg/aarch64/tcg-target.c.inc            |  4 +-
+>   tcg/arm/tcg-target.c.inc                |  4 +-
+>   tcg/mips/tcg-target.c.inc               |  2 +-
+>   tcg/ppc/tcg-target.c.inc                | 10 ++---
+>   tcg/riscv/tcg-target.c.inc              |  4 +-
+>   85 files changed, 173 insertions(+), 173 deletions(-)
 
-Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+For the ppc part:
 
-> diff --git a/replay/replay-char.c b/replay/replay-char.c
-> index dc0002367e..d2025948cf 100644
-> --- a/replay/replay-char.c
-> +++ b/replay/replay-char.c
-> @@ -50,7 +50,7 @@ void replay_register_char_driver(Chardev *chr)
->   
->   void replay_chr_be_write(Chardev *s, uint8_t *buf, int len)
->   {
-> -    CharEvent *event = g_malloc0(sizeof(CharEvent));
-> +    CharEvent *event = g_new0(CharEvent, 1);
->   
->       event->id = find_char_driver(s);
->       if (event->id < 0) {
-> @@ -85,7 +85,7 @@ void replay_event_char_read_save(void *opaque)
->   
->   void *replay_event_char_read_load(void)
->   {
-> -    CharEvent *event = g_malloc0(sizeof(CharEvent));
-> +    CharEvent *event = g_new0(CharEvent, 1);
->   
->       event->id = replay_get_byte();
->       replay_get_array_alloc(&event->buf, &event->len);
-> diff --git a/replay/replay-events.c b/replay/replay-events.c
-> index 15983dd250..ac47c89834 100644
-> --- a/replay/replay-events.c
-> +++ b/replay/replay-events.c
-> @@ -119,7 +119,7 @@ void replay_add_event(ReplayAsyncEventKind event_kind,
->           return;
->       }
->   
-> -    Event *event = g_malloc0(sizeof(Event));
-> +    Event *event = g_new0(Event, 1);
->       event->event_kind = event_kind;
->       event->opaque = opaque;
->       event->opaque2 = opaque2;
-> @@ -243,17 +243,17 @@ static Event *replay_read_event(int checkpoint)
->           }
->           break;
->       case REPLAY_ASYNC_EVENT_INPUT:
-> -        event = g_malloc0(sizeof(Event));
-> +        event = g_new0(Event, 1);
->           event->event_kind = replay_state.read_event_kind;
->           event->opaque = replay_read_input_event();
->           return event;
->       case REPLAY_ASYNC_EVENT_INPUT_SYNC:
-> -        event = g_malloc0(sizeof(Event));
-> +        event = g_new0(Event, 1);
->           event->event_kind = replay_state.read_event_kind;
->           event->opaque = 0;
->           return event;
->       case REPLAY_ASYNC_EVENT_CHAR_READ:
-> -        event = g_malloc0(sizeof(Event));
-> +        event = g_new0(Event, 1);
->           event->event_kind = replay_state.read_event_kind;
->           event->opaque = replay_event_char_read_load();
->           return event;
-> @@ -263,7 +263,7 @@ static Event *replay_read_event(int checkpoint)
->           }
->           break;
->       case REPLAY_ASYNC_EVENT_NET:
-> -        event = g_malloc0(sizeof(Event));
-> +        event = g_new0(Event, 1);
->           event->event_kind = replay_state.read_event_kind;
->           event->opaque = replay_event_net_load();
->           return event;
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.

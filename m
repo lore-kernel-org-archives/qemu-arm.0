@@ -1,94 +1,107 @@
-Received: by 2002:a05:6214:21e7:0:0:0:0 with SMTP id p7csp529165qvj;
-        Thu, 17 Mar 2022 04:34:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6z76EA3AMrzsUeij86LcHWbI0DK8o6IQ259ardGtHasS4qeLEAIDu8NjO4VkuTM/1D+Gq
-X-Received: by 2002:a05:622a:1350:b0:2e1:b7ec:bed4 with SMTP id w16-20020a05622a135000b002e1b7ecbed4mr3179397qtk.413.1647516889919;
-        Thu, 17 Mar 2022 04:34:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647516889; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp980414lfo;
+        Thu, 17 Mar 2022 12:15:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2QM5G9JFa1hbEThPlcLpk/zAwD8bM8DBexGTZbcI6L0++U038hGJsZiASYAC26DDJobmg
+X-Received: by 2002:a37:946:0:b0:67d:9d27:3c1 with SMTP id 67-20020a370946000000b0067d9d2703c1mr3910901qkj.476.1647544537914;
+        Thu, 17 Mar 2022 12:15:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647544537; cv=none;
         d=google.com; s=arc-20160816;
-        b=AEZ5LairBh0wpdG7DUFfyJc6CgfLUpxSxc1vzysOWNn/YQCBFoy5jnT4B2N7kNSOY1
-         R2Th7V/jLSV+Zn8rcEXWtjsbrbJ+os9TELxnXN9g0Sw6GjFvtbL8u1z+HfHYdEDWpU+3
-         ZMQ+0Xl4/AhFeQbwtUOPE6HftNoxwSSmgN0YeXVlzhiFWf8WQaOKXcEgjHULBOm1rpGr
-         A5IuE0jvuHeaTmaJQDTjVHvQstfZo23mf/hppG3UGd0z6VWelXS9tpNOfrZiXS5DCP2y
-         XV1X4lL+0TFt8vZldk42EfyrKrOFYNQELN0y+rgXU6OK39547DeEdCb22AbjfyHh+meM
-         /fgw==
+        b=keTHBdEz5/LO9BIeZadZBK/Q/WIaan0JK5plD6OjBhUJwhW/4l+Zcq9bGcIVxW48SI
+         EaUnAO0QZTMc/D61x1ZQhecmqRCsv6ILI4qbzuvyvZZaUB237Em1DHAo+CGWfgtjAjBl
+         ERMfbio9p3jC43ykcn/n2XIot4LxA25BZ9Lu9czrqJC6GDD9zVRzMvB30aIyF21vsm6G
+         wZLzaniBuRD762/2L/wdDQO0yeyRxw1S1P78C80lLkHtGmK4GpxwxJQTH8hs/uuAVE1o
+         R+A8rr7Z9QmgVzmPOwl7v+p/mW/Fctb3SQOegVyOoAEoFSuUlbMKG0qGvKwRK+V0r96D
+         47yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=gNljhz4zr0tKkeC7Bz1ndALgXIgMcobYDtbYI7LUKH8=;
-        b=UZ/o9bhwZnxTtoQksuVwDx3qJZqK23Vy8U2bRJaxEoAnZpUdZLpu1i/5Bec6kh7hMr
-         yyHC/2MG71BcnErpLFM7gL1hxQ74fo2+Hcu7SEUTWcyNDfSGWVNJ6wXwmauWntyp5Tz7
-         9zQOYPEdrPfEPJdaPkQvdwzNdF9f/nayFazF+BHZ6V0+jmye8dTD8IZfmIIjzbdZUzl8
-         uRXvixYTRFoF2NtBzfk/jOdp6lMkvJcw1qPS6KOuJerRat8axW0ZLTT8XB+LyguQRc+s
-         fwiZiOlqtTbdnmcuY/BesLJ4GKRxWYUfPWaioxiQ67hPkOfztPZKmR4nQKTV0beGw6la
-         QTaw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=s742sJVnpGTicITXqnxkcIBl5qdfknCkT9D7WCzqXHk=;
+        b=lZcFIUT714nCC+Y/o0Kw88vSp8hnTZpqyxOxSPc0bdgajdNtfFvwmgI9DFKq7SDha3
+         t00HxWuZNJzN3oR8g0ZWrUg5GRaivxfy8RyRZ7OziPbeBelsUpEM1HNCH7YRiLfw/64q
+         hV6lAI25Yc0kpOInjHJ2v7nGMMk56MLpAE2YPrY/DVBEQv6NsDVyJgk1/XeXOXpRKR1A
+         V/3QIrcrvmcPXX+KGSco2w30LVIbTtW1xLOkjP262OMQUCSWR34HapKMzpMYtpf65yg8
+         l8o2ODjYi8EAa+Yci5Ca/vlCSZuR5UasaY0GJpYYt7xHEaNda8/eNgY4wpuR8mrF1AfX
+         fjGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=Eg+B9y9U;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s2-20020ac85ec2000000b002d19f25a0a3si1080974qtx.143.2022.03.17.04.34.49
+        by mx.google.com with ESMTPS id r7-20020ad45767000000b004386a0cfcc0si1906616qvx.417.2022.03.17.12.15.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Mar 2022 04:34:49 -0700 (PDT)
+        Thu, 17 Mar 2022 12:15:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57376 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=Eg+B9y9U;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39696 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nUoP3-0008El-I2
-	for alex.bennee@linaro.org; Thu, 17 Mar 2022 07:34:49 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34932)
+	id 1nUvaz-0004yb-Cq
+	for alex.bennee@linaro.org; Thu, 17 Mar 2022 15:15:37 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41794)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nUoOn-0008Ce-HW; Thu, 17 Mar 2022 07:34:33 -0400
-Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173]:34801)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nUoOl-0001dD-SZ; Thu, 17 Mar 2022 07:34:33 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.27])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 2F4C7EB32ADE;
- Thu, 17 Mar 2022 12:34:30 +0100 (CET)
-Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 17 Mar
- 2022 12:34:29 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004743e4a88-96c0-4705-b28d-da4260fd0a3b,
- 0530BE337510AE92842F4B01C4CA167143738EB5) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <d583735f-3d7a-6773-831a-1bba1e98b1a8@kaod.org>
-Date: Thu, 17 Mar 2022 12:34:28 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nUvaq-0004y0-79
+ for qemu-devel@nongnu.org; Thu, 17 Mar 2022 15:15:28 -0400
+Received: from [2607:f8b0:4864:20::b32] (port=42638
+ helo=mail-yb1-xb32.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nUvan-0005UU-Nz
+ for qemu-devel@nongnu.org; Thu, 17 Mar 2022 15:15:27 -0400
+Received: by mail-yb1-xb32.google.com with SMTP id u103so11991036ybi.9
+ for <qemu-devel@nongnu.org>; Thu, 17 Mar 2022 12:15:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=s742sJVnpGTicITXqnxkcIBl5qdfknCkT9D7WCzqXHk=;
+ b=Eg+B9y9U5mRhDAGBmZ35MPPnx40ne7+bsKguxFVP4Vb7RX2pTeotw0u457OXDGZLRs
+ VMJA5e3Q6GQj7L3MaCyyw6I0MSE/dpJDiqH5tn0Fdn7yacNSxB+SVbC704FFDVxMU3TZ
+ HbVhOEUbkEWwbaZlz9c/nuyvnugOsH/IwZqn1ZajMt2o7oO7Zobpf32Dv795icIrMIyw
+ 3hPGaosxjXngzJU1avQ/EZKTmoBabZukjjdLivwgItSc72IgwjSo4VHbOr7vwsXasuH4
+ 1kT5vzKiPAqZwj1qvlYhTWncg2B17HPGj59/6XxWIIeVWsGtPLzosEF8E5o3JesEQXYy
+ kZYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=s742sJVnpGTicITXqnxkcIBl5qdfknCkT9D7WCzqXHk=;
+ b=RQQlQrDBcytrC5yDW034IoZYR1mlXxVcs9EKMi7lpsAUUOS0qP3Lp0l56gnR2CsCpz
+ Ajy5RwpjxCllxq5L3+H3/RpUTx3rOXJty2AAhHTEK85FQz1vA2pc33R8Y26xvjwRHT34
+ DO+CnxPUjRBSrontawZxHAThHtjFmarlsWlHVSEIQG4vnUqhFJj84jZ9PbBch3jc26zj
+ rf+Xsdt3GAn9GhjPgX9lj8YJZ4/hOUaxFzfcZJNjHpzjnU1q9y1X+TiQuRS8iysysvJZ
+ jsuk5F2hhPezxPai1QdZSRUGCgf0+CQLOugSgOvlfULFnQmirtPfvDBggDLbOFwlFrsx
+ uR3A==
+X-Gm-Message-State: AOAM5317XYbVO0THUDYQx4T/OPoaGmu5onf2zu3LGjza849VzOKm/UO9
+ 6pdGYAM38JtjxvDJXK2QVXmR9ADq2g9f1rz/oMyHYA==
+X-Received: by 2002:a5b:6c1:0:b0:633:b5c7:b9b7 with SMTP id
+ r1-20020a5b06c1000000b00633b5c7b9b7mr1827466ybq.67.1647544524668; Thu, 17 Mar
+ 2022 12:15:24 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.2
-Subject: Re: [PATCH for-7.1] hw: Add compat machines for 7.1
-Content-Language: en-US
-To: Cornelia Huck <cohuck@redhat.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-s390x@nongnu.org>
-References: <20220316145521.1224083-1-cohuck@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220316145521.1224083-1-cohuck@redhat.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: d3b612b1-83b1-4946-8903-021f40ccc794
-X-Ovh-Tracer-Id: 2073344680142146390
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudefgedgvdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddunecuvehluhhsthgvrhfuihiivgepudenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepghhrohhugheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout4.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+References: <20220316164645.2303510-1-edgar.iglesias@gmail.com>
+In-Reply-To: <20220316164645.2303510-1-edgar.iglesias@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 17 Mar 2022 19:15:13 +0000
+Message-ID: <CAFEAcA9EYK7gS4bDToAXXD23uzhEazVeP--UGOrOX4wF3P-Fug@mail.gmail.com>
+Subject: Re: [PATCH v3 0/6] hw/arm: zynqmp: Add CRF and APU control to support
+ PSCI
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b32
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,42 +114,28 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>, Eric Farman <farman@linux.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>, Yanan Wang <wangyanan55@huawei.com>,
- Greg Kurz <groug@kaod.org>, Halil Pasic <pasic@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: edgar.iglesias@xilinx.com, luc@lmichel.fr, edgar.iglesias@amd.com,
+ sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, f4bug@amsat.org,
+ francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
+ qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hn1ibCqaREor
+X-TUID: go5cpW11RdLJ
 
-On 3/16/22 15:55, Cornelia Huck wrote:
-> Add 7.1 machine types for arm/i440fx/m68k/q35/s390x/spapr.
-> 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->   hw/arm/virt.c              |  9 ++++++++-
->   hw/core/machine.c          |  3 +++
->   hw/i386/pc.c               |  3 +++
->   hw/i386/pc_piix.c          | 14 +++++++++++++-
->   hw/i386/pc_q35.c           | 13 ++++++++++++-
->   hw/m68k/virt.c             |  9 ++++++++-
->   hw/ppc/spapr.c             | 15 +++++++++++++--
->   hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
->   include/hw/boards.h        |  3 +++
->   include/hw/i386/pc.h       |  3 +++
->   10 files changed, 79 insertions(+), 7 deletions(-)
+On Wed, 16 Mar 2022 at 16:46, Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+>
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> This adds the necessary modeling to support some of our firmware
+> tests at EL3 implementing PSCI (TBM). These are the test-cases
+> that were previously relying on QEMU's builtin PSCI emulation.
 
-For the PPC part:
+I wouldn't usually take patches new devices after softfreeze, but
+on the other hand this is addressing a regression, and it only
+affects the xilinx boards. Do you have a view on whether we should put
+this into 7.0 or defer to 7.1 ?
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
+thanks
+-- PMM

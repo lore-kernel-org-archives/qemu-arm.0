@@ -1,106 +1,97 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp984117lfo;
-        Thu, 17 Mar 2022 12:22:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxhWe/WzOq3s287/miXrVW3HcFXYhh55Gc4h1Rr2dWx+xeL4Rt+9pF/jFs49NL0awlUWNUt
-X-Received: by 2002:a05:620a:25cd:b0:67b:740:94fa with SMTP id y13-20020a05620a25cd00b0067b074094famr3873498qko.20.1647544929223;
-        Thu, 17 Mar 2022 12:22:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647544929; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1187563lfo;
+        Thu, 17 Mar 2022 19:17:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmrZ8G+vwDqjm+G/QvkqZxFJKngSqZIVrD05JzcrVHRrBpD1TVDmd6MkT3szoax2VFfjU7
+X-Received: by 2002:a05:620a:2808:b0:67d:1561:f4f2 with SMTP id f8-20020a05620a280800b0067d1561f4f2mr4642739qkp.581.1647569856866;
+        Thu, 17 Mar 2022 19:17:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647569856; cv=none;
         d=google.com; s=arc-20160816;
-        b=qSEJ6x0OXdasCtbRyYx/J+zSl+zWCa6Md6odLNUUmsLcna5f0y4z/vqjNama/TuqeA
-         gGNTWGl44V3oVDrBDLyrBPDww+Y0z8qYv8OnrHUegid5jqMGu8S9ugtdkA95R9yUNqP0
-         gQQxafEu+u8Ixmw08pysdXIs/uMY1kG942I6+EwOkXeIFfTmEQjG9BAiG0J7QOg0+qO1
-         m1rhPtVg/xksO36KRN6qYsOa/mELbF/GglZfypgxyy80RU+58ugrAWWItKwDyZ/14FhW
-         aQuNthy+QOJ2tUR3oQ0fIp6BleJEbhS6WFyyB1VUfmMISI9F5yOKA41P8LybIe931j7u
-         CKzw==
+        b=ki9EP3quoogyk6BA+xBq187kfIfZd9hkCYTCsaE3+b9AGJogyFVN7h3VLaZJUMoV5R
+         pihY/LHxdX8J0URuzENqXE3B0ibwU0Lnk7q9P4FiMqlDqP19EQjtQw/kbiFW7r6lVSXp
+         /fDeOMVp5UmrY7Y9K9goVEHNl/i73JfeQ1pMmddv+JU6Ivv180b86pBFLrqLbpel9Yfy
+         v/b52UrNzAicgagcZhyxY8+j1CbhEe/fhOsoB3bomZvrg4ULS9jHLNZZjIGoRNV2F1gc
+         bwi38I9527G3WInwXhBwMglZz4DN+8XJ9A8hK8PhpXu23Diuy7uwaWDZ1ISqFq88FTsw
+         ifDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=4Z8myTSmLap9Lja6utZAAENjGr9eXUq3wUbFpUXg5PY=;
-        b=Pv7l+OU0HtOJk9XlrGGUNR9pz84X3+dih089PZX67mnrgQh9wLbSKRS9RFDi6KYeSk
-         8XFLpHw/yGzoUQ2Py9sbsJPfnZfFcgzn6aBHcnAq1mYGfzRkxpEoW2H6zHP6V/JvJpaO
-         7pIfDSSz/CdqUuvr2yTyc8CRzynKN+VUv511whfJZRV+cj1IjZf/DasBfjlJ9DOKjPE/
-         yOQYsEkG0sqQmInZTCofkrXCcv7w6giXPwrQAz4iGkLoWa0hDA/oElpgYllChtrFOviV
-         sfrOMNAtDT/tot7H2AfIQ9zWQ0ilMntiLbMR0+fsK9+ImoN6Ydme9Lfoklo0mt3yv64S
-         9ocw==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:references:cc:to:subject;
+        bh=enBs4H8lBElHl0NG3bSNI3l7A9the1/KUlsLOelDBAE=;
+        b=LuABbliunTUDtnaGPg57NGB1YIGibppr+NstQl0hu6QuyC6FvSF+AZ9f46mU7jBKFC
+         XJbqALIocDshmSS87y9lAfuoWHyyFbg1QAIkUnCYiE0yoPVKDnZEhnqZkGz6Ik7JoHJE
+         Tr+qoR7ctWLKUDpvfd07HKVe6Zk86wDx+pTb1EQNZBnVj9qm8Vfzh6zQR7BGcymSJuFK
+         /Q/UyMQevJZpAj+Gk1EScjeqcak52Jr8762q+lzc+yD1lwdyC4t2c+62gZ+mb/BF0O21
+         cFF9eOGKzIlBeTzVqBpFB/T0xoZLrbZvk6M3V3dRg6AUkaSJSocaImzUe2Lnd7UK/Pa1
+         5Elg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Aui8j1js;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a189-20020a3798c6000000b00649409cb608si1606560qke.322.2022.03.17.12.22.09
+        by mx.google.com with ESMTPS id h19-20020ac85153000000b002e1a893d2e2si1722182qtn.194.2022.03.17.19.17.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Mar 2022 12:22:09 -0700 (PDT)
+        Thu, 17 Mar 2022 19:17:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Aui8j1js;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42472 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:37490 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nUvhI-0007LL-Nz
-	for alex.bennee@linaro.org; Thu, 17 Mar 2022 15:22:08 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43172)
+	id 1nV2BM-0004Mj-C8
+	for alex.bennee@linaro.org; Thu, 17 Mar 2022 22:17:36 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56930)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nUvh5-0007Hr-Nh; Thu, 17 Mar 2022 15:21:55 -0400
-Received: from [2607:f8b0:4864:20::12e] (port=33329
- helo=mail-il1-x12e.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nUvh2-0006O8-5E; Thu, 17 Mar 2022 15:21:55 -0400
-Received: by mail-il1-x12e.google.com with SMTP id r2so4470947ilh.0;
- Thu, 17 Mar 2022 12:21:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4Z8myTSmLap9Lja6utZAAENjGr9eXUq3wUbFpUXg5PY=;
- b=Aui8j1jsIF4OObxlAa+PMqlqNruGJjukLAkNIkmuQ9w43e2lrb6piQGsO/ZH4cqbk6
- nPhTtQU5XXegHMQEBZiQfYf2sObnpaNWZgfogxeBfcHwiMpusGccdlR4fz93ur7+7rXv
- Tr9RZo6ic3SR13kZubNC6q7oTf8tQPepih/72DNX3rXgQnZ/kngtS79k7D1SdHV61+UN
- aHuCxBtCHxk8YyvLpX0eX+Fj2a9PeCjzAhC16gSkGDLSjbfvUwHjDf1MfAdo7HiAZqUL
- C+X0zqUio5RicQ+2A4gLmRu0Cm/Q93P9ZJhD15vd8Ubxi9PrHXIR+pnQOACOTfQrnrKX
- Cp1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4Z8myTSmLap9Lja6utZAAENjGr9eXUq3wUbFpUXg5PY=;
- b=76ZZ1Jvz0JfDB6zd/FLe7XVE54vz4CeRUEDPjsai/Pe4a8iqe8En8AzD44g+raCwr3
- TDaDH+OA/QxWbGPCkRVNO+Qy0pEDHU6WjuqYHyRM0MkQ0lu9/BDLlpWVLunT6XSi6Cp9
- E8C4ypK0X5W8Pk8SqWeuW0KVS7UfY92DI9YZqMaiPynsy8uJLItCYqr/CCDcHJOH2ONv
- wJMa2nQl6GeGKExazGglX/qOQGtTCZmF7nVvEDMtT+os87Hy54DW54UftCDk13cK6Nao
- 41Wf/xkhvZh3oCqChiQYXieAHeCK1WTT0FsNDyirAg0YJk8Hn+6DLuJHc9kE6JtxQ4yY
- +fpA==
-X-Gm-Message-State: AOAM533PVqPVbsEIhhQUbPzBLwUverzN8ABq4t0UjdtM1LuaSD5bSTYS
- Cza0KtNkva7iMi5Lyy1E696QE3S2ytZwmy3QD8U=
-X-Received: by 2002:a92:c522:0:b0:2c6:3ddf:1b75 with SMTP id
- m2-20020a92c522000000b002c63ddf1b75mr2757102ili.293.1647544909871; Thu, 17
- Mar 2022 12:21:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1nV2BG-0004JI-BB; Thu, 17 Mar 2022 22:17:30 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3800)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1nV2BD-0001Rw-7g; Thu, 17 Mar 2022 22:17:29 -0400
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.57])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4KKSKW1KDJzfYxq;
+ Fri, 18 Mar 2022 10:15:43 +0800 (CST)
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2308.21; Fri, 18 Mar 2022 10:17:11 +0800
+Subject: Re: [PATCH for-7.1] hw: Add compat machines for 7.1
+To: Cornelia Huck <cohuck@redhat.com>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-s390x@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost
+ <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, Daniel Henrique Barboza
+ <danielhb413@gmail.com>, David Gibson <david@gibson.dropbear.id.au>, Greg
+ Kurz <groug@kaod.org>, Halil Pasic <pasic@linux.ibm.com>, Christian
+ Borntraeger <borntraeger@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>
+References: <20220316145521.1224083-1-cohuck@redhat.com>
+Message-ID: <f80f1b03-929b-669e-22ba-0754b257770f@huawei.com>
+Date: Fri, 18 Mar 2022 10:17:11 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-References: <20220316164645.2303510-1-edgar.iglesias@gmail.com>
- <CAFEAcA9EYK7gS4bDToAXXD23uzhEazVeP--UGOrOX4wF3P-Fug@mail.gmail.com>
-In-Reply-To: <CAFEAcA9EYK7gS4bDToAXXD23uzhEazVeP--UGOrOX4wF3P-Fug@mail.gmail.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Thu, 17 Mar 2022 20:21:39 +0100
-Message-ID: <CAJy5ezopSM=N+rdmPs=PTerJFju5286eBRy7qMNwSOB2ftU9_A@mail.gmail.com>
-Subject: Re: [PATCH v3 0/6] hw/arm: zynqmp: Add CRF and APU control to support
- PSCI
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000001abf7605da6ef1a4"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::12e
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12e;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-il1-x12e.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+In-Reply-To: <20220316145521.1224083-1-cohuck@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme707-chm.china.huawei.com (10.1.199.103) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,74 +104,262 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: luc@lmichel.fr, edgar.iglesias@amd.com,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
- francisco iglesias <frasse.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- Francisco Iglesias <francisco.iglesias@xilinx.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iDcjkV/RFWGo
+Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
+From:  "wangyanan (Y)" via <qemu-devel@nongnu.org>
+X-TUID: q/VUny1VnyIt
 
---0000000000001abf7605da6ef1a4
-Content-Type: text/plain; charset="UTF-8"
 
-On Thu, Mar 17, 2022 at 8:15 PM Peter Maydell <peter.maydell@linaro.org>
-wrote:
 
-> On Wed, 16 Mar 2022 at 16:46, Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
-> >
-> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-> >
-> > This adds the necessary modeling to support some of our firmware
-> > tests at EL3 implementing PSCI (TBM). These are the test-cases
-> > that were previously relying on QEMU's builtin PSCI emulation.
+On 2022/3/16 22:55, Cornelia Huck wrote:
+> Add 7.1 machine types for arm/i440fx/m68k/q35/s390x/spapr.
 >
-> I wouldn't usually take patches new devices after softfreeze, but
-> on the other hand this is addressing a regression, and it only
-> affects the xilinx boards. Do you have a view on whether we should put
-> this into 7.0 or defer to 7.1 ?
->
->
-Hi Peter,
-
-I'd lean slightly towards 7.0 (to allow our tests to pass cleanly on 7.0)
-but it's not of huge importance.
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>   hw/arm/virt.c              |  9 ++++++++-
+>   hw/core/machine.c          |  3 +++
+>   hw/i386/pc.c               |  3 +++
+>   hw/i386/pc_piix.c          | 14 +++++++++++++-
+>   hw/i386/pc_q35.c           | 13 ++++++++++++-
+>   hw/m68k/virt.c             |  9 ++++++++-
+>   hw/ppc/spapr.c             | 15 +++++++++++++--
+>   hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>   include/hw/boards.h        |  3 +++
+>   include/hw/i386/pc.h       |  3 +++
+>   10 files changed, 79 insertions(+), 7 deletions(-)
+Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
 
 Thanks,
-Edgar
+Yanan
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 46a42502bc55..2e6b4aac8c75 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -3017,10 +3017,17 @@ static void machvirt_machine_init(void)
+>   }
+>   type_init(machvirt_machine_init);
+>   
+> +static void virt_machine_7_1_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(7, 1)
+> +
+>   static void virt_machine_7_0_options(MachineClass *mc)
+>   {
+> +    virt_machine_7_1_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_7_0, hw_compat_7_0_len);
+>   }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(7, 0)
+> +DEFINE_VIRT_MACHINE(7, 0)
+>   
+>   static void virt_machine_6_2_options(MachineClass *mc)
+>   {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index d856485cb4d0..cb9c05a7ded7 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -37,6 +37,9 @@
+>   #include "hw/virtio/virtio.h"
+>   #include "hw/virtio/virtio-pci.h"
+>   
+> +GlobalProperty hw_compat_7_0[] = {};
+> +const size_t hw_compat_7_0_len = G_N_ELEMENTS(hw_compat_7_0);
+> +
+>   GlobalProperty hw_compat_6_2[] = {};
+>   const size_t hw_compat_6_2_len = G_N_ELEMENTS(hw_compat_6_2);
+>   
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index fd55fc725caf..23bba9d82c12 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -95,6 +95,9 @@
+>   #include "trace.h"
+>   #include CONFIG_DEVICES
+>   
+> +GlobalProperty pc_compat_7_0[] = {};
+> +const size_t pc_compat_7_0_len = G_N_ELEMENTS(pc_compat_7_0);
+> +
+>   GlobalProperty pc_compat_6_2[] = {
+>       { "virtio-mem", "unplugged-inaccessible", "off" },
+>   };
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index b72c03d0a626..4c185c72d014 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -415,7 +415,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>       machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+>   }
+>   
+> -static void pc_i440fx_7_0_machine_options(MachineClass *m)
+> +static void pc_i440fx_7_1_machine_options(MachineClass *m)
+>   {
+>       PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>       pc_i440fx_machine_options(m);
+> @@ -424,6 +424,18 @@ static void pc_i440fx_7_0_machine_options(MachineClass *m)
+>       pcmc->default_cpu_version = 1;
+>   }
+>   
+> +DEFINE_I440FX_MACHINE(v7_1, "pc-i440fx-7.1", NULL,
+> +                      pc_i440fx_7_1_machine_options);
+> +
+> +static void pc_i440fx_7_0_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_7_1_machine_options(m);
+> +    m->alias = NULL;
+> +    m->is_default = false;
+> +    compat_props_add(m->compat_props, hw_compat_7_0, hw_compat_7_0_len);
+> +    compat_props_add(m->compat_props, pc_compat_7_0, pc_compat_7_0_len);
+> +}
+> +
+>   DEFINE_I440FX_MACHINE(v7_0, "pc-i440fx-7.0", NULL,
+>                         pc_i440fx_7_0_machine_options);
+>   
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 1780f79bc127..302288342a91 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -360,7 +360,7 @@ static void pc_q35_machine_options(MachineClass *m)
+>       m->max_cpus = 288;
+>   }
+>   
+> -static void pc_q35_7_0_machine_options(MachineClass *m)
+> +static void pc_q35_7_1_machine_options(MachineClass *m)
+>   {
+>       PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>       pc_q35_machine_options(m);
+> @@ -368,6 +368,17 @@ static void pc_q35_7_0_machine_options(MachineClass *m)
+>       pcmc->default_cpu_version = 1;
+>   }
+>   
+> +DEFINE_Q35_MACHINE(v7_1, "pc-q35-7.1", NULL,
+> +                   pc_q35_7_1_machine_options);
+> +
+> +static void pc_q35_7_0_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_7_1_machine_options(m);
+> +    m->alias = NULL;
+> +    compat_props_add(m->compat_props, hw_compat_7_0, hw_compat_7_0_len);
+> +    compat_props_add(m->compat_props, pc_compat_7_0, pc_compat_7_0_len);
+> +}
+> +
+>   DEFINE_Q35_MACHINE(v7_0, "pc-q35-7.0", NULL,
+>                      pc_q35_7_0_machine_options);
+>   
+> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+> index bbaf630bbf20..afa52d7e491e 100644
+> --- a/hw/m68k/virt.c
+> +++ b/hw/m68k/virt.c
+> @@ -316,10 +316,17 @@ type_init(virt_machine_register_types)
+>       } \
+>       type_init(machvirt_machine_##major##_##minor##_init);
+>   
+> +static void virt_machine_7_1_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE(7, 1, true)
+> +
+>   static void virt_machine_7_0_options(MachineClass *mc)
+>   {
+> +    virt_machine_7_1_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_7_0, hw_compat_7_0_len);
+>   }
+> -DEFINE_VIRT_MACHINE(7, 0, true)
+> +DEFINE_VIRT_MACHINE(7, 0, false)
+>   
+>   static void virt_machine_6_2_options(MachineClass *mc)
+>   {
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 953fc65fa863..3561882d6615 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4703,15 +4703,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
+>       }                                                                \
+>       type_init(spapr_machine_register_##suffix)
+>   
+> +/*
+> + * pseries-7.1
+> + */
+> +static void spapr_machine_7_1_class_options(MachineClass *mc)
+> +{
+> +    /* Defaults for the latest behaviour inherited from the base class */
+> +}
+> +
+> +DEFINE_SPAPR_MACHINE(7_1, "7.1", true);
+> +
+>   /*
+>    * pseries-7.0
+>    */
+>   static void spapr_machine_7_0_class_options(MachineClass *mc)
+>   {
+> -    /* Defaults for the latest behaviour inherited from the base class */
+> +    spapr_machine_7_1_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_7_0, hw_compat_7_0_len);
+>   }
+>   
+> -DEFINE_SPAPR_MACHINE(7_0, "7.0", true);
+> +DEFINE_SPAPR_MACHINE(7_0, "7.0", false);
+>   
+>   /*
+>    * pseries-6.2
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index 90480e7cf9bc..c3eab13c60e8 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -791,14 +791,26 @@ bool css_migration_enabled(void)
+>       }                                                                         \
+>       type_init(ccw_machine_register_##suffix)
+>   
+> +static void ccw_machine_7_1_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_7_1_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE(7_1, "7.1", true);
+> +
+>   static void ccw_machine_7_0_instance_options(MachineState *machine)
+>   {
+> +    ccw_machine_7_1_instance_options(machine);
+>   }
+>   
+>   static void ccw_machine_7_0_class_options(MachineClass *mc)
+>   {
+> +    ccw_machine_7_1_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_7_0, hw_compat_7_0_len);
+>   }
+> -DEFINE_CCW_MACHINE(7_0, "7.0", true);
+> +DEFINE_CCW_MACHINE(7_0, "7.0", false);
+>   
+>   static void ccw_machine_6_2_instance_options(MachineState *machine)
+>   {
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index c92ac8815c85..d64b5481e834 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -380,6 +380,9 @@ struct MachineState {
+>       } \
+>       type_init(machine_initfn##_register_types)
+>   
+> +extern GlobalProperty hw_compat_7_0[];
+> +extern const size_t hw_compat_7_0_len;
+> +
+>   extern GlobalProperty hw_compat_6_2[];
+>   extern const size_t hw_compat_6_2_len;
+>   
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 1a27de9c8b35..637367dc5fae 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -202,6 +202,9 @@ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+>   /* sgx.c */
+>   void pc_machine_init_sgx_epc(PCMachineState *pcms);
+>   
+> +extern GlobalProperty pc_compat_7_0[];
+> +extern const size_t pc_compat_7_0_len;
+> +
+>   extern GlobalProperty pc_compat_6_2[];
+>   extern const size_t pc_compat_6_2_len;
+>   
 
---0000000000001abf7605da6ef1a4
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">On Thu, Mar 17, 2022 at 8:15 PM Peter May=
-dell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.o=
-rg</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D"=
-gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
-4,204,204);padding-left:1ex">On Wed, 16 Mar 2022 at 16:46, Edgar E. Iglesia=
-s<br>
-&lt;<a href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">edgar.igl=
-esias@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; From: &quot;Edgar E. Iglesias&quot; &lt;<a href=3D"mailto:edgar.iglesi=
-as@xilinx.com" target=3D"_blank">edgar.iglesias@xilinx.com</a>&gt;<br>
-&gt;<br>
-&gt; This adds the necessary modeling to support some of our firmware<br>
-&gt; tests at EL3 implementing PSCI (TBM). These are the test-cases<br>
-&gt; that were previously relying on QEMU&#39;s builtin PSCI emulation.<br>
-<br>
-I wouldn&#39;t usually take patches new devices after softfreeze, but<br>
-on the other hand this is addressing a regression, and it only<br>
-affects the xilinx boards. Do you have a view on whether we should put<br>
-this into 7.0 or defer to 7.1 ?<br><br></blockquote><div><br></div><div>Hi =
-Peter,</div><div><br></div><div>I&#39;d lean slightly towards 7.0 (to allow=
- our tests to pass cleanly on 7.0) but it&#39;s not of huge importance.</di=
-v><div><br></div><div>Thanks,</div><div>Edgar=C2=A0</div></div></div>
-
---0000000000001abf7605da6ef1a4--

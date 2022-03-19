@@ -1,138 +1,116 @@
-Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp1597559lfo;
-        Fri, 18 Mar 2022 09:16:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzfwFc0vAPwDN3mjDLDTiEsR4dEAD3EVn2CIpmr3woTQhd61Tg3pRcbTmYam158S+jeAW04
-X-Received: by 2002:ad4:5aa1:0:b0:435:9404:bff5 with SMTP id u1-20020ad45aa1000000b004359404bff5mr7668104qvg.126.1647620202932;
-        Fri, 18 Mar 2022 09:16:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647620202; cv=none;
+Received: by 2002:a05:6512:204:0:0:0:0 with SMTP id a4csp394869lfo;
+        Sat, 19 Mar 2022 12:58:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwJa7nWbcMXgCLsag6nuBF4dcnbydhBLgKXvX14jctGlqFPCokKo2y67sJnst3p6wygLc3n
+X-Received: by 2002:a05:622a:652:b0:2e1:ee8a:b1b1 with SMTP id a18-20020a05622a065200b002e1ee8ab1b1mr11191380qtb.182.1647719880573;
+        Sat, 19 Mar 2022 12:58:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647719880; cv=none;
         d=google.com; s=arc-20160816;
-        b=uSN2DDHIJ1X4jGifAMyfP270kpdFKC20BuJMYJ2SbAHYUveS5uoRHRlbDzGsyxyM1S
-         sCuEVY1sHjRjmnp1XcyjNaBksQB+SN7RTgcM/vSRS8UhkgUwDeBR1ihJFbOwZOS+IskJ
-         G6zfVM28qS3vI4Zd4uuWs6yJoy04w7Riu5rB7iYwNIAb1WiOmHXu5q6XUxTCGqyCZLkG
-         HP5uvj1bLjfnSnp2TZwn/YpUJJCvHWTVxlSA2jJxfNnGVUh3y4h2nJlJo0EGFYpfQjZL
-         eIcSlUL+UomVzcPYVnnWFO+emNXyehkwobhyky2NHTbbfH2cOcj/e0VCtI05C29obrFl
-         gxQw==
+        b=qBtA0YFXrH80t+MhSHkJS7uFb6YpSM138B/4AaqEXDaR9eI5zEYec/1EP6ysIMc6IK
+         cNn3w9W8UrPRL44vA8Dnf53+sZXvmWWrvxJLg110qLMc+18b8hBWJcldBrQbl/+U5gr1
+         F+n3jGsb6+6hosfg6fVOAnXHyEIlyIITOmrKm1OWdDSuTBXDCLb9qA/yp17AI6wOp6Iw
+         ITtMRDGunz3/OJXDKnvPKP+NB0+36rvwznCcRKVobXSWX5YiCK3zdpo9WDqVYs9GBHGv
+         +u1m9EbaKyTfgIhTpNoygr1BzylCfIV88oC2l2cLXunO90W3HnbgcfW8Tx0i+nZilqDX
+         Yfcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:date:to:from:subject:message-id
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=wO8YK+D4VpUFcwMmLyTso0UPzK8D79kccozuDvZIiAc=;
-        b=eqP4eNib4uHUWNHWqRMEmUtfvVbc1QccCS6NM9sr8N8U7o9UgUz8dlufW43UnhU/+K
-         cj6vXH+kSjdmm1HEsT9kRJeMq8Uvv7x+AVqdvYHM0SNS7i2lhojnv29nHP/oV4B+yJTM
-         2Qj5827DvVPYdh+yBME2FYYY8xklGaAUWyJL3ZaA6uBOHlpLh7/rV+9P32XAQnSJVEDR
-         3DeR1ZO7QUmS1bSJjXg8LfNxjbfmZaOip0SPBhmyPnp65BSWRospQkza9P+sJRgrIm5J
-         CGyImW0kjAssaOQo0cRa11tCzW0NI739Zt6Zst+XdtoD98rqHv5hg8AJh3ZSit9An+ln
-         ARXA==
+        bh=xYruDH4XH6J3bLFAbCk4mpmbwrtXd5m2IkLEV5S3ETI=;
+        b=YJblVjZ0FfR1QlGySnm2v7f/+zKNQopnwYTf9dBlWUvLU1ZIoM0VZFKIp7/SMwNxlU
+         TlVyOKCXz1BcRIJ/Tw/nS4WwSzD7M3J84zN6osJkVwbvidXvvVNxz2ksnRRQ2GgpNYGO
+         p/8iw3l4Mvmb/Du+G72fQm9B6FKfkOZQ1lpNlhJD3JlG3G4eFrI30DsPCsAHDkMMlyNZ
+         125wBeJz0RTW+QqYn6mEAr+KLCBKXuL1hxV5bnIPsPJpNc/T9wjYhbbFXN9/VUodlBrK
+         p30rD9DmrS+Asw/nzebvjxy3lRXs5PdQp7SkYBuE/8qpyU54YdFCr981br1v23SaE8sk
+         bZ1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=JB4Ff+9O;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dkim=fail header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=bNRknetJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gu4-20020a056214260400b0043a16df6464si2620965qvb.488.2022.03.18.09.16.42
+        by mx.google.com with ESMTPS id f2-20020ac86ec2000000b002e1fbf3be26si718934qtv.23.2022.03.19.12.58.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Mar 2022 09:16:42 -0700 (PDT)
+        Sat, 19 Mar 2022 12:58:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=JB4Ff+9O;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:50134 helo=lists1p.gnu.org)
+       dkim=fail header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=bNRknetJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46140 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nVFHO-0001Ps-F1
-	for alex.bennee@linaro.org; Fri, 18 Mar 2022 12:16:42 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58794)
+	id 1nVfD6-0003ws-2p
+	for alex.bennee@linaro.org; Sat, 19 Mar 2022 15:58:00 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52754)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farman@linux.ibm.com>)
- id 1nVFGB-00008k-TD; Fri, 18 Mar 2022 12:15:28 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:57040)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farman@linux.ibm.com>)
- id 1nVFG9-0006A3-Vd; Fri, 18 Mar 2022 12:15:27 -0400
-Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 22IFC1kb031862; 
- Fri, 18 Mar 2022 16:15:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- mime-version : content-transfer-encoding; s=pp1;
- bh=wO8YK+D4VpUFcwMmLyTso0UPzK8D79kccozuDvZIiAc=;
- b=JB4Ff+9OB4VKlg2lAM8vtNG1uQvg/X48AxVcKbX1rWrI2HgfYAwKUnAOC5doGdYQ9fhr
- kJ+IcfUdsJ5AbH4cQceV0jqoHPILVcDaM8LCzNrtEuamzYUrQrvnc5EJuwNrvCh36nCy
- e3H2Fn0ITf02iuUCA+uc9ZJjVng3uuk7kjuvag/5m86Suvvku5lce9vGjmmF+J3TayB5
- pPsLqEPNiyoa+zdYletgeiqr79dzGoKXxC3CrcDM8H/62WuaBgR3iVlVc28XRLU4WW1e
- SQKnNyCcQPlTvUX+CgdtxvuPyiOmaNNnS/0OvxxPwMnsGAHTcO9+LRa64iEpTCKyvmxR ug== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3ev074tg5q-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 18 Mar 2022 16:15:05 +0000
-Received: from m0127361.ppops.net (m0127361.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 22IGF4JO017594;
- Fri, 18 Mar 2022 16:15:04 GMT
-Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
- [169.53.41.122])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3ev074tg56-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 18 Mar 2022 16:15:04 +0000
-Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
- by ppma04dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 22IGDYiI020046;
- Fri, 18 Mar 2022 16:15:03 GMT
-Received: from b03cxnp08028.gho.boulder.ibm.com
- (b03cxnp08028.gho.boulder.ibm.com [9.17.130.20])
- by ppma04dal.us.ibm.com with ESMTP id 3erk5adyb5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 18 Mar 2022 16:15:03 +0000
-Received: from b03ledav002.gho.boulder.ibm.com
- (b03ledav002.gho.boulder.ibm.com [9.17.130.233])
- by b03cxnp08028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 22IGF1GO15401334
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 18 Mar 2022 16:15:01 GMT
-Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 910F1136053;
- Fri, 18 Mar 2022 16:15:01 +0000 (GMT)
-Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8E8B6136051;
- Fri, 18 Mar 2022 16:14:59 +0000 (GMT)
-Received: from farman-thinkpad-t470p (unknown [9.211.121.19])
- by b03ledav002.gho.boulder.ibm.com (Postfix) with ESMTP;
- Fri, 18 Mar 2022 16:14:59 +0000 (GMT)
-Message-ID: <be2c70218b9dbe0bd30c2bbf46277e36b6d8d2ce.camel@linux.ibm.com>
-Subject: Re: [PATCH for-7.1] hw: Add compat machines for 7.1
-From: Eric Farman <farman@linux.ibm.com>
-To: Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-Date: Fri, 18 Mar 2022 12:14:58 -0400
-In-Reply-To: <20220316145521.1224083-1-cohuck@redhat.com>
-References: <20220316145521.1224083-1-cohuck@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 7xT22L-qrh63pZEOrqrlS-yIBq3cZ2nk
-X-Proofpoint-ORIG-GUID: oq-hOPFkIikwtt2TIUqYEpSYgib3mWBB
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.850,Hydra:6.0.425,FMLib:17.11.64.514
- definitions=2022-03-18_10,2022-03-15_01,2022-02-23_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- phishscore=0 suspectscore=0 malwarescore=0 mlxscore=0 adultscore=0
- bulkscore=0 impostorscore=0 priorityscore=1501 mlxlogscore=865
- clxscore=1011 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2202240000 definitions=main-2203180087
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=farman@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <zongyuan.li@smartx.com>)
+ id 1nVeoB-0005Gs-9B
+ for qemu-devel@nongnu.org; Sat, 19 Mar 2022 15:32:15 -0400
+Received: from [2607:f8b0:4864:20::1041] (port=43584
+ helo=mail-pj1-x1041.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <zongyuan.li@smartx.com>)
+ id 1nVeo9-0005mk-Ha
+ for qemu-devel@nongnu.org; Sat, 19 Mar 2022 15:32:15 -0400
+Received: by mail-pj1-x1041.google.com with SMTP id
+ n7-20020a17090aab8700b001c6aa871860so5080337pjq.2
+ for <qemu-devel@nongnu.org>; Sat, 19 Mar 2022 12:32:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=smartx-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=xYruDH4XH6J3bLFAbCk4mpmbwrtXd5m2IkLEV5S3ETI=;
+ b=bNRknetJm+PCrYYb8FSBRJskWZqyeH/OrbOdkM5x0elM3mzGlnKquXPCuqY70chP/o
+ nXvntv4h2pUW3XOSoinExTCyIxwGaoNEJ39s+29OTUGkogX/HXtbsdu0rCmmtXtKRw1a
+ 9jjdWzN0dxTW1M2N3PhkXvbKR8i9n/W7MXiTZhJDT8ALdDEjHGOFVpOZhhuSMwP6QJ/q
+ eOr3Ih61VNgp5qY/DkwN4pddC86hpjHmZSdX8+iIZ48cjwRT12/mjdJ5VLM90ODo4Hdi
+ amoMeN+KI4l1mpKsFu/5Te+VoxYq9+A7TxRggdZxguWnkj1uyruf2JEYLNhGbId4AFGV
+ Osng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=xYruDH4XH6J3bLFAbCk4mpmbwrtXd5m2IkLEV5S3ETI=;
+ b=UCBOCXa3HkzNshR/xBWBpgH89OBs1z8JuSjnfr/+EpSZujWoGXUUIza5OeS+sLR6Yp
+ uc+sxj90frKeskQcjLJ6g3HjWTNl62KB9g9rHtPSVorE2JZiBQbj0F5ryhzcTe+tkbLK
+ Um6Yr74nfkKR4vzpZIHQ/HnitEtfYEefcC38X2GU6Grj8J6qRlsgbq82N3/+05Cchger
+ ED5aITwhu5QQP7ErxNmLYT1fGfmb+e6eGhUzTdSjOXgk+dfR+s4/8tWsAufp5xEM+xJ5
+ uI3aJd8rSKHkjBLxu9IHQ8cH/4flkZNiXD37COb+GG1RYAdD+MYj9auI5fQMqYULBm0Y
+ l7Ww==
+X-Gm-Message-State: AOAM5337hm8nf8zGobFO+VvOY0xQlLeM/VpBtFR77K7JNTLm+vS0iEuO
+ jjkqZBrhsNzpmkrzunzjBXRzt6i1V8/e1S9G
+X-Received: by 2002:a17:90b:3b50:b0:1c2:5a5c:8cc3 with SMTP id
+ ot16-20020a17090b3b5000b001c25a5c8cc3mr28399983pjb.42.1647718332201; 
+ Sat, 19 Mar 2022 12:32:12 -0700 (PDT)
+Received: from dev.lizongyuan.local (61-221-155-10.hinet-ip.hinet.net.
+ [61.221.155.10]) by smtp.gmail.com with ESMTPSA id
+ u17-20020a056a00159100b004f763ac761fsm14406865pfk.33.2022.03.19.12.32.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 19 Mar 2022 12:32:11 -0700 (PDT)
+From: Zongyuan Li <zongyuan.li@smartx.com>
+To: qemu-devel@nongnu.org
+Subject: [RFC PATCH v1 1/1] hw/arm/realview: replace 'qemu_split_irq' with
+ 'TYPE_SPLIT_IRQ'
+Date: Sun, 20 Mar 2022 03:32:14 +0800
+Message-Id: <20220319193214.56553-2-zongyuan.li@smartx.com>
+X-Mailer: git-send-email 2.34.0
+In-Reply-To: <20220319193214.56553-1-zongyuan.li@smartx.com>
+References: <20220319193214.56553-1-zongyuan.li@smartx.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1041
+ (failed)
+Received-SPF: none client-ip=2607:f8b0:4864:20::1041;
+ envelope-from=zongyuan.li@smartx.com; helo=mail-pj1-x1041.google.com
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 19 Mar 2022 15:56:40 -0400
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,43 +122,120 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>, Yanan Wang <wangyanan55@huawei.com>,
- Greg Kurz <groug@kaod.org>, =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Halil Pasic <pasic@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:Real View" <qemu-arm@nongnu.org>,
+ Zongyuan Li <zongyuan.li@smartx.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v7CJpMQxw41a
+X-TUID: h77yVDCH9hgx
 
-On Wed, 2022-03-16 at 15:55 +0100, Cornelia Huck wrote:
-> Add 7.1 machine types for arm/i440fx/m68k/q35/s390x/spapr.
-> 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  hw/arm/virt.c              |  9 ++++++++-
->  hw/core/machine.c          |  3 +++
->  hw/i386/pc.c               |  3 +++
->  hw/i386/pc_piix.c          | 14 +++++++++++++-
->  hw/i386/pc_q35.c           | 13 ++++++++++++-
->  hw/m68k/virt.c             |  9 ++++++++-
->  hw/ppc/spapr.c             | 15 +++++++++++++--
->  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
->  include/hw/boards.h        |  3 +++
->  include/hw/i386/pc.h       |  3 +++
->  10 files changed, 79 insertions(+), 7 deletions(-)
-> 
+Signed-off-by: Zongyuan Li <zongyuan.li@smartx.com>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/811
+---
+ hw/arm/realview.c | 52 +++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 44 insertions(+), 8 deletions(-)
 
-For s390x:
-
-Reviewed-by: Eric Farman <farman@linux.ibm.com>
-
-..snip...
+diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+index 7b424e94a5..741ed5c2c7 100644
+--- a/hw/arm/realview.c
++++ b/hw/arm/realview.c
+@@ -7,16 +7,19 @@
+  * This code is licensed under the GPL.
+  */
+ 
++#include "hw/qdev-core.h"
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "cpu.h"
+ #include "hw/sysbus.h"
+ #include "hw/arm/boot.h"
+ #include "hw/arm/primecell.h"
++#include "hw/core/split-irq.h"
+ #include "hw/net/lan9118.h"
+ #include "hw/net/smc91c111.h"
+ #include "hw/pci/pci.h"
+ #include "net/net.h"
++#include "qom/object.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/boards.h"
+ #include "hw/i2c/i2c.h"
+@@ -27,6 +30,7 @@
+ #include "hw/irq.h"
+ #include "hw/i2c/arm_sbcon_i2c.h"
+ #include "hw/sd/sd.h"
++#include <stdarg.h>
+ 
+ #define SMP_BOOT_ADDR 0xe0000000
+ #define SMP_BOOTREG_ADDR 0x10000030
+@@ -53,6 +57,30 @@ static const int realview_board_id[] = {
+     0x76d
+ };
+ 
++static bool split_to_irq_varargs(Object *obj, int nums_of_output, ...) {
++    int i;
++    va_list va;
++    qemu_irq output;
++    Object *src_irq= object_new(TYPE_SPLIT_IRQ);
++
++    if (!object_property_set_int(src_irq, "num-lines", nums_of_output, &error_fatal)) {
++        return false;
++    }
++
++    if (!qdev_realize(DEVICE(src_irq), NULL, &error_fatal)) {
++        return false;
++    }
++
++    va_start(va, nums_of_output);
++    for (i = 0; i < nums_of_output; i++) {
++        output = va_arg(va, qemu_irq);
++        qdev_connect_gpio_out(DEVICE(src_irq), i, output);
++    }
++	va_end(va);
++
++    return true;
++}
++
+ static void realview_init(MachineState *machine,
+                           enum realview_board_type board_type)
+ {
+@@ -67,6 +95,8 @@ static void realview_init(MachineState *machine,
+     SysBusDevice *busdev;
+     qemu_irq pic[64];
+     qemu_irq mmc_irq[2];
++    Object *mmc_irq_for_ro = object_new(TYPE_SPLIT_IRQ);
++    Object *mmc_irq_for_cardin = object_new(TYPE_SPLIT_IRQ);
+     PCIBus *pci_bus = NULL;
+     NICInfo *nd;
+     DriveInfo *dinfo;
+@@ -229,14 +259,20 @@ static void realview_init(MachineState *machine,
+      * and the PL061 has them the other way about. Also the card
+      * detect line is inverted.
+      */
+-    mmc_irq[0] = qemu_irq_split(
+-        qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_WPROT),
+-        qdev_get_gpio_in(gpio2, 1));
+-    mmc_irq[1] = qemu_irq_split(
+-        qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_CARDIN),
+-        qemu_irq_invert(qdev_get_gpio_in(gpio2, 0)));
+-    qdev_connect_gpio_out_named(dev, "card-read-only", 0, mmc_irq[0]);
+-    qdev_connect_gpio_out_named(dev, "card-inserted", 0, mmc_irq[1]);
++    if (!split_to_irq_varargs(mmc_irq_for_ro, 2,
++                              qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_WPROT),
++                              qdev_get_gpio_in(gpio2, 1))) {
++        return;
++    }
++    qdev_connect_gpio_out_named(dev, "card-read-only", 0, DEVICE(mmc_irq_for_ro));
++
++    if (!split_to_irq_varargs(mmc_irq_for_cardin, 2,
++                              qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_CARDIN),
++                              qemu_irq_invert(qdev_get_gpio_in(gpio2, 0)))) {
++        return;
++    }
++    qdev_connect_gpio_out_named(dev, "card-inserted", 0, DEVICE(mmc_irq_for_cardin));
++
+     dinfo = drive_get(IF_SD, 0, 0);
+     if (dinfo) {
+         DeviceState *card;
+-- 
+2.34.0
 

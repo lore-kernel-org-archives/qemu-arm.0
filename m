@@ -1,123 +1,94 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1777980lfb;
-        Tue, 22 Mar 2022 12:04:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw7cJhAOOffAjD6uJCqzZHsfQd9OBi35449ve79ZUgtMknPEx/jPPL+oI/3/IHL0PHKB5jt
-X-Received: by 2002:a05:620a:294e:b0:67e:704d:7c55 with SMTP id n14-20020a05620a294e00b0067e704d7c55mr9671196qkp.118.1647975845784;
-        Tue, 22 Mar 2022 12:04:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647975845; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1817965lfb;
+        Tue, 22 Mar 2022 13:09:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwC0MvXa9rGRH+geH9T0+RXaZjiRbsLuHc/GfToWaPFskM6MZHDBMV29I9G65oryGlduEaH
+X-Received: by 2002:a25:24d0:0:b0:633:806d:143b with SMTP id k199-20020a2524d0000000b00633806d143bmr29257417ybk.416.1647979750035;
+        Tue, 22 Mar 2022 13:09:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647979750; cv=none;
         d=google.com; s=arc-20160816;
-        b=IlbHZ0sgca628Au+5T4/B8z4V0404GfppthNs6HElO3+H6/jpvu/tqGMvaI3srDsHR
-         UwFUCZb3ek6khWW+DLM+E/q63p7Yw8VCO+bqvom3Z6+8+w0O3YeX5XmNkzSPyZpSAGpj
-         uC7qR1gtL+ZeZSudwSaXssueQhBWYM22IJeI6+azNkQ8f70q8uZlzmQHLQqXQXA6hX7v
-         5xMY1ZpipBKWqunKWvklWg4aUmbtGWZWUBlqzk8ug92B8bj/cP5q0dwnw+UZQ5xfdJS8
-         pGGPdMFKQfnmn8mc0JiinVTzqnnqopCPbbfJEz4fZBs5gpXhG5siPaeiDxFskv6lL/Ir
-         9PNA==
+        b=YTKIS+qTwMT/LmH3sVSaL6qp8gziEyFa3aRP6m7+XhkBOfpb5zNSsn6WeoCe91CJZ9
+         GL0QRjx3vOLS+8r5DmQ8F9BMjmXujn9v5Qk1QY1rR0onSRWLH25RDvmNwrE0H5RCXnei
+         ly3A0M2WwDq/dy23m+zW+jCDf/ewLADFvgvOEjjP1Tied8WSSd93aqukh1vrH7zRcuiN
+         PSH5/aYQD+yMphg4AL5YtKNwlHdrZ6VdidrnpMTOUNJN5yz2au4KIr1faXcysl52UMz3
+         8FNgF7GbllTS6nYD0t4PLdd95PEsuamkS/Wlv6TwpE9pIjco+V6v/Sky6frXGlYnZXli
+         UaJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=5Xv/26Q6cemp19vo+R8RguchOww60BalgLqjn/TfuCI=;
-        b=xzc6L8gaxd+z7nSkBswI6Z3ya+ONKofKWV9qs6TkErNdsnSdnf/sD3Y5MXnsLHeytQ
-         PTM+IafC1diij9jFB57h8q9/sXCb3JKHnosQ6nBaI3A8VNkmY/Am1oaG4h/Fqxn0y2AQ
-         Xfo8USH1SPRMFX6ksDi64zKWX4sMpv696DtOvegto2idOCoeM+eThTCeHbXugIhSm8pN
-         XI4mGDMzqFnkzoNfSJuwYPIT578X8VNDkbXWkvL8vkH0uWmIPxvbvtSLk3ezknkqUG1T
-         BE20vFpzvGd7b5fLs68r+ZKC9d+7FyfCudyy9x90o67sa/Wd3yd57YziI3gnwSL0Dits
-         gGXQ==
+         :in-reply-to:references:to:from:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=YVFQMNkyFfxnAsJ6B7gM9Edp8bGzz/oM2x1q8BQwGEY=;
+        b=E8K7ny/Jon8RbPovEYssGq4QMBNuA6UbWxpwQ6Cd1FccJ/852qfdo2fsdr0w0u+OUO
+         GxQh7ROr+m1fGwYLjDuzijDKLihNiraLx9SXJ3Q/WW31Onb35XExFb/0dHejfXk3DT/s
+         MKIBgY/ESr53auCQO9YrlWzbhV6fs2pJI6e5KOnyChT4wtMlRCNSr88rybaQ2jrotQI5
+         5h6Gl0VSYKn91TFjfiOGA9i4TOmLjha/71E6G6O37LNa8NzsS+WUB1OXOnvOiWGyFwzZ
+         1XWJqKCtbtmFCohyUOqEXccHGyr+bJHIpKW1PX2hlnNDJB2F3xCHsO1B61pJdgKWRzxB
+         Ofsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lDY3Sgaa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q24-20020ac87358000000b002e201d022c6si2925424qtp.601.2022.03.22.12.04.05
+        by mx.google.com with ESMTPS id m7-20020a812607000000b002e5bb9dca62si10769406ywm.235.2022.03.22.13.09.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Mar 2022 12:04:05 -0700 (PDT)
+        Tue, 22 Mar 2022 13:09:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lDY3Sgaa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60620 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38252 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nWjnZ-0000ps-9k
-	for alex.bennee@linaro.org; Tue, 22 Mar 2022 15:04:05 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33804)
+	id 1nWkoX-0003Lv-B7
+	for alex.bennee@linaro.org; Tue, 22 Mar 2022 16:09:09 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nWjn6-0000pT-96; Tue, 22 Mar 2022 15:03:36 -0400
-Received: from [2607:f8b0:4864:20::102e] (port=46718
- helo=mail-pj1-x102e.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nWjn4-0000bs-UB; Tue, 22 Mar 2022 15:03:36 -0400
-Received: by mail-pj1-x102e.google.com with SMTP id
- bx24-20020a17090af49800b001c6872a9e4eso2982163pjb.5; 
- Tue, 22 Mar 2022 12:03:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :references:from:in-reply-to:content-transfer-encoding;
- bh=5Xv/26Q6cemp19vo+R8RguchOww60BalgLqjn/TfuCI=;
- b=lDY3Sgaa6f/Z5kBZ7kJunoaGajKeeWlOU88ADd5MpCqmJRUgYDLgifglmPUr3ib8K+
- NbOEMpOLZHlkzzg0iHJfbY6ZBumyBq3cAa59uMXuF3xSOtQvPjSuB0oIJr1QodQdEr8E
- j3cOK60MhZGC0VEFrE4fKa7perdsVuf1Wu6vSYnQShuLhHB9zMDENnN59OtnMexjSrTa
- FbTeMWb/59q9+PzX7Ebphx5u3SjApe5pjWkCPRhtlenrj00DI4IOA8qtJVAcNz60OjQq
- 4cVXPIhQ+unnuBZ57mb1jm3dhV5Kkuf50fnHnJnwmKt0yIYGX/cDs+WtsI8Fdn9JLQOT
- jVeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=5Xv/26Q6cemp19vo+R8RguchOww60BalgLqjn/TfuCI=;
- b=m+w3lApCnK1hn8GVGfpRc7Sxmeq0t4oJIhbzE5ieeJ1wKW/xTlT9qqfEftb4Uz5igb
- n60hwUUo+GRjvc5Wf+TuJdVwvrgm9vT8zsIXKqowTfd6P6xpBBeGtPryZ25UhrgEAnat
- YEDYVDK81Z5KxdJVi+C7rdLLREpHrgdGYg34BFZmwJPD3J+lV6wCg2t1OST0BjCAM5S4
- +pR8gKk5NKPKt6zZWR8AblU4kkYcTuLaq5Xe/qahFu/vNvEVlGF9KMv+smZwI/fI9gA5
- ZYuTD95aCnSgi+gCJ+RCSsuCuZOsXL1MWgeb8ubZ8ynW1i7dR6GB9wQOP+knjrGVShnN
- qoRg==
-X-Gm-Message-State: AOAM531olbRT0BXvAnbS+RIrXppjnU8At9l5mEhLakLi/NMhpR4awOHS
- y+FKu/EhS/wrrpl8eag/2kY=
-X-Received: by 2002:a17:902:ec8c:b0:154:7cee:774e with SMTP id
- x12-20020a170902ec8c00b001547cee774emr6847333plg.61.1647975813365; 
- Tue, 22 Mar 2022 12:03:33 -0700 (PDT)
-Received: from [192.168.1.33] (198.red-83-50-65.dynamicip.rima-tde.net.
- [83.50.65.198]) by smtp.gmail.com with ESMTPSA id
- ob8-20020a17090b390800b001c6a1e5595asm3855291pjb.21.2022.03.22.12.03.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 22 Mar 2022 12:03:32 -0700 (PDT)
-Message-ID: <6cd7b4bc-07de-6a73-ccaa-0e5c2a31adb9@gmail.com>
-Date: Tue, 22 Mar 2022 20:03:29 +0100
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1nWkoM-0003L9-4K; Tue, 22 Mar 2022 16:08:58 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:47953)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1nWkoK-0008QB-8f; Tue, 22 Mar 2022 16:08:57 -0400
+Received: from [192.168.100.1] ([82.142.12.150]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MDQqe-1nOT5O3ISk-00AXnI; Tue, 22 Mar 2022 21:08:52 +0100
+Message-ID: <6089ef2d-49e3-04c1-1e0a-e108d7fbd3c3@vivier.eu>
+Date: Tue, 22 Mar 2022 21:08:51 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.7.0
-Subject: Re: [PATCH for-7.0] hw/intc/arm_gicv3_its: Add missing newlines to
- process_mapc() logging
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220322102824.3474956-1-peter.maydell@linaro.org>
- <afdadedc-1d35-068b-ccde-12897f9bea34@gmail.com>
- <dab530d9-53d2-3d7d-c9ac-44906ba9b386@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <dab530d9-53d2-3d7d-c9ac-44906ba9b386@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH 2/3] linux-user/arm: Implement __kernel_cmpxchg with host
+ atomics
+Content-Language: fr
+From: Laurent Vivier <laurent@vivier.eu>
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+References: <20220314044305.138794-1-richard.henderson@linaro.org>
+ <20220314044305.138794-3-richard.henderson@linaro.org>
+ <b93a6c01-6153-b9c4-7a7f-db1daed88d9c@vivier.eu>
+In-Reply-To: <b93a6c01-6153-b9c4-7a7f-db1daed88d9c@vivier.eu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102e
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102e.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Provags-ID: V03:K1:o09Mqx13gnT9rS3HEotxsPQTTzqY2Rvy+JyZ9ihpb7sdfsP8/v3
+ SW2AVdJ4J6/c+wja++p1nXXzDLJIfTC8VX5JDZztXpxXVgmXV6/jz2JwQ3/irYTWyMzm9A3
+ Oc4X2aA1aSrbMSPtq+RyOWY9OP1thX7XvW9gaG9GvB+wJPS/rHk4UuBqMBwTJJmpsc9z2Jx
+ mokI5pIdhpKvvwOeFHTSQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:VwSUEDdbqqM=:abJWq5pU2RbGqzSqf5mro2
+ rOk07a4tZFmKsiRi5jieCx2Ey49yVCiKeywCaMWYM5atm/ThjRNKkiuxGruf5uRM+TABBLUE3
+ 7oA6nVFOX8cl/WF48diYqli4pl46Yssf2bsPC4+wGhz4eLvQU2lnRaZF/Fr3/ztFZweaNtVhW
+ HNOOgFVCU3zSOpNzSfgbl7OzQ9a9TBbK5vhVJP5oLzsj0cU3tKLTDVn+vz3CAZ45BcnZj2xUA
+ hSrXDUam7wd4RKzihO0B/BkExApVHzdDT6BX6LkQuYNVmrQWJEXWhHqdq53+BTvOUynuP8QSn
+ VfrW3Mnhry8gmydjuawxiWsLyR960TssP3WiPVfmsN9LlyrpsF6yAFBYfm2YGHIZZgKTL+EqE
+ ge59cKrIvKDGJUodl8HakHaYlikArZLBmGmZUnWFovnvmMB8RBc04uBb7qhJT5JRQbdbAieA6
+ DYanlcjrFVx/KgYcGZuKC2qvBTiSr7fYGIzP1Yj92V3dRKqZJsEDazYtIIFIFx2KIgbS30UsB
+ RBEHqm3IfV9qO0/ceIoIkSSw38YanHInmeX1p3bEFcDu9TGhK7AABq9GbMMoVxrhY33NwPLlj
+ eqj/LutSlVisrPeg8j2KN/wqcedZp7UJiNZ2Z3YwDmgCm2CWkzBNe/J8EWe9e3O5Y7J9hXC6P
+ Ppb8ILtC6w5P+CHGjtbbSnBkp+UUioPx6JX2Ys2pekfGylRYDnoAzeXPkc6Fq3me7Oso=
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,41 +101,146 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IdKgcO6fmtIx
+X-TUID: hIuQxUr/S5M8
 
-On 22/3/22 15:58, Richard Henderson wrote:
-> On 3/22/22 03:38, Philippe Mathieu-Daudé wrote:
->> On 22/3/22 11:28, Peter Maydell wrote:
->>> In commit 84d43d2e82da we rearranged the logging of errors in
->>> process_mapc(), and inadvertently dropped the trailing newlines
->>> from the log messages. Restore them.
->>>
->>> Fixes: 84d43d2e82da ("hw/intc/arm_gicv3_its: In MAPC with V=0, don't 
->>> check rdbase field")
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>> ---
->>>   hw/intc/arm_gicv3_its.c | 4 ++--
->>>   1 file changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
->>> index b96b874afdf..d9c741f5fdd 100644
->>> --- a/hw/intc/arm_gicv3_its.c
->>> +++ b/hw/intc/arm_gicv3_its.c
->>> @@ -524,12 +524,12 @@ static ItsCmdResult process_mapc(GICv3ITSState 
->>> *s, const uint64_t *cmdpkt)
->>>       trace_gicv3_its_cmd_mapc(icid, cte.rdbase, cte.valid);
->>>       if (icid >= s->ct.num_entries) {
->>> -        qemu_log_mask(LOG_GUEST_ERROR, "ITS MAPC: invalid ICID 
->>> 0x%d", icid);
->>> +        qemu_log_mask(LOG_GUEST_ERROR, "ITS MAPC: invalid ICID 
->>> 0x%d\n", icid);
+Le 22/03/2022 à 12:46, Laurent Vivier a écrit :
+> Le 14/03/2022 à 05:43, Richard Henderson a écrit :
+>> The existing implementation using start/end_exclusive
+>> does not provide atomicity across processes.
 >>
->> (pre-existing: "%u" format, since icid is uint32_t)
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   linux-user/arm/cpu_loop.c | 85 +++++++++++++++++++++++++++------------
+>>   1 file changed, 60 insertions(+), 25 deletions(-)
+>>
+>> diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
+>> index a0e43b261c..0122bb34f7 100644
+>> --- a/linux-user/arm/cpu_loop.c
+>> +++ b/linux-user/arm/cpu_loop.c
+>> @@ -75,7 +75,65 @@
+>>           put_user_u16(__x, (gaddr));                     \
+>>       })
+>> -/* Commpage handling -- there is no commpage for AArch64 */
+>> +/*
+>> + * Similar to code in accel/tcg/user-exec.c, but outside the execution loop.
+>> + * Must be called with mmap_lock.
+>> + */
+>> +static void *atomic_mmu_lookup(CPUArchState *env, uint32_t addr, int size)
+>> +{
+>> +    int need_flags = PAGE_READ | PAGE_WRITE_ORG | PAGE_VALID;
+>> +    int page_flags;
+>> +
+>> +    /* Enforce guest required alignment.  */
+>> +    if (unlikely(addr & (size - 1))) {
+>> +        force_sig_fault(TARGET_SIGBUS, TARGET_BUS_ADRALN, addr);
+>> +        return NULL;
+>> +    }
+>> +
+>> +    page_flags = page_get_flags(addr);
+>> +    if (unlikely((page_flags & need_flags) != need_flags)) {
+>> +        force_sig_fault(TARGET_SIGSEGV,
+>> +                        page_flags & PAGE_VALID ?
+>> +                        TARGET_SEGV_ACCERR : TARGET_SEGV_MAPERR, addr);
+>> +        return NULL;
+>> +    }
+>> +
+>> +    return g2h(env_cpu(env), addr);
+>> +}
+>> +
+>> +/*
+>> + * See the Linux kernel's Documentation/arm/kernel_user_helpers.rst
+>> + * Input:
+>> + * r0 = oldval
+>> + * r1 = newval
+>> + * r2 = pointer to target value
+>> + *
+>> + * Output:
+>> + * r0 = 0 if *ptr was changed, non-0 if no exchange happened
+>> + * C set if *ptr was changed, clear if no exchange happened
+>> + */
+>> +static void arm_kernel_cmpxchg32_helper(CPUARMState *env)
+>> +{
+>> +    uint32_t oldval, newval, val, addr, cpsr, *host_addr;
+>> +
+>> +    oldval = env->regs[0];
+>> +    newval = env->regs[1];
+>> +    addr = env->regs[2];
+>> +
+>> +    mmap_lock();
+>> +    host_addr = atomic_mmu_lookup(env, addr, 8);
+>> +    if (!host_addr) {
+>> +        mmap_unlock();
+>> +        return;
+>> +    }
+>> +
+>> +    val = qatomic_cmpxchg__nocheck(host_addr, oldval, newval);
+>> +    mmap_unlock();
+>> +
+>> +    cpsr = (val == oldval) * CPSR_C;
+>> +    cpsr_write(env, cpsr, CPSR_C, CPSRWriteByInstr);
+>> +    env->regs[0] = cpsr ? 0 : -1;
+>> +}
+>>   /*
+>>    * See the Linux kernel's Documentation/arm/kernel_user_helpers.txt
+>> @@ -153,36 +211,13 @@ static int
+>>   do_kernel_trap(CPUARMState *env)
+>>   {
+>>       uint32_t addr;
+>> -    uint32_t cpsr;
+>> -    uint32_t val;
+>>       switch (env->regs[15]) {
+>>       case 0xffff0fa0: /* __kernel_memory_barrier */
+>>           smp_mb();
+>>           break;
+>>       case 0xffff0fc0: /* __kernel_cmpxchg */
+>> -         /* XXX: This only works between threads, not between processes.
+>> -            It's probably possible to implement this with native host
+>> -            operations. However things like ldrex/strex are much harder so
+>> -            there's not much point trying.  */
+>> -        start_exclusive();
+>> -        cpsr = cpsr_read(env);
+>> -        addr = env->regs[2];
+>> -        /* FIXME: This should SEGV if the access fails.  */
+>> -        if (get_user_u32(val, addr))
+>> -            val = ~env->regs[0];
+>> -        if (val == env->regs[0]) {
+>> -            val = env->regs[1];
+>> -            /* FIXME: Check for segfaults.  */
+>> -            put_user_u32(val, addr);
+>> -            env->regs[0] = 0;
+>> -            cpsr |= CPSR_C;
+>> -        } else {
+>> -            env->regs[0] = -1;
+>> -            cpsr &= ~CPSR_C;
+>> -        }
+>> -        cpsr_write(env, cpsr, CPSR_C, CPSRWriteByInstr);
+>> -        end_exclusive();
+>> +        arm_kernel_cmpxchg32_helper(env);
+>>           break;
+>>       case 0xffff0fe0: /* __kernel_get_tls */
+>>           env->regs[0] = cpu_get_tls(env);
 > 
-> Worse than that: 0x%d is going to be *very* misleading.
-> Should fix to 0x%x right away.
+> Applied to my linux-user-for-7.0 branch.
+> 
+>
 
-Triple review is helpful :)
+I have removed this patch and the following one from the branch because it hangs when executed in an 
+armhf/bionic chroot the following example:
 
+cat > /tmp/hello.go <<EOF
+package main
+
+import "fmt"
+
+func main() {
+         fmt.Println("Hello Google!")
+}
+EOF
+
+go run /tmp/hello.go
+
+Thanks,
+Laurent

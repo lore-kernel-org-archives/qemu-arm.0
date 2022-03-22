@@ -1,100 +1,123 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1719005lfb;
-        Tue, 22 Mar 2022 10:32:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxu8zj8WXzK95+j6fcxoWX9VSuP2UHeYCFt7PoOgfIzd9SFLV5P4tjPSf8K5snbymRF+4w/
-X-Received: by 2002:a05:6902:1087:b0:628:788e:8a51 with SMTP id v7-20020a056902108700b00628788e8a51mr26166281ybu.242.1647970374328;
-        Tue, 22 Mar 2022 10:32:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647970374; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1777980lfb;
+        Tue, 22 Mar 2022 12:04:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw7cJhAOOffAjD6uJCqzZHsfQd9OBi35449ve79ZUgtMknPEx/jPPL+oI/3/IHL0PHKB5jt
+X-Received: by 2002:a05:620a:294e:b0:67e:704d:7c55 with SMTP id n14-20020a05620a294e00b0067e704d7c55mr9671196qkp.118.1647975845784;
+        Tue, 22 Mar 2022 12:04:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647975845; cv=none;
         d=google.com; s=arc-20160816;
-        b=hy52BRSX5IsrWflzHdQgJnlwwoD4s+rzRPQtPLW+gKEdrlG6MepDOHl52en0oPIAOz
-         O+jRBZCBWB9u+kpv4G6Z5Ml1nrHMieWXdjTd7KQuGB5pXntkrCdi9bgGehyaNtNRC+uK
-         CztJEynNZ48Mq6xqxddnr5r19CjOv3pT3X5Zb11g1E+NtBDHGDpBfSwK2C9NBaDODeR8
-         tF2zYpNw6r3AJSaWtyTPQT5Jr5M7lSndEycfpPPziZTVJL+POAVVvuIXXQEe5Sue/lOq
-         TayqTu2HC7mzLDDejMr/5eaO3Cm+QTbEJ9+g1o2Vg3gsb64h2y5FU3p3x5Cpwm8qlRg+
-         qMMg==
+        b=IlbHZ0sgca628Au+5T4/B8z4V0404GfppthNs6HElO3+H6/jpvu/tqGMvaI3srDsHR
+         UwFUCZb3ek6khWW+DLM+E/q63p7Yw8VCO+bqvom3Z6+8+w0O3YeX5XmNkzSPyZpSAGpj
+         uC7qR1gtL+ZeZSudwSaXssueQhBWYM22IJeI6+azNkQ8f70q8uZlzmQHLQqXQXA6hX7v
+         5xMY1ZpipBKWqunKWvklWg4aUmbtGWZWUBlqzk8ug92B8bj/cP5q0dwnw+UZQ5xfdJS8
+         pGGPdMFKQfnmn8mc0JiinVTzqnnqopCPbbfJEz4fZBs5gpXhG5siPaeiDxFskv6lL/Ir
+         9PNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=vkHPcyonuV02TmQc4w2ylO8lCuyB5BV0+WYWsNbH/qw=;
-        b=WUSHjB7gXnzdIg+V20kWwdqFWclDXQaJ4aBu8QFdwZf0AYcfLqTQG6/Kb9BwITT4V8
-         eTBXX6G91gE9vYnWELf7mT8sDGd4MTbUS3F3eDo4TKrKy5/ABNKrK3jIWrXTpWMAQmWo
-         CqWA9mGq2lU5/rxTiHKaNUq45skpr/y6c7/TkwNfAktpZRf1cbkUzRGN7aqZcPn34hMO
-         lH0vtQjtqjj9OIQexQa/DyynBik+BbRR6vdhza+MuOivwBUOp8rR0MbRrILcAZ00kEzz
-         LdqxFAWx7tuiwvSBKkrQ3ANqyYBtOt225dgPmdzDy/bBMCkfv/aWC3eCU4sHvHxqzt7b
-         7PWA==
+         :mime-version:date:message-id:dkim-signature;
+        bh=5Xv/26Q6cemp19vo+R8RguchOww60BalgLqjn/TfuCI=;
+        b=xzc6L8gaxd+z7nSkBswI6Z3ya+ONKofKWV9qs6TkErNdsnSdnf/sD3Y5MXnsLHeytQ
+         PTM+IafC1diij9jFB57h8q9/sXCb3JKHnosQ6nBaI3A8VNkmY/Am1oaG4h/Fqxn0y2AQ
+         Xfo8USH1SPRMFX6ksDi64zKWX4sMpv696DtOvegto2idOCoeM+eThTCeHbXugIhSm8pN
+         XI4mGDMzqFnkzoNfSJuwYPIT578X8VNDkbXWkvL8vkH0uWmIPxvbvtSLk3ezknkqUG1T
+         BE20vFpzvGd7b5fLs68r+ZKC9d+7FyfCudyy9x90o67sa/Wd3yd57YziI3gnwSL0Dits
+         gGXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lDY3Sgaa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e16-20020a813710000000b002e5c6d752casi9884467ywa.354.2022.03.22.10.32.54
+        by mx.google.com with ESMTPS id q24-20020ac87358000000b002e201d022c6si2925424qtp.601.2022.03.22.12.04.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Mar 2022 10:32:54 -0700 (PDT)
+        Tue, 22 Mar 2022 12:04:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38816 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lDY3Sgaa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nWiNJ-0002x5-JA
-	for alex.bennee@linaro.org; Tue, 22 Mar 2022 13:32:53 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40320)
+	id 1nWjnZ-0000ps-9k
+	for alex.bennee@linaro.org; Tue, 22 Mar 2022 15:04:05 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nWiN9-0002vd-ON
- for qemu-arm@nongnu.org; Tue, 22 Mar 2022 13:32:43 -0400
-Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117]:58077)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nWiN7-00077b-D2
- for qemu-arm@nongnu.org; Tue, 22 Mar 2022 13:32:43 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.141])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id EF78F2B42D;
- Tue, 22 Mar 2022 17:32:37 +0000 (UTC)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Tue, 22 Mar
- 2022 18:32:36 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G0033fdf3cc3-41e6-4278-8d23-5b5370c5aaef,
- 469EFB141CFE40B2A85C1EB4DF33FF44F3CA3D4D) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <fdbfd27a-4ed6-9cf9-ec49-da77d980ce3d@kaod.org>
-Date: Tue, 22 Mar 2022 18:32:36 +0100
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nWjn6-0000pT-96; Tue, 22 Mar 2022 15:03:36 -0400
+Received: from [2607:f8b0:4864:20::102e] (port=46718
+ helo=mail-pj1-x102e.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nWjn4-0000bs-UB; Tue, 22 Mar 2022 15:03:36 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ bx24-20020a17090af49800b001c6872a9e4eso2982163pjb.5; 
+ Tue, 22 Mar 2022 12:03:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :references:from:in-reply-to:content-transfer-encoding;
+ bh=5Xv/26Q6cemp19vo+R8RguchOww60BalgLqjn/TfuCI=;
+ b=lDY3Sgaa6f/Z5kBZ7kJunoaGajKeeWlOU88ADd5MpCqmJRUgYDLgifglmPUr3ib8K+
+ NbOEMpOLZHlkzzg0iHJfbY6ZBumyBq3cAa59uMXuF3xSOtQvPjSuB0oIJr1QodQdEr8E
+ j3cOK60MhZGC0VEFrE4fKa7perdsVuf1Wu6vSYnQShuLhHB9zMDENnN59OtnMexjSrTa
+ FbTeMWb/59q9+PzX7Ebphx5u3SjApe5pjWkCPRhtlenrj00DI4IOA8qtJVAcNz60OjQq
+ 4cVXPIhQ+unnuBZ57mb1jm3dhV5Kkuf50fnHnJnwmKt0yIYGX/cDs+WtsI8Fdn9JLQOT
+ jVeA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=5Xv/26Q6cemp19vo+R8RguchOww60BalgLqjn/TfuCI=;
+ b=m+w3lApCnK1hn8GVGfpRc7Sxmeq0t4oJIhbzE5ieeJ1wKW/xTlT9qqfEftb4Uz5igb
+ n60hwUUo+GRjvc5Wf+TuJdVwvrgm9vT8zsIXKqowTfd6P6xpBBeGtPryZ25UhrgEAnat
+ YEDYVDK81Z5KxdJVi+C7rdLLREpHrgdGYg34BFZmwJPD3J+lV6wCg2t1OST0BjCAM5S4
+ +pR8gKk5NKPKt6zZWR8AblU4kkYcTuLaq5Xe/qahFu/vNvEVlGF9KMv+smZwI/fI9gA5
+ ZYuTD95aCnSgi+gCJ+RCSsuCuZOsXL1MWgeb8ubZ8ynW1i7dR6GB9wQOP+knjrGVShnN
+ qoRg==
+X-Gm-Message-State: AOAM531olbRT0BXvAnbS+RIrXppjnU8At9l5mEhLakLi/NMhpR4awOHS
+ y+FKu/EhS/wrrpl8eag/2kY=
+X-Received: by 2002:a17:902:ec8c:b0:154:7cee:774e with SMTP id
+ x12-20020a170902ec8c00b001547cee774emr6847333plg.61.1647975813365; 
+ Tue, 22 Mar 2022 12:03:33 -0700 (PDT)
+Received: from [192.168.1.33] (198.red-83-50-65.dynamicip.rima-tde.net.
+ [83.50.65.198]) by smtp.gmail.com with ESMTPSA id
+ ob8-20020a17090b390800b001c6a1e5595asm3855291pjb.21.2022.03.22.12.03.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 22 Mar 2022 12:03:32 -0700 (PDT)
+Message-ID: <6cd7b4bc-07de-6a73-ccaa-0e5c2a31adb9@gmail.com>
+Date: Tue, 22 Mar 2022 20:03:29 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.2
-Subject: Re: [PATCH v1 4/9] aspeed/wdt: Add AST1030 support
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
+Subject: Re: [PATCH for-7.0] hw/intc/arm_gicv3_its: Add missing newlines to
+ process_mapc() logging
 Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, Cleber Rosa
- <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
- Leal <bleal@redhat.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20220322025154.3989-1-jamin_lin@aspeedtech.com>
- <20220322025154.3989-5-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220322025154.3989-5-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+To: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20220322102824.3474956-1-peter.maydell@linaro.org>
+ <afdadedc-1d35-068b-ccde-12897f9bea34@gmail.com>
+ <dab530d9-53d2-3d7d-c9ac-44906ba9b386@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <dab530d9-53d2-3d7d-c9ac-44906ba9b386@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 61a5f6a0-3472-4e15-b4e3-bd30a8bc4d63
-X-Ovh-Tracer-Id: 591378928570174395
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudeghedgleelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehtrhhohigplhgvvgesrghsphgvvgguthgvtghhrdgtohhm
-Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
- helo=1.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102e
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102e.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,97 +130,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: troy_lee@aspeedtech.com, steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pe82dOEsIBga
+X-TUID: IdKgcO6fmtIx
 
-On 3/22/22 03:51, Jamin Lin wrote:
-> From: Steven Lee <steven_lee@aspeedtech.com>
+On 22/3/22 15:58, Richard Henderson wrote:
+> On 3/22/22 03:38, Philippe Mathieu-Daudé wrote:
+>> On 22/3/22 11:28, Peter Maydell wrote:
+>>> In commit 84d43d2e82da we rearranged the logging of errors in
+>>> process_mapc(), and inadvertently dropped the trailing newlines
+>>> from the log messages. Restore them.
+>>>
+>>> Fixes: 84d43d2e82da ("hw/intc/arm_gicv3_its: In MAPC with V=0, don't 
+>>> check rdbase field")
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>> ---
+>>>   hw/intc/arm_gicv3_its.c | 4 ++--
+>>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+>>> index b96b874afdf..d9c741f5fdd 100644
+>>> --- a/hw/intc/arm_gicv3_its.c
+>>> +++ b/hw/intc/arm_gicv3_its.c
+>>> @@ -524,12 +524,12 @@ static ItsCmdResult process_mapc(GICv3ITSState 
+>>> *s, const uint64_t *cmdpkt)
+>>>       trace_gicv3_its_cmd_mapc(icid, cte.rdbase, cte.valid);
+>>>       if (icid >= s->ct.num_entries) {
+>>> -        qemu_log_mask(LOG_GUEST_ERROR, "ITS MAPC: invalid ICID 
+>>> 0x%d", icid);
+>>> +        qemu_log_mask(LOG_GUEST_ERROR, "ITS MAPC: invalid ICID 
+>>> 0x%d\n", icid);
+>>
+>> (pre-existing: "%u" format, since icid is uint32_t)
 > 
-> AST1030 wdt controller is similiar to AST2600's wdt, but it has extra
-> registers.
+> Worse than that: 0x%d is going to be *very* misleading.
+> Should fix to 0x%x right away.
 
-yes. We don't implement all AST2600 registers either but, one day, we
-should tune the mmio size better for each SoC and output an unimplemented
-log.
-  
-That's ok for now.
-
-> Introduce ast1030 object class and increse the number of regs(offset) of
-
-                        I fixed the typo ^
-
-> ast1030 model.
-> 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
-> ---
->   hw/watchdog/wdt_aspeed.c         | 24 ++++++++++++++++++++++++
->   include/hw/watchdog/wdt_aspeed.h |  1 +
->   2 files changed, 25 insertions(+)
-> 
-> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> index 386928e9c0..31855afdf4 100644
-> --- a/hw/watchdog/wdt_aspeed.c
-> +++ b/hw/watchdog/wdt_aspeed.c
-> @@ -391,6 +391,29 @@ static const TypeInfo aspeed_2600_wdt_info = {
->       .class_init = aspeed_2600_wdt_class_init,
->   };
->   
-> +static void aspeed_1030_wdt_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
-> +
-> +    dc->desc = "ASPEED 1030 Watchdog Controller";
-> +    awc->offset = 0x80;
-> +    awc->ext_pulse_width_mask = 0xfffff; /* TODO */
-> +    awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
-> +    awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
-> +    awc->wdt_reload = aspeed_wdt_reload_1mhz;
-> +    awc->sanitize_ctrl = aspeed_2600_sanitize_ctrl;
-> +    awc->default_status = 0x014FB180;
-> +    awc->default_reload_value = 0x014FB180;
-> +}
-> +
-> +static const TypeInfo aspeed_1030_wdt_info = {
-> +    .name = TYPE_ASPEED_1030_WDT,
-> +    .parent = TYPE_ASPEED_WDT,
-> +    .instance_size = sizeof(AspeedWDTState),
-> +    .class_init = aspeed_1030_wdt_class_init,
-> +};
-> +
->   static void wdt_aspeed_register_types(void)
->   {
->       watchdog_add_model(&model);
-> @@ -398,6 +421,7 @@ static void wdt_aspeed_register_types(void)
->       type_register_static(&aspeed_2400_wdt_info);
->       type_register_static(&aspeed_2500_wdt_info);
->       type_register_static(&aspeed_2600_wdt_info);
-> +    type_register_static(&aspeed_1030_wdt_info);
->   }
->   
->   type_init(wdt_aspeed_register_types)
-> diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
-> index 0e37f39f38..dfa5dfa424 100644
-> --- a/include/hw/watchdog/wdt_aspeed.h
-> +++ b/include/hw/watchdog/wdt_aspeed.h
-> @@ -19,6 +19,7 @@ OBJECT_DECLARE_TYPE(AspeedWDTState, AspeedWDTClass, ASPEED_WDT)
->   #define TYPE_ASPEED_2400_WDT TYPE_ASPEED_WDT "-ast2400"
->   #define TYPE_ASPEED_2500_WDT TYPE_ASPEED_WDT "-ast2500"
->   #define TYPE_ASPEED_2600_WDT TYPE_ASPEED_WDT "-ast2600"
-> +#define TYPE_ASPEED_1030_WDT TYPE_ASPEED_WDT "-ast1030"
->   
->   #define ASPEED_WDT_REGS_MAX        (0x20 / 4)
->   
+Triple review is helpful :)
 

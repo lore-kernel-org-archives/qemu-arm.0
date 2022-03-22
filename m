@@ -1,53 +1,53 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1217528lfb;
-        Mon, 21 Mar 2022 19:53:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCU1LaK1v5/2wUF5mEIQLP4e9AblcMMT7Y11HTA8f79TnHnby1YtzeZjeIoJa8BXjyHOxW
-X-Received: by 2002:a05:622a:190e:b0:2e1:d655:d447 with SMTP id w14-20020a05622a190e00b002e1d655d447mr18594699qtc.571.1647917596806;
-        Mon, 21 Mar 2022 19:53:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647917596; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1217531lfb;
+        Mon, 21 Mar 2022 19:53:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxR/9iesdE3l+0dmdWb5HdXPId9P7Jv2o4XGiH7UOI/WCiLUEnlTvlm7+j9RUh7uaO7wCtt
+X-Received: by 2002:a05:622a:1447:b0:2e1:c405:b05b with SMTP id v7-20020a05622a144700b002e1c405b05bmr19467793qtx.626.1647917597561;
+        Mon, 21 Mar 2022 19:53:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1647917597; cv=none;
         d=google.com; s=arc-20160816;
-        b=a2bj4V4UwM6kRop0DPLxMqVmwdd9z9QU6dGWwHUA7b+xjqOFxpn0Jom72CFKfIdr8S
-         X80+pXxEChJx1mSLaN+cBDxqvbmr+lhh9wr0tPImQJcn/VSxE7ywo1Jet6eLQdxf1qdp
-         c3mUcdeW/6cMpAkbw677CAtorE2Uz0CwCO0FVDNFO/RohyrvMxHx8DJNaxvR7Sayo4Rc
-         Sxh2cMxnWC3chuOh4AJ5ytPrgkCbWpmtLVqKeqEpVi3pXsE3sSBUc9PtLQtXJDbPmnW8
-         gPKoDf2boluxrkwpgj4Dumgviv1AfQTc04gu/i3lbG8cfJQNNnS6DIi/UvOnk3ogUbZC
-         /d/Q==
+        b=zck0c/gP4ugzifiNOPQXCYYMpWi1Poj+AUHAfv/iGbsamWQ1t7wtDq2/Z+f55d/QSW
+         ycQEanJUsNDcsMshgKPeG7UGb8mDFOGPrNPj4A15qjiTYP3D1MMJXp0zqbGA1kTTSR34
+         dP7HiLDUAo7gIcbwsoiTu9uUtha5Hv3ZB9mzBOr4grOTwWdUe9V5M/N4J6Yvnh3RYyye
+         7xyk8wEB5vbDPhwudtSH6Ft5y6/C2JipvnTMrrutEvd3AbjkUBfeFLA0vOq/GX7JequI
+         c0obpD9FZ6xNuzjXGdBuEM+Wvub3KSfcHuj8h5F6O/wXhsXWj9ws6fEc7j5utGc2+gF2
+         H0zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=JEMyGq8qI/8dda8eD3xUMLwz5Ba3XcmR5B5X2fnxrW4=;
-        b=zxWQQ9WkeM2UzBLwx8reoyR3PJI9/cstWOPQN0WIGX4d2WNzQUnIocnUZmdf02mWCC
-         Gmm/neSM8z6ao5+stA1ns9mB0wyGvJF+5kNNElzryoTyNBgSG73A6TR3lqO/XfzfY5mY
-         37F7PiT4phEhEhXyyj/rHscc+4bGhPfMKVGz3TLHQwy/tUt/q5UoCImdYY4s8PJOddOJ
-         9Vp8vwzWc8bs4xWmQfMEbX7E1Wx5y91AhoNn5AeM4waUYy9AXUjoFcKuXRJkpCoE91dQ
-         pI02h6omPmKxa/Lp7qnSL8xc8IPkAnGP4LmvVmAsc/Zmx9qFM+xQ+arneqkhyXwkfF/m
-         aZXQ==
+        bh=wmQXcmkQJwOm9DRJlZMQhYJnfbyrIQ9+f60JoZUcQ9M=;
+        b=YiV7usDQ6EXVOzphAh0kMIiS6RqIAXlhOKBBy2B0EkW+1iRNp2BVrm9O+IH2eHuTrH
+         1hvOZTehugVfLgt/HJ0vax428tkZnrHYn2E3dHo0c+Wxt1N03fUTtFfyKW+gKYC4uKFo
+         OuCOJaglZAfOlffYKBGGAEyIXSVuwlS6d7/tfPtC/zbAMnRQ6T8Quva/lQ2lSVjDjzMT
+         oUiEw38wEoUMo07F7vqs37I2hdBsCUgRSqdn+Mj3Z3SncoU4wEnAcQ9/uzXlMHFiqL7t
+         kLpxjUXS7za/u4fTdPxsULC+QzU5genCkTF1kWKfp2G42alj5mGpc+X0vc4pmXD05/I3
+         r0Ng==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p64-20020a0c90c6000000b00440e46a7c52si2690836qvp.240.2022.03.21.19.53.16
+        by mx.google.com with ESMTPS id j14-20020a0ce00e000000b00440e46a7b79si2313216qvk.23.2022.03.21.19.53.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Mar 2022 19:53:16 -0700 (PDT)
+        Mon, 21 Mar 2022 19:53:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37726 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nWUe4-00030U-AA
-	for alex.bennee@linaro.org; Mon, 21 Mar 2022 22:53:16 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43948)
+	id 1nWUe5-00030k-1F
+	for alex.bennee@linaro.org; Mon, 21 Mar 2022 22:53:17 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43950)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1nWUds-0002zG-OG; Mon, 21 Mar 2022 22:53:04 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:29236)
+ id 1nWUds-0002zN-Tf; Mon, 21 Mar 2022 22:53:04 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:21205)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1nWUdp-0001uz-6f; Mon, 21 Mar 2022 22:53:04 -0400
+ id 1nWUdp-0001v4-7c; Mon, 21 Mar 2022 22:53:04 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 22M2fUr6078439;
+ by twspam01.aspeedtech.com with ESMTP id 22M2fU6Q078440;
  Tue, 22 Mar 2022 10:41:30 +0800 (GMT-8)
  (envelope-from jamin_lin@aspeedtech.com)
 Received: from localhost.localdomain (192.168.70.87) by TWMBX02.aspeed.com
@@ -62,9 +62,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "Beraldo Leal" <bleal@redhat.com>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Subject: [PATCH v1 3/9] aspeed/wdt: Fix ast2500/ast2600 default reload value.
-Date: Tue, 22 Mar 2022 10:51:48 +0800
-Message-ID: <20220322025154.3989-4-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 4/9] aspeed/wdt: Add AST1030 support
+Date: Tue, 22 Mar 2022 10:51:49 +0800
+Message-ID: <20220322025154.3989-5-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220322025154.3989-1-jamin_lin@aspeedtech.com>
 References: <20220322025154.3989-1-jamin_lin@aspeedtech.com>
@@ -74,7 +74,7 @@ X-Originating-IP: [192.168.70.87]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 22M2fUr6078439
+X-MAIL: twspam01.aspeedtech.com 22M2fU6Q078440
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -98,78 +98,77 @@ Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
  steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QsCRW8JWvcFl
+X-TUID: hr9mIRrtYNvv
 
 From: Steven Lee <steven_lee@aspeedtech.com>
 
-Per ast2500_2520_datasheet_v1.8 and ast2600v11.pdf, the default value of
-WDT00 and WDT04 is 0x014FB180 for ast2500/ast2600.
-Add default_status and default_reload_value attributes for storing
-counter status and reload value as they are different from ast2400.
+AST1030 wdt controller is similiar to AST2600's wdt, but it has extra
+registers.
+Introduce ast1030 object class and increse the number of regs(offset) of
+ast1030 model.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 ---
- hw/watchdog/wdt_aspeed.c         | 10 ++++++++--
- include/hw/watchdog/wdt_aspeed.h |  2 ++
- 2 files changed, 10 insertions(+), 2 deletions(-)
+ hw/watchdog/wdt_aspeed.c         | 24 ++++++++++++++++++++++++
+ include/hw/watchdog/wdt_aspeed.h |  1 +
+ 2 files changed, 25 insertions(+)
 
 diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index 6aa6f90b66..386928e9c0 100644
+index 386928e9c0..31855afdf4 100644
 --- a/hw/watchdog/wdt_aspeed.c
 +++ b/hw/watchdog/wdt_aspeed.c
-@@ -232,8 +232,8 @@ static void aspeed_wdt_reset(DeviceState *dev)
-     AspeedWDTState *s = ASPEED_WDT(dev);
-     AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(s);
- 
--    s->regs[WDT_STATUS] = 0x3EF1480;
--    s->regs[WDT_RELOAD_VALUE] = 0x03EF1480;
-+    s->regs[WDT_STATUS] = awc->default_status;
-+    s->regs[WDT_RELOAD_VALUE] = awc->default_reload_value;
-     s->regs[WDT_RESTART] = 0;
-     s->regs[WDT_CTRL] = awc->sanitize_ctrl(0);
-     s->regs[WDT_RESET_WIDTH] = 0xFF;
-@@ -319,6 +319,8 @@ static void aspeed_2400_wdt_class_init(ObjectClass *klass, void *data)
-     awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
-     awc->wdt_reload = aspeed_wdt_reload;
-     awc->sanitize_ctrl = aspeed_2400_sanitize_ctrl;
-+    awc->default_status = 0x03EF1480;
-+    awc->default_reload_value = 0x03EF1480;
- }
- 
- static const TypeInfo aspeed_2400_wdt_info = {
-@@ -355,6 +357,8 @@ static void aspeed_2500_wdt_class_init(ObjectClass *klass, void *data)
-     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
-     awc->wdt_reload = aspeed_wdt_reload_1mhz;
-     awc->sanitize_ctrl = aspeed_2500_sanitize_ctrl;
-+    awc->default_status = 0x014FB180;
-+    awc->default_reload_value = 0x014FB180;
- }
- 
- static const TypeInfo aspeed_2500_wdt_info = {
-@@ -376,6 +380,8 @@ static void aspeed_2600_wdt_class_init(ObjectClass *klass, void *data)
-     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
-     awc->wdt_reload = aspeed_wdt_reload_1mhz;
-     awc->sanitize_ctrl = aspeed_2600_sanitize_ctrl;
-+    awc->default_status = 0x014FB180;
-+    awc->default_reload_value = 0x014FB180;
- }
- 
- static const TypeInfo aspeed_2600_wdt_info = {
-diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
-index f945cd6c58..0e37f39f38 100644
---- a/include/hw/watchdog/wdt_aspeed.h
-+++ b/include/hw/watchdog/wdt_aspeed.h
-@@ -45,6 +45,8 @@ struct AspeedWDTClass {
-     void (*reset_pulse)(AspeedWDTState *s, uint32_t property);
-     void (*wdt_reload)(AspeedWDTState *s);
-     uint64_t (*sanitize_ctrl)(uint64_t data);
-+    uint32_t default_status;
-+    uint32_t default_reload_value;
+@@ -391,6 +391,29 @@ static const TypeInfo aspeed_2600_wdt_info = {
+     .class_init = aspeed_2600_wdt_class_init,
  };
  
- #endif /* WDT_ASPEED_H */
++static void aspeed_1030_wdt_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
++
++    dc->desc = "ASPEED 1030 Watchdog Controller";
++    awc->offset = 0x80;
++    awc->ext_pulse_width_mask = 0xfffff; /* TODO */
++    awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
++    awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
++    awc->wdt_reload = aspeed_wdt_reload_1mhz;
++    awc->sanitize_ctrl = aspeed_2600_sanitize_ctrl;
++    awc->default_status = 0x014FB180;
++    awc->default_reload_value = 0x014FB180;
++}
++
++static const TypeInfo aspeed_1030_wdt_info = {
++    .name = TYPE_ASPEED_1030_WDT,
++    .parent = TYPE_ASPEED_WDT,
++    .instance_size = sizeof(AspeedWDTState),
++    .class_init = aspeed_1030_wdt_class_init,
++};
++
+ static void wdt_aspeed_register_types(void)
+ {
+     watchdog_add_model(&model);
+@@ -398,6 +421,7 @@ static void wdt_aspeed_register_types(void)
+     type_register_static(&aspeed_2400_wdt_info);
+     type_register_static(&aspeed_2500_wdt_info);
+     type_register_static(&aspeed_2600_wdt_info);
++    type_register_static(&aspeed_1030_wdt_info);
+ }
+ 
+ type_init(wdt_aspeed_register_types)
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index 0e37f39f38..dfa5dfa424 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -19,6 +19,7 @@ OBJECT_DECLARE_TYPE(AspeedWDTState, AspeedWDTClass, ASPEED_WDT)
+ #define TYPE_ASPEED_2400_WDT TYPE_ASPEED_WDT "-ast2400"
+ #define TYPE_ASPEED_2500_WDT TYPE_ASPEED_WDT "-ast2500"
+ #define TYPE_ASPEED_2600_WDT TYPE_ASPEED_WDT "-ast2600"
++#define TYPE_ASPEED_1030_WDT TYPE_ASPEED_WDT "-ast1030"
+ 
+ #define ASPEED_WDT_REGS_MAX        (0x20 / 4)
+ 
 -- 
 2.17.1
 

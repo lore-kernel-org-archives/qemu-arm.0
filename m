@@ -1,112 +1,108 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2587802lfb;
-        Wed, 23 Mar 2022 10:48:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyoVo6ohQOjuNc3jL+7n6gwNL7aPSuWSO0+UBic8obgWboXI8lIHDjU3s7YC4tjujthtFVO
-X-Received: by 2002:a25:ed0e:0:b0:633:8eba:b89f with SMTP id k14-20020a25ed0e000000b006338ebab89fmr1164649ybh.90.1648057693490;
-        Wed, 23 Mar 2022 10:48:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648057693; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2609839lfb;
+        Wed, 23 Mar 2022 11:16:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzK3dIuAzIC0zfHW2H7ENXW80P6ZIJBLfCIZkq6K78XpyCMW06CbotUwLt6vHK1ILlBI2XB
+X-Received: by 2002:a81:9249:0:b0:2e6:5068:88d with SMTP id j70-20020a819249000000b002e65068088dmr1344530ywg.222.1648059376906;
+        Wed, 23 Mar 2022 11:16:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648059376; cv=none;
         d=google.com; s=arc-20160816;
-        b=MkpKWJPryrV9rjAZL4eIEhWoNLMrGd0jbMIgc8Jy5+SpR2OmUJpvlHptWPr4P97KSj
-         5yq3Zd7BwKhQ+m1x8UW1RAVurTKzZ5Opac2mCouVHTQpV4IFKTnSfbeoj8ezDkaAVZbF
-         2btOIAZgKZZwOUJLC2eYRkJcaTiQEca4oqK32OxqXeRSKM/dLWesprSMyWyIOfAE8qZi
-         6HcODIgT+tVghAJhgk/i8axuqiq6mjsLdIuaXO5sXoFlDTMO33HIlg+RjyUQ7XuGoj6c
-         me6tyNJNDtdCf/UzS7qFvpS+HfejUwMh+OeiRNv4ga+Yb8iDYU5PkT1A+roe/+hBKXOv
-         Idug==
+        b=oYjVDjbZIfCfyHSewvSroCsGtTNOnSuD2zz6WE70fxHyIGLQ0hrh7IkZfqlKgDaZmS
+         5ldU3pPP1MbPDG4EGaud7CsHkhJeBSDlGncvauKF+sJmTqdtFDRwt6WObePIJardx2Rs
+         61cJYW+RAYlGfIqVwnwmyhGLvn0tUAQVBfFe+NJj7QWnMMk9RL9etTAawNl4bxqJDiX0
+         Gy2dVQdyM1uUPqJA/JqdIi46DFHXkMScAJrYJW6HFZDqz7AGxz7bCl5qNV8tgxMsQ1co
+         VrQsBRcZmqRzNxV7+rX/5zW5fgUWCssogbbcammsX70Pq9wVWTRoT0MwJj0fBL60u964
+         rv7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=SXPFckhjjqOPFa0Mt1YU+0EelaVejpES613ER/BKATM=;
-        b=aWHInAmRSphshQg5BzMnLbSaiAcOHdEWUgdE2BjwhAxjxVhqi8MftF5qVhnKi/qP2n
-         2f9vLCQp5/2juHmU2CNMJoV+R+Dyfe92ESh9vRN/neO0ikjJwm2FRQa7q+l7z+ZPK+JS
-         weMWPfUceAnusOhHOb1DdKoVXDVGHE6hgcQJJ0cQMg9K/FdJKovL+9yVOcHuHSqZtTf3
-         fvnRpW5eNjoinKxJK2RG1S4VcZpiAEHV9nrqOVdjJPptw7Fzx55Ik4QE9EjJpvkdG+oQ
-         eZ6bmMi7QCUuHimICG53yCeyQhgPb+y3TMnpm6/bB0yFqW65/4Bh/k+X44Sgo4yXlIFz
-         1W3A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=sfEZUcS/C98xKrVfhmHvgZOLayihYr0E27aKEaFeNsg=;
+        b=AaGHBjwQg9Xm4h5Pi8k+hY97F1DlYVnSVsT3VzWHEtBthfdnCt15pqXI9JCSdLAccN
+         AUSkcvlVjlN4T826J4U21725OVGZE0zUwGbDpwwQDS9pkYuXNma9xTUvAw9a019Wrhf8
+         vnxCEtPu+PeCOsrTWlsT9rneurDj0rneG7i/QdXoO6Y8ALZnAcNHF2l+s+pMOPPNO/Pu
+         AX+5UkTrEwRud1lweX7kOjdsA4DXz8AYREm4NW0dCds/or3uXW01gEpBJ2CFQpqeG2tc
+         KJo5UyxpbmScpE4+m2kSFNgjEUoWxcs0seZxbprx7ZWmom9Zg5X3HwK+iv3W2L3jM1kz
+         PsHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=6uSggFfA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=W8I0tiiE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12-20020a25a2cc000000b0063399404657si17595121ybn.705.2022.03.23.10.48.13
+        by mx.google.com with ESMTPS id y138-20020a0dd690000000b002e5bb9dcaabsi12180508ywd.308.2022.03.23.11.16.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Mar 2022 10:48:13 -0700 (PDT)
+        Wed, 23 Mar 2022 11:16:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=6uSggFfA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48304 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=W8I0tiiE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42950 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nX55g-0007e4-MU
-	for alex.bennee@linaro.org; Wed, 23 Mar 2022 13:48:12 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46824)
+	id 1nX5Wq-0000jA-7q
+	for alex.bennee@linaro.org; Wed, 23 Mar 2022 14:16:16 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zongyuan.li@smartx.com>)
- id 1nX4u4-0008H0-JO
- for qemu-arm@nongnu.org; Wed, 23 Mar 2022 13:36:14 -0400
-Received: from [2607:f8b0:4864:20::535] (port=38885
- helo=mail-pg1-x535.google.com)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nX5WP-0000hz-1X
+ for qemu-arm@nongnu.org; Wed, 23 Mar 2022 14:15:55 -0400
+Received: from [2607:f8b0:4864:20::112e] (port=43313
+ helo=mail-yw1-x112e.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zongyuan.li@smartx.com>)
- id 1nX4u3-0005Ti-3x
- for qemu-arm@nongnu.org; Wed, 23 Mar 2022 13:36:12 -0400
-Received: by mail-pg1-x535.google.com with SMTP id s72so1713516pgc.5
- for <qemu-arm@nongnu.org>; Wed, 23 Mar 2022 10:36:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=smartx-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=SXPFckhjjqOPFa0Mt1YU+0EelaVejpES613ER/BKATM=;
- b=6uSggFfAaQs4U1h+AV6Kwn440TRAo/4Iv1yz4PaZlSeQubyjJ1+82P1uH1ezrPaUEw
- oi/I3QPxPmVHedOVSgNK3BYpI52OcZRNSFUr99irgY9YKezA9twR2hdPCO4tJzzJYf0r
- +FLCvIzElhQYkZ7Ax4zoyl9YnYKms2va2HRhW+CD3LLiVZyn7iNda2sHw0/DeyYClm0J
- cpkKXoyWxILWtu0FVnb7l/GCYjNHRkuXM1E/FKZB8rohNjDI8ZKHznb3bXhcOdavqCbR
- 66/kHKmPbn185kWem1G0xDmJjWQ4rDu6FMcZzS9TBjSJWYlnWBkxnP15VquMAOvitNVw
- W38A==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nX5WM-0000Df-KT
+ for qemu-arm@nongnu.org; Wed, 23 Mar 2022 14:15:48 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-2e5e31c34bfso26803677b3.10
+ for <qemu-arm@nongnu.org>; Wed, 23 Mar 2022 11:15:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=sfEZUcS/C98xKrVfhmHvgZOLayihYr0E27aKEaFeNsg=;
+ b=W8I0tiiE+WkttuKYh53KNcYX2/hAMtf/pYq+R6P8hbI8KRwsvnl5ozUQa65AZYlZqC
+ 8UjeQ6Afpxg3+FMax5++tTdvVr3Oh0Nk3WMKou9VKSGTE0CJCZY0zEjNgDGznS0ClX5U
+ S5XUwgnU4+WzUoHeV1XFF6ISkhplgGpomtJwm0qk7ncyP3BVksBkvfVXd+zMIhXyyO+q
+ DWHCSFl5GM4MUL2heh2CuBm1Q8zaspw2po6OkyRERN4zmNHtoXwPrzrdmNqenhnpxHnX
+ lE33QCaZ451/G3YCERq8+zWzBlaNqh0Mn3yOoMiYSvzrpHLA2Kc9l+xoofLkW0O7pQkx
+ xTxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=SXPFckhjjqOPFa0Mt1YU+0EelaVejpES613ER/BKATM=;
- b=eqp63U7nMK0UEU6d0iGLxKZXs4WL+2Gmv1GZm3jP2PgRpzdcgiaQVkU094noEXO8jC
- OJFMzrYstvtGjN1MAp7pjp+u6YpGvWPL/d6b0RzwZaqdDo/sTSnL33gkcX9d8KlNAGkd
- SNw7CcjhcK44K6TSZ50uYB6bz+IUaOC4N2IJN54hRDidqnBx4Szr1gX1aZV9uQhkFNOE
- kTtmyOJkLo5+1TXiGxMVrlYRPYwmYge18iG/28lsGClklj3/JLlW0x4qvPP1o7QsDdA8
- xc3jMqKaP60Gio/1bmcs/15vPp6MxuzH1ZQn/avVn64lnokUNK1+DkeNVtPqOz+p2oMV
- fpHA==
-X-Gm-Message-State: AOAM530GEvdAhv6xw99UPDB/dvYL7fQDhhpDjhgRlI3Q7fx4TdgYkQXj
- e+54T37N59XrFtTWPGkZOmNgiQ==
-X-Received: by 2002:a65:6cc3:0:b0:382:9d3c:ff82 with SMTP id
- g3-20020a656cc3000000b003829d3cff82mr816953pgw.110.1648056969949; 
- Wed, 23 Mar 2022 10:36:09 -0700 (PDT)
-Received: from dev.lizongyuan.local ([103.177.44.11])
- by smtp.gmail.com with ESMTPSA id
- w19-20020a056a0014d300b004fae5e3970csm553239pfu.35.2022.03.23.10.36.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Mar 2022 10:36:09 -0700 (PDT)
-From: Zongyuan Li <zongyuan.li@smartx.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 1/5] hw/arm/realview: replace 'qemu_split_irq' with
- 'TYPE_SPLIT_IRQ'
-Date: Thu, 24 Mar 2022 01:35:39 +0800
-Message-Id: <20220323173543.146442-2-zongyuan.li@smartx.com>
-X-Mailer: git-send-email 2.34.0
-In-Reply-To: <20220323173543.146442-1-zongyuan.li@smartx.com>
-References: <20220323173543.146442-1-zongyuan.li@smartx.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=sfEZUcS/C98xKrVfhmHvgZOLayihYr0E27aKEaFeNsg=;
+ b=GYyCoAvtRzK4YWG8mUD2tV/5EJbZVHodP0bsecVyrMlPgRoAfQcgVi4f1blKWiu1LW
+ nYaaEWcj/X87cq5Derh1Ztca67oQwjH9DyAYSl6lpIOuhAeWCgOwz8h225nRyMgeC8Ax
+ LuKeqYPCwacdXkS5EQOnKBiDzpMz+o9jP3QEwPqb+hG4iE4KGPwtey4xhcPrxTBuuHP+
+ HgSEnjGztBPQb1qUHfJAkZJJG50IHfG59Ou3zYAhsmzthkxZ9P6voSCxKAm5zMevXPZ5
+ IlerALqh/DxFAHrvOg4e5RCp4fwMtbnik0iJ1L2E1wMKIwFncWkAFr3MrDCidCIlfdSI
+ uXZQ==
+X-Gm-Message-State: AOAM533/ln3Q36nQqB9WqKk3Up6eu2KvKu9RHsW5ll4T/A0e3zfRXQs7
+ JFBe01ttD2IJXyzdSGSFhNgzg844Y7Mfq+wsK4P9pQ==
+X-Received: by 2002:a81:a4e:0:b0:2e5:9946:525a with SMTP id
+ 75-20020a810a4e000000b002e59946525amr1226782ywk.455.1648059344289; Wed, 23
+ Mar 2022 11:15:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::535
+References: <20220323173543.146442-1-zongyuan.li@smartx.com>
+ <20220323173543.146442-5-zongyuan.li@smartx.com>
+In-Reply-To: <20220323173543.146442-5-zongyuan.li@smartx.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 23 Mar 2022 18:15:31 +0000
+Message-ID: <CAFEAcA-kwPQj8bzfuW8D3-Omd79bL8HD6NtsjsPUYCcjRdXhEQ@mail.gmail.com>
+Subject: Re: [PATCH v3 4/5] hw/intc/exynos4210_gic: replace 'qemu_split_irq'
+ with 'TYPE_SPLIT_IRQ'
+To: Zongyuan Li <zongyuan.li@smartx.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::112e
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::535;
- envelope-from=zongyuan.li@smartx.com; helo=mail-pg1-x535.google.com
-X-Spam_score_int: -4
-X-Spam_score: -0.5
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
 X-Spam_bar: /
-X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -120,94 +116,21 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:Real View" <qemu-arm@nongnu.org>,
- Zongyuan Li <zongyuan.li@smartx.com>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ "open list:Exynos" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +vHkKhOKtqn3
+X-TUID: iz6GKg6L9egM
 
-Signed-off-by: Zongyuan Li <zongyuan.li@smartx.com>
----
- hw/arm/realview.c | 41 ++++++++++++++++++++++++++++++++---------
- 1 file changed, 32 insertions(+), 9 deletions(-)
+On Wed, 23 Mar 2022 at 17:36, Zongyuan Li <zongyuan.li@smartx.com> wrote:
+>
+> Signed-off-by: Zongyuan Li <zongyuan.li@smartx.com>
+> ---
+>  hw/intc/exynos4210_gic.c | 25 ++++++++++++++++++++++---
+>  1 file changed, 22 insertions(+), 3 deletions(-)
+>
 
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index 7b424e94a5..97ace560bf 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -13,9 +13,11 @@
- #include "hw/sysbus.h"
- #include "hw/arm/boot.h"
- #include "hw/arm/primecell.h"
-+#include "hw/core/split-irq.h"
- #include "hw/net/lan9118.h"
- #include "hw/net/smc91c111.h"
- #include "hw/pci/pci.h"
-+#include "hw/qdev-core.h"
- #include "net/net.h"
- #include "sysemu/sysemu.h"
- #include "hw/boards.h"
-@@ -53,6 +55,24 @@ static const int realview_board_id[] = {
-     0x76d
- };
- 
-+static bool split_irq_from_named(DeviceState *src, const char* outname,
-+                                 qemu_irq out1, qemu_irq out2) {
-+    DeviceState *splitter = qdev_new(TYPE_SPLIT_IRQ);
-+
-+    qdev_prop_set_uint32(splitter, "num-lines", 2);
-+
-+    if (!qdev_realize_and_unref(splitter, NULL, &error_fatal)) {
-+        return false;
-+    }
-+
-+    qdev_connect_gpio_out(splitter, 0, out1);
-+    qdev_connect_gpio_out(splitter, 1, out2);
-+    qdev_connect_gpio_out_named(src, outname, 0,
-+                                qdev_get_gpio_in(splitter, 0));
-+
-+    return true;
-+}
-+
- static void realview_init(MachineState *machine,
-                           enum realview_board_type board_type)
- {
-@@ -66,7 +86,6 @@ static void realview_init(MachineState *machine,
-     DeviceState *dev, *sysctl, *gpio2, *pl041;
-     SysBusDevice *busdev;
-     qemu_irq pic[64];
--    qemu_irq mmc_irq[2];
-     PCIBus *pci_bus = NULL;
-     NICInfo *nd;
-     DriveInfo *dinfo;
-@@ -229,14 +248,18 @@ static void realview_init(MachineState *machine,
-      * and the PL061 has them the other way about. Also the card
-      * detect line is inverted.
-      */
--    mmc_irq[0] = qemu_irq_split(
--        qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_WPROT),
--        qdev_get_gpio_in(gpio2, 1));
--    mmc_irq[1] = qemu_irq_split(
--        qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_CARDIN),
--        qemu_irq_invert(qdev_get_gpio_in(gpio2, 0)));
--    qdev_connect_gpio_out_named(dev, "card-read-only", 0, mmc_irq[0]);
--    qdev_connect_gpio_out_named(dev, "card-inserted", 0, mmc_irq[1]);
-+    if (!split_irq_from_named(dev, "card-read-only",
-+                   qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_WPROT),
-+                   qdev_get_gpio_in(gpio2, 1))) {
-+        return;
-+    }
-+
-+    if (!split_irq_from_named(dev, "card-inserted",
-+                   qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_CARDIN),
-+                   qemu_irq_invert(qdev_get_gpio_in(gpio2, 0)))) {
-+        return;
-+    }
-+
-     dinfo = drive_get(IF_SD, 0, 0);
-     if (dinfo) {
-         DeviceState *card;
--- 
-2.34.0
+Same comments apply here as for patch 3 -- this is a device,
+so it needs to handle the sub-devices differently from board code.
 
+-- PMM

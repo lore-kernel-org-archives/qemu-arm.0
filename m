@@ -1,277 +1,159 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2193520lfb;
-        Wed, 23 Mar 2022 01:07:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyfSx4pu7AlUvSmfvNfG+rz3a7+a8UKsSr/+gnGmiCEu2cxiXL748iwKXvc7bx/yhutvW3v
-X-Received: by 2002:a05:6214:2a8c:b0:435:334f:e876 with SMTP id jr12-20020a0562142a8c00b00435334fe876mr22731354qvb.124.1648022872095;
-        Wed, 23 Mar 2022 01:07:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648022872; cv=none;
-        d=google.com; s=arc-20160816;
-        b=AZK1HhS+ULiijmAlzK9W7JIBvyOL1IdICSK+2JuPbyCrjRo/VeVFGzujOoeUXGpdJt
-         OvQamszjujoK3MdMdVLk1jiFxjz80Rngr9ivH39g3u/5z8MYok5dN5el2q3plP5QXOMJ
-         08ZuNAzLeWkGzcX3Wp3hBMv6XNGCpklo+jDULAXdVctnabTG7p1fKH13hRPGTp4KFgGS
-         rht1ADTvBzFOPz+l03WP1r230gZbj3+4StbIttohOVE/Rs5iYhw0ieevLH+W35AIK1/H
-         WkgDDMK487h45e3SVKx1iCxgnXCtKjs8xIaLtlvpgKydcLy/VtzjWhF8sHOOMQOr/q1j
-         ZDQQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=rGSOLJol/cT6CnIDP2zpH0Jvhi3v4NolqAX5rO8gjes=;
-        b=iD6E6KPJ97JdM8rBEsJS2grfY7Vs2RoRh7If1KhBFwOdQY/dNulW8xtQedNB7mJG7q
-         X98dgOYwO0ZNOtOCgoWVll6krBkQThZMtoH/SfKnM4aWBp3hu4ivFGCc8eL4RINuq1P3
-         RtXj1652nOX7RR7Yp3FuOe7NqMgdNDoL8MljYpUOptgjpW0F1j9PRxuvvFJlvePdHnxp
-         4+tboVPrUul7/slU4/tNNZJjDLHI8pW0xFbQUnU1pFMHE76nHhfNoAaMiDoeZHubUKv0
-         92g8HsullKYDELta03iWUrDi2K0Q22CWuYB9PAB+vzTOGfTAVw1L8mykP/2Ob3Io6+uB
-         YUgg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c23-20020a05620a269700b0067e4be23854si3984848qkp.153.2022.03.23.01.07.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Mar 2022 01:07:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57178 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nWw23-0006EU-JM
-	for alex.bennee@linaro.org; Wed, 23 Mar 2022 04:07:51 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51586)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nWw1S-0006DV-1Z
- for qemu-arm@nongnu.org; Wed, 23 Mar 2022 04:07:14 -0400
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81]:44183)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nWw1P-0004fj-IQ
- for qemu-arm@nongnu.org; Wed, 23 Mar 2022 04:07:13 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.7])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 33810EE3292C;
- Wed, 23 Mar 2022 09:07:09 +0100 (CET)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Wed, 23 Mar
- 2022 09:07:08 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001e5f199b1-21b7-407d-9bd5-20564261d9db,
- 6259E11BD0CF39FA32E4FBD571F84D370B3A9A5D) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <f2101faa-3b58-ad8a-5bdc-9476ad7e1c99@kaod.org>
-Date: Wed, 23 Mar 2022 09:07:07 +0100
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id g6-20020adfd1e6000000b0020581602ddfsm4233757wrd.90.2022.03.23.06.21.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Mar 2022 06:21:00 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 8302C1FFB7;
+	Wed, 23 Mar 2022 13:20:59 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Cleber Rosa <crosa@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:Virt)
+Subject: [PATCH v2] tests/avocado: update aarch64_virt test to exercise -cpu max
+Date: Wed, 23 Mar 2022 13:20:53 +0000
+Message-Id: <20220323132053.505201-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.2
-Subject: Re: [PATCH v1 6/9] aspeed/scu: Add AST1030 support
-Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Alistair Francis
- <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, Andrew
- Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Cleber Rosa
- <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
- Leal <bleal@redhat.com>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20220322025154.3989-1-jamin_lin@aspeedtech.com>
- <20220322025154.3989-7-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220322025154.3989-7-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 6421c46e-305e-47ed-8848-0b0e4b1952a8
-X-Ovh-Tracer-Id: 15360933904224848827
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudegiedguddugecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeigedvffekgeeftedutddttdevudeihfegudffkeeitdekkeetkefhffelveelleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomh
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: troy_lee@aspeedtech.com, steven_lee@aspeedtech.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KweeRnIf6vuo
+X-TUID: J1adNEt0Lanp
 
-On 3/22/22 03:51, Jamin Lin wrote:
-> From: Steven Lee <steven_lee@aspeedtech.com>
-> 
-> Per ast1030_v07.pdf, AST1030 SOC doesn't have SCU300, the pclk divider
-> selection is defined in SCU310[11:8].
-> Add a get_apb_freq function and a class init handler for ast1030.
-> 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+The Fedora 29 kernel is quite old and importantly fails when running
+in LPA2 scenarios. As it's not really exercising much of the CPU space
+replace it with a custom 5.16.12 kernel with all the architecture
+options turned on. There is a minimal buildroot initramfs included in
+the kernel which has a few tools for stress testing the memory
+subsystem. The userspace also targets the Neoverse N1 processor so
+will fail without additional v8.x+ features.
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+While we are at it move the test into it's own file so it can have an
+assigned maintainer.
 
-Thanks,
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20220315121251.2280317-3-alex.bennee@linaro.org>
 
-C.
+---
+v2
+  - move test into own machine file
+---
+ MAINTAINERS                           |  1 +
+ tests/avocado/boot_linux_console.py   | 25 -------------
+ tests/avocado/machine_aarch64_virt.py | 51 +++++++++++++++++++++++++++
+ 3 files changed, 52 insertions(+), 25 deletions(-)
+ create mode 100644 tests/avocado/machine_aarch64_virt.py
 
-> ---
->   hw/misc/aspeed_scu.c         | 63 ++++++++++++++++++++++++++++++++++++
->   include/hw/misc/aspeed_scu.h | 24 ++++++++++++++
->   2 files changed, 87 insertions(+)
-> 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index 150567f98a..19b03471fc 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -235,6 +235,15 @@ static uint32_t aspeed_2600_scu_get_apb_freq(AspeedSCUState *s)
->           / asc->apb_divider;
->   }
->   
-> +static uint32_t aspeed_1030_scu_get_apb_freq(AspeedSCUState *s)
-> +{
-> +    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(s);
-> +    uint32_t hpll = asc->calc_hpll(s, s->regs[AST2600_HPLL_PARAM]);
-> +
-> +    return hpll / (SCU_AST1030_CLK_GET_PCLK_DIV(s->regs[AST2600_CLK_SEL4]) + 1)
-> +        / asc->apb_divider;
-> +}
-> +
->   static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
->   {
->       AspeedSCUState *s = ASPEED_SCU(opaque);
-> @@ -482,6 +491,8 @@ static uint32_t aspeed_silicon_revs[] = {
->       AST2600_A1_SILICON_REV,
->       AST2600_A2_SILICON_REV,
->       AST2600_A3_SILICON_REV,
-> +    AST1030_A0_SILICON_REV,
-> +    AST1030_A1_SILICON_REV,
->   };
->   
->   bool is_supported_silicon_rev(uint32_t silicon_rev)
-> @@ -770,12 +781,64 @@ static const TypeInfo aspeed_2600_scu_info = {
->       .class_init = aspeed_2600_scu_class_init,
->   };
->   
-> +static const uint32_t ast1030_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
-> +    [AST2600_SYS_RST_CTRL]      = 0xFFC3FED8,
-> +    [AST2600_SYS_RST_CTRL2]     = 0x09FFFFFC,
-> +    [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
-> +    [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
-> +    [AST2600_DEBUG_CTRL2]       = 0x00000000,
-> +    [AST2600_HPLL_PARAM]        = 0x10004077,
-> +    [AST2600_HPLL_EXT]          = 0x00000031,
-> +    [AST2600_CLK_SEL4]          = 0x43F90900,
-> +    [AST2600_CLK_SEL5]          = 0x40000000,
-> +    [AST2600_CHIP_ID0]          = 0xDEADBEEF,
-> +    [AST2600_CHIP_ID1]          = 0x0BADCAFE,
-> +};
-> +
-> +static void aspeed_ast1030_scu_reset(DeviceState *dev)
-> +{
-> +    AspeedSCUState *s = ASPEED_SCU(dev);
-> +    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(dev);
-> +
-> +    memcpy(s->regs, asc->resets, asc->nr_regs * 4);
-> +
-> +    s->regs[AST2600_SILICON_REV] = AST1030_A1_SILICON_REV;
-> +    s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
-> +    s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
-> +    s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
-> +    s->regs[PROT_KEY] = s->hw_prot_key;
-> +}
-> +
-> +static void aspeed_1030_scu_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSCUClass *asc = ASPEED_SCU_CLASS(klass);
-> +
-> +    dc->desc = "ASPEED 1030 System Control Unit";
-> +    dc->reset = aspeed_ast1030_scu_reset;
-> +    asc->resets = ast1030_a1_resets;
-> +    asc->calc_hpll = aspeed_2600_scu_calc_hpll;
-> +    asc->get_apb = aspeed_1030_scu_get_apb_freq;
-> +    asc->apb_divider = 2;
-> +    asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
-> +    asc->clkin_25Mhz = true;
-> +    asc->ops = &aspeed_ast2600_scu_ops;
-> +}
-> +
-> +static const TypeInfo aspeed_1030_scu_info = {
-> +    .name = TYPE_ASPEED_1030_SCU,
-> +    .parent = TYPE_ASPEED_SCU,
-> +    .instance_size = sizeof(AspeedSCUState),
-> +    .class_init = aspeed_1030_scu_class_init,
-> +};
-> +
->   static void aspeed_scu_register_types(void)
->   {
->       type_register_static(&aspeed_scu_info);
->       type_register_static(&aspeed_2400_scu_info);
->       type_register_static(&aspeed_2500_scu_info);
->       type_register_static(&aspeed_2600_scu_info);
-> +    type_register_static(&aspeed_1030_scu_info);
->   }
->   
->   type_init(aspeed_scu_register_types);
-> diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-> index fdc721846c..d2c485c8f6 100644
-> --- a/include/hw/misc/aspeed_scu.h
-> +++ b/include/hw/misc/aspeed_scu.h
-> @@ -19,6 +19,7 @@ OBJECT_DECLARE_TYPE(AspeedSCUState, AspeedSCUClass, ASPEED_SCU)
->   #define TYPE_ASPEED_2400_SCU TYPE_ASPEED_SCU "-ast2400"
->   #define TYPE_ASPEED_2500_SCU TYPE_ASPEED_SCU "-ast2500"
->   #define TYPE_ASPEED_2600_SCU TYPE_ASPEED_SCU "-ast2600"
-> +#define TYPE_ASPEED_1030_SCU TYPE_ASPEED_SCU "-ast1030"
->   
->   #define ASPEED_SCU_NR_REGS (0x1A8 >> 2)
->   #define ASPEED_AST2600_SCU_NR_REGS (0xE20 >> 2)
-> @@ -45,6 +46,8 @@ struct AspeedSCUState {
->   #define AST2600_A1_SILICON_REV   0x05010303U
->   #define AST2600_A2_SILICON_REV   0x05020303U
->   #define AST2600_A3_SILICON_REV   0x05030303U
-> +#define AST1030_A0_SILICON_REV   0x80000000U
-> +#define AST1030_A1_SILICON_REV   0x80010000U
->   
->   #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
->   
-> @@ -335,4 +338,25 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
->   #define SCU_AST2600_H_PLL_BYPASS_EN                        (0x1 << 24)
->   #define SCU_AST2600_H_PLL_OFF                              (0x1 << 23)
->   
-> +/* SCU310   Clock Selection Register Set 4 (for Aspeed AST1030 SOC)
-> + *
-> + *  31     I3C Clock Source selection
-> + *  30:28  I3C clock divider selection
-> + *  26:24  MAC AHB clock divider selection
-> + *  22:20  RGMII 125MHz clock divider ration
-> + *  19:16  RGMII 50MHz clock divider ration
-> + *  15     LHCLK clock generation/output enable control
-> + *  14:12  LHCLK divider selection
-> + *  11:8   APB Bus PCLK divider selection
-> + *  7      Select PECI clock source
-> + *  6      Select UART debug port clock source
-> + *  5      Select UART6 clock source
-> + *  4      Select UART5 clock source
-> + *  3      Select UART4 clock source
-> + *  2      Select UART3 clock source
-> + *  1      Select UART2 clock source
-> + *  0      Select UART1 clock source
-> + */
-> +#define SCU_AST1030_CLK_GET_PCLK_DIV(x)                    (((x) >> 8) & 0xf)
-> +
->   #endif /* ASPEED_SCU_H */
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cc364afef7..4fd1c2c955 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -942,6 +942,7 @@ S: Maintained
+ F: hw/arm/virt*
+ F: include/hw/arm/virt.h
+ F: docs/system/arm/virt.rst
++F: tests/avocado/machine_aarch64_virt.py
+ 
+ Xilinx Zynq
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index b40a3abc81..45a2ceda22 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -325,31 +325,6 @@ def test_mips_malta32el_nanomips_64k_dbg(self):
+         kernel_hash = '18d1c68f2e23429e266ca39ba5349ccd0aeb7180'
+         self.do_test_mips_malta32el_nanomips(kernel_url, kernel_hash)
+ 
+-    def test_aarch64_virt(self):
+-        """
+-        :avocado: tags=arch:aarch64
+-        :avocado: tags=machine:virt
+-        :avocado: tags=accel:tcg
+-        :avocado: tags=cpu:cortex-a53
+-        """
+-        kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
+-                      '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
+-                      '/vmlinuz')
+-        kernel_hash = '8c73e469fc6ea06a58dc83a628fc695b693b8493'
+-        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
+-
+-        self.vm.set_console()
+-        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+-                               'console=ttyAMA0')
+-        self.require_accelerator("tcg")
+-        self.vm.add_args('-cpu', 'cortex-a53',
+-                         '-accel', 'tcg',
+-                         '-kernel', kernel_path,
+-                         '-append', kernel_command_line)
+-        self.vm.launch()
+-        console_pattern = 'Kernel command line: %s' % kernel_command_line
+-        self.wait_for_console_pattern(console_pattern)
+-
+     def test_aarch64_xlnx_versal_virt(self):
+         """
+         :avocado: tags=arch:aarch64
+diff --git a/tests/avocado/machine_aarch64_virt.py b/tests/avocado/machine_aarch64_virt.py
+new file mode 100644
+index 0000000000..21848cba70
+--- /dev/null
++++ b/tests/avocado/machine_aarch64_virt.py
+@@ -0,0 +1,51 @@
++# Functional test that boots a Linux kernel and checks the console
++#
++# Copyright (c) 2022 Linaro Ltd.
++#
++# Author:
++#  Alex Bennée <alex.bennee@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import time
++
++from avocado_qemu import QemuSystemTest
++from avocado_qemu import wait_for_console_pattern
++from avocado_qemu import exec_command
++
++class Aarch64VirtMachine(QemuSystemTest):
++    KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
++
++    def wait_for_console_pattern(self, success_message, vm=None):
++        wait_for_console_pattern(self, success_message,
++                                 failure_message='Kernel panic - not syncing',
++                                 vm=vm)
++
++    def test_aarch64_virt(self):
++        """
++        :avocado: tags=arch:aarch64
++        :avocado: tags=machine:virt
++        :avocado: tags=accel:tcg
++        :avocado: tags=cpu:max
++        """
++        kernel_url = ('https://fileserver.linaro.org/s/'
++                      'z6B2ARM7DQT3HWN/download')
++
++        kernel_hash = 'ed11daab50c151dde0e1e9c9cb8b2d9bd3215347'
++        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
++
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyAMA0')
++        self.require_accelerator("tcg")
++        self.vm.add_args('-cpu', 'max,pauth-impdef=on',
++                         '-accel', 'tcg',
++                         '-kernel', kernel_path,
++                         '-append', kernel_command_line)
++        self.vm.launch()
++        self.wait_for_console_pattern('Welcome to Buildroot')
++        time.sleep(0.1)
++        exec_command(self, 'root')
++        time.sleep(0.1)
++        exec_command(self, 'cat /proc/self/maps')
++        time.sleep(0.1)
+-- 
+2.30.2

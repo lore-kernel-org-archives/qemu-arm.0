@@ -1,195 +1,316 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1711426lfb;
-        Tue, 22 Mar 2022 10:22:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxzis8XpGU9zgYASnzUkC83A/ZpNYWKXt3gdX9slH8iXkM/R0pE80TzzbSYj/dQah+EWGeU
-X-Received: by 2002:a81:1086:0:b0:2e5:ac94:222e with SMTP id 128-20020a811086000000b002e5ac94222emr30638932ywq.359.1647969731588;
-        Tue, 22 Mar 2022 10:22:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1647969731; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2523419lfb;
+        Wed, 23 Mar 2022 09:20:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzw4Z9KdXlJ10zGyMcNawvVdB07d4TmXDP608mxv8Q5Ec8NvlAM6fTcP95AkLcjHOhyxVf/
+X-Received: by 2002:a05:690c:d:b0:2d0:e02a:6cda with SMTP id bc13-20020a05690c000d00b002d0e02a6cdamr772431ywb.192.1648052402693;
+        Wed, 23 Mar 2022 09:20:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648052402; cv=none;
         d=google.com; s=arc-20160816;
-        b=nQNrPqAz0p8opx52gdZV06l3Xsm/v5qJ9O5UE+3qM7MLF2Yvj06Oez2m5jxeOb9LCj
-         UUQBm/+wP8qLDsqkUY6/jA4E6Clu0LblzjYNG1mhNAGjvZUBJgXccksZcI4sJ24KzdY7
-         tzUuRm1MVbBuUdsy5muh7P0N6tA7dWefGGglYDQlUDc7Z7ikImnoi34KvKlx9rjpRCC0
-         N5xCl7ygZ0qM3mxaLqAN/FHGW4DmkfqjRhcBG4qkcYBmeM80pz5jgjthhjlGt6DXY9FC
-         oTscKtnQI0/uYhQvKd5D65fgFxcjv31iwSIZo5CNpmv0lY2oSXMCYdaaFFqFxVWPytmX
-         VWyA==
+        b=Wx96CeFIyg9igZmRNBgaJu4Yhr4iVvPt/EpYHpQ5TLIj3x/VdC51eCXZ7cfq3CV2yN
+         JOapzowhfYh6kO/6dg2F/ALH36oWWJ9icblWHLSGEi4yCici6astjHcElGik5HvtNfMS
+         K6aA7Jn9x/pt1/lfm13ctj3AgmBH+Fel8UPtOqVYm7BijzhtAbbGPoz3oDmeU8ZfrCy/
+         VAsk89CwlHCLsCr2RAQo4yjEJrhwd3vR2Skte/OClghm4ndeuaEr7sgfBmofKpzaxz2L
+         UkEJvQ4RHgYDEguZGhBgY88j+OroVKE3HrIw5Vj+I75jnHXcrBBGdsuyRphqVKPe4kDq
+         twVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=DKA1S+zaOnp0EXg0D/eCjdJnTBqB3wlH33M2skJaIIM=;
-        b=CVNwqalOw+z2MnpdL5o5hkxJ1uglcQ20cyWPQl0MbymsgYqFdTruzU01KvMyYssipF
-         G+ej0EfakXZr16SjhdJIjIL0lpFeZwnmJ0aJCw28DiRtWRG1ee0LxZJwTeUNfQKscBSq
-         Fq0PrwuQUEzrPgqG0/UtUaOG39HUeZRMb2/37lHeVOsPEXFOaMzeaOOl9bjzrQ2wcoTU
-         OirvMO0+yxF39WTBG5SNemctfTmyvvaojN4UfAUPYavzJRrBsPuLNICp3Hhzzas9uqjk
-         7bruONaZQZMkHyM65WHpQZWAoJvJPqKik9RZQs6p9dPkQlp+5VqtTWna9uw49EFxeIQ8
-         ZfdA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=xvxKd+YpYeqxtFjVqXz46oyvhvuknte8d+CaRxj4JqQ=;
+        b=poL7Wvs5fbHxp1de6UVdx8+pGlaE0Jz4ygQo2xoiz+jQybF4aWcKMQeq+zmKixpp9M
+         QmqqIpjV1+xifB3WJh0KMwyF9QoftXrMQT0i+H1rc2+XPjFT8WkJzQ0VfTtP92F7oavT
+         64PiSzppa4oUUGOJGVUM3Fz9DlVuEmQWM32oeCct8nlJAesKKP6a2J5ahv6DVW9QLL8o
+         tu3CD1PdKOX5wr4IjrYVWrOHiI8dzFs56FjfNo9k+TSI63+oeUGv+X4MXColK7su3kFS
+         ctIeW0b233o7Di2hMDXvoLLqkX7gOT1CFCP/h4V2IfAARtgQc9bWNLb/NTWD2MAkltXT
+         Z+Jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@irrelevant.dk header.s=fm3 header.b=kUjswknO;
-       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=dbnSSTgU;
-       spf=pass (google.com: domain of its@irrelevant.dk designates 66.111.4.221 as permitted sender) smtp.mailfrom=its@irrelevant.dk
-Return-Path: <its@irrelevant.dk>
-Received: from new1-smtp.messagingengine.com (new1-smtp.messagingengine.com. [66.111.4.221])
-        by mx.google.com with ESMTPS id i186-20020a0df8c3000000b002e5be453663si9555061ywf.176.2022.03.22.10.22.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Mar 2022 10:22:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of its@irrelevant.dk designates 66.111.4.221 as permitted sender) client-ip=66.111.4.221;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b0ziH5BX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a8-20020a258708000000b00633b5bab9b3si16132606ybl.255.2022.03.23.09.20.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 23 Mar 2022 09:20:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@irrelevant.dk header.s=fm3 header.b=kUjswknO;
-       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=dbnSSTgU;
-       spf=pass (google.com: domain of its@irrelevant.dk designates 66.111.4.221 as permitted sender) smtp.mailfrom=its@irrelevant.dk
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailnew.nyi.internal (Postfix) with ESMTP id C20565801B2;
-	Tue, 22 Mar 2022 13:22:10 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute2.internal (MEProxy); Tue, 22 Mar 2022 13:22:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
-	 h=cc:cc:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to; s=fm3; bh=DKA1S+zaOnp0EXg0D/eCjdJnTBqB3w
-	lH33M2skJaIIM=; b=kUjswknOc/LNgIBFH7zcVbzZV9YF/Q7z7pKdb1AQC2FC6e
-	tzxhuA3aNM7wNZzPtyEtnsPihfCxdYq4JV1l2ve6fTch6rDfr61f7+4xLQBY8GAG
-	Z4H/2nh9Mdfc8j4wrXjcwJs9303SEHhbq1+XKBLkJqBVzhpIGLv75bBitbKEjYzn
-	7HRrsZ9Cz7abydk5FnBX9cKXa31Cn6tK/pXZvAVhNEEueJV6HI6QUhPH5FtC2M1x
-	yPxITWXQs7HQQRtyekZloFU2ESBiMFUewLOq0lEbsPb4d4+jGa2v/CQZHCfLtJQp
-	ug3mXazcnjhZTW9Mz0SZN/HmL4N89/cRdYNqYAwg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=DKA1S+zaOnp0EXg0D
-	/eCjdJnTBqB3wlH33M2skJaIIM=; b=dbnSSTgUklpqQhwWFknQDnahg1Ryed2g7
-	wZ0PE3zLkLNJpLCKyefyvIzDT1zdqKS0G43qgA4EidVFIWdForoozWc7RWaJ0BW4
-	3r3L3gR7+QeaibY37sjTIFuJVwZ3E+FC8iej7yL5lRnra7n8fkxbge4yWFaaaPNr
-	gasE8fIyPuP0EtOKfvrde3Va2Zc1Ge9Fhhc2aeU3W+Rg9uX2+9pLEPYBlawvbirN
-	vESQFI4Y/HCFWVPYAuOyfE69fJ/jrRMYIBSMKi5u9sppOJQrIJ0irBz5VrR99jGk
-	niEfkdZ4sh/2I7LfxNxuTUVKZXmv5ej/Da4vUOHhwCVJ3d3eWhRWw==
-X-ME-Sender: <xms:wAU6YuiDVSiO5DXDfSL8EIMJPMlDj54UyI_sfzAOFASsHtGMDphZBg>
-    <xme:wAU6YvC1wRJ4Pxg8ngkDfAEPQ0xqzNpje2B93LCNzR3fLKD5slrs57CvkQ6hzA-MA
-    MO7QN7gFJpfj1rOVFo>
-X-ME-Received: <xmr:wAU6YmFvkNY5p9PlD_Cw_LT0A6zz4RfLSj-c-dcgQdAukt_SOaChW2UNw_k-lh11iO-gqeOtvp9zgH0V7w>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudeghedgleejucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvffukfhfgggtuggjsehgtderredttdejnecuhfhrohhmpefmlhgruhhs
-    ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
-    gvrhhnpeejgeduffeuieetkeeileekvdeuleetveejudeileduffefjeegfffhuddvudff
-    keenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehith
-    hssehirhhrvghlvghvrghnthdrughk
-X-ME-Proxy: <xmx:wAU6YnT-3y9ba53YTbdzDilaJdXcBx0lP9NRYpcahWvudI3S6ZAyQQ>
-    <xmx:wAU6YrxTLwhzw0WFqIxp-d74Cf2UQRYGNgd8JFhrgumPo2LmigxrBQ>
-    <xmx:wAU6Yl4rmLv7PAa_H7QhvkfyzDaoXDiwKlGZYaq58M_gYE7Kj1ksNw>
-    <xmx:wgU6Ylh8R0wqYvzc50CjDVm3cmAN4T0qVUWveuXkCGEB5-jlmI349w>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 22 Mar 2022 13:22:00 -0400 (EDT)
-Date: Tue, 22 Mar 2022 18:21:58 +0100
-From: Klaus Jensen <its@irrelevant.dk>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Christian Schoenebeck <qemu_oss@crudebyte.com>,
-	"Gonglei (Arei)" <arei.gonglei@huawei.com>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
-	Laurent Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>,	Paul Durrant <paul@xen.org>,
-	=?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Corey Minyard <cminyard@mvista.com>,
-	Patrick Venture <venture@google.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Peter Xu <peterx@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,	Greg Kurz <groug@kaod.org>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Keith Busch <kbusch@kernel.org>,	Yuval Shaia <yuval.shaia.ml@gmail.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Fabien Chouteau <chouteau@adacore.com>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>,	Max Filippov <jcmvbkbc@gmail.com>,
-	Juan Quintela <quintela@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	David Hildenbrand <david@redhat.com>,
-	Wenchao Wang <wenchao.wang@intel.com>,
-	Kamil Rytarowski <kamil@netbsd.org>,
-	Reinoud Zandijk <reinoud@netbsd.org>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Eric Blake <eblake@redhat.com>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
-	John Snow <jsnow@redhat.com>, kvm@vger.kernel.org,	qemu-arm@nongnu.org,
- xen-devel@lists.xenproject.org,	qemu-ppc@nongnu.org,
- qemu-block@nongnu.org, haxm-team@intel.com,	qemu-s390x@nongnu.org
-Subject: Re: [PATCH v2 3/3] Use g_new() & friends where that makes obvious
- sense
-Message-ID: <YjoFtvvV/LtGt2X9@apples>
-References: <20220315144156.1595462-1-armbru@redhat.com>
- <20220315144156.1595462-4-armbru@redhat.com>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b0ziH5BX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60396 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nX3iL-0005Sf-PI
+	for alex.bennee@linaro.org; Wed, 23 Mar 2022 12:20:01 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:38766)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1nX3PS-0005UU-1o
+ for qemu-devel@nongnu.org; Wed, 23 Mar 2022 12:00:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:57968)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1nX3PP-0005Sg-UF
+ for qemu-devel@nongnu.org; Wed, 23 Mar 2022 12:00:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1648051227;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xvxKd+YpYeqxtFjVqXz46oyvhvuknte8d+CaRxj4JqQ=;
+ b=b0ziH5BXQ/98/F435+f9bsd1BqCl27z6DDwP9o9hCiYLYnjwE+mOQocR2qTqE0QXDWTmWj
+ pR9X/lnb81LXC8Ad/U929F4rdHIMq679sVT4aKcdsxElOvVid6NotTO0dj90j6dMhycHi0
+ pLDxv9fu1ptcePY0X+moqFJ6cPqo1HA=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-365-V7Z0nFqFMFuOaQe1l1CUEA-1; Wed, 23 Mar 2022 12:00:25 -0400
+X-MC-Unique: V7Z0nFqFMFuOaQe1l1CUEA-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 40508185A794;
+ Wed, 23 Mar 2022 16:00:25 +0000 (UTC)
+Received: from localhost (unknown [10.39.208.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5C9FD58059A;
+ Wed, 23 Mar 2022 16:00:23 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+To: qemu-devel@nongnu.org
+Subject: [PATCH 21/32] include: move C/util-related declarations to cutils.h
+Date: Wed, 23 Mar 2022 19:57:32 +0400
+Message-Id: <20220323155743.1585078-22-marcandre.lureau@redhat.com>
+In-Reply-To: <20220323155743.1585078-1-marcandre.lureau@redhat.com>
+References: <20220323155743.1585078-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="W/A79Jf9YM97F5Ll"
-Content-Disposition: inline
-In-Reply-To: <20220315144156.1595462-4-armbru@redhat.com>
-X-TUID: m9NpcOewKLx+
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=marcandre.lureau@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PXh50pPs2nJq
 
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
---W/A79Jf9YM97F5Ll
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ include/qemu-common.h          | 20 --------------------
+ include/qemu/cutils.h          | 20 ++++++++++++++++++++
+ hw/dma/xlnx_dpdma.c            |  2 +-
+ hw/usb/ccid-card-passthru.c    |  2 +-
+ hw/usb/dev-smartcard-reader.c  |  2 +-
+ hw/usb/redirect.c              |  2 +-
+ hw/virtio/vhost-vdpa.c         |  2 +-
+ net/announce.c                 |  2 +-
+ tests/qtest/npcm7xx_rng-test.c |  2 +-
+ util/hexdump.c                 |  2 +-
+ 10 files changed, 28 insertions(+), 28 deletions(-)
 
-On Mar 15 15:41, Markus Armbruster wrote:
-> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
-> for two reasons.  One, it catches multiplication overflowing size_t.
-> Two, it returns T * rather than void *, which lets the compiler catch
-> more type errors.
->=20
-> This commit only touches allocations with size arguments of the form
-> sizeof(T).
->=20
-> Patch created mechanically with:
->=20
->     $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
-> 	     --macro-file scripts/cocci-macro-file.h FILES...
->=20
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Acked-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> ---
->  hw/nvme/ns.c                             |  2 +-
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index 5f53a0e11287..08f40a9d1ed3 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -54,26 +54,6 @@ const char *qemu_get_vm_name(void);
+ void os_setup_early_signal_handling(void);
+ int os_parse_cmd_args(int index, const char *optarg);
+ 
+-/*
+- * Hexdump a line of a byte buffer into a hexadecimal/ASCII buffer
+- */
+-#define QEMU_HEXDUMP_LINE_BYTES 16 /* Number of bytes to dump */
+-#define QEMU_HEXDUMP_LINE_LEN 75   /* Number of characters in line */
+-void qemu_hexdump_line(char *line, unsigned int b, const void *bufptr,
+-                       unsigned int len, bool ascii);
+-
+-/*
+- * Hexdump a buffer to a file. An optional string prefix is added to every line
+- */
+-
+-void qemu_hexdump(FILE *fp, const char *prefix,
+-                  const void *bufptr, size_t size);
+-
+-/*
+- * helper to parse debug environment variables
+- */
+-int parse_debug_env(const char *name, int max, int initial);
+-
+ void page_size_init(void);
+ 
+ #endif
+diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
+index 320543950c4c..2137e6526087 100644
+--- a/include/qemu/cutils.h
++++ b/include/qemu/cutils.h
+@@ -214,4 +214,24 @@ static inline const char *yes_no(bool b)
+      return b ? "yes" : "no";
+ }
+ 
++/*
++ * helper to parse debug environment variables
++ */
++int parse_debug_env(const char *name, int max, int initial);
++
++/*
++ * Hexdump a line of a byte buffer into a hexadecimal/ASCII buffer
++ */
++#define QEMU_HEXDUMP_LINE_BYTES 16 /* Number of bytes to dump */
++#define QEMU_HEXDUMP_LINE_LEN 75   /* Number of characters in line */
++void qemu_hexdump_line(char *line, unsigned int b, const void *bufptr,
++                       unsigned int len, bool ascii);
++
++/*
++ * Hexdump a buffer to a file. An optional string prefix is added to every line
++ */
++
++void qemu_hexdump(FILE *fp, const char *prefix,
++                  const void *bufptr, size_t size);
++
+ #endif
+diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
+index 2d7eae72cd23..dd66be5265df 100644
+--- a/hw/dma/xlnx_dpdma.c
++++ b/hw/dma/xlnx_dpdma.c
+@@ -23,7 +23,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
++#include "qemu/cutils.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "hw/dma/xlnx_dpdma.h"
+diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
+index fa3040fb7154..f530ab2565cb 100644
+--- a/hw/usb/ccid-card-passthru.c
++++ b/hw/usb/ccid-card-passthru.c
+@@ -9,7 +9,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
++#include "qemu/cutils.h"
+ #include "qemu/units.h"
+ #include <libcacard.h>
+ #include "chardev/char-fe.h"
+diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
+index 91ffd9f8ae8d..28164d89be27 100644
+--- a/hw/usb/dev-smartcard-reader.c
++++ b/hw/usb/dev-smartcard-reader.c
+@@ -37,7 +37,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
++#include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "hw/qdev-properties.h"
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index 8692ea256109..3bc4dee7fed9 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -26,7 +26,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
++#include "qemu/cutils.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "qemu/timer.h"
+diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+index 2075f336e2ad..b25c8ef799a7 100644
+--- a/hw/virtio/vhost-vdpa.c
++++ b/hw/virtio/vhost-vdpa.c
+@@ -20,10 +20,10 @@
+ #include "hw/virtio/vhost-shadow-virtqueue.h"
+ #include "hw/virtio/vhost-vdpa.h"
+ #include "exec/address-spaces.h"
++#include "qemu/cutils.h"
+ #include "qemu/main-loop.h"
+ #include "cpu.h"
+ #include "trace.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ 
+ /*
+diff --git a/net/announce.c b/net/announce.c
+index 3b9e2f1f14e8..62c60192a3cf 100644
+--- a/net/announce.c
++++ b/net/announce.c
+@@ -7,7 +7,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
++#include "qemu/cutils.h"
+ #include "net/announce.h"
+ #include "net/net.h"
+ #include "qapi/clone-visitor.h"
+diff --git a/tests/qtest/npcm7xx_rng-test.c b/tests/qtest/npcm7xx_rng-test.c
+index 797f832e53a1..35b1c1f5f6d2 100644
+--- a/tests/qtest/npcm7xx_rng-test.c
++++ b/tests/qtest/npcm7xx_rng-test.c
+@@ -20,7 +20,7 @@
+ 
+ #include "libqtest-single.h"
+ #include "qemu/bitops.h"
+-#include "qemu-common.h"
++#include "qemu/cutils.h"
+ 
+ #define RNG_BASE_ADDR   0xf000b000
+ 
+diff --git a/util/hexdump.c b/util/hexdump.c
+index 2c105a884620..9921114b3c75 100644
+--- a/util/hexdump.c
++++ b/util/hexdump.c
+@@ -14,7 +14,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
++#include "qemu/cutils.h"
+ 
+ void qemu_hexdump_line(char *line, unsigned int b, const void *bufptr,
+                        unsigned int len, bool ascii)
+-- 
+2.35.1.273.ge6ebfd0e8cbb
 
-For hw/nvme,
-
-Acked-by: Klaus Jensen <k.jensen@samsung.com>
-
---W/A79Jf9YM97F5Ll
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmI6BbQACgkQTeGvMW1P
-DemVHQf/UvBrob2AKXn7QLs1LPvjspegusuMZAUULXyiS7FJ456DBSy0wWUweIj0
-+PKX+HOXbZu7s0mUXhZ0GpiD5V39c/M7/18p620LaokIDnuwuI1Mshnytrk5gao6
-EyfSap+WxrF/ys8BQ7X22h6juLgDsY4J/QwuHEk+rcjSO4YQpeJBpp+3AsOFbWbl
-7wx6aFzLcoAWIWr5zc9BwboE5w9Ot7/fSBdn1GnbWUfVr0VxCJGv5oU833IsOcbL
-3Kufe+QE2ZxyD7v+mHI1/THkr9rFYaWJ8f4HAfQ5XfoOo/ULXo6qkw4fM04tD3ex
-oGvzJovacGYnvSvYmde1KMydB+oNXQ==
-=KxTS
------END PGP SIGNATURE-----
-
---W/A79Jf9YM97F5Ll--

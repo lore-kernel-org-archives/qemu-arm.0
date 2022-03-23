@@ -1,106 +1,106 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2579322lfb;
-        Wed, 23 Mar 2022 10:36:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJznSyjUZrj01/PnVF8W58cACtPRHCyGZ7fBipKqJmRfjj4QY7o/OaPJYc9j15K2qhtwlVBg
-X-Received: by 2002:a25:9845:0:b0:628:99a6:55ed with SMTP id k5-20020a259845000000b0062899a655edmr1015205ybo.221.1648056997305;
-        Wed, 23 Mar 2022 10:36:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648056997; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2579447lfb;
+        Wed, 23 Mar 2022 10:36:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzgj1lF7tHeSpqSF5dhG79NLQeI5KeSv17zM3Z5TUxydDCWg2puZZR5j05F71PLPG1ZhDFW
+X-Received: by 2002:a25:af83:0:b0:633:73fb:ff57 with SMTP id g3-20020a25af83000000b0063373fbff57mr1119547ybh.46.1648057009399;
+        Wed, 23 Mar 2022 10:36:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648057009; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ok2N6h5YOyNBPkbML14fq90dza9An/ILnCgShtuPFrW0i2OsTc/5RI3O9n5MbI+EP2
-         ovI35SHi8IZzcK7I/txlvRIXgIVBxCtOqz10hQJh130bCgkL5g1G4i72yGsO1LzmbkYa
-         CAbvGur4jQ/yJyVKBVnHISGsj+1F3ih3HcPxNCCbSatwD/YaF9Or82KSJl6XStZwEYpg
-         LFJM4BfDXpqosmWgwMkZvuoCW13id0702sbWWioRVjHufbAxJP6ZqqrczH5G8b5rOUNq
-         xlaHcSreaCPRtrUS18f+8+Ka+NrMjUGkV0Y72Q/0fdxD+okde5sKQ9zdZTl4/uyaTQBO
-         eudg==
+        b=VOWMqdtFWQVoHTCFJ89Clvqvaq2zSFJHcFBv889NNxO/cYaK4cSo0n5dxb90A2y0TS
+         /5WL6cTYYHQboG6zA1hvew8/mZd6g9DT1XcK8OZqcm2ldyiQORO2Xs8IERxhRsyMTA9p
+         MToWJ6EIUh38pxu+e96GO9Y3PBo9X1HLSfVSif8o0eQ1p0p3nEq8mILGCA6VewXESbiU
+         j/2LUKrs6EZwWWoKyakxupg0OYbsLEmdi4VgdU1hh3aOl3JYGB409tPxW9TYhgiLVDnu
+         BP66OlP7SJBMjTgTuTxhLs0zr6wMgfDjHJsaPJBcMZCsHQmoJ5ocUb3PNi6S7ki5eSSZ
+         PH+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=GCsELW2QXqJF8bCAIFTcBQvHzfwsRKTCwEsXwAqek4w=;
-        b=ERXhKnUR1AQuXCRtzdDeYF2BkH0IvPdLiUlwErhaQQZuso3KP14oCJUreKG0w0wRFL
-         lqFn7qv6qhSraiFA2NXzYezFcsK3rpUxHRnlJ6GIlZVWO6tXy930OLZt4I0PF1OdJXds
-         CeivzbLoQSMpBntxCR014kw+TTkjNXq4kkvzr6b2TnklC9bLfpRauh7qYLKOorkjGjrS
-         fTKoaP/j7IPX93D/8Lftjds+ppiLIJSR1JMciabCDLpR5hSHT9KbBfK17LUs2x5/5TA/
-         KNxue6gpHlT9jDhjDosrnRPT5ob7YHM+SUrAUwTeFcE9TAt3PmWYav/7gO1zkoMn6gbP
-         8vxA==
+        bh=2EsJ9w4OtAe62QE/DTZfa1jMS0xrU6YKS1g+C71i9i0=;
+        b=j6jnykqSMwe7xLQb2e3DpkBnq1zomMXKa18eQwLwZp9VXoq0ojXsotF6STtzYXvA59
+         g8ncnd9UcwMDws4sNQPd4cMvFP4ttAiTOKxD+W2EWGWkQBTJAtUon7cVfUfJebsaboCH
+         xnBw3Yw/xJNvYjD6kAMV2wXt3IBbOyoWe0F1lGqrrfGhe/EYVtKajpJVa48J9JhRZZ9d
+         mHd7etg7W8be8u7xTH+cOWeC7q5wIScgyNhG+gKOXL6pOeYCaeNHLRXh3PR9T9GrWCrX
+         3yJm+RqXs/VXBrcHzVvkF2KvF/jpvyqCi0+eJzx82HpG4Fe8xUhL4jcA/L1DvScPosZY
+         cK5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b="8G1Fo/Lt";
+       dkim=fail header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=zCGPEDVJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15-20020a25090f000000b00633ccab81d0si13688850ybj.463.2022.03.23.10.36.37
+        by mx.google.com with ESMTPS id r9-20020a258289000000b00633994045a7si16519304ybk.529.2022.03.23.10.36.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Mar 2022 10:36:37 -0700 (PDT)
+        Wed, 23 Mar 2022 10:36:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b="8G1Fo/Lt";
+       dkim=fail header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=zCGPEDVJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38252 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39190 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nX4uS-00005t-Ks
-	for alex.bennee@linaro.org; Wed, 23 Mar 2022 13:36:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46952)
+	id 1nX4ue-0000ln-PM
+	for alex.bennee@linaro.org; Wed, 23 Mar 2022 13:36:48 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47014)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zongyuan.li@smartx.com>)
- id 1nX4uH-0008Ua-2N
- for qemu-arm@nongnu.org; Wed, 23 Mar 2022 13:36:25 -0400
-Received: from [2607:f8b0:4864:20::52b] (port=44015
- helo=mail-pg1-x52b.google.com)
+ id 1nX4uM-0000Me-4p
+ for qemu-arm@nongnu.org; Wed, 23 Mar 2022 13:36:30 -0400
+Received: from [2607:f8b0:4864:20::102c] (port=50959
+ helo=mail-pj1-x102c.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <zongyuan.li@smartx.com>)
- id 1nX4uF-0005VP-Ee
- for qemu-arm@nongnu.org; Wed, 23 Mar 2022 13:36:24 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id c2so1704242pga.10
- for <qemu-arm@nongnu.org>; Wed, 23 Mar 2022 10:36:23 -0700 (PDT)
+ id 1nX4uK-0005Xg-Il
+ for qemu-arm@nongnu.org; Wed, 23 Mar 2022 13:36:29 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id m22so2451913pja.0
+ for <qemu-arm@nongnu.org>; Wed, 23 Mar 2022 10:36:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=smartx-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=GCsELW2QXqJF8bCAIFTcBQvHzfwsRKTCwEsXwAqek4w=;
- b=8G1Fo/LtG+qvDUJoacfKR5i0ISORzoj/q0mLJFWlp7UCcqBq8Tw1PLwhHODtHdJvn/
- Na+9mBMqkYTDBSx7F3kCfm6KE41HBhVus8t3EflXRhRgCsepMjzjlCDdyieE9egYoBoB
- ahtzQowWnAA+lVhVfDicbWzT9fXLn5Ueiv+LzNw1Bbpbon0epS/MV6ifXyW7kyvP8n1L
- YcjVDfg+N7Pl7/uMlb9LA8Aqv9jDXnRwL2uRErrFxLku3bAA4J5wHF/e3FEfMIPnOvA2
- LMUPqQSd51l1/6QYApGdGdpi9yi2JMrEN3n0oGDmnnZuZSgGhuvSqFBWsAHseav18bKR
- 35kw==
+ bh=2EsJ9w4OtAe62QE/DTZfa1jMS0xrU6YKS1g+C71i9i0=;
+ b=zCGPEDVJ5j3EC41nOk4QuQmCLFTk53zzMU3Ql176m0Y1S2MTJ5ZY2xhCTiRzMotFvl
+ npA2hcQUbmlUwa4GmLxdaXLuc0jdskSRZPgPzahpxNK0aRzCJbOQqGP+BD5+Bs8CvsG6
+ SmjcuZzbkkYZXau5WnywH9kompyxYEO8JvDbmYXi+7KdHIwsD0uHHec0x10Mt5thUk/Z
+ Pu4taNH5E65PH+SQGttNQu0PlQ0ab8yco8Kx9OZjfCTSS8kH6t1L6W4Td6aYL+FMaGxm
+ iS1py578GyQtem+63rKDUL+jXPbLyozBrhdrlN4OcfY7A8HzpXAGQJ5ZQ4A/QXQBp7Gp
+ qyvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=GCsELW2QXqJF8bCAIFTcBQvHzfwsRKTCwEsXwAqek4w=;
- b=2GAjMyWpN2FTLslXLTFzEkbHjN7T6S0hEDdut5NDFl78qPYHH6edKernB+SiR0Izvp
- 9maBZM6Vq2MD1pLagQz9h0oP1rb1hXJ4wrt6FQRt0b6uNiMwURo56n2dSoUDQQV7IgjI
- sN7m40wUVjl1/KgcRrEwhWgEhLeJ1pPIE/LvZTUAezxk0ZB4v40Vfv5B0+ZAHIjN9Sge
- nmGOKsyum7BeMSJE6MJeb0oOKhhI+BkBGNtfwtKkhrYnmOtRI/RnvSJZCswKofHlgIh1
- ZGVOAJ7+39ngrHFy/NoNU5rr9LPR/M4ZT7mKVqTom6IF1AgBqMlefw4hfFj0SbYPOJ7N
- 0KEA==
-X-Gm-Message-State: AOAM530ZQu9ZGO224g4Jrbd29uFnUnEUJOK6trDLiu0lH16a4HaHZU8G
- fh4nguBx+tm687vTPJtip8gtrg==
-X-Received: by 2002:a63:481b:0:b0:378:9b24:5163 with SMTP id
- v27-20020a63481b000000b003789b245163mr782851pga.224.1648056982228; 
- Wed, 23 Mar 2022 10:36:22 -0700 (PDT)
+ bh=2EsJ9w4OtAe62QE/DTZfa1jMS0xrU6YKS1g+C71i9i0=;
+ b=tpEU8xvykltaSErpJBhhzVju+g0NXxeDDC1nzN+ZKYT6o3HkI87hWvwocsJdXvXK47
+ myUOuoRp2gF6//llF+82maJFF14/YF6t9VrKM14cIw6lcmEDJmJtnRSyiDx6uP++lwzo
+ u2vSV+i9tmQkNl4drWd++rfyJlPCS3WyGmFLqG0ktd5HwmpIS4J0jVl6j0XqgInQb+7m
+ w/UTbfC1hNmozUlF/FeS1jfThe3gTBjS+Fgur8K8Pr77bxDRG7TKR4TmoZdCBc3s3ua5
+ dpo6V+IpTITQYm7TQLLn0RBwvaeYgrLRal0ISf0WiqWeLNxFO2XkSW/AmxS5Q8lemJHC
+ eXXw==
+X-Gm-Message-State: AOAM531DlDN7vcznij2hDmt7eGBrwJqiapc9orQfyTTIuuaIf4a22Edf
+ yFQPgDyjFE8u62y4IOqRJqihfpSARVVyIA==
+X-Received: by 2002:a17:90a:7ac2:b0:1bf:3573:179b with SMTP id
+ b2-20020a17090a7ac200b001bf3573179bmr892742pjl.216.1648056987360; 
+ Wed, 23 Mar 2022 10:36:27 -0700 (PDT)
 Received: from dev.lizongyuan.local ([103.177.44.11])
  by smtp.gmail.com with ESMTPSA id
- w19-20020a056a0014d300b004fae5e3970csm553239pfu.35.2022.03.23.10.36.20
+ w19-20020a056a0014d300b004fae5e3970csm553239pfu.35.2022.03.23.10.36.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Mar 2022 10:36:21 -0700 (PDT)
+ Wed, 23 Mar 2022 10:36:26 -0700 (PDT)
 From: Zongyuan Li <zongyuan.li@smartx.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 3/5] hw/intc/exynos4210_combiner: replace 'qemu_split_irq'
- with 'TYPE_SPLIT_IRQ'
-Date: Thu, 24 Mar 2022 01:35:41 +0800
-Message-Id: <20220323173543.146442-4-zongyuan.li@smartx.com>
+Subject: [PATCH v3 4/5] hw/intc/exynos4210_gic: replace 'qemu_split_irq' with
+ 'TYPE_SPLIT_IRQ'
+Date: Thu, 24 Mar 2022 01:35:42 +0800
+Message-Id: <20220323173543.146442-5-zongyuan.li@smartx.com>
 X-Mailer: git-send-email 2.34.0
 In-Reply-To: <20220323173543.146442-1-zongyuan.li@smartx.com>
 References: <20220323173543.146442-1-zongyuan.li@smartx.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::52b
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102c
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::52b;
- envelope-from=zongyuan.li@smartx.com; helo=mail-pg1-x52b.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=zongyuan.li@smartx.com; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -4
 X-Spam_score: -0.5
 X-Spam_bar: /
@@ -125,34 +125,31 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
  "open list:Exynos" <qemu-arm@nongnu.org>, Zongyuan Li <zongyuan.li@smartx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hLipnV00tgyM
+X-TUID: r6zVu5qYPWvU
 
 Signed-off-by: Zongyuan Li <zongyuan.li@smartx.com>
 ---
- hw/intc/exynos4210_combiner.c | 32 +++++++++++++++++++++++++-------
- 1 file changed, 25 insertions(+), 7 deletions(-)
+ hw/intc/exynos4210_gic.c | 25 ++++++++++++++++++++++---
+ 1 file changed, 22 insertions(+), 3 deletions(-)
 
-diff --git a/hw/intc/exynos4210_combiner.c b/hw/intc/exynos4210_combiner.c
-index 4534ee248d..18dade35d3 100644
---- a/hw/intc/exynos4210_combiner.c
-+++ b/hw/intc/exynos4210_combiner.c
-@@ -31,10 +31,12 @@
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
- #include "qemu/module.h"
-+#include "qapi/error.h"
- 
- #include "hw/arm/exynos4210.h"
- #include "hw/hw.h"
- #include "hw/irq.h"
-+#include "hw/core/split-irq.h"
+diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+index bc73d1f115..d8ecb9fae3 100644
+--- a/hw/intc/exynos4210_gic.c
++++ b/hw/intc/exynos4210_gic.c
+@@ -29,6 +29,8 @@
  #include "hw/qdev-properties.h"
+ #include "hw/arm/exynos4210.h"
  #include "qom/object.h"
++#include "hw/hw.h"
++#include "hw/core/split-irq.h"
  
-@@ -105,6 +107,22 @@ static const VMStateDescription vmstate_exynos4210_combiner = {
-     }
- };
+ enum ExtGicId {
+     EXT_GIC_ID_MDMA_LCD0 = 66,
+@@ -209,6 +211,23 @@ qemu_irq *exynos4210_init_irq(Exynos4210Irq *s)
+             EXYNOS4210_MAX_INT_COMBINER_IN_IRQ);
+ }
  
++
 +static qemu_irq split_irq(qemu_irq out1, qemu_irq out2) {
 +    DeviceState *splitter = qdev_new(TYPE_SPLIT_IRQ);
 +
@@ -170,64 +167,30 @@ index 4534ee248d..18dade35d3 100644
 +}
 +
  /*
-  * Get Combiner input GPIO into irqs structure
-  */
-@@ -132,48 +150,48 @@ void exynos4210_combiner_get_gpioin(Exynos4210Irq *irqs, DeviceState *dev,
-         /* MDNIE_LCD1 INTG1 */
-         case EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 0) ...
-              EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 3):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
-+            irq[n] = split_irq(qdev_get_gpio_in(dev, n),
-                     irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(0, bit + 4)]);
-             continue;
- 
-         /* TMU INTG3 */
-         case EXYNOS4210_COMBINER_GET_IRQ_NUM(3, 4):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
-+            irq[n] = split_irq(qdev_get_gpio_in(dev, n),
-                     irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(2, bit)]);
-             continue;
- 
-         /* LCD1 INTG12 */
-         case EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 0) ...
-              EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 3):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
-+            irq[n] = split_irq(qdev_get_gpio_in(dev, n),
-                     irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(11, bit + 4)]);
-             continue;
- 
-         /* Multi-Core Timer INTG12 */
-         case EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 4) ...
-              EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 8):
--               irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
-+               irq[n] = split_irq(qdev_get_gpio_in(dev, n),
-                        irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(1, bit + 4)]);
-             continue;
- 
-         /* Multi-Core Timer INTG35 */
-         case EXYNOS4210_COMBINER_GET_IRQ_NUM(35, 4) ...
-              EXYNOS4210_COMBINER_GET_IRQ_NUM(35, 8):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
-+            irq[n] = split_irq(qdev_get_gpio_in(dev, n),
-                     irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(1, bit + 4)]);
-             continue;
- 
-         /* Multi-Core Timer INTG51 */
-         case EXYNOS4210_COMBINER_GET_IRQ_NUM(51, 4) ...
-              EXYNOS4210_COMBINER_GET_IRQ_NUM(51, 8):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
-+            irq[n] = split_irq(qdev_get_gpio_in(dev, n),
-                     irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(1, bit + 4)]);
-             continue;
- 
-         /* Multi-Core Timer INTG53 */
-         case EXYNOS4210_COMBINER_GET_IRQ_NUM(53, 4) ...
-              EXYNOS4210_COMBINER_GET_IRQ_NUM(53, 8):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
-+            irq[n] = split_irq(qdev_get_gpio_in(dev, n),
-                     irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(1, bit + 4)]);
-             continue;
+  * Initialize board IRQs.
+  * These IRQs contain splitted Int/External Combiner and External Gic IRQs.
+@@ -230,10 +249,10 @@ void exynos4210_init_board_irqs(Exynos4210Irq *s)
+             irq_id = EXT_GIC_ID_MCT_G1;
          }
+         if (irq_id) {
+-            s->board_irqs[n] = qemu_irq_split(s->int_combiner_irq[n],
++            s->board_irqs[n] = split_irq(s->int_combiner_irq[n],
+                     s->ext_gic_irq[irq_id-32]);
+         } else {
+-            s->board_irqs[n] = qemu_irq_split(s->int_combiner_irq[n],
++            s->board_irqs[n] = split_irq(s->int_combiner_irq[n],
+                     s->ext_combiner_irq[n]);
+         }
+     }
+@@ -245,7 +264,7 @@ void exynos4210_init_board_irqs(Exynos4210Irq *s)
+                      EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][bit];
+ 
+         if (irq_id) {
+-            s->board_irqs[n] = qemu_irq_split(s->int_combiner_irq[n],
++            s->board_irqs[n] = split_irq(s->int_combiner_irq[n],
+                     s->ext_gic_irq[irq_id-32]);
+         }
+     }
 -- 
 2.34.0
 

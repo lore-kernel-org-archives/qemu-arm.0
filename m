@@ -1,86 +1,85 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2170550lfb;
-        Wed, 23 Mar 2022 00:29:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy8q8EJQPhE1KTS3kkPjPcGdO7MP2URlZ4y9RdCqAG137YUkroXtQtpDPlTxiQ5iN1hmYiE
-X-Received: by 2002:ac8:5e0c:0:b0:2d0:a808:908e with SMTP id h12-20020ac85e0c000000b002d0a808908emr22862787qtx.115.1648020551010;
-        Wed, 23 Mar 2022 00:29:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648020551; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2170775lfb;
+        Wed, 23 Mar 2022 00:29:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwesXfBzVOkK6itHqGjp2AovxDRGDMgEoumjc4qq2aaEIgJEkA0M32Zi/eObw6LeI7ui7Ou
+X-Received: by 2002:a05:620a:410b:b0:67d:d59c:13b8 with SMTP id j11-20020a05620a410b00b0067dd59c13b8mr18428996qko.449.1648020579554;
+        Wed, 23 Mar 2022 00:29:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648020579; cv=none;
         d=google.com; s=arc-20160816;
-        b=LPW0rYOCBm/dPTRW+QO5XZuhkZ0hvdtDrJ/xTpJcCv7nPhWSErdMhacLX9gnRFVXQe
-         46o5fqHhr5sJsvtjlkRad2qI610dH+4+rQrXNfHK7DRtKmntauLKFchZ3saSKlX6njqb
-         c4UYI6tdZ9gOA6J7SaXFD/e93ZWgIz+MT83wukpHhYixWpjZ1r67RLl9lUfnikqRbATU
-         QzGSr9zVp1UEkKH2DJT24hXAM7ybcrw9TXCtVYKxP1HI5WFq2Oi68LhYKN+y/+tvl7tN
-         S+IrWHNxdlXMw9G5/VSXMYiNKkws6lqkffWFKWeSD6j3mGJOcAPkPfeeW7MdqWHk1IAn
-         UR5g==
+        b=V4Ar+6bd0oRvSW/B3D4KwncT+dvNc2hxnHTHzag6PqltxTtM6Vmq2NBsBieyj5dXee
+         lktoLGGK4MgLIh6ksnS27wJumihPsWfBlRX0vNOM/rJzRUKNGSTr0Y4fA0C3I00EFt3u
+         KABC3pPvTwT9Vi+CljKyXWJniWG69QzTv6A+GWowISujaC1U18458yUiGoFgLsi0YNoc
+         0CrWHHcQyexJss43lBpb/7IbwasWGbFaOHK+OmUfv4FSFmIJJ9rc1k49M5XYKM3EKxtM
+         YUQYhWZhVcdxl4EHdWxPvEwE8QZbVQy0sJunffYwYBkpFuzBF6QWFIGc+t6yCTGKop7N
+         4KuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=5Ul8oWuvUeDzNfHlnwEYmiKJujaeZ1hRs0XrndxwX2o=;
-        b=KsONyZK+B1xZ2ZrlLCZC4FPo4LYXX1Pgu06Vo5rayOF45fMEK8+vDLCzU5buo3hLEa
-         LqFleMj44VsJSYxeZ4xjbVllkC7+yolPdJBzwPIyk0FNueEh3oHJMwsXGr7MbfjKHf9b
-         9yx8IWuqaBwI7hJT9Ee4/iTYpwnhT6wRHfoLVXfVncuyOLA4NiZTLrObmv0M/GE2svtR
-         FFDu96hGz36g7L+mAGJrGUExbperzkhylHkyWdZdYfExq+Pazu3yQa1XsUc7VgYZwm6O
-         wp2osPTZttX/wNoIhNJSiJhkW35WhNhTQXx/RA7A7p9yaKJcfoAFjhaXfeISG7I1Sj3R
-         HEWw==
+        bh=Rtv9o7Oufvn3+0c0LuDGlrWeerBj5JYtg65fpCw6whI=;
+        b=orWe/BDPO9cNnGERkNhdAHCSx++olSQfc1Bm0cyuIhO/qhgLJmxQO8oh2bmgB5Ws8r
+         /BwchL+eai1CW1UbYjsDnT7XQFX8zsIchTfTNuZmvgnb3BqU4t5fJHxd+E5YCEcvm4yN
+         8eZ9WQfzOX59lII3a+mUW2oVWB/Yl0maVESB87e+6iJUwfmE2de9b6A7wdWJEnwNLUBj
+         cD3FP+13khPNFalmztP7ikqjXx0YIg1PS+aSIjlyLtiibuSnJXPr2I+qyEXXaVNgG0q4
+         /Max+zLhwBpOJMn6vn8l4CYMPbemLBek7S6JRx/9LSdAhfa9P2Ed785kQK+ufmLeDLP3
+         EZyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="D/R9Dh8o";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X6Iz3X9O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f19-20020a05620a15b300b0067e4be23a4csi3466832qkk.657.2022.03.23.00.29.10
+        by mx.google.com with ESMTPS id s2-20020ac85cc2000000b002e1fbf3c0c1si4127749qta.690.2022.03.23.00.29.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Mar 2022 00:29:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 23 Mar 2022 00:29:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="D/R9Dh8o";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X6Iz3X9O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40102 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nWvQc-0006sz-Fk
-	for alex.bennee@linaro.org; Wed, 23 Mar 2022 03:29:10 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41872)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nWvR4-0000sR-Vz
+	for alex.bennee@linaro.org; Wed, 23 Mar 2022 03:29:39 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41790)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nWvNK-0004PP-KV
- for qemu-devel@nongnu.org; Wed, 23 Mar 2022 03:25:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:27108)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nWvNA-00047b-4c
+ for qemu-arm@nongnu.org; Wed, 23 Mar 2022 03:25:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:24331)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nWvNI-0000w1-TJ
- for qemu-devel@nongnu.org; Wed, 23 Mar 2022 03:25:46 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nWvN7-0000ud-FO
+ for qemu-arm@nongnu.org; Wed, 23 Mar 2022 03:25:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648020344;
+ s=mimecast20190719; t=1648020332;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=5Ul8oWuvUeDzNfHlnwEYmiKJujaeZ1hRs0XrndxwX2o=;
- b=D/R9Dh8oi4FfpSbD31vhr2QLLgHYsjv8TNzWrgas122gDmeOrlwjy2gOMQgAE8I6GbiKWg
- 2wHNN6BR2fxr+izxzffNksBsEACooy3GWEf3dyaupXis3lQ1F5QFhjgnthDX49KFbB9asl
- akBft1xPdqTfUXEDLQBgYE5WPNROOV0=
+ bh=Rtv9o7Oufvn3+0c0LuDGlrWeerBj5JYtg65fpCw6whI=;
+ b=X6Iz3X9OKffOCJiRY0IgECF5XXy31fk8pefrryosCy5eZHx39a5TUgOU0YW7SyEUI3KceD
+ /CqEzbStQfGB6iWsD2qdk7t5brf+upWqp4b/e+HPxtCOpCYDJkTBQ/bH/oB0eLNWNATD6m
+ j7GwEkWzF2qMrkxZECeSLQdk/edbAXQ=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-648-fd0OouEMMs6H0iyM-dk5Ow-1; Wed, 23 Mar 2022 03:25:40 -0400
-X-MC-Unique: fd0OouEMMs6H0iyM-dk5Ow-1
+ us-mta-562-jxTKAhE1OxSKiiEXvhAYhg-1; Wed, 23 Mar 2022 03:25:29 -0400
+X-MC-Unique: jxTKAhE1OxSKiiEXvhAYhg-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 63CFA185A79C;
- Wed, 23 Mar 2022 07:25:40 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 40DF485A5A8;
+ Wed, 23 Mar 2022 07:25:29 +0000 (UTC)
 Received: from gshan.redhat.com (ovpn-12-33.pek2.redhat.com [10.72.12.33])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D7C6B2166B2D;
- Wed, 23 Mar 2022 07:25:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3C3FB2166B2D;
+ Wed, 23 Mar 2022 07:25:20 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
-Subject: [PATCH v3 4/4] hw/arm/virt: Unify ACPI processor ID in MADT and SRAT
- table
-Date: Wed, 23 Mar 2022 15:24:38 +0800
-Message-Id: <20220323072438.71815-5-gshan@redhat.com>
+Subject: [PATCH v3 2/4] hw/arm/virt: Fix CPU's default NUMA node ID
+Date: Wed, 23 Mar 2022 15:24:36 +0800
+Message-Id: <20220323072438.71815-3-gshan@redhat.com>
 In-Reply-To: <20220323072438.71815-1-gshan@redhat.com>
 References: <20220323072438.71815-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -100,88 +99,90 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
  qemu-devel@nongnu.org, zhenyzha@redhat.com, wangyanan55@huawei.com,
  shan.gavin@gmail.com, imammedo@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iRQvbFawcqxe
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XfqOdMf3B0HJ
 
-The value of the following field has been used in ACPI PPTT table
-to identify the corresponding processor. This takes the same field
-as the ACPI processor ID in MADT and SRAT tables.
+When CPU-to-NUMA association isn't explicitly provided by users,
+the default on is given by mc->get_default_cpu_node_id(). However,
+the CPU topology isn't fully considered in the default association
+and this causes CPU topology broken warnings on booting Linux guest.
 
-  ms->possible_cpus->cpus[i].props.thread_id
+For example, the following warning messages are observed when the
+Linux guest is booted with the following command lines.
+
+  /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+  -accel kvm -machine virt,gic-version=host               \
+  -cpu host                                               \
+  -smp 6,sockets=2,cores=3,threads=1                      \
+  -m 1024M,slots=16,maxmem=64G                            \
+  -object memory-backend-ram,id=mem0,size=128M            \
+  -object memory-backend-ram,id=mem1,size=128M            \
+  -object memory-backend-ram,id=mem2,size=128M            \
+  -object memory-backend-ram,id=mem3,size=128M            \
+  -object memory-backend-ram,id=mem4,size=128M            \
+  -object memory-backend-ram,id=mem4,size=384M            \
+  -numa node,nodeid=0,memdev=mem0                         \
+  -numa node,nodeid=1,memdev=mem1                         \
+  -numa node,nodeid=2,memdev=mem2                         \
+  -numa node,nodeid=3,memdev=mem3                         \
+  -numa node,nodeid=4,memdev=mem4                         \
+  -numa node,nodeid=5,memdev=mem5
+         :
+  alternatives: patching kernel code
+  BUG: arch topology borken
+  the CLS domain not a subset of the MC domain
+  <the above error log repeats>
+  BUG: arch topology borken
+  the DIE domain not a subset of the NODE domain
+
+With current implementation of mc->get_default_cpu_node_id(),
+CPU#0 to CPU#5 are associated with NODE#0 to NODE#5 separately.
+That's incorrect because CPU#0/1/2 should be associated with same
+NUMA node because they're seated in same socket.
+
+This fixes the issue by considering the socket ID when the default
+CPU-to-NUMA association is provided in virt_possible_cpu_arch_ids().
+With this applied, no more CPU topology broken warnings are seen
+from the Linux guest. The 6 CPUs are associated with NODE#0/1, but
+there are no CPUs associated with NODE#2/3/4/5.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- hw/arm/virt-acpi-build.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ hw/arm/virt.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 449fab0080..7fedb56eea 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -534,13 +534,16 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 064eac42f7..3286915229 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2497,7 +2497,9 @@ virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
  
-     for (i = 0; i < cpu_list->len; ++i) {
-         uint32_t nodeid = cpu_list->cpus[i].props.node_id;
-+        uint32_t thread_id = cpu_list->cpus[i].props.thread_id;
-+
-         /*
-          * 5.2.16.4 GICC Affinity Structure
-          */
-         build_append_int_noprefix(table_data, 3, 1);      /* Type */
-         build_append_int_noprefix(table_data, 18, 1);     /* Length */
-         build_append_int_noprefix(table_data, nodeid, 4); /* Proximity Domain */
--        build_append_int_noprefix(table_data, i, 4); /* ACPI Processor UID */
-+        build_append_int_noprefix(table_data,
-+                                  thread_id, 4); /* ACPI Processor UID */
-         /* Flags, Table 5-76 */
-         build_append_int_noprefix(table_data, 1 /* Enabled */, 4);
-         build_append_int_noprefix(table_data, 0, 4); /* Clock Domain */
-@@ -704,6 +707,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ static int64_t virt_get_default_cpu_node_id(const MachineState *ms, int idx)
  {
-     int i;
-     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-+    MachineState *ms = MACHINE(vms);
-     const MemMapEntry *memmap = vms->memmap;
-     AcpiTable table = { .sig = "APIC", .rev = 3, .oem_id = vms->oem_id,
-                         .oem_table_id = vms->oem_table_id };
-@@ -725,8 +729,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     build_append_int_noprefix(table_data, vms->gic_version, 1);
-     build_append_int_noprefix(table_data, 0, 3);   /* Reserved */
+-    return idx % ms->numa_state->num_nodes;
++    int64_t socket_id = ms->possible_cpus->cpus[idx].props.socket_id;
++
++    return socket_id % ms->numa_state->num_nodes;
+ }
  
--    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
-+    for (i = 0; i < ms->smp.cpus; i++) {
-         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
-+        uint32_t thread_id = ms->possible_cpus->cpus[i].props.thread_id;
-         uint64_t physical_base_address = 0, gich = 0, gicv = 0;
-         uint32_t vgic_interrupt = vms->virt ? PPI(ARCH_GIC_MAINT_IRQ) : 0;
-         uint32_t pmu_interrupt = arm_feature(&armcpu->env, ARM_FEATURE_PMU) ?
-@@ -743,7 +748,8 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         build_append_int_noprefix(table_data, 76, 1);   /* Length */
-         build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
-         build_append_int_noprefix(table_data, i, 4);    /* GIC ID */
--        build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
-+        build_append_int_noprefix(table_data,
-+                                  thread_id, 4);        /* ACPI Processor UID */
-         /* Flags */
-         build_append_int_noprefix(table_data, 1, 4);    /* Enabled */
-         /* Parking Protocol Version */
+ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
 -- 
 2.23.0
 

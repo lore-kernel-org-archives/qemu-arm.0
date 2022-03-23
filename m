@@ -1,108 +1,120 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2535950lfb;
-        Wed, 23 Mar 2022 09:36:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwbQ/d1FF+CmorCSIxZ9Il9zTqCwvg6K/rC1GUtIAq8sJYImKsYmZ/CD2gGagfSWFOEh3ws
-X-Received: by 2002:a05:6902:1351:b0:633:cb56:7895 with SMTP id g17-20020a056902135100b00633cb567895mr702561ybu.509.1648053384438;
-        Wed, 23 Mar 2022 09:36:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648053384; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2620317lfb;
+        Wed, 23 Mar 2022 11:31:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzqEOCVyk4u6GDZPfbkGq1ZEYKCGtSdpQ8lDzwX2aI6+irlfDMNJ1cgwbDrt1rkiZusbn5P
+X-Received: by 2002:a81:5a57:0:b0:2dc:374c:4b92 with SMTP id o84-20020a815a57000000b002dc374c4b92mr1260835ywb.385.1648060316644;
+        Wed, 23 Mar 2022 11:31:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648060316; cv=none;
         d=google.com; s=arc-20160816;
-        b=iw68CYhYyO0SnlqrvrH4lfkTxeFC3SAaKqE2rCCVIIFrv8yX0S93ypxdLqUro9z18P
-         mFjULF78/HAJghFkIU6I/4RB3QRvZduJsDHutWw7EokNBXW9B9RNljzxIkHS3+lwS3KZ
-         HY74B+KSHBEBN0T60ZvNXM1hlxmpSU5xoIjEQiOUtj8rnVLAmnc4uAqN2y0BHRSSQrZN
-         qLlb//IhBjKvuAoargm149Pl4kr+ObNNyRoiz4TINj/awwY9vwCwowMCom0cNYgpUxhB
-         sDzjAb3BezMUfa5KolNZOBTqo+F55lguI7GaWgAVtg9NdwjfOag/e2auG5mQPciKV99G
-         /0Xg==
+        b=OnRD3IhMw68eoNL9P17Ju8DigGB897XIxxURnrkkqFWFK/ybVCwqMc5fASmYa0hgGh
+         cCPGEMlvcszsp1ESTThDrtzOjFlbTlLeXFdz9vd8h7T8L9BoE/qCYBvSk7SkAPVTs+gp
+         53kbN6khr7ANgP0vtpcAjzmzGoh5w9XWfdS4YvWyCcJbThwqqBzl81/47eNAFBKbH96k
+         GWKghY6bOtNr5CysfKJTCUZvQZvD1ABFpzeZddfjeN9owqbNvTmpZouHsDk5c4FE80km
+         bg4vUmThomdJTb4vPZjcdrYAGK+36IIQoR6xd1bU6lKhxUdZB0DusALeU93c6shynHdn
+         A3yA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=FNWeXhVmSyFUF005KTrVBR4V46blkLYJSBcsUWzAiZY=;
-        b=NKq/fYyxSIz1mLEbcnb6ezzD6Vvw/Q3Jq4hbMERirsAbGs4W5cuyxPH7r4DuURdaPY
-         6Vmw/Djbg3KFK3zEKAYHS1Fw8GmFShw38sTVUogjZFTwhOK/nVEmk9DIGoAsSJav0uL3
-         Bx0NJVNnXqy/fO7NuxloZzkvvu6DXnhenwWsXRMOEivxNoa1MaK9/E5NACCEnt5fQMDY
-         T7O/g+nY/u6lgRg/HVm3mKjO8TCX94p1hPBOJQPYKDFCoTlkAq7KIgh7pqAWeahPqhCn
-         1wdzK1E64nIrnmliuBM1k48Tw7N9pDxoUK7c5mBlORs5j74VISNiZbEHvF+mQ6mqiTbu
-         vWKw==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=aArRzOVKL81IsS8tCXPW0PXbbh/Tp4r4LQPIubAuC0c=;
+        b=SOsGXRQ1AL/5KpW7XjmYpdSNA7BCldpAz9mn8iwmy1mkrCDG+Tg+0Asq07fce0sEfU
+         N1ui87c9FEVEnTDy7NkiWnxYqcjaH88YgXvchXyK3KMnboIMHmjLGdrNljl561cgiEKv
+         wXgYpcj3TwtcGNEz8/iJaOU/gSw/wKTc1dZayo0R+0pNhuFdIJZK2pFoclHzul5WBYno
+         NawJOCzf9AiBDQf8Q06nJD2iqdWv7Ljh6wu7ouw/+rg5HxyNqqpyHXKSep8qgiFgFEkc
+         ootZumnBgizcTeWR3+N7BBLsCIaG09oz7CoRzv1h2o/U0n6ig90BHNK30YFfHP+a3J7k
+         ZeaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T2lRTNXW;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GIQ0Po6Z;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8-20020a250208000000b006339940441bsi18534079ybc.133.2022.03.23.09.36.24
+        by mx.google.com with ESMTPS id l12-20020a81d54c000000b002e5bb9dcb66si12607084ywj.495.2022.03.23.11.31.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Mar 2022 09:36:24 -0700 (PDT)
+        Wed, 23 Mar 2022 11:31:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T2lRTNXW;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GIQ0Po6Z;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43736 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nX3yB-0007Kr-L5
-	for alex.bennee@linaro.org; Wed, 23 Mar 2022 12:36:23 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39328)
+	id 1nX5lz-00083Z-VJ
+	for alex.bennee@linaro.org; Wed, 23 Mar 2022 14:31:55 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1nX3QZ-00064M-RB
- for qemu-devel@nongnu.org; Wed, 23 Mar 2022 12:01:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:27995)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1nX3QX-0005h1-L7
- for qemu-devel@nongnu.org; Wed, 23 Mar 2022 12:01:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648051296;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FNWeXhVmSyFUF005KTrVBR4V46blkLYJSBcsUWzAiZY=;
- b=T2lRTNXWYi8aMNhg3sPOdGqd8j8SCY9MTqcihrJkGwfSW06X1q5HmK5Du7CnDTwpctSnXH
- SrIaSK119nZFbrfKi6n13YGcyyHxeySk82RgWB52bxppt1lXMf8yq36l6xeaTxd1kr8zK5
- s2hV38qsei96+NhOjuouK2n9yJnWOxg=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-133-emE5kjG1PMyURttWnSez8Q-1; Wed, 23 Mar 2022 12:01:33 -0400
-X-MC-Unique: emE5kjG1PMyURttWnSez8Q-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6635C899EE1;
- Wed, 23 Mar 2022 16:01:31 +0000 (UTC)
-Received: from localhost (unknown [10.39.208.32])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A9D7C401E36;
- Wed, 23 Mar 2022 16:01:28 +0000 (UTC)
-From: marcandre.lureau@redhat.com
-To: qemu-devel@nongnu.org
-Subject: [PATCH 28/32] Move CPU softfloat unions to cpu-float.h
-Date: Wed, 23 Mar 2022 19:57:39 +0400
-Message-Id: <20220323155743.1585078-29-marcandre.lureau@redhat.com>
-In-Reply-To: <20220323155743.1585078-1-marcandre.lureau@redhat.com>
-References: <20220323155743.1585078-1-marcandre.lureau@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nX5ja-0006Gk-PP
+ for qemu-devel@nongnu.org; Wed, 23 Mar 2022 14:29:26 -0400
+Received: from [2607:f8b0:4864:20::430] (port=40731
+ helo=mail-pf1-x430.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nX5jZ-0003JX-9E
+ for qemu-devel@nongnu.org; Wed, 23 Mar 2022 14:29:26 -0400
+Received: by mail-pf1-x430.google.com with SMTP id d19so2113948pfv.7
+ for <qemu-devel@nongnu.org>; Wed, 23 Mar 2022 11:29:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=aArRzOVKL81IsS8tCXPW0PXbbh/Tp4r4LQPIubAuC0c=;
+ b=GIQ0Po6Zmncg7Q15p7+5+hWjKXaDwHv2VsHIss0JvJZSUp4V1AexwLLWkpJPQKcl/B
+ gMu3HkvJY+89eaLBW5r5zbs+QSagni0nH252ostoLN6Sx5pvbgdU8/oHMUOa3p5mc0Ez
+ gQwNZvGoNUUFYSKOUuxGeqTshkjrpYNl1+SqstrOnYUhmqaHoYKVd8yFR5pQ+83G678C
+ Gn4GNPiwRWRc+neafnFET6wMn9Ige+zLFwqBfCwA4pns4jiPPeuACltqz5iOakaUEnD+
+ ek6KV3xB4xKruZegij8w/LIO/taubS6xmqEZffpLpk05W1ttT20QkyWBufllfgNgK2gg
+ 5YGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=aArRzOVKL81IsS8tCXPW0PXbbh/Tp4r4LQPIubAuC0c=;
+ b=BkNX7P7aU1so1SQreIrrpHU9Jn3VjdYKj+XkYruxIlAPg2PonSl1F1azyiIak4P0qx
+ myXH3dBn5J6uDeOWSu/Hf98bkYU8oBitWnkyJupZu6g4a/IMjWnZyWIAcQrLb4sQfp0N
+ D58WrXnarM3OlqrsL2Aug/rfg0M/37vV0pEJpPCx6lZXWiDk8ATHtGrjR/Xa5j8GnfuY
+ y0tO/OL2N7fvE4YEcsf4sK7+Zo6OqtsmS/0rf3A3m7MZEHm98dsAgbWV1BEiklkQal6r
+ 6COX4EJ8Y0O8TJo7xg0XQcozupgA6pN4KfYz3ji5B5YBWlVl6Axb3aMb+2fmDEtJZpBU
+ kUbg==
+X-Gm-Message-State: AOAM532reZ/B3zPkEnwUECnIgH88mMeV0FkVueVxJ4FS1Lh6komWdnj0
+ FXrrVo6GNyQN8sJeWNjApKZeIA==
+X-Received: by 2002:a65:550a:0:b0:374:5324:c32d with SMTP id
+ f10-20020a65550a000000b003745324c32dmr923331pgr.61.1648060163731; 
+ Wed, 23 Mar 2022 11:29:23 -0700 (PDT)
+Received: from [192.168.1.6] (174-21-142-130.tukw.qwest.net. [174.21.142.130])
+ by smtp.gmail.com with ESMTPSA id
+ x29-20020aa79a5d000000b004f0ef1822d3sm571214pfj.128.2022.03.23.11.29.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 23 Mar 2022 11:29:23 -0700 (PDT)
+Message-ID: <bb0e6b91-f1e1-e92c-af25-31978eb3131d@linaro.org>
+Date: Wed, 23 Mar 2022 11:29:20 -0700
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=marcandre.lureau@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH 23/32] include: move target page bits declaration to
+ page-vary.h
+Content-Language: en-US
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+References: <20220323155743.1585078-1-marcandre.lureau@redhat.com>
+ <20220323155743.1585078-24-marcandre.lureau@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220323155743.1585078-24-marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::430
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,401 +128,29 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Juan Quintela <quintela@redhat.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
- "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Palmer Dabbelt <palmer@dabbelt.com>
+ David Hildenbrand <david@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Peter Xu <peterx@redhat.com>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7pBE4hOX+DDq
+X-TUID: 31IO1vUqDou0
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+On 3/23/22 08:57, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau<marcandre.lureau@redhat.com>
+> 
+> Since the implementation unit is page-vary.c.
+> 
+> Signed-off-by: Marc-André Lureau<marcandre.lureau@redhat.com>
+> ---
+>   include/exec/page-vary.h | 18 ++++++++++++++++++
+>   include/qemu-common.h    | 17 -----------------
+>   page-vary.c              |  2 +-
+>   softmmu/physmem.c        |  2 +-
+>   softmmu/vl.c             |  1 +
+>   target/arm/cpu.c         |  2 +-
+>   6 files changed, 22 insertions(+), 20 deletions(-)
 
-The types are no longer used in bswap.h since commit
-f930224fffe ("bswap.h: Remove unused float-access functions"), there
-isn't much sense in keeping it there and having a dependency on fpu/.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- include/qemu/bswap.h      | 60 ------------------------------------
- include/qemu/cpu-float.h  | 64 +++++++++++++++++++++++++++++++++++++++
- target/alpha/cpu.h        |  1 +
- target/arm/cpu.h          |  1 +
- target/hppa/cpu.h         |  1 +
- target/i386/cpu.h         |  1 +
- target/m68k/cpu.h         |  1 +
- target/microblaze/cpu.h   |  2 +-
- target/openrisc/cpu.h     |  1 +
- target/ppc/cpu.h          |  1 +
- target/riscv/cpu.h        |  2 +-
- target/rx/cpu.h           |  1 +
- target/s390x/cpu.h        |  1 +
- target/sh4/cpu.h          |  1 +
- target/sparc/cpu.h        |  1 +
- target/tricore/cpu.h      |  1 +
- target/xtensa/cpu.h       |  1 +
- migration/vmstate-types.c |  1 +
- 18 files changed, 80 insertions(+), 62 deletions(-)
- create mode 100644 include/qemu/cpu-float.h
-
-diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
-index 9dff7c7dbbc9..346d05f2aab3 100644
---- a/include/qemu/bswap.h
-+++ b/include/qemu/bswap.h
-@@ -19,8 +19,6 @@
- extern "C" {
- #endif
- 
--#include "fpu/softfloat-types.h"
--
- #ifdef BSWAP_FROM_BYTESWAP
- static inline uint16_t bswap16(uint16_t x)
- {
-@@ -202,64 +200,6 @@ CPU_CONVERT(le, 64, uint64_t)
- # define const_le16(_x) (_x)
- #endif
- 
--/* Unions for reinterpreting between floats and integers.  */
--
--typedef union {
--    float32 f;
--    uint32_t l;
--} CPU_FloatU;
--
--typedef union {
--    float64 d;
--#if HOST_BIG_ENDIAN
--    struct {
--        uint32_t upper;
--        uint32_t lower;
--    } l;
--#else
--    struct {
--        uint32_t lower;
--        uint32_t upper;
--    } l;
--#endif
--    uint64_t ll;
--} CPU_DoubleU;
--
--typedef union {
--     floatx80 d;
--     struct {
--         uint64_t lower;
--         uint16_t upper;
--     } l;
--} CPU_LDoubleU;
--
--typedef union {
--    float128 q;
--#if HOST_BIG_ENDIAN
--    struct {
--        uint32_t upmost;
--        uint32_t upper;
--        uint32_t lower;
--        uint32_t lowest;
--    } l;
--    struct {
--        uint64_t upper;
--        uint64_t lower;
--    } ll;
--#else
--    struct {
--        uint32_t lowest;
--        uint32_t lower;
--        uint32_t upper;
--        uint32_t upmost;
--    } l;
--    struct {
--        uint64_t lower;
--        uint64_t upper;
--    } ll;
--#endif
--} CPU_QuadU;
--
- /* unaligned/endian-independent pointer access */
- 
- /*
-diff --git a/include/qemu/cpu-float.h b/include/qemu/cpu-float.h
-new file mode 100644
-index 000000000000..911099499ffb
---- /dev/null
-+++ b/include/qemu/cpu-float.h
-@@ -0,0 +1,64 @@
-+#ifndef QEMU_CPU_FLOAT_H_
-+#define QEMU_CPU_FLOAT_H_
-+
-+#include "fpu/softfloat-types.h"
-+
-+/* Unions for reinterpreting between floats and integers.  */
-+
-+typedef union {
-+    float32 f;
-+    uint32_t l;
-+} CPU_FloatU;
-+
-+typedef union {
-+    float64 d;
-+#if HOST_BIG_ENDIAN
-+    struct {
-+        uint32_t upper;
-+        uint32_t lower;
-+    } l;
-+#else
-+    struct {
-+        uint32_t lower;
-+        uint32_t upper;
-+    } l;
-+#endif
-+    uint64_t ll;
-+} CPU_DoubleU;
-+
-+typedef union {
-+     floatx80 d;
-+     struct {
-+         uint64_t lower;
-+         uint16_t upper;
-+     } l;
-+} CPU_LDoubleU;
-+
-+typedef union {
-+    float128 q;
-+#if HOST_BIG_ENDIAN
-+    struct {
-+        uint32_t upmost;
-+        uint32_t upper;
-+        uint32_t lower;
-+        uint32_t lowest;
-+    } l;
-+    struct {
-+        uint64_t upper;
-+        uint64_t lower;
-+    } ll;
-+#else
-+    struct {
-+        uint32_t lowest;
-+        uint32_t lower;
-+        uint32_t upper;
-+        uint32_t upmost;
-+    } l;
-+    struct {
-+        uint64_t lower;
-+        uint64_t upper;
-+    } ll;
-+#endif
-+} CPU_QuadU;
-+
-+#endif /* QEMU_CPU_FLOAT_H_ */
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index 58f00b7814fd..994a018b910d 100644
---- a/target/alpha/cpu.h
-+++ b/target/alpha/cpu.h
-@@ -22,6 +22,7 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#include "qemu/cpu-float.h"
- 
- /* Alpha processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index ccf635ac5cbc..cb5359a74702 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -21,6 +21,7 @@
- #define ARM_CPU_H
- 
- #include "kvm-consts.h"
-+#include "qemu/cpu-float.h"
- #include "hw/registerfields.h"
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-index 4cc936b6bfda..c43b93a68f14 100644
---- a/target/hppa/cpu.h
-+++ b/target/hppa/cpu.h
-@@ -22,6 +22,7 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#include "qemu/cpu-float.h"
- 
- /* PA-RISC 1.x processors have a strong memory model.  */
- /* ??? While we do not yet implement PA-RISC 2.0, those processors have
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 5124c1e307b5..796e2cf6d664 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -25,6 +25,7 @@
- #include "kvm/hyperv-proto.h"
- #include "exec/cpu-defs.h"
- #include "qapi/qapi-types-common.h"
-+#include "qemu/cpu-float.h"
- 
- /* The x86 has a strong memory model with some store-after-load re-ordering */
- #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
-diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-index 872e8ce63758..9b3bf7a44819 100644
---- a/target/m68k/cpu.h
-+++ b/target/m68k/cpu.h
-@@ -22,6 +22,7 @@
- #define M68K_CPU_H
- 
- #include "exec/cpu-defs.h"
-+#include "qemu/cpu-float.h"
- #include "cpu-qom.h"
- 
- #define OS_BYTE     0
-diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-index 0a0ce71b6a5c..67aa88b8db5b 100644
---- a/target/microblaze/cpu.h
-+++ b/target/microblaze/cpu.h
-@@ -22,7 +22,7 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
--#include "fpu/softfloat-types.h"
-+#include "qemu/cpu-float.h"
- 
- typedef struct CPUArchState CPUMBState;
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-index bdf29d2dc4c3..b9584f10d452 100644
---- a/target/openrisc/cpu.h
-+++ b/target/openrisc/cpu.h
-@@ -21,6 +21,7 @@
- #define OPENRISC_CPU_H
- 
- #include "exec/cpu-defs.h"
-+#include "fpu/softfloat-types.h"
- #include "hw/core/cpu.h"
- #include "qom/object.h"
- 
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 627e574127ba..473436a49eb5 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -21,6 +21,7 @@
- #define PPC_CPU_H
- 
- #include "qemu/int128.h"
-+#include "qemu/cpu-float.h"
- #include "exec/cpu-defs.h"
- #include "cpu-qom.h"
- #include "qom/object.h"
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index c069fe85fa1b..e1d976bdef06 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -23,7 +23,7 @@
- #include "hw/core/cpu.h"
- #include "hw/registerfields.h"
- #include "exec/cpu-defs.h"
--#include "fpu/softfloat-types.h"
-+#include "qemu/cpu-float.h"
- #include "qom/object.h"
- #include "qemu/int128.h"
- #include "cpu_bits.h"
-diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-index b4abd90ccd1e..1c267f83bfd2 100644
---- a/target/rx/cpu.h
-+++ b/target/rx/cpu.h
-@@ -24,6 +24,7 @@
- #include "cpu-qom.h"
- 
- #include "exec/cpu-defs.h"
-+#include "qemu/cpu-float.h"
- 
- /* PSW define */
- REG32(PSW, 0)
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index c49c8466e74d..7d6d01325b2d 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -28,6 +28,7 @@
- #include "cpu-qom.h"
- #include "cpu_models.h"
- #include "exec/cpu-defs.h"
-+#include "qemu/cpu-float.h"
- 
- #define ELF_MACHINE_UNAME "S390X"
- 
-diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-index c72a30edfd41..14d490ac4705 100644
---- a/target/sh4/cpu.h
-+++ b/target/sh4/cpu.h
-@@ -22,6 +22,7 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#include "qemu/cpu-float.h"
- 
- /* CPU Subtypes */
- #define SH_CPU_SH7750  (1 << 0)
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index abb38db6749d..dd9e2f5cdb6a 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -4,6 +4,7 @@
- #include "qemu/bswap.h"
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#include "qemu/cpu-float.h"
- 
- #if !defined(TARGET_SPARC64)
- #define TARGET_DPREGS 16
-diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
-index 108d6b8288fb..3b9c533a7c3b 100644
---- a/target/tricore/cpu.h
-+++ b/target/tricore/cpu.h
-@@ -22,6 +22,7 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#include "qemu/cpu-float.h"
- #include "tricore-defs.h"
- 
- struct tricore_boot_info;
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index f10cfabdc35c..71142ea8f453 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -29,6 +29,7 @@
- #define XTENSA_CPU_H
- 
- #include "cpu-qom.h"
-+#include "qemu/cpu-float.h"
- #include "exec/cpu-defs.h"
- #include "xtensa-isa.h"
- 
-diff --git a/migration/vmstate-types.c b/migration/vmstate-types.c
-index bf4d440308ea..e83bfccb9ecf 100644
---- a/migration/vmstate-types.c
-+++ b/migration/vmstate-types.c
-@@ -11,6 +11,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/cpu-float.h"
- #include "qemu-file.h"
- #include "migration.h"
- #include "migration/vmstate.h"
--- 
-2.35.1.273.ge6ebfd0e8cbb
-
+r~

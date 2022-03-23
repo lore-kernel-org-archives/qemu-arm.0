@@ -1,1476 +1,3343 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2505826lfb;
-        Wed, 23 Mar 2022 08:59:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyv0NCpXRjakDdi15c/apr/GDRcBbfpY8CnyjotGkR9cUBNvM9/b4qBpuOoGKNAC6gGzOAI
-X-Received: by 2002:a05:620a:4154:b0:67d:f85a:988f with SMTP id k20-20020a05620a415400b0067df85a988fmr325156qko.585.1648051141448;
-        Wed, 23 Mar 2022 08:59:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648051141; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2508425lfb;
+        Wed, 23 Mar 2022 09:02:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKzEQTP7JmBqkjsT4XsbJg3F4xU3Zy9Hp45mTNNzjmQQFemSZ9gX9W+IOMGxDmM2/7hH0j
+X-Received: by 2002:a05:6214:3016:b0:441:4091:17c1 with SMTP id ke22-20020a056214301600b00441409117c1mr224442qvb.33.1648051321608;
+        Wed, 23 Mar 2022 09:02:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648051321; cv=none;
         d=google.com; s=arc-20160816;
-        b=a8p4k77315djDU8wDa57dYeGw5JFP6VTir91xM6Vz9jK2f5h3Es93FHDOnscC79YZC
-         7BDEGwGqPFT345WEBOAatZGy7/HGeHp/+KBouPrfulAH3C2oYlKPfqciL6tZmYPhImgi
-         Nt3IW5LZCdFhxmGUj5puGKslPaukSbnupJyoBJ6InVR8DiHflWTaz0s9EFcnb0aA+Seb
-         KXRX7/dfRGBQEIz55FllzjR6KaXubkI1P/CrpMp9ho8ZRssvb3qHDl1d4CaHsJHMQw4r
-         K9u0iveDfwUPNK2pAfbCtfG3dsR+0buwDhWfTW78v3qDOL/wevDkg1Il3Fsyh0sgmTwl
-         kexA==
+        b=huQu51htElu7ladkEskUkge1tg7d3GoUFv2BzLxi+aHH3LN9cNF2qHAPgkfv3NocJu
+         OCcSRkrcuwaZZrUQBBb4TjzKTySyFp1Xgucmeu0cYsjM8GpShTJtbr+zrp3CDkcrYZ1k
+         DAVYwgijgDjrNRTrgit5pcYNW3uhkf/vBo0Z5cT3Scs+faAxDlWlKBJxfvyYqLWG98t1
+         6S+YivujX00d1/XyanOzoYi4b5nHVnSrliDzuWlo9rTsT6vSl411QQh3jDUdu9rfqyhG
+         89l56ELtR9iZHYEZYIMVh4oUIZAWLuwWHdPpyWK9bR/rg95igdBJ/Fz22fQk5yJANl3G
+         LWdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=c8bqwAgZ0AQGumIJTXFtFQGIax2LEO4s6wMzj2Mz0d8=;
-        b=XePXgYZ46Dww/7DcOtVZ6v7NvZvlcG2Q6DDh3lBB7aJXJH/CciYQm76Z+8/C+aQ0AJ
-         2IeZpFHh3R0Rfe8lL5JMAjMdDnsL7NOsrM+rPu52B7AraAYY4PTn5aaZSDyrGU5AsYtq
-         /bU5tE+h9+tUgq2JtEPMgAT/GTlisuWgPyKOxpcCgw+zVLVTPXvkA3FjMgwFcLppvkZS
-         Brw0p6TEFIMkgUKfFS47n99T0xq1G2JXyKi4ATWwLZvqq45MpAacaXzmssl21C0Pg1fm
-         NqmutwdNp9IkxSPN9jxzrK7soNZbdF/3i+BhHIeVXqo533Umx6QB4B7vNYMN5lqhfRzq
-         AItg==
+        bh=HffMVuYlKAA0fX9kIi0d/qin9rXVCuaIcghTb0nV5IE=;
+        b=sFIRUH6ojsM0qAa8w2lLuoJRfBZiUmIw7YVHQ++4FZ6+DZA6JHlF7uMSK1OyrNCcno
+         spBb4xz65nd7unItvlmoqT4lDSpB0FHGo72jtycSWbAzVGhM6IaeQoYJrsU/7tJXo7UQ
+         lFmM/h/XOlWkPWwCJ55tlCLPuYzZR7j4P3oMF0iow2drjyRFp+B3QViXu81nJfdc3QGK
+         RFqneYnn2M2t1q27FaMaimS1/orJYg27KT4pD8PJgsbNkZZGhtB4iYY0A/D0YPoVjEfQ
+         KeECnpp8APfx/Sb396GIPVthukUfibm/jRHPgGvL5xdifvBopJNX9r45RZqmCkUvx0du
+         DvhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IYA6oGRz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="jBj/iHA5";
        spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <marcandre.lureau@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id m2-20020a05622a118200b002e21e80ed79si1775152qtk.588.2022.03.23.08.59.01
+        by mx.google.com with ESMTPS id o14-20020a05622a138e00b002e1fbf3c0bdsi5004555qtk.686.2022.03.23.09.02.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 23 Mar 2022 08:59:01 -0700 (PDT)
+        Wed, 23 Mar 2022 09:02:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IYA6oGRz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="jBj/iHA5";
        spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1648051140;
+	s=mimecast20190719; t=1648051321;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=c8bqwAgZ0AQGumIJTXFtFQGIax2LEO4s6wMzj2Mz0d8=;
-	b=IYA6oGRzusn0qS/rdp9ie3pEpigTQvXHIuS1an56RsYxX5Cx4UG4tMtfv/CSRyNvkcoMwQ
-	/MziqS77laQUGeSWHTMXDF0uIZl0JgI7vY/7l6WxvpVUjaH+R3Tx0Ho9n0Ee9M0EOk892L
-	PWdE2CzNrHBmQdrYwnDVRgwckUYnTig=
+	bh=HffMVuYlKAA0fX9kIi0d/qin9rXVCuaIcghTb0nV5IE=;
+	b=jBj/iHA5VfR5plmHgpajkpytk5apHp0NnZHukhgOfw8dXyobZXPgQ86EYIA4E7SfKSR9Mr
+	oMNsVxfOFqS5srwcBHmrWmQ/Qs6PGgHiife2btImZMJkPXOKwa57JFOJ3Q6UkWj0kY1opU
+	MptkXeQ7S3bh4jfJm00latEYwopzmzc=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-79-lLWr_Q03PWeE1fAK3SS3JQ-1; Wed, 23 Mar 2022 11:58:54 -0400
-X-MC-Unique: lLWr_Q03PWeE1fAK3SS3JQ-1
+ us-mta-137-absbIrOGN3Cf4QZZcJtTZQ-1; Wed, 23 Mar 2022 12:01:57 -0400
+X-MC-Unique: absbIrOGN3Cf4QZZcJtTZQ-1
 Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com [10.11.54.9])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0D31E296A60B;
-	Wed, 23 Mar 2022 15:58:52 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3E3531C09046;
+	Wed, 23 Mar 2022 16:01:54 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.32])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0E40258059A;
-	Wed, 23 Mar 2022 15:58:48 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C4E2E469A51;
+	Wed, 23 Mar 2022 16:01:49 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Cameron Esfahani <dirty@apple.com>,
+	Roman Bolshakov <r.bolshakov@yadro.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Hanna Reitz <hreitz@redhat.com>,
+	Aarushi Mehta <mehta.aaru20@gmail.com>,
+	Julia Suvorova <jusual@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Stefano Garzarella <sgarzare@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	Kyle Evans <kevans@freebsd.org>,
-	Laurent Vivier <laurent@vivier.eu>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Greg Kurz <groug@kaod.org>,
+	Christian Schoenebeck <qemu_oss@crudebyte.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Xu <peterx@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Helge Deller <deller@gmx.de>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	Daniel Henrique Barboza <danielhb413@gmail.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
+	Thomas Huth <huth@tuxfamily.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Jason Wang <jasowang@redhat.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Havard Skinnemoen <hskinnemoen@google.com>,
+	Tyrone Ting <kfting@nuvoton.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Marek Vasut <marex@denx.de>,
+	BALATON Zoltan <balaton@eik.bme.hu>,
+	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+	Jagannathan Raman <jag.raman@oracle.com>,
+	John G Johnson <john.g.johnson@oracle.com>,
+	Alexey Kardashevskiy <aik@ozlabs.ru>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Eric Farman <farman@linux.ibm.com>,
+	Fabien Chouteau <chouteau@adacore.com>,
+	KONRAD Frederic <frederic.konrad@adacore.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Eric Auger <eric.auger@redhat.com>,
+	Taylor Simpson <tsimpson@quicinc.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Zhang Chen <chen.zhang@intel.com>,
+	Li Zhijian <lizhijian@fujitsu.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	Michael Roth <michael.roth@amd.com>,
+	Alexander Graf <agraf@csgraf.de>,
+	Wenchao Wang <wenchao.wang@intel.com>,
+	Colin Xu <colin.xu@intel.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Kamil Rytarowski <kamil@netbsd.org>,
+	Reinoud Zandijk <reinoud@netbsd.org>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Ani Sinha <ani@anisinha.ca>,
+	John Snow <jsnow@redhat.com>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Joel Stanley <joel@jms.id.au>,
+	Alexander Bulekov <alxndr@bu.edu>,
+	Bandan Das <bsd@redhat.com>,
+	Darren Kenny <darren.kenny@oracle.com>,
+	Qiuhao Li <Qiuhao.Li@outlook.com>,
+	Corey Minyard <minyard@acm.org>,
+	Fam Zheng <fam@euphon.net>,
+	qemu-block@nongnu.org (open list:raw),
+	qemu-arm@nongnu.org (open list:ARM PrimeCell and...),
+	qemu-ppc@nongnu.org (open list:sPAPR (pseries)),
+	qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs),
+	qemu-s390x@nongnu.org (open list:S390-ccw boot),
 	kvm@vger.kernel.org (open list:Overall KVM CPUs),
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs)
-Subject: [PATCH 07/32] Replace TARGET_WORDS_BIGENDIAN
-Date: Wed, 23 Mar 2022 19:57:18 +0400
-Message-Id: <20220323155743.1585078-8-marcandre.lureau@redhat.com>
+	haxm-team@intel.com (open list:X86 HAXM CPUs)
+Subject: [PATCH 32/32] Remove qemu-common.h include from most units
+Date: Wed, 23 Mar 2022 19:57:43 +0400
+Message-Id: <20220323155743.1585078-33-marcandre.lureau@redhat.com>
 In-Reply-To: <20220323155743.1585078-1-marcandre.lureau@redhat.com>
 References: <20220323155743.1585078-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=marcandre.lureau@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
-X-TUID: 1i/tCehGtMi8
+X-TUID: QBlVMCijS+ou
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Convert the TARGET_WORDS_BIGENDIAN macro, similarly to what was done
-with HOST_BIG_ENDIAN. The new TARGET_BIG_ENDIAN macro is either 0 or 1,
-and thus should always be defined to prevent misuse.
-
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Suggested-by: Halil Pasic <pasic@linux.ibm.com>
 ---
- docs/devel/loads-stores.rst                |  2 +-
- configs/targets/aarch64_be-linux-user.mak  |  2 +-
- configs/targets/armeb-linux-user.mak       |  2 +-
- configs/targets/hppa-linux-user.mak        |  2 +-
- configs/targets/hppa-softmmu.mak           |  2 +-
- configs/targets/m68k-linux-user.mak        |  2 +-
- configs/targets/m68k-softmmu.mak           |  2 +-
- configs/targets/microblaze-linux-user.mak  |  2 +-
- configs/targets/microblaze-softmmu.mak     |  2 +-
- configs/targets/mips-linux-user.mak        |  2 +-
- configs/targets/mips-softmmu.mak           |  2 +-
- configs/targets/mips64-linux-user.mak      |  2 +-
- configs/targets/mips64-softmmu.mak         |  2 +-
- configs/targets/mipsn32-linux-user.mak     |  2 +-
- configs/targets/or1k-linux-user.mak        |  2 +-
- configs/targets/or1k-softmmu.mak           |  2 +-
- configs/targets/ppc-linux-user.mak         |  2 +-
- configs/targets/ppc-softmmu.mak            |  2 +-
- configs/targets/ppc64-linux-user.mak       |  2 +-
- configs/targets/ppc64-softmmu.mak          |  2 +-
- configs/targets/s390x-linux-user.mak       |  2 +-
- configs/targets/s390x-softmmu.mak          |  2 +-
- configs/targets/sh4eb-linux-user.mak       |  2 +-
- configs/targets/sh4eb-softmmu.mak          |  2 +-
- configs/targets/sparc-linux-user.mak       |  2 +-
- configs/targets/sparc-softmmu.mak          |  2 +-
- configs/targets/sparc32plus-linux-user.mak |  2 +-
- configs/targets/sparc64-linux-user.mak     |  2 +-
- configs/targets/sparc64-softmmu.mak        |  2 +-
- configs/targets/xtensaeb-linux-user.mak    |  2 +-
- configs/targets/xtensaeb-softmmu.mak       |  2 +-
- meson.build                                |  5 +++++
- bsd-user/qemu.h                            |  2 +-
- include/exec/cpu-all.h                     |  7 +++----
- include/exec/cpu_ldst.h                    |  2 +-
- include/exec/gdbstub.h                     |  2 +-
- include/exec/memop.h                       |  2 +-
- include/exec/memory.h                      |  2 +-
- include/exec/poison.h                      |  2 +-
- include/hw/core/cpu.h                      |  2 +-
- include/hw/mips/bios.h                     |  2 +-
- include/hw/virtio/virtio-access.h          |  2 +-
- linux-user/aarch64/target_syscall.h        |  2 +-
- linux-user/arm/target_syscall.h            |  2 +-
- linux-user/ppc/target_syscall.h            |  2 +-
- linux-user/qemu.h                          |  2 +-
- linux-user/user-internals.h                |  2 +-
- linux-user/xtensa/target_structs.h         |  2 +-
- target/arm/cpu.h                           |  8 ++++----
- target/xtensa/cpu.h                        |  2 +-
- target/xtensa/overlay_tool.h               |  2 +-
- accel/kvm/kvm-all.c                        |  2 +-
- cpu.c                                      |  2 +-
- disas.c                                    |  2 +-
- hw/arm/armv7m.c                            |  2 +-
- hw/display/vga.c                           |  2 +-
- hw/microblaze/boot.c                       |  2 +-
- hw/mips/gt64xxx_pci.c                      |  6 +++---
- hw/mips/jazz.c                             |  2 +-
- hw/mips/malta.c                            | 24 +++++++++++-----------
- hw/mips/mipssim.c                          |  2 +-
- hw/nios2/boot.c                            |  2 +-
- hw/xtensa/sim.c                            |  2 +-
- hw/xtensa/xtfpga.c                         |  4 ++--
- linux-user/aarch64/cpu_loop.c              |  2 +-
- linux-user/aarch64/signal.c                |  4 ++--
- linux-user/arm/cpu_loop.c                  |  2 +-
- linux-user/elfload.c                       |  6 +++---
- linux-user/ppc/signal.c                    |  4 ++--
- linux-user/syscall.c                       |  6 +++---
- linux-user/uname.c                         |  2 +-
- linux-user/xtensa/signal.c                 |  2 +-
- softmmu/memory.c                           |  2 +-
- softmmu/qtest.c                            |  2 +-
- target/arm/cpu.c                           |  2 +-
- target/mips/cpu.c                          |  4 ++--
- target/mips/tcg/msa_helper.c               | 10 ++++-----
- target/ppc/cpu_init.c                      |  2 +-
- target/ppc/gdbstub.c                       |  4 ++--
- target/ppc/mem_helper.c                    |  2 +-
- target/ppc/translate.c                     |  2 +-
- target/xtensa/translate.c                  |  6 +++---
- tests/tcg/xtensa/Makefile.softmmu-target   |  2 +-
- 83 files changed, 120 insertions(+), 116 deletions(-)
+ include/qemu-common.h                    | 9 ---------
+ accel/hvf/hvf-all.c                      | 1 -
+ accel/tcg/cpu-exec.c                     | 1 -
+ accel/tcg/tcg-accel-ops-icount.c         | 1 -
+ accel/tcg/tcg-accel-ops-mttcg.c          | 1 -
+ accel/tcg/tcg-accel-ops-rr.c             | 1 -
+ accel/tcg/tcg-accel-ops.c                | 1 -
+ accel/tcg/tcg-all.c                      | 1 -
+ accel/tcg/translate-all.c                | 1 -
+ audio/audio_win_int.c                    | 1 -
+ backends/hostmem-epc.c                   | 1 -
+ backends/tpm/tpm_passthrough.c           | 1 -
+ block/file-posix.c                       | 1 -
+ block/io_uring.c                         | 1 -
+ bsd-user/freebsd/os-syscall.c            | 1 -
+ bsd-user/mmap.c                          | 1 -
+ chardev/char-fd.c                        | 1 -
+ chardev/char-pipe.c                      | 1 -
+ chardev/char-pty.c                       | 1 -
+ cpu.c                                    | 1 -
+ crypto/cipher-afalg.c                    | 1 -
+ crypto/hash-afalg.c                      | 1 -
+ dump/dump.c                              | 1 -
+ dump/win_dump.c                          | 1 -
+ fsdev/virtfs-proxy-helper.c              | 1 -
+ gdbstub.c                                | 1 -
+ hw/9pfs/9p-proxy.c                       | 1 -
+ hw/alpha/dp264.c                         | 1 -
+ hw/avr/boot.c                            | 1 -
+ hw/core/loader.c                         | 1 -
+ hw/display/artist.c                      | 1 -
+ hw/display/cg3.c                         | 1 -
+ hw/display/tcx.c                         | 1 -
+ hw/display/virtio-gpu-udmabuf.c          | 1 -
+ hw/dma/pl330.c                           | 1 -
+ hw/hppa/machine.c                        | 1 -
+ hw/i386/pc_sysfw.c                       | 1 -
+ hw/i386/x86.c                            | 1 -
+ hw/input/vhost-user-input.c              | 1 -
+ hw/intc/xics_kvm.c                       | 1 -
+ hw/m68k/mcf5208.c                        | 1 -
+ hw/m68k/q800.c                           | 1 -
+ hw/m68k/virt.c                           | 1 -
+ hw/microblaze/boot.c                     | 1 -
+ hw/mips/fuloong2e.c                      | 1 -
+ hw/mips/jazz.c                           | 1 -
+ hw/mips/loongson3_virt.c                 | 1 -
+ hw/mips/malta.c                          | 1 -
+ hw/mips/mipssim.c                        | 1 -
+ hw/misc/sbsa_ec.c                        | 1 -
+ hw/net/fsl_etsec/etsec.c                 | 1 -
+ hw/net/fsl_etsec/rings.c                 | 1 -
+ hw/net/msf2-emac.c                       | 1 -
+ hw/net/npcm7xx_emc.c                     | 1 -
+ hw/nios2/boot.c                          | 1 -
+ hw/nios2/generic_nommu.c                 | 1 -
+ hw/nvram/fw_cfg.c                        | 1 -
+ hw/pci-host/mv64361.c                    | 1 -
+ hw/pci-host/pnv_phb3.c                   | 1 -
+ hw/pci-host/pnv_phb3_msi.c               | 1 -
+ hw/pci-host/pnv_phb3_pbcq.c              | 1 -
+ hw/pci-host/pnv_phb4.c                   | 1 -
+ hw/pci-host/pnv_phb4_pec.c               | 1 -
+ hw/pci-host/raven.c                      | 1 -
+ hw/pci-host/remote.c                     | 1 -
+ hw/pci/pci.c                             | 1 -
+ hw/ppc/e500.c                            | 1 -
+ hw/ppc/mac_newworld.c                    | 1 -
+ hw/ppc/mac_oldworld.c                    | 1 -
+ hw/ppc/pegasos2.c                        | 1 -
+ hw/ppc/pnv.c                             | 1 -
+ hw/ppc/pnv_bmc.c                         | 1 -
+ hw/ppc/ppc405_boards.c                   | 1 -
+ hw/ppc/ppc440_bamboo.c                   | 1 -
+ hw/ppc/sam460ex.c                        | 1 -
+ hw/ppc/spapr.c                           | 1 -
+ hw/ppc/spapr_numa.c                      | 1 -
+ hw/ppc/spapr_pci_nvlink2.c               | 1 -
+ hw/ppc/spapr_tpm_proxy.c                 | 1 -
+ hw/ppc/spapr_vof.c                       | 1 -
+ hw/ppc/virtex_ml507.c                    | 1 -
+ hw/ppc/vof.c                             | 1 -
+ hw/remote/iohub.c                        | 1 -
+ hw/remote/machine.c                      | 1 -
+ hw/remote/memory.c                       | 1 -
+ hw/remote/message.c                      | 1 -
+ hw/remote/mpqemu-link.c                  | 1 -
+ hw/remote/proxy-memory-listener.c        | 1 -
+ hw/remote/proxy.c                        | 1 -
+ hw/remote/remote-obj.c                   | 1 -
+ hw/riscv/boot.c                          | 1 -
+ hw/rx/rx-gdbsim.c                        | 1 -
+ hw/s390x/ipl.c                           | 1 -
+ hw/sd/sd.c                               | 1 -
+ hw/sparc/leon3.c                         | 1 -
+ hw/sparc/sun4m.c                         | 1 -
+ hw/sparc64/sun4u.c                       | 1 -
+ hw/usb/dev-mtp.c                         | 1 -
+ hw/virtio/virtio-iommu.c                 | 1 -
+ hw/virtio/virtio-mem.c                   | 1 -
+ hw/virtio/virtio-pmem.c                  | 1 -
+ io/channel-socket.c                      | 1 -
+ linux-user/aarch64/cpu_loop.c            | 1 -
+ linux-user/alpha/cpu_loop.c              | 1 -
+ linux-user/arm/cpu_loop.c                | 1 -
+ linux-user/cris/cpu_loop.c               | 1 -
+ linux-user/hexagon/cpu_loop.c            | 1 -
+ linux-user/i386/cpu_loop.c               | 1 -
+ linux-user/m68k/cpu_loop.c               | 1 -
+ linux-user/microblaze/cpu_loop.c         | 1 -
+ linux-user/mips/cpu_loop.c               | 1 -
+ linux-user/openrisc/cpu_loop.c           | 1 -
+ linux-user/ppc/cpu_loop.c                | 1 -
+ linux-user/riscv/cpu_loop.c              | 1 -
+ linux-user/s390x/cpu_loop.c              | 1 -
+ linux-user/sh4/cpu_loop.c                | 1 -
+ linux-user/sparc/cpu_loop.c              | 1 -
+ linux-user/uname.c                       | 1 -
+ monitor/qmp-cmds.c                       | 1 -
+ net/colo-compare.c                       | 1 -
+ net/net.c                                | 1 -
+ net/socket.c                             | 1 -
+ net/tap-bsd.c                            | 1 -
+ net/tap-linux.c                          | 1 -
+ net/tap-solaris.c                        | 1 -
+ net/tap-win32.c                          | 1 -
+ net/tap.c                                | 1 -
+ net/vde.c                                | 1 -
+ os-posix.c                               | 1 -
+ os-win32.c                               | 1 -
+ page-vary-common.c                       | 1 -
+ qga/commands-posix.c                     | 1 -
+ softmmu/cpu-throttle.c                   | 1 -
+ softmmu/cpu-timers.c                     | 1 -
+ softmmu/cpus.c                           | 1 -
+ softmmu/datadir.c                        | 1 -
+ softmmu/icount.c                         | 1 -
+ softmmu/runstate.c                       | 1 -
+ stubs/monitor-core.c                     | 1 -
+ target/arm/hvf/hvf.c                     | 1 -
+ target/arm/kvm.c                         | 1 -
+ target/arm/kvm64.c                       | 1 -
+ target/hexagon/gdbstub.c                 | 1 -
+ target/i386/hax/hax-all.c                | 1 -
+ target/i386/hvf/hvf.c                    | 1 -
+ target/i386/hvf/x86.c                    | 1 -
+ target/i386/hvf/x86_cpuid.c              | 1 -
+ target/i386/hvf/x86_decode.c             | 1 -
+ target/i386/hvf/x86_descr.c              | 1 -
+ target/i386/hvf/x86_emu.c                | 1 -
+ target/i386/hvf/x86_flags.c              | 1 -
+ target/i386/hvf/x86_mmu.c                | 1 -
+ target/i386/hvf/x86_task.c               | 1 -
+ target/i386/hvf/x86hvf.c                 | 1 -
+ target/i386/kvm/sev-stub.c               | 1 -
+ target/i386/nvmm/nvmm-all.c              | 1 -
+ target/i386/whpx/whpx-all.c              | 1 -
+ target/i386/whpx/whpx-apic.c             | 1 -
+ target/mips/kvm.c                        | 1 -
+ target/nios2/nios2-semi.c                | 1 -
+ target/ppc/kvm.c                         | 1 -
+ target/riscv/kvm.c                       | 1 -
+ target/rx/cpu.c                          | 1 -
+ target/rx/gdbstub.c                      | 1 -
+ target/s390x/kvm/kvm.c                   | 1 -
+ target/s390x/tcg/vec_fpu_helper.c        | 1 -
+ target/s390x/tcg/vec_int_helper.c        | 1 -
+ target/s390x/tcg/vec_string_helper.c     | 1 -
+ target/tricore/gdbstub.c                 | 1 -
+ target/xtensa/core-de233_fpu.c           | 1 -
+ target/xtensa/core-dsp3400.c             | 1 -
+ target/xtensa/core-test_mmuhifi_c3.c     | 1 -
+ tcg/tci.c                                | 1 -
+ tests/qtest/acpi-utils.c                 | 1 -
+ tests/qtest/ahci-test.c                  | 1 -
+ tests/qtest/aspeed_hace-test.c           | 1 -
+ tests/qtest/bios-tables-test.c           | 1 -
+ tests/qtest/boot-sector.c                | 1 -
+ tests/qtest/cpu-plug-test.c              | 1 -
+ tests/qtest/dbus-display-test.c          | 1 -
+ tests/qtest/dbus-vmstate-test.c          | 1 -
+ tests/qtest/device-introspect-test.c     | 1 -
+ tests/qtest/e1000e-test.c                | 2 --
+ tests/qtest/erst-test.c                  | 1 -
+ tests/qtest/fdc-test.c                   | 1 -
+ tests/qtest/fuzz/qos_fuzz.c              | 1 -
+ tests/qtest/hd-geo-test.c                | 1 -
+ tests/qtest/ide-test.c                   | 1 -
+ tests/qtest/ipmi-bt-test.c               | 1 -
+ tests/qtest/ivshmem-test.c               | 1 -
+ tests/qtest/libqos/ahci.c                | 1 -
+ tests/qtest/libqos/malloc-pc.c           | 2 --
+ tests/qtest/libqos/malloc-spapr.c        | 2 --
+ tests/qtest/libqos/malloc.c              | 1 -
+ tests/qtest/libqtest.c                   | 1 -
+ tests/qtest/machine-none-test.c          | 1 -
+ tests/qtest/npcm7xx_emc-test.c           | 1 -
+ tests/qtest/pxe-test.c                   | 1 -
+ tests/qtest/qom-test.c                   | 1 -
+ tests/qtest/rtl8139-test.c               | 1 -
+ tests/qtest/test-filter-mirror.c         | 1 -
+ tests/qtest/test-filter-redirector.c     | 1 -
+ tests/qtest/test-x86-cpuid-compat.c      | 1 -
+ tests/qtest/virtio-net-test.c            | 1 -
+ tests/unit/check-qjson.c                 | 1 -
+ tests/unit/check-qnull.c                 | 1 -
+ tests/unit/check-qnum.c                  | 1 -
+ tests/unit/check-qobject.c               | 1 -
+ tests/unit/check-qstring.c               | 1 -
+ tests/unit/socket-helpers.c              | 1 -
+ tests/unit/test-clone-visitor.c          | 1 -
+ tests/unit/test-forward-visitor.c        | 1 -
+ tests/unit/test-iov.c                    | 1 -
+ tests/unit/test-logging.c                | 1 -
+ tests/unit/test-qmp-event.c              | 1 -
+ tests/unit/test-qobject-input-visitor.c  | 1 -
+ tests/unit/test-qobject-output-visitor.c | 1 -
+ tests/unit/test-string-input-visitor.c   | 1 -
+ tests/unit/test-string-output-visitor.c  | 1 -
+ tests/unit/test-thread-pool.c            | 1 -
+ tests/unit/test-util-sockets.c           | 1 -
+ tests/unit/test-visitor-serialization.c  | 1 -
+ tests/unit/test-xbzrle.c                 | 1 -
+ ui/gtk-clipboard.c                       | 1 -
+ ui/keymaps.c                             | 1 -
+ ui/vdagent.c                             | 1 -
+ ui/vnc-clipboard.c                       | 1 -
+ ui/vnc-enc-tight.c                       | 2 +-
+ ui/vnc.c                                 | 1 -
+ util/aio-win32.c                         | 1 -
+ util/coroutine-sigaltstack.c             | 1 -
+ util/coroutine-win32.c                   | 1 -
+ util/cutils.c                            | 1 -
+ util/event_notifier-posix.c              | 1 -
+ util/event_notifier-win32.c              | 1 -
+ util/iov.c                               | 1 -
+ util/osdep.c                             | 1 -
+ util/oslib-posix.c                       | 1 -
+ util/oslib-win32.c                       | 1 -
+ util/qemu-coroutine-io.c                 | 1 -
+ util/qemu-sockets.c                      | 1 -
+ util/qemu-thread-win32.c                 | 1 -
+ target/xtensa/import_core.sh             | 1 -
+ 243 files changed, 1 insertion(+), 254 deletions(-)
 
-diff --git a/docs/devel/loads-stores.rst b/docs/devel/loads-stores.rst
-index 8f0035c821bf..ad5dfe133e15 100644
---- a/docs/devel/loads-stores.rst
-+++ b/docs/devel/loads-stores.rst
-@@ -275,7 +275,7 @@ called during the translator callback ``translate_insn``.
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index 0498acd16b78..ba32cc8b1f39 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -1,12 +1,3 @@
+-/*
+- * This file is supposed to be included only by .c files. No header file should
+- * depend on qemu-common.h, as this would easily lead to circular header
+- * dependencies.
+- *
+- * If a header file uses a definition from qemu-common.h, that definition
+- * must be moved to a separate header file, and the header that uses it
+- * must include that header.
+- */
+ #ifndef QEMU_COMMON_H
+ #define QEMU_COMMON_H
  
- There is a set of functions ending in ``_swap`` which, if the parameter
- is true, returns the value in the endianness that is the reverse of
--the guest native endianness, as determined by ``TARGET_WORDS_BIGENDIAN``.
-+the guest native endianness, as determined by ``TARGET_BIG_ENDIAN``.
- 
- Function names follow the pattern:
- 
-diff --git a/configs/targets/aarch64_be-linux-user.mak b/configs/targets/aarch64_be-linux-user.mak
-index d3ee10c00f31..77944247459b 100644
---- a/configs/targets/aarch64_be-linux-user.mak
-+++ b/configs/targets/aarch64_be-linux-user.mak
-@@ -1,6 +1,6 @@
- TARGET_ARCH=aarch64
- TARGET_BASE_ARCH=arm
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml
- TARGET_HAS_BFLT=y
- CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
-diff --git a/configs/targets/armeb-linux-user.mak b/configs/targets/armeb-linux-user.mak
-index f81e5bf1fe4b..a249cc2e29d6 100644
---- a/configs/targets/armeb-linux-user.mak
-+++ b/configs/targets/armeb-linux-user.mak
-@@ -1,7 +1,7 @@
- TARGET_ARCH=arm
- TARGET_SYSTBL_ABI=common,oabi
- TARGET_SYSTBL=syscall.tbl
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml gdb-xml/arm-m-profile-mve.xml
- TARGET_HAS_BFLT=y
- CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
-diff --git a/configs/targets/hppa-linux-user.mak b/configs/targets/hppa-linux-user.mak
-index f01e0a7b9ed8..db873a879688 100644
---- a/configs/targets/hppa-linux-user.mak
-+++ b/configs/targets/hppa-linux-user.mak
-@@ -2,4 +2,4 @@ TARGET_ARCH=hppa
- TARGET_SYSTBL_ABI=common,32
- TARGET_SYSTBL=syscall.tbl
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/hppa-softmmu.mak b/configs/targets/hppa-softmmu.mak
-index e3e71eb21b9a..44f07b033238 100644
---- a/configs/targets/hppa-softmmu.mak
-+++ b/configs/targets/hppa-softmmu.mak
-@@ -1,4 +1,4 @@
- TARGET_ARCH=hppa
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_SUPPORTS_MTTCG=y
-diff --git a/configs/targets/m68k-linux-user.mak b/configs/targets/m68k-linux-user.mak
-index 805d16c6ab2d..579b5d299ccf 100644
---- a/configs/targets/m68k-linux-user.mak
-+++ b/configs/targets/m68k-linux-user.mak
-@@ -1,6 +1,6 @@
- TARGET_ARCH=m68k
- TARGET_SYSTBL_ABI=common
- TARGET_SYSTBL=syscall.tbl
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_XML_FILES= gdb-xml/cf-core.xml gdb-xml/cf-fp.xml gdb-xml/m68k-core.xml gdb-xml/m68k-fp.xml
- TARGET_HAS_BFLT=y
-diff --git a/configs/targets/m68k-softmmu.mak b/configs/targets/m68k-softmmu.mak
-index 5df1a2b7d76c..bbcd0bada698 100644
---- a/configs/targets/m68k-softmmu.mak
-+++ b/configs/targets/m68k-softmmu.mak
-@@ -1,3 +1,3 @@
- TARGET_ARCH=m68k
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_XML_FILES= gdb-xml/cf-core.xml gdb-xml/cf-fp.xml gdb-xml/m68k-core.xml gdb-xml/m68k-fp.xml
-diff --git a/configs/targets/microblaze-linux-user.mak b/configs/targets/microblaze-linux-user.mak
-index 2a25bf2fa39a..4249a37f6528 100644
---- a/configs/targets/microblaze-linux-user.mak
-+++ b/configs/targets/microblaze-linux-user.mak
-@@ -1,5 +1,5 @@
- TARGET_ARCH=microblaze
- TARGET_SYSTBL_ABI=common
- TARGET_SYSTBL=syscall.tbl
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_HAS_BFLT=y
-diff --git a/configs/targets/microblaze-softmmu.mak b/configs/targets/microblaze-softmmu.mak
-index 33f2a004029f..8385e2d33363 100644
---- a/configs/targets/microblaze-softmmu.mak
-+++ b/configs/targets/microblaze-softmmu.mak
-@@ -1,4 +1,4 @@
- TARGET_ARCH=microblaze
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_SUPPORTS_MTTCG=y
- TARGET_NEED_FDT=y
-diff --git a/configs/targets/mips-linux-user.mak b/configs/targets/mips-linux-user.mak
-index 19f5779831ae..71fa77d464dd 100644
---- a/configs/targets/mips-linux-user.mak
-+++ b/configs/targets/mips-linux-user.mak
-@@ -3,4 +3,4 @@ TARGET_ABI_MIPSO32=y
- TARGET_SYSTBL_ABI=o32
- TARGET_SYSTBL=syscall_o32.tbl
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/mips-softmmu.mak b/configs/targets/mips-softmmu.mak
-index 8a49999a47dd..7787a4d94cf6 100644
---- a/configs/targets/mips-softmmu.mak
-+++ b/configs/targets/mips-softmmu.mak
-@@ -1,4 +1,4 @@
- TARGET_ARCH=mips
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_SUPPORTS_MTTCG=y
-diff --git a/configs/targets/mips64-linux-user.mak b/configs/targets/mips64-linux-user.mak
-index 32fd1acdf254..5a4771f22dba 100644
---- a/configs/targets/mips64-linux-user.mak
-+++ b/configs/targets/mips64-linux-user.mak
-@@ -4,4 +4,4 @@ TARGET_BASE_ARCH=mips
- TARGET_SYSTBL_ABI=n64
- TARGET_SYSTBL=syscall_n64.tbl
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/mips64-softmmu.mak b/configs/targets/mips64-softmmu.mak
-index ece25b96242e..568d66650c88 100644
---- a/configs/targets/mips64-softmmu.mak
-+++ b/configs/targets/mips64-softmmu.mak
-@@ -1,4 +1,4 @@
- TARGET_ARCH=mips64
- TARGET_BASE_ARCH=mips
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/mipsn32-linux-user.mak b/configs/targets/mipsn32-linux-user.mak
-index b8c2441ad076..1e80b302fcb5 100644
---- a/configs/targets/mipsn32-linux-user.mak
-+++ b/configs/targets/mipsn32-linux-user.mak
-@@ -5,4 +5,4 @@ TARGET_BASE_ARCH=mips
- TARGET_SYSTBL_ABI=n32
- TARGET_SYSTBL=syscall_n32.tbl
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/or1k-linux-user.mak b/configs/targets/or1k-linux-user.mak
-index 1dfb93e46dc8..39558f77ecfe 100644
---- a/configs/targets/or1k-linux-user.mak
-+++ b/configs/targets/or1k-linux-user.mak
-@@ -1,2 +1,2 @@
- TARGET_ARCH=openrisc
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/or1k-softmmu.mak b/configs/targets/or1k-softmmu.mak
-index 9e1d4a1fb1e5..263e97087094 100644
---- a/configs/targets/or1k-softmmu.mak
-+++ b/configs/targets/or1k-softmmu.mak
-@@ -1,3 +1,3 @@
- TARGET_ARCH=openrisc
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_NEED_FDT=y
-diff --git a/configs/targets/ppc-linux-user.mak b/configs/targets/ppc-linux-user.mak
-index ca4187e4aaca..cc0439a52857 100644
---- a/configs/targets/ppc-linux-user.mak
-+++ b/configs/targets/ppc-linux-user.mak
-@@ -1,5 +1,5 @@
- TARGET_ARCH=ppc
- TARGET_SYSTBL_ABI=common,nospu,32
- TARGET_SYSTBL=syscall.tbl
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_XML_FILES= gdb-xml/power-core.xml gdb-xml/power-fpu.xml gdb-xml/power-altivec.xml gdb-xml/power-spe.xml
-diff --git a/configs/targets/ppc-softmmu.mak b/configs/targets/ppc-softmmu.mak
-index f4eef1819a66..774440108f7f 100644
---- a/configs/targets/ppc-softmmu.mak
-+++ b/configs/targets/ppc-softmmu.mak
-@@ -1,4 +1,4 @@
- TARGET_ARCH=ppc
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_XML_FILES= gdb-xml/power-core.xml gdb-xml/power-fpu.xml gdb-xml/power-altivec.xml gdb-xml/power-spe.xml
- TARGET_NEED_FDT=y
-diff --git a/configs/targets/ppc64-linux-user.mak b/configs/targets/ppc64-linux-user.mak
-index 3133346676cf..4d81969f4a2d 100644
---- a/configs/targets/ppc64-linux-user.mak
-+++ b/configs/targets/ppc64-linux-user.mak
-@@ -3,5 +3,5 @@ TARGET_BASE_ARCH=ppc
- TARGET_ABI_DIR=ppc
- TARGET_SYSTBL_ABI=common,nospu,64
- TARGET_SYSTBL=syscall.tbl
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_XML_FILES= gdb-xml/power64-core.xml gdb-xml/power-fpu.xml gdb-xml/power-altivec.xml gdb-xml/power-spe.xml gdb-xml/power-vsx.xml
-diff --git a/configs/targets/ppc64-softmmu.mak b/configs/targets/ppc64-softmmu.mak
-index 84fbf46be9e0..ddf0c39617f4 100644
---- a/configs/targets/ppc64-softmmu.mak
-+++ b/configs/targets/ppc64-softmmu.mak
-@@ -1,6 +1,6 @@
- TARGET_ARCH=ppc64
- TARGET_BASE_ARCH=ppc
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_SUPPORTS_MTTCG=y
- TARGET_XML_FILES= gdb-xml/power64-core.xml gdb-xml/power-fpu.xml gdb-xml/power-altivec.xml gdb-xml/power-spe.xml gdb-xml/power-vsx.xml
- TARGET_NEED_FDT=y
-diff --git a/configs/targets/s390x-linux-user.mak b/configs/targets/s390x-linux-user.mak
-index 9e31ce6457e9..e2978248eded 100644
---- a/configs/targets/s390x-linux-user.mak
-+++ b/configs/targets/s390x-linux-user.mak
-@@ -1,5 +1,5 @@
- TARGET_ARCH=s390x
- TARGET_SYSTBL_ABI=common,64
- TARGET_SYSTBL=syscall.tbl
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_XML_FILES= gdb-xml/s390x-core64.xml gdb-xml/s390-acr.xml gdb-xml/s390-fpr.xml gdb-xml/s390-vx.xml gdb-xml/s390-cr.xml gdb-xml/s390-virt.xml gdb-xml/s390-gs.xml
-diff --git a/configs/targets/s390x-softmmu.mak b/configs/targets/s390x-softmmu.mak
-index fd9fbd870d32..258b4cf35824 100644
---- a/configs/targets/s390x-softmmu.mak
-+++ b/configs/targets/s390x-softmmu.mak
-@@ -1,4 +1,4 @@
- TARGET_ARCH=s390x
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_SUPPORTS_MTTCG=y
- TARGET_XML_FILES= gdb-xml/s390x-core64.xml gdb-xml/s390-acr.xml gdb-xml/s390-fpr.xml gdb-xml/s390-vx.xml gdb-xml/s390-cr.xml gdb-xml/s390-virt.xml gdb-xml/s390-gs.xml
-diff --git a/configs/targets/sh4eb-linux-user.mak b/configs/targets/sh4eb-linux-user.mak
-index 9b6fb4c1bbed..6724165efee2 100644
---- a/configs/targets/sh4eb-linux-user.mak
-+++ b/configs/targets/sh4eb-linux-user.mak
-@@ -2,5 +2,5 @@ TARGET_ARCH=sh4
- TARGET_SYSTBL_ABI=common
- TARGET_SYSTBL=syscall.tbl
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_HAS_BFLT=y
-diff --git a/configs/targets/sh4eb-softmmu.mak b/configs/targets/sh4eb-softmmu.mak
-index 382e9a80f8d2..dc8b30bf7a22 100644
---- a/configs/targets/sh4eb-softmmu.mak
-+++ b/configs/targets/sh4eb-softmmu.mak
-@@ -1,3 +1,3 @@
- TARGET_ARCH=sh4
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/sparc-linux-user.mak b/configs/targets/sparc-linux-user.mak
-index 53dc7aaed5a6..00e7bc1f076a 100644
---- a/configs/targets/sparc-linux-user.mak
-+++ b/configs/targets/sparc-linux-user.mak
-@@ -2,4 +2,4 @@ TARGET_ARCH=sparc
- TARGET_SYSTBL_ABI=common,32
- TARGET_SYSTBL=syscall.tbl
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/sparc-softmmu.mak b/configs/targets/sparc-softmmu.mak
-index 9ba3d7b07f19..a849190f0108 100644
---- a/configs/targets/sparc-softmmu.mak
-+++ b/configs/targets/sparc-softmmu.mak
-@@ -1,3 +1,3 @@
- TARGET_ARCH=sparc
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/sparc32plus-linux-user.mak b/configs/targets/sparc32plus-linux-user.mak
-index e4c51df3dcad..a65c0951a18b 100644
---- a/configs/targets/sparc32plus-linux-user.mak
-+++ b/configs/targets/sparc32plus-linux-user.mak
-@@ -5,4 +5,4 @@ TARGET_ABI_DIR=sparc
- TARGET_SYSTBL_ABI=common,32
- TARGET_SYSTBL=syscall.tbl
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/sparc64-linux-user.mak b/configs/targets/sparc64-linux-user.mak
-index 9d23ab4a266e..20fcb93fa4b1 100644
---- a/configs/targets/sparc64-linux-user.mak
-+++ b/configs/targets/sparc64-linux-user.mak
-@@ -4,4 +4,4 @@ TARGET_ABI_DIR=sparc
- TARGET_SYSTBL_ABI=common,64
- TARGET_SYSTBL=syscall.tbl
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/sparc64-softmmu.mak b/configs/targets/sparc64-softmmu.mak
-index 8dd321780042..c626ac3eae67 100644
---- a/configs/targets/sparc64-softmmu.mak
-+++ b/configs/targets/sparc64-softmmu.mak
-@@ -1,4 +1,4 @@
- TARGET_ARCH=sparc64
- TARGET_BASE_ARCH=sparc
- TARGET_ALIGNED_ONLY=y
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
-diff --git a/configs/targets/xtensaeb-linux-user.mak b/configs/targets/xtensaeb-linux-user.mak
-index 1ea0f1ba9156..bce2d1d65d23 100644
---- a/configs/targets/xtensaeb-linux-user.mak
-+++ b/configs/targets/xtensaeb-linux-user.mak
-@@ -1,5 +1,5 @@
- TARGET_ARCH=xtensa
- TARGET_SYSTBL_ABI=common
- TARGET_SYSTBL=syscall.tbl
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_HAS_BFLT=y
-diff --git a/configs/targets/xtensaeb-softmmu.mak b/configs/targets/xtensaeb-softmmu.mak
-index 405cf5acbb4a..b02e11b82008 100644
---- a/configs/targets/xtensaeb-softmmu.mak
-+++ b/configs/targets/xtensaeb-softmmu.mak
-@@ -1,3 +1,3 @@
- TARGET_ARCH=xtensa
--TARGET_WORDS_BIGENDIAN=y
-+TARGET_BIG_ENDIAN=y
- TARGET_SUPPORTS_MTTCG=y
-diff --git a/meson.build b/meson.build
-index 7828f6537813..e03a1b50cc11 100644
---- a/meson.build
-+++ b/meson.build
-@@ -2186,6 +2186,9 @@ foreach target : target_dirs
-   if 'TARGET_ABI_DIR' not in config_target
-     config_target += {'TARGET_ABI_DIR': config_target['TARGET_ARCH']}
-   endif
-+  if 'TARGET_BIG_ENDIAN' not in config_target
-+    config_target += {'TARGET_BIG_ENDIAN': 'n'}
-+  endif
- 
-   foreach k, v: disassemblers
-     if host_arch.startswith(k) or config_target['TARGET_BASE_ARCH'].startswith(k)
-@@ -2210,6 +2213,8 @@ foreach target : target_dirs
-       config_target_data.set_quoted(k, v)
-     elif v == 'y'
-       config_target_data.set(k, 1)
-+    elif v == 'n'
-+      config_target_data.set(k, 0)
-     else
-       config_target_data.set(k, v)
-     endif
-diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
-index 21c06f2e7003..be6105385e8c 100644
---- a/bsd-user/qemu.h
-+++ b/bsd-user/qemu.h
-@@ -465,7 +465,7 @@ static inline void *lock_user_string(abi_ulong guest_addr)
- static inline uint64_t target_arg64(uint32_t word0, uint32_t word1)
- {
- #if TARGET_ABI_BITS == 32
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     return ((uint64_t)word0 << 32) | word1;
- #else
-     return ((uint64_t)word1 << 32) | word0;
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index f77070da5f7e..5d5290deb5a9 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -37,11 +37,10 @@
-  * HOST_BIG_ENDIAN : whether the host cpu is big endian and
-  * otherwise little endian.
-  *
-- * TARGET_WORDS_BIGENDIAN : if defined, the host cpu is big endian and otherwise
-- * little endian.
-+ * TARGET_BIG_ENDIAN : same for the target cpu
+diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+index f185b0830a75..0043f4d308ba 100644
+--- a/accel/hvf/hvf-all.c
++++ b/accel/hvf/hvf-all.c
+@@ -9,7 +9,6 @@
   */
  
--#if HOST_BIG_ENDIAN != defined(TARGET_WORDS_BIGENDIAN)
-+#if HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN
- #define BSWAP_NEEDED
- #endif
- 
-@@ -121,7 +120,7 @@ static inline void tswap64s(uint64_t *s)
- /* Target-endianness CPU memory access functions. These fit into the
-  * {ld,st}{type}{sign}{size}{endian}_p naming scheme described in bswap.h.
-  */
--#if defined(TARGET_WORDS_BIGENDIAN)
-+#if TARGET_BIG_ENDIAN
- #define lduw_p(p) lduw_be_p(p)
- #define ldsw_p(p) ldsw_be_p(p)
- #define ldl_p(p) ldl_be_p(p)
-diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-index 6adacf89280d..d0c7c0d5fe8e 100644
---- a/include/exec/cpu_ldst.h
-+++ b/include/exec/cpu_ldst.h
-@@ -377,7 +377,7 @@ static inline CPUTLBEntry *tlb_entry(CPUArchState *env, uintptr_t mmu_idx,
- 
- #endif /* defined(CONFIG_USER_ONLY) */
- 
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- # define cpu_lduw_data        cpu_lduw_be_data
- # define cpu_ldsw_data        cpu_ldsw_be_data
- # define cpu_ldl_data         cpu_ldl_be_data
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 89edf94d2860..c35d7334b494 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -110,7 +110,7 @@ static inline int gdb_get_reg128(GByteArray *buf, uint64_t val_hi,
-                                  uint64_t val_lo)
- {
-     uint64_t to_quad;
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     to_quad = tswap64(val_hi);
-     g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
-     to_quad = tswap64(val_lo);
-diff --git a/include/exec/memop.h b/include/exec/memop.h
-index 44f923ed4660..25d027434ad5 100644
---- a/include/exec/memop.h
-+++ b/include/exec/memop.h
-@@ -36,7 +36,7 @@ typedef enum MemOp {
-     MO_BE    = MO_BSWAP,
- #endif
- #ifdef NEED_CPU_H
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     MO_TE    = MO_BE,
- #else
-     MO_TE    = MO_LE,
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index e40653f0d19e..f1c19451bcd0 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -2931,7 +2931,7 @@ static inline MemOp devend_memop(enum device_endian end)
-     QEMU_BUILD_BUG_ON(DEVICE_HOST_ENDIAN != DEVICE_LITTLE_ENDIAN &&
-                       DEVICE_HOST_ENDIAN != DEVICE_BIG_ENDIAN);
- 
--#if HOST_BIG_ENDIAN != defined(TARGET_WORDS_BIGENDIAN)
-+#if HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN
-     /* Swap if non-host endianness or native (target) endianness */
-     return (end == DEVICE_HOST_ENDIAN) ? 0 : MO_BSWAP;
- #else
-diff --git a/include/exec/poison.h b/include/exec/poison.h
-index 7c5c02f03f08..9f1ca3409c25 100644
---- a/include/exec/poison.h
-+++ b/include/exec/poison.h
-@@ -38,7 +38,7 @@
- #pragma GCC poison TARGET_HAS_BFLT
- #pragma GCC poison TARGET_NAME
- #pragma GCC poison TARGET_SUPPORTS_MTTCG
--#pragma GCC poison TARGET_WORDS_BIGENDIAN
-+#pragma GCC poison TARGET_BIG_ENDIAN
- #pragma GCC poison BSWAP_NEEDED
- 
- #pragma GCC poison TARGET_LONG_BITS
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index b0e2e5b9d253..13adb251b2ab 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -1028,7 +1028,7 @@ void cpu_exec_unrealizefn(CPUState *cpu);
-  * target_words_bigendian:
-  * Returns true if the (default) endianness of the target is big endian,
-  * false otherwise. Note that in target-specific code, you can use
-- * TARGET_WORDS_BIGENDIAN directly instead. On the other hand, common
-+ * TARGET_BIG_ENDIAN directly instead. On the other hand, common
-  * code should normally never need to know about the endianness of the
-  * target, so please do *not* use this function unless you know very well
-  * what you are doing!
-diff --git a/include/hw/mips/bios.h b/include/hw/mips/bios.h
-index c03007999a03..44acb6815bec 100644
---- a/include/hw/mips/bios.h
-+++ b/include/hw/mips/bios.h
-@@ -5,7 +5,7 @@
- #include "cpu.h"
- 
- #define BIOS_SIZE (4 * MiB)
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- #define BIOS_FILENAME "mips_bios.bin"
- #else
- #define BIOS_FILENAME "mipsel_bios.bin"
-diff --git a/include/hw/virtio/virtio-access.h b/include/hw/virtio/virtio-access.h
-index 90cbb77782b5..07aae69042a9 100644
---- a/include/hw/virtio/virtio-access.h
-+++ b/include/hw/virtio/virtio-access.h
-@@ -28,7 +28,7 @@ static inline bool virtio_access_is_big_endian(VirtIODevice *vdev)
- {
- #if defined(LEGACY_VIRTIO_IS_BIENDIAN)
-     return virtio_is_big_endian(vdev);
--#elif defined(TARGET_WORDS_BIGENDIAN)
-+#elif TARGET_BIG_ENDIAN
-     if (virtio_vdev_has_feature(vdev, VIRTIO_F_VERSION_1)) {
-         /* Devices conforming to VIRTIO 1.0 or later are always LE. */
-         return false;
-diff --git a/linux-user/aarch64/target_syscall.h b/linux-user/aarch64/target_syscall.h
-index a98f568ab4d7..c055133725ec 100644
---- a/linux-user/aarch64/target_syscall.h
-+++ b/linux-user/aarch64/target_syscall.h
-@@ -8,7 +8,7 @@ struct target_pt_regs {
-     uint64_t        pstate;
- };
- 
--#if defined(TARGET_WORDS_BIGENDIAN)
-+#if TARGET_BIG_ENDIAN
- #define UNAME_MACHINE "aarch64_be"
- #else
- #define UNAME_MACHINE "aarch64"
-diff --git a/linux-user/arm/target_syscall.h b/linux-user/arm/target_syscall.h
-index f04f9c9e3d75..412ad434cfc2 100644
---- a/linux-user/arm/target_syscall.h
-+++ b/linux-user/arm/target_syscall.h
-@@ -18,7 +18,7 @@ struct target_pt_regs {
- #define ARM_NR_set_tls	  (ARM_NR_BASE + 5)
- #define ARM_NR_get_tls    (ARM_NR_BASE + 6)
- 
--#if defined(TARGET_WORDS_BIGENDIAN)
-+#if TARGET_BIG_ENDIAN
- #define UNAME_MACHINE "armv5teb"
- #else
- #define UNAME_MACHINE "armv5tel"
-diff --git a/linux-user/ppc/target_syscall.h b/linux-user/ppc/target_syscall.h
-index 7df911893775..77b36d0b46e6 100644
---- a/linux-user/ppc/target_syscall.h
-+++ b/linux-user/ppc/target_syscall.h
-@@ -59,7 +59,7 @@ struct target_revectored_struct {
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/hvf.h"
+ #include "sysemu/hvf_int.h"
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index c997c2e8e015..083ada76b124 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -18,7 +18,6 @@
   */
  
- #if defined(TARGET_PPC64)
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- #define UNAME_MACHINE "ppc64"
- #else
- #define UNAME_MACHINE "ppc64le"
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 98dfbf20962b..46550f5e2178 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -236,7 +236,7 @@ static inline bool access_ok(CPUState *cpu, int type,
-     } while (0)
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/qemu-print.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-machine.h"
+diff --git a/accel/tcg/tcg-accel-ops-icount.c b/accel/tcg/tcg-accel-ops-icount.c
+index bdaf2c943b49..6436cd9349a3 100644
+--- a/accel/tcg/tcg-accel-ops-icount.c
++++ b/accel/tcg/tcg-accel-ops-icount.c
+@@ -24,7 +24,6 @@
+  */
  
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "sysemu/tcg.h"
+ #include "sysemu/replay.h"
+ #include "sysemu/cpu-timers.h"
+diff --git a/accel/tcg/tcg-accel-ops-mttcg.c b/accel/tcg/tcg-accel-ops-mttcg.c
+index ea2b741deb51..d50239e0e28f 100644
+--- a/accel/tcg/tcg-accel-ops-mttcg.c
++++ b/accel/tcg/tcg-accel-ops-mttcg.c
+@@ -24,7 +24,6 @@
+  */
  
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- # define __put_user(x, hptr)  __put_user_e(x, hptr, be)
- # define __get_user(x, hptr)  __get_user_e(x, hptr, be)
- #else
-diff --git a/linux-user/user-internals.h b/linux-user/user-internals.h
-index a8fdd6933b23..49978d0c79a1 100644
---- a/linux-user/user-internals.h
-+++ b/linux-user/user-internals.h
-@@ -115,7 +115,7 @@ static inline int is_error(abi_long ret)
- #if TARGET_ABI_BITS == 32
- static inline uint64_t target_offset64(uint32_t word0, uint32_t word1)
- {
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     return ((uint64_t)word0 << 32) | word1;
- #else
-     return ((uint64_t)word1 << 32) | word0;
-diff --git a/linux-user/xtensa/target_structs.h b/linux-user/xtensa/target_structs.h
-index 9cde6844b8fc..cb1b3411cf08 100644
---- a/linux-user/xtensa/target_structs.h
-+++ b/linux-user/xtensa/target_structs.h
-@@ -15,7 +15,7 @@ struct target_ipc_perm {
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "sysemu/tcg.h"
+ #include "sysemu/replay.h"
+ #include "sysemu/cpu-timers.h"
+diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
+index b287110766ef..1a72149f0e46 100644
+--- a/accel/tcg/tcg-accel-ops-rr.c
++++ b/accel/tcg/tcg-accel-ops-rr.c
+@@ -24,7 +24,6 @@
+  */
  
- struct target_semid64_ds {
-   struct target_ipc_perm sem_perm;
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-   abi_ulong __unused1;
-   abi_ulong sem_otime;
-   abi_ulong __unused2;
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 816aa0394e9f..ccf635ac5cbc 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3549,12 +3549,12 @@ static inline int cpu_mmu_index(CPUARMState *env, bool ifetch)
- static inline bool bswap_code(bool sctlr_b)
- {
- #ifdef CONFIG_USER_ONLY
--    /* BE8 (SCTLR.B = 0, TARGET_WORDS_BIGENDIAN = 1) is mixed endian.
--     * The invalid combination SCTLR.B=1/CPSR.E=1/TARGET_WORDS_BIGENDIAN=0
-+    /* BE8 (SCTLR.B = 0, TARGET_BIG_ENDIAN = 1) is mixed endian.
-+     * The invalid combination SCTLR.B=1/CPSR.E=1/TARGET_BIG_ENDIAN=0
-      * would also end up as a mixed-endian mode with BE code, LE data.
-      */
-     return
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-         1 ^
- #endif
-         sctlr_b;
-@@ -3570,7 +3570,7 @@ static inline bool bswap_code(bool sctlr_b)
- static inline bool arm_cpu_bswap_data(CPUARMState *env)
- {
-     return
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-        1 ^
- #endif
-        arm_cpu_data_is_big_endian(env);
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index a572e831aebf..f10cfabdc35c 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -590,7 +590,7 @@ void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
- #define XTENSA_CPU_TYPE_NAME(model) model XTENSA_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_XTENSA_CPU
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "sysemu/tcg.h"
+ #include "sysemu/replay.h"
+ #include "sysemu/cpu-timers.h"
+diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
+index ea7dcad674cf..684dc5a1371f 100644
+--- a/accel/tcg/tcg-accel-ops.c
++++ b/accel/tcg/tcg-accel-ops.c
+@@ -26,7 +26,6 @@
+  */
  
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- #define XTENSA_DEFAULT_CPU_MODEL "fsf"
- #define XTENSA_DEFAULT_CPU_NOMMU_MODEL "fsf"
- #else
-diff --git a/target/xtensa/overlay_tool.h b/target/xtensa/overlay_tool.h
-index 78720734fe92..701c00eed20a 100644
---- a/target/xtensa/overlay_tool.h
-+++ b/target/xtensa/overlay_tool.h
-@@ -449,7 +449,7 @@
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "sysemu/tcg.h"
+ #include "sysemu/replay.h"
+ #include "sysemu/cpu-timers.h"
+diff --git a/accel/tcg/tcg-all.c b/accel/tcg/tcg-all.c
+index d6336a9c966d..47952eecd779 100644
+--- a/accel/tcg/tcg-all.c
++++ b/accel/tcg/tcg-all.c
+@@ -24,7 +24,6 @@
+  */
  
- #endif
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "sysemu/tcg.h"
+ #include "sysemu/cpu-timers.h"
+ #include "tcg/tcg.h"
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index 5971cd53ab9f..a6e03c1e50b2 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -18,7 +18,6 @@
+  */
  
--#if (defined(TARGET_WORDS_BIGENDIAN) != 0) == (XCHAL_HAVE_BE != 0)
-+#if TARGET_BIG_ENDIAN == (XCHAL_HAVE_BE != 0)
- #define REGISTER_CORE(core) \
-     static void __attribute__((constructor)) register_core(void) \
-     { \
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 1c129dc90c8b..8d9d2367ee02 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -1202,7 +1202,7 @@ void kvm_hwpoison_page_add(ram_addr_t ram_addr)
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
  
- static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
- {
--#if HOST_BIG_ENDIAN != defined(TARGET_WORDS_BIGENDIAN)
-+#if HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN
-     /* The kernel expects ioeventfd values in HOST_BIG_ENDIAN
-      * endianness, but the memory core hands them in target endianness.
-      * For example, PPC is always treated as big-endian even if running
+ #define NO_CPU_IO_DEFS
+ #include "trace.h"
+diff --git a/audio/audio_win_int.c b/audio/audio_win_int.c
+index 5ea8157dfcc8..316f118f5099 100644
+--- a/audio/audio_win_int.c
++++ b/audio/audio_win_int.c
+@@ -1,7 +1,6 @@
+ /* public domain */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #define AUDIO_CAP "win-int"
+ #include <windows.h>
+diff --git a/backends/hostmem-epc.c b/backends/hostmem-epc.c
+index b47f98b6a3aa..037292d2672f 100644
+--- a/backends/hostmem-epc.c
++++ b/backends/hostmem-epc.c
+@@ -12,7 +12,6 @@
+ #include <sys/ioctl.h>
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qom/object_interfaces.h"
+ #include "qapi/error.h"
+ #include "sysemu/hostmem.h"
+diff --git a/backends/tpm/tpm_passthrough.c b/backends/tpm/tpm_passthrough.c
+index d5558fae6cc5..5a2f74db1b38 100644
+--- a/backends/tpm/tpm_passthrough.c
++++ b/backends/tpm/tpm_passthrough.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "qemu/sockets.h"
+diff --git a/block/file-posix.c b/block/file-posix.c
+index 61b02d85ebf1..bfd9b2111143 100644
+--- a/block/file-posix.c
++++ b/block/file-posix.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+diff --git a/block/io_uring.c b/block/io_uring.c
+index 782afdb433e1..0b401512b973 100644
+--- a/block/io_uring.c
++++ b/block/io_uring.c
+@@ -10,7 +10,6 @@
+  */
+ #include "qemu/osdep.h"
+ #include <liburing.h>
+-#include "qemu-common.h"
+ #include "block/aio.h"
+ #include "qemu/queue.h"
+ #include "block/block.h"
+diff --git a/bsd-user/freebsd/os-syscall.c b/bsd-user/freebsd/os-syscall.c
+index a17ff9f6ecce..d272478e7b0a 100644
+--- a/bsd-user/freebsd/os-syscall.c
++++ b/bsd-user/freebsd/os-syscall.c
+@@ -37,7 +37,6 @@
+ #include <utime.h>
+ 
+ #include "qemu.h"
+-#include "qemu-common.h"
+ #include "signal-common.h"
+ #include "user/syscall-trace.h"
+ 
+diff --git a/bsd-user/mmap.c b/bsd-user/mmap.c
+index 07aa0a634dff..e54e26de17b0 100644
+--- a/bsd-user/mmap.c
++++ b/bsd-user/mmap.c
+@@ -19,7 +19,6 @@
+ #include "qemu/osdep.h"
+ 
+ #include "qemu.h"
+-#include "qemu-common.h"
+ 
+ static pthread_mutex_t mmap_mutex = PTHREAD_MUTEX_INITIALIZER;
+ static __thread int mmap_lock_count;
+diff --git a/chardev/char-fd.c b/chardev/char-fd.c
+index 93c56913b49a..6ec9682b22f2 100644
+--- a/chardev/char-fd.c
++++ b/chardev/char-fd.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/module.h"
+ #include "qemu/sockets.h"
+ #include "qapi/error.h"
+diff --git a/chardev/char-pipe.c b/chardev/char-pipe.c
+index 7eca5d9a56ae..66d3b8509183 100644
+--- a/chardev/char-pipe.c
++++ b/chardev/char-pipe.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qemu/main-loop.h"
+ #include "qemu/module.h"
+diff --git a/chardev/char-pty.c b/chardev/char-pty.c
+index d73d8b23903d..1e2863f532a8 100644
+--- a/chardev/char-pty.c
++++ b/chardev/char-pty.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "chardev/char.h"
+ #include "io/channel-file.h"
 diff --git a/cpu.c b/cpu.c
-index be1f8b074ce4..d34c3439bbf3 100644
+index ab2c7c81e460..0fef70e18e74 100644
 --- a/cpu.c
 +++ b/cpu.c
-@@ -469,7 +469,7 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
+@@ -18,7 +18,6 @@
+  */
  
- bool target_words_bigendian(void)
- {
--#if defined(TARGET_WORDS_BIGENDIAN)
-+#if TARGET_BIG_ENDIAN
-     return true;
- #else
-     return false;
-diff --git a/disas.c b/disas.c
-index 2d2565ac5774..8c16e55c7e72 100644
---- a/disas.c
-+++ b/disas.c
-@@ -126,7 +126,7 @@ static void initialize_debug_target(CPUDebug *s, CPUState *cpu)
-     s->cpu = cpu;
-     s->info.read_memory_func = target_read_memory;
-     s->info.print_address_func = print_address;
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     s->info.endian = BFD_ENDIAN_BIG;
- #else
-     s->info.endian = BFD_ENDIAN_LITTLE;
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 41cfca0f2236..32349ec94b17 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -577,7 +577,7 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
-     int asidx;
-     CPUState *cs = CPU(cpu);
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
  
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     big_endian = 1;
- #else
-     big_endian = 0;
-diff --git a/hw/display/vga.c b/hw/display/vga.c
-index 737cfbde98ce..5dca2d15284e 100644
---- a/hw/display/vga.c
-+++ b/hw/display/vga.c
-@@ -2242,7 +2242,7 @@ bool vga_common_init(VGACommonState *s, Object *obj, Error **errp)
-      * into a device attribute set by the machine/platform to remove
-      * all target endian dependencies from this file.
-      */
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     s->default_endian_fb = true;
- #else
-     s->default_endian_fb = false;
+ #include "exec/target_page.h"
+diff --git a/crypto/cipher-afalg.c b/crypto/cipher-afalg.c
+index c55cd28bf01c..3df8fc54c051 100644
+--- a/crypto/cipher-afalg.c
++++ b/crypto/cipher-afalg.c
+@@ -12,7 +12,6 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qemu/sockets.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "crypto/cipher.h"
+ #include "cipherpriv.h"
+diff --git a/crypto/hash-afalg.c b/crypto/hash-afalg.c
+index 4ac18c7c1db7..3ebea392920d 100644
+--- a/crypto/hash-afalg.c
++++ b/crypto/hash-afalg.c
+@@ -13,7 +13,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/iov.h"
+ #include "qemu/sockets.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "crypto/hash.h"
+ #include "crypto/hmac.h"
+diff --git a/dump/dump.c b/dump/dump.c
+index 5d71c47d06aa..e766ce1d7d91 100644
+--- a/dump/dump.c
++++ b/dump/dump.c
+@@ -12,7 +12,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/cutils.h"
+ #include "elf.h"
+ #include "exec/hwaddr.h"
+diff --git a/dump/win_dump.c b/dump/win_dump.c
+index c5eb5a9aacd7..fbdbb7bd93a6 100644
+--- a/dump/win_dump.c
++++ b/dump/win_dump.c
+@@ -9,7 +9,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/cutils.h"
+ #include "elf.h"
+ #include "exec/hwaddr.h"
+diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+index d06a0f7b8326..2dde27922fe2 100644
+--- a/fsdev/virtfs-proxy-helper.c
++++ b/fsdev/virtfs-proxy-helper.c
+@@ -21,7 +21,6 @@
+ #include <linux/magic.h>
+ #endif
+ #include <cap-ng.h>
+-#include "qemu-common.h"
+ #include "qemu/sockets.h"
+ #include "qemu/xattr.h"
+ #include "9p-iov-marshal.h"
+diff --git a/gdbstub.c b/gdbstub.c
+index c8375e3c3ffe..2c804d506629 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -24,7 +24,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "qemu/ctype.h"
+diff --git a/hw/9pfs/9p-proxy.c b/hw/9pfs/9p-proxy.c
+index 4c5e0fc217eb..99d115ff0db4 100644
+--- a/hw/9pfs/9p-proxy.c
++++ b/hw/9pfs/9p-proxy.c
+@@ -18,7 +18,6 @@
+ #include "qemu/osdep.h"
+ #include <sys/socket.h>
+ #include <sys/un.h>
+-#include "qemu-common.h"
+ #include "9p.h"
+ #include "qapi/error.h"
+ #include "qemu/cutils.h"
+diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+index c78ed96d0eca..f4349eba83fb 100644
+--- a/hw/alpha/dp264.c
++++ b/hw/alpha/dp264.c
+@@ -7,7 +7,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "elf.h"
+ #include "hw/loader.h"
+diff --git a/hw/avr/boot.c b/hw/avr/boot.c
+index cbede775cee2..617f3a144c85 100644
+--- a/hw/avr/boot.c
++++ b/hw/avr/boot.c
+@@ -9,7 +9,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "hw/loader.h"
+ #include "elf.h"
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 8d9b2df6e725..8167301f0402 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -43,7 +43,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-machine.h"
+diff --git a/hw/display/artist.c b/hw/display/artist.c
+index 69a8f9eea8ba..8e121bb0b4dc 100644
+--- a/hw/display/artist.c
++++ b/hw/display/artist.c
+@@ -7,7 +7,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+diff --git a/hw/display/cg3.c b/hw/display/cg3.c
+index 4b7e78d91924..2e9656ae1c39 100644
+--- a/hw/display/cg3.c
++++ b/hw/display/cg3.c
+@@ -24,7 +24,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/display/tcx.c b/hw/display/tcx.c
+index d4d09d0df8d5..1b27b64f6d14 100644
+--- a/hw/display/tcx.c
++++ b/hw/display/tcx.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qapi/error.h"
+ #include "ui/console.h"
+diff --git a/hw/display/virtio-gpu-udmabuf.c b/hw/display/virtio-gpu-udmabuf.c
+index 1597921c51fc..8bdf4bac6e4b 100644
+--- a/hw/display/virtio-gpu-udmabuf.c
++++ b/hw/display/virtio-gpu-udmabuf.c
+@@ -13,7 +13,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+-#include "qemu-common.h"
+ #include "qemu/iov.h"
+ #include "ui/console.h"
+ #include "hw/virtio/virtio-gpu.h"
+diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
+index 31ce01b7c57c..08e5938ec7b7 100644
+--- a/hw/dma/pl330.c
++++ b/hw/dma/pl330.c
+@@ -15,7 +15,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/sysbus.h"
+diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+index 98b30e0395ee..f7595c08577c 100644
+--- a/hw/hppa/machine.c
++++ b/hw/hppa/machine.c
+@@ -4,7 +4,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "cpu.h"
+ #include "elf.h"
+diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
+index c8b17af95353..0540047bad22 100644
+--- a/hw/i386/pc_sysfw.c
++++ b/hw/i386/pc_sysfw.c
+@@ -24,7 +24,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "sysemu/block-backend.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+index 4cf107baea34..bb6727279097 100644
+--- a/hw/i386/x86.c
++++ b/hw/i386/x86.c
+@@ -25,7 +25,6 @@
+ #include "qemu/option.h"
+ #include "qemu/cutils.h"
+ #include "qemu/units.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qapi/error.h"
+ #include "qapi/qmp/qerror.h"
+diff --git a/hw/input/vhost-user-input.c b/hw/input/vhost-user-input.c
+index 273e96a7b12d..aeb0624fe57e 100644
+--- a/hw/input/vhost-user-input.c
++++ b/hw/input/vhost-user-input.c
+@@ -7,7 +7,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ 
+ #include "hw/virtio/virtio-input.h"
+ 
+diff --git a/hw/intc/xics_kvm.c b/hw/intc/xics_kvm.c
+index f5bfc501bc15..9719d98a179e 100644
+--- a/hw/intc/xics_kvm.c
++++ b/hw/intc/xics_kvm.c
+@@ -27,7 +27,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "trace.h"
+ #include "sysemu/kvm.h"
+ #include "hw/ppc/spapr.h"
+diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+index 93812ee206ea..655207e393dc 100644
+--- a/hw/m68k/mcf5208.c
++++ b/hw/m68k/mcf5208.c
+@@ -11,7 +11,6 @@
+ #include "qemu/error-report.h"
+ #include "qemu/log.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "cpu.h"
+ #include "hw/irq.h"
+diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+index 66ca5c0df6ef..099a758c6f6a 100644
+--- a/hw/m68k/q800.c
++++ b/hw/m68k/q800.c
+@@ -22,7 +22,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "sysemu/sysemu.h"
+ #include "cpu.h"
+diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+index 8e630282e02c..7de8b5f83393 100644
+--- a/hw/m68k/virt.c
++++ b/hw/m68k/virt.c
+@@ -9,7 +9,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+-#include "qemu-common.h"
+ #include "sysemu/sysemu.h"
+ #include "cpu.h"
+ #include "hw/boards.h"
 diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
-index 8821d009f1a9..03c030aa2cf0 100644
+index 03c030aa2cf0..8b92a9801a02 100644
 --- a/hw/microblaze/boot.c
 +++ b/hw/microblaze/boot.c
-@@ -138,7 +138,7 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
-         uint32_t base32;
-         int big_endian = 0;
+@@ -25,7 +25,6 @@
+  */
  
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-         big_endian = 1;
- #endif
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "cpu.h"
+ #include "qemu/option.h"
+diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
+index c9f14e70a077..7b13098f9b1b 100644
+--- a/hw/mips/fuloong2e.c
++++ b/hw/mips/fuloong2e.c
+@@ -19,7 +19,6 @@
+  */
  
-diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
-index e0ff1b556603..19d0d9889f5e 100644
---- a/hw/mips/gt64xxx_pci.c
-+++ b/hw/mips/gt64xxx_pci.c
-@@ -986,7 +986,7 @@ static void gt64120_reset(DeviceState *dev)
-     /* FIXME: Malta specific hw assumptions ahead */
- 
-     /* CPU Configuration */
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     s->regs[GT_CPU]           = 0x00000000;
- #else
-     s->regs[GT_CPU]           = 0x00001000;
-@@ -1097,7 +1097,7 @@ static void gt64120_reset(DeviceState *dev)
-     s->regs[GT_TC_CONTROL]    = 0x00000000;
- 
-     /* PCI Internal */
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     s->regs[GT_PCI0_CMD]      = 0x00000000;
- #else
-     s->regs[GT_PCI0_CMD]      = 0x00010001;
-@@ -1118,7 +1118,7 @@ static void gt64120_reset(DeviceState *dev)
-     s->regs[GT_PCI0_SSCS10_BAR] = 0x00000000;
-     s->regs[GT_PCI0_SSCS32_BAR] = 0x01000000;
-     s->regs[GT_PCI0_SCS3BT_BAR] = 0x1f000000;
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     s->regs[GT_PCI1_CMD]      = 0x00000000;
- #else
-     s->regs[GT_PCI1_CMD]      = 0x00010001;
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
 diff --git a/hw/mips/jazz.c b/hw/mips/jazz.c
-index 44f0d48bfd75..4d6b44de342e 100644
+index 4d6b44de342e..6598d7dddd59 100644
 --- a/hw/mips/jazz.c
 +++ b/hw/mips/jazz.c
-@@ -158,7 +158,7 @@ static void mips_jazz_init(MachineState *machine,
-         [JAZZ_PICA61] = {33333333, 4},
-     };
+@@ -23,7 +23,6 @@
+  */
  
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     big_endian = 1;
- #else
-     big_endian = 0;
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "hw/clock.h"
+ #include "hw/mips/mips.h"
+diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
+index ae192db0c8b9..25534288dd81 100644
+--- a/hw/mips/loongson3_virt.c
++++ b/hw/mips/loongson3_virt.c
+@@ -24,7 +24,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/units.h"
+ #include "qemu/cutils.h"
+ #include "qemu/datadir.h"
 diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index 6288511723e1..c4474b927c46 100644
+index c4474b927c46..9ffdc5b8f187 100644
 --- a/hw/mips/malta.c
 +++ b/hw/mips/malta.c
-@@ -367,7 +367,7 @@ static uint64_t malta_fpga_read(void *opaque, hwaddr addr,
- 
-     /* STATUS Register */
-     case 0x00208:
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-         val = 0x00000012;
- #else
-         val = 0x00000010;
-@@ -695,7 +695,7 @@ static void write_bootloader_nanomips(uint8_t *base, uint64_t run_addr,
-     stw_p(p++, 0xe040); stw_p(p++, 0x0681);
-                                 /* lui t1, %hi(0xb4000000)      */
- 
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- 
-     stw_p(p++, 0xe020); stw_p(p++, 0x0be1);
-                                 /* lui t0, %hi(0xdf000000)      */
-@@ -894,7 +894,7 @@ static void write_bootloader(uint8_t *base, uint64_t run_addr,
-     /* Load BAR registers as done by YAMON */
-     stl_p(p++, 0x3c09b400);                  /* lui t1, 0xb400 */
- 
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     stl_p(p++, 0x3c08df00);                  /* lui t0, 0xdf00 */
- #else
-     stl_p(p++, 0x340800df);                  /* ori t0, r0, 0x00df */
-@@ -903,39 +903,39 @@ static void write_bootloader(uint8_t *base, uint64_t run_addr,
- 
-     stl_p(p++, 0x3c09bbe0);                  /* lui t1, 0xbbe0 */
- 
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     stl_p(p++, 0x3c08c000);                  /* lui t0, 0xc000 */
- #else
-     stl_p(p++, 0x340800c0);                  /* ori t0, r0, 0x00c0 */
- #endif
-     stl_p(p++, 0xad280048);                  /* sw t0, 0x0048(t1) */
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     stl_p(p++, 0x3c084000);                  /* lui t0, 0x4000 */
- #else
-     stl_p(p++, 0x34080040);                  /* ori t0, r0, 0x0040 */
- #endif
-     stl_p(p++, 0xad280050);                  /* sw t0, 0x0050(t1) */
- 
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     stl_p(p++, 0x3c088000);                  /* lui t0, 0x8000 */
- #else
-     stl_p(p++, 0x34080080);                  /* ori t0, r0, 0x0080 */
- #endif
-     stl_p(p++, 0xad280058);                  /* sw t0, 0x0058(t1) */
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     stl_p(p++, 0x3c083f00);                  /* lui t0, 0x3f00 */
- #else
-     stl_p(p++, 0x3408003f);                  /* ori t0, r0, 0x003f */
- #endif
-     stl_p(p++, 0xad280060);                  /* sw t0, 0x0060(t1) */
- 
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     stl_p(p++, 0x3c08c100);                  /* lui t0, 0xc100 */
- #else
-     stl_p(p++, 0x340800c1);                  /* ori t0, r0, 0x00c1 */
- #endif
-     stl_p(p++, 0xad280080);                  /* sw t0, 0x0080(t1) */
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     stl_p(p++, 0x3c085e00);                  /* lui t0, 0x5e00 */
- #else
-     stl_p(p++, 0x3408005e);                  /* ori t0, r0, 0x005e */
-@@ -1030,7 +1030,7 @@ static uint64_t load_kernel(void)
-     int prom_index = 0;
-     uint64_t (*xlate_to_kseg0) (void *opaque, uint64_t addr);
- 
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     big_endian = 1;
- #else
-     big_endian = 0;
-@@ -1272,7 +1272,7 @@ void mips_malta_init(MachineState *machine)
-                                     ram_low_postio);
-     }
- 
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     be = 1;
- #else
-     be = 0;
-@@ -1353,7 +1353,7 @@ void mips_malta_init(MachineState *machine)
-          * In little endian mode the 32bit words in the bios are swapped,
-          * a neat trick which allows bi-endian firmware.
-          */
--#ifndef TARGET_WORDS_BIGENDIAN
-+#if !TARGET_BIG_ENDIAN
-         {
-             uint32_t *end, *addr;
-             const size_t swapsize = MIN(bios_size, 0x3e0000);
+@@ -25,7 +25,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "qemu/bitops.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "hw/clock.h"
+ #include "hw/southbridge/piix.h"
 diff --git a/hw/mips/mipssim.c b/hw/mips/mipssim.c
-index 27a46bd5380b..30bc1c4f086f 100644
+index 30bc1c4f086f..39f64448f244 100644
 --- a/hw/mips/mipssim.c
 +++ b/hw/mips/mipssim.c
-@@ -65,7 +65,7 @@ static uint64_t load_kernel(void)
-     ram_addr_t initrd_offset;
-     int big_endian;
+@@ -27,7 +27,6 @@
  
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     big_endian = 1;
- #else
-     big_endian = 0;
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "hw/clock.h"
+ #include "hw/mips/mips.h"
+diff --git a/hw/misc/sbsa_ec.c b/hw/misc/sbsa_ec.c
+index 83020fe9ac9b..8d939fe31b1b 100644
+--- a/hw/misc/sbsa_ec.c
++++ b/hw/misc/sbsa_ec.c
+@@ -11,7 +11,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/log.h"
+ #include "hw/sysbus.h"
+ #include "sysemu/runstate.h"
+diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
+index e7fc082518d2..6d50c395439a 100644
+--- a/hw/net/fsl_etsec/etsec.c
++++ b/hw/net/fsl_etsec/etsec.c
+@@ -27,7 +27,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "hw/sysbus.h"
+ #include "hw/irq.h"
+ #include "hw/ptimer.h"
+diff --git a/hw/net/fsl_etsec/rings.c b/hw/net/fsl_etsec/rings.c
+index 8f084464155d..a32589e33be4 100644
+--- a/hw/net/fsl_etsec/rings.c
++++ b/hw/net/fsl_etsec/rings.c
+@@ -22,7 +22,6 @@
+  * THE SOFTWARE.
+  */
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "net/checksum.h"
+ #include "qemu/log.h"
+ #include "etsec.h"
+diff --git a/hw/net/msf2-emac.c b/hw/net/msf2-emac.c
+index 9278fdce0b3d..7ccd3e514271 100644
+--- a/hw/net/msf2-emac.c
++++ b/hw/net/msf2-emac.c
+@@ -29,7 +29,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/log.h"
+ #include "qapi/error.h"
+ #include "hw/registerfields.h"
+diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
+index 9a2328935c1c..7c86bb52e571 100644
+--- a/hw/net/npcm7xx_emc.c
++++ b/hw/net/npcm7xx_emc.c
+@@ -32,7 +32,6 @@
+ /* For crc32 */
+ #include <zlib.h>
+ 
+-#include "qemu-common.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-clock.h"
+ #include "hw/qdev-properties.h"
 diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
-index 5b3e4efed5be..e889595d5c2b 100644
+index e889595d5c2b..07b8d87633b6 100644
 --- a/hw/nios2/boot.c
 +++ b/hw/nios2/boot.c
-@@ -140,7 +140,7 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
-         uint64_t entry, high;
-         int big_endian = 0;
+@@ -30,7 +30,6 @@
  
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-         big_endian = 1;
- #endif
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/option.h"
+ #include "qemu/config-file.h"
+diff --git a/hw/nios2/generic_nommu.c b/hw/nios2/generic_nommu.c
+index fbc18dbd04c2..48edb3ae373d 100644
+--- a/hw/nios2/generic_nommu.c
++++ b/hw/nios2/generic_nommu.c
+@@ -28,7 +28,6 @@
  
-diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-index 2028fe793d9b..946c71cb5b5c 100644
---- a/hw/xtensa/sim.c
-+++ b/hw/xtensa/sim.c
-@@ -96,7 +96,7 @@ XtensaCPU *xtensa_sim_common_init(MachineState *machine)
- void xtensa_sim_load_kernel(XtensaCPU *cpu, MachineState *machine)
- {
-     const char *kernel_filename = machine->kernel_filename;
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     int big_endian = true;
- #else
-     int big_endian = false;
-diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
-index c1e004e8822d..2a5556a35f50 100644
---- a/hw/xtensa/xtfpga.c
-+++ b/hw/xtensa/xtfpga.c
-@@ -219,7 +219,7 @@ static const MemoryRegionOps xtfpga_io_ops = {
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
  
- static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
- {
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     int be = 1;
- #else
-     int be = 0;
-@@ -430,7 +430,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
-         }
-         if (entry_point != env->pc) {
-             uint8_t boot[] = {
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-                 0x60, 0x00, 0x08,       /* j    1f */
-                 0x00,                   /* .literal_position */
-                 0x00, 0x00, 0x00, 0x00, /* .literal entry_pc */
+ #include "hw/char/serial.h"
+ #include "hw/boards.h"
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index ea2d56f9f2af..4125cbebcd38 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/dma.h"
+diff --git a/hw/pci-host/mv64361.c b/hw/pci-host/mv64361.c
+index 00b3ff7d9098..cc9c4d6d3b33 100644
+--- a/hw/pci-host/mv64361.c
++++ b/hw/pci-host/mv64361.c
+@@ -9,7 +9,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "hw/hw.h"
+diff --git a/hw/pci-host/pnv_phb3.c b/hw/pci-host/pnv_phb3.c
+index 6e9aa9d6ace2..4e68ad4f03fc 100644
+--- a/hw/pci-host/pnv_phb3.c
++++ b/hw/pci-host/pnv_phb3.c
+@@ -10,7 +10,6 @@
+ #include "qemu/log.h"
+ #include "qapi/visitor.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "hw/pci-host/pnv_phb3_regs.h"
+ #include "hw/pci-host/pnv_phb3.h"
+ #include "hw/pci/pcie_host.h"
+diff --git a/hw/pci-host/pnv_phb3_msi.c b/hw/pci-host/pnv_phb3_msi.c
+index 8bcbc2cc4f37..2f4112907b84 100644
+--- a/hw/pci-host/pnv_phb3_msi.c
++++ b/hw/pci-host/pnv_phb3_msi.c
+@@ -9,7 +9,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "hw/pci-host/pnv_phb3_regs.h"
+ #include "hw/pci-host/pnv_phb3.h"
+ #include "hw/ppc/pnv.h"
+diff --git a/hw/pci-host/pnv_phb3_pbcq.c b/hw/pci-host/pnv_phb3_pbcq.c
+index c7426cd27a20..82f70efa4311 100644
+--- a/hw/pci-host/pnv_phb3_pbcq.c
++++ b/hw/pci-host/pnv_phb3_pbcq.c
+@@ -8,7 +8,6 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/log.h"
+ #include "target/ppc/cpu.h"
+ #include "hw/ppc/fdt.h"
+diff --git a/hw/pci-host/pnv_phb4.c b/hw/pci-host/pnv_phb4.c
+index 11c97e27eb16..3c4c2dace0a3 100644
+--- a/hw/pci-host/pnv_phb4.c
++++ b/hw/pci-host/pnv_phb4.c
+@@ -10,7 +10,6 @@
+ #include "qemu/log.h"
+ #include "qapi/visitor.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "monitor/monitor.h"
+ #include "target/ppc/cpu.h"
+ #include "hw/pci-host/pnv_phb4_regs.h"
+diff --git a/hw/pci-host/pnv_phb4_pec.c b/hw/pci-host/pnv_phb4_pec.c
+index 6f1121a9489a..61bc0b503e3e 100644
+--- a/hw/pci-host/pnv_phb4_pec.c
++++ b/hw/pci-host/pnv_phb4_pec.c
+@@ -8,7 +8,6 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/log.h"
+ #include "target/ppc/cpu.h"
+ #include "hw/ppc/fdt.h"
+diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
+index 6e514f75eb8f..7a105e4a63d3 100644
+--- a/hw/pci-host/raven.c
++++ b/hw/pci-host/raven.c
+@@ -24,7 +24,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/units.h"
+ #include "qemu/log.h"
+diff --git a/hw/pci-host/remote.c b/hw/pci-host/remote.c
+index eee45444ef73..bfb25ef6af85 100644
+--- a/hw/pci-host/remote.c
++++ b/hw/pci-host/remote.c
+@@ -22,7 +22,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_host.h"
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index dae9119bfe5f..e99417e50110 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/units.h"
+ #include "hw/irq.h"
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index c7e6767f91a8..2bc3dce1fb7d 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -15,7 +15,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+index 7b5a205309af..e8ef1a9e5d9b 100644
+--- a/hw/ppc/mac_newworld.c
++++ b/hw/ppc/mac_newworld.c
+@@ -47,7 +47,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qapi/error.h"
+ #include "hw/ppc/ppc.h"
+diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+index 7016979a7cd0..fe2adb057b0c 100644
+--- a/hw/ppc/mac_oldworld.c
++++ b/hw/ppc/mac_oldworld.c
+@@ -25,7 +25,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+diff --git a/hw/ppc/pegasos2.c b/hw/ppc/pegasos2.c
+index d45008ac7131..56bf203dfddf 100644
+--- a/hw/ppc/pegasos2.c
++++ b/hw/ppc/pegasos2.c
+@@ -8,7 +8,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "hw/hw.h"
+diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+index 00f57c9678e6..c5e48992d988 100644
+--- a/hw/ppc/pnv.c
++++ b/hw/ppc/pnv.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/units.h"
+ #include "qemu/cutils.h"
+diff --git a/hw/ppc/pnv_bmc.c b/hw/ppc/pnv_bmc.c
+index 75a22ce50b11..99f1e8d7f9f3 100644
+--- a/hw/ppc/pnv_bmc.c
++++ b/hw/ppc/pnv_bmc.c
+@@ -17,7 +17,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "target/ppc/cpu.h"
+ #include "qemu/log.h"
+diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+index 7e1a4ac9553b..32013b89836a 100644
+--- a/hw/ppc/ppc405_boards.c
++++ b/hw/ppc/ppc405_boards.c
+@@ -25,7 +25,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "cpu.h"
+ #include "hw/ppc/ppc.h"
+diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
+index 7fb620b9a056..efa90ef5ba73 100644
+--- a/hw/ppc/ppc440_bamboo.c
++++ b/hw/ppc/ppc440_bamboo.c
+@@ -14,7 +14,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "qemu/error-report.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/error-report.h"
+ #include "net/net.h"
+diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+index 0737234d66e5..2f24598f55db 100644
+--- a/hw/ppc/sam460ex.c
++++ b/hw/ppc/sam460ex.c
+@@ -13,7 +13,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index a4372ba1891e..cc11fcc8b24d 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -25,7 +25,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/memalign.h"
+ #include "qapi/error.h"
+diff --git a/hw/ppc/spapr_numa.c b/hw/ppc/spapr_numa.c
+index d7c0e212baf8..a64098c375e0 100644
+--- a/hw/ppc/spapr_numa.c
++++ b/hw/ppc/spapr_numa.c
+@@ -11,7 +11,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "hw/ppc/spapr_numa.h"
+ #include "hw/pci-host/spapr.h"
+ #include "hw/ppc/fdt.h"
+diff --git a/hw/ppc/spapr_pci_nvlink2.c b/hw/ppc/spapr_pci_nvlink2.c
+index 4678c79235f6..63b476c8f727 100644
+--- a/hw/ppc/spapr_pci_nvlink2.c
++++ b/hw/ppc/spapr_pci_nvlink2.c
+@@ -23,7 +23,6 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci-host/spapr.h"
+ #include "hw/ppc/spapr_numa.h"
+diff --git a/hw/ppc/spapr_tpm_proxy.c b/hw/ppc/spapr_tpm_proxy.c
+index 2454086744b1..e10af35a1850 100644
+--- a/hw/ppc/spapr_tpm_proxy.c
++++ b/hw/ppc/spapr_tpm_proxy.c
+@@ -11,7 +11,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/reset.h"
+diff --git a/hw/ppc/spapr_vof.c b/hw/ppc/spapr_vof.c
+index a33f940c32bb..09f29be0b9de 100644
+--- a/hw/ppc/spapr_vof.c
++++ b/hw/ppc/spapr_vof.c
+@@ -4,7 +4,6 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "hw/ppc/spapr.h"
+ #include "hw/ppc/spapr_vio.h"
+diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
+index 9c575403b85c..b67a709ddce2 100644
+--- a/hw/ppc/virtex_ml507.c
++++ b/hw/ppc/virtex_ml507.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/units.h"
+ #include "cpu.h"
+diff --git a/hw/ppc/vof.c b/hw/ppc/vof.c
+index 2b63a6287561..8d96593677da 100644
+--- a/hw/ppc/vof.c
++++ b/hw/ppc/vof.c
+@@ -10,7 +10,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/timer.h"
+ #include "qemu/range.h"
+ #include "qemu/units.h"
+diff --git a/hw/remote/iohub.c b/hw/remote/iohub.c
+index 547d597f0feb..40dfee4bad43 100644
+--- a/hw/remote/iohub.c
++++ b/hw/remote/iohub.c
+@@ -9,7 +9,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_ids.h"
+diff --git a/hw/remote/machine.c b/hw/remote/machine.c
+index 952105eab5a2..92d71d47bb9c 100644
+--- a/hw/remote/machine.c
++++ b/hw/remote/machine.c
+@@ -14,7 +14,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #include "hw/remote/machine.h"
+ #include "exec/memory.h"
+diff --git a/hw/remote/memory.c b/hw/remote/memory.c
+index 6e21ab1a45c9..6d60da91e01c 100644
+--- a/hw/remote/memory.c
++++ b/hw/remote/memory.c
+@@ -9,7 +9,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #include "hw/remote/memory.h"
+ #include "exec/ram_addr.h"
+diff --git a/hw/remote/message.c b/hw/remote/message.c
+index 11d729845c5a..50f6bf2d495f 100644
+--- a/hw/remote/message.c
++++ b/hw/remote/message.c
+@@ -8,7 +8,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #include "hw/remote/machine.h"
+ #include "io/channel.h"
+diff --git a/hw/remote/mpqemu-link.c b/hw/remote/mpqemu-link.c
+index 7e841820e521..2a4aa651ca26 100644
+--- a/hw/remote/mpqemu-link.c
++++ b/hw/remote/mpqemu-link.c
+@@ -9,7 +9,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #include "qemu/module.h"
+ #include "hw/remote/mpqemu-link.h"
+diff --git a/hw/remote/proxy-memory-listener.c b/hw/remote/proxy-memory-listener.c
+index 0e893f3189e9..eb9918fe72bb 100644
+--- a/hw/remote/proxy-memory-listener.c
++++ b/hw/remote/proxy-memory-listener.c
+@@ -7,7 +7,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #include "qemu/compiler.h"
+ #include "qemu/int128.h"
+diff --git a/hw/remote/proxy.c b/hw/remote/proxy.c
+index bad164299dd4..1c7786b52cf1 100644
+--- a/hw/remote/proxy.c
++++ b/hw/remote/proxy.c
+@@ -7,7 +7,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #include "hw/remote/proxy.h"
+ #include "hw/pci/pci.h"
+diff --git a/hw/remote/remote-obj.c b/hw/remote/remote-obj.c
+index 4f21254219f8..333e5ac44331 100644
+--- a/hw/remote/remote-obj.c
++++ b/hw/remote/remote-obj.c
+@@ -8,7 +8,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #include "qemu/error-report.h"
+ #include "qemu/notify.h"
+diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
+index cae74fcbcd9a..0f179d36014a 100644
+--- a/hw/riscv/boot.c
++++ b/hw/riscv/boot.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/units.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
+index 75d1fec6ca46..64f897e5b10a 100644
+--- a/hw/rx/rx-gdbsim.c
++++ b/hw/rx/rx-gdbsim.c
+@@ -20,7 +20,6 @@
+ #include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "hw/loader.h"
+ #include "hw/rx/rx62n.h"
+ #include "sysemu/qtest.h"
+diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
+index eb7fc4c4ae87..84971e537b3e 100644
+--- a/hw/s390x/ipl.c
++++ b/hw/s390x/ipl.c
+@@ -13,7 +13,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qapi/error.h"
+ #include "sysemu/reset.h"
+diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+index cd67a7bac8e2..8e6fa0915137 100644
+--- a/hw/sd/sd.c
++++ b/hw/sd/sd.c
+@@ -47,7 +47,6 @@
+ #include "qemu/timer.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+-#include "qemu-common.h"
+ #include "sdmmc-internal.h"
+ #include "trace.h"
+ 
+diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
+index a9f24968275d..1e39d2e2d0ac 100644
+--- a/hw/sparc/leon3.c
++++ b/hw/sparc/leon3.c
+@@ -26,7 +26,6 @@
+ #include "qemu/units.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "cpu.h"
+ #include "hw/irq.h"
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index 7f3a7c002780..fccaed1eb444 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -26,7 +26,6 @@
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "qemu/datadir.h"
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "hw/sysbus.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index cda7df36e312..6fd08e2298a6 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -26,7 +26,6 @@
+ #include "qemu/units.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "cpu.h"
+ #include "hw/pci/pci.h"
+diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
+index e6b77a2a941d..5831395cef75 100644
+--- a/hw/usb/dev-mtp.c
++++ b/hw/usb/dev-mtp.c
+@@ -10,7 +10,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include <wchar.h>
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 664cbd958323..6de58a76a7ff 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -20,7 +20,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "qemu/iov.h"
+-#include "qemu-common.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/virtio/virtio.h"
+ #include "sysemu/kvm.h"
+diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+index 35cbf1f21946..5aca40872695 100644
+--- a/hw/virtio/virtio-mem.c
++++ b/hw/virtio/virtio-mem.c
+@@ -11,7 +11,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/iov.h"
+ #include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c
+index 5419dca75e2c..5dd21c2c4408 100644
+--- a/hw/virtio/virtio-pmem.c
++++ b/hw/virtio/virtio-pmem.c
+@@ -13,7 +13,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ #include "qemu/main-loop.h"
+ #include "hw/virtio/virtio-pmem.h"
+diff --git a/io/channel-socket.c b/io/channel-socket.c
+index 7a8d9f69c92d..9f5ddf68b687 100644
+--- a/io/channel-socket.c
++++ b/io/channel-socket.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-visit-sockets.h"
+ #include "qemu/module.h"
 diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-index 1737e2ea655a..31a66a4fa07c 100644
+index 31a66a4fa07c..3b273f62997a 100644
 --- a/linux-user/aarch64/cpu_loop.c
 +++ b/linux-user/aarch64/cpu_loop.c
-@@ -202,7 +202,7 @@ void target_cpu_copy_regs(CPUArchState *env, struct target_pt_regs *regs)
-     }
-     env->pc = regs->pc;
-     env->xregs[31] = regs->sp;
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     env->cp15.sctlr_el[1] |= SCTLR_E0E;
-     for (i = 1; i < 4; ++i) {
-         env->cp15.sctlr_el[i] |= SCTLR_EE;
-diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
-index df9e39a4ba04..7de4c96eb9d0 100644
---- a/linux-user/aarch64/signal.c
-+++ b/linux-user/aarch64/signal.c
-@@ -147,7 +147,7 @@ static void target_setup_fpsimd_record(struct target_fpsimd_context *fpsimd,
+@@ -18,7 +18,6 @@
+  */
  
-     for (i = 0; i < 32; i++) {
-         uint64_t *q = aa64_vfp_qreg(env, i);
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-         __put_user(q[0], &fpsimd->vregs[i * 2 + 1]);
-         __put_user(q[1], &fpsimd->vregs[i * 2]);
- #else
-@@ -233,7 +233,7 @@ static void target_restore_fpsimd_record(CPUARMState *env,
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
+diff --git a/linux-user/alpha/cpu_loop.c b/linux-user/alpha/cpu_loop.c
+index de6e0c901cdf..2ea039aa71f7 100644
+--- a/linux-user/alpha/cpu_loop.c
++++ b/linux-user/alpha/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
  
-     for (i = 0; i < 32; i++) {
-         uint64_t *q = aa64_vfp_qreg(env, i);
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-         __get_user(q[0], &fpsimd->vregs[i * 2 + 1]);
-         __get_user(q[1], &fpsimd->vregs[i * 2]);
- #else
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
 diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
-index 032e1ffddfbd..9dcb2e024eb0 100644
+index 9dcb2e024eb0..683b8e47c2bd 100644
 --- a/linux-user/arm/cpu_loop.c
 +++ b/linux-user/arm/cpu_loop.c
-@@ -485,7 +485,7 @@ void target_cpu_copy_regs(CPUArchState *env, struct target_pt_regs *regs)
-     for(i = 0; i < 16; i++) {
-         env->regs[i] = regs->uregs[i];
-     }
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     /* Enable BE8.  */
-     if (EF_ARM_EABI_VERSION(info->elf_flags) >= EF_ARM_EABI_VER4
-         && (info->elf_flags & EF_ARM_BE8)) {
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 9628a38361cb..796acdcdbd2c 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -105,7 +105,7 @@ int info_is_fdpic(struct image_info *info)
- #define ELIBBAD 80
- #endif
+@@ -18,7 +18,6 @@
+  */
  
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- #define ELF_DATA        ELFDATA2MSB
- #else
- #define ELF_DATA        ELFDATA2LSB
-@@ -483,7 +483,7 @@ static const char *get_elf_platform(void)
- {
-     CPUARMState *env = thread_cpu->env_ptr;
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "elf.h"
+diff --git a/linux-user/cris/cpu_loop.c b/linux-user/cris/cpu_loop.c
+index 0f46b3c1a87a..01e6ff16fc92 100644
+--- a/linux-user/cris/cpu_loop.c
++++ b/linux-user/cris/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
  
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- # define END  "b"
- #else
- # define END  "l"
-@@ -514,7 +514,7 @@ static const char *get_elf_platform(void)
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
+diff --git a/linux-user/hexagon/cpu_loop.c b/linux-user/hexagon/cpu_loop.c
+index 0d73934d31d5..b84e25bf71eb 100644
+--- a/linux-user/hexagon/cpu_loop.c
++++ b/linux-user/hexagon/cpu_loop.c
+@@ -19,7 +19,6 @@
+  */
  
- #define ELF_ARCH        EM_AARCH64
- #define ELF_CLASS       ELFCLASS64
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- # define ELF_PLATFORM    "aarch64_be"
- #else
- # define ELF_PLATFORM    "aarch64"
-diff --git a/linux-user/ppc/signal.c b/linux-user/ppc/signal.c
-index 2550b8f8c069..accf5aa199c8 100644
---- a/linux-user/ppc/signal.c
-+++ b/linux-user/ppc/signal.c
-@@ -215,7 +215,7 @@ static target_ulong get_sigframe(struct target_sigaction *ka,
-     return (oldsp - frame_size) & ~0xFUL;
- }
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
+diff --git a/linux-user/i386/cpu_loop.c b/linux-user/i386/cpu_loop.c
+index 90bffc1956aa..492701dd9af9 100644
+--- a/linux-user/i386/cpu_loop.c
++++ b/linux-user/i386/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
  
--#if defined(TARGET_WORDS_BIGENDIAN) == HOST_BIG_ENDIAN
-+#if TARGET_BIG_ENDIAN == HOST_BIG_ENDIAN
- #define PPC_VEC_HI      0
- #define PPC_VEC_LO      1
- #else
-@@ -542,7 +542,7 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
-     env->nip = (target_ulong) ka->_sa_handler;
- #endif
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "qemu/timer.h"
+ #include "user-internals.h"
+diff --git a/linux-user/m68k/cpu_loop.c b/linux-user/m68k/cpu_loop.c
+index 928a18e3cf05..d1bf8548b747 100644
+--- a/linux-user/m68k/cpu_loop.c
++++ b/linux-user/m68k/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
  
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     /* Signal handlers are entered in big-endian mode.  */
-     ppc_store_msr(env, env->msr & ~(1ull << MSR_LE));
- #else
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 7182dbd9796d..dc7b513c3cbb 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -8152,7 +8152,7 @@ static int is_proc_myself(const char *filename, const char *entry)
-     return 0;
- }
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
+diff --git a/linux-user/microblaze/cpu_loop.c b/linux-user/microblaze/cpu_loop.c
+index 1a2556be2c5f..5ccf9e942eaa 100644
+--- a/linux-user/microblaze/cpu_loop.c
++++ b/linux-user/microblaze/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
  
--#if HOST_BIG_ENDIAN != defined(TARGET_WORDS_BIGENDIAN) || \
-+#if HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN || \
-     defined(TARGET_SPARC) || defined(TARGET_M68K) || defined(TARGET_HPPA)
- static int is_proc(const char *filename, const char *entry)
- {
-@@ -8160,7 +8160,7 @@ static int is_proc(const char *filename, const char *entry)
- }
- #endif
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
+diff --git a/linux-user/mips/cpu_loop.c b/linux-user/mips/cpu_loop.c
+index 9bb12a07ba08..d5c1c7941d34 100644
+--- a/linux-user/mips/cpu_loop.c
++++ b/linux-user/mips/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
  
--#if HOST_BIG_ENDIAN != defined(TARGET_WORDS_BIGENDIAN)
-+#if HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN
- static int open_net_route(void *cpu_env, int fd)
- {
-     FILE *fp;
-@@ -8246,7 +8246,7 @@ static int do_openat(void *cpu_env, int dirfd, const char *pathname, int flags,
-         { "stat", open_self_stat, is_proc_myself },
-         { "auxv", open_self_auxv, is_proc_myself },
-         { "cmdline", open_self_cmdline, is_proc_myself },
--#if HOST_BIG_ENDIAN != defined(TARGET_WORDS_BIGENDIAN)
-+#if HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN
-         { "/proc/net/route", open_net_route, is_proc },
- #endif
- #if defined(TARGET_SPARC) || defined(TARGET_HPPA)
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
+diff --git a/linux-user/openrisc/cpu_loop.c b/linux-user/openrisc/cpu_loop.c
+index 7683bea0649e..a7aa586c8f96 100644
+--- a/linux-user/openrisc/cpu_loop.c
++++ b/linux-user/openrisc/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
+diff --git a/linux-user/ppc/cpu_loop.c b/linux-user/ppc/cpu_loop.c
+index b468f199e4d2..02204ad8bebb 100644
+--- a/linux-user/ppc/cpu_loop.c
++++ b/linux-user/ppc/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "qemu/timer.h"
+ #include "user-internals.h"
+diff --git a/linux-user/riscv/cpu_loop.c b/linux-user/riscv/cpu_loop.c
+index 26d446f32379..29084c142196 100644
+--- a/linux-user/riscv/cpu_loop.c
++++ b/linux-user/riscv/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+diff --git a/linux-user/s390x/cpu_loop.c b/linux-user/s390x/cpu_loop.c
+index 7901dfe6f518..285bc60071a8 100644
+--- a/linux-user/s390x/cpu_loop.c
++++ b/linux-user/s390x/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
+diff --git a/linux-user/sh4/cpu_loop.c b/linux-user/sh4/cpu_loop.c
+index 1bd313cb19a2..c805f9db1104 100644
+--- a/linux-user/sh4/cpu_loop.c
++++ b/linux-user/sh4/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
+diff --git a/linux-user/sparc/cpu_loop.c b/linux-user/sparc/cpu_loop.c
+index baf3d9ae011f..434c90a55f8f 100644
+--- a/linux-user/sparc/cpu_loop.c
++++ b/linux-user/sparc/cpu_loop.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu.h"
+ #include "user-internals.h"
+ #include "cpu_loop-common.h"
 diff --git a/linux-user/uname.c b/linux-user/uname.c
-index 1d82608c100f..0856783b2190 100644
+index 0856783b2190..415fdf31b62d 100644
 --- a/linux-user/uname.c
 +++ b/linux-user/uname.c
-@@ -41,7 +41,7 @@ const char *cpu_to_uname_machine(void *cpu_env)
+@@ -21,7 +21,6 @@
  
-     /* in theory, endianness is configurable on some ARM CPUs, but this isn't
-      * used in user mode emulation */
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- #define utsname_suffix "b"
- #else
- #define utsname_suffix "l"
-diff --git a/linux-user/xtensa/signal.c b/linux-user/xtensa/signal.c
-index 06d91a37ecee..f5fb8b5cbebe 100644
---- a/linux-user/xtensa/signal.c
-+++ b/linux-user/xtensa/signal.c
-@@ -130,7 +130,7 @@ static int setup_sigcontext(struct target_rt_sigframe *frame,
+ #include "qemu.h"
+ #include "user-internals.h"
+-//#include "qemu-common.h"
+ #include "uname.h"
  
- static void install_sigtramp(uint8_t *tramp)
- {
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     /* Generate instruction:  MOVI a2, __NR_rt_sigreturn */
-     __put_user(0x22, &tramp[0]);
-     __put_user(0x0a, &tramp[1]);
-diff --git a/softmmu/memory.c b/softmmu/memory.c
-index 8060c6de7802..0456a6c051eb 100644
---- a/softmmu/memory.c
-+++ b/softmmu/memory.c
-@@ -350,7 +350,7 @@ static void flatview_simplify(FlatView *view)
- 
- static bool memory_region_big_endian(MemoryRegion *mr)
- {
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     return mr->ops->endianness != DEVICE_LITTLE_ENDIAN;
- #else
-     return mr->ops->endianness == DEVICE_BIG_ENDIAN;
-diff --git a/softmmu/qtest.c b/softmmu/qtest.c
-index cc586233a974..6a0edd733b79 100644
---- a/softmmu/qtest.c
-+++ b/softmmu/qtest.c
-@@ -732,7 +732,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         qtest_send(chr, "OK\n");
-     } else if (strcmp(words[0], "endianness") == 0) {
-         qtest_send_prefix(chr);
--#if defined(TARGET_WORDS_BIGENDIAN)
-+#if TARGET_BIG_ENDIAN
-         qtest_sendf(chr, "OK big\n");
- #else
-         qtest_sendf(chr, "OK little\n");
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5d4ca7a22700..0980d3390112 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -812,7 +812,7 @@ static void arm_disas_set_info(CPUState *cpu, disassemble_info *info)
- 
-     sctlr_b = arm_sctlr_b(env);
-     if (bswap_code(sctlr_b)) {
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-         info->endian = BFD_ENDIAN_LITTLE;
- #else
-         info->endian = BFD_ENDIAN_BIG;
-diff --git a/target/mips/cpu.c b/target/mips/cpu.c
-index af287177d5af..ad74fbe636af 100644
---- a/target/mips/cpu.c
-+++ b/target/mips/cpu.c
-@@ -189,7 +189,7 @@ static void mips_cpu_reset(DeviceState *dev)
-     /* Reset registers to their default values */
-     env->CP0_PRid = env->cpu_model->CP0_PRid;
-     env->CP0_Config0 = env->cpu_model->CP0_Config0;
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     env->CP0_Config0 |= (1 << CP0C0_BE);
- #endif
-     env->CP0_Config1 = env->cpu_model->CP0_Config1;
-@@ -418,7 +418,7 @@ static void mips_cpu_disas_set_info(CPUState *s, disassemble_info *info)
-     CPUMIPSState *env = &cpu->env;
- 
-     if (!(env->insn_flags & ISA_NANOMIPS32)) {
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-         info->print_insn = print_insn_big_mips;
- #else
-         info->print_insn = print_insn_little_mips;
-diff --git a/target/mips/tcg/msa_helper.c b/target/mips/tcg/msa_helper.c
-index 389c42e4baa3..4dde5d639ad4 100644
---- a/target/mips/tcg/msa_helper.c
-+++ b/target/mips/tcg/msa_helper.c
-@@ -8218,7 +8218,7 @@ void helper_msa_ffint_u_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
- #define MEMOP_IDX(DF)
- #endif
- 
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
- static inline uint64_t bswap16x4(uint64_t x)
- {
-     uint64_t m = 0x00ff00ff00ff00ffull;
-@@ -8258,7 +8258,7 @@ void helper_msa_ld_h(CPUMIPSState *env, uint32_t wd,
-      */
-     d0 = cpu_ldq_le_data_ra(env, addr + 0, ra);
-     d1 = cpu_ldq_le_data_ra(env, addr + 8, ra);
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     d0 = bswap16x4(d0);
-     d1 = bswap16x4(d1);
- #endif
-@@ -8279,7 +8279,7 @@ void helper_msa_ld_w(CPUMIPSState *env, uint32_t wd,
-      */
-     d0 = cpu_ldq_le_data_ra(env, addr + 0, ra);
-     d1 = cpu_ldq_le_data_ra(env, addr + 8, ra);
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     d0 = bswap32x2(d0);
-     d1 = bswap32x2(d1);
- #endif
-@@ -8345,7 +8345,7 @@ void helper_msa_st_h(CPUMIPSState *env, uint32_t wd,
-     /* Store 8 bytes at a time.  See helper_msa_ld_h. */
-     d0 = pwd->d[0];
-     d1 = pwd->d[1];
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     d0 = bswap16x4(d0);
-     d1 = bswap16x4(d1);
- #endif
-@@ -8366,7 +8366,7 @@ void helper_msa_st_w(CPUMIPSState *env, uint32_t wd,
-     /* Store 8 bytes at a time.  See helper_msa_ld_w. */
-     d0 = pwd->d[0];
-     d1 = pwd->d[1];
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     d0 = bswap32x2(d0);
-     d1 = bswap32x2(d1);
- #endif
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index 073fd101687c..5062d0e4782a 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7150,7 +7150,7 @@ static void ppc_cpu_reset(DeviceState *dev)
- #if defined(TARGET_PPC64)
-     msr |= (target_ulong)1 << MSR_TM; /* Transactional memory */
- #endif
--#if !defined(TARGET_WORDS_BIGENDIAN)
-+#if !TARGET_BIG_ENDIAN
-     msr |= (target_ulong)1 << MSR_LE; /* Little-endian user mode */
-     if (!((env->msr_mask >> MSR_LE) & 1)) {
-         fprintf(stderr, "Selected CPU does not support little-endian.\n");
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 105c2f7dd13f..1252429a2ad5 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -87,9 +87,9 @@ static int ppc_gdb_register_len(int n)
- /*
-  * We need to present the registers to gdb in the "current" memory
-  * ordering.  For user-only mode we get this for free;
-- * TARGET_WORDS_BIGENDIAN is set to the proper ordering for the
-+ * TARGET_BIG_ENDIAN is set to the proper ordering for the
-  * binary, and cannot be changed.  For system mode,
-- * TARGET_WORDS_BIGENDIAN is always set, and we must check the current
-+ * TARGET_BIG_ENDIAN is always set, and we must check the current
-  * mode of the chip to see if we're running in little-endian.
+ /* return highest utsname machine name for emulated instruction set
+diff --git a/monitor/qmp-cmds.c b/monitor/qmp-cmds.c
+index 883cf1ca4bbf..5e7302cbb995 100644
+--- a/monitor/qmp-cmds.c
++++ b/monitor/qmp-cmds.c
+@@ -14,7 +14,6 @@
   */
- void ppc_maybe_bswap_register(CPUPPCState *env, uint8_t *mem_buf, int len)
-diff --git a/target/ppc/mem_helper.c b/target/ppc/mem_helper.c
-index f1c76a7750ab..c4ff8fd632ce 100644
---- a/target/ppc/mem_helper.c
-+++ b/target/ppc/mem_helper.c
-@@ -32,7 +32,7 @@
  
- static inline bool needs_byteswap(const CPUPPCState *env)
- {
--#if defined(TARGET_WORDS_BIGENDIAN)
-+#if TARGET_BIG_ENDIAN
-   return msr_le;
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/cutils.h"
+ #include "qemu/option.h"
+ #include "monitor/monitor.h"
+diff --git a/net/colo-compare.c b/net/colo-compare.c
+index 62554b5b3c8f..d5d096580577 100644
+--- a/net/colo-compare.c
++++ b/net/colo-compare.c
+@@ -13,7 +13,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ #include "trace.h"
+ #include "qapi/error.h"
+diff --git a/net/net.c b/net/net.c
+index 9f17ab204422..a094cf1d2929 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ 
+ #include "net/net.h"
+ #include "clients.h"
+diff --git a/net/socket.c b/net/socket.c
+index c4b80e9228d7..ea5220a2eb51 100644
+--- a/net/socket.c
++++ b/net/socket.c
+@@ -27,7 +27,6 @@
+ #include "clients.h"
+ #include "monitor/monitor.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ #include "qemu/option.h"
+ #include "qemu/sockets.h"
+diff --git a/net/tap-bsd.c b/net/tap-bsd.c
+index e45a6d124eb6..7e65bd391f0b 100644
+--- a/net/tap-bsd.c
++++ b/net/tap-bsd.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "tap_int.h"
+ #include "qemu/cutils.h"
+diff --git a/net/tap-linux.c b/net/tap-linux.c
+index 5e70b9303710..3e24d232e782 100644
+--- a/net/tap-linux.c
++++ b/net/tap-linux.c
+@@ -24,7 +24,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "tap_int.h"
+ #include "tap-linux.h"
+ #include "net/tap.h"
+diff --git a/net/tap-solaris.c b/net/tap-solaris.c
+index d85224242b30..79919785c9f6 100644
+--- a/net/tap-solaris.c
++++ b/net/tap-solaris.c
+@@ -27,7 +27,6 @@
+ #include "tap_int.h"
+ #include "qemu/ctype.h"
+ #include "qemu/cutils.h"
+-#include "qemu-common.h"
+ 
+ #include <sys/ethernet.h>
+ #include <sys/sockio.h>
+diff --git a/net/tap-win32.c b/net/tap-win32.c
+index 6096972f5d47..7466f22e77a4 100644
+--- a/net/tap-win32.c
++++ b/net/tap-win32.c
+@@ -29,7 +29,6 @@
+ #include "qemu/osdep.h"
+ #include "tap_int.h"
+ 
+-#include "qemu-common.h"
+ #include "clients.h"            /* net_init_tap */
+ #include "net/eth.h"
+ #include "net/net.h"
+diff --git a/net/tap.c b/net/tap.c
+index c5cbeaa7a2be..6190fa699d2f 100644
+--- a/net/tap.c
++++ b/net/tap.c
+@@ -38,7 +38,6 @@
+ #include "monitor/monitor.h"
+ #include "sysemu/sysemu.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+ #include "qemu/main-loop.h"
+diff --git a/net/vde.c b/net/vde.c
+index 99189cccb694..1083916bcf52 100644
+--- a/net/vde.c
++++ b/net/vde.c
+@@ -27,7 +27,6 @@
+ 
+ #include "net/net.h"
+ #include "clients.h"
+-#include "qemu-common.h"
+ #include "qemu/option.h"
+ #include "qemu/main-loop.h"
+ #include "qapi/error.h"
+diff --git a/os-posix.c b/os-posix.c
+index 24692c8593f3..ee765f047dea 100644
+--- a/os-posix.c
++++ b/os-posix.c
+@@ -29,7 +29,6 @@
+ #include <grp.h>
+ #include <libgen.h>
+ 
+-#include "qemu-common.h"
+ /* Needed early for CONFIG_BSD etc. */
+ #include "net/slirp.h"
+ #include "qemu/qemu-options.h"
+diff --git a/os-win32.c b/os-win32.c
+index 6f21b578417c..725ad652e8bb 100644
+--- a/os-win32.c
++++ b/os-win32.c
+@@ -26,7 +26,6 @@
+ #include "qemu/osdep.h"
+ #include <windows.h>
+ #include <mmsystem.h>
+-#include "qemu-common.h"
+ #include "sysemu/runstate.h"
+ 
+ static BOOL WINAPI qemu_ctrl_handler(DWORD type)
+diff --git a/page-vary-common.c b/page-vary-common.c
+index 91755564985c..ab77672dd412 100644
+--- a/page-vary-common.c
++++ b/page-vary-common.c
+@@ -20,7 +20,6 @@
+ #define IN_PAGE_VARY 1
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "exec/page-vary.h"
+ 
+ /* WARNING: This file must *not* be complied with -flto. */
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index 4d7a2392c097..9924277c826e 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -16,7 +16,6 @@
+ #include <sys/utsname.h>
+ #include <sys/wait.h>
+ #include <dirent.h>
+-#include "qemu-common.h"
+ #include "guest-agent-core.h"
+ #include "qga-qapi-commands.h"
+ #include "qapi/error.h"
+diff --git a/softmmu/cpu-throttle.c b/softmmu/cpu-throttle.c
+index 8c2144ab95cc..d9bb30a223d8 100644
+--- a/softmmu/cpu-throttle.c
++++ b/softmmu/cpu-throttle.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/thread.h"
+ #include "hw/core/cpu.h"
+ #include "qemu/main-loop.h"
+diff --git a/softmmu/cpu-timers.c b/softmmu/cpu-timers.c
+index 204d946a1729..117408cb83af 100644
+--- a/softmmu/cpu-timers.c
++++ b/softmmu/cpu-timers.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/cutils.h"
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+diff --git a/softmmu/cpus.c b/softmmu/cpus.c
+index 7b75bb66d5e6..668bef9b4d62 100644
+--- a/softmmu/cpus.c
++++ b/softmmu/cpus.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "monitor/monitor.h"
+ #include "qemu/coroutine-tls.h"
+ #include "qapi/error.h"
+diff --git a/softmmu/datadir.c b/softmmu/datadir.c
+index 504c4665bed7..160cac999a6f 100644
+--- a/softmmu/datadir.c
++++ b/softmmu/datadir.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qemu/cutils.h"
+ #include "trace.h"
+diff --git a/softmmu/icount.c b/softmmu/icount.c
+index 21341a4ce49e..5ca271620db6 100644
+--- a/softmmu/icount.c
++++ b/softmmu/icount.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/cutils.h"
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+diff --git a/softmmu/runstate.c b/softmmu/runstate.c
+index e0d869b21aa4..fac7b63259e8 100644
+--- a/softmmu/runstate.c
++++ b/softmmu/runstate.c
+@@ -40,7 +40,6 @@
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-run-state.h"
+ #include "qapi/qapi-events-run-state.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ #include "qemu/log.h"
+ #include "qemu/job.h"
+diff --git a/stubs/monitor-core.c b/stubs/monitor-core.c
+index d058a2a00d85..afa477aae656 100644
+--- a/stubs/monitor-core.c
++++ b/stubs/monitor-core.c
+@@ -1,6 +1,5 @@
+ #include "qemu/osdep.h"
+ #include "monitor/monitor.h"
+-#include "qemu-common.h"
+ #include "qapi/qapi-emit-events.h"
+ 
+ Monitor *monitor_cur(void)
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 8c34f86792ed..567e296b21c9 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -10,7 +10,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ 
+ #include "sysemu/runstate.h"
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index bbf1ce7ba3bc..5fc37ac10a5b 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -13,7 +13,6 @@
+ 
+ #include <linux/kvm.h>
+ 
+-#include "qemu-common.h"
+ #include "qemu/timer.h"
+ #include "qemu/error-report.h"
+ #include "qemu/main-loop.h"
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 9ec8875150d6..17dd2f77d9f5 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -16,7 +16,6 @@
+ #include <linux/elf.h>
+ #include <linux/kvm.h>
+ 
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "cpu.h"
+ #include "qemu/timer.h"
+diff --git a/target/hexagon/gdbstub.c b/target/hexagon/gdbstub.c
+index 9c8c04c961b1..d152d01bfe7e 100644
+--- a/target/hexagon/gdbstub.c
++++ b/target/hexagon/gdbstub.c
+@@ -16,7 +16,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "exec/gdbstub.h"
+ #include "cpu.h"
+ #include "internal.h"
+diff --git a/target/i386/hax/hax-all.c b/target/i386/hax/hax-all.c
+index 81f665e21245..b185ee8de4fd 100644
+--- a/target/i386/hax/hax-all.c
++++ b/target/i386/hax/hax-all.c
+@@ -27,7 +27,6 @@
+ #include "cpu.h"
+ #include "exec/address-spaces.h"
+ 
+-#include "qemu-common.h"
+ #include "qemu/accel.h"
+ #include "sysemu/reset.h"
+ #include "sysemu/runstate.h"
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index fc12c02fb217..f8833277ab6a 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -47,7 +47,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ #include "qemu/memalign.h"
+ 
+diff --git a/target/i386/hvf/x86.c b/target/i386/hvf/x86.c
+index 91a3fe002c73..d086584f26d9 100644
+--- a/target/i386/hvf/x86.c
++++ b/target/i386/hvf/x86.c
+@@ -19,7 +19,6 @@
+ #include "qemu/osdep.h"
+ 
+ #include "cpu.h"
+-#include "qemu-common.h"
+ #include "x86_decode.h"
+ #include "x86_emu.h"
+ #include "vmcs.h"
+diff --git a/target/i386/hvf/x86_cpuid.c b/target/i386/hvf/x86_cpuid.c
+index 32b0d131df86..f24dd50e48ff 100644
+--- a/target/i386/hvf/x86_cpuid.c
++++ b/target/i386/hvf/x86_cpuid.c
+@@ -21,7 +21,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "x86.h"
+ #include "vmx.h"
+diff --git a/target/i386/hvf/x86_decode.c b/target/i386/hvf/x86_decode.c
+index 062713b1a450..3728d7705e21 100644
+--- a/target/i386/hvf/x86_decode.c
++++ b/target/i386/hvf/x86_decode.c
+@@ -18,7 +18,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "panic.h"
+ #include "x86_decode.h"
+ #include "vmx.h"
+diff --git a/target/i386/hvf/x86_descr.c b/target/i386/hvf/x86_descr.c
+index af15c06ac5db..a484942cfcd4 100644
+--- a/target/i386/hvf/x86_descr.c
++++ b/target/i386/hvf/x86_descr.c
+@@ -18,7 +18,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "vmx.h"
+ #include "x86_descr.h"
+ 
+diff --git a/target/i386/hvf/x86_emu.c b/target/i386/hvf/x86_emu.c
+index 050428795bbc..f5704f63e8da 100644
+--- a/target/i386/hvf/x86_emu.c
++++ b/target/i386/hvf/x86_emu.c
+@@ -37,7 +37,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "panic.h"
+-#include "qemu-common.h"
+ #include "x86_decode.h"
+ #include "x86.h"
+ #include "x86_emu.h"
+diff --git a/target/i386/hvf/x86_flags.c b/target/i386/hvf/x86_flags.c
+index fecbca751770..03d6de5efc3e 100644
+--- a/target/i386/hvf/x86_flags.c
++++ b/target/i386/hvf/x86_flags.c
+@@ -23,7 +23,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "panic.h"
+ #include "cpu.h"
+ #include "x86_flags.h"
+diff --git a/target/i386/hvf/x86_mmu.c b/target/i386/hvf/x86_mmu.c
+index df0b91cd4208..96d117567ee8 100644
+--- a/target/i386/hvf/x86_mmu.c
++++ b/target/i386/hvf/x86_mmu.c
+@@ -18,7 +18,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "panic.h"
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "x86.h"
+ #include "x86_mmu.h"
+diff --git a/target/i386/hvf/x86_task.c b/target/i386/hvf/x86_task.c
+index d24daf6a4110..beaeec068731 100644
+--- a/target/i386/hvf/x86_task.c
++++ b/target/i386/hvf/x86_task.c
+@@ -8,7 +8,6 @@
+ // GNU General Public License for more details.
+ #include "qemu/osdep.h"
+ #include "panic.h"
+-#include "qemu-common.h"
+ #include "qemu/error-report.h"
+ 
+ #include "sysemu/hvf.h"
+diff --git a/target/i386/hvf/x86hvf.c b/target/i386/hvf/x86hvf.c
+index bec9fc581463..69d4fb8cf555 100644
+--- a/target/i386/hvf/x86hvf.c
++++ b/target/i386/hvf/x86hvf.c
+@@ -19,7 +19,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "x86hvf.h"
+ #include "vmx.h"
+ #include "vmcs.h"
+diff --git a/target/i386/kvm/sev-stub.c b/target/i386/kvm/sev-stub.c
+index 6080c007a2e4..1be5341e8a6a 100644
+--- a/target/i386/kvm/sev-stub.c
++++ b/target/i386/kvm/sev-stub.c
+@@ -12,7 +12,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "sev.h"
+ 
+ int sev_kvm_init(ConfidentialGuestSupport *cgs, Error **errp)
+diff --git a/target/i386/nvmm/nvmm-all.c b/target/i386/nvmm/nvmm-all.c
+index 9f940413318c..b75738ee9cdf 100644
+--- a/target/i386/nvmm/nvmm-all.c
++++ b/target/i386/nvmm/nvmm-all.c
+@@ -11,7 +11,6 @@
+ #include "cpu.h"
+ #include "exec/address-spaces.h"
+ #include "exec/ioport.h"
+-#include "qemu-common.h"
+ #include "qemu/accel.h"
+ #include "sysemu/nvmm.h"
+ #include "sysemu/cpus.h"
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 68a4ebe909ad..5560a22ea5c2 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -12,7 +12,6 @@
+ #include "cpu.h"
+ #include "exec/address-spaces.h"
+ #include "exec/ioport.h"
+-#include "qemu-common.h"
+ #include "qemu/accel.h"
+ #include "sysemu/whpx.h"
+ #include "sysemu/cpus.h"
+diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
+index bba36f3ec98f..c15df35ad60a 100644
+--- a/target/i386/whpx/whpx-apic.c
++++ b/target/i386/whpx/whpx-apic.c
+@@ -11,7 +11,6 @@
+  * See the COPYING file in the top-level directory.
+  */
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "hw/i386/apic_internal.h"
+ #include "hw/i386/apic-msidef.h"
+diff --git a/target/mips/kvm.c b/target/mips/kvm.c
+index 086debd9f013..caf70decd2a5 100644
+--- a/target/mips/kvm.c
++++ b/target/mips/kvm.c
+@@ -14,7 +14,6 @@
+ 
+ #include <linux/kvm.h>
+ 
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "internal.h"
+ #include "qemu/error-report.h"
+diff --git a/target/nios2/nios2-semi.c b/target/nios2/nios2-semi.c
+index 5a7ad0c7108d..eda21c04434b 100644
+--- a/target/nios2/nios2-semi.c
++++ b/target/nios2/nios2-semi.c
+@@ -28,7 +28,6 @@
+ #if defined(CONFIG_USER_ONLY)
+ #include "qemu.h"
  #else
-   return !msr_le;
-diff --git a/target/ppc/translate.c b/target/ppc/translate.c
-index 408ae26173de..f14f8d7309ba 100644
---- a/target/ppc/translate.c
-+++ b/target/ppc/translate.c
-@@ -193,7 +193,7 @@ struct DisasContext {
- /* Return true iff byteswap is needed in a scalar memop */
- static inline bool need_byteswap(const DisasContext *ctx)
- {
--#if defined(TARGET_WORDS_BIGENDIAN)
-+#if TARGET_BIG_ENDIAN
-      return ctx->le_mode;
- #else
-      return !ctx->le_mode;
-diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
-index b1491ed625e5..fc4e9d2c9a86 100644
---- a/target/xtensa/translate.c
-+++ b/target/xtensa/translate.c
-@@ -1471,14 +1471,14 @@ static void translate_b(DisasContext *dc, const OpcodeArg arg[],
- static void translate_bb(DisasContext *dc, const OpcodeArg arg[],
-                          const uint32_t par[])
- {
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     TCGv_i32 bit = tcg_const_i32(0x80000000u);
- #else
-     TCGv_i32 bit = tcg_const_i32(0x00000001u);
+-#include "qemu-common.h"
+ #include "exec/softmmu-semi.h"
  #endif
-     TCGv_i32 tmp = tcg_temp_new_i32();
-     tcg_gen_andi_i32(tmp, arg[1].in, 0x1f);
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     tcg_gen_shr_i32(bit, bit, tmp);
- #else
-     tcg_gen_shl_i32(bit, bit, tmp);
-@@ -1493,7 +1493,7 @@ static void translate_bbi(DisasContext *dc, const OpcodeArg arg[],
-                           const uint32_t par[])
+ #include "qemu/log.h"
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 8644b85de847..f905a2af17a7 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -21,7 +21,6 @@
+ 
+ #include <linux/kvm.h>
+ 
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "cpu.h"
+diff --git a/target/riscv/kvm.c b/target/riscv/kvm.c
+index e6b7cb6d4d5f..70b4cff06fbb 100644
+--- a/target/riscv/kvm.c
++++ b/target/riscv/kvm.c
+@@ -21,7 +21,6 @@
+ 
+ #include <linux/kvm.h>
+ 
+-#include "qemu-common.h"
+ #include "qemu/timer.h"
+ #include "qemu/error-report.h"
+ #include "qemu/main-loop.h"
+diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+index 25a4aa2976d3..fb30080ac4ea 100644
+--- a/target/rx/cpu.c
++++ b/target/rx/cpu.c
+@@ -20,7 +20,6 @@
+ #include "qemu/qemu-print.h"
+ #include "qapi/error.h"
+ #include "cpu.h"
+-#include "qemu-common.h"
+ #include "migration/vmstate.h"
+ #include "exec/exec-all.h"
+ #include "hw/loader.h"
+diff --git a/target/rx/gdbstub.c b/target/rx/gdbstub.c
+index c811d4810b45..7eb2059a841b 100644
+--- a/target/rx/gdbstub.c
++++ b/target/rx/gdbstub.c
+@@ -16,7 +16,6 @@
+  * this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "exec/gdbstub.h"
+ 
+diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+index 6acf14d5ecb4..53098bf54104 100644
+--- a/target/s390x/kvm/kvm.c
++++ b/target/s390x/kvm/kvm.c
+@@ -24,7 +24,6 @@
+ #include <linux/kvm.h>
+ #include <asm/ptrace.h>
+ 
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "s390x-internal.h"
+ #include "kvm_s390x.h"
+diff --git a/target/s390x/tcg/vec_fpu_helper.c b/target/s390x/tcg/vec_fpu_helper.c
+index 1a779934715f..aa2cc8e4a6b5 100644
+--- a/target/s390x/tcg/vec_fpu_helper.c
++++ b/target/s390x/tcg/vec_fpu_helper.c
+@@ -10,7 +10,6 @@
+  * See the COPYING file in the top-level directory.
+  */
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "s390x-internal.h"
+ #include "vec.h"
+diff --git a/target/s390x/tcg/vec_int_helper.c b/target/s390x/tcg/vec_int_helper.c
+index 5561b3ed9096..b44859ee1630 100644
+--- a/target/s390x/tcg/vec_int_helper.c
++++ b/target/s390x/tcg/vec_int_helper.c
+@@ -10,7 +10,6 @@
+  * See the COPYING file in the top-level directory.
+  */
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "vec.h"
+ #include "exec/helper-proto.h"
+diff --git a/target/s390x/tcg/vec_string_helper.c b/target/s390x/tcg/vec_string_helper.c
+index ac315eb095c1..f8b54bba4a9d 100644
+--- a/target/s390x/tcg/vec_string_helper.c
++++ b/target/s390x/tcg/vec_string_helper.c
+@@ -10,7 +10,6 @@
+  * See the COPYING file in the top-level directory.
+  */
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "cpu.h"
+ #include "s390x-internal.h"
+ #include "vec.h"
+diff --git a/target/tricore/gdbstub.c b/target/tricore/gdbstub.c
+index 3ce55abb8e3b..ebf32defde3a 100644
+--- a/target/tricore/gdbstub.c
++++ b/target/tricore/gdbstub.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "exec/gdbstub.h"
+ 
+ 
+diff --git a/target/xtensa/core-de233_fpu.c b/target/xtensa/core-de233_fpu.c
+index c7cbeb1b4834..41af8057fbb9 100644
+--- a/target/xtensa/core-de233_fpu.c
++++ b/target/xtensa/core-de233_fpu.c
+@@ -28,7 +28,6 @@
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "exec/gdbstub.h"
+-#include "qemu-common.h"
+ #include "qemu/host-utils.h"
+ 
+ #include "core-de233_fpu/core-isa.h"
+diff --git a/target/xtensa/core-dsp3400.c b/target/xtensa/core-dsp3400.c
+index 4e0bc8a8c46c..81e425c56828 100644
+--- a/target/xtensa/core-dsp3400.c
++++ b/target/xtensa/core-dsp3400.c
+@@ -28,7 +28,6 @@
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "exec/gdbstub.h"
+-#include "qemu-common.h"
+ #include "qemu/host-utils.h"
+ 
+ #include "core-dsp3400/core-isa.h"
+diff --git a/target/xtensa/core-test_mmuhifi_c3.c b/target/xtensa/core-test_mmuhifi_c3.c
+index 123c630b0da7..c0e5d32d1e47 100644
+--- a/target/xtensa/core-test_mmuhifi_c3.c
++++ b/target/xtensa/core-test_mmuhifi_c3.c
+@@ -28,7 +28,6 @@
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "exec/gdbstub.h"
+-#include "qemu-common.h"
+ #include "qemu/host-utils.h"
+ 
+ #include "core-test_mmuhifi_c3/core-isa.h"
+diff --git a/tcg/tci.c b/tcg/tci.c
+index fe92b5d0844b..bdfac83492dd 100644
+--- a/tcg/tci.c
++++ b/tcg/tci.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "tcg/tcg.h"           /* MAX_OPC_PARAM_IARGS */
+ #include "exec/cpu_ldst.h"
+ #include "tcg/tcg-op.h"
+diff --git a/tests/qtest/acpi-utils.c b/tests/qtest/acpi-utils.c
+index 766c48e3a6a4..673fc975862c 100644
+--- a/tests/qtest/acpi-utils.c
++++ b/tests/qtest/acpi-utils.c
+@@ -14,7 +14,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include <glib/gstdio.h>
+-#include "qemu-common.h"
+ #include "qemu/bitmap.h"
+ #include "acpi-utils.h"
+ #include "boot-sector.h"
+diff --git a/tests/qtest/ahci-test.c b/tests/qtest/ahci-test.c
+index 8073ccc20521..aff5f3f79776 100644
+--- a/tests/qtest/ahci-test.c
++++ b/tests/qtest/ahci-test.c
+@@ -30,7 +30,6 @@
+ #include "libqos/ahci.h"
+ #include "libqos/pci-pc.h"
+ 
+-#include "qemu-common.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qemu/host-utils.h"
+ 
+diff --git a/tests/qtest/aspeed_hace-test.c b/tests/qtest/aspeed_hace-test.c
+index 09ee31545e41..58aa22014d04 100644
+--- a/tests/qtest/aspeed_hace-test.c
++++ b/tests/qtest/aspeed_hace-test.c
+@@ -8,7 +8,6 @@
+ #include "qemu/osdep.h"
+ 
+ #include "libqos/libqtest.h"
+-#include "qemu-common.h"
+ #include "qemu/bitops.h"
+ 
+ #define HACE_CMD                 0x10
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index c4a2d1e1664b..5dddedabcdde 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -57,7 +57,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include <glib/gstdio.h>
+-#include "qemu-common.h"
+ #include "hw/firmware/smbios.h"
+ #include "qemu/bitmap.h"
+ #include "acpi-utils.h"
+diff --git a/tests/qtest/boot-sector.c b/tests/qtest/boot-sector.c
+index ea8f264661c3..9d9825bc8145 100644
+--- a/tests/qtest/boot-sector.c
++++ b/tests/qtest/boot-sector.c
+@@ -12,7 +12,6 @@
+  */
+ #include "qemu/osdep.h"
+ #include "boot-sector.h"
+-#include "qemu-common.h"
+ #include "libqos/libqtest.h"
+ 
+ #define LOW(x) ((x) & 0xff)
+diff --git a/tests/qtest/cpu-plug-test.c b/tests/qtest/cpu-plug-test.c
+index a1c689414be5..7f5dd5f85a78 100644
+--- a/tests/qtest/cpu-plug-test.c
++++ b/tests/qtest/cpu-plug-test.c
+@@ -9,7 +9,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "libqtest-single.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qapi/qmp/qlist.h"
+diff --git a/tests/qtest/dbus-display-test.c b/tests/qtest/dbus-display-test.c
+index 43c77aff045c..81043162dfdd 100644
+--- a/tests/qtest/dbus-display-test.c
++++ b/tests/qtest/dbus-display-test.c
+@@ -3,7 +3,6 @@
+ #include <gio/gio.h>
+ #include <gio/gunixfdlist.h>
+ #include "libqos/libqtest.h"
+-#include "qemu-common.h"
+ #include "dbus-display1.h"
+ 
+ static GDBusConnection*
+diff --git a/tests/qtest/dbus-vmstate-test.c b/tests/qtest/dbus-vmstate-test.c
+index aca9b98b7a35..a8acab763f5d 100644
+--- a/tests/qtest/dbus-vmstate-test.c
++++ b/tests/qtest/dbus-vmstate-test.c
+@@ -2,7 +2,6 @@
+ #include <glib/gstdio.h>
+ #include <gio/gio.h>
+ #include "libqos/libqtest.h"
+-#include "qemu-common.h"
+ #include "dbus-vmstate1.h"
+ #include "migration-helpers.h"
+ 
+diff --git a/tests/qtest/device-introspect-test.c b/tests/qtest/device-introspect-test.c
+index bbec166dbc2f..adf39b2518e8 100644
+--- a/tests/qtest/device-introspect-test.c
++++ b/tests/qtest/device-introspect-test.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/qmp/qstring.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qapi/qmp/qlist.h"
+diff --git a/tests/qtest/e1000e-test.c b/tests/qtest/e1000e-test.c
+index e648fdd409cd..ddd6983ede14 100644
+--- a/tests/qtest/e1000e-test.c
++++ b/tests/qtest/e1000e-test.c
+@@ -25,9 +25,7 @@
+ 
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "libqtest-single.h"
+-#include "qemu-common.h"
+ #include "libqos/pci-pc.h"
+ #include "qemu/sockets.h"
+ #include "qemu/iov.h"
+diff --git a/tests/qtest/erst-test.c b/tests/qtest/erst-test.c
+index f94cd8dd8e05..a0adc35bef7f 100644
+--- a/tests/qtest/erst-test.c
++++ b/tests/qtest/erst-test.c
+@@ -11,7 +11,6 @@
+ #include <glib/gstdio.h>
+ #include "libqos/libqos-pc.h"
+ #include "libqos/libqtest.h"
+-#include "qemu-common.h"
+ 
+ #include "hw/pci/pci.h"
+ 
+diff --git a/tests/qtest/fdc-test.c b/tests/qtest/fdc-test.c
+index b0d40012e6a9..4aa72f36431f 100644
+--- a/tests/qtest/fdc-test.c
++++ b/tests/qtest/fdc-test.c
+@@ -27,7 +27,6 @@
+ 
+ #include "libqtest-single.h"
+ #include "qapi/qmp/qdict.h"
+-#include "qemu-common.h"
+ 
+ /* TODO actually test the results and get rid of this */
+ #define qmp_discard_response(...) qobject_unref(qmp(__VA_ARGS__))
+diff --git a/tests/qtest/fuzz/qos_fuzz.c b/tests/qtest/fuzz/qos_fuzz.c
+index 7a244c951e5e..dc891d838b6a 100644
+--- a/tests/qtest/fuzz/qos_fuzz.c
++++ b/tests/qtest/fuzz/qos_fuzz.c
+@@ -19,7 +19,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "exec/memory.h"
+ #include "qemu/main-loop.h"
+ 
+diff --git a/tests/qtest/hd-geo-test.c b/tests/qtest/hd-geo-test.c
+index 64023c057408..da9c4c2792de 100644
+--- a/tests/qtest/hd-geo-test.c
++++ b/tests/qtest/hd-geo-test.c
+@@ -16,7 +16,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/bswap.h"
+ #include "qapi/qmp/qlist.h"
+ #include "libqos/libqtest.h"
+diff --git a/tests/qtest/ide-test.c b/tests/qtest/ide-test.c
+index 19de3b410405..b7243a17b11d 100644
+--- a/tests/qtest/ide-test.c
++++ b/tests/qtest/ide-test.c
+@@ -30,7 +30,6 @@
+ #include "libqos/pci-pc.h"
+ #include "libqos/malloc-pc.h"
+ #include "qapi/qmp/qdict.h"
+-#include "qemu-common.h"
+ #include "qemu/bswap.h"
+ #include "hw/pci/pci_ids.h"
+ #include "hw/pci/pci_regs.h"
+diff --git a/tests/qtest/ipmi-bt-test.c b/tests/qtest/ipmi-bt-test.c
+index 19612e9405ae..ed431e34e68d 100644
+--- a/tests/qtest/ipmi-bt-test.c
++++ b/tests/qtest/ipmi-bt-test.c
+@@ -31,7 +31,6 @@
+ 
+ 
+ #include "libqtest-single.h"
+-#include "qemu-common.h"
+ 
+ #define IPMI_IRQ        5
+ 
+diff --git a/tests/qtest/ivshmem-test.c b/tests/qtest/ivshmem-test.c
+index 4e8af42a9d04..95628a418579 100644
+--- a/tests/qtest/ivshmem-test.c
++++ b/tests/qtest/ivshmem-test.c
+@@ -14,7 +14,6 @@
+ #include "libqos/libqos-pc.h"
+ #include "libqos/libqos-spapr.h"
+ #include "libqos/libqtest.h"
+-#include "qemu-common.h"
+ 
+ #define TMPSHMSIZE (1 << 20)
+ static char *tmpshm;
+diff --git a/tests/qtest/libqos/ahci.c b/tests/qtest/libqos/ahci.c
+index eaa2096512e5..41c4be5efa93 100644
+--- a/tests/qtest/libqos/ahci.c
++++ b/tests/qtest/libqos/ahci.c
+@@ -28,7 +28,6 @@
+ #include "ahci.h"
+ #include "pci-pc.h"
+ 
+-#include "qemu-common.h"
+ #include "qemu/host-utils.h"
+ 
+ #include "hw/pci/pci_ids.h"
+diff --git a/tests/qtest/libqos/malloc-pc.c b/tests/qtest/libqos/malloc-pc.c
+index f1e3b392a53c..bbd1b4827e54 100644
+--- a/tests/qtest/libqos/malloc-pc.c
++++ b/tests/qtest/libqos/malloc-pc.c
+@@ -16,8 +16,6 @@
+ 
+ #include "standard-headers/linux/qemu_fw_cfg.h"
+ 
+-#include "qemu-common.h"
+-
+ #define ALLOC_PAGE_SIZE (4096)
+ 
+ void pc_alloc_init(QGuestAllocator *s, QTestState *qts, QAllocOpts flags)
+diff --git a/tests/qtest/libqos/malloc-spapr.c b/tests/qtest/libqos/malloc-spapr.c
+index 05b306c191d3..d90ed3c51d7d 100644
+--- a/tests/qtest/libqos/malloc-spapr.c
++++ b/tests/qtest/libqos/malloc-spapr.c
+@@ -8,8 +8,6 @@
+ #include "qemu/osdep.h"
+ #include "malloc-spapr.h"
+ 
+-#include "qemu-common.h"
+-
+ #define SPAPR_PAGE_SIZE 4096
+ 
+ /* Memory must be a multiple of 256 MB,
+diff --git a/tests/qtest/libqos/malloc.c b/tests/qtest/libqos/malloc.c
+index f708b0143262..f0c8f950c805 100644
+--- a/tests/qtest/libqos/malloc.c
++++ b/tests/qtest/libqos/malloc.c
+@@ -12,7 +12,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "malloc.h"
+-#include "qemu-common.h"
+ #include "qemu/host-utils.h"
+ 
+ typedef struct MemBlock {
+diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+index dc5566ccfd60..7b5890dcc487 100644
+--- a/tests/qtest/libqtest.c
++++ b/tests/qtest/libqtest.c
+@@ -21,7 +21,6 @@
+ #include <sys/un.h>
+ 
+ #include "libqos/libqtest.h"
+-#include "qemu-common.h"
+ #include "qemu/ctype.h"
+ #include "qemu/cutils.h"
+ #include "qapi/error.h"
+diff --git a/tests/qtest/machine-none-test.c b/tests/qtest/machine-none-test.c
+index 138101b46ac2..8ca18074b9f9 100644
+--- a/tests/qtest/machine-none-test.c
++++ b/tests/qtest/machine-none-test.c
+@@ -12,7 +12,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "qemu/cutils.h"
+ #include "libqos/libqtest.h"
+ #include "qapi/qmp/qdict.h"
+diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.c
+index 7c435ac91576..a353fef0ca13 100644
+--- a/tests/qtest/npcm7xx_emc-test.c
++++ b/tests/qtest/npcm7xx_emc-test.c
+@@ -15,7 +15,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "libqos/libqos.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qapi/qmp/qnum.h"
+diff --git a/tests/qtest/pxe-test.c b/tests/qtest/pxe-test.c
+index 32bbae33c597..3cb47d2c5496 100644
+--- a/tests/qtest/pxe-test.c
++++ b/tests/qtest/pxe-test.c
+@@ -14,7 +14,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include <glib/gstdio.h>
+-#include "qemu-common.h"
+ #include "libqos/libqtest.h"
+ #include "boot-sector.h"
+ #include "libqos/libqos-spapr.h"
+diff --git a/tests/qtest/qom-test.c b/tests/qtest/qom-test.c
+index eb34af843b79..6b162e12b5aa 100644
+--- a/tests/qtest/qom-test.c
++++ b/tests/qtest/qom-test.c
+@@ -9,7 +9,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qapi/qmp/qlist.h"
+ #include "qemu/cutils.h"
+diff --git a/tests/qtest/rtl8139-test.c b/tests/qtest/rtl8139-test.c
+index 450604926492..8fa3313cc333 100644
+--- a/tests/qtest/rtl8139-test.c
++++ b/tests/qtest/rtl8139-test.c
+@@ -11,7 +11,6 @@
+ #include "libqtest-single.h"
+ #include "libqos/pci-pc.h"
+ #include "qemu/timer.h"
+-#include "qemu-common.h"
+ 
+ /* Tests only initialization so far. TODO: Replace with functional tests */
+ static void nop(void)
+diff --git a/tests/qtest/test-filter-mirror.c b/tests/qtest/test-filter-mirror.c
+index da4f94de727a..fdf66cebd62f 100644
+--- a/tests/qtest/test-filter-mirror.c
++++ b/tests/qtest/test-filter-mirror.c
+@@ -9,7 +9,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "libqos/libqtest.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qemu/iov.h"
+diff --git a/tests/qtest/test-filter-redirector.c b/tests/qtest/test-filter-redirector.c
+index fc16cf7e8d5f..339d3c04cedc 100644
+--- a/tests/qtest/test-filter-redirector.c
++++ b/tests/qtest/test-filter-redirector.c
+@@ -51,7 +51,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "libqos/libqtest.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qemu/iov.h"
+diff --git a/tests/qtest/test-x86-cpuid-compat.c b/tests/qtest/test-x86-cpuid-compat.c
+index 39138db7744b..b39c9055b309 100644
+--- a/tests/qtest/test-x86-cpuid-compat.c
++++ b/tests/qtest/test-x86-cpuid-compat.c
+@@ -1,5 +1,4 @@
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qapi/qmp/qlist.h"
+ #include "qapi/qmp/qnum.h"
+diff --git a/tests/qtest/virtio-net-test.c b/tests/qtest/virtio-net-test.c
+index a71395849f33..fc9f2b94982d 100644
+--- a/tests/qtest/virtio-net-test.c
++++ b/tests/qtest/virtio-net-test.c
+@@ -8,7 +8,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "libqtest-single.h"
+ #include "qemu/iov.h"
+ #include "qemu/module.h"
+diff --git a/tests/unit/check-qjson.c b/tests/unit/check-qjson.c
+index c845f91d4377..c4e0f851bfc6 100644
+--- a/tests/unit/check-qjson.c
++++ b/tests/unit/check-qjson.c
+@@ -21,7 +21,6 @@
+ #include "qapi/qmp/qnum.h"
+ #include "qapi/qmp/qstring.h"
+ #include "qemu/unicode.h"
+-#include "qemu-common.h"
+ 
+ static QString *from_json_str(const char *jstr, bool single, Error **errp)
  {
-     TCGv_i32 tmp = tcg_temp_new_i32();
--#ifdef TARGET_WORDS_BIGENDIAN
-+#if TARGET_BIG_ENDIAN
-     tcg_gen_andi_i32(tmp, arg[0].in, 0x80000000u >> arg[1].imm);
- #else
-     tcg_gen_andi_i32(tmp, arg[0].in, 0x00000001u << arg[1].imm);
-diff --git a/tests/tcg/xtensa/Makefile.softmmu-target b/tests/tcg/xtensa/Makefile.softmmu-target
-index 9530cac2ad95..973e55298ee4 100644
---- a/tests/tcg/xtensa/Makefile.softmmu-target
-+++ b/tests/tcg/xtensa/Makefile.softmmu-target
-@@ -2,7 +2,7 @@
- # Xtensa softmmu tests
- #
+diff --git a/tests/unit/check-qnull.c b/tests/unit/check-qnull.c
+index ebf21db83ccc..5ceacc65d7f3 100644
+--- a/tests/unit/check-qnull.c
++++ b/tests/unit/check-qnull.c
+@@ -9,7 +9,6 @@
+ #include "qemu/osdep.h"
  
--ifneq ($(TARGET_WORDS_BIGENDIAN),y)
-+ifneq ($(TARGET_BIG_ENDIAN),y)
+ #include "qapi/qmp/qnull.h"
+-#include "qemu-common.h"
+ #include "qapi/qobject-input-visitor.h"
+ #include "qapi/qobject-output-visitor.h"
+ #include "qapi/error.h"
+diff --git a/tests/unit/check-qnum.c b/tests/unit/check-qnum.c
+index b85fca23029e..bf7fe45bacc4 100644
+--- a/tests/unit/check-qnum.c
++++ b/tests/unit/check-qnum.c
+@@ -15,7 +15,6 @@
+ #include "qemu/osdep.h"
  
- XTENSA_SRC = $(SRC_PATH)/tests/tcg/xtensa
- XTENSA_ALL = $(filter-out $(XTENSA_SRC)/linker.ld.S,$(wildcard $(XTENSA_SRC)/*.S))
+ #include "qapi/qmp/qnum.h"
+-#include "qemu-common.h"
+ 
+ /*
+  * Public Interface test-cases
+diff --git a/tests/unit/check-qobject.c b/tests/unit/check-qobject.c
+index 7903ebf4cf80..0ed094e55f3a 100644
+--- a/tests/unit/check-qobject.c
++++ b/tests/unit/check-qobject.c
+@@ -15,7 +15,6 @@
+ #include "qapi/qmp/qnull.h"
+ #include "qapi/qmp/qnum.h"
+ #include "qapi/qmp/qstring.h"
+-#include "qemu-common.h"
+ 
+ #include <math.h>
+ 
+diff --git a/tests/unit/check-qstring.c b/tests/unit/check-qstring.c
+index 4bf977209342..bd861f4f8b47 100644
+--- a/tests/unit/check-qstring.c
++++ b/tests/unit/check-qstring.c
+@@ -12,7 +12,6 @@
+ #include "qemu/osdep.h"
+ 
+ #include "qapi/qmp/qstring.h"
+-#include "qemu-common.h"
+ 
+ /*
+  * Public Interface test-cases
+diff --git a/tests/unit/socket-helpers.c b/tests/unit/socket-helpers.c
+index ef31664d0224..0a9e090a68dd 100644
+--- a/tests/unit/socket-helpers.c
++++ b/tests/unit/socket-helpers.c
+@@ -19,7 +19,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/sockets.h"
+ #include "socket-helpers.h"
+ 
+diff --git a/tests/unit/test-clone-visitor.c b/tests/unit/test-clone-visitor.c
+index 5d48e125b8e4..ce67585305f6 100644
+--- a/tests/unit/test-clone-visitor.c
++++ b/tests/unit/test-clone-visitor.c
+@@ -9,7 +9,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "qapi/clone-visitor.h"
+ #include "test-qapi-visit.h"
+ 
+diff --git a/tests/unit/test-forward-visitor.c b/tests/unit/test-forward-visitor.c
+index 348f7e4e81c8..01de15522711 100644
+--- a/tests/unit/test-forward-visitor.c
++++ b/tests/unit/test-forward-visitor.c
+@@ -9,7 +9,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "qapi/forward-visitor.h"
+ #include "qapi/qobject-input-visitor.h"
+ #include "qapi/error.h"
+diff --git a/tests/unit/test-iov.c b/tests/unit/test-iov.c
+index 5371066fb6a4..0d2ba9ba87d9 100644
+--- a/tests/unit/test-iov.c
++++ b/tests/unit/test-iov.c
+@@ -1,5 +1,4 @@
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/iov.h"
+ #include "qemu/sockets.h"
+ 
+diff --git a/tests/unit/test-logging.c b/tests/unit/test-logging.c
+index ccb819f193d9..05703a4e515f 100644
+--- a/tests/unit/test-logging.c
++++ b/tests/unit/test-logging.c
+@@ -27,7 +27,6 @@
+ #include "qemu/osdep.h"
+ #include <glib/gstdio.h>
+ 
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qemu/log.h"
+ 
+diff --git a/tests/unit/test-qmp-event.c b/tests/unit/test-qmp-event.c
+index d58c3b78f208..7d961d716afb 100644
+--- a/tests/unit/test-qmp-event.c
++++ b/tests/unit/test-qmp-event.c
+@@ -13,7 +13,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "qapi/compat-policy.h"
+ #include "qapi/error.h"
+ #include "qapi/qmp/qbool.h"
+diff --git a/tests/unit/test-qobject-input-visitor.c b/tests/unit/test-qobject-input-visitor.c
+index 22538f814099..aed08eaebcee 100644
+--- a/tests/unit/test-qobject-input-visitor.c
++++ b/tests/unit/test-qobject-input-visitor.c
+@@ -13,7 +13,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-visit-introspect.h"
+ #include "qapi/qobject-input-visitor.h"
+diff --git a/tests/unit/test-qobject-output-visitor.c b/tests/unit/test-qobject-output-visitor.c
+index 6af4c33eec15..66b27fad66bb 100644
+--- a/tests/unit/test-qobject-output-visitor.c
++++ b/tests/unit/test-qobject-output-visitor.c
+@@ -12,7 +12,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qapi/qobject-output-visitor.h"
+ #include "test-qapi-visit.h"
+diff --git a/tests/unit/test-string-input-visitor.c b/tests/unit/test-string-input-visitor.c
+index 249faafc9d79..25094d3ffcef 100644
+--- a/tests/unit/test-string-input-visitor.c
++++ b/tests/unit/test-string-input-visitor.c
+@@ -12,7 +12,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qapi/string-input-visitor.h"
+ #include "test-qapi-visit.h"
+diff --git a/tests/unit/test-string-output-visitor.c b/tests/unit/test-string-output-visitor.c
+index e2bedc5c7c92..7ef305361eb7 100644
+--- a/tests/unit/test-string-output-visitor.c
++++ b/tests/unit/test-string-output-visitor.c
+@@ -12,7 +12,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qapi/string-output-visitor.h"
+ #include "test-qapi-visit.h"
+diff --git a/tests/unit/test-thread-pool.c b/tests/unit/test-thread-pool.c
+index 70dc6314a1ef..6020e65d6986 100644
+--- a/tests/unit/test-thread-pool.c
++++ b/tests/unit/test-thread-pool.c
+@@ -1,5 +1,4 @@
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "block/aio.h"
+ #include "block/thread-pool.h"
+ #include "block/block.h"
+diff --git a/tests/unit/test-util-sockets.c b/tests/unit/test-util-sockets.c
+index 896247e3ed36..63909ccb2b54 100644
+--- a/tests/unit/test-util-sockets.c
++++ b/tests/unit/test-util-sockets.c
+@@ -19,7 +19,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/sockets.h"
+ #include "qapi/error.h"
+ #include "socket-helpers.h"
+diff --git a/tests/unit/test-visitor-serialization.c b/tests/unit/test-visitor-serialization.c
+index 462995864775..907263d0307c 100644
+--- a/tests/unit/test-visitor-serialization.c
++++ b/tests/unit/test-visitor-serialization.c
+@@ -14,7 +14,6 @@
+ #include "qemu/osdep.h"
+ #include <float.h>
+ 
+-#include "qemu-common.h"
+ #include "test-qapi-visit.h"
+ #include "qapi/error.h"
+ #include "qapi/qmp/qjson.h"
+diff --git a/tests/unit/test-xbzrle.c b/tests/unit/test-xbzrle.c
+index 795d6f1cbabb..ef951b6e5405 100644
+--- a/tests/unit/test-xbzrle.c
++++ b/tests/unit/test-xbzrle.c
+@@ -11,7 +11,6 @@
+  *
+  */
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/cutils.h"
+ #include "../migration/xbzrle.h"
+ 
+diff --git a/ui/gtk-clipboard.c b/ui/gtk-clipboard.c
+index d58fd761abdf..8d8a636fd1fa 100644
+--- a/ui/gtk-clipboard.c
++++ b/ui/gtk-clipboard.c
+@@ -19,7 +19,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/main-loop.h"
+ 
+ #include "ui/gtk.h"
+diff --git a/ui/keymaps.c b/ui/keymaps.c
+index d4a647464bbf..6ceaa97085ab 100644
+--- a/ui/keymaps.c
++++ b/ui/keymaps.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "keymaps.h"
+ #include "trace.h"
+diff --git a/ui/vdagent.c b/ui/vdagent.c
+index 02861edfb13c..aa6167f0b492 100644
+--- a/ui/vdagent.c
++++ b/ui/vdagent.c
+@@ -1,6 +1,5 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "include/qemu-common.h"
+ #include "chardev/char.h"
+ #include "qemu/buffer.h"
+ #include "qemu/option.h"
+diff --git a/ui/vnc-clipboard.c b/ui/vnc-clipboard.c
+index d48f75eb1ab4..8aeadfaa218a 100644
+--- a/ui/vnc-clipboard.c
++++ b/ui/vnc-clipboard.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "vnc.h"
+ #include "vnc-jobs.h"
+ 
+diff --git a/ui/vnc-enc-tight.c b/ui/vnc-enc-tight.c
+index 7b86a4713dfd..5a4b8a4fc0f6 100644
+--- a/ui/vnc-enc-tight.c
++++ b/ui/vnc-enc-tight.c
+@@ -34,7 +34,7 @@
+ 
+ #ifdef CONFIG_VNC_PNG
+ /* The following define is needed by pngconf.h. Otherwise it won't compile,
+-   because setjmp.h was already included by qemu-common.h. */
++   because setjmp.h was already included by osdep.h. */
+ #define PNG_SKIP_SETJMP_CHECK
+ #include <png.h>
+ #endif
+diff --git a/ui/vnc.c b/ui/vnc.c
+index 5cbeebb8d1fd..6261d922953b 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -25,7 +25,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "vnc.h"
+ #include "vnc-jobs.h"
+ #include "trace.h"
+diff --git a/util/aio-win32.c b/util/aio-win32.c
+index 7aac89df3a30..44003d645ecd 100644
+--- a/util/aio-win32.c
++++ b/util/aio-win32.c
+@@ -16,7 +16,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "block/block.h"
+ #include "qemu/main-loop.h"
+ #include "qemu/queue.h"
+diff --git a/util/coroutine-sigaltstack.c b/util/coroutine-sigaltstack.c
+index e99b8a4f9c8c..e2690c5f4142 100644
+--- a/util/coroutine-sigaltstack.c
++++ b/util/coroutine-sigaltstack.c
+@@ -27,7 +27,6 @@
+ #endif
+ #include "qemu/osdep.h"
+ #include <pthread.h>
+-#include "qemu-common.h"
+ #include "qemu/coroutine_int.h"
+ 
+ #ifdef CONFIG_SAFESTACK
+diff --git a/util/coroutine-win32.c b/util/coroutine-win32.c
+index de6bd4fd3e4e..c196f956d27e 100644
+--- a/util/coroutine-win32.c
++++ b/util/coroutine-win32.c
+@@ -23,7 +23,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/coroutine_int.h"
+ 
+ typedef struct
+diff --git a/util/cutils.c b/util/cutils.c
+index aaf2ced29142..a01a3a754049 100644
+--- a/util/cutils.c
++++ b/util/cutils.c
+@@ -26,7 +26,6 @@
+ #include "qemu/host-utils.h"
+ #include <math.h>
+ 
+-#include "qemu-common.h"
+ #include "qemu/ctype.h"
+ #include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+diff --git a/util/event_notifier-posix.c b/util/event_notifier-posix.c
+index 16294e98d434..8dc30c51414d 100644
+--- a/util/event_notifier-posix.c
++++ b/util/event_notifier-posix.c
+@@ -11,7 +11,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/cutils.h"
+ #include "qemu/event_notifier.h"
+ #include "qemu/main-loop.h"
+diff --git a/util/event_notifier-win32.c b/util/event_notifier-win32.c
+index 62c53b0a9909..9352da4699c7 100644
+--- a/util/event_notifier-win32.c
++++ b/util/event_notifier-win32.c
+@@ -11,7 +11,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/event_notifier.h"
+ #include "qemu/main-loop.h"
+ 
+diff --git a/util/iov.c b/util/iov.c
+index 58c7b3eeee5f..22d6996ccec0 100644
+--- a/util/iov.c
++++ b/util/iov.c
+@@ -17,7 +17,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/iov.h"
+ #include "qemu/sockets.h"
+ #include "qemu/cutils.h"
+diff --git a/util/osdep.c b/util/osdep.c
+index 97dc9bc65b45..1ea2398686ee 100644
+--- a/util/osdep.c
++++ b/util/osdep.c
+@@ -23,7 +23,6 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "qemu-common.h"
+ #include "qemu/cutils.h"
+ #include "qemu/sockets.h"
+ #include "qemu/error-report.h"
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index fae25be3e779..c0125cd572ed 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -31,7 +31,6 @@
+ 
+ #include <glib/gprintf.h>
+ 
+-#include "qemu-common.h"
+ #include "sysemu/sysemu.h"
+ #include "trace.h"
+ #include "qapi/error.h"
+diff --git a/util/oslib-win32.c b/util/oslib-win32.c
+index 91d2f45cfe1f..b69e50b3f182 100644
+--- a/util/oslib-win32.c
++++ b/util/oslib-win32.c
+@@ -32,7 +32,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include <windows.h>
+-#include "qemu-common.h"
+ #include "qapi/error.h"
+ #include "qemu/main-loop.h"
+ #include "trace.h"
+diff --git a/util/qemu-coroutine-io.c b/util/qemu-coroutine-io.c
+index 7f5839cb769e..d791932d63b9 100644
+--- a/util/qemu-coroutine-io.c
++++ b/util/qemu-coroutine-io.c
+@@ -23,7 +23,6 @@
+  * THE SOFTWARE.
+  */
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/sockets.h"
+ #include "qemu/coroutine.h"
+ #include "qemu/iov.h"
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index e8f45a7d30a5..13b5b197f9ea 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -21,7 +21,6 @@
+ #include <linux/vm_sockets.h>
+ #endif /* CONFIG_AF_VSOCK */
+ 
+-#include "qemu-common.h"
+ #include "monitor/monitor.h"
+ #include "qapi/clone-visitor.h"
+ #include "qapi/error.h"
+diff --git a/util/qemu-thread-win32.c b/util/qemu-thread-win32.c
+index 52eb19f3511a..a2d5a6e8259f 100644
+--- a/util/qemu-thread-win32.c
++++ b/util/qemu-thread-win32.c
+@@ -12,7 +12,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu-common.h"
+ #include "qemu/thread.h"
+ #include "qemu/notify.h"
+ #include "qemu-thread-common.h"
+diff --git a/target/xtensa/import_core.sh b/target/xtensa/import_core.sh
+index df66d09393af..b4c15556c2c4 100755
+--- a/target/xtensa/import_core.sh
++++ b/target/xtensa/import_core.sh
+@@ -42,7 +42,6 @@ cat <<EOF > "${TARGET}.c"
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "exec/gdbstub.h"
+-#include "qemu-common.h"
+ #include "qemu/host-utils.h"
+ 
+ #include "core-$NAME/core-isa.h"
 -- 
 2.35.1.273.ge6ebfd0e8cbb

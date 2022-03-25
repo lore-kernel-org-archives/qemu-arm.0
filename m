@@ -1,134 +1,163 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp3525829lfb;
-        Thu, 24 Mar 2022 13:17:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypIfwL0RO/8BlKkae2x05pDBx7PphucQ9Ltmy7506ahhI8bvXSvgMM7PqxDPDvkX1BU9FF
-X-Received: by 2002:a17:907:2d06:b0:6e0:2ec:c7bd with SMTP id gs6-20020a1709072d0600b006e002ecc7bdmr8101868ejc.656.1648153069635;
-        Thu, 24 Mar 2022 13:17:49 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1648153069; cv=pass;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp3722740lfb;
+        Thu, 24 Mar 2022 19:17:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwGu8qOAtPeoU9+RtLMmmeUZ9L8gBFG78J0AlIcF+Y/v2Q5xbsJsLWU8IA1P/YJj7tN0Tzx
+X-Received: by 2002:a17:906:99d1:b0:6df:f83e:da21 with SMTP id s17-20020a17090699d100b006dff83eda21mr8911087ejn.462.1648174662122;
+        Thu, 24 Mar 2022 19:17:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1648174662; cv=pass;
         d=google.com; s=arc-20160816;
-        b=J+UQ3fQqPvQ26zCyL5snUa9DTXwpJCm105iZDomXh/RSgZNHuXTYAfqGrYmVfLAtGb
-         d4ROGBiWouV0CbXObM6OXyyekrHPnpy7h1fdIioILSuRiUGfd1H9GH1qeTGDwWAAXQsB
-         XHRBRRAxT5MRXp47jRPPc4L2rOoM8EEdIrmaRCNV9g5Y3xJDfwgu0SkvNBYRiAjoy+8I
-         wSHoMEjHHDlAMEZeD4uniUpvTQXHb9CLKIbQ9vrVClhZ3Pvm5qQbr3Q2SS7KogbFEsXu
-         u8t8P370cVvW2DHOdBXvj8K3uNR3XN1DRQabZvix2zUTVW6MSvxKxpgMmmOWXSnGRqeQ
-         QR5Q==
+        b=tuEh9relZ9vsV0zbsrOpAfHwycGF8co99H5kd6xqF3EZEQS49/cxUh13BPu2sR504L
+         B/henN6R2A5kTHkUDAFRZo90Xlf3uYKry0hpUNtHIllYxGe5wI0MPZppsXNHRFcA6kNQ
+         /EvovMJkv44+CMYIcUajTjsmcwg3D0wc7v4tFNj7Yb9p+yOhLn3/RDPAaWeOfoDB+uvw
+         kTqPVm4WFv6KKzyiDucNr5gLnQrtB5iHwxQdHUgCuX+zBnUOWSowptL8mFcQAKd3Kcka
+         20kXSXUUeDm5o3WD1AJ7IZAlzYFHjJgCmeidnINuXqZV5fXyCdoKVwmg5Gr91zp6beb9
+         5n5A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-disposition:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=lWe6esMvTDxcpELgUOaYb8647pSWKmvWH7iWh5IKyJc=;
-        b=s9stjaKr+Zred6qxRvf+1QZcTIxCYaSp3Vu5IUYVwpvrPso1XB88j/PFvrozVDn/sz
-         M6gCCDUuD/q3sEYeltTaX2+PVYTstaux7G7nQRGflstkkzbYakT+euCRBvFA2RBXp135
-         cGrUPSmxcipRiigbAfx0V3cpe5JaReuLCftRMk8mTyumQx26DZvmhcsnZVquqXjwMeqe
-         HndOjIlITVxHsQX4K6+BSTLo6DFg7KB90xTBxZIbGr09zKs9BJuGStgcuZCh658ltb8f
-         YwCUW9iF07FQ4pq4fpu26sTW7ZZ5C+TyJOvIsSU14BBcUP4QNDUj2eAyNn7uWUEF3Rye
-         UFNA==
+        h=mime-version:msip_labels:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=4yU1VCflOtwEwOPQYPh77H/s02osESAoFb836uftNh0=;
+        b=ypXvU4tH34JTHolIP1piHYAFfrOeraoKyYmA0x8oMSnwZuHilGWJVhqjk8xr/ttZKN
+         f0xN4BdE4hrPtYFhB6llt7QB6s5UypHh1ytUFxdbwkgWItCBdvrtlF5hQ+MQT7hSiU9O
+         EVoh1XEEUDuqcNiXQ1YJfNHlP7YLtMOunPgxVoORLrkMoHfS8tqD89tQjqv/dPA0Wrvf
+         InVrRKfVCjS+Mld8/wINjZFSI9EEVJfigE0oRtwK6EIUjOHj/dC8nJqyyt2xyWE+fULK
+         V0PA7Xqvnl6v8qokWI3b185dzWPioQHtRp9i+YzRsso+wVn2u3WVnQxhoHTb2zGEKhl0
+         C7rw==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=qSq10Vuu;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e8a::700 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Return-Path: <aaron@os.amperecomputing.com>
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (mail-bn7nam10on20700.outbound.protection.outlook.com. [2a01:111:f400:7e8a::700])
-        by mx.google.com with ESMTPS id y11-20020a056402440b00b00418c2b5beb6si923915eda.408.2022.03.24.13.17.49
+       dkim=pass header.i=@microsoft.com header.s=selector2 header.b=Eblj4hBw;
+       arc=pass (i=1 spf=pass spfdomain=microsoft.com dkim=pass dkdomain=microsoft.com dmarc=pass fromdomain=microsoft.com);
+       spf=pass (google.com: domain of robhenry@microsoft.com designates 2a01:111:f403:c111:: as permitted sender) smtp.mailfrom=robhenry@microsoft.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=microsoft.com
+Return-Path: <robhenry@microsoft.com>
+Received: from na01-obe.outbound.protection.outlook.com (mail-cusazlp170100000.outbound.protection.outlook.com. [2a01:111:f403:c111::])
+        by mx.google.com with ESMTPS id s2-20020a170906a18200b006df76385ca1si1104579ejy.321.2022.03.24.19.17.41
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 24 Mar 2022 13:17:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e8a::700 as permitted sender) client-ip=2a01:111:f400:7e8a::700;
+        Thu, 24 Mar 2022 19:17:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of robhenry@microsoft.com designates 2a01:111:f403:c111:: as permitted sender) client-ip=2a01:111:f403:c111::;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=qSq10Vuu;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e8a::700 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+       dkim=pass header.i=@microsoft.com header.s=selector2 header.b=Eblj4hBw;
+       arc=pass (i=1 spf=pass spfdomain=microsoft.com dkim=pass dkdomain=microsoft.com dmarc=pass fromdomain=microsoft.com);
+       spf=pass (google.com: domain of robhenry@microsoft.com designates 2a01:111:f403:c111:: as permitted sender) smtp.mailfrom=robhenry@microsoft.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=microsoft.com
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HW+pvxoJBHy6h0Jv9PWe49POCrxjuJtB+ShDpdbnWUEeDY9JwtkviCh88rmapE2DLuEpnT/8DPqQZ549gpQR32udgz2E6OvoKHMce2nAKT2FpPUhvrkBGwYvJtgQ2LiRT+AUEN0feVdNtQqjZtQbvhBHBXTwUah5auJh8Giw6K3Y7YTKgcHkOilFNc4p+5s6nhEnXSXHVrN0c6eujfSXFGGnlGH59etgSQOkgC9dsH1XXrLE6tpwoc579CDpb1Qc+jnITcwhFuJFuXgkcH8JFRPO+6EJePNZNfC9wWLJKkk/y6zqqHAIbGzyjiFi4w17SUnpL3kINOu+/kW4pdL7Uw==
+ b=anku7QmcLY73/3FDhD6Dp9s18t2GP/XJZQowBAfywh0HuX8Ecrsq88cgC+FjZjyf21CWYkkVFC13SCRbHJTJlxQjvh1h2AnEz7Hooe8jSRFvj1dQq5yWOw3EMqiKMkqPTXCr63V1KeOUAJts0QI2enxYegzNBPAUlx4dmikVqt2zye/mgQFVQTxpmhZFc0wyUoUVtRxBowtoutYp24jXytARDINiT350HtJTzviCaqcc6I8rFgf8xbgbd+Pzxw+hJXigggfbcgKOXl/LYtsgzmrnjAibDcl8hqkISqaZFLYXhBY0Vlj11u+wJL/6osbJC4pcveSUDiw5+Rr364ywnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lWe6esMvTDxcpELgUOaYb8647pSWKmvWH7iWh5IKyJc=;
- b=M7P1IgOVA05aikVQ49lSpDNHjful7y7ExHHyMBHD7//9xOapNl4dxv/spu7ATWuRP1pBr9/4AgKvItEv0Pce4VcDHmADWqXvKPg7mO8aKMx/ekFVGOvpxCUzEZs1nf2uYJivOVHCcg8nyECpACFjWp7KV+uLtfzxAUveVp31J1BmUIqkeSiKGaNe/P4KIYfdSAn2TiKNKMl8NbwQPMwFArsPWvZyuxV24OA0meM5RDtsu4hhdAlcD6Nn8+4wPo9BzzHc4ugq2WGX0+x2IsSekUIQFgsRQW59bVKWyis+xE1RX3wkbbLaN77F9pfB7ND2ZKOWBsmdS6hn+I6CmtBLiw==
+ bh=4yU1VCflOtwEwOPQYPh77H/s02osESAoFb836uftNh0=;
+ b=HdhqnRFlfsiDwz7Hl4WYScaDfroYsDnUCmh6ET/g0cSLcTBYdqVZ0fd3qkRsMMUxB+A6s1/yMp1EvduCRCNUpmAjSc2MlK6xLOmeJ5YeHIq9Y7vDRe2fkys+EwMN+rQGZjkyKnE+1Y1TZj68jOmzTKFT89ZH4B3Se0r/AaXntMu/iDIH6vMUE3TrsiBLxQzAuJxBzTGxyeuBXV5W8KcP4Pf+NrfXHy1oIWwpyCDeO680NTs+GqkPYoBdnetE2KQ9XnZlfW4uzJxEA03A7cUgxYij1agFl2JUclf+vhy6YdTuYG7yND078jRaBWyf1HONBUNL+Vy2UX7IHdujLDv+Yw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
+ smtp.mailfrom=microsoft.com; dmarc=pass action=none
+ header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lWe6esMvTDxcpELgUOaYb8647pSWKmvWH7iWh5IKyJc=;
- b=qSq10VuukfmMaphbLqr9YAywSIfCoW/rt/hNVoqcvzJkZvtprN7lPEtKouM/74WqaLPfJVP5qnUHQ7uR1tV5u5/6XJeY5Az3L6A7uGvmCBOM/nT9VibIXGaBOelFWCWILgErV64tdnalrOyNFDaiNEELT1XueySLMT0YkQIjIdk=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
-Received: from CH0PR01MB7124.prod.exchangelabs.com (2603:10b6:610:f3::20) by
- DM6PR01MB5545.prod.exchangelabs.com (2603:10b6:5:17c::23) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5081.16; Thu, 24 Mar 2022 20:17:46 +0000
-Received: from CH0PR01MB7124.prod.exchangelabs.com
- ([fe80::fc95:d5f4:a26a:423d]) by CH0PR01MB7124.prod.exchangelabs.com
- ([fe80::fc95:d5f4:a26a:423d%8]) with mapi id 15.20.5102.017; Thu, 24 Mar 2022
- 20:17:46 +0000
-Date: Thu, 24 Mar 2022 16:17:33 -0400
-From: Aaron Lindsay <aaron@os.amperecomputing.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	richard.henderson@linaro.org, robhenry@microsoft.com
-Subject: Plugins Not Reporting AArch64 SVE Memory Operations
-Message-ID: <YjzR3erB5ZhkAI2A@strawberry.localdomain>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-ClientProxiedBy: CH0PR03CA0224.namprd03.prod.outlook.com
- (2603:10b6:610:e7::19) To CH0PR01MB7124.prod.exchangelabs.com
- (2603:10b6:610:f3::20)
-Return-Path: aaron@os.amperecomputing.com
+ bh=4yU1VCflOtwEwOPQYPh77H/s02osESAoFb836uftNh0=;
+ b=Eblj4hBww2nJEKf6U49L3wZ9fQQcvE5HFe072aYkeOGcF3whos0WzJMiCG4CmWENKERyWjxU3Y1d46Q+tsYIR8CtQyuvrrb8aLX5G7bDYU/5S9euCoR5TuD0a6CCcBEIuW8ZXXIrt6wq5BG4+gZXAHHbuCku4zoiqlZVet1e2Ic=
+Received: from BY5PR21MB1426.namprd21.prod.outlook.com (2603:10b6:a03:232::23)
+ by BL0PR2101MB1123.namprd21.prod.outlook.com (2603:10b6:207:30::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5123.4; Fri, 25 Mar
+ 2022 02:17:38 +0000
+Received: from BY5PR21MB1426.namprd21.prod.outlook.com
+ ([fe80::4c83:287f:f96c:43c8]) by BY5PR21MB1426.namprd21.prod.outlook.com
+ ([fe80::4c83:287f:f96c:43c8%7]) with mapi id 15.20.5123.010; Fri, 25 Mar 2022
+ 02:17:38 +0000
+From: Robert Henry <robhenry@microsoft.com>
+To: Aaron Lindsay <aaron@os.amperecomputing.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+CC: =?iso-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>
+Subject: Re: [EXTERNAL] Plugins Not Reporting AArch64 SVE Memory Operations
+Thread-Topic: [EXTERNAL] Plugins Not Reporting AArch64 SVE Memory Operations
+Thread-Index: AQHYP7xDf6/sFcMojUCJFmbHYBiEHazPXXV8
+Date: Fri, 25 Mar 2022 02:17:38 +0000
+Message-ID:
+ <BY5PR21MB1426A0FBD14A5A04D1E22DA0D61A9@BY5PR21MB1426.namprd21.prod.outlook.com>
+References: <YjzR3erB5ZhkAI2A@strawberry.localdomain>
+In-Reply-To: <YjzR3erB5ZhkAI2A@strawberry.localdomain>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+msip_labels:
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2022-03-25T02:17:37.826Z;MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ContentBits=0;MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Method=Standard;
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=microsoft.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: b1b2c0e9-056d-4ea2-27c9-08da0e05a259
+x-ms-traffictypediagnostic: BL0PR2101MB1123:EE_
+x-ms-exchange-atpmessageproperties: SA|SL
+x-microsoft-antispam-prvs:
+ <BL0PR2101MB112384904FCC8B058C3A68DBD61A9@BL0PR2101MB1123.namprd21.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:
+ mOUR9IfGgYHL4apaaVRDBJetvQWS91gRCkkYmIN8pwHP0K/ftJXOomjEIyUSFbsPNz3wb44ZN9uHiZ+kbkp5j2qHOxhQLb+3kOmdzZGAT1YP5mKgD9GSwDFk+d5lKdfhgX0pDtWA2F8t92GtGiU6rU+2+auqi64zep992si7XAsShwJR+t8Z9A6qGIHfJ0YgmBBHJlBbc8+OqpUQZOrnZdKlAetpImoq3H6f2+DuxyDMXo4SWe8RfCyv2SDiQWN5YT+uSqO7OHRYK14PLmNiDQIEibI08oDAf07WhjwWRP591B2cVI4DK62i9f685MaVvB3Z1X0oz4wZmT1Owdj9c46voAAAXa9ux2yzuq2mlOUAQVsSMGI2bKbZpHX57P5FY981dQgAtbwG0C3D2o+Mfo1Z9y0GoVirwCyw1AIrhPQ11Inj+NDMGZHhFmSs/Kh/rbDmStZ4PRNsfezqAlf3BviEEosNQj1rBP2qzIALlrq31C5aoJRUu2WDf2ZVuMtDLslkSD0Fi2YNIxShmzjdzNC7rsbPKNh/aXBwDpRh3u8gnlqPAcKyLybSjfO+ESY5DFdkhl1lpbv8Nkw0MeAE50GgNFal+/WLEd/ULREMcDzA/lvj51PVuLKQVzgJ6xjR01gQciqg1WY5JiNy9asjZ7Sfra1RDyxLsSukE8/KE/EbO9B9PKCRd/bwCvS6fZzZutAjhkkPctJjrIFUQKAJCyWwG88CJJMWuPnKPNCILuO23kqIcZkzVICe8GTdk8BGjYVksE5v5q+QTSqjpRlWs5WGeceqPJIBSNswYwJ+MOEv7Xs7CochBe3oymZ24Ab36xdbXz3SvscWmPxgN6L+jA==
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY5PR21MB1426.namprd21.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(451199009)(66476007)(55016003)(83380400001)(71200400001)(19627405001)(66556008)(122000001)(76116006)(966005)(316002)(54906003)(66946007)(4326008)(64756008)(8676002)(8990500004)(38070700005)(110136005)(91956017)(82960400001)(86362001)(186003)(8936002)(9686003)(82950400001)(10290500003)(5660300002)(33656002)(66574015)(166002)(66446008)(52536014)(508600001)(53546011)(38100700002)(6506007)(2906002)(26005)(7696005);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ =?iso-8859-1?Q?Swb0wuVVcaHy1o4CX0VynC+TpusL9Jm5od5Dl16m9S/PfkS8IAs59bcV2o?=
+ =?iso-8859-1?Q?fxgw/BldRcB8tPzO/cd6oskUJaAll6zd7r3IZM4q3OCf5MrlQTEMbDzxv7?=
+ =?iso-8859-1?Q?Z64sdrXnYR11A8wOtWvQD2vh/6sTMVcRIG9JG1DAPEfGOh+WExaRAupr3A?=
+ =?iso-8859-1?Q?tL/hhMAqRawv3ofqXXEmCf0D8OxB+X+uiXDHonOEvVsoWHBM4l3iC5L70A?=
+ =?iso-8859-1?Q?Krt1Hyqd/ekcW+4phIplcu5EZqN6oEPCGF8BmZGYvWtKzjK7R6JDr/nf87?=
+ =?iso-8859-1?Q?gmNMLVvfgw8D6NAlYKAch4kfuxeHGmeP4Uaz5076x0cezaVsBQUReYgtr0?=
+ =?iso-8859-1?Q?4/6ZuumDUc8Li1de4AuA3vSzA7bco0zc1Z8gJ87Tn0mig3RHo9HBgCwm0q?=
+ =?iso-8859-1?Q?ytmwQjeemPDedwZZqkL9RIZY3eXObcNzvvkw/5i5AwAf/NAEWGYrEGuPy2?=
+ =?iso-8859-1?Q?F/dw4uLMnzTVqtN6pgDQzGTjKbI6sTNKeBE+oGdkCptQxqqY9YaWs6ImGI?=
+ =?iso-8859-1?Q?fDcFZfYk1mt6s6HTnQNjCP83iQcic1aZ5atqLnEPjNdbOGhSPBVFFjuZK5?=
+ =?iso-8859-1?Q?UGPZC8qiFKu3HZqJk1Md5PTlJEa7fY59bYrE8pLvC/AOTDnFneviyWFXFt?=
+ =?iso-8859-1?Q?JTwcvXOkrtz6xbjqVlHTnN3cAKlFAEJg2qTDQJ/+ZraGZnjatOCzZHJizV?=
+ =?iso-8859-1?Q?BTUFY0uCxnTWWjqYNEsnj8elyaG0uy5De+MlIl6ws2UEilp9ErxXiVxHA/?=
+ =?iso-8859-1?Q?xTIDREAmwvSEZL/lUt1StU3EBc7z0Zmq571wy0yqbrpTqy1hc6co0Uwh3t?=
+ =?iso-8859-1?Q?vscB5kueeNusNO9BWc0JhHb/9DQ5IRlzNNx/F9VXqJWV5WRAA9fUzo11RK?=
+ =?iso-8859-1?Q?vOrS0lzys0520kGXu4OPq9ZF2ymKoywT1I0LmUdxCPPZY+uPSF0QZ4p8xk?=
+ =?iso-8859-1?Q?QpHJZ/wR3UpyOHjljIwKFDQ9Mfh07BrqWMrOW0JCWuP510B0bn09FGRxHt?=
+ =?iso-8859-1?Q?iTuRjk8IcwSVvnt8hKFInacg6EkpsEREpJpDOSwjQmPw3t3suW5QDPTAOP?=
+ =?iso-8859-1?Q?c1mvKYN0FF28DYP6pZ7D36t+GI1h2hR9y45KvMhQUYBXtGkh7Ihdtof3y5?=
+ =?iso-8859-1?Q?X63M9C1qNtCVEEgGtE0QRATBG6y0t8netV1RYgYOeJXt7uU/2XXGVeZu6g?=
+ =?iso-8859-1?Q?aQnkxJLZ/RJYTytbNiZdUu3L0/EIIrTGa9RDjJ2KMLZGbp/fkZVA1Ue/qA?=
+ =?iso-8859-1?Q?DhECHt3GB5c4iVMatx/drAkrGryk6KtXXiAVY84LjwlWLB3OVBFqINNTbO?=
+ =?iso-8859-1?Q?kXyttQ/vlaOAqWTzg2jCQcUl27Y10TthjlmzNgFuqoSIlS8hMyec6Lr4Gy?=
+ =?iso-8859-1?Q?ZvZU9DuMT7wSpjC0s1me0cw3ZIigNUBIuXQyeHWMLppx4uaGLrF+wqa8Sl?=
+ =?iso-8859-1?Q?8cWg8h4OmC6AMzwb9u7yCnpSZxxSTkXOYcSn+nVdEVOCA82Xy+5QSdGp2k?=
+ =?iso-8859-1?Q?rT5y/DblMcJFe7fLJd853D9VZDx6+aXZEyYoGPTzxotXMw7+P+Vwau2u6U?=
+ =?iso-8859-1?Q?9/+YGiFiOiKYxN7ev52I8kui2w/OicGCHBq3tO4NPUjI19blSEwsi4/rHf?=
+ =?iso-8859-1?Q?ilSTchJhJg7N2r27H9cYcLBwnT1sif7nrttAsP/d0jUlDlV46gQTBFADNH?=
+ =?iso-8859-1?Q?a/KKQgdtii9/G9/eNrax95qOh2WmLK7ug2UmoQ9XGhwbVYz2/vWFetMb8l?=
+ =?iso-8859-1?Q?3VxsnhisTIJpIc2TeJ5mPgqHfXOVyLDoA94cKRil26A4M4pDtHrI0vSXH1?=
+ =?iso-8859-1?Q?QwZF8xPEpQ=3D=3D?=
+Content-Type: multipart/alternative;
+	boundary="_000_BY5PR21MB1426A0FBD14A5A04D1E22DA0D61A9BY5PR21MB1426namp_"
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 05dbf9cb-5718-4da1-d253-08da0dd35c6f
-X-MS-TrafficTypeDiagnostic: DM6PR01MB5545:EE_
-X-Microsoft-Antispam-PRVS:
-	<DM6PR01MB5545D0C7594BD067FBA0FACC8A199@DM6PR01MB5545.prod.exchangelabs.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info:
-	rHTUNI14ePcdQ2bVOq6/8W5+RO9YkWSjJPHk5suw9oc6RCwy+2/4eKzIJJm5TemCKnjObo+xfFhsGsJO1FfJhqE6zltHHSR7j8xJUiTZ5nRRjhsnxTVh+k4QYNc4+LMCnqNgsGKsXF1yXNp845eV4wpKv9uZnrZpZvJnuKVEDvkJ/EJjyFvzuicA/cnnswR4YOTWWckjmkeeym7hVYuaGQ/ABwACHnfl37p6AWCYvtRlZJ4mrwJVLDplJpkkR61LiueBy0lt5hS048u71ZKBvCNdzOjjkUali8iYEFmFWome8X+hp50040ZSF66QilpZs89I6ZtoNbbufY90lFeHUl4/pxdbe6y4JKY/yD1fLYoF2yJzDk0vHpm8MThMswJ+keN0zNOQy11ItIUIEcDxmidaffYUeYlbVq0moxFC228KBYnDtJoJDH4n850K7mOMEGzlKHKamH/DIkwAOtTxvdc9n60cuXUUI7fclDeWSESNIapA2DkYkATBBOTYRUK4TlYda3Veq2ZnfC6C2KlGIGGC3O+WJL7ZUOndF18FlXQdfMVgEArHg9CsWfgDOUz10vHRcBywbpxmce2kCuu5TDhqLKHpGcbEwcRDUcN11HaoYs38hJ8MziaAyek9pS3xWIOL+xv5RnUrJ6ZEvNx1MlS1HLwXGJOUsdnW9rT+M+xoA2cw8+uld28hGm5K9y1cN980rRQEJxzE44CIpS9vGmEIN3kgAmvzVPCa5xzdeew=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR01MB7124.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(26005)(2906002)(9686003)(5660300002)(186003)(6512007)(8936002)(66556008)(6666004)(38100700002)(966005)(316002)(86362001)(6486002)(508600001)(8676002)(6506007)(4326008)(66476007)(83380400001)(66946007);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?us-ascii?Q?zpQ5dawV5JP1T+VhHGu7Qva685sBvmTizRIH03LA4J1ZabGpgovtO3XF66uM?=
- =?us-ascii?Q?lsYzr/K2wZLSJuTpT7tPbjHbjb1nbelwFMl46o9fW8rPWH7xkrDrLgi8GAbC?=
- =?us-ascii?Q?8c6i1Oxx7c5piDwA5pYDiJblmSuL+1fwgyTBvUWieG4pbhhbaFlGJZznyWkY?=
- =?us-ascii?Q?TQ1DoOI+p5L562nYNPYV7Xxc3fIyNWnb5iZwDU1f9Bvk7Xa2mEJqN2IaPnPI?=
- =?us-ascii?Q?54joqDO7fyJrizk+rpBMTdKsXbI2i9PFxTWJbd+EGjoaF/6K6pu7O7nvHCgF?=
- =?us-ascii?Q?6q3Xf2zaYjGkRGi9lyiwg3dMAR95dBBm86qNtNnbdl9Zg0hIk91axG8xMWPn?=
- =?us-ascii?Q?zLMZbUtHbkkCjxogTtxRiX1LyJSy1NfjrzioiJb/XNtOU+g4DY3X4lih0+WH?=
- =?us-ascii?Q?mm8G8EfYw61KO+FcGwDQSeeEersA8cnG/nKldwUT17RRQxY3dBB61j8cQgqq?=
- =?us-ascii?Q?MNiXUgaw556vopSoclRXEcOBUDicC2Z/C16Hd3/r57zH83sDh9kvwC9kbYqU?=
- =?us-ascii?Q?oAK/fK4qqMefayd6u68OrHpVHRvZBBJGdRV1J3/Kw+l+8vPRZCPsOhnFxDHM?=
- =?us-ascii?Q?f++50W2M/1fF8xqW7yeIixUVxZtTmZbNYAXPzLxEp6tpWprUCOeeeEmTxT1J?=
- =?us-ascii?Q?17SDrmKeXTqdanv2schXEOvFMo1zadtyXXOiAwvOYn3pDvxdxi8rfc5WWIZh?=
- =?us-ascii?Q?LkouBAycndyQ9TAcPl7YLQyzXg1Lt0kn+PLCZe4ECF4RFSXFi7lC7oFPgxuF?=
- =?us-ascii?Q?gncVANE0TehKZ5+5L9N3xiG5lwd829A7ymWVqrGoMbxpTS1jqiFDFoZ87oJ7?=
- =?us-ascii?Q?rxtMaObK9LectAD3jgiDskRZMlPrqdeUT0lkB5FtMVKrNd/Qg9e/1TNU6TKF?=
- =?us-ascii?Q?mok8D+B49RjaqMK331zFOI7PGymzevWdDJl9y9nEh3BWTlSmnpnNL4lXrDyi?=
- =?us-ascii?Q?GakMzyR0PQV4Z+ifZaRwjQ1fJ2LDWbRYLMe++PZCJCZ4IXnab2Zhzt67pl42?=
- =?us-ascii?Q?iBwDIvpISxY4bJIrcW9lJVzREjIbTW67fKSc/HP8DaN0WjluLcI/fSmwi1lN?=
- =?us-ascii?Q?WtSxYZaxVmBFxYqS+sRezR7+rXknHaUr72HFxBj9+b0Ky3HUNMOgndHN3n5c?=
- =?us-ascii?Q?wU73gW27Km57gmC3//dTkMailP3N2WOx487w9Zngho6IAu56tNZydju3GP+T?=
- =?us-ascii?Q?1vtRYE0+f6bTv4I07vj/8Scw3WDvm9GjUtk2DM3E4IGI/YTWh7vpMGNxmJA+?=
- =?us-ascii?Q?oOJgRy4BQg5rHGo6/zBjtvBN7SHnC2VKMgpmIx3ymUQxpBS3fPYT9wDNc/gY?=
- =?us-ascii?Q?IYPYQ/r0oEyOWLybQfnjvaGSiyDt46MV8L0mjqLuIoT2i4uV6GaEzYtMC1t8?=
- =?us-ascii?Q?KwXd3N25gzqKHdmXWVMhGYhfvVaWEllztRl8HhiLJILsGEs3b7j8j25gNCUK?=
- =?us-ascii?Q?d0U7EHXbpKGSYYlLYaEPK8y3wiufw9sJ9hmzGB7FGmOltCrTLLBXKu7NhUbG?=
- =?us-ascii?Q?DfL/DjuqMyQBWV4=3D?=
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 05dbf9cb-5718-4da1-d253-08da0dd35c6f
-X-MS-Exchange-CrossTenant-AuthSource: CH0PR01MB7124.prod.exchangelabs.com
+X-OriginatorOrg: microsoft.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Mar 2022 20:17:46.8313
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR21MB1426.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b1b2c0e9-056d-4ea2-27c9-08da0e05a259
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Mar 2022 02:17:38.6524
  (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: SfaF6AIkvOu0dsvWFLbmWhJFJn0gv6PJN/mnwfsbvFsLhzYRA0ywaI3nHOt69xm0TKjNwfcejpAdQRq8EeOa/lf7eLaCUlG8OuX6TEMY79NHZ1A7FykfT6Nz8eJb7o59
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB5545
-X-TUID: WX+URnDoFHif
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: rcaGlNg1GryjeoXSw0321nNoIAw08ee50y9Wu4GhNh5gXfX2oqZzqZcU0OQ0NUg4eemeyY3MwChmjyAIuUA0Sw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR2101MB1123
+X-TUID: T6VRQNDI1HrO
+
+--_000_BY5PR21MB1426A0FBD14A5A04D1E22DA0D61A9BY5PR21MB1426namp_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+I have not done anything on this front, alas.
+________________________________
+From: Aaron Lindsay <aaron@os.amperecomputing.com>
+Sent: Thursday, March 24, 2022 1:17 PM
+To: qemu-devel@nongnu.org <qemu-devel@nongnu.org>; qemu-arm@nongnu.org <qem=
+u-arm@nongnu.org>
+Cc: Alex Benn=E9e <alex.bennee@linaro.org>; richard.henderson@linaro.org <r=
+ichard.henderson@linaro.org>; Robert Henry <robhenry@microsoft.com>
+Subject: [EXTERNAL] Plugins Not Reporting AArch64 SVE Memory Operations
 
 Hi folks,
 
@@ -144,13 +173,17 @@ escaped my searching)?
 In the previous discussion [1], Richard raised some interesting
 questions:
 
-> The plugin interface needs extension for this.  How should I signal that 256
-> consecutive byte loads have occurred?  How should I signal that the controlling
-> predicate was not all true, so only 250 of those 256 were actually active?  How
+> The plugin interface needs extension for this.  How should I signal that =
+256
+> consecutive byte loads have occurred?  How should I signal that the contr=
+olling
+> predicate was not all true, so only 250 of those 256 were actually active=
+?  How
 > should I signal 59 non-consecutive (gather) loads have occurred?
-> 
+>
 > If the answer is simply that you want 256 or 250 or 59 plugin callbacks
-> respectively, then we might be able to force the memory operations into the
+> respectively, then we might be able to force the memory operations into t=
+he
 > slow path, and hook the operation there.  As if it were an i/o operation.
 
 My initial reaction is that simply sending individual callbacks for each
@@ -167,4 +200,107 @@ Thanks!
 
 -Aaron
 
-[1] https://lists.nongnu.org/archive/html/qemu-discuss/2020-12/msg00015.html
+[1] https://nam06.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flis=
+ts.nongnu.org%2Farchive%2Fhtml%2Fqemu-discuss%2F2020-12%2Fmsg00015.html&amp=
+;data=3D04%7C01%7Crobhenry%40microsoft.com%7C4fbf9f5adeca457a475e08da0dd35d=
+c4%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637837498833440416%7CUnknow=
+n%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI=
+6Mn0%3D%7C3000&amp;sdata=3DbTHMSkvOvvX7o7seFIbf7gDk5V%2BMBhC6YytOorHbNts%3D=
+&amp;reserved=3D0
+
+--_000_BY5PR21MB1426A0FBD14A5A04D1E22DA0D61A9BY5PR21MB1426namp_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
+: 12pt; color: rgb(0, 0, 0);">
+I have not done anything on this front, alas.</div>
+<div id=3D"appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
+<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
+yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Aaron Lindsay &lt;aar=
+on@os.amperecomputing.com&gt;<br>
+<b>Sent:</b> Thursday, March 24, 2022 1:17 PM<br>
+<b>To:</b> qemu-devel@nongnu.org &lt;qemu-devel@nongnu.org&gt;; qemu-arm@no=
+ngnu.org &lt;qemu-arm@nongnu.org&gt;<br>
+<b>Cc:</b> Alex Benn=E9e &lt;alex.bennee@linaro.org&gt;; richard.henderson@=
+linaro.org &lt;richard.henderson@linaro.org&gt;; Robert Henry &lt;robhenry@=
+microsoft.com&gt;<br>
+<b>Subject:</b> [EXTERNAL] Plugins Not Reporting AArch64 SVE Memory Operati=
+ons</font>
+<div>&nbsp;</div>
+</div>
+<div class=3D"BodyFragment"><font size=3D"2"><span style=3D"font-size:11pt;=
+">
+<div class=3D"PlainText">Hi folks,<br>
+<br>
+I see there has been some previous discussion [1] about 1.5 years ago<br>
+around the fact that AArch64 SVE instructions do not emit any memory<br>
+operations via the plugin interface, as one might expect them to.<br>
+<br>
+I am interested in being able to more accurately trace the memory<br>
+operations of SVE instructions using the plugin interface - has there<br>
+been any further discussion or work on this topic off-list (or that<br>
+escaped my searching)?<br>
+<br>
+In the previous discussion [1], Richard raised some interesting<br>
+questions:<br>
+<br>
+&gt; The plugin interface needs extension for this.&nbsp; How should I sign=
+al that 256<br>
+&gt; consecutive byte loads have occurred?&nbsp; How should I signal that t=
+he controlling<br>
+&gt; predicate was not all true, so only 250 of those 256 were actually act=
+ive?&nbsp; How<br>
+&gt; should I signal 59 non-consecutive (gather) loads have occurred?<br>
+&gt; <br>
+&gt; If the answer is simply that you want 256 or 250 or 59 plugin callback=
+s<br>
+&gt; respectively, then we might be able to force the memory operations int=
+o the<br>
+&gt; slow path, and hook the operation there.&nbsp; As if it were an i/o op=
+eration.<br>
+<br>
+My initial reaction is that simply sending individual callbacks for each<br=
+>
+access (only the ones which were active, in the case of predication)<br>
+seems to fit reasonably well with the existing plugin interface. For<br>
+instance, I think we already receive two callbacks for each AArch64<br>
+`LDP` instruction, right?<br>
+<br>
+If this is an agreeable solution that wouldn't take too much effort to<br>
+implement (and no one else is doing it), would someone mind pointing me<br>
+in the right direction to get started?<br>
+<br>
+Thanks!<br>
+<br>
+-Aaron<br>
+<br>
+[1] <a href=3D"https://nam06.safelinks.protection.outlook.com/?url=3Dhttps%=
+3A%2F%2Flists.nongnu.org%2Farchive%2Fhtml%2Fqemu-discuss%2F2020-12%2Fmsg000=
+15.html&amp;amp;data=3D04%7C01%7Crobhenry%40microsoft.com%7C4fbf9f5adeca457=
+a475e08da0dd35dc4%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637837498833=
+440416%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6=
+Ik1haWwiLCJXVCI6Mn0%3D%7C3000&amp;amp;sdata=3DbTHMSkvOvvX7o7seFIbf7gDk5V%2B=
+MBhC6YytOorHbNts%3D&amp;amp;reserved=3D0">
+https://nam06.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flists.n=
+ongnu.org%2Farchive%2Fhtml%2Fqemu-discuss%2F2020-12%2Fmsg00015.html&amp;amp=
+;data=3D04%7C01%7Crobhenry%40microsoft.com%7C4fbf9f5adeca457a475e08da0dd35d=
+c4%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637837498833440416%7CUnknow=
+n%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI=
+6Mn0%3D%7C3000&amp;amp;sdata=3DbTHMSkvOvvX7o7seFIbf7gDk5V%2BMBhC6YytOorHbNt=
+s%3D&amp;amp;reserved=3D0</a><br>
+</div>
+</span></font></div>
+</body>
+</html>
+
+--_000_BY5PR21MB1426A0FBD14A5A04D1E22DA0D61A9BY5PR21MB1426namp_--

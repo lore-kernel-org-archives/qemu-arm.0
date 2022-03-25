@@ -1,306 +1,188 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp3722740lfb;
-        Thu, 24 Mar 2022 19:17:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwGu8qOAtPeoU9+RtLMmmeUZ9L8gBFG78J0AlIcF+Y/v2Q5xbsJsLWU8IA1P/YJj7tN0Tzx
-X-Received: by 2002:a17:906:99d1:b0:6df:f83e:da21 with SMTP id s17-20020a17090699d100b006dff83eda21mr8911087ejn.462.1648174662122;
-        Thu, 24 Mar 2022 19:17:42 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1648174662; cv=pass;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp3890505lfb;
+        Fri, 25 Mar 2022 01:18:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzeAC9dGLKa5w09hVKVvON8ukFrr4N/gph40sGAfIY3G9TAIBsCgjuM55Pc61OCd6hJPu3T
+X-Received: by 2002:a05:622a:1802:b0:2e1:abdb:e522 with SMTP id t2-20020a05622a180200b002e1abdbe522mr8180168qtc.144.1648196291565;
+        Fri, 25 Mar 2022 01:18:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648196291; cv=none;
         d=google.com; s=arc-20160816;
-        b=tuEh9relZ9vsV0zbsrOpAfHwycGF8co99H5kd6xqF3EZEQS49/cxUh13BPu2sR504L
-         B/henN6R2A5kTHkUDAFRZo90Xlf3uYKry0hpUNtHIllYxGe5wI0MPZppsXNHRFcA6kNQ
-         /EvovMJkv44+CMYIcUajTjsmcwg3D0wc7v4tFNj7Yb9p+yOhLn3/RDPAaWeOfoDB+uvw
-         kTqPVm4WFv6KKzyiDucNr5gLnQrtB5iHwxQdHUgCuX+zBnUOWSowptL8mFcQAKd3Kcka
-         20kXSXUUeDm5o3WD1AJ7IZAlzYFHjJgCmeidnINuXqZV5fXyCdoKVwmg5Gr91zp6beb9
-         5n5A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:msip_labels:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=4yU1VCflOtwEwOPQYPh77H/s02osESAoFb836uftNh0=;
-        b=ypXvU4tH34JTHolIP1piHYAFfrOeraoKyYmA0x8oMSnwZuHilGWJVhqjk8xr/ttZKN
-         f0xN4BdE4hrPtYFhB6llt7QB6s5UypHh1ytUFxdbwkgWItCBdvrtlF5hQ+MQT7hSiU9O
-         EVoh1XEEUDuqcNiXQ1YJfNHlP7YLtMOunPgxVoORLrkMoHfS8tqD89tQjqv/dPA0Wrvf
-         InVrRKfVCjS+Mld8/wINjZFSI9EEVJfigE0oRtwK6EIUjOHj/dC8nJqyyt2xyWE+fULK
-         V0PA7Xqvnl6v8qokWI3b185dzWPioQHtRp9i+YzRsso+wVn2u3WVnQxhoHTb2zGEKhl0
-         C7rw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@microsoft.com header.s=selector2 header.b=Eblj4hBw;
-       arc=pass (i=1 spf=pass spfdomain=microsoft.com dkim=pass dkdomain=microsoft.com dmarc=pass fromdomain=microsoft.com);
-       spf=pass (google.com: domain of robhenry@microsoft.com designates 2a01:111:f403:c111:: as permitted sender) smtp.mailfrom=robhenry@microsoft.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=microsoft.com
-Return-Path: <robhenry@microsoft.com>
-Received: from na01-obe.outbound.protection.outlook.com (mail-cusazlp170100000.outbound.protection.outlook.com. [2a01:111:f403:c111::])
-        by mx.google.com with ESMTPS id s2-20020a170906a18200b006df76385ca1si1104579ejy.321.2022.03.24.19.17.41
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 24 Mar 2022 19:17:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of robhenry@microsoft.com designates 2a01:111:f403:c111:: as permitted sender) client-ip=2a01:111:f403:c111::;
+        b=u69YYG/z+y24n39UI+Oj7tBeOiMXAn/W/LEG90VxV4FHEt+ed7gAWD2y5yY8xt1F4q
+         ch70rmBbQYxDR6hZO70r1g+8qiJmqTeyDwi/PIIwIa5iuin3vd2RvURM6jCpqTWDXyv/
+         oceoEAa+TR78szge1W0Bg0BXswsPVaYnwTOeK2CNd9FCxxgFZcEBJK0u2GZaqor4h3K4
+         5EteCbXJiIo2vxeMRXX5nScccqgSXtWSv/8Cc2puynt5Qa+fZ+FOaCWyG0257w9/0dMr
+         IrBKhCFhk+IIgBQ0TQlTzukup/Db7kqobpc51TODX2pblqnU0VrSEKbNbYzOtkelVNIf
+         nkig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:user-agent
+         :references:in-reply-to:subject:to:from:dkim-signature;
+        bh=XoOKNvjj2vWDxyF7ffnwny5Y6LqscjN6R/Mgh0N0bXE=;
+        b=hNv05Alq/PQjGTEiseixL/8dLvMYgfJlek+Fa5sPEBgzjtKp+CSemuMiwnMti60dhJ
+         CMJmiDeeJfLc6rTB4md92cr1/FPivEbjNF4TurXLQAOnG3c8yvrmPhtoOhG0mBSQUVnF
+         wHtUXWWHHrqPiv9wDXcQ/atwNsrmuN+0yCaAAdJqwLJFDl+lRVxOU38Avbb3mItUIzcb
+         NRRDnZRTlbGs4c7+QJSPy100k6OVVseZELnxI7tNLxvYcPWkJI8COFWqn6JM/aimfGZ4
+         Py8Rv/AeF6sTu+p/U5T+yEDYyaQeofaTEWu7RWi3lzzzH1tYnyiYVBX+fY5egw5LdE1t
+         uk9g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cJZEZxEl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bv8-20020ad44888000000b004411053a694si773958qvb.127.2022.03.25.01.18.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 25 Mar 2022 01:18:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@microsoft.com header.s=selector2 header.b=Eblj4hBw;
-       arc=pass (i=1 spf=pass spfdomain=microsoft.com dkim=pass dkdomain=microsoft.com dmarc=pass fromdomain=microsoft.com);
-       spf=pass (google.com: domain of robhenry@microsoft.com designates 2a01:111:f403:c111:: as permitted sender) smtp.mailfrom=robhenry@microsoft.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=microsoft.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=anku7QmcLY73/3FDhD6Dp9s18t2GP/XJZQowBAfywh0HuX8Ecrsq88cgC+FjZjyf21CWYkkVFC13SCRbHJTJlxQjvh1h2AnEz7Hooe8jSRFvj1dQq5yWOw3EMqiKMkqPTXCr63V1KeOUAJts0QI2enxYegzNBPAUlx4dmikVqt2zye/mgQFVQTxpmhZFc0wyUoUVtRxBowtoutYp24jXytARDINiT350HtJTzviCaqcc6I8rFgf8xbgbd+Pzxw+hJXigggfbcgKOXl/LYtsgzmrnjAibDcl8hqkISqaZFLYXhBY0Vlj11u+wJL/6osbJC4pcveSUDiw5+Rr364ywnw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4yU1VCflOtwEwOPQYPh77H/s02osESAoFb836uftNh0=;
- b=HdhqnRFlfsiDwz7Hl4WYScaDfroYsDnUCmh6ET/g0cSLcTBYdqVZ0fd3qkRsMMUxB+A6s1/yMp1EvduCRCNUpmAjSc2MlK6xLOmeJ5YeHIq9Y7vDRe2fkys+EwMN+rQGZjkyKnE+1Y1TZj68jOmzTKFT89ZH4B3Se0r/AaXntMu/iDIH6vMUE3TrsiBLxQzAuJxBzTGxyeuBXV5W8KcP4Pf+NrfXHy1oIWwpyCDeO680NTs+GqkPYoBdnetE2KQ9XnZlfW4uzJxEA03A7cUgxYij1agFl2JUclf+vhy6YdTuYG7yND078jRaBWyf1HONBUNL+Vy2UX7IHdujLDv+Yw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microsoft.com; dmarc=pass action=none
- header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4yU1VCflOtwEwOPQYPh77H/s02osESAoFb836uftNh0=;
- b=Eblj4hBww2nJEKf6U49L3wZ9fQQcvE5HFe072aYkeOGcF3whos0WzJMiCG4CmWENKERyWjxU3Y1d46Q+tsYIR8CtQyuvrrb8aLX5G7bDYU/5S9euCoR5TuD0a6CCcBEIuW8ZXXIrt6wq5BG4+gZXAHHbuCku4zoiqlZVet1e2Ic=
-Received: from BY5PR21MB1426.namprd21.prod.outlook.com (2603:10b6:a03:232::23)
- by BL0PR2101MB1123.namprd21.prod.outlook.com (2603:10b6:207:30::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5123.4; Fri, 25 Mar
- 2022 02:17:38 +0000
-Received: from BY5PR21MB1426.namprd21.prod.outlook.com
- ([fe80::4c83:287f:f96c:43c8]) by BY5PR21MB1426.namprd21.prod.outlook.com
- ([fe80::4c83:287f:f96c:43c8%7]) with mapi id 15.20.5123.010; Fri, 25 Mar 2022
- 02:17:38 +0000
-From: Robert Henry <robhenry@microsoft.com>
-To: Aaron Lindsay <aaron@os.amperecomputing.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: =?iso-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>
-Subject: Re: [EXTERNAL] Plugins Not Reporting AArch64 SVE Memory Operations
-Thread-Topic: [EXTERNAL] Plugins Not Reporting AArch64 SVE Memory Operations
-Thread-Index: AQHYP7xDf6/sFcMojUCJFmbHYBiEHazPXXV8
-Date: Fri, 25 Mar 2022 02:17:38 +0000
-Message-ID:
- <BY5PR21MB1426A0FBD14A5A04D1E22DA0D61A9@BY5PR21MB1426.namprd21.prod.outlook.com>
-References: <YjzR3erB5ZhkAI2A@strawberry.localdomain>
-In-Reply-To: <YjzR3erB5ZhkAI2A@strawberry.localdomain>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-msip_labels:
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2022-03-25T02:17:37.826Z;MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ContentBits=0;MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Method=Standard;
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=microsoft.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: b1b2c0e9-056d-4ea2-27c9-08da0e05a259
-x-ms-traffictypediagnostic: BL0PR2101MB1123:EE_
-x-ms-exchange-atpmessageproperties: SA|SL
-x-microsoft-antispam-prvs:
- <BL0PR2101MB112384904FCC8B058C3A68DBD61A9@BL0PR2101MB1123.namprd21.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info:
- mOUR9IfGgYHL4apaaVRDBJetvQWS91gRCkkYmIN8pwHP0K/ftJXOomjEIyUSFbsPNz3wb44ZN9uHiZ+kbkp5j2qHOxhQLb+3kOmdzZGAT1YP5mKgD9GSwDFk+d5lKdfhgX0pDtWA2F8t92GtGiU6rU+2+auqi64zep992si7XAsShwJR+t8Z9A6qGIHfJ0YgmBBHJlBbc8+OqpUQZOrnZdKlAetpImoq3H6f2+DuxyDMXo4SWe8RfCyv2SDiQWN5YT+uSqO7OHRYK14PLmNiDQIEibI08oDAf07WhjwWRP591B2cVI4DK62i9f685MaVvB3Z1X0oz4wZmT1Owdj9c46voAAAXa9ux2yzuq2mlOUAQVsSMGI2bKbZpHX57P5FY981dQgAtbwG0C3D2o+Mfo1Z9y0GoVirwCyw1AIrhPQ11Inj+NDMGZHhFmSs/Kh/rbDmStZ4PRNsfezqAlf3BviEEosNQj1rBP2qzIALlrq31C5aoJRUu2WDf2ZVuMtDLslkSD0Fi2YNIxShmzjdzNC7rsbPKNh/aXBwDpRh3u8gnlqPAcKyLybSjfO+ESY5DFdkhl1lpbv8Nkw0MeAE50GgNFal+/WLEd/ULREMcDzA/lvj51PVuLKQVzgJ6xjR01gQciqg1WY5JiNy9asjZ7Sfra1RDyxLsSukE8/KE/EbO9B9PKCRd/bwCvS6fZzZutAjhkkPctJjrIFUQKAJCyWwG88CJJMWuPnKPNCILuO23kqIcZkzVICe8GTdk8BGjYVksE5v5q+QTSqjpRlWs5WGeceqPJIBSNswYwJ+MOEv7Xs7CochBe3oymZ24Ab36xdbXz3SvscWmPxgN6L+jA==
-x-forefront-antispam-report:
- CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY5PR21MB1426.namprd21.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(451199009)(66476007)(55016003)(83380400001)(71200400001)(19627405001)(66556008)(122000001)(76116006)(966005)(316002)(54906003)(66946007)(4326008)(64756008)(8676002)(8990500004)(38070700005)(110136005)(91956017)(82960400001)(86362001)(186003)(8936002)(9686003)(82950400001)(10290500003)(5660300002)(33656002)(66574015)(166002)(66446008)(52536014)(508600001)(53546011)(38100700002)(6506007)(2906002)(26005)(7696005);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0:
- =?iso-8859-1?Q?Swb0wuVVcaHy1o4CX0VynC+TpusL9Jm5od5Dl16m9S/PfkS8IAs59bcV2o?=
- =?iso-8859-1?Q?fxgw/BldRcB8tPzO/cd6oskUJaAll6zd7r3IZM4q3OCf5MrlQTEMbDzxv7?=
- =?iso-8859-1?Q?Z64sdrXnYR11A8wOtWvQD2vh/6sTMVcRIG9JG1DAPEfGOh+WExaRAupr3A?=
- =?iso-8859-1?Q?tL/hhMAqRawv3ofqXXEmCf0D8OxB+X+uiXDHonOEvVsoWHBM4l3iC5L70A?=
- =?iso-8859-1?Q?Krt1Hyqd/ekcW+4phIplcu5EZqN6oEPCGF8BmZGYvWtKzjK7R6JDr/nf87?=
- =?iso-8859-1?Q?gmNMLVvfgw8D6NAlYKAch4kfuxeHGmeP4Uaz5076x0cezaVsBQUReYgtr0?=
- =?iso-8859-1?Q?4/6ZuumDUc8Li1de4AuA3vSzA7bco0zc1Z8gJ87Tn0mig3RHo9HBgCwm0q?=
- =?iso-8859-1?Q?ytmwQjeemPDedwZZqkL9RIZY3eXObcNzvvkw/5i5AwAf/NAEWGYrEGuPy2?=
- =?iso-8859-1?Q?F/dw4uLMnzTVqtN6pgDQzGTjKbI6sTNKeBE+oGdkCptQxqqY9YaWs6ImGI?=
- =?iso-8859-1?Q?fDcFZfYk1mt6s6HTnQNjCP83iQcic1aZ5atqLnEPjNdbOGhSPBVFFjuZK5?=
- =?iso-8859-1?Q?UGPZC8qiFKu3HZqJk1Md5PTlJEa7fY59bYrE8pLvC/AOTDnFneviyWFXFt?=
- =?iso-8859-1?Q?JTwcvXOkrtz6xbjqVlHTnN3cAKlFAEJg2qTDQJ/+ZraGZnjatOCzZHJizV?=
- =?iso-8859-1?Q?BTUFY0uCxnTWWjqYNEsnj8elyaG0uy5De+MlIl6ws2UEilp9ErxXiVxHA/?=
- =?iso-8859-1?Q?xTIDREAmwvSEZL/lUt1StU3EBc7z0Zmq571wy0yqbrpTqy1hc6co0Uwh3t?=
- =?iso-8859-1?Q?vscB5kueeNusNO9BWc0JhHb/9DQ5IRlzNNx/F9VXqJWV5WRAA9fUzo11RK?=
- =?iso-8859-1?Q?vOrS0lzys0520kGXu4OPq9ZF2ymKoywT1I0LmUdxCPPZY+uPSF0QZ4p8xk?=
- =?iso-8859-1?Q?QpHJZ/wR3UpyOHjljIwKFDQ9Mfh07BrqWMrOW0JCWuP510B0bn09FGRxHt?=
- =?iso-8859-1?Q?iTuRjk8IcwSVvnt8hKFInacg6EkpsEREpJpDOSwjQmPw3t3suW5QDPTAOP?=
- =?iso-8859-1?Q?c1mvKYN0FF28DYP6pZ7D36t+GI1h2hR9y45KvMhQUYBXtGkh7Ihdtof3y5?=
- =?iso-8859-1?Q?X63M9C1qNtCVEEgGtE0QRATBG6y0t8netV1RYgYOeJXt7uU/2XXGVeZu6g?=
- =?iso-8859-1?Q?aQnkxJLZ/RJYTytbNiZdUu3L0/EIIrTGa9RDjJ2KMLZGbp/fkZVA1Ue/qA?=
- =?iso-8859-1?Q?DhECHt3GB5c4iVMatx/drAkrGryk6KtXXiAVY84LjwlWLB3OVBFqINNTbO?=
- =?iso-8859-1?Q?kXyttQ/vlaOAqWTzg2jCQcUl27Y10TthjlmzNgFuqoSIlS8hMyec6Lr4Gy?=
- =?iso-8859-1?Q?ZvZU9DuMT7wSpjC0s1me0cw3ZIigNUBIuXQyeHWMLppx4uaGLrF+wqa8Sl?=
- =?iso-8859-1?Q?8cWg8h4OmC6AMzwb9u7yCnpSZxxSTkXOYcSn+nVdEVOCA82Xy+5QSdGp2k?=
- =?iso-8859-1?Q?rT5y/DblMcJFe7fLJd853D9VZDx6+aXZEyYoGPTzxotXMw7+P+Vwau2u6U?=
- =?iso-8859-1?Q?9/+YGiFiOiKYxN7ev52I8kui2w/OicGCHBq3tO4NPUjI19blSEwsi4/rHf?=
- =?iso-8859-1?Q?ilSTchJhJg7N2r27H9cYcLBwnT1sif7nrttAsP/d0jUlDlV46gQTBFADNH?=
- =?iso-8859-1?Q?a/KKQgdtii9/G9/eNrax95qOh2WmLK7ug2UmoQ9XGhwbVYz2/vWFetMb8l?=
- =?iso-8859-1?Q?3VxsnhisTIJpIc2TeJ5mPgqHfXOVyLDoA94cKRil26A4M4pDtHrI0vSXH1?=
- =?iso-8859-1?Q?QwZF8xPEpQ=3D=3D?=
-Content-Type: multipart/alternative;
-	boundary="_000_BY5PR21MB1426A0FBD14A5A04D1E22DA0D61A9BY5PR21MB1426namp_"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cJZEZxEl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45896 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nXf99-000352-0s
+	for alex.bennee@linaro.org; Fri, 25 Mar 2022 04:18:11 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59862)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1nXf7y-00034I-3j
+ for qemu-arm@nongnu.org; Fri, 25 Mar 2022 04:16:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:55327)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1nXf7v-0001x4-IV
+ for qemu-arm@nongnu.org; Fri, 25 Mar 2022 04:16:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1648196214;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=XoOKNvjj2vWDxyF7ffnwny5Y6LqscjN6R/Mgh0N0bXE=;
+ b=cJZEZxElorQ/IqDqXI/SzjQWeKK0l7pulVYlwpalrNu4lAJSJp2uM+OBpeRAvJL9ecBjOe
+ RLhZ85PZ2+FNPiSrz4CafISSxkZXAXLEH8MlWWyMh0TQPX3dK5vKzYCC6euFY7GVodDESg
+ 9z572BG1aOvVVycPlecXNqB48bXvtn8=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-241-ev0jLdd2M-ikfYxZyxb6jg-1; Fri, 25 Mar 2022 04:16:53 -0400
+X-MC-Unique: ev0jLdd2M-ikfYxZyxb6jg-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ j67-20020adf9149000000b00203e6b7d151so2449752wrj.13
+ for <qemu-arm@nongnu.org>; Fri, 25 Mar 2022 01:16:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references
+ :user-agent:reply-to:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lwOCm9uy0SJhZBHOauUhE1KdI2YgTHt0QQdRB9YjSqU=;
+ b=njIPXfOb8o9ujFZtAcOgzicqT9Ku5NWVpMjpoFa2KetzyGGAG4ZHPYImpzcYCZGeRb
+ 6l8zcXdIMVTF95jGuW+D34W5mOTBCern3kbaVi6Njy9E7BsjdrP360xrpYiKz38LuEsr
+ VhxDCGGiCpMBs7jIMS5jwPJYdSPq6N27Xd8NaQz9QFqqVC4YYjgrqZGHIahg1SuMW/af
+ YhdSKmWyvjJsa+EXeDaFhqmdD/PNdOtqhdboSoXJmUbTxlVqKklTUZzIck4fX1+0mp6k
+ dlOI1LhAO/FXpWEuFcjdwMV1evdRCosdtYVcy55hAn0jq9+k27hAsHwqdx+4yD73AoxX
+ R1wg==
+X-Gm-Message-State: AOAM531LEp7NpJSe5mDVrvBWVwgAZl7VXGCmjAgYlRxGvqcohUpB11Y4
+ BP5oKDvbKtETSypY+mDiIJrgq0PxYrwmymwy6huOZwrzTImlU2iFuSkO9DyAH6qwupYb72nqSuX
+ z6OaU8ueFs0gf
+X-Received: by 2002:a5d:584f:0:b0:204:1749:2ce7 with SMTP id
+ i15-20020a5d584f000000b0020417492ce7mr7905361wrf.584.1648196212048; 
+ Fri, 25 Mar 2022 01:16:52 -0700 (PDT)
+X-Received: by 2002:a5d:584f:0:b0:204:1749:2ce7 with SMTP id
+ i15-20020a5d584f000000b0020417492ce7mr7905325wrf.584.1648196211800; 
+ Fri, 25 Mar 2022 01:16:51 -0700 (PDT)
+Received: from localhost ([47.63.10.52]) by smtp.gmail.com with ESMTPSA id
+ m13-20020a05600c3b0d00b0038cda9f92fasm2453441wms.0.2022.03.25.01.16.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 25 Mar 2022 01:16:51 -0700 (PDT)
+From: Juan Quintela <quintela@redhat.com>
+To: marcandre.lureau@redhat.com
+Subject: Re: [PATCH 28/32] Move CPU softfloat unions to cpu-float.h
+In-Reply-To: <20220323155743.1585078-29-marcandre.lureau@redhat.com>
+ (marcandre lureau's message of "Wed, 23 Mar 2022 19:57:39 +0400")
+References: <20220323155743.1585078-1-marcandre.lureau@redhat.com>
+ <20220323155743.1585078-29-marcandre.lureau@redhat.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+Date: Fri, 25 Mar 2022 09:16:50 +0100
+Message-ID: <87r16qe9al.fsf@secure.mitica>
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR21MB1426.namprd21.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b1b2c0e9-056d-4ea2-27c9-08da0e05a259
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Mar 2022 02:17:38.6524
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rcaGlNg1GryjeoXSw0321nNoIAw08ee50y9Wu4GhNh5gXfX2oqZzqZcU0OQ0NUg4eemeyY3MwChmjyAIuUA0Sw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR2101MB1123
-X-TUID: T6VRQNDI1HrO
-
---_000_BY5PR21MB1426A0FBD14A5A04D1E22DA0D61A9BY5PR21MB1426namp_
-Content-Type: text/plain; charset="iso-8859-1"
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: quintela@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, "open
+ list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Palmer Dabbelt <palmer@dabbelt.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: d080UOGEJGYB
 
-I have not done anything on this front, alas.
-________________________________
-From: Aaron Lindsay <aaron@os.amperecomputing.com>
-Sent: Thursday, March 24, 2022 1:17 PM
-To: qemu-devel@nongnu.org <qemu-devel@nongnu.org>; qemu-arm@nongnu.org <qem=
-u-arm@nongnu.org>
-Cc: Alex Benn=E9e <alex.bennee@linaro.org>; richard.henderson@linaro.org <r=
-ichard.henderson@linaro.org>; Robert Henry <robhenry@microsoft.com>
-Subject: [EXTERNAL] Plugins Not Reporting AArch64 SVE Memory Operations
-
-Hi folks,
-
-I see there has been some previous discussion [1] about 1.5 years ago
-around the fact that AArch64 SVE instructions do not emit any memory
-operations via the plugin interface, as one might expect them to.
-
-I am interested in being able to more accurately trace the memory
-operations of SVE instructions using the plugin interface - has there
-been any further discussion or work on this topic off-list (or that
-escaped my searching)?
-
-In the previous discussion [1], Richard raised some interesting
-questions:
-
-> The plugin interface needs extension for this.  How should I signal that =
-256
-> consecutive byte loads have occurred?  How should I signal that the contr=
-olling
-> predicate was not all true, so only 250 of those 256 were actually active=
-?  How
-> should I signal 59 non-consecutive (gather) loads have occurred?
+marcandre.lureau@redhat.com wrote:
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 >
-> If the answer is simply that you want 256 or 250 or 59 plugin callbacks
-> respectively, then we might be able to force the memory operations into t=
-he
-> slow path, and hook the operation there.  As if it were an i/o operation.
-
-My initial reaction is that simply sending individual callbacks for each
-access (only the ones which were active, in the case of predication)
-seems to fit reasonably well with the existing plugin interface. For
-instance, I think we already receive two callbacks for each AArch64
-`LDP` instruction, right?
-
-If this is an agreeable solution that wouldn't take too much effort to
-implement (and no one else is doing it), would someone mind pointing me
-in the right direction to get started?
-
-Thanks!
-
--Aaron
-
-[1] https://nam06.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flis=
-ts.nongnu.org%2Farchive%2Fhtml%2Fqemu-discuss%2F2020-12%2Fmsg00015.html&amp=
-;data=3D04%7C01%7Crobhenry%40microsoft.com%7C4fbf9f5adeca457a475e08da0dd35d=
-c4%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637837498833440416%7CUnknow=
-n%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI=
-6Mn0%3D%7C3000&amp;sdata=3DbTHMSkvOvvX7o7seFIbf7gDk5V%2BMBhC6YytOorHbNts%3D=
-&amp;reserved=3D0
-
---_000_BY5PR21MB1426A0FBD14A5A04D1E22DA0D61A9BY5PR21MB1426namp_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
-ttom:0;} </style>
-</head>
-<body dir=3D"ltr">
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0);">
-I have not done anything on this front, alas.</div>
-<div id=3D"appendonsend"></div>
-<hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
-<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
-yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Aaron Lindsay &lt;aar=
-on@os.amperecomputing.com&gt;<br>
-<b>Sent:</b> Thursday, March 24, 2022 1:17 PM<br>
-<b>To:</b> qemu-devel@nongnu.org &lt;qemu-devel@nongnu.org&gt;; qemu-arm@no=
-ngnu.org &lt;qemu-arm@nongnu.org&gt;<br>
-<b>Cc:</b> Alex Benn=E9e &lt;alex.bennee@linaro.org&gt;; richard.henderson@=
-linaro.org &lt;richard.henderson@linaro.org&gt;; Robert Henry &lt;robhenry@=
-microsoft.com&gt;<br>
-<b>Subject:</b> [EXTERNAL] Plugins Not Reporting AArch64 SVE Memory Operati=
-ons</font>
-<div>&nbsp;</div>
-</div>
-<div class=3D"BodyFragment"><font size=3D"2"><span style=3D"font-size:11pt;=
-">
-<div class=3D"PlainText">Hi folks,<br>
-<br>
-I see there has been some previous discussion [1] about 1.5 years ago<br>
-around the fact that AArch64 SVE instructions do not emit any memory<br>
-operations via the plugin interface, as one might expect them to.<br>
-<br>
-I am interested in being able to more accurately trace the memory<br>
-operations of SVE instructions using the plugin interface - has there<br>
-been any further discussion or work on this topic off-list (or that<br>
-escaped my searching)?<br>
-<br>
-In the previous discussion [1], Richard raised some interesting<br>
-questions:<br>
-<br>
-&gt; The plugin interface needs extension for this.&nbsp; How should I sign=
-al that 256<br>
-&gt; consecutive byte loads have occurred?&nbsp; How should I signal that t=
-he controlling<br>
-&gt; predicate was not all true, so only 250 of those 256 were actually act=
-ive?&nbsp; How<br>
-&gt; should I signal 59 non-consecutive (gather) loads have occurred?<br>
-&gt; <br>
-&gt; If the answer is simply that you want 256 or 250 or 59 plugin callback=
-s<br>
-&gt; respectively, then we might be able to force the memory operations int=
-o the<br>
-&gt; slow path, and hook the operation there.&nbsp; As if it were an i/o op=
-eration.<br>
-<br>
-My initial reaction is that simply sending individual callbacks for each<br=
+> The types are no longer used in bswap.h since commit
+> f930224fffe ("bswap.h: Remove unused float-access functions"), there
+> isn't much sense in keeping it there and having a dependency on fpu/.
 >
-access (only the ones which were active, in the case of predication)<br>
-seems to fit reasonably well with the existing plugin interface. For<br>
-instance, I think we already receive two callbacks for each AArch64<br>
-`LDP` instruction, right?<br>
-<br>
-If this is an agreeable solution that wouldn't take too much effort to<br>
-implement (and no one else is doing it), would someone mind pointing me<br>
-in the right direction to get started?<br>
-<br>
-Thanks!<br>
-<br>
--Aaron<br>
-<br>
-[1] <a href=3D"https://nam06.safelinks.protection.outlook.com/?url=3Dhttps%=
-3A%2F%2Flists.nongnu.org%2Farchive%2Fhtml%2Fqemu-discuss%2F2020-12%2Fmsg000=
-15.html&amp;amp;data=3D04%7C01%7Crobhenry%40microsoft.com%7C4fbf9f5adeca457=
-a475e08da0dd35dc4%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637837498833=
-440416%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6=
-Ik1haWwiLCJXVCI6Mn0%3D%7C3000&amp;amp;sdata=3DbTHMSkvOvvX7o7seFIbf7gDk5V%2B=
-MBhC6YytOorHbNts%3D&amp;amp;reserved=3D0">
-https://nam06.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flists.n=
-ongnu.org%2Farchive%2Fhtml%2Fqemu-discuss%2F2020-12%2Fmsg00015.html&amp;amp=
-;data=3D04%7C01%7Crobhenry%40microsoft.com%7C4fbf9f5adeca457a475e08da0dd35d=
-c4%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637837498833440416%7CUnknow=
-n%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI=
-6Mn0%3D%7C3000&amp;amp;sdata=3DbTHMSkvOvvX7o7seFIbf7gDk5V%2BMBhC6YytOorHbNt=
-s%3D&amp;amp;reserved=3D0</a><br>
-</div>
-</span></font></div>
-</body>
-</html>
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
---_000_BY5PR21MB1426A0FBD14A5A04D1E22DA0D61A9BY5PR21MB1426namp_--
+> diff --git a/migration/vmstate-types.c b/migration/vmstate-types.c
+> index bf4d440308ea..e83bfccb9ecf 100644
+> --- a/migration/vmstate-types.c
+> +++ b/migration/vmstate-types.c
+> @@ -11,6 +11,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/cpu-float.h"
+>  #include "qemu-file.h"
+>  #include "migration.h"
+>  #include "migration/vmstate.h"
+
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+
+I think that the rest of the patch is also correct, but as there are
+other maintainers involved.
+

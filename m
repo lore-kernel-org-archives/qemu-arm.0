@@ -1,171 +1,127 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp3746182lfb;
-        Thu, 24 Mar 2022 20:02:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzuw+T+H0huINdvAnof1VQMJl3S70E7F6l3Jsb0NyurBRykf7hm+e1rVnyZdVjkQ3sVu4aJ
-X-Received: by 2002:ad4:5b88:0:b0:441:5b5:e78e with SMTP id 8-20020ad45b88000000b0044105b5e78emr7134476qvp.14.1648177320271;
-        Thu, 24 Mar 2022 20:02:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648177320; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp3771646lfb;
+        Thu, 24 Mar 2022 20:59:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmIPIAtkGV2nC5z2IvSPe76Gc1sNxqt/LsaGg7RY3tEf4HLjtTALrE8gj1sLkBH4RBtz7U
+X-Received: by 2002:a05:6214:2a4f:b0:440:eb44:fef5 with SMTP id jf15-20020a0562142a4f00b00440eb44fef5mr7236629qvb.81.1648180794017;
+        Thu, 24 Mar 2022 20:59:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648180794; cv=none;
         d=google.com; s=arc-20160816;
-        b=UYk2NuOvIVPInj5h1LtbNoxXNXdPBhv81pL26ZL2JiYJ5LMeWsIdNVXnkGKQ+knfJr
-         LoXUprGt0lHza0NU5xvKoGWMPj1cas9i2HMturGHj4s9RsG5ruEnmhsGc96ltq+wyXI1
-         L3h0BO7UlFuKT6xtti02WG/FOP184Py+Jm74oEQoX2w3tfdkOOmzq1PasoKvuoOyaO2S
-         Mkx+X1t0X//WObFoLwSdhHQl+ZzhDwjG1Bjdonwj0W5o256Ov50n/7xnn4Ohe+AC0K2B
-         5ETaHMYZ9YvRG8NrumQXcusqCVZ7TgZ9lzOIu8ec4VOLlyBjMDyYortCBJKxUnU5n/gM
-         C89Q==
+        b=OjfUa7QeLcDsg4GTVCauFAbaDfhMAKc3rA4HEDXfDCa+ts7quYC7sxTfohYauWExaq
+         E+0fjTeeIXw5ypau/XR32zgWWQ4zjdZOblC9dN7DZwlcKmpFHSK/yR+5vtM5Xcg221k1
+         iNWySgoKtD6wfYr6ZZsAo3ilITi4cWdLlaGb9/ku2Ug5rpQfSzvmLXYt/El/RfyuhtjN
+         6YH4aL+4lNKbchsY2/j8a5vk1PO6BMQwSXkgn1UUr2f0VjLnN+nxsWOF8jyKPukGa1GM
+         muFEdEtoOkZmIsNBhce1NQspLqWdOWideVAaN3AAkTF0GI5J42/J/SdLeUOGc+Qt+88M
+         dTuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=fV8k8FAe6DiXJgw5SNgJSGYrGTEQ1JTWXuujuost+sM=;
-        b=XSkAbpVXf2RfK/4unja6WJLu/5WTKMZXt2DK7TybgjUREwphvhrv4MdLtDOXrAbfzy
-         CAfpUklbUysrxEn6ve3IHmbtUlfBpgSypbzhngEUcnkahWJ9rdyzo93XlGpbTDA6+B6X
-         GpOSe7UQVF+PiC8q6Rj3mADXKaEcC+XMjygT9IMlbQd7M4/lwhsjKo4/u6s53xaxNZjt
-         8yBUnxmabeJZwbUVxAkxCtbS/b/KrEjEzemIWm/UgkJmLXZ5PwBpnAGO4gSDiOQ2oHHN
-         gTsMixoHrliFaN69YDGPDEzQiUR8T0KVZ8QYRzcYimGqaGqpLKbAZQRBiV2F4WubGq4+
-         1n2Q==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=bR7X7fF0LiFyxX1/rHuaOGfc7p+BhgUDVxVAHNZGPu4=;
+        b=oRucGiV+l++DRZPftRSYWQlu6RQeMLRZ+SiUnOlrlWWS2inoEKKY7OZv2U9viKLsY7
+         WrFwRp32UsHzI78YgejmAdU5KLO7dX5QdjGr2Z9iqUVOJ3adhc8AnmctA3GnvYF6wrlP
+         8XAmuA1xAsiMV/Wb/5yEL2qiIWkjyXPReMWa+nEiubgGDPMEvG9iKjUT+IvtR71yw9kY
+         GXX5Bcs5xueupZygZNouzfMd8FtcRoNA1Boh9mzU2Jy8Rd9v8ZNuoeMQOoVp/s8btXFY
+         6fiqCJJ7qyDHNj8zWnx4lLIqpzSBot07Mwk2mAgXIHPGU9631uQlLQXoAhDD/JH8jNJf
+         5H/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=SSWlJzoO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c17-20020ae9e211000000b0067e4be23a1dsi648610qkc.610.2022.03.24.20.02.00
+        by mx.google.com with ESMTPS id f11-20020a05620a408b00b0067e4be23a72si887679qko.695.2022.03.24.20.59.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Mar 2022 20:02:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Mar 2022 20:59:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=SSWlJzoO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33118 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45890 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nXaD9-0007Im-P9
-	for alex.bennee@linaro.org; Thu, 24 Mar 2022 23:01:59 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49636)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nXb7B-00022B-GD
+	for alex.bennee@linaro.org; Thu, 24 Mar 2022 23:59:53 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zongyuan.li@smartx.com>)
- id 1nXaBM-0006TC-MT
- for qemu-devel@nongnu.org; Thu, 24 Mar 2022 23:00:09 -0400
-Received: from [2607:f8b0:4864:20::82c] (port=38838
- helo=mail-qt1-x82c.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zongyuan.li@smartx.com>)
- id 1nXaBJ-0007gO-2F
- for qemu-devel@nongnu.org; Thu, 24 Mar 2022 23:00:07 -0400
-Received: by mail-qt1-x82c.google.com with SMTP id v2so5539527qtc.5
- for <qemu-devel@nongnu.org>; Thu, 24 Mar 2022 20:00:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=smartx-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fV8k8FAe6DiXJgw5SNgJSGYrGTEQ1JTWXuujuost+sM=;
- b=SSWlJzoOPOwYe0JwoIrIeQyeHDiR1GDKvBF6pNzoEKde0s4na3C9w054ezzeu6lEic
- anAJW49Z0KQx8rGFaNn8eTrFjZPM9FL+JOOVqtIjCauN/55h7yvV2se/796SUEKt3VZa
- +xnvWAbXwDIUYC9jThT3iwKgAweSK0hV5L04ekFzOuqM/AYnveMcVSUUdIsgYdKHuTpm
- 9A848Vw7iVoyV/fKJaBSU89FztRsuDjJHvb+tWdaOr8uhJxD5njuu8uSSEA4k6PA4650
- b1WHpZ8uZuavXcpxeztLsowg2tW1W5WU0uAg7/1fE0meISuJpTMXAX468f0+jTY3eTZA
- YRiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fV8k8FAe6DiXJgw5SNgJSGYrGTEQ1JTWXuujuost+sM=;
- b=BDjuBzXMx5pvQugtRcJjN6jsu2cFzikLo54S9btZlRb8DPPDbHfTys4Fm24sR3AaAl
- QJa/QcVzqss0ilcsFvDBCfMykhD9LT9rBfM1VqAuH+b6qRaOawXZQoTa8kAqFci7cIKC
- QW3nCqsqSePUpa1pL/VjyerOhtqkJe2/iNErRm1fWbqHrjL071Ar+ITy+eGG1pSZ86xg
- JCwZl2d2DyR++5OcZqZK2f6qpMmAJ2j+BO7p0WDdndDMC3mnBUzOWwp+3KiWVh8lbIMd
- cHWiVnJOz8brfgz77bYzcux01gcjjjsDhqjumgp90KGp4rsXFIcjwX17nxqwVQ4R/TIg
- JOSA==
-X-Gm-Message-State: AOAM532RifMb4fc11qWUCckN9PSCn3or1M3wqwgL39qnmRFi/YIyTXJT
- 8hw9vI3fVuQSTIp2JMuQfSXVz90wjuo2oELs6I7huA==
-X-Received: by 2002:a05:622a:c3:b0:2e3:4bd0:16c2 with SMTP id
- p3-20020a05622a00c300b002e34bd016c2mr4091627qtw.575.1648177203387; Thu, 24
- Mar 2022 20:00:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1nXb6S-00021s-3p; Thu, 24 Mar 2022 23:59:08 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:41250)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1nXb6O-0007lH-QG; Thu, 24 Mar 2022 23:59:07 -0400
+Received: from mail.aspeedtech.com ([192.168.0.24])
+ by twspam01.aspeedtech.com with ESMTP id 22P3lYdZ033701;
+ Fri, 25 Mar 2022 11:47:34 +0800 (GMT-8)
+ (envelope-from steven_lee@aspeedtech.com)
+Received: from localhost.localdomain (192.168.70.100) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 25 Mar
+ 2022 11:58:11 +0800
+From: Steven Lee <steven_lee@aspeedtech.com>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
+ <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Subject: [PATCH v3 0/2] Supporting AST2600 HACE engine accumulative mode
+Date: Fri, 25 Mar 2022 11:58:08 +0800
+Message-ID: <20220325035810.21420-1-steven_lee@aspeedtech.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-References: <20220324171756.196654-1-zongyuan.li@smartx.com>
- <20220324171756.196654-4-zongyuan.li@smartx.com>
- <CAFEAcA9GA79yUQj3i5MdLWK6+r3bDObKQS+8_bfx=47TKbLHJQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9GA79yUQj3i5MdLWK6+r3bDObKQS+8_bfx=47TKbLHJQ@mail.gmail.com>
-From: Zongyuan Li <zongyuan.li@smartx.com>
-Date: Fri, 25 Mar 2022 10:59:52 +0800
-Message-ID: <CADXGpueetjT6rgH3XHo1RNxNz-WGACWB0UqYH7qkMaBV1HMsYQ@mail.gmail.com>
-Subject: Re: [PATCH v4 3/4] hw/intc/exynos4210: replace 'qemu_split_irq' in
- combiner and gic
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::82c
- (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::82c;
- envelope-from=zongyuan.li@smartx.com; helo=mail-qt1-x82c.google.com
-X-Spam_score_int: -4
-X-Spam_score: -0.5
-X-Spam_bar: /
-X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [192.168.70.100]
+X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
+ (192.168.0.24)
+X-DNSRBL: 
+X-MAIL: twspam01.aspeedtech.com 22P3lYdZ033701
+Received-SPF: pass client-ip=211.20.114.71;
+ envelope-from=steven_lee@aspeedtech.com; helo=twspam01.aspeedtech.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
- "open list:Exynos" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: euvnNAvq1qgM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
+ steven_lee@aspeedtech.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lqqnrfuB2N/5
 
->
-> > diff --git a/include/hw/core/split-irq.h b/include/hw/core/split-irq.h
-> > index ff8852f407..eb485dd7a6 100644
-> > --- a/include/hw/core/split-irq.h
-> > +++ b/include/hw/core/split-irq.h
-> > @@ -42,9 +42,6 @@
-> >
-> >  #define MAX_SPLIT_LINES 16
-> >
-> > -
-> > -OBJECT_DECLARE_SIMPLE_TYPE(SplitIRQ, SPLIT_IRQ)
-> > -
-> >  struct SplitIRQ {
-> >      DeviceState parent_obj;
-> >
-> > @@ -52,4 +49,6 @@ struct SplitIRQ {
-> >      uint16_t num_lines;
-> >  };
-> >
-> > +OBJECT_DECLARE_SIMPLE_TYPE(SplitIRQ, SPLIT_IRQ)
-> > +
->
-> What's this change for ?
->
-> thanks
-> -- PMM
+This patch series implements ast2600 hace engine with accumulative mode
+and unit test against to it.
 
-Some language sever like `clangd-13` will complain about the following
-code if we use
-`typedef` before struct definition:
+Verified with following models
+- AST2600 with OpenBmc VERSION_ID=2.12.0-dev-660-g4c7b3e692-dirty
+  - check hash verification in uboot and check whether qemu crashed
+    during openbmc web gui login.
+- AST1030 with ASPEED zephyr SDK v1.04
+  - run `hash sha256` command in zephyr shell to verify aspeed hace.
 
-> @@ -79,11 +80,11 @@
-> #define EXYNOS4210_NUM_DMA      3
->
->  typedef struct Exynos4210Irq {
-> -    qemu_irq int_combiner_irq[EXYNOS4210_MAX_INT_COMBINER_IN_IRQ];
-> -    qemu_irq ext_combiner_irq[EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ];
-> +    SplitIRQ int_combiner_irq[EXYNOS4210_MAX_INT_COMBINER_IN_IRQ];
-> +    SplitIRQ ext_combiner_irq[EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ];
->      qemu_irq int_gic_irq[EXYNOS4210_INT_GIC_NIRQ];
->      qemu_irq ext_gic_irq[EXYNOS4210_EXT_GIC_NIRQ];
-> -    qemu_irq board_irqs[EXYNOS4210_MAX_INT_COMBINER_IN_IRQ];
-> +    SplitIRQ board_irqs[EXYNOS4210_MAX_INT_COMBINER_IN_IRQ];
->  } Exynos4210Irq;
+Please help to review
+Thanks,
+Steven
 
-Because `SplitIRQ` is an incomplete type.
+Changes in v3:
+- Refactor acc_mode message handling flow.
 
-regards,
-Li
+Steven Lee (2):
+  aspeed/hace: Support AST2600 HACE
+  tests/qtest: Add test for Aspeed HACE accumulative mode
+
+ hw/misc/aspeed_hace.c          | 113 +++++++++++++++++++++++--
+ include/hw/misc/aspeed_hace.h  |   1 +
+ tests/qtest/aspeed_hace-test.c | 145 +++++++++++++++++++++++++++++++++
+ 3 files changed, 250 insertions(+), 9 deletions(-)
+
+-- 
+2.17.1
+

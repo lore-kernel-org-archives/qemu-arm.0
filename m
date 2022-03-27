@@ -1,221 +1,164 @@
-Received: by 2002:a0c:aa59:0:0:0:0:0 with SMTP id e25csp5193599qvb;
-        Fri, 25 Mar 2022 12:10:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyl4FOAIKm4GorTKMvm2b8486krIb1RYD6xlhY54s6zIJD5DE6+tmuFpp2Ih5tpemEwwelK
-X-Received: by 2002:a81:36cf:0:b0:2e5:2597:a026 with SMTP id d198-20020a8136cf000000b002e52597a026mr12375827ywa.301.1648235404681;
-        Fri, 25 Mar 2022 12:10:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648235404; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp5531207lfb;
+        Sun, 27 Mar 2022 02:35:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzmahR+erG7LbLqhzcsK+Nei1Y7+4WEHPOVRIpaSWfc61EEf3LvQ/YfOSsKgLBgcss5Hotc
+X-Received: by 2002:a05:6214:624:b0:441:84f3:24e3 with SMTP id a4-20020a056214062400b0044184f324e3mr8867425qvx.27.1648373751977;
+        Sun, 27 Mar 2022 02:35:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648373751; cv=none;
         d=google.com; s=arc-20160816;
-        b=L1IPlweRuojADYmz8xnjEYDuZgMjmFnvPaiOONDQ9htsUNVswVIGsASqAxTGWXAMxL
-         ZPGpPMZYVc2sc/HWED1d+i9B0kXckDjh2QzRlbIPKtbnDGLBTtJN3N2mBhCKl2YoYj+E
-         KBKRLt0aCOil+e5d7z7XoINRX2oDk/yKoFLfxhS7L5vR7q+mLZjzYRdFjjPb6yUy5bER
-         85WcAxRfpTg4gjFavc0oYIXfCWePL8j5kvl6qmgF8JyRkhfLaJEEhTPpKWJCIc/JHq3G
-         SezdPu3Gl7akACj6VPx+k8cY2oVEhKC0UcONuTazfL+V74XME7PLIzko+H7su8nvkaPJ
-         VpLg==
+        b=vqyybqSkMS8tkDjYpN4JA4XT925BYM6g6gDm/3jFf0OuL9ygRAPhyLU1Ad+oKgvq8M
+         OTgZJDqYi1gOK0s2CEkgNjWTs9XsEkecBihY/2nvnpBNJU3/D76KInXAGLvvG2fEWMEb
+         NGfHkMlATk5CWoyM4SMQdG/UYzu6/2fxUDv00Ad0wgvssJdDGmb+U8CcVcMQJicKAVuO
+         RUTVE8Eobk5daCpnb4wbeaJI5G6rqF2ovtn1mS/kBzZh/dLrIOUCOt03lU9+8xn7TO/N
+         Gpd1HhLz6i5/ODI8RnvWldNcL40vDtMBBZvlqHqfJTJnGByns18RyO5qOtniUjnthFp6
+         BQtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=5w90W+Dvy6CpEpDR7M5gj4gCEdjZcOHgc4QnHDnLo0k=;
-        b=kC5oSskJfATs50Z28WlOIWjSzWh77OIhwRxCqGMiMY20fT1z3OkMkTC1XIbXC73ppT
-         JKPfuOlroY9dBnR92zr3C7V9Qspi78JcSQrZYYzsGLxhlaFfXjZupSdb0fMex0Cwrh/K
-         lIPqgr9Io6n4OpI1OaRxLy4Ev6/QCmdg9vrPyIs8zHm/c0cbIKUB0qzawEedh0g98oGe
-         CxKW8K+p5xymsmO3hAsXzgoGJ0jbhQQqk+k9kp3gGBjlBLYSHqdUSGlya8n4sgr4ebSj
-         2E0F9qsFg7PCXzgULotSAL9Bejub0/vFOI/q+e15P+rQuFVx5bS1+HTAAqT5R96dw+7l
-         3ZCQ==
+        bh=32ha3mXOG7idErYcB8ciYo6fEXlt3LYVju+O4kEI5V0=;
+        b=r2MVEDDg/1bGviN33Agf0dnGVayLRIDXU1FOMipgnmBQoxAIguBDNuYUfvNGnBebM5
+         KDgtncv/pdjw/lm+CVZV69koPdMI2lK2MVFRsH7NIbCGDf9boWSvLKyp7af5PALF7Gwr
+         Ff2th4j7gbU/bdijP6d5gMtwqFPIRSp+IeQUzH0mqGMPw5+hzLRN0ga1CVcdMUOqiQia
+         a0gQYUFOhlAisgJfrjl1tUVXaYiG/hSA7CID5VK5wg8FujtmzcJOKMGoNN2FqGmIrOyc
+         cFh38EobNUorvHvoVGEI1xMUVM5+RPBnLChpZq1MR0FGdWvS/h8HFDgib+dUTpDdp8jQ
+         BaHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ff+RbbU2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BM9uKh0N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p204-20020a255bd5000000b0063399404633si3454728ybb.669.2022.03.25.12.10.04
+        by mx.google.com with ESMTPS id k5-20020a37ba05000000b0067e4be2397fsi3560767qkf.452.2022.03.27.02.35.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Mar 2022 12:10:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 27 Mar 2022 02:35:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ff+RbbU2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41722 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BM9uKh0N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47224 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nXpK0-0003Iy-4m
-	for alex.bennee@linaro.org; Fri, 25 Mar 2022 15:10:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59168)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nYPJP-0002lP-GC
+	for alex.bennee@linaro.org; Sun, 27 Mar 2022 05:35:51 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46132)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nXpIe-0002Fv-I5
- for qemu-devel@nongnu.org; Fri, 25 Mar 2022 15:08:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56893)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nXpIa-0000to-Q3
- for qemu-devel@nongnu.org; Fri, 25 Mar 2022 15:08:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648235315;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=5w90W+Dvy6CpEpDR7M5gj4gCEdjZcOHgc4QnHDnLo0k=;
- b=Ff+RbbU2N9192QeS+IQ6aU0cDuSRwD+DRRYNLpqHKLYMqPlL+6eQFO10sh5niCesMaJMFI
- SjOQF3ZUVgsE/eLvRXfpJpA0BD45TXJ+/s81mdE+0GTODj7H+wmpEO+kqHzi0y+BaPKfhm
- fSA00HkYW+2szSTLJfLzGoZutT+c/SE=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-352-0npOCKXBM3magHAmFZ-mYw-1; Fri, 25 Mar 2022 15:08:31 -0400
-X-MC-Unique: 0npOCKXBM3magHAmFZ-mYw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5E36E2999B26;
- Fri, 25 Mar 2022 19:08:31 +0000 (UTC)
-Received: from [10.72.12.33] (ovpn-12-33.pek2.redhat.com [10.72.12.33])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DE07D7AE0;
- Fri, 25 Mar 2022 19:08:22 +0000 (UTC)
-Subject: Re: [PATCH v3 4/4] hw/arm/virt: Unify ACPI processor ID in MADT and
- SRAT table
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20220323072438.71815-1-gshan@redhat.com>
- <20220323072438.71815-5-gshan@redhat.com>
- <20220325150020.0063c782@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <5b7686b4-b0e1-a9ec-f546-2161baa0ed3e@redhat.com>
-Date: Sat, 26 Mar 2022 03:08:19 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <idan.horowitz@gmail.com>)
+ id 1nYPIm-0002kP-Uf; Sun, 27 Mar 2022 05:35:17 -0400
+Received: from [2a00:1450:4864:20::331] (port=55201
+ helo=mail-wm1-x331.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <idan.horowitz@gmail.com>)
+ id 1nYPIk-0002cE-3f; Sun, 27 Mar 2022 05:35:12 -0400
+Received: by mail-wm1-x331.google.com with SMTP id r64so6721042wmr.4;
+ Sun, 27 Mar 2022 02:34:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=32ha3mXOG7idErYcB8ciYo6fEXlt3LYVju+O4kEI5V0=;
+ b=BM9uKh0NXhgUy0rn8axSF5lMsBPvsJDMSi++snsjaIpuZDoLT1Rbfasq+mlOeD0Mpa
+ SsLTCEtWlUjP2ryZGsVifHELBcry46equoDtuHYc3beBSEi2demhE8jUB5qXq9dMNlkw
+ 6u7YGf6kpiXP8icmlcngsCVayjbvHBmES/9VTwK/+s3/4R9mFAm6icGG1ZCCfxNpmQzT
+ J0wqGiNsT69d4wpKmZxybw1n5qoMZR7caE+gP4uz7cIq4SgoBma5mqpT8svPQ2zji9d4
+ n0VeJNH4BkP0L4+O9ah7PgaNGQ4MF5ozAd0waBX7PDxeEuEaehMNLKd3gos3UQziudOj
+ 9Hfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=32ha3mXOG7idErYcB8ciYo6fEXlt3LYVju+O4kEI5V0=;
+ b=J6csn0SLC/q9OVoLjZ8ySbA7Wgh+3neBORWWduwruiX9gfWCLVf4185KsyeXf+FA0J
+ pcZtJRBfjwwOPf/+KUpvRRtF6XI8Ot3xd0NRlWULVr7gX6/bnD+iRRPl1tzaGuvJou6w
+ kwVATxghq/ffYSJ8obrTo33wNgVCXHwuSh7yG6K+LqVgQsTy6ejngwkhIzIYEzsBigas
+ WMMtpG+32HnTIBTMEq0rGimoA8/OccyqVVMyb389MFI5Ona8MXZ510ksCiSbVDSI/DUm
+ YlT/kP0guClmaQ+UONAnlOFazD1ClBV9U7GxZIxIZOEHpzNvtmrkMht+mr9m7h+DjcNl
+ qlZA==
+X-Gm-Message-State: AOAM532BF2YG/u3IaVnFxIyEJlb5DCNzNojMzvFpf8qOBj5uwvdlIhb6
+ RafkMe9DgU7Vm1zT4wF4ImjaMwlgneM=
+X-Received: by 2002:a05:600c:4f87:b0:38c:adde:1d99 with SMTP id
+ n7-20020a05600c4f8700b0038cadde1d99mr27743614wmq.16.1648373696934; 
+ Sun, 27 Mar 2022 02:34:56 -0700 (PDT)
+Received: from li-142ea8cc-3370-11b2-a85c-c55585c2aa0e.ibm.com.com
+ (bzq-79-183-80-20.red.bezeqint.net. [79.183.80.20])
+ by smtp.gmail.com with ESMTPSA id
+ 14-20020a056000154e00b00203f8adde0csm11892039wry.32.2022.03.27.02.34.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 27 Mar 2022 02:34:56 -0700 (PDT)
+From: Idan Horowitz <idan.horowitz@gmail.com>
+To: qemu-arm@nongnu.org
+Subject: [PATCH 2/3] target/arm: Take VSTCR.SW,
+ VTCR.NSW into account in final stage 2 walk
+Date: Sun, 27 Mar 2022 12:34:27 +0300
+Message-Id: <20220327093427.1548629-3-idan.horowitz@gmail.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220327093427.1548629-1-idan.horowitz@gmail.com>
+References: <20220327093427.1548629-1-idan.horowitz@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20220325150020.0063c782@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::331
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=idan.horowitz@gmail.com; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, zhenyzha@redhat.com, wangyanan55@huawei.com,
- qemu-arm@nongnu.org, shan.gavin@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D6BAJBWI4o0P
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Idan Horowitz <idan.horowitz@gmail.com>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YDKLmY36xo/G
 
-Hi Igor,
+As per the AArch64.SS2InitialTTWState() psuedo-code in the ARMv8 ARM the
+initial PA space used for stage 2 table walks is assigned based on the SW
+and NSW bits of the VSTCR and VTCR registers.
+This was already implemented for the recursive stage 2 page table walks
+in S1_ptw_translate(), but was missing for the final stage 2 walk.
 
-On 3/25/22 10:00 PM, Igor Mammedov wrote:
-> On Wed, 23 Mar 2022 15:24:38 +0800
-> Gavin Shan <gshan@redhat.com> wrote:
-> 
->> The value of the following field has been used in ACPI PPTT table
->> to identify the corresponding processor. This takes the same field
->> as the ACPI processor ID in MADT and SRAT tables.
->>
->>    ms->possible_cpus->cpus[i].props.thread_id
-> 
-> thread-id could be something different than ACPI processor ID
-> (to be discussed in the first patch).
-> 
-> I'd prefer to keep both decoupled, i.e. use [0 - possible_cpus->len)
-> for ACPI processor ID as it's done with x86 madt/srat and ACPI CPU
-> hotplug code. So we could reuse at least the later when implementing
-> CPU hotplug for arm/virt and it's good from consistency point of view.
-> 
+Signed-off-by: Idan Horowitz <idan.horowitz@gmail.com>
+---
+ target/arm/helper.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-Yeah, I think so, thread-id and ACPI processor UID could be different.
-thread IDs could be overlapped on multiple CPUs, who belongs to different
-socket/die/core. However, ACPI processor UID should be unique for the
-CPU in the whole system.
-
-If you agree, Lets use [0 - possible_cpus->len] in next respin. What I
-need to do is dropping PATCH[4/4] and replacing @thread_id with @n in
-build_pptt() of PATCH[3/4].
-
-Thanks,
-Gavin
-
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   hw/arm/virt-acpi-build.c | 12 +++++++++---
->>   1 file changed, 9 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 449fab0080..7fedb56eea 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -534,13 +534,16 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>   
->>       for (i = 0; i < cpu_list->len; ++i) {
->>           uint32_t nodeid = cpu_list->cpus[i].props.node_id;
->> +        uint32_t thread_id = cpu_list->cpus[i].props.thread_id;
->> +
->>           /*
->>            * 5.2.16.4 GICC Affinity Structure
->>            */
->>           build_append_int_noprefix(table_data, 3, 1);      /* Type */
->>           build_append_int_noprefix(table_data, 18, 1);     /* Length */
->>           build_append_int_noprefix(table_data, nodeid, 4); /* Proximity Domain */
->> -        build_append_int_noprefix(table_data, i, 4); /* ACPI Processor UID */
->> +        build_append_int_noprefix(table_data,
->> +                                  thread_id, 4); /* ACPI Processor UID */
->>           /* Flags, Table 5-76 */
->>           build_append_int_noprefix(table_data, 1 /* Enabled */, 4);
->>           build_append_int_noprefix(table_data, 0, 4); /* Clock Domain */
->> @@ -704,6 +707,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>   {
->>       int i;
->>       VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->> +    MachineState *ms = MACHINE(vms);
->>       const MemMapEntry *memmap = vms->memmap;
->>       AcpiTable table = { .sig = "APIC", .rev = 3, .oem_id = vms->oem_id,
->>                           .oem_table_id = vms->oem_table_id };
->> @@ -725,8 +729,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>       build_append_int_noprefix(table_data, vms->gic_version, 1);
->>       build_append_int_noprefix(table_data, 0, 3);   /* Reserved */
->>   
->> -    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
->> +    for (i = 0; i < ms->smp.cpus; i++) {
->>           ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
->> +        uint32_t thread_id = ms->possible_cpus->cpus[i].props.thread_id;
->>           uint64_t physical_base_address = 0, gich = 0, gicv = 0;
->>           uint32_t vgic_interrupt = vms->virt ? PPI(ARCH_GIC_MAINT_IRQ) : 0;
->>           uint32_t pmu_interrupt = arm_feature(&armcpu->env, ARM_FEATURE_PMU) ?
->> @@ -743,7 +748,8 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>           build_append_int_noprefix(table_data, 76, 1);   /* Length */
->>           build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
->>           build_append_int_noprefix(table_data, i, 4);    /* GIC ID */
->> -        build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
->> +        build_append_int_noprefix(table_data,
->> +                                  thread_id, 4);        /* ACPI Processor UID */
->>           /* Flags */
->>           build_append_int_noprefix(table_data, 1, 4);    /* Enabled */
->>           /* Parking Protocol Version */
-> 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index d0265b760f..e2695e846a 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -12657,6 +12657,16 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+                 return ret;
+             }
+ 
++            if (arm_is_secure_below_el3(env)) {
++                if (attrs->secure) {
++                    attrs->secure = !(env->cp15.vstcr_el2.raw_tcr & VSTCR_SW);
++                } else {
++                    attrs->secure = !(env->cp15.vtcr_el2.raw_tcr & VTCR_NSW);
++                }
++            } else {
++                assert(!attrs->secure);
++            }
++
+             s2_mmu_idx = attrs->secure ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2;
+             is_el0 = mmu_idx == ARMMMUIdx_E10_0 || mmu_idx == ARMMMUIdx_SE10_0;
+ 
+-- 
+2.35.1
 

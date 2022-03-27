@@ -1,106 +1,106 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp5531207lfb;
-        Sun, 27 Mar 2022 02:35:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzmahR+erG7LbLqhzcsK+Nei1Y7+4WEHPOVRIpaSWfc61EEf3LvQ/YfOSsKgLBgcss5Hotc
-X-Received: by 2002:a05:6214:624:b0:441:84f3:24e3 with SMTP id a4-20020a056214062400b0044184f324e3mr8867425qvx.27.1648373751977;
-        Sun, 27 Mar 2022 02:35:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648373751; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp5531225lfb;
+        Sun, 27 Mar 2022 02:35:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwVKOgrzV69yNve8p3vjccZAa7HP8ImMLx0yZJr7CyFcqXDl0aHjvkRcZIr8clLWXMyRzGX
+X-Received: by 2002:a05:620a:2183:b0:67d:3a8a:feb3 with SMTP id g3-20020a05620a218300b0067d3a8afeb3mr12399292qka.338.1648373753349;
+        Sun, 27 Mar 2022 02:35:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648373753; cv=none;
         d=google.com; s=arc-20160816;
-        b=vqyybqSkMS8tkDjYpN4JA4XT925BYM6g6gDm/3jFf0OuL9ygRAPhyLU1Ad+oKgvq8M
-         OTgZJDqYi1gOK0s2CEkgNjWTs9XsEkecBihY/2nvnpBNJU3/D76KInXAGLvvG2fEWMEb
-         NGfHkMlATk5CWoyM4SMQdG/UYzu6/2fxUDv00Ad0wgvssJdDGmb+U8CcVcMQJicKAVuO
-         RUTVE8Eobk5daCpnb4wbeaJI5G6rqF2ovtn1mS/kBzZh/dLrIOUCOt03lU9+8xn7TO/N
-         Gpd1HhLz6i5/ODI8RnvWldNcL40vDtMBBZvlqHqfJTJnGByns18RyO5qOtniUjnthFp6
-         BQtQ==
+        b=LSJ4WTwBbWAP5ethuvJaSh6UYNq6a23ITNNadGLsR5ioMSE41EI2JQftyZ1gGqzHLO
+         ygZ/AzuSUEi5HrC1B+g77MnpBLfrBgA9AxhV/il59DEaXtnMRDFqIFH340dVC6W12MKJ
+         URWVzn+iBYb46a+gnFq+wCv9ftxeCwv460Tzm8oyyMGJALz5s3bvQk//JnejQQ97b+0t
+         zd8GFgESTJInrOK9smKxbePH3v1AfL8Mjp38rMQ6VzqvnY+CG98VAym8jTsAuh0vurzP
+         h1QUPTjgjsSwg93xQM9lf5E4KCKPTIhVMiGADeIMrK+dEci7iPK+WX5iSmh8grVhGUAj
+         bPfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=32ha3mXOG7idErYcB8ciYo6fEXlt3LYVju+O4kEI5V0=;
-        b=r2MVEDDg/1bGviN33Agf0dnGVayLRIDXU1FOMipgnmBQoxAIguBDNuYUfvNGnBebM5
-         KDgtncv/pdjw/lm+CVZV69koPdMI2lK2MVFRsH7NIbCGDf9boWSvLKyp7af5PALF7Gwr
-         Ff2th4j7gbU/bdijP6d5gMtwqFPIRSp+IeQUzH0mqGMPw5+hzLRN0ga1CVcdMUOqiQia
-         a0gQYUFOhlAisgJfrjl1tUVXaYiG/hSA7CID5VK5wg8FujtmzcJOKMGoNN2FqGmIrOyc
-         cFh38EobNUorvHvoVGEI1xMUVM5+RPBnLChpZq1MR0FGdWvS/h8HFDgib+dUTpDdp8jQ
-         BaHw==
+        bh=ABcxXaf3qNBOZkBqeTkKv0RGUyLEXj8LkCJhCdpicDw=;
+        b=MJXS+/TVoZtFvR9Wn9hu4BHGuRpQLhbJYOOyvA9eLa2IOPTGCGEXPwArCLgWOuvRrA
+         YUTFXairvMfJmLer+WjyUFRKnJdWdjzmGFf1YgN1hNr0BE40Bc19okJ4emPaAOVBSDlK
+         R/KGDBXVCJkIVamZLyM9RK1LzGqfWOMqB1VQMIR2WdfEazUw5jjq5Mv4Tt1kYL3GMkEr
+         QWUAG5tPJJMA3tU5clVN0hsXQJxNAlvLS2U/47d0453ZLwYfQL0DZL6FFgOUhf1GoOYl
+         3NdLLTZL8CTIm1Zox8hun6JuSJ+BbzIjmD2ePfwWe+BUbKeyEQDsb5/1Zc1xi6xssILD
+         MgYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BM9uKh0N;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="pSIXr/D6";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k5-20020a37ba05000000b0067e4be2397fsi3560767qkf.452.2022.03.27.02.35.51
+        by mx.google.com with ESMTPS id d8-20020a05620a240800b00680d004fb5asi241106qkn.224.2022.03.27.02.35.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 27 Mar 2022 02:35:51 -0700 (PDT)
+        Sun, 27 Mar 2022 02:35:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BM9uKh0N;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="pSIXr/D6";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47224 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nYPJP-0002lP-GC
+	id 1nYPJP-0002lk-Oc
 	for alex.bennee@linaro.org; Sun, 27 Mar 2022 05:35:51 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46132)
+Received: from eggs.gnu.org ([209.51.188.92]:46136)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <idan.horowitz@gmail.com>)
- id 1nYPIm-0002kP-Uf; Sun, 27 Mar 2022 05:35:17 -0400
-Received: from [2a00:1450:4864:20::331] (port=55201
- helo=mail-wm1-x331.google.com)
+ id 1nYPIm-0002kR-UH; Sun, 27 Mar 2022 05:35:17 -0400
+Received: from [2a00:1450:4864:20::432] (port=43611
+ helo=mail-wr1-x432.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <idan.horowitz@gmail.com>)
- id 1nYPIk-0002cE-3f; Sun, 27 Mar 2022 05:35:12 -0400
-Received: by mail-wm1-x331.google.com with SMTP id r64so6721042wmr.4;
- Sun, 27 Mar 2022 02:34:58 -0700 (PDT)
+ id 1nYPIk-0002cA-5N; Sun, 27 Mar 2022 05:35:12 -0400
+Received: by mail-wr1-x432.google.com with SMTP id a1so16302108wrh.10;
+ Sun, 27 Mar 2022 02:34:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=32ha3mXOG7idErYcB8ciYo6fEXlt3LYVju+O4kEI5V0=;
- b=BM9uKh0NXhgUy0rn8axSF5lMsBPvsJDMSi++snsjaIpuZDoLT1Rbfasq+mlOeD0Mpa
- SsLTCEtWlUjP2ryZGsVifHELBcry46equoDtuHYc3beBSEi2demhE8jUB5qXq9dMNlkw
- 6u7YGf6kpiXP8icmlcngsCVayjbvHBmES/9VTwK/+s3/4R9mFAm6icGG1ZCCfxNpmQzT
- J0wqGiNsT69d4wpKmZxybw1n5qoMZR7caE+gP4uz7cIq4SgoBma5mqpT8svPQ2zji9d4
- n0VeJNH4BkP0L4+O9ah7PgaNGQ4MF5ozAd0waBX7PDxeEuEaehMNLKd3gos3UQziudOj
- 9Hfw==
+ bh=ABcxXaf3qNBOZkBqeTkKv0RGUyLEXj8LkCJhCdpicDw=;
+ b=pSIXr/D60JHCWFbppP9W9FfpWA5WhalxobIpfIsok69jAR3A0Wf6VP4OVdZqaEGJ1Y
+ jA7TnFFMOXOxoOulO3hTNSa1xrq7Y2GMIUnNviKJcjn7X5Ql8Aykl0SK4zzFEi/Ydzda
+ WYRRm8LXIva2FsQKEc6ABIrMru+8ATRtdEHQBVgLgzwk6TCtCAm60ZNl3eytQF75hIgO
+ 8bTsSL3vwknf/6TljOdjpDtaPn0ZXma6sMi0QU0YnDSUb8DOGr9L2HX0hPgXMPogArn2
+ 1Hxxp8gndtJYc36X03iRjZc3DZBtaqoJloqnlTeOQ3d82LwMGk3tl1/omoN+nl2nm4sL
+ IFyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=32ha3mXOG7idErYcB8ciYo6fEXlt3LYVju+O4kEI5V0=;
- b=J6csn0SLC/q9OVoLjZ8ySbA7Wgh+3neBORWWduwruiX9gfWCLVf4185KsyeXf+FA0J
- pcZtJRBfjwwOPf/+KUpvRRtF6XI8Ot3xd0NRlWULVr7gX6/bnD+iRRPl1tzaGuvJou6w
- kwVATxghq/ffYSJ8obrTo33wNgVCXHwuSh7yG6K+LqVgQsTy6ejngwkhIzIYEzsBigas
- WMMtpG+32HnTIBTMEq0rGimoA8/OccyqVVMyb389MFI5Ona8MXZ510ksCiSbVDSI/DUm
- YlT/kP0guClmaQ+UONAnlOFazD1ClBV9U7GxZIxIZOEHpzNvtmrkMht+mr9m7h+DjcNl
- qlZA==
-X-Gm-Message-State: AOAM532BF2YG/u3IaVnFxIyEJlb5DCNzNojMzvFpf8qOBj5uwvdlIhb6
- RafkMe9DgU7Vm1zT4wF4ImjaMwlgneM=
-X-Received: by 2002:a05:600c:4f87:b0:38c:adde:1d99 with SMTP id
- n7-20020a05600c4f8700b0038cadde1d99mr27743614wmq.16.1648373696934; 
- Sun, 27 Mar 2022 02:34:56 -0700 (PDT)
+ bh=ABcxXaf3qNBOZkBqeTkKv0RGUyLEXj8LkCJhCdpicDw=;
+ b=auQNud8LtGgGh+4Vs0xTwzVePnF7Fdp1JxEmZgNM/U4P/talEiG7iKhjNaKWUc5q24
+ CK0spEPWBezrIfcBJF5zGGI+nwoMT4NCD2mYk7uqQ7oXOMDrFV4ZFf5QTVWMOW6qn3Pb
+ 8PqQ+Mp9CXMSQho4mi70xLUFohd8jWaIzxgWEhI9NCPAz5nTlBa5dd8YQBrxIwbGIQEf
+ 5WMggjmDP7U/QHRgwbYzn137bOMrNGPCx0B5HiqzhvjApQJIuatbyUmcdWx5lCQlpqvG
+ QoS5wefYPGYravulITQSBNSODOo5aQllAhJUpGCziftXH3QXIFMtaDBlu3qclp/qRDy7
+ 8D9g==
+X-Gm-Message-State: AOAM531RIfW36zjp5iTXBHQnwUW/ss2rIC0Ui9V3tu8Td+je+qMdrg5j
+ BZGA7wKAyL7zGBY15mBpBzpYs+94cwE=
+X-Received: by 2002:adf:ee41:0:b0:203:de82:c2aa with SMTP id
+ w1-20020adfee41000000b00203de82c2aamr16579584wro.390.1648373695801; 
+ Sun, 27 Mar 2022 02:34:55 -0700 (PDT)
 Received: from li-142ea8cc-3370-11b2-a85c-c55585c2aa0e.ibm.com.com
  (bzq-79-183-80-20.red.bezeqint.net. [79.183.80.20])
  by smtp.gmail.com with ESMTPSA id
- 14-20020a056000154e00b00203f8adde0csm11892039wry.32.2022.03.27.02.34.55
+ 14-20020a056000154e00b00203f8adde0csm11892039wry.32.2022.03.27.02.34.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Mar 2022 02:34:56 -0700 (PDT)
+ Sun, 27 Mar 2022 02:34:55 -0700 (PDT)
 From: Idan Horowitz <idan.horowitz@gmail.com>
 To: qemu-arm@nongnu.org
-Subject: [PATCH 2/3] target/arm: Take VSTCR.SW,
- VTCR.NSW into account in final stage 2 walk
-Date: Sun, 27 Mar 2022 12:34:27 +0300
-Message-Id: <20220327093427.1548629-3-idan.horowitz@gmail.com>
+Subject: [PATCH 1/3] target/arm: Check VSTCR.SW when assigning the stage 2
+ output PA space
+Date: Sun, 27 Mar 2022 12:34:26 +0300
+Message-Id: <20220327093427.1548629-2-idan.horowitz@gmail.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220327093427.1548629-1-idan.horowitz@gmail.com>
 References: <20220327093427.1548629-1-idan.horowitz@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::331
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::432
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=idan.horowitz@gmail.com; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=idan.horowitz@gmail.com; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -125,40 +125,30 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Idan Horowitz <idan.horowitz@gmail.com>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YDKLmY36xo/G
+X-TUID: rHLYiBqxOB4R
 
-As per the AArch64.SS2InitialTTWState() psuedo-code in the ARMv8 ARM the
-initial PA space used for stage 2 table walks is assigned based on the SW
-and NSW bits of the VSTCR and VTCR registers.
-This was already implemented for the recursive stage 2 page table walks
-in S1_ptw_translate(), but was missing for the final stage 2 walk.
+As per the AArch64.SS2OutputPASpace() psuedo-code in the ARMv8 ARM when the
+PA space of the IPA is non secure, the output PA space is secure if and only
+if all of the bits VTCR.<NSW, NSA>, VSTCR.<SW, SA> are not set.
 
 Signed-off-by: Idan Horowitz <idan.horowitz@gmail.com>
 ---
- target/arm/helper.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d0265b760f..e2695e846a 100644
+index 812ca591f4..d0265b760f 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -12657,6 +12657,16 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
-                 return ret;
+@@ -12697,7 +12697,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+                 } else {
+                     attrs->secure =
+                         !((env->cp15.vtcr_el2.raw_tcr & (VTCR_NSA | VTCR_NSW))
+-                        || (env->cp15.vstcr_el2.raw_tcr & VSTCR_SA));
++                        || (env->cp15.vstcr_el2.raw_tcr & (VSTCR_SA | VSTCR_SW)));
+                 }
              }
- 
-+            if (arm_is_secure_below_el3(env)) {
-+                if (attrs->secure) {
-+                    attrs->secure = !(env->cp15.vstcr_el2.raw_tcr & VSTCR_SW);
-+                } else {
-+                    attrs->secure = !(env->cp15.vtcr_el2.raw_tcr & VTCR_NSW);
-+                }
-+            } else {
-+                assert(!attrs->secure);
-+            }
-+
-             s2_mmu_idx = attrs->secure ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2;
-             is_el0 = mmu_idx == ARMMMUIdx_E10_0 || mmu_idx == ARMMMUIdx_SE10_0;
- 
+             return 0;
 -- 
 2.35.1
 

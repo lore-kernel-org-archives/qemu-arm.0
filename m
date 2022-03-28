@@ -1,177 +1,82 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp6619801lfb;
-        Mon, 28 Mar 2022 07:35:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwkgRgF1lZWpOJsIF4BOlN6IMiYybe96Qxr5sFV/kteeNxruvARozReCRcdfkeG7+b/Quv8
-X-Received: by 2002:a25:3f87:0:b0:633:bbe5:c9d9 with SMTP id m129-20020a253f87000000b00633bbe5c9d9mr22785669yba.115.1648478117029;
-        Mon, 28 Mar 2022 07:35:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648478117; cv=none;
-        d=google.com; s=arc-20160816;
-        b=SzbXcDoSj6+wFYreWRfHZOZP5gZpEQyBfm/2j3b9tTDnCk4sQZy81yTbTH3yneaCro
-         0ZnNmwggLCfoo393FYnilJWVvnCQnd0RyfpjjNi+eLHSeZldXwj21WvfUaJL5NcvLrCe
-         3NXufPJmG1J8J3a2JRkD58L/g3MXnPoQeQw09/oO+0Y5Ar1YbrK/TtN+LdmA42ulGrUY
-         mbi/8qkkLmXLxx4Kh9oTbOET9HRBAz0ERhFbhXyrFz3XMzj4eOfpCRsjdJgGx7f+uUGl
-         lNDVmxniLHvdNgaNsFNJgO6YKri0VC+SVLYcFitJe/zDxSEo1WCvJ55fiOXodwWH7cHG
-         2izA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=cQOEpe+aApr+lxNUAvMG0buoV4BXygSdbl/gcTTnX64=;
-        b=oT5UZNu5Ucd6W/C2odVCL2ShKxgQt+ZEBshq5SKqxpgrMkIKOlaExwJk8wOxyxQZSt
-         WIEVTvqQG2QE5rF038qUvRb2zg8tpd2Y2N54p/YALsLXv5XuNIT8VBBcH3ODkpaSEf6Y
-         uJx3/cwsf1/cHXQy2arKVWxtMGmyDz0ihFGhMhpXqNDTH8c0S3WgJFsY0xDZq7uJURkS
-         tdE48E0AskBp2kC5s1PnfJ6OSPeKNNPjizVUGzco4SbbD6iMOZbIds35fJsAYEmih1+t
-         PCACaMUHIDj9Jgfhfv4wL/LMNbCuXD4qdlkxbN4i2kF6VpHjk0WVfzU7qZEEj+gI4Hu6
-         iztw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d184-20020a25cdc1000000b006339940451bsi12515473ybf.389.2022.03.28.07.35.16
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Mar 2022 07:35:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37134 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nYqSi-0004cW-CV
-	for alex.bennee@linaro.org; Mon, 28 Mar 2022 10:35:16 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44908)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nYqE6-00085U-JZ
- for qemu-devel@nongnu.org; Mon, 28 Mar 2022 10:20:10 -0400
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:60873)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nYqE4-0007su-D9
- for qemu-devel@nongnu.org; Mon, 28 Mar 2022 10:20:10 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.121])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 6D37FF081018;
- Mon, 28 Mar 2022 16:20:04 +0200 (CEST)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Mon, 28 Mar
- 2022 16:20:03 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G003c323555a-22b1-404b-974c-152a9f247df8,
- CFE7A3AAE61928554BF17059C30BCFB3D76DD066) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <6e3fd836-6aa9-61bd-e84a-8ce5a4b8a693@kaod.org>
-Date: Mon, 28 Mar 2022 16:20:02 +0200
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id i1-20020a05600c354100b0038cceb205besm12097704wmq.7.2022.03.28.08.26.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Mar 2022 08:26:15 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 95E831FFB8;
+	Mon, 28 Mar 2022 16:26:14 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: minyihh@uci.edu,
+	ma.mandourr@gmail.com,
+	Luke.Craig@ll.mit.edu,
+	cota@braap.org,
+	aaron@os.amperecomputing.com,
+	kuhn.chenqun@huawei.com,
+	robhenry@microsoft.com,
+	mahmoudabdalghany@outlook.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v1 1/2] tests/tcg: add memory-sve test for aarch64
+Date: Mon, 28 Mar 2022 16:26:13 +0100
+Message-Id: <20220328152614.2452259-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220328152614.2452259-1-alex.bennee@linaro.org>
+References: <20220328152614.2452259-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v1 9/9] test/avocado/machine_aspeed.py: Add ast1030 test
- case
-Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Alistair Francis
- <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, Andrew
- Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Cleber Rosa
- <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
- Leal <bleal@redhat.com>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20220322025154.3989-1-jamin_lin@aspeedtech.com>
- <20220322025154.3989-10-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220322025154.3989-10-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 6170a3af-310b-449e-aa9f-688770599e7e
-X-Ovh-Tracer-Id: 14128917931981573051
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudehjedgjeeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepueevledvjeetgeetfeeiveeftefffedvvdeikeetveelfeeglefgueetvdefvdefnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomh
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: troy_lee@aspeedtech.com, steven_lee@aspeedtech.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Im2Wo2p4xule
+X-TUID: psOU4GsIBHPc
 
-On 3/22/22 03:51, Jamin Lin wrote:
-> Add test case to test "ast1030-evb" machine with zephyr os
-> 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+This will be helpful in debugging problems with tracking SVE memory
+accesses via the TCG plugins system.
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Robert Henry <robhenry@microsoft.com>
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
+---
+ tests/tcg/aarch64/Makefile.softmmu-target | 7 +++++++
+ tests/tcg/aarch64/system/boot.S           | 3 ++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
-
-Thanks,
-
-C.
-
-> ---
->   tests/avocado/machine_aspeed.py | 36 +++++++++++++++++++++++++++++++++
->   1 file changed, 36 insertions(+)
->   create mode 100644 tests/avocado/machine_aspeed.py
-> 
-> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-> new file mode 100644
-> index 0000000000..33090af199
-> --- /dev/null
-> +++ b/tests/avocado/machine_aspeed.py
-> @@ -0,0 +1,36 @@
-> +# Functional test that boots the ASPEED SoCs with firmware
-> +#
-> +# Copyright (C) 2022 ASPEED Technology Inc
-> +#
-> +# This work is licensed under the terms of the GNU GPL, version 2 or
-> +# later.  See the COPYING file in the top-level directory.
-> +
-> +from avocado_qemu import QemuSystemTest
-> +from avocado_qemu import wait_for_console_pattern
-> +from avocado_qemu import exec_command_and_wait_for_pattern
-> +from avocado.utils import archive
-> +
-> +
-> +class AST1030Machine(QemuSystemTest):
-> +    """Boots the zephyr os and checks that the console is operational"""
-> +
-> +    timeout = 10
-> +
-> +    def test_ast1030_zephyros(self):
-> +        """
-> +        :avocado: tags=arch:arm
-> +        :avocado: tags=machine:ast1030-evb
-> +        """
-> +        tar_url = ('https://github.com/AspeedTech-BMC'
-> +                   '/zephyr/releases/download/v00.01.04/ast1030-evb-demo.zip')
-> +        tar_hash = '4c6a8ce3a8ba76ef1a65dae419ae3409343c4b20'
-> +        tar_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-> +        archive.extract(tar_path, self.workdir)
-> +        kernel_file = self.workdir + "/ast1030-evb-demo/zephyr.elf"
-> +        self.vm.set_console()
-> +        self.vm.add_args('-kernel', kernel_file,
-> +                         '-nographic')
-> +        self.vm.launch()
-> +        wait_for_console_pattern(self, "Booting Zephyr OS")
-> +        exec_command_and_wait_for_pattern(self, "help",
-> +                                          "Available commands")
-
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index a7286ac295..cc02814065 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -31,6 +31,13 @@ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
+ 
+ memory: CFLAGS+=-DCHECK_UNALIGNED=1
+ 
++memory-sve: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
++
++memory-sve: CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3 -fno-tree-loop-distribute-patterns
++
++TESTS+=memory-sve
++
+ # Running
+ QEMU_BASE_MACHINE=-M virt -cpu max -display none
+ QEMU_OPTS+=$(QEMU_BASE_MACHINE) -semihosting-config enable=on,target=native,chardev=output -kernel
+diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
+index e190b1efa6..f136363d2a 100644
+--- a/tests/tcg/aarch64/system/boot.S
++++ b/tests/tcg/aarch64/system/boot.S
+@@ -179,12 +179,13 @@ __start:
+ 	isb
+ 
+ 	/*
+-	 * Enable FP registers. The standard C pre-amble will be
++	 * Enable FP/SVE registers. The standard C pre-amble will be
+ 	 * saving these and A-profile compilers will use AdvSIMD
+ 	 * registers unless we tell it not to.
+ 	*/
+ 	mrs	x0, cpacr_el1
+ 	orr	x0, x0, #(3 << 20)
++	orr	x0, x0, #(3 << 16)
+ 	msr	cpacr_el1, x0
+ 
+ 	/* Setup some stack space and enter the test code.
+-- 
+2.30.2

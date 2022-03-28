@@ -1,195 +1,170 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp6351706lfb;
-        Mon, 28 Mar 2022 02:04:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy1euzfg/UnbAv2BuVQtbp0BlhdsGkMezlTKvA8D4RB/c8DnSNWulhIAkZUMSnAuzuLI5/q
-X-Received: by 2002:a05:622a:c3:b0:2e3:4bd0:16c2 with SMTP id p3-20020a05622a00c300b002e34bd016c2mr17296465qtw.575.1648458254926;
-        Mon, 28 Mar 2022 02:04:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648458254; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp6356338lfb;
+        Mon, 28 Mar 2022 02:12:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwaUyKN/4/rdE+X/qG0eXxFO8g5dEtOE3rEYtcNh+BmgPH5wXPqDvcDpENYJWH3hnk/kYND
+X-Received: by 2002:ad4:5b8f:0:b0:441:248c:2ae0 with SMTP id 15-20020ad45b8f000000b00441248c2ae0mr20204000qvp.39.1648458763576;
+        Mon, 28 Mar 2022 02:12:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648458763; cv=none;
         d=google.com; s=arc-20160816;
-        b=s4rURHnco0DMRIgZo6cUItM8UPUyKCH/0HwJJk3U3xXcb6XmFWzFCd4k9PbX7tjZHw
-         BeTjLnJwIO7IddJdYDqKwAtLhSd9f+4pQ43ZBBdfR1roi/iAC8C7tnJCR33Pt258IzFR
-         Hf8Pq4qVs1TLxnWpn9n4iNoPIdTjCZNGSlrZNNwG6Zo1yKKPvamSGldA4UXzEIEX/5XP
-         haB15h0fI+t+tLFW840BhJcQDZkRJmN4Z3eXH/86QtdqQm/SSlIC4SdV+0HGb15JXzPx
-         Lm6VjIX720QafDpDnBPQjq+nSwFIQnaDl1Xiquh4EvVH+tHsAzxfIS+pD6k2D0cw8zo2
-         Qe3A==
+        b=LjvQBdVfshR6V2lEx8K4MbEScAN75x6trC3/ms208Ln7rJdyPSZItrXa3cgC/BS+Zl
+         Hs+pigAkzlPwSermMu4+8m+wsGQPRqYY3Dqc8TfByLZth53hPxIOrabhywJD4mmGI/uR
+         HoOVlQFhgSZj4nvbiCI+9RnO/iHeTTBy7ztGZld4BWyHEkNtV33jtbFNcVGMLMU6n5mv
+         D7SS/HXXtCw7EpE+fiabGzKKFOm4zxgdKHkZ80susbt8ttRL1tcRua/s23HYtQAhKOIS
+         UuF1IRaUza08GLcS3eOVOmPbzfSL2wpVWAxTctjL65CG/zv7e5fZkVoQzCSuuHQFhWd6
+         yIBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:organization:from:references:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=J39e8FA2XtscteLJdIcwcztYWilj7EA5WfvxF80HFyA=;
-        b=rLKch5bKhlbfs1RgDdL3Lqokk+v+61N9py4aFc++F5mseyk7sSnvezA6m+z2BhN1aS
-         Ul89BFUfFeStIdB24telrMshOsAyeqJ8Us2iLGX1celb8YSH+uCMDlgu2foYawvEbYvr
-         KQ2nrT/SAE/VK3xJDUJ/BEKqFwhbl/w3C6Yi3PckKUlnaCo9cHHUub2ME3GBt07xjQWf
-         OjJFvSciMHfoclYqn3kA82JR/87T4v5vMaH1esxWtJPnH0p7tYmeaNFO8wYMTRSGJZWS
-         HcD8aYKWlpeFr81XlYLYR9xIwqcEw/Kq+kiF+R2Sd1WoeF6rAfua2YUHEI+g4kz5iOiO
-         RFvw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=vbZTUE3w+OHXmU+zmX9lDlYAc35V1rdIsjWszz2GshI=;
+        b=wKxxNqgrsPuMrdd9KAJaNe/+HrfCKurxn5W/3S1EzCm2CRGH+Sp7s8pZ2F9L4284Id
+         xcWdafbsj5UiGbQBKHpL7OssmmMWe7uq+ChuDjPoRta1hXo74FFyRvgUujUN+KWix1jF
+         MTbv+X7fAi/GPU/b1VrRBGJkCEBK+WLNv29VTlLmIQ67tW/I0lrVT6ecc4Bzq2lgb4xN
+         gQCTUotap8ydbjie1a7sme1rpFuG9TBIXqeKIrunUofqrkOWCIS7TvIZnBbz7vPCicfY
+         FdJ07xFd7JPV4MpRASETD/Oahc+J59IihC4s7uMKcuLnKk55puuk308s1+yZgsU/LXoY
+         CSJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UNNF90TG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=PTJbX99N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l5-20020ac848c5000000b002e204ad5ca8si5673597qtr.600.2022.03.28.02.04.14
+        by mx.google.com with ESMTPS id x18-20020a05620a449200b0067e4be238cdsi8021258qkp.274.2022.03.28.02.12.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Mar 2022 02:04:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 28 Mar 2022 02:12:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UNNF90TG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49584 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=PTJbX99N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58796 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nYlIM-0004KH-Ew
-	for alex.bennee@linaro.org; Mon, 28 Mar 2022 05:04:14 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58738)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nYlQZ-0002R0-3j
+	for alex.bennee@linaro.org; Mon, 28 Mar 2022 05:12:43 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60638)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1nYlFS-0002mc-6n
- for qemu-devel@nongnu.org; Mon, 28 Mar 2022 05:01:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:29835)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1nYlFQ-0005Cc-HH
- for qemu-devel@nongnu.org; Mon, 28 Mar 2022 05:01:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648458070;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=J39e8FA2XtscteLJdIcwcztYWilj7EA5WfvxF80HFyA=;
- b=UNNF90TGYvb08fetxcpRfkoseCrNJJTYElmMcWnNeJ8AN6uiUH5DuHCdnAT1gFJMmviKv/
- ZJ8ySEH2rdiAwCalftmTJKsyMX7N9deGsuGMuobPSh06yGALfhpUiYWU1EEEUAZN0QKkKq
- Dz4p4TIDnz2pAWdzT+OpFH/LGeyUCxk=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-168-gkHYF0h_NiyS-Y_IZ0D9Vg-1; Mon, 28 Mar 2022 05:01:09 -0400
-X-MC-Unique: gkHYF0h_NiyS-Y_IZ0D9Vg-1
-Received: by mail-wm1-f69.google.com with SMTP id
- q6-20020a1cf306000000b0038c5726365aso5434925wmq.3
- for <qemu-devel@nongnu.org>; Mon, 28 Mar 2022 02:01:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nYlQH-0002QJ-FX
+ for qemu-arm@nongnu.org; Mon, 28 Mar 2022 05:12:25 -0400
+Received: from [2607:f8b0:4864:20::b2d] (port=41482
+ helo=mail-yb1-xb2d.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nYlQF-0006wj-Uq
+ for qemu-arm@nongnu.org; Mon, 28 Mar 2022 05:12:25 -0400
+Received: by mail-yb1-xb2d.google.com with SMTP id y38so22226785ybi.8
+ for <qemu-arm@nongnu.org>; Mon, 28 Mar 2022 02:12:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=vbZTUE3w+OHXmU+zmX9lDlYAc35V1rdIsjWszz2GshI=;
+ b=PTJbX99NdsV6CochF1UQ4gg9SkFbx2yqPKH1u2g1IVeZccPcF6w06Z5IxC2c91VAMj
+ CSpmeTsbIg9vmD+ANbIPAaOAFX/lmzOkr3IO0Nyjhelk9L4zSftiFXPgynr/KdJ2Qn99
+ 9bu6Y2RHCPUOvIsKbxyfhrG3qAdTctQkeqSq/FSjNa4lT2BV2sR3C88ESDH59AEqIA2b
+ FIvmwt29qkLF6GZ13l4eI74tbpn0J/tlc4nEW/ogwJu2fTx1dT2XTBpbUoENvO3W5hE3
+ 93zwkuJSUsGwrnqIiqFzUW9y4rMbkLCmuwxEq5Xe14YurEteUgJmyjtY3u1h3Q4Sk0BW
+ y8AQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:organization:in-reply-to
- :content-transfer-encoding;
- bh=J39e8FA2XtscteLJdIcwcztYWilj7EA5WfvxF80HFyA=;
- b=rtOTrFJvhCrjYAEzOxYqJMp/ZJ4g1oHIoNyt6WwLLOnzNFBK+pnbptxiybElHM6E8X
- iDIi1cjEBJ8So1A7X1Y9w2YlgwC3bhCqgOOcGj4iSw7gQ9FuugzFjJBbWyFfXDeYFzpS
- g32XBJePfzVef6L4mjtHhKPqQ4OMJoh2FMuSQ1z3E4HxsOJhUrxvKVFT1OnoXi89adjE
- FXVqxnP4Z0S3TevivU1zbUS4DJgI/kgaHyR7qXw+rYYnFUSOcqTyMgdbqDR7SHpqmG3x
- bRvhlv3x4wYiv2P+5arNSH8CekzTnGuoNPXg4BA7JfcseyPl5KlNfiVzuHZ07Rvon/pH
- 2w9w==
-X-Gm-Message-State: AOAM531gErCMA13lXUM/MNdyOj0gAB8m0uoLDQDI0101rK+Mme810KCE
- Y/Bv4QYm6+9rswgk9XF1JfDgAY8OrbTifMHH+85MWxvibcKQIGGwzH3SJW6dSYzlNzwFa7F2ce3
- c4XlcqGgbMKtH350=
-X-Received: by 2002:a05:600c:1c1e:b0:38c:b393:b355 with SMTP id
- j30-20020a05600c1c1e00b0038cb393b355mr24605595wms.92.1648458068045; 
- Mon, 28 Mar 2022 02:01:08 -0700 (PDT)
-X-Received: by 2002:a05:600c:1c1e:b0:38c:b393:b355 with SMTP id
- j30-20020a05600c1c1e00b0038cb393b355mr24605534wms.92.1648458067536; 
- Mon, 28 Mar 2022 02:01:07 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c704:2200:50d1:ff5c:5927:203a?
- (p200300cbc704220050d1ff5c5927203a.dip0.t-ipconnect.de.
- [2003:cb:c704:2200:50d1:ff5c:5927:203a])
- by smtp.gmail.com with ESMTPSA id
- v18-20020adfc5d2000000b0020589b76704sm12350665wrg.70.2022.03.28.02.01.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Mar 2022 02:01:07 -0700 (PDT)
-Message-ID: <73ff23ac-c4db-f0f1-e3fa-5041cab5b89b@redhat.com>
-Date: Mon, 28 Mar 2022 11:01:06 +0200
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=vbZTUE3w+OHXmU+zmX9lDlYAc35V1rdIsjWszz2GshI=;
+ b=ws2dHRyHRGWZGV7GttBVDUA93/MeGJbHPl+9uQlWdg0YYU10XN2CjD1tsCSw6TduFv
+ vPdaphr5cggbB2d9QVA72sjfgjWdzUF6SQwOxpXadF6PyXmkiPlBCadlA8iXuZLMjP1E
+ sX/U6AjDyLi4yhjbj3NAhmDPvA6EJeFJ5R4oaVPrLaSbv4jM34iLDLeOCY7917esKu3Y
+ 03nMmeSWqUsdv7OI0ZdhdiSPtxWIlijpc8iD7FsItQfZlVo+WPtg2onmX+PSqzNSxIsb
+ RCVSupc5XFvGDFSQ1QKXx/jIT2hzWPkUtdUuu4YH53aavfv1CZFcEYJO9ZrgmbnaA3KL
+ Cx3Q==
+X-Gm-Message-State: AOAM533nfSy47KDbz35T3o4Wf6oycTNavgtQUWahhltLSnv5nYUWgQcE
+ 2IzRD2slRdXSaNHPEkGmFdY1kQSBl8LnhzppLSGx/A==
+X-Received: by 2002:a05:6902:150d:b0:634:5046:d294 with SMTP id
+ q13-20020a056902150d00b006345046d294mr21044234ybu.140.1648458743135; Mon, 28
+ Mar 2022 02:12:23 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.2
-Subject: Re: [PATCH 5/5] s390x/tcg: fix format-truncation warning
-To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
 References: <20220328084717.367993-1-marcandre.lureau@redhat.com>
- <20220328084717.367993-6-marcandre.lureau@redhat.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <20220328084717.367993-6-marcandre.lureau@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <20220328084717.367993-3-marcandre.lureau@redhat.com>
+In-Reply-To: <20220328084717.367993-3-marcandre.lureau@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 28 Mar 2022 09:12:09 +0000
+Message-ID: <CAFEAcA8Bqf8Jaqdx5PP_37ZY68cyUUyZagY1JcxCSFSiVGURuQ@mail.gmail.com>
+Subject: Re: [PATCH 2/5] arm/digic: fix format-truncation warning
+To: marcandre.lureau@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b2d
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2d.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
  Beniamino Galvani <b.galvani@gmail.com>, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>,
  Stefan Hajnoczi <stefanha@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bU9vhUf5uv7E
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: P0ICx1lFcVyR
 
-On 28.03.22 10:47, marcandre.lureau@redhat.com wrote:
-> From: Marc-André Lureau <marcandre.lureau@redhat.com>
-> 
-> ../target/s390x/tcg/translate.c: In function ‘s390x_translate_init’:
-> ../target/s390x/tcg/translate.c:224:64: error: ‘%d’ directive output may be truncated writing between 1 and 11 bytes into a region of size 3 [-Werror=format-truncation=]
->   224 |         snprintf(cpu_reg_names[i], sizeof(cpu_reg_names[0]), "r%d", i);
->       |                                                                ^~
-> 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+On Mon, 28 Mar 2022 at 09:47, <marcandre.lureau@redhat.com> wrote:
+>
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>
+> ../hw/arm/digic.c: In function =E2=80=98digic_init=E2=80=99:
+> ../hw/arm/digic.c:45:54: error: =E2=80=98%d=E2=80=99 directive output may=
+ be truncated writing between 1 and 11 bytes into a region of size 5 [-Werr=
+or=3Dformat-truncation=3D]
+>    45 |         snprintf(name, DIGIC_TIMER_NAME_MLEN, "timer[%d]", i);
+>       |                                                      ^~
+>
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->  target/s390x/tcg/translate.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/s390x/tcg/translate.c b/target/s390x/tcg/translate.c
-> index 5acfc0ff9b4e..a082342a0424 100644
-> --- a/target/s390x/tcg/translate.c
-> +++ b/target/s390x/tcg/translate.c
-> @@ -199,7 +199,7 @@ static TCGv_i64 regs[16];
->  
->  void s390x_translate_init(void)
->  {
-> -    int i;
-> +    size_t i;
->  
->      psw_addr = tcg_global_mem_new_i64(cpu_env,
->                                        offsetof(CPUS390XState, psw.addr),
-> @@ -221,7 +221,7 @@ void s390x_translate_init(void)
->                                     "cc_vr");
->  
->      for (i = 0; i < 16; i++) {
-> -        snprintf(cpu_reg_names[i], sizeof(cpu_reg_names[0]), "r%d", i);
-> +        snprintf(cpu_reg_names[i], sizeof(cpu_reg_names[0]), "r%zu", i);
->          regs[i] = tcg_global_mem_new(cpu_env,
->                                       offsetof(CPUS390XState, regs[i]),
->                                       cpu_reg_names[i]);
+>  hw/arm/digic.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+>
+> diff --git a/hw/arm/digic.c b/hw/arm/digic.c
+> index 614232165cdc..6df554797734 100644
+> --- a/hw/arm/digic.c
+> +++ b/hw/arm/digic.c
+> @@ -39,10 +39,7 @@ static void digic_init(Object *obj)
+>      object_initialize_child(obj, "cpu", &s->cpu, ARM_CPU_TYPE_NAME("arm9=
+46"));
+>
+>      for (i =3D 0; i < DIGIC4_NB_TIMERS; i++) {
+> -#define DIGIC_TIMER_NAME_MLEN    11
+> -        char name[DIGIC_TIMER_NAME_MLEN];
+> -
+> -        snprintf(name, DIGIC_TIMER_NAME_MLEN, "timer[%d]", i);
+> +        g_autofree char *name =3D g_strdup_printf("timer[%d]", i);
+>          object_initialize_child(obj, name, &s->timer[i], TYPE_DIGIC_TIME=
+R);
+>      }
 
-Ehm, what?
+This is a clear compiler false positive, given that DIGIC4_NB_TIMERS is 3.
+But this is a nicer way to write the code than the static array anyway.
 
-How can "r0" ... "r15" ever consume more than 3 bytes + "\0"?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
--- 
-Thanks,
-
-David / dhildenb
-
+thanks
+-- PMM

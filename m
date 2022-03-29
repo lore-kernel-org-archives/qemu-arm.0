@@ -1,186 +1,171 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp105245lfb;
-        Tue, 29 Mar 2022 07:45:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwzC1tzrY2h4PjJPlXfz34wXWe9fHwWmCq6DNLOJ9j1T/hBZ1VPBJfCto1TfSCTmscs+Pgg
-X-Received: by 2002:a25:e78b:0:b0:633:bccb:751a with SMTP id e133-20020a25e78b000000b00633bccb751amr27882768ybh.95.1648565137832;
-        Tue, 29 Mar 2022 07:45:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648565137; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp124087lfb;
+        Tue, 29 Mar 2022 08:04:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwNxlOWZIfdlcqP3wT7h/w1yY22CVZBaHGHVbXgxE3F5GVU/+doKwlhQKQJ6yNqTl7eBUQv
+X-Received: by 2002:a05:620a:1a99:b0:680:f33c:dbd3 with SMTP id bl25-20020a05620a1a9900b00680f33cdbd3mr1140488qkb.17.1648566255656;
+        Tue, 29 Mar 2022 08:04:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648566255; cv=none;
         d=google.com; s=arc-20160816;
-        b=DavqP5UoPns0l/Vv1lzpAelRwbjVZ2q0WnEPNhknzDm09sVcADlNIbXE0dQKTTfVaG
-         jE6TepAOkHvYO2aysyTaBAbd4YJ932SORljddiQ4RuN0Etv/iSA6unsSgsJhUU/585Sq
-         XuH0KLtrw0TruDojKGaFV9rQm9PSCPDc6Gm7CfO9yDL1/pUa5JSN3ZX1oEqxlJvn79SX
-         REmkyHEm+NYV6LMn7tIkKkv7fPb8ES5Bu88YxyUfNLusswlrW6YWJUHkhzU/KJ/tJjlw
-         cQgHNzd+kcvt84pkHANF1iCJ/l0enpSq4sBt8gPB0bzKzTLnnRP2VF2n/y+F47ox6Pgk
-         0KrQ==
+        b=JlXl3vycmJNv0t9X+KNFosYv4cDbWq8H4NeBUQLGua78aaPMc8C3Hckj3d+8+vraEz
+         iAC9ZeuNwTCDsl7zlFBv8Exb5XAA1jaVepNXR7ou410ugqyxqipIPShUaYe0pAcqgWMl
+         TouD2wBQ05tpW8DkKVo4R+QewgpbiGi1fDEoaqq7sGxuyD8QmtWTwnEJcMuwmoeLuT0H
+         122h9Lgw30/D24pquG5cgTUXrr/GKdhgGD1bymUP6mpnazUUEvPYHAXjL6UoA2bHIx+m
+         cUZmC+HI9M9RTfvBJkDwWdBeG31aWT7OQUOzj7mCkdud8j2PCeEZNrH97prGUVLUhbGO
+         3Nug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:to:subject:user-agent
+         :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=BqAiok2sgOt2PKfdMzgveAKANUwwc8tkRT1e3d5u9UY=;
-        b=F4U/jkr9SzlrxL/Atfo7Eu7QV9TArIpq698ySEIb0M1FhTudr+oLvSZx2BkD4eysak
-         pbiQgHIKyzf0GKTX7Jw7dhbBCBz5fTwZkG8UIYtGHrwMt+wNoYXXfMvZuTEcNs8XGmAi
-         wA7h4Mly5paO4K7D1KDlwzj1wtB08UYnBaOUi82w0TkjNtMhleuEqu1YcWDSA3AsOvb8
-         7Cmxa9TwjOIFg8fI3iFtwMSplryClz+U3TFuJ04CI91D+xBkQzFBh8xAeTKxUh/Vjqdf
-         U4xVUc8G5Givw6fE12Ns+O0ga0InhobcAk9IK43+1wxa64GAk7BKJFAkGnD72qrw18PV
-         JYnA==
+        bh=/u1YbhytL1Z+h05H+2dXpIQWkpWGoEktTYiMH5Y6Gy8=;
+        b=ZnI2n7a33xh1Nvb3PaMlUKMM/nOYA3v+GmC+nO5HcPzyYK/nFGEVycS7kMGbwRLgMv
+         1kjllIrQ9uElbUhwN224IdHzw6Ma/TBI15vUuroi5E8e17GMxVCeACE1Nur6kMpNbBWT
+         p7UjZq/9DnOeA5CMO2414YWZLktTj0zXbQE0B1qRRt+DY/CewHdk1Y3jLRAq1QtyXJz/
+         lvdc6b/0U0Yu0lJWEZSPAa2V8GOxvgE13e0Iz3i4J/+lKwaelgDd/hfx8JYyQcYe4HMk
+         6WtIDbLKvz04XFr1auRY8AeTXPOvn7CR0M94yIGcAt/oN1E2OGPSkL2rUa26hGbGpF/Q
+         jwbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ihU71G4z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=GlxEYXeH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y190-20020a814bc7000000b002e5bb9dca7csi18081468ywa.261.2022.03.29.07.45.37
+        by mx.google.com with ESMTPS id g10-20020ac8070a000000b002e1fbf3c085si8265182qth.630.2022.03.29.08.04.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Mar 2022 07:45:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Mar 2022 08:04:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ihU71G4z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56788 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=GlxEYXeH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50908 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nZD6H-00043Y-7c
-	for alex.bennee@linaro.org; Tue, 29 Mar 2022 10:45:37 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43350)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nZDOJ-0003xO-3F
+	for alex.bennee@linaro.org; Tue, 29 Mar 2022 11:04:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nZD5i-00041n-2Q
- for qemu-arm@nongnu.org; Tue, 29 Mar 2022 10:45:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:32743)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nZD5f-0000kI-7f
- for qemu-arm@nongnu.org; Tue, 29 Mar 2022 10:45:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648565098;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BqAiok2sgOt2PKfdMzgveAKANUwwc8tkRT1e3d5u9UY=;
- b=ihU71G4zHWFr+41W8WzCEODu3RRB3swa1kgDArdcfEkc0L2EOeZRIW5vYMFFkFXYvGZqx/
- nfcaBIHV8PPOecvO4RFY+wn/ofj7A4S+eliloenrmw7AoD9RIyOaNFnQ39hfidNrdvgemn
- 8Fv6DIfRCZUbRHJidjGAyp+5+G9LSJU=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-251-NqjBSO5MOkyDW2naxN4hqQ-1; Tue, 29 Mar 2022 10:44:52 -0400
-X-MC-Unique: NqjBSO5MOkyDW2naxN4hqQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0262185A5A8;
- Tue, 29 Mar 2022 14:44:52 +0000 (UTC)
-Received: from [10.33.192.183] (dhcp-192-183.str.redhat.com [10.33.192.183])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3A41840CFD02;
- Tue, 29 Mar 2022 14:44:50 +0000 (UTC)
-Message-ID: <5c250438-83c7-679b-edab-9704823df474@redhat.com>
-Date: Tue, 29 Mar 2022 16:44:49 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nZDJz-0006du-0n
+ for qemu-devel@nongnu.org; Tue, 29 Mar 2022 10:59:48 -0400
+Received: from [2607:f8b0:4864:20::22e] (port=36541
+ helo=mail-oi1-x22e.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nZDJx-0003EF-Gt
+ for qemu-devel@nongnu.org; Tue, 29 Mar 2022 10:59:46 -0400
+Received: by mail-oi1-x22e.google.com with SMTP id z8so19287603oix.3
+ for <qemu-devel@nongnu.org>; Tue, 29 Mar 2022 07:59:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=/u1YbhytL1Z+h05H+2dXpIQWkpWGoEktTYiMH5Y6Gy8=;
+ b=GlxEYXeHkGr9L14dozdGPY1R1gc+OZ2QGxe8oa0yFecnZ6fvcN1WUie/WKKOMmjwPj
+ 5pkQTgJyQOvOZjIfeQmGpOsgm3pJszlgsaLt/komGqFGsrFWaraGYifnV1RaSOdCtwvY
+ o4HyN9P2JN+PRfCQas9AsmUqyIreL686SchD6AgtZcax5gFaxfJMUGSuLl7R5U3DTTUs
+ olYh3PBJh9mcmnspLWMHdytmmrHmLO84sSGRrudllUvVGKdZyOxOnC13S0qMK30PWNGS
+ D3zP8bObOzjaqAv4GXkjYU0s8iOOtxCRep45TJaSwtBVlj9YMseI9TUQ1YvsXUPWbgDe
+ fvmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=/u1YbhytL1Z+h05H+2dXpIQWkpWGoEktTYiMH5Y6Gy8=;
+ b=r8DtlI4BPYI/YZfqduzoX3V/WfDj1StIIExmNprTD/OvIgkPTajOHB4j4EriMptucC
+ GkR8lq44zWe9cvnNAJOlQapGsw2QxF+1VoOswTLj9j2HWevzCzUIjbrFGRMGZthRpqJn
+ pVsJt1qfyOTAYnIUL/aP/eiQJ3ivKbC0hZE4E8fyyWPVVbQXWHoKvwPtB2rpkugcr4hG
+ fhZWajwelhMpnkBBqz6xkxCgZtJc0LpnRbRRcXlTb5ncFl4CRGCUaGQWUgFCXtmfsZk1
+ cDwbRvN9n8QRXWxMXNg/bnhm1qHjIzuY321qYnpPxVdDF1T7gApYxpAyYyKFcBEI2VAn
+ nzwA==
+X-Gm-Message-State: AOAM530q6/S+BM33bboOcQw1nVfDA/8bt0Q2mDP+CJskFiggz6Z3w0Cx
+ 6SE6R5z0/xCLdjC0exuuYxgTnA==
+X-Received: by 2002:a54:4589:0:b0:2ec:d236:90d with SMTP id
+ z9-20020a544589000000b002ecd236090dmr17224oib.55.1648565983615; 
+ Tue, 29 Mar 2022 07:59:43 -0700 (PDT)
+Received: from [172.24.1.26] (168.189-204-159.bestelclientes.com.mx.
+ [189.204.159.168]) by smtp.gmail.com with ESMTPSA id
+ s42-20020a4a96ad000000b00324c54e9cf5sm7702994ooi.4.2022.03.29.07.59.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 29 Mar 2022 07:59:43 -0700 (PDT)
+Message-ID: <fab87e98-8708-53c9-96b1-0cf067f5dce4@linaro.org>
+Date: Tue, 29 Mar 2022 08:59:40 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH 5/5] s390x/tcg: fix format-truncation warning
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20220328084717.367993-1-marcandre.lureau@redhat.com>
- <20220328084717.367993-6-marcandre.lureau@redhat.com>
- <ae138d83-d3b6-3fc0-4279-e804126b9ed4@redhat.com>
- <CAMxuvaxHgVy-JA+XzAKJ4cjGYefpxyE_fmMLRqzPQPjVQKV8yg@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <CAMxuvaxHgVy-JA+XzAKJ4cjGYefpxyE_fmMLRqzPQPjVQKV8yg@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 1/3] target/arm: Check VSTCR.SW when assigning the stage 2
+ output PA space
 Content-Language: en-US
+To: =?UTF-8?Q?R=c3=a9mi_Denis-Courmont?= <remi@remlab.net>, qemu-arm@nongnu.org
+References: <20220327093427.1548629-1-idan.horowitz@gmail.com>
+ <20220327093427.1548629-2-idan.horowitz@gmail.com>
+ <5551410.DvuYhMxLoT@basile.remlab.net>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <5551410.DvuYhMxLoT@basile.remlab.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::22e
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22e.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>, Beniamino Galvani <b.galvani@gmail.com>,
- "open list:S390 SCLP-backed..." <qemu-s390x@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>,
- Stefan Hajnoczi <stefanha@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 53jC4XSkevGG
+ Idan Horowitz <idan.horowitz@gmail.com>, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 22EXl/mEeuj6
 
-On 28/03/2022 12.22, Marc-André Lureau wrote:
-> Hi
+On 3/27/22 08:24, Rémi Denis-Courmont wrote:
+> Le sunnuntaina 27. maaliskuuta 2022, 12.34.26 EEST Idan Horowitz a écrit :
+>> As per the AArch64.SS2OutputPASpace() psuedo-code in the ARMv8 ARM when the
+>> PA space of the IPA is non secure, the output PA space is secure if and only
+>> if all of the bits VTCR.<NSW, NSA>, VSTCR.<SW, SA> are not set.
+>>
+>> Signed-off-by: Idan Horowitz <idan.horowitz@gmail.com>
+>> ---
+>>   target/arm/helper.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>> index 812ca591f4..d0265b760f 100644
+>> --- a/target/arm/helper.c
+>> +++ b/target/arm/helper.c
+>> @@ -12697,7 +12697,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong
+>> address, } else {
+>>                       attrs->secure =
+>>                           !((env->cp15.vtcr_el2.raw_tcr & (VTCR_NSA |
+>> VTCR_NSW)) -                        || (env->cp15.vstcr_el2.raw_tcr &
+>> VSTCR_SA)); +                        || (env->cp15.vstcr_el2.raw_tcr &
+>> (VSTCR_SA | VSTCR_SW))); }
 > 
-> On Mon, Mar 28, 2022 at 12:59 PM Thomas Huth <thuth@redhat.com> wrote:
->>
->> On 28/03/2022 10.47, marcandre.lureau@redhat.com wrote:
->>> From: Marc-André Lureau <marcandre.lureau@redhat.com>
->>>
->>> ../target/s390x/tcg/translate.c: In function ‘s390x_translate_init’:
->>> ../target/s390x/tcg/translate.c:224:64: error: ‘%d’ directive output may be truncated writing between 1 and 11 bytes into a region of size 3 [-Werror=format-truncation=]
->>>     224 |         snprintf(cpu_reg_names[i], sizeof(cpu_reg_names[0]), "r%d", i);
->>>         |                                                                ^~
->>>
->>> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
->>> ---
->>>    target/s390x/tcg/translate.c | 4 ++--
->>>    1 file changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/target/s390x/tcg/translate.c b/target/s390x/tcg/translate.c
->>> index 5acfc0ff9b4e..a082342a0424 100644
->>> --- a/target/s390x/tcg/translate.c
->>> +++ b/target/s390x/tcg/translate.c
->>> @@ -199,7 +199,7 @@ static TCGv_i64 regs[16];
->>>
->>>    void s390x_translate_init(void)
->>>    {
->>> -    int i;
->>> +    size_t i;
->>>
->>>        psw_addr = tcg_global_mem_new_i64(cpu_env,
->>>                                          offsetof(CPUS390XState, psw.addr),
->>> @@ -221,7 +221,7 @@ void s390x_translate_init(void)
->>>                                       "cc_vr");
->>>
->>>        for (i = 0; i < 16; i++) {
->>> -        snprintf(cpu_reg_names[i], sizeof(cpu_reg_names[0]), "r%d", i);
->>> +        snprintf(cpu_reg_names[i], sizeof(cpu_reg_names[0]), "r%zu", i);
->>
->> The compiler is *really* too stupid to see that i is in the range between 0
->> and 16 here??? ... that rather sounds like a compiler bug to me than
->> something that we should work-around in the QEMU source code. Considering
->> that you're using a x.0 release of GCC, please file a bug against GCC
->> instead. If they refuse to fix it for GCC 12.1 or later, we can revisit this
->> patch, but currently, I really think this should be fixed in GCC instead.
->>
+> The VTCR_EL2 specification says that the NSA bit "behaves as 1 for all purposes
+> other than reading back the value of the bit when one of the following is true
+> (...)
+> * The value of VTCR_EL2.NSW is 1.
+> * The value of VSTCR_EL2.SA is 1."
 > 
-> I opened: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105080
+> Sorry but I don't see any reason to check the SW bit here.
 
-Thanks! Looks like it will be fixed in the final release of GCC 12, so I 
-think we can definitely drop this QEMU patch here.
-
-  Thomas
+Because the description of SA says that it behaves as 1 if SW is 1.
 
 
+r~

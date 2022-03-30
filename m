@@ -1,245 +1,117 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp916533lfb;
-        Wed, 30 Mar 2022 05:52:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwryicHggKwGKHIS1ozfDdjbermhS0+bCVjvvt3MVZugDVkvj6ScU86hAdwj7BCaNOjkONL
-X-Received: by 2002:a05:622a:246:b0:2e1:eb3e:4ea1 with SMTP id c6-20020a05622a024600b002e1eb3e4ea1mr31899609qtx.592.1648644748072;
-        Wed, 30 Mar 2022 05:52:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648644748; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp919055lfb;
+        Wed, 30 Mar 2022 05:56:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxl8vFXFgA6zJGgJlry9z90JXxM7QcMWfqFfHh+UvtNrjGIIhyUa7fa6leLuakabfcCVTjM
+X-Received: by 2002:a05:600c:3512:b0:38c:be56:fc9c with SMTP id h18-20020a05600c351200b0038cbe56fc9cmr4307094wmq.197.1648645006885;
+        Wed, 30 Mar 2022 05:56:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648645006; cv=none;
         d=google.com; s=arc-20160816;
-        b=zgcmndfbX/Njdq3J9seF7rcXe9lfMpfyAM44T8VkL87p8Ro/fM3QBALwWBJdcUHqmM
-         jesudP6Osm8YPnDHFsTFFixSpCUnhHHQg2WjWxw/r9atUnpa3qB9Bz0g8kkX5mTIiVRo
-         5fOX0vfg9tm5ZuAnwzseTpL09mj8h1PJOkq3QB4vPHz9o33kwbJq2AZOsGKhRtff6Ux9
-         VXrNmK7hEobJoy3Khhkc7Hfb8om0UGHvOGeyE0c7nWt9Rnm9VduVVrYhZCe01qeBnQlg
-         zwGajDYYjWpZwd8QF5nwizvXFaOJGVUBjyjJKMxUsUTM17xY35t9TKBPnsY+bdQ04pRq
-         AYJg==
+        b=Dt6j61DN3Jvwv3+D0U2+XeoBe9RdSxO1HnJzChbCOL6ZNn6NQ+bwQTwfZ58w7AkUV9
+         ma9mHjHvWLgvCCWsTwMAbkkOFsjXfVWARnRj42zTwGik6khf24uFFeAXZhmzKu8YufP4
+         jVd47UmbI+WQVML+nDiXWH1FYjEDxx1v/QnBH1kLgJfgd+gbuexP/Avcnip4hULFcWCd
+         KLhdPiDaFO5bifSKo0zKOSldq8E5+XiM2VyuSeAVwy4kLtAX/SnQ+SzmpCBRdPb+a2D6
+         Sfur09u3Poq/nV2eYPu7Yr3kS0sTriMG7IVcWWx2dM0s47ofV9B9/1m9zARTk3R0HWTs
+         iApw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=ywbdNTgZ93pcEKTe8oCQKqoDojzMcXWJA9rZ1OaKiU4=;
-        b=g0OiGbmIIecmGwkm1vdnYL9jaZSgayRx22qrsq8hHCVuTaqW4M5YSPDQsnjSbdbp9O
-         +rgOG86B9BvZfKjMI8JwflS7dGxVctjKzaH+1qIEkkCuabAAAfl546Ktjro6B4a9U6OK
-         67dUmFSTcYJMVBZ5GfQMLq51gU97FvtJei6Q/c5LtG67IzCPgpVMyxIU/Z0Mne1MFIK+
-         epFZZGqr3RMbsKQIt+V2o8p+9I1FUdIbRZU3wGUJvNeDZsBTTNFeVgQKPISA4O9xvaXw
-         v3W8GucvCiM7IaH0/YLMF/0CQvS+A8z/xwi63qj0GPQRMptrSGYzX5JiSPVJ4fDDfiM7
-         rNdA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=bhFYNyYPRCcLBEZVNCD7ZOOJTmG3o6A4RaJXBk+/Kv8=;
+        b=ND/DygRDnEpbNAzsUIMmoN+/MWbjOr6B/xFBi1IvE5Z5X2mqcLwxyvQLwwkoQg+pVK
+         bDmQNhlKp1xyDDRn1BzOirRSgb6l8vvKJiMKoaSUC6lRx9snZqS+x0vuPC10Updl3Wtw
+         mXeI8KbJbllWeJLTD2BL9viZojjIfzkKW757vLWsqixpKIv063Jo5KyeKTsc0vpx7BuM
+         Oe+u7OmRZCmin77VfmKaVSfdZ2PsNxhEpOtqd2SrfZSOpiH8i0W2p1Wzi0gdmGbPVuyB
+         z8eKBr/ptQpiHdyDgvWzbdmZVoCeSAPeJa7wGKhkkc4RCDEw2bUpd6q1OYSygb3Ub0bh
+         PEbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="M/SbIDdJ";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m5-20020ac807c5000000b002e1fbf3bea7si10735347qth.152.2022.03.30.05.52.27
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Mar 2022 05:52:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=O8alWpXz;
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Return-Path: <damien.hedde@greensocs.com>
+Received: from beetle.greensocs.com (beetle.greensocs.com. [5.135.226.135])
+        by mx.google.com with ESMTPS id u5-20020adf9e05000000b00203e9019366si19962098wre.234.2022.03.30.05.56.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Mar 2022 05:56:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) client-ip=5.135.226.135;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="M/SbIDdJ";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60174 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nZXoJ-0000Lg-Fg
-	for alex.bennee@linaro.org; Wed, 30 Mar 2022 08:52:27 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50970)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1nZXo0-0000Ge-ID
- for qemu-arm@nongnu.org; Wed, 30 Mar 2022 08:52:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:37756)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1nZXny-0003iI-Iq
- for qemu-arm@nongnu.org; Wed, 30 Mar 2022 08:52:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648644725;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ywbdNTgZ93pcEKTe8oCQKqoDojzMcXWJA9rZ1OaKiU4=;
- b=M/SbIDdJgAwh9jz2uQ/uDnVI5vsJzw9O0/qiaOc8RvGlqqaETyPTTIu4itGbqRBqFsthn7
- BFfgudKDrihRLu8i69mdvjBmycjckF2ZzciPFG6/aU7zmF6rQzwM9F/mSenYY6fUwdsa3M
- cQVjbAjpArTTHYrCuddaerufl1Y2BcE=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-536-UQC_t3_aNlGiGeDSuoq56A-1; Wed, 30 Mar 2022 08:52:04 -0400
-X-MC-Unique: UQC_t3_aNlGiGeDSuoq56A-1
-Received: by mail-ed1-f70.google.com with SMTP id
- q25-20020a50aa99000000b004192a64d410so12891555edc.16
- for <qemu-arm@nongnu.org>; Wed, 30 Mar 2022 05:52:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=ywbdNTgZ93pcEKTe8oCQKqoDojzMcXWJA9rZ1OaKiU4=;
- b=5ffLGRfQRNITbeNFyLmoWgQ2XHIvhk7dMKC5TxBmTlkH1gZauVI8Khu5Cy9sExvuKx
- vDmvmwe+lN7CBz7eFlDkA2NqYdOTY8zG/d9zGISqiCPY7syH0O14TM3YIJSuefjff/2x
- CIqkJnsBYWFA9+qrixruhN3pvwtbY004Nomh7ZTQVo4H8Gs+eKvpLPZvUyzi/8WTljm6
- ht+5E8v3d2Q4qb2BYDsD91Xaj4AAib/+W3TqhSqzcP11AmQ1jTtMFPzG5t0QleX9NC/e
- xOcMbPuVnSq27s+xDeqXxaVlYkcUauOaTsq9QCZmnoNf2PvHf5LjNuXJktN0rWOl3bqd
- ZwSQ==
-X-Gm-Message-State: AOAM533fXwz+W1no3Xs+qh/n+8xl+EhxkWOHsv1sy7hyRH7u72aoq11f
- 81mCSV1VVm1IdD/0kMufKPOPClWQ0h1kYXpmHAGxq8v0P7WFzUYV75lDZhQoPbeSgR1TsN9WKgD
- Qff5a4hh+2x1N
-X-Received: by 2002:a05:6402:51d2:b0:419:7d2e:9d0 with SMTP id
- r18-20020a05640251d200b004197d2e09d0mr10373735edd.82.1648644722745; 
- Wed, 30 Mar 2022 05:52:02 -0700 (PDT)
-X-Received: by 2002:a05:6402:51d2:b0:419:7d2e:9d0 with SMTP id
- r18-20020a05640251d200b004197d2e09d0mr10373721edd.82.1648644722544; 
- Wed, 30 Mar 2022 05:52:02 -0700 (PDT)
-Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id
- da19-20020a056402177300b00413583e0996sm9547746edb.14.2022.03.30.05.52.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 30 Mar 2022 05:52:02 -0700 (PDT)
-Date: Wed, 30 Mar 2022 14:52:01 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH v3 4/4] hw/arm/virt: Unify ACPI processor ID in MADT and
- SRAT table
-Message-ID: <20220330145201.77bdcb6c@redhat.com>
-In-Reply-To: <5b7686b4-b0e1-a9ec-f546-2161baa0ed3e@redhat.com>
-References: <20220323072438.71815-1-gshan@redhat.com>
- <20220323072438.71815-5-gshan@redhat.com>
- <20220325150020.0063c782@redhat.com>
- <5b7686b4-b0e1-a9ec-f546-2161baa0ed3e@redhat.com>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.31; x86_64-redhat-linux-gnu)
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=O8alWpXz;
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Received: from crumble.bar.greensocs.com (unknown [172.17.10.6])
+	by beetle.greensocs.com (Postfix) with ESMTPS id 9298621C6C;
+	Wed, 30 Mar 2022 12:56:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+	s=mail; t=1648645004;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=bhFYNyYPRCcLBEZVNCD7ZOOJTmG3o6A4RaJXBk+/Kv8=;
+	b=O8alWpXzpOtujLY+gf/pdmUH9vF0nohuGWIGH4rkN73/DhaPiJcgsFfExnJIeShmz6XsSW
+	SZaRBtErNBiDPrBTGffAH/rHIycScRe6X0ApX0pZceLfUmK03IKIBEsovfhN+LDQtiRzBn
+	+dKG4JiBNJgH8j/I2gR9n1NwpEnymCs=
+From: Damien Hedde <damien.hedde@greensocs.com>
+To: qemu-devel@nongnu.org
+Cc: mark.burton@greensocs.com,
+	Damien Hedde <damien.hedde@greensocs.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Vijai Kumar K <vijai@behindbytes.com>,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org
+Subject: [RFC PATCH 01/18] define MAX_CLUSTERS in cpu.h instead of cluster.h
+Date: Wed, 30 Mar 2022 14:56:22 +0200
+Message-Id: <20220330125639.201937-2-damien.hedde@greensocs.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220330125639.201937-1-damien.hedde@greensocs.com>
+References: <20220330125639.201937-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, zhenyzha@redhat.com, wangyanan55@huawei.com,
- qemu-arm@nongnu.org, shan.gavin@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EJ2QaMMuL5eF
+Content-Transfer-Encoding: 8bit
+X-Spam: Yes
+X-TUID: F/kQBqJZc9t/
 
-On Sat, 26 Mar 2022 03:08:19 +0800
-Gavin Shan <gshan@redhat.com> wrote:
+Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+---
+ include/hw/core/cpu.h    | 6 ++++++
+ include/hw/cpu/cluster.h | 6 ------
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-> Hi Igor,
-> 
-> On 3/25/22 10:00 PM, Igor Mammedov wrote:
-> > On Wed, 23 Mar 2022 15:24:38 +0800
-> > Gavin Shan <gshan@redhat.com> wrote:
-> >   
-> >> The value of the following field has been used in ACPI PPTT table
-> >> to identify the corresponding processor. This takes the same field
-> >> as the ACPI processor ID in MADT and SRAT tables.
-> >>
-> >>    ms->possible_cpus->cpus[i].props.thread_id  
-> > 
-> > thread-id could be something different than ACPI processor ID
-> > (to be discussed in the first patch).
-> > 
-> > I'd prefer to keep both decoupled, i.e. use [0 - possible_cpus->len)
-> > for ACPI processor ID as it's done with x86 madt/srat and ACPI CPU
-> > hotplug code. So we could reuse at least the later when implementing
-> > CPU hotplug for arm/virt and it's good from consistency point of view.
-> >   
-> 
-> Yeah, I think so, thread-id and ACPI processor UID could be different.
-> thread IDs could be overlapped on multiple CPUs, who belongs to different
-> socket/die/core. However, ACPI processor UID should be unique for the
-> CPU in the whole system.
-> 
-> If you agree, Lets use [0 - possible_cpus->len] in next respin.
-
-Agreed.
-
-> What I
-> need to do is dropping PATCH[4/4] and replacing @thread_id with @n in
-> build_pptt() of PATCH[3/4].
-> 
-> Thanks,
-> Gavin
-> 
-> >> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> >> ---
-> >>   hw/arm/virt-acpi-build.c | 12 +++++++++---
-> >>   1 file changed, 9 insertions(+), 3 deletions(-)
-> >>
-> >> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> >> index 449fab0080..7fedb56eea 100644
-> >> --- a/hw/arm/virt-acpi-build.c
-> >> +++ b/hw/arm/virt-acpi-build.c
-> >> @@ -534,13 +534,16 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >>   
-> >>       for (i = 0; i < cpu_list->len; ++i) {
-> >>           uint32_t nodeid = cpu_list->cpus[i].props.node_id;
-> >> +        uint32_t thread_id = cpu_list->cpus[i].props.thread_id;
-> >> +
-> >>           /*
-> >>            * 5.2.16.4 GICC Affinity Structure
-> >>            */
-> >>           build_append_int_noprefix(table_data, 3, 1);      /* Type */
-> >>           build_append_int_noprefix(table_data, 18, 1);     /* Length */
-> >>           build_append_int_noprefix(table_data, nodeid, 4); /* Proximity Domain */
-> >> -        build_append_int_noprefix(table_data, i, 4); /* ACPI Processor UID */
-> >> +        build_append_int_noprefix(table_data,
-> >> +                                  thread_id, 4); /* ACPI Processor UID */
-> >>           /* Flags, Table 5-76 */
-> >>           build_append_int_noprefix(table_data, 1 /* Enabled */, 4);
-> >>           build_append_int_noprefix(table_data, 0, 4); /* Clock Domain */
-> >> @@ -704,6 +707,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >>   {
-> >>       int i;
-> >>       VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-> >> +    MachineState *ms = MACHINE(vms);
-> >>       const MemMapEntry *memmap = vms->memmap;
-> >>       AcpiTable table = { .sig = "APIC", .rev = 3, .oem_id = vms->oem_id,
-> >>                           .oem_table_id = vms->oem_table_id };
-> >> @@ -725,8 +729,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >>       build_append_int_noprefix(table_data, vms->gic_version, 1);
-> >>       build_append_int_noprefix(table_data, 0, 3);   /* Reserved */
-> >>   
-> >> -    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
-> >> +    for (i = 0; i < ms->smp.cpus; i++) {
-> >>           ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
-> >> +        uint32_t thread_id = ms->possible_cpus->cpus[i].props.thread_id;
-> >>           uint64_t physical_base_address = 0, gich = 0, gicv = 0;
-> >>           uint32_t vgic_interrupt = vms->virt ? PPI(ARCH_GIC_MAINT_IRQ) : 0;
-> >>           uint32_t pmu_interrupt = arm_feature(&armcpu->env, ARM_FEATURE_PMU) ?
-> >> @@ -743,7 +748,8 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >>           build_append_int_noprefix(table_data, 76, 1);   /* Length */
-> >>           build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
-> >>           build_append_int_noprefix(table_data, i, 4);    /* GIC ID */
-> >> -        build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
-> >> +        build_append_int_noprefix(table_data,
-> >> +                                  thread_id, 4);        /* ACPI Processor UID */
-> >>           /* Flags */
-> >>           build_append_int_noprefix(table_data, 1, 4);    /* Enabled */
-> >>           /* Parking Protocol Version */  
-> >   
-> 
-
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 136973655c..38c72cbda1 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -1054,5 +1054,11 @@ extern const VMStateDescription vmstate_cpu_common;
+ 
+ #define UNASSIGNED_CPU_INDEX -1
+ #define UNASSIGNED_CLUSTER_INDEX -1
++/*
++ * This limit is imposed by TCG, which puts the cluster ID into an
++ * 8 bit field. Default being all-1s, custom index cannot be set to
++ * more than 254.
++ */
++#define MAX_CLUSTERS 255
+ 
+ #endif
+diff --git a/include/hw/cpu/cluster.h b/include/hw/cpu/cluster.h
+index 53fbf36af5..09a2b86832 100644
+--- a/include/hw/cpu/cluster.h
++++ b/include/hw/cpu/cluster.h
+@@ -57,12 +57,6 @@
+ #define TYPE_CPU_CLUSTER "cpu-cluster"
+ OBJECT_DECLARE_SIMPLE_TYPE(CPUClusterState, CPU_CLUSTER)
+ 
+-/*
+- * This limit is imposed by TCG, which puts the cluster ID into an
+- * 8 bit field (and uses all-1s for the default "not in any cluster").
+- */
+-#define MAX_CLUSTERS 255
+-
+ /**
+  * CPUClusterState:
+  * @cluster_id: The cluster ID. This value is for internal use only and should
+-- 
+2.35.1

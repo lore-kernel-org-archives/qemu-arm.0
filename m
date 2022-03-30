@@ -1,138 +1,158 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp422471lfb;
-        Tue, 29 Mar 2022 13:19:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwfWj8gHug6QprrWVfd84GMLm5bjYm1N2DAR0cFYuMjGnTZiujR+zI6Y8ibhFjQQ3yAJQEE
-X-Received: by 2002:a25:8152:0:b0:63c:ce88:f87 with SMTP id j18-20020a258152000000b0063cce880f87mr9080061ybm.213.1648585173585;
-        Tue, 29 Mar 2022 13:19:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648585173; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp919047lfb;
+        Wed, 30 Mar 2022 05:56:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyV1IADV5D0rmpmt+rUKiIb8a7b9vLceomQCtyH/XJilYERfascNVz0i/zHGm0rE/P2jRPF
+X-Received: by 2002:a05:600c:3016:b0:38c:8786:d3b6 with SMTP id j22-20020a05600c301600b0038c8786d3b6mr4317114wmh.135.1648645005600;
+        Wed, 30 Mar 2022 05:56:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648645005; cv=none;
         d=google.com; s=arc-20160816;
-        b=xjcVLR364ry8PamBjiMoupASpo10ZvN3MzBUYbCVNBl63svd5TQ5iOs90369XSbkoC
-         8NFh25+NyCMdzwsUOELyQlMMRMe7P6SzaUubzCj764OEIxTgyamJK2yLHfEqe9TotbLx
-         R3ioiFTt0In9ihuQio1M7iAa52GHUxWOyq71QvYJl1uF16O/Di/582LJ/IL0BuoFCsMD
-         viXUffD/jDSm1VSzYgsq2mBOad0OH8w7zzLhnJr0ZOXbFVOYepFLRnrzEQ8AX7tThbkA
-         WEZrxw/qMLJKHC4b+RMakWmht3UkBlxsKkXamucSYJZYHa8UiND6BrHwQ7WfKnaP4b5E
-         iJrw==
+        b=YMhWFOCJ+BEx75rCKLd6+7ebd38nukqXxkPnXRgICM3sXgvZJjc4useb/jglHRZxq0
+         PAvMDqbcdsk+k7e0G2kqGTWY4GlDLm6lycSD10oXnBPPEebysnt7mfVDc8uGZCdidVCw
+         wJwQKygrnRpcbpthjFDjkgcROX8d8Kf5AuYojURBfTgCif3Hgf52fqz3fPHQByu6yIcg
+         k/JKn7dnd7TUU6iqax9nvrw+bhdw+IQQ63fC1sO6FNhpJlH+jnnSFRyXNdCBdlhqw2KB
+         /Wawh5gX4Lolv/aAFr7buAvFyuNpgWKjPNSEJD2UgxCtpnml+2nyfAEwT13T2utljw+W
+         WutA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=urTmgRq694LEmnMrwqVJ911oJM64xPzpZIcOLN5FYt8=;
-        b=uaps8Hr9rpf+jyVr4lc2o9JGV7RrwAOGS7D2t0LJu/QVf7ANfKpgwn2FICtusS9VHN
-         +gC7Iu5bN//WyMZzypqIpKgv+xSoD4ktcOK0lNzlGLXzYhK2tR07toelqd4Wm2orOQAA
-         uIBF3RJTuKxDrlTV114GEkaahuX0ttxs5DrDGIQS8sP2f1gELDaAF95AyfW6Ady84TWS
-         +mu83B5yNvGG2Cf63FS2cmWpTUe2jNiez2uJ0jW4/Euq3YmTyF1A4vbViUFyuP7eKDP8
-         iS5TGgbzsugzDbfZ9bhJ4+Q5b4+C9w9MkvyEVw04xjnLNQy18W91V2yjMBd2YngRBEMH
-         F8ew==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=CTHLxshGLn+LMFCmOT0tST5SI/piv8b6mpuMZAFlww0=;
+        b=xQA4pc9DBe5/nL4SUoedl9P3xDPp4qLSYvtniH+8XiYymgyx+jzZUUnrGZdn3N/WBU
+         TxQtNpcorevNsoP+lZ9Ok+/wjkVFP/Rd9aJtp1gMQqLK0zWn2teW+39FZvN266OvF3fr
+         GZdtTh+QzsQD2jogmoAce9eKWsPlhggz99WPEXqVUuiXnlrW1kjuFeHEOdO449nC0rVb
+         iB37Fgw0XzuTnLQCDRs6BJ8LCjVdcxDvOcGaVGGYyJAUU7AK235HabqaMN70bdX8ZxVZ
+         /9BaL3pfXfBXydv86PV7nGCpTITv8LMiPoayRUEgnp89g9i/DZUkjIalesQJlx3e4wHW
+         9W+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ClcLmguV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bc13-20020a05690c000d00b002e7818761fesi27837574ywb.216.2022.03.29.13.19.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Mar 2022 13:19:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=bMijghb3;
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Return-Path: <damien.hedde@greensocs.com>
+Received: from beetle.greensocs.com (beetle.greensocs.com. [5.135.226.135])
+        by mx.google.com with ESMTPS id l6-20020a7bcf06000000b0038c77be9bafsi1429894wmg.202.2022.03.30.05.56.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Mar 2022 05:56:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) client-ip=5.135.226.135;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ClcLmguV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56722 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nZIJR-00056D-21
-	for alex.bennee@linaro.org; Tue, 29 Mar 2022 16:19:33 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37636)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <idan.horowitz@gmail.com>)
- id 1nZIJ0-00054k-KA; Tue, 29 Mar 2022 16:19:08 -0400
-Received: from [2607:f8b0:4864:20::22b] (port=41960
- helo=mail-oi1-x22b.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <idan.horowitz@gmail.com>)
- id 1nZIIz-0001SW-84; Tue, 29 Mar 2022 16:19:06 -0400
-Received: by mail-oi1-x22b.google.com with SMTP id e189so20164663oia.8;
- Tue, 29 Mar 2022 13:19:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=urTmgRq694LEmnMrwqVJ911oJM64xPzpZIcOLN5FYt8=;
- b=ClcLmguVG2IQf5qofUcreP7HZymP1NUafnnlRcLT3Y/JKCzefaSMyDi+s1AZ59BCDE
- jOFnGtHehMdBwCF7Hcgg7kr0GgcDcQekzyb4rShLqA+zPsIaffhE+Feox6srRkDqIosd
- WPUOVCPBTdI/f1kSlq3+uZtnjQnwV/7uwkDfBWuMxJOIWjGmZWcpVzUyWrZZUPdj78fy
- LxtKNRIhfNury6FI6oAj6NvXrvuyoTWucLpXKfQuLex32vBLG1lsj+We1suoB95O4nGJ
- jAF1TaLfQY0yj0JHDVGGMs7oDBUsufo5h9XSEs4AyHhDYWtVAeDrpbef4Aj4I+zpDEse
- x1bA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=urTmgRq694LEmnMrwqVJ911oJM64xPzpZIcOLN5FYt8=;
- b=lt2lyND1RfYsQ73FKwknzKOCcfpfnfAN/MHwCjcCfWS/hSi2OHq6N/bUzKprMA6/Po
- FZUzMBC353dMlYT1OB1L555Qq3VN/asqbpIRLnCGEliDHFzjGF3xOxRjek76FXhLGB77
- e/JSA0fFWyRtTuneYy1NU0k2Y59KAi6fXM3sxMl6OUFd/bgSihHr187JI8w7c1Mj6LGy
- qjkPmoec5f30Q9cq0Rwf7crHpgAfw/EjNNdRUSLsuaxXNL9ROgh/Cseqy8wzRNUGvz69
- ATmvNUznrrQCARQsgnozFjj9AriEb5KmYfUIqv9uBE4TK41IeBIo6+3Ql3Dmbd4mjZI7
- PBGg==
-X-Gm-Message-State: AOAM532LEaUSJBDIYm4bGm3zM705YeuKEU27splfp3GgCGRF1NPis6VQ
- ixZUCP7mLl1t27jOguAoTbB+tTyJKqGd2rWZ4kxEfEB+6D1kMw==
-X-Received: by 2002:a05:6808:2008:b0:2da:5b12:83ff with SMTP id
- q8-20020a056808200800b002da5b1283ffmr466436oiw.216.1648585143181; Tue, 29 Mar
- 2022 13:19:03 -0700 (PDT)
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=bMijghb3;
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Received: from crumble.bar.greensocs.com (unknown [172.17.10.6])
+	by beetle.greensocs.com (Postfix) with ESMTPS id 09B3621C38;
+	Wed, 30 Mar 2022 12:56:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+	s=mail; t=1648645004;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=CTHLxshGLn+LMFCmOT0tST5SI/piv8b6mpuMZAFlww0=;
+	b=bMijghb3ZxySJFZ5hguLZ1NJj61rRhufZGQ0OOc662vJmtougXTMoULm4QbNncYwsTKjWj
+	5TohKjSz6kck9gbHVue+ljKHpJBNGPk4pA2rrNs7mAqxIqU0M661O+3kDeFI6Pwu8EVmBU
+	gNy56SQsG4mfwNpvyur3TEXUrkZclRQ=
+From: Damien Hedde <damien.hedde@greensocs.com>
+To: qemu-devel@nongnu.org
+Cc: mark.burton@greensocs.com,
+	Damien Hedde <damien.hedde@greensocs.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Vijai Kumar K <vijai@behindbytes.com>,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org
+Subject: [RFC PATCH 00/18] user-creatable cpu clusters
+Date: Wed, 30 Mar 2022 14:56:21 +0200
+Message-Id: <20220330125639.201937-1-damien.hedde@greensocs.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20220327093427.1548629-1-idan.horowitz@gmail.com>
- <20220327093427.1548629-4-idan.horowitz@gmail.com>
- <ede38e3b-5207-52fe-4c02-72a4bbe1cf20@linaro.org>
-In-Reply-To: <ede38e3b-5207-52fe-4c02-72a4bbe1cf20@linaro.org>
-From: Idan Horowitz <idan.horowitz@gmail.com>
-Date: Tue, 29 Mar 2022 23:18:52 +0300
-Message-ID: <CA+4MfEJDvN5aRf-RnmxgUqOt7OcG1Dzkte5zV=7oFQsTN_zVLA@mail.gmail.com>
-Subject: Re: [PATCH 3/3] target/arm: Determine final stage 2 output PA space
- based on original IPA
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::22b
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22b;
- envelope-from=idan.horowitz@gmail.com; helo=mail-oi1-x22b.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AvCW/szglYTC
+Content-Transfer-Encoding: 8bit
+X-Spam: Yes
+X-TUID: PaJCaU+xQkdJ
 
-On Tue, 29 Mar 2022 at 22:09, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> I believe I follow: because the walk uses walkstate.address.paddress.paspace, the ipa
-> input parameter is unchanged, and it is ipa that is passed to
-> AArch64.S2NextWalkStateLast() to form the output address.
->
+Hi,
 
-Indeed, I initially found the issue when a test case passed on arm IP
-but raised a data abort in QEMU.
-Since fixing this issue solved the inconsistency, I believe this is
-the intended behaviour and not a spec bug.
+This series add devices to be able to user-create (coldplug) cpu
+clusters. The existing cpu cluster dictates how cpus are exposed
+in gdb, but it does not handle the cpu objects creation. This series
+adds a new device to handle both issues and adds support for two
+architectures: arm and riscv.
 
->
-> r~
+Please look at patches 2 and 3 for more details about the new device.
 
-Idan Horowitz
+Last part concerning the riscv is rfc as I do non-backward compatible
+updates. I'm not sure what migration (or other) constraints we have
+on these machines and I probably need to make some changes to cope
+with them.
+
+This series almost deprecates the cpu-cluster type as all uses
+but one are replaced.
+
+It is organized as follows:
+
++ Patches 1 to 7 adds a new base device to replace cpu-cluster
+
++ Patches 8 and 9 adds an arm specific version and replace existing
+  clusters in the xlnx-zynqmp machine.
+
++ patches 10 to 17 updates the riscv_array. It was already used to
+  create cpus but was not a cpu cluster.
+
+Thanks for any comments,
+--
+Damien
+
+Damien Hedde (18):
+  define MAX_CLUSTERS in cpu.h instead of cluster.h
+  hw/cpu/cpus: introduce _cpus_ device
+  hw/cpu/cpus: prepare to handle cpu clusters
+  hw/cpu/cluster: make _cpu-cluster_ a subclass of _cpus_
+  gdbstub: deal with _cpus_ object instead of _cpu-cluster_
+  hw/cpu/cluster: remove cluster_id now that gdbstub is updated
+  hw/cpu/cpus: add a common start-powered-off property
+  hw/arm/arm_cpus: add arm_cpus device
+  hw/arm/xlnx-zynqmp: convert cpu clusters to arm_cpus
+  hw/riscv/riscv_hart: prepare transition to cpus
+  hw/riscv: prepare riscv_hart transition to cpus
+  hw/riscv/virt: prepare riscv_hart transition to cpus
+  hw/riscv/spike: prepare riscv_hart transition to cpus
+  hw/riscv/riscv_hart: use cpus as base class
+  hw/riscv/sifive_u&microchip_pfsoc: apply riscv_hart_array update
+  hw/riscv: update remaining machines due to riscv_hart_array update
+  hw/riscv/riscv_hart: remove temporary features
+  add myself as reviewer of the newly added _cpus_
+
+ include/hw/arm/arm_cpus.h          |  45 +++++++
+ include/hw/arm/xlnx-zynqmp.h       |   8 +-
+ include/hw/core/cpu.h              |   6 +
+ include/hw/cpu/cluster.h           |  26 ++--
+ include/hw/cpu/cpus.h              |  93 ++++++++++++++
+ include/hw/riscv/microchip_pfsoc.h |   2 -
+ include/hw/riscv/riscv_hart.h      |  25 +++-
+ include/hw/riscv/sifive_u.h        |   2 -
+ gdbstub.c                          |  12 +-
+ hw/arm/arm_cpus.c                  |  63 ++++++++++
+ hw/arm/xlnx-zynqmp.c               | 121 +++++++-----------
+ hw/cpu/cluster.c                   |  53 ++++----
+ hw/cpu/cpus.c                      | 195 +++++++++++++++++++++++++++++
+ hw/riscv/boot.c                    |   2 +-
+ hw/riscv/microchip_pfsoc.c         |  28 +----
+ hw/riscv/opentitan.c               |   4 +-
+ hw/riscv/riscv_hart.c              |  44 ++-----
+ hw/riscv/shakti_c.c                |   4 +-
+ hw/riscv/sifive_e.c                |   4 +-
+ hw/riscv/sifive_u.c                |  31 ++---
+ hw/riscv/spike.c                   |  18 +--
+ hw/riscv/virt.c                    |  79 +++++++-----
+ MAINTAINERS                        |   3 +
+ hw/arm/meson.build                 |   1 +
+ hw/cpu/meson.build                 |   2 +-
+ 25 files changed, 612 insertions(+), 259 deletions(-)
+ create mode 100644 include/hw/arm/arm_cpus.h
+ create mode 100644 include/hw/cpu/cpus.h
+ create mode 100644 hw/arm/arm_cpus.c
+ create mode 100644 hw/cpu/cpus.c
+
+-- 
+2.35.1

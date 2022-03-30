@@ -1,51 +1,51 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp919139lfb;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp919150lfb;
         Wed, 30 Mar 2022 05:56:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzvacZ8xYx8wCEuezO221kLBcf0dThTKRpW8xSHHvgQqK2zjfJTWEJ0/fQ28NhMCod9ThfK
-X-Received: by 2002:a5d:47a1:0:b0:204:9f5:e72f with SMTP id 1-20020a5d47a1000000b0020409f5e72fmr37713694wrb.656.1648645011927;
-        Wed, 30 Mar 2022 05:56:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648645011; cv=none;
+X-Google-Smtp-Source: ABdhPJxvKtVs+lUGK3DZ4yJA7UBmVwrkR3v0i8W5N5DPtiId2AbqpEcnMxAS0tSZdWMpj2/9DxBg
+X-Received: by 2002:a5d:5690:0:b0:203:f727:362 with SMTP id f16-20020a5d5690000000b00203f7270362mr37493909wrv.717.1648645012681;
+        Wed, 30 Mar 2022 05:56:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648645012; cv=none;
         d=google.com; s=arc-20160816;
-        b=l2TOaM46DqA6FPMYWmfM1eUYzHujzMK4idBbrGT8FMvSMdESXi+f2MuB1JBRZ+XA+5
-         x0RpHg9I5w0S2BX8f5Wv6GK4NIog7YuzLGl0puHDoPYBO+zLsyluCSHVAv8TyNZ+e7wU
-         L4EYwvlyepCV3TOkdUitBO9YFWOrzWYpTp7ywbbRMAfnOmUY1Sku+8yH0S/C3DkZvbru
-         RAVxLkNj9ji/sto7IkZkiSWd4N9JLZAruY5NlN9JYvEb3ujH6q6tdtguvpr+AdSBdh9P
-         +Cl0xnfZO0KTfUr0Et6man6QsyLjHBb7CyawZvDPNsFnE6oIqz4aYSFaIc6pBDWJbp9w
-         E+Pg==
+        b=HA3cvJl2OBWocJSj+8YnAn+HVgQiQqzXboQRKD1jkls2OjeNLtbiDwr3VJL7EwGibq
+         s99GxLDCHsrQnuEmgkMoO32rjf+mDZuSt9ztBs48VLCE8dUphizgw8McQL/eQAOOFU2j
+         7ReNcbdrtkNupO7YeAltHnrohF9wBae1TFcdPqd0On+zHYjdflSU3p1Bp+aBlTwbnOTN
+         LdkNO7l8zyO3fYTue4cHAWoTTF33Rr4M5/soeVBsy+V884NopcNp8wBQlchEYGKG1VlH
+         AtBz3l5cdQKXOGWHpV/V+ju5Pt4s9GQEEQXPLrVVofaY0xgdwxFk2TtXtcjN9VKwCdRk
+         TtnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=TgBVOB8eywUWF0TVbBTwx1TADUqjp1LphGlG4SRhzoM=;
-        b=MpgYj//v1acC7A1CZzjItMoxWeN60Dma0ztKEAOLSKVhUOeda9VqqdBvv24+QP402S
-         iD03zRwCRBErrKEuhp2axv+yBcMsAT+ZW4z4GVuSi/mGwM4o1uxSHSN+mnhw9p34EEU3
-         wXGY0WP+K40OcK92eeH+xU3fOFSTVVEWkocA3RsTrbdWiCsNh771GAjuYv1Iwg0zZSu7
-         QPvs7rAV9hKC3e41wkrEaO9BHZPCtpGLDhNgPr0aT1j76lpsgJ8r5UHOKNx6DnAST+xO
-         58He7ZVJyCWuvMpCstXMX7GlVjNLIGfAqmBDwb8tKXmcjCNdgjoN4PEDmeJ95b8WMKH+
-         t92Q==
+        bh=OP2KACeS0PxZ1cbQpDRjk56f4TeAFjOJTUpHlmpiXfc=;
+        b=yaeXxBsvu6Ly5LM1yDVQfayhw+Qki83WXEcM218jgwods50zAambIakwDf8dApqJLG
+         ZcGNLCukNLJRs0t2eA+d3heeZG95jQMVK09eJTHa8xT/myFmFMAqZwcTq57vwe/xcFWj
+         poo09fqV0zhFSzaOgtP9eqF3e7tLc1jfDr+qauiqpep1jdP+QB08GoOnC9ZHUUPJylhx
+         auOmeuYViL/2RSj84fsEPTaQkc4ePdD1pzXdFlQ13NV3253IcnWRZ3ztrji9Q2DjQ2Ip
+         eiQSKe9VhPQt5nlgJBgfZA9v1eKdFbtDBoAwTCBiJsnPkFD3M117htjPbFO6jUq0j5G1
+         47Og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@greensocs.com header.s=mail header.b=EIPsTyJw;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=OVTr74r2;
        spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
 Return-Path: <damien.hedde@greensocs.com>
 Received: from beetle.greensocs.com (beetle.greensocs.com. [5.135.226.135])
-        by mx.google.com with ESMTPS id r10-20020adfbb0a000000b00205a5e9817asi17378892wrg.315.2022.03.30.05.56.51
+        by mx.google.com with ESMTPS id e8-20020a7bc2e8000000b0038c77be9b67si2235935wmk.130.2022.03.30.05.56.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Mar 2022 05:56:51 -0700 (PDT)
+        Wed, 30 Mar 2022 05:56:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) client-ip=5.135.226.135;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@greensocs.com header.s=mail header.b=EIPsTyJw;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=OVTr74r2;
        spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
 Received: from crumble.bar.greensocs.com (unknown [172.17.10.6])
-	by beetle.greensocs.com (Postfix) with ESMTPS id C51E821EC4;
-	Wed, 30 Mar 2022 12:56:50 +0000 (UTC)
+	by beetle.greensocs.com (Postfix) with ESMTPS id 7FBAE21EC6;
+	Wed, 30 Mar 2022 12:56:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
 	s=mail; t=1648645011;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=TgBVOB8eywUWF0TVbBTwx1TADUqjp1LphGlG4SRhzoM=;
-	b=EIPsTyJwptR+MBsVJSBb8zWtDXhzw3/g17r84ODSRPLTULZ8yNe4fIjy3Gu5o7dIw6zLTY
-	Tjz9rHmdKBZ8SRKUJ6E569IgmEKnxBr5ybdsI7rU5lC0fRmk0yJEI+1SmMt2hKpV48+hfJ
-	a2x/o+AHkJWD/fbWZmrQJPsGyusps3Y=
+	bh=OP2KACeS0PxZ1cbQpDRjk56f4TeAFjOJTUpHlmpiXfc=;
+	b=OVTr74r2H1SGGg81PNbAotcOyG0vhNKotyLUFtZKSoRNmscrUSzencupPVJvnAMFhaNeju
+	2wPb/gokuOGkPlCtv1oqDkEMUDTSGeJ7o9f4GO2yy+aPKfZGK0u85KjH1K1JU6gHtq505n
+	JZswpS2ELJUPLRqhSaK9i7Jb2NN+TKQ=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
 Cc: mark.burton@greensocs.com,
@@ -62,253 +62,79 @@ Cc: mark.burton@greensocs.com,
 	Bin Meng <bin.meng@windriver.com>,
 	Vijai Kumar K <vijai@behindbytes.com>,
 	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org
-Subject: [RFC PATCH 09/18] hw/arm/xlnx-zynqmp: convert cpu clusters to arm_cpus
-Date: Wed, 30 Mar 2022 14:56:30 +0200
-Message-Id: <20220330125639.201937-10-damien.hedde@greensocs.com>
+	qemu-riscv@nongnu.org,
+	Alistair Francis <alistair.francis@wdc.com>
+Subject: [RFC PATCH 10/18] hw/riscv/riscv_hart: prepare transition to cpus
+Date: Wed, 30 Mar 2022 14:56:31 +0200
+Message-Id: <20220330125639.201937-11-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220330125639.201937-1-damien.hedde@greensocs.com>
 References: <20220330125639.201937-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Spam: Yes
-X-TUID: 0hC6hjhp8dXn
+X-TUID: fd19D2FiMnZa
 
-qom-path of cpus are changed:
-+ "apu-cluster/apu-cpu[n]" to "apu/cpu[n]"
-+ "rpu-cluster/rpu-cpu[n]" to "rpu/cpu[n]"
+riscv_hart_array does not need to be a sysbus device: it does not
+have any mmio or sysbus irq.
+We want to make it inherit the new cpus class so we need
+a few tweaks:
++ a temporary helper realize so we can switch from sysbus_realize to
+  qdev_realize (will be removed afer the transition is done).
++ a helper function to get an hart from the array (the current storage
+  array field will be removed).
++ a helper function to get the number of harts in an array (the current
+  field will be removed).
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- include/hw/arm/xlnx-zynqmp.h |   8 +--
- hw/arm/xlnx-zynqmp.c         | 121 +++++++++++++----------------------
- 2 files changed, 48 insertions(+), 81 deletions(-)
+ include/hw/riscv/riscv_hart.h | 19 +++++++++++++++++++
+ hw/riscv/riscv_hart.c         |  5 +++++
+ 2 files changed, 24 insertions(+)
 
-diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-index 9d9a9d0bf9..1bcc3f9356 100644
---- a/include/hw/arm/xlnx-zynqmp.h
-+++ b/include/hw/arm/xlnx-zynqmp.h
-@@ -31,7 +31,7 @@
- #include "hw/display/xlnx_dp.h"
- #include "hw/intc/xlnx-zynqmp-ipi.h"
- #include "hw/rtc/xlnx-zynqmp-rtc.h"
--#include "hw/cpu/cluster.h"
-+#include "hw/arm/arm_cpus.h"
- #include "target/arm/cpu.h"
- #include "qom/object.h"
- #include "net/can_emu.h"
-@@ -94,10 +94,8 @@ struct XlnxZynqMPState {
-     DeviceState parent_obj;
+diff --git a/include/hw/riscv/riscv_hart.h b/include/hw/riscv/riscv_hart.h
+index bbc21cdc9a..71747bf37c 100644
+--- a/include/hw/riscv/riscv_hart.h
++++ b/include/hw/riscv/riscv_hart.h
+@@ -41,4 +41,23 @@ struct RISCVHartArrayState {
+     RISCVCPU *harts;
+ };
  
-     /*< public >*/
--    CPUClusterState apu_cluster;
--    CPUClusterState rpu_cluster;
--    ARMCPU apu_cpu[XLNX_ZYNQMP_NUM_APU_CPUS];
--    ARMCPU rpu_cpu[XLNX_ZYNQMP_NUM_RPU_CPUS];
-+    ArmCpusState apu;
-+    ArmCpusState rpu;
-     GICState gic;
-     MemoryRegion gic_mr[XLNX_ZYNQMP_GIC_REGIONS][XLNX_ZYNQMP_GIC_ALIASES];
- 
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 5bfe285a19..fa0c093733 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -25,6 +25,7 @@
- #include "sysemu/kvm.h"
- #include "sysemu/sysemu.h"
- #include "kvm_arm.h"
-+#include "hw/arm/arm_cpus.h"
- 
- #define GIC_NUM_SPI_INTR 160
- 
-@@ -201,7 +202,7 @@ static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
- static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
-                                    const char *boot_cpu, Error **errp)
- {
--    int i;
-+    unsigned boot_idx;
-     int num_rpus = MIN(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS,
-                        XLNX_ZYNQMP_NUM_RPU_CPUS);
- 
-@@ -210,36 +211,21 @@ static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
-         return;
-     }
- 
--    object_initialize_child(OBJECT(s), "rpu-cluster", &s->rpu_cluster,
--                            TYPE_CPU_CLUSTER);
--    qdev_prop_set_uint32(DEVICE(&s->rpu_cluster), "cluster-id", 1);
--
--    for (i = 0; i < num_rpus; i++) {
--        const char *name;
--
--        object_initialize_child(OBJECT(&s->rpu_cluster), "rpu-cpu[*]",
--                                &s->rpu_cpu[i],
--                                ARM_CPU_TYPE_NAME("cortex-r5f"));
--
--        name = object_get_canonical_path_component(OBJECT(&s->rpu_cpu[i]));
--        if (strcmp(name, boot_cpu)) {
--            /*
--             * Secondary CPUs start in powered-down state.
--             */
--            object_property_set_bool(OBJECT(&s->rpu_cpu[i]),
--                                     "start-powered-off", true, &error_abort);
--        } else {
--            s->boot_cpu_ptr = &s->rpu_cpu[i];
--        }
--
--        object_property_set_bool(OBJECT(&s->rpu_cpu[i]), "reset-hivecs", true,
--                                 &error_abort);
--        if (!qdev_realize(DEVICE(&s->rpu_cpu[i]), NULL, errp)) {
--            return;
--        }
-+    /* apus are already created, rpus will have cluster-id 1 */
-+    object_initialize_child(OBJECT(s), "rpu", &s->rpu, TYPE_ARM_CPUS);
-+    qdev_prop_set_uint32(DEVICE(&s->rpu), "num-cpus", num_rpus);
-+    qdev_prop_set_string(DEVICE(&s->rpu), "cpu-type",
-+                         ARM_CPU_TYPE_NAME("cortex-r5f"));
-+    qdev_prop_set_bit(DEVICE(&s->rpu), "reset-hivecs", true);
-+    qdev_prop_set_bit(DEVICE(&s->rpu), "start-powered-off", true);
++/**
++ * riscv_array_get_hart:
++ */
++static inline RISCVCPU *riscv_array_get_hart(RISCVHartArrayState *harts, int i)
++{
++    return &harts->harts[i];
++}
 +
-+    qdev_realize(DEVICE(&s->rpu), NULL, &error_fatal);
++/**
++ * riscv_array_get_num_harts:
++ */
++static inline unsigned riscv_array_get_num_harts(RISCVHartArrayState *harts)
++{
++    return harts->num_harts;
++}
 +
-+    if (sscanf(boot_cpu, "rpu-cpu[%u]", &boot_idx) && boot_idx < num_rpus) {
-+        s->boot_cpu_ptr = arm_cpus_get_cpu(&s->rpu, boot_idx);
-+        object_property_set_bool(OBJECT(s->boot_cpu_ptr), "start-powered-on",
-+                                 true, &error_abort);
-     }
--
--    qdev_realize(DEVICE(&s->rpu_cluster), NULL, &error_fatal);
- }
++/* Temporary function until we migrated the riscv hart array to simple device */
++void riscv_hart_array_realize(RISCVHartArrayState *state, Error **errp);
++
+ #endif
+diff --git a/hw/riscv/riscv_hart.c b/hw/riscv/riscv_hart.c
+index 613ea2aaa0..780fd3a59a 100644
+--- a/hw/riscv/riscv_hart.c
++++ b/hw/riscv/riscv_hart.c
+@@ -27,6 +27,11 @@
+ #include "hw/qdev-properties.h"
+ #include "hw/riscv/riscv_hart.h"
  
- static void xlnx_zynqmp_create_bbram(XlnxZynqMPState *s, qemu_irq *gic)
-@@ -296,7 +282,8 @@ static void xlnx_zynqmp_create_apu_ctrl(XlnxZynqMPState *s, qemu_irq *gic)
-         g_autofree gchar *name = g_strdup_printf("cpu%d", i);
- 
-         object_property_set_link(OBJECT(&s->apu_ctrl), name,
--                                 OBJECT(&s->apu_cpu[i]), &error_abort);
-+                                 OBJECT(arm_cpus_get_cpu(&s->apu, i)),
-+                                 &error_abort);
-     }
- 
-     sysbus_realize(sbd, &error_fatal);
-@@ -349,15 +336,10 @@ static void xlnx_zynqmp_init(Object *obj)
-     int i;
-     int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
- 
--    object_initialize_child(obj, "apu-cluster", &s->apu_cluster,
--                            TYPE_CPU_CLUSTER);
--    qdev_prop_set_uint32(DEVICE(&s->apu_cluster), "cluster-id", 0);
--
--    for (i = 0; i < num_apus; i++) {
--        object_initialize_child(OBJECT(&s->apu_cluster), "apu-cpu[*]",
--                                &s->apu_cpu[i],
--                                ARM_CPU_TYPE_NAME("cortex-a53"));
--    }
-+    object_initialize_child(obj, "apu", &s->apu, TYPE_ARM_CPUS);
-+    qdev_prop_set_uint32(DEVICE(&s->apu), "num-cpus", num_apus);
-+    qdev_prop_set_string(DEVICE(&s->apu), "cpu-type",
-+                         ARM_CPU_TYPE_NAME("cortex-a53"));
- 
-     object_initialize_child(obj, "gic", &s->gic, gic_class_name());
- 
-@@ -416,6 +398,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-     MemoryRegion *system_memory = get_system_memory();
-     uint8_t i;
-     uint64_t ram_size;
-+    unsigned boot_idx;
-     int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
-     const char *boot_cpu = s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
-     ram_addr_t ddr_low_size, ddr_high_size;
-@@ -474,34 +457,19 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-     qdev_prop_set_bit(DEVICE(&s->gic),
-                       "has-virtualization-extensions", s->virt);
- 
--    qdev_realize(DEVICE(&s->apu_cluster), NULL, &error_fatal);
--
--    /* Realize APUs before realizing the GIC. KVM requires this.  */
--    for (i = 0; i < num_apus; i++) {
--        const char *name;
--
--        name = object_get_canonical_path_component(OBJECT(&s->apu_cpu[i]));
--        if (strcmp(name, boot_cpu)) {
--            /*
--             * Secondary CPUs start in powered-down state.
--             */
--            object_property_set_bool(OBJECT(&s->apu_cpu[i]),
--                                     "start-powered-off", true, &error_abort);
--        } else {
--            s->boot_cpu_ptr = &s->apu_cpu[i];
--        }
--
--        object_property_set_bool(OBJECT(&s->apu_cpu[i]), "has_el3", s->secure,
--                                 NULL);
--        object_property_set_bool(OBJECT(&s->apu_cpu[i]), "has_el2", s->virt,
--                                 NULL);
--        object_property_set_int(OBJECT(&s->apu_cpu[i]), "reset-cbar",
--                                GIC_BASE_ADDR, &error_abort);
--        object_property_set_int(OBJECT(&s->apu_cpu[i]), "core-count",
--                                num_apus, &error_abort);
--        if (!qdev_realize(DEVICE(&s->apu_cpu[i]), NULL, errp)) {
--            return;
--        }
-+    /* Realize APUs before realizing the GIC. KVM requires this. */
-+    qdev_prop_set_bit(DEVICE(&s->apu), "start-powered-off", true);
-+    qdev_prop_set_bit(DEVICE(&s->apu), "has_el3", s->secure);
-+    qdev_prop_set_bit(DEVICE(&s->apu), "has_el2", s->virt);
-+    qdev_prop_set_uint64(DEVICE(&s->apu), "reset-cbar", GIC_BASE_ADDR);
-+    if (!qdev_realize(DEVICE(&s->apu), NULL, errp)) {
-+        return;
-+    }
-+    /* ensure boot cpu will start */
-+    if (sscanf(boot_cpu, "apu-cpu[%u]", &boot_idx) && boot_idx < num_apus) {
-+        s->boot_cpu_ptr = arm_cpus_get_cpu(&s->apu, boot_idx);
-+        object_property_set_bool(OBJECT(s->boot_cpu_ptr), "start-powered-off",
-+                                 false, &error_abort);
-     }
- 
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
-@@ -533,32 +501,33 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-     }
- 
-     for (i = 0; i < num_apus; i++) {
-+        ARMCPU *apu_cpu = arm_cpus_get_cpu(&s->apu, i);
-         qemu_irq irq;
- 
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
--                           qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
-+                           qdev_get_gpio_in(DEVICE(apu_cpu),
-                                             ARM_CPU_IRQ));
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus,
--                           qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
-+                           qdev_get_gpio_in(DEVICE(apu_cpu),
-                                             ARM_CPU_FIQ));
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus * 2,
--                           qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
-+                           qdev_get_gpio_in(DEVICE(apu_cpu),
-                                             ARM_CPU_VIRQ));
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus * 3,
--                           qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
-+                           qdev_get_gpio_in(DEVICE(apu_cpu),
-                                             ARM_CPU_VFIQ));
-         irq = qdev_get_gpio_in(DEVICE(&s->gic),
-                                arm_gic_ppi_index(i, ARM_PHYS_TIMER_PPI));
--        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_PHYS, irq);
-+        qdev_connect_gpio_out(DEVICE(apu_cpu), GTIMER_PHYS, irq);
-         irq = qdev_get_gpio_in(DEVICE(&s->gic),
-                                arm_gic_ppi_index(i, ARM_VIRT_TIMER_PPI));
--        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_VIRT, irq);
-+        qdev_connect_gpio_out(DEVICE(apu_cpu), GTIMER_VIRT, irq);
-         irq = qdev_get_gpio_in(DEVICE(&s->gic),
-                                arm_gic_ppi_index(i, ARM_HYP_TIMER_PPI));
--        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_HYP, irq);
-+        qdev_connect_gpio_out(DEVICE(apu_cpu), GTIMER_HYP, irq);
-         irq = qdev_get_gpio_in(DEVICE(&s->gic),
-                                arm_gic_ppi_index(i, ARM_SEC_TIMER_PPI));
--        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_SEC, irq);
-+        qdev_connect_gpio_out(DEVICE(apu_cpu), GTIMER_SEC, irq);
- 
-         if (s->virt) {
-             irq = qdev_get_gpio_in(DEVICE(&s->gic),
++void riscv_hart_array_realize(RISCVHartArrayState *state, Error **errp)
++{
++    sysbus_realize(SYS_BUS_DEVICE(state), errp);
++}
++
+ static Property riscv_harts_props[] = {
+     DEFINE_PROP_UINT32("num-harts", RISCVHartArrayState, num_harts, 1),
+     DEFINE_PROP_UINT32("hartid-base", RISCVHartArrayState, hartid_base, 0),
 -- 
 2.35.1

@@ -1,128 +1,85 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp977137lfb;
-        Wed, 30 Mar 2022 07:11:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw3yItocCBgoI9rRyKuk21JLy8SNB3g2MUQH7kDKKjo8lLi4LC3MIDgH5NdxYhkkbWg/zxD
-X-Received: by 2002:a05:622a:28a:b0:2e1:f71f:9cf8 with SMTP id z10-20020a05622a028a00b002e1f71f9cf8mr33224672qtw.184.1648649483173;
-        Wed, 30 Mar 2022 07:11:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648649483; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1597675lfb;
+        Thu, 31 Mar 2022 00:50:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw5WlHBDEPELu/qBmRjJdWP6NRe804eejyfruJRZ7huisAuCs+XUH3ExULUaFiUhTff8Bjk
+X-Received: by 2002:a05:6214:4006:b0:432:ea2b:5aad with SMTP id kd6-20020a056214400600b00432ea2b5aadmr3018174qvb.39.1648713001767;
+        Thu, 31 Mar 2022 00:50:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648713001; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jx0/k2Hx3/W8YNqpeyiXHZlmyBe+I5IugmE7tG+Za6HFQ1p5KFYCdpbik41EnNq5AJ
-         ZYqNB9LVS9OJuiDyr+3qPgsQoRmrcoVbvWPZOlLT+I10BdOT3y0hFJjV4PW58Os54v5Y
-         KPbpMGGhrpHgPwNd8Z5RiHU22p4+05OyEXjKM1m2SIeWaWVWyC/jxfCIRpgy9V1MzzbQ
-         gwQYW5SKlDz4rCKiwP7lVuA1gS+tZ3fg7SM9UWrHuGql88XbtCxZg81tH45/wJV713Rf
-         uBaOE8sObq58Ch1359+ZrkqzL6VYrQKkPOUn2TePHEq4JUhG4fnpihqdT1E38DqEnkb9
-         Zvag==
+        b=0XdP6LfaIEjSBLcei13srYjgzGE+6GGheJ0/P0f66oJ+0Jmq21cx0khHlrYt1COrsO
+         ascwAnlyVpMjfPxO+h0S+IoVHe9M47TJlGsyg6YV12jAcDYaQRsXiEbWpRUOwZYtkm08
+         ajhmDnDsfKArVqgBfEYApxWVvac2QeWpcjfW5C6qHZieqt9BNFxjGLz8n7YzUkTlCHqR
+         i0z8J0KR7JezcT4Lxb2vIXbwvYse6vm4i+Llg7WswPrwNtXKYZ0GBYPQ8+iWEj8V/8N0
+         dpbBp7An7hc9kUgTHuvT2g2311Ui09PUKmu7mkl91Zb7V+Cn1OoNk1Ar1B0v1YSXi4lg
+         PpsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=XGha0LN4yIpz+2QmjNP4jXhpkJkaIAoDwpKa+sKvHG4=;
-        b=F/3Nb6KXbS3LfBA0eMA6d7tjJkPOeHi5fBIIFbrh0rt3vp0yF9DOgdSQCMBjmJqnFH
-         LPJbOPIs1dNdK7W6jKlxiIFF9V5j8CdzarNBb1hMXjuHg5l6h/99iCA51AdnpWKaUw4h
-         old8LuXXxcSuLQs445L5BeRRQ6mEElLyrmOVeb6Ye8m3dd1vfKN8YbGR1TKQy9G48MOb
-         V9bx5ma8fVbCEL/kRON4fzPCCvKFhIjnPdOMe/ys+55yeJBOuBfBvZpftJbpZIEq5gjk
-         oVFYcQuMWIjUqORR5hcX26BTp9hAE+0z8WKflmwbhvcFsC755jzFqpcq9FpmhA6kiavb
-         xUkg==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=KlQoqlZORABF1tAyyVe/AddSTrro4ZVZFMYzwpm0nkE=;
+        b=kvX8oEKSTKyZl7J6MPlpJibuOSXFZhRR+p7l5DbdjHpkwjyFVW661ezZtXFVh5vIdm
+         jwSFfE5X1I4vDAsh5yHHO9qSn3vH3npLvwYgksD1LQrX8w/Z1iLRSHQCgJt3IOuLFVMn
+         PpfG2z7ZgfgcVJYNUp5oShofQARe8MKuBosfSwIMmP++59y9quWJkUS9QXc6RLWQFA/1
+         LoDeRfbTWQN1t7Zt44t9464EJ1bMJE5p7IhT1jbT/AE9GeM7Gkuffh56frNmKrDcLZYm
+         W1jZ+bBgJp+qishwDThr4kSqvypXK9f5bMZss+D/1hwb6poveapWIIXQIGZOCRZ/bw9A
+         F9pQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=c5qfOUt8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 89-20020a0c8062000000b00440ea37a04dsi10702455qva.259.2022.03.30.07.11.23
+        by mx.google.com with ESMTPS id s22-20020a37a916000000b0067e4be23a6dsi10884584qke.690.2022.03.31.00.50.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Mar 2022 07:11:23 -0700 (PDT)
+        Thu, 31 Mar 2022 00:50:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=c5qfOUt8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39518 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33576 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nZZ2g-0002LM-M1
-	for alex.bennee@linaro.org; Wed, 30 Mar 2022 10:11:22 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40836)
+	id 1nZpZB-0004Iz-8S
+	for alex.bennee@linaro.org; Thu, 31 Mar 2022 03:50:01 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1nZZ2V-0002Kk-Mv
- for qemu-arm@nongnu.org; Wed, 30 Mar 2022 10:11:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:24474)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1nZpYm-0004IY-53; Thu, 31 Mar 2022 03:49:36 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:12006)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1nZZ2S-0002o3-37
- for qemu-arm@nongnu.org; Wed, 30 Mar 2022 10:11:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648649465;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XGha0LN4yIpz+2QmjNP4jXhpkJkaIAoDwpKa+sKvHG4=;
- b=c5qfOUt8RIAvGRV7aC1WM60GpLm8Qfb6Pc2kFuiXIXdGu2/IUhbBNOwfbHuwnS8OZURMkV
- ng9D0936Y7DIbFC8NC49JOCOnMa75d5NQv0LxPe6lQhXkZhCDS1WlqLgbvuhGvSoHLZAWG
- xSvEGH6VPDpU5SFMKzp451OElPA1joA=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-383-tRz2WdmrPJ2UUT2OLMl5Ow-1; Wed, 30 Mar 2022 10:11:04 -0400
-X-MC-Unique: tRz2WdmrPJ2UUT2OLMl5Ow-1
-Received: by mail-ed1-f69.google.com with SMTP id
- l24-20020a056402231800b00410f19a3103so13046512eda.5
- for <qemu-arm@nongnu.org>; Wed, 30 Mar 2022 07:11:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=XGha0LN4yIpz+2QmjNP4jXhpkJkaIAoDwpKa+sKvHG4=;
- b=q42Z92v6cbTTpXPlZisJzVC9WxE+mwCyA9hWRYnXoSde0cBz1VzNUhdVrJrCaDoM3E
- 4wd4Oz/QAhysSAm3qPJGb6bP9/Lev4GD7e5M0CNX6EPxEuxp4SU+xrh6+1+OrjLAfIfy
- ijBvYaHDqNOWBi/yEU78omT8UP12fbxexsGAl8qTPDNj5VNhYltceii0tTG05gCl+n4z
- vpcqG7sVNZJbpgHjCJxwibEJM2Xb/bPlEotMI9g8bEXjSTvpEb2XOT4lnsWHc7nJMDzh
- 8IQ3h8Cm5N8TxNerYCQTPTJp3GD6sEEYGppP83mixOcfObwAt1QHz0vVR5F0ZZcBxafM
- y61Q==
-X-Gm-Message-State: AOAM530rXnyleit9mOgTRJErLdFt1N5J5Zm/79VzhT8EHA0FgPC5ovbe
- EGsmj0a7fQby8GYI1WbWVgClVr5mGvtO/FrP7YcmE1Fwmib289bgMnZJxuhYhlRHoeEqP5mZK/T
- mNDaT2Z5hdhv8
-X-Received: by 2002:a17:906:58d2:b0:6da:b635:fbf3 with SMTP id
- e18-20020a17090658d200b006dab635fbf3mr39157712ejs.40.1648649463058; 
- Wed, 30 Mar 2022 07:11:03 -0700 (PDT)
-X-Received: by 2002:a17:906:58d2:b0:6da:b635:fbf3 with SMTP id
- e18-20020a17090658d200b006dab635fbf3mr39157675ejs.40.1648649462806; 
- Wed, 30 Mar 2022 07:11:02 -0700 (PDT)
-Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id
- z13-20020a17090674cd00b006df78d85eabsm8349859ejl.111.2022.03.30.07.11.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 30 Mar 2022 07:11:02 -0700 (PDT)
-Date: Wed, 30 Mar 2022 16:10:59 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH v3 3/4] hw/acpi/aml-build: Use existing CPU topology to
- build PPTT table
-Message-ID: <20220330161059.14e3a990@redhat.com>
-In-Reply-To: <20220323072438.71815-4-gshan@redhat.com>
-References: <20220323072438.71815-1-gshan@redhat.com>
- <20220323072438.71815-4-gshan@redhat.com>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.31; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1nZpYi-00045H-TP; Thu, 31 Mar 2022 03:49:35 -0400
+Received: from mail.aspeedtech.com ([192.168.0.24])
+ by twspam01.aspeedtech.com with ESMTP id 22V7bmnC051495;
+ Thu, 31 Mar 2022 15:37:48 +0800 (GMT-8)
+ (envelope-from steven_lee@aspeedtech.com)
+Received: from localhost.localdomain (192.168.70.100) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 31 Mar
+ 2022 15:48:45 +0800
+From: Steven Lee <steven_lee@aspeedtech.com>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
+ <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Subject: [PATCH v4 1/3] aspeed/hace: Support HMAC Key Buffer register.
+Date: Thu, 31 Mar 2022 15:48:42 +0800
+Message-ID: <20220331074844.30065-2-steven_lee@aspeedtech.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20220331074844.30065-1-steven_lee@aspeedtech.com>
+References: <20220331074844.30065-1-steven_lee@aspeedtech.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [192.168.70.100]
+X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
+ (192.168.0.24)
+X-DNSRBL: 
+X-MAIL: twspam01.aspeedtech.com 22V7bmnC051495
+Received-SPF: pass client-ip=211.20.114.71;
+ envelope-from=steven_lee@aspeedtech.com; helo=twspam01.aspeedtech.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,209 +92,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, zhenyzha@redhat.com, wangyanan55@huawei.com,
- qemu-arm@nongnu.org, shan.gavin@gmail.com
+Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
+ steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4XKnsv8PN8j9
+X-TUID: 9vwgtR3nDKfi
 
-On Wed, 23 Mar 2022 15:24:37 +0800
-Gavin Shan <gshan@redhat.com> wrote:
+Support HACE28: Hash HMAC Key Buffer Base Address Register.
 
-> When the PPTT table is built, the CPU topology is re-calculated, but
-> it's unecessary because the CPU topology has been populated in
-> virt_possible_cpu_arch_ids() on arm/virt machine.
-> 
-> This avoids to re-calculate the CPU topology by reusing the existing
-> one in ms->possible_cpus. Currently, the only user of build_pptt() is
-> arm/virt machine.
-> 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->  hw/acpi/aml-build.c | 96 +++++++++++++++++++++++++++++++++------------
->  1 file changed, 72 insertions(+), 24 deletions(-)
-> 
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 4086879ebf..10a2d63b96 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -2002,18 +2002,27 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->                  const char *oem_id, const char *oem_table_id)
->  {
->      MachineClass *mc = MACHINE_GET_CLASS(ms);
-> +    CPUArchIdList *cpus = ms->possible_cpus;
-> +    GQueue *socket_list = g_queue_new();
-> +    GQueue *cluster_list = g_queue_new();
-> +    GQueue *core_list = g_queue_new();
->      GQueue *list = g_queue_new();
->      guint pptt_start = table_data->len;
->      guint parent_offset;
->      guint length, i;
-> -    int uid = 0;
-> -    int socket;
-> +    int n, socket_id, cluster_id, core_id, thread_id;
->      AcpiTable table = { .sig = "PPTT", .rev = 2,
->                          .oem_id = oem_id, .oem_table_id = oem_table_id };
->  
->      acpi_table_begin(&table, table_data);
->  
-> -    for (socket = 0; socket < ms->smp.sockets; socket++) {
-> +    for (n = 0; n < cpus->len; n++) {
-> +        socket_id = cpus->cpus[n].props.socket_id;
-> +        if (g_queue_find(socket_list, GUINT_TO_POINTER(socket_id))) {
-> +            continue;
-> +        }
+Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+---
+ hw/misc/aspeed_hace.c         | 7 +++++++
+ include/hw/misc/aspeed_hace.h | 1 +
+ 2 files changed, 8 insertions(+)
 
-maybe instead of scanning cpus[n] every time for each topology level
-and trying to keep code flattened (which mimics PPTT fattened tree
-table for not much of the reason, spec doesn't require entries
-from the same level to e described contiguously),
-try to rebuild hierarchy tree from flat cpus[n] in 1 pass first
-and then use nested loops or recursion to build PPTT table,
-something like:
-
- sockets = cpus_to_topo(possible) 
- build_pptt_level(items = sockets, parent_ref = 0)
-  for item in items
-     level_ref = table_data->len - pptt_start
-     build_processor_hierarchy_node(item {id, flags, ...}, parent_ref)
-     if not leaf:
-        build_pptt_level(item, level_ref)
-
-which is much more compact and easier to read compared to
-unrolled impl. it's now with all push/pop stack emulation.
-
-
-> +
-> +        g_queue_push_tail(socket_list, GUINT_TO_POINTER(socket_id));
->          g_queue_push_tail(list,
->              GUINT_TO_POINTER(table_data->len - pptt_start));
->          build_processor_hierarchy_node(
-> @@ -2023,65 +2032,104 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->               * of a physical package
->               */
->              (1 << 0),
-> -            0, socket, NULL, 0);
-> +            0, socket_id, NULL, 0);
->      }
->  
->      if (mc->smp_props.clusters_supported) {
->          length = g_queue_get_length(list);
->          for (i = 0; i < length; i++) {
-> -            int cluster;
-> -
->              parent_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
-> -            for (cluster = 0; cluster < ms->smp.clusters; cluster++) {
-> +            socket_id = GPOINTER_TO_UINT(g_queue_pop_head(socket_list));
-> +
-> +            for (n = 0; n < cpus->len; n++) {
-> +                if (cpus->cpus[n].props.socket_id != socket_id) {
-> +                    continue;
-> +                }
-> +
-> +                cluster_id = cpus->cpus[n].props.cluster_id;
-> +                if (g_queue_find(cluster_list, GUINT_TO_POINTER(cluster_id))) {
-> +                    continue;
-> +                }
-> +
-> +                g_queue_push_tail(cluster_list, GUINT_TO_POINTER(cluster_id));
->                  g_queue_push_tail(list,
->                      GUINT_TO_POINTER(table_data->len - pptt_start));
->                  build_processor_hierarchy_node(
->                      table_data,
->                      (0 << 0), /* not a physical package */
-> -                    parent_offset, cluster, NULL, 0);
-> +                    parent_offset, cluster_id, NULL, 0);
->              }
->          }
->      }
->  
->      length = g_queue_get_length(list);
->      for (i = 0; i < length; i++) {
-> -        int core;
-> -
->          parent_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
-> -        for (core = 0; core < ms->smp.cores; core++) {
-> -            if (ms->smp.threads > 1) {
-> -                g_queue_push_tail(list,
-> -                    GUINT_TO_POINTER(table_data->len - pptt_start));
-> -                build_processor_hierarchy_node(
-> -                    table_data,
-> -                    (0 << 0), /* not a physical package */
-> -                    parent_offset, core, NULL, 0);
-> -            } else {
-> +        if (!mc->smp_props.clusters_supported) {
-> +            socket_id = GPOINTER_TO_UINT(g_queue_pop_head(socket_list));
-> +        } else {
-> +            cluster_id = GPOINTER_TO_UINT(g_queue_pop_head(cluster_list));
-> +        }
-> +
-> +        for (n = 0; n < cpus->len; n++) {
-> +            if (!mc->smp_props.clusters_supported &&
-> +                cpus->cpus[n].props.socket_id != socket_id) {
-> +                continue;
-> +            }
-> +
-> +            if (mc->smp_props.clusters_supported &&
-> +                cpus->cpus[n].props.cluster_id != cluster_id) {
-> +                continue;
-> +            }
-> +
-> +            core_id = cpus->cpus[n].props.core_id;
-> +            if (ms->smp.threads <= 1) {
->                  build_processor_hierarchy_node(
->                      table_data,
->                      (1 << 1) | /* ACPI Processor ID valid */
->                      (1 << 3),  /* Node is a Leaf */
-> -                    parent_offset, uid++, NULL, 0);
-> +                    parent_offset, core_id, NULL, 0);
-> +                continue;
-> +            }
-> +
-> +            if (g_queue_find(core_list, GUINT_TO_POINTER(core_id))) {
-> +                continue;
->              }
-> +
-> +            g_queue_push_tail(core_list, GUINT_TO_POINTER(core_id));
-> +            g_queue_push_tail(list,
-> +                GUINT_TO_POINTER(table_data->len - pptt_start));
-> +            build_processor_hierarchy_node(
-> +                table_data,
-> +                (0 << 0), /* not a physical package */
-> +                parent_offset, core_id, NULL, 0);
->          }
->      }
->  
->      length = g_queue_get_length(list);
->      for (i = 0; i < length; i++) {
-> -        int thread;
-> -
->          parent_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
-> -        for (thread = 0; thread < ms->smp.threads; thread++) {
-> +        core_id = GPOINTER_TO_UINT(g_queue_pop_head(core_list));
-> +
-> +        for (n = 0; n < cpus->len; n++) {
-> +            if (cpus->cpus[n].props.core_id != core_id) {
-> +                continue;
-> +            }
-> +
-> +            thread_id = cpus->cpus[n].props.thread_id;
->              build_processor_hierarchy_node(
->                  table_data,
->                  (1 << 1) | /* ACPI Processor ID valid */
->                  (1 << 2) | /* Processor is a Thread */
->                  (1 << 3),  /* Node is a Leaf */
-> -                parent_offset, uid++, NULL, 0);
-> +                parent_offset, thread_id, NULL, 0);
->          }
->      }
->  
->      g_queue_free(list);
-> +    g_queue_free(core_list);
-> +    g_queue_free(cluster_list);
-> +    g_queue_free(socket_list);
->      acpi_table_end(linker, &table);
->  }
->  
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 10f00e65f4..59fe5bfca2 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -27,6 +27,7 @@
+ 
+ #define R_HASH_SRC      (0x20 / 4)
+ #define R_HASH_DEST     (0x24 / 4)
++#define R_HASH_KEY_BUFF (0x28 / 4)
+ #define R_HASH_SRC_LEN  (0x2c / 4)
+ 
+ #define R_HASH_CMD      (0x30 / 4)
+@@ -210,6 +211,9 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+     case R_HASH_DEST:
+         data &= ahc->dest_mask;
+         break;
++    case R_HASH_KEY_BUFF:
++        data &= ahc->key_mask;
++        break;
+     case R_HASH_SRC_LEN:
+         data &= 0x0FFFFFFF;
+         break;
+@@ -333,6 +337,7 @@ static void aspeed_ast2400_hace_class_init(ObjectClass *klass, void *data)
+ 
+     ahc->src_mask = 0x0FFFFFFF;
+     ahc->dest_mask = 0x0FFFFFF8;
++    ahc->key_mask = 0x0FFFFFC0;
+     ahc->hash_mask = 0x000003ff; /* No SG or SHA512 modes */
+ }
+ 
+@@ -351,6 +356,7 @@ static void aspeed_ast2500_hace_class_init(ObjectClass *klass, void *data)
+ 
+     ahc->src_mask = 0x3fffffff;
+     ahc->dest_mask = 0x3ffffff8;
++    ahc->key_mask = 0x3FFFFFC0;
+     ahc->hash_mask = 0x000003ff; /* No SG or SHA512 modes */
+ }
+ 
+@@ -369,6 +375,7 @@ static void aspeed_ast2600_hace_class_init(ObjectClass *klass, void *data)
+ 
+     ahc->src_mask = 0x7FFFFFFF;
+     ahc->dest_mask = 0x7FFFFFF8;
++    ahc->key_mask = 0x7FFFFFF8;
+     ahc->hash_mask = 0x00147FFF;
+ }
+ 
+diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+index 94d5ada95f..2242945eb4 100644
+--- a/include/hw/misc/aspeed_hace.h
++++ b/include/hw/misc/aspeed_hace.h
+@@ -37,6 +37,7 @@ struct AspeedHACEClass {
+ 
+     uint32_t src_mask;
+     uint32_t dest_mask;
++    uint32_t key_mask;
+     uint32_t hash_mask;
+ };
+ 
+-- 
+2.17.1
 

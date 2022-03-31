@@ -1,100 +1,120 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp187331lfb;
-        Thu, 31 Mar 2022 09:00:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy8ORqwp8tR/KbGMKUW1ZreWUmJzfd+qQDKGzKWaIC04qV2wA1nDibCg6mXhtIt9xJF40uT
-X-Received: by 2002:a25:2497:0:b0:633:c1d0:e7bb with SMTP id k145-20020a252497000000b00633c1d0e7bbmr4718546ybk.291.1648742459562;
-        Thu, 31 Mar 2022 09:00:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648742459; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp225226lfb;
+        Thu, 31 Mar 2022 09:58:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzNnC67feZXGyXGI5SVKXPm30XQI8l2Dnm1EpOyAdEcRFo+ouJ0MVM6Fr1j6/f0VVFUgsL
+X-Received: by 2002:a81:6d05:0:b0:2ea:cb7f:9fc0 with SMTP id i5-20020a816d05000000b002eacb7f9fc0mr5735761ywc.297.1648745934265;
+        Thu, 31 Mar 2022 09:58:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648745934; cv=none;
         d=google.com; s=arc-20160816;
-        b=WtfZoTMG7svYs+CibUYSIWSqxVXWc4POLcFwOZWcgvNh/IHeUaxsnaCbwkkX5moAgd
-         rmtPIjHmqEsH45kqo6HzAJv6ZXezTOdKeRqCSL/pOPC7hX04BeUGbWLBs8pCicNu36Ij
-         MwVMqkCsQBJiESnfaw7E9x3yzwyS5cfGZuLKNOlvvtPXpxRwY1qTacg3PDsQ2xoJ3qIR
-         W3qbUmKRe6Lu0Gj2RfcLx4+g4Fje3forSE1aPJviMjiDsd6yb3rUNzeNuGcljwtFGeHi
-         zX63zYSQa/ouS+Kt/kbMS325SCTp6HFzUscRAudWI4s0LyfePQ7o0oG0aAxP36mlKD3Z
-         sU4Q==
+        b=soQkaCjKn4w1cLmL30cqU6jZuvIRn4QvRyPztwL8aTypyZ3XCui+GtSdCmzYW4VRWb
+         tk9puELlH+GH4CcsjemAUxjFvtj7ZAnnLVYFpKhyo4uhK2jgepQPxTrBPosv9Z3lARkR
+         dA3L+AL0Si/XR1NqsnMSjL8uBit2Cx4/PDT6mEqABjy1O7Lmp9u8x6Bxs+4JTlD1md+h
+         8wBrdzL6WF//cGat2u+AM87amfUthMLLCS6u3Ynys441zfjaXlrC55EryxNwdvlDaGBY
+         py8jbpmqy5zxFpz0ddyvbVM2VvA8yVnu8PP+z+XRhU/mpl7SbaikXh/QD5jwQ3F6F+wk
+         t4aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=pwOWkktp2CRw+X8p7L+k6PkL/TuFUgA8fl2VPNbvpsA=;
-        b=b0ztYaK4ufDZX5w6+HH2qgrO9wRrZz0ZOPvgQ5E8+JwKn6/m9fQQZ+0iq5YXu8Nxjc
-         zFr+pYWdqF2n2ubL6pn5ZzCkMf+XaaE9QWqgAQwFGbQePzHpCIQwBhQLxnvOsw1VtD7W
-         yRMYp0KPSDlj1AKNZtfKWJFQodIW5+LEH4CUZXa/os9QHe+OnOhIHLIChrMZiVReurbu
-         NhEpSQC4hPik40e1cJrGdBdugY3Pf2Rh5DM9RBpDvZ1P+5x4YjB3CRmnXCvTb96P2Wyu
-         i1vfAiM9/eLJfC+4gvDTnwb3j+/alFU3Py8gWt+IKYO75GfooGxlGmZzg8rZ8M+H0NSy
-         5Gfw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature
+         :dkim-signature;
+        bh=1WRY1D6ylOonmR+UXUnHo7Y5sqkvfCyFsaIhwjq1Gdw=;
+        b=PUI5kZfIIdm4y3hGQnw3VnI8gFv8kU3LX1X37Az1H/OQ1b6UZuXuJKWkHnUAz53VSN
+         PGTRMyUAp83n6Nd64adJfGBFs6RfH9X3EcaVYHVN7h2bNgrJGnMiTCsn/7Tbl1mZImzM
+         J7eEvUOFG25jLM/ltbIkNgP3i6KZT5CCd/nmuYD7bguun8Q84Uj/XucH9AZm2yVioSti
+         DQTwa8/JPDdk+xtyhN7bbd/dZ2p0TjEalisppJVlspHyhDlYpnMrB/BR2T9u5pPAiJ4m
+         xWmdFgLob0SkrW1vxFtkivFhlgQ585NE60ZBnv4yHaKTNj3ASOeFQGM1EToYIuVvNVl9
+         WXeA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=H2a+5jpH;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=MaQ9uEkM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 67-20020a250046000000b00633994043a6si166480yba.16.2022.03.31.09.00.59
+        by mx.google.com with ESMTPS id e137-20020a81378f000000b002e5bb9dca21si72373ywa.170.2022.03.31.09.58.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Mar 2022 09:00:59 -0700 (PDT)
+        Thu, 31 Mar 2022 09:58:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=H2a+5jpH;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=MaQ9uEkM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36234 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58338 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nZxEI-0004X0-UN
-	for alex.bennee@linaro.org; Thu, 31 Mar 2022 12:00:58 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39434)
+	id 1nZy8L-0000WJ-Ct
+	for alex.bennee@linaro.org; Thu, 31 Mar 2022 12:58:53 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53464)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nZxDP-0004VT-LN
- for qemu-arm@nongnu.org; Thu, 31 Mar 2022 12:00:03 -0400
-Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156]:38061)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1nZy7J-0000Se-R5; Thu, 31 Mar 2022 12:57:50 -0400
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20]:38583)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nZxDN-0005s9-35
- for qemu-arm@nongnu.org; Thu, 31 Mar 2022 12:00:03 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.27])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 3AD52247A0;
- Thu, 31 Mar 2022 15:59:56 +0000 (UTC)
-Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 31 Mar
- 2022 17:59:56 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-106R00655fd99f5-3884-4626-beca-aaa6a1eb2adf,
- FC9088D273F6636B0CAAD4892A2C3D02B7ACC8E0) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <fe9ec82c-16df-dfca-4dd6-999a98fe36bf@kaod.org>
-Date: Thu, 31 Mar 2022 17:59:55 +0200
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1nZy7H-0000tO-8Z; Thu, 31 Mar 2022 12:57:49 -0400
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailout.west.internal (Postfix) with ESMTP id B730F3201F73;
+ Thu, 31 Mar 2022 12:57:42 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute1.internal (MEProxy); Thu, 31 Mar 2022 12:57:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:sender
+ :subject:subject:to:to; s=fm3; bh=1WRY1D6ylOonmR+UXUnHo7Y5sqkvfC
+ yFsaIhwjq1Gdw=; b=H2a+5jpHpnii21qkEk3Ptj0wp7RWjJOY6STOnYpkk86v5Q
+ np2dG6KjKo8ZpF/h0hGkU+jCNX/vHQsXqgeg4V26cJx/JXASKB6mpz0+DQHTFPmj
+ 1H7MmwsRaLfXLeU6vKUngdGPJ+sV5eq7nLRV6Kpw+jAh5wKPwn2gMvd+5b6NVX7e
+ AEIPAQbM3V6i2qKr3JzG7SulUq9Sn7KwftQNvyMK173cS+QSpbryR+isP499RHLd
+ SwZHA821O3slsxA9CvqdtSlbGvZHGNtI/qVhF1/OarI/enrZ05eeLDVQ04LFYZ6w
+ dRq5fTLB3AAAWzOPLuiujCWA7OqwDo4+87DEBFpQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:from:from:in-reply-to:message-id
+ :mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=1WRY1D
+ 6ylOonmR+UXUnHo7Y5sqkvfCyFsaIhwjq1Gdw=; b=MaQ9uEkM+mNVoliE/aBsIZ
+ 2KhvxKFz4JcHEMaypkbsc84Lff+SrgnOO+yf8rwRoK2Q1nYy4lizTzjW2sa9AejE
+ oyRsZZ5+hwT+WuJsAQj4u1PSMtHh4+ggAh1cGo3zpDcVp/MuYPb49BbkZdMNwSTQ
+ 63CMcm76b5mnsX+EH5xSVlfEc3V/wQONIlBKVa65mvfZktkVTJiMXzYzHsB9QLDM
+ YymgmONWfUyMjS5lz3fV5gxMvXzwLGNX+/PT2UCzr35h0bCOxj1T8P+lcM4ZRtzr
+ ZGmJiOePVLnHdEO0ReGG0JknhTp47NEXfy6KGTYvEeJw5nGTzZOvAWzE/eQz374Q
+ ==
+X-ME-Sender: <xms:hd1FYhrtohsJKxp63C9w_dtWTZDf1urc82M7xrEruwRLqzHKEPhGmA>
+ <xme:hd1FYjpsUo2Onz5RZgJ3j00YYKjECwDRkWvq5z-QMAK8WMvp6ydjYJMot4xPlcQHd
+ hDT67yvMsNjs8BbEvA>
+X-ME-Received: <xmr:hd1FYuOILEIxkHDbkU0hSiZE-JomuZxSUD2tGcg5cbvj3cySyStEQel6Z130SFfjkNOLyMSQuUjIWhcnuX_FrQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudeigedguddtjecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpefhvffufffkofgtggfgsehtqhertdertdejnecuhfhrohhmpefmlhgruhhs
+ ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
+ gvrhhnpeegudeghfdvgffgleevtdettefhhfdvieevffevgfelkeethfevteffhfeltddv
+ ffenucffohhmrghinhepnhhvmhgvgihprhgvshhsrdhorhhgpdgumhhtfhdrohhrghdpsh
+ hmsghushdrohhrghdpkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptden
+ ucfrrghrrghmpehmrghilhhfrhhomhepihhtshesihhrrhgvlhgvvhgrnhhtrdgukh
+X-ME-Proxy: <xmx:hd1FYs6mGYApWKhRunUSmj9yVK_ZHNGihzMc2klKqL5Ap5JWjmV-Ww>
+ <xmx:hd1FYg7e9DwVCRh6A0bcW1X63llaCqHuDS2TyKoB0MvL7NuQfVopiw>
+ <xmx:hd1FYki8kU1C3vSrTNUv9a3GCj3ZLRkaM87h1LoJzAha2jQco4f_fw>
+ <xmx:ht1FYtwPp9KkoV1Oe8xJ0a4DP0nZ2MkJ2fwD6JoTVXKTBg1W5tSvtg>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 31 Mar 2022 12:57:39 -0400 (EDT)
+From: Klaus Jensen <its@irrelevant.dk>
+To: qemu-devel@nongnu.org
+Subject: [RFC PATCH 0/4] hw/i2c: i2c slave mode support
+Date: Thu, 31 Mar 2022 18:57:33 +0200
+Message-Id: <20220331165737.1073520-1-its@irrelevant.dk>
+X-Mailer: git-send-email 2.35.1
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v2 2/9] aspeed/smc: Add AST1030 support
-Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Alistair Francis
- <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, Andrew
- Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Cleber Rosa
- <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
- Leal <bleal@redhat.com>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20220331081545.7140-1-jamin_lin@aspeedtech.com>
- <20220331081545.7140-3-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220331081545.7140-3-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 074ffeaa-6bdf-4e34-9323-f931021202e7
-X-Ovh-Tracer-Id: 14986853663541922747
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudeigedgleehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomh
-Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
- helo=8.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=64.147.123.20; envelope-from=its@irrelevant.dk;
+ helo=wout4-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,217 +127,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: troy_lee@aspeedtech.com, steven_lee@aspeedtech.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
+ Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Klaus Jensen <k.jensen@samsung.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
+ Matt Johnston <matt@codeconstruct.com.au>, Jeremy Kerr <jk@ozlabs.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1HgDO+MrzT+i
+X-TUID: UGbU6MpXmPcm
 
-Hello Jamin,
+From: Klaus Jensen <k.jensen@samsung.com>=0D
 
-On 3/31/22 10:15, Jamin Lin wrote:
-> From: Steven Lee <steven_lee@aspeedtech.com>
-> 
-> AST1030 spi controller's address decoding unit is 1MB that is identical
-> to ast2600, but fmc address decoding unit is 512kb.
-> Introduce seg_to_reg and reg_to_seg handlers for ast1030 fmc controller.
-> In addition, add ast1030 fmc, spi1, and spi2 class init handler.
-> 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-
-I did a review of this patch, anyhow
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-but please drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag which is not
-upstream.
-
-Thanks,
-
-C.
-
-
-> ---
->   hw/ssi/aspeed_smc.c | 160 ++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 160 insertions(+)
-> 
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 48305e1574..81af783729 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -1696,6 +1696,163 @@ static const TypeInfo aspeed_2600_spi2_info = {
->       .class_init = aspeed_2600_spi2_class_init,
->   };
->   
-> +/*
-> + * The FMC Segment Registers of the AST1030 have a 512KB unit.
-> + * Only bits [27:19] are used for decoding.
-> + */
-> +#define AST1030_SEG_ADDR_MASK 0x0ff80000
-> +
-> +static uint32_t aspeed_1030_smc_segment_to_reg(const AspeedSMCState *s,
-> +        const AspeedSegments *seg)
-> +{
-> +    uint32_t reg = 0;
-> +
-> +    /* Disabled segments have a nil register */
-> +    if (!seg->size) {
-> +        return 0;
-> +    }
-> +
-> +    reg |= (seg->addr & AST1030_SEG_ADDR_MASK) >> 16; /* start offset */
-> +    reg |= (seg->addr + seg->size - 1) & AST1030_SEG_ADDR_MASK; /* end offset */
-> +    return reg;
-> +}
-> +
-> +static void aspeed_1030_smc_reg_to_segment(const AspeedSMCState *s,
-> +        uint32_t reg, AspeedSegments *seg)
-> +{
-> +    uint32_t start_offset = (reg << 16) & AST1030_SEG_ADDR_MASK;
-> +    uint32_t end_offset = reg & AST1030_SEG_ADDR_MASK;
-> +    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-> +
-> +    if (reg) {
-> +        seg->addr = asc->flash_window_base + start_offset;
-> +        seg->size = end_offset + (512 * KiB) - start_offset;
-> +    } else {
-> +        seg->addr = asc->flash_window_base;
-> +        seg->size = 0;
-> +    }
-> +}
-> +
-> +static const uint32_t aspeed_1030_fmc_resets[ASPEED_SMC_R_MAX] = {
-> +    [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
-> +                            CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1),
-> +};
-> +
-> +static const AspeedSegments aspeed_1030_fmc_segments[] = {
-> +    { 0x0, 128 * MiB }, /* start address is readonly */
-> +    { 128 * MiB, 128 * MiB }, /* default is disabled but needed for -kernel */
-> +    { 0x0, 0 }, /* disabled */
-> +};
-> +
-> +static void aspeed_1030_fmc_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-> +
-> +    dc->desc               = "Aspeed 1030 FMC Controller";
-> +    asc->r_conf            = R_CONF;
-> +    asc->r_ce_ctrl         = R_CE_CTRL;
-> +    asc->r_ctrl0           = R_CTRL0;
-> +    asc->r_timings         = R_TIMINGS;
-> +    asc->nregs_timings     = 2;
-> +    asc->conf_enable_w0    = CONF_ENABLE_W0;
-> +    asc->cs_num_max        = 2;
-> +    asc->segments          = aspeed_1030_fmc_segments;
-> +    asc->segment_addr_mask = 0x0ff80ff8;
-> +    asc->resets            = aspeed_1030_fmc_resets;
-> +    asc->flash_window_base = 0x80000000;
-> +    asc->flash_window_size = 0x10000000;
-> +    asc->features          = ASPEED_SMC_FEATURE_DMA |
-> +                             ASPEED_SMC_FEATURE_WDT_CONTROL;
-> +    asc->dma_flash_mask    = 0x0FFFFFFC;
-> +    asc->dma_dram_mask     = 0x000BFFFC;
-> +    asc->nregs             = ASPEED_SMC_R_MAX;
-> +    asc->segment_to_reg    = aspeed_1030_smc_segment_to_reg;
-> +    asc->reg_to_segment    = aspeed_1030_smc_reg_to_segment;
-> +    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-> +}
-> +
-> +static const TypeInfo aspeed_1030_fmc_info = {
-> +    .name =  "aspeed.fmc-ast1030",
-> +    .parent = TYPE_ASPEED_SMC,
-> +    .class_init = aspeed_1030_fmc_class_init,
-> +};
-> +
-> +static const AspeedSegments aspeed_1030_spi1_segments[] = {
-> +    { 0x0, 128 * MiB }, /* start address is readonly */
-> +    { 0x0, 0 }, /* disabled */
-> +};
-> +
-> +static void aspeed_1030_spi1_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-> +
-> +    dc->desc               = "Aspeed 1030 SPI1 Controller";
-> +    asc->r_conf            = R_CONF;
-> +    asc->r_ce_ctrl         = R_CE_CTRL;
-> +    asc->r_ctrl0           = R_CTRL0;
-> +    asc->r_timings         = R_TIMINGS;
-> +    asc->nregs_timings     = 2;
-> +    asc->conf_enable_w0    = CONF_ENABLE_W0;
-> +    asc->cs_num_max        = 2;
-> +    asc->segments          = aspeed_1030_spi1_segments;
-> +    asc->segment_addr_mask = 0x0ff00ff0;
-> +    asc->flash_window_base = 0x90000000;
-> +    asc->flash_window_size = 0x10000000;
-> +    asc->features          = ASPEED_SMC_FEATURE_DMA |
-> +                             ASPEED_SMC_FEATURE_WDT_CONTROL;
-> +    asc->dma_flash_mask    = 0x0FFFFFFC;
-> +    asc->dma_dram_mask     = 0x000BFFFC;
-> +    asc->nregs             = ASPEED_SMC_R_MAX;
-> +    asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-> +    asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-> +    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-> +}
-> +
-> +static const TypeInfo aspeed_1030_spi1_info = {
-> +    .name =  "aspeed.spi1-ast1030",
-> +    .parent = TYPE_ASPEED_SMC,
-> +    .class_init = aspeed_1030_spi1_class_init,
-> +};
-> +static const AspeedSegments aspeed_1030_spi2_segments[] = {
-> +    { 0x0, 128 * MiB }, /* start address is readonly */
-> +    { 0x0, 0 }, /* disabled */
-> +};
-> +
-> +static void aspeed_1030_spi2_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-> +
-> +    dc->desc               = "Aspeed 1030 SPI2 Controller";
-> +    asc->r_conf            = R_CONF;
-> +    asc->r_ce_ctrl         = R_CE_CTRL;
-> +    asc->r_ctrl0           = R_CTRL0;
-> +    asc->r_timings         = R_TIMINGS;
-> +    asc->nregs_timings     = 2;
-> +    asc->conf_enable_w0    = CONF_ENABLE_W0;
-> +    asc->cs_num_max        = 2;
-> +    asc->segments          = aspeed_1030_spi2_segments;
-> +    asc->segment_addr_mask = 0x0ff00ff0;
-> +    asc->flash_window_base = 0xb0000000;
-> +    asc->flash_window_size = 0x10000000;
-> +    asc->features          = ASPEED_SMC_FEATURE_DMA |
-> +                             ASPEED_SMC_FEATURE_WDT_CONTROL;
-> +    asc->dma_flash_mask    = 0x0FFFFFFC;
-> +    asc->dma_dram_mask     = 0x000BFFFC;
-> +    asc->nregs             = ASPEED_SMC_R_MAX;
-> +    asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-> +    asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-> +    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-> +}
-> +
-> +static const TypeInfo aspeed_1030_spi2_info = {
-> +    .name =  "aspeed.spi2-ast1030",
-> +    .parent = TYPE_ASPEED_SMC,
-> +    .class_init = aspeed_1030_spi2_class_init,
-> +};
-> +
->   static void aspeed_smc_register_types(void)
->   {
->       type_register_static(&aspeed_smc_flash_info);
-> @@ -1709,6 +1866,9 @@ static void aspeed_smc_register_types(void)
->       type_register_static(&aspeed_2600_fmc_info);
->       type_register_static(&aspeed_2600_spi1_info);
->       type_register_static(&aspeed_2600_spi2_info);
-> +    type_register_static(&aspeed_1030_fmc_info);
-> +    type_register_static(&aspeed_1030_spi1_info);
-> +    type_register_static(&aspeed_1030_spi2_info);
->   }
->   
->   type_init(aspeed_smc_register_types)
-
+Hi all,=0D
+=0D
+This RFC series adds I2C "slave mode" support for the Aspeed I2C=0D
+controller as well as the necessary infrastructure in the i2c core to=0D
+support this.=0D
+=0D
+Background=0D
+~~~~~~~~~~=0D
+We are working on an emulated NVM Express Management Interface[1] for=0D
+testing and validation purposes. NVMe-MI is based on the MCTP=0D
+protocol[2] which may use a variety of underlying transports. The one we=0D
+are interested in is I2C[3].=0D
+=0D
+The first general trickery here is that all MCTP transactions are based=0D
+on the SMBus Block Write bus protocol[4]. This means that the slave must=0D
+be able to master the bus to communicate. As you know, hw/i2c/core.c=0D
+currently does not support this use case.=0D
+=0D
+The second issue is how to interact with these mastering devices. Jeremy=0D
+and Matt (CC'ed) have been working on an MCTP stack for the Linux Kernel=0D
+(already upstream) and an I2C binding driver[5] is currently under=0D
+review. This binding driver relies on I2C slave mode support in the I2C=0D
+controller.=0D
+=0D
+This series=0D
+~~~~~~~~~~~=0D
+Patch 1 adds support for multiple masters in the i2c core, allowing=0D
+slaves to master the bus and safely issue i2c_send/recv(). Patch 2 adds=0D
+an asynchronous send i2c_send_async(I2CBus *, uint8) on the bus that=0D
+must be paired with an explicit ack using i2c_ack(I2CBus *).=0D
+=0D
+Patch 3 adds the slave mode functionality to the emulated Aspeed I2C=0D
+controller. The implementation is probably buggy since I had to rely on=0D
+the implementation of the kernel driver to reverse engineer the behavior=0D
+of the controller slave mode (I do not have access to a spec sheet for=0D
+the Aspeed, but maybe someone can help me out with that?).=0D
+=0D
+Finally, patch 4 adds an example device using this new API. The device=0D
+is a simple "echo" device that upon being sent a set of bytes uses the=0D
+first byte as the address of the slave to echo to.=0D
+=0D
+With this combined I am able to boot up Linux on an emulated Aspeed 2600=0D
+evaluation board and have the i2c echo device write into a Linux slave=0D
+EEPROM. Assuming the echo device is on address 0x42:=0D
+=0D
+  # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-15/new_device=0D
+  i2c i2c-15: new_device: Instantiated device slave-24c02 at 0x64=0D
+  # i2cset -y 15 0x42 0x64 0x00 0xaa i=0D
+  # hexdump /sys/bus/i2c/devices/15-1064/slave-eeprom=0D
+  0000000 ffaa ffff ffff ffff ffff ffff ffff ffff=0D
+  0000010 ffff ffff ffff ffff ffff ffff ffff ffff=0D
+  *=0D
+  0000100=0D
+=0D
+  [1]: https://nvmexpress.org/developers/nvme-mi-specification/=0D
+  [2]: https://www.dmtf.org/sites/default/files/standards/documents/DSP0236=
+_1.3.1.pdf=0D
+  [3]: https://www.dmtf.org/sites/default/files/standards/documents/DSP0237=
+_1.2.0.pdf=0D
+  [4]: http://www.smbus.org/specs/SMBus_3_1_20180319.pdf=0D
+  [5]: https://lore.kernel.org/linux-i2c/20220218055106.1944485-1-matt@code=
+construct.com.au/=0D
+=0D
+Klaus Jensen (4):=0D
+  hw/i2c: support multiple masters=0D
+  hw/i2c: add async send=0D
+  hw/i2c: add slave mode for aspeed_i2c=0D
+  hw/misc: add a toy i2c echo device=0D
+=0D
+ hw/i2c/aspeed_i2c.c         |  95 +++++++++++++++++++++---=0D
+ hw/i2c/core.c               |  57 +++++++++++++-=0D
+ hw/i2c/trace-events         |   2 +-=0D
+ hw/misc/i2c-echo.c          | 144 ++++++++++++++++++++++++++++++++++++=0D
+ hw/misc/meson.build         |   2 +=0D
+ include/hw/i2c/aspeed_i2c.h |   8 ++=0D
+ include/hw/i2c/i2c.h        |  19 +++++=0D
+ 7 files changed, 316 insertions(+), 11 deletions(-)=0D
+ create mode 100644 hw/misc/i2c-echo.c=0D
+=0D
+-- =0D
+2.35.1=0D
+=0D

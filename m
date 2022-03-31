@@ -1,111 +1,111 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp225226lfb;
-        Thu, 31 Mar 2022 09:58:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwzNnC67feZXGyXGI5SVKXPm30XQI8l2Dnm1EpOyAdEcRFo+ouJ0MVM6Fr1j6/f0VVFUgsL
-X-Received: by 2002:a81:6d05:0:b0:2ea:cb7f:9fc0 with SMTP id i5-20020a816d05000000b002eacb7f9fc0mr5735761ywc.297.1648745934265;
-        Thu, 31 Mar 2022 09:58:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648745934; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp225523lfb;
+        Thu, 31 Mar 2022 09:59:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyt5VC6fNhk9q5GmxSbs/xSoYJAyUG0giHqlhNNS/qohev9hAY8mdbPH3wIrZlKUN5xXLew
+X-Received: by 2002:a81:71d7:0:b0:2e5:92da:3cec with SMTP id m206-20020a8171d7000000b002e592da3cecmr5697560ywc.473.1648745970262;
+        Thu, 31 Mar 2022 09:59:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648745970; cv=none;
         d=google.com; s=arc-20160816;
-        b=soQkaCjKn4w1cLmL30cqU6jZuvIRn4QvRyPztwL8aTypyZ3XCui+GtSdCmzYW4VRWb
-         tk9puELlH+GH4CcsjemAUxjFvtj7ZAnnLVYFpKhyo4uhK2jgepQPxTrBPosv9Z3lARkR
-         dA3L+AL0Si/XR1NqsnMSjL8uBit2Cx4/PDT6mEqABjy1O7Lmp9u8x6Bxs+4JTlD1md+h
-         8wBrdzL6WF//cGat2u+AM87amfUthMLLCS6u3Ynys441zfjaXlrC55EryxNwdvlDaGBY
-         py8jbpmqy5zxFpz0ddyvbVM2VvA8yVnu8PP+z+XRhU/mpl7SbaikXh/QD5jwQ3F6F+wk
-         t4aA==
+        b=PXBZde6TR5KXdt1Vh/L+gjnkpw7OmXFmjFqiK4nmM7PBsSLP12qPeE1mTivzUk3rUA
+         EGIg6VFQJeXLVBuooOFgVQ/0IHFaQOvRqjWCfy6+oByutLrvcY3HH1QTVuNlALSoUTzz
+         rZUDZKqcmwdnaaf/VfazNlK5uzs1HIO0yWcOzg3/G2Wef1CyPv8ssFtFobCc+DxcDjrR
+         Xd0lJhXJBDfWNe7Tfr3oDK1mdH50pU5J2Ssaeufz76AcJe+asggaPMDcxalBPPyN9kQd
+         3XBcpNWUOzebb9YXciyu67gbUcpefHCa+V3mpATlI3vr/DVEkDSEy+MLaB77FEgDftSx
+         Qz4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature
-         :dkim-signature;
-        bh=1WRY1D6ylOonmR+UXUnHo7Y5sqkvfCyFsaIhwjq1Gdw=;
-        b=PUI5kZfIIdm4y3hGQnw3VnI8gFv8kU3LX1X37Az1H/OQ1b6UZuXuJKWkHnUAz53VSN
-         PGTRMyUAp83n6Nd64adJfGBFs6RfH9X3EcaVYHVN7h2bNgrJGnMiTCsn/7Tbl1mZImzM
-         J7eEvUOFG25jLM/ltbIkNgP3i6KZT5CCd/nmuYD7bguun8Q84Uj/XucH9AZm2yVioSti
-         DQTwa8/JPDdk+xtyhN7bbd/dZ2p0TjEalisppJVlspHyhDlYpnMrB/BR2T9u5pPAiJ4m
-         xWmdFgLob0SkrW1vxFtkivFhlgQ585NE60ZBnv4yHaKTNj3ASOeFQGM1EToYIuVvNVl9
-         WXeA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature:dkim-signature;
+        bh=w1PrQnTVn6SfbhsCoP+N7JZNYIrLtITK7DHkgnGpV20=;
+        b=NfzRqjlPhIiJfl7uIRdj1RcRJORnPLDGC3/wMG2rg9/lZTKjL2TINyNjfEkYoQ81sg
+         AwcpPkjAObKkACNcLX6S2tv40GiS+vmS5cOic1bxJr69SrKZmRThCjGC4BOunRwtPX6w
+         LeahhqcX449WKu5mA33I3bnua1QwO0OxgS9EBUZI0WImfkr23vegfzlspnuUL1hS9Qey
+         pB8bUi/zhfSsmYizItzVqgR3eYfm+m8dkgxifuWenPlLQVNKm2xDOdN8iIukZ4yW+61f
+         vkrRgKEOujwSO7kR4HpAIJzY9cj1Z4DbDtFm4HU0pulxBUS2C2L/Otp5Qc7BCHf74szf
+         CA6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=H2a+5jpH;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=MaQ9uEkM;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=blE3nlAv;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=GZxvRDzD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e137-20020a81378f000000b002e5bb9dca21si72373ywa.170.2022.03.31.09.58.54
+        by mx.google.com with ESMTPS id b131-20020a256789000000b0063c97ca7da4si236651ybc.653.2022.03.31.09.59.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Mar 2022 09:58:54 -0700 (PDT)
+        Thu, 31 Mar 2022 09:59:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=H2a+5jpH;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=MaQ9uEkM;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=blE3nlAv;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=GZxvRDzD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58338 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60176 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nZy8L-0000WJ-Ct
-	for alex.bennee@linaro.org; Thu, 31 Mar 2022 12:58:53 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53464)
+	id 1nZy8v-0001p6-51
+	for alex.bennee@linaro.org; Thu, 31 Mar 2022 12:59:29 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53474)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1nZy7J-0000Se-R5; Thu, 31 Mar 2022 12:57:50 -0400
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20]:38583)
+ id 1nZy7K-0000Th-Pf; Thu, 31 Mar 2022 12:57:50 -0400
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20]:36777)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1nZy7H-0000tO-8Z; Thu, 31 Mar 2022 12:57:49 -0400
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailout.west.internal (Postfix) with ESMTP id B730F3201F73;
- Thu, 31 Mar 2022 12:57:42 -0400 (EDT)
+ id 1nZy7J-0000td-5U; Thu, 31 Mar 2022 12:57:50 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.west.internal (Postfix) with ESMTP id EEAE83201F80;
+ Thu, 31 Mar 2022 12:57:46 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Thu, 31 Mar 2022 12:57:43 -0400
+ by compute3.internal (MEProxy); Thu, 31 Mar 2022 12:57:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
- h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:message-id:mime-version:reply-to:sender
- :subject:subject:to:to; s=fm3; bh=1WRY1D6ylOonmR+UXUnHo7Y5sqkvfC
- yFsaIhwjq1Gdw=; b=H2a+5jpHpnii21qkEk3Ptj0wp7RWjJOY6STOnYpkk86v5Q
- np2dG6KjKo8ZpF/h0hGkU+jCNX/vHQsXqgeg4V26cJx/JXASKB6mpz0+DQHTFPmj
- 1H7MmwsRaLfXLeU6vKUngdGPJ+sV5eq7nLRV6Kpw+jAh5wKPwn2gMvd+5b6NVX7e
- AEIPAQbM3V6i2qKr3JzG7SulUq9Sn7KwftQNvyMK173cS+QSpbryR+isP499RHLd
- SwZHA821O3slsxA9CvqdtSlbGvZHGNtI/qVhF1/OarI/enrZ05eeLDVQ04LFYZ6w
- dRq5fTLB3AAAWzOPLuiujCWA7OqwDo4+87DEBFpQ==
+ h=cc:cc:content-transfer-encoding:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm3; bh=w1PrQnTVn6Sfbh
+ sCoP+N7JZNYIrLtITK7DHkgnGpV20=; b=blE3nlAvTRyNAbr7NaQNxwgvUNzDus
+ AcFV23H1zq9kyCBcOe0I8PzIlWW1bWOzmKY7TfWoB7gnmkp1MTGndXhIAn3reHH/
+ QOwtliAJCVlThqv37Q6eR90Lltt5rit9rH916sKGUc6v7EjiYTM+pe2bZncoRjEf
+ ODJww8STbU9qC4aEM6Lef9M6XA4gME3zp14FluqD0ftuhChh9mXPiC/5eQxvyqMO
+ WwhvSU7g0GOOfuVt1fhhzdIY17kFaKPRYo4jDb84dM2EhEx3sHlefJlEW9yTmPGC
+ 0NhFoFYu85XUtnAPlhp8ERofZW+ROTbtp3bp/O8fevAcAGtYYjWPrz2g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:from:from:in-reply-to:message-id
- :mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=1WRY1D
- 6ylOonmR+UXUnHo7Y5sqkvfCyFsaIhwjq1Gdw=; b=MaQ9uEkM+mNVoliE/aBsIZ
- 2KhvxKFz4JcHEMaypkbsc84Lff+SrgnOO+yf8rwRoK2Q1nYy4lizTzjW2sa9AejE
- oyRsZZ5+hwT+WuJsAQj4u1PSMtHh4+ggAh1cGo3zpDcVp/MuYPb49BbkZdMNwSTQ
- 63CMcm76b5mnsX+EH5xSVlfEc3V/wQONIlBKVa65mvfZktkVTJiMXzYzHsB9QLDM
- YymgmONWfUyMjS5lz3fV5gxMvXzwLGNX+/PT2UCzr35h0bCOxj1T8P+lcM4ZRtzr
- ZGmJiOePVLnHdEO0ReGG0JknhTp47NEXfy6KGTYvEeJw5nGTzZOvAWzE/eQz374Q
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=w1PrQn
+ TVn6SfbhsCoP+N7JZNYIrLtITK7DHkgnGpV20=; b=GZxvRDzDomWRd1GVY24Hj0
+ BGUmhXcD8gOzTwY0gtIDmMzeOP1O9H9QtLEq/dJYYENY7BbqmBcwWBav/lXmMyli
+ 1lAbff4l/NXIoJz8EgaBnE4NyJ9xnynspXwNCQcTZ+T1TgG+bE9xspu94MwBCH8t
+ KrB3j+gRv0G+qH+Ns/5Q1mULSM1DU3gHRMzu/Fj7N7UJJqIHjpLOo053leYR3VnX
+ SjgMHB6FgzyvUW5Mwkq+ahApaYwm8y05UbrShbRpTGlh0bx/bbNkYO2dc1ir+wF0
+ qxB5lAIW/ZwAMRd2t6y1FGyQ/M4XQpsuWMUeD6ym+F0mVsKjoJBcV4edqAfMdHrg
  ==
-X-ME-Sender: <xms:hd1FYhrtohsJKxp63C9w_dtWTZDf1urc82M7xrEruwRLqzHKEPhGmA>
- <xme:hd1FYjpsUo2Onz5RZgJ3j00YYKjECwDRkWvq5z-QMAK8WMvp6ydjYJMot4xPlcQHd
- hDT67yvMsNjs8BbEvA>
-X-ME-Received: <xmr:hd1FYuOILEIxkHDbkU0hSiZE-JomuZxSUD2tGcg5cbvj3cySyStEQel6Z130SFfjkNOLyMSQuUjIWhcnuX_FrQ>
+X-ME-Sender: <xms:id1FYuTfV4ntbh7cW6oK0ycm_SGJ168UhKXpi3m76hhmeBw1rNjukg>
+ <xme:id1FYjxIt9PuCSjN802Q-PVTZ7oSKOurqlmOn4sEfZ7xrfcTqGnsgofDSZ_tX0pvg
+ KYM4A3DzQYKfSCaenQ>
+X-ME-Received: <xmr:id1FYr0BoGYTE0F42qbfb8Q0YWb6EgvqxAVjC144-5-tJ-iG4tauhG690G4QN6v-acVODw1QWiMi1ixGdQQwMw>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudeigedguddtjecutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
  necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpefhvffufffkofgtggfgsehtqhertdertdejnecuhfhrohhmpefmlhgruhhs
- ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
- gvrhhnpeegudeghfdvgffgleevtdettefhhfdvieevffevgfelkeethfevteffhfeltddv
- ffenucffohhmrghinhepnhhvmhgvgihprhgvshhsrdhorhhgpdgumhhtfhdrohhrghdpsh
- hmsghushdrohhrghdpkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptden
- ucfrrghrrghmpehmrghilhhfrhhomhepihhtshesihhrrhgvlhgvvhgrnhhtrdgukh
-X-ME-Proxy: <xmx:hd1FYs6mGYApWKhRunUSmj9yVK_ZHNGihzMc2klKqL5Ap5JWjmV-Ww>
- <xmx:hd1FYg7e9DwVCRh6A0bcW1X63llaCqHuDS2TyKoB0MvL7NuQfVopiw>
- <xmx:hd1FYki8kU1C3vSrTNUv9a3GCj3ZLRkaM87h1LoJzAha2jQco4f_fw>
- <xmx:ht1FYtwPp9KkoV1Oe8xJ0a4DP0nZ2MkJ2fwD6JoTVXKTBg1W5tSvtg>
+ enucfjughrpefhvffufffkofgjfhgggfestdekredtredttdenucfhrhhomhepmfhlrghu
+ shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
+ htvghrnhepueelteegieeuhffgkeefgfevjeeigfetkeeitdfgtdeifefhtdfhfeeuffev
+ gfeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
+ htshesihhrrhgvlhgvvhgrnhhtrdgukh
+X-ME-Proxy: <xmx:id1FYqD3zzhwAzO8WWnV4IjQk6nWLH1mBcTkN3RKtMZbnDQszuHCkQ>
+ <xmx:id1FYnjzyUwGo6wGEtNI59vv4sdE5c064GeobB2mY_VaqMTnIJdGmQ>
+ <xmx:id1FYmoWQSZ5sEZvjmOajD_Q08C7dEonFq8jZbDqdQkIbx0Q5ylPhA>
+ <xmx:it1FYsZT9PVFKpvyvL2tQGfvIEvilXlDslvKISYwMTjbOme8yr53pw>
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 31 Mar 2022 12:57:39 -0400 (EDT)
+ 31 Mar 2022 12:57:43 -0400 (EDT)
 From: Klaus Jensen <its@irrelevant.dk>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 0/4] hw/i2c: i2c slave mode support
-Date: Thu, 31 Mar 2022 18:57:33 +0200
-Message-Id: <20220331165737.1073520-1-its@irrelevant.dk>
+Subject: [RFC PATCH 1/4] hw/i2c: support multiple masters
+Date: Thu, 31 Mar 2022 18:57:34 +0200
+Message-Id: <20220331165737.1073520-2-its@irrelevant.dk>
 X-Mailer: git-send-email 2.35.1
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20220331165737.1073520-1-its@irrelevant.dk>
+References: <20220331165737.1073520-1-its@irrelevant.dk>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=64.147.123.20; envelope-from=its@irrelevant.dk;
  helo=wout4-smtp.messagingengine.com
 X-Spam_score_int: -27
@@ -136,89 +136,132 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Matt Johnston <matt@codeconstruct.com.au>, Jeremy Kerr <jk@ozlabs.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UGbU6MpXmPcm
+X-TUID: uNY6Gt4y0f6q
 
-From: Klaus Jensen <k.jensen@samsung.com>=0D
+From: Klaus Jensen <k.jensen@samsung.com>
 
-Hi all,=0D
-=0D
-This RFC series adds I2C "slave mode" support for the Aspeed I2C=0D
-controller as well as the necessary infrastructure in the i2c core to=0D
-support this.=0D
-=0D
-Background=0D
-~~~~~~~~~~=0D
-We are working on an emulated NVM Express Management Interface[1] for=0D
-testing and validation purposes. NVMe-MI is based on the MCTP=0D
-protocol[2] which may use a variety of underlying transports. The one we=0D
-are interested in is I2C[3].=0D
-=0D
-The first general trickery here is that all MCTP transactions are based=0D
-on the SMBus Block Write bus protocol[4]. This means that the slave must=0D
-be able to master the bus to communicate. As you know, hw/i2c/core.c=0D
-currently does not support this use case.=0D
-=0D
-The second issue is how to interact with these mastering devices. Jeremy=0D
-and Matt (CC'ed) have been working on an MCTP stack for the Linux Kernel=0D
-(already upstream) and an I2C binding driver[5] is currently under=0D
-review. This binding driver relies on I2C slave mode support in the I2C=0D
-controller.=0D
-=0D
-This series=0D
-~~~~~~~~~~~=0D
-Patch 1 adds support for multiple masters in the i2c core, allowing=0D
-slaves to master the bus and safely issue i2c_send/recv(). Patch 2 adds=0D
-an asynchronous send i2c_send_async(I2CBus *, uint8) on the bus that=0D
-must be paired with an explicit ack using i2c_ack(I2CBus *).=0D
-=0D
-Patch 3 adds the slave mode functionality to the emulated Aspeed I2C=0D
-controller. The implementation is probably buggy since I had to rely on=0D
-the implementation of the kernel driver to reverse engineer the behavior=0D
-of the controller slave mode (I do not have access to a spec sheet for=0D
-the Aspeed, but maybe someone can help me out with that?).=0D
-=0D
-Finally, patch 4 adds an example device using this new API. The device=0D
-is a simple "echo" device that upon being sent a set of bytes uses the=0D
-first byte as the address of the slave to echo to.=0D
-=0D
-With this combined I am able to boot up Linux on an emulated Aspeed 2600=0D
-evaluation board and have the i2c echo device write into a Linux slave=0D
-EEPROM. Assuming the echo device is on address 0x42:=0D
-=0D
-  # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-15/new_device=0D
-  i2c i2c-15: new_device: Instantiated device slave-24c02 at 0x64=0D
-  # i2cset -y 15 0x42 0x64 0x00 0xaa i=0D
-  # hexdump /sys/bus/i2c/devices/15-1064/slave-eeprom=0D
-  0000000 ffaa ffff ffff ffff ffff ffff ffff ffff=0D
-  0000010 ffff ffff ffff ffff ffff ffff ffff ffff=0D
-  *=0D
-  0000100=0D
-=0D
-  [1]: https://nvmexpress.org/developers/nvme-mi-specification/=0D
-  [2]: https://www.dmtf.org/sites/default/files/standards/documents/DSP0236=
-_1.3.1.pdf=0D
-  [3]: https://www.dmtf.org/sites/default/files/standards/documents/DSP0237=
-_1.2.0.pdf=0D
-  [4]: http://www.smbus.org/specs/SMBus_3_1_20180319.pdf=0D
-  [5]: https://lore.kernel.org/linux-i2c/20220218055106.1944485-1-matt@code=
-construct.com.au/=0D
-=0D
-Klaus Jensen (4):=0D
-  hw/i2c: support multiple masters=0D
-  hw/i2c: add async send=0D
-  hw/i2c: add slave mode for aspeed_i2c=0D
-  hw/misc: add a toy i2c echo device=0D
-=0D
- hw/i2c/aspeed_i2c.c         |  95 +++++++++++++++++++++---=0D
- hw/i2c/core.c               |  57 +++++++++++++-=0D
- hw/i2c/trace-events         |   2 +-=0D
- hw/misc/i2c-echo.c          | 144 ++++++++++++++++++++++++++++++++++++=0D
- hw/misc/meson.build         |   2 +=0D
- include/hw/i2c/aspeed_i2c.h |   8 ++=0D
- include/hw/i2c/i2c.h        |  19 +++++=0D
- 7 files changed, 316 insertions(+), 11 deletions(-)=0D
- create mode 100644 hw/misc/i2c-echo.c=0D
-=0D
--- =0D
-2.35.1=0D
-=0D
+Allow slaves to master the bus by registering a bottom halve. If the bus
+is busy, the bottom halve is queued up. When a slave has succesfully
+mastered the bus, the bottom halve is scheduled.
+
+Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+---
+ hw/i2c/core.c        | 34 +++++++++++++++++++++++++++++++++-
+ include/hw/i2c/i2c.h | 14 ++++++++++++++
+ 2 files changed, 47 insertions(+), 1 deletion(-)
+
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index d0cb2d32fa44..145dce60782a 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -13,6 +13,7 @@
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
++#include "qemu/main-loop.h"
+ #include "trace.h"
+ 
+ #define I2C_BROADCAST 0x00
+@@ -62,6 +63,7 @@ I2CBus *i2c_init_bus(DeviceState *parent, const char *name)
+ 
+     bus = I2C_BUS(qbus_new(TYPE_I2C_BUS, parent, name));
+     QLIST_INIT(&bus->current_devs);
++    QSIMPLEQ_INIT(&bus->pending_masters);
+     vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_i2c_bus, bus);
+     return bus;
+ }
+@@ -74,7 +76,7 @@ void i2c_slave_set_address(I2CSlave *dev, uint8_t address)
+ /* Return nonzero if bus is busy.  */
+ int i2c_bus_busy(I2CBus *bus)
+ {
+-    return !QLIST_EMPTY(&bus->current_devs);
++    return !QLIST_EMPTY(&bus->current_devs) || bus->bh;
+ }
+ 
+ bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
+@@ -180,6 +182,26 @@ int i2c_start_transfer(I2CBus *bus, uint8_t address, bool is_recv)
+                                                : I2C_START_SEND);
+ }
+ 
++void i2c_bus_master(I2CBus *bus, QEMUBH *bh)
++{
++    if (i2c_bus_busy(bus)) {
++        I2CPendingMaster *node = g_new(struct I2CPendingMaster, 1);
++        node->bh = bh;
++
++        QSIMPLEQ_INSERT_TAIL(&bus->pending_masters, node, entry);
++
++        return;
++    }
++
++    bus->bh = bh;
++    qemu_bh_schedule(bus->bh);
++}
++
++void i2c_bus_release(I2CBus *bus)
++{
++    bus->bh = NULL;
++}
++
+ int i2c_start_recv(I2CBus *bus, uint8_t address)
+ {
+     return i2c_do_start_transfer(bus, address, I2C_START_RECV);
+@@ -206,6 +228,16 @@ void i2c_end_transfer(I2CBus *bus)
+         g_free(node);
+     }
+     bus->broadcast = false;
++
++    if (!QSIMPLEQ_EMPTY(&bus->pending_masters)) {
++        I2CPendingMaster *node = QSIMPLEQ_FIRST(&bus->pending_masters);
++        bus->bh = node->bh;
++
++        QSIMPLEQ_REMOVE_HEAD(&bus->pending_masters, entry);
++        g_free(node);
++
++        qemu_bh_schedule(bus->bh);
++    }
+ }
+ 
+ int i2c_send(I2CBus *bus, uint8_t data)
+diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+index 5ca3b708c0be..be8bb8b78a60 100644
+--- a/include/hw/i2c/i2c.h
++++ b/include/hw/i2c/i2c.h
+@@ -69,13 +69,25 @@ struct I2CNode {
+     QLIST_ENTRY(I2CNode) next;
+ };
+ 
++typedef struct I2CPendingMaster I2CPendingMaster;
++
++struct I2CPendingMaster {
++    QEMUBH *bh;
++    QSIMPLEQ_ENTRY(I2CPendingMaster) entry;
++};
++
+ typedef QLIST_HEAD(I2CNodeList, I2CNode) I2CNodeList;
++typedef QSIMPLEQ_HEAD(I2CPendingMasters, I2CPendingMaster) I2CPendingMasters;
+ 
+ struct I2CBus {
+     BusState qbus;
+     I2CNodeList current_devs;
++    I2CPendingMasters pending_masters;
+     uint8_t saved_address;
+     bool broadcast;
++
++    /* Set from slave currently mastering the bus. */
++    QEMUBH *bh;
+ };
+ 
+ I2CBus *i2c_init_bus(DeviceState *parent, const char *name);
+@@ -117,6 +129,8 @@ int i2c_start_send(I2CBus *bus, uint8_t address);
+ 
+ void i2c_end_transfer(I2CBus *bus);
+ void i2c_nack(I2CBus *bus);
++void i2c_bus_master(I2CBus *bus, QEMUBH *bh);
++void i2c_bus_release(I2CBus *bus);
+ int i2c_send(I2CBus *bus, uint8_t data);
+ uint8_t i2c_recv(I2CBus *bus);
+ bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
+-- 
+2.35.1
+

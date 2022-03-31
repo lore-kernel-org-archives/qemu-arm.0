@@ -1,58 +1,58 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1613382lfb;
-        Thu, 31 Mar 2022 01:21:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxL1Wt/pEEntdkioPby2TxRBWd3BmpB5q81XvmzWg2WxJU5wJJUd9clKkF/nyFHqf0Y+Yie
-X-Received: by 2002:a05:620a:170a:b0:67d:be5c:204a with SMTP id az10-20020a05620a170a00b0067dbe5c204amr2533915qkb.593.1648714889298;
-        Thu, 31 Mar 2022 01:21:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648714889; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1614625lfb;
+        Thu, 31 Mar 2022 01:24:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwEchfLgfDinVMFnc85AD0T87MB+hfMq+Ozqx67owL20iMuA+tYD29O5GycvoQTEYdAm+R2
+X-Received: by 2002:a05:622a:44c:b0:2e1:cb95:8d0 with SMTP id o12-20020a05622a044c00b002e1cb9508d0mr3139869qtx.296.1648715053748;
+        Thu, 31 Mar 2022 01:24:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648715053; cv=none;
         d=google.com; s=arc-20160816;
-        b=AHZhbW4+X4CCqxACJitWiMcdIqbVO8lQy8wBdjUi+az7ykrYU4oePmSbCQZ+Fak572
-         yElfT/QDvJePya/qn+Gg4tR3ewxmDORYcqWducayQmkUCaMka7EBUS8aLVQettqxrLoT
-         EIqun7NTUuRVqCHQXaF3yAN8G61ohAELKdbWezCwH8AAcfChEAShH5h1bXmlywB/XfVW
-         i5z5etJYn8tZ7ngjIS1mc6dfAGDi0GyDm4UVh1FDdhTixA9YLWQ1tY9SXHDi+Oc+2+3a
-         V6leFWJZJuzJ6ACAwxps5i8KpxwB+b43itMWGVNRQwBOBPO5TggdRNPhMgm1Iiq7aOum
-         jRYQ==
+        b=kth143Tu9XZO21oEVVAjl5JSoXumhlkobsMi24DKmNtHMc97TCqtIIb6IvCgzSHOr6
+         WcqA/QuTmp7zpQVRoWKYUuvJ1T/jHeRHFKLoniwY2vR6DvC6dEqLravqw8f8Ik67XBRE
+         m/EAh8F7FD1IySOfuSeae/U/DLmhXCzi8KEIssAJvPRDYFVoE0nQUPOP3POIzR3OS+MA
+         C846BE2ucjd8svJHYDw8VrX4BSalTfgc5QTrSJikapYvoV+CfqPJcGc1vQtpl92+gLr8
+         MMVVgsgWYfwZEfbNuLT5H1v/eU2h0J718JeyIXOZSjpnUJkzU9PVd2ZNTU2+wTgNbuAV
+         KN3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=lFd2wqMgGIdxXCQWhkR0ns8+TEvp/iMa8jiWgJ65L/Q=;
-        b=r/db3sJr6/YxaUW9Cr1a23HmP+81ngnhcCLpcLJXsuzUkDEunykD1YMpp+I9lyEEti
-         0FB4sXzokzDht72bgnhtvUpTM0+gOjOhWyzuoxnFc9DeGM+A4FA6VSMvWc98ghKTa5P0
-         lZbD7jNwzS+NGuPateqA25wqfiY0Hf47DVCubD5XFGM9i6A485Rz8XRFJezFs65A9RJN
-         94IoqMnf6sAhSpN+AnA+UaHHMkbpNklHuqYy7Sq5I9scpqAy5Nzne18sKBdU0Q13IZad
-         jSvqX7TnEe9QOSYjP69BLhBysBr5bjFMJuS+0ICmK0djoOe47SgPR3kJKJqH6JNCzydx
-         Mkdg==
+        bh=geJ6+MiGk2seSOaWkizxcB7XGiFfdo5/KnSPAk/1ZtA=;
+        b=JGCjVOqE4xUF0K5RAcEkx5niXg1UhSghkfJswb4HicQdoUP3a3764Nye7naYvLhaw9
+         CJK+Eis+1rM2mh9LHnEgFuGbcozFfusTQkZo3X09DzonvdbJFMf6W3NPfsaoeWyztDD8
+         G+aSYyVZsyyI+i0vOtfOABfwDI9xeqsdBVJ/VAMc6mFacTfgyZG85MeK8mjujpp+Eu+7
+         4Ne73LgVNOCk/ZT1F/wqGyzemqRDMpPP7rVpkd2m/1UPdEPzZIj52iUVb6UgMWtYHcbg
+         WaI8XBcNVl0hh1lYY4MQxVScAjxgJVu1b3eI2J+N5VgLpFgiSaJu7+CqvJy5VkXUhKUk
+         UsZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bi41-20020a05620a31a900b0067e4be238a6si12824926qkb.235.2022.03.31.01.21.29
+        by mx.google.com with ESMTPS id y18-20020ad44652000000b00440e46a7b78si13512263qvv.22.2022.03.31.01.24.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Mar 2022 01:21:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 31 Mar 2022 01:24:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56370 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33772 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nZq3c-0004LU-Lv
-	for alex.bennee@linaro.org; Thu, 31 Mar 2022 04:21:28 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57106)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nZq6H-0008Eo-13
+	for alex.bennee@linaro.org; Thu, 31 Mar 2022 04:24:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1nZpz7-0001VO-15; Thu, 31 Mar 2022 04:16:49 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:48106)
+ id 1nZpz8-0001Y6-DJ; Thu, 31 Mar 2022 04:16:50 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:23769)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1nZpz4-0000iZ-PD; Thu, 31 Mar 2022 04:16:48 -0400
+ id 1nZpz5-0000j4-TN; Thu, 31 Mar 2022 04:16:50 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 22V84st2054249;
- Thu, 31 Mar 2022 16:04:54 +0800 (GMT-8)
+ by twspam01.aspeedtech.com with ESMTP id 22V84rST054248;
+ Thu, 31 Mar 2022 16:04:53 +0800 (GMT-8)
  (envelope-from jamin_lin@aspeedtech.com)
 Received: from localhost.localdomain (192.168.70.87) by TWMBX02.aspeed.com
  (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 31 Mar
- 2022 16:15:51 +0800
+ 2022 16:15:50 +0800
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
@@ -62,9 +62,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "Beraldo Leal" <bleal@redhat.com>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Subject: [PATCH v2 6/9] aspeed/scu: Add AST1030 support
-Date: Thu, 31 Mar 2022 16:15:42 +0800
-Message-ID: <20220331081545.7140-7-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 5/9] aspeed/timer: Add AST1030 support.
+Date: Thu, 31 Mar 2022 16:15:41 +0800
+Message-ID: <20220331081545.7140-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220331081545.7140-1-jamin_lin@aspeedtech.com>
 References: <20220331081545.7140-1-jamin_lin@aspeedtech.com>
@@ -75,7 +75,7 @@ X-Originating-IP: [192.168.70.87]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 22V84st2054249
+X-MAIL: twspam01.aspeedtech.com 22V84rST054248
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -84,179 +84,82 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
  steven_lee@aspeedtech.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YYV+E7Ce8i+V
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: heae4KeD9Qyl
 
 From: Steven Lee <steven_lee@aspeedtech.com>
 
-Per ast1030_v07.pdf, AST1030 SOC doesn't have SCU300, the pclk divider
-selection is defined in SCU310[11:8].
-Add a get_apb_freq function and a class init handler for ast1030.
+ast1030 tmc(timer controller) is identical to ast2600 tmc.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/misc/aspeed_scu.c         | 63 ++++++++++++++++++++++++++++++++++++
- include/hw/misc/aspeed_scu.h | 24 ++++++++++++++
- 2 files changed, 87 insertions(+)
+ hw/timer/aspeed_timer.c         | 17 +++++++++++++++++
+ include/hw/timer/aspeed_timer.h |  1 +
+ 2 files changed, 18 insertions(+)
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 150567f98a..19b03471fc 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -235,6 +235,15 @@ static uint32_t aspeed_2600_scu_get_apb_freq(AspeedSCUState *s)
-         / asc->apb_divider;
- }
- 
-+static uint32_t aspeed_1030_scu_get_apb_freq(AspeedSCUState *s)
-+{
-+    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(s);
-+    uint32_t hpll = asc->calc_hpll(s, s->regs[AST2600_HPLL_PARAM]);
-+
-+    return hpll / (SCU_AST1030_CLK_GET_PCLK_DIV(s->regs[AST2600_CLK_SEL4]) + 1)
-+        / asc->apb_divider;
-+}
-+
- static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
- {
-     AspeedSCUState *s = ASPEED_SCU(opaque);
-@@ -482,6 +491,8 @@ static uint32_t aspeed_silicon_revs[] = {
-     AST2600_A1_SILICON_REV,
-     AST2600_A2_SILICON_REV,
-     AST2600_A3_SILICON_REV,
-+    AST1030_A0_SILICON_REV,
-+    AST1030_A1_SILICON_REV,
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index 42c47d2ce6..9c20b3d6ad 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -745,12 +745,29 @@ static const TypeInfo aspeed_2600_timer_info = {
+     .class_init = aspeed_2600_timer_class_init,
  };
  
- bool is_supported_silicon_rev(uint32_t silicon_rev)
-@@ -770,12 +781,64 @@ static const TypeInfo aspeed_2600_scu_info = {
-     .class_init = aspeed_2600_scu_class_init,
- };
- 
-+static const uint32_t ast1030_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
-+    [AST2600_SYS_RST_CTRL]      = 0xFFC3FED8,
-+    [AST2600_SYS_RST_CTRL2]     = 0x09FFFFFC,
-+    [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
-+    [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
-+    [AST2600_DEBUG_CTRL2]       = 0x00000000,
-+    [AST2600_HPLL_PARAM]        = 0x10004077,
-+    [AST2600_HPLL_EXT]          = 0x00000031,
-+    [AST2600_CLK_SEL4]          = 0x43F90900,
-+    [AST2600_CLK_SEL5]          = 0x40000000,
-+    [AST2600_CHIP_ID0]          = 0xDEADBEEF,
-+    [AST2600_CHIP_ID1]          = 0x0BADCAFE,
-+};
-+
-+static void aspeed_ast1030_scu_reset(DeviceState *dev)
-+{
-+    AspeedSCUState *s = ASPEED_SCU(dev);
-+    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(dev);
-+
-+    memcpy(s->regs, asc->resets, asc->nr_regs * 4);
-+
-+    s->regs[AST2600_SILICON_REV] = AST1030_A1_SILICON_REV;
-+    s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
-+    s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
-+    s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
-+    s->regs[PROT_KEY] = s->hw_prot_key;
-+}
-+
-+static void aspeed_1030_scu_class_init(ObjectClass *klass, void *data)
++static void aspeed_1030_timer_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedSCUClass *asc = ASPEED_SCU_CLASS(klass);
++    AspeedTimerClass *awc = ASPEED_TIMER_CLASS(klass);
 +
-+    dc->desc = "ASPEED 1030 System Control Unit";
-+    dc->reset = aspeed_ast1030_scu_reset;
-+    asc->resets = ast1030_a1_resets;
-+    asc->calc_hpll = aspeed_2600_scu_calc_hpll;
-+    asc->get_apb = aspeed_1030_scu_get_apb_freq;
-+    asc->apb_divider = 2;
-+    asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
-+    asc->clkin_25Mhz = true;
-+    asc->ops = &aspeed_ast2600_scu_ops;
++    dc->desc = "ASPEED 1030 Timer";
++    awc->read = aspeed_2600_timer_read;
++    awc->write = aspeed_2600_timer_write;
 +}
 +
-+static const TypeInfo aspeed_1030_scu_info = {
-+    .name = TYPE_ASPEED_1030_SCU,
-+    .parent = TYPE_ASPEED_SCU,
-+    .instance_size = sizeof(AspeedSCUState),
-+    .class_init = aspeed_1030_scu_class_init,
++static const TypeInfo aspeed_1030_timer_info = {
++    .name = TYPE_ASPEED_1030_TIMER,
++    .parent = TYPE_ASPEED_TIMER,
++    .class_init = aspeed_1030_timer_class_init,
 +};
 +
- static void aspeed_scu_register_types(void)
+ static void aspeed_timer_register_types(void)
  {
-     type_register_static(&aspeed_scu_info);
-     type_register_static(&aspeed_2400_scu_info);
-     type_register_static(&aspeed_2500_scu_info);
-     type_register_static(&aspeed_2600_scu_info);
-+    type_register_static(&aspeed_1030_scu_info);
+     type_register_static(&aspeed_timer_info);
+     type_register_static(&aspeed_2400_timer_info);
+     type_register_static(&aspeed_2500_timer_info);
+     type_register_static(&aspeed_2600_timer_info);
++    type_register_static(&aspeed_1030_timer_info);
  }
  
- type_init(aspeed_scu_register_types);
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index fdc721846c..d2c485c8f6 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -19,6 +19,7 @@ OBJECT_DECLARE_TYPE(AspeedSCUState, AspeedSCUClass, ASPEED_SCU)
- #define TYPE_ASPEED_2400_SCU TYPE_ASPEED_SCU "-ast2400"
- #define TYPE_ASPEED_2500_SCU TYPE_ASPEED_SCU "-ast2500"
- #define TYPE_ASPEED_2600_SCU TYPE_ASPEED_SCU "-ast2600"
-+#define TYPE_ASPEED_1030_SCU TYPE_ASPEED_SCU "-ast1030"
+ type_init(aspeed_timer_register_types)
+diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
+index d36034a10c..07dc6b6f2c 100644
+--- a/include/hw/timer/aspeed_timer.h
++++ b/include/hw/timer/aspeed_timer.h
+@@ -31,6 +31,7 @@ OBJECT_DECLARE_TYPE(AspeedTimerCtrlState, AspeedTimerClass, ASPEED_TIMER)
+ #define TYPE_ASPEED_2400_TIMER TYPE_ASPEED_TIMER "-ast2400"
+ #define TYPE_ASPEED_2500_TIMER TYPE_ASPEED_TIMER "-ast2500"
+ #define TYPE_ASPEED_2600_TIMER TYPE_ASPEED_TIMER "-ast2600"
++#define TYPE_ASPEED_1030_TIMER TYPE_ASPEED_TIMER "-ast1030"
  
- #define ASPEED_SCU_NR_REGS (0x1A8 >> 2)
- #define ASPEED_AST2600_SCU_NR_REGS (0xE20 >> 2)
-@@ -45,6 +46,8 @@ struct AspeedSCUState {
- #define AST2600_A1_SILICON_REV   0x05010303U
- #define AST2600_A2_SILICON_REV   0x05020303U
- #define AST2600_A3_SILICON_REV   0x05030303U
-+#define AST1030_A0_SILICON_REV   0x80000000U
-+#define AST1030_A1_SILICON_REV   0x80010000U
+ #define ASPEED_TIMER_NR_TIMERS 8
  
- #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
- 
-@@ -335,4 +338,25 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
- #define SCU_AST2600_H_PLL_BYPASS_EN                        (0x1 << 24)
- #define SCU_AST2600_H_PLL_OFF                              (0x1 << 23)
- 
-+/* SCU310   Clock Selection Register Set 4 (for Aspeed AST1030 SOC)
-+ *
-+ *  31     I3C Clock Source selection
-+ *  30:28  I3C clock divider selection
-+ *  26:24  MAC AHB clock divider selection
-+ *  22:20  RGMII 125MHz clock divider ration
-+ *  19:16  RGMII 50MHz clock divider ration
-+ *  15     LHCLK clock generation/output enable control
-+ *  14:12  LHCLK divider selection
-+ *  11:8   APB Bus PCLK divider selection
-+ *  7      Select PECI clock source
-+ *  6      Select UART debug port clock source
-+ *  5      Select UART6 clock source
-+ *  4      Select UART5 clock source
-+ *  3      Select UART4 clock source
-+ *  2      Select UART3 clock source
-+ *  1      Select UART2 clock source
-+ *  0      Select UART1 clock source
-+ */
-+#define SCU_AST1030_CLK_GET_PCLK_DIV(x)                    (((x) >> 8) & 0xf)
-+
- #endif /* ASPEED_SCU_H */
 -- 
 2.17.1
 

@@ -1,81 +1,80 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1614625lfb;
-        Thu, 31 Mar 2022 01:24:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwEchfLgfDinVMFnc85AD0T87MB+hfMq+Ozqx67owL20iMuA+tYD29O5GycvoQTEYdAm+R2
-X-Received: by 2002:a05:622a:44c:b0:2e1:cb95:8d0 with SMTP id o12-20020a05622a044c00b002e1cb9508d0mr3139869qtx.296.1648715053748;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1614627lfb;
+        Thu, 31 Mar 2022 01:24:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJznx8GNXDZnkHNDHUTkuKs0eO+C7jEWCO6GDAPXf8xy8L8Zdjzr7GdtsmfBX1qSEgYE8/j0
+X-Received: by 2002:a05:6214:624:b0:441:42c0:7d41 with SMTP id a4-20020a056214062400b0044142c07d41mr2967638qvx.34.1648715053896;
         Thu, 31 Mar 2022 01:24:13 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1648715053; cv=none;
         d=google.com; s=arc-20160816;
-        b=kth143Tu9XZO21oEVVAjl5JSoXumhlkobsMi24DKmNtHMc97TCqtIIb6IvCgzSHOr6
-         WcqA/QuTmp7zpQVRoWKYUuvJ1T/jHeRHFKLoniwY2vR6DvC6dEqLravqw8f8Ik67XBRE
-         m/EAh8F7FD1IySOfuSeae/U/DLmhXCzi8KEIssAJvPRDYFVoE0nQUPOP3POIzR3OS+MA
-         C846BE2ucjd8svJHYDw8VrX4BSalTfgc5QTrSJikapYvoV+CfqPJcGc1vQtpl92+gLr8
-         MMVVgsgWYfwZEfbNuLT5H1v/eU2h0J718JeyIXOZSjpnUJkzU9PVd2ZNTU2+wTgNbuAV
-         KN3g==
+        b=JZpC0Z6XchiplHWrDl9CC3D7cpIlB66S+tG6M6XO2jW0hNGSv3thCYZQnBekF8NqLV
+         ruUkdNYDs3PtAyhkXrY3v8YZLn/SI3xYPY4D5JtkBMj2h1P1Br+vsepP3wqUrPHvy4Cc
+         iBOsR5x+FbVDwm9KeQLtFSZnZA8VEFUw4ZjTqJtUfTDolX3YBng6iRgxSmcUyPnW9RG4
+         B7Bl9OsKldcPMyQ74z5IK4Jl+EHF/kqXr4lbDd0GmeTlPZ3kJdREEfw3JoMXtD+FFJZJ
+         DH9g73FiR+Z0/QKYtnyQ4UBKq0Jv04dzw8bRAOSu9O9xvg7SWJyLIdwmrbEFzDskrt19
+         o8Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=geJ6+MiGk2seSOaWkizxcB7XGiFfdo5/KnSPAk/1ZtA=;
-        b=JGCjVOqE4xUF0K5RAcEkx5niXg1UhSghkfJswb4HicQdoUP3a3764Nye7naYvLhaw9
-         CJK+Eis+1rM2mh9LHnEgFuGbcozFfusTQkZo3X09DzonvdbJFMf6W3NPfsaoeWyztDD8
-         G+aSYyVZsyyI+i0vOtfOABfwDI9xeqsdBVJ/VAMc6mFacTfgyZG85MeK8mjujpp+Eu+7
-         4Ne73LgVNOCk/ZT1F/wqGyzemqRDMpPP7rVpkd2m/1UPdEPzZIj52iUVb6UgMWtYHcbg
-         WaI8XBcNVl0hh1lYY4MQxVScAjxgJVu1b3eI2J+N5VgLpFgiSaJu7+CqvJy5VkXUhKUk
-         UsZQ==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=+rnrzrvfUq27Pt4/g7txZFXAP97Zw2TgGh4tp63u8L4=;
+        b=W1FXnW24ML/+xk//tC6KrEmm3Lzr8yzU0/mWAB5f3Ac/ecikwp6eeMSoJjtFu0X2Ib
+         v9O6i/sYB48GSdh31Px/2dHGFHnFvz2AfjG1MW/wBg7hx2k8pSlgVAHCplW/ReuIh5vu
+         tZQY7c6lqBGOQkUR2hT6UyPICAzbLoQkqUhyan5mOxHjnTsvi1MCs20teS6+gc2O255+
+         RE8jFaok2ZH+ZK4baMhIifAGr3mOeuSlOVatnZZ6UqPq1+/Zux6TCh5CIfntLHn/nbfE
+         h0RkhzycdSbFaiRf+TYm2SXOG4SDtO01P6CC8IzHpP6X9hjXxQ4KuV/bEbd+Qcz+wKcJ
+         x6gw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y18-20020ad44652000000b00440e46a7b78si13512263qvv.22.2022.03.31.01.24.13
+        by mx.google.com with ESMTPS id bc4-20020ad45684000000b004410a5dfd48si12266252qvb.52.2022.03.31.01.24.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 31 Mar 2022 01:24:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33772 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33800 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nZq6H-0008Eo-13
+	id 1nZq6H-0008Fg-A1
 	for alex.bennee@linaro.org; Thu, 31 Mar 2022 04:24:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57126)
+Received: from eggs.gnu.org ([209.51.188.92]:57110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1nZpz8-0001Y6-DJ; Thu, 31 Mar 2022 04:16:50 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:23769)
+ id 1nZpz7-0001Vy-BA; Thu, 31 Mar 2022 04:16:49 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:41430)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1nZpz5-0000j4-TN; Thu, 31 Mar 2022 04:16:50 -0400
+ id 1nZpz5-0000ib-0m; Thu, 31 Mar 2022 04:16:49 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 22V84rST054248;
- Thu, 31 Mar 2022 16:04:53 +0800 (GMT-8)
+ by twspam01.aspeedtech.com with ESMTP id 22V84omw054244;
+ Thu, 31 Mar 2022 16:04:50 +0800 (GMT-8)
  (envelope-from jamin_lin@aspeedtech.com)
 Received: from localhost.localdomain (192.168.70.87) by TWMBX02.aspeed.com
  (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 31 Mar
- 2022 16:15:50 +0800
+ 2022 16:15:48 +0800
 From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, Cleber Rosa
- <crosa@redhat.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- "Beraldo Leal" <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Subject: [PATCH v2 5/9] aspeed/timer: Add AST1030 support.
-Date: Thu, 31 Mar 2022 16:15:41 +0800
-Message-ID: <20220331081545.7140-6-jamin_lin@aspeedtech.com>
+To: Alistair Francis <alistair@alistair23.me>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@kaod.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, "Wainer dos
+ Santos Moschetta" <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ "open list:STM32F205" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Subject: [PATCH v2 2/9] aspeed/smc: Add AST1030 support
+Date: Thu, 31 Mar 2022 16:15:38 +0800
+Message-ID: <20220331081545.7140-3-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220331081545.7140-1-jamin_lin@aspeedtech.com>
 References: <20220331081545.7140-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [192.168.70.87]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 22V84rST054248
+X-MAIL: twspam01.aspeedtech.com 22V84omw054244
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -99,67 +98,200 @@ Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
  steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: heae4KeD9Qyl
+X-TUID: 7hlfHI8aouSU
 
 From: Steven Lee <steven_lee@aspeedtech.com>
 
-ast1030 tmc(timer controller) is identical to ast2600 tmc.
+AST1030 spi controller's address decoding unit is 1MB that is identical
+to ast2600, but fmc address decoding unit is 512kb.
+Introduce seg_to_reg and reg_to_seg handlers for ast1030 fmc controller.
+In addition, add ast1030 fmc, spi1, and spi2 class init handler.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/timer/aspeed_timer.c         | 17 +++++++++++++++++
- include/hw/timer/aspeed_timer.h |  1 +
- 2 files changed, 18 insertions(+)
+ hw/ssi/aspeed_smc.c | 160 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 160 insertions(+)
 
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 42c47d2ce6..9c20b3d6ad 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -745,12 +745,29 @@ static const TypeInfo aspeed_2600_timer_info = {
-     .class_init = aspeed_2600_timer_class_init,
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 48305e1574..81af783729 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -1696,6 +1696,163 @@ static const TypeInfo aspeed_2600_spi2_info = {
+     .class_init = aspeed_2600_spi2_class_init,
  };
  
-+static void aspeed_1030_timer_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedTimerClass *awc = ASPEED_TIMER_CLASS(klass);
++/*
++ * The FMC Segment Registers of the AST1030 have a 512KB unit.
++ * Only bits [27:19] are used for decoding.
++ */
++#define AST1030_SEG_ADDR_MASK 0x0ff80000
 +
-+    dc->desc = "ASPEED 1030 Timer";
-+    awc->read = aspeed_2600_timer_read;
-+    awc->write = aspeed_2600_timer_write;
++static uint32_t aspeed_1030_smc_segment_to_reg(const AspeedSMCState *s,
++        const AspeedSegments *seg)
++{
++    uint32_t reg = 0;
++
++    /* Disabled segments have a nil register */
++    if (!seg->size) {
++        return 0;
++    }
++
++    reg |= (seg->addr & AST1030_SEG_ADDR_MASK) >> 16; /* start offset */
++    reg |= (seg->addr + seg->size - 1) & AST1030_SEG_ADDR_MASK; /* end offset */
++    return reg;
 +}
 +
-+static const TypeInfo aspeed_1030_timer_info = {
-+    .name = TYPE_ASPEED_1030_TIMER,
-+    .parent = TYPE_ASPEED_TIMER,
-+    .class_init = aspeed_1030_timer_class_init,
++static void aspeed_1030_smc_reg_to_segment(const AspeedSMCState *s,
++        uint32_t reg, AspeedSegments *seg)
++{
++    uint32_t start_offset = (reg << 16) & AST1030_SEG_ADDR_MASK;
++    uint32_t end_offset = reg & AST1030_SEG_ADDR_MASK;
++    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
++
++    if (reg) {
++        seg->addr = asc->flash_window_base + start_offset;
++        seg->size = end_offset + (512 * KiB) - start_offset;
++    } else {
++        seg->addr = asc->flash_window_base;
++        seg->size = 0;
++    }
++}
++
++static const uint32_t aspeed_1030_fmc_resets[ASPEED_SMC_R_MAX] = {
++    [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
++                            CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1),
 +};
 +
- static void aspeed_timer_register_types(void)
++static const AspeedSegments aspeed_1030_fmc_segments[] = {
++    { 0x0, 128 * MiB }, /* start address is readonly */
++    { 128 * MiB, 128 * MiB }, /* default is disabled but needed for -kernel */
++    { 0x0, 0 }, /* disabled */
++};
++
++static void aspeed_1030_fmc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
++
++    dc->desc               = "Aspeed 1030 FMC Controller";
++    asc->r_conf            = R_CONF;
++    asc->r_ce_ctrl         = R_CE_CTRL;
++    asc->r_ctrl0           = R_CTRL0;
++    asc->r_timings         = R_TIMINGS;
++    asc->nregs_timings     = 2;
++    asc->conf_enable_w0    = CONF_ENABLE_W0;
++    asc->cs_num_max        = 2;
++    asc->segments          = aspeed_1030_fmc_segments;
++    asc->segment_addr_mask = 0x0ff80ff8;
++    asc->resets            = aspeed_1030_fmc_resets;
++    asc->flash_window_base = 0x80000000;
++    asc->flash_window_size = 0x10000000;
++    asc->features          = ASPEED_SMC_FEATURE_DMA |
++                             ASPEED_SMC_FEATURE_WDT_CONTROL;
++    asc->dma_flash_mask    = 0x0FFFFFFC;
++    asc->dma_dram_mask     = 0x000BFFFC;
++    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->segment_to_reg    = aspeed_1030_smc_segment_to_reg;
++    asc->reg_to_segment    = aspeed_1030_smc_reg_to_segment;
++    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++}
++
++static const TypeInfo aspeed_1030_fmc_info = {
++    .name =  "aspeed.fmc-ast1030",
++    .parent = TYPE_ASPEED_SMC,
++    .class_init = aspeed_1030_fmc_class_init,
++};
++
++static const AspeedSegments aspeed_1030_spi1_segments[] = {
++    { 0x0, 128 * MiB }, /* start address is readonly */
++    { 0x0, 0 }, /* disabled */
++};
++
++static void aspeed_1030_spi1_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
++
++    dc->desc               = "Aspeed 1030 SPI1 Controller";
++    asc->r_conf            = R_CONF;
++    asc->r_ce_ctrl         = R_CE_CTRL;
++    asc->r_ctrl0           = R_CTRL0;
++    asc->r_timings         = R_TIMINGS;
++    asc->nregs_timings     = 2;
++    asc->conf_enable_w0    = CONF_ENABLE_W0;
++    asc->cs_num_max        = 2;
++    asc->segments          = aspeed_1030_spi1_segments;
++    asc->segment_addr_mask = 0x0ff00ff0;
++    asc->flash_window_base = 0x90000000;
++    asc->flash_window_size = 0x10000000;
++    asc->features          = ASPEED_SMC_FEATURE_DMA |
++                             ASPEED_SMC_FEATURE_WDT_CONTROL;
++    asc->dma_flash_mask    = 0x0FFFFFFC;
++    asc->dma_dram_mask     = 0x000BFFFC;
++    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
++    asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
++    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++}
++
++static const TypeInfo aspeed_1030_spi1_info = {
++    .name =  "aspeed.spi1-ast1030",
++    .parent = TYPE_ASPEED_SMC,
++    .class_init = aspeed_1030_spi1_class_init,
++};
++static const AspeedSegments aspeed_1030_spi2_segments[] = {
++    { 0x0, 128 * MiB }, /* start address is readonly */
++    { 0x0, 0 }, /* disabled */
++};
++
++static void aspeed_1030_spi2_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
++
++    dc->desc               = "Aspeed 1030 SPI2 Controller";
++    asc->r_conf            = R_CONF;
++    asc->r_ce_ctrl         = R_CE_CTRL;
++    asc->r_ctrl0           = R_CTRL0;
++    asc->r_timings         = R_TIMINGS;
++    asc->nregs_timings     = 2;
++    asc->conf_enable_w0    = CONF_ENABLE_W0;
++    asc->cs_num_max        = 2;
++    asc->segments          = aspeed_1030_spi2_segments;
++    asc->segment_addr_mask = 0x0ff00ff0;
++    asc->flash_window_base = 0xb0000000;
++    asc->flash_window_size = 0x10000000;
++    asc->features          = ASPEED_SMC_FEATURE_DMA |
++                             ASPEED_SMC_FEATURE_WDT_CONTROL;
++    asc->dma_flash_mask    = 0x0FFFFFFC;
++    asc->dma_dram_mask     = 0x000BFFFC;
++    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
++    asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
++    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++}
++
++static const TypeInfo aspeed_1030_spi2_info = {
++    .name =  "aspeed.spi2-ast1030",
++    .parent = TYPE_ASPEED_SMC,
++    .class_init = aspeed_1030_spi2_class_init,
++};
++
+ static void aspeed_smc_register_types(void)
  {
-     type_register_static(&aspeed_timer_info);
-     type_register_static(&aspeed_2400_timer_info);
-     type_register_static(&aspeed_2500_timer_info);
-     type_register_static(&aspeed_2600_timer_info);
-+    type_register_static(&aspeed_1030_timer_info);
+     type_register_static(&aspeed_smc_flash_info);
+@@ -1709,6 +1866,9 @@ static void aspeed_smc_register_types(void)
+     type_register_static(&aspeed_2600_fmc_info);
+     type_register_static(&aspeed_2600_spi1_info);
+     type_register_static(&aspeed_2600_spi2_info);
++    type_register_static(&aspeed_1030_fmc_info);
++    type_register_static(&aspeed_1030_spi1_info);
++    type_register_static(&aspeed_1030_spi2_info);
  }
  
- type_init(aspeed_timer_register_types)
-diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
-index d36034a10c..07dc6b6f2c 100644
---- a/include/hw/timer/aspeed_timer.h
-+++ b/include/hw/timer/aspeed_timer.h
-@@ -31,6 +31,7 @@ OBJECT_DECLARE_TYPE(AspeedTimerCtrlState, AspeedTimerClass, ASPEED_TIMER)
- #define TYPE_ASPEED_2400_TIMER TYPE_ASPEED_TIMER "-ast2400"
- #define TYPE_ASPEED_2500_TIMER TYPE_ASPEED_TIMER "-ast2500"
- #define TYPE_ASPEED_2600_TIMER TYPE_ASPEED_TIMER "-ast2600"
-+#define TYPE_ASPEED_1030_TIMER TYPE_ASPEED_TIMER "-ast1030"
- 
- #define ASPEED_TIMER_NR_TIMERS 8
- 
+ type_init(aspeed_smc_register_types)
 -- 
 2.17.1
 

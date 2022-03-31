@@ -1,179 +1,203 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp157325lfb;
-        Thu, 31 Mar 2022 08:11:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBoxiVdHf3lVMxIPM4cew0THrg9gXAzYG69xcn2kMHSyk5SK34IxjuSXNpUYZBZNu8Si4p
-X-Received: by 2002:a5b:f42:0:b0:633:7ad6:78b0 with SMTP id y2-20020a5b0f42000000b006337ad678b0mr4431798ybr.156.1648739491965;
-        Thu, 31 Mar 2022 08:11:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648739491; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp193940lfb;
+        Thu, 31 Mar 2022 09:09:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJya+1nEb+KYbOpTZBUCWDz3wMm6yAeI/wuiAMIDvp//YLyZB8QWd25Q6r4M5EdvACQwGdIH
+X-Received: by 2002:a0d:ccd6:0:b0:2e7:98e2:a5a2 with SMTP id o205-20020a0dccd6000000b002e798e2a5a2mr5396000ywd.479.1648742958066;
+        Thu, 31 Mar 2022 09:09:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648742958; cv=none;
         d=google.com; s=arc-20160816;
-        b=JAxd5tY+qr884DV3nBAoXQCuNUWt4EGRpkVk2++9Fq5pH8qH2e/5XRGkspn2EvfRoq
-         cXgxHCZrDQ4Naq2HUvpSFnAKSEgzHtzy1r0syu/ssWosDzz1SDDlV7P0pVwLbyajA0X0
-         SRzxuqRZQuIirLEEj1/PrcmkqZISeXxtmP1yWOFQM21+PjdJ1PuwTYbC8Wb7U8NECLxI
-         lT0pYDO1cBxbk+1DcLlVZZGWzM6J7FAuDszKf0nfs1k/0mCicAtBiR0RNBrhPuN0+TdL
-         od/ZNHo/3zLweAJs1wxb9Ut6IAfW+kHWx5YwAGLxSIQK0KzmBfWETFTJ1INTJKp26S2K
-         v9FA==
+        b=LQPUlnSftkPVBQGIQ0KnQjozsFyZQJCii36e16goFbTIJvfk8ZOYF29z3S4dDe8DFe
+         US9M/AtYax9cQ64yXjOT90L+uzrIeHWdirWi2lXXAa+X+leGr9SDuY1uErfTJDH2arkM
+         VCBA44BW9n+K9g+4/qpw5QvrkA6wALhWuEwGi9Yg0+HsDxUVqx6trjFRyyuwMP5PKhCN
+         +M+d7bRZpCGAbF7SVSkchjeNJ3BPXJZJmtfr1x2suVijVTmHHK6dmdl18L0U2OqrKO9+
+         48TcZze4as7wnYwJVyS7Yzr/+gAWoboErYy8cKdmIKBpwv9Xp6folHpvI8XnDVe3Y2t7
+         cbtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=cW50SmXqEracG+5yeGdL1zrv5YQm6JkbHDr7NxJxYqA=;
-        b=Scg10RUm38F+pDUYTRVueMd3DbpcMqD2hXAnfU010Kd3FTor0LtVS5dyhnuaq+JUA8
-         RcHpZpzLG8DDe8kZIpwAtBFzSKA2DyMHlV7eUq5fNnzhnijk+aKgvrduyvh6MwPGXgCu
-         57QTx2+yjr/dfi5W38tg2+E/NeK4j0QE1Bi+KavGKZrGLUQUqfQClIH6Gbp+hJPi3dVG
-         sCMrLSpiTViFD/xqRDywnJ2Y6LkS49L4Zpu2ld429DkKCHf4BXe75cnCbHHeqdywGlbR
-         s6qnB6apJmSQH2O/Cjx+FmBP1I/XZC7ABeHe1YTs0m3nUBdFMCv1hMPFJHkClVbEoHSF
-         T7vA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=33J2MgMlA4fdMBfyUxxyE8jorwMLgBnnmNhWrt6PJoI=;
+        b=Ez5yb4t5UHBa4amHun49mmHr9cjBHTs7rZqzp/H8qD/EOab6MllFe87QUaLJec8/VP
+         vs/8nRm3WaLfOOrrL9upl2bt3EOB4D7pzNicTVITgR+n6V4eGXxH1hqf9Ky/ErIoJXGf
+         JNuisSwzLiiapf0jteXEg9Kf01mm+B0blC9RGSwRrfoU0E4hs8a225J1zMNw5HI7bX2n
+         bK/aH/ZcTEQyKVs+8cQ4Qs2hgpKU9SQSeKvJeMfkM37hwaw/9k/C4eF9IToh39pf9qXU
+         ScpvPJTxQSlQPdOx4E1LWHFUZTi8R+fV3J/b40f1JERPZlSq1fb9Hm6FaX12tBnuvn71
+         P3BQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CBYhTG9N;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Yau1rKoB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b64-20020a0dc043000000b002e5bb9dc9dcsi22064104ywd.101.2022.03.31.08.11.31
+        by mx.google.com with ESMTPS id f124-20020a811f82000000b002e5bb9dc97esi5565ywf.7.2022.03.31.09.09.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Mar 2022 08:11:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 31 Mar 2022 09:09:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CBYhTG9N;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52166 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Yau1rKoB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nZwSR-0004pt-7m
-	for alex.bennee@linaro.org; Thu, 31 Mar 2022 11:11:31 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52342)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nZxML-0006vx-G6
+	for alex.bennee@linaro.org; Thu, 31 Mar 2022 12:09:17 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41748)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nZwQ4-00021x-Fz
- for qemu-devel@nongnu.org; Thu, 31 Mar 2022 11:09:04 -0400
-Received: from [2a00:1450:4864:20::42c] (port=40576
- helo=mail-wr1-x42c.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nZwQ2-0001KL-Bm
- for qemu-devel@nongnu.org; Thu, 31 Mar 2022 11:09:03 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id d7so193811wrb.7
- for <qemu-devel@nongnu.org>; Thu, 31 Mar 2022 08:09:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=cW50SmXqEracG+5yeGdL1zrv5YQm6JkbHDr7NxJxYqA=;
- b=CBYhTG9N6SJnYI3eCqLQcMECqP4rgmJOrmpPel5Y0YkarGuA/k8vNfZx6rqsRh9URU
- T9OEQ5SIUdZ1Lqkj5HlFVPbWhSSXqMxJBanW2nl3gvC5ONCkS6wEJdrHziJC6hkGgwZa
- h1q7Uixi8ds58Y5b/3ysulTEo9nXHkk49jFzIUyLD++7Cmzx4PCPKplTPIX0llK+aKJ7
- EY4x4C4J8FslJDl4NBRFWBOXlIzP83FpVXa7G+GJPD3OUppzf2vegzBdUO47oCetJiFz
- Q+xht6UwYeIyjVMUsPeOVc7ydnTMljsqxUofFg+7219FX64xXhJYYt1bAGhIwB8xm0qG
- H6EA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=cW50SmXqEracG+5yeGdL1zrv5YQm6JkbHDr7NxJxYqA=;
- b=kFBXE89ZiL0YBkNxofbRW0TBHvY/rusVXkIlHu6NTAkOZRno4bLcoJGvQeD56WO9BJ
- k+FeT+m1ZX8V2B/ywGkizjmWdc/H3Mq9TKnVJcYe7w2KVrtdGk0PEnuzKKIPZAVM9ozd
- oyH/20jp7cl+ZBh9vUvLKFBuoSnl9OYdaYGaDmmqVkHgxZ7ZpygN50mgKK1CZXhPkX4J
- a5o0XWJdNP/jWMoUxx9JR0bXqzOokMzkImbYZp5VA993t94FOHMJq59sfrR64H4KGQzA
- sestYNWSP84aeih2VhWH5ivXac2k5QGwVb+s8m8Ltv9lOjSXgb3tzAPA+EjjBJ+zGTiJ
- MJBw==
-X-Gm-Message-State: AOAM530WcU9c4AC/ZWjk+GUmWsJb0lZANSmzzAmR6lwnvTa4DCDss5DF
- 1TSqvxJLZlni4uShkLYWznYQPg==
-X-Received: by 2002:a5d:62cf:0:b0:203:d97c:3bae with SMTP id
- o15-20020a5d62cf000000b00203d97c3baemr4382700wrv.237.1648739340599; 
- Thu, 31 Mar 2022 08:09:00 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- q6-20020adffec6000000b00205b60faeeesm13277603wrs.24.2022.03.31.08.08.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 31 Mar 2022 08:09:00 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-7.0] target/arm: Don't use DISAS_NORETURN in STXP
- !HAVE_CMPXCHG128 codegen
-Date: Thu, 31 Mar 2022 16:08:58 +0100
-Message-Id: <20220331150858.96348-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1nZxLi-0006uZ-R6
+ for qemu-arm@nongnu.org; Thu, 31 Mar 2022 12:08:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:54868)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1nZxLf-0007NP-MZ
+ for qemu-arm@nongnu.org; Thu, 31 Mar 2022 12:08:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1648742914;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=33J2MgMlA4fdMBfyUxxyE8jorwMLgBnnmNhWrt6PJoI=;
+ b=Yau1rKoBpL2TQwe5aE/WW+l031TS5Z6csUb6w7HctD3VmAJVDckDSfMEtHSYfLRbjUvwVZ
+ 9qeJHvAosmqT52Z5V3cZHJ4cbfwBIC3YTAfZsmpPTg6Kv28YWgUhaDRo/ZRpyjRrewpOHk
+ Bsj6ZhfzECHh10S8JscfG38i0ytoJmU=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-586-_lIHuUf6NQeoIhcsw_jvRg-1; Thu, 31 Mar 2022 12:08:30 -0400
+X-MC-Unique: _lIHuUf6NQeoIhcsw_jvRg-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C5801185A794;
+ Thu, 31 Mar 2022 16:08:29 +0000 (UTC)
+Received: from localhost (unknown [10.39.194.123])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 33CC45E6024;
+ Thu, 31 Mar 2022 16:08:28 +0000 (UTC)
+Date: Thu, 31 Mar 2022 17:08:27 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
+Subject: Re: [PATCH 1/5] trace: fix compilation with lttng-ust >= 2.13
+Message-ID: <YkXR+11BLUM6PY73@stefanha-x1.localdomain>
+References: <20220328084717.367993-1-marcandre.lureau@redhat.com>
+ <20220328084717.367993-2-marcandre.lureau@redhat.com>
+ <YkRHzqi0y/dA1Ptw@stefanha-x1.localdomain>
+ <CAMxuvawDUbHkPwdgk8SnCFXe4mNDVRo5ah1BtQDGEsJjzNFDQw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42c
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="RtXDO1ZntL55U+ZN"
+Content-Disposition: inline
+In-Reply-To: <CAMxuvawDUbHkPwdgk8SnCFXe4mNDVRo5ah1BtQDGEsJjzNFDQw@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ndwHmhEyEl/d
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>, Beniamino Galvani <b.galvani@gmail.com>,
+ "open list:S390 SCLP-backed..." <qemu-s390x@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hrcbLWRmMb1K
 
-In gen_store_exclusive(), if the host does not have a cmpxchg128
-primitive then we generate bad code for STXP for storing two 64-bit
-values.  We generate a call to the exit_atomic helper, which never
-returns, and set is_jmp to DISAS_NORETURN.  However, this is
-forgetting that we have already emitted a brcond that jumps over this
-call for the case where we don't hold the exclusive.  The effect is
-that we don't generate any code to end the TB for the
-exclusive-not-held execution path, which falls into the "exit with
-TB_EXIT_REQUESTED" code that gen_tb_end() emits.  This then causes an
-assert at runtime when cpu_loop_exec_tb() sees an EXIT_REQUESTED TB
-return that wasn't for an interrupt or icount.
 
-In particular, you can hit this case when using the clang sanitizers
-and trying to run the xlnx-versal-virt acceptance test in 'make
-check-acceptance'.  This bug was masked until commit 848126d11e93ff
-("meson: move int128 checks from configure") because we used to set
-CONFIG_CMPXCHG128=1 and avoid the buggy codepath, but after that we
-do not.
+--RtXDO1ZntL55U+ZN
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fix the bug by not setting is_jmp.  The code after the exit_atomic
-call up to the fail_label is dead, but TCG is smart enough to
-eliminate it.  We do need to set 'tmp' to some valid value, though
-(in the same way the exit_atomic-using code in tcg/tcg-op.c does).
+On Thu, Mar 31, 2022 at 07:45:48PM +0400, Marc-Andr=E9 Lureau wrote:
+> Hi
+>=20
+> On Wed, Mar 30, 2022 at 4:06 PM Stefan Hajnoczi <stefanha@redhat.com> wro=
+te:
+> >
+> > On Mon, Mar 28, 2022 at 12:47:13PM +0400, marcandre.lureau@redhat.com w=
+rote:
+> > > From: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+> > >
+> > > On Fedora 36, with lttng-ust 2.13.1, compilation fails with:
+> > >
+> > > In file included from trace/trace-ust-all.h:49085,
+> > >                  from trace/trace-ust-all.c:13:
+> > > /usr/include/lttng/tracepoint-event.h:67:10: error: #include expects =
+"FILENAME" or <FILENAME>
+> > >    67 | #include LTTNG_UST_TRACEPOINT_INCLUDE
+> > >       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > >
+> > > In lttng-ust commit 41858e2b6e8 ("Fix: don't do macro expansion in
+> > > tracepoint file name") from 2012, starting from lttng-ust 2.1, the API
+> > > was changed to expect TRACEPOINT_INCLUDE to be defined as a string.
+> > >
+> > > In lttng-ust commit d2966b4b0b2 ("Remove TRACEPOINT_INCLUDE_FILE
+> > > macro"), in 2021, the compatibility macro was removed.
+> > >
+> > > Use the "new" API from 2012, and bump the version requirement to 2.1 =
+to
+> > > fix compilation with >=3D 2.13.
+> > >
+> > > According to repology, all distributions we support have >=3D 2.1 (ce=
+ntos
+> > > 8 has oldest with 2.8.1 afaict)
+> > >
+> > > Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+> > > ---
+> > >  meson.build                              | 4 ++--
+> > >  scripts/tracetool/format/ust_events_h.py | 4 ++--
+> > >  2 files changed, 4 insertions(+), 4 deletions(-)
+> >
+> > Thank you!
+> >
+> > Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+>=20
+> Given that there is a dependency bump, would you rather wait for 7.1
+> or do you think it should be included in 7.0? I think the latter
+> should be safe.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/953
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate-a64.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+Yes, since you've investigated the minimum version available across
+supported distros I think we can apply this patch.
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index d1a59fad9c2..9333d7be41a 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -2470,7 +2470,12 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
-         } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
-             if (!HAVE_CMPXCHG128) {
-                 gen_helper_exit_atomic(cpu_env);
--                s->base.is_jmp = DISAS_NORETURN;
-+                /*
-+                 * Produce a result so we have a well-formed opcode
-+                 * stream when the following (dead) code uses 'tmp'.
-+                 * TCG will remove the dead ops for us.
-+                 */
-+                tcg_gen_movi_i64(tmp, 0);
-             } else if (s->be_data == MO_LE) {
-                 gen_helper_paired_cmpxchg64_le_parallel(tmp, cpu_env,
-                                                         cpu_exclusive_addr,
--- 
-2.25.1
+Thanks,
+Stefan
+
+--RtXDO1ZntL55U+ZN
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmJF0fsACgkQnKSrs4Gr
+c8hxYwf9GYANnSUaDHYSGV10yRSMbXipDyCC2tf3kzIrfRs8e6aJne7Vmp7kfFfH
+yQSridM09VRecS9LpVmAs4Ymq0+SDBlpPYxwGNDbOZ8gwMCiSJjRK8U601ioztyz
+FWgDRnU1I3abuUPwCGxG3ykAbjzk/fPQY9MQHUArkjjwHwYKOJgbw5D5iYguDWNg
+0KWgZ+z/pQYU8Ij7Ig4SgegDH/ShYYZqyLGmEN1SmcMiQv9je+uPjtthSrhgKlxv
+q+WWWnLetUF0lK171aiqWr34fKk1V5j/yPlqwnrB8tokiD3I+bUoDSAwdnYXzWL8
+WgdEpj3PlXcgO5nPu4dRfCtGVe55MQ==
+=odSJ
+-----END PGP SIGNATURE-----
+
+--RtXDO1ZntL55U+ZN--
 

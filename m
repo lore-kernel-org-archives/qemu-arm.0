@@ -1,108 +1,100 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp885666lfb;
-        Fri, 1 Apr 2022 06:36:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZ5c6DJ26O5D6yuFIqZQIgBOtYD5TscSX8yVwk/6JOycU4qaQJ2xy5+9Oa+uItWcY71rmT
-X-Received: by 2002:a05:622a:145:b0:2e1:b932:d019 with SMTP id v5-20020a05622a014500b002e1b932d019mr8550209qtw.46.1648820184920;
-        Fri, 01 Apr 2022 06:36:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648820184; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp891958lfb;
+        Fri, 1 Apr 2022 06:47:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx0AtkUNHQeN+heHzTmtPegng/xUFurVobFR9cFhHCfYWxEVM7xuZ8pOWTzZUs5o4mnnae3
+X-Received: by 2002:a05:622a:120d:b0:2e1:c9f5:c13 with SMTP id y13-20020a05622a120d00b002e1c9f50c13mr8305081qtx.599.1648820845779;
+        Fri, 01 Apr 2022 06:47:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648820845; cv=none;
         d=google.com; s=arc-20160816;
-        b=QWt+N0TPOfSTV0+gncV/Kr3L0C6nytS6cgESCIYcZJtpzocqeRyc+DHK4aJCw1oAtE
-         nc72HT/j288w4qZXmtuX7+cl2vvSN7MfhU4/UOFdr+ds8sQ3hmy5jVjFzlHjbWVh6+QB
-         8fw495Moc7DIds0AzWj4quGrvLnECbVfwEvSkRCq00KnOrbRK1+ZWk82sBVMptoIOyD2
-         a2NmVeHPT4wGq3cRwfpMtPr2Jn0gKOQtbpeNkXUJUGPYMKaYJY7KhXBtSGAyYmaakDMv
-         e01hXYNqWAPC0K5yVQefIgRNfHJD091uDp/pV4n8BXLB3X1bXjdO7asRSoCVpwxDy1sy
-         tx6A==
+        b=hAlYHm6w4CoAesZUzRBMoUPmYq5sVGgfj2V1KO7oKKSGX4Sf8FBlzAMQ5Ru21YKqDx
+         fU7XfPkX3AdRU4KFXv+Bpsaa0iVzD65/QepxW3BBGNvLSbnuxQzCSGdCFsG62pXjs9JR
+         DYvySi9B+U2hvyXr7qSNMC8AEexMF3jl42ZBKZoEtL9N/NhYM/b4cY9DgtAWK/tTlN0Y
+         ETaGlAq2q7xbFgap46qSk8p3EtDz0HT3cw27uWf9rD5JyVRwca84tZfwA4GrODpLLv67
+         p6xxEtbJa56RntuqNQJGUcMUKQHd+cxqAMi/tGIUxhtG6Z7WIU0cYcNZB52ZaigzyFOs
+         NwZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ITyy9MXaeEOsnJnDyxk/ZxSyG8YY0CsdmowKVaSIqWM=;
-        b=O5rcgi0ogfui7P5KRDBWfV5UtxQMu4P4Y14IsD+JJrRj7cHBnETI/gMxNChjexvZSW
-         WjnlcTFm/ftYVUbhDWvp/G+MJe8cClOiejwg+thM4v3o/GAfdtfxarHHZOr0Y+Jq3tWh
-         Z08GHLQCK5+G3EN5PzVxOhBjuaD2LL3W16riGNxiLwG7MNwsFFCr8VvH6DzUHuD5mOSR
-         KM725ZWP8WyOSZLidlGqAbI2a1/ZOI8BD0Df1LvtBnS15K3A9BZZ0j0PdL7Y30EtNFlF
-         M0OJzW56HQgbQmbCpQE6AHerkVo+D1lz/w0GaIwiwCZ82Gv+H1Yf1SqwP8OBukc7KEGx
-         eXyQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=dlQYl8tba7Yd9C0GFGl8gJimQwCLrRQvogvwve0CsPY=;
+        b=XARwDcsyoEL/XX1Smj/PVZCJ/HlihGaizP4hi3vMIFWs/31mi2p7ntD5M9KsjNBCmo
+         YT4jVDBZN/j4fkVDo/jwww0Mnn5iuFOhr99qIXn03bUe9htMSrsuXsARvJ7DYnFtGul5
+         uqdFyOwf90oopyMzAWPrVibTDoZNLv19r0ZxhhuKfXGGQmibxIMYLUHOeQVGBSaWt9oz
+         bXyN5IvXnDxGCuvnkfe8O0E+AZxpzWjCAw65HPlXT52JG4aTUG//hp56AKmp5rteYutW
+         DEP4Ll+xfp5sbo/ogeNxuDWbqmkq7ljbKZVt5SXuWte74S3hIDb2LeYzXd3RiwvJHrnl
+         S9Aw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JiNoNc4n;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c14-20020ac853ce000000b002e1fbf3be48si947202qtq.57.2022.04.01.06.36.24
+        by mx.google.com with ESMTPS id bk23-20020a05620a1a1700b0067e4be23898si1289128qkb.221.2022.04.01.06.47.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Apr 2022 06:36:24 -0700 (PDT)
+        Fri, 01 Apr 2022 06:47:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JiNoNc4n;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47924 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42976 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naHRw-0002ML-E6
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 09:36:24 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:54566)
+	id 1naHcb-0002NQ-9E
+	for alex.bennee@linaro.org; Fri, 01 Apr 2022 09:47:25 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52630)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1naHRR-0002Kq-7h
- for qemu-arm@nongnu.org; Fri, 01 Apr 2022 09:35:53 -0400
-Received: from [2607:f8b0:4864:20::b35] (port=35514
- helo=mail-yb1-xb35.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1naHRO-0000kN-6c
- for qemu-arm@nongnu.org; Fri, 01 Apr 2022 09:35:51 -0400
-Received: by mail-yb1-xb35.google.com with SMTP id o5so5087503ybe.2
- for <qemu-arm@nongnu.org>; Fri, 01 Apr 2022 06:35:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ITyy9MXaeEOsnJnDyxk/ZxSyG8YY0CsdmowKVaSIqWM=;
- b=JiNoNc4n4WgapQOJxCS5ypF2GBMG7EMqT4B2jzPyhkgc140/XQSkHpXZ9USPQS0SvH
- F+WVZ1WpK2ecfXKtZYhGtu8BjHxIj2KbUQthSPWupC6brwOBE1J3+hDGBD1wV+3O4dfO
- VOM5sDaPJQPCEWaXG7hLOtXw/y9JfbXekw1M0oJMIm0vJd+o1Hge5K1T73QdHyyWs2uj
- ffSODRDlIGM0BD9pQLfb4xW5IyiSux29GklMzD8KOprOIdlgfe++LQUJ/Rvv48pM9pGB
- 8BteRhLEuF0dEEq7/1nAx8pFMhAS3tdraaWHcBcZo67r+LkUA/GhE7ZR5cMYmCxQ+oCz
- 8/4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ITyy9MXaeEOsnJnDyxk/ZxSyG8YY0CsdmowKVaSIqWM=;
- b=H0w/ZsiZoHo1X5ZZJAP9WDF1avokqY3N1DDqRzKPdCUwlS7AL6s7ZMrwGaatAFV3/P
- vo+gPvFlh73tweWO1S/h8XOxnvbSCwSA8isco4fVxqdL3QmvL5LS8zBekdLeHtqNRcs0
- AlPsJUvsU2n8WO6Ov81A5ZfxNN2q7ITbmueEDYcwsU/sgLL387FHcaco3Q8V61JwkZuE
- jKYF1s6gMB1Q+9mWqNpyQMZPxiFoboD488BE/E7uSpauWwERfAgSsjDKZ4WmyU3zjVN3
- M5XwfdlVul1b9wseYrdSHyTIWN9qefpV3FBcjv/gzGVjspv82TCTECLHmNrgW3hSUaX6
- ArbA==
-X-Gm-Message-State: AOAM531Z92zgzSEZ0qIecjriL4ovgwDdYeJjJLvHj05hgz3cmupijH+E
- Cq4kZ/1xQdbOlmdDePrNca1/TBxkUhujcIpWyqlMVQ==
-X-Received: by 2002:a05:6902:1502:b0:63d:4d6f:dc1 with SMTP id
- q2-20020a056902150200b0063d4d6f0dc1mr5211374ybu.140.1648820147643; Fri, 01
- Apr 2022 06:35:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naHHo-0003Ch-VE
+ for qemu-arm@nongnu.org; Fri, 01 Apr 2022 09:25:56 -0400
+Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137]:35829)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naHHm-0007fg-FZ
+ for qemu-arm@nongnu.org; Fri, 01 Apr 2022 09:25:56 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.188])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id C6BC722752;
+ Fri,  1 Apr 2022 13:25:50 +0000 (UTC)
+Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 1 Apr
+ 2022 15:25:49 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R001cebd9057-2977-4be5-8703-8f2eb18b88d1,
+ E6F802B82481F543645B2B9FC2104B41A8D643B2) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <41441f8a-7ae0-4f41-543f-4df8c39fe7e2@kaod.org>
+Date: Fri, 1 Apr 2022 15:25:49 +0200
 MIME-Version: 1.0
-References: <20220324181557.203805-1-zongyuan.li@smartx.com>
- <20220324181557.203805-4-zongyuan.li@smartx.com>
-In-Reply-To: <20220324181557.203805-4-zongyuan.li@smartx.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 Apr 2022 14:35:36 +0100
-Message-ID: <CAFEAcA_rMuWkobjBoFJdYQqc=qvyUPrq9_-W+TkrNdTf+iBgsw@mail.gmail.com>
-Subject: Re: [PATCH v5 3/4] hw/intc/exynos4210: replace 'qemu_split_irq' in
- combiner and gic
-To: Zongyuan Li <zongyuan.li@smartx.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b35
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Alistair Francis
+ <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, Andrew
+ Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Cleber Rosa
+ <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
+ Leal <bleal@redhat.com>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+ <0ddfa28a-45ae-fdfd-02a6-94ab5a34b724@kaod.org>
+ <TYZPR06MB40155C89D32BB012339208C6FCE09@TYZPR06MB4015.apcprd06.prod.outlook.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <TYZPR06MB40155C89D32BB012339208C6FCE09@TYZPR06MB4015.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 410a2974-2923-4ad3-9c4e-e96b4d66d871
+X-Ovh-Tracer-Id: 18257029941568900027
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudeiiedgieehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepueevledvjeetgeetfeeiveeftefffedvvdeikeetveelfeeglefgueetvdefvdefnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomh
+Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
+ helo=9.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,29 +107,192 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
- "open list:Exynos" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
+Cc: Troy Lee <troy_lee@aspeedtech.com>, Steven Lee <steven_lee@aspeedtech.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: td9GIeOnDApv
+X-TUID: PcQ9zsEZ1xks
 
-On Thu, 24 Mar 2022 at 18:16, Zongyuan Li <zongyuan.li@smartx.com> wrote:
->
-> Signed-off-by: Zongyuan Li <zongyuan.li@smartx.com>
-> ---
->  hw/arm/exynos4210.c           | 26 +++++++++++
->  hw/intc/exynos4210_combiner.c | 81 +++++++++++++++++++++++++++--------
->  hw/intc/exynos4210_gic.c      | 36 +++++++++++++---
->  include/hw/arm/exynos4210.h   | 11 ++---
->  include/hw/core/split-irq.h   |  5 +--
->  5 files changed, 126 insertions(+), 33 deletions(-)
+Hello Jamin,
 
-Looking at this patch, I think it's ended up quite complicated
-because the exynos4210 code as it stands today is doing
-some rather odd things with interrupts. I'm going to have a
-go at some refactoring patches which try to clean some of that
-oddness up into code more like what we'd write today, which
-should make getting rid of the use of qemu_split_irq() a bit easier.
+On 4/1/22 11:23, Jamin Lin wrote:
+> Hi Cedric, Joel and Andrew
+> First all, thanks for all your kindly support and review. We are so
+> glad that QEMU v7.1 will support AST1030 model.
 
-thanks
--- PMM
+QEMU 7.1 is for after the summer.
+
+> 
+> 1. The ast1030 and ast2600 HACE controller are identical.
+>    Steven submitted the patch to support HACE ACC mode. Once his patch
+> accept. We will submit patch to support ast1030 model.
+
+I think Joel is tracking these changes.
+
+> 2. I submitted the patch to support GOIO index mode because ast1030
+>  driver was implement by index mode. I am waiting for review and any 
+> suggestion will be appreciated.
+
+That's Andrew's turf. Or Rashmica if she has time ? I could do it but not
+now and it will take longer since I know less this area of the HW.
+
+> 3. Troy submitted the patch to support I2C new model which included ast1030 model.
+
+Yes. I think there is another submission on the topic. I reviewed the one
+Troy sent and some rework is needed. The I2C model is becoming quite complex
+and changes need to me introduced progressively.
+  
+
+> 4. As for NIC plan, once AST1030 NIC driver ready, we will upstream, too.
+
+It's not a FTGMAC100 ?
+
+
+> BTW, do you have a plan to upstream it, https://github.com/openbmc/qemu/blob/master/hw/misc/aspeed_pwm.c
+
+I don't. That's really an empty skeleton. There is no problem in merging it
+but if someone of your team has time to grow the model, please do !
+
+Thanks,
+
+C.
+
+
+> 
+> Thanks again - Jamin
+> 
+> ************* Email Confidentiality Notice ********************
+> DISCLAIMER:
+> This message (and any attachments) may contain legally privileged and/or other confidential information. If you have received it in error, please notify the sender by reply e-mail and immediately delete the e-mail and any attachments without copying or disclosing the contents. Thank you.
+> 
+> -----Original Message-----
+> From: Cédric Le Goater <clg@kaod.org>
+> Sent: Friday, April 1, 2022 4:55 PM
+> To: Jamin Lin <jamin_lin@aspeedtech.com>; Alistair Francis <alistair@alistair23.me>; Peter Maydell <peter.maydell@linaro.org>; Andrew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>; Cleber Rosa <crosa@redhat.com>; Philippe Mathieu-Daudé <f4bug@amsat.org>; Wainer dos Santos Moschetta <wainersm@redhat.com>; Beraldo Leal <bleal@redhat.com>; open list:STM32F205 <qemu-arm@nongnu.org>; open list:All patches CC here <qemu-devel@nongnu.org>
+> Cc: Steven Lee <steven_lee@aspeedtech.com>; Troy Lee <troy_lee@aspeedtech.com>
+> Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
+> 
+> Hello Jamin,
+> 
+> Thanks for these new models and machine. They are queued for QEMU 7.1.
+> There are a couple of patchsets adding support for the AST1030 GPIO controller and the I2C new mode that would be good extensions but they need review first.
+> 
+> What are the next steps? any plans for network ? The NIC should be a
+> FTGMAC100 if I am correct.
+> 
+> Thanks,
+> 
+> C.
+> 
+> 
+>    On 4/1/22 10:38, Jamin Lin wrote:
+>> Changes from v5:
+>> - remove TYPE_ASPEED_MINIBMC_MACHINE and ASPEED_MINIBMC_MACHINE
+>> - remove ast1030_machine_instance_init function
+>>
+>> Changes from v4:
+>> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
+>>
+>> Changes from v3:
+>> - remove AspeedMiniBmcMachineState state structure and
+>>     AspeedMiniBmcMachineClass class
+>> - remove redundant new line in hw/arm/aspeed_ast10xx.c
+>> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
+>>
+>> Changes from v2:
+>> - replace aspeed_ast1030.c with aspeed_ast10xx.c for minibmc SOCs
+>> family support
+>> - Add "ast1030-evb" machine in aspeed.c and removes aspeed_minibmc.c
+>>
+>> Changes from v1:
+>> The patch series supports ADC, SCU, SMC, TIMER, and WDT for AST1030 SoC.
+>> Add avocado test case for "ast1030-evb" machine.
+>>
+>> Test steps:
+>> 1. Download image from
+>>      
+>> https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.04/a
+>> st1030-evb-demo.zip 2. Extract the zip file to obtain zephyr.elf 3.
+>> Run ./qemu-system-arm -M ast1030-evb -kernel $PATH/zephyr.elf
+>> -nographic 4. Test IO by Zephyr command line, commands are refer to Aspeed Zephyr
+>>      SDK User Guide below
+>>      https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.04/Aspeed_Zephy_SDK_User_Guide_v00.01.04.pdf
+>>      - ADC(channel 0):
+>>          uart:~$ adc ADC0 resolution 10
+>>          uart:~$ adc ADC0 calibrate 1
+>>          uart:~$ adc ADC0 read_format 1
+>>          uart:~$ adc ADC0 read 0
+>>          [Result]
+>>          read: 1416mv
+>>
+>>      - SCU
+>>          uart:~$ md 7e6e2040
+>>          uart:~$ md 7e6e2080
+>>          uart:~$ md 7e6e20d0
+>>          uart:~$ md 7e6e2200
+>>          uart:~$ md 7e6e2300
+>>          uart:~$ md 7e6e25b0
+>>          [Result]
+>>          The register value should match the value of ast1030_a1_resets
+>>          in aspeed_scu.c
+>>
+>>      - Flash(fmc_cs0):
+>>          uart:~$ flash write fmc_cs0 0 0x12345678 0x87654321 0x34127856 0x78563412
+>>          uart:~$ flash read fmc_cs0 0 10
+>>          [Result]
+>>          00000000: 78 56 34 12 21 43 65 87  56 78 12 34 12 34 56 78
+>> |xV4.!Ce. Vx.4.4Vx|
+>>
+>>          uart:~$ flash erase fmc_cs0 0
+>>          uart:~$ flash read fmc_cs0 0 10
+>>          [Result]
+>>          00000000: ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff
+>> |........ ........|
+>>
+>>      - Timer(TIMER0):
+>>          uart:~$ timer start TIMER0 -p 2000 -t 0
+>>          TIMER0: period 20000 ms, type 0
+>>          [Result]
+>>          timer expired after 2 seconds
+>>
+>>      - Watchdog(WDT1):
+>>          uart:~$ mw 7e785008 4755
+>>          uart:~$ mw 7e78500c 1
+>>          [Result]
+>>          soc reset after 22 seconds
+>>
+>> Based-on: 20220315075753.8591-3-steven_lee@aspeedtech.com
+>> ([v2,2/2] hw: aspeed_scu: Introduce clkin_25Mhz attribute)
+>>
+>> Jamin Lin (2):
+>>     aspeed: Add an AST1030 eval board
+>>     test/avocado/machine_aspeed.py: Add ast1030 test case
+>>
+>> Steven Lee (7):
+>>     aspeed/adc: Add AST1030 support
+>>     aspeed/smc: Add AST1030 support
+>>     aspeed/wdt: Fix ast2500/ast2600 default reload value
+>>     aspeed/wdt: Add AST1030 support
+>>     aspeed/timer: Add AST1030 support
+>>     aspeed/scu: Add AST1030 support
+>>     aspeed/soc : Add AST1030 support
+>>
+>>    hw/adc/aspeed_adc.c              |  16 ++
+>>    hw/arm/aspeed.c                  |  66 +++++++
+>>    hw/arm/aspeed_ast10xx.c          | 299 +++++++++++++++++++++++++++++++
+>>    hw/arm/meson.build               |   6 +-
+>>    hw/misc/aspeed_scu.c             |  63 +++++++
+>>    hw/ssi/aspeed_smc.c              | 157 ++++++++++++++++
+>>    hw/timer/aspeed_timer.c          |  17 ++
+>>    hw/watchdog/wdt_aspeed.c         |  34 +++-
+>>    include/hw/adc/aspeed_adc.h      |   1 +
+>>    include/hw/arm/aspeed_soc.h      |   3 +
+>>    include/hw/misc/aspeed_scu.h     |  25 +++
+>>    include/hw/timer/aspeed_timer.h  |   1 +
+>>    include/hw/watchdog/wdt_aspeed.h |   3 +
+>>    tests/avocado/machine_aspeed.py  |  36 ++++
+>>    14 files changed, 724 insertions(+), 3 deletions(-)
+>>    create mode 100644 hw/arm/aspeed_ast10xx.c
+>>    create mode 100644 tests/avocado/machine_aspeed.py
+>>
+> 
+

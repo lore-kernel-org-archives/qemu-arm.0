@@ -1,58 +1,58 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp717698lfb;
-        Fri, 1 Apr 2022 01:49:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxWrmqfUNLAR9aR8/foWWY+fngfUKQnDlcHHAPNTeK1OiAOQ0rJJfcxb/4uT7hxIQbJ1eHy
-X-Received: by 2002:a05:6214:2a4d:b0:443:7f61:747a with SMTP id jf13-20020a0562142a4d00b004437f61747amr7326862qvb.34.1648802996252;
-        Fri, 01 Apr 2022 01:49:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648802996; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp718416lfb;
+        Fri, 1 Apr 2022 01:51:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzDmJxVWn6RwI0qhhocxepJWjeCJM/9n0Cor+J5NeCwfTkh+Pdlh9QGsB27A8UKw7d8+8lL
+X-Received: by 2002:ac8:594d:0:b0:2e1:d6a9:e4df with SMTP id 13-20020ac8594d000000b002e1d6a9e4dfmr7566512qtz.53.1648803095181;
+        Fri, 01 Apr 2022 01:51:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648803095; cv=none;
         d=google.com; s=arc-20160816;
-        b=ROboX2AvZCvwg1qx1HtmS1gOIY6QERd10HXBFg0KcvfuDeYCmLFWyLSkT88CLXkGN6
-         v0SQYT09BpSunGNwZrmkwxKHk9AQvc0c2gAmFLIB4+yuxqlRFl6hAx1Q3HSgmhT7CsU+
-         ZpPcY0DpGwtk3t/uh0EOhIlOql+yrsj3YQS4rAA+dB/WaB6CHENAVUSGwJDKG7+8QEEs
-         k389QEO91MeXOyLXZ06pjyQh563OqAVyLKvuIGhVj0lNLBGJY+svgvUO8lh2zewYFIZZ
-         /K3wU7GRTwT8gtzliGkHd0jh4SiVN0Eg5MsEf9iBpsYXeI7arIBHQM3OiAc0xRsVYNXr
-         Ep+A==
+        b=EMZcEJasVsGPkmBAypeBaWDMVUMyk3VkGkA67q9fG9BPyNAeekiBbNjX173sKx1Wu8
+         /nabOW4Msgw9d7JB9qzVBf8H8H0Ehx3HuiJ54/DZNzZ6gIkGw2amV/qgVcpkVVTz1kFS
+         zK5ffoX6bNjTTSokCWk0pZLVNDk1YMCzwHUs9Sc7V3T2dzO5WFAcdgPy+68tD9FESREJ
+         aR5X6YNzQqPMzxTbm4Q1+CaN7RQWBNQO/4cZ6hSei7wOqjxbXyUvTjIfULbtHJo2DMtL
+         GaANP1fFeKu6Bz7uREfagbYsZRsnXYBKY5ZLz72J5Tf0qjo5/rxrbOI42VkiWU7hy0qT
+         gpZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=LZQ+YUcvmEXVpEUNL9jnNx1bm4uVCPmnOaCeLLeBXVg=;
-        b=lm8cSiwoaiVGEgubeLd1JfY1WJ7TsgdkhfHj+6/QlFbpDO67RdEWNy01iFOzHdr9KO
-         IYr1HoXg7yEd8OYkc8l+wNrRNDS8NtiOMCS7ozJhnGGu5kXNM6WsJSJjoouUZtA7842r
-         wJXgvGENlsZl0riQTI/Gd/gEgAZK/EtHnNEjzIZpBteKkN0jG6IswIdMT7ls9/ag1/CQ
-         5IfOU+ONp/8EZ9YmvS82GA0wzwLVkiui7xj7KHgFofNPxK8BU1r3x9ftgnMrjK1odmz0
-         PFP9YRCtNGUbA8Hl7JG8EH/8ccCP6I/aFj5Hw+M4hG+lXkvAOQZjpQ1u+Y8cPQWM0WnL
-         h/IQ==
+        bh=fFoSvEh/wXqYSW7YJt2Uv4GRIpgGPlRtmkXO0RIkTqU=;
+        b=pOeXtrk9p/h9k3TeXc+Bgkl6xrjRAfrgw8OhM07CfUkPvn8Uy8ZiRUIpxqozdD1Hs6
+         y4de12YVJFlTRtMJbD1m7sAVlNW6w2IkvCViSl92VVXSAZfnxhQEG593GWYQO8rBtNV5
+         dis4HJCJZwv+CpZDBsOgYbtvH55y4cv416AGfaxbWIECBd7rsmyhA8P1jZP3w0MtzXrW
+         qgWRzWq/ppMS1plaH0AL2JrKc5wDV1Q0LCOOU9pIuC5WChhLUc+N7OwgFzgfx74HLpTA
+         rgDCLZBasctCkp+AAq3lMLX/H8VQWv7D6AmBofp7FSaLm6hLtFeet+VqcEmOAxz0xb+1
+         uOZw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b15-20020a05620a118f00b0067e4be23982si759712qkk.455.2022.04.01.01.49.56
+        by mx.google.com with ESMTPS id r189-20020a37a8c6000000b0067e4be23894si795652qke.217.2022.04.01.01.51.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Apr 2022 01:49:56 -0700 (PDT)
+        Fri, 01 Apr 2022 01:51:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50926 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53476 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naCyh-0001PT-NJ
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 04:49:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51800)
+	id 1naD0I-0003FK-I7
+	for alex.bennee@linaro.org; Fri, 01 Apr 2022 04:51:34 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51742)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1naCpQ-0000FG-UR; Fri, 01 Apr 2022 04:40:22 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:21163)
+ id 1naCpL-0000Dr-CE; Fri, 01 Apr 2022 04:40:22 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:51928)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1naCpM-0001Si-Q4; Fri, 01 Apr 2022 04:40:19 -0400
+ id 1naCpI-0001SM-HR; Fri, 01 Apr 2022 04:40:15 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 2318RtrY030517;
- Fri, 1 Apr 2022 16:27:55 +0800 (GMT-8)
+ by twspam01.aspeedtech.com with ESMTP id 2318Rsgm030515;
+ Fri, 1 Apr 2022 16:27:54 +0800 (GMT-8)
  (envelope-from jamin_lin@aspeedtech.com)
 Received: from localhost.localdomain (192.168.70.87) by TWMBX02.aspeed.com
  (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 1 Apr
- 2022 16:38:56 +0800
+ 2022 16:38:55 +0800
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
@@ -62,9 +62,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "Beraldo Leal" <bleal@redhat.com>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Subject: [PATCH v5 9/9] test/avocado/machine_aspeed.py: Add ast1030 test case
-Date: Fri, 1 Apr 2022 16:38:50 +0800
-Message-ID: <20220401083850.15266-10-jamin_lin@aspeedtech.com>
+Subject: [PATCH v5 7/9] aspeed/soc : Add AST1030 support
+Date: Fri, 1 Apr 2022 16:38:48 +0800
+Message-ID: <20220401083850.15266-8-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
 References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
@@ -75,7 +75,7 @@ X-Originating-IP: [192.168.70.87]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 2318RtrY030517
+X-MAIL: twspam01.aspeedtech.com 2318Rsgm030515
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -99,61 +99,376 @@ Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
  steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d+LgpognF/Ux
+X-TUID: Jgg2zuEzAvFg
 
-Add test case to test "ast1030-evb" machine with zephyr os
+From: Steven Lee <steven_lee@aspeedtech.com>
+
+The embedded core of AST1030 SoC is ARM Coretex M4.
+It is hard to be integrated in the common Aspeed Soc framework.
+We introduce a new ast1030 class with instance_init and realize
+handlers.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- tests/avocado/machine_aspeed.py | 36 +++++++++++++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
- create mode 100644 tests/avocado/machine_aspeed.py
+ hw/arm/aspeed_ast10xx.c     | 299 ++++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build          |   6 +-
+ include/hw/arm/aspeed_soc.h |   3 +
+ 3 files changed, 307 insertions(+), 1 deletion(-)
+ create mode 100644 hw/arm/aspeed_ast10xx.c
 
-diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+diff --git a/hw/arm/aspeed_ast10xx.c b/hw/arm/aspeed_ast10xx.c
 new file mode 100644
-index 0000000000..33090af199
+index 0000000000..0567527671
 --- /dev/null
-+++ b/tests/avocado/machine_aspeed.py
-@@ -0,0 +1,36 @@
-+# Functional test that boots the ASPEED SoCs with firmware
-+#
-+# Copyright (C) 2022 ASPEED Technology Inc
-+#
-+# This work is licensed under the terms of the GNU GPL, version 2 or
-+# later.  See the COPYING file in the top-level directory.
++++ b/hw/arm/aspeed_ast10xx.c
+@@ -0,0 +1,299 @@
++/*
++ * ASPEED AST10xx SoC
++ *
++ * Copyright (C) 2022 ASPEED Technology Inc.
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ *
++ * Implementation extracted from the AST2600 and adapted for AST10xx.
++ */
 +
-+from avocado_qemu import QemuSystemTest
-+from avocado_qemu import wait_for_console_pattern
-+from avocado_qemu import exec_command_and_wait_for_pattern
-+from avocado.utils import archive
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "exec/address-spaces.h"
++#include "sysemu/sysemu.h"
++#include "hw/qdev-clock.h"
++#include "hw/misc/unimp.h"
++#include "hw/char/serial.h"
++#include "hw/arm/aspeed_soc.h"
 +
++#define ASPEED_SOC_IOMEM_SIZE 0x00200000
 +
-+class AST1030Machine(QemuSystemTest):
-+    """Boots the zephyr os and checks that the console is operational"""
++static const hwaddr aspeed_soc_ast1030_memmap[] = {
++    [ASPEED_DEV_SRAM]      = 0x00000000,
++    [ASPEED_DEV_SBC]       = 0x79000000,
++    [ASPEED_DEV_IOMEM]     = 0x7E600000,
++    [ASPEED_DEV_PWM]       = 0x7E610000,
++    [ASPEED_DEV_FMC]       = 0x7E620000,
++    [ASPEED_DEV_SPI1]      = 0x7E630000,
++    [ASPEED_DEV_SPI2]      = 0x7E640000,
++    [ASPEED_DEV_SCU]       = 0x7E6E2000,
++    [ASPEED_DEV_ADC]       = 0x7E6E9000,
++    [ASPEED_DEV_SBC]       = 0x7E6F2000,
++    [ASPEED_DEV_GPIO]      = 0x7E780000,
++    [ASPEED_DEV_TIMER1]    = 0x7E782000,
++    [ASPEED_DEV_UART5]     = 0x7E784000,
++    [ASPEED_DEV_WDT]       = 0x7E785000,
++    [ASPEED_DEV_LPC]       = 0x7E789000,
++    [ASPEED_DEV_I2C]       = 0x7E7B0000,
++};
 +
-+    timeout = 10
++static const int aspeed_soc_ast1030_irqmap[] = {
++    [ASPEED_DEV_UART5]     = 8,
++    [ASPEED_DEV_GPIO]      = 11,
++    [ASPEED_DEV_TIMER1]    = 16,
++    [ASPEED_DEV_TIMER2]    = 17,
++    [ASPEED_DEV_TIMER3]    = 18,
++    [ASPEED_DEV_TIMER4]    = 19,
++    [ASPEED_DEV_TIMER5]    = 20,
++    [ASPEED_DEV_TIMER6]    = 21,
++    [ASPEED_DEV_TIMER7]    = 22,
++    [ASPEED_DEV_TIMER8]    = 23,
++    [ASPEED_DEV_WDT]       = 24,
++    [ASPEED_DEV_LPC]       = 35,
++    [ASPEED_DEV_FMC]       = 39,
++    [ASPEED_DEV_PWM]       = 44,
++    [ASPEED_DEV_ADC]       = 46,
++    [ASPEED_DEV_SPI1]      = 65,
++    [ASPEED_DEV_SPI2]      = 66,
++    [ASPEED_DEV_I2C]       = 110, /* 110 ~ 123 */
++    [ASPEED_DEV_KCS]       = 138, /* 138 -> 142 */
++};
 +
-+    def test_ast1030_zephyros(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:ast1030-evb
-+        """
-+        tar_url = ('https://github.com/AspeedTech-BMC'
-+                   '/zephyr/releases/download/v00.01.04/ast1030-evb-demo.zip')
-+        tar_hash = '4c6a8ce3a8ba76ef1a65dae419ae3409343c4b20'
-+        tar_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        archive.extract(tar_path, self.workdir)
-+        kernel_file = self.workdir + "/ast1030-evb-demo/zephyr.elf"
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel', kernel_file,
-+                         '-nographic')
-+        self.vm.launch()
-+        wait_for_console_pattern(self, "Booting Zephyr OS")
-+        exec_command_and_wait_for_pattern(self, "help",
-+                                          "Available commands")
++static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
++{
++    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
++
++    return qdev_get_gpio_in(DEVICE(&s->armv7m), sc->irqmap[ctrl]);
++}
++
++static void aspeed_soc_ast1030_init(Object *obj)
++{
++    AspeedSoCState *s = ASPEED_SOC(obj);
++    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
++    char socname[8];
++    char typename[64];
++    int i;
++
++    if (sscanf(sc->name, "%7s", socname) != 1) {
++        g_assert_not_reached();
++    }
++
++    object_initialize_child(obj, "armv7m", &s->armv7m, TYPE_ARMV7M);
++
++    s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
++
++    snprintf(typename, sizeof(typename), "aspeed.scu-%s", socname);
++    object_initialize_child(obj, "scu", &s->scu, typename);
++    qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev", sc->silicon_rev);
++
++    object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu), "hw-strap1");
++    object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scu), "hw-strap2");
++
++    snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
++    object_initialize_child(obj, "timerctrl", &s->timerctrl, typename);
++
++    snprintf(typename, sizeof(typename), "aspeed.adc-%s", socname);
++    object_initialize_child(obj, "adc", &s->adc, typename);
++
++    snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
++    object_initialize_child(obj, "fmc", &s->fmc, typename);
++
++    for (i = 0; i < sc->spis_num; i++) {
++        snprintf(typename, sizeof(typename), "aspeed.spi%d-%s", i + 1, socname);
++        object_initialize_child(obj, "spi[*]", &s->spi[i], typename);
++    }
++
++    object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
++
++    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
++
++    for (i = 0; i < sc->wdts_num; i++) {
++        snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
++        object_initialize_child(obj, "wdt[*]", &s->wdt[i], typename);
++    }
++}
++
++static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
++{
++    AspeedSoCState *s = ASPEED_SOC(dev_soc);
++    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
++    MemoryRegion *system_memory = get_system_memory();
++    DeviceState *armv7m;
++    Error *err = NULL;
++    int i;
++
++    if (!clock_has_source(s->sysclk)) {
++        error_setg(errp, "sysclk clock must be wired up by the board code");
++        return;
++    }
++
++    /* General I/O memory space to catch all unimplemented device */
++    create_unimplemented_device("aspeed.sbc",
++                                sc->memmap[ASPEED_DEV_SBC],
++                                0x40000);
++    create_unimplemented_device("aspeed.io",
++                                sc->memmap[ASPEED_DEV_IOMEM],
++                                ASPEED_SOC_IOMEM_SIZE);
++
++    /* AST1030 CPU Core */
++    armv7m = DEVICE(&s->armv7m);
++    qdev_prop_set_uint32(armv7m, "num-irq", 256);
++    qdev_prop_set_string(armv7m, "cpu-type", sc->cpu_type);
++    qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
++    object_property_set_link(OBJECT(&s->armv7m), "memory",
++                             OBJECT(system_memory), &error_abort);
++    sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
++
++    /* Internal SRAM */
++    memory_region_init_ram(&s->sram, NULL, "aspeed.sram", sc->sram_size, &err);
++    if (err != NULL) {
++        error_propagate(errp, err);
++        return;
++    }
++    memory_region_add_subregion(system_memory,
++                                sc->memmap[ASPEED_DEV_SRAM],
++                                &s->sram);
++
++    /* SCU */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, sc->memmap[ASPEED_DEV_SCU]);
++
++    /* LPC */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
++
++    /* Connect the LPC IRQ to the GIC. It is otherwise unused. */
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_LPC));
++
++    /*
++     * On the AST1030 LPC subdevice IRQs are connected straight to the GIC.
++     */
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_1,
++                       qdev_get_gpio_in(DEVICE(&s->armv7m),
++                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_1));
++
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_2,
++                       qdev_get_gpio_in(DEVICE(&s->armv7m),
++                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_2));
++
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_3,
++                       qdev_get_gpio_in(DEVICE(&s->armv7m),
++                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_3));
++
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
++                       qdev_get_gpio_in(DEVICE(&s->armv7m),
++                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
++
++    /* UART5 - attach an 8250 to the IO space as our UART */
++    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
++                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
++                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
++
++    /* Timer */
++    object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
++                             &error_abort);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->timerctrl), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0,
++                    sc->memmap[ASPEED_DEV_TIMER1]);
++    for (i = 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
++        qemu_irq irq = aspeed_soc_get_irq(s, ASPEED_DEV_TIMER1 + i);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
++    }
++
++    /* ADC */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->adc), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->adc), 0, sc->memmap[ASPEED_DEV_ADC]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
++
++    /* FMC, The number of CS is set at the board level */
++    object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(&s->sram),
++            &error_abort);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->fmc), 0, sc->memmap[ASPEED_DEV_FMC]);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->fmc), 1,
++                    ASPEED_SMC_GET_CLASS(&s->fmc)->flash_window_base);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->fmc), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_FMC));
++
++    /* SPI */
++    for (i = 0; i < sc->spis_num; i++) {
++        object_property_set_link(OBJECT(&s->spi[i]), "dram",
++                                 OBJECT(&s->sram), &error_abort);
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
++            return;
++        }
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0,
++                        sc->memmap[ASPEED_DEV_SPI1 + i]);
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 1,
++                        ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
++    }
++
++    /* Secure Boot Controller */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sbc), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
++
++    /* Watch dog */
++    for (i = 0; i < sc->wdts_num; i++) {
++        AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
++
++        object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu),
++                                 &error_abort);
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
++            return;
++        }
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0,
++                        sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
++    }
++}
++
++static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSoCClass *sc = ASPEED_SOC_CLASS(dc);
++
++    dc->realize = aspeed_soc_ast1030_realize;
++
++    sc->name = "ast1030-a1";
++    sc->cpu_type = ARM_CPU_TYPE_NAME("cortex-m4");
++    sc->silicon_rev = AST1030_A1_SILICON_REV;
++    sc->sram_size = 0xc0000;
++    sc->spis_num = 2;
++    sc->ehcis_num = 0;
++    sc->wdts_num = 4;
++    sc->macs_num = 1;
++    sc->irqmap = aspeed_soc_ast1030_irqmap;
++    sc->memmap = aspeed_soc_ast1030_memmap;
++    sc->num_cpus = 1;
++}
++
++static const TypeInfo aspeed_soc_ast1030_type_info = {
++    .name          = "ast1030-a1",
++    .parent        = TYPE_ASPEED_SOC,
++    .instance_size = sizeof(AspeedSoCState),
++    .instance_init = aspeed_soc_ast1030_init,
++    .class_init    = aspeed_soc_ast1030_class_init,
++    .class_size    = sizeof(AspeedSoCClass),
++};
++
++static void aspeed_soc_register_types(void)
++{
++    type_register_static(&aspeed_soc_ast1030_type_info);
++}
++
++type_init(aspeed_soc_register_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 721a8eb8be..ddb3cc3706 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -48,7 +48,11 @@ arm_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal.c', 'xlnx-ver
+ arm_ss.add(when: 'CONFIG_FSL_IMX25', if_true: files('fsl-imx25.c', 'imx25_pdk.c'))
+ arm_ss.add(when: 'CONFIG_FSL_IMX31', if_true: files('fsl-imx31.c', 'kzm.c'))
+ arm_ss.add(when: 'CONFIG_FSL_IMX6', if_true: files('fsl-imx6.c'))
+-arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_soc.c', 'aspeed.c', 'aspeed_ast2600.c'))
++arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
++  'aspeed_soc.c',
++  'aspeed.c',
++  'aspeed_ast2600.c',
++  'aspeed_ast10xx.c'))
+ arm_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
+ arm_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
+ arm_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-soc.c'))
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index da043dcb45..645d2dc83b 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -13,6 +13,7 @@
+ #define ASPEED_SOC_H
+ 
+ #include "hw/cpu/a15mpcore.h"
++#include "hw/arm/armv7m.h"
+ #include "hw/intc/aspeed_vic.h"
+ #include "hw/misc/aspeed_scu.h"
+ #include "hw/adc/aspeed_adc.h"
+@@ -47,6 +48,7 @@ struct AspeedSoCState {
+     /*< public >*/
+     ARMCPU cpu[ASPEED_CPUS_NUM];
+     A15MPPrivState     a7mpcore;
++    ARMv7MState        armv7m;
+     MemoryRegion *dram_mr;
+     MemoryRegion sram;
+     AspeedVICState vic;
+@@ -72,6 +74,7 @@ struct AspeedSoCState {
+     AspeedSDHCIState emmc;
+     AspeedLPCState lpc;
+     uint32_t uart_default;
++    Clock *sysclk;
+ };
+ 
+ #define TYPE_ASPEED_SOC "aspeed-soc"
 -- 
 2.17.1
 

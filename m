@@ -1,70 +1,70 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp555971lfb;
-        Thu, 31 Mar 2022 20:08:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypULoxzeUJmnvkoEmQGSJxo3Rg1DUNMJ8mpBprUmvXyJTC3OXvWFtNAo7Urihnf+4sYDwK
-X-Received: by 2002:ac8:7d88:0:b0:2e1:cd8d:3dda with SMTP id c8-20020ac87d88000000b002e1cd8d3ddamr7110523qtd.351.1648782483914;
-        Thu, 31 Mar 2022 20:08:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648782483; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp556106lfb;
+        Thu, 31 Mar 2022 20:08:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzL59CBNhNaxn/EKHDpQC3jtqDZGasnQOxn6QrpIRaP2WqoJImUwcSDiKN/1MJ14vcZscac
+X-Received: by 2002:a05:620a:28cc:b0:67d:b5f0:8d49 with SMTP id l12-20020a05620a28cc00b0067db5f08d49mr5421279qkp.100.1648782498412;
+        Thu, 31 Mar 2022 20:08:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648782498; cv=none;
         d=google.com; s=arc-20160816;
-        b=KnYyIQHDscqTmma5lkFB4RKSePZtvqw0upBTsmGeWSCVbyiHqs/q4JzAJc3thkylgk
-         B4m3mocpxcsIP/e2O/McrqCrilKe+jTabs1adjNbBi+O1oWTjMxu9p3sknbt4TU3mXbm
-         tnPvfd6/E2hitmbFzmvbAXOUSGkuJZr7D77XeA32BS9IQzDlJlfLDSUKdpA7w1lvyCHr
-         ceOAVOPTM7YDw/f3YV0aBXkq60C79GQGq1h++N45NINClEKHalF/3kx5EjxqyX2Y6ZHu
-         Lw0wp/MnOh310y6sJQ6tLEAnoj/3sKTOdT7G6Xwdw5JCmldOy4AeN6/KmuZ6w32bEv7L
-         iYVA==
+        b=SyBbWvHPhbiaJFyeZQPhVkHfTBrkq1b/vKwH9VH0eKPGUu+NmSa+w+G9ZEVXmFNZIM
+         0VAUkZnB74ZUSwGkhFFoUiuU0rXKxtIj2JiRuK8Y5P44WIfCEYaVSFBNqRQyrN0fcL5u
+         Ll+aFWHAbt/fHMCNMjXGnORXYyzpfOE9ZuvMDwEpQoLh1SEzWLb5E3VCm0Tjy+/LKYXi
+         BwBFwnWYtX2NofokzfGvmUHSYTRnO00yAGya83txsIc1Mq6+djzvmBwZId1pWnwg0k6n
+         j6GfF/UDhtTWENYC6KYLFbZHsBRbNjSDKYNy6CkrfTCd57f2n/lswt0qGxQEnsl1UjFe
+         ASRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=geJ6+MiGk2seSOaWkizxcB7XGiFfdo5/KnSPAk/1ZtA=;
-        b=Xz2uROaUYUxyzcxAP0K9bUBRSQE1V4HWmnPHCEzt/P4veEJUZiRs3vQ5p7TwsCdsfE
-         0My21igEuTMokWwGGj1lQXYVadXVbTHr3EAzi5VnVVAPiXNwWp4AA6K/6xHnwh/Kr+9B
-         mGq4dMlSrXPnDwjIDJNlZWBdsuRbial2IRhQ/dd42pl1Kd4IjvmEtI5KDv4bJnrsMOEt
-         OPvvDtb+LdE3S8t2aU6ddpLRIkzjFiQ9iKcOFXwY+AnFc96XMVpcI0lMHJg9lGeXnBQl
-         hxm1ERxfM0gAKWJQ+NgOBICZIgLBJU6mRAPRWaw3HNTgNUPOCjSroD/olPGiIXuDV7dr
-         6mOg==
+        bh=LZQ+YUcvmEXVpEUNL9jnNx1bm4uVCPmnOaCeLLeBXVg=;
+        b=w8bF13MxMIwHWM9pC1yU/miCDk76bSPYN6WKoQAC6dgqTLzzBg9PqztflrYD+9OhRW
+         LuceqDYAptdF3Biv+MLu+inlmUYhx7pkxuU1rGprwNEGdynHcif2Jcm+BtvylQmlHjKH
+         SfOGt8L7uv6pGt7/Od/8rAQoN+AnjJGB0Of04n0W/2DbglLF/8S4R3LRC75sZrD0HYLV
+         NWz35tcOfYr4IKfQ5ajIwm6qDVp7ffwcr1KgkyV7KCrMit008AyQ/qYCo6yLCs9GMpJz
+         spC8+cWD7xEclzH4VucOBeuIu+jHdMIBH8UGqw76BWyPnD2RLGquQJ/skX7ggJR8NN9V
+         TlbA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r13-20020ac867cd000000b002e1fbf3c0fbsi593355qtp.748.2022.03.31.20.08.03
+        by mx.google.com with ESMTPS id q8-20020ad45748000000b00440f5eafb54si435534qvx.556.2022.03.31.20.08.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Mar 2022 20:08:03 -0700 (PDT)
+        Thu, 31 Mar 2022 20:08:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46196 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47086 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1na7dr-0006ue-C5
-	for alex.bennee@linaro.org; Thu, 31 Mar 2022 23:08:03 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58490)
+	id 1na7e5-0007Uy-S7
+	for alex.bennee@linaro.org; Thu, 31 Mar 2022 23:08:17 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58492)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1na7cQ-0004cb-15; Thu, 31 Mar 2022 23:06:34 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:54044)
+ id 1na7cQ-0004ci-6d; Thu, 31 Mar 2022 23:06:35 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:25732)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1na7cN-0002me-NY; Thu, 31 Mar 2022 23:06:33 -0400
+ id 1na7cN-0002nI-Nw; Thu, 31 Mar 2022 23:06:33 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 2312sBWI090582;
- Fri, 1 Apr 2022 10:54:11 +0800 (GMT-8)
+ by twspam01.aspeedtech.com with ESMTP id 2312sE8I090592;
+ Fri, 1 Apr 2022 10:54:14 +0800 (GMT-8)
  (envelope-from jamin_lin@aspeedtech.com)
 Received: from localhost.localdomain (192.168.70.87) by TWMBX02.aspeed.com
  (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 1 Apr
- 2022 11:05:12 +0800
+ 2022 11:05:14 +0800
 From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, Cleber Rosa
- <crosa@redhat.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- "Beraldo Leal" <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Subject: [PATCH v3 5/9] aspeed/timer: Add AST1030 support
-Date: Fri, 1 Apr 2022 11:05:04 +0800
-Message-ID: <20220401030508.28133-6-jamin_lin@aspeedtech.com>
+To: Alistair Francis <alistair@alistair23.me>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@kaod.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, "Wainer dos
+ Santos Moschetta" <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ "open list:STM32F205" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Subject: [PATCH v3 9/9] test/avocado/machine_aspeed.py: Add ast1030 test case
+Date: Fri, 1 Apr 2022 11:05:08 +0800
+Message-ID: <20220401030508.28133-10-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220401030508.28133-1-jamin_lin@aspeedtech.com>
 References: <20220401030508.28133-1-jamin_lin@aspeedtech.com>
@@ -75,7 +75,7 @@ X-Originating-IP: [192.168.70.87]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 2312sBWI090582
+X-MAIL: twspam01.aspeedtech.com 2312sE8I090592
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -99,67 +99,61 @@ Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
  steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JzHz3A6e8Z5q
+X-TUID: B1i4nb7GT6EX
 
-From: Steven Lee <steven_lee@aspeedtech.com>
-
-ast1030 tmc(timer controller) is identical to ast2600 tmc.
+Add test case to test "ast1030-evb" machine with zephyr os
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/timer/aspeed_timer.c         | 17 +++++++++++++++++
- include/hw/timer/aspeed_timer.h |  1 +
- 2 files changed, 18 insertions(+)
+ tests/avocado/machine_aspeed.py | 36 +++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 tests/avocado/machine_aspeed.py
 
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 42c47d2ce6..9c20b3d6ad 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -745,12 +745,29 @@ static const TypeInfo aspeed_2600_timer_info = {
-     .class_init = aspeed_2600_timer_class_init,
- };
- 
-+static void aspeed_1030_timer_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedTimerClass *awc = ASPEED_TIMER_CLASS(klass);
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+new file mode 100644
+index 0000000000..33090af199
+--- /dev/null
++++ b/tests/avocado/machine_aspeed.py
+@@ -0,0 +1,36 @@
++# Functional test that boots the ASPEED SoCs with firmware
++#
++# Copyright (C) 2022 ASPEED Technology Inc
++#
++# This work is licensed under the terms of the GNU GPL, version 2 or
++# later.  See the COPYING file in the top-level directory.
 +
-+    dc->desc = "ASPEED 1030 Timer";
-+    awc->read = aspeed_2600_timer_read;
-+    awc->write = aspeed_2600_timer_write;
-+}
++from avocado_qemu import QemuSystemTest
++from avocado_qemu import wait_for_console_pattern
++from avocado_qemu import exec_command_and_wait_for_pattern
++from avocado.utils import archive
 +
-+static const TypeInfo aspeed_1030_timer_info = {
-+    .name = TYPE_ASPEED_1030_TIMER,
-+    .parent = TYPE_ASPEED_TIMER,
-+    .class_init = aspeed_1030_timer_class_init,
-+};
 +
- static void aspeed_timer_register_types(void)
- {
-     type_register_static(&aspeed_timer_info);
-     type_register_static(&aspeed_2400_timer_info);
-     type_register_static(&aspeed_2500_timer_info);
-     type_register_static(&aspeed_2600_timer_info);
-+    type_register_static(&aspeed_1030_timer_info);
- }
- 
- type_init(aspeed_timer_register_types)
-diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
-index d36034a10c..07dc6b6f2c 100644
---- a/include/hw/timer/aspeed_timer.h
-+++ b/include/hw/timer/aspeed_timer.h
-@@ -31,6 +31,7 @@ OBJECT_DECLARE_TYPE(AspeedTimerCtrlState, AspeedTimerClass, ASPEED_TIMER)
- #define TYPE_ASPEED_2400_TIMER TYPE_ASPEED_TIMER "-ast2400"
- #define TYPE_ASPEED_2500_TIMER TYPE_ASPEED_TIMER "-ast2500"
- #define TYPE_ASPEED_2600_TIMER TYPE_ASPEED_TIMER "-ast2600"
-+#define TYPE_ASPEED_1030_TIMER TYPE_ASPEED_TIMER "-ast1030"
- 
- #define ASPEED_TIMER_NR_TIMERS 8
- 
++class AST1030Machine(QemuSystemTest):
++    """Boots the zephyr os and checks that the console is operational"""
++
++    timeout = 10
++
++    def test_ast1030_zephyros(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:ast1030-evb
++        """
++        tar_url = ('https://github.com/AspeedTech-BMC'
++                   '/zephyr/releases/download/v00.01.04/ast1030-evb-demo.zip')
++        tar_hash = '4c6a8ce3a8ba76ef1a65dae419ae3409343c4b20'
++        tar_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
++        archive.extract(tar_path, self.workdir)
++        kernel_file = self.workdir + "/ast1030-evb-demo/zephyr.elf"
++        self.vm.set_console()
++        self.vm.add_args('-kernel', kernel_file,
++                         '-nographic')
++        self.vm.launch()
++        wait_for_console_pattern(self, "Booting Zephyr OS")
++        exec_command_and_wait_for_pattern(self, "help",
++                                          "Available commands")
 -- 
 2.17.1
 

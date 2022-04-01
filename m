@@ -1,116 +1,102 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp865872lfb;
-        Fri, 1 Apr 2022 06:06:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwpJbFajXLjFZELlA5vKHyP6VkMBR9DP4Wz5IKdGjp2ZXr3TX3i3wv+Pqb5gLeuDdy002C/
-X-Received: by 2002:a25:2a4c:0:b0:63c:a77f:2688 with SMTP id q73-20020a252a4c000000b0063ca77f2688mr8310289ybq.496.1648818397887;
-        Fri, 01 Apr 2022 06:06:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648818397; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp871252lfb;
+        Fri, 1 Apr 2022 06:13:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOTt9rbyxKvX/QwU+YW35dU6wm6lz0CzWeOe3unO/ovV6fB/dmnTSPkbbdVIAEqQ43gxDM
+X-Received: by 2002:ac8:65cf:0:b0:2e1:e78c:85f3 with SMTP id t15-20020ac865cf000000b002e1e78c85f3mr8085975qto.15.1648818816231;
+        Fri, 01 Apr 2022 06:13:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648818816; cv=none;
         d=google.com; s=arc-20160816;
-        b=OMBN1jrB30cskQBnVWQUbBeKujj8c8msWeOWi4t+8pQw98R4Jp9qsh9OJR/yRYKI9H
-         UkDQvaKiQiE7SZz734k1VmK5FU4CN6tMvwB4Z8Y78O1X279jKCSaE3LYOJykPsyOSleX
-         RcAsQlGkCwrjYFs8rtRDShit609LfZl8xyF8vP7b+q52qjAcWZBkviggw7NeDTV09TK2
-         lbfYD7bXmbWyWrXnH5wYu8Zi0Lkn8SCmEDqRLHn02JJ44qYAziEudfgViaaQnDqhbvWv
-         29HVubb+ePZwRjIlellVtT3EqzQYsB9fg8lP8Ja6v+5g2SFbVsPXhvvtXrr/DnW8uPJC
-         gajw==
+        b=RjyC+H+hSisfEXryMfS/aAr+xs5ElJDbMQN0UIRXez5bClS6ojm1JYcxNx1EqIXnVx
+         DA/p2qfqqCGotMTcvSCSuTKREoberDnw756jmiXRBshi5UHe6Z3BIp/QhFpFyuebwyQw
+         7BI1Moy74p4iF0nrtzcKEBINVTs/vcjIKRqiIuQFqBCcuErwQlQKBOwQa51DNMCqWb9d
+         +a5K0tIFki+zpIQ1eCS4AJOdHN7iBKmVgIs53DUO1ZiGmNpaGbY/5FjhncHhjFCkPO7u
+         I6jLcYEPHblDVm2asM3i1n9MRrM0NjOUcx046cbk8p+4naK+zUgw41HGKjGaW4BXGu+I
+         w9kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=mVDseWzN+HlrxL3HARbsfofjeBFHFWJXWmLN8j6f44w=;
-        b=Aba5RLvfYrWm+XS6UslKCXeRkLUUqLCHDp0ciGPnqpu51bEU7GZ1AX3L8js9SE8b1L
-         g60GnvGGhOAjeTDftB/1HJ14RBs8smrP1lWuT8p5jPXusv/+CCHDzFrKwjvsD3iGGsSk
-         nMj8URyIXFeJq2HPJW9G32fpFaIpz+fzQTPHEhw6/BtnIDrT+Y6Z+u5FKRBYGXKZU6Lt
-         HD6wiOb2rUdKNL0vlBtdMUYGBqNrvIIfXVozcotjLbhaSgUkxQz80BwkQjAtaqSycrZy
-         c378EciHcVmhb2WUEQty0qkpZSE7UXlq8G+S3dl54sADKm/8lM7THNHvHiXBYvO1hU3+
-         FbnQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=2wQDQN3iHHfiZMrFrohrdeqTNHR9tMEyI3JE9BJJAU4=;
+        b=ZrezV0Nll7G9rbMZqHzyhOlAVt5aGVEGzci3gLcyPhbLwNBlLvP/lIGf8mTqoZy5CZ
+         KBv/8seIwetwAUx1c8OdlyBTRdCx6dCX0S9n9pF7t2LG6Cd72O4TGEFIQkiQJuPV/WCa
+         Tp7W2BjGtW69ihR8ULVzIyuqUSVmrHwA2N7yuY6rXcirsS+zl80Sj7HHaZXqeJvxl1va
+         S6vC+nlMR4DCji8tEcmY2kMeul90X7iVfiH9kxsR0KmcEuetlgeFWmbgryqtooplnBk8
+         FJgy075YV6lHojMYRWFRdFjx38EZ4Akl0qqxrFTf2DH72cmg7Zhvl+Omg8WiBrEgghmK
+         UBeQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WVloQNIP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z127-20020a814c85000000b002e64ca104f9si1974081ywa.240.2022.04.01.06.06.37
+        by mx.google.com with ESMTPS id d11-20020ac8534b000000b002e203cad202si873933qto.15.2022.04.01.06.13.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Apr 2022 06:06:37 -0700 (PDT)
+        Fri, 01 Apr 2022 06:13:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WVloQNIP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50974 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60468 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naGz7-0004xh-9L
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 09:06:37 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48376)
+	id 1naH5r-0003a5-LB
+	for alex.bennee@linaro.org; Fri, 01 Apr 2022 09:13:35 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1naGyn-0004wB-6W; Fri, 01 Apr 2022 09:06:17 -0400
-Received: from [2607:f8b0:4864:20::72e] (port=44028
- helo=mail-qk1-x72e.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1naGyk-0004Vd-Rt; Fri, 01 Apr 2022 09:06:16 -0400
-Received: by mail-qk1-x72e.google.com with SMTP id p25so1993839qkj.10;
- Fri, 01 Apr 2022 06:06:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=mVDseWzN+HlrxL3HARbsfofjeBFHFWJXWmLN8j6f44w=;
- b=WVloQNIPT7NwHJlhutoCIdY5UqKVKzx+oCF1lNSNFldW8FcyJ7BS+kJMPEvr02QVLk
- dIePl4M3dy4IMQJk8G2/dsORgl+AYn4WTiXnREidqufLurYUeTLDslfMuUvQnS2qVtdQ
- NQ2bYYwNx284TwwH38CNR7o+r7aouw0LA0en0a/1OkYrM/mbkyCbMwZFPY+0N13COrXT
- izLm8ACwfZWNOlXiP5jBRoDVnvTimS+jkVST3FMslcTfnvlQJV5LooXdcUK8DjetlYQJ
- b1YeRykQAKe/XtYKfdubKpVA7RN8NUqt3nG6hRbvBqiqoGN6wXxRffPUuOyh8pbGMxi4
- Qz5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition:in-reply-to;
- bh=mVDseWzN+HlrxL3HARbsfofjeBFHFWJXWmLN8j6f44w=;
- b=QrUcY+f1HqMtU/qvgtB5X18aCeKi8EkY8x82BZFONj48MTJNbCWL1+Sg8lrgiWDG6U
- AKxZSwMVc+Xldq6B9Ui+1I7liLFtQrVuI223Y4QyaGR23B71gZYT2A2sGS7bW/1rjcqq
- 1iBdtXY4Gf142A11Nd6JrO+Q66MUEsQm3sMgwztKFC7u17gFRnhzFeJYjELhu4wMd7ft
- bwtZWyJ/Guk+HvtqN69OcW9MKeZ5U3JFTPpYb5IDxkG71tw1oLZyibcirffnpXChffXu
- 1s4hTrLXB9im+NWCiMljXjYaCHB8YWM4rAyqnbiqt4YWKZHl4JXuDuD8vUSfdyMLl+rn
- P0Ow==
-X-Gm-Message-State: AOAM533T8lwEUKhqlNeY5KOXveButCPes6LItOB3Tr+q7WyJNbpprDki
- WFyYiZ4K+cI+K9B3WhaTKg==
-X-Received: by 2002:a37:a18c:0:b0:67b:2d46:4db5 with SMTP id
- k134-20020a37a18c000000b0067b2d464db5mr6473380qke.67.1648818372049; 
- Fri, 01 Apr 2022 06:06:12 -0700 (PDT)
-Received: from serve.minyard.net ([47.184.144.75])
- by smtp.gmail.com with ESMTPSA id
- b13-20020ac85bcd000000b002e06856b04fsm1822635qtb.51.2022.04.01.06.06.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 Apr 2022 06:06:11 -0700 (PDT)
-Received: from minyard.net (unknown
- [IPv6:2001:470:b8f6:1b:18b8:c103:5b12:b0c4])
- by serve.minyard.net (Postfix) with ESMTPSA id 72D251800BB;
- Fri,  1 Apr 2022 13:06:10 +0000 (UTC)
-Date: Fri, 1 Apr 2022 08:06:09 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Klaus Jensen <its@irrelevant.dk>
-Subject: Re: [RFC PATCH 0/4] hw/i2c: i2c slave mode support
-Message-ID: <20220401130609.GG29333@minyard.net>
-References: <20220331165737.1073520-1-its@irrelevant.dk>
- <20220331203205.GB29333@minyard.net> <Ykabr0wQe9VLISu2@apples>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naH5c-0003X0-Dp
+ for qemu-arm@nongnu.org; Fri, 01 Apr 2022 09:13:20 -0400
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:41967)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naH5Z-0005Qb-W1
+ for qemu-arm@nongnu.org; Fri, 01 Apr 2022 09:13:20 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.2])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id E15E1F2385BB;
+ Fri,  1 Apr 2022 15:13:06 +0200 (CEST)
+Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 1 Apr
+ 2022 15:13:05 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R00178739033-7b80-4601-ab9c-525b1a30dbbd,
+ E6F802B82481F543645B2B9FC2104B41A8D643B2) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <2c76905d-e012-8426-d261-8db5d822b503@kaod.org>
+Date: Fri, 1 Apr 2022 15:13:05 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Ykabr0wQe9VLISu2@apples>
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::72e
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72e;
- envelope-from=tcminyard@gmail.com; helo=mail-qk1-x72e.google.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Alistair Francis
+ <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, Andrew
+ Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Cleber Rosa
+ <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
+ Leal <bleal@redhat.com>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+ <0ddfa28a-45ae-fdfd-02a6-94ab5a34b724@kaod.org>
+ <TYZPR06MB40155C89D32BB012339208C6FCE09@TYZPR06MB4015.apcprd06.prod.outlook.com>
+ <TYZPR06MB40153B1C6B2E685FC1ECDF83FCE09@TYZPR06MB4015.apcprd06.prod.outlook.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <TYZPR06MB40153B1C6B2E685FC1ECDF83FCE09@TYZPR06MB4015.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: dc3cf737-9f9a-4811-ba2c-c33b1e5f93d9
+X-Ovh-Tracer-Id: 18041983061241400251
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudeiiedgieduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepteefkedttddvieeiieejffeukeeihfdvheevleeigeejjeekteevgeekvedvtdetnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehtrhhohigplhgvvgesrghsphgvvgguthgvtghhrdgtohhm
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,91 +109,190 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
- Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
- Klaus Jensen <k.jensen@samsung.com>, qemu-devel@nongnu.org,
- Jeremy Kerr <jk@ozlabs.org>, qemu-arm@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
- Matt Johnston <matt@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Cc: Troy Lee <troy_lee@aspeedtech.com>, Steven Lee <steven_lee@aspeedtech.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: npzi24cyb3mM
+X-TUID: ryvhvwfq1ByV
 
-On Fri, Apr 01, 2022 at 08:29:03AM +0200, Klaus Jensen wrote:
-> On Mar 31 15:32, Corey Minyard wrote:
-> > On Thu, Mar 31, 2022 at 06:57:33PM +0200, Klaus Jensen wrote:
-> > > From: Klaus Jensen <k.jensen@samsung.com>
-> > > 
-> > > Hi all,
-> > > 
-> > > This RFC series adds I2C "slave mode" support for the Aspeed I2C
-> > > controller as well as the necessary infrastructure in the i2c core to
-> > > support this.
-> > 
-> > I've been wondering when this would happen :).  I had put some thought
-> > into how this would work, but hadn't come up with anything good.
-> > 
-> > The big disadvantage of this is you are adding an interface that is
-> > incompatible with the current masters and slaves.  So you are using the
-> > same I2C bus, but slaves written this way cannot talk to existing
-> > masters, and masters written this way cannot talk to existing slave.
-> > You could adapt the masters to be able to work either way, and I suppose
-> > some slaves that could do it could have both an async send and a normal
-> > send. 
-> 
-> Would it make sense to introduce a QOM Interface to differentiate
-> between the slave/master types?
+On 4/1/22 11:47, Jamin Lin wrote:
+> Hi Cedric,
+> One more question, what is the progress about SFDP patch, https://patchwork.kernel.org/project/qemu-devel/list/?series=342081&archive=both
+> We need these patches for future SPI support.
 
-Yes, that would be a good idea, as Damien said.  You will have a type
-that is capable of both for both sync and async for the master and the
-slave, then types that are capable of one sync and async so the code
-can sort out what can talk to what.
+Francisco had comments I didn't have time to address. Theses were mostly
+related to how the table entries are defined. I can respin and see what
+we can do.
 
-> 
-> > But you could not adapt a slave device for the Aspeed to do both.
-> 
-> Exactly, the Aspeed must be able to defer the ack, so it cannot
-> implement send(). Even if it buffered up the write, I don't think it
-> would be correct to Ack the transfer until the host has Acked it.
-> 
-> > But that said, I don't know of a better way to handle this.
-> > 
-> > You don't have the ability to nack a byte in what you have currently.
-> > That's probably something that will be needed.
-> 
-> True. Didn't consider that. Since the ack is basically defined as the
-> scheduling of the bh, I guess I have to come up with something where I
-> can also pass a "return value".
-> 
-> > 
-> > This is obviously not something useful by itself.  How do you plan to
-> > tie this in to something else that would use it?
-> > 
-> 
-> This is specifically for implementing an NVMe-MI device which uses MCTP
-> transactions (in which both requests and replies are master->slave
-> transfers). I just wanted to get a feel for how you maintaines would
-> envision this begin done before posting that. The NVMe-MI device will
-> function exactly like the example i2c echo device (i.e. receive an MCTP
-> transaction using the normal i2c slave interface, parse the
-> transaction/request, master the bus and start a new transfer).
+Anyhow, the series is still in use in the aspeed branch :
 
-Ok, so you aren't planning to add some sort of interface that would
-allow a net connection to hook up as an I2C master.
+   https://github.com/legoater/qemu/commits/aspeed-7.0
 
-Someone submitted something a while ago for doing an I2C slave that way,
-but there were some issues and nothing came of it.  It's tricky to do
-because it has to be non-blocking.
-
-IIRC, there was also some work that allowed two emulations to go on at a
-time in a qemu instance, that could allow a BMC and a main processor to
-run together.  This might be useful in that scenario.  My question was
-really just more curiousity, wondering what else is coming in the
-future.
+We really needed it when SFDP support was introduced in the Linux kernel.
+There were plenty of issues with the 4B opcodes usage.
 
 Thanks,
 
--corey
+C.
+
+
+> Thanks-Jamin
+> 
+> ************* Email Confidentiality Notice ********************
+> DISCLAIMER:
+> This message (and any attachments) may contain legally privileged and/or other confidential information. If you have received it in error, please notify the sender by reply e-mail and immediately delete the e-mail and any attachments without copying or disclosing the contents. Thank you.
+> 
+> -----Original Message-----
+> From: Jamin Lin <jamin_lin@aspeedtech.com>
+> Sent: Friday, April 1, 2022 5:24 PM
+> To: Cédric Le Goater <clg@kaod.org>; Alistair Francis <alistair@alistair23.me>; Peter Maydell <peter.maydell@linaro.org>; Andrew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>; Cleber Rosa <crosa@redhat.com>; Philippe Mathieu-Daudé <f4bug@amsat.org>; Wainer dos Santos Moschetta <wainersm@redhat.com>; Beraldo Leal <bleal@redhat.com>; open list:STM32F205 <qemu-arm@nongnu.org>; open list:All patches CC here <qemu-devel@nongnu.org>; Jamin Lin <jamin_lin@aspeedtech.com>
+> Cc: Steven Lee <steven_lee@aspeedtech.com>; Troy Lee <troy_lee@aspeedtech.com>
+> Subject: RE: [PATCH v5 0/9] Add support for AST1030 SoC
+> 
+> Hi Cedric, Joel and Andrew
+> First all, thanks for all your kindly support and review. We are so glad that QEMU v7.1 will support AST1030 model.
+> 
+> 1. The ast1030 and ast2600 HACE controller are identical.
+>    Steven submitted the patch to support HACE ACC mode. Once his patch accept. We will submit patch to support ast1030 model.
+> 2. I submitted the patch to support GOIO index mode because ast1030 driver was implement by index mode. I am waiting for review and any suggestion will be appreciated.
+> 3. Troy submitted the patch to support I2C new model which included ast1030 model.
+> 4. As for NIC plan, once AST1030 NIC driver ready, we will upstream, too.
+> BTW, do you have a plan to upstream it, https://github.com/openbmc/qemu/blob/master/hw/misc/aspeed_pwm.c
+> 
+> Thanks again - Jamin
+> 
+> ************* Email Confidentiality Notice ********************
+> DISCLAIMER:
+> This message (and any attachments) may contain legally privileged and/or other confidential information. If you have received it in error, please notify the sender by reply e-mail and immediately delete the e-mail and any attachments without copying or disclosing the contents. Thank you.
+> 
+> -----Original Message-----
+> From: Cédric Le Goater <clg@kaod.org>
+> Sent: Friday, April 1, 2022 4:55 PM
+> To: Jamin Lin <jamin_lin@aspeedtech.com>; Alistair Francis <alistair@alistair23.me>; Peter Maydell <peter.maydell@linaro.org>; Andrew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>; Cleber Rosa <crosa@redhat.com>; Philippe Mathieu-Daudé <f4bug@amsat.org>; Wainer dos Santos Moschetta <wainersm@redhat.com>; Beraldo Leal <bleal@redhat.com>; open list:STM32F205 <qemu-arm@nongnu.org>; open list:All patches CC here <qemu-devel@nongnu.org>
+> Cc: Steven Lee <steven_lee@aspeedtech.com>; Troy Lee <troy_lee@aspeedtech.com>
+> Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
+> 
+> Hello Jamin,
+> 
+> Thanks for these new models and machine. They are queued for QEMU 7.1.
+> There are a couple of patchsets adding support for the AST1030 GPIO controller and the I2C new mode that would be good extensions but they need review first.
+> 
+> What are the next steps? any plans for network ? The NIC should be a
+> FTGMAC100 if I am correct.
+> 
+> Thanks,
+> 
+> C.
+> 
+> 
+>    On 4/1/22 10:38, Jamin Lin wrote:
+>> Changes from v5:
+>> - remove TYPE_ASPEED_MINIBMC_MACHINE and ASPEED_MINIBMC_MACHINE
+>> - remove ast1030_machine_instance_init function
+>>
+>> Changes from v4:
+>> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
+>>
+>> Changes from v3:
+>> - remove AspeedMiniBmcMachineState state structure and
+>>     AspeedMiniBmcMachineClass class
+>> - remove redundant new line in hw/arm/aspeed_ast10xx.c
+>> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
+>>
+>> Changes from v2:
+>> - replace aspeed_ast1030.c with aspeed_ast10xx.c for minibmc SOCs
+>> family support
+>> - Add "ast1030-evb" machine in aspeed.c and removes aspeed_minibmc.c
+>>
+>> Changes from v1:
+>> The patch series supports ADC, SCU, SMC, TIMER, and WDT for AST1030 SoC.
+>> Add avocado test case for "ast1030-evb" machine.
+>>
+>> Test steps:
+>> 1. Download image from
+>>      
+>> https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.04/a
+>> st1030-evb-demo.zip 2. Extract the zip file to obtain zephyr.elf 3.
+>> Run ./qemu-system-arm -M ast1030-evb -kernel $PATH/zephyr.elf
+>> -nographic 4. Test IO by Zephyr command line, commands are refer to Aspeed Zephyr
+>>      SDK User Guide below
+>>      https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.04/Aspeed_Zephy_SDK_User_Guide_v00.01.04.pdf
+>>      - ADC(channel 0):
+>>          uart:~$ adc ADC0 resolution 10
+>>          uart:~$ adc ADC0 calibrate 1
+>>          uart:~$ adc ADC0 read_format 1
+>>          uart:~$ adc ADC0 read 0
+>>          [Result]
+>>          read: 1416mv
+>>
+>>      - SCU
+>>          uart:~$ md 7e6e2040
+>>          uart:~$ md 7e6e2080
+>>          uart:~$ md 7e6e20d0
+>>          uart:~$ md 7e6e2200
+>>          uart:~$ md 7e6e2300
+>>          uart:~$ md 7e6e25b0
+>>          [Result]
+>>          The register value should match the value of ast1030_a1_resets
+>>          in aspeed_scu.c
+>>
+>>      - Flash(fmc_cs0):
+>>          uart:~$ flash write fmc_cs0 0 0x12345678 0x87654321 0x34127856 0x78563412
+>>          uart:~$ flash read fmc_cs0 0 10
+>>          [Result]
+>>          00000000: 78 56 34 12 21 43 65 87  56 78 12 34 12 34 56 78
+>> |xV4.!Ce. Vx.4.4Vx|
+>>
+>>          uart:~$ flash erase fmc_cs0 0
+>>          uart:~$ flash read fmc_cs0 0 10
+>>          [Result]
+>>          00000000: ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff
+>> |........ ........|
+>>
+>>      - Timer(TIMER0):
+>>          uart:~$ timer start TIMER0 -p 2000 -t 0
+>>          TIMER0: period 20000 ms, type 0
+>>          [Result]
+>>          timer expired after 2 seconds
+>>
+>>      - Watchdog(WDT1):
+>>          uart:~$ mw 7e785008 4755
+>>          uart:~$ mw 7e78500c 1
+>>          [Result]
+>>          soc reset after 22 seconds
+>>
+>> Based-on: 20220315075753.8591-3-steven_lee@aspeedtech.com
+>> ([v2,2/2] hw: aspeed_scu: Introduce clkin_25Mhz attribute)
+>>
+>> Jamin Lin (2):
+>>     aspeed: Add an AST1030 eval board
+>>     test/avocado/machine_aspeed.py: Add ast1030 test case
+>>
+>> Steven Lee (7):
+>>     aspeed/adc: Add AST1030 support
+>>     aspeed/smc: Add AST1030 support
+>>     aspeed/wdt: Fix ast2500/ast2600 default reload value
+>>     aspeed/wdt: Add AST1030 support
+>>     aspeed/timer: Add AST1030 support
+>>     aspeed/scu: Add AST1030 support
+>>     aspeed/soc : Add AST1030 support
+>>
+>>    hw/adc/aspeed_adc.c              |  16 ++
+>>    hw/arm/aspeed.c                  |  66 +++++++
+>>    hw/arm/aspeed_ast10xx.c          | 299 +++++++++++++++++++++++++++++++
+>>    hw/arm/meson.build               |   6 +-
+>>    hw/misc/aspeed_scu.c             |  63 +++++++
+>>    hw/ssi/aspeed_smc.c              | 157 ++++++++++++++++
+>>    hw/timer/aspeed_timer.c          |  17 ++
+>>    hw/watchdog/wdt_aspeed.c         |  34 +++-
+>>    include/hw/adc/aspeed_adc.h      |   1 +
+>>    include/hw/arm/aspeed_soc.h      |   3 +
+>>    include/hw/misc/aspeed_scu.h     |  25 +++
+>>    include/hw/timer/aspeed_timer.h  |   1 +
+>>    include/hw/watchdog/wdt_aspeed.h |   3 +
+>>    tests/avocado/machine_aspeed.py  |  36 ++++
+>>    14 files changed, 724 insertions(+), 3 deletions(-)
+>>    create mode 100644 hw/arm/aspeed_ast10xx.c
+>>    create mode 100644 tests/avocado/machine_aspeed.py
+>>
+> 
+

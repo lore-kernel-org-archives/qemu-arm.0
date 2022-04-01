@@ -1,302 +1,235 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp718591lfb;
-        Fri, 1 Apr 2022 01:52:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwoUVvCZeoRsC7m4aAYsUfuQj9UkWogGgrE+ixh2rMQMudoHJLKUeyMPAt3p1innlCrr8ML
-X-Received: by 2002:a05:6214:27cc:b0:441:499f:76ac with SMTP id ge12-20020a05621427cc00b00441499f76acmr7334104qvb.36.1648803122630;
-        Fri, 01 Apr 2022 01:52:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648803122; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp722485lfb;
+        Fri, 1 Apr 2022 02:00:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzM8N8YuYF+loVYg6Nec2DbPMp+blZNGHhKBtjB1Kbaasw+lvAwi4X5nAWNXhCBOirjr4PK
+X-Received: by 2002:a05:620a:993:b0:67b:1385:242a with SMTP id x19-20020a05620a099300b0067b1385242amr5992682qkx.14.1648803616017;
+        Fri, 01 Apr 2022 02:00:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648803616; cv=none;
         d=google.com; s=arc-20160816;
-        b=r/1lHuLw5l1k5bNmpUWcdqShlAgbMnEdNX8014hhmpA1/ecQJNDMbREu/ucJo45UfH
-         5JzH/RP7KYl6PS1b82/5GlGjzO9rp9BpsnR9QXksgbuOwQCeCPn5K4WJYbH/xRrFnvDz
-         A2Kg6gX5b/jTQ9DOYO97mpZpApZ9OMk2DP6hzuH0eGRmL56+QtjkD0JbDvIF5b0lE/h4
-         ezlU+lfe9P1i/G/VKJY0a9Dym4ZEHB6DK8nVGLNeP+1CT4WGxDkJP7avkQjs6e+EzGd2
-         AvssVFsY/tiqcNILGZRBM+HTfrkabE1gOPfRJgXwCf3qTqgSkecr9F+QOEfVaIeZAKai
-         Q3KQ==
+        b=HZVAjNjMgYMST68+1y5DvV6UtfEpfiDGDbzEp53ita2eq1LPTJjTfTvthjR2y4swbl
+         VGK6CL3Pum+gL7BaMiyXat8HHHpYJTudAYYXndKOCQTUoa7s4/fIySV/XMrgVPn5bQjy
+         yIaNMye4wUlsQPHwIWf5m8FiGaRRbaOZvKidzGRrWrQZ49sbV1VaL07J0/F3pC1UUZuX
+         QeYzd/afAvTM563ZwUyEOo77JEGyHaeVavQW/VMa/81zC0x3zG99ZAUPekmvYchjL96V
+         Ao1xOw+7UC/ZU3jc9GyvsiM1tuAAIj98T5djRMNFwkmwY+dETOC/eT39CVkF0hbqv2eT
+         N+wA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date;
-        bh=IyZ1IjdyOO8U/GyQ/HSWSY/RCS/vKoYlxr1gjyF42fg=;
-        b=fTv1r25KolZ6msSVFP6omWCX2tdQOpVyNMKoHarvxQ9tuyPzhM9QARqEeEnO09yqK8
-         FnKsffDEiHA7xq+cjEnCuUbFHTeMVhsR43E8oXzFbahKBygHWqvWbdUBHgJftSPDLMcI
-         Dn03tOVZ4YKbp3QflJ0YX62s6m5jBCG0ieN6YSfmu2SzY0xM85MMEsEvRjeJhnzJIzfB
-         JpRn4/CK0F1kOMrOL0vRzduFGzPicXlAg9jwJBIFq0ImDof0PvkwJSGGf6y8IqDiBcE/
-         iA59SUydaUg3GEurNQ4CNrHlatfHAxgHCA2h6+0GzCEeLjySBQPYd8WmoC46duTc4KNC
-         tKlQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=WBd8BsySW4GJzvjkLm/E7vPbmCXRbu0162joiaswdt8=;
+        b=089MwAtQd6s0JODwjXsqzdrxX6mwD0YAkuLDJjyS3UeBGX+uBHldmouaaTL5Q8rQhq
+         +mezvVCTYyT2mmdhEmDLGKVFGi3SV7SUrVzCGlQ1dKdPHPsDWj4tClmh1BnAaaR62nli
+         Fg4LzBj7d/JsDZQwvVoWYMuU27hHMXDCE/Nim5vO8LMIx3gVS4sgzutxXe3jEWFNfhKR
+         rhyPzRo9Xs3tMN2BYz3q+YLsWXiVPOMcbPvF0qTQypuCu4Ac0DguuKdyvHQxlsP/+rGQ
+         G+nw7q5fyEqzmKWJZdi8FwbDb1vO4eRoQck0vnLpNjvFL1HQetfLcHQ0MKnDqe6HVcVv
+         9E4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z1-20020ac81001000000b002e1fbf3be94si815525qti.133.2022.04.01.01.52.02
+        by mx.google.com with ESMTPS id d5-20020a05621421c500b0044133f5ea95si700314qvh.463.2022.04.01.02.00.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Apr 2022 01:52:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Apr 2022 02:00:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52596 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42298 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naD0j-0002XM-Vp
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 04:52:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52452)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1naD8c-0006Za-2C
+	for alex.bennee@linaro.org; Fri, 01 Apr 2022 05:00:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53336)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1naCvD-0007XM-Ua; Fri, 01 Apr 2022 04:46:20 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:16261)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naD4B-0001PM-FA
+ for qemu-arm@nongnu.org; Fri, 01 Apr 2022 04:55:36 -0400
+Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253]:51707)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1naCvA-0002E9-R8; Fri, 01 Apr 2022 04:46:19 -0400
-Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 2318YYaS031364;
- Fri, 1 Apr 2022 16:34:34 +0800 (GMT-8)
- (envelope-from jamin_lin@aspeedtech.com)
-Received: from aspeedtech.com (192.168.70.87) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 1 Apr
- 2022 16:45:35 +0800
-Date: Fri, 1 Apr 2022 16:45:32 +0800
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH v4 8/9] aspeed: Add an AST1030 eval board
-Message-ID: <20220401084530.GA15438@aspeedtech.com>
-References: <20220401034651.9066-1-jamin_lin@aspeedtech.com>
- <20220401034651.9066-9-jamin_lin@aspeedtech.com>
- <fb2fff0a-65da-3fcc-0e2b-be892e690a66@kaod.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naD48-0003LI-GU
+ for qemu-arm@nongnu.org; Fri, 01 Apr 2022 04:55:35 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.121])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 45D7C23BE4;
+ Fri,  1 Apr 2022 08:55:27 +0000 (UTC)
+Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 1 Apr
+ 2022 10:55:27 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G005cea7ee92-5f38-4006-ab31-ff2b74208ca7,
+ BF19997ACFFB9775C4837E30A1DE169AA6CF9E32) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <0ddfa28a-45ae-fdfd-02a6-94ab5a34b724@kaod.org>
+Date: Fri, 1 Apr 2022 10:55:21 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <fb2fff0a-65da-3fcc-0e2b-be892e690a66@kaod.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [192.168.70.87]
-X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
- (192.168.0.24)
-X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 2318YYaS031364
-Received-SPF: pass client-ip=211.20.114.71;
- envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Alistair Francis
+ <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, Andrew
+ Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Cleber Rosa
+ <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
+ Leal <bleal@redhat.com>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 6f73f51a-3625-412f-9aa2-2795de66bf14
+X-Ovh-Tracer-Id: 13690661395743345595
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudeiiedgtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeefiedukefhueejteffvedthffhkeehhefhtdejkeefheeifeejvdfgfffgieefnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehtrhhohigplhgvvgesrghsphgvvgguthgvtghhrdgtohhm
+Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
+ helo=7.mo552.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Troy Lee <troy_lee@aspeedtech.com>, Beraldo Leal <bleal@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- Cleber Rosa <crosa@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6EvjwTd2FFA1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: troy_lee@aspeedtech.com, steven_lee@aspeedtech.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: c7jzpXDS6xfm
 
-The 04/01/2022 06:59, Cédric Le Goater wrote:
-> On 4/1/22 05:46, Jamin Lin wrote:
-> > The image should be supplied with ELF binary.
-> > $ qemu-system-arm -M ast1030-evb -kernel zephyr.elf -nographic
-> > 
-> > Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> > Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-> > ---
-> >   hw/arm/aspeed.c         | 97 +++++++++++++++++++++++++++++++++++++++++
-> >   include/hw/arm/aspeed.h |  6 +--
-> >   2 files changed, 100 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> > index d205384d98..30b49d2db1 100644
-> > --- a/hw/arm/aspeed.c
-> > +++ b/hw/arm/aspeed.c
-> > @@ -24,6 +24,7 @@
-> >   #include "hw/loader.h"
-> >   #include "qemu/error-report.h"
-> >   #include "qemu/units.h"
-> > +#include "hw/qdev-clock.h"
-> >   
-> >   static struct arm_boot_info aspeed_board_binfo = {
-> >       .board_id = -1, /* device-tree-only board */
-> > @@ -1361,3 +1362,99 @@ static const TypeInfo aspeed_machine_types[] = {
-> >   };
-> >   
-> >   DEFINE_TYPES(aspeed_machine_types)
-> > +
-> > +#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
-> > +/* Main SYSCLK frequency in Hz (200MHz) */
-> > +#define SYSCLK_FRQ 200000000ULL
-> > +
-> > +static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-> > +                                                          void *data)
-> > +{
-> > +    MachineClass *mc = MACHINE_CLASS(oc);
-> > +    AspeedMachineClass *amc = ASPEED_MINIBMC_MACHINE_CLASS(oc);
+Hello Jamin,
+
+Thanks for these new models and machine. They are queued for QEMU 7.1.
+There are a couple of patchsets adding support for the AST1030 GPIO
+controller and the I2C new mode that would be good extensions but
+they need review first.
+
+What are the next steps? any plans for network ? The NIC should be a
+FTGMAC100 if I am correct.
+
+Thanks,
+
+C.
+
+
+  On 4/1/22 10:38, Jamin Lin wrote:
+> Changes from v5:
+> - remove TYPE_ASPEED_MINIBMC_MACHINE and ASPEED_MINIBMC_MACHINE
+> - remove ast1030_machine_instance_init function
 > 
-> I don't think we need a ASPEED_MINIBMC type (yet)
->
-Fixed
-> > +
-> > +    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
-> > +    amc->soc_name = "ast1030-a1";
-> > +    amc->hw_strap1 = 0;
-> > +    amc->hw_strap2 = 0;
-> > +    mc->default_ram_size = 0;
-> > +    mc->default_cpus = mc->min_cpus = mc->max_cpus = 1;
-> > +    amc->fmc_model = "sst25vf032b";
-> > +    amc->spi_model = "sst25vf032b";
-> > +    amc->num_cs = 2;
+> Changes from v4:
+> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
 > 
-> In this routine, you could add :
+> Changes from v3:
+> - remove AspeedMiniBmcMachineState state structure and
+>    AspeedMiniBmcMachineClass class
+> - remove redundant new line in hw/arm/aspeed_ast10xx.c
+> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
 > 
->   amc->macs_mask = 0;
+> Changes from v2:
+> - replace aspeed_ast1030.c with aspeed_ast10xx.c for minibmc SOCs family support
+> - Add "ast1030-evb" machine in aspeed.c and removes aspeed_minibmc.c
 > 
-> Since the NICs are not modeled yet.
+> Changes from v1:
+> The patch series supports ADC, SCU, SMC, TIMER, and WDT for AST1030 SoC.
+> Add avocado test case for "ast1030-evb" machine.
 > 
-Thanks for your review and suggestion. Added in v5 patch.
-> > +}
-> > +
-> > +static void ast1030_machine_instance_init(Object *obj)
-> > +{
-> > +    ASPEED_MINIBMC_MACHINE(obj)->mmio_exec = false;
-> > +}
+> Test steps:
+> 1. Download image from
+>     https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.04/ast1030-evb-demo.zip
+> 2. Extract the zip file to obtain zephyr.elf
+> 3. Run ./qemu-system-arm -M ast1030-evb -kernel $PATH/zephyr.elf -nographic
+> 4. Test IO by Zephyr command line, commands are refer to Aspeed Zephyr
+>     SDK User Guide below
+>     https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.04/Aspeed_Zephy_SDK_User_Guide_v00.01.04.pdf
+>     - ADC(channel 0):
+>         uart:~$ adc ADC0 resolution 10
+>         uart:~$ adc ADC0 calibrate 1
+>         uart:~$ adc ADC0 read_format 1
+>         uart:~$ adc ADC0 read 0
+>         [Result]
+>         read: 1416mv
 > 
-> ast1030_machine_instance_init() is not that useful either.
+>     - SCU
+>         uart:~$ md 7e6e2040
+>         uart:~$ md 7e6e2080
+>         uart:~$ md 7e6e20d0
+>         uart:~$ md 7e6e2200
+>         uart:~$ md 7e6e2300
+>         uart:~$ md 7e6e25b0
+>         [Result]
+>         The register value should match the value of ast1030_a1_resets
+>         in aspeed_scu.c
 > 
-Fixed
-> > +
-> > +static void aspeed_minibmc_machine_init(MachineState *machine)
-> > +{
-> > +    AspeedMachineState *bmc = ASPEED_MINIBMC_MACHINE(machine);
-> > +    AspeedMachineClass *amc = ASPEED_MINIBMC_MACHINE_GET_CLASS(machine);
-> > +    Clock *sysclk;
-> > +
-> > +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
-> > +    clock_set_hz(sysclk, SYSCLK_FRQ);
-> > +
-> > +    object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
-> > +    qdev_connect_clock_in(DEVICE(&bmc->soc), "sysclk", sysclk);
-> > +
-> > +    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
-> > +                         amc->uart_default);
-> > +    qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
-> > +
-> > +    aspeed_board_init_flashes(&bmc->soc.fmc,
-> > +                              bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
-> > +                              amc->num_cs,
-> > +                              0);
-> > +
-> > +    aspeed_board_init_flashes(&bmc->soc.spi[0],
-> > +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
-> > +                              amc->num_cs, amc->num_cs);
-> > +
-> > +    aspeed_board_init_flashes(&bmc->soc.spi[1],
-> > +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
-> > +                              amc->num_cs, (amc->num_cs * 2));
-> > +
-> > +    if (amc->i2c_init) {
-> > +        amc->i2c_init(bmc);
-> > +    }
-> > +
-> > +    armv7m_load_kernel(ARM_CPU(first_cpu),
-> > +                       machine->kernel_filename,
-> > +                       AST1030_INTERNAL_FLASH_SIZE);
-> > +}
-> > +
-> > +static void aspeed_minibmc_machine_class_init(ObjectClass *oc, void *data)
-> > +{
-> > +    MachineClass *mc = MACHINE_CLASS(oc);
-> > +    AspeedMachineClass *amc = ASPEED_MINIBMC_MACHINE_CLASS(oc);
-> > +
-> > +    mc->init = aspeed_minibmc_machine_init;
-> > +    mc->no_floppy = 1;
-> > +    mc->no_cdrom = 1;
-> > +    mc->no_parallel = 1;
-> > +    mc->default_ram_id = "ram";
-> > +    amc->uart_default = ASPEED_DEV_UART5;
+>     - Flash(fmc_cs0):
+>         uart:~$ flash write fmc_cs0 0 0x12345678 0x87654321 0x34127856 0x78563412
+>         uart:~$ flash read fmc_cs0 0 10
+>         [Result]
+>         00000000: 78 56 34 12 21 43 65 87  56 78 12 34 12 34 56 78 |xV4.!Ce. Vx.4.4Vx|
 > 
-> This is very much like aspeed_machine_class_init()
+>         uart:~$ flash erase fmc_cs0 0
+>         uart:~$ flash read fmc_cs0 0 10
+>         [Result]
+>         00000000: ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........|
 > 
+>     - Timer(TIMER0):
+>         uart:~$ timer start TIMER0 -p 2000 -t 0
+>         TIMER0: period 20000 ms, type 0
+>         [Result]
+>         timer expired after 2 seconds
 > 
-> > +}
-> > +
-> > +static const TypeInfo aspeed_minibmc_machine_types[] = {
-> > +    {
-> > +        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
-> > +        .parent         = TYPE_ASPEED_MINIBMC_MACHINE,
+>     - Watchdog(WDT1):
+>         uart:~$ mw 7e785008 4755
+>         uart:~$ mw 7e78500c 1
+>         [Result]
+>         soc reset after 22 seconds
 > 
-> Why don't you inherit directly from TYPE_ASPEED_MACHINE and simplify
-> the model by removing the duplicate TYPE_ASPEED_MINIBMC_MACHINE ?
+> Based-on: 20220315075753.8591-3-steven_lee@aspeedtech.com
+> ([v2,2/2] hw: aspeed_scu: Introduce clkin_25Mhz attribute)
 > 
-Fixed and removed TYPE_ASPEED_MINIBMC_MACHINE in v5 patch.
-> > +        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
-> > +    }, {
-> > +        .name           = TYPE_ASPEED_MINIBMC_MACHINE,
-> > +        .parent         = TYPE_MACHINE,
-> > +        .instance_size  = sizeof(AspeedMachineState),
-> > +        .instance_init  = ast1030_machine_instance_init,
-> > +        .class_size    = sizeof(AspeedMachineClass),
-> > +        .class_init    = aspeed_minibmc_machine_class_init,
-> > +        .abstract      = true,
-> > +    }
-> > +};
-> > +
-> > +DEFINE_TYPES(aspeed_minibmc_machine_types)
-> > +
-> > diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-> > index cbeacb214c..b7411c860d 100644
-> > --- a/include/hw/arm/aspeed.h
-> > +++ b/include/hw/arm/aspeed.h
-> > @@ -13,18 +13,19 @@
-> >   #include "qom/object.h"
-> >   
-> >   typedef struct AspeedMachineState AspeedMachineState;
-> > -
-> >   #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
-> > +#define TYPE_ASPEED_MINIBMC_MACHINE MACHINE_TYPE_NAME("aspeed-minibmc")
-> >   typedef struct AspeedMachineClass AspeedMachineClass;
-> >   DECLARE_OBJ_CHECKERS(AspeedMachineState, AspeedMachineClass,
-> >                        ASPEED_MACHINE, TYPE_ASPEED_MACHINE)
-> > +DECLARE_OBJ_CHECKERS(AspeedMachineState, AspeedMachineClass,
-> > +                     ASPEED_MINIBMC_MACHINE, TYPE_ASPEED_MINIBMC_MACHINE)
+> Jamin Lin (2):
+>    aspeed: Add an AST1030 eval board
+>    test/avocado/machine_aspeed.py: Add ast1030 test case
 > 
-> This looks useless to me.
+> Steven Lee (7):
+>    aspeed/adc: Add AST1030 support
+>    aspeed/smc: Add AST1030 support
+>    aspeed/wdt: Fix ast2500/ast2600 default reload value
+>    aspeed/wdt: Add AST1030 support
+>    aspeed/timer: Add AST1030 support
+>    aspeed/scu: Add AST1030 support
+>    aspeed/soc : Add AST1030 support
 > 
-> We might want a new type of Aspeed machines someday but I don't see
-> the need yet.
+>   hw/adc/aspeed_adc.c              |  16 ++
+>   hw/arm/aspeed.c                  |  66 +++++++
+>   hw/arm/aspeed_ast10xx.c          | 299 +++++++++++++++++++++++++++++++
+>   hw/arm/meson.build               |   6 +-
+>   hw/misc/aspeed_scu.c             |  63 +++++++
+>   hw/ssi/aspeed_smc.c              | 157 ++++++++++++++++
+>   hw/timer/aspeed_timer.c          |  17 ++
+>   hw/watchdog/wdt_aspeed.c         |  34 +++-
+>   include/hw/adc/aspeed_adc.h      |   1 +
+>   include/hw/arm/aspeed_soc.h      |   3 +
+>   include/hw/misc/aspeed_scu.h     |  25 +++
+>   include/hw/timer/aspeed_timer.h  |   1 +
+>   include/hw/watchdog/wdt_aspeed.h |   3 +
+>   tests/avocado/machine_aspeed.py  |  36 ++++
+>   14 files changed, 724 insertions(+), 3 deletions(-)
+>   create mode 100644 hw/arm/aspeed_ast10xx.c
+>   create mode 100644 tests/avocado/machine_aspeed.py
 > 
-> Thanks,
-> 
-> C.
-> 
-removed and fixed in v5 patch.
-Thanks for your review.
-> >   
-> >   #define ASPEED_MAC0_ON   (1 << 0)
-> >   #define ASPEED_MAC1_ON   (1 << 1)
-> >   #define ASPEED_MAC2_ON   (1 << 2)
-> >   #define ASPEED_MAC3_ON   (1 << 3)
-> >   
-> > -
-> >   struct AspeedMachineClass {
-> >       MachineClass parent_obj;
-> >   
-> > @@ -41,5 +42,4 @@ struct AspeedMachineClass {
-> >       uint32_t uart_default;
-> >   };
-> >   
-> > -
-> >   #endif
-> 
+

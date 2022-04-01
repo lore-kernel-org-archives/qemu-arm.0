@@ -1,58 +1,58 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp555512lfb;
-        Thu, 31 Mar 2022 20:07:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy1jgwnJZEXOV6NyMCk9b4XmISk3Zjg5mAvy6ZbVch6+sQUGDAf8RrVz9KzmO2HgkeV/GG0
-X-Received: by 2002:a05:622a:4ce:b0:2e1:e18f:5b33 with SMTP id q14-20020a05622a04ce00b002e1e18f5b33mr6897307qtx.565.1648782435135;
-        Thu, 31 Mar 2022 20:07:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648782435; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp555533lfb;
+        Thu, 31 Mar 2022 20:07:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyJN40ATHpNMsq4JxYEM+qzPz8o5qlY9pMRnY3sM+P0ci7WQGueaVxdFmry/ESbVNmmZhAR
+X-Received: by 2002:ac8:764a:0:b0:2e1:bb5e:5ff3 with SMTP id i10-20020ac8764a000000b002e1bb5e5ff3mr7043501qtr.255.1648782437155;
+        Thu, 31 Mar 2022 20:07:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648782437; cv=none;
         d=google.com; s=arc-20160816;
-        b=TdhgcGOjkIEsA2pgJ/UFXgzsuOWbEJjwcgAXkG0FT8in2iY78tnFCPfsmvw88XabP+
-         T9DWResknymSa8DTg64lP+3bJftw5+3ICgLj8dgWZPcC4cJ91XB9b4ozSTuxaP9+BTI+
-         V5n52DGxkLVd684JdJYMKVaF4wptLAIdEuAzDlqG16DhR4bu7kM6dYC1dRG7YZIyfPG4
-         NHtx66nCXFIjqvQ1cyz+PVi5P0odBG3OovFK0h7e+CD9qxWwIUIUc1lUz8RlJ3NJw6Jq
-         HvrFWLG5/MpTJ95QgsjQmFW9hIlf+UXquhkjY6vRrRC6D66EFfpWnSgALYEP9lZQLhlT
-         SVXQ==
+        b=Bycoo6Lx9w52sZ/vJNkZ8/h61K1EjFMgSk0TFAthqVBWkxZSWNuVvc+fLIGD1qGnbw
+         gYOvZte7y2sJa7cCCkfaYNfYYrXpsxoKqSSppXO01l+EBVsoro1HtFe5sov/WN69COGt
+         i3lUiVv74fg51IH+hqTr4WqgJn7QrADzem0zOsvcB0Q8uun4+uFHbwgKCZxBbErFwnGB
+         M8MNqLM8yeBXTNwR2IfAe0Un5MuBKp+bwvQb3BfBnBxMQoZaC+1VopFkWrXJr7UXgCTZ
+         ZdQFmo3KV/Ddz+D7LAFPqgmES4+fz5eZl+WJZe9Xqq/pigTdmQDYEUZgDTT8wt4LHg/x
+         m81g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=857fODzb838nYmDByF1tnXApqsjZ6vlBG83y3RDP1OI=;
-        b=ByXVzBhZ5rC3r8AYU2dcaTpE25mS2y0VXOC2czHcDCPxqmVrOtWuBX80uxWjOju3Qx
-         taAw51Xu7ylCPAi4MM272TV8XTDEDH2Fh6Vivu/CBWq7vCt+GVv4TIB2D97VoRHZdZIe
-         HKa6aptosQ4Sq5N70Wc0KwHq6BlmmnNn8LoV4mq1g6KS3PL491wdLbsp5qpNnaj/s5rO
-         KndqAGydHyErlZZCa0DZKN3B9kyQuXRJRjhcl1UfvwmSc/5xQVGmYjbR/pDHfpUKjh7w
-         qr/X+DwH2AdKdUaAYCbf749d7hJHu7UhJdRKM6zUAwRzY9p/m+XbVwZ/MzwY9OKLbhYg
-         8WJg==
+        bh=zPlryGa4DHn4F0DyeEHwWLFUM1427IrhCL5pBVJBQPk=;
+        b=XaALm5UKvvytenFlXXGoaYRLPLxk+3ezIHJXPj8x1jUsHsH/SffJJN6ho33bQoDRdb
+         0NJiS7JsZ8X+XVRBDrVENC7h8C3u5O85WxQLWMkfqxuNxP6oxnOPC0Ef9pPLhtEe9hFq
+         iq5l0IHWDDx9RIdtnDWUAouwzMRzZ8JIpVzts3VdyRgjeUowBNmupu8mGJTEVGIRpZUZ
+         pF1OM+MyXfFwuLdjASxDcjvJWaZ/+RX3TUz+6MFcC6YC0xLvNIX9Vib8xlbKBGCb1G0u
+         sBMskAfRN1gizS4ESvS6EPuaI6VDEVZYtm53UY5eXrt7YscIVJwtBimzi1L6ENgPCBDU
+         nSow==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t22-20020ac85316000000b002e1fbf3be9esi618226qtn.143.2022.03.31.20.07.14
+        by mx.google.com with ESMTPS id t26-20020ac86a1a000000b002e1fbf3c013si625106qtr.516.2022.03.31.20.07.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Mar 2022 20:07:15 -0700 (PDT)
+        Thu, 31 Mar 2022 20:07:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42928 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1na7d4-0004fe-IE
-	for alex.bennee@linaro.org; Thu, 31 Mar 2022 23:07:14 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58432)
+	id 1na7d6-0004st-Jy
+	for alex.bennee@linaro.org; Thu, 31 Mar 2022 23:07:16 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58400)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1na7cN-0004cH-JW; Thu, 31 Mar 2022 23:06:33 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:34284)
+ id 1na7c5-0004Jc-1o; Thu, 31 Mar 2022 23:06:13 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:64269)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1na7cA-0002lF-Fq; Thu, 31 Mar 2022 23:06:20 -0400
+ id 1na7c2-0002kW-T0; Thu, 31 Mar 2022 23:06:12 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 2312sCOv090589;
- Fri, 1 Apr 2022 10:54:12 +0800 (GMT-8)
+ by twspam01.aspeedtech.com with ESMTP id 2312sAkW090572;
+ Fri, 1 Apr 2022 10:54:10 +0800 (GMT-8)
  (envelope-from jamin_lin@aspeedtech.com)
 Received: from localhost.localdomain (192.168.70.87) by TWMBX02.aspeed.com
  (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 1 Apr
- 2022 11:05:12 +0800
+ 2022 11:05:11 +0800
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: Alistair Francis <alistair@alistair23.me>, Peter Maydell
  <peter.maydell@linaro.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
@@ -62,9 +62,9 @@ To: Alistair Francis <alistair@alistair23.me>, Peter Maydell
  Santos Moschetta" <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>,
  "open list:STM32F205" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
-Subject: [PATCH v3 6/9] aspeed/scu: Add AST1030 support
-Date: Fri, 1 Apr 2022 11:05:05 +0800
-Message-ID: <20220401030508.28133-7-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 3/9] aspeed/wdt: Fix ast2500/ast2600 default reload value.
+Date: Fri, 1 Apr 2022 11:05:02 +0800
+Message-ID: <20220401030508.28133-4-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220401030508.28133-1-jamin_lin@aspeedtech.com>
 References: <20220401030508.28133-1-jamin_lin@aspeedtech.com>
@@ -75,7 +75,7 @@ X-Originating-IP: [192.168.70.87]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 2312sCOv090589
+X-MAIL: twspam01.aspeedtech.com 2312sAkW090572
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -99,165 +99,79 @@ Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
  steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1ksMRyU7Ymjm
+X-TUID: 2Bg1TeN4Ej7i
 
 From: Steven Lee <steven_lee@aspeedtech.com>
 
-Per ast1030_v07.pdf, AST1030 SOC doesn't have SCU300, the pclk divider
-selection is defined in SCU310[11:8].
-Add a get_apb_freq function and a class init handler for ast1030.
+Per ast2500_2520_datasheet_v1.8 and ast2600v11.pdf, the default value of
+WDT00 and WDT04 is 0x014FB180 for ast2500/ast2600.
+Add default_status and default_reload_value attributes for storing
+counter status and reload value as they are different from ast2400.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/misc/aspeed_scu.c         | 63 ++++++++++++++++++++++++++++++++++++
- include/hw/misc/aspeed_scu.h | 25 ++++++++++++++
- 2 files changed, 88 insertions(+)
+ hw/watchdog/wdt_aspeed.c         | 10 ++++++++--
+ include/hw/watchdog/wdt_aspeed.h |  2 ++
+ 2 files changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 150567f98a..19b03471fc 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -235,6 +235,15 @@ static uint32_t aspeed_2600_scu_get_apb_freq(AspeedSCUState *s)
-         / asc->apb_divider;
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index 6aa6f90b66..386928e9c0 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -232,8 +232,8 @@ static void aspeed_wdt_reset(DeviceState *dev)
+     AspeedWDTState *s = ASPEED_WDT(dev);
+     AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(s);
+ 
+-    s->regs[WDT_STATUS] = 0x3EF1480;
+-    s->regs[WDT_RELOAD_VALUE] = 0x03EF1480;
++    s->regs[WDT_STATUS] = awc->default_status;
++    s->regs[WDT_RELOAD_VALUE] = awc->default_reload_value;
+     s->regs[WDT_RESTART] = 0;
+     s->regs[WDT_CTRL] = awc->sanitize_ctrl(0);
+     s->regs[WDT_RESET_WIDTH] = 0xFF;
+@@ -319,6 +319,8 @@ static void aspeed_2400_wdt_class_init(ObjectClass *klass, void *data)
+     awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
+     awc->wdt_reload = aspeed_wdt_reload;
+     awc->sanitize_ctrl = aspeed_2400_sanitize_ctrl;
++    awc->default_status = 0x03EF1480;
++    awc->default_reload_value = 0x03EF1480;
  }
  
-+static uint32_t aspeed_1030_scu_get_apb_freq(AspeedSCUState *s)
-+{
-+    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(s);
-+    uint32_t hpll = asc->calc_hpll(s, s->regs[AST2600_HPLL_PARAM]);
-+
-+    return hpll / (SCU_AST1030_CLK_GET_PCLK_DIV(s->regs[AST2600_CLK_SEL4]) + 1)
-+        / asc->apb_divider;
-+}
-+
- static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
- {
-     AspeedSCUState *s = ASPEED_SCU(opaque);
-@@ -482,6 +491,8 @@ static uint32_t aspeed_silicon_revs[] = {
-     AST2600_A1_SILICON_REV,
-     AST2600_A2_SILICON_REV,
-     AST2600_A3_SILICON_REV,
-+    AST1030_A0_SILICON_REV,
-+    AST1030_A1_SILICON_REV,
- };
- 
- bool is_supported_silicon_rev(uint32_t silicon_rev)
-@@ -770,12 +781,64 @@ static const TypeInfo aspeed_2600_scu_info = {
-     .class_init = aspeed_2600_scu_class_init,
- };
- 
-+static const uint32_t ast1030_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
-+    [AST2600_SYS_RST_CTRL]      = 0xFFC3FED8,
-+    [AST2600_SYS_RST_CTRL2]     = 0x09FFFFFC,
-+    [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
-+    [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
-+    [AST2600_DEBUG_CTRL2]       = 0x00000000,
-+    [AST2600_HPLL_PARAM]        = 0x10004077,
-+    [AST2600_HPLL_EXT]          = 0x00000031,
-+    [AST2600_CLK_SEL4]          = 0x43F90900,
-+    [AST2600_CLK_SEL5]          = 0x40000000,
-+    [AST2600_CHIP_ID0]          = 0xDEADBEEF,
-+    [AST2600_CHIP_ID1]          = 0x0BADCAFE,
-+};
-+
-+static void aspeed_ast1030_scu_reset(DeviceState *dev)
-+{
-+    AspeedSCUState *s = ASPEED_SCU(dev);
-+    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(dev);
-+
-+    memcpy(s->regs, asc->resets, asc->nr_regs * 4);
-+
-+    s->regs[AST2600_SILICON_REV] = AST1030_A1_SILICON_REV;
-+    s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
-+    s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
-+    s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
-+    s->regs[PROT_KEY] = s->hw_prot_key;
-+}
-+
-+static void aspeed_1030_scu_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedSCUClass *asc = ASPEED_SCU_CLASS(klass);
-+
-+    dc->desc = "ASPEED 1030 System Control Unit";
-+    dc->reset = aspeed_ast1030_scu_reset;
-+    asc->resets = ast1030_a1_resets;
-+    asc->calc_hpll = aspeed_2600_scu_calc_hpll;
-+    asc->get_apb = aspeed_1030_scu_get_apb_freq;
-+    asc->apb_divider = 2;
-+    asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
-+    asc->clkin_25Mhz = true;
-+    asc->ops = &aspeed_ast2600_scu_ops;
-+}
-+
-+static const TypeInfo aspeed_1030_scu_info = {
-+    .name = TYPE_ASPEED_1030_SCU,
-+    .parent = TYPE_ASPEED_SCU,
-+    .instance_size = sizeof(AspeedSCUState),
-+    .class_init = aspeed_1030_scu_class_init,
-+};
-+
- static void aspeed_scu_register_types(void)
- {
-     type_register_static(&aspeed_scu_info);
-     type_register_static(&aspeed_2400_scu_info);
-     type_register_static(&aspeed_2500_scu_info);
-     type_register_static(&aspeed_2600_scu_info);
-+    type_register_static(&aspeed_1030_scu_info);
+ static const TypeInfo aspeed_2400_wdt_info = {
+@@ -355,6 +357,8 @@ static void aspeed_2500_wdt_class_init(ObjectClass *klass, void *data)
+     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
+     awc->wdt_reload = aspeed_wdt_reload_1mhz;
+     awc->sanitize_ctrl = aspeed_2500_sanitize_ctrl;
++    awc->default_status = 0x014FB180;
++    awc->default_reload_value = 0x014FB180;
  }
  
- type_init(aspeed_scu_register_types);
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index fdc721846c..d71aa66e40 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -19,6 +19,7 @@ OBJECT_DECLARE_TYPE(AspeedSCUState, AspeedSCUClass, ASPEED_SCU)
- #define TYPE_ASPEED_2400_SCU TYPE_ASPEED_SCU "-ast2400"
- #define TYPE_ASPEED_2500_SCU TYPE_ASPEED_SCU "-ast2500"
- #define TYPE_ASPEED_2600_SCU TYPE_ASPEED_SCU "-ast2600"
-+#define TYPE_ASPEED_1030_SCU TYPE_ASPEED_SCU "-ast1030"
+ static const TypeInfo aspeed_2500_wdt_info = {
+@@ -376,6 +380,8 @@ static void aspeed_2600_wdt_class_init(ObjectClass *klass, void *data)
+     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
+     awc->wdt_reload = aspeed_wdt_reload_1mhz;
+     awc->sanitize_ctrl = aspeed_2600_sanitize_ctrl;
++    awc->default_status = 0x014FB180;
++    awc->default_reload_value = 0x014FB180;
+ }
  
- #define ASPEED_SCU_NR_REGS (0x1A8 >> 2)
- #define ASPEED_AST2600_SCU_NR_REGS (0xE20 >> 2)
-@@ -45,6 +46,8 @@ struct AspeedSCUState {
- #define AST2600_A1_SILICON_REV   0x05010303U
- #define AST2600_A2_SILICON_REV   0x05020303U
- #define AST2600_A3_SILICON_REV   0x05030303U
-+#define AST1030_A0_SILICON_REV   0x80000000U
-+#define AST1030_A1_SILICON_REV   0x80010000U
+ static const TypeInfo aspeed_2600_wdt_info = {
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index f945cd6c58..0e37f39f38 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -45,6 +45,8 @@ struct AspeedWDTClass {
+     void (*reset_pulse)(AspeedWDTState *s, uint32_t property);
+     void (*wdt_reload)(AspeedWDTState *s);
+     uint64_t (*sanitize_ctrl)(uint64_t data);
++    uint32_t default_status;
++    uint32_t default_reload_value;
+ };
  
- #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
- 
-@@ -335,4 +338,26 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
- #define SCU_AST2600_H_PLL_BYPASS_EN                        (0x1 << 24)
- #define SCU_AST2600_H_PLL_OFF                              (0x1 << 23)
- 
-+/*
-+ * SCU310   Clock Selection Register Set 4 (for Aspeed AST1030 SOC)
-+ *
-+ *  31     I3C Clock Source selection
-+ *  30:28  I3C clock divider selection
-+ *  26:24  MAC AHB clock divider selection
-+ *  22:20  RGMII 125MHz clock divider ration
-+ *  19:16  RGMII 50MHz clock divider ration
-+ *  15     LHCLK clock generation/output enable control
-+ *  14:12  LHCLK divider selection
-+ *  11:8   APB Bus PCLK divider selection
-+ *  7      Select PECI clock source
-+ *  6      Select UART debug port clock source
-+ *  5      Select UART6 clock source
-+ *  4      Select UART5 clock source
-+ *  3      Select UART4 clock source
-+ *  2      Select UART3 clock source
-+ *  1      Select UART2 clock source
-+ *  0      Select UART1 clock source
-+ */
-+#define SCU_AST1030_CLK_GET_PCLK_DIV(x)                    (((x) >> 8) & 0xf)
-+
- #endif /* ASPEED_SCU_H */
+ #endif /* WDT_ASPEED_H */
 -- 
 2.17.1
 

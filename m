@@ -1,58 +1,58 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp555816lfb;
-        Thu, 31 Mar 2022 20:07:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy9zSgD9c8jbBxkOsrxtw7rg0Tt302nyPnKW6xPPKDzrlK2a+shW8+qBvUMXh0VlQE7dAb2
-X-Received: by 2002:a05:6214:27cc:b0:441:499f:76ac with SMTP id ge12-20020a05621427cc00b00441499f76acmr6750816qvb.36.1648782465601;
-        Thu, 31 Mar 2022 20:07:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648782465; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp555971lfb;
+        Thu, 31 Mar 2022 20:08:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJypULoxzeUJmnvkoEmQGSJxo3Rg1DUNMJ8mpBprUmvXyJTC3OXvWFtNAo7Urihnf+4sYDwK
+X-Received: by 2002:ac8:7d88:0:b0:2e1:cd8d:3dda with SMTP id c8-20020ac87d88000000b002e1cd8d3ddamr7110523qtd.351.1648782483914;
+        Thu, 31 Mar 2022 20:08:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648782483; cv=none;
         d=google.com; s=arc-20160816;
-        b=uZVrDPJZWbZ8rQfZfutM+q4dqV7OVDZJcHAa4RtjWNiEIsnq6Rr8GL5rPLbMIVYSxr
-         Q/OZdp14lK/iWPn0mVT28mgkKtknyPJ6sBSWOWkgJwyhOoVXpZM9EvWwMHy2IY5v9f27
-         XZHd5AHSG2vBa2Aiw9/CWdA49UlLA+dQxOStFEjF+uttvr1H13e58XfmFmALgUz802C+
-         Z8n1/fupySLpTy5CQfFnImTwnONjZmcg78Bof32huOvhwV0BFTya4xsGXeLr87vMlLFp
-         6hzgoqGlZDtkl5zKVC3B4qK3fKnEzChoFtPKYL+t+FP0iUoM63FUjO/rQ8SSPQWVlJEu
-         yDog==
+        b=KnYyIQHDscqTmma5lkFB4RKSePZtvqw0upBTsmGeWSCVbyiHqs/q4JzAJc3thkylgk
+         B4m3mocpxcsIP/e2O/McrqCrilKe+jTabs1adjNbBi+O1oWTjMxu9p3sknbt4TU3mXbm
+         tnPvfd6/E2hitmbFzmvbAXOUSGkuJZr7D77XeA32BS9IQzDlJlfLDSUKdpA7w1lvyCHr
+         ceOAVOPTM7YDw/f3YV0aBXkq60C79GQGq1h++N45NINClEKHalF/3kx5EjxqyX2Y6ZHu
+         Lw0wp/MnOh310y6sJQ6tLEAnoj/3sKTOdT7G6Xwdw5JCmldOy4AeN6/KmuZ6w32bEv7L
+         iYVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=pJM/LNzRx1+n63j8mTdOIkojrmV+oY1YtrMXGFZECoc=;
-        b=OH0o4LSpD7saPWUegWIekMdfWeBKPB8DKNDpIl81Hl1pJAlJPiRTREdgRkaXoMVMFp
-         dXxyIGnsHh5xISQbKyjEKwlT18O82spBMGQU5kW4W+F3+WcWh68dJlSjW+ba2yEk2+vS
-         9ON0t8NP1LmrMQ8pgEhdQKrk2oPj4XB4ft4p7EETPt4TJX2ySEp9vf9ZoCgtjvhgtREC
-         O/323Ap5tOmtAo903Jfw4LI8rkPplGQ4Q7X+0NzHNs9I4bnf+jcKRPQkdhGlt+zyyp8c
-         /QxAuVk9ageehr+CxsIlGujb1WeJE3Ow2/mgz+s3C1KGpvL6DRQaiNtVh1OwIPVclU77
-         NNZg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=geJ6+MiGk2seSOaWkizxcB7XGiFfdo5/KnSPAk/1ZtA=;
+        b=Xz2uROaUYUxyzcxAP0K9bUBRSQE1V4HWmnPHCEzt/P4veEJUZiRs3vQ5p7TwsCdsfE
+         0My21igEuTMokWwGGj1lQXYVadXVbTHr3EAzi5VnVVAPiXNwWp4AA6K/6xHnwh/Kr+9B
+         mGq4dMlSrXPnDwjIDJNlZWBdsuRbial2IRhQ/dd42pl1Kd4IjvmEtI5KDv4bJnrsMOEt
+         OPvvDtb+LdE3S8t2aU6ddpLRIkzjFiQ9iKcOFXwY+AnFc96XMVpcI0lMHJg9lGeXnBQl
+         hxm1ERxfM0gAKWJQ+NgOBICZIgLBJU6mRAPRWaw3HNTgNUPOCjSroD/olPGiIXuDV7dr
+         6mOg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j15-20020ac806cf000000b002e1fbf3befesi628584qth.239.2022.03.31.20.07.45
+        by mx.google.com with ESMTPS id r13-20020ac867cd000000b002e1fbf3c0fbsi593355qtp.748.2022.03.31.20.08.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Mar 2022 20:07:45 -0700 (PDT)
+        Thu, 31 Mar 2022 20:08:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45282 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1na7dZ-0006JV-1w
-	for alex.bennee@linaro.org; Thu, 31 Mar 2022 23:07:45 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58496)
+	id 1na7dr-0006ue-C5
+	for alex.bennee@linaro.org; Thu, 31 Mar 2022 23:08:03 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58490)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1na7cQ-0004ck-D0; Thu, 31 Mar 2022 23:06:35 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:48536)
+ id 1na7cQ-0004cb-15; Thu, 31 Mar 2022 23:06:34 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:54044)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1na7cN-0002mg-OD; Thu, 31 Mar 2022 23:06:34 -0400
+ id 1na7cN-0002me-NY; Thu, 31 Mar 2022 23:06:33 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 2312sDCK090591;
- Fri, 1 Apr 2022 10:54:13 +0800 (GMT-8)
+ by twspam01.aspeedtech.com with ESMTP id 2312sBWI090582;
+ Fri, 1 Apr 2022 10:54:11 +0800 (GMT-8)
  (envelope-from jamin_lin@aspeedtech.com)
 Received: from localhost.localdomain (192.168.70.87) by TWMBX02.aspeed.com
  (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 1 Apr
- 2022 11:05:14 +0800
+ 2022 11:05:12 +0800
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
@@ -62,19 +62,20 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "Beraldo Leal" <bleal@redhat.com>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Subject: [PATCH v3 8/9] aspeed: Add an AST1030 eval board
-Date: Fri, 1 Apr 2022 11:05:07 +0800
-Message-ID: <20220401030508.28133-9-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 5/9] aspeed/timer: Add AST1030 support
+Date: Fri, 1 Apr 2022 11:05:04 +0800
+Message-ID: <20220401030508.28133-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220401030508.28133-1-jamin_lin@aspeedtech.com>
 References: <20220401030508.28133-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-Originating-IP: [192.168.70.87]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 2312sDCK090591
+X-MAIL: twspam01.aspeedtech.com 2312sBWI090582
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -98,163 +99,67 @@ Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
  steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zK0RIZTXY7eB
+X-TUID: JzHz3A6e8Z5q
 
-The image should be supplied with ELF binary.
-$ qemu-system-arm -M ast1030-evb -kernel zephyr.elf -nographic
+From: Steven Lee <steven_lee@aspeedtech.com>
+
+ast1030 tmc(timer controller) is identical to ast2600 tmc.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c         | 97 +++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/aspeed.h |  6 +--
- 2 files changed, 100 insertions(+), 3 deletions(-)
+ hw/timer/aspeed_timer.c         | 17 +++++++++++++++++
+ include/hw/timer/aspeed_timer.h |  1 +
+ 2 files changed, 18 insertions(+)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index d205384d98..30b49d2db1 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -24,6 +24,7 @@
- #include "hw/loader.h"
- #include "qemu/error-report.h"
- #include "qemu/units.h"
-+#include "hw/qdev-clock.h"
- 
- static struct arm_boot_info aspeed_board_binfo = {
-     .board_id = -1, /* device-tree-only board */
-@@ -1361,3 +1362,99 @@ static const TypeInfo aspeed_machine_types[] = {
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index 42c47d2ce6..9c20b3d6ad 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -745,12 +745,29 @@ static const TypeInfo aspeed_2600_timer_info = {
+     .class_init = aspeed_2600_timer_class_init,
  };
  
- DEFINE_TYPES(aspeed_machine_types)
-+
-+#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
-+/* Main SYSCLK frequency in Hz (200MHz) */
-+#define SYSCLK_FRQ 200000000ULL
-+
-+static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-+                                                          void *data)
++static void aspeed_1030_timer_class_init(ObjectClass *klass, void *data)
 +{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MINIBMC_MACHINE_CLASS(oc);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedTimerClass *awc = ASPEED_TIMER_CLASS(klass);
 +
-+    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
-+    amc->soc_name = "ast1030-a1";
-+    amc->hw_strap1 = 0;
-+    amc->hw_strap2 = 0;
-+    mc->default_ram_size = 0;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus = 1;
-+    amc->fmc_model = "sst25vf032b";
-+    amc->spi_model = "sst25vf032b";
-+    amc->num_cs = 2;
++    dc->desc = "ASPEED 1030 Timer";
++    awc->read = aspeed_2600_timer_read;
++    awc->write = aspeed_2600_timer_write;
 +}
 +
-+static void ast1030_machine_instance_init(Object *obj)
-+{
-+    ASPEED_MINIBMC_MACHINE(obj)->mmio_exec = false;
-+}
-+
-+static void aspeed_minibmc_machine_init(MachineState *machine)
-+{
-+    AspeedMachineState *bmc = ASPEED_MINIBMC_MACHINE(machine);
-+    AspeedMachineClass *amc = ASPEED_MINIBMC_MACHINE_GET_CLASS(machine);
-+    Clock *sysclk;
-+
-+    sysclk = clock_new(OBJECT(machine), "SYSCLK");
-+    clock_set_hz(sysclk, SYSCLK_FRQ);
-+
-+    object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
-+    qdev_connect_clock_in(DEVICE(&bmc->soc), "sysclk", sysclk);
-+
-+    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
-+                         amc->uart_default);
-+    qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
-+
-+    aspeed_board_init_flashes(&bmc->soc.fmc,
-+                              bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
-+                              amc->num_cs,
-+                              0);
-+
-+    aspeed_board_init_flashes(&bmc->soc.spi[0],
-+                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
-+                              amc->num_cs, amc->num_cs);
-+
-+    aspeed_board_init_flashes(&bmc->soc.spi[1],
-+                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
-+                              amc->num_cs, (amc->num_cs * 2));
-+
-+    if (amc->i2c_init) {
-+        amc->i2c_init(bmc);
-+    }
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu),
-+                       machine->kernel_filename,
-+                       AST1030_INTERNAL_FLASH_SIZE);
-+}
-+
-+static void aspeed_minibmc_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MINIBMC_MACHINE_CLASS(oc);
-+
-+    mc->init = aspeed_minibmc_machine_init;
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+    mc->no_parallel = 1;
-+    mc->default_ram_id = "ram";
-+    amc->uart_default = ASPEED_DEV_UART5;
-+}
-+
-+static const TypeInfo aspeed_minibmc_machine_types[] = {
-+    {
-+        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
-+        .parent         = TYPE_ASPEED_MINIBMC_MACHINE,
-+        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
-+    }, {
-+        .name           = TYPE_ASPEED_MINIBMC_MACHINE,
-+        .parent         = TYPE_MACHINE,
-+        .instance_size  = sizeof(AspeedMachineState),
-+        .instance_init  = ast1030_machine_instance_init,
-+        .class_size    = sizeof(AspeedMachineClass),
-+        .class_init    = aspeed_minibmc_machine_class_init,
-+        .abstract      = true,
-+    }
++static const TypeInfo aspeed_1030_timer_info = {
++    .name = TYPE_ASPEED_1030_TIMER,
++    .parent = TYPE_ASPEED_TIMER,
++    .class_init = aspeed_1030_timer_class_init,
 +};
 +
-+DEFINE_TYPES(aspeed_minibmc_machine_types)
-+
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index cbeacb214c..b7411c860d 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -13,18 +13,19 @@
- #include "qom/object.h"
+ static void aspeed_timer_register_types(void)
+ {
+     type_register_static(&aspeed_timer_info);
+     type_register_static(&aspeed_2400_timer_info);
+     type_register_static(&aspeed_2500_timer_info);
+     type_register_static(&aspeed_2600_timer_info);
++    type_register_static(&aspeed_1030_timer_info);
+ }
  
- typedef struct AspeedMachineState AspeedMachineState;
--
- #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
-+#define TYPE_ASPEED_MINIBMC_MACHINE MACHINE_TYPE_NAME("aspeed-minibmc")
- typedef struct AspeedMachineClass AspeedMachineClass;
- DECLARE_OBJ_CHECKERS(AspeedMachineState, AspeedMachineClass,
-                      ASPEED_MACHINE, TYPE_ASPEED_MACHINE)
-+DECLARE_OBJ_CHECKERS(AspeedMachineState, AspeedMachineClass,
-+                     ASPEED_MINIBMC_MACHINE, TYPE_ASPEED_MINIBMC_MACHINE)
+ type_init(aspeed_timer_register_types)
+diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
+index d36034a10c..07dc6b6f2c 100644
+--- a/include/hw/timer/aspeed_timer.h
++++ b/include/hw/timer/aspeed_timer.h
+@@ -31,6 +31,7 @@ OBJECT_DECLARE_TYPE(AspeedTimerCtrlState, AspeedTimerClass, ASPEED_TIMER)
+ #define TYPE_ASPEED_2400_TIMER TYPE_ASPEED_TIMER "-ast2400"
+ #define TYPE_ASPEED_2500_TIMER TYPE_ASPEED_TIMER "-ast2500"
+ #define TYPE_ASPEED_2600_TIMER TYPE_ASPEED_TIMER "-ast2600"
++#define TYPE_ASPEED_1030_TIMER TYPE_ASPEED_TIMER "-ast1030"
  
- #define ASPEED_MAC0_ON   (1 << 0)
- #define ASPEED_MAC1_ON   (1 << 1)
- #define ASPEED_MAC2_ON   (1 << 2)
- #define ASPEED_MAC3_ON   (1 << 3)
+ #define ASPEED_TIMER_NR_TIMERS 8
  
--
- struct AspeedMachineClass {
-     MachineClass parent_obj;
- 
-@@ -41,5 +42,4 @@ struct AspeedMachineClass {
-     uint32_t uart_default;
- };
- 
--
- #endif
 -- 
 2.17.1
 

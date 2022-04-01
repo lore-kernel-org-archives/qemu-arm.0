@@ -1,91 +1,116 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp876227lfb;
-        Fri, 1 Apr 2022 06:20:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxhXveCzmsnSTmpKVTvoeqtmrB2S6gwrUOWDLT2Q6cKje+v2LclE9M3FMvFeHTV51+5oxrA
-X-Received: by 2002:ad4:5de4:0:b0:441:5fdf:ddae with SMTP id jn4-20020ad45de4000000b004415fdfddaemr40524807qvb.100.1648819245783;
-        Fri, 01 Apr 2022 06:20:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648819245; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp865872lfb;
+        Fri, 1 Apr 2022 06:06:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwpJbFajXLjFZELlA5vKHyP6VkMBR9DP4Wz5IKdGjp2ZXr3TX3i3wv+Pqb5gLeuDdy002C/
+X-Received: by 2002:a25:2a4c:0:b0:63c:a77f:2688 with SMTP id q73-20020a252a4c000000b0063ca77f2688mr8310289ybq.496.1648818397887;
+        Fri, 01 Apr 2022 06:06:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648818397; cv=none;
         d=google.com; s=arc-20160816;
-        b=gsl5UtczlFJMFFLEqhl07M3gsYt/hztc9x6GS66rRICxJ8o1J4++6Fx5rqyhhEyYlk
-         sngyS6MQ+eYuJDs3w6iUxu9JZdX+xJpN2OfgQvroSsspDafUPXADxJZM7PQNZaDx/xJt
-         zJ4sjyIgtdLLCtu3FpOM/uRRfaU2IJm0W94Zrr62jfzg+kO+/jiKAGkowtP9r9FJ66sD
-         oeDhtq68DwgUag6+mkprHawiysNL7HH2JY/l/Nm5EY4x0hy8kZqrMnTfSjr7ytHazqsw
-         3m3n0SVDi7aP5ZtncT6jOS+4dxqcRRsP7FQ3IBNRJ5Xe05gfKI7tgVy5DgfHWMU/Pkbm
-         PmLg==
+        b=OMBN1jrB30cskQBnVWQUbBeKujj8c8msWeOWi4t+8pQw98R4Jp9qsh9OJR/yRYKI9H
+         UkDQvaKiQiE7SZz734k1VmK5FU4CN6tMvwB4Z8Y78O1X279jKCSaE3LYOJykPsyOSleX
+         RcAsQlGkCwrjYFs8rtRDShit609LfZl8xyF8vP7b+q52qjAcWZBkviggw7NeDTV09TK2
+         lbfYD7bXmbWyWrXnH5wYu8Zi0Lkn8SCmEDqRLHn02JJ44qYAziEudfgViaaQnDqhbvWv
+         29HVubb+ePZwRjIlellVtT3EqzQYsB9fg8lP8Ja6v+5g2SFbVsPXhvvtXrr/DnW8uPJC
+         gajw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=WwXuC1smwhhROcpwAgQUnJnlG+qR4By2v5jfnqOjKOM=;
-        b=BVQVrX1T2XybuKjP4oboYUq2ZsEgXdKztzcV8xk3ageUoP/A78hjXZAczwz5t4hBUm
-         5msPUYctqQLJXjWbDQ8S8eF9fqrjm2T6bsnaSLkld2cqKH7pd9f4sV3A/s3ht+HF7wur
-         5hphafpLH9N8whqG4wjRozpkMoy6dQ0HWre3ICAtw/CRpAd7xJFeSbL4grJ7tL7OXxXx
-         JXMbhaoeHP+nbSM+MNxdgxeRr4clzPmChKxDywE99rNPhiOwPcLdsO7/dNvwkgLw9kCf
-         FgyEpFkR0AAX2lUakOoK7tF394Zj6H71mF3V5tJsLRWZgkvWN3JkA+mbBDNFfrfoArxL
-         yvUA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=mVDseWzN+HlrxL3HARbsfofjeBFHFWJXWmLN8j6f44w=;
+        b=Aba5RLvfYrWm+XS6UslKCXeRkLUUqLCHDp0ciGPnqpu51bEU7GZ1AX3L8js9SE8b1L
+         g60GnvGGhOAjeTDftB/1HJ14RBs8smrP1lWuT8p5jPXusv/+CCHDzFrKwjvsD3iGGsSk
+         nMj8URyIXFeJq2HPJW9G32fpFaIpz+fzQTPHEhw6/BtnIDrT+Y6Z+u5FKRBYGXKZU6Lt
+         HD6wiOb2rUdKNL0vlBtdMUYGBqNrvIIfXVozcotjLbhaSgUkxQz80BwkQjAtaqSycrZy
+         c378EciHcVmhb2WUEQty0qkpZSE7UXlq8G+S3dl54sADKm/8lM7THNHvHiXBYvO1hU3+
+         FbnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@greensocs.com header.s=mail header.b=jMURKNX4;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WVloQNIP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s3-20020a05620a29c300b0067e4be23962si709956qkp.423.2022.04.01.06.20.45
+        by mx.google.com with ESMTPS id z127-20020a814c85000000b002e64ca104f9si1974081ywa.240.2022.04.01.06.06.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Apr 2022 06:20:45 -0700 (PDT)
+        Fri, 01 Apr 2022 06:06:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@greensocs.com header.s=mail header.b=jMURKNX4;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WVloQNIP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44502 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50974 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naHCn-0003uB-4I
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 09:20:45 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51008)
+	id 1naGz7-0004xh-9L
+	for alex.bennee@linaro.org; Fri, 01 Apr 2022 09:06:37 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48376)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
- id 1naH9Z-0000Rw-40; Fri, 01 Apr 2022 09:17:26 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:37582)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
- id 1naH9U-0006Dq-Gu; Fri, 01 Apr 2022 09:17:24 -0400
-Received: from [192.168.13.13] (unknown [195.68.53.70])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 2760C20777;
- Fri,  1 Apr 2022 13:17:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1648819037;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WwXuC1smwhhROcpwAgQUnJnlG+qR4By2v5jfnqOjKOM=;
- b=jMURKNX43E6tp9vEYCjG2Vta2rLQr9+MwJmpighT5Z6NnDn3C4CkodHyglxj9xH1WrOpey
- NiA1sZrnShC4fSI3qJnh7jobBLVteN52cXb043BE71Q3EiPleOsQdFH7ahnSyUwc+llYx+
- eUyuCcHBwwWsDe24eifj5WWr2TBZ0vc=
-Message-ID: <77de88b4-9fb7-d1c6-4f2a-55b7b5cbc9b4@greensocs.com>
-Date: Fri, 1 Apr 2022 15:17:15 +0200
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1naGyn-0004wB-6W; Fri, 01 Apr 2022 09:06:17 -0400
+Received: from [2607:f8b0:4864:20::72e] (port=44028
+ helo=mail-qk1-x72e.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1naGyk-0004Vd-Rt; Fri, 01 Apr 2022 09:06:16 -0400
+Received: by mail-qk1-x72e.google.com with SMTP id p25so1993839qkj.10;
+ Fri, 01 Apr 2022 06:06:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:date:from:to:cc:subject:message-id:reply-to:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=mVDseWzN+HlrxL3HARbsfofjeBFHFWJXWmLN8j6f44w=;
+ b=WVloQNIPT7NwHJlhutoCIdY5UqKVKzx+oCF1lNSNFldW8FcyJ7BS+kJMPEvr02QVLk
+ dIePl4M3dy4IMQJk8G2/dsORgl+AYn4WTiXnREidqufLurYUeTLDslfMuUvQnS2qVtdQ
+ NQ2bYYwNx284TwwH38CNR7o+r7aouw0LA0en0a/1OkYrM/mbkyCbMwZFPY+0N13COrXT
+ izLm8ACwfZWNOlXiP5jBRoDVnvTimS+jkVST3FMslcTfnvlQJV5LooXdcUK8DjetlYQJ
+ b1YeRykQAKe/XtYKfdubKpVA7RN8NUqt3nG6hRbvBqiqoGN6wXxRffPUuOyh8pbGMxi4
+ Qz5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :reply-to:references:mime-version:content-disposition:in-reply-to;
+ bh=mVDseWzN+HlrxL3HARbsfofjeBFHFWJXWmLN8j6f44w=;
+ b=QrUcY+f1HqMtU/qvgtB5X18aCeKi8EkY8x82BZFONj48MTJNbCWL1+Sg8lrgiWDG6U
+ AKxZSwMVc+Xldq6B9Ui+1I7liLFtQrVuI223Y4QyaGR23B71gZYT2A2sGS7bW/1rjcqq
+ 1iBdtXY4Gf142A11Nd6JrO+Q66MUEsQm3sMgwztKFC7u17gFRnhzFeJYjELhu4wMd7ft
+ bwtZWyJ/Guk+HvtqN69OcW9MKeZ5U3JFTPpYb5IDxkG71tw1oLZyibcirffnpXChffXu
+ 1s4hTrLXB9im+NWCiMljXjYaCHB8YWM4rAyqnbiqt4YWKZHl4JXuDuD8vUSfdyMLl+rn
+ P0Ow==
+X-Gm-Message-State: AOAM533T8lwEUKhqlNeY5KOXveButCPes6LItOB3Tr+q7WyJNbpprDki
+ WFyYiZ4K+cI+K9B3WhaTKg==
+X-Received: by 2002:a37:a18c:0:b0:67b:2d46:4db5 with SMTP id
+ k134-20020a37a18c000000b0067b2d464db5mr6473380qke.67.1648818372049; 
+ Fri, 01 Apr 2022 06:06:12 -0700 (PDT)
+Received: from serve.minyard.net ([47.184.144.75])
+ by smtp.gmail.com with ESMTPSA id
+ b13-20020ac85bcd000000b002e06856b04fsm1822635qtb.51.2022.04.01.06.06.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 01 Apr 2022 06:06:11 -0700 (PDT)
+Received: from minyard.net (unknown
+ [IPv6:2001:470:b8f6:1b:18b8:c103:5b12:b0c4])
+ by serve.minyard.net (Postfix) with ESMTPSA id 72D251800BB;
+ Fri,  1 Apr 2022 13:06:10 +0000 (UTC)
+Date: Fri, 1 Apr 2022 08:06:09 -0500
+From: Corey Minyard <minyard@acm.org>
+To: Klaus Jensen <its@irrelevant.dk>
+Subject: Re: [RFC PATCH 0/4] hw/i2c: i2c slave mode support
+Message-ID: <20220401130609.GG29333@minyard.net>
+References: <20220331165737.1073520-1-its@irrelevant.dk>
+ <20220331203205.GB29333@minyard.net> <Ykabr0wQe9VLISu2@apples>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v5 3/4] hw/intc/exynos4210: replace 'qemu_split_irq' in
- combiner and gic
-Content-Language: en-US-large
-To: Zongyuan Li <zongyuan.li@smartx.com>, qemu-devel@nongnu.org
-References: <20220324181557.203805-1-zongyuan.li@smartx.com>
- <20220324181557.203805-4-zongyuan.li@smartx.com>
-From: Damien Hedde <damien.hedde@greensocs.com>
-In-Reply-To: <20220324181557.203805-4-zongyuan.li@smartx.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=5.135.226.135;
- envelope-from=damien.hedde@greensocs.com; helo=beetle.greensocs.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Ykabr0wQe9VLISu2@apples>
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::72e
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72e;
+ envelope-from=tcminyard@gmail.com; helo=mail-qk1-x72e.google.com
+X-Spam_score_int: 0
+X-Spam_score: -0.1
+X-Spam_bar: /
+X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,48 +123,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "open list:Exynos" <qemu-arm@nongnu.org>
+Reply-To: minyard@acm.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
+ Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Klaus Jensen <k.jensen@samsung.com>, qemu-devel@nongnu.org,
+ Jeremy Kerr <jk@ozlabs.org>, qemu-arm@nongnu.org,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
+ Matt Johnston <matt@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6tVMACjZWd5F
+X-TUID: npzi24cyb3mM
 
-
-
-On 3/24/22 19:15, Zongyuan Li wrote:
-> Signed-off-by: Zongyuan Li <zongyuan.li@smartx.com>
-> ---
->   hw/arm/exynos4210.c           | 26 +++++++++++
->   hw/intc/exynos4210_combiner.c | 81 +++++++++++++++++++++++++++--------
->   hw/intc/exynos4210_gic.c      | 36 +++++++++++++---
->   include/hw/arm/exynos4210.h   | 11 ++---
->   include/hw/core/split-irq.h   |  5 +--
->   5 files changed, 126 insertions(+), 33 deletions(-)
+On Fri, Apr 01, 2022 at 08:29:03AM +0200, Klaus Jensen wrote:
+> On Mar 31 15:32, Corey Minyard wrote:
+> > On Thu, Mar 31, 2022 at 06:57:33PM +0200, Klaus Jensen wrote:
+> > > From: Klaus Jensen <k.jensen@samsung.com>
+> > > 
+> > > Hi all,
+> > > 
+> > > This RFC series adds I2C "slave mode" support for the Aspeed I2C
+> > > controller as well as the necessary infrastructure in the i2c core to
+> > > support this.
+> > 
+> > I've been wondering when this would happen :).  I had put some thought
+> > into how this would work, but hadn't come up with anything good.
+> > 
+> > The big disadvantage of this is you are adding an interface that is
+> > incompatible with the current masters and slaves.  So you are using the
+> > same I2C bus, but slaves written this way cannot talk to existing
+> > masters, and masters written this way cannot talk to existing slave.
+> > You could adapt the masters to be able to work either way, and I suppose
+> > some slaves that could do it could have both an async send and a normal
+> > send. 
 > 
-> diff --git a/include/hw/core/split-irq.h b/include/hw/core/split-irq.h
-> index ff8852f407..eb485dd7a6 100644
-> --- a/include/hw/core/split-irq.h
-> +++ b/include/hw/core/split-irq.h
-> @@ -42,9 +42,6 @@
->   
->   #define MAX_SPLIT_LINES 16
->   
-> -
-> -OBJECT_DECLARE_SIMPLE_TYPE(SplitIRQ, SPLIT_IRQ)
-> -
->   struct SplitIRQ {
->       DeviceState parent_obj;
->   
-> @@ -52,4 +49,6 @@ struct SplitIRQ {
->       uint16_t num_lines;
->   };
->   
-> +OBJECT_DECLARE_SIMPLE_TYPE(SplitIRQ, SPLIT_IRQ)
-> +
->   #endif
+> Would it make sense to introduce a QOM Interface to differentiate
+> between the slave/master types?
 
-Is there a reason to move the OBJECT_DECLARE_SIMPLE_TYPE line ?
+Yes, that would be a good idea, as Damien said.  You will have a type
+that is capable of both for both sync and async for the master and the
+slave, then types that are capable of one sync and async so the code
+can sort out what can talk to what.
 
---
-Damien
+> 
+> > But you could not adapt a slave device for the Aspeed to do both.
+> 
+> Exactly, the Aspeed must be able to defer the ack, so it cannot
+> implement send(). Even if it buffered up the write, I don't think it
+> would be correct to Ack the transfer until the host has Acked it.
+> 
+> > But that said, I don't know of a better way to handle this.
+> > 
+> > You don't have the ability to nack a byte in what you have currently.
+> > That's probably something that will be needed.
+> 
+> True. Didn't consider that. Since the ack is basically defined as the
+> scheduling of the bh, I guess I have to come up with something where I
+> can also pass a "return value".
+> 
+> > 
+> > This is obviously not something useful by itself.  How do you plan to
+> > tie this in to something else that would use it?
+> > 
+> 
+> This is specifically for implementing an NVMe-MI device which uses MCTP
+> transactions (in which both requests and replies are master->slave
+> transfers). I just wanted to get a feel for how you maintaines would
+> envision this begin done before posting that. The NVMe-MI device will
+> function exactly like the example i2c echo device (i.e. receive an MCTP
+> transaction using the normal i2c slave interface, parse the
+> transaction/request, master the bus and start a new transfer).
+
+Ok, so you aren't planning to add some sort of interface that would
+allow a net connection to hook up as an I2C master.
+
+Someone submitted something a while ago for doing an I2C slave that way,
+but there were some issues and nothing came of it.  It's tricky to do
+because it has to be non-blocking.
+
+IIRC, there was also some work that allowed two emulations to go on at a
+time in a qemu instance, that could allow a BMC and a main processor to
+run together.  This might be useful in that scenario.  My question was
+really just more curiousity, wondering what else is coming in the
+future.
+
+Thanks,
+
+-corey

@@ -1,203 +1,262 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp668318lfb;
-        Fri, 1 Apr 2022 00:12:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxzAB41+9KWDPK9MakOJ9RHwAx/sXz8L2HBVIo9efdklj7c/ZE+s0XbYT3u/7kA4F+AgTpB
-X-Received: by 2002:a05:620a:4151:b0:680:d7f5:98b2 with SMTP id k17-20020a05620a415100b00680d7f598b2mr5765284qko.352.1648797138886;
-        Fri, 01 Apr 2022 00:12:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648797138; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp704089lfb;
+        Fri, 1 Apr 2022 01:23:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKjCAUWR2Fn0lMNmEMfjThw6OkMKJUWQFpqX6XjJHcVNzc9FPnJFMHfn5pIA51hTptqYAA
+X-Received: by 2002:a37:a3d2:0:b0:67b:30b2:732f with SMTP id m201-20020a37a3d2000000b0067b30b2732fmr5783943qke.719.1648801417714;
+        Fri, 01 Apr 2022 01:23:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648801417; cv=none;
         d=google.com; s=arc-20160816;
-        b=P69OQUq6Ljxbif/dEaWGkmCI0Kfr4OOKpi1r3hqcwOtSE+s9v5asvKJXmhjpeAXVJf
-         0BUo+oSZNKf84IQdT80mapVe9J4oGCwCQoNjGM1xlIJyHmaSZTSRrfMwNpnys+ZCAt7A
-         A2T4D574fKcu1Qy7J2yJqOguTUW2vac2sTyCGlDz/aAAkPVoj4Y1bjvWCr8uCliZBZ8v
-         Nmh/sqK2Whjaw3jEVd4qTL+fTUbm4TC5/fXPBAG+/IqQYD21AtQXjEFlhlZR1Q1wLepW
-         Jt+TJUYVfTtKV7LBA5EHND+ahLbUQnHPQ0FtvPrhBaqkEJir0DOYTqm+Xbs0p1Uckada
-         vFUA==
+        b=R04JXesmJUgQRwIMsVeLiMBt2RpWfWINv10jaw85iaFUypNMkz6I307gOUR7l3ivoa
+         r1a+9Nk9b2tERSaiE4uphZlqGzEDV1qeuxjN4HT6BYA6PWA5KcTC5xG0zKbX615loRqe
+         Ga0EseDYNnB0bgPV72dHxyjIIdL+CC32OjNofiz2EF3hdT5G22dwYKY0lR+75lgC+y9d
+         0y4ZklQzRQNQZO+l/iSbOEpYPRYbs4PAOohRcwn+O2zs+pM9FKcZQwuA0/NJtIERq3fC
+         chs4nU52HV7aY3Lnw/yzf38n4FS5yLN7giBKxa1R5W2pxXEPKjvMYBFp0i6gOBkVzDFs
+         0b3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=v4Sh7C5xjfxkoBa7PXcY56UAN93dnkD7s6YXvpCk5Y4=;
-        b=Ei1e+yoFF6zIRdv6OB6Xt+XXM09Jx9a52oWAzNGfHnsKV8m1WGI3cMg7UPpfNtl20M
-         tH9gm9qWs6VwIpJ0/kROiM2x03M/FAedAjX+v46YLZSVp4CR6do4mqwVP+eXvOuNui3V
-         GvAP9Z9CSaJMUWVDoH6MvpQ9vJQMcteCAM62TnYISs0pJj4LExM/S2VQrcZJQFxGff85
-         gwLJ2qGJmMMtCf42eYX3GSZVb61XjlsrorKPb487Ll2RWtJhS9MKwvkwxU8cA0qgu59h
-         x5HrzB0vJxg8ALmoaj5hVMxpfZ05zKdvRDIesA2r0WLJMmzqqLGOZJMCmlgBS5pnSOe6
-         92dA==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=AOcciOs5c0iC/nSZnZbeENRdQPZ6mdw6wuZ+kawOeNs=;
+        b=hBc0nhAg5HKErUoVcIeV4g+RfT7YmiCJLyUYdJBYEObhlfBB1+7vxE8uam8hxCap6z
+         6hPMavOzJHUNsJ6TG8C7kidJvx7ixsA/3VxhvRPtt7BJK4b/XwfT11/j8p4qzULCM/qu
+         O5ex42POc8bVNoeruFFQn7t4zCdR9gVQ3Nv3t+FFCVbkjWX2+g/LRWXqtZt5GdZr7SR9
+         kKLuI60hxFQQu5j2Quc666qLshz9bUsIJAt5Pk80d+GNmRnaZJ5P4gT/xnKh8RnLD1j3
+         c+WiEsMQ7VbMB/q//jp4yKmqa5zB+e4ZP3TSb9FwSe3qJIJxhGYpcOoDrEMox3YsFFWU
+         /7eQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="gpsZ/6WU";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=q0wrvc81;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g22-20020ac87756000000b002e36d59939dsi670714qtu.271.2022.04.01.00.12.18
+        by mx.google.com with ESMTPS id k19-20020a05620a415300b0067e4c1bb9absi1074295qko.495.2022.04.01.01.23.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Apr 2022 00:12:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Apr 2022 01:23:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="gpsZ/6WU";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:56772 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=q0wrvc81;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48458 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naBSE-0007ed-B9
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 03:12:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37118)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1naCZ7-0003ZD-Hy
+	for alex.bennee@linaro.org; Fri, 01 Apr 2022 04:23:36 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46552)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1naBRo-0007ah-1E; Fri, 01 Apr 2022 03:11:52 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:50304)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1naBRm-0005bx-ER; Fri, 01 Apr 2022 03:11:51 -0400
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 4D6A5C60912;
- Fri,  1 Apr 2022 09:11:48 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1648797108;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=v4Sh7C5xjfxkoBa7PXcY56UAN93dnkD7s6YXvpCk5Y4=;
- b=gpsZ/6WUeQtmfAm0pL0YTwJgwRUtTHyeIn/TljcEdNKvZtJ2OcTp24JPzTEGAY7/gt9yQ5
- l0AJvctkEL83+YgoEfP1Sg7HhYk7dpFZaxWCJyQzUuLxbYl0mUeTl94MSd6wALZHMmjjgX
- KWQqEAofNXRCpQFRaxpA5TDA3dAbVy1oTeyXM7Dqk2DNmXoG8g0HFBB5eO1A2l82+1dVks
- 1behUW+js1ucA/NydFadleEjQxq8ngVjd8xvjJAnzkUGqSqI8LAUd8IoNF4w5MZbfAUlUu
- f8uLLf1mC1u14cLqmfRfMXQqP7xmcyYk3W2la+GeODwz+Yb5jFl/HSbyPix7Bw==
-Date: Fri, 1 Apr 2022 09:11:48 +0200
-From: Luc Michel <luc@lmichel.fr>
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1naCO0-0000r5-0l; Fri, 01 Apr 2022 04:12:01 -0400
+Received: from [2a00:1450:4864:20::12a] (port=34774
+ helo=mail-lf1-x12a.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1naCNx-0005le-Vl; Fri, 01 Apr 2022 04:11:59 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id 5so3499390lfp.1;
+ Fri, 01 Apr 2022 01:11:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=AOcciOs5c0iC/nSZnZbeENRdQPZ6mdw6wuZ+kawOeNs=;
+ b=q0wrvc81b7sUegEfGONxJgWXN7rGckF3kpEtfUyraUrxlr3RL+7kS0zaNxdQDxpm6h
+ VIDORuTpDW4g4Svt8+wnysbcE2qaP44JY4saYTWXSRu63dnepClg+bObP5l35aGNBzu3
+ TRwHqKIIrUoGj/IJuBuFpdQaaV8PEjb07oWuZIuX9ulZXgNNarQj1qILD2mT2BSJJVG9
+ QMAxmlwTVjcdpm/r/RSERwWra2/o6VyEAcfjbf4OH2rrB97LlsxyfyajsQGtQtMu4z1L
+ o2pvryZdkSwAuBbi6SYh6bhFXBrmYrc8rOSDt5l9JOnahjxxmq+sOETUpRAMFr89AbbW
+ e9Og==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=AOcciOs5c0iC/nSZnZbeENRdQPZ6mdw6wuZ+kawOeNs=;
+ b=ho1GCil6fuR7MTYcq7jX0blApIcKeMCsCt5hsROcA7F6EjWhRm0RgUdH3XHhyBP4/N
+ iVIIVwiGJr/E2TxhBTTCylRtpw+z1jqRxHCeOweO3ljO5DwT7XPQbSuv92zfE6dNlEtm
+ O/3ZW+vQkFHLjNOZg22cAiX1IbPBLdo7ob7zQdzXx67UXWgxsIYFSj1u8LrsELWeNTTf
+ ynRqOXtsuUbpmaAvc5s19h92plSw01WRW+PidPJJrWtt+0JBLX3d3mxpIHVILS3KOO3X
+ uoMblXIkYXUASrIXxHtiuxlaM31aSe0jrxSKp8vUdZO1TAEfsUSFij6gk3GdPVuQ2kk+
+ r6oA==
+X-Gm-Message-State: AOAM530OHOj0d1lJqgmQcb/i6vYls84LW2usmIutqaDxuKDcP7qrx2Fd
+ 97bLO+QX2PeMPI1vacpvhMo=
+X-Received: by 2002:a05:6512:3f96:b0:445:a191:5d43 with SMTP id
+ x22-20020a0565123f9600b00445a1915d43mr13171154lfa.603.1648800713498; 
+ Fri, 01 Apr 2022 01:11:53 -0700 (PDT)
+Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
+ by smtp.gmail.com with ESMTPSA id
+ d25-20020a194f19000000b0044a2ad98dcasm166203lfb.167.2022.04.01.01.11.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 01 Apr 2022 01:11:53 -0700 (PDT)
+Date: Fri, 1 Apr 2022 10:11:51 +0200
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v1 2/2] hw/arm/xlnx-zynqmp: Connect 4 TTC timers
-Message-ID: <YkaltOpNAOkuk/5E@sekoia-pc.home.lmichel.fr>
+Subject: Re: [PATCH v1 1/2] timer: cadence_ttc: Break out header file to
+ allow embedding
+Message-ID: <20220401081151.GA18849@fralle-msi>
 References: <20220331222017.2914409-1-edgar.iglesias@gmail.com>
- <20220331222017.2914409-3-edgar.iglesias@gmail.com>
+ <20220331222017.2914409-2-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220331222017.2914409-3-edgar.iglesias@gmail.com>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+In-Reply-To: <20220331222017.2914409-2-edgar.iglesias@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::12a
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x12a.google.com
+X-Spam_score_int: -1006
+X-Spam_score: -100.7
+X-Spam_bar: ---------------------------------------------------
+X-Spam_report: (-100.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_WELCOMELIST=-0.01,
+ USER_IN_WHITELIST=-100 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
  asifsiddiqui120@gmail.com, edgar.iglesias@amd.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, f4bug@amsat.org,
- francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
+ alistair@alistair23.me, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ f4bug@amsat.org, francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
  qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MDjdp3DRDEXC
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tSZDjt80+QX7
 
-On 00:20 Fri 01 Apr     , Edgar E. Iglesias wrote:
+On [2022 Apr 01] Fri 00:20:16, Edgar E. Iglesias wrote:
 > From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
 > 
-> Connect the 4 TTC timers on the ZynqMP.
+> Break out header file to allow embedding of the the TTC.
 > 
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 
-Reviewed-by: Luc Michel <luc@lmichel.fr>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
 > ---
->  include/hw/arm/xlnx-zynqmp.h |  4 ++++
->  hw/arm/xlnx-zynqmp.c         | 22 ++++++++++++++++++++++
->  2 files changed, 26 insertions(+)
+>  include/hw/timer/cadence_ttc.h | 54 ++++++++++++++++++++++++++++++++++
+>  hw/timer/cadence_ttc.c         | 32 ++------------------
+>  2 files changed, 56 insertions(+), 30 deletions(-)
+>  create mode 100644 include/hw/timer/cadence_ttc.h
 > 
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index 9d9a9d0bf9..85fd9f53da 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -41,6 +41,7 @@
->  #include "hw/or-irq.h"
->  #include "hw/misc/xlnx-zynqmp-apu-ctrl.h"
->  #include "hw/misc/xlnx-zynqmp-crf.h"
+> diff --git a/include/hw/timer/cadence_ttc.h b/include/hw/timer/cadence_ttc.h
+> new file mode 100644
+> index 0000000000..e1251383f2
+> --- /dev/null
+> +++ b/include/hw/timer/cadence_ttc.h
+> @@ -0,0 +1,54 @@
+> +/*
+> + * Xilinx Zynq cadence TTC model
+> + *
+> + * Copyright (c) 2011 Xilinx Inc.
+> + * Copyright (c) 2012 Peter A.G. Crosthwaite (peter.crosthwaite@petalogix.com)
+> + * Copyright (c) 2012 PetaLogix Pty Ltd.
+> + * Written By Haibing Ma
+> + *            M. Habib
+> + *
+> + * This program is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU General Public License
+> + * as published by the Free Software Foundation; either version
+> + * 2 of the License, or (at your option) any later version.
+> + *
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +#ifndef HW_TIMER_CADENCE_TTC_H
+> +#define HW_TIMER_CADENCE_TTC_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "qemu/timer.h"
+> +
+> +typedef struct {
+> +    QEMUTimer *timer;
+> +    int freq;
+> +
+> +    uint32_t reg_clock;
+> +    uint32_t reg_count;
+> +    uint32_t reg_value;
+> +    uint16_t reg_interval;
+> +    uint16_t reg_match[3];
+> +    uint32_t reg_intr;
+> +    uint32_t reg_intr_en;
+> +    uint32_t reg_event_ctrl;
+> +    uint32_t reg_event;
+> +
+> +    uint64_t cpu_time;
+> +    unsigned int cpu_time_valid;
+> +
+> +    qemu_irq irq;
+> +} CadenceTimerState;
+> +
+> +#define TYPE_CADENCE_TTC "cadence_ttc"
+> +OBJECT_DECLARE_SIMPLE_TYPE(CadenceTTCState, CADENCE_TTC)
+> +
+> +struct CadenceTTCState {
+> +    SysBusDevice parent_obj;
+> +
+> +    MemoryRegion iomem;
+> +    CadenceTimerState timer[3];
+> +};
+> +
+> +#endif
+> diff --git a/hw/timer/cadence_ttc.c b/hw/timer/cadence_ttc.c
+> index 64108241ba..e57a0f5f09 100644
+> --- a/hw/timer/cadence_ttc.c
+> +++ b/hw/timer/cadence_ttc.c
+> @@ -24,6 +24,8 @@
+>  #include "qemu/timer.h"
+>  #include "qom/object.h"
+>  
 > +#include "hw/timer/cadence_ttc.h"
->  
->  #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
->  OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
-> @@ -84,6 +85,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
->  #define XLNX_ZYNQMP_MAX_RAM_SIZE (XLNX_ZYNQMP_MAX_LOW_RAM_SIZE + \
->                                    XLNX_ZYNQMP_MAX_HIGH_RAM_SIZE)
->  
-> +#define XLNX_ZYNQMP_NUM_TTC 4
 > +
->  /*
->   * Unimplemented mmio regions needed to boot some images.
->   */
-> @@ -128,6 +131,7 @@ struct XlnxZynqMPState {
->      qemu_or_irq qspi_irq_orgate;
->      XlnxZynqMPAPUCtrl apu_ctrl;
->      XlnxZynqMPCRF crf;
-> +    CadenceTTCState ttc[XLNX_ZYNQMP_NUM_TTC];
+>  #ifdef CADENCE_TTC_ERR_DEBUG
+>  #define DB_PRINT(...) do { \
+>      fprintf(stderr,  ": %s: ", __func__); \
+> @@ -49,36 +51,6 @@
+>  #define CLOCK_CTRL_PS_EN    0x00000001
+>  #define CLOCK_CTRL_PS_V     0x0000001e
 >  
->      char *boot_cpu;
->      ARMCPU *boot_cpu_ptr;
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 5bfe285a19..375309e68e 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -68,6 +68,9 @@
->  #define APU_ADDR            0xfd5c0000
->  #define APU_IRQ             153
->  
-> +#define TTC0_ADDR           0xFF110000
-> +#define TTC0_IRQ            36
-> +
->  #define IPI_ADDR            0xFF300000
->  #define IPI_IRQ             64
->  
-> @@ -316,6 +319,24 @@ static void xlnx_zynqmp_create_crf(XlnxZynqMPState *s, qemu_irq *gic)
->      sysbus_connect_irq(sbd, 0, gic[CRF_IRQ]);
->  }
->  
-> +static void xlnx_zynqmp_create_ttc(XlnxZynqMPState *s, qemu_irq *gic)
-> +{
-> +    SysBusDevice *sbd;
-> +    int i, irq;
-> +
-> +    for (i = 0; i < XLNX_ZYNQMP_NUM_TTC; i++) {
-> +        object_initialize_child(OBJECT(s), "ttc[*]", &s->ttc[i],
-> +                                TYPE_CADENCE_TTC);
-> +        sbd = SYS_BUS_DEVICE(&s->ttc[i]);
-> +
-> +        sysbus_realize(sbd, &error_fatal);
-> +        sysbus_mmio_map(sbd, 0, TTC0_ADDR + i * 0x10000);
-> +        for (irq = 0; irq < 3; irq++) {
-> +            sysbus_connect_irq(sbd, irq, gic[TTC0_IRQ + i * 3 + irq]);
-> +        }
-> +    }
-> +}
-> +
->  static void xlnx_zynqmp_create_unimp_mmio(XlnxZynqMPState *s)
+> -typedef struct {
+> -    QEMUTimer *timer;
+> -    int freq;
+> -
+> -    uint32_t reg_clock;
+> -    uint32_t reg_count;
+> -    uint32_t reg_value;
+> -    uint16_t reg_interval;
+> -    uint16_t reg_match[3];
+> -    uint32_t reg_intr;
+> -    uint32_t reg_intr_en;
+> -    uint32_t reg_event_ctrl;
+> -    uint32_t reg_event;
+> -
+> -    uint64_t cpu_time;
+> -    unsigned int cpu_time_valid;
+> -
+> -    qemu_irq irq;
+> -} CadenceTimerState;
+> -
+> -#define TYPE_CADENCE_TTC "cadence_ttc"
+> -OBJECT_DECLARE_SIMPLE_TYPE(CadenceTTCState, CADENCE_TTC)
+> -
+> -struct CadenceTTCState {
+> -    SysBusDevice parent_obj;
+> -
+> -    MemoryRegion iomem;
+> -    CadenceTimerState timer[3];
+> -};
+> -
+>  static void cadence_timer_update(CadenceTimerState *s)
 >  {
->      static const struct UnimpInfo {
-> @@ -721,6 +742,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->      xlnx_zynqmp_create_efuse(s, gic_spi);
->      xlnx_zynqmp_create_apu_ctrl(s, gic_spi);
->      xlnx_zynqmp_create_crf(s, gic_spi);
-> +    xlnx_zynqmp_create_ttc(s, gic_spi);
->      xlnx_zynqmp_create_unimp_mmio(s);
->  
->      for (i = 0; i < XLNX_ZYNQMP_NUM_GDMA_CH; i++) {
+>      qemu_set_irq(s->irq, !!(s->reg_intr & s->reg_intr_en));
 > -- 
 > 2.25.1
 > 
-
--- 

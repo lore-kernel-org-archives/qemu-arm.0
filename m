@@ -1,255 +1,302 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp418190lfb;
-        Thu, 31 Mar 2022 15:26:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyiYz/pO/w+kGAcj5ZollXkJ+wEQQBoA1rgkLqzfGaJeGoEhGbu/nDwWSiKSI+NuBTbQU7R
-X-Received: by 2002:a81:140b:0:b0:2e6:650c:dd7b with SMTP id 11-20020a81140b000000b002e6650cdd7bmr7043110ywu.365.1648765565208;
-        Thu, 31 Mar 2022 15:26:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648765565; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp508655lfb;
+        Thu, 31 Mar 2022 18:26:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwFg06qGejytW0C1kBsBeoTL9ogO6eXFthsOe28xlMzPbmxpvtBypdVLTkWObf/MHO9ywBP
+X-Received: by 2002:a05:6214:f03:b0:441:192e:d745 with SMTP id gw3-20020a0562140f0300b00441192ed745mr37882642qvb.118.1648776390392;
+        Thu, 31 Mar 2022 18:26:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648776390; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y551Z7Wl2iocWEAZg/SafJiRH4kM1+WiEf/JirCun1kpoyhJ/EaHn7HFHoFzAtBhSE
-         adqEwxt7Jbk5U+1wbbLeZ0qGv17P/QOIgmk/JHJGVT6xqrYBoZ7AH+tT+P+fF2QEAS2T
-         nG5u/VBny0LbAEV2AOpvnxffuJJKsKD8BUxsOmXybJDCeYICE1xMKghS9mtfhqWyAgJK
-         JZNSAvAu0QLyiN5X+Zzg+Y1UJZ4bRKa62BtFxnIIWQXorsyFv5syS0ZeEUqP0GqI18bN
-         iFeagwg2AXWxgA268BeFTTqLqJl9BiH6oCE8nPcW1A2+9lSUTDBweFEc0QXIEzguKD3g
-         QRUw==
+        b=pHQVJ2CsJC6VgrWt2Gn64yatXZm+rTLRm7prjkyh9wMcJj34UYqsc/ddqrUKLKmhOF
+         LkEK+0Gks1HQV5ziKj8eQtmhlkz03RFissUT750YfXnw5eHNSu+9iSrP5oePUPRQ6f0d
+         wlZ48qEZasdXAzzWu/0khzjPHKiCw27866F5tNQXr3UJX4eIas4PV30h6VweXSziy/qv
+         wusuXQssKuaxIOTFo6q5gOqc7yoNfFgS06r3sm94ucu1a8F4WeoXUE94NfnObUIXNT3W
+         /JpjrTbVY0pIFI7aH0QrEEmUgeVFgvL8luIv8RqG10NPA9laJ13gfL/y2Lq67tAz+Ifs
+         pEbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=/poTCG9aUgajh1ydyMdcGu8vdPS4oshl7xTbY6x/bqM=;
-        b=fp4/5MfPT32ymERonkU/nNWxvg9adkMIlJhoZZDb4nPs148IeW2rNAoRztdr1t5Xyt
-         dzZxy0+Fbq8pZUHnxJP0HIGS7GXQYOrSJcZNyZmfC40IClPYDraXS1vofgowbT+TteqZ
-         qNdQi2GaiH8xivfsE1H9Psf1knX3n7XmKDMukHFkQ2EcA5dNuWuVyvbYR9p00+bcbN/s
-         ZwDXwB2ffzaDdcCnok4qhYb0hQ317gHV2fmQnlKDkPKXVp3l8fvA/c2AraZH3tw3d9n6
-         UHEAfafHAxusmBtqVkJmY1S2fkREAPw9yRqvYihO5DSMwkaRpWrMpuWF5kkIFTgsVW2S
-         ScUA==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date;
+        bh=lrgz/2iK7456o9kjFh6+10TLSZu07g2YM1Od+fjH6lo=;
+        b=UggKWwPyea/4c/D6ZiySuLPbwsxMoGlBA4Ef5I3Gc92uzLulVELtpihzOPWnx49YUR
+         0I/REMMN2qF6qX5LO/6HLg/Uy+F9eOKxB5q5EOlFexGLdUyc9Rc4SypqYH97twbqJhIL
+         ppSKf0UYJi5crhbBhBLcKGG/CbZJsS8pENS2JJ8I0aomtjL3q6o11MyEeCroQ/90/Us5
+         Be/sHZmXek7XPnuR/FuHuaFZOrRFw3YOJCWgmq8zKJzLArg9cv0y/Xp02W8rWIFNenFI
+         erZJ3rTqO1saHSMenzCSqsfGnhTjkTzW0DYU/JUplzbXMm/waVt+15XUc9Rl6/t+xwI0
+         OYoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=iz4SIwX1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b15-20020a81bc4f000000b002eaf5110682si642280ywl.496.2022.03.31.15.26.05
+        by mx.google.com with ESMTPS id d19-20020ac81193000000b002e1fbf3bf9csi595962qtj.397.2022.03.31.18.26.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Mar 2022 15:26:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 31 Mar 2022 18:26:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=iz4SIwX1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58104 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42478 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1na3Ey-0000W0-Kk
-	for alex.bennee@linaro.org; Thu, 31 Mar 2022 18:26:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37648)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1na63Z-0001T2-Jo
+	for alex.bennee@linaro.org; Thu, 31 Mar 2022 21:26:29 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43710)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1na39U-0008Te-9U; Thu, 31 Mar 2022 18:20:24 -0400
-Received: from [2a00:1450:4864:20::135] (port=45054
- helo=mail-lf1-x135.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1na39S-0001QS-GM; Thu, 31 Mar 2022 18:20:23 -0400
-Received: by mail-lf1-x135.google.com with SMTP id m3so1584136lfj.11;
- Thu, 31 Mar 2022 15:20:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/poTCG9aUgajh1ydyMdcGu8vdPS4oshl7xTbY6x/bqM=;
- b=iz4SIwX1NFd6tImcV02Ee4HgvPAsyYiM2iIUPKncMoruOujj7mQfnZQqcuX/en28gB
- wnCXuSDvq2wUjPhor2R59m7Zf1XwadjaglcDdpYY2MsBUg2ZtmiyWjeoZz5DIxac25TQ
- 5TFEiNnSIM0fZV8xpn0Nd1BdE+GCpGw3PmI2hrWKAusFRWV6G6atxaDdgaUOGSRMHMww
- KzJw22xbF7wgdKe3mcHk191I/cID+ZlzKTZ5vdlQLZwVeB3pDRjnyyZPnJR14m6u3Eqc
- Nkwhi7Xxjvf4nvHbrBnSeGtfZsGMvw7zll4JzcBKP2M8AqtfXEYIGIzPmDDIu6TajXo3
- cpPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=/poTCG9aUgajh1ydyMdcGu8vdPS4oshl7xTbY6x/bqM=;
- b=Q+I8MciWxI4npWx/RD1660Cg6ux23jNRyjmuqmp8ltIITZvKQJl7Kxm6etT1HW/7wP
- O5zCPtv36aTJmLAEzCrhjJmdssCfUjqsoSFNZIPkFASYisxs2JnNJCpi/PGRmRtu92iu
- fQiI1I25HNjliamc85nYW3f9OsHWGHzGaEltWUbNo9iHG26gHKWyW18h7EbuFJjRQOUQ
- 9Npifx5dAq1FCXyLVdrgvrYD+dcsVBpAzST64+ZHIryltWBIGQN4/Nvh1+R8EubNYai7
- 9tLuiZBaYoRWd/y94dpHOzjI4LV+i4V49tKsv0q6pcRtwTBQf/Whvp4U4Vbk0mWMDnrj
- tzIw==
-X-Gm-Message-State: AOAM5317BqBXgY32SNUTgCATJs56GYutQgmMCL1siF7lxQ2qemcuhm+D
- P7jTu0qoAq5Ko4X2C8Pj6JnxHkBfBCPKEw==
-X-Received: by 2002:a05:6512:3fa:b0:44a:2d3e:e9d0 with SMTP id
- n26-20020a05651203fa00b0044a2d3ee9d0mr11647480lfq.412.1648765219853; 
- Thu, 31 Mar 2022 15:20:19 -0700 (PDT)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id
- i24-20020a2e8658000000b0024806af7079sm43641ljj.43.2022.03.31.15.20.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 31 Mar 2022 15:20:19 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v1 1/2] timer: cadence_ttc: Break out header file to allow
- embedding
-Date: Fri,  1 Apr 2022 00:20:16 +0200
-Message-Id: <20220331222017.2914409-2-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220331222017.2914409-1-edgar.iglesias@gmail.com>
-References: <20220331222017.2914409-1-edgar.iglesias@gmail.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1na634-00017W-7r; Thu, 31 Mar 2022 21:25:58 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:39256)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1na62z-0002ss-Fo; Thu, 31 Mar 2022 21:25:56 -0400
+Received: from mail.aspeedtech.com ([192.168.0.24])
+ by twspam01.aspeedtech.com with ESMTP id 2311DZNZ079190;
+ Fri, 1 Apr 2022 09:13:35 +0800 (GMT-8)
+ (envelope-from jamin_lin@aspeedtech.com)
+Received: from aspeedtech.com (192.168.70.87) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 1 Apr
+ 2022 09:24:35 +0800
+Date: Fri, 1 Apr 2022 09:24:30 +0800
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Subject: Re: [PATCH v2 8/9] aspeed: Add an AST1030 eval board
+Message-ID: <20220401012427.GA3590@aspeedtech.com>
+References: <20220331081545.7140-1-jamin_lin@aspeedtech.com>
+ <20220331081545.7140-9-jamin_lin@aspeedtech.com>
+ <09f78864-066e-a18c-6abe-26fe50753c81@kaod.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::135
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::135;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x135.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+In-Reply-To: <09f78864-066e-a18c-6abe-26fe50753c81@kaod.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Originating-IP: [192.168.70.87]
+X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
+ (192.168.0.24)
+X-DNSRBL: 
+X-MAIL: twspam01.aspeedtech.com 2311DZNZ079190
+Received-SPF: pass client-ip=211.20.114.71;
+ envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
- asifsiddiqui120@gmail.com, edgar.iglesias@amd.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, f4bug@amsat.org, francisco.iglesias@xilinx.com,
- frederic.konrad@adacore.com, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WvfSq2pxnIBh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Troy Lee <troy_lee@aspeedtech.com>, Beraldo Leal <bleal@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, "open list:ASPEED
+ BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Cleber Rosa <crosa@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mtCForgHCIDu
 
-From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
-
-Break out header file to allow embedding of the the TTC.
-
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
----
- include/hw/timer/cadence_ttc.h | 54 ++++++++++++++++++++++++++++++++++
- hw/timer/cadence_ttc.c         | 32 ++------------------
- 2 files changed, 56 insertions(+), 30 deletions(-)
- create mode 100644 include/hw/timer/cadence_ttc.h
-
-diff --git a/include/hw/timer/cadence_ttc.h b/include/hw/timer/cadence_ttc.h
-new file mode 100644
-index 0000000000..e1251383f2
---- /dev/null
-+++ b/include/hw/timer/cadence_ttc.h
-@@ -0,0 +1,54 @@
-+/*
-+ * Xilinx Zynq cadence TTC model
-+ *
-+ * Copyright (c) 2011 Xilinx Inc.
-+ * Copyright (c) 2012 Peter A.G. Crosthwaite (peter.crosthwaite@petalogix.com)
-+ * Copyright (c) 2012 PetaLogix Pty Ltd.
-+ * Written By Haibing Ma
-+ *            M. Habib
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License
-+ * as published by the Free Software Foundation; either version
-+ * 2 of the License, or (at your option) any later version.
-+ *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+#ifndef HW_TIMER_CADENCE_TTC_H
-+#define HW_TIMER_CADENCE_TTC_H
-+
-+#include "hw/sysbus.h"
-+#include "qemu/timer.h"
-+
-+typedef struct {
-+    QEMUTimer *timer;
-+    int freq;
-+
-+    uint32_t reg_clock;
-+    uint32_t reg_count;
-+    uint32_t reg_value;
-+    uint16_t reg_interval;
-+    uint16_t reg_match[3];
-+    uint32_t reg_intr;
-+    uint32_t reg_intr_en;
-+    uint32_t reg_event_ctrl;
-+    uint32_t reg_event;
-+
-+    uint64_t cpu_time;
-+    unsigned int cpu_time_valid;
-+
-+    qemu_irq irq;
-+} CadenceTimerState;
-+
-+#define TYPE_CADENCE_TTC "cadence_ttc"
-+OBJECT_DECLARE_SIMPLE_TYPE(CadenceTTCState, CADENCE_TTC)
-+
-+struct CadenceTTCState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+    CadenceTimerState timer[3];
-+};
-+
-+#endif
-diff --git a/hw/timer/cadence_ttc.c b/hw/timer/cadence_ttc.c
-index 64108241ba..e57a0f5f09 100644
---- a/hw/timer/cadence_ttc.c
-+++ b/hw/timer/cadence_ttc.c
-@@ -24,6 +24,8 @@
- #include "qemu/timer.h"
- #include "qom/object.h"
- 
-+#include "hw/timer/cadence_ttc.h"
-+
- #ifdef CADENCE_TTC_ERR_DEBUG
- #define DB_PRINT(...) do { \
-     fprintf(stderr,  ": %s: ", __func__); \
-@@ -49,36 +51,6 @@
- #define CLOCK_CTRL_PS_EN    0x00000001
- #define CLOCK_CTRL_PS_V     0x0000001e
- 
--typedef struct {
--    QEMUTimer *timer;
--    int freq;
--
--    uint32_t reg_clock;
--    uint32_t reg_count;
--    uint32_t reg_value;
--    uint16_t reg_interval;
--    uint16_t reg_match[3];
--    uint32_t reg_intr;
--    uint32_t reg_intr_en;
--    uint32_t reg_event_ctrl;
--    uint32_t reg_event;
--
--    uint64_t cpu_time;
--    unsigned int cpu_time_valid;
--
--    qemu_irq irq;
--} CadenceTimerState;
--
--#define TYPE_CADENCE_TTC "cadence_ttc"
--OBJECT_DECLARE_SIMPLE_TYPE(CadenceTTCState, CADENCE_TTC)
--
--struct CadenceTTCState {
--    SysBusDevice parent_obj;
--
--    MemoryRegion iomem;
--    CadenceTimerState timer[3];
--};
--
- static void cadence_timer_update(CadenceTimerState *s)
- {
-     qemu_set_irq(s->irq, !!(s->reg_intr & s->reg_intr_en));
--- 
-2.25.1
-
+The 03/31/2022 11:04, Cédric Le Goater wrote:
+Hi Cedric,
+> Hello Jamin,
+> 
+> On 3/31/22 10:15, Jamin Lin wrote:
+> > The image should be supplied with ELF binary.
+> > $ qemu-system-arm -M ast1030-evb -kernel zephyr.elf -nographic
+> > 
+> > Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> > Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+> > ---
+> >   hw/arm/aspeed.c         | 111 ++++++++++++++++++++++++++++++++++++++++
+> >   include/hw/arm/aspeed.h |  21 ++++++++
+> >   2 files changed, 132 insertions(+)
+> > 
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index d205384d98..14ce0dff8b 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -24,6 +24,7 @@
+> >   #include "hw/loader.h"
+> >   #include "qemu/error-report.h"
+> >   #include "qemu/units.h"
+> > +#include "hw/qdev-clock.h"
+> >   
+> >   static struct arm_boot_info aspeed_board_binfo = {
+> >       .board_id = -1, /* device-tree-only board */
+> > @@ -1361,3 +1362,113 @@ static const TypeInfo aspeed_machine_types[] = {
+> >   };
+> >   
+> >   DEFINE_TYPES(aspeed_machine_types)
+> > +
+> > +#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
+> > +
+> > +struct AspeedMiniBmcMachineState {
+> > +    /* Private */
+> > +    MachineState parent_obj;
+> > +    /* Public */
+> > +
+> > +    AspeedSoCState soc;
+> > +    MemoryRegion ram_container;
+> > +    MemoryRegion max_ram;
+> > +    bool mmio_exec;
+> > +    char *fmc_model;
+> > +    char *spi_model;
+> > +};
+> >
+> 
+> Why duplicate the state structure since it is the same ?
+> 
+Will fix
+> > +/* Main SYSCLK frequency in Hz (200MHz) */
+> > +#define SYSCLK_FRQ 200000000ULL
+> > +
+> > +static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+> > +                                                          void *data)
+> > +{
+> > +    MachineClass *mc = MACHINE_CLASS(oc);
+> > +    AspeedMiniBmcMachineClass *amc = ASPEED_MINIBMC_MACHINE_CLASS(oc);
+> > +
+> > +    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
+> > +    amc->soc_name = "ast1030-a1";
+> > +    amc->hw_strap1 = 0;
+> > +    amc->hw_strap2 = 0;
+> > +    mc->default_ram_size = 0;
+> > +    mc->default_cpus = mc->min_cpus = mc->max_cpus = 1;
+> > +    amc->fmc_model = "sst25vf032b";
+> > +    amc->spi_model = "sst25vf032b";
+> > +    amc->num_cs = 2;
+> > +}
+> > +
+> > +static void ast1030_machine_instance_init(Object *obj)
+> > +{
+> > +    ASPEED_MINIBMC_MACHINE(obj)->mmio_exec = false;
+> > +}
+> > +
+> > +static void aspeed_minibmc_machine_init(MachineState *machine)
+> > +{
+> > +    AspeedMiniBmcMachineState *bmc = ASPEED_MINIBMC_MACHINE(machine);
+> > +    AspeedMiniBmcMachineClass *amc = ASPEED_MINIBMC_MACHINE_GET_CLASS(machine);
+> > +    Clock *sysclk;
+> > +
+> > +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
+> > +    clock_set_hz(sysclk, SYSCLK_FRQ);
+> > +
+> > +    object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
+> > +    qdev_connect_clock_in(DEVICE(&bmc->soc), "sysclk", sysclk);
+> > +
+> > +    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
+> > +                         amc->uart_default);
+> > +    qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+> > +
+> > +    aspeed_board_init_flashes(&bmc->soc.fmc,
+> > +                              bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+> > +                              amc->num_cs,
+> > +                              0);
+> > +
+> > +    aspeed_board_init_flashes(&bmc->soc.spi[0],
+> > +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
+> > +                              amc->num_cs, amc->num_cs);
+> > +
+> > +    aspeed_board_init_flashes(&bmc->soc.spi[1],
+> > +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
+> > +                              amc->num_cs, (amc->num_cs * 2));
+> > +
+> > +    if (amc->i2c_init) {
+> > +        amc->i2c_init(bmc);
+> > +    }
+> > +
+> > +    armv7m_load_kernel(ARM_CPU(first_cpu),
+> > +                       machine->kernel_filename,
+> > +                       AST1030_INTERNAL_FLASH_SIZE);
+> > +}
+> > +
+> > +static void aspeed_minibmc_machine_class_init(ObjectClass *oc, void *data)
+> > +{
+> > +    MachineClass *mc = MACHINE_CLASS(oc);
+> > +    AspeedMiniBmcMachineClass *amc = ASPEED_MINIBMC_MACHINE_CLASS(oc);
+> > +
+> > +    mc->init = aspeed_minibmc_machine_init;
+> > +    mc->no_floppy = 1;
+> > +    mc->no_cdrom = 1;
+> > +    mc->no_parallel = 1;
+> > +    mc->default_ram_id = "ram";
+> > +    amc->uart_default = ASPEED_DEV_UART5;
+> > +}
+> > +
+> > +static const TypeInfo aspeed_minibmc_machine_types[] = {
+> > +    {
+> > +        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+> > +        .parent         = TYPE_ASPEED_MINIBMC_MACHINE,
+> > +        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
+> > +    }, {
+> > +        .name           = TYPE_ASPEED_MINIBMC_MACHINE,
+> > +        .parent         = TYPE_MACHINE,
+> > +        .instance_size  = sizeof(AspeedMiniBmcMachineState),
+> > +        .instance_init  = ast1030_machine_instance_init,
+> > +        .class_size    = sizeof(AspeedMiniBmcMachineClass),
+> > +        .class_init    = aspeed_minibmc_machine_class_init,
+> > +        .abstract      = true,
+> > +    }
+> > +};
+> > +
+> > +DEFINE_TYPES(aspeed_minibmc_machine_types)
+> > +
+> > diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> > index cbeacb214c..d300ab0042 100644
+> > --- a/include/hw/arm/aspeed.h
+> > +++ b/include/hw/arm/aspeed.h
+> > @@ -13,12 +13,18 @@
+> >   #include "qom/object.h"
+> >   
+> >   typedef struct AspeedMachineState AspeedMachineState;
+> > +typedef struct AspeedMiniBmcMachineState AspeedMiniBmcMachineState;
+> >   
+> >   #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
+> > +#define TYPE_ASPEED_MINIBMC_MACHINE MACHINE_TYPE_NAME("aspeed-minibmc")
+> >   typedef struct AspeedMachineClass AspeedMachineClass;
+> >   DECLARE_OBJ_CHECKERS(AspeedMachineState, AspeedMachineClass,
+> >                        ASPEED_MACHINE, TYPE_ASPEED_MACHINE)
+> >   
+> > +typedef struct AspeedMiniBmcMachineClass AspeedMiniBmcMachineClass;
+> > +DECLARE_OBJ_CHECKERS(AspeedMiniBmcMachineState, AspeedMiniBmcMachineClass,
+> > +                     ASPEED_MINIBMC_MACHINE, TYPE_ASPEED_MINIBMC_MACHINE)
+> > +
+> >   #define ASPEED_MAC0_ON   (1 << 0)
+> >   #define ASPEED_MAC1_ON   (1 << 1)
+> >   #define ASPEED_MAC2_ON   (1 << 2)
+> > @@ -41,5 +47,20 @@ struct AspeedMachineClass {
+> >       uint32_t uart_default;
+> >   };
+> >   
+> > +struct AspeedMiniBmcMachineClass {
+> > +    MachineClass parent_obj;
+> > +
+> > +    const char *name;
+> > +    const char *desc;
+> > +    const char *soc_name;
+> > +    uint32_t hw_strap1;
+> > +    uint32_t hw_strap2;
+> > +    const char *fmc_model;
+> > +    const char *spi_model;
+> > +    uint32_t num_cs;
+> > +    uint32_t macs_mask;
+> > +    void (*i2c_init)(AspeedMiniBmcMachineState *bmc);
+> > +    uint32_t uart_default;
+> > +};
+> 
+> I don't see a good reason to duplicate the class either.
+> 
+> Thanks,
+> 
+> C.
+Will fix

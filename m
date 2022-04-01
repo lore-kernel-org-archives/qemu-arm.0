@@ -1,121 +1,98 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp648843lfb;
-        Thu, 31 Mar 2022 23:34:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylBxRdTjBGCRUVxyWhJwGWuApFYZYwJwh+vLHwk88v0PXaKlS9oBJyzIZyNhCfGiAfRsRf
-X-Received: by 2002:a05:622a:1355:b0:2eb:8445:efd with SMTP id w21-20020a05622a135500b002eb84450efdmr7206004qtk.555.1648794845995;
-        Thu, 31 Mar 2022 23:34:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648794845; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp660683lfb;
+        Thu, 31 Mar 2022 23:59:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJySoCUTBsI9lXHV1Z/99n1Ip057O1NiPiXlwliBo47+KHe+cQZFo9Bh7FYXfGa5WFhYGEF8
+X-Received: by 2002:a05:6214:da2:b0:441:4623:945c with SMTP id h2-20020a0562140da200b004414623945cmr38057594qvh.62.1648796375404;
+        Thu, 31 Mar 2022 23:59:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648796375; cv=none;
         d=google.com; s=arc-20160816;
-        b=ACKU80x24HbkldL8S0uMUuo5M47772zTJZognB2shsAf6HM+4zhlTlsuK9UT641QoZ
-         BAakbJlOQ82UviiVgEDCuBFOp85aInsnFhzZJ2MhUpztjnfa8Wp1DuZEeuu3D7STRar+
-         htDZ+LAC8rHVV4c+lbHM2Oin7e+mlG62lp+zVgsUIODLufZUzu40EvIsChOHXcyTj/le
-         iSD6ltJpbIEXDyE61DdbyeNFcFG5y5mEYB0QGw/sYiWhNrq3YGvQkOnDSvZYjniOWR1L
-         sNLuNu51x1oJktzRf3d7HhyzMepNyPbgMkeq08ipLld6f69gqnZ0MSZSieqZbnHM80k/
-         1H7w==
+        b=N5zCwjx2SLn8XP+LHxaAy9akPEEd3FYYxWPNEwxY6oKlDzHKv5R/8veo2sRIbVN/1t
+         7Fog2vBAXl7Ri0t2bHB8/7wTb1FvUEaB2ej/HPV4tEnrtLShWlcX6jNeFLKJEl0hH21M
+         GjFUL5hO1RQY+rEHamHr5dKpjsWLtygI5nySFvoCSlMm9lO/H2wOhrH5535SJqvHe+ct
+         temuY3rEW7nlTDjLwa4FojxEPKd0qY8fR9zhEHRCmTPVIhtoAZX5j4qYfGysF4slVN7q
+         pMcCoqMtTxxGwAwROwoGxYejPnLztSgUm5mBikxzReNmJAd75ZUs0FgXBd1WLqF06K9m
+         zzeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature:dkim-signature;
-        bh=s3bri+p69zltGR13PH7UqZKDLtvn9O+xBdEbwA8YHVY=;
-        b=Icci1V9OO4J4oyPk4FtUDxjfcxzHwbALrC2J7WrV1cdzeXmBpttubzv7lMw6zfKDxL
-         g6e3BkaXJajrjKB2RV6IuT7xyz8MvqZnrCr7ObZs8wrDSbstCA5+PgnyG4ygq77RTT47
-         OgUQ476JSzi6aBx8xPRZOs7lFlByOLiZRSibYqDoLm5if84m5lAFNWnn19mAeqc/5tTg
-         azugIggZsfnCAUpyarrBf3PpCOnI7rm+fmR9LwSkYk6JZYw/Nl88x3RhzNPrcF26wY3r
-         ZI0Nkj775JObdakH0F989x2kuxZ2IoEVfSDRMOCmhobffY4WCTmN50qtRA4+mSXUcKO1
-         422g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=I19N6yUDfJtdBu+h/RZbtVX08KrmbBkNTQyTDnCDM0Y=;
+        b=Sh1L4tiS8MElMkRkIhLfgPhHyfOtrbtXtJOCvH25xQT3QzaP8jrsT42NtFfKdn2ILh
+         zyix7Ulz12c1InyZ7t5NLBOHemku2WxzUHT5lP5gHJsi9jEi89BXdp3I2xGaqLu6FsLj
+         FjFCGV3RMSmktaJvgSRfvjWJd9cEM6C4gGu/r/DQDmb90yL0PJgXgVlj66vMdCcWNTvP
+         pVHfmdg6yoVUg6fh6lnIT+4udjZ2cH3PpC6o9SqvSsNLzCY9XRGfMPU7+xmmtVQr1lkU
+         ZKdp3BjF7nXtXTuGkZnsrf3rWbLZJevumcfaSfrjC+KngC8mSlnunwMCNlnvNlNRKJnu
+         Ra/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=jtd2OJj5;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=LYTrF9Cs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t16-20020a0cea30000000b00440e46a7d6esi476578qvp.524.2022.03.31.23.34.05
+        by mx.google.com with ESMTPS id ck2-20020a05621404c200b00440e46a7d77si490078qvb.533.2022.03.31.23.59.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Mar 2022 23:34:05 -0700 (PDT)
+        Thu, 31 Mar 2022 23:59:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=jtd2OJj5;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=LYTrF9Cs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56084 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46054 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naArF-0002L0-6R
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 02:34:05 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58990)
+	id 1naBFu-0008Ee-MW
+	for alex.bennee@linaro.org; Fri, 01 Apr 2022 02:59:34 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1naAnk-0002Ja-KC; Fri, 01 Apr 2022 02:30:28 -0400
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20]:52827)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naBFW-0008Cy-AO
+ for qemu-arm@nongnu.org; Fri, 01 Apr 2022 02:59:10 -0400
+Received: from 9.mo552.mail-out.ovh.net ([87.98.180.222]:58381)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1naAnd-0007zT-Of; Fri, 01 Apr 2022 02:30:25 -0400
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.west.internal (Postfix) with ESMTP id DF888320157F;
- Fri,  1 Apr 2022 02:30:18 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute5.internal (MEProxy); Fri, 01 Apr 2022 02:30:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
- h=cc:cc:content-type:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm3; bh=s3bri+p69zltGR13PH7UqZKDLtvn9O
- +xBdEbwA8YHVY=; b=jtd2OJj5bQDvmaOm9k+K+1UV3NPysmS9vqDbJSj8b4u6pJ
- wVN1SF6zD/G3s/zpIOauSIQV8AFKEelXrgJBzaWvW2/UNTU+qgautgmlnXo8uC4x
- chVgKGuDJaEQKa3rkKqs29qfbH8Ls637RY0LbEKIgnxtsB6gcuwNvwK3fjEhiSBb
- qrh65JsWbhghGjy1HyjN/ufCNrOrbgA9Q42PYrlmZqbGwjVj7UraRFuZ87PMS2Mo
- h1hs5kMHItCm2PhKg6AjBPoxyEEcqvGRLVr3T/t5RQ39UPWBrN6Vp41u66mjAvJx
- 6/oHiMGXiNO1XEw/P8ZcYJAF/IgttIz6E2XYFzZw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=s3bri+p69zltGR13P
- H7UqZKDLtvn9O+xBdEbwA8YHVY=; b=LYTrF9CsQ7hNU73t2mZuSCuv2N7/p95qq
- jcczWGONMv56w+NYPYNEBa3zF/uRWfcah9SrbPzzcuQOrj67TTGKEwM+KZ9yaFAA
- aUnMnN6dbRWNdN2YklC0DbUW4swW1dgrjHZ0p+aSMmIK153xPYgyhapDfU3wpckK
- pa1pUbgGVoZKQw07X3nEub6Edo9k4ePSpEC3Y46jhJcLD3BEjcPZ6mz8GMunZcIT
- o/pjHlsNTBGzu56rcy2kzBet4bWuWGIO7zM5KPdEKzWr2HVJSyWwQACiE6BiL8zH
- jB67p/ThjZ0BIC0M03MCsU0vxdmRz6qYWOs6NwZQIVemwzSWErJgA==
-X-ME-Sender: <xms:-ZtGYpcXqCYYZyXPxvTIbXVZ46F2FpRaXRk9tgyYvExs4YYcc_YJ9Q>
- <xme:-ZtGYnPR7XMFRJYckut4kWoToYzJYOM_vpHSRfycNhN55x6WQlSoNYaukqng26Eqa
- LdIg-Ria57Ofu-P_34>
-X-ME-Received: <xmr:-ZtGYijY080xJg1laesY-QxqrsqhV-YlCVukRx8CG4T5mOEomGZS8GUz8IGgGvyzPeBeIP5sdgVvLvxB8js>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudeihedguddtjecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpeffhffvuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepmfhlrghu
- shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
- htvghrnhepjeegudffueeiteekieelkedvueelteevjeduieeludfffeejgeffhfduvddu
- ffeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
- htshesihhrrhgvlhgvvhgrnhhtrdgukh
-X-ME-Proxy: <xmx:-ZtGYi9lKjEKIgppYYgAWAFDyEpifBep_qGdv3kxxj3fSzdq_McxQw>
- <xmx:-ZtGYlsTjUu-F5PObwgk9hOg8uT8-aoglW-qeY4ZC5AXnX1bH1qFrQ>
- <xmx:-ZtGYhGcPy3qQlwtZprpIZUibBdAsqgPrxksmfdZjxQvw0KFUd1mBQ>
- <xmx:-ptGYuGBxvOEwn_XfKnugOTTgkpa3dNgj3W4i9hMx24WRw2aUj_lDw>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 1 Apr 2022 02:30:15 -0400 (EDT)
-Date: Fri, 1 Apr 2022 08:30:14 +0200
-From: Klaus Jensen <its@irrelevant.dk>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [RFC PATCH 3/4] hw/i2c: add slave mode for aspeed_i2c
-Message-ID: <Ykab9mR/B79iI916@apples>
-References: <20220331165737.1073520-1-its@irrelevant.dk>
- <20220331165737.1073520-4-its@irrelevant.dk>
- <7300ef1f-8702-733d-2a50-4253345fde45@gmail.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naBFU-0003kb-49
+ for qemu-arm@nongnu.org; Fri, 01 Apr 2022 02:59:09 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.129])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id DF84924E8C;
+ Fri,  1 Apr 2022 06:59:04 +0000 (UTC)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 1 Apr
+ 2022 08:59:03 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R005ca221c5a-2e3b-4c42-9422-c308d25062df,
+ BF19997ACFFB9775C4837E30A1DE169AA6CF9E32) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <fb2fff0a-65da-3fcc-0e2b-be892e690a66@kaod.org>
+Date: Fri, 1 Apr 2022 08:59:03 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="pruGYCmDnY7ETRGO"
-Content-Disposition: inline
-In-Reply-To: <7300ef1f-8702-733d-2a50-4253345fde45@gmail.com>
-Received-SPF: pass client-ip=64.147.123.20; envelope-from=its@irrelevant.dk;
- helo=wout4-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v4 8/9] aspeed: Add an AST1030 eval board
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, Cleber Rosa
+ <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
+ Leal <bleal@redhat.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20220401034651.9066-1-jamin_lin@aspeedtech.com>
+ <20220401034651.9066-9-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220401034651.9066-9-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: c6acb026-14a7-4184-a16f-67f78121cb18
+X-Ovh-Tracer-Id: 11725121631811963835
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudeihedguddugecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpefhhfelgeeukedtteffvdffueeiuefgkeekleehleetfedtgfetffefheeugeelheenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehtrhhohigplhgvvgesrghsphgvvgguthgvtghhrdgtohhm
+Received-SPF: pass client-ip=87.98.180.222; envelope-from=clg@kaod.org;
+ helo=9.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,94 +106,196 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
- Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
- Klaus Jensen <k.jensen@samsung.com>, qemu-devel@nongnu.org,
- Jeremy Kerr <jk@ozlabs.org>, qemu-arm@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
- Matt Johnston <matt@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Cc: troy_lee@aspeedtech.com, steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ayi0+O2mlTUc
+X-TUID: kmCmpUX7MrSU
+
+On 4/1/22 05:46, Jamin Lin wrote:
+> The image should be supplied with ELF binary.
+> $ qemu-system-arm -M ast1030-evb -kernel zephyr.elf -nographic
+> 
+> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+> ---
+>   hw/arm/aspeed.c         | 97 +++++++++++++++++++++++++++++++++++++++++
+>   include/hw/arm/aspeed.h |  6 +--
+>   2 files changed, 100 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index d205384d98..30b49d2db1 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -24,6 +24,7 @@
+>   #include "hw/loader.h"
+>   #include "qemu/error-report.h"
+>   #include "qemu/units.h"
+> +#include "hw/qdev-clock.h"
+>   
+>   static struct arm_boot_info aspeed_board_binfo = {
+>       .board_id = -1, /* device-tree-only board */
+> @@ -1361,3 +1362,99 @@ static const TypeInfo aspeed_machine_types[] = {
+>   };
+>   
+>   DEFINE_TYPES(aspeed_machine_types)
+> +
+> +#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
+> +/* Main SYSCLK frequency in Hz (200MHz) */
+> +#define SYSCLK_FRQ 200000000ULL
+> +
+> +static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+> +                                                          void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MINIBMC_MACHINE_CLASS(oc);
+
+I don't think we need a ASPEED_MINIBMC type (yet)
+
+> +
+> +    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
+> +    amc->soc_name = "ast1030-a1";
+> +    amc->hw_strap1 = 0;
+> +    amc->hw_strap2 = 0;
+> +    mc->default_ram_size = 0;
+> +    mc->default_cpus = mc->min_cpus = mc->max_cpus = 1;
+> +    amc->fmc_model = "sst25vf032b";
+> +    amc->spi_model = "sst25vf032b";
+> +    amc->num_cs = 2;
+
+In this routine, you could add :
+
+  amc->macs_mask = 0;
+
+Since the NICs are not modeled yet.
+
+> +}
+> +
+> +static void ast1030_machine_instance_init(Object *obj)
+> +{
+> +    ASPEED_MINIBMC_MACHINE(obj)->mmio_exec = false;
+> +}
+
+ast1030_machine_instance_init() is not that useful either.
+
+> +
+> +static void aspeed_minibmc_machine_init(MachineState *machine)
+> +{
+> +    AspeedMachineState *bmc = ASPEED_MINIBMC_MACHINE(machine);
+> +    AspeedMachineClass *amc = ASPEED_MINIBMC_MACHINE_GET_CLASS(machine);
+> +    Clock *sysclk;
+> +
+> +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
+> +    clock_set_hz(sysclk, SYSCLK_FRQ);
+> +
+> +    object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
+> +    qdev_connect_clock_in(DEVICE(&bmc->soc), "sysclk", sysclk);
+> +
+> +    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
+> +                         amc->uart_default);
+> +    qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+> +
+> +    aspeed_board_init_flashes(&bmc->soc.fmc,
+> +                              bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+> +                              amc->num_cs,
+> +                              0);
+> +
+> +    aspeed_board_init_flashes(&bmc->soc.spi[0],
+> +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
+> +                              amc->num_cs, amc->num_cs);
+> +
+> +    aspeed_board_init_flashes(&bmc->soc.spi[1],
+> +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
+> +                              amc->num_cs, (amc->num_cs * 2));
+> +
+> +    if (amc->i2c_init) {
+> +        amc->i2c_init(bmc);
+> +    }
+> +
+> +    armv7m_load_kernel(ARM_CPU(first_cpu),
+> +                       machine->kernel_filename,
+> +                       AST1030_INTERNAL_FLASH_SIZE);
+> +}
+> +
+> +static void aspeed_minibmc_machine_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MINIBMC_MACHINE_CLASS(oc);
+> +
+> +    mc->init = aspeed_minibmc_machine_init;
+> +    mc->no_floppy = 1;
+> +    mc->no_cdrom = 1;
+> +    mc->no_parallel = 1;
+> +    mc->default_ram_id = "ram";
+> +    amc->uart_default = ASPEED_DEV_UART5;
+
+This is very much like aspeed_machine_class_init()
 
 
---pruGYCmDnY7ETRGO
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> +}
+> +
+> +static const TypeInfo aspeed_minibmc_machine_types[] = {
+> +    {
+> +        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+> +        .parent         = TYPE_ASPEED_MINIBMC_MACHINE,
 
-On Mar 31 22:44, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 31/3/22 18:57, Klaus Jensen wrote:
-> > From: Klaus Jensen <k.jensen@samsung.com>
-> >=20
-> > Add slave mode functionality for the Aspeed I2C controller. This is
-> > implemented by creating an Aspeed I2C Slave device that attaches to the
-> > bus.
-> >=20
-> > This i2c slave device only implements the asynchronous version of
-> > i2c_send() and the event callback.
-> >=20
-> > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
-> > ---
-> >   hw/i2c/aspeed_i2c.c         | 95 +++++++++++++++++++++++++++++++++----
-> >   hw/i2c/trace-events         |  2 +-
-> >   hw/misc/meson.build         |  2 +
-> >   include/hw/i2c/aspeed_i2c.h |  8 ++++
-> >   4 files changed, 97 insertions(+), 10 deletions(-)
->=20
-> > @@ -558,14 +565,19 @@ static void aspeed_i2c_bus_write(void *opaque, hw=
-addr offset,
-> >               bus->controller->intr_status &=3D ~(1 << bus->id);
-> >               qemu_irq_lower(aic->bus_get_irq(bus));
-> >           }
-> > -        if (handle_rx && (bus->cmd & (I2CD_M_RX_CMD | I2CD_M_S_RX_CMD_=
-LAST))) {
-> > -            aspeed_i2c_handle_rx_cmd(bus);
-> > -            aspeed_i2c_bus_raise_interrupt(bus);
-> > +
-> > +        if (handle_rx) {
-> > +            if (bus->cmd & (I2CD_M_RX_CMD | I2CD_M_S_RX_CMD_LAST)) {
-> > +                aspeed_i2c_handle_rx_cmd(bus);
-> > +                aspeed_i2c_bus_raise_interrupt(bus);
->=20
-> Eventually split this hunk into a separate patch to have better readabili=
-ty.
->=20
+Why don't you inherit directly from TYPE_ASPEED_MACHINE and simplify
+the model by removing the duplicate TYPE_ASPEED_MINIBMC_MACHINE ?
 
-Alright.
+> +        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
+> +    }, {
+> +        .name           = TYPE_ASPEED_MINIBMC_MACHINE,
+> +        .parent         = TYPE_MACHINE,
+> +        .instance_size  = sizeof(AspeedMachineState),
+> +        .instance_init  = ast1030_machine_instance_init,
+> +        .class_size    = sizeof(AspeedMachineClass),
+> +        .class_init    = aspeed_minibmc_machine_class_init,
+> +        .abstract      = true,
+> +    }
+> +};
+> +
+> +DEFINE_TYPES(aspeed_minibmc_machine_types)
+> +
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> index cbeacb214c..b7411c860d 100644
+> --- a/include/hw/arm/aspeed.h
+> +++ b/include/hw/arm/aspeed.h
+> @@ -13,18 +13,19 @@
+>   #include "qom/object.h"
+>   
+>   typedef struct AspeedMachineState AspeedMachineState;
+> -
+>   #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
+> +#define TYPE_ASPEED_MINIBMC_MACHINE MACHINE_TYPE_NAME("aspeed-minibmc")
+>   typedef struct AspeedMachineClass AspeedMachineClass;
+>   DECLARE_OBJ_CHECKERS(AspeedMachineState, AspeedMachineClass,
+>                        ASPEED_MACHINE, TYPE_ASPEED_MACHINE)
+> +DECLARE_OBJ_CHECKERS(AspeedMachineState, AspeedMachineClass,
+> +                     ASPEED_MINIBMC_MACHINE, TYPE_ASPEED_MINIBMC_MACHINE)
 
-> > +            }
-> >           }
->=20
-> > diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> > index 6fb69612e064..c1c1abea41dd 100644
-> > --- a/hw/misc/meson.build
-> > +++ b/hw/misc/meson.build
-> > @@ -122,6 +122,8 @@ softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: f=
-iles('nrf51_rng.c'))
-> >   softmmu_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_ahb_apb_pn=
-p.c'))
-> > +softmmu_ss.add(when: 'CONFIG_I2C', if_true: files('i2c-echo.c'))
->=20
-> This change belongs to the next patch.
+This looks useless to me.
 
-Woops. Chopping up my changes went a bit too fast I think :)
+We might want a new type of Aspeed machines someday but I don't see
+the need yet.
 
---pruGYCmDnY7ETRGO
-Content-Type: application/pgp-signature; name="signature.asc"
+Thanks,
 
------BEGIN PGP SIGNATURE-----
+C.
 
-iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmJGm/QACgkQTeGvMW1P
-Dem5AAf/Wd7I4SNrU1OwQ6OD4n96+ClYUcHhSWkSUH95HykyvTiXTz+fk0Goq0RA
-WoY9v35SU21YEk3WmbFRiv0BMWUIt+VaSZ27fAfJsdCfjtMCJdgbRQlKzIhZ7s2y
-iPA5ATkbY/eXz+Vai0lJcUWqganIfTC8Iy0wQLftbgM/YLaVcSQZlSXLzev18tJ6
-2jpT7b/i69jVlgJ/6coNm5q69NrO6PYVPKk0zwGsT8sqZAcqdXlLAocw7/UyWmOY
-b0EBkC0Iygsup2LypkGrxug3RvNpGXziDaU8RwvrS2XqVCw8QavYdP51N3VeF+7b
-1GY/LH+Bq/QJpCFzlGh2GJtmHftyEg==
-=H1lK
------END PGP SIGNATURE-----
+>   
+>   #define ASPEED_MAC0_ON   (1 << 0)
+>   #define ASPEED_MAC1_ON   (1 << 1)
+>   #define ASPEED_MAC2_ON   (1 << 2)
+>   #define ASPEED_MAC3_ON   (1 << 3)
+>   
+> -
+>   struct AspeedMachineClass {
+>       MachineClass parent_obj;
+>   
+> @@ -41,5 +42,4 @@ struct AspeedMachineClass {
+>       uint32_t uart_default;
+>   };
+>   
+> -
+>   #endif
 
---pruGYCmDnY7ETRGO--

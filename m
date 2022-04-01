@@ -1,224 +1,187 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp720582lfb;
-        Fri, 1 Apr 2022 01:56:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzerbGjsmtFB0f7YitPDaq+Dd2cv6zei9RXJ/e2fQD4JnwHeHqWGg0nJiQ17ok21okEl1cF
-X-Received: by 2002:a05:620a:1925:b0:67d:93f9:3c0 with SMTP id bj37-20020a05620a192500b0067d93f903c0mr6024527qkb.256.1648803361122;
-        Fri, 01 Apr 2022 01:56:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648803361; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp782910lfb;
+        Fri, 1 Apr 2022 03:51:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJynHfsJzAROoF8ZnCuwlnnvIbk4SSL3431Tldp5Pk+2U67spg1Hl+oiOTopNxM7lhOoeVO4
+X-Received: by 2002:ad4:5c83:0:b0:441:4a7a:4ca9 with SMTP id o3-20020ad45c83000000b004414a7a4ca9mr7909672qvh.131.1648810281945;
+        Fri, 01 Apr 2022 03:51:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648810281; cv=none;
         d=google.com; s=arc-20160816;
-        b=eHIgDbnDoanPfNUj4bCRFtUh9MyFFs+Bbil5ATm+7/m4mr5jvvEjfvbKBfUisw7YUr
-         m+Ve1ui1gQ6fcte8yJkUWjaJOZ8SLDh+iQBSyar8YegxRJLuO1NB+/tuugh9Qp3k1aNp
-         Jo7QON7gwROYSgO5kGBUhExc/ZIpnJ1Jk22+LU0+07WDIWD94TbS6WEYec0oPyr+2tR1
-         7UniDxbU7V0M9mH+IUPWGGIdAI1I4xeGNHkKtYFijRVtXIoYlaxhV0FBeI51FmhyeI6i
-         xMjinAuYJGCCrbE4R985rI9T9HbmE7wgmwgJ/8nhgLa7HRO/FHusiz6r5E8Al5Osotao
-         hFSg==
+        b=DsnVRf8sNH11wyNPxpopJUPbb27Hv4wO824eY3O8IfGoS/Ahw7l8PEyf1f1F+oA0cU
+         KXde3u230WnPfLnrDZw4iwtofiODeEAcjjC0b7RWbULOP5NYEw97NPzJ/FzsB95CgMHt
+         f4fAtm7lJVYEFsuDvxTrli30DPawDThvEgFVunUvsXDOW+gRmmG9X14GLjUVEu8uJFfI
+         NVD8KT5oT2clYcQgw7cRiNl0nuWk/ZRzE5Jpjo5dUk6cKrcZ6F/rwCZzj8gGx3v0dVlp
+         5qkzSHODkIZaq+t802+OhiBiLEJ15Txp3mU9fWRkLvGowwJKbcCPuHLnU+1hVdNXQbIr
+         uNeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=coMy+1SQafuMezRSl3/QPGD/hfoaRmPF2XpXyOQxc9g=;
-        b=wHyTyQ27mNMX/SFoXtR1KzcGAEMb5ff1cQ2TLAN/0ziPBOi+mWvCB9DhAHgNgGhykm
-         L1/DclnDpdYvL80eAV2Daj8XzszzCY0EKZ6pg/RX9XoF8+QCp73ZxKeJMu4kOXe6Y+2h
-         0INq7+oJmk8u8meDRbmSPuUc3T4FphnFPIUUW3ITqPoUJxMbfuvLegxCTAKbp2QqNqEM
-         AXV7TCC3+QeoHMpfwI1N8vBMx7iRafPSkUlddnozNgcKYQQrHRQVQXPakkYBB2y8UwZj
-         0UvTxz9sAzNwL3rxLT54YbiapZOrLF6savRaa6s/ncmlfo1cAaIM30clAqvAUWLtVlNH
-         fJ6w==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=/nGuS1hkH7OFCfnKWl0vBNSvQHA6J4U0k9Qn1XXkDQM=;
+        b=xXOqNNQDhEkBSiYzK5Ts409rmw0QvLQjjnd8L/I9MPb0B/NzzE1bBe4GSffsffyzen
+         eMrXESThQi/DqrmMkrttWTFpkE87/Mf4830A7tn06zTiLp10d+hqqLU4zgi0zZUv9NCi
+         avPBiHIj4e5XQlARUnY8ZcH4zejnjBFjxq6i0N2E4f25+WKKXgUDNkzVB3FoZy/mFDHN
+         RTgiZYteuqnf2JqEjjytvcDi9ChDJSEH2yU79VBTkG5l7mjfedUnYc27A7ZGNFujwdxH
+         A8r0/e0bCMSw6Xzrc9lKWx1RpBvp+J1YxcbaE2ywIjcx4m/B0iuECdarAQzXPA408c8y
+         Vlcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s2-20020a0cdc02000000b00440e46a7d12si555907qvk.432.2022.04.01.01.56.00
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=do01J1w5;
+       spf=pass (google.com: domain of eperezma@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eperezma@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eperezma@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id hu3-20020a056214234300b00441824b4b7bsi663372qvb.228.2022.04.01.03.51.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Apr 2022 01:56:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 01 Apr 2022 03:51:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eperezma@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32966 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naD4Z-0008Q0-Su
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 04:55:59 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52496)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naCwA-0007mN-IJ
- for qemu-devel@nongnu.org; Fri, 01 Apr 2022 04:47:18 -0400
-Received: from 6.mo548.mail-out.ovh.net ([188.165.58.48]:46693)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naCw8-0002Hw-8G
- for qemu-devel@nongnu.org; Fri, 01 Apr 2022 04:47:18 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.111])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id B21EE207F9;
- Fri,  1 Apr 2022 08:47:11 +0000 (UTC)
-Received: from kaod.org (37.59.142.100) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 1 Apr
- 2022 10:47:10 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-100R003d7d9c958-51e4-4a36-a220-dd7c1a09a9f3,
- BF19997ACFFB9775C4837E30A1DE169AA6CF9E32) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <66be2d94-2092-a8fa-f107-c5beee17baa1@kaod.org>
-Date: Fri, 1 Apr 2022 10:47:09 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=do01J1w5;
+       spf=pass (google.com: domain of eperezma@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eperezma@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1648810281;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/nGuS1hkH7OFCfnKWl0vBNSvQHA6J4U0k9Qn1XXkDQM=;
+	b=do01J1w55Ey33O9xJJS+7AYb0spJxBR8BEovROYmlyteofKznY0K40lvB+larPA+stK7jR
+	6EcNxlCXNRjZkxegMZP0E6Hn6Ug5vH/BDfDhdT2vFliqYkn71Mfzb6JYM2488dkIPm0m2o
+	Htsv/0eWWg5dIBoRR/cybsogStQyMUs=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-317-V_2BYXLYNlSOeVlNyS9cEg-1; Fri, 01 Apr 2022 06:51:18 -0400
+X-MC-Unique: V_2BYXLYNlSOeVlNyS9cEg-1
+Received: by mail-qt1-f199.google.com with SMTP id cb11-20020a05622a1f8b00b002e06f729debso1743359qtb.4
+        for <alex.bennee@linaro.org>; Fri, 01 Apr 2022 03:51:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=/nGuS1hkH7OFCfnKWl0vBNSvQHA6J4U0k9Qn1XXkDQM=;
+        b=yyhqbbPkagq+drYUfdELzWCQSILvJhzJGpRuzYngrY9XD/piBgQbgF3uRWC4P3n7jn
+         ssz75MctxkH3JeJQUiLMZrSCwJeIQocclEXXT/0SepLThy2N1/LGUwLJ2NvTmQhZ2MwE
+         gt1ZnqjPpj0cKVgwTYCDmoiTs68iWfWixeIu60jBhssa5br0fM6KwNhLNfu0EOn8pgbJ
+         5b5kGhh7lzKSRODSl2QXNbe2KzI7G1nFJzLPO2xQFHWwAYxmUR7F3eg4F5sanQdGv+mA
+         EZwm0rn4mQxK1+cfuNn6Fo78zvN3u11mN6N3jkGId1heKua4QUxc6qblaupsq9YZWYib
+         Im0w==
+X-Gm-Message-State: AOAM530OtKbWrCQfJqv+24KSQokvgoJiKzsODnP1/VPwKCbKbC9OpB86
+	PZ/PHmAmOb1lQo/rDgCW22n5HO5RLBIugShMvOxhDTnZbM5PCRys/ncxLTke5z3EzB6N/Dbpp0R
+	orba3NZF4SbjiksvgMzKzc7fyf2CBZm5U
+X-Received: by 2002:a05:620a:31a3:b0:67d:32c4:d4f8 with SMTP id bi35-20020a05620a31a300b0067d32c4d4f8mr6185201qkb.308.1648810277969;
+        Fri, 01 Apr 2022 03:51:17 -0700 (PDT)
+X-Received: by 2002:a05:620a:31a3:b0:67d:32c4:d4f8 with SMTP id
+ bi35-20020a05620a31a300b0067d32c4d4f8mr6185191qkb.308.1648810277695; Fri, 01
+ Apr 2022 03:51:17 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v5 8/9] aspeed: Add an AST1030 eval board
-Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Alistair Francis
- <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, Andrew
- Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Cleber Rosa
- <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
- Leal <bleal@redhat.com>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
- <20220401083850.15266-9-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220401083850.15266-9-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.100]
-X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: b8db2d3c-71cd-42d5-b6f9-110388df36a7
-X-Ovh-Tracer-Id: 13550768330510011323
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudeiiedgtdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomh
-Received-SPF: pass client-ip=188.165.58.48; envelope-from=clg@kaod.org;
- helo=6.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: troy_lee@aspeedtech.com, steven_lee@aspeedtech.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XCJC0u/oXcAx
+References: <20210903174510.751630-1-philmd@redhat.com> <20210903174510.751630-20-philmd@redhat.com>
+In-Reply-To: <20210903174510.751630-20-philmd@redhat.com>
+From: Eugenio Perez Martin <eperezma@redhat.com>
+Date: Fri, 1 Apr 2022 12:50:41 +0200
+Message-ID: <CAJaqyWd9kd6TamcO3qj68J5Dn6-cXAWRxOckbfjwpKnEp0_VzQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v3 19/28] hw/virtio: Replace g_memdup() by g_memdup2()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-level <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>, 
+	Christian Schoenebeck <qemu_oss@crudebyte.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Eric Blake <eblake@redhat.com>, qemu-block@nongnu.org, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+	Eduardo Habkost <ehabkost@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+	John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
+	Kevin Wolf <kwolf@redhat.com>, Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>, 
+	"Daniel P . Berrange" <berrange@redhat.com>, Hanna Reitz <hreitz@redhat.com>, qemu-ppc@nongnu.org, 
+	Paolo Bonzini <pbonzini@redhat.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: uNM4B4Rg3ExH
 
-On 4/1/22 10:38, Jamin Lin wrote:
-> The image should be supplied with ELF binary.
-> $ qemu-system-arm -M ast1030-evb -kernel zephyr.elf -nographic
-> 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+On Fri, Sep 3, 2021 at 8:11 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om> wrote:
+>
+> Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-mem=
+dup2-now/5538
+>
+>   The old API took the size of the memory to duplicate as a guint,
+>   whereas most memory functions take memory sizes as a gsize. This
+>   made it easy to accidentally pass a gsize to g_memdup(). For large
+>   values, that would lead to a silent truncation of the size from 64
+>   to 32 bits, and result in a heap area being returned which is
+>   significantly smaller than what the caller expects. This can likely
+>   be exploited in various modules to cause a heap buffer overflow.
+>
+> Replace g_memdup() by the safer g_memdup2() wrapper.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> Should we check in_num/out_num in range?
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+I'd say it is not needed to check: virtqueue_pop fills them by
+iterating through the descriptor chain so the range is restricted to
+[0, 1024].
 
-Thanks,
+Acked-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
 
-C.
 
 > ---
->   hw/arm/aspeed.c | 66 +++++++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 66 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index d205384d98..4e27060324 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -24,6 +24,7 @@
->   #include "hw/loader.h"
->   #include "qemu/error-report.h"
->   #include "qemu/units.h"
-> +#include "hw/qdev-clock.h"
->   
->   static struct arm_boot_info aspeed_board_binfo = {
->       .board_id = -1, /* device-tree-only board */
-> @@ -1292,6 +1293,67 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
->           aspeed_soc_num_cpus(amc->soc_name);
->   }
->   
-> +#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
-> +/* Main SYSCLK frequency in Hz (200MHz) */
-> +#define SYSCLK_FRQ 200000000ULL
-> +
-> +static void aspeed_minibmc_machine_init(MachineState *machine)
-> +{
-> +    AspeedMachineState *bmc = ASPEED_MACHINE(machine);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
-> +    Clock *sysclk;
-> +
-> +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
-> +    clock_set_hz(sysclk, SYSCLK_FRQ);
-> +
-> +    object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
-> +    qdev_connect_clock_in(DEVICE(&bmc->soc), "sysclk", sysclk);
-> +
-> +    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
-> +                         amc->uart_default);
-> +    qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
-> +
-> +    aspeed_board_init_flashes(&bmc->soc.fmc,
-> +                              bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
-> +                              amc->num_cs,
-> +                              0);
-> +
-> +    aspeed_board_init_flashes(&bmc->soc.spi[0],
-> +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
-> +                              amc->num_cs, amc->num_cs);
-> +
-> +    aspeed_board_init_flashes(&bmc->soc.spi[1],
-> +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
-> +                              amc->num_cs, (amc->num_cs * 2));
-> +
-> +    if (amc->i2c_init) {
-> +        amc->i2c_init(bmc);
-> +    }
-> +
-> +    armv7m_load_kernel(ARM_CPU(first_cpu),
-> +                       machine->kernel_filename,
-> +                       AST1030_INTERNAL_FLASH_SIZE);
-> +}
-> +
-> +static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-> +                                                          void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
-> +    amc->soc_name = "ast1030-a1";
-> +    amc->hw_strap1 = 0;
-> +    amc->hw_strap2 = 0;
-> +    mc->init = aspeed_minibmc_machine_init;
-> +    mc->default_ram_size = 0;
-> +    mc->default_cpus = mc->min_cpus = mc->max_cpus = 1;
-> +    amc->fmc_model = "sst25vf032b";
-> +    amc->spi_model = "sst25vf032b";
-> +    amc->num_cs = 2;
-> +    amc->macs_mask = 0;
-> +}
-> +
->   static const TypeInfo aspeed_machine_types[] = {
->       {
->           .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
-> @@ -1349,6 +1411,10 @@ static const TypeInfo aspeed_machine_types[] = {
->           .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
->           .parent        = TYPE_ASPEED_MACHINE,
->           .class_init    = aspeed_machine_bletchley_class_init,
-> +    }, {
-> +        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
-> +        .parent         = TYPE_ASPEED_MACHINE,
-> +        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
->       }, {
->           .name          = TYPE_ASPEED_MACHINE,
->           .parent        = TYPE_MACHINE,
-
+>  hw/net/virtio-net.c       | 3 ++-
+>  hw/virtio/virtio-crypto.c | 6 +++---
+>  2 files changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+> index 16d20cdee52..338fbeb8c57 100644
+> --- a/hw/net/virtio-net.c
+> +++ b/hw/net/virtio-net.c
+> @@ -1449,7 +1449,8 @@ static void virtio_net_handle_ctrl(VirtIODevice *vd=
+ev, VirtQueue *vq)
+>          }
+>
+>          iov_cnt =3D elem->out_num;
+> -        iov2 =3D iov =3D g_memdup(elem->out_sg, sizeof(struct iovec) * e=
+lem->out_num);
+> +        iov2 =3D iov =3D g_memdup2(elem->out_sg,
+> +                               sizeof(struct iovec) * elem->out_num);
+>          s =3D iov_to_buf(iov, iov_cnt, 0, &ctrl, sizeof(ctrl));
+>          iov_discard_front(&iov, &iov_cnt, sizeof(ctrl));
+>          if (s !=3D sizeof(ctrl)) {
+> diff --git a/hw/virtio/virtio-crypto.c b/hw/virtio/virtio-crypto.c
+> index 54f9bbb789c..59886c1790d 100644
+> --- a/hw/virtio/virtio-crypto.c
+> +++ b/hw/virtio/virtio-crypto.c
+> @@ -242,7 +242,7 @@ static void virtio_crypto_handle_ctrl(VirtIODevice *v=
+dev, VirtQueue *vq)
+>          }
+>
+>          out_num =3D elem->out_num;
+> -        out_iov_copy =3D g_memdup(elem->out_sg, sizeof(out_iov[0]) * out=
+_num);
+> +        out_iov_copy =3D g_memdup2(elem->out_sg, sizeof(out_iov[0]) * ou=
+t_num);
+>          out_iov =3D out_iov_copy;
+>
+>          in_num =3D elem->in_num;
+> @@ -605,11 +605,11 @@ virtio_crypto_handle_request(VirtIOCryptoReq *reque=
+st)
+>      }
+>
+>      out_num =3D elem->out_num;
+> -    out_iov_copy =3D g_memdup(elem->out_sg, sizeof(out_iov[0]) * out_num=
+);
+> +    out_iov_copy =3D g_memdup2(elem->out_sg, sizeof(out_iov[0]) * out_nu=
+m);
+>      out_iov =3D out_iov_copy;
+>
+>      in_num =3D elem->in_num;
+> -    in_iov_copy =3D g_memdup(elem->in_sg, sizeof(in_iov[0]) * in_num);
+> +    in_iov_copy =3D g_memdup2(elem->in_sg, sizeof(in_iov[0]) * in_num);
+>      in_iov =3D in_iov_copy;
+>
+>      if (unlikely(iov_to_buf(out_iov, out_num, 0, &req, sizeof(req))
+> --
+> 2.31.1
+>
+>

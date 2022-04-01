@@ -1,226 +1,177 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp705946lfb;
-        Fri, 1 Apr 2022 01:27:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXWpfhMGgacIm8n9rvtUW74RGTKtDrZTd972uO/z2Nu/2aWNSNlzFfys35KXjhiMBfOWe1
-X-Received: by 2002:a0c:d688:0:b0:42c:3cb0:3923 with SMTP id k8-20020a0cd688000000b0042c3cb03923mr6910116qvi.69.1648801634329;
-        Fri, 01 Apr 2022 01:27:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648801634; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp713312lfb;
+        Fri, 1 Apr 2022 01:41:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzQ3EVvgdmv5ML4+AVVARNxbB9icyqsARGnuAkHTE70lgYG/5YTep3vItYCuGlypDhMt2Zn
+X-Received: by 2002:a05:620a:28c9:b0:680:a073:600 with SMTP id l9-20020a05620a28c900b00680a0730600mr6090503qkp.216.1648802467267;
+        Fri, 01 Apr 2022 01:41:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648802467; cv=none;
         d=google.com; s=arc-20160816;
-        b=x9atqzSeoA7uvWtKpKQJkeG2I5qp+NocXP5FQp8gHHY5IL47Zq3SwGnF953ZKmDnDl
-         UNzxhcEJEnzDqVOa/C/gCfnvmLDDFu9e1JcS9+qwUzC2ZClnf8XBH1pn5sqoGvEAudM8
-         3ruPsx7SZta822mmGPReO6Z2qAjiXBazcvKenkgCMbRl9pB4pdoc4T6K5YnbYE6FOk0e
-         2zFxvoeLZWVS7pkbS1WflZGaYFiqN5v468YDEtmlbMdA4Z2kn2uBP8K+V0Xn7od11odI
-         QLbHZGQpoMEZ0la5gh1Ij7GfNVyy3RTw2pDkWM6dXV5sKe314FEJRBRM7QpbeFr+sHyF
-         JH1Q==
+        b=s8ry4Qzz0UnD8PYyaAZO23EZcvcafCszyBJCkjruNYU1q4yI2ifsMCRt7BCklcRE7C
+         1IbULsTqtvdvn8VANqNkR5PsXk6uMVWbq7+x5LXeExxE8lAGeIrdkgfGN9cPfW9JHxrf
+         oykgils9Di+r4xFy1NCifeXj4RfyBeKS8IDK/l7hkTGrWbZilmaEzI4cKe7VLJzgHpvN
+         uABDnd8UHklrFXCZ4/hiiM6THPw9mDXrGYqoQGt8wVrqxx17cq/I6NdxxggcvSsmN6pK
+         9PQm2LpMBbXZoTkdZmbCh5OUezTy/0RMTfLxrbyDU75rqCs1rR+ypdQTOYnV+Mry5DTl
+         9GDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=Ok/eFYSyMIDWPLR3+wbpOx70tluoiUodTB6IQ/klXpo=;
-        b=FkIcQxymo3Mm7BDxnXIhfapSOu/WWgOUwiomlfQXV4NFmhWiindFmexfLVx3Cqgcnu
-         rMMXPsrDz3llHA6YzbqmxA9ujZn55XfVPM/vMp0190teFcJxfstNZ94FDk01vVhD5tfK
-         IG+5F4IQ6Nd3U4PCd/ReTeOAfbwY3rVfq6TmpWRj377p5GGLFuh3iTIkRwM9m3RPiZ04
-         nLYa6ecTwxaBdfeQDtE2vIR+Bb+eSJw7QI4YBs5wOXwR2F09Pm1+HWv33anhNM3xQ9+v
-         JjMp7GIBB+U9wyFURA3PfZty3hpa84EKSCmumiWDjqd0Cb65fbnyGK9DN4bFAqmRK94d
-         WkFg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=zPlryGa4DHn4F0DyeEHwWLFUM1427IrhCL5pBVJBQPk=;
+        b=R0pP09HNLVaczTaXzGRQYZad3u6WuZ6QxUuQESrUejtp5KWrWT1UQNpczeTklCz2qd
+         flFQhqK92wqOi28S3f3ox/BIlxG0dI9qBHRrKDaxFzmdUUNsYnG5CL6iKnTFe1RSq7bO
+         la/8CD7PPKeK7aSClX+QnPz9H1ioiUJhc2T2St2SXOh/FiUyGHnNBQ2WBnCTRZj7l1QU
+         ucljNIdOszj4OvS63tfznqvT/7+OZraj/tnjGgE051aeUf7+bV/uI0c/5UofMntDQf+K
+         K/DTsHE/OFrKVLtAGNEnUevH/Prdm457Q1vNDY24C68S6qD54w/784iGHtA5zlJ3Ssks
+         Jnxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=d2os131e;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a13-20020a37660d000000b0067e4be237f7si938695qkc.60.2022.04.01.01.27.14
+        by mx.google.com with ESMTPS id c7-20020a0cca07000000b00440e46a7ca8si588667qvk.326.2022.04.01.01.41.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Apr 2022 01:27:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Apr 2022 01:41:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=d2os131e;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53942 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37680 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naCch-0007NO-Ss
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 04:27:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46604)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1naCqA-00005C-Ms
+	for alex.bennee@linaro.org; Fri, 01 Apr 2022 04:41:06 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51622)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1naCOE-0000t1-3A; Fri, 01 Apr 2022 04:12:17 -0400
-Received: from [2a00:1450:4864:20::136] (port=40614
- helo=mail-lf1-x136.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1naCOB-0005ni-UD; Fri, 01 Apr 2022 04:12:13 -0400
-Received: by mail-lf1-x136.google.com with SMTP id t25so3429840lfg.7;
- Fri, 01 Apr 2022 01:12:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=Ok/eFYSyMIDWPLR3+wbpOx70tluoiUodTB6IQ/klXpo=;
- b=d2os131eEvCGwYyjVrtk0LZUIB96KKJmbOYOedihQL4ojFdIU/rdjLSAuYtEBKzlN6
- R5kx46T2mdjtf9bs7kRvHes3241h3ewkb3hkd3GpAasSeGKZliclpUrUV2/ncQYe9/zy
- vX7nKiEUJQWxZBANOajy6Rvx7rU4lPB6hK7XQTdWhWgSa2BdgSuY7EUjSJaSx49Buqpb
- /I1KQM3hbR/dSRfviilSxq7NqxTZTXo3bY9SycXgcCo+Ja61+k8/3WgKFNfALj6NhvT4
- 5KPYi7SM0uqTi9JulRQxNyLEh4Rag44asEsexCdVlCFaoYhvdlBySrZeBejUyijAAZ/8
- RM3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Ok/eFYSyMIDWPLR3+wbpOx70tluoiUodTB6IQ/klXpo=;
- b=sbXTt2maGjFJ/Vi3VFys62hI5IFtU9D3lqevukc3HL9+jfDBh0tFZuogccakVOATCf
- aBa5Xq9uQ+c2v4HdichTZgfhiSbltdIUwoHNGbECKpT55sZ/SnNRSpb07Jh1Anw/bRz5
- uDdId+gTS9Z9Hh0mOMchJPHIoRkbLRJ9XKZmFl2tFNmk1f8Ji0+ufTwZ6F7OD2oovCoa
- nw7exYuXpwmvSy3OqgAgdxIy8tN0xzdSMbrrgj8+pcQrD1Cq0e+lqCREJ0t7crplxwta
- uR37W+qyrXq4g9OOUtw7xvooy45QK4nTe4fnGaNo4TgMhDfJzqhmMN68borHT1z+ECeB
- JwOg==
-X-Gm-Message-State: AOAM532flmGqiFr9CD4bQE5Z5KDS3GvRyPZQeQ6qISJpaEsPD+cHlUCt
- U0WCl8mmNRcpDyL6ScZ5ntQ=
-X-Received: by 2002:a05:6512:3dab:b0:44a:247:2d8 with SMTP id
- k43-20020a0565123dab00b0044a024702d8mr13067548lfv.628.1648800729385; 
- Fri, 01 Apr 2022 01:12:09 -0700 (PDT)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- j21-20020a2e3c15000000b0024af39be634sm138445lja.28.2022.04.01.01.12.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 Apr 2022 01:12:08 -0700 (PDT)
-Date: Fri, 1 Apr 2022 10:12:07 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v1 2/2] hw/arm/xlnx-zynqmp: Connect 4 TTC timers
-Message-ID: <20220401081206.GB18849@fralle-msi>
-References: <20220331222017.2914409-1-edgar.iglesias@gmail.com>
- <20220331222017.2914409-3-edgar.iglesias@gmail.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1naCp7-0008WC-97; Fri, 01 Apr 2022 04:40:01 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:44045)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1naCp4-0001F9-0D; Fri, 01 Apr 2022 04:40:00 -0400
+Received: from mail.aspeedtech.com ([192.168.0.24])
+ by twspam01.aspeedtech.com with ESMTP id 2318Rpib030496;
+ Fri, 1 Apr 2022 16:27:51 +0800 (GMT-8)
+ (envelope-from jamin_lin@aspeedtech.com)
+Received: from localhost.localdomain (192.168.70.87) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 1 Apr
+ 2022 16:38:53 +0800
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Alistair Francis <alistair@alistair23.me>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@kaod.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, "Wainer dos
+ Santos Moschetta" <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ "open list:STM32F205" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Subject: [PATCH v5 3/9] aspeed/wdt: Fix ast2500/ast2600 default reload value
+Date: Fri, 1 Apr 2022 16:38:44 +0800
+Message-ID: <20220401083850.15266-4-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220331222017.2914409-3-edgar.iglesias@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::136
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::136;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x136.google.com
-X-Spam_score_int: -1006
-X-Spam_score: -100.7
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-100.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [192.168.70.87]
+X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
+ (192.168.0.24)
+X-DNSRBL: 
+X-MAIL: twspam01.aspeedtech.com 2318Rpib030496
+Received-SPF: pass client-ip=211.20.114.71;
+ envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
- asifsiddiqui120@gmail.com, edgar.iglesias@amd.com, sai.pavan.boddu@xilinx.com,
- alistair@alistair23.me, richard.henderson@linaro.org, qemu-devel@nongnu.org,
- f4bug@amsat.org, francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
- qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IuTT2oCqLGMx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
+ steven_lee@aspeedtech.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ykcbCpjz47sH
 
-On [2022 Apr 01] Fri 00:20:17, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
-> 
-> Connect the 4 TTC timers on the ZynqMP.
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+From: Steven Lee <steven_lee@aspeedtech.com>
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Per ast2500_2520_datasheet_v1.8 and ast2600v11.pdf, the default value of
+WDT00 and WDT04 is 0x014FB180 for ast2500/ast2600.
+Add default_status and default_reload_value attributes for storing
+counter status and reload value as they are different from ast2400.
 
-> ---
->  include/hw/arm/xlnx-zynqmp.h |  4 ++++
->  hw/arm/xlnx-zynqmp.c         | 22 ++++++++++++++++++++++
->  2 files changed, 26 insertions(+)
-> 
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index 9d9a9d0bf9..85fd9f53da 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -41,6 +41,7 @@
->  #include "hw/or-irq.h"
->  #include "hw/misc/xlnx-zynqmp-apu-ctrl.h"
->  #include "hw/misc/xlnx-zynqmp-crf.h"
-> +#include "hw/timer/cadence_ttc.h"
->  
->  #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
->  OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
-> @@ -84,6 +85,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
->  #define XLNX_ZYNQMP_MAX_RAM_SIZE (XLNX_ZYNQMP_MAX_LOW_RAM_SIZE + \
->                                    XLNX_ZYNQMP_MAX_HIGH_RAM_SIZE)
->  
-> +#define XLNX_ZYNQMP_NUM_TTC 4
-> +
->  /*
->   * Unimplemented mmio regions needed to boot some images.
->   */
-> @@ -128,6 +131,7 @@ struct XlnxZynqMPState {
->      qemu_or_irq qspi_irq_orgate;
->      XlnxZynqMPAPUCtrl apu_ctrl;
->      XlnxZynqMPCRF crf;
-> +    CadenceTTCState ttc[XLNX_ZYNQMP_NUM_TTC];
->  
->      char *boot_cpu;
->      ARMCPU *boot_cpu_ptr;
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 5bfe285a19..375309e68e 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -68,6 +68,9 @@
->  #define APU_ADDR            0xfd5c0000
->  #define APU_IRQ             153
->  
-> +#define TTC0_ADDR           0xFF110000
-> +#define TTC0_IRQ            36
-> +
->  #define IPI_ADDR            0xFF300000
->  #define IPI_IRQ             64
->  
-> @@ -316,6 +319,24 @@ static void xlnx_zynqmp_create_crf(XlnxZynqMPState *s, qemu_irq *gic)
->      sysbus_connect_irq(sbd, 0, gic[CRF_IRQ]);
->  }
->  
-> +static void xlnx_zynqmp_create_ttc(XlnxZynqMPState *s, qemu_irq *gic)
-> +{
-> +    SysBusDevice *sbd;
-> +    int i, irq;
-> +
-> +    for (i = 0; i < XLNX_ZYNQMP_NUM_TTC; i++) {
-> +        object_initialize_child(OBJECT(s), "ttc[*]", &s->ttc[i],
-> +                                TYPE_CADENCE_TTC);
-> +        sbd = SYS_BUS_DEVICE(&s->ttc[i]);
-> +
-> +        sysbus_realize(sbd, &error_fatal);
-> +        sysbus_mmio_map(sbd, 0, TTC0_ADDR + i * 0x10000);
-> +        for (irq = 0; irq < 3; irq++) {
-> +            sysbus_connect_irq(sbd, irq, gic[TTC0_IRQ + i * 3 + irq]);
-> +        }
-> +    }
-> +}
-> +
->  static void xlnx_zynqmp_create_unimp_mmio(XlnxZynqMPState *s)
->  {
->      static const struct UnimpInfo {
-> @@ -721,6 +742,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->      xlnx_zynqmp_create_efuse(s, gic_spi);
->      xlnx_zynqmp_create_apu_ctrl(s, gic_spi);
->      xlnx_zynqmp_create_crf(s, gic_spi);
-> +    xlnx_zynqmp_create_ttc(s, gic_spi);
->      xlnx_zynqmp_create_unimp_mmio(s);
->  
->      for (i = 0; i < XLNX_ZYNQMP_NUM_GDMA_CH; i++) {
-> -- 
-> 2.25.1
-> 
+Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/watchdog/wdt_aspeed.c         | 10 ++++++++--
+ include/hw/watchdog/wdt_aspeed.h |  2 ++
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index 6aa6f90b66..386928e9c0 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -232,8 +232,8 @@ static void aspeed_wdt_reset(DeviceState *dev)
+     AspeedWDTState *s = ASPEED_WDT(dev);
+     AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(s);
+ 
+-    s->regs[WDT_STATUS] = 0x3EF1480;
+-    s->regs[WDT_RELOAD_VALUE] = 0x03EF1480;
++    s->regs[WDT_STATUS] = awc->default_status;
++    s->regs[WDT_RELOAD_VALUE] = awc->default_reload_value;
+     s->regs[WDT_RESTART] = 0;
+     s->regs[WDT_CTRL] = awc->sanitize_ctrl(0);
+     s->regs[WDT_RESET_WIDTH] = 0xFF;
+@@ -319,6 +319,8 @@ static void aspeed_2400_wdt_class_init(ObjectClass *klass, void *data)
+     awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
+     awc->wdt_reload = aspeed_wdt_reload;
+     awc->sanitize_ctrl = aspeed_2400_sanitize_ctrl;
++    awc->default_status = 0x03EF1480;
++    awc->default_reload_value = 0x03EF1480;
+ }
+ 
+ static const TypeInfo aspeed_2400_wdt_info = {
+@@ -355,6 +357,8 @@ static void aspeed_2500_wdt_class_init(ObjectClass *klass, void *data)
+     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
+     awc->wdt_reload = aspeed_wdt_reload_1mhz;
+     awc->sanitize_ctrl = aspeed_2500_sanitize_ctrl;
++    awc->default_status = 0x014FB180;
++    awc->default_reload_value = 0x014FB180;
+ }
+ 
+ static const TypeInfo aspeed_2500_wdt_info = {
+@@ -376,6 +380,8 @@ static void aspeed_2600_wdt_class_init(ObjectClass *klass, void *data)
+     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
+     awc->wdt_reload = aspeed_wdt_reload_1mhz;
+     awc->sanitize_ctrl = aspeed_2600_sanitize_ctrl;
++    awc->default_status = 0x014FB180;
++    awc->default_reload_value = 0x014FB180;
+ }
+ 
+ static const TypeInfo aspeed_2600_wdt_info = {
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index f945cd6c58..0e37f39f38 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -45,6 +45,8 @@ struct AspeedWDTClass {
+     void (*reset_pulse)(AspeedWDTState *s, uint32_t property);
+     void (*wdt_reload)(AspeedWDTState *s);
+     uint64_t (*sanitize_ctrl)(uint64_t data);
++    uint32_t default_status;
++    uint32_t default_reload_value;
+ };
+ 
+ #endif /* WDT_ASPEED_H */
+-- 
+2.17.1
+

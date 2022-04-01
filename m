@@ -1,146 +1,224 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1624973lfb;
-        Thu, 31 Mar 2022 01:46:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxhuivallLPO4QlP8x+Juf6U6BI5P+DCZX92XeAngaJD8aZ8EZT4qJ6LNJ5HGLBfIAkdm9O
-X-Received: by 2002:a05:622a:492:b0:2e1:ee8a:b1c0 with SMTP id p18-20020a05622a049200b002e1ee8ab1c0mr3225540qtx.162.1648716410145;
-        Thu, 31 Mar 2022 01:46:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648716410; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp720582lfb;
+        Fri, 1 Apr 2022 01:56:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzerbGjsmtFB0f7YitPDaq+Dd2cv6zei9RXJ/e2fQD4JnwHeHqWGg0nJiQ17ok21okEl1cF
+X-Received: by 2002:a05:620a:1925:b0:67d:93f9:3c0 with SMTP id bj37-20020a05620a192500b0067d93f903c0mr6024527qkb.256.1648803361122;
+        Fri, 01 Apr 2022 01:56:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648803361; cv=none;
         d=google.com; s=arc-20160816;
-        b=yqVKXsJd/Weh7hgohXfXd6aZbIqdUKVthegEVczjQinO6FamVH5A5XWsauWZDlROyS
-         yuFxOQ1IxwEKLzmcWFs1DSEkR039xVAJdD3ywwPK4fZv4XSZ7R6YsfRv1goMt/Gn2bFh
-         QBgZLImwy5d5072qIWxh+L3MITAI8FNy9qlstdk5yh8NnzaED2hUrgUMgYSIKeMaIDCX
-         XXgM4E26SEcZChPFMzLoe0Xsn/YPMt0YYTyRf44AjLF3VL1zjT2hjelBUTBl7tbDXun3
-         THgDGKOsyek04beaOBU0BbXgRe7K9ysUPA1m6u+8SHbxcm0wFC8uWbzfmpKnqpyhJ9bS
-         pCGA==
+        b=eHIgDbnDoanPfNUj4bCRFtUh9MyFFs+Bbil5ATm+7/m4mr5jvvEjfvbKBfUisw7YUr
+         m+Ve1ui1gQ6fcte8yJkUWjaJOZ8SLDh+iQBSyar8YegxRJLuO1NB+/tuugh9Qp3k1aNp
+         Jo7QON7gwROYSgO5kGBUhExc/ZIpnJ1Jk22+LU0+07WDIWD94TbS6WEYec0oPyr+2tR1
+         7UniDxbU7V0M9mH+IUPWGGIdAI1I4xeGNHkKtYFijRVtXIoYlaxhV0FBeI51FmhyeI6i
+         xMjinAuYJGCCrbE4R985rI9T9HbmE7wgmwgJ/8nhgLa7HRO/FHusiz6r5E8Al5Osotao
+         hFSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=yPfi4Nn6/SbDf3IxbFxR3rP/TkP5Fezknc9qXsLwshg=;
-        b=gW1jNEemz3oAX+FN572vStvydVetgrOqrT/sLqksc+CsFNqaNBxj/hGEXDnpd03hdk
-         EId1b+hBy/HVFqQMDIgddKnKnT03NtOLM6sBptnwyq1BDHs+HevTOL8IUQFxmGkFeMvl
-         zP4FF/pnDfy+aFmo6ovSKQuZt0FNOJqwtqzn/USwG3MBigghiveSItdpV1KW7xOzFuzs
-         orXgzx+m3KKR32IhwmHGsCCobZUj2BE4KlAvyfRLtT/+97xMlc57vPccgyidonpMF1XF
-         KtBY8LWRH+Na8tF4EZZ9d248gKc369YB4yHKxzIWmpwjATYuhoCXBXHsIvWjfjvnmtTa
-         /uwA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=coMy+1SQafuMezRSl3/QPGD/hfoaRmPF2XpXyOQxc9g=;
+        b=wHyTyQ27mNMX/SFoXtR1KzcGAEMb5ff1cQ2TLAN/0ziPBOi+mWvCB9DhAHgNgGhykm
+         L1/DclnDpdYvL80eAV2Daj8XzszzCY0EKZ6pg/RX9XoF8+QCp73ZxKeJMu4kOXe6Y+2h
+         0INq7+oJmk8u8meDRbmSPuUc3T4FphnFPIUUW3ITqPoUJxMbfuvLegxCTAKbp2QqNqEM
+         AXV7TCC3+QeoHMpfwI1N8vBMx7iRafPSkUlddnozNgcKYQQrHRQVQXPakkYBB2y8UwZj
+         0UvTxz9sAzNwL3rxLT54YbiapZOrLF6savRaa6s/ncmlfo1cAaIM30clAqvAUWLtVlNH
+         fJ6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aY+RJf30;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bh14-20020ad4490e000000b00440e46a7c2bsi12065340qvb.201.2022.03.31.01.46.49
+        by mx.google.com with ESMTPS id s2-20020a0cdc02000000b00440e46a7d12si555907qvk.432.2022.04.01.01.56.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Mar 2022 01:46:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Apr 2022 01:56:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aY+RJf30;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42272 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:32966 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nZqS9-0000N2-IU
-	for alex.bennee@linaro.org; Thu, 31 Mar 2022 04:46:49 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34376)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1naD4Z-0008Q0-Su
+	for alex.bennee@linaro.org; Fri, 01 Apr 2022 04:55:59 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52496)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nZqRf-0000LT-DX
- for qemu-arm@nongnu.org; Thu, 31 Mar 2022 04:46:22 -0400
-Received: from [2607:f8b0:4864:20::1132] (port=37105
- helo=mail-yw1-x1132.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nZqRc-0007e5-V5
- for qemu-arm@nongnu.org; Thu, 31 Mar 2022 04:46:18 -0400
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-2e5757b57caso246515747b3.4
- for <qemu-arm@nongnu.org>; Thu, 31 Mar 2022 01:46:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yPfi4Nn6/SbDf3IxbFxR3rP/TkP5Fezknc9qXsLwshg=;
- b=aY+RJf30wwbTQBV7744EOksxsthY3UUHayxxon3BDVz51ZDF4XyU0xSsHIEL70qFCR
- IH6DN98a9BPDWaxE3HE6HOuFYQZG/Th2mN2VQBmwZKeGTgkLRZ0ei7oiAaif4g4BXBtw
- vCLNVQSDn+DlUVYfwXvHXhQ61eEtvh4egGq84gt6vDViNFnFKNW6+vopwxoEQG6WvbN1
- pasSfgxHZLAZT6acNBSJ337FP7Rlj8xNeXYXw6cGb0whz4tDhen8w3V1073SV/vajSxB
- Msg3k9Rn4wFS5FqpK/F6KjNo7R0CAlVNjbURowMTCi4/34AdJITzdaZrjhOChYG3MCaW
- qSaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yPfi4Nn6/SbDf3IxbFxR3rP/TkP5Fezknc9qXsLwshg=;
- b=nvTGEkHNsLr62cGrldJ0hd5Smr9r0ybbTs1tmQgbUtNSi9XbzaJdtmf5VWry3NEnJy
- D18pKadXMcVdJNLa2UZj42JfxONSW+ZfUSGNzk2foIMV00h2FOwhaTPv5//1vYmcTPMx
- v5ewDQwBHPqagekW60iNZYF5OeiOiD6wC7+w6l682XP/c81fr2UhJiJxjK03jIn3/Uf7
- Wn5wgbc1wrsqnnyyEQwhmyvZ2Fu+9+b+1tXfa0nn719YucQzO//gNJfPEsfjs6UrYk40
- enqyEL4WF9rTKKDtihHhfT4UUBIMAvGWi9sOk8AX7eVdC9PngVRN/7EQw47rDdyICX5R
- qGdg==
-X-Gm-Message-State: AOAM531dYiryIcR/39prSaNPSPFWN4uzGiQykdWJzkWrFk9emi+fp2/s
- RXOTMEKuSYYm3kejMx3Q6Ut55hgPwuoLBS6988xTag==
-X-Received: by 2002:a0d:f603:0:b0:2d1:57e5:234 with SMTP id
- g3-20020a0df603000000b002d157e50234mr4006605ywf.469.1648716375904; Thu, 31
- Mar 2022 01:46:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naCwA-0007mN-IJ
+ for qemu-devel@nongnu.org; Fri, 01 Apr 2022 04:47:18 -0400
+Received: from 6.mo548.mail-out.ovh.net ([188.165.58.48]:46693)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naCw8-0002Hw-8G
+ for qemu-devel@nongnu.org; Fri, 01 Apr 2022 04:47:18 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.111])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id B21EE207F9;
+ Fri,  1 Apr 2022 08:47:11 +0000 (UTC)
+Received: from kaod.org (37.59.142.100) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 1 Apr
+ 2022 10:47:10 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-100R003d7d9c958-51e4-4a36-a220-dd7c1a09a9f3,
+ BF19997ACFFB9775C4837E30A1DE169AA6CF9E32) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <66be2d94-2092-a8fa-f107-c5beee17baa1@kaod.org>
+Date: Fri, 1 Apr 2022 10:47:09 +0200
 MIME-Version: 1.0
-References: <20220327093427.1548629-1-idan.horowitz@gmail.com>
- <20220327093427.1548629-4-idan.horowitz@gmail.com>
- <ede38e3b-5207-52fe-4c02-72a4bbe1cf20@linaro.org>
-In-Reply-To: <ede38e3b-5207-52fe-4c02-72a4bbe1cf20@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 31 Mar 2022 09:46:04 +0100
-Message-ID: <CAFEAcA8eycaT-ESi8Fopj7LxH1aZyyNCcL6whvNpQDqt9VEVug@mail.gmail.com>
-Subject: Re: [PATCH 3/3] target/arm: Determine final stage 2 output PA space
- based on original IPA
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1132
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v5 8/9] aspeed: Add an AST1030 eval board
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Alistair Francis
+ <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, Andrew
+ Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Cleber Rosa
+ <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
+ Leal <bleal@redhat.com>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+ <20220401083850.15266-9-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220401083850.15266-9-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.100]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: b8db2d3c-71cd-42d5-b6f9-110388df36a7
+X-Ovh-Tracer-Id: 13550768330510011323
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudeiiedgtdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomh
+Received-SPF: pass client-ip=188.165.58.48; envelope-from=clg@kaod.org;
+ helo=6.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Idan Horowitz <idan.horowitz@gmail.com>,
- qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jp7c/oncsgbL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: troy_lee@aspeedtech.com, steven_lee@aspeedtech.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XCJC0u/oXcAx
 
-On Tue, 29 Mar 2022 at 20:09, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 3/27/22 03:34, Idan Horowitz wrote:
-> > As per the AArch64.S2Walk() psuedo-code in the ARMv8 ARM, the final
-> > decision as to the output address's PA space based on the SA/SW/NSA/NSA
-> > bits needs to take the input IPA's PA space into account, and not the
-> > PA space of the result of the stage 2 walk itself.
-> >
-> > Signed-off-by: Idan Horowitz <idan.horowitz@gmail.com>
->
-> I believe I follow: because the walk uses walkstate.address.paddress.paspace, the ipa
-> input parameter is unchanged, and it is ipa that is passed to
-> AArch64.S2NextWalkStateLast() to form the output address.
+On 4/1/22 10:38, Jamin Lin wrote:
+> The image should be supplied with ELF binary.
+> $ qemu-system-arm -M ast1030-evb -kernel zephyr.elf -nographic
+> 
+> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 
-Textually, this is described on page D5-4802 of DDI 0487H.a;
-the security of the output address of the memory access isn't
-affected by the security of the output address of the translation
-table walk.
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
--- PMM
+Thanks,
+
+C.
+
+> ---
+>   hw/arm/aspeed.c | 66 +++++++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 66 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index d205384d98..4e27060324 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -24,6 +24,7 @@
+>   #include "hw/loader.h"
+>   #include "qemu/error-report.h"
+>   #include "qemu/units.h"
+> +#include "hw/qdev-clock.h"
+>   
+>   static struct arm_boot_info aspeed_board_binfo = {
+>       .board_id = -1, /* device-tree-only board */
+> @@ -1292,6 +1293,67 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
+>           aspeed_soc_num_cpus(amc->soc_name);
+>   }
+>   
+> +#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
+> +/* Main SYSCLK frequency in Hz (200MHz) */
+> +#define SYSCLK_FRQ 200000000ULL
+> +
+> +static void aspeed_minibmc_machine_init(MachineState *machine)
+> +{
+> +    AspeedMachineState *bmc = ASPEED_MACHINE(machine);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
+> +    Clock *sysclk;
+> +
+> +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
+> +    clock_set_hz(sysclk, SYSCLK_FRQ);
+> +
+> +    object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
+> +    qdev_connect_clock_in(DEVICE(&bmc->soc), "sysclk", sysclk);
+> +
+> +    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
+> +                         amc->uart_default);
+> +    qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+> +
+> +    aspeed_board_init_flashes(&bmc->soc.fmc,
+> +                              bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+> +                              amc->num_cs,
+> +                              0);
+> +
+> +    aspeed_board_init_flashes(&bmc->soc.spi[0],
+> +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
+> +                              amc->num_cs, amc->num_cs);
+> +
+> +    aspeed_board_init_flashes(&bmc->soc.spi[1],
+> +                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
+> +                              amc->num_cs, (amc->num_cs * 2));
+> +
+> +    if (amc->i2c_init) {
+> +        amc->i2c_init(bmc);
+> +    }
+> +
+> +    armv7m_load_kernel(ARM_CPU(first_cpu),
+> +                       machine->kernel_filename,
+> +                       AST1030_INTERNAL_FLASH_SIZE);
+> +}
+> +
+> +static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+> +                                                          void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
+> +    amc->soc_name = "ast1030-a1";
+> +    amc->hw_strap1 = 0;
+> +    amc->hw_strap2 = 0;
+> +    mc->init = aspeed_minibmc_machine_init;
+> +    mc->default_ram_size = 0;
+> +    mc->default_cpus = mc->min_cpus = mc->max_cpus = 1;
+> +    amc->fmc_model = "sst25vf032b";
+> +    amc->spi_model = "sst25vf032b";
+> +    amc->num_cs = 2;
+> +    amc->macs_mask = 0;
+> +}
+> +
+>   static const TypeInfo aspeed_machine_types[] = {
+>       {
+>           .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+> @@ -1349,6 +1411,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>           .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
+>           .parent        = TYPE_ASPEED_MACHINE,
+>           .class_init    = aspeed_machine_bletchley_class_init,
+> +    }, {
+> +        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+> +        .parent         = TYPE_ASPEED_MACHINE,
+> +        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
+>       }, {
+>           .name          = TYPE_ASPEED_MACHINE,
+>           .parent        = TYPE_MACHINE,
+

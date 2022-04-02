@@ -1,100 +1,100 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1318143lfb;
-        Fri, 1 Apr 2022 19:29:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz1quWH4BtjN/Dy8T3gIt1cM6BfV0nU0C0HH5StA0/68lLxz5VKKj7Hs7iGcLAgLQFRaR1V
-X-Received: by 2002:a05:6214:76a:b0:443:6326:8a90 with SMTP id f10-20020a056214076a00b0044363268a90mr21851669qvz.107.1648866544231;
-        Fri, 01 Apr 2022 19:29:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648866544; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp1319868lfb;
+        Fri, 1 Apr 2022 19:33:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx1J4/lAAzKQlwGpcV2Wf4dSj/McvvktT5bgWpwQIqdmTwlUNOg6orjOFUb497fD1Peq12P
+X-Received: by 2002:a05:622a:14c8:b0:2e1:d626:66ea with SMTP id u8-20020a05622a14c800b002e1d62666eamr10655349qtx.58.1648866782088;
+        Fri, 01 Apr 2022 19:33:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648866782; cv=none;
         d=google.com; s=arc-20160816;
-        b=SQLPBisXeTjT3FddhE9WK9Gw1jwVICNWTN/wPw+BvR5UZksU7/tMyekBu7e59kkRV6
-         KbshA36sDSekV7QuaemvCKJaKiBPgIoNyWqRDqumP1OaIrMwLAHFgsIuncadQSSD3uzO
-         SfzxI/bYBwyL1HBN5lY/cJaxJ6ojvd3hINr8yc3aVxh9bhVTyBSiQlX983PwbGHyWR68
-         6XTH3f1lBh61dMST/3UaKQ7BsH/GkhBCAs9DqvbvsAhKAezQsSGqwmw4KvVlgnubnLOB
-         sULUOc3QiEsIbIysMo3MPDDpuiHm2EHvtz9Ln1wOEDg8mZMP5uAAdC2t4rok7iEGbgbO
-         L8EQ==
+        b=VYbffcrvZ1TqHxDWLMU2j8mge9ioI9gMJ2+BSS8h1gUSAHh/5k6EXPHFfJkFJuxLB1
+         cKwPUDUkSP5WvvSbDqQHs1fntH7zKC3C7llISGk24h4uJEAUjj6ZdhhHi862GF38EXb1
+         39q6Bax246BYhKVFYBeib8Duj6K4Smm11IJh8YnYKXwp2CZ1Bj09Efp/6KSRMaT5rZGH
+         rG3+nDey64sbzmWMfhIIYcDdEr5FqqmvFkxVEgOo+xrHi8Q18FKEZDiRWqbTIv7NWXEZ
+         ttzW570CCVHPq+05RIjob8DgnpR1OVUH7ZaKxl9AsPmJNnd+ZQYkyCwkp7Csyeo5nn/3
+         54mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=2XkKUPx+UDhBJ9rg/c8lN99LCUH+q5iXJoBX4wiVhfs=;
-        b=JlOjxUbBpf7p4hDJ0os6MnzpllrguZqARr5HcaIENHqnE+tn0/76dJIWLLW8tO6cUC
-         R5/VpwvMwRwOXzbPt0tMrYwyKd6gyBOzorzP0NMPZztJblGD6D4eD18V2zYFmaAbMHhi
-         DX/iXPfMW2RdZ74XnE8nsOUhiHJdXvp0Zsq7TClSPSt+hYVJBj1+FJ/9VeZ5yUDDOjPd
-         2c4uc/sLj2NDIQcfg1fD6MXLYynlntrcBMqpUOQ6lEonb3vh3q5vzG/7qlDhmM9sR+Rn
-         HSRHk2e/PW5dwI91wf+DIHQvkS+G+hRImgh4zYUykMUUxNOVzo/vC6ZEsnQxbQgBIJcF
-         qjkg==
+        bh=FFPEQ6m5J3JKVjna0NTRVy76Qf/w2j9vhAX5r+npR50=;
+        b=laxYYgf+eiUqhBp5O2184SPuGREOopHR/1jDdIUKiNsQ4/enkoVY9tG8gKyij51Ciq
+         TWprExIqICsFqYkGXjunrpex4gHSAREYHIv+K6l2ZoIS2kWFzPqX/xk39ly2Th1UmU/c
+         URzQKfBVnPQGZBZwmtCGlsbZtp3czFN9jrGZxI1YioIggI0+FKpnkAV4+FxC0j1otUNR
+         KpAqQHQ87D6D69zqgFNsLUE4esuBzIZLgzpFlWkXJ7RTOi15ZohHSPxd2u9Msx1W3AZ7
+         jChv/jjB770HhWvre9Nm9npBlRc9DxM2u0Wf/pua2Uu5DgWU9AYtjgjfi12YNqKL80uy
+         tdFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=YUZfBcdY;
+       dkim=pass header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=bZCE5vgA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n127-20020a37bd85000000b0067e4be23a56si1502098qkf.667.2022.04.01.19.29.04
+        by mx.google.com with ESMTPS id z27-20020a0ca95b000000b00440e46a7b7dsi1293452qva.27.2022.04.01.19.33.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Apr 2022 19:29:04 -0700 (PDT)
+        Fri, 01 Apr 2022 19:33:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=YUZfBcdY;
+       dkim=pass header.i=@smartx-com.20210112.gappssmtp.com header.s=20210112 header.b=bZCE5vgA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45622 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naTVf-0005bs-Ni
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 22:29:03 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59272)
+	id 1naTZV-0000GF-BJ
+	for alex.bennee@linaro.org; Fri, 01 Apr 2022 22:33:01 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59738)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zongyuan.li@smartx.com>)
- id 1naTVS-0005Wf-Mr
- for qemu-arm@nongnu.org; Fri, 01 Apr 2022 22:28:50 -0400
-Received: from [2607:f8b0:4864:20::72a] (port=46898
- helo=mail-qk1-x72a.google.com)
+ id 1naTZM-0000G6-U7
+ for qemu-arm@nongnu.org; Fri, 01 Apr 2022 22:32:52 -0400
+Received: from [2607:f8b0:4864:20::82a] (port=41701
+ helo=mail-qt1-x82a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <zongyuan.li@smartx.com>)
- id 1naTVQ-0000qo-K9
- for qemu-arm@nongnu.org; Fri, 01 Apr 2022 22:28:50 -0400
-Received: by mail-qk1-x72a.google.com with SMTP id r127so3522455qke.13
- for <qemu-arm@nongnu.org>; Fri, 01 Apr 2022 19:28:47 -0700 (PDT)
+ id 1naTZL-0001Sf-5S
+ for qemu-arm@nongnu.org; Fri, 01 Apr 2022 22:32:52 -0400
+Received: by mail-qt1-x82a.google.com with SMTP id o15so2277422qtv.8
+ for <qemu-arm@nongnu.org>; Fri, 01 Apr 2022 19:32:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=smartx-com.20210112.gappssmtp.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2XkKUPx+UDhBJ9rg/c8lN99LCUH+q5iXJoBX4wiVhfs=;
- b=YUZfBcdYZif+cNuuqyJT6bOsN4zwl+rgxWTERSU0O3JbgoF2Af6N9I+FDUvM9xHSOX
- 0nXaKm4rqd+ewNtmizkok16UjkHIerKgPzhQTf8qLGDlnTfOev+/x5wm8lkN3DNjpGIx
- Cy4BMSpCDPmoLQcTiOWIe5W4kXLP0KKlD/+F8qVqYuZV5//6K4AZ7Bhv0v8xZ9Mvzl77
- SxuRKf8xOYpamhjxEHQHVTcbKJuQo40dx44IDPma0peDMqPWjGo58vD4aSfHjYjXhsGr
- ksPlUeKtX4jvVjt1Vzv6IC0tgSw5bWwlRXf1Axc66f8BmLkL551hm6wmCwlMWbC4Q2W+
- i0Qg==
+ :cc; bh=FFPEQ6m5J3JKVjna0NTRVy76Qf/w2j9vhAX5r+npR50=;
+ b=bZCE5vgAeFRRIf8lb3pPk6qQ9Z0ysrrQQQqu2UksSOMXfY9OCsJ+l+j7sbt3xMK+Fq
+ dovveJHdtE2GhMyFPlc/gVm6fByV1cys4QLDYuuId5kNQvvlzU1tni6sBLwCVwx6mZwN
+ Ht9UaL3ErDltPDoPQmD5FkCfrn2re7OoEbyPq741bFJR4cJRXXDNQiF/L5teh0JO/qKl
+ NwSMFm9S74FoRhxgN0FI/TwaEFo4qo8XXo9nsrQK2yAQCMIfsZDqp+TTbDMxiux6seLi
+ B5NMeffuXDGHjw91k9sJGLcD5inTHAjxcnNsO8TR1J1Teyegyi6GiDjCDdBk1GBG6IWf
+ /heQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=2XkKUPx+UDhBJ9rg/c8lN99LCUH+q5iXJoBX4wiVhfs=;
- b=yXFyazMlb+ULgvyJw7uHDPSweATMXrb3qLleY0Rzy1Z7aQK5Fft4tHrguxohG/0NsW
- ul/wF/FWjU1lpuCDngEWLEaL6Yr2peTe5CfGbVkjmxsWCxhuW6PaHmfqo0avdN8KCwYE
- S+QTAh+4wnUL1nquS4PmJYGEalHLn8gLbZwjnavbH2Z/Nf6sm4hiqtujaifcSViiheWx
- wHY2fdjjaa8rtLTo0XdkrOnOSyC2hJda75sMEOvoF71+1swEZhsCCwL9icJ5lMqmvNQO
- y8vOsBMksUPIkIA/auT/VDGXETn0UHIvrmC/Cjad3rQCDZ//mz+P1W1mFBjbjmrFdxHb
- gh5w==
-X-Gm-Message-State: AOAM5312wHQlFfyhL0dliFfsP2TM5CYMUtdjXDqSI0Vv7WGTB8j5kGXq
- /w8NIE6HiqKGJjJk8vcTcUCgE4lDKpYnpSuH7FgfFAkUaIxVug2xXWE=
-X-Received: by 2002:a05:620a:2847:b0:67d:2bad:422f with SMTP id
- h7-20020a05620a284700b0067d2bad422fmr8402072qkp.559.1648866526670; Fri, 01
- Apr 2022 19:28:46 -0700 (PDT)
+ bh=FFPEQ6m5J3JKVjna0NTRVy76Qf/w2j9vhAX5r+npR50=;
+ b=sPNWCeX5vFFK5AmFd8sjj8JWAsYikeTwmMGpT94flAZrutVT1H6H5DJ8ro1cj2HbYw
+ 7KxESL29g9z1ZM++FVKat44gLRLtejldsgyuf2g6LqxTXuj/f+95r/UMvmJ/Qk01ihhD
+ Dxjeb2u6uK52lXQyP4WhtlPpMbqk0ElUvku69HQoOxNI8qMUty0TmAb/cGtgDIMrGpeJ
+ 34Mxb54eSjX4zQ13zzEx3pIyxHd1idA0uceCXB/3Kq4En8yczFV78PJcBk/5NlGk81Fc
+ qxR4NEZVfW3IlSPJHn46Di58gydd596TWwMZmq9eDQuXnYYXAStao9d6KSyjO0fhxl3w
+ /F3g==
+X-Gm-Message-State: AOAM530U2/r4hpVlDd3H9T6gYnEzpV6TciXTGYP9WYjxw45bPkGqsqNZ
+ yswtB7BHgISmwzIkXAfZUmLShQsdbVG2TmY+PILp0g==
+X-Received: by 2002:a05:622a:1997:b0:2e1:a678:4edf with SMTP id
+ u23-20020a05622a199700b002e1a6784edfmr10632506qtc.525.1648866769945; Fri, 01
+ Apr 2022 19:32:49 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220324181557.203805-1-zongyuan.li@smartx.com>
  <20220324181557.203805-4-zongyuan.li@smartx.com>
- <CAFEAcA_rMuWkobjBoFJdYQqc=qvyUPrq9_-W+TkrNdTf+iBgsw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_rMuWkobjBoFJdYQqc=qvyUPrq9_-W+TkrNdTf+iBgsw@mail.gmail.com>
+ <77de88b4-9fb7-d1c6-4f2a-55b7b5cbc9b4@greensocs.com>
+In-Reply-To: <77de88b4-9fb7-d1c6-4f2a-55b7b5cbc9b4@greensocs.com>
 From: Zongyuan Li <zongyuan.li@smartx.com>
-Date: Sat, 2 Apr 2022 10:28:35 +0800
-Message-ID: <CADXGpufhJn9L4U_Y6gcdyzy1XMV3C5PM5T+T0ruaqvBnHicyhA@mail.gmail.com>
+Date: Sat, 2 Apr 2022 10:32:39 +0800
+Message-ID: <CADXGpuczVFmWawvm=vUj=-E9oa2OYUj4+cB_bWFpYuR6xLb7AA@mail.gmail.com>
 Subject: Re: [PATCH v5 3/4] hw/intc/exynos4210: replace 'qemu_split_irq' in
  combiner and gic
-To: qemu-devel@nongnu.org
+To: Damien Hedde <damien.hedde@greensocs.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::72a
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::82a
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::72a;
- envelope-from=zongyuan.li@smartx.com; helo=mail-qk1-x72a.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::82a;
+ envelope-from=zongyuan.li@smartx.com; helo=mail-qt1-x82a.google.com
 X-Spam_score_int: -4
 X-Spam_score: -0.5
 X-Spam_bar: /
@@ -115,34 +115,50 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  "open list:Exynos" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mXNwtMh6HEe6
+X-TUID: /6wwVyLEJjof
 
-On Fri, Apr 1, 2022 at 9:35 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+On Fri, Apr 1, 2022 at 9:17 PM Damien Hedde <damien.hedde@greensocs.com> wrote:
 >
-> On Thu, 24 Mar 2022 at 18:16, Zongyuan Li <zongyuan.li@smartx.com> wrote:
-> >
+>
+>
+> On 3/24/22 19:15, Zongyuan Li wrote:
 > > Signed-off-by: Zongyuan Li <zongyuan.li@smartx.com>
 > > ---
-> >  hw/arm/exynos4210.c           | 26 +++++++++++
-> >  hw/intc/exynos4210_combiner.c | 81 +++++++++++++++++++++++++++--------
-> >  hw/intc/exynos4210_gic.c      | 36 +++++++++++++---
-> >  include/hw/arm/exynos4210.h   | 11 ++---
-> >  include/hw/core/split-irq.h   |  5 +--
-> >  5 files changed, 126 insertions(+), 33 deletions(-)
->
-> Looking at this patch, I think it's ended up quite complicated
-> because the exynos4210 code as it stands today is doing
-> some rather odd things with interrupts. I'm going to have a
-> go at some refactoring patches which try to clean some of that
-> oddness up into code more like what we'd write today, which
-> should make getting rid of the use of qemu_split_irq() a bit easier.
+> >   hw/arm/exynos4210.c           | 26 +++++++++++
+> >   hw/intc/exynos4210_combiner.c | 81 +++++++++++++++++++++++++++--------
+> >   hw/intc/exynos4210_gic.c      | 36 +++++++++++++---
+> >   include/hw/arm/exynos4210.h   | 11 ++---
+> >   include/hw/core/split-irq.h   |  5 +--
+> >   5 files changed, 126 insertions(+), 33 deletions(-)
+> >
+> > diff --git a/include/hw/core/split-irq.h b/include/hw/core/split-irq.h
+> > index ff8852f407..eb485dd7a6 100644
+> > --- a/include/hw/core/split-irq.h
+> > +++ b/include/hw/core/split-irq.h
+> > @@ -42,9 +42,6 @@
+> >
+> >   #define MAX_SPLIT_LINES 16
+> >
+> > -
+> > -OBJECT_DECLARE_SIMPLE_TYPE(SplitIRQ, SPLIT_IRQ)
+> > -
+> >   struct SplitIRQ {
+> >       DeviceState parent_obj;
+> >
+> > @@ -52,4 +49,6 @@ struct SplitIRQ {
+> >       uint16_t num_lines;
+> >   };
+> >
+> > +OBJECT_DECLARE_SIMPLE_TYPE(SplitIRQ, SPLIT_IRQ)
+> > +
+> >   #endif
 
-Should we wait for the refactoring to be done and rebase this patch set on it,
-or just remove exynos4210 related code? I'm glad to see if there's anything I
-can help with the refactoring.
+Some language servers may complain if we use forward declaration of
+struct and typedef.
 
-Thanks for your review.
+Regards,
 Li

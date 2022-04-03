@@ -1,94 +1,102 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2108233lfb;
-        Sun, 3 Apr 2022 04:04:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypCPiZ1KgFBoZQIERKE96UYEPsPTC8lMqzvVHRALe6pU1eskCV9B9ncu5nlZDoDB719r8m
-X-Received: by 2002:a05:620a:2886:b0:699:bab7:ae78 with SMTP id j6-20020a05620a288600b00699bab7ae78mr1832779qkp.618.1648983851692;
-        Sun, 03 Apr 2022 04:04:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648983851; cv=none;
+Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2128513lfb;
+        Sun, 3 Apr 2022 04:55:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyDX0rkj+/Yi6tSGNVYhHokQfprHRuo2kLeFOilbn/nYPpc76U9zuLvxa6p9Le7qibXtTur
+X-Received: by 2002:a05:6214:21e4:b0:441:248a:9823 with SMTP id p4-20020a05621421e400b00441248a9823mr13838575qvj.35.1648986946310;
+        Sun, 03 Apr 2022 04:55:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648986946; cv=none;
         d=google.com; s=arc-20160816;
-        b=e1s4eH53K5iAa9XLcLhrmbxMWzrX4tNDmWP7p9ThkgE4wxM7Zjfxj+8/dFtoOE9fdT
-         CMl7QdYisz2AwiMEQahaWDMPhDzVWEhI/QVgpD04oJtQOwvoUoi0Bge09SKv+ZoM5J0t
-         pnUtmnXlLMNJY3OhArs3r0WswpbuuRjyKKS+gKuLPGn2fu9PccHNWI0PAT4aXqeYbJf5
-         UsQczkdRgtkIj54FG0jP36uk4/frYpIeV0xjP8fxX9uaa2PzxllEa98I9TF8PGWGYzlD
-         SqEf+JEu/vMiMBtmkz3Vx7p0AFf02NYOUeDcgady0YBHtJTrO+dK40mfZjmu7DS2uZXh
-         CoqA==
+        b=kfxDH8f5vYdgk+0wK/GVKWzNV0GVrvCO8FZEqLjyNlj11I+36HXk41u49XsRaUKQtn
+         r0rBFcIdTxxz7sDVgZLTVA+xEtQv0+sJlidS3sYdVcRvp0VO9fxEQSFmpg8RMM2eY/ae
+         7AgeVvYJVWG9QMOJ6SJeXhIn9Mhv0jADoLav/cLiIeXpiD8s/Pta012MB3HrBfWhKys9
+         JzFbZPaodcqOwpgR7v8xfp4IhXbKJ3WqE/JOGZ60XtWkdcFHTGccQ1DSHntQEcfFJKEL
+         Ljd1gxsREYdltpIksa0ZhEO7yehswzFlfEhMj+0TqmZb1lEn8e6eF8ij3lI6WBxfRt1W
+         axvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
          :dkim-signature;
-        bh=9W1VrdNopYHMYWbjYkVtU8hVkqQD8CSQBjT/xYI0fhc=;
-        b=I1SqgqsABkOSI0A0iqtbzewmGjzt8/Tq73lgLw6hGCh7WgUC7O9EqT7zSPfB7tVB7O
-         OlSrsuve5p3pQSa4a+UTyfurAjcBpSKGGzWkox0tMnTR2KvthnpVdg4vWDN6LlgMRStz
-         gAEXhyBuCNEETmbyTQBqQ3pgp87kPBMX+blK7xui+IR3qeFSkO6LMWhBzzHW2tJLZcZd
-         kFXn6oHwCOccBTRvEQFMzu+1FTqMHOnFl/36gvFDCVeJnkw8Nt4S5SybZDsi1DJda1ne
-         5VW+MxZ1sU20Vx1L3hrNIgMS2cXP3CmxFXD+Dttyn+/z8cFnbBfWBp2l7/yzH1b9wlKH
-         lx1Q==
+        bh=V9gSXj7WglC0xp+Om9bDaHbnu2Th64BG7mfXE+eJ8b0=;
+        b=X1UgalKXLYo4VRjuUzy+fkdb8yX6AP/uiT1JiuIGaPFq8C+aniQ1g3kTxIeVi2NKtN
+         on6bQ/nvhVWMSmfLeJd/uMj4PMcgrdK95zzRQUQBWk7VXWhBPmtRaKK2COLIGWImBgmF
+         nQ/z5rA4gzmVfjsI0LxYWgV+q0BCFpIVbjbjshCQ8U8uDaULydTBvr58hsUrMkz4/Oak
+         XTaAnGU43lArC0mGvwDm9o2RNQqspDRaLqYFjQzbkUWj/DPsY8ZArhbavVlRNQ4gOni0
+         yC91NYUdVQhmEZeKUaeSxLeHEMJSrED3ykI8jbF9A0rU8nNYzZPx3NPoicDBlkQwGGbz
+         zuCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X0be0aHU;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QUBez8RP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8-20020a0cca88000000b00440e46a7b77si2325111qvk.21.2022.04.03.04.04.11
+        by mx.google.com with ESMTPS id bx6-20020a056214058600b00440e46a7d5esi2165909qvb.508.2022.04.03.04.55.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Apr 2022 04:04:11 -0700 (PDT)
+        Sun, 03 Apr 2022 04:55:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X0be0aHU;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QUBez8RP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47096 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35024 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nay1j-0000xU-8Q
-	for alex.bennee@linaro.org; Sun, 03 Apr 2022 07:04:11 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45832)
+	id 1naypd-0007No-PM
+	for alex.bennee@linaro.org; Sun, 03 Apr 2022 07:55:45 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52324)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1naxyp-0004j1-8l
- for qemu-arm@nongnu.org; Sun, 03 Apr 2022 07:01:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:49106)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1naypR-0007HD-4U
+ for qemu-arm@nongnu.org; Sun, 03 Apr 2022 07:55:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34910)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1naxyn-0001W5-MB
- for qemu-arm@nongnu.org; Sun, 03 Apr 2022 07:01:11 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1naypO-0001tA-1c
+ for qemu-arm@nongnu.org; Sun, 03 Apr 2022 07:55:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648983668;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1648986928;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9W1VrdNopYHMYWbjYkVtU8hVkqQD8CSQBjT/xYI0fhc=;
- b=X0be0aHUHtwscWwG5ctYUVNe5l07evM7i3EcMlIfrR/5S+5GE6W+BmLEgUSiyjLMeZW5Wy
- oudkOPml3b9PRQd7pRfjQ2ED8P+hIA2E7JodM5UIjYhxjaYtDQw7tz0Q/Fs9MRCeF/WhFZ
- zd4hQ5SNhQorURGPKrRiN/G8dJjj1vU=
+ bh=V9gSXj7WglC0xp+Om9bDaHbnu2Th64BG7mfXE+eJ8b0=;
+ b=QUBez8RPQULgzgRQuv1KYYgh/wIMlAh+YqIustQ7FNRCrRPb1/sl9GUioeu8wTeIrWmznL
+ 0eP9JWTL9yMI1xYtcceK6b8GeX1A9utOLAoLYoDo9CnfRvwnlyigT3BJWxKXlvNqKNUq2A
+ xwwmD3/fVsr8DCBis9b6PbbL2BNrgN4=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-492-FccQGr8FNN6nZDrvNj6JFw-1; Sun, 03 Apr 2022 07:01:07 -0400
-X-MC-Unique: FccQGr8FNN6nZDrvNj6JFw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
+ us-mta-494-TDX1mjVhMGWoLSnqcT5KCQ-1; Sun, 03 Apr 2022 07:55:27 -0400
+X-MC-Unique: TDX1mjVhMGWoLSnqcT5KCQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 28351811E75;
- Sun,  3 Apr 2022 11:01:07 +0000 (UTC)
-Received: from gshan.redhat.com (ovpn-12-82.pek2.redhat.com [10.72.12.82])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9B8C940D02E1;
- Sun,  3 Apr 2022 11:01:02 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1BF7F85A5A8;
+ Sun,  3 Apr 2022 11:55:27 +0000 (UTC)
+Received: from [10.72.12.82] (ovpn-12-82.pek2.redhat.com [10.72.12.82])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8532B40EC010;
+ Sun,  3 Apr 2022 11:55:20 +0000 (UTC)
+Subject: Re: [PATCH v3 1/4] hw/arm/virt: Consider SMP configuration in CPU
+ topology
+To: "wangyanan (Y)" <wangyanan55@huawei.com>, qemu-arm@nongnu.org
+References: <20220323072438.71815-1-gshan@redhat.com>
+ <20220323072438.71815-2-gshan@redhat.com>
+ <fcf52228-f911-a798-086b-666c9580f7ef@huawei.com>
 From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Subject: [PATCH v4 2/3] hw/arm/virt: Fix CPU's default NUMA node ID
-Date: Sun,  3 Apr 2022 19:00:35 +0800
-Message-Id: <20220403110036.5531-3-gshan@redhat.com>
-In-Reply-To: <20220403110036.5531-1-gshan@redhat.com>
-References: <20220403110036.5531-1-gshan@redhat.com>
+Message-ID: <5044c71d-f485-e3be-1a61-00dadbab82fe@redhat.com>
+Date: Sun, 3 Apr 2022 19:55:17 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
+In-Reply-To: <fcf52228-f911-a798-086b-666c9580f7ef@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.2
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -97,8 +105,8 @@ X-Spam_score: -2.9
 X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,78 +120,102 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, zhenyzha@redhat.com, wangyanan55@huawei.com,
- shan.gavin@gmail.com, imammedo@redhat.com
+ qemu-devel@nongnu.org, zhenyzha@redhat.com, shan.gavin@gmail.com,
+ imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AxxljfV6Va1x
+X-TUID: WjB4xP7KP/b3
 
-When CPU-to-NUMA association isn't explicitly provided by users,
-the default on is given by mc->get_default_cpu_node_id(). However,
-the CPU topology isn't fully considered in the default association
-and this causes CPU topology broken warnings on booting Linux guest.
+Hi Yanan,
 
-For example, the following warning messages are observed when the
-Linux guest is booted with the following command lines.
+On 4/2/22 10:17 AM, wangyanan (Y) wrote:
+> On 2022/3/23 15:24, Gavin Shan wrote:
+>> Currently, the SMP configuration isn't considered when the CPU
+>> topology is populated. In this case, it's impossible to provide
+>> the default CPU-to-NUMA mapping or association based on the socket
+>> ID of the given CPU.
+>>
+>> This takes account of SMP configuration when the CPU topology
+>> is populated. The die ID for the given CPU isn't assigned since
+>> it's not supported on arm/virt machine yet. Besides, the cluster
+>> ID for the given CPU is assigned because it has been supported
+>> on arm/virt machine.
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>>   hw/arm/virt.c     | 11 +++++++++++
+>>   qapi/machine.json |  6 ++++--
+>>   2 files changed, 15 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index d2e5ecd234..064eac42f7 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -2505,6 +2505,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>>       int n;
+>>       unsigned int max_cpus = ms->smp.max_cpus;
+>>       VirtMachineState *vms = VIRT_MACHINE(ms);
+>> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
+>>       if (ms->possible_cpus) {
+>>           assert(ms->possible_cpus->len == max_cpus);
+>> @@ -2518,6 +2519,16 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>>           ms->possible_cpus->cpus[n].type = ms->cpu_type;
+>>           ms->possible_cpus->cpus[n].arch_id =
+>>               virt_cpu_mp_affinity(vms, n);
+>> +
+>> +        assert(!mc->smp_props.dies_supported);
+>> +        ms->possible_cpus->cpus[n].props.has_socket_id = true;
+>> +        ms->possible_cpus->cpus[n].props.socket_id =
+>> +            n / (ms->smp.clusters * ms->smp.cores * ms->smp.threads);
+>> +        ms->possible_cpus->cpus[n].props.has_cluster_id = true;
+>> +        ms->possible_cpus->cpus[n].props.cluster_id =
+>> +            n / (ms->smp.cores * ms->smp.threads);
+>> +        ms->possible_cpus->cpus[n].props.has_core_id = true;
+>> +        ms->possible_cpus->cpus[n].props.core_id = n / ms->smp.threads;
+>>           ms->possible_cpus->cpus[n].props.has_thread_id = true;
+>>           ms->possible_cpus->cpus[n].props.thread_id = n;
+>>       }
+>> diff --git a/qapi/machine.json b/qapi/machine.json
+>> index 42fc68403d..99c945f258 100644
+>> --- a/qapi/machine.json
+>> +++ b/qapi/machine.json
+>> @@ -868,10 +868,11 @@
+>>   # @node-id: NUMA node ID the CPU belongs to
+>>   # @socket-id: socket number within node/board the CPU belongs to
+>>   # @die-id: die number within socket the CPU belongs to (since 4.1)
+>> -# @core-id: core number within die the CPU belongs to
+>> +# @cluster-id: cluster number within die the CPU belongs to
+>> +# @core-id: core number within cluster the CPU belongs to
+>>   # @thread-id: thread number within core the CPU belongs to
+>>   #
+>> -# Note: currently there are 5 properties that could be present
+>> +# Note: currently there are 6 properties that could be present
+>>   #       but management should be prepared to pass through other
+>>   #       properties with device_add command to allow for future
+>>   #       interface extension. This also requires the filed names to be kept in
+>> @@ -883,6 +884,7 @@
+>>     'data': { '*node-id': 'int',
+>>               '*socket-id': 'int',
+>>               '*die-id': 'int',
+>> +            '*cluster-id': 'int',
+>>               '*core-id': 'int',
+>>               '*thread-id': 'int'
+>>     }
+> Since new cluster-id is introduced, you may want to check whether to
+> update machine_set_cpu_numa_node() and hmp_hotpluggable_cpus(),
+> accordingly, which both deal with topo-ids. If we need to update them,
+> it's easier to review to make the whole cluster-id introduction part
+> a separate patch.
+> 
 
-  /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
-  -accel kvm -machine virt,gic-version=host               \
-  -cpu host                                               \
-  -smp 6,sockets=2,cores=3,threads=1                      \
-  -m 1024M,slots=16,maxmem=64G                            \
-  -object memory-backend-ram,id=mem0,size=128M            \
-  -object memory-backend-ram,id=mem1,size=128M            \
-  -object memory-backend-ram,id=mem2,size=128M            \
-  -object memory-backend-ram,id=mem3,size=128M            \
-  -object memory-backend-ram,id=mem4,size=128M            \
-  -object memory-backend-ram,id=mem4,size=384M            \
-  -numa node,nodeid=0,memdev=mem0                         \
-  -numa node,nodeid=1,memdev=mem1                         \
-  -numa node,nodeid=2,memdev=mem2                         \
-  -numa node,nodeid=3,memdev=mem3                         \
-  -numa node,nodeid=4,memdev=mem4                         \
-  -numa node,nodeid=5,memdev=mem5
-         :
-  alternatives: patching kernel code
-  BUG: arch topology borken
-  the CLS domain not a subset of the MC domain
-  <the above error log repeats>
-  BUG: arch topology borken
-  the DIE domain not a subset of the NODE domain
+Yes, I agree. hw/core/machine-hmp-cmds.c::hmp_hotpluggable_cpus() also
+needs 'cluster-id' either. I will have the changes in v5 because I didn't
+catch your comments before posting v4. Please go ahead to review v5
+directly.
 
-With current implementation of mc->get_default_cpu_node_id(),
-CPU#0 to CPU#5 are associated with NODE#0 to NODE#5 separately.
-That's incorrect because CPU#0/1/2 should be associated with same
-NUMA node because they're seated in same socket.
+Thanks,
+Gavin
 
-This fixes the issue by considering the socket ID when the default
-CPU-to-NUMA association is provided in virt_possible_cpu_arch_ids().
-With this applied, no more CPU topology broken warnings are seen
-from the Linux guest. The 6 CPUs are associated with NODE#0/1, but
-there are no CPUs associated with NODE#2/3/4/5.
-
-Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
----
- hw/arm/virt.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f628e86f78..558bd59e8b 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2497,7 +2497,9 @@ virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
- 
- static int64_t virt_get_default_cpu_node_id(const MachineState *ms, int idx)
- {
--    return idx % ms->numa_state->num_nodes;
-+    int64_t socket_id = ms->possible_cpus->cpus[idx].props.socket_id;
-+
-+    return socket_id % ms->numa_state->num_nodes;
- }
- 
- static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
--- 
-2.23.0
 

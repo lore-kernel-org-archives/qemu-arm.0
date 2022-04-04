@@ -1,109 +1,108 @@
-Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp299843lfu;
-        Mon, 4 Apr 2022 09:03:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxyxhhq8Novk8BrYv7b9qJoQBaUopr8mteCn8v2WUX/LwXNg0eaSX3+ym3Mubohb/fJaOUc
-X-Received: by 2002:a25:9e81:0:b0:624:3b8a:514b with SMTP id p1-20020a259e81000000b006243b8a514bmr487105ybq.266.1649088208482;
-        Mon, 04 Apr 2022 09:03:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649088208; cv=none;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp302733lfu;
+        Mon, 4 Apr 2022 09:06:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw7AfS+Tv+HTuv5XX843r1Fp3QaV0H4L3BJUl4NapZbrGy4E/9RNkZxHS0z3H60urigdClL
+X-Received: by 2002:a25:8b03:0:b0:628:8cff:ed6c with SMTP id i3-20020a258b03000000b006288cffed6cmr459332ybl.513.1649088419553;
+        Mon, 04 Apr 2022 09:06:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649088419; cv=none;
         d=google.com; s=arc-20160816;
-        b=u8SQrc5m4lK5xYopZc4Ixqg6yatsX2a5+Ako0sH0qB7SCtlwnvvkT+q7u7S/5Xilcp
-         FcLQYwHiaKQc8JeP1KIQ3fBxLlOMH8EQ9B0XYh6Tyi5W07VbwYZFTxiLXoXIg3NoUJXW
-         37XnvSgEiqahs/AkGoO783UiKtnwCeb5LgiJKkVsr/fPnOyt3Z8xGJkNSXNxuHBIoaj5
-         vElq5PKChwHmxWTpAaCzKEM4gb9WI5ok9wxS8Ag78mEVenspSbden3II05qD1CRoLQ12
-         t8/bz0rW2YhJkYYCJl+XLU9ArnBl6MZCUUen71uLHdHtJM32pEsIHBZDzR6on4TLf8j0
-         K4XQ==
+        b=Om0eeETetcWkY+CK2w2lnzMOzt7/2zhQbU3eTvEQ9uBMuR5nBb+3t0djno6iMNFT+b
+         XtvKivToWqi2SHrXiMwqZR3CWb8BUcbH+dnptcbdbKq/p8zE/ZXHeWzMLhhbwJCqG+ct
+         PLBgb4qkODGgXYrXQx7In5dMBnSvFe9y72BpQjmaB2XnOFNWaVChwHFifgWqpURqNmbX
+         mPAEl2A4+ouAh3qmWgdRiMiJpr09Jq3LbaUrSY2UCMVjI+VAZoDgvEznZ/+HUy5lPpiq
+         5XNv+k2ICjuIQXQHogAip+2/CfDa88tD42x5yIo/MM15cckVUFMWkB71+e3b2/DSi4yr
+         SoHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=kpRPQxjDKjaM54pfCMvhIMPe2SMElvaXNWBmDpwL9Ng=;
-        b=04iXFeqrQCgjboHHoCal6JWbcTenA9uQ8rsSSOk3B+3pOAJYV+aCd/0MQr8FTl/WX/
-         +D2q1hYxZq9Y8Je+psexMfrH4HUyeUWy8iacpQzT8LVE5lNUNuRj2igeFxfPmF7zEANW
-         IOke0R116yS01vE5cRp59pApRrV+6Sw5JqL5WGMYBAgTf5VAEcEI2A+csi+P37tsNdPn
-         JZ8XygzuEY/jQjhFLDS0qtV+Mp1+FafBGkJNZIALGPCdPA5aVA0TGii7qqUNzhDh0hGc
-         zKJN3R0X3dRozPTTtaAj7ZMl1AEipI5W5GkIte6ZYnqTCNPrqZT+oV3K4QNeCXTosbjp
-         XlJg==
+        bh=iNTiGveDONdrHQD+VX0mvi3HRu/RqOepB5gwWTWxkaQ=;
+        b=tvVp77J6CWEDEpQkUkZaun/8EnJitbl/1wBNhuEjRAeDeFjZ7GVGbXcrwqyO0YQt7p
+         +XKxoVRSLTNj+bfURqkf5DjQuXbDvHweyZIQ9mKgpBiMKWqfOBqj4siCXlrlZZNb510y
+         OsHhp2FLSn/F+Sz1lEFEieHqBi4HkgHu+H4Zg3U9NPYxxzeWlkSA5U98GwCM2kw7s3Kq
+         dboIWdCNfZwOpWMKOa3h0E56e7anKGkf3ui2MQrrRXxWAH1VJkWiXinfZfQ3nnHe/2hk
+         FmdeO1htIU6glmA21WAtKMPA4aROI8QVOKM1Yi3y1OJyqBYD+69J/ONMWwOLouD8ficn
+         wv9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="XGBaYK/O";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BoK0bbSr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7-20020a814707000000b002dc3c591dcasi8109743ywa.1.2022.04.04.09.03.28
+        by mx.google.com with ESMTPS id s14-20020a252d4e000000b0063db333405esi3658337ybe.326.2022.04.04.09.06.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Apr 2022 09:03:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Apr 2022 09:06:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="XGBaYK/O";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BoK0bbSr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56948 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34026 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nbPAt-0001mC-QI
-	for alex.bennee@linaro.org; Mon, 04 Apr 2022 12:03:27 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44840)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nbPEI-0005T0-Vh
+	for alex.bennee@linaro.org; Mon, 04 Apr 2022 12:06:59 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44762)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nbOvK-00053J-Kj
- for qemu-arm@nongnu.org; Mon, 04 Apr 2022 11:47:23 -0400
-Received: from [2a00:1450:4864:20::333] (port=39513
- helo=mail-wm1-x333.google.com)
+ id 1nbOvI-00051x-6E
+ for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:21 -0400
+Received: from [2a00:1450:4864:20::430] (port=35741
+ helo=mail-wr1-x430.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nbOvH-0000Xy-2U
- for qemu-arm@nongnu.org; Mon, 04 Apr 2022 11:47:22 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- bi13-20020a05600c3d8d00b0038c2c33d8f3so7978371wmb.4
- for <qemu-arm@nongnu.org>; Mon, 04 Apr 2022 08:47:18 -0700 (PDT)
+ id 1nbOvF-0000WX-FD
+ for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:19 -0400
+Received: by mail-wr1-x430.google.com with SMTP id w21so15182279wra.2
+ for <qemu-devel@nongnu.org>; Mon, 04 Apr 2022 08:47:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=kpRPQxjDKjaM54pfCMvhIMPe2SMElvaXNWBmDpwL9Ng=;
- b=XGBaYK/O3T5YSInTRxQVpBq89fj/bAotUc3mnp1k6aYIcqY3lDL9XyQZmNisFh9LmF
- UNFQkT569Ohxqp5XfXWE49z8/7ETpBonhHHrlcK9WO+KXs4dU9ATa15UclIkcMbhjQ9D
- 7MI0kEd/xXbjXzSxi3GnWGkWq+vY0VyMS9BA8vsARWYlxuAzq6+K+3Fw/5Vp19if2ghP
- 9vyBMuSobqsrNa91DiW/AADiszZZ/ivFEX2kVbuZtCtVj6vcovQ9KZ5n1Rg3C7rio9Mx
- j1Ki5Nx0TLQVkt+A6DvLBqo547PJQAzrtcAGwDK0eaZamK9KZ7lMdAd4LIwR55K1f5rf
- A1kQ==
+ bh=iNTiGveDONdrHQD+VX0mvi3HRu/RqOepB5gwWTWxkaQ=;
+ b=BoK0bbSrVYlqwUlNVooDuesrca50dFq+TTRPDjHm43YAk8Q473N/RQEFfivoo1Z47L
+ 5v0IyxVgVlRcQsKRQb9/TsL9qmzGAWyo9Z1mGoWfyVVmle3rHWOqeiJLmgQ4c1rrTwDB
+ yVdiOoYFSQ1BaSG0jpJ391JSFPM8lVMkCui6W01zs6reMTfFYYQol94khzbHx5cJzl4h
+ A2Xb1D/xXPU6YAUroG8sH9eneSXdAabUBq8R+uZJ7NmMtCdg0MjTjCqB+LQJq/E9A0WQ
+ bL+rL4PVe3HriJr8izSOcJi4pGdP7XcC0UZcinQHh+jAOKBVJmmuc/VkJWTySMM4QeeP
+ Txxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=kpRPQxjDKjaM54pfCMvhIMPe2SMElvaXNWBmDpwL9Ng=;
- b=xYOkKdH4CdRukQiTOMWOnfJbzZAupN6Jhoqi5imNdFkFC96GMlag7z3MMTzPKKIRJC
- SlpJ8ILESYUJiMFHSGxWeEK8675XLmy7boUpJrK09/UnnK3vnsHoNOWoJnSuLL4C4pP4
- wglNUKJtBuGUGwmdV+pGtCB1kPZOh/8g1xPvtrhYbwub1eP+y3jB2SBIyvmA28v+pFj8
- fecYGmK+mS138LIjQ/YJ37dFa6+BHWn22bvYbpVUcJh/WPdZgREvIcyeM87eNqNiL87X
- k2MwsiIlOATHB6ykrNMAIB3NtDzfA/CdInN/9o8wkWKqkxFFcNOQo6yNdCHy60gB7Rsv
- +9Gg==
-X-Gm-Message-State: AOAM532r6bQmRw4lc5v2aMJ+n7RpfP7EaqgU3xxYFJrhQZD2SYLRVywM
- jbh3MvlDYsZqez+PU12auRlVaTLy3c1nRw==
-X-Received: by 2002:a1c:2744:0:b0:382:a9b7:1c8a with SMTP id
- n65-20020a1c2744000000b00382a9b71c8amr86071wmn.187.1649087237344; 
- Mon, 04 Apr 2022 08:47:17 -0700 (PDT)
+ bh=iNTiGveDONdrHQD+VX0mvi3HRu/RqOepB5gwWTWxkaQ=;
+ b=wEVa15IL0pIjIp5EkQ0lbeNwkSgzOTorUpERRDlszBHKlDO0PZTfv5PUjDch8jFdif
+ zx7qtkVtxY6hAkwKVxs5Nxdk7VYOfnMKKAgsZAmnKYfCn9Ec4b/CVNZQl1RbVoesdgJy
+ QnUQafg3/3Jv6t6eMd8G+IyBLOmAzzIq0h++W7PxN26ThiLzWJoiP+y37hkMaqn9nQkA
+ +U0f8/iMhoQ7SH/QcOy9W4v1LeZqXM2tHIg8lFxiSXZsxzEeJaZMf70YstBtZZDZj3kj
+ Ri9T4IgvXt6Ptii7WX6xmgOiVP6ShQu/WMASuhahzKgCT4Kfk/YFo2e5BgvdUT0XJ3q1
+ RF5A==
+X-Gm-Message-State: AOAM531h7vSfXnLkoKigVBgmtQb70OIPNmC/ZV60fVdHUkDPR3mNcNUG
+ iHqV5qxabBQDwm3M9xOrVrVZ9w==
+X-Received: by 2002:a5d:526b:0:b0:206:d11:7b6d with SMTP id
+ l11-20020a5d526b000000b002060d117b6dmr267715wrc.135.1649087234334; 
+ Mon, 04 Apr 2022 08:47:14 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- c8-20020a056000184800b002040e925afasm11731347wri.59.2022.04.04.08.47.16
+ c8-20020a056000184800b002040e925afasm11731347wri.59.2022.04.04.08.47.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Apr 2022 08:47:16 -0700 (PDT)
+ Mon, 04 Apr 2022 08:47:13 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-7.1 17/18] hw/arm/exynos4210: Put combiners into state
- struct
-Date: Mon,  4 Apr 2022 16:46:57 +0100
-Message-Id: <20220404154658.565020-18-peter.maydell@linaro.org>
+Subject: [PATCH for-7.1 14/18] hw/arm/exynos4210: Connect MCT_G0 and MCT_G1 to
+ both combiners
+Date: Mon,  4 Apr 2022 16:46:54 +0100
+Message-Id: <20220404154658.565020-15-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220404154658.565020-1-peter.maydell@linaro.org>
 References: <20220404154658.565020-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::333
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -113,218 +112,64 @@ X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Zongyuan Li <zongyuan.li@smartx.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BZm9F6uw/QFI
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: w8wtlzwq6U3j
 
-Switch the creation of the combiner devices to the new-style
-"embedded in state struct" approach, so we can easily refer
-to the object elsewhere during realize.
+Currently for the interrupts MCT_G0 and MCT_G1 which are
+the only ones in the input range of the external combiner
+and which are also wired to the external GIC, we connect
+them only to the internal combiner and the external GIC.
+This seems likely to be a bug, as all other interrupts
+which are in the input range of both combiners are
+connected to both combiners. (The fact that the code in
+exynos4210_combiner_get_gpioin() is also trying to wire
+up these inputs on both combiners also suggests this.)
+
+Wire these interrupts up to both combiners, like the rest.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/exynos4210.h           |  3 ++
- include/hw/intc/exynos4210_combiner.h | 57 +++++++++++++++++++++++++++
- hw/arm/exynos4210.c                   | 20 +++++-----
- hw/intc/exynos4210_combiner.c         | 31 +--------------
- 4 files changed, 72 insertions(+), 39 deletions(-)
- create mode 100644 include/hw/intc/exynos4210_combiner.h
+ hw/arm/exynos4210.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
-index f24617f681d..d38be8767b3 100644
---- a/include/hw/arm/exynos4210.h
-+++ b/include/hw/arm/exynos4210.h
-@@ -28,6 +28,7 @@
- #include "hw/sysbus.h"
- #include "hw/cpu/a9mpcore.h"
- #include "hw/intc/exynos4210_gic.h"
-+#include "hw/intc/exynos4210_combiner.h"
- #include "hw/core/split-irq.h"
- #include "target/arm/cpu-qom.h"
- #include "qom/object.h"
-@@ -105,6 +106,8 @@ struct Exynos4210State {
-     qemu_or_irq cpu_irq_orgate[EXYNOS4210_NCPUS];
-     A9MPPrivState a9mpcore;
-     Exynos4210GicState ext_gic;
-+    Exynos4210CombinerState int_combiner;
-+    Exynos4210CombinerState ext_combiner;
-     SplitIRQ splitter[EXYNOS4210_NUM_SPLITTERS];
- };
- 
-diff --git a/include/hw/intc/exynos4210_combiner.h b/include/hw/intc/exynos4210_combiner.h
-new file mode 100644
-index 00000000000..429844fed41
---- /dev/null
-+++ b/include/hw/intc/exynos4210_combiner.h
-@@ -0,0 +1,57 @@
-+/*
-+ * Samsung exynos4210 Interrupt Combiner
-+ *
-+ * Copyright (c) 2000 - 2011 Samsung Electronics Co., Ltd.
-+ * All rights reserved.
-+ *
-+ * Evgeny Voevodin <e.voevodin@samsung.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or (at your
-+ * option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-+ * See the GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef HW_INTC_EXYNOS4210_COMBINER
-+#define HW_INTC_EXYNOS4210_COMBINER
-+
-+#include "hw/sysbus.h"
-+
-+/*
-+ * State for each output signal of internal combiner
-+ */
-+typedef struct CombinerGroupState {
-+    uint8_t src_mask;            /* 1 - source enabled, 0 - disabled */
-+    uint8_t src_pending;        /* Pending source interrupts before masking */
-+} CombinerGroupState;
-+
-+#define TYPE_EXYNOS4210_COMBINER "exynos4210.combiner"
-+OBJECT_DECLARE_SIMPLE_TYPE(Exynos4210CombinerState, EXYNOS4210_COMBINER)
-+
-+/* Number of groups and total number of interrupts for the internal combiner */
-+#define IIC_NGRP 64
-+#define IIC_NIRQ (IIC_NGRP * 8)
-+#define IIC_REGSET_SIZE 0x41
-+
-+struct Exynos4210CombinerState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+
-+    struct CombinerGroupState group[IIC_NGRP];
-+    uint32_t reg_set[IIC_REGSET_SIZE];
-+    uint32_t icipsr[2];
-+    uint32_t external;          /* 1 means that this combiner is external */
-+
-+    qemu_irq output_irq[IIC_NGRP];
-+};
-+
-+#endif
 diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 05b28cf5905..27c6ab27123 100644
+index a4527f819ef..962d6d0ac2a 100644
 --- a/hw/arm/exynos4210.c
 +++ b/hw/arm/exynos4210.c
-@@ -624,25 +624,23 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
+@@ -281,16 +281,15 @@ static void exynos4210_init_board_irqs(Exynos4210State *s)
+ 
+         assert(splitcount < EXYNOS4210_NUM_SPLITTERS);
+         splitter = DEVICE(&s->splitter[splitcount]);
+-        qdev_prop_set_uint16(splitter, "num-lines", 2);
++        qdev_prop_set_uint16(splitter, "num-lines", irq_id ? 3 : 2);
+         qdev_realize(splitter, NULL, &error_abort);
+         splitcount++;
+         s->irq_table[n] = qdev_get_gpio_in(splitter, 0);
+         qdev_connect_gpio_out(splitter, 0, is->int_combiner_irq[n]);
++        qdev_connect_gpio_out(splitter, 1, is->ext_combiner_irq[n]);
+         if (irq_id) {
+-            qdev_connect_gpio_out(splitter, 1,
++            qdev_connect_gpio_out(splitter, 2,
+                                   qdev_get_gpio_in(extgicdev, irq_id - 32));
+-        } else {
+-            qdev_connect_gpio_out(splitter, 1, is->ext_combiner_irq[n]);
+         }
      }
- 
-     /* Internal Interrupt Combiner */
--    dev = qdev_new("exynos4210.combiner");
--    busdev = SYS_BUS_DEVICE(dev);
--    sysbus_realize_and_unref(busdev, &error_fatal);
-+    busdev = SYS_BUS_DEVICE(&s->int_combiner);
-+    sysbus_realize(busdev, &error_fatal);
-     for (n = 0; n < EXYNOS4210_MAX_INT_COMBINER_OUT_IRQ; n++) {
-         sysbus_connect_irq(busdev, n,
-                            qdev_get_gpio_in(DEVICE(&s->a9mpcore), n));
-     }
--    exynos4210_combiner_get_gpioin(&s->irqs, dev, 0);
-+    exynos4210_combiner_get_gpioin(&s->irqs, DEVICE(&s->int_combiner), 0);
-     sysbus_mmio_map(busdev, 0, EXYNOS4210_INT_COMBINER_BASE_ADDR);
- 
-     /* External Interrupt Combiner */
--    dev = qdev_new("exynos4210.combiner");
--    qdev_prop_set_uint32(dev, "external", 1);
--    busdev = SYS_BUS_DEVICE(dev);
--    sysbus_realize_and_unref(busdev, &error_fatal);
-+    qdev_prop_set_uint32(DEVICE(&s->ext_combiner), "external", 1);
-+    busdev = SYS_BUS_DEVICE(&s->ext_combiner);
-+    sysbus_realize(busdev, &error_fatal);
-     for (n = 0; n < EXYNOS4210_MAX_INT_COMBINER_OUT_IRQ; n++) {
-         sysbus_connect_irq(busdev, n, qdev_get_gpio_in(DEVICE(&s->ext_gic), n));
-     }
--    exynos4210_combiner_get_gpioin(&s->irqs, dev, 1);
-+    exynos4210_combiner_get_gpioin(&s->irqs, DEVICE(&s->ext_combiner), 1);
-     sysbus_mmio_map(busdev, 0, EXYNOS4210_EXT_COMBINER_BASE_ADDR);
- 
-     /* Initialize board IRQs. */
-@@ -844,6 +842,10 @@ static void exynos4210_init(Object *obj)
- 
-     object_initialize_child(obj, "a9mpcore", &s->a9mpcore, TYPE_A9MPCORE_PRIV);
-     object_initialize_child(obj, "ext-gic", &s->ext_gic, TYPE_EXYNOS4210_GIC);
-+    object_initialize_child(obj, "int-combiner", &s->int_combiner,
-+                            TYPE_EXYNOS4210_COMBINER);
-+    object_initialize_child(obj, "ext-combiner", &s->ext_combiner,
-+                            TYPE_EXYNOS4210_COMBINER);
- }
- 
- static void exynos4210_class_init(ObjectClass *klass, void *data)
-diff --git a/hw/intc/exynos4210_combiner.c b/hw/intc/exynos4210_combiner.c
-index 83b42b9bce1..a289510bdb8 100644
---- a/hw/intc/exynos4210_combiner.c
-+++ b/hw/intc/exynos4210_combiner.c
-@@ -31,7 +31,7 @@
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
- #include "qemu/module.h"
--
-+#include "hw/intc/exynos4210_combiner.h"
- #include "hw/arm/exynos4210.h"
- #include "hw/hw.h"
- #include "hw/irq.h"
-@@ -48,36 +48,7 @@
- #define DPRINTF(fmt, ...) do {} while (0)
- #endif
- 
--#define    IIC_NGRP        64            /* Internal Interrupt Combiner
--                                            Groups number */
--#define    IIC_NIRQ        (IIC_NGRP * 8)/* Internal Interrupt Combiner
--                                            Interrupts number */
- #define IIC_REGION_SIZE    0x108         /* Size of memory mapped region */
--#define IIC_REGSET_SIZE    0x41
--
--/*
-- * State for each output signal of internal combiner
-- */
--typedef struct CombinerGroupState {
--    uint8_t src_mask;            /* 1 - source enabled, 0 - disabled */
--    uint8_t src_pending;        /* Pending source interrupts before masking */
--} CombinerGroupState;
--
--#define TYPE_EXYNOS4210_COMBINER "exynos4210.combiner"
--OBJECT_DECLARE_SIMPLE_TYPE(Exynos4210CombinerState, EXYNOS4210_COMBINER)
--
--struct Exynos4210CombinerState {
--    SysBusDevice parent_obj;
--
--    MemoryRegion iomem;
--
--    struct CombinerGroupState group[IIC_NGRP];
--    uint32_t reg_set[IIC_REGSET_SIZE];
--    uint32_t icipsr[2];
--    uint32_t external;          /* 1 means that this combiner is external */
--
--    qemu_irq output_irq[IIC_NGRP];
--};
- 
- static const VMStateDescription vmstate_exynos4210_combiner_group_state = {
-     .name = "exynos4210.combiner.groupstate",
+     for (; n < EXYNOS4210_MAX_INT_COMBINER_IN_IRQ; n++) {
 -- 
 2.25.1
 

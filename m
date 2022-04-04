@@ -1,116 +1,116 @@
-Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp293570lfu;
-        Mon, 4 Apr 2022 08:54:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxVN5I2v8Wy2vhTDQwmwRPMhmi7TydDVAfg0DkgXaYJ+K0PwKqUgVdOQNN+Ivx0vDsoSHqc
-X-Received: by 2002:a25:8a12:0:b0:633:7b6a:565e with SMTP id g18-20020a258a12000000b006337b6a565emr406416ybl.93.1649087656035;
-        Mon, 04 Apr 2022 08:54:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649087656; cv=none;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp293908lfu;
+        Mon, 4 Apr 2022 08:54:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz/p9swVoplUw/0nWxapT74ITIL9/oG2nJJy8eAlymo8P3UDP5ZLpoCPluf7E/mIeiDtjb3
+X-Received: by 2002:a25:1443:0:b0:63d:6c01:d26f with SMTP id 64-20020a251443000000b0063d6c01d26fmr465107ybu.296.1649087689988;
+        Mon, 04 Apr 2022 08:54:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649087689; cv=none;
         d=google.com; s=arc-20160816;
-        b=kXE4hJIj4SIwXUF3zr3GmRuBOGQqkEYwz66KaTTCvEt7wGAIWqKgkvt3zZaCqwzEHM
-         FtjsBOYLU2US+rR727/UVdWSoovwD+4MOQZZpz7rT1Mv7QwDNini0Cx+KnitdNdGhb7K
-         MuhHPwW0V6WYEdtEjyF4eO3LpyxrSR6mwfwFWeCmm33OsUdmtpHERMsTGrz3YszjJbRY
-         cuhD6Y+OeEDXHOix5pi9t4WunqE8wNgDmneCm09mAfDPs3EK3G0tKeCS6kEt9tbolFGx
-         yblxT3dPP+jf0wmlnUHIPClRDjqGMMJrMuKmFsHpcPmZ/jWVwQ4Jwel/xqWwwEfZ8J0m
-         2b4Q==
+        b=lt7OMt76RGy4Oa7+IohLTAaPjE0I8F3zYAQKUIX685IMji7Ol/GNJNfbpm1QZl4lqR
+         hcPKSthQp+DMEpZGo53ofqwY3zrLTxRG5879dQEkkEpxn3uPvRBj6JlI45DXyoYEvYnn
+         Mat/5UBhCNVenXglZGBqSpKRIwn1PlOshm/TNUBf4VVoKjZTb983HYtdmexJs5geAVsV
+         MU+FC7PFrWSMO+P56YKzj4hz61F6P2sCJaHzUGkibqMU2hsbB/nef6lwMvPLMrrwJ68G
+         VntobegAfbTU94BOS3G5PkEcF4TVOKeNLrVwJN1yUAgf4PMCnnVCOrCciolizSwi+e0G
+         3hCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=lPVeqGU3QtuMTZFr+Heg6nSw8gOhs+MYyoNagN2IvIs=;
-        b=YlidwidJpR2xVH4ro4fG1mfSIj23FTfStbgt9GhGHlZTZ54XMpsHOvOQqtGfeyEzbF
-         +fGOhCHOZHhoPSj2datlyZq237Hu64tD2K9P2qIzBD++cvH1MMNHkGXBWu06ONU8C1QP
-         wP3CrEsj3qShhmXwl4lrSa8ViVVyQ+55TzjB1Lz5n6pZnYIJX5weNIZdS167K1zHVSpS
-         iI8rLTaiWlC+egAxQXQJH91ekFysJxGA72pTnsV7nSESmlMGGvxWO0m+D5mkHat7ZRMm
-         2uyGBMdjJ0cfAi6dDVS80QPqLio5kGyW+DeUzHf5chr51IsFayDgc6K8c1Xyjj0tydnO
-         IS8w==
+        bh=VCMIJjBWjgawX2iD7t1I7maRrjdC+015k4SvdlYnj9o=;
+        b=R5rPd3hsw32PzNbWINf99xZDXN1UnNDxGMtHQlxlRJ4E4mbmJ/vGcmRNyYUU1fXOY8
+         VLDEkSdS2IckDKU9HnkQqrLC68vZqSstrnTEayfOJ8Uz11wjX/S+Y1LPhlebtG+ukXBf
+         HJ+VQjQCZAczj/39VLaRsYxVxz8Vlmz5osBG0JavxzbpBJT62th/j1i9CU5fOJJIemaN
+         ifhqAH+uIqh1P/YLcUTqpRqTPTfwZmEuxCa1GkuqdOoU3Ygbc9dBkgfVhh8+dtWGve6q
+         X/7pm5/VW05bzxzuS29RyBDyQOxiTq3d+DRVxqrLUrKjumj6pUWm9Q3Htu9sc7KZ993b
+         VPww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OtX6+S3D;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q2Xvcf1n;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 137-20020a250b8f000000b0063da81b024bsi4897814ybl.510.2022.04.04.08.54.15
+        by mx.google.com with ESMTPS id b10-20020a25670a000000b0063399404577si8822545ybc.481.2022.04.04.08.54.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Apr 2022 08:54:16 -0700 (PDT)
+        Mon, 04 Apr 2022 08:54:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OtX6+S3D;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q2Xvcf1n;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54136 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55722 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nbP1z-0005xd-Dn
-	for alex.bennee@linaro.org; Mon, 04 Apr 2022 11:54:15 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44252)
+	id 1nbP2X-000731-By
+	for alex.bennee@linaro.org; Mon, 04 Apr 2022 11:54:49 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nbOv4-0004lu-A1
- for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:06 -0400
-Received: from [2a00:1450:4864:20::431] (port=41608
- helo=mail-wr1-x431.google.com)
+ id 1nbOvA-0004si-1c
+ for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:13 -0400
+Received: from [2a00:1450:4864:20::42f] (port=38878
+ helo=mail-wr1-x42f.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nbOv1-0000Rq-0X
- for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:05 -0400
-Received: by mail-wr1-x431.google.com with SMTP id k23so2585596wrd.8
- for <qemu-devel@nongnu.org>; Mon, 04 Apr 2022 08:47:02 -0700 (PDT)
+ id 1nbOv6-0000Tm-Mx
+ for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:11 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id j12so7543508wrb.5
+ for <qemu-devel@nongnu.org>; Mon, 04 Apr 2022 08:47:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=lPVeqGU3QtuMTZFr+Heg6nSw8gOhs+MYyoNagN2IvIs=;
- b=OtX6+S3DxsnKaCee2O008thC7nKFNzXl/Sxv/3vdg30RisSyj3K7XJ/2+PiW4+1cqO
- gzOxKkjVCLsQigTXy3mqVSySInKZy1cIbDNogOaWZQ7TOQyMkuUajgzeRo96/1uD+bvw
- D6qm4jAaKat5E/sVq3PcAUABe6V0SoQJmrcjwCVZttOMctiNnvSJ3gtEZMDLMQaCuVyr
- SbdbfKPDCl8iE6L+p2pAlU08RQK5onF7WmYUEcRm/w7XVUv8mUNVgxsUyObOg3KNyajZ
- 2DlcY05VZpxEfX/PeGF3T9s8sy9GELTSpvYn51jBGYYl4dmV45Jj48gvrSBMCGZXTIuX
- +j3A==
+ bh=VCMIJjBWjgawX2iD7t1I7maRrjdC+015k4SvdlYnj9o=;
+ b=Q2Xvcf1nVFr9reWSqo1k5hZcXS568+xG+AV9ELF9bX23Q9ADuBVPPY87P5rhpEkvU1
+ KdubMhrP151eL9E1e1N+rLmEShcBFA5wFdtVrZ9I6bssamsppPcMIe6yWl69V2YuxLVs
+ yWkcGB4KP43gJWBxd9kA86eCNsYRCCrOFCukEtpAmV48TUJDGUccOnCQu7njuJZpVu4K
+ bHuEuTEY6t+GUrCB1y05+I/S86LP9TCBI/cmGOsKwFcx2HEEc5N/dYRY8TtSznURU2cW
+ A2BpV/olvdB+Z5myR55XIyKxN99RTTVusCLiMKIST9PdIFKw2Alhs2A+ZWrcQKvzendZ
+ S0Dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=lPVeqGU3QtuMTZFr+Heg6nSw8gOhs+MYyoNagN2IvIs=;
- b=H/ROiOedzvflvQdMKSNFpVHucR7X+tjf3ZR1DkaEACXIg/E1d02wqvkq6/allO0uBn
- NJOgVkHvkhvbNXwEG/OYyO/KTWBfIWHdCoTQqQUgk73+y7MgmcqzbA2GJ/sw2mXUlY5i
- 65KJVDW9ZsnX3NGN+HjJ7YSBMqaMt5t6CQfIMskMmboAT89JRcT8DUn21MnaGuwiNOw4
- Q0pyl7yPIvWVdzLVDY2nqftv1TpkYfwi3/HYqfBxvn/eZi8lbvJi9Pws9FuEKMV5L+ie
- yIMlxbpUPM6FTinS11ozWQoj4tAY/9Xs6jY5k2lygIMDyGmspudbFONz9o0qeVp0JfwF
- P1LA==
-X-Gm-Message-State: AOAM531NoZtrnGrwtzmHL1LD6sS0Hy0T/9MhYhz/FTHUyFLWNEr/9iJV
- cjlCcGTUjXWNkF/wFwpt9CcyUTWb0lNe5g==
-X-Received: by 2002:adf:f24d:0:b0:206:96b:4ea1 with SMTP id
- b13-20020adff24d000000b00206096b4ea1mr284796wrp.694.1649087221620; 
- Mon, 04 Apr 2022 08:47:01 -0700 (PDT)
+ bh=VCMIJjBWjgawX2iD7t1I7maRrjdC+015k4SvdlYnj9o=;
+ b=JiLDVQVmlPKbbG+x+LXc5/sdoRQuVoq6lwFyV735QZfNBvlnmYmGKH0m9oVpTH9Myi
+ 8OOLDh+U11b5nreNUT5GWHuzAxwCyVAYub3roVpLr2E4d6GxnknhkHTFegYeuWMFATw3
+ dSbc6Sb3l44OzBoGEveffZNSmIgDIEQfjPiJo084VEUKqMIcsiZqA3m7ukYsdOjy1M9R
+ iKNkiMFPYjKYxB8KtyIN617KqlpnLf/Z/fqfiVixAGqtdPEaHFJv2y2N+Hh6lV9K0EdD
+ HQjho9p/SU3/Gp32EUxCDpIPjzSue1nXmghYu/ztIkVxdGWWiF116QRwgbDAsHvir5kZ
+ 0A4Q==
+X-Gm-Message-State: AOAM533G19KiixeAG+QNI8hvPFY7Vp3CLE9MwRQlLB3YSg9mgpCCGkXm
+ IlCacfWq1Kv6eOmgqg9KYlGrsQ==
+X-Received: by 2002:a5d:44ca:0:b0:206:893:6b5c with SMTP id
+ z10-20020a5d44ca000000b0020608936b5cmr276255wrr.145.1649087227385; 
+ Mon, 04 Apr 2022 08:47:07 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- c8-20020a056000184800b002040e925afasm11731347wri.59.2022.04.04.08.47.00
+ c8-20020a056000184800b002040e925afasm11731347wri.59.2022.04.04.08.47.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Apr 2022 08:47:01 -0700 (PDT)
+ Mon, 04 Apr 2022 08:47:07 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-7.1 01/18] hw/arm/exynos4210: Use TYPE_OR_IRQ instead of
- custom OR-gate device
-Date: Mon,  4 Apr 2022 16:46:41 +0100
-Message-Id: <20220404154658.565020-2-peter.maydell@linaro.org>
+Subject: [PATCH for-7.1 07/18] hw/arm/exynos4210: Move
+ exynos4210_init_board_irqs() into exynos4210.c
+Date: Mon,  4 Apr 2022 16:46:47 +0100
+Message-Id: <20220404154658.565020-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220404154658.565020-1-peter.maydell@linaro.org>
 References: <20220404154658.565020-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::431
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42f
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,104 +127,473 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Zongyuan Li <zongyuan.li@smartx.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Var519a3GkWV
+X-TUID: uUQy/SFfX2xu
 
-The Exynos4210 SoC device currently uses a custom device
-"exynos4210.irq_gate" to model the OR gate that feeds each CPU's IRQ
-line.  We have a standard TYPE_OR_IRQ device for this now, so use
-that instead.
-
-(This is a migration compatibility break, but that is OK for this
-machine type.)
+The function exynos4210_init_board_irqs() currently lives in
+exynos4210_gic.c, but it isn't really part of the exynos4210.gic
+device -- it is a function that implements (some of) the wiring up of
+interrupts between the SoC's GIC and combiner components.  This means
+it fits better in exynos4210.c, which is the SoC-level code.  Move it
+there. Similarly, exynos4210_git_irq() is used almost only in the
+SoC-level code, so move it too.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/exynos4210.h |  1 +
- hw/arm/exynos4210.c         | 31 ++++++++++++++++---------------
- 2 files changed, 17 insertions(+), 15 deletions(-)
+ include/hw/arm/exynos4210.h |   4 -
+ hw/arm/exynos4210.c         | 202 +++++++++++++++++++++++++++++++++++
+ hw/intc/exynos4210_gic.c    | 204 ------------------------------------
+ 3 files changed, 202 insertions(+), 208 deletions(-)
 
 diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
-index 60b9e126f55..3999034053e 100644
+index a9f186370ee..d83e96a091e 100644
 --- a/include/hw/arm/exynos4210.h
 +++ b/include/hw/arm/exynos4210.h
-@@ -102,6 +102,7 @@ struct Exynos4210State {
-     MemoryRegion bootreg_mem;
-     I2CBus *i2c_if[EXYNOS4210_I2C_NUMBER];
-     qemu_or_irq pl330_irq_orgate[EXYNOS4210_NUM_DMA];
-+    qemu_or_irq cpu_irq_orgate[EXYNOS4210_NCPUS];
- };
+@@ -111,10 +111,6 @@ OBJECT_DECLARE_SIMPLE_TYPE(Exynos4210State, EXYNOS4210_SOC)
+ void exynos4210_write_secondary(ARMCPU *cpu,
+         const struct arm_boot_info *info);
  
- #define TYPE_EXYNOS4210_SOC "exynos4210"
+-/* Initialize board IRQs.
+- * These IRQs contain splitted Int/External Combiner and External Gic IRQs */
+-void exynos4210_init_board_irqs(Exynos4210State *s);
+-
+ /* Get IRQ number from exynos4210 IRQ subsystem stub.
+  * To identify IRQ source use internal combiner group and bit number
+  *  grp - group number
 diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 0299e81f853..dfc0a4eec25 100644
+index 11e321d7830..742666ba779 100644
 --- a/hw/arm/exynos4210.c
 +++ b/hw/arm/exynos4210.c
-@@ -205,7 +205,6 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
- {
-     Exynos4210State *s = EXYNOS4210_SOC(socdev);
-     MemoryRegion *system_mem = get_system_memory();
--    qemu_irq gate_irq[EXYNOS4210_NCPUS][EXYNOS4210_IRQ_GATE_NINPUTS];
-     SysBusDevice *busdev;
-     DeviceState *dev, *uart[4], *pl330[3];
-     int i, n;
-@@ -235,18 +234,13 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
+@@ -101,6 +101,208 @@
+ #define EXYNOS4210_PL330_BASE1_ADDR         0x12690000
+ #define EXYNOS4210_PL330_BASE2_ADDR         0x12850000
  
-     /* IRQ Gate */
-     for (i = 0; i < EXYNOS4210_NCPUS; i++) {
--        dev = qdev_new("exynos4210.irq_gate");
--        qdev_prop_set_uint32(dev, "n_in", EXYNOS4210_IRQ_GATE_NINPUTS);
--        sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
--        /* Get IRQ Gate input in gate_irq */
--        for (n = 0; n < EXYNOS4210_IRQ_GATE_NINPUTS; n++) {
--            gate_irq[i][n] = qdev_get_gpio_in(dev, n);
--        }
--        busdev = SYS_BUS_DEVICE(dev);
--
--        /* Connect IRQ Gate output to CPU's IRQ line */
--        sysbus_connect_irq(busdev, 0,
--                           qdev_get_gpio_in(DEVICE(s->cpu[i]), ARM_CPU_IRQ));
-+        DeviceState *orgate = DEVICE(&s->cpu_irq_orgate[i]);
-+        object_property_set_int(OBJECT(orgate), "num-lines",
-+                                EXYNOS4210_IRQ_GATE_NINPUTS,
-+                                &error_abort);
-+        qdev_realize(orgate, NULL, &error_abort);
-+        qdev_connect_gpio_out(orgate, 0,
-+                              qdev_get_gpio_in(DEVICE(s->cpu[i]), ARM_CPU_IRQ));
-     }
- 
-     /* Private memory region and Internal GIC */
-@@ -256,7 +250,8 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
-     sysbus_realize_and_unref(busdev, &error_fatal);
-     sysbus_mmio_map(busdev, 0, EXYNOS4210_SMP_PRIVATE_BASE_ADDR);
-     for (n = 0; n < EXYNOS4210_NCPUS; n++) {
--        sysbus_connect_irq(busdev, n, gate_irq[n][0]);
-+        sysbus_connect_irq(busdev, n,
-+                           qdev_get_gpio_in(DEVICE(&s->cpu_irq_orgate[n]), 0));
-     }
-     for (n = 0; n < EXYNOS4210_INT_GIC_NIRQ; n++) {
-         s->irqs.int_gic_irq[n] = qdev_get_gpio_in(dev, n);
-@@ -275,7 +270,8 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
-     /* Map Distributer interface */
-     sysbus_mmio_map(busdev, 1, EXYNOS4210_EXT_GIC_DIST_BASE_ADDR);
-     for (n = 0; n < EXYNOS4210_NCPUS; n++) {
--        sysbus_connect_irq(busdev, n, gate_irq[n][1]);
-+        sysbus_connect_irq(busdev, n,
-+                           qdev_get_gpio_in(DEVICE(&s->cpu_irq_orgate[n]), 1));
-     }
-     for (n = 0; n < EXYNOS4210_EXT_GIC_NIRQ; n++) {
-         s->irqs.ext_gic_irq[n] = qdev_get_gpio_in(dev, n);
-@@ -488,6 +484,11 @@ static void exynos4210_init(Object *obj)
-         object_initialize_child(obj, name, orgate, TYPE_OR_IRQ);
-         g_free(name);
-     }
++enum ExtGicId {
++    EXT_GIC_ID_MDMA_LCD0 = 66,
++    EXT_GIC_ID_PDMA0,
++    EXT_GIC_ID_PDMA1,
++    EXT_GIC_ID_TIMER0,
++    EXT_GIC_ID_TIMER1,
++    EXT_GIC_ID_TIMER2,
++    EXT_GIC_ID_TIMER3,
++    EXT_GIC_ID_TIMER4,
++    EXT_GIC_ID_MCT_L0,
++    EXT_GIC_ID_WDT,
++    EXT_GIC_ID_RTC_ALARM,
++    EXT_GIC_ID_RTC_TIC,
++    EXT_GIC_ID_GPIO_XB,
++    EXT_GIC_ID_GPIO_XA,
++    EXT_GIC_ID_MCT_L1,
++    EXT_GIC_ID_IEM_APC,
++    EXT_GIC_ID_IEM_IEC,
++    EXT_GIC_ID_NFC,
++    EXT_GIC_ID_UART0,
++    EXT_GIC_ID_UART1,
++    EXT_GIC_ID_UART2,
++    EXT_GIC_ID_UART3,
++    EXT_GIC_ID_UART4,
++    EXT_GIC_ID_MCT_G0,
++    EXT_GIC_ID_I2C0,
++    EXT_GIC_ID_I2C1,
++    EXT_GIC_ID_I2C2,
++    EXT_GIC_ID_I2C3,
++    EXT_GIC_ID_I2C4,
++    EXT_GIC_ID_I2C5,
++    EXT_GIC_ID_I2C6,
++    EXT_GIC_ID_I2C7,
++    EXT_GIC_ID_SPI0,
++    EXT_GIC_ID_SPI1,
++    EXT_GIC_ID_SPI2,
++    EXT_GIC_ID_MCT_G1,
++    EXT_GIC_ID_USB_HOST,
++    EXT_GIC_ID_USB_DEVICE,
++    EXT_GIC_ID_MODEMIF,
++    EXT_GIC_ID_HSMMC0,
++    EXT_GIC_ID_HSMMC1,
++    EXT_GIC_ID_HSMMC2,
++    EXT_GIC_ID_HSMMC3,
++    EXT_GIC_ID_SDMMC,
++    EXT_GIC_ID_MIPI_CSI_4LANE,
++    EXT_GIC_ID_MIPI_DSI_4LANE,
++    EXT_GIC_ID_MIPI_CSI_2LANE,
++    EXT_GIC_ID_MIPI_DSI_2LANE,
++    EXT_GIC_ID_ONENAND_AUDI,
++    EXT_GIC_ID_ROTATOR,
++    EXT_GIC_ID_FIMC0,
++    EXT_GIC_ID_FIMC1,
++    EXT_GIC_ID_FIMC2,
++    EXT_GIC_ID_FIMC3,
++    EXT_GIC_ID_JPEG,
++    EXT_GIC_ID_2D,
++    EXT_GIC_ID_PCIe,
++    EXT_GIC_ID_MIXER,
++    EXT_GIC_ID_HDMI,
++    EXT_GIC_ID_HDMI_I2C,
++    EXT_GIC_ID_MFC,
++    EXT_GIC_ID_TVENC,
++};
 +
-+    for (i = 0; i < ARRAY_SIZE(s->cpu_irq_orgate); i++) {
-+        g_autofree char *name = g_strdup_printf("cpu-irq-orgate%d", i);
-+        object_initialize_child(obj, name, &s->cpu_irq_orgate[i], TYPE_OR_IRQ);
++enum ExtInt {
++    EXT_GIC_ID_EXTINT0 = 48,
++    EXT_GIC_ID_EXTINT1,
++    EXT_GIC_ID_EXTINT2,
++    EXT_GIC_ID_EXTINT3,
++    EXT_GIC_ID_EXTINT4,
++    EXT_GIC_ID_EXTINT5,
++    EXT_GIC_ID_EXTINT6,
++    EXT_GIC_ID_EXTINT7,
++    EXT_GIC_ID_EXTINT8,
++    EXT_GIC_ID_EXTINT9,
++    EXT_GIC_ID_EXTINT10,
++    EXT_GIC_ID_EXTINT11,
++    EXT_GIC_ID_EXTINT12,
++    EXT_GIC_ID_EXTINT13,
++    EXT_GIC_ID_EXTINT14,
++    EXT_GIC_ID_EXTINT15
++};
++
++/*
++ * External GIC sources which are not from External Interrupt Combiner or
++ * External Interrupts are starting from EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ,
++ * which is INTG16 in Internal Interrupt Combiner.
++ */
++
++static const uint32_t
++combiner_grp_to_gic_id[64 - EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][8] = {
++    /* int combiner groups 16-19 */
++    { }, { }, { }, { },
++    /* int combiner group 20 */
++    { 0, EXT_GIC_ID_MDMA_LCD0 },
++    /* int combiner group 21 */
++    { EXT_GIC_ID_PDMA0, EXT_GIC_ID_PDMA1 },
++    /* int combiner group 22 */
++    { EXT_GIC_ID_TIMER0, EXT_GIC_ID_TIMER1, EXT_GIC_ID_TIMER2,
++            EXT_GIC_ID_TIMER3, EXT_GIC_ID_TIMER4 },
++    /* int combiner group 23 */
++    { EXT_GIC_ID_RTC_ALARM, EXT_GIC_ID_RTC_TIC },
++    /* int combiner group 24 */
++    { EXT_GIC_ID_GPIO_XB, EXT_GIC_ID_GPIO_XA },
++    /* int combiner group 25 */
++    { EXT_GIC_ID_IEM_APC, EXT_GIC_ID_IEM_IEC },
++    /* int combiner group 26 */
++    { EXT_GIC_ID_UART0, EXT_GIC_ID_UART1, EXT_GIC_ID_UART2, EXT_GIC_ID_UART3,
++            EXT_GIC_ID_UART4 },
++    /* int combiner group 27 */
++    { EXT_GIC_ID_I2C0, EXT_GIC_ID_I2C1, EXT_GIC_ID_I2C2, EXT_GIC_ID_I2C3,
++            EXT_GIC_ID_I2C4, EXT_GIC_ID_I2C5, EXT_GIC_ID_I2C6,
++            EXT_GIC_ID_I2C7 },
++    /* int combiner group 28 */
++    { EXT_GIC_ID_SPI0, EXT_GIC_ID_SPI1, EXT_GIC_ID_SPI2 , EXT_GIC_ID_USB_HOST},
++    /* int combiner group 29 */
++    { EXT_GIC_ID_HSMMC0, EXT_GIC_ID_HSMMC1, EXT_GIC_ID_HSMMC2,
++     EXT_GIC_ID_HSMMC3, EXT_GIC_ID_SDMMC },
++    /* int combiner group 30 */
++    { EXT_GIC_ID_MIPI_CSI_4LANE, EXT_GIC_ID_MIPI_CSI_2LANE },
++    /* int combiner group 31 */
++    { EXT_GIC_ID_MIPI_DSI_4LANE, EXT_GIC_ID_MIPI_DSI_2LANE },
++    /* int combiner group 32 */
++    { EXT_GIC_ID_FIMC0, EXT_GIC_ID_FIMC1 },
++    /* int combiner group 33 */
++    { EXT_GIC_ID_FIMC2, EXT_GIC_ID_FIMC3 },
++    /* int combiner group 34 */
++    { EXT_GIC_ID_ONENAND_AUDI, EXT_GIC_ID_NFC },
++    /* int combiner group 35 */
++    { 0, 0, 0, EXT_GIC_ID_MCT_L1, EXT_GIC_ID_MCT_G0, EXT_GIC_ID_MCT_G1 },
++    /* int combiner group 36 */
++    { EXT_GIC_ID_MIXER },
++    /* int combiner group 37 */
++    { EXT_GIC_ID_EXTINT4, EXT_GIC_ID_EXTINT5, EXT_GIC_ID_EXTINT6,
++     EXT_GIC_ID_EXTINT7 },
++    /* groups 38-50 */
++    { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { },
++    /* int combiner group 51 */
++    { EXT_GIC_ID_MCT_L0, 0, 0, 0, EXT_GIC_ID_MCT_G0, EXT_GIC_ID_MCT_G1 },
++    /* group 52 */
++    { },
++    /* int combiner group 53 */
++    { EXT_GIC_ID_WDT, 0, 0, 0, EXT_GIC_ID_MCT_G0, EXT_GIC_ID_MCT_G1 },
++    /* groups 54-63 */
++    { }, { }, { }, { }, { }, { }, { }, { }, { }, { }
++};
++
++/*
++ * Initialize board IRQs.
++ * These IRQs contain splitted Int/External Combiner and External Gic IRQs.
++ */
++static void exynos4210_init_board_irqs(Exynos4210State *s)
++{
++    uint32_t grp, bit, irq_id, n;
++    Exynos4210Irq *is = &s->irqs;
++
++    for (n = 0; n < EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ; n++) {
++        irq_id = 0;
++        if (n == EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 4) ||
++                n == EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 4)) {
++            /* MCT_G0 is passed to External GIC */
++            irq_id = EXT_GIC_ID_MCT_G0;
++        }
++        if (n == EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 5) ||
++                n == EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 5)) {
++            /* MCT_G1 is passed to External and GIC */
++            irq_id = EXT_GIC_ID_MCT_G1;
++        }
++        if (irq_id) {
++            s->irq_table[n] = qemu_irq_split(is->int_combiner_irq[n],
++                    is->ext_gic_irq[irq_id - 32]);
++        } else {
++            s->irq_table[n] = qemu_irq_split(is->int_combiner_irq[n],
++                    is->ext_combiner_irq[n]);
++        }
 +    }
- }
++    for (; n < EXYNOS4210_MAX_INT_COMBINER_IN_IRQ; n++) {
++        /* these IDs are passed to Internal Combiner and External GIC */
++        grp = EXYNOS4210_COMBINER_GET_GRP_NUM(n);
++        bit = EXYNOS4210_COMBINER_GET_BIT_NUM(n);
++        irq_id = combiner_grp_to_gic_id[grp -
++                     EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][bit];
++
++        if (irq_id) {
++            s->irq_table[n] = qemu_irq_split(is->int_combiner_irq[n],
++                    is->ext_gic_irq[irq_id - 32]);
++        }
++    }
++}
++
++/*
++ * Get IRQ number from exynos4210 IRQ subsystem stub.
++ * To identify IRQ source use internal combiner group and bit number
++ *  grp - group number
++ *  bit - bit number inside group
++ */
++uint32_t exynos4210_get_irq(uint32_t grp, uint32_t bit)
++{
++    return EXYNOS4210_COMBINER_GET_IRQ_NUM(grp, bit);
++}
++
+ static uint8_t chipid_and_omr[] = { 0x11, 0x02, 0x21, 0x43,
+                                     0x09, 0x00, 0x00, 0x00 };
  
- static void exynos4210_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+index 3b77a485780..d8cad537fbf 100644
+--- a/hw/intc/exynos4210_gic.c
++++ b/hw/intc/exynos4210_gic.c
+@@ -30,154 +30,6 @@
+ #include "hw/arm/exynos4210.h"
+ #include "qom/object.h"
+ 
+-enum ExtGicId {
+-    EXT_GIC_ID_MDMA_LCD0 = 66,
+-    EXT_GIC_ID_PDMA0,
+-    EXT_GIC_ID_PDMA1,
+-    EXT_GIC_ID_TIMER0,
+-    EXT_GIC_ID_TIMER1,
+-    EXT_GIC_ID_TIMER2,
+-    EXT_GIC_ID_TIMER3,
+-    EXT_GIC_ID_TIMER4,
+-    EXT_GIC_ID_MCT_L0,
+-    EXT_GIC_ID_WDT,
+-    EXT_GIC_ID_RTC_ALARM,
+-    EXT_GIC_ID_RTC_TIC,
+-    EXT_GIC_ID_GPIO_XB,
+-    EXT_GIC_ID_GPIO_XA,
+-    EXT_GIC_ID_MCT_L1,
+-    EXT_GIC_ID_IEM_APC,
+-    EXT_GIC_ID_IEM_IEC,
+-    EXT_GIC_ID_NFC,
+-    EXT_GIC_ID_UART0,
+-    EXT_GIC_ID_UART1,
+-    EXT_GIC_ID_UART2,
+-    EXT_GIC_ID_UART3,
+-    EXT_GIC_ID_UART4,
+-    EXT_GIC_ID_MCT_G0,
+-    EXT_GIC_ID_I2C0,
+-    EXT_GIC_ID_I2C1,
+-    EXT_GIC_ID_I2C2,
+-    EXT_GIC_ID_I2C3,
+-    EXT_GIC_ID_I2C4,
+-    EXT_GIC_ID_I2C5,
+-    EXT_GIC_ID_I2C6,
+-    EXT_GIC_ID_I2C7,
+-    EXT_GIC_ID_SPI0,
+-    EXT_GIC_ID_SPI1,
+-    EXT_GIC_ID_SPI2,
+-    EXT_GIC_ID_MCT_G1,
+-    EXT_GIC_ID_USB_HOST,
+-    EXT_GIC_ID_USB_DEVICE,
+-    EXT_GIC_ID_MODEMIF,
+-    EXT_GIC_ID_HSMMC0,
+-    EXT_GIC_ID_HSMMC1,
+-    EXT_GIC_ID_HSMMC2,
+-    EXT_GIC_ID_HSMMC3,
+-    EXT_GIC_ID_SDMMC,
+-    EXT_GIC_ID_MIPI_CSI_4LANE,
+-    EXT_GIC_ID_MIPI_DSI_4LANE,
+-    EXT_GIC_ID_MIPI_CSI_2LANE,
+-    EXT_GIC_ID_MIPI_DSI_2LANE,
+-    EXT_GIC_ID_ONENAND_AUDI,
+-    EXT_GIC_ID_ROTATOR,
+-    EXT_GIC_ID_FIMC0,
+-    EXT_GIC_ID_FIMC1,
+-    EXT_GIC_ID_FIMC2,
+-    EXT_GIC_ID_FIMC3,
+-    EXT_GIC_ID_JPEG,
+-    EXT_GIC_ID_2D,
+-    EXT_GIC_ID_PCIe,
+-    EXT_GIC_ID_MIXER,
+-    EXT_GIC_ID_HDMI,
+-    EXT_GIC_ID_HDMI_I2C,
+-    EXT_GIC_ID_MFC,
+-    EXT_GIC_ID_TVENC,
+-};
+-
+-enum ExtInt {
+-    EXT_GIC_ID_EXTINT0 = 48,
+-    EXT_GIC_ID_EXTINT1,
+-    EXT_GIC_ID_EXTINT2,
+-    EXT_GIC_ID_EXTINT3,
+-    EXT_GIC_ID_EXTINT4,
+-    EXT_GIC_ID_EXTINT5,
+-    EXT_GIC_ID_EXTINT6,
+-    EXT_GIC_ID_EXTINT7,
+-    EXT_GIC_ID_EXTINT8,
+-    EXT_GIC_ID_EXTINT9,
+-    EXT_GIC_ID_EXTINT10,
+-    EXT_GIC_ID_EXTINT11,
+-    EXT_GIC_ID_EXTINT12,
+-    EXT_GIC_ID_EXTINT13,
+-    EXT_GIC_ID_EXTINT14,
+-    EXT_GIC_ID_EXTINT15
+-};
+-
+-/*
+- * External GIC sources which are not from External Interrupt Combiner or
+- * External Interrupts are starting from EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ,
+- * which is INTG16 in Internal Interrupt Combiner.
+- */
+-
+-static const uint32_t
+-combiner_grp_to_gic_id[64 - EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][8] = {
+-    /* int combiner groups 16-19 */
+-    { }, { }, { }, { },
+-    /* int combiner group 20 */
+-    { 0, EXT_GIC_ID_MDMA_LCD0 },
+-    /* int combiner group 21 */
+-    { EXT_GIC_ID_PDMA0, EXT_GIC_ID_PDMA1 },
+-    /* int combiner group 22 */
+-    { EXT_GIC_ID_TIMER0, EXT_GIC_ID_TIMER1, EXT_GIC_ID_TIMER2,
+-            EXT_GIC_ID_TIMER3, EXT_GIC_ID_TIMER4 },
+-    /* int combiner group 23 */
+-    { EXT_GIC_ID_RTC_ALARM, EXT_GIC_ID_RTC_TIC },
+-    /* int combiner group 24 */
+-    { EXT_GIC_ID_GPIO_XB, EXT_GIC_ID_GPIO_XA },
+-    /* int combiner group 25 */
+-    { EXT_GIC_ID_IEM_APC, EXT_GIC_ID_IEM_IEC },
+-    /* int combiner group 26 */
+-    { EXT_GIC_ID_UART0, EXT_GIC_ID_UART1, EXT_GIC_ID_UART2, EXT_GIC_ID_UART3,
+-            EXT_GIC_ID_UART4 },
+-    /* int combiner group 27 */
+-    { EXT_GIC_ID_I2C0, EXT_GIC_ID_I2C1, EXT_GIC_ID_I2C2, EXT_GIC_ID_I2C3,
+-            EXT_GIC_ID_I2C4, EXT_GIC_ID_I2C5, EXT_GIC_ID_I2C6,
+-            EXT_GIC_ID_I2C7 },
+-    /* int combiner group 28 */
+-    { EXT_GIC_ID_SPI0, EXT_GIC_ID_SPI1, EXT_GIC_ID_SPI2 , EXT_GIC_ID_USB_HOST},
+-    /* int combiner group 29 */
+-    { EXT_GIC_ID_HSMMC0, EXT_GIC_ID_HSMMC1, EXT_GIC_ID_HSMMC2,
+-     EXT_GIC_ID_HSMMC3, EXT_GIC_ID_SDMMC },
+-    /* int combiner group 30 */
+-    { EXT_GIC_ID_MIPI_CSI_4LANE, EXT_GIC_ID_MIPI_CSI_2LANE },
+-    /* int combiner group 31 */
+-    { EXT_GIC_ID_MIPI_DSI_4LANE, EXT_GIC_ID_MIPI_DSI_2LANE },
+-    /* int combiner group 32 */
+-    { EXT_GIC_ID_FIMC0, EXT_GIC_ID_FIMC1 },
+-    /* int combiner group 33 */
+-    { EXT_GIC_ID_FIMC2, EXT_GIC_ID_FIMC3 },
+-    /* int combiner group 34 */
+-    { EXT_GIC_ID_ONENAND_AUDI, EXT_GIC_ID_NFC },
+-    /* int combiner group 35 */
+-    { 0, 0, 0, EXT_GIC_ID_MCT_L1, EXT_GIC_ID_MCT_G0, EXT_GIC_ID_MCT_G1 },
+-    /* int combiner group 36 */
+-    { EXT_GIC_ID_MIXER },
+-    /* int combiner group 37 */
+-    { EXT_GIC_ID_EXTINT4, EXT_GIC_ID_EXTINT5, EXT_GIC_ID_EXTINT6,
+-     EXT_GIC_ID_EXTINT7 },
+-    /* groups 38-50 */
+-    { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { },
+-    /* int combiner group 51 */
+-    { EXT_GIC_ID_MCT_L0, 0, 0, 0, EXT_GIC_ID_MCT_G0, EXT_GIC_ID_MCT_G1 },
+-    /* group 52 */
+-    { },
+-    /* int combiner group 53 */
+-    { EXT_GIC_ID_WDT, 0, 0, 0, EXT_GIC_ID_MCT_G0, EXT_GIC_ID_MCT_G1 },
+-    /* groups 54-63 */
+-    { }, { }, { }, { }, { }, { }, { }, { }, { }, { }
+-};
+-
+ #define EXYNOS4210_GIC_NIRQ 160
+ 
+ #define EXYNOS4210_EXT_GIC_CPU_REGION_SIZE     0x10000
+@@ -192,62 +44,6 @@ combiner_grp_to_gic_id[64 - EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][8] = {
+ #define EXYNOS4210_GIC_CPU_REGION_SIZE  0x100
+ #define EXYNOS4210_GIC_DIST_REGION_SIZE 0x1000
+ 
+-/*
+- * Initialize board IRQs.
+- * These IRQs contain splitted Int/External Combiner and External Gic IRQs.
+- */
+-void exynos4210_init_board_irqs(Exynos4210State *s)
+-{
+-    uint32_t grp, bit, irq_id, n;
+-    Exynos4210Irq *is = &s->irqs;
+-
+-    for (n = 0; n < EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ; n++) {
+-        irq_id = 0;
+-        if (n == EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 4) ||
+-                n == EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 4)) {
+-            /* MCT_G0 is passed to External GIC */
+-            irq_id = EXT_GIC_ID_MCT_G0;
+-        }
+-        if (n == EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 5) ||
+-                n == EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 5)) {
+-            /* MCT_G1 is passed to External and GIC */
+-            irq_id = EXT_GIC_ID_MCT_G1;
+-        }
+-        if (irq_id) {
+-            s->irq_table[n] = qemu_irq_split(is->int_combiner_irq[n],
+-                    is->ext_gic_irq[irq_id - 32]);
+-        } else {
+-            s->irq_table[n] = qemu_irq_split(is->int_combiner_irq[n],
+-                    is->ext_combiner_irq[n]);
+-        }
+-    }
+-    for (; n < EXYNOS4210_MAX_INT_COMBINER_IN_IRQ; n++) {
+-        /* these IDs are passed to Internal Combiner and External GIC */
+-        grp = EXYNOS4210_COMBINER_GET_GRP_NUM(n);
+-        bit = EXYNOS4210_COMBINER_GET_BIT_NUM(n);
+-        irq_id = combiner_grp_to_gic_id[grp -
+-                     EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][bit];
+-
+-        if (irq_id) {
+-            s->irq_table[n] = qemu_irq_split(is->int_combiner_irq[n],
+-                    is->ext_gic_irq[irq_id - 32]);
+-        }
+-    }
+-}
+-
+-/*
+- * Get IRQ number from exynos4210 IRQ subsystem stub.
+- * To identify IRQ source use internal combiner group and bit number
+- *  grp - group number
+- *  bit - bit number inside group
+- */
+-uint32_t exynos4210_get_irq(uint32_t grp, uint32_t bit)
+-{
+-    return EXYNOS4210_COMBINER_GET_IRQ_NUM(grp, bit);
+-}
+-
+-/********* GIC part *********/
+-
+ #define TYPE_EXYNOS4210_GIC "exynos4210.gic"
+ OBJECT_DECLARE_SIMPLE_TYPE(Exynos4210GicState, EXYNOS4210_GIC)
+ 
 -- 
 2.25.1
 

@@ -1,356 +1,215 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp2211945lfb;
-        Sun, 3 Apr 2022 07:42:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyYtQWZ/HlomX3Y4AsCROwAvb6I5aMB83fg0Ei56yVGRo90rms6DGAm86LkzclvecolJ8LC
-X-Received: by 2002:ac8:7fc2:0:b0:2e1:e519:93e2 with SMTP id b2-20020ac87fc2000000b002e1e51993e2mr14393357qtk.350.1648996923676;
-        Sun, 03 Apr 2022 07:42:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648996923; cv=none;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp289577lfu;
+        Mon, 4 Apr 2022 08:47:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwNXJUE4ohzWK8C/TpU+5jA7NRHikPOsKdU04me0tf9lNZtXE0VmOcfXgx3RuImKYNrvsuA
+X-Received: by 2002:a0d:d886:0:b0:2eb:23c2:20a3 with SMTP id a128-20020a0dd886000000b002eb23c220a3mr588177ywe.170.1649087256456;
+        Mon, 04 Apr 2022 08:47:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649087256; cv=none;
         d=google.com; s=arc-20160816;
-        b=XW74E35lw+0LrS8+bn6QfOmlrPbHrEswMBOMxEfF3p9lWufCIeFbth3ibmMaYKYOjf
-         hNzgmclO5ATCWEylhapnY8f3TLf8Y0hrusExtNt6vM1cbVRkZ3FcFmWAY1ZxL7jyWFuf
-         Oq7guegmeUzlCpKByItaeK84ujdmMraKYToDrCkex0OjHeZMz9krf/rWdpBCUpjdFcMy
-         O7D6uDomDqrRBKaNCxbFnTI/0tpW2ROZsRsbqcttvPtN7Xx+g+UUqUB2TfYdnF2FU3S+
-         mOpt0SJs4qqM98k+UL43y+qgh0iF4Aj7d+udDIX/Mq4nTxYd+r5XPuZ7y/VNRBZwG/0e
-         NmSA==
+        b=ltdg3gQv9kf1yYSvJxVoMDEj720NNTz9VvSnw6NAe2brIgbpW5/Kn/9hiFAoby2sSy
+         S3sbL2wf+oNcUjQt9wz8LBFQhV7ys9HBz55pSmVJARL/1bXNmlTJc3qxEwwOmL7KLQJJ
+         WlY5zrTeCB9y8TEkU/wIvMx6W7gIKjPSfrIdOlkmR+IbNYg7gnaPZDME3FQ+CCsIa5mo
+         nnsRjlZbVmVguYBMu9mIOD8CqOQtl7jJtAANK/LWQl6nlgFtA+FDqNa2TCaGX6VCFckW
+         pQltkbF5a4H33x3F3jVQOFAp0ggvhM0CXotsN2m93SEkGo8a4Wjr7Tl0jBP5kw+DMCgq
+         Tw4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=7/jYUUQuCPdPXgGpkz+btQZRIIuoiftErKQ8NGgsTao=;
-        b=umdDxcSDy85j4DQCm415ggc6Hm+alUsxpKU0/KxxfC8lfyGtyCpVX3nD+xp+3mPaHC
-         Mc7c9EQO6AHfWwobVuYJH0enGZhgYlL6rphmEQ3uKp106CzVSSNJWbLikq9JZEz7uRS8
-         aj4/FGQf0aN8/8iLs3GMu9DSZRn4FLCeay5X/+q3tNLOh0VsCtVfJsuHEMZV8U29CWhM
-         ualIxtghhbQmVDcRFjlmqNA9Yf8ub3eCmdXUNovJw0p3GQGU/HwmGoz3WLBgZcF1quCm
-         ZtvSEyw/bYccujuHfNz1LXWB9mAnlGaePypUcCj5mL7QQWOtOhsFBLOYu/IfbwdPw3X3
-         IyzQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=V9NOnD3vVpSF0JZLEe5MPnWt14DUTgg+N2g8DWuSWEY=;
+        b=r+zXy/ImjNbKyrFbbJpMHMkwVt3JtBbyJr4gNq6AXAroLgtpaySdeW00Burb9/hcca
+         RxKLdTQIoYUQ9Eh8FVxmmWE5qQdwoDqwxI+s+sw62PBGA9oYbapOuW7XazD5jJM/6+EL
+         rEckhyv19RjvktgaAMR1S9jrs8UOF1bS+Kguef8qguWhfm9JOXoHXFwOf5biREMK0BB0
+         G4IjZnKNsxGH+q0qJosyKYWfdKEnCP6wQgHDHWOsl21NPQjfFgWFb8zStH1JIe3IjAar
+         5KfgunZQ2Z1QgwWU1YWm5UBn7OmE7Cc++2rmt+Cv14TVsACx3REtqgIamyMAhBieJnAX
+         we8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ViB5An+t;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=lHL+GHh0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u6-20020ac87506000000b002e2331ff79csi2268768qtq.636.2022.04.03.07.42.03
+        by mx.google.com with ESMTPS id f2-20020a811f02000000b002e5d98d5676si8695155ywf.9.2022.04.04.08.47.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Apr 2022 07:42:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Apr 2022 08:47:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ViB5An+t;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55948 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=lHL+GHh0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40134 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nb1QZ-0001Wu-66
-	for alex.bennee@linaro.org; Sun, 03 Apr 2022 10:42:03 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41562)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nbOvX-0004nF-RM
+	for alex.bennee@linaro.org; Mon, 04 Apr 2022 11:47:35 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44186)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nb1P0-0000gQ-ON
- for qemu-devel@nongnu.org; Sun, 03 Apr 2022 10:40:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:56954)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nb1Ox-0000do-F2
- for qemu-devel@nongnu.org; Sun, 03 Apr 2022 10:40:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648996821;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7/jYUUQuCPdPXgGpkz+btQZRIIuoiftErKQ8NGgsTao=;
- b=ViB5An+tNL566gOlnqmzU4tzDUaDd2K05uAisAgz0HP7cMwGi0ovxrjwy/lEZ5ZeHcuHEp
- kVylbEWQ/T4Ynd1NZgJ27+3XYOj8yDif3P9db8AfY5m/cZbM9Akqtn1rmDSr/S++0O1HzH
- nMAs/j1nERBKa4t0/RQhl23vXtypaek=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-443-rLd1C-NVM7CD-Qwm6JAJkQ-1; Sun, 03 Apr 2022 10:40:18 -0400
-X-MC-Unique: rLd1C-NVM7CD-Qwm6JAJkQ-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 64ECE3804526;
- Sun,  3 Apr 2022 14:40:18 +0000 (UTC)
-Received: from [10.72.12.82] (ovpn-12-82.pek2.redhat.com [10.72.12.82])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8D651456C56;
- Sun,  3 Apr 2022 14:40:13 +0000 (UTC)
-Subject: Re: [PATCH v3 3/4] hw/acpi/aml-build: Use existing CPU topology to
- build PPTT table
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20220323072438.71815-1-gshan@redhat.com>
- <20220323072438.71815-4-gshan@redhat.com>
- <20220330161059.14e3a990@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <0d1766cb-569e-f0dd-cd58-737beddfaaa8@redhat.com>
-Date: Sun, 3 Apr 2022 22:40:10 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nbOv2-0004kt-Eu
+ for qemu-arm@nongnu.org; Mon, 04 Apr 2022 11:47:04 -0400
+Received: from [2a00:1450:4864:20::42b] (port=38873
+ helo=mail-wr1-x42b.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nbOv0-0000Rk-Ku
+ for qemu-arm@nongnu.org; Mon, 04 Apr 2022 11:47:04 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id j12so7542983wrb.5
+ for <qemu-arm@nongnu.org>; Mon, 04 Apr 2022 08:47:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=V9NOnD3vVpSF0JZLEe5MPnWt14DUTgg+N2g8DWuSWEY=;
+ b=lHL+GHh0QL97DP6ASJTVgnwd/Kl1XpiJf7wph62L1RX7yFIXCXndXOn0k6iL7WnKzL
+ h1l0g38UY/r0pmCUQ30aT/feCNeMVwLYV/FduVfCbCYLfNSAiR8rVSkrylM1S78/Sh+B
+ NGvjHhHnVq8tNmfmrA9FceHDVn3NBQcLBbD5lMD/kfsA3Zps//YnMqQt+631yeA3yE3C
+ ty5uulX4tmfGJfkz+tGrfxXvZv7zcIF7qovk8Rv/eBNE5IxE9ZGtzURooTjp4v/HD+u5
+ wFqZAEv1/K4UJQ5f0XOyBAH369coOaI//JAUzQV0Bjcy18SOXnCcx8TQt0+OE2ocsLvN
+ uH4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=V9NOnD3vVpSF0JZLEe5MPnWt14DUTgg+N2g8DWuSWEY=;
+ b=3eLQxNUoDO140NW0wSjnCV3w79L6dyoF3jzvv1BmJVijmCDywj2JIWQYcAdjItimAJ
+ A0wln2v/lg7cf8x97ooEAjEhjHQUAuY9m/atFIr9a7BpCLOYGdEDOdz+cKeF2xGHbg1p
+ J2ReSg5tb9A2f4np5kVcHheJ65+cC76GddFGfwdP/rXSrMJo6CLs0Pp0OZGzQNpyuILj
+ G212UGz1475bIGgqaO7YHSCftvcK8JL8ccHQgq5uh65knw/D54CEATm9zkRZ/NZtZjK2
+ deXw0/1sEVczcOY7booqL9sH2kAaA0oETiqCvCXVSD2z1IPJl7TSpEtX8dPAAH75l3n/
+ Cc0A==
+X-Gm-Message-State: AOAM5304BEgH9+zhIqzXLmEeSezmNcsj/tbBe26PDdzl0Pvxs+pReNjt
+ bDy21wHUiRmtVSpN2QGFtqrc+Ig7f8uXAw==
+X-Received: by 2002:a5d:47a1:0:b0:204:9f5:e72f with SMTP id
+ 1-20020a5d47a1000000b0020409f5e72fmr291561wrb.656.1649087220662; 
+ Mon, 04 Apr 2022 08:47:00 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ c8-20020a056000184800b002040e925afasm11731347wri.59.2022.04.04.08.46.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 Apr 2022 08:47:00 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-7.1 00/18] hw/arm: Make exynos4210 use TYPE_SPLIT_IRQ
+Date: Mon,  4 Apr 2022 16:46:40 +0100
+Message-Id: <20220404154658.565020-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20220330161059.14e3a990@redhat.com>
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42b
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, zhenyzha@redhat.com, wangyanan55@huawei.com,
- qemu-arm@nongnu.org, shan.gavin@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iHgsyDTwmfu2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Zongyuan Li <zongyuan.li@smartx.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gwnK8e0Skwhg
 
-Hi Igor,
+The primary aim of this patchset is to make the exynos4210 code use
+the TYPE_SPLIT_IRQ device instead of the old qemu_split_irq() function
+(which we are trying to get rid of). However, the current code is
+quite complicated and so we have to do a fair amount of refactoring
+in order to be able to use TYPE_SPLIT_IRQ in a clean way.
 
-On 3/30/22 10:10 PM, Igor Mammedov wrote:
-> On Wed, 23 Mar 2022 15:24:37 +0800
-> Gavin Shan <gshan@redhat.com> wrote:
-> 
->> When the PPTT table is built, the CPU topology is re-calculated, but
->> it's unecessary because the CPU topology has been populated in
->> virt_possible_cpu_arch_ids() on arm/virt machine.
->>
->> This avoids to re-calculate the CPU topology by reusing the existing
->> one in ms->possible_cpus. Currently, the only user of build_pptt() is
->> arm/virt machine.
->>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   hw/acpi/aml-build.c | 96 +++++++++++++++++++++++++++++++++------------
->>   1 file changed, 72 insertions(+), 24 deletions(-)
->>
->> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index 4086879ebf..10a2d63b96 100644
->> --- a/hw/acpi/aml-build.c
->> +++ b/hw/acpi/aml-build.c
->> @@ -2002,18 +2002,27 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->>                   const char *oem_id, const char *oem_table_id)
->>   {
->>       MachineClass *mc = MACHINE_GET_CLASS(ms);
->> +    CPUArchIdList *cpus = ms->possible_cpus;
->> +    GQueue *socket_list = g_queue_new();
->> +    GQueue *cluster_list = g_queue_new();
->> +    GQueue *core_list = g_queue_new();
->>       GQueue *list = g_queue_new();
->>       guint pptt_start = table_data->len;
->>       guint parent_offset;
->>       guint length, i;
->> -    int uid = 0;
->> -    int socket;
->> +    int n, socket_id, cluster_id, core_id, thread_id;
->>       AcpiTable table = { .sig = "PPTT", .rev = 2,
->>                           .oem_id = oem_id, .oem_table_id = oem_table_id };
->>   
->>       acpi_table_begin(&table, table_data);
->>   
->> -    for (socket = 0; socket < ms->smp.sockets; socket++) {
->> +    for (n = 0; n < cpus->len; n++) {
->> +        socket_id = cpus->cpus[n].props.socket_id;
->> +        if (g_queue_find(socket_list, GUINT_TO_POINTER(socket_id))) {
->> +            continue;
->> +        }
-> 
-> maybe instead of scanning cpus[n] every time for each topology level
-> and trying to keep code flattened (which mimics PPTT fattened tree
-> table for not much of the reason, spec doesn't require entries
-> from the same level to e described contiguously),
-> try to rebuild hierarchy tree from flat cpus[n] in 1 pass first
-> and then use nested loops or recursion to build PPTT table,
-> something like:
-> 
->   sockets = cpus_to_topo(possible)
->   build_pptt_level(items = sockets, parent_ref = 0)
->    for item in items
->       level_ref = table_data->len - pptt_start
->       build_processor_hierarchy_node(item {id, flags, ...}, parent_ref)
->       if not leaf:
->          build_pptt_level(item, level_ref)
-> 
-> which is much more compact and easier to read compared to
-> unrolled impl. it's now with all push/pop stack emulation.
-> 
+The interrupt wiring on this SoC is complicated and interrupt
+lines from devices may be wired up to multiple places:
+ * a GIC device
+ * an internal combiner
+ * an external combiner
+(a combiner is a fairly simple "OR multiple IRQ sources together
+in groups with enable/disable and mask logic" piece of hardware).
+In some cases an interrupt is wired up to more than one input
+on each combiner.
 
-I missed your comments when v4 was posted. Sorry about this. I'm using
-thunderbird mail client and have some filters running to put incoming
-mails into the corresponding folders, but this reply has been put into
-wrong folder. It's why I always copy my private email while sending
-patches and emails. Please ignore v4 and review v5 directly.
+The current code has a struct Exynos4210Irq where it keeps arrays of
+qemu_irqs corresponding to the inputs of these devices, and it handles
+the "wire interrupt lines to multiple places" logic in functions which
+are called by the SoC device model but which live in the source files
+with the combiner and GIC models. This series moves the logic to the
+SoC device model's source file (because it is really part of the SoC
+wiring, not part of the individual combiner or GIC devices) and makes
+use of the TYPE_SPLIT_IRQ ability to provide more than 2 output lines
+to simplify things so that each interrupt line connects to just one
+splitter, whose outputs go to all the places they need to. In the
+new setup, these splitter devices clearly belong to the SoC object,
+and so they are created as QOM children of it. The Exynos4210Irq
+struct ends up unneeded and is deleted.
 
-Thanks for the suggestion, but it's going to introduce duplicate entries
-for same socket/cluster/core, or I missed something. Otherwise, the
-CPUs need to be iterated to check if they're in the corresponding level.
+I have also done some conversion of specific child devices of this SoC
+from the old-style "call qemu_new()" to the new-style "embed the child
+device struct in the parent state struct". I haven't done a complete
+conversion, but only touched those devices where making the conversion
+was useful for the TYPE_SPLIT_IRQ changes.
 
-In order to make it simplified and remove the stack emulation stuff,
-I will introduce variables to track the socket/cluster/core IDs whose
-ACPI table entries have been added. Once the socket, cluster or core ID
-changes while iterating 'ms->possible_cpus', the corresponding ACPI table
-entry is added and the IDs for child levels are invalidated. With this,
-all needed ACPI table entries will be created in one loop on 'ms->possible_cpus'
+I don't have a datasheet for this SoC that describes all the external
+combiner and external GIC wiring, so I have mostly kept the QEMU
+behaviour the same as it is currently. In a few places, however, I
+have fixed what seem to me to be fairly clearly bugs in the current
+handling. (Largely these bugs weren't visible to the guest because
+we weren't actually connecting up devices to the affected bits of
+the interrupt line wiring.)
 
-The changes will be included to v5, which will be posted shortly.
+I've tested this with a simple Linux image, which I think is basically
+the same one as the 'make check-acceptance' test. If anybody has
+access to other test images that would be interesting.
 
-Thanks,
-Gavin
+thanks
+-- PMM
 
-> 
->> +
->> +        g_queue_push_tail(socket_list, GUINT_TO_POINTER(socket_id));
->>           g_queue_push_tail(list,
->>               GUINT_TO_POINTER(table_data->len - pptt_start));
->>           build_processor_hierarchy_node(
->> @@ -2023,65 +2032,104 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->>                * of a physical package
->>                */
->>               (1 << 0),
->> -            0, socket, NULL, 0);
->> +            0, socket_id, NULL, 0);
->>       }
->>   
->>       if (mc->smp_props.clusters_supported) {
->>           length = g_queue_get_length(list);
->>           for (i = 0; i < length; i++) {
->> -            int cluster;
->> -
->>               parent_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
->> -            for (cluster = 0; cluster < ms->smp.clusters; cluster++) {
->> +            socket_id = GPOINTER_TO_UINT(g_queue_pop_head(socket_list));
->> +
->> +            for (n = 0; n < cpus->len; n++) {
->> +                if (cpus->cpus[n].props.socket_id != socket_id) {
->> +                    continue;
->> +                }
->> +
->> +                cluster_id = cpus->cpus[n].props.cluster_id;
->> +                if (g_queue_find(cluster_list, GUINT_TO_POINTER(cluster_id))) {
->> +                    continue;
->> +                }
->> +
->> +                g_queue_push_tail(cluster_list, GUINT_TO_POINTER(cluster_id));
->>                   g_queue_push_tail(list,
->>                       GUINT_TO_POINTER(table_data->len - pptt_start));
->>                   build_processor_hierarchy_node(
->>                       table_data,
->>                       (0 << 0), /* not a physical package */
->> -                    parent_offset, cluster, NULL, 0);
->> +                    parent_offset, cluster_id, NULL, 0);
->>               }
->>           }
->>       }
->>   
->>       length = g_queue_get_length(list);
->>       for (i = 0; i < length; i++) {
->> -        int core;
->> -
->>           parent_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
->> -        for (core = 0; core < ms->smp.cores; core++) {
->> -            if (ms->smp.threads > 1) {
->> -                g_queue_push_tail(list,
->> -                    GUINT_TO_POINTER(table_data->len - pptt_start));
->> -                build_processor_hierarchy_node(
->> -                    table_data,
->> -                    (0 << 0), /* not a physical package */
->> -                    parent_offset, core, NULL, 0);
->> -            } else {
->> +        if (!mc->smp_props.clusters_supported) {
->> +            socket_id = GPOINTER_TO_UINT(g_queue_pop_head(socket_list));
->> +        } else {
->> +            cluster_id = GPOINTER_TO_UINT(g_queue_pop_head(cluster_list));
->> +        }
->> +
->> +        for (n = 0; n < cpus->len; n++) {
->> +            if (!mc->smp_props.clusters_supported &&
->> +                cpus->cpus[n].props.socket_id != socket_id) {
->> +                continue;
->> +            }
->> +
->> +            if (mc->smp_props.clusters_supported &&
->> +                cpus->cpus[n].props.cluster_id != cluster_id) {
->> +                continue;
->> +            }
->> +
->> +            core_id = cpus->cpus[n].props.core_id;
->> +            if (ms->smp.threads <= 1) {
->>                   build_processor_hierarchy_node(
->>                       table_data,
->>                       (1 << 1) | /* ACPI Processor ID valid */
->>                       (1 << 3),  /* Node is a Leaf */
->> -                    parent_offset, uid++, NULL, 0);
->> +                    parent_offset, core_id, NULL, 0);
->> +                continue;
->> +            }
->> +
->> +            if (g_queue_find(core_list, GUINT_TO_POINTER(core_id))) {
->> +                continue;
->>               }
->> +
->> +            g_queue_push_tail(core_list, GUINT_TO_POINTER(core_id));
->> +            g_queue_push_tail(list,
->> +                GUINT_TO_POINTER(table_data->len - pptt_start));
->> +            build_processor_hierarchy_node(
->> +                table_data,
->> +                (0 << 0), /* not a physical package */
->> +                parent_offset, core_id, NULL, 0);
->>           }
->>       }
->>   
->>       length = g_queue_get_length(list);
->>       for (i = 0; i < length; i++) {
->> -        int thread;
->> -
->>           parent_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
->> -        for (thread = 0; thread < ms->smp.threads; thread++) {
->> +        core_id = GPOINTER_TO_UINT(g_queue_pop_head(core_list));
->> +
->> +        for (n = 0; n < cpus->len; n++) {
->> +            if (cpus->cpus[n].props.core_id != core_id) {
->> +                continue;
->> +            }
->> +
->> +            thread_id = cpus->cpus[n].props.thread_id;
->>               build_processor_hierarchy_node(
->>                   table_data,
->>                   (1 << 1) | /* ACPI Processor ID valid */
->>                   (1 << 2) | /* Processor is a Thread */
->>                   (1 << 3),  /* Node is a Leaf */
->> -                parent_offset, uid++, NULL, 0);
->> +                parent_offset, thread_id, NULL, 0);
->>           }
->>       }
->>   
->>       g_queue_free(list);
->> +    g_queue_free(core_list);
->> +    g_queue_free(cluster_list);
->> +    g_queue_free(socket_list);
->>       acpi_table_end(linker, &table);
->>   }
->>   
-> 
+Peter Maydell (18):
+  hw/arm/exynos4210: Use TYPE_OR_IRQ instead of custom OR-gate device
+  hw/intc/exynos4210_gic: Remove unused TYPE_EXYNOS4210_IRQ_GATE
+  hw/arm/exynos4210: Put a9mpcore device into state struct
+  hw/arm/exynos4210: Drop int_gic_irq[] from Exynos4210Irq struct
+  hw/arm/exynos4210: Coalesce board_irqs and irq_table
+  hw/arm/exynos4210: Fix code style nit in combiner_grp_to_gic_id[]
+  hw/arm/exynos4210: Move exynos4210_init_board_irqs() into exynos4210.c
+  hw/arm/exynos4210: Put external GIC into state struct
+  hw/arm/exynos4210: Drop ext_gic_irq[] from Exynos4210Irq struct
+  hw/arm/exynos4210: Move exynos4210_combiner_get_gpioin() into
+    exynos4210.c
+  hw/arm/exynos4210: Delete unused macro definitions
+  hw/arm/exynos4210: Use TYPE_SPLIT_IRQ in exynos4210_init_board_irqs()
+  hw/arm/exynos4210: Fill in irq_table[] for internal-combiner-only IRQ
+    lines
+  hw/arm/exynos4210: Connect MCT_G0 and MCT_G1 to both combiners
+  hw/arm/exynos4210: Don't connect multiple lines to external GIC inputs
+  hw/arm/exynos4210: Fold combiner splits into
+    exynos4210_init_board_irqs()
+  hw/arm/exynos4210: Put combiners into state struct
+  hw/arm/exynos4210: Drop Exynos4210Irq struct
+
+ include/hw/arm/exynos4210.h           |  50 ++-
+ include/hw/intc/exynos4210_combiner.h |  57 ++++
+ include/hw/intc/exynos4210_gic.h      |  43 +++
+ hw/arm/exynos4210.c                   | 430 +++++++++++++++++++++++---
+ hw/intc/exynos4210_combiner.c         | 108 +------
+ hw/intc/exynos4210_gic.c              | 344 +--------------------
+ MAINTAINERS                           |   2 +-
+ 7 files changed, 508 insertions(+), 526 deletions(-)
+ create mode 100644 include/hw/intc/exynos4210_combiner.h
+ create mode 100644 include/hw/intc/exynos4210_gic.h
+
+-- 
+2.25.1
 

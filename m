@@ -1,104 +1,108 @@
-Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp289577lfu;
-        Mon, 4 Apr 2022 08:47:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwNXJUE4ohzWK8C/TpU+5jA7NRHikPOsKdU04me0tf9lNZtXE0VmOcfXgx3RuImKYNrvsuA
-X-Received: by 2002:a0d:d886:0:b0:2eb:23c2:20a3 with SMTP id a128-20020a0dd886000000b002eb23c220a3mr588177ywe.170.1649087256456;
-        Mon, 04 Apr 2022 08:47:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649087256; cv=none;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp291282lfu;
+        Mon, 4 Apr 2022 08:50:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxIuI+gGchj8kHOTPKfbKX4jmyDpk8Pns+Y37peyF9GpSPn8UMEI6G8Kl5kgYL64WScZgk0
+X-Received: by 2002:a81:345:0:b0:2ea:a8fa:f323 with SMTP id 66-20020a810345000000b002eaa8faf323mr549974ywd.292.1649087420203;
+        Mon, 04 Apr 2022 08:50:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649087420; cv=none;
         d=google.com; s=arc-20160816;
-        b=ltdg3gQv9kf1yYSvJxVoMDEj720NNTz9VvSnw6NAe2brIgbpW5/Kn/9hiFAoby2sSy
-         S3sbL2wf+oNcUjQt9wz8LBFQhV7ys9HBz55pSmVJARL/1bXNmlTJc3qxEwwOmL7KLQJJ
-         WlY5zrTeCB9y8TEkU/wIvMx6W7gIKjPSfrIdOlkmR+IbNYg7gnaPZDME3FQ+CCsIa5mo
-         nnsRjlZbVmVguYBMu9mIOD8CqOQtl7jJtAANK/LWQl6nlgFtA+FDqNa2TCaGX6VCFckW
-         pQltkbF5a4H33x3F3jVQOFAp0ggvhM0CXotsN2m93SEkGo8a4Wjr7Tl0jBP5kw+DMCgq
-         Tw4Q==
+        b=qbc21ysJYEeNk6AIuCN0z1i8bAlXb5ukvPHBsqCYZTFgaWKQME9wLk/Hi/shq7n+sp
+         vD3dlg3iB5G102dkWX22SRRAS64iD8X7owAoapEXEMVjAbDmlKJJycwLSjkWxrduteSO
+         QIvV7KUsvBkjewibeAGkKBvYRJSQC6ha5mf3S4gb/PvBQOXLRhiid9Pz/F37FmBZFSO5
+         PPwUMcvzkPS2j2hmGk8fT15o4JSsOw9VP6f9iMHEExpRQc6TkPuyFvibNjE2RIA0DrvW
+         GCsk16bv2Enw7/u4m8jw/rzxvw2vgPp3nbm8grhMlH5Z98W2LO0SPri+N54tIt+HpeBI
+         IQgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=V9NOnD3vVpSF0JZLEe5MPnWt14DUTgg+N2g8DWuSWEY=;
-        b=r+zXy/ImjNbKyrFbbJpMHMkwVt3JtBbyJr4gNq6AXAroLgtpaySdeW00Burb9/hcca
-         RxKLdTQIoYUQ9Eh8FVxmmWE5qQdwoDqwxI+s+sw62PBGA9oYbapOuW7XazD5jJM/6+EL
-         rEckhyv19RjvktgaAMR1S9jrs8UOF1bS+Kguef8qguWhfm9JOXoHXFwOf5biREMK0BB0
-         G4IjZnKNsxGH+q0qJosyKYWfdKEnCP6wQgHDHWOsl21NPQjfFgWFb8zStH1JIe3IjAar
-         5KfgunZQ2Z1QgwWU1YWm5UBn7OmE7Cc++2rmt+Cv14TVsACx3REtqgIamyMAhBieJnAX
-         we8g==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=8m9EfK0c68obkrRWOTj5E9nZ54Ec0fZc8cnW0/o32t0=;
+        b=YtSWyf52Fz9BQ+/Imq83Dk2W5H4wh9wWZy6Gou3ZlWAk6xdENOmm0QHmw/AvE1qxXn
+         1Ubd7MIXrjAWtBhi21YmI7OE6jouzUxsuuGurx4XNsvMN/C4rqiisGW34bFQ7XZbJaAU
+         kgYqMX4iFHZ2738U4gwsDqSZ8CYYD6gtnA6RIhXxeF5ASc0GAtPnqS+Kk8I0ZS5FFl1f
+         reyckHSDl6HuM2cW5kmbEFfOzBX7rxK7OQSRJHILSvsPqcN8T3sncR2Yi9gTatcNLAF1
+         a8z1T3sD7k96DuPR/G8VGw7rPUmodOFrqG+rrsg+sokk36Dp61Vvx6NqjpNVFgU6O6dr
+         VzdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lHL+GHh0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nwL08n9d;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f2-20020a811f02000000b002e5d98d5676si8695155ywf.9.2022.04.04.08.47.36
+        by mx.google.com with ESMTPS id v196-20020a252fcd000000b006346f296b98si9225615ybv.377.2022.04.04.08.50.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Apr 2022 08:47:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Apr 2022 08:50:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lHL+GHh0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nwL08n9d;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40134 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45688 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nbOvX-0004nF-RM
-	for alex.bennee@linaro.org; Mon, 04 Apr 2022 11:47:35 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44186)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nbOyB-0000C9-Hr
+	for alex.bennee@linaro.org; Mon, 04 Apr 2022 11:50:19 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44250)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nbOv2-0004kt-Eu
- for qemu-arm@nongnu.org; Mon, 04 Apr 2022 11:47:04 -0400
-Received: from [2a00:1450:4864:20::42b] (port=38873
- helo=mail-wr1-x42b.google.com)
+ id 1nbOv4-0004lt-9z
+ for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:06 -0400
+Received: from [2a00:1450:4864:20::32d] (port=50745
+ helo=mail-wm1-x32d.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nbOv0-0000Rk-Ku
- for qemu-arm@nongnu.org; Mon, 04 Apr 2022 11:47:04 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id j12so7542983wrb.5
- for <qemu-arm@nongnu.org>; Mon, 04 Apr 2022 08:47:02 -0700 (PDT)
+ id 1nbOv1-0000S9-T8
+ for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:05 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id h16so6230553wmd.0
+ for <qemu-devel@nongnu.org>; Mon, 04 Apr 2022 08:47:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=V9NOnD3vVpSF0JZLEe5MPnWt14DUTgg+N2g8DWuSWEY=;
- b=lHL+GHh0QL97DP6ASJTVgnwd/Kl1XpiJf7wph62L1RX7yFIXCXndXOn0k6iL7WnKzL
- h1l0g38UY/r0pmCUQ30aT/feCNeMVwLYV/FduVfCbCYLfNSAiR8rVSkrylM1S78/Sh+B
- NGvjHhHnVq8tNmfmrA9FceHDVn3NBQcLBbD5lMD/kfsA3Zps//YnMqQt+631yeA3yE3C
- ty5uulX4tmfGJfkz+tGrfxXvZv7zcIF7qovk8Rv/eBNE5IxE9ZGtzURooTjp4v/HD+u5
- wFqZAEv1/K4UJQ5f0XOyBAH369coOaI//JAUzQV0Bjcy18SOXnCcx8TQt0+OE2ocsLvN
- uH4Q==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=8m9EfK0c68obkrRWOTj5E9nZ54Ec0fZc8cnW0/o32t0=;
+ b=nwL08n9dmoyhwEB1vUP2XKeOtuA1ea+98GolqE0ztVfDsoPRi1OQ2aF4rfjrfDIYjX
+ kLSKq2YQttdSlX3d4BxWWEu39ojdbcmF5kEU97V4wk3+Ch7hr3RMI2n9ldwQBkQHyeq9
+ MAlLbp3IuHx6/aRGjdfizOoR6egqN5467tLjxVCaQzuSY/n61Dv/Po3MOMzvITdBwjm+
+ lWgEYYDKYdj/y0qk0OgQGiqv+EpccoXOLI0i/0qm3e9vCZxLEBCP34c9HPRqq95rrJU7
+ JLup02NhV5L2u61o1KLxWWGGtopBtFQnO9gVaNfYRw28YP754+1M7ZvRylqbRsjeU/cv
+ v3Mw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=V9NOnD3vVpSF0JZLEe5MPnWt14DUTgg+N2g8DWuSWEY=;
- b=3eLQxNUoDO140NW0wSjnCV3w79L6dyoF3jzvv1BmJVijmCDywj2JIWQYcAdjItimAJ
- A0wln2v/lg7cf8x97ooEAjEhjHQUAuY9m/atFIr9a7BpCLOYGdEDOdz+cKeF2xGHbg1p
- J2ReSg5tb9A2f4np5kVcHheJ65+cC76GddFGfwdP/rXSrMJo6CLs0Pp0OZGzQNpyuILj
- G212UGz1475bIGgqaO7YHSCftvcK8JL8ccHQgq5uh65knw/D54CEATm9zkRZ/NZtZjK2
- deXw0/1sEVczcOY7booqL9sH2kAaA0oETiqCvCXVSD2z1IPJl7TSpEtX8dPAAH75l3n/
- Cc0A==
-X-Gm-Message-State: AOAM5304BEgH9+zhIqzXLmEeSezmNcsj/tbBe26PDdzl0Pvxs+pReNjt
- bDy21wHUiRmtVSpN2QGFtqrc+Ig7f8uXAw==
-X-Received: by 2002:a5d:47a1:0:b0:204:9f5:e72f with SMTP id
- 1-20020a5d47a1000000b0020409f5e72fmr291561wrb.656.1649087220662; 
- Mon, 04 Apr 2022 08:47:00 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=8m9EfK0c68obkrRWOTj5E9nZ54Ec0fZc8cnW0/o32t0=;
+ b=xpy4XEYbskYZVJzOavLJOD4bAOgSqwNmAXBgY/7Xl+Yz8zVPxeReGm1PHC92GyB1TN
+ 8ieV/u45BCQKbuyCylaNjXXflVA2V5kKmQ3sppJjjjCeHKlSW1Ctj1NM0PvPTTpe2tcW
+ 3Zty0brvvXd/aqcQkb3uak1cMlACjHQGvZ5E6R/OeXp7renoTqMhUPrZNtZwG/0wMpHZ
+ nNoI7JZKwngrAn3hQ+chmEJP89MaWd/D9MfZVk/gAUDVBMs4XarHEVduHXEccSjMw4kK
+ x9WKuelt1S+GG7WV//jUUSK1PwKqrEhWbzu1U4QRkzrx5uvz+PJfBn2JmyohL1smwhFl
+ XJjw==
+X-Gm-Message-State: AOAM5323QFt5shgzQJB+3uLOk+1oNP0VUOYoUPjT1e42hp1GenrhanUl
+ DfkwKllalUOfgLq3UeH8KvBYvw==
+X-Received: by 2002:a05:600c:4fce:b0:38d:a58:6d16 with SMTP id
+ o14-20020a05600c4fce00b0038d0a586d16mr118052wmq.11.1649087222560; 
+ Mon, 04 Apr 2022 08:47:02 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- c8-20020a056000184800b002040e925afasm11731347wri.59.2022.04.04.08.46.59
+ c8-20020a056000184800b002040e925afasm11731347wri.59.2022.04.04.08.47.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Apr 2022 08:47:00 -0700 (PDT)
+ Mon, 04 Apr 2022 08:47:02 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-7.1 00/18] hw/arm: Make exynos4210 use TYPE_SPLIT_IRQ
-Date: Mon,  4 Apr 2022 16:46:40 +0100
-Message-Id: <20220404154658.565020-1-peter.maydell@linaro.org>
+Subject: [PATCH for-7.1 02/18] hw/intc/exynos4210_gic: Remove unused
+ TYPE_EXYNOS4210_IRQ_GATE
+Date: Mon,  4 Apr 2022 16:46:42 +0100
+Message-Id: <20220404154658.565020-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220404154658.565020-1-peter.maydell@linaro.org>
+References: <20220404154658.565020-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42b
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32d
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -108,108 +112,146 @@ X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Zongyuan Li <zongyuan.li@smartx.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gwnK8e0Skwhg
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oocXqcv8IARo
 
-The primary aim of this patchset is to make the exynos4210 code use
-the TYPE_SPLIT_IRQ device instead of the old qemu_split_irq() function
-(which we are trying to get rid of). However, the current code is
-quite complicated and so we have to do a fair amount of refactoring
-in order to be able to use TYPE_SPLIT_IRQ in a clean way.
+Now we have removed the only use of TYPE_EXYNOS4210_IRQ_GATE we can
+delete the device entirely.
 
-The interrupt wiring on this SoC is complicated and interrupt
-lines from devices may be wired up to multiple places:
- * a GIC device
- * an internal combiner
- * an external combiner
-(a combiner is a fairly simple "OR multiple IRQ sources together
-in groups with enable/disable and mask logic" piece of hardware).
-In some cases an interrupt is wired up to more than one input
-on each combiner.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/exynos4210_gic.c | 107 ---------------------------------------
+ 1 file changed, 107 deletions(-)
 
-The current code has a struct Exynos4210Irq where it keeps arrays of
-qemu_irqs corresponding to the inputs of these devices, and it handles
-the "wire interrupt lines to multiple places" logic in functions which
-are called by the SoC device model but which live in the source files
-with the combiner and GIC models. This series moves the logic to the
-SoC device model's source file (because it is really part of the SoC
-wiring, not part of the individual combiner or GIC devices) and makes
-use of the TYPE_SPLIT_IRQ ability to provide more than 2 output lines
-to simplify things so that each interrupt line connects to just one
-splitter, whose outputs go to all the places they need to. In the
-new setup, these splitter devices clearly belong to the SoC object,
-and so they are created as QOM children of it. The Exynos4210Irq
-struct ends up unneeded and is deleted.
-
-I have also done some conversion of specific child devices of this SoC
-from the old-style "call qemu_new()" to the new-style "embed the child
-device struct in the parent state struct". I haven't done a complete
-conversion, but only touched those devices where making the conversion
-was useful for the TYPE_SPLIT_IRQ changes.
-
-I don't have a datasheet for this SoC that describes all the external
-combiner and external GIC wiring, so I have mostly kept the QEMU
-behaviour the same as it is currently. In a few places, however, I
-have fixed what seem to me to be fairly clearly bugs in the current
-handling. (Largely these bugs weren't visible to the guest because
-we weren't actually connecting up devices to the affected bits of
-the interrupt line wiring.)
-
-I've tested this with a simple Linux image, which I think is basically
-the same one as the 'make check-acceptance' test. If anybody has
-access to other test images that would be interesting.
-
-thanks
--- PMM
-
-Peter Maydell (18):
-  hw/arm/exynos4210: Use TYPE_OR_IRQ instead of custom OR-gate device
-  hw/intc/exynos4210_gic: Remove unused TYPE_EXYNOS4210_IRQ_GATE
-  hw/arm/exynos4210: Put a9mpcore device into state struct
-  hw/arm/exynos4210: Drop int_gic_irq[] from Exynos4210Irq struct
-  hw/arm/exynos4210: Coalesce board_irqs and irq_table
-  hw/arm/exynos4210: Fix code style nit in combiner_grp_to_gic_id[]
-  hw/arm/exynos4210: Move exynos4210_init_board_irqs() into exynos4210.c
-  hw/arm/exynos4210: Put external GIC into state struct
-  hw/arm/exynos4210: Drop ext_gic_irq[] from Exynos4210Irq struct
-  hw/arm/exynos4210: Move exynos4210_combiner_get_gpioin() into
-    exynos4210.c
-  hw/arm/exynos4210: Delete unused macro definitions
-  hw/arm/exynos4210: Use TYPE_SPLIT_IRQ in exynos4210_init_board_irqs()
-  hw/arm/exynos4210: Fill in irq_table[] for internal-combiner-only IRQ
-    lines
-  hw/arm/exynos4210: Connect MCT_G0 and MCT_G1 to both combiners
-  hw/arm/exynos4210: Don't connect multiple lines to external GIC inputs
-  hw/arm/exynos4210: Fold combiner splits into
-    exynos4210_init_board_irqs()
-  hw/arm/exynos4210: Put combiners into state struct
-  hw/arm/exynos4210: Drop Exynos4210Irq struct
-
- include/hw/arm/exynos4210.h           |  50 ++-
- include/hw/intc/exynos4210_combiner.h |  57 ++++
- include/hw/intc/exynos4210_gic.h      |  43 +++
- hw/arm/exynos4210.c                   | 430 +++++++++++++++++++++++---
- hw/intc/exynos4210_combiner.c         | 108 +------
- hw/intc/exynos4210_gic.c              | 344 +--------------------
- MAINTAINERS                           |   2 +-
- 7 files changed, 508 insertions(+), 526 deletions(-)
- create mode 100644 include/hw/intc/exynos4210_combiner.h
- create mode 100644 include/hw/intc/exynos4210_gic.h
-
+diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+index bc73d1f1152..794f6b5ac72 100644
+--- a/hw/intc/exynos4210_gic.c
++++ b/hw/intc/exynos4210_gic.c
+@@ -373,110 +373,3 @@ static void exynos4210_gic_register_types(void)
+ }
+ 
+ type_init(exynos4210_gic_register_types)
+-
+-/* IRQ OR Gate struct.
+- *
+- * This device models an OR gate. There are n_in input qdev gpio lines and one
+- * output sysbus IRQ line. The output IRQ level is formed as OR between all
+- * gpio inputs.
+- */
+-
+-#define TYPE_EXYNOS4210_IRQ_GATE "exynos4210.irq_gate"
+-OBJECT_DECLARE_SIMPLE_TYPE(Exynos4210IRQGateState, EXYNOS4210_IRQ_GATE)
+-
+-struct Exynos4210IRQGateState {
+-    SysBusDevice parent_obj;
+-
+-    uint32_t n_in;      /* inputs amount */
+-    uint32_t *level;    /* input levels */
+-    qemu_irq out;       /* output IRQ */
+-};
+-
+-static Property exynos4210_irq_gate_properties[] = {
+-    DEFINE_PROP_UINT32("n_in", Exynos4210IRQGateState, n_in, 1),
+-    DEFINE_PROP_END_OF_LIST(),
+-};
+-
+-static const VMStateDescription vmstate_exynos4210_irq_gate = {
+-    .name = "exynos4210.irq_gate",
+-    .version_id = 2,
+-    .minimum_version_id = 2,
+-    .fields = (VMStateField[]) {
+-        VMSTATE_VBUFFER_UINT32(level, Exynos4210IRQGateState, 1, NULL, n_in),
+-        VMSTATE_END_OF_LIST()
+-    }
+-};
+-
+-/* Process a change in IRQ input. */
+-static void exynos4210_irq_gate_handler(void *opaque, int irq, int level)
+-{
+-    Exynos4210IRQGateState *s = (Exynos4210IRQGateState *)opaque;
+-    uint32_t i;
+-
+-    assert(irq < s->n_in);
+-
+-    s->level[irq] = level;
+-
+-    for (i = 0; i < s->n_in; i++) {
+-        if (s->level[i] >= 1) {
+-            qemu_irq_raise(s->out);
+-            return;
+-        }
+-    }
+-
+-    qemu_irq_lower(s->out);
+-}
+-
+-static void exynos4210_irq_gate_reset(DeviceState *d)
+-{
+-    Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(d);
+-
+-    memset(s->level, 0, s->n_in * sizeof(*s->level));
+-}
+-
+-/*
+- * IRQ Gate initialization.
+- */
+-static void exynos4210_irq_gate_init(Object *obj)
+-{
+-    Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(obj);
+-    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+-
+-    sysbus_init_irq(sbd, &s->out);
+-}
+-
+-static void exynos4210_irq_gate_realize(DeviceState *dev, Error **errp)
+-{
+-    Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(dev);
+-
+-    /* Allocate general purpose input signals and connect a handler to each of
+-     * them */
+-    qdev_init_gpio_in(dev, exynos4210_irq_gate_handler, s->n_in);
+-
+-    s->level = g_malloc0(s->n_in * sizeof(*s->level));
+-}
+-
+-static void exynos4210_irq_gate_class_init(ObjectClass *klass, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-
+-    dc->reset = exynos4210_irq_gate_reset;
+-    dc->vmsd = &vmstate_exynos4210_irq_gate;
+-    device_class_set_props(dc, exynos4210_irq_gate_properties);
+-    dc->realize = exynos4210_irq_gate_realize;
+-}
+-
+-static const TypeInfo exynos4210_irq_gate_info = {
+-    .name          = TYPE_EXYNOS4210_IRQ_GATE,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(Exynos4210IRQGateState),
+-    .instance_init = exynos4210_irq_gate_init,
+-    .class_init    = exynos4210_irq_gate_class_init,
+-};
+-
+-static void exynos4210_irq_gate_register_types(void)
+-{
+-    type_register_static(&exynos4210_irq_gate_info);
+-}
+-
+-type_init(exynos4210_irq_gate_register_types)
 -- 
 2.25.1
 

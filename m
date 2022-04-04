@@ -1,108 +1,108 @@
-Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp297913lfu;
-        Mon, 4 Apr 2022 09:01:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxZ6GKQJNm278DRd50cetA+GUEAg4Dtcr4uZyoZAlPYJQvze7y15KDBTk5TR9ufKxHD4K33
-X-Received: by 2002:a37:5c5:0:b0:67e:b666:f4d4 with SMTP id 188-20020a3705c5000000b0067eb666f4d4mr336693qkf.259.1649088084494;
-        Mon, 04 Apr 2022 09:01:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649088084; cv=none;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp299037lfu;
+        Mon, 4 Apr 2022 09:02:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy1bmNR4EWssOSyhOG1TtfC3iAIR+XFvlMLa0MqYg1J+JMD3YnPcS6z0RS3+CC7H06ePpGM
+X-Received: by 2002:a05:6102:2908:b0:325:8b68:e959 with SMTP id cz8-20020a056102290800b003258b68e959mr164156vsb.84.1649088156527;
+        Mon, 04 Apr 2022 09:02:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649088156; cv=none;
         d=google.com; s=arc-20160816;
-        b=DwDIlBsrEI5cYlN7SkFxIgxzb2o/1DzgM6tnuJkpeMBzLp24bcj4gOVg26Zfe/pPm1
-         MIKaTJWYx+SQdc8krGdZxWaKdI79EkFJkOp6N+V0lfBHp3RQHoFUq1x8fi9sCPgeMtrj
-         RQpBPV383Vvfj+kZftGxC+qUxVdnnEdWJf8/shDom7QDLlG0wphqizMGxYYsBItPoQ36
-         PHXMh3cZZVQ/GLnTwd0kOk2jshVzCDJKeLd1riTqxhwBgl7UK6LQbdoadIXqSwFkvb0G
-         SVqjnDZ8Xy1hSGR5cYzK7fzp2DpGVZX4txQnTzNNNeYvLpKiKXpr/OOAA3TXhhEIY4h1
-         cpUw==
+        b=MsTO69f8tSjdgHA9uCWdeHNikK1PREYoAiySpNuE9ULf+Ga4c1VEvNYiPeCGL95hWw
+         iYGM4ip/jDeYEZpFzX9qiaEIzXQmFeqDr2QUpKjleKNEzi1sUYHR4hJ2+Ee3EQfcjqx1
+         bif7l7vgHg6/wc8V85CDko6tQvNPs9IAAu/HfPrmQJYOTH9T5cX4xu5FCJ0fehNYakSG
+         PIJ6lPQis3mXS+9mrKpDycpqxqMvfOj3BG/jrRRMd7FBezAHLqncrE1V5pfc2ciA5tUv
+         E92/+Vd6GTkvMEBS7ArwI1eM+5Nk4dpYgqtGrIG8r/3IY1Q9JYJumXBrrR7OxiV6W/nS
+         qm9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=O2HGHkIJYLoqaf2dXfOJCIZ757UlParSEKSsAnc5xCA=;
-        b=HeE9vvLJO/8FgvE5m8bGcRndFNcQEB4Rl3bwzOlySwb+k7BcOrTCinSVTApBSqwYbR
-         D5o/JXKnqmppPaby4HE4kbScj1XrVGJ+64sTLXny/p+xKrfmu9ml/UXOD+TjvqWQWwdW
-         UHm6Ee3gIE47pCeA0c7scTynuG8T39HetxIzooCB1CADb2KHaG8Oif+l5R8Nq6ltO82c
-         q2laCkuiSgJyQ/fo6YwPYJxSwmirVgbgiErOVHnQ/NCAxmDUTAXh4TnqwPm0xvPwa+qd
-         r1q/y7tw2o+BVNzvHKRqIfissXxMRANVQ7TPuY/aNo3BYAkPlYuamsqhSPyvckim+WB7
-         TTug==
+        bh=MMQYFnE6zuuvSwuVT9753O37HsyaF97WHfjDEW8aW+c=;
+        b=in9zrGCNlO8dSJdFK7Be1r9+NQMy/ysVELR4OwATS3hsOKSGV5b+lxqhizQrh4vAWk
+         rRgStPuHfW9QJBq4dRGa+pDFZB/zkqq77aDqe9fdh/M9WwMiVARMrs25pLyrp6EZ++xI
+         SVlM9Wpq4064ZUJNwDvWww44S7p+b9U7t0/PKdZyCDJPpSvWVf0JhtxVsre8ikabfgfb
+         rqGesBE9pTtkDpRX+cUpsE4DCxWK8vn7gb5jOmZU3rJX6Dd08OqQrSoWNvxvLTBEQYrV
+         h7+7tG1aCJdRy9yqRAkE60/6HvNIS4YiqX67yC4zCahPllOAG7xJaAc2ZO97Qozs7mau
+         eLVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hONgZ1e1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hjY4aPQh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f19-20020ac84993000000b002e1fbf3bea3si3311167qtq.148.2022.04.04.09.01.24
+        by mx.google.com with ESMTPS id s12-20020ab0764c000000b0035ce01652absi77533uaq.133.2022.04.04.09.02.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Apr 2022 09:01:24 -0700 (PDT)
+        Mon, 04 Apr 2022 09:02:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hONgZ1e1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hjY4aPQh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49742 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52612 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nbP8t-0005LE-Q2
-	for alex.bennee@linaro.org; Mon, 04 Apr 2022 12:01:23 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44826)
+	id 1nbPA3-0007Jt-SS
+	for alex.bennee@linaro.org; Mon, 04 Apr 2022 12:02:35 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nbOvK-00053F-1J
- for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:23 -0400
-Received: from [2a00:1450:4864:20::431] (port=41611
- helo=mail-wr1-x431.google.com)
+ id 1nbOv8-0004oV-Am
+ for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:10 -0400
+Received: from [2a00:1450:4864:20::42a] (port=44965
+ helo=mail-wr1-x42a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nbOvG-0000XX-8Y
- for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:21 -0400
-Received: by mail-wr1-x431.google.com with SMTP id k23so2586774wrd.8
- for <qemu-devel@nongnu.org>; Mon, 04 Apr 2022 08:47:17 -0700 (PDT)
+ id 1nbOv5-0000Sx-UM
+ for qemu-devel@nongnu.org; Mon, 04 Apr 2022 11:47:10 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id b19so15122258wrh.11
+ for <qemu-devel@nongnu.org>; Mon, 04 Apr 2022 08:47:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=O2HGHkIJYLoqaf2dXfOJCIZ757UlParSEKSsAnc5xCA=;
- b=hONgZ1e1SfYMYzuvOewj/KiNHZyM35d275MJUnlqVLDwSGdrfLtmfyzA/u6Gt7SuPd
- cRqx3me9fnvh31kc46yrYZSHJl3M25sg2PgZunajhw5qSPcG3lAiiIjw0xQWk5x68beb
- YVzoh5ZDwRP+xLyPKDoOXHtkm88yunLrSwnayCa+YIQEysWbGx7/84ELXiuXzVZbmlDe
- lAKgijzDh7Pzv1pI0UNGnNRtpB4LUHKmCjhxovDOOaV0hTe+XZY91rRmOQtpAONUKnxF
- etzIU3w5af5vSir9zFUZIpt9OHt9FAnoCpu063GZ7cHVIz4yvLT2hUQ+/wjf14NLS16m
- T01Q==
+ bh=MMQYFnE6zuuvSwuVT9753O37HsyaF97WHfjDEW8aW+c=;
+ b=hjY4aPQho1yO8EmKlpUp9HKLh/b0OSbIMktLaOeuvfAcJpOqYAzLwJolJTDK7MCTkS
+ X3TbIdGOvla52vW8DJfeFV+5EcdDqMs39IXt9zrjBlw15U9Nqu0WCMoYf1GSV7Ac7h98
+ A9lfq55VCLefSxMFwSoaMmNZfr7dHkkCIFGMnxAWe/5yVTMIwJ2/u7/BrcFaeMRceD0w
+ eYemyIQZWl581npwWutRzaUEo0IDpXGpvYPvqrcmyoEfKjSsz8f2K1Jg/wjoaFAF8Zvv
+ zK7dBps1JEOj/lqPnd0cCwd/4JPQ+vBUeCTX/SM3IvByzUhIWREWMS4Pu2voKykiWDrv
+ jpfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=O2HGHkIJYLoqaf2dXfOJCIZ757UlParSEKSsAnc5xCA=;
- b=awKzv026NIedho2U7qh7smdgRuL9RFZOcuFe6xxRv2WSTdP7aCCDTtJzjqYXtbNzMq
- 8xjwer/POGJd45BykW5vmaAdJp5usl9XuhRB6NVb2RxETgEUVRQ0DUbyVoUd6pCX9dWj
- s2kK7ydnsJo4kZvjUB2dkRd5iPjvTXsdbEsniisP4nr0JOKrCKciJU6DPWotPwt+xZJq
- z6jMsM1qUk0nCvS8AKoJwV4Dy1dSPEvT6/YPfNxGl5UbhVDevXy4ba350RIww+9ExtCO
- Bh1Vv/aFJhHdZUeOwGiLawRlrU9k7+5OHXx652v35hA2UfazDJR0XqBYiWEzdKMIuilK
- F6AQ==
-X-Gm-Message-State: AOAM532RASGzHZiI8wQW4OJ5LZuCbsQuPCfT4nSZOXj3HXfeML8t7BP9
- 5A1HkTTFCV+8geAjxiFx1vFJzQ==
-X-Received: by 2002:a5d:588b:0:b0:204:1c1a:965d with SMTP id
- n11-20020a5d588b000000b002041c1a965dmr249622wrf.669.1649087236363; 
- Mon, 04 Apr 2022 08:47:16 -0700 (PDT)
+ bh=MMQYFnE6zuuvSwuVT9753O37HsyaF97WHfjDEW8aW+c=;
+ b=qp7MYXfKSAXSDBJkl8XE6glnjXlpZbWGnU7EBlLEhpIZgz5U75jR+1/66T17uKr8F5
+ If1/NxZ76FlOaCKnuEd2HdLZ4ehyULgMgqkcnqbShrMPV2FI3nPRqfAgNccFGlQJaW0L
+ SccLInCPAfgjHNt7U2FND1Vch8JSIuS7fJLJBNfFXd5KEtUTRHDM2SJCQGW7DTaRxnoK
+ jO0Hl+jY0y/QENiaSB9GGa5I7qaVE5bmYTTw867Lpfx6zJ5jlWjQTn4fPIiCmUHaGxl9
+ 7TBUCDgWKkzSSsnFcY7oNNaQM1iOe58wpmoiqNjLqALYQ2ksyMHav18lKSd0BZSWZ96S
+ BgnQ==
+X-Gm-Message-State: AOAM533HQAX/ye2m1kiXsvBELXQlBnl2IT31bT5zryfvTPAS5kw23N7Z
+ dJV0gdNnqb1+fVQvMW8VHEQKew==
+X-Received: by 2002:adf:ce06:0:b0:206:fd5:6644 with SMTP id
+ p6-20020adfce06000000b002060fd56644mr294570wrn.624.1649087225298; 
+ Mon, 04 Apr 2022 08:47:05 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- c8-20020a056000184800b002040e925afasm11731347wri.59.2022.04.04.08.47.15
+ c8-20020a056000184800b002040e925afasm11731347wri.59.2022.04.04.08.47.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Apr 2022 08:47:15 -0700 (PDT)
+ Mon, 04 Apr 2022 08:47:04 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-7.1 16/18] hw/arm/exynos4210: Fold combiner splits into
- exynos4210_init_board_irqs()
-Date: Mon,  4 Apr 2022 16:46:56 +0100
-Message-Id: <20220404154658.565020-17-peter.maydell@linaro.org>
+Subject: [PATCH for-7.1 05/18] hw/arm/exynos4210: Coalesce board_irqs and
+ irq_table
+Date: Mon,  4 Apr 2022 16:46:45 +0100
+Message-Id: <20220404154658.565020-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220404154658.565020-1-peter.maydell@linaro.org>
 References: <20220404154658.565020-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::431
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42a
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -127,299 +127,150 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Zongyuan Li <zongyuan.li@smartx.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hx+rtZlQp/M0
+X-TUID: 6I4O5IKJ79xt
 
-At this point, the function exynos4210_init_board_irqs() splits input
-IRQ lines to connect them to the input combiner, output combiner and
-external GIC.  The function exynos4210_combiner_get_gpioin() splits
-some of the combiner input lines further to connect them to multiple
-different inputs on the combiner.
+The exynos4210 code currently has two very similar arrays of IRQs:
 
-Because (unlike qemu_irq_split()) the TYPE_SPLIT_IRQ device has a
-configurable number of outputs, we can do all this in one place, by
-making exynos4210_init_board_irqs() add extra outputs to the splitter
-device when it must be connected to more than one input on each
-combiner.
+ * board_irqs is a field of the Exynos4210Irq struct which is filled
+   in by exynos4210_init_board_irqs() with the appropriate qemu_irqs
+   for each IRQ the board/SoC can assert
+ * irq_table is a set of qemu_irqs pointed to from the
+   Exynos4210State struct.  It's allocated in exynos4210_init_irq,
+   and the only behaviour these irqs have is that they pass on the
+   level to the equivalent board_irqs[] irq
 
-We do this with a new data structure, the combinermap, which is an
-array each of whose elements is a list of the interrupt IDs on the
-combiner which must be tied together.  As we loop through each
-interrupt ID, if we find that it is the first one in one of these
-lists, we configure the splitter device with eonugh extra outputs and
-wire them up to the other interrupt IDs in the list.
-
-Conveniently, for all the cases where this is necessary, the
-lowest-numbered interrupt ID in each group is in the range of the
-external combiner, so we only need to code for this in the first of
-the two loops in exynos4210_init_board_irqs().
-
-The old code in exynos4210_combiner_get_gpioin() which is being
-deleted here had several problems which don't exist in the new code
-in its handling of the multi-core timer interrupts:
- (1) the case labels specified bits 4 ... 8, but bit '8' doesn't
-     exist; these should have been 4 ... 7
- (2) it used the input irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(1, bit + 4)]
-     multiple times as the input of several different splitters,
-     which isn't allowed
- (3) in an apparent cut-and-paste error, the cases for all the
-     multi-core timer inputs used "bit + 4" even though the
-     bit range for the case was (intended to be) 4 ... 7, which
-     meant it was looking at non-existent bits 8 ... 11.
-None of these exist in the new code.
+The extra indirection through irq_table is unnecessary, so coalesce
+these into a single irq_table[] array as a direct field in
+Exynos4210State which exynos4210_init_board_irqs() fills in.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/exynos4210.h |   6 +-
- hw/arm/exynos4210.c         | 178 +++++++++++++++++++++++-------------
- 2 files changed, 119 insertions(+), 65 deletions(-)
+ include/hw/arm/exynos4210.h |  8 ++------
+ hw/arm/exynos4210.c         |  6 +-----
+ hw/intc/exynos4210_gic.c    | 32 ++++++++------------------------
+ 3 files changed, 11 insertions(+), 35 deletions(-)
 
 diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
-index 7da3eddea5f..f24617f681d 100644
+index 923ce987627..a9f186370ee 100644
 --- a/include/hw/arm/exynos4210.h
 +++ b/include/hw/arm/exynos4210.h
-@@ -74,10 +74,12 @@
- 
- /*
-  * We need one splitter for every external combiner input, plus
-- * one for every non-zero entry in combiner_grp_to_gic_id[].
-+ * one for every non-zero entry in combiner_grp_to_gic_id[],
-+ * minus one for every external combiner ID in second or later
-+ * places in a combinermap[] line.
-  * We'll assert in exynos4210_init_board_irqs() if this is wrong.
-  */
--#define EXYNOS4210_NUM_SPLITTERS (EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ + 54)
-+#define EXYNOS4210_NUM_SPLITTERS (EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ + 38)
- 
- typedef struct Exynos4210Irq {
+@@ -83,7 +83,6 @@ typedef struct Exynos4210Irq {
      qemu_irq int_combiner_irq[EXYNOS4210_MAX_INT_COMBINER_IN_IRQ];
+     qemu_irq ext_combiner_irq[EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ];
+     qemu_irq ext_gic_irq[EXYNOS4210_EXT_GIC_NIRQ];
+-    qemu_irq board_irqs[EXYNOS4210_MAX_INT_COMBINER_IN_IRQ];
+ } Exynos4210Irq;
+ 
+ struct Exynos4210State {
+@@ -92,7 +91,7 @@ struct Exynos4210State {
+     /*< public >*/
+     ARMCPU *cpu[EXYNOS4210_NCPUS];
+     Exynos4210Irq irqs;
+-    qemu_irq *irq_table;
++    qemu_irq irq_table[EXYNOS4210_MAX_INT_COMBINER_IN_IRQ];
+ 
+     MemoryRegion chipid_mem;
+     MemoryRegion iram_mem;
+@@ -112,12 +111,9 @@ OBJECT_DECLARE_SIMPLE_TYPE(Exynos4210State, EXYNOS4210_SOC)
+ void exynos4210_write_secondary(ARMCPU *cpu,
+         const struct arm_boot_info *info);
+ 
+-/* Initialize exynos4210 IRQ subsystem stub */
+-qemu_irq *exynos4210_init_irq(Exynos4210Irq *env);
+-
+ /* Initialize board IRQs.
+  * These IRQs contain splitted Int/External Combiner and External Gic IRQs */
+-void exynos4210_init_board_irqs(Exynos4210Irq *s);
++void exynos4210_init_board_irqs(Exynos4210State *s);
+ 
+ /* Get IRQ number from exynos4210 IRQ subsystem stub.
+  * To identify IRQ source use internal combiner group and bit number
 diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 39e334e0773..05b28cf5905 100644
+index 60fc5a2ffe7..11e321d7830 100644
 --- a/hw/arm/exynos4210.c
 +++ b/hw/arm/exynos4210.c
-@@ -254,6 +254,76 @@ combiner_grp_to_gic_id[64 - EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][8] = {
- #define EXYNOS4210_COMBINER_GET_BIT_NUM(irq) \
-     ((irq) - 8 * EXYNOS4210_COMBINER_GET_GRP_NUM(irq))
+@@ -228,10 +228,6 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
+         qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+     }
  
-+/*
-+ * Some interrupt lines go to multiple combiner inputs.
-+ * This data structure defines those: each array element is
-+ * a list of combiner inputs which are connected together;
-+ * the one with the smallest interrupt ID value must be first.
-+ * As with combiner_grp_to_gic_id[], we rely on (0, 0) not being
-+ * wired to anything so we can use 0 as a terminator.
-+ */
-+#define IRQNO(G, B) EXYNOS4210_COMBINER_GET_IRQ_NUM(G, B)
-+#define IRQNONE 0
-+
-+#define COMBINERMAP_SIZE 16
-+
-+static const int combinermap[COMBINERMAP_SIZE][6] = {
-+    /* MDNIE_LCD1 */
-+    { IRQNO(0, 4), IRQNO(1, 0), IRQNONE },
-+    { IRQNO(0, 5), IRQNO(1, 1), IRQNONE },
-+    { IRQNO(0, 6), IRQNO(1, 2), IRQNONE },
-+    { IRQNO(0, 7), IRQNO(1, 3), IRQNONE },
-+    /* TMU */
-+    { IRQNO(2, 4), IRQNO(3, 4), IRQNONE },
-+    { IRQNO(2, 5), IRQNO(3, 5), IRQNONE },
-+    { IRQNO(2, 6), IRQNO(3, 6), IRQNONE },
-+    { IRQNO(2, 7), IRQNO(3, 7), IRQNONE },
-+    /* LCD1 */
-+    { IRQNO(11, 4), IRQNO(12, 0), IRQNONE },
-+    { IRQNO(11, 5), IRQNO(12, 1), IRQNONE },
-+    { IRQNO(11, 6), IRQNO(12, 2), IRQNONE },
-+    { IRQNO(11, 7), IRQNO(12, 3), IRQNONE },
-+    /* Multi-core timer */
-+    { IRQNO(1, 4), IRQNO(12, 4), IRQNO(35, 4), IRQNO(51, 4), IRQNO(53, 4), IRQNONE },
-+    { IRQNO(1, 5), IRQNO(12, 5), IRQNO(35, 5), IRQNO(51, 5), IRQNO(53, 5), IRQNONE },
-+    { IRQNO(1, 6), IRQNO(12, 6), IRQNO(35, 6), IRQNO(51, 6), IRQNO(53, 6), IRQNONE },
-+    { IRQNO(1, 7), IRQNO(12, 7), IRQNO(35, 7), IRQNO(51, 7), IRQNO(53, 7), IRQNONE },
-+};
-+
-+#undef IRQNO
-+
-+static const int *combinermap_entry(int irq)
-+{
-+    /*
-+     * If the interrupt number passed in is the first entry in some
-+     * line of the combinermap, return a pointer to that line;
-+     * otherwise return NULL.
-+     */
-+    int i;
-+    for (i = 0; i < COMBINERMAP_SIZE; i++) {
-+        if (combinermap[i][0] == irq) {
-+            return combinermap[i];
-+        }
-+    }
-+    return NULL;
-+}
-+
-+static int mapline_size(const int *mapline)
-+{
-+    /* Return number of entries in this mapline in total */
-+    int i = 0;
-+
-+    if (!mapline) {
-+        /* Not in the map? IRQ goes to exactly one combiner input */
-+        return 1;
-+    }
-+    while (*mapline != IRQNONE) {
-+        mapline++;
-+        i++;
-+    }
-+    return i;
-+}
-+
+-    /*** IRQs ***/
+-
+-    s->irq_table = exynos4210_init_irq(&s->irqs);
+-
+     /* IRQ Gate */
+     for (i = 0; i < EXYNOS4210_NCPUS; i++) {
+         DeviceState *orgate = DEVICE(&s->cpu_irq_orgate[i]);
+@@ -296,7 +292,7 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
+     sysbus_mmio_map(busdev, 0, EXYNOS4210_EXT_COMBINER_BASE_ADDR);
+ 
+     /* Initialize board IRQs. */
+-    exynos4210_init_board_irqs(&s->irqs);
++    exynos4210_init_board_irqs(s);
+ 
+     /*** Memory ***/
+ 
+diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+index 794f6b5ac72..ec79b96f6d1 100644
+--- a/hw/intc/exynos4210_gic.c
++++ b/hw/intc/exynos4210_gic.c
+@@ -192,30 +192,14 @@ combiner_grp_to_gic_id[64-EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][8] = {
+ #define EXYNOS4210_GIC_CPU_REGION_SIZE  0x100
+ #define EXYNOS4210_GIC_DIST_REGION_SIZE 0x1000
+ 
+-static void exynos4210_irq_handler(void *opaque, int irq, int level)
+-{
+-    Exynos4210Irq *s = (Exynos4210Irq *)opaque;
+-
+-    /* Bypass */
+-    qemu_set_irq(s->board_irqs[irq], level);
+-}
+-
+-/*
+- * Initialize exynos4210 IRQ subsystem stub.
+- */
+-qemu_irq *exynos4210_init_irq(Exynos4210Irq *s)
+-{
+-    return qemu_allocate_irqs(exynos4210_irq_handler, s,
+-            EXYNOS4210_MAX_INT_COMBINER_IN_IRQ);
+-}
+-
  /*
   * Initialize board IRQs.
   * These IRQs contain splitted Int/External Combiner and External Gic IRQs.
-@@ -265,6 +335,8 @@ static void exynos4210_init_board_irqs(Exynos4210State *s)
-     DeviceState *extgicdev = DEVICE(&s->ext_gic);
-     int splitcount = 0;
-     DeviceState *splitter;
-+    const int *mapline;
-+    int numlines, splitin, in;
+  */
+-void exynos4210_init_board_irqs(Exynos4210Irq *s)
++void exynos4210_init_board_irqs(Exynos4210State *s)
+ {
+     uint32_t grp, bit, irq_id, n;
++    Exynos4210Irq *is = &s->irqs;
  
      for (n = 0; n < EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ; n++) {
          irq_id = 0;
-@@ -277,16 +349,46 @@ static void exynos4210_init_board_irqs(Exynos4210State *s)
+@@ -230,11 +214,11 @@ void exynos4210_init_board_irqs(Exynos4210Irq *s)
              irq_id = EXT_GIC_ID_MCT_G1;
          }
- 
-+        if (s->irq_table[n]) {
-+            /*
-+             * This must be some non-first entry in a combinermap line,
-+             * and we've already filled it in.
-+             */
-+            continue;
-+        }
-+        mapline = combinermap_entry(n);
-+        /*
-+         * We need to connect the IRQ to multiple inputs on both combiners
-+         * and possibly also to the external GIC.
-+         */
-+        numlines = 2 * mapline_size(mapline);
-+        if (irq_id) {
-+            numlines++;
-+        }
-         assert(splitcount < EXYNOS4210_NUM_SPLITTERS);
-         splitter = DEVICE(&s->splitter[splitcount]);
--        qdev_prop_set_uint16(splitter, "num-lines", irq_id ? 3 : 2);
-+        qdev_prop_set_uint16(splitter, "num-lines", numlines);
-         qdev_realize(splitter, NULL, &error_abort);
-         splitcount++;
--        s->irq_table[n] = qdev_get_gpio_in(splitter, 0);
--        qdev_connect_gpio_out(splitter, 0, is->int_combiner_irq[n]);
--        qdev_connect_gpio_out(splitter, 1, is->ext_combiner_irq[n]);
-+
-+        in = n;
-+        splitin = 0;
-+        for (;;) {
-+            s->irq_table[in] = qdev_get_gpio_in(splitter, 0);
-+            qdev_connect_gpio_out(splitter, splitin, is->int_combiner_irq[in]);
-+            qdev_connect_gpio_out(splitter, splitin + 1, is->ext_combiner_irq[in]);
-+            splitin += 2;
-+            if (!mapline) {
-+                break;
-+            }
-+            mapline++;
-+            in = *mapline;
-+            if (in == IRQNONE) {
-+                break;
-+            }
-+        }
          if (irq_id) {
--            qdev_connect_gpio_out(splitter, 2,
-+            qdev_connect_gpio_out(splitter, splitin,
-                                   qdev_get_gpio_in(extgicdev, irq_id - 32));
+-            s->board_irqs[n] = qemu_irq_split(s->int_combiner_irq[n],
+-                    s->ext_gic_irq[irq_id-32]);
++            s->irq_table[n] = qemu_irq_split(is->int_combiner_irq[n],
++                    is->ext_gic_irq[irq_id - 32]);
+         } else {
+-            s->board_irqs[n] = qemu_irq_split(s->int_combiner_irq[n],
+-                    s->ext_combiner_irq[n]);
++            s->irq_table[n] = qemu_irq_split(is->int_combiner_irq[n],
++                    is->ext_combiner_irq[n]);
          }
      }
-@@ -297,6 +399,14 @@ static void exynos4210_init_board_irqs(Exynos4210State *s)
-         irq_id = combiner_grp_to_gic_id[grp -
+     for (; n < EXYNOS4210_MAX_INT_COMBINER_IN_IRQ; n++) {
+@@ -245,8 +229,8 @@ void exynos4210_init_board_irqs(Exynos4210Irq *s)
                       EXYNOS4210_MAX_EXT_COMBINER_OUT_IRQ][bit];
  
-+        if (s->irq_table[n]) {
-+            /*
-+             * This must be some non-first entry in a combinermap line,
-+             * and we've already filled it in.
-+             */
-+            continue;
-+        }
-+
          if (irq_id) {
-             assert(splitcount < EXYNOS4210_NUM_SPLITTERS);
-             splitter = DEVICE(&s->splitter[splitcount]);
-@@ -337,7 +447,6 @@ static void exynos4210_combiner_get_gpioin(Exynos4210Irq *irqs,
-                                            DeviceState *dev, int ext)
- {
-     int n;
--    int bit;
-     int max;
-     qemu_irq *irq;
- 
-@@ -345,64 +454,7 @@ static void exynos4210_combiner_get_gpioin(Exynos4210Irq *irqs,
-         EXYNOS4210_MAX_INT_COMBINER_IN_IRQ;
-     irq = ext ? irqs->ext_combiner_irq : irqs->int_combiner_irq;
- 
--    /*
--     * Some IRQs of Int/External Combiner are going to two Combiners groups,
--     * so let split them.
--     */
-     for (n = 0; n < max; n++) {
--
--        bit = EXYNOS4210_COMBINER_GET_BIT_NUM(n);
--
--        switch (n) {
--        /* MDNIE_LCD1 INTG1 */
--        case EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 0) ...
--             EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 3):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
--                    irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(0, bit + 4)]);
--            continue;
--
--        /* TMU INTG3 */
--        case EXYNOS4210_COMBINER_GET_IRQ_NUM(3, 4):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
--                    irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(2, bit)]);
--            continue;
--
--        /* LCD1 INTG12 */
--        case EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 0) ...
--             EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 3):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
--                    irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(11, bit + 4)]);
--            continue;
--
--        /* Multi-Core Timer INTG12 */
--        case EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 4) ...
--             EXYNOS4210_COMBINER_GET_IRQ_NUM(12, 8):
--               irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
--                       irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(1, bit + 4)]);
--            continue;
--
--        /* Multi-Core Timer INTG35 */
--        case EXYNOS4210_COMBINER_GET_IRQ_NUM(35, 4) ...
--             EXYNOS4210_COMBINER_GET_IRQ_NUM(35, 8):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
--                    irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(1, bit + 4)]);
--            continue;
--
--        /* Multi-Core Timer INTG51 */
--        case EXYNOS4210_COMBINER_GET_IRQ_NUM(51, 4) ...
--             EXYNOS4210_COMBINER_GET_IRQ_NUM(51, 8):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
--                    irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(1, bit + 4)]);
--            continue;
--
--        /* Multi-Core Timer INTG53 */
--        case EXYNOS4210_COMBINER_GET_IRQ_NUM(53, 4) ...
--             EXYNOS4210_COMBINER_GET_IRQ_NUM(53, 8):
--            irq[n] = qemu_irq_split(qdev_get_gpio_in(dev, n),
--                    irq[EXYNOS4210_COMBINER_GET_IRQ_NUM(1, bit + 4)]);
--            continue;
--        }
--
-         irq[n] = qdev_get_gpio_in(dev, n);
+-            s->board_irqs[n] = qemu_irq_split(s->int_combiner_irq[n],
+-                    s->ext_gic_irq[irq_id-32]);
++            s->irq_table[n] = qemu_irq_split(is->int_combiner_irq[n],
++                    is->ext_gic_irq[irq_id - 32]);
+         }
      }
  }
 -- 

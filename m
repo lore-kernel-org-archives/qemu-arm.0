@@ -1,113 +1,99 @@
-Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp286053lfu;
-        Tue, 5 Apr 2022 15:39:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzzcA18es/GpFeTMJhz93Vd5FFx7Ufhd8BXlUADVuHvHKUp/RinrTcZcywUOf9EwkhjlKPQ
-X-Received: by 2002:a05:620a:2802:b0:680:9ca5:47a4 with SMTP id f2-20020a05620a280200b006809ca547a4mr3839850qkp.71.1649198360314;
-        Tue, 05 Apr 2022 15:39:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649198360; cv=none;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp71926lfu;
+        Tue, 5 Apr 2022 09:13:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxFyA+FBQ0LrB7zgoZzLNPW1rF0BFFITFBTYGpbNJFIVOdEHaaFLt7/H0nzAvApZ4czi6SE
+X-Received: by 2002:a5b:10c:0:b0:63b:38a6:3171 with SMTP id 12-20020a5b010c000000b0063b38a63171mr3117683ybx.331.1649175216092;
+        Tue, 05 Apr 2022 09:13:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649175216; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Jg1bqaaGzHsiTmduY+bGBHLJnmtm9TYJujTuSWT2yeBdbJyTsfJkoUjnteFhc10IF
-         1S7cnryXIYPTaJ5Fxry87jJjx61a+x7SaqgD0aXse1fma4h8ZOg2t4zk2nqCFLjl7Fnu
-         rzjTSECVCJReqe2KztwyzbYprwWlhh4xVtuPlrHkBTOYfd35guyeg0aY/4VTH+Xl+beB
-         siDRLM1tfIGuvLIXXv7Lk5UbvynFkR9qiHQPMW+WLA0WB7LPIL4L0hc4QtmB8PXRmSsB
-         XGGXX549mRELtUfyVVYa1GuIcMCNKeAyNLOyY37wKEEpwUewVaiqS5IZeM2WqIUC4JMk
-         xtqw==
+        b=H54cadbX9/cbHf8z1V94BxgRkyD8OlT8crquRnDputndVF0Af3HMUM4Ugp5laNpBkD
+         4EvnVL3j1Sbt6uM5I4MdHmlziz+oG9wCsv29l1CMxQfjXr/X/Pph96x0MatOrtEcugIj
+         BLtX0pM/P4NLMwLIte+yu/ho5eHWL52b7QsnICiaLuOoVzHEYjqyiSgRJAd6iMLa+UjZ
+         5MLDn0sB5rLvrVSXh901oxxJHSMsIJHcYnBuLxYkbCJAJPZrAphnDAwpfZ7o8FKEVohA
+         +6+SvUycr52NJspNhjGgMvmys5bYjv+klJqpygI14xwo0RR6VpghJKFuqKHn5Osjtcor
+         Q+Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
-         :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=VYxWL6bZEYLrJGNbQRZ1dyCdVAbahcbUSnlVpK3x3+w=;
-        b=zFkrJO9UfdYi+2gFZwxmQMEaqoZ1960yXlMQ53k1+nPC205S63QozSpvNzH5LnH2EE
-         weKA2c/l+H5pO4U3SXsX+E0PzYVyrog/54EKU+u6kjdfSD4/SKuToNpwYxQcDMkQ7kRF
-         eK2TwGyTTvSVgzvvEJHvg38eDaQLNjho/SJ6x1BMYjrNTBHv2jghyBy17Y5tYMbP4r+D
-         oB0Tyhd+PpFIXFra7rn3wa1m4wy4Mbh5oIhaxFWsxSvHPjmZsz/VOm0Q6PvLABjodnBm
-         WYPFOTuTXE6XAvj/fIPMwCQ6iucrBcVX0Nh30r+UJhuZboHbte3jb4c3IAtZ28fSLLTv
-         kiGw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=4+I5oZ0Erd5BqabYLuYnG/7hSwJU4gTCeKw1UmfjuoQ=;
+        b=eHHrQUT3cTvfz5dE1egI2vA0ebuP0hbIDU3EfBQAouJEqlpBw/BMaT9aMke0fqqWXp
+         lKDEXWVo3Iep8yO8eSi2slMAoOK6JColQj7CV7meAA8OVxHmLDZAKRYekFlD+kR04I3J
+         hcWvoUqLlELKi620rim3WntNqARae2J6sXP15eXYuK2IE2Rkc9s236mJT/XApAPU8IDh
+         FF9UX/kyc20UzytkhgYWGS9ABQw9scDYK2wqK1Q7VLy+LILx4vGt/h4mfTy4RAhk1gjb
+         jEfcGPmQA/btL/LZHRLWc/9aOMyREcevY8x1sylV/fwCnQiGXjtPa4UgCBERLAn3GuZX
+         hyOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b="Yx9jwV/L";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bc11-20020a05622a1ccb00b002ebb0937648si3773672qtb.231.2022.04.05.15.39.20
+        by mx.google.com with ESMTPS id v141-20020a252f93000000b00633e0f7b8dfsi10402122ybv.387.2022.04.05.09.13.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Apr 2022 15:39:20 -0700 (PDT)
+        Tue, 05 Apr 2022 09:13:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b="Yx9jwV/L";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:52590 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nbrpX-0004G9-NX
-	for alex.bennee@linaro.org; Tue, 05 Apr 2022 18:39:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60594)
+	id 1nbloF-0003SE-8o
+	for alex.bennee@linaro.org; Tue, 05 Apr 2022 12:13:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34716)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3xsRMYggKCJsRPC5JONCBJJBG9.7JHL9HP-5MHIJIBIP.JMB@flex--wuhaotsh.bounces.google.com>)
- id 1nbroR-0004DQ-MA
- for qemu-arm@nongnu.org; Tue, 05 Apr 2022 18:38:12 -0400
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049]:55197)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3xsRMYggKCJsRPC5JONCBJJBG9.7JHL9HP-5MHIJIBIP.JMB@flex--wuhaotsh.bounces.google.com>)
- id 1nbroG-00030e-5f
- for qemu-arm@nongnu.org; Tue, 05 Apr 2022 18:38:09 -0400
-Received: by mail-pj1-x1049.google.com with SMTP id
- i19-20020a17090adc1300b001ca70b4a71aso388004pjv.4
- for <qemu-arm@nongnu.org>; Tue, 05 Apr 2022 15:37:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=VYxWL6bZEYLrJGNbQRZ1dyCdVAbahcbUSnlVpK3x3+w=;
- b=Yx9jwV/LKMrp0Op8M7XIjKg1ImCArvg+CtjGIVY9mdZoSPaZRlWttfLpzjs9U2eaf9
- vg6rXXlSXNkGdrXQEA/w7JTk2lvm2XDXMJr7At2eGP0uknsNbHgorc4NjsoWg3FiKtSq
- dOeazbDATOtQz87vvHomeRkx6gu1T6EWHVTRMrD+hzErDoJpCrLeQItjDrYQJGdCgDVE
- MnLYWtwGu0CVs2M5MKW9wpI+O8p2HWF9fbIy6nMn3ZRZ+mnch/9dwHtVYbjCFNW8x54Z
- WoEaodcjNl+1frnVl0NsZPlX+ngpu/7oN4Gfan9a0gNkiR5tIPfsl7RZ0y8v7Vaoeb6/
- XEeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=VYxWL6bZEYLrJGNbQRZ1dyCdVAbahcbUSnlVpK3x3+w=;
- b=itBH8dZ0lVyqRFpH+YekGAd3gAI5kPu8EUkYAu4TADipd1NZo5GiFtrmfHZXVr6wI1
- 2ErougQCcGCIuTpdn+Zd9roOq5gBp9nlfd/lqaah64D1s7asZGLlx3WVhYSSUSyyGcwg
- k5IxzlI7aWBbK2GNE29PT2CidnGtkKrJB4b4BOrAUz4ad9sf+CubJCfp2hmpSuJgOhrM
- qEumK2Qs0VDa79/+1f0MSvq0e4WGMYoFpxfC8oZpM1K3YPvN3+zchFtuMRkmWLPyS2Zz
- WCLolaVgith6St2v2PLbJkeQ78/bv1Oawz+iJZyE8dTc3KMkyJOWHwTFoF3sIJcca3Xn
- +sPw==
-X-Gm-Message-State: AOAM532yA6QLz+MQcvPixzgewXqK0JaEt/Pdz2zV6bM5J54NIU9hvHsB
- AmNeKgCLqTQU8MYXepWFWWimKvhAgjSNTg==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:902:9b98:b0:156:52b1:b100 with SMTP
- id y24-20020a1709029b9800b0015652b1b100mr5695162plp.174.1649198278208; Tue,
- 05 Apr 2022 15:37:58 -0700 (PDT)
-Date: Tue,  5 Apr 2022 15:36:30 -0700
-In-Reply-To: <20220405223640.2595730-1-wuhaotsh@google.com>
-Message-Id: <20220405223640.2595730-2-wuhaotsh@google.com>
-Mime-Version: 1.0
-References: <20220405223640.2595730-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.35.1.1094.g7c7d902a7c-goog
-Subject: [PATCH for-7.1 01/11] docs/system/arm: Add Description for NPCM8XX SoC
-From: Hao Wu <wuhaotsh@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
- venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- hskinnemoen@google.com, Uri.Trichter@nuvoton.com, Vishal.Soni@microsoft.com, 
- titusr@google.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3xsRMYggKCJsRPC5JONCBJJBG9.7JHL9HP-5MHIJIBIP.JMB@flex--wuhaotsh.bounces.google.com;
- helo=mail-pj1-x1049.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nblnT-0003Pp-8n
+ for qemu-arm@nongnu.org; Tue, 05 Apr 2022 12:12:47 -0400
+Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137]:53213)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nblnR-0007xg-Ca
+ for qemu-arm@nongnu.org; Tue, 05 Apr 2022 12:12:47 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.216])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id C18CC2047F;
+ Tue,  5 Apr 2022 16:12:33 +0000 (UTC)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Tue, 5 Apr
+ 2022 18:12:32 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-102R0040752f4eb-f49b-4332-a9a9-0f4411790b01,
+ B6D6B3DA04F085AAB79815B670852A2EB9FB851F) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <66783c6a-4942-23c5-1052-0dcab389e177@kaod.org>
+Date: Tue, 5 Apr 2022 18:12:32 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Alistair Francis
+ <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, Andrew
+ Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Cleber Rosa
+ <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
+ Leal <bleal@redhat.com>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 387ff193-e5a4-4999-8552-b55c5675f08d
+X-Ovh-Tracer-Id: 7669911642123701179
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudejgedgleegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeefiedukefhueejteffvedthffhkeehhefhtdejkeefheeifeejvdfgfffgieefnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehtrhhohigplhgvvgesrghsphgvvgguthgvtghhrdgtohhm
+Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
+ helo=9.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,72 +106,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: troy_lee@aspeedtech.com, steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n8uZOyZ75baO
+X-TUID: 67ZTL2x+LAqs
 
-NPCM8XX SoC is the successor of the NPCM7XX. It features quad-core
-Cortex-A35 (Armv8, 64-bit) CPUs and some additional peripherals.
+Hello Jamin,
 
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Patrick Venture <venture@google.com>
----
- docs/system/arm/nuvoton.rst | 20 +++++++++++++++-----
- 1 file changed, 15 insertions(+), 5 deletions(-)
+On 4/1/22 10:38, Jamin Lin wrote:
+> Changes from v5:
+> - remove TYPE_ASPEED_MINIBMC_MACHINE and ASPEED_MINIBMC_MACHINE
+> - remove ast1030_machine_instance_init function
+> 
+> Changes from v4:
+> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
+> 
+> Changes from v3:
+> - remove AspeedMiniBmcMachineState state structure and
+>    AspeedMiniBmcMachineClass class
+> - remove redundant new line in hw/arm/aspeed_ast10xx.c
 
-diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-index ef2792076a..bead17fa7e 100644
---- a/docs/system/arm/nuvoton.rst
-+++ b/docs/system/arm/nuvoton.rst
-@@ -1,12 +1,13 @@
- Nuvoton iBMC boards (``*-bmc``, ``npcm750-evb``, ``quanta-gsj``)
- ================================================================
- 
--The `Nuvoton iBMC`_ chips (NPCM7xx) are a family of ARM-based SoCs that are
-+The `Nuvoton iBMC`_ chips are a family of ARM-based SoCs that are
- designed to be used as Baseboard Management Controllers (BMCs) in various
--servers. They all feature one or two ARM Cortex-A9 CPU cores, as well as an
--assortment of peripherals targeted for either Enterprise or Data Center /
--Hyperscale applications. The former is a superset of the latter, so NPCM750 has
--all the peripherals of NPCM730 and more.
-+servers. Currently there are two families: NPCM7XX series and
-+NPCM8XX series. NPCM7XX series feature one or two ARM Cortex-A9 CPU cores,
-+while NPCM8XX feature 4 ARM Cortex-A35 CPU cores. Both series contain a
-+different assortment of peripherals targeted for either Enterprise or Data
-+Center / Hyperscale applications.
- 
- .. _Nuvoton iBMC: https://www.nuvoton.com/products/cloud-computing/ibmc/
- 
-@@ -27,6 +28,8 @@ There are also two more SoCs, NPCM710 and NPCM705, which are single-core
- variants of NPCM750 and NPCM730, respectively. These are currently not
- supported by QEMU.
- 
-+The NPCM8xx SoC is the successor of the NPCM7xx SoC.
-+
- Supported devices
- -----------------
- 
-@@ -61,6 +64,8 @@ Missing devices
-    * System Wake-up Control (SWC)
-    * Shared memory (SHM)
-    * eSPI slave interface
-+   * Block-tranfer interface (8XX only)
-+   * Virtual UART (8XX only)
- 
-  * Ethernet controller (GMAC)
-  * USB device (USBD)
-@@ -76,6 +81,11 @@ Missing devices
-  * Video capture
-  * Encoding compression engine
-  * Security features
-+ * I3C buses (8XX only)
-+ * Temperator sensor interface (8XX only)
-+ * Virtual UART (8XX only)
-+ * Flash monitor (8XX only)
-+ * JTAG master (8XX only)
- 
- Boot options
- ------------
--- 
-2.35.1.1094.g7c7d902a7c-goog
+Do we want to be in sync with the zephyr naming and use ast10x0.c ?
 
+    https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/arm/aspeed
+
+This is just a question. Don't resend for this.
+
+Thanks,
+
+C.

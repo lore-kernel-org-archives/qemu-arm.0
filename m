@@ -1,94 +1,124 @@
-Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp544388lfu;
-        Wed, 6 Apr 2022 01:53:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz9RBgMHDaYQIeg71vnh5tbDzfscV0SEGE1KFTy7PpxAprgPQsIIH/REx9gfaJpCvjwWMZk
-X-Received: by 2002:ae9:c115:0:b0:67e:4c57:eaff with SMTP id z21-20020ae9c115000000b0067e4c57eaffmr4919294qki.18.1649235187165;
-        Wed, 06 Apr 2022 01:53:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649235187; cv=none;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp556463lfu;
+        Wed, 6 Apr 2022 02:20:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw3rR+hdHc+wDasiJN5+zCe9wCeeydcnUJKdt4//mqaqcF5XMpMUmp/1g4TC67MxOPs1fPW
+X-Received: by 2002:a05:620a:2546:b0:680:f744:5bc6 with SMTP id s6-20020a05620a254600b00680f7445bc6mr4941650qko.113.1649236800129;
+        Wed, 06 Apr 2022 02:20:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649236800; cv=none;
         d=google.com; s=arc-20160816;
-        b=CJHK/83flsTFI5P266PQ2nXtOA1gbGp0ZzxO5kY6xRHwfb+5uPff4PX33VBpDy+F8C
-         VmDv2Rw9y5sa1usWm4w4oIoEsCWVpX/dufLxF1n1Ca5J+3o3zYHTwtiMJS+uHj0W1BOs
-         kPP//MWBiiiWw2C+wE8dteo/scuKN2QEuvqQVxDdjDabExeGZgUJ1TPsAyesBz0v6hSz
-         8XyLhspVpA5HAcAxGrLOkdg8zT+YR1CO0J03SYTcVL39szRNyaG/X1ArqduCDA6yM1MD
-         EF36no16JFxH6N3RFMpVFesmaNzINW0tfzZDPXJKPpnLG6AK3JrsXtFOjjF1TpvGH/i9
-         tOWQ==
+        b=AmfSFuX2QevXLm8ISrZQ/NPedRGlaJexrkBL1w+p5YFcKjYIAxBemYEcNKB84dRJMR
+         1Tl9uvSlMGR8S8cPCH6U46QsIM3Z92mYoHspI67oioeaNaXZm2ERCaSjpRXPMSWh+eGh
+         5/GQMzCaKY0mDsDlK1Sv/b8pyp7Y4kXQ7m3GClp9iVJRBzjOeavGmiiQ34jcyvJ1hrf0
+         TUirZtwVfYuPyvydt/w3czKc9hn3i2C4vZB+YAZfNIWDeMrlYMUuUUsZoV9vcVV7zabq
+         WizRl/If5iBaVkiAT7hx3Xvbb/2abaQa6Dep6Kdd2z6t8ryTTY4/LzkVKVHd1v5sbtkn
+         Iumg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=tVOU0BcTtPv3rV4S+JGHUpNDXmb/Uc/3X7UXkjaq+yM=;
-        b=vSNyQ/r3+KX8aZA2IOC0cLfB/FSv2rYez+TeeKj6GsG0elvUWhBvJBbo9ne1xk0msF
-         7Zvm0vjvgfLEHitS40o1WtrrnpeO3zR3ofDyjkLuw/U6U4AEkeTTwj5hGX6in1Q01bXJ
-         f4zJaYGBAfkvTZeBf4AscDlnUqgmAcHciO6njE0nK239mc0/3bfqE8Euqk3EgfAcDRMx
-         Zgs1JbHOrStt3y5oTNde530OxD4JAATZJZmDnhD41KXjfV0VQ0a/FHrHXlXalN19p9hd
-         mhxpMhZt0B0+ISsNMu67ANcIrtzyYvFGmmgCLoGbUv/xXyeqTmYWoArGumNhuZlAaJYL
-         F/KQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature:dkim-signature;
+        bh=0rhnWhZvlCyKFXPoAueWYmgpn6+UwtHn8IVmU6Ep8JY=;
+        b=QAIENRWq8gLDkYkVyAey13XGNOB3wo8XCRsxJNCwStu1KM4snaNowSlHlCx8nKHbMN
+         Vtt06hymQoeb1bHP83khv/BIiDw7C/fwxBWJr9IgbcyJq0Z/SaxGK03jgDDybzF9ggRW
+         AAucLbS7hItYitOGKMsmQohbhsGkCTnLqZPWbnT+qxjtqwuPrcya6wx14wg+GvxtlmCQ
+         LL5ySvFWlRu1y2EoDcgAiVEdDo0AAclCiLlwDzZCracIfKypZK7G6lqYPZF/Tfg06JHI
+         quqYkbTlUe+4jtAG+5w6x11/jMXG3WxRgOAWmN3SmIpEzpdM3cT7TP5SiSYbftr6efsU
+         4zVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=Zrqh1Bvc;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=ofPr3azA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fq14-20020a056214258e00b00440e46a7cb9si6851324qvb.343.2022.04.06.01.53.07
+        by mx.google.com with ESMTPS id m14-20020a0562141bce00b00443d25bda82si4940631qvc.63.2022.04.06.02.19.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Apr 2022 01:53:07 -0700 (PDT)
+        Wed, 06 Apr 2022 02:20:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=Zrqh1Bvc;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=ofPr3azA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40806 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nc1PW-00045U-LL
-	for alex.bennee@linaro.org; Wed, 06 Apr 2022 04:53:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58604)
+	id 1nc1pW-000872-P8
+	for alex.bennee@linaro.org; Wed, 06 Apr 2022 05:19:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36968)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nc1PM-00044W-3B
- for qemu-arm@nongnu.org; Wed, 06 Apr 2022 04:52:56 -0400
-Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156]:38685)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1nc1mA-00085I-C6; Wed, 06 Apr 2022 05:16:31 -0400
+Received: from wout5-smtp.messagingengine.com ([64.147.123.21]:45469)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nc1PJ-0003Az-Ee
- for qemu-arm@nongnu.org; Wed, 06 Apr 2022 04:52:55 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.237])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id A14592016A;
- Wed,  6 Apr 2022 08:52:47 +0000 (UTC)
-Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Wed, 6 Apr
- 2022 10:52:46 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G0029a8af9c9-9e8d-4bc9-9b38-bab2aa6afecf,
- ACAFAA60954BC139C96B6B3855CBF7BDA7777862) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <f669416c-6e17-23c0-3dfa-dd6cceebc05b@kaod.org>
-Date: Wed, 6 Apr 2022 10:52:46 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1nc1m7-0007TP-S3; Wed, 06 Apr 2022 05:16:30 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.west.internal (Postfix) with ESMTP id 2C13B3201FDE;
+ Wed,  6 Apr 2022 05:16:24 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Wed, 06 Apr 2022 05:16:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm3; bh=0rhnWhZvlCyKFXPoAueWYmgpn6+Uwt
+ Hn8IVmU6Ep8JY=; b=Zrqh1BvcAg2zoSvaUea3poLRzHSDizjTonEZgoIoyKWgs6
+ qpUOujvKn+zd54UoNc9/pgjakX8S/KAXtCEkpcY6oKqAg0/oE+/DN2kC7yWH04wp
+ iTl7Bx8e2qlgMa875eNft5z+njLqinQcT3T202zH62e9rhj2qVjCj2uGfnQTe6dB
+ Qq1FF1EnQbPkvxCY8QtdVQdcOZflXzrLNFrAGND4eEmv2tJ1orZOFy3tGbpIQQR0
+ 4zxO8q6/ImJAMZy0HvfbRA+i7BEmh+4vZszdKbu8vGC58+vyaN8tDmY3CkPo9bs+
+ tjSG+btGfbDa6W1vkN/AvwXxvFuueZm0jOXPcxsg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=0rhnWhZvlCyKFXPoA
+ ueWYmgpn6+UwtHn8IVmU6Ep8JY=; b=ofPr3azAmKh/TKGZSv3soeKRGKEHK2hcQ
+ PsKZy7h12d6biC5PzJckO2UehVlcqX+s6Nodx1EP+WQ2CSnv6/dr34QhcrT9DXXU
+ xgSUuE50asCmwCfV/BZJhXfyr9dcv4KU2K3clZx1y3Vb+WXiO2rcRZBL2gJgdrDt
+ k+TIkd4XB7l27ryd6pBwy46dQ1tl0G+dk3AoBJQClx5iwKGurBZRwwkq/IMnKZdW
+ qgGmdC9iIhu4Yb8loTtud5cWvbmjFqwq+04KwtbH3biOAj4QyqhkWVaj8b/SaiEw
+ AFepnw5mBLKgJJ4NMxrZoe0b4IbyAZWmLw3HX3lTblHE7oaQv02Mg==
+X-ME-Sender: <xms:ZlpNYgAGMf2TCAU1wkVG-3p3bd0pSWnbe-YOq9uSEd8uKmoQGshpgg>
+ <xme:ZlpNYiiqOan6hWB61ESQ4PJAs6kbuaiKRG1HT-8ksN7J8NyMsUEtCokUFRA-kr5oZ
+ rh_vVoprpmAFcPdJYo>
+X-ME-Received: <xmr:ZlpNYjm7rWCW_qCG4PeO27HbGgoR5YV2aMjy4tmo0RkAzQ1Cp8GioFNCVylZYPqGJDIEofDjsULHQyWVJ_Q>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudejiedgudegucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfhfgggtuggjsehgtderredttdejnecuhfhrohhmpefmlhgruhhs
+ ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
+ gvrhhnpeejgeduffeuieetkeeileekvdeuleetveejudeileduffefjeegfffhuddvudff
+ keenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehith
+ hssehirhhrvghlvghvrghnthdrughk
+X-ME-Proxy: <xmx:ZlpNYmxZnYtd0r2a_wnTdxzCTDXn_AmPx0qnG_X8hAt7lcwb8J5v1A>
+ <xmx:ZlpNYlTfKSSB0B08MsUyl3ZqFViNnKC3uxM8JBLCNTov_gOmlJCXRg>
+ <xmx:ZlpNYhYr0D4O2s3lCh2K0KesRUO4fZM3b8spE1xgoSWeTqCly8ODOA>
+ <xmx:Z1pNYlYvv5dI6Zu-HGBqafARIPzOtPv29s-eeXs1fsSIghvkEpsFEA>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 6 Apr 2022 05:16:20 -0400 (EDT)
+Date: Wed, 6 Apr 2022 11:16:18 +0200
+From: Klaus Jensen <its@irrelevant.dk>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
 Subject: Re: [RFC PATCH 3/4] hw/i2c: add slave mode for aspeed_i2c
-Content-Language: en-US
-To: Klaus Jensen <its@irrelevant.dk>
+Message-ID: <Yk1aYldO+VjF3iqB@apples>
 References: <20220331165737.1073520-1-its@irrelevant.dk>
  <20220331165737.1073520-4-its@irrelevant.dk>
- <356b3f59-b915-3da1-7155-8082b55932fb@kaod.org> <Yk1EAHE2dUv7Z6gq@apples>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <Yk1EAHE2dUv7Z6gq@apples>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.97]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: bad071a8-b1fd-4775-8c17-6e4940b1e7ee
-X-Ovh-Tracer-Id: 6115606821993221112
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudejiedgtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdeljeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehkrdhjvghnshgvnhesshgrmhhsuhhnghdrtghomh
-Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
- helo=3.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ <356b3f59-b915-3da1-7155-8082b55932fb@kaod.org>
+ <Yk1EAHE2dUv7Z6gq@apples>
+ <f669416c-6e17-23c0-3dfa-dd6cceebc05b@kaod.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="wsZtJCzdZ0hVXHxY"
+Content-Disposition: inline
+In-Reply-To: <f669416c-6e17-23c0-3dfa-dd6cceebc05b@kaod.org>
+Received-SPF: pass client-ip=64.147.123.21; envelope-from=its@irrelevant.dk;
+ helo=wout5-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -111,321 +141,165 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Matt Johnston <matt@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vpik5PjKoD8C
-
-On 4/6/22 09:40, Klaus Jensen wrote:
-> On Apr  6 08:14, Cédric Le Goater wrote:
->> Hello Klaus,
->>
->> On 3/31/22 18:57, Klaus Jensen wrote:
->>> From: Klaus Jensen <k.jensen@samsung.com>
->>>
->>> Add slave mode functionality for the Aspeed I2C controller. This is
->>> implemented by creating an Aspeed I2C Slave device that attaches to the
->>> bus.
->>>
->>> This i2c slave device only implements the asynchronous version of
->>> i2c_send() and the event callback.
->>>
->>> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
->>> ---
->>>    hw/i2c/aspeed_i2c.c         | 95 +++++++++++++++++++++++++++++++++----
->>>    hw/i2c/trace-events         |  2 +-
->>>    hw/misc/meson.build         |  2 +
->>>    include/hw/i2c/aspeed_i2c.h |  8 ++++
->>>    4 files changed, 97 insertions(+), 10 deletions(-)
->>>
->>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
->>> index 03a4f5a91010..61b6424434f7 100644
->>> --- a/hw/i2c/aspeed_i2c.c
->>> +++ b/hw/i2c/aspeed_i2c.c
->>> @@ -163,10 +163,15 @@ static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
->>>              bus->intr_status & I2CD_INTR_TX_NAK ? "nak|" : "",
->>>              bus->intr_status & I2CD_INTR_TX_ACK ? "ack|" : "",
->>>              bus->intr_status & I2CD_INTR_RX_DONE ? "done|" : "",
->>> +          bus->intr_status & I2CD_INTR_SLAVE_ADDR_RX_MATCH ? "slave-match|" : "",
->>>              bus->intr_status & I2CD_INTR_NORMAL_STOP ? "normal|" : "",
->>>              bus->intr_status & I2CD_INTR_ABNORMAL ? "abnormal" : "");
->>
->> Troy introduced a similar change in his "new mode" proposal. I think
->> it is time to change the 'aspeed_i2c_bus_raise_interrupt' trace event
->>
->> Could you please update trace_aspeed_i2c_bus_raise_interrupt() to take
->> a single status string ?
->>
-> 
-> I'm not sure it will be "prettier". But I'll give it a shot.
-
-It will be easier to extend. We have 3 different patchsets modifying this
-same event on the mailing list :)
-
->>> -    bus->intr_status &= bus->intr_ctrl;
->>> +    /*
->>> +     * WORKAROUND: the Linux Aspeed I2C driver masks SLAVE_ADDR_RX_MATCH for
->>> +     * some reason, not sure if it is a bug...
->>> +     */
->>> +    bus->intr_status &= (bus->intr_ctrl | I2CD_INTR_SLAVE_ADDR_RX_MATCH);
->>
->> It comes from the initial support for the AST2400 SoC.
->>
->> We should introduce a 'intr_ctrl_mask' attribute in AspeedI2CClass and
->> fix the AST24000 value to 0x7FFF ...
->>
-> 
-> I'm not sure I understand. Do you suggest that we always use a fixed
-> mask here and disregard what the host sets in intr_ctrl?
-
-No. sorry. There are multiple fixes required I think.
-
-The layout of the Interrupt Control Register (0x0C) differs on the
-AST2400, AST2500, AST2600 SoCs. We need to clarify that first.
-bits 11:7 and 31:16 are reserved on all. AST2400 lacks bit 15 which
-enables a slave timeout interrupt on AST2500 and AST2600.
-
-Then, the Interrupt Status Register differs also. The AST2400 doesn't
-have the Slave Address match indicator and the Slave Address Receiving
-pending bits. On the AST2600, there are 3 possibles addresses, only
-2 on the AST2500 (and only 1 on the AST2400). So that modifies the
-I2CD_INTR_SLAVE_ADDR_RX_MATCH bit.
-
-Since these 2 or 3 bits are read-only. I wonder how this is impacting
-your slave implementation. is it ? If not, may be slave address match can
-wait for now.
-> In any case, isn't it a bug in the Linux kernel driver that it neglects
-> to set bit 7 (slave match) in the INTR_CTRL register?>
-> 
->>>        if (bus->intr_status) {
->>>            bus->controller->intr_status |= 1 << bus->id;
->>>            qemu_irq_raise(aic->bus_get_irq(bus));
->>> @@ -196,6 +201,9 @@ static uint64_t aspeed_i2c_bus_read(void *opaque, hwaddr offset,
->>>        case I2CD_INTR_STS_REG:
->>>            value = bus->intr_status;
->>>            break;
->>> +    case I2CD_DEV_ADDR_REG:
->>> +        value = bus->dev_addr;
->>> +        break;
->>
->> You can introduce support for this register in a preliminary patch but
->> keep the slave activation for later (I2CD_SLAVE_EN bit)
->>
-> 
-> Understood.
-
-thanks, we will address the full layout of this register later when needed.
-But there are fields for each address.
+X-TUID: p3AayjSvmUwJ
 
 
-C.
+--wsZtJCzdZ0hVXHxY
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Apr  6 10:52, C=C3=A9dric Le Goater wrote:
+> On 4/6/22 09:40, Klaus Jensen wrote:
+> > On Apr  6 08:14, C=C3=A9dric Le Goater wrote:
+> > > Hello Klaus,
+> > >=20
+> > > On 3/31/22 18:57, Klaus Jensen wrote:
+> > > > From: Klaus Jensen <k.jensen@samsung.com>
+> > > >=20
+> > > > Add slave mode functionality for the Aspeed I2C controller. This is
+> > > > implemented by creating an Aspeed I2C Slave device that attaches to=
+ the
+> > > > bus.
+> > > >=20
+> > > > This i2c slave device only implements the asynchronous version of
+> > > > i2c_send() and the event callback.
+> > > >=20
+> > > > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+> > > > ---
+> > > >    hw/i2c/aspeed_i2c.c         | 95 +++++++++++++++++++++++++++++++=
+++----
+> > > >    hw/i2c/trace-events         |  2 +-
+> > > >    hw/misc/meson.build         |  2 +
+> > > >    include/hw/i2c/aspeed_i2c.h |  8 ++++
+> > > >    4 files changed, 97 insertions(+), 10 deletions(-)
+> > > >=20
+> > > > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> > > > index 03a4f5a91010..61b6424434f7 100644
+> > > > --- a/hw/i2c/aspeed_i2c.c
+> > > > +++ b/hw/i2c/aspeed_i2c.c
+> > > > @@ -163,10 +163,15 @@ static inline void aspeed_i2c_bus_raise_inter=
+rupt(AspeedI2CBus *bus)
+> > > >              bus->intr_status & I2CD_INTR_TX_NAK ? "nak|" : "",
+> > > >              bus->intr_status & I2CD_INTR_TX_ACK ? "ack|" : "",
+> > > >              bus->intr_status & I2CD_INTR_RX_DONE ? "done|" : "",
+> > > > +          bus->intr_status & I2CD_INTR_SLAVE_ADDR_RX_MATCH ? "slav=
+e-match|" : "",
+> > > >              bus->intr_status & I2CD_INTR_NORMAL_STOP ? "normal|" :=
+ "",
+> > > >              bus->intr_status & I2CD_INTR_ABNORMAL ? "abnormal" : "=
+");
+> > >=20
+> > > Troy introduced a similar change in his "new mode" proposal. I think
+> > > it is time to change the 'aspeed_i2c_bus_raise_interrupt' trace event
+> > >=20
+> > > Could you please update trace_aspeed_i2c_bus_raise_interrupt() to take
+> > > a single status string ?
+> > >=20
+> >=20
+> > I'm not sure it will be "prettier". But I'll give it a shot.
+>=20
+> It will be easier to extend. We have 3 different patchsets modifying this
+> same event on the mailing list :)
+>=20
 
->>>        case I2CD_POOL_CTRL_REG:
->>>            value = bus->pool_ctrl;
->>>            break;
->>> @@ -535,10 +543,9 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr offset,
->>>        switch (offset) {
->>>        case I2CD_FUN_CTRL_REG:
->>>            if (value & I2CD_SLAVE_EN) {
->>> -            qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
->>> -                          __func__);
->>> -            break;
->>> +            i2c_slave_set_address(&bus->slave->i2c, bus->dev_addr);
->>>            }
->>> +
->>>            bus->ctrl = value & 0x0071C3FF;
->>>            break;
->>>        case I2CD_AC_TIMING_REG1:
->>> @@ -558,14 +565,19 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr offset,
->>>                bus->controller->intr_status &= ~(1 << bus->id);
->>>                qemu_irq_lower(aic->bus_get_irq(bus));
->>>            }
->>> -        if (handle_rx && (bus->cmd & (I2CD_M_RX_CMD | I2CD_M_S_RX_CMD_LAST))) {
->>> -            aspeed_i2c_handle_rx_cmd(bus);
->>> -            aspeed_i2c_bus_raise_interrupt(bus);
->>> +
->>> +        if (handle_rx) {
->>> +            if (bus->cmd & (I2CD_M_RX_CMD | I2CD_M_S_RX_CMD_LAST)) {
->>> +                aspeed_i2c_handle_rx_cmd(bus);
->>> +                aspeed_i2c_bus_raise_interrupt(bus);
->>> +            } else if (aspeed_i2c_get_state(bus) == I2CD_STXD) {
->>> +                i2c_ack(bus->bus);
->>> +            }
->>>            }
->>> +
->>>
->>>            break;
->>>        case I2CD_DEV_ADDR_REG:
->>> -        qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
->>> -                      __func__);
->>> +        bus->dev_addr = value;
->>>            break;
->>>        case I2CD_POOL_CTRL_REG:
->>>            bus->pool_ctrl &= ~0xffffff;
->>> @@ -852,12 +864,74 @@ static const TypeInfo aspeed_i2c_info = {
->>>        .abstract   = true,
->>>    };
->>> +static int aspeed_i2c_slave_event(I2CSlave *slave, enum i2c_event event)
->>> +{
->>> +    AspeedI2CSlave *s = ASPEED_I2C_SLAVE(slave);
->>> +    AspeedI2CBus *bus = s->bus;
->>> +
->>> +    switch (event) {
->>> +    case I2C_START_SEND:
->>> +        bus->buf = bus->dev_addr << 1;
->>> +
->>> +        bus->buf &= I2CD_BYTE_BUF_RX_MASK;
->>> +        bus->buf <<= I2CD_BYTE_BUF_RX_SHIFT;
->>> +
->>> +        bus->intr_status |= (I2CD_INTR_SLAVE_ADDR_RX_MATCH | I2CD_INTR_RX_DONE);
->>> +        aspeed_i2c_set_state(bus, I2CD_STXD);
->>> +
->>> +        break;
->>> +
->>> +    case I2C_FINISH:
->>> +        bus->intr_status |= I2CD_INTR_NORMAL_STOP;
->>> +        aspeed_i2c_set_state(bus, I2CD_IDLE);
->>> +
->>> +        break;
->>> +
->>> +    default:
->>> +        return -1;
->>> +    }
->>> +
->>> +    aspeed_i2c_bus_raise_interrupt(bus);
->>> +
->>> +    return 0;
->>> +}
->>> +
->>> +static void aspeed_i2c_slave_send_async(I2CSlave *slave, uint8_t data)
->>> +{
->>> +    AspeedI2CSlave *s = ASPEED_I2C_SLAVE(slave);
->>> +    AspeedI2CBus *bus = s->bus;
->>> +
->>> +    bus->buf = (data & I2CD_BYTE_BUF_RX_MASK) << I2CD_BYTE_BUF_RX_SHIFT;
->>> +    bus->intr_status |= I2CD_INTR_RX_DONE;
->>> +
->>> +    aspeed_i2c_bus_raise_interrupt(bus);
->>> +}
->>> +
->>> +static void aspeed_i2c_slave_class_init(ObjectClass *klass, void *Data)
->>> +{
->>> +    DeviceClass *dc = DEVICE_CLASS(klass);
->>> +    I2CSlaveClass *sc = I2C_SLAVE_CLASS(klass);
->>> +
->>> +    dc->desc = "Aspeed I2C Bus Slave";
->>> +
->>> +    sc->event = aspeed_i2c_slave_event;
->>> +    sc->send_async = aspeed_i2c_slave_send_async;
->>> +}
->>> +
->>> +static const TypeInfo aspeed_i2c_slave_info = {
->>> +    .name          = TYPE_ASPEED_I2C_SLAVE,
->>> +    .parent        = TYPE_I2C_SLAVE,
->>> +    .instance_size = sizeof(AspeedI2CSlave),
->>> +    .class_init    = aspeed_i2c_slave_class_init,
->>> +};
->>> +
->>>    static void aspeed_i2c_bus_reset(DeviceState *dev)
->>>    {
->>>        AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
->>>        s->intr_ctrl = 0;
->>>        s->intr_status = 0;
->>> +    s->dev_addr = 0;
->>
->> Please include the new reg in vmstate.
->>
-> 
-> Understood.
-> 
->>>        s->cmd = 0;
->>>        s->buf = 0;
->>>        s->dma_addr = 0;
->>> @@ -881,6 +955,8 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
->>>        sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
->>>        s->bus = i2c_init_bus(dev, name);
->>> +    s->slave = ASPEED_I2C_SLAVE(i2c_slave_create_simple(s->bus, TYPE_ASPEED_I2C_SLAVE, 0xff));
->>> +    s->slave->bus = s;
->>>        memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i2c_bus_ops,
->>>                              s, name, aic->reg_size);
->>> @@ -1016,6 +1092,7 @@ static const TypeInfo aspeed_2600_i2c_info = {
->>>    static void aspeed_i2c_register_types(void)
->>>    {
->>>        type_register_static(&aspeed_i2c_bus_info);
->>> +    type_register_static(&aspeed_i2c_slave_info);
->>>        type_register_static(&aspeed_i2c_info);
->>>        type_register_static(&aspeed_2400_i2c_info);
->>>        type_register_static(&aspeed_2500_i2c_info);
->>> diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
->>> index 7d8907c1eede..85e4bddff936 100644
->>> --- a/hw/i2c/trace-events
->>> +++ b/hw/i2c/trace-events
->>> @@ -9,7 +9,7 @@ i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
->>>    # aspeed_i2c.c
->>>    aspeed_i2c_bus_cmd(uint32_t cmd, const char *cmd_flags, uint32_t count, uint32_t intr_status) "handling cmd=0x%x %s count=%d intr=0x%x"
->>> -aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *str1, const char *str2, const char *str3, const char *str4, const char *str5) "handled intr=0x%x %s%s%s%s%s"
->>> +aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *str1, const char *str2, const char *str3, const char *str4, const char *str5, const char *str6) "handled intr=0x%x %s%s%s%s%s%s"
->>>    aspeed_i2c_bus_read(uint32_t busid, uint64_t offset, unsigned size, uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
->>>    aspeed_i2c_bus_write(uint32_t busid, uint64_t offset, unsigned size, uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
->>>    aspeed_i2c_bus_send(const char *mode, int i, int count, uint8_t byte) "%s send %d/%d 0x%02x"
->>> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
->>> index 6fb69612e064..c1c1abea41dd 100644
->>> --- a/hw/misc/meson.build
->>> +++ b/hw/misc/meson.build
->>> @@ -122,6 +122,8 @@ softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
->>>    softmmu_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_ahb_apb_pnp.c'))
->>> +softmmu_ss.add(when: 'CONFIG_I2C', if_true: files('i2c-echo.c'))
->>
->> That's for another patch.
->>
-> 
-> Yeah, was a mistake on my part when chopping up my work.
-> 
->>> +
->>>    specific_ss.add(when: 'CONFIG_AVR_POWER', if_true: files('avr_power.c'))
->>>    specific_ss.add(when: 'CONFIG_IMX', if_true: files('imx6_src.c'))
->>> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
->>> index 4b9be09274c7..3f1a9c07a00b 100644
->>> --- a/include/hw/i2c/aspeed_i2c.h
->>> +++ b/include/hw/i2c/aspeed_i2c.h
->>> @@ -42,6 +42,7 @@ struct AspeedI2CBus {
->>>        SysBusDevice parent_obj;
->>>        struct AspeedI2CState *controller;
->>> +    struct AspeedI2CSlave *slave;
->>>        MemoryRegion mr;
->>> @@ -53,6 +54,7 @@ struct AspeedI2CBus {
->>>        uint32_t timing[2];
->>>        uint32_t intr_ctrl;
->>>        uint32_t intr_status;
->>> +    uint32_t dev_addr;
->>>        uint32_t cmd;
->>>        uint32_t buf;
->>>        uint32_t pool_ctrl;
->>> @@ -76,6 +78,12 @@ struct AspeedI2CState {
->>>        AddressSpace dram_as;
->>>    };
->>> +#define TYPE_ASPEED_I2C_SLAVE "aspeed.i2c.slave"
->>> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedI2CSlave, ASPEED_I2C_SLAVE)
->>> +struct AspeedI2CSlave {
->>> +    I2CSlave i2c;
->>> +    AspeedI2CBus *bus;
->>> +};
->>
->> AFAICT, AspeedI2CSlave is not that useful since it doesn't maintain any
->> state. The QOM interface proposal looks like a better approach.
->>
-> 
-> Agree.
-> 
->>>    struct AspeedI2CClass {
->>>        SysBusDeviceClass parent_class;
->>
->>
->> If you could send these 3 patches :
->>    - aspeed_i2c_bus_raise_interrupt trace event rework
->>    - intr_ctrl_mask class attribute
->>    - dev_addr support
->>
->> I will queue them quickly and we will focus on adding slave support only.
->>
-> 
-> Cool, but please see my question on the intr_ctrl_mask.
+True :)
 
+> > > > -    bus->intr_status &=3D bus->intr_ctrl;
+> > > > +    /*
+> > > > +     * WORKAROUND: the Linux Aspeed I2C driver masks SLAVE_ADDR_RX=
+_MATCH for
+> > > > +     * some reason, not sure if it is a bug...
+> > > > +     */
+> > > > +    bus->intr_status &=3D (bus->intr_ctrl | I2CD_INTR_SLAVE_ADDR_R=
+X_MATCH);
+> > >=20
+> > > It comes from the initial support for the AST2400 SoC.
+> > >=20
+> > > We should introduce a 'intr_ctrl_mask' attribute in AspeedI2CClass and
+> > > fix the AST24000 value to 0x7FFF ...
+> > >=20
+> >=20
+> > I'm not sure I understand. Do you suggest that we always use a fixed
+> > mask here and disregard what the host sets in intr_ctrl?
+>=20
+> No. sorry. There are multiple fixes required I think.
+>=20
+> The layout of the Interrupt Control Register (0x0C) differs on the
+> AST2400, AST2500, AST2600 SoCs. We need to clarify that first.
+> bits 11:7 and 31:16 are reserved on all. AST2400 lacks bit 15 which
+> enables a slave timeout interrupt on AST2500 and AST2600.
+>=20
+> Then, the Interrupt Status Register differs also. The AST2400 doesn't
+> have the Slave Address match indicator and the Slave Address Receiving
+> pending bits. On the AST2600, there are 3 possibles addresses, only
+> 2 on the AST2500 (and only 1 on the AST2400). So that modifies the
+> I2CD_INTR_SLAVE_ADDR_RX_MATCH bit.
+>=20
+
+Ugh. I'm heavily burden by the fact that I do not have a spec sheet
+available... I'll try to request one from Aspeed. I reversed this from
+the Linux driver, so I'm just tried to match up with how that behaves.
+
+With Slave Address Match indicator, you mean bit 31? There is only one
+bit, so how does it work with the third address?
+
+> Since these 2 or 3 bits are read-only. I wonder how this is impacting
+> your slave implementation. is it ? If not, may be slave address match can
+> wait for now.
+
+As far as I can tell, the kernel driver uses bit 7 (called
+SLAVE_ADDR_RX_MATCH in QEMU and SLAVE_MATCH in Linux) to start the slave
+state machinery. It does not use bit 31 (SLAVE_ADDR_MATCH in QEMU). The
+naming for bit 7 in Linux is probably off and should be ranamed to match
+QEMU?
+
+I understand that this shouldn't assume to only work with the slave
+machinery in Linux, but that is the only platfrom I can currently
+experiment with.
+
+> > In any case, isn't it a bug in the Linux kernel driver that it neglects
+> > to set bit 7 (slave match) in the INTR_CTRL register?>
+> >=20
+> > > >        if (bus->intr_status) {
+> > > >            bus->controller->intr_status |=3D 1 << bus->id;
+> > > >            qemu_irq_raise(aic->bus_get_irq(bus));
+> > > > @@ -196,6 +201,9 @@ static uint64_t aspeed_i2c_bus_read(void *opaqu=
+e, hwaddr offset,
+> > > >        case I2CD_INTR_STS_REG:
+> > > >            value =3D bus->intr_status;
+> > > >            break;
+> > > > +    case I2CD_DEV_ADDR_REG:
+> > > > +        value =3D bus->dev_addr;
+> > > > +        break;
+> > >=20
+> > > You can introduce support for this register in a preliminary patch but
+> > > keep the slave activation for later (I2CD_SLAVE_EN bit)
+> > >=20
+> >=20
+> > Understood.
+>=20
+> thanks, we will address the full layout of this register later when neede=
+d.
+> But there are fields for each address.
+>
+
+Right. Again, I just reversed from the kernel driver and it only sets
+the lower byte.
+
+--wsZtJCzdZ0hVXHxY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmJNWmEACgkQTeGvMW1P
+DekH7Af/TimtSR/BuIVr9SmQPSWIXQ4NjdzzLPaDsgaX3LAmRRNMZA7+GWAHgHoQ
+PIbG6ZV9Sz9o++uFc8yB3PscUs9CI6lbOyKGREMXbjzre4gB2XwdZGfL17dx1nQG
+CJtsswY4rL1RZmN1A5+1PxFhJt9BqfpTGREsWrbCtyXLwqQQ7Kt/sWMw86ipz0Dj
+SppGUGZs0z50miS4H2b1I3AFBhw1gkCBT6hYWJK08Kk25hrma9l3if2sKp1+BjWj
+gHCm7i24yS1xrQ91997myYC7Ci//PfxyQ9DmpdFmSXYSxzFu0oyBb+LAkPm05MfO
+TV3yRQk1uoIlEQnqc4pt3CMgeTm5rg==
+=rjGK
+-----END PGP SIGNATURE-----
+
+--wsZtJCzdZ0hVXHxY--

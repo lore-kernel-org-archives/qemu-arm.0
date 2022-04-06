@@ -1,110 +1,109 @@
-Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp723469lfu;
-        Wed, 6 Apr 2022 07:07:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyEG1braUQzDS2uU8qihDyKbQ3P27BCUFwzDZT6yqOfL17OHbAj0v82/RaW6MdGLOJhugux
-X-Received: by 2002:a81:5751:0:b0:2eb:645f:4d47 with SMTP id l78-20020a815751000000b002eb645f4d47mr7481463ywb.492.1649254024774;
-        Wed, 06 Apr 2022 07:07:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649254024; cv=none;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp723804lfu;
+        Wed, 6 Apr 2022 07:07:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyI3Y28UHOI64WyeWv205t78hb0/g5h67txhB1mYmsgro4Bj/cqtL8Rb9DFzz4ijii/qa4B
+X-Received: by 2002:a25:d046:0:b0:634:763:549c with SMTP id h67-20020a25d046000000b006340763549cmr6777603ybg.568.1649254048446;
+        Wed, 06 Apr 2022 07:07:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649254048; cv=none;
         d=google.com; s=arc-20160816;
-        b=HC5QAbxv7B8s8JibMvwaqXV+GD16InQxGUiHqutRzl/z4SSeuSzJrxeaAs6zL8tHEZ
-         AcgBh22cHUbPvfgxhUuIGi9AbNGKEMGblyg8EA0wZAptbq8iygI5rIrVUWybApYKCrDr
-         WliIl5XjCtysf1Fdmm0S1RvIlMTT/gjPfI7GdBNq7ro323NptCIwSZFktG6U55Z89Tet
-         wb+5JLKFQhKhFtJamD5iHRXIj0VWBxU+K8h+KPm2V0agbT+zwYR/ZJ7zoLxL6dkQQ4Me
-         QhgV0ZB2F6oHixBRluB0+fDqEeBNCJlm1MFwjCylx8ZRicUP6qdrxhBo5DjgCUUK9+lN
-         AQ2Q==
+        b=acJE6dmERtKEdmAtzjVlj9E/EbJIMN/wNPZyQP7aZIMVsttbAm6B18++4UF3z+LH66
+         xQfwpJtPrrVXqYVG/fs0quuNCkA4w3aw9LXWFSjoMBU0IiavAJ3s15YNBRZFfmx+OUwd
+         nbFpF36pKIv68xCxGk6B3+Hj5dMM2UHTmOwx+vtihW53Hily3Kozr5dBymIsHY6+9+em
+         +NxZ2ZaezHiMTEWnIlp9pUMZjWL38BU5v1ROBZZOhhgNDKSunUsa9uavZ7Xd/JidxpLq
+         bS9DXkJ4pciYNgSvV+lMJRH3DskGOh6IYK/M00x2n9iRQov94P5kuADyB4XhoAZfiTVy
+         9p4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=J3uV/QbvectnmlG0Lw5iMlIIjPNUu+gU46IN+EVMLws=;
-        b=i2ws8+sZtnemxjNMdeq11Oc0M1J+qaJ/D7ktOdlm9MuW/YLK0JvFnG40AtlcmnmC17
-         UANNo7fSw0+7NDUBDCQ3lKhN9eMkkolTCq4FYSJYSUem7tjkZmGbYoA9hCc+tqsTjnRz
-         ZQuhCYxxAqsakpo8JbOMdB2JFajZNEjdQ+6p9gAbu6Hm+NgchOxurod7mxQuXDD/FROf
-         cSHqZwp2a/+8nOuLY+auqByNO0TJl3d0VN+q6f/QugiuEQ0mWEpfa+1lI7sD20bHxXAA
-         uHUZdU4DJA2QUeuuSfyOxgBdsDm49vdpm/Ah7s9xJVQ+4dAiB3BOdPVHY9WlAoORiUxj
-         8JeQ==
+        bh=7CN4md7jUqAs80Mf8lxCx2YVe6U6LEiC8G24WE/+bd0=;
+        b=ld8xHhi/RJjdZH8971VJIbbQDdBaQwQ+aX7t798vRsEosxqbTi4nC+KQRgLzQShxI+
+         cuPYbquphn+4MVwbtWo8UkK7AWM/HzYewH2cJW4XTl5iYM+xgaCBXJ45NQKESThQlrP1
+         T8b84oMKqD6FMqRDqJhKeGPrt7CIytv7wNeKI+4I/Mmox8JKEEtw4eHGaF7NngECMZt/
+         6Mh3BNfg6BUBt19yr9RieZenU/30kAzA6s0GH1dTQ1mfdF1a0dnDiUCRGLxHb4HnKWkG
+         PNVTQJDC8ILugfHK2/8g54bC62HvkerlFnW5yIeoCv1aeNyeA9nm4GdZ6j7xATSQoB8f
+         wO9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fedx6F4d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M+vlZ26R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h62-20020a0dc541000000b002ea6d45a542si12090279ywd.339.2022.04.06.07.07.04
+        by mx.google.com with ESMTPS id bg22-20020a05690c031600b002eb6c7ec4aasi6414753ywb.114.2022.04.06.07.07.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Apr 2022 07:07:04 -0700 (PDT)
+        Wed, 06 Apr 2022 07:07:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fedx6F4d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M+vlZ26R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38122 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nc6JM-0007CU-65
-	for alex.bennee@linaro.org; Wed, 06 Apr 2022 10:07:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58688)
+	id 1nc6Jj-0007pC-S7
+	for alex.bennee@linaro.org; Wed, 06 Apr 2022 10:07:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nc6IB-0004gb-5W
- for qemu-arm@nongnu.org; Wed, 06 Apr 2022 10:05:51 -0400
-Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d]:43707)
+ id 1nc6Im-0005or-Fu
+ for qemu-arm@nongnu.org; Wed, 06 Apr 2022 10:06:28 -0400
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835]:45793)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nc6I9-0006xD-Jx
- for qemu-arm@nongnu.org; Wed, 06 Apr 2022 10:05:50 -0400
-Received: by mail-qt1-x82d.google.com with SMTP id t7so4341813qta.10
- for <qemu-arm@nongnu.org>; Wed, 06 Apr 2022 07:05:49 -0700 (PDT)
+ id 1nc6Il-00072U-0S
+ for qemu-arm@nongnu.org; Wed, 06 Apr 2022 10:06:28 -0400
+Received: by mail-qt1-x835.google.com with SMTP id a11so4317519qtb.12
+ for <qemu-arm@nongnu.org>; Wed, 06 Apr 2022 07:06:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=J3uV/QbvectnmlG0Lw5iMlIIjPNUu+gU46IN+EVMLws=;
- b=fedx6F4d6xB62ujw+U8xCdmmy5NYwFkNnYn6Ja928EIf1LEHNxo1w6jNxXzi+FhHby
- 0mFHEw0jKEQSbC0CQBDvhMCsgAjyVcFCAENJ+SdH3har24nEqPflC1tXvtY8YauS+mHi
- Y9y2yedP0E3JQMyZvdWxRklVY9J+znXIlAigVqXirUGaxZSGI9X9IVrx6uuuaJH2RSjj
- vbISIt+McEw+pB3PJveF6FfLYQNqTpC57dxSYquyOkJb8T8lQypHSjQoAtBhEz27+0xt
- 1eRCB/vRH6qlVgoCeWuWX0yOBJwkSXAMaCVS+4pQNM9rQpl772rOHGx5SeZwYyuFOCCn
- Hv+Q==
+ bh=7CN4md7jUqAs80Mf8lxCx2YVe6U6LEiC8G24WE/+bd0=;
+ b=M+vlZ26RXN2t7qj7LeMdAk1bDCh0l1F0DQeFtPMyQYmqvgIm8shJlbEH8J/gVju3c6
+ jdFlqhRYNVFLqTNxEgoOb1yC35v6t6EaPlKNF4WLJTeonvnn5if5SN8uBgphYGHnZ6WA
+ VsvdDuU2E4rkHQk3MhcDSH4kGmudLexzGhxWkBFcyE6/bMkeDWdlUU56IEvCFN5xfA0k
+ /KLD0ZKx4NapAfFfk4ip0omXgedtpM8/tIhs0x9LSrC0XLue0z9ZW2+6/5Nm822IgQeB
+ RuPGlfcRt/pQVcsMkdvdi7XkHCDxXKDHilnv7AzxjTuAU4DsHv+jCVkmNvE5g1Kk22L7
+ Xabw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=J3uV/QbvectnmlG0Lw5iMlIIjPNUu+gU46IN+EVMLws=;
- b=ywckuw5HXkBLRwA6lGn1tfnjlgRW/wbaQtA98jm/EzXApb/bChy7kJj4p7e8OIPKsN
- p1/Qpr5xEELEjUGy4jyITRdBHaTsaNBWCOFeocgMCpYaPPPahUBO4JQu7/akGFmTZ1PM
- loZPsE3XFWyyxO2ex5mz6wT5FFEjx+pUzwyIzwZguOJGdHm7GiVIqeVI8D7mswruptOF
- P6y/3QLVOpjOh9VqXFBS0Grs1CDCrQi5dVLsTXmh3FJ9QHEFJnw3hw60KbkySdqxBDat
- MsitzkzbH97ftRLFuetuXHk9EGkoIPSUQMf761mM8sKDmmhs8X5EV/biGlKsT8+PEKmv
- ptbw==
-X-Gm-Message-State: AOAM532j5iQGkfabIxA6nPsAkYFJfoGQtzLRnMJvZ0Odv+7rFK4jnRFb
- fm6jrTh+mIe/a8Ku5aafXjhYFA==
-X-Received: by 2002:a05:622a:513:b0:2eb:871f:cd66 with SMTP id
- l19-20020a05622a051300b002eb871fcd66mr7568216qtx.434.1649253948536; 
- Wed, 06 Apr 2022 07:05:48 -0700 (PDT)
+ bh=7CN4md7jUqAs80Mf8lxCx2YVe6U6LEiC8G24WE/+bd0=;
+ b=EXpmMfP+hgqn5wPi48yvnlnsMqcT9gq7ZwFErXinzfgvfYVEkCdlfA8OzwcmhWmEP6
+ ZXhNo7uN5qPqo2JnJTSYCBxrj9DNqVNVerC7tPgyTCav5Mm+lBmnJ5YV48GPEISommS3
+ fEkVczw0JD6s0AP95D8QJQUast3zK5b9WZSpXatuDKgNwQQb1AIZO/DMPl7r3eHG7BRP
+ +ebZGAIbyT47d0A9wRVKebzmS36Hr50IQ2UXR5yhespQDmRmEZGksi5DS8G2cWVXFclg
+ CVT5laQaUWJnwLzSxnuVWUnS+g4Eau1YUPqjNHmWJIgTgKQFpmuFZo/LRTxXk7PGKHyi
+ g71A==
+X-Gm-Message-State: AOAM530T7pyBx+4qKLr7dXa9LMtHXsnjePhDsKyXpuJRODpbj+dnmRZF
+ dMlUjWpXRaFdidFqsVDsaSACWw==
+X-Received: by 2002:ac8:5a4f:0:b0:2e1:a7be:2d13 with SMTP id
+ o15-20020ac85a4f000000b002e1a7be2d13mr7517958qta.598.1649253984907; 
+ Wed, 06 Apr 2022 07:06:24 -0700 (PDT)
 Received: from [10.10.117.62] (fixed-187-188-190-73.totalplay.net.
  [187.188.190.73]) by smtp.gmail.com with ESMTPSA id
- s13-20020a05620a0bcd00b0067afe7dd3ffsm10856036qki.49.2022.04.06.07.05.46
+ s11-20020a05620a16ab00b0067b3bc3c35bsm9637736qkj.113.2022.04.06.07.06.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 Apr 2022 07:05:46 -0700 (PDT)
-Message-ID: <24ff4e51-dcaa-37bb-dd33-04821bf48023@linaro.org>
-Date: Wed, 6 Apr 2022 09:05:44 -0500
+ Wed, 06 Apr 2022 07:06:24 -0700 (PDT)
+Message-ID: <f7db2c43-8fa6-490d-cd49-43df3fa55de3@linaro.org>
+Date: Wed, 6 Apr 2022 09:06:21 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH for-7.1 17/18] hw/arm/exynos4210: Put combiners into state
- struct
+Subject: Re: [PATCH for-7.1 18/18] hw/arm/exynos4210: Drop Exynos4210Irq struct
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20220404154658.565020-1-peter.maydell@linaro.org>
- <20220404154658.565020-18-peter.maydell@linaro.org>
+ <20220404154658.565020-19-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220404154658.565020-18-peter.maydell@linaro.org>
+In-Reply-To: <20220404154658.565020-19-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
- envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x82d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::835;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x835.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,21 +127,26 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Zongyuan Li <zongyuan.li@smartx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6k6OTowsuH0T
+X-TUID: Q355GX/JS673
 
 On 4/4/22 10:46, Peter Maydell wrote:
-> Switch the creation of the combiner devices to the new-style
-> "embedded in state struct" approach, so we can easily refer
-> to the object elsewhere during realize.
+> The only time we use the int_combiner_irq[] and ext_combiner_irq[]
+> arrays in the Exynos4210Irq struct is during realize of the SoC -- we
+> initialize them with the input IRQs of the combiner devices, and then
+> connect those to outputs of other devices in
+> exynos4210_init_board_irqs().  Now that the combiner objects are
+> easily accessible as s->int_combiner and s->ext_combiner we can make
+> the connections directly from one device to the other without going
+> via these arrays.
+> 
+> Since these are the only two remaining elements of Exynos4210Irq,
+> we can remove that struct entirely.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   include/hw/arm/exynos4210.h           |  3 ++
->   include/hw/intc/exynos4210_combiner.h | 57 +++++++++++++++++++++++++++
->   hw/arm/exynos4210.c                   | 20 +++++-----
->   hw/intc/exynos4210_combiner.c         | 31 +--------------
->   4 files changed, 72 insertions(+), 39 deletions(-)
->   create mode 100644 include/hw/intc/exynos4210_combiner.h
+>   include/hw/arm/exynos4210.h |  6 ------
+>   hw/arm/exynos4210.c         | 34 ++++++++--------------------------
+>   2 files changed, 8 insertions(+), 32 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

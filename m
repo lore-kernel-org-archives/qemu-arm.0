@@ -1,110 +1,122 @@
-Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp1042147lfu;
-        Wed, 6 Apr 2022 15:35:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxoeE0w7YNmUxpfJnpr1zGy06ZupvmVA0mdQjIuskYwyHtBgpFPpIYzbwiyFemhpiRZ4k3v
-X-Received: by 2002:a81:1b86:0:b0:2eb:8d44:3ca3 with SMTP id b128-20020a811b86000000b002eb8d443ca3mr9519153ywb.386.1649284509409;
-        Wed, 06 Apr 2022 15:35:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649284509; cv=none;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp475854lfu;
+        Tue, 5 Apr 2022 23:11:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywihmw0kUKXtsKk6JaBY73EphiUM5bKTjQkZn+a/d1QAKRBk7qMyqvA8KUk54DpK667dqT
+X-Received: by 2002:a05:6214:202a:b0:441:6a41:f710 with SMTP id 10-20020a056214202a00b004416a41f710mr6182996qvf.84.1649225505353;
+        Tue, 05 Apr 2022 23:11:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649225505; cv=none;
         d=google.com; s=arc-20160816;
-        b=ipQfq5XmRUlDpvgelHD5bX8SaxpgIpq9R+Lue92vb/V2nz8iFVF6eO7vB8kEz1ACdW
-         UTcBeSE6VjvWQlFDdsUTg0bJQKwuRj+FWkzkkNLXzPH7HK87fITOOdIjAV8jyU2xuLEK
-         h8uVM+h9kLeQ0Uo8JjuTS9P3wCxZmPiJT2xOA4QbphLNOBAqZoNFC6HzGhdY1bmi4FZw
-         bSwgveSUZPMLy0H/8JlXMv6JdnTApUswKXyZ3OE6G0ih8pvpUk1Ys5Inmu/yskkGZE18
-         gK1yDTfPQldyHQcSvtxbURx8trC0NfBjP+ETJ+S+7+tT4yZnikg4BEukj3K9W7QStbWX
-         ZKHw==
+        b=bJ5HuJUMjComOZKMrmRovX002agiexkQF0iWcF+Nr/VREoqgYs/MQ49liXKAQ5ReN1
+         cNNVFuI8iqqOLg/Nk6+LJyRUIaeKJLTf+sokmyspI/rYwB316rKLQEwC7W1NtOWZRonJ
+         rIr7rehSQCzkGnkU1paC+g4HKpGPeUPK8W+8e2vpmqXKnf1VsE1AAzmN45b88c5r7Vb5
+         9dbDVOQ2qMzhdHd6aVL7jdAnaectCLEpDDQFE4guuvpFvnKnHq6/O0WVvdqfdY6TDx5K
+         jhdDk3AsE9oVOusRdBSYbxcUyVbUP5Dza1S3sAMhsZDQNopR7c4L5akRqy/T7qscDWU8
+         5veQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=za+GIZQ1g+M8oIvy1mifuz9vQx1PyLnJAIldTNUuLEo=;
-        b=gePlZtp7nfPgx2bZq/pM9ptvV2lFABBp/EpNB4svENMK5fkbjTylsmoxopOt57NA45
-         x5yRRoslmtkawblkh9becUYU8yi/PD0/H484ma4aoENURIrnPwLATTJvBqmf6CifqZY3
-         t7m5xaXxthbwGqTvKx2KMUmGBegpQ0fgh6SXpityZOwNmsTJ34nOkl+T0KrYOjzWWbaR
-         JAWLmEEIIdtDniCOtBSXjmrx0cTaWNDIkTYjM450HgJnCuz5YKVvDo2xJFa8zhyrBQUz
-         D7CSEFi7d/KTLogdp2PyOPsx52KO9Z2wIapcYAtRS4AqjkHHUnYbI0av5qjTgFCqHOug
-         km3g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature:dkim-signature;
+        bh=iGpnY3BRU/Yj75JHGrz8yskg0Hbvxpp9rfOdtMAnEJI=;
+        b=f73qCX2H0p3FVANX76a9Qzj+6c1uVruav+NRa2Vw1OWlNazj5mP8f6TdOZnppISXvp
+         3SCSLnirBcM6ujP7EpfGSBY26JOMQ9vSqyKIinLGE81pk6DPfFpCt1uVFGn3hRd0SbMJ
+         hdEBSvbNLsBNK+zbZkaz0igfZFTM7XFJXMNLKW9yq61o9SPfleCDwJwPLtOFD/V7vlZd
+         EMjwtPH6MKUPcqo03R4AMPQTRkPKGndvRY5Gg9V089VOOKGHpdWJuQHc/UwlLMTKJ1j7
+         rnYridI+wbknFiUDT7BRwntjIiiA392v4UUT11BwDU2ZpP2c8zW1q3FJDXV6ZVhptHcM
+         4xiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=AHpZdoFc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=c7z0R7Qt;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=mC4DY4b1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z66-20020a814c45000000b002e5bb9dcaf7si11289853ywa.384.2022.04.06.15.35.09
+        by mx.google.com with ESMTPS id q10-20020ad4574a000000b00443cd1fe11asi5020645qvx.240.2022.04.05.23.11.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Apr 2022 15:35:09 -0700 (PDT)
+        Tue, 05 Apr 2022 23:11:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=AHpZdoFc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:43422 helo=lists1p.gnu.org)
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=c7z0R7Qt;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=mC4DY4b1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50902 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncEF2-0002t9-P8
-	for alex.bennee@linaro.org; Wed, 06 Apr 2022 18:35:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37724)
+	id 1nbytK-0000kq-MS
+	for alex.bennee@linaro.org; Wed, 06 Apr 2022 02:11:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51280)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3hxVOYggKCAQ0ylesxwlksskpi.gsquiqy-evqrsrkry.svk@flex--wuhaotsh.bounces.google.com>)
- id 1ncEEl-0002sq-Cw
- for qemu-arm@nongnu.org; Wed, 06 Apr 2022 18:34:51 -0400
-Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649]:39647)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3hxVOYggKCAQ0ylesxwlksskpi.gsquiqy-evqrsrkry.svk@flex--wuhaotsh.bounces.google.com>)
- id 1ncEEj-0004VU-VP
- for qemu-arm@nongnu.org; Wed, 06 Apr 2022 18:34:51 -0400
-Received: by mail-pl1-x649.google.com with SMTP id
- s18-20020a170902ea1200b001570031e832so385513plg.6
- for <qemu-arm@nongnu.org>; Wed, 06 Apr 2022 15:34:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=za+GIZQ1g+M8oIvy1mifuz9vQx1PyLnJAIldTNUuLEo=;
- b=AHpZdoFce/H6DS3k+znjCLT+08vzPPi7OemRgp2h/68oAszPTBOXkvX7WlnwSMSe3M
- OpaFsrLYiZe9KZ8t3nC7O79XQux6GAwnvtzJAHDdUo/JjnXfc6xjJ+8eSSmdTmO5tarl
- wdi1+NYI5ekZElnR0zJPoE0xJ3or3GcgSr5ZllrxV+ELk9MOnpeQWIl9QfFs+GHPWF7E
- Xavq7oKGwHO+uQEoHBgGMCw4V2lzLNAoOGKKgElyGh4jsXJaUvOGwf3TajdUNMSPPf+D
- bqsLNhg3bOP14/NJ1ovUC2C5odwkFZc7TBh75kIRrmMnenQejwa4gSIRyqtBQPVmxGcg
- pi6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=za+GIZQ1g+M8oIvy1mifuz9vQx1PyLnJAIldTNUuLEo=;
- b=xUoKFz6g8oEgQrwuNo0CJ66Ct+P9e03NFmo8WMC89IwDS1Wfd9jCe9do5gTKCXU6dV
- ib5DQK4KnE195BVjUtAUgjcFpmnruvXfst96UHNVxZp8ujtszmstV7iy18LOGvEKyWJd
- nTjQVOhuwkAj0P3fYd2QwCximNDmqvW24BKbZw+cr9/Is8uG0qs6R+uTv+TdVy/+M1Vp
- TSzheH5CUxxvOQ3uqdFzDmdQx0+/NoP0ioCa7EBi3TV+SnrRxzfq/3nQn7O057ckkOOy
- 0JulQBeh68x8DmlPUxp1HijuckJTeYmVnuJx3pKfCHQinYSytJWFV5MpwdeJ/Tir8Z/M
- nATg==
-X-Gm-Message-State: AOAM533YCySk+6YYY+e+d44pgOItTBX8wHiEWGXI0PR7+mPwAqDamnn8
- irjfSJxNwLY8I6oVZGKJ108psmwK7zHPCQ==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:90a:db48:b0:1ca:ab67:d75 with SMTP id
- u8-20020a17090adb4800b001caab670d75mr213769pjx.1.1649284487440; Wed, 06 Apr
- 2022 15:34:47 -0700 (PDT)
-Date: Wed,  6 Apr 2022 15:34:38 -0700
-Message-Id: <20220406223440.2901032-1-wuhaotsh@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.35.1.1094.g7c7d902a7c-goog
-Subject: [PATCH 0/2] Define NPCM7XX PWRON bit fields
-From: Hao Wu <wuhaotsh@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
- venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- hskinnemoen@google.com, Uri.Trichter@nuvoton.com, Vishal.Soni@microsoft.com, 
- titusr@google.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
- envelope-from=3hxVOYggKCAQ0ylesxwlksskpi.gsquiqy-evqrsrkry.svk@flex--wuhaotsh.bounces.google.com;
- helo=mail-pl1-x649.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1nbypv-0000kc-UV; Wed, 06 Apr 2022 02:08:11 -0400
+Received: from wout3-smtp.messagingengine.com ([64.147.123.19]:38541)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1nbypt-00052E-Fq; Wed, 06 Apr 2022 02:08:11 -0400
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.west.internal (Postfix) with ESMTP id B9FD53200E89;
+ Wed,  6 Apr 2022 02:08:04 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute5.internal (MEProxy); Wed, 06 Apr 2022 02:08:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm3; bh=iGpnY3BRU/Yj75JHGrz8yskg0Hbvxp
+ p9rfOdtMAnEJI=; b=c7z0R7QtuarD56nBp6TePafzl7CWpAe/JrtDT0phhQdUjW
+ 6EO/xoJaBrkMO+ChaDfcdbayLS/ZuygPEQYCros5WXOU9W4dXI9s6wuWEnVgk0Oi
+ KVK8/n6O7j9NrPTr032zOeuD/YVWjRa+uxvFwvzPJsQ3zRfhZN505b2d4sFQOj7n
+ lJWoPFfLM01qsPCii7Sg5kYu7uQ/hAIlUi6O6She2mowbig9OB1uwzaBUPMlhgCo
+ T1cQi5YGg8f6NzXf0WMRVeOJrVU7zgLzradZYZlzyl5M9UQZWUvH1dQUl4Qmitcr
+ qKjB8Lzqi2wSMxgSDDMkUrv6KfL2vkQ7/q/V6oEQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=iGpnY3BRU/Yj75JHG
+ rz8yskg0Hbvxpp9rfOdtMAnEJI=; b=mC4DY4b1xRr8bSco3z+aZPv5OOvvxB6YA
+ 6eRRDeXD4OLQ1sUoSId9/b5lQWgFcz6L+FC8Hp/2vLI0NvzeE4ZuGA4uxKt7P/S6
+ ueSuQlL4Vif5nGLPaag5JyyrLD8nVb56PJjPl0RpEpp9iqqLBBxobA9RG2XS6p/v
+ w4r4Kwfi+1JkHZ/11qRkUzxzLpCUEPYmGkC7cUm3SO8w+Pwy1Wh+WcvVAp9hDw8z
+ Cyerz9DUa2ENXEXTozas62XimtKPjZbJMsyhAfkEPFRgGioauHRXh5PvKhKBovn9
+ BJqchObasbuIPtoIxruBSz2WComLGD+rggEx5uVTMwTxBYQL0irVg==
+X-ME-Sender: <xms:Qi5NYiwnk60pe3ZQ8wrS0BTDHfJEllT5uNTqTjuiPzfJdoMgQBMpdw>
+ <xme:Qi5NYuRRX6m37bgXrgw3DHZJg6-mxkJbX66ayDoseTpgCDDBEjkCzVRoZDkvbCscx
+ rapzHRzPHl5mPsFr80>
+X-ME-Received: <xmr:Qi5NYkUOue4TjcCBT4OqDvVwmqUaVJKzEYq6pDxCAaSb_LQO0ZOJVLHyXLAWMhmRgcuDdy5n5KYLcfqWs8k>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudejhedguddtvdcutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepmfhlrghu
+ shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
+ htvghrnhepjeegudffueeiteekieelkedvueelteevjeduieeludfffeejgeffhfduvddu
+ ffeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
+ htshesihhrrhgvlhgvvhgrnhhtrdgukh
+X-ME-Proxy: <xmx:Qi5NYoh9HCpbW4hRRplMowlWAlDdjPJmXXpKrcnNxN9B7FWlDaHWFg>
+ <xmx:Qi5NYkBnjWxAxgRvVSR3ZTJ09EEYf9_FVwl4eHSiEM0eIEbGBZQC3Q>
+ <xmx:Qi5NYpIS33KOa4U4lSYWUuNHGyBELqzXx7KI4iunqmr3q4NRk_-RnQ>
+ <xmx:RC5NYg5ygDLmiIO8mqPaQ3OCY41ltc8OCu08t12m5wKDbTwEyE_BEw>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 6 Apr 2022 02:08:00 -0400 (EDT)
+Date: Wed, 6 Apr 2022 08:07:59 +0200
+From: Klaus Jensen <its@irrelevant.dk>
+To: Peter Delevoryas <pdel@fb.com>
+Subject: Re: [RFC PATCH 0/4] hw/i2c: i2c slave mode support
+Message-ID: <Yk0uP2BHaOTBQDf2@apples>
+References: <20220331165737.1073520-1-its@irrelevant.dk>
+ <CA9A7D12-EA42-450B-B378-92D53D3D22EF@fb.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="QBSQvCIOV172E1V8"
+Content-Disposition: inline
+In-Reply-To: <CA9A7D12-EA42-450B-B378-92D53D3D22EF@fb.com>
+Received-SPF: pass client-ip=64.147.123.19; envelope-from=its@irrelevant.dk;
+ helo=wout3-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,24 +129,144 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
+ Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Klaus Jensen <k.jensen@samsung.com>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>, Jeremy Kerr <jk@ozlabs.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
+ Matt Johnston <matt@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VlrYPzITDjH+
+X-TUID: ycrtjpA5NLhC
 
-Currently, the PWRON STRAP values in NPCM7XX boards are magic
-numbers. Similar to the aspeed ones in hw/arm/aspeed.c, we
-define bit fields constants for them and use these fields instead
-of the magic numbers in the current implementation. The code
-should behave exactly the same as the existing one.
 
-Hao Wu (2):
-  hw/misc: Add PWRON STRAP bit fields in GCR module
-  hw/arm: Use bit fields for NPCM7XX PWRON STRAPs
+--QBSQvCIOV172E1V8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
- hw/arm/npcm7xx_boards.c       | 24 +++++++++++++++++++-----
- include/hw/misc/npcm7xx_gcr.h | 30 ++++++++++++++++++++++++++++++
- 2 files changed, 49 insertions(+), 5 deletions(-)
+On Apr  5 20:52, Peter Delevoryas wrote:
+>=20
+>=20
+> > On Mar 31, 2022, at 9:57 AM, Klaus Jensen <its@irrelevant.dk> wrote:
+> >=20
+> > From: Klaus Jensen <k.jensen@samsung.com>
+> >=20
+> > Hi all,
+> >=20
+> > This RFC series adds I2C "slave mode" support for the Aspeed I2C
+> > controller as well as the necessary infrastructure in the i2c core to
+> > support this.
+> >=20
+> > Background
+> > ~~~~~~~~~~
+> > We are working on an emulated NVM Express Management Interface[1] for
+> > testing and validation purposes. NVMe-MI is based on the MCTP
+> > protocol[2] which may use a variety of underlying transports. The one we
+> > are interested in is I2C[3].
+> >=20
+> > The first general trickery here is that all MCTP transactions are based
+> > on the SMBus Block Write bus protocol[4]. This means that the slave must
+> > be able to master the bus to communicate. As you know, hw/i2c/core.c
+> > currently does not support this use case.
+>=20
+> This is great, I=E2=80=99m attempting to use your changes right now for t=
+he same thing (MCTP).
+>=20
 
--- 
-2.35.1.1094.g7c7d902a7c-goog
+Awesome!
 
+> >=20
+> > The second issue is how to interact with these mastering devices. Jeremy
+> > and Matt (CC'ed) have been working on an MCTP stack for the Linux Kernel
+> > (already upstream) and an I2C binding driver[5] is currently under
+> > review. This binding driver relies on I2C slave mode support in the I2C
+> > controller.
+> >=20
+> > This series
+> > ~~~~~~~~~~~
+> > Patch 1 adds support for multiple masters in the i2c core, allowing
+> > slaves to master the bus and safely issue i2c_send/recv(). Patch 2 adds
+> > an asynchronous send i2c_send_async(I2CBus *, uint8) on the bus that
+> > must be paired with an explicit ack using i2c_ack(I2CBus *).
+> >=20
+> > Patch 3 adds the slave mode functionality to the emulated Aspeed I2C
+> > controller. The implementation is probably buggy since I had to rely on
+> > the implementation of the kernel driver to reverse engineer the behavior
+> > of the controller slave mode (I do not have access to a spec sheet for
+> > the Aspeed, but maybe someone can help me out with that?).
+> >=20
+> > Finally, patch 4 adds an example device using this new API. The device
+> > is a simple "echo" device that upon being sent a set of bytes uses the
+> > first byte as the address of the slave to echo to.
+> >=20
+> > With this combined I am able to boot up Linux on an emulated Aspeed 2600
+> > evaluation board and have the i2c echo device write into a Linux slave
+> > EEPROM. Assuming the echo device is on address 0x42:
+> >=20
+> >  # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-15/new_device
+> >  i2c i2c-15: new_device: Instantiated device slave-24c02 at 0x64
+> >  # i2cset -y 15 0x42 0x64 0x00 0xaa i
+> >  # hexdump /sys/bus/i2c/devices/15-1064/slave-eeprom
+> >  0000000 ffaa ffff ffff ffff ffff ffff ffff ffff
+> >  0000010 ffff ffff ffff ffff ffff ffff ffff ffff
+> >  *
+> >  0000100
+>=20
+> When I try this with my system, it seems like the i2c-echo device takes o=
+ver
+> the bus but never echoes the data to the EEPROM. Am I missing something to
+> make this work? It seems like the =E2=80=9Ci2c_send_async=E2=80=9D calls =
+aren=E2=80=99t happening,
+> which must be because the bottom half isn=E2=80=99t being scheduled, righ=
+t? After
+> the i2c_do_start_transfer, how is the bottom half supposed to be scheduled
+> again? Is the slave receiving (the EEPROM) supposed to call i2c_ack or so=
+mething?
+>=20
+> root@bmc-oob:~# echo 24c02 0x1064 > /sys/bus/i2c/devices/i2c-8/new_device
+> [  135.559719] at24 8-1064: 256 byte 24c02 EEPROM, writable, 1 bytes/write
+> [  135.562661] i2c i2c-8: new_device: Instantiated device 24c02 at 0x64
+> root@bmc-oob:~# i2cset -y 8 0x42 0x64 0x00 0xaa i
+> i2c_echo_event: start send
+> i2c_echo_send: data[0] =3D 0x64
+> i2c_echo_send: data[1] =3D 0x00
+> i2c_echo_send: data[2] =3D 0xaa
+> i2c_echo_event: scheduling bottom-half
+> i2c_echo_bh: attempting to gain mastery of bus
+> i2c_echo_bh: starting a send to address 0x64
+> root@bmc-oob:~# hexdump -C /sys/bus/i2c/devices/8-1064/eeprom
+> 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |............=
+=2E...|
+> *
+> 00000100
+>=20
+> Thanks again for this, it=E2=80=99s exactly what I needed.
+>=20
+
+Hmmm. The only obvious difference I see here is that I write
+"slave-24c02" and not just "24c02" to new_device. Not sure if that has
+any implications? Also, looks like your EEPROM is initialized with
+zeroes, mine is all ones. This hints at the device being instantiated is
+different. I'm also not seeing the 'at24', which upon looking in the
+kernel code is a different device?
+
+--QBSQvCIOV172E1V8
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmJNLj0ACgkQTeGvMW1P
+DelL9gf6AuZRrXjif6kk4UeTvX5yBridTTRjzwmsq89r+OeBs9SkXQAJhABbvZSv
+Uqphha1XEGKWQh1GbMR7u+jxwlm65yrGQ0X1/lA86xmgfRWJE381Ic3oLP6fqmCc
+4ySPgy/2kM7L8iVe3whWCv1C8xRvRZqDzAmpeQUXJBzKDJtseWwEFBjecX6eNSez
+B4XCzS1oIsWVF+EcJ+fExmuyUP3HEirZMZ2fCKKFZeCYFVS+++01qyrYcI55hUzb
+zMAF/m57w2FCKfUglcfBmU33Qc6Oo0Daf5M38CKp6pGq2NrPlnAnyqjzdEsPjzKk
+qPN9iWSLGtUR1t8WAFKQgepXCwKTwg==
+=ZS/Y
+-----END PGP SIGNATURE-----
+
+--QBSQvCIOV172E1V8--

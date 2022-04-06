@@ -1,866 +1,366 @@
-Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp873175lfu;
-        Wed, 6 Apr 2022 10:47:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy8nhXcbEe6gnHkmalhDosSYBuDKSasAEHG0s8OMJH9X7ZoVkbsFj1sDSNSWQ+KB9kY4e/K
-X-Received: by 2002:a81:8086:0:b0:2e5:c21c:bb86 with SMTP id q128-20020a818086000000b002e5c21cbb86mr8069936ywf.99.1649267272578;
-        Wed, 06 Apr 2022 10:47:52 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1649267272; cv=pass;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp910195lfu;
+        Wed, 6 Apr 2022 11:46:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxFW2lzvGbtHomzl1sU30lGU8/1fKfKcquVlpK9kE6e6nnlH99BdTO/UqyIBEn3qWp3XZYg
+X-Received: by 2002:a0d:e684:0:b0:2ea:7c43:3081 with SMTP id p126-20020a0de684000000b002ea7c433081mr8076935ywe.64.1649270797870;
+        Wed, 06 Apr 2022 11:46:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649270797; cv=none;
         d=google.com; s=arc-20160816;
-        b=z4w6fxCRMpNLz6Tz2cjGxO0aE4aiQg9P1HjyfCeAiVSnkLA0tzfWW9a0uxTJGR5Gl+
-         t7of7jGH30PvEvOurfD/RT5PaCPhk+HQbv38ASe+aKJO9eRxZ4rloqpUBT+lWLOY/nDT
-         WAG0BEl8l66WzJ6f/rpZX+vaqDEGH5bqYmVzzHEm9nA+uql7ZHoBlMhQF9V/Gdrj6v/F
-         zVAQwCbSFpJ7ChR7GErr+uKoi0QnD+Z1fGgP2Dr4svkbylwSKKTnHvjDZCxx4tVxm2P4
-         EnsMKZFJ2/Dl8U4cGQZ5IJJA/2i+fgt4jIW0W/oUJlZUIEi/2RQXW+feUiouDgfM/xev
-         LMmg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=pjhG4E4txPpGu3n1Ct1ZGyr+a15lg1MgLukp1sQpdyWMJWb1iAD+Jr0nstDqTvD34g
+         1H0WM9O6hopbycxcXxrwdM5tTTL3vONxqr/fK0lyCN5X2JkVcOJsxhxjmJVTiUZhzAbe
+         iI7KZ5OjtYtfXq8gJ8MSCnm5VLvy2eqDZagPc9rIjprcYItNmNRyuUrc0tSwtg7sqNTt
+         SHz+FbX8vvqXe3Z5x0PUQeKL2m5lGcUbowXVyPJll0D1f8XjCUOFqndieyuOm21kSpxQ
+         aEaWktVrngMMh544DEMpgeUrR3aJdCM6P+ykpNJ7paoG4WRTBV9GxZygO9uaXr5tSASP
+         c+Lw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=n2OBgdtqD+4z2E/LJlb+c5iO+CziEQV1cbspnENLflw=;
-        b=jzyG8Q4YJahNYd2U5I+S4Hi/IMCeurfu2rX8yUabwg0OlLxAv5AGeMTWJslM2gPSJ7
-         TitQQd2PUzyAIOr6feu9k/9Lb3RxVtQaiNAdJAhNN2LMGIViKBMu3mTaM+14dVQIDY3h
-         j8OS0Hcx6QDTKtdsbz6agU6LxvqwkB7UEJ3UrCzua5kMQelk7cNhLfkF7TbvA4n0lpe4
-         +eivqlvxrwKgjxhs3wNRnGr3aBNcpdhcmcSYK18YpT7b3rsnexHpcct/bXDH2gaG8NP3
-         ffJDxIcBuw+BAsSnotmJvWRRnFJAXJbyNsbky5A3xpOn7yP/NnKCxvFjjRwcM07HZwov
-         7jdQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=cRoEx3u5;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature:dkim-signature;
+        bh=6+XqGsvn/ukGBhUEQbWvzHSWpuMTQedakN4clA1ThM4=;
+        b=f2kjJtL8y8V2qhoKjImP905AltOFyxR+7xkVNliVPWd2jp2roPK+eLinWAhgRbzzsh
+         K44oUCn4m4yfRw0prcMaLEZT6MBJqdclel4yDXQUO6zuA/vJMkQbz7JcwsmgN+JxBHqO
+         TVOtahmYKzKQpOUMy68ETk7bCTgRPyvZezouDTsbWuryj3wyDLTp5QSLhAwrt89FJa0H
+         8q2zfhI3bPjiHxjkAwkQsFYZHk9pcCJo4Upe9+j2AItR1BGV8HA9HQfUGMe1xEb1FuBG
+         N4oBC24OG95rZiJ9VHVloQanF7+VjfbuSyswnu65HAnBQIrQgKXVwCfpFM0yMda0agTB
+         WZAw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=fPq3sgfS;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=f3Gx3IUQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7-20020a252c07000000b0063d925cbd46si9679701ybs.585.2022.04.06.10.47.52
+        by mx.google.com with ESMTPS id v8-20020a258488000000b00633b8618284si12546158ybk.103.2022.04.06.11.46.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Apr 2022 10:47:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 06 Apr 2022 11:46:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=cRoEx3u5;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:39148 helo=lists1p.gnu.org)
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=fPq3sgfS;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=f3Gx3IUQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45382 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nc9l1-0003Ph-SA
-	for alex.bennee@linaro.org; Wed, 06 Apr 2022 13:47:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59648)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ncAfs-0004kE-BW
+	for alex.bennee@linaro.org; Wed, 06 Apr 2022 14:46:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44778)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgari@xilinx.com>)
- id 1nc9gg-0000Mn-SN; Wed, 06 Apr 2022 13:43:23 -0400
-Received: from mail-dm6nam12on20628.outbound.protection.outlook.com
- ([2a01:111:f400:fe59::628]:24544
- helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1ncAbJ-0002ws-Es; Wed, 06 Apr 2022 14:41:53 -0400
+Received: from out4-smtp.messagingengine.com ([66.111.4.28]:49637)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgari@xilinx.com>)
- id 1nc9gb-0004SO-F1; Wed, 06 Apr 2022 13:43:20 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UrzPbjtrs5xPek8eCUtIsPJFIZJv4gspZI0mB6xRBO67mGsw369D3PmwbxqK8rUhi+AvZnlBXnRReHjaPzqMZ9D2fcMpvhrC4ZBzLc0rcog4HIE8/UXmvggthebpRPozaNUovDcs9O72aTNVdy0/weoTicypYvSnRXhJCIpOZyLQOwJr99E05o92f9vpkMu6spDLffcaqx+bEH6aUDVe6OAmEXnbm8GJnpsDjwqRYBIDy6aTOKXH41TkPcl/JkN2Lzbof1pvWz+25q4YWHo6UipAOTEKgLVqV3uJk2q3apcfleZ/0ND0d3poDg9WXJcgkGP/yq5U3T8mJoaMzClGBg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=n2OBgdtqD+4z2E/LJlb+c5iO+CziEQV1cbspnENLflw=;
- b=aH22vfcfY/dnoO08IPdk8aLlJWbwvxL/FM3WmYxIGw8vG2cWAPC0LD9QslY0AYcTkJXsXv6PkBZlkssWGyhpgUWB76ZVOK+Voymkkd5zET1Aq1Y3/qCTBPT6sbQBwLPWAj5CR70ndxMTiAjfHeK56N/S/1KoTXqgweYvtaN3SWp1TQHQ75xn1g6ID4pr6og/sVY/uuf6EpC7g2X1RS9yvFVDvpG42FuMjKD/CDkkDNEXsvfpyeIQUH08CMIyjQhdqCBgDlWhcPDDx3JL4t5U2UO07VjqT+FwhHVn45YXt9FhMcjcRK8jdGuFOAmo/TyXPh63GtZNzbib+/EJvC22XA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.80.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=n2OBgdtqD+4z2E/LJlb+c5iO+CziEQV1cbspnENLflw=;
- b=cRoEx3u5wbgsf2k6s+SFdaegPY42ysS07zFkhWbGu7/UQTOLPxrd9PTrpvtta8jaGWjIkLZhavS+Rs9gU6oLhHvndwqlkMFkQ/vRwN4z1mqVB5hWKiw7W72t9lJwOWrQ1KyDNNqh9Pn4y8BvNPJwDjDXsl3pve1980tO3kAbL8A=
-Received: from BN6PR11CA0068.namprd11.prod.outlook.com (2603:10b6:404:f7::30)
- by DM6PR02MB3962.namprd02.prod.outlook.com (2603:10b6:5:a2::33) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5123.31; Wed, 6 Apr
- 2022 17:43:08 +0000
-Received: from BN1NAM02FT030.eop-nam02.prod.protection.outlook.com
- (2603:10b6:404:f7:cafe::4d) by BN6PR11CA0068.outlook.office365.com
- (2603:10b6:404:f7::30) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5123.31 via Frontend
- Transport; Wed, 6 Apr 2022 17:43:08 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.80.198)
- smtp.mailfrom=xilinx.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.80.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.80.198; helo=xir-pvapexch02.xlnx.xilinx.com;
-Received: from xir-pvapexch02.xlnx.xilinx.com (149.199.80.198) by
- BN1NAM02FT030.mail.protection.outlook.com (10.13.2.144) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.5144.21 via Frontend Transport; Wed, 6 Apr 2022 17:43:07 +0000
-Received: from xir-pvapexch02.xlnx.xilinx.com (172.21.17.17) by
- xir-pvapexch02.xlnx.xilinx.com (172.21.17.17) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.14; Wed, 6 Apr 2022 18:43:05 +0100
-Received: from smtp.xilinx.com (172.21.105.198) by
- xir-pvapexch02.xlnx.xilinx.com (172.21.17.17) with Microsoft SMTP Server id
- 15.1.2176.14 via Frontend Transport; Wed, 6 Apr 2022 18:43:05 +0100
-Received: from [172.21.132.222] (port=48490 helo=localhost)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <edgar.iglesias@xilinx.com>)
- id 1nc9gP-0005RG-Cr; Wed, 06 Apr 2022 18:43:05 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH v1 3/4] hw/misc: Add a model of the Xilinx Versal CRL
-Date: Wed, 6 Apr 2022 18:43:02 +0100
-Message-ID: <20220406174303.2022038-4-edgar.iglesias@xilinx.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220406174303.2022038-1-edgar.iglesias@xilinx.com>
-References: <20220406174303.2022038-1-edgar.iglesias@xilinx.com>
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1ncAbH-0000d0-6s; Wed, 06 Apr 2022 14:41:53 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.nyi.internal (Postfix) with ESMTP id 7DB3C5C0183;
+ Wed,  6 Apr 2022 14:41:49 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute2.internal (MEProxy); Wed, 06 Apr 2022 14:41:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm3; bh=6+XqGsvn/ukGBhUEQbWvzHSWpuMTQe
+ dakN4clA1ThM4=; b=fPq3sgfSfPsZ0zwg1Q9z/HFGdM02NJpORR2rBplMOXORrG
+ FCRsxcL3qO1qbMJwLejWoOTuPXoJq+eeYES2n3CfL1DZ9J7399QXDXIBafGc6KNl
+ 3cisGC8EZ25YNZlPaxBE8b1Zk+FcntNbz9wyS3MbwYIQWJpltf1Coq+Eq8thWUwo
+ kN+1iQDJ8ZIaN3ZJoRYieRBwNjwL4eTKWjzT0MUSHdGr74Z/pG5uhfGoALVoNXza
+ H4WKjsFxnQWsOPCHiCnCEM1ygsz48fS/gK479MUrTSut4IFTVvrENqQ2NOp6npHn
+ 1XpNbA4pwtTqMvQe0S/sruHNM6NoVkrw8U2aPb9w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=6+XqGsvn/ukGBhUEQ
+ bWvzHSWpuMTQedakN4clA1ThM4=; b=f3Gx3IUQ+4u6tLYmvoNsqqOJxdft79E7O
+ uWXHDXFERVRpznWMqZKOcnN+nhbuf/jaird0fv/kIkDqtyQRCZUoGtpqsgU9NiTN
+ GpVb8K9hDc06C2r9cW0d3yHZMWvDMxjfwOxj5pwzRVBr/UhIZ0rGQxYMuQeQckP2
+ yBiapGUAP8v3FW5QnB4BjIYLMVPmZjLfApioKwOiB+YTSfXFWIrdQ9vauBmQ0NEr
+ 8Aot2A18E+O0Gbi2OAO6onXmCstAt3yhMmcwxoDHHm3LIAjxiO6DZBrUrTkidd1J
+ 6/KeEphp4UScvZrQJtUKNkdPBc0tLX4f9JzjCI0DfiFX0F7Sg3Frg==
+X-ME-Sender: <xms:695NYhk4M6nq5KOQhxfyXE7Zav-03k1K8emgBiFV6O7Qp9xNCMNowA>
+ <xme:695NYs10N7ymwNypFa10imX6mn1EtU_cU_V1prydOK7BseHam5M6wz2Kq279AKHMr
+ cl7d_em6V1yuNH5HtI>
+X-ME-Received: <xmr:695NYnpB6WDAlOpe9DJzSNgZvW7YQZqyj1CEhJsGFN1IeZ-2w0BF7bogB455-Q9ISSWjqbBA6JG8YthevVw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudejiedguddvkecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepmfhlrghu
+ shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
+ htvghrnhepjeegudffueeiteekieelkedvueelteevjeduieeludfffeejgeffhfduvddu
+ ffeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
+ htshesihhrrhgvlhgvvhgrnhhtrdgukh
+X-ME-Proxy: <xmx:695NYhnpf0HN9DIxePuZj4ecJ87EjcqUgVJ-e9rDKgKaOPqOHcpLEw>
+ <xmx:695NYv15MpwSl7dvPvywne3tFyCGHZtfcYPcsefoCCPbcUEfu0hUrA>
+ <xmx:695NYgvbOTccGCYjq151dnnQnwrSm33viCgG9T0MWC-PBRAuRG76pg>
+ <xmx:7d5NYtPuO59PSrCDBiJkVLBglNnnsnD8FkU4LJo7nGBmRNO99-FvjQ>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 6 Apr 2022 14:41:45 -0400 (EDT)
+Date: Wed, 6 Apr 2022 20:41:43 +0200
+From: Klaus Jensen <its@irrelevant.dk>
+To: Peter Delevoryas <pdel@fb.com>
+Subject: Re: [RFC PATCH 0/4] hw/i2c: i2c slave mode support
+Message-ID: <Yk3e50/gr+7RwNuY@apples>
+References: <20220331165737.1073520-1-its@irrelevant.dk>
+ <CA9A7D12-EA42-450B-B378-92D53D3D22EF@fb.com>
+ <Yk0uP2BHaOTBQDf2@apples>
+ <3BBAF589-4650-4F12-8343-828210B78FB4@fb.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 396b28e2-a671-45b2-5193-08da17f4e8fa
-X-MS-TrafficTypeDiagnostic: DM6PR02MB3962:EE_
-X-Microsoft-Antispam-PRVS: <DM6PR02MB39625BF74D02D286A227A083ABE79@DM6PR02MB3962.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: +MUvOmp0VBaSCbiPgUVd84xyczVUfa6hsqGNdfJORZVkuaSdTuIkguDLkvvU7iDNVNU8qeMJUm1mMG3ApS22lEmorslRANWeqcuqnGbJQ8t1z+FdkRAJpuNc3SN+dTLAxTk7uieTgIhPQz5eT2yG6tLdlEj2yw+v1FmexqQGanlTLDsh52ifxEpOw4bzvHmXPe/sB++Zsh/SgFi3o9LcEj811xmX9sMQcQYFhqzwuzQDXBGW4ejGM1AoE9bUf6L/5NHoEpd8lRZttpKHlzsQTRHdIDQ4g5w0ZKCdtbi7SO19GGk/nPamtr287J14kmJkW9GHS54pvcMoz6es0IGhluemgFmdwsTOJ7SP3XW/zGMFo6AtqfcWl6QKjZk6/KlTlfj4D3ZNz9D9hMrfGTAGd6lE3TlDMeeS4d5+MvCOFyIYQ5w3hkU7q/nP1LC7cNsh8MRykE1pZf5mdXTJoJ1CEW2/YjklCv6J/O0NwD2565GvVuiGCfBpqVeexHmbetpNQ+yjHUYi+JTw0ZUkDOW9jLAt6dY7KVFQqB/gpCXP624OPGf2R7MUO7bYvce2fvTQ9ozadx+PZxtUEJErlMIWFvsF5TLEnFC2RCM5YLQ6zOsHOeHrzpoUZzKDomCSS9Ve4qhCaI7n1/QxdZ6rDJveNsb6BPzpTTSzAf4dwsJ0UBp2fG0IJIxT2Lzq5BRHLEeH
-X-Forefront-Antispam-Report: CIP:149.199.80.198; CTRY:IE; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:xir-pvapexch02.xlnx.xilinx.com;
- PTR:unknown-80-198.xilinx.com; CAT:NONE;
- SFS:(13230001)(4636009)(46966006)(36840700001)(40470700004)(6916009)(2616005)(7636003)(30864003)(40460700003)(1076003)(83380400001)(5660300002)(186003)(26005)(54906003)(8936002)(9786002)(4326008)(2906002)(316002)(36756003)(82310400005)(6666004)(508600001)(36860700001)(356005)(70206006)(70586007)(426003)(8676002)(47076005)(336012);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Apr 2022 17:43:07.2962 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 396b28e2-a671-45b2-5193-08da17f4e8fa
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.80.198];
- Helo=[xir-pvapexch02.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN1NAM02FT030.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR02MB3962
-Received-SPF: pass client-ip=2a01:111:f400:fe59::628;
- envelope-from=edgari@xilinx.com;
- helo=NAM12-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="waiERP1w1YigxTqS"
+Content-Disposition: inline
+In-Reply-To: <3BBAF589-4650-4F12-8343-828210B78FB4@fb.com>
+Received-SPF: pass client-ip=66.111.4.28; envelope-from=its@irrelevant.dk;
+ helo=out4-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, luc@lmichel.fr,
- fkonrad@xilinx.com, edgar.iglesias@amd.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, f4bug@amsat.org, francisco.iglesias@xilinx.com,
- qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bLqGgT4heH4P
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
+ Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Klaus Jensen <k.jensen@samsung.com>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>, Jeremy Kerr <jk@ozlabs.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
+ Matt Johnston <matt@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kxPu0xm+0UoX
 
-From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
 
-Add a model of the Xilinx Versal CRL.
+--waiERP1w1YigxTqS
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
----
- hw/misc/meson.build               |   1 +
- hw/misc/xlnx-versal-crl.c         | 421 ++++++++++++++++++++++++++++++
- include/hw/misc/xlnx-versal-crl.h | 235 +++++++++++++++++
- 3 files changed, 657 insertions(+)
- create mode 100644 hw/misc/xlnx-versal-crl.c
- create mode 100644 include/hw/misc/xlnx-versal-crl.h
+On Apr  6 17:03, Peter Delevoryas wrote:
+>=20
+>=20
+> > On Apr 5, 2022, at 11:07 PM, Klaus Jensen <its@irrelevant.dk> wrote:
+> >=20
+> > On Apr 5 20:52, Peter Delevoryas wrote:
+> >>=20
+> >>=20
+> >>> On Mar 31, 2022, at 9:57 AM, Klaus Jensen <its@irrelevant.dk> wrote:
+> >>>=20
+> >>> From: Klaus Jensen <k.jensen@samsung.com>
+> >>>=20
+> >>> Hi all,
+> >>>=20
+> >>> This RFC series adds I2C "slave mode" support for the Aspeed I2C
+> >>> controller as well as the necessary infrastructure in the i2c core to
+> >>> support this.
+> >>>=20
+> >>> Background
+> >>> ~~~~~~~~~~
+> >>> We are working on an emulated NVM Express Management Interface[1] for
+> >>> testing and validation purposes. NVMe-MI is based on the MCTP
+> >>> protocol[2] which may use a variety of underlying transports. The one=
+ we
+> >>> are interested in is I2C[3].
+> >>>=20
+> >>> The first general trickery here is that all MCTP transactions are bas=
+ed
+> >>> on the SMBus Block Write bus protocol[4]. This means that the slave m=
+ust
+> >>> be able to master the bus to communicate. As you know, hw/i2c/core.c
+> >>> currently does not support this use case.
+> >>=20
+> >> This is great, I=E2=80=99m attempting to use your changes right now fo=
+r the same thing (MCTP).
+> >>=20
+> >=20
+> > Awesome!
+> >=20
+> >>>=20
+> >>> The second issue is how to interact with these mastering devices. Jer=
+emy
+> >>> and Matt (CC'ed) have been working on an MCTP stack for the Linux Ker=
+nel
+> >>> (already upstream) and an I2C binding driver[5] is currently under
+> >>> review. This binding driver relies on I2C slave mode support in the I=
+2C
+> >>> controller.
+> >>>=20
+> >>> This series
+> >>> ~~~~~~~~~~~
+> >>> Patch 1 adds support for multiple masters in the i2c core, allowing
+> >>> slaves to master the bus and safely issue i2c_send/recv(). Patch 2 ad=
+ds
+> >>> an asynchronous send i2c_send_async(I2CBus *, uint8) on the bus that
+> >>> must be paired with an explicit ack using i2c_ack(I2CBus *).
+> >>>=20
+> >>> Patch 3 adds the slave mode functionality to the emulated Aspeed I2C
+> >>> controller. The implementation is probably buggy since I had to rely =
+on
+> >>> the implementation of the kernel driver to reverse engineer the behav=
+ior
+> >>> of the controller slave mode (I do not have access to a spec sheet for
+> >>> the Aspeed, but maybe someone can help me out with that?).
+> >>>=20
+> >>> Finally, patch 4 adds an example device using this new API. The device
+> >>> is a simple "echo" device that upon being sent a set of bytes uses the
+> >>> first byte as the address of the slave to echo to.
+> >>>=20
+> >>> With this combined I am able to boot up Linux on an emulated Aspeed 2=
+600
+> >>> evaluation board and have the i2c echo device write into a Linux slave
+> >>> EEPROM. Assuming the echo device is on address 0x42:
+> >>>=20
+> >>> # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-15/new_device
+> >>> i2c i2c-15: new_device: Instantiated device slave-24c02 at 0x64
+> >>> # i2cset -y 15 0x42 0x64 0x00 0xaa i
+> >>> # hexdump /sys/bus/i2c/devices/15-1064/slave-eeprom
+> >>> 0000000 ffaa ffff ffff ffff ffff ffff ffff ffff
+> >>> 0000010 ffff ffff ffff ffff ffff ffff ffff ffff
+> >>> *
+> >>> 0000100
+> >>=20
+> >> When I try this with my system, it seems like the i2c-echo device take=
+s over
+> >> the bus but never echoes the data to the EEPROM. Am I missing somethin=
+g to
+> >> make this work? It seems like the =E2=80=9Ci2c_send_async=E2=80=9D cal=
+ls aren=E2=80=99t happening,
+> >> which must be because the bottom half isn=E2=80=99t being scheduled, r=
+ight? After
+> >> the i2c_do_start_transfer, how is the bottom half supposed to be sched=
+uled
+> >> again? Is the slave receiving (the EEPROM) supposed to call i2c_ack or=
+ something?
+> >>=20
+> >> root@bmc-oob:~# echo 24c02 0x1064 > /sys/bus/i2c/devices/i2c-8/new_dev=
+ice
+> >> [ 135.559719] at24 8-1064: 256 byte 24c02 EEPROM, writable, 1 bytes/wr=
+ite
+> >> [ 135.562661] i2c i2c-8: new_device: Instantiated device 24c02 at 0x64
+> >> root@bmc-oob:~# i2cset -y 8 0x42 0x64 0x00 0xaa i
+> >> i2c_echo_event: start send
+> >> i2c_echo_send: data[0] =3D 0x64
+> >> i2c_echo_send: data[1] =3D 0x00
+> >> i2c_echo_send: data[2] =3D 0xaa
+> >> i2c_echo_event: scheduling bottom-half
+> >> i2c_echo_bh: attempting to gain mastery of bus
+> >> i2c_echo_bh: starting a send to address 0x64
+> >> root@bmc-oob:~# hexdump -C /sys/bus/i2c/devices/8-1064/eeprom
+> >> 00000000 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 |............=
+=2E...|
+> >> *
+> >> 00000100
+> >>=20
+> >> Thanks again for this, it=E2=80=99s exactly what I needed.
+> >>=20
+> >=20
+> > Hmmm. The only obvious difference I see here is that I write
+> > "slave-24c02" and not just "24c02" to new_device. Not sure if that has
+> > any implications? Also, looks like your EEPROM is initialized with
+> > zeroes, mine is all ones. This hints at the device being instantiated is
+> > different. I'm also not seeing the 'at24', which upon looking in the
+> > kernel code is a different device?
+>=20
+> Are you letting the kernel control the EEPROM?
+>=20
+> If I actually let the kernel control it, then I can=E2=80=99t use i2cset,=
+ because
+> the kernel seems to be keeping the bus busy/etc. I tried i2c bus 9 this t=
+ime.
+>=20
+> root@bmc-oob:~# i2cset -y 9 0x64 0x00 0xaa i
+> Error: Could not set address to 0x64: Device or resource busy
+>=20
+> However, if I don=E2=80=99t instantiate a kernel device, and I just use i=
+2cset/i2cget,
+> I can control the EEPROM:
+>=20
+> root@bmc-oob:~# i2cset -y 9 0x64 0x00 0xcc i
+> root@bmc-oob:~# i2cget -y 9 0x64 0x00 i
+> 0xcc 0xb9 0x4d 0xe1 0x42 0x56 0x00 0x00 0xc5 0x5b 0x28 0xe1 0x42 0x56 0x0=
+0 0x00 0x00 0x61 0x13 0xe2 0x42 0x56 0x00 0x00 0xb7 0x64 0x28 0xe1 0x42
+>  0x56 0x00 0x00
+>=20
+> Unfortunately, i2c-echo still doesn=E2=80=99t seem to send its data:
+>=20
+> root@bmc-oob:~# i2cset -y 9 0x42 0x64 0x00 0xaa i
+> i2c_echo_event: start send
+> i2c_echo_send: data[0] =3D 0x64
+> i2c_echo_send: data[1] =3D 0x00
+> i2c_echo_send: data[2] =3D 0xaa
+> i2c_echo_event: scheduling bottom-half
+> i2c_echo_bh: attempting to gain mastery of bus
+> i2c_echo_bh: starting a send to address 0x64
+>=20
+> What is the exact sequence of events once i2c-echo
+> starts a new transfer? Does the slave device ACK
+> the start, or does it just wait for data to be sent?
+>=20
+> And then if I try to read the EEPROM:
+>=20
+> root@bmc-oob:~# i2cget -y 9 0x64 0x00 i
+> smbus: error: Unexpected send start condition in state 1
+> smbus: error: Unexpected write in state -1
+> smbus: error: Unexpected recv start condition in state -1
+> smbus: error: Unexpected read in state -1
+> smbus: error: Unexpected read in state -1
+> smbus: error: Unexpected read in state -1
+>=20
+> I=E2=80=99ll try debugging/refactoring further to see why it=E2=80=99s no=
+t working.
+>=20
+> By the way, this is my i2c_init code in QEMU to ensure
+> a QEMU EEPROM model is present:
+>=20
+> static void fby35_i2c_init(AspeedMachineState *bmc)
+> {
+>     I2CBus *i2c[16];
+>=20
+>     for (int i =3D 0; i < 16; i++) {
+>         i2c[i] =3D aspeed_i2c_get_bus(&bmc->soc.i2c, i);
+>         assert(i2c[i] !=3D NULL);
+>     }
+>=20
+>     i2c_slave_create_simple(i2c[9], "i2c-echo", 0x42);
+>     uint8_t buf[256] =3D {0xff};
+>     smbus_eeprom_init_one(i2c[9], 0x64, buf);
+> }
+>=20
+> This is an AST2600-based board too.
+>=20
 
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 6fb69612e0..2ff05c7afa 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -86,6 +86,7 @@ softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
- softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
- specific_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-crf.c'))
- specific_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-apu-ctrl.c'))
-+specific_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-crl.c'))
- softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files(
-   'xlnx-versal-xramc.c',
-   'xlnx-versal-pmc-iou-slcr.c',
-diff --git a/hw/misc/xlnx-versal-crl.c b/hw/misc/xlnx-versal-crl.c
-new file mode 100644
-index 0000000000..767106b7a3
---- /dev/null
-+++ b/hw/misc/xlnx-versal-crl.c
-@@ -0,0 +1,421 @@
-+/*
-+ * QEMU model of the Clock-Reset-LPD (CRL).
-+ *
-+ * Copyright (c) 2022 Advanced Micro Devices, Inc.
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Written by Edgar E. Iglesias <edgar.iglesias@amd.com>
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+#include "qemu/bitops.h"
-+#include "migration/vmstate.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/sysbus.h"
-+#include "hw/irq.h"
-+#include "hw/register.h"
-+#include "hw/resettable.h"
-+
-+#include "target/arm/arm-powerctl.h"
-+#include "hw/misc/xlnx-versal-crl.h"
-+
-+#ifndef XLNX_VERSAL_CRL_ERR_DEBUG
-+#define XLNX_VERSAL_CRL_ERR_DEBUG 0
-+#endif
-+
-+static void crl_update_irq(XlnxVersalCRL *s)
-+{
-+    bool pending = s->regs[R_IR_STATUS] & ~s->regs[R_IR_MASK];
-+    qemu_set_irq(s->irq, pending);
-+}
-+
-+static void crl_status_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(reg->opaque);
-+    crl_update_irq(s);
-+}
-+
-+static uint64_t crl_enable_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_IR_MASK] &= ~val;
-+    crl_update_irq(s);
-+    return 0;
-+}
-+
-+static uint64_t crl_disable_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_IR_MASK] |= val;
-+    crl_update_irq(s);
-+    return 0;
-+}
-+
-+static void crl_reset_dev(XlnxVersalCRL *s, DeviceState *dev,
-+                          bool rst_old, bool rst_new)
-+{
-+    device_cold_reset(dev);
-+}
-+
-+static void crl_reset_cpu(XlnxVersalCRL *s, ARMCPU *armcpu,
-+                          bool rst_old, bool rst_new)
-+{
-+    if (rst_new) {
-+        arm_set_cpu_off(armcpu->mp_affinity);
-+    } else {
-+        arm_set_cpu_on_and_reset(armcpu->mp_affinity);
-+    }
-+}
-+
-+#define REGFIELD_RESET(type, s, reg, f, new_val, dev) {     \
-+    bool old_f = ARRAY_FIELD_EX32((s)->regs, reg, f);       \
-+    bool new_f = FIELD_EX32(new_val, reg, f);               \
-+                                                            \
-+    /* Detect edges.  */                                    \
-+    if (dev && old_f != new_f) {                            \
-+        crl_reset_ ## type(s, dev, old_f, new_f);           \
-+    }                                                       \
-+}
-+
-+static uint64_t crl_rst_r5_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(reg->opaque);
-+
-+    REGFIELD_RESET(cpu, s, RST_CPU_R5, RESET_CPU0, val64, s->cfg.cpu_r5[0]);
-+    REGFIELD_RESET(cpu, s, RST_CPU_R5, RESET_CPU1, val64, s->cfg.cpu_r5[1]);
-+    return val64;
-+}
-+
-+static uint64_t crl_rst_adma_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(reg->opaque);
-+    int i;
-+
-+    /* A single register fans out to all ADMA reset inputs.  */
-+    for (i = 0; i < ARRAY_SIZE(s->cfg.adma); i++) {
-+        REGFIELD_RESET(dev, s, RST_ADMA, RESET, val64, s->cfg.adma[i]);
-+    }
-+    return val64;
-+}
-+
-+static uint64_t crl_rst_uart0_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(reg->opaque);
-+
-+    REGFIELD_RESET(dev, s, RST_UART0, RESET, val64, s->cfg.uart[0]);
-+    return val64;
-+}
-+
-+static uint64_t crl_rst_uart1_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(reg->opaque);
-+
-+    REGFIELD_RESET(dev, s, RST_UART1, RESET, val64, s->cfg.uart[1]);
-+    return val64;
-+}
-+
-+static uint64_t crl_rst_gem0_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(reg->opaque);
-+
-+    REGFIELD_RESET(dev, s, RST_GEM0, RESET, val64, s->cfg.gem[0]);
-+    return val64;
-+}
-+
-+static uint64_t crl_rst_gem1_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(reg->opaque);
-+
-+    REGFIELD_RESET(dev, s, RST_GEM1, RESET, val64, s->cfg.gem[1]);
-+    return val64;
-+}
-+
-+static uint64_t crl_rst_usb_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(reg->opaque);
-+
-+    REGFIELD_RESET(dev, s, RST_USB0, RESET, val64, s->cfg.usb);
-+    return val64;
-+}
-+
-+static const RegisterAccessInfo crl_regs_info[] = {
-+    {   .name = "ERR_CTRL",  .addr = A_ERR_CTRL,
-+    },{ .name = "IR_STATUS",  .addr = A_IR_STATUS,
-+        .w1c = 0x1,
-+        .post_write = crl_status_postw,
-+    },{ .name = "IR_MASK",  .addr = A_IR_MASK,
-+        .reset = 0x1,
-+        .ro = 0x1,
-+    },{ .name = "IR_ENABLE",  .addr = A_IR_ENABLE,
-+        .pre_write = crl_enable_prew,
-+    },{ .name = "IR_DISABLE",  .addr = A_IR_DISABLE,
-+        .pre_write = crl_disable_prew,
-+    },{ .name = "WPROT",  .addr = A_WPROT,
-+    },{ .name = "PLL_CLK_OTHER_DMN",  .addr = A_PLL_CLK_OTHER_DMN,
-+        .reset = 0x1,
-+        .rsvd = 0xe,
-+    },{ .name = "RPLL_CTRL",  .addr = A_RPLL_CTRL,
-+        .reset = 0x24809,
-+        .rsvd = 0xf88c00f6,
-+    },{ .name = "RPLL_CFG",  .addr = A_RPLL_CFG,
-+        .reset = 0x2000000,
-+        .rsvd = 0x1801210,
-+    },{ .name = "RPLL_FRAC_CFG",  .addr = A_RPLL_FRAC_CFG,
-+        .rsvd = 0x7e330000,
-+    },{ .name = "PLL_STATUS",  .addr = A_PLL_STATUS,
-+        .reset = R_PLL_STATUS_RPLL_STABLE_MASK |
-+                 R_PLL_STATUS_RPLL_LOCK_MASK,
-+        .rsvd = 0xfa,
-+        .ro = 0x5,
-+    },{ .name = "RPLL_TO_XPD_CTRL",  .addr = A_RPLL_TO_XPD_CTRL,
-+        .reset = 0x2000100,
-+        .rsvd = 0xfdfc00ff,
-+    },{ .name = "LPD_TOP_SWITCH_CTRL",  .addr = A_LPD_TOP_SWITCH_CTRL,
-+        .reset = 0x6000300,
-+        .rsvd = 0xf9fc00f8,
-+    },{ .name = "LPD_LSBUS_CTRL",  .addr = A_LPD_LSBUS_CTRL,
-+        .reset = 0x2000800,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "CPU_R5_CTRL",  .addr = A_CPU_R5_CTRL,
-+        .reset = 0xe000300,
-+        .rsvd = 0xe1fc00f8,
-+    },{ .name = "IOU_SWITCH_CTRL",  .addr = A_IOU_SWITCH_CTRL,
-+        .reset = 0x2000500,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "GEM0_REF_CTRL",  .addr = A_GEM0_REF_CTRL,
-+        .reset = 0xe000a00,
-+        .rsvd = 0xf1fc00f8,
-+    },{ .name = "GEM1_REF_CTRL",  .addr = A_GEM1_REF_CTRL,
-+        .reset = 0xe000a00,
-+        .rsvd = 0xf1fc00f8,
-+    },{ .name = "GEM_TSU_REF_CTRL",  .addr = A_GEM_TSU_REF_CTRL,
-+        .reset = 0x300,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "USB0_BUS_REF_CTRL",  .addr = A_USB0_BUS_REF_CTRL,
-+        .reset = 0x2001900,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "UART0_REF_CTRL",  .addr = A_UART0_REF_CTRL,
-+        .reset = 0xc00,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "UART1_REF_CTRL",  .addr = A_UART1_REF_CTRL,
-+        .reset = 0xc00,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "SPI0_REF_CTRL",  .addr = A_SPI0_REF_CTRL,
-+        .reset = 0x600,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "SPI1_REF_CTRL",  .addr = A_SPI1_REF_CTRL,
-+        .reset = 0x600,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "CAN0_REF_CTRL",  .addr = A_CAN0_REF_CTRL,
-+        .reset = 0xc00,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "CAN1_REF_CTRL",  .addr = A_CAN1_REF_CTRL,
-+        .reset = 0xc00,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "I2C0_REF_CTRL",  .addr = A_I2C0_REF_CTRL,
-+        .reset = 0xc00,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "I2C1_REF_CTRL",  .addr = A_I2C1_REF_CTRL,
-+        .reset = 0xc00,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "DBG_LPD_CTRL",  .addr = A_DBG_LPD_CTRL,
-+        .reset = 0x300,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "TIMESTAMP_REF_CTRL",  .addr = A_TIMESTAMP_REF_CTRL,
-+        .reset = 0x2000c00,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "CRL_SAFETY_CHK",  .addr = A_CRL_SAFETY_CHK,
-+    },{ .name = "PSM_REF_CTRL",  .addr = A_PSM_REF_CTRL,
-+        .reset = 0xf04,
-+        .rsvd = 0xfffc00f8,
-+    },{ .name = "DBG_TSTMP_CTRL",  .addr = A_DBG_TSTMP_CTRL,
-+        .reset = 0x300,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "CPM_TOPSW_REF_CTRL",  .addr = A_CPM_TOPSW_REF_CTRL,
-+        .reset = 0x300,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "USB3_DUAL_REF_CTRL",  .addr = A_USB3_DUAL_REF_CTRL,
-+        .reset = 0x3c00,
-+        .rsvd = 0xfdfc00f8,
-+    },{ .name = "RST_CPU_R5",  .addr = A_RST_CPU_R5,
-+        .reset = 0x17,
-+        .rsvd = 0x8,
-+        .pre_write = crl_rst_r5_prew,
-+    },{ .name = "RST_ADMA",  .addr = A_RST_ADMA,
-+        .reset = 0x1,
-+        .pre_write = crl_rst_adma_prew,
-+    },{ .name = "RST_GEM0",  .addr = A_RST_GEM0,
-+        .reset = 0x1,
-+        .pre_write = crl_rst_gem0_prew,
-+    },{ .name = "RST_GEM1",  .addr = A_RST_GEM1,
-+        .reset = 0x1,
-+        .pre_write = crl_rst_gem1_prew,
-+    },{ .name = "RST_SPARE",  .addr = A_RST_SPARE,
-+        .reset = 0x1,
-+    },{ .name = "RST_USB0",  .addr = A_RST_USB0,
-+        .reset = 0x1,
-+        .pre_write = crl_rst_usb_prew,
-+    },{ .name = "RST_UART0",  .addr = A_RST_UART0,
-+        .reset = 0x1,
-+        .pre_write = crl_rst_uart0_prew,
-+    },{ .name = "RST_UART1",  .addr = A_RST_UART1,
-+        .reset = 0x1,
-+        .pre_write = crl_rst_uart1_prew,
-+    },{ .name = "RST_SPI0",  .addr = A_RST_SPI0,
-+        .reset = 0x1,
-+    },{ .name = "RST_SPI1",  .addr = A_RST_SPI1,
-+        .reset = 0x1,
-+    },{ .name = "RST_CAN0",  .addr = A_RST_CAN0,
-+        .reset = 0x1,
-+    },{ .name = "RST_CAN1",  .addr = A_RST_CAN1,
-+        .reset = 0x1,
-+    },{ .name = "RST_I2C0",  .addr = A_RST_I2C0,
-+        .reset = 0x1,
-+    },{ .name = "RST_I2C1",  .addr = A_RST_I2C1,
-+        .reset = 0x1,
-+    },{ .name = "RST_DBG_LPD",  .addr = A_RST_DBG_LPD,
-+        .reset = 0x33,
-+        .rsvd = 0xcc,
-+    },{ .name = "RST_GPIO",  .addr = A_RST_GPIO,
-+        .reset = 0x1,
-+    },{ .name = "RST_TTC",  .addr = A_RST_TTC,
-+        .reset = 0xf,
-+    },{ .name = "RST_TIMESTAMP",  .addr = A_RST_TIMESTAMP,
-+        .reset = 0x1,
-+    },{ .name = "RST_SWDT",  .addr = A_RST_SWDT,
-+        .reset = 0x1,
-+    },{ .name = "RST_OCM",  .addr = A_RST_OCM,
-+    },{ .name = "RST_IPI",  .addr = A_RST_IPI,
-+    },{ .name = "RST_FPD",  .addr = A_RST_FPD,
-+        .reset = 0x3,
-+    },{ .name = "PSM_RST_MODE",  .addr = A_PSM_RST_MODE,
-+        .reset = 0x1,
-+        .rsvd = 0xf8,
-+    }
-+};
-+
-+static void crl_reset_enter(Object *obj, ResetType type)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(obj);
-+    unsigned int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-+        register_reset(&s->regs_info[i]);
-+    }
-+}
-+
-+static void crl_reset_hold(Object *obj)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(obj);
-+
-+    crl_update_irq(s);
-+}
-+
-+static const MemoryRegionOps crl_ops = {
-+    .read = register_read_memory,
-+    .write = register_write_memory,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void crl_init(Object *obj)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    int i;
-+
-+    s->reg_array =
-+        register_init_block32(DEVICE(obj), crl_regs_info,
-+                              ARRAY_SIZE(crl_regs_info),
-+                              s->regs_info, s->regs,
-+                              &crl_ops,
-+                              XLNX_VERSAL_CRL_ERR_DEBUG,
-+                              CRL_R_MAX * 4);
-+    sysbus_init_mmio(sbd, &s->reg_array->mem);
-+    sysbus_init_irq(sbd, &s->irq);
-+
-+    for (i = 0; i < ARRAY_SIZE(s->cfg.cpu_r5); ++i) {
-+        object_property_add_link(obj, "cpu_r5[*]", TYPE_ARM_CPU,
-+                                 (Object **)&s->cfg.cpu_r5[i],
-+                                 qdev_prop_allow_set_link_before_realize,
-+                                 OBJ_PROP_LINK_STRONG);
-+    }
-+
-+    for (i = 0; i < ARRAY_SIZE(s->cfg.adma); ++i) {
-+        object_property_add_link(obj, "adma[*]", TYPE_DEVICE,
-+                                 (Object **)&s->cfg.adma[i],
-+                                 qdev_prop_allow_set_link_before_realize,
-+                                 OBJ_PROP_LINK_STRONG);
-+    }
-+
-+    for (i = 0; i < ARRAY_SIZE(s->cfg.uart); ++i) {
-+        object_property_add_link(obj, "uart[*]", TYPE_DEVICE,
-+                                 (Object **)&s->cfg.uart[i],
-+                                 qdev_prop_allow_set_link_before_realize,
-+                                 OBJ_PROP_LINK_STRONG);
-+    }
-+
-+    for (i = 0; i < ARRAY_SIZE(s->cfg.gem); ++i) {
-+        object_property_add_link(obj, "gem[*]", TYPE_DEVICE,
-+                                 (Object **)&s->cfg.gem[i],
-+                                 qdev_prop_allow_set_link_before_realize,
-+                                 OBJ_PROP_LINK_STRONG);
-+    }
-+
-+    object_property_add_link(obj, "usb", TYPE_DEVICE,
-+                             (Object **)&s->cfg.gem[i],
-+                             qdev_prop_allow_set_link_before_realize,
-+                             OBJ_PROP_LINK_STRONG);
-+}
-+
-+static void crl_finalize(Object *obj)
-+{
-+    XlnxVersalCRL *s = XLNX_VERSAL_CRL(obj);
-+    register_finalize_block(s->reg_array);
-+}
-+
-+static const VMStateDescription vmstate_crl = {
-+    .name = TYPE_XLNX_VERSAL_CRL,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, XlnxVersalCRL, CRL_R_MAX),
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static void crl_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_crl;
-+
-+    rc->phases.enter = crl_reset_enter;
-+    rc->phases.hold = crl_reset_hold;
-+}
-+
-+static const TypeInfo crl_info = {
-+    .name          = TYPE_XLNX_VERSAL_CRL,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(XlnxVersalCRL),
-+    .class_init    = crl_class_init,
-+    .instance_init = crl_init,
-+    .instance_finalize = crl_finalize,
-+};
-+
-+static void crl_register_types(void)
-+{
-+    type_register_static(&crl_info);
-+}
-+
-+type_init(crl_register_types)
-diff --git a/include/hw/misc/xlnx-versal-crl.h b/include/hw/misc/xlnx-versal-crl.h
-new file mode 100644
-index 0000000000..2857f4169a
---- /dev/null
-+++ b/include/hw/misc/xlnx-versal-crl.h
-@@ -0,0 +1,235 @@
-+/*
-+ * QEMU model of the Clock-Reset-LPD (CRL).
-+ *
-+ * Copyright (c) 2022 Xilinx Inc.
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-+ */
-+#ifndef HW_MISC_XLNX_VERSAL_CRL_H
-+#define HW_MISC_XLNX_VERSAL_CRL_H
-+
-+#include "hw/sysbus.h"
-+#include "hw/register.h"
-+#include "target/arm/cpu.h"
-+
-+#define TYPE_XLNX_VERSAL_CRL "xlnx,versal-crl"
-+OBJECT_DECLARE_SIMPLE_TYPE(XlnxVersalCRL, XLNX_VERSAL_CRL)
-+
-+REG32(ERR_CTRL, 0x0)
-+    FIELD(ERR_CTRL, SLVERR_ENABLE, 0, 1)
-+REG32(IR_STATUS, 0x4)
-+    FIELD(IR_STATUS, ADDR_DECODE_ERR, 0, 1)
-+REG32(IR_MASK, 0x8)
-+    FIELD(IR_MASK, ADDR_DECODE_ERR, 0, 1)
-+REG32(IR_ENABLE, 0xc)
-+    FIELD(IR_ENABLE, ADDR_DECODE_ERR, 0, 1)
-+REG32(IR_DISABLE, 0x10)
-+    FIELD(IR_DISABLE, ADDR_DECODE_ERR, 0, 1)
-+REG32(WPROT, 0x1c)
-+    FIELD(WPROT, ACTIVE, 0, 1)
-+REG32(PLL_CLK_OTHER_DMN, 0x20)
-+    FIELD(PLL_CLK_OTHER_DMN, APLL_BYPASS, 0, 1)
-+REG32(RPLL_CTRL, 0x40)
-+    FIELD(RPLL_CTRL, POST_SRC, 24, 3)
-+    FIELD(RPLL_CTRL, PRE_SRC, 20, 3)
-+    FIELD(RPLL_CTRL, CLKOUTDIV, 16, 2)
-+    FIELD(RPLL_CTRL, FBDIV, 8, 8)
-+    FIELD(RPLL_CTRL, BYPASS, 3, 1)
-+    FIELD(RPLL_CTRL, RESET, 0, 1)
-+REG32(RPLL_CFG, 0x44)
-+    FIELD(RPLL_CFG, LOCK_DLY, 25, 7)
-+    FIELD(RPLL_CFG, LOCK_CNT, 13, 10)
-+    FIELD(RPLL_CFG, LFHF, 10, 2)
-+    FIELD(RPLL_CFG, CP, 5, 4)
-+    FIELD(RPLL_CFG, RES, 0, 4)
-+REG32(RPLL_FRAC_CFG, 0x48)
-+    FIELD(RPLL_FRAC_CFG, ENABLED, 31, 1)
-+    FIELD(RPLL_FRAC_CFG, SEED, 22, 3)
-+    FIELD(RPLL_FRAC_CFG, ALGRTHM, 19, 1)
-+    FIELD(RPLL_FRAC_CFG, ORDER, 18, 1)
-+    FIELD(RPLL_FRAC_CFG, DATA, 0, 16)
-+REG32(PLL_STATUS, 0x50)
-+    FIELD(PLL_STATUS, RPLL_STABLE, 2, 1)
-+    FIELD(PLL_STATUS, RPLL_LOCK, 0, 1)
-+REG32(RPLL_TO_XPD_CTRL, 0x100)
-+    FIELD(RPLL_TO_XPD_CTRL, CLKACT, 25, 1)
-+    FIELD(RPLL_TO_XPD_CTRL, DIVISOR0, 8, 10)
-+REG32(LPD_TOP_SWITCH_CTRL, 0x104)
-+    FIELD(LPD_TOP_SWITCH_CTRL, CLKACT_ADMA, 26, 1)
-+    FIELD(LPD_TOP_SWITCH_CTRL, CLKACT, 25, 1)
-+    FIELD(LPD_TOP_SWITCH_CTRL, DIVISOR0, 8, 10)
-+    FIELD(LPD_TOP_SWITCH_CTRL, SRCSEL, 0, 3)
-+REG32(LPD_LSBUS_CTRL, 0x108)
-+    FIELD(LPD_LSBUS_CTRL, CLKACT, 25, 1)
-+    FIELD(LPD_LSBUS_CTRL, DIVISOR0, 8, 10)
-+    FIELD(LPD_LSBUS_CTRL, SRCSEL, 0, 3)
-+REG32(CPU_R5_CTRL, 0x10c)
-+    FIELD(CPU_R5_CTRL, CLKACT_OCM2, 28, 1)
-+    FIELD(CPU_R5_CTRL, CLKACT_OCM, 27, 1)
-+    FIELD(CPU_R5_CTRL, CLKACT_CORE, 26, 1)
-+    FIELD(CPU_R5_CTRL, CLKACT, 25, 1)
-+    FIELD(CPU_R5_CTRL, DIVISOR0, 8, 10)
-+    FIELD(CPU_R5_CTRL, SRCSEL, 0, 3)
-+REG32(IOU_SWITCH_CTRL, 0x114)
-+    FIELD(IOU_SWITCH_CTRL, CLKACT, 25, 1)
-+    FIELD(IOU_SWITCH_CTRL, DIVISOR0, 8, 10)
-+    FIELD(IOU_SWITCH_CTRL, SRCSEL, 0, 3)
-+REG32(GEM0_REF_CTRL, 0x118)
-+    FIELD(GEM0_REF_CTRL, CLKACT_RX, 27, 1)
-+    FIELD(GEM0_REF_CTRL, CLKACT_TX, 26, 1)
-+    FIELD(GEM0_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(GEM0_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(GEM0_REF_CTRL, SRCSEL, 0, 3)
-+REG32(GEM1_REF_CTRL, 0x11c)
-+    FIELD(GEM1_REF_CTRL, CLKACT_RX, 27, 1)
-+    FIELD(GEM1_REF_CTRL, CLKACT_TX, 26, 1)
-+    FIELD(GEM1_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(GEM1_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(GEM1_REF_CTRL, SRCSEL, 0, 3)
-+REG32(GEM_TSU_REF_CTRL, 0x120)
-+    FIELD(GEM_TSU_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(GEM_TSU_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(GEM_TSU_REF_CTRL, SRCSEL, 0, 3)
-+REG32(USB0_BUS_REF_CTRL, 0x124)
-+    FIELD(USB0_BUS_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(USB0_BUS_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(USB0_BUS_REF_CTRL, SRCSEL, 0, 3)
-+REG32(UART0_REF_CTRL, 0x128)
-+    FIELD(UART0_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(UART0_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(UART0_REF_CTRL, SRCSEL, 0, 3)
-+REG32(UART1_REF_CTRL, 0x12c)
-+    FIELD(UART1_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(UART1_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(UART1_REF_CTRL, SRCSEL, 0, 3)
-+REG32(SPI0_REF_CTRL, 0x130)
-+    FIELD(SPI0_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(SPI0_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(SPI0_REF_CTRL, SRCSEL, 0, 3)
-+REG32(SPI1_REF_CTRL, 0x134)
-+    FIELD(SPI1_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(SPI1_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(SPI1_REF_CTRL, SRCSEL, 0, 3)
-+REG32(CAN0_REF_CTRL, 0x138)
-+    FIELD(CAN0_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(CAN0_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(CAN0_REF_CTRL, SRCSEL, 0, 3)
-+REG32(CAN1_REF_CTRL, 0x13c)
-+    FIELD(CAN1_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(CAN1_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(CAN1_REF_CTRL, SRCSEL, 0, 3)
-+REG32(I2C0_REF_CTRL, 0x140)
-+    FIELD(I2C0_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(I2C0_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(I2C0_REF_CTRL, SRCSEL, 0, 3)
-+REG32(I2C1_REF_CTRL, 0x144)
-+    FIELD(I2C1_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(I2C1_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(I2C1_REF_CTRL, SRCSEL, 0, 3)
-+REG32(DBG_LPD_CTRL, 0x148)
-+    FIELD(DBG_LPD_CTRL, CLKACT, 25, 1)
-+    FIELD(DBG_LPD_CTRL, DIVISOR0, 8, 10)
-+    FIELD(DBG_LPD_CTRL, SRCSEL, 0, 3)
-+REG32(TIMESTAMP_REF_CTRL, 0x14c)
-+    FIELD(TIMESTAMP_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(TIMESTAMP_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(TIMESTAMP_REF_CTRL, SRCSEL, 0, 3)
-+REG32(CRL_SAFETY_CHK, 0x150)
-+REG32(PSM_REF_CTRL, 0x154)
-+    FIELD(PSM_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(PSM_REF_CTRL, SRCSEL, 0, 3)
-+REG32(DBG_TSTMP_CTRL, 0x158)
-+    FIELD(DBG_TSTMP_CTRL, CLKACT, 25, 1)
-+    FIELD(DBG_TSTMP_CTRL, DIVISOR0, 8, 10)
-+    FIELD(DBG_TSTMP_CTRL, SRCSEL, 0, 3)
-+REG32(CPM_TOPSW_REF_CTRL, 0x15c)
-+    FIELD(CPM_TOPSW_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(CPM_TOPSW_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(CPM_TOPSW_REF_CTRL, SRCSEL, 0, 3)
-+REG32(USB3_DUAL_REF_CTRL, 0x160)
-+    FIELD(USB3_DUAL_REF_CTRL, CLKACT, 25, 1)
-+    FIELD(USB3_DUAL_REF_CTRL, DIVISOR0, 8, 10)
-+    FIELD(USB3_DUAL_REF_CTRL, SRCSEL, 0, 3)
-+REG32(RST_CPU_R5, 0x300)
-+    FIELD(RST_CPU_R5, RESET_PGE, 4, 1)
-+    FIELD(RST_CPU_R5, RESET_AMBA, 2, 1)
-+    FIELD(RST_CPU_R5, RESET_CPU1, 1, 1)
-+    FIELD(RST_CPU_R5, RESET_CPU0, 0, 1)
-+REG32(RST_ADMA, 0x304)
-+    FIELD(RST_ADMA, RESET, 0, 1)
-+REG32(RST_GEM0, 0x308)
-+    FIELD(RST_GEM0, RESET, 0, 1)
-+REG32(RST_GEM1, 0x30c)
-+    FIELD(RST_GEM1, RESET, 0, 1)
-+REG32(RST_SPARE, 0x310)
-+    FIELD(RST_SPARE, RESET, 0, 1)
-+REG32(RST_USB0, 0x314)
-+    FIELD(RST_USB0, RESET, 0, 1)
-+REG32(RST_UART0, 0x318)
-+    FIELD(RST_UART0, RESET, 0, 1)
-+REG32(RST_UART1, 0x31c)
-+    FIELD(RST_UART1, RESET, 0, 1)
-+REG32(RST_SPI0, 0x320)
-+    FIELD(RST_SPI0, RESET, 0, 1)
-+REG32(RST_SPI1, 0x324)
-+    FIELD(RST_SPI1, RESET, 0, 1)
-+REG32(RST_CAN0, 0x328)
-+    FIELD(RST_CAN0, RESET, 0, 1)
-+REG32(RST_CAN1, 0x32c)
-+    FIELD(RST_CAN1, RESET, 0, 1)
-+REG32(RST_I2C0, 0x330)
-+    FIELD(RST_I2C0, RESET, 0, 1)
-+REG32(RST_I2C1, 0x334)
-+    FIELD(RST_I2C1, RESET, 0, 1)
-+REG32(RST_DBG_LPD, 0x338)
-+    FIELD(RST_DBG_LPD, RPU_DBG1_RESET, 5, 1)
-+    FIELD(RST_DBG_LPD, RPU_DBG0_RESET, 4, 1)
-+    FIELD(RST_DBG_LPD, RESET_HSDP, 1, 1)
-+    FIELD(RST_DBG_LPD, RESET, 0, 1)
-+REG32(RST_GPIO, 0x33c)
-+    FIELD(RST_GPIO, RESET, 0, 1)
-+REG32(RST_TTC, 0x344)
-+    FIELD(RST_TTC, TTC3_RESET, 3, 1)
-+    FIELD(RST_TTC, TTC2_RESET, 2, 1)
-+    FIELD(RST_TTC, TTC1_RESET, 1, 1)
-+    FIELD(RST_TTC, TTC0_RESET, 0, 1)
-+REG32(RST_TIMESTAMP, 0x348)
-+    FIELD(RST_TIMESTAMP, RESET, 0, 1)
-+REG32(RST_SWDT, 0x34c)
-+    FIELD(RST_SWDT, RESET, 0, 1)
-+REG32(RST_OCM, 0x350)
-+    FIELD(RST_OCM, RESET, 0, 1)
-+REG32(RST_IPI, 0x354)
-+    FIELD(RST_IPI, RESET, 0, 1)
-+REG32(RST_SYSMON, 0x358)
-+    FIELD(RST_SYSMON, SEQ_RST, 1, 1)
-+    FIELD(RST_SYSMON, CFG_RST, 0, 1)
-+REG32(RST_FPD, 0x360)
-+    FIELD(RST_FPD, SRST, 1, 1)
-+    FIELD(RST_FPD, POR, 0, 1)
-+REG32(PSM_RST_MODE, 0x370)
-+    FIELD(PSM_RST_MODE, WAKEUP, 2, 1)
-+    FIELD(PSM_RST_MODE, RST_MODE, 0, 2)
-+
-+#define CRL_R_MAX (R_PSM_RST_MODE + 1)
-+
-+#define RPU_MAX_CPU 2
-+
-+struct XlnxVersalCRL {
-+    SysBusDevice parent_obj;
-+    qemu_irq irq;
-+
-+    struct {
-+        ARMCPU *cpu_r5[RPU_MAX_CPU];
-+        DeviceState *adma[8];
-+        DeviceState *uart[2];
-+        DeviceState *gem[2];
-+        DeviceState *usb;
-+    } cfg;
-+
-+    RegisterInfoArray *reg_array;
-+    uint32_t regs[CRL_R_MAX];
-+    RegisterInfo regs_info[CRL_R_MAX];
-+};
-+#endif
--- 
-2.25.1
+Oh. You are trying to echo to an actual EEPROM device on the board? In
+that case yes. The new async API currently only works with the slave
+device on the i2c controller. The i2c echo device cannot talk to any
+other slave devices since they do not implement the asynchronous send.
 
+--waiERP1w1YigxTqS
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmJN3uAACgkQTeGvMW1P
+Dem3AggAlOWgAi3nwXXD3LxBZJ61U15BVsyT9mqzmaYXNCb+PbkzVbh8h3J8RG8l
+wGVFYP/JpZCR5Gx7qvRPZfQh2HOZTeepO4FR/JUcaGsPJy7VMXM15vLwt6p/9vM1
+V1uD2uCBR7vs8JfgIM2n5Oupr3Y74QfFjH3m/of3YDkb7oXfvJN14niY4ayfNceo
+BtwfUrNR053un6m8bwSPQ0KN++tbeg9GKZwiXzCAyczYGPl0W6z3HeT5qx9LvGLd
+CO5tgjlAJwzCr7kfnDhgjCs2qo/07wYaZqhs6Y2IuPSPTI5ZEXoS9NnHdGzJY0aH
+fMZXjU9AJpXF9dEL9h0GD7ZXirDVxQ==
+=C38N
+-----END PGP SIGNATURE-----
+
+--waiERP1w1YigxTqS--

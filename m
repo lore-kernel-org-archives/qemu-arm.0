@@ -1,95 +1,117 @@
-Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp567754lfu;
-        Wed, 6 Apr 2022 02:45:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJziNnE8yOO/oRsFPT28XKEURamOoHp/9RvuN/tNR6T2vApz9LHBV/FxIp7zhgxiogYWlrqt
-X-Received: by 2002:a05:620a:210f:b0:67b:119d:f32d with SMTP id l15-20020a05620a210f00b0067b119df32dmr5152707qkl.316.1649238317826;
-        Wed, 06 Apr 2022 02:45:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649238317; cv=none;
+Received: by 2002:a19:6a18:0:0:0:0:0 with SMTP id u24csp705014lfu;
+        Wed, 6 Apr 2022 06:38:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyTDX24yGO927+GXlUBItJyoYfZusrNmpOc5XKmo/Qx8ACJzJIZceozbooNFKd3NmxxgYR1
+X-Received: by 2002:a05:622a:148e:b0:2e2:2ebd:63d9 with SMTP id t14-20020a05622a148e00b002e22ebd63d9mr7624226qtx.601.1649252287200;
+        Wed, 06 Apr 2022 06:38:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649252287; cv=none;
         d=google.com; s=arc-20160816;
-        b=BWe5Gluq6J1S6FwjcWYWT1dgC/gAnKrbCcu22Mxhc3bBzqsYq3vy0q8WiHZDmlHi9W
-         ZTv/1rgzkKy7B3L8F+Qvj9FykwwSFmYUK2fMIpJ4l2sBACJjlOG71yrV9Z0nA9vZ0AgI
-         hvx4SLXvr2fZTbJ02kkBTYVRsd+urCwTyxb+hICDvYJbExRWn6Jf2wjrt97YnkiPC/7z
-         uHtb/k98mwVmqxV2X+CTJ2duBtZXD1D5u8ERl5V67R5fgMYhRPJLovftKLKdmI8cpC6k
-         Pjgy2WDY+25c314bXXKAI8Sw3E2dFY3gPq2L2180OUt5L9CsaD8GD2iMq5C3ZfGV2ZiJ
-         9aRg==
+        b=1LeERBPQtZlq6v2kaO762OK1e5AyLS+9lnJOAFiK1Oc0DoXPN/W9+dlpQNjMzZa+/c
+         5y2CgDQbVuH5azEZiR89Pv/apiyaaEVYZxRXOGR0JTPa2yPvK0g3p/1eXxMCzr04marX
+         5UTnW0AKdpDwUwfC/J8lqKp0xzVS0XKguka2WN4udOyFJMSfN0c/KPzzXjJenw2lyBt3
+         jqz+CqSUzAcuKcyzGsdFBeUThdn3SR8V+o1xk24tWOrVnmMbpO5jwt1db338KpXc8eel
+         BFgtvxyO6sylwWHIfWWNpdFpLBdCwWfAv7by7GlceOhC0Tcpr0Vkj6lVtovV0xdetksY
+         P7DA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=6zSdM6ze4sNoawv7byCFn03NhlR2kXc14FtX6Rvom6I=;
-        b=vv5r9+pHozsBvfmYRufZpC4oDfsLxnQlOQGdO7p5eHRoW8I4VCP/9TK0gLrtEDBSM/
-         ih4/IqoKGkSKpW1xYFgUyHvaJgR0Lv1pvIhXS3L2cW4KbC99ks4pdUMnaFSCIxKHoydH
-         O5aANci3JfMRig3Q11vlJIDE3HUfYsBxNeO+XjY4RXo/hnC04pBC9WPhd8p0PhmzTg3j
-         1iaKYZ1ljk1ohQZ1OU8UXJqzHMClQa4CijiMobMcoUSHI+sIqesPs5WN6M59IZFQf7r2
-         jRwIirySKd6hFAPYe2cZDmRZbs7LHGpjJG9OTWyV1Urk5rPYvljX3pjkY1w7o8pP8m43
-         VnTQ==
+         :mime-version:date:message-id:dkim-signature;
+        bh=8jzSQ4vxrYlxCxwZk3zGR2uLgkq8J+1oFDzmDBJnjxs=;
+        b=Mzj5gVpExaDMOpHjsCgL90ZH2b5mfbQ/VdgtFdFNdyUa/yfmZBMGurwSx72C3NQwak
+         UGasPFd5JzPVAq57T5nIXl4K3kWH5I54OiLga79bWRZ2xFtWyefqE9Pv10PU4MPZ9B7A
+         hAripDRQNXcY33zWEAk3wrOX6Hy0f5ZzVvUGlMeVg8ZT7oBqSvPo16Kqb+SXfMYvqklT
+         sCjSIEoEuCd7LIfn1CzoCyrCaAhZGwH7R4/3asIBF7NcwW7a/VOSLfBzCxKdsbFWGIX+
+         Uq22UbYKcKJ45bvje3FS5GGOZ+ELGgg5qRHQNcigXO/uTWCXqQLiilPRMp0n8/7X1v8s
+         Fd8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=sQ11Dibe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jo9-20020a056214500900b00440e46a7c4dsi6175655qvb.235.2022.04.06.02.45.17
+        by mx.google.com with ESMTPS id j12-20020a05620a410c00b0067f2fada2a6si6809104qko.517.2022.04.06.06.38.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Apr 2022 02:45:17 -0700 (PDT)
+        Wed, 06 Apr 2022 06:38:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54898 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=sQ11Dibe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nc2Dw-0006gU-6u
-	for alex.bennee@linaro.org; Wed, 06 Apr 2022 05:45:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43396)
+	id 1nc5rK-0000Bo-M5
+	for alex.bennee@linaro.org; Wed, 06 Apr 2022 09:38:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nc2D8-0006em-Se
- for qemu-arm@nongnu.org; Wed, 06 Apr 2022 05:44:23 -0400
-Received: from 2.mo548.mail-out.ovh.net ([178.33.255.19]:51299)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nc2D6-0006uA-N1
- for qemu-arm@nongnu.org; Wed, 06 Apr 2022 05:44:22 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.147])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 6A09E20072;
- Wed,  6 Apr 2022 09:44:16 +0000 (UTC)
-Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Wed, 6 Apr
- 2022 11:44:15 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004e37354b5-eb92-482b-9607-7a52aa0dd4c0,
- ACAFAA60954BC139C96B6B3855CBF7BDA7777862) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <e18fbf21-7038-c116-279f-d95e3c0c7919@kaod.org>
-Date: Wed, 6 Apr 2022 11:44:14 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nc5rA-0000BQ-32
+ for qemu-arm@nongnu.org; Wed, 06 Apr 2022 09:37:56 -0400
+Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832]:41817)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nc5r6-0000Ki-98
+ for qemu-arm@nongnu.org; Wed, 06 Apr 2022 09:37:55 -0400
+Received: by mail-qt1-x832.google.com with SMTP id o15so4236442qtv.8
+ for <qemu-arm@nongnu.org>; Wed, 06 Apr 2022 06:37:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=8jzSQ4vxrYlxCxwZk3zGR2uLgkq8J+1oFDzmDBJnjxs=;
+ b=sQ11Dibeh4wfB0UxwB4XG5+xNMrgOVUMAKQMMGadD2NkgbNrGQRKX9e3Y2IjZ1vz83
+ GN+z0fk8DJK+P2VB/9u84EUPfD4bbAtaOzTTXk1iZSxtb1WI/8AyLILDJ3l5ahe7gbmG
+ 84lLrT6KkdUJwC+qU9EqFPO48vjDCRVFv/pG50/vjsVPIbQOBZABq00CYL3FJ+aaDF9c
+ p5rCP/ep8WdmA12wv8fMmJmWKpyrT6cgPgQYm14TeoCLZ2X+TuYbR5rjM66Y0SVFGk9P
+ 8TX6TMtf+vIxjZg9PZ91Xz44nYCDcR8LZaZkoVCV9rhs3udHxPuvAw6xcEUKvMzYcnN2
+ 3vaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=8jzSQ4vxrYlxCxwZk3zGR2uLgkq8J+1oFDzmDBJnjxs=;
+ b=EnW21TOrmbpHO3YtVqTcCujR7RGFrCiL3k/SR+Ax2Kv+6jTIO36K5+FvNsT2kxLGpC
+ wuqlbgrCfqrLzIj1z87vjvJswyKqOCh7snlkWm03G/79Iec6oehQ6U6rN3aLubI0fCu+
+ trSAZx6Y/ilswEmpDd67WjOnzbpnO1F53FGJ1Cjgcez5w4sULSjBIEB8mlFOWnmI8FDO
+ Itm5hvCziEOj6vOY4WO6pMkGpvMRVmhDsQgtwywzbv9Aqs2H6/RrayLwdIBUYwFvyRuu
+ ypgUrAFkOQcYGyz9ctZaL11tDtczH1gqMLbDPsPamKB3Wb1TZxSEsUDor+1ay2l9HlvO
+ yFRA==
+X-Gm-Message-State: AOAM531+ndKPAVs+B6xFbXNKXLGgOZf4pnN9vnvk/u1PVwLLrrAeMIT3
+ UQ+aqDVjTlYOKsspGaGLx1C9BQ==
+X-Received: by 2002:a37:40d:0:b0:699:f26d:6cac with SMTP id
+ 13-20020a37040d000000b00699f26d6cacmr994061qke.152.1649252269921; 
+ Wed, 06 Apr 2022 06:37:49 -0700 (PDT)
+Received: from [10.10.117.62] (fixed-187-188-190-73.totalplay.net.
+ [187.188.190.73]) by smtp.gmail.com with ESMTPSA id
+ az17-20020a05620a171100b00680af0db559sm10215050qkb.127.2022.04.06.06.37.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 Apr 2022 06:37:49 -0700 (PDT)
+Message-ID: <2799d1ad-4689-7d63-3fe1-2d7d3f2a3b44@linaro.org>
+Date: Wed, 6 Apr 2022 08:37:46 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [RFC PATCH 3/4] hw/i2c: add slave mode for aspeed_i2c
+Subject: Re: [PATCH for-7.1 01/18] hw/arm/exynos4210: Use TYPE_OR_IRQ instead
+ of custom OR-gate device
 Content-Language: en-US
-To: Klaus Jensen <its@irrelevant.dk>
-References: <20220331165737.1073520-1-its@irrelevant.dk>
- <20220331165737.1073520-4-its@irrelevant.dk>
- <356b3f59-b915-3da1-7155-8082b55932fb@kaod.org> <Yk1EAHE2dUv7Z6gq@apples>
- <f669416c-6e17-23c0-3dfa-dd6cceebc05b@kaod.org> <Yk1aYldO+VjF3iqB@apples>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <Yk1aYldO+VjF3iqB@apples>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 8d891a89-82ff-4d58-8814-91993fd184a1
-X-Ovh-Tracer-Id: 6985083024360705016
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudejiedgvddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepkhdrjhgvnhhsvghnsehsrghmshhunhhgrdgtohhm
-Received-SPF: pass client-ip=178.33.255.19; envelope-from=clg@kaod.org;
- helo=2.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20220404154658.565020-1-peter.maydell@linaro.org>
+ <20220404154658.565020-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220404154658.565020-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::832;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x832.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,165 +124,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
- Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
- Klaus Jensen <k.jensen@samsung.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Jeremy Kerr <jk@ozlabs.org>,
- Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
- Matt Johnston <matt@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Zongyuan Li <zongyuan.li@smartx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GRfG1cx1etw5
+X-TUID: LA3XqNN/4oN2
 
-On 4/6/22 11:16, Klaus Jensen wrote:
-> On Apr  6 10:52, Cédric Le Goater wrote:
->> On 4/6/22 09:40, Klaus Jensen wrote:
->>> On Apr  6 08:14, Cédric Le Goater wrote:
->>>> Hello Klaus,
->>>>
->>>> On 3/31/22 18:57, Klaus Jensen wrote:
->>>>> From: Klaus Jensen <k.jensen@samsung.com>
->>>>>
->>>>> Add slave mode functionality for the Aspeed I2C controller. This is
->>>>> implemented by creating an Aspeed I2C Slave device that attaches to the
->>>>> bus.
->>>>>
->>>>> This i2c slave device only implements the asynchronous version of
->>>>> i2c_send() and the event callback.
->>>>>
->>>>> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
->>>>> ---
->>>>>     hw/i2c/aspeed_i2c.c         | 95 +++++++++++++++++++++++++++++++++----
->>>>>     hw/i2c/trace-events         |  2 +-
->>>>>     hw/misc/meson.build         |  2 +
->>>>>     include/hw/i2c/aspeed_i2c.h |  8 ++++
->>>>>     4 files changed, 97 insertions(+), 10 deletions(-)
->>>>>
->>>>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
->>>>> index 03a4f5a91010..61b6424434f7 100644
->>>>> --- a/hw/i2c/aspeed_i2c.c
->>>>> +++ b/hw/i2c/aspeed_i2c.c
->>>>> @@ -163,10 +163,15 @@ static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
->>>>>               bus->intr_status & I2CD_INTR_TX_NAK ? "nak|" : "",
->>>>>               bus->intr_status & I2CD_INTR_TX_ACK ? "ack|" : "",
->>>>>               bus->intr_status & I2CD_INTR_RX_DONE ? "done|" : "",
->>>>> +          bus->intr_status & I2CD_INTR_SLAVE_ADDR_RX_MATCH ? "slave-match|" : "",
->>>>>               bus->intr_status & I2CD_INTR_NORMAL_STOP ? "normal|" : "",
->>>>>               bus->intr_status & I2CD_INTR_ABNORMAL ? "abnormal" : "");
->>>>
->>>> Troy introduced a similar change in his "new mode" proposal. I think
->>>> it is time to change the 'aspeed_i2c_bus_raise_interrupt' trace event
->>>>
->>>> Could you please update trace_aspeed_i2c_bus_raise_interrupt() to take
->>>> a single status string ?
->>>>
->>>
->>> I'm not sure it will be "prettier". But I'll give it a shot.
->>
->> It will be easier to extend. We have 3 different patchsets modifying this
->> same event on the mailing list :)
->>
+On 4/4/22 10:46, Peter Maydell wrote:
+> The Exynos4210 SoC device currently uses a custom device
+> "exynos4210.irq_gate" to model the OR gate that feeds each CPU's IRQ
+> line.  We have a standard TYPE_OR_IRQ device for this now, so use
+> that instead.
 > 
-> True :)
+> (This is a migration compatibility break, but that is OK for this
+> machine type.)
 > 
->>>>> -    bus->intr_status &= bus->intr_ctrl;
->>>>> +    /*
->>>>> +     * WORKAROUND: the Linux Aspeed I2C driver masks SLAVE_ADDR_RX_MATCH for
->>>>> +     * some reason, not sure if it is a bug...
->>>>> +     */
->>>>> +    bus->intr_status &= (bus->intr_ctrl | I2CD_INTR_SLAVE_ADDR_RX_MATCH);
->>>>
->>>> It comes from the initial support for the AST2400 SoC.
->>>>
->>>> We should introduce a 'intr_ctrl_mask' attribute in AspeedI2CClass and
->>>> fix the AST24000 value to 0x7FFF ...
->>>>
->>>
->>> I'm not sure I understand. Do you suggest that we always use a fixed
->>> mask here and disregard what the host sets in intr_ctrl?
->>
->> No. sorry. There are multiple fixes required I think.
->>
->> The layout of the Interrupt Control Register (0x0C) differs on the
->> AST2400, AST2500, AST2600 SoCs. We need to clarify that first.
->> bits 11:7 and 31:16 are reserved on all. AST2400 lacks bit 15 which
->> enables a slave timeout interrupt on AST2500 and AST2600.
->>
->> Then, the Interrupt Status Register differs also. The AST2400 doesn't
->> have the Slave Address match indicator and the Slave Address Receiving
->> pending bits. On the AST2600, there are 3 possibles addresses, only
->> 2 on the AST2500 (and only 1 on the AST2400). So that modifies the
->> I2CD_INTR_SLAVE_ADDR_RX_MATCH bit.
->>
-> 
-> Ugh. I'm heavily burden by the fact that I do not have a spec sheet
-> available... I'll try to request one from Aspeed. I reversed this from
-> the Linux driver, so I'm just tried to match up with how that behaves.
-> 
-> With Slave Address Match indicator, you mean bit 31? There is only one
-> bit, so how does it work with the third address?
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   include/hw/arm/exynos4210.h |  1 +
+>   hw/arm/exynos4210.c         | 31 ++++++++++++++++---------------
+>   2 files changed, 17 insertions(+), 15 deletions(-)
 
-On the AST2400 (only 1 slave address)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-   * no upper bits
-
-On the AST2500 (2 possible slave addresses),
-
-   * bit[31] : Slave Address match indicator
-   * bit[30] : Slave Address Receiving pending
-
-On the AST2600 (3 possible slave addresses),
-
-   * bit[31-30] : Slave Address match indicator
-   * bit[29] : Slave Address Receiving pending
-
->> Since these 2 or 3 bits are read-only. I wonder how this is impacting
->> your slave implementation. is it ? If not, may be slave address match can
->> wait for now.
-> 
-> As far as I can tell, the kernel driver uses bit 7 (called
-> SLAVE_ADDR_RX_MATCH in QEMU and SLAVE_MATCH in Linux) to start the slave
-> state machinery. It does not use bit 31 (SLAVE_ADDR_MATCH in QEMU). The
-> naming for bit 7 in Linux is probably off and should be ranamed to match
-> QEMU?
-
-No. This is a mess :) Both are correct. bit 7 is an interrupt enable/status.
-bit 31 "indicates" which address : 1, 2, 3.
-
-> I understand that this shouldn't assume to only work with the slave
-> machinery in Linux, but that is the only platfrom I can currently
-> experiment with.
-> 
->>> In any case, isn't it a bug in the Linux kernel driver that it neglects
->>> to set bit 7 (slave match) in the INTR_CTRL register?>
->>>
->>>>>         if (bus->intr_status) {
->>>>>             bus->controller->intr_status |= 1 << bus->id;
->>>>>             qemu_irq_raise(aic->bus_get_irq(bus));
->>>>> @@ -196,6 +201,9 @@ static uint64_t aspeed_i2c_bus_read(void *opaque, hwaddr offset,
->>>>>         case I2CD_INTR_STS_REG:
->>>>>             value = bus->intr_status;
->>>>>             break;
->>>>> +    case I2CD_DEV_ADDR_REG:
->>>>> +        value = bus->dev_addr;
->>>>> +        break;
->>>>
->>>> You can introduce support for this register in a preliminary patch but
->>>> keep the slave activation for later (I2CD_SLAVE_EN bit)
->>>>
->>>
->>> Understood.
->>
->> thanks, we will address the full layout of this register later when needed.
->> But there are fields for each address.
->>
-> 
-> Right. Again, I just reversed from the kernel driver and it only sets
-> the lower byte.
-
-That's fine for now. the first 7bits in each byte represents a slave address.
-
-Thanks,
-
-C.
+r~

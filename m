@@ -1,153 +1,112 @@
-Received: by 2002:ac2:5de3:0:0:0:0:0 with SMTP id z3csp40344lfq;
-        Thu, 7 Apr 2022 02:38:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxk/LWpeKDNINxOatpjCoEr45Wsk0nr/PxE8qP/e+FRcAhPyduVZ4+gt7dbbE4ijDmXC2ej
-X-Received: by 2002:ac8:4810:0:b0:2eb:cbf8:c3bf with SMTP id g16-20020ac84810000000b002ebcbf8c3bfmr2956820qtq.331.1649324322397;
-        Thu, 07 Apr 2022 02:38:42 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1649324322; cv=pass;
+Received: by 2002:ac2:5de3:0:0:0:0:0 with SMTP id z3csp112292lfq;
+        Thu, 7 Apr 2022 05:05:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyMwfEhcpBu6V69L7jzLIHJchWfibkONkOzgiUfNCWz/cRVOktdJTReYlFnY65nGCB8LxG6
+X-Received: by 2002:a37:68c9:0:b0:67b:21e6:297c with SMTP id d192-20020a3768c9000000b0067b21e6297cmr9132121qkc.464.1649333134198;
+        Thu, 07 Apr 2022 05:05:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649333134; cv=none;
         d=google.com; s=arc-20160816;
-        b=yLAKr1QQ03f0U8WgdPF2Bvo4QKWHOMgUmu9kRNEbHx3N7Jim54KAXMOMdwO7EhKr1/
-         lUH+NlLVJK6mEsxnXPzzg0BohZYjtQYNwXIdKDzc1rRkb3MUieAr7cDUg2LBThrNf+UW
-         H55DtcUiFIeMaiGSxQPK1fosGzhXX7BnLgAUnAjgMRx9ATEkwXSP7XFsrZYyWuA5mEEi
-         EhxCYKZKHaPXOz4IMgoUfGcXgcHO7FWEDq5j1H7XPUPMOIu94ulXjBk5CkRX0zFUJBpS
-         XWUx5fLJkdQGzDAtX4KJO04YDzuFsYX+7LXAt6UNAoNQ003efQrcRE8sB4QXUmbuEBMm
-         AyGg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=eova6MYzw+ZLj3xxcuFnW4Trv/+zofOHc57uVl151lrq5uhcDfS3aLK3+ArtdFHUm3
+         HU9D7XsX/UWXaQbK2gosfuqEF49HjDuIJtYCeergFBXmRh+UhGSEeY7z5nffV+IqLuTN
+         By/Kv9q3y/IZiMd7KWrfYgpgcjtw6QUGbug4mlIG+zNHG9elyH1nd/8j754qyn65BoJp
+         Cu5UjpsPqGFthykFJlmCLO+QZCn6gX4iU9F7mFN0K/cpNX+0GeAGQg2N6OMqAbkT2EnB
+         crswkaJtn/30HNf/VbiYqf/OXDA1N3PCfGFuBXXRPar3PxokdVMUL7ILqz/nJoogFA3e
+         3xmg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:to
          :from:date:dkim-signature;
-        bh=wWCmP2hIyizuM2dSAPQ4x4+uRKKznpnLpLaz2QcWz+0=;
-        b=DmAzQ/bHLZAeNq874dqwFe/tKKCU8dAlYofDLrW8slQhc+Ajze2jI4ewrjV0ybFNff
-         /+Yhj8xkDyG3jhQUFYJ62va1BXnaUY6P0xOaE8Hq2o6g81PEEGH6qp+K9MLAiJzUagVh
-         /M4uDSFGchARXlJs6bc3cHWIq7kd/P6TR/oYM3M+PaRrbEG3HbcNjiQvKp1a7I+CiFGG
-         Oo5w7DfSJDvmGfNIRF4VKtIMLdHr+aJzA4FVUSOfgJJLAJLD1R3PhMx8f21jrnJmSeLH
-         mXg7y7DYLXThSKd8vS5aEePanYxxmgAGTKbjS3x9qY+g0IuMe0aAAOTlI6hknAVY3XPv
-         zsfQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=DEGTWDez;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+        bh=ReYOp/YVLMAxexLEzT4f24MKJggnUm0GZU6Rz2oejVs=;
+        b=clssckuy3gCGkGy5s+TnxFBqPYnME5sSqsGlVXVN0wX1Zu9/KvnZXiDDip4OheeuBe
+         ipsxxvslO4ggRJ2XQ1k9Vflya4fjpkltDbEQ/3J4LLxP4gPmakujrRjE7c2s+LJe7KTA
+         v16FotsuzBmyd0gkZoURg6/JOT68+wyoKFs/TGl8+XRao9lc/u6BeMqtrp2Hn7bE8nCQ
+         B0jmYVrlU3oDoARYxQ1K8UN3rJzr3B4whwjj+JrQ4yQLv2U04m3NQDxgP0qIMDmHf6BT
+         AVA2rLsBh63XS/8eCfhoWXn9sEsEc/wj5QDSoAsLatJ9/f2OoilfiKjQfgQ/KtuG0bah
+         Doww==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=k1VGsDSv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cg12-20020a05622a408c00b002ebc72ad01csi2218401qtb.693.2022.04.07.02.38.42
+        by mx.google.com with ESMTPS id b26-20020a05620a04fa00b0067e4be239e3si6684724qkh.552.2022.04.07.05.05.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Apr 2022 02:38:42 -0700 (PDT)
+        Thu, 07 Apr 2022 05:05:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=DEGTWDez;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=k1VGsDSv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:49660 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54502 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncObB-0007RH-TL
-	for alex.bennee@linaro.org; Thu, 07 Apr 2022 05:38:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56070)
+	id 1ncQtJ-0006WT-Kn
+	for alex.bennee@linaro.org; Thu, 07 Apr 2022 08:05:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32982)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <figlesia@xilinx.com>)
- id 1ncOOy-0004zR-4q; Thu, 07 Apr 2022 05:26:04 -0400
-Received: from mail-bn1nam07on20601.outbound.protection.outlook.com
- ([2a01:111:f400:7eb2::601]:55173
- helo=NAM02-BN1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <figlesia@xilinx.com>)
- id 1ncOOv-0007SZ-IX; Thu, 07 Apr 2022 05:26:03 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GZK9R/2PCI5rH921ZO8cNfYMKXxr0MIA6LhR+jIBTBPOe3yIy+NvTSUE75De96bYtaJW5F9B7OSSycZ49P0k3Rx2l9ztyEMsbEv9j3LGzevtJgC16Za9Er9klOGfpQY3sk4TC0qjYvZaS9q0rNHfgiH39UJ3auW+r+b0HyWYumVdlt5JL+FEVbY+EEd68OiHNVZQXtjpaTFjxWbsdmW/kzIr5LWWHBzrs8Xk5ZYl1aBCLbJHAVtl6VeKMm26yNhtwyN/UD3dXCEEnieu0EEGDwiJ1PLNSlR0jwt4NdZlQhhK9tqCxXXE5BVi0ldhlVstFAhBcs6HBr47smg3cn4AtQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wWCmP2hIyizuM2dSAPQ4x4+uRKKznpnLpLaz2QcWz+0=;
- b=Fau1wkLBQ1xhC+VuakvLXfBg08ac6xk+Ca13lTBS71SwsCK55PWqztwK0cCpHM2ueNpmbyHnFUW7Tv2WWRdif4f7EzINlgKvWMXGQqlclwjLRONmo5WruUJI0LQrrzn8stJ2l6MT8o+dBTv5mKvlbOKBce17vnMvXpSX+qOG0SDg4BNtHZ+gFusUCXTQ1HunVaVCr0jBkSCU9MlIsDIKXQK+s3JRUPubVTfaSuESW1PQclxF7SMZHs/JpTIdDY5ZKrSJXvcGZtwsWLCu08ZnW0BFxQryWP52vwspeNeQ7BU8LGidijlClIiQpog76R7I0maf9AbVZjmbFZKhQ1oKdQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.80.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wWCmP2hIyizuM2dSAPQ4x4+uRKKznpnLpLaz2QcWz+0=;
- b=DEGTWDezkVd+2+vRRIWPiVF1mEc0ao+d8tJczAsi9SknnuD3dn0Ux4x566z0iDrTvTdUPzpQsO3ZM9LjpTHgTviYyeCXLg54rDqksm/D4a4DeVptrI/5DKBolOjaFH3F2+n9Zc3IKEksxT7ZmzsHvU6q13CMXcrwflt+nlp27qk=
-Received: from SA9PR03CA0028.namprd03.prod.outlook.com (2603:10b6:806:20::33)
- by DM6PR02MB5850.namprd02.prod.outlook.com (2603:10b6:5:17f::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5144.22; Thu, 7 Apr
- 2022 09:25:53 +0000
-Received: from SN1NAM02FT0016.eop-nam02.prod.protection.outlook.com
- (2603:10b6:806:20:cafe::90) by SA9PR03CA0028.outlook.office365.com
- (2603:10b6:806:20::33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5123.31 via Frontend
- Transport; Thu, 7 Apr 2022 09:25:52 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.80.198)
- smtp.mailfrom=xilinx.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.80.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.80.198; helo=xir-pvapexch02.xlnx.xilinx.com;
-Received: from xir-pvapexch02.xlnx.xilinx.com (149.199.80.198) by
- SN1NAM02FT0016.mail.protection.outlook.com (10.97.4.82) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.5144.21 via Frontend Transport; Thu, 7 Apr 2022 09:25:52 +0000
-Received: from xir-pvapexch01.xlnx.xilinx.com (172.21.17.15) by
- xir-pvapexch02.xlnx.xilinx.com (172.21.17.17) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.14; Thu, 7 Apr 2022 10:25:51 +0100
-Received: from smtp.xilinx.com (172.21.105.197) by
- xir-pvapexch01.xlnx.xilinx.com (172.21.17.15) with Microsoft SMTP Server id
- 15.1.2176.14 via Frontend Transport; Thu, 7 Apr 2022 10:25:51 +0100
-Received: from [10.71.118.41] (port=36680 helo=debian)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <francisco.iglesias@xilinx.com>)
- id 1ncOOk-0001GU-A9; Thu, 07 Apr 2022 10:25:50 +0100
-Date: Thu, 7 Apr 2022 10:25:49 +0100
-From: Francisco Iglesias <francisco.iglesias@xilinx.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-Subject: Re: [PATCH v1 4/4] hw/arm: versal: Connect the CRL
-Message-ID: <20220407092548.x42gbz63ickvskyo@debian>
-References: <20220406174303.2022038-1-edgar.iglesias@xilinx.com>
- <20220406174303.2022038-5-edgar.iglesias@xilinx.com>
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1ncQsf-0006Uy-3K; Thu, 07 Apr 2022 08:04:53 -0400
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a]:45781)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1ncQsc-0001wl-6I; Thu, 07 Apr 2022 08:04:52 -0400
+Received: by mail-lj1-x22a.google.com with SMTP id q14so7118990ljc.12;
+ Thu, 07 Apr 2022 05:04:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=ReYOp/YVLMAxexLEzT4f24MKJggnUm0GZU6Rz2oejVs=;
+ b=k1VGsDSv8SHrLKXDgE2DFohCAx/coUKQ6NHcht07vn7Fl5BUuk84siQRnLqdiXEhg6
+ h9iyMYiPFygkSxgvt8WeA63VOS6Svx+T+h3vgJEyd+mj+uXXpv3bukoDKH+ALpnszeOD
+ 5l6dJvnGcEAOi/FtMQHJjXvnDo8KcNtY/xMn5P50xsRJr+VKW9DcGSMWs0FVDngItoqQ
+ 3brTopWXVZGMoLDfwfBy5BCVemNN3b/Wx0UMLjEmEppPmmYXvn3sE+3Eupz3jqPm0IY5
+ Ecla4xvj3J0zYWrRYHImIj7xGCsAvWKKL/OkOoHBOIcXIOhoEXFJ9+Y/p9vzEkYMtU/m
+ RhaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=ReYOp/YVLMAxexLEzT4f24MKJggnUm0GZU6Rz2oejVs=;
+ b=01FMnNlH9t3EHC8hwWFDmCKYYsh72k3/SZEtEvqsizGsl7Ewvqho+rXngl1sQNXkzE
+ F6Dj6uOpJhDD2WDiKvLOdVzqUkbE/fQ2ypJF6BOy2zLlwOBL8zbk/Bj8aASi2RKxZM7o
+ kbMqeRW/opo+hRgoHEMSoX5uBebgV1s4w49kFe4E41fpcfnItrrxwQMSCLGpeisYDBRR
+ DVualSdiYtATtUNI10h0a2JM7XB7O+7/G7qESu5hW9rjNCe48MU0IiGaGR1CGMK4SuaE
+ 6dtH1PsIQnmAt8xJ4+40vi2ILr8r9F2c7pdnJYGHsfCKCdmqizPoECJ4rkxJB8eVv+9z
+ pEAA==
+X-Gm-Message-State: AOAM531lY281zGtMWGz58yxD0hpx/M6QlJL+M93TbDa/5L+ukcR5KFNb
+ 6XnpHJJd9f9zdhOn8+ESTag=
+X-Received: by 2002:a2e:91c6:0:b0:24b:f77:9ea with SMTP id
+ u6-20020a2e91c6000000b0024b0f7709eamr8590645ljg.353.1649333086867; 
+ Thu, 07 Apr 2022 05:04:46 -0700 (PDT)
+Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
+ by smtp.gmail.com with ESMTPSA id
+ b11-20020a19644b000000b0044b09e88d68sm1262725lfj.256.2022.04.07.05.04.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Apr 2022 05:04:46 -0700 (PDT)
+Date: Thu, 7 Apr 2022 14:04:44 +0200
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH for-7.1 02/18] hw/intc/exynos4210_gic: Remove unused
+ TYPE_EXYNOS4210_IRQ_GATE
+Message-ID: <20220407120442.GA10629@fralle-msi>
+References: <20220404154658.565020-1-peter.maydell@linaro.org>
+ <20220404154658.565020-3-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220406174303.2022038-5-edgar.iglesias@xilinx.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 7eae2246-e61a-4dae-897b-08da18789c87
-X-MS-TrafficTypeDiagnostic: DM6PR02MB5850:EE_
-X-Microsoft-Antispam-PRVS: <DM6PR02MB58501C626CA9D906593712A0ADE69@DM6PR02MB5850.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: rSAC0f+wf5tDmQOC6DIQUGlmT/TfcR7Ax5a6dnwpEeKliYxobJBcSIQrml+hMcx5FD4JEteLhKxx8JVjLZDBSafajj0LFKB1o63T42QmCb+mNpFxrGEt53WhAWba8l08vU4m6t+jFIz1a6WmYNWhh3PqcRNjRPgqNWJTiffqYj7yfxRRqwPBwCkHTvo7YcNo4qQJHKvcB6zU8PH05T/kGA1sQfJqul7jG/q/aI4Nm4k7Fzm0cz/XhNr+3KNDPqZrg5C/y+mdCJYXCwARCH6N0LaRl6X+GAQNEks7XUHILasQeQPzPhu9nf2qs18ft7cSPIR1m66kXCfX2/Z+YOlpExsksAQhUmMw1Ud0LFvBBGouUumiFp3n7lyFbR2eC4/CTSe6HBf2ZCoXlUPGJWZjuhjDL7deNkgenuGPOHnhQMlO/uwNH/EzDOXQf/mULOJeOOzh9xm/jwtsI8mo3SMxNJHLncbHFkUSBffuOqy+wx+OURuXZ/8MbsNe8SzlPp9UIvALKcV7uu9YS66mjYDowvOJgi1oP4x4VIY1QBoiVKcLVs/GZ4nZJ9k3FtagF5MD7kWah+6apRMn8qWUcsf0FmTO0V1Gzo90F4tet7DFuTv87Iko/P9MGJKe4UiGcsQoWcEyUEB5QW2v6w6Q/SP19t2ESQhYsf8ltuhs8Ge7irWkvM3W+JMeapiHkma+XtLK
-X-Forefront-Antispam-Report: CIP:149.199.80.198; CTRY:IE; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:xir-pvapexch02.xlnx.xilinx.com;
- PTR:unknown-80-198.xilinx.com; CAT:NONE;
- SFS:(13230001)(4636009)(40470700004)(36840700001)(46966006)(70206006)(70586007)(83380400001)(4326008)(6862004)(8676002)(336012)(47076005)(9686003)(426003)(40460700003)(508600001)(8936002)(9576002)(5660300002)(9786002)(26005)(186003)(1076003)(2906002)(356005)(44832011)(36860700001)(316002)(33716001)(54906003)(7636003)(82310400005)(6636002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Apr 2022 09:25:52.4804 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7eae2246-e61a-4dae-897b-08da18789c87
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.80.198];
- Helo=[xir-pvapexch02.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: SN1NAM02FT0016.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR02MB5850
-Received-SPF: pass client-ip=2a01:111:f400:7eb2::601;
- envelope-from=figlesia@xilinx.com;
- helo=NAM02-BN1-obe.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+In-Reply-To: <20220404154658.565020-3-peter.maydell@linaro.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x22a.google.com
+X-Spam_score_int: -1020
+X-Spam_score: -102.1
+X-Spam_bar: ---------------------------------------------------
+X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01,
+ USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,136 +119,140 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, luc@lmichel.fr, edgar.iglesias@amd.com,
- sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, f4bug@amsat.org,
- fkonrad@xilinx.com, qemu-arm@nongnu.org
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
+ Zongyuan Li <zongyuan.li@smartx.com>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: llW5b5rHcqi5
+X-TUID: mxwguoh4H6M/
 
-On Wed, Apr 06, 2022 at 06:43:03PM +0100, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+On [2022 Apr 04] Mon 16:46:42, Peter Maydell wrote:
+> Now we have removed the only use of TYPE_EXYNOS4210_IRQ_GATE we can
+> delete the device entirely.
 > 
-> Connect the CRL (Clock Reset LPD) to the Versal SoC.
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
 > ---
->  hw/arm/xlnx-versal.c         | 54 ++++++++++++++++++++++++++++++++++--
->  include/hw/arm/xlnx-versal.h |  4 +++
->  2 files changed, 56 insertions(+), 2 deletions(-)
+>  hw/intc/exynos4210_gic.c | 107 ---------------------------------------
+>  1 file changed, 107 deletions(-)
 > 
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index ebad8dbb6d..57276e1506 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -539,6 +539,57 @@ static void versal_create_ospi(Versal *s, qemu_irq *pic)
->      qdev_connect_gpio_out(orgate, 0, pic[VERSAL_OSPI_IRQ]);
+> diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+> index bc73d1f1152..794f6b5ac72 100644
+> --- a/hw/intc/exynos4210_gic.c
+> +++ b/hw/intc/exynos4210_gic.c
+> @@ -373,110 +373,3 @@ static void exynos4210_gic_register_types(void)
 >  }
 >  
-> +static void versal_create_crl(Versal *s, qemu_irq *pic)
-> +{
-> +    SysBusDevice *sbd;
-> +    int i;
-> +
-> +    object_initialize_child(OBJECT(s), "crl", &s->lpd.crl,
-> +                            TYPE_XLNX_VERSAL_CRL);
-> +    sbd = SYS_BUS_DEVICE(&s->lpd.crl);
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->lpd.rpu.cpu); i++) {
-> +        g_autofree gchar *name = g_strdup_printf("cpu_r5[%d]", i);
-> +
-> +        object_property_set_link(OBJECT(&s->lpd.crl),
-> +                                 name, OBJECT(&s->lpd.rpu.cpu[i]),
-> +                                 &error_abort);
-> +    }
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.gem); i++) {
-> +        g_autofree gchar *name = g_strdup_printf("gem[%d]", i);
-> +
-> +        object_property_set_link(OBJECT(&s->lpd.crl),
-> +                                 name, OBJECT(&s->lpd.iou.gem[i]),
-> +                                 &error_abort);
-> +    }
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.adma); i++) {
-> +        g_autofree gchar *name = g_strdup_printf("adma[%d]", i);
-> +
-> +        object_property_set_link(OBJECT(&s->lpd.crl),
-> +                                 name, OBJECT(&s->lpd.iou.adma[i]),
-> +                                 &error_abort);
-> +    }
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.uart); i++) {
-> +        g_autofree gchar *name = g_strdup_printf("uart[%d]", i);
-> +
-> +        object_property_set_link(OBJECT(&s->lpd.crl),
-> +                                 name, OBJECT(&s->lpd.iou.uart[i]),
-> +                                 &error_abort);
-> +    }
-> +
-> +    object_property_set_link(OBJECT(&s->lpd.crl),
-> +                             "usb", OBJECT(&s->lpd.iou.usb),
-> +                             &error_abort);
-> +
-> +    sysbus_realize(sbd, &error_fatal);
-> +    memory_region_add_subregion(&s->mr_ps, MM_CRL,
-> +                                sysbus_mmio_get_region(sbd, 0));
-> +    sysbus_connect_irq(sbd, 0, pic[VERSAL_CRL_IRQ]);
-> +}
-> +
->  /* This takes the board allocated linear DDR memory and creates aliases
->   * for each split DDR range/aperture on the Versal address map.
->   */
-> @@ -622,8 +673,6 @@ static void versal_unimp(Versal *s)
->  
->      versal_unimp_area(s, "psm", &s->mr_ps,
->                          MM_PSM_START, MM_PSM_END - MM_PSM_START);
-> -    versal_unimp_area(s, "crl", &s->mr_ps,
-> -                        MM_CRL, MM_CRL_SIZE);
->      versal_unimp_area(s, "crf", &s->mr_ps,
->                          MM_FPD_CRF, MM_FPD_CRF_SIZE);
->      versal_unimp_area(s, "apu", &s->mr_ps,
-> @@ -681,6 +730,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
->      versal_create_efuse(s, pic);
->      versal_create_pmc_iou_slcr(s, pic);
->      versal_create_ospi(s, pic);
-> +    versal_create_crl(s, pic);
->      versal_map_ddr(s);
->      versal_unimp(s);
->  
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index 155e8c4b8c..cbe8a19c10 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -29,6 +29,7 @@
->  #include "hw/nvram/xlnx-versal-efuse.h"
->  #include "hw/ssi/xlnx-versal-ospi.h"
->  #include "hw/dma/xlnx_csu_dma.h"
-> +#include "hw/misc/xlnx-versal-crl.h"
->  #include "hw/misc/xlnx-versal-pmc-iou-slcr.h"
->  
->  #define TYPE_XLNX_VERSAL "xlnx-versal"
-> @@ -87,6 +88,8 @@ struct Versal {
->              qemu_or_irq irq_orgate;
->              XlnxXramCtrl ctrl[XLNX_VERSAL_NR_XRAM];
->          } xram;
-> +
-> +        XlnxVersalCRL crl;
->      } lpd;
->  
->      /* The Platform Management Controller subsystem.  */
-> @@ -127,6 +130,7 @@ struct Versal {
->  #define VERSAL_TIMER_NS_EL1_IRQ     14
->  #define VERSAL_TIMER_NS_EL2_IRQ     10
->  
-> +#define VERSAL_CRL_IRQ             10
->  #define VERSAL_UART0_IRQ_0         18
->  #define VERSAL_UART1_IRQ_0         19
->  #define VERSAL_USB0_IRQ_0          22
+>  type_init(exynos4210_gic_register_types)
+> -
+> -/* IRQ OR Gate struct.
+> - *
+> - * This device models an OR gate. There are n_in input qdev gpio lines and one
+> - * output sysbus IRQ line. The output IRQ level is formed as OR between all
+> - * gpio inputs.
+> - */
+> -
+> -#define TYPE_EXYNOS4210_IRQ_GATE "exynos4210.irq_gate"
+> -OBJECT_DECLARE_SIMPLE_TYPE(Exynos4210IRQGateState, EXYNOS4210_IRQ_GATE)
+> -
+> -struct Exynos4210IRQGateState {
+> -    SysBusDevice parent_obj;
+> -
+> -    uint32_t n_in;      /* inputs amount */
+> -    uint32_t *level;    /* input levels */
+> -    qemu_irq out;       /* output IRQ */
+> -};
+> -
+> -static Property exynos4210_irq_gate_properties[] = {
+> -    DEFINE_PROP_UINT32("n_in", Exynos4210IRQGateState, n_in, 1),
+> -    DEFINE_PROP_END_OF_LIST(),
+> -};
+> -
+> -static const VMStateDescription vmstate_exynos4210_irq_gate = {
+> -    .name = "exynos4210.irq_gate",
+> -    .version_id = 2,
+> -    .minimum_version_id = 2,
+> -    .fields = (VMStateField[]) {
+> -        VMSTATE_VBUFFER_UINT32(level, Exynos4210IRQGateState, 1, NULL, n_in),
+> -        VMSTATE_END_OF_LIST()
+> -    }
+> -};
+> -
+> -/* Process a change in IRQ input. */
+> -static void exynos4210_irq_gate_handler(void *opaque, int irq, int level)
+> -{
+> -    Exynos4210IRQGateState *s = (Exynos4210IRQGateState *)opaque;
+> -    uint32_t i;
+> -
+> -    assert(irq < s->n_in);
+> -
+> -    s->level[irq] = level;
+> -
+> -    for (i = 0; i < s->n_in; i++) {
+> -        if (s->level[i] >= 1) {
+> -            qemu_irq_raise(s->out);
+> -            return;
+> -        }
+> -    }
+> -
+> -    qemu_irq_lower(s->out);
+> -}
+> -
+> -static void exynos4210_irq_gate_reset(DeviceState *d)
+> -{
+> -    Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(d);
+> -
+> -    memset(s->level, 0, s->n_in * sizeof(*s->level));
+> -}
+> -
+> -/*
+> - * IRQ Gate initialization.
+> - */
+> -static void exynos4210_irq_gate_init(Object *obj)
+> -{
+> -    Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(obj);
+> -    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> -
+> -    sysbus_init_irq(sbd, &s->out);
+> -}
+> -
+> -static void exynos4210_irq_gate_realize(DeviceState *dev, Error **errp)
+> -{
+> -    Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(dev);
+> -
+> -    /* Allocate general purpose input signals and connect a handler to each of
+> -     * them */
+> -    qdev_init_gpio_in(dev, exynos4210_irq_gate_handler, s->n_in);
+> -
+> -    s->level = g_malloc0(s->n_in * sizeof(*s->level));
+> -}
+> -
+> -static void exynos4210_irq_gate_class_init(ObjectClass *klass, void *data)
+> -{
+> -    DeviceClass *dc = DEVICE_CLASS(klass);
+> -
+> -    dc->reset = exynos4210_irq_gate_reset;
+> -    dc->vmsd = &vmstate_exynos4210_irq_gate;
+> -    device_class_set_props(dc, exynos4210_irq_gate_properties);
+> -    dc->realize = exynos4210_irq_gate_realize;
+> -}
+> -
+> -static const TypeInfo exynos4210_irq_gate_info = {
+> -    .name          = TYPE_EXYNOS4210_IRQ_GATE,
+> -    .parent        = TYPE_SYS_BUS_DEVICE,
+> -    .instance_size = sizeof(Exynos4210IRQGateState),
+> -    .instance_init = exynos4210_irq_gate_init,
+> -    .class_init    = exynos4210_irq_gate_class_init,
+> -};
+> -
+> -static void exynos4210_irq_gate_register_types(void)
+> -{
+> -    type_register_static(&exynos4210_irq_gate_info);
+> -}
+> -
+> -type_init(exynos4210_irq_gate_register_types)
 > -- 
 > 2.25.1
+> 
 > 

@@ -1,184 +1,269 @@
-Received: by 2002:ac2:5de3:0:0:0:0:0 with SMTP id z3csp31035lfq;
-        Thu, 7 Apr 2022 06:46:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxVjRkanXfv0ViYqUPwj7cou039orMCIr3YMEQxHt3fLmX13d59W0qSg56pGCkgWgD/qQtj
-X-Received: by 2002:a25:d897:0:b0:63d:af73:1115 with SMTP id p145-20020a25d897000000b0063daf731115mr9717428ybg.274.1649339189134;
-        Thu, 07 Apr 2022 06:46:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649339189; cv=none;
+Received: by 2002:ac2:5de3:0:0:0:0:0 with SMTP id z3csp56540lfq;
+        Thu, 7 Apr 2022 07:26:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxBlsvrak8L3PvL/914GAJ3Geol7uOPJDHM2Wl+r+mk08W/rCWq3mC09LlFdZDnGgWk4ec0
+X-Received: by 2002:a25:f904:0:b0:628:a84d:a105 with SMTP id q4-20020a25f904000000b00628a84da105mr9675585ybe.53.1649341588547;
+        Thu, 07 Apr 2022 07:26:28 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1649341588; cv=pass;
         d=google.com; s=arc-20160816;
-        b=iMVxQo8lQhm62r/wJOrcv941oRzUmgRNgdpG1FEcK9JyrZnfkBHLNzW5hHSe0+s5CX
-         9TWe29+ZJnC8gCTiam8pYKEQQF64+0yDcuqse0skt4iurEq0p+crh3PMcsTosckMKF3y
-         AuALnZzWu+5dvOkOWDPwP3s0jfPkQD1k0X51cXhtjS0gq2GA5KIfaAp/9iRk5hd7GXQG
-         NUs/gk4vKqYVrqyVcfSoY+1A6cnvbFet3DX8hyiR1NMR6tipbr0BQdX/Wzs3GTSlzDB3
-         hvTjjyq6w7yFCCr5PdEMmfpDaJkvY7IiJSDMUIbMJewfMtZpFc91yClvYCj+8NV4uzQd
-         ay1A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=KgRm35oGlmj+SX4V5FOuFuz1t/Z4qnbC+T0GJnEVib/CqnCOTOR2LmTnrDlaAuBiVa
+         pTeS/rPJzBn2rV6jV5Tyj4NQX+lqmanfYEkE8j1ycZAaPgs0MURLiChy7MvyCfifBf3n
+         uFbgJKuG5jVIv0CNR8/mAH2kALzPaZOtWh9Qd5RkrIGZC4l9eB+qcd6jmwyl17v5HmgC
+         bHjKs2CPXI04UHk85mJ6B7B9ZNjNzXVIkG+AmYH2M9q9yuRqmEOQ/ThTKQgUJoWRPj3d
+         RAANsrf07NTLwmhEQeM+PKNCzTLjLU1947j9Zb3C2BXxQWbH/f7jJQg2qfJW1u7pkqsj
+         dYfg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=/+wXORUvr5hRqH1WCu2NimZjlyaZzvEeKmaflldHyPY=;
-        b=Kv8j5SFuB1oIP7/F0Pm3RA4kGHqVzpoO9pSZAIyPtg2f5fhi7itkFaXXMNdNYnF+WR
-         zsjjf/NpyXXdoW7IxE7d1g/SK/DMC8Tuq7g6bUHfrQVXW4ThRviaTIR8Rl2tWTEJmviR
-         EtasbyAtQBhF/4jVxo5k/eAI/xeS+eeqKwnYGqJtpz6EDNcRevloeZpunJI3yfUXFKAc
-         6/YLzvfB4rjobE6l1EXbuu0hzkpjq9sRZjjJ8jVQE91/VbSJiPgCeYD3YhHQu5wK2l0T
-         uyzwZ9FtvvPOXHu25PvJKWklFGchqoyRSRdiUQ5b8r0sF7K+SYMgkgU0ji1PLqgzbait
-         u14g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=MtNZ5Zh4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature;
+        bh=rkMzVTfkD5GbqtDq3zRQ7DITlczx0CIzHW+6NFD92jw=;
+        b=sRVEBSOX5+QUeNYw0IEj9PZ6RQUtIODXaYHgp4tF9+wrlbZWVAoPb6QvMWflDmNpOS
+         jmWmXyjUl3JWUeIYyNG9owmhukMVE/xuqEHkB1baqsx1dnWH5XKiorSP9n3zxb8cTzmU
+         dB6Ijp1xj7pGywHgC2fkC/PF9h4dLLX4QI1bw2uE75j+sYZVY1xCh4OVgDvFbX8PC7ym
+         B/E/VQJUMMN9xdAoWaZujiUUKTBwq7jsfalGc1SleaLcsF1d5Y475ZaHiCQHXduZYrmk
+         A6hQ2cwRf40b9Yl7S8/aKvLbCL68pAVGMvHqiMw2CML2Oh4FwG0cVdcKarfKv0h64EHO
+         yu1w==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=XjvwSSoh;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u27-20020a81b61b000000b002eb7c10f649si6547383ywh.370.2022.04.07.06.46.28
+        by mx.google.com with ESMTPS id l126-20020a815784000000b002e622a290a7si11513700ywb.268.2022.04.07.07.26.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Apr 2022 06:46:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 07 Apr 2022 07:26:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=MtNZ5Zh4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38986 helo=lists1p.gnu.org)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=XjvwSSoh;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+Received: from localhost ([::1]:39260 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncSSy-00007q-Hq
-	for alex.bennee@linaro.org; Thu, 07 Apr 2022 09:46:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50466)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ncT5f-0004Iv-Tu
+	for alex.bennee@linaro.org; Thu, 07 Apr 2022 10:26:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1ncSE8-00023y-Af; Thu, 07 Apr 2022 09:31:08 -0400
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129]:36801)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1ncSE4-0000FW-0u; Thu, 07 Apr 2022 09:31:06 -0400
-Received: by mail-lf1-x129.google.com with SMTP id i38so1337845lfv.3;
- Thu, 07 Apr 2022 06:31:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=/+wXORUvr5hRqH1WCu2NimZjlyaZzvEeKmaflldHyPY=;
- b=MtNZ5Zh4n3Sv9cie+VJ1eGEU4XYXA7n/nZpzqdqvMUjrITNWLOQ9cHHnlywOOgLEQL
- ZctWHMJd+sr0h1b5W1tok82cEP9xLRi6lGH/tWCYKi2x7TqLNewgj9uDvAbs1OVBu5pQ
- aWlT64dzlsPcq0OOUetE7rNua3ikhblmf4JgI1dcba1U3exXs6VHiyqtcSLWMJAoDWSh
- Vk9IDWR9ftWFVMmAmAaEXR9xNGEzI0eCqvJW5bhJgPNcNoeideMT9DUJZAbIElJOWS/d
- S//crrJWSuVIB521tKFiz6EQzrHQf8JZBu7t61V2A5Lw000hyjgqEgQohOAJS46kk/31
- cm5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=/+wXORUvr5hRqH1WCu2NimZjlyaZzvEeKmaflldHyPY=;
- b=hoJFhFXEZ0bKbfperq5Iy98+7uZ947IGyCLrMaDMjcGTsGnjMPfEN7gBQy21OJPI7a
- mePpe46vB39hV8x/1RbC+dLSZfjOlCgJtbBkEQhjzPOuwTa+SYZNjJ+fdS4GJMdFoxxT
- vnvSi4HnIjZGHN0m0bGa3nNi+j+9EoMU0hMiTO+SlYj6nipuNBvhF2p3I/GplcdMXH0Q
- eNLjXgr3nA/7CDZb2/rpoXHc13Jdk55ykks2+NUtFRNhSVrm0QbAjpzxmzpXHSRCYHsC
- drvSXAlCXjpxeRTR8Tec2wFuQDf5HKn/uHE+JhB2o2cv7ZxjaBmWDZAdyLL2+hb9aBCr
- mzFA==
-X-Gm-Message-State: AOAM530uI0SraU5T947+Mk9daVbCwsnDGVhBq5SxUaZ6pgES5tcKl7XT
- 2lA8/v4TDcZRoBjcOBiLzHI=
-X-Received: by 2002:a05:6512:3b0a:b0:44a:2e21:ef25 with SMTP id
- f10-20020a0565123b0a00b0044a2e21ef25mr9442173lfv.333.1649338261316; 
- Thu, 07 Apr 2022 06:31:01 -0700 (PDT)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id
- w15-20020a2e9bcf000000b0024b0b623685sm1732852ljj.136.2022.04.07.06.31.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Apr 2022 06:31:00 -0700 (PDT)
-Date: Thu, 7 Apr 2022 15:30:59 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Alistair Francis <alistair.francis@opensource.wdc.com>
-Subject: Re: [PATCH v2 0/6] hw/riscv: Add TPM support to the virt board
-Message-ID: <20220407133059.GG3143488@toto>
-References: <20220407020432.4062829-1-alistair.francis@opensource.wdc.com>
+ (Exim 4.90_1) (envelope-from <fkonrad@xilinx.com>)
+ id 1ncMmp-0008R1-Br; Thu, 07 Apr 2022 03:42:35 -0400
+Received: from mail-mw2nam12on20624.outbound.protection.outlook.com
+ ([2a01:111:f400:fe5a::624]:26593
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fkonrad@xilinx.com>)
+ id 1ncMml-00039w-GV; Thu, 07 Apr 2022 03:42:33 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ONwectkNBdB/+BpkvZGUBVAECr9njAUsNskaPlbeeIhnnjcmc66E+d9kOLxm3rtXsX1VLDGbpz2dGQlurcgZbf/RD6mr1iEQaR9d5Hp+UZOf6e7wUBrg9ddl1hWBKxqRddwzc5tAcLi0QnWorXBjQvYGVeKmJCaIGhS+gzR0LcodOTWbl66w1lUQh0LBUAKpMALB4CYzxIvnjk8iJ3Q9SMSkrH3muiQJB7PTH9jCvlorFfgq61nggQ7IuY+Y0TtS6l0S+b2vRyR/iSP/6u4OAyUMLH2IPoDN+oon2LHnE6AAqFRwGy3hSPyI+tpwWlwJeNdUqv0fGeURJD9P3MzypA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rkMzVTfkD5GbqtDq3zRQ7DITlczx0CIzHW+6NFD92jw=;
+ b=Qpd35tgO4V8Pcwxlq/TJtYEKvux3vVpA/ttaf8yq0XpRS6pVHHWYPzWvpWZWu5wQ7ePpuyhMW2oXErowMLjIa7IE+GOoKjmrWnHPLw14omCIWEhlOhR7l+Fo/NDBI91SHSllLoh7wbTmwQmQH52/ysR+zPEYVGytV+zgIsNkSSzmJFBecIeyYzmFZ0eBh965HywzU+g1XB7CDEdns7nfLry7ETElg+Xp/hajL732nKI8r+Nestx3HESOXcG+Ad06dbv68cAENVtENoeshYzmAmwaGaC0vVOUVa4mQhETdqoPt0B0pF4v2MQHql3YIlyZIkO4vmWv3VkVqs54kiU0MA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=xilinx.com; dmarc=pass action=none header.from=xilinx.com;
+ dkim=pass header.d=xilinx.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rkMzVTfkD5GbqtDq3zRQ7DITlczx0CIzHW+6NFD92jw=;
+ b=XjvwSSohKYYTOKB/2AYuWrbdpcOwQDHD6P8pCKvaoYxh2qWwJ/1BXhc13BeMSQta907nuZczup/puLTfcsLo1txt8rdxvEemNlV8OXv52w205g+ia7TfxHyN9/Awd+YUbMMluJMnXFyiU/zWsmgHzurJENSgR1MgSbd/igtb2Bo=
+Received: from BY5PR02MB6354.namprd02.prod.outlook.com (2603:10b6:a03:1fd::12)
+ by SA1PR02MB8463.namprd02.prod.outlook.com (2603:10b6:806:1f7::24)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5144.22; Thu, 7 Apr
+ 2022 07:42:26 +0000
+Received: from BY5PR02MB6354.namprd02.prod.outlook.com
+ ([fe80::3854:75c0:3d7f:299a]) by BY5PR02MB6354.namprd02.prod.outlook.com
+ ([fe80::3854:75c0:3d7f:299a%5]) with mapi id 15.20.5144.022; Thu, 7 Apr 2022
+ 07:42:26 +0000
+From: Frederic Konrad <fkonrad@xilinx.com>
+To: Edgar Iglesias <edgari@xilinx.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+Subject: RE: [PATCH v1 1/4] hw/arm: versal: Create an APU CPU Cluster
+Thread-Topic: [PATCH v1 1/4] hw/arm: versal: Create an APU CPU Cluster
+Thread-Index: AQHYSd3GAlDp92qGH02YL3f4FzzVMqzkEgFQ
+Date: Thu, 7 Apr 2022 07:42:26 +0000
+Message-ID: <BY5PR02MB63541D2F97A9AA9B6C23639ACCE69@BY5PR02MB6354.namprd02.prod.outlook.com>
+References: <20220406174303.2022038-1-edgar.iglesias@xilinx.com>
+ <20220406174303.2022038-2-edgar.iglesias@xilinx.com>
+In-Reply-To: <20220406174303.2022038-2-edgar.iglesias@xilinx.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=xilinx.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 8a1db6e8-5570-493a-2b71-08da186a296d
+x-ms-traffictypediagnostic: SA1PR02MB8463:EE_
+x-microsoft-antispam-prvs: <SA1PR02MB8463211B48F4980622E897F8CCE69@SA1PR02MB8463.namprd02.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: f2g1yOKz2Cxm8LE89d6U5kugU5uX5x3XddD9YjA9uVGGW2CtkFxxgdzLc7Jl7w9NI8zgwlBGQBEmQR++SwLXNIvyjCBOwUOdPyCyfs/59oi/0KwTr33cczvGJLT6//7UOU9lmMpb4AQ+CZGq9vlTQiQIRMKVBpitDZ7pZV9mK1w+OfXya+DiIYiLD2rzK9LX/fMOevkEqBR7sXfI+H2yrpOUoaPsDxRo4gewU7+NsA/XfZw8ln2cQqK2ZCTgkGKKepsR6mOru4TTJjlJ+or4jFiTG6E0xrECcM1KTPQ8xGsNK8p7j3vYGgrw4EisFoJCeFgcC2O3KB8HvgzmXWWxHWCLC7wheep9TNBkIvxfYoophJ2Ge8E9DJkdk0bHj1XWiC5iYoF7gD8BkzStM8K74zKBanm99m9oebcbmQVAX2Mdd6YqShwime5t9xbIhSve0WkTCQvoHs+uAUfmA2SO9+MyajrGVVPwWJPdCDdGM8cO6YoA5uXknNp8GLZeH1AYcSSwWZTymzLw5D5F+RMAb/Y8ZV9qse+VVkrkY9JCsb49fa9WPqa//MiYo5NHRDOZzA8WCfukdMU/Q5Ivhj3xVrDCgpIE4OInhW4u6C+Xz4QMongBqItyCWQ7b8ALKJo/9Yeo4Cua0/QQ5afxL7FXloviReGwd+6KWVGKBUYYqQbHy9DlHoJGiS0AudUJQ5bXKoCPVJUVO0yX4GJDC6GwJw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR02MB6354.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(7696005)(6506007)(38100700002)(316002)(53546011)(64756008)(66946007)(66446008)(66476007)(66556008)(8676002)(4326008)(9686003)(86362001)(76116006)(83380400001)(110136005)(122000001)(54906003)(508600001)(55016003)(186003)(2906002)(71200400001)(52536014)(8936002)(38070700005)(33656002)(26005)(5660300002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?pDWPf7hM9hM4w7ahAT/mocjLx7IlT8kOLACC1sf3shh1E4h7yJDoPO2rpV0O?=
+ =?us-ascii?Q?stCdDQgMTH+btAxzHkGyIjzaJsY7FNHOfBOqDVl9YF7ELsdcn6KmDDSo1h03?=
+ =?us-ascii?Q?lrMxQ0rlrf0+HUnKaL77/0Nneqg68LxCn9KEhNM2FMcHBFHjDU9GSxvjDrzO?=
+ =?us-ascii?Q?uXFAK++qXd6nuMoZNe/lRhv8T98MsVPUCyygD56UTpsJJnHLLbEL/n+QJ1k9?=
+ =?us-ascii?Q?/gQV2nLwWi3pTIqV47axv5lYtNPfPAzz3h0250d14+ylhbqFkdkFcCeerOv9?=
+ =?us-ascii?Q?zyevPKPmovRmkSpu5ptjV/5OZN5IuKI0mwDSgZcOUnwpmIqjwyQCScWmVUm7?=
+ =?us-ascii?Q?ODPfYGrYf9DgQpxiWJkQS/dWa2lHctg4mVjGwXUA0azvth4DmvLCiSBqqSEo?=
+ =?us-ascii?Q?k9ePyw4f54O0CbrNpYSx3Pf3kJTjOhjENhk/MCxhYA029TuW+GkFVTWTaVaS?=
+ =?us-ascii?Q?6MZ49kAwq+HY25lIhXkOhhqa2ulg7G3cofRlHa+h+q5h1nsGfc98G6MM9USn?=
+ =?us-ascii?Q?dQNOU60uC5y9KBqWtiIYIds8EvT2hepgV+iSBfnJU5ubKDkI7WYIE6vOkcFd?=
+ =?us-ascii?Q?e2trrhFHX2sz5pWSvdQFHmcGxut9SVcihZW2kIX7d06waAUZQBbSCAx5nrlV?=
+ =?us-ascii?Q?Lq9FUV2NMZM9a6j94tmNxgwupWvFVHeZwhpOhLgZFnWaXeIYxQgXsSRNd5Lh?=
+ =?us-ascii?Q?XW4WesHYwy2BvaLlBaOm8i/AbVg4fmdwkw/OA+HiUmFosAwF4mXxR+wNj5zB?=
+ =?us-ascii?Q?6E+8UMUjE7TfOTclkkp7JAdsZAtjRsdOA1spssjy0qbe22a+u+tJgo3c/+0k?=
+ =?us-ascii?Q?/qQbXDQskUfhhqgvCEciPGGpU9h3UYVpahrs2s4DaaeI13yqyFZdHJcbhYTk?=
+ =?us-ascii?Q?5WKj2k26NAnezlz2GvGFWGp6hyGxZZwe7Xmo2UoSnXhKGCuKx37qkyZZYRZd?=
+ =?us-ascii?Q?RfAMM9MhmjpM3LMX0yk8zPsqrraYOk4PWKI1bP0S2vaFehreKWX265eh+fzE?=
+ =?us-ascii?Q?KGufBbTOXnINCL7mRVEbMOg18RdOoCb3JNL36WAqiQBtKxeVLD296XNeIQON?=
+ =?us-ascii?Q?wmCPrenkFy0Zw1E0QGShXUyBd9/AX+pVWqUA/+5inpmD5/4MkfYCtkU88fOS?=
+ =?us-ascii?Q?ZjPYFlq36lh5tyEE4QY/jprhaGalf6EoDRrFwm0pj6KWbZL7xWSBcflhotut?=
+ =?us-ascii?Q?7gT1S3C9GKo0lxFE46GLbBhqpLTxkDvo0O+lW7BMAZbd3YNISZfVzoUkXy50?=
+ =?us-ascii?Q?QebVrhsAB8CffJBgIiFGPQAhYh+Yjuag2nzg6gClzaSh20VafrhHSkM4Yg3p?=
+ =?us-ascii?Q?hVaO9Op/XktQcAmqajcoG7m052flhuuJQPewIvI4R09ypIoDyb083LDUbLHZ?=
+ =?us-ascii?Q?eCMPFPc1HpD/YSR2oC25mpzHMnyznb19upBTzn4zv5qhz6ZJek6OMm5dzcci?=
+ =?us-ascii?Q?LhDFSKwrIcoNzmdbdF5aHM7c3byYp+NPkV3aFfx1s9a8i7bgUxIaIByQ/5F1?=
+ =?us-ascii?Q?4vI013NTtdoV2Me/kLBRH7fE9++Dj0Ye3+0Z6+xfW77bWD2+w2a/yPtM0jBV?=
+ =?us-ascii?Q?icckLFKiqNUFqV/JrlnbXSDeZ0dkqxODQ8jGR5GT2ADr5aR8bmuOdBsGFiyQ?=
+ =?us-ascii?Q?f3dyDCYAHHSs5W2z3Mc3qUYHX5LY2NCYY1Y6BMWWPSIwdN9H2dQNphTwyOHH?=
+ =?us-ascii?Q?ih1yjXl2rTp2oOlJ+Wq/ge+SjNdGGDQoFgEOKEGAPiNiW/38PdT3Yt1MH9oq?=
+ =?us-ascii?Q?Sb2G94A1bw=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220407020432.4062829-1-alistair.francis@opensource.wdc.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::129;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x129.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR02MB6354.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8a1db6e8-5570-493a-2b71-08da186a296d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Apr 2022 07:42:26.5873 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0uQ5cIUo8BW+WSUccq4uiR3Fu3neXRughZ3EW/FEeNbuz8HilxQ4NlFKAwZUXsQBiDDLDJ3Hvb30m1/fu5yAkQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR02MB8463
+Received-SPF: pass client-ip=2a01:111:f400:fe5a::624;
+ envelope-from=fkonrad@xilinx.com;
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Thu, 07 Apr 2022 10:25:14 -0400
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, qemu-riscv@nongnu.org,
- Alistair Francis <alistair@alistair23.me>, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, alistair23@gmail.com, bmeng.cn@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sGeR2YJa/3Gi
-
-On Thu, Apr 07, 2022 at 12:04:26PM +1000, Alistair Francis wrote:
-> From: Alistair Francis <alistair.francis@wdc.com>
-> 
-> This series adds support for connecting TPM devices to the RISC-V virt
-> board. This is similar to how it works for the ARM virt board.
-> 
-> This was tested by first creating an emulated TPM device:
-> 
->     swtpm socket --tpm2 -t -d --tpmstate dir=/tmp/tpm \
->         --ctrl type=unixio,path=swtpm-sock
-> 
-> Then launching QEMU with:
-> 
->     -chardev socket,id=chrtpm,path=swtpm-sock \
->     -tpmdev emulator,id=tpm0,chardev=chrtpm \
->     -device tpm-tis-device,tpmdev=tpm0
-> 
-> The TPM device can be seen in the memory tree and the generated device
-> tree.
-
-Hi Alistair!
-
-You've got a typo in the subject of patch 4/6 "generating".
-
-On the series:
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
-
-Cheers,
-Edgar
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Francisco Eduardo Iglesias <figlesia@xilinx.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "luc@lmichel.fr" <luc@lmichel.fr>,
+ "edgar.iglesias@amd.com" <edgar.iglesias@amd.com>,
+ "frasse.iglesias@gmail.com" <frasse.iglesias@gmail.com>,
+ "alistair@alistair23.me" <alistair@alistair23.me>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "f4bug@amsat.org" <f4bug@amsat.org>, Sai Pavan Boddu <saipava@xilinx.com>,
+ Edgar Iglesias <edgari@xilinx.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ow4v2/keDQGh
 
 
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/942
-> 
-> Alistair Francis (6):
->   hw/riscv: virt: Add a machine done notifier
->   hw/core: Move the ARM sysbus-fdt to core
->   hw/riscv: virt: Create a platform bus
->   hw/riscv: virt: Add support for generateing platform FDT entries
->   hw/riscv: virt: Add device plug support
->   hw/riscv: Enable TPM backends
-> 
->  include/hw/{arm => core}/sysbus-fdt.h |   0
->  include/hw/riscv/virt.h               |   8 +-
->  hw/arm/virt.c                         |   2 +-
->  hw/arm/xlnx-versal-virt.c             |   1 -
->  hw/{arm => core}/sysbus-fdt.c         |   2 +-
->  hw/riscv/virt.c                       | 312 +++++++++++++++++---------
->  hw/arm/meson.build                    |   1 -
->  hw/core/meson.build                   |   1 +
->  hw/riscv/Kconfig                      |   2 +
->  9 files changed, 221 insertions(+), 108 deletions(-)
->  rename include/hw/{arm => core}/sysbus-fdt.h (100%)
->  rename hw/{arm => core}/sysbus-fdt.c (99%)
-> 
-> -- 
-> 2.35.1
-> 
+
+-----Original Message-----
+From: Edgar E. Iglesias <edgar.iglesias@xilinx.com>=20
+Sent: 06 April 2022 18:43
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org; peter.maydell@linaro.org; richard.henderson@linaro=
+.org; alistair@alistair23.me; luc@lmichel.fr; f4bug@amsat.org; frasse.igles=
+ias@gmail.com; Francisco Eduardo Iglesias <figlesia@xilinx.com>; Sai Pavan =
+Boddu <saipava@xilinx.com>; Frederic Konrad <fkonrad@xilinx.com>; Edgar Igl=
+esias <edgari@xilinx.com>; edgar.iglesias@amd.com
+Subject: [PATCH v1 1/4] hw/arm: versal: Create an APU CPU Cluster
+
+From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+
+Create an APU CPU Cluster. This is in preparation to add the RPU.
+
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+---
+ hw/arm/xlnx-versal.c         | 9 ++++++++-
+ include/hw/arm/xlnx-versal.h | 2 ++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c index 2551dfc22d..=
+4415ee413f 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -34,10 +34,15 @@ static void versal_create_apu_cpus(Versal *s)  {
+     int i;
+=20
++    object_initialize_child(OBJECT(s), "apu-cluster", &s->fpd.apu.cluster,
++                            TYPE_CPU_CLUSTER);
++    qdev_prop_set_uint32(DEVICE(&s->fpd.apu.cluster), "cluster-id", 0);
++
+     for (i =3D 0; i < ARRAY_SIZE(s->fpd.apu.cpu); i++) {
+         Object *obj;
+=20
+-        object_initialize_child(OBJECT(s), "apu-cpu[*]", &s->fpd.apu.cpu[i=
+],
++        object_initialize_child(OBJECT(&s->fpd.apu.cluster),
++                                "apu-cpu[*]", &s->fpd.apu.cpu[i],
+                                 XLNX_VERSAL_ACPU_TYPE);
+         obj =3D OBJECT(&s->fpd.apu.cpu[i]);
+         if (i) {
+@@ -52,6 +57,8 @@ static void versal_create_apu_cpus(Versal *s)
+                                  &error_abort);
+         qdev_realize(DEVICE(obj), NULL, &error_fatal);
+     }
++
++    qdev_realize(DEVICE(&s->fpd.apu.cluster), NULL, &error_fatal);
+ }
+=20
+ static void versal_create_apu_gic(Versal *s, qemu_irq *pic) diff --git a/i=
+nclude/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h index 0728316ec7=
+..d2d3028e18 100644
+--- a/include/hw/arm/xlnx-versal.h
++++ b/include/hw/arm/xlnx-versal.h
+@@ -14,6 +14,7 @@
+=20
+ #include "hw/sysbus.h"
+ #include "hw/arm/boot.h"
++#include "hw/cpu/cluster.h"
+ #include "hw/or-irq.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/intc/arm_gicv3.h"
+@@ -49,6 +50,7 @@ struct Versal {
+     struct {
+         struct {
+             MemoryRegion mr;
++            CPUClusterState cluster;
+             ARMCPU cpu[XLNX_VERSAL_NR_ACPUS];
+             GICv3State gic;
+         } apu;
+--
+2.25.1
+
+Reviewed-by: Frederic Konrad <fkonrad@amd.com>

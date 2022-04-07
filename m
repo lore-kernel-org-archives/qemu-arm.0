@@ -1,113 +1,170 @@
-Received: by 2002:ac2:5de3:0:0:0:0:0 with SMTP id z3csp112292lfq;
-        Thu, 7 Apr 2022 05:05:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyMwfEhcpBu6V69L7jzLIHJchWfibkONkOzgiUfNCWz/cRVOktdJTReYlFnY65nGCB8LxG6
-X-Received: by 2002:a37:68c9:0:b0:67b:21e6:297c with SMTP id d192-20020a3768c9000000b0067b21e6297cmr9132121qkc.464.1649333134198;
-        Thu, 07 Apr 2022 05:05:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649333134; cv=none;
+Received: by 2002:ac2:5de3:0:0:0:0:0 with SMTP id z3csp56730lfq;
+        Thu, 7 Apr 2022 07:26:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz6j8ZVLnV5yyeA9ryfVXtqrWG12x1jtiDboOTGSBc1OvwK2bLZ1EX9LZ/zMUCMmzhSiFL2
+X-Received: by 2002:a81:178e:0:b0:2eb:6c60:1957 with SMTP id 136-20020a81178e000000b002eb6c601957mr11680524ywx.307.1649341614165;
+        Thu, 07 Apr 2022 07:26:54 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1649341614; cv=pass;
         d=google.com; s=arc-20160816;
-        b=eova6MYzw+ZLj3xxcuFnW4Trv/+zofOHc57uVl151lrq5uhcDfS3aLK3+ArtdFHUm3
-         HU9D7XsX/UWXaQbK2gosfuqEF49HjDuIJtYCeergFBXmRh+UhGSEeY7z5nffV+IqLuTN
-         By/Kv9q3y/IZiMd7KWrfYgpgcjtw6QUGbug4mlIG+zNHG9elyH1nd/8j754qyn65BoJp
-         Cu5UjpsPqGFthykFJlmCLO+QZCn6gX4iU9F7mFN0K/cpNX+0GeAGQg2N6OMqAbkT2EnB
-         crswkaJtn/30HNf/VbiYqf/OXDA1N3PCfGFuBXXRPar3PxokdVMUL7ILqz/nJoogFA3e
-         3xmg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=E7P2KIWq7PUmldfqpXsNYDrAQ7xCpDY9QSARofUP48VMVYZ2nxQpFWW1OWUlwKPbYs
+         rGQUBY7xpgegHxT1MNu1WAgc1d4qQEFKAEF6NLNVXaPlewXcAlE1PGm5nYVXSzfN8yWh
+         c68LEd4ZKod/OTK8vdUHpTYIsPxEzCLNqRsHHsZfOFRQswLvcpGCROuJBmVb/TqShq6M
+         9ob7zM1fGEF/vZ6aei/HuREtneYY3VcgZRASLF/GstsIoCxkoshXHvuP4CuZ5QcbcIwM
+         6hTjlyGjxavPB1rhgMTG158CrEYKqBK4IKF8WH8ROB9doLzJ+0BH1eac3ONLMkJiRFGY
+         P6Wg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=ReYOp/YVLMAxexLEzT4f24MKJggnUm0GZU6Rz2oejVs=;
-        b=clssckuy3gCGkGy5s+TnxFBqPYnME5sSqsGlVXVN0wX1Zu9/KvnZXiDDip4OheeuBe
-         ipsxxvslO4ggRJ2XQ1k9Vflya4fjpkltDbEQ/3J4LLxP4gPmakujrRjE7c2s+LJe7KTA
-         v16FotsuzBmyd0gkZoURg6/JOT68+wyoKFs/TGl8+XRao9lc/u6BeMqtrp2Hn7bE8nCQ
-         B0jmYVrlU3oDoARYxQ1K8UN3rJzr3B4whwjj+JrQ4yQLv2U04m3NQDxgP0qIMDmHf6BT
-         AVA2rLsBh63XS/8eCfhoWXn9sEsEc/wj5QDSoAsLatJ9/f2OoilfiKjQfgQ/KtuG0bah
-         Doww==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=k1VGsDSv;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature;
+        bh=07JPq6eDRAcBSSLjICjOVeh2x3SUhrsRo0B5zvv2ndo=;
+        b=QPHAOttna5HuWdyPsFKc4ldNWmwxIs0rsv/zDR9Bc5ce2EPt1uM6qLt9mRCd1WM9Ft
+         Rrtornm3m4v+aAdFLQECQom5vMvgJT4t3rsJM5M6YDuyxavrD8mFuyFULU+SRmdCS/D7
+         gGiz36f6/rPe4aLYkhMRVL9uzWhUsNJSQst8oKY7IhnYpaQCzGQlLb+HvOCEir8OCoyq
+         mGPyI5H0rq2AC8UtDTxG5zSr0I4tMzNQOhvWNWCMZuhEgscfZo/p9t8rlBpmHIDqoUlb
+         WP30WS/j4WEXM/K+qcxPbxpZgjo3WWYc1zBmIcA0TjFIDb56cNAoxtenJXmCFMfTLxuR
+         BWcQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=G6Obe2M4;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b26-20020a05620a04fa00b0067e4be239e3si6684724qkh.552.2022.04.07.05.05.34
+        by mx.google.com with ESMTPS id 193-20020a250cca000000b0063399404608si13690442ybm.626.2022.04.07.07.26.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Apr 2022 05:05:34 -0700 (PDT)
+        Thu, 07 Apr 2022 07:26:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=k1VGsDSv;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=G6Obe2M4;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54502 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+Received: from localhost ([::1]:40556 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncQtJ-0006WT-Kn
-	for alex.bennee@linaro.org; Thu, 07 Apr 2022 08:05:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32982)
+	id 1ncT65-0005F7-GK
+	for alex.bennee@linaro.org; Thu, 07 Apr 2022 10:26:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49436)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1ncQsf-0006Uy-3K; Thu, 07 Apr 2022 08:04:53 -0400
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a]:45781)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1ncQsc-0001wl-6I; Thu, 07 Apr 2022 08:04:52 -0400
-Received: by mail-lj1-x22a.google.com with SMTP id q14so7118990ljc.12;
- Thu, 07 Apr 2022 05:04:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=ReYOp/YVLMAxexLEzT4f24MKJggnUm0GZU6Rz2oejVs=;
- b=k1VGsDSv8SHrLKXDgE2DFohCAx/coUKQ6NHcht07vn7Fl5BUuk84siQRnLqdiXEhg6
- h9iyMYiPFygkSxgvt8WeA63VOS6Svx+T+h3vgJEyd+mj+uXXpv3bukoDKH+ALpnszeOD
- 5l6dJvnGcEAOi/FtMQHJjXvnDo8KcNtY/xMn5P50xsRJr+VKW9DcGSMWs0FVDngItoqQ
- 3brTopWXVZGMoLDfwfBy5BCVemNN3b/Wx0UMLjEmEppPmmYXvn3sE+3Eupz3jqPm0IY5
- Ecla4xvj3J0zYWrRYHImIj7xGCsAvWKKL/OkOoHBOIcXIOhoEXFJ9+Y/p9vzEkYMtU/m
- RhaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ReYOp/YVLMAxexLEzT4f24MKJggnUm0GZU6Rz2oejVs=;
- b=01FMnNlH9t3EHC8hwWFDmCKYYsh72k3/SZEtEvqsizGsl7Ewvqho+rXngl1sQNXkzE
- F6Dj6uOpJhDD2WDiKvLOdVzqUkbE/fQ2ypJF6BOy2zLlwOBL8zbk/Bj8aASi2RKxZM7o
- kbMqeRW/opo+hRgoHEMSoX5uBebgV1s4w49kFe4E41fpcfnItrrxwQMSCLGpeisYDBRR
- DVualSdiYtATtUNI10h0a2JM7XB7O+7/G7qESu5hW9rjNCe48MU0IiGaGR1CGMK4SuaE
- 6dtH1PsIQnmAt8xJ4+40vi2ILr8r9F2c7pdnJYGHsfCKCdmqizPoECJ4rkxJB8eVv+9z
- pEAA==
-X-Gm-Message-State: AOAM531lY281zGtMWGz58yxD0hpx/M6QlJL+M93TbDa/5L+ukcR5KFNb
- 6XnpHJJd9f9zdhOn8+ESTag=
-X-Received: by 2002:a2e:91c6:0:b0:24b:f77:9ea with SMTP id
- u6-20020a2e91c6000000b0024b0f7709eamr8590645ljg.353.1649333086867; 
- Thu, 07 Apr 2022 05:04:46 -0700 (PDT)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- b11-20020a19644b000000b0044b09e88d68sm1262725lfj.256.2022.04.07.05.04.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Apr 2022 05:04:46 -0700 (PDT)
-Date: Thu, 7 Apr 2022 14:04:44 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH for-7.1 02/18] hw/intc/exynos4210_gic: Remove unused
- TYPE_EXYNOS4210_IRQ_GATE
-Message-ID: <20220407120442.GA10629@fralle-msi>
-References: <20220404154658.565020-1-peter.maydell@linaro.org>
- <20220404154658.565020-3-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <fkonrad@xilinx.com>)
+ id 1ncNxs-0007rR-0d; Thu, 07 Apr 2022 04:58:04 -0400
+Received: from mail-dm6nam08on20606.outbound.protection.outlook.com
+ ([2a01:111:f400:7e8b::606]:2656
+ helo=NAM04-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fkonrad@xilinx.com>)
+ id 1ncNxp-0002El-Fj; Thu, 07 Apr 2022 04:58:03 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=BkDzC1AbSsp0k0g8bo1OrSS3/fFR4+ODfbhBOqA8I5fAHzD8W2wllx/F5cV4ZrcCsf38qgMHYed80EaW3dYOS2fYxFOHQrcU2zEHYalbYC2Wh3LIW2wt+NKGIcRuLjCR50zTtLqwLATejOj6BVGt2D8ubFfjOnCRg+WzO0OP9lFrQIdQkYHJG6KIjprVkYhBxyIP7rUN83M3HgaeKQeRQaHa5oC9rhMTzy79qLUdBVoVQhiOvx+QE2cLK4t/dzJ1adIxT9glsW4F8LoKX7frHZIKrdHXdhMehfCFLM2kVOWaxALLPZDWxMRl6Yk7bpzO0zCFEcylMUe2UzwtJv7z8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=07JPq6eDRAcBSSLjICjOVeh2x3SUhrsRo0B5zvv2ndo=;
+ b=X/2XGHixSDC0Okss9Q2+fFDklCd9Y6DRERoh77xODy6SIztZXrkFY2GnJfopGRs33muawkEX4ylJG/2M8ECRvWQgHxLVpF2xcjMNDYDNNsPaZQctrj5nuLmW7ZriSOGgOBgqI0eKwJxkpUrCIrmRyhv98jAe/zvCn9vZIauTddVT9Jeg2Hy5cHftBOXrmm4Q4FQNP4mhXuafg6dny0ojVj49NMsFJ48iS4iJz8eB63MuUZJ2of4YD/2pe+KUVQN/IDpxxFRw74F6cFV2/GhnBSlH00pMaclCFAelkBskCD5rSNUEbKvn9Xx5m0ej8bm8aUa9aGIP3L7nD8aRUcST0Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=xilinx.com; dmarc=pass action=none header.from=xilinx.com;
+ dkim=pass header.d=xilinx.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=07JPq6eDRAcBSSLjICjOVeh2x3SUhrsRo0B5zvv2ndo=;
+ b=G6Obe2M4j5609hKrFYMIMsdLr1g6CwgxnWWoAEWL8pk/hUD+z10TkuEZAJTLJwiBPMX0O4AOOLQzV4F7bJmvHq5YsKOqBbgNZUeOFeDpK6HFRdDHPmo/tkQwRfEGmoUZZ7t8lKQUcesUigTx2SJMCwILPBte9t0o30BlEfJCC3U=
+Received: from BY5PR02MB6354.namprd02.prod.outlook.com (2603:10b6:a03:1fd::12)
+ by BN8PR02MB5841.namprd02.prod.outlook.com (2603:10b6:408:b5::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5144.22; Thu, 7 Apr
+ 2022 08:57:57 +0000
+Received: from BY5PR02MB6354.namprd02.prod.outlook.com
+ ([fe80::3854:75c0:3d7f:299a]) by BY5PR02MB6354.namprd02.prod.outlook.com
+ ([fe80::3854:75c0:3d7f:299a%5]) with mapi id 15.20.5144.022; Thu, 7 Apr 2022
+ 08:57:56 +0000
+From: Frederic Konrad <fkonrad@xilinx.com>
+To: Edgar Iglesias <edgari@xilinx.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+Subject: RE: [PATCH v1 4/4] hw/arm: versal: Connect the CRL
+Thread-Topic: [PATCH v1 4/4] hw/arm: versal: Connect the CRL
+Thread-Index: AQHYSd3L6r6K0Cx6mUG+t7kZ2QQt86zkJonQ
+Date: Thu, 7 Apr 2022 08:57:56 +0000
+Message-ID: <BY5PR02MB635418AB5A8A5C5225A196C7CCE69@BY5PR02MB6354.namprd02.prod.outlook.com>
+References: <20220406174303.2022038-1-edgar.iglesias@xilinx.com>
+ <20220406174303.2022038-5-edgar.iglesias@xilinx.com>
+In-Reply-To: <20220406174303.2022038-5-edgar.iglesias@xilinx.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=xilinx.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 9a270cfb-59d0-454a-f352-08da1874b57b
+x-ms-traffictypediagnostic: BN8PR02MB5841:EE_
+x-microsoft-antispam-prvs: <BN8PR02MB5841F41634BC4FD319F6F8E8CCE69@BN8PR02MB5841.namprd02.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 1cEGRzRUK3rjLcSOTTcJAoKGSCOkik41uxopMwqahUEfLjJdUTg4hdOlg5gZtNkf6nZKuOo09cwkaSAQJukAEimczr7rorx6BGaQkp2qGXTMg8T45nk194rHHTGVo2enQKC+f8NKtnIeN4C2rG6MG58oz7L4CNlaXoNqjj9b67j8RtTOX1CBe13Sl/bTEfhbrDjI2ul5PQMeigy4/cNAOgldqNg28vunrlCJodlxkRPeESuUiEU0atgfDEmnjO8TzxSzZwPKvI+BaF44MoBJoPvJ9GUfBUvM1V3K/usjH7KPpsYjqs+f2Pd+JB93h7IvscmZCfZ6rWpWJtOt74mlhEdxLqwhv+QOt9xBYquTNOY8slBqKkV6EgWZ+uGfgneErgo9JW4I1edhAEUvjjAZNHQjRyHcqvzCG3X8R9gxErhQ7nlwYpnEAGJ7NvaE2R7xJ9D/dNtC2RjWjXOCCTV2RIuI9u8tu7v/8pSO6Pcjky4PIZbj2jgQqn9SC6vfEvsGDVrqxpaNRB+qJkQoKTJQUk3TG2S1nvJ1tZGB/l9NTO+bxf0LEVY7XdR0hKhfeo6yeHkOMZktnVNPBVc/RIamxiXE4o/u+bJSvQBlxgTAmDpVddctWuIL2eAkcBFWf9180sJ+ag8L8DTSxPNzQFvhGfrbZYz/zW6uuRLMsKHaXVlYrmjM4fVf7BZVh5FFEQv6dHnQ7Y2dnEk/MlGnsIJVHQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR02MB6354.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(86362001)(71200400001)(52536014)(2906002)(8936002)(508600001)(316002)(26005)(186003)(83380400001)(110136005)(38100700002)(4326008)(54906003)(7696005)(33656002)(9686003)(122000001)(5660300002)(55016003)(6506007)(66556008)(66476007)(76116006)(8676002)(66946007)(66446008)(38070700005)(64756008)(53546011);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?3dHEewrMWEGHOc+XXCNqQTn+zznE85658D212IJe0u48DPGCJ6Uqi1NCfpav?=
+ =?us-ascii?Q?OXdJm2Z+IigLIxDX7rF8bhmeuo616FrHeOPwbNaOnvX8GEvLbTwFg3LSM2Gu?=
+ =?us-ascii?Q?RGZJUjF5FEfWIf0WrmgO8t0PUg+zJmtPZ+olGsLGdiojTBrWBmvT0gvZoYU9?=
+ =?us-ascii?Q?2ZHdBni2MQoHvX89Qwq43obE6KL4ocPhe4JwHHsmOeeqMlg0EYv/NJhnF7YI?=
+ =?us-ascii?Q?e7dFx4TvhhuV53XvvJx8QggutjrRyrduXhYsansc8SoAlj8uEtD+8BGWOlex?=
+ =?us-ascii?Q?RR7rvnDqVI/IlE6+aAGwPBAll/iTsWKOVCZvqa81DA/jBD9uOi12Pthuj+CJ?=
+ =?us-ascii?Q?EY6rGb+yN0rThoexS8mmGkZJ7Jn5/DvRtJ2sutjIVQrW0wR8lIyt15wGkm/L?=
+ =?us-ascii?Q?5dta12jSc/VOVRl4dwW1UG1prHQGGIxSumTrzzvUv3O34ITa7ylGulfUVwXs?=
+ =?us-ascii?Q?aDFJtPBCyegY3jEoMhE/4nrrJ+atL/73Ff0JtZ6UdVYzZtIZU/IwKx+NjMQK?=
+ =?us-ascii?Q?M2rvXQ2mttRhgPfbSEeHqkWEQWe0wMVyIoLiRun5Vte/acnF1gz6t8wmP7Np?=
+ =?us-ascii?Q?dFLA5W6wg1UKaRz5y6f3WBbtxYN1YnvzmAZ10evZcxytIaxT8rvzo+FxbqaW?=
+ =?us-ascii?Q?RW9Cb02AH8oYSuqUfmqNzbNqIUHhRWukmkp806d64Pq8hujjl7kodStmWRzY?=
+ =?us-ascii?Q?4pK9AM3P7ylqwWFsw7laA//sl6HMqVXSwAF+7W844lGxz6XlZXL8b4lUuSgS?=
+ =?us-ascii?Q?X4nHYKvCYsmUXIgul3niCpjdfwpWkruzCcD3h5GFnxWgugF7om2RKsyG7rXQ?=
+ =?us-ascii?Q?k/hmgMKApQEXjeiirIrnyYBJ/XVcX1g6F4vmyTMBjX4tdhkHZjB+h2t+pIU7?=
+ =?us-ascii?Q?2vXZ2Q/CiYe6OfrYErL9R3e6+OwnNMlPp5UTgBUBxMx4FrZLU8w9+oeD8ipA?=
+ =?us-ascii?Q?zJhxBr+73FygE5VI7seFeqVqG/rJAh1Kg/bQoOyxWQZG45UMVEpbEbqzX6Ht?=
+ =?us-ascii?Q?cw+5Ma0tobc9kDJZ3+vHtQyBXkXS9ccx837I3ZZsn8P9p7bBlczvYlTSI3i9?=
+ =?us-ascii?Q?RqAvB2le7Ht+0LR73JxxJmI/u3La2mev3qJDC/aV7OsT4QB52HPFn5dJutQO?=
+ =?us-ascii?Q?JROlDE2mBDF5Ds1d8mRvMlCLgmB6spuGuBysJFjcYfNtYUBs38vesJ0ApZo8?=
+ =?us-ascii?Q?jkxruHdsCWei9RvLRQF7S3LWoUmvf9p6JRuknYkVCdKQS7KWkWRtE7xnm9Vb?=
+ =?us-ascii?Q?IFjKIw4us0iBPyz/JcHrxFQEHRJec1lpogPdsTeMIyVRBU4W5Q33SMsKO6gG?=
+ =?us-ascii?Q?n1v+j5BYcwl+fk9oUSxjND06kIhyGRN4Qa7RUZhGbFM2Xlb/m7recmg8M3X5?=
+ =?us-ascii?Q?qduYzgbpbM3f7ML7SDWl+ff5RJnIhk/3RqW2Vi6PA/DDWyq2D5+EFTa9LiBe?=
+ =?us-ascii?Q?4s/zbZBplZSslMhXH5XrlpyvjmztaGbCSptTCJbUT5JSyRYh7SDWPbFLUdX7?=
+ =?us-ascii?Q?J2PfStuyV3Jabl6zH8R+vXhewr4tXLTuIJd8EFCvsJl3jENBLb/+YsbA+j95?=
+ =?us-ascii?Q?N59MkkaBxtBK/aDeZQRLMuMo9NIbiZCXSKVbcJWcSKZbcITlTsTJt5BSRIuV?=
+ =?us-ascii?Q?E1HoUodQ3xqkjs/gfwKzlF4VSv1tO0+n5jw5FRFxsk575vCKwvQUAIBoiuks?=
+ =?us-ascii?Q?I2p6f6XdJa+BMZffA26H9SOcWHLsFl/oIzYG+OzQbn2oCztdifxpqSLmwZws?=
+ =?us-ascii?Q?wYdf8eya1g=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220404154658.565020-3-peter.maydell@linaro.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x22a.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR02MB6354.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9a270cfb-59d0-454a-f352-08da1874b57b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Apr 2022 08:57:56.5481 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 4t8bRy0sXYHYrxuOYAeKsNJNUe/fyTWRt3uD+3a4TyJwPKVflASGc7fcNL3Nia3WCK181Vsy1m0eWl78p7rhSQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR02MB5841
+Received-SPF: pass client-ip=2a01:111:f400:7e8b::606;
+ envelope-from=fkonrad@xilinx.com;
+ helo=NAM04-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 07 Apr 2022 10:25:23 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,140 +176,156 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
- Zongyuan Li <zongyuan.li@smartx.com>, qemu-devel@nongnu.org
+Cc: Francisco Eduardo Iglesias <figlesia@xilinx.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "luc@lmichel.fr" <luc@lmichel.fr>,
+ "edgar.iglesias@amd.com" <edgar.iglesias@amd.com>,
+ "frasse.iglesias@gmail.com" <frasse.iglesias@gmail.com>,
+ "alistair@alistair23.me" <alistair@alistair23.me>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "f4bug@amsat.org" <f4bug@amsat.org>, Sai Pavan Boddu <saipava@xilinx.com>,
+ Edgar Iglesias <edgari@xilinx.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mxwguoh4H6M/
+X-TUID: pMJJLhFAAdTm
 
-On [2022 Apr 04] Mon 16:46:42, Peter Maydell wrote:
-> Now we have removed the only use of TYPE_EXYNOS4210_IRQ_GATE we can
-> delete the device entirely.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
+> -----Original Message-----
+> From: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> Sent: 06 April 2022 18:43
+> To: qemu-devel@nongnu.org
+> Cc: qemu-arm@nongnu.org; peter.maydell@linaro.org;
+> richard.henderson@linaro.org; alistair@alistair23.me; luc@lmichel.fr;
+> f4bug@amsat.org; frasse.iglesias@gmail.com; Francisco Eduardo Iglesias
+> <figlesia@xilinx.com>; Sai Pavan Boddu <saipava@xilinx.com>; Frederic
+> Konrad <fkonrad@xilinx.com>; Edgar Iglesias <edgari@xilinx.com>;
+> edgar.iglesias@amd.com
+> Subject: [PATCH v1 4/4] hw/arm: versal: Connect the CRL
+>=20
+> From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+>=20
+> Connect the CRL (Clock Reset LPD) to the Versal SoC.
+>=20
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 > ---
->  hw/intc/exynos4210_gic.c | 107 ---------------------------------------
->  1 file changed, 107 deletions(-)
-> 
-> diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-> index bc73d1f1152..794f6b5ac72 100644
-> --- a/hw/intc/exynos4210_gic.c
-> +++ b/hw/intc/exynos4210_gic.c
-> @@ -373,110 +373,3 @@ static void exynos4210_gic_register_types(void)
+>  hw/arm/xlnx-versal.c         | 54 ++++++++++++++++++++++++++++++++++--
+>  include/hw/arm/xlnx-versal.h |  4 +++
+>  2 files changed, 56 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+> index ebad8dbb6d..57276e1506 100644
+> --- a/hw/arm/xlnx-versal.c
+> +++ b/hw/arm/xlnx-versal.c
+> @@ -539,6 +539,57 @@ static void versal_create_ospi(Versal *s, qemu_irq
+> *pic)
+>      qdev_connect_gpio_out(orgate, 0, pic[VERSAL_OSPI_IRQ]);
 >  }
->  
->  type_init(exynos4210_gic_register_types)
-> -
-> -/* IRQ OR Gate struct.
-> - *
-> - * This device models an OR gate. There are n_in input qdev gpio lines and one
-> - * output sysbus IRQ line. The output IRQ level is formed as OR between all
-> - * gpio inputs.
-> - */
-> -
-> -#define TYPE_EXYNOS4210_IRQ_GATE "exynos4210.irq_gate"
-> -OBJECT_DECLARE_SIMPLE_TYPE(Exynos4210IRQGateState, EXYNOS4210_IRQ_GATE)
-> -
-> -struct Exynos4210IRQGateState {
-> -    SysBusDevice parent_obj;
-> -
-> -    uint32_t n_in;      /* inputs amount */
-> -    uint32_t *level;    /* input levels */
-> -    qemu_irq out;       /* output IRQ */
-> -};
-> -
-> -static Property exynos4210_irq_gate_properties[] = {
-> -    DEFINE_PROP_UINT32("n_in", Exynos4210IRQGateState, n_in, 1),
-> -    DEFINE_PROP_END_OF_LIST(),
-> -};
-> -
-> -static const VMStateDescription vmstate_exynos4210_irq_gate = {
-> -    .name = "exynos4210.irq_gate",
-> -    .version_id = 2,
-> -    .minimum_version_id = 2,
-> -    .fields = (VMStateField[]) {
-> -        VMSTATE_VBUFFER_UINT32(level, Exynos4210IRQGateState, 1, NULL, n_in),
-> -        VMSTATE_END_OF_LIST()
-> -    }
-> -};
-> -
-> -/* Process a change in IRQ input. */
-> -static void exynos4210_irq_gate_handler(void *opaque, int irq, int level)
-> -{
-> -    Exynos4210IRQGateState *s = (Exynos4210IRQGateState *)opaque;
-> -    uint32_t i;
-> -
-> -    assert(irq < s->n_in);
-> -
-> -    s->level[irq] = level;
-> -
-> -    for (i = 0; i < s->n_in; i++) {
-> -        if (s->level[i] >= 1) {
-> -            qemu_irq_raise(s->out);
-> -            return;
-> -        }
-> -    }
-> -
-> -    qemu_irq_lower(s->out);
-> -}
-> -
-> -static void exynos4210_irq_gate_reset(DeviceState *d)
-> -{
-> -    Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(d);
-> -
-> -    memset(s->level, 0, s->n_in * sizeof(*s->level));
-> -}
-> -
-> -/*
-> - * IRQ Gate initialization.
-> - */
-> -static void exynos4210_irq_gate_init(Object *obj)
-> -{
-> -    Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(obj);
-> -    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> -
-> -    sysbus_init_irq(sbd, &s->out);
-> -}
-> -
-> -static void exynos4210_irq_gate_realize(DeviceState *dev, Error **errp)
-> -{
-> -    Exynos4210IRQGateState *s = EXYNOS4210_IRQ_GATE(dev);
-> -
-> -    /* Allocate general purpose input signals and connect a handler to each of
-> -     * them */
-> -    qdev_init_gpio_in(dev, exynos4210_irq_gate_handler, s->n_in);
-> -
-> -    s->level = g_malloc0(s->n_in * sizeof(*s->level));
-> -}
-> -
-> -static void exynos4210_irq_gate_class_init(ObjectClass *klass, void *data)
-> -{
-> -    DeviceClass *dc = DEVICE_CLASS(klass);
-> -
-> -    dc->reset = exynos4210_irq_gate_reset;
-> -    dc->vmsd = &vmstate_exynos4210_irq_gate;
-> -    device_class_set_props(dc, exynos4210_irq_gate_properties);
-> -    dc->realize = exynos4210_irq_gate_realize;
-> -}
-> -
-> -static const TypeInfo exynos4210_irq_gate_info = {
-> -    .name          = TYPE_EXYNOS4210_IRQ_GATE,
-> -    .parent        = TYPE_SYS_BUS_DEVICE,
-> -    .instance_size = sizeof(Exynos4210IRQGateState),
-> -    .instance_init = exynos4210_irq_gate_init,
-> -    .class_init    = exynos4210_irq_gate_class_init,
-> -};
-> -
-> -static void exynos4210_irq_gate_register_types(void)
-> -{
-> -    type_register_static(&exynos4210_irq_gate_info);
-> -}
-> -
-> -type_init(exynos4210_irq_gate_register_types)
-> -- 
+>=20
+> +static void versal_create_crl(Versal *s, qemu_irq *pic)
+> +{
+> +    SysBusDevice *sbd;
+> +    int i;
+> +
+> +    object_initialize_child(OBJECT(s), "crl", &s->lpd.crl,
+> +                            TYPE_XLNX_VERSAL_CRL);
+> +    sbd =3D SYS_BUS_DEVICE(&s->lpd.crl);
+> +
+> +    for (i =3D 0; i < ARRAY_SIZE(s->lpd.rpu.cpu); i++) {
+> +        g_autofree gchar *name =3D g_strdup_printf("cpu_r5[%d]", i);
+> +
+> +        object_property_set_link(OBJECT(&s->lpd.crl),
+> +                                 name, OBJECT(&s->lpd.rpu.cpu[i]),
+> +                                 &error_abort);
+> +    }
+> +
+> +    for (i =3D 0; i < ARRAY_SIZE(s->lpd.iou.gem); i++) {
+> +        g_autofree gchar *name =3D g_strdup_printf("gem[%d]", i);
+> +
+> +        object_property_set_link(OBJECT(&s->lpd.crl),
+> +                                 name, OBJECT(&s->lpd.iou.gem[i]),
+> +                                 &error_abort);
+> +    }
+> +
+> +    for (i =3D 0; i < ARRAY_SIZE(s->lpd.iou.adma); i++) {
+> +        g_autofree gchar *name =3D g_strdup_printf("adma[%d]", i);
+> +
+> +        object_property_set_link(OBJECT(&s->lpd.crl),
+> +                                 name, OBJECT(&s->lpd.iou.adma[i]),
+> +                                 &error_abort);
+> +    }
+> +
+> +    for (i =3D 0; i < ARRAY_SIZE(s->lpd.iou.uart); i++) {
+> +        g_autofree gchar *name =3D g_strdup_printf("uart[%d]", i);
+> +
+> +        object_property_set_link(OBJECT(&s->lpd.crl),
+> +                                 name, OBJECT(&s->lpd.iou.uart[i]),
+> +                                 &error_abort);
+> +    }
+> +
+> +    object_property_set_link(OBJECT(&s->lpd.crl),
+> +                             "usb", OBJECT(&s->lpd.iou.usb),
+> +                             &error_abort);
+> +
+> +    sysbus_realize(sbd, &error_fatal);
+> +    memory_region_add_subregion(&s->mr_ps, MM_CRL,
+> +                                sysbus_mmio_get_region(sbd, 0));
+> +    sysbus_connect_irq(sbd, 0, pic[VERSAL_CRL_IRQ]);
+> +}
+> +
+>  /* This takes the board allocated linear DDR memory and creates aliases
+>   * for each split DDR range/aperture on the Versal address map.
+>   */
+> @@ -622,8 +673,6 @@ static void versal_unimp(Versal *s)
+>=20
+>      versal_unimp_area(s, "psm", &s->mr_ps,
+>                          MM_PSM_START, MM_PSM_END - MM_PSM_START);
+> -    versal_unimp_area(s, "crl", &s->mr_ps,
+> -                        MM_CRL, MM_CRL_SIZE);
+>      versal_unimp_area(s, "crf", &s->mr_ps,
+>                          MM_FPD_CRF, MM_FPD_CRF_SIZE);
+>      versal_unimp_area(s, "apu", &s->mr_ps,
+> @@ -681,6 +730,7 @@ static void versal_realize(DeviceState *dev, Error
+> **errp)
+>      versal_create_efuse(s, pic);
+>      versal_create_pmc_iou_slcr(s, pic);
+>      versal_create_ospi(s, pic);
+> +    versal_create_crl(s, pic);
+>      versal_map_ddr(s);
+>      versal_unimp(s);
+>=20
+> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+> index 155e8c4b8c..cbe8a19c10 100644
+> --- a/include/hw/arm/xlnx-versal.h
+> +++ b/include/hw/arm/xlnx-versal.h
+> @@ -29,6 +29,7 @@
+>  #include "hw/nvram/xlnx-versal-efuse.h"
+>  #include "hw/ssi/xlnx-versal-ospi.h"
+>  #include "hw/dma/xlnx_csu_dma.h"
+> +#include "hw/misc/xlnx-versal-crl.h"
+>  #include "hw/misc/xlnx-versal-pmc-iou-slcr.h"
+>=20
+>  #define TYPE_XLNX_VERSAL "xlnx-versal"
+> @@ -87,6 +88,8 @@ struct Versal {
+>              qemu_or_irq irq_orgate;
+>              XlnxXramCtrl ctrl[XLNX_VERSAL_NR_XRAM];
+>          } xram;
+> +
+> +        XlnxVersalCRL crl;
+>      } lpd;
+>=20
+>      /* The Platform Management Controller subsystem.  */
+> @@ -127,6 +130,7 @@ struct Versal {
+>  #define VERSAL_TIMER_NS_EL1_IRQ     14
+>  #define VERSAL_TIMER_NS_EL2_IRQ     10
+>=20
+> +#define VERSAL_CRL_IRQ             10
+>  #define VERSAL_UART0_IRQ_0         18
+>  #define VERSAL_UART1_IRQ_0         19
+>  #define VERSAL_USB0_IRQ_0          22
+> --
 > 2.25.1
-> 
-> 
+
+Reviewed-by: Frederic Konrad <fkonrad@amd.com>
+

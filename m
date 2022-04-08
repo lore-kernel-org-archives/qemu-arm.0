@@ -1,105 +1,105 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp397399lfq;
-        Fri, 8 Apr 2022 07:35:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzTd2ov274J/13iVuW3OUG0eSdvYC1s5HCD4s7ptxGtcvwIwtc3XZgs1EmnYf0BYUUEcDhl
-X-Received: by 2002:a0d:dd09:0:b0:2eb:696f:a0e2 with SMTP id g9-20020a0ddd09000000b002eb696fa0e2mr16570842ywe.416.1649428521434;
-        Fri, 08 Apr 2022 07:35:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649428521; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp398134lfq;
+        Fri, 8 Apr 2022 07:36:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwvroENB7rBcsBgNah6Yk14yZbpN+rPP0v00MCqiiOlxrObqisglQHkd4qCd7G8JYFzU/DH
+X-Received: by 2002:a05:6902:1207:b0:63a:8346:13ad with SMTP id s7-20020a056902120700b0063a834613admr14062784ybu.607.1649428590501;
+        Fri, 08 Apr 2022 07:36:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649428590; cv=none;
         d=google.com; s=arc-20160816;
-        b=K/RDcD92UoSivZCMk5aMcVPdmSgmMEOhk+JzqmPTC75C13vkCuUma3KxGQPihRyr0F
-         pFH8Qa+0yCJ/bYtdlxoLypam9Q4lFBg5xoaSUinEa5Kse6T/cqNhtq5zQX3KNAhXxvZr
-         5oezL3zqHdt13lqHgmtLGq5d1Dr9rwSXXafAxWFrsXJ+6465UJi6KO5OmP5fQdl9M2kS
-         yTjCLZUIU+kIxEbLGRsrDDUhuCoRVeDts5zXSggx1af3/qoiQTxENfgbhW5Pne+OTTvh
-         eIitfwH+ft2w8X3aUo1NvZoiozxaEdTx56r2su/0BfVOLGlHxgY7EX6ha+wEunaQa4Rm
-         xHlg==
+        b=d0QPcRxSj8FEDo9dgUxWYCavsCbXlp8rki9uI22fWWlzqaQ5NyH3FvVuNKRRgiaWrK
+         pRcjol8RUIJQ0yoGT3CYAi4tScnTyWdGIH2mlQu/uZOohFoPVx7/1VmiWOhO5S1Hu4Fu
+         UjQPvWrAmDqNUPqlU09vVbU6SGx2WT76Lh7n5xWiUqJ6w1Cgq1iUX2ZLY24CBZ99peOX
+         OJlSWUSDMzXhFZTXeCqHoHMWS8MbcOaUrrpeJgzCDt/H3+ExsI+xsYyHizdTvVPC8/d7
+         kTRcEDZQzZ95mx0Ju2JrXOFvb5vTTUI4PqmS9sZapo98Jx7LH23wTp8W0ZzaynT6pyBW
+         njOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=c2w8hD7BvI/mrPbeJHM/ddfGPpF2hd8m8r56TLjlSxo=;
-        b=gbgSga8a4xN2EdIHjjL4o9agpUu+ggDMBe+AZVhKNPIknWRnCGA8DTgx+/g5JgoXGT
-         M6bXxGXZdEGM+Hlzkh1/OtyD2nRnonlIugR/Xje8HjZJb5RNdQ4rQesL7hxrvXydAFDa
-         jZfjTaaAj48040IGOlGf6O/AdoFcXD6GUCeQx41jgInn4Sb6ECQ07OPy4e6owaWSg0gh
-         AXZf3yD67BBC7Up8L9IatMjLtfJq8503TbtGfyJLhGFiuVdKXah61wbet0+4/b3INkgp
-         Bnjc61MAREqwLknKQcGzOvKukQ5UgT7Z3mSrbZfKzac8fMM5i2rxmfKOF+IuaKAT6zmI
-         KEow==
+        bh=IW3bX6iSTzjY92yAkhrP7T+aVrPKgsiAz2F7JAZ7pV8=;
+        b=Cg6jK52w0biKh/67/tLOl0XuL6PLNqMrzoziaKLJ3ougUCDLBEtHCwUe2h/9QDypB9
+         nBNwRfrpSbc/LPf4/lWhpu/ttTqB7xCwQ0rDpCkkFQSiX1x/kTpRIOF6HScI5S3Zvk17
+         7bJVy+lkDXlZv6Uoq+UGftKPQcdPoANqV4UehHovR33Fe6koQ+VLT974iXqJyPhey4Dv
+         UmmYmpJnrsMi9uux/qWyWit1u04fNEFR9cOILEVpmK/TO+YtPQHlDV4cbOqkLb9Vv34/
+         nPdlfjDX6iODqJe/enbrCF0fm8nU/opkczF34HgHqF16Ji3rrTPjNHGia5+wGMRw8MEc
+         IwyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=McqFH8HA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CLTVJ1sp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z189-20020a2565c6000000b0063399404414si622524ybb.126.2022.04.08.07.35.21
+        by mx.google.com with ESMTPS id l16-20020a817010000000b002eb98925bebsi521251ywc.215.2022.04.08.07.36.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Apr 2022 07:35:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Apr 2022 07:36:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=McqFH8HA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CLTVJ1sp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35440 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38574 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncpho-0002kD-Og
-	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:35:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42762)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ncpiv-0004qX-Se
+	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:36:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42462)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPS-00075Z-BV
- for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:22 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:47033)
+ id 1ncpPK-0006vm-F2
+ for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:14 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:46046)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPP-0002Mx-2k
- for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:20 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id v2so2198984wrv.13
- for <qemu-devel@nongnu.org>; Fri, 08 Apr 2022 07:16:18 -0700 (PDT)
+ id 1ncpPI-0002KF-Rq
+ for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:14 -0400
+Received: by mail-wr1-x431.google.com with SMTP id w4so13008913wrg.12
+ for <qemu-arm@nongnu.org>; Fri, 08 Apr 2022 07:16:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=c2w8hD7BvI/mrPbeJHM/ddfGPpF2hd8m8r56TLjlSxo=;
- b=McqFH8HAyOz3+0xfW01DCj9eees7vq1ysV+8HonEZDNfQLIHoqcwjsRdJR2PtPrYj2
- HCwTHqUW+TUjWqmZHfPvS8ghv3EUcQNVS7KdI8Rk5NmCOsyRCUxBv5W2NEmy5nz5QXQf
- 9gyOeYtJnH+ll/5aUgYsaDcjzPxPzJI4El4ACLz1N0QJeUHRrbvEyhIcY+63Rmpxm37N
- Pg01Qj9hDUYi0JDt3HIbR7CqoeuQ7Hg3pDV6nmeDsmnER6x4hkmXGPPKTmd75eKe2SY8
- I6NsPZG+CrQrH5L+KGsqUIlDxz2zyA42K7kpIh6hKkKSVng94rgvIc/8tXQ6BDo0s8xC
- spiA==
+ bh=IW3bX6iSTzjY92yAkhrP7T+aVrPKgsiAz2F7JAZ7pV8=;
+ b=CLTVJ1sp7BlkRmFql0rYCrWbZ76QO3SI2benWXUE74Ugy6yH8XRMzLh2liS6wF5xuY
+ 5Y5V8gLlwXCudDcyQMKzSXMrY0qgArwNFh67gT8/jOD78I9Trn59CFBxKqHKuoqSaCYp
+ SlSd8CVDrwUmdT/A5nanuHb3xtSvYdkYMDGmssmFsgjrVWcljbJNhSNRJ/tXfJtYaUSa
+ fjI+o8r2ulP6eM82g+WMHqZDIcs3axM7gsHp/hVAz2hqOpSXLUAkE1NdoZlJnrcvtXuM
+ +GWW2eepPCUTZlxoa2jUkucJNltMLkYqPYL6A6L2T2QUm1RPkvrXYK17YEFLbNpTcW3R
+ XcAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=c2w8hD7BvI/mrPbeJHM/ddfGPpF2hd8m8r56TLjlSxo=;
- b=Z8MZx0KIYwm2NXtPcjUM21tcG5+8gVlsBRV3ICquX8iHKMgyoti8KoHZ6uAV1GmNWA
- XbxOfvR2OeNYZlEjziomlKrJabdaVh/bLqT0R4A3E+FyvqDC3eZP8PR8EVtOl+bHXu8t
- OquXq43Y6q3kCr8ldLo7y29ZswlbKwjroF1qF9q8HD7DpGLSNSCkpiKSdbkEwFBanKHH
- Lnm070zEn6f+jkGL25U4WoQ+tFKSrifqT5YrFjX1djyMCTb9lDyRtqyiWMZmLXC7S8OB
- Ko8rpGbGbmwQi+wuaF7lyeiabsmYL3E9wActD/eTgB6z08OQS+98Vs+XuFtZZBpD30a3
- LAXg==
-X-Gm-Message-State: AOAM533kzxXMJwxYf4qTb9eWlKzljNU0732GFrR13NS7SAMlIz4fRJKe
- BNfjU+V7eiwcimsMLNrVZNhvVw==
-X-Received: by 2002:a05:6000:178c:b0:204:648:b4c4 with SMTP id
- e12-20020a056000178c00b002040648b4c4mr14519912wrg.219.1649427377731; 
- Fri, 08 Apr 2022 07:16:17 -0700 (PDT)
+ bh=IW3bX6iSTzjY92yAkhrP7T+aVrPKgsiAz2F7JAZ7pV8=;
+ b=HHharfPLUiug10m3rnko6vFBd0HGxEj2HSLCvMDC0Uzk4ezz3+ajo2Hkr8QrPWzJTP
+ J4XhzlwkJgOi8sb1/f08BJlaFbxr62l6eCs6+dM9P+/2opgUINbfdx8m5XglSaMDsUxC
+ qx3/JMoBM532IKt3ejw6Kw4t3N8IR28pLHAHmkA5M0VXDGC8wp0B3xkCdWfcJWt9L47W
+ b7GP7AaTcyUdea4gQLZq1jg4LuUEtzsvBSPUXZChEX1JaLiBUpVqbwCirfQpR0EwN/UF
+ dqhhtd23r6IyqlrQ/AiKvfS9OINAgoRak6h10aBZTNsrpOuWVlh3qv2WF+IlEANS3mIO
+ Pu1w==
+X-Gm-Message-State: AOAM530xutRGtcnbV5OiHeCblGxm7tVQ+/EEN1rw/0+UjTBq8gC5G+9I
+ rQsircLPNIeNCGjltEUtkIuMCwc6kvprMg==
+X-Received: by 2002:a5d:6da5:0:b0:207:9112:3fce with SMTP id
+ u5-20020a5d6da5000000b0020791123fcemr3484870wrs.210.1649427371533; 
+ Fri, 08 Apr 2022 07:16:11 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.17
+ i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Apr 2022 07:16:17 -0700 (PDT)
+ Fri, 08 Apr 2022 07:16:10 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 26/41] hw/intc/arm_gicv3_cpuif: Don't recalculate maintenance
- irq unnecessarily
-Date: Fri,  8 Apr 2022 15:15:35 +0100
-Message-Id: <20220408141550.1271295-27-peter.maydell@linaro.org>
+Subject: [PATCH 19/41] hw/intc/arm_gicv3_its: Implement INV for virtual
+ interrupts
+Date: Fri,  8 Apr 2022 15:15:28 +0100
+Message-Id: <20220408141550.1271295-20-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408141550.1271295-1-peter.maydell@linaro.org>
 References: <20220408141550.1271295-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,85 +108,106 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Marc Zyngier <maz@kernel.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 41sPVLUI2g1r
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AZWp8Ls06SLw
 
-The maintenance interrupt state depends only on:
- * ICH_HCR_EL2
- * ICH_LR<n>_EL2
- * ICH_VMCR_EL2 fields VENG0 and VENG1
-
-Now we have a separate function that updates only the vIRQ and vFIQ
-lines, use that in places that only change state that affects vIRQ
-and vFIQ but not the maintenance interrupt.
+Implement the ITS side of the handling of the INV command for
+virtual interrupts; as usual this calls into a redistributor
+function which we leave as a stub to fill in later.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_cpuif.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ hw/intc/gicv3_internal.h   |  9 +++++++++
+ hw/intc/arm_gicv3_its.c    | 16 ++++++++++++++--
+ hw/intc/arm_gicv3_redist.c |  8 ++++++++
+ 3 files changed, 31 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index f11863ff613..d627ddac90f 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -543,7 +543,7 @@ static void icv_ap_write(CPUARMState *env, const ARMCPRegInfo *ri,
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index 25ea19de385..2f653a9b917 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -585,6 +585,15 @@ void gicv3_redist_update_lpi_only(GICv3CPUState *cs);
+  * Forget or update any cached information associated with this LPI.
+  */
+ void gicv3_redist_inv_lpi(GICv3CPUState *cs, int irq);
++/**
++ * gicv3_redist_inv_vlpi:
++ * @cs: GICv3CPUState
++ * @irq: vLPI to invalidate cached information for
++ * @vptaddr: (guest) address of vLPI table
++ *
++ * Forget or update any cached information associated with this vLPI.
++ */
++void gicv3_redist_inv_vlpi(GICv3CPUState *cs, int irq, uint64_t vptaddr);
+ /**
+  * gicv3_redist_mov_lpi:
+  * @src: source redistributor
+diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+index 6ba554c16ea..c8b90e6b0d9 100644
+--- a/hw/intc/arm_gicv3_its.c
++++ b/hw/intc/arm_gicv3_its.c
+@@ -1090,6 +1090,7 @@ static ItsCmdResult process_inv(GICv3ITSState *s, const uint64_t *cmdpkt)
+     ITEntry ite;
+     DTEntry dte;
+     CTEntry cte;
++    VTEntry vte;
+     ItsCmdResult cmdres;
  
-     cs->ich_apr[grp][regno] = value & 0xFFFFFFFFU;
- 
--    gicv3_cpuif_virt_update(cs);
-+    gicv3_cpuif_virt_irq_fiq_update(cs);
-     return;
+     devid = FIELD_EX64(cmdpkt[0], INV_0, DEVICEID);
+@@ -1118,8 +1119,19 @@ static ItsCmdResult process_inv(GICv3ITSState *s, const uint64_t *cmdpkt)
+                           __func__, ite.inttype);
+             return CMD_CONTINUE;
+         }
+-        /* We will implement the vLPI invalidation in a later commit */
+-        g_assert_not_reached();
++
++        cmdres = lookup_vte(s, __func__, ite.vpeid, &vte);
++        if (cmdres != CMD_CONTINUE_OK) {
++            return cmdres;
++        }
++        if (!intid_in_lpi_range(ite.intid) ||
++            ite.intid >= (1ULL << (vte.vptsize + 1))) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: intid 0x%x out of range\n",
++                          __func__, ite.intid);
++            return CMD_CONTINUE;
++        }
++        gicv3_redist_inv_vlpi(&s->gicv3->cpu[vte.rdbase], ite.intid,
++                              vte.vptaddr << 16);
+         break;
+     default:
+         g_assert_not_reached();
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 78650a3bb4c..856494b4e8f 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -808,6 +808,14 @@ void gicv3_redist_process_vlpi(GICv3CPUState *cs, int irq, uint64_t vptaddr,
+      */
  }
  
-@@ -588,7 +588,7 @@ static void icv_bpr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     write_vbpr(cs, grp, value);
- 
--    gicv3_cpuif_virt_update(cs);
-+    gicv3_cpuif_virt_irq_fiq_update(cs);
- }
- 
- static uint64_t icv_pmr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-@@ -615,7 +615,7 @@ static void icv_pmr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     cs->ich_vmcr_el2 = deposit64(cs->ich_vmcr_el2, ICH_VMCR_EL2_VPMR_SHIFT,
-                                  ICH_VMCR_EL2_VPMR_LENGTH, value);
- 
--    gicv3_cpuif_virt_update(cs);
-+    gicv3_cpuif_virt_irq_fiq_update(cs);
- }
- 
- static uint64_t icv_igrpen_read(CPUARMState *env, const ARMCPRegInfo *ri)
-@@ -682,7 +682,7 @@ static void icv_ctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     cs->ich_vmcr_el2 = deposit64(cs->ich_vmcr_el2, ICH_VMCR_EL2_VEOIM_SHIFT,
-                                  1, value & ICC_CTLR_EL1_EOIMODE ? 1 : 0);
- 
--    gicv3_cpuif_virt_update(cs);
-+    gicv3_cpuif_virt_irq_fiq_update(cs);
- }
- 
- static uint64_t icv_rpr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-@@ -2452,7 +2452,7 @@ static void ich_ap_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     trace_gicv3_ich_ap_write(ri->crm & 1, regno, gicv3_redist_affid(cs), value);
- 
-     cs->ich_apr[grp][regno] = value & 0xFFFFFFFFU;
--    gicv3_cpuif_virt_update(cs);
-+    gicv3_cpuif_virt_irq_fiq_update(cs);
- }
- 
- static uint64_t ich_hcr_read(CPUARMState *env, const ARMCPRegInfo *ri)
++void gicv3_redist_inv_vlpi(GICv3CPUState *cs, int irq, uint64_t vptaddr)
++{
++    /*
++     * The redistributor handling for invalidating cached information
++     * about a VLPI will be added in a subsequent commit.
++     */
++}
++
+ void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level)
+ {
+     /* Update redistributor state for a change in an external PPI input line */
 -- 
 2.25.1
 

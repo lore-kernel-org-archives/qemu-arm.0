@@ -1,105 +1,106 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp402510lfq;
-        Fri, 8 Apr 2022 07:44:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhIeycirUjVIqbbJprfYf3Xk+ESH9J1Du2PlOjZc4Bh7P+ZLqZu5y+qtTS/Y433R6s2P7L
-X-Received: by 2002:a0d:f9c1:0:b0:2eb:c207:3654 with SMTP id j184-20020a0df9c1000000b002ebc2073654mr8480998ywf.53.1649429051172;
-        Fri, 08 Apr 2022 07:44:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649429051; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp404108lfq;
+        Fri, 8 Apr 2022 07:47:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzx5M/WvzeiWahsBPB+ICSEDSyv1kJbc0goRTZnWqlG/2HMFvLQPco61yCI7WcYSXuG8te+
+X-Received: by 2002:a25:c016:0:b0:641:12be:863c with SMTP id c22-20020a25c016000000b0064112be863cmr1144297ybf.388.1649429235219;
+        Fri, 08 Apr 2022 07:47:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649429235; cv=none;
         d=google.com; s=arc-20160816;
-        b=QT0UQXqZDL4nUXv5oy9FECHzp6NmkOaAhc5kLM28BTWJbVPnhJq9MWE7bQs6SvNuO+
-         3oxAZKOPTy0sH6F8Zt9Hm/KUHcsRk7je/oJis1vvQt7djsFSF9qzuynuKuVTVKYRCwha
-         f7lgX2xsuQ+5rpT/I4jhT/GVa6STOnEcer7WyzEAlg9FUPQDtB/XsXraCUOJA5WkUvu9
-         fYlG2mQbCYOOk2PyUpnAaeqydLqMr/cItxRNjiJpDHG9cYkcl0s8+Fw1rrQiFVJNmE7R
-         4GuPhU0nXI58RHMw2qOHlnjCC1MAhfJXd/QxN1XmSHde/2zEjai32Y2pSeB4eKbutL9t
-         FrHw==
+        b=ovREvlwgvezX+vWLy6VVUk52J1PB7kL3RCG1G1HXYjmJDlbG7di0luT7vhDFHTJ4GR
+         uyJJoP/a4TPoURsoDJwGThlPw4kgCf5kct4AToKsfsY9IDIqVtbx6LtsnY73lL4L2i7g
+         M9nmbaaoQCblwSEO0kWNWT+3UfdQv75Fh+92HQhf5Hp+MnwML8TY7FM0tMWoOYBD8kVX
+         XHr1tpvBSsTcXVy4vkIC4EaBiHoD//nPwQgk8yQHuzlJQ65bMjmxQwtNfZycg2Ne1ZZ/
+         rt5czidc9+4JUzwDTtHnPCbHOS5itX6Zkkc4Gp+WstMxuf+AglCwZY05Uey+7UW80HXO
+         /igQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=XnswKnW47+8+9tHo/ACX303pdkhT+++S3GFx5eRGIRU=;
-        b=zOHIo4wUfqD2zpy9d74PpkO/1++r13T1YdzXTdGWauvD7VoLbgI1ZkfdetOGvFVFpd
-         J3WzDHfzCXYMBEJrrfmGBH0slEHje/s/r9aFD+JFjTxqhkD4QZmd62Jm/ZwEkzxwJGts
-         K+q6nxdG20/vk6zzjRwaTKTPdQ1VA5r7ipndHt90O9u8EOodlvwiNfXyxsrqYkF57mk1
-         FdUhMP+HbR1QrtTczeAlgUyNEb2LO3fNDfvcQ9EPNSIL77Skw4YSMK0lSLQFMt3yVkSL
-         J6UcpIru4/72VjwNrL0970IKsJU0MLYc/llWHxfNe9LEy2NUrPoGi6gs+1+PYEIPsXXk
-         TTJw==
+        bh=Ks7J+0C271Igfu0vbL909LbuL+1GBzKju/AYg8mpFsw=;
+        b=j/l5sxEGmk8eFV7LfwcWbg/oD+f8O4axxS2wCTuKtArH/LBlZ9sGT5MW85qinIQlws
+         lwDVzSUEPP2DBleAtLm0K6OHRRrTZpTwn6YJV8FRUcU3GFBTtquDpsMzSyLmcNLmMCGI
+         i3N3Wb9I2nt3oGTZPVVawi6ejCYHR6c/UfrVWR/x/D3OmcTRjR3k0D2PjMbwAj4z2RlH
+         elZJVfc29sQ2QhHbYKP87Rxz3MqKNhgzzTw+bJVvwkcfKaXqCzcpvBXC6Q09JG0v+7TX
+         GLxpakPIHktnI2D5f7iAseIJCa2Rw1XiLnHsKrtrY9LboXEoYOmrs+KWkFPWT+4W+mrB
+         7Xjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="h2p/RXIg";
+       dkim=pass header.i=@linaro.org header.s=google header.b=F9s+HR23;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f9-20020a256a09000000b006339940462dsi597977ybc.663.2022.04.08.07.44.11
+        by mx.google.com with ESMTPS id f64-20020a255143000000b0063399404578si544664ybb.482.2022.04.08.07.47.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Apr 2022 07:44:11 -0700 (PDT)
+        Fri, 08 Apr 2022 07:47:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="h2p/RXIg";
+       dkim=pass header.i=@linaro.org header.s=google header.b=F9s+HR23;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35656 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44096 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncpqM-0004r8-If
-	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:44:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43200)
+	id 1ncptK-0002Cu-H1
+	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:47:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPb-0007PP-Oy
- for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:31 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:46044)
+ id 1ncpPY-0007Fj-2n
+ for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:28 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:46978)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPZ-0002Tz-UC
- for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:31 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id w4so13010209wrg.12
- for <qemu-devel@nongnu.org>; Fri, 08 Apr 2022 07:16:29 -0700 (PDT)
+ id 1ncpPW-0002S0-B5
+ for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:27 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ l62-20020a1c2541000000b0038e4570af2fso5640744wml.5
+ for <qemu-devel@nongnu.org>; Fri, 08 Apr 2022 07:16:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=XnswKnW47+8+9tHo/ACX303pdkhT+++S3GFx5eRGIRU=;
- b=h2p/RXIgXv5UOyE1d6rbKEqNFYNv6xK7BgY5D5cRkUPk21TO8P2SWtXi6uunuRadD0
- GFeKnRas7QsSB1eFReob96bryoubXa2GeDg/y9YMfqDBhtcqno2f+aXr3q1aFWvBJf6N
- bl44yl4j5eBXMTZ33LNrtXyRYYfvigAwe3ucd+nPxbIBxKcxZrIOfUFB5qsGH05ddG3x
- JCIs45FSJpTxwBQS8BWopL9ZjSDxxopfwoD1bZpdl6MXKcu30uCU1PMJB98Gdi/E4hZj
- KukMvkFU4p0DX5AzfoSLttk5Xw/RNslAsf4iT41M9+OZnxo6A896JUPU5evYHg53jafg
- G55A==
+ bh=Ks7J+0C271Igfu0vbL909LbuL+1GBzKju/AYg8mpFsw=;
+ b=F9s+HR232xnXmJhusMaUQpEzuxdcMBKv1VUOw0stX9tTTls33K3172IQkUPSiJtBMH
+ PCIY23b9W1onsldqWzHnD8Plhr6nVfJVelzmSuZUM060oZpQcrfnuO7NJTw2mMoabyGP
+ y++IQ1gPbzse950L/EgyPERARbHh7QuD+Lin0xxkhvbCAB79JKzDt1pqflhdQFObUKWk
+ aC+y2HkyHUAZZwz9SUBpa+tnqJjiKBPkZD5fxZiPOXDvKMCNqyqNBFEHGZnScHEIoUhE
+ +37bd3+EpqoUd14JwAuA3Ome1VKkqXWek9cR7ENodYcaZG2GDBLWJZkZBQ60/Loy/Gcq
+ iyVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=XnswKnW47+8+9tHo/ACX303pdkhT+++S3GFx5eRGIRU=;
- b=KLuGTrPTg3eO6m21Eduf5RGe9Y2oJzlIGeZKD9RpQ2HSKktFeVXVwDhOvcbGWOGu7W
- mC/yUtEIWRXpHtlrqp/lIHCuo2Za6e6rYg6XDFUyUqWK6EpZMCmR2vveCpXS/FxQAMep
- Zwvb/aFUSJzEx3NM7k3mYD7e/HtBU3JXXoiknuOdmYsm8Tg+K4xK9kx5pZbd1FFA6W9o
- pXV746jKYH/LL+c39ubCMyqYXH4uZ+jyevPN/e3n2kXL0s0o5MGmfmE669CEsh7J5S9+
- rvbfSd/tCG7DG0xBhTG4xL4KmQtEVEziQQajvEcZvwv8GAiwhh7GNdaByYA/fbAqXTeq
- 5TIg==
-X-Gm-Message-State: AOAM531as3fNMqumlTcsCh7f+sRLP1lPnlov3aruH6npwNe4VMsbaNvj
- AE3IpIdrJInl1w9PvXGvivjFHw==
-X-Received: by 2002:a5d:6c67:0:b0:204:ff0:87a8 with SMTP id
- r7-20020a5d6c67000000b002040ff087a8mr15159472wrz.627.1649427388116; 
- Fri, 08 Apr 2022 07:16:28 -0700 (PDT)
+ bh=Ks7J+0C271Igfu0vbL909LbuL+1GBzKju/AYg8mpFsw=;
+ b=viDT84FctBwk36h5ldZUyMZywDn1CeiXHgBGJXDLcYaxLlwnjYULYF6HEzpDzscffX
+ UJLQ6kdeLYDLv4PJI4RJROzghQg6hAszTsy1Hg1ORWcijh5yC5rqCC0h6rPS//P/jGPm
+ hznnU/O6tpQgPUWObtXXCg5sIywQboLCYwwDjaLdRXxI43uShRrYWfAZzA1lSsNoTnfl
+ YBRir0gXnPQFpD1gLfJ9otCxVan5WhwIQGCDb+EmK9PRyElbBvgYLtPBH7xdLeWOH1ZB
+ VavHKG1te1kiOO42gxFjdYThSDPVoVi6501lAp3rwH7lQjWy24ly2MPVwE2tINbrAveY
+ iSzg==
+X-Gm-Message-State: AOAM530bbuZsizzU1Sn/Q0DakX379ZFSqV0vfSqpEb/1aAzi9yO4a9Bd
+ 359EoqsyqaYmyRtNNcZjgXwZZUjHptIEqA==
+X-Received: by 2002:a05:600c:3d9a:b0:38c:a579:844a with SMTP id
+ bi26-20020a05600c3d9a00b0038ca579844amr16795311wmb.121.1649427384468; 
+ Fri, 08 Apr 2022 07:16:24 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.27
+ i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Apr 2022 07:16:27 -0700 (PDT)
+ Fri, 08 Apr 2022 07:16:24 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 38/41] hw/intc/arm_gicv3: Allow 'revision' property to be set
- to 4
-Date: Fri,  8 Apr 2022 15:15:47 +0100
-Message-Id: <20220408141550.1271295-39-peter.maydell@linaro.org>
+Subject: [PATCH 34/41] hw/intc/arm_gicv3_redist: Implement
+ gicv3_redist_mov_vlpi()
+Date: Fri,  8 Apr 2022 15:15:43 +0100
+Message-Id: <20220408141550.1271295-35-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408141550.1271295-1-peter.maydell@linaro.org>
 References: <20220408141550.1271295-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,67 +123,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Marc Zyngier <maz@kernel.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CjMGxz+uG49f
+X-TUID: /PaOagP5gbyC
 
-Now that we have implemented all the GICv4 requirements, relax the
-error-checking on the GIC object's 'revision' property to allow a TCG
-GIC to be a GICv4, whilst still constraining the KVM GIC to GICv3.
-
-Our 'revision' property doesn't consider the possibility of wanting
-to specify the minor version of the GIC -- for instance there is a
-GICv3.1 which adds support for extended SPI and PPI ranges, among
-other things, and also GICv4.1.  But since the QOM property is
-internal to QEMU, not user-facing, we can cross that bridge when we
-come to it. Within the GIC implementation itself code generally
-checks against the appropriate ID register feature bits, and the
-only use of s->revision is for setting those ID register bits.
+Implement the gicv3_redist_mov_vlpi() function (previously left as a
+stub).  This function handles the work of a VMOVI command: it marks
+the vLPI not-pending on the source and pending on the destination.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_common.c | 12 +++++++-----
- hw/intc/arm_gicv3_kvm.c    |  5 +++++
- 2 files changed, 12 insertions(+), 5 deletions(-)
+ hw/intc/arm_gicv3_redist.c | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 181f342f32c..5634c6fc788 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -326,12 +326,14 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
-     GICv3State *s = ARM_GICV3_COMMON(dev);
-     int i, rdist_capacity, cpuidx;
- 
--    /* revision property is actually reserved and currently used only in order
--     * to keep the interface compatible with GICv2 code, avoiding extra
--     * conditions. However, in future it could be used, for example, if we
--     * implement GICv4.
-+    /*
-+     * This GIC device supports only revisions 3 and 4. The GICv1/v2
-+     * is a separate device.
-+     * Note that subclasses of this device may impose further restrictions
-+     * on the GIC revision: notably, the in-kernel KVM GIC doesn't
-+     * support GICv4.
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 3127af3e2ca..9866dd94c60 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -1067,9 +1067,25 @@ void gicv3_redist_mov_vlpi(GICv3CPUState *src, uint64_t src_vptaddr,
+                            int irq, int doorbell)
+ {
+     /*
+-     * The redistributor handling for moving a VLPI will be added
+-     * in a subsequent commit.
++     * Move the specified vLPI's pending state from the source redistributor
++     * to the destination.
       */
--    if (s->revision != 3) {
-+    if (s->revision != 3 && s->revision != 4) {
-         error_setg(errp, "unsupported GIC revision %d", s->revision);
-         return;
-     }
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index 5ec5ff9ef6e..06f5aceee52 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -781,6 +781,11 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    if (s->revision != 3) {
-+        error_setg(errp, "unsupported GIC revision %d for in-kernel GIC",
-+                   s->revision);
++    if (!set_pending_table_bit(src, src_vptaddr, irq, 0)) {
++        /* Not pending on source, nothing to do */
++        return;
 +    }
-+
-     if (s->security_extn) {
-         error_setg(errp, "the in-kernel VGICv3 does not implement the "
-                    "security extensions");
++    if (vcpu_resident(src, src_vptaddr) && irq == src->hppvlpi.irq) {
++        /*
++         * Update src's cached highest-priority pending vLPI if we just made
++         * it not-pending
++         */
++        gicv3_redist_update_vlpi(src);
++    }
++    /*
++     * Mark the vLPI pending on the destination (ringing the doorbell
++     * if the vCPU isn't resident)
++     */
++    gicv3_redist_process_vlpi(dest, irq, dest_vptaddr, doorbell, irq);
+ }
+ 
+ void gicv3_redist_vinvall(GICv3CPUState *cs, uint64_t vptaddr)
 -- 
 2.25.1
 

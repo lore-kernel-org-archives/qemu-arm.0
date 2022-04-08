@@ -1,274 +1,345 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp393953lfq;
-        Fri, 8 Apr 2022 07:29:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyxOG85FM1FDkYj7EAche/6wuy5fW4C1k6NFT2yv0q67TLsn4iQnv97frnsjvYUvmXllyS1
-X-Received: by 2002:a81:2450:0:b0:2d6:aee8:f0d5 with SMTP id k77-20020a812450000000b002d6aee8f0d5mr16782901ywk.81.1649428181245;
-        Fri, 08 Apr 2022 07:29:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649428181; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp394037lfq;
+        Fri, 8 Apr 2022 07:29:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzzAz3+QlkqUrUY3+0k5aw8PkJOib9uwqJvcSoGiNaZJkozbPIZxlyWv+JO5G+sN11F23G3
+X-Received: by 2002:a25:ca87:0:b0:641:e72:6037 with SMTP id a129-20020a25ca87000000b006410e726037mr1331780ybg.438.1649428192129;
+        Fri, 08 Apr 2022 07:29:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649428192; cv=none;
         d=google.com; s=arc-20160816;
-        b=q+5dq3Glb0JECFf0vux8wujxzkY5cCtWOhVhh5zRAthivM+M+/dOsKvZUiqx8RRem9
-         aA8CoJxHlxppPjFDu0zVQ0G+QAR7v7eGPM+UzNrnS3T34R9duVeg/8II+rSr6blnA2kr
-         TPJ4SftF+5uBTNJqMCttw2mMTbZyrjtBv3MFqXm6CIUejJTa1FG+s8TIN83KZPVzzYCQ
-         gV5wJKH1T2Dz6zUH0uF9x4CeIqWzaZ7wmn8CoWtAQL5YGdNwqyUXJFuIO5f15ThiZKTd
-         G+qsrqN1KCTm/LVHPE/kXnt9Nm5MxlPCrI+5y8INW2+/6oCnQ6DUuvIr9OURueFUB6Mx
-         4RFA==
+        b=M5vmgIw0lESRfsZbZyiKxx/u6nAB1nRk3/zEEWj+/fWXBfGU7JNP+x1ge07P0S/bXm
+         9gsLZ7Vg+PeTHlhgaFGlX1d47bmyBY8Q8UFn0FS+XX+KYDT1JUSFveycnyp25QJBKdYI
+         R2hfJfHy2K0WAjNYydrjve4NLHsPHsQVvdvoUqidhHf0b97jTMr0ICeNcdoKi0kN3MEx
+         6rxhQ3eYJnHH6YC3bxKRXzvfdPN876xu4+evN/9Nt962lk0qQfipCq3kyrB64uP8tbQB
+         +yhYB/APSkr/xW5nCPGxSt4AU3dz2R6aRGxi5m6MKZVWhfjfXdZYIGeappm854/PQqqv
+         gVlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WYbE6n09x98/8r6NZVq0wUWihXF3pXJgeidd4roSBuo=;
-        b=j2cKv4YCLfhu+0Vjtn6XSEB1795mghDQilAHDl0B3HxtL50AFvWH+wxi2o/5vBxAkY
-         nnFUOIXBR9LGaWHtocJ6je+5JiPczdBDLi89xgxZcXv/L3WA5X919PRk5ejMRq/YFSIs
-         SjrA+MV6F3YeooD6ZxqTfmt0XgQI3VoA3VFuMYtTiZaD3pJawgiLdoaTZG1cV7iDwmGT
-         YaI8dD5cjDIW3w6p4BxIQ+TUK8cBJoWbvzoMe8DpC/RMeddsuOQTiPJhA1R8hStXv7wf
-         7tPrm3DwsG3gk3WnZ+5jMblgCLbIxVzrtr/vErIUiS6J3gpNTA6o5ApT82J4HyD2qrmz
-         D5Zw==
+        bh=RUqo09ErOg1M6skc6e7vosGnWtwA6stMdKCkU3VyoI4=;
+        b=q8961A1LT8hqTmDIhecqIH1JIMCfQMr0N77tTokgwuOcp9JrqXEHQ7tRo/XCuhi+y4
+         8K2xLOd8K6W+PK3pFbKNjyokrzltaZHX5Xkw2HdWOZnerUPP3wI5yjDyPVt0rBhqc803
+         gcZsRHPKSFwNjb8G8+Y8zNDRUE42NWPG3XgysNQXkpDfdi1Pxh4dzL/in5Q0YRuWR6U9
+         QNCWM5QsOS9PkK7bMUFaGXvY9bbxo+pNECkpoHyEy51hhVTeg/1CRelmrss7/kPWomQ/
+         NTKPfbFPn+pb3X4OtgHi+Q4qcyP88JeLPgLDbymF6RwRx0Y2Ds3DebdLJ+p9/kr+s4ou
+         21+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=z64kQepB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pLVIREd6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s141-20020a252c93000000b0063dc4216154si600546ybs.177.2022.04.08.07.29.41
+        by mx.google.com with ESMTPS id d142-20020a811d94000000b002e5bb9dcadesi485337ywd.359.2022.04.08.07.29.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Apr 2022 07:29:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Apr 2022 07:29:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=z64kQepB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pLVIREd6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48326 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47874 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncpcK-0000tA-K4
-	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:29:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42266)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ncpcV-0000Zy-GB
+	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:29:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42660)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPF-0006uc-Q0
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:12 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:47031)
+ id 1ncpPO-000713-Qh
+ for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:20 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:34581)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPC-0002Hd-NG
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:09 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id v2so2197867wrv.13
- for <qemu-arm@nongnu.org>; Fri, 08 Apr 2022 07:16:06 -0700 (PDT)
+ id 1ncpPM-0002Lp-Iu
+ for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:18 -0400
+Received: by mail-wr1-x434.google.com with SMTP id m30so13112089wrb.1
+ for <qemu-devel@nongnu.org>; Fri, 08 Apr 2022 07:16:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=WYbE6n09x98/8r6NZVq0wUWihXF3pXJgeidd4roSBuo=;
- b=z64kQepBrFBkUSwLDHJCNaUw50Mbv4pTJsOJmdDlxA1lrfDqEQDVgcwUJXNyyqPu4y
- 1ZN5ob6Geeff/EfPyQo9YVFbLHmwdg9u7/Y+NnQGTdzF1KKiFg+KjXRfCQoED1nnGx15
- T2diGwPvDUMWyMcrmpdwQXpQ2kMzzMYXJhBb5CNe3WEpkxQtOp4O2KAhTN7VavhEcI+u
- 9FBA2kppm9O7C6/u22PJcmc+sf9zqPr1ulO1JpHbN9BEXKWOhskbg1Cztvu8v4Z7KtQi
- aTxEGXXUcrYmXqODO6uFIKzgIbQlJFoakOqaF5xCPKQ773idIcMqPIdFHiff10HZdhjZ
- KXQw==
+ bh=RUqo09ErOg1M6skc6e7vosGnWtwA6stMdKCkU3VyoI4=;
+ b=pLVIREd6B5uU6e0heXWkw8w7cPmL0ysgt+LNIjzTRKa1OrmHhAEN5uFCt22+tMurOR
+ RoRttUgDnQgiovgbNMM/5aqp1Y8Mh2TlUlv8KNkWcangNs9NYELeKbvqEmhllF8i/KbH
+ JFmmCx5h+HxuqjwFfNRr0eY/YduvxfHgeIF1uSzhk+KBJbamcXd5QMlW5Fw8F5JEHE99
+ M4mlSd2evXK7WIYnFANA3oZ748+VZ6Iagst9tR/GWKvArdb6tFpD5gWiTCp90Aeltpgk
+ +cwVpZR0gU7P+NnErcrHwLBNndc9AfOCAzeGThqx7/LPpBI1x9b5dgIJfqBmz3qt3fT1
+ vPjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=WYbE6n09x98/8r6NZVq0wUWihXF3pXJgeidd4roSBuo=;
- b=2OYRfs7Gq540VjKqmA6qR2jdzG2SBOaSjBmTClMOPuhWAHLZUuo4xggS63sPaGWswm
- NdSK6mmr84KVvwyBxP2UcqEGFhCKEuPBk+3XI3WS/jY0rbQy0aGWKko4qWBsuk5tx2JR
- H4q2YhzrTfRqAxVLFOZL9/wIpFa6Z0O27QjIdfcxpSz0pTD2T+ZTYfX6d4nzlTGUvbUv
- HXNXdw3SpOUyGVgbbFzewRMELZduohamNIHTdsZZ3OLH1+XHqNEQz6qiFeZEYdNKeq4F
- C0/6hEULtYeeiKmZiZzqakt5rTTjRX16Z2DNUcoYjXojZvM+4M94l1/4TqNqF7pBk8xK
- MoAQ==
-X-Gm-Message-State: AOAM533Z4zGnBQM3uQ2PsfhpVi+gmbXstDcY93sSc7pgJJUfXkQB/ruC
- bBLSfDLYQNq+sQ2uB3zTujaE8f/8jzacDg==
-X-Received: by 2002:a5d:5009:0:b0:206:f24:b659 with SMTP id
- e9-20020a5d5009000000b002060f24b659mr15034996wrt.476.1649427365095; 
- Fri, 08 Apr 2022 07:16:05 -0700 (PDT)
+ bh=RUqo09ErOg1M6skc6e7vosGnWtwA6stMdKCkU3VyoI4=;
+ b=bLXEfbQKd7IjEvqEZs3lQMP0zJOy6RgKe/6YAIoh8Lmd+uAGTNiCaRftJNsz1xWa5o
+ CRxb/d3MJUtx9QohaE9Hve/3LKUGwX84UDrd9XMeO2AEzhhdRVjK0aNOZIxYVtMiBX3A
+ 1CHRMPXmfOlK4NNVyQP7FwKoLGZ6ORC79jSTK/NLXnArfGLC2grOMmp69QzDH1VVgT0r
+ FKIoeUNyV4KVTHZga9AGedKLk6N8NHTLGB7TBIN4kRIhjXFF5gCElUUL6k+sj6Krr/WL
+ KlTK828aETFn7us2/FxPCZGxLmps8lQJlQbNxWh/IjPpr2DB+hHcWq2XmEI/VfFLxasz
+ uFjA==
+X-Gm-Message-State: AOAM530u6kNZvmkKP1gnaCvnL/Luc86gy8cFvxcLqVBsIReR0aBQAQ0v
+ Z7MKrcTaae8ellBayyHKIzfHkQ==
+X-Received: by 2002:adf:ce83:0:b0:206:c45:62bd with SMTP id
+ r3-20020adfce83000000b002060c4562bdmr14265666wrn.97.1649427375057; 
+ Fri, 08 Apr 2022 07:16:15 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.04
+ i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Apr 2022 07:16:04 -0700 (PDT)
+ Fri, 08 Apr 2022 07:16:14 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 12/41] hw/intc/arm_gicv3_its: Factor out CTE lookup sequence
-Date: Fri,  8 Apr 2022 15:15:21 +0100
-Message-Id: <20220408141550.1271295-13-peter.maydell@linaro.org>
+Subject: [PATCH 23/41] hw/intc/arm_gicv3: Implement new GICv4 redistributor
+ registers
+Date: Fri,  8 Apr 2022 15:15:32 +0100
+Message-Id: <20220408141550.1271295-24-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408141550.1271295-1-peter.maydell@linaro.org>
 References: <20220408141550.1271295-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Marc Zyngier <maz@kernel.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 47dBaishaXN6
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7a570z1p1tWZ
 
-Factor out the sequence of looking up a CTE from an ICID including
-the validity and error checks.
+Implement the new GICv4 redistributor registers: GICR_VPROPBASER
+and GICR_VPENDBASER; for the moment we implement these as simple
+reads-as-written stubs, together with the necessary migration
+and reset handling.
+
+We don't put ID-register checks on the handling of these registers,
+because they are all in the only-in-v4 extra register frames, so
+they're not accessible in a GICv3.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-I think process_movi() in particular is now a lot cleaner
-to read with all the error-checking factored out.
+GICv4.1 adds two further registers in the new VLPI frame,
+as well as changing the layout of VPROPBASER and VPENDBASER,
+but we aren't implementing v4.1 yet, just v4.
 ---
- hw/intc/arm_gicv3_its.c | 109 ++++++++++++++--------------------------
- 1 file changed, 39 insertions(+), 70 deletions(-)
+ hw/intc/gicv3_internal.h           | 21 +++++++++++
+ include/hw/intc/arm_gicv3_common.h |  3 ++
+ hw/intc/arm_gicv3_common.c         | 22 ++++++++++++
+ hw/intc/arm_gicv3_redist.c         | 56 ++++++++++++++++++++++++++++++
+ 4 files changed, 102 insertions(+)
 
-diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index fe1bea2dd81..2cbac76256d 100644
---- a/hw/intc/arm_gicv3_its.c
-+++ b/hw/intc/arm_gicv3_its.c
-@@ -368,6 +368,36 @@ static ItsCmdResult lookup_ite(GICv3ITSState *s, const char *who,
-     return CMD_CONTINUE_OK;
- }
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index 9720ccf7507..795bf57d2b3 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -77,6 +77,7 @@
+  * Redistributor frame offsets from RD_base
+  */
+ #define GICR_SGI_OFFSET 0x10000
++#define GICR_VLPI_OFFSET 0x20000
  
-+/*
-+ * Given an ICID, look up the corresponding CTE, including checking for various
-+ * invalid-value cases. If we find a valid CTE, fill in @cte and return
-+ * CMD_CONTINUE_OK; otherwise return CMD_STALL or CMD_CONTINUE (and the
-+ * contents of @cte should not be relied on).
-+ *
-+ * The string @who is purely for the LOG_GUEST_ERROR messages,
-+ * and should indicate the name of the calling function or similar.
-+ */
-+static ItsCmdResult lookup_cte(GICv3ITSState *s, const char *who,
-+                               uint32_t icid, CTEntry *cte)
+ /*
+  * Redistributor registers, offsets from RD_base
+@@ -109,6 +110,10 @@
+ #define GICR_IGRPMODR0        (GICR_SGI_OFFSET + 0x0D00)
+ #define GICR_NSACR            (GICR_SGI_OFFSET + 0x0E00)
+ 
++/* VLPI redistributor registers, offsets from VLPI_base */
++#define GICR_VPROPBASER       (GICR_VLPI_OFFSET + 0x70)
++#define GICR_VPENDBASER       (GICR_VLPI_OFFSET + 0x78)
++
+ #define GICR_CTLR_ENABLE_LPIS        (1U << 0)
+ #define GICR_CTLR_CES                (1U << 1)
+ #define GICR_CTLR_RWP                (1U << 3)
+@@ -143,6 +148,22 @@ FIELD(GICR_PENDBASER, PTZ, 62, 1)
+ 
+ #define GICR_PROPBASER_IDBITS_THRESHOLD          0xd
+ 
++/* These are the GICv4 VPROPBASER and VPENDBASER layouts; v4.1 is different */
++FIELD(GICR_VPROPBASER, IDBITS, 0, 5)
++FIELD(GICR_VPROPBASER, INNERCACHE, 7, 3)
++FIELD(GICR_VPROPBASER, SHAREABILITY, 10, 2)
++FIELD(GICR_VPROPBASER, PHYADDR, 12, 40)
++FIELD(GICR_VPROPBASER, OUTERCACHE, 56, 3)
++
++FIELD(GICR_VPENDBASER, INNERCACHE, 7, 3)
++FIELD(GICR_VPENDBASER, SHAREABILITY, 10, 2)
++FIELD(GICR_VPENDBASER, PHYADDR, 16, 36)
++FIELD(GICR_VPENDBASER, OUTERCACHE, 56, 3)
++FIELD(GICR_VPENDBASER, DIRTY, 60, 1)
++FIELD(GICR_VPENDBASER, PENDINGLAST, 61, 1)
++FIELD(GICR_VPENDBASER, IDAI, 62, 1)
++FIELD(GICR_VPENDBASER, VALID, 63, 1)
++
+ #define ICC_CTLR_EL1_CBPR           (1U << 0)
+ #define ICC_CTLR_EL1_EOIMODE        (1U << 1)
+ #define ICC_CTLR_EL1_PMHE           (1U << 6)
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index 40bc404a652..7ff5a1aa5fc 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -179,6 +179,9 @@ struct GICv3CPUState {
+     uint32_t gicr_igrpmodr0;
+     uint32_t gicr_nsacr;
+     uint8_t gicr_ipriorityr[GIC_INTERNAL];
++    /* VLPI_base page registers */
++    uint64_t gicr_vpropbaser;
++    uint64_t gicr_vpendbaser;
+ 
+     /* CPU interface */
+     uint64_t icc_sre_el1;
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index 18999e3c8bb..14d76d74840 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -144,6 +144,25 @@ const VMStateDescription vmstate_gicv3_cpu_sre_el1 = {
+     }
+ };
+ 
++static bool gicv4_needed(void *opaque)
 +{
-+    if (icid >= s->ct.num_entries) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid ICID 0x%x\n", who, icid);
-+        return CMD_CONTINUE;
-+    }
-+    if (get_cte(s, icid, cte) != MEMTX_OK) {
-+        return CMD_STALL;
-+    }
-+    if (!cte->valid) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid CTE\n", who);
-+        return CMD_CONTINUE;
-+    }
-+    if (cte->rdbase >= s->gicv3->num_cpu) {
-+        return CMD_CONTINUE;
-+    }
-+    return CMD_CONTINUE_OK;
++    GICv3CPUState *cs = opaque;
++
++    return cs->gic->revision > 3;
 +}
 +
++const VMStateDescription vmstate_gicv3_gicv4 = {
++    .name = "arm_gicv3_cpu/gicv4",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = gicv4_needed,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT64(gicr_vpropbaser, GICv3CPUState),
++        VMSTATE_UINT64(gicr_vpendbaser, GICv3CPUState),
++        VMSTATE_END_OF_LIST()
++    }
++};
 +
- /*
-  * This function handles the processing of following commands based on
-  * the ItsCmdType parameter passed:-
-@@ -396,29 +426,9 @@ static ItsCmdResult do_process_its_cmd(GICv3ITSState *s, uint32_t devid,
-         return CMD_CONTINUE;
+ static const VMStateDescription vmstate_gicv3_cpu = {
+     .name = "arm_gicv3_cpu",
+     .version_id = 1,
+@@ -175,6 +194,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
+     .subsections = (const VMStateDescription * []) {
+         &vmstate_gicv3_cpu_virt,
+         &vmstate_gicv3_cpu_sre_el1,
++        &vmstate_gicv3_gicv4,
+         NULL
      }
- 
--    if (ite.icid >= s->ct.num_entries) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: invalid ICID 0x%x in ITE (table corrupted?)\n",
--                      __func__, ite.icid);
--        return CMD_CONTINUE;
--    }
--
--    if (get_cte(s, ite.icid, &cte) != MEMTX_OK) {
--        return CMD_STALL;
--    }
--    if (!cte.valid) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: invalid command attributes: invalid CTE\n",
--                      __func__);
--        return CMD_CONTINUE;
--    }
--
--    /*
--     * Current implementation only supports rdbase == procnum
--     * Hence rdbase physical address is ignored
--     */
--    if (cte.rdbase >= s->gicv3->num_cpu) {
--        return CMD_CONTINUE;
-+    cmdres = lookup_cte(s, __func__, ite.icid, &cte);
-+    if (cmdres != CMD_CONTINUE_OK) {
-+        return cmdres;
+ };
+@@ -444,6 +464,8 @@ static void arm_gicv3_common_reset(DeviceState *dev)
+         cs->gicr_waker = GICR_WAKER_ProcessorSleep | GICR_WAKER_ChildrenAsleep;
+         cs->gicr_propbaser = 0;
+         cs->gicr_pendbaser = 0;
++        cs->gicr_vpropbaser = 0;
++        cs->gicr_vpendbaser = 0;
+         /* If we're resetting a TZ-aware GIC as if secure firmware
+          * had set it up ready to start a kernel in non-secure, we
+          * need to set interrupts to group 1 so the kernel can use them.
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 9f1fe09a78e..c310d7f8ff2 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -236,6 +236,23 @@ static MemTxResult gicr_readl(GICv3CPUState *cs, hwaddr offset,
+     case GICR_IDREGS ... GICR_IDREGS + 0x2f:
+         *data = gicv3_idreg(offset - GICR_IDREGS, GICV3_PIDR0_REDIST);
+         return MEMTX_OK;
++        /*
++         * VLPI frame registers. We don't need a version check for
++         * VPROPBASER and VPENDBASER because gicv3_redist_size() will
++         * prevent pre-v4 GIC from passing us offsets this high.
++         */
++    case GICR_VPROPBASER:
++        *data = extract64(cs->gicr_vpropbaser, 0, 32);
++        return MEMTX_OK;
++    case GICR_VPROPBASER + 4:
++        *data = extract64(cs->gicr_vpropbaser, 32, 32);
++        return MEMTX_OK;
++    case GICR_VPENDBASER:
++        *data = extract64(cs->gicr_vpendbaser, 0, 32);
++        return MEMTX_OK;
++    case GICR_VPENDBASER + 4:
++        *data = extract64(cs->gicr_vpendbaser, 32, 32);
++        return MEMTX_OK;
+     default:
+         return MEMTX_ERROR;
      }
- 
-     if ((cmd == CLEAR) || (cmd == DISCARD)) {
-@@ -792,54 +802,13 @@ static ItsCmdResult process_movi(GICv3ITSState *s, const uint64_t *cmdpkt)
-         return CMD_CONTINUE;
+@@ -379,6 +396,23 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
+                       "%s: invalid guest write to RO register at offset "
+                       TARGET_FMT_plx "\n", __func__, offset);
+         return MEMTX_OK;
++        /*
++         * VLPI frame registers. We don't need a version check for
++         * VPROPBASER and VPENDBASER because gicv3_redist_size() will
++         * prevent pre-v4 GIC from passing us offsets this high.
++         */
++    case GICR_VPROPBASER:
++        cs->gicr_vpropbaser = deposit64(cs->gicr_vpropbaser, 0, 32, value);
++        return MEMTX_OK;
++    case GICR_VPROPBASER + 4:
++        cs->gicr_vpropbaser = deposit64(cs->gicr_vpropbaser, 32, 32, value);
++        return MEMTX_OK;
++    case GICR_VPENDBASER:
++        cs->gicr_vpendbaser = deposit64(cs->gicr_vpendbaser, 0, 32, value);
++        return MEMTX_OK;
++    case GICR_VPENDBASER + 4:
++        cs->gicr_vpendbaser = deposit64(cs->gicr_vpendbaser, 32, 32, value);
++        return MEMTX_OK;
+     default:
+         return MEMTX_ERROR;
      }
- 
--    if (old_ite.icid >= s->ct.num_entries) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: invalid ICID 0x%x in ITE (table corrupted?)\n",
--                      __func__, old_ite.icid);
--        return CMD_CONTINUE;
-+    cmdres = lookup_cte(s, __func__, old_ite.icid, &old_cte);
-+    if (cmdres != CMD_CONTINUE_OK) {
-+        return cmdres;
+@@ -397,6 +431,17 @@ static MemTxResult gicr_readll(GICv3CPUState *cs, hwaddr offset,
+     case GICR_PENDBASER:
+         *data = cs->gicr_pendbaser;
+         return MEMTX_OK;
++        /*
++         * VLPI frame registers. We don't need a version check for
++         * VPROPBASER and VPENDBASER because gicv3_redist_size() will
++         * prevent pre-v4 GIC from passing us offsets this high.
++         */
++    case GICR_VPROPBASER:
++        *data = cs->gicr_vpropbaser;
++        return MEMTX_OK;
++    case GICR_VPENDBASER:
++        *data = cs->gicr_vpendbaser;
++        return MEMTX_OK;
+     default:
+         return MEMTX_ERROR;
      }
--
--    if (new_icid >= s->ct.num_entries) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: invalid command attributes: ICID 0x%x\n",
--                      __func__, new_icid);
--        return CMD_CONTINUE;
--    }
--
--    if (get_cte(s, old_ite.icid, &old_cte) != MEMTX_OK) {
--        return CMD_STALL;
--    }
--    if (!old_cte.valid) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: invalid command attributes: "
--                      "invalid CTE for old ICID 0x%x\n",
--                      __func__, old_ite.icid);
--        return CMD_CONTINUE;
--    }
--
--    if (get_cte(s, new_icid, &new_cte) != MEMTX_OK) {
--        return CMD_STALL;
--    }
--    if (!new_cte.valid) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: invalid command attributes: "
--                      "invalid CTE for new ICID 0x%x\n",
--                      __func__, new_icid);
--        return CMD_CONTINUE;
--    }
--
--    if (old_cte.rdbase >= s->gicv3->num_cpu) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: CTE has invalid rdbase 0x%x\n",
--                      __func__, old_cte.rdbase);
--        return CMD_CONTINUE;
--    }
--
--    if (new_cte.rdbase >= s->gicv3->num_cpu) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: CTE has invalid rdbase 0x%x\n",
--                      __func__, new_cte.rdbase);
--        return CMD_CONTINUE;
-+    cmdres = lookup_cte(s, __func__, new_icid, &new_cte);
-+    if (cmdres != CMD_CONTINUE_OK) {
-+        return cmdres;
+@@ -418,6 +463,17 @@ static MemTxResult gicr_writell(GICv3CPUState *cs, hwaddr offset,
+                       "%s: invalid guest write to RO register at offset "
+                       TARGET_FMT_plx "\n", __func__, offset);
+         return MEMTX_OK;
++        /*
++         * VLPI frame registers. We don't need a version check for
++         * VPROPBASER and VPENDBASER because gicv3_redist_size() will
++         * prevent pre-v4 GIC from passing us offsets this high.
++         */
++    case GICR_VPROPBASER:
++        cs->gicr_vpropbaser = value;
++        return MEMTX_OK;
++    case GICR_VPENDBASER:
++        cs->gicr_vpendbaser = value;
++        return MEMTX_OK;
+     default:
+         return MEMTX_ERROR;
      }
- 
-     if (old_cte.rdbase != new_cte.rdbase) {
 -- 
 2.25.1
 

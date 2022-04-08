@@ -1,105 +1,104 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp388063lfq;
-        Fri, 8 Apr 2022 07:19:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzBiaHQL+JLbsOgHqy9nOFZDoWY5ceWsL5qy9NJUN2/ZlhdXvEq3VlUDApVwMzJl52kjw1N
-X-Received: by 2002:a25:cf4c:0:b0:641:15d2:54a3 with SMTP id f73-20020a25cf4c000000b0064115d254a3mr787877ybg.626.1649427573645;
-        Fri, 08 Apr 2022 07:19:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649427573; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp388282lfq;
+        Fri, 8 Apr 2022 07:19:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRPnw62aOrEXo1l+Y4aTgqRL6Q26txNOVHvcHib1TpjSwaWR+SERgKjNmcCjS0DyPMZ6mi
+X-Received: by 2002:a25:5188:0:b0:63d:8d4e:ccb4 with SMTP id f130-20020a255188000000b0063d8d4eccb4mr15018769ybb.423.1649427597799;
+        Fri, 08 Apr 2022 07:19:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649427597; cv=none;
         d=google.com; s=arc-20160816;
-        b=P9+4+EWjHsa3LQXefVSAudkr57J7SMSuTiYzyuozKrxM4xFNr9mtF9NMYy2YVNxkuU
-         SfgNMBI/Eryt7fgKCVK4PHvtSRZCNQhVOAHZ65aK8nL2NXsFd1h6zW53D3IddYJBYYbf
-         rO3sFihmJPbMbClrX08caDX1cEfluiFLwJheCOXr8LC9GxXanq50nNuu83WTg8IYvV+n
-         wXu+1pafgxABjzmKOHkqD+4N5U8bor833oWY4OKQxIBTaU4/ibeOAAWHd051Eg6KS4/y
-         CO7bPBF262cNcxJuD0H7paUqjMabkvUfjEX2jvzdR4diR+a9q+/nqU9xjj8ydKiTqBs/
-         yDVA==
+        b=koaNHv9pxTqLdtrmyOqoIFDv2tKPQGwjbsQvkMoHAlMR6kxFO3SnEFJMTVKR20SHt6
+         cMrSPbYkBCPfHBI0CZgmtyzs1xhwFN/Khl/M7YwPL8Gh4JMKAIR0knC79UYj1EIgpbpX
+         USvRwnE/Tz4yhZNP5isAPGTMhNwgpij79Gx+WiQHg9u5JcKPUnNVIrvckI2hXQWijUYM
+         xYXZmXsyWvgAb9UHU4nfQHvXXFRcDa9hkOSM0eS/ZkzaKVeRVLVfUHnoJVC+0YN4ygpl
+         96Eaehx7zovqccHBo9c4eIIlpz4N1/GGw6gtCuW4Dqnxg7hfqWVzXAs61F9uMrbS37iM
+         N+JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=vqFEef+PoO6P4+Yluk3sTBRVOWf6f49lZyd6Jx1qSYk=;
-        b=vnMisfR6/jU5nySQXVpO8CUvJfVOJEwIfvGDn0Hk7UH2VqvL/QtJimF4+oRa2VS8b3
-         M8mYMUJzDpnT+d/2Iw2F20BS0chqoE9k2YpjIn0PwMaEssrff8UP2gMdVhlO2QtkRNE2
-         D/FqxgMv6LL/5x0q/AlSklYvFuH0HhTzSr+MPtd7hJdH4ucSc5j8hCKfk8kpRzIVB8+D
-         n8YsGgqWZfVP3vGHntWYBE2GIX5Vn1whoaNkkDC5EWvI9ZMo3NIziMENKBbluOPniDh8
-         hqMKVGxqqjjaTBiHmlrqZfEz22aLBH7aj14dxOKygoWxkpkL2Pehg/aD/9TAwFn2bxT9
-         jN9A==
+        bh=S+YvDc8DedNVliPTdGBNFfK23a5rnWxdXtkXVjY58mc=;
+        b=tOfjfuwu+rWGcz/Rns+jzYx5fmCjaDHSxcV+QB2YVVc29vaYU0ltsGvNq02FvyP+7i
+         jeppPm+biZ4933PZpV2MrbjZchM9bHlkgWQKYgYJ7MDoEuUuVOYLTLESBCrrV69fu11z
+         Ujh53RVQhg2qoDLf7nMrNPV4hWXlwxphX9RQHXZvblksuX1U74/IvnSdGFxg20GOmMVo
+         MKIEeHgoqh9OsocbuVGu8A1PM6f3YjeHLy7xIM5Kh891Kko1QNU4kkqkdJMrxMYTO+l8
+         TgPzCCZVuN0uLjsqYuuQK7Stb6CXiX/iCT18jbBzXRqTWnN5FFAbZpFMmOWtqpCqmc9E
+         ucsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yjamuJc2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=npD8nl3z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z8-20020a81d408000000b002e5da2c72aesi504722ywi.487.2022.04.08.07.19.33
+        by mx.google.com with ESMTPS id 63-20020a250b42000000b0064039d480e4si570365ybl.534.2022.04.08.07.19.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Apr 2022 07:19:33 -0700 (PDT)
+        Fri, 08 Apr 2022 07:19:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yjamuJc2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=npD8nl3z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45612 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46904 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncpSW-0005MO-W8
-	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:19:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41862)
+	id 1ncpSv-0006EC-60
+	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:19:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42066)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpP7-0006hb-5r
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:04 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:37522)
+ id 1ncpPB-0006jz-72
+ for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:05 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:38469)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpP3-0002Dy-Ou
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:00 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- f16-20020a7bcd10000000b0038e9ce3b2a9so1227476wmj.2
- for <qemu-arm@nongnu.org>; Fri, 08 Apr 2022 07:15:56 -0700 (PDT)
+ id 1ncpP8-0002FO-LG
+ for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:04 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id a2so3792651wrh.5
+ for <qemu-arm@nongnu.org>; Fri, 08 Apr 2022 07:16:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=vqFEef+PoO6P4+Yluk3sTBRVOWf6f49lZyd6Jx1qSYk=;
- b=yjamuJc2pqo6y6Mkj2KLfZViz+fuzfyhj7AYPuCSvrYaycqs1FeEAnHWT5jJpxI6F1
- uGiEiiOcnSGEpzmondjlIj0k+QtZIEm92d1sb2gxIXdU4lQa8PL4WnUnejTrTczIrgb2
- m7K7Y6kcBzsUtGJvm36dfH8zZmaljljLMWOD1fsVKRxGLx3tuwbHqus8UpPaaRveAKqy
- hi0gHNhk7WtZ5LviKdCjb5tnq5ylaclpodouEpsaIVTZkj3nAIFVvaiEQQVvM9iLpwnQ
- SxtxambsXGQeLXbUj3UNm6bYHjjF6Qz8eSCQz3CPSkIcZ8gh8y9oaf+KGEUAJntpCYFk
- ZzRA==
+ bh=S+YvDc8DedNVliPTdGBNFfK23a5rnWxdXtkXVjY58mc=;
+ b=npD8nl3z8IPnhyE6dhFkhj+k7C2alarkLJR100Ee8sBTcNVZxfy6AUjYiw1Yuw/tlS
+ lPLXJwbpb91D/+xi5b54XUIUskJFXIcAFr8x75XbLDpZsG2uVdmbgG++HEFYRCTT5+It
+ DRI9dX/uOpgjDpzg1/MdPk7QWX/1gwFg8E7rhOe3vQZAJJ7suKUrwk4yq21fh0Cfg9Zc
+ hVFoZCxF0IjAXay3yVvj5lWM93AA87hpDwLPw8BUTKgyZ/TOIMH+Z/8Kc13Rw272xxo+
+ H3uvnm2kijI3llF8ZSqRp9gQX69A20lzqOVPTRbpyJxYfokEr7LWsJw3+pPvVxT1HYH+
+ uh8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=vqFEef+PoO6P4+Yluk3sTBRVOWf6f49lZyd6Jx1qSYk=;
- b=0lO/RK1igZUqd6KUcO64J4WVBmZqAXKsfhyk2O1dqICaV5or/F0DAYlFfm/Jr5BEML
- YKcAn/q9y/JHGPHIYUfnLdzSfPavTciwglGj6DmopZaYY38bicE/gHMT1O0/94z+jdWj
- p6+LLjbWAEf2jziCcO7Re9XjZm9F3DF5EDlYiGGOi6iDyn5NcFspUq4TVsIYooPYrrhA
- Q8ea8dMshW1cuKq9gwfiYnT7RiXePd2SFK4jbT390GQNN9mzb2QHImpWE68GZs9kF5KU
- 6nCB40LLYuDxigHlQq8eF+DtnJr0CGZJXHWUlJ1o64FSwfBtYPFRWDkVbNAH0lJyRZwD
- cIGw==
-X-Gm-Message-State: AOAM5309DWheH4BtCsjErU/LJMO+0hxTqlr3YMfp3Df2YAlyWwsY1Dzp
- pBJ/qRgG1OY6ynkKBS4TFxIICAIp476yYg==
-X-Received: by 2002:a1c:4408:0:b0:38e:aa45:db99 with SMTP id
- r8-20020a1c4408000000b0038eaa45db99mr1615744wma.176.1649427355739; 
- Fri, 08 Apr 2022 07:15:55 -0700 (PDT)
+ bh=S+YvDc8DedNVliPTdGBNFfK23a5rnWxdXtkXVjY58mc=;
+ b=q3UfX+0BpdD28rKe2tjonwV6zqBHzS2/fnpZa4wD3fhxkYCvbfFm2EnRg/1cxiQxdv
+ 70YjyDs6xyU42P7DOPLkjIwZds+SmOnF5MOTD1sq14L53XuhWuNgwNdFa2ozPzW4D9xt
+ cAMHr5oLrOH0QBZTbDIGB7exGL+BlShdNBdDSU8UJjyTTkCoISr85VmqVsatSOVsADa2
+ TF0gb0BslJdF8jRONwK+ZkgaDf94Mw9pLwm7iFMHKzNVuLLTEm46HBo5EUlVF9Qyo97C
+ NjZYpd+1RUx3Is+ZW+eKnlaJfzcFfCg4/JFnSoHwRKNdtFIvkAGROqDGN0jGHHvHoztI
+ QbaQ==
+X-Gm-Message-State: AOAM531/nLTSZaKW1nKT2Qekusy8wk2nv4wN44/3SsJKew7h5FiBIXlO
+ wwcxNl3sd/wc4cFVwUynoRvI+7LDYbpWVw==
+X-Received: by 2002:a5d:6da8:0:b0:205:8537:af57 with SMTP id
+ u8-20020a5d6da8000000b002058537af57mr14533795wrs.80.1649427360723; 
+ Fri, 08 Apr 2022 07:16:00 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.15.55
+ i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Apr 2022 07:15:55 -0700 (PDT)
+ Fri, 08 Apr 2022 07:16:00 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/41] hw/intc/arm_gicv3_its: Add missing blank line
-Date: Fri,  8 Apr 2022 15:15:10 +0100
-Message-Id: <20220408141550.1271295-2-peter.maydell@linaro.org>
+Subject: [PATCH 07/41] hw/intc/arm_gicv3_its: Implement GITS_BASER2 for GICv4
+Date: Fri,  8 Apr 2022 15:15:16 +0100
+Message-Id: <20220408141550.1271295-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408141550.1271295-1-peter.maydell@linaro.org>
 References: <20220408141550.1271295-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,29 +121,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Marc Zyngier <maz@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CpGRtcWqB0Is
+X-TUID: uBN+FJBb51v8
 
-In commit b6f96009acc we split do_process_its_cmd() from
-process_its_cmd(), but forgot the usual blank line between function
-definitions.  Add it.
+The GICv4 defines a new in-guest-memory table for the ITS: this is
+the vPE table.  Implement the new GITS_BASER2 register which the
+guest uses to tell the ITS where the vPE table is located, including
+the decode of the register fields into the TableDesc structure which
+we do for the GITS_BASER<n> when the guest enables the ITS.
+
+We guard provision of the new register with the its_feature_virtual()
+function, which does a check of the GITS_TYPER.Virtual bit which
+indicates presence of ITS support for virtual LPIs.  Since this bit
+is currently always zero, GICv4-specific features will not be
+accessible to the guest yet.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_its.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/intc/gicv3_internal.h               | 16 ++++++++++++++++
+ include/hw/intc/arm_gicv3_its_common.h |  1 +
+ hw/intc/arm_gicv3_its.c                | 25 +++++++++++++++++++++++++
+ 3 files changed, 42 insertions(+)
 
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index dec413f7cfa..4613b9e59ba 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -280,6 +280,7 @@ FIELD(GITS_CTLR, ENABLED, 0, 1)
+ FIELD(GITS_CTLR, QUIESCENT, 31, 1)
+ 
+ FIELD(GITS_TYPER, PHYSICAL, 0, 1)
++FIELD(GITS_TYPER, VIRTUAL, 1, 1)
+ FIELD(GITS_TYPER, ITT_ENTRY_SIZE, 4, 4)
+ FIELD(GITS_TYPER, IDBITS, 8, 5)
+ FIELD(GITS_TYPER, DEVBITS, 13, 5)
+@@ -298,6 +299,7 @@ FIELD(GITS_TYPER, CIL, 36, 1)
+ #define GITS_BASER_PAGESIZE_64K               2
+ 
+ #define GITS_BASER_TYPE_DEVICE               1ULL
++#define GITS_BASER_TYPE_VPE                  2ULL
+ #define GITS_BASER_TYPE_COLLECTION           4ULL
+ 
+ #define GITS_PAGE_SIZE_4K       0x1000
+@@ -419,6 +421,20 @@ FIELD(DTE, ITTADDR, 6, 44)
+ FIELD(CTE, VALID, 0, 1)
+ FIELD(CTE, RDBASE, 1, RDBASE_PROCNUM_LENGTH)
+ 
++/*
++ * 8 bytes VPE table entry size:
++ * Valid = 1 bit, VPTsize = 5 bits, VPTaddr = 36 bits, RDbase = 16 bits
++ *
++ * Field sizes for Valid and size are mandated; field sizes for RDbase
++ * and VPT_addr are IMPDEF.
++ */
++#define GITS_VPE_SIZE 0x8ULL
++
++FIELD(VTE, VALID, 0, 1)
++FIELD(VTE, VPTSIZE, 1, 5)
++FIELD(VTE, VPTADDR, 6, 36)
++FIELD(VTE, RDBASE, 42, RDBASE_PROCNUM_LENGTH)
++
+ /* Special interrupt IDs */
+ #define INTID_SECURE 1020
+ #define INTID_NONSECURE 1021
+diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
+index 0f130494dd3..7d1cc0f7177 100644
+--- a/include/hw/intc/arm_gicv3_its_common.h
++++ b/include/hw/intc/arm_gicv3_its_common.h
+@@ -78,6 +78,7 @@ struct GICv3ITSState {
+ 
+     TableDesc  dt;
+     TableDesc  ct;
++    TableDesc  vpet;
+     CmdQDesc   cq;
+ 
+     Error *migration_blocker;
 diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index 87466732139..44914f25780 100644
+index 400cdf83794..609c29496a0 100644
 --- a/hw/intc/arm_gicv3_its.c
 +++ b/hw/intc/arm_gicv3_its.c
-@@ -380,6 +380,7 @@ static ItsCmdResult do_process_its_cmd(GICv3ITSState *s, uint32_t devid,
-     }
-     return CMD_CONTINUE;
- }
+@@ -79,6 +79,12 @@ typedef enum ItsCmdResult {
+     CMD_CONTINUE = 1,
+ } ItsCmdResult;
+ 
++/* True if the ITS supports the GICv4 virtual LPI feature */
++static bool its_feature_virtual(GICv3ITSState *s)
++{
++    return s->typer & R_GITS_TYPER_VIRTUAL_MASK;
++}
 +
- static ItsCmdResult process_its_cmd(GICv3ITSState *s, const uint64_t *cmdpkt,
-                                     ItsCmdType cmd)
+ static inline bool intid_in_lpi_range(uint32_t id)
  {
+     return id >= GICV3_LPI_INTID_START &&
+@@ -946,6 +952,15 @@ static void extract_table_params(GICv3ITSState *s)
+                 idbits = 16;
+             }
+             break;
++        case GITS_BASER_TYPE_VPE:
++            td = &s->vpet;
++            /*
++             * For QEMU vPEIDs are always 16 bits. (GICv4.1 allows an
++             * implementation to implement fewer bits and report this
++             * via GICD_TYPER2.)
++             */
++            idbits = 16;
++            break;
+         default:
+             /*
+              * GITS_BASER<n>.TYPE is read-only, so GITS_BASER_RO_MASK
+@@ -1425,6 +1440,7 @@ static void gicv3_its_reset(DeviceState *dev)
+     /*
+      * setting GITS_BASER0.Type = 0b001 (Device)
+      *         GITS_BASER1.Type = 0b100 (Collection Table)
++     *         GITS_BASER2.Type = 0b010 (vPE) for GICv4 and later
+      *         GITS_BASER<n>.Type,where n = 3 to 7 are 0b00 (Unimplemented)
+      *         GITS_BASER<0,1>.Page_Size = 64KB
+      * and default translation table entry size to 16 bytes
+@@ -1442,6 +1458,15 @@ static void gicv3_its_reset(DeviceState *dev)
+                              GITS_BASER_PAGESIZE_64K);
+     s->baser[1] = FIELD_DP64(s->baser[1], GITS_BASER, ENTRYSIZE,
+                              GITS_CTE_SIZE - 1);
++
++    if (its_feature_virtual(s)) {
++        s->baser[2] = FIELD_DP64(s->baser[2], GITS_BASER, TYPE,
++                                 GITS_BASER_TYPE_VPE);
++        s->baser[2] = FIELD_DP64(s->baser[2], GITS_BASER, PAGESIZE,
++                                 GITS_BASER_PAGESIZE_64K);
++        s->baser[2] = FIELD_DP64(s->baser[2], GITS_BASER, ENTRYSIZE,
++                                 GITS_VPE_SIZE - 1);
++    }
+ }
+ 
+ static void gicv3_its_post_load(GICv3ITSState *s)
 -- 
 2.25.1
 

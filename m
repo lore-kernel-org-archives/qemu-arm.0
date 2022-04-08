@@ -1,105 +1,105 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp396897lfq;
-        Fri, 8 Apr 2022 07:34:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyl0SejjWIw+9+9EnTicCWcEipy0gvO4A0UyBA/ie1IaQ01ip5Oi56zwlsBl1oGDG+/ScKt
-X-Received: by 2002:a81:b50d:0:b0:2e5:b653:7e97 with SMTP id t13-20020a81b50d000000b002e5b6537e97mr17234860ywh.140.1649428476928;
-        Fri, 08 Apr 2022 07:34:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649428476; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp397399lfq;
+        Fri, 8 Apr 2022 07:35:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzTd2ov274J/13iVuW3OUG0eSdvYC1s5HCD4s7ptxGtcvwIwtc3XZgs1EmnYf0BYUUEcDhl
+X-Received: by 2002:a0d:dd09:0:b0:2eb:696f:a0e2 with SMTP id g9-20020a0ddd09000000b002eb696fa0e2mr16570842ywe.416.1649428521434;
+        Fri, 08 Apr 2022 07:35:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649428521; cv=none;
         d=google.com; s=arc-20160816;
-        b=TSSVOV5nNH0xPw4scXWWmekkP+glMMc7FflS6+4rXHsK9wPjKvsyEaWuBI+n2ey9cg
-         hFr2CT0uCvmNs56IQYyzrOg8319EcgLbl1aKfK8P6slbpc30JqaRPB3D7wy/Lam/t8DV
-         okHmsXv0EQGKiTbGdtdt3OG6PF7h6ZA39R9C6jMZQ3QFVTG0hsVlIyLaIrrWzfFgwysH
-         mTjucZ2Morx1+YkHpa9/Qxve1pVP+ZqLAd+SVrEnMHi+AY1Ccrzgptc+mH2+ZJMQTVd5
-         RK6Vrl/53qMy7EDBJkTTgyhxQFgoaScQsJVI9barYNtHObtG2ZsJU0XJlRua0tgE1Lw+
-         wLuw==
+        b=K/RDcD92UoSivZCMk5aMcVPdmSgmMEOhk+JzqmPTC75C13vkCuUma3KxGQPihRyr0F
+         pFH8Qa+0yCJ/bYtdlxoLypam9Q4lFBg5xoaSUinEa5Kse6T/cqNhtq5zQX3KNAhXxvZr
+         5oezL3zqHdt13lqHgmtLGq5d1Dr9rwSXXafAxWFrsXJ+6465UJi6KO5OmP5fQdl9M2kS
+         yTjCLZUIU+kIxEbLGRsrDDUhuCoRVeDts5zXSggx1af3/qoiQTxENfgbhW5Pne+OTTvh
+         eIitfwH+ft2w8X3aUo1NvZoiozxaEdTx56r2su/0BfVOLGlHxgY7EX6ha+wEunaQa4Rm
+         xHlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cUv1al+qPnljVWsbF0aOgpEXEQ/oxq06yGq33Wrsi0s=;
-        b=zHypCumf+hDDbFDzx54vSrmrlg2yH4/H/6fBW7AYPwgFPgHExPgaXI+64N4iO9F+td
-         DPJG8dm6/BwURt/pW5VmY/FUaXTCRjoA+MvYozlWSXK49bHbMnxwFjh17edJ296KUyOl
-         1+Rrrz2BqtM+MlbBq7RAOMfNcVR22JeoTLD5IQr9k9/NYpI4yFr+7b+4yZi9l7t9aJug
-         ORkl69pCUSLnMUw+mHb392HMz2rB9KPALbif3VdvJ+ZqwDoYwaOUd9CHBpHHcGi9pXcm
-         ho60al5O0nGILAWEP/dasIPKdA1YgbMBekqOoE+BM2Rs1iyNJeBNMVWUzTp929Jz7Ika
-         KMKw==
+        bh=c2w8hD7BvI/mrPbeJHM/ddfGPpF2hd8m8r56TLjlSxo=;
+        b=gbgSga8a4xN2EdIHjjL4o9agpUu+ggDMBe+AZVhKNPIknWRnCGA8DTgx+/g5JgoXGT
+         M6bXxGXZdEGM+Hlzkh1/OtyD2nRnonlIugR/Xje8HjZJb5RNdQ4rQesL7hxrvXydAFDa
+         jZfjTaaAj48040IGOlGf6O/AdoFcXD6GUCeQx41jgInn4Sb6ECQ07OPy4e6owaWSg0gh
+         AXZf3yD67BBC7Up8L9IatMjLtfJq8503TbtGfyJLhGFiuVdKXah61wbet0+4/b3INkgp
+         Bnjc61MAREqwLknKQcGzOvKukQ5UgT7Z3mSrbZfKzac8fMM5i2rxmfKOF+IuaKAT6zmI
+         KEow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gDwUyrHd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=McqFH8HA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y18-20020a0dd612000000b002e5bb9dcaa3si593081ywd.300.2022.04.08.07.34.36
+        by mx.google.com with ESMTPS id z189-20020a2565c6000000b0063399404414si622524ybb.126.2022.04.08.07.35.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Apr 2022 07:34:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Apr 2022 07:35:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gDwUyrHd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=McqFH8HA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34614 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35440 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncph6-0002BN-7k
-	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:34:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42878)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ncpho-0002kD-Og
+	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:35:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42762)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPU-00078A-QN
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:26 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:39772)
+ id 1ncpPS-00075Z-BV
+ for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:22 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:47033)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPS-0002P7-1q
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:23 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id q19so13052622wrc.6
- for <qemu-arm@nongnu.org>; Fri, 08 Apr 2022 07:16:21 -0700 (PDT)
+ id 1ncpPP-0002Mx-2k
+ for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:20 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id v2so2198984wrv.13
+ for <qemu-devel@nongnu.org>; Fri, 08 Apr 2022 07:16:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cUv1al+qPnljVWsbF0aOgpEXEQ/oxq06yGq33Wrsi0s=;
- b=gDwUyrHd6Bcsgwyzm5ldtRWi2Xgv6Og9R8JydD9TA6nH6SibeOHaBjbMJYht99b52n
- PCJpK26C/qDbwASIAp7jyvVM1JLnFYBYNbnwNRjVQH2gSrAG+ZJ3PUzUQT+0ppAMi4m7
- rh1bHNmxh7jbpeqbuyVzdpY3rLomjGvS8G7PtDv0nUSyXSL8GFaQT2jK7PTBnCXpZlSM
- 6R2CL9Wb08IFn3Fx26kTbEAg4RtolaXpEnr06nm3xGp7cUAFgEcUp7XqSJjPHFQ8X3YQ
- uUSs1yPZC8VVDG5kiZB7KrPWjSFhYYbBcySGYo5gGoxlh6uX1DK2FVBybEvLEqEorwMO
- Fb5g==
+ bh=c2w8hD7BvI/mrPbeJHM/ddfGPpF2hd8m8r56TLjlSxo=;
+ b=McqFH8HAyOz3+0xfW01DCj9eees7vq1ysV+8HonEZDNfQLIHoqcwjsRdJR2PtPrYj2
+ HCwTHqUW+TUjWqmZHfPvS8ghv3EUcQNVS7KdI8Rk5NmCOsyRCUxBv5W2NEmy5nz5QXQf
+ 9gyOeYtJnH+ll/5aUgYsaDcjzPxPzJI4El4ACLz1N0QJeUHRrbvEyhIcY+63Rmpxm37N
+ Pg01Qj9hDUYi0JDt3HIbR7CqoeuQ7Hg3pDV6nmeDsmnER6x4hkmXGPPKTmd75eKe2SY8
+ I6NsPZG+CrQrH5L+KGsqUIlDxz2zyA42K7kpIh6hKkKSVng94rgvIc/8tXQ6BDo0s8xC
+ spiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cUv1al+qPnljVWsbF0aOgpEXEQ/oxq06yGq33Wrsi0s=;
- b=hjaGHjU5FYm0VFyPwS5XXei0wMNORQLasW2Wb4TpyULU1syzEBiN+sChFpYSlfxn/V
- WcX/5DfQzv10YsRvdAO1n+rbhA8xpz4nvNFDViShmSxrTuemTOdYO/V9346o0P1AQVZj
- pSKjIG/gjNukBNFiH44KSnRePQ1pD7kYk4It18YjWyliWNRys6DgZTZkjmr0dTA0v59r
- oz1w8q45AW5KS9MJhSAMN9dbiWQg2WOTpWW6dih91bVPgPC+yqvQEupUlNXqhqNbAtke
- 1gNdVa/uQ8RyoJ2obCNj2XsR2G5c7GUyz42XYwEjbxk3qbyUxNgA3utsI4c30x4ySkP/
- YzLQ==
-X-Gm-Message-State: AOAM531KmdUDwIX3V2JGv4l9yz4GCcnDm5Pnkgh29Eh1reF9SVBHkEdS
- R1zOjacxBR6Tqhb4eBbTuI3eV75BKnse0A==
-X-Received: by 2002:adf:e806:0:b0:206:1cfa:3a82 with SMTP id
- o6-20020adfe806000000b002061cfa3a82mr14800237wrm.143.1649427380311; 
- Fri, 08 Apr 2022 07:16:20 -0700 (PDT)
+ bh=c2w8hD7BvI/mrPbeJHM/ddfGPpF2hd8m8r56TLjlSxo=;
+ b=Z8MZx0KIYwm2NXtPcjUM21tcG5+8gVlsBRV3ICquX8iHKMgyoti8KoHZ6uAV1GmNWA
+ XbxOfvR2OeNYZlEjziomlKrJabdaVh/bLqT0R4A3E+FyvqDC3eZP8PR8EVtOl+bHXu8t
+ OquXq43Y6q3kCr8ldLo7y29ZswlbKwjroF1qF9q8HD7DpGLSNSCkpiKSdbkEwFBanKHH
+ Lnm070zEn6f+jkGL25U4WoQ+tFKSrifqT5YrFjX1djyMCTb9lDyRtqyiWMZmLXC7S8OB
+ Ko8rpGbGbmwQi+wuaF7lyeiabsmYL3E9wActD/eTgB6z08OQS+98Vs+XuFtZZBpD30a3
+ LAXg==
+X-Gm-Message-State: AOAM533kzxXMJwxYf4qTb9eWlKzljNU0732GFrR13NS7SAMlIz4fRJKe
+ BNfjU+V7eiwcimsMLNrVZNhvVw==
+X-Received: by 2002:a05:6000:178c:b0:204:648:b4c4 with SMTP id
+ e12-20020a056000178c00b002040648b4c4mr14519912wrg.219.1649427377731; 
+ Fri, 08 Apr 2022 07:16:17 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.19
+ i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Apr 2022 07:16:19 -0700 (PDT)
+ Fri, 08 Apr 2022 07:16:17 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 29/41] hw/intc/arm_gicv3_redist: Recalculate hppvlpi on
- VPENDBASER writes
-Date: Fri,  8 Apr 2022 15:15:38 +0100
-Message-Id: <20220408141550.1271295-30-peter.maydell@linaro.org>
+Subject: [PATCH 26/41] hw/intc/arm_gicv3_cpuif: Don't recalculate maintenance
+ irq unnecessarily
+Date: Fri,  8 Apr 2022 15:15:35 +0100
+Message-Id: <20220408141550.1271295-27-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408141550.1271295-1-peter.maydell@linaro.org>
 References: <20220408141550.1271295-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,155 +108,85 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Marc Zyngier <maz@kernel.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5R4JaahZ6sfa
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 41sPVLUI2g1r
 
-The guest uses GICR_VPENDBASER to tell the redistributor when it is
-scheduling or descheduling a vCPU.  When it writes and changes the
-VALID bit from 0 to 1, it is scheduling a vCPU, and we must update
-our view of the current highest priority pending vLPI from the new
-Pending and Configuration tables.  When it writes and changes the
-VALID bit from 1 to 0, it is descheduling, which means that there is
-no longer a highest priority pending vLPI.
+The maintenance interrupt state depends only on:
+ * ICH_HCR_EL2
+ * ICH_LR<n>_EL2
+ * ICH_VMCR_EL2 fields VENG0 and VENG1
 
-The specification allows the implementation to use part of the vLPI
-Pending table as an IMPDEF area where it can cache information when a
-vCPU is descheduled, so that it can avoid having to do a full rescan
-of the tables when the vCPU is scheduled again.  For now, we don't
-take advantage of this, and simply do a complete rescan.
+Now we have a separate function that updates only the vIRQ and vFIQ
+lines, use that in places that only change state that affects vIRQ
+and vFIQ but not the maintenance interrupt.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_redist.c | 87 ++++++++++++++++++++++++++++++++++++--
- 1 file changed, 84 insertions(+), 3 deletions(-)
+ hw/intc/arm_gicv3_cpuif.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-index 2379389d14e..bfdde36a206 100644
---- a/hw/intc/arm_gicv3_redist.c
-+++ b/hw/intc/arm_gicv3_redist.c
-@@ -185,6 +185,87 @@ static void gicr_write_ipriorityr(GICv3CPUState *cs, MemTxAttrs attrs, int irq,
-     cs->gicr_ipriorityr[irq] = value;
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index f11863ff613..d627ddac90f 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -543,7 +543,7 @@ static void icv_ap_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ 
+     cs->ich_apr[grp][regno] = value & 0xFFFFFFFFU;
+ 
+-    gicv3_cpuif_virt_update(cs);
++    gicv3_cpuif_virt_irq_fiq_update(cs);
+     return;
  }
  
-+static void gicv3_redist_update_vlpi_only(GICv3CPUState *cs)
-+{
-+    uint64_t ptbase, ctbase, idbits;
-+
-+    if (!FIELD_EX64(cs->gicr_vpendbaser, GICR_VPENDBASER, VALID)) {
-+        cs->hppvlpi.prio = 0xff;
-+        return;
-+    }
-+
-+    ptbase = cs->gicr_vpendbaser & R_GICR_VPENDBASER_PHYADDR_MASK;
-+    ctbase = cs->gicr_vpropbaser & R_GICR_VPROPBASER_PHYADDR_MASK;
-+    idbits = FIELD_EX64(cs->gicr_vpropbaser, GICR_VPROPBASER, IDBITS);
-+
-+    update_for_all_lpis(cs, ptbase, ctbase, idbits, true, &cs->hppvlpi);
-+}
-+
-+static void gicv3_redist_update_vlpi(GICv3CPUState *cs)
-+{
-+    gicv3_redist_update_vlpi_only(cs);
+@@ -588,7 +588,7 @@ static void icv_bpr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ 
+     write_vbpr(cs, grp, value);
+ 
+-    gicv3_cpuif_virt_update(cs);
 +    gicv3_cpuif_virt_irq_fiq_update(cs);
-+}
-+
-+static void gicr_write_vpendbaser(GICv3CPUState *cs, uint64_t newval)
-+{
-+    /* Write @newval to GICR_VPENDBASER, handling its effects */
-+    bool oldvalid = FIELD_EX64(cs->gicr_vpendbaser, GICR_VPENDBASER, VALID);
-+    bool newvalid = FIELD_EX64(newval, GICR_VPENDBASER, VALID);
-+    bool pendinglast;
-+
-+    /*
-+     * The DIRTY bit is read-only and for us is always zero;
-+     * other fields are writeable.
-+     */
-+    newval &= R_GICR_VPENDBASER_INNERCACHE_MASK |
-+        R_GICR_VPENDBASER_SHAREABILITY_MASK |
-+        R_GICR_VPENDBASER_PHYADDR_MASK |
-+        R_GICR_VPENDBASER_OUTERCACHE_MASK |
-+        R_GICR_VPENDBASER_PENDINGLAST_MASK |
-+        R_GICR_VPENDBASER_IDAI_MASK |
-+        R_GICR_VPENDBASER_VALID_MASK;
-+
-+    if (oldvalid && newvalid) {
-+        /*
-+         * Changing other fields while VALID is 1 is UNPREDICTABLE;
-+         * we choose to log and ignore the write.
-+         */
-+        if (cs->gicr_vpendbaser ^ newval) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: Changing GICR_VPENDBASER when VALID=1 "
-+                          "is UNPREDICTABLE\n", __func__);
-+        }
-+        return;
-+    }
-+    if (!oldvalid && !newvalid) {
-+        cs->gicr_vpendbaser = newval;
-+        return;
-+    }
-+
-+    if (newvalid) {
-+        /*
-+         * Valid going from 0 to 1: update hppvlpi from tables.
-+         * If IDAI is 0 we are allowed to use the info we cached in
-+         * the IMPDEF area of the table.
-+         * PendingLast is RES1 when we make this transition.
-+         */
-+        pendinglast = true;
-+    } else {
-+        /*
-+         * Valid going from 1 to 0:
-+         * Set PendingLast if there was a pending enabled interrupt
-+         * for the vPE that was just descheduled.
-+         * If we cache info in the IMPDEF area, write it out here.
-+         */
-+        pendinglast = cs->hppvlpi.prio != 0xff;
-+    }
-+
-+    newval = FIELD_DP64(newval, GICR_VPENDBASER, PENDINGLAST, pendinglast);
-+    cs->gicr_vpendbaser = newval;
-+    gicv3_redist_update_vlpi(cs);
-+}
-+
- static MemTxResult gicr_readb(GICv3CPUState *cs, hwaddr offset,
-                               uint64_t *data, MemTxAttrs attrs)
- {
-@@ -493,10 +574,10 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
-         cs->gicr_vpropbaser = deposit64(cs->gicr_vpropbaser, 32, 32, value);
-         return MEMTX_OK;
-     case GICR_VPENDBASER:
--        cs->gicr_vpendbaser = deposit64(cs->gicr_vpendbaser, 0, 32, value);
-+        gicr_write_vpendbaser(cs, deposit64(cs->gicr_vpendbaser, 0, 32, value));
-         return MEMTX_OK;
-     case GICR_VPENDBASER + 4:
--        cs->gicr_vpendbaser = deposit64(cs->gicr_vpendbaser, 32, 32, value);
-+        gicr_write_vpendbaser(cs, deposit64(cs->gicr_vpendbaser, 32, 32, value));
-         return MEMTX_OK;
-     default:
-         return MEMTX_ERROR;
-@@ -557,7 +638,7 @@ static MemTxResult gicr_writell(GICv3CPUState *cs, hwaddr offset,
-         cs->gicr_vpropbaser = value;
-         return MEMTX_OK;
-     case GICR_VPENDBASER:
--        cs->gicr_vpendbaser = value;
-+        gicr_write_vpendbaser(cs, value);
-         return MEMTX_OK;
-     default:
-         return MEMTX_ERROR;
+ }
+ 
+ static uint64_t icv_pmr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+@@ -615,7 +615,7 @@ static void icv_pmr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     cs->ich_vmcr_el2 = deposit64(cs->ich_vmcr_el2, ICH_VMCR_EL2_VPMR_SHIFT,
+                                  ICH_VMCR_EL2_VPMR_LENGTH, value);
+ 
+-    gicv3_cpuif_virt_update(cs);
++    gicv3_cpuif_virt_irq_fiq_update(cs);
+ }
+ 
+ static uint64_t icv_igrpen_read(CPUARMState *env, const ARMCPRegInfo *ri)
+@@ -682,7 +682,7 @@ static void icv_ctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     cs->ich_vmcr_el2 = deposit64(cs->ich_vmcr_el2, ICH_VMCR_EL2_VEOIM_SHIFT,
+                                  1, value & ICC_CTLR_EL1_EOIMODE ? 1 : 0);
+ 
+-    gicv3_cpuif_virt_update(cs);
++    gicv3_cpuif_virt_irq_fiq_update(cs);
+ }
+ 
+ static uint64_t icv_rpr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+@@ -2452,7 +2452,7 @@ static void ich_ap_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     trace_gicv3_ich_ap_write(ri->crm & 1, regno, gicv3_redist_affid(cs), value);
+ 
+     cs->ich_apr[grp][regno] = value & 0xFFFFFFFFU;
+-    gicv3_cpuif_virt_update(cs);
++    gicv3_cpuif_virt_irq_fiq_update(cs);
+ }
+ 
+ static uint64_t ich_hcr_read(CPUARMState *env, const ARMCPRegInfo *ri)
 -- 
 2.25.1
 

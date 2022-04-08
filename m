@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id n20-20020a05600c4f9400b0038cbd13e06esm10932021wmq.2.2022.04.08.09.47.43
+        by smtp.gmail.com with ESMTPSA id bg8-20020a05600c3c8800b0038e4c5967besm11003039wmb.3.2022.04.08.09.47.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Apr 2022 09:47:44 -0700 (PDT)
+        Fri, 08 Apr 2022 09:47:49 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D701B1FFB8;
-	Fri,  8 Apr 2022 17:47:42 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 37B641FFC3;
+	Fri,  8 Apr 2022 17:47:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: minyihh@uci.edu,
@@ -24,154 +24,66 @@ Cc: minyihh@uci.edu,
 	stefanha@redhat.com,
 	crosa@redhat.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:Virt)
-Subject: [PATCH  v1 01/15] tests/avocado: update aarch64_virt test to exercise -cpu max
-Date: Fri,  8 Apr 2022 17:47:28 +0100
-Message-Id: <20220408164742.2844631-2-alex.bennee@linaro.org>
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v1 12/15] tests/tcg: add memory-sve test for aarch64
+Date: Fri,  8 Apr 2022 17:47:39 +0100
+Message-Id: <20220408164742.2844631-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220408164742.2844631-1-alex.bennee@linaro.org>
 References: <20220408164742.2844631-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: DceqTzRNNc9h
+X-TUID: 5wBqGxwLh6RF
 
-The Fedora 29 kernel is quite old and importantly fails when running
-in LPA2 scenarios. As it's not really exercising much of the CPU space
-replace it with a custom 5.16.12 kernel with all the architecture
-options turned on. There is a minimal buildroot initramfs included in
-the kernel which has a few tools for stress testing the memory
-subsystem. The userspace also targets the Neoverse N1 processor so
-would fail with a v8.0 cpu like cortex-a53.
-
-While we are at it move the test into its own file so it can have an
-assigned maintainer.
+This will be helpful in debugging problems with tracking SVE memory
+accesses via the TCG plugins system.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Tested-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20220315121251.2280317-3-alex.bennee@linaro.org>
-
+Cc: Robert Henry <robhenry@microsoft.com>
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
 ---
-v2
-  - move test into own machine file
-v3
-  - minor reword of commit, added tags
----
- MAINTAINERS                           |  1 +
- tests/avocado/boot_linux_console.py   | 25 -------------
- tests/avocado/machine_aarch64_virt.py | 51 +++++++++++++++++++++++++++
- 3 files changed, 52 insertions(+), 25 deletions(-)
- create mode 100644 tests/avocado/machine_aarch64_virt.py
+ tests/tcg/aarch64/Makefile.softmmu-target | 7 +++++++
+ tests/tcg/aarch64/system/boot.S           | 3 ++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4ad2451e03..dcedfaed1f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -942,6 +942,7 @@ S: Maintained
- F: hw/arm/virt*
- F: include/hw/arm/virt.h
- F: docs/system/arm/virt.rst
-+F: tests/avocado/machine_aarch64_virt.py
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index a7286ac295..cc02814065 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -31,6 +31,13 @@ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
  
- Xilinx Zynq
- M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index b40a3abc81..45a2ceda22 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -325,31 +325,6 @@ def test_mips_malta32el_nanomips_64k_dbg(self):
-         kernel_hash = '18d1c68f2e23429e266ca39ba5349ccd0aeb7180'
-         self.do_test_mips_malta32el_nanomips(kernel_url, kernel_hash)
+ memory: CFLAGS+=-DCHECK_UNALIGNED=1
  
--    def test_aarch64_virt(self):
--        """
--        :avocado: tags=arch:aarch64
--        :avocado: tags=machine:virt
--        :avocado: tags=accel:tcg
--        :avocado: tags=cpu:cortex-a53
--        """
--        kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
--                      '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
--                      '/vmlinuz')
--        kernel_hash = '8c73e469fc6ea06a58dc83a628fc695b693b8493'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
--
--        self.vm.set_console()
--        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
--                               'console=ttyAMA0')
--        self.require_accelerator("tcg")
--        self.vm.add_args('-cpu', 'cortex-a53',
--                         '-accel', 'tcg',
--                         '-kernel', kernel_path,
--                         '-append', kernel_command_line)
--        self.vm.launch()
--        console_pattern = 'Kernel command line: %s' % kernel_command_line
--        self.wait_for_console_pattern(console_pattern)
--
-     def test_aarch64_xlnx_versal_virt(self):
-         """
-         :avocado: tags=arch:aarch64
-diff --git a/tests/avocado/machine_aarch64_virt.py b/tests/avocado/machine_aarch64_virt.py
-new file mode 100644
-index 0000000000..21848cba70
---- /dev/null
-+++ b/tests/avocado/machine_aarch64_virt.py
-@@ -0,0 +1,51 @@
-+# Functional test that boots a Linux kernel and checks the console
-+#
-+# Copyright (c) 2022 Linaro Ltd.
-+#
-+# Author:
-+#  Alex Bennée <alex.bennee@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
++memory-sve: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
 +
-+import time
++memory-sve: CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3 -fno-tree-loop-distribute-patterns
 +
-+from avocado_qemu import QemuSystemTest
-+from avocado_qemu import wait_for_console_pattern
-+from avocado_qemu import exec_command
++TESTS+=memory-sve
 +
-+class Aarch64VirtMachine(QemuSystemTest):
-+    KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
-+
-+    def wait_for_console_pattern(self, success_message, vm=None):
-+        wait_for_console_pattern(self, success_message,
-+                                 failure_message='Kernel panic - not syncing',
-+                                 vm=vm)
-+
-+    def test_aarch64_virt(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=machine:virt
-+        :avocado: tags=accel:tcg
-+        :avocado: tags=cpu:max
-+        """
-+        kernel_url = ('https://fileserver.linaro.org/s/'
-+                      'z6B2ARM7DQT3HWN/download')
-+
-+        kernel_hash = 'ed11daab50c151dde0e1e9c9cb8b2d9bd3215347'
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyAMA0')
-+        self.require_accelerator("tcg")
-+        self.vm.add_args('-cpu', 'max,pauth-impdef=on',
-+                         '-accel', 'tcg',
-+                         '-kernel', kernel_path,
-+                         '-append', kernel_command_line)
-+        self.vm.launch()
-+        self.wait_for_console_pattern('Welcome to Buildroot')
-+        time.sleep(0.1)
-+        exec_command(self, 'root')
-+        time.sleep(0.1)
-+        exec_command(self, 'cat /proc/self/maps')
-+        time.sleep(0.1)
+ # Running
+ QEMU_BASE_MACHINE=-M virt -cpu max -display none
+ QEMU_OPTS+=$(QEMU_BASE_MACHINE) -semihosting-config enable=on,target=native,chardev=output -kernel
+diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
+index e190b1efa6..f136363d2a 100644
+--- a/tests/tcg/aarch64/system/boot.S
++++ b/tests/tcg/aarch64/system/boot.S
+@@ -179,12 +179,13 @@ __start:
+ 	isb
+ 
+ 	/*
+-	 * Enable FP registers. The standard C pre-amble will be
++	 * Enable FP/SVE registers. The standard C pre-amble will be
+ 	 * saving these and A-profile compilers will use AdvSIMD
+ 	 * registers unless we tell it not to.
+ 	*/
+ 	mrs	x0, cpacr_el1
+ 	orr	x0, x0, #(3 << 20)
++	orr	x0, x0, #(3 << 16)
+ 	msr	cpacr_el1, x0
+ 
+ 	/* Setup some stack space and enter the test code.
 -- 
 2.30.2

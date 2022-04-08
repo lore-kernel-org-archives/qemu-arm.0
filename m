@@ -1,112 +1,112 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp392450lfq;
-        Fri, 8 Apr 2022 07:26:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOd8LWmtwymBWJDWXxatf8FEZC2LMyrqUkBufrxbrc8mmesp0D3Ba53hA37zn4+stRItzE
-X-Received: by 2002:a81:8b47:0:b0:2e6:57ba:5f84 with SMTP id e7-20020a818b47000000b002e657ba5f84mr16722766ywk.285.1649428014918;
-        Fri, 08 Apr 2022 07:26:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649428014; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp392564lfq;
+        Fri, 8 Apr 2022 07:27:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwGguWq0j6Qoq7HOFXWptwGZ0kdHloEqku/nblANfyaM9TZpYEorf78FnZaveX0YFyQLoO8
+X-Received: by 2002:a0d:db01:0:b0:2eb:6353:d42f with SMTP id d1-20020a0ddb01000000b002eb6353d42fmr15800383ywe.153.1649428028253;
+        Fri, 08 Apr 2022 07:27:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649428028; cv=none;
         d=google.com; s=arc-20160816;
-        b=rvJ8DTsnG1sNZVvxmhXdq1pU6SRMHb+Wi/hYQvU5VJCHhU1zTFPPyQcWI2MPdGPoZb
-         6FU+r1nInfQHT9gfXvE3XtSJ72wZprZRpY8EoIPvD5Qeuis4UssO7cPVe/j9emKlYhDJ
-         Al6lMQTDWPQxJi5pEu+0vJJm3tMU1YDWZgw+zmXyNGrFEyJ7UR9+xnAQTNvbGFxOC7ek
-         0wD8CC+2gD6gmTec/xjCAzeOCQxCojmDkTddi5cCpnD3//del5qFFHedR6rQAeUK3Iek
-         XjvdmttbWLvpYIxnaPeNiqJ+zzGhQTsFqOMICpqOq+kbykHkurs0NwChOLtAW8tJ5ngf
-         3g6A==
+        b=ndEx4ScWBL1cO/zO/WUSZWnAXR+fJ67HFRQnlafZpmbpN4FYhjCBilSjqPaYU11Hbc
+         VHgg8fMKCCe3gHSFnpIFDllQr/8WvB8eXCyUaLaCmhY4PvLu/RYaXsBt1ERn2hRHyVoR
+         pK3sTSuP64cG1j4pMCWtqd2EECLPZ+o92szxgsDACZqEUP0Jq5TWDjC0o+hMf3tkUxQO
+         73FrdIpV5Kj7NbAc2zBHp747ugQlZ6o/Bujv6HvcqIGDWCVc5CeBn8UVzkThJ0fmDghE
+         BqeVpmv6UXux7QVIpvhAwMWiXbsfoFvraU0yMuhR3NyuS3GG/ecOZNE1LLhjz5CT8Q1w
+         XSRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=r5Os54AuqgX8iDZbxzhpLBt252Rh5bhRamIuRASjQ/I=;
-        b=qaMR03y9JgA7u+tfcVhQ4D45wYLEwP3LowE/I7Mnq3jgQ4KPsc5sZHBpXvj2ZFtKeU
-         lz1X1xdPbxd7CPmaSmsfp1jO4HPiLa20LilgQDIf68r2WoM2aOAIGo7IFU7NfOBtoF8X
-         qOBGGnJigayowOQuWY/qupO3P7qE2nd7XDvi9ozg9yfs8g81H3J+08G4lYAnDMeZ0HN7
-         nkFfyzQXKuTHiJx+3hMSOiRo9F75POYLVby0AMvbOZS0QkQaJb0EGw2jQ50saxudei06
-         AR5fBia8GQNKXUGj6fGK2vfiQPJgln+MsqQylVDwgRd1VIdHNY+E/Kxu6dKbKItNGgi7
-         mJSQ==
+        bh=esnamstNUY5Extqaiji5nDXYBcEE+qdCRY7G8wLUhCQ=;
+        b=UaDBoA9knRt9ihXcGNeuPwDAu6N+p3j58z3s6nKVWdpPn4F3C/TzrF1VTm5E/pFxp2
+         8U48rk5qUKgObPUIfpbHBKNyB2R1uFa1yorfhyv7mVGOTZ+dHpSUI9Y/NlS6oMJNiv5Z
+         sD2GW7e0CQOH2/OSMBvxtWXs0o83HjVMfdXLvhfcBUwR7ZqH5u6fmDOmAqD0AMFVMr8I
+         M8/e7uL8LJyH9pR7kMo5S9jmVPIOAi2RZF98c7VapYM/SZlyVivc19CKBlITOIVli1NX
+         99v1WHjqI7FAwAeYgI8eaR/CDuTo4yAXaOxaGbCjadXa3zL4iyGnv1yKeqmvWYVgDLcY
+         513A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u0pwI84h;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cE7TD4Tg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h131-20020a25d089000000b0063d4010a563si616414ybg.293.2022.04.08.07.26.54
+        by mx.google.com with ESMTPS id 62-20020a250241000000b0063463c527e1si519542ybc.621.2022.04.08.07.27.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Apr 2022 07:26:54 -0700 (PDT)
+        Fri, 08 Apr 2022 07:27:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u0pwI84h;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cE7TD4Tg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38506 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39750 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncpZe-0002nG-9o
-	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:26:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42346)
+	id 1ncpZr-0003aX-JR
+	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:27:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42270)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPH-0006uo-OB
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:14 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:47033)
+ id 1ncpPF-0006uf-TT
+ for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:12 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:37431)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPE-0002IN-EN
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:11 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id v2so2198056wrv.13
+ id 1ncpPD-0002Hx-Gn
+ for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:09 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id z1so13075692wrg.4
  for <qemu-arm@nongnu.org>; Fri, 08 Apr 2022 07:16:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=r5Os54AuqgX8iDZbxzhpLBt252Rh5bhRamIuRASjQ/I=;
- b=u0pwI84h5LdjzBMtFxtxJl2XvicZmPyQWFL6Z4zNkTh3xoIos6Twh7w36lumyWyD/Y
- 43oh+TzuNjdhp/6HutL7XMttMxItGoyr1qt1mgle0+jiZ+eo6I7iiKo97xvvcwcjI778
- 2HtPZ8Ig0tDQlQHmUBSHOBCUkcj7Hpz/XFT9YHW9MJ4uPivuxrzfPLSdIc87IVnKtt/S
- PKhPA4qGn5eA3SOyLfl/MUv+RDw4o6YMyqRMUkbphKtuCSvHXFiwpYdFRI/JDq1G7Bds
- Ih0F08UGhXZZWdGuXsmXMJf18Lnjt8/xSgl6m5ZtsafuZkvNcDyYUXRrHPO7VJiQQbqx
- r3Gw==
+ bh=esnamstNUY5Extqaiji5nDXYBcEE+qdCRY7G8wLUhCQ=;
+ b=cE7TD4TgBdDNlSrCRxgZyzLAZv6DxQOufL3RDatiNUx1h4ab/qvdieAEOItz8jR3Hb
+ j8o/+Mt/PN+WaBS8vzBSRJj96lHlsnrghtdDuMHOOhQ5rFv9nwHsENB09BD0nAVpCCxD
+ 5cgEGS3b/O63nlCHBPjF/j0paz8Z280NLhf9XEE9RAWIRXSlcsIGZn503zqnUXr5Utjw
+ lrTNZoaVn8E+N2bBfp3xhIu6X4ZHfMxsXsihpY/5cuDdj4AB05YGLw7zCvw4kdloOyjX
+ Jdh5h/M5WAJ/62r/Kwwl/cbiWczBSy+y6cXELKOOHGNQxDSng7OTX5tt/TX2L2DhEaWj
+ viWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=r5Os54AuqgX8iDZbxzhpLBt252Rh5bhRamIuRASjQ/I=;
- b=ZsmXEQbzaF+amVomH3EGiJxB4sjRqAWk24gXD1QdF4cLVoMxEcC6ZAPtgV+yCU9joS
- 3XJlC3YsMw5GimRQ0YkVZk8m6KRJ1zUc3oElv//oMl+Jz+U1Tfz++3ItbCBdaojUcF31
- dOZWQR63zt/QmwqSn+5XjJO7V3gn1dsbrwQeOVfm6gPC8PdMC8IowDYnJJmJHL3u7k97
- wpqNt97ruIAaIyc0r/3xWVBeRKmI1+hf+DCexscLyQYpGFyjdd7tTa/W2OdmqbFgYbov
- d3/3JUCeFZWLVdjWB+ENuZOT0Z7fhcgf6m74QbAITapEspycTl9hH02RhxupL4eHoo5o
- fMhg==
-X-Gm-Message-State: AOAM532Aspa/rKAg996zfM07Qpf59p+x4GszPzV+2ue4fmavrs28BecF
- C1vd9yq8HWTplYOFE5MFCzJ193zSk/2Ksg==
-X-Received: by 2002:adf:f212:0:b0:206:35e:8711 with SMTP id
- p18-20020adff212000000b00206035e8711mr14745049wro.78.1649427366983; 
+ bh=esnamstNUY5Extqaiji5nDXYBcEE+qdCRY7G8wLUhCQ=;
+ b=xmm99lgJpUitZ7MZmQ6hLEDRlBtJZWGo6cRsyFq1pMG3OUczlhgGNcak1mx3YFTRv8
+ 71r/bKqJgPFlBlQMN7o7TqYlclRRyPpy161+dnEtdMiR9NXGQgC7j77iOPb3sln713NT
+ Hq1E5SV5b1su7O7jYVj7p+5HT8912S4USCEkwPhb8790X+9boBVbnSSxFRAbp5HXWucE
+ 6vo7OzN+2/93LOd++rnfHhiZWtIjJSxe3aCrJ0r1DFZt6Xup82KNHUjtU0sR7vPaPS8N
+ NOZ7s2nLvxXOOfGXnwV55UZZoA97GeRqSsQWVaECLcVUh7OeOeDW4/druUQgWxAkAxkz
+ fjFw==
+X-Gm-Message-State: AOAM533HY+yZ5k+tgePiQjFr6Q4CmeVojXlFtNnjpP8k26Kw8vycInTJ
+ PO118Bw+Bbqc1kP/48v57OrDo2h3jAHkmg==
+X-Received: by 2002:a5d:6c67:0:b0:204:ff0:87a8 with SMTP id
+ r7-20020a5d6c67000000b002040ff087a8mr15158165wrz.627.1649427366091; 
  Fri, 08 Apr 2022 07:16:06 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.06
+ i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Apr 2022 07:16:06 -0700 (PDT)
+ Fri, 08 Apr 2022 07:16:05 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 14/41] hw/intc/arm_gicv3_its: Handle virtual interrupts in
- process_its_cmd()
-Date: Fri,  8 Apr 2022 15:15:23 +0100
-Message-Id: <20220408141550.1271295-15-peter.maydell@linaro.org>
+Subject: [PATCH 13/41] hw/intc/arm_gicv3_its: Split out process_its_cmd()
+ physical interrupt code
+Date: Fri,  8 Apr 2022 15:15:22 +0100
+Message-Id: <20220408141550.1271295-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408141550.1271295-1-peter.maydell@linaro.org>
 References: <20220408141550.1271295-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,219 +122,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Marc Zyngier <maz@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WNt3m9orYJmo
+X-TUID: zkL6/Q31T8L0
 
-For GICv4, interrupt table entries read by process_its_cmd() may
-indicate virtual LPIs which are to be directly injected into a VM.
-Implement the ITS side of the code for handling this.  This is
-similar to the existing handling of physical LPIs, but instead of
-looking up a collection ID in a collection table, we look up a vPEID
-in a vPE table.  As with the physical LPIs, we leave the rest of the
-work to code in the redistributor device.
+Split the part of process_its_cmd() which is specific to physical
+interrupts into its own function.  This is the part which starts by
+taking the ICID and looking it up in the collection table.  The
+handling of virtual interrupts is significantly different (involving
+a lookup in the vPE table) so structuring the code with one
+sub-function for the physical interrupt case and one for the virtual
+interrupt case will be clearer than putting both cases in one large
+function.
 
-The redistributor half will be implemented in a later commit;
-for now we just provide a stub function which does nothing.
+The code for handling the "remove mapping from ITE" for the DISCARD
+command remains in process_its_cmd() because it is common to both
+virtual and physical interrupts.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/gicv3_internal.h   | 17 +++++++
- hw/intc/arm_gicv3_its.c    | 99 +++++++++++++++++++++++++++++++++++++-
- hw/intc/arm_gicv3_redist.c |  9 ++++
- hw/intc/trace-events       |  2 +
- 4 files changed, 125 insertions(+), 2 deletions(-)
+ hw/intc/arm_gicv3_its.c | 51 ++++++++++++++++++++++++++---------------
+ 1 file changed, 33 insertions(+), 18 deletions(-)
 
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index bbb8a20ce61..6e22c8072e9 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -527,6 +527,23 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
- void gicv3_dist_set_irq(GICv3State *s, int irq, int level);
- void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level);
- void gicv3_redist_process_lpi(GICv3CPUState *cs, int irq, int level);
-+/**
-+ * gicv3_redist_process_vlpi:
-+ * @cs: GICv3CPUState
-+ * @irq: (virtual) interrupt number
-+ * @vptaddr: (guest) address of VLPI table
-+ * @doorbell: doorbell (physical) interrupt number (1023 for "no doorbell")
-+ * @level: level to set @irq to
-+ *
-+ * Process a virtual LPI being directly injected by the ITS. This function
-+ * will update the VLPI table specified by @vptaddr and @vptsize. If the
-+ * vCPU corresponding to that VLPI table is currently running on
-+ * the CPU associated with this redistributor, directly inject the VLPI
-+ * @irq. If the vCPU is not running on this CPU, raise the doorbell
-+ * interrupt instead.
-+ */
-+void gicv3_redist_process_vlpi(GICv3CPUState *cs, int irq, uint64_t vptaddr,
-+                               int doorbell, int level);
- void gicv3_redist_lpi_pending(GICv3CPUState *cs, int irq, int level);
- /**
-  * gicv3_redist_update_lpi:
 diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index 8ea1fc366d3..21bc1a6c18b 100644
+index 2cbac76256d..8ea1fc366d3 100644
 --- a/hw/intc/arm_gicv3_its.c
 +++ b/hw/intc/arm_gicv3_its.c
-@@ -314,6 +314,42 @@ out:
-     return res;
- }
- 
-+/*
-+ * Read the vPE Table entry at index @vpeid. On success (including
-+ * successfully determining that there is no valid entry for this index),
-+ * we return MEMTX_OK and populate the VTEntry struct accordingly.
-+ * If there is an error reading memory then we return the error code.
-+ */
-+static MemTxResult get_vte(GICv3ITSState *s, uint32_t vpeid, VTEntry *vte)
-+{
-+    MemTxResult res = MEMTX_OK;
-+    AddressSpace *as = &s->gicv3->dma_as;
-+    uint64_t entry_addr = table_entry_addr(s, &s->vpet, vpeid, &res);
-+    uint64_t vteval;
-+
-+    if (entry_addr == -1) {
-+        /* No L2 table entry, i.e. no valid VTE, or a memory error */
-+        vte->valid = false;
-+        goto out;
-+    }
-+    vteval = address_space_ldq_le(as, entry_addr, MEMTXATTRS_UNSPECIFIED, &res);
-+    if (res != MEMTX_OK) {
-+        goto out;
-+    }
-+    vte->valid = FIELD_EX64(vteval, VTE, VALID);
-+    vte->vptsize = FIELD_EX64(vteval, VTE, VPTSIZE);
-+    vte->vptaddr = FIELD_EX64(vteval, VTE, VPTADDR);
-+    vte->rdbase = FIELD_EX64(vteval, VTE, RDBASE);
-+out:
-+    if (res != MEMTX_OK) {
-+        trace_gicv3_its_vte_read_fault(vpeid);
-+    } else {
-+        trace_gicv3_its_vte_read(vpeid, vte->valid, vte->vptsize,
-+                                 vte->vptaddr, vte->rdbase);
-+    }
-+    return res;
-+}
-+
- /*
-  * Given a (DeviceID, EventID), look up the corresponding ITE, including
-  * checking for the various invalid-value cases. If we find a valid ITE,
-@@ -397,6 +433,38 @@ static ItsCmdResult lookup_cte(GICv3ITSState *s, const char *who,
+@@ -397,6 +397,19 @@ static ItsCmdResult lookup_cte(GICv3ITSState *s, const char *who,
      return CMD_CONTINUE_OK;
  }
  
-+/*
-+ * Given a VPEID, look up the corresponding VTE, including checking
-+ * for various invalid-value cases. if we find a valid VTE, fill in @vte
-+ * and return CMD_CONTINUE_OK; otherwise return CMD_STALL or CMD_CONTINUE
-+ * (and the contents of @vte should not be relied on).
-+ *
-+ * The string @who is purely for the LOG_GUEST_ERROR messages,
-+ * and should indicate the name of the calling function or similar.
-+ */
-+static ItsCmdResult lookup_vte(GICv3ITSState *s, const char *who,
-+                               uint32_t vpeid, VTEntry *vte)
-+{
-+    if (vpeid >= s->vpet.num_entries) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid VPEID 0x%x\n", who, vpeid);
-+        return CMD_CONTINUE;
-+    }
-+
-+    if (get_vte(s, vpeid, vte) != MEMTX_OK) {
-+        return CMD_STALL;
-+    }
-+    if (!vte->valid) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid VTE for VPEID 0x%x\n", who, vpeid);
-+        return CMD_CONTINUE;
-+    }
-+
-+    if (vte->rdbase >= s->gicv3->num_cpu) {
-+        return CMD_CONTINUE;
-+    }
-+    return CMD_CONTINUE_OK;
-+}
-+
- static ItsCmdResult process_its_cmd_phys(GICv3ITSState *s, const ITEntry *ite,
-                                          int irqlevel)
- {
-@@ -411,6 +479,33 @@ static ItsCmdResult process_its_cmd_phys(GICv3ITSState *s, const ITEntry *ite,
-     return CMD_CONTINUE_OK;
- }
- 
-+static ItsCmdResult process_its_cmd_virt(GICv3ITSState *s, const ITEntry *ite,
++static ItsCmdResult process_its_cmd_phys(GICv3ITSState *s, const ITEntry *ite,
 +                                         int irqlevel)
 +{
-+    VTEntry vte;
++    CTEntry cte;
 +    ItsCmdResult cmdres;
 +
-+    cmdres = lookup_vte(s, __func__, ite->vpeid, &vte);
++    cmdres = lookup_cte(s, __func__, ite->icid, &cte);
 +    if (cmdres != CMD_CONTINUE_OK) {
 +        return cmdres;
 +    }
-+
-+    if (!intid_in_lpi_range(ite->intid) ||
-+        ite->intid >= (1ULL << (vte.vptsize + 1))) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: intid 0x%x out of range\n",
-+                      __func__, ite->intid);
-+        return CMD_CONTINUE;
-+    }
-+
-+    /*
-+     * For QEMU the actual pending of the vLPI is handled in the
-+     * redistributor code
-+     */
-+    gicv3_redist_process_vlpi(&s->gicv3->cpu[vte.rdbase], ite->intid,
-+                              vte.vptaddr << 16, ite->doorbell, irqlevel);
++    gicv3_redist_process_lpi(&s->gicv3->cpu[cte.rdbase], ite->intid, irqlevel);
 +    return CMD_CONTINUE_OK;
 +}
-+
+ 
  /*
   * This function handles the processing of following commands based on
-  * the ItsCmdType parameter passed:-
-@@ -446,8 +541,8 @@ static ItsCmdResult do_process_its_cmd(GICv3ITSState *s, uint32_t devid,
-                           __func__, ite.inttype);
-             return CMD_CONTINUE;
-         }
--        /* The GICv4 virtual interrupt handling will go here */
--        g_assert_not_reached();
-+        cmdres = process_its_cmd_virt(s, &ite, irqlevel);
-+        break;
-     default:
-         g_assert_not_reached();
-     }
-diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-index dc9729e8395..b08b599c887 100644
---- a/hw/intc/arm_gicv3_redist.c
-+++ b/hw/intc/arm_gicv3_redist.c
-@@ -788,6 +788,15 @@ void gicv3_redist_movall_lpis(GICv3CPUState *src, GICv3CPUState *dest)
-     gicv3_redist_update_lpi(dest);
- }
- 
-+void gicv3_redist_process_vlpi(GICv3CPUState *cs, int irq, uint64_t vptaddr,
-+                               int doorbell, int level)
-+{
-+    /*
-+     * The redistributor handling for being handed a VLPI by the ITS
-+     * will be added in a subsequent commit.
-+     */
-+}
-+
- void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level)
+@@ -410,34 +423,36 @@ static ItsCmdResult do_process_its_cmd(GICv3ITSState *s, uint32_t devid,
+                                        uint32_t eventid, ItsCmdType cmd)
  {
-     /* Update redistributor state for a change in an external PPI input line */
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 2fcc9e40e55..d529914eca2 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -200,6 +200,8 @@ gicv3_its_ite_write(uint64_t ittaddr, uint32_t eventid, int valid, int inttype,
- gicv3_its_dte_read(uint32_t devid, int valid, uint32_t size, uint64_t ittaddr) "GICv3 ITS: Device Table read for DeviceID 0x%x: valid %d size 0x%x ITTaddr 0x%" PRIx64
- gicv3_its_dte_write(uint32_t devid, int valid, uint32_t size, uint64_t ittaddr) "GICv3 ITS: Device Table write for DeviceID 0x%x: valid %d size 0x%x ITTaddr 0x%" PRIx64
- gicv3_its_dte_read_fault(uint32_t devid) "GICv3 ITS: Device Table read for DeviceID 0x%x: faulted"
-+gicv3_its_vte_read(uint32_t vpeid, int valid, uint32_t vptsize, uint64_t vptaddr, uint32_t rdbase) "GICv3 ITS: vPE Table read for vPEID 0x%x: valid %d VPTsize 0x%x VPTaddr 0x%" PRIx64 " RDbase 0x%x"
-+gicv3_its_vte_read_fault(uint32_t vpeid) "GICv3 ITS: vPE Table read for vPEID 0x%x: faulted"
- gicv3_its_vte_write(uint32_t vpeid, int valid, uint32_t vptsize, uint64_t vptaddr, uint32_t rdbase) "GICv3 ITS: vPE Table write for vPEID 0x%x: valid %d VPTsize 0x%x VPTaddr 0x%" PRIx64 " RDbase 0x%x"
+     DTEntry dte;
+-    CTEntry cte;
+     ITEntry ite;
+     ItsCmdResult cmdres;
++    int irqlevel;
  
- # armv7m_nvic.c
+     cmdres = lookup_ite(s, __func__, devid, eventid, &ite, &dte);
+     if (cmdres != CMD_CONTINUE_OK) {
+         return cmdres;
+     }
+ 
+-    if (ite.inttype != ITE_INTTYPE_PHYSICAL) {
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: invalid command attributes: invalid ITE\n",
+-                      __func__);
+-        return CMD_CONTINUE;
++    irqlevel = (cmd == CLEAR || cmd == DISCARD) ? 0 : 1;
++
++    switch (ite.inttype) {
++    case ITE_INTTYPE_PHYSICAL:
++        cmdres = process_its_cmd_phys(s, &ite, irqlevel);
++        break;
++    case ITE_INTTYPE_VIRTUAL:
++        if (!its_feature_virtual(s)) {
++            /* Can't happen unless guest is illegally writing to table memory */
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: invalid type %d in ITE (table corrupted?)\n",
++                          __func__, ite.inttype);
++            return CMD_CONTINUE;
++        }
++        /* The GICv4 virtual interrupt handling will go here */
++        g_assert_not_reached();
++    default:
++        g_assert_not_reached();
+     }
+ 
+-    cmdres = lookup_cte(s, __func__, ite.icid, &cte);
+-    if (cmdres != CMD_CONTINUE_OK) {
+-        return cmdres;
+-    }
+-
+-    if ((cmd == CLEAR) || (cmd == DISCARD)) {
+-        gicv3_redist_process_lpi(&s->gicv3->cpu[cte.rdbase], ite.intid, 0);
+-    } else {
+-        gicv3_redist_process_lpi(&s->gicv3->cpu[cte.rdbase], ite.intid, 1);
+-    }
+-
+-    if (cmd == DISCARD) {
++    if (cmdres == CMD_CONTINUE_OK && cmd == DISCARD) {
+         ITEntry ite = {};
+         /* remove mapping from interrupt translation table */
+         ite.valid = false;
 -- 
 2.25.1
 

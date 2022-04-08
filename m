@@ -1,104 +1,106 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp386290lfq;
-        Fri, 8 Apr 2022 07:16:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxRqK/7UQAf/nu5cKnF4kjiImj33IAQLmfEmVHjEV2FKO/F9evdnVVHENH11AQu6vO0jQxx
-X-Received: by 2002:a5b:982:0:b0:63e:7d7e:e2f2 with SMTP id c2-20020a5b0982000000b0063e7d7ee2f2mr3989245ybq.549.1649427398086;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp386303lfq;
+        Fri, 8 Apr 2022 07:16:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyvNbbfW0ZuW1NyvqQ3DvXSisPZ3XvSEEfO+aSlKwVatNWGVRb4UdYtkNSanzy79jIVThj4
+X-Received: by 2002:a81:2fd1:0:b0:2e5:d8d8:f60 with SMTP id v200-20020a812fd1000000b002e5d8d80f60mr16036714ywv.164.1649427398819;
         Fri, 08 Apr 2022 07:16:38 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1649427398; cv=none;
         d=google.com; s=arc-20160816;
-        b=d8NIG22FjSh2GeA68KcufRHCh/6rr0/SMmKsSzdA2SEW8GPC4SbmymgLjOuhUfOo1u
-         2nFOZ5Zq3qeWS0wt7IRXpDpCeKfvzBydYCvv/lWw93RCapvVHIAEsSk49hS/GEX5KLt9
-         akIlRMzywuDqm505atCrjUJHSN4J088HG4Lf71WNqdKXFFQ17U+UMfso1hgOdsN8g6zS
-         e8/gmZ4nrz2KnNk9GHPVpLuv2dd9jmvHHczCbXYamoeLXDe1QM0FmJpj1nD2Swv/WynD
-         9bfGzFgbVFfNVI07gKCtKZgWD1/vc5NP36nfj7eQWsrkESm349x09vcmY49fUO/PSY1v
-         n8og==
+        b=DUixQONiUhWD/Lx4k4EHRkoFSiHZyhJreyqb+eTHl0nvHqf2BcZQxpJwRj6JcJjTIJ
+         BC5js+uC91/zzjuYkCxukQ/ZeLrg7AA8UuabxuPxZn9+zB3jDP2ZqoLvrLSPLyAPd/Zt
+         RjwZrLGn1CFnwXi0dmRZa1a2QGjd6YaTcJHLqdFD0hF3tM/gxlZB6ClPH3kw10q2Lfls
+         Vs1caspvq8O8Kct2B4NkRcrG6TOITzW4MNjoWlStFXJABQIT/xJrKebS2txE7GQjUlr2
+         GadefPaEKrJdW0f8iXz49m4TSgvBXWInmPk4e64o4BsgsCs4Z7jNtk4prrchrISJZI0I
+         tRxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=aUGTtcuyRkJLND+YR/BochtoXe47TvFlIFGMevyBOhE=;
-        b=DnpSB5m+oPBbtu9s8vTAOeozoscw4a8521bS2PZyec48kyHTiDgik7GMTMToKmI+sX
-         k8FdTgZobWZNNECGs9zqf2QLxOuYxpq7bWFgV1FEwOXhoJyQIXhkkrsdDzfr8dTluZf6
-         QD4EUb05A2xNC2OVOz7hjnxsvQDW/mostH0LQ0wMLG+CVZJr8RMkCmFOAi0XnAA793bD
-         4EFVGzvEn4FgQfXAfxtFnKWu4GwqUFhtDQ+YuwQ49Rb05JLiZ5VvIYaaREspDmkmkLg/
-         kiViQfSfYrEtUtTGEruuAujerjs8s11UP+rAaTB6Vksau2+J0mhLUKtkVZM0auMFYCb6
-         jhHg==
+        bh=nWU/XAW1dTVCsMubCYBZ/twfuj48VjZonfG2m35ljcs=;
+        b=ZFNfCEBj2U3WOU8j8HONFwAuxCTxefrTie/d4zB25Wbc/MGW7cxCZ9k3Jmugb1jKWO
+         pvy8MhiWrjQIcy7/BEzAeWzU2RaFObMwVPg0+RgHOFFAJtqjH8/ilabmkNm5/ZuV7JM7
+         EwNYe8c1UOkzWpcNLFB+AHCOKTXb1QcMpmYJ4vUqBxcQ8CKdmM/Own+gt/pEKLPov/gk
+         ndihEZGoRDt74dL5zWDWH9Syg/1yDOWg3TbW64V2i33GWXo/fvo09HRkQ6qh4Pcvb7oV
+         soniygT61zT0wX2IM+Ilg3KrBLugTPogUltXrrI9Fv/DhzSA19dx6bsr5iP9vPaVpT4w
+         9XyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=humxBtPO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AiFsdbvx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 185-20020a250dc2000000b006411916d480si249334ybn.476.2022.04.08.07.16.37
+        by mx.google.com with ESMTPS id b187-20020a251bc4000000b0063399404403si499120ybb.109.2022.04.08.07.16.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 08 Apr 2022 07:16:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=humxBtPO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AiFsdbvx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35350 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35370 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncpPh-0006k9-GI
-	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:16:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41904)
+	id 1ncpPi-0006lY-53
+	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:16:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41954)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpP8-0006hg-6h
+ id 1ncpP8-0006iY-UJ
  for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:04 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:40563)
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:43745)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpP4-0002EE-WA
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:01 -0400
-Received: by mail-wr1-x429.google.com with SMTP id d3so13057871wrb.7
- for <qemu-arm@nongnu.org>; Fri, 08 Apr 2022 07:15:57 -0700 (PDT)
+ id 1ncpP5-0002EN-0M
+ for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:02 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ m67-20020a1ca346000000b0038e6a1b218aso5655182wme.2
+ for <qemu-arm@nongnu.org>; Fri, 08 Apr 2022 07:15:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=aUGTtcuyRkJLND+YR/BochtoXe47TvFlIFGMevyBOhE=;
- b=humxBtPOkxRfVI2XnjAympOGejUjQ2XBP83Bqf6fYQConEhVJZA+MaUZrB5j0pBJN8
- 6iqQR0adle8w3e9EiOrevvunmyYrsdoU3Rh0SMZhxEcANW0yJNePGqOS9GLR/6QuIgIp
- LOUlczbjXu6+aE+6WsuAVhznfutBDwmDc2bhEEdemrle7oF2iq+o4NJzW+l1FC+NzpKe
- r0BUgasV0A3xbJ4KMzaFKpQYuOV0Ma40iwq5+sfiGm64sf5eknBDbO4kegGPYMN4QFL7
- MfVV8vnZ8BdDIdTqUXRc1TNy0kWE5Gh00ClLoLqMB72y5rpcQWiievo82T8mcVfpiRb5
- afaA==
+ bh=nWU/XAW1dTVCsMubCYBZ/twfuj48VjZonfG2m35ljcs=;
+ b=AiFsdbvxZalYIWUBWmsVBmx4bqOzpcGd0CzWmVo7CKRHVQHyDnm4aeFndBGRLsPVLm
+ H5ojcFxl+tIlqse/I4rxLtcqPjwYNPSpAD6XX3xJoaXx0unegPUUSYYDJ80F2GTazRSs
+ V+g0YVnjRej4tQ/pjDoo8FZIlFhhk4TMTQYWlgTsfFKHyCFy2TA5qz3L16hTcQaznB8A
+ mJhRCtDYfO8DFM0bflDxOrshiDuwhZqXLMgjtW27PtrNwIX/G+t5btQmaGUqg0efIN1B
+ cazonjUu0PgNZrbo8QV/tMuuPosIlMJ5NZH4g9U+gu1nn8vFeVJWqcIXS43Jn3TXqJyN
+ ajwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=aUGTtcuyRkJLND+YR/BochtoXe47TvFlIFGMevyBOhE=;
- b=M/QOlAuea7h+OXuFdr9XLgGI7EL263KCV+NIizXP9evdNP26z/iwrS6LwHMZCopvY7
- kae3MD7QD2E+Iwo/b+Xsiolmj6/FQb5Z4cI6sxCu8U3aYBj30m9EB+aukbgrkitrXrEX
- UgakT4LqGgUnkpHGqLUmOd+JlG5Shw5NeUJYYz/IIPonlDc48IXKI75BMgKmMQTJBtHX
- q6lo9CbbfcEmFuln+6HisLpb9D9QpcifYVpL/IArSQ5aQuFdpch3GjF4K1BtVXYqBiaw
- 58PxlkAMS7k5TJOjbLEbgMd/IAA7GfWsW0uffsqMlI7BE8sMJRxJISRnuok67ptIcz4U
- OHIw==
-X-Gm-Message-State: AOAM532vtT8TWdfaMoRPvsFElMZ8FEr5bgPXg6Cl49FjdnsovtzW9edh
- gHSvitMcajaGLlMu2C+WLEzKFiyDAklEWg==
-X-Received: by 2002:adf:eb07:0:b0:207:8534:2ef6 with SMTP id
- s7-20020adfeb07000000b0020785342ef6mr7114524wrn.62.1649427356616; 
- Fri, 08 Apr 2022 07:15:56 -0700 (PDT)
+ bh=nWU/XAW1dTVCsMubCYBZ/twfuj48VjZonfG2m35ljcs=;
+ b=Z+UDOyBHPNrTqKieLVoFfKaH/BjCYJeIXJbWyqHSLDR6GqgT5u0PND4wSkEN9Og7EK
+ lOsSXGUEtZWz+IKbShXFLSh4GmDmabYuVKVFsKJoEFMaZ7fQuOc0Q2xIPGlIPyBemS4y
+ 4t76N4Ubb107Xci7fI26OiWAzEQXTHRgcbg5Xtbff/AIzyIEJuAsOi4n/Uawt3/iQJ6J
+ DX7FVGfk10vLlT2LwetgedkXYWMF8KEkH81YlGO1+alVMQWVB5y7sOcB5T/ooqSOPdRg
+ /vsbVhLyX4YaIEkd82Pb4PCEo6zOWuOkrDMUQocJ2JW39dYRTHDw5C1jsyhZCiIlXn2E
+ 8Qww==
+X-Gm-Message-State: AOAM5329E+rIXZKdsv5pNwXajTCSI08BOn7ptmHWSTjpDq0oHpK0nOK4
+ 21/oYXpzkc8HH9A+XrPlvUM/e4WBRObgdg==
+X-Received: by 2002:a7b:cb85:0:b0:38e:979a:3b94 with SMTP id
+ m5-20020a7bcb85000000b0038e979a3b94mr7074845wmi.19.1649427357387; 
+ Fri, 08 Apr 2022 07:15:57 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.15.55
+ i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.15.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Apr 2022 07:15:56 -0700 (PDT)
+ Fri, 08 Apr 2022 07:15:57 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 02/41] hw/intc/arm_gicv3: Sanity-check num-cpu property
-Date: Fri,  8 Apr 2022 15:15:11 +0100
-Message-Id: <20220408141550.1271295-3-peter.maydell@linaro.org>
+Subject: [PATCH 03/41] hw/intc/arm_gicv3: Insist that redist region capacity
+ matches CPU count
+Date: Fri,  8 Apr 2022 15:15:12 +0100
+Message-Id: <20220408141550.1271295-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408141550.1271295-1-peter.maydell@linaro.org>
 References: <20220408141550.1271295-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,36 +123,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Marc Zyngier <maz@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nSMzs1+aqHxU
+X-TUID: ET2eLhH3ovpF
 
-In the GICv3 code we implicitly rely on there being at least one CPU
-and thus at least one redistributor and CPU interface.  Sanity-check
-that the property the board code sets is not zero.
+Boards using the GICv3 need to configure it with both the total
+number of CPUs and also the sizes of all the memory regions which
+contain redistributors (one redistributor per CPU).  At the moment
+the GICv3 checks that the number of CPUs specified is not too many to
+fit in the defined redistributor regions, but in fact the code
+assumes that the two match exactly.  For instance when we set the
+GICR_TYPER.Last bit on the final redistributor in each region, we
+assume that we don't need to consider the possibility of a region
+being only half full of redistributors or even completely empty.  We
+also assume in gicv3_redist_read() and gicv3_redist_write() that we
+can calculate the CPU index from the offset within the MemoryRegion
+and that this will always be in range.
+
+Fortunately all the board code sets the redistributor region sizes to
+exactly match the CPU count, so this isn't a visible bug.  We could
+in theory make the GIC code handle non-full redistributor regions, or
+have it automatically reduce the provided region sizes to match the
+CPU count, but the simplest thing is just to strengthen the error
+check and insist that the CPU count and redistributor region size
+settings match exactly, since all the board code does that anyway.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-Doing this would be a board code error, but we might as well
-get a clean diagnostic for it and not have to think about
-num_cpu == 0 as a special case later.
----
- hw/intc/arm_gicv3_common.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/intc/arm_gicv3_common.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 4ca5ae9bc56..90204be25b6 100644
+index 90204be25b6..c797c82786b 100644
 --- a/hw/intc/arm_gicv3_common.c
 +++ b/hw/intc/arm_gicv3_common.c
-@@ -328,6 +328,10 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
-                    s->num_irq, GIC_INTERNAL);
+@@ -354,9 +354,9 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < s->nb_redist_regions; i++) {
+         rdist_capacity += s->redist_region_count[i];
+     }
+-    if (rdist_capacity < s->num_cpu) {
++    if (rdist_capacity != s->num_cpu) {
+         error_setg(errp, "Capacity of the redist regions(%d) "
+-                   "is less than number of vcpus(%d)",
++                   "does not match the number of vcpus(%d)",
+                    rdist_capacity, s->num_cpu);
          return;
      }
-+    if (s->num_cpu == 0) {
-+        error_setg(errp, "num-cpu must be at least 1");
-+        return;
-+    }
- 
-     /* ITLinesNumber is represented as (N / 32) - 1, so this is an
-      * implementation imposed restriction, not an architectural one,
 -- 
 2.25.1
 

@@ -1,105 +1,105 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp401792lfq;
-        Fri, 8 Apr 2022 07:42:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy0eEMETlgmR/oN2u8kyidNvcIeGk09HKxlaVjJrpn0VKLLjR26QSX+iVCyhvrhE/mx03Zp
-X-Received: by 2002:a05:6902:1109:b0:63d:caf3:73b5 with SMTP id o9-20020a056902110900b0063dcaf373b5mr14271172ybu.413.1649428970222;
-        Fri, 08 Apr 2022 07:42:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649428970; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp402510lfq;
+        Fri, 8 Apr 2022 07:44:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhIeycirUjVIqbbJprfYf3Xk+ESH9J1Du2PlOjZc4Bh7P+ZLqZu5y+qtTS/Y433R6s2P7L
+X-Received: by 2002:a0d:f9c1:0:b0:2eb:c207:3654 with SMTP id j184-20020a0df9c1000000b002ebc2073654mr8480998ywf.53.1649429051172;
+        Fri, 08 Apr 2022 07:44:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649429051; cv=none;
         d=google.com; s=arc-20160816;
-        b=IP7Kvkl9GZ9roaugtJRbKxbFxKxTx6EDUfcGxVDoJhPJd0ysimETKjJYD4ZZoZ2wit
-         S9UX8R9E9FFUKT51YD+FL9MOdXLKjHKXNpyb9hkkATTPDn8div2mAVzF4TJyuHBofaUd
-         ihhmV59fr3+4jifpL347/rXKDgmXyrDQ0oTthTikxy8CMrqximEElUtOmyBOXbgA7Sag
-         pBIjm5SucJ2w25xAb9/quFSBu3FXJs1ZZfrc8tppE/onjdl60nsIvh+tHlaSQ1a1INRx
-         YHU6XHJ5YKdxiQdTsll5CYJaniytUkQdFT5WPZBAgtYEUe3BTM2rsSnvnwOMrRS14ofg
-         vMxA==
+        b=QT0UQXqZDL4nUXv5oy9FECHzp6NmkOaAhc5kLM28BTWJbVPnhJq9MWE7bQs6SvNuO+
+         3oxAZKOPTy0sH6F8Zt9Hm/KUHcsRk7je/oJis1vvQt7djsFSF9qzuynuKuVTVKYRCwha
+         f7lgX2xsuQ+5rpT/I4jhT/GVa6STOnEcer7WyzEAlg9FUPQDtB/XsXraCUOJA5WkUvu9
+         fYlG2mQbCYOOk2PyUpnAaeqydLqMr/cItxRNjiJpDHG9cYkcl0s8+Fw1rrQiFVJNmE7R
+         4GuPhU0nXI58RHMw2qOHlnjCC1MAhfJXd/QxN1XmSHde/2zEjai32Y2pSeB4eKbutL9t
+         FrHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dkdiantr7+5+MkqtF+jpkZPTMHRoOYAGUVHwgCU5zUs=;
-        b=c/3INaA/PV9Ow/RCrmV6aDBKzvezQBgGZEsuCiHpEeX9r2ZgYvQiAqD9LU2HLcl7qo
-         IRbQwON1yg9fKCrHApT/fsZXD9BxgGjYKsRRuxJuk0f+Nt/lxWUvwLm8sflmUK0Z58EE
-         PYpt+ZNBAr19mJ1VW6FZUjBt6OzB+1W5CiKOiKdAvtloB4ZqQGtMa8p3vvp/ObOT5tUy
-         5FDcpIrUwVzGHuffu5t5g2Cb0HQB6p+aIFD36BLqAP5J+HGs3PTU5KbrBSFFro3e4qIl
-         wvr1Nows1xwYl9LGNUDK7/XXN8UuNaW1sR2oWHEUIZhETebXk5nSm9FwL5r+YvG1d5CY
-         S1zw==
+        bh=XnswKnW47+8+9tHo/ACX303pdkhT+++S3GFx5eRGIRU=;
+        b=zOHIo4wUfqD2zpy9d74PpkO/1++r13T1YdzXTdGWauvD7VoLbgI1ZkfdetOGvFVFpd
+         J3WzDHfzCXYMBEJrrfmGBH0slEHje/s/r9aFD+JFjTxqhkD4QZmd62Jm/ZwEkzxwJGts
+         K+q6nxdG20/vk6zzjRwaTKTPdQ1VA5r7ipndHt90O9u8EOodlvwiNfXyxsrqYkF57mk1
+         FdUhMP+HbR1QrtTczeAlgUyNEb2LO3fNDfvcQ9EPNSIL77Skw4YSMK0lSLQFMt3yVkSL
+         J6UcpIru4/72VjwNrL0970IKsJU0MLYc/llWHxfNe9LEy2NUrPoGi6gs+1+PYEIPsXXk
+         TTJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=awDZuFVi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="h2p/RXIg";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 18-20020a811712000000b002e5bb9dcb49si531204ywx.466.2022.04.08.07.42.50
+        by mx.google.com with ESMTPS id f9-20020a256a09000000b006339940462dsi597977ybc.663.2022.04.08.07.44.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Apr 2022 07:42:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Apr 2022 07:44:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=awDZuFVi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="h2p/RXIg";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33080 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35656 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ncpp3-00038h-Jo
-	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:42:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43216)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ncpqM-0004r8-If
+	for alex.bennee@linaro.org; Fri, 08 Apr 2022 10:44:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43200)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPc-0007Qz-6a
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:32 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:52938)
+ id 1ncpPb-0007PP-Oy
+ for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:31 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:46044)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ncpPa-0002UJ-B7
- for qemu-arm@nongnu.org; Fri, 08 Apr 2022 10:16:31 -0400
-Received: by mail-wm1-x336.google.com with SMTP id r7so5581832wmq.2
- for <qemu-arm@nongnu.org>; Fri, 08 Apr 2022 07:16:29 -0700 (PDT)
+ id 1ncpPZ-0002Tz-UC
+ for qemu-devel@nongnu.org; Fri, 08 Apr 2022 10:16:31 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id w4so13010209wrg.12
+ for <qemu-devel@nongnu.org>; Fri, 08 Apr 2022 07:16:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dkdiantr7+5+MkqtF+jpkZPTMHRoOYAGUVHwgCU5zUs=;
- b=awDZuFViW4CzES0ipTulLrOFw5PZHjsIpQ8/O5kqBzCUjYLhz3EtP9oPtibVtZ+y8h
- Nc0vychcetchJio0VczJF9flW+jEfQCKQkr4ywJqsmgEd+aiCGDPRf1Rc0U6EbMGxFq4
- JaBf7YxEmYy0gj01ld2wLQK0cVtJR/ogN8SkPpsgfv0CL3cwKQnY64o9PhJeGX2H5Za/
- XnkpICuZueXeS/RCyD4DxTodojzo+fRoTitsI7O6qLTEmnS6q0JQgC02YE5X83qcnZgS
- OtBXo5tUYtt3xoiF8k1osau/OvdJricHKTd/Gd1YQWSJ12xR7BkKXA8RX25izOgqThMg
- GzoQ==
+ bh=XnswKnW47+8+9tHo/ACX303pdkhT+++S3GFx5eRGIRU=;
+ b=h2p/RXIgXv5UOyE1d6rbKEqNFYNv6xK7BgY5D5cRkUPk21TO8P2SWtXi6uunuRadD0
+ GFeKnRas7QsSB1eFReob96bryoubXa2GeDg/y9YMfqDBhtcqno2f+aXr3q1aFWvBJf6N
+ bl44yl4j5eBXMTZ33LNrtXyRYYfvigAwe3ucd+nPxbIBxKcxZrIOfUFB5qsGH05ddG3x
+ JCIs45FSJpTxwBQS8BWopL9ZjSDxxopfwoD1bZpdl6MXKcu30uCU1PMJB98Gdi/E4hZj
+ KukMvkFU4p0DX5AzfoSLttk5Xw/RNslAsf4iT41M9+OZnxo6A896JUPU5evYHg53jafg
+ G55A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=dkdiantr7+5+MkqtF+jpkZPTMHRoOYAGUVHwgCU5zUs=;
- b=b8Z1TeJDghBy1oESnq27L9KmnOM4Si3+0qkdlTBgAoLGYAOx0K1HvjLZRXMthYazfa
- W2o6hxAQL7U64epPaa9sJlYPBA8SIETA3POW5A0Jx80b8T9a2Wa08VGWuZ21GJaVmfeM
- VSS1zPZhFToR38fXslC3ikd/m8MZFOS2RjoUzCqdj6MYq1GwAH/WikSk/mBAANaMYIMU
- U27YbJ+v0Rj41WZlXD3L+BZpx8e3HLazW37IsT+2pl7x5jMNLvL5ZQVsii2ZXzf0op1o
- 6Jebg6djwE84uupOd+P0nR3e46chAiWQVQPQk90xdnUkDFPUpdNWREPgHu7ZE7BsJJK1
- wGjw==
-X-Gm-Message-State: AOAM531jE8Hq+zcprvVRNbm4Au1E17VLz0feMCA8BZwaOyp4CwxsLwNB
- IqugiLxQ/+0SEr/MtyvqT+HexvwpZMMYRw==
-X-Received: by 2002:a1c:7517:0:b0:38c:8722:9bc6 with SMTP id
- o23-20020a1c7517000000b0038c87229bc6mr17170265wmc.2.1649427389031; 
- Fri, 08 Apr 2022 07:16:29 -0700 (PDT)
+ bh=XnswKnW47+8+9tHo/ACX303pdkhT+++S3GFx5eRGIRU=;
+ b=KLuGTrPTg3eO6m21Eduf5RGe9Y2oJzlIGeZKD9RpQ2HSKktFeVXVwDhOvcbGWOGu7W
+ mC/yUtEIWRXpHtlrqp/lIHCuo2Za6e6rYg6XDFUyUqWK6EpZMCmR2vveCpXS/FxQAMep
+ Zwvb/aFUSJzEx3NM7k3mYD7e/HtBU3JXXoiknuOdmYsm8Tg+K4xK9kx5pZbd1FFA6W9o
+ pXV746jKYH/LL+c39ubCMyqYXH4uZ+jyevPN/e3n2kXL0s0o5MGmfmE669CEsh7J5S9+
+ rvbfSd/tCG7DG0xBhTG4xL4KmQtEVEziQQajvEcZvwv8GAiwhh7GNdaByYA/fbAqXTeq
+ 5TIg==
+X-Gm-Message-State: AOAM531as3fNMqumlTcsCh7f+sRLP1lPnlov3aruH6npwNe4VMsbaNvj
+ AE3IpIdrJInl1w9PvXGvivjFHw==
+X-Received: by 2002:a5d:6c67:0:b0:204:ff0:87a8 with SMTP id
+ r7-20020a5d6c67000000b002040ff087a8mr15159472wrz.627.1649427388116; 
+ Fri, 08 Apr 2022 07:16:28 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.28
+ i3-20020adffc03000000b0020616ee90dbsm11498849wrr.42.2022.04.08.07.16.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Apr 2022 07:16:28 -0700 (PDT)
+ Fri, 08 Apr 2022 07:16:27 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 39/41] hw/arm/virt: Use VIRT_GIC_VERSION_* enum values in
- create_gic()
-Date: Fri,  8 Apr 2022 15:15:48 +0100
-Message-Id: <20220408141550.1271295-40-peter.maydell@linaro.org>
+Subject: [PATCH 38/41] hw/intc/arm_gicv3: Allow 'revision' property to be set
+ to 4
+Date: Fri,  8 Apr 2022 15:15:47 +0100
+Message-Id: <20220408141550.1271295-39-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408141550.1271295-1-peter.maydell@linaro.org>
 References: <20220408141550.1271295-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,113 +108,81 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Marc Zyngier <maz@kernel.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ccoP64PGs7LM
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CjMGxz+uG49f
 
-Everywhere we need to check which GIC version we're using, we look at
-vms->gic_version and use the VIRT_GIC_VERSION_* enum values, except
-in create_gic(), which copies vms->gic_version into a local 'int'
-variable and makes direct comparisons against values 2 and 3.
+Now that we have implemented all the GICv4 requirements, relax the
+error-checking on the GIC object's 'revision' property to allow a TCG
+GIC to be a GICv4, whilst still constraining the KVM GIC to GICv3.
 
-For consistency, change this function to check the GIC version
-the same way we do elsewhere. This includes not implicitly relying
-on the enumeration type values happening to match the integer
-'revision' values the GIC device object wants.
+Our 'revision' property doesn't consider the possibility of wanting
+to specify the minor version of the GIC -- for instance there is a
+GICv3.1 which adds support for extended SPI and PPI ranges, among
+other things, and also GICv4.1.  But since the QOM property is
+internal to QEMU, not user-facing, we can cross that bridge when we
+come to it. Within the GIC implementation itself code generally
+checks against the appropriate ID register feature bits, and the
+only use of s->revision is for setting those ID register bits.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/virt.c | 31 +++++++++++++++++++++++--------
- 1 file changed, 23 insertions(+), 8 deletions(-)
+ hw/intc/arm_gicv3_common.c | 12 +++++++-----
+ hw/intc/arm_gicv3_kvm.c    |  5 +++++
+ 2 files changed, 12 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index d2e5ecd234a..594a3d0660a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -690,14 +690,29 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-     /* We create a standalone GIC */
-     SysBusDevice *gicbusdev;
-     const char *gictype;
--    int type = vms->gic_version, i;
-+    int i;
-     unsigned int smp_cpus = ms->smp.cpus;
-     uint32_t nb_redist_regions = 0;
-+    int revision;
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index 181f342f32c..5634c6fc788 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -326,12 +326,14 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+     GICv3State *s = ARM_GICV3_COMMON(dev);
+     int i, rdist_capacity, cpuidx;
  
--    gictype = (type == 3) ? gicv3_class_name() : gic_class_name();
-+    if (vms->gic_version == VIRT_GIC_VERSION_2) {
-+        gictype = gic_class_name();
-+    } else {
-+        gictype = gicv3_class_name();
-+    }
- 
-+    switch (vms->gic_version) {
-+    case VIRT_GIC_VERSION_2:
-+        revision = 2;
-+        break;
-+    case VIRT_GIC_VERSION_3:
-+        revision = 3;
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-     vms->gic = qdev_new(gictype);
--    qdev_prop_set_uint32(vms->gic, "revision", type);
-+    qdev_prop_set_uint32(vms->gic, "revision", revision);
-     qdev_prop_set_uint32(vms->gic, "num-cpu", smp_cpus);
-     /* Note that the num-irq property counts both internal and external
-      * interrupts; there are always 32 of the former (mandated by GIC spec).
-@@ -707,7 +722,7 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-         qdev_prop_set_bit(vms->gic, "has-security-extensions", vms->secure);
+-    /* revision property is actually reserved and currently used only in order
+-     * to keep the interface compatible with GICv2 code, avoiding extra
+-     * conditions. However, in future it could be used, for example, if we
+-     * implement GICv4.
++    /*
++     * This GIC device supports only revisions 3 and 4. The GICv1/v2
++     * is a separate device.
++     * Note that subclasses of this device may impose further restrictions
++     * on the GIC revision: notably, the in-kernel KVM GIC doesn't
++     * support GICv4.
+      */
+-    if (s->revision != 3) {
++    if (s->revision != 3 && s->revision != 4) {
+         error_setg(errp, "unsupported GIC revision %d", s->revision);
+         return;
+     }
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 5ec5ff9ef6e..06f5aceee52 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -781,6 +781,11 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+         return;
      }
  
--    if (type == 3) {
-+    if (vms->gic_version == VIRT_GIC_VERSION_3) {
-         uint32_t redist0_capacity =
-                     vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
-         uint32_t redist0_count = MIN(smp_cpus, redist0_capacity);
-@@ -742,7 +757,7 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-     gicbusdev = SYS_BUS_DEVICE(vms->gic);
-     sysbus_realize_and_unref(gicbusdev, &error_fatal);
-     sysbus_mmio_map(gicbusdev, 0, vms->memmap[VIRT_GIC_DIST].base);
--    if (type == 3) {
-+    if (vms->gic_version == VIRT_GIC_VERSION_3) {
-         sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_REDIST].base);
-         if (nb_redist_regions == 2) {
-             sysbus_mmio_map(gicbusdev, 2,
-@@ -780,7 +795,7 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-                                                    ppibase + timer_irq[irq]));
-         }
- 
--        if (type == 3) {
-+        if (vms->gic_version == VIRT_GIC_VERSION_3) {
-             qemu_irq irq = qdev_get_gpio_in(vms->gic,
-                                             ppibase + ARCH_GIC_MAINT_IRQ);
-             qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt",
-@@ -806,9 +821,9 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
- 
-     fdt_add_gic_node(vms);
- 
--    if (type == 3 && vms->its) {
-+    if (vms->gic_version == VIRT_GIC_VERSION_3 && vms->its) {
-         create_its(vms);
--    } else if (type == 2) {
-+    } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
-         create_v2m(vms);
-     }
- }
++    if (s->revision != 3) {
++        error_setg(errp, "unsupported GIC revision %d for in-kernel GIC",
++                   s->revision);
++    }
++
+     if (s->security_extn) {
+         error_setg(errp, "the in-kernel VGICv3 does not implement the "
+                    "security extensions");
 -- 
 2.25.1
 

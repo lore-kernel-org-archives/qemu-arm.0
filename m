@@ -1,261 +1,138 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1433273lfq;
-        Mon, 11 Apr 2022 00:16:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwV3wMe84iYkmceR+h9bzLo0uyK+vwyEwK+HxcwujIIA5UNyZfF8YXLRc9AdayZ6S6xgjqi
-X-Received: by 2002:ad4:58c9:0:b0:444:4bb4:651a with SMTP id dh9-20020ad458c9000000b004444bb4651amr996825qvb.49.1649661404880;
-        Mon, 11 Apr 2022 00:16:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649661404; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1460447lfq;
+        Mon, 11 Apr 2022 01:25:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmrqf/9r+NjdHKQJK4kMB7l4x+wrdNwuTvOr5QqPHMYjcqh15k1860uLKpVkt8wlUILZtq
+X-Received: by 2002:ad4:46cc:0:b0:444:498e:6d08 with SMTP id g12-20020ad446cc000000b00444498e6d08mr1765953qvw.53.1649665506539;
+        Mon, 11 Apr 2022 01:25:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649665506; cv=none;
         d=google.com; s=arc-20160816;
-        b=UGjzlk5bDR6s31LY92qC/FunlQsJy2uSWt04BfZKWyegJRb0obQKMio0z+XVp4j00F
-         we2cZxSqrA+4wArlmFnRlaXMYE0cVy3ERRSDuX0uxxBp6ihResNMvHlLt0O6Ph8j7955
-         tOFF/fCyFPGMEVPdD0XzubpoxVUxoDeeJCZrOR4d7zatSbDlhLFWrIuGuQw4mhMIiiKx
-         rj7seap1TJLzAK9i0V6cx1lEC2IR2heI6rfg3GXz7tCDOtcsDrnUbVYPw8X/wpzvCMtF
-         lYk9nGXZfZNm8NpbBdd5vyAdCghYLIR/0Mh3iaHr90bI6EG2c0eCyWzaJunQbhAdsltm
-         vHdA==
+        b=JkECZscfuwSSJa9VcrvbmS5CMd0u4aV/VvXrQ1j78uqNCO/xeJe07HmFgs+fOzaTtw
+         D9FNKz73p4h+QW7NLKa/JZNkOBqSwbQ1u0uYOUhVeKqeRftwDul2iT6+xv/ItRPUazzc
+         KgGXbnXgox3GmLETlC19wpaBuX2zdmVqHek7X6yqqA59hC+EBhLPkbKRGf0Z4/2d2IAd
+         /FgGWrE21TKdmAsq82QA5vR9+CkfjzbemeB88YTAX7Pcx+L6PLJEGPqOEM24Ng1qVB15
+         SrT8ClFGU6xndKGJJXw1EvcByXJ5EZU6nMB5gYTQI2e18pnC4rBQlgfxwUNRBiLm9IQO
+         JmHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=1k22XN/WGANFpo8X0qRkJi3jP/iJeublxk7IYC0mwTM=;
-        b=C1fQ+vxrhfNPybVrkgSkm9/3VIqRWKeYqIR8XhLmFOK+GRshTwxHZaZ9MkTPdbSE7U
-         y+oquM9hcTbqyCeuuUDG2K1GLeXziB7zaCjomORa7P//WQ7H5N26CwOFSDAf8khxupKB
-         DgFQyw0Hrn2GP9J+Z9vuHuCijBy/4kRJkY4BTg8lEbqnKwt/vZ/pHZP7c+rnho/TYeG7
-         YTrJaTGWQTDKRm9oIr7ZK7T0pDKiubGzgyDUZIIq1RkCRJ+gL59PTQNhogZ76XpKfw0Q
-         OSvIn6OFR3+keoqc4J8QjA8SQAepX9MnJKJYdF/YZWlD2RS7RegapwAPdVGiJJuwE9up
-         uxBQ==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=X/yWifrU3E93rF70zmH2UXYnYg1Y8tLbnkOS/JctdCs=;
+        b=yQsWcZtaTsIVvfIaDhX03USl08CXeg5XngwAY3eqx4Bt2W0b97AZXih9Wnj4+V4xF9
+         2/kQsbQndFRVqpdD/u/dfxi/fhup55OO2A+Ewr+Eyoc65/pjgFt1nnDjtwDHJJa6hW7j
+         /95gJMsau6c4QbhYvBOyayM7GcGg9R8YzDUYWMX5nVKXzxv0pvO81wX+MFXKkWOAW0Bc
+         xQZb8UaidGFwYdUn6ghAJLcmr90TCLeFm9SzzejHIQtyKvNsZxJ5zSKAMHeO/K7kdEKk
+         eQUnQSXaLs4qSmFa2P/F1MNQkxXeJkAhOJ3ni8fbJRoUZ5+7hOgxhRnpflTufk110sKb
+         TulQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FKzo+O9G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c22-20020ac81116000000b002e1fbf3c06esi3562994qtj.607.2022.04.11.00.16.44
+        by mx.google.com with ESMTPS id iu6-20020ad45cc6000000b00440e46a7db0si4200681qvb.590.2022.04.11.01.25.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Apr 2022 00:16:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 Apr 2022 01:25:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FKzo+O9G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33536 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54942 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ndoI0-0004jz-9S
-	for alex.bennee@linaro.org; Mon, 11 Apr 2022 03:16:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43498)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ndpMA-0005P9-3A
+	for alex.bennee@linaro.org; Mon, 11 Apr 2022 04:25:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ndo1L-0000Tz-2z
- for qemu-arm@nongnu.org; Mon, 11 Apr 2022 02:59:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:39155)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ndpKV-0004gr-O2
+ for qemu-devel@nongnu.org; Mon, 11 Apr 2022 04:23:23 -0400
+Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222]:59247)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ndo1H-00078N-FA
- for qemu-arm@nongnu.org; Mon, 11 Apr 2022 02:59:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1649660366;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1k22XN/WGANFpo8X0qRkJi3jP/iJeublxk7IYC0mwTM=;
- b=FKzo+O9GZtA1vrSVP+DoBNhnh5CaLTARM90wfT+C0eLBATfRe5VW7TEuQoYpajzXOLW5Tp
- HTJC+P4nb1LLIgqsKvTiGZrnC/kWdthlz+Sypid5Jq12vyRbHp1SQdSLAiGAvo06GljJw0
- aYrIsOmoUCbXxDvB4Ejf00jdz3rjUjE=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-220-T9fqq_ivPeOiVHoqCPbUww-1; Mon, 11 Apr 2022 02:59:23 -0400
-X-MC-Unique: T9fqq_ivPeOiVHoqCPbUww-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 73A613C14100;
- Mon, 11 Apr 2022 06:59:23 +0000 (UTC)
-Received: from gshan.redhat.com (ovpn-12-73.pek2.redhat.com [10.72.12.73])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7EB484029AD;
- Mon, 11 Apr 2022 06:59:18 +0000 (UTC)
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Subject: [PATCH 5/5] target/arm/kvm: Support coprocessor register with
- variable size
-Date: Mon, 11 Apr 2022 14:58:42 +0800
-Message-Id: <20220411065842.63880-6-gshan@redhat.com>
-In-Reply-To: <20220411065842.63880-1-gshan@redhat.com>
-References: <20220411065842.63880-1-gshan@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ndpKT-0003Vf-I0
+ for qemu-devel@nongnu.org; Mon, 11 Apr 2022 04:23:23 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.149])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 5F78722DAA;
+ Mon, 11 Apr 2022 08:23:08 +0000 (UTC)
+Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Mon, 11 Apr
+ 2022 10:23:08 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R00139e9c522-60bb-4080-9b85-2315c39d6704,
+ 807A51033C4E86113632DB4BCF5445A4DF494250) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <77936087-0391-6b9e-6087-e62f016f799b@kaod.org>
+Date: Mon, 11 Apr 2022 10:23:02 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>
+References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+ <66783c6a-4942-23c5-1052-0dcab389e177@kaod.org>
+ <20220411020727.GA2461@aspeedtech.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220411020727.GA2461@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 8cdcb973-a438-4efd-b46c-f2d5efb6e158
+X-Ovh-Tracer-Id: 16531588333674335163
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudekiedgtdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeefiedukefhueejteffvedthffhkeehhefhtdejkeefheeifeejvdfgfffgieefnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomh
+Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
+ helo=6.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, eric.auger@redhat.com, agraf@csgraf.de,
- shan.gavin@gmail.com, pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: obmdfAQvWP+F
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Troy Lee <troy_lee@aspeedtech.com>, Beraldo Leal <bleal@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, "open
+ list:STM32F205" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Cleber Rosa <crosa@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jXbSBYib6nRO
 
-With the indirect addressing mechanism, we can support large-sized
-coprocessor registers. This calculates the length of @cpreg_values
-and allocate the storage space accordingly. @cpreg_value_indexes
-is also initialized according to the coprocessor register size.
+Hello Jamin,
 
-For those registers whose sizes are less than 8 bytes, we always
-reserve 8 bytes storage space for it, to gurantee the storage
-space address is aligned to 8 bytes. On the other hand, the storage
-space size for other registers are allocated based on their sizes.
+[ ... ]
 
-Signed-off-by: Gavin Shan <gshan@redhat.com>
----
- target/arm/kvm.c | 55 ++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 53 insertions(+), 2 deletions(-)
+>> Do we want to be in sync with the zephyr naming and use ast10x0.c ?
+>>
+>>      https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/arm/aspeed
+>>
+> We used aspeed_ast10xx.c to support minibmc family such as ast1030 and
+> may support ast1060 in the future.
+> If need, I can submit the new patch to change its filename to aspeed_ast10x0.c.
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 5d1ce431b0..71f602fd81 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -471,8 +471,18 @@ int kvm_arm_init_cpreg_list(ARMCPU *cpu)
-             continue;
-         }
-         switch (rlp->reg[i] & KVM_REG_SIZE_MASK) {
-+        case KVM_REG_SIZE_U8:
-+        case KVM_REG_SIZE_U16:
-         case KVM_REG_SIZE_U32:
-+            value_arraylen++;
-+            break;
-         case KVM_REG_SIZE_U64:
-+        case KVM_REG_SIZE_U128:
-+        case KVM_REG_SIZE_U256:
-+        case KVM_REG_SIZE_U512:
-+        case KVM_REG_SIZE_U1024:
-+        case KVM_REG_SIZE_U2048:
-+            value_arraylen += KVM_REG_SIZE(rlp->reg[i]) / sizeof(uint64_t);
-             break;
-         default:
-             fprintf(stderr, "Can't handle size of register in kernel list\n");
-@@ -481,7 +491,6 @@ int kvm_arm_init_cpreg_list(ARMCPU *cpu)
-         }
- 
-         arraylen++;
--        value_arraylen++;
-     }
- 
-     cpu->cpreg_indexes = g_renew(uint64_t, cpu->cpreg_indexes, arraylen);
-@@ -507,7 +516,13 @@ int kvm_arm_init_cpreg_list(ARMCPU *cpu)
-         cpu->cpreg_indexes[arraylen] = regidx;
-         cpu->cpreg_value_indexes[arraylen] = value_arraylen;
-         arraylen++;
--        value_arraylen++;
-+
-+        /* We validate the size just now and no need to do it again */
-+        if (KVM_REG_SIZE(rlp->reg[i]) < sizeof(uint64_t)) {
-+            value_arraylen++;
-+        } else {
-+            value_arraylen += KVM_REG_SIZE(rlp->reg[i]) / sizeof(uint64_t);
-+        }
-     }
-     assert(cpu->cpreg_array_len == arraylen);
-     assert(cpu->cpreg_value_array_len == value_arraylen);
-@@ -535,12 +550,28 @@ bool write_kvmstate_to_list(ARMCPU *cpu)
-     for (i = 0; i < cpu->cpreg_array_len; i++) {
-         struct kvm_one_reg r;
-         uint64_t regidx = cpu->cpreg_indexes[i];
-+        uint8_t v8;
-+        uint16_t v16;
-         uint32_t v32;
-         int ret;
- 
-         r.id = regidx;
- 
-         switch (regidx & KVM_REG_SIZE_MASK) {
-+        case KVM_REG_SIZE_U8:
-+            r.addr = (uintptr_t)&v8;
-+            ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &r);
-+            if (!ret) {
-+                cpu->cpreg_values[cpu->cpreg_value_indexes[i]] = v8;
-+            }
-+            break;
-+        case KVM_REG_SIZE_U16:
-+            r.addr = (uintptr_t)&v16;
-+            ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &r);
-+            if (!ret) {
-+                cpu->cpreg_values[cpu->cpreg_value_indexes[i]] = v16;
-+            }
-+            break;
-         case KVM_REG_SIZE_U32:
-             r.addr = (uintptr_t)&v32;
-             ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &r);
-@@ -549,6 +580,11 @@ bool write_kvmstate_to_list(ARMCPU *cpu)
-             }
-             break;
-         case KVM_REG_SIZE_U64:
-+        case KVM_REG_SIZE_U128:
-+        case KVM_REG_SIZE_U256:
-+        case KVM_REG_SIZE_U512:
-+        case KVM_REG_SIZE_U1024:
-+        case KVM_REG_SIZE_U2048:
-             r.addr = (uintptr_t)(cpu->cpreg_values +
-                                  cpu->cpreg_value_indexes[i]);
-             ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &r);
-@@ -572,6 +608,8 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
-     for (i = 0; i < cpu->cpreg_array_len; i++) {
-         struct kvm_one_reg r;
-         uint64_t regidx = cpu->cpreg_indexes[i];
-+        uint8_t v8;
-+        uint16_t v16;
-         uint32_t v32;
-         int ret;
- 
-@@ -581,11 +619,24 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
- 
-         r.id = regidx;
-         switch (regidx & KVM_REG_SIZE_MASK) {
-+        case KVM_REG_SIZE_U8:
-+            v8 = cpu->cpreg_values[cpu->cpreg_value_indexes[i]];
-+            r.addr = (uintptr_t)&v8;
-+            break;
-+        case KVM_REG_SIZE_U16:
-+            v16 = cpu->cpreg_values[cpu->cpreg_value_indexes[i]];
-+            r.addr = (uintptr_t)&v16;
-+            break;
-         case KVM_REG_SIZE_U32:
-             v32 = cpu->cpreg_values[cpu->cpreg_value_indexes[i]];
-             r.addr = (uintptr_t)&v32;
-             break;
-         case KVM_REG_SIZE_U64:
-+        case KVM_REG_SIZE_U128:
-+        case KVM_REG_SIZE_U256:
-+        case KVM_REG_SIZE_U512:
-+        case KVM_REG_SIZE_U1024:
-+        case KVM_REG_SIZE_U2048:
-             r.addr = (uintptr_t)(cpu->cpreg_values +
-                                  cpu->cpreg_value_indexes[i]);
-             break;
--- 
-2.23.0
+I did the rename. Please check what I did in :
+
+   https://github.com/legoater/qemu/commits/aspeed-7.0
+
+and tell me if you agree.
+
+Thanks,
+
+C.
 

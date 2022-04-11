@@ -1,110 +1,87 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1186847lfq;
-        Sun, 10 Apr 2022 13:02:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxuY7ZGPdzEKUjyUL7qwPxKQZ9TNm+xEdeeF+5D2AHy6o/7GzXoIXLv71YSmQd+CB9uH/Ho
-X-Received: by 2002:ac8:6e83:0:b0:2eb:dc8b:c761 with SMTP id c3-20020ac86e83000000b002ebdc8bc761mr12429399qtv.509.1649620934146;
-        Sun, 10 Apr 2022 13:02:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649620934; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1314343lfq;
+        Sun, 10 Apr 2022 18:51:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwPHjVuBnYE6CPK2vAferZN7QyZcR6m+PfvrXePSKBaOoga6i4QSbyOPwNhrPV38YRvSRVG
+X-Received: by 2002:a05:622a:1343:b0:2eb:8171:ce27 with SMTP id w3-20020a05622a134300b002eb8171ce27mr24516347qtk.8.1649641867400;
+        Sun, 10 Apr 2022 18:51:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649641867; cv=none;
         d=google.com; s=arc-20160816;
-        b=xL46tfO7Xn7H+GnR7l/3gc5o9uDPwLaDMFcA5n0RA100CRHpUY3SyDoqdUebQcQ1ro
-         EzbrFpk9dlROlmyrumToGOpJhMs6uDlYceWycXFqJl9FzftWFc1LOX9AR85WoNo8QXly
-         jWbOcDah4t3sOstPiSf8otuqRim14jhIUOQb3LQHjKwAXbiUFftGBNlZbRRndZfMJxrt
-         BE3kF80nRYQy0ie2XdYpaLGA0sFtNuGbWuPbIDwwuHM0zDrirIXu2UYhAqnvj6YCgO8u
-         hEV3QqRt3dzchHW+zUkK04BUKZWMJFI2QuGpOioQ4g70+idtOzUHR6WVs4IP+szNSLOp
-         Uasg==
+        b=eguM7ct2rgzbiVVVORHKLlWkkLc6SXz5BcdO5OnnPcG0xTWXVt+QcXjiyFJBlWTrOn
+         z00ccJNwxm/C/sJeOnw/hBxDskOYHYuJ9NKBfWwOiJaLdPp+5/p+By4VMfmuWClktuZf
+         Tbzgh732XiUP3NrKaFF0iLZ71s5G/Os2g/lpvnyuPCjjQsuASYDK/EPF269h65GNKaWw
+         HjssuDtMJ4df9MPN/gEpF35LPxAee/e6FQkgN1FqKHId+nll5r3hTi9IR+tA8PqySYwd
+         CEcLEmaijOmD1FpVq3elvXbKj5rCWvwB9WrveMEexDQTDVm6xP5d927hWEU8qcKDk1ZU
+         /z9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=3CZBRJSMWWtdPs7tADRIMiY5uDDqazoeCb5BceM9tX4=;
-        b=KelEYzYf0s6Zc5VQH6whTSdxHapJtzQhih/plaVUqpf9ikWtkgYIn/v6jXeGnPwL/H
-         QcPB+VqagJah7Jky/JCIRGtiKKR6oMrkSH03rgQw3gVInaWgw+fyvyd2ypFuCutABc9J
-         f89RHWAQD1Y5VDAw1zKc6PZ5a/fs465r6YZ+jkKoQeW9o7RPCnFfWXmxjTNOXuO6xBoE
-         7Edj1/lFxmh2p4KeKjpJ0q5BfCUvYADTmX8JHWRtxdNiapM5A/L++umB0rq+lTUHQVS5
-         FlTBne0P6cla/c3HfeXv47gbzFs2rCqVhFv0H+i4Qtlq4u4hf+uxyyGlcHdzgim6AM+G
-         yXVw==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date;
+        bh=7QcVTnnFDZNFGlu4mkNBcgKypCb0ysjpEABVVxlcaiM=;
+        b=wbF2ydMTAckvZnraduzttszGKExYm5Z1otoKHEk5XeXjE1ddUpPzGb9BPLY3alJ/nL
+         yrG4vhef6ZWetIbpmsyGa1O2yGoZcEG18LrX4ea/yF0pe4YwOx3A4J+QK1k2svpSZtYZ
+         oM2OlUWT7Ny3BC5Bwx95OaSoV8PNXcjCRaefoaSlBIjcXY0CqBbeSt+bbC6U86eiu26a
+         V63ZmATVODOL9wbJHqHq5tbI3NBbS9fAuluz8CyCNQzn2LH1USv98SaepksXlLBbaPcR
+         WeJJBvgxTVxNHclkLDqRoo2H4bMuexdS0MAkANuSvyH+XULTLS9UboZypdEvB2ow3Lro
+         jv3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@baylibre-com.20210112.gappssmtp.com header.s=20210112 header.b=lGBmTI5i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y16-20020a05620a25d000b00680fef81e41si3413090qko.51.2022.04.10.13.02.13
+        by mx.google.com with ESMTPS id b134-20020a37678c000000b0067e4be23aa5si3499449qkc.746.2022.04.10.18.51.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Apr 2022 13:02:14 -0700 (PDT)
+        Sun, 10 Apr 2022 18:51:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@baylibre-com.20210112.gappssmtp.com header.s=20210112 header.b=lGBmTI5i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33808 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43996 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nddlF-0006t3-EN
-	for alex.bennee@linaro.org; Sun, 10 Apr 2022 16:02:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59758)
+	id 1ndjCs-00057C-UQ
+	for alex.bennee@linaro.org; Sun, 10 Apr 2022 21:51:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55306)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clabbe@baylibre.com>)
- id 1ndczX-0000Nb-D7
- for qemu-arm@nongnu.org; Sun, 10 Apr 2022 15:12:55 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:35511)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <clabbe@baylibre.com>)
- id 1ndczS-00008U-UM
- for qemu-arm@nongnu.org; Sun, 10 Apr 2022 15:12:55 -0400
-Received: by mail-wr1-x436.google.com with SMTP id k22so1552895wrd.2
- for <qemu-arm@nongnu.org>; Sun, 10 Apr 2022 12:12:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3CZBRJSMWWtdPs7tADRIMiY5uDDqazoeCb5BceM9tX4=;
- b=lGBmTI5i/RkvafoPw+KUl/ZGht3ZofkkRH3tDC8x7H+NCoivlP19JHaV1pToOyL8wM
- qouyWbAfCBvDZTMc79DVIwp+ghigbLhFi2D4WI0XJ1i2q77CUTKNHFob21YAQPYGDtZh
- 7cvg0KgsAykUHaIkTA+bq31MeVFYUmdgf7yPzA0cP0TBw6/2vImY8AgGRPkBH+s3Kygo
- EEL+lTm8/AuB4FtdOrsv8rySAkhEX96VJyRoMWWz9aqsrpfA+s78I/mmHDpnwJ2VUbvR
- EFhnN1QgmzmYqJp1v2rMx4rHfSyofwZ2Nnzbdo4VNLzD2iNUu6SDQvqgPt6hB5ebNjFk
- YLMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3CZBRJSMWWtdPs7tADRIMiY5uDDqazoeCb5BceM9tX4=;
- b=iiTirw5hBSPVlzTLFSZ+JgR/XtpRRgfvVpa6wux1cMX/DJz8dGIpRcQPYo4U6gA9D0
- Q6vVNlvmoE2c4Xw4mlkQXJSMNB9BsWwci1rYTJSRcr/KJ1+j654ztadsnRPUm0BD5LTD
- 1YrqxH4JEM/Xk3jzcKzRuF/tHWIf5wfLQpFNMNPlHvJIsn2WJ5Pu+hS+/rmSD4wYzwJB
- 6/6+alGRaVBuoa8GQNoUwUv8XrwVXOyjIUEhJjnzzakAacp/2fSIcYcoE2dwjYvmm/nx
- 7puKAJUd2m/btkVEzKeV9wthYNPNySF8bZioShNYUoo/rPw9kTp3u3z5oxFTqGfuMTLK
- U/PA==
-X-Gm-Message-State: AOAM533YOrEvhCt0dGdhrt4ZGOTRYwRnpX3lr52JFNC89p7hPhb4VRqI
- nLetvqx7Z5oc2fzVR4p9udXWPQ==
-X-Received: by 2002:a05:6000:8f:b0:207:9e47:c2f8 with SMTP id
- m15-20020a056000008f00b002079e47c2f8mr6508029wrx.379.1649617968038; 
- Sun, 10 Apr 2022 12:12:48 -0700 (PDT)
-Received: from localhost.localdomain
- (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
- by smtp.googlemail.com with ESMTPSA id
- f66-20020a1c3845000000b0038eb64a52b5sm3216875wma.43.2022.04.10.12.12.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 10 Apr 2022 12:12:47 -0700 (PDT)
-From: Corentin Labbe <clabbe@baylibre.com>
-To: peter.maydell@linaro.org, b.galvani@gmail.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Subject: [PATCH] hw/crypto: add Allwinner sun4i-ss crypto device
-Date: Sun, 10 Apr 2022 19:12:38 +0000
-Message-Id: <20220410191238.760733-1-clabbe@baylibre.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1ndjCi-00056r-7i; Sun, 10 Apr 2022 21:50:56 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:38617)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1ndjCc-0004fB-Oa; Sun, 10 Apr 2022 21:50:55 -0400
+Received: from mail.aspeedtech.com ([192.168.0.24])
+ by twspam01.aspeedtech.com with ESMTP id 23B1boEn052056;
+ Mon, 11 Apr 2022 09:37:50 +0800 (GMT-8)
+ (envelope-from jamin_lin@aspeedtech.com)
+Received: from aspeedtech.com (192.168.70.87) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 11 Apr
+ 2022 09:49:25 +0800
+Date: Mon, 11 Apr 2022 09:49:19 +0800
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
+Message-ID: <20220411014917.GA2300@aspeedtech.com>
+References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+ <0ddfa28a-45ae-fdfd-02a6-94ab5a34b724@kaod.org>
+ <TYZPR06MB40155C89D32BB012339208C6FCE09@TYZPR06MB4015.apcprd06.prod.outlook.com>
+ <41441f8a-7ae0-4f41-543f-4df8c39fe7e2@kaod.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=clabbe@baylibre.com; helo=mail-wr1-x436.google.com
+In-Reply-To: <41441f8a-7ae0-4f41-543f-4df8c39fe7e2@kaod.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Originating-IP: [192.168.70.87]
+X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
+ (192.168.0.24)
+X-DNSRBL: 
+X-MAIL: twspam01.aspeedtech.com 23B1boEn052056
+Received-SPF: pass client-ip=211.20.114.71;
+ envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_QUOTING=0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 10 Apr 2022 16:01:19 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,1025 +93,206 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corentin LABBE <clabbe@baylibre.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Troy Lee <troy_lee@aspeedtech.com>, Beraldo Leal <bleal@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:STM32F205" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Cleber Rosa <crosa@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Pd4Q9/p2bJhf
+X-TUID: fxse4ECW6qFP
 
-From: Corentin LABBE <clabbe@baylibre.com>
-
-The Allwinner A10 has a cryptographic offloader device which
-could be easily emulated.
-The emulated device is tested with Linux only as any of BSD does not
-support it.
-
-Signed-off-by: Corentin LABBE <clabbe@baylibre.com>
----
- MAINTAINERS                                |   8 +
- docs/system/arm/cubieboard.rst             |   1 +
- docs/system/devices/allwinner-sun4i-ss.rst |  31 +
- hw/Kconfig                                 |   1 +
- hw/arm/Kconfig                             |   1 +
- hw/arm/allwinner-a10.c                     |  11 +
- hw/crypto/Kconfig                          |   2 +
- hw/crypto/allwinner-sun4i-ss.c             | 688 +++++++++++++++++++++
- hw/crypto/meson.build                      |   3 +
- hw/crypto/trace-events                     |   3 +
- hw/crypto/trace.h                          |   1 +
- hw/meson.build                             |   1 +
- include/hw/arm/allwinner-a10.h             |   2 +
- include/hw/crypto/allwinner-sun4i-ss.h     |  72 +++
- meson.build                                |   1 +
- 15 files changed, 826 insertions(+)
- create mode 100644 docs/system/devices/allwinner-sun4i-ss.rst
- create mode 100644 hw/crypto/Kconfig
- create mode 100644 hw/crypto/allwinner-sun4i-ss.c
- create mode 100644 hw/crypto/meson.build
- create mode 100644 hw/crypto/trace-events
- create mode 100644 hw/crypto/trace.h
- create mode 100644 include/hw/crypto/allwinner-sun4i-ss.h
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4ad2451e03..f07d9713af 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -583,6 +583,14 @@ F: include/hw/*/allwinner-h3*
- F: hw/arm/orangepi.c
- F: docs/system/arm/orangepi.rst
- 
-+Allwinner sun4i-ss cryptographic offloader
-+M: Corentin LABBE <clabbe@baylibre.com>
-+L: qemu-arm@nongnu.org
-+S: Maintained
-+F: hw/crypto/allwinner-*
-+F: include/hw/crypto/allwinner-*
-+F: docs/system/arm/orangepi.rst
-+
- ARM PrimeCell and CMSDK devices
- M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
-diff --git a/docs/system/arm/cubieboard.rst b/docs/system/arm/cubieboard.rst
-index 344ff8cef9..7836643ba4 100644
---- a/docs/system/arm/cubieboard.rst
-+++ b/docs/system/arm/cubieboard.rst
-@@ -14,3 +14,4 @@ Emulated devices:
- - SDHCI
- - USB controller
- - SATA controller
-+- crypto
-diff --git a/docs/system/devices/allwinner-sun4i-ss.rst b/docs/system/devices/allwinner-sun4i-ss.rst
-new file mode 100644
-index 0000000000..6e7d2142b5
---- /dev/null
-+++ b/docs/system/devices/allwinner-sun4i-ss.rst
-@@ -0,0 +1,31 @@
-+Allwinner sun4i-ss
-+==================
-+
-+The ``sun4i-ss`` emulates the Allwinner cryptographic offloader
-+present on early Allwinner SoCs (A10, A10s, A13, A20, A33)
-+In qemu only A10 via the cubieboard machine is supported.
-+
-+The emulated hardware is capable of handling the following algorithms:
-+- SHA1 and MD5 hash algorithms
-+- AES/DES/DES3 in CBC/ECB
-+- PRNG
-+
-+The emulated hardware does not handle yet:
-+- CTS for AES
-+- CTR for AES/DES/DES3
-+- IRQ and DMA mode
-+Anyway the Linux driver also does not handle them yet.
-+
-+The emulation needs a real crypto backend, for the moment only gnutls/nettle is supported.
-+So the device emulation needs qemu to be compiled with optionnal gnutls.
-+
-+Emulation limit
-+---------------
-+
-+PRNG:
-+The PRNG is not really emulated as its internal is not known.
-+It is replaced by the g_random_int function from glib.
-+
-+SPEED:
-+The emulated hardware is ""faster"" than real hw as any write
-+already give results immediatly instead of a few delay in real HW.
-diff --git a/hw/Kconfig b/hw/Kconfig
-index ad20cce0a9..43bd7fc14d 100644
---- a/hw/Kconfig
-+++ b/hw/Kconfig
-@@ -6,6 +6,7 @@ source audio/Kconfig
- source block/Kconfig
- source char/Kconfig
- source core/Kconfig
-+source crypto/Kconfig
- source display/Kconfig
- source dma/Kconfig
- source gpio/Kconfig
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 97f3b38019..fd8232b1d4 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -317,6 +317,7 @@ config ALLWINNER_A10
-     select AHCI
-     select ALLWINNER_A10_PIT
-     select ALLWINNER_A10_PIC
-+    select ALLWINNER_CRYPTO_SUN4I_SS
-     select ALLWINNER_EMAC
-     select SERIAL
-     select UNIMP
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index 05e84728cb..e9104ee028 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -23,6 +23,7 @@
- #include "hw/misc/unimp.h"
- #include "sysemu/sysemu.h"
- #include "hw/boards.h"
-+#include "hw/crypto/allwinner-sun4i-ss.h"
- #include "hw/usb/hcd-ohci.h"
- 
- #define AW_A10_MMC0_BASE        0x01c0f000
-@@ -32,6 +33,7 @@
- #define AW_A10_EMAC_BASE        0x01c0b000
- #define AW_A10_EHCI_BASE        0x01c14000
- #define AW_A10_OHCI_BASE        0x01c14400
-+#define AW_A10_CRYPTO_BASE      0x01c15000
- #define AW_A10_SATA_BASE        0x01c18000
- #define AW_A10_RTC_BASE         0x01c20d00
- 
-@@ -48,6 +50,10 @@ static void aw_a10_init(Object *obj)
- 
-     object_initialize_child(obj, "emac", &s->emac, TYPE_AW_EMAC);
- 
-+#if defined CONFIG_NETTLE
-+    object_initialize_child(obj, "crypto", &s->crypto, TYPE_AW_SUN4I_SS);
-+#endif
-+
-     object_initialize_child(obj, "sata", &s->sata, TYPE_ALLWINNER_AHCI);
- 
-     if (machine_usb(current_machine)) {
-@@ -115,6 +121,11 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(sysbusdev, 0, AW_A10_EMAC_BASE);
-     sysbus_connect_irq(sysbusdev, 0, qdev_get_gpio_in(dev, 55));
- 
-+#if defined CONFIG_NETTLE
-+    sysbus_realize(SYS_BUS_DEVICE(&s->crypto), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->crypto), 0, AW_A10_CRYPTO_BASE);
-+#endif
-+
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sata), errp)) {
-         return;
-     }
-diff --git a/hw/crypto/Kconfig b/hw/crypto/Kconfig
-new file mode 100644
-index 0000000000..5ecfe44b10
---- /dev/null
-+++ b/hw/crypto/Kconfig
-@@ -0,0 +1,2 @@
-+config ALLWINNER_CRYPTO_SUN4I_SS
-+    bool
-diff --git a/hw/crypto/allwinner-sun4i-ss.c b/hw/crypto/allwinner-sun4i-ss.c
-new file mode 100644
-index 0000000000..e7d85646e6
---- /dev/null
-+++ b/hw/crypto/allwinner-sun4i-ss.c
-@@ -0,0 +1,688 @@
-+/*
-+ * Allwinner sun4i-ss cryptographic offloader emulation
-+ *
-+ * Copyright (C) 2022 Corentin Labbe <clabbe@baylibre.com>
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "qapi/error.h"
-+#include "hw/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "hw/irq.h"
-+#include "qemu/log.h"
-+#include "trace.h"
-+#include "qemu/module.h"
-+#include "exec/cpu-common.h"
-+#include "hw/crypto/allwinner-sun4i-ss.h"
-+
-+#include <nettle/aes.h>
-+#include <nettle/cbc.h>
-+#include <nettle/des.h>
-+#include <nettle/md5.h>
-+#include <nettle/sha1.h>
-+
-+#define SS_IV_ARBITRARY (1 << 14)
-+
-+/* SS operation mode - bits 12-13 */
-+#define SS_ECB (0 << 12)
-+#define SS_CBC (1 << 12)
-+
-+/* Key size for AES - bits 8-9 */
-+#define SS_AES_128BITS (0 << 8)
-+#define SS_AES_192BITS (1 << 8)
-+#define SS_AES_256BITS (2 << 8)
-+
-+/* Operation direction - bit 7 */
-+#define SS_ENCRYPTION  (0 << 7)
-+#define SS_DECRYPTION  (1 << 7)
-+
-+/* SS Method - bits 4-6 */
-+#define SS_OP_AES      (0 << 4)
-+#define SS_OP_DES      (1 << 4)
-+#define SS_OP_3DES     (2 << 4)
-+#define SS_OP_SHA1     (3 << 4)
-+#define SS_OP_MD5      (4 << 4)
-+#define SS_OP_PRNG     (5 << 4)
-+
-+/* Data end bit - bit 2 */
-+#define SS_DATA_END (1 << 2)
-+
-+/* SS Enable bit - bit 0 */
-+#define SS_ENABLED (1 << 0)
-+
-+enum {
-+    REG_CTL        = 0x0000,
-+    REG_KEY_0      = 0x0004,
-+    REG_KEY_1      = 0x0008,
-+    REG_KEY_2      = 0x000c,
-+    REG_KEY_3      = 0x0010,
-+    REG_KEY_4      = 0x0014,
-+    REG_KEY_5      = 0x0018,
-+    REG_KEY_6      = 0x001c,
-+    REG_KEY_7      = 0x0020,
-+    REG_IV_0       = 0x0024,
-+    REG_IV_1       = 0x0028,
-+    REG_IV_2       = 0x002c,
-+    REG_IV_3       = 0x0030,
-+    REG_IV_4       = 0x0034,
-+    REG_FCSR       = 0x0044,
-+    REG_ICSR       = 0x0048,
-+    REG_MD0        = 0x004c,
-+    REG_MD1        = 0x0050,
-+    REG_MD2        = 0x0054,
-+    REG_MD3        = 0x0058,
-+    REG_MD4        = 0x005c,
-+    REG_RXFIFO     = 0x0200,
-+    REG_TXFIFO     = 0x0204,
-+};
-+
-+static void allwinner_sun4i_ss_try_work(AwSun4iSSState *s);
-+
-+/* return number of possible operation wih block size=bs */
-+static unsigned int can_work(AwSun4iSSState *s, unsigned int bs)
-+{
-+    unsigned int avail_rx = s->rxc / (bs / 4);
-+    unsigned int free_space_tx = (SS_TX_MAX - s->txc) / (bs / 4);
-+
-+    if (avail_rx > free_space_tx) {
-+        return free_space_tx;
-+    }
-+    return avail_rx;
-+}
-+
-+/*
-+ * Without any knowledge on the PRNG, the only solution is
-+ * to emulate it via g_random_int()
-+ */
-+static void do_prng(AwSun4iSSState *s)
-+{
-+    unsigned int size = 20;
-+    int i;
-+
-+    for (i = 0; i < size / 4; i++) {
-+        s->tx[i] = g_random_int();
-+    }
-+    s->txc += size / 4;
-+}
-+
-+/* remove pop u32 words from RX */
-+static void rx_pop(AwSun4iSSState *s, unsigned int pop)
-+{
-+    uint32_t *rx = (uint32_t *)s->rx;
-+    int i;
-+
-+    for (i = 0; i < s->rxc; i++) {
-+        rx[i] = rx[i + pop];
-+    }
-+}
-+
-+static void do_md5(AwSun4iSSState *s)
-+{
-+    unsigned int size = MD5_BLOCK_SIZE;
-+    unsigned char *src = s->rx;
-+
-+    nettle_md5_compress(s->md, src);
-+
-+    s->rxc -= size / 4;
-+    if (s->rxc > 0) {
-+        rx_pop(s, size / 4);
-+        allwinner_sun4i_ss_try_work(s);
-+    }
-+}
-+
-+static void do_sha1(AwSun4iSSState *s)
-+{
-+    unsigned int size = SHA1_BLOCK_SIZE;
-+    unsigned char *src = s->rx;
-+
-+    nettle_sha1_compress(s->md, src);
-+
-+    s->rxc -= size / 4;
-+    if (s->rxc > 0) {
-+        rx_pop(s, size / 4);
-+        allwinner_sun4i_ss_try_work(s);
-+    }
-+}
-+
-+static void do_des(AwSun4iSSState *s)
-+{
-+    struct CBC_CTX(struct des_ctx, DES_BLOCK_SIZE) cdes;
-+    struct des_ctx des;
-+    unsigned char *src = s->rx;
-+    unsigned char *dst = s->tx + s->txc * 4;
-+    unsigned char *key = (unsigned char *)s->key;
-+    unsigned int size = DES_BLOCK_SIZE;
-+    unsigned char biv[DES_BLOCK_SIZE];
-+
-+    if (s->ctl & SS_DECRYPTION) {
-+        memcpy(biv, src, DES_BLOCK_SIZE);
-+    }
-+
-+    if (s->ctl & SS_CBC) {
-+        CBC_SET_IV(&cdes, s->iv);
-+        if (s->ctl & SS_DECRYPTION) {
-+            des_set_key(&cdes.ctx, key);
-+            CBC_DECRYPT(&cdes, des_decrypt, size, dst, src);
-+        } else {
-+            des_set_key(&cdes.ctx, key);
-+            CBC_ENCRYPT(&cdes, des_encrypt, size, dst, src);
-+        }
-+        /* Copy next IV in registers */
-+        if (s->ctl & SS_DECRYPTION) {
-+            memcpy(s->iv, biv, DES_BLOCK_SIZE);
-+        } else {
-+            memcpy(s->iv, dst, DES_BLOCK_SIZE);
-+        }
-+    } else {
-+        if (s->ctl & SS_DECRYPTION) {
-+            des_set_key(&des, key);
-+            des_decrypt(&des, size, dst, src);
-+        } else {
-+                des_set_key(&des, key);
-+                des_encrypt(&des, size, dst, src);
-+            }
-+    }
-+    s->txc += size / 4;
-+    s->rxc -= size / 4;
-+
-+    if (s->rxc > 0) {
-+        rx_pop(s, size / 4);
-+        allwinner_sun4i_ss_try_work(s);
-+    }
-+}
-+
-+static void do_des3(AwSun4iSSState *s)
-+{
-+    struct CBC_CTX(struct des3_ctx, DES3_BLOCK_SIZE) cdes3;
-+    struct des3_ctx des3;
-+    unsigned char *src = s->rx;
-+    unsigned char *dst = s->tx + s->txc * 4;
-+    unsigned char *key = (unsigned char *)s->key;
-+    unsigned int size = DES3_BLOCK_SIZE;
-+    unsigned char biv[DES3_BLOCK_SIZE];
-+
-+    if (s->ctl & SS_DECRYPTION) {
-+        memcpy(biv, src, DES3_BLOCK_SIZE);
-+    }
-+
-+    if (s->ctl & SS_CBC) {
-+        CBC_SET_IV(&cdes3, s->iv);
-+        if (s->ctl & SS_DECRYPTION) {
-+            des3_set_key(&cdes3.ctx, key);
-+            CBC_DECRYPT(&cdes3, des3_decrypt, size, dst, src);
-+        } else {
-+            des3_set_key(&cdes3.ctx, key);
-+            CBC_ENCRYPT(&cdes3, des3_encrypt, size, dst, src);
-+        }
-+        /* Copy next IV in registers */
-+        if (s->ctl & SS_DECRYPTION) {
-+            memcpy(s->iv, biv, DES3_BLOCK_SIZE);
-+        } else {
-+            memcpy(s->iv, dst, DES3_BLOCK_SIZE);
-+        }
-+    } else {
-+        if (s->ctl & SS_DECRYPTION) {
-+            des3_set_key(&des3, key);
-+            des3_decrypt(&des3, size, dst, src);
-+        } else {
-+            des3_set_key(&des3, key);
-+            des3_encrypt(&des3, size, dst, src);
-+        }
-+    }
-+    s->txc += size / 4;
-+    s->rxc -= size / 4;
-+
-+    if (s->rxc > 0) {
-+        rx_pop(s, size / 4);
-+        allwinner_sun4i_ss_try_work(s);
-+    }
-+}
-+
-+static void do_aes(AwSun4iSSState *s)
-+{
-+    struct CBC_CTX(struct aes128_ctx, AES_BLOCK_SIZE) aes128;
-+    struct CBC_CTX(struct aes192_ctx, AES_BLOCK_SIZE) aes192;
-+    struct CBC_CTX(struct aes256_ctx, AES_BLOCK_SIZE) aes256;
-+    struct aes128_ctx ecb128;
-+    struct aes192_ctx ecb192;
-+    struct aes256_ctx ecb256;
-+    unsigned char *src = s->rx;
-+    unsigned char *dst = s->tx + s->txc * 4;
-+    unsigned char *key = (unsigned char *)s->key;
-+    unsigned int size = AES_BLOCK_SIZE;
-+    unsigned char biv[AES_BLOCK_SIZE];
-+
-+    if (s->ctl & SS_DECRYPTION) {
-+        memcpy(biv, src, AES_BLOCK_SIZE);
-+    }
-+
-+    if (s->ctl & SS_CBC) {
-+        switch (s->ctl & 0x300) {
-+        case SS_AES_128BITS:
-+            CBC_SET_IV(&aes128, s->iv);
-+
-+            if (s->ctl & SS_DECRYPTION) {
-+                aes128_set_decrypt_key(&aes128.ctx, key);
-+                CBC_DECRYPT(&aes128, aes128_decrypt, size, dst, src);
-+            } else {
-+                aes128_set_encrypt_key(&aes128.ctx, key);
-+                CBC_ENCRYPT(&aes128, aes128_encrypt, size, dst, src);
-+            }
-+            break;
-+        case SS_AES_192BITS:
-+            CBC_SET_IV(&aes192, s->iv);
-+
-+            if (s->ctl & SS_DECRYPTION) {
-+                aes192_set_decrypt_key(&aes192.ctx, key);
-+                CBC_DECRYPT(&aes192, aes192_decrypt, size, dst, src);
-+            } else {
-+                aes192_set_encrypt_key(&aes192.ctx, key);
-+                CBC_ENCRYPT(&aes192, aes192_encrypt, size, dst, src);
-+            }
-+            break;
-+        case SS_AES_256BITS:
-+            CBC_SET_IV(&aes256, s->iv);
-+
-+            if (s->ctl & SS_DECRYPTION) {
-+                aes256_set_decrypt_key(&aes256.ctx, key);
-+                CBC_DECRYPT(&aes256, aes256_decrypt, size, dst, src);
-+            } else {
-+                aes256_set_encrypt_key(&aes256.ctx, key);
-+                CBC_ENCRYPT(&aes256, aes256_encrypt, size, dst, src);
-+            }
-+            break;
-+        }
-+        /* Copy next IV in registers */
-+        if (s->ctl & SS_DECRYPTION) {
-+            memcpy(s->iv, biv, AES_BLOCK_SIZE);
-+        } else {
-+            memcpy(s->iv, dst, AES_BLOCK_SIZE);
-+        }
-+    } else {
-+        switch (s->ctl & 0x300) {
-+        case SS_AES_128BITS:
-+            if (s->ctl & SS_DECRYPTION) {
-+                aes128_set_decrypt_key(&ecb128, key);
-+                aes128_decrypt(&ecb128, size, dst, src);
-+            } else {
-+                aes128_set_encrypt_key(&ecb128, key);
-+                aes128_encrypt(&ecb128, size, dst, src);
-+            }
-+            break;
-+        case SS_AES_192BITS:
-+            if (s->ctl & SS_DECRYPTION) {
-+                aes192_set_decrypt_key(&ecb192, key);
-+                aes192_decrypt(&ecb192, size, dst, src);
-+            } else {
-+                aes192_set_encrypt_key(&ecb192, key);
-+                aes192_encrypt(&ecb192, size, dst, src);
-+            }
-+            break;
-+        case SS_AES_256BITS:
-+            if (s->ctl & SS_DECRYPTION) {
-+                aes256_set_decrypt_key(&ecb256, (const unsigned char *) s->key);
-+                aes256_decrypt(&ecb256, size, dst, src);
-+            } else {
-+                aes256_set_encrypt_key(&ecb256, (const unsigned char *) s->key);
-+                aes256_encrypt(&ecb256, size, dst, src);
-+            }
-+            break;
-+        }
-+    }
-+    s->txc += size / 4;
-+    s->rxc -= size / 4;
-+
-+    if (s->rxc > 0) {
-+        rx_pop(s, size / 4);
-+        allwinner_sun4i_ss_try_work(s);
-+    }
-+}
-+
-+static void allwinner_sun4i_ss_update_fcsr(AwSun4iSSState *s)
-+{
-+    s->fcsr = (s->txc << 16) | ((32 - s->rxc) << 24);
-+}
-+
-+static void allwinner_sun4i_ss_try_work(AwSun4iSSState *s)
-+{
-+    if (!(s->ctl & SS_ENABLED)) {
-+        return;
-+    }
-+    if ((s->ctl & 0x70) == SS_OP_AES && can_work(s, AES_BLOCK_SIZE)) {
-+        do_aes(s);
-+        allwinner_sun4i_ss_update_fcsr(s);
-+        return;
-+    }
-+    if ((s->ctl & 0x70) == SS_OP_DES && can_work(s, DES_BLOCK_SIZE)) {
-+        do_des(s);
-+        allwinner_sun4i_ss_update_fcsr(s);
-+        return;
-+    }
-+    if ((s->ctl & 0x70) == SS_OP_3DES && can_work(s, DES3_BLOCK_SIZE)) {
-+        do_des3(s);
-+        allwinner_sun4i_ss_update_fcsr(s);
-+        return;
-+    }
-+    if ((s->ctl & 0x70) == SS_OP_MD5 && s->rxc >= MD5_BLOCK_SIZE / 4) {
-+        do_md5(s);
-+        allwinner_sun4i_ss_update_fcsr(s);
-+        return;
-+    }
-+    if ((s->ctl & 0x70) == SS_OP_SHA1 && s->rxc >= SHA1_BLOCK_SIZE / 4) {
-+        do_sha1(s);
-+        allwinner_sun4i_ss_update_fcsr(s);
-+        return;
-+    }
-+    if ((s->ctl & 0x70) == SS_OP_PRNG) {
-+        do_prng(s);
-+        allwinner_sun4i_ss_update_fcsr(s);
-+        return;
-+    }
-+}
-+
-+static uint32_t tx_pop(AwSun4iSSState *s)
-+{
-+    uint32_t *tx = (uint32_t *)s->tx;
-+    uint32_t v = 0;
-+    int i;
-+
-+    if (s->txc > 0) {
-+        v = tx[0];
-+        s->txc--;
-+        for (i = 0; i < s->txc; i++) {
-+            tx[i] = tx[i + 1];
-+        }
-+        allwinner_sun4i_ss_update_fcsr(s);
-+        allwinner_sun4i_ss_try_work(s);
-+    }
-+    return v;
-+}
-+
-+static void allwinner_sun4i_ss_reset_common(AwSun4iSSState *s)
-+{
-+    s->ctl = 0;
-+    s->txc = 0;
-+    s->rxc = 0;
-+    allwinner_sun4i_ss_update_fcsr(s);
-+}
-+
-+static void allwinner_sun4i_ss_reset(DeviceState *dev)
-+{
-+    AwSun4iSSState *s = AW_SUN4I_SS(dev);
-+
-+    trace_allwinner_sun4i_ss_reset();
-+
-+    allwinner_sun4i_ss_reset_common(s);
-+}
-+
-+static uint64_t allwinner_sun4i_ss_read(void *opaque, hwaddr offset,
-+                                          unsigned size)
-+{
-+    AwSun4iSSState *s = AW_SUN4I_SS(opaque);
-+    uint64_t value = 0;
-+
-+    switch (offset) {
-+    case REG_CTL:
-+        value = s->ctl;
-+        break;
-+    case REG_IV_0:
-+        value = s->iv[0];
-+        break;
-+    case REG_IV_1:
-+        value = s->iv[1];
-+        break;
-+    case REG_IV_2:
-+        value = s->iv[2];
-+        break;
-+    case REG_IV_3:
-+        value = s->iv[3];
-+        break;
-+    case REG_IV_4:
-+        value = s->iv[4];
-+        break;
-+    case REG_FCSR:
-+        value = s->fcsr;
-+        break;
-+    case REG_KEY_0:
-+        value = s->key[0];
-+        break;
-+    case REG_KEY_1:
-+        value = s->key[1];
-+        break;
-+    case REG_KEY_2:
-+        value = s->key[2];
-+        break;
-+    case REG_KEY_3:
-+        value = s->key[3];
-+        break;
-+    case REG_KEY_4:
-+        value = s->key[4];
-+        break;
-+    case REG_KEY_5:
-+        value = s->key[5];
-+        break;
-+    case REG_KEY_6:
-+        value = s->key[6];
-+        break;
-+    case REG_KEY_7:
-+        value = s->key[7];
-+        break;
-+    case REG_MD0:
-+        value = s->md[0];
-+        break;
-+    case REG_MD1:
-+        value = s->md[1];
-+        break;
-+    case REG_MD2:
-+        value = s->md[2];
-+        break;
-+    case REG_MD3:
-+        value = s->md[3];
-+        break;
-+    case REG_MD4:
-+        value = s->md[4];
-+        break;
-+    case REG_TXFIFO:
-+        value = tx_pop(s);
-+        break;
-+    case REG_RXFIFO:
-+        value = s->rx[0];
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "allwinner_sun4i_ss: read access to unknown "
-+                                 "CRYPTO register 0x" TARGET_FMT_plx "\n",
-+                                  offset);
-+    }
-+
-+    trace_allwinner_sun4i_ss_read(offset, value);
-+    return value;
-+}
-+
-+static void rx_push(AwSun4iSSState *s, uint32_t value)
-+{
-+    uint32_t *rx = (uint32_t *)s->rx;
-+
-+    if (!(s->ctl & SS_ENABLED)) {
-+        return;
-+    }
-+    if (s->rxc > SS_RX_MAX) {
-+        return;
-+    }
-+    rx[s->rxc] = value;
-+    s->rxc++;
-+    allwinner_sun4i_ss_update_fcsr(s);
-+    allwinner_sun4i_ss_try_work(s);
-+
-+    return;
-+}
-+
-+static void allwinner_sun4i_ss_write(void *opaque, hwaddr offset,
-+                                       uint64_t value, unsigned size)
-+{
-+    AwSun4iSSState *s = AW_SUN4I_SS(opaque);
-+    bool was_disabled = !(s->ctl & SS_ENABLED);
-+
-+    trace_allwinner_sun4i_ss_write(offset, value);
-+
-+    switch (offset) {
-+    case REG_CTL:
-+        s->ctl = value;
-+        if (!(s->ctl & SS_ENABLED)) {
-+            allwinner_sun4i_ss_reset_common(s);
-+            break;
-+        }
-+        if (was_disabled) {
-+            if (s->ctl & SS_IV_ARBITRARY) {
-+                s->md[0] = s->iv[0];
-+                s->md[1] = s->iv[1];
-+                s->md[2] = s->iv[2];
-+                s->md[3] = s->iv[3];
-+                s->md[4] = s->iv[4];
-+            } else {
-+                if ((s->ctl & 0x70) == SS_OP_MD5) {
-+                    s->md[0] = 0x67452301;
-+                    s->md[1] = 0xefcdab89;
-+                    s->md[2] = 0x98badcfe;
-+                    s->md[3] = 0x10325476;
-+                } else {
-+                    s->md[0] = 0x67452301;
-+                    s->md[1] = 0xefcdab89;
-+                    s->md[2] = 0x98badcfe;
-+                    s->md[3] = 0x10325476;
-+                    s->md[4] = 0xC3D2E1F0;
-+                }
-+            }
-+        }
-+        if ((s->ctl & 0x70) == SS_OP_PRNG) {
-+            do_prng(s);
-+            allwinner_sun4i_ss_update_fcsr(s);
-+        }
-+        if ((s->ctl & 0x70) == SS_OP_MD5 && s->ctl & SS_DATA_END) {
-+            s->ctl &= ~SS_DATA_END;
-+            return;
-+        }
-+        if ((s->ctl & 0x70) == SS_OP_SHA1 && s->ctl & SS_DATA_END) {
-+            s->ctl &= ~SS_DATA_END;
-+            return;
-+        }
-+        break;
-+    case REG_IV_0:
-+        s->iv[0] = value;
-+        break;
-+    case REG_IV_1:
-+        s->iv[1] = value;
-+        break;
-+    case REG_IV_2:
-+        s->iv[2] = value;
-+        break;
-+    case REG_IV_3:
-+        s->iv[3] = value;
-+        break;
-+    case REG_IV_4:
-+        s->iv[4] = value;
-+        break;
-+    case REG_KEY_0:
-+        s->key[0] = value;
-+        break;
-+    case REG_KEY_1:
-+        s->key[1] = value;
-+        break;
-+    case REG_KEY_2:
-+        s->key[2] = value;
-+        break;
-+    case REG_KEY_3:
-+        s->key[3] = value;
-+        break;
-+    case REG_KEY_4:
-+        s->key[4] = value;
-+        break;
-+    case REG_KEY_5:
-+        s->key[5] = value;
-+        break;
-+    case REG_KEY_6:
-+        s->key[6] = value;
-+        break;
-+    case REG_KEY_7:
-+        s->key[7] = value;
-+        break;
-+    case REG_RXFIFO:
-+        rx_push(s, value);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "allwinner_sun4i_ss: write access to unknown "
-+                                 "CRYPTO register 0x" TARGET_FMT_plx "\n",
-+                                  offset);
-+    }
-+}
-+
-+static const MemoryRegionOps allwinner_sun4i_ss_mem_ops = {
-+    .read = allwinner_sun4i_ss_read,
-+    .write = allwinner_sun4i_ss_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .impl.min_access_size = 4,
-+};
-+
-+static void allwinner_sun4i_ss_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    AwSun4iSSState *s = AW_SUN4I_SS(obj);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_sun4i_ss_mem_ops,
-+                           s, TYPE_AW_SUN4I_SS, 4 * KiB);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_allwinner_sun4i_ss = {
-+    .name = "allwinner-sun4i-ss",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(ctl, AwSun4iSSState),
-+        VMSTATE_UINT32(fcsr, AwSun4iSSState),
-+        VMSTATE_UINT32_ARRAY(iv, AwSun4iSSState, 5),
-+        VMSTATE_UINT32_ARRAY(key, AwSun4iSSState, 8),
-+        VMSTATE_UINT32_ARRAY(md, AwSun4iSSState, 5),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void allwinner_sun4i_ss_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = allwinner_sun4i_ss_reset;
-+    dc->vmsd = &vmstate_allwinner_sun4i_ss;
-+}
-+
-+static const TypeInfo allwinner_sun4i_ss_info = {
-+    .name           = TYPE_AW_SUN4I_SS,
-+    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(AwSun4iSSState),
-+    .instance_init  = allwinner_sun4i_ss_init,
-+    .class_init     = allwinner_sun4i_ss_class_init,
-+};
-+
-+static void allwinner_sun4i_ss_register_types(void)
-+{
-+    type_register_static(&allwinner_sun4i_ss_info);
-+}
-+
-+type_init(allwinner_sun4i_ss_register_types)
-diff --git a/hw/crypto/meson.build b/hw/crypto/meson.build
-new file mode 100644
-index 0000000000..4368e1e401
---- /dev/null
-+++ b/hw/crypto/meson.build
-@@ -0,0 +1,3 @@
-+if nettle.found()
-+    softmmu_ss.add(when: 'CONFIG_ALLWINNER_CRYPTO_SUN4I_SS', if_true: files('allwinner-sun4i-ss.c'))
-+endif
-diff --git a/hw/crypto/trace-events b/hw/crypto/trace-events
-new file mode 100644
-index 0000000000..39739b317b
---- /dev/null
-+++ b/hw/crypto/trace-events
-@@ -0,0 +1,3 @@
-+allwinner_sun4i_ss_reset(void) "HW reset"
-+allwinner_sun4i_ss_read(uint64_t offset, uint64_t val) "MMIO read: offset=0x%" PRIx64 " value=0x%" PRIx64
-+allwinner_sun4i_ss_write(uint64_t offset, uint64_t val) "MMIO write: offset=0x%" PRIx64 " value=0x%" PRIx64
-diff --git a/hw/crypto/trace.h b/hw/crypto/trace.h
-new file mode 100644
-index 0000000000..36d01d937d
---- /dev/null
-+++ b/hw/crypto/trace.h
-@@ -0,0 +1 @@
-+#include "trace/trace-hw_crypto.h"
-diff --git a/hw/meson.build b/hw/meson.build
-index b3366c888e..b8d2cdcc38 100644
---- a/hw/meson.build
-+++ b/hw/meson.build
-@@ -6,6 +6,7 @@ subdir('block')
- subdir('char')
- subdir('core')
- subdir('cpu')
-+subdir('crypto')
- subdir('display')
- subdir('dma')
- subdir('gpio')
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index a76dc7b84d..d5b1d3f616 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -4,6 +4,7 @@
- #include "qemu/error-report.h"
- #include "hw/char/serial.h"
- #include "hw/arm/boot.h"
-+#include "hw/crypto/allwinner-sun4i-ss.h"
- #include "hw/timer/allwinner-a10-pit.h"
- #include "hw/intc/allwinner-a10-pic.h"
- #include "hw/net/allwinner_emac.h"
-@@ -33,6 +34,7 @@ struct AwA10State {
-     AwA10PITState timer;
-     AwA10PICState intc;
-     AwEmacState emac;
-+    AwSun4iSSState crypto;
-     AllwinnerAHCIState sata;
-     AwSdHostState mmc0;
-     AwRtcState rtc;
-diff --git a/include/hw/crypto/allwinner-sun4i-ss.h b/include/hw/crypto/allwinner-sun4i-ss.h
-new file mode 100644
-index 0000000000..e604819ad0
---- /dev/null
-+++ b/include/hw/crypto/allwinner-sun4i-ss.h
-@@ -0,0 +1,72 @@
-+/*
-+ * Allwinner sun4i-ss cryptographic offloader emulation
-+ *
-+ * Copyright (C) 2022 Corentin Labbe <clabbe@baylibre.com>
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef HW_CRYPTO_ALLWINNER_SUN4I_SS_H
-+#define HW_CRYPTO_ALLWINNER_SUN4I_SS_H
-+
-+#include "qom/object.h"
-+#include "hw/sysbus.h"
-+
-+#define SS_RX_MAX     32
-+#define SS_RX_DEFAULT SS_RX_MAX
-+#define SS_TX_MAX     33
-+
-+/**
-+ * Object model
-+ * @{
-+ */
-+
-+#define TYPE_AW_SUN4I_SS "allwinner-sun4i-ss"
-+OBJECT_DECLARE_SIMPLE_TYPE(AwSun4iSSState, AW_SUN4I_SS)
-+
-+/** @} */
-+
-+/**
-+ * Allwinner sun4i-ss crypto object instance state
-+ */
-+struct AwSun4iSSState {
-+    /*< private >*/
-+    SysBusDevice  parent_obj;
-+    /*< public >*/
-+
-+    /** Maps I/O registers in physical memory */
-+    MemoryRegion iomem;
-+
-+    /** @} */
-+    unsigned char rx[SS_RX_MAX * 4];
-+    unsigned int rxc;
-+    unsigned char tx[SS_TX_MAX * 4];
-+    unsigned int txc;
-+
-+    /**
-+     * @name Hardware Registers
-+     * @{
-+     */
-+
-+    uint32_t    ctl;    /**< Control register */
-+    uint32_t    fcsr;   /**< FIFO control register */
-+    uint32_t    iv[5];  /**< IV registers */
-+    uint32_t    key[8]; /**< KEY registers */
-+    uint32_t    md[5];  /**< Message Digest registers */
-+
-+    /** @} */
-+
-+};
-+
-+#endif /* HW_CRYPTO_ALLWINNER_SUN4I_SS_H */
-diff --git a/meson.build b/meson.build
-index 861de93c4f..cf0bf07bf4 100644
---- a/meson.build
-+++ b/meson.build
-@@ -2718,6 +2718,7 @@ if have_system
-     'hw/block',
-     'hw/block/dataplane',
-     'hw/char',
-+    'hw/crypto',
-     'hw/display',
-     'hw/dma',
-     'hw/hppa',
--- 
-2.35.1
-
+The 04/01/2022 13:25, Cédric Le Goater wrote:
+Hi Cedric,
+> Hello Jamin,
+> 
+> On 4/1/22 11:23, Jamin Lin wrote:
+> > Hi Cedric, Joel and Andrew
+> > First all, thanks for all your kindly support and review. We are so
+> > glad that QEMU v7.1 will support AST1030 model.
+> 
+> QEMU 7.1 is for after the summer.
+> 
+> > 
+> > 1. The ast1030 and ast2600 HACE controller are identical.
+> >    Steven submitted the patch to support HACE ACC mode. Once his patch
+> > accept. We will submit patch to support ast1030 model.
+> 
+> I think Joel is tracking these changes.
+> 
+> > 2. I submitted the patch to support GOIO index mode because ast1030
+> >  driver was implement by index mode. I am waiting for review and any 
+> > suggestion will be appreciated.
+> 
+> That's Andrew's turf. Or Rashmica if she has time ? I could do it but not
+> now and it will take longer since I know less this area of the HW.
+> 
+> > 3. Troy submitted the patch to support I2C new model which included ast1030 model.
+> 
+> Yes. I think there is another submission on the topic. I reviewed the one
+> Troy sent and some rework is needed. The I2C model is becoming quite complex
+> and changes need to me introduced progressively.
+>   
+> 
+> > 4. As for NIC plan, once AST1030 NIC driver ready, we will upstream, too.
+> 
+> It's not a FTGMAC100 ?
+> 
+It seems we can use FTGMAC100 model for AST1030 model.
+However, we do not have NIC driver to support zephyr os for AST1030.
+Once the driver ready, we will test it in qemu and upstream, too.
+Thanks-Jamin
+> 
+> > BTW, do you have a plan to upstream it, https://github.com/openbmc/qemu/blob/master/hw/misc/aspeed_pwm.c
+> 
+> I don't. That's really an empty skeleton. There is no problem in merging it
+> but if someone of your team has time to grow the model, please do !
+> 
+> Thanks,
+> 
+> C.
+> 
+> 
+> > 
+> > Thanks again - Jamin
+> > 
+> > ************* Email Confidentiality Notice ********************
+> > DISCLAIMER:
+> > This message (and any attachments) may contain legally privileged and/or other confidential information. If you have received it in error, please notify the sender by reply e-mail and immediately delete the e-mail and any attachments without copying or disclosing the contents. Thank you.
+> > 
+> > -----Original Message-----
+> > From: Cédric Le Goater <clg@kaod.org>
+> > Sent: Friday, April 1, 2022 4:55 PM
+> > To: Jamin Lin <jamin_lin@aspeedtech.com>; Alistair Francis <alistair@alistair23.me>; Peter Maydell <peter.maydell@linaro.org>; Andrew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>; Cleber Rosa <crosa@redhat.com>; Philippe Mathieu-Daudé <f4bug@amsat.org>; Wainer dos Santos Moschetta <wainersm@redhat.com>; Beraldo Leal <bleal@redhat.com>; open list:STM32F205 <qemu-arm@nongnu.org>; open list:All patches CC here <qemu-devel@nongnu.org>
+> > Cc: Steven Lee <steven_lee@aspeedtech.com>; Troy Lee <troy_lee@aspeedtech.com>
+> > Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
+> > 
+> > Hello Jamin,
+> > 
+> > Thanks for these new models and machine. They are queued for QEMU 7.1.
+> > There are a couple of patchsets adding support for the AST1030 GPIO controller and the I2C new mode that would be good extensions but they need review first.
+> > 
+> > What are the next steps? any plans for network ? The NIC should be a
+> > FTGMAC100 if I am correct.
+> > 
+> > Thanks,
+> > 
+> > C.
+> > 
+> > 
+> >    On 4/1/22 10:38, Jamin Lin wrote:
+> >> Changes from v5:
+> >> - remove TYPE_ASPEED_MINIBMC_MACHINE and ASPEED_MINIBMC_MACHINE
+> >> - remove ast1030_machine_instance_init function
+> >>
+> >> Changes from v4:
+> >> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
+> >>
+> >> Changes from v3:
+> >> - remove AspeedMiniBmcMachineState state structure and
+> >>     AspeedMiniBmcMachineClass class
+> >> - remove redundant new line in hw/arm/aspeed_ast10xx.c
+> >> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
+> >>
+> >> Changes from v2:
+> >> - replace aspeed_ast1030.c with aspeed_ast10xx.c for minibmc SOCs
+> >> family support
+> >> - Add "ast1030-evb" machine in aspeed.c and removes aspeed_minibmc.c
+> >>
+> >> Changes from v1:
+> >> The patch series supports ADC, SCU, SMC, TIMER, and WDT for AST1030 SoC.
+> >> Add avocado test case for "ast1030-evb" machine.
+> >>
+> >> Test steps:
+> >> 1. Download image from
+> >>      
+> >> https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.04/a
+> >> st1030-evb-demo.zip 2. Extract the zip file to obtain zephyr.elf 3.
+> >> Run ./qemu-system-arm -M ast1030-evb -kernel $PATH/zephyr.elf
+> >> -nographic 4. Test IO by Zephyr command line, commands are refer to Aspeed Zephyr
+> >>      SDK User Guide below
+> >>      https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.04/Aspeed_Zephy_SDK_User_Guide_v00.01.04.pdf
+> >>      - ADC(channel 0):
+> >>          uart:~$ adc ADC0 resolution 10
+> >>          uart:~$ adc ADC0 calibrate 1
+> >>          uart:~$ adc ADC0 read_format 1
+> >>          uart:~$ adc ADC0 read 0
+> >>          [Result]
+> >>          read: 1416mv
+> >>
+> >>      - SCU
+> >>          uart:~$ md 7e6e2040
+> >>          uart:~$ md 7e6e2080
+> >>          uart:~$ md 7e6e20d0
+> >>          uart:~$ md 7e6e2200
+> >>          uart:~$ md 7e6e2300
+> >>          uart:~$ md 7e6e25b0
+> >>          [Result]
+> >>          The register value should match the value of ast1030_a1_resets
+> >>          in aspeed_scu.c
+> >>
+> >>      - Flash(fmc_cs0):
+> >>          uart:~$ flash write fmc_cs0 0 0x12345678 0x87654321 0x34127856 0x78563412
+> >>          uart:~$ flash read fmc_cs0 0 10
+> >>          [Result]
+> >>          00000000: 78 56 34 12 21 43 65 87  56 78 12 34 12 34 56 78
+> >> |xV4.!Ce. Vx.4.4Vx|
+> >>
+> >>          uart:~$ flash erase fmc_cs0 0
+> >>          uart:~$ flash read fmc_cs0 0 10
+> >>          [Result]
+> >>          00000000: ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff
+> >> |........ ........|
+> >>
+> >>      - Timer(TIMER0):
+> >>          uart:~$ timer start TIMER0 -p 2000 -t 0
+> >>          TIMER0: period 20000 ms, type 0
+> >>          [Result]
+> >>          timer expired after 2 seconds
+> >>
+> >>      - Watchdog(WDT1):
+> >>          uart:~$ mw 7e785008 4755
+> >>          uart:~$ mw 7e78500c 1
+> >>          [Result]
+> >>          soc reset after 22 seconds
+> >>
+> >> Based-on: 20220315075753.8591-3-steven_lee@aspeedtech.com
+> >> ([v2,2/2] hw: aspeed_scu: Introduce clkin_25Mhz attribute)
+> >>
+> >> Jamin Lin (2):
+> >>     aspeed: Add an AST1030 eval board
+> >>     test/avocado/machine_aspeed.py: Add ast1030 test case
+> >>
+> >> Steven Lee (7):
+> >>     aspeed/adc: Add AST1030 support
+> >>     aspeed/smc: Add AST1030 support
+> >>     aspeed/wdt: Fix ast2500/ast2600 default reload value
+> >>     aspeed/wdt: Add AST1030 support
+> >>     aspeed/timer: Add AST1030 support
+> >>     aspeed/scu: Add AST1030 support
+> >>     aspeed/soc : Add AST1030 support
+> >>
+> >>    hw/adc/aspeed_adc.c              |  16 ++
+> >>    hw/arm/aspeed.c                  |  66 +++++++
+> >>    hw/arm/aspeed_ast10xx.c          | 299 +++++++++++++++++++++++++++++++
+> >>    hw/arm/meson.build               |   6 +-
+> >>    hw/misc/aspeed_scu.c             |  63 +++++++
+> >>    hw/ssi/aspeed_smc.c              | 157 ++++++++++++++++
+> >>    hw/timer/aspeed_timer.c          |  17 ++
+> >>    hw/watchdog/wdt_aspeed.c         |  34 +++-
+> >>    include/hw/adc/aspeed_adc.h      |   1 +
+> >>    include/hw/arm/aspeed_soc.h      |   3 +
+> >>    include/hw/misc/aspeed_scu.h     |  25 +++
+> >>    include/hw/timer/aspeed_timer.h  |   1 +
+> >>    include/hw/watchdog/wdt_aspeed.h |   3 +
+> >>    tests/avocado/machine_aspeed.py  |  36 ++++
+> >>    14 files changed, 724 insertions(+), 3 deletions(-)
+> >>    create mode 100644 hw/arm/aspeed_ast10xx.c
+> >>    create mode 100644 tests/avocado/machine_aspeed.py
+> >>
+> > 
+> 

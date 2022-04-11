@@ -1,96 +1,96 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1726748lfq;
-        Mon, 11 Apr 2022 09:02:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzmwIav6mziykQ/rzqK6Kotrv8f27jKr1Hl//y666DWDwyTEDIQmQPHHQWeNhnhm1lngZJd
-X-Received: by 2002:a05:6902:4b:b0:641:619b:94c4 with SMTP id m11-20020a056902004b00b00641619b94c4mr3678934ybh.648.1649692961713;
-        Mon, 11 Apr 2022 09:02:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649692961; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1738457lfq;
+        Mon, 11 Apr 2022 09:19:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw9dapJpDrXJ+gfYu3JlpV1QgmFm8WwYAYgpILOqzIV6GKCyMRSTi+MLSvY52yUvlefoaRf
+X-Received: by 2002:a25:8e90:0:b0:637:3d1f:cc39 with SMTP id q16-20020a258e90000000b006373d1fcc39mr23737953ybl.321.1649693945391;
+        Mon, 11 Apr 2022 09:19:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649693945; cv=none;
         d=google.com; s=arc-20160816;
-        b=LO0jYXwa2AXHRiiTY3TeCHa/R4EokTNpU0pdERI2CPm2WOgvXi9fnahWoeGYvtXl8D
-         PmiHgu72eyCD1yAlYQ3RLt0Yv2G7FMyPmBkabc/47cae4WNUHlbXe8dWZ9uLVmiAZ+BQ
-         MMlYvNF21mXtSVj31PQWZae/E3a5Sp4tWw6XV/YTnytjkqwGu+shXdlCCB4vqVgsz0c4
-         nXAb7P3zwjW2GXvALUe10WWJ3YfYhi9U2B6X0BnvLTEzhoSlRr9sopVhsv8mBazToY/Y
-         R0zWa2BkJ5jlP9P1BhpzR09hy7/LH6HtEv0qjmyeUuXyEY2QH0ebiOWngx2mWo2DvUjY
-         4P7Q==
+        b=xyOlTxEP7AU9RPksZEb/IxJFYJW+Sf0M5vunIDq/doi0jTD7NLwpeC7beDYlmUjwI4
+         fHDniVsGzfYUa0cQ4jm2D8iI4CEbskgkW1DmUuqUmKKMjfNPIMmJJktlUO7pefMq2Ymc
+         6jnHLBydT+6Ca8u8WZDSm9hUYxOQ7cB1qNA8cGpEfYitFNRlenocNM9ogd7fyZzojFZi
+         BsZ4pgxcxYdNxm6ZVgvAft2g4WYEX/27ZPHVFT/bSiNShq/GpEk3IJEZtSB8Gu/Vlvd4
+         crX/jXdxhzBjWr1AUH8LNAYU4W7FTxWSWtarfl+iPyOUgirtq6IxsKndULDFgHP0wQrS
+         qEAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=v0I2JaqxtIsEx5SmzX+favuz5CQeeHHWeNGeBomrWEY=;
-        b=hJ2vGFUXccsTbT7Cd3ryz0rRNUFiMtppvrTOr0u67L7LQvGPPu1fRh4rM3LXbaLMuU
-         FI39oCpDaERmhpA46xkEq0hxpczaCrL/tPOFVDlvnoK7M6Rl7fsAwG5yhq5AZ+8LKZcq
-         xGCJvR+pR3ggdLQyUJARag8Cv7b3f0kIer1K1uZX9AxF5RUoniC/QXcrQJmp4Kp5TbHP
-         xI1TC1zNYfVCBcJbLzu2swI4T8Od2kDvY6PHrMJMdZt97uiMRrQMbiar7xqwKnV58b1L
-         5DiqGj5NazvUX7rwyNRnvagxC6FEubYc0mT0rVA4Q5X8lQBbXrfa1dw+h/ujxua64bYs
-         D/rA==
+        bh=nODrkBw822ChcumjNDkmAc9d27c5qDQev/d72qtbzD0=;
+        b=K6FeNpfIwDSTJuKi1wGTgI+tH7de1Go5FPNsQqCIQ8f+9+IJa007y0GIkJHTz7mSjR
+         LwwxlYykDqnMihpYTh5JsYbs5/0K2kdQJ52En8VQ0U5hOeY51BNjpIZzUnwSjNKXNk5p
+         jccbu/xN5hWNhT4+2kVreNTQ7xEExQMBAQbejE/pcU5Z+4Dogv7UCgnP+9y34JZI6pdM
+         dsUqjMdRchFdR4upAphTGIgPDw99JhYlEV3fPS4Gn0x8VF1SGwq0ToDBMbZdllFX9N9z
+         9D6TN5LDvSjYHhH+yL2zNoT7UmrA9/Bg27biP6WDZVsAF7AHHyTK9+7QFuVNHIm3khf2
+         hrfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Foj8fV9i;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VvPS19gy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i1-20020a253b01000000b0064115d07825si4298723yba.196.2022.04.11.09.02.41
+        by mx.google.com with ESMTPS id b74-20020a81344d000000b002eb5483af88si4573421ywa.262.2022.04.11.09.19.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Apr 2022 09:02:41 -0700 (PDT)
+        Mon, 11 Apr 2022 09:19:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Foj8fV9i;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VvPS19gy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37518 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51594 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ndwUz-0002YO-1w
-	for alex.bennee@linaro.org; Mon, 11 Apr 2022 12:02:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32858)
+	id 1ndwkq-0004A8-Q9
+	for alex.bennee@linaro.org; Mon, 11 Apr 2022 12:19:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36690)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ndwTZ-0000sh-3O
- for qemu-arm@nongnu.org; Mon, 11 Apr 2022 12:01:13 -0400
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d]:33338)
+ id 1ndwkg-00049u-Bv
+ for qemu-arm@nongnu.org; Mon, 11 Apr 2022 12:18:54 -0400
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e]:39451)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ndwTW-0003s6-I3
- for qemu-arm@nongnu.org; Mon, 11 Apr 2022 12:01:12 -0400
-Received: by mail-yb1-xb2d.google.com with SMTP id j2so28397268ybu.0
- for <qemu-arm@nongnu.org>; Mon, 11 Apr 2022 09:01:09 -0700 (PDT)
+ id 1ndwkd-0006Ru-6t
+ for qemu-arm@nongnu.org; Mon, 11 Apr 2022 12:18:54 -0400
+Received: by mail-yb1-xb2e.google.com with SMTP id w28so6287564ybi.6
+ for <qemu-arm@nongnu.org>; Mon, 11 Apr 2022 09:18:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=v0I2JaqxtIsEx5SmzX+favuz5CQeeHHWeNGeBomrWEY=;
- b=Foj8fV9i5zpWW/BXF9p5XYMXz+Z2ymOqtG8iLgRBAkXPNl/ueNF4LJ3UXmdOYhjY1L
- ElbPPjIeZCJA0cxbZL7Cjp7M3tD+7aR/dSVn30WWwv2oeNPa4aeBSFPQgN7fkFnXbCHo
- 9F2PZPrT5UK9RoUe2TWRrFnCQxH5KS7s8CSrBJEiyP6VfG3ELzz6DqzgT3rdfgXm7rpG
- THMPLA/pDViTki+CNYJbyhpdKBpZ2aSUe4ZIf5LJU/CRXI6T8x7s6lT7mWkQp4vJslUM
- yspApWwD1ngb80w1MHjqbzwOqS96qvzvBhmTG6vf0Qiwf3btg/vl26zBswgjvuSjSzEf
- +0MQ==
+ :cc; bh=nODrkBw822ChcumjNDkmAc9d27c5qDQev/d72qtbzD0=;
+ b=VvPS19gyKDUsCzrKwH9MCzAIR59/7tRGwu/K5Ilf2UWhOAjkff2RP1WXl9sVS2nTA0
+ U5UUtO2FaqvJ0xDOvL5wIDtPwWm8sDDW4R0aALSLmTm2cR/Sb1qHvstHPslK5fHGIcxg
+ jab/G6EkBHlcxHH3PUKpe9ZlYor9p6z6fCuxdXoL702iH1+zUoRuXDvvcd1ZFTpoqcEI
+ vrPSM4abB2tG9HaNxRfUgq0lcAZbIxKAE7efNKxYhvqEkwqkYwJBQQaa8hbxSNJ96Hke
+ CKCjgMeRlGUu+y3IoB3Tb7vfe66l8Rfzr9hsReO8Kucd00ZSpMsNLRSGh54uOK5IYG54
+ uljQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=v0I2JaqxtIsEx5SmzX+favuz5CQeeHHWeNGeBomrWEY=;
- b=YmXbEKkVXowaRWuoraa9qKVocI5TBoFkNPU9kCEqDVJAAVIRDbdKRyOizl5JcQf6bJ
- DQSw9dJcpfj4KuKawqdw9KimgVDid1E/xTOVbDOFhC+HeJjI4Hrk55ylxoX9y76I4nqV
- 9aNnZhN1KUHLwnK0dnPf3sPJ7fPAg5VNekUpO9l/hUr5Df61xWDBTqqscH/3/igWqLb2
- twB9hDuRZZeD00OWnf/NDqWG0/yZZFQgwI7IsrAYpu16M7G5Pp4lLDn14GEVMhwbC+tN
- IgV9SX7PSVDDuaxJRwx1cyi/Q9boNeb0PJnztWi4Oh6lStYGuFVSHiGoQdqHjcNnJbnu
- A7aQ==
-X-Gm-Message-State: AOAM533q3RCjgtl2bwRAgV5bgoRPS5kJyrhm4SwlfJpcF80bYvKYaCTi
- I1h/zFeu9EG9IdGNYxHgRPfD0u1sYwGqMkxG4lpxrQ==
-X-Received: by 2002:a5b:6c1:0:b0:633:b5c7:b9b7 with SMTP id
- r1-20020a5b06c1000000b00633b5c7b9b7mr22941998ybq.67.1649692868919; Mon, 11
- Apr 2022 09:01:08 -0700 (PDT)
+ bh=nODrkBw822ChcumjNDkmAc9d27c5qDQev/d72qtbzD0=;
+ b=072aLEXG+UxhhGRCPpjRt1dDqjP7zZpPGGQQIXBBsdjBrQH9Filb/s74XNx5Fd0vmJ
+ +qbD1tmISvx77AS0sbZ1AUQmTdkqOpaByyxFko5KVDSvokekp7GkdDTGXaihZM/BC63d
+ WsNVABqSczItQm9wOprkht/b14qIWayacy9potze4upR1syJC1seApKXFsUsrCgcZRFT
+ mlUdg6uCOEqaSzSa1GRZAAkTqCntW8OZoiipXVn11iPCliTbVCzwOfQ4AteKXZ36+TlU
+ jsDF0CUSuY+Voda1kT1qzw7wVAT7uOmY/aHkqloHPKAVoBoLIaRp4EA+F3YOrIfI3Ey6
+ s9cw==
+X-Gm-Message-State: AOAM531c3mLs+nIQkL2C5mMiMW6xFdcNALhxOvfoYxeZL8mbdWZZNCTe
+ oS09mVwPaVBz/93Pt5kergYorWvSsfiL1sfnnS9y1ss+p4yI+A==
+X-Received: by 2002:a25:ae54:0:b0:641:1aaf:c89 with SMTP id
+ g20-20020a25ae54000000b006411aaf0c89mr8867905ybe.479.1649693930019; Mon, 11
+ Apr 2022 09:18:50 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220409000742.293691-1-richard.henderson@linaro.org>
- <20220409000742.293691-14-richard.henderson@linaro.org>
-In-Reply-To: <20220409000742.293691-14-richard.henderson@linaro.org>
+ <20220409000742.293691-15-richard.henderson@linaro.org>
+In-Reply-To: <20220409000742.293691-15-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Apr 2022 17:00:58 +0100
-Message-ID: <CAFEAcA84JRXpwUzigYAUoN5Oz4RgQhpvFmukB5q2JhCqFPcD4w@mail.gmail.com>
-Subject: Re: [PATCH 13/16] target/arm: Implement virtual SError exceptions
+Date: Mon, 11 Apr 2022 17:18:39 +0100
+Message-ID: <CAFEAcA_9Eu-WZn_yMhjj23GRkz14huEVSb8xckvRyygDngwXEQ@mail.gmail.com>
+Subject: Re: [PATCH 14/16] target/arm: Implement ESB instruction
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,23 +113,201 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CVvNkGRQifaM
+X-TUID: dZwA0pWsNEsC
 
-On Sat, 9 Apr 2022 at 01:11, Richard Henderson
+On Sat, 9 Apr 2022 at 01:18, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Virtual SError exceptions are raised by setting HCR_EL2.VSE,
-> and are routed to EL1 just like other virtual exceptions.
+> Check for and defer any pending virtual SError.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/cpu.h       |  2 ++
->  target/arm/internals.h |  8 ++++++++
->  target/arm/syndrome.h  |  5 +++++
->  target/arm/cpu.c       | 38 +++++++++++++++++++++++++++++++++++++-
->  target/arm/helper.c    | 29 ++++++++++++++++++++++++++++-
->  5 files changed, 80 insertions(+), 2 deletions(-)
+>  target/arm/helper.h        |  1 +
+>  target/arm/a32.decode      | 16 +++++++++-----
+>  target/arm/t32.decode      | 18 +++++++--------
+>  target/arm/op_helper.c     | 45 ++++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-a64.c |  7 ++++++
+>  target/arm/translate.c     | 10 +++++++++
+>  6 files changed, 82 insertions(+), 15 deletions(-)
+>
+> diff --git a/target/arm/helper.h b/target/arm/helper.h
+> index b463d9343b..bb7f901668 100644
+> --- a/target/arm/helper.h
+> +++ b/target/arm/helper.h
+> @@ -54,6 +54,7 @@ DEF_HELPER_1(wfe, void, env)
+>  DEF_HELPER_1(yield, void, env)
+>  DEF_HELPER_1(pre_hvc, void, env)
+>  DEF_HELPER_2(pre_smc, void, env, i32)
+> +DEF_HELPER_1(esb, void, env)
+>
+>  DEF_HELPER_3(cpsr_write, void, env, i32, i32)
+>  DEF_HELPER_2(cpsr_write_eret, void, env, i32)
+> diff --git a/target/arm/a32.decode b/target/arm/a32.decode
+> index fcd8cd4f7d..f2ca480949 100644
+> --- a/target/arm/a32.decode
+> +++ b/target/arm/a32.decode
+> @@ -187,13 +187,17 @@ SMULTT           .... 0001 0110 .... 0000 .... 1110 ....      @rd0mn
+>
+>  {
+>    {
+> -    YIELD        ---- 0011 0010 0000 1111 ---- 0000 0001
+> -    WFE          ---- 0011 0010 0000 1111 ---- 0000 0010
+> -    WFI          ---- 0011 0010 0000 1111 ---- 0000 0011
+> +    [
+> +      YIELD      ---- 0011 0010 0000 1111 ---- 0000 0001
+> +      WFE        ---- 0011 0010 0000 1111 ---- 0000 0010
+> +      WFI        ---- 0011 0010 0000 1111 ---- 0000 0011
+>
+> -    # TODO: Implement SEV, SEVL; may help SMP performance.
+> -    # SEV        ---- 0011 0010 0000 1111 ---- 0000 0100
+> -    # SEVL       ---- 0011 0010 0000 1111 ---- 0000 0101
+> +      # TODO: Implement SEV, SEVL; may help SMP performance.
+> +      # SEV      ---- 0011 0010 0000 1111 ---- 0000 0100
+> +      # SEVL     ---- 0011 0010 0000 1111 ---- 0000 0101
+> +
+> +      ESB        ---- 0011 0010 0000 1111 ---- 0001 0000
+> +    ]
 
+Why don't we decode bits [11:8] here? I see it's the same
+as YIELD/WFE/WFI, but I'm not sure why we're not decoding
+those bits in those insns either...
+
+>
+>      # The canonical nop ends in 00000000, but the whole of the
+>      # rest of the space executes as nop if otherwise unsupported.
+> diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+> index 78fadef9d6..f21ad0167a 100644
+> --- a/target/arm/t32.decode
+> +++ b/target/arm/t32.decode
+> @@ -364,17 +364,17 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+>    [
+>      # Hints, and CPS
+>      {
+> -      YIELD      1111 0011 1010 1111 1000 0000 0000 0001
+> -      WFE        1111 0011 1010 1111 1000 0000 0000 0010
+> -      WFI        1111 0011 1010 1111 1000 0000 0000 0011
+> +      [
+> +        YIELD    1111 0011 1010 1111 1000 0000 0000 0001
+> +        WFE      1111 0011 1010 1111 1000 0000 0000 0010
+> +        WFI      1111 0011 1010 1111 1000 0000 0000 0011
+>
+> -      # TODO: Implement SEV, SEVL; may help SMP performance.
+> -      # SEV      1111 0011 1010 1111 1000 0000 0000 0100
+> -      # SEVL     1111 0011 1010 1111 1000 0000 0000 0101
+> +        # TODO: Implement SEV, SEVL; may help SMP performance.
+> +        # SEV    1111 0011 1010 1111 1000 0000 0000 0100
+> +        # SEVL   1111 0011 1010 1111 1000 0000 0000 0101
+>
+> -      # For M-profile minimal-RAS ESB can be a NOP, which is the
+> -      # default behaviour since it is in the hint space.
+> -      # ESB      1111 0011 1010 1111 1000 0000 0001 0000
+> +        ESB      1111 0011 1010 1111 1000 0000 0001 0000
+> +      ]
+>
+>        # The canonical nop ends in 0000 0000, but the whole rest
+>        # of the space is "reserved hint, behaves as nop".
+> diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+> index 70b42b55fd..f50424b301 100644
+> --- a/target/arm/op_helper.c
+> +++ b/target/arm/op_helper.c
+> @@ -972,3 +972,48 @@ void HELPER(probe_access)(CPUARMState *env, target_ulong ptr,
+>                       access_type, mmu_idx, ra);
+>      }
+>  }
+> +
+> +void HELPER(esb)(CPUARMState *env)
+> +{
+> +    /*
+> +     * QEMU does not have a source of physical SErrors, so we are
+> +     * only concerned with virtual SErrors.
+> +     *
+> +     * During translation, we have already checked: RAS enabled,
+> +     * EL2 present (enabled check done in arm_hcr_el2_eff), and
+> +     * PSTATE.EL in {EL0, EL1}.  This function corresponds to
+> +     * AArch64.vESBOperation(), noting that the AArch32 version
+> +     * is not functionally different.
+> +     */
+> +    uint64_t hcr = arm_hcr_el2_eff(env);
+> +    bool enabled = !(hcr & HCR_TGE) && (hcr & HCR_AMO);
+> +    bool pending = enabled && (hcr & HCR_VSE);
+> +    bool masked  = (env->daif & PSTATE_A);
+> +
+> +    /* If VSE pending and masked, defer the exception.  */
+> +    if (pending && masked) {
+> +        uint32_t syndrome;
+> +
+> +        if (arm_el_is_aa64(env, 1)) {
+> +            /* Copy across IDS and ISS from VSESR. */
+> +            syndrome = env->cp15.vsesr_el2 & 0x1ffffff;
+> +        } else {
+> +            ARMMMUFaultInfo fi = { .type = ARMFault_AsyncExternal };
+> +
+> +            if (extended_addresses_enabled(env)) {
+> +                syndrome = arm_fi_to_lfsc(&fi);
+> +            } else {
+> +                syndrome = arm_fi_to_sfsc(&fi);
+> +            }
+> +            /* Copy across AET and ExT from VSESR. */
+> +            syndrome |= env->cp15.vsesr_el2 & 0xd000;
+> +        }
+> +
+> +        /* Set VDISR_EL2.A along with the syndrome. */
+> +        env->cp15.vdisr_el2 = syndrome | (1u << 31);
+> +
+> +        /* Clear pending virtual SError */
+> +        env->cp15.hcr_el2 &= ~HCR_VSE;
+> +        cpu_reset_interrupt(env_cpu(env), CPU_INTERRUPT_VSERR);
+> +    }
+> +}
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 9333d7be41..cc54dff83c 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -1469,6 +1469,13 @@ static void handle_hint(DisasContext *s, uint32_t insn,
+>              gen_helper_autib(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
+>          }
+>          break;
+> +    case 0b10000: /* ESB */
+> +        if (dc_isar_feature(aa64_ras, s) &&
+> +            arm_dc_feature(s, ARM_FEATURE_EL2) &&
+> +            s->current_el <= 1) {
+> +            gen_helper_esb(cpu_env);
+> +        }
+> +        break;
+>      case 0b11000: /* PACIAZ */
+>          if (s->pauth_active) {
+>              gen_helper_pacia(cpu_X[30], cpu_env, cpu_X[30],
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index bf2196b9e2..b42ca53d99 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -6275,6 +6275,16 @@ static bool trans_WFI(DisasContext *s, arg_WFI *a)
+>      return true;
+>  }
+>
+> +static bool trans_ESB(DisasContext *s, arg_ESB *a)
+> +{
+> +    if (dc_isar_feature(aa32_ras, s) &&
+> +        arm_dc_feature(s, ARM_FEATURE_EL2) &&
+> +        s->current_el <= 1) {
+
+This is doing the right thing for M-profile but only rather
+indirectly because it happens to get caught by the FEATURE_EL2
+check. I think it would be safer to explicitly check for
+not-M-profile (which then gives you a place to put the
+"For M-profile minimal-RAS ESB can be a NOP" comment that got
+removed above).
+
+> +        gen_helper_esb(cpu_env);
+> +    }
+> +    return true;
+
+I think a comment noting that without RAS we must NOP would
+be useful here.
+
+> +}
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

@@ -1,85 +1,108 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1320823lfq;
-        Sun, 10 Apr 2022 19:09:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx1Mjb9ZzP94NzGQtSwYMb2D0NI72ydjJ0iZwxmEZQO+ESDg2DOpMD/GzYpO8VOmD/G9KhI
-X-Received: by 2002:ad4:5bc1:0:b0:42c:37be:6ac3 with SMTP id t1-20020ad45bc1000000b0042c37be6ac3mr25224929qvt.18.1649642946943;
-        Sun, 10 Apr 2022 19:09:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649642946; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1423889lfq;
+        Sun, 10 Apr 2022 23:55:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxRutBX44HGYCQM4ZyU5pfLiPhbb27sTXYxfcG9qdO0z6229/aULlMw9B39gvZHjVmalhPL
+X-Received: by 2002:a05:620a:1406:b0:69b:ff59:90c5 with SMTP id d6-20020a05620a140600b0069bff5990c5mr5590726qkj.699.1649660158919;
+        Sun, 10 Apr 2022 23:55:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649660158; cv=none;
         d=google.com; s=arc-20160816;
-        b=gd5zeCtDVeG3lx85nriZ9bapf30f9MAKQkAr3LUdVBJPLdKav9zAx1/VXM+qHgoNMm
-         I/Uvhc2VMyzlQENKIv1XfZKEohSL3PbPsLWev14uTlwsuCn+GwhJkZwNbrw1SPASZCtI
-         R1NYTXIbOqDVlQ1qBUO4xxEyseoCdDbWZ97hJGYUPY556FRuhTHEXtCsNQTEevVUbrW2
-         M0V/OpGagmy3Mq8IxE4inwDW2T78ZfUSl8oHLaHR2fUcilvTaP3I5DP5zNUZS2Mc64Qb
-         84T4YFoGkrAlYFe95lfpIv7g/NJb9UNaL6GhAYhcE+2GI7p9qAU8EsR1PvNtBShRm/o/
-         rT8Q==
+        b=O5dElGccIJnEC4P3w6yzsntbiR8/0UbuVA0ypYJVksvir49C2pf3n0VJwfhsIQXOdC
+         sgfTFjDr1uendFi438z/r/dwUGZDYgfhuZdQyR7MCNrONAJoJCfCF6i9oaNdA5zaIhLk
+         y2CgwoVpATm63ifMpIFybexzKMKg/S6ttuBWCNdTfomIn32gTfo9dMfUxNeKJSFZIlrD
+         ef0aSn67cRFsVYtEXUv9PojMRwEzMInkcJec1lqqQCL1s8jHQ4n7yVUI7bPc4TZnBKjg
+         7Dzs4VhaKLIddumih06tZpBEQbPYgio61RmeeO1oB++hEAoqjACzt47u7msKo5Co9772
+         P/xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date;
-        bh=AtfojaaL9uMVa7FfA9G2/AT30mThmxbyvCyafIWHC3Q=;
-        b=vKlWhoh7GPeNYb7QdO69M2YrkAB7GHTEl5G63RSbMrYYVy+g1iQH9niL4KfBsnYn5W
-         KF6k1IEdTqS+3V5TtL2Q0vna2PPM0Rezc2M5MArzZzVu0i2zEmAGnuR4UFtmlRfowEES
-         NfWIiaRPoiVd1Bo8y4BXri+qMnYzMYlJlnsXRrSzTPG9LWhlhgODiFC5K4c0/ZXRxz8u
-         04Z7pUC/UZt6es8cwg9owuOgNBPA9hJkVhkVLJfNJO2/sTy+4MOHVBzDubROrJ0whMR9
-         W1gevNLjmWjcL3+25+4yH2p02Ms+aspUtfzVnhCzpy8ffF4JoRFgF4WoLmxkuS9v66on
-         +6vA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=6krlZoPpu++1PI6K71u7bndkhvBtVYooaatRPeFuyx0=;
+        b=pZMH5/DRxQFIVG3zNHVasx8i7+rwOQdAXghewYkA0AW2GddQ2k7igi1AcyP39qQdzc
+         1+BM3f9fz6FZOWbNSYCksv/784sOGj5KHqN5jpGjYx57cejqiVBxSEl0ShesgpRtOawB
+         hpst4Sg6iw59EhB74RZ5mIr7PT5SueyR0SAtueE8BNWmFWYVfs4Ta4FfeKhDzNlP0+/I
+         IXoPeeunPJwfBGCDUNf4o3/aVS1Goi2X2XYRzSRIGAxaAntpX8F/BGng8GlYKrPuhoGV
+         TziP11xtMMcG7XLwCpNRgWFd8a+G8mqyvIIXtGznA8khEtU7WY3c/p9y28/u3HutVINf
+         RkSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NkRLtRWh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j188-20020a3755c5000000b0067e4be23976si3423610qkb.443.2022.04.10.19.09.06
+        by mx.google.com with ESMTPS id kl21-20020a056214519500b00443f0971584si3759016qvb.281.2022.04.10.23.55.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Apr 2022 19:09:06 -0700 (PDT)
+        Sun, 10 Apr 2022 23:55:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50932 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NkRLtRWh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38674 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ndjUI-0002LM-FW
-	for alex.bennee@linaro.org; Sun, 10 Apr 2022 22:09:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57340)
+	id 1ndnxu-0005Fb-CM
+	for alex.bennee@linaro.org; Mon, 11 Apr 2022 02:55:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41584)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ndjU8-0002Ks-24; Sun, 10 Apr 2022 22:08:56 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:45013)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ndnqj-0000LC-23
+ for qemu-arm@nongnu.org; Mon, 11 Apr 2022 02:48:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:35409)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ndjU4-0006s8-JG; Sun, 10 Apr 2022 22:08:55 -0400
-Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 23B1txrM053510;
- Mon, 11 Apr 2022 09:55:59 +0800 (GMT-8)
- (envelope-from jamin_lin@aspeedtech.com)
-Received: from aspeedtech.com (192.168.70.87) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 11 Apr
- 2022 10:07:34 +0800
-Date: Mon, 11 Apr 2022 10:07:29 +0800
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
-Message-ID: <20220411020727.GA2461@aspeedtech.com>
-References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
- <66783c6a-4942-23c5-1052-0dcab389e177@kaod.org>
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ndnqh-0005UB-Fb
+ for qemu-arm@nongnu.org; Mon, 11 Apr 2022 02:48:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1649659710;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6krlZoPpu++1PI6K71u7bndkhvBtVYooaatRPeFuyx0=;
+ b=NkRLtRWhqsRjLVcmUoWRHlv5YVqXKdFIHjRJkkGibBEMtvPjt59ZNgODaP1HoNKeTBjrT9
+ 2DZxEphXt/Ya2NFpOS7TEsXiNmqzrNWZixJuzU5t6z4V4E5laJv0R8kOgA6lGv8kcfK3nR
+ Wp30T/umNeGP/K1Fpt34hFyQrF7biGA=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-177-Y4A1tQ9mM1ynaFzdYfEIIA-1; Mon, 11 Apr 2022 02:48:27 -0400
+X-MC-Unique: Y4A1tQ9mM1ynaFzdYfEIIA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0C79A3C01C0E;
+ Mon, 11 Apr 2022 06:48:27 +0000 (UTC)
+Received: from [10.72.12.73] (ovpn-12-73.pek2.redhat.com [10.72.12.73])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E51562166BB1;
+ Mon, 11 Apr 2022 06:48:22 +0000 (UTC)
+Subject: Re: [PATCH v5 0/4] hw/arm/virt: Fix CPU's default NUMA node ID
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+References: <20220403145953.10522-1-gshan@redhat.com>
+Message-ID: <3b6db41b-0a05-1c81-00e3-96331950c164@redhat.com>
+Date: Mon, 11 Apr 2022 14:48:16 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <66783c6a-4942-23c5-1052-0dcab389e177@kaod.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [192.168.70.87]
-X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
- (192.168.0.24)
-X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 23B1txrM053510
-Received-SPF: pass client-ip=211.20.114.71;
- envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, SCC_BODY_URI_ONLY=0.833,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+In-Reply-To: <20220403145953.10522-1-gshan@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,46 +115,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Troy Lee <troy_lee@aspeedtech.com>, Beraldo Leal <bleal@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:STM32F205" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- Cleber Rosa <crosa@redhat.com>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, zhenyzha@redhat.com, wangyanan55@huawei.com,
+ shan.gavin@gmail.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c95/tQJR29oj
+X-TUID: GZ9YMuS6Thr2
 
-The 04/05/2022 16:12, Cédric Le Goater wrote:
-Hi Cedric,
-> Hello Jamin,
+Hi Igor and Yanan,
+
+On 4/3/22 10:59 PM, Gavin Shan wrote:
+> When the CPU-to-NUMA association isn't provided by user, the default NUMA
+> node ID for the specific CPU is returned from virt_get_default_cpu_node_id().
+> Unfortunately, the default NUMA node ID breaks socket boundary and leads to
+> the broken CPU topology warning message in Linux guest. This series intends
+> to fix the issue.
 > 
-> On 4/1/22 10:38, Jamin Lin wrote:
-> > Changes from v5:
-> > - remove TYPE_ASPEED_MINIBMC_MACHINE and ASPEED_MINIBMC_MACHINE
-> > - remove ast1030_machine_instance_init function
-> > 
-> > Changes from v4:
-> > - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
-> > 
-> > Changes from v3:
-> > - remove AspeedMiniBmcMachineState state structure and
-> >    AspeedMiniBmcMachineClass class
-> > - remove redundant new line in hw/arm/aspeed_ast10xx.c
+>    PATCH[1/4] Add cluster-id to CPU instance property
+>    PATCH[2/4] Uses SMP configuration to populate CPU topology
+>    PATCH[3/4] Fixes the broken CPU topology by considering the socket boundary
+>               when the default NUMA node ID is given
+>    PATCH[4/4] Uses the populated CPU topology to build PPTT table, instead of
+>               calculate it again
 > 
-> Do we want to be in sync with the zephyr naming and use ast10x0.c ?
+
+Please let me know if you have more comments for this series, thanks
+in advance.
+
+Thanks,
+Gavin
+
+> Changelog
+> =========
+> v4/v5:
+>     * Split PATCH[v3 1/3] to PATCH[v5 1/4] and PATCH[v5 2/4].
+>       Verify or dump 'clsuter-id' in various spots               (Yanan)
+>     * s/within cluster/within cluster\/die/ for 'core-id' in
+>       qapi/machine.json                                          (Igor)
+>     * Apply '% ms->smp.{sockets, clusters, cores, threads} in
+>       virt_possible_cpu_arch_ids() as x86 does                   (Igor)
+>     * Use [0 - possible_cpus->len] as ACPI processor UID to
+>       build PPTT table and PATCH[v3 4/4] is dropped              (Igor)
+>     * Simplified build_pptt() to add all entries in one loop
+>       on ms->possible_cpus                                       (Igor)
+> v3:
+>     * Split PATCH[v2 1/3] to PATCH[v3 1/4] and PATCH[v3 2/4]     (Yanan)
+>     * Don't take account of die ID in CPU topology population
+>       and added assert(!mc->smp_props.dies_supported)            (Yanan/Igor)
+>     * Assign cluster_id and use it when building PPTT table      (Yanan/Igor)
+> v2:
+>     * Populate the CPU topology in virt_possible_cpu_arch_ids()
+>       so that it can be reused in virt_get_default_cpu_node_id() (Igor)
+>     * Added PATCH[2/3] to use the existing CPU topology when the
+>       PPTT table is built                                        (Igor)
+>     * Added PATCH[3/3] to take thread ID as ACPI processor ID
+>       in MADT and SRAT table                                     (Gavin)
 > 
->     https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/arm/aspeed
+> Gavin Shan (4):
+>    qapi/machine.json: Add cluster-id
+>    hw/arm/virt: Consider SMP configuration in CPU topology
+>    hw/arm/virt: Fix CPU's default NUMA node ID
+>    hw/acpi/aml-build: Use existing CPU topology to build PPTT table
 > 
-We used aspeed_ast10xx.c to support minibmc family such as ast1030 and
-may support ast1060 in the future.
-If need, I can submit the new patch to change its filename to aspeed_ast10x0.c.
-Thanks-Jamin
-> This is just a question. Don't resend for this.
+>   hw/acpi/aml-build.c        | 100 ++++++++++++++-----------------------
+>   hw/arm/virt.c              |  20 +++++++-
+>   hw/core/machine-hmp-cmds.c |   4 ++
+>   hw/core/machine.c          |  16 ++++++
+>   qapi/machine.json          |   6 ++-
+>   5 files changed, 80 insertions(+), 66 deletions(-)
 > 
-> Thanks,
-> 
-> C.
+

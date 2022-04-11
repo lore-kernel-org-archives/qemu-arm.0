@@ -1,101 +1,115 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1738457lfq;
-        Mon, 11 Apr 2022 09:19:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw9dapJpDrXJ+gfYu3JlpV1QgmFm8WwYAYgpILOqzIV6GKCyMRSTi+MLSvY52yUvlefoaRf
-X-Received: by 2002:a25:8e90:0:b0:637:3d1f:cc39 with SMTP id q16-20020a258e90000000b006373d1fcc39mr23737953ybl.321.1649693945391;
-        Mon, 11 Apr 2022 09:19:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649693945; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1745070lfq;
+        Mon, 11 Apr 2022 09:29:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxwUKHFjdiovKl2EoeOBM77Nf6MlHHnFXgUKJQvB/T/ULPfua3VWdxmXDd5sKaAkt5rWfFJ
+X-Received: by 2002:a25:dd87:0:b0:628:e822:bd with SMTP id u129-20020a25dd87000000b00628e82200bdmr21274662ybg.505.1649694545223;
+        Mon, 11 Apr 2022 09:29:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649694545; cv=none;
         d=google.com; s=arc-20160816;
-        b=xyOlTxEP7AU9RPksZEb/IxJFYJW+Sf0M5vunIDq/doi0jTD7NLwpeC7beDYlmUjwI4
-         fHDniVsGzfYUa0cQ4jm2D8iI4CEbskgkW1DmUuqUmKKMjfNPIMmJJktlUO7pefMq2Ymc
-         6jnHLBydT+6Ca8u8WZDSm9hUYxOQ7cB1qNA8cGpEfYitFNRlenocNM9ogd7fyZzojFZi
-         BsZ4pgxcxYdNxm6ZVgvAft2g4WYEX/27ZPHVFT/bSiNShq/GpEk3IJEZtSB8Gu/Vlvd4
-         crX/jXdxhzBjWr1AUH8LNAYU4W7FTxWSWtarfl+iPyOUgirtq6IxsKndULDFgHP0wQrS
-         qEAQ==
+        b=Js9ATU7SrOtnxObgWNZV/T52dyLsVQ4MdRZef0/YJJ0f+VFr1SQphksVXwKYfoLi5y
+         /YymS5JX6FKLZJfgHJoEUdpvkzSoU3lCgLs5YLw6v5OgxRJxfDmkVHKBTYThuXg+kwbR
+         2ebn7+WYk26t1cCCFIFyQcEj6TMcNV4AfTKWgv0a5i0QzCz2zpFHVolLvqN5pMd8dYPB
+         Dqh1T/n9zcc+OFlJOSeV4hxnOQHZespEj5st76H2ZdK8dgMgOPFBiiowqaLLXEYf5ybL
+         9ZUEhIP9tiXEJvRIqaxpU9xBHXjMn3Fi9Fw9roX/j3Zljq2cmO7tO7Db6Na+Hbd3auMx
+         V6Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=nODrkBw822ChcumjNDkmAc9d27c5qDQev/d72qtbzD0=;
-        b=K6FeNpfIwDSTJuKi1wGTgI+tH7de1Go5FPNsQqCIQ8f+9+IJa007y0GIkJHTz7mSjR
-         LwwxlYykDqnMihpYTh5JsYbs5/0K2kdQJ52En8VQ0U5hOeY51BNjpIZzUnwSjNKXNk5p
-         jccbu/xN5hWNhT4+2kVreNTQ7xEExQMBAQbejE/pcU5Z+4Dogv7UCgnP+9y34JZI6pdM
-         dsUqjMdRchFdR4upAphTGIgPDw99JhYlEV3fPS4Gn0x8VF1SGwq0ToDBMbZdllFX9N9z
-         9D6TN5LDvSjYHhH+yL2zNoT7UmrA9/Bg27biP6WDZVsAF7AHHyTK9+7QFuVNHIm3khf2
-         hrfw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=XqM9oxu/BICMRdxmQdQx6E3Fn48BhOaZeXIL9gHebiQ=;
+        b=Uny/WLvOacSbBbY0ZPhfwQigaCkOT+7ONqN4kqhX9JBjPXtfcL1fmZDcjidsjHF9Br
+         XZEWpGJQNqNxNbywaJL1xBkn6NmALP+05DQwmpNaUyzuS7VXWrGDWggHJmC0wfZUtPAy
+         CNAa9/vyC2zeuMhnfrwXc28eyC6ak92ZAbYh3A3NYBQ4AAjTSz4axAMWSU2nf2aJYNA3
+         qjnDD5wkiUpt/31IHwlrpNjebdkP3KH/UChM80NNUmPEUgnFmDWRXW2cDMTUZ4JCV4bS
+         Vrfwb/N92M76oWDE82vMQQvES8/mSuqEf7hPoowLvl2jp1YQ8iJIIsIwTaLhq0+faNTK
+         trng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VvPS19gy;
+       dkim=fail header.i=@linaro.org header.s=google header.b=smZ2xF0l;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b74-20020a81344d000000b002eb5483af88si4573421ywa.262.2022.04.11.09.19.05
+        by mx.google.com with ESMTPS id u64-20020a256043000000b006339940463csi4301459ybb.678.2022.04.11.09.29.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Apr 2022 09:19:05 -0700 (PDT)
+        Mon, 11 Apr 2022 09:29:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VvPS19gy;
+       dkim=fail header.i=@linaro.org header.s=google header.b=smZ2xF0l;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51594 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59446 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ndwkq-0004A8-Q9
-	for alex.bennee@linaro.org; Mon, 11 Apr 2022 12:19:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36690)
+	id 1ndwuW-0001S6-Iw
+	for alex.bennee@linaro.org; Mon, 11 Apr 2022 12:29:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ndwkg-00049u-Bv
- for qemu-arm@nongnu.org; Mon, 11 Apr 2022 12:18:54 -0400
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e]:39451)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ndwu9-0001OS-RZ
+ for qemu-arm@nongnu.org; Mon, 11 Apr 2022 12:28:42 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430]:33578)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ndwkd-0006Ru-6t
- for qemu-arm@nongnu.org; Mon, 11 Apr 2022 12:18:54 -0400
-Received: by mail-yb1-xb2e.google.com with SMTP id w28so6287564ybi.6
- for <qemu-arm@nongnu.org>; Mon, 11 Apr 2022 09:18:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ndwu8-00086w-9v
+ for qemu-arm@nongnu.org; Mon, 11 Apr 2022 12:28:41 -0400
+Received: by mail-pf1-x430.google.com with SMTP id y8so9877002pfw.0
+ for <qemu-arm@nongnu.org>; Mon, 11 Apr 2022 09:28:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nODrkBw822ChcumjNDkmAc9d27c5qDQev/d72qtbzD0=;
- b=VvPS19gyKDUsCzrKwH9MCzAIR59/7tRGwu/K5Ilf2UWhOAjkff2RP1WXl9sVS2nTA0
- U5UUtO2FaqvJ0xDOvL5wIDtPwWm8sDDW4R0aALSLmTm2cR/Sb1qHvstHPslK5fHGIcxg
- jab/G6EkBHlcxHH3PUKpe9ZlYor9p6z6fCuxdXoL702iH1+zUoRuXDvvcd1ZFTpoqcEI
- vrPSM4abB2tG9HaNxRfUgq0lcAZbIxKAE7efNKxYhvqEkwqkYwJBQQaa8hbxSNJ96Hke
- CKCjgMeRlGUu+y3IoB3Tb7vfe66l8Rfzr9hsReO8Kucd00ZSpMsNLRSGh54uOK5IYG54
- uljQ==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=XqM9oxu/BICMRdxmQdQx6E3Fn48BhOaZeXIL9gHebiQ=;
+ b=smZ2xF0lYT6jOQSx4dmvo8eeoebi+knFxAN1ohkEm13jKeGeGXImbgVlRMP2KqNvO9
+ u/k/LfqboblWd3EoSg2GS6laigmtzNFgkt3O9Rq8sA/EamokXiXp6nVh1obc97b/7lxS
+ YtQ91bm1193CePK1ZiXFSZEctnDGLmNVgxMMEIq9AqGIBjrzn4t2lImEmsGtLbFKB6l5
+ /nlNnjpEzlnz4PSr+8+BTeoitTDICaSZ4mjlkXEC9s2BO9IueXg9lhBrZ8BR5DY9PzW5
+ fmMBjMjD1sVhI14VBgJzRcCnjdS95s64Cq761O9Z4O/fFakWHhVBkJRN92fApOCanwgy
+ VoPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=nODrkBw822ChcumjNDkmAc9d27c5qDQev/d72qtbzD0=;
- b=072aLEXG+UxhhGRCPpjRt1dDqjP7zZpPGGQQIXBBsdjBrQH9Filb/s74XNx5Fd0vmJ
- +qbD1tmISvx77AS0sbZ1AUQmTdkqOpaByyxFko5KVDSvokekp7GkdDTGXaihZM/BC63d
- WsNVABqSczItQm9wOprkht/b14qIWayacy9potze4upR1syJC1seApKXFsUsrCgcZRFT
- mlUdg6uCOEqaSzSa1GRZAAkTqCntW8OZoiipXVn11iPCliTbVCzwOfQ4AteKXZ36+TlU
- jsDF0CUSuY+Voda1kT1qzw7wVAT7uOmY/aHkqloHPKAVoBoLIaRp4EA+F3YOrIfI3Ey6
- s9cw==
-X-Gm-Message-State: AOAM531c3mLs+nIQkL2C5mMiMW6xFdcNALhxOvfoYxeZL8mbdWZZNCTe
- oS09mVwPaVBz/93Pt5kergYorWvSsfiL1sfnnS9y1ss+p4yI+A==
-X-Received: by 2002:a25:ae54:0:b0:641:1aaf:c89 with SMTP id
- g20-20020a25ae54000000b006411aaf0c89mr8867905ybe.479.1649693930019; Mon, 11
- Apr 2022 09:18:50 -0700 (PDT)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=XqM9oxu/BICMRdxmQdQx6E3Fn48BhOaZeXIL9gHebiQ=;
+ b=aCP361l+woifKYy1ID/hpJT/A13AIeoQBsotRClaGRf3OQ72yShpI0S/AG5/2djhZF
+ 9U+zBjgesNGs/P/ipDR2Bzc5uug1dzvifyX4O8PdFTKZBsR+7yglt9TF0zhbY/J0JOJq
+ CBUR4GCXGXJBaOte4DULZB1C5pI0TDI9zXDb264hKptkpgJmh2yBUhljnCkwLX+hZ68X
+ b6SSgpmZGWOo2p6ZuMPVAB7cKSSPrkPaHIP9ItTZi9ifTHQ9CkVXKsPtWsBaFZOCRkOZ
+ rqn5A89hng3VKUnYFQF/2P1i5xQv/lBqCta5QJLK7+9IjjJLolAeI4gnJSiz0CbwyDFf
+ awCw==
+X-Gm-Message-State: AOAM531kdv+VaBiRspWsQszVOvRIaiLwkauVZIh0nkjNS/ua2azaRCrs
+ yzxOkxB6TCByxttsDyRvjabkfg==
+X-Received: by 2002:a05:6a00:999:b0:4fa:964f:9021 with SMTP id
+ u25-20020a056a00099900b004fa964f9021mr33731763pfg.34.1649694518141; 
+ Mon, 11 Apr 2022 09:28:38 -0700 (PDT)
+Received: from [192.168.1.6] (174-21-142-130.tukw.qwest.net. [174.21.142.130])
+ by smtp.gmail.com with ESMTPSA id
+ y16-20020a63b510000000b00398d8b19bbfsm241445pge.23.2022.04.11.09.28.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 Apr 2022 09:28:37 -0700 (PDT)
+Message-ID: <6e9d502c-343f-7d20-27d8-ecf57e020d66@linaro.org>
+Date: Mon, 11 Apr 2022 09:28:35 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 03/16] target/arm: Update qemu-system-arm -cpu max to
+ cortex-a57
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20220409000742.293691-1-richard.henderson@linaro.org>
- <20220409000742.293691-15-richard.henderson@linaro.org>
-In-Reply-To: <20220409000742.293691-15-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Apr 2022 17:18:39 +0100
-Message-ID: <CAFEAcA_9Eu-WZn_yMhjj23GRkz14huEVSb8xckvRyygDngwXEQ@mail.gmail.com>
-Subject: Re: [PATCH 14/16] target/arm: Implement ESB instruction
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2e.google.com
+ <20220409000742.293691-4-richard.henderson@linaro.org>
+ <CAFEAcA_HUXLC1Rr05rVCsMyY_EgqdQxpx3mnrrJA2p-WL79c0A@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA_HUXLC1Rr05rVCsMyY_EgqdQxpx3mnrrJA2p-WL79c0A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -113,202 +127,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dZwA0pWsNEsC
+X-TUID: MeShQy3Y/JhE
 
-On Sat, 9 Apr 2022 at 01:18, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Check for and defer any pending virtual SError.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/helper.h        |  1 +
->  target/arm/a32.decode      | 16 +++++++++-----
->  target/arm/t32.decode      | 18 +++++++--------
->  target/arm/op_helper.c     | 45 ++++++++++++++++++++++++++++++++++++++
->  target/arm/translate-a64.c |  7 ++++++
->  target/arm/translate.c     | 10 +++++++++
->  6 files changed, 82 insertions(+), 15 deletions(-)
->
-> diff --git a/target/arm/helper.h b/target/arm/helper.h
-> index b463d9343b..bb7f901668 100644
-> --- a/target/arm/helper.h
-> +++ b/target/arm/helper.h
-> @@ -54,6 +54,7 @@ DEF_HELPER_1(wfe, void, env)
->  DEF_HELPER_1(yield, void, env)
->  DEF_HELPER_1(pre_hvc, void, env)
->  DEF_HELPER_2(pre_smc, void, env, i32)
-> +DEF_HELPER_1(esb, void, env)
->
->  DEF_HELPER_3(cpsr_write, void, env, i32, i32)
->  DEF_HELPER_2(cpsr_write_eret, void, env, i32)
-> diff --git a/target/arm/a32.decode b/target/arm/a32.decode
-> index fcd8cd4f7d..f2ca480949 100644
-> --- a/target/arm/a32.decode
-> +++ b/target/arm/a32.decode
-> @@ -187,13 +187,17 @@ SMULTT           .... 0001 0110 .... 0000 .... 1110 ....      @rd0mn
->
->  {
->    {
-> -    YIELD        ---- 0011 0010 0000 1111 ---- 0000 0001
-> -    WFE          ---- 0011 0010 0000 1111 ---- 0000 0010
-> -    WFI          ---- 0011 0010 0000 1111 ---- 0000 0011
-> +    [
-> +      YIELD      ---- 0011 0010 0000 1111 ---- 0000 0001
-> +      WFE        ---- 0011 0010 0000 1111 ---- 0000 0010
-> +      WFI        ---- 0011 0010 0000 1111 ---- 0000 0011
->
-> -    # TODO: Implement SEV, SEVL; may help SMP performance.
-> -    # SEV        ---- 0011 0010 0000 1111 ---- 0000 0100
-> -    # SEVL       ---- 0011 0010 0000 1111 ---- 0000 0101
-> +      # TODO: Implement SEV, SEVL; may help SMP performance.
-> +      # SEV      ---- 0011 0010 0000 1111 ---- 0000 0100
-> +      # SEVL     ---- 0011 0010 0000 1111 ---- 0000 0101
-> +
-> +      ESB        ---- 0011 0010 0000 1111 ---- 0001 0000
-> +    ]
+On 4/11/22 08:37, Peter Maydell wrote:
+>> +    /* aarch64_a57_initfn, advertising none of the aarch64 features */
+>> +    cpu->dtb_compatible = "arm,cortex-a57";
+>> +    set_feature(&cpu->env, ARM_FEATURE_V8);
+>> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+>> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+>> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+>> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+>> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+>> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+>> +    cpu->midr = 0x411fd070;
+> 
+> If we're going to claim in the MIDR that we're an A57 then we
+> should provide the A57's impdef sysregs, at least those of
+> them that are visible to AArch32. This may otherwise cause
+> problems if the guest OS tries to write to one of them as
+> part of some errata workaround.
 
-Why don't we decode bits [11:8] here? I see it's the same
-as YIELD/WFE/WFI, but I'm not sure why we're not decoding
-those bits in those insns either...
+Ah yes.  Thanks,
 
->
->      # The canonical nop ends in 00000000, but the whole of the
->      # rest of the space executes as nop if otherwise unsupported.
-> diff --git a/target/arm/t32.decode b/target/arm/t32.decode
-> index 78fadef9d6..f21ad0167a 100644
-> --- a/target/arm/t32.decode
-> +++ b/target/arm/t32.decode
-> @@ -364,17 +364,17 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
->    [
->      # Hints, and CPS
->      {
-> -      YIELD      1111 0011 1010 1111 1000 0000 0000 0001
-> -      WFE        1111 0011 1010 1111 1000 0000 0000 0010
-> -      WFI        1111 0011 1010 1111 1000 0000 0000 0011
-> +      [
-> +        YIELD    1111 0011 1010 1111 1000 0000 0000 0001
-> +        WFE      1111 0011 1010 1111 1000 0000 0000 0010
-> +        WFI      1111 0011 1010 1111 1000 0000 0000 0011
->
-> -      # TODO: Implement SEV, SEVL; may help SMP performance.
-> -      # SEV      1111 0011 1010 1111 1000 0000 0000 0100
-> -      # SEVL     1111 0011 1010 1111 1000 0000 0000 0101
-> +        # TODO: Implement SEV, SEVL; may help SMP performance.
-> +        # SEV    1111 0011 1010 1111 1000 0000 0000 0100
-> +        # SEVL   1111 0011 1010 1111 1000 0000 0000 0101
->
-> -      # For M-profile minimal-RAS ESB can be a NOP, which is the
-> -      # default behaviour since it is in the hint space.
-> -      # ESB      1111 0011 1010 1111 1000 0000 0001 0000
-> +        ESB      1111 0011 1010 1111 1000 0000 0001 0000
-> +      ]
->
->        # The canonical nop ends in 0000 0000, but the whole rest
->        # of the space is "reserved hint, behaves as nop".
-> diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-> index 70b42b55fd..f50424b301 100644
-> --- a/target/arm/op_helper.c
-> +++ b/target/arm/op_helper.c
-> @@ -972,3 +972,48 @@ void HELPER(probe_access)(CPUARMState *env, target_ulong ptr,
->                       access_type, mmu_idx, ra);
->      }
->  }
-> +
-> +void HELPER(esb)(CPUARMState *env)
-> +{
-> +    /*
-> +     * QEMU does not have a source of physical SErrors, so we are
-> +     * only concerned with virtual SErrors.
-> +     *
-> +     * During translation, we have already checked: RAS enabled,
-> +     * EL2 present (enabled check done in arm_hcr_el2_eff), and
-> +     * PSTATE.EL in {EL0, EL1}.  This function corresponds to
-> +     * AArch64.vESBOperation(), noting that the AArch32 version
-> +     * is not functionally different.
-> +     */
-> +    uint64_t hcr = arm_hcr_el2_eff(env);
-> +    bool enabled = !(hcr & HCR_TGE) && (hcr & HCR_AMO);
-> +    bool pending = enabled && (hcr & HCR_VSE);
-> +    bool masked  = (env->daif & PSTATE_A);
-> +
-> +    /* If VSE pending and masked, defer the exception.  */
-> +    if (pending && masked) {
-> +        uint32_t syndrome;
-> +
-> +        if (arm_el_is_aa64(env, 1)) {
-> +            /* Copy across IDS and ISS from VSESR. */
-> +            syndrome = env->cp15.vsesr_el2 & 0x1ffffff;
-> +        } else {
-> +            ARMMMUFaultInfo fi = { .type = ARMFault_AsyncExternal };
-> +
-> +            if (extended_addresses_enabled(env)) {
-> +                syndrome = arm_fi_to_lfsc(&fi);
-> +            } else {
-> +                syndrome = arm_fi_to_sfsc(&fi);
-> +            }
-> +            /* Copy across AET and ExT from VSESR. */
-> +            syndrome |= env->cp15.vsesr_el2 & 0xd000;
-> +        }
-> +
-> +        /* Set VDISR_EL2.A along with the syndrome. */
-> +        env->cp15.vdisr_el2 = syndrome | (1u << 31);
-> +
-> +        /* Clear pending virtual SError */
-> +        env->cp15.hcr_el2 &= ~HCR_VSE;
-> +        cpu_reset_interrupt(env_cpu(env), CPU_INTERRUPT_VSERR);
-> +    }
-> +}
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 9333d7be41..cc54dff83c 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -1469,6 +1469,13 @@ static void handle_hint(DisasContext *s, uint32_t insn,
->              gen_helper_autib(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
->          }
->          break;
-> +    case 0b10000: /* ESB */
-> +        if (dc_isar_feature(aa64_ras, s) &&
-> +            arm_dc_feature(s, ARM_FEATURE_EL2) &&
-> +            s->current_el <= 1) {
-> +            gen_helper_esb(cpu_env);
-> +        }
-> +        break;
->      case 0b11000: /* PACIAZ */
->          if (s->pauth_active) {
->              gen_helper_pacia(cpu_X[30], cpu_env, cpu_X[30],
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index bf2196b9e2..b42ca53d99 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -6275,6 +6275,16 @@ static bool trans_WFI(DisasContext *s, arg_WFI *a)
->      return true;
->  }
->
-> +static bool trans_ESB(DisasContext *s, arg_ESB *a)
-> +{
-> +    if (dc_isar_feature(aa32_ras, s) &&
-> +        arm_dc_feature(s, ARM_FEATURE_EL2) &&
-> +        s->current_el <= 1) {
-
-This is doing the right thing for M-profile but only rather
-indirectly because it happens to get caught by the FEATURE_EL2
-check. I think it would be safer to explicitly check for
-not-M-profile (which then gives you a place to put the
-"For M-profile minimal-RAS ESB can be a NOP" comment that got
-removed above).
-
-> +        gen_helper_esb(cpu_env);
-> +    }
-> +    return true;
-
-I think a comment noting that without RAS we must NOP would
-be useful here.
-
-> +}
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+r~

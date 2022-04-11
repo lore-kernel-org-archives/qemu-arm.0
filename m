@@ -1,105 +1,125 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1502855lfq;
-        Mon, 11 Apr 2022 03:06:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFf2c/Srk8uc+rYzCdpi1VwmgUhJIeR714DZZuF1o0bfq9ihCSW33BjbTn1v7Kj5JND3um
-X-Received: by 2002:a05:622a:1c10:b0:2eb:b308:f65e with SMTP id bq16-20020a05622a1c1000b002ebb308f65emr25190230qtb.115.1649671580114;
-        Mon, 11 Apr 2022 03:06:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649671580; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp1567376lfq;
+        Mon, 11 Apr 2022 05:02:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzNYFwmwfiVrKCEJo5zhh1E6fgTP7e1ItXXwZH1Bdj7OczmZX6pEZlnxk3jFeTs/UHEkn0c
+X-Received: by 2002:a67:d391:0:b0:328:11cb:6cc1 with SMTP id b17-20020a67d391000000b0032811cb6cc1mr5612202vsj.32.1649678559982;
+        Mon, 11 Apr 2022 05:02:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649678559; cv=none;
         d=google.com; s=arc-20160816;
-        b=cua320kPzbYxPl6ut1fK4btW4kDtRRiCeVtfOSmRHWPEWBnFa9NYw5/hKBTHMFX9YC
-         GuElSZ4cl4igQwx/9r/vfD8uX7zHISRy4tDfb0Of6xPDgLunpvpfgJ8zLM8PXf16NTvc
-         ZvJfDUwEgg377SJMF0harQDbSJ1osnGg/PAybEzrryDwJbs7dCPLYHnptoiOuzg+jPtu
-         PqWTfnneCJebgspA0xJ7O1rZ54VQM3b3gkCZrK8ZcyCuA5YHTl8pOE5DMvvUz1USo0tB
-         Ycz7j1Bl2AaKtFG6pU+j89zsPnT5z2YHaAD/sFufjlRXvLXA4X0SXWoMGhmdGL00vR4w
-         WqTA==
+        b=hKwezSKMSD8MREeNs3wgP6mW0RJUTsQVSfvzQCgXlIwzwjGexkFFRqEALnibVGa6il
+         fezfML2bp21rj7GecdHdBA1Y1zGWEkUj/PossLYqd1lcCp6SVu4fzHZCrW7ubH6n5I3d
+         EmjlGKKN/Bjwq46fb0lpxjyBsMwyV0FlnwldGwalk075om3v0+7FFcLzN/mlasli6KN0
+         /8CHdhLGParc2Pjd7N/B3Vstrnx8sh9YQZyp8ja4DRMDB446sh2ngw260+fwooA3uw7o
+         Rk2lcIenPBD0yOVqUrw4/eY4CJdb1Elpz0jgCvC2CBkf/l+Hi5MKuLYAkITE8Mq/Ppec
+         +Oqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=MQHV92TYlvvoXQVcqqsrVIVfrq5V/AryidSPM1RzZTg=;
-        b=SFTbk7HjECshGRW5C8Iq33TUV6Puu/7J1JY5lmjIOk3F0w0INDndic9a4ItNP2Dlly
-         Ck6n+ln8wOrewhMkdF25jAzA1+/AQhNJqiTSJoC6mOoLGHYoHYxKN/21Teh1to0qW9vM
-         Cz94TODq34BT551eaMVcl4z4Usy4pSwljt2xdB+e+rDT+/CyY4xw8G33rzAgIUg85RCf
-         fUN2NmJXlBpKaSv3P0JJIeaE0+3nkphR2CJQjlWxG1P5OcuRM8sX0CG0Vg0vguHSgj4j
-         KZrEc24HXrmJcELi3qHHSOFuWE2mZEctuSm6+95OVL1CMlk2hcZFVu9w6spbIsfTherm
-         DGlw==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=XhA+f87wI2fd8zZjv+4N6AkZIuO9/rqvTg4W0ZVs0rk=;
+        b=WavXwO1nS+KFhBb4wkUlLvREcEYgdqZM4zvZ08iXWFcBiYnc3jk2YyBi+l3xKVyGZE
+         WjCquluDPGrBshzXIcc3MJNRR9pvSm8NoEwsHw42WknA6dLEJFSB15xiVLl9VS1RnUvk
+         2ZgcfWMqcly2Enii3PEI7EB48DU6B3U+TiwG7Tl+uzHucHwYL27vtbdvnDJqo6PzKhXb
+         ktFHYhnpuc07A/VLu17U612xmt78NKUrZKUDzQ35aub/NN8bovePfYceJjaQyn1KZvkP
+         LeHQihNO9gGF0yzaXjVPmnOHQ/PydNAMco7DQ/eYBk1oJl43XEtRcHmmFBkmyJ+Qdbzv
+         z4tA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=G0yq1sVC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dFXKAE+f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u13-20020ad45aad000000b00443ca5bbf8bsi3477942qvg.576.2022.04.11.03.06.19
+        by mx.google.com with ESMTPS id v16-20020a67c010000000b00327fac05613si477730vsi.413.2022.04.11.05.02.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Apr 2022 03:06:20 -0700 (PDT)
+        Mon, 11 Apr 2022 05:02:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=G0yq1sVC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dFXKAE+f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46824 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52450 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ndqw7-00019c-Ii
-	for alex.bennee@linaro.org; Mon, 11 Apr 2022 06:06:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51452)
+	id 1ndskh-00036H-Fh
+	for alex.bennee@linaro.org; Mon, 11 Apr 2022 08:02:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49128)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ndqvn-00016M-L4
- for qemu-arm@nongnu.org; Mon, 11 Apr 2022 06:05:59 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e]:45827)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ndqvk-0003Yh-7L
- for qemu-arm@nongnu.org; Mon, 11 Apr 2022 06:05:59 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-2ec04a2ebadso39175817b3.12
- for <qemu-arm@nongnu.org>; Mon, 11 Apr 2022 03:05:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MQHV92TYlvvoXQVcqqsrVIVfrq5V/AryidSPM1RzZTg=;
- b=G0yq1sVCVC6jd1yP4KvBbj7uBNqFV6De26Jwicy3JYwHT1KUUBcjNCNoe9z0RLA8sU
- z2CmXQyevRIJhNMgP4CScZryHtTJTy45XMjdFVkfTVuXt9ooTvS4cNa2dQHRj3whKcqe
- 1n6oKO8TSSPIo8xbWFg/2exjAL7GK+SMaxHaVHx9Xz9g6eGh3bZo0IwRFoC8/rK787hX
- XHfl9BUGUbniim+ekYqLDLKXoFcz+dlVRGiDE2CAvYp3Vb2aAnY+BhpEVNftEJQvCECL
- bAeMEXlxeyxP6MpFdUf09XquLx7HRHCOj2sEENUmq1+w0b44HBvyt2RWIRLOa0GQ/CjW
- py0w==
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1ndskU-00034i-Nb
+ for qemu-arm@nongnu.org; Mon, 11 Apr 2022 08:02:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:32081)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1ndskQ-0008Th-Uq
+ for qemu-arm@nongnu.org; Mon, 11 Apr 2022 08:02:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1649678541;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=XhA+f87wI2fd8zZjv+4N6AkZIuO9/rqvTg4W0ZVs0rk=;
+ b=dFXKAE+fuW5NLaWELPg9EQxa7ut14S22MkS1TcI833sRom7yzTWOMVreO1CrFLRdKj3kGz
+ ooCl1LFgR4N60USN7p0fv/4WKtypiJ5vD/u1DZIbIkEzYUvnX6sypWObPNZIjuBNHnwFUL
+ En7WEetiJMuJh06ssNG4WqKzitP+TXM=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-35-hp9JPR47P8eUYlbuhW-qnw-1; Mon, 11 Apr 2022 08:02:20 -0400
+X-MC-Unique: hp9JPR47P8eUYlbuhW-qnw-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ cy25-20020a0564021c9900b0041d84fd5d8fso728441edb.4
+ for <qemu-arm@nongnu.org>; Mon, 11 Apr 2022 05:02:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MQHV92TYlvvoXQVcqqsrVIVfrq5V/AryidSPM1RzZTg=;
- b=UUSwMfBgi3sMjUFNc1NGK1Hyz20pLaSPu5SCLMFXjijhyFmBRY+X+tzaDfdJA4qUQL
- XA6m2suYYZ8nnwVAlKG24mYXdnf1f8g0Tp7tVDlHoZrMh7tvT1vK2Rh0PfJlVl9t+7AZ
- 3rILT/fjjpVliWd2h3AcoTewmup2zv0i1TXnL6jqlvUXZnnZHPVNpO3gWnX2Pa8N1Woo
- Fiv9RJEuKmBQ/s5XVL2SPhBwdxa0qSc9W86R8Pzi0rkTD72Lb9d51yL3ae19rgB6NQSb
- lpgj9Q/flCgUpgCO6IyagY+8fZL3alQbmjb5vyChReRRsrfpBfznu+EFuzskL3xXZ1Ym
- 0ldA==
-X-Gm-Message-State: AOAM533zxbahYv62Z1YPPVw9l1NssqwRg8xRXPjFkJw5UP/ISsCqXz0M
- go0jI+XpZB+5juNtiKkwRBu5WxYWASzhYG1BwMFbVA==
-X-Received: by 2002:a81:db05:0:b0:2ea:2b92:c317 with SMTP id
- u5-20020a81db05000000b002ea2b92c317mr25563805ywm.329.1649671555119; Mon, 11
- Apr 2022 03:05:55 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220411065842.63880-1-gshan@redhat.com>
- <CAFEAcA-Tig6PAE4suFnERMN0f_Wco=0UVE7SrWy-Rb7gDheP_Q@mail.gmail.com>
- <a84ed377-2428-11ca-ee17-0dc8debebcf1@redhat.com>
-In-Reply-To: <a84ed377-2428-11ca-ee17-0dc8debebcf1@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Apr 2022 11:05:44 +0100
-Message-ID: <CAFEAcA9=eSt+R5OmJUn0KwUrWpnZT6C=O1mq4xUefZJXqyXrUA@mail.gmail.com>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=XhA+f87wI2fd8zZjv+4N6AkZIuO9/rqvTg4W0ZVs0rk=;
+ b=qzcCf7UnT5yY74FX1WV9qCAgd+7Uo/UDCtD+mUwHqpoxKReCsc987nn7XY45zT8F7B
+ wEH0S0FrQTfuQVy5/fi5Yg1Q0q4Fzfuedl3aGjRnLhRuZ7R2h/D+TW5grszDA7LpifMO
+ Y3vJ+CQSr+W51TO3m4kMhcWGBYBJSD7Rnxw4nbGTato/sLJc7Z7nzhfyNbhYAmZy9/3I
+ S4O1z2caBzAIk6C2T8EcCwebEggnBSU3aanFZk3BCNul+CIw0WS56tR4wqDh9vCNG7LS
+ bIlh6vq8ZE9t9JIfIiR0ZgNUYnbGAaJ998XDfHVW4rcOqu8CsnQIuvZQRK3O6P17ZMRX
+ lgmg==
+X-Gm-Message-State: AOAM5301mckJG7f/MlQHh9NvFpk4jMAQ/jwXG7VtgMW3dcRED251h7uA
+ AaP+ahBvUD6ECkm36vOASfQ5M1J4K2BSEB/HJdsA0qXbaUtVRp+1YZ7Gbqf/p0eVmE9mrSIrSYF
+ /w4M3f0sqIGLz
+X-Received: by 2002:a50:c099:0:b0:415:f5c7:700e with SMTP id
+ k25-20020a50c099000000b00415f5c7700emr32745187edf.205.1649678539420; 
+ Mon, 11 Apr 2022 05:02:19 -0700 (PDT)
+X-Received: by 2002:a50:c099:0:b0:415:f5c7:700e with SMTP id
+ k25-20020a50c099000000b00415f5c7700emr32745147edf.205.1649678539087; 
+ Mon, 11 Apr 2022 05:02:19 -0700 (PDT)
+Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
+ by smtp.gmail.com with ESMTPSA id
+ 22-20020a17090600d600b006dfbc46efabsm11942783eji.126.2022.04.11.05.02.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Apr 2022 05:02:18 -0700 (PDT)
+Date: Mon, 11 Apr 2022 14:02:16 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Subject: Re: [PATCH 0/5] target/arm: Support variable sized coprocessor
  registers
-To: Gavin Shan <gshan@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Message-ID: <20220411120216.63r7ggy43y7ttvhp@gator>
+References: <20220411065842.63880-1-gshan@redhat.com>
+ <CAFEAcA-Tig6PAE4suFnERMN0f_Wco=0UVE7SrWy-Rb7gDheP_Q@mail.gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-Tig6PAE4suFnERMN0f_Wco=0UVE7SrWy-Rb7gDheP_Q@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,68 +133,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, agraf@csgraf.de, Oliver Upton <oupton@google.com>,
+Cc: Gavin Shan <gshan@redhat.com>, agraf@csgraf.de,
  richard.henderson@linaro.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
  qemu-arm@nongnu.org, shan.gavin@gmail.com, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HJd0smUxylWB
+X-TUID: AnQTJW/lyfXg
 
-On Mon, 11 Apr 2022 at 10:50, Gavin Shan <gshan@redhat.com> wrote:
-> On 4/11/22 5:22 PM, Peter Maydell wrote:
-> > So, can you give an example of coprocessor registers which are
-> > not 8 bytes in size? How are they accessed by the guest?
-> > If we need to support them then we need to support them, but this
-> > cover letter/series doesn't seem to me to provide enough detail
-> > to make the case that they really are necessary.
+On Mon, Apr 11, 2022 at 10:22:59AM +0100, Peter Maydell wrote:
+> On Mon, 11 Apr 2022 at 07:59, Gavin Shan <gshan@redhat.com> wrote:
 > >
-> > Also, we support SVE today, and we don't have variable size
-> > coprocessor registers. Is there a bug here that we would be
-> > fixing ?
-> >
->
-> [Cc Oliver Upon]
->
-> Apart from SVE registers, I don't think we have any more large registers
-> whose sizes exceed 8 bytes for now, until SDEI virtualization needs more
-> large registers for migration.
->
-> I'm working the KVM series to support SDEI virtualization and last revision
-> is v6. One of the requirement is to migrate the SDEI events and states.
-> In v5, the migration is done by the dedicated ioctl commands and it was
-> suggested by Oliver to use {GET, SET}_ONE_REG. Note that the series isn't
-> merged yet. So I had the prototype to support SDEI's migration through
-> {GET, SET}_ONE_REG. Note that those newly added registers are inaccessible
-> from guest.
->
-> https://github.com/gwshan/linux/commit/c2e5de5e210de6b003d1e1330eeb0958cf7007f5
-> (branch: kvm/arm64_sdei)
->
-> https://lore.kernel.org/lkml/20220403153911.12332-13-gshan@redhat.com/T/   (last revision: v6)
-> https://lore.kernel.org/kvmarm/YjtYuk+Jx1dFPQQ9@google.com/                (v5)
+> > There are two arrays for each CPU, to store the indexes and values of the
+> > coprocessor registers. Currently, 8 bytes fixed storage space is reserved
+> > for each coprocessor register. However, larger coprocessor registers have
+> > been defined and exposed by KVM. Except SVE registers, no coprocessor
+> > register exceeds 8 bytes in size. It doesn't mean large coprocessor registers
+> > won't be exploited in future. For example, I'm looking into SDEI virtualization
+> > support, which isn't merged into Linux upstream yet. I have plan to add
+> > several coprocessor ("firmware pseudo") registers to assist the migration.
+> 
+> So, can you give an example of coprocessor registers which are
+> not 8 bytes in size? How are they accessed by the guest?
+> If we need to support them then we need to support them, but this
+> cover letter/series doesn't seem to me to provide enough detail
+> to make the case that they really are necessary.
+> 
+> Also, we support SVE today, and we don't have variable size
+> coprocessor registers. Is there a bug here that we would be
+> fixing ?
 
-Could you please describe what you're trying to do here rather
-than asking me to wade through a big kernel patchset that's
-adding support for a firmware interface I don't know?
+SVE registers are KVM_REG_SIZE_U2048 and KVM_REG_SIZE_U256 sized
+registers. They work fine (just like the VFP registers which are
+KVM_REG_SIZE_U128 sized). They work because they don't get stored in the
+cpreg list. SVE and CORE (which includes VFP) registers are filtered
+out by kvm_arm_reg_syncs_via_cpreg_list(). Since they're filtered
+out they need to be handled specifically by kvm_arch_get/put_registers()
 
-> There are large coprocessor register sizes, like U2048, exposed by KVM.
-> However, it seems we never support those large coprocessor registers.
-> I'm not sure if we have any challenges to support those large registers,
-> or we don't have the needs yet?
+I asked Gavin to check if following the SVE pattern made sense for his
+use case prior to sending this series, but I don't see the rationale for
+not following the SVE pattern in this cover letter. Gavin, can you please
+explain why following the SVE pattern doesn't work? Or, are you trying to
+avoid adding an additional special case?
 
-The general idea of the coprocessor register accessors for aarch64 KVM
-is that we're giving the VMM access to the same registers that the guest
-accesses via the msr/mrs instructions. Those instructions by definition
-access 64 bit quantities. In a few places we've borrowed this mechanism
-to define KVM-specific pseudo-registers, but that wasn't the primary
-design intent. So maybe it makes sense to extend it to do what you're
-trying to, or maybe that would be the tail wagging the dog. It's hard
-to tell without more detail on what exactly you're trying to expose
-to the VMM here.
+Thanks,
+drew
 
-(The ONE_REG API is used by more than just aarch64 and more than just
-for coprocessor registers, which is why it supports lots of different
-sizes.)
-
-thanks
--- PMM

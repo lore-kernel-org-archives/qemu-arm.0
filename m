@@ -1,110 +1,114 @@
-Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp2017670lfq;
-        Mon, 11 Apr 2022 18:04:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx3b6cBLoBJg0E9mN/5E9fvt5XgCyCtcGJ5cG8pYR0+M/pweZZSaaPlxDOENn099aT4BbJv
-X-Received: by 2002:a81:9204:0:b0:2ef:2a5a:89b9 with SMTP id j4-20020a819204000000b002ef2a5a89b9mr939022ywg.336.1649725445052;
-        Mon, 11 Apr 2022 18:04:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649725445; cv=none;
+Received: by 2002:ac2:5ccb:0:0:0:0:0 with SMTP id f11csp2039481lfq;
+        Mon, 11 Apr 2022 18:54:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbHHm1gFrVJGRbRvto37OgiJHzkz66C23Mq3eKQ6twkfwRW2k2/86Frm+UJdtLW5TgkAqL
+X-Received: by 2002:a25:488:0:b0:641:1c71:b0ff with SMTP id 130-20020a250488000000b006411c71b0ffmr9871663ybe.39.1649728495375;
+        Mon, 11 Apr 2022 18:54:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649728495; cv=none;
         d=google.com; s=arc-20160816;
-        b=uGRRVDa1MNV1ykwskkpa8Crdf+d90laW0/TDM69CLjd02TSpc9zyZbDidntcoSoxsA
-         5u8LOiPZ06gT64JA++cP4DyVJ04BJLchdv0dySnk8ZYXmMSptySLTIko0p2Ck8nhed6r
-         6gTyZVstMlxzgFRgL5p9TSOeGpWzx4SY0t/X/J8Yjo7TlL9kqY5fo4pw8akClFZ2+rLv
-         wYjNO55FBcbDx89PpD6FaZHfujm88wyAqyPOQqCxawLA4kvi7aQlq3Pc2eMtiVSzTqUa
-         hUuT3WcnggUnsmEmzBk1TPhyEzFCQpGKWAehD3jDrr6kY9Miav0NtRaLibYkbw6JK6WS
-         pb2w==
+        b=x1U2KiPyoeZjD8LqE4qvVJOnKprJ6nW39zIBtjzlqd0dZzTsgOvIBgPtnSiddZxLqz
+         lO59BO0zFXET/c5edC+PTbpCDc7H1Ad37BpkRXjs4GCNcVGI3trYfGxXJW6FrPBN4t56
+         5H7+I+QD9t2TXFvH2IfeEgrC9Q49ezQgAtNftAUTaOOgSDsETohGy0Cda2gxEmWxmvRK
+         qSWEbMg/owDN8o4JIoDmLI55rqgAnpb+vivDFSwYQs0XrkIFE/j4JFI75dOySzQLWJBy
+         aEnlqAfk9NSAYszJ0shyNbq+ahzy5Ry8FlnKaXzLWNOYbbQJG821w3xWKqcjWQmDUI66
+         vVwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
          :dkim-signature;
-        bh=qbIU9/oJJWMiAyeUILBM2EtZ8CbZd4LnV/Fwi7z9ycI=;
-        b=M3r0XmaeaRn/gUsNYUdg5EHpJckkp53hoCA+c2W4kWYXUUXWtT1jC/+YxunyAcZkr3
-         4GGpCHr4vJecRppFHWvhpQx82AbzvhQ5oB+xSCE+0qNnE4pcFBCPhiVlIfsbbpPBdt/t
-         08Tbt49SUZnRAw2AjUwl1nw+8VJSLvsA2qHdkcizRnV3FMJwZAZsSIybD9CMhZnHHDZW
-         qZyIzpmH5xEfXMbeypEkIxOkEqiMTq0RL7G3yImXwXH910YP5GZJhqYbHm44LuYP6QsI
-         cLBeUMTKp5C5vocPmC9s8PhJtgmcpwRRqIfTDmWPOUb+wfLrgIz7ZAftG0HKixJLCjV7
-         Phlg==
+        bh=REg2/B5mqUoR24rPKIvxE8tHstyPrvUb4X8be3JB5eo=;
+        b=OctzHZEi2kr+4/09Ja8f8Oxg8RMihkKMiCGalygAgcLUH0e2xvScgVtSDPkM77skJ2
+         BnyYqW1nl+5h/np68DIkZZn1LcF3lJXcGIE+vgiypFToAEZH00naPgs2Kp/8DPoYP8RA
+         jJ42vNjkhC4xHN3u8oojCtOrorklYfNH9s3EFw+Dp/CoLVsvcYu+aC3FY1VIt28uGB6P
+         5zlLgUplqNgivFU8y6uCi3RJeemKSEf1Vvdkhskt0r06HSEPS1HRJmG0G/VYvLcCT1p8
+         LC+P/IVpg2bKDnfn8jHjVsRHXMH6VBKGOCJEH4Tiw7vfMm5feD8z2RDL9sf+Yu/4WYUM
+         hZzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aduO0cpR;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Bjcr1+LG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k143-20020a252495000000b006411aaf0c96si4595299ybk.211.2022.04.11.18.04.04
+        by mx.google.com with ESMTPS id w63-20020a254942000000b00633994044e3si5345228yba.333.2022.04.11.18.54.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Apr 2022 18:04:05 -0700 (PDT)
+        Mon, 11 Apr 2022 18:54:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aduO0cpR;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Bjcr1+LG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52912 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52516 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ne4wu-0006nO-Br
-	for alex.bennee@linaro.org; Mon, 11 Apr 2022 21:04:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59030)
+	id 1ne5k6-00054O-OG
+	for alex.bennee@linaro.org; Mon, 11 Apr 2022 21:54:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49236)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ne4Ti-0001za-P4
- for qemu-arm@nongnu.org; Mon, 11 Apr 2022 20:33:55 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:52002)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ne4Tf-0001uR-S0
- for qemu-arm@nongnu.org; Mon, 11 Apr 2022 20:33:54 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id bg24so4359560pjb.1
- for <qemu-arm@nongnu.org>; Mon, 11 Apr 2022 17:33:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=qbIU9/oJJWMiAyeUILBM2EtZ8CbZd4LnV/Fwi7z9ycI=;
- b=aduO0cpRzVGFObzgvuu2nUKS8tQsf4RUWl5DF0CZwTvzCt1TI4DQmQOYFYGXqTAHq4
- KTUWwHFnb0xvi1AWusqfgA+mG4a/Z7cIfxO/s6X1NZrbaXQQf6ivmySGqrCNUyWmOfTM
- ZRPY26uC1t7qtX/AmKnk8BUAV7o9dAOae/Y4lyXtEYj7N3PuHRyh+j68432SwbWW0bON
- L5Zq/pze9GKCJ76IORidfU2Ag3Vf0a6UBscTFOQvsfyBTcQW1xlls/4fWcfdBpaIDwKU
- IQZD31uXFL6cDfPV8cMmeBjgUY3b03GhHoaGz5BcmDR081qsPrdM+9p4cizRy8IYyQ1K
- VVaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=qbIU9/oJJWMiAyeUILBM2EtZ8CbZd4LnV/Fwi7z9ycI=;
- b=EgHGxOF8GGXsHUZ9F7hzOgu1IIIp7HJ1FkBHj/nY3r/WVHuy/rBZAugn6oBNIE3AW1
- kCVeJOdE5w5hEAp0K2Btt6RUTB/vRtiA4kBCEjrQQd5xSDOu1n2bmbt2FkfQTX9Vqz4a
- 8B/VHm8iHxe0d4xe1X9JIkI4GAQ3YrOXyEyjiTJc4JMN4OlsqslIfWV31bbpQ6ktCGQG
- QGu1ZunRXl5m5ooZClL90T2t/fGRCD+zCJxGG1S/FDDN0dk+oLAnBgv4JK9v55V7yOeJ
- rjB87TxlSBRXZqx0AEvYaVU5zoNWMXHknLTcZF0v3gHq7MYjqhvV/OyP7Y3WRjpLVx5a
- eBpQ==
-X-Gm-Message-State: AOAM531P0rAyyR8n7/JPFUdGF+Tns6lnbdws/FnNpxWlcbvORXCEQgwx
- EERF4knzgokjS3WYPOmmaxHwAYauQZHHeg==
-X-Received: by 2002:a17:903:234d:b0:158:5c45:7e19 with SMTP id
- c13-20020a170903234d00b001585c457e19mr8721078plh.27.1649723629371; 
- Mon, 11 Apr 2022 17:33:49 -0700 (PDT)
-Received: from localhost.localdomain (174-21-142-130.tukw.qwest.net.
- [174.21.142.130]) by smtp.gmail.com with ESMTPSA id
- g15-20020a056a0023cf00b004e17e11cb17sm38346669pfc.111.2022.04.11.17.33.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Apr 2022 17:33:48 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 24/24] target/arm: Define neoverse-n1
-Date: Mon, 11 Apr 2022 17:33:26 -0700
-Message-Id: <20220412003326.588530-25-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220412003326.588530-1-richard.henderson@linaro.org>
-References: <20220412003326.588530-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ne5jw-00050z-Tw
+ for qemu-arm@nongnu.org; Mon, 11 Apr 2022 21:54:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:33198)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1ne5jt-0006ei-G4
+ for qemu-arm@nongnu.org; Mon, 11 Apr 2022 21:54:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1649728480;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=REg2/B5mqUoR24rPKIvxE8tHstyPrvUb4X8be3JB5eo=;
+ b=Bjcr1+LGHU+sc7WjCZU/zmhLAttVoj6Bi55NFCDTwtIq+ccUHt6wxFyTqr0vdVQ3XmGzvN
+ PykWou49A4+f+QKS0g8s8uJOB45fLzvMCtp/109SfU7AkTc9ozJxIwPJGRI/bvVsatYLcO
+ 9RZaCToYlD4u8ZyYC9MvNAk6/brPH38=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-417-nGCxv_AMMneUvw8YlD5LZw-1; Mon, 11 Apr 2022 21:54:37 -0400
+X-MC-Unique: nGCxv_AMMneUvw8YlD5LZw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C2E6C811E76;
+ Tue, 12 Apr 2022 01:54:36 +0000 (UTC)
+Received: from [10.72.12.73] (ovpn-12-73.pek2.redhat.com [10.72.12.73])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CF018111E41D;
+ Tue, 12 Apr 2022 01:54:22 +0000 (UTC)
+Subject: Re: [PATCH 0/5] target/arm: Support variable sized coprocessor
+ registers
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20220411065842.63880-1-gshan@redhat.com>
+ <CAFEAcA-Tig6PAE4suFnERMN0f_Wco=0UVE7SrWy-Rb7gDheP_Q@mail.gmail.com>
+ <a84ed377-2428-11ca-ee17-0dc8debebcf1@redhat.com>
+ <CAFEAcA9=eSt+R5OmJUn0KwUrWpnZT6C=O1mq4xUefZJXqyXrUA@mail.gmail.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <dd1890cd-8fa3-ec07-1b56-e49cc9039e73@redhat.com>
+Date: Tue, 12 Apr 2022 09:54:17 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <CAFEAcA9=eSt+R5OmJUn0KwUrWpnZT6C=O1mq4xUefZJXqyXrUA@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,141 +121,105 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: drjones@redhat.com, agraf@csgraf.de, Oliver Upton <oupton@google.com>,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, shan.gavin@gmail.com, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kkA1JvcojYir
+X-TUID: FqGEDlCdB+N5
 
-Enable the n1 for virt and sbsa board use.
+Hi Peter,
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- docs/system/arm/virt.rst |  1 +
- hw/arm/sbsa-ref.c        |  1 +
- hw/arm/virt.c            |  1 +
- target/arm/cpu64.c       | 66 ++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 69 insertions(+)
+On 4/11/22 6:05 PM, Peter Maydell wrote:
+> On Mon, 11 Apr 2022 at 10:50, Gavin Shan <gshan@redhat.com> wrote:
+>> On 4/11/22 5:22 PM, Peter Maydell wrote:
+>>> So, can you give an example of coprocessor registers which are
+>>> not 8 bytes in size? How are they accessed by the guest?
+>>> If we need to support them then we need to support them, but this
+>>> cover letter/series doesn't seem to me to provide enough detail
+>>> to make the case that they really are necessary.
+>>>
+>>> Also, we support SVE today, and we don't have variable size
+>>> coprocessor registers. Is there a bug here that we would be
+>>> fixing ?
+>>>
+>>
+>> [Cc Oliver Upon]
+>>
+>> Apart from SVE registers, I don't think we have any more large registers
+>> whose sizes exceed 8 bytes for now, until SDEI virtualization needs more
+>> large registers for migration.
+>>
+>> I'm working the KVM series to support SDEI virtualization and last revision
+>> is v6. One of the requirement is to migrate the SDEI events and states.
+>> In v5, the migration is done by the dedicated ioctl commands and it was
+>> suggested by Oliver to use {GET, SET}_ONE_REG. Note that the series isn't
+>> merged yet. So I had the prototype to support SDEI's migration through
+>> {GET, SET}_ONE_REG. Note that those newly added registers are inaccessible
+>> from guest.
+>>
+>> https://github.com/gwshan/linux/commit/c2e5de5e210de6b003d1e1330eeb0958cf7007f5
+>> (branch: kvm/arm64_sdei)
+>>
+>> https://lore.kernel.org/lkml/20220403153911.12332-13-gshan@redhat.com/T/   (last revision: v6)
+>> https://lore.kernel.org/kvmarm/YjtYuk+Jx1dFPQQ9@google.com/                (v5)
+> 
+> Could you please describe what you're trying to do here rather
+> than asking me to wade through a big kernel patchset that's
+> adding support for a firmware interface I don't know?
+> 
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index e9ff81aa21..e8e851a15b 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -58,6 +58,7 @@ Supported guest CPU types:
- - ``cortex-a76`` (64-bit)
- - ``a64fx`` (64-bit)
- - ``host`` (with KVM only)
-+- ``neoverse-n1`` (64-bit)
- - ``max`` (same as ``host`` for KVM; best possible emulation with TCG)
- 
- Note that the default is ``cortex-a15``, so for an AArch64 guest you must
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 2ddde88f5e..dac8860f2d 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -146,6 +146,7 @@ static const char * const valid_cpus[] = {
-     ARM_CPU_TYPE_NAME("cortex-a57"),
-     ARM_CPU_TYPE_NAME("cortex-a72"),
-     ARM_CPU_TYPE_NAME("cortex-a76"),
-+    ARM_CPU_TYPE_NAME("neoverse-n1"),
-     ARM_CPU_TYPE_NAME("max"),
- };
- 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ce15c36a7f..82dd934de6 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -204,6 +204,7 @@ static const char *valid_cpus[] = {
-     ARM_CPU_TYPE_NAME("cortex-a72"),
-     ARM_CPU_TYPE_NAME("cortex-a76"),
-     ARM_CPU_TYPE_NAME("a64fx"),
-+    ARM_CPU_TYPE_NAME("neoverse-n1"),
-     ARM_CPU_TYPE_NAME("host"),
-     ARM_CPU_TYPE_NAME("max"),
- };
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 7dbd649b0c..4bfa8af833 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -259,6 +259,71 @@ static void aarch64_a76_initfn(Object *obj)
-     cpu->isar.mvfr2 = 0x00000043;
- }
- 
-+static void aarch64_neoverse_n1_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    cpu->dtb_compatible = "arm,neoverse-n1";
-+    set_feature(&cpu->env, ARM_FEATURE_V8);
-+    set_feature(&cpu->env, ARM_FEATURE_NEON);
-+    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-+    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-+    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-+    set_feature(&cpu->env, ARM_FEATURE_EL2);
-+    set_feature(&cpu->env, ARM_FEATURE_EL3);
-+    set_feature(&cpu->env, ARM_FEATURE_PMU);
-+
-+    /* Ordered by B2.4 AArch64 registers by functional group */
-+    cpu->clidr = 0x82000023;
-+    cpu->ctr = 0x8444c004;
-+    cpu->dcz_blocksize = 4;
-+    cpu->isar.id_aa64dfr0  = 0x0000000110305408ull;
-+    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
-+    cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
-+    cpu->isar.id_aa64mmfr0 = 0x0000000000101125ull;
-+    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
-+    cpu->isar.id_aa64mmfr2 = 0x0000000000001011ull;
-+    cpu->isar.id_aa64pfr0  = 0x1100000010111112ull; /* GIC filled in later */
-+    cpu->isar.id_aa64pfr1  = 0x0000000000000020ull;
-+    cpu->id_afr0       = 0x00000000;
-+    cpu->isar.id_dfr0  = 0x04010088;
-+    cpu->isar.id_isar0 = 0x02101110;
-+    cpu->isar.id_isar1 = 0x13112111;
-+    cpu->isar.id_isar2 = 0x21232042;
-+    cpu->isar.id_isar3 = 0x01112131;
-+    cpu->isar.id_isar4 = 0x00010142;
-+    cpu->isar.id_isar5 = 0x01011121;
-+    cpu->isar.id_isar6 = 0x00000010;
-+    cpu->isar.id_mmfr0 = 0x10201105;
-+    cpu->isar.id_mmfr1 = 0x40000000;
-+    cpu->isar.id_mmfr2 = 0x01260000;
-+    cpu->isar.id_mmfr3 = 0x02122211;
-+    cpu->isar.id_mmfr4 = 0x00021110;
-+    cpu->isar.id_pfr0  = 0x10010131;
-+    cpu->isar.id_pfr1  = 0x00010000; /* GIC filled in later */
-+    cpu->isar.id_pfr2  = 0x00000011;
-+    cpu->midr = 0x414fd0c1;          /* r4p1 */
-+    cpu->revidr = 0;
-+
-+    /* From B2.23 CCSIDR_EL1 */
-+    cpu->ccsidr[0] = 0x701fe01a; /* 64KB L1 dcache */
-+    cpu->ccsidr[1] = 0x201fe01a; /* 64KB L1 icache */
-+    cpu->ccsidr[2] = 0x70ffe03a; /* 1MB L2 cache */
-+
-+    /* From B2.98 SCTLR_EL3 */
-+    cpu->reset_sctlr = 0x30c50838;
-+
-+    /* From B4.23 ICH_VTR_EL2 */
-+    cpu->gic_num_lrs = 4;
-+    cpu->gic_vpribits = 5;
-+    cpu->gic_vprebits = 5;
-+
-+    /* From B5.1 AdvSIMD AArch64 register summary */
-+    cpu->isar.mvfr0 = 0x10110222;
-+    cpu->isar.mvfr1 = 0x13211111;
-+    cpu->isar.mvfr2 = 0x00000043;
-+}
-+
- void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
- {
-     /*
-@@ -946,6 +1011,7 @@ static const ARMCPUInfo aarch64_cpus[] = {
-     { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
-     { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
-     { .name = "a64fx",              .initfn = aarch64_a64fx_initfn },
-+    { .name = "neoverse-n1",        .initfn = aarch64_neoverse_n1_initfn },
-     { .name = "max",                .initfn = aarch64_max_initfn },
- #if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-     { .name = "host",               .initfn = aarch64_host_initfn },
--- 
-2.25.1
+I'm working on two serieses to support SDEI virtualization and asynchronous
+page fault (Async PF) on arm64. When currently running thread is experiencing
+stage-2 page fault, Async PF picks another thread for execution. After the
+stage-2 page fault is resolved, that thread resumes. Async PF is driven by
+notifications sent from host to guest. One of the notifications is delivered
+by SDEI event. The SDEI event is something like NMI to some extent. When
+the SDEI event is raised by host, it will be delivered to guest and the
+previously registered (associated) event handler is invoked in guest.
+
+One of the concerns for SDEI virtualization is how those SDEI events
+and states can be migrated. Previously, I had dedicated ioctl commands
+to read/write the SDEI events and states. Later, Oliver suggested to
+use {GET,SET}_ONE_REG to do migration. I think it's much better than
+the dedicated ioctl commands in terms of maintenance cost. In this case,
+several 'firmware pseudo registers', like what PSCI is doing, will be
+added and some of their sizes will exceed 8 bytes. On the other hand,
+the SDEI events and states can be naturally treated as CPU's properties.
+It's another reason why pseudo-registers fits the need to migrate
+those SDEI events and states.
+
+More information about SDEI can be found from its spec:
+
+https://developer.arm.com/documentation/den0054/latest
+
+>> There are large coprocessor register sizes, like U2048, exposed by KVM.
+>> However, it seems we never support those large coprocessor registers.
+>> I'm not sure if we have any challenges to support those large registers,
+>> or we don't have the needs yet?
+> 
+> The general idea of the coprocessor register accessors for aarch64 KVM
+> is that we're giving the VMM access to the same registers that the guest
+> accesses via the msr/mrs instructions. Those instructions by definition
+> access 64 bit quantities. In a few places we've borrowed this mechanism
+> to define KVM-specific pseudo-registers, but that wasn't the primary
+> design intent. So maybe it makes sense to extend it to do what you're
+> trying to, or maybe that would be the tail wagging the dog. It's hard
+> to tell without more detail on what exactly you're trying to expose
+> to the VMM here.
+> 
+> (The ONE_REG API is used by more than just aarch64 and more than just
+> for coprocessor registers, which is why it supports lots of different
+> sizes.)
+> 
+
+Yes, we're considering 'KVM specific pseudo-registers' for migrating
+SDEI events and states. Those pseudo-registers shouldn't be accessed
+from guest, meaning they're only accessed by VMM (QEMU). I think
+pseudo-registers fits the need very well, to migrate SDEI events
+and states.
+
+Thanks,
+Gavin
 

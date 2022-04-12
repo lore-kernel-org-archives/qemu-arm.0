@@ -1,103 +1,116 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp122204lfk;
-        Tue, 12 Apr 2022 02:57:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwSiPHmSnEJJ2Vc8cCBcUrlhGuk6ll26HBBJ9/hYyu/OC49f241AGAp4IMUglp9BSHKyUmA
-X-Received: by 2002:a05:620a:4148:b0:69c:297b:4050 with SMTP id k8-20020a05620a414800b0069c297b4050mr2483576qko.532.1649757439572;
-        Tue, 12 Apr 2022 02:57:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649757439; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp290160lfk;
+        Tue, 12 Apr 2022 07:32:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyRUrXB+c9AHBN75aiUn6zSu9tPUx0uhGAsVVbUWO0gEnC+qBpgi6MLhXZ7WpZagw/cFoD6
+X-Received: by 2002:a81:5409:0:b0:2eb:fea4:a240 with SMTP id i9-20020a815409000000b002ebfea4a240mr11626940ywb.47.1649773957522;
+        Tue, 12 Apr 2022 07:32:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649773957; cv=none;
         d=google.com; s=arc-20160816;
-        b=td2PiTbDtS7noiCCTr8F09yFSUQWG9EhFLwjv1QExDIcgyaWM6LFBuNC7iOl6gegiH
-         eE8qCdh5nAK8+MHDBtSe+I3PjSGcvGV7WCtVV774RClMEhOSkzs81uMGg38kmmNRzam0
-         TIXxVspUaMcTjfgP+QVBPiJXj5/fGWuEu7IM0Nj8qTUav8/73F1wDomwxTpva9QsKRf6
-         8KqZpRN5hS3amntrgyGUM1tZd98WkV0p6D4RgAFTmT5tup/95NEIx+2ZL/1q3z6EjIoF
-         faLwn+D6BhBuf8bf144XfR6X3jInFMPnzL027DvfQLxG6c5906TxQ4LghJvTnKbbS4wz
-         gOug==
+        b=oP+2vPp3qofWlu9paHcOmZYmptj+2U53psvKAB72EL1wiT2Fqe5UxA73vwp9rftwDh
+         la6Lu3nM5wcn/lzHD9dqJYQ+nLyyAJ97cfsngjs9YgpdlO3+SKdFxjF65ORVUuOTR6s6
+         wdSZyFfKhY4hc0TZqSGm9kp6GPywx8vPp+kuywVH4fnTot/lK3+vsjRy71KcYwv/5BZD
+         1oXalElgmDdJxYRn1Vq3jOuIQhAfFyXKN5h2nWVVXYYvVkaOEWOAjxa+D+B6x1WBMW87
+         FU0X6IF/GMF3nxzVr5pD1CFq3x2CBYlCmKVY8O4qoM//fBc/BWuAbbq1IwTZTPw3XUBl
+         3fAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=w7clKU9sN74dQrRObTelEA/B+gN/EFRyOVTm0veQeNc=;
-        b=xJ4QDozh4gYkZ+zs4LCll0gvvuP58yyfJEkDl8pT+M9iGZU5s+BHyAUrnoR9JG2pQw
-         ZaSdH14B7Z6VoLU+GaNJjzL03uq6lldKJaN4VlnEKuxSJoBRlMXj5jeLt74mo1/z/7nn
-         iFMvKFNFbiFOyPM1HyiKXkDQosQeGy5BmPrzmrnIwD9Vg94ZePKSc9LBhwVmv1EsAXKd
-         ID7MaJG4qtxOQF8N/M7lK8iX0ZJoBiQrbL/gBVQxPBQKcfTMeCsvR5FHpNUFGoY/2m1D
-         91ZVF/j1WESmiIatbuM+XR7hIBtqn/g+iwb0E/ke82Wuqe+aohrSbcBWju0ZJC7u3VqR
-         o/rg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=jRlO+zP0kVj3Wo0YI3Dve+Qh0WCm2PUnYex+fnuEUiM=;
+        b=s8Wn/Hn7xgFqR97/EcwkOS1n+jZltEVME9VWw+K56wbjA7w2M+ehUeANeaNVcbgjVY
+         efn3MFCJ/wh3Quf43YWpmBozKxnYV0p6vu5o2cMYeHfJiFc3qzoWrXSX+Kix9s9eAJad
+         IuR4QgCQh6PLkPW+lgh/ipUSDlRc8g9uDXqFByuurl2GkvXYcwLBUpHe2/WIytb8nKYB
+         HhGglLd2bmp8a2+CnyA05EPZcbuvVuT5WKlMBRgMCM6qLtOazYtaa+Qo36Ks3sMKLZCh
+         6ZbQNjdoqDUFC9X0+wIgD3EM2SCp7Chq6RE+Ogo6qgn4owKY3uh1mLuEEYp6TdVZhR7v
+         VKUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OcFKyJYb;
+       dkim=fail header.i=@linaro.org header.s=google header.b="Ex/Euq1T";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iv13-20020ad45ced000000b00440e46a7cb2si5821230qvb.336.2022.04.12.02.57.19
+        by mx.google.com with ESMTPS id 127-20020a250c85000000b00641408b2069si3561115ybm.297.2022.04.12.07.32.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Apr 2022 02:57:19 -0700 (PDT)
+        Tue, 12 Apr 2022 07:32:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OcFKyJYb;
+       dkim=fail header.i=@linaro.org header.s=google header.b="Ex/Euq1T";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35818 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40948 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1neDGx-0005mG-3b
-	for alex.bennee@linaro.org; Tue, 12 Apr 2022 05:57:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38494)
+	id 1neHZM-0000rp-UR
+	for alex.bennee@linaro.org; Tue, 12 Apr 2022 10:32:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51774)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1neDGe-0005lC-CW
- for qemu-arm@nongnu.org; Tue, 12 Apr 2022 05:57:01 -0400
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31]:38681)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1neHXx-000728-Of
+ for qemu-arm@nongnu.org; Tue, 12 Apr 2022 10:31:09 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636]:39900)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1neDGb-0001zp-W2
- for qemu-arm@nongnu.org; Tue, 12 Apr 2022 05:57:00 -0400
-Received: by mail-yb1-xb31.google.com with SMTP id z33so32178178ybh.5
- for <qemu-arm@nongnu.org>; Tue, 12 Apr 2022 02:56:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1neHXt-0003eS-La
+ for qemu-arm@nongnu.org; Tue, 12 Apr 2022 10:31:09 -0400
+Received: by mail-pl1-x636.google.com with SMTP id c12so1634861plr.6
+ for <qemu-arm@nongnu.org>; Tue, 12 Apr 2022 07:31:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=w7clKU9sN74dQrRObTelEA/B+gN/EFRyOVTm0veQeNc=;
- b=OcFKyJYbxR36Bwn8MMJI7lohphRRqRHquKivA4l/rLRrKeBtNX9UEopSDX3HLIM1iI
- vwrwOUcf1dIQBU/ZKIVuKvMVpIx5hQmDiqOF8Nj89brOB+PrirAbSNsCMDXJVQ3CN500
- CBAjvvYmB+1e56nkVQ0AbKLCC/bDmalSYQgDaOa622OXURS6eiYlbZ4D3bHtqks6Csp0
- FTfGnCE/udhES1ieoRMSjgVAiCmugeflDaDInENthGSAxJvV1yK/NinRUz7ihG2UdulA
- NvcsSu0YSDndq19diLSCL2QP5PDxye4T+KH0dQLf7GsyZBmQBJQYvSan3MyCZGdOzCZy
- 2k7w==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=jRlO+zP0kVj3Wo0YI3Dve+Qh0WCm2PUnYex+fnuEUiM=;
+ b=Ex/Euq1TRS3pBLT+kHDohou2RQNwF2KGPRYKsowEMBhkTlOLUuOsqmr6qhkzrY1cvG
+ hRo2w/HZuWPS+eyjW8qMTeYGiwa4ujBK5Edc4Iky69Pjq5pfYUqD3sNH/1oXRkGMewFR
+ EoPH2C7DYe1ch3BY/a7d7BFee8hZhLbqWeOguhgzoh+KGuXaM+vRcF0l8mdCKxxDp0SN
+ vZfj2rbuX9G2Z9qj6p7x1teSzyfDJGrTYH2LrU4h32V6ucVqTgkE3/FqhO2E9wiyluya
+ qpjHkkT+Tp8qIc5YhGlwjnlRHQ+FZB7Ri9k97QTf/r4Ljo8grbE3RQAlIIydiB61HOC6
+ QgsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=w7clKU9sN74dQrRObTelEA/B+gN/EFRyOVTm0veQeNc=;
- b=WBUKSZuSbKVaeYP9W8gLHAlIC0090Xnh516rlNXuv6swdmoWo9S/cUlDDCvA5VwNKq
- XC78Rx9iWVLwISg4Ddqrmgv6AvYDJQkp/bFUbqSC8KxIBMtrXQvyzaer1XjJJtT1KHds
- wBMpCpfYpjf/GyJPv+0aevBKyvL+l+eQbV+bXTm9c6iR47n3MxcY8FEBcsjREz6kO/f+
- 4Hq1Ny5+tp9YoHLiYK2QDaVT0dfxRGzjx8kfIUx3e6mzjxkOa/tJLqoaeU/6pGS5KN71
- piErkL96CO3hc3mEr7d0f0dBFWetVI8GGjwmOaxvtu9I7xu+KMNVjqUEMIPKtjGOxdZL
- VoQQ==
-X-Gm-Message-State: AOAM531SMs1uRwKIA1SR6vfO4dOq6fxnagiyf9G6DyY0uw92u3cZScFV
- El8byhklZgeVYphL+LJL2eVULeH6iLSRG2CwBICCfQ==
-X-Received: by 2002:a25:488:0:b0:641:1c71:b0ff with SMTP id
- 130-20020a250488000000b006411c71b0ffmr10717949ybe.39.1649757415812; Tue, 12
- Apr 2022 02:56:55 -0700 (PDT)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=jRlO+zP0kVj3Wo0YI3Dve+Qh0WCm2PUnYex+fnuEUiM=;
+ b=mvk5Gmgoo63NZma21ft5TIgY00FlkhNDS8a5BB9PdP82KV+I42T6lD1ufKrxNItPjR
+ RsoZUO1MNR3Wcv3n1ZRSM8ohHtTw4lcGeD31NB7wmna0qk5ou91iI+G79Rdt0kXfuucL
+ QNraplVx0bTOoxG5pKR3hdx+7S0IVJVw6+RgIKTSnJAyeZeY+ID1NUp03noXXW8pbUiJ
+ Ki5p31u6vk/S3bS0V9v0qy76hCwx8dQnkN5mrMETdX0eMhggDVXrPKJz6kdK7XUI0+kZ
+ OjOYShL5VhNS1XO17vyUPNSKo4iEXHTaoFeJT1tu7Fi4xpuBAAWRKZbqfwCpNuDCE8pn
+ WBDQ==
+X-Gm-Message-State: AOAM531OSwmUc7ZublYXYGMlnDx3xrvJnTr3JUdyI4wjT/KXAsdS2xwx
+ ssC84YS/RvCQ/qSbv1gWj3Xzqg==
+X-Received: by 2002:a17:902:7088:b0:156:1aa9:79eb with SMTP id
+ z8-20020a170902708800b001561aa979ebmr37525303plk.71.1649773863990; 
+ Tue, 12 Apr 2022 07:31:03 -0700 (PDT)
+Received: from [192.168.1.6] (174-21-142-130.tukw.qwest.net. [174.21.142.130])
+ by smtp.gmail.com with ESMTPSA id
+ g15-20020a63be4f000000b0039934531e95sm3082383pgo.18.2022.04.12.07.31.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 12 Apr 2022 07:31:03 -0700 (PDT)
+Message-ID: <232fa6ab-2e1e-4b50-bb45-762242f8a0e7@linaro.org>
+Date: Tue, 12 Apr 2022 07:31:01 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 14/16] target/arm: Implement ESB instruction
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20220409000742.293691-1-richard.henderson@linaro.org>
  <20220409000742.293691-15-richard.henderson@linaro.org>
  <CAFEAcA_9Eu-WZn_yMhjj23GRkz14huEVSb8xckvRyygDngwXEQ@mail.gmail.com>
  <78faaf43-4304-ff1e-1c8a-0102725eecbf@linaro.org>
-In-Reply-To: <78faaf43-4304-ff1e-1c8a-0102725eecbf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Apr 2022 10:56:44 +0100
-Message-ID: <CAFEAcA9VHK_YLnZ2FAgdg87uF5Bk4op7kvL9e8DAZp27jvfjiw@mail.gmail.com>
-Subject: Re: [PATCH 14/16] target/arm: Implement ESB instruction
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb31.google.com
+ <CAFEAcA9VHK_YLnZ2FAgdg87uF5Bk4op7kvL9e8DAZp27jvfjiw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA9VHK_YLnZ2FAgdg87uF5Bk4op7kvL9e8DAZp27jvfjiw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -115,34 +128,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rZx3d5t+6XH9
+X-TUID: O6wKDAEWM0XC
 
-On Mon, 11 Apr 2022 at 23:14, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 4/11/22 09:18, Peter Maydell wrote:
-> >> +      ESB        ---- 0011 0010 0000 1111 ---- 0001 0000
-> >> +    ]
-> >
-> > Why don't we decode bits [11:8] here? I see it's the same
-> > as YIELD/WFE/WFI, but I'm not sure why we're not decoding
-> > those bits in those insns either...
->
-> See page F4-7074 in H.a, where bits [11:8] of the imm12 field are described with 'xxxx'.
+On 4/12/22 02:56, Peter Maydell wrote:
+> On Mon, 11 Apr 2022 at 23:14, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> On 4/11/22 09:18, Peter Maydell wrote:
+>>>> +      ESB        ---- 0011 0010 0000 1111 ---- 0001 0000
+>>>> +    ]
+>>>
+>>> Why don't we decode bits [11:8] here? I see it's the same
+>>> as YIELD/WFE/WFI, but I'm not sure why we're not decoding
+>>> those bits in those insns either...
+>>
+>> See page F4-7074 in H.a, where bits [11:8] of the imm12 field are described with 'xxxx'.
+> 
+> Hmm. That just means "decodes to the NOP/WFI/ESB/whatever
+> instruction-description whatever the value of those bits",
+> but when the specific instruction-description then marks
+> those bits as "(0)" or "(1)", that has the usual CONSTRAINED
+> UNPREDICTABLE meaning described in section F1.7.2, where
+> we get a free choice of UNDEF, NOP, ignore the bit, or
+> any-dest-regs-are-UNKNOWN. So we're within the spec to
+> not decode [11:8] but I think it would be more consistent
+> with how we try to handle those (0) and (1) bits generally
+> if we insist that [11:8] is all zeroes here.
+> 
+> For this series, I guess go along with the current way we
+> handle hint instructions, and maybe fix this as a separate
+> cleanup later.
 
-Hmm. That just means "decodes to the NOP/WFI/ESB/whatever
-instruction-description whatever the value of those bits",
-but when the specific instruction-description then marks
-those bits as "(0)" or "(1)", that has the usual CONSTRAINED
-UNPREDICTABLE meaning described in section F1.7.2, where
-we get a free choice of UNDEF, NOP, ignore the bit, or
-any-dest-regs-are-UNKNOWN. So we're within the spec to
-not decode [11:8] but I think it would be more consistent
-with how we try to handle those (0) and (1) bits generally
-if we insist that [11:8] is all zeroes here.
+Ok.
 
-For this series, I guess go along with the current way we
-handle hint instructions, and maybe fix this as a separate
-cleanup later.
-
--- PMM
+r~

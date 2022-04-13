@@ -1,195 +1,220 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp645898lfk;
-        Tue, 12 Apr 2022 19:57:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwUHvPeUvbsYk+Fy/EeQ8VFWGoRXeKmDOsxBXtcI5PbdeedojHmsdFK8GmF/Fh+0JpCsbBK
-X-Received: by 2002:a0c:ed46:0:b0:444:3e69:767b with SMTP id v6-20020a0ced46000000b004443e69767bmr13192889qvq.71.1649818661215;
-        Tue, 12 Apr 2022 19:57:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649818661; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp75696lfk;
+        Wed, 13 Apr 2022 04:51:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx1gaoJ9qLXojh+IcfpIiP61WFweYWLl1ETJ4xcsnQz5W2FYTMLhqDvsyQQIjjss3dRe/g7
+X-Received: by 2002:a05:6214:1d2a:b0:446:109f:5df9 with SMTP id f10-20020a0562141d2a00b00446109f5df9mr3481481qvd.120.1649850664770;
+        Wed, 13 Apr 2022 04:51:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649850664; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZEV2JN4EeagW3P6HBVhxprOObhCiZnGljNC+pcyPtnUZFw2U5igS0jj3S6sRgbjelZ
-         r2FdTx6pT8oUhek5lWXX0wE3YP7UWZytx7C3QlbluQIf9EmuQu2rJ2Jishnz7SutkUqq
-         V91wUF0icwOqO6PW2yk9ewid4e4CRk/KhBytCTqdWg0U+zkuhFvK9Mmu5jHcfYdygh8W
-         Jw8dl2wwduIA7WvwmdmwerwuVE+oIMF+RMPb43OxfcwN+xjN2LE3R/ApR+2evn6lZv+I
-         7qpQjwNHg845AfA+AAp29Uuqe9G1jHZEEzwg1bjzvtWCVqUK26fPWmIPhk05M1rk15gb
-         9d8A==
+        b=QAE+WwC84sW58UNsab4DtSiJSOOnME/iIYNaRsH8JewCApSrdsDIEVRbc9FtEoPcNv
+         YTXr84otZU01KAdlbhfH6hRzBEHBOGhezc2Ul75CcisrFeb4WNYIim56ME2ypLrRJ38b
+         pIs+62Me69CS5oIHzZXaqEqzLUg8lQk34puqaqNOhxVQrvp6UxSMoucWLz/qPq19+srd
+         6TZvKP3mL+YDoqUKNs3cT0BEyAJU8cR0dRXV6yezj3eWHMxUjv80RrUHyl1wG+fcOOmf
+         wJf91/x5serecm465LlJKB9gLmVDsEQMJbUAfqGddRq3xBkuUolthArEzmPMqhAlANJo
+         4JOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=acnOdcqbdLCeiRWIl7NHWQrI712aVuzhm/jY/W794YY=;
-        b=IdN1nhMnrnHPOyHNPk60BcsspjN+4MkhaRkG3zhdoTU8rmQy+69n8poZ0JhxHTdWPn
-         Y8pJkv5OTMku+2SNAhDSOViCLmzbS2bQEqVciLdC4oPkbNJVKK1pimHX7d1V5xj7uo6q
-         szuwMK8t71hbSmt7AFlKyn2xOJU9K0wgUD/l7YutqxHG225+7jYzjJw43w2/e180OKuH
-         768m4ZpvhMY3T8HPW25NmpE5ucD4bpfSxc3CTN8qMTWCwxWwEY8kGGBNO2CEDZRjU3MC
-         W9oqFv9IGcqaQjC5sfjCKBK+ZPAfr7w4jjiYieGyMmDE+6yzjLspgXsN41KBgTOLNO3N
-         t0lQ==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:references:cc:to:subject;
+        bh=G8WE4DdMnvOHe5oCfPOYvJAI2qBAao54BlWp3No+Xis=;
+        b=YNhVKMo72xcB3NxkQe1lfMyxM2seEUUSEF3WpDWckxwDJBN8pd2scDi1lP/KSTF+bZ
+         NA4QiZxSYbYe65xF5tcRJe8+M5/fSHkLmhxBn35bSaDDQWLKKf5TmwXGg6nwNwSyA6hp
+         5R/IZqGVfX6wtfbbcBBCQ5CuIOMylIj7eOJ3R07S+1wcZm1u8DfwfJcpcmw+DTnIdorK
+         2itRxq6GD3PPjLYLCLPwZdSSU4957woE8rehyLfbSetYSAt2JNXqzHecp0sAMtItq4KC
+         w/RIvTd5UR0dw4EO7NamTUZwh4bIrMd8AlIM0gylQwxRHZ/Je6uaCgcauOX8ssZ+KTRa
+         8d9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Wzmymcav;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v39-20020a05622a18a700b002ed58584346si4950444qtc.441.2022.04.12.19.57.41
+        by mx.google.com with ESMTPS id jm6-20020ad45ec6000000b00446183e8a03si452535qvb.360.2022.04.13.04.51.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Apr 2022 19:57:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Apr 2022 04:51:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Wzmymcav;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46166 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:36090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1neTCO-0001np-P8
-	for alex.bennee@linaro.org; Tue, 12 Apr 2022 22:57:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48830)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nebWa-0007B0-7u
+	for alex.bennee@linaro.org; Wed, 13 Apr 2022 07:51:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47768)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1neTAY-00010S-EM
- for qemu-devel@nongnu.org; Tue, 12 Apr 2022 22:55:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:25148)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1nebW4-00077i-6d; Wed, 13 Apr 2022 07:50:32 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3804)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1neTAV-0007uD-JD
- for qemu-devel@nongnu.org; Tue, 12 Apr 2022 22:55:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1649818542;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=acnOdcqbdLCeiRWIl7NHWQrI712aVuzhm/jY/W794YY=;
- b=WzmymcavjtcmhRJ0IfNwP8sviOW1szJ+pnaLcbJJewEfSG8ZVtP/OtBe2Fo5e2GjnP/E+2
- HIX/ALcAGBISHDvUsgDUa0bJvJbv4Br9pPAKX5kbKA8FwtDdru1UcadGK0hHR8lyHPWLpa
- 9KMXLHc5FepMHX6OBBIx+Sn4Tya5XNo=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-197-wjVduh93Oc6t47hm3LI8Wg-1; Tue, 12 Apr 2022 22:55:39 -0400
-X-MC-Unique: wjVduh93Oc6t47hm3LI8Wg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 99F74299E77A;
- Wed, 13 Apr 2022 02:55:38 +0000 (UTC)
-Received: from [10.72.13.171] (ovpn-13-171.pek2.redhat.com [10.72.13.171])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 923C62166B1B;
- Wed, 13 Apr 2022 02:55:29 +0000 (UTC)
-Subject: Re: [PATCH 0/5] target/arm: Support variable sized coprocessor
- registers
-To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>
-References: <20220411065842.63880-1-gshan@redhat.com>
- <CAFEAcA-Tig6PAE4suFnERMN0f_Wco=0UVE7SrWy-Rb7gDheP_Q@mail.gmail.com>
- <20220411120216.63r7ggy43y7ttvhp@gator>
- <CAFEAcA_PfakDVFvNCF55FGoV0A=141CNdtqvgPjheSGvpVqh+A@mail.gmail.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <0eb22327-0724-769c-11ea-1c57086e09fe@redhat.com>
-Date: Wed, 13 Apr 2022 10:55:26 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1nebW0-00059F-15; Wed, 13 Apr 2022 07:50:31 -0400
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Kdgnn5gpCzgYhm;
+ Wed, 13 Apr 2022 19:47:57 +0800 (CST)
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2375.24; Wed, 13 Apr 2022 19:49:47 +0800
+Subject: Re: [PATCH v5 1/4] qapi/machine.json: Add cluster-id
+To: Gavin Shan <gshan@redhat.com>, <qemu-arm@nongnu.org>
+CC: <qemu-devel@nongnu.org>, <imammedo@redhat.com>, <drjones@redhat.com>,
+ <richard.henderson@linaro.org>, <peter.maydell@linaro.org>,
+ <zhenyzha@redhat.com>, <shan.gavin@gmail.com>
+References: <20220403145953.10522-1-gshan@redhat.com>
+ <20220403145953.10522-2-gshan@redhat.com>
+Message-ID: <fedf507c-c5ea-aeec-9acc-586f08dcaea4@huawei.com>
+Date: Wed, 13 Apr 2022 19:49:46 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_PfakDVFvNCF55FGoV0A=141CNdtqvgPjheSGvpVqh+A@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+In-Reply-To: <20220403145953.10522-2-gshan@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme701-chm.china.huawei.com (10.1.199.97) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: agraf@csgraf.de, Oliver Upton <oupton@google.com>,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
- qemu-arm@nongnu.org, shan.gavin@gmail.com,
- Raghavendra Rao Ananta <rananta@google.com>, pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YREABzDmXfMt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
+From:  "wangyanan (Y)" via <qemu-arm@nongnu.org>
+X-TUID: DY1/26h44Yp8
 
-Hi Peter,
+Hi Gavin,
 
-On 4/11/22 8:10 PM, Peter Maydell wrote:
-> On Mon, 11 Apr 2022 at 13:02, Andrew Jones <drjones@redhat.com> wrote:
->> On Mon, Apr 11, 2022 at 10:22:59AM +0100, Peter Maydell wrote:
->>> Also, we support SVE today, and we don't have variable size
->>> coprocessor registers. Is there a bug here that we would be
->>> fixing ?
->>
->> SVE registers are KVM_REG_SIZE_U2048 and KVM_REG_SIZE_U256 sized
->> registers. They work fine (just like the VFP registers which are
->> KVM_REG_SIZE_U128 sized). They work because they don't get stored in the
->> cpreg list. SVE and CORE (which includes VFP) registers are filtered
->> out by kvm_arm_reg_syncs_via_cpreg_list(). Since they're filtered
->> out they need to be handled specifically by kvm_arch_get/put_registers()
-> 
-> Right, this is the distinction between ONE_REG registers and
-> coprocessor registers (which are a subset of ONE_REG registers).
-> We wouldn't want to handle SVE regs in the copro list anyway,
-> I think, because we want their state to end up in env->vfp.zregs[]
-> so the gdbstub can find it there. And we wouldn't have benefited
-> from the copro regs handling's "no need for new QEMU to handle
-> migrating state of a new register" because we needed a lot of
-> special case code for SVE and couldn't enable it by default
-> for other reasons.
-> 
+On 2022/4/3 22:59, Gavin Shan wrote:
+> This adds cluster-id in CPU instance properties, which will be used
+> by arm/virt machine. Besides, the cluster-id is also verified or
+> dumped in various spots:
+>
+>    * hw/core/machine.c::machine_set_cpu_numa_node() to associate
+>      CPU with its NUMA node.
+>
+>    * hw/core/machine.c::machine_numa_finish_cpu_init() to associate
+>      CPU with NUMA node when no default association isn't provided.
+>
+>    * hw/core/machine-hmp-cmds.c::hmp_hotpluggable_cpus() to dump
+>      cluster-id.
+>
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> ---
+>   hw/core/machine-hmp-cmds.c |  4 ++++
+>   hw/core/machine.c          | 16 ++++++++++++++++
+>   qapi/machine.json          |  6 ++++--
+>   3 files changed, 24 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/core/machine-hmp-cmds.c b/hw/core/machine-hmp-cmds.c
+> index 4e2f319aeb..5cb5eecbfc 100644
+> --- a/hw/core/machine-hmp-cmds.c
+> +++ b/hw/core/machine-hmp-cmds.c
+> @@ -77,6 +77,10 @@ void hmp_hotpluggable_cpus(Monitor *mon, const QDict *qdict)
+>           if (c->has_die_id) {
+>               monitor_printf(mon, "    die-id: \"%" PRIu64 "\"\n", c->die_id);
+>           }
+> +        if (c->has_cluster_id) {
+> +            monitor_printf(mon, "    cluster-id: \"%" PRIu64 "\"\n",
+> +                           c->cluster_id);
+> +        }
+>           if (c->has_core_id) {
+>               monitor_printf(mon, "    core-id: \"%" PRIu64 "\"\n", c->core_id);
+>           }
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index d856485cb4..8748b64657 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -677,6 +677,11 @@ void machine_set_cpu_numa_node(MachineState *machine,
+>               return;
+>           }
+>   
+> +        if (props->has_cluster_id && !slot->props.has_cluster_id) {
+> +            error_setg(errp, "cluster-id is not supported");
+> +            return;
+> +        }
+> +
+>           if (props->has_socket_id && !slot->props.has_socket_id) {
+>               error_setg(errp, "socket-id is not supported");
+>               return;
+> @@ -696,6 +701,11 @@ void machine_set_cpu_numa_node(MachineState *machine,
+>                   continue;
+>           }
+>   
+> +        if (props->has_cluster_id &&
+> +            props->cluster_id != slot->props.cluster_id) {
+> +                continue;
+> +        }
+> +
+>           if (props->has_die_id && props->die_id != slot->props.die_id) {
+>                   continue;
+>           }
+> @@ -990,6 +1000,12 @@ static char *cpu_slot_to_string(const CPUArchId *cpu)
+>           }
+>           g_string_append_printf(s, "die-id: %"PRId64, cpu->props.die_id);
+>       }
+> +    if (cpu->props.has_cluster_id) {
+> +        if (s->len) {
+> +            g_string_append_printf(s, ", ");
+> +        }
+> +        g_string_append_printf(s, "cluster-id: %"PRId64, cpu->props.cluster_id);
+> +    }
+>       if (cpu->props.has_core_id) {
+>           if (s->len) {
+>               g_string_append_printf(s, ", ");
+> diff --git a/qapi/machine.json b/qapi/machine.json
+> index 9c460ec450..ea22b574b0 100644
+> --- a/qapi/machine.json
+> +++ b/qapi/machine.json
+> @@ -868,10 +868,11 @@
+>   # @node-id: NUMA node ID the CPU belongs to
+>   # @socket-id: socket number within node/board the CPU belongs to
+>   # @die-id: die number within socket the CPU belongs to (since 4.1)
+> -# @core-id: core number within die the CPU belongs to
+> +# @cluster-id: cluster number within die the CPU belongs to
+I remember this should be "cluster number within socket..."
+according to Igor's comments in v3 ?
+> +# @core-id: core number within cluster/die the CPU belongs to
+>   # @thread-id: thread number within core the CPU belongs to
+>   #
+> -# Note: currently there are 5 properties that could be present
+> +# Note: currently there are 6 properties that could be present
+>   #       but management should be prepared to pass through other
+>   #       properties with device_add command to allow for future
+>   #       interface extension. This also requires the filed names to be kept in
+> @@ -883,6 +884,7 @@
+>     'data': { '*node-id': 'int',
+>               '*socket-id': 'int',
+>               '*die-id': 'int',
+> +            '*cluster-id': 'int',
+>               '*core-id': 'int',
+>               '*thread-id': 'int'
+>     }
+Otherwise, looks good to me:
+Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
 
-Yep, those new introduced SDEI pseudo-registers, the intention
-is to avoid the special case code. So the coprocessor register
-list fits the need well. The only barrier to use the coprocessor
-register list is the variable register sizes.
-
-> If we do add non-64-bit cpregs on the kernel side then we need to
-> make those new registers opt-in, because currently deployed QEMU
-> will refuse to start if the kernel passes it a register in the
-> KVM_GET_REG_LIST that is larger than 64 bits and isn't
-> KVM_REG_ARM_CORE or KVM_REG_ARM64_SVE (assuming I'm not misreading
-> the QEMU code).
-> 
-
-Yes, we need make those new registers opt-in absolutely. Otherwise,
-the old qemu, which doesn't have variable sized registers supported,
-will crash on host kernel, where large sized registers are exposed
-unconditionally.
-
-I spent some time to think of the mechanisms for opt-in. There are
-two options as I can figure out: (1) Using KVM_CAP_ARM_SDEI to check
-if the large sized registers exist. (2) Using newly introduced
-pseudo-register ("KVM_REG_ARM_STD_BMAP") in Raghavendra's series [1].
-The individual bit in this pseudo-register corresponds to one
-service in "standard hypervisor" category, where SDEI falls into.
-
-I prefer (2) because those services or firmware interfaces are
-exposed in a collective way by KVM_REG_ARM_STD_BMAP, comparing
-to the individual capabilities. However, they are same in essence.
-Another benefit to use KVM_REG_ARM_STD_BMAP is hiding SDEI interface
-and the large sized registers for old QEMU.
-
-[1] https://lore.kernel.org/linux-arm-kernel/20220407011605.1966778-10-rananta@google.com/T/#m0bc1aa4048ca157e8e99c593b3f349b879032543
+Please also keep the involved Maintainers on Cc list in next version,
+an Ack from them is best. :)
 
 Thanks,
-Gavin
-
+Yanan

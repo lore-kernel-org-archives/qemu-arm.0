@@ -1,74 +1,75 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp75696lfk;
-        Wed, 13 Apr 2022 04:51:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx1gaoJ9qLXojh+IcfpIiP61WFweYWLl1ETJ4xcsnQz5W2FYTMLhqDvsyQQIjjss3dRe/g7
-X-Received: by 2002:a05:6214:1d2a:b0:446:109f:5df9 with SMTP id f10-20020a0562141d2a00b00446109f5df9mr3481481qvd.120.1649850664770;
-        Wed, 13 Apr 2022 04:51:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649850664; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp104810lfk;
+        Wed, 13 Apr 2022 05:40:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzpBIHmiUZylRhYAXWjy6j9nc32ywjFwGDbqNqGJ5zcPdHM6kgPPmB0ImjczscPtFlB65zW
+X-Received: by 2002:a05:620a:2986:b0:69c:59f0:d3e4 with SMTP id r6-20020a05620a298600b0069c59f0d3e4mr1416915qkp.351.1649853635345;
+        Wed, 13 Apr 2022 05:40:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649853635; cv=none;
         d=google.com; s=arc-20160816;
-        b=QAE+WwC84sW58UNsab4DtSiJSOOnME/iIYNaRsH8JewCApSrdsDIEVRbc9FtEoPcNv
-         YTXr84otZU01KAdlbhfH6hRzBEHBOGhezc2Ul75CcisrFeb4WNYIim56ME2ypLrRJ38b
-         pIs+62Me69CS5oIHzZXaqEqzLUg8lQk34puqaqNOhxVQrvp6UxSMoucWLz/qPq19+srd
-         6TZvKP3mL+YDoqUKNs3cT0BEyAJU8cR0dRXV6yezj3eWHMxUjv80RrUHyl1wG+fcOOmf
-         wJf91/x5serecm465LlJKB9gLmVDsEQMJbUAfqGddRq3xBkuUolthArEzmPMqhAlANJo
-         4JOA==
+        b=STlmLViO4/cCMwmmo+kRZiDJs6Uk/zL8NzKmARQQfohybmb9f8kdeVKSIFoYlbuzv4
+         xzz88dUgT0eBY67ljWe5ey4G9H4e1Ks6gbe1WWeZXQmxBusr9GMQCDGz3Nma9xYe/ajA
+         ZUWmDqceb7U9edBxpr0UwFCoAY6RABcQjGSgy4ZDx2hECLIW9H+BdzHVNLgTaEjVkdCn
+         FOovX3tE3Dhvi5/GkNez3G3OMz09dk3y4QmOHsCUQiSPdxjG7iHMn9kZhluaikCWbRgN
+         3HUKLzakaL8J1NflmJ/N2qsW/6xHU2hQjJjd/hXn0dV+JRkdT38pDX8eH9vDrl2+lhN+
+         boNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:references:cc:to:subject;
-        bh=G8WE4DdMnvOHe5oCfPOYvJAI2qBAao54BlWp3No+Xis=;
-        b=YNhVKMo72xcB3NxkQe1lfMyxM2seEUUSEF3WpDWckxwDJBN8pd2scDi1lP/KSTF+bZ
-         NA4QiZxSYbYe65xF5tcRJe8+M5/fSHkLmhxBn35bSaDDQWLKKf5TmwXGg6nwNwSyA6hp
-         5R/IZqGVfX6wtfbbcBBCQ5CuIOMylIj7eOJ3R07S+1wcZm1u8DfwfJcpcmw+DTnIdorK
-         2itRxq6GD3PPjLYLCLPwZdSSU4957woE8rehyLfbSetYSAt2JNXqzHecp0sAMtItq4KC
-         w/RIvTd5UR0dw4EO7NamTUZwh4bIrMd8AlIM0gylQwxRHZ/Je6uaCgcauOX8ssZ+KTRa
-         8d9g==
+        bh=p/xHZHHjsgI/Q/cvWtofEWMimZCO3LtL208lTpQtYWU=;
+        b=flMwkC9GmqSdvzyG4B04RZyuOtp3vz+I1gbyjtjI+I0e28Jl5q/ZDcwoXYSQuwqcMU
+         VshK8Kjit17J/B1Tax8hFruljN0FE4CoCh8+TNoZg2A+BmqFAFZhmC5c7wxKxcfUmUbo
+         ZoVBPERuddNUJgwEvDYKiCAdWcD0cKoI3HBDfAyZjqOyomFJrFXB++V3jUdHPkN89FTG
+         zLusdUEZnCF95pMnCC732x4cqCHDwkZDnTx6Qh6bjD1q7U2+cKU9c35JRtRp0SiRkY3T
+         B5eOaFDEuAGRtUW0dAF+OHeFpZzVil61MHeLmNdrEzviWmkV+9nqumBAZGIsw2go9qur
+         ncXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jm6-20020ad45ec6000000b00446183e8a03si452535qvb.360.2022.04.13.04.51.04
+        by mx.google.com with ESMTPS id t22-20020ac87396000000b002eb938166eesi738698qtp.354.2022.04.13.05.40.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Apr 2022 04:51:04 -0700 (PDT)
+        Wed, 13 Apr 2022 05:40:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:36090 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59134 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nebWa-0007B0-7u
-	for alex.bennee@linaro.org; Wed, 13 Apr 2022 07:51:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47768)
+	id 1necIU-0000g7-Qw
+	for alex.bennee@linaro.org; Wed, 13 Apr 2022 08:40:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1nebW4-00077i-6d; Wed, 13 Apr 2022 07:50:32 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:3804)
+ id 1necHF-0000ef-Eb; Wed, 13 Apr 2022 08:39:17 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3805)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1nebW0-00059F-15; Wed, 13 Apr 2022 07:50:31 -0400
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.54])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Kdgnn5gpCzgYhm;
- Wed, 13 Apr 2022 19:47:57 +0800 (CST)
+ id 1necHA-00084E-PV; Wed, 13 Apr 2022 08:39:16 -0400
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.53])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Kdhtg5czvzgYb8;
+ Wed, 13 Apr 2022 20:37:15 +0800 (CST)
 Received: from [10.174.187.128] (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2375.24; Wed, 13 Apr 2022 19:49:47 +0800
-Subject: Re: [PATCH v5 1/4] qapi/machine.json: Add cluster-id
+ 15.1.2375.24; Wed, 13 Apr 2022 20:39:05 +0800
+Subject: Re: [PATCH v5 2/4] hw/arm/virt: Consider SMP configuration in CPU
+ topology
 To: Gavin Shan <gshan@redhat.com>, <qemu-arm@nongnu.org>
 CC: <qemu-devel@nongnu.org>, <imammedo@redhat.com>, <drjones@redhat.com>,
  <richard.henderson@linaro.org>, <peter.maydell@linaro.org>,
  <zhenyzha@redhat.com>, <shan.gavin@gmail.com>
 References: <20220403145953.10522-1-gshan@redhat.com>
- <20220403145953.10522-2-gshan@redhat.com>
-Message-ID: <fedf507c-c5ea-aeec-9acc-586f08dcaea4@huawei.com>
-Date: Wed, 13 Apr 2022 19:49:46 +0800
+ <20220403145953.10522-3-gshan@redhat.com>
+Message-ID: <6f713fec-71e6-3300-a504-817f45a82a51@huawei.com>
+Date: Wed, 13 Apr 2022 20:39:04 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20220403145953.10522-2-gshan@redhat.com>
+In-Reply-To: <20220403145953.10522-3-gshan@redhat.com>
 Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 7bit
 Content-Language: en-US
@@ -101,120 +102,63 @@ Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
 From:  "wangyanan (Y)" via <qemu-arm@nongnu.org>
-X-TUID: DY1/26h44Yp8
+X-TUID: zr6XIoafYNN1
 
 Hi Gavin,
 
 On 2022/4/3 22:59, Gavin Shan wrote:
-> This adds cluster-id in CPU instance properties, which will be used
-> by arm/virt machine. Besides, the cluster-id is also verified or
-> dumped in various spots:
+> Currently, the SMP configuration isn't considered when the CPU
+> topology is populated. In this case, it's impossible to provide
+> the default CPU-to-NUMA mapping or association based on the socket
+> ID of the given CPU.
 >
->    * hw/core/machine.c::machine_set_cpu_numa_node() to associate
->      CPU with its NUMA node.
->
->    * hw/core/machine.c::machine_numa_finish_cpu_init() to associate
->      CPU with NUMA node when no default association isn't provided.
->
->    * hw/core/machine-hmp-cmds.c::hmp_hotpluggable_cpus() to dump
->      cluster-id.
+> This takes account of SMP configuration when the CPU topology
+> is populated. The die ID for the given CPU isn't assigned since
+> it's not supported on arm/virt machine yet.
 >
 > Signed-off-by: Gavin Shan <gshan@redhat.com>
 > ---
->   hw/core/machine-hmp-cmds.c |  4 ++++
->   hw/core/machine.c          | 16 ++++++++++++++++
->   qapi/machine.json          |  6 ++++--
->   3 files changed, 24 insertions(+), 2 deletions(-)
+>   hw/arm/virt.c | 16 +++++++++++++++-
+>   1 file changed, 15 insertions(+), 1 deletion(-)
 >
-> diff --git a/hw/core/machine-hmp-cmds.c b/hw/core/machine-hmp-cmds.c
-> index 4e2f319aeb..5cb5eecbfc 100644
-> --- a/hw/core/machine-hmp-cmds.c
-> +++ b/hw/core/machine-hmp-cmds.c
-> @@ -77,6 +77,10 @@ void hmp_hotpluggable_cpus(Monitor *mon, const QDict *qdict)
->           if (c->has_die_id) {
->               monitor_printf(mon, "    die-id: \"%" PRIu64 "\"\n", c->die_id);
->           }
-> +        if (c->has_cluster_id) {
-> +            monitor_printf(mon, "    cluster-id: \"%" PRIu64 "\"\n",
-> +                           c->cluster_id);
-> +        }
->           if (c->has_core_id) {
->               monitor_printf(mon, "    core-id: \"%" PRIu64 "\"\n", c->core_id);
->           }
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index d856485cb4..8748b64657 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -677,6 +677,11 @@ void machine_set_cpu_numa_node(MachineState *machine,
->               return;
->           }
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index d2e5ecd234..3174526730 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2505,6 +2505,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>       int n;
+>       unsigned int max_cpus = ms->smp.max_cpus;
+>       VirtMachineState *vms = VIRT_MACHINE(ms);
+> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
 >   
-> +        if (props->has_cluster_id && !slot->props.has_cluster_id) {
-> +            error_setg(errp, "cluster-id is not supported");
-> +            return;
-> +        }
+>       if (ms->possible_cpus) {
+>           assert(ms->possible_cpus->len == max_cpus);
+> @@ -2518,8 +2519,21 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>           ms->possible_cpus->cpus[n].type = ms->cpu_type;
+>           ms->possible_cpus->cpus[n].arch_id =
+>               virt_cpu_mp_affinity(vms, n);
 > +
->           if (props->has_socket_id && !slot->props.has_socket_id) {
->               error_setg(errp, "socket-id is not supported");
->               return;
-> @@ -696,6 +701,11 @@ void machine_set_cpu_numa_node(MachineState *machine,
->                   continue;
->           }
->   
-> +        if (props->has_cluster_id &&
-> +            props->cluster_id != slot->props.cluster_id) {
-> +                continue;
-> +        }
-> +
->           if (props->has_die_id && props->die_id != slot->props.die_id) {
->                   continue;
->           }
-> @@ -990,6 +1000,12 @@ static char *cpu_slot_to_string(const CPUArchId *cpu)
->           }
->           g_string_append_printf(s, "die-id: %"PRId64, cpu->props.die_id);
+> +        assert(!mc->smp_props.dies_supported);
+> +        ms->possible_cpus->cpus[n].props.has_socket_id = true;
+> +        ms->possible_cpus->cpus[n].props.socket_id =
+> +            (n / (ms->smp.clusters * ms->smp.cores * ms->smp.threads)) %
+> +            ms->smp.sockets;
+No need for "% ms->smp.sockets".
+> +        ms->possible_cpus->cpus[n].props.has_cluster_id = true;
+> +        ms->possible_cpus->cpus[n].props.cluster_id =
+> +            (n / (ms->smp.cores * ms->smp.threads)) % ms->smp.clusters;
+> +        ms->possible_cpus->cpus[n].props.has_core_id = true;
+> +        ms->possible_cpus->cpus[n].props.core_id =
+> +            (n / ms->smp.threads) % ms->smp.cores;
+>           ms->possible_cpus->cpus[n].props.has_thread_id = true;
+> -        ms->possible_cpus->cpus[n].props.thread_id = n;
+> +        ms->possible_cpus->cpus[n].props.thread_id =
+> +            n % ms->smp.threads;
 >       }
-> +    if (cpu->props.has_cluster_id) {
-> +        if (s->len) {
-> +            g_string_append_printf(s, ", ");
-> +        }
-> +        g_string_append_printf(s, "cluster-id: %"PRId64, cpu->props.cluster_id);
-> +    }
->       if (cpu->props.has_core_id) {
->           if (s->len) {
->               g_string_append_printf(s, ", ");
-> diff --git a/qapi/machine.json b/qapi/machine.json
-> index 9c460ec450..ea22b574b0 100644
-> --- a/qapi/machine.json
-> +++ b/qapi/machine.json
-> @@ -868,10 +868,11 @@
->   # @node-id: NUMA node ID the CPU belongs to
->   # @socket-id: socket number within node/board the CPU belongs to
->   # @die-id: die number within socket the CPU belongs to (since 4.1)
-> -# @core-id: core number within die the CPU belongs to
-> +# @cluster-id: cluster number within die the CPU belongs to
-I remember this should be "cluster number within socket..."
-according to Igor's comments in v3 ?
-> +# @core-id: core number within cluster/die the CPU belongs to
->   # @thread-id: thread number within core the CPU belongs to
->   #
-> -# Note: currently there are 5 properties that could be present
-> +# Note: currently there are 6 properties that could be present
->   #       but management should be prepared to pass through other
->   #       properties with device_add command to allow for future
->   #       interface extension. This also requires the filed names to be kept in
-> @@ -883,6 +884,7 @@
->     'data': { '*node-id': 'int',
->               '*socket-id': 'int',
->               '*die-id': 'int',
-> +            '*cluster-id': 'int',
->               '*core-id': 'int',
->               '*thread-id': 'int'
->     }
+>       return ms->possible_cpus;
+>   }
 Otherwise, looks good to me:
 Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
-
-Please also keep the involved Maintainers on Cc list in next version,
-an Ack from them is best. :)
 
 Thanks,
 Yanan

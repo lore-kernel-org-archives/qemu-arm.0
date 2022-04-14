@@ -1,90 +1,91 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp726660lfk;
-        Thu, 14 Apr 2022 02:39:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz4ScK995PlaSjBG2GRM7Ms9F/16r6s6txZhr5osLViDAPdWK/IASI23Zs8nylmks+jqtm8
-X-Received: by 2002:ae9:f016:0:b0:69c:37ea:9b38 with SMTP id l22-20020ae9f016000000b0069c37ea9b38mr1087660qkg.335.1649929154544;
-        Thu, 14 Apr 2022 02:39:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649929154; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp727972lfk;
+        Thu, 14 Apr 2022 02:42:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwrIo8btctNDWEcA3KulY4i0kZzO4ChCuz/24o6YWclHLQsaDpzgIUxyWeTDjlG072GRL5d
+X-Received: by 2002:ad4:44b4:0:b0:444:45d6:ec25 with SMTP id n20-20020ad444b4000000b0044445d6ec25mr2499700qvt.24.1649929358007;
+        Thu, 14 Apr 2022 02:42:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649929358; cv=none;
         d=google.com; s=arc-20160816;
-        b=M1pe6drpoN1hdJL68Zt5eb/ls8ic7nFHKQKYkK0GyRXyBKFOsR/LO3viyTb2QziJHX
-         z3Qgnv2ci5vy2mcd2XcjtKqOtzgEmluyjA19Wy40Gr6Qm+FAUtz3oCkwWVluNoR6IEi+
-         JfUB3MhTyB5h3+H9vZLG2z5VFmaC9ouEpFF+Gkk0XfKM0wYOWt9qMWSo0STzsXXwqKUI
-         +bEWQTCBnQeg7gL3D0A+e8Sn5GayZl4bbDgHIVBwCHpdZbkvZdpcGyfOcs4p/dh7coGt
-         DMyn58yKs0OPO4hxaHHoVY/awqs3Mq8lrynejDRErDxMoxt/D/x8MRVl0yQX8nykm7D1
-         vEjQ==
+        b=BNOKbME2XQvICsDRevEC4tLBuqtkKNh7FDYnEOLD74gUSCptg24JSp0BWp88hDickg
+         vB3IDfiDlao+gwtyz23Mxf9sMoJqsMufPpefL9SKqAH5uFPhoYwRwHaEvKRaWdDs/t3c
+         dDlkoeG5zg6UcfDsI+F6MLxYOcDZYUVrl/ueGSaBa3xwLvje0EDJWU7+6TNiZmFxJfjr
+         DldxOH1F1ThaQf5pv3hNvrrvgEEsrCRH3Nny+gw5CfGNzfpwOiiABShfBEKDnIbKEC5F
+         E2N7ul8/K1TEX1xFi/R61MwXJq5OoAculFLvXUb05PN82s7UvpKWiP4JDIKhE6wMT/W6
+         2OVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xT/mR7WZfkBabmWE9mIboFZfWEM/m5PtXqI5kfuGeJM=;
-        b=qx7CzfUCXBrezbnJB5nmFjMh51KkVbaE9S7WxLhCsfwRowNhdCnVrP0XFyUpJ6QvQ7
-         DcXQNHWCwV/owVEHmXw1VDy7lEglgA5Fd4/L5SaFdtWI64rRIv3JoILtZrSToCtm0Rgg
-         rTqPi5rnZp8hu+i2r9R3+Rc+0l2YRJ36lwc7F9x7fQEp2/vrKV47E4fmOoc8252uDIca
-         NTk+4S93F2T6HZ4EktwksDsORHDcYhi5Dq/cag3KKEoBx6wha+lmy9pmbEImjfYb5NDL
-         dZ7rJfezFMglei3AH/olDbnSEKr7syFQIhNLfYEv4f7eAtIAfK3WfpTmS12zn+ss4WT5
-         y6Kg==
+        bh=aKAb9JFdOAecOP9E3gJB9MjcNCB4nQEXTYYN4vIm/pQ=;
+        b=fDkUkqgqmNRdB5f7jxpdCYrYsaKWLeH341i+3gL2g59oueJSvbFLNVAm33+/xCd7zL
+         YZ6K7sQYJQTzupgCEKkRvNRqkhzTwctrBKNO8Mtdiyu/wL/8rxhMgOLC9/bvA9qEyxXG
+         NJGMJrCvQTBgtMZnfnjxPBqquP/d9kggoK2q5o5GqF4wH+nPwIz3gavRUOUymo476adI
+         6+14Dw869Tm0AwUaGw8TCvJYSTKohJFZECfvdOlp6BLZQn77r0XCloHqn6/kxMYNkqpV
+         9lhRUbmq7CRUowkrIyBPlPeqMfVIYa1QxCUoI/7fhhh80AfvnJMbxwkLER2NX168jgKf
+         gNyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FdW1RgUd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WUY0Q1/I";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z4-20020ae9e604000000b0069c7468e130si417013qkf.262.2022.04.14.02.39.14
+        by mx.google.com with ESMTPS id e6-20020ac84e46000000b002f148dc10c6si3493291qtw.87.2022.04.14.02.42.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Apr 2022 02:39:14 -0700 (PDT)
+        Thu, 14 Apr 2022 02:42:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FdW1RgUd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WUY0Q1/I";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46072 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52560 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nevwY-0006VP-1F
-	for alex.bennee@linaro.org; Thu, 14 Apr 2022 05:39:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42098)
+	id 1nevzp-0002kK-G3
+	for alex.bennee@linaro.org; Thu, 14 Apr 2022 05:42:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42124)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1nevvW-0006HP-Qh
- for qemu-arm@nongnu.org; Thu, 14 Apr 2022 05:38:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34252)
+ id 1nevvY-0006HZ-De
+ for qemu-arm@nongnu.org; Thu, 14 Apr 2022 05:38:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:50203)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1nevvT-000254-08
- for qemu-arm@nongnu.org; Thu, 14 Apr 2022 05:38:10 -0400
+ id 1nevvW-00025m-4e
+ for qemu-arm@nongnu.org; Thu, 14 Apr 2022 05:38:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1649929083;
+ s=mimecast20190719; t=1649929089;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xT/mR7WZfkBabmWE9mIboFZfWEM/m5PtXqI5kfuGeJM=;
- b=FdW1RgUde9ErvUXaifx8TjUjCXT15kKiXyh4d74rIK3RT1pN6t21YBki3I7ePoe9ZFPCMx
- w44MbDBxroxoQdtZ6196BKZUmUuYnH8ubMAy81BnppiOPOCM22IA/bvlQD7xrrM3tMYKcG
- peMxiC70eyM3JEhA8cbwJssLdUF4+iE=
+ bh=aKAb9JFdOAecOP9E3gJB9MjcNCB4nQEXTYYN4vIm/pQ=;
+ b=WUY0Q1/IMx9T5x3MhsAIWNosS/B+hImIuNVbcDsCx7bxiRU78IruUrEFbFIN/taH6nbBe8
+ tx2qKspkCL30Elz4aTjHYXDlacJNTT9q6tS7RTY3e4E6S52PeS0/4pNz4ZXaEoNlrtwovc
+ qI8f5+W7Q5wTWMZQzvUF/CVRVonFBqU=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-448-W37WDjlgN3CG-SDlZP5qUQ-1; Thu, 14 Apr 2022 05:38:02 -0400
-X-MC-Unique: W37WDjlgN3CG-SDlZP5qUQ-1
+ us-mta-396-Kq03LfUyPA2wXmwbmLSUvQ-1; Thu, 14 Apr 2022 05:38:05 -0400
+X-MC-Unique: Kq03LfUyPA2wXmwbmLSUvQ-1
 Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
  [10.11.54.9])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 165C083395E;
- Thu, 14 Apr 2022 09:38:02 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 79017185A79C;
+ Thu, 14 Apr 2022 09:38:04 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.192.90])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D3FF043247D;
- Thu, 14 Apr 2022 09:37:59 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5C72343247D;
+ Thu, 14 Apr 2022 09:38:02 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, pbonzini@redhat.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
  david@gibson.dropbear.id.au, clg@kaod.org, eesposit@redhat.com,
  Coiby.Xu@gmail.com, stefanha@redhat.com
-Subject: [PATCH v5 1/3] tests/qtest/libqos/pci: Introduce pio_limit
-Date: Thu, 14 Apr 2022 11:37:52 +0200
-Message-Id: <20220414093754.1034556-2-eric.auger@redhat.com>
+Subject: [PATCH v5 2/3] tests/qtest/libqos: Skip hotplug tests if pci root bus
+ is not hotpluggable
+Date: Thu, 14 Apr 2022 11:37:53 +0200
+Message-Id: <20220414093754.1034556-3-eric.auger@redhat.com>
 In-Reply-To: <20220414093754.1034556-1-eric.auger@redhat.com>
 References: <20220414093754.1034556-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -120,268 +121,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: jean-philippe@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vxfDMQnPiLmL
+X-TUID: yiGDa30+uJOG
 
-At the moment the IO space limit is hardcoded to
-QPCI_PIO_LIMIT = 0x10000. When accesses are performed to a bar,
-the base address of this latter is compared against the limit
-to decide whether we perform an IO or a memory access.
-
-On ARM, we cannot keep this PIO limit as the arm-virt machine
-uses [0x3eff0000, 0x3f000000 ] for the IO space map and we
-are mandated to allocate at 0x0.
-
-Add a new flag in QPCIBar indicating whether it is an IO bar
-or a memory bar. This flag is set on QPCIBar allocation and
-provisionned based on the BAR configuration. Then the new flag
-is used in access functions and in iomap() function.
+ARM does not not support hotplug on pcie.0. Add a flag on the bus
+which tells if devices can be hotplugged and skip hotplug tests
+if the bus cannot be hotplugged. This is a temporary solution to
+enable the other pci tests on aarch64.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/qtest/libqos/pci-pc.c    |  1 +
- tests/qtest/libqos/pci-spapr.c |  1 +
- tests/qtest/libqos/pci.c       | 78 ++++++++++++++++++++++------------
- tests/qtest/libqos/pci.h       |  5 +--
- 4 files changed, 54 insertions(+), 31 deletions(-)
 
-diff --git a/tests/qtest/libqos/pci-pc.c b/tests/qtest/libqos/pci-pc.c
-index f97844289f..8051a0881a 100644
---- a/tests/qtest/libqos/pci-pc.c
-+++ b/tests/qtest/libqos/pci-pc.c
-@@ -150,6 +150,7 @@ void qpci_init_pc(QPCIBusPC *qpci, QTestState *qts, QGuestAllocator *alloc)
- 
-     qpci->bus.qts = qts;
-     qpci->bus.pio_alloc_ptr = 0xc000;
-+    qpci->bus.pio_limit = 0x10000;
-     qpci->bus.mmio_alloc_ptr = 0xE0000000;
-     qpci->bus.mmio_limit = 0x100000000ULL;
- 
-diff --git a/tests/qtest/libqos/pci-spapr.c b/tests/qtest/libqos/pci-spapr.c
-index 262226985f..870ffdd8b5 100644
---- a/tests/qtest/libqos/pci-spapr.c
-+++ b/tests/qtest/libqos/pci-spapr.c
-@@ -197,6 +197,7 @@ void qpci_init_spapr(QPCIBusSPAPR *qpci, QTestState *qts,
- 
-     qpci->bus.qts = qts;
-     qpci->bus.pio_alloc_ptr = 0xc000;
-+    qpci->bus.pio_limit = 0x10000;
-     qpci->bus.mmio_alloc_ptr = qpci->mmio32.pci_base;
-     qpci->bus.mmio_limit = qpci->mmio32.pci_base + qpci->mmio32.size;
- 
-diff --git a/tests/qtest/libqos/pci.c b/tests/qtest/libqos/pci.c
-index 3a9076ae58..b23d72346b 100644
---- a/tests/qtest/libqos/pci.c
-+++ b/tests/qtest/libqos/pci.c
-@@ -398,44 +398,56 @@ void qpci_config_writel(QPCIDevice *dev, uint8_t offset, uint32_t value)
- 
- uint8_t qpci_io_readb(QPCIDevice *dev, QPCIBar token, uint64_t off)
+---
+
+v1 ->v2:
+- reword g_test_skip msg into "pci bus does not support hotplug"
+---
+ tests/qtest/e1000e-test.c         |  6 ++++++
+ tests/qtest/libqos/pci.h          |  1 +
+ tests/qtest/vhost-user-blk-test.c | 10 ++++++++++
+ tests/qtest/virtio-blk-test.c     |  5 +++++
+ tests/qtest/virtio-net-test.c     |  5 +++++
+ tests/qtest/virtio-rng-test.c     |  5 +++++
+ 6 files changed, 32 insertions(+)
+
+diff --git a/tests/qtest/e1000e-test.c b/tests/qtest/e1000e-test.c
+index e648fdd409..ad6d7f9303 100644
+--- a/tests/qtest/e1000e-test.c
++++ b/tests/qtest/e1000e-test.c
+@@ -235,6 +235,12 @@ static void test_e1000e_multiple_transfers(void *obj, void *data,
+ static void test_e1000e_hotplug(void *obj, void *data, QGuestAllocator * alloc)
  {
--    if (token.addr < QPCI_PIO_LIMIT) {
--        return dev->bus->pio_readb(dev->bus, token.addr + off);
-+    QPCIBus *bus = dev->bus;
+     QTestState *qts = global_qtest;  /* TODO: get rid of global_qtest here */
++    QE1000E_PCI *dev = obj;
 +
-+    if (token.is_io) {
-+        return bus->pio_readb(bus, token.addr + off);
-     } else {
-         uint8_t val;
--        dev->bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
-+
-+        bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
-         return val;
-     }
- }
++    if (dev->pci_dev.bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
  
- uint16_t qpci_io_readw(QPCIDevice *dev, QPCIBar token, uint64_t off)
- {
--    if (token.addr < QPCI_PIO_LIMIT) {
--        return dev->bus->pio_readw(dev->bus, token.addr + off);
-+    QPCIBus *bus = dev->bus;
-+
-+    if (token.is_io) {
-+        return bus->pio_readw(bus, token.addr + off);
-     } else {
-         uint16_t val;
--        dev->bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
-+
-+        bus->memread(bus, token.addr + off, &val, sizeof(val));
-         return le16_to_cpu(val);
-     }
- }
- 
- uint32_t qpci_io_readl(QPCIDevice *dev, QPCIBar token, uint64_t off)
- {
--    if (token.addr < QPCI_PIO_LIMIT) {
--        return dev->bus->pio_readl(dev->bus, token.addr + off);
-+    QPCIBus *bus = dev->bus;
-+
-+    if (token.is_io) {
-+        return bus->pio_readl(bus, token.addr + off);
-     } else {
-         uint32_t val;
--        dev->bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
-+
-+        bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
-         return le32_to_cpu(val);
-     }
- }
- 
- uint64_t qpci_io_readq(QPCIDevice *dev, QPCIBar token, uint64_t off)
- {
--    if (token.addr < QPCI_PIO_LIMIT) {
--        return dev->bus->pio_readq(dev->bus, token.addr + off);
-+    QPCIBus *bus = dev->bus;
-+
-+    if (token.is_io) {
-+        return bus->pio_readq(bus, token.addr + off);
-     } else {
-         uint64_t val;
--        dev->bus->memread(dev->bus, token.addr + off, &val, sizeof(val));
-+
-+        bus->memread(bus, token.addr + off, &val, sizeof(val));
-         return le64_to_cpu(val);
-     }
- }
-@@ -443,57 +455,65 @@ uint64_t qpci_io_readq(QPCIDevice *dev, QPCIBar token, uint64_t off)
- void qpci_io_writeb(QPCIDevice *dev, QPCIBar token, uint64_t off,
-                     uint8_t value)
- {
--    if (token.addr < QPCI_PIO_LIMIT) {
--        dev->bus->pio_writeb(dev->bus, token.addr + off, value);
-+    QPCIBus *bus = dev->bus;
-+
-+    if (token.is_io) {
-+        bus->pio_writeb(bus, token.addr + off, value);
-     } else {
--        dev->bus->memwrite(dev->bus, token.addr + off, &value, sizeof(value));
-+        bus->memwrite(bus, token.addr + off, &value, sizeof(value));
-     }
- }
- 
- void qpci_io_writew(QPCIDevice *dev, QPCIBar token, uint64_t off,
-                     uint16_t value)
- {
--    if (token.addr < QPCI_PIO_LIMIT) {
--        dev->bus->pio_writew(dev->bus, token.addr + off, value);
-+    QPCIBus *bus = dev->bus;
-+
-+    if (token.is_io) {
-+        bus->pio_writew(bus, token.addr + off, value);
-     } else {
-         value = cpu_to_le16(value);
--        dev->bus->memwrite(dev->bus, token.addr + off, &value, sizeof(value));
-+        bus->memwrite(bus, token.addr + off, &value, sizeof(value));
-     }
- }
- 
- void qpci_io_writel(QPCIDevice *dev, QPCIBar token, uint64_t off,
-                     uint32_t value)
- {
--    if (token.addr < QPCI_PIO_LIMIT) {
--        dev->bus->pio_writel(dev->bus, token.addr + off, value);
-+    QPCIBus *bus = dev->bus;
-+
-+    if (token.is_io) {
-+        bus->pio_writel(bus, token.addr + off, value);
-     } else {
-         value = cpu_to_le32(value);
--        dev->bus->memwrite(dev->bus, token.addr + off, &value, sizeof(value));
-+        bus->memwrite(bus, token.addr + off, &value, sizeof(value));
-     }
- }
- 
- void qpci_io_writeq(QPCIDevice *dev, QPCIBar token, uint64_t off,
-                     uint64_t value)
- {
--    if (token.addr < QPCI_PIO_LIMIT) {
--        dev->bus->pio_writeq(dev->bus, token.addr + off, value);
-+    QPCIBus *bus = dev->bus;
-+
-+    if (token.is_io) {
-+        bus->pio_writeq(bus, token.addr + off, value);
-     } else {
-         value = cpu_to_le64(value);
--        dev->bus->memwrite(dev->bus, token.addr + off, &value, sizeof(value));
-+        bus->memwrite(bus, token.addr + off, &value, sizeof(value));
-     }
- }
- 
- void qpci_memread(QPCIDevice *dev, QPCIBar token, uint64_t off,
-                   void *buf, size_t len)
- {
--    g_assert(token.addr >= QPCI_PIO_LIMIT);
-+    g_assert(!token.is_io);
-     dev->bus->memread(dev->bus, token.addr + off, buf, len);
- }
- 
- void qpci_memwrite(QPCIDevice *dev, QPCIBar token, uint64_t off,
-                    const void *buf, size_t len)
- {
--    g_assert(token.addr >= QPCI_PIO_LIMIT);
-+    g_assert(!token.is_io);
-     dev->bus->memwrite(dev->bus, token.addr + off, buf, len);
- }
- 
-@@ -534,9 +554,10 @@ QPCIBar qpci_iomap(QPCIDevice *dev, int barno, uint64_t *sizeptr)
-         loc = QEMU_ALIGN_UP(bus->pio_alloc_ptr, size);
- 
-         g_assert(loc >= bus->pio_alloc_ptr);
--        g_assert(loc + size <= QPCI_PIO_LIMIT); /* Keep PIO below 64kiB */
-+        g_assert(loc + size <= bus->pio_limit);
- 
-         bus->pio_alloc_ptr = loc + size;
-+        bar.is_io = true;
- 
-         qpci_config_writel(dev, bar_reg, loc | PCI_BASE_ADDRESS_SPACE_IO);
-     } else {
-@@ -547,6 +568,7 @@ QPCIBar qpci_iomap(QPCIDevice *dev, int barno, uint64_t *sizeptr)
-         g_assert(loc + size <= bus->mmio_limit);
- 
-         bus->mmio_alloc_ptr = loc + size;
-+        bar.is_io = false;
- 
-         qpci_config_writel(dev, bar_reg, loc);
-     }
-@@ -562,7 +584,7 @@ void qpci_iounmap(QPCIDevice *dev, QPCIBar bar)
- 
- QPCIBar qpci_legacy_iomap(QPCIDevice *dev, uint16_t addr)
- {
--    QPCIBar bar = { .addr = addr };
-+    QPCIBar bar = { .addr = addr, .is_io = true };
-     return bar;
- }
- 
+     qtest_qmp_device_add(qts, "e1000e", "e1000e_net", "{'addr': '0x06'}");
+     qpci_unplug_acpi_device_test(qts, "e1000e_net", 0x06);
 diff --git a/tests/qtest/libqos/pci.h b/tests/qtest/libqos/pci.h
-index becb800f9e..44f6806fe4 100644
+index 44f6806fe4..6a28b40522 100644
 --- a/tests/qtest/libqos/pci.h
 +++ b/tests/qtest/libqos/pci.h
-@@ -16,8 +16,6 @@
- #include "libqtest.h"
- #include "qgraph.h"
- 
--#define QPCI_PIO_LIMIT    0x10000
--
- #define QPCI_DEVFN(dev, fn) (((dev) << 3) | (fn))
- 
- typedef struct QPCIDevice QPCIDevice;
-@@ -51,7 +49,7 @@ struct QPCIBus {
-                           uint8_t offset, uint32_t value);
- 
-     QTestState *qts;
--    uint16_t pio_alloc_ptr;
-+    uint64_t pio_alloc_ptr, pio_limit;
+@@ -52,6 +52,7 @@ struct QPCIBus {
+     uint64_t pio_alloc_ptr, pio_limit;
      uint64_t mmio_alloc_ptr, mmio_limit;
      bool has_buggy_msi; /* TRUE for spapr, FALSE for pci */
++    bool not_hotpluggable; /* TRUE if devices cannot be hotplugged */
  
-@@ -59,6 +57,7 @@ struct QPCIBus {
- 
- struct QPCIBar {
-     uint64_t addr;
-+    bool is_io;
  };
  
- struct QPCIDevice
+diff --git a/tests/qtest/vhost-user-blk-test.c b/tests/qtest/vhost-user-blk-test.c
+index 62e670f39b..1316aae0fa 100644
+--- a/tests/qtest/vhost-user-blk-test.c
++++ b/tests/qtest/vhost-user-blk-test.c
+@@ -676,6 +676,11 @@ static void pci_hotplug(void *obj, void *data, QGuestAllocator *t_alloc)
+     QVirtioPCIDevice *dev;
+     QTestState *qts = dev1->pdev->bus->qts;
+ 
++    if (dev1->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     /* plug secondary disk */
+     qtest_qmp_device_add(qts, "vhost-user-blk-pci", "drv1",
+                          "{'addr': %s, 'chardev': 'char2'}",
+@@ -703,6 +708,11 @@ static void multiqueue(void *obj, void *data, QGuestAllocator *t_alloc)
+     uint64_t features;
+     uint16_t num_queues;
+ 
++    if (pdev1->pdev->bus->not_hotpluggable) {
++        g_test_skip("bus pci.0 does not support hotplug");
++        return;
++    }
++
+     /*
+      * The primary device has 1 queue and VIRTIO_BLK_F_MQ is not enabled. The
+      * VIRTIO specification allows VIRTIO_BLK_F_MQ to be enabled when there is
+diff --git a/tests/qtest/virtio-blk-test.c b/tests/qtest/virtio-blk-test.c
+index 2a23698211..acb44c9fb8 100644
+--- a/tests/qtest/virtio-blk-test.c
++++ b/tests/qtest/virtio-blk-test.c
+@@ -701,6 +701,11 @@ static void pci_hotplug(void *obj, void *data, QGuestAllocator *t_alloc)
+     QVirtioPCIDevice *dev;
+     QTestState *qts = dev1->pdev->bus->qts;
+ 
++    if (dev1->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     /* plug secondary disk */
+     qtest_qmp_device_add(qts, "virtio-blk-pci", "drv1",
+                          "{'addr': %s, 'drive': 'drive1'}",
+diff --git a/tests/qtest/virtio-net-test.c b/tests/qtest/virtio-net-test.c
+index a71395849f..e54817f154 100644
+--- a/tests/qtest/virtio-net-test.c
++++ b/tests/qtest/virtio-net-test.c
+@@ -174,6 +174,11 @@ static void hotplug(void *obj, void *data, QGuestAllocator *t_alloc)
+     QTestState *qts = dev->pdev->bus->qts;
+     const char *arch = qtest_get_arch();
+ 
++    if (dev->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     qtest_qmp_device_add(qts, "virtio-net-pci", "net1",
+                          "{'addr': %s}", stringify(PCI_SLOT_HP));
+ 
+diff --git a/tests/qtest/virtio-rng-test.c b/tests/qtest/virtio-rng-test.c
+index e6b8cd8e0c..5ce444ad72 100644
+--- a/tests/qtest/virtio-rng-test.c
++++ b/tests/qtest/virtio-rng-test.c
+@@ -20,6 +20,11 @@ static void rng_hotplug(void *obj, void *data, QGuestAllocator *alloc)
+     QVirtioPCIDevice *dev = obj;
+     QTestState *qts = dev->pdev->bus->qts;
+ 
++   if (dev->pdev->bus->not_hotpluggable) {
++        g_test_skip("pci bus does not support hotplug");
++        return;
++    }
++
+     const char *arch = qtest_get_arch();
+ 
+     qtest_qmp_device_add(qts, "virtio-rng-pci", "rng1",
 -- 
 2.26.3
 

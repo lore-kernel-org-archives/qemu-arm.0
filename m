@@ -1,253 +1,296 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp724192lfk;
-        Thu, 14 Apr 2022 02:33:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwn/Ea4dOvSzIECE9KZ0O03NKbAWmiQvlGsU+zgjBN3Lys1DxkYIiQ/2D5SGNW/lz10PLfM
-X-Received: by 2002:a37:664b:0:b0:69a:7bca:5cf9 with SMTP id a72-20020a37664b000000b0069a7bca5cf9mr1112498qkc.701.1649928819783;
-        Thu, 14 Apr 2022 02:33:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649928819; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp725617lfk;
+        Thu, 14 Apr 2022 02:36:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx7XIYoXeOeFlyZlKB6LqnljKXPyfxJKht5ZhGqj4FP3mrToBllzM0iBtPSnyVLnKSdie9T
+X-Received: by 2002:a05:620a:15f6:b0:69c:7fe7:1bb9 with SMTP id p22-20020a05620a15f600b0069c7fe71bb9mr421775qkm.550.1649928995198;
+        Thu, 14 Apr 2022 02:36:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649928995; cv=none;
         d=google.com; s=arc-20160816;
-        b=wFptn+T2BUyl3IsAIFCnFYfyqMVWOZ2LAjZTmGUF3VqrhefflW06t+o7DPrvx+SXN4
-         ce2gRMrc1m042wUbaUMhH32RVw/jq9GIdN1zFKuJu6YBnHBDowALnZJ0hZxDgTXPOuNd
-         jpJ8/Vv/07bFAuGDVpa2Swyc8c4FI4AwG/1XvBPcAcGwp8mn2tvwQEO7XSb0SPUQDwPI
-         R+uJZDDaPSReaSCR7R3yyF5Xs+upvMu5Ra6cUGZekCTMt7pSKRuigiMhJulsOqrP7wJM
-         peD9ldYPVeV2Xr3DaBdkqDOYQqTw32JuwQ7VNpOjpidNOVjdzywulYh5LN68fH5KV5q6
-         xF3w==
+        b=AAhGB+1rZfxquGSzswr0oLEMVhCtlSoMswGp21T9VGI0pOa30QMGx+ECDvE07No3OU
+         giCT7lRIaXlRd6663u7AHcCeku12lfNt/YD23qI7exMNsHtyOngl1czZalmlD/IWewhP
+         pxAmi7bNoJBn6waCWdbMP05BepWd2mE7spN+y5s6DFG+ckMYJrvw+KwZkhnyo0qo5XAl
+         BhgUdFTyLz9yUOeNiCLWlI1jfdR1MtvLpVTOKsxbvchO34bHob4wwAUtFHDC/i54feeD
+         Lwrphe6RQ5kKjr/0gzqUGU8iegZK9ZkVVaUu2Pl3jKyQsPupCr9l/JhuEziaif4UGiYc
+         XGSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=IGdl9wjm1DUNttQyOqDPcuJokH2iFmXuHfnyVCxfkik=;
-        b=Hvu73TqHCOn2F2ineENPIRl23FshYQKZblRB6XZ0AVcJ6qEIhnFieInoLvOXShF0i1
-         oEQvXKVhzzT+m949op7g7w+RHxxy1HjSp21jTPL/WaiN2dOjpMaLy+A4sD631P5gFuhO
-         4i5pAykFYSfm6tJyFSsnZEwW/EmCMiB+Io2dc5Z8bs5C/uREOv+lZfHzkuR7gtPGN3RU
-         zrfkAtLzCuUC7aJT+w3sjn6KJLHBuZLVXq076a198H0z49a5lLSMP3SqMkkGerI5RFe1
-         VDljRXvONegPudAAYRY7wWQ0TlfVnLh4nq/ux9h1i2hnes8+fvSyfm/xmn/1V1h/U0ih
-         8Piw==
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:references:cc:to:subject;
+        bh=AVrWUfTHozY9f1MI9eUrvC2tMzW/a0p5D3yiFYT9knY=;
+        b=SUfYenJATGJijg6DA7j+rt+w/QhKjPp/gZ1fEuPOCgEgDoGPoF3uHHjKiCK9XG2aRX
+         QfOD0N9BMEEUxpsBq3y0C/0ysxfyVEncwP6aM7EgdXHSmWtpN6Pryd0K037Yy0+vysyI
+         vhFpLTQ2acdB40QXdaSzG7k+OfVHHiFJrjNyMDW4n9UZjsSDATL9mzRc2jg8ySGSA8hs
+         NVSMn9QhXZvXr4b4MviNCpjMWLwUCFofyac3tlfK8NyLxXfulP+c94ih+crouENftAAi
+         rVbMGXhoInkrYpxm81si6Ez+LBjM2VGaYr0cg5mxUMYYys5/pq0P7En9La3HLc7l1ipU
+         QnrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17-20020ac86151000000b002f1db48d54fsi679020qtm.142.2022.04.14.02.33.39
+        by mx.google.com with ESMTPS id br19-20020a05620a461300b0069c55505ccbsi2125858qkb.418.2022.04.14.02.36.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Apr 2022 02:33:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Apr 2022 02:36:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:40596 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43678 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nevr9-0002aE-7e
-	for alex.bennee@linaro.org; Thu, 14 Apr 2022 05:33:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41294)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nevty-0004fu-NS
+	for alex.bennee@linaro.org; Thu, 14 Apr 2022 05:36:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1nevqv-0002Zn-MB; Thu, 14 Apr 2022 05:33:25 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56]:2518)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1nevrL-0003IN-It; Thu, 14 Apr 2022 05:33:51 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:5153)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1nevqs-0001Kq-IJ; Thu, 14 Apr 2022 05:33:25 -0400
-Received: from fraeml737-chm.china.huawei.com (unknown [172.18.147.200])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4KfDgz15dVz6H6lG;
- Thu, 14 Apr 2022 17:29:51 +0800 (CST)
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- fraeml737-chm.china.huawei.com (10.206.15.218) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Thu, 14 Apr 2022 11:33:13 +0200
-Received: from localhost (10.81.205.215) by lhreml710-chm.china.huawei.com
- (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 14 Apr
- 2022 10:33:11 +0100
-Date: Thu, 14 Apr 2022 10:33:10 +0100
-To: Gavin Shan <gshan@redhat.com>
-CC: "wangyanan (Y)" <wangyanan55@huawei.com>, <qemu-arm@nongnu.org>,
- <peter.maydell@linaro.org>, <drjones@redhat.com>,
- <richard.henderson@linaro.org>, <qemu-devel@nongnu.org>,
- <zhenyzha@redhat.com>, <shan.gavin@gmail.com>, <imammedo@redhat.com>
-Subject: Re: [PATCH v5 2/4] hw/arm/virt: Consider SMP configuration in CPU
- topology
-Message-ID: <20220414103310.0000356a@Huawei.com>
-In-Reply-To: <503fb329-8f39-eddb-d05a-729279934fa7@redhat.com>
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1nevrJ-0001Nx-BZ; Thu, 14 Apr 2022 05:33:51 -0400
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.57])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4KfDgW1rLWzCr11;
+ Thu, 14 Apr 2022 17:29:27 +0800 (CST)
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2375.24; Thu, 14 Apr 2022 17:33:45 +0800
+Subject: Re: [PATCH v5 1/4] qapi/machine.json: Add cluster-id
+To: Gavin Shan <gshan@redhat.com>, <qemu-arm@nongnu.org>
+CC: <qemu-devel@nongnu.org>, <imammedo@redhat.com>, <drjones@redhat.com>,
+ <richard.henderson@linaro.org>, <peter.maydell@linaro.org>,
+ <zhenyzha@redhat.com>, <shan.gavin@gmail.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>, Markus
+ Armbruster <armbru@redhat.com>
 References: <20220403145953.10522-1-gshan@redhat.com>
- <20220403145953.10522-3-gshan@redhat.com>
- <6f713fec-71e6-3300-a504-817f45a82a51@huawei.com>
- <27df8771-ebe0-b5fe-39c4-83696e21e3a3@redhat.com>
- <ea5ab7db-1831-83a5-1719-239930b37571@huawei.com>
- <c49d80af-f68b-1b5c-a808-848172d88f89@redhat.com>
- <f02ae2ce-0256-ac85-0bb7-bd34244d9781@huawei.com>
- <503fb329-8f39-eddb-d05a-729279934fa7@redhat.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
+ <20220403145953.10522-2-gshan@redhat.com>
+ <fedf507c-c5ea-aeec-9acc-586f08dcaea4@huawei.com>
+ <6e27668c-0895-fcc8-165e-673aded5ba47@redhat.com>
+ <f45a3f17-7cef-3d8c-e79c-e6a5898e665e@huawei.com>
+ <d615b714-90a8-8b49-8cf5-04b4f31de0c9@redhat.com>
+Message-ID: <d2b324b8-9890-24b3-b47c-2953240f0210@huawei.com>
+Date: Thu, 14 Apr 2022 17:33:45 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.81.205.215]
-X-ClientProxiedBy: lhreml744-chm.china.huawei.com (10.201.108.194) To
- lhreml710-chm.china.huawei.com (10.201.108.61)
+In-Reply-To: <d615b714-90a8-8b49-8cf5-04b4f31de0c9@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme701-chm.china.huawei.com (10.1.199.97) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=wangyanan55@huawei.com; helo=szxga03-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-X-TUID: GxHGairOpEdG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
+From:  "wangyanan (Y)" via <qemu-devel@nongnu.org>
+X-TUID: BZ3TmtRoEgAc
 
-On Thu, 14 Apr 2022 15:35:41 +0800
-Gavin Shan <gshan@redhat.com> wrote:
-
+On 2022/4/14 15:56, Gavin Shan wrote:
 > Hi Yanan,
->=20
-> On 4/14/22 10:49 AM, wangyanan (Y) wrote:
-> > On 2022/4/14 10:37, Gavin Shan wrote: =20
-> >> On 4/14/22 10:27 AM, wangyanan (Y) wrote: =20
-> >>> On 2022/4/14 8:08, Gavin Shan wrote: =20
-> >>>> On 4/13/22 8:39 PM, wangyanan (Y) wrote: =20
-> >>>>> On 2022/4/3 22:59, Gavin Shan wrote: =20
-> >>>>>> Currently, the SMP configuration isn't considered when the CPU
-> >>>>>> topology is populated. In this case, it's impossible to provide
-> >>>>>> the default CPU-to-NUMA mapping or association based on the socket
-> >>>>>> ID of the given CPU.
-> >>>>>>
-> >>>>>> This takes account of SMP configuration when the CPU topology
-> >>>>>> is populated. The die ID for the given CPU isn't assigned since
-> >>>>>> it's not supported on arm/virt machine yet.
-> >>>>>>
-> >>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> >>>>>> ---
-> >>>>>> =A0 hw/arm/virt.c | 16 +++++++++++++++-
-> >>>>>> =A0 1 file changed, 15 insertions(+), 1 deletion(-)
-> >>>>>>
-> >>>>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> >>>>>> index d2e5ecd234..3174526730 100644
-> >>>>>> --- a/hw/arm/virt.c
-> >>>>>> +++ b/hw/arm/virt.c
-> >>>>>> @@ -2505,6 +2505,7 @@ static const CPUArchIdList *virt_possible_cp=
-u_arch_ids(MachineState *ms)
-> >>>>>> =A0=A0=A0=A0=A0 int n;
-> >>>>>> =A0=A0=A0=A0=A0 unsigned int max_cpus =3D ms->smp.max_cpus;
-> >>>>>> =A0=A0=A0=A0=A0 VirtMachineState *vms =3D VIRT_MACHINE(ms);
-> >>>>>> +=A0=A0=A0 MachineClass *mc =3D MACHINE_GET_CLASS(vms);
-> >>>>>> =A0=A0=A0=A0=A0 if (ms->possible_cpus) {
-> >>>>>> =A0=A0=A0=A0=A0=A0=A0=A0=A0 assert(ms->possible_cpus->len =3D=3D m=
-ax_cpus);
-> >>>>>> @@ -2518,8 +2519,21 @@ static const CPUArchIdList *virt_possible_c=
-pu_arch_ids(MachineState *ms)
-> >>>>>> =A0=A0=A0=A0=A0=A0=A0=A0=A0 ms->possible_cpus->cpus[n].type =3D ms=
-->cpu_type;
-> >>>>>> =A0=A0=A0=A0=A0=A0=A0=A0=A0 ms->possible_cpus->cpus[n].arch_id =3D
-> >>>>>> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 virt_cpu_mp_affinity(vms, =
-n);
-> >>>>>> +
-> >>>>>> +=A0=A0=A0=A0=A0=A0=A0 assert(!mc->smp_props.dies_supported);
-> >>>>>> + ms->possible_cpus->cpus[n].props.has_socket_id =3D true;
-> >>>>>> +=A0=A0=A0=A0=A0=A0=A0 ms->possible_cpus->cpus[n].props.socket_id =
-=3D
-> >>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 (n / (ms->smp.clusters * ms->sm=
-p.cores * ms->smp.threads)) %
-> >>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ms->smp.sockets; =20
-> >>>>> No need for "% ms->smp.sockets". =20
-> >>>>
-> >>>> Yeah, lets remove it in v6.
-> >>>> =20
-> >>>>>> + ms->possible_cpus->cpus[n].props.has_cluster_id =3D true;
-> >>>>>> +=A0=A0=A0=A0=A0=A0=A0 ms->possible_cpus->cpus[n].props.cluster_id=
- =3D
-> >>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 (n / (ms->smp.cores * ms->smp.t=
-hreads)) % ms->smp.clusters;
-> >>>>>> + ms->possible_cpus->cpus[n].props.has_core_id =3D true;
-> >>>>>> +=A0=A0=A0=A0=A0=A0=A0 ms->possible_cpus->cpus[n].props.core_id =3D
-> >>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 (n / ms->smp.threads) % ms->smp=
-.cores;
-> >>>>>> ms->possible_cpus->cpus[n].props.has_thread_id =3D true;
-> >>>>>> -=A0=A0=A0=A0=A0=A0=A0 ms->possible_cpus->cpus[n].props.thread_id =
-=3D n;
-> >>>>>> +=A0=A0=A0=A0=A0=A0=A0 ms->possible_cpus->cpus[n].props.thread_id =
-=3D
-> >>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 n % ms->smp.threads;
-> >>>>>> =A0=A0=A0=A0=A0 }
-> >>>>>> =A0=A0=A0=A0=A0 return ms->possible_cpus;
-> >>>>>> =A0 } =20
-> >>>>> Otherwise, looks good to me:
-> >>>>> Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
-> >>>>> =20
-> >>>>
-> >>>> Thanks for your time to review :)
-> >>>>
-> >>>> =20
-> >>> Oh, after further testing this patch breaks numa-test for aarch64,
-> >>> which should be checked and fixed. I guess it's because we have
-> >>> more IDs supported for ARM. We have to fully running the QEMU
-> >>> tests before sending some patches to ensure that they are not
-> >>> breaking anything. :)
-> >>> =20
-> >>
-> >> Thanks for catching the failure and reporting back. I'm not
-> >> too much familar with QEMU's test workframe. Could you please
-> >> share the detailed commands to reproduce the failure? I will
-> >> fix in v6, which will be done in a separate patch :)
-> >> =20
-> > There is a reference link: https://wiki.qemu.org/Testing
-> > To catch the failure of this patch: "make check" will be enough.
-> >  =20
+>
+> On 4/14/22 10:27 AM, wangyanan (Y) wrote:
+>> On 2022/4/14 8:06, Gavin Shan wrote:
+>>> On 4/13/22 7:49 PM, wangyanan (Y) wrote:
+>>>> On 2022/4/3 22:59, Gavin Shan wrote:
+>>>>> This adds cluster-id in CPU instance properties, which will be used
+>>>>> by arm/virt machine. Besides, the cluster-id is also verified or
+>>>>> dumped in various spots:
+>>>>>
+>>>>>    * hw/core/machine.c::machine_set_cpu_numa_node() to associate
+>>>>>      CPU with its NUMA node.
+>>>>>
+>>>>>    * hw/core/machine.c::machine_numa_finish_cpu_init() to associate
+>>>>>      CPU with NUMA node when no default association isn't provided.
+>>>>>
+>>>>>    * hw/core/machine-hmp-cmds.c::hmp_hotpluggable_cpus() to dump
+>>>>>      cluster-id.
+>>>>>
+>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>>> ---
+>>>>>   hw/core/machine-hmp-cmds.c |  4 ++++
+>>>>>   hw/core/machine.c          | 16 ++++++++++++++++
+>>>>>   qapi/machine.json          |  6 ++++--
+>>>>>   3 files changed, 24 insertions(+), 2 deletions(-)
+>>>>>
+>>>>> diff --git a/hw/core/machine-hmp-cmds.c b/hw/core/machine-hmp-cmds.c
+>>>>> index 4e2f319aeb..5cb5eecbfc 100644
+>>>>> --- a/hw/core/machine-hmp-cmds.c
+>>>>> +++ b/hw/core/machine-hmp-cmds.c
+>>>>> @@ -77,6 +77,10 @@ void hmp_hotpluggable_cpus(Monitor *mon, const 
+>>>>> QDict *qdict)
+>>>>>           if (c->has_die_id) {
+>>>>>               monitor_printf(mon, "    die-id: \"%" PRIu64 "\"\n", 
+>>>>> c->die_id);
+>>>>>           }
+>>>>> +        if (c->has_cluster_id) {
+>>>>> +            monitor_printf(mon, "    cluster-id: \"%" PRIu64 "\"\n",
+>>>>> +                           c->cluster_id);
+>>>>> +        }
+>>>>>           if (c->has_core_id) {
+>>>>>               monitor_printf(mon, "    core-id: \"%" PRIu64 
+>>>>> "\"\n", c->core_id);
+>>>>>           }
+>>>>> diff --git a/hw/core/machine.c b/hw/core/machine.c
+>>>>> index d856485cb4..8748b64657 100644
+>>>>> --- a/hw/core/machine.c
+>>>>> +++ b/hw/core/machine.c
+>>>>> @@ -677,6 +677,11 @@ void machine_set_cpu_numa_node(MachineState 
+>>>>> *machine,
+>>>>>               return;
+>>>>>           }
+>>>>> +        if (props->has_cluster_id && !slot->props.has_cluster_id) {
+>>>>> +            error_setg(errp, "cluster-id is not supported");
+>>>>> +            return;
+>>>>> +        }
+>>>>> +
+>>>>>           if (props->has_socket_id && !slot->props.has_socket_id) {
+>>>>>               error_setg(errp, "socket-id is not supported");
+>>>>>               return;
+>>>>> @@ -696,6 +701,11 @@ void machine_set_cpu_numa_node(MachineState 
+>>>>> *machine,
+>>>>>                   continue;
+>>>>>           }
+>>>>> +        if (props->has_cluster_id &&
+>>>>> +            props->cluster_id != slot->props.cluster_id) {
+>>>>> +                continue;
+>>>>> +        }
+>>>>> +
+>>>>>           if (props->has_die_id && props->die_id != 
+>>>>> slot->props.die_id) {
+>>>>>                   continue;
+>>>>>           }
+>>>>> @@ -990,6 +1000,12 @@ static char *cpu_slot_to_string(const 
+>>>>> CPUArchId *cpu)
+>>>>>           }
+>>>>>           g_string_append_printf(s, "die-id: %"PRId64, 
+>>>>> cpu->props.die_id);
+>>>>>       }
+>>>>> +    if (cpu->props.has_cluster_id) {
+>>>>> +        if (s->len) {
+>>>>> +            g_string_append_printf(s, ", ");
+>>>>> +        }
+>>>>> +        g_string_append_printf(s, "cluster-id: %"PRId64, 
+>>>>> cpu->props.cluster_id);
+>>>>> +    }
+>>>>>       if (cpu->props.has_core_id) {
+>>>>>           if (s->len) {
+>>>>>               g_string_append_printf(s, ", ");
+>>>>> diff --git a/qapi/machine.json b/qapi/machine.json
+>>>>> index 9c460ec450..ea22b574b0 100644
+>>>>> --- a/qapi/machine.json
+>>>>> +++ b/qapi/machine.json
+>>>>> @@ -868,10 +868,11 @@
+>>>>>   # @node-id: NUMA node ID the CPU belongs to
+>>>>>   # @socket-id: socket number within node/board the CPU belongs to
+>>>>>   # @die-id: die number within socket the CPU belongs to (since 4.1)
+>>>>> -# @core-id: core number within die the CPU belongs to
+>>>>> +# @cluster-id: cluster number within die the CPU belongs to
+>> We also need a "(since 7.1)" tag for cluster-id.
+>>>> I remember this should be "cluster number within socket..."
+>>>> according to Igor's comments in v3 ?
+>>>
+>>> Igor had suggestion to correct the description for 'core-id' like
+>>> below, but he didn't suggest anything for 'cluster-id'. The question
+>>> is clusters are sub-components of die, instead of socket, if die
+>>> is supported? You may want to me change it like below and please
+>>> confirm.
+>>>
+>>>   @cluster-id: cluster number within die/socket the CPU belongs to
+>>>
+>>> suggestion from Ignor in v3:
+>>>
+>>>    > +# @core-id: core number within cluster the CPU belongs to
+>>>
+>>>    s:cluster:cluster/die:
+>>>
+>> We want "within cluster/die" description for core-id because we
+>> support both "cores in cluster" for ARM and "cores in die" for X86.
+>> Base on this routine, we only need "within socket" for cluster-id
+>> because we currently only support "clusters in socket". Does this
+>> make sense?
+>>
+>
+> Thanks for the explanation. So ARM64 doesn't have die and x86 doesn't
+> have cluster?
+At least for now, yes. :)
 
-Speaking from experience, best bet is also upload to a gitlab repo
-and let the CI hit things. It will catch this plus any weirdness
-elsewhere without you having to figure out too much unless you see
-a failure.
-
-The CI is pretty good though more tests always needed!
-
-Jonathan
-
->=20
-> Thanks for the pointer. The issue is caused by ms->possible_cpus->cpus[n]=
-.props.thread_id.
-> Before this patch, it's value of [0 ... smp.cpus]. However, it's always z=
-ero
-> after this patch is applied because '%' operation is applied for the thre=
-ad
-> ID.
->=20
-> What we need to do is to specify SMP configuration for the test case. I w=
-ill
-> add PATCH[v6 5/5] for it.
->=20
-> diff --git a/tests/qtest/numa-test.c b/tests/qtest/numa-test.c
-> index 90bf68a5b3..6178ac21a5 100644
-> --- a/tests/qtest/numa-test.c
-> +++ b/tests/qtest/numa-test.c
-> @@ -223,7 +223,7 @@ static void aarch64_numa_cpu(const void *data)
->       QTestState *qts;
->       g_autofree char *cli =3D NULL;
->  =20
-> -    cli =3D make_cli(data, "-machine smp.cpus=3D2 "
-> +    cli =3D make_cli(data, "-machine smp.cpus=3D2,smp.sockets=3D1,smp.co=
-res=3D1,smp.threads=3D2 "
->=20
+Thanks,
+Yanan
+> If so, I need to adjust the description for 'cluster-id'
+> as you suggested in v6:
+>
+>   @cluster-id: cluster number within socket the CPU belongs to (since 
+> 7.1)
+>> Alternatively, the plainest documentation for the IDs is to simply
+>> range **-id only to its next level topo like below. This may avoid
+>> increasing complexity when more topo-ids are inserted middle.
+>> But whether this way is acceptable is up to the Maintainers. :)
+>>
+>> # @socket-id: socket number within node/board the CPU belongs to
+>> # @die-id: die number within socket the CPU belongs to (since 4.1)
+>> # @cluster-id: cluster number within die the CPU belongs to (since 7.1)
+>> # @core-id: core number within cluster the CPU belongs to
+>> # @thread-id: thread number within core the CPU belongs to
+>>
+>
+> I like this scheme, but needs the confirms from Igor and maintainers.
+> Igor and maintainers, please let us know if the scheme is good to
+> have? :)
+>
+>>>
+>>>>> +# @core-id: core number within cluster/die the CPU belongs to
+>>>>>   # @thread-id: thread number within core the CPU belongs to
+>>>>>   #
+>>>>> -# Note: currently there are 5 properties that could be present
+>>>>> +# Note: currently there are 6 properties that could be present
+>>>>>   #       but management should be prepared to pass through other
+>>>>>   #       properties with device_add command to allow for future
+>>>>>   #       interface extension. This also requires the filed names 
+>>>>> to be kept in
+>>>>> @@ -883,6 +884,7 @@
+>>>>>     'data': { '*node-id': 'int',
+>>>>>               '*socket-id': 'int',
+>>>>>               '*die-id': 'int',
+>>>>> +            '*cluster-id': 'int',
+>>>>>               '*core-id': 'int',
+>>>>>               '*thread-id': 'int'
+>>>>>     }
+>>>> Otherwise, looks good to me:
+>>>> Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
+>>>>
+>>>> Please also keep the involved Maintainers on Cc list in next version,
+>>>> an Ack from them is best. :)
+>>>>
+>>>
+>>> Thanks again for your time to review. Sure, I will do in next posting.
+>>>
+>
 > Thanks,
 > Gavin
->=20
->=20
->=20
+>
+> .
 

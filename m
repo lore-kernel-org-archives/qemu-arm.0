@@ -1,90 +1,116 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp565984lfk;
-        Wed, 13 Apr 2022 20:10:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzOxkZlohGOHu56v4jHnsIEGs5iH61vKw1EvVmL9WEzf1gJ3UW980VIyCDT0K9XoQYMabcO
-X-Received: by 2002:ac8:5ac3:0:b0:2e1:e117:b2ed with SMTP id d3-20020ac85ac3000000b002e1e117b2edmr362324qtd.541.1649905806909;
-        Wed, 13 Apr 2022 20:10:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1649905806; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp673271lfk;
+        Thu, 14 Apr 2022 00:36:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJymYv4/HCE7YcoluLTxrBnGsXXSN9pSeGU44p3aG0JUe/7v3y33IQ0OEXZKXNhBec6Osl/t
+X-Received: by 2002:a37:44ce:0:b0:67e:c957:a9cc with SMTP id r197-20020a3744ce000000b0067ec957a9ccmr850267qka.210.1649921817845;
+        Thu, 14 Apr 2022 00:36:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649921817; cv=none;
         d=google.com; s=arc-20160816;
-        b=cRz+YWC21Y20ODrT/wfWci0MNUmUQb83GjZLXlguRr4uh6b1hG7C7MS0iKhWG5b387
-         k3ACKN8vxOZg5trEZOJqtVm7fSrFVuQeFgVXFoDilFnTbql0niTSWKOy6ZDEHkvhhLzt
-         d5gdVVmqqMiGtLqjhk6iEgsSBu58K/qnVAlpSZp+rY2IGGoIvOyx2Jsm3Xb0307N7RYi
-         4riECddd65Cixjq7hkecxAGHMdHQJHRhsh0k6PaC85AplpYQ3gAKlhPeeTyjmyClfnJ8
-         6Kb/ZAejCzB+OJtB7XiNSsmxFlqOhGuWCByEqyU4FIA8f/eKuK0MIIpUWBxu8Tc0gosb
-         XTLg==
+        b=hXl4e+Fm6G2+SugGFF9MLcEKUzv2FAmlNGgzf4Xwb4ME57PLk7jjOUcsOG9lLUcr2f
+         t+eWIimV3UF9wxGrXApkmYbkoDUWph4t+1dARTbsyw3nT1zHeL2+x9eJCiAqFgj+hHzm
+         6pcok9NpF3Td9lj6nPKoUA0v56L9lkusmYe1uNeyIWD8baTkFY61GLSz/fAVYdl3aNA5
+         Z4jAjPlQRx5ZPZHiPeG+BlEI0FwGI4idw2Fmjg4XWQbvdLPM0Vv1lm4tVCV216D7chmr
+         dZUjHtkDb1YGsnfDxdw9AFh7emhEFOeLbPmRO9N6VWuhpDB2oEKHxzNFRCSbpthr8yXf
+         hFWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:references:cc:to:subject;
-        bh=Jn4X0/wO5huv1cmEnH91D/NaI6FxXwJQVCdk57liSS0=;
-        b=nnO2pJ5OXWCGzkA1JGlUJFI0UUbG+utVKitViEgOCnJ2M2GonZfXYqU6tnFcJHf4dM
-         DnZlj6UazZgZYQ6x9tgceY/vRTqRTu9xgLjEjz+5WEXdsrjJrTaWUNDTldCP3Lg0tei5
-         EDPw/vxzioxbDDnNQteFX/AbFs6qETKJ+sSZPHAtjCFjZUZICK/wFIpT7aiDFFzG9jNb
-         JH7/g0cuvIZu4PHyjHVkgxXCmjvH2GL2SIIt36ygmRUiw2tWXv1vo1l7ssZI8Xib9vOM
-         5bzhxgj+xSKUwFgwkGX3qnmviLLxtTamGcwt4w5LLws7Yi0CyKHjmwiY+/gvOZxFu+b6
-         UDdw==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=FFNGZhOY0L7dTVI6EkMXNTjcF2XmgSOA1ML+u+cLbT0=;
+        b=iLBTwc6jqe8KWUK3XfmPCnU/ylR2rOLFLqiTT4FkHO/DvQwtI+l7X467mazuMUZGjY
+         XA5RjTAuYYlU7C8bHVFEna+zDRUF9fBYi/crSO8h7/uALrtaDM38GW9/80npvYctJtSA
+         I2k13cHYFRvt0h6+W03eCDQjxHI+xUz7v3SfW+xboYW2W+yOLek9U3sGEtnkCq7FLrZg
+         txHw0IoG+MWSw5/dDvmzAWyxydlQTxHspHNhUCd4ce0LqWhcSHsiVUWdurtY+DhfYYCt
+         uHjDgfu0NR/psGJZodysvOehqe3LxGCHGZJrP+W4YoF328Af3Y8CdiOKFPTRlcL00e0C
+         YR1g==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gGXADB55;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f6-20020a0562141d2600b0044361aca758si8682201qvd.526.2022.04.13.20.10.06
+        by mx.google.com with ESMTPS id x20-20020a05620a449400b0067e4be23a1asi9939726qkp.607.2022.04.14.00.36.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Apr 2022 20:10:06 -0700 (PDT)
+        Thu, 14 Apr 2022 00:36:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gGXADB55;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:42280 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40704 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nepry-0007qT-Cw
-	for alex.bennee@linaro.org; Wed, 13 Apr 2022 23:10:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42290)
+	id 1neu2C-00017A-GO
+	for alex.bennee@linaro.org; Thu, 14 Apr 2022 03:36:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36438)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1neprp-0007qH-OR; Wed, 13 Apr 2022 23:09:57 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:3932)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1neu1G-00012y-UF
+ for qemu-arm@nongnu.org; Thu, 14 Apr 2022 03:35:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:28148)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1neprm-0007Fk-R3; Wed, 13 Apr 2022 23:09:57 -0400
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.53])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Kf4CH2F9DzgYgk;
- Thu, 14 Apr 2022 11:07:55 +0800 (CST)
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2375.24; Thu, 14 Apr 2022 11:09:44 +0800
-Subject: Re: [PATCH v5 4/4] hw/acpi/aml-build: Use existing CPU topology to
- build PPTT table
-To: Gavin Shan <gshan@redhat.com>, <qemu-arm@nongnu.org>
-CC: <qemu-devel@nongnu.org>, <imammedo@redhat.com>, <drjones@redhat.com>,
- <richard.henderson@linaro.org>, <peter.maydell@linaro.org>,
- <zhenyzha@redhat.com>, <shan.gavin@gmail.com>
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1neu1C-0006dQ-Vz
+ for qemu-arm@nongnu.org; Thu, 14 Apr 2022 03:35:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1649921753;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=FFNGZhOY0L7dTVI6EkMXNTjcF2XmgSOA1ML+u+cLbT0=;
+ b=gGXADB55sacGUdCnFRgfD+kTCYO5Jg0Sn9v0oA14yr06+YuhSudBqZb4Ko4bzSFiINSaBF
+ 66VJW0fdO6s6Wc+7loQCDyI0Ps0oHdrk/0ALQICrk7Hhx9TiKfQwl4sniC5jAnIqaFJbh/
+ tQa2862fnGLFS1/b9NtCq1W6mOzM2K8=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-131-QCdLjFs_MIiwOHL3WeIJFg-1; Thu, 14 Apr 2022 03:35:50 -0400
+X-MC-Unique: QCdLjFs_MIiwOHL3WeIJFg-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0CE1838008A7;
+ Thu, 14 Apr 2022 07:35:50 +0000 (UTC)
+Received: from [10.72.13.171] (ovpn-13-171.pek2.redhat.com [10.72.13.171])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A98A041D40E;
+ Thu, 14 Apr 2022 07:35:45 +0000 (UTC)
+Subject: Re: [PATCH v5 2/4] hw/arm/virt: Consider SMP configuration in CPU
+ topology
+To: "wangyanan (Y)" <wangyanan55@huawei.com>, qemu-arm@nongnu.org
 References: <20220403145953.10522-1-gshan@redhat.com>
- <20220403145953.10522-5-gshan@redhat.com>
-Message-ID: <a4eb1aac-cbde-1895-27d0-0a6c02f8f50b@huawei.com>
-Date: Thu, 14 Apr 2022 11:09:44 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ <20220403145953.10522-3-gshan@redhat.com>
+ <6f713fec-71e6-3300-a504-817f45a82a51@huawei.com>
+ <27df8771-ebe0-b5fe-39c4-83696e21e3a3@redhat.com>
+ <ea5ab7db-1831-83a5-1719-239930b37571@huawei.com>
+ <c49d80af-f68b-1b5c-a808-848172d88f89@redhat.com>
+ <f02ae2ce-0256-ac85-0bb7-bd34244d9781@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <503fb329-8f39-eddb-d05a-729279934fa7@redhat.com>
+Date: Thu, 14 Apr 2022 15:35:41 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20220403145953.10522-5-gshan@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <f02ae2ce-0256-ac85-0bb7-bd34244d9781@huawei.com>
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme701-chm.china.huawei.com (10.1.199.97) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -98,160 +124,117 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, zhenyzha@redhat.com, shan.gavin@gmail.com,
+ imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  "wangyanan (Y)" <wangyanan55@huawei.com>
-From:  "wangyanan (Y)" via <qemu-arm@nongnu.org>
-X-TUID: ZKRYCGnspyZd
+X-TUID: vtcK6TonvIcY
 
-Hi Gavin,
+Hi Yanan,
 
-On 2022/4/3 22:59, Gavin Shan wrote:
-> When the PPTT table is built, the CPU topology is re-calculated, but
-> it's unecessary because the CPU topology has been populated in
-> virt_possible_cpu_arch_ids() on arm/virt machine.
->
-> This reworks build_pptt() to avoid by reusing the existing one in
-> ms->possible_cpus. Currently, the only user of build_pptt() is
-> arm/virt machine.
->
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->   hw/acpi/aml-build.c | 100 +++++++++++++++++---------------------------
->   1 file changed, 38 insertions(+), 62 deletions(-)
->
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 4086879ebf..4b0f9df3e3 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -2002,86 +2002,62 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->                   const char *oem_id, const char *oem_table_id)
->   {
->       MachineClass *mc = MACHINE_GET_CLASS(ms);
-> -    GQueue *list = g_queue_new();
-> -    guint pptt_start = table_data->len;
-> -    guint parent_offset;
-> -    guint length, i;
-> -    int uid = 0;
-> -    int socket;
-> +    CPUArchIdList *cpus = ms->possible_cpus;
-> +    int64_t socket_id = -1, cluster_id = -1, core_id = -1;
-nit: why not using "int" for the ID variables? (to be consistent with how
-the IDs are stored in CpuInstanceProperties).
+On 4/14/22 10:49 AM, wangyanan (Y) wrote:
+> On 2022/4/14 10:37, Gavin Shan wrote:
+>> On 4/14/22 10:27 AM, wangyanan (Y) wrote:
+>>> On 2022/4/14 8:08, Gavin Shan wrote:
+>>>> On 4/13/22 8:39 PM, wangyanan (Y) wrote:
+>>>>> On 2022/4/3 22:59, Gavin Shan wrote:
+>>>>>> Currently, the SMP configuration isn't considered when the CPU
+>>>>>> topology is populated. In this case, it's impossible to provide
+>>>>>> the default CPU-to-NUMA mapping or association based on the socket
+>>>>>> ID of the given CPU.
+>>>>>>
+>>>>>> This takes account of SMP configuration when the CPU topology
+>>>>>> is populated. The die ID for the given CPU isn't assigned since
+>>>>>> it's not supported on arm/virt machine yet.
+>>>>>>
+>>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>>>> ---
+>>>>>>   hw/arm/virt.c | 16 +++++++++++++++-
+>>>>>>   1 file changed, 15 insertions(+), 1 deletion(-)
+>>>>>>
+>>>>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>>>>> index d2e5ecd234..3174526730 100644
+>>>>>> --- a/hw/arm/virt.c
+>>>>>> +++ b/hw/arm/virt.c
+>>>>>> @@ -2505,6 +2505,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>>>>>>       int n;
+>>>>>>       unsigned int max_cpus = ms->smp.max_cpus;
+>>>>>>       VirtMachineState *vms = VIRT_MACHINE(ms);
+>>>>>> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
+>>>>>>       if (ms->possible_cpus) {
+>>>>>>           assert(ms->possible_cpus->len == max_cpus);
+>>>>>> @@ -2518,8 +2519,21 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>>>>>>           ms->possible_cpus->cpus[n].type = ms->cpu_type;
+>>>>>>           ms->possible_cpus->cpus[n].arch_id =
+>>>>>>               virt_cpu_mp_affinity(vms, n);
+>>>>>> +
+>>>>>> +        assert(!mc->smp_props.dies_supported);
+>>>>>> + ms->possible_cpus->cpus[n].props.has_socket_id = true;
+>>>>>> +        ms->possible_cpus->cpus[n].props.socket_id =
+>>>>>> +            (n / (ms->smp.clusters * ms->smp.cores * ms->smp.threads)) %
+>>>>>> +            ms->smp.sockets;
+>>>>> No need for "% ms->smp.sockets".
+>>>>
+>>>> Yeah, lets remove it in v6.
+>>>>
+>>>>>> + ms->possible_cpus->cpus[n].props.has_cluster_id = true;
+>>>>>> +        ms->possible_cpus->cpus[n].props.cluster_id =
+>>>>>> +            (n / (ms->smp.cores * ms->smp.threads)) % ms->smp.clusters;
+>>>>>> + ms->possible_cpus->cpus[n].props.has_core_id = true;
+>>>>>> +        ms->possible_cpus->cpus[n].props.core_id =
+>>>>>> +            (n / ms->smp.threads) % ms->smp.cores;
+>>>>>> ms->possible_cpus->cpus[n].props.has_thread_id = true;
+>>>>>> -        ms->possible_cpus->cpus[n].props.thread_id = n;
+>>>>>> +        ms->possible_cpus->cpus[n].props.thread_id =
+>>>>>> +            n % ms->smp.threads;
+>>>>>>       }
+>>>>>>       return ms->possible_cpus;
+>>>>>>   }
+>>>>> Otherwise, looks good to me:
+>>>>> Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
+>>>>>
+>>>>
+>>>> Thanks for your time to review :)
+>>>>
+>>>>
+>>> Oh, after further testing this patch breaks numa-test for aarch64,
+>>> which should be checked and fixed. I guess it's because we have
+>>> more IDs supported for ARM. We have to fully running the QEMU
+>>> tests before sending some patches to ensure that they are not
+>>> breaking anything. :)
+>>>
+>>
+>> Thanks for catching the failure and reporting back. I'm not
+>> too much familar with QEMU's test workframe. Could you please
+>> share the detailed commands to reproduce the failure? I will
+>> fix in v6, which will be done in a separate patch :)
+>>
+> There is a reference link: https://wiki.qemu.org/Testing
+> To catch the failure of this patch: "make check" will be enough.
+> 
+
+Thanks for the pointer. The issue is caused by ms->possible_cpus->cpus[n].props.thread_id.
+Before this patch, it's value of [0 ... smp.cpus]. However, it's always zero
+after this patch is applied because '%' operation is applied for the thread
+ID.
+
+What we need to do is to specify SMP configuration for the test case. I will
+add PATCH[v6 5/5] for it.
+
+diff --git a/tests/qtest/numa-test.c b/tests/qtest/numa-test.c
+index 90bf68a5b3..6178ac21a5 100644
+--- a/tests/qtest/numa-test.c
++++ b/tests/qtest/numa-test.c
+@@ -223,7 +223,7 @@ static void aarch64_numa_cpu(const void *data)
+      QTestState *qts;
+      g_autofree char *cli = NULL;
+  
+-    cli = make_cli(data, "-machine smp.cpus=2 "
++    cli = make_cli(data, "-machine smp.cpus=2,smp.sockets=1,smp.cores=1,smp.threads=2 "
 
 Thanks,
-Yanan
-> +    uint32_t socket_offset, cluster_offset, core_offset;
-> +    uint32_t pptt_start = table_data->len;
-> +    int n;
->       AcpiTable table = { .sig = "PPTT", .rev = 2,
->                           .oem_id = oem_id, .oem_table_id = oem_table_id };
->   
->       acpi_table_begin(&table, table_data);
->   
-> -    for (socket = 0; socket < ms->smp.sockets; socket++) {
-> -        g_queue_push_tail(list,
-> -            GUINT_TO_POINTER(table_data->len - pptt_start));
-> -        build_processor_hierarchy_node(
-> -            table_data,
-> -            /*
-> -             * Physical package - represents the boundary
-> -             * of a physical package
-> -             */
-> -            (1 << 0),
-> -            0, socket, NULL, 0);
-> -    }
-> +    for (n = 0; n < cpus->len; n++) {
-> +        if (cpus->cpus[n].props.socket_id != socket_id) {
-> +            socket_id = cpus->cpus[n].props.socket_id;
-> +            cluster_id = -1;
-> +            core_id = -1;
-> +            socket_offset = table_data->len - pptt_start;
-> +            build_processor_hierarchy_node(table_data,
-> +                (1 << 0), /* Physical package */
-> +                0, socket_id, NULL, 0);
-> +        }
->   
-> -    if (mc->smp_props.clusters_supported) {
-> -        length = g_queue_get_length(list);
-> -        for (i = 0; i < length; i++) {
-> -            int cluster;
-> -
-> -            parent_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
-> -            for (cluster = 0; cluster < ms->smp.clusters; cluster++) {
-> -                g_queue_push_tail(list,
-> -                    GUINT_TO_POINTER(table_data->len - pptt_start));
-> -                build_processor_hierarchy_node(
-> -                    table_data,
-> -                    (0 << 0), /* not a physical package */
-> -                    parent_offset, cluster, NULL, 0);
-> +        if (mc->smp_props.clusters_supported) {
-> +            if (cpus->cpus[n].props.cluster_id != cluster_id) {
-> +                cluster_id = cpus->cpus[n].props.cluster_id;
-> +                core_id = -1;
-> +                cluster_offset = table_data->len - pptt_start;
-> +                build_processor_hierarchy_node(table_data,
-> +                    (0 << 0), /* Not a physical package */
-> +                    socket_offset, cluster_id, NULL, 0);
->               }
-> +        } else {
-> +            cluster_offset = socket_offset;
->           }
-> -    }
->   
-> -    length = g_queue_get_length(list);
-> -    for (i = 0; i < length; i++) {
-> -        int core;
-> -
-> -        parent_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
-> -        for (core = 0; core < ms->smp.cores; core++) {
-> -            if (ms->smp.threads > 1) {
-> -                g_queue_push_tail(list,
-> -                    GUINT_TO_POINTER(table_data->len - pptt_start));
-> -                build_processor_hierarchy_node(
-> -                    table_data,
-> +        if (ms->smp.threads <= 1) {
-> +            build_processor_hierarchy_node(table_data,
-> +                (1 << 1) | /* ACPI Processor ID valid */
-> +                (1 << 3),  /* Node is a Leaf */
-> +                cluster_offset, n, NULL, 0);
-> +        } else {
-> +            if (cpus->cpus[n].props.core_id != core_id) {
-> +                core_id = cpus->cpus[n].props.core_id;
-> +                core_offset = table_data->len - pptt_start;
-> +                build_processor_hierarchy_node(table_data,
->                       (0 << 0), /* not a physical package */
-> -                    parent_offset, core, NULL, 0);
-> -            } else {
-> -                build_processor_hierarchy_node(
-> -                    table_data,
-> -                    (1 << 1) | /* ACPI Processor ID valid */
-> -                    (1 << 3),  /* Node is a Leaf */
-> -                    parent_offset, uid++, NULL, 0);
-> +                    cluster_offset, core_id, NULL, 0);
->               }
-> -        }
-> -    }
-> -
-> -    length = g_queue_get_length(list);
-> -    for (i = 0; i < length; i++) {
-> -        int thread;
->   
-> -        parent_offset = GPOINTER_TO_UINT(g_queue_pop_head(list));
-> -        for (thread = 0; thread < ms->smp.threads; thread++) {
-> -            build_processor_hierarchy_node(
-> -                table_data,
-> +            build_processor_hierarchy_node(table_data,
->                   (1 << 1) | /* ACPI Processor ID valid */
->                   (1 << 2) | /* Processor is a Thread */
->                   (1 << 3),  /* Node is a Leaf */
-> -                parent_offset, uid++, NULL, 0);
-> +                core_offset, n, NULL, 0);
->           }
->       }
->   
-> -    g_queue_free(list);
->       acpi_table_end(linker, &table);
->   }
->   
+Gavin
+
 

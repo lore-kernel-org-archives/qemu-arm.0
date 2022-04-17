@@ -1,111 +1,111 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp1275808lfk;
-        Sun, 17 Apr 2022 11:15:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwe5pFZHceysRgvdwR5R9ZrFzMTjp7dyvdAQqkLtibryObGn+Y3gJ3JDbY8MjY0j/elUytU
-X-Received: by 2002:a05:620a:2943:b0:69e:7ee2:f292 with SMTP id n3-20020a05620a294300b0069e7ee2f292mr3458063qkp.348.1650219310738;
-        Sun, 17 Apr 2022 11:15:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650219310; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp1277546lfk;
+        Sun, 17 Apr 2022 11:20:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwhSlld7OP1fdWGW5WIeNvhKQpaqwKKHnHDUKMAzRB8m2WErymAoop5Z6MrR1EC0uAOir4C
+X-Received: by 2002:a05:620a:4609:b0:67d:1b1b:fc2d with SMTP id br9-20020a05620a460900b0067d1b1bfc2dmr4718890qkb.153.1650219651636;
+        Sun, 17 Apr 2022 11:20:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650219651; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZA9m4Zcb0SmErRWQPPU45hJ7hXdVN+LBJoZSHRXogDe3Q+Hi0lfK5T/miK/9PvoKR/
-         JCPx2/cCADZnkV8KF6R7szagsHNbpwpSNJsC5YsvGb8k3vd55jmsUtlczj8Dk3WtKpbr
-         +jX3XMhekJO/1uHGixDb1PsuxA7sUvj1EvTClQlze+DtSMtGWqmAgPwVbjJSrjjOkFWV
-         bpm664Wp2tKo5kYAVIuBUXK17JubrqEu83eE3abeMvPOr65PNQ9LR6LkUdwFbmkphkN8
-         MQi82+8BDvNCJvCbF6hkxN8SF7LsajVnagh7U1tdxivMquDfk1B67gghgeUDZUhnraA9
-         2C0A==
+        b=M7q3q6VFRADcc/+QloLKxHXjKklEKBycoqNV5j8IYwr0bOB1wMlMbJtw3RCcno6cXn
+         c/WFWeBWu/I0E/p9+kBptANqkXlI5Pbma1eMENKrvn9O9GfuFVrjU4IUWbAIW7FS2SHC
+         lFOfP7EhbboHYH+1jk9z4NZN2S9H/o2ZoJAgK5Tezxil5SmGxxrBlVaG0dj5o5SEBPDx
+         /5lBAeL4f5kx2+LLdfTeCbLlKrGeYJfUOY+XOWL+PQovR882K5m7qEgptkUgvW2Xo/tw
+         QeCrjXsOy8GHLvuUyI8u0xgudQOpL3tlIt2F6Bn5vJ58oJ60wZN4MK2clkSbJR72Piun
+         nJtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=25C7iOsGqfSeEIqOCeDhxny3HAl1dQf5ZHtQgWZYi98=;
-        b=o4QFs7jjdbSQTcRaXykn2bg1qeoJqs1TCsnT8MajzLyjjBD32A5ys/Dhly9Izva0Mx
-         FWmD5Q0pWJ0ENk0ynfyeNUCc3OeqyPtZ0CyO+JljPm4jqvFaxKuS+o3IOuwAVe1Ta5oK
-         rH0NEFlD9qXk9t6yvJHLB5nLoE9BNFFYmLPpPqrQTw4OK/vbuf9CBDOaCdIjf0R0Cja+
-         zdAcic6KlokEaOJX74KOnm/cLCzVQYqbW+/I/+oFdF+8x2g6LE3qrJTw/nl8KPAQo79t
-         uInk/nOHW70IJYuD0B+BpnwhFmyEav6DZzJOLp26SCkl726zMBlz1gv2zWF5CsN87tNx
-         OQIg==
+        bh=5StdWYGeCOlRyUwqJZ4tniRcd6lDfQV+KGHmy0NGmEs=;
+        b=iqTdcv+hceQZ7X6szWnNWUOTnfdfS4pZYhOHA+4da2GUwMTqgK8JwVE//bkiwDmm/p
+         O9tRbu56oyi5QbpRzbnwOXd3A73JIdTfIbzYZbpCJFb1GzcuxuvG8oStZEvHu5WS61Bf
+         Ag5VtiHhD0sYPStCbFYABRxxm5rm2nGGkE1KW//KHVfrgQqXpTgMKEaEZtOY5rlNzQz4
+         oJyjnMIHnxoI0rkqoGWpXCiBzrB0bFsflzOehf4Qe5niPTGPcb+mTrR5q/ktdlLxdGH+
+         HeghFgNonj/5tMvIvT2awGhQQdHDXqyt79qmWqlWzolCVp0UcipgdS4zBdbOd4uJL8R3
+         z32Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PNrKfzbz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sGMHhfGM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 42-20020aed30ad000000b002f1ea72a56asi2248086qtf.474.2022.04.17.11.15.10
+        by mx.google.com with ESMTPS id eo9-20020ad45949000000b004462ea24ee6si2128851qvb.13.2022.04.17.11.20.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Apr 2022 11:15:10 -0700 (PDT)
+        Sun, 17 Apr 2022 11:20:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PNrKfzbz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sGMHhfGM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46700 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55454 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ng9QU-0001oo-5Z
-	for alex.bennee@linaro.org; Sun, 17 Apr 2022 14:15:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48612)
+	id 1ng9Vy-0007jf-Uf
+	for alex.bennee@linaro.org; Sun, 17 Apr 2022 14:20:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48844)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ng8xI-0001EM-Ko
- for qemu-devel@nongnu.org; Sun, 17 Apr 2022 13:45:00 -0400
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029]:39817)
+ id 1ng8xN-0001St-Ks
+ for qemu-devel@nongnu.org; Sun, 17 Apr 2022 13:45:05 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a]:46641)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ng8xF-0003OQ-54
- for qemu-devel@nongnu.org; Sun, 17 Apr 2022 13:45:00 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id
- mp16-20020a17090b191000b001cb5efbcab6so15506215pjb.4
- for <qemu-devel@nongnu.org>; Sun, 17 Apr 2022 10:44:56 -0700 (PDT)
+ id 1ng8xJ-0003Qf-6t
+ for qemu-devel@nongnu.org; Sun, 17 Apr 2022 13:45:05 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ h15-20020a17090a054f00b001cb7cd2b11dso12207611pjf.5
+ for <qemu-devel@nongnu.org>; Sun, 17 Apr 2022 10:45:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=25C7iOsGqfSeEIqOCeDhxny3HAl1dQf5ZHtQgWZYi98=;
- b=PNrKfzbz8AE8ekSFNMGR/HM/6UM1sgoNIs/tQLjBoA+Ic/j46APdoa0qZ++o2E65Qq
- +gXHNqcdf1brdqNSPqBngM25HU3XkBlK4zyjBkNmnrJX/H3/jo2DneEqQqa7QkMQET5D
- s2WA9jFW4KzJxlUFQJp3G/Y133ISZfHtjzVxmJPNsv+tM0QhrB2PQQDXHaC0fDS66ETA
- xhsXwndF/NzIqB52UdIhwstF9V8K95an/lMCYRnuErODWtz8fyfwZHjPMhUxNqOEwB9r
- BQwoLq1JGnGrmoZ86GgWKQ0b3v2ORB0j+u3rg81DehCnbhsO7US5WWNZtMOu5Pl5i8pJ
- 68Rg==
+ bh=5StdWYGeCOlRyUwqJZ4tniRcd6lDfQV+KGHmy0NGmEs=;
+ b=sGMHhfGMu4AyH73jaartkjimFmwe4BN4cvzK6EbMrQ//YXEMVxgtrLRSO92nv27n+W
+ nIP4MeZwQBCnqgnRznep81tFU1LqaYLPQ6BlNW8AGUhuxer7gts8xDnK4YLbLF/hshIm
+ mIYMDQt7kr+ubwmoXAF3sC1ucKSS3azskLCYdEX/Y0rLdsEgkKCqHJorVgpgHaBHeHVJ
+ e4hoL6U0Q96IojvRIs4ijxOVg7v+ByAaPib/59YCwS8NBJTwl9UtON8SENQjhdTu6Rpx
+ uSb/kdmcgEA5JcYxOz/Lw7zyLGdUTbFCxXWzelpBV+KPxCpen56l4JZsL2d67A5YCmgs
+ z8ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=25C7iOsGqfSeEIqOCeDhxny3HAl1dQf5ZHtQgWZYi98=;
- b=KytMhme5xEeE9nhVpBITwmRMW1+QGQWLEDrfdKh0LHG4IkjfZ5nUVVHzO4/tcxpGRp
- h+eeksx9N/uMhIC9nO3NH0GkEJMpu7ZMPUVQWQq1bqlmyqp2Ya9uM6JPwLYXNqFo80ii
- qjOtEdTeL095SZol1DbcnOxnGIrHS3PWqVPd+AOBZwJ2hw0f9w5LSRQljKiQ5D/Uu0qk
- 6I91pFiuRITmI1yGvlw0r0L6JxeCx+NWoDq8K93WktF2rqw9k5oPn545SV6t1XBXsuY3
- 6qCaVL7d+Av1x2Dc7kFeyEvCe0PGfLDrAz0ZgCxNVMJcKjmPISJA5aucDvgZUwxIgPNR
- tdkw==
-X-Gm-Message-State: AOAM532Z82KPFopu01xWdNXcA3m9O3Q+wymy7S9cnP99OE3oZv7XwnwF
- 8gaRB46oCNSZolMibkLJNPf7rhdD+98jTQ==
-X-Received: by 2002:a17:902:6bc9:b0:158:a0d3:d080 with SMTP id
- m9-20020a1709026bc900b00158a0d3d080mr7753890plt.24.1650217495858; 
- Sun, 17 Apr 2022 10:44:55 -0700 (PDT)
+ bh=5StdWYGeCOlRyUwqJZ4tniRcd6lDfQV+KGHmy0NGmEs=;
+ b=JJdpQgtt3WWmgjB2+SZA+yEVCflWVSS3T9VQYOvsGab3fT0VjQGFm3KQh7Q/9ghea9
+ 8D4aXr5t2V1RXW7hMbENG4Q05dOjIbAloXpz+4qU+78RgIu8/rcQK/EdcpXi5CkITwjW
+ URZSflA3WS8qasm5Y9c4mmSiQoeqEfST3kF4itd5zVsWqS8f+KqHWAuCM61sdVZgfGah
+ VB5P1QGpUkIX5d8rIMbs9NSzBu3vLUNAPElSPBv4VGvsL1Us52P8bFAUVnnNvBcpMqbu
+ 15au+PZl5Yi9bvYHv3lgMMg/eQiFOqvwpuEjHUIW1OUzo52pbU+y5Z0lWiK1oimrqMXs
+ iguA==
+X-Gm-Message-State: AOAM530mF0kagvLPBDI4V//Jez3KAdXncmX8E2qMQJJGClBObjrsosMy
+ Y/dkaKcrqr0ivaymEjIZPzBDSMhaILwTFA==
+X-Received: by 2002:a17:902:cec3:b0:158:d5b4:2572 with SMTP id
+ d3-20020a170902cec300b00158d5b42572mr7955297plg.52.1650217499754; 
+ Sun, 17 Apr 2022 10:44:59 -0700 (PDT)
 Received: from localhost.localdomain (174-21-142-130.tukw.qwest.net.
  [174.21.142.130]) by smtp.gmail.com with ESMTPSA id
- i2-20020a17090a138200b001cb6512b579sm10372119pja.44.2022.04.17.10.44.55
+ i2-20020a17090a138200b001cb6512b579sm10372119pja.44.2022.04.17.10.44.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Apr 2022 10:44:55 -0700 (PDT)
+ Sun, 17 Apr 2022 10:44:59 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 30/60] target/arm: Name CPState type
-Date: Sun, 17 Apr 2022 10:43:56 -0700
-Message-Id: <20220417174426.711829-31-richard.henderson@linaro.org>
+Subject: [PATCH v3 35/60] target/arm: Handle cpreg registration for missing EL
+Date: Sun, 17 Apr 2022 10:44:01 -0700
+Message-Id: <20220417174426.711829-36-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220417174426.711829-1-richard.henderson@linaro.org>
 References: <20220417174426.711829-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,74 +121,177 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3L9wzy51JvhW
+X-TUID: KAh8QBE9p7Mz
 
-Give this enum a name and use in ARMCPRegInfo,
-add_cpreg_to_hashtable and define_one_arm_cp_reg_with_opaque.
+More gracefully handle cpregs when EL2 and/or EL3 are missing.
+If the reg is entirely inaccessible, do not register it at all.
+If the reg is for EL2, and EL3 is present but EL2 is not,
+squash to ARM_CP_CONST.
+
+This will simplify cpreg registration for conditional arm features.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h | 6 +++---
- target/arm/helper.c | 6 ++++--
- 2 files changed, 7 insertions(+), 5 deletions(-)
+ target/arm/helper.c | 109 ++++++++++++++++++++++++++++++++------------
+ 1 file changed, 79 insertions(+), 30 deletions(-)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 2c991ab5df..fe338730ab 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -116,11 +116,11 @@ enum {
-  * Note that we rely on the values of these enums as we iterate through
-  * the various states in some places.
-  */
--enum {
-+typedef enum {
-     ARM_CP_STATE_AA32 = 0,
-     ARM_CP_STATE_AA64 = 1,
-     ARM_CP_STATE_BOTH = 2,
--};
-+} CPState;
- 
- /*
-  * ARM CP register secure state flags.  These flags identify security state
-@@ -262,7 +262,7 @@ struct ARMCPRegInfo {
-     uint8_t opc1;
-     uint8_t opc2;
-     /* Execution state in which this register is visible: ARM_CP_STATE_* */
--    int state;
-+    CPState state;
-     /* Register type: ARM_CP_* bits/values */
-     int type;
-     /* Access rights: PL*_[RW] */
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 33ba77890b..8b89039667 100644
+index 562ea5c418..d9837b5bd2 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -8503,7 +8503,7 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
- }
- 
- static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
--                                   void *opaque, int state, int secstate,
-+                                   void *opaque, CPState state, int secstate,
+@@ -8519,13 +8519,14 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
                                     int crm, int opc1, int opc2,
                                     const char *name)
  {
-@@ -8663,13 +8663,15 @@ void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
-      * bits; the ARM_CP_64BIT* flag applies only to the AArch32 view of
-      * the register, if any.
-      */
--    int crm, opc1, opc2, state;
-+    int crm, opc1, opc2;
-     int crmmin = (r->crm == CP_ANY) ? 0 : r->crm;
-     int crmmax = (r->crm == CP_ANY) ? 15 : r->crm;
-     int opc1min = (r->opc1 == CP_ANY) ? 0 : r->opc1;
-     int opc1max = (r->opc1 == CP_ANY) ? 7 : r->opc1;
-     int opc2min = (r->opc2 == CP_ANY) ? 0 : r->opc2;
-     int opc2max = (r->opc2 == CP_ANY) ? 7 : r->opc2;
-+    CPState state;
++    CPUARMState *env = &cpu->env;
+     uint32_t key;
+     ARMCPRegInfo *r2;
+     bool is64 = r->type & ARM_CP_64BIT;
+     bool ns = secstate & ARM_CP_SECSTATE_NS;
+     int cp = r->cp;
+-    bool isbanked;
+     size_t name_len;
++    bool make_const;
+ 
+     switch (state) {
+     case ARM_CP_STATE_AA32:
+@@ -8560,6 +8561,24 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+         }
+     }
+ 
++    /*
++     * Eliminate registers that are not present because the EL is missing.
++     * Doing this here makes it easier to put all registers for a given
++     * feature into the same ARMCPRegInfo array and define them all at once.
++     */
++    if (arm_feature(env, ARM_FEATURE_EL3)) {
++        /* An EL2 register without EL2 but with EL3 is (usually) RES0. */
++        int min_el = ctz32(r->access) / 2;
++        make_const = min_el == 2 && !arm_feature(env, ARM_FEATURE_EL2);
++    } else {
++        CPAccessRights max_el = (arm_feature(env, ARM_FEATURE_EL2)
++                                 ? PL2_RW : PL1_RW);
++        if ((r->access & max_el) == 0) {
++            return;
++        }
++        make_const = false;
++    }
 +
-     /* 64 bit registers have only CRm and Opc1 fields */
-     assert(!((r->type & ARM_CP_64BIT) && (r->opc2 || r->crn)));
-     /* op0 only exists in the AArch64 encodings */
+     /* Combine cpreg and name into one allocation. */
+     name_len = strlen(name) + 1;
+     r2 = g_malloc(sizeof(*r2) + name_len);
+@@ -8580,44 +8599,74 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+         r2->opaque = opaque;
+     }
+ 
+-    isbanked = r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1];
+-    if (isbanked) {
++    if (make_const) {
++        /* This should not have been a very special register to begin. */
++        int old_special = r2->type & ARM_CP_SPECIAL_MASK;
++        assert(old_special == 0 || old_special == ARM_CP_CONST);
+         /*
+-         * Register is banked (using both entries in array).
+-         * Overwriting fieldoffset as the array is only used to define
+-         * banked registers but later only fieldoffset is used.
++         * Set the special function to CONST, retaining the flags.
++         * This is important for e.g. ARM_CP_SVE so that we still
++         * take the SVE trap if CPTR_EL3.EZ == 0.
+          */
+-        r2->fieldoffset = r->bank_fieldoffsets[ns];
+-    }
+-    if (state == ARM_CP_STATE_AA32) {
++        r2->type |= ARM_CP_CONST;
++        /*
++         * Usually, these registers become RES0, but there are a few
++         * special cases like VPIDR_EL2 which have a constant non-zero
++         * value with writes ignored.  So leave resetvalue as is.
++         *
++         * ARM_CP_SPECIAL_MASK has precedence, so removing the callbacks
++         * and offsets are not strictly necessary, but is potentially
++         * less confusing to debug later.
++         */
++        r2->readfn = NULL;
++        r2->writefn = NULL;
++        r2->raw_readfn = NULL;
++        r2->raw_writefn = NULL;
++        r2->resetfn = NULL;
++        r2->fieldoffset = 0;
++        r2->bank_fieldoffsets[0] = 0;
++        r2->bank_fieldoffsets[1] = 0;
++    } else {
++        bool isbanked = r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1];
++
+         if (isbanked) {
+             /*
+-             * If the register is banked then we don't need to migrate or
+-             * reset the 32-bit instance in certain cases:
+-             *
+-             * 1) If the register has both 32-bit and 64-bit instances then we
+-             *    can count on the 64-bit instance taking care of the
+-             *    non-secure bank.
+-             * 2) If ARMv8 is enabled then we can count on a 64-bit version
+-             *    taking care of the secure bank.  This requires that separate
+-             *    32 and 64-bit definitions are provided.
++             * Register is banked (using both entries in array).
++             * Overwriting fieldoffset as the array is only used to define
++             * banked registers but later only fieldoffset is used.
+              */
+-            if ((r->state == ARM_CP_STATE_BOTH && ns) ||
+-                (arm_feature(&cpu->env, ARM_FEATURE_V8) && !ns)) {
++            r2->fieldoffset = r->bank_fieldoffsets[ns];
++        }
++        if (state == ARM_CP_STATE_AA32) {
++            if (isbanked) {
++                /*
++                 * If the register is banked then we don't need to migrate or
++                 * reset the 32-bit instance in certain cases:
++                 *
++                 * 1) If the register has both 32-bit and 64-bit instances
++                 *    then we can count on the 64-bit instance taking care
++                 *    of the non-secure bank.
++                 * 2) If ARMv8 is enabled then we can count on a 64-bit
++                 *    version taking care of the secure bank.  This requires
++                 *    that separate 32 and 64-bit definitions are provided.
++                 */
++                if ((r->state == ARM_CP_STATE_BOTH && ns) ||
++                    (arm_feature(env, ARM_FEATURE_V8) && !ns)) {
++                    r2->type |= ARM_CP_ALIAS;
++                }
++            } else if ((secstate != r->secure) && !ns) {
++                /*
++                 * The register is not banked so we only want to allow
++                 * migration of the non-secure instance.
++                 */
+                 r2->type |= ARM_CP_ALIAS;
+             }
+-        } else if ((secstate != r->secure) && !ns) {
+-            /*
+-             * The register is not banked so we only want to allow migration
+-             * of the non-secure instance.
+-             */
+-            r2->type |= ARM_CP_ALIAS;
+-        }
+ 
+-        if (r->state == ARM_CP_STATE_BOTH && r->fieldoffset) {
++            if (r->state == ARM_CP_STATE_BOTH && r->fieldoffset) {
+ #ifdef HOST_WORDS_BIGENDIAN
+-            r2->fieldoffset += sizeof(uint32_t);
++                r2->fieldoffset += sizeof(uint32_t);
+ #endif
++            }
+         }
+     }
+ 
+@@ -8628,7 +8677,7 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+      * multiple times. Special registers (ie NOP/WFI) are
+      * never migratable and not even raw-accessible.
+      */
+-    if (r->type & ARM_CP_SPECIAL_MASK) {
++    if (r2->type & ARM_CP_SPECIAL_MASK) {
+         r2->type |= ARM_CP_NO_RAW;
+     }
+     if ((r->crm == CP_ANY && crm != 0) ||
 -- 
 2.25.1
 

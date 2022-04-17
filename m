@@ -1,107 +1,111 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp1265383lfk;
-        Sun, 17 Apr 2022 10:45:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwoUOBhZ99pVTSxHj/Uh6Mqu3LVV5DFGfoKEjstA9jgG6Z29q8BwpZg6OBHhLCbN3tr25Tl
-X-Received: by 2002:ad4:5bc2:0:b0:446:4243:640e with SMTP id t2-20020ad45bc2000000b004464243640emr5746398qvt.125.1650217509511;
-        Sun, 17 Apr 2022 10:45:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650217509; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp1265391lfk;
+        Sun, 17 Apr 2022 10:45:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCny0PwIGE3uHIdqkCEU+rKN6w0pNLL+NieJ6T2BTXhyYjmLgkJkNWZ1ycugU5AHuQssEM
+X-Received: by 2002:a05:6214:260e:b0:446:4518:7445 with SMTP id gu14-20020a056214260e00b0044645187445mr5430103qvb.101.1650217511178;
+        Sun, 17 Apr 2022 10:45:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650217511; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q+H1nsx+GKdHXfOWujW4IOqtJo1mpsMq67zN07mMClQCUvRnRlcYA2aZYYH3lu+KIq
-         pQ3XDbyttaVqz+qqYM4XA2KOUgQe4o/iAS/qs1+Dytk/wx1b5HGvDjP8FMnLamK2naE2
-         m+1L8N2tdU1bGjssLZv3qzG04wVqumE6bwVLhoX67HUiNx/MxucrYFwzrlJIK6XxfDcj
-         6HQCh3v64wBj06YUFXOvtS6pvdaJuNqAa4VNc1oqAwtZAwfxrg9fGWlihuuHRuimBpXF
-         AwsN/kAsR6QCNs/gHlzfUxPivNphnbXOPyVJ6SONya2Syywf0HpSr/bvNjSx/7KUuPlt
-         jrsg==
+        b=sZSPeaLkGmhnrXHb6Ej3fiacr0SE+UmHUNWrfzvdEmyAmjmM81EDEAj5Z4utEJm+Vw
+         +/+fYHnw5U68uNP02k7J68pw03mRWR0m6BM87gHzY80ijXkkfZv2mjNseLQycKa+DM1M
+         SUoPPhtZoGfXW6wfaiS3uMlT4WJMbT95canDll5A5ihARLS03p/v6q0x8d3nxAZUh4q0
+         n4jghXFFLB0zKoeWAgy8Tta2CbNPj8d9J8tFAoANgHMPXHbV5bNuBcMQoBJQv927fB6J
+         7l5o90nhpOIL129ok+BwraJrsrbDb3juGYrHSvhXLoJrZEb67DdhvyHtkT4wuwIVuxxf
+         Kcqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=49MEjBLreWKhHOhCC9qsitP3Mv6KOOFlXreHBHFuXAk=;
-        b=yCooQ7XIqDI/J3HyQsQwJojUkaxSRonj3uerIH5GA4kk1gu/H2wxFrwcC6Yu25a3jx
-         jsgGhplv8+TloqfBdV+y+lpQCmpp3vkkRmmBoB25IArZ6yqUgR1Rb7qId/qRCylwjGze
-         NUzUmtpTPrTl2muL7GdjJIe5qGY2kz91xxkIMXIYFlzka+5J4WFi39h9mBjNlbfIajMp
-         N57GcwWcSFevd5t+3QXOB3vGCcRXMsXxn5rIyXLx1p72uvF/rMCRPjtKnLzhmBifns62
-         t/pPK7StnppPRWVp7y7ceO9gaQRHftkHyoEuibmHamKNmgDaMl1mvvVkVX2NGYZBM4eI
-         UDOg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=KMJqWCFFQ/5jg8W4iYwme8tmF7Vde2zNGH6ujSmTVXA=;
+        b=y+Iucp+upHznQ0FMZhuo4Jt8MJyYMvh7a9jTFb8pvhy7O9GRDbgSmPRqrNyvS1Jb6t
+         XPWrL/RhgGe4/mKcpluVdoRViS7MSJMl9Jc5Pq6CsrbTZDEUU4HAlnXppQvSShknNhZ7
+         Mt2jdwDVa7cclcGvIJWAi2Hr+GWWe99Dw4cSOrDYAKkwCQf8nSOOnyH7hps/F61tTTyM
+         /vOKyxU8v99Oy7hhYzDWlKeFG9c0Prz/qnub4AOOnU4rKXIr9eoDoMDakaqhfUCbVV7R
+         UjdqwPYhacoYlQFJkYauf10ukjVrabZ5N+OQ+mhkfWuXzmuSFBUhNJ0CTHfO3dVAHonx
+         Z8DQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=D0wjodxv;
+       dkim=fail header.i=@linaro.org header.s=google header.b="E/DaA9Jz";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j20-20020a05620a289400b0067ffc57002csi2570910qkp.212.2022.04.17.10.45.09
+        by mx.google.com with ESMTPS id x15-20020ac87ecf000000b002ebce4e076asi2200188qtj.204.2022.04.17.10.45.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Apr 2022 10:45:09 -0700 (PDT)
+        Sun, 17 Apr 2022 10:45:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=D0wjodxv;
+       dkim=fail header.i=@linaro.org header.s=google header.b="E/DaA9Jz";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55068 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ng8xQ-0000fM-VZ
-	for alex.bennee@linaro.org; Sun, 17 Apr 2022 13:45:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47594)
+	id 1ng8xR-0000fW-Va
+	for alex.bennee@linaro.org; Sun, 17 Apr 2022 13:45:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47672)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ng8wq-0000dS-WD
- for qemu-arm@nongnu.org; Sun, 17 Apr 2022 13:44:33 -0400
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534]:38894)
+ id 1ng8ws-0000dk-Ty
+ for qemu-arm@nongnu.org; Sun, 17 Apr 2022 13:44:35 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:38890)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ng8wo-0003Dg-G2
- for qemu-arm@nongnu.org; Sun, 17 Apr 2022 13:44:31 -0400
-Received: by mail-pg1-x534.google.com with SMTP id s137so14959230pgs.5
- for <qemu-arm@nongnu.org>; Sun, 17 Apr 2022 10:44:29 -0700 (PDT)
+ id 1ng8wq-0003E6-Kz
+ for qemu-arm@nongnu.org; Sun, 17 Apr 2022 13:44:34 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id s137so14959316pgs.5
+ for <qemu-arm@nongnu.org>; Sun, 17 Apr 2022 10:44:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=49MEjBLreWKhHOhCC9qsitP3Mv6KOOFlXreHBHFuXAk=;
- b=D0wjodxvz/4IelW9f6Vy2T5Twi5ZZ/xK+Jm7Ej8g+FZrMqPbfkhlXP4SVyLuEZ1cqP
- 3mBM3/Bigyh2MwwRQ9/j/bLRPUmjlzdAIJfwA9YnPoHh6M8UB95RzcePz9KxDTwyHw1v
- LRJ5VFci5wt/pAkMqbPDKEqeTL0R4fyLInyRGdKNnftpTwZAkImARzVbkIwYBnkvYubY
- 8UejYj6QUqg4SBvqZuPc2v8z82w0B1XLt/3oKJzoELXPOsRCF3V4/5UPp3LxhD8TWlhY
- sGBMC0VtZ4kweaE5p4mCEGf4FMZ6EF2BaUStmKAQEmPqEwI3uc4jgJy89mcBE0UBSI8I
- SKIw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=KMJqWCFFQ/5jg8W4iYwme8tmF7Vde2zNGH6ujSmTVXA=;
+ b=E/DaA9JzIYarK2hn6C1lG8rNsmjSrAw+ocrr0LWL51dOfsELU+1qvo5RgJIot+fiuj
+ KHYJtb1F6HI4u4ovM0HqOpymS0h8wIAo5Rbrvm2X5p75VSAC6u/1Ondk9ZSV5ktdF90N
+ UzZxhIN7fnvViDvRsHMtvM+p8g1Iej1WCErU2dAZdhrSnYJWJR8skVmWRAhwFbxp2sJr
+ dEWCyN807QKZFm+l1GUeruZL8Nat1I1rmMqSfo1wDoiF/vtLuwjZAzeTRIuipAOZydCK
+ znrQ/aP8t+tb1qZCBVeVCGAg1dhfpw/kbntQcJUHZBhBQqJpl2R2tkSUOZUY8ut1fmZR
+ Md3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=49MEjBLreWKhHOhCC9qsitP3Mv6KOOFlXreHBHFuXAk=;
- b=6ozJsPH5vS34x7iT2WUPr7D5ejJfvceIk/8kBYrDgSCWKzMXeU5x3RUGclnGRbFW/p
- ox+3/kyDzw2WLdkFT2oImMhtRqHTD9SRBAnyQ3WRx0Y3kdNWsPviCMjayXwwt6GXxHgC
- fkpuuzUjWWZgP9cQnzZFtMIju6jp4hUY7IGWFCQZusqmcwcxXSzSxFQOVvs4crE94xLP
- 5XqoDuGMgmr6nVeawBA4y9l37m/1VQlYPebyOJcI43EgJa5CLtONC0+C4gvFnEPF09tv
- 4h8xqdW2kVpxZJistFbYSDyWmLBPDNw1t1Pn0dtoo9MjBgLYJsrtmKpWQlr/rS9TXmnx
- sahQ==
-X-Gm-Message-State: AOAM533OXPCG+QVzAiqFMU3kFwHd63QuZSzQJcc8IAE2c8P7jEPxoBnx
- W9KxvT3XUXqJwgZ0846GeTgLr6OZpJizpw==
-X-Received: by 2002:a65:530b:0:b0:382:b21d:82eb with SMTP id
- m11-20020a65530b000000b00382b21d82ebmr7128565pgq.215.1650217468629; 
- Sun, 17 Apr 2022 10:44:28 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=KMJqWCFFQ/5jg8W4iYwme8tmF7Vde2zNGH6ujSmTVXA=;
+ b=JoPsmpXOZjm3k2BFHS1G2WqxMRwBZZQ4O32nfQd68hJoc8XwpKJP7Qdg0SB0tBlWVq
+ g49ZrfHF0ZNzE2tnBhVzW1fXJz7qDUBy5JV8ILcuHk3qmmfy4+yA3+K2L9uo1DhU9RdW
+ L8TdUNW8ZDB++xpseuHylCrZVyVXS9ILT061QLRwKzaoxrSt4ZuLJ5R3KzVL2gb0vhUr
+ eyMB7+cB33J+gkvVkfe42JyNG6324YTXmkPu/xiw4BSGd1cM/gVaTknQo9uWMreibiZ6
+ Evkgn3el3mQLBcAlczV19aM2b2RSwDmfym2O/PoLMRoePsQtHjVjt4utsKe7cZguC96Z
+ ClAw==
+X-Gm-Message-State: AOAM533JNbYyRf46DP0dJiEmOcvfqoWFVvsngUQ4RJ2/u1/CNjs30Jn5
+ aGQvzTrQRFmIECfay0tFWdYMww==
+X-Received: by 2002:a05:6a00:2148:b0:4fa:92f2:bae3 with SMTP id
+ o8-20020a056a00214800b004fa92f2bae3mr8391283pfk.69.1650217471292; 
+ Sun, 17 Apr 2022 10:44:31 -0700 (PDT)
 Received: from localhost.localdomain (174-21-142-130.tukw.qwest.net.
  [174.21.142.130]) by smtp.gmail.com with ESMTPSA id
- i2-20020a17090a138200b001cb6512b579sm10372119pja.44.2022.04.17.10.44.26
+ i2-20020a17090a138200b001cb6512b579sm10372119pja.44.2022.04.17.10.44.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Apr 2022 10:44:27 -0700 (PDT)
+ Sun, 17 Apr 2022 10:44:30 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 00/60] target/arm: Cleanups, new features, new cpus
-Date: Sun, 17 Apr 2022 10:43:26 -0700
-Message-Id: <20220417174426.711829-1-richard.henderson@linaro.org>
+Subject: [PATCH v3 02/60] target/arm: Update ISAR fields for ARMv8.8
+Date: Sun, 17 Apr 2022 10:43:28 -0700
+Message-Id: <20220417174426.711829-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220417174426.711829-1-richard.henderson@linaro.org>
+References: <20220417174426.711829-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x534.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,131 +118,92 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MxBhkLwnAJje
+X-TUID: hVPEeDKl0xpR
 
-Supercedes: 20220412003326.588530-1-richard.henderson@linaro.org
-("target/arm: 8 new features, A76 and N1")
+Update isar fields per ARM DDI0487 H.a.
 
-Changes for v3:
-  * More field updates for H.a.  This is not nearly complete, but what
-    I've encountered so far as I've begun implementing SME.
-  * Use bool instead of uint32_t for env->{aarch64,thumb}.
-    I had anticipated other changes for implementing PSTATE.{SM,FA},
-    but dropped those; these seemed like worth keeping.
-  * Use tcg_constant_* more -- got stuck on this while working on...
-  * Lots of cleanups to ARMCPRegInfo.
-  * Discard unreachable cpregs when ELx not available.
-  * Transform EL2 regs to RES0 when EL3 present but EL2 isn't.
-    This greatly simplifies registration of cpregs for new features.
-    Changes contextidr_el2, minimal_ras_reginfo, scxtnum_reginfo
-    within this patch set; other uses coming for SME.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v2: Add ID_AA64DFR0.HPMN0
+---
+ target/arm/cpu.h | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-
-r~
-
-
-Richard Henderson (60):
-  tcg: Add tcg_constant_ptr
-  target/arm: Update ISAR fields for ARMv8.8
-  target/arm: Update SCR_EL3 bits to ARMv8.8
-  target/arm: Update SCTLR bits to ARMv9.2
-  target/arm: Change DisasContext.aarch64 to bool
-  target/arm: Change CPUArchState.aarch64 to bool
-  target/arm: Extend store_cpu_offset to take field size
-  target/arm: Change DisasContext.thumb to bool
-  target/arm: Change CPUArchState.thumb to bool
-  target/arm: Remove fpexc32_access
-  target/arm: Split out set_btype_raw
-  target/arm: Split out gen_rebuild_hflags
-  target/arm: Use tcg_constant in translate-a64.c
-  target/arm: Simplify GEN_SHIFT in translate.c
-  target/arm: Simplify gen_sar
-  target/arm: Simplify aa32 DISAS_WFI
-  target/arm: Use tcg_constant in translate.c
-  target/arm: Use tcg_constant in translate-m-nocp.c
-  target/arm: Use tcg_constant in translate-neon.c
-  target/arm: Use smin/smax for do_sat_addsub_32
-  target/arm: Use tcg_constant in translate-sve.c
-  target/arm: Use tcg_constant in translate-vfp.c
-  target/arm: Use tcg_constant_i32 in translate.h
-  target/arm: Split out cpregs.h
-  target/arm: Reorg CPAccessResult and access_check_cp_reg
-  target/arm: Replace sentinels with ARRAY_SIZE in cpregs.h
-  target/arm: Make some more cpreg data static const
-  target/arm: Reorg ARMCPRegInfo type field bits
-  target/arm: Change cpreg access permissions to enum
-  target/arm: Name CPState type
-  target/arm: Name CPSecureState type
-  target/arm: Update sysreg fields when redirecting for E2H
-  target/arm: Store cpregs key in the hash table directly
-  target/arm: Cleanup add_cpreg_to_hashtable
-  target/arm: Handle cpreg registration for missing EL
-  target/arm: Drop EL3 no EL2 fallbacks
-  target/arm: Merge zcr reginfo
-  target/arm: Add isar predicates for FEAT_Debugv8p2
-  target/arm: Adjust definition of CONTEXTIDR_EL2
-  target/arm: Move cortex impdef sysregs to cpu_tcg.c
-  target/arm: Update qemu-system-arm -cpu max to cortex-a57
-  target/arm: Set ID_DFR0.PerfMon for qemu-system-arm -cpu max
-  target/arm: Split out aa32_max_features
-  target/arm: Annotate arm_max_initfn with FEAT identifiers
-  target/arm: Use field names for manipulating EL2 and EL3 modes
-  target/arm: Enable FEAT_Debugv8p2 for -cpu max
-  target/arm: Enable FEAT_Debugv8p4 for -cpu max
-  target/arm: Add isar_feature_{aa64,any}_ras
-  target/arm: Add minimal RAS registers
-  target/arm: Enable SCR and HCR bits for RAS
-  target/arm: Implement virtual SError exceptions
-  target/arm: Implement ESB instruction
-  target/arm: Enable FEAT_RAS for -cpu max
-  target/arm: Enable FEAT_IESB for -cpu max
-  target/arm: Enable FEAT_CSV2 for -cpu max
-  target/arm: Enable FEAT_CSV2_2 for -cpu max
-  target/arm: Enable FEAT_CSV3 for -cpu max
-  target/arm: Enable FEAT_DGH for -cpu max
-  target/arm: Define cortex-a76
-  target/arm: Define neoverse-n1
-
- docs/system/arm/emulation.rst |  10 +
- docs/system/arm/virt.rst      |   2 +
- include/tcg/tcg.h             |   2 +
- target/arm/cpregs.h           | 459 +++++++++++++++++
- target/arm/cpu.h              | 475 ++++--------------
- target/arm/helper.h           |   1 +
- target/arm/internals.h        |  16 +
- target/arm/syndrome.h         |   5 +
- target/arm/translate-a32.h    |  13 +-
- target/arm/translate.h        |  17 +-
- target/arm/a32.decode         |  16 +-
- target/arm/t32.decode         |  18 +-
- hw/arm/pxa2xx.c               |   2 +-
- hw/arm/pxa2xx_pic.c           |   2 +-
- hw/arm/sbsa-ref.c             |   2 +
- hw/arm/virt.c                 |   2 +
- hw/intc/arm_gicv3_cpuif.c     |   6 +-
- hw/intc/arm_gicv3_kvm.c       |   3 +-
- linux-user/arm/cpu_loop.c     |   2 +-
- target/arm/cpu.c              |  88 ++--
- target/arm/cpu64.c            | 349 +++++++------
- target/arm/cpu_tcg.c          | 232 ++++++---
- target/arm/gdbstub.c          |   5 +-
- target/arm/helper-a64.c       |   4 +-
- target/arm/helper.c           | 897 ++++++++++++++++++----------------
- target/arm/hvf/hvf.c          |   2 +-
- target/arm/m_helper.c         |   6 +-
- target/arm/op_helper.c        | 113 +++--
- target/arm/translate-a64.c    | 395 ++++++---------
- target/arm/translate-m-nocp.c |  12 +-
- target/arm/translate-neon.c   |  21 +-
- target/arm/translate-sve.c    | 207 +++-----
- target/arm/translate-vfp.c    |  76 +--
- target/arm/translate.c        | 400 +++++++--------
- 34 files changed, 2026 insertions(+), 1834 deletions(-)
- create mode 100644 target/arm/cpregs.h
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 23879de5fa..9a29a4a215 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1933,6 +1933,7 @@ FIELD(ID_MMFR4, CCIDX, 24, 4)
+ FIELD(ID_MMFR4, EVT, 28, 4)
+ 
+ FIELD(ID_MMFR5, ETS, 0, 4)
++FIELD(ID_MMFR5, NTLBPA, 4, 4)
+ 
+ FIELD(ID_PFR0, STATE0, 0, 4)
+ FIELD(ID_PFR0, STATE1, 4, 4)
+@@ -1985,6 +1986,16 @@ FIELD(ID_AA64ISAR1, SPECRES, 40, 4)
+ FIELD(ID_AA64ISAR1, BF16, 44, 4)
+ FIELD(ID_AA64ISAR1, DGH, 48, 4)
+ FIELD(ID_AA64ISAR1, I8MM, 52, 4)
++FIELD(ID_AA64ISAR1, XS, 56, 4)
++FIELD(ID_AA64ISAR1, LS64, 60, 4)
++
++FIELD(ID_AA64ISAR2, WFXT, 0, 4)
++FIELD(ID_AA64ISAR2, RPRES, 4, 4)
++FIELD(ID_AA64ISAR2, GPA3, 8, 4)
++FIELD(ID_AA64ISAR2, APA3, 12, 4)
++FIELD(ID_AA64ISAR2, MOPS, 16, 4)
++FIELD(ID_AA64ISAR2, BC, 20, 4)
++FIELD(ID_AA64ISAR2, PAC_FRAC, 24, 4)
+ 
+ FIELD(ID_AA64PFR0, EL0, 0, 4)
+ FIELD(ID_AA64PFR0, EL1, 4, 4)
+@@ -2007,6 +2018,10 @@ FIELD(ID_AA64PFR1, SSBS, 4, 4)
+ FIELD(ID_AA64PFR1, MTE, 8, 4)
+ FIELD(ID_AA64PFR1, RAS_FRAC, 12, 4)
+ FIELD(ID_AA64PFR1, MPAM_FRAC, 16, 4)
++FIELD(ID_AA64PFR1, SME, 24, 4)
++FIELD(ID_AA64PFR1, RNDR_TRAP, 28, 4)
++FIELD(ID_AA64PFR1, CSV2_FRAC, 32, 4)
++FIELD(ID_AA64PFR1, NMI, 36, 4)
+ 
+ FIELD(ID_AA64MMFR0, PARANGE, 0, 4)
+ FIELD(ID_AA64MMFR0, ASIDBITS, 4, 4)
+@@ -2033,6 +2048,11 @@ FIELD(ID_AA64MMFR1, SPECSEI, 24, 4)
+ FIELD(ID_AA64MMFR1, XNX, 28, 4)
+ FIELD(ID_AA64MMFR1, TWED, 32, 4)
+ FIELD(ID_AA64MMFR1, ETS, 36, 4)
++FIELD(ID_AA64MMFR1, HCX, 40, 4)
++FIELD(ID_AA64MMFR1, AFP, 44, 4)
++FIELD(ID_AA64MMFR1, NTLBPA, 48, 4)
++FIELD(ID_AA64MMFR1, TIDCP1, 52, 4)
++FIELD(ID_AA64MMFR1, CMOW, 56, 4)
+ 
+ FIELD(ID_AA64MMFR2, CNP, 0, 4)
+ FIELD(ID_AA64MMFR2, UAO, 4, 4)
+@@ -2059,7 +2079,10 @@ FIELD(ID_AA64DFR0, CTX_CMPS, 28, 4)
+ FIELD(ID_AA64DFR0, PMSVER, 32, 4)
+ FIELD(ID_AA64DFR0, DOUBLELOCK, 36, 4)
+ FIELD(ID_AA64DFR0, TRACEFILT, 40, 4)
++FIELD(ID_AA64DFR0, TRACEBUFFER, 44, 4)
+ FIELD(ID_AA64DFR0, MTPMU, 48, 4)
++FIELD(ID_AA64DFR0, BRBE, 52, 4)
++FIELD(ID_AA64DFR0, HPMN0, 60, 4)
+ 
+ FIELD(ID_AA64ZFR0, SVEVER, 0, 4)
+ FIELD(ID_AA64ZFR0, AES, 4, 4)
+@@ -2081,6 +2104,7 @@ FIELD(ID_DFR0, PERFMON, 24, 4)
+ FIELD(ID_DFR0, TRACEFILT, 28, 4)
+ 
+ FIELD(ID_DFR1, MTPMU, 0, 4)
++FIELD(ID_DFR1, HPMN0, 4, 4)
+ 
+ FIELD(DBGDIDR, SE_IMP, 12, 1)
+ FIELD(DBGDIDR, NSUHD_IMP, 14, 1)
 -- 
 2.25.1
 

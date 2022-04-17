@@ -1,170 +1,244 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp1378633lfk;
-        Fri, 15 Apr 2022 00:42:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyzsDx1rLnLiB5ZptsLHtJ59WOaiSOqkokWq13Izs7YwavAGnbQjMnubKie3SUG9Qa6exw5
-X-Received: by 2002:adf:a2d4:0:b0:207:bc3a:b2b5 with SMTP id t20-20020adfa2d4000000b00207bc3ab2b5mr4556019wra.223.1650008563156;
-        Fri, 15 Apr 2022 00:42:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650008563; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp1265383lfk;
+        Sun, 17 Apr 2022 10:45:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwoUOBhZ99pVTSxHj/Uh6Mqu3LVV5DFGfoKEjstA9jgG6Z29q8BwpZg6OBHhLCbN3tr25Tl
+X-Received: by 2002:ad4:5bc2:0:b0:446:4243:640e with SMTP id t2-20020ad45bc2000000b004464243640emr5746398qvt.125.1650217509511;
+        Sun, 17 Apr 2022 10:45:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650217509; cv=none;
         d=google.com; s=arc-20160816;
-        b=yAe2kiJSpkJH8YkQFBreGRmIyJkcflzwZNwb1pZbaRu4H5Q6Gww7fUu31Oj0qz3VYh
-         FTb53bzfYQM7OZw/8pYwL0QUEzxiA/f1/pW+xYIp0nR+LYd87ysM5jahV4ti6o8W6GF3
-         TO0KMdwpEnc4f+O2U9/Ynw+5lE/CuziLuUFmum6AgUGrDsEFBP13B7rl4iAI/TnI2YTc
-         dm08nuT+vERpJ4xY6L1tLXysQT2SGEtP+0w7Ieim3LfFABN1cgIjVxoQ4AeolTPGD7SK
-         WRPV/3IzmXJlxE3AndygomaJZXaQ5fZVdcC1U6HGn8iqArO2GfDeSe/a8tws+L2cCuQ1
-         Dg5g==
+        b=Q+H1nsx+GKdHXfOWujW4IOqtJo1mpsMq67zN07mMClQCUvRnRlcYA2aZYYH3lu+KIq
+         pQ3XDbyttaVqz+qqYM4XA2KOUgQe4o/iAS/qs1+Dytk/wx1b5HGvDjP8FMnLamK2naE2
+         m+1L8N2tdU1bGjssLZv3qzG04wVqumE6bwVLhoX67HUiNx/MxucrYFwzrlJIK6XxfDcj
+         6HQCh3v64wBj06YUFXOvtS6pvdaJuNqAa4VNc1oqAwtZAwfxrg9fGWlihuuHRuimBpXF
+         AwsN/kAsR6QCNs/gHlzfUxPivNphnbXOPyVJ6SONya2Syywf0HpSr/bvNjSx/7KUuPlt
+         jrsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=4Jf8CpUkmHiCcLo2+5odi8xqtOjKp0Qem77ayfImucw=;
-        b=j8A9WKuaGAt2sJ9ux9yzycRDNck8SU+pjxmnoZZ9I/50K27qKRof8p8WB4yjHN8lZM
-         OOWeJ8KTHDugeQaNKV42SDvcwTj79UoWDb6wulTSHqbN9IfAfO4fi8ipzSI75nTMMZA2
-         dK6b6VklLJdzV7gE/1eVCd5ukVA4u6/rDTBR/PjYK/pvu3D1yrOY++vYTWXNAk70LiBE
-         F2bD7bAtXF10lNbCO6EQ9Xy1MigVkeG6QiL1RFITD6NArLuDbkf60Ofrdpn3Gy+qT1Hi
-         dFJUMmb+Sx2W7v9wviESVyAzBOes0InwDPfF5pwyIM1dAI8b8iwgVdyppEqGR0NmaFa4
-         5Leg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=49MEjBLreWKhHOhCC9qsitP3Mv6KOOFlXreHBHFuXAk=;
+        b=yCooQ7XIqDI/J3HyQsQwJojUkaxSRonj3uerIH5GA4kk1gu/H2wxFrwcC6Yu25a3jx
+         jsgGhplv8+TloqfBdV+y+lpQCmpp3vkkRmmBoB25IArZ6yqUgR1Rb7qId/qRCylwjGze
+         NUzUmtpTPrTl2muL7GdjJIe5qGY2kz91xxkIMXIYFlzka+5J4WFi39h9mBjNlbfIajMp
+         N57GcwWcSFevd5t+3QXOB3vGCcRXMsXxn5rIyXLx1p72uvF/rMCRPjtKnLzhmBifns62
+         t/pPK7StnppPRWVp7y7ceO9gaQRHftkHyoEuibmHamKNmgDaMl1mvvVkVX2NGYZBM4eI
+         UDOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@greensocs.com header.s=mail header.b=tA1+CUyZ;
-       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
-Return-Path: <damien.hedde@greensocs.com>
-Received: from beetle.greensocs.com (beetle.greensocs.com. [5.135.226.135])
-        by mx.google.com with ESMTPS id o17-20020a5d6711000000b002078f41df7esi596481wru.900.2022.04.15.00.42.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Apr 2022 00:42:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) client-ip=5.135.226.135;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D0wjodxv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j20-20020a05620a289400b0067ffc57002csi2570910qkp.212.2022.04.17.10.45.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 17 Apr 2022 10:45:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@greensocs.com header.s=mail header.b=tA1+CUyZ;
-       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
-Received: from [192.168.13.13] (unknown [195.68.53.70])
-	by beetle.greensocs.com (Postfix) with ESMTPSA id B6A5C20780;
-	Fri, 15 Apr 2022 07:42:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
-	s=mail; t=1650008562;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4Jf8CpUkmHiCcLo2+5odi8xqtOjKp0Qem77ayfImucw=;
-	b=tA1+CUyZnAxtRVi+jC0SYCaq5asK5MQYTl2DRuZyn4iqhwFyGZEgg1PsCpPHW74ftP39/U
-	HwW+V98hUnwOvD+qjaLk+JwaEQ+SBhRG26YneSF1oPgHZtuNKaywxYssbgnOJrEE63gGmZ
-	NNG4X00FbIH3buR6Ru15jU8p4xOzqU0=
-Message-ID: <7d1acb03-0a20-6641-16bf-198306c07c7b@greensocs.com>
-Date: Fri, 15 Apr 2022 09:42:40 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [RFC PATCH 00/18] user-creatable cpu clusters
-Content-Language: en-US-large
+       dkim=pass header.i=@linaro.org header.s=google header.b=D0wjodxv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55068 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ng8xQ-0000fM-VZ
+	for alex.bennee@linaro.org; Sun, 17 Apr 2022 13:45:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47594)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ng8wq-0000dS-WD
+ for qemu-arm@nongnu.org; Sun, 17 Apr 2022 13:44:33 -0400
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534]:38894)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ng8wo-0003Dg-G2
+ for qemu-arm@nongnu.org; Sun, 17 Apr 2022 13:44:31 -0400
+Received: by mail-pg1-x534.google.com with SMTP id s137so14959230pgs.5
+ for <qemu-arm@nongnu.org>; Sun, 17 Apr 2022 10:44:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=49MEjBLreWKhHOhCC9qsitP3Mv6KOOFlXreHBHFuXAk=;
+ b=D0wjodxvz/4IelW9f6Vy2T5Twi5ZZ/xK+Jm7Ej8g+FZrMqPbfkhlXP4SVyLuEZ1cqP
+ 3mBM3/Bigyh2MwwRQ9/j/bLRPUmjlzdAIJfwA9YnPoHh6M8UB95RzcePz9KxDTwyHw1v
+ LRJ5VFci5wt/pAkMqbPDKEqeTL0R4fyLInyRGdKNnftpTwZAkImARzVbkIwYBnkvYubY
+ 8UejYj6QUqg4SBvqZuPc2v8z82w0B1XLt/3oKJzoELXPOsRCF3V4/5UPp3LxhD8TWlhY
+ sGBMC0VtZ4kweaE5p4mCEGf4FMZ6EF2BaUStmKAQEmPqEwI3uc4jgJy89mcBE0UBSI8I
+ SKIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=49MEjBLreWKhHOhCC9qsitP3Mv6KOOFlXreHBHFuXAk=;
+ b=6ozJsPH5vS34x7iT2WUPr7D5ejJfvceIk/8kBYrDgSCWKzMXeU5x3RUGclnGRbFW/p
+ ox+3/kyDzw2WLdkFT2oImMhtRqHTD9SRBAnyQ3WRx0Y3kdNWsPviCMjayXwwt6GXxHgC
+ fkpuuzUjWWZgP9cQnzZFtMIju6jp4hUY7IGWFCQZusqmcwcxXSzSxFQOVvs4crE94xLP
+ 5XqoDuGMgmr6nVeawBA4y9l37m/1VQlYPebyOJcI43EgJa5CLtONC0+C4gvFnEPF09tv
+ 4h8xqdW2kVpxZJistFbYSDyWmLBPDNw1t1Pn0dtoo9MjBgLYJsrtmKpWQlr/rS9TXmnx
+ sahQ==
+X-Gm-Message-State: AOAM533OXPCG+QVzAiqFMU3kFwHd63QuZSzQJcc8IAE2c8P7jEPxoBnx
+ W9KxvT3XUXqJwgZ0846GeTgLr6OZpJizpw==
+X-Received: by 2002:a65:530b:0:b0:382:b21d:82eb with SMTP id
+ m11-20020a65530b000000b00382b21d82ebmr7128565pgq.215.1650217468629; 
+ Sun, 17 Apr 2022 10:44:28 -0700 (PDT)
+Received: from localhost.localdomain (174-21-142-130.tukw.qwest.net.
+ [174.21.142.130]) by smtp.gmail.com with ESMTPSA id
+ i2-20020a17090a138200b001cb6512b579sm10372119pja.44.2022.04.17.10.44.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 17 Apr 2022 10:44:27 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: mark.burton@greensocs.com, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Bin Meng <bin.meng@windriver.com>, Vijai Kumar K <vijai@behindbytes.com>,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-References: <20220330125639.201937-1-damien.hedde@greensocs.com>
-From: Damien Hedde <damien.hedde@greensocs.com>
-In-Reply-To: <20220330125639.201937-1-damien.hedde@greensocs.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: IJxUfenIkQYz
+Subject: [PATCH v3 00/60] target/arm: Cleanups, new features, new cpus
+Date: Sun, 17 Apr 2022 10:43:26 -0700
+Message-Id: <20220417174426.711829-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MxBhkLwnAJje
 
-Ping !
+Supercedes: 20220412003326.588530-1-richard.henderson@linaro.org
+("target/arm: 8 new features, A76 and N1")
 
-It would be nice to have some rough feedback about this series.
-I plan to submit it in 2 sub-series (riscv-array in a separate part) but 
-would like to know first if this direction looks ok to you ?
+Changes for v3:
+  * More field updates for H.a.  This is not nearly complete, but what
+    I've encountered so far as I've begun implementing SME.
+  * Use bool instead of uint32_t for env->{aarch64,thumb}.
+    I had anticipated other changes for implementing PSTATE.{SM,FA},
+    but dropped those; these seemed like worth keeping.
+  * Use tcg_constant_* more -- got stuck on this while working on...
+  * Lots of cleanups to ARMCPRegInfo.
+  * Discard unreachable cpregs when ELx not available.
+  * Transform EL2 regs to RES0 when EL3 present but EL2 isn't.
+    This greatly simplifies registration of cpregs for new features.
+    Changes contextidr_el2, minimal_ras_reginfo, scxtnum_reginfo
+    within this patch set; other uses coming for SME.
 
-Note that I'm a bit confused by the terminology. Should a "cluster" as 
-in "machine topology's cluster" be a 1-1 match with a gdb inferior ?
 
-Thanks,
-Damien
+r~
 
-On 3/30/22 14:56, Damien Hedde wrote:
-> Hi,
-> 
-> This series add devices to be able to user-create (coldplug) cpu
-> clusters. The existing cpu cluster dictates how cpus are exposed
-> in gdb, but it does not handle the cpu objects creation. This series
-> adds a new device to handle both issues and adds support for two
-> architectures: arm and riscv.
-> 
-> Please look at patches 2 and 3 for more details about the new device.
-> 
-> Last part concerning the riscv is rfc as I do non-backward compatible
-> updates. I'm not sure what migration (or other) constraints we have
-> on these machines and I probably need to make some changes to cope
-> with them.
-> 
-> This series almost deprecates the cpu-cluster type as all uses
-> but one are replaced.
-> 
-> It is organized as follows:
-> 
-> + Patches 1 to 7 adds a new base device to replace cpu-cluster
-> 
-> + Patches 8 and 9 adds an arm specific version and replace existing
->    clusters in the xlnx-zynqmp machine.
-> 
-> + patches 10 to 17 updates the riscv_array. It was already used to
->    create cpus but was not a cpu cluster.
-> 
-> Thanks for any comments,
-> --
-> Damien
-> 
-> Damien Hedde (18):
->    define MAX_CLUSTERS in cpu.h instead of cluster.h
->    hw/cpu/cpus: introduce _cpus_ device
->    hw/cpu/cpus: prepare to handle cpu clusters
->    hw/cpu/cluster: make _cpu-cluster_ a subclass of _cpus_
->    gdbstub: deal with _cpus_ object instead of _cpu-cluster_
->    hw/cpu/cluster: remove cluster_id now that gdbstub is updated
->    hw/cpu/cpus: add a common start-powered-off property
->    hw/arm/arm_cpus: add arm_cpus device
->    hw/arm/xlnx-zynqmp: convert cpu clusters to arm_cpus
->    hw/riscv/riscv_hart: prepare transition to cpus
->    hw/riscv: prepare riscv_hart transition to cpus
->    hw/riscv/virt: prepare riscv_hart transition to cpus
->    hw/riscv/spike: prepare riscv_hart transition to cpus
->    hw/riscv/riscv_hart: use cpus as base class
->    hw/riscv/sifive_u&microchip_pfsoc: apply riscv_hart_array update
->    hw/riscv: update remaining machines due to riscv_hart_array update
->    hw/riscv/riscv_hart: remove temporary features
->    add myself as reviewer of the newly added _cpus_
-> 
->   include/hw/arm/arm_cpus.h          |  45 +++++++
->   include/hw/arm/xlnx-zynqmp.h       |   8 +-
->   include/hw/core/cpu.h              |   6 +
->   include/hw/cpu/cluster.h           |  26 ++--
->   include/hw/cpu/cpus.h              |  93 ++++++++++++++
->   include/hw/riscv/microchip_pfsoc.h |   2 -
->   include/hw/riscv/riscv_hart.h      |  25 +++-
->   include/hw/riscv/sifive_u.h        |   2 -
->   gdbstub.c                          |  12 +-
->   hw/arm/arm_cpus.c                  |  63 ++++++++++
->   hw/arm/xlnx-zynqmp.c               | 121 +++++++-----------
->   hw/cpu/cluster.c                   |  53 ++++----
->   hw/cpu/cpus.c                      | 195 +++++++++++++++++++++++++++++
->   hw/riscv/boot.c                    |   2 +-
->   hw/riscv/microchip_pfsoc.c         |  28 +----
->   hw/riscv/opentitan.c               |   4 +-
->   hw/riscv/riscv_hart.c              |  44 ++-----
->   hw/riscv/shakti_c.c                |   4 +-
->   hw/riscv/sifive_e.c                |   4 +-
->   hw/riscv/sifive_u.c                |  31 ++---
->   hw/riscv/spike.c                   |  18 +--
->   hw/riscv/virt.c                    |  79 +++++++-----
->   MAINTAINERS                        |   3 +
->   hw/arm/meson.build                 |   1 +
->   hw/cpu/meson.build                 |   2 +-
->   25 files changed, 612 insertions(+), 259 deletions(-)
->   create mode 100644 include/hw/arm/arm_cpus.h
->   create mode 100644 include/hw/cpu/cpus.h
->   create mode 100644 hw/arm/arm_cpus.c
->   create mode 100644 hw/cpu/cpus.c
-> 
+
+Richard Henderson (60):
+  tcg: Add tcg_constant_ptr
+  target/arm: Update ISAR fields for ARMv8.8
+  target/arm: Update SCR_EL3 bits to ARMv8.8
+  target/arm: Update SCTLR bits to ARMv9.2
+  target/arm: Change DisasContext.aarch64 to bool
+  target/arm: Change CPUArchState.aarch64 to bool
+  target/arm: Extend store_cpu_offset to take field size
+  target/arm: Change DisasContext.thumb to bool
+  target/arm: Change CPUArchState.thumb to bool
+  target/arm: Remove fpexc32_access
+  target/arm: Split out set_btype_raw
+  target/arm: Split out gen_rebuild_hflags
+  target/arm: Use tcg_constant in translate-a64.c
+  target/arm: Simplify GEN_SHIFT in translate.c
+  target/arm: Simplify gen_sar
+  target/arm: Simplify aa32 DISAS_WFI
+  target/arm: Use tcg_constant in translate.c
+  target/arm: Use tcg_constant in translate-m-nocp.c
+  target/arm: Use tcg_constant in translate-neon.c
+  target/arm: Use smin/smax for do_sat_addsub_32
+  target/arm: Use tcg_constant in translate-sve.c
+  target/arm: Use tcg_constant in translate-vfp.c
+  target/arm: Use tcg_constant_i32 in translate.h
+  target/arm: Split out cpregs.h
+  target/arm: Reorg CPAccessResult and access_check_cp_reg
+  target/arm: Replace sentinels with ARRAY_SIZE in cpregs.h
+  target/arm: Make some more cpreg data static const
+  target/arm: Reorg ARMCPRegInfo type field bits
+  target/arm: Change cpreg access permissions to enum
+  target/arm: Name CPState type
+  target/arm: Name CPSecureState type
+  target/arm: Update sysreg fields when redirecting for E2H
+  target/arm: Store cpregs key in the hash table directly
+  target/arm: Cleanup add_cpreg_to_hashtable
+  target/arm: Handle cpreg registration for missing EL
+  target/arm: Drop EL3 no EL2 fallbacks
+  target/arm: Merge zcr reginfo
+  target/arm: Add isar predicates for FEAT_Debugv8p2
+  target/arm: Adjust definition of CONTEXTIDR_EL2
+  target/arm: Move cortex impdef sysregs to cpu_tcg.c
+  target/arm: Update qemu-system-arm -cpu max to cortex-a57
+  target/arm: Set ID_DFR0.PerfMon for qemu-system-arm -cpu max
+  target/arm: Split out aa32_max_features
+  target/arm: Annotate arm_max_initfn with FEAT identifiers
+  target/arm: Use field names for manipulating EL2 and EL3 modes
+  target/arm: Enable FEAT_Debugv8p2 for -cpu max
+  target/arm: Enable FEAT_Debugv8p4 for -cpu max
+  target/arm: Add isar_feature_{aa64,any}_ras
+  target/arm: Add minimal RAS registers
+  target/arm: Enable SCR and HCR bits for RAS
+  target/arm: Implement virtual SError exceptions
+  target/arm: Implement ESB instruction
+  target/arm: Enable FEAT_RAS for -cpu max
+  target/arm: Enable FEAT_IESB for -cpu max
+  target/arm: Enable FEAT_CSV2 for -cpu max
+  target/arm: Enable FEAT_CSV2_2 for -cpu max
+  target/arm: Enable FEAT_CSV3 for -cpu max
+  target/arm: Enable FEAT_DGH for -cpu max
+  target/arm: Define cortex-a76
+  target/arm: Define neoverse-n1
+
+ docs/system/arm/emulation.rst |  10 +
+ docs/system/arm/virt.rst      |   2 +
+ include/tcg/tcg.h             |   2 +
+ target/arm/cpregs.h           | 459 +++++++++++++++++
+ target/arm/cpu.h              | 475 ++++--------------
+ target/arm/helper.h           |   1 +
+ target/arm/internals.h        |  16 +
+ target/arm/syndrome.h         |   5 +
+ target/arm/translate-a32.h    |  13 +-
+ target/arm/translate.h        |  17 +-
+ target/arm/a32.decode         |  16 +-
+ target/arm/t32.decode         |  18 +-
+ hw/arm/pxa2xx.c               |   2 +-
+ hw/arm/pxa2xx_pic.c           |   2 +-
+ hw/arm/sbsa-ref.c             |   2 +
+ hw/arm/virt.c                 |   2 +
+ hw/intc/arm_gicv3_cpuif.c     |   6 +-
+ hw/intc/arm_gicv3_kvm.c       |   3 +-
+ linux-user/arm/cpu_loop.c     |   2 +-
+ target/arm/cpu.c              |  88 ++--
+ target/arm/cpu64.c            | 349 +++++++------
+ target/arm/cpu_tcg.c          | 232 ++++++---
+ target/arm/gdbstub.c          |   5 +-
+ target/arm/helper-a64.c       |   4 +-
+ target/arm/helper.c           | 897 ++++++++++++++++++----------------
+ target/arm/hvf/hvf.c          |   2 +-
+ target/arm/m_helper.c         |   6 +-
+ target/arm/op_helper.c        | 113 +++--
+ target/arm/translate-a64.c    | 395 ++++++---------
+ target/arm/translate-m-nocp.c |  12 +-
+ target/arm/translate-neon.c   |  21 +-
+ target/arm/translate-sve.c    | 207 +++-----
+ target/arm/translate-vfp.c    |  76 +--
+ target/arm/translate.c        | 400 +++++++--------
+ 34 files changed, 2026 insertions(+), 1834 deletions(-)
+ create mode 100644 target/arm/cpregs.h
+
+-- 
+2.25.1
+

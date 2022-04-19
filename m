@@ -1,163 +1,169 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp1285741lfk;
-        Sun, 17 Apr 2022 11:49:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/jnitfv8eXp5dJZtgftPzt6zHR8jyPwN35lRi4UCkmSsNlCmkshdMsq6YUAPy53Be2aqP
-X-Received: by 2002:ae9:e816:0:b0:69e:951b:8990 with SMTP id a22-20020ae9e816000000b0069e951b8990mr1488585qkg.560.1650221355851;
-        Sun, 17 Apr 2022 11:49:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650221355; cv=none;
-        d=google.com; s=arc-20160816;
-        b=AwY2/21DngK6kTsgAV7Y74nnvbUiV/MRU9XHvUIpPs2mCJnlAWW3eL2xghON/Wf0o1
-         ANmbOI1dvY7D2tC6/Awh6ZrkdhNx2oyuetHBKbiByapDf/JPB/MEzG9bLZDAzC1sUbaw
-         WkpXG3ZNC/Wb9sqY92b5l23enHi2dz6GweTfshkNIZ5Jh8PpH8Wr49g1jqdjhTlTxo47
-         aHB0TXheyPKFKpuhR+0nHe2SOQGoaztXesrnToyohun2BzujEzRAu7Vs7dTG9+vJF/YV
-         H27Te9kzZb7/vLo0e1w9P8AJPAWf/eomQpnvN23p0AH+N8WOmvy2a6zmYTKQ6EfVc5xg
-         /xgg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=DoRumaxtRe3qsin4W3djn/6A+2lT9q58rZZ6KjoMUec=;
-        b=1AsXAdTwxLqhSYYAWcPmBVnqiw+wkhfYGKQjDTMUdvqxWYFajg3J83OwRhaXfafZ98
-         JsmyK2tHYVHPmQCn68T4c7aqXDGcuaJeU+ryOQe28ma3cMg+LUR90nNL9t3frRwa4i3o
-         +wqK1mE2AiZBlb/ATPJXD7KHe1/IJgJBRuJxJboRFlwcH9Se3pFY2rSo70l4VPBBr6tG
-         0MjGImDCMp9YFS7vf87IWdypXVYAWbDxfXDqiVUws4SPiTQQqgvc7qGXKRYAAvBJagf7
-         wlwS/VCxaXmR2GDXMYSJs1wX/tDhYD2kvKNbVTgXUjw7TFrTtItEWjdSRzs5RVTAP7AY
-         fjHg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=jmlC4sOq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15-20020a056214202f00b004460e90759csi2427420qvf.343.2022.04.17.11.49.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Apr 2022 11:49:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=jmlC4sOq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36390 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ng9xT-0001lp-Bc
-	for alex.bennee@linaro.org; Sun, 17 Apr 2022 14:49:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49782)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ng90V-0004iv-Tn
- for qemu-arm@nongnu.org; Sun, 17 Apr 2022 13:48:20 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:41968)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ng90U-00045v-5c
- for qemu-arm@nongnu.org; Sun, 17 Apr 2022 13:48:19 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id s14so10741928plk.8
- for <qemu-arm@nongnu.org>; Sun, 17 Apr 2022 10:48:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=DoRumaxtRe3qsin4W3djn/6A+2lT9q58rZZ6KjoMUec=;
- b=jmlC4sOqvOtfOzkh6swWRWx8MeweAKGvhFO4hOjhRwDyYr4nlxBTYFGudoMQyO6zCQ
- GjRIxl5kH+SNWL4B2fPPgh0Z8JGwCL9PdjbFy5evEOL4ByzNH1Yx2T1DFdsJlqVwpKVR
- UfhcTMs1HZ6MWJ8jT0xNL5D8uKv+FK7f2VbZwUmVmrv4kmIa4/7kB3GwlVRFaGccgcQW
- 4M4zU9xZwkS8yMB4sQ/QgAnhGSl6e7gqF+cnhj3Rbp2Wb3juuJJxtar1SkhBAEbkgdyM
- 1M3azCIR4m0x8Uz3tDYyvoFRXWVBF/MXEZD53ljpPK9xahQNrHLsp/hT+W/LsRRnkj1O
- wlfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=DoRumaxtRe3qsin4W3djn/6A+2lT9q58rZZ6KjoMUec=;
- b=OKqugLT83EITnZJJnrmf42vHzCe4rjWftsEy7ipZ0VqS4p078WTxqhZV6hSrmOgY/R
- DfbA4uZScwKp6fTiZ5h7W9d2z0ITid363uc1s9fcLEgBX/E1Hj7jD5upQ6NEpT9lK2yY
- JsqueN/OBn158GaXAirUfbi508j3nDnq32XlSinYr9uAgC8KW708dAx2uCx7yyZLB/xm
- eiIZua4MMOiD26RGx8aL+AZOBOV3OQhOca4E9ACdeoXe5iBi6znXruQm/zXR2qyyJMP+
- ViobLMOS6FVG02ZvHDdD25UnC0J77dQnARjVCVROOMKR3R+01Onlyj7A6cxDpcGT2++b
- p7dA==
-X-Gm-Message-State: AOAM530Dw2EG+F6o8aF1UhrZzvxEP5AyCUMBFIbR729TSGOyTUBuFbVM
- krZm5nvvO2+1BZtURXB76Tj1LKpboN4qJg==
-X-Received: by 2002:a17:90b:3806:b0:1d2:6e95:f5cc with SMTP id
- mq6-20020a17090b380600b001d26e95f5ccmr6507650pjb.23.1650217696971; 
- Sun, 17 Apr 2022 10:48:16 -0700 (PDT)
-Received: from localhost.localdomain (174-21-142-130.tukw.qwest.net.
- [174.21.142.130]) by smtp.gmail.com with ESMTPSA id
- e14-20020aa78c4e000000b00506475da4cesm9372055pfd.49.2022.04.17.10.48.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Apr 2022 10:48:16 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id ch26-20020a0564021bda00b00422dfcce6e2sm5973962edb.50.2022.04.19.02.10.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 Apr 2022 02:10:21 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 712871FFB8;
+	Tue, 19 Apr 2022 10:10:20 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 54/60] target/arm: Enable FEAT_IESB for -cpu max
-Date: Sun, 17 Apr 2022 10:44:20 -0700
-Message-Id: <20220417174426.711829-55-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220417174426.711829-1-richard.henderson@linaro.org>
-References: <20220417174426.711829-1-richard.henderson@linaro.org>
+Cc: fam@euphon.net,
+	berrange@redhat.com,
+	f4bug@amsat.org,
+	aurelien@aurel32.net,
+	pbonzini@redhat.com,
+	stefanha@redhat.com,
+	crosa@redhat.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:Virt)
+Subject: [PATCH  v1 01/25] tests/avocado: update aarch64_virt test to exercise -cpu max
+Date: Tue, 19 Apr 2022 10:09:56 +0100
+Message-Id: <20220419091020.3008144-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220419091020.3008144-1-alex.bennee@linaro.org>
+References: <20220419091020.3008144-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ztqS/ZVw5ynt
+X-TUID: 4e0Uz6XOCqU2
 
-This feature is AArch64 only, and applies to physical SErrors,
-which QEMU does not implement, thus the feature is a nop.
+The Fedora 29 kernel is quite old and importantly fails when running
+in LPA2 scenarios. As it's not really exercising much of the CPU space
+replace it with a custom 5.16.12 kernel with all the architecture
+options turned on. There is a minimal buildroot initramfs included in
+the kernel which has a few tools for stress testing the memory
+subsystem. The userspace also targets the Neoverse N1 processor so
+would fail with a v8.0 cpu like cortex-a53.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+While we are at it move the test into its own file so it can have an
+assigned maintainer.
+
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Tested-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20220315121251.2280317-3-alex.bennee@linaro.org>
+
 ---
-v2: Update emulation.rst
+v2
+  - move test into own machine file
+v3
+  - minor reword of commit, added tags
 ---
- docs/system/arm/emulation.rst | 1 +
- target/arm/cpu64.c            | 1 +
- 2 files changed, 2 insertions(+)
+ MAINTAINERS                           |  1 +
+ tests/avocado/boot_linux_console.py   | 25 -------------
+ tests/avocado/machine_aarch64_virt.py | 51 +++++++++++++++++++++++++++
+ 3 files changed, 52 insertions(+), 25 deletions(-)
+ create mode 100644 tests/avocado/machine_aarch64_virt.py
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 35b6f7d4de..ebd9e418cc 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -24,6 +24,7 @@ the following architecture extensions:
- - FEAT_FlagM2 (Enhancements to flag manipulation instructions)
- - FEAT_HPDS (Hierarchical permission disables)
- - FEAT_I8MM (AArch64 Int8 matrix multiplication instructions)
-+- FEAT_IESB (Implicit error synchronization event)
- - FEAT_JSCVT (JavaScript conversion instructions)
- - FEAT_LOR (Limited ordering regions)
- - FEAT_LPA (Large Physical Address space)
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 72fe7885f0..03fbb34e4e 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -781,6 +781,7 @@ static void aarch64_max_initfn(Object *obj)
-     t = cpu->isar.id_aa64mmfr2;
-     t = FIELD_DP64(t, ID_AA64MMFR2, CNP, 1);      /* FEAT_TTCNP */
-     t = FIELD_DP64(t, ID_AA64MMFR2, UAO, 1);      /* FEAT_UAO */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, IESB, 1);     /* FEAT_IESB */
-     t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1);  /* FEAT_LVA */
-     t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1);       /* FEAT_TTST */
-     cpu->isar.id_aa64mmfr2 = t;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 4ad2451e03..dcedfaed1f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -942,6 +942,7 @@ S: Maintained
+ F: hw/arm/virt*
+ F: include/hw/arm/virt.h
+ F: docs/system/arm/virt.rst
++F: tests/avocado/machine_aarch64_virt.py
+ 
+ Xilinx Zynq
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index b40a3abc81..45a2ceda22 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -325,31 +325,6 @@ def test_mips_malta32el_nanomips_64k_dbg(self):
+         kernel_hash = '18d1c68f2e23429e266ca39ba5349ccd0aeb7180'
+         self.do_test_mips_malta32el_nanomips(kernel_url, kernel_hash)
+ 
+-    def test_aarch64_virt(self):
+-        """
+-        :avocado: tags=arch:aarch64
+-        :avocado: tags=machine:virt
+-        :avocado: tags=accel:tcg
+-        :avocado: tags=cpu:cortex-a53
+-        """
+-        kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
+-                      '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
+-                      '/vmlinuz')
+-        kernel_hash = '8c73e469fc6ea06a58dc83a628fc695b693b8493'
+-        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
+-
+-        self.vm.set_console()
+-        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+-                               'console=ttyAMA0')
+-        self.require_accelerator("tcg")
+-        self.vm.add_args('-cpu', 'cortex-a53',
+-                         '-accel', 'tcg',
+-                         '-kernel', kernel_path,
+-                         '-append', kernel_command_line)
+-        self.vm.launch()
+-        console_pattern = 'Kernel command line: %s' % kernel_command_line
+-        self.wait_for_console_pattern(console_pattern)
+-
+     def test_aarch64_xlnx_versal_virt(self):
+         """
+         :avocado: tags=arch:aarch64
+diff --git a/tests/avocado/machine_aarch64_virt.py b/tests/avocado/machine_aarch64_virt.py
+new file mode 100644
+index 0000000000..21848cba70
+--- /dev/null
++++ b/tests/avocado/machine_aarch64_virt.py
+@@ -0,0 +1,51 @@
++# Functional test that boots a Linux kernel and checks the console
++#
++# Copyright (c) 2022 Linaro Ltd.
++#
++# Author:
++#  Alex Bennée <alex.bennee@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import time
++
++from avocado_qemu import QemuSystemTest
++from avocado_qemu import wait_for_console_pattern
++from avocado_qemu import exec_command
++
++class Aarch64VirtMachine(QemuSystemTest):
++    KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
++
++    def wait_for_console_pattern(self, success_message, vm=None):
++        wait_for_console_pattern(self, success_message,
++                                 failure_message='Kernel panic - not syncing',
++                                 vm=vm)
++
++    def test_aarch64_virt(self):
++        """
++        :avocado: tags=arch:aarch64
++        :avocado: tags=machine:virt
++        :avocado: tags=accel:tcg
++        :avocado: tags=cpu:max
++        """
++        kernel_url = ('https://fileserver.linaro.org/s/'
++                      'z6B2ARM7DQT3HWN/download')
++
++        kernel_hash = 'ed11daab50c151dde0e1e9c9cb8b2d9bd3215347'
++        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
++
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyAMA0')
++        self.require_accelerator("tcg")
++        self.vm.add_args('-cpu', 'max,pauth-impdef=on',
++                         '-accel', 'tcg',
++                         '-kernel', kernel_path,
++                         '-append', kernel_command_line)
++        self.vm.launch()
++        self.wait_for_console_pattern('Welcome to Buildroot')
++        time.sleep(0.1)
++        exec_command(self, 'root')
++        time.sleep(0.1)
++        exec_command(self, 'cat /proc/self/maps')
++        time.sleep(0.1)
 -- 
-2.25.1
-
+2.30.2

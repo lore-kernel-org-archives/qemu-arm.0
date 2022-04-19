@@ -1,194 +1,152 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id u3-20020a17090657c300b006d01de78926sm5429237ejr.22.2022.04.19.02.10.28
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2261301lfk;
+        Tue, 19 Apr 2022 02:11:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzqef6VZlI/saS8UWEomjRC+MRZXbzdWcv9Otf4KDQTRno4U+iTzjTe/4ogcm4xNl1xw2/j
+X-Received: by 2002:adf:fa84:0:b0:207:aae5:618f with SMTP id h4-20020adffa84000000b00207aae5618fmr11153243wrr.548.1650359479935;
+        Tue, 19 Apr 2022 02:11:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650359479; cv=none;
+        d=google.com; s=arc-20160816;
+        b=j253XN1VUkg5pxvwt54cOGZPNYlOwDM7N6oNqHoMGxIZ+umtAuuJx2pMOjmQp09Qss
+         UJoI4jhj/TbgJfb/QqlNW+gxauaIKDARJ/CrG/j2gRAqno/SZJwS6TanrXgy8X9PoMQ2
+         eB4GD5jNgwViP9xHq/lr/Jv9An/t0Jo956hMMjmW3QwPc2bjKu/3FYLCwyRawHsYH1qN
+         jlaf1ESVHMQYpljam1R7GYIQ2VME7XI5XgxuMYMTg/8S5d0n5ZxEGfwWFkpUvlAZ95VP
+         HjUv4DQkkxcmuPISQYTcLWQ+yb/Iu8us3BuDJG2e3h4gFi+BwRvLNlAM3p8bADxNFgsF
+         n1CQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=ST+lmAisDHRsCUDH1ysmZh88/xICcO+12Uu5E/D4wkQ=;
+        b=UymbfokidtJBn7yINnDbMgXdHIIuBHfFEoy/RsjgFIJPzG4h/hNz6VqQAqx9iFJZXE
+         YO0gnYObJuDkxqd9wrdX3bYyOdQx09MjFK5MwTASWJMimWdCqcO4lxlQmWlQR0XLULqH
+         ZQ41yckYmd6kl13awAsvxResw5GIttPYqIg9kh0XDsbUT7P1cNYrEaRcn/1w952oKUfU
+         6JED4TI/R2NuZKA+rW3ia3hqxmZGc3B4vCUYROsoZvdgmCyjifJHAHkLmTfPvAIKbVTK
+         wZNPvpub1L8ZBaRzBJn4dSVnswWCDn3u9I4R+AbWbji5BvZLCfkkD5c0UJ2mJKlCaqFK
+         jL0Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=Ds7q8B9+;
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Return-Path: <damien.hedde@greensocs.com>
+Received: from beetle.greensocs.com (beetle.greensocs.com. [5.135.226.135])
+        by mx.google.com with ESMTPS id c186-20020a1c35c3000000b0038ebf44b62asi1227044wma.111.2022.04.19.02.11.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Apr 2022 02:10:36 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 609151FFC4;
-	Tue, 19 Apr 2022 10:10:21 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: fam@euphon.net,
-	berrange@redhat.com,
-	f4bug@amsat.org,
-	aurelien@aurel32.net,
-	pbonzini@redhat.com,
-	stefanha@redhat.com,
-	crosa@redhat.com,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v1 12/25] tests/tcg: add compiler test variables when using containers
-Date: Tue, 19 Apr 2022 10:10:07 +0100
-Message-Id: <20220419091020.3008144-13-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220419091020.3008144-1-alex.bennee@linaro.org>
-References: <20220419091020.3008144-1-alex.bennee@linaro.org>
+        Tue, 19 Apr 2022 02:11:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) client-ip=5.135.226.135;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=Ds7q8B9+;
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Received: from [192.168.13.13] (unknown [195.68.53.70])
+	by beetle.greensocs.com (Postfix) with ESMTPSA id 9BF182077D;
+	Tue, 19 Apr 2022 09:11:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+	s=mail; t=1650359478;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ST+lmAisDHRsCUDH1ysmZh88/xICcO+12Uu5E/D4wkQ=;
+	b=Ds7q8B9+ecNGd5U9Ywk9QiF7mQeocVOq5uxdc3Op4esudzRf3LqHNJw8IzhjQ69XaRYyp2
+	7H02xulzm6oBb76f09cwnMRYqBq+jssl5uoIuhwDDnFPH8XAQ4qB3xNhyroSfawTDK3A99
+	4VpG+qaemphypzkG1PXW80D2BN1QhDg=
+Message-ID: <ad7c2dc1-9b4b-cd60-840b-075634272e5f@greensocs.com>
+Date: Tue, 19 Apr 2022 11:11:16 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [RFC PATCH 02/18] hw/cpu/cpus: introduce _cpus_ device
+Content-Language: en-US-large
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>, qemu-devel@nongnu.org
+Cc: mark.burton@greensocs.com, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Bin Meng <bin.meng@windriver.com>, Vijai Kumar K <vijai@behindbytes.com>,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org
+References: <20220330125639.201937-1-damien.hedde@greensocs.com>
+ <20220330125639.201937-3-damien.hedde@greensocs.com>
+ <2ded9132-c2b5-c428-6554-98c71b50e8bb@gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+In-Reply-To: <2ded9132-c2b5-c428-6554-98c71b50e8bb@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: kaEdxDe4DttU
+X-TUID: Yeqr4CKMI8Sr
 
-From: Paolo Bonzini <pbonzini@redhat.com>
 
-Even for container-based cross compilation use $(CROSS_CC_HAS_*) variables.
-This makes the TCG test makefiles oblivious of whether the compiler is
-invoked through a container or not.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20220401141326.1244422-10-pbonzini@redhat.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/tcg/aarch64/Makefile.softmmu-target |  2 +-
- tests/tcg/aarch64/Makefile.target         | 10 +++++-----
- tests/tcg/configure.sh                    | 17 +++++++++++++++++
- tests/tcg/i386/Makefile.target            |  2 +-
- tests/tcg/ppc64/Makefile.target           |  4 ++--
- tests/tcg/ppc64le/Makefile.target         |  4 ++--
- 6 files changed, 28 insertions(+), 11 deletions(-)
+On 4/16/22 19:52, Philippe Mathieu-Daudé wrote:
+> On 30/3/22 14:56, Damien Hedde wrote:
+>> This object will be a _cpu-cluster_ generalization and
+>> is meant to allow create cpus of the same type.
+>>
+>> The main goal is that this object, on contrary to _cpu-cluster-_,
+>> can be used to dynamically create cpus: it does not rely on
+>> external code to populate the object with cpus.
+>>
+>> Allowing the user to create a cpu cluster and each _cpu_
+>> separately would be hard because of the following reasons:
+>> + cpu reset need to be handled
+>> + instantiation and realize of cpu-cluster and the cpus
+>>    are interleaved
+>> + cpu cluster must contains only identical cpus and it seems
+>>    difficult to check that at runtime.
+>> Therefore we add a new type solving all this constraints.
+>>
+>> _cpu-cluster_ will be updated to inherit from this class
+>> in following commits.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+>> ---
+>>   include/hw/cpu/cpus.h |  71 +++++++++++++++++++++++
+>>   hw/cpu/cpus.c         | 127 ++++++++++++++++++++++++++++++++++++++++++
+>>   hw/cpu/meson.build    |   2 +-
+>>   3 files changed, 199 insertions(+), 1 deletion(-)
+>>   create mode 100644 include/hw/cpu/cpus.h
+>>   create mode 100644 hw/cpu/cpus.c
+>>
+>> diff --git a/include/hw/cpu/cpus.h b/include/hw/cpu/cpus.h
+>> new file mode 100644
+>> index 0000000000..c65f568ef8
+>> --- /dev/null
+>> +++ b/include/hw/cpu/cpus.h
+>> @@ -0,0 +1,71 @@
+>> +/*
+>> + * QEMU CPUs type
+>> + *
+>> + * Copyright (c) 2022 GreenSocs
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +
+>> +#ifndef HW_CPU_CPUS_H
+>> +#define HW_CPU_CPUS_H
+>> +
+>> +#include "qemu/typedefs.h"
+>> +#include "hw/qdev-core.h"
+>> +#include "qom/object.h"
+>> +
+>> +/*
+>> + * This object represent several CPUs which are all identical.
+> 
+> Typo "represents".
+> 
+>> + *
+>> + * If CPUs are not identical (for example, Cortex-A53 and Cortex-A57 
+>> CPUs in an
+>> + * Arm big.LITTLE system) they should be in different groups. If the 
+>> CPUs do
+>> + * not have the same view of memory (for example the main CPU and a 
+>> management
+>> + * controller processor) they should be in different groups.
+> 
+> This description calls for a clearer CpusGroupState name instead
+> of CpusState (which confuses me with CPUState). Alternatively
+> CpusArrayState.
 
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index a7286ac295..f6fcd4829e 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -64,7 +64,7 @@ run-memory-replay: memory-replay run-memory-record
- 
- EXTRA_RUNS+=run-memory-replay
- 
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_3),)
-+ifneq ($(CROSS_CC_HAS_ARMV8_3),)
- pauth-3: CFLAGS += -march=armv8.3-a
- else
- pauth-3:
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index f7121cb4d8..6ad0ad49f9 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -18,7 +18,7 @@ run-fcvt: fcvt
- 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
- 
- # Pauth Tests
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_3),)
-+ifneq ($(CROSS_CC_HAS_ARMV8_3),)
- AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
- pauth-%: CFLAGS += -march=armv8.3-a
- run-pauth-%: QEMU_OPTS += -cpu max
-@@ -27,7 +27,7 @@ endif
- 
- # BTI Tests
- # bti-1 tests the elf notes, so we require special compiler support.
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_BTI),)
-+ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
- AARCH64_TESTS += bti-1
- bti-1: CFLAGS += -mbranch-protection=standard
- bti-1: LDFLAGS += -nostdlib
-@@ -36,12 +36,12 @@ endif
- AARCH64_TESTS += bti-2
- 
- # MTE Tests
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_MTE),)
-+ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
- AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7
- mte-%: CFLAGS += -march=armv8.5-a+memtag
- endif
- 
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
-+ifneq ($(CROSS_CC_HAS_SVE),)
- # System Registers Tests
- AARCH64_TESTS += sysregs
- sysregs: CFLAGS+=-march=armv8.1-a+sve
-@@ -88,7 +88,7 @@ EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls
- endif
- endif
- 
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE2),)
-+ifneq ($(CROSS_CC_HAS_SVE2),)
- AARCH64_TESTS += test-826
- test-826: CFLAGS+=-march=armv8.1-a+sve2
- endif
-diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
-index 84f928f7f8..8927a2b260 100755
---- a/tests/tcg/configure.sh
-+++ b/tests/tcg/configure.sh
-@@ -348,6 +348,23 @@ for target in $target_list; do
-                   echo "DOCKER_CROSS_LD_GUEST=$container_cross_ld" >> \
-                       $config_target_mak
-               fi
-+              case $target in
-+                  aarch64-*)
-+                      echo "CROSS_CC_HAS_SVE=y" >> $config_target_mak
-+                      echo "CROSS_CC_HAS_SVE2=y" >> $config_target_mak
-+                      echo "CROSS_CC_HAS_ARMV8_3=y" >> $config_target_mak
-+                      echo "CROSS_CC_HAS_ARMV8_BTI=y" >> $config_target_mak
-+                      echo "CROSS_CC_HAS_ARMV8_MTE=y" >> $config_target_mak
-+                      ;;
-+                  ppc*)
-+                      echo "CROSS_CC_HAS_POWER8_VECTOR=y" >> $config_target_mak
-+                      echo "CROSS_CC_HAS_POWER10=y" >> $config_target_mak
-+                      ;;
-+                  i386-linux-user)
-+                      echo "CROSS_CC_HAS_I386_NOPIE=y" >> $config_target_mak
-+                      ;;
-+              esac
-+              break
-           fi
-       done
-   fi
-diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index e1c0310be6..bd73c96d0d 100644
---- a/tests/tcg/i386/Makefile.target
-+++ b/tests/tcg/i386/Makefile.target
-@@ -30,7 +30,7 @@ hello-i386: LDFLAGS+=-nostdlib
- # test-386 includes a couple of additional objects that need to be
- # linked together, we also need a no-pie capable compiler due to the
- # non-pic calls into 16-bit mode
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_I386_NOPIE),)
-+ifneq ($(CROSS_CC_HAS_I386_NOPIE),)
- test-i386: CFLAGS += -fno-pie
- 
- test-i386: test-i386.c test-i386-code16.S test-i386-vm86.S test-i386.h test-i386-shift.h test-i386-muldiv.h
-diff --git a/tests/tcg/ppc64/Makefile.target b/tests/tcg/ppc64/Makefile.target
-index 8197c288a7..babd209573 100644
---- a/tests/tcg/ppc64/Makefile.target
-+++ b/tests/tcg/ppc64/Makefile.target
-@@ -5,14 +5,14 @@
- VPATH += $(SRC_PATH)/tests/tcg/ppc64
- VPATH += $(SRC_PATH)/tests/tcg/ppc64le
- 
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_POWER8_VECTOR),)
-+ifneq ($(CROSS_CC_HAS_POWER8_VECTOR),)
- PPC64_TESTS=bcdsub non_signalling_xscv
- endif
- $(PPC64_TESTS): CFLAGS += -mpower8-vector
- 
- PPC64_TESTS += mtfsf
- 
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_POWER10),)
-+ifneq ($(CROSS_CC_HAS_POWER10),)
- PPC64_TESTS += byte_reverse sha512-vector
- endif
- byte_reverse: CFLAGS += -mcpu=power10
-diff --git a/tests/tcg/ppc64le/Makefile.target b/tests/tcg/ppc64le/Makefile.target
-index 9624bb1e9c..5b0eb5e870 100644
---- a/tests/tcg/ppc64le/Makefile.target
-+++ b/tests/tcg/ppc64le/Makefile.target
-@@ -4,12 +4,12 @@
- 
- VPATH += $(SRC_PATH)/tests/tcg/ppc64le
- 
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_POWER8_VECTOR),)
-+ifneq ($(CROSS_CC_HAS_POWER8_VECTOR),)
- PPC64LE_TESTS=bcdsub non_signalling_xscv
- endif
- $(PPC64LE_TESTS): CFLAGS += -mpower8-vector
- 
--ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_POWER10),)
-+ifneq ($(CROSS_CC_HAS_POWER10),)
- PPC64LE_TESTS += byte_reverse sha512-vector
- endif
- byte_reverse: CFLAGS += -mcpu=power10
--- 
-2.30.2
+Your are right, I'll add the "group" suffix.
+
+Thanks,
+Damien

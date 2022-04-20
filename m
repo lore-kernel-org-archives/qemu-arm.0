@@ -1,152 +1,182 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id kk23-20020a170907767700b006e8a6e53a7bsm6943928ejc.139.2022.04.20.11.08.32
+        by smtp.gmail.com with ESMTPSA id h8-20020a05600c350800b003928b925796sm64799wmq.47.2022.04.20.11.14.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Apr 2022 11:08:33 -0700 (PDT)
+        Wed, 20 Apr 2022 11:14:43 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6795A1FFB8;
-	Wed, 20 Apr 2022 19:08:32 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 50EE71FFC4;
+	Wed, 20 Apr 2022 19:08:33 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org,
 	richard.henderson@linaro.org
 Cc: qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	qemu-arm@nongnu.org (open list:Virt)
-Subject: [PULL 01/25] tests/avocado: update aarch64_virt test to exercise -cpu max
-Date: Wed, 20 Apr 2022 19:08:08 +0100
-Message-Id: <20220420180832.3812543-2-alex.bennee@linaro.org>
+	Eduardo Habkost <eduardo@habkost.net>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PULL 12/25] tests/tcg: add compiler test variables when using containers
+Date: Wed, 20 Apr 2022 19:08:19 +0100
+Message-Id: <20220420180832.3812543-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220420180832.3812543-1-alex.bennee@linaro.org>
 References: <20220420180832.3812543-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 57Bxcqm/SPT9
+X-TUID: HjFhpwber5U9
 
-The Fedora 29 kernel is quite old and importantly fails when running
-in LPA2 scenarios. As it's not really exercising much of the CPU space
-replace it with a custom 5.16.12 kernel with all the architecture
-options turned on. There is a minimal buildroot initramfs included in
-the kernel which has a few tools for stress testing the memory
-subsystem. The userspace also targets the Neoverse N1 processor so
-would fail with a v8.0 cpu like cortex-a53.
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-While we are at it move the test into its own file so it can have an
-assigned maintainer.
+Even for container-based cross compilation use $(CROSS_CC_HAS_*) variables.
+This makes the TCG test makefiles oblivious of whether the compiler is
+invoked through a container or not.
 
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20220401141326.1244422-10-pbonzini@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Tested-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20220419091020.3008144-2-alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20220419091020.3008144-13-alex.bennee@linaro.org>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4ad2451e03..dcedfaed1f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -942,6 +942,7 @@ S: Maintained
- F: hw/arm/virt*
- F: include/hw/arm/virt.h
- F: docs/system/arm/virt.rst
-+F: tests/avocado/machine_aarch64_virt.py
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index a7286ac295..f6fcd4829e 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -64,7 +64,7 @@ run-memory-replay: memory-replay run-memory-record
  
- Xilinx Zynq
- M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index b40a3abc81..45a2ceda22 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -325,31 +325,6 @@ def test_mips_malta32el_nanomips_64k_dbg(self):
-         kernel_hash = '18d1c68f2e23429e266ca39ba5349ccd0aeb7180'
-         self.do_test_mips_malta32el_nanomips(kernel_url, kernel_hash)
+ EXTRA_RUNS+=run-memory-replay
  
--    def test_aarch64_virt(self):
--        """
--        :avocado: tags=arch:aarch64
--        :avocado: tags=machine:virt
--        :avocado: tags=accel:tcg
--        :avocado: tags=cpu:cortex-a53
--        """
--        kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
--                      '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
--                      '/vmlinuz')
--        kernel_hash = '8c73e469fc6ea06a58dc83a628fc695b693b8493'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
--
--        self.vm.set_console()
--        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
--                               'console=ttyAMA0')
--        self.require_accelerator("tcg")
--        self.vm.add_args('-cpu', 'cortex-a53',
--                         '-accel', 'tcg',
--                         '-kernel', kernel_path,
--                         '-append', kernel_command_line)
--        self.vm.launch()
--        console_pattern = 'Kernel command line: %s' % kernel_command_line
--        self.wait_for_console_pattern(console_pattern)
--
-     def test_aarch64_xlnx_versal_virt(self):
-         """
-         :avocado: tags=arch:aarch64
-diff --git a/tests/avocado/machine_aarch64_virt.py b/tests/avocado/machine_aarch64_virt.py
-new file mode 100644
-index 0000000000..21848cba70
---- /dev/null
-+++ b/tests/avocado/machine_aarch64_virt.py
-@@ -0,0 +1,51 @@
-+# Functional test that boots a Linux kernel and checks the console
-+#
-+# Copyright (c) 2022 Linaro Ltd.
-+#
-+# Author:
-+#  Alex Bennée <alex.bennee@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import time
-+
-+from avocado_qemu import QemuSystemTest
-+from avocado_qemu import wait_for_console_pattern
-+from avocado_qemu import exec_command
-+
-+class Aarch64VirtMachine(QemuSystemTest):
-+    KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
-+
-+    def wait_for_console_pattern(self, success_message, vm=None):
-+        wait_for_console_pattern(self, success_message,
-+                                 failure_message='Kernel panic - not syncing',
-+                                 vm=vm)
-+
-+    def test_aarch64_virt(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=machine:virt
-+        :avocado: tags=accel:tcg
-+        :avocado: tags=cpu:max
-+        """
-+        kernel_url = ('https://fileserver.linaro.org/s/'
-+                      'z6B2ARM7DQT3HWN/download')
-+
-+        kernel_hash = 'ed11daab50c151dde0e1e9c9cb8b2d9bd3215347'
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyAMA0')
-+        self.require_accelerator("tcg")
-+        self.vm.add_args('-cpu', 'max,pauth-impdef=on',
-+                         '-accel', 'tcg',
-+                         '-kernel', kernel_path,
-+                         '-append', kernel_command_line)
-+        self.vm.launch()
-+        self.wait_for_console_pattern('Welcome to Buildroot')
-+        time.sleep(0.1)
-+        exec_command(self, 'root')
-+        time.sleep(0.1)
-+        exec_command(self, 'cat /proc/self/maps')
-+        time.sleep(0.1)
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_3),)
++ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+ pauth-3: CFLAGS += -march=armv8.3-a
+ else
+ pauth-3:
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index f7121cb4d8..6ad0ad49f9 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -18,7 +18,7 @@ run-fcvt: fcvt
+ 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
+ 
+ # Pauth Tests
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_3),)
++ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+ AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
+ pauth-%: CFLAGS += -march=armv8.3-a
+ run-pauth-%: QEMU_OPTS += -cpu max
+@@ -27,7 +27,7 @@ endif
+ 
+ # BTI Tests
+ # bti-1 tests the elf notes, so we require special compiler support.
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_BTI),)
++ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
+ AARCH64_TESTS += bti-1
+ bti-1: CFLAGS += -mbranch-protection=standard
+ bti-1: LDFLAGS += -nostdlib
+@@ -36,12 +36,12 @@ endif
+ AARCH64_TESTS += bti-2
+ 
+ # MTE Tests
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_MTE),)
++ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
+ AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7
+ mte-%: CFLAGS += -march=armv8.5-a+memtag
+ endif
+ 
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
++ifneq ($(CROSS_CC_HAS_SVE),)
+ # System Registers Tests
+ AARCH64_TESTS += sysregs
+ sysregs: CFLAGS+=-march=armv8.1-a+sve
+@@ -88,7 +88,7 @@ EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls
+ endif
+ endif
+ 
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE2),)
++ifneq ($(CROSS_CC_HAS_SVE2),)
+ AARCH64_TESTS += test-826
+ test-826: CFLAGS+=-march=armv8.1-a+sve2
+ endif
+diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
+index 84f928f7f8..8927a2b260 100755
+--- a/tests/tcg/configure.sh
++++ b/tests/tcg/configure.sh
+@@ -348,6 +348,23 @@ for target in $target_list; do
+                   echo "DOCKER_CROSS_LD_GUEST=$container_cross_ld" >> \
+                       $config_target_mak
+               fi
++              case $target in
++                  aarch64-*)
++                      echo "CROSS_CC_HAS_SVE=y" >> $config_target_mak
++                      echo "CROSS_CC_HAS_SVE2=y" >> $config_target_mak
++                      echo "CROSS_CC_HAS_ARMV8_3=y" >> $config_target_mak
++                      echo "CROSS_CC_HAS_ARMV8_BTI=y" >> $config_target_mak
++                      echo "CROSS_CC_HAS_ARMV8_MTE=y" >> $config_target_mak
++                      ;;
++                  ppc*)
++                      echo "CROSS_CC_HAS_POWER8_VECTOR=y" >> $config_target_mak
++                      echo "CROSS_CC_HAS_POWER10=y" >> $config_target_mak
++                      ;;
++                  i386-linux-user)
++                      echo "CROSS_CC_HAS_I386_NOPIE=y" >> $config_target_mak
++                      ;;
++              esac
++              break
+           fi
+       done
+   fi
+diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
+index e1c0310be6..bd73c96d0d 100644
+--- a/tests/tcg/i386/Makefile.target
++++ b/tests/tcg/i386/Makefile.target
+@@ -30,7 +30,7 @@ hello-i386: LDFLAGS+=-nostdlib
+ # test-386 includes a couple of additional objects that need to be
+ # linked together, we also need a no-pie capable compiler due to the
+ # non-pic calls into 16-bit mode
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_I386_NOPIE),)
++ifneq ($(CROSS_CC_HAS_I386_NOPIE),)
+ test-i386: CFLAGS += -fno-pie
+ 
+ test-i386: test-i386.c test-i386-code16.S test-i386-vm86.S test-i386.h test-i386-shift.h test-i386-muldiv.h
+diff --git a/tests/tcg/ppc64/Makefile.target b/tests/tcg/ppc64/Makefile.target
+index 8197c288a7..babd209573 100644
+--- a/tests/tcg/ppc64/Makefile.target
++++ b/tests/tcg/ppc64/Makefile.target
+@@ -5,14 +5,14 @@
+ VPATH += $(SRC_PATH)/tests/tcg/ppc64
+ VPATH += $(SRC_PATH)/tests/tcg/ppc64le
+ 
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_POWER8_VECTOR),)
++ifneq ($(CROSS_CC_HAS_POWER8_VECTOR),)
+ PPC64_TESTS=bcdsub non_signalling_xscv
+ endif
+ $(PPC64_TESTS): CFLAGS += -mpower8-vector
+ 
+ PPC64_TESTS += mtfsf
+ 
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_POWER10),)
++ifneq ($(CROSS_CC_HAS_POWER10),)
+ PPC64_TESTS += byte_reverse sha512-vector
+ endif
+ byte_reverse: CFLAGS += -mcpu=power10
+diff --git a/tests/tcg/ppc64le/Makefile.target b/tests/tcg/ppc64le/Makefile.target
+index 9624bb1e9c..5b0eb5e870 100644
+--- a/tests/tcg/ppc64le/Makefile.target
++++ b/tests/tcg/ppc64le/Makefile.target
+@@ -4,12 +4,12 @@
+ 
+ VPATH += $(SRC_PATH)/tests/tcg/ppc64le
+ 
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_POWER8_VECTOR),)
++ifneq ($(CROSS_CC_HAS_POWER8_VECTOR),)
+ PPC64LE_TESTS=bcdsub non_signalling_xscv
+ endif
+ $(PPC64LE_TESTS): CFLAGS += -mpower8-vector
+ 
+-ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_POWER10),)
++ifneq ($(CROSS_CC_HAS_POWER10),)
+ PPC64LE_TESTS += byte_reverse sha512-vector
+ endif
+ byte_reverse: CFLAGS += -mcpu=power10
 -- 
 2.30.2

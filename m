@@ -1,111 +1,107 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp3017347lfk;
-        Wed, 20 Apr 2022 03:23:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy99p8OwYVI7hf2Ge8nZOZ0DqoWJIH3yywQX12ZUyZLRmyQsUNzItGxyN7lxIGQdyYhvqui
-X-Received: by 2002:a05:620a:10:b0:69e:5d4c:149a with SMTP id j16-20020a05620a001000b0069e5d4c149amr12309710qki.488.1650450219271;
-        Wed, 20 Apr 2022 03:23:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650450219; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp3022043lfk;
+        Wed, 20 Apr 2022 03:32:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHJMzwZniodfxgD4FVudqHs0xHsHrlDUuKTrZiN2nZxUz7k2QMOnVywOJ3+yZciybvqjbG
+X-Received: by 2002:a05:620a:430b:b0:67e:85d1:f53f with SMTP id u11-20020a05620a430b00b0067e85d1f53fmr12164083qko.43.1650450764152;
+        Wed, 20 Apr 2022 03:32:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650450764; cv=none;
         d=google.com; s=arc-20160816;
-        b=C5dGmmzhHSDWb32S0ER8HfXI57lgE6kclQngy2RKGzrwq9CJvnxgNg2SUK8yZtBNNt
-         ZH2VXQ742HJRIOSYd/i2QWTMjA41VUyjH2k9GNs/2vE9LIfT6hL18kvwzkk7u6Yg95le
-         roHNNktNfDkm+Qb5BnnZ7EDfcAzaXuy8aKeixMreyDn8M98byTyKnBMyGq4DCMb4wtZz
-         LZiIL4G3tRxSS2ghnjFCet37uifqlYAUKgFqQ5jCgugY+uxx28Bg0EzYKgcbS3MxbXAY
-         tMaWfHG+gfrngp/udzPuFO6qGXY5UM3Y87A7NLzIihKgMVTbV1Eh19rXmGDttTLrv8mb
-         3e7w==
+        b=JaDa/V/4yD/y2+L/8NifefKDbGg/fwMLs/W0R1sIuRjkXshbsPvyTHeJ/41uISrxHu
+         tDo+HFM94Aixl8piWEmgpHB4txOayt1er1BCCinIPjagkQ70vuwo9St8Je0axhIQ/+0/
+         6R2TFbFCNaE4SQd7w7zqdchE5OQJOb/YmpZVckdgOAtum0UjZV7MTeXuaxkiF8f3hcpR
+         5hnKElDU8ikeIZECwcBONO4GgAF8X3CeNmuQ/z4HPaid4O9ytzLuj0aI/PjbD1eBqfwd
+         R+xTT4OcdRFYCmkcGDupZUC8wvxFnwLtppD4oVJHArwyrZ28xz2YWBnH76gTsIO/WxaA
+         NXnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:subject
          :dkim-signature;
-        bh=nBYgXCYIVUMnCmvzPbDHRgyVLj8Ri18qerjbD3tUoVo=;
-        b=S4LUzGOW2CIQpFohqVroREf8ugBKfbSd+TJ4fQAQPXjxevX5q3STT34rJgQkF9w3/W
-         eIdKaARpGyD9MJhX9SHondeMdmGo54hrYIvA8/SkNX+ZkhOhx8JaxQTd9qQfOdwJQLgp
-         qSyYrGjcQLTsTh7gZ/p9nuQTgyD+7Osqno0yGY2bnW3bxBuVyAjb2C4C/aLyghF9kn3C
-         Zsyi1vVU7gZOBMTKXc9uZyGUo7BcrJ+it08AwFpbBhwVDCQDlhIbG8vqsLvDly46W0vn
-         TAqbotAzWGMki+wwKfoGlfoCQra+f2ZG0kfYdV+7jAxzWQhb8xseTXAFkN96SGcDai1G
-         kKcw==
+        bh=m9/e4yW3P7dkwFHuhc2WRFEr45ZEO0xWoQx4HPDcJUY=;
+        b=XSlLoGiGvCaOvfyS0Sg+uDHcT8GSjXfWfggwneQ+zQq4jmKh3c0S60NKpgoBqtvFaa
+         KdRmFsUOavEmG4AzUtta17Pp/wqRAn9iNyiEUYEWlJQqAfBbUdfYeuEnHM9KFXrnp8Zl
+         +UxZxHzcnx2AsZCq3qCpfDiMVs76gwZiH/jcZyEVfkKUHCytns3yxGsEmbpYtHUktaCT
+         NWqUOtsGanIahhxuh0XPT0bOViO1IVUZP9oiPtColksh7/Zwn98SszqRiPO9nOKO8iOu
+         Z8d322zcYYZa37YA1MMTY2namJmnoUbccAiiDp6nPeU4AY8CO5NaS5uzom/z4F1jJIZG
+         ++1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HUTPd+kX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i+t2jCva;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20-20020a05620a409400b0069c704949d2si402622qko.527.2022.04.20.03.23.39
+        by mx.google.com with ESMTPS id jp13-20020ad45f8d000000b004444bb2f908si399228qvb.156.2022.04.20.03.32.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Apr 2022 03:23:39 -0700 (PDT)
+        Wed, 20 Apr 2022 03:32:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HUTPd+kX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i+t2jCva;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52338 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nh7Uo-00036O-Of
-	for alex.bennee@linaro.org; Wed, 20 Apr 2022 06:23:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57018)
+	id 1nh7db-0007xy-Gm
+	for alex.bennee@linaro.org; Wed, 20 Apr 2022 06:32:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nh7Tf-000369-PA
- for qemu-arm@nongnu.org; Wed, 20 Apr 2022 06:22:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:26558)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nh7cK-0007u7-IM
+ for qemu-arm@nongnu.org; Wed, 20 Apr 2022 06:31:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:31107)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nh7Td-00053v-Js
- for qemu-arm@nongnu.org; Wed, 20 Apr 2022 06:22:27 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nh7cG-0006hL-Eg
+ for qemu-arm@nongnu.org; Wed, 20 Apr 2022 06:31:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650450144;
+ s=mimecast20190719; t=1650450679;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nBYgXCYIVUMnCmvzPbDHRgyVLj8Ri18qerjbD3tUoVo=;
- b=HUTPd+kX75Xa/dBotnvSyqc1QISiRbzu+LsDZE/nRCyE/SoiGEDIkGKWnKJulF1f52fG0k
- 7U0v63PXcLonSzFglogW1hkJWlpHKa6zLZTkWfXwstBrK09oiCeqCctlTQhz/WxX18AIJd
- SfdGqYgkJub4/jM/Y1UOw2UxgLLLQPw=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=m9/e4yW3P7dkwFHuhc2WRFEr45ZEO0xWoQx4HPDcJUY=;
+ b=i+t2jCvatYy2MyNmKwprMP/Yfn4X14oaGEzZAx7TxuGKeoQ+Z8JqKBjvhgZF2yqXbgaAGk
+ AbYQOfBFq8rH+B6OR+r592Jrp3F1P1w8Al3i5vIbCl9/ZMZtI7BcNUqaDqJc0ZDZArCZxk
+ xO08u+R9pALhre17W/OSrbnbSpH4txM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-642-16ynLCssPg-B1Ntd2mlwyA-1; Wed, 20 Apr 2022 06:22:23 -0400
-X-MC-Unique: 16ynLCssPg-B1Ntd2mlwyA-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ us-mta-203-c-25if9mO5ONtjFzw0kdtw-1; Wed, 20 Apr 2022 06:31:16 -0400
+X-MC-Unique: c-25if9mO5ONtjFzw0kdtw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F37D21C0512C;
- Wed, 20 Apr 2022 10:22:22 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B1F09805F4E;
+ Wed, 20 Apr 2022 10:31:15 +0000 (UTC)
 Received: from [10.72.13.230] (ovpn-13-230.pek2.redhat.com [10.72.13.230])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A5A5E572334;
- Wed, 20 Apr 2022 10:22:18 +0000 (UTC)
-Subject: Re: [PATCH v5 4/4] hw/acpi/aml-build: Use existing CPU topology to
- build PPTT table
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D2E9AC27E89;
+ Wed, 20 Apr 2022 10:31:05 +0000 (UTC)
+Subject: Re: [PATCH v6 2/4] hw/arm/virt: Consider SMP configuration in CPU
+ topology
 To: Igor Mammedov <imammedo@redhat.com>
-References: <20220403145953.10522-1-gshan@redhat.com>
- <20220403145953.10522-5-gshan@redhat.com>
- <20220413155232.0a1f4d88@redhat.com>
- <dec9ab46-746d-9810-0784-2cddefab67ae@redhat.com>
- <20220419105432.11ad0f90@redhat.com>
- <8f76fa31-7ec8-faf9-da7f-0f740722a8a1@redhat.com>
- <20220420101053.17faee64@redhat.com>
+References: <20220418020920.144263-1-gshan@redhat.com>
+ <20220418020920.144263-3-gshan@redhat.com>
+ <20220420103248.6e3575cd@redhat.com>
 From: Gavin Shan <gshan@redhat.com>
-Message-ID: <a2e950b7-2f4a-bf4b-9d39-33fb9db9d608@redhat.com>
-Date: Wed, 20 Apr 2022 18:22:15 +0800
+Message-ID: <efb5dce0-af81-b8d7-fe7d-6a8268ab96f9@redhat.com>
+Date: Wed, 20 Apr 2022 18:31:02 +0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20220420101053.17faee64@redhat.com>
+In-Reply-To: <20220420103248.6e3575cd@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -121,178 +117,102 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, zhenyzha@redhat.com, wangyanan55@huawei.com,
- qemu-arm@nongnu.org, shan.gavin@gmail.com
+Cc: eduardo@habkost.net, peter.maydell@linaro.org, drjones@redhat.com,
+ shan.gavin@gmail.com, mst@redhat.com, thuth@redhat.com, armbru@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, f4bug@amsat.org,
+ wangyanan55@huawei.com, qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com,
+ Jonathan.Cameron@Huawei.com, ani@anisinha.ca, pbonzini@redhat.com,
+ lvivier@redhat.com, eblake@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TRS5I70fsWcp
+X-TUID: y/sK2GkWH9hR
 
 Hi Igor,
 
-On 4/20/22 4:10 PM, Igor Mammedov wrote:
-> On Wed, 20 Apr 2022 13:19:34 +0800
+On 4/20/22 4:32 PM, Igor Mammedov wrote:
+> On Mon, 18 Apr 2022 10:09:18 +0800
 > Gavin Shan <gshan@redhat.com> wrote:
->> On 4/19/22 4:54 PM, Igor Mammedov wrote:
->>> On Thu, 14 Apr 2022 08:33:29 +0800
->>> Gavin Shan <gshan@redhat.com> wrote:
->>>> On 4/13/22 9:52 PM, Igor Mammedov wrote:
->>>>> On Sun,  3 Apr 2022 22:59:53 +0800
->>>>> Gavin Shan <gshan@redhat.com> wrote:
->>>>>       
->>>>>> When the PPTT table is built, the CPU topology is re-calculated, but
->>>>>> it's unecessary because the CPU topology has been populated in
->>>>>> virt_possible_cpu_arch_ids() on arm/virt machine.
->>>>>>
->>>>>> This reworks build_pptt() to avoid by reusing the existing one in
->>>>>> ms->possible_cpus. Currently, the only user of build_pptt() is
->>>>>> arm/virt machine.
->>>>>>
->>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>>>>> ---
->>>>>>     hw/acpi/aml-build.c | 100 +++++++++++++++++---------------------------
->>>>>>     1 file changed, 38 insertions(+), 62 deletions(-)
->>>>>>
->>>>>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->>>>>> index 4086879ebf..4b0f9df3e3 100644
->>>>>> --- a/hw/acpi/aml-build.c
->>>>>> +++ b/hw/acpi/aml-build.c
->>>>>> @@ -2002,86 +2002,62 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->>>>>>                     const char *oem_id, const char *oem_table_id)
->>>>>>     {
->>>>>>         MachineClass *mc = MACHINE_GET_CLASS(ms);
->>>>>> -    GQueue *list = g_queue_new();
->>>>>> -    guint pptt_start = table_data->len;
->>>>>> -    guint parent_offset;
->>>>>> -    guint length, i;
->>>>>> -    int uid = 0;
->>>>>> -    int socket;
->>>>>> +    CPUArchIdList *cpus = ms->possible_cpus;
->>>>>> +    int64_t socket_id = -1, cluster_id = -1, core_id = -1;
->>>>>> +    uint32_t socket_offset, cluster_offset, core_offset;
->>>>>> +    uint32_t pptt_start = table_data->len;
->>>>>> +    int n;
->>>>>>         AcpiTable table = { .sig = "PPTT", .rev = 2,
->>>>>>                             .oem_id = oem_id, .oem_table_id = oem_table_id };
->>>>>>     
->>>>>>         acpi_table_begin(&table, table_data);
->>>>>>     
->>>>>> -    for (socket = 0; socket < ms->smp.sockets; socket++) {
->>>>>> -        g_queue_push_tail(list,
->>>>>> -            GUINT_TO_POINTER(table_data->len - pptt_start));
->>>>>> -        build_processor_hierarchy_node(
->>>>>> -            table_data,
->>>>>> -            /*
->>>>>> -             * Physical package - represents the boundary
->>>>>> -             * of a physical package
->>>>>> -             */
->>>>>> -            (1 << 0),
->>>>>> -            0, socket, NULL, 0);
->>>>>> -    }
->>>>>> +    for (n = 0; n < cpus->len; n++) {
->>>>>       
->>>>>> +        if (cpus->cpus[n].props.socket_id != socket_id) {
->>>>>> +            socket_id = cpus->cpus[n].props.socket_id;
->>>>>
->>>>> this relies on cpus->cpus[n].props.*_id being sorted form top to down levels
->>>>> I'd add here and for other container_id an assert() that checks for that
->>>>> specific ID goes in only one direction, to be able to detect when rule is broken.
->>>>>
->>>>> otherwise on may end up with duplicate containers silently.
->>>>>       
->>>>
->>>> Exactly. cpus->cpus[n].props.*_id is sorted as you said in virt_possible_cpu_arch_ids().
->>>> The only user of build_pptt() is arm/virt machine. So it's fine. However, I think I
->>>> may need add comments for this in v6.
->>>>
->>>>        /*
->>>>         * This works with the assumption that cpus[n].props.*_id has been
->>>>         * sorted from top to down levels in mc->possible_cpu_arch_ids().
->>>>         * Otherwise, the unexpected and duplicate containers will be created.
->>>>         */
->>>>
->>>> The implementation in v3 looks complicated, but comprehensive. The one
->>>> in this revision (v6) looks simple, but the we're losing flexibility :)
->>>
->>>
->>> comment is not enough, as it will break silently that's why I suggested
->>> sprinkling asserts() here.
->>>    
->>
->> I don't think it breaks anything. Duplicated PPTT entries are allowed in
->> linux at least. The IDs in the duplicated PPTT entries should be same.
->> Otherwise, the exposed CPU topology is really broken.
 > 
-> Spec doesn't say anything about allowing duplicate entries so I'd rather
-> avoid that (if you find a such provision in spec then put a reference
-> in this commit message to end discussion on duplicates).
+>> Currently, the SMP configuration isn't considered when the CPU
+>> topology is populated. In this case, it's impossible to provide
+>> the default CPU-to-NUMA mapping or association based on the socket
+>> ID of the given CPU.
+>>
+>> This takes account of SMP configuration when the CPU topology
+>> is populated. The die ID for the given CPU isn't assigned since
+>> it's not supported on arm/virt machine. Besides, the used SMP
+>> configuration in qtest/numa-test/aarch64_numa_cpu() is corrcted
+>> to avoid testing failure
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
+>> ---
+>>   hw/arm/virt.c           | 15 ++++++++++++++-
+>>   tests/qtest/numa-test.c |  3 ++-
+>>   2 files changed, 16 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index d2e5ecd234..5443ecae92 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -2505,6 +2505,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>>       int n;
+>>       unsigned int max_cpus = ms->smp.max_cpus;
+>>       VirtMachineState *vms = VIRT_MACHINE(ms);
+>> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
+>>   
+>>       if (ms->possible_cpus) {
+>>           assert(ms->possible_cpus->len == max_cpus);
+>> @@ -2518,8 +2519,20 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>>           ms->possible_cpus->cpus[n].type = ms->cpu_type;
+>>           ms->possible_cpus->cpus[n].arch_id =
+>>               virt_cpu_mp_affinity(vms, n);
+>> +
+>> +        assert(!mc->smp_props.dies_supported);
+>> +        ms->possible_cpus->cpus[n].props.has_socket_id = true;
+>> +        ms->possible_cpus->cpus[n].props.socket_id =
+>> +            (n / (ms->smp.clusters * ms->smp.cores * ms->smp.threads));
+>> +        ms->possible_cpus->cpus[n].props.has_cluster_id = true;
+>> +        ms->possible_cpus->cpus[n].props.cluster_id =
+>> +            (n / (ms->smp.cores * ms->smp.threads)) % ms->smp.clusters;
+>> +        ms->possible_cpus->cpus[n].props.has_core_id = true;
+>> +        ms->possible_cpus->cpus[n].props.core_id =
+>> +            (n / ms->smp.threads) % ms->smp.cores;
+>>           ms->possible_cpus->cpus[n].props.has_thread_id = true;
+>> -        ms->possible_cpus->cpus[n].props.thread_id = n;
+>> +        ms->possible_cpus->cpus[n].props.thread_id =
+>> +            n % ms->smp.threads;
+>>       }
+>>       return ms->possible_cpus;
+>>   }
+>> diff --git a/tests/qtest/numa-test.c b/tests/qtest/numa-test.c
+>> index 90bf68a5b3..aeda8c774c 100644
+>> --- a/tests/qtest/numa-test.c
+>> +++ b/tests/qtest/numa-test.c
+>> @@ -223,7 +223,8 @@ static void aarch64_numa_cpu(const void *data)
+>>       QTestState *qts;
+>>       g_autofree char *cli = NULL;
+>>   
+>> -    cli = make_cli(data, "-machine smp.cpus=2 "
+>> +    cli = make_cli(data, "-machine "
+>> +        "smp.cpus=2,smp.sockets=1,smp.clusters=1,smp.cores=1,smp.threads=2 "
+> 
+> Is cluster-less config possible?
+> (looks like it used to work before and it doesn't after this series)
 > 
 
-Yes, Spec doesn't say it's allowed. I checked linux implementation on
-how PPTT table is parsed. Duplicate entries won't break anything actually
-in Linux. I'm not sure about other OS. So I think it's still needed.
+Nope, it's impossible. This specific test case uses arm/virt machine
+where cluster is always supported.mc->smp_props.clusters_supported
+has been set to true in hw/arm/virt.c::virt_machine_class_init().
 
-> 
->>
->> I don't think it's harmful to add the check and assert, so I will introduce
->> a helper function like below in v7. Sadly that v6 was posted before I received
->> your confirm. Igor, could you please the changes, to be included into v7,
->> looks good to you? The complete patch is also attached :)
->>
->> +static bool pptt_entry_exists(MachineState *ms, int n, bool check_socket_id,
->> +                              bool check_cluster_id, bool check_core_id)
->> +{
->> +    CPUArchId *cpus = ms->possible_cpus->cpus;
->> +    CpuInstanceProperties *t = &cpus[n].props;
->> +    CpuInstanceProperties *s;
->> +    bool match;
->> +    int i;
->> +
->> +    for (i = 0; i < n; i++) {
-> 
-> Wouldn't it make whole thing O(n^2) in worst case?
-> 
-> I suggest put asserts directly into build_pptt() and considering that
-> it relies on ids being sorted, do something like this:
->     assert(foo_id_val > previous_id)
-> which will ensure that id doesn't jump back unexpectedly
-> 
+Exactly, the changes to virt_possible_cpu_arch_ids() included in this patch breaks
+the test. It's why the fix to qtest/numa-test has been squashed to this patch, to
+make it 'bit bisect' friendly as Yanan suggested.
 
-Yes, your suggested method is much simpler and more efficient. I will
-include it in v7. By the way, please skip v6 and go ahead to review
-v7 directly. v7 should be posted shortly after some tests :)
 
-> 
->> +        match = true;
->> +        s = &cpus[i].props;
->> +
->> +        if (check_socket_id && s->socket_id != t->socket_id) {
->> +            match = false;
->> +        }
->> +
->> +        if (match && check_cluster_id && s->cluster_id != t->cluster_id) {
->> +            match = false;
->> +        }
->> +
->> +        if (match && check_core_id && s->core_id != t->core_id) {
->> +            match = false;
->> +        }
->> +
->> +        if (match) {
->> +            return true;
->> +        }
->> +    }
->> +
->> +    return false;
->> +}
->>
->> The following assert() will be applied in build_pptt():
->>
->> assert(!pptt_entry_exists(ms, n, true, false, false));           /* socket  */
->> assert(!pptt_entry_exists(ms, n, true, true, false));            /* cluster */
->> assert(!pptt_entry_exists(ms, n, true,
->>              mc->smp_props.clusters_supported, true));             /* core    */
->>
+>>           "-numa node,nodeid=0,memdev=ram -numa node,nodeid=1 "
+>>           "-numa cpu,node-id=1,thread-id=0 "
+>>           "-numa cpu,node-id=0,thread-id=1");
 
 Thanks,
 Gavin

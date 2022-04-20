@@ -1,99 +1,98 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp3215002lfk;
-        Wed, 20 Apr 2022 08:20:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxatbIbdT1ZSXKdKJJYR92HofF/2Ye0Z/KyPK24r0jDuA4RvHzSUr4778m1RfK6naqtj1VG
-X-Received: by 2002:a25:7653:0:b0:645:6645:6ff0 with SMTP id r80-20020a257653000000b0064566456ff0mr1530513ybc.90.1650468001582;
-        Wed, 20 Apr 2022 08:20:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650468001; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp3225844lfk;
+        Wed, 20 Apr 2022 08:36:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJylGJiHfmpqsTkn7ngGqDNnKW4d/sQE6orpuuWkgnpaad4GZzUa8rHJC/pE2eN+0vpudzt1
+X-Received: by 2002:a25:660d:0:b0:645:49ce:58bf with SMTP id a13-20020a25660d000000b0064549ce58bfmr6303581ybc.370.1650468984211;
+        Wed, 20 Apr 2022 08:36:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650468984; cv=none;
         d=google.com; s=arc-20160816;
-        b=YmVv9n679ntSx9XgPprg624xq46JYI7M+c+lhbb7b+QAYLIdEQCFkW8U3PCW7HNQz9
-         +13zzF11t6jOYAxL/XdB7+iJZA7yOObl51MPFkdfo9e15xBm1ZY3wVDPKChJUjSxf9ue
-         oiYSk499dCLhEtcfXeDE2Dnz1HXIl9QRE14ZhpTzOCoSvOFTucfow+3xuCDj6WQgemsY
-         eFBWsjx4AxhkL2TYxAoLOTs3IWnCgs6mIprHUgrCeO8PpwUF6xS+lfnOTTl0IRvUXkdR
-         vTlKq9n6t1lipwYFi0G5uJfyLvy1mkb7Lbz1EiWekZGa5Z/bJttdXQdV1R+SGgaB2Zi6
-         8QtQ==
+        b=UGOXWuP7dDU8SRQsZyLYnnFUd+FuRvKfGjnJ1Fgs8ZQA9zv8ItbiV+GEkWPs12X91m
+         rB9y82WSaG4sqmcLxm/j108J884LXQj2pDO4SJ4i7AdptXezyulZpnhRtXk4jxD4QD0B
+         e7JnwJKnXE6NOuTYuDh1+BcIHdidV9xyOk5hePVcE3n3sDmhLO1x234rStr1nCh6FvQH
+         sEHiOJXFGjPRYaDICxxJfmm4I1poqrJr4vfkERtbnphnupLeH3QoyOecCC49mP43pMfd
+         KiqQfgTGIHqY/zo4XM5+K8KA4wpq1gZ767h1uUtgFFin+bZB4YCXxF9kbFVjlUgU3C3S
+         RkCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:user-agent
          :in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=bwyNTkWlmLL4tjk3Wqq9Ot3RDGX0S39CGlieH0ahZFk=;
-        b=mRriasf6f14ucII+jQRNQqD9iHsNVnyRVzWd8xps7QvHvNgwev0pwN+QIF5Nr2NWLI
-         gdLVe0u7iQpeXv9mpTxYaxvKolWtUO4U8SByMbtBH7lprHnqLD5TPo5TQQXqJVg49pt5
-         x2MWENvcOgr2bnOKAt7uXm3JRAmoSBSsIUuO4IXv/DiWj73KM5r9VKBQmj47pvaOWuGp
-         G1uDpBTQG/s0ZUQ17CLEfM0pb6fdiS5itAkoS6y6NuBj40/pmEQK3Rfg4g4M/XglR/Xs
-         jKjt+P/l9Qz5p6ECzQIuZGYRKU1KxjRtjQOmQXApwfYsHRKDFZbZlBwWkO5NBA1KKOx3
-         FFPw==
+        bh=xMAIQ9M2+CCnwFfvRhZGFpEWlrESp2P8dYj3hsYEnPk=;
+        b=BAgPqlPnDo1TdYnm1fHf50DSJKaWxf3FE01FGiOtg/95YmA5Ou9Vh9kd6vCQuNFP5g
+         KttPzvqUBRxBUN1MsZ8eEv+OZqCIlrKa+jxOv+8hi5YTIdyXgFUvCCdeWuD+wzrA1dH+
+         z6cBI9N7gWnDTL5rxpRzcPhbcgKONiR79TgSkb/IwuGxERC2otNGq8Xj7CLeqmLLZOp7
+         G8Qfhfb5NkKTUDgMjyMhIODUv1gnZSDNe4XhZ6+7+5TaWCtuBL2s+YxLKQHdxU6d8ytN
+         vOWv9VnBaf7zRWV65YDvAFkxbdVqIY1chRvWN19mzzBy2GNSOS6YQDFmyVSZmH/TU8Ki
+         J1LA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XPQg51aS;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YZLDGQsq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d129-20020a251d87000000b0064166125305si157873ybd.5.2022.04.20.08.20.01
+        by mx.google.com with ESMTPS id o66-20020a257345000000b006346280b06dsi150242ybc.507.2022.04.20.08.36.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Apr 2022 08:20:01 -0700 (PDT)
+        Wed, 20 Apr 2022 08:36:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XPQg51aS;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YZLDGQsq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60460 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47142 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nhC7c-0003Tn-VT
-	for alex.bennee@linaro.org; Wed, 20 Apr 2022 11:20:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38492)
+	id 1nhCNT-0002s1-KE
+	for alex.bennee@linaro.org; Wed, 20 Apr 2022 11:36:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nhC7K-0003RI-6L
- for qemu-arm@nongnu.org; Wed, 20 Apr 2022 11:19:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41273)
+ id 1nhC5E-0007Nu-J5
+ for qemu-arm@nongnu.org; Wed, 20 Apr 2022 11:17:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:44595)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nhC7H-0006ml-O1
- for qemu-arm@nongnu.org; Wed, 20 Apr 2022 11:19:41 -0400
+ id 1nhC5C-0006ar-Qw
+ for qemu-arm@nongnu.org; Wed, 20 Apr 2022 11:17:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650467979;
+ s=mimecast20190719; t=1650467850;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bwyNTkWlmLL4tjk3Wqq9Ot3RDGX0S39CGlieH0ahZFk=;
- b=XPQg51aSqceLLj7HkZa8f0yLwQLRHyg+mSfi4lRha+7zrK42HHlYFw87d2WbfrU38pADyo
- QUK2Z0myGMyzf5eHAjNEDp9BEbnzpjxveLlroiOoV/43kithDoyZaOqFmfWGBC+ezYs580
- wq34+3mBCPRheCBANcl81jG3lop39G4=
+ bh=xMAIQ9M2+CCnwFfvRhZGFpEWlrESp2P8dYj3hsYEnPk=;
+ b=YZLDGQsqNjIDVlg/2Vt2zbSomg89O2WhWRsuKfB1aFmKaJ59xt+eMUIP/y124b4wiMU53z
+ mufWBu978qKe8p078oz2JGFr9t7mRbl6hTVVaq2PB9Okb4y5fhBfH0JdUcbCAPa+4WfNOn
+ Jk5a0SytkIC/ttUBk9wvLcDeQ++5oIo=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-557-xLEzqA-2OGaoQo7CkvD7Ag-1; Wed, 20 Apr 2022 11:19:37 -0400
-X-MC-Unique: xLEzqA-2OGaoQo7CkvD7Ag-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ us-mta-275-XUUXgZD_Og6THu2cshh8Tg-1; Wed, 20 Apr 2022 11:17:26 -0400
+X-MC-Unique: XUUXgZD_Og6THu2cshh8Tg-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 39C4B1014A67;
- Wed, 20 Apr 2022 15:19:37 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 80F7C802819;
+ Wed, 20 Apr 2022 15:17:26 +0000 (UTC)
 Received: from redhat.com (unknown [10.33.36.162])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0E34B572340;
- Wed, 20 Apr 2022 15:19:33 +0000 (UTC)
-Date: Wed, 20 Apr 2022 16:19:29 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8606654EB01;
+ Wed, 20 Apr 2022 15:17:25 +0000 (UTC)
+Date: Wed, 20 Apr 2022 16:17:17 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: marcandre.lureau@redhat.com
-Subject: Re: [PATCH 15/41] intc/exynos4210_gic: replace snprintf() with
- g_strdup_printf()
-Message-ID: <YmAkgZur4Q41znNz@redhat.com>
+Subject: Re: [PATCH 13/41] arm/digic: replace snprintf() with g_strdup_printf()
+Message-ID: <YmAj/XkiFl0rUL4/@redhat.com>
 References: <20220420132624.2439741-1-marcandre.lureau@redhat.com>
- <20220420132624.2439741-16-marcandre.lureau@redhat.com>
+ <20220420132624.2439741-14-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220420132624.2439741-16-marcandre.lureau@redhat.com>
+In-Reply-To: <20220420132624.2439741-14-marcandre.lureau@redhat.com>
 User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
@@ -117,27 +116,30 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "open list:Exynos" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:Canon DIGIC" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org,
+ Antony Pavlov <antonynpavlov@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SoqMXaBaJ8DB
+X-TUID: /Oc3ooKzmU3l
 
-On Wed, Apr 20, 2022 at 05:25:58PM +0400, marcandre.lureau@redhat.com wrote:
+On Wed, Apr 20, 2022 at 05:25:56PM +0400, marcandre.lureau@redhat.com wrote:
 > From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
-> While at it, replace '%x' with '%u' as suggested by Philippe Mathieu-Daudé.
-> 
-> Also fixes a GCC 12.0.1 -Wformat-overflow false-positive.
+> Also fixes a GCC 12.0.1 false-positive:
+> ../hw/arm/digic.c: In function ‘digic_init’:
+> ../hw/arm/digic.c:45:54: error: ‘%d’ directive output may be truncated writing between 1 and 11 bytes into a region of size 5 [-Werror=format-truncation=]
+>    45 |         snprintf(name, DIGIC_TIMER_NAME_MLEN, "timer[%d]", i);
+>       |                                                      ^~
 > 
 > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/intc/exynos4210_gic.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
+>  hw/arm/digic.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
 
 With regards,
 Daniel

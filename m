@@ -1,121 +1,225 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2619784lfk;
-        Tue, 19 Apr 2022 12:14:59 -0700 (PDT)
-X-Received: by 2002:a05:6a00:1486:b0:50a:40f7:5a86 with SMTP id v6-20020a056a00148600b0050a40f75a86mr19726699pfu.43.1650395698759;
-        Tue, 19 Apr 2022 12:14:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650395698; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2898261lfk;
+        Tue, 19 Apr 2022 22:55:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHRUjdl9RsBMUpTNnkQvmegAr+HhEU0gQ65061k2+vTm6aP8kjzRlEtBsjTWJ/NIaB3G97
+X-Received: by 2002:a05:6214:224f:b0:43f:cd6a:1d6b with SMTP id c15-20020a056214224f00b0043fcd6a1d6bmr14225134qvc.12.1650434111507;
+        Tue, 19 Apr 2022 22:55:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650434111; cv=none;
         d=google.com; s=arc-20160816;
-        b=kLAyEjcaDNn76CqB48Ouq+srEAjMoG8s//Hr13BvE2bL7BuvF3q7nnu7NGYRkUICIt
-         fpy076Whc8ksXF29rOWwR+xykKLZ7bL6eNQ2ZWQxyDfcZzMrKsfd3YSegeY23LYL5F6m
-         Qjdb2P5MXQTjl90WmttgFW4cWVFvXT2VNsGMm08UQV2bMpAVlxlCmPM7Gfc3i4NTPnT1
-         pyb4OE7ZAwtYcoZIVLj/b452l0oYWOW6GjwJ9plCpM0/mZ9HaieJBauTDlmQNoaMHNvH
-         KapPcFtp9AATk68ZYW4Rrwk1thlNWpyvgKQu67WI1eZjH2gmEEZuDRgnRDd0MRe86cIR
-         m+eA==
+        b=PZW/jZ3qMzIG68aiujwIBKMoLUGfPwyWNK5CiH3+hun9ykAJMqWf50u8jC7bY7uPjH
+         UZ6JpM2JZK3hew3560LjhlZd+3lY0FW0GQbsVuhQHQzIhXhlSf192RsMGM4Y1aQIZJki
+         UqAyU4NfIwAmnnCSgkgTyn66Kzr6h7cf971kp3xS7Z8wtGg7wHxI6g35Xl/Ag5Kfzff4
+         lXrtI4OKjhYC5yVjkvw7fZXDA9LCxGH3In74SIfjd8PHyClN+fy6dhtzwrI4VzMKofD8
+         mwfKfsDOtrzZsZ3IIiYsFg03gYtLQI4TtXNFodSFLYcjW7k2JrMDNGf+HcvzxLkmVFgw
+         XO8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:wdcironportexception:ironport-sdr:ironport-sdr
          :dkim-signature;
-        bh=zKnUCqHVeFG8A6z5tyPjGGQpoRJ9Da4dEyIw20Sq7hg=;
-        b=E75+ugzAblHeUwJn7ew5kow30u7m17/eitVeu0bdXKw122KM7+/hsxWFZ8ewtXX2qh
-         HWxuybYuTflmuuHWjeBFDjnOejBfwEbuThBASYV/RunSkQSo9At16nZbRAhVqY56+iSx
-         X3G+6vo+j3oBN2D0tIZFPy9O5AIe1n9JplmekTZh3Qe9/dGO4dN+U6hWrdJ6bY/qCSRF
-         kFh/yLUAMGSb42XkQjLzxNk6SEI0eJJct6+dX6xH5CgCWoABNaOkS+D6U0Y6PBnXaARb
-         u8ifs6ueUtYTCfu1XTZMmZLY7p1ngcWqtpi6b3ocycJVTN3j7Yxnf67vn7CnTlShCDsw
-         U4lg==
+        bh=HnaHPkobQgyL38cTfyATy6S0SYtZolAyWjzO2S7duEY=;
+        b=mptSHvdRhTwnf7ORNrHMpJcOvuboOHZ3rKnwdZz4n/1cw4q8T/qtqNAdLEPYX4Bq0D
+         tJArIljFxDplBnQ6KQ3lrDdkomt5d72g8Xr696O1VInfA51VJUvYP+q5nHdE3VGZfRka
+         tzg0fRln6kC8xyoBIdzpgFDP/Vx2+jjZP3G8mzw6YFIB5lZRigPXjOz290q69A9bdQIi
+         n9B675lLyUoDV55zY1Br+YE0sZx7QY32K0tLhvH9bRkUMKg3CDOkC9GxNiWJCLydW12Q
+         8P77uKdddmYI0yGc4EICPTP48HwJfMPRhmIW23H6B/JJ/U/4Vjdk3jHj1msuiCR03jHr
+         S2ZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fqodW7J2;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id cl2-20020a17090af68200b001d2b2884a98sor128217pjb.29.2022.04.19.12.14.58
+       dkim=fail header.i=@wdc.com header.s=dkim.wdc.com header.b=gKXuwgio;
+       dkim=pass header.i=@opensource.wdc.com header.s=dkim header.b=BJ+huSzG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=opensource.wdc.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b30-20020a05620a271e00b0067e4be23928si265153qkp.365.2022.04.19.22.55.11
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 19 Apr 2022 12:14:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 19 Apr 2022 22:55:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fqodW7J2;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=zKnUCqHVeFG8A6z5tyPjGGQpoRJ9Da4dEyIw20Sq7hg=;
-        b=fqodW7J2v/I5TP/btLe4+42UYHJTKgnRS5uul6A4ilUAabgLzG9KxBTAiOzOoOoUWZ
-         ILnPyv8FvrutweDY9/cxBQSQ/licy9B7DYC2UVcSvQUEVHaaVZJxrd+P5ioWoMsBWNcb
-         zofST6e3W9AcBewOlX53A5lBBX+BKWkdsHzDy+eKJvRfJ30sqJANWv0/IicqctGWhKQp
-         VRVAPM33ReuX4x6wmy/bJJvmHPR6vkyvRBtH20WIsLDRospiTbG2TVVXVi6DSTMlfYwg
-         NazzRBIE+wxCXybCAL636vq7nYVgz6bwrnUrDBLp0WB/GrmAwpwCtReLmJu2ZK+e8pOF
-         k1OQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=zKnUCqHVeFG8A6z5tyPjGGQpoRJ9Da4dEyIw20Sq7hg=;
-        b=4CDVvWFBMhXT816N3tvlv4+YTLBy9PYSZNzlZeasSPj8fzv28pmC56sN0Bq2Q6EB1N
-         vRUWm4AOKJFjRHnp1d4DbNoHu7tWuSSHEPAEtyAARpkraNF9bz2waF5bMXyBsGHXXtUz
-         m+fx7Ezuc+7JHTf1Jpc/umKnvridvelMZbYH73e/GEZUUDezGUBXWzHZoARk9bsmPNLd
-         QO18/Srtk/yC07KaXswPdWvJckwEkkmvnD/uxrqxo2tsadWAhKCOB+JaGfhncxe3q5a9
-         QDdyQhO3vpQg33lUYGt2bs3C2W2IbdaNkvqo9+71qDosj/MY8hbdFMumfD9h87FOfJcx
-         2jug==
-X-Gm-Message-State: AOAM530ZN8Gtg9MkG1yC3kQ11DiWRcyBSBJubisuXP3xohW2IJ/TeTxo
-	Ao05VoTJqcgd87Tsl8yCTwpF1w6vZMhDkWfG
-X-Google-Smtp-Source: ABdhPJy97WfRDbE1xdOVvT3dfMuifX5rS2h+L3r5B6o+cWcRMxGKWOnejKoWf9GI3aIPTKZXDx/nNg==
-X-Received: by 2002:a17:90b:1c8b:b0:1ca:1ff6:607b with SMTP id oo11-20020a17090b1c8b00b001ca1ff6607bmr105728pjb.244.1650395698311;
-        Tue, 19 Apr 2022 12:14:58 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.6] (174-21-142-130.tukw.qwest.net. [174.21.142.130])
-        by smtp.gmail.com with ESMTPSA id ay33-20020a056a00302100b00508374700b9sm16296241pfb.166.2022.04.19.12.14.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Apr 2022 12:14:57 -0700 (PDT)
-Message-ID: <278f05c9-db1e-4990-4fa7-66f080e07dda@linaro.org>
-Date: Tue, 19 Apr 2022 12:14:55 -0700
+       dkim=fail header.i=@wdc.com header.s=dkim.wdc.com header.b=gKXuwgio;
+       dkim=pass header.i=@opensource.wdc.com header.s=dkim header.b=BJ+huSzG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=opensource.wdc.com
+Received: from localhost ([::1]:35502 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nh3J1-0000Ht-0J
+	for alex.bennee@linaro.org; Wed, 20 Apr 2022 01:55:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34064)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1)
+ (envelope-from <prvs=1021dae20=alistair.francis@opensource.wdc.com>)
+ id 1nh3HO-0008Oc-Ah
+ for qemu-arm@nongnu.org; Wed, 20 Apr 2022 01:53:30 -0400
+Received: from esa6.hgst.iphmx.com ([216.71.154.45]:13190)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1)
+ (envelope-from <prvs=1021dae20=alistair.francis@opensource.wdc.com>)
+ id 1nh3HM-0004VK-GK
+ for qemu-arm@nongnu.org; Wed, 20 Apr 2022 01:53:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1650434008; x=1681970008;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=54LNDcv7kZB26uhwQDpQcWJg6cxn2r4zaQ0u9RhnAYA=;
+ b=gKXuwgio0l3tMGsKYqU3my80jDQc5eHJgqjJ/NT5LptS68mU9fOFm18B
+ irGkljBtzD5XYe9nrBT1GLFXTMIYAYnJiR3M2dRBVNCcKRP+DM0gq+apg
+ xb/uPXc+ym/xqKTI3Xxw2Ta53N0i0rrv6pUsgh/TZKcnfe+Pl9VkOU6rm
+ /UgsQe4VnsefuGB5jspgHwDUkxzgaYnMgB/mp9T7gBKNWSgsG/F/W7beP
+ czRwzK0CDk9hImZX+m6ejhcLsLpFAcd15u52wlI4ikWorp4xrAtMz8Xs8
+ YDij1sxQIynwc1n6scivEeorPal/U+hyAhfRjrWFhcnEBf7qXY9RE3bVJ g==;
+X-IronPort-AV: E=Sophos;i="5.90,274,1643644800"; d="scan'208";a="199228729"
+Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
+ ([199.255.45.14])
+ by ob1.hgst.iphmx.com with ESMTP; 20 Apr 2022 13:53:28 +0800
+IronPort-SDR: 59/j8wj4JZiWoh226X0luJvw0QpyIqo1sHrmpB52SVFb77YKH3y9TUxWYyiWR/qFjqrvMBumTa
+ MHP6juxUXeyh0X14g5aRplHNY2bHJ62VzyAqrglpPCFcMAHr7kKAN8bb6zNhRcWMnMIno0ox+A
+ vpM74dGGZBNwZ0Km7K/0ZCfFZSoTW2QaGINnkvoUfXrPiEc77RTMMH1W3BTTP2slPJHc/Vt1VX
+ FFeU7eLRlp9TjjyPGNnddqyupatt+LqoLqUzoLGPDwA7b3Kb4teuTXQv7znBuYsvMG8LUqE0Qy
+ ZLBGRJ3KvELNdln7MTKljTSg
+Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
+ by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
+ 19 Apr 2022 22:24:32 -0700
+IronPort-SDR: D8mDRgHGtwE8Mw3R9IOrpNdL5fbrs/Zbs+ogpjnj3WcwElyW2Y1GQdHACZ4qZB9k/ADDi+iCbr
+ FxxVM5J30hXN7+s9iT5D4Q3ODDc+Udz6ISIQCkDTh78QoCJAeUGw1EcaCbm0LFYMiDYtHxeM1R
+ 1EjbJnYyJ+ncTcpnPNMVShLh1H+i7+mcb7KBVF5qA2K6bv79tNZ0Rt5KKt3my3xZrychcpHpcm
+ N3DTvmSYQCY+wwm3S2VfTsCPJJwQHP2qGGWGI54lZwSrRcDpSVkp8aKGrsXxmoLGS0rx2nKPSL
+ O3U=
+WDCIronportException: Internal
+Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
+ by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
+ 19 Apr 2022 22:53:28 -0700
+Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
+ by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4KjqbW2jcpz1SVp2
+ for <qemu-arm@nongnu.org>; Tue, 19 Apr 2022 22:53:27 -0700 (PDT)
+Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
+ reason="pass (just generated, assumed good)"
+ header.d=opensource.wdc.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
+ opensource.wdc.com; h=content-transfer-encoding:mime-version
+ :references:in-reply-to:x-mailer:message-id:date:subject:to
+ :from; s=dkim; t=1650434006; x=1653026007; bh=54LNDcv7kZB26uhwQD
+ pQcWJg6cxn2r4zaQ0u9RhnAYA=; b=BJ+huSzGbvFPyjR13/QkG6bmQiyzlY1olg
+ P9fOn+QxTFuOVMowjaX9Oe56wqqoCN6JFsjfNgNLYqix2QA+blNULHukkgWK2MOj
+ JPkV+Zh8otLWRPHgYenTOZpw49VoOwLn5HdyPJg7nA7rGP6YXBbYTU4C74UPVIWG
+ T0WY7WT7RV/kmzRPqiUqIw/ycY1oJ99aqS0O7yOYYX9GG4oHEpu4j3pVafTc2vZl
+ Mq+Lr4IrmwiPGy3M6i8wJcYM8V33qVFIxNT9Bt7rRVcjHy8dWAkseFEOGy9exCSx
+ TzVc6NWEUR7zrfAnNTOY3HSK7+aAULqyO1iyLAnjHBRI3JrDhpVA==
+X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
+Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
+ by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new,
+ port 10026) with ESMTP id C5Dze7xXQjJV for <qemu-arm@nongnu.org>;
+ Tue, 19 Apr 2022 22:53:26 -0700 (PDT)
+Received: from toolbox.wdc.com (unknown [10.225.165.119])
+ by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4KjqbQ3JCnz1SVnx;
+ Tue, 19 Apr 2022 22:53:22 -0700 (PDT)
+From: Alistair Francis <alistair.francis@opensource.wdc.com>
+To: qemu-riscv@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair@alistair23.me>, alistair23@gmail.com,
+ Bin Meng <bin.meng@windriver.com>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, bmeng.cn@gmail.com,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: [PATCH v4 6/6] hw/riscv: Enable TPM backends
+Date: Wed, 20 Apr 2022 15:52:48 +1000
+Message-Id: <20220420055248.960491-7-alistair.francis@opensource.wdc.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220420055248.960491-1-alistair.francis@opensource.wdc.com>
+References: <20220420055248.960491-1-alistair.francis@opensource.wdc.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH v1 22/25] tests/tcg: add float_convd test
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: fam@euphon.net, berrange@redhat.com, f4bug@amsat.org,
- aurelien@aurel32.net, pbonzini@redhat.com, stefanha@redhat.com,
- crosa@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20220419091020.3008144-1-alex.bennee@linaro.org>
- <20220419091020.3008144-23-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220419091020.3008144-23-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: YXI6IE2vmJrr
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.71.154.45;
+ envelope-from=prvs=1021dae20=alistair.francis@opensource.wdc.com;
+ helo=esa6.hgst.iphmx.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7ECR7HL11TG5
 
-On 4/19/22 02:10, Alex Bennée wrote:
-> This is a simple transliteration of the float_convs test but this time
-> working with doubles. I'm used it to test the handling of vector
-> registers in gdbstub but wasn't able to find a non-ugly way to
-> automate it.
-> 
-> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
-> ---
->   tests/tcg/multiarch/float_convd.c | 106 ++++
->   tests/tcg/aarch64/float_convd.ref | 988 ++++++++++++++++++++++++++++++
->   tests/tcg/arm/float_convd.ref     | 988 ++++++++++++++++++++++++++++++
->   tests/tcg/i386/float_convd.conf   | 988 ++++++++++++++++++++++++++++++
->   tests/tcg/x86_64/float_convd.ref  | 988 ++++++++++++++++++++++++++++++
->   5 files changed, 4058 insertions(+)
->   create mode 100644 tests/tcg/multiarch/float_convd.c
->   create mode 100644 tests/tcg/aarch64/float_convd.ref
->   create mode 100644 tests/tcg/arm/float_convd.ref
->   create mode 100644 tests/tcg/i386/float_convd.conf
->   create mode 100644 tests/tcg/x86_64/float_convd.ref
+From: Alistair Francis <alistair.francis@wdc.com>
 
-Is it worth adjusting the current file to float_conv.c.inc, with #define FLOAT 
-{float,double} in float_conv{s,d}.c before #include?
+Imply the TPM sysbus devices. This allows users to add TPM devices to
+the RISC-V virt board.
 
-But I suppose this is ok as-is.
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+This was tested by first creating an emulated TPM device:
 
+    swtpm socket --tpm2 -t -d --tpmstate dir=3D/tmp/tpm \
+        --ctrl type=3Dunixio,path=3Dswtpm-sock
 
-r~
+Then launching QEMU with:
+
+    -chardev socket,id=3Dchrtpm,path=3Dswtpm-sock \
+    -tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
+    -device tpm-tis-device,tpmdev=3Dtpm0
+
+The TPM device can be seen in the memory tree and the generated device
+tree.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/942
+Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+---
+ hw/riscv/virt.c  | 4 ++++
+ hw/riscv/Kconfig | 1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 6eed1f4d70..b62fd66a49 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -43,6 +43,7 @@
+ #include "sysemu/device_tree.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/kvm.h"
++#include "sysemu/tpm.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci-host/gpex.h"
+ #include "hw/display/ramfb.h"
+@@ -1612,6 +1613,9 @@ static void virt_machine_class_init(ObjectClass *oc=
+, void *data)
+     hc->plug =3D virt_machine_device_plug_cb;
+=20
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
++#ifdef CONFIG_TPM
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
++#endif
+=20
+     object_class_property_add_bool(oc, "aclint", virt_get_aclint,
+                                    virt_set_aclint);
+diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
+index da790f5936..79ff61c464 100644
+--- a/hw/riscv/Kconfig
++++ b/hw/riscv/Kconfig
+@@ -34,6 +34,7 @@ config RISCV_VIRT
+     imply PCI_DEVICES
+     imply VIRTIO_VGA
+     imply TEST_DEVICES
++    imply TPM_TIS_SYSBUS
+     select RISCV_NUMA
+     select GOLDFISH_RTC
+     select MSI_NONBROKEN
+--=20
+2.35.1
+

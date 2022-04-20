@@ -1,120 +1,120 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2899309lfk;
-        Tue, 19 Apr 2022 22:57:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx30p3C2ZUyVayGkvnzZusB38JEsThaGugdFlLjo+gxvU0VD5vE8jlu9zTJH0j+YWzmoMLa
-X-Received: by 2002:ad4:54a1:0:b0:444:3e92:4de3 with SMTP id r1-20020ad454a1000000b004443e924de3mr14223888qvy.131.1650434278877;
-        Tue, 19 Apr 2022 22:57:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650434278; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2900541lfk;
+        Tue, 19 Apr 2022 23:01:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzJVxtlrXnzAZOCfN4QsmGGoKIRKZhbH/hh7is3QIbylwXiValowKPx0TI/9o7ckgWTZOnz
+X-Received: by 2002:a05:620a:4311:b0:67e:8a0f:4cd5 with SMTP id u17-20020a05620a431100b0067e8a0f4cd5mr11709545qko.363.1650434473418;
+        Tue, 19 Apr 2022 23:01:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650434473; cv=none;
         d=google.com; s=arc-20160816;
-        b=IUCv4Pz1Vpe1y7mfBuJMLFZ1j3CE8itWUVw8e/4T8kyHZm8zKJ9Bu5Aj9+TJkU8E2A
-         BBKZRf1lCI56rEgp2epYUd50pq3UgkUujef78UUCaCFVd0z8uGmcNn1KsqltKZLwdffF
-         MXnTNYH92pUDSixlVtnBS7JNYIitsOYSpG7r5wCckagIlDEhhaZaAGu161pQzzIGhDr6
-         BpEoxkUNi451O8uXp1xFEvnrQrdHgjrjYMEK6hQoKC0GeARpxzfgeaoA8GDOiZo3GO2D
-         h82LFc61xrFzX+UtYVqOwYuYEZyAaQgMxdk8bEGT2ZJxYBJL144yd8Eab9T+ZamCieTV
-         nsng==
+        b=LGCXu3WXle/Hi+OioLX3MMN/nT+T6OlG74vhkJLg35JdWLwyGlq1W47ybnBpT7APVR
+         JjeJkgrLfdpzy0imbAQk6/Nd2AjlLxxqSxjp/A6DpjLqTKfu8rrB+X3r8AQIwAInUr9L
+         790oSQlkfqbnPmBR7JUeeS+ELgzYVynv2oG30sfREozg7Wg2MUE/rXUjANqbO4LsomaT
+         nuDLDWpb84HK+ZX/ca1XwNew7Aqp1WJcI6Sl4HUVh8Je769Ylnlw8fnl8qnCYxEQ8m/8
+         0WOP8b6hws2BlRu5K3R+rsIyxMb82nk9+7mJ+o8Fz7RHq02gJUh6x743hG+cyXU3az+j
+         j+AQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:wdcironportexception:ironport-sdr:ironport-sdr
          :dkim-signature;
-        bh=5xYe3EUBQx680UUNJzffwn76KF90uVCkMGOpDcAYemk=;
-        b=PNf4ytxSf/D6YPli2Cdj8UheQifMYDOBCZWKi17pX17W2JfXZe80KFqwqD/oTEd44B
-         p/dQJM4/QW31o0W0KdZ/wmPdZre7V7xbg61g5ZKPfxtdMF/gqxoGtKSWbK9vOaCKJXmW
-         D6i9OJgKuYDnHGy/EVPaF5Y+zmlhBN6NQV++iEL6WoFAUvQqPl6zm92i14D3AhoprMRP
-         yj/BCY8ny+F7PR1hJLHrnalcOzB1rgkwW10XROH5VR/Xx/EtAXiE7OdxWB4YJ9+ZK/2u
-         o3exC3ombATX+yWYkEQWu970lOb0C1H8W3ob2HwtTrRAGttzgfbwA1aWkEFUbpqoJhCP
-         +LCQ==
+        bh=QhZTOzIlvv11SnWgt+Kb9uTc/c3ZjIWRdRAl5YicqBM=;
+        b=jvDwb9z5BD3mKy7pnFBo2utqrP98XnHnTtAtVN8ZyoJZqW5qpkmXH0dfYRuR82rzAY
+         t+J5u3yN6BQ9LFlRTpZhaF+n49KnoO/6U4x6OweUS+v7R2ZdO2A9ZWTafDPQZbZtOpGn
+         kYrlLcW0KYIY2LPMo9vYhF5jkZ1aNzmXVkSnlAROL2njwPE7ZyfePCvUCUyppOIUTMvw
+         iAkRakFmFOOwuxuVfR0p/LAZkKYk8DZcYwQskSkA5CDydnzcRLJ7rhdEViR8C7zA8Esb
+         De4DcxXeeTWUqGwz5JgRb4E7RNfWhvdG3fqqv4YNdxrwhj6uJT7g8QmuSWVexu+kyia+
+         2oJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@wdc.com header.s=dkim.wdc.com header.b=cKKspqsM;
-       dkim=pass header.i=@opensource.wdc.com header.s=dkim header.b=QDWX1ErG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@wdc.com header.s=dkim.wdc.com header.b=SYOwvqg3;
+       dkim=pass header.i=@opensource.wdc.com header.s=dkim header.b=X+AG6Yvs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=opensource.wdc.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p1-20020a378d01000000b0069eaaebd339si260453qkd.495.2022.04.19.22.57.58
+        by mx.google.com with ESMTPS id o16-20020a05622a009000b002e1fbf3befbsi290140qtw.236.2022.04.19.23.01.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Apr 2022 22:57:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 Apr 2022 23:01:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@wdc.com header.s=dkim.wdc.com header.b=cKKspqsM;
-       dkim=pass header.i=@opensource.wdc.com header.s=dkim header.b=QDWX1ErG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@wdc.com header.s=dkim.wdc.com header.b=SYOwvqg3;
+       dkim=pass header.i=@opensource.wdc.com header.s=dkim header.b=X+AG6Yvs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=opensource.wdc.com
-Received: from localhost ([::1]:40028 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42830 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nh3Li-0002R6-CL
-	for alex.bennee@linaro.org; Wed, 20 Apr 2022 01:57:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33820)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nh3Oq-0003ia-RO
+	for alex.bennee@linaro.org; Wed, 20 Apr 2022 02:01:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33908)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1)
  (envelope-from <prvs=1021dae20=alistair.francis@opensource.wdc.com>)
- id 1nh3H7-0007wU-2w
- for qemu-arm@nongnu.org; Wed, 20 Apr 2022 01:53:13 -0400
-Received: from esa2.hgst.iphmx.com ([68.232.143.124]:55176)
+ id 1nh3HF-00087s-3f
+ for qemu-devel@nongnu.org; Wed, 20 Apr 2022 01:53:21 -0400
+Received: from esa2.hgst.iphmx.com ([68.232.143.124]:55197)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1)
  (envelope-from <prvs=1021dae20=alistair.francis@opensource.wdc.com>)
- id 1nh3H5-0004RT-Bs
- for qemu-arm@nongnu.org; Wed, 20 Apr 2022 01:53:12 -0400
+ id 1nh3HD-0004UM-Bs
+ for qemu-devel@nongnu.org; Wed, 20 Apr 2022 01:53:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1650433991; x=1681969991;
+ t=1650433999; x=1681969999;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=MDWFWDRchKuYdI+t20XFRd6iszdOc+o4yz5MgNB95Fg=;
- b=cKKspqsMZztGz7VYNkORna57JoCfEe2bjAEoRViTgY6ZIoZs95dPfDjz
- sz/68PFR86jTqTX9e1ADrrSsFwBVEVDHlgwtHnvIQg5//sPl7cEIe35He
- WwY8Xm+Jcz27t1ZqAf1BVdAO51rOjixzf1xj26Y9KZ0K4PazHeuoXHIRD
- Suy6IXSv/E6UjL9phCiDy+9E77qpKUJP+7My7a663g2uis1U4LTqUovO9
- 3I1EdtosZGwsVr/Lus11swQKgfm2LY+7pzR3yfE87sTPLU/GyVq4nAY+a
- 2eRGOEI57mGd3rWvFWnjGTs3SdKNT77TbLIDQZxs2OfPYC9sohjpMxP8p w==;
-X-IronPort-AV: E=Sophos;i="5.90,274,1643644800"; d="scan'208";a="302527751"
+ bh=H2nNCdBlGkbhKY2PzS9ttJJUrgi/BvPdzYzwwCBJy3c=;
+ b=SYOwvqg30ba2gz6ogsHnvTsIYlkwW4bT7Rv4eE9iLlnCpZi3gNtreh3G
+ p/gZ4O9cLX9l5WSF+dq/GQkPcSveeeB35mORaOl+nVMpFA59hVSWxTKfx
+ OCyqGKOcXJNRDtqbxFplB9FSgxt1yqvPOtWTBFM/PMxwcdzef69m7psSP
+ 8K0AtZgBarvH0Ro0/W7p6MjbJ5kPO9rbbA61z4w7oehrZgXHTZmp4cBi3
+ Q8E2gzMLZlEBMQitHROkGf6taNtPNDwP6UdWip/jruzBdMVkvXaYlXdum
+ pG7q5vGS6nrB68l+1Q7sxo2DcsjWYGEqBUst51hzz+wcGpTRMAI7JqwSJ w==;
+X-IronPort-AV: E=Sophos;i="5.90,274,1643644800"; d="scan'208";a="302527765"
 Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 20 Apr 2022 13:53:08 +0800
-IronPort-SDR: BKlaDJTQb+FDKn1MHIkZi5yv6aLr0kUlZdfIYv+USFxKMows1cvK1RFbGE8TJRUBUh48Gqt39D
- g0A6OTTM8k9I7RjKzmO1SjdFHHrNAmjN1J3y5Ekny+G/jYvSOszS3tzcNkauZR0656EWqE7SRq
- xbFovVGpmGTg3go/+97oPivtcvlXq468fd8TFNP/6r22oIJtZ5U8xZcdvMqTwhlD5mtV0YinCd
- CylRTCZvDP2dEnbfoO9wRAKtaENin9d0UgKEbw5zyKLkbp1Ug6Vj/xw/hXyMtEQfgy7bSBjCCa
- r6cyUWRpuOoc+pu5tMcaJZCb
+ by ob1.hgst.iphmx.com with ESMTP; 20 Apr 2022 13:53:18 +0800
+IronPort-SDR: QjiDCXgB8sxdx5zPtlOPCaArvGEqp/RjoYzSZH8djRhKJrD+mO2HDfGkbpgVzdufFVjPJBebOR
+ PtEG5ngwd362uC4PHMmu9pFOJVWAVuw+A+fKN2e6WU/ccM1RNpugYPaY3SLL0sSDHMJHDPoxVM
+ rP8WUBSGc8/9MAsSPasuaZsERWqtViaKqF94Zy8MIS3fc1BwNbZa9wnPadVl50uQYlLDKTtvJB
+ /LszuQp2iFJeDoKCuz2V8fR0Sx50uLpItxQvjTQqxqsjz5chLmm9zTWE1dn5dYMuWz2iYPvpwn
+ GzEL0Zh98KqxWtsDP5GoIMY/
 Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
- 19 Apr 2022 22:23:27 -0700
-IronPort-SDR: +EcJdJEZ1tCitsUfP/UATLfsQgCO48Sc833HXXfuLfCH43zmLAm2Mrc7hQjb6F/9i7GCpGETDh
- ZK884dE5gSUSH6QalzF1MF2W01YTsfhBACvoHWfH+DAuy4aXIz0zp2UtiDQFjjUl27SzsiVcm0
- +V+jCiDj+cXzb9mxP4FtQZz6+AaD66jvb8KRbC605R/HBtk1TFIxDnIAXIooYhLsncrWhdO3pl
- 5Kh1oeud/XMsPe9hJkSUobK/6srGaSfGLD9P0ChjSF1CaUWi7MncL6SudJhi4jawLmP0stD126
- H3Y=
+ 19 Apr 2022 22:23:36 -0700
+IronPort-SDR: k5/fXTs3Z5OtP/8LVc/4WyAkOOtMZNOAkn6BaTWgd6jT9qwZcByMadhT+9nRm+cfdGcpNpQipS
+ f4PaEgpbuVEKNJmmCU3xNkVpuzYHjrkU9YTrlavFxtebVsbOULgchfN0TKy+Tk88Bp/fygLnef
+ +VLGwRLdgpKGg0Y0+Yw0qxflB/4Fg9QulIxhxFLsVbh1PkEGS0+l2A+zLoH5g3UDsdw6wlFS/q
+ q1f7UsPChwIS8Ad0lxenkAtTwddhK2/SyxWvE3Vi+gTjiWvCe0zzvBrODcMeLDxLBr56DEbNBc
+ z6A=
 WDCIronportException: Internal
 Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
  by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
- 19 Apr 2022 22:53:09 -0700
+ 19 Apr 2022 22:53:19 -0700
 Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
- by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4Kjqb82pRHz1SVp6
- for <qemu-arm@nongnu.org>; Tue, 19 Apr 2022 22:53:08 -0700 (PDT)
+ by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4KjqbK6BjGz1SVp5
+ for <qemu-devel@nongnu.org>; Tue, 19 Apr 2022 22:53:17 -0700 (PDT)
 Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
  reason="pass (just generated, assumed good)"
  header.d=opensource.wdc.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
  opensource.wdc.com; h=content-transfer-encoding:mime-version
  :references:in-reply-to:x-mailer:message-id:date:subject:to
- :from; s=dkim; t=1650433987; x=1653025988; bh=MDWFWDRchKuYdI+t20
- XFRd6iszdOc+o4yz5MgNB95Fg=; b=QDWX1ErG+3VH3ItPU+6izieqKcQ7qdOfb4
- PKTgsNpYjReLUVeZBL0pNQPEOXngG3x1oc+0yY29m5lrmg49Bq7zljQsWFIYkZd4
- LxHQjjFYsE2cUrtFwCgx9A25IkDM8vZYewAXfhHvG3BTk6zWfdt9c1SlBgrFQ9Gs
- IzNLkjJZqFooG9AcSAHXY/rUj73HPze0ggwnOY8L+j7MJCBvYuDNg6h2qIeO+neQ
- fYbNC55Ssd02VsoYCM7+G7vjrgsVvqEujS4wgUSqOvUWuIWEpS3moITX/SYA2ngD
- zXF3ctX3d7dQ27Gmlba6mD/RbkllYZtXGE8bVLTK4PrckDyeLRcw==
+ :from; s=dkim; t=1650433996; x=1653025997; bh=H2nNCdBlGkbhKY2PzS
+ 9ttJJUrgi/BvPdzYzwwCBJy3c=; b=X+AG6YvsPIzNR5ltI+/gUovOJi/GZypjTN
+ TxSa/XjB5takiG0o/DHZ4H5u+nFj/rQYMvhaTbdkm41/6dMtR6fIMP4ZaiTEzsnb
+ LQuf9jg7uR7H/MmG7wXN5bCvcSWkVa0F1nZHg/Bt7/L+eSfYsh4+YytJHyAVR5tc
+ kj3v97TziTYZOFtRaySyzP/QS0CgZHrRLj343QPvPI7WxUM/WOwI1TyShopty8DJ
+ U19sgl2q9QVlRq8LbxxrAKkWrgPmD6tRfj0vJc53Z06OehbYAjt8gUIKQ+Ma+gPZ
+ pkOM/T2VBTHtdJoM0YYO9YDPcAXP1ZP5jFjvMEVpdFYOYnaTUDgQ==
 X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
 Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
  by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new,
- port 10026) with ESMTP id ShNQKkRA1TOb for <qemu-arm@nongnu.org>;
- Tue, 19 Apr 2022 22:53:07 -0700 (PDT)
+ port 10026) with ESMTP id XJrQ0zUr9wfX for <qemu-devel@nongnu.org>;
+ Tue, 19 Apr 2022 22:53:16 -0700 (PDT)
 Received: from toolbox.wdc.com (unknown [10.225.165.119])
- by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4Kjqb26s2cz1Rvlx;
- Tue, 19 Apr 2022 22:53:02 -0700 (PDT)
+ by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4KjqbD5z5Hz1Rvlx;
+ Tue, 19 Apr 2022 22:53:12 -0700 (PDT)
 From: Alistair Francis <alistair.francis@opensource.wdc.com>
 To: qemu-riscv@nongnu.org,
 	qemu-devel@nongnu.org
@@ -124,9 +124,10 @@ Cc: Palmer Dabbelt <palmer@dabbelt.com>,
  Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, bmeng.cn@gmail.com,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH v4 2/6] hw/core: Move the ARM sysbus-fdt to core
-Date: Wed, 20 Apr 2022 15:52:44 +1000
-Message-Id: <20220420055248.960491-3-alistair.francis@opensource.wdc.com>
+Subject: [PATCH v4 4/6] hw/riscv: virt: Add support for generating platform
+ FDT entries
+Date: Wed, 20 Apr 2022 15:52:46 +1000
+Message-Id: <20220420055248.960491-5-alistair.francis@opensource.wdc.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220420055248.960491-1-alistair.francis@opensource.wdc.com>
 References: <20220420055248.960491-1-alistair.francis@opensource.wdc.com>
@@ -141,115 +142,105 @@ X-Spam_bar: ----
 X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SJtpreLGxj87
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: H2853lP/qILL
 
 From: Alistair Francis <alistair.francis@wdc.com>
 
-The ARM virt machine currently uses sysbus-fdt to create device tree
-entries for dynamically created MMIO devices.
-
-The RISC-V virt machine can also benefit from this, so move the code to
-the core directory.
+Similar to the ARM virt machine add support for adding device tree
+entries for dynamically created devices.
 
 Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
- include/hw/{arm =3D> core}/sysbus-fdt.h | 0
- hw/arm/virt.c                         | 2 +-
- hw/arm/xlnx-versal-virt.c             | 1 -
- hw/{arm =3D> core}/sysbus-fdt.c         | 2 +-
- hw/arm/meson.build                    | 1 -
- hw/core/meson.build                   | 1 +
- 6 files changed, 3 insertions(+), 4 deletions(-)
- rename include/hw/{arm =3D> core}/sysbus-fdt.h (100%)
- rename hw/{arm =3D> core}/sysbus-fdt.c (99%)
+ hw/riscv/virt.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/include/hw/arm/sysbus-fdt.h b/include/hw/core/sysbus-fdt.h
-similarity index 100%
-rename from include/hw/arm/sysbus-fdt.h
-rename to include/hw/core/sysbus-fdt.h
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index d2e5ecd234..cfababa292 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -56,7 +56,7 @@
- #include "qemu/module.h"
- #include "hw/pci-host/gpex.h"
- #include "hw/virtio/virtio-pci.h"
--#include "hw/arm/sysbus-fdt.h"
-+#include "hw/core/sysbus-fdt.h"
- #include "hw/platform-bus.h"
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 169da70350..e4a5c6c28b 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -28,6 +28,7 @@
  #include "hw/qdev-properties.h"
- #include "hw/arm/fdt.h"
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 7c7baff8b7..bc20af4ba8 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -15,7 +15,6 @@
- #include "sysemu/device_tree.h"
- #include "hw/boards.h"
- #include "hw/sysbus.h"
--#include "hw/arm/sysbus-fdt.h"
- #include "hw/arm/fdt.h"
- #include "cpu.h"
- #include "hw/qdev-properties.h"
-diff --git a/hw/arm/sysbus-fdt.c b/hw/core/sysbus-fdt.c
-similarity index 99%
-rename from hw/arm/sysbus-fdt.c
-rename to hw/core/sysbus-fdt.c
-index 48c5fe9bf1..19d22cbe73 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/core/sysbus-fdt.c
-@@ -27,7 +27,7 @@
- #ifdef CONFIG_LINUX
- #include <linux/vfio.h>
- #endif
--#include "hw/arm/sysbus-fdt.h"
+ #include "hw/char/serial.h"
+ #include "target/riscv/cpu.h"
 +#include "hw/core/sysbus-fdt.h"
- #include "qemu/error-report.h"
- #include "sysemu/device_tree.h"
- #include "sysemu/tpm.h"
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 721a8eb8be..122e5dd992 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -1,6 +1,5 @@
- arm_ss =3D ss.source_set()
- arm_ss.add(files('boot.c'), fdt)
--arm_ss.add(when: 'CONFIG_PLATFORM_BUS', if_true: files('sysbus-fdt.c'))
- arm_ss.add(when: 'CONFIG_ARM_VIRT', if_true: files('virt.c'))
- arm_ss.add(when: 'CONFIG_ACPI', if_true: files('virt-acpi-build.c'))
- arm_ss.add(when: 'CONFIG_DIGIC', if_true: files('digic_boards.c'))
-diff --git a/hw/core/meson.build b/hw/core/meson.build
-index 0f884d6fd4..7a4d02b6c0 100644
---- a/hw/core/meson.build
-+++ b/hw/core/meson.build
-@@ -33,6 +33,7 @@ softmmu_ss.add(when: 'CONFIG_PTIMER', if_true: files('p=
-timer.c'))
- softmmu_ss.add(when: 'CONFIG_REGISTER', if_true: files('register.c'))
- softmmu_ss.add(when: 'CONFIG_SPLIT_IRQ', if_true: files('split-irq.c'))
- softmmu_ss.add(when: 'CONFIG_XILINX_AXI', if_true: files('stream.c'))
-+softmmu_ss.add(when: 'CONFIG_PLATFORM_BUS', if_true: files('sysbus-fdt.c=
-'))
+ #include "hw/riscv/riscv_hart.h"
+ #include "hw/riscv/virt.h"
+ #include "hw/riscv/boot.h"
+@@ -411,6 +412,12 @@ static void create_fdt_socket_aclint(RISCVVirtState =
+*s,
+         qemu_fdt_setprop(mc->fdt, name, "interrupt-controller", NULL, 0)=
+;
+         qemu_fdt_setprop_cell(mc->fdt, name, "#interrupt-cells", 0);
+         riscv_socket_fdt_write_id(mc, mc->fdt, name, socket);
++
++        platform_bus_add_all_fdt_nodes(mc->fdt, name,
++                                       memmap[VIRT_PLATFORM_BUS].base,
++                                       memmap[VIRT_PLATFORM_BUS].size,
++                                       VIRT_PLATFORM_BUS_IRQ);
++
+         g_free(name);
+     }
 =20
- softmmu_ss.add(files(
-   'cpu-sysemu.c',
+@@ -469,6 +476,12 @@ static void create_fdt_socket_plic(RISCVVirtState *s=
+,
+     riscv_socket_fdt_write_id(mc, mc->fdt, plic_name, socket);
+     qemu_fdt_setprop_cell(mc->fdt, plic_name, "phandle",
+         plic_phandles[socket]);
++
++    platform_bus_add_all_fdt_nodes(mc->fdt, plic_name,
++                                   memmap[VIRT_PLATFORM_BUS].base,
++                                   memmap[VIRT_PLATFORM_BUS].size,
++                                   VIRT_PLATFORM_BUS_IRQ);
++
+     g_free(plic_name);
+=20
+     g_free(plic_cells);
+@@ -546,6 +559,12 @@ static void create_fdt_imsic(RISCVVirtState *s, cons=
+t MemMapEntry *memmap,
+             IMSIC_MMIO_GROUP_MIN_SHIFT);
+     }
+     qemu_fdt_setprop_cell(mc->fdt, imsic_name, "phandle", *msi_m_phandle=
+);
++
++    platform_bus_add_all_fdt_nodes(mc->fdt, imsic_name,
++                                   memmap[VIRT_PLATFORM_BUS].base,
++                                   memmap[VIRT_PLATFORM_BUS].size,
++                                   VIRT_PLATFORM_BUS_IRQ);
++
+     g_free(imsic_name);
+=20
+     /* S-level IMSIC node */
+@@ -683,6 +702,12 @@ static void create_fdt_socket_aplic(RISCVVirtState *=
+s,
+         VIRT_IRQCHIP_NUM_SOURCES);
+     riscv_socket_fdt_write_id(mc, mc->fdt, aplic_name, socket);
+     qemu_fdt_setprop_cell(mc->fdt, aplic_name, "phandle", aplic_s_phandl=
+e);
++
++    platform_bus_add_all_fdt_nodes(mc->fdt, aplic_name,
++                                   memmap[VIRT_PLATFORM_BUS].base,
++                                   memmap[VIRT_PLATFORM_BUS].size,
++                                   VIRT_PLATFORM_BUS_IRQ);
++
+     g_free(aplic_name);
+=20
+     g_free(aplic_cells);
 --=20
 2.35.1
 

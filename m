@@ -1,104 +1,104 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp265775lfk;
-        Thu, 21 Apr 2022 04:12:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyqt0ynJCSuPGQRmzpAARZHDqhCY6zPGTV8hddLcF3VZc6wYZ034zFXVaSd7JBcRgXn+YHW
-X-Received: by 2002:ac8:7f8d:0:b0:2f3:3fea:5033 with SMTP id z13-20020ac87f8d000000b002f33fea5033mr5316613qtj.226.1650539523582;
-        Thu, 21 Apr 2022 04:12:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650539523; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp267182lfk;
+        Thu, 21 Apr 2022 04:13:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyH2LF1C3j6Q5OHDKMFRXrEht21wgai6symuxUCKvOkEmFHsYz/oHSWWQO5Cpp1aDYT/3Xi
+X-Received: by 2002:a05:620a:b9b:b0:69e:687c:ee5c with SMTP id k27-20020a05620a0b9b00b0069e687cee5cmr15376485qkh.704.1650539639590;
+        Thu, 21 Apr 2022 04:13:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650539639; cv=none;
         d=google.com; s=arc-20160816;
-        b=FDjbprenrw+cqRULabe07QnkVXSjRKzDead7mXsbFTAv82BoJqlWpRrMiHiMj1uL1m
-         ludXTQyenYKwIucmUHiA9CPa/70vbHEi3QdnmmIRmiwer2IU5hR42ym6e0yXvBlMctlZ
-         ftcRndJS6P3frDUagKrcRESNaqVavbQBsg4XKHSly4gHac+L+IU6FLTYQ+32Zo2rUMME
-         hyLRknxYPEMfhkRbZE9LAKjyqjHrHKm7pQg85pAgMJrKbw/fVyDuLC9PrLpd6Br8k0ld
-         EFkG0jd2X9RyY+HHQ7oNHQWBfWquo/Au0M3kvG+TZqv4UmEpR1EbVk6Z2mJotkNWDtUO
-         yiMw==
+        b=PFkAHtAUplUVLzDfe+nSTgTe9jUc5fuYKfBi7YU84LArn+WtpEnqmwG01EjHh48+BY
+         FO8iqm5tMRFeJEmrpcPIceDyk776Rg3+WUvW/UW7ZpyXisIRZjTpV/fSNHL3qviNfhLI
+         wIgt2qp33TfPjG2RvuihjqFMAcdiZN0p9ujsdBSw0TfN2sjBwVbkeLBOg+8TkosuXw/M
+         ByeWx+XETxpKj7XvObHk5rS69sY7eVTTigP7hoLyYRupSlLG5tAdIAf7qGcPoNNPIQZe
+         4GxZVOgdVWRWKpSY5ZYL0jPreM1aiDzSQb3nvbeX9lpDTUr+6Wx1+urs4eVBrw8UMT1s
+         J/hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=6hIdhswsfcl65vmDp9ezeh89wHPSBVwDl2kytfmBQPU=;
-        b=vDeH2ioy7Sj32M5eOfiEES5N+akJ4Mgz1bTphcgmNa42di5BFwFYvf/Cb6bhaKy7/c
-         cx6lssq0yCr3DdyYF94TOdh2t6Q45CLTxBdfsJ23TNCxEbTeyWAPqWV7hG8/u1pKPB/G
-         PhPoynNJq9limv2FyLoAHfMaZxywXUV8Uo7geiUEUd6e5tJ52V/Jhj1f8PcP07ZHF/tk
-         R3OBP5Y8bBSR2GjomErUBCICmhEfxoGavUzAoLCTLQcrrG+PsOANR1TR7lJpWTdjgI51
-         Ztu6NMLg7ACqvbHQ02K3bWZCLH0puDJEzhx5K2ah9rBssXxvMOa5Bhjcdck/wCDblsGR
-         uplA==
+        bh=gdNiRxmPbt6xiQPF9q4pd2nyY5+TNI+hIroUMZV2/QU=;
+        b=Dw8DLtDkGrjGe0OeYTZMOTSNp/bbcvWWiDnQBEMhoBtFcROlOVYAFdde9bjvbbP5hC
+         x05qwgCOahPRZ1IGDmnVGxnrg7zNb6552NYYpXcBVKgvRL2uhvrADTn1/2Ij38lfCHpM
+         m96KEta5CW7wpRHTgoRxvHsBp3R9NyqIrDmSGYWaq6aVvxrSfTljN6tUJFLKteVbMZrK
+         CNgHdd/6sPyO8h2T3NNCe92Sst8+7Okq+0Buj43ImdixcDCGanmhXC+7gg6hyo6Zi2p0
+         DP8w1jCCURhbsycEtw48IPNvRb8RfztvKBxb0jR32zG42ZxuOVsZmEwXIxp3uD/c3STE
+         wcbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Pc3xanMj;
+       dkim=fail header.i=@linaro.org header.s=google header.b="LCdSPv/Z";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o9-20020a05620a2a0900b0069ebb84bb2asi1389434qkp.501.2022.04.21.04.12.03
+        by mx.google.com with ESMTPS id bp12-20020a05622a1b8c00b002f34e71bcafsi273548qtb.136.2022.04.21.04.13.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Apr 2022 04:12:03 -0700 (PDT)
+        Thu, 21 Apr 2022 04:13:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Pc3xanMj;
+       dkim=fail header.i=@linaro.org header.s=google header.b="LCdSPv/Z";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45088 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49800 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nhUjD-000228-3l
-	for alex.bennee@linaro.org; Thu, 21 Apr 2022 07:12:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54570)
+	id 1nhUl5-0005Fz-3u
+	for alex.bennee@linaro.org; Thu, 21 Apr 2022 07:13:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nhUYP-0001N6-SY
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 07:00:53 -0400
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34]:33307)
+ id 1nhUkU-0004lQ-JC
+ for qemu-arm@nongnu.org; Thu, 21 Apr 2022 07:13:22 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133]:34945)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nhUYK-0007sJ-Ou
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 07:00:53 -0400
-Received: by mail-yb1-xb34.google.com with SMTP id j2so8118734ybu.0
- for <qemu-arm@nongnu.org>; Thu, 21 Apr 2022 04:00:48 -0700 (PDT)
+ id 1nhUkP-0002OJ-JW
+ for qemu-arm@nongnu.org; Thu, 21 Apr 2022 07:13:22 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-2ef4a241cc5so48334817b3.2
+ for <qemu-arm@nongnu.org>; Thu, 21 Apr 2022 04:13:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6hIdhswsfcl65vmDp9ezeh89wHPSBVwDl2kytfmBQPU=;
- b=Pc3xanMjpZzljSTieaCVGCvs7h08nKpUXF/XATLBgXBeuIFKjXA/g6FXZxzFGenPPp
- R2YyaCX2olaRL68RRGltIBgreXkhphnKGnmGRhgorYPIimW27yD7jtmY/JW0n3G2aKxU
- aQyOhl1GAUY3bf6A8Izett9KlfNa22SG3qVYto00S6QpV4YsRh6kRG6xWPjuYIQASWcg
- 0wmadze5j6EjO5I3kehSEYnGVAfaMOH8bHl7ypyNodyunELCVTSnkggsyTOr23VjQ8K1
- nM5cq+ifO1nVD4Baq3IzeXzakfGoeRpFp3D4lYHu4ueoxFwvauvXvZOxGq6E9ev5owWu
- o26Q==
+ :cc; bh=gdNiRxmPbt6xiQPF9q4pd2nyY5+TNI+hIroUMZV2/QU=;
+ b=LCdSPv/ZHi0+hsg83FSfNnsH19n0gkBsfhcEi994A8SpjYx+ZFhigb0s68Po/4nS+E
+ 5CBs3TctpQPAKZddhmjBfflZLEAgc8OyP0jGX1Nci9reiJL0IV3ZRog0rtOVphgD4dQA
+ NNwgr1+UJ4n3jWrXD0yq/yeTVOYywNVQ3Vn4c7P9Jj4+IzbJuZ28W+ymIcbLHvjjNoBH
+ 1CoSOas+vAum40EeVnfkZ/09um0dDO77XKOh+8d8CkcmiSUyhqOeqkYOHTDh0gfsAeFy
+ D1YXk/H4Ii5i+TK7NjQxtXkyHWuUcfNjM2OHqgpivVM77fo61qpRUgp2Qnm4tPFsUE5I
+ 5Jew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=6hIdhswsfcl65vmDp9ezeh89wHPSBVwDl2kytfmBQPU=;
- b=mztcptL4dbRkhPY0dWA5ynpt/Wccs2VpHXbSOdIwZIJxCWbsmY7zjfjGk7QkB3gWmx
- vkJU2g2ev7PHTpdNhm+pJxG6zd06Vc1wvLxlTKunAaOkHX6o/beXpXgbhmc7dk0SL0By
- PsPDGs7EGgF4mPo/qr6dWLOlAEA2fVJhyDiGgFL8rNRqjwXSI/LiwT+2eCgqB1Giwygv
- ZnyS/f8koOJ1sEPUGt/MFaG9lBvdySqjTCylfsRpPAgmtOWqYbh21p2OU1+Ge80HgPZR
- 0tfjNDiDiuNMg9I1f3mIA5KRKVMcKUrrf71RsemRyNSC2TlhQHsmSUsBxZ5RGhrBzu2V
- 6Jxw==
-X-Gm-Message-State: AOAM533tRB5SH7F6Jz3zaSQrgq/kzaZGCCHVVZrNw5YNKDbQWlz1D9/b
- sEhGZiLaaoewKbTvt7+xrG30TA9PFMASiv42+XwaVQ==
-X-Received: by 2002:a05:6902:390:b0:645:7d46:f1db with SMTP id
- f16-20020a056902039000b006457d46f1dbmr385235ybs.85.1650538847566; Thu, 21 Apr
- 2022 04:00:47 -0700 (PDT)
+ bh=gdNiRxmPbt6xiQPF9q4pd2nyY5+TNI+hIroUMZV2/QU=;
+ b=5RbuqgOUCacfcqL0yh1TxrCLKN12Fx76y+gkIQKa8GFCThV9MZTCiqzxly87kOs49z
+ 2DJWGxiMSIa3lSxyrTW2t1obyYsv62jSekQr3INsA0a3j61UE4xdPkUxQabgcbpSD/bt
+ 2VsJJGoZ4UHEyGH7+hPaL8XuMhP6C2HIYeT/MtHvcceuhZdN2glGrCge37M1xLVpHUUV
+ G1bKQ6xNw0FVBrnx4onvk6YjyKj7e278fmws9rcYcrLTQkLivQu0DgVuOkg2301jFIg2
+ UhXsuKPVPVqr+qs/IgzySEk3e/zpEAXa4FRJ+EUj2rM9z42AYfgOP1ZhUJCWNUxKTITe
+ CuaQ==
+X-Gm-Message-State: AOAM533aaONQxC/LVTOK0iBwguV6P+2eyI0aE/LTgtXQfz30bn2DHShz
+ v4P5LVbjOp9n5ZhAej6cseoYRUmWZue3JyBMpeS62Q==
+X-Received: by 2002:a0d:fc83:0:b0:2e5:b0f4:c125 with SMTP id
+ m125-20020a0dfc83000000b002e5b0f4c125mr25494275ywf.347.1650539596490; Thu, 21
+ Apr 2022 04:13:16 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220405223640.2595730-1-wuhaotsh@google.com>
- <20220405223640.2595730-7-wuhaotsh@google.com>
-In-Reply-To: <20220405223640.2595730-7-wuhaotsh@google.com>
+ <20220405223640.2595730-9-wuhaotsh@google.com>
+In-Reply-To: <20220405223640.2595730-9-wuhaotsh@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 Apr 2022 12:00:36 +0100
-Message-ID: <CAFEAcA9TG60w87c0SpLA85g4ogCYTX0gi=ihNQaRQkpaoh1MYw@mail.gmail.com>
-Subject: Re: [PATCH for-7.1 06/11] hw/intc: Add a property to allow GIC to
- reset into non secure mode
+Date: Thu, 21 Apr 2022 12:13:05 +0100
+Message-ID: <CAFEAcA8V2oEyKuLPh8C1HaMXj5xyYZ-NJLyrNM5DhD14B5wvpg@mail.gmail.com>
+Subject: Re: [PATCH for-7.1 08/11] hw/net: Add NPCM8XX PCS Module
 To: Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb34.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,39 +116,143 @@ Cc: Uri.Trichter@nuvoton.com, titusr@google.com, venture@google.com,
  qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com, Vishal.Soni@microsoft.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lRDfcs1exP2p
+X-TUID: Z7YFKoyIRJ8n
 
 On Tue, 5 Apr 2022 at 23:38, Hao Wu <wuhaotsh@google.com> wrote:
 >
-> This property allows certain boards like NPCM8xx to boot the kernel
-> directly into non-secure mode. This is necessary since we do not
-> support secure boot features for NPCM8xx now.
+> The PCS exists in NPCM8XX's GMAC1 and is used to control the SGMII
+> PHY. This implementation contains all the default registers and
+> the soft reset feature that are required to load the Linux kernel
+> driver. Further features have not been implemented yet.
 >
 > Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> Reviewed-by: Patrick Venture <venture@google.com>
-> ---
->  hw/intc/arm_gic_common.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
-> index 7b44d5625b..7ddc5cfbd0 100644
-> --- a/hw/intc/arm_gic_common.c
-> +++ b/hw/intc/arm_gic_common.c
-> @@ -358,6 +358,8 @@ static Property arm_gic_common_properties[] = {
->      /* True if the GIC should implement the virtualization extensions */
->      DEFINE_PROP_BOOL("has-virtualization-extensions", GICState, virt_extn, 0),
->      DEFINE_PROP_UINT32("num-priority-bits", GICState, n_prio_bits, 8),
-> +    /* True if we want to directly booting a kernel into NonSecure */
-> +    DEFINE_PROP_BOOL("irq-reset-nonsecure", GICState, irq_reset_nonsecure, 0),
->      DEFINE_PROP_END_OF_LIST(),
->  };
+> Reviewed-by: Titus Rwantare <titusr@google.com>
 
-This isn't how this is supposed to work. Non-firmware (ie Linux
-kernel boots) that have to emulate firmware init arrange to get
-the irq_reset_nonsecure flag set because the GIC implements the
-TYPE_ARM_LINUX_BOOT_IF and the boot.c code calls the callback
-for every device that implements that interface. For firmware
-boots, the firmware has to set up the GIC the way it wants.
+> +static uint16_t npcm_pcs_read_sr_ctl(NPCMPCSState *s, hwaddr offset)
+> +{
+> +    hwaddr regno = offset / sizeof(uint16_t);
+> +
+> +    if (regno >= NPCM_PCS_NR_SR_CTLS) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: SR_CTL read offset 0x%04" HWADDR_PRIx
+> +                      " is out of range.",
+
+qemu_log_mask strings need to have a trailing "\n" (here and below)
+
+
+> +static uint64_t npcm_pcs_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    NPCMPCSState *s = opaque;
+> +    uint16_t v = 0;
+> +
+> +    if (offset == NPCM_PCS_IND_AC_BA) {
+> +        v = s->indirect_access_base;
+> +    } else {
+> +        switch (s->indirect_access_base) {
+> +        case NPCM_PCS_IND_SR_CTL:
+> +            v = npcm_pcs_read_sr_ctl(s, offset);
+> +            break;
+> +
+> +        case NPCM_PCS_IND_SR_MII:
+> +            v = npcm_pcs_read_sr_mii(s, offset);
+> +            break;
+> +
+> +        case NPCM_PCS_IND_SR_TIM:
+> +            v = npcm_pcs_read_sr_tim(s, offset);
+> +            break;
+> +
+> +        case NPCM_PCS_IND_VR_MII:
+> +            v = npcm_pcs_read_vr_mii(s, offset);
+> +            break;
+> +
+> +        default:
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: Read with invalid indirect address base: 0x%02"
+
+Why are you specifying a width of 2 here? The valid values are definitely
+larger than 2 digits wide, so presumably invalid values probably are as well...
+
+> +                          PRIx16 "\n", DEVICE(s)->canonical_path,
+> +                          s->indirect_access_base);
+> +        }
+> +    }
+> +
+> +    trace_npcm_pcs_reg_read(DEVICE(s)->canonical_path, s->indirect_access_base,
+> +                            offset, v);
+> +    return v;
+> +}
+
+> +static void npcm_pcs_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    set_bit(DEVICE_CATEGORY_NETWORK, dc->categories);
+
+Not sure this is the right category -- this doesn't seem to
+be a network device in the usual sense.
+
+
+> +# npcm_pcs.c
+> +npcm_pcs_reg_read(const char *name, uint16_t indirect_access_baes, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
+> +npcm_pcs_reg_write(const char *name, uint16_t indirect_access_baes, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
+
+Typo : should be "_base" I assume.
+
+
+> +
+>  # dp8398x.c
+>  dp8393x_raise_irq(int isr) "raise irq, isr is 0x%04x"
+>  dp8393x_lower_irq(void) "lower irq"
+> diff --git a/include/hw/net/npcm_pcs.h b/include/hw/net/npcm_pcs.h
+> new file mode 100644
+> index 0000000000..bd4f71bf3c
+> --- /dev/null
+> +++ b/include/hw/net/npcm_pcs.h
+> @@ -0,0 +1,42 @@
+> +/*
+> + * Nuvoton NPCM8xx PCS Module
+> + *
+> + * Copyright 2022 Google LLC
+> + *
+> + * This program is free software; you can redistribute it and/or modify it
+> + * under the terms of the GNU General Public License as published by the
+> + * Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful, but WITHOUT
+> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+> + * for more details.
+> + */
+> +
+> +#ifndef NPCM_PCS_H
+> +#define NPCM_PCS_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define NPCM_PCS_NR_SR_CTLS     (0x12 / sizeof(uint16_t))
+> +#define NPCM_PCS_NR_SR_MIIS     (0x20 / sizeof(uint16_t))
+> +#define NPCM_PCS_NR_SR_TIMS     (0x22 / sizeof(uint16_t))
+> +#define NPCM_PCS_NR_VR_MIIS     (0x1c6 / sizeof(uint16_t))
+> +
+> +typedef struct NPCMPCSState {
+> +    SysBusDevice parent;
+> +
+> +    MemoryRegion iomem;
+> +
+> +    uint16_t indirect_access_base;
+> +    uint16_t sr_ctl[NPCM_PCS_NR_SR_CTLS];
+> +    uint16_t sr_mii[NPCM_PCS_NR_SR_MIIS];
+> +    uint16_t sr_tim[NPCM_PCS_NR_SR_TIMS];
+> +    uint16_t vr_mii[NPCM_PCS_NR_VR_MIIS];
+> +} NPCMPCSState;
+> +
+> +#define TYPE_NPCM_PCS "npcm-pcs"
+> +OBJECT_DECLARE_SIMPLE_TYPE(NPCMPCSState, NPCM_PCS)
+
+OBJECT_DECLARE_SIMPLE_TYPE does the 'typedef' for you, so you
+don't need to do that in your struct definition if you're using that
+macro.
 
 thanks
 -- PMM

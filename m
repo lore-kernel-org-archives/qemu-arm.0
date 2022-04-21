@@ -1,111 +1,103 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp495429lfk;
-        Thu, 21 Apr 2022 09:52:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwfs5dh7b3YjB71XQ4JCmPGrMOB3N+bnH8Wm9GTzWlgfYKcbmjV6yl/UO4qZbOiEdRf4D9y
-X-Received: by 2002:a5b:2c3:0:b0:645:6565:fafa with SMTP id h3-20020a5b02c3000000b006456565fafamr612800ybp.323.1650559964558;
-        Thu, 21 Apr 2022 09:52:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650559964; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp502400lfk;
+        Thu, 21 Apr 2022 10:03:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxx0Do/vA+1PifPySgzNuxM6Q1mm3BU0piklhhF61knmGOjXonMf/G21unEuZQQjL326lMN
+X-Received: by 2002:a05:6902:1082:b0:63e:56c0:7ce8 with SMTP id v2-20020a056902108200b0063e56c07ce8mr627473ybu.455.1650560591008;
+        Thu, 21 Apr 2022 10:03:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650560591; cv=none;
         d=google.com; s=arc-20160816;
-        b=fjy9AZtpfmqqLYoK4StWBiE1DEw5aPhGaHbPsXuQEyBRX+i39mXkeMLWPvpPK83JIy
-         16MG8HtvBAXwQviB4xU288Vx32/tOjOA2FXP9Dz6EBCC36K9zxDFMqoemimKxfbifqt9
-         r2D/r0x2wIlHcCw71babHg0mnOX74Btyt482uOmJacwpaCsvln9WPbzqoj/0NjFBU3E3
-         jz28XOttwQm15wkIsdXRisD9bZWzZIs80zRAgk0rJtl9fjmM5pLvk1Vz749cFiXSwhRE
-         e8M+wAU9QwnSxztjNr0Z7EKKLyY8ylMIwwOkkyMQtoTgamrJmGp5jk6DhLXTGSkHL11q
-         4eEA==
+        b=SzbkmqJg9gYhEacWbr6gOOmgXnLJ2+TXJOFZjvvmsJsJAFFFphxch5ude6QWQMDUeE
+         qvOPhDpxgTU1rxDAK2+K87cRAQ/ADQsboPBp1V3lNx3pbVQeqNC7iRckFUUh/gaoCu+5
+         Xjn8ebg8XZbAGc7u/SYYS17movbzrwDlrH/B6CylIDG7BnRfz5J3zDzbQcAYRQgPUSbG
+         55Yr8ZZGSj46xWjPHXcUUcviM53t8jHmaD14gymh3wFKcK1Mp9a4gTSsut3Pq1ZB3a5F
+         Ce95AjUb+EIpU2Fam6NbrE2dCIoJaAfKy+L0T618FFDHWkwQzI85J+pBa5/WHF1GLmLK
+         X0gA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=myhB9v39Fx3HMVXa3izErRcQ764iEzzk1xHStiXalFY=;
-        b=iHDDMO9UCyFQ6491/4v7UOe0AjR9E17Qp5VJYZdHTZBGpOaodIgR3a4jbOGPYl3Zba
-         AUatLdg1DZ9b3e6ii8jt1f4bmot7U9CZ+Qr9LO16x+aLoqjjHfL9eaGK8ARhlOJYSNju
-         pFeMMGkzaZ46ewr4fvD1oW2o5dWlUeW8slrgmFF2mBt7pCROk44KZ3ewaXsx9XE86Ifz
-         MjBohO9+0w9ZRqtpIkyvTF0WBsTQOr2olH5t5qXzYoiCVaFJlw6MnJPymRYv37o2HfvN
-         YBG4/J/fRtwCgeSsZB2gni5b5gSOZnQbWim+aUakuQpZLtTnLN96lROPaszKfn6/FwUR
-         x12w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=EHGRs9PUJZ6cTFvhZyuM8jZqIx/VUy6ECAHzWPjnfL4=;
+        b=XknLPT3aJlYFANxz8VvW4B+id3D9N/rhT6f7TQ14TUxM/FnYblWmi7I/yWo9DJTeYv
+         ArV/601tt+wCyDvoIy5kfceSRJIbYhMLYoJmFAetrnppjCNh2DiTRPHYx+PLqsR9n68Q
+         byHvzQZ6Ae5VYglADuoTEpsqaD8RrL808c5e2zstT2B4QT9bhi5zJ9SdhsbXSnRKBimL
+         KI9qxTzhSa5rD2BS7NUeFv4zPk4fT5/fplaS9TWgBx7uSOqbxeFQnlNOX2gu+I/h/riP
+         HJcwfqLNoO1reqtdhbJQf/pri3TuEeHfR2xZTa+KGv2r1aX6JO+Ixr4neOffD61caQaR
+         3drw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=RmqrpA6w;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BqHy7aG9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u66-20020a25ab48000000b006453b488a42si3651204ybi.219.2022.04.21.09.52.44
+        by mx.google.com with ESMTPS id v184-20020a25dec1000000b006413550e8c9si2952355ybg.89.2022.04.21.10.03.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Apr 2022 09:52:44 -0700 (PDT)
+        Thu, 21 Apr 2022 10:03:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=RmqrpA6w;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BqHy7aG9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:57462 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49400 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nha2t-0007P8-UO
-	for alex.bennee@linaro.org; Thu, 21 Apr 2022 12:52:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60280)
+	id 1nhaD0-0006dQ-CT
+	for alex.bennee@linaro.org; Thu, 21 Apr 2022 13:03:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59442)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1nhZgA-0008TR-89
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 12:29:14 -0400
-Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b]:36374)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nhZca-0001bF-I0
+ for qemu-arm@nongnu.org; Thu, 21 Apr 2022 12:25:33 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130]:39376)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1nhZg8-0000sF-J1
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 12:29:13 -0400
-Received: by mail-qt1-x82b.google.com with SMTP id bb21so3655754qtb.3
- for <qemu-arm@nongnu.org>; Thu, 21 Apr 2022 09:29:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nhZcU-0000QV-HR
+ for qemu-arm@nongnu.org; Thu, 21 Apr 2022 12:25:30 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-2ebf3746f87so57866947b3.6
+ for <qemu-arm@nongnu.org>; Thu, 21 Apr 2022 09:25:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=myhB9v39Fx3HMVXa3izErRcQ764iEzzk1xHStiXalFY=;
- b=RmqrpA6wGye7d96lqVuEsuYBvVo9K15POMg15OLzPRPNINOa2B8Upl8Pnkdluz7UzV
- BKT0RqULxHPIEiiHRkqI/G66T/BkwMf73zC/2Brp1D8OTBOl52Ld+d9bp9DVsXhAcTDG
- O1tvhrMCTc/NZUQ3+O3Csr2tLXNEtgCF8ST05xgXwOkhASwekKcUtyvJEiFMZxW3CmIO
- qr/zUQvadZuveghbyl1kNnbyAEAgBf42FwPNgEsOHIpsSpcsMW6p+SyFGCWXD9PsFovc
- goDoapeLJ3qYtvJRyVTyE3BEJgDkKFumJy/fUtBx3IPPj11m7DBa1+LEFewLh4JznBEd
- mdFA==
+ :cc; bh=EHGRs9PUJZ6cTFvhZyuM8jZqIx/VUy6ECAHzWPjnfL4=;
+ b=BqHy7aG9T3c4sLXvMidYwjmy2mHnQbEkHqdWdfaYTprvCiuG5BEYij30vYuTteUTSD
+ /EsLdAIx6lNmlD/sgrG3P2I2X1Pw2KhaH372OpAzdhhwMerK0fNSCFFeKF5kkxgEEbcV
+ VD28hiTCRj6r6j9uAg8MaA1wcAtUeajG/dDJpwh/B21FBV7AewqH6LhLjyAGQG6lDzmI
+ SF21hDLGpIRmL8h8eTtpBxw6YGnmgkRBGbg5+PNCot/19fv966K324/YDQsw1B4XQtgm
+ lsmI0qy0nMtaKD7RlIL+73RFphzenJhMLW7wU36yc25NvSMXQ8wyrEQmTGDhgjGb19+b
+ oOlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=myhB9v39Fx3HMVXa3izErRcQ764iEzzk1xHStiXalFY=;
- b=3v0rSzNyjXlNrZc8E5ACY2+VfBOekQN5jGVl2xc+eY3iOrDyjGEudsuUDn6//X7/ga
- U1ucVyfvxj4/hjnJuv8Fst2UPXfJY32h/yx8fjJj+A9z8l17J7MaW5iBWpwQV2VXFAQd
- 1BS96xJH/bC5lnW+chMpRGeMN7tUICLN2A1dzD/gPYTT9d3MiCV3KmSEVTtIFInxCzX2
- tExa7+UxtiUfWkGuVzcJoj0F5IHLBJ1Draedarmrbr4oaXXXhHJcz+966Z/rxQinDuM1
- d+i54KDbJlDKXq23Rv6b7yfSrCRgcMGvQ5s1RtmvkY6neXgjp4iKHdRgKndNruo56YIh
- wRMw==
-X-Gm-Message-State: AOAM532JR782T79VOUNfPBuuAictxSIwPrh6lYs0WRq35XS4o0g+3G5j
- Xg9CbjpasOdeZQzQbqyxkDNvPTkF91fhgAhDhekf8Q==
-X-Received: by 2002:a05:622a:191:b0:2f1:ffe6:283c with SMTP id
- s17-20020a05622a019100b002f1ffe6283cmr185502qtw.557.1650558549952; Thu, 21
- Apr 2022 09:29:09 -0700 (PDT)
+ bh=EHGRs9PUJZ6cTFvhZyuM8jZqIx/VUy6ECAHzWPjnfL4=;
+ b=zHmL0Edb7SNp2jGEfyPo4N1nLh2whN84WcQWkWrWzh30uEmEdfr6aN3Wz9Np0r0y8J
+ mODfVc+KstZKiug6cjm2iiw3EgwdI/3Mq9kIEBcJU2HqsbiaGJWhHL8s9wfSoWy7ewx5
+ IGdeDF0PJ09YPknvA+RErqa/XN1Xdmy0EDj3C0y//8D5f9Z+XGnaK1uFT0QF1Z+iqkuB
+ arSqyw4uGN1Vj/9TY2jtV+aHudUFnJb98cqoM4V180TakKLQdLqLjLQER1IigfpEBfMI
+ 4FFsVUx/grruOX0+nV6vQMIoROyRxdlqShX4I7+yTUas9ujtGqlcoll1ZQUO2Ij+rIXC
+ VDjg==
+X-Gm-Message-State: AOAM530aFUN/iZjnMnKVdsYsQy7MiqyRVNX6zfK6oe460FRzVzIsJhXi
+ DvBmMNLWn8Z8iC5uO7YSSheFgvgL6DLdtmcxwdErkw==
+X-Received: by 2002:a81:3450:0:b0:2f1:d8f4:cd9c with SMTP id
+ b77-20020a813450000000b002f1d8f4cd9cmr430462ywa.455.1650558325078; Thu, 21
+ Apr 2022 09:25:25 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220405223640.2595730-1-wuhaotsh@google.com>
- <CAFEAcA9PCoVH_1EWTPWP_rqsOEhQZSvDZcEgw01=5W-cuyeJoA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9PCoVH_1EWTPWP_rqsOEhQZSvDZcEgw01=5W-cuyeJoA@mail.gmail.com>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Thu, 21 Apr 2022 09:28:58 -0700
-Message-ID: <CAGcCb12ouKaqwT5JAdysiVVmOQfz_MAYH+uukPfrz_3FqC7QdQ@mail.gmail.com>
-Subject: Re: [PATCH for-7.1 00/11] hw/arm: Add NPCM8XX support
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- Patrick Venture <venture@google.com>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>, Havard Skinnemoen <hskinnemoen@google.com>, 
- IV00 Uri Trichter <Uri.Trichter@nuvoton.com>, Vishal.Soni@microsoft.com, 
- Titus Rwantare <titusr@google.com>
-Content-Type: multipart/alternative; boundary="0000000000000d58ad05dd2c9c7e"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82b;
- envelope-from=wuhaotsh@google.com; helo=mail-qt1-x82b.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+References: <20220417174426.711829-1-richard.henderson@linaro.org>
+ <20220417174426.711829-11-richard.henderson@linaro.org>
+In-Reply-To: <20220417174426.711829-11-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 21 Apr 2022 17:25:14 +0100
+Message-ID: <CAFEAcA_foagYcT8D_f+bOCh_Y4u3A0=-CyJObWMVhSoBVp0SaA@mail.gmail.com>
+Subject: Re: [PATCH v3 10/60] target/arm: Remove fpexc32_access
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,69 +110,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g8OjWjJwm5up
+X-TUID: 751kXcaz80Ti
 
---0000000000000d58ad05dd2c9c7e
-Content-Type: text/plain; charset="UTF-8"
-
-Thanks for all the comments you gave! I'll go over and address them
-recently.
-
-For this question, The actual CPU should be cortex A35. However, I don't see
-them supported in QEMU. If I inserted CPU with "cortex-a35" QEMU will
-complain:
-qemu-system-aarch64: missing object type 'cortex-a35-arm-cpu'
-
-What should I do here?
-
-On Thu, Apr 21, 2022 at 3:45 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On Tue, 5 Apr 2022 at 23:37, Hao Wu <wuhaotsh@google.com> wrote:
-> >
-> > NPCM8XX BMCs are the successors of the NPCM7XX BMCs. They feature
-> > quad-core ARM Cortex A35 that supports both 32 bits and 64 bits
-> > operations.
+On Sun, 17 Apr 2022 at 18:54, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> Here and in the documentation patch you say "Cortex-A35", but the
-> patch implementing the new SoC creates Cortex-A53 CPUs. Which
-> is correct ?
+> This function is incorrect in that it does not properly consider
+> CPTR_EL2.FPEN.  We've already got another mechanism for raising
+> an FPU access trap: ARM_CP_FPU, so use that instead.
 >
-> thanks
-> -- PMM
+> Remove CP_ACCESS_TRAP_FP_EL{2,3}, which becomes unused.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu.h       |  5 -----
+>  target/arm/helper.c    | 17 ++---------------
+>  target/arm/op_helper.c | 13 -------------
+>  3 files changed, 2 insertions(+), 33 deletions(-)
 >
 
---0000000000000d58ad05dd2c9c7e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Always nice when you can fix a bug by deleting code :-)
 
-<div dir=3D"ltr">Thanks for all the comments you gave! I&#39;ll go over and=
- address them recently.<div><br></div><div>For this question, The actual CP=
-U should be cortex A35. However, I don&#39;t see</div><div>them supported i=
-n QEMU. If I inserted CPU with &quot;cortex-a35&quot; QEMU will complain:</=
-div><div>qemu-system-aarch64: missing object type &#39;cortex-a35-arm-cpu&#=
-39;<br></div><div><br></div><div>What should I do here?</div></div><br><div=
- class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Apr 21=
-, 2022 at 3:45 AM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.=
-org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"=
-gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
-4,204,204);padding-left:1ex">On Tue, 5 Apr 2022 at 23:37, Hao Wu &lt;<a hre=
-f=3D"mailto:wuhaotsh@google.com" target=3D"_blank">wuhaotsh@google.com</a>&=
-gt; wrote:<br>
-&gt;<br>
-&gt; NPCM8XX BMCs are the successors of the NPCM7XX BMCs. They feature<br>
-&gt; quad-core ARM Cortex A35 that supports both 32 bits and 64 bits<br>
-&gt; operations.<br>
-<br>
-Here and in the documentation patch you say &quot;Cortex-A35&quot;, but the=
-<br>
-patch implementing the new SoC creates Cortex-A53 CPUs. Which<br>
-is correct ?<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
---0000000000000d58ad05dd2c9c7e--
+thanks
+-- PMM

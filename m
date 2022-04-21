@@ -1,112 +1,102 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp291442lfk;
-        Thu, 21 Apr 2022 04:51:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzqwZAmiGPwCD/ytIPKTXjbgzMK9TiHik7RYxYQVIzDnPlwaVNcdlACkrUU9fCEb/iF8CJM
-X-Received: by 2002:a05:6214:2aa2:b0:446:66a7:49b3 with SMTP id js2-20020a0562142aa200b0044666a749b3mr12234206qvb.7.1650541873809;
-        Thu, 21 Apr 2022 04:51:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650541873; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp244410lfk;
+        Thu, 21 Apr 2022 03:38:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxfKpUbA3wx3yhemD8zGwdpVdUlYGT3DdnFSCXVxwHFGlmR0Hwgypnk6UALZtF7KiYFX7s9
+X-Received: by 2002:ac8:5614:0:b0:2f1:ea68:b5a0 with SMTP id 20-20020ac85614000000b002f1ea68b5a0mr16753802qtr.280.1650537503321;
+        Thu, 21 Apr 2022 03:38:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650537503; cv=none;
         d=google.com; s=arc-20160816;
-        b=VNrkEdvMg/RJfK6iCCKS2gybLVle67tC4T+0d8Nx0moxzjaF1PCkyk35y1pfJl9CvH
-         W4OriuEkdox85aP4Jp/PALdmFWykIjNJxe07eGImIxNbK+e/oeGlDOX6CRTCHhWTL8nh
-         CyVi8zc3ASomDUzqCwemcdfLSDv11MxCgbcsKy65WJgC/T88sL0eUFELVK30vmpqAAPb
-         ieLBQyd0X77W/zwtRA8n4r4EQr4AA5mMGfZts8pataMhiQWKbRqiHXGI4LqALS/9GVTe
-         DXhvVUytIr/ILFx2FLqasEpZxyTiRFs8V/M2RzBN3LQca/qlEmb1WLghvGQJiwuSogga
-         7kIA==
+        b=NUlo5XIq37SBFFDkp1orZV3UVrOdriEDHEYulsaPAhLKqmIvytkGUOUZt2B4O10Aou
+         FEwVyZHthGM3d1aSbyxV4A1kVk+GiJBIG/PzdszqobBHSHL/0D9ZicfCBTh9vy/XVCzF
+         tGRsCImMlEUFy8+PIDF+lC6NmIheTCneMgPZolkiXVzEmRZYmMYb5/5t2yAdr7NsVumo
+         iKZAJUKN4QHb2qJzAP1pILUyoi5+/YZAqVlCWIkqahQKuByKEiglzKInbt3+GG6gAT3s
+         VbCDwydD5eeVbu1W6pDJ68KA6+aqOR1/IHovrEEoHM/KH2f/mVB6yMAT7ja8I0G6pqOo
+         Ig3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=riSbgcPNoL/JlkgJ2aBmnOnzLVrpTgY+pL12VGAWXVs=;
-        b=FdCFjbKO4Fb/QyWkXb6iTRDZ3bUveVKxuMfjhb4+kbnY2Mr6h27DtGK8ePscsXAiFp
-         IdYolJJKjkEE+2SDNlwVtadu2P6uI5L5cZWSdguefso6j/NYXfXu4qyfYwe8f1nVaI96
-         JJJ2NqMEvR1zSIP6BcP7flXsSAyqbIWWflguzlxD/8WhWimLkMY93iUtYiDTjaWxasve
-         VRBrKgksmWKtEP02mU6BdOyScRKUYYAJhI4bQW+K5FmE0RJNLC1oU+SB1VXXamICBU9M
-         IPVahj/Fv2kGnHoi/L7vrrym3FEU3DbT9Z2PybJWoIfygy7GePuE0ni12LMGt8XTf4ds
-         iz7A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Gz9Lii9GKOKWdgiXgfZKu/yHcP1nd30WO3pM81LGP5A=;
+        b=R74SfO8gjWxObF7GaRxm5CMprPj80A3r3xFYVFcQg2wsUxTxTnQro7u0D+p4bv1dLG
+         51JLqJyXbLnVdzMEQUBkU5qzC8ZU+H/2n4YDM2cg+MeDAENfAeIII172dYRF5kt50VGh
+         WIO5lbl0Z4zM+I2aR04wkhrSWmSTXm5Ximcoz8SMeXPJInNmL4jZlBkhUdm3mC93cuhm
+         r9BTiVO7mO7sR+2v61Z/bULU4R6H+ot4oW+3khdYL7RkwRP5GvhfCvZ292L30TvdJRKT
+         ngUeOb5PdS3bd64zqxntpvVBt8cmt3y+//sZqna0chpxgrwjbIM6pvRwg2IVUznkotPd
+         Fmlg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DEWjNAG3;
+       dkim=fail header.i=@linaro.org header.s=google header.b=hXk3jpGk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f22-20020a05622a1a1600b002f1d64ac02dsi1449749qtb.281.2022.04.21.04.51.13
+        by mx.google.com with ESMTPS id n18-20020a05622a041200b002f1f95719b4si1224773qtx.727.2022.04.21.03.38.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Apr 2022 04:51:13 -0700 (PDT)
+        Thu, 21 Apr 2022 03:38:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DEWjNAG3;
+       dkim=fail header.i=@linaro.org header.s=google header.b=hXk3jpGk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37986 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55960 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nhVL7-0007su-9h
-	for alex.bennee@linaro.org; Thu, 21 Apr 2022 07:51:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33354)
+	id 1nhUCc-0008U6-P6
+	for alex.bennee@linaro.org; Thu, 21 Apr 2022 06:38:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nhUzV-0001PJ-Sk
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 07:28:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:56639)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nhUzU-0005KN-8o
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 07:28:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650540531;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=riSbgcPNoL/JlkgJ2aBmnOnzLVrpTgY+pL12VGAWXVs=;
- b=DEWjNAG3j3T/3aRYDNwGoQLgVZvr8IpoISHC0WEGvI5h6DRd2iMFopnidXFAoVstqBEApu
- 1iDozCO/xxlrINtsF8SlXPODM3P1LxOP7c3AzBkFcXQN6i/fZBcX8jufNd7UQm68RNdDYD
- SUo23exeAGk27G8/wK43NDBb6mLSYIg=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-425-zscLhqrjMYOyIAWN1ZDHzA-1; Thu, 21 Apr 2022 07:28:48 -0400
-X-MC-Unique: zscLhqrjMYOyIAWN1ZDHzA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BDCB93C172CF;
- Thu, 21 Apr 2022 11:28:47 +0000 (UTC)
-Received: from [10.72.13.230] (ovpn-13-230.pek2.redhat.com [10.72.13.230])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DA2DF40D016A;
- Thu, 21 Apr 2022 11:28:39 +0000 (UTC)
-Subject: Re: [PATCH v6 2/4] hw/arm/virt: Consider SMP configuration in CPU
- topology
-To: Andrew Jones <drjones@redhat.com>
-References: <20220418020920.144263-1-gshan@redhat.com>
- <20220418020920.144263-3-gshan@redhat.com>
- <20220420103248.6e3575cd@redhat.com>
- <efb5dce0-af81-b8d7-fe7d-6a8268ab96f9@redhat.com>
- <20220420135032.43711096@redhat.com>
- <7f7ead25-a050-1e86-132a-a3e1e9b1e3b1@redhat.com>
- <20220421090224.l6i3qcu53seiz5yf@gator>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <891797b8-ee75-ba54-d450-7312b578e5a7@redhat.com>
-Date: Thu, 21 Apr 2022 19:28:36 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nhU51-0002oo-5t
+ for qemu-arm@nongnu.org; Thu, 21 Apr 2022 06:30:32 -0400
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30]:47094)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nhU4x-0002IL-VL
+ for qemu-arm@nongnu.org; Thu, 21 Apr 2022 06:30:29 -0400
+Received: by mail-yb1-xb30.google.com with SMTP id b26so2308594ybj.13
+ for <qemu-arm@nongnu.org>; Thu, 21 Apr 2022 03:30:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Gz9Lii9GKOKWdgiXgfZKu/yHcP1nd30WO3pM81LGP5A=;
+ b=hXk3jpGkeAZsCZAURYdm7F6Z9Az7N9DQZ8SjBGksA3S/ZCaatTo2Av364QwY8/vIbF
+ zS9vgxZmfZevxTy2t6jH+ghl+ton7nlsJkFtVAEcEFe3gQFTfHAPbJYhA8AnJZ7mgz/F
+ p0j8XstENtIV/b3Y7l5CAlThETX9l7KhdhROHACri5cMxnZPOJFGG/S8q7rsm872hDJz
+ fYsgtqSsCq/JQSRewtvPOZ8Ye5Zv/QqXEjU6NpqqxAeMMs6Vxs4msaYxZvYJFAFmjiVQ
+ cE4wRQ0Pj/7de76QzClbL4v5hfyxsac3em05TxpjQmmMaqyLAxe+bvBi4egDF47pdIZF
+ 1qkg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Gz9Lii9GKOKWdgiXgfZKu/yHcP1nd30WO3pM81LGP5A=;
+ b=Q+Jua/5lOCI8belfQFCdqptWzUDk2cEyZN2M3RDV5SfmYoAii5mm7x8TVHaSmj/ltL
+ 7TVFAjZnVhJ/YvpFApYqas/sL3wsE3SXbzgNW7MLlHqiSFsUvbbYElaN+xbTwLxYRj3+
+ mmNEJeVladAPZcKcfBPVHh+eICdOVCCysVeAHetxm0YbXiuyxwmbQGXJSmcTmlSX77vi
+ dqe0pvd0iQKuWN9Uql8wC+6FP1aexDolvK4FseWypV1RgZgG2x5Y2IFaWGyN25mvWGSy
+ VG6SQ+Aax5ZaQly20mv5+WNw+4PPH1kUwuVIAyFPrq9Qu31NYnCNAuX3g89MLU0fmIrf
+ 24nQ==
+X-Gm-Message-State: AOAM530GDOoIkZaYdZWUWceQtekAMWGdOstahsXN8AOCc8v/PMbrIpN9
+ b51fTe3YAFznnlrZuLn1Ca8wZXo6u+J+AJ9F2n1sPA==
+X-Received: by 2002:a25:cf4d:0:b0:645:755c:a5af with SMTP id
+ f74-20020a25cf4d000000b00645755ca5afmr1964651ybg.140.1650537026141; Thu, 21
+ Apr 2022 03:30:26 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20220421090224.l6i3qcu53seiz5yf@gator>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+References: <20220411165842.3912945-1-wuhaotsh@google.com>
+In-Reply-To: <20220411165842.3912945-1-wuhaotsh@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 21 Apr 2022 11:30:15 +0100
+Message-ID: <CAFEAcA9JKUh6BEgfEnrA1Wu_fdMUgTyfHWnDwh=s0Te4N6HBqQ@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] Define NPCM7XX PWRON bit fields
+To: Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb30.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,80 +109,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: eduardo@habkost.net, peter.maydell@linaro.org, thuth@redhat.com,
- shan.gavin@gmail.com, pbonzini@redhat.com, mst@redhat.com, lvivier@redhat.com,
- armbru@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
- f4bug@amsat.org, wangyanan55@huawei.com, qemu-arm@nongnu.org,
- marcel.apfelbaum@gmail.com, Jonathan.Cameron@huawei.com, ani@anisinha.ca,
- Igor Mammedov <imammedo@redhat.com>, eblake@redhat.com
+Cc: Uri.Trichter@nuvoton.com, titusr@google.com, venture@google.com,
+ hskinnemoen@google.com, qemu-devel@nongnu.org, kfting@nuvoton.com,
+ qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com, Vishal.Soni@microsoft.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BX3jvqBMkUUJ
+X-TUID: CWbTumSxtRHx
 
-Hi Drew,
+On Mon, 11 Apr 2022 at 17:58, Hao Wu <wuhaotsh@google.com> wrote:
+>
+> Currently, the PWRON STRAP values in NPCM7XX boards are magic
+> numbers. Similar to the aspeed ones in hw/arm/aspeed.c, we
+> define bit fields constants for them and use these fields instead
+> of the magic numbers in the current implementation. The code
+> should behave exactly the same as the existing one.
+>
+> -- Changes since v1
+> * Fix errors and apply suggestions Peter made on v1.
 
-On 4/21/22 5:02 PM, Andrew Jones wrote:
-> On Wed, Apr 20, 2022 at 10:24:46PM +0800, Gavin Shan wrote:
-> ...
->> With amend to the command lines, the following one is used and below error
->> is raised from the test. The error is mentioned in the commit log in
->> PATCH[v7 2/4].
->>
->>      -machine smp.cpus=2                                   \
->>      -numa node,nodeid=0,memdev=ram -numa node,nodeid=1    \
->>      -numa cpu,node-id=1,thread-id=0                       \
->>      -numa cpu,node-id=0,thread-id=1
->>
->>      qemu-system-aarch64: -numa cpu,node-id=0,thread-id=1: no match found
->>      (reported from hw/core/machine.c::machine_set_cpu_numa_node())
->>
->> After the changes to virt_possible_cpu_arch_ids() is applied, "thread-id=1"
->> isn't valid any more. The CPU topology becomes like below. Note that
->> mc->smp_props.prefer_sockets is true on arm/virt machine.
-> 
-> prefer_sockets is only true for mach-virt 6.1 and older. It's false for
-> 6.2 and later.
-> 
 
-Yeah, @perfer_socket is false in last mach-virt-7.0 , which is used in
-this test case. So we prefer CPU core over sockets, as explained in
-hw/core/machine.c::machine_parse_smp_config(). The CPU topology
-becomes like below instead, but 'thread-id=1' is still invalid.
 
-       index    socket   cluster    core    thread
-       --------------------------------------------
-         0        0        0         0        0
-         1        0        0         1        0
+Applied to target-arm.next, thanks.
 
->>
->>      index    socket   cluster    core    thread
->>      --------------------------------------------
->>        0        0        0         0        0
->>        1        1        0         0        0
->>
->> With the amended command lines, the topology changes again so
->> that "thread-id=1" is valid:
->>
->>      index    socket   cluster    core    thread
->>      --------------------------------------------
->>        0        0        0         0        0
->>        1        0        0         0        1
->>
->> It should be ok to split the test/qtest/aarch64_numa_cpu() changes into
->> a separate patch and put it before this one. In that case, the specified
->> smp.{socket, cluster, core, threads} isn't used by arm/virt machine yet,
->> and 'thread-id=2' should be still valid. Lets do this if I need post v8.
->> Otherwise, I guess it's also fine to squash the test/qtest/aarch64_numa_cpu()
->> changes into PATCH[2/4], as we're doing.
->>
->>>
->>>>
->>>>
->>>>>>             "-numa node,nodeid=0,memdev=ram -numa node,nodeid=1 "
->>>>>>             "-numa cpu,node-id=1,thread-id=0 "
->>>>>>             "-numa cpu,node-id=0,thread-id=1");
-
-Thanks,
-Gavin
-
+-- PMM

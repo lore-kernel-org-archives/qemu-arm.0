@@ -1,258 +1,159 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp267182lfk;
-        Thu, 21 Apr 2022 04:13:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyH2LF1C3j6Q5OHDKMFRXrEht21wgai6symuxUCKvOkEmFHsYz/oHSWWQO5Cpp1aDYT/3Xi
-X-Received: by 2002:a05:620a:b9b:b0:69e:687c:ee5c with SMTP id k27-20020a05620a0b9b00b0069e687cee5cmr15376485qkh.704.1650539639590;
-        Thu, 21 Apr 2022 04:13:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650539639; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp289525lfk;
+        Thu, 21 Apr 2022 04:47:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwVLcRR5RZNHuT4qumWdUtPTXcE1uimdVaw833kerzxLmNlB3z6VsADSk5k5/Yp4FARpu+Q
+X-Received: by 2002:ad4:5b8f:0:b0:446:646a:a508 with SMTP id 15-20020ad45b8f000000b00446646aa508mr12874754qvp.113.1650541672245;
+        Thu, 21 Apr 2022 04:47:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650541672; cv=none;
         d=google.com; s=arc-20160816;
-        b=PFkAHtAUplUVLzDfe+nSTgTe9jUc5fuYKfBi7YU84LArn+WtpEnqmwG01EjHh48+BY
-         FO8iqm5tMRFeJEmrpcPIceDyk776Rg3+WUvW/UW7ZpyXisIRZjTpV/fSNHL3qviNfhLI
-         wIgt2qp33TfPjG2RvuihjqFMAcdiZN0p9ujsdBSw0TfN2sjBwVbkeLBOg+8TkosuXw/M
-         ByeWx+XETxpKj7XvObHk5rS69sY7eVTTigP7hoLyYRupSlLG5tAdIAf7qGcPoNNPIQZe
-         4GxZVOgdVWRWKpSY5ZYL0jPreM1aiDzSQb3nvbeX9lpDTUr+6Wx1+urs4eVBrw8UMT1s
-         J/hw==
+        b=t0DyTgrvTMdo/CNo1NRvKUfWaavoef8jix3s861A35JOidoi0BElKL59AujEtWScZ4
+         R5fR2/eSfN7zWc3YLz3+ngNma1KKD4PqQStMhtlKWs6oohl8Uf5/LBL45C6sCubF3Y4B
+         ND1hTtq2WCriV42jgsPbglMAV4Dqcg6CInBdOqsnmxHcSPs8Azd5PIVwt6BfWzhASEC0
+         sl4UljD6yW+5i1cpSsQZMGpvqry8mB3eFXWmJ8rq0oLz/VJzviSnbWUrnvKJlrgIOPmW
+         nZjpnkhzwbrEoJh3ahuZpibRTAk4GgjBYmwv9QgQYbp22ALV9k4wxpIkCVQlO0OX2wD9
+         iAVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=gdNiRxmPbt6xiQPF9q4pd2nyY5+TNI+hIroUMZV2/QU=;
-        b=Dw8DLtDkGrjGe0OeYTZMOTSNp/bbcvWWiDnQBEMhoBtFcROlOVYAFdde9bjvbbP5hC
-         x05qwgCOahPRZ1IGDmnVGxnrg7zNb6552NYYpXcBVKgvRL2uhvrADTn1/2Ij38lfCHpM
-         m96KEta5CW7wpRHTgoRxvHsBp3R9NyqIrDmSGYWaq6aVvxrSfTljN6tUJFLKteVbMZrK
-         CNgHdd/6sPyO8h2T3NNCe92Sst8+7Okq+0Buj43ImdixcDCGanmhXC+7gg6hyo6Zi2p0
-         DP8w1jCCURhbsycEtw48IPNvRb8RfztvKBxb0jR32zG42ZxuOVsZmEwXIxp3uD/c3STE
-         wcbQ==
+        bh=RmzqmMYSCE4vydYYrv6g/wXHBnLUvcWjWC+1vTEZQ+I=;
+        b=um0Mp9D06c/akUm0FR/t0jaohW3ioJoh4QctaG+o1EUgECTVBgsSR0I9YJtePO98w0
+         QVbyvfs7NKPrsyyVriu790E04o7a2+5A0YZsBt1vVMb15MuBPerym+3ECraKw9GYnF0G
+         vG6uaQUuCMvNiw/18VTaop8KBKD9Yw0CjOQ/P7C7pWAOWTTCdRpq1lSRdcDqhbdUa8Kw
+         E1gEgPCOaTKVPAHlcVJ3w/DH7edmjwSnmweQSv3SGf+3CspTpbn6ZuRLYx7OR01sQ8Yo
+         YUqVW2gGeM72L8hLq6Wbezr24R+C9BEt8uaQQOorylIjwq2CIKEcNVEA74LfkbjFRnK2
+         GQVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="LCdSPv/Z";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=x9w5Si5d;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bp12-20020a05622a1b8c00b002f34e71bcafsi273548qtb.136.2022.04.21.04.13.59
+        by mx.google.com with ESMTPS id e16-20020a05622a111000b002ed912d516bsi1353181qty.460.2022.04.21.04.47.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Apr 2022 04:13:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 Apr 2022 04:47:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="LCdSPv/Z";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=x9w5Si5d;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49800 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57698 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nhUl5-0005Fz-3u
-	for alex.bennee@linaro.org; Thu, 21 Apr 2022 07:13:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57776)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nhVHr-00025W-Ob
+	for alex.bennee@linaro.org; Thu, 21 Apr 2022 07:47:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60448)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nhUkU-0004lQ-JC
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 07:13:22 -0400
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133]:34945)
+ id 1nhUtk-00014R-DO
+ for qemu-devel@nongnu.org; Thu, 21 Apr 2022 07:22:56 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130]:34998)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nhUkP-0002OJ-JW
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 07:13:22 -0400
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-2ef4a241cc5so48334817b3.2
- for <qemu-arm@nongnu.org>; Thu, 21 Apr 2022 04:13:17 -0700 (PDT)
+ id 1nhUth-0004GC-EU
+ for qemu-devel@nongnu.org; Thu, 21 Apr 2022 07:22:56 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-2ef4a241cc5so48581507b3.2
+ for <qemu-devel@nongnu.org>; Thu, 21 Apr 2022 04:22:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gdNiRxmPbt6xiQPF9q4pd2nyY5+TNI+hIroUMZV2/QU=;
- b=LCdSPv/ZHi0+hsg83FSfNnsH19n0gkBsfhcEi994A8SpjYx+ZFhigb0s68Po/4nS+E
- 5CBs3TctpQPAKZddhmjBfflZLEAgc8OyP0jGX1Nci9reiJL0IV3ZRog0rtOVphgD4dQA
- NNwgr1+UJ4n3jWrXD0yq/yeTVOYywNVQ3Vn4c7P9Jj4+IzbJuZ28W+ymIcbLHvjjNoBH
- 1CoSOas+vAum40EeVnfkZ/09um0dDO77XKOh+8d8CkcmiSUyhqOeqkYOHTDh0gfsAeFy
- D1YXk/H4Ii5i+TK7NjQxtXkyHWuUcfNjM2OHqgpivVM77fo61qpRUgp2Qnm4tPFsUE5I
- 5Jew==
+ :cc; bh=RmzqmMYSCE4vydYYrv6g/wXHBnLUvcWjWC+1vTEZQ+I=;
+ b=x9w5Si5d5UfOZgmQJFc93J9m7QvWUVwZt8kBgTD5iXOMMw18pPGkPBGZIWBshQG8la
+ 8J+mxXhZDZ1163/S2HjattlD+0o7/GRkSyu4LDBbWJS0FPKhpySbyzfl4FxI283uZ3uw
+ 2Gc70n4hq/pSsfIWwDWE30kS+kdtOanS9dYbK+0TmFXu+nsnLlnh5HS3p33Qcdf4mNje
+ gHv37GF+DbSxXM4lN6QK3qhzJWzo2TYfUlavMCIwT/qlobjHN1RXIAvP9drXjD/ocpOl
+ ya54GL2RYh/P/1IECUQ/YZ53sW7ZpuwZRmd85t5Lwc8Pyxj7S57PeDPY4sjhmEoOXMyG
+ 4VrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=gdNiRxmPbt6xiQPF9q4pd2nyY5+TNI+hIroUMZV2/QU=;
- b=5RbuqgOUCacfcqL0yh1TxrCLKN12Fx76y+gkIQKa8GFCThV9MZTCiqzxly87kOs49z
- 2DJWGxiMSIa3lSxyrTW2t1obyYsv62jSekQr3INsA0a3j61UE4xdPkUxQabgcbpSD/bt
- 2VsJJGoZ4UHEyGH7+hPaL8XuMhP6C2HIYeT/MtHvcceuhZdN2glGrCge37M1xLVpHUUV
- G1bKQ6xNw0FVBrnx4onvk6YjyKj7e278fmws9rcYcrLTQkLivQu0DgVuOkg2301jFIg2
- UhXsuKPVPVqr+qs/IgzySEk3e/zpEAXa4FRJ+EUj2rM9z42AYfgOP1ZhUJCWNUxKTITe
- CuaQ==
-X-Gm-Message-State: AOAM533aaONQxC/LVTOK0iBwguV6P+2eyI0aE/LTgtXQfz30bn2DHShz
- v4P5LVbjOp9n5ZhAej6cseoYRUmWZue3JyBMpeS62Q==
-X-Received: by 2002:a0d:fc83:0:b0:2e5:b0f4:c125 with SMTP id
- m125-20020a0dfc83000000b002e5b0f4c125mr25494275ywf.347.1650539596490; Thu, 21
- Apr 2022 04:13:16 -0700 (PDT)
+ bh=RmzqmMYSCE4vydYYrv6g/wXHBnLUvcWjWC+1vTEZQ+I=;
+ b=oQvO/F80LO3NBmLZUL4M/MFdC/r1B11SodCeJLd9zJOjXsdBjJTZSI2DVY6CqRybRi
+ jA69nHCLeINX0/dIa7bL8uw/gHiVwyS5Wno9a56FshUBsON3j407eox68Y0IRusIEfeH
+ IrSmBAIefQA40hOhJVqwEX0pCx3lzcUMn70D/MK7l8uqRHxPqfsTkvULblMgRp+ffaIB
+ RoDSCdWVFplb/hDbFIj3lWCpkWQBYxM9OzsDDUlXdrrfAsXNXxLocUHiVhP5V6jSgevn
+ IGmmJ9pbx2p+Qfu/9opbihDOtP61pU6sOC6X3unbBjXKTV5AVoiRPl5t4yLfgzJTMMRr
+ yy2w==
+X-Gm-Message-State: AOAM533sv5D4Ok1+oWuDortScKYv7JO+wlmAlkPYUGU6PSSYVp0AtC5O
+ GTRav+hDGAAaiSBqAMXaGrqqNnLg2DwQpCpYD7T2cw==
+X-Received: by 2002:a81:3450:0:b0:2f1:d8f4:cd9c with SMTP id
+ b77-20020a813450000000b002f1d8f4cd9cmr11191470ywa.455.1650540172445; Thu, 21
+ Apr 2022 04:22:52 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220405223640.2595730-1-wuhaotsh@google.com>
- <20220405223640.2595730-9-wuhaotsh@google.com>
-In-Reply-To: <20220405223640.2595730-9-wuhaotsh@google.com>
+ <20220405223640.2595730-10-wuhaotsh@google.com>
+In-Reply-To: <20220405223640.2595730-10-wuhaotsh@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 Apr 2022 12:13:05 +0100
-Message-ID: <CAFEAcA8V2oEyKuLPh8C1HaMXj5xyYZ-NJLyrNM5DhD14B5wvpg@mail.gmail.com>
-Subject: Re: [PATCH for-7.1 08/11] hw/net: Add NPCM8XX PCS Module
+Date: Thu, 21 Apr 2022 12:22:41 +0100
+Message-ID: <CAFEAcA-J-=DVtHwDuPmn40t7ix9FUC1aQysBHMq5gfGRA1f12w@mail.gmail.com>
+Subject: Re: [PATCH for-7.1 09/11] pc-bios: Add NPCM8xx Bootrom
 To: Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Uri.Trichter@nuvoton.com, titusr@google.com, venture@google.com,
  hskinnemoen@google.com, qemu-devel@nongnu.org, kfting@nuvoton.com,
  qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com, Vishal.Soni@microsoft.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z7YFKoyIRJ8n
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e1ViUkn37Eug
 
 On Tue, 5 Apr 2022 at 23:38, Hao Wu <wuhaotsh@google.com> wrote:
 >
-> The PCS exists in NPCM8XX's GMAC1 and is used to control the SGMII
-> PHY. This implementation contains all the default registers and
-> the soft reset feature that are required to load the Linux kernel
-> driver. Further features have not been implemented yet.
+> The bootrom is a minimal bootrom that can be used to bring up
+> an NPCM845 Linux kernel. Its source code can be found at
+> github.com/google/vbootrom/tree/master/npcm8xx
 >
 > Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> Reviewed-by: Titus Rwantare <titusr@google.com>
-
-> +static uint16_t npcm_pcs_read_sr_ctl(NPCMPCSState *s, hwaddr offset)
-> +{
-> +    hwaddr regno = offset / sizeof(uint16_t);
-> +
-> +    if (regno >= NPCM_PCS_NR_SR_CTLS) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: SR_CTL read offset 0x%04" HWADDR_PRIx
-> +                      " is out of range.",
-
-qemu_log_mask strings need to have a trailing "\n" (here and below)
-
-
-> +static uint64_t npcm_pcs_read(void *opaque, hwaddr offset, unsigned size)
-> +{
-> +    NPCMPCSState *s = opaque;
-> +    uint16_t v = 0;
-> +
-> +    if (offset == NPCM_PCS_IND_AC_BA) {
-> +        v = s->indirect_access_base;
-> +    } else {
-> +        switch (s->indirect_access_base) {
-> +        case NPCM_PCS_IND_SR_CTL:
-> +            v = npcm_pcs_read_sr_ctl(s, offset);
-> +            break;
-> +
-> +        case NPCM_PCS_IND_SR_MII:
-> +            v = npcm_pcs_read_sr_mii(s, offset);
-> +            break;
-> +
-> +        case NPCM_PCS_IND_SR_TIM:
-> +            v = npcm_pcs_read_sr_tim(s, offset);
-> +            break;
-> +
-> +        case NPCM_PCS_IND_VR_MII:
-> +            v = npcm_pcs_read_vr_mii(s, offset);
-> +            break;
-> +
-> +        default:
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "%s: Read with invalid indirect address base: 0x%02"
-
-Why are you specifying a width of 2 here? The valid values are definitely
-larger than 2 digits wide, so presumably invalid values probably are as well...
-
-> +                          PRIx16 "\n", DEVICE(s)->canonical_path,
-> +                          s->indirect_access_base);
-> +        }
-> +    }
-> +
-> +    trace_npcm_pcs_reg_read(DEVICE(s)->canonical_path, s->indirect_access_base,
-> +                            offset, v);
-> +    return v;
-> +}
-
-> +static void npcm_pcs_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    set_bit(DEVICE_CATEGORY_NETWORK, dc->categories);
-
-Not sure this is the right category -- this doesn't seem to
-be a network device in the usual sense.
-
-
-> +# npcm_pcs.c
-> +npcm_pcs_reg_read(const char *name, uint16_t indirect_access_baes, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
-> +npcm_pcs_reg_write(const char *name, uint16_t indirect_access_baes, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
-
-Typo : should be "_base" I assume.
-
-
-> +
->  # dp8398x.c
->  dp8393x_raise_irq(int isr) "raise irq, isr is 0x%04x"
->  dp8393x_lower_irq(void) "lower irq"
-> diff --git a/include/hw/net/npcm_pcs.h b/include/hw/net/npcm_pcs.h
+> Reviwed-by: Titus Rwantare <titusr@google.com>
+> ---
+>  pc-bios/npcm8xx_bootrom.bin | Bin 0 -> 608 bytes
+>  1 file changed, 0 insertions(+), 0 deletions(-)
+>  create mode 100644 pc-bios/npcm8xx_bootrom.bin
+>
+> diff --git a/pc-bios/npcm8xx_bootrom.bin b/pc-bios/npcm8xx_bootrom.bin
 > new file mode 100644
-> index 0000000000..bd4f71bf3c
-> --- /dev/null
-> +++ b/include/hw/net/npcm_pcs.h
-> @@ -0,0 +1,42 @@
-> +/*
-> + * Nuvoton NPCM8xx PCS Module
-> + *
-> + * Copyright 2022 Google LLC
-> + *
-> + * This program is free software; you can redistribute it and/or modify it
-> + * under the terms of the GNU General Public License as published by the
-> + * Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-> + * for more details.
-> + */
-> +
-> +#ifndef NPCM_PCS_H
-> +#define NPCM_PCS_H
-> +
-> +#include "hw/sysbus.h"
-> +
-> +#define NPCM_PCS_NR_SR_CTLS     (0x12 / sizeof(uint16_t))
-> +#define NPCM_PCS_NR_SR_MIIS     (0x20 / sizeof(uint16_t))
-> +#define NPCM_PCS_NR_SR_TIMS     (0x22 / sizeof(uint16_t))
-> +#define NPCM_PCS_NR_VR_MIIS     (0x1c6 / sizeof(uint16_t))
-> +
-> +typedef struct NPCMPCSState {
-> +    SysBusDevice parent;
-> +
-> +    MemoryRegion iomem;
-> +
-> +    uint16_t indirect_access_base;
-> +    uint16_t sr_ctl[NPCM_PCS_NR_SR_CTLS];
-> +    uint16_t sr_mii[NPCM_PCS_NR_SR_MIIS];
-> +    uint16_t sr_tim[NPCM_PCS_NR_SR_TIMS];
-> +    uint16_t vr_mii[NPCM_PCS_NR_VR_MIIS];
-> +} NPCMPCSState;
-> +
-> +#define TYPE_NPCM_PCS "npcm-pcs"
-> +OBJECT_DECLARE_SIMPLE_TYPE(NPCMPCSState, NPCM_PCS)
+> index 0000000000000000000000000000000000000000..6370d6475635c4d445d2b927311edcd591949c82
+> GIT binary patch
+> literal 608
+> zcmdUrKTE?<6vfX=0{*3B5ET?nwWA^;qEk()n=Xb9-4dxoSBrz#p|QJQL~zokn{Eyc
+> z?PBXUkU+aB?k?IbNQftG5ej|*FC2c{bKkr7zLy3jhNxj`gc_y5h&V=Ru)PgZC)Y`f
+> zTqA9Am28qL<U6@cMtA>Hlr*^&hT#;re-)dpxT0U42|O+cWOcx=B;{6xXH04vx?cjm
+> z+%U{oFx!aPpV3>ZKz0i$XA-yq{f}<H?{MHBq+VwIvR9WmcL(xr1vuIRGELcRC-S+P
+> zl3%RlR5(6+1;xg_<~xR#bPItDN1*Hp^{JyNs7o*BMq0Q9q1#>x4;|pb<NWIbQ8wb1
+> zTac^<ebj^E^Ig<?U?(PO-w>w;l#@9zGd|z-rs*H@V-o%PEV)D-)8n2%DyH5@w_^Y8
+> LH5R3RMV#gjxYTW}
 
-OBJECT_DECLARE_SIMPLE_TYPE does the 'typedef' for you, so you
-don't need to do that in your struct definition if you're using that
-macro.
+You can't just dump a sourceless binary into pc-bios/.
+Check out the commit that added the npcm7xx bootrom blob
+for what else you need: that's commit d1cb5eda67a0a6.
+
+In particular you need to document it in the README file, and have
+runes in the Makefile to rebuild the blob from source (and running
+the Makefile should be how the blob in the commit was created!).
+You'll probably also want a preceding commit to bump the vbootrom
+submodule commit and provide a fresh npcm7xx_bootrom blob from
+whatever commit you choose to bump the submodule to.
 
 thanks
 -- PMM

@@ -1,236 +1,145 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp522337lfk;
-        Thu, 21 Apr 2022 10:33:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVSS+Si4IpL/ks7w1H+ln4zXaGDUi6OU+eWaXPx93wmpBg58UGA7ZVXxaOognioq38ctp5
-X-Received: by 2002:a5b:dc5:0:b0:624:f16d:7069 with SMTP id t5-20020a5b0dc5000000b00624f16d7069mr772977ybr.295.1650562409887;
-        Thu, 21 Apr 2022 10:33:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650562409; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp545305lfk;
+        Thu, 21 Apr 2022 11:11:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx6czjJGeLxzcyjJoAjBF3gSV5Pgscsxa4k3heERNr5G1SUk5cGhuPnCl8FZ4V5Dkwbq8z6
+X-Received: by 2002:a5d:6481:0:b0:20a:9241:cf9e with SMTP id o1-20020a5d6481000000b0020a9241cf9emr688186wri.698.1650564678854;
+        Thu, 21 Apr 2022 11:11:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650564678; cv=none;
         d=google.com; s=arc-20160816;
-        b=t4iYVTXK+WymRTzk6Yt37EkO+4WYOgYudHy2nffpIox9pta2p7uni/1d64D+RITMCx
-         KMyE2BibcmDtBMDtEDUT7X8B1XHZk1zIhITd6mhh/SVgepxpcOempCNqbbRxmzAnBijH
-         Nd6//ymfAlAwrqIdLdOYTTtuQa9N8h1TbIcESJobPI92FNapNLo4Ys0yoTRn4LvOQEpz
-         vwf5PeJ1yxY3qVvkVDEi4xATnp6UGhdZCHcqrvEcfEQ+vAfkSdG9wa3lkw5F0GuXaygy
-         +Ew5KTieQ58NHSq+9ikaNaGQcnv4OHejf9bJzzh1odgoUUue5Gc2lNqoAtiDl9zK5oyQ
-         PzkQ==
+        b=bktOKdsXXRW6fWozhOp8ZfEbBH+KK6GDlHR1ZRcIuYx9ZSMEpfRvl+BfY1ZNnfsN0p
+         PYt0EdpuAsfIa++4tXpmRGKePAilpy2m/7bjoVotnAm2SEx8h98oMDMdrm3J0slPAzlU
+         DZUdChTlIplkDyGM5H+g+ZxPIoSrHXjfW7Ve8mvZuSvzgjj7KcJ/TGm5xBDFAB5MPr9v
+         3tWIYk9sAqDnm96NNF49h7tfMSi/3IYWLwuFyiZ5vEhzLgl/uyvdLcbSuAKOLGrbgzNv
+         JZ66IVT2kpnijKIHpDdOR8vahK6xzglBPJTrgGB7SXx2jixeY82LkFo+AwN62yZgDw/r
+         D30Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ARybaRdfRU2zyGFZvJK026gdqRK0ZnsRjQr9jKOxV6M=;
-        b=BBGm9Ta1Gg42+CCNigKmIKfuTgxGPLGOlKKLt5bny9PdjBogCcpF6Wrz0cxR9Vp1Wo
-         MS27Mh70MqzYd22mpeeHQ4MJHGJnSo/bdkZZyIkrydW9wovKj3YYNgcB+n6JgwTlD7Jg
-         DRTF0A1z4iFJtxPEJjJRS6vv6wZw4ESrCbsvQQ336Z/UmQxUj298CTD14NJ63JEvyGnX
-         TRRlL7e+kg3MrvHmP9hLWD0W2/JX2qyDg1pjiazUz9Dtyuhj9+CGbg0JlMt1sM/46BVt
-         lVXnyNe/gpdzfhCevTQVynXyfuCrCftyriV0Su0EM+1QIdTB+MMlLFi3SO31mZbhg7BH
-         TwXg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=E4BhfBZ/gOulsuXtZcPtnjd0j85oRMKXMtwm7UXYT1I=;
+        b=LEzycCr8sm1YArHNlIGTnPb5wB1PKb5Xzv4P9iXW3i3XEq5xoCIb+pKmRulP9gHHHj
+         vr6joftVCnptTOZgdTDpSdfmMnMlXJt0eEQRAMfigfUQeWzPXiyDCTPF96H2+HwpyVbm
+         /6b101YP+SGNqoFd7yWDyW+SPC+v4W8/IekcXf4QpnXrJY00pBayUBedq5THZu+1fCrw
+         DXrllIqLcb0E3v/rnUtkNIy7jL+AC6t0q4iT+AGWT14oO+YkBEx7dEh0fbCghORziT/S
+         or/VX45YacXltC2qcsMGRYe5uZr2NnfHxWl4NHSo4lVT7jXIumr2aXpsL5YYS3p1+g4t
+         UAAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=dddggEan;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g1-20020a25ae41000000b00641dd069bbasi3114288ybe.488.2022.04.21.10.33.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Apr 2022 10:33:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=2uhd+2OO;
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Return-Path: <damien.hedde@greensocs.com>
+Received: from beetle.greensocs.com (beetle.greensocs.com. [5.135.226.135])
+        by mx.google.com with ESMTPS id k18-20020adff292000000b00207916b3cf5si2389931wro.212.2022.04.21.11.11.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Apr 2022 11:11:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) client-ip=5.135.226.135;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=dddggEan;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:50340 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nhagL-0004RD-84
-	for alex.bennee@linaro.org; Thu, 21 Apr 2022 13:33:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39884)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1nha9e-0001yh-GE
- for qemu-devel@nongnu.org; Thu, 21 Apr 2022 12:59:42 -0400
-Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c]:34306)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1nha9c-00069i-Ir
- for qemu-devel@nongnu.org; Thu, 21 Apr 2022 12:59:42 -0400
-Received: by mail-qk1-x72c.google.com with SMTP id j9so4035765qkg.1
- for <qemu-devel@nongnu.org>; Thu, 21 Apr 2022 09:59:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ARybaRdfRU2zyGFZvJK026gdqRK0ZnsRjQr9jKOxV6M=;
- b=dddggEan8eKVHncu5x0CJCZFZXxxq8VZilwZZ2HTGeCY1YTDLYmb0Ik7Fowx6nLda5
- P1g7cA+Wa5984QwfQDrA1UsdLQhgjrPPEbMd0Sr/WrYbuR8xO1z+vqgC5wSi0UKEcymo
- V4TqB++HPtQlZyw6LEkN7EZaTVsjCIMtrVtX4J7E5v8kPEe2FF+l0ieR3dAB7/dqjxP2
- wAnWWapw2zjsgknT5vlYHGOdJae6uuMPmRUEDefRKjppyyEZ9+GWUZDaBuEQ1tPeTiWo
- rpbh0BkmVkjQU0a3W4SUPKdv9+HuJkxfb787/MueDa9cZMlMEm4Tq5LlPR8zfHq4ztD+
- sQCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ARybaRdfRU2zyGFZvJK026gdqRK0ZnsRjQr9jKOxV6M=;
- b=4+ZEkQ9RLyV6eRpc6NGhYC8aHdxYSJs9V6cuV3nXAUkCFCd5AmAx5crJ2zwioNqU73
- +A0drbKqjQsDsBu9/z7OTP7CGBYU9ve4E2/31lZN2k/yGIezLlYpP29QvQfCdXrjtk2r
- Mi5bOo3bymbavy4oL6AwUrpI64xhJOcQu9pJx6/cs/VPej59sRMrcF067Xc/F4/MiFzp
- Pzx+0pL5X8kVO/ziODxRKXy2vjI7FwZoctzYokHFDsj2YeKRJ0TUfI278itzE8oCHzpE
- xBOPyG6LfREorqYWpdRV+8mCbPUwua6TmzooZ1/4o+zfTxCcHuXPjPc8R6UhwITw7BZf
- VIlQ==
-X-Gm-Message-State: AOAM530HXSOPLMK4zb5Ft/tJqcu5unOMfDWtnAWc4UBX3wiS7A2eHcZO
- Sls+s1a3LZix2NwDQgXh5V63uL+XaDCW4dU6xgvcpQ==
-X-Received: by 2002:a05:620a:15cb:b0:69c:7933:ad3e with SMTP id
- o11-20020a05620a15cb00b0069c7933ad3emr221571qkm.755.1650560379462; Thu, 21
- Apr 2022 09:59:39 -0700 (PDT)
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=2uhd+2OO;
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Received: from [192.168.13.13] (unknown [195.68.53.70])
+	by beetle.greensocs.com (Postfix) with ESMTPSA id CC1E620896;
+	Thu, 21 Apr 2022 18:11:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+	s=mail; t=1650564677;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=E4BhfBZ/gOulsuXtZcPtnjd0j85oRMKXMtwm7UXYT1I=;
+	b=2uhd+2OOxTifN64la9wSm+Af6GcImxiVbENSnpMqdXdpw+zxUGyqhiH29p3fRbhBO4nuXc
+	zICjhVGYloTekt71eYHDLOLGslq/ZnwprZYLkm3isjiYuyru1Mmbjmihxcs1PuRpkONhcG
+	ZJLQknouoEdUG7Zx1u0pIPZqZTnRtDs=
+Message-ID: <e41b4422-1324-a710-ad6b-7d00531f8b47@greensocs.com>
+Date: Thu, 21 Apr 2022 20:11:16 +0200
 MIME-Version: 1.0
-References: <20220405223640.2595730-1-wuhaotsh@google.com>
- <CAFEAcA9PCoVH_1EWTPWP_rqsOEhQZSvDZcEgw01=5W-cuyeJoA@mail.gmail.com>
- <CAGcCb12ouKaqwT5JAdysiVVmOQfz_MAYH+uukPfrz_3FqC7QdQ@mail.gmail.com>
- <CAFEAcA9P9aYrOgo08h1qS4mWt3+GmxgDYbxC-BTrG8_e67w18w@mail.gmail.com>
-In-Reply-To: <CAFEAcA9P9aYrOgo08h1qS4mWt3+GmxgDYbxC-BTrG8_e67w18w@mail.gmail.com>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Thu, 21 Apr 2022 09:59:28 -0700
-Message-ID: <CAGcCb13ty6=8ETcvcJqUi5_o1S-3CMP_u2_wZoCvrd34siJmgg@mail.gmail.com>
-Subject: Re: [PATCH for-7.1 00/11] hw/arm: Add NPCM8XX support
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [RFC PATCH 00/18] user-creatable cpu clusters
+Content-Language: en-US-large
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- Patrick Venture <venture@google.com>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>, Havard Skinnemoen <hskinnemoen@google.com>, 
- IV00 Uri Trichter <Uri.Trichter@nuvoton.com>, Vishal.Soni@microsoft.com, 
- Titus Rwantare <titusr@google.com>
-Content-Type: multipart/alternative; boundary="00000000000019795905dd2d090b"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72c;
- envelope-from=wuhaotsh@google.com; helo=mail-qk1-x72c.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o/iBVzo5fpbX
+Cc: qemu-devel@nongnu.org, mark.burton@greensocs.com,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Bin Meng <bin.meng@windriver.com>, Vijai Kumar K <vijai@behindbytes.com>,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org
+References: <20220330125639.201937-1-damien.hedde@greensocs.com>
+ <CAFEAcA-RW411mWCQOu03i=LaPHRm1F6R3Z9bquBDJPhv-ZxWGQ@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+In-Reply-To: <CAFEAcA-RW411mWCQOu03i=LaPHRm1F6R3Z9bquBDJPhv-ZxWGQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: 3XmfyXbSMl8C
 
---00000000000019795905dd2d090b
-Content-Type: text/plain; charset="UTF-8"
 
-Thanks!
 
-I can add the new CPU type to virt in a separate patch set. It might take a
-while before I send out
-that patch set.
+On 4/21/22 17:51, Peter Maydell wrote:
+> On Wed, 30 Mar 2022 at 13:56, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>>
+>> Hi,
+>>
+>> This series add devices to be able to user-create (coldplug) cpu
+>> clusters. The existing cpu cluster dictates how cpus are exposed
+>> in gdb, but it does not handle the cpu objects creation. This series
+>> adds a new device to handle both issues and adds support for two
+>> architectures: arm and riscv.
+>>
+>> Please look at patches 2 and 3 for more details about the new device.
+>>
+>> Last part concerning the riscv is rfc as I do non-backward compatible
+>> updates. I'm not sure what migration (or other) constraints we have
+>> on these machines and I probably need to make some changes to cope
+>> with them.
+>>
+>> This series almost deprecates the cpu-cluster type as all uses
+>> but one are replaced.
+> 
+> I don't think we should have two different concepts which
+> are "a group of CPUs". It means we wind up with two different
+> ways to do something (which we have too many examples of
+> already), only one of which gets to use the nicer, more obvious
+> name.
 
-Since this patch set will be dependent on that I won't send out a v2 on
-this patch set until that finishes.
+I was not sure that I could merge the cpu-cluster into the new object 
+and agree having both is not ideal. I can
+1. delete the last cpu-cluster usecase and the object type
+2. manage to update in place the cpu-cluster instead of adding the new type.
 
-On Thu, Apr 21, 2022 at 9:42 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
+In the end, the object will be the same.
 
-> On Thu, 21 Apr 2022 at 17:29, Hao Wu <wuhaotsh@google.com> wrote:
-> >
-> > Thanks for all the comments you gave! I'll go over and address them
-> recently.
-> >
-> > For this question, The actual CPU should be cortex A35. However, I don't
-> see
-> > them supported in QEMU. If I inserted CPU with "cortex-a35" QEMU will
-> complain:
-> > qemu-system-aarch64: missing object type 'cortex-a35-arm-cpu'
-> >
-> > What should I do here?
->
-> You need to implement the new CPU type first... This means adding
-> something to target/arm/cpu64.c which will look similar to the
-> existing CPU handling. You need to watch out for:
->  * getting all the ID register values right (check the TRM for the CPU)
->  * implementing whatever the right impdef system registers are
->  * checking whether QEMU is still missing support for any of the
->    architectural features that the A35 implements (what QEMU
->    supports is listed in docs/system/arm/emulation.rst)
->
-> It's typically not much code but quite a lot of cross-checking
-> against the TRM for the CPU that we're not missing pieces...
-> Since you can add the A35 as a supported CPU type for the 'virt'
-> board you can do A35 support as a separate patchset that doesn't
-> depend on the npmc8xx work.
->
->
-> https://patchew.org/QEMU/20220417174426.711829-1-richard.henderson@linaro.org/20220417174426.711829-60-richard.henderson@linaro.org/
-> is an example of how to add a new CPU (in that case the A76), at
-> the end of a large patchset from RTH that's still going through
-> code review.
->
-> -- PMM
->
+I am also confused by the "cluster" naming.
 
---00000000000019795905dd2d090b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The original cpu-cluster is used only to set cluster_index of cpus which 
+is used in the gdbstub to group cpus in inferiors. So it is just a 
+container to expose cpus in a specific gdb inferior.
 
-<div dir=3D"ltr">Thanks!<div><br></div><div>I can add the=C2=A0new CPU type=
- to virt in a separate patch set. It might take a while before I send out</=
-div><div>that patch set.</div><div><br></div><div>Since this patch set will=
- be dependent on that I won&#39;t send out a v2 on this patch set until tha=
-t finishes.</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" clas=
-s=3D"gmail_attr">On Thu, Apr 21, 2022 at 9:42 AM Peter Maydell &lt;<a href=
-=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote=
-:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
-8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Thu, 21 Apr=
- 2022 at 17:29, Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" target=3D=
-"_blank">wuhaotsh@google.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Thanks for all the comments you gave! I&#39;ll go over and address the=
-m recently.<br>
-&gt;<br>
-&gt; For this question, The actual CPU should be cortex A35. However, I don=
-&#39;t see<br>
-&gt; them supported in QEMU. If I inserted CPU with &quot;cortex-a35&quot; =
-QEMU will complain:<br>
-&gt; qemu-system-aarch64: missing object type &#39;cortex-a35-arm-cpu&#39;<=
-br>
-&gt;<br>
-&gt; What should I do here?<br>
-<br>
-You need to implement the new CPU type first... This means adding<br>
-something to target/arm/cpu64.c which will look similar to the<br>
-existing CPU handling. You need to watch out for:<br>
-=C2=A0* getting all the ID register values right (check the TRM for the CPU=
-)<br>
-=C2=A0* implementing whatever the right impdef system registers are<br>
-=C2=A0* checking whether QEMU is still missing support for any of the<br>
-=C2=A0 =C2=A0architectural features that the A35 implements (what QEMU<br>
-=C2=A0 =C2=A0supports is listed in docs/system/arm/emulation.rst)<br>
-<br>
-It&#39;s typically not much code but quite a lot of cross-checking<br>
-against the TRM for the CPU that we&#39;re not missing pieces...<br>
-Since you can add the A35 as a supported CPU type for the &#39;virt&#39;<br=
->
-board you can do A35 support as a separate patchset that doesn&#39;t<br>
-depend on the npmc8xx work.<br>
-<br>
-<a href=3D"https://patchew.org/QEMU/20220417174426.711829-1-richard.henders=
-on@linaro.org/20220417174426.711829-60-richard.henderson@linaro.org/" rel=
-=3D"noreferrer" target=3D"_blank">https://patchew.org/QEMU/20220417174426.7=
-11829-1-richard.henderson@linaro.org/20220417174426.711829-60-richard.hende=
-rson@linaro.org/</a><br>
-is an example of how to add a new CPU (in that case the A76), at<br>
-the end of a large patchset from RTH that&#39;s still going through<br>
-code review.<br>
-<br>
--- PMM<br>
-</blockquote></div>
+But in most machines (which don't use explicit cpu-clusters) this 
+cluster[_index] has nothing to do with the topology's cluster.
 
---00000000000019795905dd2d090b--
+In practice, topology's cluster is not a 1-1 match of gdb inferior in 
+gsbtub ("cpu-cluster") and I'm not sure what to do with that...
+
+I'm happy to keep the "cpu-cluster" if everyone feel the same.
+
+> 
+> The stated motivation is to allow user creation of CPU clusters,
+> but I'm not sure how this would work -- CPUs need a lot of
+> things wiring up like interrupt lines and memory regions, which
+> you can't do on the command line anyway. Do you have an example
+> of what the new code lets you do?
+
+This simplify the place where cpu-cluster was used (see patch 9 for 
+example) as you don't need to create both the cpus and the cluster.
+
+But mostly the goal is to provide cpu cold plug functionality with the 
+qapi interface (not the cli interface). With this series + my other 
+series adding commands to cold-plug devices and memory-map sysbus 
+devices, I reproduced the arm virt board starting from the none machine.
+
+Interrupts are wired using qom_set.
+
+Thanks,
+--
+Damien

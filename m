@@ -1,154 +1,163 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp572336lfk;
-        Thu, 21 Apr 2022 11:58:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzm1T4nUZ7Q7cWbLms9Icck2U8cPrH0be1D9g0AhqvAtsubFVXwzUYT++qevZytggVjJnD7
-X-Received: by 2002:a25:ed08:0:b0:645:811b:3f04 with SMTP id k8-20020a25ed08000000b00645811b3f04mr1190962ybh.100.1650567533013;
-        Thu, 21 Apr 2022 11:58:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650567533; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp560407lfk;
+        Thu, 21 Apr 2022 11:38:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOTApskrLmqMn+9bDT7LonPSS/boe8R0Jy9+V7TleLFir2dLfOtyq2kOEXQWQQElEBxaw0
+X-Received: by 2002:a81:13d6:0:b0:2ec:2b3f:28c6 with SMTP id 205-20020a8113d6000000b002ec2b3f28c6mr1175187ywt.10.1650566290948;
+        Thu, 21 Apr 2022 11:38:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650566290; cv=none;
         d=google.com; s=arc-20160816;
-        b=kwryCufYxbMJEERBkaCdKI6vPDQl7RTFoNgGO8HkjGFBBpESsmWwX+AyiWOs54vgXv
-         oWjDJUPG8AlX9kW+eq/o8kfdK4FunatR4npKFkMu5XMKLx44bksMrnjSETpmh6NTo43x
-         MDHm9ZbCxD3Uk2TaXgDzm91AsW2u0RGGQMtmAXINJZo9nWjPDwblw0a05akXfHSRvtfM
-         XfzU7b+VjpTRDu+eK/PdycC7DRqnanhRk5I7c1pDtfCLNM1Z0xtbEo4Gix11SO8z5B2q
-         CUqgFXn6bSbXn0WeVi+jGxmqsBz8ECEptMnM6EU1DtfffAnutEgkESKPHS+RTo4tcaWK
-         ccfQ==
+        b=nhYAdT6fJnE0x6zBWjxiVIRoMRYVxq57tWdK34V/33awkFxwkxkbgPhcUeHegLHU0c
+         qwpRuLAIMQ2c/J4UsWMM3VkGZPtxNxDZ/Bw3LPvqX+n01qR0cE/mfLkKxSt3rJ7gVF/3
+         uTMXeVQJ7GXfujiiZOhVc47f1y0NCOql1XqAPikyhL/HbeBXlQt/Bg73xnuZA9XAWfCd
+         /nssnZ8oPQ72IlkckXniT0Smf/hxpuu2zvyFHg0+2kntJnvN8jWInkeVc+Xrxehci5X0
+         hm3fWAPm5irmH+OR/6m7XK223yrkwKbV+JptxvA8so3XXosUay76orjbwlJJJFX/iHZF
+         ZydA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Qj/nHI3qZsguMXXkfdW3xQqvOkV+57RWuo0wJN+zWbA=;
-        b=AGxrOlBTbxB0LSqgmSC7CLJW8uUPh4L8l5K4bMKBuw2LQzePFTsq1DNNiV8fjBbD4m
-         XgBP8SnKZFNAqSpTrBXDvYdZbcz3iLOTmV6ZAr+idp6C5bGGftvgj6ZXlhS6jjZLWmZJ
-         sJ4c5zhj9CvIQVSFKEWumWPjRP1aIEmC4wuUxgiIxEAe2fkIcCvAhT+4u29I6Cx3jJkX
-         6FyNcyEi+AVfGUFlGbpr5XakT+kXKwXttY+gmpyDQzkmsLS7WbIAgjX5La8P5Qr71H8a
-         +UkUvy8Z8np+O3r985FSNJ3rAhk1YTYA47U++Y0olHjnpx+oiuz+A8Bu4pyiK4IEuJQS
-         W4JA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=uKgqYOsaUsn8zCuN7A/2/WT2usxLqas9V280nbv2TMQ=;
+        b=x7Ws0VoaEqkuzO15l4AwEAu3DmZDn8KuwiacIWt0QEG00zu75SeuTP/+pwqE+GQhYQ
+         cYkxI5ut4zFVFxhAkuztrCLg3e6h30ViS4BLZgcaw/PQjaDpYhYKK6b+BXre96AJFjQP
+         cUh6TtiEKAsRthx4QB8EgRpfVUY3Rc4Y1C74ogP50N/SKt6dFOl0PR6JUplv6E3iB2l0
+         YXe/zhxbHqN/QxALNwC2vRNLm71pK3Z5o5TxYLB50QjB5lhL9FQInIc/gpazvH3qgvAO
+         IBsXsARNAX5rMvx5Qvb1Al3xDoHzedRUUoLnnjMV6ZgArW/3L5ZZzHTFasvsfY6J4wOt
+         Fwug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="U/yQQ6lH";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=bYskpsf3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u11-20020a25600b000000b0064161a277bbsi3288322ybb.375.2022.04.21.11.58.52
+        by mx.google.com with ESMTPS id g83-20020a816b56000000b002ebe56a48f4si3505202ywc.9.2022.04.21.11.38.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Apr 2022 11:58:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 Apr 2022 11:38:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="U/yQQ6lH";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=bYskpsf3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51774 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nhc0y-0000bk-BA
-	for alex.bennee@linaro.org; Thu, 21 Apr 2022 14:58:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38734)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nhbgw-0006Q8-C4
+	for alex.bennee@linaro.org; Thu, 21 Apr 2022 14:38:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nhc0L-0008Re-6A
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 14:58:14 -0400
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132]:40915)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nhbed-0004tZ-GH
+ for qemu-devel@nongnu.org; Thu, 21 Apr 2022 14:35:47 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:34616)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nhc0J-0000Hd-A7
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 14:58:12 -0400
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-2ec05db3dfbso62259927b3.7
- for <qemu-arm@nongnu.org>; Thu, 21 Apr 2022 11:58:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nhbeb-00050Q-WF
+ for qemu-devel@nongnu.org; Thu, 21 Apr 2022 14:35:47 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id n8so5682726plh.1
+ for <qemu-devel@nongnu.org>; Thu, 21 Apr 2022 11:35:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Qj/nHI3qZsguMXXkfdW3xQqvOkV+57RWuo0wJN+zWbA=;
- b=U/yQQ6lHLukqnzjoCHzQzT6Sxj3eHO7y3giCDfTuBVlRAbmJHkfzwJ2VUc6qyyiVEF
- VEsGOIEWfqs7Rh7j53zfTU8kSI07NzzsBtiOYLeZZe90x5pBYjvzesd52UMbauj8ly2o
- CZDfrXacto6iF0zdwkIeC+pUnq9xqk1KYqdTpSEa16ctACTQZboo5d1EvvL/M2qqEmA8
- fWi3+Lba/zbIALXLJ5x17PDVV/Sczuj+j8zym1x4vEVKx9BIVhGBVFMN9Vwr+qlc3JPO
- tS9IqNut+HhpIyJcafQYN6pdYFHTg0cgMyoBmJoVpGON8mwMrp9MEi7tclQydGf8Oljm
- bkIg==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=uKgqYOsaUsn8zCuN7A/2/WT2usxLqas9V280nbv2TMQ=;
+ b=bYskpsf3H6YQcDC3ZwDVYu6ZLqn5ngWeAdh1ARCu0PfrQfMgdsR2mCRpvJ2iJjmsZg
+ 41EscLi8yvsBwg8l82/4mF2lAdR1uJ4Knwss7QirOS2jl/0NO8qCvOlHAftYQv0coW8m
+ SvfHNxILVTjzrrBPfibnwK1ppy3YAGvKrzeL9O0d7Db9GiXr8fAglKHCfjp1rJBJLYIG
+ 2kQVCFXqnEReRV8KU6kTUxJyzDIMf8pB5zdlqMSSqsByNQwzbHWRqilGjpmbM56NAYiB
+ R7bKj7Hx+fMyv27CKd/8z/aCy5l0fnc2N0/Ej7Kk+9Jv1f2YWy1EjxoaoNyzPpmBkA64
+ lc0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Qj/nHI3qZsguMXXkfdW3xQqvOkV+57RWuo0wJN+zWbA=;
- b=PNNji7pubCKbL/g7CNBEg5HBWpPztVvwzPZF/8c16Vtq736XHp6Ihl/f7S4cnNfaz2
- LAGfZGyR0rJP1ymnNyQ6g5OM0/2tc8utc0bgZ/eFByjEIE0jSKC6qCIF1d3Xhx1dybHQ
- 4jpa84mHzHjZdsHvPN7XQLvL3Iee+1/e317laaou5UEqQqAnapYgwKd3rN20kffuPqtL
- OZ/1YYoFMYvL+0+C6VK1geXFzGHspn9JIsahcK7jhWeV1dl1YPO47AC2rIEDc8QXMVO7
- FtaJ4n0tEa4UPqH5FpdxbCf+XYdOZcTvysdIJI6Q3kwx5AOiErxz9qP+lJ5cUuPpLGEf
- Olmg==
-X-Gm-Message-State: AOAM532Sz5J+7lM7Xxjt36xmZA8Ev09kt7cOfPWM4MC63OkGyMSs5XLC
- g/DKskIUgUjKF3A3v7RZlyTIuuNl/EmXnbi+k/7Ljg==
-X-Received: by 2002:a81:ac57:0:b0:2f1:99ec:91a2 with SMTP id
- z23-20020a81ac57000000b002f199ec91a2mr1173717ywj.329.1650567490246; Thu, 21
- Apr 2022 11:58:10 -0700 (PDT)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=uKgqYOsaUsn8zCuN7A/2/WT2usxLqas9V280nbv2TMQ=;
+ b=y8nhwF2vKaGSAPJVXDPhn45lK2LpVk+V9Dl46TIrudMafH//bVDwsB/oa1j8YwhXAo
+ JMCYSff7lVBk7XTdi3vOBAadGTOWodH682wOpHiLglhNiJMAefPBDEIQkZDYYbWKjEPx
+ HQdw1KhOiRaJUyHfQFKtCYnaTYUxIccRqSHANT8fr5XoaFodJtkWCiJ/oLF15GCAkNnt
+ iFL0k+SiPwDDrJOLLr3FVzn212NkhQogNoCJdB2sd2munpEn+EGb7cdtxw+IwZizk2NL
+ ouk54UkH+LuWQ6t7sBnk1HZyAXgV/NGcWGwV0bB+HZNQ7ubpns4EnjVFbpnKpcBLYjOX
+ gUng==
+X-Gm-Message-State: AOAM530/8DXsN9EKSrwcPAfAqvSV4TqpRIBIj1N6oOOOKnA4m1PwJMKP
+ ugwEzgqpTVR6iyGh9nQpBxuq/Q==
+X-Received: by 2002:a17:90b:3b43:b0:1d2:eb6b:a7ad with SMTP id
+ ot3-20020a17090b3b4300b001d2eb6ba7admr1044753pjb.84.1650566144567; 
+ Thu, 21 Apr 2022 11:35:44 -0700 (PDT)
+Received: from ?IPV6:2607:fb90:80c1:f8a5:3d1f:84a9:7713:bf09?
+ ([2607:fb90:80c1:f8a5:3d1f:84a9:7713:bf09])
+ by smtp.gmail.com with ESMTPSA id
+ j1-20020a17090a7e8100b001d2edf4b513sm3483347pjl.56.2022.04.21.11.35.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 21 Apr 2022 11:35:44 -0700 (PDT)
+Message-ID: <d72e20f5-7d5e-66d9-2cf3-7516e7244263@linaro.org>
+Date: Thu, 21 Apr 2022 11:35:39 -0700
 MIME-Version: 1.0
-References: <20220417174426.711829-1-richard.henderson@linaro.org>
- <20220417174426.711829-16-richard.henderson@linaro.org>
-In-Reply-To: <20220417174426.711829-16-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 Apr 2022 19:57:59 +0100
-Message-ID: <CAFEAcA9a5y4+RTpx5eL3sJdv4oDrqi4vT59gc+Dok2kQD96W8g@mail.gmail.com>
-Subject: Re: [PATCH v3 15/60] target/arm: Simplify gen_sar
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [RFC PATCH 0/3] Remove some of the old libopcode based
+ disassemblers
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+References: <20220412165836.355850-1-thuth@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220412165836.355850-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tR4DllOhmtC8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: z0x8lQhdzfF+
 
-On Sun, 17 Apr 2022 at 18:59, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Use tcg_gen_umin_i32 instead of tcg_gen_movcond_i32.
-> Use tcg_constant_i32 while we're at it.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/translate.c | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
->
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 57631c9fa1..8d6534f9a5 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -568,12 +568,10 @@ GEN_SHIFT(shr)
->
->  static void gen_sar(TCGv_i32 dest, TCGv_i32 t0, TCGv_i32 t1)
->  {
-> -    TCGv_i32 tmp1, tmp2;
-> -    tmp1 = tcg_temp_new_i32();
-> +    TCGv_i32 tmp1 = tcg_temp_new_i32();
-> +
->      tcg_gen_andi_i32(tmp1, t1, 0xff);
-> -    tmp2 = tcg_const_i32(0x1f);
-> -    tcg_gen_movcond_i32(TCG_COND_GTU, tmp1, tmp1, tmp2, tmp2, tmp1);
-> -    tcg_temp_free_i32(tmp2);
-> +    tcg_gen_umin_i32(tmp1, tmp1, tcg_constant_i32(31));
->      tcg_gen_sar_i32(dest, t0, tmp1);
->      tcg_temp_free_i32(tmp1);
->  }
+On 4/12/22 09:58, Thomas Huth wrote:
+> Many of the disassemblers in the disas folder are based on old
+> versions from the GNU tools (libopcode, GDB, ...) that were still
+> licensed under the GPL v2. The GNU tools switched to GPL v3 at one
+> point in time, so QEMU is stuck with the old versions, i.e. these
+> files did not see much updates for new processors anymore. But
+> for most architectures, we're preferring the Capstone disassembler
+> now anyway, so the old libopcode disassemblers are also hardly
+> used anymore.
+> 
+> I'm not 100% sure (thus this is marked as RFC), but I think we could
+> simply drop the old disassemblers nowadays, and hardly anybody would
+> miss them, since we now always embed capstone as a submodule anyway.
+> Or is there still an advantage in keeping these old files around?
+> 
+> This RFC series tackles with s390, arm (32-bit) and i386 ... I wanted
+> to get some feedback first, but if we agree that these can be removed,
+> the sparc, mips and ppc disassemblers likely can be removed, too.
+> (I think we should keep m68k.c since Capstone does not have support
+> for Coldfire CPUs yet).
+> 
+> Thomas Huth (3):
+>    disas: Remove old libopcode s390 disassembler
+>    disas: Remove old libopcode arm disassembler
+>    disas: Remove old libopcode i386 disassembler
+> 
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-thanks
--- PMM
+r~

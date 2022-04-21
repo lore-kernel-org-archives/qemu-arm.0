@@ -1,108 +1,85 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp3225844lfk;
-        Wed, 20 Apr 2022 08:36:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylGJiHfmpqsTkn7ngGqDNnKW4d/sQE6orpuuWkgnpaad4GZzUa8rHJC/pE2eN+0vpudzt1
-X-Received: by 2002:a25:660d:0:b0:645:49ce:58bf with SMTP id a13-20020a25660d000000b0064549ce58bfmr6303581ybc.370.1650468984211;
-        Wed, 20 Apr 2022 08:36:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650468984; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp18235lfk;
+        Wed, 20 Apr 2022 19:08:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwDTlinK4pbCN36ldfaavaJvkCzYlpu7o1Lo5IjEtJLy/fYc7C0NWVzlXMnSk7cNpeTGCDr
+X-Received: by 2002:a05:622a:1995:b0:2f1:f23d:aeee with SMTP id u21-20020a05622a199500b002f1f23daeeemr16007627qtc.613.1650506934322;
+        Wed, 20 Apr 2022 19:08:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650506934; cv=none;
         d=google.com; s=arc-20160816;
-        b=UGOXWuP7dDU8SRQsZyLYnnFUd+FuRvKfGjnJ1Fgs8ZQA9zv8ItbiV+GEkWPs12X91m
-         rB9y82WSaG4sqmcLxm/j108J884LXQj2pDO4SJ4i7AdptXezyulZpnhRtXk4jxD4QD0B
-         e7JnwJKnXE6NOuTYuDh1+BcIHdidV9xyOk5hePVcE3n3sDmhLO1x234rStr1nCh6FvQH
-         sEHiOJXFGjPRYaDICxxJfmm4I1poqrJr4vfkERtbnphnupLeH3QoyOecCC49mP43pMfd
-         KiqQfgTGIHqY/zo4XM5+K8KA4wpq1gZ767h1uUtgFFin+bZB4YCXxF9kbFVjlUgU3C3S
-         RkCA==
+        b=MVrC4agVmBXBFnbQ3AF97NDGyE+c0r8Q36EFjvjbnwJ+e6eJ+7CHZOUs2CemgSt7vW
+         n1PYSP+yLRDTB3dN4KivHKRV+lg/9tVcwHlPRxhg2g7eDheZF+UcrEp9wmjzF+PMsBTb
+         GWAUkZPv4/Iqvu48bhpyKUWizwzHY+xK4tQOwMOJ7d6oM0kx+2xTNtDoopSqydVWjmU3
+         6dst88sg40BHMhQEAY2TnMvZEde63ZdoHCv6MXng0M5z7C+4gyd2jHmOuZiPbnSZDDRT
+         WFp2i5V9kjuJhs63+M8JCqktS0H8YQILXEv/deuB1uJyJVjRgeXBAxpAhSHwPPbP1Je4
+         +sHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=xMAIQ9M2+CCnwFfvRhZGFpEWlrESp2P8dYj3hsYEnPk=;
-        b=BAgPqlPnDo1TdYnm1fHf50DSJKaWxf3FE01FGiOtg/95YmA5Ou9Vh9kd6vCQuNFP5g
-         KttPzvqUBRxBUN1MsZ8eEv+OZqCIlrKa+jxOv+8hi5YTIdyXgFUvCCdeWuD+wzrA1dH+
-         z6cBI9N7gWnDTL5rxpRzcPhbcgKONiR79TgSkb/IwuGxERC2otNGq8Xj7CLeqmLLZOp7
-         G8Qfhfb5NkKTUDgMjyMhIODUv1gnZSDNe4XhZ6+7+5TaWCtuBL2s+YxLKQHdxU6d8ytN
-         vOWv9VnBaf7zRWV65YDvAFkxbdVqIY1chRvWN19mzzBy2GNSOS6YQDFmyVSZmH/TU8Ki
-         J1LA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date;
+        bh=HMaAD/QhY9aUvnTA0w37DKv7j3BFtHAeRPKlMmHj55M=;
+        b=nGIAt90e4OhtRK1I9xH7Z3xrIb/q5FxRwWukM6p8n3Coy/njbAY4cIFeqz1iYkrUv2
+         Y1oR44EI4YCr7jBAYnhr8MTTEZY9gwjtikd/Z027iMttqLopks8LfMEDiL9J9qOMQJkJ
+         SLlrXhEH0E9uwadE4ByNDUHeOG/0mefBkFmXQwIl9EMM7V8w9bOmBOYeOaqWNSy7TChH
+         putuzmqQqZExOkYxaj1Om5P/nHX5hz3+7pYgKVsN4wDuc49AWCLtV4uo8oZdD75r7nir
+         4p7qEWe19kCu/zjdtJTBY5UvzeoyyE5AE/raR7MdEq1HwtIyxBjsrAbssusMKK9EG4Dc
+         rBgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YZLDGQsq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o66-20020a257345000000b006346280b06dsi150242ybc.507.2022.04.20.08.36.24
+        by mx.google.com with ESMTPS id m3-20020a375803000000b0069bdffcd7ccsi965933qkb.668.2022.04.20.19.08.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Apr 2022 08:36:24 -0700 (PDT)
+        Wed, 20 Apr 2022 19:08:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YZLDGQsq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47142 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38932 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nhCNT-0002s1-KE
-	for alex.bennee@linaro.org; Wed, 20 Apr 2022 11:36:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37928)
+	id 1nhMFZ-0001ni-Pp
+	for alex.bennee@linaro.org; Wed, 20 Apr 2022 22:08:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48192)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nhC5E-0007Nu-J5
- for qemu-arm@nongnu.org; Wed, 20 Apr 2022 11:17:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:44595)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1nhMFP-0001n2-Cv; Wed, 20 Apr 2022 22:08:43 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:54375)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nhC5C-0006ar-Qw
- for qemu-arm@nongnu.org; Wed, 20 Apr 2022 11:17:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650467850;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xMAIQ9M2+CCnwFfvRhZGFpEWlrESp2P8dYj3hsYEnPk=;
- b=YZLDGQsqNjIDVlg/2Vt2zbSomg89O2WhWRsuKfB1aFmKaJ59xt+eMUIP/y124b4wiMU53z
- mufWBu978qKe8p078oz2JGFr9t7mRbl6hTVVaq2PB9Okb4y5fhBfH0JdUcbCAPa+4WfNOn
- Jk5a0SytkIC/ttUBk9wvLcDeQ++5oIo=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-275-XUUXgZD_Og6THu2cshh8Tg-1; Wed, 20 Apr 2022 11:17:26 -0400
-X-MC-Unique: XUUXgZD_Og6THu2cshh8Tg-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 80F7C802819;
- Wed, 20 Apr 2022 15:17:26 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.162])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8606654EB01;
- Wed, 20 Apr 2022 15:17:25 +0000 (UTC)
-Date: Wed, 20 Apr 2022 16:17:17 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: marcandre.lureau@redhat.com
-Subject: Re: [PATCH 13/41] arm/digic: replace snprintf() with g_strdup_printf()
-Message-ID: <YmAj/XkiFl0rUL4/@redhat.com>
-References: <20220420132624.2439741-1-marcandre.lureau@redhat.com>
- <20220420132624.2439741-14-marcandre.lureau@redhat.com>
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1nhMFL-0004BN-RU; Wed, 20 Apr 2022 22:08:42 -0400
+Received: from mail.aspeedtech.com ([192.168.0.24])
+ by twspam01.aspeedtech.com with ESMTP id 23L1tcIs090580;
+ Thu, 21 Apr 2022 09:55:38 +0800 (GMT-8)
+ (envelope-from steven_lee@aspeedtech.com)
+Received: from aspeedtech.com (192.168.70.100) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 21 Apr
+ 2022 10:07:45 +0800
+Date: Thu, 21 Apr 2022 10:07:36 +0800
+From: Steven Lee <steven_lee@aspeedtech.com>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Subject: Re: [PATCH v4 2/3] aspeed/hace: Support AST2600 HACE
+Message-ID: <20220421020734.GA2850@aspeedtech.com>
+References: <20220331074844.30065-1-steven_lee@aspeedtech.com>
+ <20220331074844.30065-3-steven_lee@aspeedtech.com>
+ <eaef19a7-53f3-fbc8-c5a3-f7693b7d67eb@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="utf-8"
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220420132624.2439741-14-marcandre.lureau@redhat.com>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+In-Reply-To: <eaef19a7-53f3-fbc8-c5a3-f7693b7d67eb@kaod.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Originating-IP: [192.168.70.100]
+X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
+ (192.168.0.24)
+X-DNSRBL: 
+X-MAIL: twspam01.aspeedtech.com 23L1tcIs090580
+Received-SPF: pass client-ip=211.20.114.71;
+ envelope-from=steven_lee@aspeedtech.com; helo=twspam01.aspeedtech.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,36 +92,252 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:Canon DIGIC" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org,
- Antony Pavlov <antonynpavlov@gmail.com>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Troy Lee <troy_lee@aspeedtech.com>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /Oc3ooKzmU3l
+X-TUID: na1PrMmjvdHU
 
-On Wed, Apr 20, 2022 at 05:25:56PM +0400, marcandre.lureau@redhat.com wrote:
-> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+The 04/20/2022 20:53, Cédric Le Goater wrote:
+> On 3/31/22 09:48, Steven Lee wrote:
+> > The aspeed ast2600 accumulative mode is described in datasheet
+> > ast2600v10.pdf section 25.6.4:
+> >   1. Allocating and initiating accumulative hash digest write buffer
+> >      with initial state.
+> >      * Since QEMU crypto/hash api doesn't provide the API to set initial
+> >        state of hash library, and the initial state is already setted by
 > 
-> Also fixes a GCC 12.0.1 false-positive:
-> ../hw/arm/digic.c: In function ‘digic_init’:
-> ../hw/arm/digic.c:45:54: error: ‘%d’ directive output may be truncated writing between 1 and 11 bytes into a region of size 5 [-Werror=format-truncation=]
->    45 |         snprintf(name, DIGIC_TIMER_NAME_MLEN, "timer[%d]", i);
->       |                                                      ^~
+> s/setted/set/
 > 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/digic.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+will fix it.
 
+> >        crypto library (gcrypt/glib/...), so skip this step.
+> >   2. Calculating accumulative hash digest.
+> >      (a) When receiving the last accumulative data, software need to add
+> >          padding message at the end of the accumulative data. Padding
+> >          message described in specific of MD5, SHA-1, SHA224, SHA256,
+> >          SHA512, SHA512/224, SHA512/256.
+> >          * Since the crypto library (gcrypt/glib) already pad the
+> >            padding message internally.
+> >          * This patch is to remove the padding message which fed byguest
+> >            machine driver.
+> > 
+> > Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> > Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+> > ---
+> >   hw/misc/aspeed_hace.c | 140 ++++++++++++++++++++++++++++++++++++++++--
+> >   1 file changed, 136 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> > index 59fe5bfca2..5a7a144602 100644
+> > --- a/hw/misc/aspeed_hace.c
+> > +++ b/hw/misc/aspeed_hace.c
+> > @@ -95,12 +95,115 @@ static int hash_algo_lookup(uint32_t reg)
+> >       return -1;
+> >   }
+> >   
+> > -static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
+> > +/**
+> > + * Check whether the request contains padding message.
+> > + *
+> > + * @param iov           iov of current request
+> > + * @param id            index of iov of current request
+> > + * @param total_req_len length of all acc_mode requests(including padding msg)
+> > + * @param req_len       length of the current request
+> > + * @param total_msg_len length of all acc_mode requests(excluding padding msg)
+> > + * @param pad_offset    start offset of padding message
+> > + */
+> > +static bool has_padding(struct iovec *iov, uint32_t total_req_len,
+> > +                        hwaddr req_len, uint32_t *total_msg_len,
+> > +                        uint32_t *pad_offset)
+> > +{
+> > +    *total_msg_len = (uint32_t)(ldq_be_p(iov->iov_base + req_len - 8) / 8);
+> > +    /*
+> > +     * SG_LIST_LEN_LAST asserted in the request length doesn't mean it is the
+> > +     * last request. The last request should contain padding message.
+> > +     * We check whether message contains padding by
+> > +     *   1. Get total message length. If the current message contains
+> > +     *      padding, the last 8 bytes are total message length.
+> > +     *   2. Check whether the total message length is valid.
+> > +     *      If it is valid, the value should less than or eaual to
+> 
+> s/eaual/equal/
+> 
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+will fix it.
 
+> > +     *      total_req_len.
+> > +     *   3. Current request len - padding_size to get padding offset.
+> > +     *      The padding message's first byte should be 0x80
+> > +     */
+> > +    if (*total_msg_len <= total_req_len) {
+> > +        uint32_t padding_size = total_req_len - *total_msg_len;
+> > +        uint8_t *padding = iov->iov_base;
+> > +        *pad_offset = req_len - padding_size;
+> > +        if (padding[*pad_offset] == 0x80) {
+> > +            return true;
+> > +        }
+> > +    }
+> > +
+> > +    return false;
+> > +}
+> > +
+> > +static int reconstruct_iov(struct iovec *cache, struct iovec *iov, int id,
+> > +                           uint32_t *total_req_len,
+> > +                           uint32_t *pad_offset,
+> > +                           int *count)
+> > +{
+> > +    int i, iov_count;
+> > +    if (pad_offset != 0) {
+> > +        (cache + *count)->iov_base = (iov + id)->iov_base;
+> 
+> I would prefer the array notation iov[i], like elsewhere in this file..
+> 
+
+will use iov[i] instead of (iov + i).
+
+> > +        (cache + *count)->iov_len = *pad_offset;
+> > +        ++*count;
+> > +    }
+> > +    for (i = 0; i < *count; i++) {
+> > +        (iov + i)->iov_base = (cache + i)->iov_base;
+> > +        (iov + i)->iov_len = (cache + i)->iov_len;
+> 
+> ditto.
+> 
+
+will use iov[i] instead of (iov + i).
+
+> > +    }
+> > +    iov_count = *count;
+> > +    *count = 0;
+> > +    *total_req_len = 0;
+> > +    return iov_count;
+> > +}
+> > +
+> > +/**
+> > + * Generate iov for accumulative mode.
+> > + *
+> > + * @param cache         cached iov
+> > + * @param iov           iov of current request
+> > + * @param id            index of iov of current request
+> > + * @param total_req_len total length of the request(including padding)
+> > + * @param req_len       length of the current request
+> > + * @param count         count of cached iov
+> > + */
+> > +static int gen_acc_mode_iov(struct iovec *cache, struct iovec *iov, int id,
+> > +                            uint32_t *total_req_len, hwaddr *req_len,
+> > +                            int *count)
+> > +{
+> > +    uint32_t pad_offset;
+> > +    uint32_t total_msg_len;
+> > +    *total_req_len += *req_len;
+> > +
+> > +    if (has_padding(&iov[id], *total_req_len, *req_len, &total_msg_len,
+> > +                    &pad_offset)) {
+> > +        if (*count) {
+> > +            return reconstruct_iov(cache, iov, id, total_req_len,
+> > +                    &pad_offset, count);
+> > +        }
+> > +
+> > +        *req_len -= *total_req_len - total_msg_len;
+> > +        *total_req_len = 0;
+> > +        (iov + id)->iov_len = *req_len;
+> > +        return id + 1;
+> > +    } else {
+> > +        (cache + *count)->iov_base = iov->iov_base;
+> > +        (cache + *count)->iov_len = *req_len;
+> > +        ++*count;
+> > +    }
+> > +
+> > +    return 0;
+> > +}
+> > +
+> > +static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+> > +                              bool acc_mode)
+> >   {
+> >       struct iovec iov[ASPEED_HACE_MAX_SG];
+> >       g_autofree uint8_t *digest_buf;
+> >       size_t digest_len = 0;
+> > +    int niov = 0;
+> >       int i;
+> > +    static struct iovec iov_cache[ASPEED_HACE_MAX_SG];
+> > +    static int count;
+> > +    static uint32_t total_len;
+> 
+> Why static ? Shouldn't these be AspeedHACEState attributes instead ?
+> 
+> 
+
+will add these static variables in AspeedHACEState.
+Thanks for your review.
+
+Steven
+
+> >       if (sg_mode) {
+> >           uint32_t len = 0;
+> > @@ -124,10 +227,17 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
+> >                                           MEMTXATTRS_UNSPECIFIED, NULL);
+> >               addr &= SG_LIST_ADDR_MASK;
+> >   
+> > -            iov[i].iov_len = len & SG_LIST_LEN_MASK;
+> > -            plen = iov[i].iov_len;
+> > +            plen = len & SG_LIST_LEN_MASK;
+> >               iov[i].iov_base = address_space_map(&s->dram_as, addr, &plen, false,
+> >                                                   MEMTXATTRS_UNSPECIFIED);
+> > +
+> > +            if (acc_mode) {
+> > +                niov = gen_acc_mode_iov(
+> > +                        iov_cache, iov, i, &total_len, &plen, &count);
+> > +
+> > +            } else {
+> > +                iov[i].iov_len = plen;
+> > +            }
+> >           }
+> >       } else {
+> >           hwaddr len = s->regs[R_HASH_SRC_LEN];
+> > @@ -137,6 +247,27 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
+> >                                               &len, false,
+> >                                               MEMTXATTRS_UNSPECIFIED);
+> >           i = 1;
+> > +
+> > +        if (count) {
+> > +            /*
+> > +             * In aspeed sdk kernel driver, sg_mode is disabled in hash_final().
+> > +             * Thus if we received a request with sg_mode disabled, it is
+> > +             * required to check whether cache is empty. If no, we should
+> > +             * combine cached iov and the current iov.
+> > +             */
+> > +            uint32_t total_msg_len;
+> > +            uint32_t pad_offset;
+> > +            total_len += len;
+> > +            if (has_padding(iov, total_len, len, &total_msg_len,
+> > +                            &pad_offset)) {
+> > +                niov = reconstruct_iov(iov_cache, iov, 0, &total_len,
+> > +                        &pad_offset, &count);
+> > +            }
+> > +        }
+> > +    }
+> > +
+> > +    if (niov) {
+> > +        i = niov;
+> >       }
+> >   
+> >       if (qcrypto_hash_bytesv(algo, iov, i, &digest_buf, &digest_len, NULL) < 0) {
+> > @@ -238,7 +369,8 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+> >                           __func__, data & ahc->hash_mask);
+> >                   break;
+> >           }
+> > -        do_hash_operation(s, algo, data & HASH_SG_EN);
+> > +        do_hash_operation(s, algo, data & HASH_SG_EN,
+> > +                ((data & HASH_HMAC_MASK) == HASH_DIGEST_ACCUM));
+> >   
+> >           if (data & HASH_IRQ_EN) {
+> >               qemu_irq_raise(s->irq);
+> 

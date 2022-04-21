@@ -1,134 +1,236 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp505385lfk;
-        Thu, 21 Apr 2022 10:07:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzDXdn3tj/iC1U94NA+gsem2wUi/SH1HouYvxHkw8NEJYjCD9tTUaaPfhXlR7eBB5zDubmR
-X-Received: by 2002:a92:c249:0:b0:2cd:5e07:7725 with SMTP id k9-20020a92c249000000b002cd5e077725mr309609ilo.227.1650560826948;
-        Thu, 21 Apr 2022 10:07:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650560826; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp522337lfk;
+        Thu, 21 Apr 2022 10:33:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzVSS+Si4IpL/ks7w1H+ln4zXaGDUi6OU+eWaXPx93wmpBg58UGA7ZVXxaOognioq38ctp5
+X-Received: by 2002:a5b:dc5:0:b0:624:f16d:7069 with SMTP id t5-20020a5b0dc5000000b00624f16d7069mr772977ybr.295.1650562409887;
+        Thu, 21 Apr 2022 10:33:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650562409; cv=none;
         d=google.com; s=arc-20160816;
-        b=ILpDIDL/qVN0ET/fYs2Rv9762VWr0M2ALORw5qnM4PQ2/HBhFHkO2Nnxv1kuSbtxa2
-         dFhJ6XXIkKSe82ipwfTtkabVMWqweNiPLBQrw78jXF9dvTwXMSMx+kTr8/yVF1s7eCsX
-         REyFGyQIFBM57aeout/uEVF0SDRdpTNqhaHEi/veskoIYD7ZYb+8F+Fnmkoo1dQbOhsG
-         B2nJrKmBuRRkZ+q02eayuFXnggpJVEcs2h74xg7YElLJxTNttCLsPTdHxfvj5im7GtcM
-         bXMrqAryB5GLce2Nc7ooomGwUS7cm0oEdfM0x/V3d1djnIAVgbyY9ijyahudUWF73kDD
-         NJfg==
+        b=t4iYVTXK+WymRTzk6Yt37EkO+4WYOgYudHy2nffpIox9pta2p7uni/1d64D+RITMCx
+         KMyE2BibcmDtBMDtEDUT7X8B1XHZk1zIhITd6mhh/SVgepxpcOempCNqbbRxmzAnBijH
+         Nd6//ymfAlAwrqIdLdOYTTtuQa9N8h1TbIcESJobPI92FNapNLo4Ys0yoTRn4LvOQEpz
+         vwf5PeJ1yxY3qVvkVDEi4xATnp6UGhdZCHcqrvEcfEQ+vAfkSdG9wa3lkw5F0GuXaygy
+         +Ew5KTieQ58NHSq+9ikaNaGQcnv4OHejf9bJzzh1odgoUUue5Gc2lNqoAtiDl9zK5oyQ
+         PzkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=GHQPfwL4ar6ck6OydhQmkIf9PG0jSvjA6PVgU/Afq18=;
-        b=jAVLefxV6Ob6fJiopiS6Vj4wwcqc6YJqXZFw0nw3U37cAIpiiEq+A7Bu8sWntjB5qa
-         Ui+DUKMVJ++SLBldDX2YAMFwlPwzg0SvTOnBmVIf8O5WYlP8CBWy/+w7WarI4xy3PNwA
-         gcF72ZlW9mp3gnIHivy1SZetnwtkCqRsWACgBWPeO+7ijJVwn0AQtxc2QluVxWzLT8bJ
-         aGTC+vIKKn4MxQxAHCQ1e5zLRmuUPdruOCnHUnCy9vtmoV97gZpR/DsUeJPKhBkfVSBp
-         jFvcxY8twBzHQZAkeea8Az5bZcMwcpBYZOgCs4lOeOoBMWvBUz1H1GC3Ar9hPeNyTti+
-         dzkQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=ARybaRdfRU2zyGFZvJK026gdqRK0ZnsRjQr9jKOxV6M=;
+        b=BBGm9Ta1Gg42+CCNigKmIKfuTgxGPLGOlKKLt5bny9PdjBogCcpF6Wrz0cxR9Vp1Wo
+         MS27Mh70MqzYd22mpeeHQ4MJHGJnSo/bdkZZyIkrydW9wovKj3YYNgcB+n6JgwTlD7Jg
+         DRTF0A1z4iFJtxPEJjJRS6vv6wZw4ESrCbsvQQ336Z/UmQxUj298CTD14NJ63JEvyGnX
+         TRRlL7e+kg3MrvHmP9hLWD0W2/JX2qyDg1pjiazUz9Dtyuhj9+CGbg0JlMt1sM/46BVt
+         lVXnyNe/gpdzfhCevTQVynXyfuCrCftyriV0Su0EM+1QIdTB+MMlLFi3SO31mZbhg7BH
+         TwXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YzB0+Y0F;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=dddggEan;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b6-20020a056e02184600b002c7c7bfb67bsi3018731ilv.25.2022.04.21.10.07.06
+        by mx.google.com with ESMTPS id g1-20020a25ae41000000b00641dd069bbasi3114288ybe.488.2022.04.21.10.33.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Apr 2022 10:07:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 Apr 2022 10:33:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YzB0+Y0F;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59514 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20210112 header.b=dddggEan;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:50340 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nhaGo-0005MT-Aa
-	for alex.bennee@linaro.org; Thu, 21 Apr 2022 13:07:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59882)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nhagL-0004RD-84
+	for alex.bennee@linaro.org; Thu, 21 Apr 2022 13:33:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nhZeq-0006DT-HO
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 12:27:53 -0400
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133]:40141)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1nha9e-0001yh-GE
+ for qemu-devel@nongnu.org; Thu, 21 Apr 2022 12:59:42 -0400
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c]:34306)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nhZep-0000iD-3G
- for qemu-arm@nongnu.org; Thu, 21 Apr 2022 12:27:52 -0400
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-2ec05db3dfbso57837897b3.7
- for <qemu-arm@nongnu.org>; Thu, 21 Apr 2022 09:27:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1nha9c-00069i-Ir
+ for qemu-devel@nongnu.org; Thu, 21 Apr 2022 12:59:42 -0400
+Received: by mail-qk1-x72c.google.com with SMTP id j9so4035765qkg.1
+ for <qemu-devel@nongnu.org>; Thu, 21 Apr 2022 09:59:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GHQPfwL4ar6ck6OydhQmkIf9PG0jSvjA6PVgU/Afq18=;
- b=YzB0+Y0F5GDmj4pP9KtMMC1tUJG0QkmPI2Pw+x1uJQJJx0LGCeojyckkR2voeXRLFF
- 0gxLbj9fdqHroztOemCCPppRKTrjktZmty7ZjJ+jsQjwsofHUemV+8Eq85I+NVt5mxUU
- RCBf7g0Q+WFZmckKl2uC70XJ6ko3I9Tnpe9dizr7+2vUs99AU4MgXrW4dOCbX3PeH6O1
- XZfhUwF5CBWEtgYYPoyjQTCfueQ6CKtiZxniREpD6N4Pqrd3ZVwnPhMu+ws2AZQQhIXr
- sB2EEGxoM9YHRZ/2scmgeDp9INxi0dYKvz4uuyOh8sfv1XT849jxQFHXhnKnmrk2H7nX
- um5Q==
+ :cc; bh=ARybaRdfRU2zyGFZvJK026gdqRK0ZnsRjQr9jKOxV6M=;
+ b=dddggEan8eKVHncu5x0CJCZFZXxxq8VZilwZZ2HTGeCY1YTDLYmb0Ik7Fowx6nLda5
+ P1g7cA+Wa5984QwfQDrA1UsdLQhgjrPPEbMd0Sr/WrYbuR8xO1z+vqgC5wSi0UKEcymo
+ V4TqB++HPtQlZyw6LEkN7EZaTVsjCIMtrVtX4J7E5v8kPEe2FF+l0ieR3dAB7/dqjxP2
+ wAnWWapw2zjsgknT5vlYHGOdJae6uuMPmRUEDefRKjppyyEZ9+GWUZDaBuEQ1tPeTiWo
+ rpbh0BkmVkjQU0a3W4SUPKdv9+HuJkxfb787/MueDa9cZMlMEm4Tq5LlPR8zfHq4ztD+
+ sQCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=GHQPfwL4ar6ck6OydhQmkIf9PG0jSvjA6PVgU/Afq18=;
- b=fXpEEmWkWdtpDZSahS0FhMIwNnTwaWnvLS8N6VHxJH6PyyCGNw6Vg+XF09BGNzC8Nv
- PhTpG34z+ETQUGCQZFWZlfi8HUq4Wnp+v0TcUOUFA9NE1v15QjDPV9qoPPRGbMpACKU4
- tAPiLEdEXYVwNI9EDYv06vk9RXvdxyq8F+AhUWz4dLsLiP4hpHIZu2lwcRxuZ92o5GgD
- 5VgFI0Az7j8zKrLKWNOKuLN9/q48P/yTRJhGVtZiK/IUoaLcfCCH49AwA5BbBA8AB5+A
- vhWzFXeTJQdXFQYZkI2CE+gFh+GvsksZKvVxo/D/YGTh2RtAkRNvHuYGxHi3oAik/ZRX
- PYZQ==
-X-Gm-Message-State: AOAM532cpSV2yHAwMrJlKxiS51PREhUQYzhXDeFn1+9D/2cAZo6qjLg3
- 4GKSZdUdxolO+4zHpy5yoltCytZXKHqh5mU49TzX2Q==
-X-Received: by 2002:a81:ac57:0:b0:2f1:99ec:91a2 with SMTP id
- z23-20020a81ac57000000b002f199ec91a2mr461729ywj.329.1650558470144; Thu, 21
- Apr 2022 09:27:50 -0700 (PDT)
+ bh=ARybaRdfRU2zyGFZvJK026gdqRK0ZnsRjQr9jKOxV6M=;
+ b=4+ZEkQ9RLyV6eRpc6NGhYC8aHdxYSJs9V6cuV3nXAUkCFCd5AmAx5crJ2zwioNqU73
+ +A0drbKqjQsDsBu9/z7OTP7CGBYU9ve4E2/31lZN2k/yGIezLlYpP29QvQfCdXrjtk2r
+ Mi5bOo3bymbavy4oL6AwUrpI64xhJOcQu9pJx6/cs/VPej59sRMrcF067Xc/F4/MiFzp
+ Pzx+0pL5X8kVO/ziODxRKXy2vjI7FwZoctzYokHFDsj2YeKRJ0TUfI278itzE8oCHzpE
+ xBOPyG6LfREorqYWpdRV+8mCbPUwua6TmzooZ1/4o+zfTxCcHuXPjPc8R6UhwITw7BZf
+ VIlQ==
+X-Gm-Message-State: AOAM530HXSOPLMK4zb5Ft/tJqcu5unOMfDWtnAWc4UBX3wiS7A2eHcZO
+ Sls+s1a3LZix2NwDQgXh5V63uL+XaDCW4dU6xgvcpQ==
+X-Received: by 2002:a05:620a:15cb:b0:69c:7933:ad3e with SMTP id
+ o11-20020a05620a15cb00b0069c7933ad3emr221571qkm.755.1650560379462; Thu, 21
+ Apr 2022 09:59:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220417174426.711829-1-richard.henderson@linaro.org>
- <20220417174426.711829-12-richard.henderson@linaro.org>
-In-Reply-To: <20220417174426.711829-12-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 Apr 2022 17:27:39 +0100
-Message-ID: <CAFEAcA98E_tOiXzHiMUggNVePs1S1=iDwWnrwiSi5JR5RFo8uA@mail.gmail.com>
-Subject: Re: [PATCH v3 11/60] target/arm: Split out set_btype_raw
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+References: <20220405223640.2595730-1-wuhaotsh@google.com>
+ <CAFEAcA9PCoVH_1EWTPWP_rqsOEhQZSvDZcEgw01=5W-cuyeJoA@mail.gmail.com>
+ <CAGcCb12ouKaqwT5JAdysiVVmOQfz_MAYH+uukPfrz_3FqC7QdQ@mail.gmail.com>
+ <CAFEAcA9P9aYrOgo08h1qS4mWt3+GmxgDYbxC-BTrG8_e67w18w@mail.gmail.com>
+In-Reply-To: <CAFEAcA9P9aYrOgo08h1qS4mWt3+GmxgDYbxC-BTrG8_e67w18w@mail.gmail.com>
+From: Hao Wu <wuhaotsh@google.com>
+Date: Thu, 21 Apr 2022 09:59:28 -0700
+Message-ID: <CAGcCb13ty6=8ETcvcJqUi5_o1S-3CMP_u2_wZoCvrd34siJmgg@mail.gmail.com>
+Subject: Re: [PATCH for-7.1 00/11] hw/arm: Add NPCM8XX support
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+ Patrick Venture <venture@google.com>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
+ CS20 KFTing <kfting@nuvoton.com>, Havard Skinnemoen <hskinnemoen@google.com>, 
+ IV00 Uri Trichter <Uri.Trichter@nuvoton.com>, Vishal.Soni@microsoft.com, 
+ Titus Rwantare <titusr@google.com>
+Content-Type: multipart/alternative; boundary="00000000000019795905dd2d090b"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72c;
+ envelope-from=wuhaotsh@google.com; helo=mail-qk1-x72c.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LjRFgw2loSJz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: o/iBVzo5fpbX
 
-On Sun, 17 Apr 2022 at 18:54, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+--00000000000019795905dd2d090b
+Content-Type: text/plain; charset="UTF-8"
+
+Thanks!
+
+I can add the new CPU type to virt in a separate patch set. It might take a
+while before I send out
+that patch set.
+
+Since this patch set will be dependent on that I won't send out a v2 on
+this patch set until that finishes.
+
+On Thu, Apr 21, 2022 at 9:42 AM Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> On Thu, 21 Apr 2022 at 17:29, Hao Wu <wuhaotsh@google.com> wrote:
+> >
+> > Thanks for all the comments you gave! I'll go over and address them
+> recently.
+> >
+> > For this question, The actual CPU should be cortex A35. However, I don't
+> see
+> > them supported in QEMU. If I inserted CPU with "cortex-a35" QEMU will
+> complain:
+> > qemu-system-aarch64: missing object type 'cortex-a35-arm-cpu'
+> >
+> > What should I do here?
 >
-> Common code for reset_btype and set_btype.
-> Use tcg_constant_i32.
+> You need to implement the new CPU type first... This means adding
+> something to target/arm/cpu64.c which will look similar to the
+> existing CPU handling. You need to watch out for:
+>  * getting all the ID register values right (check the TRM for the CPU)
+>  * implementing whatever the right impdef system registers are
+>  * checking whether QEMU is still missing support for any of the
+>    architectural features that the A35 implements (what QEMU
+>    supports is listed in docs/system/arm/emulation.rst)
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/translate-a64.c | 25 ++++++++++++-------------
->  1 file changed, 12 insertions(+), 13 deletions(-)
+> It's typically not much code but quite a lot of cross-checking
+> against the TRM for the CPU that we're not missing pieces...
+> Since you can add the A35 as a supported CPU type for the 'virt'
+> board you can do A35 support as a separate patchset that doesn't
+> depend on the npmc8xx work.
+>
+>
+> https://patchew.org/QEMU/20220417174426.711829-1-richard.henderson@linaro.org/20220417174426.711829-60-richard.henderson@linaro.org/
+> is an example of how to add a new CPU (in that case the A76), at
+> the end of a large patchset from RTH that's still going through
+> code review.
+>
+> -- PMM
 >
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+--00000000000019795905dd2d090b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-thanks
--- PMM
+<div dir=3D"ltr">Thanks!<div><br></div><div>I can add the=C2=A0new CPU type=
+ to virt in a separate patch set. It might take a while before I send out</=
+div><div>that patch set.</div><div><br></div><div>Since this patch set will=
+ be dependent on that I won&#39;t send out a v2 on this patch set until tha=
+t finishes.</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" clas=
+s=3D"gmail_attr">On Thu, Apr 21, 2022 at 9:42 AM Peter Maydell &lt;<a href=
+=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote=
+:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
+8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Thu, 21 Apr=
+ 2022 at 17:29, Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" target=3D=
+"_blank">wuhaotsh@google.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Thanks for all the comments you gave! I&#39;ll go over and address the=
+m recently.<br>
+&gt;<br>
+&gt; For this question, The actual CPU should be cortex A35. However, I don=
+&#39;t see<br>
+&gt; them supported in QEMU. If I inserted CPU with &quot;cortex-a35&quot; =
+QEMU will complain:<br>
+&gt; qemu-system-aarch64: missing object type &#39;cortex-a35-arm-cpu&#39;<=
+br>
+&gt;<br>
+&gt; What should I do here?<br>
+<br>
+You need to implement the new CPU type first... This means adding<br>
+something to target/arm/cpu64.c which will look similar to the<br>
+existing CPU handling. You need to watch out for:<br>
+=C2=A0* getting all the ID register values right (check the TRM for the CPU=
+)<br>
+=C2=A0* implementing whatever the right impdef system registers are<br>
+=C2=A0* checking whether QEMU is still missing support for any of the<br>
+=C2=A0 =C2=A0architectural features that the A35 implements (what QEMU<br>
+=C2=A0 =C2=A0supports is listed in docs/system/arm/emulation.rst)<br>
+<br>
+It&#39;s typically not much code but quite a lot of cross-checking<br>
+against the TRM for the CPU that we&#39;re not missing pieces...<br>
+Since you can add the A35 as a supported CPU type for the &#39;virt&#39;<br=
+>
+board you can do A35 support as a separate patchset that doesn&#39;t<br>
+depend on the npmc8xx work.<br>
+<br>
+<a href=3D"https://patchew.org/QEMU/20220417174426.711829-1-richard.henders=
+on@linaro.org/20220417174426.711829-60-richard.henderson@linaro.org/" rel=
+=3D"noreferrer" target=3D"_blank">https://patchew.org/QEMU/20220417174426.7=
+11829-1-richard.henderson@linaro.org/20220417174426.711829-60-richard.hende=
+rson@linaro.org/</a><br>
+is an example of how to add a new CPU (in that case the A76), at<br>
+the end of a large patchset from RTH that&#39;s still going through<br>
+code review.<br>
+<br>
+-- PMM<br>
+</blockquote></div>
+
+--00000000000019795905dd2d090b--

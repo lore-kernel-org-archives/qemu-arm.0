@@ -1,95 +1,100 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2423689lfk;
-        Mon, 25 Apr 2022 07:25:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJymSaie42/zGyj88ug6E4NbIPUXzW/5YFD2hRgDlsH3lWnpYOlKb2mQYvZ8AV+m32Q28Ky1
-X-Received: by 2002:a81:928c:0:b0:2f7:dab9:d885 with SMTP id j134-20020a81928c000000b002f7dab9d885mr6255504ywg.169.1650896748904;
-        Mon, 25 Apr 2022 07:25:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650896748; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2426507lfk;
+        Mon, 25 Apr 2022 07:29:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzb7rLiZknA3Yj78qpZmayNZlG6P/+cIgPJ1d9KxBr3LZ0MlfDWF7lQFLG8iM02WJ/MmXu8
+X-Received: by 2002:a81:4705:0:b0:2f0:150b:37b6 with SMTP id u5-20020a814705000000b002f0150b37b6mr17142631ywa.138.1650896990085;
+        Mon, 25 Apr 2022 07:29:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650896990; cv=none;
         d=google.com; s=arc-20160816;
-        b=QzV+ZlGQBhlk2xLM8sXtAwMGLgUsEIt348E8lIzL279j2upQqqQDwPIrONJAyz/nqw
-         rNC5UnSWAXOuNL3H4jEZUbeZWGjXGJdzopBIqBP4x6KZDRlSRL9IOwsBMS6mr+ALMZAf
-         xgQBvUreUZi5zwVJQwL54pVy6pchN536JwMXSSdJzVMCDa8kCc5GZERj3JTsx5fkoiEA
-         2iW9Bpuey8L4vZKA2UBOtQEfCUPGR7j0V6A2ZLIRKTOtIZWgrDHeovFYGm0tJKky6HrQ
-         h4k/SQXj9nHL3tp/WTPH7PZwZ9PP7td8wuV7eARXcLHaACNI25VnLb+4ql203mpKoFHQ
-         WmVQ==
+        b=VnLx+gIdAAYrCLGGaUftp33fOeP4/7lSrl+Guv2smJD7AECHfCAfDce8rE+a3L4E9T
+         hiSOrCtJwWyITDAPY2ZTZoPhzI6exWm9KrZCbV6ISxUHALzsh97sqT/BEQs5zObdT9nn
+         +bUH5B6Fy1MBFyMM10grJjua7pul9p6/Q4jMUkzogsz73ZMApTbzcrU9NDz/yUt4e+4z
+         W5Bhu2zcTr9vypoVZCvAZCk05uks8uhpjLS+j8+0SOzDYgm/Vq7QxmGSGuVFTmIbGAya
+         45gif2hjkpEqCdxzoV6vn7Y+RZVTXPej5YSmwIwSlR3D+mdj44KJUe413jFI3D3+NIHs
+         WlmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=Ru2I3/P1gvBJV04NM5tGtTOmd4SFv46f3qyNEWE3AaY=;
-        b=QCre4hi39hkqPvRe+Wqnj1h8Fe/2NbjyFQh2q4HQrY8mc9BosJOMU+1ALCxkrpVYJk
-         j3azNgCMVUFpSBQSStCoAz4kl718DEG8Qm5xKa3/2eQd1LDNtpAahhApQwmkkbHVndn+
-         q166IEgfX3lpz8V52AFDToZRbDZyJjo4PL666oY4Av4xOboyUZ/PwuuOe7hA/WW+YYKL
-         ZOJUSRB5OcoW08mcqI83fe58ochJhp/0J7uc1vISrpM6wv15MBG5pZxPAPqLaEPLBu2F
-         YPFgWmkuQ2l/OB2H0D7m/oLEAtEag1dGOf/gap8OJbK3R54vwehhoOudAk5cxAFeWRlO
-         MIPA==
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=s+hsRuLCK45nvPg8Z6TGOVYlq5imMc+N9nydMmwrdQc=;
+        b=oUhZ94jG9yzJg8prQ/m13C6haYfKMuLTkAM90vAX63KdXO2OJ6xZtwdITrbiDH/0ml
+         6sFMcAU+8HmkDWfWGj9E379ZmiAcL6vQWCwpTqITeKjELmkKTNI34VDrLFLPvEVmU38y
+         YAFuTIyjKiR4eqbc/NKQzclwRWCV5HGfOhxGmvkPCRnEPNtP5J5M9IbZBW4M11d1GB3d
+         xf6H8KktuXn/tHynXFcaU/n2C5QmqC3b5ttOBHuf6vppIIeqhqCRsrlCLMT+WNjotKhd
+         yXYJ6qKom1wR38pJqjwHA4GBOfgV7dt/EoyCB8zpL8uVGe3qgEQsW/XYvKK5CcdOZnLD
+         dcEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S9ATNets;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="TfojE/c9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d63-20020a254f42000000b00641d0a6a773si11158829ybb.608.2022.04.25.07.25.48
+        by mx.google.com with ESMTPS id v72-20020a81484b000000b002f7e33a0b05si2621806ywa.399.2022.04.25.07.29.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 07:25:48 -0700 (PDT)
+        Mon, 25 Apr 2022 07:29:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S9ATNets;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="TfojE/c9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57214 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40808 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nizeu-0002P9-A6
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 10:25:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33272)
+	id 1nizin-000217-Ds
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 10:29:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34590)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nizRy-0004Uw-8d
- for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:12:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:30040)
+ id 1nizYX-00087H-9n
+ for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:19:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51704)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nizRv-0002e1-1J
- for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:12:25 -0400
+ id 1nizYV-0003VQ-Jl
+ for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:19:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650895940;
+ s=mimecast20190719; t=1650896351;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=Ru2I3/P1gvBJV04NM5tGtTOmd4SFv46f3qyNEWE3AaY=;
- b=S9ATNetsYMacL2y2OVAk/zr7VHXju1BF5G2XKo8xrkS8wNviHMBOGEOhxeLZSAo+mN703B
- SQ9nUSItI/z95As6q7mKgV8b/z14jAVFGVi/4Z6tBSK1v8EYpDK9XD6pM5DdFH6mrbT8Eh
- zclz8HwxtdDHKoVTdC1aAFE6GG8qZ5g=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=s+hsRuLCK45nvPg8Z6TGOVYlq5imMc+N9nydMmwrdQc=;
+ b=TfojE/c95dYU5atXlwCDaISDw5pCjjZa7yh6QD4I4B+iQiBNUeYv+6Es9gHGPITgxRjWBY
+ wcaaOxLBEx2tCRyFzuOQQu8y35owKq92LK2WDjhplOfJTK8fzLOZfnATvDcA4fjzC0tVGg
+ H5WHcxrau1bpmHU4btbVlogaZ7e2hEQ=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-453-YCANpG3gNjuVbqzhOX-gAw-1; Mon, 25 Apr 2022 10:12:16 -0400
-X-MC-Unique: YCANpG3gNjuVbqzhOX-gAw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
+ us-mta-654-agVwhRL5M5iR7qHhMqsVpA-1; Mon, 25 Apr 2022 10:19:07 -0400
+X-MC-Unique: agVwhRL5M5iR7qHhMqsVpA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EA7768117B0;
- Mon, 25 Apr 2022 14:12:14 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 014C23C025BB;
+ Mon, 25 Apr 2022 14:19:07 +0000 (UTC)
 Received: from redhat.com (unknown [10.33.36.152])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E443D40C1241;
- Mon, 25 Apr 2022 14:12:07 +0000 (UTC)
-Date: Mon, 25 Apr 2022 15:11:53 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4FFA1404D8F6;
+ Mon, 25 Apr 2022 14:19:03 +0000 (UTC)
+Date: Mon, 25 Apr 2022 15:19:01 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Martin Kletzander <mkletzan@redhat.com>
-Subject: Re: [PATCH 14/18] audio: Require AudioState in AUD_add_capture
-Message-ID: <YmasKSIzQl2HsjOc@redhat.com>
+Subject: Re: [PATCH 16/18] audio: Remove legacy audio environment variables
+ and options
+Message-ID: <Ymat1RrqvJudYl7r@redhat.com>
 References: <cover.1650874791.git.mkletzan@redhat.com>
- <c6e87e678e914df0f59da2145c2753cdb4a16f63.1650874791.git.mkletzan@redhat.com>
+ <c88cdd6f3b6d0d8e94753f36a154217a10fd4625.1650874791.git.mkletzan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <c6e87e678e914df0f59da2145c2753cdb4a16f63.1650874791.git.mkletzan@redhat.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <c88cdd6f3b6d0d8e94753f36a154217a10fd4625.1650874791.git.mkletzan@redhat.com>
 User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -129,46 +134,24 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yYEKa/OtMOLI
+X-TUID: Gkm2e0eCBQ4w
 
-On Mon, Apr 25, 2022 at 10:21:57AM +0200, Martin Kletzander wrote:
-> Since all callers require a valid audiodev this function can now safely
-> abort in case of missing AudioState.
-> 
+On Mon, Apr 25, 2022 at 10:21:59AM +0200, Martin Kletzander wrote:
 > Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
 > ---
->  audio/audio.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/audio/audio.c b/audio/audio.c
-> index b95aca444382..97eb645764c1 100644
-> --- a/audio/audio.c
-> +++ b/audio/audio.c
-> @@ -1855,10 +1855,8 @@ CaptureVoiceOut *AUD_add_capture(
->      struct capture_callback *cb;
->  
->      if (!s) {
-> -        if (!legacy_config) {
-> -            dolog("Capturing without setting an audiodev is deprecated\n");
-> -        }
-> -        s = audio_init(NULL, NULL);
-> +        error_setg(&error_abort,
-> +                   "Capturing without setting an audiodev is not supported");
+>  audio/audio.c                   |  13 -
+>  audio/audio.h                   |   1 -
+>  audio/audio_legacy.c            | 555 --------------------------------
+>  audio/meson.build               |   1 -
+>  docs/about/deprecated.rst       |   7 -
+>  docs/about/removed-features.rst |   9 +
+>  qemu-options.hx                 |  10 -
+>  softmmu/vl.c                    |   4 -
+>  8 files changed, 9 insertions(+), 591 deletions(-)
+>  delete mode 100644 audio/audio_legacy.c
 
-Preferrable to do:
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-  error_report("Capturing ...");
-  abort();
-
-Or pass in an 'Error **errp' parameter and let the caller decide
-what todo
-
->      }
->  
->      if (!audio_get_pdo_out(s->dev)->mixing_engine) {
-> -- 
-> 2.35.1
-> 
 
 With regards,
 Daniel

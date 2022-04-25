@@ -1,95 +1,94 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2419308lfk;
-        Mon, 25 Apr 2022 07:19:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw4h6kpxXgZWcJHo5JgSkClY8TVpzZBX7yKaGNfqnF1nOdq7L2uMfnvkTVnf33ixNEh+gMt
-X-Received: by 2002:a25:b7c9:0:b0:648:3810:17c6 with SMTP id u9-20020a25b7c9000000b00648381017c6mr9087650ybj.12.1650896357220;
-        Mon, 25 Apr 2022 07:19:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650896357; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2423689lfk;
+        Mon, 25 Apr 2022 07:25:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJymSaie42/zGyj88ug6E4NbIPUXzW/5YFD2hRgDlsH3lWnpYOlKb2mQYvZ8AV+m32Q28Ky1
+X-Received: by 2002:a81:928c:0:b0:2f7:dab9:d885 with SMTP id j134-20020a81928c000000b002f7dab9d885mr6255504ywg.169.1650896748904;
+        Mon, 25 Apr 2022 07:25:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650896748; cv=none;
         d=google.com; s=arc-20160816;
-        b=gmlM06NG8xeY8QKjhZi+EHIUZS7jd8QpSmyrAgQ31DbCrrEVARfm8keDc3NLO7vCim
-         DQ2QnH1W53JhIXSIHU9I9obSkhlsQc0Uqtd61GxiLSAZ7m7Che/o0FaqYl3roG24+t6x
-         5vAl09xI+sQ2XdAuhdNNd+Cj49ZSTImuaGIe/UOuQvGsTW4RkmJ2AxwXaJucoOOhO++u
-         kTFEarVXzB1wH1aQPPvj0iuQcvLgAik4ChNyX5Hq2T7n93pZVrfMJ19M+lqPkYVibGd/
-         XMiusenrfQ8ffQbQ7nnwE7j1R+ym+/l84/5lVxFSC3wEbhUQvgyeAMy5DRapJ1nrymPC
-         tR+Q==
+        b=QzV+ZlGQBhlk2xLM8sXtAwMGLgUsEIt348E8lIzL279j2upQqqQDwPIrONJAyz/nqw
+         rNC5UnSWAXOuNL3H4jEZUbeZWGjXGJdzopBIqBP4x6KZDRlSRL9IOwsBMS6mr+ALMZAf
+         xgQBvUreUZi5zwVJQwL54pVy6pchN536JwMXSSdJzVMCDa8kCc5GZERj3JTsx5fkoiEA
+         2iW9Bpuey8L4vZKA2UBOtQEfCUPGR7j0V6A2ZLIRKTOtIZWgrDHeovFYGm0tJKky6HrQ
+         h4k/SQXj9nHL3tp/WTPH7PZwZ9PP7td8wuV7eARXcLHaACNI25VnLb+4ql203mpKoFHQ
+         WmVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:user-agent
          :in-reply-to:content-disposition:mime-version:references:message-id
          :subject:to:from:date:dkim-signature;
-        bh=h1jN7tQTX66MqOuSbtIARZz8ISAj/7nFeyFOR/hkA1Q=;
-        b=JNTsorvbnOcitCfeLXt7nctBIFeh4CkCnfL+ah3tFBxBFJ3K0F/LkoNd3kEOJpPMLS
-         zfxXJINuR0zbKz2NRvbPTTAc/XO6wNckPC+BVEhhaKhAdnnosg98OZihTD+1jdiD6N/z
-         bR4wzTLbKyMOBAP71G5QtzgTxwJGKxEo2DEokDWQCqYA48fOCxJZWXixnmpZzhxLZAzn
-         ZAEQTpCnSa/8CLQwTYc3t/Azp9WaW4K/E3eHlediL2iFFpjpIXt7yGC+KQ6a6zJ3f829
-         z71ewaWtX0AkbK4z2xNg5CtUu0u/giJqmI2YvaqYI66HoJ+q40rN0QP4rPCNN/49C/aE
-         8y6A==
+        bh=Ru2I3/P1gvBJV04NM5tGtTOmd4SFv46f3qyNEWE3AaY=;
+        b=QCre4hi39hkqPvRe+Wqnj1h8Fe/2NbjyFQh2q4HQrY8mc9BosJOMU+1ALCxkrpVYJk
+         j3azNgCMVUFpSBQSStCoAz4kl718DEG8Qm5xKa3/2eQd1LDNtpAahhApQwmkkbHVndn+
+         q166IEgfX3lpz8V52AFDToZRbDZyJjo4PL666oY4Av4xOboyUZ/PwuuOe7hA/WW+YYKL
+         ZOJUSRB5OcoW08mcqI83fe58ochJhp/0J7uc1vISrpM6wv15MBG5pZxPAPqLaEPLBu2F
+         YPFgWmkuQ2l/OB2H0D7m/oLEAtEag1dGOf/gap8OJbK3R54vwehhoOudAk5cxAFeWRlO
+         MIPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=grAYIUIh;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S9ATNets;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d125-20020a251d83000000b006346ffbecdbsi12000109ybd.259.2022.04.25.07.19.17
+        by mx.google.com with ESMTPS id d63-20020a254f42000000b00641d0a6a773si11158829ybb.608.2022.04.25.07.25.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 07:19:17 -0700 (PDT)
+        Mon, 25 Apr 2022 07:25:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=grAYIUIh;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S9ATNets;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40010 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57214 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nizYa-0007b8-HZ
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 10:19:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34054)
+	id 1nizeu-0002P9-A6
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 10:25:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33272)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nizWt-0004KC-5r
- for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:17:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:53982)
+ id 1nizRy-0004Uw-8d
+ for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:12:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:30040)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nizWq-0003KL-MV
- for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:17:30 -0400
+ id 1nizRv-0002e1-1J
+ for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:12:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650896248;
+ s=mimecast20190719; t=1650895940;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=h1jN7tQTX66MqOuSbtIARZz8ISAj/7nFeyFOR/hkA1Q=;
- b=grAYIUIhNL4YCx7LYwl5FDgp8+LjvUZsurvKopPg6WtHEUsogcGfYLeK5hPVjlYKEMj5ln
- non8dLohK85GAY8TQp3ZIut8/JSwrKZ9zrYAEn9Z0ccaVjbSDMZmFg51jwA2ZPGpO5Lwvz
- HXTTB1K60iPEgF3Vx0jXT1yHTEVUdSA=
+ bh=Ru2I3/P1gvBJV04NM5tGtTOmd4SFv46f3qyNEWE3AaY=;
+ b=S9ATNetsYMacL2y2OVAk/zr7VHXju1BF5G2XKo8xrkS8wNviHMBOGEOhxeLZSAo+mN703B
+ SQ9nUSItI/z95As6q7mKgV8b/z14jAVFGVi/4Z6tBSK1v8EYpDK9XD6pM5DdFH6mrbT8Eh
+ zclz8HwxtdDHKoVTdC1aAFE6GG8qZ5g=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-669-j5IorJ0jP9enJvmCEmLn2Q-1; Mon, 25 Apr 2022 10:17:25 -0400
-X-MC-Unique: j5IorJ0jP9enJvmCEmLn2Q-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
+ us-mta-453-YCANpG3gNjuVbqzhOX-gAw-1; Mon, 25 Apr 2022 10:12:16 -0400
+X-MC-Unique: YCANpG3gNjuVbqzhOX-gAw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CDDF485A5BC;
- Mon, 25 Apr 2022 14:17:23 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EA7768117B0;
+ Mon, 25 Apr 2022 14:12:14 +0000 (UTC)
 Received: from redhat.com (unknown [10.33.36.152])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8F7741121315;
- Mon, 25 Apr 2022 14:16:29 +0000 (UTC)
-Date: Mon, 25 Apr 2022 15:16:27 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E443D40C1241;
+ Mon, 25 Apr 2022 14:12:07 +0000 (UTC)
+Date: Mon, 25 Apr 2022 15:11:53 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Martin Kletzander <mkletzan@redhat.com>
-Subject: Re: [PATCH 15/18] audio: Be more strict during audio backend
- initialisation
-Message-ID: <YmatOzD3H4FO4FGZ@redhat.com>
+Subject: Re: [PATCH 14/18] audio: Require AudioState in AUD_add_capture
+Message-ID: <YmasKSIzQl2HsjOc@redhat.com>
 References: <cover.1650874791.git.mkletzan@redhat.com>
- <e9c251a6b45d01d4b1d59ce4c6295172f354b301.1650874791.git.mkletzan@redhat.com>
+ <c6e87e678e914df0f59da2145c2753cdb4a16f63.1650874791.git.mkletzan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <e9c251a6b45d01d4b1d59ce4c6295172f354b301.1650874791.git.mkletzan@redhat.com>
+In-Reply-To: <c6e87e678e914df0f59da2145c2753cdb4a16f63.1650874791.git.mkletzan@redhat.com>
 User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.2
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
@@ -130,275 +129,43 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LzVvB2dkshkn
+X-TUID: yYEKa/OtMOLI
 
-On Mon, Apr 25, 2022 at 10:21:58AM +0200, Martin Kletzander wrote:
-> Now that audiodev= is required and audio_init() will not be called
-> without and AudioDev we can remove the fallback functionality and error
-> out in case audio drivers fail initialisation or when the driver does
-> not exist.
+On Mon, Apr 25, 2022 at 10:21:57AM +0200, Martin Kletzander wrote:
+> Since all callers require a valid audiodev this function can now safely
+> abort in case of missing AudioState.
 > 
 > Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
 > ---
->  audio/audio.c                   | 146 ++++++--------------------------
->  docs/about/deprecated.rst       |   8 --
->  docs/about/removed-features.rst |   8 ++
->  3 files changed, 34 insertions(+), 128 deletions(-)
+>  audio/audio.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
 > 
 > diff --git a/audio/audio.c b/audio/audio.c
-> index 97eb645764c1..c944cf817cf9 100644
+> index b95aca444382..97eb645764c1 100644
 > --- a/audio/audio.c
 > +++ b/audio/audio.c
-> @@ -87,6 +87,8 @@ audio_driver *audio_driver_lookup(const char *name)
->          }
->      }
+> @@ -1855,10 +1855,8 @@ CaptureVoiceOut *AUD_add_capture(
+>      struct capture_callback *cb;
 >  
-> +    error_setg(&error_fatal, "Unknown audio driver `%s'", name);
-> +    /* Avoid compiler complaining that we do not return in non-void function */
->      return NULL;
->  }
-
-I'd be inclined to plumb in 'Error **errp' here and in the next two
-callers up, and pass &error_fatal from softmmu/vl.c
-
->  
-> @@ -104,8 +106,6 @@ const struct mixeng_volume nominal_volume = {
->  #endif
->  };
->  
-> -static bool legacy_config = true;
-> -
->  int audio_bug (const char *funcname, int cond)
->  {
->      if (cond) {
-> @@ -1532,31 +1532,27 @@ size_t audio_generic_read(HWVoiceIn *hw, void *buf, size_t size)
->      return total;
->  }
->  
-> -static int audio_driver_init(AudioState *s, struct audio_driver *drv,
-> -                             bool msg, Audiodev *dev)
-> +static void audio_driver_init(AudioState *s, struct audio_driver *drv,
-> +                              Audiodev *dev)
->  {
->      s->drv_opaque = drv->init(dev);
->  
-> -    if (s->drv_opaque) {
-> -        if (!drv->pcm_ops->get_buffer_in) {
-> -            drv->pcm_ops->get_buffer_in = audio_generic_get_buffer_in;
-> -            drv->pcm_ops->put_buffer_in = audio_generic_put_buffer_in;
-> -        }
-> -        if (!drv->pcm_ops->get_buffer_out) {
-> -            drv->pcm_ops->get_buffer_out = audio_generic_get_buffer_out;
-> -            drv->pcm_ops->put_buffer_out = audio_generic_put_buffer_out;
-> -        }
-> +    if (!s->drv_opaque) {
-> +        error_setg(&error_fatal, "Could not init `%s' audio driver", drv->name);
-> +    }
->  
-> -        audio_init_nb_voices_out(s, drv);
-> -        audio_init_nb_voices_in(s, drv);
-> -        s->drv = drv;
-> -        return 0;
-> -    } else {
-> -        if (msg) {
-> -            dolog("Could not init `%s' audio driver\n", drv->name);
-> -        }
-> -        return -1;
-> +    if (!drv->pcm_ops->get_buffer_in) {
-> +        drv->pcm_ops->get_buffer_in = audio_generic_get_buffer_in;
-> +        drv->pcm_ops->put_buffer_in = audio_generic_put_buffer_in;
->      }
-> +    if (!drv->pcm_ops->get_buffer_out) {
-> +        drv->pcm_ops->get_buffer_out = audio_generic_get_buffer_out;
-> +        drv->pcm_ops->put_buffer_out = audio_generic_put_buffer_out;
-> +    }
-> +
-> +    audio_init_nb_voices_out(s, drv);
-> +    audio_init_nb_voices_in(s, drv);
-> +    s->drv = drv;
->  }
->  
->  static void audio_vm_change_state_handler (void *opaque, bool running,
-> @@ -1661,79 +1657,19 @@ static const VMStateDescription vmstate_audio = {
->  
->  static void audio_validate_opts(Audiodev *dev, Error **errp);
->  
-> -static AudiodevListEntry *audiodev_find(
-> -    AudiodevListHead *head, const char *drvname)
-> -{
-> -    AudiodevListEntry *e;
-> -    QSIMPLEQ_FOREACH(e, head, next) {
-> -        if (strcmp(AudiodevDriver_str(e->dev->driver), drvname) == 0) {
-> -            return e;
-> -        }
-> -    }
-> -
-> -    return NULL;
-> -}
-> -
-> -/*
-> - * if we have dev, this function was called because of an -audiodev argument =>
-> - *   initialize a new state with it
-> - * if dev == NULL => legacy implicit initialization, return the already created
-> - *   state or create a new one
-> - */
-> -static AudioState *audio_init(Audiodev *dev, const char *name)
-> +static AudioState *audio_init(Audiodev *dev)
->  {
->      static bool atexit_registered;
-> -    size_t i;
-> -    int done = 0;
->      const char *drvname = NULL;
->      VMChangeStateEntry *e;
->      AudioState *s;
-> -    struct audio_driver *driver;
-> -    /* silence gcc warning about uninitialized variable */
-> -    AudiodevListHead head = QSIMPLEQ_HEAD_INITIALIZER(head);
-> -
-> -    if (using_spice) {
-> -        /*
-> -         * When using spice allow the spice audio driver being picked
-> -         * as default.
-> -         *
-> -         * Temporary hack.  Using audio devices without explicit
-> -         * audiodev= property is already deprecated.  Same goes for
-> -         * the -soundhw switch.  Once this support gets finally
-> -         * removed we can also drop the concept of a default audio
-> -         * backend and this can go away.
-> -         */
-> -        driver = audio_driver_lookup("spice");
-> -        if (driver) {
-> -            driver->can_be_default = 1;
-> -        }
-> -    }
->  
-> -    if (dev) {
-> -        /* -audiodev option */
-> -        legacy_config = false;
-> -        drvname = AudiodevDriver_str(dev->driver);
-> -    } else if (!QTAILQ_EMPTY(&audio_states)) {
+>      if (!s) {
 > -        if (!legacy_config) {
-> -            dolog("Device %s: audiodev default parameter is deprecated, please "
-> -                  "specify audiodev=%s\n", name,
-> -                  QTAILQ_FIRST(&audio_states)->dev->id);
+> -            dolog("Capturing without setting an audiodev is deprecated\n");
 > -        }
-> -        return QTAILQ_FIRST(&audio_states);
-> -    } else {
-> -        /* legacy implicit initialization */
-> -        head = audio_handle_legacy_opts();
-> -        /*
-> -         * In case of legacy initialization, all Audiodevs in the list will have
-> -         * the same configuration (except the driver), so it doesn't matter which
-> -         * one we chose.  We need an Audiodev to set up AudioState before we can
-> -         * init a driver.  Also note that dev at this point is still in the
-> -         * list.
-> -         */
-> -        dev = QSIMPLEQ_FIRST(&head)->dev;
-> -        audio_validate_opts(dev, &error_abort);
-> +    if (!dev) {
-> +        error_setg(&error_abort, "Mandatory audiodev parameter required");
+> -        s = audio_init(NULL, NULL);
+> +        error_setg(&error_abort,
+> +                   "Capturing without setting an audiodev is not supported");
+
+Preferrable to do:
+
+  error_report("Capturing ...");
+  abort();
+
+Or pass in an 'Error **errp' parameter and let the caller decide
+what todo
+
 >      }
 >  
-> +    drvname = AudiodevDriver_str(dev->driver);
-> +
->      s = g_new0(AudioState, 1);
->      s->dev = dev;
->  
-> @@ -1763,37 +1699,7 @@ static AudioState *audio_init(Audiodev *dev, const char *name)
->          s->nb_hw_voices_in = 0;
->      }
->  
-> -    if (drvname) {
-> -        driver = audio_driver_lookup(drvname);
-> -        if (driver) {
-> -            done = !audio_driver_init(s, driver, true, dev);
-> -        } else {
-> -            dolog ("Unknown audio driver `%s'\n", drvname);
-> -        }
-> -    } else {
-> -        for (i = 0; audio_prio_list[i]; i++) {
-> -            AudiodevListEntry *e = audiodev_find(&head, audio_prio_list[i]);
-> -            driver = audio_driver_lookup(audio_prio_list[i]);
-> -
-> -            if (e && driver) {
-> -                s->dev = dev = e->dev;
-> -                audio_validate_opts(dev, &error_abort);
-> -                done = !audio_driver_init(s, driver, false, dev);
-> -                if (done) {
-> -                    e->dev = NULL;
-> -                    break;
-> -                }
-> -            }
-> -        }
-> -    }
-> -    audio_free_audiodev_list(&head);
-> -
-> -    if (!done) {
-> -        driver = audio_driver_lookup("none");
-> -        done = !audio_driver_init(s, driver, false, dev);
-> -        assert(done);
-> -        dolog("warning: Using timer based audio emulation\n");
-> -    }
-> +    audio_driver_init(s, audio_driver_lookup(drvname), dev);
->  
->      if (dev->timer_period <= 0) {
->          s->period_ticks = 1;
-> @@ -2120,7 +2026,7 @@ void audio_init_audiodevs(void)
->      AudiodevListEntry *e;
->  
->      QSIMPLEQ_FOREACH(e, &audiodevs, next) {
-> -        audio_init(e->dev, NULL);
-> +        audio_init(e->dev);
->      }
->  }
->  
-> @@ -2133,7 +2039,7 @@ static void audio_init_dummy(const char *id)
->      dev->id = g_strdup(id);
->  
->      audio_validate_opts(dev, &error_abort);
-> -    audio_init(dev, NULL);
-> +    audio_init(dev);
->  
->      e->dev = dev;
->      QSIMPLEQ_INSERT_TAIL(&audiodevs, e, next);
-> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-> index 7ba71ebd3435..b2255319e347 100644
-> --- a/docs/about/deprecated.rst
-> +++ b/docs/about/deprecated.rst
-> @@ -31,14 +31,6 @@ backend settings instead of environment variables.  To ease migration to
->  the new format, the ``-audiodev-help`` option can be used to convert
->  the current values of the environment variables to ``-audiodev`` options.
->  
-> -Creating sound card devices and vnc without ``audiodev=`` property (since 4.2)
-> -''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-> -
-> -When not using the deprecated legacy audio config, each sound card
-> -should specify an ``audiodev=`` property.  Additionally, when using
-> -vnc, you should specify an ``audiodev=`` property if you plan to
-> -transmit audio through the VNC protocol.
-> -
->  ``-chardev`` backend aliases ``tty`` and ``parport`` (since 6.0)
->  ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
->  
-> diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-> index 086ba3edb042..f9eea4dda327 100644
-> --- a/docs/about/removed-features.rst
-> +++ b/docs/about/removed-features.rst
-> @@ -346,6 +346,14 @@ needs two devices (``-device intel-hda -device hda-duplex``) and
->  pcspk-audiodev=<name>``.  And ``AC97`` and ``ES1370`` now have to be
->  specified in uppercase.
->  
-> +Creating sound card devices and vnc without ``audiodev=`` property (removed in 7.1)
-> +'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-> +
-> +When not using the deprecated legacy audio config, each sound card
-> +should specify an ``audiodev=`` property.  Additionally, when using
-> +vnc, you should specify an ``audiodev=`` property if you plan to
-> +transmit audio through the VNC protocol.
-> +
->  
->  QEMU Machine Protocol (QMP) commands
->  ------------------------------------
+>      if (!audio_get_pdo_out(s->dev)->mixing_engine) {
 > -- 
 > 2.35.1
 > 

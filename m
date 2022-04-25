@@ -1,110 +1,110 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2222870lfk;
-        Mon, 25 Apr 2022 01:47:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx9yEpZNmXVmrZ82yPSZmVIC7RFF6W5PS+8blDXxHUErW11TNjLQvsCcsTE1z9Ua0VwPs8M
-X-Received: by 2002:a37:2c82:0:b0:69e:a6ac:9f23 with SMTP id s124-20020a372c82000000b0069ea6ac9f23mr9396203qkh.455.1650876474622;
-        Mon, 25 Apr 2022 01:47:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650876474; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2232268lfk;
+        Mon, 25 Apr 2022 02:07:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUNxFeWgYdRj1JMVg67qNHq7DisJfpWNFTL+3FL9aBOioy8jXCKjd61j8/aFgAlyk2/3q8
+X-Received: by 2002:a05:620a:2586:b0:680:f3c1:9d4a with SMTP id x6-20020a05620a258600b00680f3c19d4amr9213858qko.619.1650877678342;
+        Mon, 25 Apr 2022 02:07:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650877678; cv=none;
         d=google.com; s=arc-20160816;
-        b=DDWuSCPauHkMXNutRD/u1w1A+2YX0WrAXuw+APi2F0D8J6s+yicvOufA24bwiSK8UL
-         QcXYa4i2w3Adh6PKafm1BJ2pa8I8gIo8bOliX8vcdNnmfk0x/hLsenO2J/FnJAFiHxag
-         4JPKFDSiF/VHPkk52SvPJ5VQf5l+0FRBjVed/qL5qTVAlE9CaMVc9KUn6HL62pA1cVy2
-         yo0+M4ed7maclcLSHr/ICyayAp8cQMdi+OjvXD0qYkHN9FNT1lgZQwz4iwK6lwRjZLst
-         tOzehFH+PGfMTx3ooSWtyC0FVwhtqd4TyC3Qojy9iLhfiBtNrSPpV+Bc6ygMFi4YoZDl
-         jBpg==
+        b=oBHhFP9f9+kisnyRAbpVO5UxJSXe39u0FhegBjChMJZeoRuM3VnCXhy3bNur8eZ5Rl
+         ALlQaZ12NzWyN67h6rWvshQQ7XxQua3SXr+T2cmECeMKMjtdKfBU1oiohcNHdQopfhcV
+         Yb8Exb0VO/+gmRTA72zlLYU8cOOEKoY6m5xcD85ozcjnNlooDoKSdW6UXOBdjyuKy4T/
+         o69U+G2oCSLeyr+7gtgC5nRoSXNE02CAPzuaEiP/NoZra7MgYam/0wp1TddzbXtyD/z5
+         ARWW/wE16oviPtVTNhuCY/Br4gbr0zh959k0+UW+qg8x6mhfHVUWrqMzQ7avY/nrxh6p
+         yxig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=djWLap2ip9TeVgEs3MLYUVyamfKL3oD+pQvj2lMaBx8=;
-        b=OUbidLn4wqwm8R1kxOzsL8pRvhcXOzxCH+i2TY1PdvB+Y5HdH5pxMQqI8qi3KmYNkI
-         MZfxixWuPwhJI+hJPZpT4jYmZFNKU3DRj+JDW0B39s2fEaY23T4zSjRs/hRYPALYzpDi
-         4O8TE5j9D2NwFEwYWGXyKygRgIWkIUICuAkxV+XAGZtSYsHdy2F5NPF32XHWHdoABZK1
-         8DnitNlbHxUYH34EMesC/seBz5J4e9c9AvMxEim/Hq0J9bJZpUumGVM5bRgvvopfGmI+
-         jKQYVokpyp6CYiFC+QnJRqiGUxybFO293tlxPF3+tEjLTvGYw+NSZc78+tOb8fOzRCFu
-         zE1w==
+        bh=s9HfXFFqm8XD3sd/B71lxNFxNbf5q88arJTDKzK7o3M=;
+        b=aJ7j6zOgM3qcbq+ttFkXWB3EfJsBPtw1DWSPE1Ww96a16HoAiwQTnbPGec+kq/tFOp
+         ybwmETF9OKR+P9/R+7SJI5Hq9TEJRrixWHzOMTkSTzBhkRIEvhPvzfdQX+Tz0/w/7BCm
+         zHKTKA9wJmH7LEObc9GYW/p7rKx58sY1bLXDekzL3G7p80Ttq2sSd0+Kml2LCcn//LOJ
+         LmvbIPxtgomRDDAzC7GUiWh7k7N+miOn0qZDX/R/SYXDB9wKXjy/ewqqyqqudbcmzMXX
+         9HVCWvxTBq1aawlLgI2zYN7herFjWM/a6oOZdoTIBxFj3x7U574ZwUbo7cDo0KMfiMLL
+         lqYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gl2BsEyC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="WSX/WBoy";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ge2-20020a05621427c200b0044640993dc6si4230419qvb.349.2022.04.25.01.47.54
+        by mx.google.com with ESMTPS id a6-20020ac85b86000000b002e1fbf3beeesi4473858qta.223.2022.04.25.02.07.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 01:47:54 -0700 (PDT)
+        Mon, 25 Apr 2022 02:07:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gl2BsEyC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="WSX/WBoy";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45054 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41160 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1niuNt-0002Dn-WB
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 04:47:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40456)
+	id 1niuhJ-0002Qj-RS
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 05:07:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu0E-0006gM-HN
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:56595)
+ id 1niu0r-0007KX-3P
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:24:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:21019)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu07-0002ix-9T
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:26 -0400
+ id 1niu0p-0002rL-32
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:24:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650874998;
+ s=mimecast20190719; t=1650875042;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=djWLap2ip9TeVgEs3MLYUVyamfKL3oD+pQvj2lMaBx8=;
- b=gl2BsEyC3vO+zCSBBWEUV8ZWRtuHuQaIiYUncCtsWeoek/wZ1CqUIykzzIMhwlSVClVeRi
- 6/OAn4J01JZJVwGvuRVIgaeqT4xRKLHs/wYI0g0UZ+7bzlF0gm0pO937P31ssLUGsB856Y
- laZJOfP2JWDRUIu6Us0tPNlHvu34m7M=
+ bh=s9HfXFFqm8XD3sd/B71lxNFxNbf5q88arJTDKzK7o3M=;
+ b=WSX/WBoyT49aM7NxGWaYTwWRcCKJn0Hsu8VNQz3oFBcTox2mhtg/6l4INFWnNeaceXPAQB
+ NQhBRU6Iu4DJ8f/KtvkG5hZTX9XyK8da7FA7hR4yJKdd3i78ulq7TN6ETE0QfBaYTQ6rRU
+ In0QEOpnDjCKflcwK4W6gwUqiKvJ/zU=
 Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
  [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-438-w0NTe48bPh2CHBc7ed6I1A-1; Mon, 25 Apr 2022 04:22:07 -0400
-X-MC-Unique: w0NTe48bPh2CHBc7ed6I1A-1
+ us-mta-442-hED7U5QHNemqZWm8fXi9OA-1; Mon, 25 Apr 2022 04:22:08 -0400
+X-MC-Unique: hED7U5QHNemqZWm8fXi9OA-1
 Received: by mail-wm1-f69.google.com with SMTP id
- t2-20020a7bc3c2000000b003528fe59cb9so6872357wmj.5
+ g13-20020a1c4e0d000000b0038eba16aa46so6862150wmh.7
  for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=djWLap2ip9TeVgEs3MLYUVyamfKL3oD+pQvj2lMaBx8=;
- b=1nSRmY4m4/6g6EJXagh+aUK5BtKPCv7wzF2eKiYvhAh+QlS411r6LBl+CwcusQ36eA
- cruIDrgPvf6jmTtpjfRlwOS8wZaZnD0541IPoctTB7xg5HMjV5MQLY++pgRxn4bXoyTa
- lEDn9FKXF1VGKPzpeWNWJZ8U+nbETdAdg1k/7wKfXsOiFt2rVtgWTaJZ9sDWZ6eTorKB
- tKIBEf1JswzbxTR7bRhKgLi/ARj8V43DaRBqG8QcHNO/hLzPasOV/A4IUFomX7AXMa/H
- PLPmAzQK6EzZjnuOgpdakKc4XYGb44e/k4ba9EP/5g0F7KDeS7pLUquckHp4+0XHq5Zy
- VPfA==
-X-Gm-Message-State: AOAM531q0zf0+1G7YE1M+LCr74AwQBJ9sUvIFL/XHHe9HXhslgvNU6oq
- 9MMCUATuWwbDBeth7bBWNAEoqbunhPrW9Op6qigW7//koefhr4uHIINzmVxjGdVLZXaG67TXPhM
- NzR6SbEGDB+mpv0Q=
-X-Received: by 2002:a05:600c:3548:b0:393:ecaa:d7ae with SMTP id
- i8-20020a05600c354800b00393ecaad7aemr2568977wmq.86.1650874926020; 
+ bh=s9HfXFFqm8XD3sd/B71lxNFxNbf5q88arJTDKzK7o3M=;
+ b=CPM7/6+1AdlV9KdMDHW1/x5YxM0YC1nZmKoQFMZ97xT5pF2qmAqnC15nogF4Gierzg
+ +BNpuPgjizVtQ8nBfY1AqeNN+LGWqI/I/EfNbReFhwIHOatebBYP86i0dbjgFNoezlDf
+ cqNO4QiYok+TkGS4e9MEPhR+Pj2cjJQ3NaF13cG181Un9pyfe4BNlSPsuH4MUEXortIz
+ si3W3E4NtU3EKValZp37qpFTLsEOh/yTpaJ8Mn+i1bxAUK4QAdVTU6XX8RDRBKWQUU5o
+ QRmzZh+H3HwV9rjxlwwyCbNPxTePtAX8mdQqKZMowswcQRum+XK7N7dekNK9I4Z0i4VK
+ CX0w==
+X-Gm-Message-State: AOAM530SQVp87RYT9Buj/hvCrDQn1rD1rXB2bepeQwoMQrt6oZVwWYo0
+ k+bvairX15e0iLPt2H17smam9T9CvNmPGN4zfiOBi6gcNQlS5hxadrAP2bLyhbbDPIHsW1GD2ig
+ BhJn/MX/SSBSrmFA=
+X-Received: by 2002:a05:600c:500c:b0:392:b12f:40a with SMTP id
+ n12-20020a05600c500c00b00392b12f040amr15318845wmr.122.1650874926858; 
  Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
-X-Received: by 2002:a05:600c:3548:b0:393:ecaa:d7ae with SMTP id
- i8-20020a05600c354800b00393ecaad7aemr2568947wmq.86.1650874925705; 
- Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
+X-Received: by 2002:a05:600c:500c:b0:392:b12f:40a with SMTP id
+ n12-20020a05600c500c00b00392b12f040amr15318821wmr.122.1650874926684; 
+ Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
 Received: from wheatley.localdomain (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- p125-20020a1c2983000000b0038e5ca446bcsm11127092wmp.5.2022.04.25.01.22.04
+ d2-20020a056000186200b0020a7be3f1d2sm9949427wri.53.2022.04.25.01.22.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
 Received: from wheatley.redhat.com (wheatley.k8r.cz [127.0.0.1])
- by wheatley.localdomain (Postfix) with ESMTP id 6A5FE67B1B62;
+ by wheatley.localdomain (Postfix) with ESMTP id 9C2A067B1B67;
  Mon, 25 Apr 2022 10:22:02 +0200 (CEST)
 From: Martin Kletzander <mkletzan@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 13/18] audio: Make AUD_register_card fallible and require
- audiodev=
-Date: Mon, 25 Apr 2022 10:21:56 +0200
-Message-Id: <92b31c6af268b8f2a4cc4ed5b20ee8d0e19f614d.1650874791.git.mkletzan@redhat.com>
+Subject: [PATCH 18/18] audio/spiceaudio: Fail initialisation when not using
+ spice
+Date: Mon, 25 Apr 2022 10:22:01 +0200
+Message-Id: <5db1fdef0330f20ed6ae306b5a71dad1b5e9b44c.1650874791.git.mkletzan@redhat.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
 References: <cover.1650874791.git.mkletzan@redhat.com>
@@ -150,331 +150,33 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A0TYVQuJb9MJ
+X-TUID: CRQ6yLZItLk7
 
-Now that all callers support error reporting with errp and all machine-default
-devices use an explicit audiodev, this can be changed.  To make the detection
-easier make AUD_register_card() return false on error.
+The caller would already fail, but this way the message can better
+express the reason for the failure.
+
+Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=2043498
 
 Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
 ---
- audio/audio.c        | 7 +++++--
- audio/audio.h        | 2 +-
- hw/arm/omap2.c       | 3 ++-
- hw/audio/ac97.c      | 6 +++++-
- hw/audio/adlib.c     | 7 +++++--
- hw/audio/cs4231a.c   | 6 ++++--
- hw/audio/es1370.c    | 5 ++++-
- hw/audio/gus.c       | 4 +++-
- hw/audio/hda-codec.c | 5 ++++-
- hw/audio/lm4549.c    | 4 +++-
- hw/audio/pcspk.c     | 4 +++-
- hw/audio/sb16.c      | 6 ++++--
- hw/audio/wm8750.c    | 5 ++++-
- hw/display/xlnx_dp.c | 6 ++++--
- hw/input/tsc210x.c   | 3 ++-
- hw/usb/dev-audio.c   | 5 ++++-
- 16 files changed, 57 insertions(+), 21 deletions(-)
+ audio/spiceaudio.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/audio/audio.c b/audio/audio.c
-index 671845c65d18..b95aca444382 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -1822,15 +1822,18 @@ void audio_free_audiodev_list(AudiodevListHead *head)
-     }
- }
- 
--void AUD_register_card (const char *name, QEMUSoundCard *card)
-+bool AUD_register_card (const char *name, QEMUSoundCard *card, Error **errp)
+diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
+index a8d370fe6f31..fdbd7dc285ad 100644
+--- a/audio/spiceaudio.c
++++ b/audio/spiceaudio.c
+@@ -74,8 +74,9 @@ static const SpiceRecordInterface record_sif = {
+ static void *spice_audio_init(Audiodev *dev)
  {
-     if (!card->state) {
--        card->state = audio_init(NULL, name);
-+        error_setg(errp, "No audiodev specified for %s", name);
-+        return false;
+     if (!using_spice) {
+-        return NULL;
++        error_setg(&error_fatal, "Cannot use spice audio without -spice");
      }
- 
-     card->name = g_strdup (name);
-     memset (&card->entries, 0, sizeof (card->entries));
-     QLIST_INSERT_HEAD(&card->state->card_head, card, entries);
 +
-+    return true;
+     return &spice_audio_init;
  }
  
- void AUD_remove_card (QEMUSoundCard *card)
-diff --git a/audio/audio.h b/audio/audio.h
-index 335704a4ddb1..9deed8ed6830 100644
---- a/audio/audio.h
-+++ b/audio/audio.h
-@@ -94,7 +94,7 @@ typedef struct QEMUAudioTimeStamp {
- void AUD_vlog (const char *cap, const char *fmt, va_list ap) G_GNUC_PRINTF(2, 0);
- void AUD_log (const char *cap, const char *fmt, ...) G_GNUC_PRINTF(2, 3);
- 
--void AUD_register_card (const char *name, QEMUSoundCard *card);
-+bool AUD_register_card (const char *name, QEMUSoundCard *card, Error **errp);
- void AUD_remove_card (QEMUSoundCard *card);
- CaptureVoiceOut *AUD_add_capture(
-     AudioState *s,
-diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-index 4ae524a1a1a6..407c24551c84 100644
---- a/hw/arm/omap2.c
-+++ b/hw/arm/omap2.c
-@@ -618,7 +618,8 @@ static struct omap_eac_s *omap_eac_init(struct omap_target_agent_s *ta,
-                    s->codec.card.name);
-     }
- 
--    AUD_register_card("OMAP EAC", &s->codec.card);
-+    /* We can quit here because this only gets called from machine class init */
-+    AUD_register_card("OMAP EAC", &s->codec.card, &error_fatal);
- 
-     memory_region_init_io(&s->iomem, NULL, &omap_eac_ops, s, "omap.eac",
-                           omap_l4_region_size(ta, 0));
-diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
-index fd0b3b97d5b5..8242ddb0f93d 100644
---- a/hw/audio/ac97.c
-+++ b/hw/audio/ac97.c
-@@ -1345,6 +1345,10 @@ static void ac97_realize(PCIDevice *dev, Error **errp)
-     AC97LinkState *s = AC97(dev);
-     uint8_t *c = s->dev.config;
- 
-+    if (!AUD_register_card ("ac97", &s->card, errp)) {
-+        return;
-+    }
-+
-     /* TODO: no need to override */
-     c[PCI_COMMAND] = 0x00;      /* pcicmd pci command rw, ro */
-     c[PCI_COMMAND + 1] = 0x00;
-@@ -1378,7 +1382,7 @@ static void ac97_realize(PCIDevice *dev, Error **errp)
-                            "ac97-nabm", 256);
-     pci_register_bar (&s->dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &s->io_nam);
-     pci_register_bar (&s->dev, 1, PCI_BASE_ADDRESS_SPACE_IO, &s->io_nabm);
--    AUD_register_card ("ac97", &s->card);
-+
-     ac97_on_reset(DEVICE(s));
- }
- 
-diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
-index ba1be6c8378d..39932654f7f5 100644
---- a/hw/audio/adlib.c
-+++ b/hw/audio/adlib.c
-@@ -269,8 +269,6 @@ static void adlib_realizefn (DeviceState *dev, Error **errp)
-     as.fmt = AUDIO_FORMAT_S16;
-     as.endianness = AUDIO_HOST_ENDIANNESS;
- 
--    AUD_register_card ("adlib", &s->card);
--
-     s->voice = AUD_open_out (
-         &s->card,
-         s->voice,
-@@ -285,6 +283,11 @@ static void adlib_realizefn (DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    if (!AUD_register_card ("adlib", &s->card, errp)) {
-+        Adlib_fini (s);
-+        return;
-+    }
-+
-     s->samples = AUD_get_buffer_size_out (s->voice) >> SHIFT;
-     s->mixbuf = g_malloc0 (s->samples << SHIFT);
- 
-diff --git a/hw/audio/cs4231a.c b/hw/audio/cs4231a.c
-index f510b862efbe..d9353a51ec66 100644
---- a/hw/audio/cs4231a.c
-+++ b/hw/audio/cs4231a.c
-@@ -676,13 +676,15 @@ static void cs4231a_realizefn (DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    if (!AUD_register_card ("cs4231a", &s->card, errp)) {
-+        return;
-+    }
-+
-     s->pic = isa_get_irq(d, s->irq);
-     k = ISADMA_GET_CLASS(s->isa_dma);
-     k->register_channel(s->isa_dma, s->dma, cs_dma_read, s);
- 
-     isa_register_ioport (d, &s->ioports, s->port);
--
--    AUD_register_card ("cs4231a", &s->card);
- }
- 
- static Property cs4231a_properties[] = {
-diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
-index 62359b84f279..77a84f83060b 100644
---- a/hw/audio/es1370.c
-+++ b/hw/audio/es1370.c
-@@ -867,7 +867,10 @@ static void es1370_realize(PCIDevice *dev, Error **errp)
-     memory_region_init_io (&s->io, OBJECT(s), &es1370_io_ops, s, "es1370", 256);
-     pci_register_bar (&s->dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &s->io);
- 
--    AUD_register_card ("es1370", &s->card);
-+    if (!AUD_register_card ("es1370", &s->card, errp)) {
-+        return;
-+    }
-+
-     es1370_reset (s);
- }
- 
-diff --git a/hw/audio/gus.c b/hw/audio/gus.c
-index c7710a684b88..f890042baa97 100644
---- a/hw/audio/gus.c
-+++ b/hw/audio/gus.c
-@@ -245,7 +245,9 @@ static void gus_realizefn (DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    AUD_register_card ("gus", &s->card);
-+    if (!AUD_register_card ("gus", &s->card, errp)) {
-+        return;
-+    }
- 
-     as.freq = s->freq;
-     as.nchannels = 2;
-diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
-index e86a2adf31a0..7f8a7fa7ca1b 100644
---- a/hw/audio/hda-codec.c
-+++ b/hw/audio/hda-codec.c
-@@ -690,7 +690,10 @@ static void hda_audio_init(HDACodecDevice *hda,
-     a->name = object_get_typename(OBJECT(a));
-     dprint(a, 1, "%s: cad %d\n", __func__, a->hda.cad);
- 
--    AUD_register_card("hda", &a->card);
-+    if (!AUD_register_card("hda", &a->card, errp)) {
-+        return;
-+    }
-+
-     for (i = 0; i < a->desc->nnodes; i++) {
-         node = a->desc->nodes + i;
-         param = hda_codec_find_param(node, AC_PAR_AUDIO_WIDGET_CAP);
-diff --git a/hw/audio/lm4549.c b/hw/audio/lm4549.c
-index 418041bc9c6c..9afb81517e8f 100644
---- a/hw/audio/lm4549.c
-+++ b/hw/audio/lm4549.c
-@@ -289,7 +289,9 @@ void lm4549_init(lm4549_state *s, lm4549_callback data_req_cb, void* opaque,
-     lm4549_reset(s);
- 
-     /* Register an audio card */
--    AUD_register_card("lm4549", &s->card);
-+    if (!AUD_register_card("lm4549", &s->card, errp)) {
-+        return;
-+    }
- 
-     /* Open a default voice */
-     as.freq = 48000;
-diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
-index 72bea5fb202a..41bf6a5cfdb3 100644
---- a/hw/audio/pcspk.c
-+++ b/hw/audio/pcspk.c
-@@ -122,7 +122,9 @@ static int pcspk_audio_init(PCSpkState *s)
-         return 0;
-     }
- 
--    AUD_register_card(s_spk, &s->card);
-+    if (!AUD_register_card(s_spk, &s->card, NULL)) {
-+        return -1;
-+    }
- 
-     s->voice = AUD_open_out(&s->card, s->voice, s_spk, s, pcspk_callback, &as);
-     if (!s->voice) {
-diff --git a/hw/audio/sb16.c b/hw/audio/sb16.c
-index 593da2478c14..dd2131426cd3 100644
---- a/hw/audio/sb16.c
-+++ b/hw/audio/sb16.c
-@@ -1400,6 +1400,10 @@ static void sb16_realizefn (DeviceState *dev, Error **errp)
-     SB16State *s = SB16 (dev);
-     IsaDmaClass *k;
- 
-+    if (!AUD_register_card ("sb16", &s->card, errp)) {
-+        return;
-+    }
-+
-     s->isa_hdma = isa_get_dma(isa_bus_from_device(isadev), s->hdma);
-     s->isa_dma = isa_get_dma(isa_bus_from_device(isadev), s->dma);
-     if (!s->isa_dma || !s->isa_hdma) {
-@@ -1432,8 +1436,6 @@ static void sb16_realizefn (DeviceState *dev, Error **errp)
-     k->register_channel(s->isa_dma, s->dma, SB_read_DMA, s);
- 
-     s->can_write = 1;
--
--    AUD_register_card ("sb16", &s->card);
- }
- 
- static Property sb16_properties[] = {
-diff --git a/hw/audio/wm8750.c b/hw/audio/wm8750.c
-index b5722b37c36b..57954a631442 100644
---- a/hw/audio/wm8750.c
-+++ b/hw/audio/wm8750.c
-@@ -624,7 +624,10 @@ static void wm8750_realize(DeviceState *dev, Error **errp)
- {
-     WM8750State *s = WM8750(dev);
- 
--    AUD_register_card(CODEC, &s->card);
-+    if (!AUD_register_card(CODEC, &s->card, errp)) {
-+        return;
-+    }
-+
-     wm8750_reset(I2C_SLAVE(s));
- }
- 
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index b16d6be2b5cc..d6699f00d89e 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -1278,6 +1278,10 @@ static void xlnx_dp_realize(DeviceState *dev, Error **errp)
-     DisplaySurface *surface;
-     struct audsettings as;
- 
-+    if (!AUD_register_card("xlnx_dp.audio", &s->aud_card, errp)) {
-+        return;
-+    }
-+
-     aux_bus_realize(s->aux_bus);
- 
-     qdev_realize(DEVICE(s->dpcd), BUS(s->aux_bus), &error_fatal);
-@@ -1296,8 +1300,6 @@ static void xlnx_dp_realize(DeviceState *dev, Error **errp)
-     as.fmt = AUDIO_FORMAT_S16;
-     as.endianness = 0;
- 
--    AUD_register_card("xlnx_dp.audio", &s->aud_card);
--
-     s->amixer_output_stream = AUD_open_out(&s->aud_card,
-                                            s->amixer_output_stream,
-                                            "xlnx_dp.audio.out",
-diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
-index f0b02bc72280..1ebf0199bfc7 100644
---- a/hw/input/tsc210x.c
-+++ b/hw/input/tsc210x.c
-@@ -1106,7 +1106,8 @@ static void tsc210x_init(TSC210xState *s,
-                    s->card.name);
-     }
- 
--    AUD_register_card(s->name, &s->card);
-+    /* We can quit here because this only gets called from machine class init */
-+    AUD_register_card(s->name, &s->card, &error_fatal);
- 
-     qemu_register_reset((void *) tsc210x_reset, s);
-     vmstate_register(NULL, 0, vmsd, s);
-diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
-index 8748c1ba0401..d5ac1f8962e3 100644
---- a/hw/usb/dev-audio.c
-+++ b/hw/usb/dev-audio.c
-@@ -944,12 +944,15 @@ static void usb_audio_realize(USBDevice *dev, Error **errp)
-     USBAudioState *s = USB_AUDIO(dev);
-     int i;
- 
-+    if (!AUD_register_card(TYPE_USB_AUDIO, &s->card, errp)) {
-+        return;
-+    }
-+
-     dev->usb_desc = s->multi ? &desc_audio_multi : &desc_audio;
- 
-     usb_desc_create_serial(dev);
-     usb_desc_init(dev);
-     s->dev.opaque = s;
--    AUD_register_card(TYPE_USB_AUDIO, &s->card);
- 
-     s->out.altset        = ALTSET_OFF;
-     s->out.vol.mute      = false;
 -- 
 2.35.1
 

@@ -1,115 +1,100 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2229541lfk;
-        Mon, 25 Apr 2022 02:02:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBe195/vzaxSMZjXzRFbPTqT7lu5B+N48uKA/wbUlAFCssqPa+0PE69Yf4x6hNU2/9YTFl
-X-Received: by 2002:a05:6214:21aa:b0:446:4860:ca60 with SMTP id t10-20020a05621421aa00b004464860ca60mr11722170qvc.41.1650877374707;
-        Mon, 25 Apr 2022 02:02:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650877374; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2267232lfk;
+        Mon, 25 Apr 2022 03:20:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxyEnfrT5/+CCBMVueEM/Js+KMDcnBe8WKeRb/MDdwxC9ImQBP4y5O9NkuPaXeTQqIE6jJ4
+X-Received: by 2002:a05:622a:1392:b0:2e1:e7b9:3ce4 with SMTP id o18-20020a05622a139200b002e1e7b93ce4mr11172913qtk.153.1650882011615;
+        Mon, 25 Apr 2022 03:20:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650882011; cv=none;
         d=google.com; s=arc-20160816;
-        b=L8p/05EMvlMa+lZSymUg3tOJGo7FR+JF4rcFGTmEZhlucswhb/p0RkL7Y9IT2V8/Pa
-         dWHLZN3nrhrvH0zMXF4+hT8y9lQBRSDJXEsSMZuKmDoHmGj/Ab9Z2Mi93KYLZQ8yFbpz
-         TcRWehJCqukbxbLQby7D1k+hR8vppwd9KoyvTX+DLs83RpUq3xG8gDBfvrFTdSuOx7gF
-         kSuaelng/dahtxLOT/JrHJHlpvpJlvRx72By3Ljil5GARjACs/JbVkRmJb0j1Bf+Auh3
-         NhisxBa75quLLyuaHR9+FNgG3zFYC9DaP86toeH7AGvpd4bAL7Y7rsyxVIQwQwa5x530
-         RvsQ==
+        b=r6w8SNB4KMbvCfjOdERZJtK41MjFnNbmORTvm+J/iG8AfFIHWuMsqy35+V7v3xXQUF
+         2ak3gienGzqm/vEORIHctpUfIngxtWvIriXr197m16E7Z5AJI+qvDECA9LGh0ovmAqBT
+         Ela9LILALADQl/lFFzpRc5WLgMsBidDYdoB9QbqGWOscOIv/93JQ+C03H98iFwtPH2SZ
+         w6FBVfFE0LC1RpyVhUDixKowYe3mCxqazfUhjRnHlfx6cMaRwFFgjgFClluiMVY6uAnW
+         SyuGjady78cPnqA21gLns2G4UNcYagC/AnLOPPQCqVz1aPV8gc8DxlLnPPXGY+zV9e3P
+         LNDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=CxH74JGUW7ryvtn4xS8i28T7ZhqNwBVbzuWMzVW6NKE=;
-        b=BAesfKGx8t7mXjmXViExoAuwTSIatDLpArvpDxM/SPcfYDhptovI1QR7ehk4EuWGoO
-         UIphumT/MhvvMjqIN6gY7fwnVimuqZ2lqLGOW0hH5hf3XC1sZUaki7U56wOHmx55EUjN
-         8oanvSfBKsmm/yWPSbsjPKLozSumOSy0njcPWDE04rT+wH09VW5+ngPzNj8K4ZioBEKJ
-         s/Cd+pAz4YFVldZzcacZ9MN6EE0IGTt+gk/5s8lxWhw25mwvZ4VfUA/pfzZaZW2o1VQP
-         FasbK0Bzgzy0IXlN53gcoqI2sas8535h9NfPAWudSFRfRoYDqE7pBJcPSB3ccaPMUfQo
-         m0+Q==
+        bh=eB3D1nk7M1P2d8zNUCUv6QeNLwaSETITmbv25fjIAeU=;
+        b=r1UL1SeM7yIfmGhNa29Y+WXdns5aC+s2B36PkKzfSCY0DyKbj4TpmNBBK+Zz80RWf+
+         O5jrgPY2YYRbuexw4vQurOpVNSo5iU+BSW1KDKC2pEl0cLXxg3M03xIJbTiE30ZbIG7o
+         SOYasBKh7eBFBXZ/h85/shAIJg9pZJ6LhnCrqyk06Yf14JfCfx0pBXbjxOPDliwCXO75
+         AxHVKXPVIuwxbv4dp0KFzwKGMHGL4nqKmagUWF7lo2kN/QCflmnxLmpZcyeBFfkQXpvt
+         MHOuiFLJsi5OZ0TyYw93N6IJiRgN/ya+dpdYh251yjfXYVexXGf06HBn/g1ijGz8JP+i
+         yVGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HH5C9eQn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Ex/g5Sug";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e10-20020a05620a208a00b0067e4be23a56si4051541qka.667.2022.04.25.02.02.54
+        by mx.google.com with ESMTPS id y7-20020a37f607000000b0069f38f14ea9si1458891qkj.490.2022.04.25.03.20.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 02:02:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Apr 2022 03:20:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HH5C9eQn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Ex/g5Sug";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36792 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51764 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1niucQ-0007hL-7W
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 05:02:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40804)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nivpD-0003HX-3P
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 06:20:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35250)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu0p-0007Hi-HH
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:24:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:25930)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1nivoY-0003EK-BG
+ for qemu-arm@nongnu.org; Mon, 25 Apr 2022 06:19:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:27021)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu0n-0002qj-FF
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:24:03 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1nivoU-0003TW-S0
+ for qemu-arm@nongnu.org; Mon, 25 Apr 2022 06:19:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650875040;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ s=mimecast20190719; t=1650881965;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CxH74JGUW7ryvtn4xS8i28T7ZhqNwBVbzuWMzVW6NKE=;
- b=HH5C9eQnhTmuP/XEUD6i8rOP2VueUriwqFEoPeJLsoOG0oy/9/SDMVMZ0ExBOfuTE/0H33
- LU207QKQARjWA+ly6Auuz2qCtHU9Csa517bkj8/f5Lw57mTuCr0oa+XkKEjo2TalPA7bYf
- /DUgEc2G0fSp4CgVp4WTB/+a0Aos3vI=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=eB3D1nk7M1P2d8zNUCUv6QeNLwaSETITmbv25fjIAeU=;
+ b=Ex/g5SugbnmnFqzAR6JaGCIREIKWTblNmH8Q1vpPnwWk+KVY7djSPMirTuZEx7dv/024rh
+ XXzccZ62jKKluKRYb4urcpJZ4j16XPny+S3g5J47p6P8YN6LiOKXGyILh/FgMME9PcH1LG
+ cKXL3gGCJDQFlPG/F+Jsy03dTVYowhM=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-581-3yt6W30-N8OvRT4UKBU43g-1; Mon, 25 Apr 2022 04:22:05 -0400
-X-MC-Unique: 3yt6W30-N8OvRT4UKBU43g-1
-Received: by mail-wm1-f71.google.com with SMTP id
- h65-20020a1c2144000000b0038e9ce3b29cso9970920wmh.2
- for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=CxH74JGUW7ryvtn4xS8i28T7ZhqNwBVbzuWMzVW6NKE=;
- b=pEcmCAmLVmTY0ih2mm9cqFtC6ASqLvNJbpYIUVV8cQkvXb/hPtE/ugV++CAGcbr6IR
- lrXJM6f27gc8xypwNEvbouGwDaYmtLHCNW1ZhiL0+pS3HT64auO6bAb/55QReLA7ZeDy
- YtH/68kTJhXe6PC+6q47HPaduWK1FYOOJG/j+DqYtUtqk6cYr6L1a7Dz70+SJPBI+gEr
- ILav5j5ucSe5lm73m6kntgYL89yRciM2jkiQRix1NtLfu4wfXHFsu/LDk91LkyQ8giiP
- 26n71Wg7wyqoff7B+VPBb5FcNsnrB3LwSXMafVaHTm5R0mpG2KCzpKtn/tpp4jstYnG/
- 62Rg==
-X-Gm-Message-State: AOAM533eBS+GDpDXTElDPuX9QRTgK1Fb+G6LeIBbJLsZGCsvJGzZIkwM
- iVgLlT4fye5+J7TCFmEXSxRYErOFNzvYBrbszC7ZVkGdjRAGlu62Qi+11S4vnfbaLVXSq9by4Jv
- yohOq3Wu3dPyiKyM=
-X-Received: by 2002:a5d:598c:0:b0:20a:9194:22d4 with SMTP id
- n12-20020a5d598c000000b0020a919422d4mr13194369wri.124.1650874924651; 
- Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
-X-Received: by 2002:a5d:598c:0:b0:20a:9194:22d4 with SMTP id
- n12-20020a5d598c000000b0020a919422d4mr13194350wri.124.1650874924450; 
- Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
-Received: from wheatley.localdomain (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- h9-20020a05600c350900b00393f01c8f00sm77266wmq.47.2022.04.25.01.22.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
-Received: from wheatley.redhat.com (wheatley.k8r.cz [127.0.0.1])
- by wheatley.localdomain (Postfix) with ESMTP id 2FFDE67B1B5A;
- Mon, 25 Apr 2022 10:22:02 +0200 (CEST)
-From: Martin Kletzander <mkletzan@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 05/18] tests/qtest: Specify audiodev= and -audiodev
-Date: Mon, 25 Apr 2022 10:21:48 +0200
-Message-Id: <6e7f2808dd40679a415812767b88f2a411fc137f.1650874791.git.mkletzan@redhat.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
-References: <cover.1650874791.git.mkletzan@redhat.com>
+ us-mta-73-fK0YKOcMMxiClMFXnRE4Cw-1; Mon, 25 Apr 2022 06:19:20 -0400
+X-MC-Unique: fK0YKOcMMxiClMFXnRE4Cw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DD5213C02188;
+ Mon, 25 Apr 2022 10:19:19 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.152])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DB5E24639FD;
+ Mon, 25 Apr 2022 10:19:18 +0000 (UTC)
+Date: Mon, 25 Apr 2022 11:19:16 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: LABBE Corentin <clabbe@baylibre.com>
+Subject: Re: [PATCH] hw/crypto: add Allwinner sun4i-ss crypto device
+Message-ID: <YmZ1pCU+0bP/LFPU@redhat.com>
+References: <20220410191238.760733-1-clabbe@baylibre.com>
+ <CAFEAcA9L89oN5nfM4RRxyYPBMtwbH1VfO1FbnXFUyC+rmzk51A@mail.gmail.com>
+ <YmWgn2OGoZ9Uyirh@Red>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mkletzan@redhat.com;
+In-Reply-To: <YmWgn2OGoZ9Uyirh@Red>
+User-Agent: Mutt/2.1.5 (2021-12-30)
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -117,141 +102,196 @@ X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, libvir-list@redhat.com,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Yanan Wang <wangyanan55@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Qiuhao Li <Qiuhao.Li@outlook.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Alexander Bulekov <alxndr@bu.edu>,
- Bandan Das <bsd@redhat.com>, qemu-arm@nongnu.org,
- Jan Kiszka <jan.kiszka@web.de>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Darren Kenny <darren.kenny@oracle.com>, Thomas Huth <huth@tuxfamily.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AoFtSNF1OQvr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: b.galvani@gmail.com, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DP0wdJhxfqWq
 
-This will enable removing deprecated default audiodev support.
+On Sun, Apr 24, 2022 at 09:10:23PM +0200, LABBE Corentin wrote:
+> Le Thu, Apr 21, 2022 at 01:38:00PM +0100, Peter Maydell a écrit :
+> > On Sun, 10 Apr 2022 at 20:12, Corentin Labbe <clabbe@baylibre.com> wrote:
+> > >
+> > > From: Corentin LABBE <clabbe@baylibre.com>
+> > >
+> > > The Allwinner A10 has a cryptographic offloader device which
+> > > could be easily emulated.
+> > > The emulated device is tested with Linux only as any of BSD does not
+> > > support it.
+> > >
+> > > Signed-off-by: Corentin LABBE <clabbe@baylibre.com>
+> > 
+> > Hi; thanks for this patch, and sorry it's taken me a while to get
+> > to reviewing it.
+> > 
+> > (Daniel, I cc'd you since this device model is making use of crypto
+> > related APIs.)
+> > 
+> > Firstly, a note on patch structure. This is quite a large patch,
+> > and I think it would be useful to split it at least into two parts:
+> >  (1) add the new device model
+> >  (2) change the allwinner SoC to create that new device
+> 
+> Hello
+> 
+> I will do it for next iteration
+> 
+> > 
+> > > diff --git a/docs/system/arm/cubieboard.rst b/docs/system/arm/cubieboard.rst
+> > > index 344ff8cef9..7836643ba4 100644
+> > > --- a/docs/system/arm/cubieboard.rst
+> > > +++ b/docs/system/arm/cubieboard.rst
+> > > @@ -14,3 +14,4 @@ Emulated devices:
+> > >  - SDHCI
+> > >  - USB controller
+> > >  - SATA controller
+> > > +- crypto
+> > > diff --git a/docs/system/devices/allwinner-sun4i-ss.rst b/docs/system/devices/allwinner-sun4i-ss.rst
+> > > new file mode 100644
+> > > index 0000000000..6e7d2142b5
+> > > --- /dev/null
+> > > +++ b/docs/system/devices/allwinner-sun4i-ss.rst
+> > > @@ -0,0 +1,31 @@
+> > > +Allwinner sun4i-ss
+> > > +==================
+> > 
+> > If you create a new rst file in docs, you need to put it into the
+> > manual by adding it to some table of contents. Otherwise sphinx
+> > will complain when you build the documentation, and users won't be
+> > able to find it. (If you pass 'configure' the --enable-docs option
+> > that will check that you have everything installed to be able to
+> > build the docs.)
+> > 
+> > There are two options here: you can have this document, and
+> > add it to the toctree in docs/system/device-emulation.rst, and
+> > make the "crypto" bullet point in cubieboard.rst be a hyperlink to
+> > the device-emulation.rst file. Or you can compress the information
+> > down and put it into orangepi.rst.
+> > 
+> > > +The ``sun4i-ss`` emulates the Allwinner cryptographic offloader
+> > > +present on early Allwinner SoCs (A10, A10s, A13, A20, A33)
+> > > +In qemu only A10 via the cubieboard machine is supported.
+> > > +
+> > > +The emulated hardware is capable of handling the following algorithms:
+> > > +- SHA1 and MD5 hash algorithms
+> > > +- AES/DES/DES3 in CBC/ECB
+> > > +- PRNG
+> > > +
+> > > +The emulated hardware does not handle yet:
+> > > +- CTS for AES
+> > > +- CTR for AES/DES/DES3
+> > > +- IRQ and DMA mode
+> > > +Anyway the Linux driver also does not handle them yet.
+> > > +
+> > > +The emulation needs a real crypto backend, for the moment only gnutls/nettle is supported.
+> > > +So the device emulation needs qemu to be compiled with optionnal gnutls.
+> > 
+> > > diff --git a/hw/Kconfig b/hw/Kconfig
+> > > index ad20cce0a9..43bd7fc14d 100644
+> > > --- a/hw/Kconfig
+> > > +++ b/hw/Kconfig
+> > > @@ -6,6 +6,7 @@ source audio/Kconfig
+> > >  source block/Kconfig
+> > >  source char/Kconfig
+> > >  source core/Kconfig
+> > > +source crypto/Kconfig
+> > >  source display/Kconfig
+> > >  source dma/Kconfig
+> > >  source gpio/Kconfig
+> > 
+> > I don't think we really need a new subdirectory of hw/
+> > for a single device. If you can find two other devices that
+> > already exist in QEMU that would also belong in hw/crypto/
+> > then we can create it. Otherwise just put this device in
+> > hw/misc.
+> 
+> I plan to add at least one other hw/crypto device (allwinner H3 sun8i-ce).
+> I have another one already ready (rockchip rk3288) but I delay it since there are no related SoC in qemu yet.
+> 
+> > 
+> > > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > > index 97f3b38019..fd8232b1d4 100644
+> > > --- a/hw/arm/Kconfig
+> > > +++ b/hw/arm/Kconfig
+> > > @@ -317,6 +317,7 @@ config ALLWINNER_A10
+> > >      select AHCI
+> > >      select ALLWINNER_A10_PIT
+> > >      select ALLWINNER_A10_PIC
+> > > +    select ALLWINNER_CRYPTO_SUN4I_SS
+> > >      select ALLWINNER_EMAC
+> > >      select SERIAL
+> > >      select UNIMP
+> > > diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+> > > index 05e84728cb..e9104ee028 100644
+> > > --- a/hw/arm/allwinner-a10.c
+> > > +++ b/hw/arm/allwinner-a10.c
+> > > @@ -23,6 +23,7 @@
+> > >  #include "hw/misc/unimp.h"
+> > >  #include "sysemu/sysemu.h"
+> > >  #include "hw/boards.h"
+> > > +#include "hw/crypto/allwinner-sun4i-ss.h"
+> > >  #include "hw/usb/hcd-ohci.h"
+> > >
+> > >  #define AW_A10_MMC0_BASE        0x01c0f000
+> > > @@ -32,6 +33,7 @@
+> > >  #define AW_A10_EMAC_BASE        0x01c0b000
+> > >  #define AW_A10_EHCI_BASE        0x01c14000
+> > >  #define AW_A10_OHCI_BASE        0x01c14400
+> > > +#define AW_A10_CRYPTO_BASE      0x01c15000
+> > >  #define AW_A10_SATA_BASE        0x01c18000
+> > >  #define AW_A10_RTC_BASE         0x01c20d00
+> > >
+> > > @@ -48,6 +50,10 @@ static void aw_a10_init(Object *obj)
+> > >
+> > >      object_initialize_child(obj, "emac", &s->emac, TYPE_AW_EMAC);
+> > >
+> > > +#if defined CONFIG_NETTLE
+> > > +    object_initialize_child(obj, "crypto", &s->crypto, TYPE_AW_SUN4I_SS);
+> > > +#endif
+> > 
+> > Don't put this kind of ifdef into device/SoC code, please.
+> > The device emulation needs to work regardless of what
+> > the specific crypto backends that got compiled into QEMU are.
+> > 
+> > > +#include <nettle/aes.h>
+> > > +#include <nettle/cbc.h>
+> > > +#include <nettle/des.h>
+> > > +#include <nettle/md5.h>
+> > > +#include <nettle/sha1.h>
+> > 
+> > Similarly, don't directly include nettle headers. The device needs
+> > to use the backend-agnostic headers from include/crypto. To the
+> > extent that they aren't sufficient to implement this device we
+> > can look at enhancing them.
+> 
+> Problem is that current qemu crypto backends do not have necessary
+> functions needed by this driver, I need to do basic MD5 transform
+> with custom IV.
+> I will check if it can be added in qemu crypto API.
 
-I did not figure out how to make the audiodev represented as an
-interface node, so this is a workaround.  I am not sure what would be
-the proper way.
+If you don't want to/can't extend the crypto API, then at least
+use the crypto API for all the pieces where it is possible to do
+so. That way, we can clearly see where the gaps remain for this
+device.
 
-Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
----
- tests/qtest/ac97-test.c                 |  3 ++-
- tests/qtest/es1370-test.c               |  3 ++-
- tests/qtest/fuzz/generic_fuzz_configs.h |  6 ++++--
- tests/qtest/intel-hda-test.c            | 15 ++++++++++-----
- 4 files changed, 18 insertions(+), 9 deletions(-)
-
-diff --git a/tests/qtest/ac97-test.c b/tests/qtest/ac97-test.c
-index e09f2495d24d..9711f1f6d966 100644
---- a/tests/qtest/ac97-test.c
-+++ b/tests/qtest/ac97-test.c
-@@ -45,7 +45,8 @@ static void *ac97_create(void *pci_bus, QGuestAllocator *alloc, void *addr)
- static void ac97_register_nodes(void)
- {
-     QOSGraphEdgeOptions opts = {
--        .extra_device_opts = "addr=04.0",
-+        .extra_device_opts = "addr=04.0,audiodev=audio0",
-+        .before_cmd_line = "-audiodev driver=none,id=audio0",
-     };
-     add_qpci_address(&opts, &(QPCIAddress) { .devfn = QPCI_DEVFN(4, 0) });
- 
-diff --git a/tests/qtest/es1370-test.c b/tests/qtest/es1370-test.c
-index 2fd7fd2d3d30..5facda8d0d8d 100644
---- a/tests/qtest/es1370-test.c
-+++ b/tests/qtest/es1370-test.c
-@@ -46,7 +46,8 @@ static void *es1370_create(void *pci_bus, QGuestAllocator *alloc, void *addr)
- static void es1370_register_nodes(void)
- {
-     QOSGraphEdgeOptions opts = {
--        .extra_device_opts = "addr=04.0",
-+        .extra_device_opts = "addr=04.0,audiodev=audio0",
-+        .before_cmd_line = "-audiodev driver=none,id=audio0",
-     };
-     add_qpci_address(&opts, &(QPCIAddress) { .devfn = QPCI_DEVFN(4, 0) });
- 
-diff --git a/tests/qtest/fuzz/generic_fuzz_configs.h b/tests/qtest/fuzz/generic_fuzz_configs.h
-index 004c701915e1..84a93b3c350b 100644
---- a/tests/qtest/fuzz/generic_fuzz_configs.h
-+++ b/tests/qtest/fuzz/generic_fuzz_configs.h
-@@ -101,8 +101,10 @@ const generic_fuzz_config predefined_configs[] = {
-     },{
-         .name = "intel-hda",
-         .args = "-machine q35 -nodefaults -device intel-hda,id=hda0 "
--        "-device hda-output,bus=hda0.0 -device hda-micro,bus=hda0.0 "
--        "-device hda-duplex,bus=hda0.0",
-+        "-audiodev driver=none,id=audio0",
-+        "-device hda-output,bus=hda0.0,audiodev=audio0 "
-+        "-device hda-micro,bus=hda0.0,audiodev=audio0 "
-+        "-device hda-duplex,bus=hda0.0,audiodev=audio0",
-         .objects = "intel-hda",
-     },{
-         .name = "ide-hd",
-diff --git a/tests/qtest/intel-hda-test.c b/tests/qtest/intel-hda-test.c
-index a58c98e4d11b..39ced2bc6ac6 100644
---- a/tests/qtest/intel-hda-test.c
-+++ b/tests/qtest/intel-hda-test.c
-@@ -11,20 +11,24 @@
- #include "libqtest-single.h"
- 
- #define HDA_ID "hda0"
--#define CODEC_DEVICES " -device hda-output,bus=" HDA_ID ".0" \
--                      " -device hda-micro,bus=" HDA_ID ".0" \
--                      " -device hda-duplex,bus=" HDA_ID ".0"
-+#define AUDIODEV " -audiodev driver=none,id=audio0 "
-+#define AUDIODEV_REF "audiodev=audio0"
-+#define CODEC_DEVICES " -device hda-output,bus=" HDA_ID ".0," AUDIODEV_REF \
-+                      " -device hda-micro,bus=" HDA_ID ".0," AUDIODEV_REF \
-+                      " -device hda-duplex,bus=" HDA_ID ".0," AUDIODEV_REF
- 
- /* Tests only initialization so far. TODO: Replace with functional tests */
- static void ich6_test(void)
- {
--    qtest_start("-device intel-hda,id=" HDA_ID CODEC_DEVICES);
-+    qtest_start(AUDIODEV "-device intel-hda,id=" HDA_ID CODEC_DEVICES);
-     qtest_end();
- }
- 
- static void ich9_test(void)
- {
--    qtest_start("-machine q35 -device ich9-intel-hda,bus=pcie.0,addr=1b.0,id="
-+    qtest_start("-machine q35"
-+                AUDIODEV
-+                "-device ich9-intel-hda,bus=pcie.0,addr=1b.0,id="
-                 HDA_ID CODEC_DEVICES);
-     qtest_end();
- }
-@@ -39,6 +43,7 @@ static void test_issue542_ich6(void)
-     QTestState *s;
- 
-     s = qtest_init("-nographic -nodefaults -M pc-q35-6.2 "
-+                   AUDIODEV
-                    "-device intel-hda,id=" HDA_ID CODEC_DEVICES);
- 
-     qtest_outl(s, 0xcf8, 0x80000804);
+With regards,
+Daniel
 -- 
-2.35.1
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

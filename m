@@ -1,109 +1,109 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2229487lfk;
-        Mon, 25 Apr 2022 02:02:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzSgsJa0j1pmukcNAjmgyr/8Y97nXR03J1rg4l3ONI7lexm61efKvO++wx7HTp8KPX+CYOe
-X-Received: by 2002:a05:620a:2486:b0:69f:1d6e:1013 with SMTP id i6-20020a05620a248600b0069f1d6e1013mr8031920qkn.461.1650877369023;
-        Mon, 25 Apr 2022 02:02:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650877369; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2229541lfk;
+        Mon, 25 Apr 2022 02:02:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyBe195/vzaxSMZjXzRFbPTqT7lu5B+N48uKA/wbUlAFCssqPa+0PE69Yf4x6hNU2/9YTFl
+X-Received: by 2002:a05:6214:21aa:b0:446:4860:ca60 with SMTP id t10-20020a05621421aa00b004464860ca60mr11722170qvc.41.1650877374707;
+        Mon, 25 Apr 2022 02:02:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650877374; cv=none;
         d=google.com; s=arc-20160816;
-        b=ChobnFLpQGOtFJxurAkxsxLl/boDmM210nCG6ji5rADQVHZ0CoEal4BH1X3IIUsCZo
-         yo91m8928fOf5xQBjWujvKAynQ+h2+P32mXNfI4jWYVu5c9YHNmwvFTVoCG8J3zH4rFw
-         zwSGvf8LRCLMmpFjESulJ25QTfk+gNi8XQfhP65IIrevRx6eDQ9Ju6OOgOx3il8PDdFS
-         DsN19k5qtKIQJ/wn86Z6cLm7P+WKq4IyFP3PYQObkIeMKGficC0f5dUJHTQ45v5JG1JT
-         ygkUEobYk4qUnOcaoiqBhArVWWEwtwjjvyAuNXgg0qBJiCMdSibty5zKUVoa7cRapbbz
-         XhTw==
+        b=L8p/05EMvlMa+lZSymUg3tOJGo7FR+JF4rcFGTmEZhlucswhb/p0RkL7Y9IT2V8/Pa
+         dWHLZN3nrhrvH0zMXF4+hT8y9lQBRSDJXEsSMZuKmDoHmGj/Ab9Z2Mi93KYLZQ8yFbpz
+         TcRWehJCqukbxbLQby7D1k+hR8vppwd9KoyvTX+DLs83RpUq3xG8gDBfvrFTdSuOx7gF
+         kSuaelng/dahtxLOT/JrHJHlpvpJlvRx72By3Ljil5GARjACs/JbVkRmJb0j1Bf+Auh3
+         NhisxBa75quLLyuaHR9+FNgG3zFYC9DaP86toeH7AGvpd4bAL7Y7rsyxVIQwQwa5x530
+         RvsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bwBj2TaBRASZZSGjsc9HqXLMt7MyjxjnAoNllDw6MNM=;
-        b=Xqqs/P8boerzaIYbRHQOAH+keIPsAE/nKncOcYCbEP5A252clrYEJpZTtxHo5Qx3JS
-         DGNpaCuQVzjAixuRmzW4S2f9iltNrhNmGYM8TVxgitbbreOl89Kf0o7jQDx95uzJMXI8
-         cmzDXHIBOYP+g1TxbQV2QSWCacNrr0gEFMl39fAvWeVu4K4O6SZBJB0/b4AUgNMqKtgR
-         1iSli2fUlYGWrdZb6yJOO/aYh9LGsWfzlrKa2iBniuvwrUiXgfWnQWZJddn59iz9Haeb
-         cbn5bBjSYqIUkYkpJnNHKVmfbqPnbkk8T1/JmyPc41RCmWvFShb1XUav5vFhvC034eMz
-         ULvA==
+        bh=CxH74JGUW7ryvtn4xS8i28T7ZhqNwBVbzuWMzVW6NKE=;
+        b=BAesfKGx8t7mXjmXViExoAuwTSIatDLpArvpDxM/SPcfYDhptovI1QR7ehk4EuWGoO
+         UIphumT/MhvvMjqIN6gY7fwnVimuqZ2lqLGOW0hH5hf3XC1sZUaki7U56wOHmx55EUjN
+         8oanvSfBKsmm/yWPSbsjPKLozSumOSy0njcPWDE04rT+wH09VW5+ngPzNj8K4ZioBEKJ
+         s/Cd+pAz4YFVldZzcacZ9MN6EE0IGTt+gk/5s8lxWhw25mwvZ4VfUA/pfzZaZW2o1VQP
+         FasbK0Bzgzy0IXlN53gcoqI2sas8535h9NfPAWudSFRfRoYDqE7pBJcPSB3ccaPMUfQo
+         m0+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ivDUtsSj;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HH5C9eQn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a2-20020a0562140c2200b00449f279fac1si3994979qvd.195.2022.04.25.02.02.48
+        by mx.google.com with ESMTPS id e10-20020a05620a208a00b0067e4be23a56si4051541qka.667.2022.04.25.02.02.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 02:02:49 -0700 (PDT)
+        Mon, 25 Apr 2022 02:02:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ivDUtsSj;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HH5C9eQn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36552 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36792 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1niucK-0007TW-HS
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 05:02:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40374)
+	id 1niucQ-0007hL-7W
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 05:02:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu0C-0006cu-IC
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:26282)
+ id 1niu0p-0007Hi-HH
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:24:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:25930)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu04-0002hH-ML
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:24 -0400
+ id 1niu0n-0002qj-FF
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:24:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650874995;
+ s=mimecast20190719; t=1650875040;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bwBj2TaBRASZZSGjsc9HqXLMt7MyjxjnAoNllDw6MNM=;
- b=ivDUtsSj4RGYuO5Jr2+pwV45Ad6aeEGWZrHVmMdm/hN3cOJKuuaphJjV9pPUM9ncaZ8GAo
- U/nOxGN1Hpuqpf/EpeU5hWc5eqcjmbB95lKxMld5I1EVq6ahdcXMwpvn+5zqF471a3VzJq
- 7RuBmLNwS+CK1MI6FBK+exmPipkc7zg=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=CxH74JGUW7ryvtn4xS8i28T7ZhqNwBVbzuWMzVW6NKE=;
+ b=HH5C9eQnhTmuP/XEUD6i8rOP2VueUriwqFEoPeJLsoOG0oy/9/SDMVMZ0ExBOfuTE/0H33
+ LU207QKQARjWA+ly6Auuz2qCtHU9Csa517bkj8/f5Lw57mTuCr0oa+XkKEjo2TalPA7bYf
+ /DUgEc2G0fSp4CgVp4WTB/+a0Aos3vI=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-230-4xOGewTgNxSelzXytBFgYQ-1; Mon, 25 Apr 2022 04:22:07 -0400
-X-MC-Unique: 4xOGewTgNxSelzXytBFgYQ-1
-Received: by mail-wr1-f69.google.com with SMTP id
- p18-20020adf9592000000b00207bc12decbso3072211wrp.21
- for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:07 -0700 (PDT)
+ us-mta-581-3yt6W30-N8OvRT4UKBU43g-1; Mon, 25 Apr 2022 04:22:05 -0400
+X-MC-Unique: 3yt6W30-N8OvRT4UKBU43g-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ h65-20020a1c2144000000b0038e9ce3b29cso9970920wmh.2
+ for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=bwBj2TaBRASZZSGjsc9HqXLMt7MyjxjnAoNllDw6MNM=;
- b=0DJSR5sNsfzAVpW7G6E6H2REufVbLdOAf0Wo5Q38YF+aH4YffbgqhBt+zqg4r9q+bb
- qBGZd9uLyAjy8PgWYXpWwMHvy0D06e6FTHrDRe9mCS5Nvl3iHCzjE2FXZyHSwBvveSc2
- 1msMSsJC/9rBRg/ZELgocPj8XOdRv8uX1IxN16WvkBNhJEB4aylTAkRiAqcxF0dQKDa6
- ZoHXgKcQ1pUcdmqiMnkybh3Z8i9W2+7IkZx+zJ5FWmKobhAJhixE8PrPFZwPjJU9KJjy
- xvDzZ18jUAI6a3btp29VeL2f1K4phZ4vAKKhnfQCq2o38AiqoSq+3KnhihpNhl8VogV7
- wfIA==
-X-Gm-Message-State: AOAM533wBmwQPdOV+OnSwCZBaAQJuVpATreZ7PcOlQKOEMTAc9oo43F7
- b26LRHknP3R6dTuveRdneFs+pMLuNaTTLyDaUSQSO+DIx7oSGOb/EijwAptjAYqi6Jq0kE2UOGK
- ocL/pelMmKRR3qOI=
-X-Received: by 2002:a05:6000:1686:b0:20a:96e0:9bbe with SMTP id
- y6-20020a056000168600b0020a96e09bbemr13086396wrd.635.1650874926176; 
- Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
-X-Received: by 2002:a05:6000:1686:b0:20a:96e0:9bbe with SMTP id
- y6-20020a056000168600b0020a96e09bbemr13086362wrd.635.1650874925990; 
- Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
+ bh=CxH74JGUW7ryvtn4xS8i28T7ZhqNwBVbzuWMzVW6NKE=;
+ b=pEcmCAmLVmTY0ih2mm9cqFtC6ASqLvNJbpYIUVV8cQkvXb/hPtE/ugV++CAGcbr6IR
+ lrXJM6f27gc8xypwNEvbouGwDaYmtLHCNW1ZhiL0+pS3HT64auO6bAb/55QReLA7ZeDy
+ YtH/68kTJhXe6PC+6q47HPaduWK1FYOOJG/j+DqYtUtqk6cYr6L1a7Dz70+SJPBI+gEr
+ ILav5j5ucSe5lm73m6kntgYL89yRciM2jkiQRix1NtLfu4wfXHFsu/LDk91LkyQ8giiP
+ 26n71Wg7wyqoff7B+VPBb5FcNsnrB3LwSXMafVaHTm5R0mpG2KCzpKtn/tpp4jstYnG/
+ 62Rg==
+X-Gm-Message-State: AOAM533eBS+GDpDXTElDPuX9QRTgK1Fb+G6LeIBbJLsZGCsvJGzZIkwM
+ iVgLlT4fye5+J7TCFmEXSxRYErOFNzvYBrbszC7ZVkGdjRAGlu62Qi+11S4vnfbaLVXSq9by4Jv
+ yohOq3Wu3dPyiKyM=
+X-Received: by 2002:a5d:598c:0:b0:20a:9194:22d4 with SMTP id
+ n12-20020a5d598c000000b0020a919422d4mr13194369wri.124.1650874924651; 
+ Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
+X-Received: by 2002:a5d:598c:0:b0:20a:9194:22d4 with SMTP id
+ n12-20020a5d598c000000b0020a919422d4mr13194350wri.124.1650874924450; 
+ Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
 Received: from wheatley.localdomain (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- v6-20020a056000144600b0020a9a1627e2sm8374495wrx.15.2022.04.25.01.22.04
+ h9-20020a05600c350900b00393f01c8f00sm77266wmq.47.2022.04.25.01.22.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
+ Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
 Received: from wheatley.redhat.com (wheatley.k8r.cz [127.0.0.1])
- by wheatley.localdomain (Postfix) with ESMTP id 6890067B1B61;
+ by wheatley.localdomain (Postfix) with ESMTP id 2FFDE67B1B5A;
  Mon, 25 Apr 2022 10:22:02 +0200 (CEST)
 From: Martin Kletzander <mkletzan@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 12/18] hw/ppc: Support machine-default audiodev with fallback
-Date: Mon, 25 Apr 2022 10:21:55 +0200
-Message-Id: <9e9864dfe1cea988e7fdca14a1425d80e5895094.1650874791.git.mkletzan@redhat.com>
+Subject: [PATCH 05/18] tests/qtest: Specify audiodev= and -audiodev
+Date: Mon, 25 Apr 2022 10:21:48 +0200
+Message-Id: <6e7f2808dd40679a415812767b88f2a411fc137f.1650874791.git.mkletzan@redhat.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
 References: <cover.1650874791.git.mkletzan@redhat.com>
@@ -149,35 +149,109 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0Sn5Ga3sg5rU
+X-TUID: AoFtSNF1OQvr
+
+This will enable removing deprecated default audiodev support.
+
+I did not figure out how to make the audiodev represented as an
+interface node, so this is a workaround.  I am not sure what would be
+the proper way.
 
 Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
 ---
- hw/ppc/prep.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ tests/qtest/ac97-test.c                 |  3 ++-
+ tests/qtest/es1370-test.c               |  3 ++-
+ tests/qtest/fuzz/generic_fuzz_configs.h |  6 ++++--
+ tests/qtest/intel-hda-test.c            | 15 ++++++++++-----
+ 4 files changed, 18 insertions(+), 9 deletions(-)
 
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index bf622aa38fab..52d801afb307 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -46,6 +46,7 @@
- #include "elf.h"
- #include "qemu/units.h"
- #include "kvm_ppc.h"
-+#include "audio/audio.h"
+diff --git a/tests/qtest/ac97-test.c b/tests/qtest/ac97-test.c
+index e09f2495d24d..9711f1f6d966 100644
+--- a/tests/qtest/ac97-test.c
++++ b/tests/qtest/ac97-test.c
+@@ -45,7 +45,8 @@ static void *ac97_create(void *pci_bus, QGuestAllocator *alloc, void *addr)
+ static void ac97_register_nodes(void)
+ {
+     QOSGraphEdgeOptions opts = {
+-        .extra_device_opts = "addr=04.0",
++        .extra_device_opts = "addr=04.0,audiodev=audio0",
++        .before_cmd_line = "-audiodev driver=none,id=audio0",
+     };
+     add_qpci_address(&opts, &(QPCIAddress) { .devfn = QPCI_DEVFN(4, 0) });
  
- /* SMP is not enabled, for now */
- #define MAX_CPUS 1
-@@ -304,6 +305,9 @@ static void ibm_40p_init(MachineState *machine)
-         dev = DEVICE(isa_dev);
-         qdev_prop_set_uint32(dev, "iobase", 0x830);
-         qdev_prop_set_uint32(dev, "irq", 10);
-+
-+        qdev_prop_set_string(dev, "audiodev",
-+                             audio_maybe_init_dummy("ppc.defaudio"));
-         isa_realize_and_unref(isa_dev, isa_bus, &error_fatal);
+diff --git a/tests/qtest/es1370-test.c b/tests/qtest/es1370-test.c
+index 2fd7fd2d3d30..5facda8d0d8d 100644
+--- a/tests/qtest/es1370-test.c
++++ b/tests/qtest/es1370-test.c
+@@ -46,7 +46,8 @@ static void *es1370_create(void *pci_bus, QGuestAllocator *alloc, void *addr)
+ static void es1370_register_nodes(void)
+ {
+     QOSGraphEdgeOptions opts = {
+-        .extra_device_opts = "addr=04.0",
++        .extra_device_opts = "addr=04.0,audiodev=audio0",
++        .before_cmd_line = "-audiodev driver=none,id=audio0",
+     };
+     add_qpci_address(&opts, &(QPCIAddress) { .devfn = QPCI_DEVFN(4, 0) });
  
-         isa_dev = isa_new("pc87312");
+diff --git a/tests/qtest/fuzz/generic_fuzz_configs.h b/tests/qtest/fuzz/generic_fuzz_configs.h
+index 004c701915e1..84a93b3c350b 100644
+--- a/tests/qtest/fuzz/generic_fuzz_configs.h
++++ b/tests/qtest/fuzz/generic_fuzz_configs.h
+@@ -101,8 +101,10 @@ const generic_fuzz_config predefined_configs[] = {
+     },{
+         .name = "intel-hda",
+         .args = "-machine q35 -nodefaults -device intel-hda,id=hda0 "
+-        "-device hda-output,bus=hda0.0 -device hda-micro,bus=hda0.0 "
+-        "-device hda-duplex,bus=hda0.0",
++        "-audiodev driver=none,id=audio0",
++        "-device hda-output,bus=hda0.0,audiodev=audio0 "
++        "-device hda-micro,bus=hda0.0,audiodev=audio0 "
++        "-device hda-duplex,bus=hda0.0,audiodev=audio0",
+         .objects = "intel-hda",
+     },{
+         .name = "ide-hd",
+diff --git a/tests/qtest/intel-hda-test.c b/tests/qtest/intel-hda-test.c
+index a58c98e4d11b..39ced2bc6ac6 100644
+--- a/tests/qtest/intel-hda-test.c
++++ b/tests/qtest/intel-hda-test.c
+@@ -11,20 +11,24 @@
+ #include "libqtest-single.h"
+ 
+ #define HDA_ID "hda0"
+-#define CODEC_DEVICES " -device hda-output,bus=" HDA_ID ".0" \
+-                      " -device hda-micro,bus=" HDA_ID ".0" \
+-                      " -device hda-duplex,bus=" HDA_ID ".0"
++#define AUDIODEV " -audiodev driver=none,id=audio0 "
++#define AUDIODEV_REF "audiodev=audio0"
++#define CODEC_DEVICES " -device hda-output,bus=" HDA_ID ".0," AUDIODEV_REF \
++                      " -device hda-micro,bus=" HDA_ID ".0," AUDIODEV_REF \
++                      " -device hda-duplex,bus=" HDA_ID ".0," AUDIODEV_REF
+ 
+ /* Tests only initialization so far. TODO: Replace with functional tests */
+ static void ich6_test(void)
+ {
+-    qtest_start("-device intel-hda,id=" HDA_ID CODEC_DEVICES);
++    qtest_start(AUDIODEV "-device intel-hda,id=" HDA_ID CODEC_DEVICES);
+     qtest_end();
+ }
+ 
+ static void ich9_test(void)
+ {
+-    qtest_start("-machine q35 -device ich9-intel-hda,bus=pcie.0,addr=1b.0,id="
++    qtest_start("-machine q35"
++                AUDIODEV
++                "-device ich9-intel-hda,bus=pcie.0,addr=1b.0,id="
+                 HDA_ID CODEC_DEVICES);
+     qtest_end();
+ }
+@@ -39,6 +43,7 @@ static void test_issue542_ich6(void)
+     QTestState *s;
+ 
+     s = qtest_init("-nographic -nodefaults -M pc-q35-6.2 "
++                   AUDIODEV
+                    "-device intel-hda,id=" HDA_ID CODEC_DEVICES);
+ 
+     qtest_outl(s, 0xcf8, 0x80000804);
 -- 
 2.35.1
 

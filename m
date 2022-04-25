@@ -1,115 +1,115 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2214360lfk;
-        Mon, 25 Apr 2022 01:27:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz+f3go38vAf/sj7cgtbIx6QES6pQJ9XnhKhbemtdX767mzcAb/2EQZ7A1EMy2WF+LWRbvp
-X-Received: by 2002:a05:622a:610e:b0:2f1:eaaf:4a76 with SMTP id hg14-20020a05622a610e00b002f1eaaf4a76mr11070669qtb.1.1650875267965;
-        Mon, 25 Apr 2022 01:27:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650875267; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2221127lfk;
+        Mon, 25 Apr 2022 01:43:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxKQmtYGEATOFvmqkpJT6uMI3pUxRCL1+a4LZJPoWVRX8Lf1COjQduIMLfbCuZNotsjUxWy
+X-Received: by 2002:ac8:5f09:0:b0:2f3:7005:6f58 with SMTP id x9-20020ac85f09000000b002f370056f58mr262996qta.439.1650876210008;
+        Mon, 25 Apr 2022 01:43:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650876210; cv=none;
         d=google.com; s=arc-20160816;
-        b=XVqdGdeOCQzxCaBaDGRKfCZtlJutm7YxaBRhUbmNGW51I82zhTmwYjDAdz90bcfuuT
-         DWco+oesFo2YDmCbJFxl2mCTzCvNs7cyX3jZ5SSQg6nC/T307LHFMrSo4xD/FKFTA0ga
-         +DPjAsIXiuT9qehz433ESc+VYNBc45PYsJ2/bYGDoaETLnxWfyFQNf19zzR35WxXYash
-         IqvTqsDTAzNvcRMlPv77RiyAhnaZ33NQj+rMqEBaXWn0iqgF2clTtWE6OV12A2aZSy7w
-         MeHOUKoha4iIDe27iQikh8bbT8il6xxfcDT3MgRnkaWlNgvhfHs+zIhVGuj8iyoWKu6h
-         hgsA==
+        b=z3++QC9CO7429hc5gLlshfFDOk8bOA7Ua98gYwRkyt5OsMjXN11c03UCGOdSm6rSAk
+         pvBnNaNOcqn6sF++meD22TheqvcWBJDQU4R8tzfNAXMd8bGF/er59xvFx/kfbJkVf7Jz
+         RUsUxahr2BpOwTb4cC+OPRxEDHDQrRJ0eJfepKI6gbMi3z8xzxXrNuSgFbbkkrWubXpa
+         SL6goY3v+c2A+B9mI1gKqM0Kc/pANdpCtEwyYbXig8R55RdboMtfdV4X161Jgvg5qWiC
+         5srUjrhxft+hS+3xpxcdmKGyVFmzngrQdeb6BDZ1SoO78bNZw+j5JrbeFVFz8pp6u2Kc
+         7+5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=uSjZ4QBWRDNWG4JCXGIx/l5GdZP0dmWgbGQwE/eNVLc=;
-        b=TeXecAi07SlQCaeIu2SizpFzUE5c3O4QmvotsN8fHUUtNhMDLfjQrpY8EekFqWbO8G
-         2i/gP9qVZcx29n/3gTGyOEeWh71svlG19g1wSPyGAAQUlznv2vJ3snTHkKVOY7868juD
-         AE4+uLHN97Oypr71gRYSD++Pnw9KoH4d8H2PpN+9ECH88l/iNZZgDlVR+jpd1R6XRh5h
-         yXOCO7tFzh/INgyC6nY/Es1KE03gDX94UgYOG2BDnRKO8x1g0znbcDdaOqIHinyjh9/W
-         OSrVXpGkR2Z59sjd9nwWIQ4bDU0uYrI7vvYZCT1LT0rebdWrbmfK6OqV1LNSwm3L+iFS
-         +Tpw==
+        bh=UZepi0m5BVgKJx/HPDJyrJ5ZvGt/JKxiUh6H4LwnwPg=;
+        b=XgcvExRuwXGDw28rQhS4MGAl5UJy/FNOb0kY9mVunYydc3rXAD0o2EcMaO1Ss0qsE4
+         egPKqqtEY9R3IFXgY5Yi/hJj1xwrxCuZTgLVV8oEg+fb8O7G7ELwYke7S5obm6zAsy4a
+         Tz6Qu7cSe2qTMh++pq636HogeM3273kTZmXERPzHlLkRWZ8j0zr9ALLlyvN3zCGgjvrf
+         53/h/B+zPsLW2NWJCEFq2D0yg3ElyUvjw6i0GsulO5BENtQ0hj9YV+R673av8eEQmYAD
+         E3Nn0z5LpYP0Oj5S5Fs2af/hHzlPAJqKuqh7SV1t9V/CqR1JdhsQsBT3L9gWY4BkH9ar
+         QkoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ii7wxs3a;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cIkucddE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d14-20020a05622a15ce00b002ebc2febee4si4244487qty.287.2022.04.25.01.27.47
+        by mx.google.com with ESMTPS id c23-20020ac81e97000000b002f1f3cf2083si3920826qtm.596.2022.04.25.01.43.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 01:27:47 -0700 (PDT)
+        Mon, 25 Apr 2022 01:43:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ii7wxs3a;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cIkucddE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47540 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36768 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1niu4R-00017J-Cd
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 04:27:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40146)
+	id 1niuJd-000536-Er
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 04:43:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40210)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu07-0006Uv-1S
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:27233)
+ id 1niu08-0006V5-2G
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:25841)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu01-0002f6-RF
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:18 -0400
+ id 1niu03-0002gU-8n
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650874992;
+ s=mimecast20190719; t=1650874994;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uSjZ4QBWRDNWG4JCXGIx/l5GdZP0dmWgbGQwE/eNVLc=;
- b=ii7wxs3auKd/VMGjuiC5O2/C8wmbpXUNDCabWbPdFK1jzIQIPxYnQdDJNg1Vdb3TeodOk8
- sxuIgF/goo00xjXD8BiDphepmhKsOv4Vxw/zUa6Hg4Qw51mDdAKduN9GysFRlba6Xj3ZDe
- eV1JOyoIFifa3BAXptiejzALAUNFDd4=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=UZepi0m5BVgKJx/HPDJyrJ5ZvGt/JKxiUh6H4LwnwPg=;
+ b=cIkucddEBbYJaLLYHnt96ElDY1qprhm8qXvpPbFL4Qqlv2iEcRcE527oEx/ZlXAfOz0udJ
+ aSbmTy+dGDMH6DJWqlBUY3oTb2ztLXB2S0M98iSQzfEW7eGtg6upOaFAHU1Zg0/9GpIolF
+ FHGpkBTRALSQUJC9/ksxqNEMsuUtdm8=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-595-0BZ8KRkyO-eVP8GcnBWEBA-1; Mon, 25 Apr 2022 04:22:07 -0400
-X-MC-Unique: 0BZ8KRkyO-eVP8GcnBWEBA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- k20-20020adfc714000000b001e305cd1597so3073953wrg.19
- for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:07 -0700 (PDT)
+ us-mta-212-jisiurINOx-zymX68PMyXQ-1; Mon, 25 Apr 2022 04:22:06 -0400
+X-MC-Unique: jisiurINOx-zymX68PMyXQ-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ l7-20020adfbd87000000b0020ac0a4d23dso2389288wrh.17
+ for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=uSjZ4QBWRDNWG4JCXGIx/l5GdZP0dmWgbGQwE/eNVLc=;
- b=GhLoR2qlKnoNFcLCsI8MIeOssOcNp645VWa6KZOLOTyca76ZC+aVhSzLP/mTLzQOBi
- YCgB8OSPMIeguN5bo7dabrgeLoxURGBS7LZKCZJEhR6cpQ4SRHqWRFT1sECltDdIpyTd
- Etvw8to1AHqVpvoZrGK0saL2fGhsZzCGs38cXsu8BNCX1FcLcs7/vVXtT7cW2GM3xfqc
- b1jaSH+G9N/wEMzT+MCo5dDpRywAKF7+HUNGdD/Uvny9TYbwyO9S9NWd/13Dw7tolkWr
- IOVxou9hMJArPBf0FOQtmA60qBbv0+GJCwVSVMLwIgkuEzSufA63jCBluIyOwee/NOpg
- 2wTA==
-X-Gm-Message-State: AOAM530l19gCUGn/qxBSBhXLnMoSBP6cyhVBj19z3eCsZGB9wuN4kY3g
- uJ8AvrdBgE1RutXb1GdYA4O0am/tU0vqCUMOU6LDoQ4A+PduaqOJqMzZ29kIkazW2P/FQiAyXgY
- wP7S7tx2/Vs5OQc0=
-X-Received: by 2002:a5d:414b:0:b0:20a:dc15:bd00 with SMTP id
- c11-20020a5d414b000000b0020adc15bd00mr2725008wrq.136.1650874926087; 
- Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
-X-Received: by 2002:a5d:414b:0:b0:20a:dc15:bd00 with SMTP id
- c11-20020a5d414b000000b0020adc15bd00mr2724989wrq.136.1650874925839; 
+ bh=UZepi0m5BVgKJx/HPDJyrJ5ZvGt/JKxiUh6H4LwnwPg=;
+ b=DpC2u4sNdyLLs8xPc/hQsasKRj8YzhdOwyp5QbjyreeMV8wNU86uFRe0sya+ZxEaHa
+ mb57aQHkZJaZ1lhC9q/dF+icpKEQAelwRYyvxeo+LpRh0WszZuZS9hZcBqGZ7EZCmv9D
+ 3qhSAipy1zztuh+i5b1QkTXMiXtkzBjcq2/HUlQf0cqfpVR7SmJyWycSvdRTmW8Gq5zs
+ gdV71UCBMrAa6wOS47ODo6qEN7+doDflHk8RJkcKbdt0iqRdMhje4RJkFuppOW7aVsTP
+ HGLRFbvPjBfHhuKuCBA+Rq7HF3QM6bJPq3CtLLA4nvZHlrhMOt4hhldCehnYKHD3wPul
+ qhkQ==
+X-Gm-Message-State: AOAM531frBFnfryKFPvBNNai2pX3z3U7OJtkNcmT+X26xjwoz684fShg
+ +MDiyxkrv2SFQ3XjmbaikoVRHe0ORQ7KPUeG37UKQhLXnIekig1f8ftApYYwQzA9Rmi8mV6J/lp
+ AD4sALg4+OQsjbTM=
+X-Received: by 2002:a7b:c8d5:0:b0:392:b12e:fd11 with SMTP id
+ f21-20020a7bc8d5000000b00392b12efd11mr15517517wml.96.1650874925077; 
  Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
+X-Received: by 2002:a7b:c8d5:0:b0:392:b12e:fd11 with SMTP id
+ f21-20020a7bc8d5000000b00392b12efd11mr15517503wml.96.1650874924883; 
+ Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
 Received: from wheatley.localdomain (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- w5-20020a7bc105000000b0038eb9932dacsm7960786wmi.48.2022.04.25.01.22.04
+ g13-20020a05600c4ecd00b00393ec8be5cfsm1755054wmq.24.2022.04.25.01.22.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
+ Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
 Received: from wheatley.redhat.com (wheatley.k8r.cz [127.0.0.1])
- by wheatley.localdomain (Postfix) with ESMTP id 783A667B1B63;
+ by wheatley.localdomain (Postfix) with ESMTP id 3F2DC67B1B5C;
  Mon, 25 Apr 2022 10:22:02 +0200 (CEST)
 From: Martin Kletzander <mkletzan@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 14/18] audio: Require AudioState in AUD_add_capture
-Date: Mon, 25 Apr 2022 10:21:57 +0200
-Message-Id: <c6e87e678e914df0f59da2145c2753cdb4a16f63.1650874791.git.mkletzan@redhat.com>
+Subject: [PATCH 07/18] Introduce machine's default-audiodev property
+Date: Mon, 25 Apr 2022 10:21:50 +0200
+Message-Id: <49192ccd62fc98c474bb0b627a22cc28a634e8b8.1650874791.git.mkletzan@redhat.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
 References: <cover.1650874791.git.mkletzan@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mkletzan@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mkletzan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -149,33 +149,79 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xRo1BZkrWTAY
+X-TUID: +VkDTWPz5jgk
 
-Since all callers require a valid audiodev this function can now safely
-abort in case of missing AudioState.
+Many machine types have default audio devices with no way to set the underlying
+audiodev.  Instead of adding an option for each and every one of them this new
+property can be used as a default during machine initialisation when creating
+such devices.
 
 Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
 ---
- audio/audio.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ hw/core/machine.c   | 23 +++++++++++++++++++++++
+ include/hw/boards.h |  1 +
+ 2 files changed, 24 insertions(+)
 
-diff --git a/audio/audio.c b/audio/audio.c
-index b95aca444382..97eb645764c1 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -1855,10 +1855,8 @@ CaptureVoiceOut *AUD_add_capture(
-     struct capture_callback *cb;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index cb9bbc844d24..d055a126d398 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -596,6 +596,22 @@ static void machine_set_memdev(Object *obj, const char *value, Error **errp)
+     ms->ram_memdev_id = g_strdup(value);
+ }
  
-     if (!s) {
--        if (!legacy_config) {
--            dolog("Capturing without setting an audiodev is deprecated\n");
--        }
--        s = audio_init(NULL, NULL);
-+        error_setg(&error_abort,
-+                   "Capturing without setting an audiodev is not supported");
-     }
++static char *machine_get_default_audiodev(Object *obj, Error **errp)
++{
++    MachineState *ms = MACHINE(obj);
++
++    return g_strdup(ms->default_audiodev);
++}
++
++static void machine_set_default_audiodev(Object *obj, const char *value,
++                                         Error **errp)
++{
++    MachineState *ms = MACHINE(obj);
++
++    g_free(ms->default_audiodev);
++    ms->default_audiodev = g_strdup(value);
++}
++
+ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)
+ {
+     int i;
+@@ -867,6 +883,12 @@ static void machine_class_init(ObjectClass *oc, void *data)
+     object_class_property_set_description(oc, "confidential-guest-support",
+                                           "Set confidential guest scheme to support");
  
-     if (!audio_get_pdo_out(s->dev)->mixing_engine) {
++    object_class_property_add_str(oc, "default-audiodev",
++                                  machine_get_default_audiodev,
++                                  machine_set_default_audiodev);
++    object_class_property_set_description(oc, "default-audiodev",
++                                          "Audiodev to use for default machine devices");
++
+     /* For compatibility */
+     object_class_property_add_str(oc, "memory-encryption",
+         machine_get_memory_encryption, machine_set_memory_encryption);
+@@ -961,6 +983,7 @@ static void machine_finalize(Object *obj)
+     g_free(ms->device_memory);
+     g_free(ms->nvdimms_state);
+     g_free(ms->numa_state);
++    g_free(ms->default_audiodev);
+ }
+ 
+ bool machine_usb(MachineState *machine)
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index d64b5481e834..5be1de50af03 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -346,6 +346,7 @@ struct MachineState {
+      */
+     MemoryRegion *ram;
+     DeviceMemoryState *device_memory;
++    char *default_audiodev;
+ 
+     ram_addr_t ram_size;
+     ram_addr_t maxram_size;
 -- 
 2.35.1
 

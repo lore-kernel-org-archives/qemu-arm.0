@@ -1,115 +1,113 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2226683lfk;
-        Mon, 25 Apr 2022 01:57:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylAJf04L7etuAcAUaHmmwn+dubjUgQJLU3AC+Zu2xF/szdEA7CaIBH+dmS3YXLGzxY+pOS
-X-Received: by 2002:a05:620a:450c:b0:69f:4403:66c0 with SMTP id t12-20020a05620a450c00b0069f440366c0mr3760719qkp.111.1650877050200;
-        Mon, 25 Apr 2022 01:57:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650877050; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2229487lfk;
+        Mon, 25 Apr 2022 02:02:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzSgsJa0j1pmukcNAjmgyr/8Y97nXR03J1rg4l3ONI7lexm61efKvO++wx7HTp8KPX+CYOe
+X-Received: by 2002:a05:620a:2486:b0:69f:1d6e:1013 with SMTP id i6-20020a05620a248600b0069f1d6e1013mr8031920qkn.461.1650877369023;
+        Mon, 25 Apr 2022 02:02:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650877369; cv=none;
         d=google.com; s=arc-20160816;
-        b=UpQOs6Whi5+U/d4/L+LsIoOU1L7HJBS1OvAxESAEsp6P8oNz8UsaZ5JnMIMYOI6yDz
-         PfPE40GVuE0Lp/7F1JljH8GjyHW6kUvL1MU9JvLx26egNnhK1ZvgHtWWBkpbrg34E8cZ
-         uGZWqsjyEdmhm03BK8mnRjJgwF6fFHTfNoBtviwyZ9hBlBCVGyojTHzP3cp+1WpATI7x
-         X1dkAjT/x0VZOctchp2j0Sv+4/7cakGZ2wRNyP8UCXQfqjYzTODZZMSV4pBpPDThwczH
-         8nfZ1rJtkeXcZhd3gmXtHo0gbpHw4n9LxI1giJ55KsBIZeQYxIF9uarbFoPbs6V/vJLg
-         6A2g==
+        b=ChobnFLpQGOtFJxurAkxsxLl/boDmM210nCG6ji5rADQVHZ0CoEal4BH1X3IIUsCZo
+         yo91m8928fOf5xQBjWujvKAynQ+h2+P32mXNfI4jWYVu5c9YHNmwvFTVoCG8J3zH4rFw
+         zwSGvf8LRCLMmpFjESulJ25QTfk+gNi8XQfhP65IIrevRx6eDQ9Ju6OOgOx3il8PDdFS
+         DsN19k5qtKIQJ/wn86Z6cLm7P+WKq4IyFP3PYQObkIeMKGficC0f5dUJHTQ45v5JG1JT
+         ygkUEobYk4qUnOcaoiqBhArVWWEwtwjjvyAuNXgg0qBJiCMdSibty5zKUVoa7cRapbbz
+         XhTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=RNMCFsdt1DfVphZXSznWDAJKRd268N5F4URsC76WAsg=;
-        b=bDTPSm9lFoxPzWh/mZzEBd4sjX41G4qLdroguN9k64dUQnaj6JTXpI+ChH+Pn6/2zy
-         VcZE/W8SvkjTSyc5DmFs568AmifPm5VfswDMKPP+DeEBAZquELm+vcVMz684C1vxitcz
-         jRZs6Mnt4og2EB3ZXSFf5nYDzCoYI2cfzd57GFkN5W4D+z6iNP/Z7RjW918DfRjsHymH
-         Nsy/cUkLrdn+h4kD1cG9w9iG4F9GlMMt2WLAJyZwVrp68OCXyFfonFsmCyOSZ96Ipkzs
-         dI0wlzfI0TG7VqVHF+rcMM1U4U94dQAQL0HQnPTGN13Z7pn/xb8I4HbXrwKwzFYWAf/W
-         T4PA==
+        bh=bwBj2TaBRASZZSGjsc9HqXLMt7MyjxjnAoNllDw6MNM=;
+        b=Xqqs/P8boerzaIYbRHQOAH+keIPsAE/nKncOcYCbEP5A252clrYEJpZTtxHo5Qx3JS
+         DGNpaCuQVzjAixuRmzW4S2f9iltNrhNmGYM8TVxgitbbreOl89Kf0o7jQDx95uzJMXI8
+         cmzDXHIBOYP+g1TxbQV2QSWCacNrr0gEFMl39fAvWeVu4K4O6SZBJB0/b4AUgNMqKtgR
+         1iSli2fUlYGWrdZb6yJOO/aYh9LGsWfzlrKa2iBniuvwrUiXgfWnQWZJddn59iz9Haeb
+         cbn5bBjSYqIUkYkpJnNHKVmfbqPnbkk8T1/JmyPc41RCmWvFShb1XUav5vFhvC034eMz
+         ULvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CjtelYpu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ivDUtsSj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u29-20020a37ab1d000000b0069f5a38a712si677794qke.185.2022.04.25.01.57.30
+        by mx.google.com with ESMTPS id a2-20020a0562140c2200b00449f279fac1si3994979qvd.195.2022.04.25.02.02.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 01:57:30 -0700 (PDT)
+        Mon, 25 Apr 2022 02:02:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CjtelYpu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ivDUtsSj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60460 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1niuXB-0004RX-M2
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 04:57:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40536)
+	id 1niucK-0007TW-HS
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 05:02:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40374)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu0H-0006m1-2x
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:32229)
+ id 1niu0C-0006cu-IC
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:26282)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu0A-0002kC-4C
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:28 -0400
+ id 1niu04-0002hH-ML
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650875001;
+ s=mimecast20190719; t=1650874995;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RNMCFsdt1DfVphZXSznWDAJKRd268N5F4URsC76WAsg=;
- b=CjtelYpu9DYapbzsI7BNxKPdDRNC626t9YcG1ytujj3v8sXU6F68wEClrEE4/jfRTNh9OM
- cpMRaGqqt5G+0Pabr8ksL4rDeYipe8R29i86YihYGbg2AbsZ2mE1DnNYFVvb9rL1PQI8tc
- gezSgjeJNXnOMTZUPT4ArAkUyhMv81g=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=bwBj2TaBRASZZSGjsc9HqXLMt7MyjxjnAoNllDw6MNM=;
+ b=ivDUtsSj4RGYuO5Jr2+pwV45Ad6aeEGWZrHVmMdm/hN3cOJKuuaphJjV9pPUM9ncaZ8GAo
+ U/nOxGN1Hpuqpf/EpeU5hWc5eqcjmbB95lKxMld5I1EVq6ahdcXMwpvn+5zqF471a3VzJq
+ 7RuBmLNwS+CK1MI6FBK+exmPipkc7zg=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-653-JpLUWNKGOoiqgu3X6PcqQw-1; Mon, 25 Apr 2022 04:22:08 -0400
-X-MC-Unique: JpLUWNKGOoiqgu3X6PcqQw-1
-Received: by mail-wr1-f70.google.com with SMTP id
- t15-20020adfdc0f000000b001ef93643476so3063398wri.2
- for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:08 -0700 (PDT)
+ us-mta-230-4xOGewTgNxSelzXytBFgYQ-1; Mon, 25 Apr 2022 04:22:07 -0400
+X-MC-Unique: 4xOGewTgNxSelzXytBFgYQ-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ p18-20020adf9592000000b00207bc12decbso3072211wrp.21
+ for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=RNMCFsdt1DfVphZXSznWDAJKRd268N5F4URsC76WAsg=;
- b=Q2vMnfhP7cp53eg3mjI5AxLAQTUka2nc8+I4E7i0W3FnCti84qVMb7lFxcqRWQR7ed
- +el0tUD4HLI43N0ItJlUHYCNaezHGU44EQe9NCSxTJqb1jDIF6SBoIG7Lh0CczwFmz+X
- /mDnKGMGldXIWPZTztasq0hs1IvMz79nDv4GshqhmD4rGTmIzPPRXAOQGqFF+qkzv3pO
- FDWy6wHWF9mPi30DqEj5V9YDdzyUHoDqGuci4M101iQ7AYvL0tubSd95lP4GRwt0000H
- qciOnJcmBfvVMUexuN8zoSgzd+rr5Wp+RTcAq7H1BhsZOQmHN8ojLpl96ixDOW1AGQOG
- 31DQ==
-X-Gm-Message-State: AOAM532R/+S82Fvtt+doWpiEwzrWcyqfebWB+DH9OMrzzZkAVLkxOa4F
- gL8dwQ0+w9dc+yaekzX8mMwaNmMA/54zCbEtUbE0AjO2UscKHtHkVzjPWqLUJioTq+cqyedOmt5
- glyltQ+D8dKYECgQ=
-X-Received: by 2002:a5d:4fca:0:b0:20a:cf56:a894 with SMTP id
- h10-20020a5d4fca000000b0020acf56a894mr9298191wrw.528.1650874926947; 
+ bh=bwBj2TaBRASZZSGjsc9HqXLMt7MyjxjnAoNllDw6MNM=;
+ b=0DJSR5sNsfzAVpW7G6E6H2REufVbLdOAf0Wo5Q38YF+aH4YffbgqhBt+zqg4r9q+bb
+ qBGZd9uLyAjy8PgWYXpWwMHvy0D06e6FTHrDRe9mCS5Nvl3iHCzjE2FXZyHSwBvveSc2
+ 1msMSsJC/9rBRg/ZELgocPj8XOdRv8uX1IxN16WvkBNhJEB4aylTAkRiAqcxF0dQKDa6
+ ZoHXgKcQ1pUcdmqiMnkybh3Z8i9W2+7IkZx+zJ5FWmKobhAJhixE8PrPFZwPjJU9KJjy
+ xvDzZ18jUAI6a3btp29VeL2f1K4phZ4vAKKhnfQCq2o38AiqoSq+3KnhihpNhl8VogV7
+ wfIA==
+X-Gm-Message-State: AOAM533wBmwQPdOV+OnSwCZBaAQJuVpATreZ7PcOlQKOEMTAc9oo43F7
+ b26LRHknP3R6dTuveRdneFs+pMLuNaTTLyDaUSQSO+DIx7oSGOb/EijwAptjAYqi6Jq0kE2UOGK
+ ocL/pelMmKRR3qOI=
+X-Received: by 2002:a05:6000:1686:b0:20a:96e0:9bbe with SMTP id
+ y6-20020a056000168600b0020a96e09bbemr13086396wrd.635.1650874926176; 
  Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
-X-Received: by 2002:a5d:4fca:0:b0:20a:cf56:a894 with SMTP id
- h10-20020a5d4fca000000b0020acf56a894mr9298165wrw.528.1650874926539; 
- Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
+X-Received: by 2002:a05:6000:1686:b0:20a:96e0:9bbe with SMTP id
+ y6-20020a056000168600b0020a96e09bbemr13086362wrd.635.1650874925990; 
+ Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
 Received: from wheatley.localdomain (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- o2-20020a5d6482000000b0020a96536fcdsm8850332wri.57.2022.04.25.01.22.04
+ v6-20020a056000144600b0020a9a1627e2sm8374495wrx.15.2022.04.25.01.22.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
 Received: from wheatley.redhat.com (wheatley.k8r.cz [127.0.0.1])
- by wheatley.localdomain (Postfix) with ESMTP id 87D8D67B1B65;
+ by wheatley.localdomain (Postfix) with ESMTP id 6890067B1B61;
  Mon, 25 Apr 2022 10:22:02 +0200 (CEST)
 From: Martin Kletzander <mkletzan@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 16/18] audio: Remove legacy audio environment variables and
- options
-Date: Mon, 25 Apr 2022 10:21:59 +0200
-Message-Id: <c88cdd6f3b6d0d8e94753f36a154217a10fd4625.1650874791.git.mkletzan@redhat.com>
+Subject: [PATCH 12/18] hw/ppc: Support machine-default audiodev with fallback
+Date: Mon, 25 Apr 2022 10:21:55 +0200
+Message-Id: <9e9864dfe1cea988e7fdca14a1425d80e5895094.1650874791.git.mkletzan@redhat.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
 References: <cover.1650874791.git.mkletzan@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=mkletzan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -119,7 +117,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -151,703 +149,35 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PGdECJ+HhVrY
+X-TUID: 0Sn5Ga3sg5rU
 
 Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
 ---
- audio/audio.c                   |  13 -
- audio/audio.h                   |   1 -
- audio/audio_legacy.c            | 555 --------------------------------
- audio/meson.build               |   1 -
- docs/about/deprecated.rst       |   7 -
- docs/about/removed-features.rst |   9 +
- qemu-options.hx                 |  10 -
- softmmu/vl.c                    |   4 -
- 8 files changed, 9 insertions(+), 591 deletions(-)
- delete mode 100644 audio/audio_legacy.c
+ hw/ppc/prep.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/audio/audio.c b/audio/audio.c
-index c944cf817cf9..b3ecc8fa6508 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -49,19 +49,6 @@
+diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+index bf622aa38fab..52d801afb307 100644
+--- a/hw/ppc/prep.c
++++ b/hw/ppc/prep.c
+@@ -46,6 +46,7 @@
+ #include "elf.h"
+ #include "qemu/units.h"
+ #include "kvm_ppc.h"
++#include "audio/audio.h"
  
- #define SW_NAME(sw) (sw)->name ? (sw)->name : "unknown"
- 
--
--/* Order of CONFIG_AUDIO_DRIVERS is import.
--   The 1st one is the one used by default, that is the reason
--    that we generate the list.
--*/
--const char *audio_prio_list[] = {
--    "spice",
--    CONFIG_AUDIO_DRIVERS
--    "none",
--    "wav",
--    NULL
--};
--
- static QLIST_HEAD(, audio_driver) audio_drivers;
- static AudiodevListHead audiodevs = QSIMPLEQ_HEAD_INITIALIZER(audiodevs);
- 
-diff --git a/audio/audio.h b/audio/audio.h
-index 9deed8ed6830..ae10a7f0fa81 100644
---- a/audio/audio.h
-+++ b/audio/audio.h
-@@ -170,7 +170,6 @@ void audio_sample_from_uint64(void *samples, int pos,
- 
- void audio_parse_option(const char *opt);
- void audio_init_audiodevs(void);
--void audio_legacy_help(void);
- 
- AudioState *audio_state_by_name(const char *name);
- const char *audio_get_id(QEMUSoundCard *card);
-diff --git a/audio/audio_legacy.c b/audio/audio_legacy.c
-deleted file mode 100644
-index 595949f52cd4..000000000000
---- a/audio/audio_legacy.c
-+++ /dev/null
-@@ -1,555 +0,0 @@
--/*
-- * QEMU Audio subsystem: legacy configuration handling
-- *
-- * Copyright (c) 2015-2019 Zoltán Kővágó <DirtY.iCE.hu@gmail.com>
-- *
-- * Permission is hereby granted, free of charge, to any person obtaining a copy
-- * of this software and associated documentation files (the "Software"), to deal
-- * in the Software without restriction, including without limitation the rights
-- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-- * copies of the Software, and to permit persons to whom the Software is
-- * furnished to do so, subject to the following conditions:
-- *
-- * The above copyright notice and this permission notice shall be included in
-- * all copies or substantial portions of the Software.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-- * THE SOFTWARE.
-- */
--#include "qemu/osdep.h"
--#include "audio.h"
--#include "audio_int.h"
--#include "qemu/cutils.h"
--#include "qemu/timer.h"
--#include "qapi/error.h"
--#include "qapi/qapi-visit-audio.h"
--#include "qapi/visitor-impl.h"
--
--#define AUDIO_CAP "audio-legacy"
--#include "audio_int.h"
--
--static uint32_t toui32(const char *str)
--{
--    unsigned long long ret;
--    if (parse_uint_full(str, &ret, 10) || ret > UINT32_MAX) {
--        dolog("Invalid integer value `%s'\n", str);
--        exit(1);
--    }
--    return ret;
--}
--
--/* helper functions to convert env variables */
--static void get_bool(const char *env, bool *dst, bool *has_dst)
--{
--    const char *val = getenv(env);
--    if (val) {
--        *dst = toui32(val) != 0;
--        *has_dst = true;
--    }
--}
--
--static void get_int(const char *env, uint32_t *dst, bool *has_dst)
--{
--    const char *val = getenv(env);
--    if (val) {
--        *dst = toui32(val);
--        *has_dst = true;
--    }
--}
--
--static void get_str(const char *env, char **dst, bool *has_dst)
--{
--    const char *val = getenv(env);
--    if (val) {
--        if (*has_dst) {
--            g_free(*dst);
--        }
--        *dst = g_strdup(val);
--        *has_dst = true;
--    }
--}
--
--static void get_fmt(const char *env, AudioFormat *dst, bool *has_dst)
--{
--    const char *val = getenv(env);
--    if (val) {
--        size_t i;
--        for (i = 0; AudioFormat_lookup.size; ++i) {
--            if (strcasecmp(val, AudioFormat_lookup.array[i]) == 0) {
--                *dst = i;
--                *has_dst = true;
--                return;
--            }
--        }
--
--        dolog("Invalid audio format `%s'\n", val);
--        exit(1);
--    }
--}
--
--
--static void get_millis_to_usecs(const char *env, uint32_t *dst, bool *has_dst)
--{
--    const char *val = getenv(env);
--    if (val) {
--        *dst = toui32(val) * 1000;
--        *has_dst = true;
--    }
--}
--
--static uint32_t frames_to_usecs(uint32_t frames,
--                                AudiodevPerDirectionOptions *pdo)
--{
--    uint32_t freq = pdo->has_frequency ? pdo->frequency : 44100;
--    return (frames * 1000000 + freq / 2) / freq;
--}
--
--
--static void get_frames_to_usecs(const char *env, uint32_t *dst, bool *has_dst,
--                                AudiodevPerDirectionOptions *pdo)
--{
--    const char *val = getenv(env);
--    if (val) {
--        *dst = frames_to_usecs(toui32(val), pdo);
--        *has_dst = true;
--    }
--}
--
--static uint32_t samples_to_usecs(uint32_t samples,
--                                 AudiodevPerDirectionOptions *pdo)
--{
--    uint32_t channels = pdo->has_channels ? pdo->channels : 2;
--    return frames_to_usecs(samples / channels, pdo);
--}
--
--static void get_samples_to_usecs(const char *env, uint32_t *dst, bool *has_dst,
--                                 AudiodevPerDirectionOptions *pdo)
--{
--    const char *val = getenv(env);
--    if (val) {
--        *dst = samples_to_usecs(toui32(val), pdo);
--        *has_dst = true;
--    }
--}
--
--static uint32_t bytes_to_usecs(uint32_t bytes, AudiodevPerDirectionOptions *pdo)
--{
--    AudioFormat fmt = pdo->has_format ? pdo->format : AUDIO_FORMAT_S16;
--    uint32_t bytes_per_sample = audioformat_bytes_per_sample(fmt);
--    return samples_to_usecs(bytes / bytes_per_sample, pdo);
--}
--
--static void get_bytes_to_usecs(const char *env, uint32_t *dst, bool *has_dst,
--                               AudiodevPerDirectionOptions *pdo)
--{
--    const char *val = getenv(env);
--    if (val) {
--        *dst = bytes_to_usecs(toui32(val), pdo);
--        *has_dst = true;
--    }
--}
--
--/* backend specific functions */
--/* ALSA */
--static void handle_alsa_per_direction(
--    AudiodevAlsaPerDirectionOptions *apdo, const char *prefix)
--{
--    char buf[64];
--    size_t len = strlen(prefix);
--    bool size_in_usecs = false;
--    bool dummy;
--
--    memcpy(buf, prefix, len);
--    strcpy(buf + len, "TRY_POLL");
--    get_bool(buf, &apdo->try_poll, &apdo->has_try_poll);
--
--    strcpy(buf + len, "DEV");
--    get_str(buf, &apdo->dev, &apdo->has_dev);
--
--    strcpy(buf + len, "SIZE_IN_USEC");
--    get_bool(buf, &size_in_usecs, &dummy);
--
--    strcpy(buf + len, "PERIOD_SIZE");
--    get_int(buf, &apdo->period_length, &apdo->has_period_length);
--    if (apdo->has_period_length && !size_in_usecs) {
--        apdo->period_length = frames_to_usecs(
--            apdo->period_length,
--            qapi_AudiodevAlsaPerDirectionOptions_base(apdo));
--    }
--
--    strcpy(buf + len, "BUFFER_SIZE");
--    get_int(buf, &apdo->buffer_length, &apdo->has_buffer_length);
--    if (apdo->has_buffer_length && !size_in_usecs) {
--        apdo->buffer_length = frames_to_usecs(
--            apdo->buffer_length,
--            qapi_AudiodevAlsaPerDirectionOptions_base(apdo));
--    }
--}
--
--static void handle_alsa(Audiodev *dev)
--{
--    AudiodevAlsaOptions *aopt = &dev->u.alsa;
--    handle_alsa_per_direction(aopt->in, "QEMU_ALSA_ADC_");
--    handle_alsa_per_direction(aopt->out, "QEMU_ALSA_DAC_");
--
--    get_millis_to_usecs("QEMU_ALSA_THRESHOLD",
--                        &aopt->threshold, &aopt->has_threshold);
--}
--
--/* coreaudio */
--static void handle_coreaudio(Audiodev *dev)
--{
--    get_frames_to_usecs(
--        "QEMU_COREAUDIO_BUFFER_SIZE",
--        &dev->u.coreaudio.out->buffer_length,
--        &dev->u.coreaudio.out->has_buffer_length,
--        qapi_AudiodevCoreaudioPerDirectionOptions_base(dev->u.coreaudio.out));
--    get_int("QEMU_COREAUDIO_BUFFER_COUNT",
--            &dev->u.coreaudio.out->buffer_count,
--            &dev->u.coreaudio.out->has_buffer_count);
--}
--
--/* dsound */
--static void handle_dsound(Audiodev *dev)
--{
--    get_millis_to_usecs("QEMU_DSOUND_LATENCY_MILLIS",
--                        &dev->u.dsound.latency, &dev->u.dsound.has_latency);
--    get_bytes_to_usecs("QEMU_DSOUND_BUFSIZE_OUT",
--                       &dev->u.dsound.out->buffer_length,
--                       &dev->u.dsound.out->has_buffer_length,
--                       dev->u.dsound.out);
--    get_bytes_to_usecs("QEMU_DSOUND_BUFSIZE_IN",
--                       &dev->u.dsound.in->buffer_length,
--                       &dev->u.dsound.in->has_buffer_length,
--                       dev->u.dsound.in);
--}
--
--/* OSS */
--static void handle_oss_per_direction(
--    AudiodevOssPerDirectionOptions *opdo, const char *try_poll_env,
--    const char *dev_env)
--{
--    get_bool(try_poll_env, &opdo->try_poll, &opdo->has_try_poll);
--    get_str(dev_env, &opdo->dev, &opdo->has_dev);
--
--    get_bytes_to_usecs("QEMU_OSS_FRAGSIZE",
--                       &opdo->buffer_length, &opdo->has_buffer_length,
--                       qapi_AudiodevOssPerDirectionOptions_base(opdo));
--    get_int("QEMU_OSS_NFRAGS", &opdo->buffer_count,
--            &opdo->has_buffer_count);
--}
--
--static void handle_oss(Audiodev *dev)
--{
--    AudiodevOssOptions *oopt = &dev->u.oss;
--    handle_oss_per_direction(oopt->in, "QEMU_AUDIO_ADC_TRY_POLL",
--                             "QEMU_OSS_ADC_DEV");
--    handle_oss_per_direction(oopt->out, "QEMU_AUDIO_DAC_TRY_POLL",
--                             "QEMU_OSS_DAC_DEV");
--
--    get_bool("QEMU_OSS_MMAP", &oopt->try_mmap, &oopt->has_try_mmap);
--    get_bool("QEMU_OSS_EXCLUSIVE", &oopt->exclusive, &oopt->has_exclusive);
--    get_int("QEMU_OSS_POLICY", &oopt->dsp_policy, &oopt->has_dsp_policy);
--}
--
--/* pulseaudio */
--static void handle_pa_per_direction(
--    AudiodevPaPerDirectionOptions *ppdo, const char *env)
--{
--    get_str(env, &ppdo->name, &ppdo->has_name);
--}
--
--static void handle_pa(Audiodev *dev)
--{
--    handle_pa_per_direction(dev->u.pa.in, "QEMU_PA_SOURCE");
--    handle_pa_per_direction(dev->u.pa.out, "QEMU_PA_SINK");
--
--    get_samples_to_usecs(
--        "QEMU_PA_SAMPLES", &dev->u.pa.in->buffer_length,
--        &dev->u.pa.in->has_buffer_length,
--        qapi_AudiodevPaPerDirectionOptions_base(dev->u.pa.in));
--    get_samples_to_usecs(
--        "QEMU_PA_SAMPLES", &dev->u.pa.out->buffer_length,
--        &dev->u.pa.out->has_buffer_length,
--        qapi_AudiodevPaPerDirectionOptions_base(dev->u.pa.out));
--
--    get_str("QEMU_PA_SERVER", &dev->u.pa.server, &dev->u.pa.has_server);
--}
--
--/* SDL */
--static void handle_sdl(Audiodev *dev)
--{
--    /* SDL is output only */
--    get_samples_to_usecs("QEMU_SDL_SAMPLES", &dev->u.sdl.out->buffer_length,
--        &dev->u.sdl.out->has_buffer_length,
--        qapi_AudiodevSdlPerDirectionOptions_base(dev->u.sdl.out));
--}
--
--/* wav */
--static void handle_wav(Audiodev *dev)
--{
--    get_int("QEMU_WAV_FREQUENCY",
--            &dev->u.wav.out->frequency, &dev->u.wav.out->has_frequency);
--    get_fmt("QEMU_WAV_FORMAT", &dev->u.wav.out->format,
--            &dev->u.wav.out->has_format);
--    get_int("QEMU_WAV_DAC_FIXED_CHANNELS",
--            &dev->u.wav.out->channels, &dev->u.wav.out->has_channels);
--    get_str("QEMU_WAV_PATH", &dev->u.wav.path, &dev->u.wav.has_path);
--}
--
--/* general */
--static void handle_per_direction(
--    AudiodevPerDirectionOptions *pdo, const char *prefix)
--{
--    char buf[64];
--    size_t len = strlen(prefix);
--
--    memcpy(buf, prefix, len);
--    strcpy(buf + len, "FIXED_SETTINGS");
--    get_bool(buf, &pdo->fixed_settings, &pdo->has_fixed_settings);
--
--    strcpy(buf + len, "FIXED_FREQ");
--    get_int(buf, &pdo->frequency, &pdo->has_frequency);
--
--    strcpy(buf + len, "FIXED_FMT");
--    get_fmt(buf, &pdo->format, &pdo->has_format);
--
--    strcpy(buf + len, "FIXED_CHANNELS");
--    get_int(buf, &pdo->channels, &pdo->has_channels);
--
--    strcpy(buf + len, "VOICES");
--    get_int(buf, &pdo->voices, &pdo->has_voices);
--}
--
--static AudiodevListEntry *legacy_opt(const char *drvname)
--{
--    AudiodevListEntry *e = g_new0(AudiodevListEntry, 1);
--    e->dev = g_new0(Audiodev, 1);
--    e->dev->id = g_strdup(drvname);
--    e->dev->driver = qapi_enum_parse(
--        &AudiodevDriver_lookup, drvname, -1, &error_abort);
--
--    audio_create_pdos(e->dev);
--
--    handle_per_direction(audio_get_pdo_in(e->dev), "QEMU_AUDIO_ADC_");
--    handle_per_direction(audio_get_pdo_out(e->dev), "QEMU_AUDIO_DAC_");
--
--    /* Original description: Timer period in HZ (0 - use lowest possible) */
--    get_int("QEMU_AUDIO_TIMER_PERIOD",
--            &e->dev->timer_period, &e->dev->has_timer_period);
--    if (e->dev->has_timer_period && e->dev->timer_period) {
--        e->dev->timer_period = NANOSECONDS_PER_SECOND / 1000 /
--                               e->dev->timer_period;
--    }
--
--    switch (e->dev->driver) {
--    case AUDIODEV_DRIVER_ALSA:
--        handle_alsa(e->dev);
--        break;
--
--    case AUDIODEV_DRIVER_COREAUDIO:
--        handle_coreaudio(e->dev);
--        break;
--
--    case AUDIODEV_DRIVER_DSOUND:
--        handle_dsound(e->dev);
--        break;
--
--    case AUDIODEV_DRIVER_OSS:
--        handle_oss(e->dev);
--        break;
--
--    case AUDIODEV_DRIVER_PA:
--        handle_pa(e->dev);
--        break;
--
--    case AUDIODEV_DRIVER_SDL:
--        handle_sdl(e->dev);
--        break;
--
--    case AUDIODEV_DRIVER_WAV:
--        handle_wav(e->dev);
--        break;
--
--    default:
--        break;
--    }
--
--    return e;
--}
--
--AudiodevListHead audio_handle_legacy_opts(void)
--{
--    const char *drvname = getenv("QEMU_AUDIO_DRV");
--    AudiodevListHead head = QSIMPLEQ_HEAD_INITIALIZER(head);
--
--    if (drvname) {
--        AudiodevListEntry *e;
--        audio_driver *driver = audio_driver_lookup(drvname);
--        if (!driver) {
--            dolog("Unknown audio driver `%s'\n", drvname);
--            exit(1);
--        }
--        e = legacy_opt(drvname);
--        QSIMPLEQ_INSERT_TAIL(&head, e, next);
--    } else {
--        for (int i = 0; audio_prio_list[i]; i++) {
--            audio_driver *driver = audio_driver_lookup(audio_prio_list[i]);
--            if (driver && driver->can_be_default) {
--                AudiodevListEntry *e = legacy_opt(driver->name);
--                QSIMPLEQ_INSERT_TAIL(&head, e, next);
--            }
--        }
--        if (QSIMPLEQ_EMPTY(&head)) {
--            dolog("Internal error: no default audio driver available\n");
--            exit(1);
--        }
--    }
--
--    return head;
--}
--
--/* visitor to print -audiodev option */
--typedef struct {
--    Visitor visitor;
--
--    bool comma;
--    GList *path;
--} LegacyPrintVisitor;
--
--static bool lv_start_struct(Visitor *v, const char *name, void **obj,
--                            size_t size, Error **errp)
--{
--    LegacyPrintVisitor *lv = (LegacyPrintVisitor *) v;
--    lv->path = g_list_append(lv->path, g_strdup(name));
--    return true;
--}
--
--static void lv_end_struct(Visitor *v, void **obj)
--{
--    LegacyPrintVisitor *lv = (LegacyPrintVisitor *) v;
--    lv->path = g_list_delete_link(lv->path, g_list_last(lv->path));
--}
--
--static void lv_print_key(Visitor *v, const char *name)
--{
--    GList *e;
--    LegacyPrintVisitor *lv = (LegacyPrintVisitor *) v;
--    if (lv->comma) {
--        putchar(',');
--    } else {
--        lv->comma = true;
--    }
--
--    for (e = lv->path; e; e = e->next) {
--        if (e->data) {
--            printf("%s.", (const char *) e->data);
--        }
--    }
--
--    printf("%s=", name);
--}
--
--static bool lv_type_int64(Visitor *v, const char *name, int64_t *obj,
--                          Error **errp)
--{
--    lv_print_key(v, name);
--    printf("%" PRIi64, *obj);
--    return true;
--}
--
--static bool lv_type_uint64(Visitor *v, const char *name, uint64_t *obj,
--                           Error **errp)
--{
--    lv_print_key(v, name);
--    printf("%" PRIu64, *obj);
--    return true;
--}
--
--static bool lv_type_bool(Visitor *v, const char *name, bool *obj, Error **errp)
--{
--    lv_print_key(v, name);
--    printf("%s", *obj ? "on" : "off");
--    return true;
--}
--
--static bool lv_type_str(Visitor *v, const char *name, char **obj, Error **errp)
--{
--    const char *str = *obj;
--    lv_print_key(v, name);
--
--    while (*str) {
--        if (*str == ',') {
--            putchar(',');
--        }
--        putchar(*str++);
--    }
--    return true;
--}
--
--static void lv_complete(Visitor *v, void *opaque)
--{
--    LegacyPrintVisitor *lv = (LegacyPrintVisitor *) v;
--    assert(lv->path == NULL);
--}
--
--static void lv_free(Visitor *v)
--{
--    LegacyPrintVisitor *lv = (LegacyPrintVisitor *) v;
--
--    g_list_free_full(lv->path, g_free);
--    g_free(lv);
--}
--
--static Visitor *legacy_visitor_new(void)
--{
--    LegacyPrintVisitor *lv = g_new0(LegacyPrintVisitor, 1);
--
--    lv->visitor.start_struct = lv_start_struct;
--    lv->visitor.end_struct = lv_end_struct;
--    /* lists not supported */
--    lv->visitor.type_int64 = lv_type_int64;
--    lv->visitor.type_uint64 = lv_type_uint64;
--    lv->visitor.type_bool = lv_type_bool;
--    lv->visitor.type_str = lv_type_str;
--
--    lv->visitor.type = VISITOR_OUTPUT;
--    lv->visitor.complete = lv_complete;
--    lv->visitor.free = lv_free;
--
--    return &lv->visitor;
--}
--
--void audio_legacy_help(void)
--{
--    AudiodevListHead head;
--    AudiodevListEntry *e;
--
--    printf("Environment variable based configuration deprecated.\n");
--    printf("Please use the new -audiodev option.\n");
--
--    head = audio_handle_legacy_opts();
--    printf("\nEquivalent -audiodev to your current environment variables:\n");
--    if (!getenv("QEMU_AUDIO_DRV")) {
--        printf("(Since you didn't specify QEMU_AUDIO_DRV, I'll list all "
--               "possibilities)\n");
--    }
--
--    QSIMPLEQ_FOREACH(e, &head, next) {
--        Visitor *v;
--        Audiodev *dev = e->dev;
--        printf("-audiodev ");
--
--        v = legacy_visitor_new();
--        visit_type_Audiodev(v, NULL, &dev, &error_abort);
--        visit_free(v);
--
--        printf("\n");
--    }
--    audio_free_audiodev_list(&head);
--}
-diff --git a/audio/meson.build b/audio/meson.build
-index 94dab16891d5..d73155d2f2ae 100644
---- a/audio/meson.build
-+++ b/audio/meson.build
-@@ -1,6 +1,5 @@
- softmmu_ss.add([spice_headers, files('audio.c')])
- softmmu_ss.add(files(
--  'audio_legacy.c',
-   'mixeng.c',
-   'noaudio.c',
-   'wavaudio.c',
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index b2255319e347..7cc44e611ebe 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -23,13 +23,6 @@ deprecated.
- System emulator command line arguments
- --------------------------------------
- 
--``QEMU_AUDIO_`` environment variables and ``-audio-help`` (since 4.0)
--'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
--
--The ``-audiodev`` argument is now the preferred way to specify audio
--backend settings instead of environment variables.  To ease migration to
--the new format, the ``-audiodev-help`` option can be used to convert
--the current values of the environment variables to ``-audiodev`` options.
- 
- ``-chardev`` backend aliases ``tty`` and ``parport`` (since 6.0)
- ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index f9eea4dda327..e2a95baf9031 100644
---- a/docs/about/removed-features.rst
-+++ b/docs/about/removed-features.rst
-@@ -354,6 +354,15 @@ should specify an ``audiodev=`` property.  Additionally, when using
- vnc, you should specify an ``audiodev=`` property if you plan to
- transmit audio through the VNC protocol.
- 
-+``QEMU_AUDIO_`` environment variables and ``-audio-help`` (removed in 7.1)
-+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ /* SMP is not enabled, for now */
+ #define MAX_CPUS 1
+@@ -304,6 +305,9 @@ static void ibm_40p_init(MachineState *machine)
+         dev = DEVICE(isa_dev);
+         qdev_prop_set_uint32(dev, "iobase", 0x830);
+         qdev_prop_set_uint32(dev, "irq", 10);
 +
-+The ``-audiodev`` argument is now the preferred way to specify audio
-+backend settings instead of environment variables.  To ease migration to
-+the new format, the ``-audio-help`` option can be used with older QEMU
-+binaries to convert some of the old values of the environment variables
-+to new ``-audiodev`` options.
-+
++        qdev_prop_set_string(dev, "audiodev",
++                             audio_maybe_init_dummy("ppc.defaudio"));
+         isa_realize_and_unref(isa_dev, isa_bus, &error_fatal);
  
- QEMU Machine Protocol (QMP) commands
- ------------------------------------
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 47bbd86a4533..b45d488440fc 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -651,16 +651,6 @@ SRST
- ERST
- 
- 
--HXCOMM Deprecated by -audiodev
--DEF("audio-help", 0, QEMU_OPTION_audio_help,
--    "-audio-help     show -audiodev equivalent of the currently specified audio settings\n",
--    QEMU_ARCH_ALL)
--SRST
--``-audio-help``
--    Will show the -audiodev equivalent of the currently specified
--    (deprecated) environment variables.
--ERST
--
- DEF("audiodev", HAS_ARG, QEMU_OPTION_audiodev,
-     "-audiodev [driver=]driver,id=id[,prop[=value][,...]]\n"
-     "                specifies the audio backend to use\n"
-diff --git a/softmmu/vl.c b/softmmu/vl.c
-index 2f7158574e4f..248bf8f66c4c 100644
---- a/softmmu/vl.c
-+++ b/softmmu/vl.c
-@@ -3008,10 +3008,6 @@ void qemu_init(int argc, char **argv, char **envp)
-                 }
-                 break;
- #endif
--            case QEMU_OPTION_audio_help:
--                audio_legacy_help();
--                exit (0);
--                break;
-             case QEMU_OPTION_audiodev:
-                 audio_parse_option(optarg);
-                 break;
+         isa_dev = isa_new("pc87312");
 -- 
 2.35.1
 

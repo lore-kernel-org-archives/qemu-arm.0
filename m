@@ -1,116 +1,115 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2221173lfk;
-        Mon, 25 Apr 2022 01:43:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxB9ieNPm8315kQK5RCL99kiscAY1DON2u3eKFh+wPjioAKBbfwwNWiFvo3Nh2sb2VY6eyW
-X-Received: by 2002:ad4:590d:0:b0:456:3972:6eae with SMTP id ez13-20020ad4590d000000b0045639726eaemr1934300qvb.29.1650876215369;
-        Mon, 25 Apr 2022 01:43:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650876215; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2222838lfk;
+        Mon, 25 Apr 2022 01:47:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzqg5BCcH3Flv3cF3Dz9CnvCYHT6oSLTSeVGC4T1XxBX7Fxx6HbObQSZDE0WvmXHlDiRDru
+X-Received: by 2002:a05:6214:c6a:b0:452:b9b:c68f with SMTP id t10-20020a0562140c6a00b004520b9bc68fmr10369425qvj.46.1650876469365;
+        Mon, 25 Apr 2022 01:47:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650876469; cv=none;
         d=google.com; s=arc-20160816;
-        b=SOUybaSaD+CBq9onL3fP9/6E9tfm8He0kUwLtor37MHaY4ENhUhuRWK2yin8x2VS/L
-         He/fy3q7MiJiMkzn7O5a74DtxQgjNhBHjJ2OTgCS3h4s748SjEJB3Emxa7nWnTTluyTd
-         fxtTjnZD2k2JRwIfNM2ZNMtuadevWOjjaRwHUVF5En2Ei0JRLh2QTbQD0M2fRFVv6HM8
-         4791DdMjFORs2Cd3O75fByk4nleSmrgGEvILDXu5Az9iOeVw87MGl7/ZHEOuZhSQzqfB
-         H8EnBdeHwe5e+92wezaUQU3kkRRBOZX/2GEVl5N+pRpnPjp1uT4vFjBNsw2NxORVf3/6
-         GgMQ==
+        b=FOQsipSiTUzcUPkbDzEhwwEN445qSbPE6aSslMWrSCWZNXH/TStrwwkeMKh363z7NA
+         PVSkbIP4ZwhOsmT0whlkrCksbJ2/UFYDh9uuhqzla0z+Ebdz5HMcgJjK1+iHK+9MjoTj
+         RxGCM5F9MxZa1vSkeF+aFYerXrHk9/yEx4B63oH86vZUlMLR20UPprrfTX+R2Su1MWcs
+         pBD8gFtOWvQ+kP/M1cfloA1zKvyCc84rhUu7dCX/qJvHyKf++aXBehteYRiFkRyDKQZO
+         DUlMcgTbZoOxHddJT7TQke/Rkaej36e/GAfmrJ1SIMApCOo/5jztPi1vk+mEBfxvr0Vp
+         3H9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=FhQkwseUjLTHOIhK75umw1DiZK4WT0Kj4VwxUvLlvB0=;
-        b=ihiuPtrYdrcvYvwexq1gLXPM/J0Rz3+UXZXNaGRTgTMXPt+OkvoCUyFs6dATzc9a7t
-         0IEDLOH0qrDnoLOuthx+nvK3bPTwyXPQA/DMHaVPBOQspQdVG6TU1waRsJlsQ+6h1MYf
-         sDinwZEG6lhXSZXLwf1QvTXv4AD0XJem/SknwTk9WVklwBaBD0rGLl07vjVuxQrBvyaL
-         Aq7eho8+t0ABtyUU71hqhqEO2P/uWDrY9/J0SQdx0WXVQA06hjWg18jdWgro2aAztu8W
-         5YCxm/R//ls6yn61YlL9NJUHRoJy2yLEx/7DfCHxgjguFA/cWaWWM/mDsXYt63D0MCnT
-         aeyQ==
+        bh=O++t1zATSSDRwugsXR7Q5IVUhnhLz0oadJiOZXGBQI8=;
+        b=gqYndlnkuyqjA+BMR/LhwNKaCZ7sfuL8pJb016ZQEq7EVaVM0HKAygq+9bX5LkLuj9
+         TqOscw+xbXm+/A4NkfAwMNWIf0LE36s5LmAnvG83SuRZELz2JKOT4+I/h+/CFIg9P/7K
+         p9OV4g3GVxDFOCfdt7kH8q7IokdG3yDkZuP0w/wWBaJg5GO01KAkqpbkg2RRaN13SUwg
+         +5ZCi3DLCtVlnOdXRrCpE6+COr37GKMtNfTmL4Y3tuh/XJB7mD7RbN/yWMZ5TcZmR7Qf
+         oWRMW1g0IVqIG5QMSrM5m7smQEqPNrDV4jZB9/XJGYw8lzZd5gaOSWQpOLC2skY8vlfr
+         vvVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="UQh/XdTv";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gxCq92Nd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f6-20020a056214076600b00446787309e0si4430732qvz.154.2022.04.25.01.43.35
+        by mx.google.com with ESMTPS id i65-20020a37b844000000b0067e4be2390asi3986596qkf.335.2022.04.25.01.47.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 01:43:35 -0700 (PDT)
+        Mon, 25 Apr 2022 01:47:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="UQh/XdTv";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gxCq92Nd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37012 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44754 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1niuJi-0005Co-K8
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 04:43:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40906)
+	id 1niuNo-00021b-Qv
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 04:47:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40182)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu0s-0007Li-Nh
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:24:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:39686)
+ id 1niu07-0006V1-Hh
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:40872)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu0p-0002rN-3O
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:24:06 -0400
+ id 1niu01-0002f8-R2
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650875042;
+ s=mimecast20190719; t=1650874992;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=FhQkwseUjLTHOIhK75umw1DiZK4WT0Kj4VwxUvLlvB0=;
- b=UQh/XdTv7LZr8nL08xhLVFE/zBqJjPlXjOCDgCiQwRwKmAxGNbzTwxnt9xXCbXBDwomjoo
- RieNtfAOUcXw4UmZy7qnXaoRkYb3vKzHxStZHfb5KzHt8F+QdFpu5vT4Ad9dY9frIt9ch3
- 81Yp/yAUTWeLc6+rxnbHjwL5LRZunu4=
+ bh=O++t1zATSSDRwugsXR7Q5IVUhnhLz0oadJiOZXGBQI8=;
+ b=gxCq92NdSZCVw3Kj9Xxakla3B+v/m6rod9eq5YJsQCnloG3WylVNRefh8211wryzZMAVYz
+ 10ktplgcipIN9lHH9VjJNIuTNPEb5D45/JiwzKrkgMPeHpGmv4fYcdVTUbH9zE13t9ca4B
+ pLEqq1yKHgo9gAB1FzBwLyirwgKGuno=
 Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
  [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-231-eSoNJ_fMOP2m9gfKt_Yyfg-1; Mon, 25 Apr 2022 04:22:07 -0400
-X-MC-Unique: eSoNJ_fMOP2m9gfKt_Yyfg-1
+ us-mta-262--F27XBhVMRWAv_Uy1Bpo_Q-1; Mon, 25 Apr 2022 04:22:05 -0400
+X-MC-Unique: -F27XBhVMRWAv_Uy1Bpo_Q-1
 Received: by mail-wr1-f70.google.com with SMTP id
- e21-20020adfa455000000b0020ae075cf35so88991wra.11
- for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:07 -0700 (PDT)
+ h61-20020adf9043000000b002079bbaa5d3so3076404wrh.16
+ for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=FhQkwseUjLTHOIhK75umw1DiZK4WT0Kj4VwxUvLlvB0=;
- b=721brlw9+8aCBsKCft32504CZbDqrZ9UH6Hy1SfUbjmp5/pku6KvuyHDc07P3XhH46
- f/ZI8H+atHoT+7yQf8kd6GiqKNRCwX536QDtCbP3kQPiRm9oa9jKr8PnIZH6xtgUkLGQ
- mHYNXzXxYn2ctVd72oNz2HPgmj+AEYAVwoMg0egxX5+fnP5ODPG18RK65Rl1TaORjtFB
- aWjTV85TS66OHu0mTGaZKjdDi6cULA47BrBy29URt/xaW5/3ICb7xcoYNf+9lpfjtn7q
- PgmVayeNKm10HQkll9/nXtLpacDFUjWldu2dDJu1d/oqi1dp1aRlwGWitMnI7hColgKC
- ce1A==
-X-Gm-Message-State: AOAM5316O+5morU9JDLzAmm99oAzt65cUSAJTLXMZjDvQfHpFfdKg7qJ
- IoooxF/Ga9Mw3SK5s5pzvbGHjFaAK7J0M07U7s0harMl88FQpmgcrl81KnN4XzKmitAhAsMUwQP
- QSc2BEoIhmUUIbZo=
-X-Received: by 2002:a05:600c:21d1:b0:381:4fed:159a with SMTP id
- x17-20020a05600c21d100b003814fed159amr15601984wmj.143.1650874926493; 
- Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
-X-Received: by 2002:a05:600c:21d1:b0:381:4fed:159a with SMTP id
- x17-20020a05600c21d100b003814fed159amr15601961wmj.143.1650874926243; 
- Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
+ bh=O++t1zATSSDRwugsXR7Q5IVUhnhLz0oadJiOZXGBQI8=;
+ b=PSQyiO3w3IApHtf0WI43vNnNw/ck+AShYIf6xdFbsRlKdBoxZyS95TPbwMzKsIUyp4
+ QRHBCsvsPCZiP/+XFIhOgtci8Et+m6vwG7S5sCihtzC6TFXp7FmCJhdc4a27iX8j4QIF
+ cvpLW4xlysCTmqzkpnXnqRMHDM9K6P7LGtCHkQAdhx5vBk6VOL/RuNqsUyLXVwfsWYZz
+ 4JyQNn2fpkuBQ09sbhSRqkeKrgCrAYTeKltZF/iH+vfknh2O4tFuj/CnVsoVEgi+LjwP
+ 8H7ehbpNp8yT0McN+PB9ZebQCj6zpn6e9IZGxM+keaMRUSp+qz1JIwBahGeUlKZsiv3J
+ PT+Q==
+X-Gm-Message-State: AOAM532bo1Y0HZuOAOc55gAqL+JrbCzh/koQjvZfbWaTBdZLpvoUC1z9
+ 87+DSQWi65rrsCEK4wd0N2f2Zk7x86tg3Z6NIDsUIb+DjcUBi7ZLCFaxZ15wOa3bBtxeIaXCFkj
+ RJtkAxz2gZUlINf8=
+X-Received: by 2002:a05:600c:34c4:b0:38e:b628:da95 with SMTP id
+ d4-20020a05600c34c400b0038eb628da95mr15717853wmq.150.1650874924305; 
+ Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
+X-Received: by 2002:a05:600c:34c4:b0:38e:b628:da95 with SMTP id
+ d4-20020a05600c34c400b0038eb628da95mr15717824wmq.150.1650874924044; 
+ Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
 Received: from wheatley.localdomain (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- i6-20020a0560001ac600b0020a93f75030sm8609662wry.48.2022.04.25.01.22.04
+ g5-20020adfd1e5000000b0020a97e7ba9fsm9606190wrd.92.2022.04.25.01.22.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
+ Mon, 25 Apr 2022 01:22:02 -0700 (PDT)
 Received: from wheatley.redhat.com (wheatley.k8r.cz [127.0.0.1])
- by wheatley.localdomain (Postfix) with ESMTP id 84EB767B1B64;
+ by wheatley.localdomain (Postfix) with ESMTP id 17F0967B1B58;
  Mon, 25 Apr 2022 10:22:02 +0200 (CEST)
 From: Martin Kletzander <mkletzan@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 15/18] audio: Be more strict during audio backend
- initialisation
-Date: Mon, 25 Apr 2022 10:21:58 +0200
-Message-Id: <e9c251a6b45d01d4b1d59ce4c6295172f354b301.1650874791.git.mkletzan@redhat.com>
+Subject: [PATCH 03/18] hw/audio: Simplify hda audio init
+Date: Mon, 25 Apr 2022 10:21:46 +0200
+Message-Id: <cd1df4ad2a6fae969c4a02a77955c4a8c0d430b6.1650874791.git.mkletzan@redhat.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
 References: <cover.1650874791.git.mkletzan@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mkletzan@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mkletzan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -118,7 +117,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,270 +149,122 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KZwUuYUZDj3P
+X-TUID: aRdsp1it6n0V
 
-Now that audiodev= is required and audio_init() will not be called
-without and AudioDev we can remove the fallback functionality and error
-out in case audio drivers fail initialisation or when the driver does
-not exist.
+No return values are used anywhere, so switch the functions to be void
+and add support for error reporting using errp for use in next patches.
 
 Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
 ---
- audio/audio.c                   | 146 ++++++--------------------------
- docs/about/deprecated.rst       |   8 --
- docs/about/removed-features.rst |   8 ++
- 3 files changed, 34 insertions(+), 128 deletions(-)
+ hw/audio/hda-codec.c | 32 ++++++++++++++++++--------------
+ hw/audio/intel-hda.c |  4 +---
+ hw/audio/intel-hda.h |  2 +-
+ 3 files changed, 20 insertions(+), 18 deletions(-)
 
-diff --git a/audio/audio.c b/audio/audio.c
-index 97eb645764c1..c944cf817cf9 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -87,6 +87,8 @@ audio_driver *audio_driver_lookup(const char *name)
+diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
+index feb8f9e2bb7a..e86a2adf31a0 100644
+--- a/hw/audio/hda-codec.c
++++ b/hw/audio/hda-codec.c
+@@ -676,7 +676,9 @@ static void hda_audio_stream(HDACodecDevice *hda, uint32_t stnr, bool running, b
+     }
+ }
+ 
+-static int hda_audio_init(HDACodecDevice *hda, const struct desc_codec *desc)
++static void hda_audio_init(HDACodecDevice *hda,
++                           const struct desc_codec *desc,
++                           Error **errp)
+ {
+     HDAAudioState *a = HDA_AUDIO(hda);
+     HDAAudioStream *st;
+@@ -719,7 +721,6 @@ static int hda_audio_init(HDACodecDevice *hda, const struct desc_codec *desc)
+             break;
          }
      }
- 
-+    error_setg(&error_fatal, "Unknown audio driver `%s'", name);
-+    /* Avoid compiler complaining that we do not return in non-void function */
-     return NULL;
+-    return 0;
  }
  
-@@ -104,8 +106,6 @@ const struct mixeng_volume nominal_volume = {
- #endif
+ static void hda_audio_exit(HDACodecDevice *hda)
+@@ -849,37 +850,40 @@ static Property hda_audio_properties[] = {
+     DEFINE_PROP_END_OF_LIST(),
  };
  
--static bool legacy_config = true;
--
- int audio_bug (const char *funcname, int cond)
+-static int hda_audio_init_output(HDACodecDevice *hda)
++static void hda_audio_init_output(HDACodecDevice *hda, Error **errp)
  {
-     if (cond) {
-@@ -1532,31 +1532,27 @@ size_t audio_generic_read(HWVoiceIn *hw, void *buf, size_t size)
-     return total;
+     HDAAudioState *a = HDA_AUDIO(hda);
++    const struct desc_codec *desc = &output_nomixemu;
+ 
+     if (!a->mixer) {
+-        return hda_audio_init(hda, &output_nomixemu);
+-    } else {
+-        return hda_audio_init(hda, &output_mixemu);
++        desc = &output_mixemu;
+     }
++
++    hda_audio_init(hda, desc, errp);
  }
  
--static int audio_driver_init(AudioState *s, struct audio_driver *drv,
--                             bool msg, Audiodev *dev)
-+static void audio_driver_init(AudioState *s, struct audio_driver *drv,
-+                              Audiodev *dev)
+-static int hda_audio_init_duplex(HDACodecDevice *hda)
++static void hda_audio_init_duplex(HDACodecDevice *hda, Error **errp)
  {
-     s->drv_opaque = drv->init(dev);
+     HDAAudioState *a = HDA_AUDIO(hda);
++    const struct desc_codec *desc = &duplex_nomixemu;
  
--    if (s->drv_opaque) {
--        if (!drv->pcm_ops->get_buffer_in) {
--            drv->pcm_ops->get_buffer_in = audio_generic_get_buffer_in;
--            drv->pcm_ops->put_buffer_in = audio_generic_put_buffer_in;
--        }
--        if (!drv->pcm_ops->get_buffer_out) {
--            drv->pcm_ops->get_buffer_out = audio_generic_get_buffer_out;
--            drv->pcm_ops->put_buffer_out = audio_generic_put_buffer_out;
--        }
-+    if (!s->drv_opaque) {
-+        error_setg(&error_fatal, "Could not init `%s' audio driver", drv->name);
-+    }
- 
--        audio_init_nb_voices_out(s, drv);
--        audio_init_nb_voices_in(s, drv);
--        s->drv = drv;
--        return 0;
+     if (!a->mixer) {
+-        return hda_audio_init(hda, &duplex_nomixemu);
 -    } else {
--        if (msg) {
--            dolog("Could not init `%s' audio driver\n", drv->name);
--        }
--        return -1;
-+    if (!drv->pcm_ops->get_buffer_in) {
-+        drv->pcm_ops->get_buffer_in = audio_generic_get_buffer_in;
-+        drv->pcm_ops->put_buffer_in = audio_generic_put_buffer_in;
+-        return hda_audio_init(hda, &duplex_mixemu);
++        desc = &duplex_mixemu;
      }
-+    if (!drv->pcm_ops->get_buffer_out) {
-+        drv->pcm_ops->get_buffer_out = audio_generic_get_buffer_out;
-+        drv->pcm_ops->put_buffer_out = audio_generic_put_buffer_out;
-+    }
 +
-+    audio_init_nb_voices_out(s, drv);
-+    audio_init_nb_voices_in(s, drv);
-+    s->drv = drv;
++    hda_audio_init(hda, desc, errp);
  }
  
- static void audio_vm_change_state_handler (void *opaque, bool running,
-@@ -1661,79 +1657,19 @@ static const VMStateDescription vmstate_audio = {
- 
- static void audio_validate_opts(Audiodev *dev, Error **errp);
- 
--static AudiodevListEntry *audiodev_find(
--    AudiodevListHead *head, const char *drvname)
--{
--    AudiodevListEntry *e;
--    QSIMPLEQ_FOREACH(e, head, next) {
--        if (strcmp(AudiodevDriver_str(e->dev->driver), drvname) == 0) {
--            return e;
--        }
--    }
--
--    return NULL;
--}
--
--/*
-- * if we have dev, this function was called because of an -audiodev argument =>
-- *   initialize a new state with it
-- * if dev == NULL => legacy implicit initialization, return the already created
-- *   state or create a new one
-- */
--static AudioState *audio_init(Audiodev *dev, const char *name)
-+static AudioState *audio_init(Audiodev *dev)
+-static int hda_audio_init_micro(HDACodecDevice *hda)
++static void hda_audio_init_micro(HDACodecDevice *hda, Error **errp)
  {
-     static bool atexit_registered;
--    size_t i;
--    int done = 0;
-     const char *drvname = NULL;
-     VMChangeStateEntry *e;
-     AudioState *s;
--    struct audio_driver *driver;
--    /* silence gcc warning about uninitialized variable */
--    AudiodevListHead head = QSIMPLEQ_HEAD_INITIALIZER(head);
--
--    if (using_spice) {
--        /*
--         * When using spice allow the spice audio driver being picked
--         * as default.
--         *
--         * Temporary hack.  Using audio devices without explicit
--         * audiodev= property is already deprecated.  Same goes for
--         * the -soundhw switch.  Once this support gets finally
--         * removed we can also drop the concept of a default audio
--         * backend and this can go away.
--         */
--        driver = audio_driver_lookup("spice");
--        if (driver) {
--            driver->can_be_default = 1;
--        }
--    }
+     HDAAudioState *a = HDA_AUDIO(hda);
++    const struct desc_codec *desc = &micro_nomixemu;
  
--    if (dev) {
--        /* -audiodev option */
--        legacy_config = false;
--        drvname = AudiodevDriver_str(dev->driver);
--    } else if (!QTAILQ_EMPTY(&audio_states)) {
--        if (!legacy_config) {
--            dolog("Device %s: audiodev default parameter is deprecated, please "
--                  "specify audiodev=%s\n", name,
--                  QTAILQ_FIRST(&audio_states)->dev->id);
--        }
--        return QTAILQ_FIRST(&audio_states);
+     if (!a->mixer) {
+-        return hda_audio_init(hda, &micro_nomixemu);
 -    } else {
--        /* legacy implicit initialization */
--        head = audio_handle_legacy_opts();
--        /*
--         * In case of legacy initialization, all Audiodevs in the list will have
--         * the same configuration (except the driver), so it doesn't matter which
--         * one we chose.  We need an Audiodev to set up AudioState before we can
--         * init a driver.  Also note that dev at this point is still in the
--         * list.
--         */
--        dev = QSIMPLEQ_FIRST(&head)->dev;
--        audio_validate_opts(dev, &error_abort);
-+    if (!dev) {
-+        error_setg(&error_abort, "Mandatory audiodev parameter required");
+-        return hda_audio_init(hda, &micro_mixemu);
++        desc = &micro_mixemu;
      }
- 
-+    drvname = AudiodevDriver_str(dev->driver);
 +
-     s = g_new0(AudioState, 1);
-     s->dev = dev;
- 
-@@ -1763,37 +1699,7 @@ static AudioState *audio_init(Audiodev *dev, const char *name)
-         s->nb_hw_voices_in = 0;
-     }
- 
--    if (drvname) {
--        driver = audio_driver_lookup(drvname);
--        if (driver) {
--            done = !audio_driver_init(s, driver, true, dev);
--        } else {
--            dolog ("Unknown audio driver `%s'\n", drvname);
--        }
--    } else {
--        for (i = 0; audio_prio_list[i]; i++) {
--            AudiodevListEntry *e = audiodev_find(&head, audio_prio_list[i]);
--            driver = audio_driver_lookup(audio_prio_list[i]);
--
--            if (e && driver) {
--                s->dev = dev = e->dev;
--                audio_validate_opts(dev, &error_abort);
--                done = !audio_driver_init(s, driver, false, dev);
--                if (done) {
--                    e->dev = NULL;
--                    break;
--                }
--            }
--        }
--    }
--    audio_free_audiodev_list(&head);
--
--    if (!done) {
--        driver = audio_driver_lookup("none");
--        done = !audio_driver_init(s, driver, false, dev);
--        assert(done);
--        dolog("warning: Using timer based audio emulation\n");
--    }
-+    audio_driver_init(s, audio_driver_lookup(drvname), dev);
- 
-     if (dev->timer_period <= 0) {
-         s->period_ticks = 1;
-@@ -2120,7 +2026,7 @@ void audio_init_audiodevs(void)
-     AudiodevListEntry *e;
- 
-     QSIMPLEQ_FOREACH(e, &audiodevs, next) {
--        audio_init(e->dev, NULL);
-+        audio_init(e->dev);
-     }
++    hda_audio_init(hda, desc, errp);
  }
  
-@@ -2133,7 +2039,7 @@ static void audio_init_dummy(const char *id)
-     dev->id = g_strdup(id);
+ static void hda_audio_base_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+index e77552363a4c..a17002812240 100644
+--- a/hw/audio/intel-hda.c
++++ b/hw/audio/intel-hda.c
+@@ -70,9 +70,7 @@ static void hda_codec_dev_realize(DeviceState *qdev, Error **errp)
+         return;
+     }
+     bus->next_cad = dev->cad + 1;
+-    if (cdc->init(dev) != 0) {
+-        error_setg(errp, "HDA audio init failed");
+-    }
++    cdc->init(dev, errp);
+ }
  
-     audio_validate_opts(dev, &error_abort);
--    audio_init(dev, NULL);
-+    audio_init(dev);
+ static void hda_codec_dev_unrealize(DeviceState *qdev)
+diff --git a/hw/audio/intel-hda.h b/hw/audio/intel-hda.h
+index f78c1833e341..8d710eee5d66 100644
+--- a/hw/audio/intel-hda.h
++++ b/hw/audio/intel-hda.h
+@@ -31,7 +31,7 @@ struct HDACodecBus {
+ struct HDACodecDeviceClass {
+     DeviceClass parent_class;
  
-     e->dev = dev;
-     QSIMPLEQ_INSERT_TAIL(&audiodevs, e, next);
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 7ba71ebd3435..b2255319e347 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -31,14 +31,6 @@ backend settings instead of environment variables.  To ease migration to
- the new format, the ``-audiodev-help`` option can be used to convert
- the current values of the environment variables to ``-audiodev`` options.
- 
--Creating sound card devices and vnc without ``audiodev=`` property (since 4.2)
--''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
--
--When not using the deprecated legacy audio config, each sound card
--should specify an ``audiodev=`` property.  Additionally, when using
--vnc, you should specify an ``audiodev=`` property if you plan to
--transmit audio through the VNC protocol.
--
- ``-chardev`` backend aliases ``tty`` and ``parport`` (since 6.0)
- ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
- 
-diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index 086ba3edb042..f9eea4dda327 100644
---- a/docs/about/removed-features.rst
-+++ b/docs/about/removed-features.rst
-@@ -346,6 +346,14 @@ needs two devices (``-device intel-hda -device hda-duplex``) and
- pcspk-audiodev=<name>``.  And ``AC97`` and ``ES1370`` now have to be
- specified in uppercase.
- 
-+Creating sound card devices and vnc without ``audiodev=`` property (removed in 7.1)
-+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-+
-+When not using the deprecated legacy audio config, each sound card
-+should specify an ``audiodev=`` property.  Additionally, when using
-+vnc, you should specify an ``audiodev=`` property if you plan to
-+transmit audio through the VNC protocol.
-+
- 
- QEMU Machine Protocol (QMP) commands
- ------------------------------------
+-    int (*init)(HDACodecDevice *dev);
++    void (*init)(HDACodecDevice *dev, Error **errp);
+     void (*exit)(HDACodecDevice *dev);
+     void (*command)(HDACodecDevice *dev, uint32_t nid, uint32_t data);
+     void (*stream)(HDACodecDevice *dev, uint32_t stnr, bool running, bool output);
 -- 
 2.35.1
 

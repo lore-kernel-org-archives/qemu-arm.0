@@ -1,163 +1,231 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2434553lfk;
-        Mon, 25 Apr 2022 07:42:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwMF9JhEB/bvApHgFvGe1ci+gkVgrzJre1gAI/3F5Y1P9s+g1Fp8OPiaNkGJGATmTJyWxGP
-X-Received: by 2002:a5b:70b:0:b0:648:8079:7657 with SMTP id g11-20020a5b070b000000b0064880797657mr2087943ybq.25.1650897724594;
-        Mon, 25 Apr 2022 07:42:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650897724; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2534035lfk;
+        Mon, 25 Apr 2022 10:07:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxk6ghqM0agLkJ3TUV2aFeOu+7lou+Qr3BPIxXnQRd0eOQU2dP8cZKTy8zbmn8+HLQV0KGX
+X-Received: by 2002:a25:d4c6:0:b0:648:75a5:2172 with SMTP id m189-20020a25d4c6000000b0064875a52172mr3853843ybf.319.1650906443262;
+        Mon, 25 Apr 2022 10:07:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650906443; cv=none;
         d=google.com; s=arc-20160816;
-        b=lCltzi2/29jWms2spj5kkPxJjhxT30nL4MwLs9ebepI5IwWORijDj0rxhojQPNTJNe
-         3kvFjViVZtBU04ZJzvIsnEYQlRVtPd3g2Ny6irO3iVG6n+eIuUAe04aU/cKBOFtThoGx
-         CnbD3V9eEUtgbmh6Yz5ZsTObBFm1bjeGcl3vwC5376i++t/glVPWc6xJf38ryH3GUkMg
-         Z/KRMvMkVvjTUZAiDR2lnZY0HrnQ+an/x6FM0GSS4cSPvao0fgbecEySvikW1ebsRAdy
-         HBHNxr3oXhoVJ8/BVYgQvp1s5LCjgoh+ePbd5gvc/FUhqsTLa4aBsTEGg3vHPMj4HGAe
-         gHAA==
+        b=aAaQVZiV29FC/WOfEwCy7Lc97KIW1GQxNjO9fzIW4aVl3H6CoDkk9uDkKl5slUedgd
+         +P7fgVQhIpucoCktYMXJ+1Mv5gaqgZpwttbK/GKyNbSsHF5Qy2iipehxJIDiRCJ/SJnW
+         RybD4dW5gfz0lxxGKdEpsSZ54kYDOCgFPdfX6W3MpaHGg7WLJGrMTXiXemOGPeczR+6j
+         8L/iLJCMMdR1SnXDN6fCpneOzjEGz5iJOWTiM06t1vkq8uhA2Hb1bi0jEYXSB8G+TXCC
+         h+MqlLi8aNtx3r8kA7d60yK8GC1XdrsOgmHLrtDymOFFTtgE4fkQXblLXyEY5ogQL478
+         7DyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=zshg/OCVopnMPA6eZ3n/Mx0VJ+8ymEGS4+cSznkK9HA=;
-        b=0z8aOmWdocpX9/V6vRxIup844jW059LklcgYLkRgAU3ogqbrAxiuEz0OJtxSL9QqK5
-         fDMffeLE/1OunLBcmit4K4Ybz8bbXQma/VSkV+X8hDotqcMyKlB6Qy5WUh7c6/7J5XjY
-         Zkgtr4spUuOUcwpAfPx657W5xUwdmSi3KmeYjclTCGmaP3SlwciVXrEDiK+32TZQ/ktT
-         8R5ioOo/Y1BkGlfmRGLKu52Y68+AkEmrNkiEe1V05TcGP1ONWRecEeeE76simSaKBFEF
-         h+cQdJ/3JGly6XoQrsKrEQJ8+qt2LF2bmusvRm6C6cPTGmyP/kIYOHZ59cevhJzpfK6P
-         l78Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:user-agent:mime-version:date:message-id;
+        bh=XvANkJSc9KDShzFojlFqME8qJ0elavpxhqFzIpzX5F8=;
+        b=FKHor3/UhEAMRzpihAm/UGU2bJF0YuuQ1NRmOcV+as+91aLjNDil3rbnaMDpEW/j1H
+         rIamyThqycyNCeQcj5wdms1wAehvqVOabNXMEchwHq91qAsGXonHiRffC/3EHo2m3/2m
+         Fl9zITBKrnKg/wi1v+/st/u86a48iML+3Sa6DiwISFb7+9RXBMpWdRHEk11HUyS+b/EO
+         8UIvLDFZIzVxPAWY6TV14H3Nyh/e2qsZd7crjCZFlPtx6QaJ7rJAsdNMlusMXav4luZA
+         3rm8ngrE3661oJ20Zz2fS2G3qHVwXWLmFLhmSjmQ0LFoAsjD8wGnWZS3gNFS6rJ1572y
+         J9Ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cptRP1RY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 131-20020a250d89000000b006484849b665si4259935ybn.671.2022.04.25.07.42.04
+        by mx.google.com with ESMTPS id d126-20020a254f84000000b00641108deecasi10402234ybb.321.2022.04.25.10.07.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 07:42:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Apr 2022 10:07:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cptRP1RY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47086 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42382 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nizud-0008Gs-PR
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 10:42:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36574)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nj2BG-0005xC-Kd
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 13:07:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51324)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nizik-0002Yj-Bb
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 10:29:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:29328)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nj2Ag-0005vD-1H; Mon, 25 Apr 2022 13:06:46 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:37422)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nizii-000546-Ma
- for qemu-devel@nongnu.org; Mon, 25 Apr 2022 10:29:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650896984;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=zshg/OCVopnMPA6eZ3n/Mx0VJ+8ymEGS4+cSznkK9HA=;
- b=cptRP1RYXryHTlXFFhQ8h0Hbob0BcEoaFYMXq3E7on7BGWLMSeifjq/bUf88Mj0aDdo0jU
- rSknhXJxXKWvCc8+XrL7Vn86AKlM8vQJ5Op4HMIMRLOA63YB+Co0qEQ4f0xAKZ9dOxtiVA
- ucIjvKK/fqXsgAHqBhfCusjAcLmTFMQ=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-643-CuGGWqoCPbuqYQ4wYnvQ_Q-1; Mon, 25 Apr 2022 10:29:35 -0400
-X-MC-Unique: CuGGWqoCPbuqYQ4wYnvQ_Q-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6442A1C05132;
- Mon, 25 Apr 2022 14:29:35 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.152])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8BBB1409B40C;
- Mon, 25 Apr 2022 14:29:34 +0000 (UTC)
-Date: Mon, 25 Apr 2022 15:29:32 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: LABBE Corentin <clabbe@baylibre.com>
-Subject: Re: [PATCH] hw/crypto: add Allwinner sun4i-ss crypto device
-Message-ID: <YmawTE9AfYxyaZoo@redhat.com>
-References: <20220410191238.760733-1-clabbe@baylibre.com>
- <CAFEAcA9L89oN5nfM4RRxyYPBMtwbH1VfO1FbnXFUyC+rmzk51A@mail.gmail.com>
- <YmWgn2OGoZ9Uyirh@Red> <YmZ1pCU+0bP/LFPU@redhat.com>
- <YmacD3eroYTnjUdx@Red>
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nj2Ad-0006ni-39; Mon, 25 Apr 2022 13:06:45 -0400
+Received: from [2a00:23c4:8ba2:c800:3cf5:fb4b:b388:106c]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nj294-0005l1-Ed; Mon, 25 Apr 2022 18:05:10 +0100
+Message-ID: <3437c265-0ed1-0f62-3115-6b681eac9784@ilande.co.uk>
+Date: Mon, 25 Apr 2022 18:05:56 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <YmacD3eroYTnjUdx@Red>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Content-Language: en-US
+To: Martin Kletzander <mkletzan@redhat.com>, qemu-devel@nongnu.org
+References: <cover.1650874791.git.mkletzan@redhat.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8ba2:c800:3cf5:fb4b:b388:106c
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 00/18] RFC: Remove deprecated audio features
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: b.galvani@gmail.com, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7QKqkaWwZLhZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, libvir-list@redhat.com,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Darren Kenny <darren.kenny@oracle.com>, Bandan Das <bsd@redhat.com>,
+ qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>, Thomas Huth <huth@tuxfamily.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jpdSdHkCyOMi
 
-On Mon, Apr 25, 2022 at 03:03:11PM +0200, LABBE Corentin wrote:
-> diff --git a/crypto/hash-nettle.c b/crypto/hash-nettle.c
-> index 1ca1a41062..b9342b4fe1 100644
-> --- a/crypto/hash-nettle.c
-> +++ b/crypto/hash-nettle.c
-> @@ -26,10 +26,22 @@
->  #include <nettle/sha.h>
->  #include <nettle/ripemd160.h>
->  
-> +#ifndef nettle_sha256_compress
-> +#define nettle_sha256_compress _nettle_sha256_compress
-> +void _nettle_sha256_compress(uint32_t *state, const uint8_t *input, const uint32_t *k);
-> +#endif
-> +
-> +#ifndef nettle_sha512_compress
-> +#define nettle_sha512_compress _nettle_sha512_compress
-> +void _nettle_sha512_compress(uint32_t *state, const uint8_t *input, const uint32_t *k);
-> +#endif
+On 25/04/2022 09:21, Martin Kletzander wrote:
 
-The 'nettle_sha256_compress' function doesn't exist in any header file
-from nettle that I've looked at.
+> I wanted to deal with https://bugzilla.redhat.com/2043498 and I got a
+> suggesstion that removing deprecated features could actually make it
+> easier to propagate the error.  In the end (last patch) it turns out the
+> error is still just reported with error_fatal, so it probably is not
+> really needed, but I really wanted to dig into QEMU more and learn some
+> of the internals for quite some time now.  So I used the opportunity.
+> The one-liner ended up being an 18 patch series which was, for someone
+> who has just one commit in QEMU codebase, a pretty challenging task.
+> Although I tried my best to do things properly, I am not sure whether I
+> handled everything correctly, hence the RFC.
+> 
+> Any comments are very much appreciated.  Thanks and have a nice day ;)
+> 
+> Martin Kletzander (18):
+>    hw/audio: Remove -soundhw support
+>    hw/input/tsc210x: Extract common init code into new function
+>    hw/audio: Simplify hda audio init
+>    hw/audio/lm4549: Add errp error reporting to init function
+>    tests/qtest: Specify audiodev= and -audiodev
+>    ui/vnc: Require audiodev=
+>    Introduce machine's default-audiodev property
+>    audio: Add easy dummy audio initialiser
+>    hw/display/xlnx_dp.c: Add audiodev property
+>    hw/input/tsc210x.c: Support machine-default audiodev with fallback
+>    hw/arm: Support machine-default audiodev with fallback
+>    hw/ppc: Support machine-default audiodev with fallback
+>    audio: Make AUD_register_card fallible and require audiodev=
+>    audio: Require AudioState in AUD_add_capture
+>    audio: Be more strict during audio backend initialisation
+>    audio: Remove legacy audio environment variables and options
+>    audio: Remove unused can_be_default
+>    audio/spiceaudio: Fail initialisation when not using spice
+> 
+>   audio/alsaaudio.c                             |   1 -
+>   audio/audio.c                                 | 204 +++----
+>   audio/audio.h                                 |   5 +-
+>   audio/audio_int.h                             |   1 -
+>   audio/audio_legacy.c                          | 555 ------------------
+>   audio/coreaudio.m                             |   1 -
+>   audio/dbusaudio.c                             |   1 -
+>   audio/dsoundaudio.c                           |   1 -
+>   audio/jackaudio.c                             |   1 -
+>   audio/meson.build                             |   1 -
+>   audio/noaudio.c                               |   1 -
+>   audio/ossaudio.c                              |   1 -
+>   audio/paaudio.c                               |   1 -
+>   audio/sdlaudio.c                              |   1 -
+>   audio/spiceaudio.c                            |   3 +-
+>   audio/wavaudio.c                              |   1 -
+>   docs/about/deprecated.rst                     |  24 -
+>   docs/about/removed-features.rst               |  27 +
+>   docs/qdev-device-use.txt                      |  21 +-
+>   docs/replay.txt                               |   2 +-
+>   hw/arm/integratorcp.c                         |   8 +-
+>   hw/arm/musicpal.c                             |   8 +-
+>   hw/arm/omap2.c                                |  11 +-
+>   hw/arm/realview.c                             |   3 +
+>   hw/arm/spitz.c                                |  10 +-
+>   hw/arm/versatilepb.c                          |   3 +
+>   hw/arm/vexpress.c                             |   3 +
+>   hw/arm/xlnx-zcu102.c                          |   4 +
+>   hw/arm/z2.c                                   |  12 +-
+>   hw/audio/ac97.c                               |   9 +-
+>   hw/audio/adlib.c                              |   9 +-
+>   hw/audio/cs4231a.c                            |   8 +-
+>   hw/audio/es1370.c                             |   8 +-
+>   hw/audio/gus.c                                |   6 +-
+>   hw/audio/hda-codec.c                          |  37 +-
+>   hw/audio/intel-hda.c                          |  25 +-
+>   hw/audio/intel-hda.h                          |   2 +-
+>   hw/audio/lm4549.c                             |   7 +-
+>   hw/audio/lm4549.h                             |   3 +-
+>   hw/audio/meson.build                          |   1 -
+>   hw/audio/pcspk.c                              |  15 +-
+>   hw/audio/pl041.c                              |   2 +-
+>   hw/audio/sb16.c                               |   9 +-
+>   hw/audio/soundhw.c                            | 177 ------
+>   hw/audio/wm8750.c                             |   5 +-
+>   hw/core/machine.c                             |  23 +
+>   hw/display/xlnx_dp.c                          |  12 +-
+>   hw/input/tsc210x.c                            |  79 ++-
+>   hw/ppc/prep.c                                 |   4 +
+>   hw/usb/dev-audio.c                            |   5 +-
+>   include/hw/audio/soundhw.h                    |  15 -
+>   include/hw/boards.h                           |   1 +
+>   qemu-options.hx                               |  37 --
+>   .../codeconverter/test_regexps.py             |   1 -
+>   softmmu/qdev-monitor.c                        |   2 -
+>   softmmu/vl.c                                  |  10 -
+>   tests/qtest/ac97-test.c                       |   3 +-
+>   tests/qtest/es1370-test.c                     |   3 +-
+>   tests/qtest/fuzz/generic_fuzz_configs.h       |   6 +-
+>   tests/qtest/intel-hda-test.c                  |  15 +-
+>   ui/vnc.c                                      |  15 +-
+>   61 files changed, 329 insertions(+), 1140 deletions(-)
+>   delete mode 100644 audio/audio_legacy.c
+>   delete mode 100644 hw/audio/soundhw.c
+>   delete mode 100644 include/hw/audio/soundhw.h
 
-The '_nettle_sha256_compress' function exists as a symbol in the .so
-library, but it is clearly not intended for public usage:
+Thanks for the tidy-up! I'm not too familiar with the audio code, however one thing I 
+noticed is that in patch 11 you are using qdev_prop_set_string() to set the audiodev 
+for the machines.
 
-$ nm -a -D /usr/lib64/libnettle.so | grep sha256_compress
-0000000000027730 T _nettle_sha256_compress@@NETTLE_INTERNAL_8_4
+For CharDevs there already exists a qdev_prop_set_chr() function which is used to 
+assign the chardev backend to the device, so I'm wondering if it makes sense to add a 
+similar qdev_prop_set_audiodev() function in the same way? Then if the method of 
+referencing the audiodev from the device ever changes from being a string containing 
+the name, it won't require updating all of the callers.
 
-So this #define magic is definitely not something we can do.
+Finally a quick glance at the tsc210x and lm4549 devices indicates that they are 
+using global device _init() functions which shouldn't really be used in modern 
+implementations. If you are interested in QOMify-ing these devices as part of this 
+work, then I can certainly help provide some pointers for getting started.
 
-IOW, unless I'm missing something, I don't think we can even
-use nettle for your desired goal, which leaves us no impl at
-all.
 
+ATB,
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+Mark.

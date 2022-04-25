@@ -1,57 +1,57 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2214188lfk;
-        Mon, 25 Apr 2022 01:27:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwI+s8Xv6QGI5R/p+HgRsnQqSZhZwTgR3umzq2zBMakzCUr05fqArZdGZcUcx7zwKQYmtc8
-X-Received: by 2002:a05:622a:1b8d:b0:2f2:f4a6:d9dd with SMTP id bp13-20020a05622a1b8d00b002f2f4a6d9ddmr11195636qtb.242.1650875242832;
-        Mon, 25 Apr 2022 01:27:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650875242; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2214222lfk;
+        Mon, 25 Apr 2022 01:27:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJymvX1zLxjF11gzj6soUElTN8WimiEdvbtZ3ASphRKwOwVPNdKqsFhkHWiQl9+iaEn56zCD
+X-Received: by 2002:a05:622a:13c8:b0:2f3:5421:d64d with SMTP id p8-20020a05622a13c800b002f35421d64dmr11159157qtk.43.1650875247650;
+        Mon, 25 Apr 2022 01:27:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650875247; cv=none;
         d=google.com; s=arc-20160816;
-        b=RIah6rlvMSnkSjJJFxJX15vLxUBG1OETj+Z5XhVu0mHIYOfO0Hv4UMSW5PcMaYDcAV
-         qCq2djDBkhzoTg9v87eDEMhqvreGM+FwTVemBtry2zME8+LpaJFzFSyY8I9H0jmDrIXZ
-         lWTrbAekBNxQwS45+uSMqStocfNyE59akVAms+BlGRpnhIz9xma27h0LhqxSE5FYZeOI
-         M4UTvxw2/ul5zUHKpzuo7R6nXUh81p8YOzBXvRxH5rNAGo2Q27RiOdCLV3zOF6Zp3lqo
-         Q0Jo/NJ5DOmbRBp8fo4WbVHN2q+698V1jEqwupOKa8woEZ2YwAO2T3n5hUpmxTLCeSJa
-         AmAQ==
+        b=fKwazp5AMcFRRDNwu1N6w4b29l8GdbZCD8cxqW0y9OnKEJK2br8x9OgjQoeiVk80Ag
+         E6d6VKkzQReLNQbpw8bJChtFhXOADAg1nx+LrelGDQWAzVA+MzEb90lH9chOAWL/aiVf
+         OexJIf0aMu/PDeoFfdP7KJfE27sSSkZvB9CwtxHezPCYTCjHu2AyWFmosshPFLLDF5ha
+         ZyODYxwc4Vt/G3bfW/ms6J07fHUk5NjtcG6rtDmxx3v9/Jw6rwsuvaxuIe6/owX6L1fP
+         4pevypkmz6A09Je730KvBq0pKJiJPWG6RiN5vcotQJfIAxCkUQ3XrCuV140O2VDXZ6hi
+         y+7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=hI7bzsmky1WaiM9g+64rTyViI5OA6WYELvRET0z3sHg=;
-        b=K4DEJeqzmfGLlG8DK1B7SSG/bHhmD3LmUiT1B2S2AW4adyAgH7BF2vk9beVErkb80Q
-         JpYaiAe9I77aAAbxcLctuDLnUtIkGFgWiRtAcfwuynUE1AfLuJierYUsBllicNw2zw74
-         Whpd2cpNHC2A6dGLaDzutsC+44fwCINZ5t5OqgoZQ3bOy1ehdRkCf5A2j9Gf3V2UpztP
-         QGZz3viRbaMbbtrKzxXsjmxzedW6xqzjOAEQNw+jx7cIQB1rKJvWsxIQgQoIBnhPwXp9
-         gd5FQ+zEbVAwJ9bNlzfY4pAbQCwq4qp8CmV4H1Dt51/XcuoEX7a5WCHti530WhN7MG8f
-         NV6Q==
+        bh=LP+dkidDrA7cfJYHAisZQeWSrGU9PlpHAtpMlIl/SfU=;
+        b=D09VINzlEr47oAhkO+XlUk9tvD13Ef6HZhm1AN1Y551dpNoUcyQrTvqZ/4N4eUwR5x
+         DiwQGh482RYPn85Zn82G9e9P7q2hbw/zTqSrudD/pCg8VzUfuiUUNTa5hhL/61r13PDT
+         9GVT/3sj6s8QuR2BzYFvy2LBN26q2cUK8IXWNCwzAR6KCJgMrnJ+wfkOt40JW9ZKjCWz
+         j1Bxb+7y478Qpk/qHX5OvDdIRwmuC1fm6pJMXx1oWkY92nlZJ9GMFvC0IoxkUCTkCQRS
+         JdngUgEh8YZas+3NGJBuMZohcIk9O+zZpKcCDo0X4EUbqPZ8wdBKGtuz2WKUNF9b0jRn
+         Dryg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E1AmNwP1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=W2X4SkT9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iu15-20020ad45ccf000000b004442b91d752si540683qvb.66.2022.04.25.01.27.22
+        by mx.google.com with ESMTPS id jt8-20020a05621427e800b0044618eeafc8si4364309qvb.107.2022.04.25.01.27.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 01:27:22 -0700 (PDT)
+        Mon, 25 Apr 2022 01:27:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E1AmNwP1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=W2X4SkT9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47322 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47338 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1niu42-0000zA-AY
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 04:27:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40126)
+	id 1niu44-0000zZ-PS
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 04:27:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40136)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu06-0006UP-FW
+ id 1niu06-0006Uj-NL
  for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:53231)
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:60331)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
- id 1niu01-0002fM-PX
+ id 1niu01-0002f2-QP
  for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1650874992;
@@ -59,51 +59,52 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hI7bzsmky1WaiM9g+64rTyViI5OA6WYELvRET0z3sHg=;
- b=E1AmNwP1bR58CRtLy4uMz/ni+1rgsUQwTcIC4xTDIuCzoI98+Jb8zHAJrtO4GZe1DoM+Yn
- SF9CDd8WzZ0sxpHxhQbwlqJWH64ZprCcr0vOCEwb+z2+SQIcSijthVY5wT/kOUc09/8Zz/
- MW5Hpl1ey/dM5TgPHt5EiZEv+rzsNAA=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=LP+dkidDrA7cfJYHAisZQeWSrGU9PlpHAtpMlIl/SfU=;
+ b=W2X4SkT9/CzP9Ljv4Et/cXO+X0Y3bcBkk5HS82pe8HatLJQ303SNCEUOdtnwL6ziky8t+p
+ sT2ocww2LDe9UA76NCdetLX+9uAkTTUtW1eZb4irsvsn1l9iqHF0/AMUS+C1hqDPQD9tgI
+ 4Ne5p/DbUUGHoJNvru3LY9cww8nr7TY=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-49-S4_3_mvePVOx_-zZ9fpZNA-1; Mon, 25 Apr 2022 04:22:07 -0400
-X-MC-Unique: S4_3_mvePVOx_-zZ9fpZNA-1
-Received: by mail-wm1-f69.google.com with SMTP id
- m125-20020a1c2683000000b00391893a2febso6461316wmm.4
- for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:07 -0700 (PDT)
+ us-mta-523-3NzVTrl8OZGt-HCW4NULiw-1; Mon, 25 Apr 2022 04:22:04 -0400
+X-MC-Unique: 3NzVTrl8OZGt-HCW4NULiw-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ l11-20020adfc78b000000b0020abc1ce7e4so2424172wrg.1
+ for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=hI7bzsmky1WaiM9g+64rTyViI5OA6WYELvRET0z3sHg=;
- b=rN476h4TpC7ATqFfm7kyibfCV4wcqUzXFvA0Qc8UaXbLcBbUTPuDiGIZ3HpQbw1L+M
- scVu0lQG5kum9M2j2+iq7LZZ/WPXcDX1lT9jm/J/dviENq1xZ1JLGp2KbH4yJKFGuZGG
- Jp9pX8bdlQDoXlBkFTOKTBEAwfarpbImQiGg3WRp/yq1kOCTf7TB0xxzomWNDswG2dP1
- Cjb/zzWLpnKjkuTLsxfbXvKKqroNAhaygjsBt/8lu/4T1rszsQ0mwPT6SvVM2RD5EPmJ
- ynkpz/N8SXpFypctv23ZAUaZuZ6zz+p3TP5G0USL4HRgMpWtfrnAk7rVJ6oAz6Zy901V
- 9TsA==
-X-Gm-Message-State: AOAM530Xd7WjO2PvfneSD0c3J9KGl1cg2Nl2Nb/3Nn0WHYgEtvKV80ZL
- a5s6sETV+WV7m/j3YnTwXXcaeC/dd18CCgnrOYparMm9Ft6UxBuHwsrudsnqM0ZlJ3SsOYoZgzB
- i582nWiFov9Z5GfI=
-X-Received: by 2002:a05:6000:1e0a:b0:20a:be21:a20 with SMTP id
- bj10-20020a0560001e0a00b0020abe210a20mr13322002wrb.214.1650874926593; 
- Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
-X-Received: by 2002:a05:6000:1e0a:b0:20a:be21:a20 with SMTP id
- bj10-20020a0560001e0a00b0020abe210a20mr13321970wrb.214.1650874926384; 
- Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
+ bh=LP+dkidDrA7cfJYHAisZQeWSrGU9PlpHAtpMlIl/SfU=;
+ b=WtPykElShU14/3s1gBk17dDYCmkLFMwQUx+Y9XouimehN5t1SzwKx3zq3ltPfLTEHC
+ qPVfWRSR/3ivgLCgtwKq5bONfvPQvQHrnNfSdOyxzzDK4PO3aTvGBUoyB0U+GLVMj8er
+ bRcfUSBB1WYnKEKGnPW5/v7YZtWYRLmLciFvO3eYPyJoR5YHDLR5opWLfDM5kC2Yecoo
+ 0KzJAT7aWlqbIG2K4YFAdM09dV300tP+HlicFTrEzWG2bXycyzDNwI0gxLjwEqv0tQQa
+ VLE+0fZ4WfdDfEGvqOVaMqyFqTI2xM3LdM1AUkshpZRH6TTb8XubB6iMPvnCzCJ5Dber
+ OGTg==
+X-Gm-Message-State: AOAM531WgdaCgqoGkSPTe4v8awbhyWB36GzfBKqBYobxkwa4ql10+MDr
+ dTwmnQep7IQLySzlkbZVVM1DIHesqdsTdOToTHEYbS/T5a70Q37IOp7fOV5SQtPHENLckeTqtCt
+ 0Wf/rdc5VdStn+go=
+X-Received: by 2002:a7b:c155:0:b0:38e:b840:c99e with SMTP id
+ z21-20020a7bc155000000b0038eb840c99emr24205908wmi.201.1650874923791; 
+ Mon, 25 Apr 2022 01:22:03 -0700 (PDT)
+X-Received: by 2002:a7b:c155:0:b0:38e:b840:c99e with SMTP id
+ z21-20020a7bc155000000b0038eb840c99emr24205866wmi.201.1650874923491; 
+ Mon, 25 Apr 2022 01:22:03 -0700 (PDT)
 Received: from wheatley.localdomain (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- z7-20020a7bc7c7000000b0038eaf85b0absm8065953wmk.20.2022.04.25.01.22.04
+ s2-20020adfa282000000b0020ad9c40555sm2790490wra.94.2022.04.25.01.22.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
+ Mon, 25 Apr 2022 01:22:02 -0700 (PDT)
 Received: from wheatley.redhat.com (wheatley.k8r.cz [127.0.0.1])
- by wheatley.localdomain (Postfix) with ESMTP id 99E2967B1B66;
+ by wheatley.localdomain (Postfix) with ESMTP id 23B7667B1B59;
  Mon, 25 Apr 2022 10:22:02 +0200 (CEST)
 From: Martin Kletzander <mkletzan@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 17/18] audio: Remove unused can_be_default
-Date: Mon, 25 Apr 2022 10:22:00 +0200
-Message-Id: <31616bc6be45ba26e96beb54f7278d618f15a5fe.1650874791.git.mkletzan@redhat.com>
+Subject: [PATCH 04/18] hw/audio/lm4549: Add errp error reporting to init
+ function
+Date: Mon, 25 Apr 2022 10:21:47 +0200
+Message-Id: <be1bf295b3c6a3dee272b4b4e8115e37c2a772b5.1650874791.git.mkletzan@redhat.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
 References: <cover.1650874791.git.mkletzan@redhat.com>
@@ -117,7 +118,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,158 +150,58 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X6RO9t0KmBd5
+X-TUID: AMd2/y7xBf5h
 
-Since there is no fallback mechanism and default-guessing this is now
-not used and can be safely removed.
+This will be used in future commit.
 
 Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
 ---
- audio/alsaaudio.c   | 1 -
- audio/audio_int.h   | 1 -
- audio/coreaudio.m   | 1 -
- audio/dbusaudio.c   | 1 -
- audio/dsoundaudio.c | 1 -
- audio/jackaudio.c   | 1 -
- audio/noaudio.c     | 1 -
- audio/ossaudio.c    | 1 -
- audio/paaudio.c     | 1 -
- audio/sdlaudio.c    | 1 -
- audio/wavaudio.c    | 1 -
- 11 files changed, 11 deletions(-)
+ hw/audio/lm4549.c | 3 ++-
+ hw/audio/lm4549.h | 3 ++-
+ hw/audio/pl041.c  | 2 +-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index 4a61378cd757..edbee63f97c5 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -933,7 +933,6 @@ static struct audio_driver alsa_audio_driver = {
-     .init           = alsa_audio_init,
-     .fini           = alsa_audio_fini,
-     .pcm_ops        = &alsa_pcm_ops,
--    .can_be_default = 1,
-     .max_voices_out = INT_MAX,
-     .max_voices_in  = INT_MAX,
-     .voice_size_out = sizeof (ALSAVoiceOut),
-diff --git a/audio/audio_int.h b/audio/audio_int.h
-index 2a6914d2aa65..082b13247657 100644
---- a/audio/audio_int.h
-+++ b/audio/audio_int.h
-@@ -148,7 +148,6 @@ struct audio_driver {
-     void (*set_dbus_server) (AudioState *s, GDBusObjectManagerServer *manager);
- #endif
-     struct audio_pcm_ops *pcm_ops;
--    int can_be_default;
-     int max_voices_out;
-     int max_voices_in;
-     int voice_size_out;
-diff --git a/audio/coreaudio.m b/audio/coreaudio.m
-index 4695291621a3..e5612138a74b 100644
---- a/audio/coreaudio.m
-+++ b/audio/coreaudio.m
-@@ -673,7 +673,6 @@ static void coreaudio_audio_fini (void *opaque)
-     .init           = coreaudio_audio_init,
-     .fini           = coreaudio_audio_fini,
-     .pcm_ops        = &coreaudio_pcm_ops,
--    .can_be_default = 1,
-     .max_voices_out = 1,
-     .max_voices_in  = 0,
-     .voice_size_out = sizeof (coreaudioVoiceOut),
-diff --git a/audio/dbusaudio.c b/audio/dbusaudio.c
-index a3d656d3b017..bbcad7051413 100644
---- a/audio/dbusaudio.c
-+++ b/audio/dbusaudio.c
-@@ -638,7 +638,6 @@ static struct audio_driver dbus_audio_driver = {
-     .fini            = dbus_audio_fini,
-     .set_dbus_server = dbus_audio_set_server,
-     .pcm_ops         = &dbus_pcm_ops,
--    .can_be_default  = 1,
-     .max_voices_out  = INT_MAX,
-     .max_voices_in   = INT_MAX,
-     .voice_size_out  = sizeof(DBusVoiceOut),
-diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index 3fb67ec3eed4..311e34218465 100644
---- a/audio/dsoundaudio.c
-+++ b/audio/dsoundaudio.c
-@@ -721,7 +721,6 @@ static struct audio_driver dsound_audio_driver = {
-     .init           = dsound_audio_init,
-     .fini           = dsound_audio_fini,
-     .pcm_ops        = &dsound_pcm_ops,
--    .can_be_default = 1,
-     .max_voices_out = INT_MAX,
-     .max_voices_in  = 1,
-     .voice_size_out = sizeof (DSoundVoiceOut),
-diff --git a/audio/jackaudio.c b/audio/jackaudio.c
-index 5bdf3d7a78d6..fd2d2fd5acb7 100644
---- a/audio/jackaudio.c
-+++ b/audio/jackaudio.c
-@@ -669,7 +669,6 @@ static struct audio_driver jack_driver = {
-     .init           = qjack_init,
-     .fini           = qjack_fini,
-     .pcm_ops        = &jack_pcm_ops,
--    .can_be_default = 1,
-     .max_voices_out = INT_MAX,
-     .max_voices_in  = INT_MAX,
-     .voice_size_out = sizeof(QJackOut),
-diff --git a/audio/noaudio.c b/audio/noaudio.c
-index 84a6bfbb1c87..111aef4a24ce 100644
---- a/audio/noaudio.c
-+++ b/audio/noaudio.c
-@@ -135,7 +135,6 @@ static struct audio_driver no_audio_driver = {
-     .init           = no_audio_init,
-     .fini           = no_audio_fini,
-     .pcm_ops        = &no_pcm_ops,
--    .can_be_default = 1,
-     .max_voices_out = INT_MAX,
-     .max_voices_in  = INT_MAX,
-     .voice_size_out = sizeof (NoVoiceOut),
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index 8e075edb70d6..31b582e8e4b5 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -781,7 +781,6 @@ static struct audio_driver oss_audio_driver = {
-     .init           = oss_audio_init,
-     .fini           = oss_audio_fini,
-     .pcm_ops        = &oss_pcm_ops,
--    .can_be_default = 1,
-     .max_voices_out = INT_MAX,
-     .max_voices_in  = INT_MAX,
-     .voice_size_out = sizeof (OSSVoiceOut),
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index e91116f2396c..38f09017eb96 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
-@@ -928,7 +928,6 @@ static struct audio_driver pa_audio_driver = {
-     .init           = qpa_audio_init,
-     .fini           = qpa_audio_fini,
-     .pcm_ops        = &qpa_pcm_ops,
--    .can_be_default = 1,
-     .max_voices_out = INT_MAX,
-     .max_voices_in  = INT_MAX,
-     .voice_size_out = sizeof (PAVoiceOut),
-diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
-index 68a237b76b45..5177e31d9b4a 100644
---- a/audio/sdlaudio.c
-+++ b/audio/sdlaudio.c
-@@ -493,7 +493,6 @@ static struct audio_driver sdl_audio_driver = {
-     .init           = sdl_audio_init,
-     .fini           = sdl_audio_fini,
-     .pcm_ops        = &sdl_pcm_ops,
--    .can_be_default = 1,
-     .max_voices_out = INT_MAX,
-     .max_voices_in  = INT_MAX,
-     .voice_size_out = sizeof(SDLVoiceOut),
-diff --git a/audio/wavaudio.c b/audio/wavaudio.c
-index ac666335c783..4e176500fc92 100644
---- a/audio/wavaudio.c
-+++ b/audio/wavaudio.c
-@@ -208,7 +208,6 @@ static struct audio_driver wav_audio_driver = {
-     .init           = wav_audio_init,
-     .fini           = wav_audio_fini,
-     .pcm_ops        = &wav_pcm_ops,
--    .can_be_default = 0,
-     .max_voices_out = 1,
-     .max_voices_in  = 0,
-     .voice_size_out = sizeof (WAVVoiceOut),
+diff --git a/hw/audio/lm4549.c b/hw/audio/lm4549.c
+index 32b1481b5614..418041bc9c6c 100644
+--- a/hw/audio/lm4549.c
++++ b/hw/audio/lm4549.c
+@@ -276,7 +276,8 @@ static int lm4549_post_load(void *opaque, int version_id)
+     return 0;
+ }
+ 
+-void lm4549_init(lm4549_state *s, lm4549_callback data_req_cb, void* opaque)
++void lm4549_init(lm4549_state *s, lm4549_callback data_req_cb, void* opaque,
++                 Error **errp)
+ {
+     struct audsettings as;
+ 
+diff --git a/hw/audio/lm4549.h b/hw/audio/lm4549.h
+index aba9bb5b077c..61c3ab12dd33 100644
+--- a/hw/audio/lm4549.h
++++ b/hw/audio/lm4549.h
+@@ -36,7 +36,8 @@ typedef struct {
+ extern const VMStateDescription vmstate_lm4549_state;
+ 
+ 
+-void lm4549_init(lm4549_state *s, lm4549_callback data_req, void *opaque);
++void lm4549_init(lm4549_state *s, lm4549_callback data_req, void *opaque,
++                 Error **errp);
+ uint32_t lm4549_read(lm4549_state *s, hwaddr offset);
+ void lm4549_write(lm4549_state *s, hwaddr offset, uint32_t value);
+ uint32_t lm4549_write_samples(lm4549_state *s, uint32_t left, uint32_t right);
+diff --git a/hw/audio/pl041.c b/hw/audio/pl041.c
+index 03acd4fe344b..868dffbfd321 100644
+--- a/hw/audio/pl041.c
++++ b/hw/audio/pl041.c
+@@ -564,7 +564,7 @@ static void pl041_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* Init the codec */
+-    lm4549_init(&s->codec, &pl041_request_data, (void *)s);
++    lm4549_init(&s->codec, &pl041_request_data, (void *)s, errp);
+ }
+ 
+ static const VMStateDescription vmstate_pl041_regfile = {
 -- 
 2.35.1
 

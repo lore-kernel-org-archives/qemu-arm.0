@@ -1,99 +1,94 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2418947lfk;
-        Mon, 25 Apr 2022 07:18:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyPUthUEqNzyb6HsxRcJrqyyIsCUpuxs9FMcarPiUTmZZOP5utrTK8iZIr7YIW8yppUL2rV
-X-Received: by 2002:a0d:ec41:0:b0:2eb:54bb:85a9 with SMTP id r1-20020a0dec41000000b002eb54bb85a9mr17012903ywn.242.1650896323964;
-        Mon, 25 Apr 2022 07:18:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650896323; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2410557lfk;
+        Mon, 25 Apr 2022 07:07:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyWNCadBdy5ERvTQaPPIE9j3jApWvkKizRoWhqRdTDrc2J1Zdxm3BCaFFPMWy6N67y6Z1PG
+X-Received: by 2002:a37:9e91:0:b0:69c:739e:45c3 with SMTP id h139-20020a379e91000000b0069c739e45c3mr10303867qke.748.1650895640708;
+        Mon, 25 Apr 2022 07:07:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650895640; cv=none;
         d=google.com; s=arc-20160816;
-        b=iMmpomQtnKIbdnXzFXmI9e4pfzTm1lPjeoppN3QpozLUmMNUxKGKwGSLzjf+SYWJ1Q
-         VDqcf4etjD2LsB/rlw+FgKiRbzm+ZFjFeKJe4apy07tyPm/PvGXrGimrVzxT4n2YU/+L
-         x/+TEiofOlobRCC7wHbtZ9yoIb7Yr+YgvqElXZpgIXLGWhe+GtjvQloiapbtkZXPaPzl
-         RdmAhG3h3n6UBQw38HofzEjs4M1tgeZnPQ5pyNeHco5bN/GP3LOAk8kEKYmUCwjbdggQ
-         u+4zVJtm4v4RaD56NmLasgpTdk9VuGxOt3aUo4/lggQtFSQJTerrx68ReyIG46gaFCOR
-         b6KQ==
+        b=DjvDpG6Ci/brgO2V/AlFEDSq45kOEKx9YsrRvmn9+/2+YLFXTEERw8o95mcQul5lXE
+         NQJamBHIdyMhNevdQKXGAvHZriTpHEmCmlahONxI2YYcudcHF708Xw9N7eRhGvnJF1cH
+         5UemiCtOstVjkGh8sp0MbXU/Z0MXslNCk/YsVnZd4LB6NEo58+I7NXZ/Fbvw7jNNLcCH
+         HLqGmZBCoFdMXe/qFNZxqRLqodsVXKgoHW5CRbKwtILy7QDtVzT0C5AyE48YoaNUu9Na
+         E3FT6HTw/VX+3BzuBsOx9MsRl0YM0vY+A2iU5W29NwBa+ouvKcqDdfd/EFRIFJrE13MF
+         bBIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=ExwT8WzLcU8f19xNfeKZvAQG6E3ph+XMhoWT4DZe4W4=;
-        b=zFj6OTjnpaAQAsULPiFEa7CwJQxeLa0lO3H39R0tSZgTnhdbMJUzI22tpED72GRZi1
-         bwKuimLoGUgMzWSl7NIqBCwQPzlsgp91L9wuDR7rZq4pfsIELXEprbpH1gKvSGXrpoNF
-         BXlnAwt6m1o93PQ6F/FNgxe3E7kezPdv/lWFbr3679Lg5rzE/pDNg9buMtMHz16w/IAk
-         m4VaOTm8+p/tEnwCnJyofQyq5L/wD15ppq5fq0WPnR8npAqDWOsQIPlMiRWMVRQE++aF
-         62WECWLiVSiXtZ99lFjzDi2aNVSn64kpVnu6xUTo9yu3ceVqXIlduqUYCDzqBkVwvM+q
-         ioIA==
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=E3C+gBI48WxGj/Jukij1rbwm/6JHlrW0+q9QbsHmsTU=;
+        b=NyhSAsfgrBGx95hSJv5frlQEEZcal+K6Xk9e0Vg1HURqNijeiL1PNAbxHZRRxV6GuT
+         kyy6nP56dOIL5+3XEMyOsoBQAnXp+5JCD5rX9ixrttQJlYtRYoaxtKCkErMTC3KhuDZe
+         lC7GqbjBTDgglt3SPEi+puxPsqy+Cg28JOmARtXbyV96ivycs7EBWNoibrdKV6KItfsY
+         ar0qdVOsMoSD/zazzsNZbiu/OySK+jk+VrxnhfBh4efdpztmoQGVRnCzhNXPKZ76SAvb
+         ou178WBlr3XxsNnBdsEg6sReXMOylrWEcgbpRHjLQDHK+EmADKnUFUWglcmmWHdEFNYz
+         g1sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="RG7F/B8y";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="hh/wcRWz";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7-20020a81e107000000b002eb4477f46fsi9502537ywh.443.2022.04.25.07.18.43
+        by mx.google.com with ESMTPS id c5-20020a0561023c8500b0032a4032e618si1220960vsv.199.2022.04.25.07.07.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 07:18:43 -0700 (PDT)
+        Mon, 25 Apr 2022 07:07:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="RG7F/B8y";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="hh/wcRWz";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38610 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nizY1-0006ZN-JD
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 10:18:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60898)
+	id 1nizN2-0001R0-1c
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 10:07:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60128)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nizOh-0006jq-Rp
- for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:09:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:21979)
+ id 1nizMl-0001NO-2y
+ for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:07:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:35195)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nizOg-000232-4b
- for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:09:03 -0400
+ id 1nizMg-0001pc-QX
+ for qemu-arm@nongnu.org; Mon, 25 Apr 2022 10:07:01 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650895741;
+ s=mimecast20190719; t=1650895618;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ExwT8WzLcU8f19xNfeKZvAQG6E3ph+XMhoWT4DZe4W4=;
- b=RG7F/B8yi6wC9CGoQ4Om6y2A93aTDepBNLbaGrSsXRgkiVE9kcz5mLZfJ4gYbEJO93xT6+
- 41YZJmHZhG9fdcf/bOVIvO82dU9P581497VL9Kzkb0j6uT8S/0JUNfSL4ag+u19j7fjr3k
- KXjFKKEZlo7qL+pw5NUPQexwb/hwvIY=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=E3C+gBI48WxGj/Jukij1rbwm/6JHlrW0+q9QbsHmsTU=;
+ b=hh/wcRWzxCfxuDZXcteWSrRg/nHUksfZZD+MTsYGVLRuqT1YD27qMr5LdS4O37te7mQKrf
+ DV+MonZoqS5SFRQXQJuxdexTsL1XZ/ymIelVMg9H2wbZP6CxTSeNO8XZlwYoecAOKvaMdK
+ nsPO2+RB2G/YUrWZutq4Va+eaO3P0N8=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-455-olWat9NcP9un5TCHKNS6Zg-1; Mon, 25 Apr 2022 10:08:57 -0400
-X-MC-Unique: olWat9NcP9un5TCHKNS6Zg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
+ us-mta-373-YSorlpmcNO6CvzE2XpULJg-1; Mon, 25 Apr 2022 10:06:53 -0400
+X-MC-Unique: YSorlpmcNO6CvzE2XpULJg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D250D380673D;
- Mon, 25 Apr 2022 14:08:56 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3D96A805904;
+ Mon, 25 Apr 2022 14:06:23 +0000 (UTC)
 Received: from redhat.com (unknown [10.33.36.152])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 71D4314C1E80;
- Mon, 25 Apr 2022 14:08:52 +0000 (UTC)
-Date: Mon, 25 Apr 2022 15:08:50 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CF43D40D1B9B;
+ Mon, 25 Apr 2022 14:06:17 +0000 (UTC)
+Date: Mon, 25 Apr 2022 15:06:14 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Martin Kletzander <mkletzan@redhat.com>
-Subject: Re: [PATCH 04/18] hw/audio/lm4549: Add errp error reporting to init
- function
-Message-ID: <Ymarcq+U4gMdqia5@redhat.com>
+Subject: Re: [PATCH 07/18] Introduce machine's default-audiodev property
+Message-ID: <Ymaq1ouZVKD5kZfV@redhat.com>
 References: <cover.1650874791.git.mkletzan@redhat.com>
- <be1bf295b3c6a3dee272b4b4e8115e37c2a772b5.1650874791.git.mkletzan@redhat.com>
+ <49192ccd62fc98c474bb0b627a22cc28a634e8b8.1650874791.git.mkletzan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <be1bf295b3c6a3dee272b4b4e8115e37c2a772b5.1650874791.git.mkletzan@redhat.com>
+In-Reply-To: <49192ccd62fc98c474bb0b627a22cc28a634e8b8.1650874791.git.mkletzan@redhat.com>
 User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.2
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
@@ -134,20 +129,101 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nGMMRO6TFz12
+X-TUID: BMMjhCMBwt3P
 
-On Mon, Apr 25, 2022 at 10:21:47AM +0200, Martin Kletzander wrote:
-> This will be used in future commit.
+On Mon, Apr 25, 2022 at 10:21:50AM +0200, Martin Kletzander wrote:
+> Many machine types have default audio devices with no way to set the underlying
+> audiodev.  Instead of adding an option for each and every one of them this new
+> property can be used as a default during machine initialisation when creating
+> such devices.
 > 
 > Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
 > ---
->  hw/audio/lm4549.c | 3 ++-
->  hw/audio/lm4549.h | 3 ++-
->  hw/audio/pl041.c  | 2 +-
->  3 files changed, 5 insertions(+), 3 deletions(-)
+>  hw/core/machine.c   | 23 +++++++++++++++++++++++
+>  include/hw/boards.h |  1 +
+>  2 files changed, 24 insertions(+)
+> 
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index cb9bbc844d24..d055a126d398 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -596,6 +596,22 @@ static void machine_set_memdev(Object *obj, const char *value, Error **errp)
+>      ms->ram_memdev_id = g_strdup(value);
+>  }
+>  
+> +static char *machine_get_default_audiodev(Object *obj, Error **errp)
+> +{
+> +    MachineState *ms = MACHINE(obj);
+> +
+> +    return g_strdup(ms->default_audiodev);
+> +}
+> +
+> +static void machine_set_default_audiodev(Object *obj, const char *value,
+> +                                         Error **errp)
+> +{
+> +    MachineState *ms = MACHINE(obj);
+> +
+> +    g_free(ms->default_audiodev);
+> +    ms->default_audiodev = g_strdup(value);
+> +}
+> +
+>  HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)
+>  {
+>      int i;
+> @@ -867,6 +883,12 @@ static void machine_class_init(ObjectClass *oc, void *data)
+>      object_class_property_set_description(oc, "confidential-guest-support",
+>                                            "Set confidential guest scheme to support");
+>  
+> +    object_class_property_add_str(oc, "default-audiodev",
+> +                                  machine_get_default_audiodev,
+> +                                  machine_set_default_audiodev);
+> +    object_class_property_set_description(oc, "default-audiodev",
+> +                                          "Audiodev to use for default machine devices");
+> +
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Hmm, if we add this, people might reasonably question why this default
+audiodev can't be used for everything, instead of making other 'audiodev'
+parameter mandatory.
 
+For the x86 machines we have a property tied specifically to the PC
+speaker.
+
+  -machine ...,pcspk-audiodev=<name>
+
+
+If we assume that's the desired pattern, then every machine which has
+a built-in audio device should gain some  "{$device}-audiodev" proprerty
+where '$device' is some reasonable name for the built-in audio device
+of the machine.  This would work better if a machine ended up with
+two built-in audio devices and needed separate audiodevs for them.
+
+
+>      /* For compatibility */
+>      object_class_property_add_str(oc, "memory-encryption",
+>          machine_get_memory_encryption, machine_set_memory_encryption);
+> @@ -961,6 +983,7 @@ static void machine_finalize(Object *obj)
+>      g_free(ms->device_memory);
+>      g_free(ms->nvdimms_state);
+>      g_free(ms->numa_state);
+> +    g_free(ms->default_audiodev);
+>  }
+>  
+>  bool machine_usb(MachineState *machine)
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index d64b5481e834..5be1de50af03 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -346,6 +346,7 @@ struct MachineState {
+>       */
+>      MemoryRegion *ram;
+>      DeviceMemoryState *device_memory;
+> +    char *default_audiodev;
+>  
+>      ram_addr_t ram_size;
+>      ram_addr_t maxram_size;
+> -- 
+> 2.35.1
+> 
 
 With regards,
 Daniel

@@ -1,92 +1,115 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2095996lfk;
-        Sun, 24 Apr 2022 20:32:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz1son4GfR/H3O6mfYoJhhjE/K5eQYAsZk9TsRTP/WMI2u0/r1a5bri8Zs1IeBfhTDYeFMm
-X-Received: by 2002:a05:620a:25cc:b0:699:c303:83f5 with SMTP id y12-20020a05620a25cc00b00699c30383f5mr8949740qko.345.1650857571272;
-        Sun, 24 Apr 2022 20:32:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650857571; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2214188lfk;
+        Mon, 25 Apr 2022 01:27:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwI+s8Xv6QGI5R/p+HgRsnQqSZhZwTgR3umzq2zBMakzCUr05fqArZdGZcUcx7zwKQYmtc8
+X-Received: by 2002:a05:622a:1b8d:b0:2f2:f4a6:d9dd with SMTP id bp13-20020a05622a1b8d00b002f2f4a6d9ddmr11195636qtb.242.1650875242832;
+        Mon, 25 Apr 2022 01:27:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650875242; cv=none;
         d=google.com; s=arc-20160816;
-        b=gaP0EbnbknQoS1gL+PHQK7COZHXdkm5gDkmAWz+rEF9dYtxxeH9ET5tMoXChS9ot0K
-         UyIHv/RVS92D93ljO8d2Q7z2+blVAu9PlQGbElDUx7NNhG8NOAHZk8+1dGeYDkwi2NtZ
-         j0w74DxFFgci0qq1xEwtUrnluNoUt8Aitow57Td36GUv33/x4uudyCqWeirpubcYt5ix
-         ffXYHH38BqU4Saf6xnCt7Ywr3JS3hmRRYBuvUhcPgA7GTr/hTvoYOGTBkIQ2Tk81LIDt
-         y6X0XnrwbF/PZzB/wENSRR9nIYcBhvHWV73pFyqaVGjq/gtFR2WjLxzfMSlIFP8z58d3
-         /PFQ==
+        b=RIah6rlvMSnkSjJJFxJX15vLxUBG1OETj+Z5XhVu0mHIYOfO0Hv4UMSW5PcMaYDcAV
+         qCq2djDBkhzoTg9v87eDEMhqvreGM+FwTVemBtry2zME8+LpaJFzFSyY8I9H0jmDrIXZ
+         lWTrbAekBNxQwS45+uSMqStocfNyE59akVAms+BlGRpnhIz9xma27h0LhqxSE5FYZeOI
+         M4UTvxw2/ul5zUHKpzuo7R6nXUh81p8YOzBXvRxH5rNAGo2Q27RiOdCLV3zOF6Zp3lqo
+         Q0Jo/NJ5DOmbRBp8fo4WbVHN2q+698V1jEqwupOKa8woEZ2YwAO2T3n5hUpmxTLCeSJa
+         AmAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=XmPa0oFVeJGMHlrIDklYmRdRvpykmhdDp365jjIAGLY=;
-        b=Uw4VmkSBhpalKZ+f98z+cYp284WEAQEkua+pwj7vYZaUmOgHx8zBQWeHI1o3m0uNlG
-         2MiRnjEO3K9natqdX49ZdvI/VvTgRaPv7Mqq33DZI22UhHikrweHJsm/fcRitl5DYoJW
-         cv5aXJ4NfwQ2JEDvmo/k6/x8dxBk8Hu052bH228kmD0AHHNNGiB3UUWPz6hAQSp0Bveh
-         41fu0VwbDqmuK4/8Fjb5iaO9GrEohC5TqlJj8m829WtGDQF6Uf5LC9tUJffETSrkKfRR
-         exTphtgPK0rABXSZxC2bZDfLgDfKA/lMHoZVBr6dENxtFhuiLLHVcX7qfyO3Ra+mrzhX
-         N8QA==
+        bh=hI7bzsmky1WaiM9g+64rTyViI5OA6WYELvRET0z3sHg=;
+        b=K4DEJeqzmfGLlG8DK1B7SSG/bHhmD3LmUiT1B2S2AW4adyAgH7BF2vk9beVErkb80Q
+         JpYaiAe9I77aAAbxcLctuDLnUtIkGFgWiRtAcfwuynUE1AfLuJierYUsBllicNw2zw74
+         Whpd2cpNHC2A6dGLaDzutsC+44fwCINZ5t5OqgoZQ3bOy1ehdRkCf5A2j9Gf3V2UpztP
+         QGZz3viRbaMbbtrKzxXsjmxzedW6xqzjOAEQNw+jx7cIQB1rKJvWsxIQgQoIBnhPwXp9
+         gd5FQ+zEbVAwJ9bNlzfY4pAbQCwq4qp8CmV4H1Dt51/XcuoEX7a5WCHti530WhN7MG8f
+         NV6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MoOzaakH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E1AmNwP1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10-20020ac85f4a000000b002f1f559e978si4142615qta.421.2022.04.24.20.32.51
+        by mx.google.com with ESMTPS id iu15-20020ad45ccf000000b004442b91d752si540683qvb.66.2022.04.25.01.27.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 24 Apr 2022 20:32:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Apr 2022 01:27:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MoOzaakH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E1AmNwP1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44930 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47322 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nipT0-0000Zm-Pk
-	for alex.bennee@linaro.org; Sun, 24 Apr 2022 23:32:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58550)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1niu42-0000zA-AY
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 04:27:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nipQN-0003j8-Qq
- for qemu-arm@nongnu.org; Sun, 24 Apr 2022 23:30:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:41450)
+ (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
+ id 1niu06-0006UP-FW
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:53231)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nipQM-0002cj-6L
- for qemu-arm@nongnu.org; Sun, 24 Apr 2022 23:30:07 -0400
+ (Exim 4.90_1) (envelope-from <mkletzan@redhat.com>)
+ id 1niu01-0002fM-PX
+ for qemu-devel@nongnu.org; Mon, 25 Apr 2022 04:23:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650857405;
+ s=mimecast20190719; t=1650874992;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XmPa0oFVeJGMHlrIDklYmRdRvpykmhdDp365jjIAGLY=;
- b=MoOzaakHhSp3Ngj5o1+A9X8gfu5ph8iSfWX8o04OjHepIBsP3Go2l8vBnwg3DtsUb9eclC
- w2Ez+yXOINoLpFb+HE31azFgFjI2HkoIB9jOZbYcPQtZzB5AfiRjFmIN5aPFXQHsGk5Xkd
- I/AJgqTLpctJMOwVxNMTqXfnpOT5s7U=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=hI7bzsmky1WaiM9g+64rTyViI5OA6WYELvRET0z3sHg=;
+ b=E1AmNwP1bR58CRtLy4uMz/ni+1rgsUQwTcIC4xTDIuCzoI98+Jb8zHAJrtO4GZe1DoM+Yn
+ SF9CDd8WzZ0sxpHxhQbwlqJWH64ZprCcr0vOCEwb+z2+SQIcSijthVY5wT/kOUc09/8Zz/
+ MW5Hpl1ey/dM5TgPHt5EiZEv+rzsNAA=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-440-gpXfgE1TNqGeatzlZoTmrw-1; Sun, 24 Apr 2022 23:30:01 -0400
-X-MC-Unique: gpXfgE1TNqGeatzlZoTmrw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CD40F101AA42;
- Mon, 25 Apr 2022 03:30:00 +0000 (UTC)
-Received: from gshan.redhat.com (ovpn-13-230.pek2.redhat.com [10.72.13.230])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 51DBC145BEF7;
- Mon, 25 Apr 2022 03:29:51 +0000 (UTC)
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Subject: [PATCH v8 4/5] hw/arm/virt: Fix CPU's default NUMA node ID
-Date: Mon, 25 Apr 2022 11:28:01 +0800
-Message-Id: <20220425032802.365061-5-gshan@redhat.com>
-In-Reply-To: <20220425032802.365061-1-gshan@redhat.com>
-References: <20220425032802.365061-1-gshan@redhat.com>
+ us-mta-49-S4_3_mvePVOx_-zZ9fpZNA-1; Mon, 25 Apr 2022 04:22:07 -0400
+X-MC-Unique: S4_3_mvePVOx_-zZ9fpZNA-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ m125-20020a1c2683000000b00391893a2febso6461316wmm.4
+ for <qemu-devel@nongnu.org>; Mon, 25 Apr 2022 01:22:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=hI7bzsmky1WaiM9g+64rTyViI5OA6WYELvRET0z3sHg=;
+ b=rN476h4TpC7ATqFfm7kyibfCV4wcqUzXFvA0Qc8UaXbLcBbUTPuDiGIZ3HpQbw1L+M
+ scVu0lQG5kum9M2j2+iq7LZZ/WPXcDX1lT9jm/J/dviENq1xZ1JLGp2KbH4yJKFGuZGG
+ Jp9pX8bdlQDoXlBkFTOKTBEAwfarpbImQiGg3WRp/yq1kOCTf7TB0xxzomWNDswG2dP1
+ Cjb/zzWLpnKjkuTLsxfbXvKKqroNAhaygjsBt/8lu/4T1rszsQ0mwPT6SvVM2RD5EPmJ
+ ynkpz/N8SXpFypctv23ZAUaZuZ6zz+p3TP5G0USL4HRgMpWtfrnAk7rVJ6oAz6Zy901V
+ 9TsA==
+X-Gm-Message-State: AOAM530Xd7WjO2PvfneSD0c3J9KGl1cg2Nl2Nb/3Nn0WHYgEtvKV80ZL
+ a5s6sETV+WV7m/j3YnTwXXcaeC/dd18CCgnrOYparMm9Ft6UxBuHwsrudsnqM0ZlJ3SsOYoZgzB
+ i582nWiFov9Z5GfI=
+X-Received: by 2002:a05:6000:1e0a:b0:20a:be21:a20 with SMTP id
+ bj10-20020a0560001e0a00b0020abe210a20mr13322002wrb.214.1650874926593; 
+ Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
+X-Received: by 2002:a05:6000:1e0a:b0:20a:be21:a20 with SMTP id
+ bj10-20020a0560001e0a00b0020abe210a20mr13321970wrb.214.1650874926384; 
+ Mon, 25 Apr 2022 01:22:06 -0700 (PDT)
+Received: from wheatley.localdomain (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ z7-20020a7bc7c7000000b0038eaf85b0absm8065953wmk.20.2022.04.25.01.22.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 Apr 2022 01:22:05 -0700 (PDT)
+Received: from wheatley.redhat.com (wheatley.k8r.cz [127.0.0.1])
+ by wheatley.localdomain (Postfix) with ESMTP id 99E2967B1B66;
+ Mon, 25 Apr 2022 10:22:02 +0200 (CEST)
+From: Martin Kletzander <mkletzan@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 17/18] audio: Remove unused can_be_default
+Date: Mon, 25 Apr 2022 10:22:00 +0200
+Message-Id: <31616bc6be45ba26e96beb54f7278d618f15a5fe.1650874791.git.mkletzan@redhat.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
+References: <cover.1650874791.git.mkletzan@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mkletzan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -94,95 +117,190 @@ X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: lvivier@redhat.com, eduardo@habkost.net, thuth@redhat.com,
- berrange@redhat.com, peter.maydell@linaro.org, armbru@redhat.com,
- mst@redhat.com, qemu-devel@nongnu.org, zhenyzha@redhat.com, drjones@redhat.com,
- pbonzini@redhat.com, shan.gavin@gmail.com, Jonathan.Cameron@Huawei.com,
- ani@anisinha.ca, imammedo@redhat.com, wangyanan55@huawei.com,
- eblake@redhat.com, f4bug@amsat.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1O6WtaTCbHbM
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, libvir-list@redhat.com,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Alexander Bulekov <alxndr@bu.edu>,
+ Bandan Das <bsd@redhat.com>, qemu-arm@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>, Thomas Huth <huth@tuxfamily.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X6RO9t0KmBd5
 
-When CPU-to-NUMA association isn't explicitly provided by users,
-the default one is given by mc->get_default_cpu_node_id(). However,
-the CPU topology isn't fully considered in the default association
-and this causes CPU topology broken warnings on booting Linux guest.
+Since there is no fallback mechanism and default-guessing this is now
+not used and can be safely removed.
 
-For example, the following warning messages are observed when the
-Linux guest is booted with the following command lines.
-
-  /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
-  -accel kvm -machine virt,gic-version=host               \
-  -cpu host                                               \
-  -smp 6,sockets=2,cores=3,threads=1                      \
-  -m 1024M,slots=16,maxmem=64G                            \
-  -object memory-backend-ram,id=mem0,size=128M            \
-  -object memory-backend-ram,id=mem1,size=128M            \
-  -object memory-backend-ram,id=mem2,size=128M            \
-  -object memory-backend-ram,id=mem3,size=128M            \
-  -object memory-backend-ram,id=mem4,size=128M            \
-  -object memory-backend-ram,id=mem4,size=384M            \
-  -numa node,nodeid=0,memdev=mem0                         \
-  -numa node,nodeid=1,memdev=mem1                         \
-  -numa node,nodeid=2,memdev=mem2                         \
-  -numa node,nodeid=3,memdev=mem3                         \
-  -numa node,nodeid=4,memdev=mem4                         \
-  -numa node,nodeid=5,memdev=mem5
-         :
-  alternatives: patching kernel code
-  BUG: arch topology borken
-  the CLS domain not a subset of the MC domain
-  <the above error log repeats>
-  BUG: arch topology borken
-  the DIE domain not a subset of the NODE domain
-
-With current implementation of mc->get_default_cpu_node_id(),
-CPU#0 to CPU#5 are associated with NODE#0 to NODE#5 separately.
-That's incorrect because CPU#0/1/2 should be associated with same
-NUMA node because they're seated in same socket.
-
-This fixes the issue by considering the socket ID when the default
-CPU-to-NUMA association is provided in virt_possible_cpu_arch_ids().
-With this applied, no more CPU topology broken warnings are seen
-from the Linux guest. The 6 CPUs are associated with NODE#0/1, but
-there are no CPUs associated with NODE#2/3/4/5.
-
-Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
+Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
 ---
- hw/arm/virt.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ audio/alsaaudio.c   | 1 -
+ audio/audio_int.h   | 1 -
+ audio/coreaudio.m   | 1 -
+ audio/dbusaudio.c   | 1 -
+ audio/dsoundaudio.c | 1 -
+ audio/jackaudio.c   | 1 -
+ audio/noaudio.c     | 1 -
+ audio/ossaudio.c    | 1 -
+ audio/paaudio.c     | 1 -
+ audio/sdlaudio.c    | 1 -
+ audio/wavaudio.c    | 1 -
+ 11 files changed, 11 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0fd7f9a6a1..091054662c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2552,7 +2552,9 @@ virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
- 
- static int64_t virt_get_default_cpu_node_id(const MachineState *ms, int idx)
- {
--    return idx % ms->numa_state->num_nodes;
-+    int64_t socket_id = ms->possible_cpus->cpus[idx].props.socket_id;
-+
-+    return socket_id % ms->numa_state->num_nodes;
- }
- 
- static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
+index 4a61378cd757..edbee63f97c5 100644
+--- a/audio/alsaaudio.c
++++ b/audio/alsaaudio.c
+@@ -933,7 +933,6 @@ static struct audio_driver alsa_audio_driver = {
+     .init           = alsa_audio_init,
+     .fini           = alsa_audio_fini,
+     .pcm_ops        = &alsa_pcm_ops,
+-    .can_be_default = 1,
+     .max_voices_out = INT_MAX,
+     .max_voices_in  = INT_MAX,
+     .voice_size_out = sizeof (ALSAVoiceOut),
+diff --git a/audio/audio_int.h b/audio/audio_int.h
+index 2a6914d2aa65..082b13247657 100644
+--- a/audio/audio_int.h
++++ b/audio/audio_int.h
+@@ -148,7 +148,6 @@ struct audio_driver {
+     void (*set_dbus_server) (AudioState *s, GDBusObjectManagerServer *manager);
+ #endif
+     struct audio_pcm_ops *pcm_ops;
+-    int can_be_default;
+     int max_voices_out;
+     int max_voices_in;
+     int voice_size_out;
+diff --git a/audio/coreaudio.m b/audio/coreaudio.m
+index 4695291621a3..e5612138a74b 100644
+--- a/audio/coreaudio.m
++++ b/audio/coreaudio.m
+@@ -673,7 +673,6 @@ static void coreaudio_audio_fini (void *opaque)
+     .init           = coreaudio_audio_init,
+     .fini           = coreaudio_audio_fini,
+     .pcm_ops        = &coreaudio_pcm_ops,
+-    .can_be_default = 1,
+     .max_voices_out = 1,
+     .max_voices_in  = 0,
+     .voice_size_out = sizeof (coreaudioVoiceOut),
+diff --git a/audio/dbusaudio.c b/audio/dbusaudio.c
+index a3d656d3b017..bbcad7051413 100644
+--- a/audio/dbusaudio.c
++++ b/audio/dbusaudio.c
+@@ -638,7 +638,6 @@ static struct audio_driver dbus_audio_driver = {
+     .fini            = dbus_audio_fini,
+     .set_dbus_server = dbus_audio_set_server,
+     .pcm_ops         = &dbus_pcm_ops,
+-    .can_be_default  = 1,
+     .max_voices_out  = INT_MAX,
+     .max_voices_in   = INT_MAX,
+     .voice_size_out  = sizeof(DBusVoiceOut),
+diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
+index 3fb67ec3eed4..311e34218465 100644
+--- a/audio/dsoundaudio.c
++++ b/audio/dsoundaudio.c
+@@ -721,7 +721,6 @@ static struct audio_driver dsound_audio_driver = {
+     .init           = dsound_audio_init,
+     .fini           = dsound_audio_fini,
+     .pcm_ops        = &dsound_pcm_ops,
+-    .can_be_default = 1,
+     .max_voices_out = INT_MAX,
+     .max_voices_in  = 1,
+     .voice_size_out = sizeof (DSoundVoiceOut),
+diff --git a/audio/jackaudio.c b/audio/jackaudio.c
+index 5bdf3d7a78d6..fd2d2fd5acb7 100644
+--- a/audio/jackaudio.c
++++ b/audio/jackaudio.c
+@@ -669,7 +669,6 @@ static struct audio_driver jack_driver = {
+     .init           = qjack_init,
+     .fini           = qjack_fini,
+     .pcm_ops        = &jack_pcm_ops,
+-    .can_be_default = 1,
+     .max_voices_out = INT_MAX,
+     .max_voices_in  = INT_MAX,
+     .voice_size_out = sizeof(QJackOut),
+diff --git a/audio/noaudio.c b/audio/noaudio.c
+index 84a6bfbb1c87..111aef4a24ce 100644
+--- a/audio/noaudio.c
++++ b/audio/noaudio.c
+@@ -135,7 +135,6 @@ static struct audio_driver no_audio_driver = {
+     .init           = no_audio_init,
+     .fini           = no_audio_fini,
+     .pcm_ops        = &no_pcm_ops,
+-    .can_be_default = 1,
+     .max_voices_out = INT_MAX,
+     .max_voices_in  = INT_MAX,
+     .voice_size_out = sizeof (NoVoiceOut),
+diff --git a/audio/ossaudio.c b/audio/ossaudio.c
+index 8e075edb70d6..31b582e8e4b5 100644
+--- a/audio/ossaudio.c
++++ b/audio/ossaudio.c
+@@ -781,7 +781,6 @@ static struct audio_driver oss_audio_driver = {
+     .init           = oss_audio_init,
+     .fini           = oss_audio_fini,
+     .pcm_ops        = &oss_pcm_ops,
+-    .can_be_default = 1,
+     .max_voices_out = INT_MAX,
+     .max_voices_in  = INT_MAX,
+     .voice_size_out = sizeof (OSSVoiceOut),
+diff --git a/audio/paaudio.c b/audio/paaudio.c
+index e91116f2396c..38f09017eb96 100644
+--- a/audio/paaudio.c
++++ b/audio/paaudio.c
+@@ -928,7 +928,6 @@ static struct audio_driver pa_audio_driver = {
+     .init           = qpa_audio_init,
+     .fini           = qpa_audio_fini,
+     .pcm_ops        = &qpa_pcm_ops,
+-    .can_be_default = 1,
+     .max_voices_out = INT_MAX,
+     .max_voices_in  = INT_MAX,
+     .voice_size_out = sizeof (PAVoiceOut),
+diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
+index 68a237b76b45..5177e31d9b4a 100644
+--- a/audio/sdlaudio.c
++++ b/audio/sdlaudio.c
+@@ -493,7 +493,6 @@ static struct audio_driver sdl_audio_driver = {
+     .init           = sdl_audio_init,
+     .fini           = sdl_audio_fini,
+     .pcm_ops        = &sdl_pcm_ops,
+-    .can_be_default = 1,
+     .max_voices_out = INT_MAX,
+     .max_voices_in  = INT_MAX,
+     .voice_size_out = sizeof(SDLVoiceOut),
+diff --git a/audio/wavaudio.c b/audio/wavaudio.c
+index ac666335c783..4e176500fc92 100644
+--- a/audio/wavaudio.c
++++ b/audio/wavaudio.c
+@@ -208,7 +208,6 @@ static struct audio_driver wav_audio_driver = {
+     .init           = wav_audio_init,
+     .fini           = wav_audio_fini,
+     .pcm_ops        = &wav_pcm_ops,
+-    .can_be_default = 0,
+     .max_voices_out = 1,
+     .max_voices_in  = 0,
+     .voice_size_out = sizeof (WAVVoiceOut),
 -- 
-2.23.0
+2.35.1
 

@@ -1,94 +1,93 @@
-Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp76893lfu;
-        Tue, 26 Apr 2022 02:08:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwg1xir1UJGS+tOQoraKEKSCg/4yIb/MWrYBSqo+OW/UfaoUvx+yBAfWT/CorRCHVgjPRW7
-X-Received: by 2002:a37:6489:0:b0:69e:7b8a:e735 with SMTP id y131-20020a376489000000b0069e7b8ae735mr12425956qkb.118.1650964109081;
-        Tue, 26 Apr 2022 02:08:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650964109; cv=none;
+Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp77234lfu;
+        Tue, 26 Apr 2022 02:09:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzu1TUpqIW64nKhn46MhNiRzGFE0PhvQvtppZnc25QIxYH5e8UUJfmCD7rlh5mrgh+Vnz6b
+X-Received: by 2002:a37:5584:0:b0:69e:d812:4b4f with SMTP id j126-20020a375584000000b0069ed8124b4fmr12184696qkb.45.1650964158072;
+        Tue, 26 Apr 2022 02:09:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650964158; cv=none;
         d=google.com; s=arc-20160816;
-        b=i1p2puZ8cgQGCJEBBlrDpm+6QkynbPJnRkoiRQQGa/f+cdobRljQfgK7o8s+ZP9dKq
-         TF4UGoGk/bsiMTYb1KTH1CJYIu8m7h2cBq47mpuYD1L8+LRCTQxY+L+s0egAl7Tb8ZKD
-         +7AWB987btTA9V2vWt2zNKpEhPP8WK7Cf4T150Dm4amhIa1lc71AMPXyaFvYd80lZ//2
-         Nqr+3YLzJhS91ILWOD8drvpKiSaQ1XP2/zeG3jw27OJscmXLG+Fsdp3kp1llenWBzR0u
-         oXM3wq6ARsbhzDI4qWM0AFf+PFLJK2Rnvg9/nPmvkjy7JgO77/E+d6SkswLRjkosSVno
-         IMxA==
+        b=W95/gdd0etuimjv6rAY0lE9kp5RH3fBudjAarzdeYpcTMp5qyCmxmAQhHd8X7mAuLj
+         kncXzwkOxPD49/0HCrfU/kTxY1I4VX96IK2gdbaCjlW0IOc4FHb/o9hdfT+KxFAO7V3G
+         l8CnWQyt+EroaxUQdAzNyYKt6irdyzW5kaKFf3usdRZY7NrO4nfkTUXIxuA7N8Yafhta
+         qyDJ6Pa5cjAIFvkN81i5GBk/sLes4a/t3SqY9TZVRwNGW0A0uTM7OcJRG9kjqYnyCft1
+         fJs2PFTD53w4qzheA+ifOc++b3UkThhqVtRt3KvIewo4BrVndP7XDBjNmN7OXhmHV6+o
+         a4iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=uogJa8fy4awb5CTmiTBoA+UbVmXEAqojUMKgvCAMKPw=;
-        b=Y0WvMY5C9FgIQTRrWx6W0/oPHeXGhROGGgo83QuGkNIBJgX3y0IZapvCRYY5TvQR/+
-         9mBCaGsipuLtExkB7ma2IsSFmxKpg+4ifjZjfk/TlmSIFvTSFjdZJ5mYOdMhhGzsp9Mt
-         y3HO//EI+iLQm4ltk9Y2hkygJj5rSkzLvz+Knxs3hUjBjCtcbwZ+Sv7iQ6685V2f+CC9
-         Dl2Rak1Wpoihp2SWZvAXsQrUjB4LSRFn+us1sX+G78re6YMKA+Uim5tAxdCkG9cgTpvL
-         BXtYrknrwoH6Cxrbvoo7VKNnNXjY6hlQVl1m9s/FLmXcs/1ZhCM6hhHmWAvwQpNYnj6A
-         34sQ==
+        bh=4UMWZP+S1ig7zzcHOBBbKvy/5mzU8oAd8Skcp4UhlxU=;
+        b=OsSUmmn8zUJK2aqGEu16wjIwn5UuJ3sRT6taqxTn6nohXa8+BWTO4Uac5JIlHbJA3R
+         BXCxgoLMvFjFSKQNcvCFfyiL3v2tTgHZDgpFnomMn5yJZPyT/K6qzn7NWuxSDTGVBC3+
+         Qd4li8JFF1bk+GP6EPS2ky61a1MANha0IpeY6sMsOuMxnANufF4n/Dwwntg1IBh05SQ7
+         fBm6w10tF6J42kIwpuBpNq3nl7VcHRf6GI4Xvn4StSzj54dYzmjG9MyGVLdF9ri41Pmf
+         c4VktQaDQl689xNyT7wmRdqXxosfEbxuQXiJ9j0lHhHdJuDw9T6KUq6lb8TaRsaxGy48
+         23jQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UfVtGolg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F5HNnLNN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7-20020ac85cc7000000b002f339d33de9si5300826qta.389.2022.04.26.02.08.28
+        by mx.google.com with ESMTPS id d23-20020ac851d7000000b002f1d13494c6si4780269qtn.561.2022.04.26.02.09.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Apr 2022 02:08:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 26 Apr 2022 02:09:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UfVtGolg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F5HNnLNN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49564 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52796 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1njHBM-0005p3-GQ
-	for alex.bennee@linaro.org; Tue, 26 Apr 2022 05:08:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44208)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1njHC9-0008BY-Hi
+	for alex.bennee@linaro.org; Tue, 26 Apr 2022 05:09:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44298)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1njGyH-0003Kf-RH
- for qemu-devel@nongnu.org; Tue, 26 Apr 2022 04:54:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:44530)
+ id 1njGyf-0003kU-3x
+ for qemu-arm@nongnu.org; Tue, 26 Apr 2022 04:55:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:46752)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1njGyG-0000uU-AT
- for qemu-devel@nongnu.org; Tue, 26 Apr 2022 04:54:57 -0400
+ id 1njGyd-0000xO-J7
+ for qemu-arm@nongnu.org; Tue, 26 Apr 2022 04:55:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650963295;
+ s=mimecast20190719; t=1650963319;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=uogJa8fy4awb5CTmiTBoA+UbVmXEAqojUMKgvCAMKPw=;
- b=UfVtGolgCRIBTaQisoZUqn1esfM658ZEm6PBOM7tMdYsoPMbMj9us8cX2vvOzoZ0B/liEA
- VV12ZUFIUF167gsF9dAURYREkmAZHYWPAyOcU4VZgcQ2vLdWjDL7gYHrzZnCfTZdadh5sE
- L2fdylceUtAURhgW+ya3jcZ2kNZTe3E=
+ bh=4UMWZP+S1ig7zzcHOBBbKvy/5mzU8oAd8Skcp4UhlxU=;
+ b=F5HNnLNNd8h8ljPvapfQ3Jg/R1/meri5BHMLPEJFzXzGbf/0vb0oT8iUocTN7CMtzyLy10
+ pCNjTdmXZR8tk9166LY4mFBKFqsvpT+bMD8fWnk32bPzb3HUZHy2J2F3DNPLzWmYPpe24w
+ fZowrAL1Ki6WXi5zdyHmc/pRdsDM+Ig=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-49-Dkd-a2u3OZOgyCOsWxpjsw-1; Tue, 26 Apr 2022 04:54:53 -0400
-X-MC-Unique: Dkd-a2u3OZOgyCOsWxpjsw-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ us-mta-283-BC7sMEHwMieLITKtRuO3Nw-1; Tue, 26 Apr 2022 04:55:17 -0400
+X-MC-Unique: BC7sMEHwMieLITKtRuO3Nw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B0F3186B8BD;
- Tue, 26 Apr 2022 08:54:03 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D18E586B8A3;
+ Tue, 26 Apr 2022 08:54:51 +0000 (UTC)
 Received: from localhost (unknown [10.39.195.81])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 18EA3553398;
- Tue, 26 Apr 2022 08:53:43 +0000 (UTC)
-Date: Tue, 26 Apr 2022 09:53:41 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7A822428EFD;
+ Tue, 26 Apr 2022 08:54:39 +0000 (UTC)
+Date: Tue, 26 Apr 2022 09:54:37 +0100
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: Martin Kletzander <mkletzan@redhat.com>
-Subject: Re: [PATCH 01/18] hw/audio: Remove -soundhw support
-Message-ID: <YmezFYjXT7VRM69W@stefanha-x1.localdomain>
+Subject: Re: [PATCH 00/18] RFC: Remove deprecated audio features
+Message-ID: <YmezTbozi9qjEzm1@stefanha-x1.localdomain>
 References: <cover.1650874791.git.mkletzan@redhat.com>
- <aaa9e17ef9f35cb34acae2538240c11b911d9f6c.1650874791.git.mkletzan@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="zJLGHY+WTpu6wxjY"
+ protocol="application/pgp-signature"; boundary="gqisuhwj0IRf8Qnd"
 Content-Disposition: inline
-In-Reply-To: <aaa9e17ef9f35cb34acae2538240c11b911d9f6c.1650874791.git.mkletzan@redhat.com>
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
+In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
@@ -97,25 +96,25 @@ X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, libvir-list@redhat.com,
  Christian Schoenebeck <qemu_oss@crudebyte.com>, qemu-devel@nongnu.org,
  Yanan Wang <wangyanan55@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Qiuhao Li <Qiuhao.Li@outlook.com>,
  =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, Alexander Bulekov <alxndr@bu.edu>,
@@ -126,61 +125,50 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, libvir-list@redhat.com,
  Darren Kenny <darren.kenny@oracle.com>, Thomas Huth <huth@tuxfamily.org>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HDmE2wltV/m2
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qWRVA1WW+F+y
 
 
---zJLGHY+WTpu6wxjY
+--gqisuhwj0IRf8Qnd
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Apr 25, 2022 at 10:21:44AM +0200, Martin Kletzander wrote:
-> One thing I am not sure about is whether to keep the aliases of ac97 and
-> es1370 in the qdev_alias_table.
+On Mon, Apr 25, 2022 at 10:21:43AM +0200, Martin Kletzander wrote:
+> I wanted to deal with https://bugzilla.redhat.com/2043498 and I got a
+> suggesstion that removing deprecated features could actually make it
+> easier to propagate the error.  In the end (last patch) it turns out the
+> error is still just reported with error_fatal, so it probably is not
+> really needed, but I really wanted to dig into QEMU more and learn some
+> of the internals for quite some time now.  So I used the opportunity.
+> The one-liner ended up being an 18 patch series which was, for someone
+> who has just one commit in QEMU codebase, a pretty challenging task.
+> Although I tried my best to do things properly, I am not sure whether I
+> handled everything correctly, hence the RFC.
 >=20
-> Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
-> ---
->  docs/about/deprecated.rst                     |   9 -
->  docs/about/removed-features.rst               |  10 +
->  docs/qdev-device-use.txt                      |  21 +--
->  docs/replay.txt                               |   2 +-
->  hw/audio/ac97.c                               |   3 -
->  hw/audio/adlib.c                              |   2 -
->  hw/audio/cs4231a.c                            |   2 -
->  hw/audio/es1370.c                             |   3 -
->  hw/audio/gus.c                                |   2 -
->  hw/audio/intel-hda.c                          |  21 ---
->  hw/audio/meson.build                          |   1 -
->  hw/audio/pcspk.c                              |  11 --
->  hw/audio/sb16.c                               |   3 -
->  hw/audio/soundhw.c                            | 177 ------------------
->  include/hw/audio/soundhw.h                    |  15 --
->  qemu-options.hx                               |  27 ---
->  .../codeconverter/test_regexps.py             |   1 -
->  softmmu/qdev-monitor.c                        |   2 -
->  softmmu/vl.c                                  |   6 -
->  19 files changed, 19 insertions(+), 299 deletions(-)
->  delete mode 100644 hw/audio/soundhw.c
->  delete mode 100644 include/hw/audio/soundhw.h
+> Any comments are very much appreciated.  Thanks and have a nice day ;)
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Hi Martin,
+The -soundhw removal looks good to me. I'm not familiar with the audio
+subsystem so I didn't review the rest.
 
---zJLGHY+WTpu6wxjY
+Stefan
+
+--gqisuhwj0IRf8Qnd
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmJnsxUACgkQnKSrs4Gr
-c8jY0QgAo5fbiL930s2il805djf64EcvNYfCxUbmf1DdA0OH03GPk4NAw6TTubU7
-JLoLnFu5OchAC9dH7SEc+CKtcQkBn4DjXXhwKurObgVnWN7L22Z9Cj13pfGi55aY
-Dpeu0v/y0gwQwAIQZV+1BptOG4HyE0UC7TI+vPnhK5Du/hHJNksnSOgqiRL4HK4l
-yHmupY9xqcKHnbtUy5M8akFIkMf+KrbO+6dL9C0+S3iFWK9rIoR/+PbccgQ8OTuH
-SAeelczM2V4Xlp0LBJpqZ7GQAwP4rO+zNKip3sgvqLgV4NG+heJgP3ZH7MWjiz6S
-m13h+o2FL31ydAOlYivsXDYw+2R7HQ==
-=Q9bt
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmJns00ACgkQnKSrs4Gr
+c8hlQAgAnSTgpon9DyHtiOjo7MjmkNCoDctEt60CsSNLCpwpPHvWMgoTkY4GPhnq
+dnXmC+EWULqiwZYLg4TotKV12H9Zl51SvbGCpzcKwkLvfF1/9Vwm+Lshi/qhMjVE
+iTn5OWa+MQaP0uwcS//j7/G31MZfp7dM9zk2soPrmkMszqu0Sz16u9L9m4eyfmSi
+PnlPWMbVNVt0UpTJiZ5P3DlCoHkSRWsMmG2dcj58fhyZw3jR4Oi5XkxPaivZXXKp
+9Oeo6K1UkPDgLVGirgm8U3zxsbv5oJ8q7yu1dvgZtlBF3MtkGgJbKNJFuqFLAs85
+7yrrS3RabtZWkYVeif0z6vX5y7JbUg==
+=TgWM
 -----END PGP SIGNATURE-----
 
---zJLGHY+WTpu6wxjY--
+--gqisuhwj0IRf8Qnd--
 

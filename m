@@ -1,78 +1,79 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2796842lfk;
-        Mon, 25 Apr 2022 18:43:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyzj8y38XOvU8RHSxt23hJ1+YDyOlU+s76flT3ppJiR0jMJ+I8EPYIqFCQqqsaMXnGP+xaO
-X-Received: by 2002:a0d:dfc1:0:b0:2f4:e5d8:3352 with SMTP id i184-20020a0ddfc1000000b002f4e5d83352mr18368705ywe.28.1650937422832;
-        Mon, 25 Apr 2022 18:43:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650937422; cv=none;
+Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2810857lfk;
+        Mon, 25 Apr 2022 19:14:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOuKy+gcIdHsGkBqc9bxfy2LaAooHHnxDmkVaWLWaRnrrzqOkvzMnw+SFer6aHbhMfGx2S
+X-Received: by 2002:a05:6214:3007:b0:446:6958:a6b8 with SMTP id ke7-20020a056214300700b004466958a6b8mr14733770qvb.52.1650939266041;
+        Mon, 25 Apr 2022 19:14:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650939266; cv=none;
         d=google.com; s=arc-20160816;
-        b=FXs66x29KpZ5/ZDmnJX7IoHwqoGznYW0l121r5cSE2AgU6yeef5u9gf1Wwlh0JxDMi
-         zqhuVRI1wC9VU8zFeibmzVLDxS8K43Iw6sw5bxlkEzb1GijifiQsyH/sx9iYAiHWqzfK
-         7nQ8lgzHCEu7J+eT4dm40kiM+jevSDzUiBfbbgp2uLV7sbaJif8yCMVLaGk42cTrTkbO
-         6gSCIWBx0PK1xdnH+NVts8c53sQmTiw3u7OnOKeq1Sdx2S60SmxLuVIhEe11P6nt7/zB
-         +UOVVKrgUU+pH+mfoQO+k1S3WXtm9jkaOOtsfnJ40wc7SDk5godfNDNsi9XCBgIjHSEj
-         qA7Q==
+        b=fRJJkD+alJnSp/KePL/kU97ovAo5OUO2PfIk1PdcfAPnQMv3FIeLSyOVammRUcDEC/
+         4WPFT8ldKYXDFS/abiIQG9so8U1+6MuHBVcJ9kOKOVjmDNJQ6LFaEPgjX4VLjI8hDMX+
+         A2OK6S5fdCzNjPwc2epqW74AUk6mjRZxfCc9HVeOcMiqNIA4OU4sJvh+W9jUji4zKpET
+         hzg7EJB6plX5weki6esfPwjync7QMX77flUqRT45quL9W2t/PZCjA2wfZ66ySvP9/2Fp
+         eIqD/+OrzzKBT2t9XytC4FLl2uJZCmNrMotyhKTfegaRTbLZ4DlLvze9SXWYPbz0cjhl
+         9GzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date;
-        bh=NTmoYPx4zEpKflyBrNzv33uI1q6QrWTz0PA33UJ9byk=;
-        b=ulApXRQgvNzP+roc7Wt+W4JCAWCXS5yfWiliQ8iw4rQrs1ov1TtIzpW2DPuAYXJq+C
-         PVqwApZnXvzhKlh8NIYxQQ4R1Mmk4PpIuZbZRxxVRu+m9LxM6i8dDi1eKfldt95Y/1W3
-         xGxGHsiKF2k8W6iofTLrOdupsyQUDbWzKRnd/XwobXDazt5KklU1nl60Qf5rw59OIFht
-         QP8hmohXNjWe7YfcR35poLISZJeKIt0eP4lnKvKgsfEmno6J4ovXANq0FJ1yVASLhp1e
-         haixzP2EqIkGPjPSLkCQTSAEXRBJ0iVaVNabsp+hb8MqGOXSB+qSuKEEtI4GU1tz9OPp
-         NBTQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=fcFgVdYr9FIsxsYuctMz8i/OKIewpSZvEruVfxl3FAM=;
+        b=sosTbxv7BZmldzeqQYX6SvpGLjRUQuIqPyzwUaXbgBCEoRQhb8yQKSehE/Uwxlg2Gg
+         SBWYAdq3NpxrBzXyUr4u65zuv4nvxw8K/i4phmxyyel30+X6bHnF2eH2DGu68pZrBUtF
+         zR7uS/RkK4gr8fyV7c7gq8ZdNLUXS1PuPPK17B7kj0tHHuUqdnkmUPV5Kbsiu3p7/4Hr
+         8nLMVPAJ01P/dK78036UUY8Mdtc8P/A5GIE3k3/deU23RCrTIf2jTeY9qRpHBQg9RyM4
+         VkrxT8+gUbVtNDYp/m+ywkJmLhI11h9KD1lvx0TPBEWcLaYKTIzHWXhmSKke36fMdQJL
+         1OjA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f186-20020a0ddcc3000000b002ebcdd2c7c0si14427117ywe.485.2022.04.25.18.43.42
+        by mx.google.com with ESMTPS id bs17-20020a05620a471100b0069f34a794ffsi2144238qkb.254.2022.04.25.19.14.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 18:43:42 -0700 (PDT)
+        Mon, 25 Apr 2022 19:14:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57382 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42856 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1njAEw-0003b4-9c
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 21:43:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60098)
+	id 1njAif-0006F9-IY
+	for alex.bennee@linaro.org; Mon, 25 Apr 2022 22:14:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34718)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1njAEl-0003X1-9o; Mon, 25 Apr 2022 21:43:31 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:38164)
+ id 1njAga-0001h1-Eo; Mon, 25 Apr 2022 22:12:16 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:41442)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1njAEi-0007jd-51; Mon, 25 Apr 2022 21:43:30 -0400
+ id 1njAgX-0003CH-Ne; Mon, 25 Apr 2022 22:12:16 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 23Q1UDAT071938;
- Tue, 26 Apr 2022 09:30:13 +0800 (GMT-8)
+ by twspam01.aspeedtech.com with ESMTP id 23Q1wvfc074070;
+ Tue, 26 Apr 2022 09:58:57 +0800 (GMT-8)
  (envelope-from steven_lee@aspeedtech.com)
-Received: from aspeedtech.com (192.168.70.100) by TWMBX02.aspeed.com
+Received: from localhost.localdomain (192.168.70.100) by TWMBX02.aspeed.com
  (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Tue, 26 Apr
- 2022 09:42:39 +0800
-Date: Tue, 26 Apr 2022 09:42:32 +0800
+ 2022 10:11:23 +0800
 From: Steven Lee <steven_lee@aspeedtech.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH v5 2/3] aspeed/hace: Support AST2600 HACE
-Message-ID: <20220426014230.GA2615@aspeedtech.com>
-References: <20220422051909.27540-1-steven_lee@aspeedtech.com>
- <20220422051909.27540-3-steven_lee@aspeedtech.com>
- <17d96382-de18-986e-877c-d87092c0816d@kaod.org>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
+ <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Subject: [PATCH v6 1/3] aspeed/hace: Support HMAC Key Buffer register.
+Date: Tue, 26 Apr 2022 10:11:18 +0800
+Message-ID: <20220426021120.28255-2-steven_lee@aspeedtech.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20220426021120.28255-1-steven_lee@aspeedtech.com>
+References: <20220426021120.28255-1-steven_lee@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Disposition: inline
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <17d96382-de18-986e-877c-d87092c0816d@kaod.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-Originating-IP: [192.168.70.100]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 23Q1UDAT071938
+X-MAIL: twspam01.aspeedtech.com 23Q1wvfc074070
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=steven_lee@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -92,90 +93,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@aj.id.au>,
- Troy Lee <troy_lee@aspeedtech.com>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
+ steven_lee@aspeedtech.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rq1AgZC6HKzh
+X-TUID: jQ2kzAOOqJxX
 
-The 04/25/2022 21:46, Cédric Le Goater wrote:
-> On 4/22/22 07:19, Steven Lee wrote:
-> > +/**
-> > + * Check whether the request contains padding message.
-> > + *
-> > + * @param s             aspeed hace state object
-> > + * @param iov           iov of current request
-> > + * @param req_len       length of the current request
-> > + * @param total_msg_len length of all acc_mode requests(excluding padding msg)
-> > + * @param pad_offset    start offset of padding message
-> > + */
-> > +static bool has_padding(AspeedHACEState *s, struct iovec *iov,
-> > +                        hwaddr req_len, uint32_t *total_msg_len,
-> > +                        uint32_t *pad_offset)
-> > +{
-> > +    *total_msg_len = (uint32_t)(ldq_be_p(iov->iov_base + req_len - 8) / 8);
-> > +    /*
-> > +     * SG_LIST_LEN_LAST asserted in the request length doesn't mean it is the
-> > +     * last request. The last request should contain padding message.
-> > +     * We check whether message contains padding by
-> > +     *   1. Get total message length. If the current message contains
-> > +     *      padding, the last 8 bytes are total message length.
-> > +     *   2. Check whether the total message length is valid.
-> > +     *      If it is valid, the value should less than or equal to
-> > +     *      total_req_len.
-> > +     *   3. Current request len - padding_size to get padding offset.
-> > +     *      The padding message's first byte should be 0x80
-> > +     */
-> > +    if (*total_msg_len <= s->total_req_len) {
-> > +        uint32_t padding_size = s->total_req_len - *total_msg_len;
-> > +        uint8_t *padding = iov->iov_base;
-> > +        *pad_offset = req_len - padding_size;
-> > +        if (padding[*pad_offset] == 0x80) {
-> > +            return true;
-> > +        }
-> > +    }
-> > +
-> > +    return false;
-> > +}
-> > +
-> > +static int reconstruct_iov(AspeedHACEState *s, struct iovec *iov, int id,
-> > +                           uint32_t *pad_offset)
-> > +{
-> > +    int i, iov_count;
-> > +    if (pad_offset != 0) {
-> 
-> pad_offset can not be NULL. or may be you meant *pad_offset ?
-> 
-> Thanks,
-> 
-> C.
-> 
-> 
+Support HACE28: Hash HMAC Key Buffer Base Address Register.
 
-Yes, it should be *pad_offset, I will fix it.
+Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/misc/aspeed_hace.c         | 7 +++++++
+ include/hw/misc/aspeed_hace.h | 1 +
+ 2 files changed, 8 insertions(+)
 
-Thanks,
-Steven
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 10f00e65f4..59fe5bfca2 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -27,6 +27,7 @@
+ 
+ #define R_HASH_SRC      (0x20 / 4)
+ #define R_HASH_DEST     (0x24 / 4)
++#define R_HASH_KEY_BUFF (0x28 / 4)
+ #define R_HASH_SRC_LEN  (0x2c / 4)
+ 
+ #define R_HASH_CMD      (0x30 / 4)
+@@ -210,6 +211,9 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+     case R_HASH_DEST:
+         data &= ahc->dest_mask;
+         break;
++    case R_HASH_KEY_BUFF:
++        data &= ahc->key_mask;
++        break;
+     case R_HASH_SRC_LEN:
+         data &= 0x0FFFFFFF;
+         break;
+@@ -333,6 +337,7 @@ static void aspeed_ast2400_hace_class_init(ObjectClass *klass, void *data)
+ 
+     ahc->src_mask = 0x0FFFFFFF;
+     ahc->dest_mask = 0x0FFFFFF8;
++    ahc->key_mask = 0x0FFFFFC0;
+     ahc->hash_mask = 0x000003ff; /* No SG or SHA512 modes */
+ }
+ 
+@@ -351,6 +356,7 @@ static void aspeed_ast2500_hace_class_init(ObjectClass *klass, void *data)
+ 
+     ahc->src_mask = 0x3fffffff;
+     ahc->dest_mask = 0x3ffffff8;
++    ahc->key_mask = 0x3FFFFFC0;
+     ahc->hash_mask = 0x000003ff; /* No SG or SHA512 modes */
+ }
+ 
+@@ -369,6 +375,7 @@ static void aspeed_ast2600_hace_class_init(ObjectClass *klass, void *data)
+ 
+     ahc->src_mask = 0x7FFFFFFF;
+     ahc->dest_mask = 0x7FFFFFF8;
++    ahc->key_mask = 0x7FFFFFF8;
+     ahc->hash_mask = 0x00147FFF;
+ }
+ 
+diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+index 94d5ada95f..2242945eb4 100644
+--- a/include/hw/misc/aspeed_hace.h
++++ b/include/hw/misc/aspeed_hace.h
+@@ -37,6 +37,7 @@ struct AspeedHACEClass {
+ 
+     uint32_t src_mask;
+     uint32_t dest_mask;
++    uint32_t key_mask;
+     uint32_t hash_mask;
+ };
+ 
+-- 
+2.17.1
 
-> > +        s->iov_cache[s->iov_count].iov_base = iov[id].iov_base;
-> > +        s->iov_cache[s->iov_count].iov_len = *pad_offset;
-> > +        ++s->iov_count;
-> 
-> 
-> > +    }
-> > +    for (i = 0; i < s->iov_count; i++) {
-> > +        iov[i].iov_base = s->iov_cache[i].iov_base;
-> > +        iov[i].iov_len = s->iov_cache[i].iov_len;
-> > +    }
-> > +    iov_count = s->iov_count;
-> > +    s->iov_count = 0;
-> > +    s->total_req_len = 0;
-> > +    return iov_count;
-> > +}
-> > +
-> 

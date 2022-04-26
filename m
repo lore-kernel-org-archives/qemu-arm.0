@@ -1,85 +1,103 @@
-Received: by 2002:a19:e348:0:0:0:0:0 with SMTP id c8csp2810647lfk;
-        Mon, 25 Apr 2022 19:13:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy4gpGaxM6BcxhGZKaEys9XRdM5nfiCkK1e+6+o9bri6g3cPJ3yWJy9/mVv2HhHZavxxHD5
-X-Received: by 2002:a05:6214:5095:b0:456:4201:628a with SMTP id kk21-20020a056214509500b004564201628amr2473277qvb.113.1650939231471;
-        Mon, 25 Apr 2022 19:13:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650939231; cv=none;
+Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp76893lfu;
+        Tue, 26 Apr 2022 02:08:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwg1xir1UJGS+tOQoraKEKSCg/4yIb/MWrYBSqo+OW/UfaoUvx+yBAfWT/CorRCHVgjPRW7
+X-Received: by 2002:a37:6489:0:b0:69e:7b8a:e735 with SMTP id y131-20020a376489000000b0069e7b8ae735mr12425956qkb.118.1650964109081;
+        Tue, 26 Apr 2022 02:08:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650964109; cv=none;
         d=google.com; s=arc-20160816;
-        b=XhRs2fnquttGlRrRUSADfGus/bUV0t5bUVSbs2LFVYfb7nzcmBgJs300yqo3dRrPyc
-         tFw+EjZJ8OK+6o6SP7Zd90bV1Sn8MGPVUnGl9jGN58Rnfb3rAiYYyD5CkOsasbszHJN4
-         vGEZ5PpP4VnDShG44fuecqLJrNgE6o2EAvMOw9PuO9tfyuJPFEWpvc5ikJovlz87B2qq
-         iwKQ+Tr1CNw6ZpwcNbC0KYJeCgZlAYj4eEIU0NqYkXrJZ9D5mkDkq9zxTzkBzD6E3HfN
-         Sfwc5TPE+muS9kqOQs57DbH37HwBowGnMbqfN1tKC2Nn9ofcqWDFSGnmHwAiAcV55lRn
-         lKUw==
+        b=i1p2puZ8cgQGCJEBBlrDpm+6QkynbPJnRkoiRQQGa/f+cdobRljQfgK7o8s+ZP9dKq
+         TF4UGoGk/bsiMTYb1KTH1CJYIu8m7h2cBq47mpuYD1L8+LRCTQxY+L+s0egAl7Tb8ZKD
+         +7AWB987btTA9V2vWt2zNKpEhPP8WK7Cf4T150Dm4amhIa1lc71AMPXyaFvYd80lZ//2
+         Nqr+3YLzJhS91ILWOD8drvpKiSaQ1XP2/zeG3jw27OJscmXLG+Fsdp3kp1llenWBzR0u
+         oXM3wq6ARsbhzDI4qWM0AFf+PFLJK2Rnvg9/nPmvkjy7JgO77/E+d6SkswLRjkosSVno
+         IMxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=5misBpjiXJny46NNPJrEv98W6cXS5DJ5sEbnZtVhRLU=;
-        b=RAnfeOjC3Vvz3jlZ3qIBsRnpaJo16FLTTN6ntVCNZ+8xFmrmcr5SfN0POn9pS7/Wlm
-         6pCPzesZ91gnfB4K9kHSv5nWbeOq3S8WEVG0u+FVLr0r+B/DLSwdwf111rZZvI1dr/VX
-         WQRSieePy8YyvyJZeYtdsY8Es8uA3JUCf+7Q790nubXo1U19eTSLC9FxsFg42asPbazU
-         p1HcnqrgqAWcRSkWkczVRHSfH9VxMZohFDefyfDDzI8rCtmWwMFfAx7SZRpEK1mZO8HK
-         7UQSv6wlxmVIbUipM2CXYZ7GldFzfSGqO3tnYtrA+0mx42zdjGzbcu8DhgqUwnFZQlnu
-         YWjw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=uogJa8fy4awb5CTmiTBoA+UbVmXEAqojUMKgvCAMKPw=;
+        b=Y0WvMY5C9FgIQTRrWx6W0/oPHeXGhROGGgo83QuGkNIBJgX3y0IZapvCRYY5TvQR/+
+         9mBCaGsipuLtExkB7ma2IsSFmxKpg+4ifjZjfk/TlmSIFvTSFjdZJ5mYOdMhhGzsp9Mt
+         y3HO//EI+iLQm4ltk9Y2hkygJj5rSkzLvz+Knxs3hUjBjCtcbwZ+Sv7iQ6685V2f+CC9
+         Dl2Rak1Wpoihp2SWZvAXsQrUjB4LSRFn+us1sX+G78re6YMKA+Uim5tAxdCkG9cgTpvL
+         BXtYrknrwoH6Cxrbvoo7VKNnNXjY6hlQVl1m9s/FLmXcs/1ZhCM6hhHmWAvwQpNYnj6A
+         34sQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UfVtGolg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q28-20020a05620a025c00b0069e5cd8933bsi4625090qkn.327.2022.04.25.19.13.51
+        by mx.google.com with ESMTPS id s7-20020ac85cc7000000b002f339d33de9si5300826qta.389.2022.04.26.02.08.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Apr 2022 19:13:51 -0700 (PDT)
+        Tue, 26 Apr 2022 02:08:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40240 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UfVtGolg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49564 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1njAi6-0004UY-Va
-	for alex.bennee@linaro.org; Mon, 25 Apr 2022 22:13:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34734)
+	id 1njHBM-0005p3-GQ
+	for alex.bennee@linaro.org; Tue, 26 Apr 2022 05:08:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1njAgh-0001tT-9w; Mon, 25 Apr 2022 22:12:25 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:29939)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1njGyH-0003Kf-RH
+ for qemu-devel@nongnu.org; Tue, 26 Apr 2022 04:54:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:44530)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1njAgf-0003Ct-23; Mon, 25 Apr 2022 22:12:23 -0400
-Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 23Q1wvFL074071;
- Tue, 26 Apr 2022 09:58:58 +0800 (GMT-8)
- (envelope-from steven_lee@aspeedtech.com)
-Received: from localhost.localdomain (192.168.70.100) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Tue, 26 Apr
- 2022 10:11:23 +0800
-From: Steven Lee <steven_lee@aspeedtech.com>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Subject: [PATCH v6 2/3] aspeed/hace: Support AST2600 HACE
-Date: Tue, 26 Apr 2022 10:11:19 +0800
-Message-ID: <20220426021120.28255-3-steven_lee@aspeedtech.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20220426021120.28255-1-steven_lee@aspeedtech.com>
-References: <20220426021120.28255-1-steven_lee@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1njGyG-0000uU-AT
+ for qemu-devel@nongnu.org; Tue, 26 Apr 2022 04:54:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1650963295;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=uogJa8fy4awb5CTmiTBoA+UbVmXEAqojUMKgvCAMKPw=;
+ b=UfVtGolgCRIBTaQisoZUqn1esfM658ZEm6PBOM7tMdYsoPMbMj9us8cX2vvOzoZ0B/liEA
+ VV12ZUFIUF167gsF9dAURYREkmAZHYWPAyOcU4VZgcQ2vLdWjDL7gYHrzZnCfTZdadh5sE
+ L2fdylceUtAURhgW+ya3jcZ2kNZTe3E=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-49-Dkd-a2u3OZOgyCOsWxpjsw-1; Tue, 26 Apr 2022 04:54:53 -0400
+X-MC-Unique: Dkd-a2u3OZOgyCOsWxpjsw-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B0F3186B8BD;
+ Tue, 26 Apr 2022 08:54:03 +0000 (UTC)
+Received: from localhost (unknown [10.39.195.81])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 18EA3553398;
+ Tue, 26 Apr 2022 08:53:43 +0000 (UTC)
+Date: Tue, 26 Apr 2022 09:53:41 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Martin Kletzander <mkletzan@redhat.com>
+Subject: Re: [PATCH 01/18] hw/audio: Remove -soundhw support
+Message-ID: <YmezFYjXT7VRM69W@stefanha-x1.localdomain>
+References: <cover.1650874791.git.mkletzan@redhat.com>
+ <aaa9e17ef9f35cb34acae2538240c11b911d9f6c.1650874791.git.mkletzan@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [192.168.70.100]
-X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
- (192.168.0.24)
-X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 23Q1wvFL074071
-Received-SPF: pass client-ip=211.20.114.71;
- envelope-from=steven_lee@aspeedtech.com; helo=twspam01.aspeedtech.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="zJLGHY+WTpu6wxjY"
+Content-Disposition: inline
+In-Reply-To: <aaa9e17ef9f35cb34acae2538240c11b911d9f6c.1650874791.git.mkletzan@redhat.com>
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,250 +110,77 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
- steven_lee@aspeedtech.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, libvir-list@redhat.com,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, qemu-devel@nongnu.org,
+ Yanan Wang <wangyanan55@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Alexander Bulekov <alxndr@bu.edu>,
+ Bandan Das <bsd@redhat.com>, qemu-arm@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>, Thomas Huth <huth@tuxfamily.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xquFvziwHnTT
+X-TUID: HDmE2wltV/m2
 
-The aspeed ast2600 accumulative mode is described in datasheet
-ast2600v10.pdf section 25.6.4:
- 1. Allocating and initiating accumulative hash digest write buffer
-    with initial state.
-    * Since QEMU crypto/hash api doesn't provide the API to set initial
-      state of hash library, and the initial state is already set by
-      crypto library (gcrypt/glib/...), so skip this step.
- 2. Calculating accumulative hash digest.
-    (a) When receiving the last accumulative data, software need to add
-        padding message at the end of the accumulative data. Padding
-        message described in specific of MD5, SHA-1, SHA224, SHA256,
-        SHA512, SHA512/224, SHA512/256.
-        * Since the crypto library (gcrypt/glib) already pad the
-          padding message internally.
-        * This patch is to remove the padding message which fed byguest
-          machine driver.
 
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
----
- hw/misc/aspeed_hace.c         | 132 ++++++++++++++++++++++++++++++++--
- include/hw/misc/aspeed_hace.h |   4 ++
- 2 files changed, 131 insertions(+), 5 deletions(-)
+--zJLGHY+WTpu6wxjY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 59fe5bfca2..0f4059e6df 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -65,7 +65,6 @@
- #define SG_LIST_ADDR_SIZE               4
- #define SG_LIST_ADDR_MASK               0x7FFFFFFF
- #define SG_LIST_ENTRY_SIZE              (SG_LIST_LEN_SIZE + SG_LIST_ADDR_SIZE)
--#define ASPEED_HACE_MAX_SG              256        /* max number of entries */
- 
- static const struct {
-     uint32_t mask;
-@@ -95,11 +94,104 @@ static int hash_algo_lookup(uint32_t reg)
-     return -1;
- }
- 
--static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
-+/**
-+ * Check whether the request contains padding message.
-+ *
-+ * @param s             aspeed hace state object
-+ * @param iov           iov of current request
-+ * @param req_len       length of the current request
-+ * @param total_msg_len length of all acc_mode requests(excluding padding msg)
-+ * @param pad_offset    start offset of padding message
-+ */
-+static bool has_padding(AspeedHACEState *s, struct iovec *iov,
-+                        hwaddr req_len, uint32_t *total_msg_len,
-+                        uint32_t *pad_offset)
-+{
-+    *total_msg_len = (uint32_t)(ldq_be_p(iov->iov_base + req_len - 8) / 8);
-+    /*
-+     * SG_LIST_LEN_LAST asserted in the request length doesn't mean it is the
-+     * last request. The last request should contain padding message.
-+     * We check whether message contains padding by
-+     *   1. Get total message length. If the current message contains
-+     *      padding, the last 8 bytes are total message length.
-+     *   2. Check whether the total message length is valid.
-+     *      If it is valid, the value should less than or equal to
-+     *      total_req_len.
-+     *   3. Current request len - padding_size to get padding offset.
-+     *      The padding message's first byte should be 0x80
-+     */
-+    if (*total_msg_len <= s->total_req_len) {
-+        uint32_t padding_size = s->total_req_len - *total_msg_len;
-+        uint8_t *padding = iov->iov_base;
-+        *pad_offset = req_len - padding_size;
-+        if (padding[*pad_offset] == 0x80) {
-+            return true;
-+        }
-+    }
-+
-+    return false;
-+}
-+
-+static int reconstruct_iov(AspeedHACEState *s, struct iovec *iov, int id,
-+                           uint32_t *pad_offset)
-+{
-+    int i, iov_count;
-+    if (*pad_offset != 0) {
-+        s->iov_cache[s->iov_count].iov_base = iov[id].iov_base;
-+        s->iov_cache[s->iov_count].iov_len = *pad_offset;
-+        ++s->iov_count;
-+    }
-+    for (i = 0; i < s->iov_count; i++) {
-+        iov[i].iov_base = s->iov_cache[i].iov_base;
-+        iov[i].iov_len = s->iov_cache[i].iov_len;
-+    }
-+    iov_count = s->iov_count;
-+    s->iov_count = 0;
-+    s->total_req_len = 0;
-+    return iov_count;
-+}
-+
-+/**
-+ * Generate iov for accumulative mode.
-+ *
-+ * @param s             aspeed hace state object
-+ * @param iov           iov of the current request
-+ * @param id            index of the current iov
-+ * @param req_len       length of the current request
-+ *
-+ * @return count of iov
-+ */
-+static int gen_acc_mode_iov(AspeedHACEState *s, struct iovec *iov, int id,
-+                            hwaddr *req_len)
-+{
-+    uint32_t pad_offset;
-+    uint32_t total_msg_len;
-+    s->total_req_len += *req_len;
-+
-+    if (has_padding(s, &iov[id], *req_len, &total_msg_len, &pad_offset)) {
-+        if (s->iov_count) {
-+            return reconstruct_iov(s, iov, id, &pad_offset);
-+        }
-+
-+        *req_len -= s->total_req_len - total_msg_len;
-+        s->total_req_len = 0;
-+        iov[id].iov_len = *req_len;
-+    } else {
-+        s->iov_cache[s->iov_count].iov_base = iov->iov_base;
-+        s->iov_cache[s->iov_count].iov_len = *req_len;
-+        ++s->iov_count;
-+    }
-+
-+    return id + 1;
-+}
-+
-+static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-+                              bool acc_mode)
- {
-     struct iovec iov[ASPEED_HACE_MAX_SG];
-     g_autofree uint8_t *digest_buf;
-     size_t digest_len = 0;
-+    int niov = 0;
-     int i;
- 
-     if (sg_mode) {
-@@ -124,10 +216,16 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
-                                         MEMTXATTRS_UNSPECIFIED, NULL);
-             addr &= SG_LIST_ADDR_MASK;
- 
--            iov[i].iov_len = len & SG_LIST_LEN_MASK;
--            plen = iov[i].iov_len;
-+            plen = len & SG_LIST_LEN_MASK;
-             iov[i].iov_base = address_space_map(&s->dram_as, addr, &plen, false,
-                                                 MEMTXATTRS_UNSPECIFIED);
-+
-+            if (acc_mode) {
-+                niov = gen_acc_mode_iov(s, iov, i, &plen);
-+
-+            } else {
-+                iov[i].iov_len = plen;
-+            }
-         }
-     } else {
-         hwaddr len = s->regs[R_HASH_SRC_LEN];
-@@ -137,6 +235,25 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
-                                             &len, false,
-                                             MEMTXATTRS_UNSPECIFIED);
-         i = 1;
-+
-+        if (s->iov_count) {
-+            /*
-+             * In aspeed sdk kernel driver, sg_mode is disabled in hash_final().
-+             * Thus if we received a request with sg_mode disabled, it is
-+             * required to check whether cache is empty. If no, we should
-+             * combine cached iov and the current iov.
-+             */
-+            uint32_t total_msg_len;
-+            uint32_t pad_offset;
-+            s->total_req_len += len;
-+            if (has_padding(s, iov, len, &total_msg_len, &pad_offset)) {
-+                niov = reconstruct_iov(s, iov, 0, &pad_offset);
-+            }
-+        }
-+    }
-+
-+    if (niov) {
-+        i = niov;
-     }
- 
-     if (qcrypto_hash_bytesv(algo, iov, i, &digest_buf, &digest_len, NULL) < 0) {
-@@ -238,7 +355,8 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
-                         __func__, data & ahc->hash_mask);
-                 break;
-         }
--        do_hash_operation(s, algo, data & HASH_SG_EN);
-+        do_hash_operation(s, algo, data & HASH_SG_EN,
-+                ((data & HASH_HMAC_MASK) == HASH_DIGEST_ACCUM));
- 
-         if (data & HASH_IRQ_EN) {
-             qemu_irq_raise(s->irq);
-@@ -271,6 +389,8 @@ static void aspeed_hace_reset(DeviceState *dev)
-     struct AspeedHACEState *s = ASPEED_HACE(dev);
- 
-     memset(s->regs, 0, sizeof(s->regs));
-+    s->iov_count = 0;
-+    s->total_req_len = 0;
- }
- 
- static void aspeed_hace_realize(DeviceState *dev, Error **errp)
-@@ -306,6 +426,8 @@ static const VMStateDescription vmstate_aspeed_hace = {
-     .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(regs, AspeedHACEState, ASPEED_HACE_NR_REGS),
-+        VMSTATE_UINT32(total_req_len, AspeedHACEState),
-+        VMSTATE_UINT32(iov_count, AspeedHACEState),
-         VMSTATE_END_OF_LIST(),
-     }
- };
-diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-index 2242945eb4..40aebf1d6e 100644
---- a/include/hw/misc/aspeed_hace.h
-+++ b/include/hw/misc/aspeed_hace.h
-@@ -18,6 +18,7 @@
- OBJECT_DECLARE_TYPE(AspeedHACEState, AspeedHACEClass, ASPEED_HACE)
- 
- #define ASPEED_HACE_NR_REGS (0x64 >> 2)
-+#define ASPEED_HACE_MAX_SG  256 /* max number of entries */
- 
- struct AspeedHACEState {
-     SysBusDevice parent;
-@@ -25,7 +26,10 @@ struct AspeedHACEState {
-     MemoryRegion iomem;
-     qemu_irq irq;
- 
-+    struct iovec iov_cache[ASPEED_HACE_MAX_SG];
-     uint32_t regs[ASPEED_HACE_NR_REGS];
-+    uint32_t total_req_len;
-+    uint32_t iov_count;
- 
-     MemoryRegion *dram_mr;
-     AddressSpace dram_as;
--- 
-2.17.1
+On Mon, Apr 25, 2022 at 10:21:44AM +0200, Martin Kletzander wrote:
+> One thing I am not sure about is whether to keep the aliases of ac97 and
+> es1370 in the qdev_alias_table.
+>=20
+> Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
+> ---
+>  docs/about/deprecated.rst                     |   9 -
+>  docs/about/removed-features.rst               |  10 +
+>  docs/qdev-device-use.txt                      |  21 +--
+>  docs/replay.txt                               |   2 +-
+>  hw/audio/ac97.c                               |   3 -
+>  hw/audio/adlib.c                              |   2 -
+>  hw/audio/cs4231a.c                            |   2 -
+>  hw/audio/es1370.c                             |   3 -
+>  hw/audio/gus.c                                |   2 -
+>  hw/audio/intel-hda.c                          |  21 ---
+>  hw/audio/meson.build                          |   1 -
+>  hw/audio/pcspk.c                              |  11 --
+>  hw/audio/sb16.c                               |   3 -
+>  hw/audio/soundhw.c                            | 177 ------------------
+>  include/hw/audio/soundhw.h                    |  15 --
+>  qemu-options.hx                               |  27 ---
+>  .../codeconverter/test_regexps.py             |   1 -
+>  softmmu/qdev-monitor.c                        |   2 -
+>  softmmu/vl.c                                  |   6 -
+>  19 files changed, 19 insertions(+), 299 deletions(-)
+>  delete mode 100644 hw/audio/soundhw.c
+>  delete mode 100644 include/hw/audio/soundhw.h
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--zJLGHY+WTpu6wxjY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmJnsxUACgkQnKSrs4Gr
+c8jY0QgAo5fbiL930s2il805djf64EcvNYfCxUbmf1DdA0OH03GPk4NAw6TTubU7
+JLoLnFu5OchAC9dH7SEc+CKtcQkBn4DjXXhwKurObgVnWN7L22Z9Cj13pfGi55aY
+Dpeu0v/y0gwQwAIQZV+1BptOG4HyE0UC7TI+vPnhK5Du/hHJNksnSOgqiRL4HK4l
+yHmupY9xqcKHnbtUy5M8akFIkMf+KrbO+6dL9C0+S3iFWK9rIoR/+PbccgQ8OTuH
+SAeelczM2V4Xlp0LBJpqZ7GQAwP4rO+zNKip3sgvqLgV4NG+heJgP3ZH7MWjiz6S
+m13h+o2FL31ydAOlYivsXDYw+2R7HQ==
+=Q9bt
+-----END PGP SIGNATURE-----
+
+--zJLGHY+WTpu6wxjY--
 

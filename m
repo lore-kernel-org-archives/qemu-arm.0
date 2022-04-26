@@ -1,111 +1,112 @@
-Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp344405lfu;
-        Tue, 26 Apr 2022 09:14:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx5xQSikTX3QtKDPwnwCJomJPgKQxrF9gRl1VN9WMEhN4hpPjyIib5EumxlRVg0ZwVgRQCP
-X-Received: by 2002:a81:1655:0:b0:2f4:e558:73c5 with SMTP id 82-20020a811655000000b002f4e55873c5mr22889472yww.274.1650989663671;
-        Tue, 26 Apr 2022 09:14:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650989663; cv=none;
+Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp346534lfu;
+        Tue, 26 Apr 2022 09:17:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzzrxmrzjVOIt0kGWIwshCfRmJatI0m3aUftsbdylpQHVqV5LiomSbKNq+B+k2bu0vxZ0/9
+X-Received: by 2002:a25:ba45:0:b0:648:4989:d505 with SMTP id z5-20020a25ba45000000b006484989d505mr12354898ybj.304.1650989855193;
+        Tue, 26 Apr 2022 09:17:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650989855; cv=none;
         d=google.com; s=arc-20160816;
-        b=o4yFHvN8k0uxicRnKhebos6EDott+E3xOMlnoKpXmkYSFWlAxXfBAVHP0Znv4i9NN/
-         BW0oWgV7chR+zhqsscHIUzMI3nPrXJWSJTfMe4Gz7ES+wUOHXRTdRAHs+NDmqmXep6j3
-         /0JhePEEAGg07zFxKziCUIw1/uSrgubzCtPZjvrEcLck+aYIFOCGm2wnMNylKLWzqvsn
-         b33P3MRpAn7v4+4kQwT+YDebWK5YMhybXJToC7cjKsU6BDqOW3a9uopTQMlVKr5uGI3A
-         wTU6WBp5asyyVL55oAF2MHg3LuY//zkpjEVeHM2MFdLKwR2QUFufYOkdLayVB/+ZEORk
-         +84g==
+        b=GSxtAlUbApcYxAMelAkvbm6Mg7PMZSBtxrcQde7DD2fnRWmhUEoU5glv7oq8BacTNo
+         IKULLvGBdiy/Lz+TQY1HBF9TgXoh9cBt5SYsUIKLUsoL/d5LRewUK1onZQ9dKFhWHGzb
+         IQBOBckCgA3D/6lpKZgOjvrxzuzYMnAGQ11BqeqB1CC1wTKtIMvXIzl26m+8TCGNltVt
+         UibgCTSYyDHBxvImlrdyrt43b1os0H8u5AHrZMl5g4FThktlMO6afFn+VTf20bHBd1xA
+         PorLZ8easInpHN2WeADodF9EkuUzjPu7SpqqVxFWk/phNHxkvqkDaroiyWIGu4Xcz2ca
+         IiLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Z32BMyn+yGJAtZTpHVnzzj+i0p3WqVl/zaCG0tsjJlk=;
-        b=YJGLyVSdJZKlkmM1Fx3jiTMrY72BPC9D2YPVQilC/5SUcl7hGRxW+p9aBusvFmA4ul
-         FbwKU6z8oJcKJPEVk0mG+9o+7R0vqaXwhTTFTfDTguv/CHZl8/ggHdJ0Zl26ZxWfOpNP
-         gv41wAZF4QWSSRGI3cic8SrOkd44BNaAgJyvdsOTgW8tmqmGFnOOWHFd7loAx09gS4Sb
-         RpJ8vbszhHw2cPh4IECyMJkONVQwLvLuO5Z4F2F/nutu4wS8qJWStiSaroInSTpIITJ7
-         NB6k1y992iHsm/wbRv1ew60/70nUHs8iDr71RH3A33Oof8GMxOCcuG7mIUlYS/EW9FrP
-         VI3g==
+        bh=OsQV7ZmcQTGgPLMSTvn131giURirHLy7ThlcG0+Jl1Q=;
+        b=TvQ9WOvH8xkUWpfzPULgZRzvSC3RCOh7PXCqFIcm1qhNgnw0KcgNRK+6Rnz1a7w591
+         u/H+d9XNnGyhAXQBM4oDmP/dcHQmg3us4PRkRCK6e6G0o+SSAY4wu9oXF6C+wmSLxqeq
+         RHGk77g66wOgx74+gtRcnulZlp2XId1a0ElIvJNnpI2OsddCrUNaI6w+5CsOIUU83WAz
+         toEdVbLewozB7Yxesbbp4DgsbW2Zykt8wBqw1rMiJ9S8beeTFwTg18O9ZigQgi0V5DrS
+         PiMinHiHP+zmCZrAGTNSXXA9YejSf9vNAVZq7SvE+SClDyKhzfPl83bj+KOEtLRioDDx
+         QR8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=toIno8Pm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UcxDkNq6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 130-20020a250f88000000b0064534f57922si12901047ybp.399.2022.04.26.09.14.23
+        by mx.google.com with ESMTPS id a186-20020a0df1c3000000b002eb451337c5si13930814ywf.283.2022.04.26.09.17.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Apr 2022 09:14:23 -0700 (PDT)
+        Tue, 26 Apr 2022 09:17:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=toIno8Pm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UcxDkNq6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46198 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54886 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1njNpX-0002w5-0u
-	for alex.bennee@linaro.org; Tue, 26 Apr 2022 12:14:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38786)
+	id 1njNsc-0000f8-JS
+	for alex.bennee@linaro.org; Tue, 26 Apr 2022 12:17:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1njNfx-0006T0-Fz
- for qemu-devel@nongnu.org; Tue, 26 Apr 2022 12:04:29 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:46000)
+ id 1njNfy-0006U5-9Z
+ for qemu-devel@nongnu.org; Tue, 26 Apr 2022 12:04:30 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:41832)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1njNfv-0007o5-FP
- for qemu-devel@nongnu.org; Tue, 26 Apr 2022 12:04:29 -0400
-Received: by mail-wr1-x432.google.com with SMTP id w4so26081363wrg.12
- for <qemu-devel@nongnu.org>; Tue, 26 Apr 2022 09:04:26 -0700 (PDT)
+ id 1njNfw-0007oS-J1
+ for qemu-devel@nongnu.org; Tue, 26 Apr 2022 12:04:30 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ u9-20020a05600c00c900b00393e729e655so1894061wmm.0
+ for <qemu-devel@nongnu.org>; Tue, 26 Apr 2022 09:04:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Z32BMyn+yGJAtZTpHVnzzj+i0p3WqVl/zaCG0tsjJlk=;
- b=toIno8PmSDyTi/EcApXnqZMSlP6jK9sHOQ7YdSZ5iigqGKsY5Cd0O24s7oRK4bfNtI
- kjycVSoQVpHQSLgl9+O4bEEfZrZk9UsMeKPoHXFvHfASgPdNPVbox5kv8wtDE6DOsj/y
- R85hQM/iIeevBY4YjSfbnkyzVnAgoBQWdOJu3Y5O5N/s12VcwMsoqgKrJ44XPh54awB2
- 8ucYTWTiz+TM0da/HIhR0ayEWetrd+3SNg6O+99rYI1/mXKgfkdzUzmnBFihCCTsuL0y
- qm7L/s6Or35p+8fgid6BjET+lcodaPs5Ddy+VsmNB33MlBth1mV/mWfe/aguUMaYnI0X
- f63A==
+ bh=OsQV7ZmcQTGgPLMSTvn131giURirHLy7ThlcG0+Jl1Q=;
+ b=UcxDkNq6HwUVjI7SrSKIKyl7zkUmsYOum2JX9evLnWcVIAuuoKk3bvJdVwp/qBl6yW
+ VzfjkWA3QHRXRiVS8I0GOL8l/uXW7yPDIyuAt3Pn/pofYHCfrtPuLjWxVAZHb2uMOwbh
+ cwOLyu+pUycF72ELo2/5nkj1eyjpZ7OrxBkldNRalZl6CpE/oR9/F9eSz2opfWYTr5T0
+ igkb6n0k437jI6JhTGEAFri4t830yt1xdSPTKZzGIlfwIK3Og+7gCAmqhw1unTPcX7jQ
+ jkqUQByGFgSfEh/mIWlUbngWk56k5Tp8b4eAcx6coC5qSStXIy48dox6mNqKUNcSI20u
+ CBjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Z32BMyn+yGJAtZTpHVnzzj+i0p3WqVl/zaCG0tsjJlk=;
- b=nQ+E7vY+0rICr4h7pdZXLSix6JkCtlB1pH2H8TrPbSn0emflSY7Wl4Hfgho6RBqdGx
- QtkY4rsW1LBvXrpG9R2cvhO2YZWFLZdewV85T1dp5SRkFfFD/9xewMa405stqv6l3beH
- C7Bjc7BasHa2qJJOD0mv7tWUQzO4ooplSLn7YbiXH9SacepzfB6siUL8z7Lgn+c8xIip
- vK3tu/voWDJBUfu0OrAH7mHA/6PE9ctaIr9yzd2hWARfyo6ngwvFh0Uc44JK//idlnR/
- nTzj86IgMqunfrjzAvvnj4xxO6ycu5TpyFT29UYXwAb+XabG70x4tdI5zsEFX3E3V7bx
- dRSw==
-X-Gm-Message-State: AOAM530REh4g0sFkkzyLFjAwUrHKNALkKpjLtDkdNlGd4XdJjoK5E5/W
- TwnzFrlnAvrZnOVxdHayLa0JsA==
-X-Received: by 2002:a5d:6e89:0:b0:20a:de31:18d1 with SMTP id
- k9-20020a5d6e89000000b0020ade3118d1mr7625812wrz.449.1650989066088; 
- Tue, 26 Apr 2022 09:04:26 -0700 (PDT)
+ bh=OsQV7ZmcQTGgPLMSTvn131giURirHLy7ThlcG0+Jl1Q=;
+ b=VtEV5t5Tww1xKfgGq7+rkKM4sqr1z2WnBKaRRS+9dBjYoGA+QXwdtZ6Ah18jbaQg8c
+ t6iNDDPlB7YPwUgZ1gx63Gy4GzY5oV7eYLHfuYucIiz+bgzRgmPCeBg4usWeTzgvO8v7
+ PldyIlqhGQ6edCoMyr9udsq9GuNDWmxCYIstsqoAKG4bhCkhqY+Tas5bMR2iljWBI7ne
+ jsP50bn3yQoj6icn0urlEyPE2jJYhFohwOOl1CpLgYg+lUmAtwHUc9GUEO7fVnC6rOJG
+ OGU+dPa8RATaP3RZRnlsn46CU17MYF1j6drvw7APrBdaP+TapF6QrWMuN/Hg40c+DqC9
+ CTeA==
+X-Gm-Message-State: AOAM532AS5EZtIIXfpdys7J4LYSFSOPxQqAdo4hWZOhCCiNEGcuplKw2
+ sQR2cCjnZ403C2Zh+CZ9Eho0Tw==
+X-Received: by 2002:a1c:f30b:0:b0:380:e444:86b9 with SMTP id
+ q11-20020a1cf30b000000b00380e44486b9mr21957069wmq.81.1650989067083; 
+ Tue, 26 Apr 2022 09:04:27 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- p26-20020adf959a000000b0020aca418f14sm13584777wrp.54.2022.04.26.09.04.25
+ p26-20020adf959a000000b0020aca418f14sm13584777wrp.54.2022.04.26.09.04.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Apr 2022 09:04:25 -0700 (PDT)
+ Tue, 26 Apr 2022 09:04:26 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/3] target/arm: Advertise support for FEAT_BBM level 2
-Date: Tue, 26 Apr 2022 17:04:21 +0100
-Message-Id: <20220426160422.2353158-3-peter.maydell@linaro.org>
+Subject: [PATCH 3/3] hw/arm/smmuv3: Advertise support for SMMUv3.2-BBML2
+Date: Tue, 26 Apr 2022 17:04:22 +0100
+Message-Id: <20220426160422.2353158-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220426160422.2353158-1-peter.maydell@linaro.org>
 References: <20220426160422.2353158-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,100 +123,66 @@ Cc: Eric Auger <eric.auger@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7XVSXjrVPEGR
+X-TUID: IN5ebJGIB1Rw
 
-The description in the Arm ARM of the requirements of FEAT_BBM is
-admirably clear on the guarantees it provides software, but slightly
-more obscure on what that means for implementations.  The description
-of the equivalent SMMU feature in the SMMU specification (IHI0070D.b
-section 3.21.1) is perhaps a bit more detailed and includes some
-example valid implementation choices. (The SMMU version of this
-feature is slightly tighter than the CPU version: the CPU is permitted
-to raise TLB Conflict aborts in some situations that the SMMU may
-not. This doesn't matter for QEMU because we don't want to do TLB
-Conflict aborts anyway.)
-
-The informal summary of FEAT_BBM is that it is about permitting an OS
-to switch a range of memory between "covered by a huge page" and
-"covered by a sequence of normal pages" without having to engage in
-the 'break-before-make' dance that has traditionally been
-necessary. The 'break-before-make' sequence is:
-
- * replace the old translation table entry with an invalid entry
- * execute a DSB insn
- * execute a broadcast TLB invalidate insn
- * execute a DSB insn
- * write the new translation table entry
- * execute a DSB insn
-
-The point of this is to ensure that no TLB can simultaneously contain
-TLB entries for the old and the new entry, which would traditionally
-be UNPREDICTABLE (allowing the CPU to generate a TLB Conflict fault
-or to use a random mishmash of values from the old and the new
-entry).  FEAT_BBM level 2 says "for the specific case where the only
-thing that changed is the size of the block, the TLB is guaranteed
-not to do weird things even if there are multiple entries for an
-address", which means that software can now do:
-
- * replace old translation table entry with new entry
- * DSB
- * broadcast TLB invalidate
- * DSB
-
-As the SMMU spec notes, valid ways to do this include:
-
+The Arm SMMUv3 includes an optional feature equivalent to the CPU
+FEAT_BBM, which permits an OS to switch a range of memory between
+"covered by a huge page" and "covered by a sequence of normal pages"
+without having to engage in the traditional 'break-before-make'
+dance. (This is particularly important for the SMMU, because devices
+performing I/O through an SMMU are less likely to be able to cope with
+the window in the sequence where an access results in a translation
+fault.)  The SMMU spec explicitly notes that one of the valid ways to
+be a BBM level 2 compliant implementation is:
  * if there are multiple entries in the TLB for an address,
    choose one of them and use it, ignoring the others
- * if there are multiple entries in the TLB for an address,
-   throw them all out and do a page table walk to get a new one
 
-QEMU's page table walk implementation for Arm CPUs already meets the
-requirements for FEAT_BBM level 2. When we cache an entry in our TCG
-TLB, we do so only for the specific (non-huge) page that the address
-is in, and there is no way for the TLB data structure to ever have
-more than one TLB entry for that page. (We handle huge pages only in
-that we track what part of the address space is covered by huge pages
-so that a TLB invalidate operation for an address in a huge page
-results in an invalidation of the whole TLB.) We ignore the Contiguous
-bit in page table entries, so we don't have to do anything for the
-parts of FEAT_BBM that deal with changis to the Contiguous bit.
+Our SMMU TLB implementation (unlike our CPU TLB) does allow multiple
+TLB entries for an address, because the translation table level is
+part of the SMMUIOTLBKey, and so our IOTLB hashtable can include
+entries for the same address where the leaf was at different levels
+(i.e. both hugepage and normal page). Our TLB lookup implementation in
+smmu_iotlb_lookup() will always find the entry with the lowest level
+(i.e. it prefers the hugepage over the normal page) and ignore any
+others. TLB invalidation correctly removes all TLB entries matching
+the specified address or address range (unless the guest specifies the
+leaf level explicitly, in which case it gets what it asked for). So we
+can validly advertise support for BBML level 2.
 
-FEAT_BBM level 2 also requires that the nT bit in block descriptors
-must be ignored; since commit 39a1fd25287f5dece5 we do this.
-
-It's therefore safe for QEMU to advertise FEAT_BBM level 2 by
-setting ID_AA64MMFR2_EL1.BBM to 2.
+Note that we still can't yet advertise ourselves as an SMMU v3.2,
+because v3.2 requires support for the S2FWB feature, which we don't
+yet implement.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- docs/system/arm/emulation.rst | 1 +
- target/arm/cpu64.c            | 1 +
+ hw/arm/smmuv3-internal.h | 1 +
+ hw/arm/smmuv3.c          | 1 +
  2 files changed, 2 insertions(+)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 6ed2417f6fc..c3bd0676a87 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -9,6 +9,7 @@ the following architecture extensions:
- - FEAT_AA32HPD (AArch32 hierarchical permission disables)
- - FEAT_AA32I8MM (AArch32 Int8 matrix multiplication instructions)
- - FEAT_AES (AESD and AESE instructions)
-+- FEAT_BBM at level 2 (Translation table break-before-make levels)
- - FEAT_BF16 (AArch64 BFloat16 instructions)
- - FEAT_BTI (Branch Target Identification)
- - FEAT_DIT (Data Independent Timing instructions)
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index ec2d159163f..2974cbc0d35 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -840,6 +840,7 @@ static void aarch64_max_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1); /* TTST */
-     t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1); /* FEAT_LVA */
-     t = FIELD_DP64(t, ID_AA64MMFR2, TTL, 1); /* FEAT_TTL */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, BBM, 2); /* FEAT_BBM at level 2 */
-     cpu->isar.id_aa64mmfr2 = t;
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index d1885ae3f25..e9150a6ff33 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -56,6 +56,7 @@ REG32(IDR2,                0x8)
+ REG32(IDR3,                0xc)
+      FIELD(IDR3, HAD,         2, 1);
+      FIELD(IDR3, RIL,        10, 1);
++     FIELD(IDR3, BBML,       11, 2);
+ REG32(IDR4,                0x10)
+ REG32(IDR5,                0x14)
+      FIELD(IDR5, OAS,         0, 3);
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 707eb430c23..74bc2e85ee4 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -259,6 +259,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
  
-     t = cpu->isar.id_aa64zfr0;
+     s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
+     s->idr[3] = FIELD_DP32(s->idr[3], IDR3, HAD, 1);
++    s->idr[3] = FIELD_DP32(s->idr[3], IDR3, BBML, 2);
+ 
+     /* 4K, 16K and 64K granule support */
+     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
 -- 
 2.25.1
 

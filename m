@@ -1,104 +1,103 @@
-Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp387221lfu;
-        Tue, 26 Apr 2022 10:18:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrsKdBVXKZLAZiZ7BXjTdiGqJdhGGs0CYrfBrblyysrXWJ/dH85KGsOPdgnEBjg3XFZR1/
-X-Received: by 2002:a25:d909:0:b0:648:a2c0:c49d with SMTP id q9-20020a25d909000000b00648a2c0c49dmr5525675ybg.451.1650993500043;
-        Tue, 26 Apr 2022 10:18:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650993500; cv=none;
+Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp387898lfu;
+        Tue, 26 Apr 2022 10:19:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyF/s/xVIAj7ApyCfjV04MA4hli2w+4vHPOVXHF/e7BBFaUT74+zs0Ah+72phNf4Ia8S4W9
+X-Received: by 2002:a81:2003:0:b0:2f4:d37b:acdb with SMTP id g3-20020a812003000000b002f4d37bacdbmr22365165ywg.115.1650993566585;
+        Tue, 26 Apr 2022 10:19:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1650993566; cv=none;
         d=google.com; s=arc-20160816;
-        b=aZCUDQbr1UWf4DWWksprLPCPo+7yAArylq2HBMdDm32K220tZ5+OCYGwd/T+TwEkQb
-         vUOH8pApN+8EPujQ8Oos1ZhyI2px1QIU0GPkNpboVjs9XVCQCU4HHxXQmg0jVXX3A4SF
-         VZ5SXUpAAjQs8srE25nWDgszVWfBcICothg/63AVTfQ2TbATwOASMbBWNEN4F8ipaMvx
-         8FPFyySyqtM/ylp6Nd1RlF7hWkwvyGvqa+M3D5tyCx/+xHPTPc9qzwF+Aewuu/Am0NJE
-         C8rpyeqMWcDeOEcs5trt0opT9V5qN55e4bmVyHji1xyq1HhAvdYNUheDY512djSGJvvg
-         scUw==
+        b=Iny64GQ/nKu8n+FE2o56y4DMY4FGcVtR1c5e5Gz0naeGSxrAax1bluQMJeYIpfOJT+
+         QztW5SLy4Xvr/YDMTCrCZWuKD3FOqSlHmdXuvRZbf84q0v+Fgn5RKCin48+kCILQuImE
+         AjRBOTBN4soqVqcalHvyHz4InJWz2t025W14pZnaCe1uKQrs/yyrFlqAFpp4Saz/10vL
+         93n5OfWqkIrIB8N38YXI82uY83DyjLSlw3kf7QEXkl38MwnlJa2KziWFBpI/89J3OUEX
+         IoH5gkm/tJisr53akwRtEjMnXArtd5LWSLhmOwkilLtU7LmBB3G2iwf69Iv+jIPBB5CN
+         0guQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=rEYpL9+yf+aJ8URnT+Udx9HusvkjZ5AP1kU3tR6FFqM=;
-        b=anNlilzSgNnyArXmPdwMw66Lp+pS0XuWz7MwaPV6r9o1zMsx/vhn/tMjr+Bjqc8HYe
-         iKa7ZC99B8wceVUfDwcU+4gZLzY9MrMFbpa12lyBCL3hpBP8jTNamsTwAtv4I/uLwaCZ
-         gT+FsbUwhkE3bBA4Xlv3OPZOZcnyiZTp1KtKuT2zPHh+5OqgsKl8u6RCfp0UyzqlgBvb
-         U/u0POpfyFFxm1bnnCyM/UwaioRf4EdRcca6EaHgnoAE44cxP7Y57fEQ7gkgZV0R3mlw
-         EB3WTh12tnYaFwk8n49RLxb9pVwLZIOwCLowl3r5OkgBiXEJN1PCOOSKadxug+gjzA5A
-         0bdQ==
+        bh=40ck44OW/2AAXYFbuytVYTaszbOW+Vcyas+8jB0+QD8=;
+        b=pTJ27KVjd4iYWptsBEJ1Q7KCa0ovyV40W5KiCr4tC6DyHfr6qTx2sPkId2B7Z5Y/EW
+         dL1jFZgLTmXW3aZPj3ozue4PdNrjrHqR5RPt3yrWOHfyG/5LbN/l9vDzul7CQ3lEKv+X
+         2DX/sw90qx6Eza0Lx3hZage6RL3E5KTJZvPoyySE2tyhevz7Wf2ogrAMnnzPjy7TZXJJ
+         TWEE/buJmBCVGTsLGodQazHnwxwadjIyKtoHNnIuQIeLXXvTSFZrl9aGkARmYWRgUqd9
+         sRCugr6w7Ocz7uJoluSYkvSZq7KLOPOvZVO3mCFtH9GNSOXIMFECTaHXyg10IbQIE5xO
+         f/XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jtlksooC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QueI3SDE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w188-20020a2530c5000000b0064115bef0fcsi15035404ybw.528.2022.04.26.10.18.19
+        by mx.google.com with ESMTPS id v63-20020a0dd342000000b002ef3ef17ed7si13838785ywd.229.2022.04.26.10.19.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Apr 2022 10:18:20 -0700 (PDT)
+        Tue, 26 Apr 2022 10:19:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jtlksooC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QueI3SDE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36892 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40470 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1njOpP-0004oP-DG
-	for alex.bennee@linaro.org; Tue, 26 Apr 2022 13:18:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47018)
+	id 1njOqT-0007Fb-VT
+	for alex.bennee@linaro.org; Tue, 26 Apr 2022 13:19:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1njO8x-0002Gz-Vd
- for qemu-devel@nongnu.org; Tue, 26 Apr 2022 12:34:27 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:45984)
+ id 1njO92-0002Vw-Hi
+ for qemu-devel@nongnu.org; Tue, 26 Apr 2022 12:34:32 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531]:46773)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1njO8w-0004Ly-0O
- for qemu-devel@nongnu.org; Tue, 26 Apr 2022 12:34:27 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id
- n33-20020a17090a5aa400b001d28f5ee3f9so3005783pji.4
- for <qemu-devel@nongnu.org>; Tue, 26 Apr 2022 09:34:25 -0700 (PDT)
+ id 1njO90-0004Nl-DZ
+ for qemu-devel@nongnu.org; Tue, 26 Apr 2022 12:34:32 -0400
+Received: by mail-pg1-x531.google.com with SMTP id q12so16476504pgj.13
+ for <qemu-devel@nongnu.org>; Tue, 26 Apr 2022 09:34:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=rEYpL9+yf+aJ8URnT+Udx9HusvkjZ5AP1kU3tR6FFqM=;
- b=jtlksooChHxoDZiaqIL4waU3vHPV1Lf5efkEcZghNamwnTb8f1IiD5A1QKOOW1eudg
- 5CmcfR+BjJz7jyihveubvwVapxmW2yYOOQ4KrvCwkWiDT0dS1jH/xyYyeEyT9ddJlQEk
- aqGmeqZLsHxELFdY8nFvKE7S91h1X4+xuRZbBPQwzN2WChA7u5mQH7r47gXv1OSUGrNv
- qqxH6O3f/WS7V0UVNUM54hxOkn5jINl+zYaRQ/Fcx/C+/MMgG8GKFwO/jz83mi7fO5zX
- qFYnx1Ut4qLNO7P4gO5+pQYpisNKEPmk7L0jTzokdunxKivPHCoVBaAdWckI9SqFRH5D
- 4vMA==
+ bh=40ck44OW/2AAXYFbuytVYTaszbOW+Vcyas+8jB0+QD8=;
+ b=QueI3SDEfxI43FPF7e+H5I620JM6aOzHzNmQydwrUmUjggYux9HRE889EQoMHbU2Za
+ hIezvIWewkiFNXPvNhs0UZLcwu0e+p8bqGpfYUPREQMl26LoJOn2cFZG9vU57qUxUudf
+ IqWkIXrEIkmMUdxvdsPF1gXJAmyrKp7LhAOjVtdCtJZlE0/PWhAz2UfmXMVuXe37QpZu
+ WPUnEsnsw2cGSr+3ywlB0h+YP2Y1/bAZ4gKQh025kEdbZTC5800fbD20UjXbKSmkZph3
+ 9Pr0izATyRTOgLjIFuXoiiRuMSnCEKqu+zVs9esEabmHLHW1GpfudFdZIwuNg6xcEIij
+ NxHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=rEYpL9+yf+aJ8URnT+Udx9HusvkjZ5AP1kU3tR6FFqM=;
- b=ndc56iT7OSa9F1DZgRTI2syOCttn8HtyVn5ip5OiIkleB+IfafI08dZpR8ahiKv2MV
- u6YFfnek9+9myuCgZ8nfKyG9e5deKXsvSMaQwVuF6R+J0iEfzjPJ9/Qv41aPxrUjCQ+x
- 92QuwyBVgNZmPATzynWwtn0Si03HtHwDfoz+HWum6JJzTso3/ZVQiURMyVIe3spcY7nA
- qbOEqh7VE/XhsIeW6O5Rqv6wE0aEPrgStXrui4MYZobtVH/XAU9TYXf6alhgwHYhpyJM
- C6zB55UtbQxYMQCWZ5bITC7OprGNY93nHRGyt/7nlGL0XOHhv7N3UesH69UGs9WNrtY1
- SUJQ==
-X-Gm-Message-State: AOAM531WxqS34ImJlDs8ace8OZuPu2wl0fiFbttGhCyhNWrtEekkDPH2
- sYOWMEVPap4M/IcHwEaDTsP3ynm53gh8Uw==
-X-Received: by 2002:a17:902:ab5c:b0:15c:ea3a:9437 with SMTP id
- ij28-20020a170902ab5c00b0015cea3a9437mr17333305plb.9.1650990864616; 
- Tue, 26 Apr 2022 09:34:24 -0700 (PDT)
+ bh=40ck44OW/2AAXYFbuytVYTaszbOW+Vcyas+8jB0+QD8=;
+ b=crolwWpmnbQUrqiF0SNmv2FBHsb4LTCu6J7Ckt2UT7PWtTmWqhEZPYKF6kIVMxhluS
+ b3yalDfq1a3ryyzXOhenbVFQX+N3igRccz4aVQWy0H1sbk3EzIab+HW54doSBvyxWfN1
+ OUNCMPZANuBDA8Xl0dv5cL5bs8C+cOgs4IU6ecNr4Ei0cUlIcTNbny1UgntPVt5fu6gt
+ Sbvr6xRWvAIKQhPOkpEAplRil/s8TggenARPZQ9LwqAzta1yX74HxgpBV2IE5HyW1IAc
+ XifL6XgXfkTzGDOF0/yUwTP3ygRks7FaPQZfhPpWlzxt0jaLURTPIgEJvu//2L9GqpeO
+ UMiA==
+X-Gm-Message-State: AOAM533y0fp133+JxcWXBt2H7OaxeRlRK4/Nt5y8164q7h44NppbNqzB
+ wdoiJ+TL3fadU1dr9zdmnT2XX4LGMz/P/A==
+X-Received: by 2002:a63:ad4d:0:b0:378:4b82:b881 with SMTP id
+ y13-20020a63ad4d000000b003784b82b881mr20940899pgo.282.1650990868946; 
+ Tue, 26 Apr 2022 09:34:28 -0700 (PDT)
 Received: from stoup.. (174-21-142-130.tukw.qwest.net. [174.21.142.130])
  by smtp.gmail.com with ESMTPSA id
- a13-20020a17090acb8d00b001d953eb2412sm1132834pju.19.2022.04.26.09.34.23
+ a13-20020a17090acb8d00b001d953eb2412sm1132834pju.19.2022.04.26.09.34.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Apr 2022 09:34:24 -0700 (PDT)
+ Tue, 26 Apr 2022 09:34:28 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 42/47] target/arm: Use tcg_constant in LD1, ST1
-Date: Tue, 26 Apr 2022 09:30:38 -0700
-Message-Id: <20220426163043.100432-43-richard.henderson@linaro.org>
+Subject: [PATCH 47/47] target/arm: Use tcg_constant for vector descriptor
+Date: Tue, 26 Apr 2022 09:30:43 -0700
+Message-Id: <20220426163043.100432-48-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220426163043.100432-1-richard.henderson@linaro.org>
 References: <20220426163043.100432-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,57 +120,281 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CGzoU+M8xmO3
+X-TUID: GuK6eCMmkOxN
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-sve.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ target/arm/translate-sve.c | 54 ++++++++++----------------------------
+ 1 file changed, 14 insertions(+), 40 deletions(-)
 
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 727f5cca36..fcab15a6ec 100644
+index 82bf094447..dd4a5b23ab 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -6426,7 +6426,6 @@ static bool trans_LD1_zpiz(DisasContext *s, arg_LD1_zpiz *a)
-     gen_helper_gvec_mem_scatter *fn = NULL;
-     bool be = s->be_data == MO_BE;
-     bool mte = s->mte_active[0];
--    TCGv_i64 imm;
+@@ -888,7 +888,7 @@ static bool do_vpz_ool(DisasContext *s, arg_rpr_esz *a,
+         return true;
+     }
  
-     if (a->esz < a->msz || (a->esz == a->msz && !a->u)) {
-         return false;
-@@ -6448,9 +6447,8 @@ static bool trans_LD1_zpiz(DisasContext *s, arg_LD1_zpiz *a)
-     /* Treat LD1_zpiz (zn[x] + imm) the same way as LD1_zprz (rn + zm[x])
-      * by loading the immediate into the scalar parameter.
-      */
--    imm = tcg_const_i64(a->imm << a->msz);
--    do_mem_zpz(s, a->rd, a->pg, a->rn, 0, imm, a->msz, false, fn);
--    tcg_temp_free_i64(imm);
-+    do_mem_zpz(s, a->rd, a->pg, a->rn, 0,
-+               tcg_constant_i64(a->imm << a->msz), a->msz, false, fn);
+-    desc = tcg_const_i32(simd_desc(vsz, vsz, 0));
++    desc = tcg_constant_i32(simd_desc(vsz, vsz, 0));
+     temp = tcg_temp_new_i64();
+     t_zn = tcg_temp_new_ptr();
+     t_pg = tcg_temp_new_ptr();
+@@ -898,7 +898,6 @@ static bool do_vpz_ool(DisasContext *s, arg_rpr_esz *a,
+     fn(temp, t_zn, t_pg, desc);
+     tcg_temp_free_ptr(t_zn);
+     tcg_temp_free_ptr(t_pg);
+-    tcg_temp_free_i32(desc);
+ 
+     write_fp_dreg(s, a->rd, temp);
+     tcg_temp_free_i64(temp);
+@@ -1235,7 +1234,7 @@ static void do_index(DisasContext *s, int esz, int rd,
+                      TCGv_i64 start, TCGv_i64 incr)
+ {
+     unsigned vsz = vec_full_reg_size(s);
+-    TCGv_i32 desc = tcg_const_i32(simd_desc(vsz, vsz, 0));
++    TCGv_i32 desc = tcg_constant_i32(simd_desc(vsz, vsz, 0));
+     TCGv_ptr t_zd = tcg_temp_new_ptr();
+ 
+     tcg_gen_addi_ptr(t_zd, cpu_env, vec_full_reg_offset(s, rd));
+@@ -1259,7 +1258,6 @@ static void do_index(DisasContext *s, int esz, int rd,
+         tcg_temp_free_i32(i32);
+     }
+     tcg_temp_free_ptr(t_zd);
+-    tcg_temp_free_i32(desc);
+ }
+ 
+ static bool trans_INDEX_ii(DisasContext *s, arg_INDEX_ii *a)
+@@ -1988,7 +1986,7 @@ static void do_sat_addsub_vec(DisasContext *s, int esz, int rd, int rn,
+     nptr = tcg_temp_new_ptr();
+     tcg_gen_addi_ptr(dptr, cpu_env, vec_full_reg_offset(s, rd));
+     tcg_gen_addi_ptr(nptr, cpu_env, vec_full_reg_offset(s, rn));
+-    desc = tcg_const_i32(simd_desc(vsz, vsz, 0));
++    desc = tcg_constant_i32(simd_desc(vsz, vsz, 0));
+ 
+     switch (esz) {
+     case MO_8:
+@@ -2057,7 +2055,6 @@ static void do_sat_addsub_vec(DisasContext *s, int esz, int rd, int rn,
+ 
+     tcg_temp_free_ptr(dptr);
+     tcg_temp_free_ptr(nptr);
+-    tcg_temp_free_i32(desc);
+ }
+ 
+ static bool trans_CNT_r(DisasContext *s, arg_CNT_r *a)
+@@ -2233,7 +2230,7 @@ static void do_cpy_m(DisasContext *s, int esz, int rd, int rn, int pg,
+         gen_helper_sve_cpy_m_s, gen_helper_sve_cpy_m_d,
+     };
+     unsigned vsz = vec_full_reg_size(s);
+-    TCGv_i32 desc = tcg_const_i32(simd_desc(vsz, vsz, 0));
++    TCGv_i32 desc = tcg_constant_i32(simd_desc(vsz, vsz, 0));
+     TCGv_ptr t_zd = tcg_temp_new_ptr();
+     TCGv_ptr t_zn = tcg_temp_new_ptr();
+     TCGv_ptr t_pg = tcg_temp_new_ptr();
+@@ -2247,7 +2244,6 @@ static void do_cpy_m(DisasContext *s, int esz, int rd, int rn, int pg,
+     tcg_temp_free_ptr(t_zd);
+     tcg_temp_free_ptr(t_zn);
+     tcg_temp_free_ptr(t_pg);
+-    tcg_temp_free_i32(desc);
+ }
+ 
+ static bool trans_FCPY(DisasContext *s, arg_FCPY *a)
+@@ -2390,7 +2386,7 @@ static void do_insr_i64(DisasContext *s, arg_rrr_esz *a, TCGv_i64 val)
+         gen_helper_sve_insr_s, gen_helper_sve_insr_d,
+     };
+     unsigned vsz = vec_full_reg_size(s);
+-    TCGv_i32 desc = tcg_const_i32(simd_desc(vsz, vsz, 0));
++    TCGv_i32 desc = tcg_constant_i32(simd_desc(vsz, vsz, 0));
+     TCGv_ptr t_zd = tcg_temp_new_ptr();
+     TCGv_ptr t_zn = tcg_temp_new_ptr();
+ 
+@@ -2401,7 +2397,6 @@ static void do_insr_i64(DisasContext *s, arg_rrr_esz *a, TCGv_i64 val)
+ 
+     tcg_temp_free_ptr(t_zd);
+     tcg_temp_free_ptr(t_zn);
+-    tcg_temp_free_i32(desc);
+ }
+ 
+ static bool trans_INSR_f(DisasContext *s, arg_rrr_esz *a)
+@@ -2520,7 +2515,6 @@ static bool do_perm_pred3(DisasContext *s, arg_rrr_esz *a, bool high_odd,
+     TCGv_ptr t_d = tcg_temp_new_ptr();
+     TCGv_ptr t_n = tcg_temp_new_ptr();
+     TCGv_ptr t_m = tcg_temp_new_ptr();
+-    TCGv_i32 t_desc;
+     uint32_t desc = 0;
+ 
+     desc = FIELD_DP32(desc, PREDDESC, OPRSZ, vsz);
+@@ -2530,14 +2524,12 @@ static bool do_perm_pred3(DisasContext *s, arg_rrr_esz *a, bool high_odd,
+     tcg_gen_addi_ptr(t_d, cpu_env, pred_full_reg_offset(s, a->rd));
+     tcg_gen_addi_ptr(t_n, cpu_env, pred_full_reg_offset(s, a->rn));
+     tcg_gen_addi_ptr(t_m, cpu_env, pred_full_reg_offset(s, a->rm));
+-    t_desc = tcg_const_i32(desc);
+ 
+-    fn(t_d, t_n, t_m, t_desc);
++    fn(t_d, t_n, t_m, tcg_constant_i32(desc));
+ 
+     tcg_temp_free_ptr(t_d);
+     tcg_temp_free_ptr(t_n);
+     tcg_temp_free_ptr(t_m);
+-    tcg_temp_free_i32(t_desc);
      return true;
  }
  
-@@ -6609,7 +6607,6 @@ static bool trans_ST1_zpiz(DisasContext *s, arg_ST1_zpiz *a)
-     gen_helper_gvec_mem_scatter *fn = NULL;
-     bool be = s->be_data == MO_BE;
-     bool mte = s->mte_active[0];
--    TCGv_i64 imm;
+@@ -2551,7 +2543,6 @@ static bool do_perm_pred2(DisasContext *s, arg_rr_esz *a, bool high_odd,
+     unsigned vsz = pred_full_reg_size(s);
+     TCGv_ptr t_d = tcg_temp_new_ptr();
+     TCGv_ptr t_n = tcg_temp_new_ptr();
+-    TCGv_i32 t_desc;
+     uint32_t desc = 0;
  
-     if (a->esz < a->msz) {
-         return false;
-@@ -6631,9 +6628,8 @@ static bool trans_ST1_zpiz(DisasContext *s, arg_ST1_zpiz *a)
-     /* Treat ST1_zpiz (zn[x] + imm) the same way as ST1_zprz (rn + zm[x])
-      * by loading the immediate into the scalar parameter.
-      */
--    imm = tcg_const_i64(a->imm << a->msz);
--    do_mem_zpz(s, a->rd, a->pg, a->rn, 0, imm, a->msz, true, fn);
--    tcg_temp_free_i64(imm);
-+    do_mem_zpz(s, a->rd, a->pg, a->rn, 0,
-+               tcg_constant_i64(a->imm << a->msz), a->msz, true, fn);
+     tcg_gen_addi_ptr(t_d, cpu_env, pred_full_reg_offset(s, a->rd));
+@@ -2560,11 +2551,9 @@ static bool do_perm_pred2(DisasContext *s, arg_rr_esz *a, bool high_odd,
+     desc = FIELD_DP32(desc, PREDDESC, OPRSZ, vsz);
+     desc = FIELD_DP32(desc, PREDDESC, ESZ, a->esz);
+     desc = FIELD_DP32(desc, PREDDESC, DATA, high_odd);
+-    t_desc = tcg_const_i32(desc);
+ 
+-    fn(t_d, t_n, t_desc);
++    fn(t_d, t_n, tcg_constant_i32(desc));
+ 
+-    tcg_temp_free_i32(t_desc);
+     tcg_temp_free_ptr(t_d);
+     tcg_temp_free_ptr(t_n);
      return true;
+@@ -2766,18 +2755,15 @@ static void find_last_active(DisasContext *s, TCGv_i32 ret, int esz, int pg)
+      * round up, as we do elsewhere, because we need the exact size.
+      */
+     TCGv_ptr t_p = tcg_temp_new_ptr();
+-    TCGv_i32 t_desc;
+     unsigned desc = 0;
+ 
+     desc = FIELD_DP32(desc, PREDDESC, OPRSZ, pred_full_reg_size(s));
+     desc = FIELD_DP32(desc, PREDDESC, ESZ, esz);
+ 
+     tcg_gen_addi_ptr(t_p, cpu_env, pred_full_reg_offset(s, pg));
+-    t_desc = tcg_const_i32(desc);
+ 
+-    gen_helper_sve_last_active_element(ret, t_p, t_desc);
++    gen_helper_sve_last_active_element(ret, t_p, tcg_constant_i32(desc));
+ 
+-    tcg_temp_free_i32(t_desc);
+     tcg_temp_free_ptr(t_p);
  }
  
+@@ -3442,19 +3428,16 @@ static void do_cntp(DisasContext *s, TCGv_i64 val, int esz, int pn, int pg)
+         TCGv_ptr t_pn = tcg_temp_new_ptr();
+         TCGv_ptr t_pg = tcg_temp_new_ptr();
+         unsigned desc = 0;
+-        TCGv_i32 t_desc;
+ 
+         desc = FIELD_DP32(desc, PREDDESC, OPRSZ, psz);
+         desc = FIELD_DP32(desc, PREDDESC, ESZ, esz);
+ 
+         tcg_gen_addi_ptr(t_pn, cpu_env, pred_full_reg_offset(s, pn));
+         tcg_gen_addi_ptr(t_pg, cpu_env, pred_full_reg_offset(s, pg));
+-        t_desc = tcg_const_i32(desc);
+ 
+-        gen_helper_sve_cntp(val, t_pn, t_pg, t_desc);
++        gen_helper_sve_cntp(val, t_pn, t_pg, tcg_constant_i32(desc));
+         tcg_temp_free_ptr(t_pn);
+         tcg_temp_free_ptr(t_pg);
+-        tcg_temp_free_i32(t_desc);
+     }
+ }
+ 
+@@ -4190,7 +4173,7 @@ static void do_reduce(DisasContext *s, arg_rpr_esz *a,
+ {
+     unsigned vsz = vec_full_reg_size(s);
+     unsigned p2vsz = pow2ceil(vsz);
+-    TCGv_i32 t_desc = tcg_const_i32(simd_desc(vsz, vsz, p2vsz));
++    TCGv_i32 t_desc = tcg_constant_i32(simd_desc(vsz, vsz, p2vsz));
+     TCGv_ptr t_zn, t_pg, status;
+     TCGv_i64 temp;
+ 
+@@ -4206,7 +4189,6 @@ static void do_reduce(DisasContext *s, arg_rpr_esz *a,
+     tcg_temp_free_ptr(t_zn);
+     tcg_temp_free_ptr(t_pg);
+     tcg_temp_free_ptr(status);
+-    tcg_temp_free_i32(t_desc);
+ 
+     write_fp_dreg(s, a->rd, temp);
+     tcg_temp_free_i64(temp);
+@@ -4383,11 +4365,10 @@ static bool trans_FADDA(DisasContext *s, arg_rprr_esz *a)
+     tcg_gen_addi_ptr(t_rm, cpu_env, vec_full_reg_offset(s, a->rm));
+     tcg_gen_addi_ptr(t_pg, cpu_env, pred_full_reg_offset(s, a->pg));
+     t_fpst = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16 : FPST_FPCR);
+-    t_desc = tcg_const_i32(simd_desc(vsz, vsz, 0));
++    t_desc = tcg_constant_i32(simd_desc(vsz, vsz, 0));
+ 
+     fns[a->esz - 1](t_val, t_val, t_rm, t_pg, t_fpst, t_desc);
+ 
+-    tcg_temp_free_i32(t_desc);
+     tcg_temp_free_ptr(t_fpst);
+     tcg_temp_free_ptr(t_pg);
+     tcg_temp_free_ptr(t_rm);
+@@ -4504,10 +4485,9 @@ static void do_fp_scalar(DisasContext *s, int zd, int zn, int pg, bool is_fp16,
+     tcg_gen_addi_ptr(t_pg, cpu_env, pred_full_reg_offset(s, pg));
+ 
+     status = fpstatus_ptr(is_fp16 ? FPST_FPCR_F16 : FPST_FPCR);
+-    desc = tcg_const_i32(simd_desc(vsz, vsz, 0));
++    desc = tcg_constant_i32(simd_desc(vsz, vsz, 0));
+     fn(t_zd, t_zn, t_pg, scalar, status, desc);
+ 
+-    tcg_temp_free_i32(desc);
+     tcg_temp_free_ptr(status);
+     tcg_temp_free_ptr(t_pg);
+     tcg_temp_free_ptr(t_zn);
+@@ -5265,7 +5245,6 @@ static void do_mem_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
+ {
+     unsigned vsz = vec_full_reg_size(s);
+     TCGv_ptr t_pg;
+-    TCGv_i32 t_desc;
+     int desc = 0;
+ 
+     /*
+@@ -5287,14 +5266,12 @@ static void do_mem_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
+     }
+ 
+     desc = simd_desc(vsz, vsz, zt | desc);
+-    t_desc = tcg_const_i32(desc);
+     t_pg = tcg_temp_new_ptr();
+ 
+     tcg_gen_addi_ptr(t_pg, cpu_env, pred_full_reg_offset(s, pg));
+-    fn(cpu_env, t_pg, addr, t_desc);
++    fn(cpu_env, t_pg, addr, tcg_constant_i32(desc));
+ 
+     tcg_temp_free_ptr(t_pg);
+-    tcg_temp_free_i32(t_desc);
+ }
+ 
+ /* Indexed by [mte][be][dtype][nreg] */
+@@ -6037,7 +6014,6 @@ static void do_mem_zpz(DisasContext *s, int zt, int pg, int zm,
+     TCGv_ptr t_zm = tcg_temp_new_ptr();
+     TCGv_ptr t_pg = tcg_temp_new_ptr();
+     TCGv_ptr t_zt = tcg_temp_new_ptr();
+-    TCGv_i32 t_desc;
+     int desc = 0;
+ 
+     if (s->mte_active[0]) {
+@@ -6049,17 +6025,15 @@ static void do_mem_zpz(DisasContext *s, int zt, int pg, int zm,
+         desc <<= SVE_MTEDESC_SHIFT;
+     }
+     desc = simd_desc(vsz, vsz, desc | scale);
+-    t_desc = tcg_const_i32(desc);
+ 
+     tcg_gen_addi_ptr(t_pg, cpu_env, pred_full_reg_offset(s, pg));
+     tcg_gen_addi_ptr(t_zm, cpu_env, vec_full_reg_offset(s, zm));
+     tcg_gen_addi_ptr(t_zt, cpu_env, vec_full_reg_offset(s, zt));
+-    fn(cpu_env, t_zt, t_pg, t_zm, scalar, t_desc);
++    fn(cpu_env, t_zt, t_pg, t_zm, scalar, tcg_constant_i32(desc));
+ 
+     tcg_temp_free_ptr(t_zt);
+     tcg_temp_free_ptr(t_zm);
+     tcg_temp_free_ptr(t_pg);
+-    tcg_temp_free_i32(t_desc);
+ }
+ 
+ /* Indexed by [mte][be][ff][xs][u][msz].  */
 -- 
 2.34.1
 

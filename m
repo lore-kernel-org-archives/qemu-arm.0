@@ -1,100 +1,145 @@
-Received: by 2002:a05:6512:e9d:0:0:0:0 with SMTP id bi29csp891958lfb;
-        Fri, 1 Apr 2022 06:47:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0AtkUNHQeN+heHzTmtPegng/xUFurVobFR9cFhHCfYWxEVM7xuZ8pOWTzZUs5o4mnnae3
-X-Received: by 2002:a05:622a:120d:b0:2e1:c9f5:c13 with SMTP id y13-20020a05622a120d00b002e1c9f50c13mr8305081qtx.599.1648820845779;
-        Fri, 01 Apr 2022 06:47:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648820845; cv=none;
+Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp1362254lfu;
+        Wed, 27 Apr 2022 16:46:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYwhb5B5FvlRxyE9WTo6bYiYXeE3ZbpCf9YaQ5vK0pxdtjXBBW7/ZfFqbBJdCaCBwUlVWJ
+X-Received: by 2002:a05:622a:1820:b0:2f3:87b5:6a48 with SMTP id t32-20020a05622a182000b002f387b56a48mr1465795qtc.523.1651103215213;
+        Wed, 27 Apr 2022 16:46:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651103215; cv=none;
         d=google.com; s=arc-20160816;
-        b=hAlYHm6w4CoAesZUzRBMoUPmYq5sVGgfj2V1KO7oKKSGX4Sf8FBlzAMQ5Ru21YKqDx
-         fU7XfPkX3AdRU4KFXv+Bpsaa0iVzD65/QepxW3BBGNvLSbnuxQzCSGdCFsG62pXjs9JR
-         DYvySi9B+U2hvyXr7qSNMC8AEexMF3jl42ZBKZoEtL9N/NhYM/b4cY9DgtAWK/tTlN0Y
-         ETaGlAq2q7xbFgap46qSk8p3EtDz0HT3cw27uWf9rD5JyVRwca84tZfwA4GrODpLLv67
-         p6xxEtbJa56RntuqNQJGUcMUKQHd+cxqAMi/tGIUxhtG6Z7WIU0cYcNZB52ZaigzyFOs
-         NwZw==
+        b=RSuI2Y9PbI80g2EjIzvcXOEOkCVPaIDcOsyxhYXI/jhohBEoSYC6rLmElko2n963sx
+         EJ9Iq6ij715LNKqQ5eDSITV0CgC/J+1UndLN1CzWAnViWfvijS8zQ06RvoxHDbLS9rkS
+         8JMewVQs7m66RPIhdT0iEu9HD0BFAgDDYH2p9EGolPcapbdLIfqjgUv7JRuOAlxS/kuG
+         HzwNvEhbuYGGNKLVI+AOoqktjq3nXxSCNNTskCS1ER7Au1cIzihHC8AE6Aemzxr9olhB
+         WeQkSWHpaY5d087O/rlt1QUjOs20VwsFySH/u8kRTw/mDCxjghbkTDbiboToYpdlOP7K
+         3uaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=dlQYl8tba7Yd9C0GFGl8gJimQwCLrRQvogvwve0CsPY=;
-        b=XARwDcsyoEL/XX1Smj/PVZCJ/HlihGaizP4hi3vMIFWs/31mi2p7ntD5M9KsjNBCmo
-         YT4jVDBZN/j4fkVDo/jwww0Mnn5iuFOhr99qIXn03bUe9htMSrsuXsARvJ7DYnFtGul5
-         uqdFyOwf90oopyMzAWPrVibTDoZNLv19r0ZxhhuKfXGGQmibxIMYLUHOeQVGBSaWt9oz
-         bXyN5IvXnDxGCuvnkfe8O0E+AZxpzWjCAw65HPlXT52JG4aTUG//hp56AKmp5rteYutW
-         DEP4Ll+xfp5sbo/ogeNxuDWbqmkq7ljbKZVt5SXuWte74S3hIDb2LeYzXd3RiwvJHrnl
-         S9Aw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:wdcironportexception:ironport-sdr:ironport-sdr
+         :dkim-signature;
+        bh=UEGX8zdNwt3GAx6oVYoYI1xvMVKxK2oekwa2Bu/O1lM=;
+        b=OUrAuMPbCM882NkXixDxB4jZJn0CObNspZA1Ta9Y1bkj+I7Nr0z5R2oY6r4GCuRYr9
+         X5lalU0Na3IcTzK0jexnSy3lNPslMXx6OCDlo2AA0IaniNn6V9JU0Fw8xC9fRvwYk/fm
+         fw8PJ6Zz/bg1wRi0jgJsUvFxZsIAUvUiu63WCtuuyJqby133ce5l0d00IIkbavgi0TYu
+         KvkEUjIX8Kl5BHdOVy0Z53lN+eUOv1/bvA5bZHSWDEdm7EfOfu+XKp1lU9IDVe9CJviW
+         KVFdAnz9Q235/aOjrVXIAxqeMo7qs1TfyaQ90XlCpdebTfhUnejE3RnSB17GY+ktMIT+
+         i0eQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@wdc.com header.s=dkim.wdc.com header.b=FUayBWa2;
+       dkim=pass header.i=@opensource.wdc.com header.s=dkim header.b=boLTODZW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=opensource.wdc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bk23-20020a05620a1a1700b0067e4be23898si1289128qkb.221.2022.04.01.06.47.25
+        by mx.google.com with ESMTPS id c189-20020a37b3c6000000b0069f74c9d6a5si918142qkf.679.2022.04.27.16.46.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Apr 2022 06:47:25 -0700 (PDT)
+        Wed, 27 Apr 2022 16:46:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42976 helo=lists1p.gnu.org)
+       dkim=fail header.i=@wdc.com header.s=dkim.wdc.com header.b=FUayBWa2;
+       dkim=pass header.i=@opensource.wdc.com header.s=dkim header.b=boLTODZW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=opensource.wdc.com
+Received: from localhost ([::1]:56156 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1naHcb-0002NQ-9E
-	for alex.bennee@linaro.org; Fri, 01 Apr 2022 09:47:25 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52630)
+	id 1njrN0-0008VZ-NG
+	for alex.bennee@linaro.org; Wed, 27 Apr 2022 19:46:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45552)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naHHo-0003Ch-VE
- for qemu-arm@nongnu.org; Fri, 01 Apr 2022 09:25:56 -0400
-Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137]:35829)
+ (Exim 4.90_1)
+ (envelope-from <prvs=109fe075d=alistair.francis@opensource.wdc.com>)
+ id 1njrIM-0004iM-Qo
+ for qemu-arm@nongnu.org; Wed, 27 Apr 2022 19:42:06 -0400
+Received: from esa3.hgst.iphmx.com ([216.71.153.141]:41224)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1naHHm-0007fg-FZ
- for qemu-arm@nongnu.org; Fri, 01 Apr 2022 09:25:56 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.188])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id C6BC722752;
- Fri,  1 Apr 2022 13:25:50 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 1 Apr
- 2022 15:25:49 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001cebd9057-2977-4be5-8703-8f2eb18b88d1,
- E6F802B82481F543645B2B9FC2104B41A8D643B2) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <41441f8a-7ae0-4f41-543f-4df8c39fe7e2@kaod.org>
-Date: Fri, 1 Apr 2022 15:25:49 +0200
+ (Exim 4.90_1)
+ (envelope-from <prvs=109fe075d=alistair.francis@opensource.wdc.com>)
+ id 1njrIK-0004Sr-6r
+ for qemu-arm@nongnu.org; Wed, 27 Apr 2022 19:42:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1651102922; x=1682638922;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=jkyowbAH14peB4kqPOZJazAQCfstu9x4Mil66ErgDfs=;
+ b=FUayBWa28Hhjb1FR67GoS9O5YC+7TXCMlq7JwdxE8zlMokbj+d3NRtN8
+ pAlSdnHQmye9Iti3QyU5Pnov3gDlL5T+E70bW/Fz15NRY9BQ8NEYtwb8K
+ 3XGMt8Fr/Cwcykxy6776Dk2e3V7nBnt4ERxC5YygbBh0aE2V8+hDNglL3
+ V3MJqq1MxqrjzRz2iEi9EdtM+J09mI1x07oNxs8bWJSA5hJTT7UUtK3rj
+ vU2BWxxK/GHvbUGGE0Y0wkqBnOnaGq+sb4DMzg2FXBSlusZTrkKFYCMI6
+ H+YhA+Lcd5fEn7+vRQy+aszTlGHJczIdykfKev3RFArkncyCEVyVC4kIt Q==;
+X-IronPort-AV: E=Sophos;i="5.90,294,1643644800"; d="scan'208";a="203873210"
+Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
+ ([199.255.45.15])
+ by ob1.hgst.iphmx.com with ESMTP; 28 Apr 2022 07:41:59 +0800
+IronPort-SDR: iID1ey9jwRCxqjM0fUJld2gcmPXJBJKzsu1CP1kPDyPYF21iG5ITjqSYFefqB/t/igUgZVL/Sx
+ wnWuGnQ33dsgnnmfMNrgNpfbXbUru82zrfA7RMS5Bt2xrcd8VUfy/w30mXMYLg2Ko4TvMBpyJI
+ wGW6t8w65Cchah8XE5lUVh+rZ8RHo7BlV13aSFcPGPWTrVnSmV7Mc9wgi8ItGWeURVNJg/LH8h
+ oOxnCKM/WpPucvi5PVZGxnWEdVcTv1Cgxsm1+iTLTTqRP+ZcF22jCjAwlTjxt+itEMr2E07JOs
+ LMj0po/oA5Sql6Qqux8HEl2k
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+ by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
+ 27 Apr 2022 16:12:10 -0700
+IronPort-SDR: KKpLJ1Oj47eKXEOzB5G+rcjX526NW7O/HlCtaKF/u4uzj5UzsJHtw9AHrfrszaFIErqUxiz+9Q
+ rWqS6zUnOYBrSltSz+CWLc1TQnatvJ28JBlMOHnLSxpk1PzEJQqLSGtLja4lURWWTvGWJDxv+K
+ Hji3TlKWnpiLbl3vBEJHdyp/VeeU5+PiR4mVtlg3YgxUs8ROnizNKll6vFxR1pjMpbAeziPjyg
+ itSKFED7GNT3gFj3NAaH/dMSbYFO0Jiic18yTXNdMUhiUlg6qgzO/0l4Nb7UVIZ3UQu5hZZHsQ
+ pj0=
+WDCIronportException: Internal
+Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
+ by uls-op-cesaip01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
+ 27 Apr 2022 16:42:01 -0700
+Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
+ by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4KpZzD3kyDz1SVnx
+ for <qemu-arm@nongnu.org>; Wed, 27 Apr 2022 16:42:00 -0700 (PDT)
+Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
+ reason="pass (just generated, assumed good)"
+ header.d=opensource.wdc.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
+ opensource.wdc.com; h=content-transfer-encoding:mime-version
+ :references:in-reply-to:x-mailer:message-id:date:subject:to
+ :from; s=dkim; t=1651102919; x=1653694920; bh=jkyowbAH14peB4kqPO
+ ZJazAQCfstu9x4Mil66ErgDfs=; b=boLTODZWvVGcTu3B35COLAYhEG1NW7SFvg
+ 1iQxlK0arIjwUhFfZcD+rd3jAznenIM+VjU8QgI6SBB6oLhhkuUcRur975xSuldl
+ SCvtYnDhKGXxh18I+WgLftaiKWSheOXWFMXdcLjMjhnvSDTzYlhs4C8w521BD4YH
+ +yWTcMazaanLr4d0FdIVGXucK01geOx4O1zvRu6L4D8KmOPq22X7+j1og981f5q8
+ kBvl43kQ/Jrcq2hGKfrobPrgJWD1zf/r3AhOPtfgzHI1U2zN6MHQspO33qXvcUSJ
+ ZOFOHmT/r3/AZ1zN3AnpVISkMClawWCKeOBHByCm2KYnGk/J7qrA==
+X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
+Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
+ by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new,
+ port 10026) with ESMTP id 6c7qIKhArLVy for <qemu-arm@nongnu.org>;
+ Wed, 27 Apr 2022 16:41:59 -0700 (PDT)
+Received: from toolbox.wdc.com (unknown [10.225.165.122])
+ by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4KpZz736tRz1Rvlx;
+ Wed, 27 Apr 2022 16:41:55 -0700 (PDT)
+From: Alistair Francis <alistair.francis@opensource.wdc.com>
+To: qemu-riscv@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, alistair23@gmail.com,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-arm@nongnu.org,
+ Bin Meng <bin.meng@windriver.com>,
+ Alistair Francis <alistair.francis@wdc.com>, bmeng.cn@gmail.com
+Subject: [PATCH v5 1/6] hw/riscv: virt: Add a machine done notifier
+Date: Thu, 28 Apr 2022 09:41:41 +1000
+Message-Id: <20220427234146.1130752-2-alistair.francis@opensource.wdc.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220427234146.1130752-1-alistair.francis@opensource.wdc.com>
+References: <20220427234146.1130752-1-alistair.francis@opensource.wdc.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
-Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Alistair Francis
- <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, Andrew
- Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Cleber Rosa
- <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo
- Leal <bleal@redhat.com>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
- <0ddfa28a-45ae-fdfd-02a6-94ab5a34b724@kaod.org>
- <TYZPR06MB40155C89D32BB012339208C6FCE09@TYZPR06MB4015.apcprd06.prod.outlook.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <TYZPR06MB40155C89D32BB012339208C6FCE09@TYZPR06MB4015.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 410a2974-2923-4ad3-9c4e-e96b4d66d871
-X-Ovh-Tracer-Id: 18257029941568900027
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrudeiiedgieehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepueevledvjeetgeetfeeiveeftefffedvvdeikeetveelfeeglefgueetvdefvdefnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomh
-Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
- helo=9.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.71.153.141;
+ envelope-from=prvs=109fe075d=alistair.francis@opensource.wdc.com;
+ helo=esa3.hgst.iphmx.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,192 +152,285 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Troy Lee <troy_lee@aspeedtech.com>, Steven Lee <steven_lee@aspeedtech.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PcQ9zsEZ1xks
+X-TUID: 7dFGWjPNYhUk
 
-Hello Jamin,
+From: Alistair Francis <alistair.francis@wdc.com>
 
-On 4/1/22 11:23, Jamin Lin wrote:
-> Hi Cedric, Joel and Andrew
-> First all, thanks for all your kindly support and review. We are so
-> glad that QEMU v7.1 will support AST1030 model.
+Move the binary and device tree loading code to the machine done
+notifier. This allows us to prepare for editing the device tree as part
+of the notifier.
 
-QEMU 7.1 is for after the summer.
+This is based on similar code in the ARM virt machine.
 
-> 
-> 1. The ast1030 and ast2600 HACE controller are identical.
->    Steven submitted the patch to support HACE ACC mode. Once his patch
-> accept. We will submit patch to support ast1030 model.
+Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+---
+ include/hw/riscv/virt.h |   1 +
+ hw/riscv/virt.c         | 191 +++++++++++++++++++++-------------------
+ 2 files changed, 102 insertions(+), 90 deletions(-)
 
-I think Joel is tracking these changes.
-
-> 2. I submitted the patch to support GOIO index mode because ast1030
->  driver was implement by index mode. I am waiting for review and any 
-> suggestion will be appreciated.
-
-That's Andrew's turf. Or Rashmica if she has time ? I could do it but not
-now and it will take longer since I know less this area of the HW.
-
-> 3. Troy submitted the patch to support I2C new model which included ast1030 model.
-
-Yes. I think there is another submission on the topic. I reviewed the one
-Troy sent and some rework is needed. The I2C model is becoming quite complex
-and changes need to me introduced progressively.
-  
-
-> 4. As for NIC plan, once AST1030 NIC driver ready, we will upstream, too.
-
-It's not a FTGMAC100 ?
-
-
-> BTW, do you have a plan to upstream it, https://github.com/openbmc/qemu/blob/master/hw/misc/aspeed_pwm.c
-
-I don't. That's really an empty skeleton. There is no problem in merging it
-but if someone of your team has time to grow the model, please do !
-
-Thanks,
-
-C.
-
-
-> 
-> Thanks again - Jamin
-> 
-> ************* Email Confidentiality Notice ********************
-> DISCLAIMER:
-> This message (and any attachments) may contain legally privileged and/or other confidential information. If you have received it in error, please notify the sender by reply e-mail and immediately delete the e-mail and any attachments without copying or disclosing the contents. Thank you.
-> 
-> -----Original Message-----
-> From: Cédric Le Goater <clg@kaod.org>
-> Sent: Friday, April 1, 2022 4:55 PM
-> To: Jamin Lin <jamin_lin@aspeedtech.com>; Alistair Francis <alistair@alistair23.me>; Peter Maydell <peter.maydell@linaro.org>; Andrew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>; Cleber Rosa <crosa@redhat.com>; Philippe Mathieu-Daudé <f4bug@amsat.org>; Wainer dos Santos Moschetta <wainersm@redhat.com>; Beraldo Leal <bleal@redhat.com>; open list:STM32F205 <qemu-arm@nongnu.org>; open list:All patches CC here <qemu-devel@nongnu.org>
-> Cc: Steven Lee <steven_lee@aspeedtech.com>; Troy Lee <troy_lee@aspeedtech.com>
-> Subject: Re: [PATCH v5 0/9] Add support for AST1030 SoC
-> 
-> Hello Jamin,
-> 
-> Thanks for these new models and machine. They are queued for QEMU 7.1.
-> There are a couple of patchsets adding support for the AST1030 GPIO controller and the I2C new mode that would be good extensions but they need review first.
-> 
-> What are the next steps? any plans for network ? The NIC should be a
-> FTGMAC100 if I am correct.
-> 
-> Thanks,
-> 
-> C.
-> 
-> 
->    On 4/1/22 10:38, Jamin Lin wrote:
->> Changes from v5:
->> - remove TYPE_ASPEED_MINIBMC_MACHINE and ASPEED_MINIBMC_MACHINE
->> - remove ast1030_machine_instance_init function
->>
->> Changes from v4:
->> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
->>
->> Changes from v3:
->> - remove AspeedMiniBmcMachineState state structure and
->>     AspeedMiniBmcMachineClass class
->> - remove redundant new line in hw/arm/aspeed_ast10xx.c
->> - drop the ASPEED_SMC_FEATURE_WDT_CONTROL flag in hw/ssi/aspeed_smc.c
->>
->> Changes from v2:
->> - replace aspeed_ast1030.c with aspeed_ast10xx.c for minibmc SOCs
->> family support
->> - Add "ast1030-evb" machine in aspeed.c and removes aspeed_minibmc.c
->>
->> Changes from v1:
->> The patch series supports ADC, SCU, SMC, TIMER, and WDT for AST1030 SoC.
->> Add avocado test case for "ast1030-evb" machine.
->>
->> Test steps:
->> 1. Download image from
->>      
->> https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.04/a
->> st1030-evb-demo.zip 2. Extract the zip file to obtain zephyr.elf 3.
->> Run ./qemu-system-arm -M ast1030-evb -kernel $PATH/zephyr.elf
->> -nographic 4. Test IO by Zephyr command line, commands are refer to Aspeed Zephyr
->>      SDK User Guide below
->>      https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.04/Aspeed_Zephy_SDK_User_Guide_v00.01.04.pdf
->>      - ADC(channel 0):
->>          uart:~$ adc ADC0 resolution 10
->>          uart:~$ adc ADC0 calibrate 1
->>          uart:~$ adc ADC0 read_format 1
->>          uart:~$ adc ADC0 read 0
->>          [Result]
->>          read: 1416mv
->>
->>      - SCU
->>          uart:~$ md 7e6e2040
->>          uart:~$ md 7e6e2080
->>          uart:~$ md 7e6e20d0
->>          uart:~$ md 7e6e2200
->>          uart:~$ md 7e6e2300
->>          uart:~$ md 7e6e25b0
->>          [Result]
->>          The register value should match the value of ast1030_a1_resets
->>          in aspeed_scu.c
->>
->>      - Flash(fmc_cs0):
->>          uart:~$ flash write fmc_cs0 0 0x12345678 0x87654321 0x34127856 0x78563412
->>          uart:~$ flash read fmc_cs0 0 10
->>          [Result]
->>          00000000: 78 56 34 12 21 43 65 87  56 78 12 34 12 34 56 78
->> |xV4.!Ce. Vx.4.4Vx|
->>
->>          uart:~$ flash erase fmc_cs0 0
->>          uart:~$ flash read fmc_cs0 0 10
->>          [Result]
->>          00000000: ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff
->> |........ ........|
->>
->>      - Timer(TIMER0):
->>          uart:~$ timer start TIMER0 -p 2000 -t 0
->>          TIMER0: period 20000 ms, type 0
->>          [Result]
->>          timer expired after 2 seconds
->>
->>      - Watchdog(WDT1):
->>          uart:~$ mw 7e785008 4755
->>          uart:~$ mw 7e78500c 1
->>          [Result]
->>          soc reset after 22 seconds
->>
->> Based-on: 20220315075753.8591-3-steven_lee@aspeedtech.com
->> ([v2,2/2] hw: aspeed_scu: Introduce clkin_25Mhz attribute)
->>
->> Jamin Lin (2):
->>     aspeed: Add an AST1030 eval board
->>     test/avocado/machine_aspeed.py: Add ast1030 test case
->>
->> Steven Lee (7):
->>     aspeed/adc: Add AST1030 support
->>     aspeed/smc: Add AST1030 support
->>     aspeed/wdt: Fix ast2500/ast2600 default reload value
->>     aspeed/wdt: Add AST1030 support
->>     aspeed/timer: Add AST1030 support
->>     aspeed/scu: Add AST1030 support
->>     aspeed/soc : Add AST1030 support
->>
->>    hw/adc/aspeed_adc.c              |  16 ++
->>    hw/arm/aspeed.c                  |  66 +++++++
->>    hw/arm/aspeed_ast10xx.c          | 299 +++++++++++++++++++++++++++++++
->>    hw/arm/meson.build               |   6 +-
->>    hw/misc/aspeed_scu.c             |  63 +++++++
->>    hw/ssi/aspeed_smc.c              | 157 ++++++++++++++++
->>    hw/timer/aspeed_timer.c          |  17 ++
->>    hw/watchdog/wdt_aspeed.c         |  34 +++-
->>    include/hw/adc/aspeed_adc.h      |   1 +
->>    include/hw/arm/aspeed_soc.h      |   3 +
->>    include/hw/misc/aspeed_scu.h     |  25 +++
->>    include/hw/timer/aspeed_timer.h  |   1 +
->>    include/hw/watchdog/wdt_aspeed.h |   3 +
->>    tests/avocado/machine_aspeed.py  |  36 ++++
->>    14 files changed, 724 insertions(+), 3 deletions(-)
->>    create mode 100644 hw/arm/aspeed_ast10xx.c
->>    create mode 100644 tests/avocado/machine_aspeed.py
->>
-> 
+diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
+index 78b058ec86..8b8db3fb7c 100644
+--- a/include/hw/riscv/virt.h
++++ b/include/hw/riscv/virt.h
+@@ -45,6 +45,7 @@ struct RISCVVirtState {
+     MachineState parent;
+=20
+     /*< public >*/
++    Notifier machine_done;
+     RISCVHartArrayState soc[VIRT_SOCKETS_MAX];
+     DeviceState *irqchip[VIRT_SOCKETS_MAX];
+     PFlashCFI01 *flash[2];
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index b49c5361bd..99ab3d4bca 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1162,6 +1162,100 @@ static DeviceState *virt_create_aia(RISCVVirtAIAT=
+ype aia_type, int aia_guests,
+     return aplic_m;
+ }
+=20
++static void virt_machine_done(Notifier *notifier, void *data)
++{
++    RISCVVirtState *s =3D container_of(notifier, RISCVVirtState,
++                                     machine_done);
++    const MemMapEntry *memmap =3D virt_memmap;
++    MachineState *machine =3D MACHINE(s);
++    target_ulong start_addr =3D memmap[VIRT_DRAM].base;
++    target_ulong firmware_end_addr, kernel_start_addr;
++    uint32_t fdt_load_addr;
++    uint64_t kernel_entry;
++
++    /*
++     * Only direct boot kernel is currently supported for KVM VM,
++     * so the "-bios" parameter is not supported when KVM is enabled.
++     */
++    if (kvm_enabled()) {
++        if (machine->firmware) {
++            if (strcmp(machine->firmware, "none")) {
++                error_report("Machine mode firmware is not supported in =
+"
++                             "combination with KVM.");
++                exit(1);
++            }
++        } else {
++            machine->firmware =3D g_strdup("none");
++        }
++    }
++
++    if (riscv_is_32bit(&s->soc[0])) {
++        firmware_end_addr =3D riscv_find_and_load_firmware(machine,
++                                    RISCV32_BIOS_BIN, start_addr, NULL);
++    } else {
++        firmware_end_addr =3D riscv_find_and_load_firmware(machine,
++                                    RISCV64_BIOS_BIN, start_addr, NULL);
++    }
++
++    if (machine->kernel_filename) {
++        kernel_start_addr =3D riscv_calc_kernel_start_addr(&s->soc[0],
++                                                         firmware_end_ad=
+dr);
++
++        kernel_entry =3D riscv_load_kernel(machine->kernel_filename,
++                                         kernel_start_addr, NULL);
++
++        if (machine->initrd_filename) {
++            hwaddr start;
++            hwaddr end =3D riscv_load_initrd(machine->initrd_filename,
++                                           machine->ram_size, kernel_ent=
+ry,
++                                           &start);
++            qemu_fdt_setprop_cell(machine->fdt, "/chosen",
++                                  "linux,initrd-start", start);
++            qemu_fdt_setprop_cell(machine->fdt, "/chosen", "linux,initrd=
+-end",
++                                  end);
++        }
++    } else {
++       /*
++        * If dynamic firmware is used, it doesn't know where is the next=
+ mode
++        * if kernel argument is not set.
++        */
++        kernel_entry =3D 0;
++    }
++
++    if (drive_get(IF_PFLASH, 0, 0)) {
++        /*
++         * Pflash was supplied, let's overwrite the address we jump to a=
+fter
++         * reset to the base of the flash.
++         */
++        start_addr =3D virt_memmap[VIRT_FLASH].base;
++    }
++
++    /*
++     * Init fw_cfg.  Must be done before riscv_load_fdt, otherwise the d=
+evice
++     * tree cannot be altered and we get FDT_ERR_NOSPACE.
++     */
++    s->fw_cfg =3D create_fw_cfg(machine);
++    rom_set_fw(s->fw_cfg);
++
++    /* Compute the fdt load address in dram */
++    fdt_load_addr =3D riscv_load_fdt(memmap[VIRT_DRAM].base,
++                                   machine->ram_size, machine->fdt);
++    /* load the reset vector */
++    riscv_setup_rom_reset_vec(machine, &s->soc[0], start_addr,
++                              virt_memmap[VIRT_MROM].base,
++                              virt_memmap[VIRT_MROM].size, kernel_entry,
++                              fdt_load_addr, machine->fdt);
++
++    /*
++     * Only direct boot kernel is currently supported for KVM VM,
++     * So here setup kernel start address and fdt address.
++     * TODO:Support firmware loading and integrate to TCG start
++     */
++    if (kvm_enabled()) {
++        riscv_setup_direct_kernel(kernel_entry, fdt_load_addr);
++    }
++}
++
+ static void virt_machine_init(MachineState *machine)
+ {
+     const MemMapEntry *memmap =3D virt_memmap;
+@@ -1169,10 +1263,6 @@ static void virt_machine_init(MachineState *machin=
+e)
+     MemoryRegion *system_memory =3D get_system_memory();
+     MemoryRegion *mask_rom =3D g_new(MemoryRegion, 1);
+     char *soc_name;
+-    target_ulong start_addr =3D memmap[VIRT_DRAM].base;
+-    target_ulong firmware_end_addr, kernel_start_addr;
+-    uint32_t fdt_load_addr;
+-    uint64_t kernel_entry;
+     DeviceState *mmio_irqchip, *virtio_irqchip, *pcie_irqchip;
+     int i, base_hartid, hart_count;
+=20
+@@ -1302,98 +1392,12 @@ static void virt_machine_init(MachineState *machi=
+ne)
+     memory_region_add_subregion(system_memory, memmap[VIRT_DRAM].base,
+         machine->ram);
+=20
+-    /* create device tree */
+-    create_fdt(s, memmap, machine->ram_size, machine->kernel_cmdline,
+-               riscv_is_32bit(&s->soc[0]));
+-
+     /* boot rom */
+     memory_region_init_rom(mask_rom, NULL, "riscv_virt_board.mrom",
+                            memmap[VIRT_MROM].size, &error_fatal);
+     memory_region_add_subregion(system_memory, memmap[VIRT_MROM].base,
+                                 mask_rom);
+=20
+-    /*
+-     * Only direct boot kernel is currently supported for KVM VM,
+-     * so the "-bios" parameter is not supported when KVM is enabled.
+-     */
+-    if (kvm_enabled()) {
+-        if (machine->firmware) {
+-            if (strcmp(machine->firmware, "none")) {
+-                error_report("Machine mode firmware is not supported in =
+"
+-                             "combination with KVM.");
+-                exit(1);
+-            }
+-        } else {
+-            machine->firmware =3D g_strdup("none");
+-        }
+-    }
+-
+-    if (riscv_is_32bit(&s->soc[0])) {
+-        firmware_end_addr =3D riscv_find_and_load_firmware(machine,
+-                                    RISCV32_BIOS_BIN, start_addr, NULL);
+-    } else {
+-        firmware_end_addr =3D riscv_find_and_load_firmware(machine,
+-                                    RISCV64_BIOS_BIN, start_addr, NULL);
+-    }
+-
+-    if (machine->kernel_filename) {
+-        kernel_start_addr =3D riscv_calc_kernel_start_addr(&s->soc[0],
+-                                                         firmware_end_ad=
+dr);
+-
+-        kernel_entry =3D riscv_load_kernel(machine->kernel_filename,
+-                                         kernel_start_addr, NULL);
+-
+-        if (machine->initrd_filename) {
+-            hwaddr start;
+-            hwaddr end =3D riscv_load_initrd(machine->initrd_filename,
+-                                           machine->ram_size, kernel_ent=
+ry,
+-                                           &start);
+-            qemu_fdt_setprop_cell(machine->fdt, "/chosen",
+-                                  "linux,initrd-start", start);
+-            qemu_fdt_setprop_cell(machine->fdt, "/chosen", "linux,initrd=
+-end",
+-                                  end);
+-        }
+-    } else {
+-       /*
+-        * If dynamic firmware is used, it doesn't know where is the next=
+ mode
+-        * if kernel argument is not set.
+-        */
+-        kernel_entry =3D 0;
+-    }
+-
+-    if (drive_get(IF_PFLASH, 0, 0)) {
+-        /*
+-         * Pflash was supplied, let's overwrite the address we jump to a=
+fter
+-         * reset to the base of the flash.
+-         */
+-        start_addr =3D virt_memmap[VIRT_FLASH].base;
+-    }
+-
+-    /*
+-     * Init fw_cfg.  Must be done before riscv_load_fdt, otherwise the d=
+evice
+-     * tree cannot be altered and we get FDT_ERR_NOSPACE.
+-     */
+-    s->fw_cfg =3D create_fw_cfg(machine);
+-    rom_set_fw(s->fw_cfg);
+-
+-    /* Compute the fdt load address in dram */
+-    fdt_load_addr =3D riscv_load_fdt(memmap[VIRT_DRAM].base,
+-                                   machine->ram_size, machine->fdt);
+-    /* load the reset vector */
+-    riscv_setup_rom_reset_vec(machine, &s->soc[0], start_addr,
+-                              virt_memmap[VIRT_MROM].base,
+-                              virt_memmap[VIRT_MROM].size, kernel_entry,
+-                              fdt_load_addr, machine->fdt);
+-
+-    /*
+-     * Only direct boot kernel is currently supported for KVM VM,
+-     * So here setup kernel start address and fdt address.
+-     * TODO:Support firmware loading and integrate to TCG start
+-     */
+-    if (kvm_enabled()) {
+-        riscv_setup_direct_kernel(kernel_entry, fdt_load_addr);
+-    }
+-
+     /* SiFive Test MMIO device */
+     sifive_test_create(memmap[VIRT_TEST].base);
+=20
+@@ -1429,6 +1433,13 @@ static void virt_machine_init(MachineState *machin=
+e)
+                                   drive_get(IF_PFLASH, 0, i));
+     }
+     virt_flash_map(s, system_memory);
++
++    /* create device tree */
++    create_fdt(s, memmap, machine->ram_size, machine->kernel_cmdline,
++               riscv_is_32bit(&s->soc[0]));
++
++    s->machine_done.notify =3D virt_machine_done;
++    qemu_add_machine_init_done_notifier(&s->machine_done);
+ }
+=20
+ static void virt_machine_instance_init(Object *obj)
+--=20
+2.35.1
 

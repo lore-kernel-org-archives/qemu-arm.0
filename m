@@ -1,103 +1,110 @@
-Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp854912lfu;
-        Wed, 27 Apr 2022 02:42:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyEyARKhciXqyjH5bv3qv0R4J2q+/fYGiP4v+V/3ZZR6K3oOPJLUOTBrkt/vIHZmo0faH2Z
-X-Received: by 2002:a05:6214:2aa7:b0:446:2f18:d005 with SMTP id js7-20020a0562142aa700b004462f18d005mr19267074qvb.33.1651052558245;
-        Wed, 27 Apr 2022 02:42:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651052558; cv=none;
+Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp909146lfu;
+        Wed, 27 Apr 2022 04:18:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy5FCD8K/vgYx4Fe5O+9VcDbs4LoyrEpttUobC21dZREm0TXy1AAxiDb/1EXx4eGHnd7V41
+X-Received: by 2002:a05:620a:108f:b0:69f:6ca0:cc43 with SMTP id g15-20020a05620a108f00b0069f6ca0cc43mr6461058qkk.663.1651058313168;
+        Wed, 27 Apr 2022 04:18:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651058313; cv=none;
         d=google.com; s=arc-20160816;
-        b=AMB+b3tTzew3yxOc9pFrLYuWE7Ij0Wq/or8usFtXaLKHW5yA22hKZWiUl/FwthYo06
-         cBIvrUag4JWP+3Hf9+84XeuL2mEUHWQj8NcxxYD/S5bcG7D4PqNp4PugCsoND9C8jg5o
-         VbZm8+zIbmiEj+OisaEmbCij0MfpZ4TSqjxlRncC+k/ImUZS1940BY8mPBugrt0pSn/S
-         QMgf8DoL7jO3kYqHh/8cjfi8erKKwtg8OwzGBjWQyaxnIUhHs1ZIipIrXO29J3i/QsoZ
-         DUtxwoylFqm0sDqvfLGPgNZO/nmOMEMdK0YhMh5CjB+4DJz+qmIjm4A2z4AbuzpSSiOe
-         K8kA==
+        b=s4tgVMhTVYhlnSISlFKLTJkTPdCk33OEZTjIs6HmT0nsslkfkHqXTlBUt/fZMjD7Lj
+         t9LXiHkyFkmd/seaEZNLKEyZyvM8eoISIMoV5+aAHIxWEHfE8DS4KTYLC1xl6SLO7fht
+         RNlf6x0GxYnw0c2GOq5PdMjWytpbWciKHIjcCUC8BtII9FCTxtZAwuSoDBGrHRyEp6Vc
+         fOoJ9sExsi6j2X0PHMDGx+LwWvLKRyWulS63cjQsXiK4LsSajp1S21dSabeaJJuLMyO1
+         7/6bKhXaHtw6w4AucuBfpZP82T5txfztPmW8ISIBN9z+UwJooeXHg6MiTiFaE3RCQAgJ
+         RoRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=5SExEP4D8iTrXZnX8LcXuTGfNS/3VoSpWcpS2/Yvv9M=;
-        b=0mZ9wwCqQvHLsG8n6BJNQAUAzIIsIAEDoYt81QURuGbmNI8k3cDm8ccK0wFlTp4V3c
-         fKtqRjxFJiWfCUD3GcQYCw56I8nal8dtfhrXXVdLRtIoKDUAalLxjyH/xAmKNjMm7FlY
-         JVRUJqLBbaxEdB6LFJck++QurAwcxe9g0c1PzQS+4eUlZl3MT8sqOWeD2rjWNIZM2NfQ
-         l4KXXKe2jDy13+ltdT4hTEIfFtDVw8AEZV2jfxcmuL0gVFnGCD80rZaUQUSZ0BT6+KWf
-         jd8b4OYZfahWr8Fjw5gZhpzBtXZhhIBET6obX/PxhfRiH3PM6A3yPLwGxB4FX3szcX6L
-         an3w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=A2c65tDAbj14lGL/ycGVvF4tProvIRMiix3SHQuwl20=;
+        b=g6/Y+AhFKcrU+HbWtOHNgXel8lY1b1kgSGuIzdPI5xvZ9ZWRrKvmOtNF3YV1fLVLRb
+         F/gPXgZY1y2p7CMU1TTrauHVo+4ePmlqdn4nP3jSRNJKM+y7W/wrOYmQmxCBl8J72M/c
+         6euh/JIvBJRVP+sGplefI0xdXq6BQjfPMhV/SdnDlqRBk+jtcvix7lZ0FmlfaieqQ3hD
+         BkFOyR5XuAIckhBhKrVAApvpeTMji/rYYBYYCkBnUdNEdaVs7KtZ4nm2qgXZcOTl7jWR
+         +3MnOz5p9hsMQ0U6h2WvKwymuFFboETiECc1vqDyGKZLXAYka+iukj0DID0C4u/Zj2fm
+         PHzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WWmsQiOx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n5mo6txL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a2-20020ad45c42000000b0045646c6a4a9si257313qva.99.2022.04.27.02.42.38
+        by mx.google.com with ESMTPS id c6-20020a05622a024600b002f33eda8da5si313476qtx.465.2022.04.27.04.18.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Apr 2022 02:42:38 -0700 (PDT)
+        Wed, 27 Apr 2022 04:18:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WWmsQiOx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n5mo6txL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59606 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54160 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1njeBx-0005IF-Of
-	for alex.bennee@linaro.org; Wed, 27 Apr 2022 05:42:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49410)
+	id 1njfgm-00073M-D3
+	for alex.bennee@linaro.org; Wed, 27 Apr 2022 07:18:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1njeAp-0005Cj-Lq
- for qemu-arm@nongnu.org; Wed, 27 Apr 2022 05:41:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:33496)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1njeAn-0000GE-Tz
- for qemu-arm@nongnu.org; Wed, 27 Apr 2022 05:41:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1651052484;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=5SExEP4D8iTrXZnX8LcXuTGfNS/3VoSpWcpS2/Yvv9M=;
- b=WWmsQiOx5d8ymAo9p5HkCHOQnZ80xC2cP/xPAR7MlypyHF5arym57vAHUzgrHqcudyqJos
- KtzN5EoFWP4EpHsUPzX6U/6lYs+8QDHZb41jjlEeSF15xVb7m1UOC0fFha5CLxGie/86RF
- cxc4Br0Ulhfum453BggSP2K6vG29E6g=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-610-gldTfSpuNCa3nY8FXxwMNQ-1; Wed, 27 Apr 2022 05:41:23 -0400
-X-MC-Unique: gldTfSpuNCa3nY8FXxwMNQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 98C42299E776;
- Wed, 27 Apr 2022 09:41:22 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.193])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 13F9E40EC002;
- Wed, 27 Apr 2022 09:41:17 +0000 (UTC)
-Date: Wed, 27 Apr 2022 10:41:15 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 06/18] ui/vnc: Require audiodev=
-Message-ID: <YmkPu9rphlQZq9TP@redhat.com>
-References: <cover.1650874791.git.mkletzan@redhat.com>
- <a07513f1bf6123fef52ff5e7943f5704746b376b.1650874791.git.mkletzan@redhat.com>
- <bacf5dd3-4cc1-7f80-8337-945d9b3f7dcc@redhat.com>
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1njfgV-0006xs-O2
+ for qemu-arm@nongnu.org; Wed, 27 Apr 2022 07:18:15 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:36447)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1njfgU-0007Op-7M
+ for qemu-arm@nongnu.org; Wed, 27 Apr 2022 07:18:15 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id u3so2031830wrg.3
+ for <qemu-arm@nongnu.org>; Wed, 27 Apr 2022 04:18:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=A2c65tDAbj14lGL/ycGVvF4tProvIRMiix3SHQuwl20=;
+ b=n5mo6txLFhe8OVGhdEQla3hkl6qPWQGZ/btvzR/3euamLz2VPXHgqSiV0/ozaZL0LW
+ UJoPoZ7j3dy04PcbFHwgGQPeP3iyWnmbNpIElkHn27QOYXlRI2j/zufNlxfqw5XQ2BDg
+ xx1ezA5dCmBvhpi9PwlbR6JProuKtJLP3hKyAb3oEbXjE1frAiAVHzVlBB7ofxEkgMZD
+ gOMny43ePrT9HDjSLya13qaWQxtNzrp6SnyrCE6fjdrcn91OUnqbuauIx7oIwo/1vkqX
+ uA0zOqbVIIDegO2kmBsJHx/sqMX6lM9xfKwIMJLfxyMBZYqskrOUqy9UAK3dOnXbTQ+P
+ txtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=A2c65tDAbj14lGL/ycGVvF4tProvIRMiix3SHQuwl20=;
+ b=Q2PTveW0ODExHPD0CIEdW9WBxbjisevpRZnvHxDfIeY7+6CQKS0KIkesw7e52MRj/i
+ q1pPhYb3bCbNqa3Hgt2Ue9sicIbVpQboDDeqcq1QBgXuCWam0ZBXX5oR3bozdqGlmQTP
+ G7saKbzfdfAlJiz+e0E5N0k2mIofe8n3FnlAO9R1nW9Wxz3ZEWZJYBxc5OV3Tng9a8Oc
+ jMocdsGSsK/s9PLknkioM1N+cDqDFu2OLU2zKpyyd8Og1/e8VyaNgQJUmsiDTSmqcQk5
+ Wak4hLeHKSkAuV6j8IEnKr+MI2KYmCpF4pWyKqxl1kLGg4wSTHu0kwYZ9pJGeLf8v9y4
+ OSfw==
+X-Gm-Message-State: AOAM5308GtcOfIAe2PIU8YPqW/WvrN1VThrAbnDf+GwcdHjPby89SNB0
+ 9SVOV0AgNraEdTGyVLiosqbi/mhGEqjTtL1Q
+X-Received: by 2002:a5d:6da9:0:b0:20a:e1a1:7f0d with SMTP id
+ u9-20020a5d6da9000000b0020ae1a17f0dmr8030547wrs.378.1651058292887; 
+ Wed, 27 Apr 2022 04:18:12 -0700 (PDT)
+Received: from localhost.localdomain
+ (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
+ by smtp.gmail.com with ESMTPSA id
+ d17-20020adfa351000000b0020adbfb586fsm8313104wrb.117.2022.04.27.04.18.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Apr 2022 04:18:11 -0700 (PDT)
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: eric.auger@redhat.com
+Subject: [PATCH 2/2] hw/arm/smmuv3: Add space in guest error message
+Date: Wed, 27 Apr 2022 12:15:45 +0100
+Message-Id: <20220427111543.124620-2-jean-philippe@linaro.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220427111543.124620-1-jean-philippe@linaro.org>
+References: <20220427111543.124620-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <bacf5dd3-4cc1-7f80-8337-945d9b3f7dcc@redhat.com>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -111,54 +118,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, libvir-list@redhat.com,
- Christian Schoenebeck <qemu_oss@crudebyte.com>, qemu-devel@nongnu.org,
- Yanan Wang <wangyanan55@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Qiuhao Li <Qiuhao.Li@outlook.com>,
- =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- Martin Kletzander <mkletzan@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Darren Kenny <darren.kenny@oracle.com>, Bandan Das <bsd@redhat.com>,
- qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Eduardo Habkost <eduardo@habkost.net>, Alexander Bulekov <alxndr@bu.edu>,
- Thomas Huth <huth@tuxfamily.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2vsjFKcGIZv0
+X-TUID: yD6bOkMyQxIj
 
-On Wed, Apr 27, 2022 at 11:32:41AM +0200, Paolo Bonzini wrote:
-> On 4/25/22 10:21, Martin Kletzander wrote:
-> > @@ -4188,12 +4188,15 @@ void vnc_display_open(const char *id, Error **errp)
-> >       vd->ledstate = 0;
-> >       audiodev = qemu_opt_get(opts, "audiodev");
-> > -    if (audiodev) {
-> > -        vd->audio_state = audio_state_by_name(audiodev);
-> > -        if (!vd->audio_state) {
-> > -            error_setg(errp, "Audiodev '%s' not found", audiodev);
-> > -            goto fail;
-> > -        }
-> > +    if (!audiodev) {
-> > +        error_setg(errp, "Audiodev parameter for vnc required");
-> > +        goto fail;
-> > +    }
-> > +
-> 
-> Wouldn't this break "-vnc :0"?  You can just ignore the audio commands if
-> vd->audio_state is NULL.
+Make the translation error message prettier by adding a missing space
+before the parenthesis.
 
-Yep, that's wha I suggested with skipping advertizing VNC_ENCODING_AUDIO
-when audiodev is NULL
+Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+---
+ hw/arm/smmuv3.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-With regards,
-Daniel
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 8b1d8103dc..3a989b09cb 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -786,7 +786,7 @@ epilogue:
+         break;
+     case SMMU_TRANS_ERROR:
+         qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s translation failed for iova=0x%"PRIx64"(%s)\n",
++                      "%s translation failed for iova=0x%"PRIx64" (%s)\n",
+                       mr->parent_obj.name, addr, smmu_event_string(event.type));
+         smmuv3_record_event(s, &event);
+         break;
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.35.1
 

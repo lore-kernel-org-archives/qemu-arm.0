@@ -1,99 +1,100 @@
-Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp315866lfu;
-        Tue, 26 Apr 2022 08:32:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz0b/h4/gqYPa8qxMpFjPu5UMCXmqToeLUTnZYcOMAuDhhjVjQ68gK7Bxa8YJ4m9Gq/XEnO
-X-Received: by 2002:a0d:f805:0:b0:2f7:b830:280b with SMTP id i5-20020a0df805000000b002f7b830280bmr18411094ywf.262.1650987155431;
-        Tue, 26 Apr 2022 08:32:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1650987155; cv=none;
+Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp711935lfu;
+        Tue, 26 Apr 2022 21:23:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwz+VDFylN5p5ikgV/ttUUnjBH3E+GzsbegSmOizanDZspMt2r0CDWNydtLYYIXLJNu+XNz
+X-Received: by 2002:a05:622a:1a19:b0:2f3:6517:70aa with SMTP id f25-20020a05622a1a1900b002f3651770aamr10005914qtb.60.1651033428871;
+        Tue, 26 Apr 2022 21:23:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651033428; cv=none;
         d=google.com; s=arc-20160816;
-        b=d5sIIsAnLltoYCa8TT2GQWAN58nUv0sofKm8Qck7KJrV+npR1b6p+3nOwMeXoexs8d
-         XzxpBzEvg69VGcmHLtOvtnLmolHlC6DY2lFqb0L9OOCH45gH3n+7uo20Etvx4PiU9Awl
-         NwPHtlr9dpt8vCjLTwh7o3JTD19Z+Gh+cwShtKF1xgiP8MLMxTHdElZBQ9AEiolbUkyF
-         d1gwOZeJtTTbw5qPuHo2MjZOk75qtBxJoh/dBDMcgy+d9m+InncHX5KnEZVPeCpzywUo
-         vq2twIN/StCU2oUeTYPJ6q0G1fnSAFK05Xp2B2quElN5pJYRtId9Iyi7y+wFbppZMUMf
-         4jRA==
+        b=QNj/w3f3bJ/SLxUO2Q6uTEh7ZA+H/UFjHGF3Dv8C5tLZ8w92mAzQPJiNv8h/jmDIkZ
+         1W+XsOyAYPi0Li0vTCll8j4iWCKYrXHPgoqPI5z/9AVOvP8ZrzTnL9rZYv9dcohe+gDo
+         MVQIPogXiszlV3EpbvAiLxCyNHJwcweSd/0idors0dgmhGPJMa69+vrs5nqOUUwxaml3
+         C/lr4JAY3Pen9zCtjE9+5hUoZJQyWTuc4PpdoEiANGaHSPigL8oW6T36C8L70X3f4m4C
+         iNSpY4t7vLF8P9v2N5uoOyI0kWC3sC3W4aLJxnsiu8S51ZCshF5Y1V58YJVoRUYJ5ZIh
+         1KiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=gQDxV9rI0+Uz+mlIReO5AmMv5klPYv/zeLKWV5mz5hc=;
-        b=ln9lHQEkSIgJy62skR4VLKwqnprB+2OjNKWpjxXXWIO2wJZa9K2oa3U3wMLhSYzvcP
-         /V+PVXz+co4Q645JiM9StZMelXoN+g8EGNK/NUgnL7Zb/t9RHWGPfW3HCQXXyvSiiM8U
-         SKFCTxnhX5a2bupqOs4hSUVd7+h9+h1rnMx4CNgcPOJvqtQvuxhMLY5ldlsgCkssfcHR
-         iqlfEWeTB/p3KW6XldUxhcKFP4WS6yvuU7WjZx30ZfZn/e9kOcmZ2c75gG5RCWDnQNIk
-         1ZGf9/ZJQaBH1f2BqZ+NC2EgtmIJ3W1Zf++iXdVAqE2FW3xovBg63n6s6E27t/V1kKyi
-         OWjw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=tRHn2mdN0R0av8YyHUzJgxZG/sPCJkq9JFL0TZYgnqQ=;
+        b=fo1BSzMtqZ+4HxQT+0ijROnVXAUTg4m7/77ShD9lJc5zsy8kGy23Rl0KTFBbwTZ2A4
+         jpJR1AiAh1RY+mUihidRwzc2u2eoJ9zKzgy/iyq8KCCFxS08wWAxtec5CZytyNa9VpeN
+         F4CCTtsZN9JCDn+hORNMx+rBJ78+kSqZm3DPmjpSogrr6CECNqpJoCD0QTWODld9d49D
+         ZfGI0uGI9zjt8qwBSgAZ6tNeoumOZjNvzbkD8UGILKKDYBvBu+slLs8d2NVW8FwHiQhW
+         KKnbke3cVvy7Vb2eLhwNPcSblLJut2a7Jt8NfAhMfYNNBQbqymnM8jHZ7YA8w1sZ36Y5
+         rjMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="iOz3Y/fN";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gq2SusrU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6-20020a056902008600b006453a7d17c0si14166264ybs.432.2022.04.26.08.32.35
+        by mx.google.com with ESMTPS id p14-20020a05622a13ce00b002f1f1af53e0si81162qtk.645.2022.04.26.21.23.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Apr 2022 08:32:35 -0700 (PDT)
+        Tue, 26 Apr 2022 21:23:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="iOz3Y/fN";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gq2SusrU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54136 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38072 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1njNB4-0000T4-RB
-	for alex.bennee@linaro.org; Tue, 26 Apr 2022 11:32:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58862)
+	id 1njZDP-000163-RO
+	for alex.bennee@linaro.org; Wed, 27 Apr 2022 00:23:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46226)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1njNAo-0000Rk-9z
- for qemu-arm@nongnu.org; Tue, 26 Apr 2022 11:32:19 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134]:33964)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1njZD3-00014d-4A
+ for qemu-arm@nongnu.org; Wed, 27 Apr 2022 00:23:25 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:33374)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1njNAh-0002Bd-Sm
- for qemu-arm@nongnu.org; Tue, 26 Apr 2022 11:32:14 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-2f7c424c66cso94718707b3.1
- for <qemu-arm@nongnu.org>; Tue, 26 Apr 2022 08:32:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1njZCw-0004ps-BK
+ for qemu-arm@nongnu.org; Wed, 27 Apr 2022 00:23:21 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id c23so591134plo.0
+ for <qemu-arm@nongnu.org>; Tue, 26 Apr 2022 21:23:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gQDxV9rI0+Uz+mlIReO5AmMv5klPYv/zeLKWV5mz5hc=;
- b=iOz3Y/fN97aNRSmrBemTg/kTJL7dszJgF9p3t1mjrDcSO2ogUuYrseBowN164JcG2A
- 3bPBBSry2pNNdTd3hyqSM7pqfb4W06VBtUFzMeHA4PNlAOdfcBbuvziBjuovPO5q/rS3
- hdMQyBxJcNEsZSepT8omlLp3psyYlkhmLuNZhcN8CWyL/lMRRoaEiqGmQWTiICJKO6Aa
- rJywIrWDq5hQjwa9DBIDRf4oVXvTVSa8eJCKh9xEC7QoQ4f45ZzzXfPfIasjcYHGy724
- /bQ170/K2mzud57pcdk9zuzZDNbBxK6uLxYVfAYHgTfYYiRTs2ZxfsEID7THeZSLownU
- ynqQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=tRHn2mdN0R0av8YyHUzJgxZG/sPCJkq9JFL0TZYgnqQ=;
+ b=Gq2SusrUeJPU7fI4BBK7yWivjCeTz9Rpm1knngsr/kmYtGTmrzeWvi5o31VHPEyi2U
+ +2gmxMFNsAUwRL+OJJnjAxz+zdGYeJLkB797gSeeTRjf4eKDLzRD1jcm2I9TTOSfyJ4E
+ pkpCqpl9OE0EoSfSUs943xilkOU+uG0a8wiSRBC71E5bry4yDRwHadKcWAyeIuuNKTHY
+ UVYfyXlTTinXRVJRptaVB1hBOm38jOc5BrwAcbwRdN6bF6clONABiAtPa3WgvyjURIJA
+ SsbvzCglVn9yWhzbuFr4H0rjhfJX9Vlzk/kMqTZs9SHxr60eyQHeec5o4aMEDD0t36F5
+ /hQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gQDxV9rI0+Uz+mlIReO5AmMv5klPYv/zeLKWV5mz5hc=;
- b=m1XFcd+caRAo7XT9y2xFEntcJypDD4Up5alEyfPAWZGs1S4p67CG3183ae05GMWVS3
- Pj5pWWr98kHhCYvLPmcnx74nIuV54c8XkT1SB7OTJmbN6asw7nwzc3Cy/6ua5PwTgSRr
- 0s9LxFtGitPG0DliW9b0XHmTefMKVGpmOZN/CLTJHkJgGFcgfMQJUK0iSBNdvKlgb7zh
- C+7Q9nZw7DvkMrOoEX4Q/Kr31yF/UMe0iwUial45YhEesbKX755Jfpnrb5uhpGaFFmcW
- 6o+mT4BhD6c7tpdzDXTgFBnEdbE2ecXg62iWgBUQz2OdMNo7cFUO6zTY8ZNJ0LgMypT6
- A/xg==
-X-Gm-Message-State: AOAM531uZOGQ8a57psu8xNYAAbthMNmJ4MaUN4grz6ALbuPmepaI5SWq
- X8JtoHqSooN2EmV3e3qy5X9W8ck+oMspmRpWB7TeUmoGJuU=
-X-Received: by 2002:a81:13d6:0:b0:2ec:2b3f:28c6 with SMTP id
- 205-20020a8113d6000000b002ec2b3f28c6mr22782956ywt.10.1650987127669; Tue, 26
- Apr 2022 08:32:07 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=tRHn2mdN0R0av8YyHUzJgxZG/sPCJkq9JFL0TZYgnqQ=;
+ b=IULjDibKVqivzvjey1PHCiapCz2uPXkWkSEnR1oKtm1RBJS8iDn9HU9So/uC9VlOci
+ +Ub5lr40qANr4dGU8xOQV8AZGM8gl6ob+FCMpUCIETfvshR/3GhrcwMVQsb13AdC5U8D
+ 8DIjuhaG3HcT+bBw+SrD2/nUcv9rYvuyvdQKjiviqR8FkO08aAkwKIDYTV2btJjKCEjS
+ 1cLowXAyDl/Mkj12K6M0+QDjU++masVa2xOSZ0Mr+S4Lk36NAzQHK6h1Jt3oDBsSQY/8
+ 6HKpnf51OGcZY7cpvwdcWDZqzqqnH0H0BbFbPMRHELUsUno6FADzp6jGRHo8KPhN/k6c
+ LX9Q==
+X-Gm-Message-State: AOAM532vUWSgu8g2hBzln7Nnw12lHuHTCL3pVAqr5I4nkFI8auC9TcXQ
+ nWBA7EmTUfUSKGEqU9Q3lGQYzoLnZgMiyA==
+X-Received: by 2002:a17:90a:ba15:b0:1cb:be7d:bbca with SMTP id
+ s21-20020a17090aba1500b001cbbe7dbbcamr41341075pjr.143.1651033393867; 
+ Tue, 26 Apr 2022 21:23:13 -0700 (PDT)
+Received: from stoup.. (174-21-142-130.tukw.qwest.net. [174.21.142.130])
+ by smtp.gmail.com with ESMTPSA id
+ iy19-20020a17090b16d300b001cd4989fee6sm4846064pjb.50.2022.04.26.21.23.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Apr 2022 21:23:13 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Enable SCTLR_EL1.BT0 for aarch64-linux-user
+Date: Tue, 26 Apr 2022 21:23:12 -0700
+Message-Id: <20220427042312.294300-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20220417174426.711829-1-richard.henderson@linaro.org>
- <20220417174426.711829-36-richard.henderson@linaro.org>
- <CAFEAcA_SsEXfU9J1+AjWQXb2VMnNkT2XVN5na69N3CvmUGYhhw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_SsEXfU9J1+AjWQXb2VMnNkT2XVN5na69N3CvmUGYhhw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 26 Apr 2022 16:31:56 +0100
-Message-ID: <CAFEAcA_P9gxqKxVaKUbuHq6M5GQRmyRObnFfeq7CJ11LFkSEdg@mail.gmail.com>
-Subject: Re: [PATCH v3 35/60] target/arm: Handle cpreg registration for
- missing EL
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,37 +114,105 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1vjpzKSuYTeu
+X-TUID: 8jTShajRS/CI
 
-On Fri, 22 Apr 2022 at 11:57, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Sun, 17 Apr 2022 at 19:21, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
-> >
-> > More gracefully handle cpregs when EL2 and/or EL3 are missing.
-> > If the reg is entirely inaccessible, do not register it at all.
-> > If the reg is for EL2, and EL3 is present but EL2 is not,
-> > squash to ARM_CP_CONST.
->
-> I don't think we should do this unconditionally. Just because
-> the architecture usually defines that an _EL2 register is
-> RES0 if EL2 is not present doesn't mean that it does so for
-> every register or that it guarantees that it will continue
-> to do so in future. (For instance I found ZCR_EL2 and TFSR_EL2
-> don't have that statement in their documentation, which might or
-> might not be an oversight.) You could add an ARM_CP_ flag for
-> "RES0 if no EL2" or something I guess?
+This controls whether the PACI{A,B}SP instructions trap with BTYPE=3
+(indirect branch from register other than x16/x17).  The linux kernel
+sets this in bti_enable().
 
-I've just found rule R_RJFFP in section D1.1.3 of DDI0487H.a,
-which explicitly documents that if EL2 is not implemented and
-EL3 is, then "every accessible register associated with EL2 is
-RES0" except for an enumerated list of six registers which are
-not. So I'm more open to "default to RES0, with a flag to
-suppress that default" than I was when I first reviewed this
-patchset.
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/998
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.c                  |  2 ++
+ tests/tcg/aarch64/bti-3.c         | 42 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  8 +++---
+ 3 files changed, 48 insertions(+), 4 deletions(-)
+ create mode 100644 tests/tcg/aarch64/bti-3.c
 
-thanks
--- PMM
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index e3f8215203..c50a8dca0b 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -197,6 +197,8 @@ static void arm_cpu_reset(DeviceState *dev)
+         /* Enable all PAC keys.  */
+         env->cp15.sctlr_el[1] |= (SCTLR_EnIA | SCTLR_EnIB |
+                                   SCTLR_EnDA | SCTLR_EnDB);
++        /* Trap on btype=3 for PACIxSP. */
++        env->cp15.sctlr_el[1] |= SCTLR_BT0;
+         /* and to the FP/Neon instructions */
+         env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 20, 2, 3);
+         /* and to the SVE instructions */
+diff --git a/tests/tcg/aarch64/bti-3.c b/tests/tcg/aarch64/bti-3.c
+new file mode 100644
+index 0000000000..a852856d9a
+--- /dev/null
++++ b/tests/tcg/aarch64/bti-3.c
+@@ -0,0 +1,42 @@
++/*
++ * BTI vs PACIASP
++ */
++
++#include "bti-crt.inc.c"
++
++static void skip2_sigill(int sig, siginfo_t *info, ucontext_t *uc)
++{
++    uc->uc_mcontext.pc += 8;
++    uc->uc_mcontext.pstate = 1;
++}
++
++#define BTYPE_1() \
++    asm("mov %0,#1; adr x16, 1f; br x16; 1: hint #25; mov %0,#0" \
++        : "=r"(skipped) : : "x16", "x30")
++
++#define BTYPE_2() \
++    asm("mov %0,#1; adr x16, 1f; blr x16; 1: hint #25; mov %0,#0" \
++        : "=r"(skipped) : : "x16", "x30")
++
++#define BTYPE_3() \
++    asm("mov %0,#1; adr x15, 1f; br x15; 1: hint #25; mov %0,#0" \
++        : "=r"(skipped) : : "x15", "x30")
++
++#define TEST(WHICH, EXPECT) \
++    do { WHICH(); fail += skipped ^ EXPECT; } while (0)
++
++int main()
++{
++    int fail = 0;
++    int skipped;
++
++    /* Signal-like with SA_SIGINFO.  */
++    signal_info(SIGILL, skip2_sigill);
++
++    /* With SCTLR_EL1.BT0 set, PACIASP is not compatible with type=3. */
++    TEST(BTYPE_1, 0);
++    TEST(BTYPE_2, 0);
++    TEST(BTYPE_3, 1);
++
++    return fail;
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 6ad0ad49f9..a738eb137c 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -26,11 +26,11 @@ run-plugin-pauth-%: QEMU_OPTS += -cpu max
+ endif
+ 
+ # BTI Tests
+-# bti-1 tests the elf notes, so we require special compiler support.
++# bti-1 test the elf notes, so we require special compiler support.
+ ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
+-AARCH64_TESTS += bti-1
+-bti-1: CFLAGS += -mbranch-protection=standard
+-bti-1: LDFLAGS += -nostdlib
++AARCH64_TESTS += bti-1 bti-3
++bti-1 bti-3: CFLAGS += -mbranch-protection=standard
++bti-1 bti-3: LDFLAGS += -nostdlib
+ endif
+ # bti-2 tests PROT_BTI, so no special compiler support required.
+ AARCH64_TESTS += bti-2
+-- 
+2.34.1
+

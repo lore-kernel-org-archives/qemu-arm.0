@@ -1,166 +1,154 @@
-Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp850778lfu;
-        Wed, 27 Apr 2022 02:33:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJysl7BY0+VnFx3r0ZXXpQnoNhlXDsNyu8vYDN5bVC4Plho5PHZWPOEwCG1AIo36mZKOg3D3
-X-Received: by 2002:a05:620a:16cf:b0:69c:8388:f115 with SMTP id a15-20020a05620a16cf00b0069c8388f115mr14997975qkn.754.1651051991407;
-        Wed, 27 Apr 2022 02:33:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651051991; cv=none;
+Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp839584lfu;
+        Wed, 27 Apr 2022 02:09:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxORC/CZuxtzc/R8aiQnv17OTK4gU+jtEw1kEb6UJIKyvd+u/24VkIcglaSaILYomMt5QKy
+X-Received: by 2002:a05:622a:1c7:b0:2f2:4aa:76d2 with SMTP id t7-20020a05622a01c700b002f204aa76d2mr18492322qtw.611.1651050597414;
+        Wed, 27 Apr 2022 02:09:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651050597; cv=none;
         d=google.com; s=arc-20160816;
-        b=OuKW7yw7CKEIREeZP6McK2oHY7jGyunl/e/92mHvoQMWqkjfA7CMWJAlQgDc/udn7F
-         7QhJyhGStOKnRKgTh2zUbFB0V3e3iuxdT4S2hke/XOZe51N2jQJPLZeYLEdm0PBgRmRs
-         llcaMN1g7S8Kh8JMavDJMM1fkcDl4id8v1JxY3w/menHQ4R/4GCBwJZGLyrmRlFFeC0+
-         +xLOdl816A0+pKm18/tyNmF8MREJUERmVWrMk6KCwmLjO3NF30O9tWM/ySU6jQG5Vq4d
-         zzgkxJ9ExRrvI7XMDneKsaEUAoVqmMn0HlN6K34zNYqrfS66PsBtza5tGX5gctDUr4Oq
-         kLKQ==
+        b=HAd2p3fa6/CvTchHCvUN6/1no7itN+NMZH4393fXFRN4d86E2KBKuFpaRQBfL8FJS0
+         S0Klvc1MlbiKR2msB84MjZb6nZhOZVPHG8NuIsgphW1r1Q8WAaYseYG9R7NC6mYS911o
+         36CtynhuFL8JalnolbJSOHJod7MgOf+JVRUuH6PR5bsy4dcu4UMLbCqqPwvlMl0cEQ/K
+         bcR8jIZPTkaSmuN39JzP3TQU3MXPSWNnNjOvYgm54WjbcSEypzS1sUnFUx4KeWCV0NcY
+         MhrZB9qfVy6um5QzEdj0aeRryYwSF0vO4rZzNFQTN8v5JVAu3GvPckNaDn0So8OY9FHV
+         VoXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=qT13RqFUDCDCBaYOo0rzekE3nFeHBHwPmSUKvCmZad0=;
-        b=dQIFeV4WzPD5je9Gvhb0DXx01grxUYRxqU2K/lTctT1CNEI2sQmgC9PSMCxGfg3XSQ
-         5gb1/n4r2d8NhAcWcrTHE3Dwl8td6wGMwMpP3WzAfPtr8ADovX9aXJvJNqlqk4Md6Ylh
-         JdKnRd5Ju11t+CrBZeBy6lJwdtOCrdA38DdU8YENXZ4sOPXO+45VY3WMTeDqrvjL8TwN
-         K9wCHcMrEj1+X2PmYGmXEgpo794IGRORaf80gYhex+VyeBP++rjxS+zxT7Vb4DSYu7z0
-         jGBWpMOhKHuVcD4T7LoNQjamV0Cj4t6TdrrdwU5GWdAie2Tn+jWaCMJxL0X6+diF/N56
-         drrw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=vTuy2Q3HKMxmWp0VRYSAap4dqyjc1PqEPVf4LD5lV0g=;
+        b=U9CEj5qKP5dpnhs6DW2GOj+cdCTB1sa5dY9AuRYTfi24G9RGBOY5c7gH2YZfEWIUZD
+         JOFdGR5Pu/2Qis0rydyzoT8qUG7QqaPi1h5M1FGAMZjFfGS7jzVaS1voHY6saqqeuTGX
+         67/XQDDPyjtLNm1PICdeq9ewHK41T2hOoo+FmmAJB9z8tkISp/FPoVb7bxmtXtuGa35F
+         KPJNRd1O5OVyb1FKiBFVhRMhL5PrLntc62/cix2Gx0W56L885XxbqmqGLcJ2DV01abxj
+         PJN7o+scUKM/HWNyn8Oqc0tEhsNi6zyUj2WYtWwgY82DmA7B4FdLTt4tcLUV38Okhwpz
+         XX/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=LctFJtHd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="m/++t9Bj";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq18-20020a05620a469200b0069e75b3b38dsi286619qkb.546.2022.04.27.02.33.11
+        by mx.google.com with ESMTPS id u14-20020a05622a14ce00b002ee8f28c297si219252qtx.428.2022.04.27.02.09.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Apr 2022 02:33:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 Apr 2022 02:09:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=LctFJtHd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52586 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="m/++t9Bj";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47752 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nje2o-0008QZ-TS
-	for alex.bennee@linaro.org; Wed, 27 Apr 2022 05:33:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47916)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1njdgK-0001kK-Pi
+	for alex.bennee@linaro.org; Wed, 27 Apr 2022 05:09:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39086)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1nje2T-0008Lk-SH; Wed, 27 Apr 2022 05:32:49 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:34741)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1nje2S-0007UX-5R; Wed, 27 Apr 2022 05:32:49 -0400
-Received: by mail-ej1-x629.google.com with SMTP id g6so2246351ejw.1;
- Wed, 27 Apr 2022 02:32:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=qT13RqFUDCDCBaYOo0rzekE3nFeHBHwPmSUKvCmZad0=;
- b=LctFJtHdU+5gSStF0CWBCt88qUShXBp0iwTQLX8jZRDQtQIHL761DUzDAA4YhgSLET
- 7syM9tCJo2lM35++5DW/17FwgyBTf3ne3/iPYqsayGLYLUvRTYD6GG6old1Zyf0JHXBL
- r+QbmWNMDxJzrUd8afBOkGYqMK0z9Z9xNGMdAxswzO/jgR4RFgoL2pGeeNI23P1uKIAy
- brCZC/8mz/AJKOeLL4ICnaotLM/us9Ezq8WVfGq5UsvbTWGk/5jreEBsYKFJmxX2FJyZ
- sdzEUZpRHc4o5dVbrGH1KDHUrGEGidq7mWdhQaAahO1uadI2ZnBl89C235hbiG9MFq2n
- N8+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=qT13RqFUDCDCBaYOo0rzekE3nFeHBHwPmSUKvCmZad0=;
- b=FOC4+vm1k/h4MIwIeeNDli+SaGFSPMKo/bL9wsdPslUOqAxvn6OndVkaYnfofeen3S
- fppn4lp94HUopDnXGDaluF8k8GmnHLJ+rTftgmiKMA22+INPAQVvEfEC2JVgk6a8V1pr
- bqI/9e6OvZlNGZGO+nl6OhQQlXPerUNhdWjvyu3rkZkrFb+3KEECdW8rXIN4TDLR1c/k
- LQYquuKIJ4Vy/ymKlJD+8gDFjdkpidvpkhhS5NPVVIdTU1tfKaWNZlXEH6voex7h7BkY
- XQalUYxTDhB41kYso/+zUyqenTYnmPtM4wVwU33VCJZY41EgMGfTHzDnqNjsgS8GMZCl
- fncA==
-X-Gm-Message-State: AOAM533SWpH/rBGik7tYH9QuGryobLUv0kA/WaqEdykUMt9sqTqrMxYF
- Yi5MYNtH+A1bk3ElDFF9rmc=
-X-Received: by 2002:a17:907:3e10:b0:6ef:f04b:c21e with SMTP id
- hp16-20020a1709073e1000b006eff04bc21emr25382436ejc.747.1651051966016; 
- Wed, 27 Apr 2022 02:32:46 -0700 (PDT)
-Received: from ?IPV6:2001:b07:6468:f312:1c09:f536:3de6:228c?
- ([2001:b07:6468:f312:1c09:f536:3de6:228c])
- by smtp.googlemail.com with ESMTPSA id
- g1-20020a170906348100b006efc26c7b1dsm6315127ejb.195.2022.04.27.02.32.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Apr 2022 02:32:45 -0700 (PDT)
-Message-ID: <bacf5dd3-4cc1-7f80-8337-945d9b3f7dcc@redhat.com>
-Date: Wed, 27 Apr 2022 11:32:41 +0200
+ (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
+ id 1njdY6-00065N-98; Wed, 27 Apr 2022 05:01:26 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:35016)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
+ id 1njdY3-00024i-Ec; Wed, 27 Apr 2022 05:01:25 -0400
+Received: from crumble.bar.greensocs.com (unknown [172.17.10.6])
+ by beetle.greensocs.com (Postfix) with ESMTPS id 746E72077F;
+ Wed, 27 Apr 2022 09:01:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1651050080;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vTuy2Q3HKMxmWp0VRYSAap4dqyjc1PqEPVf4LD5lV0g=;
+ b=m/++t9BjlWk2HE9MwQCl3oYY4kSxAixJyTANJ2JCU3yxHNtT8TW4zS2i0Tg6XWzvkHcnQt
+ zNT3YPkwokDwrs2I2iZ3PKe9fupQ8TE/P8omUCSu6N2fq986EVYAGMLpoZHMbr9GGumEl0
+ Y/uH8D55jfuBnCPBALeak97xZCo3yf0=
+From: Damien Hedde <damien.hedde@greensocs.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2] target/arm: Disable cryptographic instructions when neon
+ is disabled
+Date: Wed, 27 Apr 2022 11:01:17 +0200
+Message-Id: <20220427090117.6954-1-damien.hedde@greensocs.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH 06/18] ui/vnc: Require audiodev=
-Content-Language: en-US
-To: Martin Kletzander <mkletzan@redhat.com>, qemu-devel@nongnu.org
-References: <cover.1650874791.git.mkletzan@redhat.com>
- <a07513f1bf6123fef52ff5e7943f5704746b376b.1650874791.git.mkletzan@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <a07513f1bf6123fef52ff5e7943f5704746b376b.1650874791.git.mkletzan@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=paolo.bonzini@gmail.com; helo=mail-ej1-x629.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=5.135.226.135;
+ envelope-from=damien.hedde@greensocs.com; helo=beetle.greensocs.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, libvir-list@redhat.com,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Yanan Wang <wangyanan55@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Qiuhao Li <Qiuhao.Li@outlook.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Darren Kenny <darren.kenny@oracle.com>, Bandan Das <bsd@redhat.com>,
- qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>, Thomas Huth <huth@tuxfamily.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l8w5rZgp2pNf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, richard.henderson@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: m1GpeTrKx16o
 
-On 4/25/22 10:21, Martin Kletzander wrote:
-> @@ -4188,12 +4188,15 @@ void vnc_display_open(const char *id, Error **errp)
->       vd->ledstate = 0;
->   
->       audiodev = qemu_opt_get(opts, "audiodev");
-> -    if (audiodev) {
-> -        vd->audio_state = audio_state_by_name(audiodev);
-> -        if (!vd->audio_state) {
-> -            error_setg(errp, "Audiodev '%s' not found", audiodev);
-> -            goto fail;
-> -        }
-> +    if (!audiodev) {
-> +        error_setg(errp, "Audiodev parameter for vnc required");
-> +        goto fail;
-> +    }
-> +
+As of now, cryptographic instructions ISAR fields are never cleared so
+we can end up with a cpu with cryptographic instructions but no
+floating-point/neon instructions which is not a possible configuration
+according to ARM specifications.
 
-Wouldn't this break "-vnc :0"?  You can just ignore the audio commands 
-if vd->audio_state is NULL.
+In QEMU, we have 3 kinds of cpus regarding cryptographic instructions:
++ no support
++ cortex-a57/a72: cryptographic extension is optional,
+  floating-point/neon is not.
++ cortex-a53: crytographic extension is optional as well as
+  floationg-point/neon. But cryptographic requires
+  floating-point/neon support.
 
-Paolo
+Therefore we can safely clear the ISAR fields when neon is disabled.
+
+Note that other arm cpus seem to follow this. For example cortex-a55 is
+like cortex-a53 and cortex-a76/cortex-a710 are like cortex-a57/a72.
+
+Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+---
+
+v2: also clear SHA3 / SM3 / SM4 (Richard)
+---
+ target/arm/cpu.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index e3f8215203..e46a766d77 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1587,6 +1587,12 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         unset_feature(env, ARM_FEATURE_NEON);
+ 
+         t = cpu->isar.id_aa64isar0;
++        t = FIELD_DP64(t, ID_AA64ISAR0, AES, 0);
++        t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 0);
++        t = FIELD_DP64(t, ID_AA64ISAR0, SHA2, 0);
++        t = FIELD_DP64(t, ID_AA64ISAR0, SHA3, 0);
++        t = FIELD_DP64(t, ID_AA64ISAR0, SM3, 0);
++        t = FIELD_DP64(t, ID_AA64ISAR0, SM4, 0);
+         t = FIELD_DP64(t, ID_AA64ISAR0, DP, 0);
+         cpu->isar.id_aa64isar0 = t;
+ 
+@@ -1601,6 +1607,9 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         cpu->isar.id_aa64pfr0 = t;
+ 
+         u = cpu->isar.id_isar5;
++        u = FIELD_DP32(u, ID_ISAR5, AES, 0);
++        u = FIELD_DP32(u, ID_ISAR5, SHA1, 0);
++        u = FIELD_DP32(u, ID_ISAR5, SHA2, 0);
+         u = FIELD_DP32(u, ID_ISAR5, RDM, 0);
+         u = FIELD_DP32(u, ID_ISAR5, VCMA, 0);
+         cpu->isar.id_isar5 = u;
+-- 
+2.35.1
+

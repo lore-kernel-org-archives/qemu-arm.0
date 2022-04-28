@@ -1,94 +1,91 @@
-Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp1196883lfu;
-        Wed, 27 Apr 2022 11:31:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwvdXuqPt+unTmzI2DW6mEecvc7GbplePBg2Bd9vUy5oMRKwKbDKWf2OPdpX69L3ACwvYKt
-X-Received: by 2002:a25:7c05:0:b0:644:dec5:6d6e with SMTP id x5-20020a257c05000000b00644dec56d6emr26931041ybc.598.1651084295200;
-        Wed, 27 Apr 2022 11:31:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651084295; cv=none;
+Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp1582538lfu;
+        Thu, 28 Apr 2022 02:03:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywyYbV7vk0AYfewNsTM5PveQkqwKiE80u7DTEHqpZR5aEqSpZl+utHFhxh+CethkJ1F6lq
+X-Received: by 2002:a05:620a:2443:b0:69f:534:4a31 with SMTP id h3-20020a05620a244300b0069f05344a31mr18218366qkn.295.1651136625806;
+        Thu, 28 Apr 2022 02:03:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651136625; cv=none;
         d=google.com; s=arc-20160816;
-        b=zB5chNvfa3EiLIRYm1rAyBm1sUqCbyf9c5+77Ozn+6SOxV/BATllstlZJidNSrwaHH
-         kZ7QoICT/+IR4iTWskh678kz86fIyuZvOvm724qZ/Ln6ahm9Njsr4VDHtZOk3AssLg3j
-         NKJGBo4r2ViKDizppiIZAb67GyVghbnWHP3MvSKwleCXLdyIYH0KaURV8IhvbCVXveUs
-         u6t7IKxPfXPoJnuxIyZdV6S8RqD60QaXgJGeBT6E5LBxvSk4afb6DIylSP/89Bv7wEcZ
-         Zs2qai9n+MkqC3VzzCbYwg8bNLEGG7I1ftJTpqzdWmkffQC96iFysZMajRLF6rpBAYa1
-         V6oA==
+        b=ApSE5UTToi17TtUC/93vmJOWqwSmYsm23uId5iWxG3UbDj3KYOQtuTBW51CqB6Vjt4
+         Ez6uLWc7kR8AjBN4m4u9aj+nu8ddQ3pMFRaJVf4o9rblcMJYdqN+vnK3AyAXEMTktB0a
+         Hci6lmtebqhH8LD0TAzuHNYj6yv/pSL9UU4G7+hSCzMt8kbal0hMARSSDsgo69paaskx
+         Mk8ld2/uJt4jL/cIkeZMKv1+kE1WjFXgRtDelx+xuw6xkZoDeU5nWIezz3YqTKB4IgMK
+         +ynHsPKhtBnAQlSUIwtMcmtUYu5aMWVfn1mvJQ/xodkLfJgRNei9i4MDziWkJK18alic
+         1EHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=uvEVLcjbte7FUnGEr0kc8pgLqVSnOIhic38bp6Hg524=;
-        b=XpdseaUxw0vVBrl5FpoOWipRC7Wtp0oQ/evSt7HdgcHSxlAFaSMkGnfkZvU+28UiGv
-         ibfWiJ7DjFQKAqjU6zBJfSircKhHmIP9olLjtyuN9djtAyclUwohA7vJRO4VyIaVISBK
-         Ijyk0EYzRrhddWUivWjM3J66v3sWbQZDAqEEHh7A5VgCsaE0JYbfo78OTV6PgKjf8wM2
-         dqCvS9bC95vS24B7hBOPhEd4+SVO67p5T4LaGZkqmOQI7JWl/n6ihfYncnCUvfQPpsHR
-         6R5OOMzckEVJMrHVyIDKq765f1SNvFlmNjWQ7Lp0ieKCMMahepAj5+JB0KwEVicvQj81
-         VYkg==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=J1tW5nnbEI5Uf+JViBQd1j3JEBTgeeguUNNkC1ZU0zg=;
+        b=zkqxtXJBOFuJM4UK7I42MpweDXXaH0LkWos/uL6k68c4u+wdRyj0MMvuJP7Ym0WZqL
+         w8nmGEE5O2Nyrb9pv5qksv328qM4xlJcmwJcATFWbU6TOGnDtqRDGgIrRfvQ2fHHNFPV
+         Wr/wBnLpwXvfAzA8kUH3FJH6V13AwmoaQGUE6yDYyhPKTXHYO68+Tazh1/dab4B6VEaX
+         FMBUYZSTuTVjDsJO1axRyUzCh0HlmijDVtvxRcBBu98RbrIhUxRGd2/VdcxSsp2sPepn
+         X3fJbAl+BrKyAWpl/230pZHgtxu/DFuaWoA0NOc7iM1KClgDtPgtu7DC84ZBMb+wOoK0
+         Md/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=U3EHf78w;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 82-20020a811755000000b002e5bb9dca93si1854796ywx.284.2022.04.27.11.31.35
+        by mx.google.com with ESMTPS id j18-20020ad454d2000000b00440f6219106si1487258qvx.399.2022.04.28.02.03.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Apr 2022 11:31:35 -0700 (PDT)
+        Thu, 28 Apr 2022 02:03:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=U3EHf78w;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:44146 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1njmRq-0004fg-JM
-	for alex.bennee@linaro.org; Wed, 27 Apr 2022 14:31:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52908)
+	id 1nk03t-0005h9-96
+	for alex.bennee@linaro.org; Thu, 28 Apr 2022 05:03:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53938)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1njmQ8-0003nt-HL; Wed, 27 Apr 2022 14:29:48 -0400
-Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:59600)
- by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1njmQ6-0002LV-AS; Wed, 27 Apr 2022 14:29:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1651084186; x=1682620186;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=uvEVLcjbte7FUnGEr0kc8pgLqVSnOIhic38bp6Hg524=;
- b=U3EHf78wisQIVfjux26UYA0h+J5bA7SH1aQ/bczLmFldFIanqWDlEIxh
- P3ohe6mCE0770JyPICpbwNaW+Z+fkSdr3MCpXzc/ZG7o55FGmIhJ2TuzI
- ILrG33EiY3gUeAQWN+qOgYIfWe0c4XuGQuY79MmRdFB4WNOz+55MWTUnT Q=;
-Received: from unknown (HELO ironmsg05-sd.qualcomm.com) ([10.53.140.145])
- by alexa-out-sd-01.qualcomm.com with ESMTP; 27 Apr 2022 11:29:43 -0700
-X-QCInternal: smtphost
-Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
- by ironmsg05-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2022 11:29:43 -0700
-Received: from qc-i7.qualcomm.com (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.47.97.222) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Wed, 27 Apr
- 2022 11:29:41 -0700
-From: Leif Lindholm <quic_llindhol@quicinc.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH] hw/arm: add versioning to sbsa-ref machine DT
-Date: Wed, 27 Apr 2022 19:29:34 +0100
-Message-ID: <20220427182934.27075-1-quic_llindhol@quicinc.com>
-X-Mailer: git-send-email 2.30.2
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1njzwU-0001Es-U6
+ for qemu-devel@nongnu.org; Thu, 28 Apr 2022 04:56:08 -0400
+Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192]:45361)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1njzwS-0008Nw-T8
+ for qemu-devel@nongnu.org; Thu, 28 Apr 2022 04:56:06 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.163])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 84C122298A;
+ Thu, 28 Apr 2022 08:56:00 +0000 (UTC)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 28 Apr
+ 2022 10:55:59 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-102R004d8dc5c45-9371-4cce-b792-d36e261ebf10,
+ 964B4B5EE68C69CB799E8147BBEA8F01A3367603) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <8ffebcd4-7036-3998-c224-4841f7f2a5b6@kaod.org>
+Date: Thu, 28 Apr 2022 10:55:54 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH] hw/arm: add versioning to sbsa-ref machine DT
+Content-Language: en-US
+To: Leif Lindholm <quic_llindhol@quicinc.com>, <qemu-devel@nongnu.org>
+References: <20220427182934.27075-1-quic_llindhol@quicinc.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220427182934.27075-1-quic_llindhol@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01c.na.qualcomm.com (10.47.97.222)
-Received-SPF: pass client-ip=199.106.114.38;
- envelope-from=quic_llindhol@quicinc.com; helo=alexa-out-sd-01.qualcomm.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: a6f994d2-15e4-4337-8723-61ecb4907804
+X-Ovh-Tracer-Id: 6241989083600096163
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrudejgddutdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtoheprhgrugesshgvmhhihhgrlhhfrdgtohhm
+Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
+ helo=3.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -103,51 +100,83 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Radoslaw Biernacki <rad@semihalf.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bJvYdqKNQUWG
+X-TUID: vY76xsofvWW3
 
-The sbsa-ref machine is continuously evolving. Some of the changes we
-want to make in the near future, to align with real components (e.g.
-the GIC-700), will break compatibility for existing firmware.
+Hello,
 
-Introduce two new properties to the DT generated on machine generation:
-- machine-version-major
-  To be incremented when a platform change makes the machine
-  incompatible with existing firmware.
-- machine-version-minor
-  To be incremented when functionality is added to the machine
-  without causing incompatibility with existing firmware.
-  to be reset to 0 when machine-version-major is incremented.
+On 4/27/22 20:29, Leif Lindholm wrote:
+> The sbsa-ref machine is continuously evolving. Some of the changes we
+> want to make in the near future, to align with real components (e.g.
+> the GIC-700), will break compatibility for existing firmware.
+> 
+> Introduce two new properties to the DT generated on machine generation:
+> - machine-version-major
+>    To be incremented when a platform change makes the machine
+>    incompatible with existing firmware.
+> - machine-version-minor
+>    To be incremented when functionality is added to the machine
+>    without causing incompatibility with existing firmware.
+>    to be reset to 0 when machine-version-major is incremented.
+> 
+> These properties are both introduced with the value 0.
+> (Hence, a machine where the DT is lacking these nodes is equivalent
+> to version 0.0.)
 
-These properties are both introduced with the value 0.
-(Hence, a machine where the DT is lacking these nodes is equivalent
-to version 0.0.)
+This raises a lot of questions. I am talking with my PAPR specs
+experience there, which might be off topic for SBSA, but it's a
+way to clarify my understanding.
 
-Signed-off-by: Leif Lindholm <quic_llindhol@quicinc.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Radoslaw Biernacki <rad@semihalf.com>
-Cc: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/sbsa-ref.c | 3 +++
- 1 file changed, 3 insertions(+)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 2387401963..e05f6056c7 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -190,6 +190,9 @@ static void create_fdt(SBSAMachineState *sms)
-     qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
-     qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
- 
-+    qemu_fdt_setprop_cell(fdt, "/", "machine-version-major", 0);
-+    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 0);
-+
-     if (ms->numa_state->have_numa_distance) {
-         int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
-         uint32_t *matrix = g_malloc0(size);
--- 
-2.30.2
+If we need to introduce incompatible changes in the sbsa machine,
+that would break existing firmwares, I think we should start versioning
+the sbsa machine like the other do : arm/i440fx/m68k/q35/s390x/spapr
+and add class attributes describing features being activated or not.
+This to make sure that firmware already shipped can always be run.
+
+Regarding the DT changes, we could also expose/advertise the new
+platform features by name with property nodes. A version is OK but
+literal names are more explicit and we might want to de/activate
+features one by one for test purposes or for some other reason.
+
+Also, if some reconfiguration of the platform is needed to activate
+a new feature, software (firmware or OS) needs a way (a trap or
+something) to negotiate with the platform what should be done.
+I might be anticipating a bit too much but pSeries has such needs
+for the MMU and interrupt modes.
+
+What about the SBSA specs ? Do they need a change ? It is true that
+there are a bit vague regarding the DT, only referencing the Arm
+Base Boot Requirements document which references the Device Tree
+specs v0.3. I didn't find anything about versioning.
+
+Thanks,
+
+C.
+
+
+> Signed-off-by: Leif Lindholm <quic_llindhol@quicinc.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Radoslaw Biernacki <rad@semihalf.com>
+> Cc: Cédric Le Goater <clg@kaod.org>
+> ---
+>   hw/arm/sbsa-ref.c | 3 +++
+>   1 file changed, 3 insertions(+)
+> 
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index 2387401963..e05f6056c7 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -190,6 +190,9 @@ static void create_fdt(SBSAMachineState *sms)
+>       qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
+>       qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+>   
+> +    qemu_fdt_setprop_cell(fdt, "/", "machine-version-major", 0);
+> +    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 0);
+> +
+>       if (ms->numa_state->have_numa_distance) {
+>           int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
+>           uint32_t *matrix = g_malloc0(size);
 

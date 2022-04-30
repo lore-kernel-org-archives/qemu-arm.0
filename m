@@ -1,157 +1,202 @@
-Received: by 2002:a05:6512:230d:0:0:0:0 with SMTP id o13csp2502609lfu;
-        Fri, 29 Apr 2022 08:06:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy7TOjSd60rvH5p+1zihqxJ6OYQDBt1AX11t8vHsCIwqmqYajRPxEgkYpbfjRJUrVZsGazz
-X-Received: by 2002:a81:7810:0:b0:2f8:5459:f840 with SMTP id t16-20020a817810000000b002f85459f840mr11854798ywc.13.1651244768779;
-        Fri, 29 Apr 2022 08:06:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651244768; cv=none;
+Received: by 2002:a05:6512:2248:0:0:0:0 with SMTP id i8csp312601lfu;
+        Sat, 30 Apr 2022 15:04:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwBHU9BNDISd+H424oyM6EuPmuCKbDalnZy4peQwRgMZN+ebL21E1QS/0ex7Y9VHCEwl0vt
+X-Received: by 2002:a05:6214:c26:b0:456:496d:1a54 with SMTP id a6-20020a0562140c2600b00456496d1a54mr4608111qvd.15.1651356280478;
+        Sat, 30 Apr 2022 15:04:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651356280; cv=none;
         d=google.com; s=arc-20160816;
-        b=s8SDbLTc41jyDsGVS3dsJIKwZkkgM0NrOYY/9ibkjshk8/hNMcBVMA790o02DliQ0a
-         +RkWh9eIZYvAqBzwdbJCpIm5uGbq5kYW+1RyTy2y3oKRfKZO0W3N1q/9HYcDL2QEWmxH
-         Fml0rMPcn0ocJxWOg10v3CEq8mQ5EMuAIv+UE+dK1f4N2SSumivtWCifzZ7Yw766wLt2
-         Rcng00+IDVRcmUdOKy+bt1E72XGQNBUipJYWT0SmDjPdUaxzF/bBjpN51vFem2brZ+g0
-         ub2Or0KnNrJckfHXQWrGqwfHJkoP826Q5fRehHpZQS5yXQmkdF+WovaGRhR7aOyl8Z3S
-         U9tQ==
+        b=RMVfM5JnmEht7OTR51N+RNz+UxNP+usjN+mSo6CTfKs58hrMy8jvYUNM4ZC4okVPnN
+         nDY8U9pZdEtSsbmWqS1thQeuThfHMuuJsNTl8Oaj+ZFGx7ccoVkvk+Oe7NBqFitoie8o
+         64gaxNiKBTNG4iRu5tG1yZRNoc1YDuj+kRQc3ndT8g5WM0HjlMNSawLQZ3TV2+E20ctI
+         WU4KwocUL7fCh5xl1YcaSeAzuu8lnOi5AzwvRFM5fjvN/pitfsg4NN/ZUARx2QdGNSDN
+         a6dDhBY49Dk9iBu3G1GgsetH3chat/FLb2eygvkk6tQ5XdkCSjOaywamCUHBRDYR4nif
+         7Q8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=1Z3kjwhrIPDN+JfWYCRFHqLdm9n4qZBs327Qi0dbXcg=;
-        b=on6S1DXAReAQ6Qh1y9MSvpmyOOJCMxZjSB5R8ii1WCG5LnMp/L8709CLyoAkOqxE+r
-         leWJRwB9DmRcrQKI/TvNjGaq0YFTJBtfsrqljpF1zlo0Crp6VstOo24pUNCcyItDah3A
-         CRN8qCul8M1mplC/9cOhdARZOSeoZc+9jiAgXFF6E+OhoPW7FceBfNxit89IuHMCj/u0
-         xcFzQC/iJ9VhwbHRFk6oyLTb5ey6UHp0Yqd1ipH3jWFNseFkfon5a3ie3Bc3fZT5xiNn
-         1Vw58cEE9YCsTqM4kb8wxtQgekjdm/YgWmYAAU9+fsMH6wFTIqLtJbp1lDFcgSN7vXiv
-         EKtg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=3ZnYZGBTRrUOQhCF9OsgO9zD6KTDyG3V4Z4po44X8bM=;
+        b=ADy3F4iaBJ2fLT/Xlw0iMZryBQP44ZVFQyHx7kIKjDjt6mfYusrfKRKl7ofBvf3XFN
+         J0Nlv/bLuaYbAv9LQteJkxYexAINh8x5axL4AgsPk/szSWdEuj6LJVNjXPzT+ZQvna1z
+         Ai/qdvxbYSnBGcaTaLqAFj6usspRxXPE1J0/Eo+veJxEyhzmI/yk25a7TfNuRFJMdyMX
+         Ptw5S2GvSxq9+DSMl00M8aQJAgrCBarcctlyGOaC6ZVCD63U4TOwV5vXAGy5fWU7hbvs
+         vs/1tNsQA3U80Ek2Guijl7gXDdxNb6jrhFaHLEuxJbUqvxAyIczwPNaUpgGrsh+vhRh2
+         cjKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=NDIuYFl5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=YmCejJex;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 186-20020a2503c3000000b00645492651f2si6366369ybd.394.2022.04.29.08.06.08
+        by mx.google.com with ESMTPS id o8-20020a05622a044800b002f368c31bf0si4314140qtx.136.2022.04.30.15.04.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Apr 2022 08:06:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 30 Apr 2022 15:04:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=NDIuYFl5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:50378 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=YmCejJex;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54216 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nkSC8-0000Z3-5k
-	for alex.bennee@linaro.org; Fri, 29 Apr 2022 11:06:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38806)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nkvCi-0001sT-0Q
+	for alex.bennee@linaro.org; Sat, 30 Apr 2022 18:04:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1nkS3d-00031X-CL
- for qemu-devel@nongnu.org; Fri, 29 Apr 2022 10:57:21 -0400
-Received: from alexa-out.qualcomm.com ([129.46.98.28]:52541)
- by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1nkS3b-0002Ov-0z
- for qemu-devel@nongnu.org; Fri, 29 Apr 2022 10:57:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1651244239; x=1682780239;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=1Z3kjwhrIPDN+JfWYCRFHqLdm9n4qZBs327Qi0dbXcg=;
- b=NDIuYFl5JUF9gfI6vcdoP7tdu31s/WtvDFsooyF4YkxDLZvM5SqtaM3X
- 6QWEdRTef4x233pYYzc7pnkCxRN5wVKD/oVNgPygsL3zEbAq7bmJ9I4np
- LjPwto3DsKQtwEr+FylBBol6KaqpT9nlbyRg9v+3c25RgTv3smQNDdl/f w=;
-Received: from ironmsg08-lv.qualcomm.com ([10.47.202.152])
- by alexa-out.qualcomm.com with ESMTP; 29 Apr 2022 07:57:17 -0700
-X-QCInternal: smtphost
-Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
- by ironmsg08-lv.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Apr 2022 07:57:17 -0700
-Received: from qc-i7.hemma.eciton.net (10.80.80.8) by
- nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Fri, 29 Apr 2022 07:56:55 -0700
-Date: Fri, 29 Apr 2022 15:56:52 +0100
-From: Leif Lindholm <quic_llindhol@quicinc.com>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH] hw/arm: add versioning to sbsa-ref machine DT
-Message-ID: <Ymv8tOY4WpEgZTqb@qc-i7.hemma.eciton.net>
-References: <20220427182934.27075-1-quic_llindhol@quicinc.com>
- <991dee2c-c189-087b-f576-b2473cae229b@kaod.org>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nkvBn-0001Em-JJ
+ for qemu-arm@nongnu.org; Sat, 30 Apr 2022 18:03:43 -0400
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:45625)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nkvBk-0007Sc-Qd
+ for qemu-arm@nongnu.org; Sat, 30 Apr 2022 18:03:43 -0400
+Received: by mail-pj1-x1032.google.com with SMTP id
+ w17-20020a17090a529100b001db302efed6so8516685pjh.4
+ for <qemu-arm@nongnu.org>; Sat, 30 Apr 2022 15:03:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:cc
+ :references:from:in-reply-to:content-transfer-encoding;
+ bh=3ZnYZGBTRrUOQhCF9OsgO9zD6KTDyG3V4Z4po44X8bM=;
+ b=YmCejJexBku0cXTEwRc5Yun2fD4HlKtDSNvBciGeRFpi2DrNYAJPrFRmy1T6tpaOSG
+ ywJfQTJORD0IEPyDM22VFPk/HPRORUOkuf7XXF3TCQuCZb0mqyV/dEvTLW07heZsMve7
+ dW5n1zgv7666rPfozqfn4uSagbCeXwUp9Gyt59Zrdld9lDZ8sAgA+TGw89tp9aUzljTm
+ cdt0VfM+q5UTJmC4WDwkqe3ysNb01+e318bzZiAY1AgbEfMY1YH+5YgtAtLsYkj9Jv1u
+ t1lnI7dx/B8nTwbqflBvU526iFplAwsIF9NHhGgpjIrLGDa1MrFIyTq0T9HSGeZk3tn+
+ xuDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=3ZnYZGBTRrUOQhCF9OsgO9zD6KTDyG3V4Z4po44X8bM=;
+ b=toFbNFwNnduDqape6fL5r1Y2ee4de9eNKOFaz0uy2uh/1Qb03kwpD0OHsSI8bCG1I4
+ 2ZqYBRfNrr67cp6eLgK4KC2QcbPwbUJvvqseoyhhH22XDlEX6H6jifVA1w1jed/clwkz
+ Kd0Yol/GD6kDQmNW6GGqbTI8vgxM6zPAnhyJS/iWYkNwZ1xX7+UCNkCDzmFwrEeL+lHX
+ MosV3gLRs/cjU0Kkz1a7i6gnM3J0rF3MeulO1JQmSCcfI/ZGuyEtTb1D5ozxDP0mAXHi
+ 8fOjC0CMV2cW0oUTwj5xR74vYehyxo3h8xa2xvFVis+fVszTagbAUmFDfotKddE1L+gL
+ xnrA==
+X-Gm-Message-State: AOAM53263ouszQvfkuLtxOllJHdNdM3LG5QzYeGVkasMa+DmuP2Zd9Yr
+ A0YhLT8mbgDhRHKfQNCi2+nMRg==
+X-Received: by 2002:a17:902:ab59:b0:15c:f4f3:7e3b with SMTP id
+ ij25-20020a170902ab5900b0015cf4f37e3bmr5317881plb.24.1651356218614; 
+ Sat, 30 Apr 2022 15:03:38 -0700 (PDT)
+Received: from [192.168.1.6] ([71.212.142.129])
+ by smtp.gmail.com with ESMTPSA id
+ x15-20020a170902ec8f00b0015e8d4eb1d4sm1944806plg.30.2022.04.30.15.03.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 30 Apr 2022 15:03:38 -0700 (PDT)
+Message-ID: <46be82d3-64ac-67a5-ccf3-f50185bd4e5b@linaro.org>
+Date: Sat, 30 Apr 2022 15:03:36 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <991dee2c-c189-087b-f576-b2473cae229b@kaod.org>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01c.na.qualcomm.com (10.47.97.222)
-Received-SPF: pass client-ip=129.46.98.28;
- envelope-from=quic_llindhol@quicinc.com; helo=alexa-out.qualcomm.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH] tcg: fix guest memory ordering enforcement
+Content-Language: en-US
+References: <20220428113234.37953-1-redha.gouicem@gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220428113234.37953-1-redha.gouicem@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
+X-Spam_score_int: 14
+X-Spam_score: 1.4
+X-Spam_bar: +
+X-Spam_report: (1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, MISSING_HEADERS=1.021,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, SUSPICIOUS_RECIPS=2.51,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jz6pNnBe4Qlb
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WKb0GrpxpJTf
 
-On Fri, Apr 29, 2022 at 09:17:09 +0200, Cédric Le Goater wrote:
-> > Signed-off-by: Leif Lindholm <quic_llindhol@quicinc.com>
-> > Cc: Peter Maydell <peter.maydell@linaro.org>
-> > Cc: Radoslaw Biernacki <rad@semihalf.com>
-> > Cc: Cédric Le Goater <clg@kaod.org>
-> > ---
-> >   hw/arm/sbsa-ref.c | 3 +++
-> >   1 file changed, 3 insertions(+)
-> > 
-> > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> > index 2387401963..e05f6056c7 100644
-> > --- a/hw/arm/sbsa-ref.c
-> > +++ b/hw/arm/sbsa-ref.c
-> > @@ -190,6 +190,9 @@ static void create_fdt(SBSAMachineState *sms)
-> >       qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
-> >       qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
-> > +    qemu_fdt_setprop_cell(fdt, "/", "machine-version-major", 0);
-> > +    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 0);
+On 4/28/22 04:32, Redha Gouicem wrote:
+> This commit allows memory ordering enforcement to be performed more
+> precisely. The previous scheme with fences always inserted before the memory
+> access made it impossible to correctly enforce the x86 model on weakly ordered
+> architectures such as arm. With this change, the memory models of guests can be
+> defined more precisely, with a fence before and a fence after the access. This
+> allows for a precise mapping of the ordering, that relies less on what type of
+> fences the host architecture provides.
 > 
-> 
-> Thanks for your reply in the other email. From what I captured, the
-> DT aspect is not that important, but still, we could may be use some
-> specific 'sbsa' property names :
-> 
->     qemu_fdt_setprop_cell(fdt, "/", "sbsa,version-major", 0);
->     qemu_fdt_setprop_cell(fdt, "/", "sbsa,version-minor", 0);
+> Signed-off-by: Redha Gouicem <redha.gouicem@gmail.com>
+> ---
+>   target/alpha/cpu.h  |  4 ++++
+>   target/arm/cpu.h    |  4 ++++
+>   target/avr/cpu.h    |  4 ++++
+>   target/hppa/cpu.h   |  4 ++++
+>   target/i386/cpu.h   |  4 ++++
+>   target/mips/cpu.h   |  4 ++++
+>   target/ppc/cpu.h    |  4 ++++
+>   target/riscv/cpu.h  |  4 ++++
+>   target/s390x/cpu.h  |  4 ++++
+>   target/xtensa/cpu.h |  4 ++++
+>   tcg/tcg-op.c        | 19 ++++++++++++-------
+>   11 files changed, 52 insertions(+), 7 deletions(-)
 
-I'm not wedded to the names, but given that SBSA is the (now defunct)
-name of a (very much not defunct) versioned specification, I think it
-would add to rather than remove from the confusion if we changed to
-this; it makes it look like it's declaring compliance with a version
-of the spec.
+First of all, patches that don't compile aren't particularly helpful.  You've missed out 
+on updating 10 of 20 targets.
 
-Fundamentally, these properties have no meaning to anything other than
-the piece of firmware that knows that it is executing on top of the
-qemu sbsa-ref machine. On one level, making it look *less* like a
-well-designed device tree-binding is beneficial.
+I do not believe your assertion that the current scheme "makes it impossible to correctly 
+enforce the memory model".  Please provide your rationale.
 
-Best Regards,
+>   /* Alpha processors have a weak memory model */
+>   #define TCG_GUEST_DEFAULT_MO      (0)
+> +#define TCG_GUEST_MO_BEF_LD       (0)
+> +#define TCG_GUEST_MO_AFT_LD       (0)
+> +#define TCG_GUEST_MO_BEF_ST       (0)
+> +#define TCG_GUEST_MO_AFT_ST       (0)
 
-Leif
+There's no new information here.
+
+> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+> index 9661f9fbd1..c6a7052d58 100644
+> --- a/target/i386/cpu.h
+> +++ b/target/i386/cpu.h
+> @@ -29,6 +29,10 @@
+>   
+>   /* The x86 has a strong memory model with some store-after-load re-ordering */
+>   #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
+> +#define TCG_GUEST_MO_BEF_LD       (0)
+> +#define TCG_GUEST_MO_AFT_LD       (TCG_MO_LD_ST | TCG_MO_LD_LD)
+> +#define TCG_GUEST_MO_BEF_ST       (TCG_MO_ST_ST)
+> +#define TCG_GUEST_MO_AFT_ST       (0)
+
+Or even here -- you're making the executive decision that barriers go after loads and 
+before stores.  Note that
+
+   TCG_GUEST_MO_AFT_LD == (TCG_GUEST_DEFAULT_MO & (TCG_MO_LD_ST | TCG_MO_LD_LD))
+   TCG_GUEST_MO_BEF_ST == (TCG_GUEST_DEFAULT_MO & TCG_MO_ST_ST)
+   TCG_GUEST_MO_AFT_ST == (TCG_GUEST_DEFAULT_MO & TCG_MO_ST_LD)
+
+You could just as easily make this selection in tcg-op.c alone.
+
+I'm not sure why putting a ST_ST barrier before a store is better or worse than putting a 
+ST_ST barrier after the store.  I could imagine that putting wmb barriers before the 
+operation schedules better with the surrounding code, but I'd want that decision 
+explicitly stated.
+
+There *are* still missing barriers with the cpu_ld*_data* and cpu_st*_data* functions, as 
+used by out-of-line helpers.  Certainly I expect those to have less impact than the 
+generated code, but they are still required.
+
+
+r~

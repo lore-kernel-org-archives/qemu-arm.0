@@ -1,110 +1,111 @@
-Received: by 2002:a05:6512:2248:0:0:0:0 with SMTP id i8csp473119lfu;
-        Sat, 30 Apr 2022 23:16:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzPuq/v5xg5fdbZRRYdcclvbfSM1y57ekCLNNbll0r29CiJIrvm0/RXGL2kEKuFp9CNDBGY
-X-Received: by 2002:a05:620a:4494:b0:69f:adfa:fb40 with SMTP id x20-20020a05620a449400b0069fadfafb40mr4763249qkp.311.1651385776810;
-        Sat, 30 Apr 2022 23:16:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651385776; cv=none;
+Received: by 2002:a05:6512:2248:0:0:0:0 with SMTP id i8csp473434lfu;
+        Sat, 30 Apr 2022 23:17:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyUrr8T96uq2vKAY2SANO/cSRm3QvuBG4w4pHzuzqcW3Qi3Dfbm2KyKPJH66BnofTpDMfT7
+X-Received: by 2002:a05:6214:108b:b0:456:38b0:7ba6 with SMTP id o11-20020a056214108b00b0045638b07ba6mr5173780qvr.84.1651385833739;
+        Sat, 30 Apr 2022 23:17:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651385833; cv=none;
         d=google.com; s=arc-20160816;
-        b=dzlk1qtQX/It+XwBDDpuHklC+1f+Y4db29jweUaxfhAiJd5gVWiGFvsdI5JSFPR4oB
-         iuaHPZrePP71hoaPYuZKZyk9+va9r6F52H4C/I5LPwjFbM2DskluMQbm8jXR+7cR6nX9
-         YAxbGUAH/mIIbceK73fVvr7fOPGeAFwDlXj03ZrHQD7SiLpTpq9hxYsS2Ulu1NJ1nlzU
-         MXSmnqx7azPMwAvuvwwe/+MRo7N/VxP06RprQTijYaTEXKhxGHnOJJw8k9Z/w4P+XjLI
-         FU5GNF9+2haRtOvmoE+06A3otnseL9ufoakNe0gmc0E49RC8JQIYfgXLe9XRMoHxfc/I
-         oRAQ==
+        b=xU1pQDaNO4ym96uE+u0unOkBZHE4f93BSJwZKyy0+Y8xivp9OXjT2EkdOGtA/kyZeT
+         mkhmJALiGcr3GLMSIKmgnreCz8aVkUka4u+65H7OJtVfm6OuaGhvUGsvuMnM/ZjtSPO8
+         +Fpp1TBA5mSEat36apJrbH2qjSheo4xdTZGUEa++5434FOp43w4/obEVt6k3ZkJOLWOT
+         O8koni/hWqiX/srVtp8RO1m+UcYLRJa0+0ImprJOhkZm4nxIlQZ9JVUOMclWn1DIdlyh
+         28Ug22pF8+/L5p5X+hMN/VgI/T8To1hKxtjvuWuSoi8chmpX4JYCyq5EzAT/lollK5pu
+         mMKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=pOb3rzseCiR8Xy7i8OaLSJuA44LGmp0qA1p0J8E5viY=;
-        b=YlQ0U4sJiVgE7Xbz6Bb0vN0y59ADJF5RJ9BROrpUELG3BkU9cXPEmnHBNP+rqJw3x9
-         QJAfv63PQ4faj4LUYzgrEmZK05NyY7gwJO67lwv5hROxld8ymCQIW1NtxXrRB8fS9NJv
-         DTBRFrD5iWv9z2WR+scGaNAjcQ0FCpI7iUJu4o4nBbtAGun44f5/MJvfUv6gW4rIKEVJ
-         wLAUBOPf9RSM0h84bPseWTZ6tmYldifWIiBUZXEaubpuEzGU2bh0XOulLTXRCKTikd+q
-         ZmTk3TVDqzaEjWqu2v1pFMv5C3yHK/yUwTEMU4eQ6bqyZiKQTuhnSZZiJ/hJmZJK1CRS
-         dXnw==
+        bh=qhhRxFmH56xTpD71QaIiTZcsW/xl8vNYPr7Quyst7dg=;
+        b=KWdPPkOf//Gmy7dxq3a/fKMspF9/SJdCpIgA/QYkRrFV8cPfXFj5G12lXptcHQSRqq
+         mISBJQWltEZ4JDRXQaNX1lRRgEyN4OCZOM+4UvBxroiaRvJfLXeA/TDthTnmg8u+NnaY
+         dTCDZQR4Kv+NjJdhqk+Nni3HmOgDTZOODpq4HkPnY9eqZLHzkESQBsxMdUmH5zbu9v1/
+         AsLvrfyUNJS4/cmsiHwckgMANyp+7SpTXvF/VJ+o6uRqaCZNbf+iqKwWE+d8opcib6hP
+         wW1ySGt7HLF9FcbwyHHRG+i5KEWwcbOutz4ZqGEShHVLZupBYyrumwGUij5/EELjIp01
+         Ww1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KoNsez0Q;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IoidiJAV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 70-20020a0c80cc000000b0044624e41d26si4268215qvb.280.2022.04.30.23.16.16
+        by mx.google.com with ESMTPS id jm8-20020ad45ec8000000b004463750bc0fsi2406282qvb.548.2022.04.30.23.17.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 30 Apr 2022 23:16:16 -0700 (PDT)
+        Sat, 30 Apr 2022 23:17:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KoNsez0Q;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IoidiJAV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45642 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47774 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nl2sS-00047W-7M
-	for alex.bennee@linaro.org; Sun, 01 May 2022 02:16:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43560)
+	id 1nl2tN-0005g6-10
+	for alex.bennee@linaro.org; Sun, 01 May 2022 02:17:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43456)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nl2Tr-0006tO-UJ
- for qemu-devel@nongnu.org; Sun, 01 May 2022 01:50:58 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634]:34731)
+ id 1nl2Tp-0006tD-NH
+ for qemu-devel@nongnu.org; Sun, 01 May 2022 01:50:57 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:34439)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nl2To-0001Ib-6E
- for qemu-devel@nongnu.org; Sun, 01 May 2022 01:50:51 -0400
-Received: by mail-pl1-x634.google.com with SMTP id n8so10288409plh.1
- for <qemu-devel@nongnu.org>; Sat, 30 Apr 2022 22:50:47 -0700 (PDT)
+ id 1nl2Tl-0001HG-Jm
+ for qemu-devel@nongnu.org; Sun, 01 May 2022 01:50:49 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ qe3-20020a17090b4f8300b001dc24e4da73so1999133pjb.1
+ for <qemu-devel@nongnu.org>; Sat, 30 Apr 2022 22:50:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=pOb3rzseCiR8Xy7i8OaLSJuA44LGmp0qA1p0J8E5viY=;
- b=KoNsez0QrTAorjU71pNnpYh8w4Cw+zyHW5aOJxqQiqrx0yIIWiIPJHa9fWUGfrOiPu
- AKu+8r0doEdpeG8tQTOfknfBeIEnfSIBU/edvb+yR6yYj0tq/9H8IbE9rD/W93VpXoS/
- HRI4Lfm9wZ9yIX+IGkvtZxHEpCZrET7kgTDZj89k3OYxBxwdtUV+3Qa61/dRv/W8fbBI
- ogl0Tmo6kzbt6kO7UJ5WRuecuAZ8VwcaHz1PqcgZCnH6gMvS0lBGOv8NWr1Tiw0Wa9Iq
- WfU04Jvu8oqezGaz8HDMu0ss0AgxCDVAcZ++DZsR/6uOnrgG39E2SWpu2fwiauIlHG/L
- 9klA==
+ bh=qhhRxFmH56xTpD71QaIiTZcsW/xl8vNYPr7Quyst7dg=;
+ b=IoidiJAVjpYHJYpaNmM5dyMHt5gkkPKXVdHzo69NCflhxgswKv3i67XXX/DmQY/gE3
+ 5MhCKKxUDnhCzctCkPmRIoBvXIpccfTNme5A3NrkGtMQBBExe7y4APc/v4ydL9j6Mdj7
+ f7R8GSp3f0aksfxHILCIQ6dMhC5sRR4Ug98PfTzlH1Aj9dwUWHsSPLS1ywzb4EG2QAwq
+ UOp/DqZhOjUWEzRZA9MRk28JEI48o2sH8TKVT/yW9Z5VuvyYq65VZG0l8/yUasK5SbUk
+ ENnrLkzcVp4fZDgHp4SZUUKVZlIJQrahipnsqc6Vy1M5gnSDoItjIJpTMQyBsXsmj/qw
+ tJ9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=pOb3rzseCiR8Xy7i8OaLSJuA44LGmp0qA1p0J8E5viY=;
- b=GrHdebP4mOEFoqz7Q9VE4SjGIG3e/IujDSbrQ/ye66FrWB5CRhCFgbWOyrkueD0Dmw
- KzvxAR/UqwDYA+Fr/kUV2PBwMgB52BTbsB0yDYPI/VGfDX913YfL2TFiiErWSUZbkbnv
- vtsinpu36Zki+wpyO4Y32Mhp/P5lRh33qYpWjmQNMv34MlKxTkMyoSw7bn1iyyGUK0fr
- Ss827WKLKFNV9PTBsvkTBRXvZsqotyw6LekE571cZrjYeggU2EgkmsKXPv6xhK3CkPB4
- cGZFuzAFzkleVYWpsaP0N8XL/MID600INhahwUnOvBRltpX377yBbHn+Prvml+3b3PK1
- v5Cw==
-X-Gm-Message-State: AOAM533SaJrlwiYEOOgRNFcVelJNb+YpSd1QYy3t6y+MO3f1U5rukVPp
- fVQA13RPBFt5WrV59jtrEkdvgx+aqA4DOQ==
-X-Received: by 2002:a17:902:a613:b0:156:b53d:c137 with SMTP id
- u19-20020a170902a61300b00156b53dc137mr6284992plq.73.1651384246904; 
- Sat, 30 Apr 2022 22:50:46 -0700 (PDT)
+ bh=qhhRxFmH56xTpD71QaIiTZcsW/xl8vNYPr7Quyst7dg=;
+ b=UolBCxiMjYQ31yuSWErdybpxmarGalSw7HtaRarAz029fRx6xNKFxeNsY6LuKfGQM7
+ eT8dsUG4JpOUlLkeeG+2Lea2cjM5qb1mg4J8qQgrNkPtRq1MT6kgEH/IhmGggJosJR3d
+ vA6v7sk7Rq/39+SDa+u+rXnTfRsVVOunWZkz3RoEQcNh38AtQNpHysUiU81/ajsTBter
+ vATxeNmsQokqUosPSA5y8JQ7wUcN3TIUKCpca0N1010t1SRDCSsvCjKzYmm5//Reye9x
+ 5QYW6GelLLslgAK2lCM1ceMvLbGixEVEwOduAH3faS+zK43gNBZRts+GTtZIdGK+j1f2
+ kNoQ==
+X-Gm-Message-State: AOAM530dQBY9W5SrQLnVMZ96HqgbvhCERRZvhTZpGzgYHOjLeryLKTio
+ d3iz8CzBKgFClfeFGqATgYYVzk4EfeJLKA==
+X-Received: by 2002:a17:90b:3510:b0:1dc:bac:64f3 with SMTP id
+ ls16-20020a17090b351000b001dc0bac64f3mr10422532pjb.137.1651384241444; 
+ Sat, 30 Apr 2022 22:50:41 -0700 (PDT)
 Received: from stoup.. ([71.212.142.129]) by smtp.gmail.com with ESMTPSA id
- cm18-20020a17090afa1200b001cd8e9ea22asm17310342pjb.52.2022.04.30.22.50.46
+ cm18-20020a17090afa1200b001cd8e9ea22asm17310342pjb.52.2022.04.30.22.50.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 30 Apr 2022 22:50:46 -0700 (PDT)
+ Sat, 30 Apr 2022 22:50:41 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 18/45] target/arm: Reformat comments in
- add_cpreg_to_hashtable
-Date: Sat, 30 Apr 2022 22:50:00 -0700
-Message-Id: <20220501055028.646596-19-richard.henderson@linaro.org>
+Subject: [PATCH v4 12/45] target/arm: Merge allocation of the cpreg and its
+ name
+Date: Sat, 30 Apr 2022 22:49:54 -0700
+Message-Id: <20220501055028.646596-13-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220501055028.646596-1-richard.henderson@linaro.org>
 References: <20220501055028.646596-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,90 +121,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O0Y7/V8qblc3
+X-TUID: 91jQt+DutTly
 
-Put the block comments into the current coding style.
+Simplify freeing cp_regs hash table entries by using a single
+allocation for the entire value.
+
+This fixes a theoretical bug if we were to ever free the entire
+hash table, because we've been installing string literal constants
+into the cpreg structure in define_arm_vh_e2h_redirects_aliases.
+However, at present we only free entries created for AArch32
+wildcard cpregs which get overwritten by more specific cpregs,
+so this bug is never exposed.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 24 +++++++++++++++---------
- 1 file changed, 15 insertions(+), 9 deletions(-)
+ target/arm/cpu.c    | 16 +---------------
+ target/arm/helper.c | 10 ++++++++--
+ 2 files changed, 9 insertions(+), 17 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2ed07795d8..b690346469 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -8496,15 +8496,16 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
-     return cpu_list;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index e81d96c3c1..6e8b39dc9e 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1069,27 +1069,13 @@ uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz)
+     return (Aff1 << ARM_AFF1_SHIFT) | Aff0;
  }
  
-+/*
-+ * Private utility function for define_one_arm_cp_reg_with_opaque():
-+ * add a single reginfo struct to the hash table.
-+ */
- static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-                                    void *opaque, CPState state,
-                                    CPSecureState secstate,
-                                    int crm, int opc1, int opc2,
-                                    const char *name)
- {
--    /* Private utility function for define_one_arm_cp_reg_with_opaque():
--     * add a single reginfo struct to the hash table.
+-static void cpreg_hashtable_data_destroy(gpointer data)
+-{
+-    /*
+-     * Destroy function for cpu->cp_regs hashtable data entries.
+-     * We must free the name string because it was g_strdup()ed in
+-     * add_cpreg_to_hashtable(). It's OK to cast away the 'const'
+-     * from r->name because we know we definitely allocated it.
 -     */
+-    ARMCPRegInfo *r = data;
+-
+-    g_free((void *)r->name);
+-    g_free(r);
+-}
+-
+ static void arm_cpu_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+ 
+     cpu_set_cpustate_pointers(cpu);
+     cpu->cp_regs = g_hash_table_new_full(g_direct_hash, g_direct_equal,
+-                                         NULL, cpreg_hashtable_data_destroy);
++                                         NULL, g_free);
+ 
+     QLIST_INIT(&cpu->pre_el_change_hooks);
+     QLIST_INIT(&cpu->el_change_hooks);
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index edfb5c3d38..44c05deb5b 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -8506,11 +8506,17 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+      * add a single reginfo struct to the hash table.
+      */
      uint32_t key;
-     ARMCPRegInfo *r2;
-     bool is64 = r->type & ARM_CP_64BIT;
-@@ -8568,7 +8569,8 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+-    ARMCPRegInfo *r2 = g_memdup(r, sizeof(ARMCPRegInfo));
++    ARMCPRegInfo *r2;
+     int is64 = (r->type & ARM_CP_64BIT) ? 1 : 0;
+     int ns = (secstate & ARM_CP_SECSTATE_NS) ? 1 : 0;
++    size_t name_len;
++
++    /* Combine cpreg and name into one allocation. */
++    name_len = strlen(name) + 1;
++    r2 = g_malloc(sizeof(*r2) + name_len);
++    *r2 = *r;
++    r2->name = memcpy(r2 + 1, name, name_len);
  
-     isbanked = r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1];
-     if (isbanked) {
--        /* Register is banked (using both entries in array).
-+        /*
-+         * Register is banked (using both entries in array).
-          * Overwriting fieldoffset as the array is only used to define
-          * banked registers but later only fieldoffset is used.
-          */
-@@ -8577,7 +8579,8 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
- 
-     if (state == ARM_CP_STATE_AA32) {
-         if (isbanked) {
--            /* If the register is banked then we don't need to migrate or
-+            /*
-+             * If the register is banked then we don't need to migrate or
-              * reset the 32-bit instance in certain cases:
-              *
-              * 1) If the register has both 32-bit and 64-bit instances then we
-@@ -8592,8 +8595,9 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-                 r2->type |= ARM_CP_ALIAS;
-             }
-         } else if ((secstate != r->secure) && !ns) {
--            /* The register is not banked so we only want to allow migration of
--             * the non-secure instance.
-+            /*
-+             * The register is not banked so we only want to allow migration
-+             * of the non-secure instance.
-              */
-             r2->type |= ARM_CP_ALIAS;
-         }
-@@ -8607,7 +8611,8 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-         }
-     }
- 
--    /* By convention, for wildcarded registers only the first
-+    /*
-+     * By convention, for wildcarded registers only the first
-      * entry is used for migration; the others are marked as
-      * ALIAS so we don't try to transfer the register
-      * multiple times. Special registers (ie NOP/WFI) are
-@@ -8622,7 +8627,8 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-         r2->type |= ARM_CP_ALIAS | ARM_CP_NO_GDB;
-     }
- 
--    /* Check that raw accesses are either forbidden or handled. Note that
-+    /*
-+     * Check that raw accesses are either forbidden or handled. Note that
-      * we can't assert this earlier because the setup of fieldoffset for
-      * banked registers has to be done first.
+-    r2->name = g_strdup(name);
+     /* Reset the secure state to the specific incoming state.  This is
+      * necessary as the register may have been defined with both states.
       */
 -- 
 2.34.1

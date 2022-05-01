@@ -1,155 +1,233 @@
-Received: by 2002:a05:6512:2248:0:0:0:0 with SMTP id i8csp464512lfu;
-        Sat, 30 Apr 2022 22:50:38 -0700 (PDT)
-X-Received: by 2002:a17:902:900c:b0:15c:f94a:849c with SMTP id a12-20020a170902900c00b0015cf94a849cmr6221344plp.48.1651384238672;
-        Sat, 30 Apr 2022 22:50:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651384238; cv=none;
+Received: by 2002:a05:6512:2248:0:0:0:0 with SMTP id i8csp465048lfu;
+        Sat, 30 Apr 2022 22:52:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyimqP6cTQqWev2x/o7hn8Au/JV97VUMC+NgCnFiYz9qwyusdqoHSRIAW2WC+Eg2fb6h42+
+X-Received: by 2002:ac8:1191:0:b0:2ed:bb6:ab07 with SMTP id d17-20020ac81191000000b002ed0bb6ab07mr5857564qtj.418.1651384332466;
+        Sat, 30 Apr 2022 22:52:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651384332; cv=none;
         d=google.com; s=arc-20160816;
-        b=bj7SohGf3p3a1pk6gzSB9958cPNFwG2yUP9EuX5vZ9z5H3jHIzOyuDw3IRakDW2Ioj
-         CgoPbh7cO5URs3/7LtUxIhxTKX0I/GnsLghdsdx5dcHyW49zxKY+lR3I+ReabqmpAgER
-         IDTDEb9wAm4oifBCRc0Erh2XAbFrmrlDHdu6jFwM60ta/R5X4PAYvA5pmLky3n9+JkI+
-         w2Vzxrut+Ll0WRvGeRvFfKmx3j9D2/5Ww8mSGCzfwjiRSJiB1Snpev/1UnCH/AlX3X2v
-         mgvL80tiM9PJcvCJBeKUYSgzYPRezeh++4dQVHK7CjS3q/XA+Qqd/rUlVlPv0CaNcpEy
-         jatw==
+        b=wQOFmV6vEU0fyyQvQ0+S/gfGhEinmgn1gYs05qZZnT5vHSSwmalkwkd7nab1zQYKj/
+         50ol3OG4z6TnV0xQlBCbNnsqDoA52hk140ecnSjEFHijXp22WKkJBIsQmDtHYUjaG0s9
+         7VEISwORukRfSm6Iy4KT+tnIy4GeNll5hoLbeqcyLB7+Hyn2JnnHbwfyjURLvut85SOM
+         lf6Dz3uWCWYtPk0q/tPdAMU9U2TWqQtqwu5paGHQFKPa9V8ve176YmzyItRsS+otYskF
+         dAnph+MchMtd96M/PFcX6mjHuXHF/EKfvhkcqW6cn1Z8b0z+05e8kO8KZIQYCeoA8C0T
+         o6HQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=M9JbA/4mJJzCg1BoSjOe8spAl/jM5dv9tZGOFooq9Lk=;
-        b=OwERkCxIqLFB+O0gLFbv8diD04eV4tAkNO73nOtj7hbc0hgMXZGUR9vC+QpMZJ61tH
-         kXWTRdxFXKMwAtyKk9nfcEKR95NTpGVy2X1dHLlZ7q0FDHgMR6kH1yVLR8fl2cm6GcmE
-         nsQ7CI8KrvoJLQl97MPPUn6bnLBlnIfjyzv/nrkG7AZiXatiEUanFgdk63BS8w6fvWNd
-         rlr9lDSTT5vxeAqpfboLvh79LWnnm4TL1mNtZvnyOpgI36OOmQp0WXJxwNL7aOePAZsd
-         9y4ihkybzeG1M2X8Z6s6kkbl9Rh9xER5ycVGKVWrDTBozUxr/Sa7pvvFDm+RovlLuwgB
-         DRoQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=zvWfOgiVlCa+nQRvoGR+8amS647lN/tp51n8nbuHT9A=;
+        b=ouUC9SwukwEk8Bv4NIx2ceO6WycU9vFK4nCDerXWQNbL0s7kHA/RU2w5mz+a/NpLoQ
+         WCENwM3zhMQTl8UBAeIqfo4yciL+ic6WRlhQLRyIMV3mIDncf93wVEfs9arP++sCa8jw
+         OYvOEcdjxTI2zB/kUPyv9z9ou/eRu4RLEqJApi56CxW9OghycL51QuLJtKmm99S1q3LC
+         aCId64Q7wFsxepuFz+VKoYFnOy6lINEDelk3zK3Jw4CtfoJ2+xTUmAVXXzUeJo6AuZYd
+         cYOQvMlb2DbAWBIPTQoeBTBUa7C6IChhR5EaMh3y6a22UaWPSwGoTFtRffxt5rD1SLay
+         S4ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GDlZxwms;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="UYOh/JCh";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c26-20020aa78e1a000000b0050a8eb0157dsor5810518pfr.83.2022.04.30.22.50.38
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id jk9-20020ad45d49000000b0045a8515cbcasi830810qvb.329.2022.04.30.22.52.12
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 30 Apr 2022 22:50:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 30 Apr 2022 22:52:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GDlZxwms;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="UYOh/JCh";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=M9JbA/4mJJzCg1BoSjOe8spAl/jM5dv9tZGOFooq9Lk=;
-        b=GDlZxwmsilH0VCieHvbKqLSaZdinDddfExXGJxEUWq5g7Zr/2y+r80sk/zwG8pKSqS
-         OyaX+S1i9GhnPI6EZgGiDQCIe24Ufy5AINb+xHSEyGYy6d7W3jRRGnQknmfYnEZScOio
-         oxBGonrBLlItUZaNqJ+7a6GVvTHrsW4bKjIycYzp2LLnYSIHoWNbIvdY91Zau38fOXcH
-         KWi94hGD4aebMckYUodO54+FTlK5KaJ1mke2fEAPjRepyghWxeDD+Kv0MmATkE2iVDqp
-         yus36Ubs6Vmelm5WRlHRg7swomitCn0BwA+B5kL8EI2SJgoNIpOSn+u6VSfwOaj0qkVE
-         a9kA==
+Received: from localhost ([::1]:41246 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nl2V9-0006kV-SU
+	for alex.bennee@linaro.org; Sun, 01 May 2022 01:52:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42942)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nl2Ta-0006je-PR
+ for qemu-arm@nongnu.org; Sun, 01 May 2022 01:50:34 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:43996)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nl2TX-0001Dt-Tf
+ for qemu-arm@nongnu.org; Sun, 01 May 2022 01:50:33 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id
+ j8-20020a17090a060800b001cd4fb60dccso10470897pjj.2
+ for <qemu-arm@nongnu.org>; Sat, 30 Apr 2022 22:50:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zvWfOgiVlCa+nQRvoGR+8amS647lN/tp51n8nbuHT9A=;
+ b=UYOh/JChReDOHzCABmR4USMKZY+xDB1iQy8go0UfcQIhQIosqjulUUedBDdOr6W/CV
+ oHpJX2GmIIIRn+yQtcJnlZ8dWaK7z0kvYAXojNJqzgEqwxkMZdYwoMQC0eO2TiCJksU3
+ MgHPkWRkcc5XecrJZ7K9RXeJhiFaEulygl2LMsMvAXXohieYX3PskwZN/rg6MYfSDRQS
+ M67ftDdrx/X2GiFo6UGeNy6sevqyfJant+6XcCv9sJ7woROfw1RKasol0N/cWnrk3MiG
+ Kz9WxPvKRv2SuAHYjDJ7z6hT5pFf/Twy7K22UeYC04730lEWn/czzq/t2IknASGNpnIY
+ 2PjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=M9JbA/4mJJzCg1BoSjOe8spAl/jM5dv9tZGOFooq9Lk=;
-        b=fn4BhGinJXx/coDEWwlkGV1mVVgh94hOPjRYbgtzwBm26A2nsT4Ao91CX9IOHFRhFo
-         MCqPm56vOPF8HkCncktvXFNd7YwZfmuOl2BNWgSZjfSWh84VOloxJ4TR3+TB5LYpcvxq
-         NhaJTkJaC/PRpJMsCCLpxquqsZl2yOWY6WTOdkoFVk36PN1uLwHXoc701cKxazMKycBu
-         NHktcsW+rA9TtNahdipj6mSXx6NyVvuqCqR74xY7yhT113pPo4ygpW6jMsWDujv6Wciw
-         Fb31mhbb9qHhlNlVsEbzzAbaoG3smaZoTJ74VMXXetquXVjjOoqu+I+skjCzB8Nn9fCQ
-         Ljrg==
-X-Gm-Message-State: AOAM532P84MlW9qWwgkRWABgtOc6vK+K2QJIkfdGk9Y3N8TEjLDDkfap
-	valZaYZxPdSWysunu+xPdry46wyy
-X-Google-Smtp-Source: ABdhPJy7MaCH11IthoWLLviubSAZWgFmmvf+NeSA3psJdYNqkfnfWfYK7q0WCYspGtPsRAwnoYfohQ==
-X-Received: by 2002:a05:6a00:21c8:b0:4c4:4bd:dc17 with SMTP id t8-20020a056a0021c800b004c404bddc17mr6117099pfj.57.1651384238220;
-        Sat, 30 Apr 2022 22:50:38 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from stoup.. ([71.212.142.129])
-        by smtp.gmail.com with ESMTPSA id cm18-20020a17090afa1200b001cd8e9ea22asm17310342pjb.52.2022.04.30.22.50.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 30 Apr 2022 22:50:37 -0700 (PDT)
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zvWfOgiVlCa+nQRvoGR+8amS647lN/tp51n8nbuHT9A=;
+ b=6Y+m65mA9zCa2ysvmIb8VAv/HPYZn+cFF9m0PZUq74QxarZK2pnjGHxxD9rsaC4nxr
+ mzGK6DbV5fLkrPSKetfC33s8vnlHXsDsF78E9jCSyd9OI84jz3kUm3voXdPdEjXCQE19
+ EhefBbjtfmDuJFDLXCud2MFkIWHEbjlnfsoAezlQ+SQ3aoMUbyzXKwT63J9e8cSjx0jT
+ OcI3mi8ojf+Nd5G5m+8V0Diz/6zll+zjCYJDwwDOu+xbrt4E939j82uE5uT5oDiJkwop
+ +/3H8tGtEqGN9FqC2PDzN428t0qMW0F2mz+qREJx2vrj9SFTUQDUF4vbxsoIvkyDzsms
+ 9MxQ==
+X-Gm-Message-State: AOAM530KmZGPt6WXVFIJ6qZfU/8CnmChZPP0LaQJbXiLpyKqyPrkRneV
+ YUG69GJ/hPa1bG5sV6YpW+fXfbcPxTSjeA==
+X-Received: by 2002:a17:90b:33ca:b0:1d7:d322:9aa2 with SMTP id
+ lk10-20020a17090b33ca00b001d7d3229aa2mr7010713pjb.21.1651384230147; 
+ Sat, 30 Apr 2022 22:50:30 -0700 (PDT)
+Received: from stoup.. ([71.212.142.129]) by smtp.gmail.com with ESMTPSA id
+ cm18-20020a17090afa1200b001cd8e9ea22asm17310342pjb.52.2022.04.30.22.50.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 30 Apr 2022 22:50:29 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v4 08/45] target/arm: Name CPState type
-Date: Sat, 30 Apr 2022 22:49:50 -0700
-Message-Id: <20220501055028.646596-9-richard.henderson@linaro.org>
+Subject: [PATCH v4 00/45] target/arm: Cleanups, new features, new cpus
+Date: Sat, 30 Apr 2022 22:49:42 -0700
+Message-Id: <20220501055028.646596-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220501055028.646596-1-richard.henderson@linaro.org>
-References: <20220501055028.646596-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: +ZMJ5s1nnDhV
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +dSuRWP8y0pY
 
-Give this enum a name and use in ARMCPRegInfo,
-add_cpreg_to_hashtable and define_one_arm_cp_reg_with_opaque.
+Changes for v4:
+  * Rebase on master, where the first third is upstream.
+  * Split changes to add_cpreg_to_hashtable into bite sized chunks.
+  * Add ARM_CP_EL3_NO_EL2_{UNDEF,KEEP} flags.
+  * Fix access check for SCXTNUM_ELx (damien).
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpregs.h | 6 +++---
- target/arm/helper.c | 6 ++++--
- 2 files changed, 7 insertions(+), 5 deletions(-)
+Patches lacking review:
+  05-target-arm-Reorg-ARMCPRegInfo-type-field-bits.patch
+  06-target-arm-Avoid-bare-abort-or-assert-0.patch
+  10-target-arm-Drop-always-true-test-in-define_arm_vh.patch
+  11-target-arm-Store-cpregs-key-in-the-hash-table-dir.patch
+  12-target-arm-Merge-allocation-of-the-cpreg-and-its-.patch
+  13-target-arm-Hoist-computation-of-key-in-add_cpreg_.patch
+  14-target-arm-Consolidate-cpreg-updates-in-add_cpreg.patch
+  15-target-arm-Use-bool-for-is64-and-ns-in-add_cpreg_.patch
+  16-target-arm-Hoist-isbanked-computation-in-add_cpre.patch
+  17-target-arm-Perform-override-check-early-in-add_cp.patch
+  18-target-arm-Reformat-comments-in-add_cpreg_to_hash.patch
+  19-target-arm-Remove-HOST_BIG_ENDIAN-ifdef-in-add_cp.patch
+  20-target-arm-Handle-cpreg-registration-for-missing-.patch
+  21-target-arm-Drop-EL3-no-EL2-fallbacks.patch
+  22-target-arm-Merge-zcr-reginfo.patch
+  34-target-arm-Add-minimal-RAS-registers.patch
+  41-target-arm-Enable-FEAT_CSV2_2-for-cpu-max.patch
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 858c5da57d..4179a8cdd5 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -114,11 +114,11 @@ enum {
-  * Note that we rely on the values of these enums as we iterate through
-  * the various states in some places.
-  */
--enum {
-+typedef enum {
-     ARM_CP_STATE_AA32 = 0,
-     ARM_CP_STATE_AA64 = 1,
-     ARM_CP_STATE_BOTH = 2,
--};
-+} CPState;
- 
- /*
-  * ARM CP register secure state flags.  These flags identify security state
-@@ -260,7 +260,7 @@ struct ARMCPRegInfo {
-     uint8_t opc1;
-     uint8_t opc2;
-     /* Execution state in which this register is visible: ARM_CP_STATE_* */
--    int state;
-+    CPState state;
-     /* Register type: ARM_CP_* bits/values */
-     int type;
-     /* Access rights: PL*_[RW] */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a19e04bb0b..d560a6a6a9 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -8502,7 +8502,7 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
- }
- 
- static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
--                                   void *opaque, int state, int secstate,
-+                                   void *opaque, CPState state, int secstate,
-                                    int crm, int opc1, int opc2,
-                                    const char *name)
- {
-@@ -8662,13 +8662,15 @@ void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
-      * bits; the ARM_CP_64BIT* flag applies only to the AArch32 view of
-      * the register, if any.
-      */
--    int crm, opc1, opc2, state;
-+    int crm, opc1, opc2;
-     int crmmin = (r->crm == CP_ANY) ? 0 : r->crm;
-     int crmmax = (r->crm == CP_ANY) ? 15 : r->crm;
-     int opc1min = (r->opc1 == CP_ANY) ? 0 : r->opc1;
-     int opc1max = (r->opc1 == CP_ANY) ? 7 : r->opc1;
-     int opc2min = (r->opc2 == CP_ANY) ? 0 : r->opc2;
-     int opc2max = (r->opc2 == CP_ANY) ? 7 : r->opc2;
-+    CPState state;
-+
-     /* 64 bit registers have only CRm and Opc1 fields */
-     assert(!((r->type & ARM_CP_64BIT) && (r->opc2 || r->crn)));
-     /* op0 only exists in the AArch64 encodings */
+
+r~
+
+
+Richard Henderson (45):
+  target/arm: Split out cpregs.h
+  target/arm: Reorg CPAccessResult and access_check_cp_reg
+  target/arm: Replace sentinels with ARRAY_SIZE in cpregs.h
+  target/arm: Make some more cpreg data static const
+  target/arm: Reorg ARMCPRegInfo type field bits
+  target/arm: Avoid bare abort() or assert(0)
+  target/arm: Change cpreg access permissions to enum
+  target/arm: Name CPState type
+  target/arm: Name CPSecureState type
+  target/arm: Drop always-true test in
+    define_arm_vh_e2h_redirects_aliases
+  target/arm: Store cpregs key in the hash table directly
+  target/arm: Merge allocation of the cpreg and its name
+  target/arm: Hoist computation of key in add_cpreg_to_hashtable
+  target/arm: Consolidate cpreg updates in add_cpreg_to_hashtable
+  target/arm: Use bool for is64 and ns in add_cpreg_to_hashtable
+  target/arm: Hoist isbanked computation in add_cpreg_to_hashtable
+  target/arm: Perform override check early in add_cpreg_to_hashtable
+  target/arm: Reformat comments in add_cpreg_to_hashtable
+  target/arm: Remove HOST_BIG_ENDIAN ifdef in add_cpreg_to_hashtable
+  target/arm: Handle cpreg registration for missing EL
+  target/arm: Drop EL3 no EL2 fallbacks
+  target/arm: Merge zcr reginfo
+  target/arm: Add isar predicates for FEAT_Debugv8p2
+  target/arm: Adjust definition of CONTEXTIDR_EL2
+  target/arm: Move cortex impdef sysregs to cpu_tcg.c
+  target/arm: Update qemu-system-arm -cpu max to cortex-a57
+  target/arm: Set ID_DFR0.PerfMon for qemu-system-arm -cpu max
+  target/arm: Split out aa32_max_features
+  target/arm: Annotate arm_max_initfn with FEAT identifiers
+  target/arm: Use field names for manipulating EL2 and EL3 modes
+  target/arm: Enable FEAT_Debugv8p2 for -cpu max
+  target/arm: Enable FEAT_Debugv8p4 for -cpu max
+  target/arm: Add isar_feature_{aa64,any}_ras
+  target/arm: Add minimal RAS registers
+  target/arm: Enable SCR and HCR bits for RAS
+  target/arm: Implement virtual SError exceptions
+  target/arm: Implement ESB instruction
+  target/arm: Enable FEAT_RAS for -cpu max
+  target/arm: Enable FEAT_IESB for -cpu max
+  target/arm: Enable FEAT_CSV2 for -cpu max
+  target/arm: Enable FEAT_CSV2_2 for -cpu max
+  target/arm: Enable FEAT_CSV3 for -cpu max
+  target/arm: Enable FEAT_DGH for -cpu max
+  target/arm: Define cortex-a76
+  target/arm: Define neoverse-n1
+
+ docs/system/arm/emulation.rst |  10 +
+ docs/system/arm/virt.rst      |   2 +
+ target/arm/cpregs.h           | 462 +++++++++++++++++
+ target/arm/cpu.h              | 416 ++--------------
+ target/arm/helper.h           |   1 +
+ target/arm/internals.h        |  16 +
+ target/arm/syndrome.h         |   5 +
+ target/arm/a32.decode         |  16 +-
+ target/arm/t32.decode         |  18 +-
+ hw/arm/pxa2xx.c               |   2 +-
+ hw/arm/pxa2xx_pic.c           |   2 +-
+ hw/arm/sbsa-ref.c             |   2 +
+ hw/arm/virt.c                 |   2 +
+ hw/intc/arm_gicv3_cpuif.c     |   6 +-
+ hw/intc/arm_gicv3_kvm.c       |   3 +-
+ target/arm/cpu.c              |  84 ++--
+ target/arm/cpu64.c            | 353 +++++++------
+ target/arm/cpu_tcg.c          | 232 ++++++---
+ target/arm/gdbstub.c          |   5 +-
+ target/arm/helper.c           | 909 ++++++++++++++++++----------------
+ target/arm/hvf/hvf.c          |   2 +-
+ target/arm/kvm-stub.c         |   4 +-
+ target/arm/kvm.c              |   4 +-
+ target/arm/machine.c          |   4 +-
+ target/arm/op_helper.c        | 100 ++--
+ target/arm/translate-a64.c    |  32 +-
+ target/arm/translate-neon.c   |   2 +-
+ target/arm/translate.c        |  36 +-
+ 28 files changed, 1604 insertions(+), 1126 deletions(-)
+ create mode 100644 target/arm/cpregs.h
+
 -- 
 2.34.1
+

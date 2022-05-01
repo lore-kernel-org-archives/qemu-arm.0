@@ -1,225 +1,245 @@
-Received: by 2002:a05:6512:2248:0:0:0:0 with SMTP id i8csp373121lfu;
-        Sat, 30 Apr 2022 18:03:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+9upkrJZ4yVYPxbl+nx+Z104PnF4yL0v0BEwfL5QR8wRuIpp+pN+KcV6yd/NG1wyWfj0w
-X-Received: by 2002:ac8:7dcc:0:b0:2f2:5c6:91db with SMTP id c12-20020ac87dcc000000b002f205c691dbmr5419412qte.240.1651367017142;
-        Sat, 30 Apr 2022 18:03:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651367017; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp275656lfj;
+        Sun, 1 May 2022 11:07:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxSUT6PmJ+jwBE34FCxdAoOmHPln9SSFA5gSvQKQgJ4VKqnWKdsAFyDMjd+dbz0L5AhI2k0
+X-Received: by 2002:a05:6214:20eb:b0:446:6ffe:7237 with SMTP id 11-20020a05621420eb00b004466ffe7237mr7034613qvk.29.1651428479540;
+        Sun, 01 May 2022 11:07:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651428479; cv=none;
         d=google.com; s=arc-20160816;
-        b=QaYakRcKkGbgPdaR3EiD6gEZkVDonxigWLMoKgxIEoJTehh28E5INbAbklQFkLYJj6
-         rI2Isexbc+KRjKQNNRgePu2eu2Bls/VJ+JS9XMnK42SDlo1zgSV+m/rWLyE+5+BFuLA6
-         rXfKGZYwSpacNk2tlh824BAXG0s3QFJ3wuGrYx/VIJrHkq5TErycmcVKjOCprYDYvZO3
-         w8QgalNZVVsCsw/AqIja19UdB4S1wu18VwEXJTv3jbiZF24tXhEgv2KbVVDe8JAGNW5F
-         1t6TWHf2IvFJW3gJ1jj+9zjRaK31sB4lohgMOH5hWnzmd0tW8Q49xf5m3GUIBHEgCVC7
-         SeAA==
+        b=HkbvrmbLREpmI8txh3N0/gp/auCEmPm+PNDFhfujuDgp6B4ij6xhEZ+DCajJIuMXSF
+         tawjAJ6UEK8f2SC8s6oMYQgQfFCs6dsY6CMbrl+kP1X4G63QYF9wVJ+qGXV4q/QSTmJS
+         Y9UhreoKiE5rbNLZby1ea9fMwI5Ljz0k22MFXEcwX5xovl9aBTSCsJQwZZtipaM/SVBI
+         jTb1Yfz0c0Bd4+nFroHcM7gI/rs3jD2Bqwd/+Ox9WkXj8R0gczZEPR2Lxgl4BQRrs+s0
+         6qr/eBY4+HFqGQSS+TM0yfLEJ0Hwlz13E2GS9MR2DTGw+lZInPlThFlNZywH4aASKsWP
+         jAGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=73ZHjYmg1P9xTYhkEMQpxG8zt+tF0DsE6K5m5iuqI5o=;
-        b=rxxC1tbFAtZ1BrhO3jKimdYFMDweWqNj7Z1yjLPQA0JM8K9MiSMRr/kGt0IUIhTcJM
-         qNaaAuq775nl7xmU6xsWzSavR5PR6AW20MEuhf4pa+7phJttt/7QO2gJRX42MzPvgDaU
-         662PhIbnkifnqnbdLk6nDHXczYMcHtIUKv3I7mT0tkXtpKVALQjPolHyEeyACkSp8pv6
-         mMq2+OS9BnGsA9VPDlgSIsA350oT4Abqd8j11cKiY+bz4zUxvkTzNyPm9ZGbUYZ1TwAt
-         bimONShPMvp3cF/qy6wrTLJEvWzbNML73UbFpdNS6Vrtdlte57JI/JThOOIWK+Jog1jT
-         EHhg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :content-language:subject:from:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=FsFFMghFPIVUtc/RNeYhPbcvOSmhPRly+W3PnnOdRqs=;
+        b=i3psdD2AHo338Eq5wFg+JeCik+3tx46bd2n+RIRVjMmW9JWwS05jxyatB//guxakNJ
+         +v4HdwTpmVBLduvNPeMP4tK3W3vfz8NPJndhFSRocNt40HR4EJfNMTS0liMa6e9yznzO
+         GrqdhSECNEs6LXHu5ZvILFUWWSgHcl0RIBDss32wJgZ8rveqKMf0WHFBgHCRSgdAQbBL
+         qEMzpTo9hooe8FvE5ZapkjILMGt8D19XIEdaAvt+6uj4MANM3gCLRy0TC2NZvimP+UEY
+         Dd5QMqkINjPu4pjFVJtOMQR7i5Y7lma94j4HEDOE48gTuo8yhI4QKkB3SQm8g0z8q8wJ
+         J12w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dBAnLjT5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@web.de header.s=dbaedf251592 header.b=R4KB6B3S;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=web.de
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fh4-20020a0562141a0400b0044153b237f0si4768694qvb.407.2022.04.30.18.03.36
+        by mx.google.com with ESMTPS id z140-20020a376592000000b0069fd3904aedsi911935qkb.643.2022.05.01.11.07.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 30 Apr 2022 18:03:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 01 May 2022 11:07:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dBAnLjT5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45288 helo=lists1p.gnu.org)
+       dkim=pass header.i=@web.de header.s=dbaedf251592 header.b=R4KB6B3S;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=web.de
+Received: from localhost ([::1]:37428 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nkxzs-0007OE-7o
-	for alex.bennee@linaro.org; Sat, 30 Apr 2022 21:03:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49244)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nlDzC-0007jO-R5
+	for alex.bennee@linaro.org; Sun, 01 May 2022 14:07:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nkxzh-0007Nu-D2
- for qemu-arm@nongnu.org; Sat, 30 Apr 2022 21:03:25 -0400
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d]:45707)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nkxzf-0006tl-Jx
- for qemu-arm@nongnu.org; Sat, 30 Apr 2022 21:03:24 -0400
-Received: by mail-pg1-x52d.google.com with SMTP id 7so5368669pga.12
- for <qemu-arm@nongnu.org>; Sat, 30 Apr 2022 18:03:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=73ZHjYmg1P9xTYhkEMQpxG8zt+tF0DsE6K5m5iuqI5o=;
- b=dBAnLjT5Y+mRDmXck+AOxRpCExVUEMW9f/POYQjU9TkRkzK3n1L/C5XQjy9oRmI+bz
- uQRP9lFf7LarikI9f6CTDWwZ6HNciJjiDSg5uKEKy+WpvnUro8waJwzqKcrDtmHZ1BVO
- 2qFMsLy5NYNM0N4OZ13lAfmi57SCwnCx/tYnlpFOT7dFyiNBNIvPn/2vVPVRiZiqxx6T
- YbIynnVLzkfFXC3w/y7Icx4wEqMzOJkq82Kjenzh0YQuyrdM5lnIpNezsy+Jx3MgBByI
- /kozixY6p8ydCzimqw79UrVkIH+jIHrMCUc0fZGtry87SGb/kqaRHkNn3Wkut5HwSCGE
- Mn/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=73ZHjYmg1P9xTYhkEMQpxG8zt+tF0DsE6K5m5iuqI5o=;
- b=nerbyM1gw7xOqRMX5TuxYKrvwuM4CKYJm/WqDE9poW5i2z4J3Cdlk3TSMrJeEiDgDr
- 1YQZzCG7ak5UkGBeXklEcDXfexD8wyypPym/2k+nBxumuFVt8+PkUQ3V91TNfVM2V/7k
- I+WDfzdd1knoYYOtzhJrryOU/2oybDCoTDp2MTvqxPE2cufjNXaJpdMsm9YEq8OZdx56
- mQgRiid23/3DBA0OLPtOY6Q8cO/S8oKMPTNxjU07pfV0s0/P10X8ETKikmLTJoKo5MAH
- jRNFB/6oO16Q+tcd1/gxP5687tgj+ufDkfcyYPE/V0V4puAz0hkZl9NLo8tajA8lpOjL
- FxlQ==
-X-Gm-Message-State: AOAM531drYnQcrdsYQevckRSJhK11GMUQpCBAnCxXQsmj3v49HQrYxtz
- JH+TRhBWvIBmQfghrr1xYrgJDQ==
-X-Received: by 2002:a05:6a00:2310:b0:4fa:7eb1:e855 with SMTP id
- h16-20020a056a00231000b004fa7eb1e855mr5262091pfh.14.1651367001761; 
- Sat, 30 Apr 2022 18:03:21 -0700 (PDT)
-Received: from [192.168.1.6] ([71.212.142.129])
- by smtp.gmail.com with ESMTPSA id
- h19-20020a63df53000000b003c14af50634sm8992466pgj.76.2022.04.30.18.03.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 30 Apr 2022 18:03:21 -0700 (PDT)
-Message-ID: <04c8d2c6-4c34-c38e-720f-8d80113597d5@linaro.org>
-Date: Sat, 30 Apr 2022 18:03:19 -0700
+ (Exim 4.90_1) (envelope-from <jan.kiszka@web.de>)
+ id 1nlDyS-000734-0N; Sun, 01 May 2022 14:07:12 -0400
+Received: from mout.web.de ([212.227.15.14]:48199)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jan.kiszka@web.de>)
+ id 1nlDyQ-00081M-1t; Sun, 01 May 2022 14:07:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=dbaedf251592; t=1651428426;
+ bh=EK+Nd3HrCu2Q3vhwZTo952T/A31WqzQV30a1i1wUlsU=;
+ h=X-UI-Sender-Class:Date:From:Subject:To:Cc;
+ b=R4KB6B3SVUm+oSHCzPYmmqyFpePPKJrc+Q3eODZ77Wn5Uq14e19JdFjwNXh19yg5p
+ /svHvLwbpdfxUr4237sp6jEXYOST17L7gRc/B4seJFc5WAKRZUfy0iG2Q5ltsubKHA
+ ertKIkSaAzMnhNTuIgbasZenGPuzq4B8MvyhnvS8=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [192.168.10.10] ([88.215.102.122]) by smtp.web.de (mrweb005
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1MWQyl-1nMjDN1pJT-00Y5EL; Sun, 01
+ May 2022 20:07:06 +0200
+Message-ID: <4ad779bc-09f6-4041-d671-624fd0e22cf9@web.de>
+Date: Sun, 1 May 2022 20:07:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.0
-Subject: Re: [PATCH v3 32/60] target/arm: Update sysreg fields when
- redirecting for E2H
+From: Jan Kiszka <jan.kiszka@web.de>
+Subject: [PATCH] hw/arm: virt: Add SBSA watchdog
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20220417174426.711829-1-richard.henderson@linaro.org>
- <20220417174426.711829-33-richard.henderson@linaro.org>
- <CAFEAcA8ZFuyKO0jsMHX=Pg6grvmzWCgCpnt7EBWtRjTKne=tnw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA8ZFuyKO0jsMHX=Pg6grvmzWCgCpnt7EBWtRjTKne=tnw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:L68wGUAjY68kk+kubslSaDs/2FMLWO24Q6qEapqrKSVattMiWA4
+ S9BwZ32D9gsOEUaPZMsY4Log7byy26BqIZZhgMGOKqh6fWfHlOwzJQnkj9TUGYvaH0dMny5
+ zRuUch5LCuTFcac71rDNSFpCEE+OjED1zAUBE/b2xulFAujBc36BiCYLw/5oCUJuC1vTs85
+ FPGRU4otRAvY1f3jSsNQA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:1yeS6MU6+E8=:8qKvD1bhYJTb031LBko+lC
+ YfZwtBXJFhNqEZQppx+R/cnixuoFkdzZjMy2g0DMkOpQ6WN52QggEZisNtypg2omELfRfpnTq
+ mNXYr+QUrtgMY7mctqzAgiDczYFvOh1daz+QZA6RPazeVZaeWoa35VsbRsPQJlg5Wwrioy2Im
+ XZ24GC+MUxPqDyGBaXSX4PK1AT5Mpzw5ZmWro/H3RDkjSvSjx4E4DH2uNEI+Vmn+jfkA0/IVf
+ /bRSsAs7Wcn5YhIa0qFtf1AjKW5+YP94YEDCUUjsEZS99eU/2eB8JzdBRfAIpR2kJmiDhJgxb
+ kZKbo5rStmJwFpgq5rfAEfRMBaxiQ3rC+63C+z9yqQM8QdYmlkUz27YMjRvMd3EO+G1hmsZGP
+ 1LGNYN63QIRUy/dWaVDnonfULEatErUOmHcWx4OBiZmfdJiyh+ifni153hO3nXWghSU6+QH0s
+ I22AP20QB0xDm6hIpP7fQWEfTucd/4cM1H3RVN+XfIselWmi407ccfd7Y6eZZxcqO2CRoeXNg
+ iaqRQfNmIttsbL6HcUTU5wS45s/C9t5gOmUTLUHrPYfFxpQUOQt9CBgXrhYdcQNirK1rVijSW
+ rbTFFbfxQoWlbPU0qdZiFaL48Yp/yOD/k9Gpt5MmVVUNP/+phRyvxma3vYmMzE2iagP6ISsuC
+ p3v3xK39WE4T553w5Ez3sFkA6xLMzSeWJrmK02waljyKR/LFf2RWpCYiOgtvZ322I7P4gATjS
+ GPRooU3DH5wW7VfNh3FKPttAr0APxZNVpGwjOTG6W0gb6h8ilPkqMjdyu0gd9K61NiTfeRlrS
+ 2lLGfdOxsTqcxcowPT+jykzTlebQYEiEKhiLfnS2WFPSr+Fq4XHdYf5uRxtV9K8adjD5mWnUQ
+ rXjw/CIdyd40Ix2MTx5/8CWX6xuomxrYcs+gX6H1ywatca8hXoQMXI+YkROR8atbED6/nFd/k
+ hCb0UK02XMnxcOk86UuVlura11dGOYpyTB6Epa0GhlDux4EqbixIrvnsc7wvR5U/kYPYwWQ6q
+ gosz1p4DJRm14fWvY93FWXKEmPHvDwgynyXM8mTy7qztqDKqFeU9X2V+iEcjXDEk6f47r0EGm
+ tZ/PtdJ/pps4W8=
+Received-SPF: pass client-ip=212.227.15.14; envelope-from=jan.kiszka@web.de;
+ helo=mout.web.de
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eCktgQtXDgOz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: f/R4kRXox+wx
 
-On 4/22/22 03:39, Peter Maydell wrote:
-> On Sun, 17 Apr 2022 at 19:07, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> The new_key is always non-zero during redirection,
->> so remove the if.  Update opc0 et al from the new key.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   target/arm/helper.c | 35 +++++++++++++++++++++++------------
->>   1 file changed, 23 insertions(+), 12 deletions(-)
->>
->> diff --git a/target/arm/helper.c b/target/arm/helper.c
->> index 7c569a569a..aee195400b 100644
->> --- a/target/arm/helper.c
->> +++ b/target/arm/helper.c
->> @@ -5915,7 +5915,9 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
->>
->>       for (i = 0; i < ARRAY_SIZE(aliases); i++) {
->>           const struct E2HAlias *a = &aliases[i];
->> -        ARMCPRegInfo *src_reg, *dst_reg;
->> +        ARMCPRegInfo *src_reg, *dst_reg, *new_reg;
->> +        uint32_t *new_key;
->> +        bool ok;
->>
->>           if (a->feature && !a->feature(&cpu->isar)) {
->>               continue;
->> @@ -5934,19 +5936,28 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
->>           g_assert(src_reg->opaque == NULL);
->>
->>           /* Create alias before redirection so we dup the right data. */
->> -        if (a->new_key) {
->> -            ARMCPRegInfo *new_reg = g_memdup(src_reg, sizeof(ARMCPRegInfo));
->> -            uint32_t *new_key = g_memdup(&a->new_key, sizeof(uint32_t));
->> -            bool ok;
->> +        new_reg = g_memdup(src_reg, sizeof(ARMCPRegInfo));
->> +        new_key = g_memdup(&a->new_key, sizeof(uint32_t));
->>
->> -            new_reg->name = a->new_name;
->> -            new_reg->type |= ARM_CP_ALIAS;
->> -            /* Remove PL1/PL0 access, leaving PL2/PL3 R/W in place.  */
->> -            new_reg->access &= PL2_RW | PL3_RW;
->> +        new_reg->name = a->new_name;
->> +        new_reg->type |= ARM_CP_ALIAS;
->> +        /* Remove PL1/PL0 access, leaving PL2/PL3 R/W in place.  */
->> +        new_reg->access &= PL2_RW;
->>
->> -            ok = g_hash_table_insert(cpu->cp_regs, new_key, new_reg);
->> -            g_assert(ok);
->> -        }
->> +#define E(X, N) \
->> +    ((X & CP_REG_ARM64_SYSREG_##N##_MASK) >> CP_REG_ARM64_SYSREG_##N##_SHIFT)
->> +
->> +        /* Update the sysreg fields */
->> +        new_reg->opc0 = E(a->new_key, OP0);
->> +        new_reg->opc1 = E(a->new_key, OP1);
->> +        new_reg->crn = E(a->new_key, CRN);
->> +        new_reg->crm = E(a->new_key, CRM);
->> +        new_reg->opc2 = E(a->new_key, OP2);
->> +
->> +#undef E
->> +
->> +        ok = g_hash_table_insert(cpu->cp_regs, new_key, new_reg);
->> +        g_assert(ok);
-> 
-> So is setting the new_reg opc etc fields here fixing a bug
-> (or otherwise changing behaviour)?
-> 
-> The effect is that read/write callbacks now get an ARMCPRegInfo*
-> that has the opc &c for the alias, rather than for the thing being
-> aliased. That's good if the read/write callbacks have a need to
-> distinguish the alias access from a normal one (do they anywhere?).
-> On the other hand it's bad if we have existing code that thinks it
-> can distinguish FOO_EL1 from FOO_EL2 by looking at the opc &c
-> values and now might get confused.
-> 
-> Overall, unless we have a definite reason why we want the
-> callback functions to be able to tell the alias from the normal
-> access, I'm inclined to say we should just comment that we
-> deliberately leave the sysreg fields alone. (Put another way,
-> I don't really want to have to work through all the aliased
-> registers here checking whether they have read/write functions
-> that look at the opc fields and whether any of them would
-> end up doing the wrong thing when handed the alias reginfo.)
+From: Jan Kiszka <jan.kiszka@siemens.com>
 
-I don't recall what I was thinking here, it's definitely wrong.
+The virt machine lacks a watchdog so far while the sbsa-ref has a simple
+model that is also supported by Linux and even U-Boot. Let's take it to
+allow, e.g., system integration tests of A/B software update under
+watchdog monitoring.
 
-> The "remove the if()" part is fine if you wanted to do that
-> as its own patch.
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+=2D--
 
-Yeah, I'll do that, since it's always true.
+An alternative could be sp805. However, QEMU has no support for that
+device yet.
 
+ hw/arm/Kconfig        |  1 +
+ hw/arm/virt.c         | 35 +++++++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h |  3 +++
+ 3 files changed, 39 insertions(+)
 
-r~
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 97f3b38019..8df04a3533 100644
+=2D-- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -29,6 +29,7 @@ config ARM_VIRT
+     select ACPI_APEI
+     select ACPI_VIOT
+     select VIRTIO_MEM_SUPPORTED
++    select WDT_SBSA
+
+ config CHEETAH
+     bool
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index f94278935f..a7b85438a8 100644
+=2D-- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -78,6 +78,7 @@
+ #include "hw/virtio/virtio-mem-pci.h"
+ #include "hw/virtio/virtio-iommu.h"
+ #include "hw/char/pl011.h"
++#include "hw/watchdog/sbsa_gwdt.h"
+ #include "qemu/guest-random.h"
+
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+@@ -154,6 +155,8 @@ static const MemMapEntry base_memmap[] =3D {
+     [VIRT_NVDIMM_ACPI] =3D        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+     [VIRT_PVTIME] =3D             { 0x090a0000, 0x00010000 },
+     [VIRT_SECURE_GPIO] =3D        { 0x090b0000, 0x00001000 },
++    [VIRT_GWDT_CONTROL] =3D       { 0x090c0000, 0x00001000 },
++    [VIRT_GWDT_REFRESH] =3D       { 0x090d0000, 0x00001000 },
+     [VIRT_MMIO] =3D               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that si=
+ze */
+     [VIRT_PLATFORM_BUS] =3D       { 0x0c000000, 0x02000000 },
+@@ -190,6 +193,7 @@ static const int a15irqmap[] =3D {
+     [VIRT_GPIO] =3D 7,
+     [VIRT_SECURE_UART] =3D 8,
+     [VIRT_ACPI_GED] =3D 9,
++    [VIRT_GWDT_WS0] =3D 10,
+     [VIRT_MMIO] =3D 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] =3D 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+     [VIRT_SMMU] =3D 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+@@ -902,6 +906,35 @@ static void create_rtc(const VirtMachineState *vms)
+     g_free(nodename);
+ }
+
++static void create_wdt(const VirtMachineState *vms)
++{
++    hwaddr cbase =3D vms->memmap[VIRT_GWDT_CONTROL].base;
++    hwaddr csize =3D vms->memmap[VIRT_GWDT_CONTROL].size;
++    hwaddr rbase =3D vms->memmap[VIRT_GWDT_REFRESH].base;
++    hwaddr rsize =3D vms->memmap[VIRT_GWDT_REFRESH].size;
++    DeviceState *dev =3D qdev_new(TYPE_WDT_SBSA);
++    SysBusDevice *s =3D SYS_BUS_DEVICE(dev);
++    int irq =3D vms->irqmap[VIRT_GWDT_WS0];
++    const char compat[] =3D "arm,sbsa-gwdt";
++    MachineState *ms =3D MACHINE(vms);
++    char *nodename;
++
++    sysbus_realize_and_unref(s, &error_fatal);
++    sysbus_mmio_map(s, 1, cbase);
++    sysbus_mmio_map(s, 0, rbase);
++    sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
++
++    nodename =3D g_strdup_printf("/watchdog@%" PRIx64, cbase);
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop(ms->fdt, nodename, "compatible", compat, sizeof(comp=
+at));
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
++                                 2, cbase, 2, csize, 2, rbase, 2, rsize);
++    qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
++                           GIC_FDT_IRQ_TYPE_SPI, irq,
++                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
++    g_free(nodename);
++}
++
+ static DeviceState *gpio_key_dev;
+ static void virt_powerdown_req(Notifier *n, void *opaque)
+ {
+@@ -2240,6 +2273,8 @@ static void machvirt_init(MachineState *machine)
+
+     create_rtc(vms);
+
++    create_wdt(vms);
++
+     create_pcie(vms);
+
+     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms=
+)) {
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 15feabac63..7f295f771e 100644
+=2D-- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -86,6 +86,9 @@ enum {
+     VIRT_ACPI_GED,
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
++    VIRT_GWDT_WS0,
++    VIRT_GWDT_CONTROL,
++    VIRT_GWDT_REFRESH,
+     VIRT_LOWMEMMAP_LAST,
+ };
+
+=2D-
+2.34.1

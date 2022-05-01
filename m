@@ -1,109 +1,111 @@
-Received: by 2002:a05:6512:2248:0:0:0:0 with SMTP id i8csp474406lfu;
-        Sat, 30 Apr 2022 23:20:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz9P8r7v70lWpeQBBv+mcOkonDCng0J8ZnwVTv935V/ocA8ALYTc40G3khEN/ax5lPh9G7Z
-X-Received: by 2002:ac8:5c14:0:b0:2f3:9bd2:2144 with SMTP id i20-20020ac85c14000000b002f39bd22144mr4939669qti.154.1651386003761;
-        Sat, 30 Apr 2022 23:20:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651386003; cv=none;
+Received: by 2002:a05:6512:2248:0:0:0:0 with SMTP id i8csp475172lfu;
+        Sat, 30 Apr 2022 23:22:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxaHd4nrtxwsNAzaWu5wSDVvfs7Dch2pPYR+79JfLt5L/YqmZ6kraWe4iJ2r21roTEaokKI
+X-Received: by 2002:a05:6214:d04:b0:446:6c11:1939 with SMTP id 4-20020a0562140d0400b004466c111939mr5096083qvh.125.1651386155799;
+        Sat, 30 Apr 2022 23:22:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651386155; cv=none;
         d=google.com; s=arc-20160816;
-        b=MPZLTW+d6Kpj7pNqSSptUDvyr+mUdjD312LuadscSwWCK/x5pRYHiosyz3H86j7swg
-         68b4ogpfGQWn88oCujMBO9vU5Ot+K08kuEBjT77Jv6pZIgqaZGAUcokCHWnp4WM0heuP
-         gDryoTbNC953nS9rTVURG7h5EYg/YTxAST7LzVyD083Uvua8FQ19lRoxXOQTOi0fZWxd
-         2NeNfObfkj4YxZnyLqQHK25PfB7Ck4sNhwEq9RYnAPTJJqMC9GCV/Z9kS13rf0tSVQEw
-         0u9Wk5RednONrPj7DTdiWk2BT+WrPqDJ2LGeGgWOnuZChXg+8sv6q+Sagtvm8hj1msVi
-         ILYw==
+        b=Jq4oBi/SMGShpXJ5RDPmQRJl+fOG0bCqIghW9l2DV8542FPssaaO5nOUJxq4AxCvxm
+         U2D6MxxPI3bVzY2fnY6AY0Dr5FbbAFip0dgbk2zq6rppY7krSq2xLcOXhUtUxDy92fgG
+         aqfUpVxf2fQwDg/OpnL+n2ccet1oT3zqAxJq66g55o5ConeGXztew/313Z9MsR9DFi+f
+         oQYJznSlN/u+sriyL80OgShRYPGaulXBFQgYcxXxYwIBSpsmrp0tOP1SMIf0ZgcOa+tH
+         L3HLYJkvKqs/cotp54Dux8VNvFUnv+OA83541CsT7d7dmGWH1FLiDaGlbl8znd9/BLRt
+         misA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=86JJW2/FsLKv+cotPyQaiKRVQrrBoAkHpPLmFPzaDwg=;
-        b=UNrOA4p8nMNoFVhewzLwweP+IJgAPpzk8eb2q7WTuodYAoO+D0qWNjJyx+sNp06t/r
-         Gkdd/pD9NWSeIH4XoAMdJxEIGtaxvHkzjz510kEHbc46g9y2dF/iCGpCVGNntGcrWfKB
-         /1ajxt8Lg69MgUezVcj2KLDkKMM9YkDJUf2IQS3ZPKWZ9rnAyzITjoASDD41+8lGobWp
-         MLwOhi0NQYmpnxypA20gGryBq6Z69MFl9ksSFXd6ubMXXKxVcGjc2XUu23/JaG6Fxcya
-         VzNr45T9VMU6zuHSf8VG1TR0EE9fiKfCQn0qJootnlXwJBEpdVH1HPgfYH1Snss/YNsO
-         uJVg==
+        bh=Z9jnYlb3diHDx/Tz1NJJu7ooSfZI5A88/Vi2Hs36v6U=;
+        b=SGsPcKH4EFUszmkF68MlnegkRCOdqaKlSTSqvQ+6l3hBEJJKv1vhlUwAHb4uYP0eSq
+         XDWo5Pd3HsY2MpnYDFl626Q2jGf7TY3dA5ntCf5ny+8t+SqtayKV9q1mgqLmLNMYLDm/
+         jm0Cp8yXzdH7kdyKCNsNhs3zSNQopxyJwZWcOcLu1uub/EuQYnlv9vj0vKZ45Cmn9h3l
+         TWJiJdHO4wL1+vXcQlY+3VrQHzqeoQsPWASduS9YCJlUm3cxkTIfnbZAA7j/jVtcUnA2
+         1JksO4XfSvbvPZb2ylsXGi+DaZ7saLRLNUlLyLBmmsZ9tihjCMn3F41ICdLaNooeblRe
+         4/Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ekmmEKwR;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RpW6KbtL;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id br16-20020a05620a461000b0069ebb9a9930si5238570qkb.721.2022.04.30.23.20.03
+        by mx.google.com with ESMTPS id c15-20020ac87d8f000000b002f395a56167si2599904qtd.242.2022.04.30.23.22.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 30 Apr 2022 23:20:03 -0700 (PDT)
+        Sat, 30 Apr 2022 23:22:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ekmmEKwR;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RpW6KbtL;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52824 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56760 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nl2w7-0000de-8A
-	for alex.bennee@linaro.org; Sun, 01 May 2022 02:20:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43636)
+	id 1nl2yZ-0003IW-2t
+	for alex.bennee@linaro.org; Sun, 01 May 2022 02:22:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43896)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nl2Tt-0006tX-Ag
- for qemu-devel@nongnu.org; Sun, 01 May 2022 01:50:58 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:40546)
+ id 1nl2U1-00070Z-TZ
+ for qemu-devel@nongnu.org; Sun, 01 May 2022 01:51:01 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433]:40502)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nl2Tq-0001JN-8H
- for qemu-devel@nongnu.org; Sun, 01 May 2022 01:50:53 -0400
-Received: by mail-pl1-x635.google.com with SMTP id i1so4136920plg.7
- for <qemu-devel@nongnu.org>; Sat, 30 Apr 2022 22:50:49 -0700 (PDT)
+ id 1nl2Tz-0001MT-Kf
+ for qemu-devel@nongnu.org; Sun, 01 May 2022 01:51:01 -0400
+Received: by mail-pf1-x433.google.com with SMTP id i24so10060462pfa.7
+ for <qemu-devel@nongnu.org>; Sat, 30 Apr 2022 22:50:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=86JJW2/FsLKv+cotPyQaiKRVQrrBoAkHpPLmFPzaDwg=;
- b=ekmmEKwRd9JGSms00gpnpBQruTkcfb1tSYSURO0+FzYuTmFloOuyeh+TG10Dj8aolv
- IeGym91dmCLr45pyQNXljS8fH9S2oflhAr0I4pFOhTX9ToR3UFVMdnwYmteIY5tIqXaU
- 0w/FcMyfz19KxS0kwcV9fMBk/ofrU2gk6ErNGtduLSYVqo9GMBGVoLb+IirX3IGW9UIm
- ByM7G+UUcXqU+vFrFqC+Tvs8w2a0pA2dXONMZggDHvqFGOfDOqIijbcAmhTYvJHVdmnf
- 4qnyCUcd4W4qVSItWoCflXWtzWIh3gPU+gtr5eGjQvN8R8Yu+aYIBkv5TfLmzG3e38wE
- +RlQ==
+ bh=Z9jnYlb3diHDx/Tz1NJJu7ooSfZI5A88/Vi2Hs36v6U=;
+ b=RpW6KbtL31vMIKBUuiVZxCOCgaYNAr5q4Vm28J/nhs9Sf/dJBNagfXTnUy15P+L1bW
+ Uhff7qI3Uisp5auVZa0SqRAzvmdkgei/O5jfeDHlRxqh8GzvZ7WhYSHvJJWWPMLoKmnc
+ E/WOMaGdC7lYsoF+B8DfLgB9o/aZILMrRvLLJytoLEW9/G23P1B4LBRgD84p6HR6TIkx
+ +NHtm7ho58AHORUJIMo3AC0yNy4YpBP9Gk4mClKH+Jwpxf5fWP4U1ysMMgg4ySLXkbFH
+ 9RNfHcOp3XiTVafdyuBS3rr8081C9dPLN7VgSBTsPHIFOMQciy5hXUPuvtzmuQGFlb7Y
+ ymdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=86JJW2/FsLKv+cotPyQaiKRVQrrBoAkHpPLmFPzaDwg=;
- b=bJEkQaor9zPQn1pEOKgFCsFA4XNv3Yoz4oRYhcJrUiPrFtzlivvw/1ZQS4b+lN4Zzr
- mwmWFzlgMPIqABbI2iT7IJ4Ap2jFOZtndPgbpiNeIYkh8m0J2UIM8/l2Z/BqFQQqEQnc
- xt2rqRYOgWONBVBFEKqVj+29AcwbVfRMaD/xjI5lP0VMTtY+GmR30tSaViTE+rKO3XLO
- y9cknLuM9y8NiTj5qDpZrDjlqPNXqiekbEhmtMtfPpRLOKxjpv0FZzxiUMllmBYAnHhW
- M0blMfgkzetVCHSSfzdXGqRGPyeY6b/OR3pJh58ZgoSkm3GjZTrAwgqRGObuze8/lphs
- 8L4w==
-X-Gm-Message-State: AOAM533+tuYMJUvn+Ae8ZiAihL8ZWxKcLWBMX/Luyb74iET3Z4+Oa+iP
- lG+wQ1UoNBIMXcZOrNnJfoY7pshZQbzXdQ==
-X-Received: by 2002:a17:90b:1d87:b0:1d9:c22a:eba with SMTP id
- pf7-20020a17090b1d8700b001d9c22a0ebamr7100156pjb.83.1651384248742; 
- Sat, 30 Apr 2022 22:50:48 -0700 (PDT)
+ bh=Z9jnYlb3diHDx/Tz1NJJu7ooSfZI5A88/Vi2Hs36v6U=;
+ b=R4xqi9WwJgbdoxflQk09e5cQaI5LA0Br0uqjqQrJvXBXe6T5UmQcUp4xAV3ysV2dSN
+ hvKixHKdjmoYx/BTV/7TPz3rqOT9/bAVmg9yiVAHnueCM8PjbtLledZJrjcDQ5MJWUeb
+ Lr9zp5ORWRLTYd1FW6nL8M5vP6TYddmydoXl0mEfenfOFWCXxfAJZvX5S/gbNk7UGFr/
+ Oel/FQMddqhHAfOgf3cVKvPERPU36Pq2VPlJCLKgCB+d6HBB5226zIVV46uSBEVaEefV
+ gNjvKMQ66ChhOtSFCwdmenNbSJf623hPOPuE0L6rlQQA9jgnqWQ9aEAqJFm7v2l2KxCp
+ TaLw==
+X-Gm-Message-State: AOAM5314jl3K4EfkNdK6E9Uz+jZEO7LPdM8vz0zhJm/Vs3vWurX3dLU/
+ 3YaUEnrXNe2iKuN9tyhygJxJSTeLZwbbBA==
+X-Received: by 2002:aa7:8256:0:b0:4e0:78ad:eb81 with SMTP id
+ e22-20020aa78256000000b004e078adeb81mr6030846pfn.30.1651384258242; 
+ Sat, 30 Apr 2022 22:50:58 -0700 (PDT)
 Received: from stoup.. ([71.212.142.129]) by smtp.gmail.com with ESMTPSA id
- cm18-20020a17090afa1200b001cd8e9ea22asm17310342pjb.52.2022.04.30.22.50.47
+ cm18-20020a17090afa1200b001cd8e9ea22asm17310342pjb.52.2022.04.30.22.50.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 30 Apr 2022 22:50:48 -0700 (PDT)
+ Sat, 30 Apr 2022 22:50:57 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 20/45] target/arm: Handle cpreg registration for missing EL
-Date: Sat, 30 Apr 2022 22:50:02 -0700
-Message-Id: <20220501055028.646596-21-richard.henderson@linaro.org>
+Subject: [PATCH v4 29/45] target/arm: Annotate arm_max_initfn with FEAT
+ identifiers
+Date: Sat, 30 Apr 2022 22:50:11 -0700
+Message-Id: <20220501055028.646596-30-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220501055028.646596-1-richard.henderson@linaro.org>
 References: <20220501055028.646596-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,356 +118,250 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rLH3P2waWS2A
+X-TUID: OO08ifCkJj0I
 
-More gracefully handle cpregs when EL2 and/or EL3 are missing.
-If the reg is entirely inaccessible, do not register it at all.
-If the reg is for EL2, and EL3 is present but EL2 is not,
-either discard, squash to const, or keep unchanged.
+Update the legacy feature names to the current names.
+Provide feature names for id changes that were not marked.
+Sort the field updates into increasing bitfield order.
 
-Per rule RJFFP, mark the 4 aarch32 hypervisor access registers
-with ARM_CP_EL3_NO_EL2_KEEP, and mark all of the EL2 address
-translation and tlb invalidation "regs" ARM_CP_EL3_NO_EL2_UNDEF.
-
-This will simplify cpreg registration for conditional arm features.
-
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v4: Add ARM_CP_EL3_NO_EL2_{UNDEF,KEEP}.
----
- target/arm/cpregs.h |   9 +++
- target/arm/helper.c | 163 ++++++++++++++++++++++++++++++--------------
- 2 files changed, 120 insertions(+), 52 deletions(-)
+ target/arm/cpu64.c   | 100 +++++++++++++++++++++----------------------
+ target/arm/cpu_tcg.c |  48 ++++++++++-----------
+ 2 files changed, 74 insertions(+), 74 deletions(-)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 73984549d2..9ed94d7121 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -102,6 +102,15 @@ enum {
-     ARM_CP_SVE                   = 1 << 14,
-     /* Flag: Do not expose in gdb sysreg xml. */
-     ARM_CP_NO_GDB                = 1 << 15,
-+    /*
-+     * Flags: If EL3 but not EL2...
-+     *   - UNDEF: discard the cpreg,
-+     *   -  KEEP: retain the cpreg as is,
-+     *   -  else: set CONST on the cpreg.
-+     * See rule RJFFP in section D1.1.3 of DDI0487H.a.
-+     */
-+    ARM_CP_EL3_NO_EL2_UNDEF      = 1 << 16,
-+    ARM_CP_EL3_NO_EL2_KEEP       = 1 << 17,
- };
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 6da42af56e..5fce40a6bc 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -713,51 +713,51 @@ static void aarch64_max_initfn(Object *obj)
+     cpu->midr = t;
  
- /*
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 4359739081..598a9253d0 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5056,16 +5056,17 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .access = PL1_RW, .readfn = spsel_read, .writefn = spsel_write },
-     { .name = "FPEXC32_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 3, .opc2 = 0,
--      .access = PL2_RW, .type = ARM_CP_ALIAS | ARM_CP_FPU,
-+      .access = PL2_RW,
-+      .type = ARM_CP_ALIAS | ARM_CP_FPU | ARM_CP_EL3_NO_EL2_KEEP,
-       .fieldoffset = offsetof(CPUARMState, vfp.xregs[ARM_VFP_FPEXC]) },
-     { .name = "DACR32_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 4, .crn = 3, .crm = 0, .opc2 = 0,
--      .access = PL2_RW, .resetvalue = 0,
-+      .access = PL2_RW, .resetvalue = 0, .type = ARM_CP_EL3_NO_EL2_KEEP,
-       .writefn = dacr_write, .raw_writefn = raw_write,
-       .fieldoffset = offsetof(CPUARMState, cp15.dacr32_el2) },
-     { .name = "IFSR32_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 0, .opc2 = 1,
--      .access = PL2_RW, .resetvalue = 0,
-+      .access = PL2_RW, .resetvalue = 0, .type = ARM_CP_EL3_NO_EL2_KEEP,
-       .fieldoffset = offsetof(CPUARMState, cp15.ifsr32_el2) },
-     { .name = "SPSR_IRQ", .state = ARM_CP_STATE_AA64,
-       .type = ARM_CP_ALIAS,
-@@ -5542,27 +5543,27 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
-       .writefn = tlbimva_hyp_is_write },
-     { .name = "TLBI_ALLE2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 0,
--      .type = ARM_CP_NO_RAW, .access = PL2_W,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_alle2_write },
-     { .name = "TLBI_VAE2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 1,
--      .type = ARM_CP_NO_RAW, .access = PL2_W,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_vae2_write },
-     { .name = "TLBI_VALE2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 5,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_vae2_write },
-     { .name = "TLBI_ALLE2IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 0,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_alle2is_write },
-     { .name = "TLBI_VAE2IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 1,
--      .type = ARM_CP_NO_RAW, .access = PL2_W,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_vae2is_write },
-     { .name = "TLBI_VALE2IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 5,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_vae2is_write },
- #ifndef CONFIG_USER_ONLY
-     /* Unlike the other EL2-related AT operations, these must
-@@ -5572,11 +5573,13 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
-     { .name = "AT_S1E2R", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 0,
-       .access = PL2_W, .accessfn = at_s1e2_access,
--      .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC, .writefn = ats_write64 },
-+      .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC | ARM_CP_EL3_NO_EL2_UNDEF,
-+      .writefn = ats_write64 },
-     { .name = "AT_S1E2W", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 1,
-       .access = PL2_W, .accessfn = at_s1e2_access,
--      .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC, .writefn = ats_write64 },
-+      .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC | ARM_CP_EL3_NO_EL2_UNDEF,
-+      .writefn = ats_write64 },
-     /* The AArch32 ATS1H* operations are CONSTRAINED UNPREDICTABLE
-      * if EL2 is not implemented; we choose to UNDEF. Behaviour at EL3
-      * with SCR.NS == 0 outside Monitor mode is UNPREDICTABLE; we choose
-@@ -6076,7 +6079,7 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
-     { .name = "DBGVCR32_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 2, .opc1 = 4, .crn = 0, .crm = 7, .opc2 = 0,
-       .access = PL2_RW, .accessfn = access_tda,
--      .type = ARM_CP_NOP },
-+      .type = ARM_CP_NOP | ARM_CP_EL3_NO_EL2_KEEP },
-     /* Dummy MDCCINT_EL1, since we don't implement the Debug Communications
-      * Channel but Linux may try to access this register. The 32-bit
-      * alias is DBGDCCINT.
-@@ -6892,11 +6895,11 @@ static const ARMCPRegInfo tlbirange_reginfo[] = {
-       .access = PL2_W, .type = ARM_CP_NOP },
-     { .name = "TLBI_RVAE2IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 1,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_rvae2is_write },
-    { .name = "TLBI_RVALE2IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 5,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_rvae2is_write },
-     { .name = "TLBI_RIPAS2E1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 2,
-@@ -6906,19 +6909,19 @@ static const ARMCPRegInfo tlbirange_reginfo[] = {
-       .access = PL2_W, .type = ARM_CP_NOP },
-    { .name = "TLBI_RVAE2OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 1,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_rvae2is_write },
-    { .name = "TLBI_RVALE2OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 5,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_rvae2is_write },
-     { .name = "TLBI_RVAE2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 1,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_rvae2_write },
-    { .name = "TLBI_RVALE2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 5,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_rvae2_write },
-    { .name = "TLBI_RVAE3IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 2, .opc2 = 1,
-@@ -6973,11 +6976,11 @@ static const ARMCPRegInfo tlbios_reginfo[] = {
-       .writefn = tlbi_aa64_vae1is_write },
-     { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_alle2is_write },
-     { .name = "TLBI_VAE2OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 1,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_vae2is_write },
-    { .name = "TLBI_ALLE1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 4,
-@@ -6985,7 +6988,7 @@ static const ARMCPRegInfo tlbios_reginfo[] = {
-       .writefn = tlbi_aa64_alle1is_write },
-     { .name = "TLBI_VALE2OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 5,
--      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
-       .writefn = tlbi_aa64_vae2is_write },
-     { .name = "TLBI_VMALLS12E1OS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 6,
-@@ -8506,13 +8509,14 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-                                    int crm, int opc1, int opc2,
-                                    const char *name)
- {
-+    CPUARMState *env = &cpu->env;
-     uint32_t key;
-     ARMCPRegInfo *r2;
-     bool is64 = r->type & ARM_CP_64BIT;
-     bool ns = secstate & ARM_CP_SECSTATE_NS;
-     int cp = r->cp;
--    bool isbanked;
-     size_t name_len;
-+    bool make_const;
+     t = cpu->isar.id_aa64isar0;
+-    t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2); /* AES + PMULL */
+-    t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR0, SHA2, 2); /* SHA512 */
++    t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2);      /* FEAT_PMULL */
++    t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 1);     /* FEAT_SHA1 */
++    t = FIELD_DP64(t, ID_AA64ISAR0, SHA2, 2);     /* FEAT_SHA512 */
+     t = FIELD_DP64(t, ID_AA64ISAR0, CRC32, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR0, ATOMIC, 2);
+-    t = FIELD_DP64(t, ID_AA64ISAR0, RDM, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR0, SHA3, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR0, SM3, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR0, SM4, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2); /* v8.5-CondM */
+-    t = FIELD_DP64(t, ID_AA64ISAR0, TLB, 2); /* FEAT_TLBIRANGE */
+-    t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);
++    t = FIELD_DP64(t, ID_AA64ISAR0, ATOMIC, 2);   /* FEAT_LSE */
++    t = FIELD_DP64(t, ID_AA64ISAR0, RDM, 1);      /* FEAT_RDM */
++    t = FIELD_DP64(t, ID_AA64ISAR0, SHA3, 1);     /* FEAT_SHA3 */
++    t = FIELD_DP64(t, ID_AA64ISAR0, SM3, 1);      /* FEAT_SM3 */
++    t = FIELD_DP64(t, ID_AA64ISAR0, SM4, 1);      /* FEAT_SM4 */
++    t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);       /* FEAT_DotProd */
++    t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);      /* FEAT_FHM */
++    t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2);       /* FEAT_FlagM2 */
++    t = FIELD_DP64(t, ID_AA64ISAR0, TLB, 2);      /* FEAT_TLBIRANGE */
++    t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);     /* FEAT_RNG */
+     cpu->isar.id_aa64isar0 = t;
  
-     switch (state) {
-     case ARM_CP_STATE_AA32:
-@@ -8547,6 +8551,32 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-         }
-     }
+     t = cpu->isar.id_aa64isar1;
+-    t = FIELD_DP64(t, ID_AA64ISAR1, DPB, 2);
+-    t = FIELD_DP64(t, ID_AA64ISAR1, JSCVT, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR1, FCMA, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR1, SB, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR1, SPECRES, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR1, BF16, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 1);
+-    t = FIELD_DP64(t, ID_AA64ISAR1, LRCPC, 2); /* ARMv8.4-RCPC */
+-    t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);
++    t = FIELD_DP64(t, ID_AA64ISAR1, DPB, 2);      /* FEAT_DPB2 */
++    t = FIELD_DP64(t, ID_AA64ISAR1, JSCVT, 1);    /* FEAT_JSCVT */
++    t = FIELD_DP64(t, ID_AA64ISAR1, FCMA, 1);     /* FEAT_FCMA */
++    t = FIELD_DP64(t, ID_AA64ISAR1, LRCPC, 2);    /* FEAT_LRCPC2 */
++    t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 1);  /* FEAT_FRINTTS */
++    t = FIELD_DP64(t, ID_AA64ISAR1, SB, 1);       /* FEAT_SB */
++    t = FIELD_DP64(t, ID_AA64ISAR1, SPECRES, 1);  /* FEAT_SPECRES */
++    t = FIELD_DP64(t, ID_AA64ISAR1, BF16, 1);     /* FEAT_BF16 */
++    t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);     /* FEAT_I8MM */
+     cpu->isar.id_aa64isar1 = t;
  
-+    /*
-+     * Eliminate registers that are not present because the EL is missing.
-+     * Doing this here makes it easier to put all registers for a given
-+     * feature into the same ARMCPRegInfo array and define them all at once.
-+     */
-+    make_const = false;
-+    if (arm_feature(env, ARM_FEATURE_EL3)) {
-+        /*
-+         * An EL2 register without EL2 but with EL3 is (usually) RES0.
-+         * See rule RJFFP in section D1.1.3 of DDI0487H.a.
-+         */
-+        int min_el = ctz32(r->access) / 2;
-+        if (min_el == 2 && !arm_feature(env, ARM_FEATURE_EL2)) {
-+            if (r->type & ARM_CP_EL3_NO_EL2_UNDEF) {
-+                return;
-+            }
-+            make_const = !(r->type & ARM_CP_EL3_NO_EL2_KEEP);
-+        }
-+    } else {
-+        CPAccessRights max_el = (arm_feature(env, ARM_FEATURE_EL2)
-+                                 ? PL2_RW : PL1_RW);
-+        if ((r->access & max_el) == 0) {
-+            return;
-+        }
-+    }
-+
-     /* Combine cpreg and name into one allocation. */
-     name_len = strlen(name) + 1;
-     r2 = g_malloc(sizeof(*r2) + name_len);
-@@ -8567,44 +8597,73 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-         r2->opaque = opaque;
-     }
+     t = cpu->isar.id_aa64pfr0;
++    t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);        /* FEAT_FP16 */
++    t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);   /* FEAT_FP16 */
+     t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
+-    t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);
+-    t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);
+-    t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);
+-    t = FIELD_DP64(t, ID_AA64PFR0, DIT, 1);
++    t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);      /* FEAT_SEL2 */
++    t = FIELD_DP64(t, ID_AA64PFR0, DIT, 1);       /* FEAT_DIT */
+     cpu->isar.id_aa64pfr0 = t;
  
--    isbanked = r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1];
--    if (isbanked) {
-+    if (make_const) {
-+        /* This should not have been a very special register to begin. */
-+        int old_special = r2->type & ARM_CP_SPECIAL_MASK;
-+        assert(old_special == 0 || old_special == ARM_CP_NOP);
-         /*
--         * Register is banked (using both entries in array).
--         * Overwriting fieldoffset as the array is only used to define
--         * banked registers but later only fieldoffset is used.
-+         * Set the special function to CONST, retaining the other flags.
-+         * This is important for e.g. ARM_CP_SVE so that we still
-+         * take the SVE trap if CPTR_EL3.EZ == 0.
-          */
--        r2->fieldoffset = r->bank_fieldoffsets[ns];
--    }
-+        r2->type = (r2->type & ~ARM_CP_SPECIAL_MASK) | ARM_CP_CONST;
-+        /*
-+         * Usually, these registers become RES0, but there are a few
-+         * special cases like VPIDR_EL2 which have a constant non-zero
-+         * value with writes ignored.  So leave resetvalue as is.
-+         *
-+         * ARM_CP_CONST has precedence, so removing the callbacks and
-+         * offsets are not strictly necessary, but it is potentially
-+         * less confusing to debug later.
-+         */
-+        r2->readfn = NULL;
-+        r2->writefn = NULL;
-+        r2->raw_readfn = NULL;
-+        r2->raw_writefn = NULL;
-+        r2->resetfn = NULL;
-+        r2->fieldoffset = 0;
-+        r2->bank_fieldoffsets[0] = 0;
-+        r2->bank_fieldoffsets[1] = 0;
-+    } else {
-+        bool isbanked = r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1];
- 
--    if (state == ARM_CP_STATE_AA32) {
-         if (isbanked) {
-             /*
--             * If the register is banked then we don't need to migrate or
--             * reset the 32-bit instance in certain cases:
--             *
--             * 1) If the register has both 32-bit and 64-bit instances then we
--             *    can count on the 64-bit instance taking care of the
--             *    non-secure bank.
--             * 2) If ARMv8 is enabled then we can count on a 64-bit version
--             *    taking care of the secure bank.  This requires that separate
--             *    32 and 64-bit definitions are provided.
-+             * Register is banked (using both entries in array).
-+             * Overwriting fieldoffset as the array is only used to define
-+             * banked registers but later only fieldoffset is used.
-              */
--            if ((r->state == ARM_CP_STATE_BOTH && ns) ||
--                (arm_feature(&cpu->env, ARM_FEATURE_V8) && !ns)) {
-+            r2->fieldoffset = r->bank_fieldoffsets[ns];
-+        }
-+        if (state == ARM_CP_STATE_AA32) {
-+            if (isbanked) {
-+                /*
-+                 * If the register is banked then we don't need to migrate or
-+                 * reset the 32-bit instance in certain cases:
-+                 *
-+                 * 1) If the register has both 32-bit and 64-bit instances
-+                 *    then we can count on the 64-bit instance taking care
-+                 *    of the non-secure bank.
-+                 * 2) If ARMv8 is enabled then we can count on a 64-bit
-+                 *    version taking care of the secure bank.  This requires
-+                 *    that separate 32 and 64-bit definitions are provided.
-+                 */
-+                if ((r->state == ARM_CP_STATE_BOTH && ns) ||
-+                    (arm_feature(env, ARM_FEATURE_V8) && !ns)) {
-+                    r2->type |= ARM_CP_ALIAS;
-+                }
-+            } else if ((secstate != r->secure) && !ns) {
-+                /*
-+                 * The register is not banked so we only want to allow
-+                 * migration of the non-secure instance.
-+                 */
-                 r2->type |= ARM_CP_ALIAS;
-             }
--        } else if ((secstate != r->secure) && !ns) {
--            /*
--             * The register is not banked so we only want to allow migration
--             * of the non-secure instance.
--             */
--            r2->type |= ARM_CP_ALIAS;
--        }
- 
--        if (HOST_BIG_ENDIAN &&
--            r->state == ARM_CP_STATE_BOTH && r2->fieldoffset) {
--            r2->fieldoffset += sizeof(uint32_t);
-+            if (HOST_BIG_ENDIAN &&
-+                r->state == ARM_CP_STATE_BOTH && r2->fieldoffset) {
-+                r2->fieldoffset += sizeof(uint32_t);
-+            }
-         }
-     }
- 
-@@ -8615,7 +8674,7 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-      * multiple times. Special registers (ie NOP/WFI) are
-      * never migratable and not even raw-accessible.
+     t = cpu->isar.id_aa64pfr1;
+-    t = FIELD_DP64(t, ID_AA64PFR1, BT, 1);
+-    t = FIELD_DP64(t, ID_AA64PFR1, SSBS, 2);
++    t = FIELD_DP64(t, ID_AA64PFR1, BT, 1);        /* FEAT_BTI */
++    t = FIELD_DP64(t, ID_AA64PFR1, SSBS, 2);      /* FEAT_SSBS2 */
+     /*
+      * Begin with full support for MTE. This will be downgraded to MTE=0
+      * during realize if the board provides no tag memory, much like
+      * we do for EL2 with the virtualization=on property.
       */
--    if (r->type & ARM_CP_SPECIAL_MASK) {
-+    if (r2->type & ARM_CP_SPECIAL_MASK) {
-         r2->type |= ARM_CP_NO_RAW;
-     }
-     if (((r->crm == CP_ANY) && crm != 0) ||
+-    t = FIELD_DP64(t, ID_AA64PFR1, MTE, 3);
++    t = FIELD_DP64(t, ID_AA64PFR1, MTE, 3);       /* FEAT_MTE3 */
+     cpu->isar.id_aa64pfr1 = t;
+ 
+     t = cpu->isar.id_aa64mmfr0;
+@@ -769,37 +769,37 @@ static void aarch64_max_initfn(Object *obj)
+     cpu->isar.id_aa64mmfr0 = t;
+ 
+     t = cpu->isar.id_aa64mmfr1;
+-    t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1); /* HPD */
+-    t = FIELD_DP64(t, ID_AA64MMFR1, LO, 1);
+-    t = FIELD_DP64(t, ID_AA64MMFR1, VH, 1);
+-    t = FIELD_DP64(t, ID_AA64MMFR1, PAN, 2); /* ATS1E1 */
+-    t = FIELD_DP64(t, ID_AA64MMFR1, VMIDBITS, 2); /* VMID16 */
+-    t = FIELD_DP64(t, ID_AA64MMFR1, XNX, 1); /* TTS2UXN */
++    t = FIELD_DP64(t, ID_AA64MMFR1, VMIDBITS, 2); /* FEAT_VMID16 */
++    t = FIELD_DP64(t, ID_AA64MMFR1, VH, 1);       /* FEAT_VHE */
++    t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1);     /* FEAT_HPDS */
++    t = FIELD_DP64(t, ID_AA64MMFR1, LO, 1);       /* FEAT_LOR */
++    t = FIELD_DP64(t, ID_AA64MMFR1, PAN, 2);      /* FEAT_PAN2 */
++    t = FIELD_DP64(t, ID_AA64MMFR1, XNX, 1);      /* FEAT_XNX */
+     cpu->isar.id_aa64mmfr1 = t;
+ 
+     t = cpu->isar.id_aa64mmfr2;
+-    t = FIELD_DP64(t, ID_AA64MMFR2, UAO, 1);
+-    t = FIELD_DP64(t, ID_AA64MMFR2, CNP, 1); /* TTCNP */
+-    t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1); /* TTST */
+-    t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1); /* FEAT_LVA */
+-    t = FIELD_DP64(t, ID_AA64MMFR2, TTL, 1); /* FEAT_TTL */
+-    t = FIELD_DP64(t, ID_AA64MMFR2, BBM, 2); /* FEAT_BBM at level 2 */
++    t = FIELD_DP64(t, ID_AA64MMFR2, CNP, 1);      /* FEAT_TTCNP */
++    t = FIELD_DP64(t, ID_AA64MMFR2, UAO, 1);      /* FEAT_UAO */
++    t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1);  /* FEAT_LVA */
++    t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1);       /* FEAT_TTST */
++    t = FIELD_DP64(t, ID_AA64MMFR2, TTL, 1);      /* FEAT_TTL */
++    t = FIELD_DP64(t, ID_AA64MMFR2, BBM, 2);      /* FEAT_BBM at level 2 */
+     cpu->isar.id_aa64mmfr2 = t;
+ 
+     t = cpu->isar.id_aa64zfr0;
+     t = FIELD_DP64(t, ID_AA64ZFR0, SVEVER, 1);
+-    t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);  /* PMULL */
+-    t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);
+-    t = FIELD_DP64(t, ID_AA64ZFR0, BFLOAT16, 1);
+-    t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);
+-    t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);
+-    t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);
+-    t = FIELD_DP64(t, ID_AA64ZFR0, F32MM, 1);
+-    t = FIELD_DP64(t, ID_AA64ZFR0, F64MM, 1);
++    t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);       /* FEAT_SVE_PMULL128 */
++    t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);   /* FEAT_SVE_BitPerm */
++    t = FIELD_DP64(t, ID_AA64ZFR0, BFLOAT16, 1);  /* FEAT_BF16 */
++    t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);      /* FEAT_SVE_SHA3 */
++    t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);       /* FEAT_SVE_SM4 */
++    t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);      /* FEAT_I8MM */
++    t = FIELD_DP64(t, ID_AA64ZFR0, F32MM, 1);     /* FEAT_F32MM */
++    t = FIELD_DP64(t, ID_AA64ZFR0, F64MM, 1);     /* FEAT_F64MM */
+     cpu->isar.id_aa64zfr0 = t;
+ 
+     t = cpu->isar.id_aa64dfr0;
+-    t = FIELD_DP64(t, ID_AA64DFR0, PMUVER, 5); /* v8.4-PMU */
++    t = FIELD_DP64(t, ID_AA64DFR0, PMUVER, 5);    /* FEAT_PMUv3p4 */
+     cpu->isar.id_aa64dfr0 = t;
+ 
+     /* Replicate the same data to the 32-bit id registers.  */
+diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+index b0dbf2c991..bc8f9d0edf 100644
+--- a/target/arm/cpu_tcg.c
++++ b/target/arm/cpu_tcg.c
+@@ -28,55 +28,55 @@ void aa32_max_features(ARMCPU *cpu)
+ 
+     /* Add additional features supported by QEMU */
+     t = cpu->isar.id_isar5;
+-    t = FIELD_DP32(t, ID_ISAR5, AES, 2);
+-    t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);
+-    t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);
++    t = FIELD_DP32(t, ID_ISAR5, AES, 2);          /* FEAT_PMULL */
++    t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);         /* FEAT_SHA1 */
++    t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);         /* FEAT_SHA256 */
+     t = FIELD_DP32(t, ID_ISAR5, CRC32, 1);
+-    t = FIELD_DP32(t, ID_ISAR5, RDM, 1);
+-    t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);
++    t = FIELD_DP32(t, ID_ISAR5, RDM, 1);          /* FEAT_RDM */
++    t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);         /* FEAT_FCMA */
+     cpu->isar.id_isar5 = t;
+ 
+     t = cpu->isar.id_isar6;
+-    t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);
+-    t = FIELD_DP32(t, ID_ISAR6, DP, 1);
+-    t = FIELD_DP32(t, ID_ISAR6, FHM, 1);
+-    t = FIELD_DP32(t, ID_ISAR6, SB, 1);
+-    t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);
+-    t = FIELD_DP32(t, ID_ISAR6, BF16, 1);
+-    t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);
++    t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);        /* FEAT_JSCVT */
++    t = FIELD_DP32(t, ID_ISAR6, DP, 1);           /* Feat_DotProd */
++    t = FIELD_DP32(t, ID_ISAR6, FHM, 1);          /* FEAT_FHM */
++    t = FIELD_DP32(t, ID_ISAR6, SB, 1);           /* FEAT_SB */
++    t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);      /* FEAT_SPECRES */
++    t = FIELD_DP32(t, ID_ISAR6, BF16, 1);         /* FEAT_AA32BF16 */
++    t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);         /* FEAT_AA32I8MM */
+     cpu->isar.id_isar6 = t;
+ 
+     t = cpu->isar.mvfr1;
+-    t = FIELD_DP32(t, MVFR1, FPHP, 3);     /* v8.2-FP16 */
+-    t = FIELD_DP32(t, MVFR1, SIMDHP, 2);   /* v8.2-FP16 */
++    t = FIELD_DP32(t, MVFR1, FPHP, 3);            /* FEAT_FP16 */
++    t = FIELD_DP32(t, MVFR1, SIMDHP, 2);          /* FEAT_FP16 */
+     cpu->isar.mvfr1 = t;
+ 
+     t = cpu->isar.mvfr2;
+-    t = FIELD_DP32(t, MVFR2, SIMDMISC, 3); /* SIMD MaxNum */
+-    t = FIELD_DP32(t, MVFR2, FPMISC, 4);   /* FP MaxNum */
++    t = FIELD_DP32(t, MVFR2, SIMDMISC, 3);        /* SIMD MaxNum */
++    t = FIELD_DP32(t, MVFR2, FPMISC, 4);          /* FP MaxNum */
+     cpu->isar.mvfr2 = t;
+ 
+     t = cpu->isar.id_mmfr3;
+-    t = FIELD_DP32(t, ID_MMFR3, PAN, 2); /* ATS1E1 */
++    t = FIELD_DP32(t, ID_MMFR3, PAN, 2);          /* FEAT_PAN2 */
+     cpu->isar.id_mmfr3 = t;
+ 
+     t = cpu->isar.id_mmfr4;
+-    t = FIELD_DP32(t, ID_MMFR4, HPDS, 1); /* AA32HPD */
+-    t = FIELD_DP32(t, ID_MMFR4, AC2, 1); /* ACTLR2, HACTLR2 */
+-    t = FIELD_DP32(t, ID_MMFR4, CNP, 1); /* TTCNP */
+-    t = FIELD_DP32(t, ID_MMFR4, XNX, 1); /* TTS2UXN */
++    t = FIELD_DP32(t, ID_MMFR4, HPDS, 1);         /* FEAT_AA32HPD */
++    t = FIELD_DP32(t, ID_MMFR4, AC2, 1);          /* ACTLR2, HACTLR2 */
++    t = FIELD_DP32(t, ID_MMFR4, CNP, 1);          /* FEAT_TTCNP */
++    t = FIELD_DP32(t, ID_MMFR4, XNX, 1);          /* FEAT_XNX*/
+     cpu->isar.id_mmfr4 = t;
+ 
+     t = cpu->isar.id_pfr0;
+-    t = FIELD_DP32(t, ID_PFR0, DIT, 1);
++    t = FIELD_DP32(t, ID_PFR0, DIT, 1);           /* FEAT_DIT */
+     cpu->isar.id_pfr0 = t;
+ 
+     t = cpu->isar.id_pfr2;
+-    t = FIELD_DP32(t, ID_PFR2, SSBS, 1);
++    t = FIELD_DP32(t, ID_PFR2, SSBS, 1);          /* FEAT_SSBS */
+     cpu->isar.id_pfr2 = t;
+ 
+     t = cpu->isar.id_dfr0;
+-    t = FIELD_DP32(t, ID_DFR0, PERFMON, 5); /* v8.4-PMU */
++    t = FIELD_DP32(t, ID_DFR0, PERFMON, 5);       /* FEAT_PMUv3p4 */
+     cpu->isar.id_dfr0 = t;
+ }
+ 
 -- 
 2.34.1
 

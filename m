@@ -1,104 +1,102 @@
-Received: by 2002:a05:6512:2248:0:0:0:0 with SMTP id i8csp474163lfu;
-        Sat, 30 Apr 2022 23:19:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzC6p+b9GMnEoh61CE3yzyCZGUIBdxrk+NHc6hya3fnDjeg/8z3s958QiWkQGgOg8mzmj3Y
-X-Received: by 2002:a05:622a:611:b0:2f3:8454:edcd with SMTP id z17-20020a05622a061100b002f38454edcdmr5737528qta.297.1651385952919;
-        Sat, 30 Apr 2022 23:19:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651385952; cv=none;
+Received: by 2002:a05:6512:2248:0:0:0:0 with SMTP id i8csp474406lfu;
+        Sat, 30 Apr 2022 23:20:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz9P8r7v70lWpeQBBv+mcOkonDCng0J8ZnwVTv935V/ocA8ALYTc40G3khEN/ax5lPh9G7Z
+X-Received: by 2002:ac8:5c14:0:b0:2f3:9bd2:2144 with SMTP id i20-20020ac85c14000000b002f39bd22144mr4939669qti.154.1651386003761;
+        Sat, 30 Apr 2022 23:20:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651386003; cv=none;
         d=google.com; s=arc-20160816;
-        b=PHA1CUUhM/TIkx2NVRlxPUJDT5fkXowWM26mh8sVcNv+MhVoyAVlJ/TogR+9e64ZIB
-         SGRHNJtN73TwJNLvSUg4WqTBhOpkGitHSVyDk8QhQfbDZSYXjo8DN6DUr/WkgDn/14JI
-         vjWyjhM6fjkwY1aiB3eT+eaf1+cdJkyD9OS1bJY2PRAdpHU+bq9aA9TzTZm2ypLvxAUJ
-         6YOUUO9uwwejiFj60wlvi3YNrq9koZoadxtVfKq7Ik0qsl7hK++pJpb5dYaSJo8ac8dI
-         /5jcOxGG3wNI3uTzNhbsOWe2g8OxztVK9mGJcalOaOGi2ULJZF6lO9ruC0x6MKS4mMOD
-         psmw==
+        b=MPZLTW+d6Kpj7pNqSSptUDvyr+mUdjD312LuadscSwWCK/x5pRYHiosyz3H86j7swg
+         68b4ogpfGQWn88oCujMBO9vU5Ot+K08kuEBjT77Jv6pZIgqaZGAUcokCHWnp4WM0heuP
+         gDryoTbNC953nS9rTVURG7h5EYg/YTxAST7LzVyD083Uvua8FQ19lRoxXOQTOi0fZWxd
+         2NeNfObfkj4YxZnyLqQHK25PfB7Ck4sNhwEq9RYnAPTJJqMC9GCV/Z9kS13rf0tSVQEw
+         0u9Wk5RednONrPj7DTdiWk2BT+WrPqDJ2LGeGgWOnuZChXg+8sv6q+Sagtvm8hj1msVi
+         ILYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=quTC6tTsjrVSG7RTQMFQxNix8MmA7vsc1c94ro1M6BU=;
-        b=Zxz7dj09IcY3L8VFJ5mLg8Qp4OZYqhyL5EDOvNIcmQ9YqJLVbyuF0d5cymB2UqegMi
-         pNl30SIthb9zubtHrHEC8z9CC97w3XGoxCF5GiWNbwSm+pm4u4hhfArm77Z0B/Jzsrw3
-         NFnfByRnekDwjYQlP0fgJ/oane/01xdyrh28CzNN1Z2oFPt6EhzSz4r2PBgsV2bhcxj7
-         Fsa1r7iI5MBZAxmr7RMzQvWkRwuLeGQ9FoOj9wLjx+WcR7ed3X+lGHLM3rmUbtrXEDTQ
-         WB3LtCDzlNdNaG8ss/Ifp0SH4vy9LKHkStMY1jiOBrHmkujsCRo/PBghkXBDL3TI66Vv
-         40wQ==
+        bh=86JJW2/FsLKv+cotPyQaiKRVQrrBoAkHpPLmFPzaDwg=;
+        b=UNrOA4p8nMNoFVhewzLwweP+IJgAPpzk8eb2q7WTuodYAoO+D0qWNjJyx+sNp06t/r
+         Gkdd/pD9NWSeIH4XoAMdJxEIGtaxvHkzjz510kEHbc46g9y2dF/iCGpCVGNntGcrWfKB
+         /1ajxt8Lg69MgUezVcj2KLDkKMM9YkDJUf2IQS3ZPKWZ9rnAyzITjoASDD41+8lGobWp
+         MLwOhi0NQYmpnxypA20gGryBq6Z69MFl9ksSFXd6ubMXXKxVcGjc2XUu23/JaG6Fxcya
+         VzNr45T9VMU6zuHSf8VG1TR0EE9fiKfCQn0qJootnlXwJBEpdVH1HPgfYH1Snss/YNsO
+         uJVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GAaMlrPs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ekmmEKwR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8-20020a0562140d4800b0045812880679si2971188qvr.185.2022.04.30.23.19.12
+        by mx.google.com with ESMTPS id br16-20020a05620a461000b0069ebb9a9930si5238570qkb.721.2022.04.30.23.20.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 30 Apr 2022 23:19:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 30 Apr 2022 23:20:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GAaMlrPs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ekmmEKwR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52350 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52824 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nl2vI-0000I8-Bp
-	for alex.bennee@linaro.org; Sun, 01 May 2022 02:19:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43444)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nl2w7-0000de-8A
+	for alex.bennee@linaro.org; Sun, 01 May 2022 02:20:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43636)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nl2Tp-0006t8-Bw
- for qemu-arm@nongnu.org; Sun, 01 May 2022 01:50:57 -0400
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d]:33632)
+ id 1nl2Tt-0006tX-Ag
+ for qemu-devel@nongnu.org; Sun, 01 May 2022 01:50:58 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:40546)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nl2Tl-0001HP-JU
- for qemu-arm@nongnu.org; Sun, 01 May 2022 01:50:48 -0400
-Received: by mail-pj1-x102d.google.com with SMTP id
- cu23-20020a17090afa9700b001d98d8e53b7so10595823pjb.0
- for <qemu-arm@nongnu.org>; Sat, 30 Apr 2022 22:50:43 -0700 (PDT)
+ id 1nl2Tq-0001JN-8H
+ for qemu-devel@nongnu.org; Sun, 01 May 2022 01:50:53 -0400
+Received: by mail-pl1-x635.google.com with SMTP id i1so4136920plg.7
+ for <qemu-devel@nongnu.org>; Sat, 30 Apr 2022 22:50:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=quTC6tTsjrVSG7RTQMFQxNix8MmA7vsc1c94ro1M6BU=;
- b=GAaMlrPsCUAKgd4ifuF74NLDzajJdiMSssMgoXVuxe/PhIqvNkznvXLkzcgSb4zIfS
- TeJbN30lQ2SEyg1HbpDIcTskbRUl0WXEA053PCs9ROdHLNm6btDswIXIThYYYSgdNAta
- qx3IgFdVR2lOd5wu6keMsZCiAhdIBpVfvl6e681283mImO7Dvo4PaANbaxpC/WnE57RI
- HXx9+66u6ZdDq8iJD2Ghfnjtmv1g4iykmK9vlIITE53NwY/ni5cGT6zLlYws9ve58UjC
- nxdgdeC4eX+qIDfZ8NO5bcHtK4UTwKaRVEtmHYwWRr8AzVvdECTVXIkx/F8/QS/cZehb
- s78w==
+ bh=86JJW2/FsLKv+cotPyQaiKRVQrrBoAkHpPLmFPzaDwg=;
+ b=ekmmEKwRd9JGSms00gpnpBQruTkcfb1tSYSURO0+FzYuTmFloOuyeh+TG10Dj8aolv
+ IeGym91dmCLr45pyQNXljS8fH9S2oflhAr0I4pFOhTX9ToR3UFVMdnwYmteIY5tIqXaU
+ 0w/FcMyfz19KxS0kwcV9fMBk/ofrU2gk6ErNGtduLSYVqo9GMBGVoLb+IirX3IGW9UIm
+ ByM7G+UUcXqU+vFrFqC+Tvs8w2a0pA2dXONMZggDHvqFGOfDOqIijbcAmhTYvJHVdmnf
+ 4qnyCUcd4W4qVSItWoCflXWtzWIh3gPU+gtr5eGjQvN8R8Yu+aYIBkv5TfLmzG3e38wE
+ +RlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=quTC6tTsjrVSG7RTQMFQxNix8MmA7vsc1c94ro1M6BU=;
- b=hCNIaOaqQcl92IHi/Z4FFysyQHOMo/0CiIZuJlT/DxAksADdqUOla7cIMwYgevqRf9
- DYAXcU6Ht10C4f1k0xDCIq/bAjgUKEEC66RQp1SiaMSJ9ER5dUqge4jHq3rRBK+seBuR
- hkFENeJXV3cqyFLFi80khpLICLCoK1Q0jtAcLenVZvNAjxtvJptbML1KYHK1kjKgTRBy
- IT7tMYZZHvNqbqn3G6lrbGCdwOkvCo6MOxP/6058QbY6z0ITqt6GtKh3wzDqJIRsj+HX
- l11ekJBaRE3Nvsu21cAiOBS0FvVXD+dHJZqONRvYKcuycoLD1vayf7aurKNziTn7n0q2
- HP2A==
-X-Gm-Message-State: AOAM530yKlCuJHTN1q2ysVFxe5l2AEs9Wn8T0c72xitWTshLVFiS1m+Q
- qrn3Qgrgy1MdpHjMYUwIlfR5xA==
-X-Received: by 2002:a17:90a:fac:b0:1ca:5eb8:f3b2 with SMTP id
- 41-20020a17090a0fac00b001ca5eb8f3b2mr7145887pjz.37.1651384242469; 
- Sat, 30 Apr 2022 22:50:42 -0700 (PDT)
+ bh=86JJW2/FsLKv+cotPyQaiKRVQrrBoAkHpPLmFPzaDwg=;
+ b=bJEkQaor9zPQn1pEOKgFCsFA4XNv3Yoz4oRYhcJrUiPrFtzlivvw/1ZQS4b+lN4Zzr
+ mwmWFzlgMPIqABbI2iT7IJ4Ap2jFOZtndPgbpiNeIYkh8m0J2UIM8/l2Z/BqFQQqEQnc
+ xt2rqRYOgWONBVBFEKqVj+29AcwbVfRMaD/xjI5lP0VMTtY+GmR30tSaViTE+rKO3XLO
+ y9cknLuM9y8NiTj5qDpZrDjlqPNXqiekbEhmtMtfPpRLOKxjpv0FZzxiUMllmBYAnHhW
+ M0blMfgkzetVCHSSfzdXGqRGPyeY6b/OR3pJh58ZgoSkm3GjZTrAwgqRGObuze8/lphs
+ 8L4w==
+X-Gm-Message-State: AOAM533+tuYMJUvn+Ae8ZiAihL8ZWxKcLWBMX/Luyb74iET3Z4+Oa+iP
+ lG+wQ1UoNBIMXcZOrNnJfoY7pshZQbzXdQ==
+X-Received: by 2002:a17:90b:1d87:b0:1d9:c22a:eba with SMTP id
+ pf7-20020a17090b1d8700b001d9c22a0ebamr7100156pjb.83.1651384248742; 
+ Sat, 30 Apr 2022 22:50:48 -0700 (PDT)
 Received: from stoup.. ([71.212.142.129]) by smtp.gmail.com with ESMTPSA id
- cm18-20020a17090afa1200b001cd8e9ea22asm17310342pjb.52.2022.04.30.22.50.41
+ cm18-20020a17090afa1200b001cd8e9ea22asm17310342pjb.52.2022.04.30.22.50.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 30 Apr 2022 22:50:42 -0700 (PDT)
+ Sat, 30 Apr 2022 22:50:48 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 13/45] target/arm: Hoist computation of key in
- add_cpreg_to_hashtable
-Date: Sat, 30 Apr 2022 22:49:55 -0700
-Message-Id: <20220501055028.646596-14-richard.henderson@linaro.org>
+Subject: [PATCH v4 20/45] target/arm: Handle cpreg registration for missing EL
+Date: Sat, 30 Apr 2022 22:50:02 -0700
+Message-Id: <20220501055028.646596-21-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220501055028.646596-1-richard.henderson@linaro.org>
 References: <20220501055028.646596-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,116 +105,367 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OarNCuhy1uBJ
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rLH3P2waWS2A
 
-Move the computation of key to the top of the function.
-Hoist the resolution of cp as well, as an input to the
-computation of key.
+More gracefully handle cpregs when EL2 and/or EL3 are missing.
+If the reg is entirely inaccessible, do not register it at all.
+If the reg is for EL2, and EL3 is present but EL2 is not,
+either discard, squash to const, or keep unchanged.
 
-This will be required by a subsequent patch.
+Per rule RJFFP, mark the 4 aarch32 hypervisor access registers
+with ARM_CP_EL3_NO_EL2_KEEP, and mark all of the EL2 address
+translation and tlb invalidation "regs" ARM_CP_EL3_NO_EL2_UNDEF.
+
+This will simplify cpreg registration for conditional arm features.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 49 +++++++++++++++++++++++++--------------------
- 1 file changed, 27 insertions(+), 22 deletions(-)
+v4: Add ARM_CP_EL3_NO_EL2_{UNDEF,KEEP}.
+---
+ target/arm/cpregs.h |   9 +++
+ target/arm/helper.c | 163 ++++++++++++++++++++++++++++++--------------
+ 2 files changed, 120 insertions(+), 52 deletions(-)
 
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 73984549d2..9ed94d7121 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -102,6 +102,15 @@ enum {
+     ARM_CP_SVE                   = 1 << 14,
+     /* Flag: Do not expose in gdb sysreg xml. */
+     ARM_CP_NO_GDB                = 1 << 15,
++    /*
++     * Flags: If EL3 but not EL2...
++     *   - UNDEF: discard the cpreg,
++     *   -  KEEP: retain the cpreg as is,
++     *   -  else: set CONST on the cpreg.
++     * See rule RJFFP in section D1.1.3 of DDI0487H.a.
++     */
++    ARM_CP_EL3_NO_EL2_UNDEF      = 1 << 16,
++    ARM_CP_EL3_NO_EL2_KEEP       = 1 << 17,
+ };
+ 
+ /*
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 44c05deb5b..118422d672 100644
+index 4359739081..598a9253d0 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -8509,8 +8509,34 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+@@ -5056,16 +5056,17 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .access = PL1_RW, .readfn = spsel_read, .writefn = spsel_write },
+     { .name = "FPEXC32_EL2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 3, .opc2 = 0,
+-      .access = PL2_RW, .type = ARM_CP_ALIAS | ARM_CP_FPU,
++      .access = PL2_RW,
++      .type = ARM_CP_ALIAS | ARM_CP_FPU | ARM_CP_EL3_NO_EL2_KEEP,
+       .fieldoffset = offsetof(CPUARMState, vfp.xregs[ARM_VFP_FPEXC]) },
+     { .name = "DACR32_EL2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 4, .crn = 3, .crm = 0, .opc2 = 0,
+-      .access = PL2_RW, .resetvalue = 0,
++      .access = PL2_RW, .resetvalue = 0, .type = ARM_CP_EL3_NO_EL2_KEEP,
+       .writefn = dacr_write, .raw_writefn = raw_write,
+       .fieldoffset = offsetof(CPUARMState, cp15.dacr32_el2) },
+     { .name = "IFSR32_EL2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 0, .opc2 = 1,
+-      .access = PL2_RW, .resetvalue = 0,
++      .access = PL2_RW, .resetvalue = 0, .type = ARM_CP_EL3_NO_EL2_KEEP,
+       .fieldoffset = offsetof(CPUARMState, cp15.ifsr32_el2) },
+     { .name = "SPSR_IRQ", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+@@ -5542,27 +5543,27 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+       .writefn = tlbimva_hyp_is_write },
+     { .name = "TLBI_ALLE2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 0,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_alle2_write },
+     { .name = "TLBI_VAE2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 1,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_vae2_write },
+     { .name = "TLBI_VALE2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_vae2_write },
+     { .name = "TLBI_ALLE2IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 0,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_alle2is_write },
+     { .name = "TLBI_VAE2IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 1,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_vae2is_write },
+     { .name = "TLBI_VALE2IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_vae2is_write },
+ #ifndef CONFIG_USER_ONLY
+     /* Unlike the other EL2-related AT operations, these must
+@@ -5572,11 +5573,13 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+     { .name = "AT_S1E2R", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 0,
+       .access = PL2_W, .accessfn = at_s1e2_access,
+-      .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC, .writefn = ats_write64 },
++      .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC | ARM_CP_EL3_NO_EL2_UNDEF,
++      .writefn = ats_write64 },
+     { .name = "AT_S1E2W", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 1,
+       .access = PL2_W, .accessfn = at_s1e2_access,
+-      .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC, .writefn = ats_write64 },
++      .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC | ARM_CP_EL3_NO_EL2_UNDEF,
++      .writefn = ats_write64 },
+     /* The AArch32 ATS1H* operations are CONSTRAINED UNPREDICTABLE
+      * if EL2 is not implemented; we choose to UNDEF. Behaviour at EL3
+      * with SCR.NS == 0 outside Monitor mode is UNPREDICTABLE; we choose
+@@ -6076,7 +6079,7 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
+     { .name = "DBGVCR32_EL2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 2, .opc1 = 4, .crn = 0, .crm = 7, .opc2 = 0,
+       .access = PL2_RW, .accessfn = access_tda,
+-      .type = ARM_CP_NOP },
++      .type = ARM_CP_NOP | ARM_CP_EL3_NO_EL2_KEEP },
+     /* Dummy MDCCINT_EL1, since we don't implement the Debug Communications
+      * Channel but Linux may try to access this register. The 32-bit
+      * alias is DBGDCCINT.
+@@ -6892,11 +6895,11 @@ static const ARMCPRegInfo tlbirange_reginfo[] = {
+       .access = PL2_W, .type = ARM_CP_NOP },
+     { .name = "TLBI_RVAE2IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 1,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_rvae2is_write },
+    { .name = "TLBI_RVALE2IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_rvae2is_write },
+     { .name = "TLBI_RIPAS2E1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 2,
+@@ -6906,19 +6909,19 @@ static const ARMCPRegInfo tlbirange_reginfo[] = {
+       .access = PL2_W, .type = ARM_CP_NOP },
+    { .name = "TLBI_RVAE2OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 1,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_rvae2is_write },
+    { .name = "TLBI_RVALE2OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_rvae2is_write },
+     { .name = "TLBI_RVAE2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 1,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_rvae2_write },
+    { .name = "TLBI_RVALE2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_rvae2_write },
+    { .name = "TLBI_RVAE3IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 2, .opc2 = 1,
+@@ -6973,11 +6976,11 @@ static const ARMCPRegInfo tlbios_reginfo[] = {
+       .writefn = tlbi_aa64_vae1is_write },
+     { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_alle2is_write },
+     { .name = "TLBI_VAE2OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 1,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_vae2is_write },
+    { .name = "TLBI_ALLE1OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 4,
+@@ -6985,7 +6988,7 @@ static const ARMCPRegInfo tlbios_reginfo[] = {
+       .writefn = tlbi_aa64_alle1is_write },
+     { .name = "TLBI_VALE2OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+       .writefn = tlbi_aa64_vae2is_write },
+     { .name = "TLBI_VMALLS12E1OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 6,
+@@ -8506,13 +8509,14 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+                                    int crm, int opc1, int opc2,
+                                    const char *name)
+ {
++    CPUARMState *env = &cpu->env;
+     uint32_t key;
      ARMCPRegInfo *r2;
-     int is64 = (r->type & ARM_CP_64BIT) ? 1 : 0;
-     int ns = (secstate & ARM_CP_SECSTATE_NS) ? 1 : 0;
-+    int cp = r->cp;
+     bool is64 = r->type & ARM_CP_64BIT;
+     bool ns = secstate & ARM_CP_SECSTATE_NS;
+     int cp = r->cp;
+-    bool isbanked;
      size_t name_len;
++    bool make_const;
  
-+    switch (state) {
-+    case ARM_CP_STATE_AA32:
-+        /* We assume it is a cp15 register if the .cp field is left unset. */
-+        if (cp == 0 && r->state == ARM_CP_STATE_BOTH) {
-+            cp = 15;
-+        }
-+        key = ENCODE_CP_REG(cp, is64, ns, r->crn, crm, opc1, opc2);
-+        break;
-+    case ARM_CP_STATE_AA64:
+     switch (state) {
+     case ARM_CP_STATE_AA32:
+@@ -8547,6 +8551,32 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+         }
+     }
+ 
++    /*
++     * Eliminate registers that are not present because the EL is missing.
++     * Doing this here makes it easier to put all registers for a given
++     * feature into the same ARMCPRegInfo array and define them all at once.
++     */
++    make_const = false;
++    if (arm_feature(env, ARM_FEATURE_EL3)) {
 +        /*
-+         * To allow abbreviation of ARMCPRegInfo definitions, we treat
-+         * cp == 0 as equivalent to the value for "standard guest-visible
-+         * sysreg".  STATE_BOTH definitions are also always "standard sysreg"
-+         * in their AArch64 view (the .cp value may be non-zero for the
-+         * benefit of the AArch32 view).
++         * An EL2 register without EL2 but with EL3 is (usually) RES0.
++         * See rule RJFFP in section D1.1.3 of DDI0487H.a.
 +         */
-+        if (cp == 0 || r->state == ARM_CP_STATE_BOTH) {
-+            cp = CP_REG_ARM64_SYSREG_CP;
++        int min_el = ctz32(r->access) / 2;
++        if (min_el == 2 && !arm_feature(env, ARM_FEATURE_EL2)) {
++            if (r->type & ARM_CP_EL3_NO_EL2_UNDEF) {
++                return;
++            }
++            make_const = !(r->type & ARM_CP_EL3_NO_EL2_KEEP);
 +        }
-+        key = ENCODE_AA64_CP_REG(cp, r->crn, crm, r->opc0, opc1, opc2);
-+        break;
-+    default:
-+        g_assert_not_reached();
++    } else {
++        CPAccessRights max_el = (arm_feature(env, ARM_FEATURE_EL2)
++                                 ? PL2_RW : PL1_RW);
++        if ((r->access & max_el) == 0) {
++            return;
++        }
 +    }
 +
      /* Combine cpreg and name into one allocation. */
      name_len = strlen(name) + 1;
      r2 = g_malloc(sizeof(*r2) + name_len);
-@@ -8554,12 +8580,6 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-         }
- 
-         if (r->state == ARM_CP_STATE_BOTH) {
--            /* We assume it is a cp15 register if the .cp field is left unset.
--             */
--            if (r2->cp == 0) {
--                r2->cp = 15;
--            }
--
- #if HOST_BIG_ENDIAN
-             if (r2->fieldoffset) {
-                 r2->fieldoffset += sizeof(uint32_t);
-@@ -8567,22 +8587,6 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
- #endif
-         }
-     }
--    if (state == ARM_CP_STATE_AA64) {
--        /* To allow abbreviation of ARMCPRegInfo
--         * definitions, we treat cp == 0 as equivalent to
--         * the value for "standard guest-visible sysreg".
--         * STATE_BOTH definitions are also always "standard
--         * sysreg" in their AArch64 view (the .cp value may
--         * be non-zero for the benefit of the AArch32 view).
--         */
--        if (r->cp == 0 || r->state == ARM_CP_STATE_BOTH) {
--            r2->cp = CP_REG_ARM64_SYSREG_CP;
--        }
--        key = ENCODE_AA64_CP_REG(r2->cp, r2->crn, crm,
--                                 r2->opc0, opc1, opc2);
--    } else {
--        key = ENCODE_CP_REG(r2->cp, is64, ns, r2->crn, crm, opc1, opc2);
--    }
-     if (opaque) {
+@@ -8567,44 +8597,73 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
          r2->opaque = opaque;
      }
-@@ -8593,6 +8597,7 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-     /* Make sure reginfo passed to helpers for wildcarded regs
-      * has the correct crm/opc1/opc2 for this reg, not CP_ANY:
+ 
+-    isbanked = r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1];
+-    if (isbanked) {
++    if (make_const) {
++        /* This should not have been a very special register to begin. */
++        int old_special = r2->type & ARM_CP_SPECIAL_MASK;
++        assert(old_special == 0 || old_special == ARM_CP_NOP);
+         /*
+-         * Register is banked (using both entries in array).
+-         * Overwriting fieldoffset as the array is only used to define
+-         * banked registers but later only fieldoffset is used.
++         * Set the special function to CONST, retaining the other flags.
++         * This is important for e.g. ARM_CP_SVE so that we still
++         * take the SVE trap if CPTR_EL3.EZ == 0.
+          */
+-        r2->fieldoffset = r->bank_fieldoffsets[ns];
+-    }
++        r2->type = (r2->type & ~ARM_CP_SPECIAL_MASK) | ARM_CP_CONST;
++        /*
++         * Usually, these registers become RES0, but there are a few
++         * special cases like VPIDR_EL2 which have a constant non-zero
++         * value with writes ignored.  So leave resetvalue as is.
++         *
++         * ARM_CP_CONST has precedence, so removing the callbacks and
++         * offsets are not strictly necessary, but it is potentially
++         * less confusing to debug later.
++         */
++        r2->readfn = NULL;
++        r2->writefn = NULL;
++        r2->raw_readfn = NULL;
++        r2->raw_writefn = NULL;
++        r2->resetfn = NULL;
++        r2->fieldoffset = 0;
++        r2->bank_fieldoffsets[0] = 0;
++        r2->bank_fieldoffsets[1] = 0;
++    } else {
++        bool isbanked = r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1];
+ 
+-    if (state == ARM_CP_STATE_AA32) {
+         if (isbanked) {
+             /*
+-             * If the register is banked then we don't need to migrate or
+-             * reset the 32-bit instance in certain cases:
+-             *
+-             * 1) If the register has both 32-bit and 64-bit instances then we
+-             *    can count on the 64-bit instance taking care of the
+-             *    non-secure bank.
+-             * 2) If ARMv8 is enabled then we can count on a 64-bit version
+-             *    taking care of the secure bank.  This requires that separate
+-             *    32 and 64-bit definitions are provided.
++             * Register is banked (using both entries in array).
++             * Overwriting fieldoffset as the array is only used to define
++             * banked registers but later only fieldoffset is used.
+              */
+-            if ((r->state == ARM_CP_STATE_BOTH && ns) ||
+-                (arm_feature(&cpu->env, ARM_FEATURE_V8) && !ns)) {
++            r2->fieldoffset = r->bank_fieldoffsets[ns];
++        }
++        if (state == ARM_CP_STATE_AA32) {
++            if (isbanked) {
++                /*
++                 * If the register is banked then we don't need to migrate or
++                 * reset the 32-bit instance in certain cases:
++                 *
++                 * 1) If the register has both 32-bit and 64-bit instances
++                 *    then we can count on the 64-bit instance taking care
++                 *    of the non-secure bank.
++                 * 2) If ARMv8 is enabled then we can count on a 64-bit
++                 *    version taking care of the secure bank.  This requires
++                 *    that separate 32 and 64-bit definitions are provided.
++                 */
++                if ((r->state == ARM_CP_STATE_BOTH && ns) ||
++                    (arm_feature(env, ARM_FEATURE_V8) && !ns)) {
++                    r2->type |= ARM_CP_ALIAS;
++                }
++            } else if ((secstate != r->secure) && !ns) {
++                /*
++                 * The register is not banked so we only want to allow
++                 * migration of the non-secure instance.
++                 */
+                 r2->type |= ARM_CP_ALIAS;
+             }
+-        } else if ((secstate != r->secure) && !ns) {
+-            /*
+-             * The register is not banked so we only want to allow migration
+-             * of the non-secure instance.
+-             */
+-            r2->type |= ARM_CP_ALIAS;
+-        }
+ 
+-        if (HOST_BIG_ENDIAN &&
+-            r->state == ARM_CP_STATE_BOTH && r2->fieldoffset) {
+-            r2->fieldoffset += sizeof(uint32_t);
++            if (HOST_BIG_ENDIAN &&
++                r->state == ARM_CP_STATE_BOTH && r2->fieldoffset) {
++                r2->fieldoffset += sizeof(uint32_t);
++            }
+         }
+     }
+ 
+@@ -8615,7 +8674,7 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+      * multiple times. Special registers (ie NOP/WFI) are
+      * never migratable and not even raw-accessible.
       */
-+    r2->cp = cp;
-     r2->crm = crm;
-     r2->opc1 = opc1;
-     r2->opc2 = opc2;
+-    if (r->type & ARM_CP_SPECIAL_MASK) {
++    if (r2->type & ARM_CP_SPECIAL_MASK) {
+         r2->type |= ARM_CP_NO_RAW;
+     }
+     if (((r->crm == CP_ANY) && crm != 0) ||
 -- 
 2.34.1
 

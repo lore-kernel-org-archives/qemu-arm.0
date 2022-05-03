@@ -1,116 +1,107 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1645160lfj;
-        Tue, 3 May 2022 12:35:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz9bvhPVZElC6qIt3nW0AGKzqutQLo+d8eCgancmTNxNeE+/OzAgKcV1o979/wLzymSOddx
-X-Received: by 2002:a05:6214:c83:b0:456:4d6e:a3ea with SMTP id r3-20020a0562140c8300b004564d6ea3eamr14982364qvr.21.1651606532482;
-        Tue, 03 May 2022 12:35:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651606532; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1648628lfj;
+        Tue, 3 May 2022 12:43:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwjAJe8cdFE+u8H6XdkUf0l+C2SG/ZpT6SNIHXXPzq9ECb9EC8/8DqhWfWJ/KjNHvT9s3k4
+X-Received: by 2002:a37:9285:0:b0:69e:e25f:124d with SMTP id u127-20020a379285000000b0069ee25f124dmr13397825qkd.608.1651607004830;
+        Tue, 03 May 2022 12:43:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651607004; cv=none;
         d=google.com; s=arc-20160816;
-        b=L0RNi/nV1+IzCXyC7LdIZm1jaK/PvQ+ZG2TCY+qL/e7PK2qXUEAH6bHh9/xNV/hW+6
-         tBw0OZU4rx33coH45QUhtg74G5PjM//5neLUTycQUulW9y/NYMfMh708RsodrCys6AIk
-         gIwtYKtYfc81zF8ThaYJj+tfOue1M+C0i3CUfpV9DbS1zLMfTH3w3l0B0zvE2LpbBHor
-         tuMMVB5Bjkm3/EwqizRHfcenp7Rghv+kNQTZtSP7TJlJngmf/l9ZMTTDsIJqcHQLBWt4
-         1Yv4eW7AlEV+5OQqnCwi0+lOU8tZCFYs1Se5TDQYbVguilgfhLJiCrGsmTeYI9JoeUbv
-         CXVQ==
+        b=lWgagjKvIFd/JU/7fD4nsjCNKKoYYREAvFmektLg00NmJLNxWqQmiGvjXJ/0rh/gjp
+         30BPKBNkj4JZ7QqJSDrEErkm2l88qsFi4TtI0ZOZ278+y2140f7AHeSKJon6CnxQmlHC
+         KNm3lAqi0XwgOphhneQsJg81eor9O0BsvToYQdCGA0wwxMWFGATTMXhjfcYFK6aRzRTf
+         PMgC7myOD/B2FDJOiwHXNlqkcdGwCL921yE6LNnULG2kNXK2zQYHEfIHbSumedb5qpuM
+         0s+x+KJKIEOau2uYEp28FkzH3hGM4aYeaekYW7BpHR/DXZe0wrnsnJCyggHodzwi/eyj
+         XNNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=oCmV06myRJm0N1nJJglZK7acE9yic2mBmX4GIfYl474=;
-        b=R9whU0c14+qd+Nsis7TCI2rJG4KvQ0yXHQYPIEEtpnM5QDUIOrGib1o9d+07DZClJi
-         76wl4aNj77I2PPbtc7J9SM7zwCYaONrds4e2jI9DaTeyPAhHcfbrNtWjhyA+wvy6gbXT
-         0tvtZZoKJ44lI5ciM1ze/X1w55M7XAAzqnwn+Uf9KLESZg0z0nE8Qy2lmjBjb26YYQKi
-         mfUpaKyAu0INn9y5qnVYcQHoeeXZGwwSFdVRMlGPTyU/Hllq0npGd8Gt+zK+MN7yVpbD
-         wDMpqeNPLm7ALdayPW+arFJHvXhep1I3Ihh46HgnFZX8oaopRYiAsP4Rr4w5aybJbD+J
-         WzuQ==
+         :mime-version:mime-version:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=F2XMVZRhXOlDx/eBFdoKp2/tHA7MKrCIRZ8NQgPVxYc=;
+        b=RTqZzWydFQynpTdYed+YxO4TRphOhLuj0r7hNMZ1y+KaQ2pbsZRpVjgTkVNnnxEzqu
+         wkwulAYBG5uVEFdbGnzvMXV8Y/09vMWMto5WrWERZBq4BMV5EZKmFfAMk+rwoXge9a1c
+         HsqjFjtcd2lha1Dw4ed2qakvwhtIRfM8UtvYuEYOWyMZiHbQkJJvE+55/Q8rMNU/UWtZ
+         6bJ+77N7RUNli0omUOOWbzx8NFYwv8C7ErNL2YyPVe2oVAlNS9bXBGnC1aK3opoonfmi
+         YFNB0hifbqnkECdVbyINUc3Dzieb0po9ekkxbJFGosQhLpNdsjIHmYWRNPoJiPN8vULV
+         8gUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HEjNZ3Pw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YQpzOdHJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e4-20020a0562141d0400b004597d8f29acsi6538733qvd.552.2022.05.03.12.35.32
+        by mx.google.com with ESMTPS id u20-20020a05622a14d400b002f385b5c80esi8282183qtx.632.2022.05.03.12.43.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 May 2022 12:35:32 -0700 (PDT)
+        Tue, 03 May 2022 12:43:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HEjNZ3Pw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YQpzOdHJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35492 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40390 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nlyJ2-0001Cq-16
-	for alex.bennee@linaro.org; Tue, 03 May 2022 15:35:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35524)
+	id 1nlyQe-0007Wp-BC
+	for alex.bennee@linaro.org; Tue, 03 May 2022 15:43:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37056)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nlyHN-0000Vf-K9
- for qemu-devel@nongnu.org; Tue, 03 May 2022 15:33:49 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e]:40583)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nlyHL-0006Bq-Eq
- for qemu-devel@nongnu.org; Tue, 03 May 2022 15:33:49 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id i24so15531421pfa.7
- for <qemu-devel@nongnu.org>; Tue, 03 May 2022 12:33:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=oCmV06myRJm0N1nJJglZK7acE9yic2mBmX4GIfYl474=;
- b=HEjNZ3PwF7uQNtF1Kdjc4STCIZ9PimTg/OF5yFEwdz+Y8UnqUDti6qYPT1i2UfTNCk
- U/xH7Ydv4eZQCTA5jyGGYRbEQSbgtDLRozVmBYvq7xUxt9DIlQh9lQyYEohIn5rQ+2dJ
- KjI39T7ruj8riK9hLHx5tH5XYWl6PrzkIMlNm2QCraoXWL+iE71q8eJHVpgOGQwiube2
- CveqUwyP24Gn30+QmvkTOdkyoDAyfhbwCMWfBEMp9KG4M8/iiK/L9qVq08cDW4MfCc0r
- ybPchSTP8r4X6uQDQvkAc2RVWr0Rpp2eDLWjA5R/OUDCekehjjO4qwG+BDbn8XypfuSX
- 5JBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=oCmV06myRJm0N1nJJglZK7acE9yic2mBmX4GIfYl474=;
- b=wKJQB/ne9c8xtztc8GOv2X3BkRto41AAFQ19/WxEgdSP9wIM3lZU12MgEhL331hh4d
- WpQJaOzioSGo3orcNhSegUP97beJJUCMJXSuW1jxTic1WT7wlTBRq1NCcFhQSXJIjsah
- n1Mzt/aqQ9oAMzahwY3Rk+z4tS5FhNU26SgK9vLrchqIAgO6jzC1oOpfOABjjrVmmO8N
- NZPtq0njetsK/xpks9hDyxbEt0L4SCodltCs/X43vXu4BeHlG6oaDBx+FPsz1Oi+U8NI
- rm83ZSTl5OOSPYjkBeF9RrR9JxXFqIhyrtwuRCrrfBZZ6lpu81oDiJi3RWDAEdA/hKaW
- 5+iw==
-X-Gm-Message-State: AOAM531KaWrCtWT0RsYeBNbiR8fM4cs8azp4BiJMXHtfjqrFLznM8nGK
- CkxiFlVaGjSDFwdDCZdfQZlgSQ==
-X-Received: by 2002:a63:ec46:0:b0:381:81c4:ebbd with SMTP id
- r6-20020a63ec46000000b0038181c4ebbdmr15032297pgj.534.1651606425862; 
- Tue, 03 May 2022 12:33:45 -0700 (PDT)
-Received: from [192.168.1.6] ([71.212.142.129])
- by smtp.gmail.com with ESMTPSA id
- p20-20020a1709028a9400b0015e8d4eb2b7sm6709636plo.257.2022.05.03.12.33.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 May 2022 12:33:45 -0700 (PDT)
-Message-ID: <c86d2c60-5dc0-66b4-5501-60b7e6d6278d@linaro.org>
-Date: Tue, 3 May 2022 12:33:42 -0700
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nlyOg-0005K1-FB
+ for qemu-devel@nongnu.org; Tue, 03 May 2022 15:41:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:43734)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nlyOe-0007T1-Rm
+ for qemu-devel@nongnu.org; Tue, 03 May 2022 15:41:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1651606749;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:mime-version: content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=F2XMVZRhXOlDx/eBFdoKp2/tHA7MKrCIRZ8NQgPVxYc=;
+ b=YQpzOdHJJNE5oNz/8CnosipvB/ywzRGaC3WmsvNHPr5XVyukww1oKxEq81wb3xNovB8+rn
+ G8GiMxK36ILg7TLOXs6+q5eP5PRa+oJB+yYd3jGfjEvmv5C+GOGANDt71ZCPr2kPT5tKzP
+ Gpp7U86nVp+AKJS2IUJ8/WK6R+eBpC0=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-455-bxhqwJG8OlmLC0C_BUF4NQ-1; Tue, 03 May 2022 11:04:46 -0400
+X-MC-Unique: bxhqwJG8OlmLC0C_BUF4NQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C40B9109B93;
+ Tue,  3 May 2022 14:03:36 +0000 (UTC)
+Received: from gshan.redhat.com (ovpn-12-47.pek2.redhat.com [10.72.12.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4A56C153841E;
+ Tue,  3 May 2022 14:03:27 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, mst@redhat.com, imammedo@redhat.com,
+ ani@anisinha.ca, peter.maydell@linaro.org, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, f4bug@amsat.org, wangyanan55@huawei.com,
+ eblake@redhat.com, armbru@redhat.com, thuth@redhat.com, lvivier@redhat.com,
+ pbonzini@redhat.com, berrange@redhat.com, Jonathan.Cameron@Huawei.com,
+ drjones@redhat.com, zhenyzha@redhat.com, shan.gavin@gmail.com
+Subject: [PATCH v9 2/6] qtest/numa-test: Specify CPU topology in
+ aarch64_numa_cpu()
+Date: Tue,  3 May 2022 22:03:00 +0800
+Message-Id: <20220503140304.855514-3-gshan@redhat.com>
+In-Reply-To: <20220503140304.855514-1-gshan@redhat.com>
+References: <20220503140304.855514-1-gshan@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH v4 41/45] target/arm: Enable FEAT_CSV2_2 for -cpu max
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220501055028.646596-1-richard.henderson@linaro.org>
- <20220501055028.646596-42-richard.henderson@linaro.org>
- <CAFEAcA9fWYT-2RucwzmrNhMxsUqu3zd338aBTGv7-tFraRVrAg@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA9fWYT-2RucwzmrNhMxsUqu3zd338aBTGv7-tFraRVrAg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -126,51 +117,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MJH7UtwxJ5mR
+X-TUID: e+JprZNLQSZu
 
-On 5/3/22 10:10, Peter Maydell wrote:
-> On Sun, 1 May 2022 at 08:16, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> There is no branch prediction in TCG, therefore there is no
->> need to actually include the context number into the predictor.
->> Therefore all we need to do is add the state for SCXTNUM_ELx.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->> v2: Update emulation.rst; clear CSV2_FRAC; use decimal; tidy access_scxtnum.
->> v3: Rely on EL3-no-EL2 squashing during registration.
->> ---
->>   docs/system/arm/emulation.rst |  3 ++
->>   target/arm/cpu.h              | 16 +++++++++
->>   target/arm/cpu64.c            |  3 +-
->>   target/arm/helper.c           | 61 ++++++++++++++++++++++++++++++++++-
->>   4 files changed, 81 insertions(+), 2 deletions(-)
-> 
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> (The handling of SCXTNUM_EL0 should Just Work for user-mode-only,
-> right?)
+The CPU topology isn't enabled on arm/virt machine yet, but we're
+going to do it in next patch. After the CPU topology is enabled by
+next patch, "thread-id=1" becomes invalid because the CPU core is
+preferred on arm/virt machine. It means these two CPUs have 0/1
+as their core IDs, but their thread IDs are all 0. It will trigger
+test failure as the following message indicates:
 
-Hmm, interesting.
+  [14/21 qemu:qtest+qtest-aarch64 / qtest-aarch64/numa-test  ERROR
+  1.48s   killed by signal 6 SIGABRT
+  >>> G_TEST_DBUS_DAEMON=/home/gavin/sandbox/qemu.main/tests/dbus-vmstate-daemon.sh \
+      QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon         \
+      QTEST_QEMU_BINARY=./qemu-system-aarch64                                       \
+      QTEST_QEMU_IMG=./qemu-img MALLOC_PERTURB_=83                                  \
+      /home/gavin/sandbox/qemu.main/build/tests/qtest/numa-test --tap -k
+  ――――――――――――――――――――――――――――――――――――――――――――――
+  stderr:
+  qemu-system-aarch64: -numa cpu,node-id=0,thread-id=1: no match found
 
-The linux master does not support CSV2_1.2+.  This bit is supposed to be RES1 when the 
-feature is not enabled, so when booted with TCG at EL1 access *should* be trapped, when 
-the guest kernel is not buggy.  This falls into the
+This fixes the issue by providing comprehensive SMP configurations
+in aarch64_numa_cpu(). The SMP configurations aren't used before
+the CPU topology is enabled in next patch.
 
-     /* ??? Lots of these bits are not implemented.  */
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
+---
+ tests/qtest/numa-test.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/tests/qtest/numa-test.c b/tests/qtest/numa-test.c
+index 90bf68a5b3..aeda8c774c 100644
+--- a/tests/qtest/numa-test.c
++++ b/tests/qtest/numa-test.c
+@@ -223,7 +223,8 @@ static void aarch64_numa_cpu(const void *data)
+     QTestState *qts;
+     g_autofree char *cli = NULL;
+ 
+-    cli = make_cli(data, "-machine smp.cpus=2 "
++    cli = make_cli(data, "-machine "
++        "smp.cpus=2,smp.sockets=1,smp.clusters=1,smp.cores=1,smp.threads=2 "
+         "-numa node,nodeid=0,memdev=ram -numa node,nodeid=1 "
+         "-numa cpu,node-id=1,thread-id=0 "
+         "-numa cpu,node-id=0,thread-id=1");
+-- 
+2.23.0
 
-fixme in sctlr_write.  If the guest kernel is buggy... ya gets what ya gets.
-
-We are particularly sloppy with SCTLR_EL1 with user-only; the res1 bits are not set,
-which means that we'll expose the register at user-only.
-
-Although context swapping is not an issue for user-only, I think we should not expose the 
-value at this time.  It's plausible that the register will *never* be exposed to EL0.  We 
-might get, for instance, a prctl to set a new thread/process-level random value instead.
-
-Will provide a minimal user-only fix for v5, and work on sctlr_write another day.
-
-
-r~

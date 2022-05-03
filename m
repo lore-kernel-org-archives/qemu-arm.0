@@ -1,1201 +1,1244 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1291912lfj;
-        Tue, 3 May 2022 02:44:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz0oCj7xX3OFZDsg1b33ZzPLOocuBMgBGg9h+5suP7fb/eUGp+YUTvFNMIS092DvKAKhuBl
-X-Received: by 2002:a37:ba05:0:b0:69e:61b8:106d with SMTP id k5-20020a37ba05000000b0069e61b8106dmr11145065qkf.612.1651571046727;
-        Tue, 03 May 2022 02:44:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651571046; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1477952lfj;
+        Tue, 3 May 2022 08:07:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz3ItJi40LShqgqMAYlNHlZ3CsOavNMC9kc9MTmfrLxxzpJVTCQN6lBtdsmsnpCZ1gFKAC0
+X-Received: by 2002:a05:6214:13e5:b0:458:812:217e with SMTP id ch5-20020a05621413e500b004580812217emr13658872qvb.60.1651590437556;
+        Tue, 03 May 2022 08:07:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651590437; cv=none;
         d=google.com; s=arc-20160816;
-        b=oWTe43Lw3oQNvRdPG4WpSbXEJ06dusiTMuDKTwt0VBAijZcK+u7x9L6lUKqBlep9f9
-         RxwVsC+K5EhLa/do+wM2dOk4kuEk6oNFbK9Fj/2YlDm89aFUnly+wu55ElMz12pF1HQR
-         /uupAZGWeArI5PtPo2zDHVGdgqZJbYYMQ9VrBmX2A30lw4W2vxWFVEaqmsM9lhp5wPfr
-         Uy+H6/Kr2lA5Jenbk9THObaSwnkCwz5BtxpHCgoJrjypn+ltptdYl3TUoUASHQTkrIJ1
-         fCvTw6dNjDdr1twc6xYq1yJTG+zICi8GXuxpnesMQrFqhtwzCrWxjwVyLa8BcTAvm0KO
-         r50A==
+        b=KtbGGoUC8clPcJ9RdbkVxLIkPzdflZzHpabB3KRnf3RiXTVD5PxgB+WC3wv0PV56HL
+         8W3lZtj64LblDLhycFcQxp8sT1yzPRKtYLqfvi2Gx8a5unmAJl8rUUOGkBPN1CMRxgFE
+         hxV6L6hMwiN6Y3mRoWR+FwBuBapxN1f2weyFB2xovWvhscT1ReBbldIhqYCcerus540N
+         DYErdjOS5jOBzm0hbf2RgAkFig+SWJcwpVA+Y95oZOCxL4jxBEhtVLDVoEsaNi8laRe9
+         mkr63rJ3nKRFERnz7YX1HGcpiz/ur+/zXVgdrDQswRWtZ2sOma67tCY6LIph6K6Ck6DG
+         k+8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=cbaXnj9PiWzpc5+KfnwpodGA8SPPVeXv89sltTjnG/8=;
-        b=XXBY0s25vXiA7WgUboIP2kRECaPwhefxrPDrVO6to25wRXVNk4H291uP+G6hlGGcS9
-         ywxTi9+lJRQcfO69otOhUTFV2baUUD8CxoBK8EnTKhI3kP2NXqosyaCbXqMwhOdFGyPW
-         kwuxYL7KquFYY1U+6UwOZJki4ggT7WR6Li8mXz5GmxTBqDmh1y0E+Yw9ApoGF6jqqgB3
-         LD/XyZnVu+2Hd/OCEiw5WqRxqSWijmtzMEnF048KJZt5tO/mK0ULOCS3ZDyt9IUWqNxD
-         8npBr4C11CWEkuI0itUce8qnstmXteMf+VuEiGdM9f7dZcQvyz88KoJP6OHhdlWb+aAE
-         IXiw==
+        bh=0BSFLRiH7SmHMvcW/bbbjGb0lsPE6S7RezkrDPDmKMA=;
+        b=ItvvMsSmaNYUdxgjvGURo+ex8Fg1tVPkDgzk6a0Ql1m65x0OwJaWZ0wZ/1NX36nNWS
+         SeFfeAB9mEhSVHk+DGD0BSsbI13kd4uS3nZyhxGfydYPse3oPMSdhjEF0V9c3QOlItsN
+         1iUQwjxuxti0Rq1HUjNovmI1ENCwN1+VohKNhaqP+x2CiZnuB8pUbm5DxG1ojYAL8+za
+         ap8JcQGdNidEWZG5PO4qlzcqBpL+MDeKaKQUmSoU0d1iQ9M8l1rmv2d0fIWSMTkfIpN1
+         vX0nsbOJTPU0X6YPq58VMJw75MedkalzF0cOQn8cQZUMaVdo6BsM/oWNOtq///phsaGD
+         czig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fGd2zjlC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@sifive.com header.s=google header.b="JpSQNIB/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l3-20020a37f903000000b0067e4be238a8si7028938qkj.237.2022.05.03.02.44.06
+        by mx.google.com with ESMTPS id o10-20020ad45c8a000000b0045a90e4f16dsi2652689qvh.128.2022.05.03.08.07.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 May 2022 02:44:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 May 2022 08:07:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fGd2zjlC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53288 helo=lists1p.gnu.org)
+       dkim=pass header.i=@sifive.com header.s=google header.b="JpSQNIB/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36640 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nlp4g-0002j5-4Z
-	for alex.bennee@linaro.org; Tue, 03 May 2022 05:44:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45962)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nlu7Q-0006fG-Nm
+	for alex.bennee@linaro.org; Tue, 03 May 2022 11:07:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nlow1-0006FR-Es; Tue, 03 May 2022 05:35:09 -0400
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:40663)
+ (Exim 4.90_1) (envelope-from <frank.chang@sifive.com>)
+ id 1nlu6t-0006eu-Ty
+ for qemu-arm@nongnu.org; Tue, 03 May 2022 11:06:43 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:40554)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1nlovw-0003JK-0p; Tue, 03 May 2022 05:35:09 -0400
-Received: by mail-ej1-x62d.google.com with SMTP id l18so32297907ejc.7;
- Tue, 03 May 2022 02:35:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <frank.chang@sifive.com>)
+ id 1nlu6o-000077-11
+ for qemu-arm@nongnu.org; Tue, 03 May 2022 11:06:43 -0400
+Received: by mail-ed1-x533.google.com with SMTP id p18so20178774edr.7
+ for <qemu-arm@nongnu.org>; Tue, 03 May 2022 08:06:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cbaXnj9PiWzpc5+KfnwpodGA8SPPVeXv89sltTjnG/8=;
- b=fGd2zjlCkcygVXL2/mBnph8bNvCCzoDd3kqGCwYVb/vlN5WKiCe6haw8U02D/YG7aQ
- jQfYCtjIdelqcEy2teSOt8Cmn1oSidpSYY7QOQ4AkZhV7xrgXOyDaMu6HIfM10vJrfZU
- PVXNRMJlJ2kd2jyZDOhuuo1bopkh0AxQgqpNDAK6CWyzi7zu5P10WQY1uUp1qN5srJL6
- Q0QfdJaIegrVrDp9XacnGYTXQGaUaI55lI+teh0iTfm1O+wMaNv4fRy/IZANDKCq6j6K
- iWUFBlM4QaeinPujCkjYwvvWNnjnqvGNuIjskshOpltpcG0+C/MjPO8bYE+U82eWLvy/
- R1Rg==
+ :cc; bh=0BSFLRiH7SmHMvcW/bbbjGb0lsPE6S7RezkrDPDmKMA=;
+ b=JpSQNIB/N+AlzS7G700/OknBs7EY04FSEj69hS/z55lOunVx6YgCdr91j+xf9GYPuT
+ gw7K12KiPIkwOKnur3X/L1M++Z5gNCFiv0oz2ohtLXsnbX7TSokfxKTDshgIE9Ig5cN+
+ 6l4ht0QsXuZNT67VXRrpDhxZT9sRRkWUsiOZ/lT5h7muIMits5KV7LcyKk7xESRYf29t
+ zrXfjqbM6eI1e3vc54OuxtyOrk28HqfGy0Q03XeSutgNUFwCrtf3vDuxC2m7nIgawp2t
+ i0Y0TZqKc3OcFx4R/E93Bnu0YeQ3X0iPDL7vHuQ8Fq/l00Is8YfWsBoCTKD7TqwRN6mX
+ RCPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=cbaXnj9PiWzpc5+KfnwpodGA8SPPVeXv89sltTjnG/8=;
- b=DVhCBxoRNCq6WUFlx25yLDOjCTY4mimyt1aDhhtt28YfuxYYzce/eUoxKPKp8YFbPk
- 9VbDQqsGYsZqkAu2zl7LlmrJOio5T5GgZmlzCuJeWecryecC8R/ZvR3z1snc95JaO/IT
- /qa8v61dKsVPVJN9wXDbVmv9A640lmc2fT1Dr4WiJXFyKrtxsMuws9ewpJnAfBXt/kcg
- nKvO34msW1+5gQGJ+OHP/+3PmrKPWJfJR3NS1nNrAwY5qANLenMfJmP0nY9Her8a572U
- 68R/y5/YrYADsUKVP6CS3j0YHnm7uzq7/Srq+aAFCaoCGqMWMEFolZr12MgoBVaWtZwx
- wLFw==
-X-Gm-Message-State: AOAM533NRWPjxKVBGua3PkXX8NNpWre2kPmmxrLPqO1sOdIVSSBJr5Mp
- lhXKtEqdsjDHMG1OSRyUPDWU5VrP8XF76V2aoEY=
-X-Received: by 2002:a17:906:478b:b0:6db:8b6e:d5de with SMTP id
- cw11-20020a170906478b00b006db8b6ed5demr15185077ejc.161.1651570501799; Tue, 03
- May 2022 02:35:01 -0700 (PDT)
+ bh=0BSFLRiH7SmHMvcW/bbbjGb0lsPE6S7RezkrDPDmKMA=;
+ b=XWIS5tlhI1l9oNx2sRLV5g3tJEXeuJBJHL43JvLqzJfcOMm+mCkVgFbdiyShOxJDC/
+ A6dS/RFXadQjxlkb4IJYNoUyQrghG8hlKM6AfKrnaWq0Sno0zXJgRMhyvfwEtsviqr7V
+ VxH8SML239IeyiUSKuOEFEMyp/WdG7c60cqh/ETolTLnaNQ+Vwk6qBzGsAV1+cYJS14Y
+ BY1Wpo88xTOmt2Ij5OuOAi27ucWCaI6oiQpNAyh9M46KuE5Mkly4FvRkan0oCixFxq40
+ xL4oZpQp5NursYPf6V7vxexXaVfXwETBZ1Vp0iWACuXW6vZSPnU43qvDDuSMvth8j9Sh
+ fhpA==
+X-Gm-Message-State: AOAM5311Vrx5dB3fB8C7mS/jYPgu9kxVJUL9kaYXNHgnc7IV766oxQhe
+ BuvjJsVpvC0m6xDHY33+MSsXNbVIkRPcdFDGE2ekAA==
+X-Received: by 2002:a05:6402:34d4:b0:426:3517:ba77 with SMTP id
+ w20-20020a05640234d400b004263517ba77mr18586895edc.260.1651590396067; Tue, 03
+ May 2022 08:06:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220428154348.26380-1-frank.chang@sifive.com>
  <CAJy5ezp1wdCFzHN4KhTWq7vCcP5DBPjE=V9+kiu4-njpnZ76Mg@mail.gmail.com>
  <CAE_xrPgiQiUStfOfkgZn9dU3zbbx2u86_2tjSAUQYjw78n5vSw@mail.gmail.com>
-In-Reply-To: <CAE_xrPgiQiUStfOfkgZn9dU3zbbx2u86_2tjSAUQYjw78n5vSw@mail.gmail.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Tue, 3 May 2022 11:34:50 +0200
-Message-ID: <CAJy5ezpn+_j748Lru_6nMfq6P6VGoCXBTG4oY4UP+3wmJ3yEBQ@mail.gmail.com>
+ <CAJy5ezpn+_j748Lru_6nMfq6P6VGoCXBTG4oY4UP+3wmJ3yEBQ@mail.gmail.com>
+In-Reply-To: <CAJy5ezpn+_j748Lru_6nMfq6P6VGoCXBTG4oY4UP+3wmJ3yEBQ@mail.gmail.com>
+From: Frank Chang <frank.chang@sifive.com>
+Date: Tue, 3 May 2022 23:06:24 +0800
+Message-ID: <CAE_xrPh_j+eSkJaA3jw6JQS+TAsq+8Fyb=h8y6EoOjAqG3ONPw@mail.gmail.com>
 Subject: Re: [PATCH] hw/dma: Add Xilinx AXI CDMA
-To: Frank Chang <frank.chang@sifive.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Cc: qemu-devel <qemu-devel@nongnu.org>, Jim Shu <jim.shu@sifive.com>, 
  Alistair Francis <alistair@alistair23.me>,
  Peter Maydell <peter.maydell@linaro.org>, 
  Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
  qemu-arm <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="00000000000014d25d05de183952"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-ej1-x62d.google.com
+Content-Type: multipart/alternative; boundary="000000000000df6b3f05de1cda20"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=frank.chang@sifive.com; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AYVgR0ARU1bz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dx4shu4bTm70
 
---00000000000014d25d05de183952
+--000000000000df6b3f05de1cda20
 Content-Type: text/plain; charset="UTF-8"
 
-On Tue, May 3, 2022 at 3:16 AM Frank Chang <frank.chang@sifive.com> wrote:
+On Tue, May 3, 2022 at 5:35 PM Edgar E. Iglesias <edgar.iglesias@gmail.com>
+wrote:
 
-> On Mon, May 2, 2022 at 6:29 PM Edgar E. Iglesias <edgar.iglesias@gmail.com>
-> wrote:
+> On Tue, May 3, 2022 at 3:16 AM Frank Chang <frank.chang@sifive.com> wrote:
 >
->> On Thu, Apr 28, 2022 at 5:43 PM <frank.chang@sifive.com> wrote:
+>> On Mon, May 2, 2022 at 6:29 PM Edgar E. Iglesias <
+>> edgar.iglesias@gmail.com> wrote:
 >>
->>> From: Frank Chang <frank.chang@sifive.com>
+>>> On Thu, Apr 28, 2022 at 5:43 PM <frank.chang@sifive.com> wrote:
 >>>
->>> Add Xilinx AXI CDMA model, which follows
->>> AXI Central Direct Memory Access v4.1 spec:
->>> https://docs.xilinx.com/v/u/en-US/pg034-axi-cdma
+>>>> From: Frank Chang <frank.chang@sifive.com>
+>>>>
+>>>> Add Xilinx AXI CDMA model, which follows
+>>>> AXI Central Direct Memory Access v4.1 spec:
+>>>> https://docs.xilinx.com/v/u/en-US/pg034-axi-cdma
+>>>>
+>>>> Supports both Simple DMA and Scatter Gather modes.
+>>>>
 >>>
->>> Supports both Simple DMA and Scatter Gather modes.
+>>> Hi Frank,
+>>>
+>>> Thanks for modeling this! I have a couple of questions.
 >>>
 >>
->> Hi Frank,
+>> Hi Edgar,
 >>
->> Thanks for modeling this! I have a couple of questions.
->>
->
-> Hi Edgar,
->
-> Thanks for reviewing.
->
->
->>
->> Do you plan to submit a machine that uses this DMA?
->>
->
-> Currently, Xilinx CDMA is used in our internal platform only, which is not
-> upstream.
-> Do you have any suggestions for the existing machine that I can add Xilinx
-> CDMA to?
-> Or perhaps, ARM virt machine?
->
-
-If there's a reference design somewhere we could use we could potentially
-create a new zynqmp or versal based machine.
-It would be great if you guys had a public RISCV design with the CDMA that
-we could model.
-
-
->
->
->>
->> The CDMA has a 32-bit AXI4-Lite port for register accesses (see page 6
->> and 8 in the spec you referenced), so axicdma_ops.impl.max should be 4 and
->> you shouldn't need the read/write q versions.
->>
->
-> Okay, that's something I was not aware of.
->
-> However, I have a question regarding the 64-bit address space.
->
-> For 64-bit address space, i.e. xlnx,addrwidth = 64.
-> The CDMA spec says that:
-> "TAILDESC_PNTR[_MSB] register causes the AXI CDMA SG Engine
-> to start fetching descriptors starting from the CURDESC_PNTR register
-> value."
->
-> It seems that DMA will start the transfer if either TAILDESC_PNTR or
-> TAILDESC_PNTR_MSB is written.
-> Then how can we guarantee that the full 64-bit address pointer is written
-> before the DMA transfer is started if we can't write both TAILDESC_PNTR
-> and TAILDESC_PNTR_MSB
-> at the same time?
->
-
-This is described on pages 25 and 26:
-"When the AXI CDMA is in SG Mode and the address space is 32 bits
-(CDMACR.SGMode = 1), a write by the software application to the
-TAILDESC_PNTR register causes the AXI CDMA SG Engine to start fetching
-descriptors"
-
-I.e TAILDESC_PNTR only starts the DMA if 32bit addresses have been selected.
-If 64bit addresses are selected, TAILDESC_PNTR_MSB starts the DMA:
-
-"When the AXI CDMA is in SG Mode, and the address space is more than 32
-bits, (CDMACR.SGMode = 1), a write by the software application to the
-TAILDESC_PNTR_MSB register causes the AXI CDMA SG Engine to start fetching
-descriptors"
-
-
-
->
-> I'm also awarded that Xilinx CDMA Linux driver also has separate 32-bit
-> writes for a 64-bit address.
-> But wouldn't that cause, e.g. dmatest to be failed?
->
-
-The driver probably relies on the interconnect to down-size the 64bit
-access to 2x32bit ones. QEMU will do the same so this shouldn't be a
-problem.
-
-Best regards,
-Edgar
-
-
-
->
-> Regards,
-> Frank Chang
->
->
->>
->> Best regards,
->> Edgar
->>
+>> Thanks for reviewing.
 >>
 >>
 >>>
->>> Signed-off-by: Frank Chang <frank.chang@sifive.com>
->>> Reviewed-by: Jim Shu <jim.shu@sifive.com>
->>> ---
->>>  hw/dma/meson.build              |   2 +-
->>>  hw/dma/xilinx_axicdma.c         | 792 ++++++++++++++++++++++++++++++++
->>>  include/hw/dma/xilinx_axicdma.h |  72 +++
->>>  3 files changed, 865 insertions(+), 1 deletion(-)
->>>  create mode 100644 hw/dma/xilinx_axicdma.c
->>>  create mode 100644 include/hw/dma/xilinx_axicdma.h
+>>> Do you plan to submit a machine that uses this DMA?
 >>>
->>> diff --git a/hw/dma/meson.build b/hw/dma/meson.build
->>> index f3f0661bc3..85edf80b82 100644
->>> --- a/hw/dma/meson.build
->>> +++ b/hw/dma/meson.build
->>> @@ -3,7 +3,7 @@ softmmu_ss.add(when: 'CONFIG_PL080', if_true:
->>> files('pl080.c'))
->>>  softmmu_ss.add(when: 'CONFIG_PL330', if_true: files('pl330.c'))
->>>  softmmu_ss.add(when: 'CONFIG_I82374', if_true: files('i82374.c'))
->>>  softmmu_ss.add(when: 'CONFIG_I8257', if_true: files('i8257.c'))
->>> -softmmu_ss.add(when: 'CONFIG_XILINX_AXI', if_true:
->>> files('xilinx_axidma.c'))
->>> +softmmu_ss.add(when: 'CONFIG_XILINX_AXI', if_true:
->>> files('xilinx_axidma.c', 'xilinx_axicdma.c'))
->>>  softmmu_ss.add(when: 'CONFIG_ZYNQ_DEVCFG', if_true:
->>> files('xlnx-zynq-devcfg.c'))
->>>  softmmu_ss.add(when: 'CONFIG_ETRAXFS', if_true: files('etraxfs_dma.c'))
->>>  softmmu_ss.add(when: 'CONFIG_STP2000', if_true: files('sparc32_dma.c'))
->>> diff --git a/hw/dma/xilinx_axicdma.c b/hw/dma/xilinx_axicdma.c
->>> new file mode 100644
->>> index 0000000000..50aec3ec45
->>> --- /dev/null
->>> +++ b/hw/dma/xilinx_axicdma.c
->>> @@ -0,0 +1,792 @@
->>> +/*
->>> + * QEMU model of Xilinx AXI-CDMA block.
->>> + *
->>> + * Copyright (c) 2022 Frank Chang <frank.chang@sifive.com>.
->>> + *
->>> + * Permission is hereby granted, free of charge, to any person
->>> obtaining a copy
->>> + * of this software and associated documentation files (the
->>> "Software"), to deal
->>> + * in the Software without restriction, including without limitation
->>> the rights
->>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or
->>> sell
->>> + * copies of the Software, and to permit persons to whom the Software is
->>> + * furnished to do so, subject to the following conditions:
->>> + *
->>> + * The above copyright notice and this permission notice shall be
->>> included in
->>> + * all copies or substantial portions of the Software.
->>> + *
->>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
->>> EXPRESS OR
->>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
->>> MERCHANTABILITY,
->>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
->>> SHALL
->>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
->>> OTHER
->>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
->>> ARISING FROM,
->>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
->>> DEALINGS IN
->>> + * THE SOFTWARE.
->>> + */
->>> +
->>> +#include "qemu/osdep.h"
->>> +#include "hw/hw.h"
->>> +#include "hw/irq.h"
->>> +#include "hw/ptimer.h"
->>> +#include "hw/qdev-properties.h"
->>> +#include "hw/sysbus.h"
->>> +#include "qapi/error.h"
->>> +#include "qemu/log.h"
->>> +#include "qemu/module.h"
->>> +#include "qemu/timer.h"
->>> +#include "qom/object.h"
->>> +#include "sysemu/dma.h"
->>> +#include "hw/dma/xilinx_axicdma.h"
->>> +
->>> +#define R_CDMACR                    0x00
->>> +#define R_CDMASR                    0x04
->>> +#define R_CURDESC                   0x08
->>> +#define R_CURDESC_MSB               0x0c
->>> +#define R_TAILDESC                  0x10
->>> +#define R_TAILDESC_MSB              0x14
->>> +#define R_SA                        0x18
->>> +#define R_SA_MSB                    0x1c
->>> +#define R_DA                        0x20
->>> +#define R_DA_MSB                    0x24
->>> +#define R_BTT                       0x28
->>> +
->>> +#define R_MAX                       0x30
->>> +
->>> +/* CDMACR */
->>> +#define CDMACR_TAIL_PNTR_EN         BIT(1)
->>> +#define CDMACR_RESET                BIT(2)
->>> +#define CDMACR_SGMODE               BIT(3)
->>> +#define CDMACR_KEY_HOLE_READ        BIT(4)
->>> +#define CDMACR_KEY_HOLE_WRITE       BIT(5)
->>> +#define CDMACR_CYCLIC_BD_ENABLE     BIT(6)
->>> +#define CDMACR_IOC_IRQ_EN           BIT(12)
->>> +#define CDMACR_DLY_IRQ_EN           BIT(13)
->>> +#define CDMACR_ERR_IRQ_EN           BIT(14)
->>> +
->>> +#define CDMACR_MASK                 0xffff707c
->>> +
->>> +/* TailPntrEn = 1,  IRQThreshold = 1. */
->>> +#define CDMACR_DEFAULT              0x10002
->>> +
->>> +/* CDMASR */
->>> +#define CDMASR_IDLE                 BIT(1)
->>> +#define CDMASR_SG_INCLUD            BIT(3)
->>> +#define CDMASR_DMA_INT_ERR          BIT(4)
->>> +#define CDMASR_DMA_SLV_ERR          BIT(5)
->>> +#define CDMASR_DMA_DEC_ERR          BIT(6)
->>> +#define CDMASR_SG_INT_ERR           BIT(8)
->>> +#define CDMASR_SG_SLV_ERR           BIT(9)
->>> +#define CDMASR_SG_DEC_ERR           BIT(10)
->>> +#define CDMASR_IOC_IRQ              BIT(12)
->>> +#define CDMASR_DLY_IRQ              BIT(13)
->>> +#define CDMASR_ERR_IRQ              BIT(14)
->>> +
->>> +#define CDMASR_IRQ_THRES_SHIFT      16
->>> +#define CDMASR_IRQ_THRES_WIDTH      8
->>> +#define CDMASR_IRQ_DELAY_SHIFT      24
->>> +#define CDMASR_IRQ_DELAY_WIDTH      8
->>> +
->>> +#define CDMASR_IRQ_MASK             (CDMASR_IOC_IRQ | \
->>> +                                     CDMASR_DLY_IRQ | \
->>> +                                     CDMASR_ERR_IRQ)
->>> +
->>> +/* Idle = 1, SGIncld = 1, IRQThresholdSts = 1. */
->>> +#define CDMASR_DEFAULT              0x1000a
->>> +
->>> +#define CURDESC_MASK                0xffffffc0
->>> +
->>> +#define TAILDESC_MASK               0xffffffc0
->>> +
->>> +#define BTT_MAX_SIZE                (1UL << 26)
->>> +#define BTT_MASK                    (BTT_MAX_SIZE - 1)
->>> +
->>> +/* SDesc - Status */
->>> +#define SDEC_STATUS_DMA_INT_ERR     BIT(28)
->>> +#define SDEC_STATUS_DMA_SLV_ERR     BIT(29)
->>> +#define SDEC_STATUS_DMA_DEC_ERR     BIT(30)
->>> +#define SDEC_STATUS_DMA_CMPLT       BIT(31)
->>> +
->>> +
->>> +static void axicdma_set_dma_err(XilinxAXICDMA *s, uint32_t err);
->>> +static void axicdma_set_sg_dma_err(XilinxAXICDMA *s, uint32_t err,
->>> hwaddr addr);
->>> +static void axicdma_set_sg_err(XilinxAXICDMA *s, uint32_t err);
->>> +
->>> +static void axicdma_update_irq(XilinxAXICDMA *s)
->>> +{
->>> +    uint32_t enable, pending;
->>> +
->>> +    enable = s->control & CDMASR_IRQ_MASK;
->>> +    pending = s->status & CDMASR_IRQ_MASK;
->>> +
->>> +    qemu_set_irq(s->irq, !!(enable & pending));
->>> +}
->>> +
->>> +static void axicdma_set_irq(XilinxAXICDMA *s, uint32_t irq, bool level)
->>> +{
->>> +    g_assert(irq == CDMASR_IOC_IRQ ||
->>> +             irq == CDMASR_DLY_IRQ ||
->>> +             irq == CDMASR_ERR_IRQ);
->>> +
->>> +    if (level) {
->>> +        s->status |= irq;
->>> +    } else {
->>> +        s->status &= ~irq;
->>> +    }
->>> +
->>> +    axicdma_update_irq(s);
->>> +}
->>> +
->>> +static void axicdma_reload_complete_cnt(XilinxAXICDMA *s)
->>> +{
->>> +    s->complete_cnt = extract32(s->control, CDMASR_IRQ_THRES_SHIFT,
->>> +                                CDMASR_IRQ_THRES_WIDTH);
->>> +}
->>> +
->>> +static void timer_hit(void *opaque)
->>> +{
->>> +    XilinxAXICDMA *s = XILINX_AXI_CDMA(opaque);
->>> +
->>> +    axicdma_set_irq(s, CDMASR_DLY_IRQ, true);
->>> +    axicdma_reload_complete_cnt(s);
->>> +}
->>> +
->>> +static bool sdesc_load(XilinxAXICDMA *s, hwaddr addr)
->>> +{
->>> +    SDesc *d = &s->sdesc;
->>> +    MemTxResult ret;
->>> +
->>> +    ret = address_space_read(s->as, addr, MEMTXATTRS_UNSPECIFIED,
->>> +                             d, sizeof(SDesc));
->>> +    if (ret != MEMTX_OK) {
->>> +        axicdma_set_sg_err(s, CDMASR_SG_DEC_ERR);
->>> +        return false;
->>> +    }
->>> +
->>> +    /* Convert from LE into host endianness. */
->>> +    d->nxtdesc = le64_to_cpu(d->nxtdesc);
->>> +    d->src = le64_to_cpu(d->src);
->>> +    d->dest = le64_to_cpu(d->dest);
->>> +    d->control = le32_to_cpu(d->control);
->>> +    d->status = le32_to_cpu(d->status);
->>> +
->>> +    return true;
->>> +}
->>> +
->>> +static bool sdesc_store(XilinxAXICDMA *s, hwaddr addr)
->>> +{
->>> +    SDesc *d = &s->sdesc;
->>> +    MemTxResult ret;
->>> +
->>> +    /* Convert from host endianness into LE. */
->>> +    d->nxtdesc = cpu_to_le64(d->nxtdesc);
->>> +    d->src = cpu_to_le64(d->src);
->>> +    d->dest = cpu_to_le64(d->dest);
->>> +    d->control = cpu_to_le32(d->control);
->>> +    d->status = cpu_to_le32(d->status);
->>> +
->>> +    ret = address_space_write(s->as, addr, MEMTXATTRS_UNSPECIFIED,
->>> +                              d, sizeof(SDesc));
->>> +    if (ret != MEMTX_OK) {
->>> +        axicdma_set_sg_err(s, CDMASR_SG_DEC_ERR);
->>> +        return false;
->>> +    }
->>> +
->>> +    return true;
->>> +}
->>> +
->>> +static void sdesc_complete(XilinxAXICDMA *s)
->>> +{
->>> +    uint32_t irq_delay = extract32(s->control, CDMASR_IRQ_DELAY_SHIFT,
->>> +                                   CDMASR_IRQ_DELAY_WIDTH);
->>> +
->>> +    if (irq_delay) {
->>> +        /* Restart the delayed timer. */
->>> +        ptimer_transaction_begin(s->ptimer);
->>> +        ptimer_stop(s->ptimer);
->>> +        ptimer_set_count(s->ptimer, irq_delay);
->>> +        ptimer_run(s->ptimer, 1);
->>> +        ptimer_transaction_commit(s->ptimer);
->>> +    }
->>> +
->>> +    s->complete_cnt--;
->>> +
->>> +    if (s->complete_cnt == 0) {
->>> +        /* Raise the IOC irq. */
->>> +        axicdma_set_irq(s, CDMASR_IOC_IRQ, true);
->>> +        axicdma_reload_complete_cnt(s);
->>> +    }
->>> +}
->>> +
->>> +static inline bool axicdma_sgmode(XilinxAXICDMA *s)
->>> +{
->>> +    return !!(s->control & CDMACR_SGMODE);
->>> +}
->>> +
->>> +static void axicdma_set_dma_err(XilinxAXICDMA *s, uint32_t err)
->>> +{
->>> +    g_assert(err == CDMASR_DMA_INT_ERR ||
->>> +             err == CDMASR_DMA_SLV_ERR ||
->>> +             err == CDMASR_DMA_DEC_ERR);
->>> +
->>> +    s->status |= err;
->>> +    axicdma_set_irq(s, CDMASR_ERR_IRQ, true);
->>> +}
->>> +
->>> +static void axicdma_set_sg_dma_err(XilinxAXICDMA *s, uint32_t err,
->>> hwaddr addr)
->>> +{
->>> +    g_assert(axicdma_sgmode(s));
->>> +
->>> +    axicdma_set_dma_err(s, err);
->>> +
->>> +    /*
->>> +     * There are 24-bit shift between
->>> +     * SDesc status bit and CDMACR.DMA_[INT|SLV|DEC]_ERR bit.
->>> +     */
->>> +    s->sdesc.status |= (err << 24);
->>> +    sdesc_store(s, addr);
->>> +}
->>> +
->>> +static void axicdma_set_sg_err(XilinxAXICDMA *s, uint32_t err)
->>> +{
->>> +    g_assert(err == CDMASR_SG_INT_ERR ||
->>> +             err == CDMASR_SG_SLV_ERR ||
->>> +             err == CDMASR_SG_DEC_ERR);
->>> +
->>> +    s->status |= err;
->>> +    axicdma_set_irq(s, CDMASR_ERR_IRQ, true);
->>> +}
->>> +
->>> +static bool axicdma_perform_dma(XilinxAXICDMA *s, hwaddr src, hwaddr
->>> dest,
->>> +                                uint32_t btt)
->>> +{
->>> +    uint32_t r_off = 0, w_off = 0;
->>> +    uint32_t len;
->>> +    MemTxResult ret;
->>> +
->>> +    while (btt > 0) {
->>> +        len = MIN(btt, CDMA_BUF_SIZE);
->>> +
->>> +        ret = dma_memory_read(s->as, src + r_off, s->buf + r_off, len,
->>> +                              MEMTXATTRS_UNSPECIFIED);
->>> +        if (ret != MEMTX_OK) {
->>> +            return false;
->>> +        }
->>> +
->>> +        ret = dma_memory_write(s->as, dest + w_off, s->buf + w_off, len,
->>> +                               MEMTXATTRS_UNSPECIFIED);
->>> +        if (ret != MEMTX_OK) {
->>> +            return false;
->>> +        }
->>> +
->>> +        btt -= len;
->>> +
->>> +        if (!(s->control & CDMACR_KEY_HOLE_READ)) {
->>> +            r_off += len;
->>> +        }
->>> +
->>> +        if (!(s->control & CDMACR_KEY_HOLE_WRITE)) {
->>> +            w_off += len;
->>> +        }
->>> +    }
->>> +
->>> +    return true;
->>> +}
->>> +
->>> +static void axicdma_run_simple(XilinxAXICDMA *s)
->>> +{
->>> +    if (!s->btt) {
->>> +        /* Value of zero BTT is not allowed. */
->>> +        axicdma_set_dma_err(s, CDMASR_DMA_INT_ERR);
->>> +        return;
->>> +    }
->>> +
->>> +    if (!axicdma_perform_dma(s, s->src, s->dest, s->btt)) {
->>> +        axicdma_set_dma_err(s, CDMASR_DMA_DEC_ERR);
->>> +        return;
->>> +    }
->>> +
->>> +    /* Generate IOC interrupt. */
->>> +    axicdma_set_irq(s, CDMASR_IOC_IRQ, true);
->>> +}
->>> +
->>> +static void axicdma_run_sgmode(XilinxAXICDMA *s)
->>> +{
->>> +    uint64_t pdesc;
->>> +    uint32_t btt;
->>> +
->>> +    while (1) {
->>> +        if (!sdesc_load(s, s->curdesc)) {
->>> +            break;
->>> +        }
->>> +
->>> +        if (s->sdesc.status & SDEC_STATUS_DMA_CMPLT) {
->>> +            axicdma_set_sg_err(s, CDMASR_SG_INT_ERR);
->>> +            break;
->>> +        }
->>> +
->>> +        btt = s->sdesc.control & BTT_MASK;
->>> +
->>> +        if (btt == 0) {
->>> +            /* Value of zero BTT is not allowed. */
->>> +            axicdma_set_sg_err(s, CDMASR_SG_INT_ERR);
->>> +            break;
->>> +        }
->>> +
->>> +        if (!axicdma_perform_dma(s, s->sdesc.src, s->sdesc.dest, btt)) {
->>> +            axicdma_set_sg_dma_err(s, CDMASR_DMA_DEC_ERR, s->curdesc);
->>> +            break;
->>> +        }
->>> +
->>> +        /* Update the descriptor. */
->>> +        s->sdesc.status |= SDEC_STATUS_DMA_CMPLT;
->>> +        sdesc_store(s, s->curdesc);
->>> +        sdesc_complete(s);
->>> +
->>> +        /* Advance current descriptor pointer. */
->>> +        pdesc = s->curdesc;
->>> +        s->curdesc = s->sdesc.nxtdesc;
->>> +
->>> +        if (!(s->control & CDMACR_CYCLIC_BD_ENABLE) &&
->>> +            pdesc == s->taildesc) {
->>> +            /* Reach the tail descriptor. */
->>> +            break;
->>> +        }
->>> +    }
->>> +
->>> +    /* Stop the delayed timer. */
->>> +    ptimer_transaction_begin(s->ptimer);
->>> +    ptimer_stop(s->ptimer);
->>> +    ptimer_transaction_commit(s->ptimer);
->>> +}
->>> +
->>> +static void axicdma_run(XilinxAXICDMA *s)
->>> +{
->>> +    bool sgmode = axicdma_sgmode(s);
->>> +
->>> +    /* Not idle. */
->>> +    s->status &= ~CDMASR_IDLE;
->>> +
->>> +    if (!sgmode) {
->>> +        axicdma_run_simple(s);
->>> +    } else {
->>> +        axicdma_run_sgmode(s);
->>> +    }
->>> +
->>> +    /* Idle. */
->>> +    s->status |= CDMASR_IDLE;
->>> +}
->>> +
->>> +static void axicdma_reset(XilinxAXICDMA *s)
->>> +{
->>> +    s->control = CDMACR_DEFAULT;
->>> +    s->status = CDMASR_DEFAULT;
->>> +    s->complete_cnt = 1;
->>> +    qemu_irq_lower(s->irq);
->>> +}
->>> +
->>> +static void axicdma_write_control(XilinxAXICDMA *s, uint32_t value)
->>> +{
->>> +    if (value & CDMACR_RESET) {
->>> +        axicdma_reset(s);
->>> +        return;
->>> +    }
->>> +
->>> +    /*
->>> +     * The minimum setting for the threshold is 0x01.
->>> +     * A write of 0x00 to CDMACR.IRQThreshold has no effect.
->>> +     */
->>> +    if (!extract32(value, CDMASR_IRQ_THRES_SHIFT,
->>> CDMASR_IRQ_THRES_WIDTH)) {
->>> +        value = deposit32(value, CDMASR_IRQ_THRES_SHIFT,
->>> CDMASR_IRQ_THRES_WIDTH,
->>> +                          s->control);
->>> +    }
->>> +
->>> +    /*
->>> +     * AXI CDMA is built with SG enabled,
->>> +     * tail pointer mode is always enabled.
->>> +     */
->>> +    s->control = (value & CDMACR_MASK) | CDMACR_TAIL_PNTR_EN;
->>> +
->>> +    if (!axicdma_sgmode(s)) {
->>> +        /*
->>> +         * CDMASR.Dly_Irq, CURDESC_PNTR, TAILDESC_PNTR are cleared
->>> +         * when not in SGMode.
->>> +         */
->>> +        s->status &= ~CDMASR_DLY_IRQ;
->>> +        s->curdesc = 0;
->>> +        s->taildesc = 0;
->>> +    }
->>> +
->>> +    axicdma_reload_complete_cnt(s);
->>> +}
->>> +
->>> +static uint32_t axicdma_read_status(XilinxAXICDMA *s)
->>> +{
->>> +    uint32_t value = s->status;
->>> +
->>> +    value = deposit32(value, CDMASR_IRQ_THRES_SHIFT,
->>> +                      CDMASR_IRQ_THRES_WIDTH, s->complete_cnt);
->>> +    value = deposit32(value, CDMASR_IRQ_DELAY_SHIFT,
->>> +                      CDMASR_IRQ_DELAY_WIDTH,
->>> ptimer_get_count(s->ptimer));
->>> +
->>> +    return value;
->>> +}
->>> +
->>> +static void axicdma_write_status(XilinxAXICDMA *s, uint32_t value)
->>> +{
->>> +    /* Write 1s to clear interrupts. */
->>> +    s->status &= ~(value & CDMASR_IRQ_MASK);
->>> +    axicdma_update_irq(s);
->>> +}
->>> +
->>> +static void axicdma_write_curdesc(XilinxAXICDMA *s, uint64_t value)
->>> +{
->>> +    /* Should be idle. */
->>> +    g_assert(s->status & CDMASR_IDLE);
->>> +
->>> +    if (!axicdma_sgmode(s)) {
->>> +        /* This register is cleared if SGMode = 0. */
->>> +        return;
->>> +    }
->>> +
->>> +    s->curdesc = value & CURDESC_MASK;
->>> +}
->>> +
->>> +static void axicdma_write_taildesc(XilinxAXICDMA *s, uint64_t value)
->>> +{
->>> +    /* Should be idle. */
->>> +    g_assert(s->status & CDMASR_IDLE);
->>> +
->>> +    if (!axicdma_sgmode(s)) {
->>> +        /* This register is cleared if SGMode = 0. */
->>> +        return;
->>> +    }
->>> +
->>> +    s->taildesc = value & TAILDESC_MASK;
->>> +
->>> +    /* Kick-off CDMA. */
->>> +    axicdma_run(s);
->>> +}
->>> +
->>> +static void axicdma_write_btt(XilinxAXICDMA *s, uint64_t value)
->>> +{
->>> +    s->btt = value & BTT_MASK;
->>> +
->>> +    if (!axicdma_sgmode(s)) {
->>> +        /* Kick-off CDMA. */
->>> +        axicdma_run(s);
->>> +    }
->>> +}
->>> +
->>> +static uint32_t axicdma_readl(void *opaque, hwaddr addr, unsigned size)
->>> +{
->>> +    XilinxAXICDMA *s = opaque;
->>> +    uint32_t value = 0;
->>> +
->>> +    if (s->addrwidth <= 32) {
->>> +        switch (addr) {
->>> +        case R_CURDESC_MSB:
->>> +        case R_TAILDESC_MSB:
->>> +        case R_SA_MSB:
->>> +        case R_DA_MSB:
->>> +            qemu_log_mask(LOG_GUEST_ERROR,
->>> +                          "%s: Invalid 32-bit read to 0x%" HWADDR_PRIX
->>> "\n",
->>> +                          __func__, addr);
->>> +            return value;
->>> +        }
->>> +    }
->>> +
->>> +    switch (addr) {
->>> +    case R_CDMACR:
->>> +        value = s->control;
->>> +        break;
->>> +    case R_CDMASR:
->>> +        value = axicdma_read_status(s);
->>> +        break;
->>> +    case R_CURDESC:
->>> +        value = s->curdesc;
->>> +        break;
->>> +    case R_CURDESC_MSB:
->>> +        value = extract64(s->curdesc, 32, 32);
->>> +        break;
->>> +    case R_TAILDESC:
->>> +        value = s->taildesc;
->>> +        break;
->>> +    case R_TAILDESC_MSB:
->>> +        value = extract64(s->taildesc, 32, 32);
->>> +        break;
->>> +    case R_SA:
->>> +        value = s->src;
->>> +        break;
->>> +    case R_SA_MSB:
->>> +        value = extract64(s->src, 32, 32);
->>> +        break;
->>> +    case R_DA:
->>> +        value = s->dest;
->>> +        break;
->>> +    case R_DA_MSB:
->>> +        value = extract64(s->dest, 32, 32);
->>> +        break;
->>> +    case R_BTT:
->>> +        value = s->btt;
->>> +        break;
->>> +    default:
->>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>> +                      "%s: Invalid 32-bit read to 0x%" HWADDR_PRIX "\n",
->>> +                      __func__, addr);
->>> +    }
->>> +
->>> +    return value;
->>> +}
->>> +
->>> +static uint32_t axicdma_readq(void *opaque, hwaddr addr, unsigned size)
->>> +{
->>> +    XilinxAXICDMA *s = opaque;
->>> +    uint64_t value = 0;
->>> +
->>> +    switch (addr) {
->>> +    case R_CDMACR:
->>> +        value = s->control;
->>> +        break;
->>> +    case R_CDMASR:
->>> +        value = axicdma_read_status(s);
->>> +        break;
->>> +    case R_CURDESC:
->>> +        value = s->curdesc;
->>> +        break;
->>> +    case R_TAILDESC:
->>> +        value = s->taildesc;
->>> +        break;
->>> +    case R_SA:
->>> +        value = s->src;
->>> +        break;
->>> +    case R_DA:
->>> +        value = s->dest;
->>> +        break;
->>> +    case R_BTT:
->>> +        value = s->btt;
->>> +        break;
->>> +    default:
->>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>> +                      "%s: Invalid 64-bit read to 0x%" HWADDR_PRIX "\n",
->>> +                      __func__, addr);
->>> +    }
->>> +
->>> +    return value;
->>> +}
->>> +
->>> +static uint64_t axicdma_read(void *opaque, hwaddr addr, unsigned size)
->>> +{
->>> +    uint64_t value = 0;
->>> +
->>> +    switch (size) {
->>> +    case 4:
->>> +        value = axicdma_readl(opaque, addr, size);
->>> +        break;
->>> +    case 8:
->>> +        value = axicdma_readq(opaque, addr, size);
->>> +        break;
->>> +    default:
->>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid read size %u to
->>> AXI-CDMA\n",
->>> +                      __func__, size);
->>> +    }
->>> +
->>> +    return value;
->>> +}
->>> +
->>> +static void axicdma_writel(void *opaque, hwaddr addr, uint32_t value,
->>> +                           unsigned size)
->>> +{
->>> +    XilinxAXICDMA *s = opaque;
->>> +
->>> +    if (s->addrwidth <= 32) {
->>> +        switch (addr) {
->>> +        case R_CURDESC_MSB:
->>> +        case R_TAILDESC_MSB:
->>> +        case R_SA_MSB:
->>> +        case R_DA_MSB:
->>> +            qemu_log_mask(LOG_GUEST_ERROR,
->>> +                          "%s: Invalid 32-bit write to 0x%" HWADDR_PRIX
->>> "\n",
->>> +                          __func__, addr);
->>> +            return;
->>> +        }
->>> +    }
->>> +
->>> +    switch (addr) {
->>> +    case R_CDMACR:
->>> +        axicdma_write_control(s, value);
->>> +        break;
->>> +    case R_CDMASR:
->>> +        axicdma_write_status(s, value);
->>> +        break;
->>> +    case R_CURDESC:
->>> +        axicdma_write_curdesc(s, deposit64(s->curdesc, 0, 32, value));
->>> +        break;
->>> +    case R_CURDESC_MSB:
->>> +        axicdma_write_curdesc(s, deposit64(s->curdesc, 32, 32, value));
->>> +        break;
->>> +    case R_TAILDESC:
->>> +        axicdma_write_taildesc(s, deposit64(s->taildesc, 0, 32, value));
->>> +        break;
->>> +    case R_TAILDESC_MSB:
->>> +        axicdma_write_taildesc(s, deposit64(s->taildesc, 32, 32,
->>> value));
->>> +        break;
->>> +    case R_SA:
->>> +        s->src = deposit64(s->src, 0, 32, value);
->>> +        break;
->>> +    case R_SA_MSB:
->>> +        s->src = deposit64(s->src, 32, 32, value);
->>> +        break;
->>> +    case R_DA:
->>> +        s->dest = deposit64(s->dest, 0, 32, value);
->>> +        break;
->>> +    case R_DA_MSB:
->>> +        s->dest = deposit64(s->dest, 32, 32, value);
->>> +        break;
->>> +    case R_BTT:
->>> +        axicdma_write_btt(s, value);
->>> +        break;
->>> +    default:
->>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>> +                      "%s: Invalid 32-bit write to 0x%" HWADDR_PRIX
->>> "\n",
->>> +                      __func__, addr);
->>> +    }
->>> +}
->>> +
->>> +static void axicdma_writeq(void *opaque, hwaddr addr, uint64_t value,
->>> +                           unsigned size)
->>> +{
->>> +    XilinxAXICDMA *s = opaque;
->>> +
->>> +    switch (addr) {
->>> +    case R_CDMACR:
->>> +        axicdma_write_control(s, value);
->>> +        break;
->>> +    case R_CDMASR:
->>> +        axicdma_write_status(s, value);
->>> +        break;
->>> +    case R_CURDESC:
->>> +        axicdma_write_curdesc(s, value);
->>> +        break;
->>> +    case R_TAILDESC:
->>> +        axicdma_write_taildesc(s, value);
->>> +        break;
->>> +    case R_SA:
->>> +        s->src = value;
->>> +        break;
->>> +    case R_DA:
->>> +        s->dest = value;
->>> +        break;
->>> +    case R_BTT:
->>> +        axicdma_write_btt(s, value);
->>> +        break;
->>> +    default:
->>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>> +                      "%s: Invalid 64-bit write to 0x%" HWADDR_PRIX
->>> "\n",
->>> +                      __func__, addr);
->>> +    }
->>> +}
->>> +
->>> +static void axicdma_write(void *opaque, hwaddr addr,
->>> +                          uint64_t value, unsigned size)
->>> +{
->>> +    switch (size) {
->>> +    case 4:
->>> +        axicdma_writel(opaque, addr, value, size);
->>> +        break;
->>> +    case 8:
->>> +        axicdma_writeq(opaque, addr, value, size);
->>> +        break;
->>> +    default:
->>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>> +                      "%s: Invalid write size %u to AXI-CDMA\n",
->>> +                      __func__, size);
->>> +    }
->>> +}
->>> +
->>> +static const MemoryRegionOps axicdma_ops = {
->>> +    .read = axicdma_read,
->>> +    .write = axicdma_write,
->>> +    .endianness = DEVICE_NATIVE_ENDIAN,
->>> +    .valid = {
->>> +        .min_access_size = 4,
->>> +        .max_access_size = 8
->>> +    },
->>> +    .impl = {
->>> +        .min_access_size = 4,
->>> +        .max_access_size = 8,
->>> +    },
->>> +};
->>> +
->>> +static void xilinx_axicdma_realize(DeviceState *dev, Error **errp)
->>> +{
->>> +    XilinxAXICDMA *s = XILINX_AXI_CDMA(dev);
->>> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->>> +
->>> +    memory_region_init_io(&s->mmio, OBJECT(dev), &axicdma_ops, s,
->>> +                          TYPE_XILINX_AXI_CDMA, R_MAX);
->>> +    sysbus_init_mmio(sbd, &s->mmio);
->>> +    sysbus_init_irq(sbd, &s->irq);
->>> +
->>> +    if (!s->dma_mr || s->dma_mr == get_system_memory()) {
->>> +        /* Avoid creating new AddressSpace for system memory. */
->>> +        s->as = &address_space_memory;
->>> +    } else {
->>> +        s->as = g_new0(AddressSpace, 1);
->>> +        address_space_init(s->as, s->dma_mr,
->>> memory_region_name(s->dma_mr));
->>> +    }
->>> +
->>> +    s->ptimer = ptimer_init(timer_hit, s, PTIMER_POLICY_DEFAULT);
->>> +    ptimer_transaction_begin(s->ptimer);
->>> +    ptimer_set_freq(s->ptimer, s->freqhz);
->>> +    ptimer_transaction_commit(s->ptimer);
->>> +}
->>> +
->>> +static void xilinx_axicdma_unrealize(DeviceState *dev)
->>> +{
->>> +    XilinxAXICDMA *s = XILINX_AXI_CDMA(dev);
->>> +
->>> +    if (s->ptimer) {
->>> +        ptimer_free(s->ptimer);
->>> +    }
->>> +
->>> +    if (s->as && s->dma_mr != get_system_memory()) {
->>> +        g_free(s->as);
->>> +    }
->>> +}
->>> +
->>> +static Property axicdma_properties[] = {
->>> +    DEFINE_PROP_UINT32("freqhz", XilinxAXICDMA, freqhz, 50000000),
->>> +    DEFINE_PROP_INT32("addrwidth", XilinxAXICDMA, addrwidth, 64),
->>> +    DEFINE_PROP_LINK("dma", XilinxAXICDMA, dma_mr,
->>> +                     TYPE_MEMORY_REGION, MemoryRegion *),
->>> +    DEFINE_PROP_END_OF_LIST(),
->>> +};
->>> +
->>> +static void xilinx_axicdma_reset_enter(Object *obj, ResetType type)
->>> +{
->>> +    axicdma_reset(XILINX_AXI_CDMA(obj));
->>> +}
->>> +
->>> +static void axicdma_class_init(ObjectClass *klass, void *data)
->>> +{
->>> +    DeviceClass *dc = DEVICE_CLASS(klass);
->>> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
->>> +
->>> +    dc->realize = xilinx_axicdma_realize;
->>> +    dc->unrealize = xilinx_axicdma_unrealize;
->>> +    device_class_set_props(dc, axicdma_properties);
->>> +
->>> +    rc->phases.enter = xilinx_axicdma_reset_enter;
->>> +}
->>> +
->>> +static const TypeInfo axicdma_info = {
->>> +    .name          = TYPE_XILINX_AXI_CDMA,
->>> +    .parent        = TYPE_SYS_BUS_DEVICE,
->>> +    .instance_size = sizeof(XilinxAXICDMA),
->>> +    .class_init    = axicdma_class_init,
->>> +};
->>> +
->>> +static void xilinx_axicdma_register_types(void)
->>> +{
->>> +    type_register_static(&axicdma_info);
->>> +}
->>> +
->>> +type_init(xilinx_axicdma_register_types)
->>> diff --git a/include/hw/dma/xilinx_axicdma.h
->>> b/include/hw/dma/xilinx_axicdma.h
->>> new file mode 100644
->>> index 0000000000..67b7cfce99
->>> --- /dev/null
->>> +++ b/include/hw/dma/xilinx_axicdma.h
->>> @@ -0,0 +1,72 @@
->>> +/*
->>> + * QEMU model of Xilinx AXI-CDMA block.
->>> + *
->>> + * Copyright (c) 2022 Frank Chang <frank.chang@sifive.com>.
->>> + *
->>> + * Permission is hereby granted, free of charge, to any person
->>> obtaining a copy
->>> + * of this software and associated documentation files (the
->>> "Software"), to deal
->>> + * in the Software without restriction, including without limitation
->>> the rights
->>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or
->>> sell
->>> + * copies of the Software, and to permit persons to whom the Software is
->>> + * furnished to do so, subject to the following conditions:
->>> + *
->>> + * The above copyright notice and this permission notice shall be
->>> included in
->>> + * all copies or substantial portions of the Software.
->>> + *
->>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
->>> EXPRESS OR
->>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
->>> MERCHANTABILITY,
->>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
->>> SHALL
->>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
->>> OTHER
->>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
->>> ARISING FROM,
->>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
->>> DEALINGS IN
->>> + * THE SOFTWARE.
->>> + */
->>> +
->>> +#include "exec/hwaddr.h"
->>> +#include "hw/ptimer.h"
->>> +#include "hw/sysbus.h"
->>> +#include "qom/object.h"
->>> +#include "qemu/units.h"
->>> +
->>> +#define CDMA_BUF_SIZE   (64 * KiB)
->>> +
->>> +typedef struct XilinxAXICDMA XilinxAXICDMA;
->>> +
->>> +#define TYPE_XILINX_AXI_CDMA "xlnx.axi-cdma"
->>> +OBJECT_DECLARE_SIMPLE_TYPE(XilinxAXICDMA, XILINX_AXI_CDMA)
->>> +
->>> +/* Scatter Gather Transfer Descriptor */
->>> +typedef struct SDesc {
->>> +    uint64_t nxtdesc;
->>> +    hwaddr src;
->>> +    hwaddr dest;
->>> +    uint32_t control;
->>> +    uint32_t status;
->>> +} SDesc;
->>> +
->>> +struct XilinxAXICDMA {
->>> +    /*< private >*/
->>> +    SysBusDevice parent_obj;
->>> +
->>> +    /*< public >*/
->>> +    MemoryRegion mmio;
->>> +    AddressSpace *as;
->>> +    MemoryRegion *dma_mr;
->>> +
->>> +    /* Properties */
->>> +    uint32_t control;
->>> +    uint32_t status;
->>> +    uint64_t curdesc;
->>> +    uint64_t taildesc;
->>> +    hwaddr src;
->>> +    hwaddr dest;
->>> +    uint32_t btt;
->>> +
->>> +    uint32_t freqhz;
->>> +    int32_t addrwidth;
->>> +    ptimer_state *ptimer;
->>> +    SDesc sdesc;
->>> +    qemu_irq irq;
->>> +    uint16_t complete_cnt;
->>> +    char buf[CDMA_BUF_SIZE];
->>> +};
->>> --
->>> 2.35.1
->>>
->>>
+>>
+>> Currently, Xilinx CDMA is used in our internal platform only, which is
+>> not upstream.
+>> Do you have any suggestions for the existing machine that I can add
+>> Xilinx CDMA to?
+>> Or perhaps, ARM virt machine?
+>>
+>
+> If there's a reference design somewhere we could use we could potentially
+> create a new zynqmp or versal based machine.
+>
 
---00000000000014d25d05de183952
+Thanks Edgar,
+
+Do you think it's a good idea to add CDMA in xlnx-zynqmp.c?
+(Though I found GDMA and ADMA already exist)
+
+I'm not familiar with Xilinx's FPGA family, and there are lots of variants.
+Not sure which machine is the best one for me to add CDMA.
+
+
+> It would be great if you guys had a public RISCV design with the CDMA that
+> we could model.
+>
+
+I would love to,
+but unfortunately, we don't have the spec for this model publicly yet.
+
+
+>
+>>
+>>
+>>>
+>>> The CDMA has a 32-bit AXI4-Lite port for register accesses (see page 6
+>>> and 8 in the spec you referenced), so axicdma_ops.impl.max should be 4 and
+>>> you shouldn't need the read/write q versions.
+>>>
+>>
+>> Okay, that's something I was not aware of.
+>>
+>> However, I have a question regarding the 64-bit address space.
+>>
+>> For 64-bit address space, i.e. xlnx,addrwidth = 64.
+>> The CDMA spec says that:
+>> "TAILDESC_PNTR[_MSB] register causes the AXI CDMA SG Engine
+>> to start fetching descriptors starting from the CURDESC_PNTR register
+>> value."
+>>
+>> It seems that DMA will start the transfer if either TAILDESC_PNTR or
+>> TAILDESC_PNTR_MSB is written.
+>> Then how can we guarantee that the full 64-bit address pointer is written
+>> before the DMA transfer is started if we can't write both TAILDESC_PNTR
+>> and TAILDESC_PNTR_MSB
+>> at the same time?
+>>
+>
+> This is described on pages 25 and 26:
+> "When the AXI CDMA is in SG Mode and the address space is 32 bits
+> (CDMACR.SGMode = 1), a write by the software application to the
+> TAILDESC_PNTR register causes the AXI CDMA SG Engine to start fetching
+> descriptors"
+>
+> I.e TAILDESC_PNTR only starts the DMA if 32bit addresses have been
+> selected.
+> If 64bit addresses are selected, TAILDESC_PNTR_MSB starts the DMA:
+>
+> "When the AXI CDMA is in SG Mode, and the address space is more than 32
+> bits, (CDMACR.SGMode = 1), a write by the software application to the
+> TAILDESC_PNTR_MSB register causes the AXI CDMA SG Engine to start fetching
+> descriptors"
+>
+
+I guess I missed the description: "the address space is 32 bits" for
+TAILDESC_PNTR register in the spec.
+I will fix it in my next version patchset.
+
+Regards,
+Frank Chang
+
+
+>
+>
+>
+>>
+>> I'm also awarded that Xilinx CDMA Linux driver also has separate 32-bit
+>> writes for a 64-bit address.
+>> But wouldn't that cause, e.g. dmatest to be failed?
+>>
+>
+> The driver probably relies on the interconnect to down-size the 64bit
+> access to 2x32bit ones. QEMU will do the same so this shouldn't be a
+> problem.
+>
+> Best regards,
+> Edgar
+>
+>
+>
+>>
+>> Regards,
+>> Frank Chang
+>>
+>>
+>>>
+>>> Best regards,
+>>> Edgar
+>>>
+>>>
+>>>
+>>>>
+>>>> Signed-off-by: Frank Chang <frank.chang@sifive.com>
+>>>> Reviewed-by: Jim Shu <jim.shu@sifive.com>
+>>>> ---
+>>>>  hw/dma/meson.build              |   2 +-
+>>>>  hw/dma/xilinx_axicdma.c         | 792 ++++++++++++++++++++++++++++++++
+>>>>  include/hw/dma/xilinx_axicdma.h |  72 +++
+>>>>  3 files changed, 865 insertions(+), 1 deletion(-)
+>>>>  create mode 100644 hw/dma/xilinx_axicdma.c
+>>>>  create mode 100644 include/hw/dma/xilinx_axicdma.h
+>>>>
+>>>> diff --git a/hw/dma/meson.build b/hw/dma/meson.build
+>>>> index f3f0661bc3..85edf80b82 100644
+>>>> --- a/hw/dma/meson.build
+>>>> +++ b/hw/dma/meson.build
+>>>> @@ -3,7 +3,7 @@ softmmu_ss.add(when: 'CONFIG_PL080', if_true:
+>>>> files('pl080.c'))
+>>>>  softmmu_ss.add(when: 'CONFIG_PL330', if_true: files('pl330.c'))
+>>>>  softmmu_ss.add(when: 'CONFIG_I82374', if_true: files('i82374.c'))
+>>>>  softmmu_ss.add(when: 'CONFIG_I8257', if_true: files('i8257.c'))
+>>>> -softmmu_ss.add(when: 'CONFIG_XILINX_AXI', if_true:
+>>>> files('xilinx_axidma.c'))
+>>>> +softmmu_ss.add(when: 'CONFIG_XILINX_AXI', if_true:
+>>>> files('xilinx_axidma.c', 'xilinx_axicdma.c'))
+>>>>  softmmu_ss.add(when: 'CONFIG_ZYNQ_DEVCFG', if_true:
+>>>> files('xlnx-zynq-devcfg.c'))
+>>>>  softmmu_ss.add(when: 'CONFIG_ETRAXFS', if_true: files('etraxfs_dma.c'))
+>>>>  softmmu_ss.add(when: 'CONFIG_STP2000', if_true: files('sparc32_dma.c'))
+>>>> diff --git a/hw/dma/xilinx_axicdma.c b/hw/dma/xilinx_axicdma.c
+>>>> new file mode 100644
+>>>> index 0000000000..50aec3ec45
+>>>> --- /dev/null
+>>>> +++ b/hw/dma/xilinx_axicdma.c
+>>>> @@ -0,0 +1,792 @@
+>>>> +/*
+>>>> + * QEMU model of Xilinx AXI-CDMA block.
+>>>> + *
+>>>> + * Copyright (c) 2022 Frank Chang <frank.chang@sifive.com>.
+>>>> + *
+>>>> + * Permission is hereby granted, free of charge, to any person
+>>>> obtaining a copy
+>>>> + * of this software and associated documentation files (the
+>>>> "Software"), to deal
+>>>> + * in the Software without restriction, including without limitation
+>>>> the rights
+>>>> + * to use, copy, modify, merge, publish, distribute, sublicense,
+>>>> and/or sell
+>>>> + * copies of the Software, and to permit persons to whom the Software
+>>>> is
+>>>> + * furnished to do so, subject to the following conditions:
+>>>> + *
+>>>> + * The above copyright notice and this permission notice shall be
+>>>> included in
+>>>> + * all copies or substantial portions of the Software.
+>>>> + *
+>>>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+>>>> EXPRESS OR
+>>>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+>>>> MERCHANTABILITY,
+>>>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+>>>> SHALL
+>>>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+>>>> OR OTHER
+>>>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+>>>> ARISING FROM,
+>>>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>> DEALINGS IN
+>>>> + * THE SOFTWARE.
+>>>> + */
+>>>> +
+>>>> +#include "qemu/osdep.h"
+>>>> +#include "hw/hw.h"
+>>>> +#include "hw/irq.h"
+>>>> +#include "hw/ptimer.h"
+>>>> +#include "hw/qdev-properties.h"
+>>>> +#include "hw/sysbus.h"
+>>>> +#include "qapi/error.h"
+>>>> +#include "qemu/log.h"
+>>>> +#include "qemu/module.h"
+>>>> +#include "qemu/timer.h"
+>>>> +#include "qom/object.h"
+>>>> +#include "sysemu/dma.h"
+>>>> +#include "hw/dma/xilinx_axicdma.h"
+>>>> +
+>>>> +#define R_CDMACR                    0x00
+>>>> +#define R_CDMASR                    0x04
+>>>> +#define R_CURDESC                   0x08
+>>>> +#define R_CURDESC_MSB               0x0c
+>>>> +#define R_TAILDESC                  0x10
+>>>> +#define R_TAILDESC_MSB              0x14
+>>>> +#define R_SA                        0x18
+>>>> +#define R_SA_MSB                    0x1c
+>>>> +#define R_DA                        0x20
+>>>> +#define R_DA_MSB                    0x24
+>>>> +#define R_BTT                       0x28
+>>>> +
+>>>> +#define R_MAX                       0x30
+>>>> +
+>>>> +/* CDMACR */
+>>>> +#define CDMACR_TAIL_PNTR_EN         BIT(1)
+>>>> +#define CDMACR_RESET                BIT(2)
+>>>> +#define CDMACR_SGMODE               BIT(3)
+>>>> +#define CDMACR_KEY_HOLE_READ        BIT(4)
+>>>> +#define CDMACR_KEY_HOLE_WRITE       BIT(5)
+>>>> +#define CDMACR_CYCLIC_BD_ENABLE     BIT(6)
+>>>> +#define CDMACR_IOC_IRQ_EN           BIT(12)
+>>>> +#define CDMACR_DLY_IRQ_EN           BIT(13)
+>>>> +#define CDMACR_ERR_IRQ_EN           BIT(14)
+>>>> +
+>>>> +#define CDMACR_MASK                 0xffff707c
+>>>> +
+>>>> +/* TailPntrEn = 1,  IRQThreshold = 1. */
+>>>> +#define CDMACR_DEFAULT              0x10002
+>>>> +
+>>>> +/* CDMASR */
+>>>> +#define CDMASR_IDLE                 BIT(1)
+>>>> +#define CDMASR_SG_INCLUD            BIT(3)
+>>>> +#define CDMASR_DMA_INT_ERR          BIT(4)
+>>>> +#define CDMASR_DMA_SLV_ERR          BIT(5)
+>>>> +#define CDMASR_DMA_DEC_ERR          BIT(6)
+>>>> +#define CDMASR_SG_INT_ERR           BIT(8)
+>>>> +#define CDMASR_SG_SLV_ERR           BIT(9)
+>>>> +#define CDMASR_SG_DEC_ERR           BIT(10)
+>>>> +#define CDMASR_IOC_IRQ              BIT(12)
+>>>> +#define CDMASR_DLY_IRQ              BIT(13)
+>>>> +#define CDMASR_ERR_IRQ              BIT(14)
+>>>> +
+>>>> +#define CDMASR_IRQ_THRES_SHIFT      16
+>>>> +#define CDMASR_IRQ_THRES_WIDTH      8
+>>>> +#define CDMASR_IRQ_DELAY_SHIFT      24
+>>>> +#define CDMASR_IRQ_DELAY_WIDTH      8
+>>>> +
+>>>> +#define CDMASR_IRQ_MASK             (CDMASR_IOC_IRQ | \
+>>>> +                                     CDMASR_DLY_IRQ | \
+>>>> +                                     CDMASR_ERR_IRQ)
+>>>> +
+>>>> +/* Idle = 1, SGIncld = 1, IRQThresholdSts = 1. */
+>>>> +#define CDMASR_DEFAULT              0x1000a
+>>>> +
+>>>> +#define CURDESC_MASK                0xffffffc0
+>>>> +
+>>>> +#define TAILDESC_MASK               0xffffffc0
+>>>> +
+>>>> +#define BTT_MAX_SIZE                (1UL << 26)
+>>>> +#define BTT_MASK                    (BTT_MAX_SIZE - 1)
+>>>> +
+>>>> +/* SDesc - Status */
+>>>> +#define SDEC_STATUS_DMA_INT_ERR     BIT(28)
+>>>> +#define SDEC_STATUS_DMA_SLV_ERR     BIT(29)
+>>>> +#define SDEC_STATUS_DMA_DEC_ERR     BIT(30)
+>>>> +#define SDEC_STATUS_DMA_CMPLT       BIT(31)
+>>>> +
+>>>> +
+>>>> +static void axicdma_set_dma_err(XilinxAXICDMA *s, uint32_t err);
+>>>> +static void axicdma_set_sg_dma_err(XilinxAXICDMA *s, uint32_t err,
+>>>> hwaddr addr);
+>>>> +static void axicdma_set_sg_err(XilinxAXICDMA *s, uint32_t err);
+>>>> +
+>>>> +static void axicdma_update_irq(XilinxAXICDMA *s)
+>>>> +{
+>>>> +    uint32_t enable, pending;
+>>>> +
+>>>> +    enable = s->control & CDMASR_IRQ_MASK;
+>>>> +    pending = s->status & CDMASR_IRQ_MASK;
+>>>> +
+>>>> +    qemu_set_irq(s->irq, !!(enable & pending));
+>>>> +}
+>>>> +
+>>>> +static void axicdma_set_irq(XilinxAXICDMA *s, uint32_t irq, bool level)
+>>>> +{
+>>>> +    g_assert(irq == CDMASR_IOC_IRQ ||
+>>>> +             irq == CDMASR_DLY_IRQ ||
+>>>> +             irq == CDMASR_ERR_IRQ);
+>>>> +
+>>>> +    if (level) {
+>>>> +        s->status |= irq;
+>>>> +    } else {
+>>>> +        s->status &= ~irq;
+>>>> +    }
+>>>> +
+>>>> +    axicdma_update_irq(s);
+>>>> +}
+>>>> +
+>>>> +static void axicdma_reload_complete_cnt(XilinxAXICDMA *s)
+>>>> +{
+>>>> +    s->complete_cnt = extract32(s->control, CDMASR_IRQ_THRES_SHIFT,
+>>>> +                                CDMASR_IRQ_THRES_WIDTH);
+>>>> +}
+>>>> +
+>>>> +static void timer_hit(void *opaque)
+>>>> +{
+>>>> +    XilinxAXICDMA *s = XILINX_AXI_CDMA(opaque);
+>>>> +
+>>>> +    axicdma_set_irq(s, CDMASR_DLY_IRQ, true);
+>>>> +    axicdma_reload_complete_cnt(s);
+>>>> +}
+>>>> +
+>>>> +static bool sdesc_load(XilinxAXICDMA *s, hwaddr addr)
+>>>> +{
+>>>> +    SDesc *d = &s->sdesc;
+>>>> +    MemTxResult ret;
+>>>> +
+>>>> +    ret = address_space_read(s->as, addr, MEMTXATTRS_UNSPECIFIED,
+>>>> +                             d, sizeof(SDesc));
+>>>> +    if (ret != MEMTX_OK) {
+>>>> +        axicdma_set_sg_err(s, CDMASR_SG_DEC_ERR);
+>>>> +        return false;
+>>>> +    }
+>>>> +
+>>>> +    /* Convert from LE into host endianness. */
+>>>> +    d->nxtdesc = le64_to_cpu(d->nxtdesc);
+>>>> +    d->src = le64_to_cpu(d->src);
+>>>> +    d->dest = le64_to_cpu(d->dest);
+>>>> +    d->control = le32_to_cpu(d->control);
+>>>> +    d->status = le32_to_cpu(d->status);
+>>>> +
+>>>> +    return true;
+>>>> +}
+>>>> +
+>>>> +static bool sdesc_store(XilinxAXICDMA *s, hwaddr addr)
+>>>> +{
+>>>> +    SDesc *d = &s->sdesc;
+>>>> +    MemTxResult ret;
+>>>> +
+>>>> +    /* Convert from host endianness into LE. */
+>>>> +    d->nxtdesc = cpu_to_le64(d->nxtdesc);
+>>>> +    d->src = cpu_to_le64(d->src);
+>>>> +    d->dest = cpu_to_le64(d->dest);
+>>>> +    d->control = cpu_to_le32(d->control);
+>>>> +    d->status = cpu_to_le32(d->status);
+>>>> +
+>>>> +    ret = address_space_write(s->as, addr, MEMTXATTRS_UNSPECIFIED,
+>>>> +                              d, sizeof(SDesc));
+>>>> +    if (ret != MEMTX_OK) {
+>>>> +        axicdma_set_sg_err(s, CDMASR_SG_DEC_ERR);
+>>>> +        return false;
+>>>> +    }
+>>>> +
+>>>> +    return true;
+>>>> +}
+>>>> +
+>>>> +static void sdesc_complete(XilinxAXICDMA *s)
+>>>> +{
+>>>> +    uint32_t irq_delay = extract32(s->control, CDMASR_IRQ_DELAY_SHIFT,
+>>>> +                                   CDMASR_IRQ_DELAY_WIDTH);
+>>>> +
+>>>> +    if (irq_delay) {
+>>>> +        /* Restart the delayed timer. */
+>>>> +        ptimer_transaction_begin(s->ptimer);
+>>>> +        ptimer_stop(s->ptimer);
+>>>> +        ptimer_set_count(s->ptimer, irq_delay);
+>>>> +        ptimer_run(s->ptimer, 1);
+>>>> +        ptimer_transaction_commit(s->ptimer);
+>>>> +    }
+>>>> +
+>>>> +    s->complete_cnt--;
+>>>> +
+>>>> +    if (s->complete_cnt == 0) {
+>>>> +        /* Raise the IOC irq. */
+>>>> +        axicdma_set_irq(s, CDMASR_IOC_IRQ, true);
+>>>> +        axicdma_reload_complete_cnt(s);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +static inline bool axicdma_sgmode(XilinxAXICDMA *s)
+>>>> +{
+>>>> +    return !!(s->control & CDMACR_SGMODE);
+>>>> +}
+>>>> +
+>>>> +static void axicdma_set_dma_err(XilinxAXICDMA *s, uint32_t err)
+>>>> +{
+>>>> +    g_assert(err == CDMASR_DMA_INT_ERR ||
+>>>> +             err == CDMASR_DMA_SLV_ERR ||
+>>>> +             err == CDMASR_DMA_DEC_ERR);
+>>>> +
+>>>> +    s->status |= err;
+>>>> +    axicdma_set_irq(s, CDMASR_ERR_IRQ, true);
+>>>> +}
+>>>> +
+>>>> +static void axicdma_set_sg_dma_err(XilinxAXICDMA *s, uint32_t err,
+>>>> hwaddr addr)
+>>>> +{
+>>>> +    g_assert(axicdma_sgmode(s));
+>>>> +
+>>>> +    axicdma_set_dma_err(s, err);
+>>>> +
+>>>> +    /*
+>>>> +     * There are 24-bit shift between
+>>>> +     * SDesc status bit and CDMACR.DMA_[INT|SLV|DEC]_ERR bit.
+>>>> +     */
+>>>> +    s->sdesc.status |= (err << 24);
+>>>> +    sdesc_store(s, addr);
+>>>> +}
+>>>> +
+>>>> +static void axicdma_set_sg_err(XilinxAXICDMA *s, uint32_t err)
+>>>> +{
+>>>> +    g_assert(err == CDMASR_SG_INT_ERR ||
+>>>> +             err == CDMASR_SG_SLV_ERR ||
+>>>> +             err == CDMASR_SG_DEC_ERR);
+>>>> +
+>>>> +    s->status |= err;
+>>>> +    axicdma_set_irq(s, CDMASR_ERR_IRQ, true);
+>>>> +}
+>>>> +
+>>>> +static bool axicdma_perform_dma(XilinxAXICDMA *s, hwaddr src, hwaddr
+>>>> dest,
+>>>> +                                uint32_t btt)
+>>>> +{
+>>>> +    uint32_t r_off = 0, w_off = 0;
+>>>> +    uint32_t len;
+>>>> +    MemTxResult ret;
+>>>> +
+>>>> +    while (btt > 0) {
+>>>> +        len = MIN(btt, CDMA_BUF_SIZE);
+>>>> +
+>>>> +        ret = dma_memory_read(s->as, src + r_off, s->buf + r_off, len,
+>>>> +                              MEMTXATTRS_UNSPECIFIED);
+>>>> +        if (ret != MEMTX_OK) {
+>>>> +            return false;
+>>>> +        }
+>>>> +
+>>>> +        ret = dma_memory_write(s->as, dest + w_off, s->buf + w_off,
+>>>> len,
+>>>> +                               MEMTXATTRS_UNSPECIFIED);
+>>>> +        if (ret != MEMTX_OK) {
+>>>> +            return false;
+>>>> +        }
+>>>> +
+>>>> +        btt -= len;
+>>>> +
+>>>> +        if (!(s->control & CDMACR_KEY_HOLE_READ)) {
+>>>> +            r_off += len;
+>>>> +        }
+>>>> +
+>>>> +        if (!(s->control & CDMACR_KEY_HOLE_WRITE)) {
+>>>> +            w_off += len;
+>>>> +        }
+>>>> +    }
+>>>> +
+>>>> +    return true;
+>>>> +}
+>>>> +
+>>>> +static void axicdma_run_simple(XilinxAXICDMA *s)
+>>>> +{
+>>>> +    if (!s->btt) {
+>>>> +        /* Value of zero BTT is not allowed. */
+>>>> +        axicdma_set_dma_err(s, CDMASR_DMA_INT_ERR);
+>>>> +        return;
+>>>> +    }
+>>>> +
+>>>> +    if (!axicdma_perform_dma(s, s->src, s->dest, s->btt)) {
+>>>> +        axicdma_set_dma_err(s, CDMASR_DMA_DEC_ERR);
+>>>> +        return;
+>>>> +    }
+>>>> +
+>>>> +    /* Generate IOC interrupt. */
+>>>> +    axicdma_set_irq(s, CDMASR_IOC_IRQ, true);
+>>>> +}
+>>>> +
+>>>> +static void axicdma_run_sgmode(XilinxAXICDMA *s)
+>>>> +{
+>>>> +    uint64_t pdesc;
+>>>> +    uint32_t btt;
+>>>> +
+>>>> +    while (1) {
+>>>> +        if (!sdesc_load(s, s->curdesc)) {
+>>>> +            break;
+>>>> +        }
+>>>> +
+>>>> +        if (s->sdesc.status & SDEC_STATUS_DMA_CMPLT) {
+>>>> +            axicdma_set_sg_err(s, CDMASR_SG_INT_ERR);
+>>>> +            break;
+>>>> +        }
+>>>> +
+>>>> +        btt = s->sdesc.control & BTT_MASK;
+>>>> +
+>>>> +        if (btt == 0) {
+>>>> +            /* Value of zero BTT is not allowed. */
+>>>> +            axicdma_set_sg_err(s, CDMASR_SG_INT_ERR);
+>>>> +            break;
+>>>> +        }
+>>>> +
+>>>> +        if (!axicdma_perform_dma(s, s->sdesc.src, s->sdesc.dest, btt))
+>>>> {
+>>>> +            axicdma_set_sg_dma_err(s, CDMASR_DMA_DEC_ERR, s->curdesc);
+>>>> +            break;
+>>>> +        }
+>>>> +
+>>>> +        /* Update the descriptor. */
+>>>> +        s->sdesc.status |= SDEC_STATUS_DMA_CMPLT;
+>>>> +        sdesc_store(s, s->curdesc);
+>>>> +        sdesc_complete(s);
+>>>> +
+>>>> +        /* Advance current descriptor pointer. */
+>>>> +        pdesc = s->curdesc;
+>>>> +        s->curdesc = s->sdesc.nxtdesc;
+>>>> +
+>>>> +        if (!(s->control & CDMACR_CYCLIC_BD_ENABLE) &&
+>>>> +            pdesc == s->taildesc) {
+>>>> +            /* Reach the tail descriptor. */
+>>>> +            break;
+>>>> +        }
+>>>> +    }
+>>>> +
+>>>> +    /* Stop the delayed timer. */
+>>>> +    ptimer_transaction_begin(s->ptimer);
+>>>> +    ptimer_stop(s->ptimer);
+>>>> +    ptimer_transaction_commit(s->ptimer);
+>>>> +}
+>>>> +
+>>>> +static void axicdma_run(XilinxAXICDMA *s)
+>>>> +{
+>>>> +    bool sgmode = axicdma_sgmode(s);
+>>>> +
+>>>> +    /* Not idle. */
+>>>> +    s->status &= ~CDMASR_IDLE;
+>>>> +
+>>>> +    if (!sgmode) {
+>>>> +        axicdma_run_simple(s);
+>>>> +    } else {
+>>>> +        axicdma_run_sgmode(s);
+>>>> +    }
+>>>> +
+>>>> +    /* Idle. */
+>>>> +    s->status |= CDMASR_IDLE;
+>>>> +}
+>>>> +
+>>>> +static void axicdma_reset(XilinxAXICDMA *s)
+>>>> +{
+>>>> +    s->control = CDMACR_DEFAULT;
+>>>> +    s->status = CDMASR_DEFAULT;
+>>>> +    s->complete_cnt = 1;
+>>>> +    qemu_irq_lower(s->irq);
+>>>> +}
+>>>> +
+>>>> +static void axicdma_write_control(XilinxAXICDMA *s, uint32_t value)
+>>>> +{
+>>>> +    if (value & CDMACR_RESET) {
+>>>> +        axicdma_reset(s);
+>>>> +        return;
+>>>> +    }
+>>>> +
+>>>> +    /*
+>>>> +     * The minimum setting for the threshold is 0x01.
+>>>> +     * A write of 0x00 to CDMACR.IRQThreshold has no effect.
+>>>> +     */
+>>>> +    if (!extract32(value, CDMASR_IRQ_THRES_SHIFT,
+>>>> CDMASR_IRQ_THRES_WIDTH)) {
+>>>> +        value = deposit32(value, CDMASR_IRQ_THRES_SHIFT,
+>>>> CDMASR_IRQ_THRES_WIDTH,
+>>>> +                          s->control);
+>>>> +    }
+>>>> +
+>>>> +    /*
+>>>> +     * AXI CDMA is built with SG enabled,
+>>>> +     * tail pointer mode is always enabled.
+>>>> +     */
+>>>> +    s->control = (value & CDMACR_MASK) | CDMACR_TAIL_PNTR_EN;
+>>>> +
+>>>> +    if (!axicdma_sgmode(s)) {
+>>>> +        /*
+>>>> +         * CDMASR.Dly_Irq, CURDESC_PNTR, TAILDESC_PNTR are cleared
+>>>> +         * when not in SGMode.
+>>>> +         */
+>>>> +        s->status &= ~CDMASR_DLY_IRQ;
+>>>> +        s->curdesc = 0;
+>>>> +        s->taildesc = 0;
+>>>> +    }
+>>>> +
+>>>> +    axicdma_reload_complete_cnt(s);
+>>>> +}
+>>>> +
+>>>> +static uint32_t axicdma_read_status(XilinxAXICDMA *s)
+>>>> +{
+>>>> +    uint32_t value = s->status;
+>>>> +
+>>>> +    value = deposit32(value, CDMASR_IRQ_THRES_SHIFT,
+>>>> +                      CDMASR_IRQ_THRES_WIDTH, s->complete_cnt);
+>>>> +    value = deposit32(value, CDMASR_IRQ_DELAY_SHIFT,
+>>>> +                      CDMASR_IRQ_DELAY_WIDTH,
+>>>> ptimer_get_count(s->ptimer));
+>>>> +
+>>>> +    return value;
+>>>> +}
+>>>> +
+>>>> +static void axicdma_write_status(XilinxAXICDMA *s, uint32_t value)
+>>>> +{
+>>>> +    /* Write 1s to clear interrupts. */
+>>>> +    s->status &= ~(value & CDMASR_IRQ_MASK);
+>>>> +    axicdma_update_irq(s);
+>>>> +}
+>>>> +
+>>>> +static void axicdma_write_curdesc(XilinxAXICDMA *s, uint64_t value)
+>>>> +{
+>>>> +    /* Should be idle. */
+>>>> +    g_assert(s->status & CDMASR_IDLE);
+>>>> +
+>>>> +    if (!axicdma_sgmode(s)) {
+>>>> +        /* This register is cleared if SGMode = 0. */
+>>>> +        return;
+>>>> +    }
+>>>> +
+>>>> +    s->curdesc = value & CURDESC_MASK;
+>>>> +}
+>>>> +
+>>>> +static void axicdma_write_taildesc(XilinxAXICDMA *s, uint64_t value)
+>>>> +{
+>>>> +    /* Should be idle. */
+>>>> +    g_assert(s->status & CDMASR_IDLE);
+>>>> +
+>>>> +    if (!axicdma_sgmode(s)) {
+>>>> +        /* This register is cleared if SGMode = 0. */
+>>>> +        return;
+>>>> +    }
+>>>> +
+>>>> +    s->taildesc = value & TAILDESC_MASK;
+>>>> +
+>>>> +    /* Kick-off CDMA. */
+>>>> +    axicdma_run(s);
+>>>> +}
+>>>> +
+>>>> +static void axicdma_write_btt(XilinxAXICDMA *s, uint64_t value)
+>>>> +{
+>>>> +    s->btt = value & BTT_MASK;
+>>>> +
+>>>> +    if (!axicdma_sgmode(s)) {
+>>>> +        /* Kick-off CDMA. */
+>>>> +        axicdma_run(s);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +static uint32_t axicdma_readl(void *opaque, hwaddr addr, unsigned size)
+>>>> +{
+>>>> +    XilinxAXICDMA *s = opaque;
+>>>> +    uint32_t value = 0;
+>>>> +
+>>>> +    if (s->addrwidth <= 32) {
+>>>> +        switch (addr) {
+>>>> +        case R_CURDESC_MSB:
+>>>> +        case R_TAILDESC_MSB:
+>>>> +        case R_SA_MSB:
+>>>> +        case R_DA_MSB:
+>>>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>>>> +                          "%s: Invalid 32-bit read to 0x%" HWADDR_PRIX
+>>>> "\n",
+>>>> +                          __func__, addr);
+>>>> +            return value;
+>>>> +        }
+>>>> +    }
+>>>> +
+>>>> +    switch (addr) {
+>>>> +    case R_CDMACR:
+>>>> +        value = s->control;
+>>>> +        break;
+>>>> +    case R_CDMASR:
+>>>> +        value = axicdma_read_status(s);
+>>>> +        break;
+>>>> +    case R_CURDESC:
+>>>> +        value = s->curdesc;
+>>>> +        break;
+>>>> +    case R_CURDESC_MSB:
+>>>> +        value = extract64(s->curdesc, 32, 32);
+>>>> +        break;
+>>>> +    case R_TAILDESC:
+>>>> +        value = s->taildesc;
+>>>> +        break;
+>>>> +    case R_TAILDESC_MSB:
+>>>> +        value = extract64(s->taildesc, 32, 32);
+>>>> +        break;
+>>>> +    case R_SA:
+>>>> +        value = s->src;
+>>>> +        break;
+>>>> +    case R_SA_MSB:
+>>>> +        value = extract64(s->src, 32, 32);
+>>>> +        break;
+>>>> +    case R_DA:
+>>>> +        value = s->dest;
+>>>> +        break;
+>>>> +    case R_DA_MSB:
+>>>> +        value = extract64(s->dest, 32, 32);
+>>>> +        break;
+>>>> +    case R_BTT:
+>>>> +        value = s->btt;
+>>>> +        break;
+>>>> +    default:
+>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>> +                      "%s: Invalid 32-bit read to 0x%" HWADDR_PRIX
+>>>> "\n",
+>>>> +                      __func__, addr);
+>>>> +    }
+>>>> +
+>>>> +    return value;
+>>>> +}
+>>>> +
+>>>> +static uint32_t axicdma_readq(void *opaque, hwaddr addr, unsigned size)
+>>>> +{
+>>>> +    XilinxAXICDMA *s = opaque;
+>>>> +    uint64_t value = 0;
+>>>> +
+>>>> +    switch (addr) {
+>>>> +    case R_CDMACR:
+>>>> +        value = s->control;
+>>>> +        break;
+>>>> +    case R_CDMASR:
+>>>> +        value = axicdma_read_status(s);
+>>>> +        break;
+>>>> +    case R_CURDESC:
+>>>> +        value = s->curdesc;
+>>>> +        break;
+>>>> +    case R_TAILDESC:
+>>>> +        value = s->taildesc;
+>>>> +        break;
+>>>> +    case R_SA:
+>>>> +        value = s->src;
+>>>> +        break;
+>>>> +    case R_DA:
+>>>> +        value = s->dest;
+>>>> +        break;
+>>>> +    case R_BTT:
+>>>> +        value = s->btt;
+>>>> +        break;
+>>>> +    default:
+>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>> +                      "%s: Invalid 64-bit read to 0x%" HWADDR_PRIX
+>>>> "\n",
+>>>> +                      __func__, addr);
+>>>> +    }
+>>>> +
+>>>> +    return value;
+>>>> +}
+>>>> +
+>>>> +static uint64_t axicdma_read(void *opaque, hwaddr addr, unsigned size)
+>>>> +{
+>>>> +    uint64_t value = 0;
+>>>> +
+>>>> +    switch (size) {
+>>>> +    case 4:
+>>>> +        value = axicdma_readl(opaque, addr, size);
+>>>> +        break;
+>>>> +    case 8:
+>>>> +        value = axicdma_readq(opaque, addr, size);
+>>>> +        break;
+>>>> +    default:
+>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid read size %u to
+>>>> AXI-CDMA\n",
+>>>> +                      __func__, size);
+>>>> +    }
+>>>> +
+>>>> +    return value;
+>>>> +}
+>>>> +
+>>>> +static void axicdma_writel(void *opaque, hwaddr addr, uint32_t value,
+>>>> +                           unsigned size)
+>>>> +{
+>>>> +    XilinxAXICDMA *s = opaque;
+>>>> +
+>>>> +    if (s->addrwidth <= 32) {
+>>>> +        switch (addr) {
+>>>> +        case R_CURDESC_MSB:
+>>>> +        case R_TAILDESC_MSB:
+>>>> +        case R_SA_MSB:
+>>>> +        case R_DA_MSB:
+>>>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>>>> +                          "%s: Invalid 32-bit write to 0x%"
+>>>> HWADDR_PRIX "\n",
+>>>> +                          __func__, addr);
+>>>> +            return;
+>>>> +        }
+>>>> +    }
+>>>> +
+>>>> +    switch (addr) {
+>>>> +    case R_CDMACR:
+>>>> +        axicdma_write_control(s, value);
+>>>> +        break;
+>>>> +    case R_CDMASR:
+>>>> +        axicdma_write_status(s, value);
+>>>> +        break;
+>>>> +    case R_CURDESC:
+>>>> +        axicdma_write_curdesc(s, deposit64(s->curdesc, 0, 32, value));
+>>>> +        break;
+>>>> +    case R_CURDESC_MSB:
+>>>> +        axicdma_write_curdesc(s, deposit64(s->curdesc, 32, 32, value));
+>>>> +        break;
+>>>> +    case R_TAILDESC:
+>>>> +        axicdma_write_taildesc(s, deposit64(s->taildesc, 0, 32,
+>>>> value));
+>>>> +        break;
+>>>> +    case R_TAILDESC_MSB:
+>>>> +        axicdma_write_taildesc(s, deposit64(s->taildesc, 32, 32,
+>>>> value));
+>>>> +        break;
+>>>> +    case R_SA:
+>>>> +        s->src = deposit64(s->src, 0, 32, value);
+>>>> +        break;
+>>>> +    case R_SA_MSB:
+>>>> +        s->src = deposit64(s->src, 32, 32, value);
+>>>> +        break;
+>>>> +    case R_DA:
+>>>> +        s->dest = deposit64(s->dest, 0, 32, value);
+>>>> +        break;
+>>>> +    case R_DA_MSB:
+>>>> +        s->dest = deposit64(s->dest, 32, 32, value);
+>>>> +        break;
+>>>> +    case R_BTT:
+>>>> +        axicdma_write_btt(s, value);
+>>>> +        break;
+>>>> +    default:
+>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>> +                      "%s: Invalid 32-bit write to 0x%" HWADDR_PRIX
+>>>> "\n",
+>>>> +                      __func__, addr);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +static void axicdma_writeq(void *opaque, hwaddr addr, uint64_t value,
+>>>> +                           unsigned size)
+>>>> +{
+>>>> +    XilinxAXICDMA *s = opaque;
+>>>> +
+>>>> +    switch (addr) {
+>>>> +    case R_CDMACR:
+>>>> +        axicdma_write_control(s, value);
+>>>> +        break;
+>>>> +    case R_CDMASR:
+>>>> +        axicdma_write_status(s, value);
+>>>> +        break;
+>>>> +    case R_CURDESC:
+>>>> +        axicdma_write_curdesc(s, value);
+>>>> +        break;
+>>>> +    case R_TAILDESC:
+>>>> +        axicdma_write_taildesc(s, value);
+>>>> +        break;
+>>>> +    case R_SA:
+>>>> +        s->src = value;
+>>>> +        break;
+>>>> +    case R_DA:
+>>>> +        s->dest = value;
+>>>> +        break;
+>>>> +    case R_BTT:
+>>>> +        axicdma_write_btt(s, value);
+>>>> +        break;
+>>>> +    default:
+>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>> +                      "%s: Invalid 64-bit write to 0x%" HWADDR_PRIX
+>>>> "\n",
+>>>> +                      __func__, addr);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +static void axicdma_write(void *opaque, hwaddr addr,
+>>>> +                          uint64_t value, unsigned size)
+>>>> +{
+>>>> +    switch (size) {
+>>>> +    case 4:
+>>>> +        axicdma_writel(opaque, addr, value, size);
+>>>> +        break;
+>>>> +    case 8:
+>>>> +        axicdma_writeq(opaque, addr, value, size);
+>>>> +        break;
+>>>> +    default:
+>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>> +                      "%s: Invalid write size %u to AXI-CDMA\n",
+>>>> +                      __func__, size);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +static const MemoryRegionOps axicdma_ops = {
+>>>> +    .read = axicdma_read,
+>>>> +    .write = axicdma_write,
+>>>> +    .endianness = DEVICE_NATIVE_ENDIAN,
+>>>> +    .valid = {
+>>>> +        .min_access_size = 4,
+>>>> +        .max_access_size = 8
+>>>> +    },
+>>>> +    .impl = {
+>>>> +        .min_access_size = 4,
+>>>> +        .max_access_size = 8,
+>>>> +    },
+>>>> +};
+>>>> +
+>>>> +static void xilinx_axicdma_realize(DeviceState *dev, Error **errp)
+>>>> +{
+>>>> +    XilinxAXICDMA *s = XILINX_AXI_CDMA(dev);
+>>>> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>>>> +
+>>>> +    memory_region_init_io(&s->mmio, OBJECT(dev), &axicdma_ops, s,
+>>>> +                          TYPE_XILINX_AXI_CDMA, R_MAX);
+>>>> +    sysbus_init_mmio(sbd, &s->mmio);
+>>>> +    sysbus_init_irq(sbd, &s->irq);
+>>>> +
+>>>> +    if (!s->dma_mr || s->dma_mr == get_system_memory()) {
+>>>> +        /* Avoid creating new AddressSpace for system memory. */
+>>>> +        s->as = &address_space_memory;
+>>>> +    } else {
+>>>> +        s->as = g_new0(AddressSpace, 1);
+>>>> +        address_space_init(s->as, s->dma_mr,
+>>>> memory_region_name(s->dma_mr));
+>>>> +    }
+>>>> +
+>>>> +    s->ptimer = ptimer_init(timer_hit, s, PTIMER_POLICY_DEFAULT);
+>>>> +    ptimer_transaction_begin(s->ptimer);
+>>>> +    ptimer_set_freq(s->ptimer, s->freqhz);
+>>>> +    ptimer_transaction_commit(s->ptimer);
+>>>> +}
+>>>> +
+>>>> +static void xilinx_axicdma_unrealize(DeviceState *dev)
+>>>> +{
+>>>> +    XilinxAXICDMA *s = XILINX_AXI_CDMA(dev);
+>>>> +
+>>>> +    if (s->ptimer) {
+>>>> +        ptimer_free(s->ptimer);
+>>>> +    }
+>>>> +
+>>>> +    if (s->as && s->dma_mr != get_system_memory()) {
+>>>> +        g_free(s->as);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +static Property axicdma_properties[] = {
+>>>> +    DEFINE_PROP_UINT32("freqhz", XilinxAXICDMA, freqhz, 50000000),
+>>>> +    DEFINE_PROP_INT32("addrwidth", XilinxAXICDMA, addrwidth, 64),
+>>>> +    DEFINE_PROP_LINK("dma", XilinxAXICDMA, dma_mr,
+>>>> +                     TYPE_MEMORY_REGION, MemoryRegion *),
+>>>> +    DEFINE_PROP_END_OF_LIST(),
+>>>> +};
+>>>> +
+>>>> +static void xilinx_axicdma_reset_enter(Object *obj, ResetType type)
+>>>> +{
+>>>> +    axicdma_reset(XILINX_AXI_CDMA(obj));
+>>>> +}
+>>>> +
+>>>> +static void axicdma_class_init(ObjectClass *klass, void *data)
+>>>> +{
+>>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>>>> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
+>>>> +
+>>>> +    dc->realize = xilinx_axicdma_realize;
+>>>> +    dc->unrealize = xilinx_axicdma_unrealize;
+>>>> +    device_class_set_props(dc, axicdma_properties);
+>>>> +
+>>>> +    rc->phases.enter = xilinx_axicdma_reset_enter;
+>>>> +}
+>>>> +
+>>>> +static const TypeInfo axicdma_info = {
+>>>> +    .name          = TYPE_XILINX_AXI_CDMA,
+>>>> +    .parent        = TYPE_SYS_BUS_DEVICE,
+>>>> +    .instance_size = sizeof(XilinxAXICDMA),
+>>>> +    .class_init    = axicdma_class_init,
+>>>> +};
+>>>> +
+>>>> +static void xilinx_axicdma_register_types(void)
+>>>> +{
+>>>> +    type_register_static(&axicdma_info);
+>>>> +}
+>>>> +
+>>>> +type_init(xilinx_axicdma_register_types)
+>>>> diff --git a/include/hw/dma/xilinx_axicdma.h
+>>>> b/include/hw/dma/xilinx_axicdma.h
+>>>> new file mode 100644
+>>>> index 0000000000..67b7cfce99
+>>>> --- /dev/null
+>>>> +++ b/include/hw/dma/xilinx_axicdma.h
+>>>> @@ -0,0 +1,72 @@
+>>>> +/*
+>>>> + * QEMU model of Xilinx AXI-CDMA block.
+>>>> + *
+>>>> + * Copyright (c) 2022 Frank Chang <frank.chang@sifive.com>.
+>>>> + *
+>>>> + * Permission is hereby granted, free of charge, to any person
+>>>> obtaining a copy
+>>>> + * of this software and associated documentation files (the
+>>>> "Software"), to deal
+>>>> + * in the Software without restriction, including without limitation
+>>>> the rights
+>>>> + * to use, copy, modify, merge, publish, distribute, sublicense,
+>>>> and/or sell
+>>>> + * copies of the Software, and to permit persons to whom the Software
+>>>> is
+>>>> + * furnished to do so, subject to the following conditions:
+>>>> + *
+>>>> + * The above copyright notice and this permission notice shall be
+>>>> included in
+>>>> + * all copies or substantial portions of the Software.
+>>>> + *
+>>>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+>>>> EXPRESS OR
+>>>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+>>>> MERCHANTABILITY,
+>>>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+>>>> SHALL
+>>>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+>>>> OR OTHER
+>>>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+>>>> ARISING FROM,
+>>>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>> DEALINGS IN
+>>>> + * THE SOFTWARE.
+>>>> + */
+>>>> +
+>>>> +#include "exec/hwaddr.h"
+>>>> +#include "hw/ptimer.h"
+>>>> +#include "hw/sysbus.h"
+>>>> +#include "qom/object.h"
+>>>> +#include "qemu/units.h"
+>>>> +
+>>>> +#define CDMA_BUF_SIZE   (64 * KiB)
+>>>> +
+>>>> +typedef struct XilinxAXICDMA XilinxAXICDMA;
+>>>> +
+>>>> +#define TYPE_XILINX_AXI_CDMA "xlnx.axi-cdma"
+>>>> +OBJECT_DECLARE_SIMPLE_TYPE(XilinxAXICDMA, XILINX_AXI_CDMA)
+>>>> +
+>>>> +/* Scatter Gather Transfer Descriptor */
+>>>> +typedef struct SDesc {
+>>>> +    uint64_t nxtdesc;
+>>>> +    hwaddr src;
+>>>> +    hwaddr dest;
+>>>> +    uint32_t control;
+>>>> +    uint32_t status;
+>>>> +} SDesc;
+>>>> +
+>>>> +struct XilinxAXICDMA {
+>>>> +    /*< private >*/
+>>>> +    SysBusDevice parent_obj;
+>>>> +
+>>>> +    /*< public >*/
+>>>> +    MemoryRegion mmio;
+>>>> +    AddressSpace *as;
+>>>> +    MemoryRegion *dma_mr;
+>>>> +
+>>>> +    /* Properties */
+>>>> +    uint32_t control;
+>>>> +    uint32_t status;
+>>>> +    uint64_t curdesc;
+>>>> +    uint64_t taildesc;
+>>>> +    hwaddr src;
+>>>> +    hwaddr dest;
+>>>> +    uint32_t btt;
+>>>> +
+>>>> +    uint32_t freqhz;
+>>>> +    int32_t addrwidth;
+>>>> +    ptimer_state *ptimer;
+>>>> +    SDesc sdesc;
+>>>> +    qemu_irq irq;
+>>>> +    uint16_t complete_cnt;
+>>>> +    char buf[CDMA_BUF_SIZE];
+>>>> +};
+>>>> --
+>>>> 2.35.1
+>>>>
+>>>>
+
+--000000000000df6b3f05de1cda20
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">On Tue, May 3, 2022 at 3:16 AM Frank Chan=
-g &lt;<a href=3D"mailto:frank.chang@sifive.com">frank.chang@sifive.com</a>&=
-gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D"gmail_q=
-uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
-04);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr">On Mon, May 2, 2022=
- at 6:29 PM Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.iglesias@gmail.co=
-m" target=3D"_blank">edgar.iglesias@gmail.com</a>&gt; wrote:<br></div><div =
-class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0px=
- 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><di=
-v dir=3D"ltr"><div dir=3D"ltr">On Thu, Apr 28, 2022 at 5:43 PM &lt;<a href=
-=3D"mailto:frank.chang@sifive.com" target=3D"_blank">frank.chang@sifive.com=
-</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D"gm=
-ail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,=
-204,204);padding-left:1ex">From: Frank Chang &lt;<a href=3D"mailto:frank.ch=
-ang@sifive.com" target=3D"_blank">frank.chang@sifive.com</a>&gt;<br>
+<div dir=3D"ltr"><div dir=3D"ltr">On Tue, May 3, 2022 at 5:35 PM Edgar E. I=
+glesias &lt;<a href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">e=
+dgar.iglesias@gmail.com</a>&gt; wrote:<br></div><div class=3D"gmail_quote">=
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div dir=
+=3D"ltr">On Tue, May 3, 2022 at 3:16 AM Frank Chang &lt;<a href=3D"mailto:f=
+rank.chang@sifive.com" target=3D"_blank">frank.chang@sifive.com</a>&gt; wro=
+te:<br></div><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
+ding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr">On Mon, May 2, 2022 at 6:2=
+9 PM Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.iglesias@gmail.com" targ=
+et=3D"_blank">edgar.iglesias@gmail.com</a>&gt; wrote:<br></div><div class=
+=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=
+=3D"ltr"><div dir=3D"ltr">On Thu, Apr 28, 2022 at 5:43 PM &lt;<a href=3D"ma=
+ilto:frank.chang@sifive.com" target=3D"_blank">frank.chang@sifive.com</a>&g=
+t; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex">From: Frank Chang &lt;<a href=3D"mailto:frank.chang@si=
+five.com" target=3D"_blank">frank.chang@sifive.com</a>&gt;<br>
 <br>
 Add Xilinx AXI CDMA model, which follows<br>
 AXI Central Direct Memory Access v4.1 spec:<br>
@@ -1216,29 +1259,41 @@ upstream.</div><div>Do you have any suggestions for the existing machine th=
 at I can add Xilinx CDMA to?</div><div>Or perhaps, ARM virt machine?</div><=
 /div></div></blockquote><div><br></div><div>If there&#39;s a reference desi=
 gn somewhere we could use we could potentially create a new zynqmp or versa=
-l based machine.</div><div>It would be great if you guys had a public RISCV=
- design with the CDMA that we could model.</div><div>=C2=A0</div><blockquot=
-e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px s=
-olid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmai=
-l_quote"><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
-><div dir=3D"ltr"><div class=3D"gmail_quote"><div><br></div><div>The CDMA h=
-as a 32-bit AXI4-Lite port for register accesses (see page 6 and 8 in the s=
-pec you referenced), so axicdma_ops.impl.max should be 4 and you shouldn&#3=
-9;t need the read/write q versions.</div></div></div></blockquote><div><br>=
-</div><div>Okay, that&#39;s something I was not aware of.</div><div><br></d=
-iv><div>However, I have a question regarding the 64-bit address space.</div=
-><div><br></div><div>For 64-bit address space, i.e. xlnx,addrwidth =3D 64.<=
-/div><div>The CDMA spec says that:</div><div>&quot;TAILDESC_PNTR[_MSB] regi=
-ster causes the AXI CDMA SG Engine</div><div>to start fetching descriptors =
-starting from the CURDESC_PNTR register value.&quot;<br></div><div><br></di=
-v><div>It seems that DMA will start the transfer if either TAILDESC_PNTR or=
- TAILDESC_PNTR_MSB is written.</div><div>Then how can we guarantee that the=
- full 64-bit address pointer is written</div><div>before the DMA transfer i=
-s started if we can&#39;t write both TAILDESC_PNTR and TAILDESC_PNTR_MSB</d=
-iv><div>at the same time?</div></div></div></blockquote><div><br></div><div=
->This is described on pages 25 and 26:</div><div>&quot;When the AXI CDMA is=
- in SG Mode and the address
+l based machine.</div></div></div></blockquote><div><br></div><div><div>Tha=
+nks Edgar,<br></div><div><br></div><div>Do you think it&#39;s a good idea t=
+o add CDMA in xlnx-zynqmp.c?</div><div>(Though I found GDMA and ADMA alread=
+y exist)</div><div><br></div><div>I&#39;m not familiar with Xilinx&#39;s FP=
+GA family, and=C2=A0there are lots of variants.</div><div>Not sure which ma=
+chine is the best one for me to add CDMA.</div></div><div>=C2=A0</div><bloc=
+kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
+1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div class=3D=
+"gmail_quote"><div>It would be great if you guys had a public RISCV design =
+with the CDMA that we could model.</div></div></div></blockquote><div><br><=
+/div><div>I would love to,</div><div>but unfortunately, we don&#39;t have t=
+he spec for this model publicly yet.</div><div><br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_quote=
+"><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div d=
+ir=3D"ltr"><div class=3D"gmail_quote"><div>=C2=A0</div><blockquote class=3D=
+"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(2=
+04,204,204);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_quote"><=
+div><br></div><div>The CDMA has a 32-bit AXI4-Lite port for register access=
+es (see page 6 and 8 in the spec you referenced), so axicdma_ops.impl.max s=
+hould be 4 and you shouldn&#39;t need the read/write q versions.</div></div=
+></div></blockquote><div><br></div><div>Okay, that&#39;s something I was no=
+t aware of.</div><div><br></div><div>However, I have a question regarding t=
+he 64-bit address space.</div><div><br></div><div>For 64-bit address space,=
+ i.e. xlnx,addrwidth =3D 64.</div><div>The CDMA spec says that:</div><div>&=
+quot;TAILDESC_PNTR[_MSB] register causes the AXI CDMA SG Engine</div><div>t=
+o start fetching descriptors starting from the CURDESC_PNTR register value.=
+&quot;<br></div><div><br></div><div>It seems that DMA will start the transf=
+er if either TAILDESC_PNTR or TAILDESC_PNTR_MSB is written.</div><div>Then =
+how can we guarantee that the full 64-bit address pointer is written</div><=
+div>before the DMA transfer is started if we can&#39;t write both TAILDESC_=
+PNTR and TAILDESC_PNTR_MSB</div><div>at the same time?</div></div></div></b=
+lockquote><div><br></div><div>This is described on pages 25 and 26:</div><d=
+iv>&quot;When the AXI CDMA is in SG Mode and the address
 space is 32 bits (CDMACR.SGMode =3D 1), a write by
 the software application to the TAILDESC_PNTR
 register causes the AXI CDMA SG Engine to start
@@ -1249,25 +1304,31 @@ t addresses are selected, TAILDESC_PNTR_MSB starts the DMA:</div><div><br><=
 space is more than 32 bits, (CDMACR.SGMode =3D 1),
 a write by the software application to the
 TAILDESC_PNTR_MSB register causes the AXI CDMA
-SG Engine to start fetching descriptors&quot;</div><div><br></div><div>=C2=
-=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"=
-><div class=3D"gmail_quote"><div><br></div><div>I&#39;m also awarded that X=
-ilinx CDMA Linux driver also has separate 32-bit writes for a 64-bit addres=
-s.</div><div>But wouldn&#39;t that cause, e.g. dmatest to be failed?</div><=
-/div></div></blockquote><div><br></div><div>The driver probably relies on t=
-he interconnect to down-size the 64bit access to 2x32bit ones. QEMU will do=
- the same so this shouldn&#39;t be a problem.</div><div><br></div><div>Best=
- regards,</div><div>Edgar</div><div><br></div><div>=C2=A0</div><blockquote =
-class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
-id rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_=
-quote"><div><br></div><div>Regards,</div><div>Frank Chang</div><div>=C2=A0<=
-/div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
-rder-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><di=
-v class=3D"gmail_quote"><div><br></div><div>Best regards,</div><div>Edgar</=
-div><div><br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
+SG Engine to start fetching descriptors&quot;</div></div></div></blockquote=
+><div><br></div><div>I guess I missed the description: &quot;the address sp=
+ace is 32 bits&quot; for TAILDESC_PNTR register in=C2=A0the spec.</div><div=
+>I will fix it in my next version patchset.</div><div><br></div><div>Regard=
+s,</div><div>Frank Chang</div><div>=C2=A0</div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
+04);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_quote"><div><br>=
+</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><d=
+iv dir=3D"ltr"><div class=3D"gmail_quote"><div><br></div><div>I&#39;m also =
+awarded that Xilinx CDMA Linux driver also has separate 32-bit writes for a=
+ 64-bit address.</div><div>But wouldn&#39;t that cause, e.g. dmatest to be =
+failed?</div></div></div></blockquote><div><br></div><div>The driver probab=
+ly relies on the interconnect to down-size the 64bit access to 2x32bit ones=
+. QEMU will do the same so this shouldn&#39;t be a problem.</div><div><br><=
+/div><div>Best regards,</div><div>Edgar</div><div><br></div><div>=C2=A0</di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div c=
+lass=3D"gmail_quote"><div><br></div><div>Regards,</div><div>Frank Chang</di=
+v><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div d=
+ir=3D"ltr"><div class=3D"gmail_quote"><div><br></div><div>Best regards,</di=
+v><div>Edgar</div><div><br></div><div>=C2=A0</div><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
+4,204);padding-left:1ex">
 <br>
 Signed-off-by: Frank Chang &lt;<a href=3D"mailto:frank.chang@sifive.com" ta=
 rget=3D"_blank">frank.chang@sifive.com</a>&gt;<br>
@@ -2355,5 +2416,6 @@ IN<br>
 </blockquote></div></div>
 </blockquote></div></div>
 </blockquote></div></div>
+</blockquote></div></div>
 
---00000000000014d25d05de183952--
+--000000000000df6b3f05de1cda20--

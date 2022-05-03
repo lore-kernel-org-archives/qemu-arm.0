@@ -1,71 +1,72 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1223880lfj;
-        Tue, 3 May 2022 00:00:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypB32+IgX/iCwb62mgB6NdmO7aRyhiyaD98171PGTSAvemFX2+VxIhVze8jCgKWr6EtzD1
-X-Received: by 2002:a05:620a:4627:b0:69f:3328:71cc with SMTP id br39-20020a05620a462700b0069f332871ccmr10814995qkb.689.1651561229931;
-        Tue, 03 May 2022 00:00:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651561229; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1224057lfj;
+        Tue, 3 May 2022 00:00:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzP1wtlu9b/OvFFWLWNwZUCzaP1h/+fQgNXwlR9LFnj551gbPiViBFKosifOw+LmKFi58Zk
+X-Received: by 2002:ad4:5ba6:0:b0:456:4896:f519 with SMTP id 6-20020ad45ba6000000b004564896f519mr12410385qvq.16.1651561244496;
+        Tue, 03 May 2022 00:00:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651561244; cv=none;
         d=google.com; s=arc-20160816;
-        b=ERVX13aAaoLnsTgfksbNt4Ih3DFOxjf/iQfDOcNZPHjW654WlS6zBsfv0bn0VyduZw
-         bTUzBT6PhxOwJkJjJy0vSSfMCf7HDZ4vNAgFjgNuy4O31crjWI2xem8Oi0kyRCD5CDDy
-         LDj/U+CTKG2XqWlpsayzJ+ggjD6fCC15tB99OYXN+KrFd4LhdvWBu0bJGZr8mhxIfgUN
-         Y1ABT5E2R8DZib+d9/8gkG/M0b9VV5ABjENgxWWcbZ6Og0+pQadUctE/7Pq8uwr+Jm/T
-         gPIL2jRaxrELa0IxUPP1sRgpcucBPX7fKJ0x0RP/TbHkBbYlWdhzoE24i50OI/wBk8mc
-         pIQg==
+        b=cS20Y2+S9Uirk1+nswo195gPDZkMaMhptKIVWfyB7WvW8PtUU4y0SGFMlWD7B7s0US
+         BwFzhOl245Hj4Xx04omrL8e4eOL+/EuleMMuZIXvu3QOKm3aPJPUMiyoTF1xyq1sejK1
+         v9KqSM9XaOdAvSDtXwOfa0JmlhCCUnjJ/w/RpWubCRoZJN9WZfqtgGlILVrYJF6u3rcH
+         YAkz/tgt10aHPai4mFdnBVHpAAx5sT04DwV28moNHDQalQLNd0yHFfzu1SDe/i3rnP+G
+         MEpatQpmBkN6q0GyFb8hIsrPbAo/32jJPNkkY37gV3nho1VmD4Qdi6LYdGmxan6D+hFX
+         qjnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=JcXPrXDWmEcGA8J0BYG25gu+AsBU8PnDaZa+mD61/oc=;
-        b=CdAZ38Py1aCYgwHBtNO8yft6elx7bA3Xx3Un+bh+IrVtvf0DA1qbDlr4Dnmx404jnv
-         YDVyAvHHr4UAQibyitGd5vnKYdLgLx4KyHYt5M8CGOJdE5jkipmAgt2kTGr0VyQWlddl
-         awJwiiXXTa6sbyHYQra426Ims+Wq9g3G8/raaGYfleSVGnlAlfdROHdnjitTE1BxtztA
-         5amP22DUU07ghq14DEjJDFk/SgvEcwQf1NMxU9qknuNrLHWyRIm8G8DhLHEdCqt3HYAI
-         /w1s/4UPpJKJFRbXbeY+b5R4ja6MTHM9vKxS8wHrcabKHW/V8c4mal6ggJiuiY9QbBZV
-         3CVw==
+        bh=b1EJl/qVepNE9igZNkvX/uCidj7eONGzfFv2HyO3Qfk=;
+        b=WB7+7fFWKET6Qzk+UNq8HA3Ajo5asJmbJAJP6AKwdGD1ubL+tN9n79DYUFr6FgzMQv
+         WGujATQpXP+aNouAFEml1J+xUGm82QnuOXWA2lFNcC3wzKiMqtmrMnG0fNW7tBfMimAH
+         wB5L5CYj4zcwMcFx5WWKgwUAqEV0GVIgyU/3sHVoGnG6uxmvaZeibMcLFCH9q/ONB494
+         qQAITyT6BC2P1spEB3v2yGeJHrpRssijKAm0uFlUeMnqDq9+3Bd7G3dSCgjr/f6rYWAd
+         0DxlJQQWi7ujQcal7ACPQgpaJoBTV9GkE7UVLH03MIjOwD3+6lfI76pDaAWyhjc6jXzq
+         mPOw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 70-20020a0c80cc000000b0044624e41d26si6588557qvb.280.2022.05.03.00.00.29
+        by mx.google.com with ESMTPS id c10-20020a05622a024a00b002f3a19ad9a0si3153125qtx.724.2022.05.03.00.00.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 May 2022 00:00:29 -0700 (PDT)
+        Tue, 03 May 2022 00:00:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40214 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40446 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nlmWL-0002z2-5G
-	for alex.bennee@linaro.org; Tue, 03 May 2022 03:00:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48914)
+	id 1nlmWY-0003Bg-Mq
+	for alex.bennee@linaro.org; Tue, 03 May 2022 03:00:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49010)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=XF6a=VL=kaod.org=clg@ozlabs.org>)
- id 1nlmUx-0002yO-AL; Tue, 03 May 2022 02:59:03 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:35489)
+ id 1nlmV6-00037S-LZ; Tue, 03 May 2022 02:59:12 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:52611)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=XF6a=VL=kaod.org=clg@ozlabs.org>)
- id 1nlmUv-0007Rt-8M; Tue, 03 May 2022 02:59:03 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4KsrR33qRnz4xXh;
- Tue,  3 May 2022 16:58:55 +1000 (AEST)
+ id 1nlmV4-0007Tc-Mx; Tue, 03 May 2022 02:59:12 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4KsrRJ2MbYz4yT0;
+ Tue,  3 May 2022 16:59:08 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4KsrR15K3fz4yST;
- Tue,  3 May 2022 16:58:53 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4KsrRG0GrCz4yST;
+ Tue,  3 May 2022 16:59:05 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 01/19] hw: aspeed_scu: Add AST2600 apb_freq and hpll
- calculation function
-Date: Tue,  3 May 2022 08:58:30 +0200
-Message-Id: <20220503065848.125215-2-clg@kaod.org>
+Subject: [PULL 06/19] aspeed/smc: Add AST1030 support
+Date: Tue,  3 May 2022 08:58:35 +0200
+Message-Id: <20220503065848.125215-7-clg@kaod.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220503065848.125215-1-clg@kaod.org>
 References: <20220503065848.125215-1-clg@kaod.org>
@@ -94,144 +95,200 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cFf1fUCeIrJ/
+X-TUID: Ul8aq5XEiRT2
 
 From: Steven Lee <steven_lee@aspeedtech.com>
 
-AST2600's HPLL register offset and bit definition are different from
-AST2500. Add a hpll calculation function and an apb frequency calculation
-function based on SCU200 register description in ast2600v11.pdf.
+AST1030 spi controller's address decoding unit is 1MB that is identical
+to ast2600, but fmc address decoding unit is 512kb.
+Introduce seg_to_reg and reg_to_seg handlers for ast1030 fmc controller.
+In addition, add ast1030 fmc, spi1, and spi2 class init handler.
 
+Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-[ clg: checkpatch fixes ]
-Message-Id: <20220315075753.8591-2-steven_lee@aspeedtech.com>
+Message-Id: <20220401083850.15266-3-jamin_lin@aspeedtech.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/misc/aspeed_scu.h | 19 ++++++++++++++++++
- hw/misc/aspeed_scu.c         | 39 +++++++++++++++++++++++++++++++++++-
- 2 files changed, 57 insertions(+), 1 deletion(-)
+ hw/ssi/aspeed_smc.c | 157 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 157 insertions(+)
 
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index c14aff2bcbb5..8c4c8c8d5cbb 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -56,6 +56,7 @@ struct AspeedSCUClass {
- 
-     const uint32_t *resets;
-     uint32_t (*calc_hpll)(AspeedSCUState *s, uint32_t hpll_reg);
-+    uint32_t (*get_apb)(AspeedSCUState *s);
-     uint32_t apb_divider;
-     uint32_t nr_regs;
-     const MemoryRegionOps *ops;
-@@ -316,4 +317,22 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
-         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-         SCU_AST2500_HW_STRAP_RESERVED1)
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 48305e1574ec..68aa697164d4 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -1696,6 +1696,160 @@ static const TypeInfo aspeed_2600_spi2_info = {
+     .class_init = aspeed_2600_spi2_class_init,
+ };
  
 +/*
-+ * SCU200   H-PLL Parameter Register (for Aspeed AST2600 SOC)
-+ *
-+ *  28:26  H-PLL Parameters
-+ *  25     Enable H-PLL reset
-+ *  24     Enable H-PLL bypass mode
-+ *  23     Turn off H-PLL
-+ *  22:19  H-PLL Post Divider (P)
-+ *  18:13  H-PLL Numerator (M)
-+ *  12:0   H-PLL Denumerator (N)
-+ *
-+ *  (Output frequency) = CLKIN(25MHz) * [(M+1) / (N+1)] / (P+1)
-+ *
-+ * The default frequency is 1200Mhz when CLKIN = 25MHz
++ * The FMC Segment Registers of the AST1030 have a 512KB unit.
++ * Only bits [27:19] are used for decoding.
 + */
-+#define SCU_AST2600_H_PLL_BYPASS_EN                        (0x1 << 24)
-+#define SCU_AST2600_H_PLL_OFF                              (0x1 << 23)
++#define AST1030_SEG_ADDR_MASK 0x0ff80000
 +
- #endif /* ASPEED_SCU_H */
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index d06e179a6e65..d65f86df3d12 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -213,6 +213,11 @@ static uint32_t aspeed_scu_get_random(void)
- }
- 
- uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s)
++static uint32_t aspeed_1030_smc_segment_to_reg(const AspeedSMCState *s,
++        const AspeedSegments *seg)
 +{
-+    return ASPEED_SCU_GET_CLASS(s)->get_apb(s);
-+}
++    uint32_t reg = 0;
 +
-+static uint32_t aspeed_2400_scu_get_apb_freq(AspeedSCUState *s)
- {
-     AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(s);
-     uint32_t hpll = asc->calc_hpll(s, s->regs[HPLL_PARAM]);
-@@ -221,6 +226,15 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s)
-         / asc->apb_divider;
- }
- 
-+static uint32_t aspeed_2600_scu_get_apb_freq(AspeedSCUState *s)
-+{
-+    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(s);
-+    uint32_t hpll = asc->calc_hpll(s, s->regs[AST2600_HPLL_PARAM]);
-+
-+    return hpll / (SCU_CLK_GET_PCLK_DIV(s->regs[AST2600_CLK_SEL]) + 1)
-+        / asc->apb_divider;
-+}
-+
- static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
- {
-     AspeedSCUState *s = ASPEED_SCU(opaque);
-@@ -426,6 +440,26 @@ static uint32_t aspeed_2500_scu_calc_hpll(AspeedSCUState *s, uint32_t hpll_reg)
-     return clkin * multiplier;
- }
- 
-+static uint32_t aspeed_2600_scu_calc_hpll(AspeedSCUState *s, uint32_t hpll_reg)
-+{
-+    uint32_t multiplier = 1;
-+    uint32_t clkin = aspeed_scu_get_clkin(s);
-+
-+    if (hpll_reg & SCU_AST2600_H_PLL_OFF) {
++    /* Disabled segments have a nil register */
++    if (!seg->size) {
 +        return 0;
 +    }
 +
-+    if (!(hpll_reg & SCU_AST2600_H_PLL_BYPASS_EN)) {
-+        uint32_t p = (hpll_reg >> 19) & 0xf;
-+        uint32_t n = (hpll_reg >> 13) & 0x3f;
-+        uint32_t m = hpll_reg & 0x1fff;
-+
-+        multiplier = ((m + 1) / (n + 1)) / (p + 1);
-+    }
-+
-+    return clkin * multiplier;
++    reg |= (seg->addr & AST1030_SEG_ADDR_MASK) >> 16; /* start offset */
++    reg |= (seg->addr + seg->size - 1) & AST1030_SEG_ADDR_MASK; /* end offset */
++    return reg;
 +}
 +
- static void aspeed_scu_reset(DeviceState *dev)
++static void aspeed_1030_smc_reg_to_segment(const AspeedSMCState *s,
++        uint32_t reg, AspeedSegments *seg)
++{
++    uint32_t start_offset = (reg << 16) & AST1030_SEG_ADDR_MASK;
++    uint32_t end_offset = reg & AST1030_SEG_ADDR_MASK;
++    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
++
++    if (reg) {
++        seg->addr = asc->flash_window_base + start_offset;
++        seg->size = end_offset + (512 * KiB) - start_offset;
++    } else {
++        seg->addr = asc->flash_window_base;
++        seg->size = 0;
++    }
++}
++
++static const uint32_t aspeed_1030_fmc_resets[ASPEED_SMC_R_MAX] = {
++    [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
++                            CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1),
++};
++
++static const AspeedSegments aspeed_1030_fmc_segments[] = {
++    { 0x0, 128 * MiB }, /* start address is readonly */
++    { 128 * MiB, 128 * MiB }, /* default is disabled but needed for -kernel */
++    { 0x0, 0 }, /* disabled */
++};
++
++static void aspeed_1030_fmc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
++
++    dc->desc               = "Aspeed 1030 FMC Controller";
++    asc->r_conf            = R_CONF;
++    asc->r_ce_ctrl         = R_CE_CTRL;
++    asc->r_ctrl0           = R_CTRL0;
++    asc->r_timings         = R_TIMINGS;
++    asc->nregs_timings     = 2;
++    asc->conf_enable_w0    = CONF_ENABLE_W0;
++    asc->cs_num_max        = 2;
++    asc->segments          = aspeed_1030_fmc_segments;
++    asc->segment_addr_mask = 0x0ff80ff8;
++    asc->resets            = aspeed_1030_fmc_resets;
++    asc->flash_window_base = 0x80000000;
++    asc->flash_window_size = 0x10000000;
++    asc->features          = ASPEED_SMC_FEATURE_DMA;
++    asc->dma_flash_mask    = 0x0FFFFFFC;
++    asc->dma_dram_mask     = 0x000BFFFC;
++    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->segment_to_reg    = aspeed_1030_smc_segment_to_reg;
++    asc->reg_to_segment    = aspeed_1030_smc_reg_to_segment;
++    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++}
++
++static const TypeInfo aspeed_1030_fmc_info = {
++    .name =  "aspeed.fmc-ast1030",
++    .parent = TYPE_ASPEED_SMC,
++    .class_init = aspeed_1030_fmc_class_init,
++};
++
++static const AspeedSegments aspeed_1030_spi1_segments[] = {
++    { 0x0, 128 * MiB }, /* start address is readonly */
++    { 0x0, 0 }, /* disabled */
++};
++
++static void aspeed_1030_spi1_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
++
++    dc->desc               = "Aspeed 1030 SPI1 Controller";
++    asc->r_conf            = R_CONF;
++    asc->r_ce_ctrl         = R_CE_CTRL;
++    asc->r_ctrl0           = R_CTRL0;
++    asc->r_timings         = R_TIMINGS;
++    asc->nregs_timings     = 2;
++    asc->conf_enable_w0    = CONF_ENABLE_W0;
++    asc->cs_num_max        = 2;
++    asc->segments          = aspeed_1030_spi1_segments;
++    asc->segment_addr_mask = 0x0ff00ff0;
++    asc->flash_window_base = 0x90000000;
++    asc->flash_window_size = 0x10000000;
++    asc->features          = ASPEED_SMC_FEATURE_DMA;
++    asc->dma_flash_mask    = 0x0FFFFFFC;
++    asc->dma_dram_mask     = 0x000BFFFC;
++    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
++    asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
++    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++}
++
++static const TypeInfo aspeed_1030_spi1_info = {
++    .name =  "aspeed.spi1-ast1030",
++    .parent = TYPE_ASPEED_SMC,
++    .class_init = aspeed_1030_spi1_class_init,
++};
++static const AspeedSegments aspeed_1030_spi2_segments[] = {
++    { 0x0, 128 * MiB }, /* start address is readonly */
++    { 0x0, 0 }, /* disabled */
++};
++
++static void aspeed_1030_spi2_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
++
++    dc->desc               = "Aspeed 1030 SPI2 Controller";
++    asc->r_conf            = R_CONF;
++    asc->r_ce_ctrl         = R_CE_CTRL;
++    asc->r_ctrl0           = R_CTRL0;
++    asc->r_timings         = R_TIMINGS;
++    asc->nregs_timings     = 2;
++    asc->conf_enable_w0    = CONF_ENABLE_W0;
++    asc->cs_num_max        = 2;
++    asc->segments          = aspeed_1030_spi2_segments;
++    asc->segment_addr_mask = 0x0ff00ff0;
++    asc->flash_window_base = 0xb0000000;
++    asc->flash_window_size = 0x10000000;
++    asc->features          = ASPEED_SMC_FEATURE_DMA;
++    asc->dma_flash_mask    = 0x0FFFFFFC;
++    asc->dma_dram_mask     = 0x000BFFFC;
++    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
++    asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
++    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++}
++
++static const TypeInfo aspeed_1030_spi2_info = {
++    .name =  "aspeed.spi2-ast1030",
++    .parent = TYPE_ASPEED_SMC,
++    .class_init = aspeed_1030_spi2_class_init,
++};
++
+ static void aspeed_smc_register_types(void)
  {
-     AspeedSCUState *s = ASPEED_SCU(dev);
-@@ -525,6 +559,7 @@ static void aspeed_2400_scu_class_init(ObjectClass *klass, void *data)
-     dc->desc = "ASPEED 2400 System Control Unit";
-     asc->resets = ast2400_a0_resets;
-     asc->calc_hpll = aspeed_2400_scu_calc_hpll;
-+    asc->get_apb = aspeed_2400_scu_get_apb_freq;
-     asc->apb_divider = 2;
-     asc->nr_regs = ASPEED_SCU_NR_REGS;
-     asc->ops = &aspeed_ast2400_scu_ops;
-@@ -545,6 +580,7 @@ static void aspeed_2500_scu_class_init(ObjectClass *klass, void *data)
-     dc->desc = "ASPEED 2500 System Control Unit";
-     asc->resets = ast2500_a1_resets;
-     asc->calc_hpll = aspeed_2500_scu_calc_hpll;
-+    asc->get_apb = aspeed_2400_scu_get_apb_freq;
-     asc->apb_divider = 4;
-     asc->nr_regs = ASPEED_SCU_NR_REGS;
-     asc->ops = &aspeed_ast2500_scu_ops;
-@@ -716,7 +752,8 @@ static void aspeed_2600_scu_class_init(ObjectClass *klass, void *data)
-     dc->desc = "ASPEED 2600 System Control Unit";
-     dc->reset = aspeed_ast2600_scu_reset;
-     asc->resets = ast2600_a3_resets;
--    asc->calc_hpll = aspeed_2500_scu_calc_hpll; /* No change since AST2500 */
-+    asc->calc_hpll = aspeed_2600_scu_calc_hpll;
-+    asc->get_apb = aspeed_2600_scu_get_apb_freq;
-     asc->apb_divider = 4;
-     asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
-     asc->ops = &aspeed_ast2600_scu_ops;
+     type_register_static(&aspeed_smc_flash_info);
+@@ -1709,6 +1863,9 @@ static void aspeed_smc_register_types(void)
+     type_register_static(&aspeed_2600_fmc_info);
+     type_register_static(&aspeed_2600_spi1_info);
+     type_register_static(&aspeed_2600_spi2_info);
++    type_register_static(&aspeed_1030_fmc_info);
++    type_register_static(&aspeed_1030_spi1_info);
++    type_register_static(&aspeed_1030_spi2_info);
+ }
+ 
+ type_init(aspeed_smc_register_types)
 -- 
 2.35.1
 

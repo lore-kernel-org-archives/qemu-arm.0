@@ -1,78 +1,80 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1226184lfj;
-        Tue, 3 May 2022 00:04:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOJ/XpcDP35uxcFyhnQ2TStr69IdEjQDIP/Yle/PacF+HXDpzF7uKF5MpBfFvH1i2jII03
-X-Received: by 2002:a05:6214:1c83:b0:443:6801:6d06 with SMTP id ib3-20020a0562141c8300b0044368016d06mr12494029qvb.40.1651561453593;
-        Tue, 03 May 2022 00:04:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651561453; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1228282lfj;
+        Tue, 3 May 2022 00:08:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwAqYqEDPvtcvwQXCJjld8096ENiCmHGZUXpAAiP243+lCiuegpVeYOd3dEtXdyHjuiKl5z
+X-Received: by 2002:a05:620a:4507:b0:69f:c12f:d4d2 with SMTP id t7-20020a05620a450700b0069fc12fd4d2mr10770766qkp.172.1651561688254;
+        Tue, 03 May 2022 00:08:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651561688; cv=none;
         d=google.com; s=arc-20160816;
-        b=jvlseSNxvlSN5OezWLWoxf6VeQNs7hRZeG669kHFti4Jq9It5TnaYV8j3Ee6dLXo8F
-         7y7sV3kfci8OSEHa3sl5h2qrxvt6qhqWNqEw9xdsFi0b5aw6Za3ztrG+NnxTLft5vpK6
-         ti92CLBenGGaCiaDk01UN/kkxyaWti+TAlO6zZj+3xCyZ0uO+TOYZEb9eOsakKkQIwLM
-         0vCtTeFAuwALlt/dcryP5sh6FedxILbOhIULv3u8yPtJskLAsstTuiHBr7dO4Z+t98mW
-         hsfGIknUiA67YIcQOcDoDjB3odGKfbJSfQvBWTmQqih2q6NrP0X8w5MaiV/FnRKGI19m
-         /JGg==
+        b=wB359QAXOYsQxVzRvi+XsmD80NvWOB02NY+2Vhcip/Wp0VWMifL3o98aznKnKHNs8/
+         QsuedbtI5vvvVq+62zQKzcpn61K/NxFFe/wdCp4dlhhk5/LN4b7DTKuYlSFys/FwR5c7
+         GDES7U21oZOsDZ7mCmPgkEoNkH0UkW5axna30FWLVE/jBYsLMkD7lt9KmdXcue6dJqSi
+         SSzqr7/qdrcPGMr5NxklKPm2RP+JHBFJ8SN03Huklw1xAAWXKIItZk2FSJrezSch1OZa
+         mBzt+ftW1hAjfjZ9DUhslDVMbNJQIPs+7mcybBkI0pt95j7js/xh+uIPheyKmA2PdO+P
+         3rpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=bK9GGwjANeOksTuTjN7FQ1AFUZzZPsvpLdg/DNns700=;
-        b=zDzi76iAhbXqcSB1Pk18qaMmWFNkxkaSa3j8whW8QwK0TwHPqCpGRB9B/YkIl2bzFP
-         K6Y9CsmryEUALTHuJ95I43zzmiRi+Zjb4KoyHJY5vMcdVmD8S1PWc+NPqUPNmkczYsF1
-         NHNy/oT+E2EbSJsblKR6GAlKK7yrkWbHxZvKX2PFug+zISsysJUzBTsvlSCeU8JQK8AO
-         +EHVRpZwHZxXxHR9cPfcoxKEqKDbx62hA4HFy/urkneuIbACWNiYBlBQHEkDZvwBzmtH
-         wEC7Qq/WRJ3mAx14p1OYyW+IZrTtat4uEr4eZN1j0EDv0D+WxHgX9JeJ7tH4aVVgwNgE
-         3xaQ==
+        bh=zJtnzHPhzBQfevbplLSPzPalgDPpd3oIvf17kiLcOlo=;
+        b=Ds/u6BGsBHq30D3BWzA5ekxbyjHtTZXY5J3dGahf7ndBhFJGMuQmpBQpbv/okGQXmm
+         iPwUhK7WopUwvv5Jc6d2A4zEolm+/VI85pehtSpsCsMBSRmO9ItX2WgKui/kvfd2LMnc
+         7+6xf8Og088onZ3SO0yLo5mZiDjXRjLBSry6rvv2TnI9Par5WvvDJa3N5k6iTn7r2hx4
+         gm6jDtMQU028p03VFSy94YmRnr4caaUboqom6GG+Ku9kSvKq++hg0U9Kc5HNyMInHonw
+         Gn1TB2bFw232McYZoQlYZ+ifZkjRQmgQStsL9COa+CxiftdVpBsO5FOUh5o9LFFLryD0
+         Emfg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10-20020ac8588a000000b002f38c008f9esi6418372qta.570.2022.05.03.00.04.13
+        by mx.google.com with ESMTPS id az44-20020a05620a172c00b0067e4be23880si7817194qkb.197.2022.05.03.00.08.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 May 2022 00:04:13 -0700 (PDT)
+        Tue, 03 May 2022 00:08:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42948 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46626 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nlmZx-0005HG-2v
-	for alex.bennee@linaro.org; Tue, 03 May 2022 03:04:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48960)
+	id 1nlmdj-0007wm-MP
+	for alex.bennee@linaro.org; Tue, 03 May 2022 03:08:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49132)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=XF6a=VL=kaod.org=clg@ozlabs.org>)
- id 1nlmUz-00030p-Bk; Tue, 03 May 2022 02:59:05 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:40549)
+ id 1nlmVN-0003NR-6U; Tue, 03 May 2022 02:59:30 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:54197
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=XF6a=VL=kaod.org=clg@ozlabs.org>)
- id 1nlmUx-0007S0-6y; Tue, 03 May 2022 02:59:04 -0400
+ id 1nlmVL-0007VT-FF; Tue, 03 May 2022 02:59:28 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4KsrR55xFPz4ySc;
- Tue,  3 May 2022 16:58:57 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4KsrRd14N2z4ySc;
+ Tue,  3 May 2022 16:59:25 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4KsrR40Lfrz4yST;
- Tue,  3 May 2022 16:58:55 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4KsrRZ63qqz4yST;
+ Tue,  3 May 2022 16:59:22 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>,
  Steven Lee <steven_lee@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 02/19] hw: aspeed_scu: Introduce clkin_25Mhz attribute
-Date: Tue,  3 May 2022 08:58:31 +0200
-Message-Id: <20220503065848.125215-3-clg@kaod.org>
+Subject: [PULL 12/19] aspeed: Add an AST1030 eval board
+Date: Tue,  3 May 2022 08:58:41 +0200
+Message-Id: <20220503065848.125215-13-clg@kaod.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220503065848.125215-1-clg@kaod.org>
 References: <20220503065848.125215-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=XF6a=VL=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
 X-Spam_score_int: -16
 X-Spam_score: -1.7
@@ -94,72 +96,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U7UgkgMI4mSi
+X-TUID: tGRpIc4roU1v
 
-From: Steven Lee <steven_lee@aspeedtech.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-AST2600 clkin is always 25MHz, introduce clkin_25Mhz attribute
-for aspeed_scu_get_clkin() to return the correct clkin for ast2600.
+The image should be supplied with ELF binary.
+$ qemu-system-arm -M ast1030-evb -kernel zephyr.elf -nographic
 
+Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220315075753.8591-3-steven_lee@aspeedtech.com>
+Message-Id: <20220401083850.15266-9-jamin_lin@aspeedtech.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/misc/aspeed_scu.h | 1 +
- hw/misc/aspeed_scu.c         | 6 +++++-
- 2 files changed, 6 insertions(+), 1 deletion(-)
+ hw/arm/aspeed.c | 66 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 66 insertions(+)
 
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index 8c4c8c8d5cbb..6d3f86c1abab 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -59,6 +59,7 @@ struct AspeedSCUClass {
-     uint32_t (*get_apb)(AspeedSCUState *s);
-     uint32_t apb_divider;
-     uint32_t nr_regs;
-+    bool clkin_25Mhz;
-     const MemoryRegionOps *ops;
- };
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index d205384d986f..4e27060324d6 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -24,6 +24,7 @@
+ #include "hw/loader.h"
+ #include "qemu/error-report.h"
+ #include "qemu/units.h"
++#include "hw/qdev-clock.h"
  
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index d65f86df3d12..150567f98a74 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -371,7 +371,8 @@ static const MemoryRegionOps aspeed_ast2500_scu_ops = {
- 
- static uint32_t aspeed_scu_get_clkin(AspeedSCUState *s)
- {
--    if (s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN) {
-+    if (s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN ||
-+        ASPEED_SCU_GET_CLASS(s)->clkin_25Mhz) {
-         return 25000000;
-     } else if (s->hw_strap1 & SCU_HW_STRAP_CLK_48M_IN) {
-         return 48000000;
-@@ -562,6 +563,7 @@ static void aspeed_2400_scu_class_init(ObjectClass *klass, void *data)
-     asc->get_apb = aspeed_2400_scu_get_apb_freq;
-     asc->apb_divider = 2;
-     asc->nr_regs = ASPEED_SCU_NR_REGS;
-+    asc->clkin_25Mhz = false;
-     asc->ops = &aspeed_ast2400_scu_ops;
+ static struct arm_boot_info aspeed_board_binfo = {
+     .board_id = -1, /* device-tree-only board */
+@@ -1292,6 +1293,67 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
  }
  
-@@ -583,6 +585,7 @@ static void aspeed_2500_scu_class_init(ObjectClass *klass, void *data)
-     asc->get_apb = aspeed_2400_scu_get_apb_freq;
-     asc->apb_divider = 4;
-     asc->nr_regs = ASPEED_SCU_NR_REGS;
-+    asc->clkin_25Mhz = false;
-     asc->ops = &aspeed_ast2500_scu_ops;
- }
- 
-@@ -756,6 +759,7 @@ static void aspeed_2600_scu_class_init(ObjectClass *klass, void *data)
-     asc->get_apb = aspeed_2600_scu_get_apb_freq;
-     asc->apb_divider = 4;
-     asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
-+    asc->clkin_25Mhz = true;
-     asc->ops = &aspeed_ast2600_scu_ops;
- }
- 
++#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
++/* Main SYSCLK frequency in Hz (200MHz) */
++#define SYSCLK_FRQ 200000000ULL
++
++static void aspeed_minibmc_machine_init(MachineState *machine)
++{
++    AspeedMachineState *bmc = ASPEED_MACHINE(machine);
++    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
++    Clock *sysclk;
++
++    sysclk = clock_new(OBJECT(machine), "SYSCLK");
++    clock_set_hz(sysclk, SYSCLK_FRQ);
++
++    object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
++    qdev_connect_clock_in(DEVICE(&bmc->soc), "sysclk", sysclk);
++
++    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
++                         amc->uart_default);
++    qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
++
++    aspeed_board_init_flashes(&bmc->soc.fmc,
++                              bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
++                              amc->num_cs,
++                              0);
++
++    aspeed_board_init_flashes(&bmc->soc.spi[0],
++                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
++                              amc->num_cs, amc->num_cs);
++
++    aspeed_board_init_flashes(&bmc->soc.spi[1],
++                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
++                              amc->num_cs, (amc->num_cs * 2));
++
++    if (amc->i2c_init) {
++        amc->i2c_init(bmc);
++    }
++
++    armv7m_load_kernel(ARM_CPU(first_cpu),
++                       machine->kernel_filename,
++                       AST1030_INTERNAL_FLASH_SIZE);
++}
++
++static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
++                                                          void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
++    amc->soc_name = "ast1030-a1";
++    amc->hw_strap1 = 0;
++    amc->hw_strap2 = 0;
++    mc->init = aspeed_minibmc_machine_init;
++    mc->default_ram_size = 0;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus = 1;
++    amc->fmc_model = "sst25vf032b";
++    amc->spi_model = "sst25vf032b";
++    amc->num_cs = 2;
++    amc->macs_mask = 0;
++}
++
+ static const TypeInfo aspeed_machine_types[] = {
+     {
+         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+@@ -1349,6 +1411,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_bletchley_class_init,
++    }, {
++        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
++        .parent         = TYPE_ASPEED_MACHINE,
++        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
+     }, {
+         .name          = TYPE_ASPEED_MACHINE,
+         .parent        = TYPE_MACHINE,
 -- 
 2.35.1
 

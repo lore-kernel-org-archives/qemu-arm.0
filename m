@@ -1,96 +1,101 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1750150lfj;
-        Tue, 3 May 2022 16:11:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzGkD3XVFNS9g694JJ/TuCrFyWJFvOCrf9J8OhN8xl+A53ni1upJu4OtuUYM+tbNK9RAfm1
-X-Received: by 2002:a05:620a:49d:b0:69f:b7bd:f831 with SMTP id 29-20020a05620a049d00b0069fb7bdf831mr13761595qkr.749.1651619480400;
-        Tue, 03 May 2022 16:11:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651619480; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1751415lfj;
+        Tue, 3 May 2022 16:14:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxG1+pAvlWMkXNQsOxnb5T6Okr474PoVBHKUrlcXLZXA6DuxxIIoEHGbV5Mmo9Bg2qARCvM
+X-Received: by 2002:a05:620a:2481:b0:69f:ee45:cd28 with SMTP id i1-20020a05620a248100b0069fee45cd28mr7570769qkn.568.1651619645677;
+        Tue, 03 May 2022 16:14:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651619645; cv=none;
         d=google.com; s=arc-20160816;
-        b=ByM+DHMwUJSXWR0f45uz28Y5aRag3hmi59MozJkFunQWK/4d++8KutHMx7OYigxpid
-         4qC3Zt2ZgkR0B1L5CAnXtA9o8/P09CZcClze+CnMlOLNRot+WjjV47pGCumn1rvHrbSG
-         VtzGW5Ql+BBhY0jIa0tk5jM6k9tLxuhi/4eOZHk04Rz+ZG8wpOvA+PW958ypnc64S9Sc
-         7W988NuixDqt70sN0I1fv9+1cw9ibKAmtN0DoeYDP+s5C3rSiDRsp7nGbj1MaeGhORtO
-         le28ipvlCDL7PE7cVy0xmy8lhBAO+jRP4auG/RfTncqeYCFAuy7+oa0dQzO+Rx724vh+
-         ZnUg==
+        b=aH6AbR5SpQy4eEnjXKJ3xjYivO3e3t2pKvwtKrYJWA4RJM8XPnp+WQUVboNwod1v4Q
+         Csf6b25mlgDOGfGzawdZlubxsx8R26h4tHeXAaNLVK7Lewny/TnD9IZt9j2NoFzQc2qz
+         l4EVlOyeCLqPRU1ta+VhMnaSUSv4iGRLROU2AnIdInNo8JSUikS1TnB3NTPYi3cwb5PR
+         7LfOJ8BoLjyLy51jRoXk7ZMtZ6UZcWgpFt+klpOKwqNkeZdOiu/89bLFy+G7z9nDswj1
+         VtS+/ytK+pkfAhbwCPf3NQLdQLUZuIQBBy3BKH9saT1NRrZUTHR0ivuwqcQweaoV+Fwl
+         soRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=H0kcl9bBxfoMcRYwUuFvEYrF29d3BGOhHPSec29Rsmc=;
-        b=n+YM1MZkyJpYcfAYwofOaCCCflycFiM+p9w4vMaF6Q5nu03rfnjv/232fPRMaQN8nH
-         VOkwA+o5caLmp+tJXaSQP2cLIX0YYSOShGMAoLRe4pXD6ECPhA9QBlZdykdm0hNJupCS
-         yWl0cccvwQ67OAGXh+JhfznHvuS1ts/POhhyfWjwtvlKmBtJ1rMHUZsbb3v1sPR4XEEZ
-         S7z/ksEtnTwfN8rq0KA5+BVGtWPDokLsL7VFkbvH2MkLPJwc/SkQr+QDZGw28W3QMJrZ
-         ZFIvaP7kLlcD0Erc9vjWr0Vi2qbwnV76UYbWC7VnbHSYkGhuzq93Oqf4eEkZtRJFi2Ts
-         YDpA==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=w7WZS8JB1wb31fSBmGUAV8X6JoYOKGGhLtZ864uY10Q=;
+        b=v+q2m9tfvCfh5LTy5m6zVSIVDxTzEwPV0JU3YCfPOoxtVJKvIAaAAfsaSpEkAoBPhK
+         DCPIoxvk3mSLGM30QU/afQ6kWr6Cb2v0oMZ2bJdByK6c8fVmY6L+Ld1Y6y5RzQIRLk1+
+         MtPpYlb84Q7j9zUUOAjRCUjIzBtIhbrcdH5RSItyD/vCrH0dWT3FCrB8rz5SO9gHFFro
+         DAKY48xBNWpiD/ihSe8ZVYjrnqTZp7YSqMOalQrsk3XO3ztMno2obj4jN3WuiGYypu5y
+         EZEgCwzEwL+UE6ceB4XiZF/mHx/4KUuYs915h0He1yHOcDfquLK6KLUy5D+qg0ZIgVm0
+         Tmxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=raDngWrd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@fb.com header.s=facebook header.b=LGfR6Tvr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iu15-20020ad45ccf000000b0045a819509d3si5300733qvb.431.2022.05.03.16.11.20
+        by mx.google.com with ESMTPS id s11-20020a05620a254b00b0069c912ae628si9862381qko.234.2022.05.03.16.14.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 May 2022 16:11:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 May 2022 16:14:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=raDngWrd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@fb.com header.s=facebook header.b=LGfR6Tvr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:56932 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nm1fr-0004tE-Tx
-	for alex.bennee@linaro.org; Tue, 03 May 2022 19:11:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51252)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nm1iX-0000Ql-4q
+	for alex.bennee@linaro.org; Tue, 03 May 2022 19:14:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59832)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=61228a338c=pdel@fb.com>)
- id 1nlzP4-0006U0-TX
- for qemu-arm@nongnu.org; Tue, 03 May 2022 16:45:53 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:20770)
+ id 1nm1XI-0007SZ-0o
+ for qemu-devel@nongnu.org; Tue, 03 May 2022 19:02:28 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:42286)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=61228a338c=pdel@fb.com>)
- id 1nlzP0-0002ph-Lh
- for qemu-arm@nongnu.org; Tue, 03 May 2022 16:45:49 -0400
-Received: from pps.filterd (m0109334.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 243HFj8V007274
- for <qemu-arm@nongnu.org>; Tue, 3 May 2022 13:45:42 -0700
+ id 1nm1XG-0007lR-8G
+ for qemu-devel@nongnu.org; Tue, 03 May 2022 19:02:27 -0400
+Received: from pps.filterd (m0109332.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 243HFlla008454
+ for <qemu-devel@nongnu.org>; Tue, 3 May 2022 16:02:25 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
  h=from : to : cc : subject
- : date : message-id : mime-version : content-transfer-encoding :
- content-type; s=facebook; bh=H0kcl9bBxfoMcRYwUuFvEYrF29d3BGOhHPSec29Rsmc=;
- b=raDngWrdhoCOQuF8dZP3JYfohUeHCOMSy/MSfvS4e7kcRHR4WFAngI9Yzb2qKxoNhbGj
- GVGIPu+lSCqYChloqCpnFl/GEiLhHh03AYb6j2/4M3V2pTS+QOCtTrcK4rELQzp0HkNf
- cqJ2TJn75C6FYHMBtyW/wSZNf8F9G4TUFyk= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3fu6mkat5s-2
+ : date : message-id : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=facebook;
+ bh=w7WZS8JB1wb31fSBmGUAV8X6JoYOKGGhLtZ864uY10Q=;
+ b=LGfR6TvroijNc/o8Ru/zhPWBpy1mI3DAkteHznF73hQaciwORDE7hgicABVEMuKzmaQe
+ 8GqCt2uJw3RxbR+ijvwLjezDvE1RBu/vE4DOEKx2/W4+c3qi4UIw2leDy1GoNIBm8DXg
+ 8xlafP9PbkK5ENpQZmet4zGhkmb7Gl6KWXc= 
+Received: from mail.thefacebook.com ([163.114.132.120])
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3fs2uy46f0-7
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 03 May 2022 13:45:42 -0700
-Received: from twshared13579.04.prn5.facebook.com (2620:10d:c0a8:1b::d) by
- mail.thefacebook.com (2620:10d:c0a8:83::5) with Microsoft SMTP Server
+ for <qemu-devel@nongnu.org>; Tue, 03 May 2022 16:02:25 -0700
+Received: from twshared31479.05.prn5.facebook.com (2620:10d:c085:208::f) by
+ mail.thefacebook.com (2620:10d:c085:21d::5) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Tue, 3 May 2022 13:45:35 -0700
+ 15.1.2375.24; Tue, 3 May 2022 16:01:48 -0700
 Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
- id 528BF5ACF47A; Tue,  3 May 2022 13:45:30 -0700 (PDT)
+ id 453485ADEA5A; Tue,  3 May 2022 16:01:46 -0700 (PDT)
 From: Peter Delevoryas <pdel@fb.com>
 To: 
 CC: <pdel@fb.com>, <patrick@stwcx.xyz>, <qemu-arm@nongnu.org>,
  <qemu-devel@nongnu.org>, <clg@kaod.org>
-Subject: [PATCH 0/1] hw/arm/aspeed: Add fby35 machine type
-Date: Tue, 3 May 2022 13:44:51 -0700
-Message-ID: <20220503204451.1257898-1-pdel@fb.com>
+Subject: [PATCH v2 1/1] hw/arm/aspeed: Add fby35 machine type
+Date: Tue, 3 May 2022 15:59:28 -0700
+Message-ID: <20220503225925.1798324-2-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20220503225925.1798324-1-pdel@fb.com>
+References: <20220503225925.1798324-1-pdel@fb.com>
 X-FB-Internal: Safe
 Content-Type: text/plain
-X-Proofpoint-GUID: EEgEZ8aO4ze9B5vyl-X-Bin6d3R3XWOV
-X-Proofpoint-ORIG-GUID: EEgEZ8aO4ze9B5vyl-X-Bin6d3R3XWOV
+X-Proofpoint-ORIG-GUID: xIhTqbIXfKZyGZF1DrpI9wLQq1kOuDXc
+X-Proofpoint-GUID: xIhTqbIXfKZyGZF1DrpI9wLQq1kOuDXc
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
- definitions=2022-05-03_08,2022-05-02_03,2022-02-23_01
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=61228a338c=pdel@fb.com; helo=mx0a-00082601.pphosted.com
+ definitions=2022-05-03_09,2022-05-02_03,2022-02-23_01
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=61228a338c=pdel@fb.com; helo=mx0b-00082601.pphosted.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -100,58 +105,147 @@ X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LIryUvgTO2WG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Akf40ff4UydR
 
-Hey everyone,
+Add the 'fby35-bmc' machine type based on the kernel DTS[1] and userspace
+i2c setup scripts[2]. Undefined values are inherited from the AST2600-EVB.
 
-I'm submitting another Facebook (Meta Platforms) machine type: this time =
-I'm
-including an acceptance test too.
+Reference images can be found in Facebook OpenBMC Github Release assets
+as "fby35.mtd". [3]
 
-Unfortunately, this machine boots _very_ slowly. 300+ seconds. I'm not su=
-re why
-this is (so I don't know how to fix it easily) and I don't know how to ov=
-erride
-the avocado test timeout just for a single test, so I increased the globa=
-l
-timeout for all "boot_linux_console.py" tests from 90s to 400s. I doubt t=
-his is
-acceptable, but what other option is there? Should I add
-AVOCADO_TIMEOUT_EXPECTED?
+You can boot the reference images as follows (fby35 uses dual-flash):
 
-@skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+qemu-system-arm -machine fby35-bmc \
+    -drive file=3Dfby35.mtd,format=3Draw,if=3Dmtd \
+    -drive file=3Dfby35.mtd,format=3Draw,if=3Dmtd \
+    -nographic
 
-What is the point of this environment variable though, except to skip it =
-in CIT?
-If I run the test with this environment variable defined, it doesn't disa=
-ble the
-timeout, it just skips it right? I want an option to run this test with a=
- larger
-timeout.
+[1] https://github.com/facebook/openbmc-linux/blob/412d5053258007117e94b1e3=
+6015aefc1301474b/arch/arm/boot/dts/aspeed-bmc-facebook-fby35.dts
+[2] https://github.com/facebook/openbmc/blob/e2294ff5d31dd65c248fe396a38528=
+6d6d5c463d/meta-facebook/meta-fby35/recipes-fby35/plat-utils/files/setup-de=
+v.sh
+[3] https://github.com/facebook/openbmc/releases
 
-Thanks,
-Peter
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
+---
 
-Peter Delevoryas (1):
-  hw/arm/aspeed: Add fby35 machine type
+v2: Removed avocado test, updated commit message.
 
- hw/arm/aspeed.c                     | 63 +++++++++++++++++++++++++++++
- tests/avocado/boot_linux_console.py | 20 ++++++++-
- 2 files changed, 82 insertions(+), 1 deletion(-)
+ hw/arm/aspeed.c | 63 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
 
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index a74c13ab0f..725c169488 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -21,6 +21,7 @@
+ #include "hw/misc/led.h"
+ #include "hw/qdev-properties.h"
+ #include "sysemu/block-backend.h"
++#include "sysemu/reset.h"
+ #include "hw/loader.h"
+ #include "qemu/error-report.h"
+ #include "qemu/units.h"
+@@ -951,6 +952,35 @@ static void bletchley_bmc_i2c_init(AspeedMachineState =
+*bmc)
+     i2c_slave_create_simple(i2c[12], TYPE_PCA9552, 0x67);
+ }
+=20
++static void fby35_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc =3D &bmc->soc;
++    I2CBus *i2c[16];
++
++    for (int i =3D 0; i < 16; i++) {
++        i2c[i] =3D aspeed_i2c_get_bus(&soc->i2c, i);
++    }
++
++    i2c_slave_create_simple(i2c[2], TYPE_LM75, 0x4f);
++    i2c_slave_create_simple(i2c[8], TYPE_TMP421, 0x1f);
++    /* Hotswap controller is actually supposed to be mp5920 or ltc4282. */
++    i2c_slave_create_simple(i2c[11], "adm1272", 0x44);
++    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4e);
++    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4f);
++
++    aspeed_eeprom_init(i2c[4], 0x51, 128 * KiB);
++    aspeed_eeprom_init(i2c[6], 0x51, 128 * KiB);
++    aspeed_eeprom_init(i2c[8], 0x50, 32 * KiB);
++    aspeed_eeprom_init(i2c[11], 0x51, 128 * KiB);
++    aspeed_eeprom_init(i2c[11], 0x54, 128 * KiB);
++
++    /*
++     * TODO: There is a multi-master i2c connection to an AST1030 MiniBMC =
+on
++     * buses 0, 1, 2, 3, and 9. Source address 0x10, target address 0x20 on
++     * each.
++     */
++}
++
+ static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+ {
+     return ASPEED_MACHINE(obj)->mmio_exec;
+@@ -1293,6 +1323,35 @@ static void aspeed_machine_bletchley_class_init(Obje=
+ctClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ }
+=20
++static void fby35_reset(MachineState *state)
++{
++    AspeedMachineState *bmc =3D ASPEED_MACHINE(state);
++    AspeedGPIOState *gpio =3D &bmc->soc.gpio;
++
++    qemu_devices_reset();
++
++    /* Board ID */
++    object_property_set_bool(OBJECT(gpio), "gpioV4", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioV5", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioV6", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioV7", false, &error_fatal);
++}
++
++static void aspeed_machine_fby35_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc =3D MACHINE_CLASS(oc);
++    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       =3D "Facebook fby35 BMC (Cortex-A7)";
++    mc->reset      =3D fby35_reset;
++    amc->fmc_model =3D "mx66l1g45g";
++    amc->num_cs    =3D 2;
++    amc->macs_mask =3D ASPEED_MAC3_ON;
++    amc->i2c_init  =3D fby35_i2c_init;
++    /* FIXME: Replace this macro with something more general */
++    mc->default_ram_size =3D FUJI_BMC_RAM_SIZE;
++}
++
+ #define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
+ /* Main SYSCLK frequency in Hz (200MHz) */
+ #define SYSCLK_FRQ 200000000ULL
+@@ -1411,6 +1470,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
+         .name          =3D MACHINE_TYPE_NAME("bletchley-bmc"),
+         .parent        =3D TYPE_ASPEED_MACHINE,
+         .class_init    =3D aspeed_machine_bletchley_class_init,
++    }, {
++        .name          =3D MACHINE_TYPE_NAME("fby35-bmc"),
++        .parent        =3D MACHINE_TYPE_NAME("ast2600-evb"),
++        .class_init    =3D aspeed_machine_fby35_class_init,
+     }, {
+         .name           =3D MACHINE_TYPE_NAME("ast1030-evb"),
+         .parent         =3D TYPE_ASPEED_MACHINE,
 --=20
 2.30.2
 

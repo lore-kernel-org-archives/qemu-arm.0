@@ -1,80 +1,80 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1648628lfj;
-        Tue, 3 May 2022 12:43:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwjAJe8cdFE+u8H6XdkUf0l+C2SG/ZpT6SNIHXXPzq9ECb9EC8/8DqhWfWJ/KjNHvT9s3k4
-X-Received: by 2002:a37:9285:0:b0:69e:e25f:124d with SMTP id u127-20020a379285000000b0069ee25f124dmr13397825qkd.608.1651607004830;
-        Tue, 03 May 2022 12:43:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651607004; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1664374lfj;
+        Tue, 3 May 2022 13:14:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwieidnklPFLGs1H+0ptf5vYHixn+e7upHME7Ka8hxPtQLctjFDCFuh54mmMxzCDeg+8J7P
+X-Received: by 2002:ae9:f70e:0:b0:69f:d2b7:3cc2 with SMTP id s14-20020ae9f70e000000b0069fd2b73cc2mr9362431qkg.301.1651608892497;
+        Tue, 03 May 2022 13:14:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651608892; cv=none;
         d=google.com; s=arc-20160816;
-        b=lWgagjKvIFd/JU/7fD4nsjCNKKoYYREAvFmektLg00NmJLNxWqQmiGvjXJ/0rh/gjp
-         30BPKBNkj4JZ7QqJSDrEErkm2l88qsFi4TtI0ZOZ278+y2140f7AHeSKJon6CnxQmlHC
-         KNm3lAqi0XwgOphhneQsJg81eor9O0BsvToYQdCGA0wwxMWFGATTMXhjfcYFK6aRzRTf
-         PMgC7myOD/B2FDJOiwHXNlqkcdGwCL921yE6LNnULG2kNXK2zQYHEfIHbSumedb5qpuM
-         0s+x+KJKIEOau2uYEp28FkzH3hGM4aYeaekYW7BpHR/DXZe0wrnsnJCyggHodzwi/eyj
-         XNNQ==
+        b=DIvMUxXGYTyGLNbWfQ55VNXy1JdPaF8m+mMs1vQoEmSw8Ul8vPGSJPie0EZ/7uUcaB
+         AU5c1rlkqSGhrtbnqD35X/a1CSNq4bvAfzG/RB92H/wZ2LYD4z4Fc5L/ful8YB34vlGR
+         jMwQhCdBEVoguShfbdIjJ5DrDMvErMvN4/FMZLzeRKTqIcn6wgxwvO2MVfhRkheroBfs
+         vmnPC8WUs+pwWj69S+e/RU/+1NDuj8TgEOQ6EkJC2mQ3m5+imkhUNIkElDVS4Gv11Bsz
+         uYjMyQ04llO3TWPvYgH/3jzUovuiWOt7FwghOoU8NtEnrETfk6D1SR9HF+lZLfLszfcG
+         FBoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:mime-version:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=F2XMVZRhXOlDx/eBFdoKp2/tHA7MKrCIRZ8NQgPVxYc=;
-        b=RTqZzWydFQynpTdYed+YxO4TRphOhLuj0r7hNMZ1y+KaQ2pbsZRpVjgTkVNnnxEzqu
-         wkwulAYBG5uVEFdbGnzvMXV8Y/09vMWMto5WrWERZBq4BMV5EZKmFfAMk+rwoXge9a1c
-         HsqjFjtcd2lha1Dw4ed2qakvwhtIRfM8UtvYuEYOWyMZiHbQkJJvE+55/Q8rMNU/UWtZ
-         6bJ+77N7RUNli0omUOOWbzx8NFYwv8C7ErNL2YyPVe2oVAlNS9bXBGnC1aK3opoonfmi
-         YFNB0hifbqnkECdVbyINUc3Dzieb0po9ekkxbJFGosQhLpNdsjIHmYWRNPoJiPN8vULV
-         8gUw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=wb+HwdpyJ9dw60dXoi/U59AE2ghgLZsYlO7tUAbe2x4=;
+        b=KhpH9BomD2gvyrJvhh9mbAUAhX3yT1V2DfNbHkBVe2Q63cMY8wZ0X1hlmDJhME8AYu
+         3ekTH7ISuON7YtHj7tTZsoEJO12Pz3EjjB0Y8xjvxJBau6lIyJbTjX7ywhtABjMU4pT/
+         KM1mrDcKLXwBY5RWPftSO70ivgs5eupK7SGUpDAyC9BkwVnOsk4qCNJ3m3WQztOOQohQ
+         ZF1+cLBP4dzgCbuvGhid83cl9YeXULulp9S3SdhyvxfSq4ZgnLrAWN1PwLl611JrO1Aw
+         2apsuUd2AWGgdmbvJAgPQ8zqNo4u9CMDf5KzaG4uado72ug41laRJn4iNzn7XjCgCeEF
+         V7Yg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YQpzOdHJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gXPkOKLv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u20-20020a05622a14d400b002f385b5c80esi8282183qtx.632.2022.05.03.12.43.24
+        by mx.google.com with ESMTPS id x16-20020ac85f10000000b002f39b8a1787si5416979qta.278.2022.05.03.13.14.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 May 2022 12:43:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 May 2022 13:14:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YQpzOdHJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gXPkOKLv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40390 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42984 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nlyQe-0007Wp-BC
-	for alex.bennee@linaro.org; Tue, 03 May 2022 15:43:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37056)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nlyv6-0000R9-04
+	for alex.bennee@linaro.org; Tue, 03 May 2022 16:14:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39690)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nlyOg-0005K1-FB
- for qemu-devel@nongnu.org; Tue, 03 May 2022 15:41:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:43734)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nlyXJ-0004HW-Bq
+ for qemu-arm@nongnu.org; Tue, 03 May 2022 15:50:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:36029)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nlyOe-0007T1-Rm
- for qemu-devel@nongnu.org; Tue, 03 May 2022 15:41:22 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1nlyXH-0004eQ-Lr
+ for qemu-arm@nongnu.org; Tue, 03 May 2022 15:50:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1651606749;
+ s=mimecast20190719; t=1651607412;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:mime-version: content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=F2XMVZRhXOlDx/eBFdoKp2/tHA7MKrCIRZ8NQgPVxYc=;
- b=YQpzOdHJJNE5oNz/8CnosipvB/ywzRGaC3WmsvNHPr5XVyukww1oKxEq81wb3xNovB8+rn
- G8GiMxK36ILg7TLOXs6+q5eP5PRa+oJB+yYd3jGfjEvmv5C+GOGANDt71ZCPr2kPT5tKzP
- Gpp7U86nVp+AKJS2IUJ8/WK6R+eBpC0=
+ bh=wb+HwdpyJ9dw60dXoi/U59AE2ghgLZsYlO7tUAbe2x4=;
+ b=gXPkOKLvYITJGv//aWEd+hMGqSJfCeFjKBLHpHNoHZFaxtpsXlzOl/uxDyZunSUQpu1kvp
+ m8MtyItXrC0e/BqNPFfil2yy7rYVuXUF6iziVxNKEWRAnK2CJmXjmxx0l6VSS4+vBrXjRp
+ y83WNPvPtKYoK7kduvZcVqTFnywqH3k=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-455-bxhqwJG8OlmLC0C_BUF4NQ-1; Tue, 03 May 2022 11:04:46 -0400
-X-MC-Unique: bxhqwJG8OlmLC0C_BUF4NQ-1
+ us-mta-139-oQurqTgpNtu6-Mnd2b_Pfw-1; Tue, 03 May 2022 11:04:38 -0400
+X-MC-Unique: oQurqTgpNtu6-Mnd2b_Pfw-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C40B9109B93;
- Tue,  3 May 2022 14:03:36 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 60F26109BB4;
+ Tue,  3 May 2022 14:03:47 +0000 (UTC)
 Received: from gshan.redhat.com (ovpn-12-47.pek2.redhat.com [10.72.12.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4A56C153841E;
- Tue,  3 May 2022 14:03:27 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 96274153AD00;
+ Tue,  3 May 2022 14:03:37 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, mst@redhat.com, imammedo@redhat.com,
@@ -83,15 +83,13 @@ Cc: qemu-devel@nongnu.org, mst@redhat.com, imammedo@redhat.com,
  eblake@redhat.com, armbru@redhat.com, thuth@redhat.com, lvivier@redhat.com,
  pbonzini@redhat.com, berrange@redhat.com, Jonathan.Cameron@Huawei.com,
  drjones@redhat.com, zhenyzha@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v9 2/6] qtest/numa-test: Specify CPU topology in
- aarch64_numa_cpu()
-Date: Tue,  3 May 2022 22:03:00 +0800
-Message-Id: <20220503140304.855514-3-gshan@redhat.com>
+Subject: [PATCH v9 3/6] hw/arm/virt: Consider SMP configuration in CPU topology
+Date: Tue,  3 May 2022 22:03:01 +0800
+Message-Id: <20220503140304.855514-4-gshan@redhat.com>
 In-Reply-To: <20220503140304.855514-1-gshan@redhat.com>
 References: <20220503140304.855514-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
@@ -104,63 +102,73 @@ X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e+JprZNLQSZu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Oc91lCLPl0TX
 
-The CPU topology isn't enabled on arm/virt machine yet, but we're
-going to do it in next patch. After the CPU topology is enabled by
-next patch, "thread-id=1" becomes invalid because the CPU core is
-preferred on arm/virt machine. It means these two CPUs have 0/1
-as their core IDs, but their thread IDs are all 0. It will trigger
-test failure as the following message indicates:
+Currently, the SMP configuration isn't considered when the CPU
+topology is populated. In this case, it's impossible to provide
+the default CPU-to-NUMA mapping or association based on the socket
+ID of the given CPU.
 
-  [14/21 qemu:qtest+qtest-aarch64 / qtest-aarch64/numa-test  ERROR
-  1.48s   killed by signal 6 SIGABRT
-  >>> G_TEST_DBUS_DAEMON=/home/gavin/sandbox/qemu.main/tests/dbus-vmstate-daemon.sh \
-      QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon         \
-      QTEST_QEMU_BINARY=./qemu-system-aarch64                                       \
-      QTEST_QEMU_IMG=./qemu-img MALLOC_PERTURB_=83                                  \
-      /home/gavin/sandbox/qemu.main/build/tests/qtest/numa-test --tap -k
-  ――――――――――――――――――――――――――――――――――――――――――――――
-  stderr:
-  qemu-system-aarch64: -numa cpu,node-id=0,thread-id=1: no match found
-
-This fixes the issue by providing comprehensive SMP configurations
-in aarch64_numa_cpu(). The SMP configurations aren't used before
-the CPU topology is enabled in next patch.
+This takes account of SMP configuration when the CPU topology
+is populated. The die ID for the given CPU isn't assigned since
+it's not supported on arm/virt machine. Besides, the used SMP
+configuration in qtest/numa-test/aarch64_numa_cpu() is corrcted
+to avoid testing failure
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 ---
- tests/qtest/numa-test.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/arm/virt.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/numa-test.c b/tests/qtest/numa-test.c
-index 90bf68a5b3..aeda8c774c 100644
---- a/tests/qtest/numa-test.c
-+++ b/tests/qtest/numa-test.c
-@@ -223,7 +223,8 @@ static void aarch64_numa_cpu(const void *data)
-     QTestState *qts;
-     g_autofree char *cli = NULL;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index f94278935f..6df3981b1e 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2560,6 +2560,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+     int n;
+     unsigned int max_cpus = ms->smp.max_cpus;
+     VirtMachineState *vms = VIRT_MACHINE(ms);
++    MachineClass *mc = MACHINE_GET_CLASS(vms);
  
--    cli = make_cli(data, "-machine smp.cpus=2 "
-+    cli = make_cli(data, "-machine "
-+        "smp.cpus=2,smp.sockets=1,smp.clusters=1,smp.cores=1,smp.threads=2 "
-         "-numa node,nodeid=0,memdev=ram -numa node,nodeid=1 "
-         "-numa cpu,node-id=1,thread-id=0 "
-         "-numa cpu,node-id=0,thread-id=1");
+     if (ms->possible_cpus) {
+         assert(ms->possible_cpus->len == max_cpus);
+@@ -2573,8 +2574,20 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+         ms->possible_cpus->cpus[n].type = ms->cpu_type;
+         ms->possible_cpus->cpus[n].arch_id =
+             virt_cpu_mp_affinity(vms, n);
++
++        assert(!mc->smp_props.dies_supported);
++        ms->possible_cpus->cpus[n].props.has_socket_id = true;
++        ms->possible_cpus->cpus[n].props.socket_id =
++            n / (ms->smp.clusters * ms->smp.cores * ms->smp.threads);
++        ms->possible_cpus->cpus[n].props.has_cluster_id = true;
++        ms->possible_cpus->cpus[n].props.cluster_id =
++            (n / (ms->smp.cores * ms->smp.threads)) % ms->smp.clusters;
++        ms->possible_cpus->cpus[n].props.has_core_id = true;
++        ms->possible_cpus->cpus[n].props.core_id =
++            (n / ms->smp.threads) % ms->smp.cores;
+         ms->possible_cpus->cpus[n].props.has_thread_id = true;
+-        ms->possible_cpus->cpus[n].props.thread_id = n;
++        ms->possible_cpus->cpus[n].props.thread_id =
++            n % ms->smp.threads;
+     }
+     return ms->possible_cpus;
+ }
 -- 
 2.23.0
 

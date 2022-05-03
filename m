@@ -1,53 +1,53 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1125681lfj;
-        Mon, 2 May 2022 19:28:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzYdJMvg5VwClkFV1Kp8DPuZna96bd/rWIxEFDiLTpPtip8zVgzHSLxMxSv2b7nZGnBX/SY
-X-Received: by 2002:a05:6214:caf:b0:456:4027:90ee with SMTP id s15-20020a0562140caf00b00456402790eemr11798479qvs.35.1651544897331;
-        Mon, 02 May 2022 19:28:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651544897; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1125691lfj;
+        Mon, 2 May 2022 19:28:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzpMDbvRV76liayYNAKZ3NIX6t+OSX8MZO6DNhJhswPAScekS+6YtsNAzzF82b/sqD5SRF9
+X-Received: by 2002:a05:6214:3006:b0:444:2fa9:9849 with SMTP id ke6-20020a056214300600b004442fa99849mr12152838qvb.101.1651544900435;
+        Mon, 02 May 2022 19:28:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651544900; cv=none;
         d=google.com; s=arc-20160816;
-        b=izrknZyD06KZrnANtSQfBjD2uiHR/43KYdohNntoN1NFRZxzq6nIJDwBQb8I08XDAW
-         okEhkQimuQ04pn3LQN7mD+9LWjgGOeO/lQhz0cswYiR/LhUY82NcSHAE8dogpWFVJYQz
-         lZ4i6cgpB6FueIJsli67uQzm4Yb82InVioqJbOUTrRjc6uGSu6DZVfCLkx7pXsUXrdLf
-         vRvxm+S82Vz+HNFHMVax5bbBA1MJWnO6SKww1sBrNdTYTILn2gD0AX8socWCM2KGrbLE
-         050YYBkP+ukSZLzLbDY4suJrFfjP8zTYXSS9ZPXtJincmiBR0LJ65zgKA8jkPq4ObCn0
-         ncng==
+        b=O8iY0DCe/mOD9l1ED01Mf5g3XY+fAPivOelH2/iXdsQC6PfoZgOecUqQcogTlZ4WVY
+         m8ByGo2ay3w0n9Lmv6wxiwKirN88eqkFDf48JhIi57F+RLsVbeNmVqbinKvkCBx9H4Sb
+         B7Yvr1k0Zv0OQ9WopPOUz45cv5HjwFdn8TDpGRll+3iJrJZpPAExg2goC8pU6IHMiSud
+         Rja963jR21F6xNMfsNNf+qMAqqWMF6r1HrPjb8n1MRBn1ZeNRIj/3XV45pc0zLpVYFrK
+         Hzf129CPMCiVklhUvq+YAT2oZogYLrB3SMGj/QMiYzMEg7E/02ItQGOcQYTDSiEbDj5v
+         2aiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from;
-        bh=/x9GwnwJhuUD9cZPtoVKOZlqE4ihNiNqMCB+V/d4meI=;
-        b=lblntpvY5a3UdQOPpsXDI9VU+/od5R2Dw17ykWSMQc3nxGb9dEOrZrkzlVRs0DHgmK
-         FeJjLyZE+mjV9r1+T54VwGPPzxLReO8OS7SZ0G6BFp3Xy4YNBpJ7NCfOUYwKpil8xEXU
-         drBQGu5gBxTRPzG5eD/gFVMYp/yqbWSRI/PvhWE4jaZodtmO26ghTLARErBV0I+X/RAN
-         3yv8dfD5+jE88tQOpcqOfRSCKevPnTHoLeCGaSL3fjker+BtOzDe0n3+WRYsi18kIqku
-         8pyiaEW2ik3vnIGIqYMd8NyHV2Q5M5iF2TZfB9FE7vKjWYN3iGcLLcuInaiAeE5Kmqre
-         uqVw==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:cc:to:from;
+        bh=G4KG4L3569ruMGPJXECCANfjLKTX3rvLYk8xjGN9Rwg=;
+        b=tQ4I/XYzm3a+So51zLMG8EtkPryuelkr9ItuXJaEg5DwzxQ4tBzK909Gej9Y+x42iD
+         u9iMB4GjUFs5HqBBaUB63yfLJG8Qyy6DMe5KFVx+MJg2oFTVbcqX6N47VjdVR8cpvMI7
+         zlsBJ52ALABRY47TVqEfdsIHY0bliWcZeEQY3E6JJgPhhZvRv2QVQ3D7h42RwHDuXPvy
+         BBEIuLDxdN8j1ixfTi6NWiWFevE2hs2E774iDkdBUuJGeKls9FlucPMEbS4fFtddj/yG
+         V7ZMIAiSJYWBGymd53DSztKM8ZfR0jBI1DOdNbgj8luhx8ANtE8hVxPIW54i9iXvEUAs
+         GIrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r8-20020ae9d608000000b0069fb1b32a76si5946246qkk.325.2022.05.02.19.28.17
+        by mx.google.com with ESMTPS id p139-20020a37a691000000b0069f9e8cc370si5842720qke.367.2022.05.02.19.28.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 May 2022 19:28:17 -0700 (PDT)
+        Mon, 02 May 2022 19:28:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57194 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57362 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nliGu-0005gb-QQ
-	for alex.bennee@linaro.org; Mon, 02 May 2022 22:28:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46446)
+	id 1nliGx-0005pb-V2
+	for alex.bennee@linaro.org; Mon, 02 May 2022 22:28:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46460)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1nliGj-0005d7-N4; Mon, 02 May 2022 22:28:05 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:61336)
+ id 1nliGn-0005kY-4B; Mon, 02 May 2022 22:28:09 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:36817)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1nliGg-0007OF-PK; Mon, 02 May 2022 22:28:05 -0400
+ id 1nliGl-0007Ph-AM; Mon, 02 May 2022 22:28:08 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 2432ENt0014088;
+ by twspam01.aspeedtech.com with ESMTP id 2432ENFG014087;
  Tue, 3 May 2022 10:14:23 +0800 (GMT-8)
  (envelope-from steven_lee@aspeedtech.com)
 Received: from localhost.localdomain (192.168.70.100) by TWMBX02.aspeed.com
@@ -60,19 +60,17 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <steven_lee@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <jamin_lin@aspeedtech.com>
-Subject: [PATCH v1 1/1] aspeed/hace: Support AST1030 HACE
-Date: Tue, 3 May 2022 10:27:10 +0800
-Message-ID: <20220503022710.4119-2-steven_lee@aspeedtech.com>
+Subject: [PATCH v1 0/1] aspeed/hace: Support AST1030 HACE
+Date: Tue, 3 May 2022 10:27:09 +0800
+Message-ID: <20220503022710.4119-1-steven_lee@aspeedtech.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20220503022710.4119-1-steven_lee@aspeedtech.com>
-References: <20220503022710.4119-1-steven_lee@aspeedtech.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [192.168.70.100]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 2432ENt0014088
+X-MAIL: twspam01.aspeedtech.com 2432ENFG014087
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=steven_lee@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -94,66 +92,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WIvz0rXIg+PH
+X-TUID: N6rpE9GvEgka
 
 Per ast1030_v7.pdf, AST1030 HACE engine is identical to AST2600's HACE
 engine.
 
-Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
----
+Please help to review.
+
+Thanks,
+Steven
+
+Based-on: 20220426021120.28255-3-steven_lee@aspeedtech.com
+([v6,2/3] aspeed/hace: Support AST2600 HACE)
+
+Steven Lee (1):
+  aspeed/hace: Support AST1030 HACE
+
  hw/misc/aspeed_hace.c         | 20 ++++++++++++++++++++
  include/hw/misc/aspeed_hace.h |  2 ++
  2 files changed, 22 insertions(+)
 
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 10f00e65f4..91f3c0b208 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -378,11 +378,31 @@ static const TypeInfo aspeed_ast2600_hace_info = {
-     .class_init = aspeed_ast2600_hace_class_init,
- };
- 
-+static void aspeed_ast1030_hace_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedHACEClass *ahc = ASPEED_HACE_CLASS(klass);
-+
-+    dc->desc = "AST1030 Hash and Crypto Engine";
-+
-+    ahc->src_mask = 0x7FFFFFFF;
-+    ahc->dest_mask = 0x7FFFFFF8;
-+    ahc->key_mask = 0x7FFFFFF8;
-+    ahc->hash_mask = 0x00147FFF;
-+}
-+
-+static const TypeInfo aspeed_ast1030_hace_info = {
-+    .name = TYPE_ASPEED_AST1030_HACE,
-+    .parent = TYPE_ASPEED_HACE,
-+    .class_init = aspeed_ast1030_hace_class_init,
-+};
-+
- static void aspeed_hace_register_types(void)
- {
-     type_register_static(&aspeed_ast2400_hace_info);
-     type_register_static(&aspeed_ast2500_hace_info);
-     type_register_static(&aspeed_ast2600_hace_info);
-+    type_register_static(&aspeed_ast1030_hace_info);
-     type_register_static(&aspeed_hace_info);
- }
- 
-diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-index 94d5ada95f..e9d3563a05 100644
---- a/include/hw/misc/aspeed_hace.h
-+++ b/include/hw/misc/aspeed_hace.h
-@@ -15,6 +15,8 @@
- #define TYPE_ASPEED_AST2400_HACE TYPE_ASPEED_HACE "-ast2400"
- #define TYPE_ASPEED_AST2500_HACE TYPE_ASPEED_HACE "-ast2500"
- #define TYPE_ASPEED_AST2600_HACE TYPE_ASPEED_HACE "-ast2600"
-+#define TYPE_ASPEED_AST1030_HACE TYPE_ASPEED_HACE "-ast1030"
-+
- OBJECT_DECLARE_TYPE(AspeedHACEState, AspeedHACEClass, ASPEED_HACE)
- 
- #define ASPEED_HACE_NR_REGS (0x64 >> 2)
 -- 
 2.17.1
 

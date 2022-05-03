@@ -1,97 +1,85 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1184325lfj;
-        Mon, 2 May 2022 22:16:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyj8kSUXvPOxDCdPLOmrUrgfwER+bIWXbGDDgutz+hpPFes8NxjxR0drcst6oHokf/PSqac
-X-Received: by 2002:a0c:aad7:0:b0:45a:9960:6097 with SMTP id g23-20020a0caad7000000b0045a99606097mr3666235qvb.55.1651554988242;
-        Mon, 02 May 2022 22:16:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651554988; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1226861lfj;
+        Tue, 3 May 2022 00:05:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXgLjQ9CL6EPRfm3+mhWvQ6S34Ail5idxJUGwAcS8qVPZQyAB7XrP3VfhKIoBYLpW7Npap
+X-Received: by 2002:a05:620a:198a:b0:6a0:6a9:aa9c with SMTP id bm10-20020a05620a198a00b006a006a9aa9cmr313708qkb.8.1651561533745;
+        Tue, 03 May 2022 00:05:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651561533; cv=none;
         d=google.com; s=arc-20160816;
-        b=GtF3Y0vgEqzJqP65s56CW3wcg2UcnVDcI1GDemPN7sDBIv0Co8sNMuCMU+qwx+hT76
-         YceHIMsnQklro6TkFSL98AOkqhVTiePoJsvgcvcrfsLx7kKAoSRE4zXwcSH9mOFMFy6S
-         U3Yz+qrWe7ap19UoJxB2wQG1wQMTSEpexgz8At+fwyjmUkhp5D4RnPph/22IlTec4F69
-         9+PV9ovuGW8H0Jnzipw5v45Lw5KYmegJEdCjEMX3yaucESzVFwfbYC3let05x38+rsdP
-         ROHOxDJ90snkakrLuXEqFI4ij4jI83RDOwNEdapvYGiM0eIPWDgrVDULHPOyjk3rmpt/
-         mumQ==
+        b=mbe3UWEZyNusIitsQbBNMjiqaSxPPV0elkDSUfkQVjgjBXEC1K7f5Sa+xL0p3qm0Wr
+         0ZeTu963nOnFZUTaHZdXoGOc2aH9igI+P+S4ru3syo+Fayq4eayfQWIiPEykj0ybhLFB
+         b3hZOmUcxy1xAlMfGTwnYtX/WSNKJMQ3/E1cKyDsAHtesuKoywFJ2BKb0uiMfwJieETI
+         6/oPt7WjeTgyUL6f6HJdG3xO4g3IKozaAc2fH1CS+g44KxUoi6IKGHpY6MLmkN8vA+C2
+         MqyDr6eV3L7OCd2c2m8I4l2X7boOnWuTwKxY+GyqCAXtC3p+Cphea4EGYtpJbIBz4Wuj
+         mWwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=Q4PC9NhdUh0VxEw9aYjai0xr5DAjwPv4Y1U9KsdgoXw=;
-        b=GY/2s723QX5khpX+ttC5t911q3nfM+wxUzpHzHkhbBIqbCo1+iODLwqpUTEa2eIs0D
-         cRd0WFF4YbFK9W9lE5W9cbq2uklToWPutbk2dnZXygA0PeXqZVZcqOmKfJZF6WdCB7ZN
-         xbPl0OScoaLBLmCDBRmw+NZx8YaUZpsT6Jv9xqEjoMJRjiAksF0MQn1/CGm0144wyZVM
-         OdYURUywskvBGLpcvnD6KPBxUGq6yrMoKvwcHPGUHI6habIDGnhxR1LNLfkMvuXaB9Wz
-         5v4JYEXnK0/SeF1G8L7aG1B0hfsqUuA6OvsYJQS0B/4wv2h1RkMQFpVtX9rdwlDuw7yR
-         QBww==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=lM37n8p+nLJ8NdgddvUS2NYxdmBMbS0jujviXtY7ssE=;
+        b=UCG9qL02Uhax/wml6/W0vQiMLl9jGIYr5EsIykG9bRKiJCD6XvMllJxyVPEaDIWKZm
+         6p5vTQ0TEIK2jQC0zU24y6Dd3pIgJ+nCRbFKOHqr5Qf/FKWwBH3qhSxOkuMJ1dkJQWm2
+         4/I9qqw46njvfYFCF5x9YDdoufZyzbvPre9IHNm0SQoIsoEiDuPh04G4HXBcSXKZWVv1
+         Miud7d6eMHldc0RDUr1JrqIzZUFqG6qxCWqqi4+XDan+y/epTY+76IYbXJT7O6DXuQbB
+         rlckSxgC30TEgzVDy2wHWLmGv4FpJdAW/6OyojzU6j/9pRcqFSfebKilNCD2U9+S1lot
+         jxhA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bj21-20020a05620a191500b0069fd6fc4dafsi2573076qkb.268.2022.05.02.22.16.28
+        by mx.google.com with ESMTPS id t2-20020a05622a180200b002f3b1e0a843si24928qtc.206.2022.05.03.00.05.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 May 2022 22:16:28 -0700 (PDT)
+        Tue, 03 May 2022 00:05:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36644 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44214 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nlktf-00007H-OI
-	for alex.bennee@linaro.org; Tue, 03 May 2022 01:16:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36254)
+	id 1nlmb0-00069A-1d
+	for alex.bennee@linaro.org; Tue, 03 May 2022 03:05:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48996)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nlktA-00006c-ML
- for qemu-arm@nongnu.org; Tue, 03 May 2022 01:15:57 -0400
-Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192]:41561)
+ (Exim 4.90_1) (envelope-from <SRS0=XF6a=VL=kaod.org=clg@ozlabs.org>)
+ id 1nlmV3-000365-P8; Tue, 03 May 2022 02:59:12 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76]:54367)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nlkt8-0002uJ-Km
- for qemu-arm@nongnu.org; Tue, 03 May 2022 01:15:56 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.144])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 76002221D0;
- Tue,  3 May 2022 05:15:49 +0000 (UTC)
-Received: from kaod.org (37.59.142.110) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.6; Tue, 3 May 2022
- 07:15:48 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-110S00488da3245-bafb-449b-9c51-5400d44e45cd,
- F6B89E566DA044E9E2FB2CFEBB669705F2CEA7ED) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <64846418-93b8-0122-191d-67b301906d63@kaod.org>
-Date: Tue, 3 May 2022 07:15:47 +0200
+ (Exim 4.90_1) (envelope-from <SRS0=XF6a=VL=kaod.org=clg@ozlabs.org>)
+ id 1nlmV1-0007TF-UR; Tue, 03 May 2022 02:59:09 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4KsrRF3jN7z4xXh;
+ Tue,  3 May 2022 16:59:05 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4KsrRC1Ykpz4yST;
+ Tue,  3 May 2022 16:59:02 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 05/19] aspeed/adc: Add AST1030 support
+Date: Tue,  3 May 2022 08:58:34 +0200
+Message-Id: <20220503065848.125215-6-clg@kaod.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220503065848.125215-1-clg@kaod.org>
+References: <20220503065848.125215-1-clg@kaod.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH v1 1/1] aspeed/hace: Support AST1030 HACE
-Content-Language: en-US
-To: Steven Lee <steven_lee@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>
-References: <20220503022710.4119-1-steven_lee@aspeedtech.com>
- <20220503022710.4119-2-steven_lee@aspeedtech.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220503022710.4119-2-steven_lee@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.110]
-X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 3c596954-b7bf-41bd-83b1-58439df6ba14
-X-Ovh-Tracer-Id: 13439867189573946220
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrvdeigdelfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkeetjedtleekjedvveffudfhteetleeifeegfeffuefghfefkeehffeufeeludejnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdduuddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepjhgrmhhinhgplhhinhesrghsphgvvgguthgvtghhrdgtohhm
-Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
- helo=3.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=XF6a=VL=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,72 +94,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sPVQMrCXKvjG
+X-TUID: QRfFLeaH+V+G
 
-On 5/3/22 04:27, Steven Lee wrote:
-> Per ast1030_v7.pdf, AST1030 HACE engine is identical to AST2600's HACE
-> engine.
-> 
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+From: Steven Lee <steven_lee@aspeedtech.com>
 
+Per ast1030_v7.pdf, AST1030 ADC engine is identical to AST2600's ADC.
+
+Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20220401083850.15266-2-jamin_lin@aspeedtech.com>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ include/hw/adc/aspeed_adc.h |  1 +
+ hw/adc/aspeed_adc.c         | 16 ++++++++++++++++
+ 2 files changed, 17 insertions(+)
 
-Thanks
-
-C.
-
-> ---
->   hw/misc/aspeed_hace.c         | 20 ++++++++++++++++++++
->   include/hw/misc/aspeed_hace.h |  2 ++
->   2 files changed, 22 insertions(+)
-> 
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index 10f00e65f4..91f3c0b208 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -378,11 +378,31 @@ static const TypeInfo aspeed_ast2600_hace_info = {
->       .class_init = aspeed_ast2600_hace_class_init,
->   };
->   
-> +static void aspeed_ast1030_hace_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedHACEClass *ahc = ASPEED_HACE_CLASS(klass);
-> +
-> +    dc->desc = "AST1030 Hash and Crypto Engine";
-> +
-> +    ahc->src_mask = 0x7FFFFFFF;
-> +    ahc->dest_mask = 0x7FFFFFF8;
-> +    ahc->key_mask = 0x7FFFFFF8;
-> +    ahc->hash_mask = 0x00147FFF;
-> +}
-> +
-> +static const TypeInfo aspeed_ast1030_hace_info = {
-> +    .name = TYPE_ASPEED_AST1030_HACE,
-> +    .parent = TYPE_ASPEED_HACE,
-> +    .class_init = aspeed_ast1030_hace_class_init,
-> +};
-> +
->   static void aspeed_hace_register_types(void)
->   {
->       type_register_static(&aspeed_ast2400_hace_info);
->       type_register_static(&aspeed_ast2500_hace_info);
->       type_register_static(&aspeed_ast2600_hace_info);
-> +    type_register_static(&aspeed_ast1030_hace_info);
->       type_register_static(&aspeed_hace_info);
->   }
->   
-> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-> index 94d5ada95f..e9d3563a05 100644
-> --- a/include/hw/misc/aspeed_hace.h
-> +++ b/include/hw/misc/aspeed_hace.h
-> @@ -15,6 +15,8 @@
->   #define TYPE_ASPEED_AST2400_HACE TYPE_ASPEED_HACE "-ast2400"
->   #define TYPE_ASPEED_AST2500_HACE TYPE_ASPEED_HACE "-ast2500"
->   #define TYPE_ASPEED_AST2600_HACE TYPE_ASPEED_HACE "-ast2600"
-> +#define TYPE_ASPEED_AST1030_HACE TYPE_ASPEED_HACE "-ast1030"
-> +
->   OBJECT_DECLARE_TYPE(AspeedHACEState, AspeedHACEClass, ASPEED_HACE)
->   
->   #define ASPEED_HACE_NR_REGS (0x64 >> 2)
+diff --git a/include/hw/adc/aspeed_adc.h b/include/hw/adc/aspeed_adc.h
+index 2f166e8be111..ff1d06ea91de 100644
+--- a/include/hw/adc/aspeed_adc.h
++++ b/include/hw/adc/aspeed_adc.h
+@@ -17,6 +17,7 @@
+ #define TYPE_ASPEED_2400_ADC TYPE_ASPEED_ADC "-ast2400"
+ #define TYPE_ASPEED_2500_ADC TYPE_ASPEED_ADC "-ast2500"
+ #define TYPE_ASPEED_2600_ADC TYPE_ASPEED_ADC "-ast2600"
++#define TYPE_ASPEED_1030_ADC TYPE_ASPEED_ADC "-ast1030"
+ OBJECT_DECLARE_TYPE(AspeedADCState, AspeedADCClass, ASPEED_ADC)
+ 
+ #define TYPE_ASPEED_ADC_ENGINE "aspeed.adc.engine"
+diff --git a/hw/adc/aspeed_adc.c b/hw/adc/aspeed_adc.c
+index c5fcae29f635..0d2966312954 100644
+--- a/hw/adc/aspeed_adc.c
++++ b/hw/adc/aspeed_adc.c
+@@ -389,6 +389,15 @@ static void aspeed_2600_adc_class_init(ObjectClass *klass, void *data)
+     aac->nr_engines = 2;
+ }
+ 
++static void aspeed_1030_adc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedADCClass *aac = ASPEED_ADC_CLASS(klass);
++
++    dc->desc = "ASPEED 1030 ADC Controller";
++    aac->nr_engines = 2;
++}
++
+ static const TypeInfo aspeed_adc_info = {
+     .name = TYPE_ASPEED_ADC,
+     .parent = TYPE_SYS_BUS_DEVICE,
+@@ -415,6 +424,12 @@ static const TypeInfo aspeed_2600_adc_info = {
+     .class_init = aspeed_2600_adc_class_init,
+ };
+ 
++static const TypeInfo aspeed_1030_adc_info = {
++    .name = TYPE_ASPEED_1030_ADC,
++    .parent = TYPE_ASPEED_ADC,
++    .class_init = aspeed_1030_adc_class_init, /* No change since AST2600 */
++};
++
+ static void aspeed_adc_register_types(void)
+ {
+     type_register_static(&aspeed_adc_engine_info);
+@@ -422,6 +437,7 @@ static void aspeed_adc_register_types(void)
+     type_register_static(&aspeed_2400_adc_info);
+     type_register_static(&aspeed_2500_adc_info);
+     type_register_static(&aspeed_2600_adc_info);
++    type_register_static(&aspeed_1030_adc_info);
+ }
+ 
+ type_init(aspeed_adc_register_types);
+-- 
+2.35.1
 

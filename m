@@ -1,197 +1,110 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp525274lfj;
-        Wed, 4 May 2022 12:08:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxfmP47uJqKNuyNriMl8g877SrWKZ6nxwBcrqma7vcoa56otIvMRqtvqXC/2wjb1FqNngHb
-X-Received: by 2002:ad4:53c5:0:b0:42c:c4d4:65d with SMTP id k5-20020ad453c5000000b0042cc4d4065dmr19245863qvv.98.1651691307250;
-        Wed, 04 May 2022 12:08:27 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1651691307; cv=pass;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp583690lfj;
+        Wed, 4 May 2022 13:51:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxAHwxDxMGqsF3khRcbvKQFVh5XMe8fxNzou658xMwrj2UUlhf3RHH9yjlTGpcvTz81ze0a
+X-Received: by 2002:a05:620a:29ce:b0:6a0:2338:2fbe with SMTP id s14-20020a05620a29ce00b006a023382fbemr2391876qkp.315.1651697478405;
+        Wed, 04 May 2022 13:51:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651697478; cv=none;
         d=google.com; s=arc-20160816;
-        b=k/qRqJohGazo7aHwVvmdsEHgA28f0EED/0tx7xXRldRZeRD3COD9lpsvrJVhYbw7gc
-         14ZBu0loSRpuQX3pz0gJKH7BXAF2L36XpUlyyoLWWBUN79FzPQbC7oAg6IIwziYE/ME7
-         8BddMcrwC2YEoXXeZ/HDB1mVI393CmvuTWzstS0LE/a68GSOq6O0Qxw92ThPC8DBP7R4
-         AlVTZc6Of3laV3WD2AghGqe3NWf7TZ4T/Y4SgXq9DT3/MqGw2mVlcM8pCIkdgrTqyesc
-         S156uj9plWIq0VjQ3uKcSyaAfH2p98kpW+yqFgQ8Y7ohWYFg/CiKVNvvHEicQhAh4+pF
-         e5jA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=qlOBWDoge7cnBclIxW0u5Wd6gqLKTxXYQDt11m01vhGZKWiB4cCwYzA2EbhEprlIiH
+         xY3/m3QdSA+UVmC5d8tkupSelT7vXl20lOT1PkkKyabsTd+G9J0JCBGJH7XHEsRqHJ6i
+         R5MA1QkVfMGh0x0EwcHYArL3mAeNLZ/2aUrm1qv0yx3uJpO9/krnZ77RkgpQCQlfUF1f
+         eaXGyscrWyTS72IYBNetlcdBEileUlwDCK22zkZ/PbHa+9fkiZ/nCXC8hS0mhqf+Vgtu
+         ZgzBUyCUoJDr7FzHnBUpO0m2cY2XY1QaeseGYvSx4cVskRZbill5lyCgPEjcx7Nkdj/X
+         IuFg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=D80ZUuYip++aG0Rzw0V50IM3tw6TfdASZVsRz7kBt4Y=;
-        b=EyTWLITY5S3ZHJYGRPCkhOW9UsiuudRUeKakI8sqsA0R+J0mue64c488IXe6Bvmi78
-         1sLjEWy4BJDU1B7o6Nl0uymrEeZxdd+GBI2zpC+26e9SiePyQakE9EEnJjeLNW767Re8
-         2fHsfLWnPKMDYE8uTao8Q4Gkv4Cp/942gvHMW2yelWX9dFofgGGoDsaDaWFu8oRMxeqa
-         A0mQ/kgAspGuyL0rAJZmXqF+ZFhJFeu4CfZnB+2I+fc2pE1dtja/3meNUOi3p8XPF1Lv
-         rVfE8YapShGHh2sUzDVLl+XlHJmU/7YFE3rDLnoLJkr2NQthO0sARC9cUw7Zl7ua60fF
-         U0og==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=l4Dkh0u+;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=pZU4aYdSeMJSlGG4cvAHZtnugUvy7LQSghcLFal1wss=;
+        b=pENvH6X5qnIImv2rTw5hj65/wXM+lZ7wwFPztk9Q2PaIq4GuzN7DwGHzKRuXrbYswG
+         WCqbu63UnqOKQPS9mIafA8p4zP2aKzG/1IOe7TREI+UNrtha4Ag8OGxdBUEiU1mlgaJj
+         80dHbo5J1XVT1L1PcToNJUtMla2ic4NH/ZfYXa+5xy708ZRTrVyws6pJcPuAaxB6g3Y2
+         28CWyMB8F1mW4NWDXCLYdsrm4vZmsf0GoDoB62FaoQW9vaE7Bimvi+HBw67YWRzHqHOU
+         TWGuLRNQ9nyssnjj88Cue54dtSjIIwij0IGRBuRZvrTWoNjW+B496HLAId3gnFqaZg6D
+         ST0A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=QOLutfHK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d9-20020a05622a05c900b002f368b35c57si9699855qtb.519.2022.05.04.12.08.27
+        by mx.google.com with ESMTPS id bp42-20020a05620a45aa00b006a009bba37csi2534952qkb.31.2022.05.04.13.51.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 May 2022 12:08:27 -0700 (PDT)
+        Wed, 04 May 2022 13:51:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=l4Dkh0u+;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=QOLutfHK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:56940 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49284 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nmKMM-0006il-O1
-	for alex.bennee@linaro.org; Wed, 04 May 2022 15:08:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34878)
+	id 1nmLxt-0008Ff-QK
+	for alex.bennee@linaro.org; Wed, 04 May 2022 16:51:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=6123628e29=pdel@fb.com>)
- id 1nmKMB-0006iY-E9; Wed, 04 May 2022 15:08:15 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:41070)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=6123628e29=pdel@fb.com>)
- id 1nmKM8-0007Xk-Vg; Wed, 04 May 2022 15:08:14 -0400
-Received: from pps.filterd (m0109331.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 244J1YxS024938;
- Wed, 4 May 2022 12:08:02 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : references : in-reply-to : content-type : content-id
- : content-transfer-encoding : mime-version; s=facebook;
- bh=D80ZUuYip++aG0Rzw0V50IM3tw6TfdASZVsRz7kBt4Y=;
- b=l4Dkh0u+OwEB4jovn0g8+wWHxq8Sq/XZkJWCp3yuvW5QHkg+TDAbUkv5tJ0tuQg3N087
- gLwicj+uVtTD6sFaZaSVc67agJIUABN0miBoMHdeT7pVnYIxPs1tm1fSzdMl5FzrRuEc
- 7ZSKx2qS9ecjcHy+bbkUNeeLNZ87aBm+u7Y= 
-Received: from nam12-mw2-obe.outbound.protection.outlook.com
- (mail-mw2nam12lp2044.outbound.protection.outlook.com [104.47.66.44])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3ft6ac353p-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 04 May 2022 12:08:02 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WjI5f0xelG6m5bPLCnZZWZJXd8LsVaed0Upw4FWebgqW2xa/NA/QPJlXiZBZgV8bVv2tn9vVFwmIdhRzPLEbGC88+JCb4sMUmeyGU2wz9llS49jPEDf6H/TVlwclyo1UvGocQ+CiCkzPcDeX5GH5sXXnnFQAxp7jVlCJjcFWMsjvFS86NM2fdP6Kt6ZxnvUpM8iIoZxAZXhAhDrBIVbNI0XeLBgTaaNFRPr1KrXa9hw2OVNV11UFUjse63ft++gDs9dvi7Tn87DOHY6576G2N0II4+or95Jcv774STROieDK2MiQpc3yJFRgKczoB4C+oJfj7t5o5JAgY+Ik/i0c9g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=D80ZUuYip++aG0Rzw0V50IM3tw6TfdASZVsRz7kBt4Y=;
- b=jPqfNEKf2ZWLrKDvHijJ9woOrqCaK7gm6xpS1hSn6Cv9R6587xaMUe37CFCJQc46Amr4WkMHUio+9DgnoHJKnQBN8qNc/aGVJ5zwPE6xskm+VzhY1/ZeAlJ1gXUHKzcx047IA7Nj6QafUKVIjrfWrUdx4lR9blhCM8jygWxnPsgkghAys12QAR4xCGpW6ujDyEc4K6tbvXnmfvRVlLCKypLonvrdr/NS7NT89pAQ/6vlDfI+W40cauJbxaIlASse7NFp93ZJTefC0sagGGJ/KdxE7fRBln+nKuzWQibch6tLMwBXy2COaSS9/7PZqM+Xkx7hYTlFfaoONb0Tmr0Z2w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
- header.d=fb.com; arc=none
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
- by DM6PR15MB3484.namprd15.prod.outlook.com (2603:10b6:5:170::31) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5206.25; Wed, 4 May
- 2022 19:07:59 +0000
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::70e4:6720:69ef:5541]) by BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::70e4:6720:69ef:5541%4]) with mapi id 15.20.5206.025; Wed, 4 May 2022
- 19:07:59 +0000
-From: Peter Delevoryas <pdel@fb.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>
-CC: "patrick@stwcx.xyz" <patrick@stwcx.xyz>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v2 1/1] hw/arm/aspeed: Add fby35 machine type
-Thread-Topic: [PATCH v2 1/1] hw/arm/aspeed: Add fby35 machine type
-Thread-Index: AQHYX0HIkqOKjoOJ/k+YKhqMRITql60OVaUAgACVbwmAACrxAA==
-Date: Wed, 4 May 2022 19:07:59 +0000
-Message-ID: <3C811C58-AF56-412B-B567-1218076B7584@fb.com>
-References: <20220503225925.1798324-1-pdel@fb.com>
- <20220503225925.1798324-2-pdel@fb.com>
- <2ab490a2-875d-ae82-38d0-425415f9818c@kaod.org>
- <856683F7-3F36-449E-B203-89EC3D876DD9@fb.com>
-In-Reply-To: <856683F7-3F36-449E-B203-89EC3D876DD9@fb.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 84ce974e-e9fe-4214-44db-08da2e0167ab
-x-ms-traffictypediagnostic: DM6PR15MB3484:EE_
-x-microsoft-antispam-prvs: <DM6PR15MB3484CE244ECEE17DEDA77C16ACC39@DM6PR15MB3484.namprd15.prod.outlook.com>
-x-fb-source: Internal
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: x0Eoml5wufO03BMHgxt4+W0HptrRRK5m56s3khy10YWk9xESWR59PhpvvKtmV0A8VsMrfNNDefafJ7JoL3XtZ8Ly/BY429baeBxkU2Xs/u0GXwfwCU6t5QSxqGag4OgvJrxo9IdHiPhaNTk/W7zlQs7XZjLQrmOinIt63Leror8eluVPtO1Kn16oOXgSjeeHC4D9JNC1ONhom4squLn7UnTwjlogiBm5RevO6Za4bRse8qRC3ms/Ke2TcCJWqh+4y28s3RibINU/pRwybIeoBZwk//QgjcDieRWlYEGI1W3q8t9gNScNoIKRIZs56imB4FVEFYWKcIp1wl5rbedwX6kUZa94k27OvxgTAiPHB3PRcgCzJaQ8JcpkrAJ+hBZlXTgMakcdlKoxRVJfmS2sr4t7XRPfDsTu1EoZ0H3S4+0XuCxyw90XKAaCQJQkMa4FEiAgel+eL7ekgcWSCIe+3pBFMm1nZa75/8lFnvuaf9JNWYkzvq3vzeN+dZxe7J7mAC+soqvg4mq/05TtzraPT3B1GwFAAFrJYi2qhWqaNUYDVfMi+502qC+A7iEC7MwFgY7NRHjsJuVh/oK5G/Dg5G1HCo7xzW3VsH7HsMtrp1im5Pirz0y5/kq7oHEuEtKQW9DiG9i8CmQQz72RAELLt6i+D78swoJEKpn0+ViTwYotmx6xnbt3lGQkQ3xUZUQNNLTwt8sh8tg4zDx18iwWhArbKdKOWlYqQRM72y/3G1FnnT68VuxFhio03ZNyRRQVR9cYYioFLBrlOAjuZLawiCFnYO/uY+QdLLLaQt4b0II22yPGcvtqRpAPT5GwnCobc2TbPlXSslZ+dK/jBa47INT4KvC4V0E9vAOyqpnMsQQ=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(122000001)(2616005)(86362001)(38070700005)(83380400001)(38100700002)(8676002)(71200400001)(76116006)(66476007)(66556008)(64756008)(66446008)(66946007)(4326008)(36756003)(2906002)(8936002)(186003)(316002)(33656002)(5660300002)(6486002)(53546011)(508600001)(6512007)(6506007)(54906003)(966005)(6916009)(45980500001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UTNKbWN1bVhvdFNMZ1pGSmlDNHRuUlNvY0dpYktNZkNJRmdUMWNaSFR2bVBX?=
- =?utf-8?B?dUhId25uTzh1aUlzd1VWMGRScjlPQzJCdGJaZzlvQUErNFNMK2dTaE5qMkkw?=
- =?utf-8?B?K25lS2lDUWI3M2dlUHN6dG5mbUlxVU1JamYzb0QrUTdUY1RUYmxwOUlXa0dF?=
- =?utf-8?B?eWpVSXRzS2lJcjU5ZjRWYVVQUVpjSUl6Yjk2bjJON2hFSG9CeHljQWxLQlNT?=
- =?utf-8?B?MExEUDZaUTRHTmMzSnljSGNwSkNTU0NNcGhQTmlqVU9aeGZYRk05UC9wOVNk?=
- =?utf-8?B?bFJnTzlia24yY1VkNWVsVHFldDBodWMzazRFaFFWd25zcDJvUzlPUDB6NWU4?=
- =?utf-8?B?c3hTWGpwYUhMTytKVk5nQ3EzelhEZlVsV3dIY2ZvZjErQndmNThiZ2ppQXpW?=
- =?utf-8?B?L0NHUnRRY0ZmazBiV0dDSytWOGZ0VnlXN0hYTlhZZklkQllCVTN0RWxkM2h4?=
- =?utf-8?B?SnpEd0hFblVncU9NR2ltSUFPKzd6aVdmOXJOazVIR0lBRUk5TkExaG9nTWVV?=
- =?utf-8?B?Z0lsVHl1ZzF4ZFUzZE5xeXhNdDA4eWxYUi95L0xiek9rUHl5UlhiZHMrdzlQ?=
- =?utf-8?B?Zm1YVmJiTllRc2ZRV0djOGJxMml2YWFPdjcrR0RraUx2SHRWbTVORVVYTDlZ?=
- =?utf-8?B?OTA5eXZDY2p0Q0ZweEZELzZIMm5IQ08ySDhweDZWbmFkMWptQTZscGVvd1Ft?=
- =?utf-8?B?cTBSWXFFMWxtZU5PK2FITVNHcG05dXBPWUR0S1NEWnlJUXhJZGdoeTNFN2pQ?=
- =?utf-8?B?QVBMK3VRdzhnanNaTlpRRkZQN3M5TzFuM0RDQnJ3SXdvZUlHeE91YkYvZTlK?=
- =?utf-8?B?cWNQaVhnS3Z4WEoybGY2a3p0WlVJeWlXYURVOXpWRUFVMHI0clFya1VxMklW?=
- =?utf-8?B?TjNmM28wd3JsVExTaEZTUDJaVHFXcGFoeERpQ2FnbElnU0ZNTDAxQi9lZVBS?=
- =?utf-8?B?NlN5VUdiMzNIbkhNbzAzVjBLK3dDQUpEV1FuN1VWeFA1Z0taWW9yQUNyRDBx?=
- =?utf-8?B?WVVYeE0yN2pBWUdwdUlOL2xPSy9wTW5KM1poL01FNWFHR1Nlc0lDVkF4NGln?=
- =?utf-8?B?OUIzNlJCdHZ4VjNpd3lBQTF5cGlWOWlHdkE2ZG1TMkZITVhpUG1Eckc5OHJZ?=
- =?utf-8?B?S1l5U3dkRExNaGhJUFJNTkNLdXJTYmpIZjMycHVsaSsrdUlPYzh4VnhUWHRy?=
- =?utf-8?B?bThoMkpPcVo4UlpjZ0U3cnZEcGRvbE8yMTVDdG8yaHk1bUNOaWpVbCtxZ0My?=
- =?utf-8?B?UUZhSE5aclYzR3lvWWJXZ0k1RTB4WXY0amorS21zR2YzSWpNU3B0dG5GOERT?=
- =?utf-8?B?WThHV0czRnR1ZGxPZ2szY1BKTHFJRUFNTzFVcUxSMVpHcFVhc3E0dnNTNHhG?=
- =?utf-8?B?UWxJbWgyc3pXUzJHTi9IZzdUcVlwZlpkTG4rNjU4Y0pRZktob0dueUpmZlN1?=
- =?utf-8?B?bDNONC9DcU9VSXplTVlPVVBDWUYxc0FGNUlrdGNFOXMybmpRWmlYN2xERHps?=
- =?utf-8?B?dzMwSDhMOHcrUjZWNTZ1THZDN0s1UFR5WGVXY3FOM2pLVnBHSW1TMHZUZzR1?=
- =?utf-8?B?c0R6OVVXT1U5Q1lEMXREVkZ6UGhhNFpPaGErOC9vOS9XM2VXbkFIVG9XQ3B6?=
- =?utf-8?B?czJoNWttOHc4U3lwTWdoMlFTaVl5ak51cVJwWVNicklSN2dZWXdqNU95VmVT?=
- =?utf-8?B?R0lhdmw3U3M1dG5Yb0hhRVltYTZRWGR2M2IwNjk5dytPbzNrOEJNQ0dRRUkr?=
- =?utf-8?B?eGNLam1VSUUrbGhsYWsxZVdPTzRnQk5oVHliN2NGSGFNSThES2Q5djBjVXpO?=
- =?utf-8?B?OEk5RnZ6NndMNkROZ1NaUFF6Y0JmRFZHOGcwZFlZcXYzL29ibHlGa013b2tO?=
- =?utf-8?B?M2g3K1FPaGRpLzJRNlhpSXBqTXo0M3A3Y3h2WE5WRHNYc2pvZHB3cmRaOGNW?=
- =?utf-8?B?NnU5QkdneCtJOU43eTBNSzh2bDI2NU9zQXVkZDJRcERHRUJydFBYU1BDQURB?=
- =?utf-8?B?WVVjaVFURFNkWDFYbTQ1T1RjVHRjUjdyOTNTT25XbTB1YldSRGtHTUcyOEVy?=
- =?utf-8?B?KzF1R3JXNXJvZFYrbXZFN0pPd3BZaWg1clV1elBvbXdBaUVYQnJ2eDdPaFh4?=
- =?utf-8?B?MmJkQnRFZ3JSaWZoMDBZS2V6SDFwY0ljWXNlWklFWHkvTzczVE5ldmNKTVVs?=
- =?utf-8?B?dURnckw0ZUdBYUZINGUzTlg3SGE0VU1kN0FSd0hqNFFPR2F0MnRKa2wwVnFO?=
- =?utf-8?B?ell2T3R5N2Q4WU9GZVNJYThmSjRkaWNrMlNzVDFyNWk3Rzkra0tqT1JMNitq?=
- =?utf-8?B?WjJ4c0pJdzFrTUI0aFBuVUIyWm9NbldTNDZySFBSMTduaFk3bFpWS0JzK01E?=
- =?utf-8?Q?gdVYYPxoGsbcr68s=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <F7ECC2FFCF6F4F4F83AB1B306AB5F980@namprd15.prod.outlook.com>
-X-OriginatorOrg: fb.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 84ce974e-e9fe-4214-44db-08da2e0167ab
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 May 2022 19:07:59.5000 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: kAwbCqvmtFq7qe9KqpAAsbU7m13HF+HUhdMxDG2uswP4+5eCZwMaRok/WfoTdMI/
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR15MB3484
-X-Proofpoint-ORIG-GUID: DPR89aY8RVhTRu_V9i4kOdB_nTqMhkeq
-X-Proofpoint-GUID: DPR89aY8RVhTRu_V9i4kOdB_nTqMhkeq
-Content-Transfer-Encoding: base64
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1nmLxe-0008CV-70; Wed, 04 May 2022 16:51:02 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:39546)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1nmLxW-00024a-6o; Wed, 04 May 2022 16:50:59 -0400
+Received: by mail-ej1-x633.google.com with SMTP id bv19so5137810ejb.6;
+ Wed, 04 May 2022 13:50:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pZU4aYdSeMJSlGG4cvAHZtnugUvy7LQSghcLFal1wss=;
+ b=QOLutfHKHTnKdpk7F5xvfAnMLuBAKR3kaXweF1+xoGuhGVmV82elSxjcgcbgtXA5bt
+ q3kf+8MWOnwVKhN7gq7CG/0lWxjgCzwy/yhUWo7q8EsM0ravvZyClfbA0/FSsEsLEM8S
+ vORE6f/VXe9Rx7C+XoRxk0QBAPNqVy0ua8fFXBc/Znbqsddm3Ff5sIROMXO4l9HtoCcF
+ tgF/Ap34W2UTDeDGJRuzQnXSSQM9rpHET4R+rQJ5q4TuZ7o5R+M2lTufcXg5MwZ7Kwqu
+ W0HY9VVGQYI7bIq5TuKtSgGGvNtdx+m8Fd0aXsaBHDy3GsDCq+v2oncZkpI2yNrcyH31
+ JQIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pZU4aYdSeMJSlGG4cvAHZtnugUvy7LQSghcLFal1wss=;
+ b=ViNchYWqrwh6Ybkb9sm86P6gHp2bAm4ahV5JV2VIsKRzVstH1ROEloTT9qTIk6u/Fq
+ FKudOfzpL7LpOxVuGDw/xYeqSIgb0yz7yQMFg7JHqOxylZrGYJRaoL5yHnXdry1KCCdj
+ INAmakUyr/egCvi5Jc+gVkXoSpeHZQC0TM9QL7t9lia5D/fn4GpCWHvzcC4ea+ao0gB+
+ SGAoJLvAWNyPKmf5Sibx/CpfYT/B0JEWFl4LS0pNTMPNDYU/YdYt5l/a3SP7LuEUVaZM
+ U6UbLY5Q7kChoT6hks/eizxAakO6/gomMdfLUGgSbVNEnjwjSrCN4THbxntBSJRbSTDC
+ VpGw==
+X-Gm-Message-State: AOAM533UfuHtrbnOo6LDXexoENk4lL/ayrUJyEA7lFfAqVG+yltS5WPW
+ EJ59d35q1tTZDQVmC73a56x7Tf+T1lBelc2BxsM=
+X-Received: by 2002:a17:906:3e05:b0:6f3:a14a:fd3f with SMTP id
+ k5-20020a1709063e0500b006f3a14afd3fmr21210829eji.640.1651697451278; Wed, 04
+ May 2022 13:50:51 -0700 (PDT)
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
- definitions=2022-05-04_05,2022-05-04_02,2022-02-23_01
-Received-SPF: pass client-ip=67.231.153.30;
- envelope-from=prvs=6123628e29=pdel@fb.com; helo=mx0b-00082601.pphosted.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+References: <20220428154348.26380-1-frank.chang@sifive.com>
+ <CAJy5ezp1wdCFzHN4KhTWq7vCcP5DBPjE=V9+kiu4-njpnZ76Mg@mail.gmail.com>
+ <CAE_xrPgiQiUStfOfkgZn9dU3zbbx2u86_2tjSAUQYjw78n5vSw@mail.gmail.com>
+ <CAJy5ezpn+_j748Lru_6nMfq6P6VGoCXBTG4oY4UP+3wmJ3yEBQ@mail.gmail.com>
+ <CAE_xrPh_j+eSkJaA3jw6JQS+TAsq+8Fyb=h8y6EoOjAqG3ONPw@mail.gmail.com>
+ <CAJy5ezpz+E0z_tS6PXRf4k1=-RzA_vi3DSVoFJ__3M-wyO1C3w@mail.gmail.com>
+In-Reply-To: <CAJy5ezpz+E0z_tS6PXRf4k1=-RzA_vi3DSVoFJ__3M-wyO1C3w@mail.gmail.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Wed, 4 May 2022 22:50:40 +0200
+Message-ID: <CAJy5ezoDnhtwTtK51FhGmHG84ycOtuAE9JxNdTtsDJU9SV3fuQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/dma: Add Xilinx AXI CDMA
+To: Frank Chang <frank.chang@sifive.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, Jim Shu <jim.shu@sifive.com>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>
+Content-Type: multipart/alternative; boundary="000000000000dc2a2705de35c724"
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -206,111 +119,2398 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Eow8YZLTyD8X
+X-TUID: GGTVWT5/57Hc
 
-DQoNCj4gT24gTWF5IDQsIDIwMjIsIGF0IDk6MzQgQU0sIFBldGVyIERlbGV2b3J5YXMgPHBkZWxA
-ZmIuY29tPiB3cm90ZToNCj4gDQo+PiANCj4+IE9uIE1heSA0LCAyMDIyLCBhdCAxMjozOSBBTSwg
-Q8OpZHJpYyBMZSBHb2F0ZXIgPGNsZ0BrYW9kLm9yZz4gd3JvdGU6DQo+PiANCj4+IO+7v09uIDUv
-NC8yMiAwMDo1OSwgUGV0ZXIgRGVsZXZvcnlhcyB3cm90ZToNCj4+PiBBZGQgdGhlICdmYnkzNS1i
-bWMnIG1hY2hpbmUgdHlwZSBiYXNlZCBvbiB0aGUga2VybmVsIERUU1sxXSBhbmQgdXNlcnNwYWNl
-DQo+Pj4gaTJjIHNldHVwIHNjcmlwdHNbMl0uIFVuZGVmaW5lZCB2YWx1ZXMgYXJlIGluaGVyaXRl
-ZCBmcm9tIHRoZSBBU1QyNjAwLUVWQi4NCj4+PiBSZWZlcmVuY2UgaW1hZ2VzIGNhbiBiZSBmb3Vu
-ZCBpbiBGYWNlYm9vayBPcGVuQk1DIEdpdGh1YiBSZWxlYXNlIGFzc2V0cw0KPj4+IGFzICJmYnkz
-NS5tdGQiLiBbM10NCj4+PiBZb3UgY2FuIGJvb3QgdGhlIHJlZmVyZW5jZSBpbWFnZXMgYXMgZm9s
-bG93cyAoZmJ5MzUgdXNlcyBkdWFsLWZsYXNoKToNCj4+PiBxZW11LXN5c3RlbS1hcm0gLW1hY2hp
-bmUgZmJ5MzUtYm1jIFwNCj4+PiAtZHJpdmUgZmlsZT1mYnkzNS5tdGQsZm9ybWF0PXJhdyxpZj1t
-dGQgXA0KPj4+IC1kcml2ZSBmaWxlPWZieTM1Lm10ZCxmb3JtYXQ9cmF3LGlmPW10ZCBcDQo+Pj4g
-LW5vZ3JhcGhpYw0KPj4+IFsxXSBodHRwczovL2dpdGh1Yi5jb20vZmFjZWJvb2svb3BlbmJtYy1s
-aW51eC9ibG9iLzQxMmQ1MDUzMjU4MDA3MTE3ZTk0YjFlMzYwMTVhZWZjMTMwMTQ3NGIvYXJjaC9h
-cm0vYm9vdC9kdHMvYXNwZWVkLWJtYy1mYWNlYm9vay1mYnkzNS5kdHMNCj4+PiBbMl0gaHR0cHM6
-Ly9naXRodWIuY29tL2ZhY2Vib29rL29wZW5ibWMvYmxvYi9lMjI5NGZmNWQzMWRkNjVjMjQ4ZmUz
-OTZhMzg1Mjg2ZDZkNWM0NjNkL21ldGEtZmFjZWJvb2svbWV0YS1mYnkzNS9yZWNpcGVzLWZieTM1
-L3BsYXQtdXRpbHMvZmlsZXMvc2V0dXAtZGV2LnNoDQo+Pj4gWzNdIGh0dHBzOi8vZ2l0aHViLmNv
-bS9mYWNlYm9vay9vcGVuYm1jL3JlbGVhc2VzDQo+Pj4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgRGVs
-ZXZvcnlhcyA8cGRlbEBmYi5jb20+DQo+PiANCj4+IFJldmlld2VkLWJ5OiBDw6lkcmljIExlIEdv
-YXRlciA8Y2xnQGthb2Qub3JnPg0KPiANCj4gVGhhbmtzIQ0KPiANCj4+IA0KPj4gYSBxdWVzdGlv
-biBiZWxvdywNCj4+IA0KPj4+IC0tLQ0KPj4+IHYyOiBSZW1vdmVkIGF2b2NhZG8gdGVzdCwgdXBk
-YXRlZCBjb21taXQgbWVzc2FnZS4NCj4+PiBody9hcm0vYXNwZWVkLmMgfCA2MyArKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrDQo+Pj4gMSBmaWxlIGNoYW5n
-ZWQsIDYzIGluc2VydGlvbnMoKykNCj4+PiBkaWZmIC0tZ2l0IGEvaHcvYXJtL2FzcGVlZC5jIGIv
-aHcvYXJtL2FzcGVlZC5jDQo+Pj4gaW5kZXggYTc0YzEzYWIwZi4uNzI1YzE2OTQ4OCAxMDA2NDQN
-Cj4+PiAtLS0gYS9ody9hcm0vYXNwZWVkLmMNCj4+PiArKysgYi9ody9hcm0vYXNwZWVkLmMNCj4+
-PiBAQCAtMjEsNiArMjEsNyBAQA0KPj4+ICNpbmNsdWRlICJody9taXNjL2xlZC5oIg0KPj4+ICNp
-bmNsdWRlICJody9xZGV2LXByb3BlcnRpZXMuaCINCj4+PiAjaW5jbHVkZSAic3lzZW11L2Jsb2Nr
-LWJhY2tlbmQuaCINCj4+PiArI2luY2x1ZGUgInN5c2VtdS9yZXNldC5oIg0KPj4+ICNpbmNsdWRl
-ICJody9sb2FkZXIuaCINCj4+PiAjaW5jbHVkZSAicWVtdS9lcnJvci1yZXBvcnQuaCINCj4+PiAj
-aW5jbHVkZSAicWVtdS91bml0cy5oIg0KPj4+IEBAIC05NTEsNiArOTUyLDM1IEBAIHN0YXRpYyB2
-b2lkIGJsZXRjaGxleV9ibWNfaTJjX2luaXQoQXNwZWVkTWFjaGluZVN0YXRlICpibWMpDQo+Pj4g
-aTJjX3NsYXZlX2NyZWF0ZV9zaW1wbGUoaTJjWzEyXSwgVFlQRV9QQ0E5NTUyLCAweDY3KTsNCj4+
-PiB9DQo+Pj4gK3N0YXRpYyB2b2lkIGZieTM1X2kyY19pbml0KEFzcGVlZE1hY2hpbmVTdGF0ZSAq
-Ym1jKQ0KPj4+ICt7DQo+Pj4gKyBBc3BlZWRTb0NTdGF0ZSAqc29jID0gJmJtYy0+c29jOw0KPj4+
-ICsgSTJDQnVzICppMmNbMTZdOw0KPj4+ICsNCj4+PiArIGZvciAoaW50IGkgPSAwOyBpIDwgMTY7
-IGkrKykgew0KPj4+ICsgaTJjW2ldID0gYXNwZWVkX2kyY19nZXRfYnVzKCZzb2MtPmkyYywgaSk7
-DQo+Pj4gKyB9DQo+Pj4gKw0KPj4+ICsgaTJjX3NsYXZlX2NyZWF0ZV9zaW1wbGUoaTJjWzJdLCBU
-WVBFX0xNNzUsIDB4NGYpOw0KPj4+ICsgaTJjX3NsYXZlX2NyZWF0ZV9zaW1wbGUoaTJjWzhdLCBU
-WVBFX1RNUDQyMSwgMHgxZik7DQo+Pj4gKyAvKiBIb3Rzd2FwIGNvbnRyb2xsZXIgaXMgYWN0dWFs
-bHkgc3VwcG9zZWQgdG8gYmUgbXA1OTIwIG9yIGx0YzQyODIuICovDQo+Pj4gKyBpMmNfc2xhdmVf
-Y3JlYXRlX3NpbXBsZShpMmNbMTFdLCAiYWRtMTI3MiIsIDB4NDQpOw0KPj4+ICsgaTJjX3NsYXZl
-X2NyZWF0ZV9zaW1wbGUoaTJjWzEyXSwgVFlQRV9MTTc1LCAweDRlKTsNCj4+PiArIGkyY19zbGF2
-ZV9jcmVhdGVfc2ltcGxlKGkyY1sxMl0sIFRZUEVfTE03NSwgMHg0Zik7DQo+Pj4gKw0KPj4+ICsg
-YXNwZWVkX2VlcHJvbV9pbml0KGkyY1s0XSwgMHg1MSwgMTI4ICogS2lCKTsNCj4+PiArIGFzcGVl
-ZF9lZXByb21faW5pdChpMmNbNl0sIDB4NTEsIDEyOCAqIEtpQik7DQo+Pj4gKyBhc3BlZWRfZWVw
-cm9tX2luaXQoaTJjWzhdLCAweDUwLCAzMiAqIEtpQik7DQo+Pj4gKyBhc3BlZWRfZWVwcm9tX2lu
-aXQoaTJjWzExXSwgMHg1MSwgMTI4ICogS2lCKTsNCj4+PiArIGFzcGVlZF9lZXByb21faW5pdChp
-MmNbMTFdLCAweDU0LCAxMjggKiBLaUIpOw0KPj4+ICsNCj4+PiArIC8qDQo+Pj4gKyAqIFRPRE86
-IFRoZXJlIGlzIGEgbXVsdGktbWFzdGVyIGkyYyBjb25uZWN0aW9uIHRvIGFuIEFTVDEwMzAgTWlu
-aUJNQyBvbg0KPj4+ICsgKiBidXNlcyAwLCAxLCAyLCAzLCBhbmQgOS4gU291cmNlIGFkZHJlc3Mg
-MHgxMCwgdGFyZ2V0IGFkZHJlc3MgMHgyMCBvbg0KPj4+ICsgKiBlYWNoLg0KPj4+ICsgKi8NCj4+
-IA0KPj4gDQo+PiBIYXZlIHlvdSBjb25zaWRlcmVkIGV4dGVuZGluZyB0aGUgZW11bGF0aW9uIHRv
-IGluY2x1ZGUgYSBBU1QxMDMwIFNvQw0KPj4gaW4gYSBsYXJnZXIgbWFjaGluZSA/DQo+PiANCj4+
-IFRoZSBBU1QxMDMwIFNvQyBpcyBtZXJnZWQgYW5kIEkgdGhpbmsgdGhhdCBRRU1VIGNvdWxkIHJ1
-biBhIGNvcnRleC1tNA0KPj4gQ1BVIGFuZCBhIEE3IENQVS4gQSArIFIgQ1BVcyBpcyBzdXBwb3J0
-ZWQgKFhpbGlueCBib2FyZHMpLg0KPj4gDQo+IA0KPiBBcyBhIG1hdHRlciBvZiBmYWN0IHllcyEg
-SSB0ZXN0ZWQgYm9vdGluZyBvdXIgT3BlbkJJQyBaZXBoeXIga2VybmVsIGxhc3Qgd2VlayB3aXRo
-IHRoZSAxMDMwLCB0aGF0IHdvcmtlZC4gSSBhbHNvIHVzZWQgdGhlIGV4cGVyaW1lbnRhbCBpMmMg
-bXVsdGktbWFzdGVyIHBhdGNoZXMgZnJvbSBLbGF1cyB0byBtYWtlIGEgaTJjLW5ldGRldiBkZXZp
-Y2UgdGhhdCBjb25uZWN0cyB0d28gc2VwYXJhdGUgUUVNVSBpbnN0YW5jZXMgdGhyb3VnaCBhIHNv
-Y2tldCBhbmQgc2VuZHMgdGhlaXIgaTJjIG1lc3NhZ2VzIGJhY2sgYW5kIGZvcnRoLiBJIHdhcyBh
-YmxlIHRvIHRlc3QgYSBiYXNpYyBNQ1RQIHRyYW5zYWN0aW9uLg0KPiANCj4gSeKAmW0gaG9waW5n
-IHRvIGhlbHAgaG93ZXZlciBwb3NzaWJsZSB3aXRoIG1lcmdpbmcgS2xhdXPigJlzIGNoYW5nZXMs
-IGFuZCB0aGVuIHByb3Bvc2UgdGhlIGkyYy1uZXRkZXYgdGhpbmcgdG9vLg0KDQpPaCB3YWl0IGEg
-bWludXRlOiBZb3UgbWVhbiBJIGNvdWxkIGluY2x1ZGUgYm90aCBTb0PigJlzIGluIG9uZSBtYWNo
-aW5lPyBPaCB0aGF04oCZcyBhIGdvb2QgaWRlYSBhY3R1YWxseS4gTWF5YmUgSeKAmWxsIGxvb2sg
-aW50byB0aGF0IGFzIGFuIGFsdGVybmF0aXZlIHRvIHRoZSBzb2NrZXQgdGhpbmcuIFN0aWxsLCBp
-dCBtaWdodCBiZSBzb21ldGhpbmcgdXNlZnVsIHRvIHN1Ym1pdCBhbnl3YXlzLg0KDQo+IA0KPj4g
-VGhhbmtzLA0KPj4gDQo+PiBDLg0KPj4gDQo+PiANCj4+PiArfQ0KPj4+ICsNCj4+PiBzdGF0aWMg
-Ym9vbCBhc3BlZWRfZ2V0X21taW9fZXhlYyhPYmplY3QgKm9iaiwgRXJyb3IgKiplcnJwKQ0KPj4+
-IHsNCj4+PiByZXR1cm4gQVNQRUVEX01BQ0hJTkUob2JqKS0+bW1pb19leGVjOw0KPj4+IEBAIC0x
-MjkzLDYgKzEzMjMsMzUgQEAgc3RhdGljIHZvaWQgYXNwZWVkX21hY2hpbmVfYmxldGNobGV5X2Ns
-YXNzX2luaXQoT2JqZWN0Q2xhc3MgKm9jLCB2b2lkICpkYXRhKQ0KPj4+IGFzcGVlZF9zb2NfbnVt
-X2NwdXMoYW1jLT5zb2NfbmFtZSk7DQo+Pj4gfQ0KPj4+ICtzdGF0aWMgdm9pZCBmYnkzNV9yZXNl
-dChNYWNoaW5lU3RhdGUgKnN0YXRlKQ0KPj4+ICt7DQo+Pj4gKyBBc3BlZWRNYWNoaW5lU3RhdGUg
-KmJtYyA9IEFTUEVFRF9NQUNISU5FKHN0YXRlKTsNCj4+PiArIEFzcGVlZEdQSU9TdGF0ZSAqZ3Bp
-byA9ICZibWMtPnNvYy5ncGlvOw0KPj4+ICsNCj4+PiArIHFlbXVfZGV2aWNlc19yZXNldCgpOw0K
-Pj4+ICsNCj4+PiArIC8qIEJvYXJkIElEICovDQo+Pj4gKyBvYmplY3RfcHJvcGVydHlfc2V0X2Jv
-b2woT0JKRUNUKGdwaW8pLCAiZ3Bpb1Y0IiwgdHJ1ZSwgJmVycm9yX2ZhdGFsKTsNCj4+PiArIG9i
-amVjdF9wcm9wZXJ0eV9zZXRfYm9vbChPQkpFQ1QoZ3BpbyksICJncGlvVjUiLCB0cnVlLCAmZXJy
-b3JfZmF0YWwpOw0KPj4+ICsgb2JqZWN0X3Byb3BlcnR5X3NldF9ib29sKE9CSkVDVChncGlvKSwg
-ImdwaW9WNiIsIHRydWUsICZlcnJvcl9mYXRhbCk7DQo+Pj4gKyBvYmplY3RfcHJvcGVydHlfc2V0
-X2Jvb2woT0JKRUNUKGdwaW8pLCAiZ3Bpb1Y3IiwgZmFsc2UsICZlcnJvcl9mYXRhbCk7DQo+Pj4g
-K30NCj4+PiArDQo+Pj4gK3N0YXRpYyB2b2lkIGFzcGVlZF9tYWNoaW5lX2ZieTM1X2NsYXNzX2lu
-aXQoT2JqZWN0Q2xhc3MgKm9jLCB2b2lkICpkYXRhKQ0KPj4+ICt7DQo+Pj4gKyBNYWNoaW5lQ2xh
-c3MgKm1jID0gTUFDSElORV9DTEFTUyhvYyk7DQo+Pj4gKyBBc3BlZWRNYWNoaW5lQ2xhc3MgKmFt
-YyA9IEFTUEVFRF9NQUNISU5FX0NMQVNTKG9jKTsNCj4+PiArDQo+Pj4gKyBtYy0+ZGVzYyA9ICJG
-YWNlYm9vayBmYnkzNSBCTUMgKENvcnRleC1BNykiOw0KPj4+ICsgbWMtPnJlc2V0ID0gZmJ5MzVf
-cmVzZXQ7DQo+Pj4gKyBhbWMtPmZtY19tb2RlbCA9ICJteDY2bDFnNDVnIjsNCj4+PiArIGFtYy0+
-bnVtX2NzID0gMjsNCj4+PiArIGFtYy0+bWFjc19tYXNrID0gQVNQRUVEX01BQzNfT047DQo+Pj4g
-KyBhbWMtPmkyY19pbml0ID0gZmJ5MzVfaTJjX2luaXQ7DQo+Pj4gKyAvKiBGSVhNRTogUmVwbGFj
-ZSB0aGlzIG1hY3JvIHdpdGggc29tZXRoaW5nIG1vcmUgZ2VuZXJhbCAqLw0KPj4+ICsgbWMtPmRl
-ZmF1bHRfcmFtX3NpemUgPSBGVUpJX0JNQ19SQU1fU0laRTsNCj4+PiArfQ0KPj4+ICsNCj4+PiAj
-ZGVmaW5lIEFTVDEwMzBfSU5URVJOQUxfRkxBU0hfU0laRSAoMTAyNCAqIDEwMjQpDQo+Pj4gLyog
-TWFpbiBTWVNDTEsgZnJlcXVlbmN5IGluIEh6ICgyMDBNSHopICovDQo+Pj4gI2RlZmluZSBTWVND
-TEtfRlJRIDIwMDAwMDAwMFVMTA0KPj4+IEBAIC0xNDExLDYgKzE0NzAsMTAgQEAgc3RhdGljIGNv
-bnN0IFR5cGVJbmZvIGFzcGVlZF9tYWNoaW5lX3R5cGVzW10gPSB7DQo+Pj4gLm5hbWUgPSBNQUNI
-SU5FX1RZUEVfTkFNRSgiYmxldGNobGV5LWJtYyIpLA0KPj4+IC5wYXJlbnQgPSBUWVBFX0FTUEVF
-RF9NQUNISU5FLA0KPj4+IC5jbGFzc19pbml0ID0gYXNwZWVkX21hY2hpbmVfYmxldGNobGV5X2Ns
-YXNzX2luaXQsDQo+Pj4gKyB9LCB7DQo+Pj4gKyAubmFtZSA9IE1BQ0hJTkVfVFlQRV9OQU1FKCJm
-YnkzNS1ibWMiKSwNCj4+PiArIC5wYXJlbnQgPSBNQUNISU5FX1RZUEVfTkFNRSgiYXN0MjYwMC1l
-dmIiKSwNCj4+PiArIC5jbGFzc19pbml0ID0gYXNwZWVkX21hY2hpbmVfZmJ5MzVfY2xhc3NfaW5p
-dCwNCj4+PiB9LCB7DQo+Pj4gLm5hbWUgPSBNQUNISU5FX1RZUEVfTkFNRSgiYXN0MTAzMC1ldmIi
-KSwNCj4+PiAucGFyZW50ID0gVFlQRV9BU1BFRURfTUFDSElORSwNCg0K
+--000000000000dc2a2705de35c724
+Content-Type: text/plain; charset="UTF-8"
+
+On Tue, May 3, 2022 at 7:12 PM Edgar E. Iglesias <edgar.iglesias@gmail.com>
+wrote:
+
+> On Tue, May 3, 2022 at 5:06 PM Frank Chang <frank.chang@sifive.com> wrote:
+>
+>> On Tue, May 3, 2022 at 5:35 PM Edgar E. Iglesias <
+>> edgar.iglesias@gmail.com> wrote:
+>>
+>>> On Tue, May 3, 2022 at 3:16 AM Frank Chang <frank.chang@sifive.com>
+>>> wrote:
+>>>
+>>>> On Mon, May 2, 2022 at 6:29 PM Edgar E. Iglesias <
+>>>> edgar.iglesias@gmail.com> wrote:
+>>>>
+>>>>> On Thu, Apr 28, 2022 at 5:43 PM <frank.chang@sifive.com> wrote:
+>>>>>
+>>>>>> From: Frank Chang <frank.chang@sifive.com>
+>>>>>>
+>>>>>> Add Xilinx AXI CDMA model, which follows
+>>>>>> AXI Central Direct Memory Access v4.1 spec:
+>>>>>> https://docs.xilinx.com/v/u/en-US/pg034-axi-cdma
+>>>>>>
+>>>>>> Supports both Simple DMA and Scatter Gather modes.
+>>>>>>
+>>>>>
+>>>>> Hi Frank,
+>>>>>
+>>>>> Thanks for modeling this! I have a couple of questions.
+>>>>>
+>>>>
+>>>> Hi Edgar,
+>>>>
+>>>> Thanks for reviewing.
+>>>>
+>>>>
+>>>>>
+>>>>> Do you plan to submit a machine that uses this DMA?
+>>>>>
+>>>>
+>>>> Currently, Xilinx CDMA is used in our internal platform only, which is
+>>>> not upstream.
+>>>> Do you have any suggestions for the existing machine that I can add
+>>>> Xilinx CDMA to?
+>>>> Or perhaps, ARM virt machine?
+>>>>
+>>>
+>>> If there's a reference design somewhere we could use we could
+>>> potentially create a new zynqmp or versal based machine.
+>>>
+>>
+>> Thanks Edgar,
+>>
+>> Do you think it's a good idea to add CDMA in xlnx-zynqmp.c?
+>> (Though I found GDMA and ADMA already exist)
+>>
+>> I'm not familiar with Xilinx's FPGA family, and there are lots of
+>> variants.
+>> Not sure which machine is the best one for me to add CDMA.
+>>
+>
+> xlnx-zynqmp.c models the hardened logic of the ZynqMP, the GDMA and ADMA
+> are hard logic but this CDMA is not.
+> xlnx-zcu102.c models a board with a ZynqMP and off-chip peripherals
+> (reuses xlnx-zynqmp.c) but without anything programmed into the PL (FPGA)
+> parts.
+>
+> If there's some kind of public design (Demo, product, reference design,
+> whatever) that uses the CDMA as a soft IP on the PL and that is somewhat
+> documented, perhaps we could add a xlnx-zcu102-name-of-design.c or a
+> versal-xyz.c to enable this. I don't know of any such design though, but
+> I'll let you know if I find something.
+>
+
+Hi Frank,
+
+This could be something:
+https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/Introduction/Zynq7000-EDT/6-using-hp-port.html
+
+A machine model would be based on hw/arm/xilinx_zynq.c.
+
+Best regards,
+Edgar
+
+
+
+>
+>
+>>
+>>
+>>> It would be great if you guys had a public RISCV design with the CDMA
+>>> that we could model.
+>>>
+>>
+>> I would love to,
+>> but unfortunately, we don't have the spec for this model publicly yet.
+>>
+>
+> Or we wait for your machine to become public and make a model of that....
+>
+>
+>
+>>
+>>
+>>>
+>>>>
+>>>>
+>>>>>
+>>>>> The CDMA has a 32-bit AXI4-Lite port for register accesses (see page 6
+>>>>> and 8 in the spec you referenced), so axicdma_ops.impl.max should be 4 and
+>>>>> you shouldn't need the read/write q versions.
+>>>>>
+>>>>
+>>>> Okay, that's something I was not aware of.
+>>>>
+>>>> However, I have a question regarding the 64-bit address space.
+>>>>
+>>>> For 64-bit address space, i.e. xlnx,addrwidth = 64.
+>>>> The CDMA spec says that:
+>>>> "TAILDESC_PNTR[_MSB] register causes the AXI CDMA SG Engine
+>>>> to start fetching descriptors starting from the CURDESC_PNTR register
+>>>> value."
+>>>>
+>>>> It seems that DMA will start the transfer if either TAILDESC_PNTR or
+>>>> TAILDESC_PNTR_MSB is written.
+>>>> Then how can we guarantee that the full 64-bit address pointer is
+>>>> written
+>>>> before the DMA transfer is started if we can't write both TAILDESC_PNTR
+>>>> and TAILDESC_PNTR_MSB
+>>>> at the same time?
+>>>>
+>>>
+>>> This is described on pages 25 and 26:
+>>> "When the AXI CDMA is in SG Mode and the address space is 32 bits
+>>> (CDMACR.SGMode = 1), a write by the software application to the
+>>> TAILDESC_PNTR register causes the AXI CDMA SG Engine to start fetching
+>>> descriptors"
+>>>
+>>> I.e TAILDESC_PNTR only starts the DMA if 32bit addresses have been
+>>> selected.
+>>> If 64bit addresses are selected, TAILDESC_PNTR_MSB starts the DMA:
+>>>
+>>> "When the AXI CDMA is in SG Mode, and the address space is more than 32
+>>> bits, (CDMACR.SGMode = 1), a write by the software application to the
+>>> TAILDESC_PNTR_MSB register causes the AXI CDMA SG Engine to start fetching
+>>> descriptors"
+>>>
+>>
+>> I guess I missed the description: "the address space is 32 bits" for
+>> TAILDESC_PNTR register in the spec.
+>> I will fix it in my next version patchset.
+>>
+>> Regards,
+>> Frank Chang
+>>
+>>
+>>>
+>>>
+>>>
+>>>>
+>>>> I'm also awarded that Xilinx CDMA Linux driver also has separate 32-bit
+>>>> writes for a 64-bit address.
+>>>> But wouldn't that cause, e.g. dmatest to be failed?
+>>>>
+>>>
+>>> The driver probably relies on the interconnect to down-size the 64bit
+>>> access to 2x32bit ones. QEMU will do the same so this shouldn't be a
+>>> problem.
+>>>
+>>> Best regards,
+>>> Edgar
+>>>
+>>>
+>>>
+>>>>
+>>>> Regards,
+>>>> Frank Chang
+>>>>
+>>>>
+>>>>>
+>>>>> Best regards,
+>>>>> Edgar
+>>>>>
+>>>>>
+>>>>>
+>>>>>>
+>>>>>> Signed-off-by: Frank Chang <frank.chang@sifive.com>
+>>>>>> Reviewed-by: Jim Shu <jim.shu@sifive.com>
+>>>>>> ---
+>>>>>>  hw/dma/meson.build              |   2 +-
+>>>>>>  hw/dma/xilinx_axicdma.c         | 792
+>>>>>> ++++++++++++++++++++++++++++++++
+>>>>>>  include/hw/dma/xilinx_axicdma.h |  72 +++
+>>>>>>  3 files changed, 865 insertions(+), 1 deletion(-)
+>>>>>>  create mode 100644 hw/dma/xilinx_axicdma.c
+>>>>>>  create mode 100644 include/hw/dma/xilinx_axicdma.h
+>>>>>>
+>>>>>> diff --git a/hw/dma/meson.build b/hw/dma/meson.build
+>>>>>> index f3f0661bc3..85edf80b82 100644
+>>>>>> --- a/hw/dma/meson.build
+>>>>>> +++ b/hw/dma/meson.build
+>>>>>> @@ -3,7 +3,7 @@ softmmu_ss.add(when: 'CONFIG_PL080', if_true:
+>>>>>> files('pl080.c'))
+>>>>>>  softmmu_ss.add(when: 'CONFIG_PL330', if_true: files('pl330.c'))
+>>>>>>  softmmu_ss.add(when: 'CONFIG_I82374', if_true: files('i82374.c'))
+>>>>>>  softmmu_ss.add(when: 'CONFIG_I8257', if_true: files('i8257.c'))
+>>>>>> -softmmu_ss.add(when: 'CONFIG_XILINX_AXI', if_true:
+>>>>>> files('xilinx_axidma.c'))
+>>>>>> +softmmu_ss.add(when: 'CONFIG_XILINX_AXI', if_true:
+>>>>>> files('xilinx_axidma.c', 'xilinx_axicdma.c'))
+>>>>>>  softmmu_ss.add(when: 'CONFIG_ZYNQ_DEVCFG', if_true:
+>>>>>> files('xlnx-zynq-devcfg.c'))
+>>>>>>  softmmu_ss.add(when: 'CONFIG_ETRAXFS', if_true:
+>>>>>> files('etraxfs_dma.c'))
+>>>>>>  softmmu_ss.add(when: 'CONFIG_STP2000', if_true:
+>>>>>> files('sparc32_dma.c'))
+>>>>>> diff --git a/hw/dma/xilinx_axicdma.c b/hw/dma/xilinx_axicdma.c
+>>>>>> new file mode 100644
+>>>>>> index 0000000000..50aec3ec45
+>>>>>> --- /dev/null
+>>>>>> +++ b/hw/dma/xilinx_axicdma.c
+>>>>>> @@ -0,0 +1,792 @@
+>>>>>> +/*
+>>>>>> + * QEMU model of Xilinx AXI-CDMA block.
+>>>>>> + *
+>>>>>> + * Copyright (c) 2022 Frank Chang <frank.chang@sifive.com>.
+>>>>>> + *
+>>>>>> + * Permission is hereby granted, free of charge, to any person
+>>>>>> obtaining a copy
+>>>>>> + * of this software and associated documentation files (the
+>>>>>> "Software"), to deal
+>>>>>> + * in the Software without restriction, including without limitation
+>>>>>> the rights
+>>>>>> + * to use, copy, modify, merge, publish, distribute, sublicense,
+>>>>>> and/or sell
+>>>>>> + * copies of the Software, and to permit persons to whom the
+>>>>>> Software is
+>>>>>> + * furnished to do so, subject to the following conditions:
+>>>>>> + *
+>>>>>> + * The above copyright notice and this permission notice shall be
+>>>>>> included in
+>>>>>> + * all copies or substantial portions of the Software.
+>>>>>> + *
+>>>>>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+>>>>>> EXPRESS OR
+>>>>>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+>>>>>> MERCHANTABILITY,
+>>>>>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+>>>>>> SHALL
+>>>>>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+>>>>>> OR OTHER
+>>>>>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+>>>>>> ARISING FROM,
+>>>>>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>> DEALINGS IN
+>>>>>> + * THE SOFTWARE.
+>>>>>> + */
+>>>>>> +
+>>>>>> +#include "qemu/osdep.h"
+>>>>>> +#include "hw/hw.h"
+>>>>>> +#include "hw/irq.h"
+>>>>>> +#include "hw/ptimer.h"
+>>>>>> +#include "hw/qdev-properties.h"
+>>>>>> +#include "hw/sysbus.h"
+>>>>>> +#include "qapi/error.h"
+>>>>>> +#include "qemu/log.h"
+>>>>>> +#include "qemu/module.h"
+>>>>>> +#include "qemu/timer.h"
+>>>>>> +#include "qom/object.h"
+>>>>>> +#include "sysemu/dma.h"
+>>>>>> +#include "hw/dma/xilinx_axicdma.h"
+>>>>>> +
+>>>>>> +#define R_CDMACR                    0x00
+>>>>>> +#define R_CDMASR                    0x04
+>>>>>> +#define R_CURDESC                   0x08
+>>>>>> +#define R_CURDESC_MSB               0x0c
+>>>>>> +#define R_TAILDESC                  0x10
+>>>>>> +#define R_TAILDESC_MSB              0x14
+>>>>>> +#define R_SA                        0x18
+>>>>>> +#define R_SA_MSB                    0x1c
+>>>>>> +#define R_DA                        0x20
+>>>>>> +#define R_DA_MSB                    0x24
+>>>>>> +#define R_BTT                       0x28
+>>>>>> +
+>>>>>> +#define R_MAX                       0x30
+>>>>>> +
+>>>>>> +/* CDMACR */
+>>>>>> +#define CDMACR_TAIL_PNTR_EN         BIT(1)
+>>>>>> +#define CDMACR_RESET                BIT(2)
+>>>>>> +#define CDMACR_SGMODE               BIT(3)
+>>>>>> +#define CDMACR_KEY_HOLE_READ        BIT(4)
+>>>>>> +#define CDMACR_KEY_HOLE_WRITE       BIT(5)
+>>>>>> +#define CDMACR_CYCLIC_BD_ENABLE     BIT(6)
+>>>>>> +#define CDMACR_IOC_IRQ_EN           BIT(12)
+>>>>>> +#define CDMACR_DLY_IRQ_EN           BIT(13)
+>>>>>> +#define CDMACR_ERR_IRQ_EN           BIT(14)
+>>>>>> +
+>>>>>> +#define CDMACR_MASK                 0xffff707c
+>>>>>> +
+>>>>>> +/* TailPntrEn = 1,  IRQThreshold = 1. */
+>>>>>> +#define CDMACR_DEFAULT              0x10002
+>>>>>> +
+>>>>>> +/* CDMASR */
+>>>>>> +#define CDMASR_IDLE                 BIT(1)
+>>>>>> +#define CDMASR_SG_INCLUD            BIT(3)
+>>>>>> +#define CDMASR_DMA_INT_ERR          BIT(4)
+>>>>>> +#define CDMASR_DMA_SLV_ERR          BIT(5)
+>>>>>> +#define CDMASR_DMA_DEC_ERR          BIT(6)
+>>>>>> +#define CDMASR_SG_INT_ERR           BIT(8)
+>>>>>> +#define CDMASR_SG_SLV_ERR           BIT(9)
+>>>>>> +#define CDMASR_SG_DEC_ERR           BIT(10)
+>>>>>> +#define CDMASR_IOC_IRQ              BIT(12)
+>>>>>> +#define CDMASR_DLY_IRQ              BIT(13)
+>>>>>> +#define CDMASR_ERR_IRQ              BIT(14)
+>>>>>> +
+>>>>>> +#define CDMASR_IRQ_THRES_SHIFT      16
+>>>>>> +#define CDMASR_IRQ_THRES_WIDTH      8
+>>>>>> +#define CDMASR_IRQ_DELAY_SHIFT      24
+>>>>>> +#define CDMASR_IRQ_DELAY_WIDTH      8
+>>>>>> +
+>>>>>> +#define CDMASR_IRQ_MASK             (CDMASR_IOC_IRQ | \
+>>>>>> +                                     CDMASR_DLY_IRQ | \
+>>>>>> +                                     CDMASR_ERR_IRQ)
+>>>>>> +
+>>>>>> +/* Idle = 1, SGIncld = 1, IRQThresholdSts = 1. */
+>>>>>> +#define CDMASR_DEFAULT              0x1000a
+>>>>>> +
+>>>>>> +#define CURDESC_MASK                0xffffffc0
+>>>>>> +
+>>>>>> +#define TAILDESC_MASK               0xffffffc0
+>>>>>> +
+>>>>>> +#define BTT_MAX_SIZE                (1UL << 26)
+>>>>>> +#define BTT_MASK                    (BTT_MAX_SIZE - 1)
+>>>>>> +
+>>>>>> +/* SDesc - Status */
+>>>>>> +#define SDEC_STATUS_DMA_INT_ERR     BIT(28)
+>>>>>> +#define SDEC_STATUS_DMA_SLV_ERR     BIT(29)
+>>>>>> +#define SDEC_STATUS_DMA_DEC_ERR     BIT(30)
+>>>>>> +#define SDEC_STATUS_DMA_CMPLT       BIT(31)
+>>>>>> +
+>>>>>> +
+>>>>>> +static void axicdma_set_dma_err(XilinxAXICDMA *s, uint32_t err);
+>>>>>> +static void axicdma_set_sg_dma_err(XilinxAXICDMA *s, uint32_t err,
+>>>>>> hwaddr addr);
+>>>>>> +static void axicdma_set_sg_err(XilinxAXICDMA *s, uint32_t err);
+>>>>>> +
+>>>>>> +static void axicdma_update_irq(XilinxAXICDMA *s)
+>>>>>> +{
+>>>>>> +    uint32_t enable, pending;
+>>>>>> +
+>>>>>> +    enable = s->control & CDMASR_IRQ_MASK;
+>>>>>> +    pending = s->status & CDMASR_IRQ_MASK;
+>>>>>> +
+>>>>>> +    qemu_set_irq(s->irq, !!(enable & pending));
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_set_irq(XilinxAXICDMA *s, uint32_t irq, bool
+>>>>>> level)
+>>>>>> +{
+>>>>>> +    g_assert(irq == CDMASR_IOC_IRQ ||
+>>>>>> +             irq == CDMASR_DLY_IRQ ||
+>>>>>> +             irq == CDMASR_ERR_IRQ);
+>>>>>> +
+>>>>>> +    if (level) {
+>>>>>> +        s->status |= irq;
+>>>>>> +    } else {
+>>>>>> +        s->status &= ~irq;
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    axicdma_update_irq(s);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_reload_complete_cnt(XilinxAXICDMA *s)
+>>>>>> +{
+>>>>>> +    s->complete_cnt = extract32(s->control, CDMASR_IRQ_THRES_SHIFT,
+>>>>>> +                                CDMASR_IRQ_THRES_WIDTH);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void timer_hit(void *opaque)
+>>>>>> +{
+>>>>>> +    XilinxAXICDMA *s = XILINX_AXI_CDMA(opaque);
+>>>>>> +
+>>>>>> +    axicdma_set_irq(s, CDMASR_DLY_IRQ, true);
+>>>>>> +    axicdma_reload_complete_cnt(s);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static bool sdesc_load(XilinxAXICDMA *s, hwaddr addr)
+>>>>>> +{
+>>>>>> +    SDesc *d = &s->sdesc;
+>>>>>> +    MemTxResult ret;
+>>>>>> +
+>>>>>> +    ret = address_space_read(s->as, addr, MEMTXATTRS_UNSPECIFIED,
+>>>>>> +                             d, sizeof(SDesc));
+>>>>>> +    if (ret != MEMTX_OK) {
+>>>>>> +        axicdma_set_sg_err(s, CDMASR_SG_DEC_ERR);
+>>>>>> +        return false;
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    /* Convert from LE into host endianness. */
+>>>>>> +    d->nxtdesc = le64_to_cpu(d->nxtdesc);
+>>>>>> +    d->src = le64_to_cpu(d->src);
+>>>>>> +    d->dest = le64_to_cpu(d->dest);
+>>>>>> +    d->control = le32_to_cpu(d->control);
+>>>>>> +    d->status = le32_to_cpu(d->status);
+>>>>>> +
+>>>>>> +    return true;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static bool sdesc_store(XilinxAXICDMA *s, hwaddr addr)
+>>>>>> +{
+>>>>>> +    SDesc *d = &s->sdesc;
+>>>>>> +    MemTxResult ret;
+>>>>>> +
+>>>>>> +    /* Convert from host endianness into LE. */
+>>>>>> +    d->nxtdesc = cpu_to_le64(d->nxtdesc);
+>>>>>> +    d->src = cpu_to_le64(d->src);
+>>>>>> +    d->dest = cpu_to_le64(d->dest);
+>>>>>> +    d->control = cpu_to_le32(d->control);
+>>>>>> +    d->status = cpu_to_le32(d->status);
+>>>>>> +
+>>>>>> +    ret = address_space_write(s->as, addr, MEMTXATTRS_UNSPECIFIED,
+>>>>>> +                              d, sizeof(SDesc));
+>>>>>> +    if (ret != MEMTX_OK) {
+>>>>>> +        axicdma_set_sg_err(s, CDMASR_SG_DEC_ERR);
+>>>>>> +        return false;
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    return true;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void sdesc_complete(XilinxAXICDMA *s)
+>>>>>> +{
+>>>>>> +    uint32_t irq_delay = extract32(s->control,
+>>>>>> CDMASR_IRQ_DELAY_SHIFT,
+>>>>>> +                                   CDMASR_IRQ_DELAY_WIDTH);
+>>>>>> +
+>>>>>> +    if (irq_delay) {
+>>>>>> +        /* Restart the delayed timer. */
+>>>>>> +        ptimer_transaction_begin(s->ptimer);
+>>>>>> +        ptimer_stop(s->ptimer);
+>>>>>> +        ptimer_set_count(s->ptimer, irq_delay);
+>>>>>> +        ptimer_run(s->ptimer, 1);
+>>>>>> +        ptimer_transaction_commit(s->ptimer);
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    s->complete_cnt--;
+>>>>>> +
+>>>>>> +    if (s->complete_cnt == 0) {
+>>>>>> +        /* Raise the IOC irq. */
+>>>>>> +        axicdma_set_irq(s, CDMASR_IOC_IRQ, true);
+>>>>>> +        axicdma_reload_complete_cnt(s);
+>>>>>> +    }
+>>>>>> +}
+>>>>>> +
+>>>>>> +static inline bool axicdma_sgmode(XilinxAXICDMA *s)
+>>>>>> +{
+>>>>>> +    return !!(s->control & CDMACR_SGMODE);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_set_dma_err(XilinxAXICDMA *s, uint32_t err)
+>>>>>> +{
+>>>>>> +    g_assert(err == CDMASR_DMA_INT_ERR ||
+>>>>>> +             err == CDMASR_DMA_SLV_ERR ||
+>>>>>> +             err == CDMASR_DMA_DEC_ERR);
+>>>>>> +
+>>>>>> +    s->status |= err;
+>>>>>> +    axicdma_set_irq(s, CDMASR_ERR_IRQ, true);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_set_sg_dma_err(XilinxAXICDMA *s, uint32_t err,
+>>>>>> hwaddr addr)
+>>>>>> +{
+>>>>>> +    g_assert(axicdma_sgmode(s));
+>>>>>> +
+>>>>>> +    axicdma_set_dma_err(s, err);
+>>>>>> +
+>>>>>> +    /*
+>>>>>> +     * There are 24-bit shift between
+>>>>>> +     * SDesc status bit and CDMACR.DMA_[INT|SLV|DEC]_ERR bit.
+>>>>>> +     */
+>>>>>> +    s->sdesc.status |= (err << 24);
+>>>>>> +    sdesc_store(s, addr);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_set_sg_err(XilinxAXICDMA *s, uint32_t err)
+>>>>>> +{
+>>>>>> +    g_assert(err == CDMASR_SG_INT_ERR ||
+>>>>>> +             err == CDMASR_SG_SLV_ERR ||
+>>>>>> +             err == CDMASR_SG_DEC_ERR);
+>>>>>> +
+>>>>>> +    s->status |= err;
+>>>>>> +    axicdma_set_irq(s, CDMASR_ERR_IRQ, true);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static bool axicdma_perform_dma(XilinxAXICDMA *s, hwaddr src, hwaddr
+>>>>>> dest,
+>>>>>> +                                uint32_t btt)
+>>>>>> +{
+>>>>>> +    uint32_t r_off = 0, w_off = 0;
+>>>>>> +    uint32_t len;
+>>>>>> +    MemTxResult ret;
+>>>>>> +
+>>>>>> +    while (btt > 0) {
+>>>>>> +        len = MIN(btt, CDMA_BUF_SIZE);
+>>>>>> +
+>>>>>> +        ret = dma_memory_read(s->as, src + r_off, s->buf + r_off,
+>>>>>> len,
+>>>>>> +                              MEMTXATTRS_UNSPECIFIED);
+>>>>>> +        if (ret != MEMTX_OK) {
+>>>>>> +            return false;
+>>>>>> +        }
+>>>>>> +
+>>>>>> +        ret = dma_memory_write(s->as, dest + w_off, s->buf + w_off,
+>>>>>> len,
+>>>>>> +                               MEMTXATTRS_UNSPECIFIED);
+>>>>>> +        if (ret != MEMTX_OK) {
+>>>>>> +            return false;
+>>>>>> +        }
+>>>>>> +
+>>>>>> +        btt -= len;
+>>>>>> +
+>>>>>> +        if (!(s->control & CDMACR_KEY_HOLE_READ)) {
+>>>>>> +            r_off += len;
+>>>>>> +        }
+>>>>>> +
+>>>>>> +        if (!(s->control & CDMACR_KEY_HOLE_WRITE)) {
+>>>>>> +            w_off += len;
+>>>>>> +        }
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    return true;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_run_simple(XilinxAXICDMA *s)
+>>>>>> +{
+>>>>>> +    if (!s->btt) {
+>>>>>> +        /* Value of zero BTT is not allowed. */
+>>>>>> +        axicdma_set_dma_err(s, CDMASR_DMA_INT_ERR);
+>>>>>> +        return;
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    if (!axicdma_perform_dma(s, s->src, s->dest, s->btt)) {
+>>>>>> +        axicdma_set_dma_err(s, CDMASR_DMA_DEC_ERR);
+>>>>>> +        return;
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    /* Generate IOC interrupt. */
+>>>>>> +    axicdma_set_irq(s, CDMASR_IOC_IRQ, true);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_run_sgmode(XilinxAXICDMA *s)
+>>>>>> +{
+>>>>>> +    uint64_t pdesc;
+>>>>>> +    uint32_t btt;
+>>>>>> +
+>>>>>> +    while (1) {
+>>>>>> +        if (!sdesc_load(s, s->curdesc)) {
+>>>>>> +            break;
+>>>>>> +        }
+>>>>>> +
+>>>>>> +        if (s->sdesc.status & SDEC_STATUS_DMA_CMPLT) {
+>>>>>> +            axicdma_set_sg_err(s, CDMASR_SG_INT_ERR);
+>>>>>> +            break;
+>>>>>> +        }
+>>>>>> +
+>>>>>> +        btt = s->sdesc.control & BTT_MASK;
+>>>>>> +
+>>>>>> +        if (btt == 0) {
+>>>>>> +            /* Value of zero BTT is not allowed. */
+>>>>>> +            axicdma_set_sg_err(s, CDMASR_SG_INT_ERR);
+>>>>>> +            break;
+>>>>>> +        }
+>>>>>> +
+>>>>>> +        if (!axicdma_perform_dma(s, s->sdesc.src, s->sdesc.dest,
+>>>>>> btt)) {
+>>>>>> +            axicdma_set_sg_dma_err(s, CDMASR_DMA_DEC_ERR,
+>>>>>> s->curdesc);
+>>>>>> +            break;
+>>>>>> +        }
+>>>>>> +
+>>>>>> +        /* Update the descriptor. */
+>>>>>> +        s->sdesc.status |= SDEC_STATUS_DMA_CMPLT;
+>>>>>> +        sdesc_store(s, s->curdesc);
+>>>>>> +        sdesc_complete(s);
+>>>>>> +
+>>>>>> +        /* Advance current descriptor pointer. */
+>>>>>> +        pdesc = s->curdesc;
+>>>>>> +        s->curdesc = s->sdesc.nxtdesc;
+>>>>>> +
+>>>>>> +        if (!(s->control & CDMACR_CYCLIC_BD_ENABLE) &&
+>>>>>> +            pdesc == s->taildesc) {
+>>>>>> +            /* Reach the tail descriptor. */
+>>>>>> +            break;
+>>>>>> +        }
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    /* Stop the delayed timer. */
+>>>>>> +    ptimer_transaction_begin(s->ptimer);
+>>>>>> +    ptimer_stop(s->ptimer);
+>>>>>> +    ptimer_transaction_commit(s->ptimer);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_run(XilinxAXICDMA *s)
+>>>>>> +{
+>>>>>> +    bool sgmode = axicdma_sgmode(s);
+>>>>>> +
+>>>>>> +    /* Not idle. */
+>>>>>> +    s->status &= ~CDMASR_IDLE;
+>>>>>> +
+>>>>>> +    if (!sgmode) {
+>>>>>> +        axicdma_run_simple(s);
+>>>>>> +    } else {
+>>>>>> +        axicdma_run_sgmode(s);
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    /* Idle. */
+>>>>>> +    s->status |= CDMASR_IDLE;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_reset(XilinxAXICDMA *s)
+>>>>>> +{
+>>>>>> +    s->control = CDMACR_DEFAULT;
+>>>>>> +    s->status = CDMASR_DEFAULT;
+>>>>>> +    s->complete_cnt = 1;
+>>>>>> +    qemu_irq_lower(s->irq);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_write_control(XilinxAXICDMA *s, uint32_t value)
+>>>>>> +{
+>>>>>> +    if (value & CDMACR_RESET) {
+>>>>>> +        axicdma_reset(s);
+>>>>>> +        return;
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    /*
+>>>>>> +     * The minimum setting for the threshold is 0x01.
+>>>>>> +     * A write of 0x00 to CDMACR.IRQThreshold has no effect.
+>>>>>> +     */
+>>>>>> +    if (!extract32(value, CDMASR_IRQ_THRES_SHIFT,
+>>>>>> CDMASR_IRQ_THRES_WIDTH)) {
+>>>>>> +        value = deposit32(value, CDMASR_IRQ_THRES_SHIFT,
+>>>>>> CDMASR_IRQ_THRES_WIDTH,
+>>>>>> +                          s->control);
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    /*
+>>>>>> +     * AXI CDMA is built with SG enabled,
+>>>>>> +     * tail pointer mode is always enabled.
+>>>>>> +     */
+>>>>>> +    s->control = (value & CDMACR_MASK) | CDMACR_TAIL_PNTR_EN;
+>>>>>> +
+>>>>>> +    if (!axicdma_sgmode(s)) {
+>>>>>> +        /*
+>>>>>> +         * CDMASR.Dly_Irq, CURDESC_PNTR, TAILDESC_PNTR are cleared
+>>>>>> +         * when not in SGMode.
+>>>>>> +         */
+>>>>>> +        s->status &= ~CDMASR_DLY_IRQ;
+>>>>>> +        s->curdesc = 0;
+>>>>>> +        s->taildesc = 0;
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    axicdma_reload_complete_cnt(s);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static uint32_t axicdma_read_status(XilinxAXICDMA *s)
+>>>>>> +{
+>>>>>> +    uint32_t value = s->status;
+>>>>>> +
+>>>>>> +    value = deposit32(value, CDMASR_IRQ_THRES_SHIFT,
+>>>>>> +                      CDMASR_IRQ_THRES_WIDTH, s->complete_cnt);
+>>>>>> +    value = deposit32(value, CDMASR_IRQ_DELAY_SHIFT,
+>>>>>> +                      CDMASR_IRQ_DELAY_WIDTH,
+>>>>>> ptimer_get_count(s->ptimer));
+>>>>>> +
+>>>>>> +    return value;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_write_status(XilinxAXICDMA *s, uint32_t value)
+>>>>>> +{
+>>>>>> +    /* Write 1s to clear interrupts. */
+>>>>>> +    s->status &= ~(value & CDMASR_IRQ_MASK);
+>>>>>> +    axicdma_update_irq(s);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_write_curdesc(XilinxAXICDMA *s, uint64_t value)
+>>>>>> +{
+>>>>>> +    /* Should be idle. */
+>>>>>> +    g_assert(s->status & CDMASR_IDLE);
+>>>>>> +
+>>>>>> +    if (!axicdma_sgmode(s)) {
+>>>>>> +        /* This register is cleared if SGMode = 0. */
+>>>>>> +        return;
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    s->curdesc = value & CURDESC_MASK;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_write_taildesc(XilinxAXICDMA *s, uint64_t value)
+>>>>>> +{
+>>>>>> +    /* Should be idle. */
+>>>>>> +    g_assert(s->status & CDMASR_IDLE);
+>>>>>> +
+>>>>>> +    if (!axicdma_sgmode(s)) {
+>>>>>> +        /* This register is cleared if SGMode = 0. */
+>>>>>> +        return;
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    s->taildesc = value & TAILDESC_MASK;
+>>>>>> +
+>>>>>> +    /* Kick-off CDMA. */
+>>>>>> +    axicdma_run(s);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_write_btt(XilinxAXICDMA *s, uint64_t value)
+>>>>>> +{
+>>>>>> +    s->btt = value & BTT_MASK;
+>>>>>> +
+>>>>>> +    if (!axicdma_sgmode(s)) {
+>>>>>> +        /* Kick-off CDMA. */
+>>>>>> +        axicdma_run(s);
+>>>>>> +    }
+>>>>>> +}
+>>>>>> +
+>>>>>> +static uint32_t axicdma_readl(void *opaque, hwaddr addr, unsigned
+>>>>>> size)
+>>>>>> +{
+>>>>>> +    XilinxAXICDMA *s = opaque;
+>>>>>> +    uint32_t value = 0;
+>>>>>> +
+>>>>>> +    if (s->addrwidth <= 32) {
+>>>>>> +        switch (addr) {
+>>>>>> +        case R_CURDESC_MSB:
+>>>>>> +        case R_TAILDESC_MSB:
+>>>>>> +        case R_SA_MSB:
+>>>>>> +        case R_DA_MSB:
+>>>>>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>>>>>> +                          "%s: Invalid 32-bit read to 0x%"
+>>>>>> HWADDR_PRIX "\n",
+>>>>>> +                          __func__, addr);
+>>>>>> +            return value;
+>>>>>> +        }
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    switch (addr) {
+>>>>>> +    case R_CDMACR:
+>>>>>> +        value = s->control;
+>>>>>> +        break;
+>>>>>> +    case R_CDMASR:
+>>>>>> +        value = axicdma_read_status(s);
+>>>>>> +        break;
+>>>>>> +    case R_CURDESC:
+>>>>>> +        value = s->curdesc;
+>>>>>> +        break;
+>>>>>> +    case R_CURDESC_MSB:
+>>>>>> +        value = extract64(s->curdesc, 32, 32);
+>>>>>> +        break;
+>>>>>> +    case R_TAILDESC:
+>>>>>> +        value = s->taildesc;
+>>>>>> +        break;
+>>>>>> +    case R_TAILDESC_MSB:
+>>>>>> +        value = extract64(s->taildesc, 32, 32);
+>>>>>> +        break;
+>>>>>> +    case R_SA:
+>>>>>> +        value = s->src;
+>>>>>> +        break;
+>>>>>> +    case R_SA_MSB:
+>>>>>> +        value = extract64(s->src, 32, 32);
+>>>>>> +        break;
+>>>>>> +    case R_DA:
+>>>>>> +        value = s->dest;
+>>>>>> +        break;
+>>>>>> +    case R_DA_MSB:
+>>>>>> +        value = extract64(s->dest, 32, 32);
+>>>>>> +        break;
+>>>>>> +    case R_BTT:
+>>>>>> +        value = s->btt;
+>>>>>> +        break;
+>>>>>> +    default:
+>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>>> +                      "%s: Invalid 32-bit read to 0x%" HWADDR_PRIX
+>>>>>> "\n",
+>>>>>> +                      __func__, addr);
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    return value;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static uint32_t axicdma_readq(void *opaque, hwaddr addr, unsigned
+>>>>>> size)
+>>>>>> +{
+>>>>>> +    XilinxAXICDMA *s = opaque;
+>>>>>> +    uint64_t value = 0;
+>>>>>> +
+>>>>>> +    switch (addr) {
+>>>>>> +    case R_CDMACR:
+>>>>>> +        value = s->control;
+>>>>>> +        break;
+>>>>>> +    case R_CDMASR:
+>>>>>> +        value = axicdma_read_status(s);
+>>>>>> +        break;
+>>>>>> +    case R_CURDESC:
+>>>>>> +        value = s->curdesc;
+>>>>>> +        break;
+>>>>>> +    case R_TAILDESC:
+>>>>>> +        value = s->taildesc;
+>>>>>> +        break;
+>>>>>> +    case R_SA:
+>>>>>> +        value = s->src;
+>>>>>> +        break;
+>>>>>> +    case R_DA:
+>>>>>> +        value = s->dest;
+>>>>>> +        break;
+>>>>>> +    case R_BTT:
+>>>>>> +        value = s->btt;
+>>>>>> +        break;
+>>>>>> +    default:
+>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>>> +                      "%s: Invalid 64-bit read to 0x%" HWADDR_PRIX
+>>>>>> "\n",
+>>>>>> +                      __func__, addr);
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    return value;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static uint64_t axicdma_read(void *opaque, hwaddr addr, unsigned
+>>>>>> size)
+>>>>>> +{
+>>>>>> +    uint64_t value = 0;
+>>>>>> +
+>>>>>> +    switch (size) {
+>>>>>> +    case 4:
+>>>>>> +        value = axicdma_readl(opaque, addr, size);
+>>>>>> +        break;
+>>>>>> +    case 8:
+>>>>>> +        value = axicdma_readq(opaque, addr, size);
+>>>>>> +        break;
+>>>>>> +    default:
+>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid read size %u to
+>>>>>> AXI-CDMA\n",
+>>>>>> +                      __func__, size);
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    return value;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_writel(void *opaque, hwaddr addr, uint32_t value,
+>>>>>> +                           unsigned size)
+>>>>>> +{
+>>>>>> +    XilinxAXICDMA *s = opaque;
+>>>>>> +
+>>>>>> +    if (s->addrwidth <= 32) {
+>>>>>> +        switch (addr) {
+>>>>>> +        case R_CURDESC_MSB:
+>>>>>> +        case R_TAILDESC_MSB:
+>>>>>> +        case R_SA_MSB:
+>>>>>> +        case R_DA_MSB:
+>>>>>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>>>>>> +                          "%s: Invalid 32-bit write to 0x%"
+>>>>>> HWADDR_PRIX "\n",
+>>>>>> +                          __func__, addr);
+>>>>>> +            return;
+>>>>>> +        }
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    switch (addr) {
+>>>>>> +    case R_CDMACR:
+>>>>>> +        axicdma_write_control(s, value);
+>>>>>> +        break;
+>>>>>> +    case R_CDMASR:
+>>>>>> +        axicdma_write_status(s, value);
+>>>>>> +        break;
+>>>>>> +    case R_CURDESC:
+>>>>>> +        axicdma_write_curdesc(s, deposit64(s->curdesc, 0, 32,
+>>>>>> value));
+>>>>>> +        break;
+>>>>>> +    case R_CURDESC_MSB:
+>>>>>> +        axicdma_write_curdesc(s, deposit64(s->curdesc, 32, 32,
+>>>>>> value));
+>>>>>> +        break;
+>>>>>> +    case R_TAILDESC:
+>>>>>> +        axicdma_write_taildesc(s, deposit64(s->taildesc, 0, 32,
+>>>>>> value));
+>>>>>> +        break;
+>>>>>> +    case R_TAILDESC_MSB:
+>>>>>> +        axicdma_write_taildesc(s, deposit64(s->taildesc, 32, 32,
+>>>>>> value));
+>>>>>> +        break;
+>>>>>> +    case R_SA:
+>>>>>> +        s->src = deposit64(s->src, 0, 32, value);
+>>>>>> +        break;
+>>>>>> +    case R_SA_MSB:
+>>>>>> +        s->src = deposit64(s->src, 32, 32, value);
+>>>>>> +        break;
+>>>>>> +    case R_DA:
+>>>>>> +        s->dest = deposit64(s->dest, 0, 32, value);
+>>>>>> +        break;
+>>>>>> +    case R_DA_MSB:
+>>>>>> +        s->dest = deposit64(s->dest, 32, 32, value);
+>>>>>> +        break;
+>>>>>> +    case R_BTT:
+>>>>>> +        axicdma_write_btt(s, value);
+>>>>>> +        break;
+>>>>>> +    default:
+>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>>> +                      "%s: Invalid 32-bit write to 0x%" HWADDR_PRIX
+>>>>>> "\n",
+>>>>>> +                      __func__, addr);
+>>>>>> +    }
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_writeq(void *opaque, hwaddr addr, uint64_t value,
+>>>>>> +                           unsigned size)
+>>>>>> +{
+>>>>>> +    XilinxAXICDMA *s = opaque;
+>>>>>> +
+>>>>>> +    switch (addr) {
+>>>>>> +    case R_CDMACR:
+>>>>>> +        axicdma_write_control(s, value);
+>>>>>> +        break;
+>>>>>> +    case R_CDMASR:
+>>>>>> +        axicdma_write_status(s, value);
+>>>>>> +        break;
+>>>>>> +    case R_CURDESC:
+>>>>>> +        axicdma_write_curdesc(s, value);
+>>>>>> +        break;
+>>>>>> +    case R_TAILDESC:
+>>>>>> +        axicdma_write_taildesc(s, value);
+>>>>>> +        break;
+>>>>>> +    case R_SA:
+>>>>>> +        s->src = value;
+>>>>>> +        break;
+>>>>>> +    case R_DA:
+>>>>>> +        s->dest = value;
+>>>>>> +        break;
+>>>>>> +    case R_BTT:
+>>>>>> +        axicdma_write_btt(s, value);
+>>>>>> +        break;
+>>>>>> +    default:
+>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>>> +                      "%s: Invalid 64-bit write to 0x%" HWADDR_PRIX
+>>>>>> "\n",
+>>>>>> +                      __func__, addr);
+>>>>>> +    }
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_write(void *opaque, hwaddr addr,
+>>>>>> +                          uint64_t value, unsigned size)
+>>>>>> +{
+>>>>>> +    switch (size) {
+>>>>>> +    case 4:
+>>>>>> +        axicdma_writel(opaque, addr, value, size);
+>>>>>> +        break;
+>>>>>> +    case 8:
+>>>>>> +        axicdma_writeq(opaque, addr, value, size);
+>>>>>> +        break;
+>>>>>> +    default:
+>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>>> +                      "%s: Invalid write size %u to AXI-CDMA\n",
+>>>>>> +                      __func__, size);
+>>>>>> +    }
+>>>>>> +}
+>>>>>> +
+>>>>>> +static const MemoryRegionOps axicdma_ops = {
+>>>>>> +    .read = axicdma_read,
+>>>>>> +    .write = axicdma_write,
+>>>>>> +    .endianness = DEVICE_NATIVE_ENDIAN,
+>>>>>> +    .valid = {
+>>>>>> +        .min_access_size = 4,
+>>>>>> +        .max_access_size = 8
+>>>>>> +    },
+>>>>>> +    .impl = {
+>>>>>> +        .min_access_size = 4,
+>>>>>> +        .max_access_size = 8,
+>>>>>> +    },
+>>>>>> +};
+>>>>>> +
+>>>>>> +static void xilinx_axicdma_realize(DeviceState *dev, Error **errp)
+>>>>>> +{
+>>>>>> +    XilinxAXICDMA *s = XILINX_AXI_CDMA(dev);
+>>>>>> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>>>>>> +
+>>>>>> +    memory_region_init_io(&s->mmio, OBJECT(dev), &axicdma_ops, s,
+>>>>>> +                          TYPE_XILINX_AXI_CDMA, R_MAX);
+>>>>>> +    sysbus_init_mmio(sbd, &s->mmio);
+>>>>>> +    sysbus_init_irq(sbd, &s->irq);
+>>>>>> +
+>>>>>> +    if (!s->dma_mr || s->dma_mr == get_system_memory()) {
+>>>>>> +        /* Avoid creating new AddressSpace for system memory. */
+>>>>>> +        s->as = &address_space_memory;
+>>>>>> +    } else {
+>>>>>> +        s->as = g_new0(AddressSpace, 1);
+>>>>>> +        address_space_init(s->as, s->dma_mr,
+>>>>>> memory_region_name(s->dma_mr));
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    s->ptimer = ptimer_init(timer_hit, s, PTIMER_POLICY_DEFAULT);
+>>>>>> +    ptimer_transaction_begin(s->ptimer);
+>>>>>> +    ptimer_set_freq(s->ptimer, s->freqhz);
+>>>>>> +    ptimer_transaction_commit(s->ptimer);
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void xilinx_axicdma_unrealize(DeviceState *dev)
+>>>>>> +{
+>>>>>> +    XilinxAXICDMA *s = XILINX_AXI_CDMA(dev);
+>>>>>> +
+>>>>>> +    if (s->ptimer) {
+>>>>>> +        ptimer_free(s->ptimer);
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    if (s->as && s->dma_mr != get_system_memory()) {
+>>>>>> +        g_free(s->as);
+>>>>>> +    }
+>>>>>> +}
+>>>>>> +
+>>>>>> +static Property axicdma_properties[] = {
+>>>>>> +    DEFINE_PROP_UINT32("freqhz", XilinxAXICDMA, freqhz, 50000000),
+>>>>>> +    DEFINE_PROP_INT32("addrwidth", XilinxAXICDMA, addrwidth, 64),
+>>>>>> +    DEFINE_PROP_LINK("dma", XilinxAXICDMA, dma_mr,
+>>>>>> +                     TYPE_MEMORY_REGION, MemoryRegion *),
+>>>>>> +    DEFINE_PROP_END_OF_LIST(),
+>>>>>> +};
+>>>>>> +
+>>>>>> +static void xilinx_axicdma_reset_enter(Object *obj, ResetType type)
+>>>>>> +{
+>>>>>> +    axicdma_reset(XILINX_AXI_CDMA(obj));
+>>>>>> +}
+>>>>>> +
+>>>>>> +static void axicdma_class_init(ObjectClass *klass, void *data)
+>>>>>> +{
+>>>>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>>>>>> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
+>>>>>> +
+>>>>>> +    dc->realize = xilinx_axicdma_realize;
+>>>>>> +    dc->unrealize = xilinx_axicdma_unrealize;
+>>>>>> +    device_class_set_props(dc, axicdma_properties);
+>>>>>> +
+>>>>>> +    rc->phases.enter = xilinx_axicdma_reset_enter;
+>>>>>> +}
+>>>>>> +
+>>>>>> +static const TypeInfo axicdma_info = {
+>>>>>> +    .name          = TYPE_XILINX_AXI_CDMA,
+>>>>>> +    .parent        = TYPE_SYS_BUS_DEVICE,
+>>>>>> +    .instance_size = sizeof(XilinxAXICDMA),
+>>>>>> +    .class_init    = axicdma_class_init,
+>>>>>> +};
+>>>>>> +
+>>>>>> +static void xilinx_axicdma_register_types(void)
+>>>>>> +{
+>>>>>> +    type_register_static(&axicdma_info);
+>>>>>> +}
+>>>>>> +
+>>>>>> +type_init(xilinx_axicdma_register_types)
+>>>>>> diff --git a/include/hw/dma/xilinx_axicdma.h
+>>>>>> b/include/hw/dma/xilinx_axicdma.h
+>>>>>> new file mode 100644
+>>>>>> index 0000000000..67b7cfce99
+>>>>>> --- /dev/null
+>>>>>> +++ b/include/hw/dma/xilinx_axicdma.h
+>>>>>> @@ -0,0 +1,72 @@
+>>>>>> +/*
+>>>>>> + * QEMU model of Xilinx AXI-CDMA block.
+>>>>>> + *
+>>>>>> + * Copyright (c) 2022 Frank Chang <frank.chang@sifive.com>.
+>>>>>> + *
+>>>>>> + * Permission is hereby granted, free of charge, to any person
+>>>>>> obtaining a copy
+>>>>>> + * of this software and associated documentation files (the
+>>>>>> "Software"), to deal
+>>>>>> + * in the Software without restriction, including without limitation
+>>>>>> the rights
+>>>>>> + * to use, copy, modify, merge, publish, distribute, sublicense,
+>>>>>> and/or sell
+>>>>>> + * copies of the Software, and to permit persons to whom the
+>>>>>> Software is
+>>>>>> + * furnished to do so, subject to the following conditions:
+>>>>>> + *
+>>>>>> + * The above copyright notice and this permission notice shall be
+>>>>>> included in
+>>>>>> + * all copies or substantial portions of the Software.
+>>>>>> + *
+>>>>>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+>>>>>> EXPRESS OR
+>>>>>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+>>>>>> MERCHANTABILITY,
+>>>>>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+>>>>>> SHALL
+>>>>>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+>>>>>> OR OTHER
+>>>>>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+>>>>>> ARISING FROM,
+>>>>>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>> DEALINGS IN
+>>>>>> + * THE SOFTWARE.
+>>>>>> + */
+>>>>>> +
+>>>>>> +#include "exec/hwaddr.h"
+>>>>>> +#include "hw/ptimer.h"
+>>>>>> +#include "hw/sysbus.h"
+>>>>>> +#include "qom/object.h"
+>>>>>> +#include "qemu/units.h"
+>>>>>> +
+>>>>>> +#define CDMA_BUF_SIZE   (64 * KiB)
+>>>>>> +
+>>>>>> +typedef struct XilinxAXICDMA XilinxAXICDMA;
+>>>>>> +
+>>>>>> +#define TYPE_XILINX_AXI_CDMA "xlnx.axi-cdma"
+>>>>>> +OBJECT_DECLARE_SIMPLE_TYPE(XilinxAXICDMA, XILINX_AXI_CDMA)
+>>>>>> +
+>>>>>> +/* Scatter Gather Transfer Descriptor */
+>>>>>> +typedef struct SDesc {
+>>>>>> +    uint64_t nxtdesc;
+>>>>>> +    hwaddr src;
+>>>>>> +    hwaddr dest;
+>>>>>> +    uint32_t control;
+>>>>>> +    uint32_t status;
+>>>>>> +} SDesc;
+>>>>>> +
+>>>>>> +struct XilinxAXICDMA {
+>>>>>> +    /*< private >*/
+>>>>>> +    SysBusDevice parent_obj;
+>>>>>> +
+>>>>>> +    /*< public >*/
+>>>>>> +    MemoryRegion mmio;
+>>>>>> +    AddressSpace *as;
+>>>>>> +    MemoryRegion *dma_mr;
+>>>>>> +
+>>>>>> +    /* Properties */
+>>>>>> +    uint32_t control;
+>>>>>> +    uint32_t status;
+>>>>>> +    uint64_t curdesc;
+>>>>>> +    uint64_t taildesc;
+>>>>>> +    hwaddr src;
+>>>>>> +    hwaddr dest;
+>>>>>> +    uint32_t btt;
+>>>>>> +
+>>>>>> +    uint32_t freqhz;
+>>>>>> +    int32_t addrwidth;
+>>>>>> +    ptimer_state *ptimer;
+>>>>>> +    SDesc sdesc;
+>>>>>> +    qemu_irq irq;
+>>>>>> +    uint16_t complete_cnt;
+>>>>>> +    char buf[CDMA_BUF_SIZE];
+>>>>>> +};
+>>>>>> --
+>>>>>> 2.35.1
+>>>>>>
+>>>>>>
+
+--000000000000dc2a2705de35c724
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Tue, May 3, 2022 at 7:12 PM Edgar E. I=
+glesias &lt;<a href=3D"mailto:edgar.iglesias@gmail.com">edgar.iglesias@gmai=
+l.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex"><div dir=3D"ltr"><div dir=3D"ltr">On Tue, May 3, 2022 at 5:06 PM Frank=
+ Chang &lt;<a href=3D"mailto:frank.chang@sifive.com" target=3D"_blank">fran=
+k.chang@sifive.com</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><bloc=
+kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
+1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"l=
+tr">On Tue, May 3, 2022 at 5:35 PM Edgar E. Iglesias &lt;<a href=3D"mailto:=
+edgar.iglesias@gmail.com" target=3D"_blank">edgar.iglesias@gmail.com</a>&gt=
+; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr">On Tue, May 3, 2022 a=
+t 3:16 AM Frank Chang &lt;<a href=3D"mailto:frank.chang@sifive.com" target=
+=3D"_blank">frank.chang@sifive.com</a>&gt; wrote:<br></div><div class=3D"gm=
+ail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
+8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"lt=
+r"><div dir=3D"ltr">On Mon, May 2, 2022 at 6:29 PM Edgar E. Iglesias &lt;<a=
+ href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">edgar.iglesias@=
+gmail.com</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
+ rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr">On Th=
+u, Apr 28, 2022 at 5:43 PM &lt;<a href=3D"mailto:frank.chang@sifive.com" ta=
+rget=3D"_blank">frank.chang@sifive.com</a>&gt; wrote:<br></div><div class=
+=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">From: Fr=
+ank Chang &lt;<a href=3D"mailto:frank.chang@sifive.com" target=3D"_blank">f=
+rank.chang@sifive.com</a>&gt;<br>
+<br>
+Add Xilinx AXI CDMA model, which follows<br>
+AXI Central Direct Memory Access v4.1 spec:<br>
+<a href=3D"https://docs.xilinx.com/v/u/en-US/pg034-axi-cdma" rel=3D"norefer=
+rer" target=3D"_blank">https://docs.xilinx.com/v/u/en-US/pg034-axi-cdma</a>=
+<br>
+<br>
+Supports both Simple DMA and Scatter Gather modes.<br></blockquote><div><br=
+></div><div>Hi Frank,</div><div><br></div><div>Thanks for modeling this! I =
+have a couple of questions.</div></div></div></blockquote><div><br></div><d=
+iv>Hi Edgar,</div><div><br></div><div>Thanks for reviewing.</div><div>=C2=
+=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"=
+><div class=3D"gmail_quote"><div><br></div><div>Do you plan to submit a mac=
+hine that uses this DMA?</div></div></div></blockquote><div><br></div><div>=
+Currently, Xilinx CDMA is used in our internal platform only, which is not =
+upstream.</div><div>Do you have any suggestions for the existing machine th=
+at I can add Xilinx CDMA to?</div><div>Or perhaps, ARM virt machine?</div><=
+/div></div></blockquote><div><br></div><div>If there&#39;s a reference desi=
+gn somewhere we could use we could potentially create a new zynqmp or versa=
+l based machine.</div></div></div></blockquote><div><br></div><div><div>Tha=
+nks Edgar,<br></div><div><br></div><div>Do you think it&#39;s a good idea t=
+o add CDMA in xlnx-zynqmp.c?</div><div>(Though I found GDMA and ADMA alread=
+y exist)</div><div><br></div><div>I&#39;m not familiar with Xilinx&#39;s FP=
+GA family, and=C2=A0there are lots of variants.</div><div>Not sure which ma=
+chine is the best one for me to add CDMA.</div></div></div></div></blockquo=
+te><div><br></div><div>xlnx-zynqmp.c models the hardened logic of the ZynqM=
+P, the GDMA and ADMA are hard logic but this CDMA is not.</div><div>xlnx-zc=
+u102.c models a board with a ZynqMP and off-chip peripherals (reuses xlnx-z=
+ynqmp.c) but without anything programmed into the PL (FPGA) parts.</div><di=
+v><br></div><div>If there&#39;s some kind of public design (Demo, product, =
+reference design, whatever) that uses the CDMA as a soft IP on the PL and t=
+hat is somewhat documented, perhaps we could add a xlnx-zcu102-name-of-desi=
+gn.c or a versal-xyz.c to enable this. I don&#39;t know of any such design =
+though, but I&#39;ll let you know if I find something.</div></div></div></b=
+lockquote><div><br></div><div>Hi Frank,</div><div><br></div><div>This could=
+ be something:</div><div><a href=3D"https://xilinx.github.io/Embedded-Desig=
+n-Tutorials/docs/2020.2/docs/Introduction/Zynq7000-EDT/6-using-hp-port.html=
+">https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/docs/Intro=
+duction/Zynq7000-EDT/6-using-hp-port.html</a><br></div><div><br></div><div>=
+A machine model would be based on hw/arm/xilinx_zynq.c.</div><div><br></div=
+><div>Best regards,</div><div>Edgar</div><div><br></div><div>=C2=A0</div><b=
+lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
+ft:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div class=
+=3D"gmail_quote"><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_quote"><div>=C2=A0</div><bl=
+ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
+t:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div class=
+=3D"gmail_quote"><div>It would be great if you guys had a public RISCV desi=
+gn with the CDMA that we could model.</div></div></div></blockquote><div><b=
+r></div><div>I would love to,</div><div>but unfortunately, we don&#39;t hav=
+e the spec for this model publicly yet.</div></div></div></blockquote><div>=
+<br></div><div>Or we wait for your machine to become public and make a mode=
+l of that....</div><div><br></div><div>=C2=A0</div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_quote"><div>=
+<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
+ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr=
+"><div class=3D"gmail_quote"><div>=C2=A0</div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_quote"><div>=C2=
+=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"=
+><div class=3D"gmail_quote"><div><br></div><div>The CDMA has a 32-bit AXI4-=
+Lite port for register accesses (see page 6 and 8 in the spec you reference=
+d), so axicdma_ops.impl.max should be 4 and you shouldn&#39;t need the read=
+/write q versions.</div></div></div></blockquote><div><br></div><div>Okay, =
+that&#39;s something I was not aware of.</div><div><br></div><div>However, =
+I have a question regarding the 64-bit address space.</div><div><br></div><=
+div>For 64-bit address space, i.e. xlnx,addrwidth =3D 64.</div><div>The CDM=
+A spec says that:</div><div>&quot;TAILDESC_PNTR[_MSB] register causes the A=
+XI CDMA SG Engine</div><div>to start fetching descriptors starting from the=
+ CURDESC_PNTR register value.&quot;<br></div><div><br></div><div>It seems t=
+hat DMA will start the transfer if either TAILDESC_PNTR or TAILDESC_PNTR_MS=
+B is written.</div><div>Then how can we guarantee that the full 64-bit addr=
+ess pointer is written</div><div>before the DMA transfer is started if we c=
+an&#39;t write both TAILDESC_PNTR and TAILDESC_PNTR_MSB</div><div>at the sa=
+me time?</div></div></div></blockquote><div><br></div><div>This is describe=
+d on pages 25 and 26:</div><div>&quot;When the AXI CDMA is in SG Mode and t=
+he address
+space is 32 bits (CDMACR.SGMode =3D 1), a write by
+the software application to the TAILDESC_PNTR
+register causes the AXI CDMA SG Engine to start
+fetching descriptors&quot;<br></div><div><br></div><div>I.e TAILDESC_PNTR o=
+nly starts the DMA if 32bit addresses have been selected.</div><div>If 64bi=
+t addresses are selected, TAILDESC_PNTR_MSB starts the DMA:</div><div><br><=
+/div><div>&quot;When the AXI CDMA is in SG Mode, and the address
+space is more than 32 bits, (CDMACR.SGMode =3D 1),
+a write by the software application to the
+TAILDESC_PNTR_MSB register causes the AXI CDMA
+SG Engine to start fetching descriptors&quot;</div></div></div></blockquote=
+><div><br></div><div>I guess I missed the description: &quot;the address sp=
+ace is 32 bits&quot; for TAILDESC_PNTR register in=C2=A0the spec.</div><div=
+>I will fix it in my next version patchset.</div><div><br></div><div>Regard=
+s,</div><div>Frank Chang</div><div>=C2=A0</div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
+04);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_quote"><div><br>=
+</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><d=
+iv dir=3D"ltr"><div class=3D"gmail_quote"><div><br></div><div>I&#39;m also =
+awarded that Xilinx CDMA Linux driver also has separate 32-bit writes for a=
+ 64-bit address.</div><div>But wouldn&#39;t that cause, e.g. dmatest to be =
+failed?</div></div></div></blockquote><div><br></div><div>The driver probab=
+ly relies on the interconnect to down-size the 64bit access to 2x32bit ones=
+. QEMU will do the same so this shouldn&#39;t be a problem.</div><div><br><=
+/div><div>Best regards,</div><div>Edgar</div><div><br></div><div>=C2=A0</di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div c=
+lass=3D"gmail_quote"><div><br></div><div>Regards,</div><div>Frank Chang</di=
+v><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div d=
+ir=3D"ltr"><div class=3D"gmail_quote"><div><br></div><div>Best regards,</di=
+v><div>Edgar</div><div><br></div><div>=C2=A0</div><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
+4,204);padding-left:1ex">
+<br>
+Signed-off-by: Frank Chang &lt;<a href=3D"mailto:frank.chang@sifive.com" ta=
+rget=3D"_blank">frank.chang@sifive.com</a>&gt;<br>
+Reviewed-by: Jim Shu &lt;<a href=3D"mailto:jim.shu@sifive.com" target=3D"_b=
+lank">jim.shu@sifive.com</a>&gt;<br>
+---<br>
+=C2=A0hw/dma/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 =C2=A02 +-<br>
+=C2=A0hw/dma/xilinx_axicdma.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 792 ++++++=
+++++++++++++++++++++++++++<br>
+=C2=A0include/hw/dma/xilinx_axicdma.h |=C2=A0 72 +++<br>
+=C2=A03 files changed, 865 insertions(+), 1 deletion(-)<br>
+=C2=A0create mode 100644 hw/dma/xilinx_axicdma.c<br>
+=C2=A0create mode 100644 include/hw/dma/xilinx_axicdma.h<br>
+<br>
+diff --git a/hw/dma/meson.build b/hw/dma/meson.build<br>
+index f3f0661bc3..85edf80b82 100644<br>
+--- a/hw/dma/meson.build<br>
++++ b/hw/dma/meson.build<br>
+@@ -3,7 +3,7 @@ softmmu_ss.add(when: &#39;CONFIG_PL080&#39;, if_true: files=
+(&#39;pl080.c&#39;))<br>
+=C2=A0softmmu_ss.add(when: &#39;CONFIG_PL330&#39;, if_true: files(&#39;pl33=
+0.c&#39;))<br>
+=C2=A0softmmu_ss.add(when: &#39;CONFIG_I82374&#39;, if_true: files(&#39;i82=
+374.c&#39;))<br>
+=C2=A0softmmu_ss.add(when: &#39;CONFIG_I8257&#39;, if_true: files(&#39;i825=
+7.c&#39;))<br>
+-softmmu_ss.add(when: &#39;CONFIG_XILINX_AXI&#39;, if_true: files(&#39;xili=
+nx_axidma.c&#39;))<br>
++softmmu_ss.add(when: &#39;CONFIG_XILINX_AXI&#39;, if_true: files(&#39;xili=
+nx_axidma.c&#39;, &#39;xilinx_axicdma.c&#39;))<br>
+=C2=A0softmmu_ss.add(when: &#39;CONFIG_ZYNQ_DEVCFG&#39;, if_true: files(&#3=
+9;xlnx-zynq-devcfg.c&#39;))<br>
+=C2=A0softmmu_ss.add(when: &#39;CONFIG_ETRAXFS&#39;, if_true: files(&#39;et=
+raxfs_dma.c&#39;))<br>
+=C2=A0softmmu_ss.add(when: &#39;CONFIG_STP2000&#39;, if_true: files(&#39;sp=
+arc32_dma.c&#39;))<br>
+diff --git a/hw/dma/xilinx_axicdma.c b/hw/dma/xilinx_axicdma.c<br>
+new file mode 100644<br>
+index 0000000000..50aec3ec45<br>
+--- /dev/null<br>
++++ b/hw/dma/xilinx_axicdma.c<br>
+@@ -0,0 +1,792 @@<br>
++/*<br>
++ * QEMU model of Xilinx AXI-CDMA block.<br>
++ *<br>
++ * Copyright (c) 2022 Frank Chang &lt;<a href=3D"mailto:frank.chang@sifive=
+.com" target=3D"_blank">frank.chang@sifive.com</a>&gt;.<br>
++ *<br>
++ * Permission is hereby granted, free of charge, to any person obtaining a=
+ copy<br>
++ * of this software and associated documentation files (the &quot;Software=
+&quot;), to deal<br>
++ * in the Software without restriction, including without limitation the r=
+ights<br>
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or se=
+ll<br>
++ * copies of the Software, and to permit persons to whom the Software is<b=
+r>
++ * furnished to do so, subject to the following conditions:<br>
++ *<br>
++ * The above copyright notice and this permission notice shall be included=
+ in<br>
++ * all copies or substantial portions of the Software.<br>
++ *<br>
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIN=
+D, EXPRESS OR<br>
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY=
+,<br>
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL=
+<br>
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OT=
+HER<br>
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING=
+ FROM,<br>
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS =
+IN<br>
++ * THE SOFTWARE.<br>
++ */<br>
++<br>
++#include &quot;qemu/osdep.h&quot;<br>
++#include &quot;hw/hw.h&quot;<br>
++#include &quot;hw/irq.h&quot;<br>
++#include &quot;hw/ptimer.h&quot;<br>
++#include &quot;hw/qdev-properties.h&quot;<br>
++#include &quot;hw/sysbus.h&quot;<br>
++#include &quot;qapi/error.h&quot;<br>
++#include &quot;qemu/log.h&quot;<br>
++#include &quot;qemu/module.h&quot;<br>
++#include &quot;qemu/timer.h&quot;<br>
++#include &quot;qom/object.h&quot;<br>
++#include &quot;sysemu/dma.h&quot;<br>
++#include &quot;hw/dma/xilinx_axicdma.h&quot;<br>
++<br>
++#define R_CDMACR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 0x00<br>
++#define R_CDMASR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 0x04<br>
++#define R_CURDESC=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A00x08<br>
++#define R_CURDESC_MSB=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A00x0c<br>
++#define R_TAILDESC=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 0x10<br>
++#define R_TAILDESC_MSB=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 0x1=
+4<br>
++#define R_SA=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 0x18<br>
++#define R_SA_MSB=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 0x1c<br>
++#define R_DA=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 0x20<br>
++#define R_DA_MSB=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 0x24<br>
++#define R_BTT=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A00x28<br>
++<br>
++#define R_MAX=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A00x30<br>
++<br>
++/* CDMACR */<br>
++#define CDMACR_TAIL_PNTR_EN=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0BIT(1)<br>
++#define CDMACR_RESET=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 BIT(2)<br>
++#define CDMACR_SGMODE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0BIT(3)<br>
++#define CDMACR_KEY_HOLE_READ=C2=A0 =C2=A0 =C2=A0 =C2=A0 BIT(4)<br>
++#define CDMACR_KEY_HOLE_WRITE=C2=A0 =C2=A0 =C2=A0 =C2=A0BIT(5)<br>
++#define CDMACR_CYCLIC_BD_ENABLE=C2=A0 =C2=A0 =C2=A0BIT(6)<br>
++#define CDMACR_IOC_IRQ_EN=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0BIT(12)<=
+br>
++#define CDMACR_DLY_IRQ_EN=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0BIT(13)<=
+br>
++#define CDMACR_ERR_IRQ_EN=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0BIT(14)<=
+br>
++<br>
++#define CDMACR_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A00xffff707c<br>
++<br>
++/* TailPntrEn =3D 1,=C2=A0 IRQThreshold =3D 1. */<br>
++#define CDMACR_DEFAULT=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 0x1=
+0002<br>
++<br>
++/* CDMASR */<br>
++#define CDMASR_IDLE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0BIT(1)<br>
++#define CDMASR_SG_INCLUD=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 BIT(3)<b=
+r>
++#define CDMASR_DMA_INT_ERR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 BIT(4)<br>
++#define CDMASR_DMA_SLV_ERR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 BIT(5)<br>
++#define CDMASR_DMA_DEC_ERR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 BIT(6)<br>
++#define CDMASR_SG_INT_ERR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0BIT(8)<b=
+r>
++#define CDMASR_SG_SLV_ERR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0BIT(9)<b=
+r>
++#define CDMASR_SG_DEC_ERR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0BIT(10)<=
+br>
++#define CDMASR_IOC_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 BIT=
+(12)<br>
++#define CDMASR_DLY_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 BIT=
+(13)<br>
++#define CDMASR_ERR_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 BIT=
+(14)<br>
++<br>
++#define CDMASR_IRQ_THRES_SHIFT=C2=A0 =C2=A0 =C2=A0 16<br>
++#define CDMASR_IRQ_THRES_WIDTH=C2=A0 =C2=A0 =C2=A0 8<br>
++#define CDMASR_IRQ_DELAY_SHIFT=C2=A0 =C2=A0 =C2=A0 24<br>
++#define CDMASR_IRQ_DELAY_WIDTH=C2=A0 =C2=A0 =C2=A0 8<br>
++<br>
++#define CDMASR_IRQ_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(CD=
+MASR_IOC_IRQ | \<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0CDMASR_DLY_IRQ |=
+ \<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0CDMASR_ERR_IRQ)<=
+br>
++<br>
++/* Idle =3D 1, SGIncld =3D 1, IRQThresholdSts =3D 1. */<br>
++#define CDMASR_DEFAULT=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 0x1=
+000a<br>
++<br>
++#define CURDESC_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 0xffffffc0<br>
++<br>
++#define TAILDESC_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A00xffffffc0<br>
++<br>
++#define BTT_MAX_SIZE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 (1UL &lt;&lt; 26)<br>
++#define BTT_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 (BTT_MAX_SIZE - 1)<br>
++<br>
++/* SDesc - Status */<br>
++#define SDEC_STATUS_DMA_INT_ERR=C2=A0 =C2=A0 =C2=A0BIT(28)<br>
++#define SDEC_STATUS_DMA_SLV_ERR=C2=A0 =C2=A0 =C2=A0BIT(29)<br>
++#define SDEC_STATUS_DMA_DEC_ERR=C2=A0 =C2=A0 =C2=A0BIT(30)<br>
++#define SDEC_STATUS_DMA_CMPLT=C2=A0 =C2=A0 =C2=A0 =C2=A0BIT(31)<br>
++<br>
++<br>
++static void axicdma_set_dma_err(XilinxAXICDMA *s, uint32_t err);<br>
++static void axicdma_set_sg_dma_err(XilinxAXICDMA *s, uint32_t err, hwaddr =
+addr);<br>
++static void axicdma_set_sg_err(XilinxAXICDMA *s, uint32_t err);<br>
++<br>
++static void axicdma_update_irq(XilinxAXICDMA *s)<br>
++{<br>
++=C2=A0 =C2=A0 uint32_t enable, pending;<br>
++<br>
++=C2=A0 =C2=A0 enable =3D s-&gt;control &amp; CDMASR_IRQ_MASK;<br>
++=C2=A0 =C2=A0 pending =3D s-&gt;status &amp; CDMASR_IRQ_MASK;<br>
++<br>
++=C2=A0 =C2=A0 qemu_set_irq(s-&gt;irq, !!(enable &amp; pending));<br>
++}<br>
++<br>
++static void axicdma_set_irq(XilinxAXICDMA *s, uint32_t irq, bool level)<br=
+>
++{<br>
++=C2=A0 =C2=A0 g_assert(irq =3D=3D CDMASR_IOC_IRQ ||<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0irq =3D=3D CDMASR_DLY_IRQ =
+||<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0irq =3D=3D CDMASR_ERR_IRQ)=
+;<br>
++<br>
++=C2=A0 =C2=A0 if (level) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;status |=3D irq;<br>
++=C2=A0 =C2=A0 } else {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;status &amp;=3D ~irq;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 axicdma_update_irq(s);<br>
++}<br>
++<br>
++static void axicdma_reload_complete_cnt(XilinxAXICDMA *s)<br>
++{<br>
++=C2=A0 =C2=A0 s-&gt;complete_cnt =3D extract32(s-&gt;control, CDMASR_IRQ_T=
+HRES_SHIFT,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 CDMASR_IRQ_THRES_WIDTH);<br>
++}<br>
++<br>
++static void timer_hit(void *opaque)<br>
++{<br>
++=C2=A0 =C2=A0 XilinxAXICDMA *s =3D XILINX_AXI_CDMA(opaque);<br>
++<br>
++=C2=A0 =C2=A0 axicdma_set_irq(s, CDMASR_DLY_IRQ, true);<br>
++=C2=A0 =C2=A0 axicdma_reload_complete_cnt(s);<br>
++}<br>
++<br>
++static bool sdesc_load(XilinxAXICDMA *s, hwaddr addr)<br>
++{<br>
++=C2=A0 =C2=A0 SDesc *d =3D &amp;s-&gt;sdesc;<br>
++=C2=A0 =C2=A0 MemTxResult ret;<br>
++<br>
++=C2=A0 =C2=A0 ret =3D address_space_read(s-&gt;as, addr, MEMTXATTRS_UNSPEC=
+IFIED,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0d, sizeof(SDesc));<br>
++=C2=A0 =C2=A0 if (ret !=3D MEMTX_OK) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_set_sg_err(s, CDMASR_SG_DEC_ERR);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return false;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 /* Convert from LE into host endianness. */<br>
++=C2=A0 =C2=A0 d-&gt;nxtdesc =3D le64_to_cpu(d-&gt;nxtdesc);<br>
++=C2=A0 =C2=A0 d-&gt;src =3D le64_to_cpu(d-&gt;src);<br>
++=C2=A0 =C2=A0 d-&gt;dest =3D le64_to_cpu(d-&gt;dest);<br>
++=C2=A0 =C2=A0 d-&gt;control =3D le32_to_cpu(d-&gt;control);<br>
++=C2=A0 =C2=A0 d-&gt;status =3D le32_to_cpu(d-&gt;status);<br>
++<br>
++=C2=A0 =C2=A0 return true;<br>
++}<br>
++<br>
++static bool sdesc_store(XilinxAXICDMA *s, hwaddr addr)<br>
++{<br>
++=C2=A0 =C2=A0 SDesc *d =3D &amp;s-&gt;sdesc;<br>
++=C2=A0 =C2=A0 MemTxResult ret;<br>
++<br>
++=C2=A0 =C2=A0 /* Convert from host endianness into LE. */<br>
++=C2=A0 =C2=A0 d-&gt;nxtdesc =3D cpu_to_le64(d-&gt;nxtdesc);<br>
++=C2=A0 =C2=A0 d-&gt;src =3D cpu_to_le64(d-&gt;src);<br>
++=C2=A0 =C2=A0 d-&gt;dest =3D cpu_to_le64(d-&gt;dest);<br>
++=C2=A0 =C2=A0 d-&gt;control =3D cpu_to_le32(d-&gt;control);<br>
++=C2=A0 =C2=A0 d-&gt;status =3D cpu_to_le32(d-&gt;status);<br>
++<br>
++=C2=A0 =C2=A0 ret =3D address_space_write(s-&gt;as, addr, MEMTXATTRS_UNSPE=
+CIFIED,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 d, sizeof(SDesc));<br>
++=C2=A0 =C2=A0 if (ret !=3D MEMTX_OK) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_set_sg_err(s, CDMASR_SG_DEC_ERR);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return false;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 return true;<br>
++}<br>
++<br>
++static void sdesc_complete(XilinxAXICDMA *s)<br>
++{<br>
++=C2=A0 =C2=A0 uint32_t irq_delay =3D extract32(s-&gt;control, CDMASR_IRQ_D=
+ELAY_SHIFT,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0CDMASR_IRQ_DELAY_WIDTH)=
+;<br>
++<br>
++=C2=A0 =C2=A0 if (irq_delay) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Restart the delayed timer. */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ptimer_transaction_begin(s-&gt;ptimer);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ptimer_stop(s-&gt;ptimer);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ptimer_set_count(s-&gt;ptimer, irq_delay);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ptimer_run(s-&gt;ptimer, 1);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ptimer_transaction_commit(s-&gt;ptimer);<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 s-&gt;complete_cnt--;<br>
++<br>
++=C2=A0 =C2=A0 if (s-&gt;complete_cnt =3D=3D 0) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Raise the IOC irq. */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_set_irq(s, CDMASR_IOC_IRQ, true);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_reload_complete_cnt(s);<br>
++=C2=A0 =C2=A0 }<br>
++}<br>
++<br>
++static inline bool axicdma_sgmode(XilinxAXICDMA *s)<br>
++{<br>
++=C2=A0 =C2=A0 return !!(s-&gt;control &amp; CDMACR_SGMODE);<br>
++}<br>
++<br>
++static void axicdma_set_dma_err(XilinxAXICDMA *s, uint32_t err)<br>
++{<br>
++=C2=A0 =C2=A0 g_assert(err =3D=3D CDMASR_DMA_INT_ERR ||<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0err =3D=3D CDMASR_DMA_SLV_=
+ERR ||<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0err =3D=3D CDMASR_DMA_DEC_=
+ERR);<br>
++<br>
++=C2=A0 =C2=A0 s-&gt;status |=3D err;<br>
++=C2=A0 =C2=A0 axicdma_set_irq(s, CDMASR_ERR_IRQ, true);<br>
++}<br>
++<br>
++static void axicdma_set_sg_dma_err(XilinxAXICDMA *s, uint32_t err, hwaddr =
+addr)<br>
++{<br>
++=C2=A0 =C2=A0 g_assert(axicdma_sgmode(s));<br>
++<br>
++=C2=A0 =C2=A0 axicdma_set_dma_err(s, err);<br>
++<br>
++=C2=A0 =C2=A0 /*<br>
++=C2=A0 =C2=A0 =C2=A0* There are 24-bit shift between<br>
++=C2=A0 =C2=A0 =C2=A0* SDesc status bit and CDMACR.DMA_[INT|SLV|DEC]_ERR bi=
+t.<br>
++=C2=A0 =C2=A0 =C2=A0*/<br>
++=C2=A0 =C2=A0 s-&gt;sdesc.status |=3D (err &lt;&lt; 24);<br>
++=C2=A0 =C2=A0 sdesc_store(s, addr);<br>
++}<br>
++<br>
++static void axicdma_set_sg_err(XilinxAXICDMA *s, uint32_t err)<br>
++{<br>
++=C2=A0 =C2=A0 g_assert(err =3D=3D CDMASR_SG_INT_ERR ||<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0err =3D=3D CDMASR_SG_SLV_E=
+RR ||<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0err =3D=3D CDMASR_SG_DEC_E=
+RR);<br>
++<br>
++=C2=A0 =C2=A0 s-&gt;status |=3D err;<br>
++=C2=A0 =C2=A0 axicdma_set_irq(s, CDMASR_ERR_IRQ, true);<br>
++}<br>
++<br>
++static bool axicdma_perform_dma(XilinxAXICDMA *s, hwaddr src, hwaddr dest,=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t btt)<br>
++{<br>
++=C2=A0 =C2=A0 uint32_t r_off =3D 0, w_off =3D 0;<br>
++=C2=A0 =C2=A0 uint32_t len;<br>
++=C2=A0 =C2=A0 MemTxResult ret;<br>
++<br>
++=C2=A0 =C2=A0 while (btt &gt; 0) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 len =3D MIN(btt, CDMA_BUF_SIZE);<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D dma_memory_read(s-&gt;as, src + r_off,=
+ s-&gt;buf + r_off, len,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 MEMTXATTRS_UNSPECIFIED);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (ret !=3D MEMTX_OK) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return false;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D dma_memory_write(s-&gt;as, dest + w_of=
+f, s-&gt;buf + w_off, len,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0MEMTXATTRS_UNSPECIFIED);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (ret !=3D MEMTX_OK) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return false;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 btt -=3D len;<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!(s-&gt;control &amp; CDMACR_KEY_HOLE_READ=
+)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 r_off +=3D len;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!(s-&gt;control &amp; CDMACR_KEY_HOLE_WRIT=
+E)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 w_off +=3D len;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 return true;<br>
++}<br>
++<br>
++static void axicdma_run_simple(XilinxAXICDMA *s)<br>
++{<br>
++=C2=A0 =C2=A0 if (!s-&gt;btt) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Value of zero BTT is not allowed. */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_set_dma_err(s, CDMASR_DMA_INT_ERR);<br=
+>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 if (!axicdma_perform_dma(s, s-&gt;src, s-&gt;dest, s-&gt;btt=
+)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_set_dma_err(s, CDMASR_DMA_DEC_ERR);<br=
+>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 /* Generate IOC interrupt. */<br>
++=C2=A0 =C2=A0 axicdma_set_irq(s, CDMASR_IOC_IRQ, true);<br>
++}<br>
++<br>
++static void axicdma_run_sgmode(XilinxAXICDMA *s)<br>
++{<br>
++=C2=A0 =C2=A0 uint64_t pdesc;<br>
++=C2=A0 =C2=A0 uint32_t btt;<br>
++<br>
++=C2=A0 =C2=A0 while (1) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!sdesc_load(s, s-&gt;curdesc)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;sdesc.status &amp; SDEC_STATUS_DMA_C=
+MPLT) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_set_sg_err(s, CDMASR_SG_=
+INT_ERR);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 btt =3D s-&gt;sdesc.control &amp; BTT_MASK;<br=
+>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (btt =3D=3D 0) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Value of zero BTT is not allo=
+wed. */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_set_sg_err(s, CDMASR_SG_=
+INT_ERR);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!axicdma_perform_dma(s, s-&gt;sdesc.src, s=
+-&gt;sdesc.dest, btt)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_set_sg_dma_err(s, CDMASR=
+_DMA_DEC_ERR, s-&gt;curdesc);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Update the descriptor. */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;sdesc.status |=3D SDEC_STATUS_DMA_CMPLT;=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 sdesc_store(s, s-&gt;curdesc);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 sdesc_complete(s);<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Advance current descriptor pointer. */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 pdesc =3D s-&gt;curdesc;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;curdesc =3D s-&gt;sdesc.nxtdesc;<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!(s-&gt;control &amp; CDMACR_CYCLIC_BD_ENA=
+BLE) &amp;&amp;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pdesc =3D=3D s-&gt;taildesc) {<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Reach the tail descriptor. */=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 /* Stop the delayed timer. */<br>
++=C2=A0 =C2=A0 ptimer_transaction_begin(s-&gt;ptimer);<br>
++=C2=A0 =C2=A0 ptimer_stop(s-&gt;ptimer);<br>
++=C2=A0 =C2=A0 ptimer_transaction_commit(s-&gt;ptimer);<br>
++}<br>
++<br>
++static void axicdma_run(XilinxAXICDMA *s)<br>
++{<br>
++=C2=A0 =C2=A0 bool sgmode =3D axicdma_sgmode(s);<br>
++<br>
++=C2=A0 =C2=A0 /* Not idle. */<br>
++=C2=A0 =C2=A0 s-&gt;status &amp;=3D ~CDMASR_IDLE;<br>
++<br>
++=C2=A0 =C2=A0 if (!sgmode) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_run_simple(s);<br>
++=C2=A0 =C2=A0 } else {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_run_sgmode(s);<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 /* Idle. */<br>
++=C2=A0 =C2=A0 s-&gt;status |=3D CDMASR_IDLE;<br>
++}<br>
++<br>
++static void axicdma_reset(XilinxAXICDMA *s)<br>
++{<br>
++=C2=A0 =C2=A0 s-&gt;control =3D CDMACR_DEFAULT;<br>
++=C2=A0 =C2=A0 s-&gt;status =3D CDMASR_DEFAULT;<br>
++=C2=A0 =C2=A0 s-&gt;complete_cnt =3D 1;<br>
++=C2=A0 =C2=A0 qemu_irq_lower(s-&gt;irq);<br>
++}<br>
++<br>
++static void axicdma_write_control(XilinxAXICDMA *s, uint32_t value)<br>
++{<br>
++=C2=A0 =C2=A0 if (value &amp; CDMACR_RESET) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_reset(s);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 /*<br>
++=C2=A0 =C2=A0 =C2=A0* The minimum setting for the threshold is 0x01.<br>
++=C2=A0 =C2=A0 =C2=A0* A write of 0x00 to CDMACR.IRQThreshold has no effect=
+.<br>
++=C2=A0 =C2=A0 =C2=A0*/<br>
++=C2=A0 =C2=A0 if (!extract32(value, CDMASR_IRQ_THRES_SHIFT, CDMASR_IRQ_THR=
+ES_WIDTH)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D deposit32(value, CDMASR_IRQ_THRES_SH=
+IFT, CDMASR_IRQ_THRES_WIDTH,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 s-&gt;control);<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 /*<br>
++=C2=A0 =C2=A0 =C2=A0* AXI CDMA is built with SG enabled,<br>
++=C2=A0 =C2=A0 =C2=A0* tail pointer mode is always enabled.<br>
++=C2=A0 =C2=A0 =C2=A0*/<br>
++=C2=A0 =C2=A0 s-&gt;control =3D (value &amp; CDMACR_MASK) | CDMACR_TAIL_PN=
+TR_EN;<br>
++<br>
++=C2=A0 =C2=A0 if (!axicdma_sgmode(s)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* CDMASR.Dly_Irq, CURDESC_PNTR, TAILDESC=
+_PNTR are cleared<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* when not in SGMode.<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;status &amp;=3D ~CDMASR_DLY_IRQ;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;curdesc =3D 0;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;taildesc =3D 0;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 axicdma_reload_complete_cnt(s);<br>
++}<br>
++<br>
++static uint32_t axicdma_read_status(XilinxAXICDMA *s)<br>
++{<br>
++=C2=A0 =C2=A0 uint32_t value =3D s-&gt;status;<br>
++<br>
++=C2=A0 =C2=A0 value =3D deposit32(value, CDMASR_IRQ_THRES_SHIFT,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 CDMASR_IRQ_THRES_WIDTH, s-&gt;complete_cnt);<br>
++=C2=A0 =C2=A0 value =3D deposit32(value, CDMASR_IRQ_DELAY_SHIFT,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 CDMASR_IRQ_DELAY_WIDTH, ptimer_get_count(s-&gt;ptimer));<br>
++<br>
++=C2=A0 =C2=A0 return value;<br>
++}<br>
++<br>
++static void axicdma_write_status(XilinxAXICDMA *s, uint32_t value)<br>
++{<br>
++=C2=A0 =C2=A0 /* Write 1s to clear interrupts. */<br>
++=C2=A0 =C2=A0 s-&gt;status &amp;=3D ~(value &amp; CDMASR_IRQ_MASK);<br>
++=C2=A0 =C2=A0 axicdma_update_irq(s);<br>
++}<br>
++<br>
++static void axicdma_write_curdesc(XilinxAXICDMA *s, uint64_t value)<br>
++{<br>
++=C2=A0 =C2=A0 /* Should be idle. */<br>
++=C2=A0 =C2=A0 g_assert(s-&gt;status &amp; CDMASR_IDLE);<br>
++<br>
++=C2=A0 =C2=A0 if (!axicdma_sgmode(s)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* This register is cleared if SGMode =3D 0. *=
+/<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 s-&gt;curdesc =3D value &amp; CURDESC_MASK;<br>
++}<br>
++<br>
++static void axicdma_write_taildesc(XilinxAXICDMA *s, uint64_t value)<br>
++{<br>
++=C2=A0 =C2=A0 /* Should be idle. */<br>
++=C2=A0 =C2=A0 g_assert(s-&gt;status &amp; CDMASR_IDLE);<br>
++<br>
++=C2=A0 =C2=A0 if (!axicdma_sgmode(s)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* This register is cleared if SGMode =3D 0. *=
+/<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 s-&gt;taildesc =3D value &amp; TAILDESC_MASK;<br>
++<br>
++=C2=A0 =C2=A0 /* Kick-off CDMA. */<br>
++=C2=A0 =C2=A0 axicdma_run(s);<br>
++}<br>
++<br>
++static void axicdma_write_btt(XilinxAXICDMA *s, uint64_t value)<br>
++{<br>
++=C2=A0 =C2=A0 s-&gt;btt =3D value &amp; BTT_MASK;<br>
++<br>
++=C2=A0 =C2=A0 if (!axicdma_sgmode(s)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Kick-off CDMA. */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_run(s);<br>
++=C2=A0 =C2=A0 }<br>
++}<br>
++<br>
++static uint32_t axicdma_readl(void *opaque, hwaddr addr, unsigned size)<br=
+>
++{<br>
++=C2=A0 =C2=A0 XilinxAXICDMA *s =3D opaque;<br>
++=C2=A0 =C2=A0 uint32_t value =3D 0;<br>
++<br>
++=C2=A0 =C2=A0 if (s-&gt;addrwidth &lt;=3D 32) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 switch (addr) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 case R_CURDESC_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 case R_TAILDESC_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 case R_SA_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 case R_DA_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;%s: Invalid 32-bit read to 0x%&quot; HWADDR_PRIX &q=
+uot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 __func__, addr);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return value;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 switch (addr) {<br>
++=C2=A0 =C2=A0 case R_CDMACR:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;control;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_CDMASR:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D axicdma_read_status(s);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_CURDESC:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;curdesc;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_CURDESC_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D extract64(s-&gt;curdesc, 32, 32);<br=
+>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_TAILDESC:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;taildesc;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_TAILDESC_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D extract64(s-&gt;taildesc, 32, 32);<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_SA:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;src;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_SA_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D extract64(s-&gt;src, 32, 32);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_DA:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;dest;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_DA_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D extract64(s-&gt;dest, 32, 32);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_BTT:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;btt;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 default:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &quot;%s: Invalid 32-bit read to 0x%&quot; HWADDR_PRIX &quot;\n&quot;,<=
+br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, addr);<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 return value;<br>
++}<br>
++<br>
++static uint32_t axicdma_readq(void *opaque, hwaddr addr, unsigned size)<br=
+>
++{<br>
++=C2=A0 =C2=A0 XilinxAXICDMA *s =3D opaque;<br>
++=C2=A0 =C2=A0 uint64_t value =3D 0;<br>
++<br>
++=C2=A0 =C2=A0 switch (addr) {<br>
++=C2=A0 =C2=A0 case R_CDMACR:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;control;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_CDMASR:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D axicdma_read_status(s);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_CURDESC:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;curdesc;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_TAILDESC:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;taildesc;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_SA:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;src;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_DA:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;dest;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_BTT:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D s-&gt;btt;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 default:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &quot;%s: Invalid 64-bit read to 0x%&quot; HWADDR_PRIX &quot;\n&quot;,<=
+br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, addr);<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 return value;<br>
++}<br>
++<br>
++static uint64_t axicdma_read(void *opaque, hwaddr addr, unsigned size)<br>
++{<br>
++=C2=A0 =C2=A0 uint64_t value =3D 0;<br>
++<br>
++=C2=A0 =C2=A0 switch (size) {<br>
++=C2=A0 =C2=A0 case 4:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D axicdma_readl(opaque, addr, size);<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case 8:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D axicdma_readq(opaque, addr, size);<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 default:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Inval=
+id read size %u to AXI-CDMA\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, size);<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 return value;<br>
++}<br>
++<br>
++static void axicdma_writel(void *opaque, hwaddr addr, uint32_t value,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0unsigned size)<br>
++{<br>
++=C2=A0 =C2=A0 XilinxAXICDMA *s =3D opaque;<br>
++<br>
++=C2=A0 =C2=A0 if (s-&gt;addrwidth &lt;=3D 32) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 switch (addr) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 case R_CURDESC_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 case R_TAILDESC_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 case R_SA_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 case R_DA_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;%s: Invalid 32-bit write to 0x%&quot; HWADDR_PRIX &=
+quot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 __func__, addr);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 switch (addr) {<br>
++=C2=A0 =C2=A0 case R_CDMACR:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_control(s, value);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_CDMASR:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_status(s, value);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_CURDESC:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_curdesc(s, deposit64(s-&gt;curde=
+sc, 0, 32, value));<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_CURDESC_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_curdesc(s, deposit64(s-&gt;curde=
+sc, 32, 32, value));<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_TAILDESC:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_taildesc(s, deposit64(s-&gt;tail=
+desc, 0, 32, value));<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_TAILDESC_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_taildesc(s, deposit64(s-&gt;tail=
+desc, 32, 32, value));<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_SA:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;src =3D deposit64(s-&gt;src, 0, 32, valu=
+e);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_SA_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;src =3D deposit64(s-&gt;src, 32, 32, val=
+ue);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_DA:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;dest =3D deposit64(s-&gt;dest, 0, 32, va=
+lue);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_DA_MSB:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;dest =3D deposit64(s-&gt;dest, 32, 32, v=
+alue);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_BTT:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_btt(s, value);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 default:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &quot;%s: Invalid 32-bit write to 0x%&quot; HWADDR_PRIX &quot;\n&quot;,=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, addr);<br>
++=C2=A0 =C2=A0 }<br>
++}<br>
++<br>
++static void axicdma_writeq(void *opaque, hwaddr addr, uint64_t value,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0unsigned size)<br>
++{<br>
++=C2=A0 =C2=A0 XilinxAXICDMA *s =3D opaque;<br>
++<br>
++=C2=A0 =C2=A0 switch (addr) {<br>
++=C2=A0 =C2=A0 case R_CDMACR:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_control(s, value);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_CDMASR:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_status(s, value);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_CURDESC:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_curdesc(s, value);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_TAILDESC:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_taildesc(s, value);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_SA:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;src =3D value;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_DA:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;dest =3D value;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case R_BTT:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_write_btt(s, value);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 default:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &quot;%s: Invalid 64-bit write to 0x%&quot; HWADDR_PRIX &quot;\n&quot;,=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, addr);<br>
++=C2=A0 =C2=A0 }<br>
++}<br>
++<br>
++static void axicdma_write(void *opaque, hwaddr addr,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 uint64_t value, unsigned size)<br>
++{<br>
++=C2=A0 =C2=A0 switch (size) {<br>
++=C2=A0 =C2=A0 case 4:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_writel(opaque, addr, value, size);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 case 8:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 axicdma_writeq(opaque, addr, value, size);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
++=C2=A0 =C2=A0 default:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &quot;%s: Invalid write size %u to AXI-CDMA\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, size);<br>
++=C2=A0 =C2=A0 }<br>
++}<br>
++<br>
++static const MemoryRegionOps axicdma_ops =3D {<br>
++=C2=A0 =C2=A0 .read =3D axicdma_read,<br>
++=C2=A0 =C2=A0 .write =3D axicdma_write,<br>
++=C2=A0 =C2=A0 .endianness =3D DEVICE_NATIVE_ENDIAN,<br>
++=C2=A0 =C2=A0 .valid =3D {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 .min_access_size =3D 4,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 .max_access_size =3D 8<br>
++=C2=A0 =C2=A0 },<br>
++=C2=A0 =C2=A0 .impl =3D {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 .min_access_size =3D 4,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 .max_access_size =3D 8,<br>
++=C2=A0 =C2=A0 },<br>
++};<br>
++<br>
++static void xilinx_axicdma_realize(DeviceState *dev, Error **errp)<br>
++{<br>
++=C2=A0 =C2=A0 XilinxAXICDMA *s =3D XILINX_AXI_CDMA(dev);<br>
++=C2=A0 =C2=A0 SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);<br>
++<br>
++=C2=A0 =C2=A0 memory_region_init_io(&amp;s-&gt;mmio, OBJECT(dev), &amp;axi=
+cdma_ops, s,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 TYPE_XILINX_AXI_CDMA, R_MAX);<br>
++=C2=A0 =C2=A0 sysbus_init_mmio(sbd, &amp;s-&gt;mmio);<br>
++=C2=A0 =C2=A0 sysbus_init_irq(sbd, &amp;s-&gt;irq);<br>
++<br>
++=C2=A0 =C2=A0 if (!s-&gt;dma_mr || s-&gt;dma_mr =3D=3D get_system_memory()=
+) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Avoid creating new AddressSpace for system =
+memory. */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;as =3D &amp;address_space_memory;<br>
++=C2=A0 =C2=A0 } else {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;as =3D g_new0(AddressSpace, 1);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 address_space_init(s-&gt;as, s-&gt;dma_mr, mem=
+ory_region_name(s-&gt;dma_mr));<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 s-&gt;ptimer =3D ptimer_init(timer_hit, s, PTIMER_POLICY_DEF=
+AULT);<br>
++=C2=A0 =C2=A0 ptimer_transaction_begin(s-&gt;ptimer);<br>
++=C2=A0 =C2=A0 ptimer_set_freq(s-&gt;ptimer, s-&gt;freqhz);<br>
++=C2=A0 =C2=A0 ptimer_transaction_commit(s-&gt;ptimer);<br>
++}<br>
++<br>
++static void xilinx_axicdma_unrealize(DeviceState *dev)<br>
++{<br>
++=C2=A0 =C2=A0 XilinxAXICDMA *s =3D XILINX_AXI_CDMA(dev);<br>
++<br>
++=C2=A0 =C2=A0 if (s-&gt;ptimer) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 ptimer_free(s-&gt;ptimer);<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 if (s-&gt;as &amp;&amp; s-&gt;dma_mr !=3D get_system_memory(=
+)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 g_free(s-&gt;as);<br>
++=C2=A0 =C2=A0 }<br>
++}<br>
++<br>
++static Property axicdma_properties[] =3D {<br>
++=C2=A0 =C2=A0 DEFINE_PROP_UINT32(&quot;freqhz&quot;, XilinxAXICDMA, freqhz=
+, 50000000),<br>
++=C2=A0 =C2=A0 DEFINE_PROP_INT32(&quot;addrwidth&quot;, XilinxAXICDMA, addr=
+width, 64),<br>
++=C2=A0 =C2=A0 DEFINE_PROP_LINK(&quot;dma&quot;, XilinxAXICDMA, dma_mr,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0TYPE_MEMORY_REGION, MemoryRegion *),<br>
++=C2=A0 =C2=A0 DEFINE_PROP_END_OF_LIST(),<br>
++};<br>
++<br>
++static void xilinx_axicdma_reset_enter(Object *obj, ResetType type)<br>
++{<br>
++=C2=A0 =C2=A0 axicdma_reset(XILINX_AXI_CDMA(obj));<br>
++}<br>
++<br>
++static void axicdma_class_init(ObjectClass *klass, void *data)<br>
++{<br>
++=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
++=C2=A0 =C2=A0 ResettableClass *rc =3D RESETTABLE_CLASS(klass);<br>
++<br>
++=C2=A0 =C2=A0 dc-&gt;realize =3D xilinx_axicdma_realize;<br>
++=C2=A0 =C2=A0 dc-&gt;unrealize =3D xilinx_axicdma_unrealize;<br>
++=C2=A0 =C2=A0 device_class_set_props(dc, axicdma_properties);<br>
++<br>
++=C2=A0 =C2=A0 rc-&gt;phases.enter =3D xilinx_axicdma_reset_enter;<br>
++}<br>
++<br>
++static const TypeInfo axicdma_info =3D {<br>
++=C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_XILINX_AXI_=
+CDMA,<br>
++=C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEVICE,<=
+br>
++=C2=A0 =C2=A0 .instance_size =3D sizeof(XilinxAXICDMA),<br>
++=C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =3D axicdma_class_init,<br>
++};<br>
++<br>
++static void xilinx_axicdma_register_types(void)<br>
++{<br>
++=C2=A0 =C2=A0 type_register_static(&amp;axicdma_info);<br>
++}<br>
++<br>
++type_init(xilinx_axicdma_register_types)<br>
+diff --git a/include/hw/dma/xilinx_axicdma.h b/include/hw/dma/xilinx_axicdm=
+a.h<br>
+new file mode 100644<br>
+index 0000000000..67b7cfce99<br>
+--- /dev/null<br>
++++ b/include/hw/dma/xilinx_axicdma.h<br>
+@@ -0,0 +1,72 @@<br>
++/*<br>
++ * QEMU model of Xilinx AXI-CDMA block.<br>
++ *<br>
++ * Copyright (c) 2022 Frank Chang &lt;<a href=3D"mailto:frank.chang@sifive=
+.com" target=3D"_blank">frank.chang@sifive.com</a>&gt;.<br>
++ *<br>
++ * Permission is hereby granted, free of charge, to any person obtaining a=
+ copy<br>
++ * of this software and associated documentation files (the &quot;Software=
+&quot;), to deal<br>
++ * in the Software without restriction, including without limitation the r=
+ights<br>
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or se=
+ll<br>
++ * copies of the Software, and to permit persons to whom the Software is<b=
+r>
++ * furnished to do so, subject to the following conditions:<br>
++ *<br>
++ * The above copyright notice and this permission notice shall be included=
+ in<br>
++ * all copies or substantial portions of the Software.<br>
++ *<br>
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIN=
+D, EXPRESS OR<br>
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY=
+,<br>
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL=
+<br>
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OT=
+HER<br>
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING=
+ FROM,<br>
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS =
+IN<br>
++ * THE SOFTWARE.<br>
++ */<br>
++<br>
++#include &quot;exec/hwaddr.h&quot;<br>
++#include &quot;hw/ptimer.h&quot;<br>
++#include &quot;hw/sysbus.h&quot;<br>
++#include &quot;qom/object.h&quot;<br>
++#include &quot;qemu/units.h&quot;<br>
++<br>
++#define CDMA_BUF_SIZE=C2=A0 =C2=A0(64 * KiB)<br>
++<br>
++typedef struct XilinxAXICDMA XilinxAXICDMA;<br>
++<br>
++#define TYPE_XILINX_AXI_CDMA &quot;xlnx.axi-cdma&quot;<br>
++OBJECT_DECLARE_SIMPLE_TYPE(XilinxAXICDMA, XILINX_AXI_CDMA)<br>
++<br>
++/* Scatter Gather Transfer Descriptor */<br>
++typedef struct SDesc {<br>
++=C2=A0 =C2=A0 uint64_t nxtdesc;<br>
++=C2=A0 =C2=A0 hwaddr src;<br>
++=C2=A0 =C2=A0 hwaddr dest;<br>
++=C2=A0 =C2=A0 uint32_t control;<br>
++=C2=A0 =C2=A0 uint32_t status;<br>
++} SDesc;<br>
++<br>
++struct XilinxAXICDMA {<br>
++=C2=A0 =C2=A0 /*&lt; private &gt;*/<br>
++=C2=A0 =C2=A0 SysBusDevice parent_obj;<br>
++<br>
++=C2=A0 =C2=A0 /*&lt; public &gt;*/<br>
++=C2=A0 =C2=A0 MemoryRegion mmio;<br>
++=C2=A0 =C2=A0 AddressSpace *as;<br>
++=C2=A0 =C2=A0 MemoryRegion *dma_mr;<br>
++<br>
++=C2=A0 =C2=A0 /* Properties */<br>
++=C2=A0 =C2=A0 uint32_t control;<br>
++=C2=A0 =C2=A0 uint32_t status;<br>
++=C2=A0 =C2=A0 uint64_t curdesc;<br>
++=C2=A0 =C2=A0 uint64_t taildesc;<br>
++=C2=A0 =C2=A0 hwaddr src;<br>
++=C2=A0 =C2=A0 hwaddr dest;<br>
++=C2=A0 =C2=A0 uint32_t btt;<br>
++<br>
++=C2=A0 =C2=A0 uint32_t freqhz;<br>
++=C2=A0 =C2=A0 int32_t addrwidth;<br>
++=C2=A0 =C2=A0 ptimer_state *ptimer;<br>
++=C2=A0 =C2=A0 SDesc sdesc;<br>
++=C2=A0 =C2=A0 qemu_irq irq;<br>
++=C2=A0 =C2=A0 uint16_t complete_cnt;<br>
++=C2=A0 =C2=A0 char buf[CDMA_BUF_SIZE];<br>
++};<br>
+-- <br>
+2.35.1<br>
+<br>
+</blockquote></div></div>
+</blockquote></div></div>
+</blockquote></div></div>
+</blockquote></div></div>
+</blockquote></div></div>
+</blockquote></div></div>
+
+--000000000000dc2a2705de35c724--

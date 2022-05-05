@@ -1,111 +1,113 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1299259lfj;
-        Thu, 5 May 2022 12:13:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxgQSraWEqKMsp8c0hVTN78qE+tvsHKtqLkYSShrDKjV2h4lIX1EFaMONUxstylHIqiL5mt
-X-Received: by 2002:a05:6214:27c9:b0:446:5771:397b with SMTP id ge9-20020a05621427c900b004465771397bmr23198961qvb.75.1651778023421;
-        Thu, 05 May 2022 12:13:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651778023; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1301783lfj;
+        Thu, 5 May 2022 12:18:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjfl0SmI77AANTnSjDYQplVwBIy/Nv321BwbOJ+4ayipV9IV0rRZ9bqD6xrnbr98m4RC6q
+X-Received: by 2002:a05:622a:5d0:b0:2e1:d430:a5c9 with SMTP id d16-20020a05622a05d000b002e1d430a5c9mr25777463qtb.639.1651778298912;
+        Thu, 05 May 2022 12:18:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651778298; cv=none;
         d=google.com; s=arc-20160816;
-        b=jzjOSl7CqyqOfJgZOWnUJDkdHVzhVBt9u9OYYww2nzZd/x1MwtU8MItjgVrQFmTqwc
-         u82ANV2KFFo7gE1SCH9Gmx6lultZWa4BhHucM4tqM+FV8k1MMUOQud6K6iWSSEoDlaV/
-         oO3WddOxzMumHyqYz2GdBqE5yCHktfjoogDCPr48rf5e0zpPJyP0OM5rWxd3zq1I8+36
-         Hawhqv/b2rLhIwCN2edze5Vfc9PesS6wWCoPyTz6DApxWmwnYEMHC/xRflm2C+iIeXaI
-         Kw1iWD6DA7Hn2YKkiaNUZuNLFtsc3Yovu+pL/8ffQzI3ViEwj8ieFHViN7qehQrm/F7c
-         cS+g==
+        b=cRn6k6Y8C/Z8KCKQDJnyjI7iaQ9aN/hsQT/u8gJwHGFdBbEEwX8ODhoagB1Dqdsjv6
+         DBhH3y6LdjFmBOppxNQKncHHS8lENEYImhyJmJICRRonS0xpcea6ovO+/FxYQkvmLECE
+         az6CwW5JMIblS07x9wyqbjGu8G3a2Z1aiV+xO9gOXx5LPAahMnOltp6oD58uyB679BZB
+         8D7QPf8ixW5wmkXi9t7GbcJZ0sKCo80zKHEym1P+Op2HYbrwTCL5zzmAG3PwtiycP6UP
+         JkBfh99UKhjfaTuNcfzDfp2MbogGNmvzummujj5IYoTXL9w8//pioKO/CjBTv1kB5G9h
+         w7OQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WdVA+PWepftZslVtX4CoEviw4FN/SL6jv0Zsx6KJ8Ic=;
-        b=xtiI2nH+sKsNDZ2jhWld0L+JXAH+bcLOdX8DpETi6iup2vmG6r6olbsVW4ZWUMeCPx
-         mH4QMzQSl4u3ZOryHoDZdFDtWq3JZkNvB6T6RV3jjglLfeUQ3NdPXgx43C2FMtSX9Igf
-         n+wNKpW0FuNZ+U3dWjz+sOrQWkkvTL60HsGQs6/Y6a9cST/2vp5qiGla4Ofw3KvfQuO7
-         XIMwgHDMYGtJNhG7U1ZPo6iaOFbMqfSw+ieJSNnimeqOUQd3/nX+x9toTGzNH25WxYx1
-         kxJurFtKngui4Eoj+B4dJwBASyVBfSr1nWemOCTA63JQjwOlPEw+n3fJ4JBW+9nua0Id
-         rafA==
+        bh=UA0u5zIb+IjVjwjFedkOJVeM7leXzM2MF4hE+Hu/fBc=;
+        b=MlIHHd7vMzxdNFbedb/oswh7Ar+TX4Oa+1cnNozwVUCPbbXmdx+/qBvlsXfunEHfar
+         xVdRHYLEYy+KVo5sdJytYFP0SfLkXjblhWqjll60ULbkwZ9Xn40uN09ZOy8VNy/0TDJU
+         gH1iJR3nKTX+vRdK1lOjFgpNZ/koY3CkAby9ZwnEEDIkbuURkEtVa8pCOwCspzzfv+B0
+         FMcKqmIT2ngbfb1eMssk3rjuhbM9v3oDhQ6vmLOyxPAE4Bdi1cxmy2hGTf6bQYx8DiEF
+         HlYpctClSty+KtyFu87G9im5Jgr50DwK2fErJGws/hf8+HZhOE9B7QWfcTi3tdnl5jSJ
+         8k/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="DWjL2/gG";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dp44kJCI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u13-20020a05622a14cd00b002f33d646ecasi1258146qtx.589.2022.05.05.12.13.43
+        by mx.google.com with ESMTPS id w14-20020a05622a190e00b002f366ce2546si1397967qtc.129.2022.05.05.12.18.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 May 2022 12:13:43 -0700 (PDT)
+        Thu, 05 May 2022 12:18:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="DWjL2/gG";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dp44kJCI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33650 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39468 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nmgv0-0004rg-RY
-	for alex.bennee@linaro.org; Thu, 05 May 2022 15:13:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46886)
+	id 1nmgzS-000132-AS
+	for alex.bennee@linaro.org; Thu, 05 May 2022 15:18:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47166)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nmgYS-0002YO-QJ
- for qemu-devel@nongnu.org; Thu, 05 May 2022 14:50:24 -0400
-Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235]:36521)
+ id 1nmgYZ-0002qR-Cw
+ for qemu-devel@nongnu.org; Thu, 05 May 2022 14:50:31 -0400
+Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231]:47000)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nmgYO-0004N4-7X
- for qemu-devel@nongnu.org; Thu, 05 May 2022 14:50:24 -0400
-Received: by mail-oi1-x235.google.com with SMTP id v66so5264323oib.3
- for <qemu-devel@nongnu.org>; Thu, 05 May 2022 11:50:12 -0700 (PDT)
+ id 1nmgYS-0004RE-0b
+ for qemu-devel@nongnu.org; Thu, 05 May 2022 14:50:31 -0400
+Received: by mail-oi1-x231.google.com with SMTP id q8so5238985oif.13
+ for <qemu-devel@nongnu.org>; Thu, 05 May 2022 11:50:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=WdVA+PWepftZslVtX4CoEviw4FN/SL6jv0Zsx6KJ8Ic=;
- b=DWjL2/gGTiljT09qBKKqxz1uzbPJlFqNOi/eJ/AeXwXZ65cVSSkdfkFbgywExqUQA8
- v9VdKvM+WWLLEZLTsFtZ3yc+/rQ+YX49iu6GqT5wEfp5/YZq1SzIE+o/GajVXdh00JJw
- sb/iupBfsIIVQ5YM77uVBI9w4refYUEDldNkC/OzpSQVmB5QGFhQMu3+fMYY/mjibr8S
- sICXVaA22k+wjrCfouFJhcPFblc1Ge/2KYz7sHGn9aRFxype8YcMNjC3gMGaWt8P1NJz
- 9DLNk7ISzZZcOQUc3uDV6CWj8DJiEj4JCJsmWqLR9ghcBJzoBeS9U//BxPnpFhmDt7Q3
- 4wzg==
+ bh=UA0u5zIb+IjVjwjFedkOJVeM7leXzM2MF4hE+Hu/fBc=;
+ b=dp44kJCItyvzaIgdlYDpsN8be0sKQJNR6F7Bx6SwfWUiUFd7CUbxc20nOoIvLmbgsx
+ Jq+Ie4fiEjXbt+EEYaKjJ28sgw8VNf0YL+WMjdjNZ86X8Bg1Le37DNW59PTh2SFl0763
+ iiNNpwfEIQ6mEDpA1Z0G/We/J3XwqwGBcCNV6fMQImZ4HwGaSoGoJSeartMY5UxTPlYF
+ fIDSCVuoP1C4UxvHFEf7+s4rrUH/Tl8G/efqw4zpbjuZ4Xfp9KEfXbT8nLh5ELWkXJ/3
+ aWspqd+5hqqA93Tx2ZA5SjaGAa1Ee0y8yUr9zlOfH6/P18o+60gC9KRhJbRWCI3OoCIo
+ jW3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=WdVA+PWepftZslVtX4CoEviw4FN/SL6jv0Zsx6KJ8Ic=;
- b=zYihiW2O6yvwc4OQDQwcceQn7FKujR+OmbtmAr+++Vgb1OwTGqRAC/PEd47MwZECOf
- JZDxMKiVrh7puTLPhOriM8LDGbBFWQe2TsZjQN77WyibGnin89nhRXjNchAxc/Eb18mD
- J7FkeGZkhzqrFsuH+vOdSGv4pds5RjmdEvYaH1PZbxsbtB6+WQzpzPHji2j4qxPZANNy
- 0Wl10OG4hkbJa56nvjIIMphiDrJJN9BgC67rRig+kthc+FzdWWq0e1Wdd4X6bC4Irmyx
- V9UvBaMAfZTRH+1sebLBouqs2Q+D+g5pEvSzxWD+OgyfsN4mkKz2HZOTntpXIb51AgKZ
- QO9Q==
-X-Gm-Message-State: AOAM533KpcKOqyDDIwH57CHO0g+Y0PJLzfiykVbHa39FnCZIPPf1mJyq
- bfeMs35dPDj0qAn8YLDcw6QNIB/N1UwDm5/O
-X-Received: by 2002:aca:dac2:0:b0:325:d44d:6280 with SMTP id
- r185-20020acadac2000000b00325d44d6280mr3092332oig.176.1651776611536; 
- Thu, 05 May 2022 11:50:11 -0700 (PDT)
+ bh=UA0u5zIb+IjVjwjFedkOJVeM7leXzM2MF4hE+Hu/fBc=;
+ b=x79FICYOvKLYvD5sUOyBpaHIGTgch+mTXvuhFUUPsnQE3GN4Ji6W+1OSphLZQ6reCe
+ 3SGebIgNIdjGsEzri8+m3p/WqyCYJNrYjF5XZBYfgqeLnelTCRJQrLq84sbqGhFgZPHN
+ bqivefrAH6aXQXjAZMWUEYmhqXrpn9NGEeJhhiF6a2LmVxLuvClgjak//aE8ANDx6D9L
+ h+QD3jrsTQhYU9MvVchMHsepcjTL5kFGjpcX+cbqcYGNC87rERtD9ykOqqmFkD8XKGKD
+ hhXngA/r9k4OKyodD584+7sw1/mGYQ4MovhZzyUcUJqfSsrX2Duwq5ChAdkkDIt4k5Uy
+ v3jw==
+X-Gm-Message-State: AOAM532TptpKQ7XoyEgNEGmMe+hXLcF1y4UcDqn2ZJulsd24bdOhWaLy
+ 4K66y/z03OhM9E/ycTxjmQMTpd9yY2oe6ViW
+X-Received: by 2002:a54:4d86:0:b0:324:ecc3:fd02 with SMTP id
+ y6-20020a544d86000000b00324ecc3fd02mr3229632oix.243.1651776622942; 
+ Thu, 05 May 2022 11:50:22 -0700 (PDT)
 Received: from stoup.. ([2607:fb90:5fe8:83ea:bbf4:c9ef:4f3:11c6])
  by smtp.gmail.com with ESMTPSA id
- s36-20020a0568302aa400b0060603221259sm857273otu.41.2022.05.05.11.50.10
+ s36-20020a0568302aa400b0060603221259sm857273otu.41.2022.05.05.11.50.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 May 2022 11:50:11 -0700 (PDT)
+ Thu, 05 May 2022 11:50:22 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v5 02/24] target/arm: Drop EL3 no EL2 fallbacks
-Date: Thu,  5 May 2022 13:49:44 -0500
-Message-Id: <20220505185006.200555-3-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v5 10/24] target/arm: Use field names for manipulating EL2 and
+ EL3 modes
+Date: Thu,  5 May 2022 13:49:52 -0500
+Message-Id: <20220505185006.200555-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220505185006.200555-1-richard.henderson@linaro.org>
 References: <20220505185006.200555-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::235;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x235.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::231;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x231.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,201 +122,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J16UjrUniqSN
+X-TUID: Fu1D84S8/Jg9
 
-Drop el3_no_el2_cp_reginfo, el3_no_el2_v8_cp_reginfo,
-and the local vpidr_regs definition, and rely on the
-squasing to ARM_CP_CONST while registering.
+Use FIELD_DP{32,64} to manipulate id_pfr1 and id_aa64pfr0
+during arm_cpu_realizefn.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 158 ++++----------------------------------------
- 1 file changed, 13 insertions(+), 145 deletions(-)
+ target/arm/cpu.c | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 9ab8b65e7b..ea2788b3d5 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5099,124 +5099,6 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .fieldoffset = offsetoflow32(CPUARMState, cp15.mdcr_el3) },
- };
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 01176b2569..7995ff2712 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1801,11 +1801,13 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+          */
+         unset_feature(env, ARM_FEATURE_EL3);
  
--/* Used to describe the behaviour of EL2 regs when EL2 does not exist.  */
--static const ARMCPRegInfo el3_no_el2_cp_reginfo[] = {
--    { .name = "VBAR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 0, .opc2 = 0,
--      .access = PL2_RW,
--      .readfn = arm_cp_read_zero, .writefn = arm_cp_write_ignore },
--    { .name = "HCR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
--      .access = PL2_RW,
--      .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "HACR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 7,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "ESR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 2, .opc2 = 0,
--      .access = PL2_RW,
--      .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "CPTR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 2,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "MAIR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 10, .crm = 2, .opc2 = 0,
--      .access = PL2_RW, .type = ARM_CP_CONST,
--      .resetvalue = 0 },
--    { .name = "HMAIR1", .state = ARM_CP_STATE_AA32,
--      .cp = 15, .opc1 = 4, .crn = 10, .crm = 2, .opc2 = 1,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "AMAIR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 10, .crm = 3, .opc2 = 0,
--      .access = PL2_RW, .type = ARM_CP_CONST,
--      .resetvalue = 0 },
--    { .name = "HAMAIR1", .state = ARM_CP_STATE_AA32,
--      .cp = 15, .opc1 = 4, .crn = 10, .crm = 3, .opc2 = 1,
--      .access = PL2_RW, .type = ARM_CP_CONST,
--      .resetvalue = 0 },
--    { .name = "AFSR0_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 1, .opc2 = 0,
--      .access = PL2_RW, .type = ARM_CP_CONST,
--      .resetvalue = 0 },
--    { .name = "AFSR1_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 1, .opc2 = 1,
--      .access = PL2_RW, .type = ARM_CP_CONST,
--      .resetvalue = 0 },
--    { .name = "TCR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 0, .opc2 = 2,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "VTCR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 1, .opc2 = 2,
--      .access = PL2_RW, .accessfn = access_el3_aa32ns,
--      .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "VTTBR", .state = ARM_CP_STATE_AA32,
--      .cp = 15, .opc1 = 6, .crm = 2,
--      .access = PL2_RW, .accessfn = access_el3_aa32ns,
--      .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
--    { .name = "VTTBR_EL2", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 1, .opc2 = 0,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "SCTLR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 0, .opc2 = 0,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "TPIDR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 13, .crm = 0, .opc2 = 2,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "TTBR0_EL2", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 0, .opc2 = 0,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "HTTBR", .cp = 15, .opc1 = 4, .crm = 2,
--      .access = PL2_RW, .type = ARM_CP_64BIT | ARM_CP_CONST,
--      .resetvalue = 0 },
--    { .name = "CNTHCTL_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 1, .opc2 = 0,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "CNTVOFF_EL2", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 0, .opc2 = 3,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "CNTVOFF", .cp = 15, .opc1 = 4, .crm = 14,
--      .access = PL2_RW, .type = ARM_CP_64BIT | ARM_CP_CONST,
--      .resetvalue = 0 },
--    { .name = "CNTHP_CVAL_EL2", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 2, .opc2 = 2,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "CNTHP_CVAL", .cp = 15, .opc1 = 6, .crm = 14,
--      .access = PL2_RW, .type = ARM_CP_64BIT | ARM_CP_CONST,
--      .resetvalue = 0 },
--    { .name = "CNTHP_TVAL_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 2, .opc2 = 0,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "CNTHP_CTL_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 2, .opc2 = 1,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "MDCR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 1,
--      .access = PL2_RW, .accessfn = access_tda,
--      .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "HPFAR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 6, .crm = 0, .opc2 = 4,
--      .access = PL2_RW, .accessfn = access_el3_aa32ns,
--      .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "HSTR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 3,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "FAR_EL2", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 4, .crn = 6, .crm = 0, .opc2 = 0,
--      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "HIFAR", .state = ARM_CP_STATE_AA32,
--      .type = ARM_CP_CONST,
--      .cp = 15, .opc1 = 4, .crn = 6, .crm = 0, .opc2 = 2,
--      .access = PL2_RW, .resetvalue = 0 },
--};
--
--/* Ditto, but for registers which exist in ARMv8 but not v7 */
--static const ARMCPRegInfo el3_no_el2_v8_cp_reginfo[] = {
--    { .name = "HCR2", .state = ARM_CP_STATE_AA32,
--      .cp = 15, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 4,
--      .access = PL2_RW,
--      .type = ARM_CP_CONST, .resetvalue = 0 },
--};
--
- static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
- {
-     ARMCPU *cpu = env_archcpu(env);
-@@ -7902,7 +7784,17 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, v8_idregs);
-         define_arm_cp_regs(cpu, v8_cp_reginfo);
+-        /* Disable the security extension feature bits in the processor feature
+-         * registers as well. These are id_pfr1[7:4] and id_aa64pfr0[15:12].
++        /*
++         * Disable the security extension feature bits in the processor
++         * feature registers as well.
+          */
+-        cpu->isar.id_pfr1 &= ~0xf0;
+-        cpu->isar.id_aa64pfr0 &= ~0xf000;
++        cpu->isar.id_pfr1 = FIELD_DP32(cpu->isar.id_pfr1, ID_PFR1, SECURITY, 0);
++        cpu->isar.id_aa64pfr0 = FIELD_DP64(cpu->isar.id_aa64pfr0,
++                                           ID_AA64PFR0, EL3, 0);
      }
--    if (arm_feature(env, ARM_FEATURE_EL2)) {
-+
-+    /*
-+     * Register the base EL2 cpregs.
-+     * Pre v8, these registers are implemented only as part of the
-+     * Virtualization Extensions (EL2 present).  Beginning with v8,
-+     * if EL2 is missing but EL3 is enabled, mostly these become
-+     * RES0 from EL3, with some specific exceptions.
-+     */
-+    if (arm_feature(env, ARM_FEATURE_EL2)
-+        || (arm_feature(env, ARM_FEATURE_EL3)
-+            && arm_feature(env, ARM_FEATURE_V8))) {
-         uint64_t vmpidr_def = mpidr_read_val(env);
-         ARMCPRegInfo vpidr_regs[] = {
-             { .name = "VPIDR", .state = ARM_CP_STATE_AA32,
-@@ -7946,33 +7838,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             };
-             define_one_arm_cp_reg(cpu, &rvbar);
-         }
--    } else {
--        /* If EL2 is missing but higher ELs are enabled, we need to
--         * register the no_el2 reginfos.
--         */
--        if (arm_feature(env, ARM_FEATURE_EL3)) {
--            /* When EL3 exists but not EL2, VPIDR and VMPIDR take the value
--             * of MIDR_EL1 and MPIDR_EL1.
--             */
--            ARMCPRegInfo vpidr_regs[] = {
--                { .name = "VPIDR_EL2", .state = ARM_CP_STATE_BOTH,
--                  .opc0 = 3, .opc1 = 4, .crn = 0, .crm = 0, .opc2 = 0,
--                  .access = PL2_RW, .accessfn = access_el3_aa32ns,
--                  .type = ARM_CP_CONST, .resetvalue = cpu->midr,
--                  .fieldoffset = offsetof(CPUARMState, cp15.vpidr_el2) },
--                { .name = "VMPIDR_EL2", .state = ARM_CP_STATE_BOTH,
--                  .opc0 = 3, .opc1 = 4, .crn = 0, .crm = 0, .opc2 = 5,
--                  .access = PL2_RW, .accessfn = access_el3_aa32ns,
--                  .type = ARM_CP_NO_RAW,
--                  .writefn = arm_cp_write_ignore, .readfn = mpidr_read },
--            };
--            define_arm_cp_regs(cpu, vpidr_regs);
--            define_arm_cp_regs(cpu, el3_no_el2_cp_reginfo);
--            if (arm_feature(env, ARM_FEATURE_V8)) {
--                define_arm_cp_regs(cpu, el3_no_el2_v8_cp_reginfo);
--            }
--        }
+ 
+     if (!cpu->has_el2) {
+@@ -1836,12 +1838,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
      }
-+
-+    /* Register the base EL3 cpregs. */
-     if (arm_feature(env, ARM_FEATURE_EL3)) {
-         define_arm_cp_regs(cpu, el3_cp_reginfo);
-         ARMCPRegInfo el3_regs[] = {
+ 
+     if (!arm_feature(env, ARM_FEATURE_EL2)) {
+-        /* Disable the hypervisor feature bits in the processor feature
+-         * registers if we don't have EL2. These are id_pfr1[15:12] and
+-         * id_aa64pfr0_el1[11:8].
++        /*
++         * Disable the hypervisor feature bits in the processor feature
++         * registers if we don't have EL2.
+          */
+-        cpu->isar.id_aa64pfr0 &= ~0xf00;
+-        cpu->isar.id_pfr1 &= ~0xf000;
++        cpu->isar.id_aa64pfr0 = FIELD_DP64(cpu->isar.id_aa64pfr0,
++                                           ID_AA64PFR0, EL2, 0);
++        cpu->isar.id_pfr1 = FIELD_DP32(cpu->isar.id_pfr1,
++                                       ID_PFR1, VIRTUALIZATION, 0);
+     }
+ 
+ #ifndef CONFIG_USER_ONLY
 -- 
 2.34.1
 

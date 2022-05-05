@@ -1,102 +1,93 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp914040lfj;
-        Thu, 5 May 2022 01:58:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzQvwmZZAUa/jbhFn9gGgQK6XIi79saQL3NyID3wBe2Obps8caSEiz4M/BaIJqUgk41eybf
-X-Received: by 2002:a05:622a:8d:b0:2f3:ba67:a0ba with SMTP id o13-20020a05622a008d00b002f3ba67a0bamr3481937qtw.129.1651741122370;
-        Thu, 05 May 2022 01:58:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651741122; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1035449lfj;
+        Thu, 5 May 2022 05:34:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzmiwP8eZd1gR/6ukitxDLN/q+GEm+MUap2Jc3naKzVrRTMMlRVd5rOR8k8g8j/YrMQzWpd
+X-Received: by 2002:ac8:5982:0:b0:2f3:b838:cdda with SMTP id e2-20020ac85982000000b002f3b838cddamr5993516qte.119.1651754054295;
+        Thu, 05 May 2022 05:34:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651754054; cv=none;
         d=google.com; s=arc-20160816;
-        b=KeMR/3o7UAW6oxTs+87lAycIAzncD88G6EEKNrWw2adw3yoxNMce5KTrAafPJ/GrN8
-         p3MJJ6z+/fkuS5OeCq4TqCOHLtNVTBd5YcswsJUu5nwXtpEZECKhybYQYURtKzHuK2NY
-         8sRJ4iQBkEoKme9FjgrlUkvG16i2BnX+jUvLMKqEdeSikw0Prot3QpYH4ehlC0fFc6UG
-         MUSYPyw0jsi5RzLCSSy+4f+sbKv656ZR2xB43y2LFUQzSDt/UzNchrFuUQ+sEn409KC8
-         5IQvB+Wy44vcA6C1Jy/yxGctZtJ2V7kB0AkVzLDNBCxfPSmBAnJu2/LR9+FRjC9CU02z
-         up5A==
+        b=rAjn1OugrmKj7DCq04dyau7m4Ty75myrj8S/icfd9rj01QcomrJaYflU5YC7oQDf4g
+         h7gk4vMgvbgrcz3WqdhHTPN3IrlFCXMM1E/80GyfscFZT+xq2rhle5EaY2HRGe2dY8Ct
+         44r6GCmW5j+dOdga/khLxz3i+Iad8j4stePe/8Vvz12Kz8E7JF44YfYmr+MRobkmwvwO
+         1qQsHxCcPRqLavnSQsgBY6uYBBOOD8Bh5+6oRkANF00NUrEHLYDm+YPRnnQAUuL153hQ
+         +lf45lwMTiLQtoP03xzrTHFkeWFK9eH3C1IqIDd61NNfzYBbFb0VZAu1V2i3C02nt22P
+         klWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=9zwuuukT+RmTzydmDgh6k9SFKgBnVOCLXQI0NcuFrbQ=;
-        b=iQ+zad5dtya7CCcKsahjJ1XISl1XKsyR7dhWqVnls5jKJgatykc/FMHgDmFXES+Blk
-         tRKyRTA4uZxf8Es/I8Rt7pBoDnI7mABy7mvz8Uqh461I85km/pmhON5HY86bJ0dk/2BJ
-         nceVL8Rn2kOboFToUm1xC8vatvFx0YYiV57Rs2Y3ytFSlMUMCvCuoQReyY7AGllx53Ie
-         ZnSgbvr4b9QxuOxtZjensV25Acj6n3XmOZVBVdp+HYAjz0Pusc1yAh1typQiszPUTbYg
-         bUCL6+UVM1b3pJ1A4+3Ig0NwE2L54RFnWDio0UW6SxMUwN2jwbIKxRSqcV/AhE6o8EI+
-         oyfQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=sdA2wT2agzV2pi6Meif8XPdPI3NPoC8F5d8PF1xdaHA=;
+        b=S13SfgDZSBMFBIeb3pkBnoj6uMrG+1JgQMeVAy9Ce5/I/LYyBwArhL+bTU+8b3YLFd
+         wUHcr2lReygmUV1Pi03brHdAPNbfmQ/3ZqQKeStkGIck03rYfgyFBTZAf53CacLlQsX7
+         7aZmk7gXqN+uYmT4P8O41Rhx3QOWHNvlsmCC0aenr2lyTyCsdV2bm3yj4wUd0PcT+CXt
+         /NDO6XDtb0mRkwjFHdo9GrAtDK2KVJA6N4RmOzn4aJhw+bDowNMq1y8Vf1Ld+kiChjmK
+         CS5lCt5vEX7AjooztATVjm+dv8xXoyK2/cc8Cjb2/8EbMlB8J47k2DA9Qp50vEm/A43+
+         1/Ew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NKqXrwre;
+       dkim=pass header.i=@sfc.wide.ad.jp header.s=mail1 header.b=FRjdTA8h;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=sfc.wide.ad.jp
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15-20020ac8574f000000b002f3ab0754ebsi489711qtx.169.2022.05.05.01.58.42
+        by mx.google.com with ESMTPS id j128-20020a378786000000b006a01c0b3b4bsi687994qkd.139.2022.05.05.05.34.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 May 2022 01:58:42 -0700 (PDT)
+        Thu, 05 May 2022 05:34:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NKqXrwre;
+       dkim=pass header.i=@sfc.wide.ad.jp header.s=mail1 header.b=FRjdTA8h;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58324 helo=lists1p.gnu.org)
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=sfc.wide.ad.jp
+Received: from localhost ([::1]:59518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nmXJp-0006Ub-Qt
-	for alex.bennee@linaro.org; Thu, 05 May 2022 04:58:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54574)
+	id 1nmagN-0001qF-Vc
+	for alex.bennee@linaro.org; Thu, 05 May 2022 08:34:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59766)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nmWjU-0005Wi-2k
- for qemu-devel@nongnu.org; Thu, 05 May 2022 04:21:15 -0400
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35]:36765)
+ (Exim 4.90_1) (envelope-from <mkei@sfc.wide.ad.jp>)
+ id 1nmacr-0000Vh-4D; Thu, 05 May 2022 08:30:33 -0400
+Received: from mail1.sfc.wide.ad.jp ([2001:200:0:8803:203:178:142:133]:39266)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nmWjP-0000Wf-QW
- for qemu-devel@nongnu.org; Thu, 05 May 2022 04:21:07 -0400
-Received: by mail-yb1-xb35.google.com with SMTP id f38so6414204ybi.3
- for <qemu-devel@nongnu.org>; Thu, 05 May 2022 01:21:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9zwuuukT+RmTzydmDgh6k9SFKgBnVOCLXQI0NcuFrbQ=;
- b=NKqXrwreH4dX4x/Ld3GLp2xrY4Qq8r4q+ku/32f6Tk7yrz1+RTU4Clzx/NRLJYiQFz
- guuIPc9aIlW8yWDaV1EvVIgdph0dqqv/gQfEJb/rUNGP1pD+9m0TRjVmQkPGM+oFXA0V
- crPj07SJjmes6Q4zxvNrIfgI+bAkM17ysKVVj3nOBzdxTV6y909O+fSsTk7sD7gk0NMu
- wnrjiBGGU9KA7TkKv5HaLNHidRzbjiz+BjA4ACvzENxapRDA6nlQxHERY8o209Bk5fXV
- PzjRzUR8zdCjvY4XNnHiE/D57firjINjvutnBT2Wr5/22oNGcPS0U+6ECwZzE3y60eOn
- Z3Gg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9zwuuukT+RmTzydmDgh6k9SFKgBnVOCLXQI0NcuFrbQ=;
- b=O1iaOZBDGmsR1oHjM0stF7UDuaO1gXZN2n97isPvHPTueNVoReCd8o8WJC/fBUd8No
- NhgjvJ1RD18Sp9iqft5+V1vHtEifjwxoel9f28pHM1EzNTF5m+9KdxRwyNUmQsah5d7f
- ErZXJxYFkkbhNrAm0kItEZrWt6XkxyWaSMHF2cwNd/TqKTyTy19LT6WHVB8yV9GAmEMg
- 7htBU6tRBJnFu+OifbGlRE2/0BWWYpQkK6QhPJTrALOiWPngPIwlEG9mnPEo5CURikHl
- wD0/U0nVB8M5/Zq0K47pnv7nvENbb6nHHU9qfUijyToy5BGr9BYmba5/trGcmHHzuKky
- j4Kg==
-X-Gm-Message-State: AOAM531wh5HcVjleZko/kXvjjQNcDQxH1TKjaZ26TN1mCED0iEM3aFtP
- plvCtbld6xcDL1agZXJJ3G9S75Enl8gwJKbKOTYwJw==
-X-Received: by 2002:a05:6902:1543:b0:649:3124:b114 with SMTP id
- r3-20020a056902154300b006493124b114mr21105397ybu.39.1651738862623; Thu, 05
- May 2022 01:21:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mkei@sfc.wide.ad.jp>)
+ id 1nmacl-0003OB-2X; Thu, 05 May 2022 08:30:31 -0400
+Received: from [10.0.1.12] (h219-110-166-078.catv02.itscom.jp [219.110.166.78])
+ (Authenticated sender: mkei)
+ by mail1.sfc.wide.ad.jp (Postfix) with ESMTPSA id B69FCAF90;
+ Thu,  5 May 2022 21:30:19 +0900 (JST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=sfc.wide.ad.jp;
+ s=mail1; t=1651753819;
+ bh=TmP13wsmF4jLlpXsjw2mFIsFoYX4sK5E9LWJpKYtnGQ=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=FRjdTA8hOwb9t9pQ94x+1qGoNCRK/linZ+rsjutUcc4HJU5lz7diWKOXU5xBS8jjj
+ DWUJgbkMGe59XM2L2Z6jFITvmZXzM7Drbg0dcA2T3x24FOAKE6EhCc9HBQmZIrhVoH
+ 8wn7yflB0MsPlqI/5HUYX5IQl/AHUffuWNVdIi7SSVaRsGAOCLQNThOzf5IjOaC5on
+ ST2clc6IJgY0CTk1hmT5x4F6lwkq5gdKYE7qU6SENGkO2VlgBQbWgaEQxNz8Kks5xY
+ hs2k532Qaw8DUKVwMKzRJg1dnuyASDPEhYVOEQMeyIxMj02i8XN4+/tU+LxYrQ9+6X
+ El/oo0gRHQHiQ==
+Content-Type: multipart/alternative;
+ boundary="------------u9VVMAGh4Y8lhyxda03qmM1c"
+Message-ID: <43b4340d-5ddd-094b-408f-111082a73501@sfc.wide.ad.jp>
+Date: Thu, 5 May 2022 21:30:19 +0900
 MIME-Version: 1.0
-References: <20220505004046.6711-1-mkei@sfc.wide.ad.jp>
-In-Reply-To: <20220505004046.6711-1-mkei@sfc.wide.ad.jp>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 May 2022 09:20:51 +0100
-Message-ID: <CAFEAcA_XA_-Gfq+UQRV63Uxp7Pz4DksZGb8dR0NuZ1KkQ+iozA@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
 Subject: Re: [PATCH] target/arm: fix s2mmu input size check
-To: mkei@sfc.wide.ad.jp
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20220505004046.6711-1-mkei@sfc.wide.ad.jp>
+ <CAFEAcA_XA_-Gfq+UQRV63Uxp7Pz4DksZGb8dR0NuZ1KkQ+iozA@mail.gmail.com>
+From: Keisuke Iida <mkei@sfc.wide.ad.jp>
+In-Reply-To: <CAFEAcA_XA_-Gfq+UQRV63Uxp7Pz4DksZGb8dR0NuZ1KkQ+iozA@mail.gmail.com>
+Received-SPF: pass client-ip=2001:200:0:8803:203:178:142:133;
+ envelope-from=mkei@sfc.wide.ad.jp; helo=mail1.sfc.wide.ad.jp
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HTML_MESSAGE=0.001, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -112,35 +103,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TFgNcZyrmevh
+X-TUID: L6oDmfG9y9zq
 
-On Thu, 5 May 2022 at 01:40, <mkei@sfc.wide.ad.jp> wrote:
->
-> From: Keisuke Iida <mkei@sfc.wide.ad.jp>
->
-> The maximum IPA size('inputsize') is constrained by the implemented PA size that is
-> specified by ID_AA64MMFR0_EL1.PARange. Please reference Arm Architecture Reference
-> Manual for A-profile architecture "Supported IPA size" on page D5-4788.
->
-> Signed-off-by: Keisuke Iida <mkei@sfc.wide.ad.jp>
-> ---
->  target/arm/helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 5a244c3ed9..868e7a2c0b 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -11116,7 +11116,7 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
->          }
->
->          /* Inputsize checks.  */
-> -        if (inputsize > outputsize &&
-> +        if (inputsize > arm_pamax(cpu) &&
->              (arm_el_is_aa64(&cpu->env, 1) || inputsize > 40)) {
->              /* This is CONSTRAINED UNPREDICTABLE and we choose to fault.  */
->              return false;
+This is a multi-part message in MIME format.
+--------------u9VVMAGh4Y8lhyxda03qmM1c
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
+Address Translation Fault is triggered when PA size set by VTCR_EL2.PS is less than IPA size set by VTCR_EL2.T0SZ on the guest. (e.g. vtcr_el2.PS = 1 && vtcr_el2.T0SZ = 25. PA size is 36bit, and IPA size is 39bit.)
+
+         ps = FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
+         ps = MIN(ps, param.ps);
+         assert(ps < ARRAY_SIZE(pamax_map));
+         outputsize = pamax_map[ps];
+
+When 'param.ps' determined by VTCR_EL2.PS less than 'ps', 'outputsize' is set to PA address by VTCR_EL2.PS.
+
+--
+
+Keisuke Iida
+
+On 2022/05/05 17:20, Peter Maydell wrote:
+
+> On Thu, 5 May 2022 at 01:40,<mkei@sfc.wide.ad.jp>  wrote:
+>> From: Keisuke Iida<mkei@sfc.wide.ad.jp>
+>>
+>> The maximum IPA size('inputsize') is constrained by the implemented PA size that is
+>> specified by ID_AA64MMFR0_EL1.PARange. Please reference Arm Architecture Reference
+>> Manual for A-profile architecture "Supported IPA size" on page D5-4788.
+>>
+>> Signed-off-by: Keisuke Iida<mkei@sfc.wide.ad.jp>
+>> ---
+>>   target/arm/helper.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>> index 5a244c3ed9..868e7a2c0b 100644
+>> --- a/target/arm/helper.c
+>> +++ b/target/arm/helper.c
+>> @@ -11116,7 +11116,7 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
+>>           }
+>>
+>>           /* Inputsize checks.  */
+>> -        if (inputsize > outputsize &&
+>> +        if (inputsize > arm_pamax(cpu) &&
+>>               (arm_el_is_aa64(&cpu->env, 1) || inputsize > 40)) {
+>>               /* This is CONSTRAINED UNPREDICTABLE and we choose to fault.  */
+>>               return false;
+> Can you give an example, eg a test case, where you see wrong
+> behaviour? The 'outputsize' variable in this function is
+> passed in from the caller get_phys_addr_lpae(), where (for
+> an AArch64 guest) it is indeed constrained to the value
+> of ID_AA64MMFR0.PARange:
+>
+>          /*
+>           * Bound PS by PARANGE to find the effective output address size.
+>           * ID_AA64MMFR0 is a read-only register so values outside of the
+>           * supported mappings can be considered an implementation error.
+>           */
+>          ps = FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
+>          ps = MIN(ps, param.ps);
+>          assert(ps < ARRAY_SIZE(pamax_map));
+>          outputsize = pamax_map[ps];
+>
+>
+> thanks
+> -- PMM
+--------------u9VVMAGh4Y8lhyxda03qmM1c
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <pre>Address Translation Fault is triggered when PA size set by VTCR_EL2.PS is less than IPA size set by VTCR_EL2.T0SZ on the guest. (e.g. vtcr_el2.PS = 1 &amp;&amp; vtcr_el2.T0SZ = 25. PA size is 36bit, and IPA size is 39bit.)
+
+        ps = FIELD_EX64(cpu-&gt;isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
+        ps = MIN(ps, param.ps);
+        assert(ps &lt; ARRAY_SIZE(pamax_map));
+        outputsize = pamax_map[ps];
+
+When 'param.ps' determined by VTCR_EL2.PS less than 'ps', 'outputsize' is set to PA address by VTCR_EL2.PS.
+
+--</pre>
+    <pre>Keisuke Iida
+</pre>
+    <div class="moz-cite-prefix">
+      <pre>On 2022/05/05 17:20, Peter Maydell wrote:</pre>
+    </div>
+    <blockquote type="cite"
+cite="mid:CAFEAcA_XA_-Gfq+UQRV63Uxp7Pz4DksZGb8dR0NuZ1KkQ+iozA@mail.gmail.com">
+      <pre class="moz-quote-pre" wrap="">On Thu, 5 May 2022 at 01:40, <a class="moz-txt-link-rfc2396E" href="mailto:mkei@sfc.wide.ad.jp">&lt;mkei@sfc.wide.ad.jp&gt;</a> wrote:
+</pre>
+      <blockquote type="cite">
+        <pre class="moz-quote-pre" wrap="">
+From: Keisuke Iida <a class="moz-txt-link-rfc2396E" href="mailto:mkei@sfc.wide.ad.jp">&lt;mkei@sfc.wide.ad.jp&gt;</a>
+
+The maximum IPA size('inputsize') is constrained by the implemented PA size that is
+specified by ID_AA64MMFR0_EL1.PARange. Please reference Arm Architecture Reference
+Manual for A-profile architecture "Supported IPA size" on page D5-4788.
+
+Signed-off-by: Keisuke Iida <a class="moz-txt-link-rfc2396E" href="mailto:mkei@sfc.wide.ad.jp">&lt;mkei@sfc.wide.ad.jp&gt;</a>
+---
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 5a244c3ed9..868e7a2c0b 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -11116,7 +11116,7 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
+         }
+
+         /* Inputsize checks.  */
+-        if (inputsize &gt; outputsize &amp;&amp;
++        if (inputsize &gt; arm_pamax(cpu) &amp;&amp;
+             (arm_el_is_aa64(&amp;cpu-&gt;env, 1) || inputsize &gt; 40)) {
+             /* This is CONSTRAINED UNPREDICTABLE and we choose to fault.  */
+             return false;
+</pre>
+      </blockquote>
+      <pre class="moz-quote-pre" wrap="">
 Can you give an example, eg a test case, where you see wrong
 behaviour? The 'outputsize' variable in this function is
 passed in from the caller get_phys_addr_lpae(), where (for
@@ -152,11 +237,17 @@ of ID_AA64MMFR0.PARange:
          * ID_AA64MMFR0 is a read-only register so values outside of the
          * supported mappings can be considered an implementation error.
          */
-        ps = FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
+        ps = FIELD_EX64(cpu-&gt;isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
         ps = MIN(ps, param.ps);
-        assert(ps < ARRAY_SIZE(pamax_map));
+        assert(ps &lt; ARRAY_SIZE(pamax_map));
         outputsize = pamax_map[ps];
 
 
 thanks
 -- PMM
+</pre>
+    </blockquote>
+  </body>
+</html>
+
+--------------u9VVMAGh4Y8lhyxda03qmM1c--

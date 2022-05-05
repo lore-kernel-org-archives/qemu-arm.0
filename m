@@ -1,114 +1,112 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1294791lfj;
-        Thu, 5 May 2022 12:06:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy65f7MzQOn6Ig4GPTPbl4PLLwm7kKQNgr1POuRghKeXlyv+YVLl/ZPSQrKeEmqg8cOA0Tn
-X-Received: by 2002:a37:a097:0:b0:69f:d58b:cf62 with SMTP id j145-20020a37a097000000b0069fd58bcf62mr16857881qke.504.1651777573800;
-        Thu, 05 May 2022 12:06:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651777573; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1295745lfj;
+        Thu, 5 May 2022 12:07:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOzT+L8Lh/D4hVuyfT2qeqMh9+ONJ/JONxqTuo0Ai+3jN2ZPMF+3paGLNbOFe+wFXhFr3k
+X-Received: by 2002:a37:b543:0:b0:69f:71de:23fb with SMTP id e64-20020a37b543000000b0069f71de23fbmr19849400qkf.90.1651777662895;
+        Thu, 05 May 2022 12:07:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651777662; cv=none;
         d=google.com; s=arc-20160816;
-        b=oPOf0YWuW6o7DQTtSfzc642LcPl7/Cm9nzgi2YalND9CvPCJu7quN05POqcAk65gQC
-         CljnqFLxMs4BueLPz3ytHD7YMHlME8MfemO4CX4kNyfUPkjLQZ0SzfyFt7vubdmsM/uQ
-         WQeGKzy/1is4EYpvMAfBKGCT7nJ+Z05kdOlAgCakHS8FK5hp5g+/JualfRGRvyU+QWe/
-         CGHwDFAgTyIAI9SRf6yIyRnaB1qcq+2vBzziax9cntNaVii78mpr7x4P/sBYHoIVptdR
-         yZaO+EZnu6K/QTTvT2pYH3EoXIohz1PdJrU0mii9U+06rrbST86isu2D0t7ju6Uiq/ml
-         C4jQ==
+        b=zPU/+DAk7jofK5Z9rv7u12wpmFed66/h7C3yHvUune2E4u5P/7IOqH0BSLSlZnx9D4
+         td16JuOqNk4U0pntDelJ+6DfGGlgPq0vcI+/3BhhRztYiJE1z2/m7ZppSnlf6wUX2dIv
+         uuuhoGcGEhf/MZOfay0HbUuZkLk27lGnf3yqd4KTtHSQgBUi7Uus+JU/VlnAfDJV9N4X
+         OO1KcPgPuT7dmi1BvQLk/ako5P4DGoiOb3tABTs10l6dE7JdCJCkm7xwFbj6hG3uWF6/
+         QC587Tr0GF99XHj/aG+z6ce1ewpR9D3KuwbmJIFJo5BRbNmzP9PmTifWBOcb/3rdHLs6
+         KHKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UglyDtIiGqvTEpM7++4FJGDf8c2/b7gl9ujFn0OBb74=;
-        b=BOWI+IgQfaDgTAZD3vd/WOCtnQeWa8jOAqG8mREotbKZK/7BXcfJKGDn1bYYFzCleC
-         +harzAa/Il2Lyne1jYvqkN/wLRSljL1k6KUQyky28FyTTfnp0EQYaZQRz7jtNixHabhW
-         hJKTOvRQ8BiB4hDKXtwNd3/ijGo0ekzJsRnHghTI1wUXgxiSbV+2dRdp9RiHJxiVERlY
-         RmMccfaMIBEuQcOYgEl8NpgEKcYtM0wDHwq/OFx49RCM8NqGZ3B0wdeDQz8xBIbeEmBl
-         W5X6TK1c1UipOxOqORPLAhO2dpcrxrTIciMw6OBSdFLE36+VI0nQpzJZopMrOT5zckSC
-         r4Ww==
+        bh=zBDZ88vPTqEGnY2FKq55qff77wGeCpGFi1CrZCVsHDk=;
+        b=eiiC28N4p9D8zfBgC91N4VTqKRej87zHQnS+mehCuDQ9txwQ5HKdqdOZAHc5Ki96mS
+         p/hMSC+5/eUBPLmZvbCSWohfw6JOmYsMVUgbOwaUZ2W2sTeL1HWWB90qh4OYw6fylwlh
+         NVJU0yo7FgTPFkvnrks8CkDAYfBzUkgli3R3KUsxpiRUrzGFiXy6cMbnwFfY3duo4Sf0
+         0ALstJ/3W9eVeJZ++zTYezKGxLH+TbDuXoeR05KTFpUeEk+2DR5O/nkMetMbsJGttZB1
+         HKgyOihR3WjVxKI5WBfOwtR7ye7Y22R8rk04A/l4MH4C/fSNXI787aYwcoSYPtvnBquC
+         Ayqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fty1DAg3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VGvGo1B3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c17-20020a0cd611000000b004460e90759csi1150911qvj.343.2022.05.05.12.06.13
+        by mx.google.com with ESMTPS id r12-20020a0cd44c000000b004466b412465si1289328qvh.484.2022.05.05.12.07.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 May 2022 12:06:13 -0700 (PDT)
+        Thu, 05 May 2022 12:07:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fty1DAg3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VGvGo1B3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51484 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53068 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nmgnl-0005Vf-66
-	for alex.bennee@linaro.org; Thu, 05 May 2022 15:06:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46816)
+	id 1nmgp9-0006li-VD
+	for alex.bennee@linaro.org; Thu, 05 May 2022 15:07:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46942)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nmgYR-0002VI-Bo
- for qemu-arm@nongnu.org; Thu, 05 May 2022 14:50:23 -0400
-Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c]:40246)
+ id 1nmgYU-0002ce-10
+ for qemu-arm@nongnu.org; Thu, 05 May 2022 14:50:26 -0400
+Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233]:44710)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nmgYO-0004P0-2Y
- for qemu-arm@nongnu.org; Thu, 05 May 2022 14:50:22 -0400
-Received: by mail-oa1-x2c.google.com with SMTP id
- 586e51a60fabf-d6e29fb3d7so5088995fac.7
- for <qemu-arm@nongnu.org>; Thu, 05 May 2022 11:50:17 -0700 (PDT)
+ id 1nmgYO-0004NR-Aw
+ for qemu-arm@nongnu.org; Thu, 05 May 2022 14:50:25 -0400
+Received: by mail-oi1-x233.google.com with SMTP id m11so5238885oib.11
+ for <qemu-arm@nongnu.org>; Thu, 05 May 2022 11:50:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UglyDtIiGqvTEpM7++4FJGDf8c2/b7gl9ujFn0OBb74=;
- b=fty1DAg3c9JDP7oZfv8+4zj0FDm0wW9yM6/Vql/mPgAJCdVLY69eCt1IBggkXgCJmB
- F+hyEtbEsxt7OUUHVUFTCiL645xGCo32pYBvoiNJuoM1ysyS970FvjteXkwA/3BrAI8f
- 1KmbzpqSahr1K16GVPGEfBsdY9XcZq3AJTgKtTxdBGABrc5NzP1aJBjOh3roGmBqH3DI
- XP+MlzWDe2tjgBIAMdgPV0V/Z3dKYOQn26crVM74spzO0Gf27GFz9yZjnd9jj6y+Bs3N
- v9G3PY+Cn70hoMgeNAIhhXE30BroHOsuC4GbnFykdzGply3+VPI3w04JPSMgt5NRsYg6
- kjPg==
+ bh=zBDZ88vPTqEGnY2FKq55qff77wGeCpGFi1CrZCVsHDk=;
+ b=VGvGo1B3u/KAzEvHca8v0UxU+Vr1yFXmmzyqe9nxGXiLaKaBjhInogR1eJOr/fNXoA
+ 0ya6ZrtXvq2JUvahAvb3lUakQbkSX/yEUdPC/Wl6/Rp+cqAkZ+fPZhBdeun+W29VlEbh
+ A0HthL+domZv8nIA/73dF9DvCQVt+cADVw3vzg1KEqdt8V0etzsI/i+B3XGc8jnhCo42
+ NdvZ5xgpq6Zft9J9svmVFhpscG9HAUBe8cz7MHnMt2UtlSEmiq0AxxQh9KskRKuHUt2T
+ br1sRH4vVuF6V+auygk4QfOBOtCvQFWLV254Vn1BN9SGe3EJIFwCi9+zZveQFVi+czb+
+ RIdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UglyDtIiGqvTEpM7++4FJGDf8c2/b7gl9ujFn0OBb74=;
- b=25Y6XyJkDKmchOLYvfpTxSeF7xt6zTV/MLbCi8TFh65HqifoAeqoTBxz2s/qy2eS/m
- VSkblgOdpbt9avhTVHjx++uMOJ7zy4wpHjvECjAByJNHziU5ix9QHVX2JBXcUtbthdGx
- uPDricHyBQjgwlbg0SfoaDQaC5hivLp47hZ1ibhoILhu67cN8ROn/ppadng6Bu5Hu3h1
- vjo1Q3m/PRi02mYvUUTK4Q9xljUtgsJagR49OSIUUMN7Nn96+nZp5vz4I0tfEEjr6dCK
- dIbQJowvQANl8iPMWR0YyrXlctMOwSeDszcHHvMYbIkMYCJrJqY6svFSUq51n8923S7x
- rmyQ==
-X-Gm-Message-State: AOAM533A8xmsbQT+qiPzIoe/AowOM/W2kowhJrmyEYhQ+FCY9mpecrrg
- RKLKvIGaKN6NOpcZ1QRHZ74+Sw==
-X-Received: by 2002:a05:6870:8901:b0:e2:9398:7da5 with SMTP id
- i1-20020a056870890100b000e293987da5mr3000849oao.273.1651776616982; 
- Thu, 05 May 2022 11:50:16 -0700 (PDT)
+ bh=zBDZ88vPTqEGnY2FKq55qff77wGeCpGFi1CrZCVsHDk=;
+ b=BRA7t4uOEGtvi2QIpa92hdMT7LPsPgE2s/nqY1pR+VB04Z/HtJkenbg+QJiQ8cUR9z
+ 8dkc6vg1MsekLPsylrJLp20oPIEo3sIEW+L5ufc3VtW/M+FX6KAS2MBWu0DWfc9KPjjs
+ m+H+22LXWSpQcWwbZ03cpdT2yXy+oIAybI4HbMbs8WapFRUEPkfHrdkFOdH01lkb+blt
+ pKgBYNF/B/LtKEjUAc4yM2BSnccOj5/YfVOkWUbf00Mq79/OGK5UviSP+J0w4N9Ipbb2
+ KBFW/+J7QF6s8WbCwQvVzj9pn+o+NaqS1NhuWTyVsdwFA8tUGz49fK+LHR+R4W6YuLmK
+ j0Ug==
+X-Gm-Message-State: AOAM533VAy9BDYM0/Eic8kF/MazW0nLnXF4gJ/0H4KOsHFTfxOWpSWjK
+ ZaU2WDrL6JNBeJDNVZhptLn0pA==
+X-Received: by 2002:a05:6808:230c:b0:326:4acf:1517 with SMTP id
+ bn12-20020a056808230c00b003264acf1517mr3123716oib.117.1651776614164; 
+ Thu, 05 May 2022 11:50:14 -0700 (PDT)
 Received: from stoup.. ([2607:fb90:5fe8:83ea:bbf4:c9ef:4f3:11c6])
  by smtp.gmail.com with ESMTPSA id
- s36-20020a0568302aa400b0060603221259sm857273otu.41.2022.05.05.11.50.15
+ s36-20020a0568302aa400b0060603221259sm857273otu.41.2022.05.05.11.50.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 May 2022 11:50:16 -0700 (PDT)
+ Thu, 05 May 2022 11:50:13 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v5 06/24] target/arm: Update qemu-system-arm -cpu max to
- cortex-a57
-Date: Thu,  5 May 2022 13:49:48 -0500
-Message-Id: <20220505185006.200555-7-richard.henderson@linaro.org>
+Subject: [PATCH v5 04/24] target/arm: Adjust definition of CONTEXTIDR_EL2
+Date: Thu,  5 May 2022 13:49:46 -0500
+Message-Id: <20220505185006.200555-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220505185006.200555-1-richard.henderson@linaro.org>
 References: <20220505185006.200555-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2c;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::233;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x233.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,189 +121,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1pnQh3nIr7hh
+X-TUID: jVVSpAZzYeTv
 
-Instead of starting with cortex-a15 and adding v8 features to
-a v7 cpu, begin with a v8 cpu stripped of its aarch64 features.
-This fixes the long-standing to-do where we only enabled v8
-features for user-only.
+This register is present for either VHE or Debugv8p2.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2: Create impdef sysregs; only enable short-vector support for user-only.
+v3: Rely on EL3-no-EL2 squashing during registration.
 ---
- target/arm/cpu_tcg.c | 151 ++++++++++++++++++++++++++-----------------
- 1 file changed, 92 insertions(+), 59 deletions(-)
+ target/arm/helper.c | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-index d078f06931..f9094c1752 100644
---- a/target/arm/cpu_tcg.c
-+++ b/target/arm/cpu_tcg.c
-@@ -994,71 +994,104 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
- static void arm_max_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
-+    uint32_t t;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 72d05070f0..7b31c71980 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7246,11 +7246,14 @@ static const ARMCPRegInfo jazelle_regs[] = {
+       .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+ };
  
--    cortex_a15_initfn(obj);
-+    /* aarch64_a57_initfn, advertising none of the aarch64 features */
-+    cpu->dtb_compatible = "arm,cortex-a57";
-+    set_feature(&cpu->env, ARM_FEATURE_V8);
-+    set_feature(&cpu->env, ARM_FEATURE_NEON);
-+    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-+    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-+    set_feature(&cpu->env, ARM_FEATURE_EL2);
-+    set_feature(&cpu->env, ARM_FEATURE_EL3);
-+    set_feature(&cpu->env, ARM_FEATURE_PMU);
-+    cpu->midr = 0x411fd070;
-+    cpu->revidr = 0x00000000;
-+    cpu->reset_fpsid = 0x41034070;
-+    cpu->isar.mvfr0 = 0x10110222;
-+    cpu->isar.mvfr1 = 0x12111111;
-+    cpu->isar.mvfr2 = 0x00000043;
-+    cpu->ctr = 0x8444c004;
-+    cpu->reset_sctlr = 0x00c50838;
-+    cpu->isar.id_pfr0 = 0x00000131;
-+    cpu->isar.id_pfr1 = 0x00011011;
-+    cpu->isar.id_dfr0 = 0x03010066;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->isar.id_mmfr0 = 0x10101105;
-+    cpu->isar.id_mmfr1 = 0x40000000;
-+    cpu->isar.id_mmfr2 = 0x01260000;
-+    cpu->isar.id_mmfr3 = 0x02102211;
-+    cpu->isar.id_isar0 = 0x02101110;
-+    cpu->isar.id_isar1 = 0x13112111;
-+    cpu->isar.id_isar2 = 0x21232042;
-+    cpu->isar.id_isar3 = 0x01112131;
-+    cpu->isar.id_isar4 = 0x00011142;
-+    cpu->isar.id_isar5 = 0x00011121;
-+    cpu->isar.id_isar6 = 0;
-+    cpu->isar.dbgdidr = 0x3516d000;
-+    cpu->clidr = 0x0a200023;
-+    cpu->ccsidr[0] = 0x701fe00a; /* 32KB L1 dcache */
-+    cpu->ccsidr[1] = 0x201fe012; /* 48KB L1 icache */
-+    cpu->ccsidr[2] = 0x70ffe07a; /* 2048KB L2 cache */
-+    define_cortex_a72_a57_a53_cp_reginfo(cpu);
++static const ARMCPRegInfo contextidr_el2 = {
++    .name = "CONTEXTIDR_EL2", .state = ARM_CP_STATE_AA64,
++    .opc0 = 3, .opc1 = 4, .crn = 13, .crm = 0, .opc2 = 1,
++    .access = PL2_RW,
++    .fieldoffset = offsetof(CPUARMState, cp15.contextidr_el[2])
++};
++
+ static const ARMCPRegInfo vhe_reginfo[] = {
+-    { .name = "CONTEXTIDR_EL2", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 3, .opc1 = 4, .crn = 13, .crm = 0, .opc2 = 1,
+-      .access = PL2_RW,
+-      .fieldoffset = offsetof(CPUARMState, cp15.contextidr_el[2]) },
+     { .name = "TTBR1_EL2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 0, .opc2 = 1,
+       .access = PL2_RW, .writefn = vmsa_tcr_ttbr_el2_write,
+@@ -8215,6 +8218,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         define_one_arm_cp_reg(cpu, &ssbs_reginfo);
+     }
  
--    /* old-style VFP short-vector support */
--    cpu->isar.mvfr0 = FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPSHVEC, 1);
-+    /* Add additional features supported by QEMU */
-+    t = cpu->isar.id_isar5;
-+    t = FIELD_DP32(t, ID_ISAR5, AES, 2);
-+    t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);
-+    t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);
-+    t = FIELD_DP32(t, ID_ISAR5, CRC32, 1);
-+    t = FIELD_DP32(t, ID_ISAR5, RDM, 1);
-+    t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);
-+    cpu->isar.id_isar5 = t;
-+
-+    t = cpu->isar.id_isar6;
-+    t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);
-+    t = FIELD_DP32(t, ID_ISAR6, DP, 1);
-+    t = FIELD_DP32(t, ID_ISAR6, FHM, 1);
-+    t = FIELD_DP32(t, ID_ISAR6, SB, 1);
-+    t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);
-+    t = FIELD_DP32(t, ID_ISAR6, BF16, 1);
-+    t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);
-+    cpu->isar.id_isar6 = t;
-+
-+    t = cpu->isar.mvfr1;
-+    t = FIELD_DP32(t, MVFR1, FPHP, 3);     /* v8.2-FP16 */
-+    t = FIELD_DP32(t, MVFR1, SIMDHP, 2);   /* v8.2-FP16 */
-+    cpu->isar.mvfr1 = t;
-+
-+    t = cpu->isar.mvfr2;
-+    t = FIELD_DP32(t, MVFR2, SIMDMISC, 3); /* SIMD MaxNum */
-+    t = FIELD_DP32(t, MVFR2, FPMISC, 4);   /* FP MaxNum */
-+    cpu->isar.mvfr2 = t;
-+
-+    t = cpu->isar.id_mmfr3;
-+    t = FIELD_DP32(t, ID_MMFR3, PAN, 2); /* ATS1E1 */
-+    cpu->isar.id_mmfr3 = t;
-+
-+    t = cpu->isar.id_mmfr4;
-+    t = FIELD_DP32(t, ID_MMFR4, HPDS, 1); /* AA32HPD */
-+    t = FIELD_DP32(t, ID_MMFR4, AC2, 1); /* ACTLR2, HACTLR2 */
-+    t = FIELD_DP32(t, ID_MMFR4, CNP, 1); /* TTCNP */
-+    t = FIELD_DP32(t, ID_MMFR4, XNX, 1); /* TTS2UXN */
-+    cpu->isar.id_mmfr4 = t;
-+
-+    t = cpu->isar.id_pfr0;
-+    t = FIELD_DP32(t, ID_PFR0, DIT, 1);
-+    cpu->isar.id_pfr0 = t;
-+
-+    t = cpu->isar.id_pfr2;
-+    t = FIELD_DP32(t, ID_PFR2, SSBS, 1);
-+    cpu->isar.id_pfr2 = t;
- 
- #ifdef CONFIG_USER_ONLY
-     /*
--     * We don't set these in system emulation mode for the moment,
--     * since we don't correctly set (all of) the ID registers to
--     * advertise them.
-+     * Break with true ARMv8 and add back old-style VFP short-vector support.
-+     * Only do this for user-mode, where -cpu max is the default, so that
-+     * older v6 and v7 programs are more likely to work without adjustment.
-      */
--    set_feature(&cpu->env, ARM_FEATURE_V8);
--    {
--        uint32_t t;
--
--        t = cpu->isar.id_isar5;
--        t = FIELD_DP32(t, ID_ISAR5, AES, 2);
--        t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);
--        t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);
--        t = FIELD_DP32(t, ID_ISAR5, CRC32, 1);
--        t = FIELD_DP32(t, ID_ISAR5, RDM, 1);
--        t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);
--        cpu->isar.id_isar5 = t;
--
--        t = cpu->isar.id_isar6;
--        t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);
--        t = FIELD_DP32(t, ID_ISAR6, DP, 1);
--        t = FIELD_DP32(t, ID_ISAR6, FHM, 1);
--        t = FIELD_DP32(t, ID_ISAR6, SB, 1);
--        t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);
--        t = FIELD_DP32(t, ID_ISAR6, BF16, 1);
--        t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);
--        cpu->isar.id_isar6 = t;
--
--        t = cpu->isar.mvfr1;
--        t = FIELD_DP32(t, MVFR1, FPHP, 3);     /* v8.2-FP16 */
--        t = FIELD_DP32(t, MVFR1, SIMDHP, 2);   /* v8.2-FP16 */
--        cpu->isar.mvfr1 = t;
--
--        t = cpu->isar.mvfr2;
--        t = FIELD_DP32(t, MVFR2, SIMDMISC, 3); /* SIMD MaxNum */
--        t = FIELD_DP32(t, MVFR2, FPMISC, 4);   /* FP MaxNum */
--        cpu->isar.mvfr2 = t;
--
--        t = cpu->isar.id_mmfr3;
--        t = FIELD_DP32(t, ID_MMFR3, PAN, 2); /* ATS1E1 */
--        cpu->isar.id_mmfr3 = t;
--
--        t = cpu->isar.id_mmfr4;
--        t = FIELD_DP32(t, ID_MMFR4, HPDS, 1); /* AA32HPD */
--        t = FIELD_DP32(t, ID_MMFR4, AC2, 1); /* ACTLR2, HACTLR2 */
--        t = FIELD_DP32(t, ID_MMFR4, CNP, 1); /* TTCNP */
--        t = FIELD_DP32(t, ID_MMFR4, XNX, 1); /* TTS2UXN */
--        cpu->isar.id_mmfr4 = t;
--
--        t = cpu->isar.id_pfr0;
--        t = FIELD_DP32(t, ID_PFR0, DIT, 1);
--        cpu->isar.id_pfr0 = t;
--
--        t = cpu->isar.id_pfr2;
--        t = FIELD_DP32(t, ID_PFR2, SSBS, 1);
--        cpu->isar.id_pfr2 = t;
--    }
--#endif /* CONFIG_USER_ONLY */
-+    cpu->isar.mvfr0 = FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPSHVEC, 1);
-+#endif
- }
- #endif /* !TARGET_AARCH64 */
- 
++    if (cpu_isar_feature(aa64_vh, cpu) ||
++        cpu_isar_feature(aa64_debugv8p2, cpu)) {
++        define_one_arm_cp_reg(cpu, &contextidr_el2);
++    }
+     if (arm_feature(env, ARM_FEATURE_EL2) && cpu_isar_feature(aa64_vh, cpu)) {
+         define_arm_cp_regs(cpu, vhe_reginfo);
+     }
 -- 
 2.34.1
 

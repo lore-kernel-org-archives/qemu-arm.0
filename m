@@ -1,178 +1,269 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1283551lfj;
-        Thu, 5 May 2022 11:44:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzPRWuSbVy5YrotYS+T4l5JkKRqp0qR06/qvkItgKJ5dKWup7idBl4pHcOzJx1VqjVjLKdF
-X-Received: by 2002:a05:6214:23cc:b0:44f:4974:4c1c with SMTP id hr12-20020a05621423cc00b0044f49744c1cmr23515145qvb.116.1651776283496;
-        Thu, 05 May 2022 11:44:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651776283; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1284436lfj;
+        Thu, 5 May 2022 11:46:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx1x9PmOPdZBZS25leTh5bkoMP0MuJ54CM5Rs1PRGFSvR/I2AyrCoDxu0XmIMXW+1wOi7XC
+X-Received: by 2002:a05:620a:414d:b0:6a0:2035:f097 with SMTP id k13-20020a05620a414d00b006a02035f097mr5846621qko.458.1651776389968;
+        Thu, 05 May 2022 11:46:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651776389; cv=none;
         d=google.com; s=arc-20160816;
-        b=JB/waF8sM3qF76GdWaE65U9i3VrThbXltzcuTJ7GouwNDNucileruzhk7d92Y6wzHP
-         0rYjmRCSVaXXezpkE2jsXSX1noKVaYlMB5vSU0tueAhDytT/d8XLa56WdJZqvd/RjTWi
-         ymw5hIaCOl359/VQhGgxld5RZL5CNkjghaxbVLgPQJGNi9k/L4nzlPIADJt7vTqII7+e
-         HkEe63a6DMppsKuvTTWdZZXCVhu2rZk+GCiHKGi6TB+chNqRfj2sbqkbp9TBQwMZnDAh
-         Tq4Io+5W0fcL2uCzwA1ocCOao09/TOgQh3jkY9/CIP2zgH0tfv2RW7b3smoPiYsHZ2Hu
-         ey1A==
+        b=BZktsV+8LllK9VxNKlVajw6lH7ne7VRRh4kpv0AK0dgJIzatCzeHbhkC2XTZZFRG9k
+         xW/nE8UwIgsLLAm5bpti0BCzwzAxlQipp1mXitkFptjFN3LKlxDR/14b1Q2Pcgt8f8Oj
+         rSrXEZE1dQdNYNb7LGE4Rr+vCBTf+eAU2RpTWdBGwBe33EKs1ApN5PAeza+ufX+Mnfzk
+         hokUY1d850+nSlOoB8LIkrei3HxJCbRJjc1m3/EAJktKAqmP7DyiIW+lQgEbICxAM0+q
+         JtIF+CfcKhqicpz5M5LFU+0YUd3O3TA6foi02JV1KPHAvu26XKrdx6VzSgavol+M0SHU
+         xu1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ZrbOgyRHel1WsxZxJsJlMGVG2H1MqvD6A/WHr3xS78s=;
-        b=XoupT0ZyOaNsDbeCJfUgsonLKQOWI+ONsNHldnrw/FultW99rT+mw6vbxdtHwzpAbt
-         RfCHJYclz2bAykKDFa7B8JJY1FPmPJnElk5ESD8EDIM+D4kxHSHK3Aatab+j92A9NGuj
-         bxACNp5nEiR/GfcSmSKGrNnpmBcxLNjfcszKbyT3i2QbevQbRh9XwzNydKTjEjAUQqsh
-         H7sR7pGwdIP5Jtac1vWNQSLIlZz4A6LLWQg7z4FtdwKfCU5QyR7sfu6MINS+NDqgdRmM
-         /dmeIB9kF7xUODo4/fhNb2aJtSAReH3PJpXh+EmkifWrWyfPiFXgCJ237svgT6xXruSx
-         eIIw==
+        bh=uu7/TC5fWHfFvtIm4oJ7noZYbZtTrG6x0h1sDOIjlLo=;
+        b=TTxSLEXtXXAkqD8viJ5elGHbOKsTqvb6WM4LQ1w3ogGNeawQpnToHMY/bT8D1Er72Q
+         +r0ZE6lQwkuIngJr0EKAgdSkl3U4VYyUiKH154EtcRle5jR/kreq+tbHUG+S7oZ2y0bt
+         FGLvAFHrWraVFgSjGil9jcE1q32pkuvOyM9kjMenqBazgSno7sfVSrhXjMkEi6KdXitQ
+         KSWNP6VioMEZQtLJ0UV1j4tqMiKLs8rRY7Ug+FXdXj2/AYwnVvhirkbTXNtLmWTW5ld4
+         Bvn9ArtcBGGUAAVx+dFT6z7DyYZRlf2XJIZKZufm2HEu7zacPMqucEIjiz8mK5BO8E2j
+         vn+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TWEI4nTa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=qI35xtAW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a4-20020a05622a02c400b002f3b09edc1bsi1213480qtx.412.2022.05.05.11.44.43
+        by mx.google.com with ESMTPS id u15-20020a05622a010f00b002f39426a08esi1190151qtw.528.2022.05.05.11.46.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 May 2022 11:44:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 May 2022 11:46:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TWEI4nTa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=qI35xtAW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38998 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nmgSw-0001bq-Tv
-	for alex.bennee@linaro.org; Thu, 05 May 2022 14:44:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43878)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nmgUf-0004vl-Di
+	for alex.bennee@linaro.org; Thu, 05 May 2022 14:46:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nmgOO-0006xj-RQ
- for qemu-devel@nongnu.org; Thu, 05 May 2022 14:40:04 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:42605)
+ id 1nmgOM-0006wv-Vm
+ for qemu-arm@nongnu.org; Thu, 05 May 2022 14:40:00 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:40660)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nmgOM-0002Ar-JW
- for qemu-devel@nongnu.org; Thu, 05 May 2022 14:39:59 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- n126-20020a1c2784000000b0038e8af3e788so3148651wmn.1
- for <qemu-devel@nongnu.org>; Thu, 05 May 2022 11:39:56 -0700 (PDT)
+ id 1nmgOJ-0002AU-Td
+ for qemu-arm@nongnu.org; Thu, 05 May 2022 14:39:58 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ v64-20020a1cac43000000b0038cfd1b3a6dso5597229wme.5
+ for <qemu-arm@nongnu.org>; Thu, 05 May 2022 11:39:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=ZrbOgyRHel1WsxZxJsJlMGVG2H1MqvD6A/WHr3xS78s=;
- b=TWEI4nTaN5hI01MIGwiFetwiVQ7upWwssaLsscSkrX71I7jJ++xd5NTetcl8stTZOZ
- ptje5NLs+rG1i0ZhZoWyuvQSeKbBrqKtlpRx+xxx0WIN7Z8ZtX3Vs/8MO7Jbo5UwxC4r
- 029OgDPSiaIVRI9QJhIHH9ZQCMKVcYSptzms1vyJM0Bi5R8UdaLzpEQ2xvEiaPyak0WS
- M0VTlNsYeQwFKj5YKDjDW5TGnfQC/MGcA9zsMHc8PEDzRZJlM3joeDDXspkA00qFTAj7
- naCNe1y7LOcjmfcmfDRAQRrs21xP2SFcSHQekD2gzO4iqHD0jb8jORI55hgy7KMK5lT0
- 1kzA==
+ bh=uu7/TC5fWHfFvtIm4oJ7noZYbZtTrG6x0h1sDOIjlLo=;
+ b=qI35xtAWKc5GgQS46g9oBirKR2BUffy1laCxXdrQ9z7+KHQxAe4g+jLgK9xNkDW2PD
+ 6ca0EUINC31lKMR0o16mfhCsrn/T3NUqVPOOKmfDR48WkjdpSFFUD/C3OVnaAbB3YJ5k
+ wF2x6XFjwohb6IY0iDfaZahBUjZdfDG6vmUzq1G68UpITPMch+H3AzAzjXs17hhWzRo9
+ fyuO7bC+6PCiTt72piC8QCujSRyGDAWwi3GQDRUbFb9CYbQhSdAVSL40AX6EIK4a8SGa
+ djUP4mL/UOKTrF2pA1t0/ei3t1C9G79ZD1wsK90wKogIF76zKaS6z8amTx0rq60BNOCQ
+ FJGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ZrbOgyRHel1WsxZxJsJlMGVG2H1MqvD6A/WHr3xS78s=;
- b=TgvEICrcfAXOcL2wH9/qrLxw/xdD5fG14cW7w8yF0NVkSW8IoY7kt8fcf/2Ke5UnqO
- g+Mj+qNFHCIQo11Jfspj/oY49FhhMq2g35bP1JIJB2S+Ct3AVhnPisJR+6+vCplbmP2i
- RX32DB6FqdzIbrEuHntAJF7MDC4/QrqB/B9YEjd6wBhM+mvqc15cYyUS2les5zicCP6/
- zk0Z0+SCn5L87g3Jckn9fdP9tDT94Juv1yX7p8m7u0Y58Ol91OopR5Mbt+roUGzklxCb
- gYMNaC4uDYgvc/JAGKvn88CQ2JqOhurQgTsurIFB37FwyNfA+QcJU0xL+2bKIlxlenbV
- q2eQ==
-X-Gm-Message-State: AOAM530eRgKt53yNqzhwxc1tKKTk8PlaQLihmg08W4i5LeNfHfPoDm3U
- uWfoNLq0iGtSPiiKOpRc2ssC3A==
-X-Received: by 2002:a05:600c:3391:b0:393:fbba:3789 with SMTP id
- o17-20020a05600c339100b00393fbba3789mr6320440wmp.206.1651775995887; 
- Thu, 05 May 2022 11:39:55 -0700 (PDT)
+ bh=uu7/TC5fWHfFvtIm4oJ7noZYbZtTrG6x0h1sDOIjlLo=;
+ b=Ybir8IofpvVDOB3QDSRD56gs3Rs1NPUieiy8VfV0hBvFCBq1EbFraKlaGQ0yNTyvHF
+ YMx7mKFkNER1Xc5y0RjUomI6bNd24YH8o4bTjaZsQR9D7Z7JVoaMdbGCkdKX6woJPaF/
+ eb9yX+dbR7/CnaGwTWlxc1YdzLYOIYqyml6MzFj2Tg+s/Ow+r1FgXD8+0a8nEOJBcBfc
+ skyHVQI1/eVcUejGGup25gN0N0koeeygD7ojlkHqGD0JzUk39rJbn49YUoW86732/S0t
+ Uo/0b/NI9wZWFK/pa5kcCphJDb7nSgXX3cKDNDo/TNfVNYDzi9nJZvc0GEhKpT88Pp4k
+ n+UA==
+X-Gm-Message-State: AOAM532pG4KjlllJiV95OdunHtqv4LcLEscH3NsGqjNX3u9S0Z4s0TyS
+ XHWXREMrPPm4SfERngKzND1iAW46rXmddQ==
+X-Received: by 2002:a05:600c:2550:b0:393:fd17:a8d with SMTP id
+ e16-20020a05600c255000b00393fd170a8dmr6301912wma.203.1651775994191; 
+ Thu, 05 May 2022 11:39:54 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- o35-20020a05600c512300b0039454a85a9asm2302121wms.30.2022.05.05.11.39.55
+ o35-20020a05600c512300b0039454a85a9asm2302121wms.30.2022.05.05.11.39.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 May 2022 11:39:55 -0700 (PDT)
+ Thu, 05 May 2022 11:39:53 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 4/4] target/arm: Enable FEAT_S2FWB for -cpu max
-Date: Thu,  5 May 2022 19:39:50 +0100
-Message-Id: <20220505183950.2781801-5-peter.maydell@linaro.org>
+Subject: [PATCH 2/4] target/arm: Factor out FWB=0 specific part of
+ combine_cacheattrs()
+Date: Thu,  5 May 2022 19:39:48 +0100
+Message-Id: <20220505183950.2781801-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220505183950.2781801-1-peter.maydell@linaro.org>
 References: <20220505183950.2781801-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Mz9c4CCl1fpD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UmmEStyCEIR/
 
-Enable the FEAT_S2FWB for -cpu max. Since FEAT_S2FWB requires that
-CLIDR_EL1.{LoUU,LoUIS} are zero, we explicitly squash these (the
-inherited CLIDR_EL1 value from the Cortex-A57 has them as 1).
+Factor out the part of combine_cacheattrs() that is specific to
+handling HCR_EL2.FWB == 0.  This is the part where we combine the
+memory type and cacheability attributes.
+
+The "force Outer Shareable for Device or Normal Inner-NC Outer-NC"
+logic remains in combine_cacheattrs() because it holds regardless
+(this is the equivalent of the pseudocode EffectiveShareability()
+function).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- docs/system/arm/emulation.rst |  1 +
- target/arm/cpu64.c            | 10 ++++++++++
- 2 files changed, 11 insertions(+)
+ target/arm/helper.c | 88 +++++++++++++++++++++++++--------------------
+ 1 file changed, 50 insertions(+), 38 deletions(-)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index c3bd0676a87..122306a99f1 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -42,6 +42,7 @@ the following architecture extensions:
- - FEAT_PMUv3p4 (PMU Extensions v3.4)
- - FEAT_RDM (Advanced SIMD rounding double multiply accumulate instructions)
- - FEAT_RNG (Random number generator)
-+- FEAT_S2FWB (Stage 2 forced Write-Back)
- - FEAT_SB (Speculation Barrier)
- - FEAT_SEL2 (Secure EL2)
- - FEAT_SHA1 (SHA1 instructions)
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 2974cbc0d35..ed2831f1f38 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -769,6 +769,15 @@ static void aarch64_max_initfn(Object *obj)
-     t = FIELD_DP64(t, MIDR_EL1, REVISION, 0);
-     cpu->midr = t;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 5839acc343b..2828f0dacf3 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -12532,6 +12532,46 @@ static uint8_t combine_cacheattr_nibble(uint8_t s1, uint8_t s2)
+     }
+ }
  
-+    /*
-+     * We're going to set FEAT_S2FWB, which mandates that CLIDR_EL1.{LoUU,LoUIS}
-+     * are zero.
-+     */
-+    u = cpu->clidr;
-+    u = FIELD_DP32(u, CLIDR_EL1, LOUIS, 0);
-+    u = FIELD_DP32(u, CLIDR_EL1, LOUU, 0);
-+    cpu->clidr = u;
++/*
++ * Combine the memory type and cacheability attributes of
++ * s1 and s2 for the HCR_EL2.FWB == 0 case, returning the
++ * combined attributes in MAIR_EL1 format.
++ */
++static uint8_t combined_attrs_nofwb(CPUARMState *env,
++                                    ARMCacheAttrs s1, ARMCacheAttrs s2)
++{
++    uint8_t s1lo, s2lo, s1hi, s2hi, s2_mair_attrs, ret_attrs;
 +
-     t = cpu->isar.id_aa64isar0;
-     t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2); /* AES + PMULL */
-     t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 1);
-@@ -841,6 +850,7 @@ static void aarch64_max_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1); /* FEAT_LVA */
-     t = FIELD_DP64(t, ID_AA64MMFR2, TTL, 1); /* FEAT_TTL */
-     t = FIELD_DP64(t, ID_AA64MMFR2, BBM, 2); /* FEAT_BBM at level 2 */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, FWB, 1); /* FEAT_S2FWB */
-     cpu->isar.id_aa64mmfr2 = t;
++    s2_mair_attrs = convert_stage2_attrs(env, s2.attrs);
++
++    s1lo = extract32(s1.attrs, 0, 4);
++    s2lo = extract32(s2_mair_attrs, 0, 4);
++    s1hi = extract32(s1.attrs, 4, 4);
++    s2hi = extract32(s2_mair_attrs, 4, 4);
++
++    /* Combine memory type and cacheability attributes */
++    if (s1hi == 0 || s2hi == 0) {
++        /* Device has precedence over normal */
++        if (s1lo == 0 || s2lo == 0) {
++            /* nGnRnE has precedence over anything */
++            ret_attrs = 0;
++        } else if (s1lo == 4 || s2lo == 4) {
++            /* non-Reordering has precedence over Reordering */
++            ret_attrs = 4;  /* nGnRE */
++        } else if (s1lo == 8 || s2lo == 8) {
++            /* non-Gathering has precedence over Gathering */
++            ret_attrs = 8;  /* nGRE */
++        } else {
++            ret_attrs = 0xc; /* GRE */
++        }
++    } else { /* Normal memory */
++        /* Outer/inner cacheability combine independently */
++        ret_attrs = combine_cacheattr_nibble(s1hi, s2hi) << 4
++                  | combine_cacheattr_nibble(s1lo, s2lo);
++    }
++    return ret_attrs;
++}
++
+ /* Combine S1 and S2 cacheability/shareability attributes, per D4.5.4
+  * and CombineS1S2Desc()
+  *
+@@ -12542,26 +12582,17 @@ static uint8_t combine_cacheattr_nibble(uint8_t s1, uint8_t s2)
+ static ARMCacheAttrs combine_cacheattrs(CPUARMState *env,
+                                         ARMCacheAttrs s1, ARMCacheAttrs s2)
+ {
+-    uint8_t s1lo, s2lo, s1hi, s2hi;
+     ARMCacheAttrs ret;
+     bool tagged = false;
+-    uint8_t s2_mair_attrs;
  
-     t = cpu->isar.id_aa64zfr0;
+     assert(s2.is_s2_format && !s1.is_s2_format);
+     ret.is_s2_format = false;
+ 
+-    s2_mair_attrs = convert_stage2_attrs(env, s2.attrs);
+-
+     if (s1.attrs == 0xf0) {
+         tagged = true;
+         s1.attrs = 0xff;
+     }
+ 
+-    s1lo = extract32(s1.attrs, 0, 4);
+-    s2lo = extract32(s2_mair_attrs, 0, 4);
+-    s1hi = extract32(s1.attrs, 4, 4);
+-    s2hi = extract32(s2_mair_attrs, 4, 4);
+-
+     /* Combine shareability attributes (table D4-43) */
+     if (s1.shareability == 2 || s2.shareability == 2) {
+         /* if either are outer-shareable, the result is outer-shareable */
+@@ -12575,37 +12606,18 @@ static ARMCacheAttrs combine_cacheattrs(CPUARMState *env,
+     }
+ 
+     /* Combine memory type and cacheability attributes */
+-    if (s1hi == 0 || s2hi == 0) {
+-        /* Device has precedence over normal */
+-        if (s1lo == 0 || s2lo == 0) {
+-            /* nGnRnE has precedence over anything */
+-            ret.attrs = 0;
+-        } else if (s1lo == 4 || s2lo == 4) {
+-            /* non-Reordering has precedence over Reordering */
+-            ret.attrs = 4;  /* nGnRE */
+-        } else if (s1lo == 8 || s2lo == 8) {
+-            /* non-Gathering has precedence over Gathering */
+-            ret.attrs = 8;  /* nGRE */
+-        } else {
+-            ret.attrs = 0xc; /* GRE */
+-        }
++    ret.attrs = combined_attrs_nofwb(env, s1, s2);
+ 
+-        /* Any location for which the resultant memory type is any
+-         * type of Device memory is always treated as Outer Shareable.
+-         */
++    /*
++     * Any location for which the resultant memory type is any
++     * type of Device memory is always treated as Outer Shareable.
++     * Any location for which the resultant memory type is Normal
++     * Inner Non-cacheable, Outer Non-cacheable is always treated
++     * as Outer Shareable.
++     * TODO: FEAT_XS adds another value (0x40) also meaning iNCoNC
++     */
++    if ((ret.attrs & 0xf0) == 0 || ret.attrs == 0x44) {
+         ret.shareability = 2;
+-    } else { /* Normal memory */
+-        /* Outer/inner cacheability combine independently */
+-        ret.attrs = combine_cacheattr_nibble(s1hi, s2hi) << 4
+-                  | combine_cacheattr_nibble(s1lo, s2lo);
+-
+-        if (ret.attrs == 0x44) {
+-            /* Any location for which the resultant memory type is Normal
+-             * Inner Non-cacheable, Outer Non-cacheable is always treated
+-             * as Outer Shareable.
+-             */
+-            ret.shareability = 2;
+-        }
+     }
+ 
+     /* TODO: CombineS1S2Desc does not consider transient, only WB, RWA. */
 -- 
 2.25.1
 

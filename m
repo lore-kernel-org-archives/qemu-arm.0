@@ -1,98 +1,98 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1985313lfj;
-        Fri, 6 May 2022 11:21:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwsQHRSR5m6yJuCP5ZyAog6tr2wy30TZVCE6Bg0cn+UTlRnpcL5f5H1bjgeyHFdZWUGIeqh
-X-Received: by 2002:a05:6214:1c85:b0:443:8347:d7a5 with SMTP id ib5-20020a0562141c8500b004438347d7a5mr3778514qvb.11.1651861263910;
-        Fri, 06 May 2022 11:21:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651861263; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1985676lfj;
+        Fri, 6 May 2022 11:21:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywWzrA34tBIuLNJXYXx1o2aoTWpspLEPJerU1jGfLpUGk2ckee1QZtzBLt3Hu4owaXpOvn
+X-Received: by 2002:a05:620a:244e:b0:6a0:49a5:f409 with SMTP id h14-20020a05620a244e00b006a049a5f409mr2188190qkn.750.1651861299876;
+        Fri, 06 May 2022 11:21:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651861299; cv=none;
         d=google.com; s=arc-20160816;
-        b=fPrLGklDhGpROpcvubhY0AcApfvLrutYGKI30u++vaVLaGIGWiwqhFMAg4r0HD/vzq
-         BEXFyK69yCa9nIGQ1HJ+VybHR3qhFyVRLoa0UXvjmZ/66/71sMufQrX79R3jXIZkuye5
-         9r3ltvkTeQcnynee6LOsSMvUQmt2rg0H7Hyky1IqrQhmE8+loqOXkLvhTSWzgHud5Jf3
-         D+7vIhYcC+w7O2EhIyH5NbNWOx6hB0lphsE1K2xGY2/k/AJlnjA0yGdrbiihi/X6Lln6
-         AQ3ipfIuwcaXNj5Ul4M4g2frG6RdAp81ZYhai7KCyZRYgamhRQzwKmQbXYPtdZTeOvDs
-         r0RA==
+        b=Po7as/Hb09YbAphKfRVPfCdt1M68kNVNpAZ45mWqd0eysQ7nWAHGZneFI56nMJsKIY
+         4H8UqgC0tTO7Z2AVskI+uWyqZJN+etaiRse6b/FRuvJOM3hlPI/j8G0Tm7PXRuocUXSC
+         CdJailBgS45hFrA9K7yXbJv1nLuJqAF8q5PoBJc6bFR3yMP+O5io0wYm4vGKKqNXgBPj
+         Hrc/SSrZE9XgKwYKwbnrXPFdTv5E8D/zgiR94/Li50vAPRjIh36854M3BUvTLxSBaUOC
+         5FLyW5xbkwO0Ve/nfTL4fa/W2Brfpn3pm9VO0nrlrbQe6pZ7ME0F0VaAzr1dG2TJIEGb
+         s6hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=CWNgNfzUCSh/G2d5uhrXTyqZyH2sX5sogtnqRYbuI1s=;
-        b=Ytg6ZoQKnf0gQ6EGyfgaYXyd8PIzszw9SWYHuWa5Bta/NYs/9kbtQ++FMZK8BAZHHh
-         nb/Ch/b9vxTLv3hvyu0lApQoYM038lTG1ReiRbPukrEH4trI1mUpyN52PeKrvCuc52bc
-         o40lXd3CP8d9ncypMU6jrOs/5dKo2mS1OjdYn2t+mMqj9/luh1cZ1NoyhpYrTaCwtnAz
-         KtyO9ZtYK6z696fazNRr0zH5y3TmB8q5H0C44tGb/NFs3A5n4SthCfGKbZzqIZSPcrwX
-         ABLEdOGAU8Vj5y6hT4W6jrNqQfFubLMqTBNctaUqIiXpXcqwVBNEOVqgAr8Q384WGne5
-         SREw==
+        bh=zS8iy63zUNyzTAn358CLXJXvtW6Z0IyKqcTl9uBiuyg=;
+        b=ShCscxScQ7LSOVPo3/KzDfA1fmVh8Yd8t/hC8mmxAVVD1Efxuoik7+rzT/c6bFgO9I
+         Gn24v0YowlHS4vEch5jwJY/VT0ohr7X2lS3URWij4j4jIGukSsTp4MJY8eKSnhBqmrA6
+         b9buHj4+bWpfaJyyImgCytkYKgzeYFncI5tBmtKLGXtA6/Sn0zNtl5ZN2Jc4HhnCBzLR
+         JuIhE/LURr8cOs0CZBaixDmT2NhTj9jlfoQtEZT6sK03634peOpBdge9fY0kzi2mdyW+
+         8w7ea0b/J0TJFY8sJrVRJIG3gkShFP19aK3DXy25ydEK9jdkp4rPYlCHyUqTYcZoz85f
+         acAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FRuz+Jbg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jGXk2LOS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11-20020a05620a284b00b0069fbc0a454dsi2809795qkp.127.2022.05.06.11.21.03
+        by mx.google.com with ESMTPS id d73-20020a379b4c000000b006a01341f630si2372482qke.198.2022.05.06.11.21.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 May 2022 11:21:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 06 May 2022 11:21:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FRuz+Jbg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jGXk2LOS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35490 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39928 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nn2Zb-0004Sn-C0
-	for alex.bennee@linaro.org; Fri, 06 May 2022 14:21:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60166)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nn2aB-0007V6-AY
+	for alex.bennee@linaro.org; Fri, 06 May 2022 14:21:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60282)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nn2IW-00063x-3S
- for qemu-devel@nongnu.org; Fri, 06 May 2022 14:03:24 -0400
+ id 1nn2IZ-0006HQ-IT
+ for qemu-arm@nongnu.org; Fri, 06 May 2022 14:03:27 -0400
 Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d]:46604)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nn2IT-0003ty-JZ
- for qemu-devel@nongnu.org; Fri, 06 May 2022 14:03:23 -0400
+ id 1nn2IX-0003ty-MN
+ for qemu-arm@nongnu.org; Fri, 06 May 2022 14:03:27 -0400
 Received: by mail-oi1-x22d.google.com with SMTP id q8so8277255oif.13
- for <qemu-devel@nongnu.org>; Fri, 06 May 2022 11:03:19 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Fri, 06 May 2022 11:03:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=CWNgNfzUCSh/G2d5uhrXTyqZyH2sX5sogtnqRYbuI1s=;
- b=FRuz+JbgpPsLrYgiUxEgipO9c0Y6osor3Ociv3saDj5daaAEqV3RPqSHn3XyNwEEaV
- APDovkEXfnI/hL15/8GBF9l0I8qZB68TTl7BcWE9EvCNt+w/cQNHt36J3nDjZBLf7mdJ
- b4vJQtCM0eyPAwNCBcMOdGONxsw57wiJVxcZn5fZLHyU40W5/Ek/2PbamKOy5FsIgFfb
- VEnsoOmhwAKh06A/0MDNp4/HKmtC/rryLIfF6VzJdKa9Va2O+9LgiWJqZMajeps3gaD+
- UHR6NXehc6A1NzKOPiP6rswBhAORGg9cSCt3hMPKPkD1MyBAD6UO+4o0E3bqK4Lor6dv
- 20WA==
+ bh=zS8iy63zUNyzTAn358CLXJXvtW6Z0IyKqcTl9uBiuyg=;
+ b=jGXk2LOSXxtMydGha3fsn6HDTV8xphHvC7b3ekIHlDFBYYxkvbRWXCDsWUl1KHxhgC
+ 2mgidXrlp4MFUrExq/4EXCfgDq6JwJ4Obrr6/w5OH6gKAJf5FxRCFcEt+dAgtoe77XYx
+ FjVGRPI+SSuOH07KulEOeQIdVf2yaww+GqrEBvBSIIJ3a+6kr+w1tRJiFYnZaQPs/Msm
+ vgC1ONRqCluNa30Secmc+AydCwwE0ZmOPo88a2S04/ezus3c/MNDSt2hWx2F1QASO3qT
+ lzN3n4hzmnnGDZNH3PODVUN67cN/MxSXc9fscwINQ5VqQ7bnBPkSMjMv2EiI7xYD0V85
+ T2mw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=CWNgNfzUCSh/G2d5uhrXTyqZyH2sX5sogtnqRYbuI1s=;
- b=VzBqhQjTeUX2hb6Z8+JfZaIYzzHgMPUcYA8VwyULDZfaomsU8YqrnFEShXwWGvEx/q
- dXgN8TdrrjW/LQYotT3yaoLID/tEHqdoVI/XDLvNPSIjEAtRx6DaleMWbLsyBF2UxJH7
- g2us4Yrm3LPlaGKD40H4AuNubTkt6qU2qZrzebrfPTmJylhG+ubqOh1P3xAu8T2yAko5
- eVzxleVyefQ14mCUf4SOqYmuCa8IhT2sv6ZuOMGR30EkY8g4OgqBeca1EBrrrIZmdORY
- 4hZIMKuUoWwptmA0kPTkwNcikZWy/g90LMkyTIbg4XMhtYFSQBylM7Y8hhooNeW3xQIG
- ZM+A==
-X-Gm-Message-State: AOAM532iEH/02aJ+WRcbJfq6Iojc+gjRPeJiJFDy+utgtz8WsxWhpvpM
- lYxVYyEwmxIG6owrBVNNAtNbvoPSsvJUGXch
-X-Received: by 2002:a05:6808:238a:b0:326:955e:f21 with SMTP id
- bp10-20020a056808238a00b00326955e0f21mr1531913oib.118.1651860198713; 
- Fri, 06 May 2022 11:03:18 -0700 (PDT)
+ bh=zS8iy63zUNyzTAn358CLXJXvtW6Z0IyKqcTl9uBiuyg=;
+ b=rq+QizP35LqR172UNAH4b1r3jaDvCOEAaULM9C2enOU6F7yY58qteA0N5YyeZ/DPMM
+ /HY5E9fqxQUMyMAVdQ6qtk25AktuOqHHfHvFM+zxz/WvRKOSsU1qnOwTvcvs84UeIBB0
+ wJO8K03c3T+unoCQelBidBgh7/lQ5/hHmYWmPrfQ02Dr+/nTtxVgqtCzrHDyV6jD12pB
+ 3X2FX3tKrrEC09buC6X9vFl1gFgN+69zKu6Qu8JHv6YmbWA4aSWomjpsaNg+qMeE2MfP
+ pA5Jd8bjyeivTQzvK6LZg12Uz0RfBRn4MHG7HuiVdA6CiZ7QlUvus4/gOXQKwzMS6w+t
+ W8Dg==
+X-Gm-Message-State: AOAM532dSHp4rSxOGZrLq9gBPSaoN3oYkiTSiqagwu1YJ4LAjXJN9fDy
+ EgloL9aV7zM/3VNkfNQ0Qcb4yg==
+X-Received: by 2002:a05:6808:1b11:b0:326:4608:4504 with SMTP id
+ bx17-20020a0568081b1100b0032646084504mr2066067oib.145.1651860204953; 
+ Fri, 06 May 2022 11:03:24 -0700 (PDT)
 Received: from stoup.. ([2607:fb90:5fe1:b497:51bb:ba21:d1a7:eac2])
  by smtp.gmail.com with ESMTPSA id
- e4-20020a056870c0c400b000e686d1389esm1780002oad.56.2022.05.06.11.03.17
+ e4-20020a056870c0c400b000e686d1389esm1780002oad.56.2022.05.06.11.03.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 May 2022 11:03:18 -0700 (PDT)
+ Fri, 06 May 2022 11:03:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v6 20/24] target/arm: Enable FEAT_CSV2_2 for -cpu max
-Date: Fri,  6 May 2022 13:02:38 -0500
-Message-Id: <20220506180242.216785-21-richard.henderson@linaro.org>
+Subject: [PATCH v6 24/24] target/arm: Define neoverse-n1
+Date: Fri,  6 May 2022 13:02:42 -0500
+Message-Id: <20220506180242.216785-25-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220506180242.216785-1-richard.henderson@linaro.org>
 References: <20220506180242.216785-1-richard.henderson@linaro.org>
@@ -108,231 +108,152 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ujQhGdcdkHRB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: T8NDWec+99xT
 
-There is no branch prediction in TCG, therefore there is no
-need to actually include the context number into the predictor.
-Therefore all we need to do is add the state for SCXTNUM_ELx.
+Enable the n1 for virt and sbsa board use.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2: Update emulation.rst; clear CSV2_FRAC; use decimal; tidy access_scxtnum.
-v3: Rely on EL3-no-EL2 squashing during registration.
-v5: Set SCTLR_EL1.TSCXT at user-only startup.
----
- docs/system/arm/emulation.rst |  3 ++
- target/arm/cpu.h              | 16 +++++++++
- target/arm/cpu.c              |  5 +++
- target/arm/cpu64.c            |  3 +-
- target/arm/helper.c           | 61 ++++++++++++++++++++++++++++++++++-
- 5 files changed, 86 insertions(+), 2 deletions(-)
+ docs/system/arm/virt.rst |  1 +
+ hw/arm/sbsa-ref.c        |  1 +
+ hw/arm/virt.c            |  1 +
+ target/arm/cpu64.c       | 66 ++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 69 insertions(+)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index b2a3e2a437..9765ee3eaf 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -13,6 +13,9 @@ the following architecture extensions:
- - FEAT_BF16 (AArch64 BFloat16 instructions)
- - FEAT_BTI (Branch Target Identification)
- - FEAT_CSV2 (Cache speculation variant 2)
-+- FEAT_CSV2_1p1 (Cache speculation variant 2, version 1.1)
-+- FEAT_CSV2_1p2 (Cache speculation variant 2, version 1.2)
-+- FEAT_CSV2_2 (Cache speculation variant 2, version 2)
- - FEAT_DIT (Data Independent Timing instructions)
- - FEAT_DPB (DC CVAP instruction)
- - FEAT_Debugv8p2 (Debug changes for v8.2)
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index aade9237bd..18ca61e8e2 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -688,6 +688,8 @@ typedef struct CPUArchState {
-         ARMPACKey apdb;
-         ARMPACKey apga;
-     } keys;
-+
-+    uint64_t scxtnum_el[4];
- #endif
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 3e264d85af..3d1058a80c 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -58,6 +58,7 @@ Supported guest CPU types:
+ - ``cortex-a76`` (64-bit)
+ - ``a64fx`` (64-bit)
+ - ``host`` (with KVM only)
++- ``neoverse-n1`` (64-bit)
+ - ``max`` (same as ``host`` for KVM; best possible emulation with TCG)
  
- #if defined(CONFIG_USER_ONLY)
-@@ -1211,6 +1213,7 @@ void pmu_init(ARMCPU *cpu);
- #define SCTLR_WXN     (1U << 19)
- #define SCTLR_ST      (1U << 20) /* up to ??, RAZ in v6 */
- #define SCTLR_UWXN    (1U << 20) /* v7 onward, AArch32 only */
-+#define SCTLR_TSCXT   (1U << 20) /* FEAT_CSV2_1p2, AArch64 only */
- #define SCTLR_FI      (1U << 21) /* up to v7, v8 RES0 */
- #define SCTLR_IESB    (1U << 21) /* v8.2-IESB, AArch64 only */
- #define SCTLR_U       (1U << 22) /* up to v6, RAO in v7 */
-@@ -4022,6 +4025,19 @@ static inline bool isar_feature_aa64_dit(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, DIT) != 0;
- }
- 
-+static inline bool isar_feature_aa64_scxtnum(const ARMISARegisters *id)
-+{
-+    int key = FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, CSV2);
-+    if (key >= 2) {
-+        return true;      /* FEAT_CSV2_2 */
-+    }
-+    if (key == 1) {
-+        key = FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, CSV2_FRAC);
-+        return key >= 2;  /* FEAT_CSV2_1p2 */
-+    }
-+    return false;
-+}
-+
- static inline bool isar_feature_aa64_ssbs(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SSBS) != 0;
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 652a84cf84..59df597e05 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -230,6 +230,11 @@ static void arm_cpu_reset(DeviceState *dev)
-              */
-             env->cp15.gcr_el1 = 0x1ffff;
-         }
-+        /*
-+         * Disable access to SCXTNUM_EL0 from CSV2_1p2.
-+         * This is not yet exposed from the Linux kernel in any way.
-+         */
-+        env->cp15.sctlr_el[1] |= SCTLR_TSCXT;
- #else
-         /* Reset into the highest available EL */
-         if (arm_feature(env, ARM_FEATURE_EL3)) {
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 25fe74f928..07b44a62be 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -748,7 +748,7 @@ static void aarch64_max_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
-     t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);      /* FEAT_SEL2 */
-     t = FIELD_DP64(t, ID_AA64PFR0, DIT, 1);       /* FEAT_DIT */
--    t = FIELD_DP64(t, ID_AA64PFR0, CSV2, 1);      /* FEAT_CSV2 */
-+    t = FIELD_DP64(t, ID_AA64PFR0, CSV2, 2);      /* FEAT_CSV2_2 */
-     cpu->isar.id_aa64pfr0 = t;
- 
-     t = cpu->isar.id_aa64pfr1;
-@@ -760,6 +760,7 @@ static void aarch64_max_initfn(Object *obj)
-      * we do for EL2 with the virtualization=on property.
-      */
-     t = FIELD_DP64(t, ID_AA64PFR1, MTE, 3);       /* FEAT_MTE3 */
-+    t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_2 */
-     cpu->isar.id_aa64pfr1 = t;
- 
-     t = cpu->isar.id_aa64mmfr0;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 4857d2dbb8..432bd81919 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1770,6 +1770,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-         if (cpu_isar_feature(aa64_mte, cpu)) {
-             valid_mask |= SCR_ATA;
-         }
-+        if (cpu_isar_feature(aa64_scxtnum, cpu)) {
-+            valid_mask |= SCR_ENSCXT;
-+        }
-     } else {
-         valid_mask &= ~(SCR_RW | SCR_ST);
-         if (cpu_isar_feature(aa32_ras, cpu)) {
-@@ -5149,6 +5152,9 @@ static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
-         if (cpu_isar_feature(aa64_mte, cpu)) {
-             valid_mask |= HCR_ATA | HCR_DCT | HCR_TID5;
-         }
-+        if (cpu_isar_feature(aa64_scxtnum, cpu)) {
-+            valid_mask |= HCR_ENSCXT;
-+        }
-     }
- 
-     /* Clear RES0 bits.  */
-@@ -5800,6 +5806,10 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-         { K(3, 0,  5, 6, 0), K(3, 4,  5, 6, 0), K(3, 5, 5, 6, 0),
-           "TFSR_EL1", "TFSR_EL2", "TFSR_EL12", isar_feature_aa64_mte },
- 
-+        { K(3, 0, 13, 0, 7), K(3, 4, 13, 0, 7), K(3, 5, 13, 0, 7),
-+          "SCXTNUM_EL1", "SCXTNUM_EL2", "SCXTNUM_EL12",
-+          isar_feature_aa64_scxtnum },
-+
-         /* TODO: ARMv8.2-SPE -- PMSCR_EL2 */
-         /* TODO: ARMv8.4-Trace -- TRFCR_EL2 */
-     };
-@@ -7223,7 +7233,52 @@ static const ARMCPRegInfo mte_el0_cacheop_reginfo[] = {
-     },
+ Note that the default is ``cortex-a15``, so for an AArch64 guest you must
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 2ddde88f5e..dac8860f2d 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -146,6 +146,7 @@ static const char * const valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("cortex-a57"),
+     ARM_CPU_TYPE_NAME("cortex-a72"),
+     ARM_CPU_TYPE_NAME("cortex-a76"),
++    ARM_CPU_TYPE_NAME("neoverse-n1"),
+     ARM_CPU_TYPE_NAME("max"),
  };
  
--#endif
-+static CPAccessResult access_scxtnum(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                     bool isread)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 12bc2318ec..da7e3ede56 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -204,6 +204,7 @@ static const char *valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("cortex-a72"),
+     ARM_CPU_TYPE_NAME("cortex-a76"),
+     ARM_CPU_TYPE_NAME("a64fx"),
++    ARM_CPU_TYPE_NAME("neoverse-n1"),
+     ARM_CPU_TYPE_NAME("host"),
+     ARM_CPU_TYPE_NAME("max"),
+ };
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index adfe6b26be..04427e073f 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -259,6 +259,71 @@ static void aarch64_a76_initfn(Object *obj)
+     cpu->isar.mvfr2 = 0x00000043;
+ }
+ 
++static void aarch64_neoverse_n1_initfn(Object *obj)
 +{
-+    uint64_t hcr = arm_hcr_el2_eff(env);
-+    int el = arm_current_el(env);
++    ARMCPU *cpu = ARM_CPU(obj);
 +
-+    if (el == 0 && !((hcr & HCR_E2H) && (hcr & HCR_TGE))) {
-+        if (env->cp15.sctlr_el[1] & SCTLR_TSCXT) {
-+            if (hcr & HCR_TGE) {
-+                return CP_ACCESS_TRAP_EL2;
-+            }
-+            return CP_ACCESS_TRAP;
-+        }
-+    } else if (el < 2 && (env->cp15.sctlr_el[2] & SCTLR_TSCXT)) {
-+        return CP_ACCESS_TRAP_EL2;
-+    }
-+    if (el < 2 && arm_is_el2_enabled(env) && !(hcr & HCR_ENSCXT)) {
-+        return CP_ACCESS_TRAP_EL2;
-+    }
-+    if (el < 3
-+        && arm_feature(env, ARM_FEATURE_EL3)
-+        && !(env->cp15.scr_el3 & SCR_ENSCXT)) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+    return CP_ACCESS_OK;
++    cpu->dtb_compatible = "arm,neoverse-n1";
++    set_feature(&cpu->env, ARM_FEATURE_V8);
++    set_feature(&cpu->env, ARM_FEATURE_NEON);
++    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
++    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
++    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
++    set_feature(&cpu->env, ARM_FEATURE_EL3);
++    set_feature(&cpu->env, ARM_FEATURE_PMU);
++
++    /* Ordered by B2.4 AArch64 registers by functional group */
++    cpu->clidr = 0x82000023;
++    cpu->ctr = 0x8444c004;
++    cpu->dcz_blocksize = 4;
++    cpu->isar.id_aa64dfr0  = 0x0000000110305408ull;
++    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
++    cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
++    cpu->isar.id_aa64mmfr0 = 0x0000000000101125ull;
++    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
++    cpu->isar.id_aa64mmfr2 = 0x0000000000001011ull;
++    cpu->isar.id_aa64pfr0  = 0x1100000010111112ull; /* GIC filled in later */
++    cpu->isar.id_aa64pfr1  = 0x0000000000000020ull;
++    cpu->id_afr0       = 0x00000000;
++    cpu->isar.id_dfr0  = 0x04010088;
++    cpu->isar.id_isar0 = 0x02101110;
++    cpu->isar.id_isar1 = 0x13112111;
++    cpu->isar.id_isar2 = 0x21232042;
++    cpu->isar.id_isar3 = 0x01112131;
++    cpu->isar.id_isar4 = 0x00010142;
++    cpu->isar.id_isar5 = 0x01011121;
++    cpu->isar.id_isar6 = 0x00000010;
++    cpu->isar.id_mmfr0 = 0x10201105;
++    cpu->isar.id_mmfr1 = 0x40000000;
++    cpu->isar.id_mmfr2 = 0x01260000;
++    cpu->isar.id_mmfr3 = 0x02122211;
++    cpu->isar.id_mmfr4 = 0x00021110;
++    cpu->isar.id_pfr0  = 0x10010131;
++    cpu->isar.id_pfr1  = 0x00010000; /* GIC filled in later */
++    cpu->isar.id_pfr2  = 0x00000011;
++    cpu->midr = 0x414fd0c1;          /* r4p1 */
++    cpu->revidr = 0;
++
++    /* From B2.23 CCSIDR_EL1 */
++    cpu->ccsidr[0] = 0x701fe01a; /* 64KB L1 dcache */
++    cpu->ccsidr[1] = 0x201fe01a; /* 64KB L1 icache */
++    cpu->ccsidr[2] = 0x70ffe03a; /* 1MB L2 cache */
++
++    /* From B2.98 SCTLR_EL3 */
++    cpu->reset_sctlr = 0x30c50838;
++
++    /* From B4.23 ICH_VTR_EL2 */
++    cpu->gic_num_lrs = 4;
++    cpu->gic_vpribits = 5;
++    cpu->gic_vprebits = 5;
++
++    /* From B5.1 AdvSIMD AArch64 register summary */
++    cpu->isar.mvfr0 = 0x10110222;
++    cpu->isar.mvfr1 = 0x13211111;
++    cpu->isar.mvfr2 = 0x00000043;
 +}
 +
-+static const ARMCPRegInfo scxtnum_reginfo[] = {
-+    { .name = "SCXTNUM_EL0", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 3, .crn = 13, .crm = 0, .opc2 = 7,
-+      .access = PL0_RW, .accessfn = access_scxtnum,
-+      .fieldoffset = offsetof(CPUARMState, scxtnum_el[0]) },
-+    { .name = "SCXTNUM_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 13, .crm = 0, .opc2 = 7,
-+      .access = PL1_RW, .accessfn = access_scxtnum,
-+      .fieldoffset = offsetof(CPUARMState, scxtnum_el[1]) },
-+    { .name = "SCXTNUM_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 13, .crm = 0, .opc2 = 7,
-+      .access = PL2_RW, .accessfn = access_scxtnum,
-+      .fieldoffset = offsetof(CPUARMState, scxtnum_el[2]) },
-+    { .name = "SCXTNUM_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 13, .crm = 0, .opc2 = 7,
-+      .access = PL3_RW,
-+      .fieldoffset = offsetof(CPUARMState, scxtnum_el[3]) },
-+};
-+#endif /* TARGET_AARCH64 */
- 
- static CPAccessResult access_predinv(CPUARMState *env, const ARMCPRegInfo *ri,
-                                      bool isread)
-@@ -8365,6 +8420,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, mte_tco_ro_reginfo);
-         define_arm_cp_regs(cpu, mte_el0_cacheop_reginfo);
-     }
-+
-+    if (cpu_isar_feature(aa64_scxtnum, cpu)) {
-+        define_arm_cp_regs(cpu, scxtnum_reginfo);
-+    }
- #endif
- 
-     if (cpu_isar_feature(any_predinv, cpu)) {
+ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+ {
+     /*
+@@ -948,6 +1013,7 @@ static const ARMCPUInfo aarch64_cpus[] = {
+     { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
+     { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
+     { .name = "a64fx",              .initfn = aarch64_a64fx_initfn },
++    { .name = "neoverse-n1",        .initfn = aarch64_neoverse_n1_initfn },
+     { .name = "max",                .initfn = aarch64_max_initfn },
+ #if defined(CONFIG_KVM) || defined(CONFIG_HVF)
+     { .name = "host",               .initfn = aarch64_host_initfn },
 -- 
 2.34.1
 

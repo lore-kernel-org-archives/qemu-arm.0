@@ -1,115 +1,113 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1982918lfj;
-        Fri, 6 May 2022 11:16:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxEkih66NLPioSzEe/UkxId2Y6mC2dhi6dEBLs8DQBLptTQCPCZ6HeR5Zhn8c9CZNTafJSU
-X-Received: by 2002:a05:622a:190e:b0:2e1:d655:d447 with SMTP id w14-20020a05622a190e00b002e1d655d447mr4015509qtc.571.1651860986264;
-        Fri, 06 May 2022 11:16:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651860986; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1983711lfj;
+        Fri, 6 May 2022 11:18:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWq+nvFjbT43aFAy2fW3r/BS8gGPvvsloO0sZ+gZySzLn3+P2l71vewXZH+SqaIRi6zr//
+X-Received: by 2002:a05:6214:21e5:b0:45a:c70d:2938 with SMTP id p5-20020a05621421e500b0045ac70d2938mr3871095qvj.119.1651861080026;
+        Fri, 06 May 2022 11:18:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651861080; cv=none;
         d=google.com; s=arc-20160816;
-        b=daAjfXNeEskRzZ7wswY71YQQWIYepm2bm2KkqMg/tLYk7IDhZo/387NdiSgOr/Yl3U
-         rjXulR042/xPIGfIfGFBpy9A2ZQksb9Lvo3fwq7gYFJuKUyTUhhQXmcWQxf9s8lYaLmc
-         G26XKijwzkvozSg62jtjVox1SK03HWIT9raV4lEem31LJQ5hSAEzTa/af0orhHkQPICr
-         iItkEmG+ZR64jp5AAjQCFWuyQgoOTmueFUiEhXehuG3z7earVHb/Su8mO6s+Kid7i6Ta
-         +m7hTxgWy8ie1ceThd01AwqmYzSlLzL3Mw7r2cHpAPOYV9DiRBhKWjQePN9YOGz7N2ZU
-         e3dA==
+        b=AmvYTfGIlRy3RzRNzkfratEVBDLDZ7lEfeFcdQxZazqiQ685jEsgWUypGJMieIvxVI
+         k8txJnABbIac9BcnaYbQ7x6idCdO2+uQXPXJTauuR8duYdQWKai7Za7++a46Cj5Ghom0
+         4QoXdHUJWXHpAXs4fsWayTb28gvOxvdWBMhHmwiOQBVTs1HcXfmeQPQSIAzaR7CEz3Np
+         abWLBH6FUQRKaNb3Nglbvv9+CPCKCKi3OjVTnoUf1euV/4E4E8AG91PepcrClQ93IU76
+         rJpwJBVBnB/7s2bIwKm09giz7zBrKmXV9QH5pF9ZPZYWCmLkYZ35u/20i5ZULoh33kya
+         v2NA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Z9jnYlb3diHDx/Tz1NJJu7ooSfZI5A88/Vi2Hs36v6U=;
-        b=OH28f/upkxvSSCdgs7dmU2ptBIJCZaIyUsWNKBYD1qyG7+T9/poCCDXVBSBF+VuDON
-         G4r2iJT3lonoGl3923wJWi5k4IR1DqmP0wxHOTE+LFPbW9tuIK1C3UqFvSsbi8QkJ994
-         EiyImur8G44PNctdPA+OCFlBneYyc2Ci1uW9j8rtzGAF5115L5Is5LwudfFHICHho4hI
-         0NlHbhrjgmGbEEPKZlB0O97Ya2Z03I+2NJ0hzjRi81FkDOobXzxjT50aapHL2tyE4k7o
-         sF/2VRyR5Bdi/1KDZJykFbWcZhhY9dJ5mmK0BBzkwRxUTnxGTzPKXdRmQHbJClTXM53N
-         mPVw==
+        bh=abpiSeB9GnhU+yu70oxG40w5Q8oxipcU81kEqVLhpps=;
+        b=sXtg18DosKDF6wdWsBSN86MLotIMg4p8gMjQ4rpi7nCUPGZG+tSy2CEnYOz5G6vErJ
+         1QibBtFXkt6M9tmhK7YRDvdEqidf44KWHqAjDjG5N6K4ZWF3MUHZLOSMcjjEhtTBJfWU
+         i9FXH+J+UotxsAI50sydvPE/UI/QgADbE4hPnIimv5O8pmIKZOQdpHT9UbJrmx/k/hAw
+         KzDSkVbQ1IwfjDiKcZIO+lSeonX30+8FdpUCs4IqD+VQIISQ1+AmaKiqOtr/r70X+7HR
+         Vm4XF6wNMj28hQ/XWfk/Vuk9y2xvbUeF6m5oO9JIr2z2f31VxpC4riStwwIKhsEvVFbh
+         Eqrw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MZhgqYn5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OYr3X7Od;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u19-20020a0cb413000000b004465ac9a7e9si2884458qve.3.2022.05.06.11.16.26
+        by mx.google.com with ESMTPS id r12-20020ae9d60c000000b0069f885cf6c9si2658985qkk.0.2022.05.06.11.17.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 May 2022 11:16:26 -0700 (PDT)
+        Fri, 06 May 2022 11:18:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MZhgqYn5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OYr3X7Od;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49920 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54124 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nn2V7-0002fl-Id
-	for alex.bennee@linaro.org; Fri, 06 May 2022 14:16:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59716)
+	id 1nn2Wd-0005nK-EV
+	for alex.bennee@linaro.org; Fri, 06 May 2022 14:17:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59984)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nn2IB-0005e7-AN
- for qemu-devel@nongnu.org; Fri, 06 May 2022 14:03:03 -0400
-Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d]:35213)
+ id 1nn2IQ-00060o-2T
+ for qemu-devel@nongnu.org; Fri, 06 May 2022 14:03:19 -0400
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a]:43692)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nn2I9-0003st-87
- for qemu-devel@nongnu.org; Fri, 06 May 2022 14:03:03 -0400
-Received: by mail-oa1-x2d.google.com with SMTP id
- 586e51a60fabf-e2fa360f6dso7989713fac.2
- for <qemu-devel@nongnu.org>; Fri, 06 May 2022 11:03:00 -0700 (PDT)
+ id 1nn2IL-0003rO-OR
+ for qemu-devel@nongnu.org; Fri, 06 May 2022 14:03:16 -0400
+Received: by mail-ot1-x32a.google.com with SMTP id
+ m6-20020a05683023a600b0060612720715so5406568ots.10
+ for <qemu-devel@nongnu.org>; Fri, 06 May 2022 11:03:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Z9jnYlb3diHDx/Tz1NJJu7ooSfZI5A88/Vi2Hs36v6U=;
- b=MZhgqYn5lzXpIWQxi4le+lVZ+ZsmcV8d73zea2AeM/qgfeZdbmhb5/mZ2En5L2ysFt
- 92gv9IJ8njmsNob50Ba/+ybnFklGn/92Go/bZCsCwqA97/fu+ThDNfABi3wG771lWHfa
- HmnGcod+9yHrbLkYank2TjXqqdPdokuHDDvol3UtsD4LPhYczSEK8bnUsS6i+4WiNN+F
- ayF8FgL+y6wkgQLhMVIucz2y74ipbfYLuPqzASp/CnAITZhVqicLqVAr+t54+LJgg+2r
- FabAukJdx6AVKdADO+3L1v5XmTFtZKVVF/8XiVM8leLKHxjU+2p+7/A+bYX1FgZlg5Vn
- +z5Q==
+ bh=abpiSeB9GnhU+yu70oxG40w5Q8oxipcU81kEqVLhpps=;
+ b=OYr3X7Odbaq60iM17/bQ5kRpIs27qSPFnKXbZ/+Ee8Hkdw8THdw9HgbziuEIhN6hce
+ 9vp+Kh7txofeQVMDksbnh+LL5+dPlprKgQeV7SB+HqVTmbGT/xUVa2IagPPZ3oKumTa7
+ xR9uzvLUYqO10TFLINMrxJh6Txnjbm4PSa53jIKCAfggjWl2aEJH/Yd1wq/P6820ojNa
+ KnBVrLL7PQUGVyjnCNKZGwVbUqaam10YfogBvntNmN1hRLOIi9QEf73YTNQNWV45lJxw
+ TizYni/R4ogGYAIEeHAmC0IQ0g8XfDO2f6I4s9DeFTa2GSKUUZZxky9pc3a3J9tUFxb5
+ rnWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Z9jnYlb3diHDx/Tz1NJJu7ooSfZI5A88/Vi2Hs36v6U=;
- b=GwEqDKDm8YZ5TZTX9IACZV1aHDe2X1Yx5eHKVcYKWZmN1H3d4yuB37FZvzcGpWRKdt
- CqTbsdI0YC+mV9y21YaVjMbbUSb3f06mnZCfdlQJJfOz1X+6G/oXVg+kYxxIcs//J5La
- AMpt7WOhOYGPgh5vXXoOptj7rdXsqNeaiEgmnezrHoU82D9T2NtNJ4vv7Vc54/6fuusi
- YdBoDX/So4RNn3Z2JB2WlAvFGVHbw4q9BzVkw4Lcaurao038+7S4WBX0MMn4lyKxZXN9
- itz0phWc3ihDvdx43zryhC9B53Sbp5C41v8RwpKnkdVfhUAb1J4HAR+RE0obSNWyAcIq
- ftCg==
-X-Gm-Message-State: AOAM533OIPa+AEng0DzZLW8pdJKUoR4BROc21DWthSOpHr45X+zjhHCc
- bEbKwIJIYIU665mml+SuarkYrejh2X2+Tg6C
-X-Received: by 2002:a05:6871:97:b0:e6:30e3:31a7 with SMTP id
- u23-20020a056871009700b000e630e331a7mr4798114oaa.150.1651860179613; 
- Fri, 06 May 2022 11:02:59 -0700 (PDT)
+ bh=abpiSeB9GnhU+yu70oxG40w5Q8oxipcU81kEqVLhpps=;
+ b=NSuWWpGwSTYMZAvs/XIhduSteLa09wC5vVCGob5ag30jph/5xwdoPbNltpEYOeAbm2
+ 2cSDZ9U/2FHdXtNBugXgGAgBvLDued64e7HDP4VGK/1wL8r85CJ1C1u8cgyjpyTfeuk+
+ TvAiMbWnuMunfqlE6n9miMWNIMAh/WcBukWoOAowA4R6S9jpo0rYatu8ivA9pH55H5IC
+ u1EgPKsWxVZqlARdQjo9+LyyXFFyBWJg1YGNRzrmuHaQsxddMxH+tTHXmzJ8MWRY4sjk
+ O5Ulwv5szgl8KlnlOcwXZR5Bp/+0x2NBG7oHvTmvFKlmDcBTPXTlp/ZI8XUYmtrFVIAb
+ XGkg==
+X-Gm-Message-State: AOAM533nBEC2hKoIzxjty4A2vXPlZBMbG7hNWODOXF+tsLlcAZFs7RW/
+ iyxxU/Uqaad15D3SZELVpUD0TGSRnyXlIcrK
+X-Received: by 2002:a9d:6545:0:b0:5cd:b111:86fb with SMTP id
+ q5-20020a9d6545000000b005cdb11186fbmr1449234otl.342.1651860192414; 
+ Fri, 06 May 2022 11:03:12 -0700 (PDT)
 Received: from stoup.. ([2607:fb90:5fe1:b497:51bb:ba21:d1a7:eac2])
  by smtp.gmail.com with ESMTPSA id
- e4-20020a056870c0c400b000e686d1389esm1780002oad.56.2022.05.06.11.02.58
+ e4-20020a056870c0c400b000e686d1389esm1780002oad.56.2022.05.06.11.03.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 May 2022 11:02:58 -0700 (PDT)
+ Fri, 06 May 2022 11:03:11 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v6 09/24] target/arm: Annotate arm_max_initfn with FEAT
- identifiers
-Date: Fri,  6 May 2022 13:02:27 -0500
-Message-Id: <20220506180242.216785-10-richard.henderson@linaro.org>
+Subject: [PATCH v6 16/24] target/arm: Implement ESB instruction
+Date: Fri,  6 May 2022 13:02:34 -0500
+Message-Id: <20220506180242.216785-17-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220506180242.216785-1-richard.henderson@linaro.org>
 References: <20220506180242.216785-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2d;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,247 +122,207 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d/LjXw5onuHJ
+X-TUID: Pl8DJj8NhBSC
 
-Update the legacy feature names to the current names.
-Provide feature names for id changes that were not marked.
-Sort the field updates into increasing bitfield order.
+Check for and defer any pending virtual SError.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu64.c   | 100 +++++++++++++++++++++----------------------
- target/arm/cpu_tcg.c |  48 ++++++++++-----------
- 2 files changed, 74 insertions(+), 74 deletions(-)
+v2: Retain m-profile check; improve comments.
+---
+ target/arm/helper.h        |  1 +
+ target/arm/a32.decode      | 16 ++++++++------
+ target/arm/t32.decode      | 18 ++++++++--------
+ target/arm/op_helper.c     | 43 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-a64.c | 17 +++++++++++++++
+ target/arm/translate.c     | 23 ++++++++++++++++++++
+ 6 files changed, 103 insertions(+), 15 deletions(-)
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 6da42af56e..5fce40a6bc 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -713,51 +713,51 @@ static void aarch64_max_initfn(Object *obj)
-     cpu->midr = t;
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index b463d9343b..b1334e0c42 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -54,6 +54,7 @@ DEF_HELPER_1(wfe, void, env)
+ DEF_HELPER_1(yield, void, env)
+ DEF_HELPER_1(pre_hvc, void, env)
+ DEF_HELPER_2(pre_smc, void, env, i32)
++DEF_HELPER_1(vesb, void, env)
  
-     t = cpu->isar.id_aa64isar0;
--    t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2); /* AES + PMULL */
--    t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR0, SHA2, 2); /* SHA512 */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2);      /* FEAT_PMULL */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 1);     /* FEAT_SHA1 */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, SHA2, 2);     /* FEAT_SHA512 */
-     t = FIELD_DP64(t, ID_AA64ISAR0, CRC32, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR0, ATOMIC, 2);
--    t = FIELD_DP64(t, ID_AA64ISAR0, RDM, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR0, SHA3, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR0, SM3, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR0, SM4, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2); /* v8.5-CondM */
--    t = FIELD_DP64(t, ID_AA64ISAR0, TLB, 2); /* FEAT_TLBIRANGE */
--    t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);
-+    t = FIELD_DP64(t, ID_AA64ISAR0, ATOMIC, 2);   /* FEAT_LSE */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, RDM, 1);      /* FEAT_RDM */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, SHA3, 1);     /* FEAT_SHA3 */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, SM3, 1);      /* FEAT_SM3 */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, SM4, 1);      /* FEAT_SM4 */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);       /* FEAT_DotProd */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);      /* FEAT_FHM */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2);       /* FEAT_FlagM2 */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, TLB, 2);      /* FEAT_TLBIRANGE */
-+    t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);     /* FEAT_RNG */
-     cpu->isar.id_aa64isar0 = t;
+ DEF_HELPER_3(cpsr_write, void, env, i32, i32)
+ DEF_HELPER_2(cpsr_write_eret, void, env, i32)
+diff --git a/target/arm/a32.decode b/target/arm/a32.decode
+index fcd8cd4f7d..f2ca480949 100644
+--- a/target/arm/a32.decode
++++ b/target/arm/a32.decode
+@@ -187,13 +187,17 @@ SMULTT           .... 0001 0110 .... 0000 .... 1110 ....      @rd0mn
  
-     t = cpu->isar.id_aa64isar1;
--    t = FIELD_DP64(t, ID_AA64ISAR1, DPB, 2);
--    t = FIELD_DP64(t, ID_AA64ISAR1, JSCVT, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR1, FCMA, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR1, SB, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR1, SPECRES, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR1, BF16, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 1);
--    t = FIELD_DP64(t, ID_AA64ISAR1, LRCPC, 2); /* ARMv8.4-RCPC */
--    t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);
-+    t = FIELD_DP64(t, ID_AA64ISAR1, DPB, 2);      /* FEAT_DPB2 */
-+    t = FIELD_DP64(t, ID_AA64ISAR1, JSCVT, 1);    /* FEAT_JSCVT */
-+    t = FIELD_DP64(t, ID_AA64ISAR1, FCMA, 1);     /* FEAT_FCMA */
-+    t = FIELD_DP64(t, ID_AA64ISAR1, LRCPC, 2);    /* FEAT_LRCPC2 */
-+    t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 1);  /* FEAT_FRINTTS */
-+    t = FIELD_DP64(t, ID_AA64ISAR1, SB, 1);       /* FEAT_SB */
-+    t = FIELD_DP64(t, ID_AA64ISAR1, SPECRES, 1);  /* FEAT_SPECRES */
-+    t = FIELD_DP64(t, ID_AA64ISAR1, BF16, 1);     /* FEAT_BF16 */
-+    t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);     /* FEAT_I8MM */
-     cpu->isar.id_aa64isar1 = t;
+ {
+   {
+-    YIELD        ---- 0011 0010 0000 1111 ---- 0000 0001
+-    WFE          ---- 0011 0010 0000 1111 ---- 0000 0010
+-    WFI          ---- 0011 0010 0000 1111 ---- 0000 0011
++    [
++      YIELD      ---- 0011 0010 0000 1111 ---- 0000 0001
++      WFE        ---- 0011 0010 0000 1111 ---- 0000 0010
++      WFI        ---- 0011 0010 0000 1111 ---- 0000 0011
  
-     t = cpu->isar.id_aa64pfr0;
-+    t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);        /* FEAT_FP16 */
-+    t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);   /* FEAT_FP16 */
-     t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
--    t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);
--    t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);
--    t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);
--    t = FIELD_DP64(t, ID_AA64PFR0, DIT, 1);
-+    t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);      /* FEAT_SEL2 */
-+    t = FIELD_DP64(t, ID_AA64PFR0, DIT, 1);       /* FEAT_DIT */
-     cpu->isar.id_aa64pfr0 = t;
+-    # TODO: Implement SEV, SEVL; may help SMP performance.
+-    # SEV        ---- 0011 0010 0000 1111 ---- 0000 0100
+-    # SEVL       ---- 0011 0010 0000 1111 ---- 0000 0101
++      # TODO: Implement SEV, SEVL; may help SMP performance.
++      # SEV      ---- 0011 0010 0000 1111 ---- 0000 0100
++      # SEVL     ---- 0011 0010 0000 1111 ---- 0000 0101
++
++      ESB        ---- 0011 0010 0000 1111 ---- 0001 0000
++    ]
  
-     t = cpu->isar.id_aa64pfr1;
--    t = FIELD_DP64(t, ID_AA64PFR1, BT, 1);
--    t = FIELD_DP64(t, ID_AA64PFR1, SSBS, 2);
-+    t = FIELD_DP64(t, ID_AA64PFR1, BT, 1);        /* FEAT_BTI */
-+    t = FIELD_DP64(t, ID_AA64PFR1, SSBS, 2);      /* FEAT_SSBS2 */
-     /*
-      * Begin with full support for MTE. This will be downgraded to MTE=0
-      * during realize if the board provides no tag memory, much like
-      * we do for EL2 with the virtualization=on property.
-      */
--    t = FIELD_DP64(t, ID_AA64PFR1, MTE, 3);
-+    t = FIELD_DP64(t, ID_AA64PFR1, MTE, 3);       /* FEAT_MTE3 */
-     cpu->isar.id_aa64pfr1 = t;
+     # The canonical nop ends in 00000000, but the whole of the
+     # rest of the space executes as nop if otherwise unsupported.
+diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+index 78fadef9d6..f21ad0167a 100644
+--- a/target/arm/t32.decode
++++ b/target/arm/t32.decode
+@@ -364,17 +364,17 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+   [
+     # Hints, and CPS
+     {
+-      YIELD      1111 0011 1010 1111 1000 0000 0000 0001
+-      WFE        1111 0011 1010 1111 1000 0000 0000 0010
+-      WFI        1111 0011 1010 1111 1000 0000 0000 0011
++      [
++        YIELD    1111 0011 1010 1111 1000 0000 0000 0001
++        WFE      1111 0011 1010 1111 1000 0000 0000 0010
++        WFI      1111 0011 1010 1111 1000 0000 0000 0011
  
-     t = cpu->isar.id_aa64mmfr0;
-@@ -769,37 +769,37 @@ static void aarch64_max_initfn(Object *obj)
-     cpu->isar.id_aa64mmfr0 = t;
+-      # TODO: Implement SEV, SEVL; may help SMP performance.
+-      # SEV      1111 0011 1010 1111 1000 0000 0000 0100
+-      # SEVL     1111 0011 1010 1111 1000 0000 0000 0101
++        # TODO: Implement SEV, SEVL; may help SMP performance.
++        # SEV    1111 0011 1010 1111 1000 0000 0000 0100
++        # SEVL   1111 0011 1010 1111 1000 0000 0000 0101
  
-     t = cpu->isar.id_aa64mmfr1;
--    t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1); /* HPD */
--    t = FIELD_DP64(t, ID_AA64MMFR1, LO, 1);
--    t = FIELD_DP64(t, ID_AA64MMFR1, VH, 1);
--    t = FIELD_DP64(t, ID_AA64MMFR1, PAN, 2); /* ATS1E1 */
--    t = FIELD_DP64(t, ID_AA64MMFR1, VMIDBITS, 2); /* VMID16 */
--    t = FIELD_DP64(t, ID_AA64MMFR1, XNX, 1); /* TTS2UXN */
-+    t = FIELD_DP64(t, ID_AA64MMFR1, VMIDBITS, 2); /* FEAT_VMID16 */
-+    t = FIELD_DP64(t, ID_AA64MMFR1, VH, 1);       /* FEAT_VHE */
-+    t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1);     /* FEAT_HPDS */
-+    t = FIELD_DP64(t, ID_AA64MMFR1, LO, 1);       /* FEAT_LOR */
-+    t = FIELD_DP64(t, ID_AA64MMFR1, PAN, 2);      /* FEAT_PAN2 */
-+    t = FIELD_DP64(t, ID_AA64MMFR1, XNX, 1);      /* FEAT_XNX */
-     cpu->isar.id_aa64mmfr1 = t;
+-      # For M-profile minimal-RAS ESB can be a NOP, which is the
+-      # default behaviour since it is in the hint space.
+-      # ESB      1111 0011 1010 1111 1000 0000 0001 0000
++        ESB      1111 0011 1010 1111 1000 0000 0001 0000
++      ]
  
-     t = cpu->isar.id_aa64mmfr2;
--    t = FIELD_DP64(t, ID_AA64MMFR2, UAO, 1);
--    t = FIELD_DP64(t, ID_AA64MMFR2, CNP, 1); /* TTCNP */
--    t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1); /* TTST */
--    t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1); /* FEAT_LVA */
--    t = FIELD_DP64(t, ID_AA64MMFR2, TTL, 1); /* FEAT_TTL */
--    t = FIELD_DP64(t, ID_AA64MMFR2, BBM, 2); /* FEAT_BBM at level 2 */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, CNP, 1);      /* FEAT_TTCNP */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, UAO, 1);      /* FEAT_UAO */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1);  /* FEAT_LVA */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1);       /* FEAT_TTST */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, TTL, 1);      /* FEAT_TTL */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, BBM, 2);      /* FEAT_BBM at level 2 */
-     cpu->isar.id_aa64mmfr2 = t;
- 
-     t = cpu->isar.id_aa64zfr0;
-     t = FIELD_DP64(t, ID_AA64ZFR0, SVEVER, 1);
--    t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);  /* PMULL */
--    t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);
--    t = FIELD_DP64(t, ID_AA64ZFR0, BFLOAT16, 1);
--    t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);
--    t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);
--    t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);
--    t = FIELD_DP64(t, ID_AA64ZFR0, F32MM, 1);
--    t = FIELD_DP64(t, ID_AA64ZFR0, F64MM, 1);
-+    t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);       /* FEAT_SVE_PMULL128 */
-+    t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);   /* FEAT_SVE_BitPerm */
-+    t = FIELD_DP64(t, ID_AA64ZFR0, BFLOAT16, 1);  /* FEAT_BF16 */
-+    t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);      /* FEAT_SVE_SHA3 */
-+    t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);       /* FEAT_SVE_SM4 */
-+    t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);      /* FEAT_I8MM */
-+    t = FIELD_DP64(t, ID_AA64ZFR0, F32MM, 1);     /* FEAT_F32MM */
-+    t = FIELD_DP64(t, ID_AA64ZFR0, F64MM, 1);     /* FEAT_F64MM */
-     cpu->isar.id_aa64zfr0 = t;
- 
-     t = cpu->isar.id_aa64dfr0;
--    t = FIELD_DP64(t, ID_AA64DFR0, PMUVER, 5); /* v8.4-PMU */
-+    t = FIELD_DP64(t, ID_AA64DFR0, PMUVER, 5);    /* FEAT_PMUv3p4 */
-     cpu->isar.id_aa64dfr0 = t;
- 
-     /* Replicate the same data to the 32-bit id registers.  */
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-index b0dbf2c991..bc8f9d0edf 100644
---- a/target/arm/cpu_tcg.c
-+++ b/target/arm/cpu_tcg.c
-@@ -28,55 +28,55 @@ void aa32_max_features(ARMCPU *cpu)
- 
-     /* Add additional features supported by QEMU */
-     t = cpu->isar.id_isar5;
--    t = FIELD_DP32(t, ID_ISAR5, AES, 2);
--    t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);
--    t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);
-+    t = FIELD_DP32(t, ID_ISAR5, AES, 2);          /* FEAT_PMULL */
-+    t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);         /* FEAT_SHA1 */
-+    t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);         /* FEAT_SHA256 */
-     t = FIELD_DP32(t, ID_ISAR5, CRC32, 1);
--    t = FIELD_DP32(t, ID_ISAR5, RDM, 1);
--    t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);
-+    t = FIELD_DP32(t, ID_ISAR5, RDM, 1);          /* FEAT_RDM */
-+    t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);         /* FEAT_FCMA */
-     cpu->isar.id_isar5 = t;
- 
-     t = cpu->isar.id_isar6;
--    t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);
--    t = FIELD_DP32(t, ID_ISAR6, DP, 1);
--    t = FIELD_DP32(t, ID_ISAR6, FHM, 1);
--    t = FIELD_DP32(t, ID_ISAR6, SB, 1);
--    t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);
--    t = FIELD_DP32(t, ID_ISAR6, BF16, 1);
--    t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);
-+    t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);        /* FEAT_JSCVT */
-+    t = FIELD_DP32(t, ID_ISAR6, DP, 1);           /* Feat_DotProd */
-+    t = FIELD_DP32(t, ID_ISAR6, FHM, 1);          /* FEAT_FHM */
-+    t = FIELD_DP32(t, ID_ISAR6, SB, 1);           /* FEAT_SB */
-+    t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);      /* FEAT_SPECRES */
-+    t = FIELD_DP32(t, ID_ISAR6, BF16, 1);         /* FEAT_AA32BF16 */
-+    t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);         /* FEAT_AA32I8MM */
-     cpu->isar.id_isar6 = t;
- 
-     t = cpu->isar.mvfr1;
--    t = FIELD_DP32(t, MVFR1, FPHP, 3);     /* v8.2-FP16 */
--    t = FIELD_DP32(t, MVFR1, SIMDHP, 2);   /* v8.2-FP16 */
-+    t = FIELD_DP32(t, MVFR1, FPHP, 3);            /* FEAT_FP16 */
-+    t = FIELD_DP32(t, MVFR1, SIMDHP, 2);          /* FEAT_FP16 */
-     cpu->isar.mvfr1 = t;
- 
-     t = cpu->isar.mvfr2;
--    t = FIELD_DP32(t, MVFR2, SIMDMISC, 3); /* SIMD MaxNum */
--    t = FIELD_DP32(t, MVFR2, FPMISC, 4);   /* FP MaxNum */
-+    t = FIELD_DP32(t, MVFR2, SIMDMISC, 3);        /* SIMD MaxNum */
-+    t = FIELD_DP32(t, MVFR2, FPMISC, 4);          /* FP MaxNum */
-     cpu->isar.mvfr2 = t;
- 
-     t = cpu->isar.id_mmfr3;
--    t = FIELD_DP32(t, ID_MMFR3, PAN, 2); /* ATS1E1 */
-+    t = FIELD_DP32(t, ID_MMFR3, PAN, 2);          /* FEAT_PAN2 */
-     cpu->isar.id_mmfr3 = t;
- 
-     t = cpu->isar.id_mmfr4;
--    t = FIELD_DP32(t, ID_MMFR4, HPDS, 1); /* AA32HPD */
--    t = FIELD_DP32(t, ID_MMFR4, AC2, 1); /* ACTLR2, HACTLR2 */
--    t = FIELD_DP32(t, ID_MMFR4, CNP, 1); /* TTCNP */
--    t = FIELD_DP32(t, ID_MMFR4, XNX, 1); /* TTS2UXN */
-+    t = FIELD_DP32(t, ID_MMFR4, HPDS, 1);         /* FEAT_AA32HPD */
-+    t = FIELD_DP32(t, ID_MMFR4, AC2, 1);          /* ACTLR2, HACTLR2 */
-+    t = FIELD_DP32(t, ID_MMFR4, CNP, 1);          /* FEAT_TTCNP */
-+    t = FIELD_DP32(t, ID_MMFR4, XNX, 1);          /* FEAT_XNX*/
-     cpu->isar.id_mmfr4 = t;
- 
-     t = cpu->isar.id_pfr0;
--    t = FIELD_DP32(t, ID_PFR0, DIT, 1);
-+    t = FIELD_DP32(t, ID_PFR0, DIT, 1);           /* FEAT_DIT */
-     cpu->isar.id_pfr0 = t;
- 
-     t = cpu->isar.id_pfr2;
--    t = FIELD_DP32(t, ID_PFR2, SSBS, 1);
-+    t = FIELD_DP32(t, ID_PFR2, SSBS, 1);          /* FEAT_SSBS */
-     cpu->isar.id_pfr2 = t;
- 
-     t = cpu->isar.id_dfr0;
--    t = FIELD_DP32(t, ID_DFR0, PERFMON, 5); /* v8.4-PMU */
-+    t = FIELD_DP32(t, ID_DFR0, PERFMON, 5);       /* FEAT_PMUv3p4 */
-     cpu->isar.id_dfr0 = t;
+       # The canonical nop ends in 0000 0000, but the whole rest
+       # of the space is "reserved hint, behaves as nop".
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index 76499ffa14..390b6578a8 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -960,3 +960,46 @@ void HELPER(probe_access)(CPUARMState *env, target_ulong ptr,
+                      access_type, mmu_idx, ra);
+     }
+ }
++
++/*
++ * This function corresponds to AArch64.vESBOperation().
++ * Note that the AArch32 version is not functionally different.
++ */
++void HELPER(vesb)(CPUARMState *env)
++{
++    /*
++     * The EL2Enabled() check is done inside arm_hcr_el2_eff,
++     * and will return HCR_EL2.VSE == 0, so nothing happens.
++     */
++    uint64_t hcr = arm_hcr_el2_eff(env);
++    bool enabled = !(hcr & HCR_TGE) && (hcr & HCR_AMO);
++    bool pending = enabled && (hcr & HCR_VSE);
++    bool masked  = (env->daif & PSTATE_A);
++
++    /* If VSE pending and masked, defer the exception.  */
++    if (pending && masked) {
++        uint32_t syndrome;
++
++        if (arm_el_is_aa64(env, 1)) {
++            /* Copy across IDS and ISS from VSESR. */
++            syndrome = env->cp15.vsesr_el2 & 0x1ffffff;
++        } else {
++            ARMMMUFaultInfo fi = { .type = ARMFault_AsyncExternal };
++
++            if (extended_addresses_enabled(env)) {
++                syndrome = arm_fi_to_lfsc(&fi);
++            } else {
++                syndrome = arm_fi_to_sfsc(&fi);
++            }
++            /* Copy across AET and ExT from VSESR. */
++            syndrome |= env->cp15.vsesr_el2 & 0xd000;
++        }
++
++        /* Set VDISR_EL2.A along with the syndrome. */
++        env->cp15.vdisr_el2 = syndrome | (1u << 31);
++
++        /* Clear pending virtual SError */
++        env->cp15.hcr_el2 &= ~HCR_VSE;
++        cpu_reset_interrupt(env_cpu(env), CPU_INTERRUPT_VSERR);
++    }
++}
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index b80313670f..5a02e076b7 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -1454,6 +1454,23 @@ static void handle_hint(DisasContext *s, uint32_t insn,
+             gen_helper_autib(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
+         }
+         break;
++    case 0b10000: /* ESB */
++        /* Without RAS, we must implement this as NOP. */
++        if (dc_isar_feature(aa64_ras, s)) {
++            /*
++             * QEMU does not have a source of physical SErrors,
++             * so we are only concerned with virtual SErrors.
++             * The pseudocode in the ARM for this case is
++             *   if PSTATE.EL IN {EL0, EL1} && EL2Enabled() then
++             *      AArch64.vESBOperation();
++             * Most of the condition can be evaluated at translation time.
++             * Test for EL2 present, and defer test for SEL2 to runtime.
++             */
++            if (s->current_el <= 1 && arm_dc_feature(s, ARM_FEATURE_EL2)) {
++                gen_helper_vesb(cpu_env);
++            }
++        }
++        break;
+     case 0b11000: /* PACIAZ */
+         if (s->pauth_active) {
+             gen_helper_pacia(cpu_X[30], cpu_env, cpu_X[30],
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 4e19191ed5..87a899d638 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -6239,6 +6239,29 @@ static bool trans_WFI(DisasContext *s, arg_WFI *a)
+     return true;
  }
  
++static bool trans_ESB(DisasContext *s, arg_ESB *a)
++{
++    /*
++     * For M-profile, minimal-RAS ESB can be a NOP.
++     * Without RAS, we must implement this as NOP.
++     */
++    if (!arm_dc_feature(s, ARM_FEATURE_M) && dc_isar_feature(aa32_ras, s)) {
++        /*
++         * QEMU does not have a source of physical SErrors,
++         * so we are only concerned with virtual SErrors.
++         * The pseudocode in the ARM for this case is
++         *   if PSTATE.EL IN {EL0, EL1} && EL2Enabled() then
++         *      AArch32.vESBOperation();
++         * Most of the condition can be evaluated at translation time.
++         * Test for EL2 present, and defer test for SEL2 to runtime.
++         */
++        if (s->current_el <= 1 && arm_dc_feature(s, ARM_FEATURE_EL2)) {
++            gen_helper_vesb(cpu_env);
++        }
++    }
++    return true;
++}
++
+ static bool trans_NOP(DisasContext *s, arg_NOP *a)
+ {
+     return true;
 -- 
 2.34.1
 

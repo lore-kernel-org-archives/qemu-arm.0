@@ -1,65 +1,65 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1586500lfj;
-        Thu, 5 May 2022 23:30:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw4HjcWT4I3u7inic5BQriuTAbECraDYObfO9uRzHzP7Ipya6Rg8ineQXu2TUYF1fSTR0YY
-X-Received: by 2002:a05:6214:d44:b0:45a:8b80:4239 with SMTP id 4-20020a0562140d4400b0045a8b804239mr1271565qvr.10.1651818656042;
-        Thu, 05 May 2022 23:30:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651818656; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1590115lfj;
+        Thu, 5 May 2022 23:39:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwtEBO+57MmsEVxnrO7x2pMaPb0BUJJrB7tLcDJ2GTXeBPEBcNAVaepzE7M1rVBjWgdlcQ5
+X-Received: by 2002:ad4:5c8f:0:b0:456:3dbf:f58e with SMTP id o15-20020ad45c8f000000b004563dbff58emr1294275qvh.37.1651819163374;
+        Thu, 05 May 2022 23:39:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651819163; cv=none;
         d=google.com; s=arc-20160816;
-        b=AktBNOjPlaLvvOWhCIU+I8PENTmim+VpzGlz0UeR+qRTBS6NCXCnQkoOfwjeG9qVad
-         E3vByKdTOreeQartWaY0a2gy8Tn1oQOWGZ6M+qPq7WpuabsyWfEYj8UI9VWVgSpvpepV
-         k6s44Ea0qSWKaQI8gdrJ1ijVj0wU+hGhU90F4TXlaJB+3OpjqOf6QU9dyGSZLnzRg0yT
-         Xg5Xib7xd1KL9hCdiAdDiy8pDU2rtEJd358PTUtzthCPaOUjzp4RuqT0EzCuSUuPexu6
-         JqJrFy9gNwxBN9imLpHKfATkEBL7oT1Vq4h8mMVsmhq8yrMa313TaZTAiHTXr5kZc0Nh
-         y9mg==
+        b=VbLCl3tggbVHsnXyzs5ENC0YddHrxOcT7fic7dXNlWGYctibcAL4C1wnMAIuIfa4ak
+         7VF2mVtoUCiEEqetKhXTU3HLRLBgJ8jVt0YeIwP7BvVeX7VSTTyDkfq3ye8EequvDHMX
+         RJj7qjkYswmKK4kMnog06VdPOS6F/5gEDzFVk65OpIsQoG9hhZa7GwLoDip66/HgSXWY
+         0amoxUteMZnm4PPO9d/PqU5XwiyLV736tDrpJgEdf35COuakJI+eXidKb3GDcuNE5x7r
+         ThPsGHqMt77FqYOoFjzM6wG6wB8dYI0u0nPiUumt+Q6+s1mCjm9iaJb4YczrplPqLP/9
+         Z5Xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=ZsDXe5Wyc181N3UAMj0SoF/iS0PfWcDURpOEDvcae24=;
-        b=HFo89T2404UhdCV9yel8uUwAN8+eGZXwZrOG75RMfLZCW748MNg7RepEwnc5pZjFZq
-         ZdLCfzmKByRr1BC8RSU6Sjpl7QW3e2vg+RLgF86jwe/v1mlj1xvm1HglH7ONfqrCST6T
-         6ckkAj4W3cP7IDiIJjf1x4kmM9jzo+JSXLJsLvMzu96koRkGC5c/YFn6O9rg8Bh/aec0
-         JLP8u4giTXocRmFHdcPQ/3VwG3PH66X0o41bAxpHw9hTHwbALMuvr0+sb/BYczCQ50D/
-         xnnXWxX/o7Vl3lotMuePejZufOq5UzY7Z/BimRIf5RjAmhuMcYMkCmO/yKIs+fdVYKx7
-         R5MQ==
+        bh=0UImBbC1gCwHX5sn3jv1/a6UfzdZbUvHsUyYQ3UOte0=;
+        b=NRPNpfQ3Tv4WFU0n33gDR6qbpN/YJkmCYIYtaf3EiYaf88qWs3eoQXGVhhxqxN1EM5
+         WKjN6HFMPsDd/YnchJW4dkugCIr7j/5psMO4Q8rQIHGfG48TTQitQUUl9skZpZ0/4dqJ
+         lv+QF/c6vc9Ah158DLnq74iOzaIvl4p00WPvjg1M6Pj4Z4tVHktDdoVtp3uKFzHpLjdL
+         4AfMhk4tFX760lnf3sjYGYrwJgEdQqh7/4Upn4k/SwoMONQ8CGJnm64OlgatiTUo12PF
+         CYH978uFFJtdLzQW9rJC/g5fthxtL1MiyaKWw04PNTfIFu2OpAq1l1JIyYTjL37rc29q
+         ObeQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jk5-20020ad45d45000000b004522bbefd30si2679976qvb.40.2022.05.05.23.30.55
+        by mx.google.com with ESMTPS id c3-20020a05620a268300b0069f4a9ddba6si2018193qkp.479.2022.05.05.23.39.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 May 2022 23:30:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 May 2022 23:39:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43876 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48996 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nmrUN-0007EQ-Dr
-	for alex.bennee@linaro.org; Fri, 06 May 2022 02:30:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36312)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nmrcY-0002Rl-Qh
+	for alex.bennee@linaro.org; Fri, 06 May 2022 02:39:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nmrTk-0007Ds-PV
- for qemu-arm@nongnu.org; Fri, 06 May 2022 02:30:17 -0400
-Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137]:49583)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nmraG-0001IV-Qy
+ for qemu-devel@nongnu.org; Fri, 06 May 2022 02:37:01 -0400
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:49017)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nmrTi-0000be-9X
- for qemu-arm@nongnu.org; Fri, 06 May 2022 02:30:16 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.44])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id A98E621D0C;
- Fri,  6 May 2022 06:30:10 +0000 (UTC)
-Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nmraE-0001iV-U1
+ for qemu-devel@nongnu.org; Fri, 06 May 2022 02:37:00 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.17])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id B039CFCF6B00;
+ Fri,  6 May 2022 08:36:55 +0200 (CEST)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.6; Fri, 6 May 2022
- 08:30:10 +0200
+ 08:36:55 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005a661c56a-4da7-4bb7-bb46-6bded6cdaa71,
+ (GARM-104R005cbeb307c-23af-4b87-808f-437e93b79658,
  85FEA43FB7D152D5FE87D0D31D0EEF45A371AE19) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.66.77.115
-Message-ID: <97674ac7-17c5-06cf-6bd0-0e7acc37abcc@kaod.org>
-Date: Fri, 6 May 2022 08:30:04 +0200
+Message-ID: <6a44aa70-e778-a115-6e4a-1336fef6c951@kaod.org>
+Date: Fri, 6 May 2022 08:36:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.0
@@ -68,97 +68,71 @@ Content-Language: en-US
 To: Peter Delevoryas <pdel@fb.com>
 CC: "patrick@stwcx.xyz" <patrick@stwcx.xyz>, "qemu-arm@nongnu.org"
  <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Peter
- Maydell <peter.maydell@linaro.org>, Klaus Jensen <its@irrelevant.dk>
+ Maydell <peter.maydell@linaro.org>
 References: <20220503225925.1798324-1-pdel@fb.com>
  <20220503225925.1798324-2-pdel@fb.com>
  <2ab490a2-875d-ae82-38d0-425415f9818c@kaod.org>
  <856683F7-3F36-449E-B203-89EC3D876DD9@fb.com>
+ <3C811C58-AF56-412B-B567-1218076B7584@fb.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <856683F7-3F36-449E-B203-89EC3D876DD9@fb.com>
+In-Reply-To: <3C811C58-AF56-412B-B567-1218076B7584@fb.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.103]
-X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: a99988e5-e2cf-4127-9b12-839ce753a2b7
-X-Ovh-Tracer-Id: 13867146206085155622
+X-Ovh-Tracer-GUID: a4c7bd08-8600-40f1-8ded-19409e0afd62
+X-Ovh-Tracer-Id: 13981143571456035747
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrfedvgddutdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpefhtedtkeegheetfeetfeefkeeltedtieeggfehjeejfeethfeuveeijedtgefgjeenucffohhmrghinhepghhithhhuhgsrdgtohhmpdhsvghtuhhpqdguvghvrdhshhdprhgvrgguthhhvgguohgtshdrihhopdhoiihlrggsshdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehithhssehirhhrvghlvghvrghnthdrughk
-Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
- helo=9.mo548.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrfedvgddutdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrgh
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lxu0jmiXMYZ5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: d0haII13A3uQ
 
-On 5/4/22 18:34, Peter Delevoryas wrote:
-> 
->> On May 4, 2022, at 12:39 AM, Cédric Le Goater <clg@kaod.org> wrote:
+
+>>> Have you considered extending the emulation to include a AST1030 SoC
+>>> in a larger machine ?
+>>>
+>>> The AST1030 SoC is merged and I think that QEMU could run a cortex-m4
+>>> CPU and a A7 CPU. A + R CPUs is supported (Xilinx boards).
+>>>
 >>
->> ﻿On 5/4/22 00:59, Peter Delevoryas wrote:
->>> Add the 'fby35-bmc' machine type based on the kernel DTS[1] and userspace
->>> i2c setup scripts[2]. Undefined values are inherited from the AST2600-EVB.
->>> Reference images can be found in Facebook OpenBMC Github Release assets
->>> as "fby35.mtd". [3]
->>> You can boot the reference images as follows (fby35 uses dual-flash):
->>> qemu-system-arm -machine fby35-bmc \
->>>      -drive file=fby35.mtd,format=raw,if=mtd \
->>>      -drive file=fby35.mtd,format=raw,if=mtd \
->>>      -nographic
->>> [1] https://github.com/facebook/openbmc-linux/blob/412d5053258007117e94b1e36015aefc1301474b/arch/arm/boot/dts/aspeed-bmc-facebook-fby35.dts
->>> [2] https://github.com/facebook/openbmc/blob/e2294ff5d31dd65c248fe396a385286d6d5c463d/meta-facebook/meta-fby35/recipes-fby35/plat-utils/files/setup-dev.sh
->>> [3] https://github.com/facebook/openbmc/releases
->>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+>> As a matter of fact yes! I tested booting our OpenBIC Zephyr kernel last week with the 1030, that worked. I also used the experimental i2c multi-master patches from Klaus to make a i2c-netdev device that connects two separate QEMU instances through a socket and sends their i2c messages back and forth. I was able to test a basic MCTP transaction.
 >>
->> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>> I’m hoping to help however possible with merging Klaus’s changes, and then propose the i2c-netdev thing too.
 > 
-> Thanks!
+> Oh wait a minute: You mean I could include both SoC’s in one machine? 
 
-Could you please send a v2 with an update of the documentation ?
-or a follow up ? no need to resend the first patch unless you
-want to change something. A one-liner in :
+Yes. We would need to extend the Aspeed machines to instantiate
+2 different SoCs (or more). This is something quite interesting
+to design.
 
-   https://qemu.readthedocs.io/en/latest/system/arm/aspeed.html
+> Oh that’s a good idea actually. Maybe I’ll look into that as an alternative to the socket thing. Still, it might be something useful to submit anyways.
 
-[ ... ]
-
-> As a matter of fact yes! I tested booting our OpenBIC Zephyr kernel last week with the 1030, that worked. I also used the experimental i2c multi-master patches from Klaus to make a i2c-netdev device that connects two separate QEMU instances through a socket and sends their i2c messages back and forth. I was able to test a basic MCTP transaction.
-
-Nice ! And do you need anything special from the I2C Aspeed models ?
-Apart from :
-
-  https://patchwork.ozlabs.org/project/qemu-devel/list/?series=292928
-
-> I’m hoping to help however possible with merging Klaus’s changes, 
-
-They don't need much work. Klaus doesn't have the datasheet, so we
-should help him with the changes requiring some internal knowledge.
-
-> and then propose the i2c-netdev thing too.
-
-I was going to ask since I didn't see any models for such devices.
-
-I hope to do something similar with the usb-net device but it needs
-fixes first.
+Yes. Please do.
 
 Thanks,
 
 C.
+

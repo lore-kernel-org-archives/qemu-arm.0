@@ -1,53 +1,53 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1512538lfj;
-        Thu, 5 May 2022 20:16:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz0NSAOWhdWMPfUXqTYaQUX1RC7WvZ/WzpPkiIJ8AZcnByO6KRqio7LKqBKhE0ihyyFn1gB
-X-Received: by 2002:a05:6214:2342:b0:42d:7c8b:9eac with SMTP id hu2-20020a056214234200b0042d7c8b9eacmr911141qvb.5.1651806998925;
-        Thu, 05 May 2022 20:16:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651806998; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1512547lfj;
+        Thu, 5 May 2022 20:16:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyuYC/I8mncN2ji2uUZ3sm8Mel54HQD/nOxDTiu4vvwPYOkddEzVxlsGZbTdhPuuMi1kuG9
+X-Received: by 2002:a05:622a:309:b0:2f3:b965:f1d with SMTP id q9-20020a05622a030900b002f3b9650f1dmr1075911qtw.314.1651807000119;
+        Thu, 05 May 2022 20:16:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651807000; cv=none;
         d=google.com; s=arc-20160816;
-        b=uQf58hnGsG8B6XE8iTkxnYIuctjIQWkINT5s0BONndPyHg3pWXWKXfh0hQ6WcRSebz
-         9ce7QAey1oToBQXzk5GY46Zi3J5SCK/FUfWPZTfWhLW6ioXiAJ3eLFyGHJ2nszqyBv8s
-         /vxDjVW93RDelexD3YJEdXlkRJjs1Hmm/FaeHUMr2l0wLYB1WjA1a4FnRiNvT0cAGedz
-         TYceiMvx+m5KZIcoUg0oi8q72Za0ikwpP5XomN10RFdVHmFZdeH8PYIK1RK8H7cBlBw0
-         ZD9qfcRPBMOsCAkVrYW33/5+FFpY7jIT4GOiUOZVBU89TQKsGNbDS5EtYP4A69jqiMlX
-         Q35g==
+        b=mPCuFfl0uFGD+W7OmZSUOz3Yv7KFfzxeZH13X2K+tRcG9yVG5J0VVwvXwJNfUt8Qz9
+         LkKV+C+dE2vFuIdGPmJB/t9eXCHVj7SFLGeyN8RNujRgHGE1PBunrto/oOKRdce1KsQb
+         khaoLr6I68D3vQwPi6W4a9Va28zELZFFtCk6xZEJVTJjub9GnRpJH2xZiG/burpSmj0E
+         F6ESqWHSyFgqqdalKTszRY12YYQuEGgEbT7hvmmJuFtgdVcjJfzj+ab7QqWugaYO25Jy
+         F5nDnx0QHMzgBGkX5GyHKe2cAU10moGhX+SodEQp8Qupn9Z70lOpt3PxZ345bIA2shEN
+         6aAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:cc:to:from;
-        bh=C4xBmqh66towBalAUwZJAP2jvhetuIdE+0VMquTORf0=;
-        b=VB63VoUeNeFPgRVQTRd5bXKXOyKZuoy0sJXg1V9iLRX4rVYS4R6aTHBkGeSe24nsJm
-         byZyv6QOQHju177DXjlLiVM92tdYfhNgvLss1g3QPiV0g66xK2CE5YIE1PwoanWKT7sH
-         Bu2arDmfm4CwsMztxfP7JMpd1AtOkBVgfdEB/FV2vbKjaImZ2PWlvV8QfCsD8BMVXDpN
-         Mooy3UaEBW8gHsoHMKnkmAwnNS0o0XoUuNMQW/s2WNohEZa4kmOTv2uIKXGLD/kgl7r3
-         p9NT2VHRvtMSTZxfpHhHgXSlAHue4NjBjICkFXKhsInb66oSZrVvTrP/zwtjo+dVXFku
-         9XAw==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from;
+        bh=Y3vOAO0zXWXvnPSNEPPX08mQgDhVClF/sgwB2hhX31M=;
+        b=h7kcvS2pW516IC8K6FxCuCfRhmH1Uvi5gzNF7chldZsjk9w1OKc3Er531/XRX/Fsx1
+         c+VIOrLYczpFEULCWbtm8n7uHw0CQiE8hcykERDXpHnNQwspO+ShjtnhvcofpvQ2X6ov
+         5mPsq/raYkSkFhETn9dBNR6ALbNUOH0Le6zp/4hWb4gAHO6zgwSR9r2FML9CA668qapD
+         dmnoAt5KA/3ids7Qxc9Vece+vI5EMgbDUNJs1RbWdWHxa0yeKr/uyIZdqVWGf6aVUBdE
+         F6JKDvimmHr7JT45AakiFPJo4DHZzQShaaijo3eolwPisxUVccv2c5MUZQbFU/gsg3q2
+         1E8w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m7-20020a05622a118700b002f3c5f05d2asi543235qtk.527.2022.05.05.20.16.38
+        by mx.google.com with ESMTPS id v6-20020a37dc06000000b0069fb40e49a3si1813360qki.217.2022.05.05.20.16.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 May 2022 20:16:38 -0700 (PDT)
+        Thu, 05 May 2022 20:16:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47234 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47268 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nmoSM-0007M7-Dm
-	for alex.bennee@linaro.org; Thu, 05 May 2022 23:16:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41214)
+	id 1nmoSN-0007O6-KQ
+	for alex.bennee@linaro.org; Thu, 05 May 2022 23:16:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1nmoSA-0007LL-MD; Thu, 05 May 2022 23:16:26 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:3035)
+ id 1nmoSC-0007La-IM; Thu, 05 May 2022 23:16:28 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:40033)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1nmoS7-00073b-LS; Thu, 05 May 2022 23:16:26 -0400
+ id 1nmoS9-00073w-T7; Thu, 05 May 2022 23:16:27 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 24632OM7041962;
+ by twspam01.aspeedtech.com with ESMTP id 24632OOh041963;
  Fri, 6 May 2022 11:02:24 +0800 (GMT-8)
  (envelope-from jamin_lin@aspeedtech.com)
 Received: from localhost.localdomain (192.168.70.87) by TWMBX02.aspeed.com
@@ -59,17 +59,19 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
  list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <steven_lee@aspeedtech.com>
-Subject: [PATCH v1 0/1] Add minibmc section in aspeed document
-Date: Fri, 6 May 2022 11:15:20 +0800
-Message-ID: <20220506031521.13254-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 1/1] docs: add minibmc section in aspeed document
+Date: Fri, 6 May 2022 11:15:21 +0800
+Message-ID: <20220506031521.13254-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20220506031521.13254-1-jamin_lin@aspeedtech.com>
+References: <20220506031521.13254-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [192.168.70.87]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 24632OM7041962
+X-MAIL: twspam01.aspeedtech.com 24632OOh041963
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -91,17 +93,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ni77a4oA1Bs3
+X-TUID: MVVnQ3yeWJ4z
 
-- v1:
-add minibmc section in aspeed document
-
-Jamin Lin (1):
-  docs: add minibmc section in aspeed document
-
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
  docs/system/arm/aspeed.rst | 61 ++++++++++++++++++++++++++++++++++++++
  1 file changed, 61 insertions(+)
 
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 60ed94f187..6f2e4fb53d 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -120,3 +120,64 @@ FMC chip and a bigger (64M) SPI chip, use :
+ .. code-block:: bash
+ 
+   -M ast2500-evb,fmc-model=mx25l25635e,spi-model=mx66u51235f
++
++
++Aspeed minibmc family boards (``ast1030-evb``)
++==================================================================
++
++The QEMU Aspeed machines model mini BMCs of various Aspeed evaluation
++boards. They are based on different releases of the
++Aspeed SoC : the AST1030 integrating an ARM Cortex M4F CPU (200MHz).
++
++The SoC comes with SRAM, SPI, I2C, etc.
++
++AST1030 SoC based machines :
++
++- ``ast1030-evb``          Aspeed AST1030 Evaluation board (Cortex-M4F)
++
++Supported devices
++-----------------
++
++ * SMP (for the AST1030 Cortex-M4F)
++ * Interrupt Controller (VIC)
++ * Timer Controller
++ * I2C Controller
++ * System Control Unit (SCU)
++ * SRAM mapping
++ * Static Memory Controller (SMC or FMC) - Only SPI Flash support
++ * SPI Memory Controller
++ * USB 2.0 Controller
++ * Watchdog Controller
++ * GPIO Controller (Master only)
++ * UART
++ * LPC Peripheral Controller (a subset of subdevices are supported)
++ * Hash/Crypto Engine (HACE) - Hash support only. TODO: HMAC and RSA
++ * ADC
++
++
++Missing devices
++---------------
++
++ * PWM and Fan Controller
++ * Slave GPIO Controller
++ * PECI Controller
++ * Mailbox Controller
++ * Virtual UART
++ * eSPI Controller
++ * I3C Controller
++
++Boot options
++------------
++
++The Aspeed machines can be started using the ``-kernel`` to load a
++Zephyr OS or from a firmware. Images can be downloaded from the
++ASPEED GitHub release repository :
++
++   https://github.com/AspeedTech-BMC/zephyr/releases
++
++To boot a kernel directly from a Zephyr build tree:
++
++.. code-block:: bash
++
++  $ qemu-system-arm -M ast1030-evb -nographic \
++        -kernel zephyr.elf
 -- 
 2.17.1
 

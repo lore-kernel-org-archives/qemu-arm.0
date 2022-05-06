@@ -1,111 +1,107 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1918003lfj;
-        Fri, 6 May 2022 09:26:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxBXn9DD4D3BAjkndZK553lvEx6C/40RwgwmgIO1rczcwdQb8StL4hlBrsC2rt/h+xLVPsA
-X-Received: by 2002:a0c:d7cd:0:b0:432:8df8:94e2 with SMTP id g13-20020a0cd7cd000000b004328df894e2mr3174997qvj.90.1651854402755;
-        Fri, 06 May 2022 09:26:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651854402; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1923912lfj;
+        Fri, 6 May 2022 09:36:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyO038FjlpuXCgVnuzCTGqpKttkDbw3YVNRX6Eq/Xa72DrVGg9CJ6yUo8eVicDC6YndHTsl
+X-Received: by 2002:a05:620a:44ce:b0:69f:df59:44a7 with SMTP id y14-20020a05620a44ce00b0069fdf5944a7mr2880605qkp.537.1651854993911;
+        Fri, 06 May 2022 09:36:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651854993; cv=none;
         d=google.com; s=arc-20160816;
-        b=FFiaE14QMhNqho9lUBr7jnI/z1heNjypE2sNyZDst/IJQYkhiWKBEloWP5VyaCWuI0
-         GLFbvKn6tZ14+P4C00LdnCah3oawh7xK2RdlXtsWxnx1YsGTLlH0vyvBQfQWHYBhfjzL
-         3EirSEd3flcMqTr539u2esOuJetnLDN447zdOb/kZYQ9301mAQBR8ctkQF8UVGprTHxq
-         RYholEZib7u3igFuaHrb7kjRPjO2051vupPcl5EIDJeD4/lN3mxQWEpyU9K/HohG/Z0d
-         ZICO/brOVsuA2PW8xa8QEPVd2d4bMIQsKeGkqtYeb3GF7Koqqq9Z6leO6Isud+HPI9VX
-         orRA==
+        b=FzYxm+NIv9SBIL4iY2Z/VxBDkJkKcJZ/ws8k/4sXv3s+3K8NtgcO2vju4U7ifTkt/p
+         dUfYXdrDtHXFXHXd3DgJeRC34ff6OaNREEJDu+++qVONdFIxrxqXfU0sGuEu61soAyQ5
+         46j0zafnlTmJutHC9ogGuYLX7OoXcgXsUnb0iSDfkPY+1OFV9xaR25LlWM8ghsQ0EF93
+         4Pr92mzO98uVLCH0Ai4YfXv5ZHTyOuGbYEV0Tw3ZfYmgdTyx1eSyKf8MUSjunATtrMvG
+         C8DoH6XGuRtKfLWVhweBw+utOjbfpX8c9/jPFruCiP6AVfLZI+nzAVL0A+hhvU/2vZKL
+         lCcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=rznGUlqhm1e5gkG+nuwND08zKHXTaunZHlwOXJp3GXs=;
-        b=OppZh+Kx8a42xIkauhumz5S8gEy5BGJVfrbbgkqOGCyb5H927gCppCj9oj+8JtkryR
-         MBfwKOWk3yWciLL2RBi481v1/zL/V9vFqpW97QAUad0cfccH9nIrr+7sLROkliZpnfcp
-         VqV3rzfeKaOyxQV7sk+1N1doFx0CARjjzZYVE//B180jjsM6R+QPS2621XFmc5TiGWgI
-         YJ3BZQG+jSok9i+kQNogS0034bqCB0vxzMBO67O8jTCGjZ8num75a1h2I7wxrXcKTCi4
-         oeB+FWmDrLEOgKaLOuoktsrmJdw35TftitIlX1IMEkM9gs+kajqzuEa6FUNPJds9VZZg
-         RvVQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=DrKeoY7EnHJfB1OxCMPypdHj3bMBrCzaSzFqKYpoSPE=;
+        b=MwD/q/mwEIVFzVEswNdYHsfSF90YN1BKfMoRdb0vc7u1SGj9Cit9XefJRmolv6Hr3T
+         q6u+mFicqE3gw21qORKBCZKQLoaVBq9MPGvlqiXEiWSRZdSVG2TGDeIa/vAJghtfM8BV
+         8O1is+n1+hmjUKdpRW/DT3JXEciQZVwWpXfXFt4iTjiW39nq2QWaQFP/z0TRFzlHUhnP
+         O+HtRUVokbw2fHSPzNJ98HjAwM3toUez5jPgGlVfyI0Z3I0D5Z4GBzO6KR10AzqgMlRJ
+         EfWjGd3QDRnV2/PhNujFItoXQat61lSfqsK/S5NhyZmsTL2vJBysmitZp0XoBGtlkSoH
+         iVpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="FwrRa/Tv";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pakHyvaK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bp36-20020a05622a1ba400b002f3cbec40a5si448716qtb.652.2022.05.06.09.26.42
+        by mx.google.com with ESMTPS id r15-20020a05620a298f00b006a042dc6d1bsi1718874qkp.486.2022.05.06.09.36.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 May 2022 09:26:42 -0700 (PDT)
+        Fri, 06 May 2022 09:36:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="FwrRa/Tv";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pakHyvaK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38106 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47894 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nn0mw-0005Oc-8p
-	for alex.bennee@linaro.org; Fri, 06 May 2022 12:26:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39250)
+	id 1nn0wT-0004RE-Ar
+	for alex.bennee@linaro.org; Fri, 06 May 2022 12:36:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nn0i4-0005PB-Ii
- for qemu-devel@nongnu.org; Fri, 06 May 2022 12:21:41 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:36499)
+ id 1nn0uQ-0002yY-Ox
+ for qemu-devel@nongnu.org; Fri, 06 May 2022 12:34:26 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130]:43772)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nn0i2-00056x-R7
- for qemu-devel@nongnu.org; Fri, 06 May 2022 12:21:40 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id u3so10710938wrg.3
- for <qemu-devel@nongnu.org>; Fri, 06 May 2022 09:21:37 -0700 (PDT)
+ id 1nn0uP-0006ih-6P
+ for qemu-devel@nongnu.org; Fri, 06 May 2022 12:34:26 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-2ec42eae76bso87178367b3.10
+ for <qemu-devel@nongnu.org>; Fri, 06 May 2022 09:34:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=rznGUlqhm1e5gkG+nuwND08zKHXTaunZHlwOXJp3GXs=;
- b=FwrRa/TvxVORlHBkmC27VQUTCDLeyyslUHXesXwBr6jkQd1og5PR1BVvKTGLlipVJn
- aHd4g7shJbWXBKxZNGmV2PFaYA9rK3AYiurZPnT3AfQaZcwzi2PwM80b7JX6W8TJYYHH
- F1bLaDJ95pc38JeppYeggie45O2qfNkxDamxYTB5aLou04Xrd6rl65/ueaHDVdlEXFCP
- qIfWhe8bYAlU/dDBJc8usEBxm7XAQhdsobONUcefAUQrI6UWN3+tb53CC51hrpYvz0Wk
- Tfd3PA0QDX2WRqMc30iK6i+9z9QzgCkFmyg9bOx7lQPkENc0ls2lHm6JCrLAzlhDaBUf
- Okfw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=DrKeoY7EnHJfB1OxCMPypdHj3bMBrCzaSzFqKYpoSPE=;
+ b=pakHyvaKUzihwevbX+MyP4qaViXhh6NNdh3j1Snznv4jUhPvXIywuEET+tC1cAVUIK
+ FqFGCL2fCloy2FleSSh4Z3H7yKR4Nq3NiLEQrFUc/ysNEOBgBnqarEVwij4J8zVvZ6SR
+ ZGHqWNIWzUmqUt05kEZI+QCeuJoGAnLxP3oc3nc5SakWKpFiVF2ez0hhtmzlZArNB7bI
+ LT40fWRTVvDv4/Z9MVIDknD/Rq/mKy4+MJOPiOPSqUnXEtIyRF+MCpcuaQfSudK5hGdJ
+ ElljCJwgo44LwteVUBS/fj1gcjOI/k9JBngWM/gPV///5Y/E8amkMx1JeeHrcFrWleno
+ B0FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=rznGUlqhm1e5gkG+nuwND08zKHXTaunZHlwOXJp3GXs=;
- b=wDWJt/AdtzedNt0XbfHaXuNdnUqOJ9tiE4R3J3mxgf1SC6vGUR0bM0ivKjhJ69KxoU
- dOopYpOnesk+WJTg0Pm5eXlhPcUrSXbXwz/ZuEZirxKvtXOz3+L6rDARlogeC5KzW6ms
- b21pzq4MQgSXmXV65bsBGko7CDBrUQwQsrKTIihEq0fvcygB6/u1a4XeKW7uK5o/52Vv
- RD/fMJQxLFS9/odnspA2DZ+8ujS2JR+aFFNg340XQ0EIZon6bLyPmi1VjjPsUiIihO4W
- jxkDMhNVDqGdlH1gm7ditQ3rW+bR447aw9PBFA8dCrMZ6O7Wf6Odki6s9mEyg6n6IORr
- CDDQ==
-X-Gm-Message-State: AOAM531tNAgSXAsZOZIdpfM1v5naDS0H8hAdGtZ/kZkVjXwlX6XK8TFR
- oNVj/AO27H4dX38hUCXsCHIOmg==
-X-Received: by 2002:adf:eb87:0:b0:20c:a5b5:6731 with SMTP id
- t7-20020adfeb87000000b0020ca5b56731mr3383751wrn.199.1651854096235; 
- Fri, 06 May 2022 09:21:36 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- j2-20020a5d4482000000b0020c5253d926sm3782082wrq.114.2022.05.06.09.21.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 May 2022 09:21:35 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 5/5] hw/intc/arm_gicv3: Provide ich_num_aprs()
-Date: Fri,  6 May 2022 17:21:29 +0100
-Message-Id: <20220506162129.2896966-6-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220506162129.2896966-1-peter.maydell@linaro.org>
-References: <20220506162129.2896966-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=DrKeoY7EnHJfB1OxCMPypdHj3bMBrCzaSzFqKYpoSPE=;
+ b=CGv7nU0TFTNwRnlW/97r8qDFf49o0IZHx5YNplT47imqcHobXmIk3p/CGt5MeeF3Ss
+ XRI9HQqP52gyxMysFeJ7YLQWpg+GsgPnyYJ99mIf/7tmxYifNXVwnliBaI5EtGJDuKWk
+ cP9FVf73c5TOTx4JgTD5NewxSV2O54gNQMFQBOzh/tD1qcfxdnwNXxDBwwq0Wj4uw7L4
+ Fg02mWGYd3Jt9EpFgPT4SA7SfPIwNcNJtbFGhXcocwdKh59npe0cnO4FXlaLqbrUGQr5
+ UexejTSl6hP15snt7BhljZdWWRujLaDGhSmubjDT05xO+sKbazk8KQKHjs0rWmLryhi5
+ caSg==
+X-Gm-Message-State: AOAM532j6WjB/CfjzfvGRfVzbR1YRzNXASV0T0puJOagW05mtZGkD7Cg
+ 4OJyl5u0VcmaYde0zp3RuWQ6vjQnTNr6mF6vt6Za+g==
+X-Received: by 2002:a81:5584:0:b0:2f7:d7b6:d910 with SMTP id
+ j126-20020a815584000000b002f7d7b6d910mr3623772ywb.469.1651854864243; Fri, 06
+ May 2022 09:34:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+References: <20220506162129.2896966-1-peter.maydell@linaro.org>
+ <20220506162129.2896966-5-peter.maydell@linaro.org>
+In-Reply-To: <20220506162129.2896966-5-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 May 2022 17:34:13 +0100
+Message-ID: <CAFEAcA8bT_LzFTuuciWOUEVnozpOqySrpr1pkZ76MGEk4NK2RA@mail.gmail.com>
+Subject: Re: [PATCH 4/5] hw/intc/arm_gicv3: Use correct number of priority
+ bits for the CPU
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>,
+ Itaru Kitayama <itaru.kitayama@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,64 +116,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u8D5Q2fCODsD
+X-TUID: H5djGa//f+5M
 
-We previously open-coded the expression for the number of virtual APR
-registers and the assertion that it was not going to cause us to
-overflow the cs->ich_apr[] array.  Factor this out into a new
-ich_num_aprs() function, for consistency with the icc_num_aprs()
-function we just added for the physical APR handling.
+On Fri, 6 May 2022 at 17:21, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Make the GICv3 set its number of bits of physical priority from the
+> implementation-specific value provided in the CPU state struct, in
+> the same way we already do for virtual priority bits.  Because this
+> would be a migration compatibility break, we provide a property
+> force-8-bit-prio which is enabled for 7.0 and earlier versioned board
+> models to retain the legacy "always use 8 bits" behaviour.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> I have guessed at the right value for the A64FX, but if we can
+> find the correct ICC_CTLR_EL1 value that would be better.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv3_cpuif.c | 18 ++++++++++--------
- 1 file changed, 10 insertions(+), 8 deletions(-)
+Shuuichirou, Itaru: do either of you know the right setting for
+the A64FX for this? If you can find what the hardware value of
+the ICC_CTLR_EL3 or ICC_CTLR_EL1 register is (more specifically,
+the PRIBits subfield) that should be enough to tell us.
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index e277a807bd5..5418ad9bbc5 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -49,6 +49,14 @@ static inline int icv_min_vbpr(GICv3CPUState *cs)
-     return 7 - cs->vprebits;
- }
- 
-+static inline int ich_num_aprs(GICv3CPUState *cs)
-+{
-+    /* Return the number of virtual APR registers (1, 2, or 4) */
-+    int aprmax = 1 << (cs->vprebits - 5);
-+    assert(aprmax <= ARRAY_SIZE(cs->ich_apr[0]));
-+    return aprmax;
-+}
-+
- /* Simple accessor functions for LR fields */
- static uint32_t ich_lr_vintid(uint64_t lr)
- {
-@@ -145,11 +153,8 @@ static int ich_highest_active_virt_prio(GICv3CPUState *cs)
-      * in the ICH Active Priority Registers.
-      */
-     int i;
--    int aprmax = 1 << (cs->vprebits - 5);
- 
--    assert(aprmax <= ARRAY_SIZE(cs->ich_apr[0]));
--
--    for (i = 0; i < aprmax; i++) {
-+    for (i = 0; i < ich_num_aprs(cs); i++) {
-         uint32_t apr = cs->ich_apr[GICV3_G0][i] |
-             cs->ich_apr[GICV3_G1NS][i];
- 
-@@ -1333,11 +1338,8 @@ static int icv_drop_prio(GICv3CPUState *cs)
-      * 32 bits are actually relevant.
-      */
-     int i;
--    int aprmax = 1 << (cs->vprebits - 5);
- 
--    assert(aprmax <= ARRAY_SIZE(cs->ich_apr[0]));
--
--    for (i = 0; i < aprmax; i++) {
-+    for (i = 0; i < ich_num_aprs(cs); i++) {
-         uint64_t *papr0 = &cs->ich_apr[GICV3_G0][i];
-         uint64_t *papr1 = &cs->ich_apr[GICV3_G1NS][i];
-         int apr0count, apr1count;
--- 
-2.25.1
+> @@ -961,6 +964,12 @@ static void aarch64_a64fx_initfn(Object *obj)
+>      cpu->gic_num_lrs = 4;
+>      cpu->gic_vpribits = 5;
+>      cpu->gic_vprebits = 5;
+> +    /*
+> +     * TODO: What does the real A64FX GICv3 provide ?
+> +     * This is a guess based on what other Arm CPUs do; to find the correct
+> +     * answer we need the value of the A64FX's ICC_CTLR_EL1 register.
+> +     */
+> +    cpu->gic_pribits = 5;
+>
+>      /* Suppport of A64FX's vector length are 128,256 and 512bit only */
+>      aarch64_add_sve_properties(obj);
+> --
+> 2.25.1
 
+thanks
+-- PMM

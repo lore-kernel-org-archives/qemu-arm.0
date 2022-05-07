@@ -1,108 +1,106 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp2027892lfj;
-        Fri, 6 May 2022 12:35:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHN/Wl8wxZGqRpZoQjB0xdVOErlhSM7net8vI3/+knKMmEGbu2Z+AKO6V2foOYTWigVid4
-X-Received: by 2002:a05:620a:795:b0:69f:d074:6067 with SMTP id 21-20020a05620a079500b0069fd0746067mr3525832qka.527.1651865722596;
-        Fri, 06 May 2022 12:35:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1651865722; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp2323436lfj;
+        Sat, 7 May 2022 00:51:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJydGr67pMD5WaLyQzIkN/DohqH/Sx1wy3q10TTJiisCFOflzPtnvNRyc1u8Ro8C4KC48mdm
+X-Received: by 2002:ac8:1487:0:b0:2ef:ca47:89c1 with SMTP id l7-20020ac81487000000b002efca4789c1mr6216506qtj.646.1651909891711;
+        Sat, 07 May 2022 00:51:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651909891; cv=none;
         d=google.com; s=arc-20160816;
-        b=X8lgLLIy+ldAYpGk88af4qyAvHrpZUmzOx+0Q7tVgvWLbWb32MfWf2SSfpG32mFnnS
-         KYhumw9bVq3s73nuilN7kxklQ2FuF86at+Tldw+K4rM/+0kRhtxQn6CJjGToR0kaUPMB
-         BFEeABAnsEsizrJN8L9W7N/Byr1k39w8L5KVlHwba3FLrWNO5mUS3R6ytLbopDH9hzX8
-         cRbmdbVh0eDRr8OBOZX3/JHlF9iAdCc+Qgkm+ynHAN1yklbzqFnRStr60dcYKoSIZNI6
-         rAVS0NxMOi6Hg8WZNeViJAvzEZggATYUf+M2JqigtJh556r1v6s98SYOdQ7zJ0iRuGkc
-         8bxg==
+        b=LkTvb8ASY4gLS5TiXWxBc2fCYaiQ0CucjBdPIQ3xMUi7gfS0YBLYe4TSqE+Z+qsGUy
+         js1RZJQDC96M9jmvKtT4TpLWpBYCNkpBJc6oPSjoy8XFuET1q9tSe2dupH/iq+NqN67l
+         SxVuRP92TKntL90vc3nyUo5e8BIerrmZPyE7KLlYyXWzglPO0IAM7nJqQmBn+YhB7uIq
+         8unFrfo26f9hw0ps5M/uZIQtWi1Kd+IdbWW75b9SziESi0fiEauG62d2DSPSPkLAp3uS
+         Y+TEbbWzLNDjDie+YZ+Fc+eRx9oSuZLbTRxMbjgYw16F5FPL3+h7hFkWCwaVfGtqG33p
+         iWsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ts/PNulP+NDUmLMbRyIQpZdrWAAO71Dq0mF88efIU/Q=;
-        b=lhhcbsghX9D3GgX41s45trb8VkYEpZnpyjUifarZpL4hxksjvAs1ae4NKUt6Ia1nHl
-         IFU0RV3PC5HkJKHZGCSyKwzaZ/gwPtO2P9dwX3uupWJT9eAT8hmjhR86ekKy2XAkbkYh
-         wDLZvcRtCc8Q+MJMdtyiFMj1Brsltsj0jkYtHlDeMjGioRfEQkNEQF+60v4oN7VI2kug
-         rp9FDBtPM53hBllyLa66cjZfDGhV59fVtw+orN/VKYF7bpAqysiBeaipVIwmAkLH735r
-         ziVH7YIAb+JgFJbNnLMfAGIAd0P63QtJUY8G2+/4CwPeA7gvfnlSP8GDg21xLLi74pmh
-         Tslw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=WTTZLH+nVD2rl4MfeDYdfYgJSBe3+wz5NxL4WrsRBZ0=;
+        b=iRtTJE/X2LP9majByGfVQdKeAZ2KKudDXIqzrX57RKw9Tv7rSwOs4cFjY3G0nBN9js
+         l7wwTO6h/I4fp2p3BLBCFMOwuaIYQJZ8nuJr8C8tG2e/Z8p4RBFD6FqBOgCKf/wcO66+
+         dkdV7Ji4lqX86uliIFDiGHaL9vMVUNmphusz0jjxfarwee+bCJ5gslAT2lbmfMs1p08T
+         5sDzv1AdWCyaqlYcSezYac3p/QslPGM17Bo5P/p9A/LBEcDkP4J37UCQD8ahisKDdIUY
+         uKE0HGkfd8GCdkWVY2kqBoMDPNKeJr4sLiVobfP2TBhB4tmXIy0ez5h7bWmJIMehoIyf
+         cvKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=PgGkN++a;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=G26aOLDZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17-20020a05620a415100b006a043b0bf45si1962955qko.699.2022.05.06.12.35.22
+        by mx.google.com with ESMTPS id e8-20020a0562140d8800b0045ab123c7b0si3973367qve.91.2022.05.07.00.51.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 May 2022 12:35:22 -0700 (PDT)
+        Sat, 07 May 2022 00:51:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=PgGkN++a;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=G26aOLDZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:38504 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59256 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nn3jW-0007bS-2v
-	for alex.bennee@linaro.org; Fri, 06 May 2022 15:35:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53722)
+	id 1nnFDv-0005K2-7L
+	for alex.bennee@linaro.org; Sat, 07 May 2022 03:51:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60404)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=6125b5e310=pdel@fb.com>)
- id 1nn3iP-00061e-6M
- for qemu-devel@nongnu.org; Fri, 06 May 2022 15:34:13 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:4810)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=6125b5e310=pdel@fb.com>)
- id 1nn3iM-000287-KG
- for qemu-devel@nongnu.org; Fri, 06 May 2022 15:34:12 -0400
-Received: from pps.filterd (m0044010.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 246H0tNd008383
- for <qemu-devel@nongnu.org>; Fri, 6 May 2022 12:34:06 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding : content-type; s=facebook;
- bh=ts/PNulP+NDUmLMbRyIQpZdrWAAO71Dq0mF88efIU/Q=;
- b=PgGkN++a7qYsyh3eN0qDegYg5qG1Fn4f/xenyBpuS5GcVNDyqLvcnzTXC/EXExwZTOms
- nSpxRNUEuRKEktvjqw5ghYUlVJuY4kFTTOQ2+k8Vhgw3BqUtB7xxzILnghN9PEAF1Uf2
- xHhJhE2hw1TCOtMNsvWUpCmK3pnj4rHw1fs= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3fvhd1gkxk-2
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-devel@nongnu.org>; Fri, 06 May 2022 12:34:06 -0700
-Received: from twshared31479.05.prn5.facebook.com (2620:10d:c0a8:1b::d) by
- mail.thefacebook.com (2620:10d:c0a8:83::5) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Fri, 6 May 2022 12:34:04 -0700
-Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
- id 065C75D276FD; Fri,  6 May 2022 12:33:59 -0700 (PDT)
-From: Peter Delevoryas <pdel@fb.com>
-To: 
-CC: <pdel@fb.com>, <patrick@stwcx.xyz>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>, <clg@kaod.org>
-Subject: [PATCH 1/1] docs: aspeed: Add fby35 board
-Date: Fri, 6 May 2022 12:33:54 -0700
-Message-ID: <20220506193354.990532-2-pdel@fb.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220506193354.990532-1-pdel@fb.com>
-References: <20220506193354.990532-1-pdel@fb.com>
+ (Exim 4.90_1) (envelope-from <itaru.kitayama@gmail.com>)
+ id 1nnFBx-0004Ut-MU; Sat, 07 May 2022 03:49:30 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e]:40471)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <itaru.kitayama@gmail.com>)
+ id 1nnFBw-00047T-2u; Sat, 07 May 2022 03:49:29 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ iq2-20020a17090afb4200b001d93cf33ae9so12730450pjb.5; 
+ Sat, 07 May 2022 00:49:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=WTTZLH+nVD2rl4MfeDYdfYgJSBe3+wz5NxL4WrsRBZ0=;
+ b=G26aOLDZEobU0MbGIiCdnU7wrRbm3TLAKDIrEImL37RG73n/VvRNOLm0+iLQkrZPps
+ hpO4V673im18RVY5a+XD6iLxP8gQviIvdus8O/a21AA/y0TEDsH6bnhXf6VfoAXWO1St
+ ibDdY8gDRsnexOqaUdWiikqYkoOr02cZbz40VMvqSI/TBeaCspBtG0t3/liBb2UAoZqb
+ /UZFsrnsCujtNHkIsGJkPIx27C0HEIs1EF9arFCzjLObugq+sSJFxOPq8vLidls13e5e
+ JxQorid4yzA/uX7oOdQgDHGLJtWYZ2x343mX4ZM1sC3QFoahWDthjOGkpS1d/1GGNCZI
+ S+Kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=WTTZLH+nVD2rl4MfeDYdfYgJSBe3+wz5NxL4WrsRBZ0=;
+ b=f9bJ1KR1k1d/jzHlrmjwBNx7Uj8a9Hj2Ty4yC/bjWjGknj/hyN7FgydTUFfRz0kMWu
+ xl+3i7VC9RifMZfbRdfHK87v0hDmVJrj7JXZLwfF2xUqqbpDz9gA37864LfTdP/dJrzV
+ IdiRyVQ7vg+QPXk6KRfrNqyOQ/LLJ02wmdJ73AhYepjIupz7MMQvcp7LaqXJYmLURIu6
+ Z4hhp1kfeECIMxXA2L7z2KzLN3m1VKlg4wxW4XR2fExe2ULUPdjUtSzXpW8n+INiio5Q
+ geMRhCex8UE9FxuQOB/U38VYgYMsx3rZM9QqM+DVc70eFJGv6pV3vl0eoTyUeYWMiNek
+ odsQ==
+X-Gm-Message-State: AOAM533TByz+M/uKUqgpgMeK2Icl8g9uhM/fDRYacnczfnWI7c07iUEm
+ XbHOmm9ezV06zbTHxeKRtIujQXGarX5Cnqm7ZFE=
+X-Received: by 2002:a17:90b:11d1:b0:1db:d99f:62cc with SMTP id
+ gv17-20020a17090b11d100b001dbd99f62ccmr8589446pjb.200.1651909765712; Sat, 07
+ May 2022 00:49:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-FB-Internal: Safe
-Content-Type: text/plain
-X-Proofpoint-ORIG-GUID: _8LOOT8_2YaYxmlpXKZn6NcIRKG06AmW
-X-Proofpoint-GUID: _8LOOT8_2YaYxmlpXKZn6NcIRKG06AmW
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
- definitions=2022-05-06_07,2022-05-06_01,2022-02-23_01
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=6125b5e310=pdel@fb.com; helo=mx0a-00082601.pphosted.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+References: <20220506162129.2896966-1-peter.maydell@linaro.org>
+ <20220506162129.2896966-5-peter.maydell@linaro.org>
+ <CAFEAcA8bT_LzFTuuciWOUEVnozpOqySrpr1pkZ76MGEk4NK2RA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8bT_LzFTuuciWOUEVnozpOqySrpr1pkZ76MGEk4NK2RA@mail.gmail.com>
+From: Itaru Kitayama <itaru.kitayama@gmail.com>
+Date: Sat, 7 May 2022 16:49:15 +0900
+Message-ID: <CANW9uysf_7AkpExkQP63UWZfh+aSVczZo=0LJTTt80_x7SMq6w@mail.gmail.com>
+Subject: Re: [PATCH 4/5] hw/intc/arm_gicv3: Use correct number of priority
+ bits for the CPU
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000c94eff05de673656"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=itaru.kitayama@gmail.com; helo=mail-pj1-x102e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,27 +115,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K1aNixKiVT4y
+X-TUID: wqPXLo5XBGuB
 
-Add fby35 to the list of Aspeed boards.
+--000000000000c94eff05de673656
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
----
- docs/system/arm/aspeed.rst | 1 +
- 1 file changed, 1 insertion(+)
+Peter,
+I=E2=80=99ll talk with Shuichiro this coming Monday (here most of us on vac=
+ation),
+and get back to you.
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 60ed94f187..fa98549c11 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -31,6 +31,7 @@ AST2600 SoC based machines :
- - ``tacoma-bmc``           OpenPOWER Witherspoon POWER9 AST2600 BMC
- - ``rainier-bmc``          IBM Rainier POWER10 BMC
- - ``fuji-bmc``             Facebook Fuji BMC
-+- ``fby35-bmc``            Facebook fby35 BMC
-=20
- Supported devices
- -----------------
---=20
-2.30.2
+Itaru.
 
+On Sat, May 7, 2022 at 1:34 Peter Maydell <peter.maydell@linaro.org> wrote:
+
+> On Fri, 6 May 2022 at 17:21, Peter Maydell <peter.maydell@linaro.org>
+> wrote:
+> >
+> > Make the GICv3 set its number of bits of physical priority from the
+> > implementation-specific value provided in the CPU state struct, in
+> > the same way we already do for virtual priority bits.  Because this
+> > would be a migration compatibility break, we provide a property
+> > force-8-bit-prio which is enabled for 7.0 and earlier versioned board
+> > models to retain the legacy "always use 8 bits" behaviour.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> > I have guessed at the right value for the A64FX, but if we can
+> > find the correct ICC_CTLR_EL1 value that would be better.
+>
+> Shuuichirou, Itaru: do either of you know the right setting for
+> the A64FX for this? If you can find what the hardware value of
+> the ICC_CTLR_EL3 or ICC_CTLR_EL1 register is (more specifically,
+> the PRIBits subfield) that should be enough to tell us.
+>
+> > @@ -961,6 +964,12 @@ static void aarch64_a64fx_initfn(Object *obj)
+> >      cpu->gic_num_lrs =3D 4;
+> >      cpu->gic_vpribits =3D 5;
+> >      cpu->gic_vprebits =3D 5;
+> > +    /*
+> > +     * TODO: What does the real A64FX GICv3 provide ?
+> > +     * This is a guess based on what other Arm CPUs do; to find the
+> correct
+> > +     * answer we need the value of the A64FX's ICC_CTLR_EL1 register.
+> > +     */
+> > +    cpu->gic_pribits =3D 5;
+> >
+> >      /* Suppport of A64FX's vector length are 128,256 and 512bit only *=
+/
+> >      aarch64_add_sve_properties(obj);
+> > --
+> > 2.25.1
+>
+> thanks
+> -- PMM
+>
+
+--000000000000c94eff05de673656
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Peter,</div><div dir=3D"auto">I=E2=80=99ll talk with Shui=
+chiro this coming Monday (here most of us on vacation), and get back to you=
+.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Itaru.</div><div><br><=
+div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sat, May=
+ 7, 2022 at 1:34 Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.o=
+rg">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"g=
+mail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-l=
+eft:1ex">On Fri, 6 May 2022 at 17:21, Peter Maydell &lt;<a href=3D"mailto:p=
+eter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;=
+ wrote:<br>
+&gt;<br>
+&gt; Make the GICv3 set its number of bits of physical priority from the<br=
+>
+&gt; implementation-specific value provided in the CPU state struct, in<br>
+&gt; the same way we already do for virtual priority bits.=C2=A0 Because th=
+is<br>
+&gt; would be a migration compatibility break, we provide a property<br>
+&gt; force-8-bit-prio which is enabled for 7.0 and earlier versioned board<=
+br>
+&gt; models to retain the legacy &quot;always use 8 bits&quot; behaviour.<b=
+r>
+&gt;<br>
+&gt; Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
+o.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+&gt; ---<br>
+&gt; I have guessed at the right value for the A64FX, but if we can<br>
+&gt; find the correct ICC_CTLR_EL1 value that would be better.<br>
+<br>
+Shuuichirou, Itaru: do either of you know the right setting for<br>
+the A64FX for this? If you can find what the hardware value of<br>
+the ICC_CTLR_EL3 or ICC_CTLR_EL1 register is (more specifically,<br>
+the PRIBits subfield) that should be enough to tell us.<br>
+<br>
+&gt; @@ -961,6 +964,12 @@ static void aarch64_a64fx_initfn(Object *obj)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 cpu-&gt;gic_num_lrs =3D 4;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 cpu-&gt;gic_vpribits =3D 5;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 cpu-&gt;gic_vprebits =3D 5;<br>
+&gt; +=C2=A0 =C2=A0 /*<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* TODO: What does the real A64FX GICv3 provide ?<=
+br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* This is a guess based on what other Arm CPUs do=
+; to find the correct<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* answer we need the value of the A64FX&#39;s ICC=
+_CTLR_EL1 register.<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
+&gt; +=C2=A0 =C2=A0 cpu-&gt;gic_pribits =3D 5;<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* Suppport of A64FX&#39;s vector length are 128,2=
+56 and 512bit only */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 aarch64_add_sve_properties(obj);<br>
+&gt; --<br>
+&gt; 2.25.1<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div></div>
+
+--000000000000c94eff05de673656--

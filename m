@@ -1,93 +1,112 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp3813110lfj;
-        Mon, 9 May 2022 10:49:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz0wV6t0zsu+EulTCKMwyfhlAnlLgz0asPIZbEgSv2D8+aY7+YIPDukQHLPmKDp06dcFNm4
-X-Received: by 2002:a05:620a:666:b0:69f:bbd4:b9af with SMTP id a6-20020a05620a066600b0069fbbd4b9afmr12361376qkh.11.1652118579380;
-        Mon, 09 May 2022 10:49:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652118579; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp3891313lfj;
+        Mon, 9 May 2022 13:21:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxtEUnTx3o1YPzhs2fnwYBKcAcojG8JVe5XBpl6RBTG/Bqj2/NWX8qu86WqQQrAPLOoo/VK
+X-Received: by 2002:a05:622a:100b:b0:2f3:c5db:cb86 with SMTP id d11-20020a05622a100b00b002f3c5dbcb86mr16985831qte.178.1652127664941;
+        Mon, 09 May 2022 13:21:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652127664; cv=none;
         d=google.com; s=arc-20160816;
-        b=Obpj7Yly712Ur2ABECkUTmB6mwU5jeL40bq6a/tJWN1Aab3xp4H4M89NRxKfabNXBu
-         fp7uHrgoTrrm/epK8khNDyc2F+gJVUXYhbZ6PDu2qEkmWiD3I5CPTiFJiK6OoQNpppLZ
-         H038hjFSr6U4wQS9H45qZsqfZxsL55o1CzTT2GeU3sLoot6ps3fZqtRH7NnX76GCGND9
-         WB375lBwja6UI9eomWXpKU0juJvR0Co8WNi4L4sckDfjnxk5DqP2mCjLWAJrvQg8LnaT
-         I3qjc2sZ8wwRmekYDLpNXf7FjhbdQY8xMknikdu2dvhIdG3/NaDPQg+AD2f1da1cvb8t
-         fveA==
+        b=De509cSrICMHiecP0ihPDLIper0f3RXn1+T3BsgVNbQKH40M1AUQkEeiHSbC/hX9kO
+         flzSwR3VfI15PnatddLXTf9DJBMtlgQdUQZYUK7iWyJTgw6Vix1hprSWOJfjDJy1Wvp7
+         UMEjaoeM4o9rW9FsWdGpcJ6ncnnyyFOCkjC5RxvwEPyyC+9dsFPTRvMGxGNNzREG3uN0
+         t5Np7tEG+JvZjnslFkulo6o2UNQ8EwI17Sw8SsNmQHlJzMcOmU7SPIkhqwbzfy78ggA2
+         P5Eb7evBeaAse3F9v1/3GzYXNqjIvTqVagXGA2KW+g4lyNbGKGZQt+j37j44lOO2fqvQ
+         Bi8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:subject:message-id:date:in-reply-to
-         :references:mime-version;
-        bh=4G/cAkTU35gF+8ZKIfALWk0i4ZdWdboZrRrhLTBQKjI=;
-        b=Okxl3nCFHNiywHwmGYQ9XzbNK9bzVmj+I8vXolep2Nvu7dy2fkXOBI+Xb96/D/3M/X
-         twSBQ7RZxNs2pj/2n8I6lVkQmW6rEAVR3TiJ05WhdWweCJ6P3z/MasLRvw/PoRamUEQo
-         nmn1U9DOvXSOh0fu8KBMR2mx64w0j6fBGnUKY+Ty7MxQVQKbIn3Wf/PP1FIs/Xc6ouGc
-         Dw4fLfO3xrOkGE0uXXqRFMqvRiLey7CPDec149vRO4Xs3rWQG/wzQ/meIVDiIQoWQjGQ
-         9ZgvoAIGROUsWYXPaZhSZ0HtRZsQx2xloVNmpWkScu25VJmbGMVhAaIRlqRKDYDaEIdA
-         65bg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=kcvql3wXVAMOWdcWNPkxojqFp5MRkSepFQ1so1DkkYI=;
+        b=jjLgOSoN595IzSz/c2t82O4Kiz7f+xArfyNzM/IqpmrtNZDHns+HYNpHh2hXXqIAw6
+         Enxkpgd1YSWb28Tn6WBuhjVbPxYopmOIr3EIQEmKCd1kl/OcJjl+Qt5WJr7J3n3NNbta
+         SGrnvTq0P3pwyRibBPSZaRCbrtFLw8iZHxdxzkY6esACjROSCGPQwkDzsK2e/Stu+2Qt
+         9+KZ96COHLasK79OPzpiRt26WK1bz2N9gKBphQQAoWDxoh5GJBwl9es/Tbx62RHSu1bh
+         g20nVJQ0Qvx6wRsBmBNuzVL2GwfSN0CDVCMW0Sj+37s+8YsiK/JVtG4u/HUpfbnPkqS+
+         c67A==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IHGpw5Ld;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 83-20020a370c56000000b0067e4be23829si7518766qkm.110.2022.05.09.10.49.39
+        by mx.google.com with ESMTPS id m1-20020a05622a118100b002f3dcc84312si1990137qtk.40.2022.05.09.13.21.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 May 2022 10:49:39 -0700 (PDT)
+        Mon, 09 May 2022 13:21:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IHGpw5Ld;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:57928 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60934 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1no7Vq-0002vq-U2
-	for alex.bennee@linaro.org; Mon, 09 May 2022 13:49:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48102)
+	id 1no9sO-0000rG-Fm
+	for alex.bennee@linaro.org; Mon, 09 May 2022 16:21:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46116)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1no7VZ-0002tn-2I; Mon, 09 May 2022 13:49:23 -0400
-Received: from mail-yb1-f180.google.com ([209.85.219.180]:33654)
+ id 1no9s3-0000pw-Gg; Mon, 09 May 2022 16:20:43 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:35559)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1no7VW-0002yh-K1; Mon, 09 May 2022 13:49:20 -0400
-Received: by mail-yb1-f180.google.com with SMTP id j2so26402791ybu.0;
- Mon, 09 May 2022 10:49:17 -0700 (PDT)
+ id 1no9s1-0008KT-SB; Mon, 09 May 2022 16:20:43 -0400
+Received: by mail-wr1-x433.google.com with SMTP id j15so21012617wrb.2;
+ Mon, 09 May 2022 13:20:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kcvql3wXVAMOWdcWNPkxojqFp5MRkSepFQ1so1DkkYI=;
+ b=IHGpw5LdRePYtSDdv+078f3i/QIkTIsWA9cgC2IytFAIyyI9BbSkNxIeRTt05k7liC
+ bTNjg4s4wAWhWQ6qwz6ha9OfZpXGWkol5XdXhrZqOJ/Ys1BEZ/HAthoARRavHM2i43K/
+ uLphlSzHgpj4EhzsSAojDTdyMOsZC+Ee2D8izyhH9AGKwLNfFiYOfl7kctY0WCzo06bb
+ a1/scilpZh9y3ZClb4E5NNravoP5zaVfg6AtPStmA2hMT3IZFRSAuQeWiNV11sb3DJtK
+ RBSZ5Xt7/ij3N+so6NabUR6NEiG0ve7NJLkmjmO+It6JKB+YE7IjqLsiaxTO0WCgLMQo
+ IagQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=4G/cAkTU35gF+8ZKIfALWk0i4ZdWdboZrRrhLTBQKjI=;
- b=s1Busb9fbz6iAc3GrhYTlb7fUDf7vD+0u5ftrvURyAZA1l4YroN/JfdGO1FpriGUlU
- B4oX1forViW0ScLfG18xvbi7pTPWMgcKTb/gI7a4AmmW0V7CO2pi6hqPfTRu7A79RRPl
- Y8HGDNqI4kZjaKhcYXqDVoVFs7TTTOZt71JIBLHIP1YCiVS8FICBoIbjjBJrRvz5G2Px
- esYOqP8xvjKLWm1Ra3V84Y0Vy7KDJPe7iVQP5T5Faqq5+jWhZiFU6ztan6SHfdy2h9Ay
- 1JLhpjgPxWSzwHu+SvJRofbaG9qm4WFM8khxANG9BTx5DFf8B516Fd/052tVY9ib3Fi2
- 9zaQ==
-X-Gm-Message-State: AOAM533+r8SY/XZjjXn9zG6YHYAXCHzg9LwHaRI5IEOraQ3u+eDrpCga
- +glV1XxT5WnMtaUM8L+hvc3x+1flk9jhyjJiMg4=
-X-Received: by 2002:a25:7691:0:b0:649:fba4:f552 with SMTP id
- r139-20020a257691000000b00649fba4f552mr13824091ybc.335.1652118557255; Mon, 09
- May 2022 10:49:17 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kcvql3wXVAMOWdcWNPkxojqFp5MRkSepFQ1so1DkkYI=;
+ b=qoe49jRye0acvGrT4vZYgBR44GBkyrhJvbKrF7B3H5HT7nh+60iq7fGrfufa/MdjMa
+ wp1cxr6Wc+WbbWj9Fmr9crAsbklZiA3HhlktF7zxX5rLYsgRoHBbpSIwjBKg+lmaTNiQ
+ pWCLNV5a6DFv0aT2rWlJGZxgYDF/2BlNgklrIcApPvJ9AuiYDBcoQ50DR+HuSkXqAtaN
+ Xcrb4sqqLshNu+95Y2bFr9ntMQ8X2RNabZ9lG7C8V5KpLC5o/HSNY6KT9e5Q6Kevl0Id
+ d6cOEOoF7WdnVOiQXPkEKGu823ypLc0cWJHNSLUadxaoRMucL8wA3TIBlPMpKjb12NDK
+ fGYA==
+X-Gm-Message-State: AOAM533xkNgmczG2wYvEOUYnwqlCOrjNS1b+1NdiOBBC3ja+j8Ur32gn
+ bAfPHnbj3EwnNI/H9yf/umlprc0olDk=
+X-Received: by 2002:adf:e5cd:0:b0:20a:f3d9:3376 with SMTP id
+ a13-20020adfe5cd000000b0020af3d93376mr15518822wrn.228.1652127637984; 
+ Mon, 09 May 2022 13:20:37 -0700 (PDT)
+Received: from localhost.localdomain ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ z15-20020a05600c220f00b00394538d039esm311094wml.6.2022.05.09.13.20.36
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 09 May 2022 13:20:37 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>,
+ Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] hw/adc/zynq-xadc: Use qemu_irq typedef
+Date: Mon,  9 May 2022 22:20:35 +0200
+Message-Id: <20220509202035.50335-1-philippe.mathieu.daude@gmail.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20220509160443.3561604-1-peter.maydell@linaro.org>
-In-Reply-To: <20220509160443.3561604-1-peter.maydell@linaro.org>
-Date: Mon, 9 May 2022 19:49:05 +0200
-Message-ID: <CAAdtpL4t9_SJ1a+ffz7ivvPwpfunjAzVtKyDMTYnLkJ6pRgNSQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Drop unsupported_encoding() macro
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.219.180;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-yb1-f180.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,36 +121,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= via <qemu-arm@nongnu.org>
-X-TUID: SHHWinXKuwPE
+X-TUID: 3vgp8zDhxRX9
 
-On Mon, May 9, 2022 at 6:05 PM Peter Maydell <peter.maydell@linaro.org> wro=
-te:
->
-> The unsupported_encoding() macro logs a LOG_UNIMP message and then
-> generates code to raise the usual exception for an unallocated
-> encoding.  Back when we were still implementing the A64 decoder this
-> was helpful for flagging up when guest code was using something we
-> hadn't yet implemented.  Now we completely cover the A64 instruction
-> set it is barely used.  The only remaining uses are for five
-> instructions whose semantics are "UNDEF, unless being run under
-> external halting debug":
->  * HLT (when not being used for semihosting)
->  * DCPSR1, DCPS2, DCPS3
->  * DRPS
->
-> QEMU doesn't implement external halting debug, so for us the UNDEF is
-> the architecturally correct behaviour (because it's not possible to
-> execute these instructions with halting debug enabled).  The
-> LOG_UNIMP doesn't serve a useful purpose; replace these uses of
-> unsupported_encoding() with unallocated_encoding(), and delete the
-> macro.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/translate-a64.h | 9 ---------
->  target/arm/translate-a64.c | 8 ++++----
->  2 files changed, 4 insertions(+), 13 deletions(-)
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Except hw/core/irq.c which implements the forward-declared opaque
+qemu_irq structure, hw/adc/zynq-xadc.{c,h} are the only files not
+using the typedef. Fix this single exception.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/adc/zynq-xadc.c         | 4 ++--
+ include/hw/adc/zynq-xadc.h | 3 +--
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/hw/adc/zynq-xadc.c b/hw/adc/zynq-xadc.c
+index cfc7bab065..032e19cbd0 100644
+--- a/hw/adc/zynq-xadc.c
++++ b/hw/adc/zynq-xadc.c
+@@ -86,7 +86,7 @@ static void zynq_xadc_update_ints(ZynqXADCState *s)
+         s->regs[INT_STS] |= INT_DFIFO_GTH;
+     }
+ 
+-    qemu_set_irq(s->qemu_irq, !!(s->regs[INT_STS] & ~s->regs[INT_MASK]));
++    qemu_set_irq(s->irq, !!(s->regs[INT_STS] & ~s->regs[INT_MASK]));
+ }
+ 
+ static void zynq_xadc_reset(DeviceState *d)
+@@ -262,7 +262,7 @@ static void zynq_xadc_init(Object *obj)
+     memory_region_init_io(&s->iomem, obj, &xadc_ops, s, "zynq-xadc",
+                           ZYNQ_XADC_MMIO_SIZE);
+     sysbus_init_mmio(sbd, &s->iomem);
+-    sysbus_init_irq(sbd, &s->qemu_irq);
++    sysbus_init_irq(sbd, &s->irq);
+ }
+ 
+ static const VMStateDescription vmstate_zynq_xadc = {
+diff --git a/include/hw/adc/zynq-xadc.h b/include/hw/adc/zynq-xadc.h
+index 2017b7a803..c10cc4c379 100644
+--- a/include/hw/adc/zynq-xadc.h
++++ b/include/hw/adc/zynq-xadc.h
+@@ -39,8 +39,7 @@ struct ZynqXADCState {
+     uint16_t xadc_dfifo[ZYNQ_XADC_FIFO_DEPTH];
+     uint16_t xadc_dfifo_entries;
+ 
+-    struct IRQState *qemu_irq;
+-
++    qemu_irq irq;
+ };
+ 
+ #endif /* ZYNQ_XADC_H */
+-- 
+2.35.1
+

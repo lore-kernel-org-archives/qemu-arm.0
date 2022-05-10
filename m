@@ -1,82 +1,100 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp4236861lfj;
-        Tue, 10 May 2022 03:14:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjgCXYAwWSDtTAXriKWNVKbGrnvXA9KHmESoCyUHnB19+xLn61lwLd879x4Ne+VE5lyQzv
-X-Received: by 2002:a05:622a:512:b0:2f3:d76f:5979 with SMTP id l18-20020a05622a051200b002f3d76f5979mr9812598qtx.279.1652177686699;
-        Tue, 10 May 2022 03:14:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652177686; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp4303947lfj;
+        Tue, 10 May 2022 05:23:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzXxSAXHTTkUv8cmU/IiWyc3/t1y9aBZBhjXRCV61Gp5fES4ZiE/gWtYswD+xQGedkq3A7t
+X-Received: by 2002:a05:622a:552:b0:2f3:e1aa:8ec4 with SMTP id m18-20020a05622a055200b002f3e1aa8ec4mr4106146qtx.643.1652185418755;
+        Tue, 10 May 2022 05:23:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652185418; cv=none;
         d=google.com; s=arc-20160816;
-        b=gkttDOvnpOw87mkK1RfwNdj5oJu6zZow0B8P31Ey52CB1HxOACRBc+We4Xlvt+LXZW
-         2Q1OfXiv8pVrh0y3gzRqA8tm6cw9sFLS1RK9tCf5OsgHC8Pm1hjzctdmH6pVg1u3x3pY
-         p98x5dDo3lW3mpinC5DRmOEp5pJ3iZolzgy6K7ToApXuaOd02jiupbtmOO9wAvhqe2D/
-         9N+VT0RoU2PblwXJ6DXApfGvEAdqEWcAkbSyKS5UmA4LekxR0Q1G9skLJSQvnT68FC74
-         WiwusukguJIWUkahCKTgLHUCWhTJdOH91VgkcMOfgV+lUDlKakRpXhLFmongr2kBuAEg
-         zAqw==
+        b=sLYrUAZlUt3RqNdHywJQ7H/KvlyzBCsP4k39FChUe9GtNRKZzXTvrmBB7KffmRFkF+
+         DZrc0Wno710TWjunTYUd5RO4+EVJ/6hsoy0JBk+PylCKGA1982AhnRX8OPfZCNnu2JRR
+         u8qrkLSVh2CU2L/k2IMLJwgqZfFUvpg+meIp8YnsV8Xb1LbgoaSH3atTDhi27qrvFz/T
+         gD9hubjnm7XTUGfXsybR1d9tO645Gd71RCiF7CW6TrToCcwc7rSOipnFebkhjW3AtUFJ
+         6AhwZ2SwMTMd8kW0MNGiQFMJuAeOWYpMj9u/eQmFZyzbH0I8N3TKwRVA7kJByqxtFrLm
+         RElg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=ttgEqEJbbo8ZMH1IAOyubitPcrZC8zGMkwNLHeKlXm8=;
-        b=h5smiQV3S5XGm6KtdTQdDHld3TDzZ2wqjk07XGlaetieJkuZXLcFmT008A6s0GYayN
-         kp/Enr+1yhf6Lw6kE6+44suCwIkHMTmlwiXzoFWWC8L/wusUmbsw2lwsU4UCSQj6zAw4
-         A0Cm1KZXx291UWeLC/qUxN/Yya9S9VXCP51W3sJ/wpB5maDunLqFtgp50qxJD0PKFIQN
-         yXGR2KJ7kjR+ObFFi0/Kdq2ddtHBc63PHuI98yqzvK0N4xX1Tb8NFlnhyDHeYSo2E3S+
-         DWiFrjWCkLpGao13whJibb/mf8MxjtzPQMmvTJUSXh6Pynwh+w5laDMggI84ukJOQYPg
-         mNLw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=Iko0h5mlGebfhao3jeBrN4iOcqM/nCep3wZfEOD/bgE=;
+        b=AvIRXQna24zz3PAD+2bu/gzWHafg3F/u8tfyi0Ge4XuijTatcOIB13gfWyLEaRnCFj
+         51ehp22cIs6aUbPhHN9RxCvOFrdzSbAX9V6cnnxJJ+LQjr0gIEX0aZ7SkNNzypbjHMt7
+         ip48CHfpt5wYcRAiNqcph7tkiDSNjz8QSnXFCIJ5AQUvWkUpqroCDnTvN6MapAyAi7/A
+         g40ADUwEPEyfIUDkSfOhcsJS3mQ6iufd52CjGwi9vlMDGbCH6o74SoaUuguq1UbY0HGP
+         jNPerSgSCyEh/DDSm5p34hw7SjxoHWnSNr8FPUwUtgbIeYngR6e1b1YxU2pyPwsKCQrU
+         LDxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CzlpGRAs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay8-20020a05620a178800b006a0bcc7cf9fsi1619286qkb.515.2022.05.10.03.14.46
+        by mx.google.com with ESMTPS id a20-20020ac85b94000000b002f3c92534f4si8459556qta.473.2022.05.10.05.23.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 May 2022 03:14:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 May 2022 05:23:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from localhost ([::1]:35058 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CzlpGRAs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1noMtC-0004dF-6u
-	for alex.bennee@linaro.org; Tue, 10 May 2022 06:14:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36078)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1noOtu-00029v-8D
+	for alex.bennee@linaro.org; Tue, 10 May 2022 08:23:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38712)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1noMsn-0004b2-Hc; Tue, 10 May 2022 06:14:21 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:52942)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1noOrZ-00017t-AL
+ for qemu-devel@nongnu.org; Tue, 10 May 2022 08:21:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:40619)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1noMsk-00007p-8q; Tue, 10 May 2022 06:14:20 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id DDABA746324;
- Tue, 10 May 2022 12:14:14 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 84E0F7462D3; Tue, 10 May 2022 12:14:14 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 82D6074581A;
- Tue, 10 May 2022 12:14:14 +0200 (CEST)
-Date: Tue, 10 May 2022 12:14:14 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1noOrX-0006Ln-41
+ for qemu-devel@nongnu.org; Tue, 10 May 2022 08:21:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1652185270;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Iko0h5mlGebfhao3jeBrN4iOcqM/nCep3wZfEOD/bgE=;
+ b=CzlpGRAs+dPqoS3xIGa1e6nZ0XMHZDIyfikfhf6czsChIB4lmVviRJ7mGOSoXkXMbsx4qp
+ K5fw4pVvpwuPN1Q8q4RV3Zpo1xNfntU4uJQVmC1Yhn2CVe1hAqlqr6C71NEvI9GKWOFIg+
+ W5hLVzObFDRWQkPws5NW2LiC1qSbjQ8=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-159-P3lMRYo-MrWr8OM2jkFAfw-1; Tue, 10 May 2022 08:21:06 -0400
+X-MC-Unique: P3lMRYo-MrWr8OM2jkFAfw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 91BDE293249A;
+ Tue, 10 May 2022 12:21:05 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.195.194])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 48CEE43EC24;
+ Tue, 10 May 2022 12:21:05 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 5717E18000A3; Tue, 10 May 2022 14:20:56 +0200 (CEST)
+Date: Tue, 10 May 2022 14:20:56 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
 To: Thomas Huth <thuth@redhat.com>
-cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org, 
- qemu-arm <qemu-arm@nongnu.org>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Fabiano Rosas <farosas@linux.ibm.com>, muriloo@linux.ibm.com, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>, 
- Daniel Henrique Barboza <danielhb413@gmail.com>, mopsfelder@gmail.com, 
- qemu-ppc@nongnu.org, =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Fabiano Rosas <farosas@linux.ibm.com>, muriloo@linux.ibm.com,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ mopsfelder@gmail.com, qemu-ppc@nongnu.org,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
  qemu-RISC-V <qemu-riscv@nongnu.org>
 Subject: Re: QEMU 32-bit vs. 64-bit binaries
-In-Reply-To: <d1b04636-b1db-d13e-36b3-d45fb8cf9ad0@redhat.com>
-Message-ID: <fe30ac22-89fe-9f27-d37-278b95ae189@eik.bme.hu>
-References: <b31e3221-6dfd-de68-8dfc-177ded0b501e@ilande.co.uk>
- <9ec244e0-4c7c-69ff-08f8-da451f6da449@linux.ibm.com>
- <87sfpqaey7.fsf@linux.ibm.com>
+Message-ID: <20220510122056.l6deselsfipofnct@sirius.home.kraxel.org>
+References: <87sfpqaey7.fsf@linux.ibm.com>
  <2ab9e2b3-5dba-4e18-ed2e-6063a2716f4c@ilande.co.uk>
  <87ilql9xww.fsf@linux.ibm.com>
  <ef8256fb-6e99-5f37-d5c5-67f9af4302b0@ilande.co.uk>
@@ -84,90 +102,48 @@ References: <b31e3221-6dfd-de68-8dfc-177ded0b501e@ilande.co.uk>
  <877d6tzs2e.fsf@pond.sub.org>
  <32e5877d-ba45-ac63-d24e-1f9f8676c6bb@redhat.com>
  <CAFEAcA8Ff45KeuQm-v8MwXX_i+P51uF-ovpQvtGD3hx1bi3A9g@mail.gmail.com>
- <Ynou3EnxfSmrzGT0@work-vm> <d1b04636-b1db-d13e-36b3-d45fb8cf9ad0@redhat.com>
+ <Ynou3EnxfSmrzGT0@work-vm>
+ <d1b04636-b1db-d13e-36b3-d45fb8cf9ad0@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-Spam-Probability: 8%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <d1b04636-b1db-d13e-36b3-d45fb8cf9ad0@redhat.com>
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o37XJB6cMXUU
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DYEiNg1tNBGU
 
-On Tue, 10 May 2022, Thomas Huth wrote:
-> On 10/05/2022 11.22, Dr. David Alan Gilbert wrote:
->> * Peter Maydell (peter.maydell@linaro.org) wrote:
->>> On Tue, 10 May 2022 at 10:01, Thomas Huth <thuth@redhat.com> wrote:
->>>> 
->>>> On 10/05/2022 10.54, Markus Armbruster wrote:
->>>>> Thomas Huth <thuth@redhat.com> writes:
->>>>> 
->>>>> [...]
->>>>> 
->>>>>> I once suggested in the past already that we should maybe get rid of
->>>>>> the 32-bit variants in case the 64-bit variant is a full superset, so
->>>>>> we can save compile- and test times (which is quite a bit for QEMU),
->>>>>> but I've been told that the 32-bit variants are mostly still required
->>>>>> for supporting KVM on 32-bit host machines.
->>>>> 
->>>>> Do we still care for 32-bit host machines?
->>>> 
->>>> As long as the Linux kernel still supports 32-bit KVM virtualization, I
->>>> think we have to keep the userspace around for that, too.
->>>> 
->>>> But I wonder why we're keeping qemu-system-arm around? 32-bit KVM support
->>>> for ARM has been removed with Linux kernel 5.7 as far as I know, so I 
->>>> think
->>>> we could likely drop the qemu-system-arm nowadays, too? Peter, Richard,
->>>> what's your opinion on this?
->>> 
->>> Two main reasons, I think:
->>>   * command-line compatibility (ie there are lots of
->>>     command lines out there using that binary name)
->>>   * nobody has yet cared enough to come up with a plan for what
->>>     we want to do differently for these 32-bit architectures,
->>>     so the default is "keep doing what we always have"
->>> 
->>> In particular, I don't want to get rid of qemu-system-arm as the
->>> *only* 32-bit target binary we drop. Either we stick with what
->>> we have or we have a larger plan for sorting this out consistently
->>> across target architectures.
->> 
->> To my mind, qemu-system-arm makes a lot of sense, and I'd rather see the
->> 32 bit guests disappear from qemu-system-aarch64.
->> It's difficult to justify to someone running their aarch virt stack why
->> their binary has the security footprint that includes a camera or PDA.
->
-> I'm not very familiar with KVM on ARM - but is it possible to use KVM there 
-> with an arbitrary machine? If that's the case, a user might want to use KVM 
-> on their 64-bit host to run a 32-bit guest machine, and then you need to keep 
-> the 32-bit machines in the -aarch64 binary.
->
-> Something like that is at least theoretically possible with ppc64, I think: 
-> Using KVM-PR, it should be possible to run a g3beige (i.e. 32-bit) machine on 
-> a 64-bit host. Not sure whether anybody has tried that in recent times (afaik 
-> KVM-PR is in a rather bad shape nowadays), but it might have been possible at 
-> one point in time in the past. (PPC folks, please correct me if I'm wrong)
+  Hi,
 
-https://www.talospace.com/2018/08/making-your-talos-ii-into-power-mac.html
+> I'm not very familiar with KVM on ARM - but is it possible to use KVM there
+> with an arbitrary machine? If that's the case, a user might want to use KVM
+> on their 64-bit host to run a 32-bit guest machine, and then you need to
+> keep the 32-bit machines in the -aarch64 binary.
 
-Regards,
-BALATON Zoltan
+32-bit guest is 'qemu-system-aarch64 -machine virt -cpu host,aarch64=off'
+(and a aarch64 CPU which actually supports the armv7 instructions).
+
+take care,
+  Gerd
+

@@ -1,109 +1,140 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp3997813lfj;
-        Mon, 9 May 2022 17:06:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwPBL2Rfh0HFYVLapfKY3YsGH61mWeOLz8JaZ4qaF/4aaHmX+aw2b+YWGs00csms2LLVrKP
-X-Received: by 2002:a05:620a:bcb:b0:67d:1b1c:a988 with SMTP id s11-20020a05620a0bcb00b0067d1b1ca988mr13516663qki.587.1652141170419;
-        Mon, 09 May 2022 17:06:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652141170; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp4180969lfj;
+        Tue, 10 May 2022 01:11:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJziyP+DROfIoefARK1/YJonGco1Ntz6z7TipopIMBVv/0uvruGQviqEIJ0uNOWP4nqx/LSK
+X-Received: by 2002:a05:622a:1788:b0:2f3:d177:cec4 with SMTP id s8-20020a05622a178800b002f3d177cec4mr13222198qtk.31.1652170302775;
+        Tue, 10 May 2022 01:11:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652170302; cv=none;
         d=google.com; s=arc-20160816;
-        b=TD0yl8fvElOcEwW5GCwj6bRIP5L0p4UFRkmZSK2vxA0GmJEAo+2uBw8rUDHkCZFbLk
-         SFJJp+dtuqG7j+nT4T6CsslEeYn7AMd9cpdbwh6IT41sq8pFMzKnuIEvn8Hu0QR+EkHJ
-         GKirrtDB6Eevq1Voo0j+469gFnCNswlIkYcVgR944qmkF3fpJAiBDNcd3S8q1ZqIr6Rj
-         +2gqwpjlNGIQS8EOXBdg+4EpQmJMFqT80lO09o59aiHbDCPlakaXHBQZvgXzFTTXqt5s
-         yASOA3SgWurcPNcTjDJFGW2MwvcMk2hbN84Slou1b3RuHwNiXqHebCc2HzXCGA1zblBD
-         fQ/w==
+        b=P33jbHh3khgxi90id1RJuJ/BZNCZJ595o6SeQCsxXXhH5nHnMhmywQPycPZOU0uT8z
+         mtDWR29CL2/h/G+JjWBn6ZQcNUREGoFLM4x8WUMQ1dmDfRDyMct4KqjLZyYaMxIBTka/
+         OaUei0DVV42hM/MFyT0Q1YlfhaidZXwv62A8y4TrMQWJBXgMPOwm+wjP0VKQkF4VtHY/
+         EIZIDr+FZQ6wznBYiJvGP2A8wlNa2i77gIYjkIu4PHyflQWhgzaZF4ACuVyxq5pZsqhY
+         0OarOuDPE95lWvGNiKAfgCzhrj3jus+eM45khcdZoGU6WWdMiquubQKVRf15Wzc6Goe7
+         Pn4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=nZfmKi5wEe9aGuUVbmC8o559hWcefbU875G5kJZujtA=;
-        b=Ys+AcRPmnbRo867EP+txYdbTiMgyTHoYnzvX+DBEgUc9C4sjvxOTqeq9bmUjtdPXVN
-         zPPakX+L2LwrYFKsIlqUN1FAHJzY4ZRaZcrTUFcFrg7BouChp07VfNA3VuVGUiZtnf8Q
-         uwEgJlVZV8cbIGFyu/xVmItyCX5xJ/y+J4xqTnbm1b6kp1qWZfBNITFuRQ9DJ8xnaoLn
-         sKfxIxsKUJ4jNin0s5Mrn3QfN8Tjb0G0z8c9H7HSJ+VC6oxrWqNIAqaA2/SmKZ/Srfnx
-         DqfhUYCROXhOxypusnRjmcm23W24sls+qAmeH6uvaj6sZoexL2egyZXFN9SRqrHThmn9
-         Rtfw==
+         :content-language:in-reply-to:subject:from:references:cc:to
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=9c8YCsPCGQinA30dkcvvUIq84j+lPg7YQpqaqkzjFq4=;
+        b=QIt2R3mcgfffTsd9SfhY6wCr1mG7SqXODLO9zMYTjup0+xTAvpLpqqgSaYAEvv4V8q
+         2e0wFdy8r+UMIJSBYq/IxgNvvNLj1s9zz1mqIMSDl8Qfgo1w3w3SIwdJsKBTs2G/xttF
+         2Lsx+aR7hXS/xDyDF8G1ehjpqs38concUwdvTe1/eH2Aq2fPLjeb/1lunRzuw7qCsADi
+         ZRhMY6GlqoEMDZx2/sXYAaZTVGwUyAz40SeY/rokCeALpfBDZSiqdBhu+eQ6omLPAJ21
+         NI7jv/iMZO/dehyJOgiCleoLtU9Z22UF16N0h/0jOhzoNPEFWnvdz8Gpt+9b4wLJLB+b
+         M9JA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KTP54pln;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YQn5K5mK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bx13-20020a056214058d00b004466d70f9cfsi8604366qvb.64.2022.05.09.17.06.10
+        by mx.google.com with ESMTPS id l7-20020a05620a28c700b006a04c983499si9407250qkp.326.2022.05.10.01.11.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 May 2022 17:06:10 -0700 (PDT)
+        Tue, 10 May 2022 01:11:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KTP54pln;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YQn5K5mK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51204 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1noDOC-00065G-0T
-	for alex.bennee@linaro.org; Mon, 09 May 2022 20:06:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50988)
+	id 1noKy6-0007ye-9o
+	for alex.bennee@linaro.org; Tue, 10 May 2022 04:11:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59118)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1noDMh-00063H-DB
- for qemu-arm@nongnu.org; Mon, 09 May 2022 20:04:35 -0400
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a]:42572)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1noDMd-0005B9-Vc
- for qemu-arm@nongnu.org; Mon, 09 May 2022 20:04:35 -0400
-Received: by mail-pg1-x52a.google.com with SMTP id 202so13305533pgc.9
- for <qemu-arm@nongnu.org>; Mon, 09 May 2022 17:04:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=nZfmKi5wEe9aGuUVbmC8o559hWcefbU875G5kJZujtA=;
- b=KTP54plnrVl9Yc34Bz9V2NPiV9QTCHfaAy4sovgNiE/qSnWI71m799byjVibSrFu4t
- Dn5cykA4j1JGpDMlJKtBwWJG/ThsU6OFXiy07Hf/Y5uDfObqcRYNU/oe5KIZGPQqjMA1
- xo1FoiSjOhEVWiOFKAfKfjFLzjm6xqjMNwILlAaPFqy+KREbtlJxG8Fzkrhy51d2pmOW
- zaZG6UsG0K0/Xjg/A4Dq0mNO1zjPqM44wpm1RcFkFXZjLtgvMLdGkxJ6eCP9yvC4+DRj
- mfjpiXukozWBMQDpEPJkj7SghdE13X/BfKIdzg21xGdvIfb6nmhv7xu1ZNqC5ZyxzfD9
- PI2w==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1noKqM-0005va-VI
+ for qemu-arm@nongnu.org; Tue, 10 May 2022 04:03:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:50197)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1noKqK-00044A-Bc
+ for qemu-arm@nongnu.org; Tue, 10 May 2022 04:03:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1652169819;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9c8YCsPCGQinA30dkcvvUIq84j+lPg7YQpqaqkzjFq4=;
+ b=YQn5K5mKBDKviDbDVurh+baspth+iLYUOjKf1ER9a31nsfbulHiONpb/2y76w5DK6yXju6
+ RqwEdGVDezwf8J9jGgQfbxNhpQsxRcp6+m58H/mPSRI4tqN1wGAB5Ot51vkjGlHKTBaMv+
+ SOQy9TbIfz38vP7DhZDLEOcsolo+q50=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-649-pTOLLtGNM52_5IVbeofNjA-1; Tue, 10 May 2022 04:03:38 -0400
+X-MC-Unique: pTOLLtGNM52_5IVbeofNjA-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ g3-20020a7bc4c3000000b0039409519611so4951303wmk.9
+ for <qemu-arm@nongnu.org>; Tue, 10 May 2022 01:03:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=nZfmKi5wEe9aGuUVbmC8o559hWcefbU875G5kJZujtA=;
- b=n0UO8Qdxkch2y2ecuohdPmYozt3xwPRPIoE04UoFVUaB7tpZwsGvWCsaUSfVPpuQ50
- 7MelQ9b6wO3od6/RQnZfQs/lnillVXmDxdNNis9/IkLu8SMjFr3pE7ggazN5aCGGee0k
- GDKF50UTvefGY/Hw4DWffHa7EODIFTzalbaMnhfFFfbo/GnOWiZDCwKPFwVut3LHmNZ0
- vzWhaKq7K4kQnID0pTT2q0Y44f9UOpTvazHW3lurCuc8cY4aMsUK2hl7ZuYiMdP3Q1gZ
- X7KQpJKTw09yuwDYDQWUGUK66wxMBAJL/Xh4TRcH48LQiXcRYMIbILPBDeNpzRhkZ4ff
- 1KFA==
-X-Gm-Message-State: AOAM5323tLckcv773pu8tNa+NHlg+yJhwWXRIPR87ogLtQs04W3IwMJA
- GE5ayoQWeWEMWUujQlOEWZIN5Q==
-X-Received: by 2002:a05:6a00:238f:b0:4f6:b09a:4c63 with SMTP id
- f15-20020a056a00238f00b004f6b09a4c63mr17816946pfc.35.1652141070519; 
- Mon, 09 May 2022 17:04:30 -0700 (PDT)
-Received: from stoup.. ([71.212.142.129]) by smtp.gmail.com with ESMTPSA id
- x71-20020a63864a000000b003c15f7f2914sm8983691pgd.24.2022.05.09.17.04.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 May 2022 17:04:30 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 2/2] target/arm: Use FIELD definitions for CPACR, CPTR_ELx
-Date: Mon,  9 May 2022 17:04:26 -0700
-Message-Id: <20220510000426.45797-3-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220510000426.45797-1-richard.henderson@linaro.org>
-References: <20220510000426.45797-1-richard.henderson@linaro.org>
+ h=x-gm-message-state:message-id:date:mime-version:user-agent
+ :content-language:to:cc:references:from:subject:in-reply-to
+ :content-transfer-encoding;
+ bh=9c8YCsPCGQinA30dkcvvUIq84j+lPg7YQpqaqkzjFq4=;
+ b=X7Ib5D95ztk7UzsIYcy4dNNiHjia8oaCb3AAejVHSx/EStfKUuQXHD9C2j4bJYnYcH
+ 1S8fqb8xW1eBYIh5Im3/ikk30EBuFFS7wpldBITHhwIaic6iGeFbUFR0Z3JW+56ANWCG
+ 4U397/lAsbfvw3IG0ce5+KrN9wqyMK29S3UzNH+TkRScF+D/riCrBu7V6Q5O6hGgcLSw
+ QlCfN8cZnwgW62kQH0EPSVaIEucW6RluP3EKX9/asRK92zPQ1XJ8h9rdLtAHDzq8CoNt
+ 7rbfCDG8H/fxSy6PZIAysqIslzycrwi2NulikMB3APIKGKvx/8I+3JmnfXxnYheknktG
+ d8QQ==
+X-Gm-Message-State: AOAM531/0gvUC12+qKHTDmix20c+1twtTIUjocxSObkWzvDeaCeqrdSg
+ DDZIyKEmq1U/Bm5H2SzytcVX9+ELsWUBQws3Oo2Ex+146XjkPkHfq1rf6KBXZge7qNXtDqW5op/
+ y5OCof1qFGvxT
+X-Received: by 2002:a05:6000:1f8c:b0:20c:b1cf:2a1c with SMTP id
+ bw12-20020a0560001f8c00b0020cb1cf2a1cmr13759067wrb.368.1652169816938; 
+ Tue, 10 May 2022 01:03:36 -0700 (PDT)
+X-Received: by 2002:a05:6000:1f8c:b0:20c:b1cf:2a1c with SMTP id
+ bw12-20020a0560001f8c00b0020cb1cf2a1cmr13759021wrb.368.1652169816453; 
+ Tue, 10 May 2022 01:03:36 -0700 (PDT)
+Received: from [10.33.192.183] (nat-pool-str-t.redhat.com. [149.14.88.106])
+ by smtp.gmail.com with ESMTPSA id
+ f21-20020a7bcd15000000b003942a244f3dsm1652346wmj.22.2022.05.10.01.03.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 May 2022 01:03:36 -0700 (PDT)
+Message-ID: <472e45e8-319b-ad48-3afa-0dfa74e6ad20@redhat.com>
+Date: Tue, 10 May 2022 10:03:35 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Fabiano Rosas <farosas@linux.ibm.com>, muriloo@linux.ibm.com,
+ qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>
+Cc: Daniel Henrique Barboza <danielhb413@gmail.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>, mopsfelder@gmail.com,
+ qemu-ppc@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ qemu-arm <qemu-arm@nongnu.org>, qemu-RISC-V <qemu-riscv@nongnu.org>
+References: <20220429233146.29662-1-muriloo@linux.ibm.com>
+ <b31e3221-6dfd-de68-8dfc-177ded0b501e@ilande.co.uk>
+ <9ec244e0-4c7c-69ff-08f8-da451f6da449@linux.ibm.com>
+ <87sfpqaey7.fsf@linux.ibm.com>
+ <2ab9e2b3-5dba-4e18-ed2e-6063a2716f4c@ilande.co.uk>
+ <87ilql9xww.fsf@linux.ibm.com>
+ <ef8256fb-6e99-5f37-d5c5-67f9af4302b0@ilande.co.uk>
+From: Thomas Huth <thuth@redhat.com>
+Subject: QEMU 32-bit vs. 64-bit binaries (was: [PATCH] mos6522: fix linking
+ error when CONFIG_MOS6522 is not set)
+In-Reply-To: <ef8256fb-6e99-5f37-d5c5-67f9af4302b0@ilande.co.uk>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,309 +150,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qqfNYgSNPaMy
+X-TUID: c28Fz0iosVeN
 
-We had a few CPTR_* bits defined, but missed quite a few.
-Complete all of the fields up to ARMv9.2.
-Use FIELD_EX64 instead of manual extract32.
+On 04/05/2022 16.48, Mark Cave-Ayland wrote:
+> On 04/05/2022 15:26, Fabiano Rosas wrote:
+> 
+>> Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> writes:
+>>
+>>> On 03/05/2022 15:06, Fabiano Rosas wrote:
+>>>
+>>>> Murilo Opsfelder Araújo <muriloo@linux.ibm.com> writes:
+[...]
+>>>> So ppc64-softmmu doesn't quite do what it says on the tin. I think in
+>>>> the long run we need to revisit the conversation about whether to keep
+>>>> the 32 & 64 bit builds separate. It is misleading that you're explicitly
+>>>> excluding ppc-softmmu from the `--target-list`, but a some 32 bit stuff
+>>>> still comes along implicitly.
+>>>
+>>> Unfortunately for historical reasons it isn't quite that simple: the 
+>>> mac99 machine in
+>>> hw/ppc/mac_newworld.c is both a 32-bit and a 64-bit machine, but with a 
+>>> different PCI
+>>> host bridge and a 970 CPU if run from qemu-system-ppc64. Unfortunately it 
+>>> pre-dates
+>>> my time working on QEMU's PPC Mac machines but I believe it was (is?) 
+>>> capable of
+>>> booting Linux, even though I doubt it accurately represents a real machine.
+>>
+>> Well, what you describe is fine in my view, the 64-bit machine uses
+>> qemu-system-ppc64. If there is shared code with 32-bit, that is ok.
+>>
+>> What I would like to understand is what is the community's direction
+>> with this, do we want:
+>>
+>> 1) the 64-bit build to include all of the code and have it run all
+>>     machines, or;
+>>
+>> 2) the 64-bit build to run only 64-bit machines and the 32-bit build to
+>>     run only 32-bit machines.
+>>
+>> There are things such as 'target_ulong' that go against #1, and this
+>> thread shows that we're not doing #2 as well.
+>>
+>> I know there have been discussions about this in the past but I couldn't
+>> find them in the archives.
+> 
+> Certainly if a 64-bit Mac machine were to be added today, I'd be inclined to 
+> copy mac_newworld.c into a separate file and give it a separate machine name 
+> for ppc64 to make a clear distinction between the two machines (and allow 
+> them to evolve separately). Unfortunately I have no idea as to what the 
+> reference machine for the PPC64 Mac machine was supposed to be which makes 
+> it harder to decide what to do :(
+> 
+> In my mind it feels like qemu-system-ppc is for 32-bit guests and 
+> qemu-system-ppc64 is for 64-bit guests which I believe is consistent with 
+> how it currently works with MIPS and ARM (someone feel free to correct me 
+> here).
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.h    | 44 +++++++++++++++++++++++++++++++-----
- hw/arm/boot.c       |  2 +-
- target/arm/cpu.c    | 11 ++++++---
- target/arm/helper.c | 54 ++++++++++++++++++++++-----------------------
- 4 files changed, 75 insertions(+), 36 deletions(-)
+For CPUs that have both, 32-bit and 64-bit variants, we have mixed approaches:
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index b35b117fe7..c44acd8b84 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1259,11 +1259,45 @@ void pmu_init(ARMCPU *cpu);
- #define SCTLR_SPINTMASK (1ULL << 62) /* FEAT_NMI */
- #define SCTLR_TIDCP   (1ULL << 63) /* FEAT_TIDCP1 */
- 
--#define CPTR_TCPAC    (1U << 31)
--#define CPTR_TTA      (1U << 20)
--#define CPTR_TFP      (1U << 10)
--#define CPTR_TZ       (1U << 8)   /* CPTR_EL2 */
--#define CPTR_EZ       (1U << 8)   /* CPTR_EL3 */
-+/* Bit definitions for CPACR (AArch32 only) */
-+FIELD(CPACR, CP10, 20, 2)
-+FIELD(CPACR, CP11, 22, 2)
-+FIELD(CPACR, TRCDIS, 28, 1)    /* matches CPACR_EL1.TTA */
-+FIELD(CPACR, D32DIS, 31, 1)    /* up to v7; RAZ in v8 */
-+FIELD(CPACR, ASEDIS, 31, 1)
-+
-+/* Bit definitions for CPACR_EL1 (AArch64 only) */
-+FIELD(CPACR_EL1, ZEN, 16, 2)
-+FIELD(CPACR_EL1, FPEN, 20, 2)
-+FIELD(CPACR_EL1, SMEN, 24, 2)
-+FIELD(CPACR_EL1, TTA, 28, 1)   /* matches CPACR.TRCDIS */
-+
-+/* Bit definitions for HCPTR (AArch32 only) */
-+FIELD(HCPTR, TCP10, 10, 1)
-+FIELD(HCPTR, TCP11, 11, 1)
-+FIELD(HCPTR, TSAE, 15, 1)
-+FIELD(HCPTR, TTA, 20, 1)
-+FIELD(HCPTR, TAM, 30, 1)       /* matches CPTR_EL2.TAM */
-+FIELD(HCPTR, TCPAC, 31, 1)     /* matches CPTR_EL2.TCPAC */
-+
-+/* Bit definitions for CPTR_EL2 (AArch64 only) */
-+FIELD(CPTR_EL2, TZ, 8, 1)      /* !E2H */
-+FIELD(CPTR_EL2, TFP, 10, 1)    /* !E2H, matches HCPTR.TCP10 */
-+FIELD(CPTR_EL2, TSM, 12, 1)    /* !E2H */
-+FIELD(CPTR_EL2, ZEN, 16, 2)    /* E2H */
-+FIELD(CPTR_EL2, FPEN, 20, 2)   /* E2H */
-+FIELD(CPTR_EL2, SMEN, 24, 2)   /* E2H */
-+FIELD(CPTR_EL2, TTA, 28, 1)
-+FIELD(CPTR_EL2, TAM, 30, 1)    /* matches HCPTR.TAM */
-+FIELD(CPTR_EL2, TCPAC, 31, 1)  /* matches HCPTR.TCPAC */
-+
-+/* Bit definitions for CPTR_EL3 (AArch64 only) */
-+FIELD(CPTR_EL3, EZ, 8, 1)
-+FIELD(CPTR_EL3, TFP, 10, 1)
-+FIELD(CPTR_EL3, ESM, 12, 1)
-+FIELD(CPTR_EL3, TTA, 20, 1)
-+FIELD(CPTR_EL3, TAM, 30, 1)
-+FIELD(CPTR_EL3, TCPAC, 31, 1)
- 
- #define MDCR_EPMAD    (1U << 21)
- #define MDCR_EDAD     (1U << 20)
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index a47f38dfc9..a8de33fd64 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -761,7 +761,7 @@ static void do_cpu_reset(void *opaque)
-                         env->cp15.scr_el3 |= SCR_ATA;
-                     }
-                     if (cpu_isar_feature(aa64_sve, cpu)) {
--                        env->cp15.cptr_el[3] |= CPTR_EZ;
-+                        env->cp15.cptr_el[3] |= R_CPTR_EL3_EZ_MASK;
-                     }
-                     /* AArch64 kernels never boot in secure mode */
-                     assert(!info->secure_boot);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 029f644768..d2bd74c2ed 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -201,9 +201,11 @@ static void arm_cpu_reset(DeviceState *dev)
-         /* Trap on btype=3 for PACIxSP. */
-         env->cp15.sctlr_el[1] |= SCTLR_BT0;
-         /* and to the FP/Neon instructions */
--        env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 20, 2, 3);
-+        env->cp15.cpacr_el1 = FIELD_DP64(env->cp15.cpacr_el1,
-+                                         CPACR_EL1, FPEN, 3);
-         /* and to the SVE instructions */
--        env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 16, 2, 3);
-+        env->cp15.cpacr_el1 = FIELD_DP64(env->cp15.cpacr_el1,
-+                                         CPACR_EL1, ZEN, 3);
-         /* with reasonable vector length */
-         if (cpu_isar_feature(aa64_sve, cpu)) {
-             env->vfp.zcr_el[1] =
-@@ -252,7 +254,10 @@ static void arm_cpu_reset(DeviceState *dev)
-     } else {
- #if defined(CONFIG_USER_ONLY)
-         /* Userspace expects access to cp10 and cp11 for FP/Neon */
--        env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 20, 4, 0xf);
-+        env->cp15.cpacr_el1 = FIELD_DP64(env->cp15.cpacr_el1,
-+                                         CPACR, CP10, 3);
-+        env->cp15.cpacr_el1 = FIELD_DP64(env->cp15.cpacr_el1,
-+                                         CPACR, CP11, 3);
- #endif
-     }
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 93ab552346..5fd64b742a 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -767,11 +767,14 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-          */
-         if (cpu_isar_feature(aa32_vfp_simd, env_archcpu(env))) {
-             /* VFP coprocessor: cp10 & cp11 [23:20] */
--            mask |= (1 << 31) | (1 << 30) | (0xf << 20);
-+            mask |= R_CPACR_ASEDIS_MASK |
-+                    R_CPACR_D32DIS_MASK |
-+                    R_CPACR_CP11_MASK |
-+                    R_CPACR_CP10_MASK;
- 
-             if (!arm_feature(env, ARM_FEATURE_NEON)) {
-                 /* ASEDIS [31] bit is RAO/WI */
--                value |= (1 << 31);
-+                value |= R_CPACR_ASEDIS_MASK;
-             }
- 
-             /* VFPv3 and upwards with NEON implement 32 double precision
-@@ -779,7 +782,7 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-              */
-             if (!cpu_isar_feature(aa32_simd_r32, env_archcpu(env))) {
-                 /* D32DIS [30] is RAO/WI if D16-31 are not implemented. */
--                value |= (1 << 30);
-+                value |= R_CPACR_D32DIS_MASK;
-             }
-         }
-         value &= mask;
-@@ -791,8 +794,8 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-      */
-     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-         !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
--        value &= ~(0xf << 20);
--        value |= env->cp15.cpacr_el1 & (0xf << 20);
-+        mask = R_CPACR_CP11_MASK | R_CPACR_CP10_MASK;
-+        value = (value & ~mask) | (env->cp15.cpacr_el1 & mask);
-     }
- 
-     env->cp15.cpacr_el1 = value;
-@@ -808,7 +811,7 @@ static uint64_t cpacr_read(CPUARMState *env, const ARMCPRegInfo *ri)
- 
-     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-         !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
--        value &= ~(0xf << 20);
-+        value = ~(R_CPACR_CP11_MASK | R_CPACR_CP10_MASK);
-     }
-     return value;
- }
-@@ -828,11 +831,11 @@ static CPAccessResult cpacr_access(CPUARMState *env, const ARMCPRegInfo *ri,
-     if (arm_feature(env, ARM_FEATURE_V8)) {
-         /* Check if CPACR accesses are to be trapped to EL2 */
-         if (arm_current_el(env) == 1 && arm_is_el2_enabled(env) &&
--            (env->cp15.cptr_el[2] & CPTR_TCPAC)) {
-+            FIELD_EX64(env->cp15.cptr_el[2], CPTR_EL2, TCPAC)) {
-             return CP_ACCESS_TRAP_EL2;
-         /* Check if CPACR accesses are to be trapped to EL3 */
-         } else if (arm_current_el(env) < 3 &&
--                   (env->cp15.cptr_el[3] & CPTR_TCPAC)) {
-+                   FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, TCPAC)) {
-             return CP_ACCESS_TRAP_EL3;
-         }
-     }
-@@ -844,7 +847,8 @@ static CPAccessResult cptr_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   bool isread)
- {
-     /* Check if CPTR accesses are set to trap to EL3 */
--    if (arm_current_el(env) == 2 && (env->cp15.cptr_el[3] & CPTR_TCPAC)) {
-+    if (arm_current_el(env) == 2 &&
-+        FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, TCPAC)) {
-         return CP_ACCESS_TRAP_EL3;
-     }
- 
-@@ -5333,8 +5337,8 @@ static void cptr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-      */
-     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-         !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
--        value &= ~(0x3 << 10);
--        value |= env->cp15.cptr_el[2] & (0x3 << 10);
-+        uint64_t mask = R_HCPTR_TCP11_MASK | R_HCPTR_TCP10_MASK;
-+        value = (value & ~mask) | (env->cp15.cptr_el[2] & mask);
-     }
-     env->cp15.cptr_el[2] = value;
- }
-@@ -5349,7 +5353,7 @@ static uint64_t cptr_el2_read(CPUARMState *env, const ARMCPRegInfo *ri)
- 
-     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-         !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
--        value |= 0x3 << 10;
-+        value |= R_HCPTR_TCP11_MASK | R_HCPTR_TCP10_MASK;
-     }
-     return value;
- }
-@@ -6144,8 +6148,7 @@ int sve_exception_el(CPUARMState *env, int el)
-     uint64_t hcr_el2 = arm_hcr_el2_eff(env);
- 
-     if (el <= 1 && (hcr_el2 & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
--        /* Check CPACR.ZEN.  */
--        switch (extract32(env->cp15.cpacr_el1, 16, 2)) {
-+        switch (FIELD_EX64(env->cp15.cpacr_el1, CPACR_EL1, ZEN)) {
-         case 1:
-             if (el != 0) {
-                 break;
-@@ -6158,7 +6161,7 @@ int sve_exception_el(CPUARMState *env, int el)
-         }
- 
-         /* Check CPACR.FPEN.  */
--        switch (extract32(env->cp15.cpacr_el1, 20, 2)) {
-+        switch (FIELD_EX64(env->cp15.cpacr_el1, CPACR_EL1, FPEN)) {
-         case 1:
-             if (el != 0) {
-                 break;
-@@ -6175,8 +6178,7 @@ int sve_exception_el(CPUARMState *env, int el)
-      */
-     if (el <= 2) {
-         if (hcr_el2 & HCR_E2H) {
--            /* Check CPTR_EL2.ZEN.  */
--            switch (extract32(env->cp15.cptr_el[2], 16, 2)) {
-+            switch (FIELD_EX64(env->cp15.cptr_el[2], CPTR_EL2, ZEN)) {
-             case 1:
-                 if (el != 0 || !(hcr_el2 & HCR_TGE)) {
-                     break;
-@@ -6187,8 +6189,7 @@ int sve_exception_el(CPUARMState *env, int el)
-                 return 2;
-             }
- 
--            /* Check CPTR_EL2.FPEN.  */
--            switch (extract32(env->cp15.cptr_el[2], 20, 2)) {
-+            switch (FIELD_EX32(env->cp15.cptr_el[2], CPTR_EL2, FPEN)) {
-             case 1:
-                 if (el == 2 || !(hcr_el2 & HCR_TGE)) {
-                     break;
-@@ -6199,10 +6200,10 @@ int sve_exception_el(CPUARMState *env, int el)
-                 return 0;
-             }
-         } else if (arm_is_el2_enabled(env)) {
--            if (env->cp15.cptr_el[2] & CPTR_TZ) {
-+            if (FIELD_EX64(env->cp15.cptr_el[2], CPTR_EL2, TZ)) {
-                 return 2;
-             }
--            if (env->cp15.cptr_el[2] & CPTR_TFP) {
-+            if (FIELD_EX64(env->cp15.cptr_el[2], CPTR_EL2, TFP)) {
-                 return 0;
-             }
-         }
-@@ -6210,7 +6211,7 @@ int sve_exception_el(CPUARMState *env, int el)
- 
-     /* CPTR_EL3.  Since EZ is negative we must check for EL3.  */
-     if (arm_feature(env, ARM_FEATURE_EL3)
--        && !(env->cp15.cptr_el[3] & CPTR_EZ)) {
-+        && !FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, EZ)) {
-         return 3;
-     }
- #endif
-@@ -13266,7 +13267,7 @@ int fp_exception_el(CPUARMState *env, int cur_el)
-      * This register is ignored if E2H+TGE are both set.
-      */
-     if ((hcr_el2 & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
--        int fpen = extract32(env->cp15.cpacr_el1, 20, 2);
-+        int fpen = FIELD_EX64(env->cp15.cpacr_el1, CPACR_EL1, FPEN);
- 
-         switch (fpen) {
-         case 0:
-@@ -13312,8 +13313,7 @@ int fp_exception_el(CPUARMState *env, int cur_el)
-      */
-     if (cur_el <= 2) {
-         if (hcr_el2 & HCR_E2H) {
--            /* Check CPTR_EL2.FPEN.  */
--            switch (extract32(env->cp15.cptr_el[2], 20, 2)) {
-+            switch (FIELD_EX64(env->cp15.cptr_el[2], CPTR_EL2, FPEN)) {
-             case 1:
-                 if (cur_el != 0 || !(hcr_el2 & HCR_TGE)) {
-                     break;
-@@ -13324,14 +13324,14 @@ int fp_exception_el(CPUARMState *env, int cur_el)
-                 return 2;
-             }
-         } else if (arm_is_el2_enabled(env)) {
--            if (env->cp15.cptr_el[2] & CPTR_TFP) {
-+            if (FIELD_EX64(env->cp15.cptr_el[2], CPTR_EL2, TFP)) {
-                 return 2;
-             }
-         }
-     }
- 
-     /* CPTR_EL3 : present in v8 */
--    if (env->cp15.cptr_el[3] & CPTR_TFP) {
-+    if (FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, TFP)) {
-         /* Trap all FP ops to EL3 */
-         return 3;
-     }
--- 
-2.34.1
+1) For x86_64/i386, aarch64/arm, mips64/mips and ppc64/ppc, the 64-bit 
+variants are a superset of the 32-bit variants, i.e. if you build the 64-bit 
+version, you normally don't need the 32-bit version anymore (see below for 
+the KVM-case where you still might need it).
+
+2) For sparc64/sparc and riscv64/riscv32, the set of machines is distinct 
+between the 64-bit and 32-bit versions (well, riscv has some machines 
+shared, and some machines are different).
+
+I once suggested in the past already that we should maybe get rid of the 
+32-bit variants in case the 64-bit variant is a full superset, so we can 
+save compile- and test times (which is quite a bit for QEMU), but I've been 
+told that the 32-bit variants are mostly still required for supporting KVM 
+on 32-bit host machines.
+
+But in the long run, I think we rather want to converge everything into one 
+binary (to decrease testing and compilation time) instead of separating 
+stuff into multiple binaries, so IMHO we should not start separating the 
+32-bit machines into qemu-system-ppc and the 64-bit-only machines into 
+qemu-system-ppc64 now.
+
+  Thomas
 

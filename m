@@ -1,34 +1,34 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp5283285lfj;
-        Wed, 11 May 2022 12:50:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxDYRd+qZJPApgYTMqpcwQF1LKKOJIIk4JJkDrwmjXM5+SFurwnnQ3QMlaEdbh5HV+o7PmD
-X-Received: by 2002:ac8:5f06:0:b0:2f3:cbe5:1e1d with SMTP id x6-20020ac85f06000000b002f3cbe51e1dmr23458567qta.389.1652298653659;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp5283289lfj;
+        Wed, 11 May 2022 12:50:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwkkinzxZzL1T8YjL8PeRmZExMFc1Lu/9EPLxDYKe2KGLdFtF5tBy50HwazxOmfyznnU3v+
+X-Received: by 2002:a05:620a:a51:b0:69f:bbd6:e1f2 with SMTP id j17-20020a05620a0a5100b0069fbbd6e1f2mr20257450qka.126.1652298653946;
         Wed, 11 May 2022 12:50:53 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1652298653; cv=none;
         d=google.com; s=arc-20160816;
-        b=i85ZK+YZI+ZnY3+l2fvBUHCAvEs6Nf+IhjGSJQQfslQe8jYlnt1z2eBP/9gff/pCkw
-         aZfzVGH4Dg2Cbwg684nCZ5IvYhLn5xnxVhgPMTlsInsVdPXEXE5pQuVBgimgXcuV58bg
-         GsW2+gaJ32NDzSHNYa5lxaXPMiIa2L3HMVVKJhIc3fiwDVHNVMYbPYtVqAEGFJwxO587
-         IMU2KBlO9f7pHjt55jYDoQ38ITjz63rAKJDaRvVdIGVBUMoEuKjQI6U86af0UrsyJw4Q
-         JksP2HckpYMIYO203vlUeA3um2T50Wk5jBPy3FN86W6895D9D7eLxt6NctV65dubDlBQ
-         /iog==
+        b=vBoQGRWHfRgvO+FKu081m9FL854l6EZmadfkWq1gk+wM8ZmFktXeHp8KwytvaAigN/
+         VkUe4GSUCb/ruDOCfbQyAJQ0yjzYZP5frY13o/JTLDPNNzNC3MD+cKsp1z0qZNjYKCqQ
+         6pqDDBV2n+jomolUo51nYMdnILHduI7aFvdCRHkpVU83viFjW3bQOekI8WplUf1lb6op
+         8lESPidb9KERFJgMqnWDWYr+fYf2UYni40dyxUKiHFGdhN9RJDPxvQC5lxfpgqjem009
+         H+QQre2bk5KBCE8+NexmXopEx9A6JvQoUNmZ7p2Fc1oveQevTj+pz61NtoTwJbNJdA1y
+         Cf6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
         bh=Q8PAmGFFVVe8O/gA0s8T27KtnCCeETx3gDLIS+/2Wig=;
-        b=evsxzP+ByBlf3iD1SKTCdxA60reSILAVPvFT7cvR91KVkzyz+Zx2KCEKNk2xmt98eG
-         X4UO4/sP7WDKinIzzASsYOlmQjyFDuHY12P5NRN4sMmzp/EamY7mweZ/G7fattpyFSSY
-         6K6NHI4o9NIqvXqY7v0Lvo/U/mWNz6XjcCoHPaKOBFM3BScC+bKm/FA5aPjSVtL57ciO
-         uadoV/OZeMuaAhO2dL5AKenrPuNQFS+k5h10pRNX1mihDq0TRzb4EVxpMG5ZfsztKA/S
-         rM24N+T1yI0c8AIWhdj05w15KVTpi4Ww+CuncnOiYMLz3qe1pihJATKBlDq39BAzLKwp
-         u/Sg==
+        b=SjDPqznJbptUy0f8AQHACK3UtJyYjv5oWt2sG6VJXjDJXxxN/2Yn/2J5/0yfpG4Qsl
+         WiEuP1W7Tf6d5AsrkEFA+n+GwYRYH5dujn94K+RMcJL6N8x7YQzz0Ore8vKk4DqgGqNh
+         pCFvWFADXvnivOi/hj0+iVkLuebMpKS1w1wOllu7uREyOl7X3CS5V2X+E2UxX0QS3BaS
+         0ntVtCvpmRbF/aZf2d9wg9Ez5r4ipU7Ea8U9rjcmv+bme8WPK/7nUV/DF6ebJDwKbzDA
+         hDyYveO8YJgWWE7/q0MvwtnHII1miBMeNJSZMBholCfEqTMYU8tiXA00vmQtsJFKjT0p
+         50Ow==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gf14-20020a056214250e00b004563ecee5ccsi2364027qvb.266.2022.05.11.12.50.53
+        by mx.google.com with ESMTPS id s15-20020a05621406af00b0045d6b164afesi1631753qvz.549.2022.05.11.12.50.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 11 May 2022 12:50:53 -0700 (PDT)
@@ -36,31 +36,31 @@ Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.or
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:38454 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nosMH-0000fE-5U
+	id 1nosMH-0000fr-FI
 	for alex.bennee@linaro.org; Wed, 11 May 2022 15:50:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39582)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43108)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1)
  (envelope-from <irischenlj@devvm5719.atn0.facebook.com>)
- id 1nor6Q-0005W2-Ap
- for qemu-arm@nongnu.org; Wed, 11 May 2022 14:30:30 -0400
-Received: from 66-220-155-178.mail-mxout.facebook.com ([66.220.155.178]:34293)
+ id 1norLa-0006d0-E0
+ for qemu-arm@nongnu.org; Wed, 11 May 2022 14:46:07 -0400
+Received: from 66-220-155-178.mail-mxout.facebook.com ([66.220.155.178]:36275)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1)
  (envelope-from <irischenlj@devvm5719.atn0.facebook.com>)
- id 1nor6J-0001On-LZ
- for qemu-arm@nongnu.org; Wed, 11 May 2022 14:30:26 -0400
+ id 1norLW-0003qH-OC
+ for qemu-arm@nongnu.org; Wed, 11 May 2022 14:46:06 -0400
 Received: by devvm5719.atn0.facebook.com (Postfix, from userid 279525)
- id A448813ABF90; Wed, 11 May 2022 11:10:25 -0700 (PDT)
+ id 7B0B113B0B86; Wed, 11 May 2022 11:45:40 -0700 (PDT)
 To: 
 Cc: irischenlj@fb.com, pdel@fb.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  clg@kaod.org, patrick@stwcx.xyz
 Subject: [PATCH 0/1] hw: allow write_enable latch get/set
-Date: Wed, 11 May 2022 11:10:23 -0700
-Message-Id: <20220511181024.969263-1-irischenlj@fb.com>
+Date: Wed, 11 May 2022 11:45:38 -0700
+Message-Id: <20220511184539.1099161-1-irischenlj@fb.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <irischenlj@fb.com>
 References: <irischenlj@fb.com>
@@ -93,7 +93,7 @@ Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  Iris Chen <irischenlj@fb.com>
 From:  Iris Chen via <qemu-arm@nongnu.org>
-X-TUID: sbFn1SILaCB0
+X-TUID: Qb6iFQTpES1Z
 
 Hey everyone,=20
 

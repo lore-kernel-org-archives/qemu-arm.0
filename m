@@ -1,113 +1,118 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp486046lfj;
-        Thu, 12 May 2022 08:18:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyNS+lUIdOHoFZqMkMNKZkoHYpRCRb9xzkCX7PGg0h3scdwU1tcTBHl03ZgNI+IgFzwlloE
-X-Received: by 2002:a05:622a:1015:b0:2f3:b8d1:3cd9 with SMTP id d21-20020a05622a101500b002f3b8d13cd9mr241237qte.674.1652368722575;
-        Thu, 12 May 2022 08:18:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652368722; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp544973lfj;
+        Thu, 12 May 2022 09:51:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwoQew/M0MKT2+T3VaPUckb7wQLOXmvSGR2J8FjB8Iq0frEAwNW59XLAY8nrqFbUZ4WgSGL
+X-Received: by 2002:ac8:4e8d:0:b0:2f3:ceed:a9d1 with SMTP id 13-20020ac84e8d000000b002f3ceeda9d1mr719115qtp.200.1652374316669;
+        Thu, 12 May 2022 09:51:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652374316; cv=none;
         d=google.com; s=arc-20160816;
-        b=SAp4/tc26sQ8F8tNrJLR21mh0kxOhh6l1+kQnA8DtwGJNbMMQ/68XlxDPzcKAvfLLY
-         /LsIvtjrmRmRXrOx2YXGnd7hU5SUG3GTOISrN+LvLCUNYdJxQvcB+bPXpRa0YY3BL7vK
-         ApGJ6u9kcyN+38XrAUc/Pl+qK7CjWSFOZGHXeMs2qPAgnVZHo2L14NT1ZFYw1Hkq8iXt
-         zUFybiPle3cDldbxwQitPK7jvqdc9Ef6Pmey9QU7tf4nMktJEOm+ldKXEC8JEfoQuyiu
-         wCfxn6quOBbNdOrlrfB30HKf5to7x319I3Sp2hnXXRgO8KLNiSOwwNWMRJOX/P5bfliv
-         GmTw==
+        b=js2oNUHKkGFiUP6yE3BTpWqWImPaBvM4HxfGI/F+ss5wfOyLjEO2DAlBB6FVJQc/ui
+         7ajZS40VYVFdR7olUWiS4z6oYz1egRxa6qsBBtUOrwkRXeLVPXmUGbtn0ldds7EkhDnX
+         J+HKJhbiyVniGecAp0EqhUcwHOSUa6FFHegL+KSGs103obkkPa6BBHmIQfXdX8T6XmUR
+         NUXc7Cr0E/gE7I8qOTFeLfqcoM31tlLKRLhEoWHC6l0uaCetdKE4sB3aSb/IunU4HSJn
+         jf2THyFAjl2KGvQWgVjdhkiZhnepKK7yiSyHVJmrP6zI2h9O2DsucpT1awhhlb5FFJRh
+         0UlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=5AL/ExqpQl1WXPTr1hW9j9yflfrBr3IWmMKn7s35cx8=;
-        b=tPXtBKT9U8WYAR0eJGIpQEHqfXxDDCvfUsIVzaO5ytSRel37GPM5q0qv3pYGYETKnq
-         qk5GcxndeKA5qRlZ0jKDIjX6wRIjdTlJA2X4gN5yStfdmUnCvlB1CEVAVgCZizG8JA+o
-         7GQUpXeanA8TSrTtRN5N9hA4Ak50YdRDN/8MoQcMRx1tddCpTNTwPXo3A5gZKaziJZZq
-         Tpc3xifG9gFZXDxWpRvyM+IjIilBeyAX3ETxHSjvCtlrOkt5i2HnRHKlXCFiHAuwHoPE
-         6fgh5Z/+ab4nVPZw97PEd63PZYZB8tMZUDrXdwYaj/gYsRD7hVd+EEnKGn4DIMzWl8CL
-         XbGw==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=gY2t8Go7p/vgj66UPEsK+d7CYl6pkbufpPENCwlPnDs=;
+        b=SNSDf4/Amzp2MO17M3+cUmG7Fh92pDU9wPpk0Ih8xt/X9VvxF/pzsECIEFrm2/qJs1
+         8j98CxmW8VYUzWV8yX7Asrv5z1Is25+UO5QWyXJRPbQK/tPtYab7cqUlcwrWSuEeaiTa
+         cg9ioQ1E0tWWGCIFtA93QPiMLYoPhKM7vbtb92HFtj+bjrMG++TpmAKCxTuZvvO+Q/xL
+         DdNzFUBvP4MlIBD1u8JdHRbQF08N1uS0/6NsMaATA1jpjlWBwGLbX6Yj8EhXcuo2RUBz
+         z+WoziP+VAAqn0MQZz9HOXzbnBfTrzh+vAe+WwfRS4r6vjWtTaspB3TNgD+hBsKti0Si
+         kHkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="N8I1M/lz";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Oj7u/thR";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 137-20020a370c8f000000b0069fbe8d2f4esi2998058qkm.528.2022.05.12.08.18.42
+        by mx.google.com with ESMTPS id j15-20020ac85f8f000000b002f3d30616basi55976qta.243.2022.05.12.09.51.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 May 2022 08:18:42 -0700 (PDT)
+        Thu, 12 May 2022 09:51:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="N8I1M/lz";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Oj7u/thR";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52014 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58670 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1npAaQ-0007Sb-11
-	for alex.bennee@linaro.org; Thu, 12 May 2022 11:18:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34662)
+	id 1npC2e-0003Kp-5o
+	for alex.bennee@linaro.org; Thu, 12 May 2022 12:51:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55738)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1npAX1-00037z-4g
- for qemu-devel@nongnu.org; Thu, 12 May 2022 11:15:13 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:41558)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1npC0b-00022H-Ca
+ for qemu-devel@nongnu.org; Thu, 12 May 2022 12:49:49 -0400
+Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b]:36457)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1npAWv-0000OK-6T
- for qemu-devel@nongnu.org; Thu, 12 May 2022 11:15:10 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id m1so7700949wrb.8
- for <qemu-devel@nongnu.org>; Thu, 12 May 2022 08:15:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1npC0Z-00074q-55
+ for qemu-devel@nongnu.org; Thu, 12 May 2022 12:49:48 -0400
+Received: by mail-qt1-x82b.google.com with SMTP id v14so3748747qtc.3
+ for <qemu-devel@nongnu.org>; Thu, 12 May 2022 09:49:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=5AL/ExqpQl1WXPTr1hW9j9yflfrBr3IWmMKn7s35cx8=;
- b=N8I1M/lzvfEK17ZhuHKBEw2B5t67e6BaPDzrZy7ijtJTM/TnHMRhm+n5qrXUh9r+q9
- czJAX8c4DcryFMA5EKLaXh6ZTZI6mfIxIPEBPTs5s6y75m9M3EDUSpGMF8hkemMA9Oh3
- oDJBItdimUC5r9qCdBRK9dejaV2ND8zditkkwrAJUoO6008iCYmlJvQnlOha76Fmfcrf
- dEmwhw19Ai7yTRwVZbl4qNoFupX6Zc6TOMEG8vA1l4xutWGqqR5hgWzJfqHeihBejpbZ
- b4qhpDRwwbfRsej3cNf6Pz6tMxKpZaBYQ5YavzrZxSx230EItXh3J6SIWSut7PLJU7W4
- GC0Q==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :references:from:in-reply-to:content-transfer-encoding;
+ bh=gY2t8Go7p/vgj66UPEsK+d7CYl6pkbufpPENCwlPnDs=;
+ b=Oj7u/thRC9Extvl8RK6HxklyDVN8o/yTPdFn5qsDIPfOuLjKsJrlTPIp+rC4D7gWJ8
+ EGtoaaGN4ZmsVhLiheFw4MGTPhkyJU51XvXXk8PwrtfLGB+0qn4c6yovzNhXb8uDjKvw
+ fKJO57MbZHVJ2YH9quQWvbiWO5Yp6QYjfN1/MKR4+SLGatxrQYLoW58pkDuYCS7Qk81Z
+ rU3gi8siUX+6vWnzlU1p0S9OOiChnR9opbghCJ/3wvfUWARr2+Nsz6Z/XJmFeYkCuuX9
+ DpW6x99FVkixZbdW6co4OM580+5Otwb7X9wD/mD6DJ8WBCsuvELwa4yY306nlC5Hfpg7
+ h4Gw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=5AL/ExqpQl1WXPTr1hW9j9yflfrBr3IWmMKn7s35cx8=;
- b=ijOofPRZIUYI+D7UAHR8Jx1VPJ1bWGx5eRmgQjdi0KIEsFo75QoaCK7YxVxuXzCRwr
- CtARUih2LsFHItczGeBiJ2RkiUqTezcw9hrIQFeUgYK6g3ipGTvxxauiCvZwIAJ8TEr0
- FZxFcrsRmGq4Hur4dqGDpvxEv2wPcqoPg5W0jhnfoSZVHVtcfTZbLz9xuWpTXgtLzfh4
- soeMXYJBEWN+cyA3acxgMR0D6nLMcH7GoCzzxzYEA9+6uNXi9qzHqLj7LHcoTZB2jwV+
- jOv2IPbV0EwEYwi0VwxzK0DqGQ3yWOBPRAIV+baZiQHcxBd0xH9U+EKmzAD4bBickFVG
- bgow==
-X-Gm-Message-State: AOAM533T7+QL86dcorGQWdVpw8sk+Gr7/DiaSPvS+7AHOL1buyxEPwoW
- PRrX0Wv/8SbQ+jv2FGgU7HRFlg==
-X-Received: by 2002:a5d:6c6f:0:b0:20c:4d8b:c8a9 with SMTP id
- r15-20020a5d6c6f000000b0020c4d8bc8a9mr143212wrz.458.1652368503886; 
- Thu, 12 May 2022 08:15:03 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=gY2t8Go7p/vgj66UPEsK+d7CYl6pkbufpPENCwlPnDs=;
+ b=qRtMTElwFMIvGtvQW4YIFJ4vHPZYWqb3Ge6fbCE1vSYUYDxE9AKNwOji8WixDxrQR0
+ Z/KyN2cezj6ywzF/pfT/o2hBe8bSaiBLZXd4WnW9l2fHEB5//hbp/0lI2nVltoGnS0tL
+ DF03PQU1ZHVRj2pEgVIeOJ7ARwfAxXbFQ+IP7h+QByiZh93GFSybwhv1BQvmBhdmMkY7
+ BhHzICuObKsdf6OCCjsTgufJ0ktnQUcoLdPEmDfjL2ZqyIfrUmHrk0+uvgbw/cPuGPhY
+ Twgd6vHEabDPy1VUqMYe5Jeye1sGpS4oSdtEVYJ+A6npFGXnvZhZjZ/CcYPe3wpyCFA9
+ 6Gbg==
+X-Gm-Message-State: AOAM530U0sh8tz65WQdToEhB6cC6G74FbFRdNAvsDzxiX/V4s/yKbT+6
+ 9XwPjPhMgFVoz9Xl/gOtxFinEA==
+X-Received: by 2002:ac8:7d87:0:b0:2f3:edba:a84a with SMTP id
+ c7-20020ac87d87000000b002f3edbaa84amr719469qtd.186.1652374186038; 
+ Thu, 12 May 2022 09:49:46 -0700 (PDT)
+Received: from ?IPV6:2607:fb90:2827:e3d7:b6c9:cd59:fac5:b31a?
+ ([2607:fb90:2827:e3d7:b6c9:cd59:fac5:b31a])
  by smtp.gmail.com with ESMTPSA id
- ay41-20020a05600c1e2900b003942a244f51sm3048378wmb.42.2022.05.12.08.15.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 May 2022 08:15:03 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 5/6] hw/intc/arm_gicv3: Use correct number of priority bits
- for the CPU
-Date: Thu, 12 May 2022 16:14:56 +0100
-Message-Id: <20220512151457.3899052-6-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220512151457.3899052-1-peter.maydell@linaro.org>
-References: <20220512151457.3899052-1-peter.maydell@linaro.org>
+ bl34-20020a05620a1aa200b0069fc13ce1f3sm3456652qkb.36.2022.05.12.09.49.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 12 May 2022 09:49:45 -0700 (PDT)
+Message-ID: <c8b1cb70-3196-284f-6636-0f81d958a6e6@linaro.org>
+Date: Thu, 12 May 2022 09:49:41 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH v2 1/6] hw/intc/arm_gicv3_cpuif: Handle CPUs that don't
+ specify GICv3 parameters
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20220512151457.3899052-1-peter.maydell@linaro.org>
+ <20220512151457.3899052-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220512151457.3899052-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x82b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,173 +127,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qzznRa9dXn4G
+X-TUID: rScXEv8XJqNK
 
-Make the GICv3 set its number of bits of physical priority from the
-implementation-specific value provided in the CPU state struct, in
-the same way we already do for virtual priority bits.  Because this
-would be a migration compatibility break, we provide a property
-force-8-bit-prio which is enabled for 7.0 and earlier versioned board
-models to retain the legacy "always use 8 bits" behaviour.
+On 5/12/22 08:14, Peter Maydell wrote:
+> We allow a GICv3 to be connected to any CPU, but we don't do anything
+> to handle the case where the CPU type doesn't in hardware have a
+> GICv3 CPU interface and so the various GIC configuration fields
+> (gic_num_lrs, vprebits, vpribits) are not specified.
+> 
+> The current behaviour is that we will add the EL1 CPU interface
+> registers, but will not put in the EL2 CPU interface registers, even
+> if the CPU has EL2, which will leave the GIC in a broken state and
+> probably result in the guest crashing as it tries to set it up.  This
+> only affects the virt board when using the cortex-a15 or cortex-a7
+> CPU types (both 32-bit) with -machine gic-version=3 (or 'max')
+> and -machine virtualization=on.
+> 
+> Instead of failing to set up the EL2 registers, if the CPU doesn't
+> define the GIC configuration set it to a reasonable default, matching
+> the standard configuration for most Arm CPUs.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+> The other approach would be to make the GIC fail realize if the
+> CPU type doesn't officially have a GICv3 interface, and make the
+> virt board check for mismatches and handle 'gic-version' accordingly,
+> but this seems like less effort. I don't think anybody's likely
+> using this corner case anyway: the only reason I ran into it is
+> that with my patches to add cpu->gic_prebits one of the tests
+> in 'make check' now runs into it because it unintentionally and
+> unnecessarily asks for gicv3 and cortex-a15.
+> ---
+>   hw/intc/arm_gicv3_cpuif.c | 18 +++++++++++++-----
+>   1 file changed, 13 insertions(+), 5 deletions(-)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20220506162129.2896966-5-peter.maydell@linaro.org
----
-v1->v2:
- - drop TODO comment about a64fx
- - add settings for cortex-a76, neoverse-n1
- - default pribits to 5 if CPU doesn't set it
----
- include/hw/intc/arm_gicv3_common.h |  1 +
- target/arm/cpu.h                   |  1 +
- hw/core/machine.c                  |  4 +++-
- hw/intc/arm_gicv3_common.c         |  5 +++++
- hw/intc/arm_gicv3_cpuif.c          | 15 +++++++++++----
- target/arm/cpu64.c                 |  6 ++++++
- 6 files changed, 27 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index 46677ec345c..ab5182a28a2 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -248,6 +248,7 @@ struct GICv3State {
-     uint32_t revision;
-     bool lpi_enable;
-     bool security_extn;
-+    bool force_8bit_prio;
-     bool irq_reset_nonsecure;
-     bool gicd_no_migration_shift_bug;
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 18ca61e8e25..61bfb8d11f3 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1002,6 +1002,7 @@ struct ArchCPU {
-     int gic_num_lrs; /* number of list registers */
-     int gic_vpribits; /* number of virtual priority bits */
-     int gic_vprebits; /* number of virtual preemption bits */
-+    int gic_pribits; /* number of physical priority bits */
- 
-     /* Whether the cfgend input is high (i.e. this CPU should reset into
-      * big-endian mode).  This setting isn't used directly: instead it modifies
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 700c1e76b88..b670679de2e 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -37,7 +37,9 @@
- #include "hw/virtio/virtio.h"
- #include "hw/virtio/virtio-pci.h"
- 
--GlobalProperty hw_compat_7_0[] = {};
-+GlobalProperty hw_compat_7_0[] = {
-+    { "arm-gicv3-common", "force-8-bit-prio", "on" },
-+};
- const size_t hw_compat_7_0_len = G_N_ELEMENTS(hw_compat_7_0);
- 
- GlobalProperty hw_compat_6_2[] = {
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 5634c6fc788..351843db4aa 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -563,6 +563,11 @@ static Property arm_gicv3_common_properties[] = {
-     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
-     DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
-     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
-+    /*
-+     * Compatibility property: force 8 bits of physical priority, even
-+     * if the CPU being emulated should have fewer.
-+     */
-+    DEFINE_PROP_BOOL("force-8-bit-prio", GICv3State, force_8bit_prio, 0),
-     DEFINE_PROP_ARRAY("redist-region-count", GICv3State, nb_redist_regions,
-                       redist_region_count, qdev_prop_uint32, uint32_t),
-     DEFINE_PROP_LINK("sysmem", GICv3State, dma, TYPE_MEMORY_REGION,
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 69a15f7a444..66e06b787c7 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -2798,6 +2798,7 @@ void gicv3_init_cpuif(GICv3State *s)
-          *  cpu->gic_num_lrs
-          *  cpu->gic_vpribits
-          *  cpu->gic_vprebits
-+         *  cpu->gic_pribits
-          */
- 
-         /* Note that we can't just use the GICv3CPUState as an opaque pointer
-@@ -2810,11 +2811,17 @@ void gicv3_init_cpuif(GICv3State *s)
-         define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
- 
-         /*
--         * For the moment, retain the existing behaviour of 8 priority bits;
--         * in a following commit we will take this from the CPU state,
--         * as we do for the virtual priority bits.
-+         * The CPU implementation specifies the number of supported
-+         * bits of physical priority. For backwards compatibility
-+         * of migration, we have a compat property that forces use
-+         * of 8 priority bits regardless of what the CPU really has.
-          */
--        cs->pribits = 8;
-+        if (s->force_8bit_prio) {
-+            cs->pribits = 8;
-+        } else {
-+            cs->pribits = cpu->gic_pribits ?: 5;
-+        }
-+
-         /*
-          * The GICv3 has separate ID register fields for virtual priority
-          * and preemption bit values, but only a single ID register field
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 04427e073f1..c79a3fcf950 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -87,6 +87,7 @@ static void aarch64_a57_initfn(Object *obj)
-     cpu->gic_num_lrs = 4;
-     cpu->gic_vpribits = 5;
-     cpu->gic_vprebits = 5;
-+    cpu->gic_pribits = 5;
-     define_cortex_a72_a57_a53_cp_reginfo(cpu);
- }
- 
-@@ -140,6 +141,7 @@ static void aarch64_a53_initfn(Object *obj)
-     cpu->gic_num_lrs = 4;
-     cpu->gic_vpribits = 5;
-     cpu->gic_vprebits = 5;
-+    cpu->gic_pribits = 5;
-     define_cortex_a72_a57_a53_cp_reginfo(cpu);
- }
- 
-@@ -191,6 +193,7 @@ static void aarch64_a72_initfn(Object *obj)
-     cpu->gic_num_lrs = 4;
-     cpu->gic_vpribits = 5;
-     cpu->gic_vprebits = 5;
-+    cpu->gic_pribits = 5;
-     define_cortex_a72_a57_a53_cp_reginfo(cpu);
- }
- 
-@@ -252,6 +255,7 @@ static void aarch64_a76_initfn(Object *obj)
-     cpu->gic_num_lrs = 4;
-     cpu->gic_vpribits = 5;
-     cpu->gic_vprebits = 5;
-+    cpu->gic_pribits = 5;
- 
-     /* From B5.1 AdvSIMD AArch64 register summary */
-     cpu->isar.mvfr0 = 0x10110222;
-@@ -317,6 +321,7 @@ static void aarch64_neoverse_n1_initfn(Object *obj)
-     cpu->gic_num_lrs = 4;
-     cpu->gic_vpribits = 5;
-     cpu->gic_vprebits = 5;
-+    cpu->gic_pribits = 5;
- 
-     /* From B5.1 AdvSIMD AArch64 register summary */
-     cpu->isar.mvfr0 = 0x10110222;
-@@ -996,6 +1001,7 @@ static void aarch64_a64fx_initfn(Object *obj)
-     cpu->gic_num_lrs = 4;
-     cpu->gic_vpribits = 5;
-     cpu->gic_vprebits = 5;
-+    cpu->gic_pribits = 5;
- 
-     /* Suppport of A64FX's vector length are 128,256 and 512bit only */
-     aarch64_add_sve_properties(obj);
--- 
-2.25.1
-
+r~

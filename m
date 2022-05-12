@@ -1,106 +1,106 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp484255lfj;
-        Thu, 12 May 2022 08:15:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxKGhbMaUoU/BeYolZIr7szwBIcDBvRkw61o4w93bLGpRqp0cHW9FMLLDys/id0YMUVI+Ol
-X-Received: by 2002:ab0:240e:0:b0:360:325a:7352 with SMTP id f14-20020ab0240e000000b00360325a7352mr357733uan.108.1652368554705;
-        Thu, 12 May 2022 08:15:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652368554; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp484494lfj;
+        Thu, 12 May 2022 08:16:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzaKpMwkbUIZTfHAZ8IW/fWLn8onCfN59p5TMURRJ7f3I2UUXrRl0XNY+Q5Y8fhI3jw+fJ/
+X-Received: by 2002:a67:f807:0:b0:32d:577e:1efa with SMTP id l7-20020a67f807000000b0032d577e1efamr364881vso.35.1652368574873;
+        Thu, 12 May 2022 08:16:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652368574; cv=none;
         d=google.com; s=arc-20160816;
-        b=X0Hf47ujZeDhLs6R0b8iCCfdVGy3tBPSnBnQkckXhtIUcHaWEfbGb6+ERxuCVY87T8
-         9enNFlbGMTS43494yrUwjNOkeOU84lmCO1svfbEJCB4kWt2pEdwwV/gWWJhK/FPhz/hh
-         E0QnErZrR8OhlnltXiCXnP4DDiSQd8owtOtytNvjRwMc9NWTfrmOKMLbKKXBSK59jbp8
-         Kib/+exUjDt79mlDdoYyjPuT9exMqJRNozA7jIUF0sVI+klX0MX9r3xG+4JQAXz+D77N
-         PFHyNMRIuQz4ivUiqLEQet6z9W8iN09EqK+vRaqDXaP85RDYtJwJ7OFtta/ijtwN+xj4
-         YlHA==
+        b=wwkDcbG9V4VmX34NI1cbsCjs1NpHiL8mxyjuW/FmDyO1s+yWCalpMPfdDpKA8in+8p
+         zgQfVy/Ya/39nBvYm1mcWQ1sIVu+agubUjlwn0yi1pXIcmVIcPuZWOWAk5VQxZ3Z0M5S
+         oWt/CjrfPvDMGczAvCDXetCpAiNhBmdyeinTV2oABpz/SjD0NBwzb6sPpWz2cJIgIpsl
+         oCPjCBP2Ge4qBnUqDxIj5FrFpl8raq7duphcZPxpAt7KDpVMWJ3bPsqkP3+h4W6sBPCc
+         8hfHqsBzplp4MBhQT04RTYji4G2IVLQsE44YdeOq8E9J3wdpoBhHKl3t8k2ctB9fU+ff
+         TrrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KL7hkWefDsV+1gH/eOVlQCDaTMmyouyNsTaulwSWM6Y=;
-        b=f79jQFLvKJalDOO5crCDn55XU2xmuwx04XNWflgWuV60bklrv9gi6KEJ8s1yuGgNHC
-         j29X48DadxRiHeDkR9jhERV2kae1EZnDHTHIBtBx0a5q4OLqND7UHlyZ2XmyhJhzrYsW
-         FVdlU1v7hjPhoMyUBGaD6MJC+SbLrEKXNypCJSaajbrMTw8Gn61uEDTf8Kqh6o1C6VJG
-         8D4LvujmajjFIeheWk64n+y5YZphOt/lJUiSSAYRCFIKt1xX4eo2/3FehV9o8Mk0NdjI
-         zJAPQSVWnUpElnskspP3eL2q4HG/wOZV6z7cDEB5BE1S4KantA70lsuLWHnNUIizKdLi
-         2wAA==
+        bh=hMQaJT6/V9cigeOWwKRdKjLzKXge3k4QnBfzWy9pCoI=;
+        b=Dkaxn7rg+v2KyjN/HfOwmeP5PcJhC/f1znnoiPoGaOhYrVVQjmdBIeXvPv2je/zRZ+
+         BUkHzOHag/9iaElf+3/aoaeTWEnTt788xk+qGuh1p0qd0yWbhN7Qb55nN/0nputqQTW2
+         +oQMnwfhbhTFgNTQNz2dSvzHcQ2Hpa/DsYADWvwTAn50AuR1FqXcD/TZu4ayoOoIAnaG
+         8NwCv1xl07z7y5JgSA1RPvxnwWrNyHZver4+QEHF3/jbK3b5LJODm65QmBGtGSzMV7AK
+         tMOtOaLgfrndfeIESRMR/Ivgjm6TXh47w1Qx70N5vSLri95IQocCzrPeeS4jgH2kqZ5C
+         JM/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x7r7YhdL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AmGx09SD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r22-20020a67de96000000b003255a6b3970si1109906vsk.338.2022.05.12.08.15.54
+        by mx.google.com with ESMTPS id w4-20020a67c904000000b0032a21fac890si1120845vsk.389.2022.05.12.08.16.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 May 2022 08:15:54 -0700 (PDT)
+        Thu, 12 May 2022 08:16:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x7r7YhdL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AmGx09SD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45852 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46986 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1npAXi-0003B5-52
-	for alex.bennee@linaro.org; Thu, 12 May 2022 11:15:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34660)
+	id 1npAY2-00049L-Cm
+	for alex.bennee@linaro.org; Thu, 12 May 2022 11:16:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1npAX1-00037x-4f
- for qemu-arm@nongnu.org; Thu, 12 May 2022 11:15:13 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:36842)
+ id 1npAWu-00032r-2k
+ for qemu-arm@nongnu.org; Thu, 12 May 2022 11:15:05 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:40516)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1npAWu-0000KI-Bv
- for qemu-arm@nongnu.org; Thu, 12 May 2022 11:15:10 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id u3so7736086wrg.3
- for <qemu-arm@nongnu.org>; Thu, 12 May 2022 08:15:03 -0700 (PDT)
+ id 1npAWr-0000Au-FW
+ for qemu-arm@nongnu.org; Thu, 12 May 2022 11:15:03 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id a5so3914016wrp.7
+ for <qemu-arm@nongnu.org>; Thu, 12 May 2022 08:15:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=KL7hkWefDsV+1gH/eOVlQCDaTMmyouyNsTaulwSWM6Y=;
- b=x7r7YhdL5mBSjx2yH98IvFAYphu06MTM24U92NtLHUoHkOgAFfs0dL5qr3uKnbz1ko
- fEodktDVmCLIGGe7vQqAbz/CzuMLwe1UkDfjl3JJcW8cXNf4pgKdFkaPQvJjFLgZ+zCK
- BjRHuMTznDTl4pwF58lsNf6vGFk7aAZXOTP6NLdepeuE0jbRHe2l0VPhmoNg2e9ysDBv
- Eomb16EyUM7BvEbnQ/KmFpBlfmA6bWrltTCIdr9XqmCQdJJxBNEA261oqW6TUp6dzQCs
- npL7DbdI4rV34aOMyVj9iFf4HeDluNw0SU0ttMO8wWKwzhIQeOrNiImRNzycHoWHqwGd
- JJ1Q==
+ bh=hMQaJT6/V9cigeOWwKRdKjLzKXge3k4QnBfzWy9pCoI=;
+ b=AmGx09SD9+RUYdRyBxAaH9jkRWfzIKcfrtwj6VY/CipmXTYhirXAHAyLu1ZD8W/f10
+ WcKV3C1lGud2wb6Bpdv80helNWHJCTUXuCNTxetQF5EUYo+p1C4WmkIcjgpD9YYz62JG
+ xJdrAPAb4gPwsV4bspt9a+N1jcq3ErXok/pRtX+EUb61T7AkMEQ1sH3k0NeBbWXtcDp1
+ WbLzzxpDeGmZdhHV7d2qqJpaTSBd1Ix3dERS8K9vFD9EAxVOqq1meRuXhkP1gc5kHpjZ
+ WHbo/DkO0umuTJc6nhXBd7LnFvS6KLSfPf5KMxNN8p8+CafItC85cG124nDdxGIvqdUi
+ oaWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=KL7hkWefDsV+1gH/eOVlQCDaTMmyouyNsTaulwSWM6Y=;
- b=nUZiGmEgtZ3+a3Ro99khQ/fe1sOsZXozS50RVHLSUh/lnD3N2u7i6mQ/2N3rrsGIwl
- 1psR+YyNGPrJo/iZ5iknMHWXwHVObuojoj//lD+zIR6SDBXnHJyJSJzEna5tELNNu7HM
- o5K756CfaXUc4GM2ZwveevvyAzYml6rez2S3fOIb5qFBFkVjEf6OwZmFgjOp1uJ6Wu8G
- ijS7z+4getkYPF3gY9SqaEdpbgPEBLqYNArPa6E6G/Zxq0MdVvW1i2HGoAqc5fFc+zmg
- lbmPu3amqooxFsBReEIMRNHTvU8wOfgFLk4QY/pt5jmKnhN1nqBBNn5sEiiWbVItHARU
- b1Rg==
-X-Gm-Message-State: AOAM530f/9nGWbi50N/m0kRamKPMktku54/ejc8TzGwsvIZcDxmWALpO
- /ejPOQwHYh+JVTIwkT6I7CTb+ngolDj2Hw==
-X-Received: by 2002:adf:e646:0:b0:20a:d3b3:f176 with SMTP id
- b6-20020adfe646000000b0020ad3b3f176mr100598wrn.695.1652368502901; 
- Thu, 12 May 2022 08:15:02 -0700 (PDT)
+ bh=hMQaJT6/V9cigeOWwKRdKjLzKXge3k4QnBfzWy9pCoI=;
+ b=i+lSgQjonwrFgsRGGMeY3Sdo8Y48K3tg7clDLquyeTGyT+Tv0FaQB0IgoD7RFtuo1Z
+ WaRr3dYTl6QdGcuhqyJL9As18Q68Qiu5cJmpwelD54xyLDUAKG7EAQP7+C4eiAO60nW/
+ SPp6wCkycuQBcGnyy2BApvQLR/oHr7A1a8q5sE/btw7LwKfMeKfDRZwVaDM521bg59u9
+ VyI5AturfS5NkXdmdPWfm5PDITjAp7POZdhQ0y8fhKKmBIjd6w95K01Hlu0w3o8ydlae
+ RvtEjOXCiEPwKYFP8OIXwjj9pemkkbFmT815fWiccP1MEglOowWyX4hpmW+FK0DJGHZ2
+ Jk3g==
+X-Gm-Message-State: AOAM531EcCIZXA0F0HKc10deOcFqTSS7QY4f0nNLPTluAMAbOn3x824m
+ eoEYenm1kepO5gPDrFOB90BdRkBEzIvqPQ==
+X-Received: by 2002:a05:6000:1acd:b0:20c:811c:9f39 with SMTP id
+ i13-20020a0560001acd00b0020c811c9f39mr137942wry.482.1652368500004; 
+ Thu, 12 May 2022 08:15:00 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ay41-20020a05600c1e2900b003942a244f51sm3048378wmb.42.2022.05.12.08.15.01
+ ay41-20020a05600c1e2900b003942a244f51sm3048378wmb.42.2022.05.12.08.14.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 May 2022 08:15:02 -0700 (PDT)
+ Thu, 12 May 2022 08:14:59 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 4/6] hw/intc/arm_gicv3: Support configurable number of
- physical priority bits
-Date: Thu, 12 May 2022 16:14:55 +0100
-Message-Id: <20220512151457.3899052-5-peter.maydell@linaro.org>
+Subject: [PATCH v2 1/6] hw/intc/arm_gicv3_cpuif: Handle CPUs that don't
+ specify GICv3 parameters
+Date: Thu, 12 May 2022 16:14:52 +0100
+Message-Id: <20220512151457.3899052-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220512151457.3899052-1-peter.maydell@linaro.org>
 References: <20220512151457.3899052-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,334 +122,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dFdm+gv+E9sH
+X-TUID: pevu3XM6I+oQ
 
-The GICv3 code has always supported a configurable number of virtual
-priority and preemption bits, but our implementation currently
-hardcodes the number of physical priority bits at 8.  This is not
-what most hardware implementations provide; for instance the
-Cortex-A53 provides only 5 bits of physical priority.
+We allow a GICv3 to be connected to any CPU, but we don't do anything
+to handle the case where the CPU type doesn't in hardware have a
+GICv3 CPU interface and so the various GIC configuration fields
+(gic_num_lrs, vprebits, vpribits) are not specified.
 
-Make the number of physical priority/preemption bits driven by fields
-in the GICv3CPUState, the way that we already do for virtual
-priority/preemption bits.  We set cs->pribits to 8, so there is no
-behavioural change in this commit.  A following commit will add the
-machinery for CPUs to set this to the correct value for their
-implementation.
+The current behaviour is that we will add the EL1 CPU interface
+registers, but will not put in the EL2 CPU interface registers, even
+if the CPU has EL2, which will leave the GIC in a broken state and
+probably result in the guest crashing as it tries to set it up.  This
+only affects the virt board when using the cortex-a15 or cortex-a7
+CPU types (both 32-bit) with -machine gic-version=3 (or 'max')
+and -machine virtualization=on.
 
-Note that changing the number of priority bits would be a migration
-compatibility break, because the semantics of the icc_apr[][] array
-changes.
+Instead of failing to set up the EL2 registers, if the CPU doesn't
+define the GIC configuration set it to a reasonable default, matching
+the standard configuration for most Arm CPUs.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20220506162129.2896966-4-peter.maydell@linaro.org
 ---
- include/hw/intc/arm_gicv3_common.h |   7 +-
- hw/intc/arm_gicv3_cpuif.c          | 182 ++++++++++++++++++++---------
- 2 files changed, 130 insertions(+), 59 deletions(-)
+The other approach would be to make the GIC fail realize if the
+CPU type doesn't officially have a GICv3 interface, and make the
+virt board check for mismatches and handle 'gic-version' accordingly,
+but this seems like less effort. I don't think anybody's likely
+using this corner case anyway: the only reason I ran into it is
+that with my patches to add cpu->gic_prebits one of the tests
+in 'make check' now runs into it because it unintentionally and
+unnecessarily asks for gicv3 and cortex-a15.
+---
+ hw/intc/arm_gicv3_cpuif.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index 4e416100559..46677ec345c 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -51,11 +51,6 @@
- /* Maximum number of list registers (architectural limit) */
- #define GICV3_LR_MAX 16
- 
--/* Minimum BPR for Secure, or when security not enabled */
--#define GIC_MIN_BPR 0
--/* Minimum BPR for Nonsecure when security is enabled */
--#define GIC_MIN_BPR_NS (GIC_MIN_BPR + 1)
--
- /* For some distributor fields we want to model the array of 32-bit
-  * register values which hold various bitmaps corresponding to enabled,
-  * pending, etc bits. These macros and functions facilitate that; the
-@@ -206,6 +201,8 @@ struct GICv3CPUState {
-     int num_list_regs;
-     int vpribits; /* number of virtual priority bits */
-     int vprebits; /* number of virtual preemption bits */
-+    int pribits; /* number of physical priority bits */
-+    int prebits; /* number of physical preemption bits */
- 
-     /* Current highest priority pending interrupt for this CPU.
-      * This is cached information that can be recalculated from the
 diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index ebf269b73a4..69a15f7a444 100644
+index 9efba798f82..df2f8583564 100644
 --- a/hw/intc/arm_gicv3_cpuif.c
 +++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -787,6 +787,36 @@ static uint64_t icv_iar_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     return intid;
- }
+@@ -2755,6 +2755,15 @@ void gicv3_init_cpuif(GICv3State *s)
+         ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i));
+         GICv3CPUState *cs = &s->cpu[i];
  
-+static uint32_t icc_fullprio_mask(GICv3CPUState *cs)
-+{
-+    /*
-+     * Return a mask word which clears the unimplemented priority bits
-+     * from a priority value for a physical interrupt. (Not to be confused
-+     * with the group priority, whose mask depends on the value of BPR
-+     * for the interrupt group.)
-+     */
-+    return ~0U << (8 - cs->pribits);
-+}
++        /*
++         * If the CPU doesn't define a GICv3 configuration, probably because
++         * in real hardware it doesn't have one, then we use default values
++         * matching the one used by most Arm CPUs. This applies to:
++         *  cpu->gic_num_lrs
++         *  cpu->gic_vpribits
++         *  cpu->gic_vprebits
++         */
 +
-+static inline int icc_min_bpr(GICv3CPUState *cs)
-+{
-+    /* The minimum BPR for the physical interface. */
-+    return 7 - cs->prebits;
-+}
-+
-+static inline int icc_min_bpr_ns(GICv3CPUState *cs)
-+{
-+    return icc_min_bpr(cs) + 1;
-+}
-+
-+static inline int icc_num_aprs(GICv3CPUState *cs)
-+{
-+    /* Return the number of APR registers (1, 2, or 4) */
-+    int aprmax = 1 << MAX(cs->prebits - 5, 0);
-+    assert(aprmax <= ARRAY_SIZE(cs->icc_apr[0]));
-+    return aprmax;
-+}
-+
- static int icc_highest_active_prio(GICv3CPUState *cs)
- {
-     /* Calculate the current running priority based on the set bits
-@@ -794,14 +824,14 @@ static int icc_highest_active_prio(GICv3CPUState *cs)
-      */
-     int i;
- 
--    for (i = 0; i < ARRAY_SIZE(cs->icc_apr[0]); i++) {
-+    for (i = 0; i < icc_num_aprs(cs); i++) {
-         uint32_t apr = cs->icc_apr[GICV3_G0][i] |
-             cs->icc_apr[GICV3_G1][i] | cs->icc_apr[GICV3_G1NS][i];
- 
-         if (!apr) {
-             continue;
-         }
--        return (i * 32 + ctz32(apr)) << (GIC_MIN_BPR + 1);
-+        return (i * 32 + ctz32(apr)) << (icc_min_bpr(cs) + 1);
-     }
-     /* No current active interrupts: return idle priority */
-     return 0xff;
-@@ -980,7 +1010,7 @@ static void icc_pmr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     trace_gicv3_icc_pmr_write(gicv3_redist_affid(cs), value);
- 
--    value &= 0xff;
-+    value &= icc_fullprio_mask(cs);
- 
-     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_is_secure(env) &&
-         (env->cp15.scr_el3 & SCR_FIQ)) {
-@@ -1004,7 +1034,7 @@ static void icc_activate_irq(GICv3CPUState *cs, int irq)
-      */
-     uint32_t mask = icc_gprio_mask(cs, cs->hppi.grp);
-     int prio = cs->hppi.prio & mask;
--    int aprbit = prio >> 1;
-+    int aprbit = prio >> (8 - cs->prebits);
-     int regno = aprbit / 32;
-     int regbit = aprbit % 32;
- 
-@@ -1162,7 +1192,7 @@ static void icc_drop_prio(GICv3CPUState *cs, int grp)
-      */
-     int i;
- 
--    for (i = 0; i < ARRAY_SIZE(cs->icc_apr[grp]); i++) {
-+    for (i = 0; i < icc_num_aprs(cs); i++) {
-         uint64_t *papr = &cs->icc_apr[grp][i];
- 
-         if (!*papr) {
-@@ -1590,7 +1620,7 @@ static void icc_bpr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         return;
-     }
- 
--    minval = (grp == GICV3_G1NS) ? GIC_MIN_BPR_NS : GIC_MIN_BPR;
-+    minval = (grp == GICV3_G1NS) ? icc_min_bpr_ns(cs) : icc_min_bpr(cs);
-     if (value < minval) {
-         value = minval;
-     }
-@@ -2171,19 +2201,19 @@ static void icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
- 
-     cs->icc_ctlr_el1[GICV3_S] = ICC_CTLR_EL1_A3V |
-         (1 << ICC_CTLR_EL1_IDBITS_SHIFT) |
--        (7 << ICC_CTLR_EL1_PRIBITS_SHIFT);
-+        ((cs->pribits - 1) << ICC_CTLR_EL1_PRIBITS_SHIFT);
-     cs->icc_ctlr_el1[GICV3_NS] = ICC_CTLR_EL1_A3V |
-         (1 << ICC_CTLR_EL1_IDBITS_SHIFT) |
--        (7 << ICC_CTLR_EL1_PRIBITS_SHIFT);
-+        ((cs->pribits - 1) << ICC_CTLR_EL1_PRIBITS_SHIFT);
-     cs->icc_pmr_el1 = 0;
--    cs->icc_bpr[GICV3_G0] = GIC_MIN_BPR;
--    cs->icc_bpr[GICV3_G1] = GIC_MIN_BPR;
--    cs->icc_bpr[GICV3_G1NS] = GIC_MIN_BPR_NS;
-+    cs->icc_bpr[GICV3_G0] = icc_min_bpr(cs);
-+    cs->icc_bpr[GICV3_G1] = icc_min_bpr(cs);
-+    cs->icc_bpr[GICV3_G1NS] = icc_min_bpr_ns(cs);
-     memset(cs->icc_apr, 0, sizeof(cs->icc_apr));
-     memset(cs->icc_igrpen, 0, sizeof(cs->icc_igrpen));
-     cs->icc_ctlr_el3 = ICC_CTLR_EL3_NDS | ICC_CTLR_EL3_A3V |
-         (1 << ICC_CTLR_EL3_IDBITS_SHIFT) |
--        (7 << ICC_CTLR_EL3_PRIBITS_SHIFT);
-+        ((cs->pribits - 1) << ICC_CTLR_EL3_PRIBITS_SHIFT);
- 
-     memset(cs->ich_apr, 0, sizeof(cs->ich_apr));
-     cs->ich_hcr_el2 = 0;
-@@ -2238,27 +2268,6 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
-       .readfn = icc_ap_read,
-       .writefn = icc_ap_write,
-     },
--    { .name = "ICC_AP0R1_EL1", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 5,
--      .type = ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_RW, .accessfn = gicv3_fiq_access,
--      .readfn = icc_ap_read,
--      .writefn = icc_ap_write,
--    },
--    { .name = "ICC_AP0R2_EL1", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 6,
--      .type = ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_RW, .accessfn = gicv3_fiq_access,
--      .readfn = icc_ap_read,
--      .writefn = icc_ap_write,
--    },
--    { .name = "ICC_AP0R3_EL1", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 7,
--      .type = ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_RW, .accessfn = gicv3_fiq_access,
--      .readfn = icc_ap_read,
--      .writefn = icc_ap_write,
--    },
-     /* All the ICC_AP1R*_EL1 registers are banked */
-     { .name = "ICC_AP1R0_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 9, .opc2 = 0,
-@@ -2267,27 +2276,6 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
-       .readfn = icc_ap_read,
-       .writefn = icc_ap_write,
-     },
--    { .name = "ICC_AP1R1_EL1", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 9, .opc2 = 1,
--      .type = ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_RW, .accessfn = gicv3_irq_access,
--      .readfn = icc_ap_read,
--      .writefn = icc_ap_write,
--    },
--    { .name = "ICC_AP1R2_EL1", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 9, .opc2 = 2,
--      .type = ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_RW, .accessfn = gicv3_irq_access,
--      .readfn = icc_ap_read,
--      .writefn = icc_ap_write,
--    },
--    { .name = "ICC_AP1R3_EL1", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 9, .opc2 = 3,
--      .type = ARM_CP_IO | ARM_CP_NO_RAW,
--      .access = PL1_RW, .accessfn = gicv3_irq_access,
--      .readfn = icc_ap_read,
--      .writefn = icc_ap_write,
--    },
-     { .name = "ICC_DIR_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 1,
-       .type = ARM_CP_IO | ARM_CP_NO_RAW,
-@@ -2430,6 +2418,54 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
-     },
- };
- 
-+static const ARMCPRegInfo gicv3_cpuif_icc_apxr1_reginfo[] = {
-+    { .name = "ICC_AP0R1_EL1", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 5,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL1_RW, .accessfn = gicv3_fiq_access,
-+      .readfn = icc_ap_read,
-+      .writefn = icc_ap_write,
-+    },
-+    { .name = "ICC_AP1R1_EL1", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 9, .opc2 = 1,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL1_RW, .accessfn = gicv3_irq_access,
-+      .readfn = icc_ap_read,
-+      .writefn = icc_ap_write,
-+    },
-+};
-+
-+static const ARMCPRegInfo gicv3_cpuif_icc_apxr23_reginfo[] = {
-+    { .name = "ICC_AP0R2_EL1", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 6,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL1_RW, .accessfn = gicv3_fiq_access,
-+      .readfn = icc_ap_read,
-+      .writefn = icc_ap_write,
-+    },
-+    { .name = "ICC_AP0R3_EL1", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 8, .opc2 = 7,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL1_RW, .accessfn = gicv3_fiq_access,
-+      .readfn = icc_ap_read,
-+      .writefn = icc_ap_write,
-+    },
-+    { .name = "ICC_AP1R2_EL1", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 9, .opc2 = 2,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL1_RW, .accessfn = gicv3_irq_access,
-+      .readfn = icc_ap_read,
-+      .writefn = icc_ap_write,
-+    },
-+    { .name = "ICC_AP1R3_EL1", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 9, .opc2 = 3,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL1_RW, .accessfn = gicv3_irq_access,
-+      .readfn = icc_ap_read,
-+      .writefn = icc_ap_write,
-+    },
-+};
-+
- static uint64_t ich_ap_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     GICv3CPUState *cs = icc_cs_from_env(env);
-@@ -2772,6 +2808,44 @@ void gicv3_init_cpuif(GICv3State *s)
+         /* Note that we can't just use the GICv3CPUState as an opaque pointer
+          * in define_arm_cp_regs_with_opaque(), because when we're called back
+          * it might be with code translated by CPU 0 but run by CPU 1, in
+@@ -2763,13 +2772,12 @@ void gicv3_init_cpuif(GICv3State *s)
           * get back to the GICv3CPUState from the CPUARMState.
           */
          define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
-+
-+        /*
-+         * For the moment, retain the existing behaviour of 8 priority bits;
-+         * in a following commit we will take this from the CPU state,
-+         * as we do for the virtual priority bits.
-+         */
-+        cs->pribits = 8;
-+        /*
-+         * The GICv3 has separate ID register fields for virtual priority
-+         * and preemption bit values, but only a single ID register field
-+         * for the physical priority bits. The preemption bit count is
-+         * always the same as the priority bit count, except that 8 bits
-+         * of priority means 7 preemption bits. We precalculate the
-+         * preemption bits because it simplifies the code and makes the
-+         * parallels between the virtual and physical bits of the GIC
-+         * a bit clearer.
-+         */
-+        cs->prebits = cs->pribits;
-+        if (cs->prebits == 8) {
-+            cs->prebits--;
-+        }
-+        /*
-+         * Check that CPU code defining pribits didn't violate
-+         * architectural constraints our implementation relies on.
-+         */
-+        g_assert(cs->pribits >= 4 && cs->pribits <= 8);
-+
-+        /*
-+         * gicv3_cpuif_reginfo[] defines ICC_AP*R0_EL1; add definitions
-+         * for ICC_AP*R{1,2,3}_EL1 if the prebits value requires them.
-+         */
-+        if (cs->prebits >= 6) {
-+            define_arm_cp_regs(cpu, gicv3_cpuif_icc_apxr1_reginfo);
-+        }
-+        if (cs->prebits == 7) {
-+            define_arm_cp_regs(cpu, gicv3_cpuif_icc_apxr23_reginfo);
-+        }
-+
-         if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
+-        if (arm_feature(&cpu->env, ARM_FEATURE_EL2)
+-            && cpu->gic_num_lrs) {
++        if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
              int j;
  
+-            cs->num_list_regs = cpu->gic_num_lrs;
+-            cs->vpribits = cpu->gic_vpribits;
+-            cs->vprebits = cpu->gic_vprebits;
++            cs->num_list_regs = cpu->gic_num_lrs ?: 4;
++            cs->vpribits = cpu->gic_vpribits ?: 5;
++            cs->vprebits = cpu->gic_vprebits ?: 5;
+ 
+             /* Check against architectural constraints: getting these
+              * wrong would be a bug in the CPU code defining these,
 -- 
 2.25.1
 

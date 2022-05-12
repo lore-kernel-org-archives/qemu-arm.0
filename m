@@ -1,150 +1,134 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp3683191lfj;
-        Mon, 9 May 2022 07:34:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCVhwIRvKD47LD2Xid00RPFU/N9E8RZJChn3sGexUbPridenHrQwGfh5v2dfvuY3byFkso
-X-Received: by 2002:a05:622a:353:b0:2f3:d23f:f703 with SMTP id r19-20020a05622a035300b002f3d23ff703mr9160386qtw.623.1652106844089;
-        Mon, 09 May 2022 07:34:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652106844; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp403535lfj;
+        Thu, 12 May 2022 06:12:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzKJbSKB1FbbxxGe0osklss3RM6+/7gjFFLvRftLPj6deUyqaCVz5rDzq8rDCo5vqnMiN0v
+X-Received: by 2002:a17:907:3f02:b0:6f3:5c42:321a with SMTP id hq2-20020a1709073f0200b006f35c42321amr30211831ejc.521.1652361134893;
+        Thu, 12 May 2022 06:12:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652361134; cv=none;
         d=google.com; s=arc-20160816;
-        b=cHvxfn00/D/3p0VoOWuxK3UND2/n0E0TwGz/KoRTnOha3996L1qKnVp+AEzJTBc5H4
-         lCC5WHoEd2n1pW1+JFYWW6zEFWhI7Vj4ox+kWzxTyFEyeRjgaJ0CLjX5uu0vS7R5ek+g
-         tfiHpTHlxLynQhErrLmPwv3tLo0zf9+3AVLaeyc3IsWsdsxHyshAQpvgaHaGLen4aAXt
-         vHMcC6YC6IjNJi4GMpQgMxaVgELn9Heu8QElrXyshafkunZ8SZmgROlcuNSeYqOL+K3h
-         abwKxvHv0mT4mPKOBRbFA08Sfu3OJCA/ir5YJ34uFzJrtY65pQNIYHezQNtebNpnVfxe
-         krng==
+        b=z3oCdfFg4FrsJjTl60bGJRBoHdXbu29K5dcXQy1bLj2wY+ckZ9QUpkPuzYnCsZkYaW
+         OjIRlZFp5XHhE8D2YrZL6z5TM/SETLKDi6tTgK9Nxvly70u/pxxARAHjmnFKL/LFMBlk
+         fUqpmi8662rIrgxDY39nIAV7Lp2iGuWh8D9i2E9aoBaWJ0x3m46ilpzohjYeyWLJr0cW
+         cQ4xXGgqWtAsZQ9tvq8XBzp2UAiDI6lyRv8YSRkYO8G38ruZ6V9cxJ6feid5B6uU6A9v
+         LgexFQZq/hC77IsvdxWfWk2Wou4uw+P57Sc6UTjJnrD7bDywV4r+korb16vtkAjZA3aN
+         Wh3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=jAIIaw3Pd3n4E6KzpCgv97nWsVvS6ET2UpJK/GZ64a8=;
-        b=hrPuTFT0ydkBORYYbpf3G/mDKZl4uyAfjlvuCqrfSAHYFoCfI851bnpJfYBBAgyS1E
-         RIYqDapK86uYeK35PhUQ+mRVnxFwHlb9P4tctsa1qqOFQc0Ty52idQlGuYViM4U7kFzK
-         8BvIFyhrSerYH4dmKM+Cur+t+Z7zksjnnzWrUJN0q9wOnr4Yid7zvw+kQkWkKQr56PQX
-         N8H3bqYFHH7pCs5FPPiSGT1G9IYNlxRZDfUz+NkJitF2bm2HNA2bzH/CSecaDL6hCIAJ
-         tEEMK4KPLJJ/dFENjvjoJf2jxIXTBm7HZgzRSF0AwnW+fcfyWxVRJ5S+0mo+pSvzOMjb
-         qriw==
+        h=list-id:precedence:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=6ZUtkKT1gSa7cSHlEzhqRgqVdUguIg1mvdLamXJLJ1g=;
+        b=qdBcudSmfeoXCk5Lq+6D5EGClC4CId0i2/XHeVNxFHcM1nkBto8u5ZcSHj46zw8p8l
+         QkRyBOYUhf4zBrzUCq2WJlAWDkk1EqXHmYNEFy5XYMe/zDmOWgNk04cCyf4L3yoGqx17
+         su+Xw524EF+47rqDkK0DeUp+smHNpgIWflL7QdDxKvZ/K4W4px01KVPyy2AjOaiJHUuy
+         Bg3wXHnm5PdMRpIlIlSRiXzkid7M+HpHpnvGnbotDNIPMOqWgpbnR0LsG6Zr2U0rlNGO
+         aDdlPbdl1rCn3xNwqbtEZpuTNFDdoZuHrAXoxXGEYmk/B6267z12roQfA2DoEf+iQUxY
+         Wtgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=St0CrPxk;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KDGyaoL6;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id t10-20020a37ea0a000000b0069ed8329236si7453529qkj.117.2022.05.09.07.34.03
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 May 2022 07:34:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id cm15-20020a0564020c8f00b00425cd11d846si5679560edb.112.2022.05.12.06.12.14;
+        Thu, 12 May 2022 06:12:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=St0CrPxk;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KDGyaoL6;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1354222AbiELNMN (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Thu, 12 May 2022 09:12:13 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:37412 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1354262AbiELNMI (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 12 May 2022 09:12:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTP id A7756BA98A
+        for <kvm@vger.kernel.org>; Thu, 12 May 2022 06:11:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1652106843;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jAIIaw3Pd3n4E6KzpCgv97nWsVvS6ET2UpJK/GZ64a8=;
-	b=St0CrPxkk0fxeNXc1spthV+ONmsaCyJ8xodO/Wdx1Gq4ttfCAwlxFr6FtDApKyBYhwvA51
-	Np6iZIsKkzr8TEGEF2Qm+0Mz5ItnZRigwanuVmWkYsH1SUPvnYKHuwNyLh5sw6IIpIWtfH
-	6QER6n/uvf2GDmtdqfARx/IiAfOdhBc=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+        s=mimecast20190719; t=1652361117;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=6ZUtkKT1gSa7cSHlEzhqRgqVdUguIg1mvdLamXJLJ1g=;
+        b=KDGyaoL6xpdY+VL4yrVJ4GuHc8ZV7XB8UlMHGzqUvJJRSgWYCrPUQ+186EnkfYnTgO1fsm
+        v0L1x39xmkVOK1t59tGQshOfVQrRQSwXblxSMykKa+s/8YWrlKXvHlJT+gLqMrMt6d9zyo
+        9oAjCXhSpwAdnq6EsYxJlOhyIu32bME=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-235-sTeboWAmP0eAugGjAwEznw-1; Mon, 09 May 2022 10:34:02 -0400
-X-MC-Unique: sTeboWAmP0eAugGjAwEznw-1
-Received: by mail-qk1-f199.google.com with SMTP id v14-20020a05620a0f0e00b00699f4ea852cso8740773qkl.9
-        for <alex.bennee@linaro.org>; Mon, 09 May 2022 07:34:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:reply-to
-         :subject:content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=jAIIaw3Pd3n4E6KzpCgv97nWsVvS6ET2UpJK/GZ64a8=;
-        b=uU2+N9ODYPyig8BOTNj8t7VoNSYlEIy2UvqMS1dvXgAOd+czGhalLSwuZH0shvZFKY
-         sbK+ZNmZ38XU3vmgejv0dXX5lPxDLqb3UvSVoWdfv8lNKtghIA9tRol9XT36TFJZn1OY
-         FauEsaXvTC093gmyHTceON5ElC7IAhV9ht0SRJ0VNvKH72E6kAo15Q3gER7o4Sx8/sa/
-         yTzB5AaOQbqLIbZp0ADmPahvjuB7POzTW6EETC5qo0k69m7whYtgm3y0oF2LOviDiSyp
-         Y6BGzAtkKX1vv718rYta6KevyWLZXhBuE/Km3l74ErRHkjl7Juueiqr8MhVJKzaDQoN4
-         2QNQ==
-X-Gm-Message-State: AOAM532fi2qHDq2IWAGSL3V/hM6TG7wHOybjXXhxsKwMFi310O5AE/hm
-	YdDTujMeeGpHLzlx4vp9NUwfkuAV2q6/Rafr6FuOtuBhJEaTct8NTGvkASvRboxGB0Wpegmqun/
-	cYbgSpfAVbr8Mt52S3QZx1c/wScqCnS4AjBmrzhixz5agzUidvf7u0Bj3ItrnTdfrs77Q9TU=
-X-Received: by 2002:ac8:5e4c:0:b0:2f3:c50e:53a6 with SMTP id i12-20020ac85e4c000000b002f3c50e53a6mr14868175qtx.499.1652106841682;
-        Mon, 09 May 2022 07:34:01 -0700 (PDT)
-X-Received: by 2002:ac8:5e4c:0:b0:2f3:c50e:53a6 with SMTP id i12-20020ac85e4c000000b002f3c50e53a6mr14868142qtx.499.1652106841386;
-        Mon, 09 May 2022 07:34:01 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id z11-20020ac8454b000000b002f39b99f6aasm7664032qtn.68.2022.05.09.07.33.58
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 May 2022 07:34:00 -0700 (PDT)
-Message-ID: <763c598d-b01a-32eb-2bd5-0d2537f0e6e6@redhat.com>
-Date: Mon, 9 May 2022 16:33:56 +0200
+ us-mta-464-Ex3kEOImN-OAAexJZa3SSw-1; Thu, 12 May 2022 09:11:53 -0400
+X-MC-Unique: Ex3kEOImN-OAAexJZa3SSw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 477521C08968;
+        Thu, 12 May 2022 13:11:53 +0000 (UTC)
+Received: from gondolin.fritz.box (unknown [10.39.193.157])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 5D1A37AF2;
+        Thu, 12 May 2022 13:11:50 +0000 (UTC)
+From:   Cornelia Huck <cohuck@redhat.com>
+To:     Peter Maydell <peter.maydell@linaro.org>,
+        Thomas Huth <thuth@redhat.com>,
+        Laurent Vivier <lvivier@redhat.com>
+Cc:     Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org,
+        Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH RFC 0/2] arm: enable MTE for QEMU + kvm
+Date:   Thu, 12 May 2022 15:11:44 +0200
+Message-Id: <20220512131146.78457-1-cohuck@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v6 3/3] tests/qtest/libqos: Add generic pci host bridge in
- arm-virt machine
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: eric.auger.pro@gmail.com, pbonzini@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, mst@redhat.com, david@gibson.dropbear.id.au,
- clg@kaod.org, eesposit@redhat.com, Coiby.Xu@gmail.com, stefanha@redhat.com,
- jean-philippe@linaro.org
-References: <20220504152025.1785704-1-eric.auger@redhat.com>
- <20220504152025.1785704-4-eric.auger@redhat.com> <87bkw6u7np.fsf@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <87bkw6u7np.fsf@linaro.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-TUID: qLxRry7JRZ/U
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Spam-Status: No, score=-3.4 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_LOW,
+        SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE autolearn=ham
+        autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: G1VJ2gDC0nTP
 
-Hi Alex,
+This series enables MTE for kvm guests, if the kernel supports it.
+Lightly tested while running under the simulator (the arm64/mte/
+kselftests pass... if you wait patiently :)
 
-On 5/9/22 15:59, Alex Bennée wrote:
-> Eric Auger <eric.auger@redhat.com> writes:
->
->> Up to now the virt-machine node contains a virtio-mmio node.
->> However no driver produces any PCI interface node. Hence, PCI
->> tests cannot be run with aarch64 binary.
->>
->> Add a GPEX driver node that produces a pci interface node. This latter
->> then can be consumed by all the pci tests. One of the first motivation
->> was to be able to run the virtio-iommu-pci tests.
->>
->> We still face an issue with pci hotplug tests as hotplug cannot happen
->> on the pcie root bus and require a generic root port. This will be
->> addressed later on.
->>
->> We force cpu=max along with aarch64/virt machine as some PCI tests
->> require high MMIO regions to be available.
-> Where would I be able to force disable-legacy=off for the PCI device
-in libqos/vhost-user-gpio-pci.c qos_node_consumes("vhost-user-blk-pci",
-"pci-bus", &opts);
-I think you can use opts to force disable-legacy to off.
+A new cpu property "mte" (defaulting to on if possible) is introduced;
+for tcg, you still need to enable mte at the machine as well.
 
-see vhost-user-blk.c.
-> from? Building on this for GPIO I run into the following:
->
->   subprocess_run_one_test: /aarch64/virt/generic-pcihost/pci-bus-generic/pci-bus/vhost-user-gpio-pci/vhost-user-gpio/vhost-user-gpio-tests/read-guest-mem/memfile/subprocess
->   vhost_user_test_setup: -M virt, -cpu max -device vhost-user-gpio-pci,id=gpio0,addr=04.0,chardev=chr-vhost-user-test
->   vu_gpio_get_protocol_features: 0x202
->   qemu-system-aarch64: -device vhost-user-gpio-pci,id=gpio0,addr=04.0,chardev=chr-vhost-user-test: Device doesn't support modern mode, and legacy mode is disabled
->   Set disable-legacy to off
->   Broken pipe
->
-> and I think this needs to be applied to the root bus device?
-you mean the disable-legacy? I guess it should be applied to your device?
+I've hacked up some very basic qtests; not entirely sure if I'm going
+about it the right way.
 
-Eric
->
-> Anyway otherwise it looks OK to me:
->
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
->
+Some things to look out for:
+- Migration is not (yet) supported. I added a migration blocker if we
+  enable mte in the kvm case. AFAIK, there isn't any hardware available
+  yet that allows mte + kvm to be used (I think the latest Gravitons
+  implement mte, but no bare metal instances seem to be available), so
+  that should not have any impact on real world usage.
+- I'm not at all sure about the interaction between the virt machine 'mte'
+  prop and the cpu 'mte' prop. To keep things working with tcg as before,
+  a not-specified mte for the cpu should simply give us a guest without
+  mte if it wasn't specified for the machine. However, mte on the cpu
+  without mte on the machine should probably generate an error, but I'm not
+  sure how to detect that without breaking the silent downgrade to preserve
+  existing behaviour.
+- As I'm still new to arm, please don't assume that I know what I'm doing :)
+
+
+Cornelia Huck (2):
+  arm/kvm: enable MTE if available
+  qtests/arm: add some mte tests
+
+ target/arm/cpu.c               | 18 +++-----
+ target/arm/cpu.h               |  4 ++
+ target/arm/cpu64.c             | 78 ++++++++++++++++++++++++++++++++++
+ target/arm/kvm64.c             |  5 +++
+ target/arm/kvm_arm.h           | 12 ++++++
+ target/arm/monitor.c           |  1 +
+ tests/qtest/arm-cpu-features.c | 31 ++++++++++++++
+ 7 files changed, 137 insertions(+), 12 deletions(-)
+
+-- 
+2.34.3

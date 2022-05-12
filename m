@@ -1,73 +1,73 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp403546lfj;
-        Thu, 12 May 2022 06:12:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx4P1lwMyt5Myj5SC1zrQD7wkrDRAeVNBbb1MxxpmpHYJ/YMbe+9fUgTfOGOVAspY4WQhkb
-X-Received: by 2002:a17:907:d0c:b0:6f4:a5b9:3799 with SMTP id gn12-20020a1709070d0c00b006f4a5b93799mr29848649ejc.732.1652361136086;
-        Thu, 12 May 2022 06:12:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652361136; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp403578lfj;
+        Thu, 12 May 2022 06:12:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx1wLoIbDS+SXtiUJcIOI0pA/YGBSpbd8HXV+sfUaeBb0GjOeEcYNdqusabcYS5/JGu8mbp
+X-Received: by 2002:a05:6402:90e:b0:425:a4bc:db86 with SMTP id g14-20020a056402090e00b00425a4bcdb86mr34930923edz.98.1652361139489;
+        Thu, 12 May 2022 06:12:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652361139; cv=none;
         d=google.com; s=arc-20160816;
-        b=rOZzx/MvTOrni92IFqdkZfYM4os8WJBRMTdwI2LfWu8OH1Z8Rad9oicQeVtiSojl8e
-         mFTijbNKwgAoC0oMzs7cXlilvMN8yXhdzgo4oHiPlAkBp9pZlswp/u0Eo8AVHqGHeiIs
-         Iec5lU9ICW5e3Bcceasj15dfXgHJfATOpOYkFQbzeHkurdOm3WWlznqgdzspdCCPeF9C
-         IWoNwlzH+4RQlf1qCgx94Ne1iZ8LRyiDb6sgG7WmMEydi+huExRnO9+HUtQiampkQ9uC
-         1eRjOjnQR2nS/22mWFgs4XST/+p4Wv4r7N0p0eJUjc/Us4mNqKC44PzBbDZMtiJQDyZg
-         6HBg==
+        b=u2mXz0IdQtGcChMPu8gAebe08uFG9wH/Bij/6ydQZzuUuOLt6PkLEsvwOvT1cXFT6L
+         6duTHBEBKAQHLkZZnwC5D3NEXBW/tP9o7bi4EqTQsKhy7Jgm+7F1yKj7fATk6bV9DDu6
+         YknNSkEP58qQbYQWDUobVRc34yXceKmJ5Yfuuf62ZxzPhxEgwyy3xJYE9zotW0+hWTJ7
+         dHtJHWRFnWZj5e/5Mb6Q16KhXnCNgCgcSQGGDw5At5wIKXuy15QDrYxEsEn5/B3TPUM1
+         2Rm0Vbg37aIfuS1swcMzerzy/B8k8y67qE7ixbP4C7nXHnT+Mhd+obK+WglZ1T8KOO2T
+         o1VQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=w9QzHOYviTr+OO0iuFKFM8CRDc6/CGD4m0dOzezLDt4=;
-        b=k4qgf2X5GmTl9Gg3A92Se0+1CS4xgF/6EK/Rai9xNhYnsp60rlmuNxynyUh8GbsDwU
-         j3yg2gPYoQQf1AjsDbPMJ2NDt7oxs0Pf33+jyTjX0NGSWugw7WZV4yrmZXO+WvFdbl+8
-         G0PATOItnN8FoVmkAffgNsZosjKF+oSUFDKfSUvWKH3YbYfPU6HUYcrIxLuo0mW5SZ3y
-         Y8vAqMYtVgqz31ZfJ8FA2DrvNc9Gy1g4/ogGrZxiMP2V3asLlhlXMkAuqiiUtxUZZptK
-         Jl3HS17RPArLB3jH7s13n8x4Tp0JIS21XScW1t5QRapb9zgeoD28qPWVUSfme9ddRjFv
-         B+5w==
+        bh=AB0PU4I+UYiZ9aacszyhe3Z6+GgBrCigqQkND5ZGRww=;
+        b=bJwDmVPShdcNNHSo2iXDS83K8BQvsPTeS73MfJ0QjnsLp2t3ptvppMc0UhlY8zLJwv
+         E8fT/M9LwXZwAZKHxKJsNozp0tcdKM4T9s1BXl6FqPo5Xz33Mv5DqjCUnmdhy5vUv+2g
+         y2qBpRWjOFfU6I0m7yNqkUc9Ptwae6QlfXO4oKE06mCgAx/54nMIEhhLsM73KDi7sQBN
+         lTP95AuAALp5KAEh8NdlAhFi8hH2JmTjxnUo2W3y+lC0+EGgL2tepdYWtkdTX2/49YZe
+         SVZZQMAQQeZjczHawYYyRCpshpzDssoR/lNhDR6MPDJga9w6eH0WU6F3yoHVYmQChH+J
+         Xm6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LtVoDAID;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zfye5o07;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id cm15-20020a0564020c8f00b00425cd11d846si5679560edb.112.2022.05.12.06.12.15;
-        Thu, 12 May 2022 06:12:16 -0700 (PDT)
+        by mx.google.com with ESMTP id cm15-20020a0564020c8f00b00425cd11d846si5679560edb.112.2022.05.12.06.12.19;
+        Thu, 12 May 2022 06:12:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LtVoDAID;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zfye5o07;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1351103AbiELNMP (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 3 others); Thu, 12 May 2022 09:12:15 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:38368 "EHLO
+        id S1354213AbiELNMR (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Thu, 12 May 2022 09:12:17 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:38672 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1354062AbiELNMI (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 12 May 2022 09:12:08 -0400
+        with ESMTP id S1354251AbiELNMK (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 12 May 2022 09:12:10 -0400
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTP id F113ABCE9D
-        for <kvm@vger.kernel.org>; Thu, 12 May 2022 06:11:59 -0700 (PDT)
+        by lindbergh.monkeyblade.net (Postfix) with ESMTP id 2E7021F68D5
+        for <kvm@vger.kernel.org>; Thu, 12 May 2022 06:12:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1652361119;
+        s=mimecast20190719; t=1652361122;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=w9QzHOYviTr+OO0iuFKFM8CRDc6/CGD4m0dOzezLDt4=;
-        b=LtVoDAIDgtHrT5wewQbKWf7BV05IvKXdTzYesLuP8E5gDRSp8VL+NtMbLRTyw6h+xJAGw/
-        EHjL7mPJbZvcHsgs+mtmEyFI1BTNFk5437GHoy+RdnR/Co0MYTfkrP9U7TXpdZSpAcxmYz
-        19Z0mq4vJn2aZsZ1LtTJnMF4+7G2I84=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+        bh=AB0PU4I+UYiZ9aacszyhe3Z6+GgBrCigqQkND5ZGRww=;
+        b=Zfye5o07gKy32ndDGQGQqF3s4TratYkAksYKSiQA8ziHKQjpP9NH0ZuzUdBk5xZGga+RjL
+        5JQwbTH8TKBBIllmYC9qMFXiY8+lAFkKT28m5d+DDOP+SGw0yG3OKwnY5tK9sphEhYG9Z3
+        CncKvEifZ9USGOl9ldm6Vz1/Ly2qSZA=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-478-nKi-JwR8Pj6g457j47Az9w-1; Thu, 12 May 2022 09:11:55 -0400
-X-MC-Unique: nKi-JwR8Pj6g457j47Az9w-1
+ us-mta-528-NUT9pbrqM9uKwt01D8fMHw-1; Thu, 12 May 2022 09:11:58 -0400
+X-MC-Unique: NUT9pbrqM9uKwt01D8fMHw-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 32658811E84;
-        Thu, 12 May 2022 13:11:55 +0000 (UTC)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8174E2A59546;
+        Thu, 12 May 2022 13:11:58 +0000 (UTC)
 Received: from gondolin.fritz.box (unknown [10.39.193.157])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 8A27553CF;
-        Thu, 12 May 2022 13:11:53 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 797887AE3;
+        Thu, 12 May 2022 13:11:55 +0000 (UTC)
 From:   Cornelia Huck <cohuck@redhat.com>
 To:     Peter Maydell <peter.maydell@linaro.org>,
         Thomas Huth <thuth@redhat.com>,
@@ -75,9 +75,9 @@ To:     Peter Maydell <peter.maydell@linaro.org>,
 Cc:     Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
         qemu-devel@nongnu.org, kvm@vger.kernel.org,
         Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH RFC 1/2] arm/kvm: enable MTE if available
-Date:   Thu, 12 May 2022 15:11:45 +0200
-Message-Id: <20220512131146.78457-2-cohuck@redhat.com>
+Subject: [PATCH RFC 2/2] qtests/arm: add some mte tests
+Date:   Thu, 12 May 2022 15:11:46 +0200
+Message-Id: <20220512131146.78457-3-cohuck@redhat.com>
 In-Reply-To: <20220512131146.78457-1-cohuck@redhat.com>
 References: <20220512131146.78457-1-cohuck@redhat.com>
 MIME-Version: 1.0
@@ -93,266 +93,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 1kYqF44Xja36
-
-We need to disable migration, as we do not yet have a way to migrate
-the tags as well.
+X-TUID: ZNmsIiOL3Zce
 
 Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 ---
- target/arm/cpu.c     | 18 ++++------
- target/arm/cpu.h     |  4 +++
- target/arm/cpu64.c   | 78 ++++++++++++++++++++++++++++++++++++++++++++
- target/arm/kvm64.c   |  5 +++
- target/arm/kvm_arm.h | 12 +++++++
- target/arm/monitor.c |  1 +
- 6 files changed, 106 insertions(+), 12 deletions(-)
+ tests/qtest/arm-cpu-features.c | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 029f644768b1..f0505815b1e7 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1435,6 +1435,11 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
-             error_propagate(errp, local_err);
-             return;
-         }
-+        arm_cpu_mte_finalize(cpu, &local_err);
-+        if (local_err != NULL) {
-+            error_propagate(errp, local_err);
-+            return;
-+        }
-     }
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 5a145273860c..c0be645b1fb0 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -22,6 +22,7 @@
  
-     if (kvm_enabled()) {
-@@ -1504,7 +1509,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         }
-         if (cpu->tag_memory) {
-             error_setg(errp,
--                       "Cannot enable KVM when guest CPUs has MTE enabled");
-+                       "Cannot enable KVM when guest CPUs has tag memory enabled");
-             return;
-         }
-     }
-@@ -1882,17 +1887,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-                                        ID_PFR1, VIRTUALIZATION, 0);
-     }
+ #define MACHINE     "-machine virt,gic-version=max -accel tcg "
+ #define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
++#define MACHINE_MTE "-machine virt,gic-version=max,mte=on -accel tcg "
+ #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
+                     "  'arguments': { 'type': 'full', "
+ #define QUERY_TAIL  "}}"
+@@ -412,6 +413,17 @@ static void sve_tests_sve_off_kvm(const void *data)
+     qtest_quit(qts);
+ }
  
--#ifndef CONFIG_USER_ONLY
--    if (cpu->tag_memory == NULL && cpu_isar_feature(aa64_mte, cpu)) {
--        /*
--         * Disable the MTE feature bits if we do not have tag-memory
--         * provided by the machine.
--         */
--        cpu->isar.id_aa64pfr1 =
--            FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
--    }
--#endif
--
-     /* MPU can be configured out of a PMSA CPU either by setting has-mpu
-      * to false or by setting pmsav7-dregion to 0.
-      */
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 18ca61e8e25b..183506713e96 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -208,11 +208,13 @@ typedef struct {
- void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
- void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
- void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
-+void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp);
- #else
- # define ARM_MAX_VQ    1
- static inline void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp) { }
- static inline void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp) { }
- static inline void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp) { }
-+static inline void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp) { }
- #endif
- 
- typedef struct ARMVectorReg {
-@@ -993,6 +995,7 @@ struct ArchCPU {
-     bool prop_pauth;
-     bool prop_pauth_impdef;
-     bool prop_lpa2;
-+    bool prop_mte;
- 
-     /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
-     uint32_t dcz_blocksize;
-@@ -1091,6 +1094,7 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
-                            int new_el, bool el0_a64);
- void aarch64_add_sve_properties(Object *obj);
- void aarch64_add_pauth_properties(Object *obj);
-+void aarch64_add_mte_properties(Object *obj);
- 
- /*
-  * SVE registers are encoded in KVM's memory in an endianness-invariant format.
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 04427e073f17..eea9ad195470 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -35,7 +35,11 @@
- #include "qapi/visitor.h"
- #include "hw/qdev-properties.h"
- #include "internals.h"
-+#include "migration/blocker.h"
- 
-+#ifdef CONFIG_KVM
-+static Error *mte_migration_blocker;
-+#endif
- 
- static void aarch64_a57_initfn(Object *obj)
++static void mte_tests_tag_memory_on(const void *data)
++{
++    QTestState *qts;
++
++    qts = qtest_init(MACHINE_MTE "-cpu max");
++
++    assert_has_feature(qts, "max", "mte");
++
++    qtest_quit(qts);
++}
++
+ static void pauth_tests_default(QTestState *qts, const char *cpu_type)
  {
-@@ -785,6 +789,78 @@ void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
-     cpu->isar.id_aa64mmfr0 = t;
+     assert_has_feature_enabled(qts, cpu_type, "pauth");
+@@ -424,6 +436,14 @@ static void pauth_tests_default(QTestState *qts, const char *cpu_type)
+                  "{ 'pauth': false, 'pauth-impdef': true }");
  }
  
-+static Property arm_cpu_mte_property =
-+    DEFINE_PROP_BOOL("mte", ARMCPU, prop_mte, true);
-+
-+void aarch64_add_mte_properties(Object *obj)
++static void mte_tests_default(QTestState *qts, const char *cpu_type)
 +{
-+    ARMCPU *cpu = ARM_CPU(obj);
++    assert_has_feature(qts, cpu_type, "mte");
 +
-+    /*
-+     * For tcg, the machine type may provide tag memory for MTE emulation.
-+     * We do not know whether that is the case at this point in time, so
-+     * default MTE to on and check later.
-+     * This preserves pre-existing behaviour, but is really a bit awkward.
-+     */
-+    qdev_property_add_static(DEVICE(obj), &arm_cpu_mte_property);
-+    if (kvm_enabled()) {
-+        /*
-+         * Default MTE to off, as long as migration support is not
-+         * yet implemented.
-+         * TODO: implement migration support for kvm
-+         */
-+        cpu->prop_mte = false;
-+    }
++    /* without tag memory, mte will be off under tcg */
++    assert_has_feature_disabled(qts, cpu_type, "mte");
 +}
 +
-+void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp)
-+{
-+    if (!cpu->prop_mte) {
-+        /* Disable MTE feature bits. */
-+        cpu->isar.id_aa64pfr1 =
-+            FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
-+        return;
-+    }
-+#ifndef CONFIG_USER_ONLY
-+    if (!kvm_enabled()) {
-+        if (cpu_isar_feature(aa64_mte, cpu) && !cpu->tag_memory) {
-+            /*
-+             * Disable the MTE feature bits, unless we have tag-memory
-+             * provided by the machine.
-+             * This silent downgrade is not really nice if the user had
-+             * explicitly requested MTE to be enabled by the cpu, but it
-+             * preserves pre-existing behaviour. In an ideal world, we
-+             * would fail if MTE was requested, but no tag memory has
-+             * been provided.
-+             */
-+            cpu->isar.id_aa64pfr1 =
-+                FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
-+        }
-+        if (!cpu_isar_feature(aa64_mte, cpu)) {
-+            cpu->prop_mte = false;
-+        }
-+        return;
-+    }
-+    if (kvm_arm_mte_supported()) {
-+#ifdef CONFIG_KVM
-+        if (kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0)) {
-+            error_setg(errp, "Failed to enable KVM_CAP_ARM_MTE");
-+        } else {
-+            /* TODO: add proper migration support with MTE enabled */
-+            if (!mte_migration_blocker) {
-+                error_setg(&mte_migration_blocker,
-+                           "Live migration disabled due to MTE enabled");
-+                if (migrate_add_blocker(mte_migration_blocker, NULL)) {
-+                    error_setg(errp, "Failed to add MTE migration blocker");
-+                }
-+            }
-+        }
-+#endif
-+    }
-+    /* When HVF provides support for MTE, add it here */
-+#endif
-+}
-+
- static void aarch64_host_initfn(Object *obj)
+ static void test_query_cpu_model_expansion(const void *data)
  {
- #if defined(CONFIG_KVM)
-@@ -793,6 +869,7 @@ static void aarch64_host_initfn(Object *obj)
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         aarch64_add_sve_properties(obj);
-         aarch64_add_pauth_properties(obj);
-+        aarch64_add_mte_properties(obj);
+     QTestState *qts;
+@@ -473,6 +493,7 @@ static void test_query_cpu_model_expansion(const void *data)
+ 
+         sve_tests_default(qts, "max");
+         pauth_tests_default(qts, "max");
++        mte_tests_default(qts, "max");
+ 
+         /* Test that features that depend on KVM generate errors without. */
+         assert_error(qts, "max",
+@@ -499,6 +520,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
+         bool kvm_supports_steal_time;
+         bool kvm_supports_sve;
++        bool kvm_supports_mte;
+         char max_name[8], name[8];
+         uint32_t max_vq, vq;
+         uint64_t vls;
+@@ -523,10 +545,12 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+          */
+         assert_has_feature(qts, "host", "kvm-steal-time");
+         assert_has_feature(qts, "host", "sve");
++        assert_has_feature(qts, "host", "mte");
+ 
+         resp = do_query_no_props(qts, "host");
+         kvm_supports_steal_time = resp_get_feature(resp, "kvm-steal-time");
+         kvm_supports_sve = resp_get_feature(resp, "sve");
++        kvm_supports_mte = resp_get_feature(resp, "mte");
+         vls = resp_get_sve_vls(resp);
+         qobject_unref(resp);
+ 
+@@ -592,6 +616,11 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+         } else {
+             g_assert(vls == 0);
+         }
++        if (kvm_supports_mte) {
++            /* If we have mte then we should be able to toggle it. */
++            assert_set_feature(qts, "host", "mte", false);
++            assert_set_feature(qts, "host", "mte", true);
++        }
+     } else {
+         assert_has_not_feature(qts, "host", "aarch64");
+         assert_has_not_feature(qts, "host", "pmu");
+@@ -630,6 +659,8 @@ int main(int argc, char **argv)
+                             NULL, sve_tests_sve_off);
+         qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
+                             NULL, sve_tests_sve_off_kvm);
++        qtest_add_data_func("/arm/max/query-cpu-model-expansion/tag-memory",
++                            NULL, mte_tests_tag_memory_on);
      }
- #elif defined(CONFIG_HVF)
-     ARMCPU *cpu = ARM_CPU(obj);
-@@ -958,6 +1035,7 @@ static void aarch64_max_initfn(Object *obj)
-     object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
-                         cpu_max_set_sve_max_vq, NULL, NULL);
-     qdev_property_add_static(DEVICE(obj), &arm_cpu_lpa2_property);
-+    aarch64_add_mte_properties(obj);
- }
  
- static void aarch64_a64fx_initfn(Object *obj)
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index b8cfaf5782ac..d129a264a3f6 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -746,6 +746,11 @@ bool kvm_arm_steal_time_supported(void)
-     return kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
- }
- 
-+bool kvm_arm_mte_supported(void)
-+{
-+    return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
-+}
-+
- QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
- 
- void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index b7f78b521545..13f06ed5e0ea 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -306,6 +306,13 @@ bool kvm_arm_pmu_supported(void);
-  */
- bool kvm_arm_sve_supported(void);
- 
-+/**
-+ * kvm_arm_mte_supported:
-+ *
-+ * Returns: true if KVM can enable MTE, and false otherwise.
-+ */
-+bool kvm_arm_mte_supported(void);
-+
- /**
-  * kvm_arm_get_max_vm_ipa_size:
-  * @ms: Machine state handle
-@@ -396,6 +403,11 @@ static inline bool kvm_arm_steal_time_supported(void)
-     return false;
- }
- 
-+static inline bool kvm_arm_mte_supported(void)
-+{
-+    return false;
-+}
-+
- /*
-  * These functions should never actually be called without KVM support.
-  */
-diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-index 80c64fa3556d..f13ff2664b67 100644
---- a/target/arm/monitor.c
-+++ b/target/arm/monitor.c
-@@ -96,6 +96,7 @@ static const char *cpu_model_advertised_features[] = {
-     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
-     "kvm-no-adjvtime", "kvm-steal-time",
-     "pauth", "pauth-impdef",
-+    "mte",
-     NULL
- };
- 
+     return g_test_run();
 -- 
 2.34.3

@@ -1,241 +1,351 @@
-Received: by 2002:a0c:f248:0:0:0:0:0 with SMTP id z8csp669479qvl;
-        Thu, 12 May 2022 17:38:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZ0o9Vypg0eNC46JWTeWy+l+HU7j3gBMEPXbUGUL6e2A/pb0If7kyA903XiltDtoMIwOY4
-X-Received: by 2002:a05:6214:29e4:b0:45b:f666:d3d3 with SMTP id jv4-20020a05621429e400b0045bf666d3d3mr2350557qvb.120.1652402327597;
-        Thu, 12 May 2022 17:38:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652402327; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp86440lfj;
+        Thu, 12 May 2022 23:48:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzLkVDIARrYA0nL+bdnTWJn2tE5IJULi5VMd8+ZscTgN82dBDxFvbSN+z277bcT2Zn/qwb0
+X-Received: by 2002:a05:6214:1cc6:b0:45d:a313:d2d with SMTP id g6-20020a0562141cc600b0045da3130d2dmr3041372qvd.127.1652424494918;
+        Thu, 12 May 2022 23:48:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652424494; cv=none;
         d=google.com; s=arc-20160816;
-        b=FQmqncTiHW3tEZ2xc4Q75aAdCgD5ED6p9MrNwQcdNx0UnTi2+VuXx0hFO+J2Xxzedn
-         2JyLaDIBIvNuymFXLxmJyQT7LB/DdO0323Sjrsq7CWT4rHfWBa4NQOCo9fC5oATbOoUt
-         AsbNw+icAIaDu2bt8+Yyu7j8fcNtN0Kc9ks5UgFAxJwnGT3u+VYIwL60l3vnCQ/+h/c0
-         tH2Vo0+AGK8w6HhCg/X8IG3xPk8ZGk0DkIWQ5g/Rjczp6irEtw0fdxx0NpmZMKHEhlby
-         O8dgPN3AbSrH4Sly4rJsSlkrc3jzHIWQ0ug9A1bl1sJfgjZFScZ9eIhZLNAguoi26pkx
-         CsGA==
+        b=gDp9W1wVPDSy2bDU1hFUJ0l2crF6/IAF3F2yj8RyT9hjncHf4jnhzhhm9fvibwafMj
+         lTJGPGga7GuWYOTQdUONr+342s+65GgsK6y9lyZcDWgS8w7gH33SeZTLoeBOuqgVJVA+
+         bo+4c2PWwIinF2HB75EO/Rlc/xYc2QHg7/OOJbFQ8V1cMaRm+6+sbexKGfk23t1ufyGW
+         lCjrv2eS/DsZDG8DfGk8LHRUm8byeQhQzfzjHsvgIdbEqBLpsbb2pXuERHgr8ImjuanH
+         rovofFwrTxPXdYhbsUK3gwr1TT1xJtQEEQdddA0JpkJXv7n8cAwNhLtvw8lHewYXgstX
+         0cTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=XZlOfDonxlEVxcsYOyZBWKlIlVxBQPN9V8KDLMCPAjI=;
-        b=aR9ioZyUjHLTIMugLmAwxMj43fj+Z4Mi14JjYKRWdcUHjnpk/N/PTZkui6YMPQREBG
-         ErLxZ632L00J3lj/Sn3Ty/uTj81p6RFRziE3mRA9QrmnaCLwfe8vpXJ3O8QqC9pKCD6h
-         HcDb+MHvpvqdF6RYj2epLIoeahPz+HH2ciehWCdWpa6x2uiaWLHztj+roqjQX4SQ558L
-         6x+1L25o7SIB/v3XprJjbkp2x9quH4R6/UoqtRgFiZhMFsSbGDWYEROqHk5hjMS8jyXl
-         1KGrtGRQP0W6q26OSwe/AEtt6Iit3V5yWFRXPQfVp/MFQ6Q06xjGM4FRLiN1h10Oq7Ik
-         BV6g==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=s0lWvdHBGa9TfEBqQjDRZS+UHqSbqLeoMqfzawFc5UQ=;
+        b=NPFmFZFZKBfcA0r+VNFAVq2Q6nLfallC/cGu51Xq4k3895lh4S2NI3uddJcwjN2YBz
+         dbV7Bm2Z392aMY9okbvGHUz5t3kR/kcJC4G2X3I35M8SzQaKqUTXl8IisNvHkfCj+B3N
+         9zj30ybuPJ9FbWhA5dsNrjveEgn7n2kzJoYyYwgHagmHUA+xDvx37kRbmxoCwtvZ7juy
+         pI4CixcL20WZZu/C3UhMoYc2Wzwe0Gc+BoKieajsyTZXZEcoEo2RFGwbcuj3gsIoydI0
+         0NWu5/IWZj/3/faajgvJtaGWjrptynGjSLHq/W/yeeFSuL5o2YB9qmT44G1/L9XA2NcU
+         XMUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=Hfm7U+Us;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bk34-20020a05620a1a2200b0069fc29574f3si813379qkb.682.2022.05.12.17.38.47
+        by mx.google.com with ESMTPS id u16-20020a05620a121000b006a0495ea0e2si979680qkj.444.2022.05.12.23.48.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 May 2022 17:38:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 May 2022 23:48:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=Hfm7U+Us;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:37542 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:42132 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1npJKR-0006d2-6E
-	for alex.bennee@linaro.org; Thu, 12 May 2022 20:38:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60538)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1npP5y-0001sU-7h
+	for alex.bennee@linaro.org; Fri, 13 May 2022 02:48:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=613212e35b=pdel@fb.com>)
- id 1npJJs-0006Yd-HP
- for qemu-arm@nongnu.org; Thu, 12 May 2022 20:38:12 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:11124)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=613212e35b=pdel@fb.com>)
- id 1npJJq-00043V-7l
- for qemu-arm@nongnu.org; Thu, 12 May 2022 20:38:11 -0400
-Received: from pps.filterd (m0109331.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24CNMRsY030132
- for <qemu-arm@nongnu.org>; Thu, 12 May 2022 17:38:03 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : content-type : content-transfer-encoding :
- mime-version; s=facebook; bh=XZlOfDonxlEVxcsYOyZBWKlIlVxBQPN9V8KDLMCPAjI=;
- b=Hfm7U+UsvKjcIQJy3HXsANnIUReURTbJXEBaO9Ap8ueQGK1xV9u6dhfrp4oFd5VDZzRx
- nkcDgTMRq8N7vyTYRwKKQ7w/zJxzjxhcFEUdJ40NpNQasi0g2KrQbNj5oF5kZQUrUx08
- 5Wcfi+1fmpip6v5faUV/KAjFeQ7MkbYBYw0= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3g04pmyn5m-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 12 May 2022 17:38:02 -0700
-Received: from twshared13579.04.prn5.facebook.com (2620:10d:c0a8:1b::d) by
- mail.thefacebook.com (2620:10d:c0a8:82::f) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Thu, 12 May 2022 17:37:29 -0700
-Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
- id 0F88762C115E; Thu, 12 May 2022 17:37:20 -0700 (PDT)
-From: Peter Delevoryas <pdel@fb.com>
+ (Exim 4.90_1)
+ (envelope-from <irischenlj@devvm5719.atn0.facebook.com>)
+ id 1npOvL-0005CG-D4
+ for qemu-devel@nongnu.org; Fri, 13 May 2022 02:37:15 -0400
+Received: from 69-171-232-181.mail-mxout.facebook.com ([69.171.232.181]:38249)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1)
+ (envelope-from <irischenlj@devvm5719.atn0.facebook.com>)
+ id 1npOvJ-0001o3-EM
+ for qemu-devel@nongnu.org; Fri, 13 May 2022 02:37:15 -0400
+Received: by devvm5719.atn0.facebook.com (Postfix, from userid 279525)
+ id C541014C634B; Thu, 12 May 2022 22:50:23 -0700 (PDT)
 To: 
-CC: <pdel@fb.com>, <irischenlj@fb.com>, <patrick@stwcx.xyz>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <clg@kaod.org>
-Subject: [PATCH] hw: aspeed_soc: Initialize all UART's with serial devices
-Date: Thu, 12 May 2022 17:37:20 -0700
-Message-ID: <20220513003720.2831997-1-pdel@fb.com>
+Cc: irischenlj@fb.com, pdel@fb.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ clg@kaod.org, patrick@stwcx.xyz, alistair@alistair23.me, kwolf@redhat.com,
+ hreitz@redhat.com, peter.maydell@linaro.org, andrew@aj.id.au,
+ joel@jms.id.au, thuth@redhat.com, lvivier@redhat.com, pbonzini@redhat.com,
+ qemu-block@nongnu.org
+Subject: [PATCH v3] hw: m25p80: allow write_enable latch get/set
+Date: Thu, 12 May 2022 22:50:22 -0700
+Message-Id: <20220513055022.951759-1-irischenlj@fb.com>
 X-Mailer: git-send-email 2.30.2
-X-FB-Internal: Safe
-Content-Type: text/plain
-X-Proofpoint-ORIG-GUID: 0X-oScI709s48JrWFsxRYu-a8Bffs1ZJ
-X-Proofpoint-GUID: 0X-oScI709s48JrWFsxRYu-a8Bffs1ZJ
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+In-Reply-To: <irischenlj@gmail.com>
+References: <irischenlj@gmail.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
- definitions=2022-05-12_19,2022-05-12_01,2022-02-23_01
-Received-SPF: pass client-ip=67.231.153.30;
- envelope-from=prvs=613212e35b=pdel@fb.com; helo=mx0b-00082601.pphosted.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: none client-ip=69.171.232.181;
+ envelope-from=irischenlj@devvm5719.atn0.facebook.com;
+ helo=69-171-232-181.mail-mxout.facebook.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, NO_DNS_FOR_FROM=0.001, RDNS_DYNAMIC=0.982,
+ SPF_HELO_PASS=-0.001, SPF_NONE=0.001, TVD_RCVD_IP=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rlcM+DXn934S
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  Iris Chen <irischenlj@fb.com>
+From:  Iris Chen via <qemu-devel@nongnu.org>
+X-TUID: gqiyzJdd7Ekj
 
-Usually, QEMU users just provide one serial device on the command line,
-either through "-nographic" or "-serial stdio -display none", or just using
-VNC and popping up a window. We try to match what the user expects, which is
-to connect the first (and usually only) serial device to the UART a board is
-using as serial0.
+The write_enable latch property is not currently exposed.
+This commit makes it a modifiable property.
 
-Most Aspeed machines in hw/arm/aspeed.c use UART5 for serial0 in their
-device tree, so we connect UART5 to the first serial device. Some machines
-use UART1 though, or UART3, so the uart_default property lets us specify
-that in a board definition.
-
-In order to specify a nonstandard serial0 UART, a user basically *must* add
-a new board definition in hw/arm/aspeed.c. There's no way to do this without
-recompiling QEMU, besides constructing the machine completely from scratch
-on the command line.
-
-To provide more flexibility, we can also support the user specifying more
-serial devices, and connect them to the UART memory regions if possible.
-Even if a user doesn't specify any extra serial devices, it's useful to
-initialize these memory regions as UART's, so that they respond to the guest
-OS more naturally. At the moment, they will just always return zero's for
-everything, and some UART registers have a default non-zero state.
-
-With this change, if a new OpenBMC image uses UART3 or some other
-nonstandard UART for serial0, you can still use it with the EVB without
-recompiling QEMU, even though uart-default=3DUART5 for the EVB.
-
-For example, Facebook's Wedge100 BMC uses UART3: you can fetch an image from
-Github[1] and get the serial console output even while running the palmetto
-machine type, because we explicitly specify that we want UART3 to be
-connected to stdio.
-
-    qemu-system-arm -machine palmetto-bmc \
-        -drive file=3Dwedge100.mtd,format=3Draw,if=3Dmtd \
-        -serial null -serial null -serial null -serial stdio -display none
-
-This is kind of complicated, of course: it might be more natural to get rid
-of the uart_default attribute completely, and initialize UART's
-sequentially. But, keeping backward compatibility and the way most users
-know how to use QEMU in mind, this seems to make the most sense.
-
-[1] https://github.com/facebook/openbmc/releases/download/v2021.49.0/wedge1=
-00.mtd
-
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
+Signed-off-by: Iris Chen <irischenlj@fb.com>
 ---
- hw/arm/aspeed_soc.c | 30 ++++++++++++++++++++++++++++--
- 1 file changed, 28 insertions(+), 2 deletions(-)
+v3: Addressed comments by Peter and Cedric.
+v2: Ran ./scripts/checkpatch.pl on the patch and added a description. Fix=
+ed comments regarding DEFINE_PROP_BOOL.
 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 58714cb2a0..5e8fea2577 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -48,6 +48,9 @@ static const hwaddr aspeed_soc_ast2400_memmap[] =3D {
-     [ASPEED_DEV_ETH1]   =3D 0x1E660000,
-     [ASPEED_DEV_ETH2]   =3D 0x1E680000,
-     [ASPEED_DEV_UART1]  =3D 0x1E783000,
-+    [ASPEED_DEV_UART2]  =3D 0x1E78D000,
-+    [ASPEED_DEV_UART3]  =3D 0x1E78E000,
-+    [ASPEED_DEV_UART4]  =3D 0x1E78F000,
-     [ASPEED_DEV_UART5]  =3D 0x1E784000,
-     [ASPEED_DEV_VUART]  =3D 0x1E787000,
-     [ASPEED_DEV_SDRAM]  =3D 0x40000000,
-@@ -80,6 +83,9 @@ static const hwaddr aspeed_soc_ast2500_memmap[] =3D {
-     [ASPEED_DEV_ETH1]   =3D 0x1E660000,
-     [ASPEED_DEV_ETH2]   =3D 0x1E680000,
-     [ASPEED_DEV_UART1]  =3D 0x1E783000,
-+    [ASPEED_DEV_UART2]  =3D 0x1E78D000,
-+    [ASPEED_DEV_UART3]  =3D 0x1E78E000,
-+    [ASPEED_DEV_UART4]  =3D 0x1E78F000,
-     [ASPEED_DEV_UART5]  =3D 0x1E784000,
-     [ASPEED_DEV_VUART]  =3D 0x1E787000,
-     [ASPEED_DEV_SDRAM]  =3D 0x80000000,
-@@ -222,7 +228,7 @@ static void aspeed_soc_init(Object *obj)
+ hw/block/m25p80.c              |  1 +
+ tests/qtest/aspeed_gpio-test.c | 40 +++++++------------------------
+ tests/qtest/aspeed_smc-test.c  | 43 ++++++++++++++++++++++++++++++++++
+ tests/qtest/libqtest.c         | 24 +++++++++++++++++++
+ tests/qtest/libqtest.h         | 22 +++++++++++++++++
+ 5 files changed, 98 insertions(+), 32 deletions(-)
+
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 430d1298a8..4283b990af 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -1558,6 +1558,7 @@ static int m25p80_pre_save(void *opaque)
 =20
- static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+ static Property m25p80_properties[] =3D {
+     /* This is default value for Micron flash */
++    DEFINE_PROP_BOOL("write-enable", Flash, write_enable, false),
+     DEFINE_PROP_UINT32("nonvolatile-cfg", Flash, nonvolatile_cfg, 0x8FFF=
+),
+     DEFINE_PROP_UINT8("spansion-cr1nv", Flash, spansion_cr1nv, 0x0),
+     DEFINE_PROP_UINT8("spansion-cr2nv", Flash, spansion_cr2nv, 0x8),
+diff --git a/tests/qtest/aspeed_gpio-test.c b/tests/qtest/aspeed_gpio-tes=
+t.c
+index c1003f2d1b..bac63e8742 100644
+--- a/tests/qtest/aspeed_gpio-test.c
++++ b/tests/qtest/aspeed_gpio-test.c
+@@ -28,30 +28,6 @@
+ #include "qapi/qmp/qdict.h"
+ #include "libqtest-single.h"
+=20
+-static bool qom_get_bool(QTestState *s, const char *path, const char *pr=
+operty)
+-{
+-    QDict *r;
+-    bool b;
+-
+-    r =3D qtest_qmp(s, "{ 'execute': 'qom-get', 'arguments': "
+-                     "{ 'path': %s, 'property': %s } }", path, property)=
+;
+-    b =3D qdict_get_bool(r, "return");
+-    qobject_unref(r);
+-
+-    return b;
+-}
+-
+-static void qom_set_bool(QTestState *s, const char *path, const char *pr=
+operty,
+-                         bool value)
+-{
+-    QDict *r;
+-
+-    r =3D qtest_qmp(s, "{ 'execute': 'qom-set', 'arguments': "
+-                     "{ 'path': %s, 'property': %s, 'value': %i } }",
+-                     path, property, value);
+-    qobject_unref(r);
+-}
+-
+ static void test_set_colocated_pins(const void *data)
  {
--    int i;
-+    int i, uart;
-     AspeedSoCState *s =3D ASPEED_SOC(dev);
-     AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
-     Error *err =3D NULL;
-@@ -297,10 +303,30 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
-r **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
+     QTestState *s =3D (QTestState *)data;
+@@ -60,14 +36,14 @@ static void test_set_colocated_pins(const void *data)
+      * gpioV4-7 occupy bits within a single 32-bit value, so we want to =
+make
+      * sure that modifying one doesn't affect the other.
+      */
+-    qom_set_bool(s, "/machine/soc/gpio", "gpioV4", true);
+-    qom_set_bool(s, "/machine/soc/gpio", "gpioV5", false);
+-    qom_set_bool(s, "/machine/soc/gpio", "gpioV6", true);
+-    qom_set_bool(s, "/machine/soc/gpio", "gpioV7", false);
+-    g_assert(qom_get_bool(s, "/machine/soc/gpio", "gpioV4"));
+-    g_assert(!qom_get_bool(s, "/machine/soc/gpio", "gpioV5"));
+-    g_assert(qom_get_bool(s, "/machine/soc/gpio", "gpioV6"));
+-    g_assert(!qom_get_bool(s, "/machine/soc/gpio", "gpioV7"));
++    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV4", true);
++    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV5", false);
++    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV6", true);
++    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV7", false);
++    g_assert(qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV4"));
++    g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV5"));
++    g_assert(qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV6"));
++    g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV7"));
+ }
 =20
--    /* UART - attach an 8250 to the IO space as our UART */
-+    /*
-+     * UART - Attach the first serial device to the machine's default UART
-+     * memory region, usually corresponding to the serial0 device in the d=
-evice
-+     * tree.
-+     */
-     serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
-                    aspeed_soc_get_irq(s, s->uart_default), 38400,
-                    serial_hd(0), DEVICE_LITTLE_ENDIAN);
-+    /*
-+     * UART - Then, initialize the remaining UART memory regions with what=
-ever
-+     * other serial devices are present. If a serial device isn't present,=
- then
-+     * the memory region still gets initialized as a UART, it just won't r=
-espond
-+     * to the guest OS.
-+     */
-+    for (i =3D 1, uart =3D ASPEED_DEV_UART1; i < 5; i++, uart++) {
-+        if (uart =3D=3D s->uart_default) {
-+            uart++;
-+        }
-+        assert(uart <=3D ASPEED_DEV_UART5);
+ int main(int argc, char **argv)
+diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.=
+c
+index 87b40a0ef1..ec233315e6 100644
+--- a/tests/qtest/aspeed_smc-test.c
++++ b/tests/qtest/aspeed_smc-test.c
+@@ -26,6 +26,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/bswap.h"
+ #include "libqtest-single.h"
++#include "qemu/bitops.h"
+=20
+ /*
+  * ASPEED SPI Controller registers
+@@ -40,6 +41,7 @@
+ #define   CTRL_FREADMODE       0x1
+ #define   CTRL_WRITEMODE       0x2
+ #define   CTRL_USERMODE        0x3
++#define SR_WEL BIT(1)
+=20
+ #define ASPEED_FMC_BASE    0x1E620000
+ #define ASPEED_FLASH_BASE  0x20000000
+@@ -49,6 +51,8 @@
+  */
+ enum {
+     JEDEC_READ =3D 0x9f,
++    RDSR =3D 0x5,
++    WRDI =3D 0x4,
+     BULK_ERASE =3D 0xc7,
+     READ =3D 0x03,
+     PP =3D 0x02,
+@@ -348,6 +352,44 @@ static void test_write_page_mem(void)
+     flash_reset();
+ }
+=20
++static void test_read_status_reg(void)
++{
++    uint8_t r;
 +
-+        serial_mm_init(get_system_memory(), sc->memmap[uart], 2,
-+                       aspeed_soc_get_irq(s, s->uart_default), 38400,
-+                       serial_hd(i), DEVICE_LITTLE_ENDIAN);
-+    }
++    spi_conf(CONF_ENABLE_W0);
++
++    spi_ctrl_start_user();
++    writeb(ASPEED_FLASH_BASE, RDSR);
++    r =3D readb(ASPEED_FLASH_BASE);
++    spi_ctrl_stop_user();
++
++    g_assert_cmphex(r & SR_WEL, =3D=3D, 0);
++    g_assert(!qtest_qom_get_bool
++            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-ena=
+ble"));
++
++    spi_ctrl_start_user();
++    writeb(ASPEED_FLASH_BASE, WREN);
++    writeb(ASPEED_FLASH_BASE, RDSR);
++    r =3D readb(ASPEED_FLASH_BASE);
++    spi_ctrl_stop_user();
++
++    g_assert_cmphex(r & SR_WEL, =3D=3D, SR_WEL);
++    g_assert(qtest_qom_get_bool
++            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-ena=
+ble"));
++
++    spi_ctrl_start_user();
++    writeb(ASPEED_FLASH_BASE, WRDI);
++    writeb(ASPEED_FLASH_BASE, RDSR);
++    r =3D readb(ASPEED_FLASH_BASE);
++    spi_ctrl_stop_user();
++
++    g_assert_cmphex(r & SR_WEL, =3D=3D, 0);
++    g_assert(!qtest_qom_get_bool
++            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-ena=
+ble"));
++
++    flash_reset();
++}
++
+ static char tmp_path[] =3D "/tmp/qtest.m25p80.XXXXXX";
 =20
-     /* I2C */
-     object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+ int main(int argc, char **argv)
+@@ -373,6 +415,7 @@ int main(int argc, char **argv)
+     qtest_add_func("/ast2400/smc/write_page", test_write_page);
+     qtest_add_func("/ast2400/smc/read_page_mem", test_read_page_mem);
+     qtest_add_func("/ast2400/smc/write_page_mem", test_write_page_mem);
++    qtest_add_func("/ast2400/smc/read_status_reg", test_read_status_reg)=
+;
+=20
+     ret =3D g_test_run();
+=20
+diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+index 228357f1ea..a9904eba82 100644
+--- a/tests/qtest/libqtest.c
++++ b/tests/qtest/libqtest.c
+@@ -1423,3 +1423,27 @@ void qtest_client_inproc_recv(void *opaque, const =
+char *str)
+     g_string_append(qts->rx, str);
+     return;
+ }
++
++void qtest_qom_set_bool(QTestState *s, const char *path, const char *pro=
+perty,
++                         bool value)
++{
++    QDict *r;
++
++    r =3D qtest_qmp(s, "{ 'execute': 'qom-set', 'arguments': "
++                     "{ 'path': %s, 'property': %s, 'value': %i } }",
++                     path, property, value);
++    qobject_unref(r);
++}
++
++bool qtest_qom_get_bool(QTestState *s, const char *path, const char *pro=
+perty)
++{
++    QDict *r;
++    bool b;
++
++    r =3D qtest_qmp(s, "{ 'execute': 'qom-get', 'arguments': "
++                     "{ 'path': %s, 'property': %s } }", path, property)=
+;
++    b =3D qdict_get_bool(r, "return");
++    qobject_unref(r);
++
++    return b;
++}
+diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
+index 4ab0cad326..94b187837d 100644
+--- a/tests/qtest/libqtest.h
++++ b/tests/qtest/libqtest.h
+@@ -783,4 +783,26 @@ QTestState *qtest_inproc_init(QTestState **s, bool l=
+og, const char* arch,
+                     void (*send)(void*, const char*));
+=20
+ void qtest_client_inproc_recv(void *opaque, const char *str);
++
++/**
++ * qtest_qom_set_bool:
++ * @s: QTestState instance to operate on.
++ * @path: Path to the property being set.
++ * @property: Property being set.
++ * @value: Value to set the property.
++ *
++ * Set the property with passed in value.
++ */
++void qtest_qom_set_bool(QTestState *s, const char *path, const char *pro=
+perty,
++                         bool value);
++
++/**
++ * qtest_qom_get_bool:
++ * @s: QTestState instance to operate on.
++ * @path: Path to the property being retrieved.
++ * @property: Property from where the value is being retrieved.
++ *
++ * Returns: Value retrieved from property.
++ */
++bool qtest_qom_get_bool(QTestState *s, const char *path, const char *pro=
+perty);
+ #endif
 --=20
 2.30.2
 

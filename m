@@ -1,133 +1,96 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp332020lfj;
-        Fri, 13 May 2022 07:38:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxdxLBGZtD5f2srEfJjRav6jxRfcm0sm6wb74igHCZvGGVssXxV2L+9m/ifGaaTY7MWFLct
-X-Received: by 2002:ad4:4e05:0:b0:456:50a4:7494 with SMTP id dl5-20020ad44e05000000b0045650a47494mr4589394qvb.6.1652452703242;
-        Fri, 13 May 2022 07:38:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652452703; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp303205lfj;
+        Fri, 13 May 2022 06:56:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy18e687MhEyOSPc+YQXfHYv7WwwOAKUG0FHyjhyu/FoBjt2BkjvlZTwDhth+f05hqlVU3h
+X-Received: by 2002:a05:6214:f65:b0:45a:7efc:7857 with SMTP id iy5-20020a0562140f6500b0045a7efc7857mr4360595qvb.17.1652450165190;
+        Fri, 13 May 2022 06:56:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652450165; cv=none;
         d=google.com; s=arc-20160816;
-        b=B92r8xx9Mn+o8r6HYIGuzWw5C0Aa+O5epoHpZ7QhPVTdn8OWFCLM8+LqAsL/bfwciA
-         XxGdjpu10rsR/A9ThvVQyO+qh30WiZH+X4UfFKlC4OvWxUcF1ACTahA3xU5Xkw+PogwU
-         CuGv6Ehn1hujHE+xVCa2tW2B2xtDmwdRIPJYGRoakZH6z1QP0NvIuWvIwmd9U+S5WBo5
-         E6ugjCEyuivewhD0OfnF/+wmJ5DuI+o6boGhFGF0ux8QpcBtZYG6Q/GK1t5dcc3mfotL
-         B8ugYqAkGcgll3o33LVgJh9dFWTcH97NBOHrckZvVvWqMoyIX6Aiklk7iYl3TTSJ9zTZ
-         z11A==
+        b=0vwerQo/S7v1pB7w4fR0IUrveGxtMLqzh3rwV2ZMBjzX9M/JI2np22PlZYTVgvpvVs
+         xHUoT1Ds9zm9I1mxU53Zwx4XMhxrgCsfrmQhByVrDdzGuG6ct4lKdXq1rlYDZ7wAb/TP
+         EinrawoAG0f82iokQSTOr8Pssz2fiZ3y14hIYBu2Kt2WQNvKm9A0bX9OJn3yXyNNr71y
+         PaIMireS4RziTHAj3wAyj3b+soWIN29fawIty1lbd6ciHca++1GgV+8UJyjrfPqSeAhn
+         4WtlNIoPP5D+NHO0WwnKsghPO4lQtfLCIU9FJvEne54nfHdzT5gKZHBGTnSMOW7rJWmc
+         wjFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ZFUtQhXBI6mcBGBeNmNg7/khP0t9HLPOnHJbFf6YHBI=;
-        b=Ttx6MrNUC5HwgK7EBsQ7uyl+rbSXsGfIeyVAeX+wfnBlaDShnXSqjLUTnqQ5BtnJAN
-         AhKMG0RSAwc4QsFSIXvTGNbhHCQoC14IlAFRJXyWeTIAagInlVLe+YdrYHlAIZck43EF
-         gQdwXNlK+SwXGjd0LNLbRlRmbahTYj8c9GLgXuaAcUwa4O3LsRLPADLvYoKo0Ij8so3J
-         YzSKhIjt/UbeazFzX7X3JREW5q7dlViMzwBy1YRWr2cfc1GA5G81RWaOKrnBIHJjST31
-         dns9JIuoMkJaiQ5nzeGitUSnhA9XrVsCeHMVH3zmqx5qP4RD07FRr3aUBWdj2cyEvH8j
-         sJOA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=AHid7po8jGjY3dk8/b2WkBmE99E/HT8UldaUfpG+2Qw=;
+        b=r3St00B03KZsKZ2/4kk0FDBXBp87E5juMEUth8U4q3qD1IJ2DcRemeGgqo2jnHpU4C
+         nQyxMy8i3y525/w3s8gLgMfT5vLh37HTpcMI1C7/8MJ1hWB/Hhmg7HplB9/34nhIeU1K
+         h3WW+YsKQIYFWNDqtdKZoLBbpZTzpZ4+/UsXQYjHij1NnRgffLtKxZP6VaW4KCQNGfgw
+         k3offnJhcXFxML5edmf4NRFHn2o+NTrL6KsApbtu2fjLILEV57RhPA8XL3oxDz0EmWkf
+         jpJAvS0gpR3EfB0p1BXXAA8qDXKUBfNWP+bKX8jlAUKo3hbnfwuzwAroJTB6jT8+9jCn
+         XgWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YL5IKT8b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g16-20020ac85810000000b002f1d5c19a94si1754846qtg.494.2022.05.13.07.38.23
+        by mx.google.com with ESMTPS id j21-20020ac85f95000000b002f3cdaf3789si1751935qta.472.2022.05.13.06.56.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 May 2022 07:38:23 -0700 (PDT)
+        Fri, 13 May 2022 06:56:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YL5IKT8b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35298 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46622 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1npWQw-0002lh-P9
-	for alex.bennee@linaro.org; Fri, 13 May 2022 10:38:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58048)
+	id 1npVm0-0001qC-Cm
+	for alex.bennee@linaro.org; Fri, 13 May 2022 09:56:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48036)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1npWPm-0002GV-RJ
- for qemu-arm@nongnu.org; Fri, 13 May 2022 10:37:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:50485)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1npVl9-0001mZ-Vz
+ for qemu-arm@nongnu.org; Fri, 13 May 2022 09:55:12 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:58231)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1npWPl-0005KF-9V
- for qemu-arm@nongnu.org; Fri, 13 May 2022 10:37:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1652452628;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZFUtQhXBI6mcBGBeNmNg7/khP0t9HLPOnHJbFf6YHBI=;
- b=YL5IKT8bTpZOREvIsrjycPK9JHfvKboIuzSRGXWwQjqc6atGqvm3tNxxXOuhc7VfagBLZy
- xy/Zfp+y7AlLdsdWIem22y0Jhy2bE4nNqhO2F5XXa6b8E7MG3663Y/FucUFq+PpPlp2QQD
- QsGpRTDJQ/7GUxQdpoR3/LRP8T2rZOQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-248-joBpZJ33MKWcbRguLupAGg-1; Fri, 13 May 2022 10:37:05 -0400
-X-MC-Unique: joBpZJ33MKWcbRguLupAGg-1
-Received: by mail-wm1-f71.google.com with SMTP id
- n186-20020a1c27c3000000b00392ae974ca1so2980498wmn.0
- for <qemu-arm@nongnu.org>; Fri, 13 May 2022 07:37:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=ZFUtQhXBI6mcBGBeNmNg7/khP0t9HLPOnHJbFf6YHBI=;
- b=6jBHPr9QsIprmY1ajLTNkQsy7ono7o1S+jHNty4xX/SJXKlGwEYAELriU5lhdvufQL
- XtXzGr/4y+QCS4AQ8QvUMfFmJMLR8o7pihK4t+FXcQbibchvPa5SLxNZJsp9BYbNqGNU
- pI0nPXIqbgGSNIHxoxqQ8yEHV2jo33SyZHnPXJhUY2wk0gNE5HvqTUaBiuc5ktAGU4wR
- fWszJbi1t87IQjfLYpdYKHrWOrXwaxOdUdGpxLLQFBgomO5NsLyEVb7x440zEGvQO9M0
- tyf+6CjcActLrfHC7oH6u1pNaLxtS4NnCwI2Nzk8FgUtzJALdg6AyAz8JUlkK07EJl5U
- GUtQ==
-X-Gm-Message-State: AOAM530TzW49Vjjv7MSEs0HNV8X3N0LW/ypL6JFqdMYHi/v+6oS/3Tap
- +Fvhxww9fjPaR7L05FTrRoHd3FvvF38hgCOv3SIW9j9YgHtVkTFtTfwTTkRRF0Fc4aGKA6j9H2b
- v2PWFE9zuIiZs
-X-Received: by 2002:a05:600c:601c:b0:394:9595:d7f7 with SMTP id
- az28-20020a05600c601c00b003949595d7f7mr15826519wmb.98.1652452624497; 
- Fri, 13 May 2022 07:37:04 -0700 (PDT)
-X-Received: by 2002:a05:600c:601c:b0:394:9595:d7f7 with SMTP id
- az28-20020a05600c601c00b003949595d7f7mr15826482wmb.98.1652452624151; 
- Fri, 13 May 2022 07:37:04 -0700 (PDT)
-Received: from [192.168.8.104] (tmo-082-126.customers.d1-online.com.
- [80.187.82.126]) by smtp.gmail.com with ESMTPSA id
- p9-20020adfa209000000b0020c5253d8d0sm2381939wra.28.2022.05.13.07.37.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 May 2022 07:37:03 -0700 (PDT)
-Message-ID: <4613a814-c858-1cac-3750-789b388cba8d@redhat.com>
-Date: Fri, 13 May 2022 16:37:01 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1npVl6-0006pP-Kg
+ for qemu-arm@nongnu.org; Fri, 13 May 2022 09:55:11 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.191])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 88F84FF75E1F;
+ Fri, 13 May 2022 15:54:56 +0200 (CEST)
+Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.6; Fri, 13 May
+ 2022 15:54:55 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R0069ce17b4a-e135-4c10-8ff2-d1498eb6a20c,
+ 97912ADCF8BE5A44427C4FE81E404CB8FAC57E21) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <bfbffeef-e7d1-8003-24ca-4cafc90e60a4@kaod.org>
+Date: Fri, 13 May 2022 15:54:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
+ Thunderbird/91.8.0
 Subject: Re: [PATCH v3] hw: m25p80: allow write_enable latch get/set
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Iris Chen <irischenlj@fb.com>
-Cc: pdel@fb.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- patrick@stwcx.xyz, alistair@alistair23.me, kwolf@redhat.com,
- hreitz@redhat.com, peter.maydell@linaro.org, andrew@aj.id.au,
- joel@jms.id.au, lvivier@redhat.com, pbonzini@redhat.com,
- qemu-block@nongnu.org
-References: <irischenlj@gmail.com> <20220513055022.951759-1-irischenlj@fb.com>
- <bfbffeef-e7d1-8003-24ca-4cafc90e60a4@kaod.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <bfbffeef-e7d1-8003-24ca-4cafc90e60a4@kaod.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
+To: Iris Chen <irischenlj@fb.com>
+CC: <pdel@fb.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+ <patrick@stwcx.xyz>, <alistair@alistair23.me>, <kwolf@redhat.com>,
+ <hreitz@redhat.com>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
+ <joel@jms.id.au>, <thuth@redhat.com>, <lvivier@redhat.com>,
+ <pbonzini@redhat.com>, <qemu-block@nongnu.org>
+References: <irischenlj@gmail.com> <20220513055022.951759-1-irischenlj@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220513055022.951759-1-irischenlj@fb.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 456d6b73-f672-4261-9611-62b7d7c272ee
+X-Ovh-Tracer-Id: 7147212611889957761
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrgeelgdeilecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdqsghlohgtkhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -143,27 +106,247 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hD6fR5vlyRXM
+X-TUID: CDMcswIIqP2S
 
-On 13/05/2022 15.54, Cédric Le Goater wrote:
-> Thomas, and others,
+Thomas, and others,
+
+Are you ok with the qtest extension proposed by Iris ?
+
+If so, I can take them through an aspeed PR.
+
+Thanks,
+
+C.
+
+On 5/13/22 07:50, Iris Chen via wrote:
+> The write_enable latch property is not currently exposed.
+> This commit makes it a modifiable property.
 > 
-> Are you ok with the qtest extension proposed by Iris ?
+> Signed-off-by: Iris Chen <irischenlj@fb.com>
+> ---
+> v3: Addressed comments by Peter and Cedric.
+> v2: Ran ./scripts/checkpatch.pl on the patch and added a description. Fixed comments regarding DEFINE_PROP_BOOL.
 > 
-> If so, I can take them through an aspeed PR.
-
-Fine for me!
-
-> On 5/13/22 07:50, Iris Chen via wrote:
->> The write_enable latch property is not currently exposed.
->> This commit makes it a modifiable property.
->>
->> Signed-off-by: Iris Chen <irischenlj@fb.com>
->> ---
->> v3: Addressed comments by Peter and Cedric.
->> v2: Ran ./scripts/checkpatch.pl on the patch and added a description. 
->> Fixed comments regarding DEFINE_PROP_BOOL.
-
-Acked-by: Thomas Huth <thuth@redhat.com>
-
+>   hw/block/m25p80.c              |  1 +
+>   tests/qtest/aspeed_gpio-test.c | 40 +++++++------------------------
+>   tests/qtest/aspeed_smc-test.c  | 43 ++++++++++++++++++++++++++++++++++
+>   tests/qtest/libqtest.c         | 24 +++++++++++++++++++
+>   tests/qtest/libqtest.h         | 22 +++++++++++++++++
+>   5 files changed, 98 insertions(+), 32 deletions(-)
+> 
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 430d1298a8..4283b990af 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -1558,6 +1558,7 @@ static int m25p80_pre_save(void *opaque)
+>   
+>   static Property m25p80_properties[] = {
+>       /* This is default value for Micron flash */
+> +    DEFINE_PROP_BOOL("write-enable", Flash, write_enable, false),
+>       DEFINE_PROP_UINT32("nonvolatile-cfg", Flash, nonvolatile_cfg, 0x8FFF),
+>       DEFINE_PROP_UINT8("spansion-cr1nv", Flash, spansion_cr1nv, 0x0),
+>       DEFINE_PROP_UINT8("spansion-cr2nv", Flash, spansion_cr2nv, 0x8),
+> diff --git a/tests/qtest/aspeed_gpio-test.c b/tests/qtest/aspeed_gpio-test.c
+> index c1003f2d1b..bac63e8742 100644
+> --- a/tests/qtest/aspeed_gpio-test.c
+> +++ b/tests/qtest/aspeed_gpio-test.c
+> @@ -28,30 +28,6 @@
+>   #include "qapi/qmp/qdict.h"
+>   #include "libqtest-single.h"
+>   
+> -static bool qom_get_bool(QTestState *s, const char *path, const char *property)
+> -{
+> -    QDict *r;
+> -    bool b;
+> -
+> -    r = qtest_qmp(s, "{ 'execute': 'qom-get', 'arguments': "
+> -                     "{ 'path': %s, 'property': %s } }", path, property);
+> -    b = qdict_get_bool(r, "return");
+> -    qobject_unref(r);
+> -
+> -    return b;
+> -}
+> -
+> -static void qom_set_bool(QTestState *s, const char *path, const char *property,
+> -                         bool value)
+> -{
+> -    QDict *r;
+> -
+> -    r = qtest_qmp(s, "{ 'execute': 'qom-set', 'arguments': "
+> -                     "{ 'path': %s, 'property': %s, 'value': %i } }",
+> -                     path, property, value);
+> -    qobject_unref(r);
+> -}
+> -
+>   static void test_set_colocated_pins(const void *data)
+>   {
+>       QTestState *s = (QTestState *)data;
+> @@ -60,14 +36,14 @@ static void test_set_colocated_pins(const void *data)
+>        * gpioV4-7 occupy bits within a single 32-bit value, so we want to make
+>        * sure that modifying one doesn't affect the other.
+>        */
+> -    qom_set_bool(s, "/machine/soc/gpio", "gpioV4", true);
+> -    qom_set_bool(s, "/machine/soc/gpio", "gpioV5", false);
+> -    qom_set_bool(s, "/machine/soc/gpio", "gpioV6", true);
+> -    qom_set_bool(s, "/machine/soc/gpio", "gpioV7", false);
+> -    g_assert(qom_get_bool(s, "/machine/soc/gpio", "gpioV4"));
+> -    g_assert(!qom_get_bool(s, "/machine/soc/gpio", "gpioV5"));
+> -    g_assert(qom_get_bool(s, "/machine/soc/gpio", "gpioV6"));
+> -    g_assert(!qom_get_bool(s, "/machine/soc/gpio", "gpioV7"));
+> +    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV4", true);
+> +    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV5", false);
+> +    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV6", true);
+> +    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV7", false);
+> +    g_assert(qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV4"));
+> +    g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV5"));
+> +    g_assert(qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV6"));
+> +    g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV7"));
+>   }
+>   
+>   int main(int argc, char **argv)
+> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
+> index 87b40a0ef1..ec233315e6 100644
+> --- a/tests/qtest/aspeed_smc-test.c
+> +++ b/tests/qtest/aspeed_smc-test.c
+> @@ -26,6 +26,7 @@
+>   #include "qemu/osdep.h"
+>   #include "qemu/bswap.h"
+>   #include "libqtest-single.h"
+> +#include "qemu/bitops.h"
+>   
+>   /*
+>    * ASPEED SPI Controller registers
+> @@ -40,6 +41,7 @@
+>   #define   CTRL_FREADMODE       0x1
+>   #define   CTRL_WRITEMODE       0x2
+>   #define   CTRL_USERMODE        0x3
+> +#define SR_WEL BIT(1)
+>   
+>   #define ASPEED_FMC_BASE    0x1E620000
+>   #define ASPEED_FLASH_BASE  0x20000000
+> @@ -49,6 +51,8 @@
+>    */
+>   enum {
+>       JEDEC_READ = 0x9f,
+> +    RDSR = 0x5,
+> +    WRDI = 0x4,
+>       BULK_ERASE = 0xc7,
+>       READ = 0x03,
+>       PP = 0x02,
+> @@ -348,6 +352,44 @@ static void test_write_page_mem(void)
+>       flash_reset();
+>   }
+>   
+> +static void test_read_status_reg(void)
+> +{
+> +    uint8_t r;
+> +
+> +    spi_conf(CONF_ENABLE_W0);
+> +
+> +    spi_ctrl_start_user();
+> +    writeb(ASPEED_FLASH_BASE, RDSR);
+> +    r = readb(ASPEED_FLASH_BASE);
+> +    spi_ctrl_stop_user();
+> +
+> +    g_assert_cmphex(r & SR_WEL, ==, 0);
+> +    g_assert(!qtest_qom_get_bool
+> +            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
+> +
+> +    spi_ctrl_start_user();
+> +    writeb(ASPEED_FLASH_BASE, WREN);
+> +    writeb(ASPEED_FLASH_BASE, RDSR);
+> +    r = readb(ASPEED_FLASH_BASE);
+> +    spi_ctrl_stop_user();
+> +
+> +    g_assert_cmphex(r & SR_WEL, ==, SR_WEL);
+> +    g_assert(qtest_qom_get_bool
+> +            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
+> +
+> +    spi_ctrl_start_user();
+> +    writeb(ASPEED_FLASH_BASE, WRDI);
+> +    writeb(ASPEED_FLASH_BASE, RDSR);
+> +    r = readb(ASPEED_FLASH_BASE);
+> +    spi_ctrl_stop_user();
+> +
+> +    g_assert_cmphex(r & SR_WEL, ==, 0);
+> +    g_assert(!qtest_qom_get_bool
+> +            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
+> +
+> +    flash_reset();
+> +}
+> +
+>   static char tmp_path[] = "/tmp/qtest.m25p80.XXXXXX";
+>   
+>   int main(int argc, char **argv)
+> @@ -373,6 +415,7 @@ int main(int argc, char **argv)
+>       qtest_add_func("/ast2400/smc/write_page", test_write_page);
+>       qtest_add_func("/ast2400/smc/read_page_mem", test_read_page_mem);
+>       qtest_add_func("/ast2400/smc/write_page_mem", test_write_page_mem);
+> +    qtest_add_func("/ast2400/smc/read_status_reg", test_read_status_reg);
+>   
+>       ret = g_test_run();
+>   
+> diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+> index 228357f1ea..a9904eba82 100644
+> --- a/tests/qtest/libqtest.c
+> +++ b/tests/qtest/libqtest.c
+> @@ -1423,3 +1423,27 @@ void qtest_client_inproc_recv(void *opaque, const char *str)
+>       g_string_append(qts->rx, str);
+>       return;
+>   }
+> +
+> +void qtest_qom_set_bool(QTestState *s, const char *path, const char *property,
+> +                         bool value)
+> +{
+> +    QDict *r;
+> +
+> +    r = qtest_qmp(s, "{ 'execute': 'qom-set', 'arguments': "
+> +                     "{ 'path': %s, 'property': %s, 'value': %i } }",
+> +                     path, property, value);
+> +    qobject_unref(r);
+> +}
+> +
+> +bool qtest_qom_get_bool(QTestState *s, const char *path, const char *property)
+> +{
+> +    QDict *r;
+> +    bool b;
+> +
+> +    r = qtest_qmp(s, "{ 'execute': 'qom-get', 'arguments': "
+> +                     "{ 'path': %s, 'property': %s } }", path, property);
+> +    b = qdict_get_bool(r, "return");
+> +    qobject_unref(r);
+> +
+> +    return b;
+> +}
+> diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
+> index 4ab0cad326..94b187837d 100644
+> --- a/tests/qtest/libqtest.h
+> +++ b/tests/qtest/libqtest.h
+> @@ -783,4 +783,26 @@ QTestState *qtest_inproc_init(QTestState **s, bool log, const char* arch,
+>                       void (*send)(void*, const char*));
+>   
+>   void qtest_client_inproc_recv(void *opaque, const char *str);
+> +
+> +/**
+> + * qtest_qom_set_bool:
+> + * @s: QTestState instance to operate on.
+> + * @path: Path to the property being set.
+> + * @property: Property being set.
+> + * @value: Value to set the property.
+> + *
+> + * Set the property with passed in value.
+> + */
+> +void qtest_qom_set_bool(QTestState *s, const char *path, const char *property,
+> +                         bool value);
+> +
+> +/**
+> + * qtest_qom_get_bool:
+> + * @s: QTestState instance to operate on.
+> + * @path: Path to the property being retrieved.
+> + * @property: Property from where the value is being retrieved.
+> + *
+> + * Returns: Value retrieved from property.
+> + */
+> +bool qtest_qom_get_bool(QTestState *s, const char *path, const char *property);
+>   #endif
 

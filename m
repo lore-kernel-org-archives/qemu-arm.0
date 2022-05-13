@@ -1,98 +1,193 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp4812394lfj;
-        Tue, 10 May 2022 23:16:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzKjGx+1xnk0rN4XG5AVoPdmaIh8iVgXUv66E3K+DmFf+s3BYKtFngRBgUqneEybiN4ThOC
-X-Received: by 2002:a37:e102:0:b0:69f:8463:cbdd with SMTP id c2-20020a37e102000000b0069f8463cbddmr17626784qkm.766.1652249773045;
-        Tue, 10 May 2022 23:16:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652249773; cv=none;
+Received: by 2002:a0c:f248:0:0:0:0:0 with SMTP id z8csp686274qvl;
+        Thu, 12 May 2022 18:20:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyiM8BuTyxpw+rHhZouKlK587Zd+MwLXI0S8npfJuJDfSY/0r8KBA8URTByPY9P4e02c3Tb
+X-Received: by 2002:ac8:7e91:0:b0:2f3:df0e:9242 with SMTP id w17-20020ac87e91000000b002f3df0e9242mr2598000qtj.584.1652404840560;
+        Thu, 12 May 2022 18:20:40 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1652404840; cv=pass;
         d=google.com; s=arc-20160816;
-        b=hz3KiCxzGL+DnzRqfBZaehNaQxpqnZqCIDa6KDeXItSJvPCIfU2Suvkz4pId/CA5nS
-         2EwgGfuWdh75adrXmpAcUJv9kj+h6waYpkFlRxuLfriDlBWYvpQ2X1hTSCRtK46GTkfF
-         mdjcNN96dVR72sQbumTaKlZO4J8Wdiw1cl64z7C3kWIYxGsFjHQCBXswUktXNTToOZYv
-         1IonTKiW4xqamc+xxxwizE/QGYzYevCiz70xvhyKIDuPRVBFAULVukJDV505f5E9AnWv
-         v1Ad4hOhlYjh8oZ4I+QxdIrx91PtKMJfq8R0JvR1qrX7qIGkjGh/bZA7+FmRBx/7iAKT
-         amWQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=DIy1xlElRcLKWr99NEARMN8eBgrW84Mv1Jz3LkIM0+a5Nq8R1NSxQu04ggg2vxwdmt
+         TSstK2fqqP5lHWLUvNM5cBBbumYBGaqyCLRPkL/kY/m/BKITUp+yE63khval8wLCz4f7
+         1adu8D9UAW/7Zg2Aj8CJvBmxdoKJQE9sExJSaQ0AvPFofMlTUGavH2VE0ih3Ko5lM4nk
+         OulyzyGiUb5NExhMOenUdY2ZyBUm+5GVCxCfL6zuqLRu4D7gy+i94z1Sd8/vS4TWcFud
+         1eJ1QocGIEiuj+O2z52WWrsHrDvF26ueGbg/dhvnTR4PNnSg/YE27yyvw2S80Y2ghnu4
+         5dwg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=8KiTYteNQ4CMaxp0VBvjuhcpz7iYPTyjCztunrJSHVU=;
-        b=Cytk+fLNDTqCttJGsVt+mmbApWtoMFht+bFWicYAn/f1XuS52Ny3MhHhCC3BSQuNDg
-         YbA5e5MTknF4M+/wfeEbUZ+qVsRvpOeuprwsSCd/CsQeHFTBZbJLVmGMAyf3kahhOCIP
-         ZKmG4PBOlfntAnSTYQj0aLO4uFj1SesyLbSOiTnmqt1VTxfXJqt3JjY6qgFsbsvbr3rP
-         7FlzOKJ32fSt4HZiAldw6knHNME13eIAZvAIOxJo/IyElpLzKlq1RzzjTb+RIug5LZ+g
-         zSz/9g6+xMhYf+R1ryq+XuryNYZb3Q67Z0z3622mvU+0wrhsjraAqWQaZy3Zoa6sJ10m
-         XaIg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:from:dkim-signature;
+        bh=KSXZsrmts2DXO7HnO8ikV8Mf3HMbgfSfeXU+se8AIdo=;
+        b=KO88eBfUrlUNNDE4uws8ZWvzxZF3T6ANYogdLjVxz1SemesRlc4+LbudhtOOjxW+/h
+         NcXECNOGk+kBS/oz3TX+VOBRkn/iPsHgSIlbK94YPUiuw1VRxyjYXRfDO4CCQAgGh3aC
+         lngHs6aHUAZcAeoMnZG2e0CWYmyXggMNwFmvej7gwvtoGfrl81se9AtprdnjgqykCNld
+         mOV3fHCFp/mmObCbq2omMYWky3SoU+bbddHv23qTypF0zIKSwFvJBTJ4urouvXLVmp5L
+         Q79wPtCRkMiE4xd47LdyVs/CISXs1VgKbRwEO1evDq73CNG7nlInDSiKdU68DWyrLzUU
+         mPpA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=Aa0VHjRz;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l13-20020a05622a050d00b002f2012341c8si572098qtx.538.2022.05.10.23.16.12
+        by mx.google.com with ESMTPS id i201-20020a379fd2000000b006a003cb1289si681124qke.373.2022.05.12.18.20.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 May 2022 23:16:13 -0700 (PDT)
+        Thu, 12 May 2022 18:20:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40806 helo=lists1p.gnu.org)
+       dkim=pass header.i=@fb.com header.s=facebook header.b=Aa0VHjRz;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:52364 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nofds-0003Tj-7w
-	for alex.bennee@linaro.org; Wed, 11 May 2022 02:16:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53198)
+	id 1npJyy-0002h0-4K
+	for alex.bennee@linaro.org; Thu, 12 May 2022 21:20:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36800)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nofd0-0003S1-7t
- for qemu-arm@nongnu.org; Wed, 11 May 2022 02:15:19 -0400
-Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231]:57147)
+ (Exim 4.90_1) (envelope-from <prvs=613212e35b=pdel@fb.com>)
+ id 1npJyb-0002eX-NN; Thu, 12 May 2022 21:20:17 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:59470
+ helo=mx0a-00082601.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nofcw-0001TD-3E
- for qemu-arm@nongnu.org; Wed, 11 May 2022 02:15:17 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.11])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 25890215BA;
- Wed, 11 May 2022 06:15:01 +0000 (UTC)
-Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <prvs=613212e35b=pdel@fb.com>)
+ id 1npJyY-0001FW-UU; Thu, 12 May 2022 21:20:16 -0400
+Received: from pps.filterd (m0001303.ppops.net [127.0.0.1])
+ by m0001303.ppops.net (8.17.1.5/8.17.1.5) with ESMTP id 24D0abJf029621;
+ Thu, 12 May 2022 18:20:06 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : cc : subject :
+ date : message-id : references : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=facebook;
+ bh=KSXZsrmts2DXO7HnO8ikV8Mf3HMbgfSfeXU+se8AIdo=;
+ b=Aa0VHjRzNSbR4HrkhZFMDUjImnK3wL/0qNhZqR5mCcgc3XXdHAUOVNZFaga6RBG5hZxn
+ v4p0hfUuzjxBbirrVBEqdYytAHK7MQp2gI96eG+y2FeKtXL+k9x40Of9DCyZOcXNGHc3
+ DY+eIfqTxMEop+ZJ/yzBOjK8KTjuTyCnv/A= 
+Received: from nam11-bn8-obe.outbound.protection.outlook.com
+ (mail-bn8nam11lp2177.outbound.protection.outlook.com [104.47.58.177])
+ by m0001303.ppops.net (PPS) with ESMTPS id 3g1cxe85c2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 12 May 2022 18:20:06 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=XgvRf6GOOJi+4cItUkoFHnieUH4JE2KsWf/Nfqtv+4/sr+zOZlsJ1a8rZML5B0i1sgvAn1BAegPl8UH2wPGc9e1A+cPzSrkseyx89XbbaVSzm6OFxHN1dveMoC52f+lbh47yVgOoCMvSeo+9J4YaeKh/eWueIXYZM7xZy5VNWOtkr/SkNV5X4Ay3t49qLLyg34x504hCx5GYKinVvxmvTvj7n7TuoG9Op18xpXnbEegZRPRMG/097wytHc+a4t5J033j9jOLVV8vueq42Ee/jw0hwHwZrAHYWwAxjCL25bxC7Tu/ApKT0ICvLxpwN8Kaqtt77Poked/mT0L6NfLk/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=KSXZsrmts2DXO7HnO8ikV8Mf3HMbgfSfeXU+se8AIdo=;
+ b=DkcnAD35kUx/hYBC7zfFFBM2PU2PGHuGg7ifMabw3A6HD4U622LJ5fEbVKO/LIvvadrHf/S4lOSYDviUbPMLAjfKZ35u5VZ2ILsOshTawYImebJ/JXxPHGi9YgXR7raneCyxb2g0+rzv2XEVzqOl89TPtAJTN55wKi2zrDoCZVI0NEWm165ZmvL6e2QSFAKlg0HlOjEfwU7GN0D1rqxU6bM5wDdYIsu5O+i/xiW3RJb/cdnAUQSe/msc2AcJn5ffnw/hKo9ZOoyx3sZrwP7UWUqbxVKIYtFMseG5yfWrz0wIX+JpCyzGXGvHVkkDvSj3qM7Y1kniHl9rXuw3KyoApg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
+ header.d=fb.com; arc=none
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
+ by PH0PR15MB4382.namprd15.prod.outlook.com (2603:10b6:510:9f::12)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.6; Wed, 11 May
- 2022 08:15:01 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G00237c37da7-16eb-406e-8a46-2ae4c583eba0,
- 0573B671C186F18DA7A9CA3D7ACC2C84049858CC) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <55b7b867-4510-824a-7ce1-8cbe24e7287d@kaod.org>
-Date: Wed, 11 May 2022 08:14:55 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH v1 1/1] hw/gpio: Add ASPEED GPIO model for AST1030
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5250.15; Fri, 13 May
+ 2022 01:20:04 +0000
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::45c5:2306:17b3:89eb]) by BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::45c5:2306:17b3:89eb%5]) with mapi id 15.20.5250.014; Fri, 13 May 2022
+ 01:20:04 +0000
+From: Peter Delevoryas <pdel@fb.com>
+CC: Iris Chen <irischenlj@fb.com>, "patrick@stwcx.xyz" <patrick@stwcx.xyz>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "clg@kaod.org" <clg@kaod.org>, Peter Delevoryas
+ <pdel@fb.com>
+Subject: Re: [PATCH] hw: aspeed_soc: Initialize all UART's with serial devices
+Thread-Topic: [PATCH] hw: aspeed_soc: Initialize all UART's with serial devices
+Thread-Index: AQHYZmGp97nZV88xv0yAXY4IcvZBba0cAmJJ
+Date: Fri, 13 May 2022 01:20:03 +0000
+Message-ID: <E6C3FED9-097F-4A7B-A87C-7905BB601F70@fb.com>
+References: <20220513003720.2831997-1-pdel@fb.com>
+In-Reply-To: <20220513003720.2831997-1-pdel@fb.com>
+Accept-Language: en-US
 Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>, Peter Delevoryas
- <pdel@fb.com>, Maheswara Kurapati <quic_mkurapat@quicinc.com>
-CC: <steven_lee@aspeedtech.com>, <troy_lee@aspeedtech.com>
-References: <20220321091453.17113-1-jamin_lin@aspeedtech.com>
- <20220321091453.17113-2-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220321091453.17113-2-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.97]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 48f0ed00-245c-4de6-bbc9-c60b20e3bb30
-X-Ovh-Tracer-Id: 6081266876073610162
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrgeeggddutdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomh
-Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
- helo=8.mo548.mail-out.ovh.net
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: ea896b41-1633-4dff-92ad-08da347eb566
+x-ms-traffictypediagnostic: PH0PR15MB4382:EE_
+x-microsoft-antispam-prvs: <PH0PR15MB4382EA0CC30FB0B3F388E249ACCA9@PH0PR15MB4382.namprd15.prod.outlook.com>
+x-fb-source: Internal
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: oqX/ox9iqTxTHJRXTt5mQ2+MN1xjctafEHPISQzNLLMUTS2hp52jW3SY08krgQBGNpU4MUGrh94p7uZ/8ByjyxLjDKOxBwtvq62NDPGru2kXI8NXGS8SywJxEw2I7rXg2OL8lt8gvRSgDFT38Gp+x44UY731xUAlOHb47pG034Quifo3g97nJw4yQVemp3nhuSzr5Id9/iIIKcl2WFRq8DQpUd0KpbNJDaPjxgBgdvKHW51K0+W+VWVw2Y8W+vCA23o6dHx081oKdFz+u4Ao0PY+AuWp0MTQdDuGbAM7pzCUSNS04KdtrtiyWFTjhvBivXf5t3IDoAZIoBOV9Ism/VHRzPEhu8p8g/YScnSO9qr8DIfcgDtQdnFtYZGGhnOKTt/CEeX1WZMDCXSspRJMeEY+5VQ1X9v03FADY9elEgnutOrI1N9gDCwkgsHyHNOpsSScc7H6hdYepB8npmDMNIcqgvKE01Rv47osUxo8xNvSVGMv8zXDKKC47chMmkQ5G25eys0SffoX5WFIbsmF1XeXMKnIdTo+G/6Els7kcdkzlHI0+Nv/NS0l2nQDYyOA+/rWVQRz2MCqtrgE/4BboECAkRZdSptfVrXtSLGFhk9BNLf1RABGBo5KzxEHjjbJMqorKy8ZsXSkVB1ZNmbQTgUyOOVje3nhI9SpVKeZyeeey9x800mUU+W+DDXDMmDTrcr63tZ3kpn6FVo+YHqcgMYYICv18SDb6sneMzMWt4fW5yvIooKdyCBJvm+nC3kJCkgkTA2cQ9nWnn5kMW5IisjANPIcB0igpqCL//Md9V6WrrNSw1SSKfmRUz33u3UZ
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(71200400001)(33656002)(6486002)(966005)(508600001)(4326008)(122000001)(86362001)(66946007)(76116006)(64756008)(66446008)(66476007)(66556008)(8676002)(54906003)(316002)(38070700005)(38100700002)(6512007)(5660300002)(53546011)(2906002)(2616005)(109986005)(6506007)(186003)(83380400001)(36756003)(8936002)(45980500001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZXVWeTlUMGlvWHExYnBlWG5RNjBxc0tCRGswbjdtVHlrUjlyQWRqeUpoOFI0?=
+ =?utf-8?B?Tk5oc2VnNm54R2YzbE1zeWRFam9jNzJjOW5JZ0FXMEl6VFVKT2t5LzBPNXZa?=
+ =?utf-8?B?QU9qYTY3b3BMcmhqMzlhT2JzOVhzRTFGYW9nblpjU2pxdjBYSlNiOFY3L1g0?=
+ =?utf-8?B?QVRzVmVJblR4QnJBS3dPMEFvWE12U1FCd2s2bER0TjdSOEIxUkR1NGJncGhL?=
+ =?utf-8?B?WFJNSnRocWZDT0VvVU9qZTJ1RlVDeE1uR3RtQUZhb3JnQzMrM2lOK1ZDRmNu?=
+ =?utf-8?B?a1hBTTJPQU5FcFFTU0RnS2tNSGF1WVgyU2RaSUl4YnluRVhnaVM0Nm9tcG0v?=
+ =?utf-8?B?WEVOQ1dOSEZNMXVycEdyUk5uOElQamRtYUVFWkQrcWg1ZXlaV0xXMUpUY1Ju?=
+ =?utf-8?B?WVdMQ09BaUdkcmhZK3U4bk5aVGltdUhnV3dSc1hwaTNPYXBHdmNibnBUZjhP?=
+ =?utf-8?B?QmJ4QWRTN0lxMTJoKy9uL25xNmtJZFExZHN3NjVzU1cwSS91QnJqQzVIYVBo?=
+ =?utf-8?B?QlZZc1ZmK1diVDZhdkw4aTZBaVpkOFNMeGRIUkxXaTFQMlQ4Y2xJdzc4VTRO?=
+ =?utf-8?B?T1JXRkwwT1dLaXZraFpBNDNFL3FIeTh3SzBUS2lmeU13c1AxbE8vbDVJczl6?=
+ =?utf-8?B?N0VNWTVPNDNWVDRFMHBwYUNzUHJGdzNHaVNvOVo3YnpPOTVVdE5abWNRSXZ6?=
+ =?utf-8?B?TmlxNzlRMGtUNjBqdGxpNnVyUERGTVNJLzN1b0FNd1pHOURuSU1SczY3dVEx?=
+ =?utf-8?B?Q1ZUY3FVMFZ4ZVdpQkt5QU5XQjJheStnV3k3VTBFeTNKdE9TeHErSWpCMUdP?=
+ =?utf-8?B?dzlJdW1UYnhYTm50NVhtMnpEQ3dsdy9oVnhmNXhFTldqSXdUS0Y4aGFnR1lM?=
+ =?utf-8?B?Mi8xMVRodjhVOGRCQXRBQXFjbU9MS3UvMXhKME5JWE9tb29XSWJOenVxKzFI?=
+ =?utf-8?B?VE9HN0JpMDZiREVYcXRKSi9RakV4RzRHVmJrWEF4OFVrTHNoQVZLeG5TYzZJ?=
+ =?utf-8?B?bUgxN3NZa2d2NnhES0RTdmFNeStudVR2R0tnSVBxMHY2Z1U0VGJNdUh4Y2Z0?=
+ =?utf-8?B?RXh3RmVFWmM1MHZMd1FkeGlIL21xZzVBdXR1MEN3K0plUGFMUTNhQjYyaXVp?=
+ =?utf-8?B?V3REcU5jc2NkZXhEVEVZeVBlVklKWEZiSW1zKzliY3NGNFF4TkcyYVZ0bEUz?=
+ =?utf-8?B?TGRMUGc3QUo5RFB6eW9QY252OUZDM24xUmFKV0xPTkRpUG82b3oyUFRxZHJh?=
+ =?utf-8?B?T1pyeVJtdmVpeitPZGdJbkVnekFuaDc5MGhkcStLWDNMeGpJdmJ5d1prVWR6?=
+ =?utf-8?B?OTlhRkZGRWEycTJaYkw3WXlFWm01REQyMnQrQVNPVnZDSWVjZ1huMUJRbU93?=
+ =?utf-8?B?d2FZNWJNTGYvVWxISHRBWXBQcld3eWUxZGZpWTltd1JTRTBkMEE1d3Y1eklX?=
+ =?utf-8?B?UkwyeDErMXZTMjdEQnpEMFpCR1RkZGovbWcyajdLWDJINlg4T3d5V1VhbGcv?=
+ =?utf-8?B?dllFRzd5bDMwU3ZhSXQ2STZTS1B1Qno0MDZ0S1BWcys0SFh6d0RaWWU3Wkow?=
+ =?utf-8?B?MjJzQkw2NDdmdmx1eHBwT3VVWkwrL1MwdEdKZm5heXRUZy9OVGdFQ1hDLy9a?=
+ =?utf-8?B?d0cxTEFXODZqZHZ6VzJLVHY1R01oSkEwbmN5L2lvQW9wSmtTTUFHcEtKSXNF?=
+ =?utf-8?B?NFBTVHR6QmlESE1JUlQvRlVZWit2b2JENFNLUmFRemx4MytZQ0dvaG5ER1R6?=
+ =?utf-8?B?MklrM2JBenVZenIwcG10Umh2RytydUJyd05kZE5mMnBNUWFmVGlOZWRxRDZU?=
+ =?utf-8?B?cDliWGRBUmdZSzVHaVVWTTZuQnR6QnVIdk56WktOVkFpQlFRNXFjM3YvSmpo?=
+ =?utf-8?B?SjFYd2R3OGZTVmE0U0hOSy9JQjZ6SHRINC9WTDE2NStWYndTVGl1cEp2em8v?=
+ =?utf-8?B?MXlzT2NyNjFRTGY5KzIxWFlvV2cvWEFEVjdWMUtxd1IrQTVybjB2S3dOYXRo?=
+ =?utf-8?B?TlFrYlU3M2pOZ3J6azZ3ZTU4aE5wSUxJc3lBZWFhem5kMk9KdElnaW9Ua0Q2?=
+ =?utf-8?B?Q3BPcHNWWDRHK25KTXQ0V0NqcEdMT01zOW10U2hVUzMzTUxxaHhJRWIwWkVu?=
+ =?utf-8?B?Q2l1TmhORG5NU1QvMTlJMmFCVHJBdk9wd1pMZUhSQTRVQjY0cUpwbkt4amI3?=
+ =?utf-8?B?Vk1Lbjk4aHp1SXFWTFQyRHE4cVJnZTlUSVRNUk1vbkMwMXM2ZFpSQ3l2ZFVT?=
+ =?utf-8?B?ODdHVjBOVnFrRmNrODZXYjc3U2EvK1NZQXZDdmQvMnh3MUhzYnlGQk1DRWwx?=
+ =?utf-8?B?L1hPSStSdHhsbXU1MmtvdWFPMk1JK0pKY2xWKy9iZ1owaWdXNlE5UT09?=
+Content-Type: text/plain; charset="utf-8"
+X-OriginatorOrg: fb.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ea896b41-1633-4dff-92ad-08da347eb566
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 May 2022 01:20:03.9955 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: aEyZbh+Z6ExM7UnjwHOPHZ5HP1FNOFxiGv3XfTTilM9PxfGGGoPt7l0ByKVOTqIm
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR15MB4382
+X-Proofpoint-ORIG-GUID: MGom7FLq1G8YJ3HkCaOrkaKHKVKfFB3S
+X-Proofpoint-GUID: MGom7FLq1G8YJ3HkCaOrkaKHKVKfFB3S
+Content-Transfer-Encoding: base64
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
+ definitions=2022-05-12_19,2022-05-12_01,2022-02-23_01
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=613212e35b=pdel@fb.com; helo=mx0a-00082601.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MISSING_HEADERS=1.021, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,434 +202,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uXolAWDZaGd2
+X-TUID: bOWwDBiHxGx5
 
-Hello Jamin,
-
-(Adding a few people that could help with the review)
-
-On 3/21/22 10:14, Jamin Lin wrote:
-
-> 1. Add GPIO read/write trace event.
-
-Do we really need the "DEVICE(s)->canonical_path" parameter ?
-That would be patch 1.
-
-> 2. Support GPIO index mode for write operation.
-> It did not support GPIO index mode for read operation.
-
-these changes would be in patch 2.
-
-> 3. AST1030 integrates one set of Parallel GPIO Controller
-> with maximum 151 control pins, which are 21 groups
-> (A~U, exclude pin: M6 M7 Q5 Q6 Q7 R0 R1 R4 R5 R6 R7 S0 S3 S4
-> S5 S6 S7 ) and the group T and U are input only.
-
-and a last patch 3.
-
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-
-
-Some minor comments below,
-
-Thanks,
-
-C.
-
-
-> ---
->   hw/gpio/aspeed_gpio.c         | 250 ++++++++++++++++++++++++++++++++--
->   hw/gpio/trace-events          |   5 +
->   include/hw/gpio/aspeed_gpio.h |  16 ++-
->   3 files changed, 255 insertions(+), 16 deletions(-)
-> 
-> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> index c63634d3d3..3f0bd036b7 100644
-> --- a/hw/gpio/aspeed_gpio.c
-> +++ b/hw/gpio/aspeed_gpio.c
-> @@ -15,6 +15,8 @@
->   #include "qapi/visitor.h"
->   #include "hw/irq.h"
->   #include "migration/vmstate.h"
-> +#include "trace.h"
-> +#include "hw/registerfields.h"
->   
->   #define GPIOS_PER_GROUP 8
->   
-> @@ -203,6 +205,28 @@
->   #define GPIO_1_8V_MEM_SIZE            0x1D8
->   #define GPIO_1_8V_REG_ARRAY_SIZE      (GPIO_1_8V_MEM_SIZE >> 2)
->   
-> +/*
-> + * GPIO index mode support
-> + * It only supports write operation
-> + */
-> +REG32(GPIO_INDEX_REG, 0x2AC)
-> +    FIELD(GPIO_INDEX_REG, NUMBER, 0, 8)
-> +    FIELD(GPIO_INDEX_REG, COMMAND, 12, 1)
-> +    FIELD(GPIO_INDEX_REG, TYPE, 16, 4)
-> +    FIELD(GPIO_INDEX_REG, DATA_VALUE, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, DIRECTION, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, INT_ENABLE, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, INT_SENS_0, 21, 1)
-> +    FIELD(GPIO_INDEX_REG, INT_SENS_1, 22, 1)
-> +    FIELD(GPIO_INDEX_REG, INT_SENS_2, 23, 1)
-> +    FIELD(GPIO_INDEX_REG, INT_STATUS, 24, 1)
-> +    FIELD(GPIO_INDEX_REG, DEBOUNCE_1, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, DEBOUNCE_2, 21, 1)
-> +    FIELD(GPIO_INDEX_REG, RESET_TOLERANT, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, COMMAND_SRC_0, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, COMMAND_SRC_1, 21, 1)
-> +    FIELD(GPIO_INDEX_REG, INPUT_MASK, 20, 1)
-
-That's a good idea. We should start switching the models to the registerfields
-interface.
-
->   static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high, int gpio)
->   {
->       uint32_t falling_edge = 0, rising_edge = 0;
-> @@ -523,11 +547,16 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
->       uint64_t idx = -1;
->       const AspeedGPIOReg *reg;
->       GPIOSets *set;
-> +    uint32_t value = 0;
-> +    uint64_t debounce_value;
->   
->       idx = offset >> 2;
->       if (idx >= GPIO_DEBOUNCE_TIME_1 && idx <= GPIO_DEBOUNCE_TIME_3) {
->           idx -= GPIO_DEBOUNCE_TIME_1;
-> -        return (uint64_t) s->debounce_regs[idx];
-> +        debounce_value = (uint64_t) s->debounce_regs[idx];
-> +        trace_aspeed_gpio_read(DEVICE(s)->canonical_path,
-> +                               offset, debounce_value);
-> +        return debounce_value;
->       }
->   
->       reg = &agc->reg_table[idx];
-> @@ -540,38 +569,193 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
->       set = &s->sets[reg->set_idx];
->       switch (reg->type) {
->       case gpio_reg_data_value:
-> -        return set->data_value;
-> +         value = set->data_value;
-> +         break;
->       case gpio_reg_direction:
-> -        return set->direction;
-> +        value = set->direction;
-> +        break;
->       case gpio_reg_int_enable:
-> -        return set->int_enable;
-> +        value = set->int_enable;
-> +        break;
->       case gpio_reg_int_sens_0:
-> -        return set->int_sens_0;
-> +        value = set->int_sens_0;
-> +        break;
->       case gpio_reg_int_sens_1:
-> -        return set->int_sens_1;
-> +        value = set->int_sens_1;
-> +        break;
->       case gpio_reg_int_sens_2:
-> -        return set->int_sens_2;
-> +        value = set->int_sens_2;
-> +        break;
->       case gpio_reg_int_status:
-> -        return set->int_status;
-> +        value = set->int_status;
-> +        break;
->       case gpio_reg_reset_tolerant:
-> -        return set->reset_tol;
-> +        value = set->reset_tol;
-> +        break;
->       case gpio_reg_debounce_1:
-> -        return set->debounce_1;
-> +        value = set->debounce_1;
-> +        break;
->       case gpio_reg_debounce_2:
-> -        return set->debounce_2;
-> +        value = set->debounce_2;
-> +        break;
->       case gpio_reg_cmd_source_0:
-> -        return set->cmd_source_0;
-> +        value = set->cmd_source_0;
-> +        break;
->       case gpio_reg_cmd_source_1:
-> -        return set->cmd_source_1;
-> +        value = set->cmd_source_1;
-> +        break;
->       case gpio_reg_data_read:
-> -        return set->data_read;
-> +        value = set->data_read;
-> +        break;
->       case gpio_reg_input_mask:
-> -        return set->input_mask;
-> +        value = set->input_mask;
-> +        break;
->       default:
->           qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
->                         HWADDR_PRIx"\n", __func__, offset);
->           return 0;
->       }
-> +
-> +    trace_aspeed_gpio_read(DEVICE(s)->canonical_path, offset, value);
-> +    return value;
-> +}
-> +
-> +static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-> +                                                uint64_t data, uint32_t size)
-> +{
-> +
-> +    AspeedGPIOState *s = ASPEED_GPIO(opaque);
-> +    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
-> +    const GPIOSetProperties *props;
-> +    GPIOSets *set;
-> +    uint32_t reg_idx_number = FIELD_EX32(data, GPIO_INDEX_REG, NUMBER);
-> +    uint32_t reg_idx_type = FIELD_EX32(data, GPIO_INDEX_REG, TYPE);
-> +    uint32_t reg_idx_command = FIELD_EX32(data, GPIO_INDEX_REG, COMMAND);
-> +    uint32_t set_idx = reg_idx_number / ASPEED_GPIOS_PER_SET;
-> +    uint32_t pin_idx = reg_idx_number % ASPEED_GPIOS_PER_SET;
-> +    uint32_t group_idx = pin_idx / GPIOS_PER_GROUP;
-> +    uint32_t reg_value = 0;
-> +    uint32_t cleared;
-> +
-> +    set = &s->sets[set_idx];
-> +    props = &agc->props[set_idx];
-> +
-> +    if (reg_idx_command)
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%" HWADDR_PRIx "data 0x%"
-> +            HWADDR_PRIx "index mode wrong command 0x%x\n",
-
-The format should use PRIx64 for the data
-
-> +            __func__, offset, data, reg_idx_command);
-> +
-> +    switch (reg_idx_type) {
-> +    case gpio_reg_idx_data:
-> +        reg_value = set->data_read;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, DATA_VALUE));
-> +        reg_value &= props->output;
-> +        reg_value = update_value_control_source(set, set->data_value,
-> +                                                reg_value);
-> +        set->data_read = reg_value;
-> +        aspeed_gpio_update(s, set, reg_value);
-> +        return;
-> +    case gpio_reg_idx_direction:
-> +        reg_value = set->direction;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, DIRECTION));
-> +        /*
-> +         *   where data is the value attempted to be written to the pin:
-> +         *    pin type      | input mask | output mask | expected value
-> +         *    ------------------------------------------------------------
-> +         *   bidirectional  |   1       |   1        |  data
-> +         *   input only     |   1       |   0        |   0
-> +         *   output only    |   0       |   1        |   1
-> +         *   no pin         |   0       |   0        |   0
-> +         *
-> +         *  which is captured by:
-> +         *  data = ( data | ~input) & output;
-> +         */
-> +        reg_value = (reg_value | ~props->input) & props->output;
-> +        set->direction = update_value_control_source(set, set->direction,
-> +                                                     reg_value);
-> +        break;
-> +    case gpio_reg_idx_interrupt:
-> +        reg_value = set->int_enable;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INT_ENABLE));
-> +        set->int_enable = update_value_control_source(set, set->int_enable,
-> +                                                      reg_value);
-> +        reg_value = set->int_sens_0;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INT_SENS_0));
-> +        set->int_sens_0 = update_value_control_source(set, set->int_sens_0,
-> +                                                      reg_value);
-> +        reg_value = set->int_sens_1;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INT_SENS_1));
-> +        set->int_sens_1 = update_value_control_source(set, set->int_sens_1,
-> +                                                      reg_value);
-> +        reg_value = set->int_sens_2;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INT_SENS_2));
-> +        set->int_sens_2 = update_value_control_source(set, set->int_sens_2,
-> +                                                      reg_value);
-> +        /* set interrupt status */
-> +        reg_value = set->int_status;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INT_STATUS));
-> +        cleared = ctpop32(reg_value & set->int_status);
-> +        if (s->pending && cleared) {
-> +            assert(s->pending >= cleared);
-> +            s->pending -= cleared;
-> +        }
-> +        set->int_status &= ~reg_value;
-> +        break;
-> +    case gpio_reg_idx_debounce:
-> +        reg_value = set->debounce_1;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, DEBOUNCE_1));
-> +        set->debounce_1 = update_value_control_source(set, set->debounce_1,
-> +                                                      reg_value);
-> +        reg_value = set->debounce_2;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, DEBOUNCE_2));
-> +        set->debounce_2 = update_value_control_source(set, set->debounce_2,
-> +                                                      reg_value);
-> +        return;
-> +    case gpio_reg_idx_tolerance:
-> +        reg_value = set->reset_tol;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, RESET_TOLERANT));
-> +        set->reset_tol = update_value_control_source(set, set->reset_tol,
-> +                                                     reg_value);
-> +        return;
-> +    case gpio_reg_idx_cmd_src:
-> +        reg_value = set->cmd_source_0;
-> +        reg_value = deposit32(reg_value, GPIOS_PER_GROUP * group_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, COMMAND_SRC_0));
-> +        set->cmd_source_0 = reg_value & ASPEED_CMD_SRC_MASK;
-> +        reg_value = set->cmd_source_1;
-> +        reg_value = deposit32(reg_value, GPIOS_PER_GROUP * group_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, COMMAND_SRC_1));
-> +        set->cmd_source_1 = reg_value & ASPEED_CMD_SRC_MASK;
-> +        return;
-> +    case gpio_reg_idx_input_mask:
-> +        reg_value = set->input_mask;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INPUT_MASK));
-> +        /*
-> +         * feeds into interrupt generation
-> +         * 0: read from data value reg will be updated
-> +         * 1: read from data value reg will not be updated
-> +         */
-> +        set->input_mask = reg_value & props->input;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%" HWADDR_PRIx "data 0x%"
-> +            HWADDR_PRIx "index mode wrong type 0x%x\n",
-> +            __func__, offset, data, reg_idx_type);
-> +        return;
-> +    }
-> +    aspeed_gpio_update(s, set, set->data_value);
-> +    return;
->   }
->   
->   static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-> @@ -585,7 +769,16 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
->       GPIOSets *set;
->       uint32_t cleared;
->   
-> +    trace_aspeed_gpio_write(DEVICE(s)->canonical_path, offset, data);
-> +
->       idx = offset >> 2;
-> +
-> +    /* check gpio index mode */
-> +    if (idx == R_GPIO_INDEX_REG) {
-> +        aspeed_gpio_write_index_mode(opaque, offset, data, size);
-> +        return;
-> +    }
-> +
->       if (idx >= GPIO_DEBOUNCE_TIME_1 && idx <= GPIO_DEBOUNCE_TIME_3) {
->           idx -= GPIO_DEBOUNCE_TIME_1;
->           s->debounce_regs[idx] = (uint32_t) data;
-> @@ -795,6 +988,15 @@ static GPIOSetProperties ast2600_1_8v_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
->       [1] = {0x0000000f,  0x0000000f,  {"18E"} },
->   };
->   
-> +static GPIOSetProperties ast1030_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
-> +    [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-> +    [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-> +    [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-> +    [3] = {0xffffff3f,  0xffffff3f,  {"M", "N", "O", "P"} },
-> +    [4] = {0xff060c1f,  0x00060c1f,  {"Q", "R", "S", "T"} },
-> +    [5] = {0x000000ff,  0x00000000,  {"U"} },
-> +};
-> +
->   static const MemoryRegionOps aspeed_gpio_ops = {
->       .read       = aspeed_gpio_read,
->       .write      = aspeed_gpio_write,
-> @@ -947,6 +1149,16 @@ static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
->       agc->reg_table = aspeed_1_8v_gpios;
->   }
->   
-> +static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
-> +{
-> +    AspeedGPIOClass *agc = ASPEED_GPIO_CLASS(klass);
-> +
-> +    agc->props = ast1030_set_props;
-> +    agc->nr_gpio_pins = 151;
-> +    agc->nr_gpio_sets = 6;
-> +    agc->reg_table = aspeed_3_3v_gpios;
-> +}
-> +
->   static const TypeInfo aspeed_gpio_info = {
->       .name           = TYPE_ASPEED_GPIO,
->       .parent         = TYPE_SYS_BUS_DEVICE,
-> @@ -984,6 +1196,13 @@ static const TypeInfo aspeed_gpio_ast2600_1_8v_info = {
->       .instance_init  = aspeed_gpio_init,
->   };
->   
-> +static const TypeInfo aspeed_gpio_ast1030_info = {
-> +    .name           = TYPE_ASPEED_GPIO "-ast1030",
-> +    .parent         = TYPE_ASPEED_GPIO,
-> +    .class_init     = aspeed_gpio_1030_class_init,
-> +    .instance_init  = aspeed_gpio_init,
-> +};
-> +
->   static void aspeed_gpio_register_types(void)
->   {
->       type_register_static(&aspeed_gpio_info);
-> @@ -991,6 +1210,7 @@ static void aspeed_gpio_register_types(void)
->       type_register_static(&aspeed_gpio_ast2500_info);
->       type_register_static(&aspeed_gpio_ast2600_3_3v_info);
->       type_register_static(&aspeed_gpio_ast2600_1_8v_info);
-> +    type_register_static(&aspeed_gpio_ast1030_info);
->   }
->   
->   type_init(aspeed_gpio_register_types);
-> diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
-> index 1dab99c560..717d6cf7cc 100644
-> --- a/hw/gpio/trace-events
-> +++ b/hw/gpio/trace-events
-> @@ -27,3 +27,8 @@ sifive_gpio_read(uint64_t offset, uint64_t r) "offset 0x%" PRIx64 " value 0x%" P
->   sifive_gpio_write(uint64_t offset, uint64_t value) "offset 0x%" PRIx64 " value 0x%" PRIx64
->   sifive_gpio_set(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
->   sifive_gpio_update_output_irq(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
-> +
-> +# aspeed_gpio.c
-> +aspeed_gpio_read(const char *id, uint64_t offset, uint64_t value) " %s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
-> +aspeed_gpio_write(const char *id, uint64_t offset, uint64_t value) "%s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
-> +
-> diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-> index 801846befb..cb7671149f 100644
-> --- a/include/hw/gpio/aspeed_gpio.h
-> +++ b/include/hw/gpio/aspeed_gpio.h
-> @@ -50,10 +50,24 @@ enum GPIORegType {
->       gpio_reg_input_mask,
->   };
->   
-> +/* GPIO index mode */
-> +enum GPIORegIndexType {
-> +    gpio_reg_idx_data = 0,
-> +    gpio_reg_idx_direction,
-> +    gpio_reg_idx_interrupt,
-> +    gpio_reg_idx_debounce,
-> +    gpio_reg_idx_tolerance,
-> +    gpio_reg_idx_cmd_src,
-> +    gpio_reg_idx_input_mask,
-> +    gpio_reg_idx_reserved,
-> +    gpio_reg_idx_new_w_cmd_src,
-> +    gpio_reg_idx_new_r_cmd_src,
-> +};
-> +
->   typedef struct AspeedGPIOReg {
->       uint16_t set_idx;
->       enum GPIORegType type;
-> - } AspeedGPIOReg;
-> +} AspeedGPIOReg;
->   
->   struct AspeedGPIOClass {
->       SysBusDevice parent_obj;
-
+DQoNCj4gT24gTWF5IDEyLCAyMDIyLCBhdCA1OjM3IFBNLCBQZXRlciBEZWxldm9yeWFzIDxwZGVs
+QGZiLmNvbT4gd3JvdGU6DQo+IA0KPiDvu79Vc3VhbGx5LCBRRU1VIHVzZXJzIGp1c3QgcHJvdmlk
+ZSBvbmUgc2VyaWFsIGRldmljZSBvbiB0aGUgY29tbWFuZCBsaW5lLA0KPiBlaXRoZXIgdGhyb3Vn
+aCAiLW5vZ3JhcGhpYyIgb3IgIi1zZXJpYWwgc3RkaW8gLWRpc3BsYXkgbm9uZSIsIG9yIGp1c3Qg
+dXNpbmcNCj4gVk5DIGFuZCBwb3BwaW5nIHVwIGEgd2luZG93LiBXZSB0cnkgdG8gbWF0Y2ggd2hh
+dCB0aGUgdXNlciBleHBlY3RzLCB3aGljaCBpcw0KPiB0byBjb25uZWN0IHRoZSBmaXJzdCAoYW5k
+IHVzdWFsbHkgb25seSkgc2VyaWFsIGRldmljZSB0byB0aGUgVUFSVCBhIGJvYXJkIGlzDQo+IHVz
+aW5nIGFzIHNlcmlhbDAuDQo+IA0KPiBNb3N0IEFzcGVlZCBtYWNoaW5lcyBpbiBody9hcm0vYXNw
+ZWVkLmMgdXNlIFVBUlQ1IGZvciBzZXJpYWwwIGluIHRoZWlyDQo+IGRldmljZSB0cmVlLCBzbyB3
+ZSBjb25uZWN0IFVBUlQ1IHRvIHRoZSBmaXJzdCBzZXJpYWwgZGV2aWNlLiBTb21lIG1hY2hpbmVz
+DQo+IHVzZSBVQVJUMSB0aG91Z2gsIG9yIFVBUlQzLCBzbyB0aGUgdWFydF9kZWZhdWx0IHByb3Bl
+cnR5IGxldHMgdXMgc3BlY2lmeQ0KPiB0aGF0IGluIGEgYm9hcmQgZGVmaW5pdGlvbi4NCj4gDQo+
+IEluIG9yZGVyIHRvIHNwZWNpZnkgYSBub25zdGFuZGFyZCBzZXJpYWwwIFVBUlQsIGEgdXNlciBi
+YXNpY2FsbHkgKm11c3QqIGFkZA0KPiBhIG5ldyBib2FyZCBkZWZpbml0aW9uIGluIGh3L2FybS9h
+c3BlZWQuYy4gVGhlcmUncyBubyB3YXkgdG8gZG8gdGhpcyB3aXRob3V0DQo+IHJlY29tcGlsaW5n
+IFFFTVUsIGJlc2lkZXMgY29uc3RydWN0aW5nIHRoZSBtYWNoaW5lIGNvbXBsZXRlbHkgZnJvbSBz
+Y3JhdGNoDQo+IG9uIHRoZSBjb21tYW5kIGxpbmUuDQo+IA0KPiBUbyBwcm92aWRlIG1vcmUgZmxl
+eGliaWxpdHksIHdlIGNhbiBhbHNvIHN1cHBvcnQgdGhlIHVzZXIgc3BlY2lmeWluZyBtb3JlDQo+
+IHNlcmlhbCBkZXZpY2VzLCBhbmQgY29ubmVjdCB0aGVtIHRvIHRoZSBVQVJUIG1lbW9yeSByZWdp
+b25zIGlmIHBvc3NpYmxlLg0KPiBFdmVuIGlmIGEgdXNlciBkb2Vzbid0IHNwZWNpZnkgYW55IGV4
+dHJhIHNlcmlhbCBkZXZpY2VzLCBpdCdzIHVzZWZ1bCB0bw0KPiBpbml0aWFsaXplIHRoZXNlIG1l
+bW9yeSByZWdpb25zIGFzIFVBUlQncywgc28gdGhhdCB0aGV5IHJlc3BvbmQgdG8gdGhlIGd1ZXN0
+DQo+IE9TIG1vcmUgbmF0dXJhbGx5LiBBdCB0aGUgbW9tZW50LCB0aGV5IHdpbGwganVzdCBhbHdh
+eXMgcmV0dXJuIHplcm8ncyBmb3INCj4gZXZlcnl0aGluZywgYW5kIHNvbWUgVUFSVCByZWdpc3Rl
+cnMgaGF2ZSBhIGRlZmF1bHQgbm9uLXplcm8gc3RhdGUuDQo+IA0KPiBXaXRoIHRoaXMgY2hhbmdl
+LCBpZiBhIG5ldyBPcGVuQk1DIGltYWdlIHVzZXMgVUFSVDMgb3Igc29tZSBvdGhlcg0KPiBub25z
+dGFuZGFyZCBVQVJUIGZvciBzZXJpYWwwLCB5b3UgY2FuIHN0aWxsIHVzZSBpdCB3aXRoIHRoZSBF
+VkIgd2l0aG91dA0KPiByZWNvbXBpbGluZyBRRU1VLCBldmVuIHRob3VnaCB1YXJ0LWRlZmF1bHQ9
+VUFSVDUgZm9yIHRoZSBFVkIuDQo+IA0KPiBGb3IgZXhhbXBsZSwgRmFjZWJvb2sncyBXZWRnZTEw
+MCBCTUMgdXNlcyBVQVJUMzogeW91IGNhbiBmZXRjaCBhbiBpbWFnZSBmcm9tDQo+IEdpdGh1Ylsx
+XSBhbmQgZ2V0IHRoZSBzZXJpYWwgY29uc29sZSBvdXRwdXQgZXZlbiB3aGlsZSBydW5uaW5nIHRo
+ZSBwYWxtZXR0bw0KPiBtYWNoaW5lIHR5cGUsIGJlY2F1c2Ugd2UgZXhwbGljaXRseSBzcGVjaWZ5
+IHRoYXQgd2Ugd2FudCBVQVJUMyB0byBiZQ0KPiBjb25uZWN0ZWQgdG8gc3RkaW8uDQo+IA0KPiAg
+ICBxZW11LXN5c3RlbS1hcm0gLW1hY2hpbmUgcGFsbWV0dG8tYm1jIFwNCj4gICAgICAgIC1kcml2
+ZSBmaWxlPXdlZGdlMTAwLm10ZCxmb3JtYXQ9cmF3LGlmPW10ZCBcDQo+ICAgICAgICAtc2VyaWFs
+IG51bGwgLXNlcmlhbCBudWxsIC1zZXJpYWwgbnVsbCAtc2VyaWFsIHN0ZGlvIC1kaXNwbGF5IG5v
+bmUNCj4gDQo+IFRoaXMgaXMga2luZCBvZiBjb21wbGljYXRlZCwgb2YgY291cnNlOiBpdCBtaWdo
+dCBiZSBtb3JlIG5hdHVyYWwgdG8gZ2V0IHJpZA0KPiBvZiB0aGUgdWFydF9kZWZhdWx0IGF0dHJp
+YnV0ZSBjb21wbGV0ZWx5LCBhbmQgaW5pdGlhbGl6ZSBVQVJUJ3MNCj4gc2VxdWVudGlhbGx5LiBC
+dXQsIGtlZXBpbmcgYmFja3dhcmQgY29tcGF0aWJpbGl0eSBhbmQgdGhlIHdheSBtb3N0IHVzZXJz
+DQo+IGtub3cgaG93IHRvIHVzZSBRRU1VIGluIG1pbmQsIHRoaXMgc2VlbXMgdG8gbWFrZSB0aGUg
+bW9zdCBzZW5zZS4NCg0KUmVhbGl6ZWQgcmlnaHQgYWZ0ZXIgc2VuZGluZyB0aGlzIEkgbmVlZCB0
+byBkbyB0aGUgc2FtZSB0aGluZyBmb3IgdGhlIEFTVDI2MDAgYW5kIDEwMzAuIEnigJlsbCBzdWJt
+aXQgYSB2MiB3aXRoIHRob3NlIGNoYW5nZXMuIFNvcnJ5IGZvciB0aGUgbm9pc2UuDQoNCj4gDQo+
+IFsxXSBodHRwczovL2dpdGh1Yi5jb20vZmFjZWJvb2svb3BlbmJtYy9yZWxlYXNlcy9kb3dubG9h
+ZC92MjAyMS40OS4wL3dlZGdlMTAwLm10ZA0KPiANCj4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgRGVs
+ZXZvcnlhcyA8cGRlbEBmYi5jb20+DQo+IC0tLQ0KPiBody9hcm0vYXNwZWVkX3NvYy5jIHwgMzAg
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tDQo+IDEgZmlsZSBjaGFuZ2VkLCAyOCBpbnNl
+cnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2h3L2FybS9hc3Bl
+ZWRfc29jLmMgYi9ody9hcm0vYXNwZWVkX3NvYy5jDQo+IGluZGV4IDU4NzE0Y2IyYTAuLjVlOGZl
+YTI1NzcgMTAwNjQ0DQo+IC0tLSBhL2h3L2FybS9hc3BlZWRfc29jLmMNCj4gKysrIGIvaHcvYXJt
+L2FzcGVlZF9zb2MuYw0KPiBAQCAtNDgsNiArNDgsOSBAQCBzdGF0aWMgY29uc3QgaHdhZGRyIGFz
+cGVlZF9zb2NfYXN0MjQwMF9tZW1tYXBbXSA9IHsNCj4gICAgIFtBU1BFRURfREVWX0VUSDFdICAg
+PSAweDFFNjYwMDAwLA0KPiAgICAgW0FTUEVFRF9ERVZfRVRIMl0gICA9IDB4MUU2ODAwMDAsDQo+
+ICAgICBbQVNQRUVEX0RFVl9VQVJUMV0gID0gMHgxRTc4MzAwMCwNCj4gKyAgICBbQVNQRUVEX0RF
+Vl9VQVJUMl0gID0gMHgxRTc4RDAwMCwNCj4gKyAgICBbQVNQRUVEX0RFVl9VQVJUM10gID0gMHgx
+RTc4RTAwMCwNCj4gKyAgICBbQVNQRUVEX0RFVl9VQVJUNF0gID0gMHgxRTc4RjAwMCwNCj4gICAg
+IFtBU1BFRURfREVWX1VBUlQ1XSAgPSAweDFFNzg0MDAwLA0KPiAgICAgW0FTUEVFRF9ERVZfVlVB
+UlRdICA9IDB4MUU3ODcwMDAsDQo+ICAgICBbQVNQRUVEX0RFVl9TRFJBTV0gID0gMHg0MDAwMDAw
+MCwNCj4gQEAgLTgwLDYgKzgzLDkgQEAgc3RhdGljIGNvbnN0IGh3YWRkciBhc3BlZWRfc29jX2Fz
+dDI1MDBfbWVtbWFwW10gPSB7DQo+ICAgICBbQVNQRUVEX0RFVl9FVEgxXSAgID0gMHgxRTY2MDAw
+MCwNCj4gICAgIFtBU1BFRURfREVWX0VUSDJdICAgPSAweDFFNjgwMDAwLA0KPiAgICAgW0FTUEVF
+RF9ERVZfVUFSVDFdICA9IDB4MUU3ODMwMDAsDQo+ICsgICAgW0FTUEVFRF9ERVZfVUFSVDJdICA9
+IDB4MUU3OEQwMDAsDQo+ICsgICAgW0FTUEVFRF9ERVZfVUFSVDNdICA9IDB4MUU3OEUwMDAsDQo+
+ICsgICAgW0FTUEVFRF9ERVZfVUFSVDRdICA9IDB4MUU3OEYwMDAsDQo+ICAgICBbQVNQRUVEX0RF
+Vl9VQVJUNV0gID0gMHgxRTc4NDAwMCwNCj4gICAgIFtBU1BFRURfREVWX1ZVQVJUXSAgPSAweDFF
+Nzg3MDAwLA0KPiAgICAgW0FTUEVFRF9ERVZfU0RSQU1dICA9IDB4ODAwMDAwMDAsDQo+IEBAIC0y
+MjIsNyArMjI4LDcgQEAgc3RhdGljIHZvaWQgYXNwZWVkX3NvY19pbml0KE9iamVjdCAqb2JqKQ0K
+PiANCj4gc3RhdGljIHZvaWQgYXNwZWVkX3NvY19yZWFsaXplKERldmljZVN0YXRlICpkZXYsIEVy
+cm9yICoqZXJycCkNCj4gew0KPiAtICAgIGludCBpOw0KPiArICAgIGludCBpLCB1YXJ0Ow0KPiAg
+ICAgQXNwZWVkU29DU3RhdGUgKnMgPSBBU1BFRURfU09DKGRldik7DQo+ICAgICBBc3BlZWRTb0ND
+bGFzcyAqc2MgPSBBU1BFRURfU09DX0dFVF9DTEFTUyhzKTsNCj4gICAgIEVycm9yICplcnIgPSBO
+VUxMOw0KPiBAQCAtMjk3LDEwICszMDMsMzAgQEAgc3RhdGljIHZvaWQgYXNwZWVkX3NvY19yZWFs
+aXplKERldmljZVN0YXRlICpkZXYsIEVycm9yICoqZXJycCkNCj4gICAgIHN5c2J1c19jb25uZWN0
+X2lycShTWVNfQlVTX0RFVklDRSgmcy0+YWRjKSwgMCwNCj4gICAgICAgICAgICAgICAgICAgICAg
+ICBhc3BlZWRfc29jX2dldF9pcnEocywgQVNQRUVEX0RFVl9BREMpKTsNCj4gDQo+IC0gICAgLyog
+VUFSVCAtIGF0dGFjaCBhbiA4MjUwIHRvIHRoZSBJTyBzcGFjZSBhcyBvdXIgVUFSVCAqLw0KPiAr
+ICAgIC8qDQo+ICsgICAgICogVUFSVCAtIEF0dGFjaCB0aGUgZmlyc3Qgc2VyaWFsIGRldmljZSB0
+byB0aGUgbWFjaGluZSdzIGRlZmF1bHQgVUFSVA0KPiArICAgICAqIG1lbW9yeSByZWdpb24sIHVz
+dWFsbHkgY29ycmVzcG9uZGluZyB0byB0aGUgc2VyaWFsMCBkZXZpY2UgaW4gdGhlIGRldmljZQ0K
+PiArICAgICAqIHRyZWUuDQo+ICsgICAgICovDQo+ICAgICBzZXJpYWxfbW1faW5pdChnZXRfc3lz
+dGVtX21lbW9yeSgpLCBzYy0+bWVtbWFwW3MtPnVhcnRfZGVmYXVsdF0sIDIsDQo+ICAgICAgICAg
+ICAgICAgICAgICBhc3BlZWRfc29jX2dldF9pcnEocywgcy0+dWFydF9kZWZhdWx0KSwgMzg0MDAs
+DQo+ICAgICAgICAgICAgICAgICAgICBzZXJpYWxfaGQoMCksIERFVklDRV9MSVRUTEVfRU5ESUFO
+KTsNCj4gKyAgICAvKg0KPiArICAgICAqIFVBUlQgLSBUaGVuLCBpbml0aWFsaXplIHRoZSByZW1h
+aW5pbmcgVUFSVCBtZW1vcnkgcmVnaW9ucyB3aXRoIHdoYXRldmVyDQo+ICsgICAgICogb3RoZXIg
+c2VyaWFsIGRldmljZXMgYXJlIHByZXNlbnQuIElmIGEgc2VyaWFsIGRldmljZSBpc24ndCBwcmVz
+ZW50LCB0aGVuDQo+ICsgICAgICogdGhlIG1lbW9yeSByZWdpb24gc3RpbGwgZ2V0cyBpbml0aWFs
+aXplZCBhcyBhIFVBUlQsIGl0IGp1c3Qgd29uJ3QgcmVzcG9uZA0KPiArICAgICAqIHRvIHRoZSBn
+dWVzdCBPUy4NCj4gKyAgICAgKi8NCj4gKyAgICBmb3IgKGkgPSAxLCB1YXJ0ID0gQVNQRUVEX0RF
+Vl9VQVJUMTsgaSA8IDU7IGkrKywgdWFydCsrKSB7DQo+ICsgICAgICAgIGlmICh1YXJ0ID09IHMt
+PnVhcnRfZGVmYXVsdCkgew0KPiArICAgICAgICAgICAgdWFydCsrOw0KPiArICAgICAgICB9DQo+
+ICsgICAgICAgIGFzc2VydCh1YXJ0IDw9IEFTUEVFRF9ERVZfVUFSVDUpOw0KPiArDQo+ICsgICAg
+ICAgIHNlcmlhbF9tbV9pbml0KGdldF9zeXN0ZW1fbWVtb3J5KCksIHNjLT5tZW1tYXBbdWFydF0s
+IDIsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgIGFzcGVlZF9zb2NfZ2V0X2lycShzLCBzLT51
+YXJ0X2RlZmF1bHQpLCAzODQwMCwNCj4gKyAgICAgICAgICAgICAgICAgICAgICAgc2VyaWFsX2hk
+KGkpLCBERVZJQ0VfTElUVExFX0VORElBTik7DQo+ICsgICAgfQ0KPiANCj4gICAgIC8qIEkyQyAq
+Lw0KPiAgICAgb2JqZWN0X3Byb3BlcnR5X3NldF9saW5rKE9CSkVDVCgmcy0+aTJjKSwgImRyYW0i
+LCBPQkpFQ1Qocy0+ZHJhbV9tciksDQo+IC0tIA0KPiAyLjMwLjINCj4gDQo=

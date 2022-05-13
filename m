@@ -1,102 +1,100 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp31721lfj;
-        Thu, 12 May 2022 21:05:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxuEXcKYRUG6Qm+B4o4WSvtubm7AasSN65NDSn8/0yDhzfTFZGCR1oqnLaAUEzCeDYvnj9I
-X-Received: by 2002:a05:620a:1986:b0:69c:48b7:a8ae with SMTP id bm6-20020a05620a198600b0069c48b7a8aemr2352021qkb.376.1652414745424;
-        Thu, 12 May 2022 21:05:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652414745; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp31974lfj;
+        Thu, 12 May 2022 21:06:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwDUy6PIwI5/J51J7EE1+GuZRhHPxsT1VYRm9uRYGIarDg1rsM3cMzW9DAtoVK6M07F6Et8
+X-Received: by 2002:a05:6214:2481:b0:45a:97cb:1200 with SMTP id gi1-20020a056214248100b0045a97cb1200mr2969771qvb.95.1652414782029;
+        Thu, 12 May 2022 21:06:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652414782; cv=none;
         d=google.com; s=arc-20160816;
-        b=C1mFpIm+5ZzwuXSlwVuleFZ2qmQ1SmrSW285mn9CI6GkjzK5SkD1Eq/IkLUXpmfJiO
-         s3F/xopiKTWjlQ9cRfHiVQlndITR4fTgjQkn9cR2BzQ9f87BU2v6VJ+lXzpKgN9eW8EJ
-         p4DpHVI+4SVd/Y7dDzjG1XQBSBXVU5BR9WbZgT3M4XsMBHS4G7OcovNYmJRMiFM7Ewez
-         BX4soRsa/FmNnok057vlWKpdrjnEliv+aY9U/LgHmVSjmJokms8rr/4JOWUxIUe/S/VR
-         p70K5bAboL70w1LMN7NaZ/PJ0MNOBGsnrRmKz8TktCTvSYNRUBVr+gdfZlNCJxfOFf77
-         CpzA==
+        b=cjcgbHV7z4mMOgICiDpM6bIM2C0muSDMRKDW1tON6rybQY4ySpAu7rPXYy8oV+3vnF
+         dsOHV4J4ng3klcbkpjUtx+5ev6vZBoxwXFavKb4l0ep0qOrJshEgvdk/A8QT4BUe1f12
+         eC85K+7RGsXyzSN93luMvean4v+pNP8pDq673vI/2mGuZYRrgPjLNOhtu0hC89t+7e59
+         PtXYtjWOdBvy/R+JQ6+FemUAzQ+o6D97p8cOrN6jHldSruP1HTbHFntlglDAm+VEXp+t
+         IRcU+c/o1z1P4y5K5IPuuREBVSSEgSCetA93bh05G4c/FFGvwcFBlUi9VAejn8YLRqy/
+         34ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=unxFmsA21oO88hQqz1WTAO4u7MbdUrcf6MsuDEBoRA8=;
-        b=DZuLUdPWaInk0J2e8NRAaLHe+s2wOA6NANz1VtCJrxGGPWlzCr6arBIf9ewYzOW8lM
-         vWjEc1yFqyWLxsRgJLa14vUrwm014K+mUw5tt4ZaQOFAlWVbYIV2vPqOnBt/qGv00v9u
-         uws/gSYRouRJdSPDOEGeLhrJJr+sOcWixf9OWfSpSxl03ri5RHsErxxhPOCpaLe54Blt
-         s4bPekVOs/j2Epk0HsCl4pk3jfHaK5kZHNyd1IUChvDsJ5/n/9bYwIxsOORX6fWbJ+S2
-         UlTtGT00rCk4kTjhbCyaHKoySXp45ak7C7V4kvhuirY+W2BuUeUHydgyL1kMOWrf6YJC
-         fCQg==
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=NZJrEIBE8B7jzc/WPV/Nzy31asqaWQJvgsI15JDNbfo=;
+        b=NMd4n1uSJvo42pwUunhOpC31cqOhiXP9U/MiJJe4PSTlMhD889Fz6zW831DYgSaKri
+         1M2fKvtYeBSlax3oYV5fLPHWXPdg4IS4pCatZyOukNZjRAJ3tWt9g8v4YgpSJsLOBZOt
+         NMDE/TYyctuzHXXnbCVvwkX5ZvpamoK+oGXSwMOwcQYWWnWu6nu+tWOh2MQJlCPtgabK
+         hPO73w8pp59ESXACexNa9LXDEJNlAzExLLTtUiiJFUFxd1DsI1PBR3HjMA+mU9MaLDEe
+         VLIBscDYw6UelWRAVJ6jdNqd7yFQQ1+vlvP1jHj3LYQDM7FVaxee7UyHMQwP1cKurZ1s
+         0EVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=E9GA4CCr;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=hhYP088i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 193-20020a370bca000000b006a0f35ffa6asi812810qkl.180.2022.05.12.21.05.45
+        by mx.google.com with ESMTPS id c134-20020a379a8c000000b0069fcf7580e8si801912qke.260.2022.05.12.21.06.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 May 2022 21:05:45 -0700 (PDT)
+        Thu, 12 May 2022 21:06:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=E9GA4CCr;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=hhYP088i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:49800 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50776 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1npMYi-0007ju-1h
-	for alex.bennee@linaro.org; Fri, 13 May 2022 00:05:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54602)
+	id 1npMZJ-0008V2-4q
+	for alex.bennee@linaro.org; Fri, 13 May 2022 00:06:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54642)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=613212e35b=pdel@fb.com>)
- id 1npMY5-0007j7-8i
- for qemu-arm@nongnu.org; Fri, 13 May 2022 00:05:05 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:33846)
+ id 1npMY6-0007jj-Ht
+ for qemu-arm@nongnu.org; Fri, 13 May 2022 00:05:06 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:55514
+ helo=mx0a-00082601.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=613212e35b=pdel@fb.com>)
- id 1npMY0-0006EQ-Sd
- for qemu-arm@nongnu.org; Fri, 13 May 2022 00:05:04 -0400
-Received: from pps.filterd (m0148461.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24D0ZGYg009683
- for <qemu-arm@nongnu.org>; Thu, 12 May 2022 21:04:59 -0700
+ id 1npMY4-0006Iy-23
+ for qemu-arm@nongnu.org; Fri, 13 May 2022 00:05:06 -0400
+Received: from pps.filterd (m0089730.ppops.net [127.0.0.1])
+ by m0089730.ppops.net (8.17.1.5/8.17.1.5) with ESMTP id 24D0aCZS020780
+ for <qemu-arm@nongnu.org>; Thu, 12 May 2022 21:05:02 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
  h=from : to : cc : subject
- : date : message-id : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=facebook;
- bh=unxFmsA21oO88hQqz1WTAO4u7MbdUrcf6MsuDEBoRA8=;
- b=E9GA4CCrHcLIOEdbwMe7xFGCI+4qCei0QvMo+iG1hNuQExupItMRVsXyo8C1leTd2a+w
- 168NbHtUYAndVjD+Lmfrp6mYjOGLESeutQ+DLUIpqF7ERf23xE93boplo7TsrYcB1NaQ
- EoAHu4uvbFCK7lSjyVsnWzQgIW9O6ALoXpY= 
-Received: from mail.thefacebook.com ([163.114.132.120])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3g1cwx8rfp-3
+ : date : message-id : content-type : content-transfer-encoding :
+ mime-version; s=facebook; bh=NZJrEIBE8B7jzc/WPV/Nzy31asqaWQJvgsI15JDNbfo=;
+ b=hhYP088i5yOS1VOO0YF8KE5rrpwQX+80pxIJfC2ICct41OHQw4A6l6SCnfbYxX/g+DfQ
+ 6UtAMKjfGxnBI45G/a2Lh9W48uD7/NS/t8Y57aKWBvNT3q0j0ABTsH9y1AEmrbDW+HmQ
+ kPit3xmpKMqeCd7/krSCY5iMJrvz5k7BfKo= 
+Received: from maileast.thefacebook.com ([163.114.130.16])
+ by m0089730.ppops.net (PPS) with ESMTPS id 3g1cx98re7-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 12 May 2022 21:04:58 -0700
-Received: from twshared6447.05.prn5.facebook.com (2620:10d:c085:208::11) by
- mail.thefacebook.com (2620:10d:c085:11d::7) with Microsoft SMTP Server
+ for <qemu-arm@nongnu.org>; Thu, 12 May 2022 21:05:02 -0700
+Received: from twshared31479.05.prn5.facebook.com (2620:10d:c0a8:1b::d) by
+ mail.thefacebook.com (2620:10d:c0a8:83::5) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Thu, 12 May 2022 21:04:57 -0700
+ 15.1.2375.24; Thu, 12 May 2022 21:05:01 -0700
 Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
- id C648762D7867; Thu, 12 May 2022 21:02:20 -0700 (PDT)
+ id B722162D785F; Thu, 12 May 2022 21:02:20 -0700 (PDT)
 From: Peter Delevoryas <pdel@fb.com>
 To: 
 CC: <pdel@fb.com>, <irischenlj@fb.com>, <patrick@stwcx.xyz>,
  <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <clg@kaod.org>,
  <zev@bewilderbeest.net>, <openbmc@lists.ozlabs.org>, <andrew@aj.id.au>,
  <peter.maydell@linaro.org>, <joel@jms.id.au>
-Subject: [PATCH 2/2] hw: aspeed: Init all UART's with serial devices
-Date: Thu, 12 May 2022 21:02:20 -0700
-Message-ID: <20220513040220.3657135-3-pdel@fb.com>
+Subject: [PATCH 0/2] hw: aspeed: Init all UART's with serial devices
+Date: Thu, 12 May 2022 21:02:18 -0700
+Message-ID: <20220513040220.3657135-1-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220513040220.3657135-1-pdel@fb.com>
-References: <20220513040220.3657135-1-pdel@fb.com>
 X-FB-Internal: Safe
 Content-Type: text/plain
-X-Proofpoint-GUID: RRcHUYGcyclP7uQ5WTut0O8qq3fUwNKR
-X-Proofpoint-ORIG-GUID: RRcHUYGcyclP7uQ5WTut0O8qq3fUwNKR
+X-Proofpoint-ORIG-GUID: ZaIWVB_fCzAK_5GO0SYROwv33OSdhIY1
+X-Proofpoint-GUID: ZaIWVB_fCzAK_5GO0SYROwv33OSdhIY1
 Content-Transfer-Encoding: quoted-printable
 X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
  definitions=2022-05-12_19,2022-05-12_01,2022-02-23_01
-Received-SPF: pass client-ip=67.231.145.42;
+Received-SPF: pass client-ip=67.231.153.30;
  envelope-from=prvs=613212e35b=pdel@fb.com; helo=mx0a-00082601.pphosted.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -105,7 +103,7 @@ X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,146 +118,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2kZmFtURI4FL
+X-TUID: kRp/6bpaJ9vt
 
-Usually, QEMU users just provide one serial device on the command line,
-either through "-nographic" or "-serial stdio -display none", or just using
-VNC and popping up a window. We try to match what the user expects, which is
-to connect the first (and usually only) serial device to the UART a board is
-using as serial0.
+CC'ing Zev and OpenBMC since this was motivated by a problem Zev had there:
 
-Most Aspeed machines in hw/arm/aspeed.c use UART5 for serial0 in their
-device tree, so we connect UART5 to the first serial device. Some machines
-use UART1 though, or UART3, so the uart_default property lets us specify
-that in a board definition.
+https://lore.kernel.org/openbmc/YnzGnWjkYdMUUNyM@hatter.bewilderbeest.net/
 
-In order to specify a nonstandard serial0 UART, a user basically *must* add
-a new board definition in hw/arm/aspeed.c. There's no way to do this without
-recompiling QEMU, besides constructing the machine completely from scratch
-on the command line.
+This series adds all the missing UART's in the Aspeed chips, and initializes
+them all with serial devices (even if there is no peer character device pro=
+vided
+by the QEMU user).
 
-To provide more flexibility, we can also support the user specifying more
-serial devices, and connect them to the UART memory regions if possible.
-Even if a user doesn't specify any extra serial devices, it's useful to
-initialize these memory regions as UART's, so that they respond to the guest
-OS more naturally. At the moment, they will just always return zero's for
-everything, and some UART registers have a default non-zero state.
+This allows users to quickly test UART output without any code changes. In =
+fact,
+you could even connect all the UART's to separate sockets and check which o=
+ne is
+emitting data.
 
-With this change, if a new OpenBMC image uses UART3 or some other
-nonstandard UART for serial0, you can still use it with the EVB without
-recompiling QEMU, even though uart-default=3DUART5 for the EVB.
+The first commit is just focusing on adding the missing hardware #define's.
 
-For example, Facebook's Wedge100 BMC uses UART3: you can fetch an image from
-Github[1] and get the serial console output even while running the palmetto
-machine type, because we explicitly specify that we want UART3 to be
-connected to stdio.
+The second commit has more info on the state of the whole Aspeed BMC UART c=
+li
+interface, and adds the additional initialization code.
 
-    qemu-system-arm -machine palmetto-bmc \
-        -drive file=3Dwedge100.mtd,format=3Draw,if=3Dmtd \
-        -serial null -serial null -serial null -serial stdio -display none
+By the way, could I put this code into aspeed_soc.h or something? If not,
+maybe after this I'll add a file for common code, so that we can move
+towards unifying everything.
 
-Similarly, you can boot a Fuji BMC image[2], which uses UART1, using the
-AST2600 EVB machine:
+Peter Delevoryas (2):
+  hw: aspeed: Add missing UART's
+  hw: aspeed: Init all UART's with serial devices
 
-    qemu-system-arm -machine ast2600-evb \
-        -drive file=3Dfuji.mtd,format=3Draw,if=3Dmtd \
-        -serial null -serial stdio -display none
+ hw/arm/aspeed_ast10x0.c     | 38 ++++++++++++++++++++++++++++++++++---
+ hw/arm/aspeed_ast2600.c     | 29 +++++++++++++++++++++++++++-
+ hw/arm/aspeed_soc.c         | 16 +++++++++++++++-
+ include/hw/arm/aspeed_soc.h |  8 ++++++++
+ 4 files changed, 86 insertions(+), 5 deletions(-)
 
-This is kind of complicated, of course: it might be more natural to get rid
-of the uart_default attribute completely, and initialize UART's
-sequentially. But, keeping backward compatibility and the way most users
-know how to use QEMU in mind, this seems to make the most sense.
-
-[1] https://github.com/facebook/openbmc/releases/download/v2021.49.0/wedge1=
-00.mtd
-[2] https://github.com/facebook/openbmc/releases/download/v2021.49.0/fuji.m=
-td
-
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
----
- hw/arm/aspeed_ast10x0.c | 14 +++++++++++---
- hw/arm/aspeed_ast2600.c | 10 +++++++++-
- hw/arm/aspeed_soc.c     | 10 +++++++++-
- 3 files changed, 29 insertions(+), 5 deletions(-)
-
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index f65dc139da..5e6f3a8fed 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -215,10 +215,18 @@ static void aspeed_soc_ast1030_realize(DeviceState *d=
-ev_soc, Error **errp)
-                        qdev_get_gpio_in(DEVICE(&s->armv7m),
-                                 sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kc=
-s_4));
-=20
--    /* UART5 - attach an 8250 to the IO space as our UART */
--    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
--                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
-+    /* UART - attach 8250's to the IO space for each UART */
-+    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
-+                   aspeed_soc_get_irq(s, s->uart_default),
-                    38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
-+    for (int i =3D 1, uart =3D ASPEED_DEV_UART1; i < 13; i++, uart++) {
-+        if (uart =3D=3D s->uart_default) {
-+            uart++;
-+        }
-+        serial_mm_init(get_system_memory(), sc->memmap[uart], 2,
-+                       aspeed_soc_get_irq(s, uart), 38400, serial_hd(i),
-+                       DEVICE_LITTLE_ENDIAN);
-+    }
-=20
-     /* Timer */
-     object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 1b72800682..cbeca7f655 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -372,10 +372,18 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
-ev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
-=20
--    /* UART - attach an 8250 to the IO space as our UART */
-+    /* UART - attach 8250's to the IO space for each UART */
-     serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
-                    aspeed_soc_get_irq(s, s->uart_default), 38400,
-                    serial_hd(0), DEVICE_LITTLE_ENDIAN);
-+    for (int i =3D 1, uart =3D ASPEED_DEV_UART1; i < 13; i++, uart++) {
-+        if (uart =3D=3D s->uart_default) {
-+            uart++;
-+        }
-+        serial_mm_init(get_system_memory(), sc->memmap[uart], 2,
-+                       aspeed_soc_get_irq(s, uart), 38400, serial_hd(i),
-+                       DEVICE_LITTLE_ENDIAN);
-+    }
-=20
-     /* I2C */
-     object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 2cd03d49da..1fc1ed808d 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -303,10 +303,18 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
-r **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
-=20
--    /* UART - attach an 8250 to the IO space as our UART */
-+    /* UART - attach 8250's to the IO space for each UART */
-     serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
-                    aspeed_soc_get_irq(s, s->uart_default), 38400,
-                    serial_hd(0), DEVICE_LITTLE_ENDIAN);
-+    for (int i =3D 1, uart =3D ASPEED_DEV_UART1; i < 5; i++, uart++) {
-+        if (uart =3D=3D s->uart_default) {
-+            uart++;
-+        }
-+        serial_mm_init(get_system_memory(), sc->memmap[uart], 2,
-+                       aspeed_soc_get_irq(s, uart), 38400, serial_hd(i),
-+                       DEVICE_LITTLE_ENDIAN);
-+    }
-=20
-     /* I2C */
-     object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
 --=20
 2.30.2
 

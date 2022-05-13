@@ -1,352 +1,244 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp303205lfj;
-        Fri, 13 May 2022 06:56:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy18e687MhEyOSPc+YQXfHYv7WwwOAKUG0FHyjhyu/FoBjt2BkjvlZTwDhth+f05hqlVU3h
-X-Received: by 2002:a05:6214:f65:b0:45a:7efc:7857 with SMTP id iy5-20020a0562140f6500b0045a7efc7857mr4360595qvb.17.1652450165190;
-        Fri, 13 May 2022 06:56:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652450165; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp335557lfj;
+        Fri, 13 May 2022 07:44:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx1Z67T6FRwv/fSEVa1o8U3+A5t6NSgYEXP1Xy7DmMkIYHH2Bm5Y71Rdj22bcUazuqRFBQe
+X-Received: by 2002:a05:6214:2307:b0:432:e753:e0c4 with SMTP id gc7-20020a056214230700b00432e753e0c4mr4529397qvb.55.1652453082910;
+        Fri, 13 May 2022 07:44:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1652453082; cv=pass;
         d=google.com; s=arc-20160816;
-        b=0vwerQo/S7v1pB7w4fR0IUrveGxtMLqzh3rwV2ZMBjzX9M/JI2np22PlZYTVgvpvVs
-         xHUoT1Ds9zm9I1mxU53Zwx4XMhxrgCsfrmQhByVrDdzGuG6ct4lKdXq1rlYDZ7wAb/TP
-         EinrawoAG0f82iokQSTOr8Pssz2fiZ3y14hIYBu2Kt2WQNvKm9A0bX9OJn3yXyNNr71y
-         PaIMireS4RziTHAj3wAyj3b+soWIN29fawIty1lbd6ciHca++1GgV+8UJyjrfPqSeAhn
-         4WtlNIoPP5D+NHO0WwnKsghPO4lQtfLCIU9FJvEne54nfHdzT5gKZHBGTnSMOW7rJWmc
-         wjFQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=0IAH4cVJ6XeDlAJVQVf3beJXEbnP/FHmZNvMEW6ivTMfq6OibU18ejaGlm7NuGcACR
+         tWteyZu/t6PTjuW1wz8YbVM7nTmoDc+sybcMA60YE+MwO/NeExT9D/OAP8e7OGU9rDw8
+         xFY/PbC2bb4Ad8yEfBkCzc+KUSDfFBIbdmhyxXOB2/tuYJ0IvNh/O5HGmWzRKdPOldrc
+         NUhW5Qe5xfAESjwAch6HXbyGowK256/l362UIAQ0awwBUy6JUPZPKoV0CY1ivPLt5+GS
+         PXhy44ZCZODv+lhEp1cTTz/2AtG9/4fTs7sKpvzYmFGwdr2D13OI73QkGA/A+13Lh6sx
+         ZzYw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=AHid7po8jGjY3dk8/b2WkBmE99E/HT8UldaUfpG+2Qw=;
-        b=r3St00B03KZsKZ2/4kk0FDBXBp87E5juMEUth8U4q3qD1IJ2DcRemeGgqo2jnHpU4C
-         nQyxMy8i3y525/w3s8gLgMfT5vLh37HTpcMI1C7/8MJ1hWB/Hhmg7HplB9/34nhIeU1K
-         h3WW+YsKQIYFWNDqtdKZoLBbpZTzpZ4+/UsXQYjHij1NnRgffLtKxZP6VaW4KCQNGfgw
-         k3offnJhcXFxML5edmf4NRFHn2o+NTrL6KsApbtu2fjLILEV57RhPA8XL3oxDz0EmWkf
-         jpJAvS0gpR3EfB0p1BXXAA8qDXKUBfNWP+bKX8jlAUKo3hbnfwuzwAroJTB6jT8+9jCn
-         XgWw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=3yL8/O7LZJ1WmPYgW6kNKE9r9sopX7yDSB6+aEUZQYw=;
+        b=k1TL4Rr+zQL78QTCGSy9rRb/PMUHDYD8/yq2mUAnRS041Zr9mRZPO9lMEQZQoNPeJk
+         SM0IeHQW5UpiJTJaHdIEetKKqeyxmAuJ6l9/iFSsfmNelKUXpWJi2CwtNLk2wc0L6qKc
+         tbQFXspAq/L5NwIxUwoQNmVM7Ov/svXKvpVgqFX6mm6mjxQteXvoh/I1zEnLqWGu/Rms
+         C38S2bi8Rxx0MA4uFjOsANU/E3i20LzTDfYX2JJ3OGWNhXiz8JNj+pxJ+ZnX4IXtjHWD
+         hNegrAV0KfseYL7G1dX93xsg579jmaCtpdHoedF/PqYCz3ND4KBZq5RfXsfrw6/vxxJ/
+         NyCw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=GmLG5RGR;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j21-20020ac85f95000000b002f3cdaf3789si1751935qta.472.2022.05.13.06.56.05
+        by mx.google.com with ESMTPS id d4-20020a05622a15c400b002f3a7a79d65si2038124qty.363.2022.05.13.07.44.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 May 2022 06:56:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 May 2022 07:44:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46622 helo=lists1p.gnu.org)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=GmLG5RGR;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+Received: from localhost ([::1]:47688 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1npVm0-0001qC-Cm
-	for alex.bennee@linaro.org; Fri, 13 May 2022 09:56:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48036)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1npWX4-0002yT-C2
+	for alex.bennee@linaro.org; Fri, 13 May 2022 10:44:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59066)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1npVl9-0001mZ-Vz
- for qemu-arm@nongnu.org; Fri, 13 May 2022 09:55:12 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:58231)
+ (Exim 4.90_1) (envelope-from <fkonrad@xilinx.com>)
+ id 1npWUm-00082H-Gz; Fri, 13 May 2022 10:42:22 -0400
+Received: from mail-dm6nam08on20603.outbound.protection.outlook.com
+ ([2a01:111:f400:7e8b::603]:40620
+ helo=NAM04-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1npVl6-0006pP-Kg
- for qemu-arm@nongnu.org; Fri, 13 May 2022 09:55:11 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.191])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 88F84FF75E1F;
- Fri, 13 May 2022 15:54:56 +0200 (CEST)
-Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <fkonrad@xilinx.com>)
+ id 1npWUj-000673-3V; Fri, 13 May 2022 10:42:18 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SgWPTurIPAHO1bbeK9tKjxxhXn6VkhPigHUcInwgKyihcP6dozJc/8IeSJpRmcfhTob8GYk1IbPQTTafXQR5GGy/+XpATISioPfUdE9uRSGWDdfoeRiDKldB7rKT4+Dd2n985DarVn7zmHmWmNfvDTu6xIjkBSBnnlSn9X8o4vn9xQK6XO+KISjLFTcgdkKk1zFRGoUkd8tQOXN+Z/2WLKg3MqCylJpI914jf7iHpTVekxrqy2Upq+y8ZbeXgqWx46BkbIODEqNs5+J55w/oYGxGn8VDrl0mIufJ7eE4YOc4oHG9ijdccQSUBrZbmrZ7bALuUXrNiI2RmkxYOUsk6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3yL8/O7LZJ1WmPYgW6kNKE9r9sopX7yDSB6+aEUZQYw=;
+ b=PRCARC+WLqgczwm8vhEOUxfbxjNucH3O/JV1ZWc/4DJeONQtApKTD1WrZtdhzWQ2yqaiw8hckhtiz+SGc1VSpYS1wQE6KD5QqSxGD9IbUBfnS0LTMBFB0CnbTNmZiOhVGAMvuiDyDe7zy0/rVGWKaboARwMwotGSCJR6SGmGlk/IObuGUB0idyFfpJBxFCMAgfDxV9hQsLx2Q3t38CQ2gVEAl6su4HqNKwh/i8jUQyFpZuOoaYS5VRvS23qrSz2yP/OKhoR9lNfKAj75CSxMSF/KOpJpFMLh2AWzrJq07ipz0aHnALLN1QgfXgEQYtLS9TdH6l86DPgp1hqkWO8ktg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=xilinx.com; dmarc=pass action=none header.from=xilinx.com;
+ dkim=pass header.d=xilinx.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3yL8/O7LZJ1WmPYgW6kNKE9r9sopX7yDSB6+aEUZQYw=;
+ b=GmLG5RGRGeEwcEIpCwpmQItlVdragscBStaSNGmfDVG9JbXj1fTnsOowZRtSdb/84+ZSezISiGDDBjuN7ZkL3EVHmWRXo6TxNOrbdN6Qgs7wyblJQeBI8wGIvWmLFQckJwcyWApt5ySBe2eQYzEohCtfGkmrNWlDFdkGUsqS8zc=
+Received: from BY5PR02MB6354.namprd02.prod.outlook.com (2603:10b6:a03:1fd::12)
+ by CY4PR02MB3367.namprd02.prod.outlook.com (2603:10b6:910:7c::20)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.6; Fri, 13 May
- 2022 15:54:55 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0069ce17b4a-e135-4c10-8ff2-d1498eb6a20c,
- 97912ADCF8BE5A44427C4FE81E404CB8FAC57E21) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <bfbffeef-e7d1-8003-24ca-4cafc90e60a4@kaod.org>
-Date: Fri, 13 May 2022 15:54:55 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH v3] hw: m25p80: allow write_enable latch get/set
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5250.14; Fri, 13 May
+ 2022 14:42:12 +0000
+Received: from BY5PR02MB6354.namprd02.prod.outlook.com
+ ([fe80::4840:6c2:8dd7:947f]) by BY5PR02MB6354.namprd02.prod.outlook.com
+ ([fe80::4840:6c2:8dd7:947f%6]) with mapi id 15.20.5250.017; Fri, 13 May 2022
+ 14:42:12 +0000
+From: Frederic Konrad <fkonrad@xilinx.com>
+To: Frederic Konrad <fkonrad@xilinx.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+CC: "alistair@alistair23.me" <alistair@alistair23.me>,
+ "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias
+ <edgari@xilinx.com>, "fkonrad@amd.com" <fkonrad@amd.com>
+Subject: RE: [PATCH v1 0/4] xlnx-zcu102: fix the display port.
+Thread-Topic: [PATCH v1 0/4] xlnx-zcu102: fix the display port.
+Thread-Index: AQHYXwJR/j5A46Hul0OsE23sJzVGfK0c78RQ
+Date: Fri, 13 May 2022 14:42:12 +0000
+Message-ID: <BY5PR02MB635436FB890DF72BA77A7D1BCCCA9@BY5PR02MB6354.namprd02.prod.outlook.com>
+References: <20220503152545.1100386-1-fkonrad@xilinx.com>
+In-Reply-To: <20220503152545.1100386-1-fkonrad@xilinx.com>
+Accept-Language: en-US
 Content-Language: en-US
-To: Iris Chen <irischenlj@fb.com>
-CC: <pdel@fb.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
- <patrick@stwcx.xyz>, <alistair@alistair23.me>, <kwolf@redhat.com>,
- <hreitz@redhat.com>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
- <joel@jms.id.au>, <thuth@redhat.com>, <lvivier@redhat.com>,
- <pbonzini@redhat.com>, <qemu-block@nongnu.org>
-References: <irischenlj@gmail.com> <20220513055022.951759-1-irischenlj@fb.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220513055022.951759-1-irischenlj@fb.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 456d6b73-f672-4261-9611-62b7d7c272ee
-X-Ovh-Tracer-Id: 7147212611889957761
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrgeelgdeilecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehqvghmuhdqsghlohgtkhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
+X-MS-Has-Attach: 
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=xilinx.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 3ada72c2-d390-4d88-ab5d-08da34eec40d
+x-ms-traffictypediagnostic: CY4PR02MB3367:EE_
+x-microsoft-antispam-prvs: <CY4PR02MB3367239E22744B59C873953DCCCA9@CY4PR02MB3367.namprd02.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: dNP9WOPBU+ZIMV+jFRvHgqrt2/HTB/gdIRT+6Jy+kUuhXu4li9VSx2hg4qe4ePq1pCg+h6ZTNbyWOkQMSn9tXsoAUuSn4rv44dj869+9rZiw72cDfXe7DiUjwcBUnMedFHsqURRB4D7XbcMOkJB9Cz8DRiRsJWv5GWkaB3i5R08zon4zluknCzkr7FtW57bbmxL4GbzE36kTCh0FO1YU9LUCb+guig4yIMxvyAyzIC55nCvqXOrnsk8a/NkXV/JAqOIlMPxKBY6SBuIoBfmp8aeU05VD7plBL5cGRCBLNnhcgBG1NHqZYi3f7I05hXS0TaTZGn/wD6s5SRYYJ6Le4CrTn/Ie2k/63s3vCEtpP1sTcHc8wR5QyG8zJrXe13K//650D73C7gNUxrdYdoqzoJr3KH3RvqngCkH3GG8Y1GrQiEypClyV+O/ERalCx7Gx9TnneKiTbNQVs8iotwR8XJkCHoIZdmcNvp8tEb1bNrNGTgSbKT8C1zc5TB+vI5EMdi3klLIZq2wV8jOtlzHFBJHULlCK/QZr/v0jpNM6wEeutYGMiEJLAkfn0MZcPLK5eILktZqohLU7vLQRes2DZsCDRAP3rksY0Yh0Ai9CXNEWdGwAPxlqZGe+NAhqSOV/f6o/jON/h8TJzPy2k8z7qC05NJ8Ey38aRznaWK0Lq7cJZkkCzDe0sScq5rcyLWXC1Zz1ny5l/+RFKgrDPY+ns+2xiDYd59Zx9A9u69FzVhBvTBOdndMAmk2aKhLmi2PAuhEomrclPKwiQuOjLr/ga0K+MKL9qybe5hBoj9eMoKw=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR02MB6354.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(8936002)(5660300002)(316002)(53546011)(508600001)(55016003)(186003)(6506007)(33656002)(52536014)(7696005)(83380400001)(122000001)(2906002)(71200400001)(86362001)(4326008)(8676002)(9686003)(66946007)(64756008)(66446008)(66476007)(66556008)(966005)(76116006)(54906003)(26005)(38070700005)(38100700002)(110136005);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?kxZXmALRg0A2rzMVRiz6L+J8o+PhUFocymuvLNXSiN5CyZR47Hlt3SbVdjCv?=
+ =?us-ascii?Q?RjVi0Hda/urEu7GYfnugNM79m32f2hEm4Q2CbWxOob4R0Qxn7PFdgtars7Zf?=
+ =?us-ascii?Q?PdCX5wkVyseah0XbGjTAk+xNykCbrpjZx73Wn2Tm0xXKly7ObuhHskGgqzh+?=
+ =?us-ascii?Q?uk8J7M8JhY1LPGO8TcLdQAAX2q7GiV92jVJFq4NCWUl0gvabakWAesclZYuA?=
+ =?us-ascii?Q?l8G9ygTJs88cVWEZ3hiCCf4Di5uXCAxbRIsBcgptb834hJNRtVEE5WKd4Ikx?=
+ =?us-ascii?Q?kX8f2BNjjd3hdcEo5JEyyHptRdtGgkwYL6Rl6GzlwTGEIV9eMwjBRi05vm2e?=
+ =?us-ascii?Q?hv7RnHTgPZyx6tNqFwPYTijkXDJjnBAPMvXRQNqVzJAv+GtmCliCKkFR6KU6?=
+ =?us-ascii?Q?ay6I1Wh9BRaWOT9oLaRh3UWb/Oq6TsOkIS4sr7VQbpfwm59FOa/kk5ZaEL7U?=
+ =?us-ascii?Q?xYovGAHsTv4pMeiZPPTDIlozzVCwzEoIgF6PkJ8QxhirtNJscv2j1aljrp+t?=
+ =?us-ascii?Q?VJiWXqgw+HRJ26qI0uHzAiqcgoHCRaJv4riEzrib/dMOw2qDkgm0vo/d/FxX?=
+ =?us-ascii?Q?n8c05c39EwFYcFbGr3ijnIOQmH8NEo1IejotnKnNHTQ2lYHyExTfp3XsSxDM?=
+ =?us-ascii?Q?w8SjsaXqhr5IxclEGJ04bBaYxPtlmLP1vBFdmgrxi7xv9F7luNYcZYt9mqhH?=
+ =?us-ascii?Q?AXFY2T0mgp0o+vt1zfXhRQKUOHJCKy3O68v4FSKRKFUnQ/TKZMAbdP9IkGHN?=
+ =?us-ascii?Q?Orv3OIOiSpH92Ib2qAg7yqLzfjnxuoEYL6pRDg6VbFYW7e6t1AMQlrb+wn3B?=
+ =?us-ascii?Q?U6fXSK5VVCitJA15bxr/yWVlN1fMOXc6eOKcBImbrb3ZZ7Edv4FPw7ijV1XY?=
+ =?us-ascii?Q?qKvKw7h8ZBoH+61W32Kqw15qn9qIeAdRsGmNmmcDI8WGV1mHLl85YnMeH/JF?=
+ =?us-ascii?Q?81uPtqKPEveMMkFQPm5LcEdLoieoSmwBf8ZUDUkq8KvQEOKwWMcLmujq4fmf?=
+ =?us-ascii?Q?SI/9hsYcdstycjuWPi+rVvUSwwlfQV1ohCTIAgMrzUR2sGn2BDJHkBDoUBPU?=
+ =?us-ascii?Q?gMIzMYScJ4lYNlPnZnLY2lg+57KoMBXYFhczJlvGeISuXGSeEEBZahL7EHeg?=
+ =?us-ascii?Q?S+pgR1jw5tok4RzLDNdU5C2luOwUHqr7XG9rTM4YzrqtJYG3URMlg5yRhgP0?=
+ =?us-ascii?Q?pI55wtFREYDMud2VwwqmPtmaA/6DXy7wywbmUSFly9WZjL1P6aBIaJN0ROr4?=
+ =?us-ascii?Q?nDOWoO5T4X89OZXlMg5TW1PXBAAUnajwZIkUrstCgfGh+8hOy/dMKLRNebCN?=
+ =?us-ascii?Q?XqKFuuLEefvXbzFe4YpYhIE8yflVUuUQaKIPm+zictDxq6Cy5akMmg4mAosB?=
+ =?us-ascii?Q?mrJYbiLZu0yKGqVe78ahhef0jwx3OEM79x8ZEH3irHk8CMXjDSEY1lkUtnQQ?=
+ =?us-ascii?Q?e7VzhGQ1kbaoeC2FVe5wGsHT4hfUBj12aaEd4v9AjT76p+QUPe9rh9zKgYRz?=
+ =?us-ascii?Q?OUzytRPg1Ssfl5dCx8fS/+orCK5hV7461q2/oMrbsaF3d5JEvRXDkI3f1uFp?=
+ =?us-ascii?Q?Pe081o3gtAvu8oKI8Xy3Jzk9ydfSr6+RyAaaC9F24TJyWWZM8HRDN/F6Bfz7?=
+ =?us-ascii?Q?HGc0rlzC8QVI+7x2wBpnYjwCqKfeMksvjIE6MNijXGWTuZw5TC9Hkyaxc6QY?=
+ =?us-ascii?Q?WsgB/KKzx4Z15Wp51wTsnyKTMv8Be5C+Y+b1gDeL27gC/9/3T4AlKQrMEhIC?=
+ =?us-ascii?Q?q+Mn8wTp8A=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR02MB6354.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3ada72c2-d390-4d88-ab5d-08da34eec40d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 May 2022 14:42:12.1968 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: R9Hc7XkvI6OJVyvPA993A9d9ffGr7n3LYI/E3XOM3Sem/uKrswyjKgk4Jooxzg4Ki+47EM9qaagNfVvAFLLhrg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR02MB3367
+Received-SPF: pass client-ip=2a01:111:f400:7e8b::603;
+ envelope-from=fkonrad@xilinx.com;
+ helo=NAM04-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CDMcswIIqP2S
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LaVnUpQJ6KzN
 
-Thomas, and others,
+Ping
 
-Are you ok with the qtest extension proposed by Iris ?
+Can this be applied?  Here is the patchew link:
+https://patchew.org/QEMU/20220503152545.1100386-1-fkonrad@xilinx.com/
 
-If so, I can take them through an aspeed PR.
+Best Regards,
+Fred
 
-Thanks,
-
-C.
-
-On 5/13/22 07:50, Iris Chen via wrote:
-> The write_enable latch property is not currently exposed.
-> This commit makes it a modifiable property.
-> 
-> Signed-off-by: Iris Chen <irischenlj@fb.com>
-> ---
-> v3: Addressed comments by Peter and Cedric.
-> v2: Ran ./scripts/checkpatch.pl on the patch and added a description. Fixed comments regarding DEFINE_PROP_BOOL.
-> 
->   hw/block/m25p80.c              |  1 +
->   tests/qtest/aspeed_gpio-test.c | 40 +++++++------------------------
->   tests/qtest/aspeed_smc-test.c  | 43 ++++++++++++++++++++++++++++++++++
->   tests/qtest/libqtest.c         | 24 +++++++++++++++++++
->   tests/qtest/libqtest.h         | 22 +++++++++++++++++
->   5 files changed, 98 insertions(+), 32 deletions(-)
-> 
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 430d1298a8..4283b990af 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -1558,6 +1558,7 @@ static int m25p80_pre_save(void *opaque)
->   
->   static Property m25p80_properties[] = {
->       /* This is default value for Micron flash */
-> +    DEFINE_PROP_BOOL("write-enable", Flash, write_enable, false),
->       DEFINE_PROP_UINT32("nonvolatile-cfg", Flash, nonvolatile_cfg, 0x8FFF),
->       DEFINE_PROP_UINT8("spansion-cr1nv", Flash, spansion_cr1nv, 0x0),
->       DEFINE_PROP_UINT8("spansion-cr2nv", Flash, spansion_cr2nv, 0x8),
-> diff --git a/tests/qtest/aspeed_gpio-test.c b/tests/qtest/aspeed_gpio-test.c
-> index c1003f2d1b..bac63e8742 100644
-> --- a/tests/qtest/aspeed_gpio-test.c
-> +++ b/tests/qtest/aspeed_gpio-test.c
-> @@ -28,30 +28,6 @@
->   #include "qapi/qmp/qdict.h"
->   #include "libqtest-single.h"
->   
-> -static bool qom_get_bool(QTestState *s, const char *path, const char *property)
-> -{
-> -    QDict *r;
-> -    bool b;
-> -
-> -    r = qtest_qmp(s, "{ 'execute': 'qom-get', 'arguments': "
-> -                     "{ 'path': %s, 'property': %s } }", path, property);
-> -    b = qdict_get_bool(r, "return");
-> -    qobject_unref(r);
-> -
-> -    return b;
-> -}
-> -
-> -static void qom_set_bool(QTestState *s, const char *path, const char *property,
-> -                         bool value)
-> -{
-> -    QDict *r;
-> -
-> -    r = qtest_qmp(s, "{ 'execute': 'qom-set', 'arguments': "
-> -                     "{ 'path': %s, 'property': %s, 'value': %i } }",
-> -                     path, property, value);
-> -    qobject_unref(r);
-> -}
-> -
->   static void test_set_colocated_pins(const void *data)
->   {
->       QTestState *s = (QTestState *)data;
-> @@ -60,14 +36,14 @@ static void test_set_colocated_pins(const void *data)
->        * gpioV4-7 occupy bits within a single 32-bit value, so we want to make
->        * sure that modifying one doesn't affect the other.
->        */
-> -    qom_set_bool(s, "/machine/soc/gpio", "gpioV4", true);
-> -    qom_set_bool(s, "/machine/soc/gpio", "gpioV5", false);
-> -    qom_set_bool(s, "/machine/soc/gpio", "gpioV6", true);
-> -    qom_set_bool(s, "/machine/soc/gpio", "gpioV7", false);
-> -    g_assert(qom_get_bool(s, "/machine/soc/gpio", "gpioV4"));
-> -    g_assert(!qom_get_bool(s, "/machine/soc/gpio", "gpioV5"));
-> -    g_assert(qom_get_bool(s, "/machine/soc/gpio", "gpioV6"));
-> -    g_assert(!qom_get_bool(s, "/machine/soc/gpio", "gpioV7"));
-> +    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV4", true);
-> +    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV5", false);
-> +    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV6", true);
-> +    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV7", false);
-> +    g_assert(qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV4"));
-> +    g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV5"));
-> +    g_assert(qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV6"));
-> +    g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV7"));
->   }
->   
->   int main(int argc, char **argv)
-> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-> index 87b40a0ef1..ec233315e6 100644
-> --- a/tests/qtest/aspeed_smc-test.c
-> +++ b/tests/qtest/aspeed_smc-test.c
-> @@ -26,6 +26,7 @@
->   #include "qemu/osdep.h"
->   #include "qemu/bswap.h"
->   #include "libqtest-single.h"
-> +#include "qemu/bitops.h"
->   
->   /*
->    * ASPEED SPI Controller registers
-> @@ -40,6 +41,7 @@
->   #define   CTRL_FREADMODE       0x1
->   #define   CTRL_WRITEMODE       0x2
->   #define   CTRL_USERMODE        0x3
-> +#define SR_WEL BIT(1)
->   
->   #define ASPEED_FMC_BASE    0x1E620000
->   #define ASPEED_FLASH_BASE  0x20000000
-> @@ -49,6 +51,8 @@
->    */
->   enum {
->       JEDEC_READ = 0x9f,
-> +    RDSR = 0x5,
-> +    WRDI = 0x4,
->       BULK_ERASE = 0xc7,
->       READ = 0x03,
->       PP = 0x02,
-> @@ -348,6 +352,44 @@ static void test_write_page_mem(void)
->       flash_reset();
->   }
->   
-> +static void test_read_status_reg(void)
-> +{
-> +    uint8_t r;
-> +
-> +    spi_conf(CONF_ENABLE_W0);
-> +
-> +    spi_ctrl_start_user();
-> +    writeb(ASPEED_FLASH_BASE, RDSR);
-> +    r = readb(ASPEED_FLASH_BASE);
-> +    spi_ctrl_stop_user();
-> +
-> +    g_assert_cmphex(r & SR_WEL, ==, 0);
-> +    g_assert(!qtest_qom_get_bool
-> +            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
-> +
-> +    spi_ctrl_start_user();
-> +    writeb(ASPEED_FLASH_BASE, WREN);
-> +    writeb(ASPEED_FLASH_BASE, RDSR);
-> +    r = readb(ASPEED_FLASH_BASE);
-> +    spi_ctrl_stop_user();
-> +
-> +    g_assert_cmphex(r & SR_WEL, ==, SR_WEL);
-> +    g_assert(qtest_qom_get_bool
-> +            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
-> +
-> +    spi_ctrl_start_user();
-> +    writeb(ASPEED_FLASH_BASE, WRDI);
-> +    writeb(ASPEED_FLASH_BASE, RDSR);
-> +    r = readb(ASPEED_FLASH_BASE);
-> +    spi_ctrl_stop_user();
-> +
-> +    g_assert_cmphex(r & SR_WEL, ==, 0);
-> +    g_assert(!qtest_qom_get_bool
-> +            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
-> +
-> +    flash_reset();
-> +}
-> +
->   static char tmp_path[] = "/tmp/qtest.m25p80.XXXXXX";
->   
->   int main(int argc, char **argv)
-> @@ -373,6 +415,7 @@ int main(int argc, char **argv)
->       qtest_add_func("/ast2400/smc/write_page", test_write_page);
->       qtest_add_func("/ast2400/smc/read_page_mem", test_read_page_mem);
->       qtest_add_func("/ast2400/smc/write_page_mem", test_write_page_mem);
-> +    qtest_add_func("/ast2400/smc/read_status_reg", test_read_status_reg);
->   
->       ret = g_test_run();
->   
-> diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-> index 228357f1ea..a9904eba82 100644
-> --- a/tests/qtest/libqtest.c
-> +++ b/tests/qtest/libqtest.c
-> @@ -1423,3 +1423,27 @@ void qtest_client_inproc_recv(void *opaque, const char *str)
->       g_string_append(qts->rx, str);
->       return;
->   }
-> +
-> +void qtest_qom_set_bool(QTestState *s, const char *path, const char *property,
-> +                         bool value)
-> +{
-> +    QDict *r;
-> +
-> +    r = qtest_qmp(s, "{ 'execute': 'qom-set', 'arguments': "
-> +                     "{ 'path': %s, 'property': %s, 'value': %i } }",
-> +                     path, property, value);
-> +    qobject_unref(r);
-> +}
-> +
-> +bool qtest_qom_get_bool(QTestState *s, const char *path, const char *property)
-> +{
-> +    QDict *r;
-> +    bool b;
-> +
-> +    r = qtest_qmp(s, "{ 'execute': 'qom-get', 'arguments': "
-> +                     "{ 'path': %s, 'property': %s } }", path, property);
-> +    b = qdict_get_bool(r, "return");
-> +    qobject_unref(r);
-> +
-> +    return b;
-> +}
-> diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-> index 4ab0cad326..94b187837d 100644
-> --- a/tests/qtest/libqtest.h
-> +++ b/tests/qtest/libqtest.h
-> @@ -783,4 +783,26 @@ QTestState *qtest_inproc_init(QTestState **s, bool log, const char* arch,
->                       void (*send)(void*, const char*));
->   
->   void qtest_client_inproc_recv(void *opaque, const char *str);
-> +
-> +/**
-> + * qtest_qom_set_bool:
-> + * @s: QTestState instance to operate on.
-> + * @path: Path to the property being set.
-> + * @property: Property being set.
-> + * @value: Value to set the property.
-> + *
-> + * Set the property with passed in value.
-> + */
-> +void qtest_qom_set_bool(QTestState *s, const char *path, const char *property,
-> +                         bool value);
-> +
-> +/**
-> + * qtest_qom_get_bool:
-> + * @s: QTestState instance to operate on.
-> + * @path: Path to the property being retrieved.
-> + * @property: Property from where the value is being retrieved.
-> + *
-> + * Returns: Value retrieved from property.
-> + */
-> +bool qtest_qom_get_bool(QTestState *s, const char *path, const char *property);
->   #endif
+> -----Original Message-----
+> From: frederic.konrad@xilinx.com <frederic.konrad@xilinx.com>
+> Sent: 03 May 2022 16:26
+> To: qemu-devel@nongnu.org
+> Cc: alistair@alistair23.me; edgar.iglesias@gmail.com;
+> peter.maydell@linaro.org; qemu-arm@nongnu.org; Sai Pavan Boddu
+> <saipava@xilinx.com>; Edgar Iglesias <edgari@xilinx.com>;
+> fkonrad@amd.com
+> Subject: [PATCH v1 0/4] xlnx-zcu102: fix the display port.
+>=20
+> From: Frederic Konrad <fkonrad@amd.com>
+>=20
+> Hi,
+>=20
+> This patch set fixes some issues with the DisplayPort for the ZCU102:
+>=20
+> The first patch fixes the wrong register size and thus the risk of regist=
+er
+> overflow.
+>=20
+> The three other one add a vblank interrupt required by the linux driver:
+>   - When using the VNC graphic backend and leaving it unconnected, in the
+> best
+>     case the gfx_update callback is called once every 3000ms which is
+>     insufficient for the driver.  This is fixed by providing a VBLANK int=
+errupt
+>     from a ptimer.
+>   - This requirement revealed two issues with the IRQ numbers and the
+>     interrupt disable logic fixed by the two last patches.
+>=20
+> Tested by booting Petalinux with the framebuffer enabled.
+>=20
+> Best Regards,
+> Fred
+>=20
+> Frederic Konrad (2):
+>   xlnx_dp: fix the wrong register size
+>   xlnx-zynqmp: fix the irq mapping for the display port and its dma
+>=20
+> Sai Pavan Boddu (2):
+>   xlnx_dp: Introduce a vblank signal
+>   xlnx_dp: Fix the interrupt disable logic
+>=20
+>  hw/arm/xlnx-zynqmp.c         |  4 ++--
+>  hw/display/xlnx_dp.c         | 43 +++++++++++++++++++++++++++---------
+>  include/hw/display/xlnx_dp.h | 12 ++++++++--
+>  3 files changed, 44 insertions(+), 15 deletions(-)
+>=20
+> --
+> 2.25.1
 

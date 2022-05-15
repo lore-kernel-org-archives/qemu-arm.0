@@ -1,102 +1,204 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1626098lfj;
-        Sun, 15 May 2022 14:19:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz9ryYkCv+kNzldjQJmu9FP/Os6rcfCkkJLiIigYpV1XY1pkWoE65I21HGoCIRvMrPprqSI
-X-Received: by 2002:a05:6214:21cd:b0:45b:127b:7dd1 with SMTP id d13-20020a05621421cd00b0045b127b7dd1mr12779764qvh.108.1652649595743;
-        Sun, 15 May 2022 14:19:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652649595; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1654364lfj;
+        Sun, 15 May 2022 15:56:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkvNRPkf6pfQA/h7FTwRYeUg1PFDWOkeNdy/1sy5Q87si8dDE8YenziOARtkHbvuJ13pZb
+X-Received: by 2002:a05:622a:1d2:b0:2f3:f4d4:4c63 with SMTP id t18-20020a05622a01d200b002f3f4d44c63mr13288719qtw.678.1652655371553;
+        Sun, 15 May 2022 15:56:11 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1652655371; cv=pass;
         d=google.com; s=arc-20160816;
-        b=NdSmWIU6O8HYT5o6WLuzq9OqqmNV/S3BIXSRwE5yh8SHIltVu8ITaLwDnr0cxTsQ6Q
-         Z+QzvVXBSyUeVNYVK+7OvFEBtogVd2UJPbfSWi7TzCnghODbG0xn0K2of9rGy6O67nfJ
-         jMpx/FXgub59BESKCFcolp4SE41QM/Hg6HGM/1AFbeoPVe5tba0N1xZ8fhmCn0RIIPNu
-         MxrXNlUegq/TSJ+GpQmeyveBbFtb8BIzamBevK9jr5pxqG4uqe3kUeTz5fsrSrjF458h
-         s1Ae2r/3J9+spPue1veKh7kGtkjtu9WpPjl2xkzbpZ3BUOOyOviJy7wVM1DBw1nU8Nn1
-         Ep1g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=moUO3iYxzNwebWkCkefoww6rRrJl2x2pwuteGgZGtUFul/kOQu0z8kzO0Dod4n5gbk
+         CW8I1g13nxgXKtFn25pLoGAgSPOPOI7bI22KbXMNnPgJ+oCNUF0lthJu80Z+EdISucYc
+         KVct7Rj2tDSHbQMOa6zTyFF0ZCMiV2Fxh6fHwtmuEBfdFomkJo8ydSoRvZ2bXnqCBREZ
+         MHt/c+tL7DfCNF6EN1t7ecfWjibh+H9NfQYiSmKV1Mg7WTP1fLGVcIeG1y6EyPy0Z3Vp
+         GTdDAafth5aDIfJvBZPswWRB/mklxtq+nJYfY3rdkSmB83zrNTcaD1JGFMI7I9De58Ut
+         N3XA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=07uJg3zPhBOzOrsiWSWAHiBJjsV1aYJG8jVhkc7TNhI=;
-        b=PTYyz3whvMEWnWjrxiX9qFs9v7lkqalJgGFWzisZSPvd76N5ehWBlbKdsgFWB5kPCR
-         +xcwg9JOBEYF8Tg8VxSKHzhrzmBBnnwrwlriChIipRNsU9M/uOKSORnDE7XjsQWG+Mu7
-         J6XHfYxBHd3k98Pyc+Vc6R+5pxDUXRn7x5ZaLVKgeDcP88XZG8vBHzhmtC4B9wlChzpX
-         6TMJ0f2APYHlwes2NTHlM+xc6dP2kut3bvD2eP4rsnBAGylWVZcw8MUFfeZWRoFR7XiR
-         A3pNgbwRXtmx9BdVmTbBGLZkblArdIHGn/V2hUCZ8UDG7yNtwIDZ7hG6cl+8vliy7BaB
-         lQFg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:from:dkim-signature;
+        bh=yLh1uVgzRYbaGqDDJi6csPPe0eSzJP+o/WonCNoD/7c=;
+        b=Lt2w/PDPQKKWgZQVoK3E/mfEkqxPvVPP6FnDDiml6fzm+hzXtP/SC1IFfTevE+HBnC
+         +bBlbtlNtZSpZnv0ApxaE2wBmzjtuPVKzD0HceQzB5IBwpITbZ9sjRJuZPExcMm9tTwE
+         vwhv89TGdHzgiyAMLWWkiDpvo0D9z5H88DJcCatmFyr6Fp36MgnT+prDEd0/Yg0LO44r
+         zJGos+n5oqNU2Fe4O+0ikTbjmrWTvHVU8Mxvv8BWv2mnbsPjbGAPjkSfglDnpQdBE0DG
+         A5ZP+GJOfbfCDUqaE5N6hBYxBP3bbv7DEKorUCSDUhLzrqUzznaYfQsfaPI6BwTP4Qv4
+         0bcw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=o6LoSX9I;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1-20020a05620a070100b0069c86c6801dsi4336009qkc.282.2022.05.15.14.19.55
+        by mx.google.com with ESMTPS id jo19-20020a056214501300b00443e248fbb2si5674523qvb.472.2022.05.15.15.56.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 May 2022 14:19:55 -0700 (PDT)
+        Sun, 15 May 2022 15:56:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39328 helo=lists1p.gnu.org)
+       dkim=pass header.i=@fb.com header.s=facebook header.b=o6LoSX9I;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:38558 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nqLed-0004bE-9M
-	for alex.bennee@linaro.org; Sun, 15 May 2022 17:19:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39216)
+	id 1nqN9n-0003st-13
+	for alex.bennee@linaro.org; Sun, 15 May 2022 18:56:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nqLeT-0004ag-7p
- for qemu-arm@nongnu.org; Sun, 15 May 2022 17:19:45 -0400
-Received: from 5.mo552.mail-out.ovh.net ([188.165.45.220]:35859)
+ (Exim 4.90_1) (envelope-from <prvs=613436fd99=pdel@fb.com>)
+ id 1nqN9Y-0003sF-QW; Sun, 15 May 2022 18:55:56 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:2756
+ helo=mx0a-00082601.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nqLeR-0000gB-Bp
- for qemu-arm@nongnu.org; Sun, 15 May 2022 17:19:44 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.173])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id D25D026545;
- Sun, 15 May 2022 21:19:27 +0000 (UTC)
-Received: from kaod.org (37.59.142.108) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <prvs=613436fd99=pdel@fb.com>)
+ id 1nqN9X-0001ad-4F; Sun, 15 May 2022 18:55:56 -0400
+Received: from pps.filterd (m0001303.ppops.net [127.0.0.1])
+ by m0001303.ppops.net (8.17.1.5/8.17.1.5) with ESMTP id 24FLUOfN018054;
+ Sun, 15 May 2022 15:55:32 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : cc : subject :
+ date : message-id : references : in-reply-to : content-type : content-id :
+ content-transfer-encoding : mime-version; s=facebook;
+ bh=yLh1uVgzRYbaGqDDJi6csPPe0eSzJP+o/WonCNoD/7c=;
+ b=o6LoSX9IXYav4dlA2X/e2uzhWw1u/pgB8wsp0vonbwNYiXiZlHzNYaWJ+bff5uOU0vAY
+ AZOofLnlSAHdfyg1VXJS83jra+XhJGT9DTW6n9uF3Y+O6Af5ou9wU7s9hdFcXywDQAJt
+ szsp4ZATWWIXzJuQ9hm+q9oykod5abCC1BE= 
+Received: from nam10-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam10lp2107.outbound.protection.outlook.com [104.47.55.107])
+ by m0001303.ppops.net (PPS) with ESMTPS id 3g283w6d4j-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sun, 15 May 2022 15:55:32 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=FQE7SxA9MS2cV8WlkAZXtbU2C8JLdimDlLl3Ax8TXeq3PlV2qS3TOIq28sA235aTBJQhsof5MHAQ1K+VP7JNVZLQydCc9IDYJi5fxPurIebUBPMJUX5p18nSoHz8LUGllaqh75o2Klpm3ZVIg/YNrnWOuq5rbksVj4tNtlox50lmBamD33qbZk/redi/UviBM7UMPhdod0NTl8YRP4dBPELi+sUFDCEHSJQlCWkrEAyb47j0KpWd3JH9me65b1ObK8/5hh2T7s8L8Vc1LFE+BE11BuUAkIDM3amTGrK92A9l8okcAS83VbLwByZLJhhmBPJaAyiAs4MsEn3+9TWgcg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yLh1uVgzRYbaGqDDJi6csPPe0eSzJP+o/WonCNoD/7c=;
+ b=kUtC9u+oUKDPhmFp3nLP4GM2MitDt5uZMS+wPxf16SvcCGkJrQiMRtg7WyH0fxzdFkPAMiNavt7WSBTQeDVdmZG2AzyhO6pzFN+s97pMdPPWPtUHBEkTK3LevszRI+3dxa1dUBQcKdQFW7osdF9RBqdqmDp0rfazcWdhyR+9v5ZObjzik1bCk2rpZXccSa4z2H7EmoVPnTjxwc7/6NTirz+0RhNA0JWzm5YbD1hP2RqgSJaLALMgvpDXhi3IxZ7jxI5oQeJsHQ0kjas4Oxv4ufmXeGeq9Tmbv6KNBzE1HOS+cLcx5GZVI4acBQZ/ntQOh8OjLhmXTkk+cEKQVvzGMg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
+ header.d=fb.com; arc=none
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
+ by SA1PR15MB4435.namprd15.prod.outlook.com (2603:10b6:806:196::16)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.6; Sun, 15 May
- 2022 23:19:26 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-108S002c6684bdc-49b2-42b0-ad63-36f164cb272d,
- 43753C8B2FFFCD567C459F3D30927D04895098CF) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <7187a877-354e-5e79-7ad1-a6e368678002@kaod.org>
-Date: Sun, 15 May 2022 23:19:26 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH 2/2] hw: aspeed: Init all UART's with serial devices
-Content-Language: en-US
-To: Peter Delevoryas <pdel@fb.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5250.18; Sun, 15 May
+ 2022 22:55:28 +0000
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::45c5:2306:17b3:89eb]) by BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::45c5:2306:17b3:89eb%5]) with mapi id 15.20.5250.018; Sun, 15 May 2022
+ 22:55:28 +0000
+From: Peter Delevoryas <pdel@fb.com>
 CC: Iris Chen <irischenlj@fb.com>, "patrick@stwcx.xyz" <patrick@stwcx.xyz>,
- qemu-arm <qemu-arm@nongnu.org>, Cameron Esfahani via <qemu-devel@nongnu.org>, 
+ qemu-arm <qemu-arm@nongnu.org>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>,
  "zev@bewilderbeest.net" <zev@bewilderbeest.net>, OpenBMC List
  <openbmc@lists.ozlabs.org>, Andrew Jeffery <andrew@aj.id.au>, Peter Maydell
- <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
+ <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Delevoryas
+ <pdel@fb.com>
+Subject: Re: [PATCH 2/2] hw: aspeed: Init all UART's with serial devices
+Thread-Topic: [PATCH 2/2] hw: aspeed: Init all UART's with serial devices
+Thread-Index: AQHYZn6gmAj+rDnxXEK+xCqfrr3YeK0cSHIAgAEF34CAAK2jgIAAAoSAgAJ3cwCAABrUgA==
+Date: Sun, 15 May 2022 22:55:28 +0000
+Message-ID: <F01557BD-FC48-47DD-8EED-9845EBB987F1@fb.com>
 References: <20220513040220.3657135-1-pdel@fb.com>
  <20220513040220.3657135-3-pdel@fb.com>
  <443933f2-069f-df96-ec62-76c21fc644b2@kaod.org>
  <05F5C72F-8424-476C-82B7-7D30BA48CDEB@fb.com>
  <bcc23f78-e81c-f4b7-3dae-17c216eb9afd@kaod.org>
  <5CBDFE96-B354-4EE6-BEA3-48E4CC68FBA5@fb.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <5CBDFE96-B354-4EE6-BEA3-48E4CC68FBA5@fb.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.108]
-X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 3a68d27b-a6c1-49b8-8af6-5d5475c034d2
-X-Ovh-Tracer-Id: 7953075467965926322
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrheefgdduheelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruh
-Received-SPF: pass client-ip=188.165.45.220; envelope-from=clg@kaod.org;
- helo=5.mo552.mail-out.ovh.net
+ <7187a877-354e-5e79-7ad1-a6e368678002@kaod.org>
+In-Reply-To: <7187a877-354e-5e79-7ad1-a6e368678002@kaod.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: ad0c9fbf-85e9-4033-2afc-08da36c601cb
+x-ms-traffictypediagnostic: SA1PR15MB4435:EE_
+x-microsoft-antispam-prvs: <SA1PR15MB4435F329DD6FA90AFB4F9B8CACCC9@SA1PR15MB4435.namprd15.prod.outlook.com>
+x-fb-source: Internal
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: O6WInFqK+h3vvWsupWjeCOkqlEXH82qTrYiszrP+mJx2rDUjsZeja/hj0wiKsRVCQLGsicbRyj78OmxQGMxwvBM8blhGWzgR2tdZ0JbahYjIkUNMyEZhvOXbkCngDyPlSBrpL+1aq36+SHj837Ofun13l18gQn/wEx3QqKnFdQGydPISG+2Ru/Rucl8gudVw4CIqw9tF6YdfUF/zfD2KgobtW8wgOo3t5VxGkyy420EfwraEAw/TZm3tpxUOjyGj+mrirC34BfdfCBMiz7oI+hrSv0vfeb6XtCVn0yzL7T+xLmMbfn6Rl5CtkyI4yXb9sPOm/9WfXAP96kvbcTyo/+rZ5oxd6QliLrxji4DnipSl2860XgefY1NDjr0n++ueKpMVOhtABLAkgiJ84DK7MkGMhbqWbfk6VWi7pdqJj6uT42suKuRvDgUN+lWhWp6eqdf1RaOKKD5+PuyVOsVJAuFiprvINJeBY9dgaObD952n0bkNSS0RWHl9rEidlvRDo1ch/f1EiA683gax11SbeetLWHC4O7Tiag386zkXRtzqTGli+gzZi3le0zQ2+pHUFxpQ2Q/lcJb94mzGYvRvWtr/vAtnPPOoxeTKYF0kx2++q52ODqVk5IK/gPkOau3EeGY8q2wfUIRLf5d9JdqOe/R6Cn7zVCWdlTrjwaB7jvCQcVn5ZJar3O2MT/bvVmHir8pU26ssHV2qSPhQ049Hvv0yHgXO7GzSuUfU+m5skeRi10V7+plOSPFIMu2v+QsW
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(6512007)(4744005)(5660300002)(71200400001)(54906003)(508600001)(66574015)(186003)(38070700005)(38100700002)(86362001)(122000001)(6506007)(36756003)(76116006)(4326008)(66446008)(8676002)(66476007)(64756008)(2906002)(109986005)(6486002)(33656002)(2616005)(8936002)(53546011)(66556008)(316002)(66946007)(45980500001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?d1JtcVVOU2Y2V0tCeXNMbFFsM0dvcHY4VjFOYnBZWEFDaStMaVlCL0JKbGtW?=
+ =?utf-8?B?MnkvYldzdDVPTmlWU09pZlAyM0M1TXlZVVFsc2Zad1RpZEovSjlmS0NXNGtV?=
+ =?utf-8?B?Nm5oWU5SWVM2aWY2cktyOXJFSVA3WWpuWjlvY0R6S29JNjdpVGFyd2RCOENk?=
+ =?utf-8?B?R2VZK0lvYlcwcVhZeXg5L1YvbEFYU3d6a1BIM3F0Vmh0cXhZTGhYSTJVTERL?=
+ =?utf-8?B?TGJnb2g1Qy9SenV4QnRpZ0xkRFduVFIzcGpnYVlmWW5GakFHVFd4UjZVQzhB?=
+ =?utf-8?B?M25venBuOG5JTTF3WDdPUHdwZUV3eGZGQ1p1L0Y0a3l3TWNabzFzSzYwQ1Vt?=
+ =?utf-8?B?Yzc5bHpWZ1hoZys5TVhQb2JlK1Uva2ZEUnpWbXZGRlJ0czdjM05BMG00Q2RL?=
+ =?utf-8?B?dVFpam9FemlwRjhoaGJFb2FJd2ZoR01DNC84SjdIUnB3cXV6czZTU0JIa3By?=
+ =?utf-8?B?bG5CNDBnTVYxSHhLTDhYUFc0THB6VzFBRkJpS3EycU9nSUViQXczU3VEREhw?=
+ =?utf-8?B?OE1BdHYxc25BUlAxTnZwMEc1OXlXaWxoZTBPQnlDcXl3N050SVVpNWNqMm05?=
+ =?utf-8?B?SXF6MkprV3RaSWNuTnllL1NTY3R3ZTJzVXBkMGRnZzNnYVBhM2F4MVVFT3I0?=
+ =?utf-8?B?eGRNQ29pTkxUS2t2dS94ZUx3OHYrVWRoNm5NUHlTK1V0eGlsYWZWdEJMRGtF?=
+ =?utf-8?B?Vnd3UFVhNGRpbmc4a2F4K2lYT2ZXcWFzcGFoTng1b01mci9hb29nY3VjeGdB?=
+ =?utf-8?B?djhjMnNFOTNVLzhMUGp4SzdvSW5lNDdjeXR6RFM1Y0lXYXVsaHZzc1ZPL2c4?=
+ =?utf-8?B?SENUa1ZHRFo5MWtzbnlsaDB6YzJDdUpheDJ4RjkxeWNFMnFubUNXbGY0Q0lE?=
+ =?utf-8?B?U0p6djRucVA2ejNHUEYzUXBqMzlGaGlkQUhYZitxWTUzUHVaTG5GeU04OGhY?=
+ =?utf-8?B?WWZzRjFxbXV6c0trbkpvVW5HYnZrMDB0RWdFeVdNa0VFQ3JkeWlqM0VGZlpm?=
+ =?utf-8?B?UEQ0Z1ZnQ2lYSHYyRHk1MUIzZ0VBSzlwK0NJSkM1UlAyL3FQY1NqbklITWtn?=
+ =?utf-8?B?bHh2R2F6RGZLb0VOTkNyak56eXdkMkRWNXIzZGIyVVA2b0hvQkxmNVJrYTB4?=
+ =?utf-8?B?eFBSbFlYMnYyK1NlODA3WmVHRW5XcXc5Rkt1N2h1aTZtQWIwc2lWNDByWmZE?=
+ =?utf-8?B?S2lUNGNkYXpMcm5vVURhWURqdWF2aGNJSVUwNEp4aHRjTi9nQW9HbzFnTlh1?=
+ =?utf-8?B?bzNJWUZTbTFUL0VROC9qM2xxZ1B6dlRPNzRBQUgrdUxjbVFBdktGQlc3YWds?=
+ =?utf-8?B?UXE1amlud1ZpM2pySmZ5OVZDSWEwUmN0U0gyUm9lbS93aGd1dnZMUGRaa0t6?=
+ =?utf-8?B?c0daaUh3K0lUWS9xZ0R0b1lCR1VXT1d5MU5BWXJtam9xWmlIMXNmVjdHK0dM?=
+ =?utf-8?B?Q0FqMndCVFdSb3RuaE9XelZaNWc0N2xubHU2MUM1NGZMMjBkK1I3RjI4NWlK?=
+ =?utf-8?B?SVNZcmZ2YlhTeEdSNGdiam1zYm9KS1kydlFHNDR3SFhVbFQ4T2h1VkhjLzR4?=
+ =?utf-8?B?WTVkTnBkanN0S3ZGWnFERnFhYjF4Ym9mMjR6SUw3RUZReHJ1WmtneldvR29H?=
+ =?utf-8?B?QWtrcXQvTGh2MEtiQmU5bjZJM1ROcjJ5V1lwSWRLVkhBa0FFYUxsek9EZmNr?=
+ =?utf-8?B?Z3BnYk54cm81OUFwWnp1Q3BRb2hMZm43clFWdXZGSXBtK0h3WXlsWG1FZjRu?=
+ =?utf-8?B?cDhrQnQ0UnY1V2NZQnEyd3JpeEhOSFhVdWJjeGVHTS9DL3A0QmlCcVRvbEdZ?=
+ =?utf-8?B?ME9aRkwyang1N01ONDFBMUJOQldkMzZ3QTE1dXJ2OE9xcUlCTEtJQ0dHOHRy?=
+ =?utf-8?B?OGIyNjQ2cVFwTG5jeUozZWZpdklaVWVQbVZXcWk1UktBTnMxaVA4V0pLb1cx?=
+ =?utf-8?B?dUVUVDN4eElNbGJuMFRjK3FickhCK3l3ZHc2YzRZbzFPTlpyaW5zV3BSUkdt?=
+ =?utf-8?B?RmhGNWlya2dCQ3lNMERKckhpR0x6TGs4alN3L01MOWFhK3pEVEJyQXhpSE5C?=
+ =?utf-8?B?QS9MaExiTGc0SGliQXJrMW5RRitWbFQrV3VGVVpRNDMzaTNOYU8vcVRBM0xk?=
+ =?utf-8?B?TjZzYVdrMVZrSFFtQThCNmpSUGRlYlJ0eGlGR2hZTTFyc2QyYm4xYVF1RHpv?=
+ =?utf-8?B?a0hmVkYxamwxcmJleGNiL3ZUWnZOcXpMQ3FWSnY3QVZ1V3Evb1JkNzVqSTRX?=
+ =?utf-8?B?azk4RWVkZDdhZ2t5RCtYb1VYMFhlcFU3Mm0yKzM3S0h3SzFpeXlDTzVPeEtU?=
+ =?utf-8?B?cVFneTJEaTVXKzFUVlBWdjhTYnM0R0V1ZVZDcy9VTmNGUDZaY1FYL1N0bGJM?=
+ =?utf-8?Q?BJ0XQV1rycuh4lhI=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <E51C0D7704E2BE4FBFC648A530E1FC00@namprd15.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: fb.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ad0c9fbf-85e9-4033-2afc-08da36c601cb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 May 2022 22:55:28.7238 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: VhgFsWxsx+B+u3pf/EqnNWvOhuaSw95bUgBRP61HSxJQNzdZ+VHkJI1rIbMkTnCd
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR15MB4435
+X-Proofpoint-GUID: DjDRk_tepodnXLeaCJLgthZ5EC7QdhAB
+X-Proofpoint-ORIG-GUID: DjDRk_tepodnXLeaCJLgthZ5EC7QdhAB
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
+ definitions=2022-05-15_11,2022-05-13_01,2022-02-23_01
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=613436fd99=pdel@fb.com; helo=mx0a-00082601.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MISSING_HEADERS=1.021, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,24 +213,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GRHvfgBeyu/6
+X-TUID: rPN0u7hitikd
 
-[ ... ]
-
->> The problem is that it is breaking compatibility with previous QEMUs.
-> 
-> It is? We can still run things the old way too, I specifically
-> wrote this with the intention that it would support backwards
-> compatibility.
-
-You are right. Let's start with your patchset. We can add the "uart"
-machine option when the need arises.
-
-I have sent a small cleanup of aspeed_soc_get_irq() that should avoid
-the duplication of the serial init in the different SoC models. Please
-give it a try.
-
-Thanks,
-
-C.
-
+DQoNCj4gT24gTWF5IDE1LCAyMDIyLCBhdCAyOjE5IFBNLCBDw6lkcmljIExlIEdvYXRlciA8Y2xn
+QGthb2Qub3JnPiB3cm90ZToNCj4gDQo+IFsgLi4uIF0NCj4gDQo+Pj4gVGhlIHByb2JsZW0gaXMg
+dGhhdCBpdCBpcyBicmVha2luZyBjb21wYXRpYmlsaXR5IHdpdGggcHJldmlvdXMgUUVNVXMuDQo+
+PiBJdCBpcz8gV2UgY2FuIHN0aWxsIHJ1biB0aGluZ3MgdGhlIG9sZCB3YXkgdG9vLCBJIHNwZWNp
+ZmljYWxseQ0KPj4gd3JvdGUgdGhpcyB3aXRoIHRoZSBpbnRlbnRpb24gdGhhdCBpdCB3b3VsZCBz
+dXBwb3J0IGJhY2t3YXJkcw0KPj4gY29tcGF0aWJpbGl0eS4NCj4gDQo+IFlvdSBhcmUgcmlnaHQu
+IExldCdzIHN0YXJ0IHdpdGggeW91ciBwYXRjaHNldC4gV2UgY2FuIGFkZCB0aGUgInVhcnQiDQo+
+IG1hY2hpbmUgb3B0aW9uIHdoZW4gdGhlIG5lZWQgYXJpc2VzLg0KPiANCj4gSSBoYXZlIHNlbnQg
+YSBzbWFsbCBjbGVhbnVwIG9mIGFzcGVlZF9zb2NfZ2V0X2lycSgpIHRoYXQgc2hvdWxkIGF2b2lk
+DQo+IHRoZSBkdXBsaWNhdGlvbiBvZiB0aGUgc2VyaWFsIGluaXQgaW4gdGhlIGRpZmZlcmVudCBT
+b0MgbW9kZWxzLiBQbGVhc2UNCj4gZ2l2ZSBpdCBhIHRyeS4NCj4gDQoNCk9oIHRoaXMgaXMgZmFu
+dGFzdGljLCB0aGFua3MhIEnigJlsbCBnbGFkbHkgcHV0IHRoZSBzZXJpYWwgaW5pdCBjb2RlIGlu
+dG8NCmEgZnVuY3Rpb24gZGVjbGFyZWQgaW4gYXNwZWVkX3NvYy5oIHRoZW4uDQoNCj4gVGhhbmtz
+LA0KPiANCj4gQy4NCj4gDQoNCg==

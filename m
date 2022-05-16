@@ -1,69 +1,69 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1810770lfj;
-        Mon, 16 May 2022 00:21:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7iwJybuhDUHX//RQ+GfTO4GpSDZCJAn0MCekgKuj8DDe799x9y1SNVcAZc5heIG6A27lV
-X-Received: by 2002:a05:620a:2681:b0:67e:908f:b513 with SMTP id c1-20020a05620a268100b0067e908fb513mr11248292qkp.204.1652685678121;
-        Mon, 16 May 2022 00:21:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652685678; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1811185lfj;
+        Mon, 16 May 2022 00:22:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxGfDi4hiImOp/wBy0TFt1ybPBoPEnAs6SfKewdr+HqqtGPVauR47sYpie3WXK4BEcPcasO
+X-Received: by 2002:a05:6214:2587:b0:45a:d436:a95f with SMTP id fq7-20020a056214258700b0045ad436a95fmr14032427qvb.112.1652685744972;
+        Mon, 16 May 2022 00:22:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652685744; cv=none;
         d=google.com; s=arc-20160816;
-        b=OnUV27Luqtuj7FL9NeipM+G3w0JyVcUiRXtZ3K62ttL6AkyV4jQuXv/Xgclyz0cYgh
-         AY1aQROemRPViZXuly4Y9yYLcPQnKZRBfbSMqDP2JAKVnYEvZnb842/HWkuDV22eqED+
-         Cj5mVKa2NepA0Tzz1bTZlyXaQ9h81satVAWziFpZc2AiqaviWqCOzUJBojK0zmVUZDk6
-         BivB4/LDUPPUSbv7FX7bhi5TH6zxFqea1lDdyeORmy3aGQIPedbzaBZO2Z0h34yh85tO
-         F95K2t7J/7M/R5jsMvQjpwQmGCGXlUSB1/Zc5rQRy9VeT9ObZ7MRynBKGYwCe3KimNQ6
-         VBtQ==
+        b=bgqWqXmNOdrRHkQOlY5XYh169JCu0wkhOVJz27uRTsj/ibid+wPvETprILirOwUla5
+         /MRgpf+88FJSMEJB1NIOC+hezk9mc9M2J/8KHY/zZFHMEJ44480Yzng8M+nHB5bV2OGR
+         ZTS17L57t8y8AI4I90bLXgjoN6uqAYiZHnFyCUaAeL61Ofpiuq9+xanIkB/Zwl68rOhf
+         IEAiRZuIbaWlEVJ2Oy9wB9PRfCgRTn18e74VyykkwWBeyd5g4gv97BM6TQXxaZzPS46D
+         MNvETiqkL9TXHo/v3sEczEcFdhu9WFD0Z4SC843ouTYynxefN59gjAJF2TwshcMltzlx
+         Zx9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=pBp1f1O2gPFPVl1MOkW9hpy5rFfk+CTikJofvCKQ1bw=;
-        b=kCD4cbT075DC1aLcF5z1L17Q9TU3fCh2Q94I7wusQxdFkY+9yTo/+ngx+Wsxv6xH+A
-         oAvov6Kx7yJQdBNwOu9z3JWBdxx9pLNNI+X63HkpaXYTSXRYKQ2oZMys+AF4dmdS1t6V
-         ixhsQLl1rDVD1II7bqN0tB03VZFQMB3u6fHNgCqzgZWsEEpuSRpVZ5m1TKUR/rZRng6Y
-         /MLxNnbcqZQFgLzqlvNxgU6klDS4umAa/4hFl1TgnD2YHwVP1+FaVOYMEH8ZyGNBkC3X
-         TvPbte8Az3g85lmYR8IFKVHxHSDQ2/GTeX7VRcCLzWQAqfxbzI1tdYZwkBQVe3M5fxR6
-         7rEA==
+        bh=oILJkLGsiQHo2m02rFWw7ul809Gp7AD+GY7lLoCog98=;
+        b=ZIU6nZ+C/vZtcSVgnhhcxBraEjWq6KTSHSqsOIoL3bI6vrpI8+SiycFMAv3jX4hMV+
+         fMa4KDq5iVmvIE0jSJxIP7geqQ5z+fihajnhwWYJO1BghqIJG+Y37KanAlumqEwpkFJ8
+         qvQ655fRwcZLlnjuNyheRccL9I/MC8m82dJoTINzhgccLKshK2HEJv9Z9ZLrLV7ghtUV
+         bS0HAuS/KAGl+r3x5ScldQtgLSfhCtbOXvbtLtuNCGKjFWXXZ2KAuniy1eA9DUvBf6gz
+         AWfQ73HlvUthABld567s8EFhyS8xZEk8uOqCbl8zcT/xzJfGP6dT0roWHRf7ozbbQHAq
+         A2mQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i188-20020a3754c5000000b0069f453b6f70si5160144qkb.474.2022.05.16.00.21.17
+        by mx.google.com with ESMTPS id m20-20020a05622a055400b002f3e63884b5si5895414qtx.5.2022.05.16.00.22.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 May 2022 00:21:18 -0700 (PDT)
+        Mon, 16 May 2022 00:22:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54144 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54762 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nqV2a-0002s7-UH
-	for alex.bennee@linaro.org; Mon, 16 May 2022 03:21:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34802)
+	id 1nqV3g-0003PE-AO
+	for alex.bennee@linaro.org; Mon, 16 May 2022 03:22:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nqV0H-0002XY-7W
- for qemu-arm@nongnu.org; Mon, 16 May 2022 03:18:53 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:57957)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nqV1S-0003IC-TJ
+ for qemu-arm@nongnu.org; Mon, 16 May 2022 03:20:11 -0400
+Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231]:35713)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nqV0E-0007kj-MR
- for qemu-arm@nongnu.org; Mon, 16 May 2022 03:18:52 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.132])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id BE80D10028BA5;
- Mon, 16 May 2022 09:18:47 +0200 (CEST)
-Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nqV1P-0007rj-NW
+ for qemu-arm@nongnu.org; Mon, 16 May 2022 03:20:05 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.84])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 46D9522E18;
+ Mon, 16 May 2022 07:19:59 +0000 (UTC)
+Received: from kaod.org (37.59.142.95) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.6; Mon, 16 May
- 2022 09:18:47 +0200
+ 2022 09:19:58 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-102R004414e1081-a4cc-42b5-a69a-8b30e13c60b0,
+ (GARM-95G0019ea08e22-5546-4010-8cbe-789ae0f0c085,
  182B8575423FAF1F37CDABDABB9637A2CFA4B440) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <b978e205-66f7-e585-4cf0-6f3946fd1050@kaod.org>
-Date: Mon, 16 May 2022 09:18:46 +0200
+Message-ID: <85c15d25-ed3f-65a7-0f94-d5d877e6ff75@kaod.org>
+Date: Mon, 16 May 2022 09:19:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.0
-Subject: Re: [PATCH v2 0/5] hw: aspeed: Init all UART's with serial devices
+Subject: Re: [PATCH v2 1/5] hw: aspeed: Add missing UART's
 Content-Language: en-US
 To: Peter Delevoryas <pdel@fb.com>
 CC: <irischenlj@fb.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
@@ -71,26 +71,28 @@ CC: <irischenlj@fb.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
  <peter.maydell@linaro.org>, <joel@jms.id.au>, Jamin Lin
  <jamin_lin@aspeedtech.com>
 References: <20220516062328.298336-1-pdel@fb.com>
+ <20220516062328.298336-2-pdel@fb.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220516062328.298336-1-pdel@fb.com>
+In-Reply-To: <20220516062328.298336-2-pdel@fb.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.95]
+X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 094042a1-8b3c-4f36-9b88-f7553e5c10c3
-X-Ovh-Tracer-Id: 18074915631893023666
+X-Ovh-Tracer-GUID: 64428277-d221-4a70-9f00-6cd19f6b1ed8
+X-Ovh-Tracer-Id: 18095181831742786482
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrheeggdduvddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeihedvvedtteeutdfgvedtudffveetueeiieefgfefkeehvdelhfeuvdfhjedthfenucffohhmrghinhepghhithhhuhgsrdgtohhmpdhkvghrnhgvlhdrohhrghdpghhithhlrggsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepjhgrmhhinhgplhhinhesrghsphgvvgguthgvtghhrdgtohhm
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrheeggdduvddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepjhgrmhhinhgplhhinhesrghsphgvvgguthgvtghhrdgtohhm
+Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
+ helo=8.mo548.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,72 +107,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i80DCe87EsnX
+X-TUID: M72uqD+xksw/
 
 On 5/16/22 08:23, Peter Delevoryas wrote:
-> v2:
-> - Rebased on Cedric's irq proposal. [1]
-> - Added "Introduce common UART init function" patch
-> - Added "Add uarts_num SoC attribute" patch
-> - Rewrote last commit's message for clarity
-
-Looks good to me.
-
-> I tried testing this by running acceptance tests, particularly the
-> boot_linux_console.py file, but I had to disable the raspi2_initrd case.
-> It's not related to my changes (A/B tested and it fails on upstream/master
-> too), but thought I would mention that.>
-> I also manually tested several machines:
+> This adds the missing UART memory and IRQ mappings for the AST2400, AST2500,
+> AST2600, and AST1030.
 > 
-> AST2400: https://github.com/facebook/openbmc/releases/download/v2021.49.0/wedge100.mtd
-> AST2500: https://github.com/facebook/openbmc/releases/download/v2021.49.0/fby3.mtd
-> AST2600: https://github.com/facebook/openbmc/releases/download/v2021.49.0/fuji.mtd
-> AST1030: https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.13.01/Y35BCL.elf
+> This also includes the new UART interfaces added in the AST2600 and AST1030
+> from UART6 to UART13. The addresses and interrupt numbers for these two
+> later chips are identical.
 > 
-> [1] https://lore.kernel.org/qemu-devel/20220516055620.2380197-1-clg@kaod.org/
-I have quite a few images which I run manually. OpenBMC is providing
-images, Aspeed also. Joel did a small tool for the IBM rainier :
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
 
-   https://github.com/shenki/qemu-boot-test
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Having an automated framework for Aspeed machines pulling images
-from different places would be nice but we cannot put all under
-QEMU.
-
-
-I like the buildroot CI using the QEMU boards. See a pipeline example:
-
-   https://gitlab.com/legoater/buildroot/-/pipelines/539559209
-
-but that's buildroot only and integrating a custom uboot might be
-difficult.
-
-For my ppc needs, I did a quick-and-dirty non-regression test suite :
-
-   https://github.com/legoater/qemu-ppc-boot
-
-
-Anyway, I haven't found a solution nor spent much time on it but
-I am interested !
-
+Thanks,
 
 C.
 
 
-
-
+> ---
+>   hw/arm/aspeed_ast10x0.c     | 24 ++++++++++++++++++++++++
+>   hw/arm/aspeed_ast2600.c     | 19 +++++++++++++++++++
+>   hw/arm/aspeed_soc.c         |  6 ++++++
+>   include/hw/arm/aspeed_soc.h |  8 ++++++++
+>   4 files changed, 57 insertions(+)
 > 
-> Peter Delevoryas (5):
->    hw: aspeed: Add missing UART's
->    hw: aspeed: Add uarts_num SoC attribute
->    hw: aspeed: Ensure AST1030 respects uart-default
->    hw: aspeed: Introduce common UART init function
->    hw: aspeed: Init all UART's with serial devices
-> 
->   hw/arm/aspeed_ast10x0.c     | 32 +++++++++++++++++++++++++++-----
->   hw/arm/aspeed_ast2600.c     | 27 ++++++++++++++++++++++-----
->   hw/arm/aspeed_soc.c         | 33 +++++++++++++++++++++++++++++----
->   include/hw/arm/aspeed_soc.h | 10 ++++++++++
->   4 files changed, 88 insertions(+), 14 deletions(-)
-> 
+> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+> index 9ae9efaac1..fa2cc4406c 100644
+> --- a/hw/arm/aspeed_ast10x0.c
+> +++ b/hw/arm/aspeed_ast10x0.c
+> @@ -33,14 +33,38 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
+>       [ASPEED_DEV_SBC]       = 0x7E6F2000,
+>       [ASPEED_DEV_GPIO]      = 0x7E780000,
+>       [ASPEED_DEV_TIMER1]    = 0x7E782000,
+> +    [ASPEED_DEV_UART1]     = 0x7E783000,
+> +    [ASPEED_DEV_UART2]     = 0x7E78D000,
+> +    [ASPEED_DEV_UART3]     = 0x7E78E000,
+> +    [ASPEED_DEV_UART4]     = 0x7E78F000,
+>       [ASPEED_DEV_UART5]     = 0x7E784000,
+> +    [ASPEED_DEV_UART6]     = 0x7E790000,
+> +    [ASPEED_DEV_UART7]     = 0x7E790100,
+> +    [ASPEED_DEV_UART8]     = 0x7E790200,
+> +    [ASPEED_DEV_UART9]     = 0x7E790300,
+> +    [ASPEED_DEV_UART10]    = 0x7E790400,
+> +    [ASPEED_DEV_UART11]    = 0x7E790500,
+> +    [ASPEED_DEV_UART12]    = 0x7E790600,
+> +    [ASPEED_DEV_UART13]    = 0x7E790700,
+>       [ASPEED_DEV_WDT]       = 0x7E785000,
+>       [ASPEED_DEV_LPC]       = 0x7E789000,
+>       [ASPEED_DEV_I2C]       = 0x7E7B0000,
+>   };
+>   
+>   static const int aspeed_soc_ast1030_irqmap[] = {
+> +    [ASPEED_DEV_UART1]     = 47,
+> +    [ASPEED_DEV_UART2]     = 48,
+> +    [ASPEED_DEV_UART3]     = 49,
+> +    [ASPEED_DEV_UART4]     = 50,
+>       [ASPEED_DEV_UART5]     = 8,
+> +    [ASPEED_DEV_UART6]     = 57,
+> +    [ASPEED_DEV_UART7]     = 58,
+> +    [ASPEED_DEV_UART8]     = 59,
+> +    [ASPEED_DEV_UART9]     = 60,
+> +    [ASPEED_DEV_UART10]    = 61,
+> +    [ASPEED_DEV_UART11]    = 62,
+> +    [ASPEED_DEV_UART12]    = 63,
+> +    [ASPEED_DEV_UART13]    = 64,
+>       [ASPEED_DEV_GPIO]      = 11,
+>       [ASPEED_DEV_TIMER1]    = 16,
+>       [ASPEED_DEV_TIMER2]    = 17,
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index 4161a0cc4b..f3ecc0f3b7 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -61,7 +61,18 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+>       [ASPEED_DEV_IBT]       = 0x1E789140,
+>       [ASPEED_DEV_I2C]       = 0x1E78A000,
+>       [ASPEED_DEV_UART1]     = 0x1E783000,
+> +    [ASPEED_DEV_UART2]     = 0x1E78D000,
+> +    [ASPEED_DEV_UART3]     = 0x1E78E000,
+> +    [ASPEED_DEV_UART4]     = 0x1E78F000,
+>       [ASPEED_DEV_UART5]     = 0x1E784000,
+> +    [ASPEED_DEV_UART6]     = 0x1E790000,
+> +    [ASPEED_DEV_UART7]     = 0x1E790100,
+> +    [ASPEED_DEV_UART8]     = 0x1E790200,
+> +    [ASPEED_DEV_UART9]     = 0x1E790300,
+> +    [ASPEED_DEV_UART10]    = 0x1E790400,
+> +    [ASPEED_DEV_UART11]    = 0x1E790500,
+> +    [ASPEED_DEV_UART12]    = 0x1E790600,
+> +    [ASPEED_DEV_UART13]    = 0x1E790700,
+>       [ASPEED_DEV_VUART]     = 0x1E787000,
+>       [ASPEED_DEV_I3C]       = 0x1E7A0000,
+>       [ASPEED_DEV_SDRAM]     = 0x80000000,
+> @@ -78,6 +89,14 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+>       [ASPEED_DEV_UART3]     = 49,
+>       [ASPEED_DEV_UART4]     = 50,
+>       [ASPEED_DEV_UART5]     = 8,
+> +    [ASPEED_DEV_UART6]     = 57,
+> +    [ASPEED_DEV_UART7]     = 58,
+> +    [ASPEED_DEV_UART8]     = 59,
+> +    [ASPEED_DEV_UART9]     = 60,
+> +    [ASPEED_DEV_UART10]    = 61,
+> +    [ASPEED_DEV_UART11]    = 62,
+> +    [ASPEED_DEV_UART12]    = 63,
+> +    [ASPEED_DEV_UART13]    = 64,
+>       [ASPEED_DEV_VUART]     = 8,
+>       [ASPEED_DEV_FMC]       = 39,
+>       [ASPEED_DEV_SDMC]      = 0,
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index c339b5c74d..96bc060680 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -48,6 +48,9 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
+>       [ASPEED_DEV_ETH1]   = 0x1E660000,
+>       [ASPEED_DEV_ETH2]   = 0x1E680000,
+>       [ASPEED_DEV_UART1]  = 0x1E783000,
+> +    [ASPEED_DEV_UART2]  = 0x1E78D000,
+> +    [ASPEED_DEV_UART3]  = 0x1E78E000,
+> +    [ASPEED_DEV_UART4]  = 0x1E78F000,
+>       [ASPEED_DEV_UART5]  = 0x1E784000,
+>       [ASPEED_DEV_VUART]  = 0x1E787000,
+>       [ASPEED_DEV_SDRAM]  = 0x40000000,
+> @@ -80,6 +83,9 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
+>       [ASPEED_DEV_ETH1]   = 0x1E660000,
+>       [ASPEED_DEV_ETH2]   = 0x1E680000,
+>       [ASPEED_DEV_UART1]  = 0x1E783000,
+> +    [ASPEED_DEV_UART2]  = 0x1E78D000,
+> +    [ASPEED_DEV_UART3]  = 0x1E78E000,
+> +    [ASPEED_DEV_UART4]  = 0x1E78F000,
+>       [ASPEED_DEV_UART5]  = 0x1E784000,
+>       [ASPEED_DEV_VUART]  = 0x1E787000,
+>       [ASPEED_DEV_SDRAM]  = 0x80000000,
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 3789f38603..709a78285b 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -105,6 +105,14 @@ enum {
+>       ASPEED_DEV_UART3,
+>       ASPEED_DEV_UART4,
+>       ASPEED_DEV_UART5,
+> +    ASPEED_DEV_UART6,
+> +    ASPEED_DEV_UART7,
+> +    ASPEED_DEV_UART8,
+> +    ASPEED_DEV_UART9,
+> +    ASPEED_DEV_UART10,
+> +    ASPEED_DEV_UART11,
+> +    ASPEED_DEV_UART12,
+> +    ASPEED_DEV_UART13,
+>       ASPEED_DEV_VUART,
+>       ASPEED_DEV_FMC,
+>       ASPEED_DEV_SPI1,
 

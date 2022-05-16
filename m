@@ -1,119 +1,172 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp2084600lfj;
-        Mon, 16 May 2022 08:53:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxcIH2Wc7vVEh3aqIgEaTpVCdf5hyDEhASLVNaVXUib6IamTAJIV6KG6fQbJ5bUfcIj2cZ8
-X-Received: by 2002:ac8:4e91:0:b0:2f3:cbc2:eb0c with SMTP id 17-20020ac84e91000000b002f3cbc2eb0cmr15776660qtp.459.1652716432813;
-        Mon, 16 May 2022 08:53:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652716432; cv=none;
-        d=google.com; s=arc-20160816;
-        b=1Ji6/2/EClsPqeBDE9MACm1eSDin3q22tJpLyERz1292bt1Ak4Gh6DPbazXoGjRikN
-         DbiRlCKYij8mY/a00yvVFf0BlnmmW5UHLorkcGsVy0AhH6ZBwsVsDe0/pMPE6c0d8b9X
-         lbEJuhkhbYUvDigomnw1wVdQU8ezvbfCwF3+JP/euMJOmmtgL9/4Y24PmFW82otTGNu8
-         Ct3A9g6hRPjoEYIx5K6beTNzB4be1RFJBXxVWJxYCAp/xSaHOEhc5D5IgSryWLgTQL3c
-         npJtldPyyBokCo8i9g1Qag2ZtxZwSbg5xmPE2QH2EI/MIwmwbUZeE0FoQjLHsyCCLVG/
-         Z6Ww==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=I/3A8SUVUV2RC9p6q5CTxBgapEUdSZmisXM+TWCG4PY=;
-        b=TEaABvolz5YwTz7yqzzlBQhoewzMdjfAxVVsFz/or26TlOPlayZEA1hi/hlfPzs5xV
-         SuEQH7L43UTlIjyD0XiH+NQh69cw7+viIBqXQxRWHhcRujafHWd6t1EKX3CYGCY1552E
-         sQz30dVuTAXGSJpJLWKOHhOhcTArCy103Hbqpfqm0WFVtlbXK2Q9rfLGMDP/wTIsMLZ2
-         BnlULCWvWeSF4AoljDFwNGTJ6QAFL9Un/1io0fa8nIa40J0asWwqRUAyCOgEx/w/NHh5
-         1IFDljKQSpl7YxlIlJ63tFL97XPKNJbDlFybruuhc0fkWutkwJtcOpznN0NNC6dXx8fh
-         Ve1w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NSkuWycb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp2109323lfj;
+        Mon, 16 May 2022 09:29:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwM5BbvhLxizagDYO09MRbfnVZJPD5w6qKeluuplehWhRtC9f2LGHwiPkI+z1KptRqwOVOO
+X-Received: by 2002:a37:5847:0:b0:6a2:e085:fd67 with SMTP id m68-20020a375847000000b006a2e085fd67mr6931679qkb.671.1652718589578;
+        Mon, 16 May 2022 09:29:49 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b10-20020a05622a020a00b002f3a220aa47si6513482qtx.626.2022.05.16.08.53.52
+        by mx.google.com with ESMTPS id c185-20020ae9edc2000000b0069f5219bc22si5769112qkg.59.2022.05.16.09.29.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 May 2022 08:53:52 -0700 (PDT)
+        Mon, 16 May 2022 09:29:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NSkuWycb;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=bjzI5jkG;
+       arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45508 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:45478 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nqd2e-0002OE-9V
-	for alex.bennee@linaro.org; Mon, 16 May 2022 11:53:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38730)
+	id 1nqdbR-0002Zf-21
+	for alex.bennee@linaro.org; Mon, 16 May 2022 12:29:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47026)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nqczT-0007x4-1P
- for qemu-devel@nongnu.org; Mon, 16 May 2022 11:50:35 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f]:39688)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nqczP-0002Kn-2o
- for qemu-devel@nongnu.org; Mon, 16 May 2022 11:50:33 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id bh5so3025393plb.6
- for <qemu-devel@nongnu.org>; Mon, 16 May 2022 08:50:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=I/3A8SUVUV2RC9p6q5CTxBgapEUdSZmisXM+TWCG4PY=;
- b=NSkuWycbqkqPGP9vfUeimhtoZCQDayaud5kMygayS7A5NmA71EgSSkMu/teuG44sYJ
- LVmh8xK8UK8WizfO65tsh8lYgcXf94+Uav2ZbU+KWD3d7MvYS8zBE3F51PSaOGehlVSn
- CHYqWGo8slef8N9ir5aMwaaq62XuIAbmhWy8Fltq74g+9K4mpsOurwYhNYM+qXhmdbGA
- EP1tRNoBH9T5Lg+9MSQHkp+Xwz+xsuF519P0yT5UY9tS7bvK7QvvmnpUYx0Np4MWhVs1
- UUxNd6PBcf0pjWH3mv3LDWLvEz6HQUvbfV3H17IvsC5/SZWkvtuCP2B90xYGyyj9/TBd
- SSHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=I/3A8SUVUV2RC9p6q5CTxBgapEUdSZmisXM+TWCG4PY=;
- b=DXNwr6cdD0AfNGiWhI/pPafSwGRg36nPue2T7jtZ/nhySd/Dh0sKHlM6qkNfg//i88
- eu+Nd2HMv5Wwon51DKiw62XTjubhgiCvqW2temrU4HJR0QWjrYcFEGEoV1LDubwkR/ft
- 2GuNLwuflLQ2U6Gw18PwfwlLxmpNJgZHC1LQyySBsXUzZi4bcDQR01diIPvphLemVc6m
- s/66s3nKq13ByUq2OE8Em7eAPvkJbf6nOOKOv4NVRUy879LzODD1T7whQcfXx+WZXmh/
- 91HcSEhP40/weP86iozDggi669ux/6cc9EawSPXlWydWqgpzfCuRUt7bBzQWi1q0YeTl
- 7J7w==
-X-Gm-Message-State: AOAM532idAEAS0l33twRfRh9xgYFpKCnR7IlSzUn6IYjSV+/hwYO0mGz
- kqRNQcEoPyRsf9S8V4IDqFY/Yg==
-X-Received: by 2002:a17:902:c404:b0:15e:9aa2:3abc with SMTP id
- k4-20020a170902c40400b0015e9aa23abcmr18008603plk.172.1652716229528; 
- Mon, 16 May 2022 08:50:29 -0700 (PDT)
-Received: from [192.168.1.6] ([71.212.142.129])
- by smtp.gmail.com with ESMTPSA id
- f15-20020a62380f000000b0050dc76281c9sm6991795pfa.163.2022.05.16.08.50.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 May 2022 08:50:28 -0700 (PDT)
-Message-ID: <dac737bc-ccbf-08af-9ca9-b7e75a4ac5dd@linaro.org>
-Date: Mon, 16 May 2022 08:50:27 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH] ptimer: Rename PTIMER_POLICY_DEFAULT to
- PTIMER_POLICY_LEGACY
+ (Exim 4.90_1) (envelope-from <prvs=6135bb9a91=pdel@fb.com>)
+ id 1nqdT2-0003kp-Gz; Mon, 16 May 2022 12:21:09 -0400
+Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:13398)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=6135bb9a91=pdel@fb.com>)
+ id 1nqdSw-0007Qy-TJ; Mon, 16 May 2022 12:21:05 -0400
+Received: from pps.filterd (m0109334.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24G9mgmF023274;
+ Mon, 16 May 2022 09:20:19 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : cc : subject :
+ date : message-id : references : in-reply-to : content-type : content-id :
+ content-transfer-encoding : mime-version; s=facebook;
+ bh=Mx4UokU8QULsLMn+9dF1baGoj751ibY8V4qqr4pfNhA=;
+ b=bjzI5jkGKcUg3sBnGpOGqLxxjshM8yHDU/g8NdZno4709Cqi+4KUQ1DMns5ASYvTXA4F
+ X+iunYi9g71qU8qXwPhukZOV+vi2Elkbon+UVZwGWfzxBW10BKnfcPV3k62PYhc7ItLt
+ 6WNN/AIzYfdbyNs8R6LjhnMHVHZEe52FVoE= 
+Received: from nam04-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam08lp2176.outbound.protection.outlook.com [104.47.73.176])
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3g3maaj743-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 16 May 2022 09:20:18 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=AB+AB36ywRu6rNG9I1M+H3CAXJHyToQiwh5JEBtHZ/aZ9Mqwt9fUZuQLllkDmPsB4fNS8RRaT8ra+uNTFQ1IK2/sMDTB5qeJk6yKXJGV5zeCzJ4Z5+F4/tPDkSTZOM6YqyhH8ydNA336ZnF1Lp9041Rr5Idc/Qf/iFjtJmnVWkkZc2lehgetdclkaHpCSKkDyveaYiOp+Vnvu9E0Q6mNhSxX2bHP52o12kQGZuV7n4HJfBZ194LyQGiLpStqFyVLHzhsmFIPx6bPAEAegn6vGXwqLEwl8sEtJBvi+uhZtWZGUbP3v9vS0LjMZIE9tXl1bp8TWa0q7xEZHHW398vJTw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=a1UE8L4zrYochje2NfMTawW2mhxhIWoT9iJvbi3Vk44=;
+ b=h8OjkSPxFqgE1kJYj2mNqCjvcFHNARydCZlACdfdUtSD6tb6/Qyg5YwUF71tunRMaBq60F6xWKPBCOSIMDIxTtaIK7UBkyWRmT+/zKpTPt1+Z/c7U//3f0jROtfOKe4/OImUp6mDCFnw2c3/HQ1E4Xaj5sAHPDcBXM+vYFk92KwoxIVUKKTjNynJnz6a7QcTtadWWwl2Fw3lX3vFx6DbuMOoMfOx1gKBAbBesZV36xT6IsmQeTtUbZWR93LAy3xh48t85/eKNdYrWLhwq/rvK8bWvXz2ixoEAnqaZ5Bt83JJnRz8ADh3F0NQ3egL3Yma6HidxIuAB7rl5VSBQLB7Dg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
+ header.d=fb.com; arc=none
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
+ by DM6PR15MB2553.namprd15.prod.outlook.com (2603:10b6:5:1a8::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5250.18; Mon, 16 May
+ 2022 16:20:16 +0000
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::45c5:2306:17b3:89eb]) by BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::45c5:2306:17b3:89eb%5]) with mapi id 15.20.5250.018; Mon, 16 May 2022
+ 16:20:16 +0000
+From: Peter Delevoryas <pdel@fb.com>
+CC: Iris Chen <irischenlj@fb.com>, qemu-arm <qemu-arm@nongnu.org>, Cameron
+ Esfahani via <qemu-devel@nongnu.org>, "zev@bewilderbeest.net"
+ <zev@bewilderbeest.net>, OpenBMC List <openbmc@lists.ozlabs.org>, Andrew
+ Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>, Joel
+ Stanley <joel@jms.id.au>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Delevoryas
+ <pdel@fb.com>
+Subject: Re: [PATCH v2 0/5] hw: aspeed: Init all UART's with serial devices
+Thread-Topic: [PATCH v2 0/5] hw: aspeed: Init all UART's with serial devices
+Thread-Index: AQHYaO19buTVwfVVsE6j3iDLBjiL1q0hGIEAgACXSoA=
+Date: Mon, 16 May 2022 16:20:16 +0000
+Message-ID: <FC790CD5-03E2-41DB-B7F2-4F5046B37641@fb.com>
+References: <20220516062328.298336-1-pdel@fb.com>
+ <b978e205-66f7-e585-4cf0-6f3946fd1050@kaod.org>
+In-Reply-To: <b978e205-66f7-e585-4cf0-6f3946fd1050@kaod.org>
+Accept-Language: en-US
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Francisco Iglesias <francisco.iglesias@xilinx.com>
-References: <20220516103058.162280-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220516103058.162280-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: efdfee42-7d30-4de0-8f9e-08da3757f6c7
+x-ms-traffictypediagnostic: DM6PR15MB2553:EE_
+x-microsoft-antispam-prvs: <DM6PR15MB2553F53544EF96A9FE47F88EACCF9@DM6PR15MB2553.namprd15.prod.outlook.com>
+x-fb-source: Internal
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: +w9kihJL9iznfwbkAarJEG+0R9glgiiCfOfug/KjRa5BA3OR3syLj2A9VqdcA9gjXB6iE+pAxhrrtdsy4ji6I6owbLFA3/v76eBOq7meKAx+iZJqVN8mBIPHsZw+Vo0yvsQzVmgknWOm6u1Vq65MtwyKjQbzVDwArF1XGw4Zakoqzv40SGUhVVBmOExmwK80ISH8IfO46ExHRLGCFuc9oRWpWrZuXsBtH4ahl/mdUbvbT0uBk/KA7R7qyE4E8nlSuNK11NXqnCj4+wnPx7lUTfHd8V/3Q85oi3eW9zyhY2rPYqBqc2qrxqTlCZx4UHZH6fu/XeSrEwsGckz/11C5i75FvZtJrK/YIsxbyOQNurF8ZKgDxf/eOB7wLEfMQOgSO7McyAo1BDJzZkDjkV9DmbLM8k0S/jxTy2jX9HxxkqNekwghupM3ZbD/USoRCE/dxrJTLzcr17uou26u4KkM9AOWd9I9GA6CmrM5gcCDaz810id1K/0XtvolbVALrOLt07xlV3kczkuf6TA8d6iywNfMWDaszlAnhqxOK1ppix5FqlTx4Gqka3t6SkHr/vtUlrV1igHfPAgNuIunqIARPafXqyDA4Z1iLnPT0bhAmPFrkrfmTdsA77m588q1pD+IN/zhDB36vannIr0dHC3QZ6AoQRa1epZUMG5BxcZUXvAwC1plI4TRfbk5Fnh25ag0dR+MTdgSy9R9sK/N1/FRHBfR4veSWiIlcKdBCuQRZEzUDDQabCfkbNQ5K3nwBeyurGeJmkVbsFuzd7G9AstZRkamBmfwblNnVJmE5OOs92v9BYi4CZkYjWXu/HQf1fxnihsDks9cxrv3iYPW7dAHMxfP5SkNYDjx9z54LWZiXgU=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(36756003)(6506007)(71200400001)(186003)(53546011)(508600001)(54906003)(316002)(966005)(6486002)(6512007)(2906002)(38070700005)(38100700002)(66476007)(64756008)(76116006)(66946007)(66446008)(8676002)(4326008)(66556008)(33656002)(122000001)(2616005)(109986005)(8936002)(5660300002)(83380400001)(86362001)(45980500001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?M1VCRWk4TTBUWmt5T1BLQjRrSDF1czV4T1p5VExXeUFXdzBCVTNNQzlvSk95?=
+ =?utf-8?B?NnJSLy9GWW5lUlI5SEF6N25kMzFkNjFxRlBJeEVJL1M1c1VLWkFVeHdmTTVo?=
+ =?utf-8?B?dVJ0YUIyWWV6ek5lNldwcUp2cHAvOTBPcnVkcWJxRk52YW1ZSmdDVW1MOG9m?=
+ =?utf-8?B?Qm5Gci9kQytUcTlKT2FVYlJMSDdxR3BmQS8vWnVMcllCVENHb0QzNmFWK3hB?=
+ =?utf-8?B?RWd4elNYNTdGTkUrZWhodWxrZHJObWtFamV1akVKQnYyN3o3MkpMVjV3R1pT?=
+ =?utf-8?B?L01ESlEzU25jWlVSeTc4cm9LaDJUQ21sT21SN1VYUjBtL1NNU1JaUFI3cGlC?=
+ =?utf-8?B?c0JXSFhwRVZ0M0R0MlpwUWljU2JvN3lJb1I0TGwzaTFnQUVLMi93Y3NJUUFa?=
+ =?utf-8?B?ZVd6YVZlSFE5RnNaRzVqdTcwYlE1MkdxdERJMW1SUjhEZ1MzSzhYTnp3VlFZ?=
+ =?utf-8?B?bWFXWFRSL0xaNnE0SHVWeEM2Yk1WL2lYczN4TE9JZmJxUy8vK2ZnbnBxTFRa?=
+ =?utf-8?B?aUxPRU5jUExPdWduZWpuS2M2dG9uYzRIQmUrWEhudUhCRlc4MkNlV1ZrL1Jw?=
+ =?utf-8?B?VnVDSVdmWTdTbTVxUmNFdVVMYVFLeWJCYm9NR0ZRTzBNYkJFWUlVUjEwVE8r?=
+ =?utf-8?B?K0V0dHFmYWdPM3Z2ODZkcFppVVhpelh4NjgzNGpLTDBxcjJsRi9lNlUwZkdD?=
+ =?utf-8?B?QytUYjNQMFJZUmZiR1JIVFFLTVFZeWV3Z0pKWDhOT2dDOFJSV0p4Sysyd2RS?=
+ =?utf-8?B?YzkybHRLMDBrNDhKajh4TGtLaDZta1labWREZE9QZnQ5a09iWGpuQmU0L1Bv?=
+ =?utf-8?B?Ujdoai93TnhOM0lzWU82NzdoTzVlWnhIcWh2TVhNOTE0RVNTbTl1Rm5CMHZh?=
+ =?utf-8?B?RVllTEpWVm1HcHZwUjFzQ0tpSWgrMVNFUjVIY25mVmhRL1kvUHJaTnlVdTFy?=
+ =?utf-8?B?UWJNc295Wld1TjNNYm5BakRsZGtxZno2NnNhelVVYzhIMDRrWisrZnBMZUtl?=
+ =?utf-8?B?ZlZsVDR6MktwTWJlS3ZmNlY5YjNZT0FoeTRJMGQrb2IyWW8wckgxb2lzcUY5?=
+ =?utf-8?B?c0JjYUpsMWJ4WlNCemtabVFrdmZCdDRwNkJja2ErbW43VXBBSC9kblZ0WmJK?=
+ =?utf-8?B?UGR6dGFZOXhTczIvbWNzNGk0WjFBOEFZM2VHNW1KZ0JhZDRkR3owRy9xc1hN?=
+ =?utf-8?B?TkFucEZ5dU5rdVdYTlR0d2dCMGdaM04vL0VqTmR3eVZGQmpDZE9oU2VIMmJP?=
+ =?utf-8?B?UEY5UUFTUFZqYUQ0NUNSMHhXVC9idERuTWJSbXNKdWRIYnY5dGdQdFc1eTZy?=
+ =?utf-8?B?YWt6OVpEZzBDRUFlUHhtSEFYeUk4K2hTam5Gd3NmdDA4NndQamVoRVZ4eVRF?=
+ =?utf-8?B?WlB1dXNGTGk5SG9ja0pVQysxK3ltR2tZTjVPdGIweE1XbkY1Q2lvSEROWjE2?=
+ =?utf-8?B?UlFkR21hMkFPeXd2OHVCcy9FUXBrUzhNTTN4V0dwYWt6dSswWmNrcVgwL3RV?=
+ =?utf-8?B?ek1YOFdJeGxqNFA1NnBKUHNSL2FFeHpMVytEMlJUVGIyaEtwTjdLM0FCeUtl?=
+ =?utf-8?B?dk9sYVVMTG9pdFdnRklvRUdWQkxnOXAvWXF0VGlCVDJ1WGFENkZnZStVbjN3?=
+ =?utf-8?B?c295THhuZmgyOVlHNERxQy9LQStHSGkwZ1dLaFRMM1M4RUhKRnVEb3BkMTZW?=
+ =?utf-8?B?d1VvWEpFbWFkZlBrVjVNNEd1ek01cHVBdWVXbGxYV1krTzk1Z2ZFS29URC9k?=
+ =?utf-8?B?U21FZlN6VDRJQjRXTjR3NWFaYzg0WUlmK3BDcEVGaDQ2ZElta2cybFErSHdY?=
+ =?utf-8?B?NUVLSE1OMkpVK1dwRVIwbktYY1pjQlhhc2xBRXZoYmkzRWpFOHVpcjdXMmZZ?=
+ =?utf-8?B?Rnc0TmtqYkZwMTVtV2U4QWVRQS9KSnZsTW1ZdlRyZ1NIN25uQk42WnIydWhl?=
+ =?utf-8?B?NjhSUU0zZTFZbE5qamdtaGpQMmJ0YTVwSVRJUHRGRXhnd1h0QjBIdmQyeHlB?=
+ =?utf-8?B?ekhaUW1JckxwK0RtR0g5ZDJmcWlHTUJRMW5vOVBKWVhZVzNJUWJpSTBxUWN4?=
+ =?utf-8?B?WVVLaGd6enRBYkNEQ0h0Z3BCdHFGcXhYTGZuMUY5a2wwM0lFRUNTQUZsTjFM?=
+ =?utf-8?B?ODI2N3gzazRJYUkxdk5LSVV4QUtmaUJaenNQeVAxRkRUT2ZnTkprQWk3eTRV?=
+ =?utf-8?B?MlUvblhRc1M5alJQOTZwbGdZRmM2NVFVdkQrSnpIMWYwdUNTVXVqanExelFS?=
+ =?utf-8?B?UGMxK2lJM1o1aWh2NEdTQy9SR0xETDRuczRTb1FwdllJd0ZDZU1TcE1BN1Bh?=
+ =?utf-8?B?ZlVoMjBkODFFMDN6NnY4K3kzNUV3cjlDVGRIcEg1aEwwcXh5aTRUSkVpWkh2?=
+ =?utf-8?Q?HcE40uYuG8oKelrg=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <4C8DCF218F03114D9E08AFC30B253A13@namprd15.prod.outlook.com>
+X-OriginatorOrg: fb.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: efdfee42-7d30-4de0-8f9e-08da3757f6c7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 May 2022 16:20:16.7833 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: EzNK7VKrDwk10WSGzKuseN3YFJI1H+1uRaduB493gN1mTiYjbNleZpQVBzcE6KL6
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR15MB2553
+X-Proofpoint-ORIG-GUID: CBtA1DfQ6FCK0rROelXA4FSt2m6VbakC
+X-Proofpoint-GUID: CBtA1DfQ6FCK0rROelXA4FSt2m6VbakC
+Content-Transfer-Encoding: base64
+X-Proofpoint-UnRewURL: 1 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
+ definitions=2022-05-16_15,2022-05-16_02,2022-02-23_01
+Received-SPF: pass client-ip=67.231.145.42;
+ envelope-from=prvs=6135bb9a91=pdel@fb.com; helo=mx0a-00082601.pphosted.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MISSING_HEADERS=1.021, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,33 +181,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gs/KKHQLkb6T
+X-TUID: dzFFKZzAdN36
 
-On 5/16/22 03:30, Peter Maydell wrote:
-> The traditional ptimer behaviour includes a collection of weird edge
-> case behaviours.  In 2016 we improved the ptimer implementation to
-> fix these and generally make the behaviour more flexible, with
-> ptimers opting in to the new behaviour by passing an appropriate set
-> of policy flags to ptimer_init().  For backwards-compatibility, we
-> defined PTIMER_POLICY_DEFAULT (which sets no flags) to give the old
-> weird behaviour.
-> 
-> This turns out to be a poor choice of name, because people writing
-> new devices which use ptimers are misled into thinking that the
-> default is probably a sensible choice of flags, when in fact it is
-> almost always not what you want.  Rename PTIMER_POLICY_DEFAULT to
-> PTIMER_POLICY_LEGACY and beef up the comment to more clearly say that
-> new devices should not be using it.
-> 
-> The code-change part of this commit was produced by
->    sed -i -e 's/PTIMER_POLICY_DEFAULT/PTIMER_POLICY_LEGACY/g' $(git grep -l PTIMER_POLICY_DEFAULT)
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-with the ptimer-test.c string change already noted.
-
-
-r~
+DQoNCj4gT24gTWF5IDE2LCAyMDIyLCBhdCAxMjoxOCBBTSwgQ8OpZHJpYyBMZSBHb2F0ZXIgPGNs
+Z0BrYW9kLm9yZz4gd3JvdGU6DQo+IA0KPiBPbiA1LzE2LzIyIDA4OjIzLCBQZXRlciBEZWxldm9y
+eWFzIHdyb3RlOg0KPj4gdjI6DQo+PiAtIFJlYmFzZWQgb24gQ2VkcmljJ3MgaXJxIHByb3Bvc2Fs
+LiBbMV0NCj4+IC0gQWRkZWQgIkludHJvZHVjZSBjb21tb24gVUFSVCBpbml0IGZ1bmN0aW9uIiBw
+YXRjaA0KPj4gLSBBZGRlZCAiQWRkIHVhcnRzX251bSBTb0MgYXR0cmlidXRlIiBwYXRjaA0KPj4g
+LSBSZXdyb3RlIGxhc3QgY29tbWl0J3MgbWVzc2FnZSBmb3IgY2xhcml0eQ0KPiANCj4gTG9va3Mg
+Z29vZCB0byBtZS4NCj4gDQo+PiBJIHRyaWVkIHRlc3RpbmcgdGhpcyBieSBydW5uaW5nIGFjY2Vw
+dGFuY2UgdGVzdHMsIHBhcnRpY3VsYXJseSB0aGUNCj4+IGJvb3RfbGludXhfY29uc29sZS5weSBm
+aWxlLCBidXQgSSBoYWQgdG8gZGlzYWJsZSB0aGUgcmFzcGkyX2luaXRyZCBjYXNlLg0KPj4gSXQn
+cyBub3QgcmVsYXRlZCB0byBteSBjaGFuZ2VzIChBL0IgdGVzdGVkIGFuZCBpdCBmYWlscyBvbiB1
+cHN0cmVhbS9tYXN0ZXINCj4+IHRvbyksIGJ1dCB0aG91Z2h0IEkgd291bGQgbWVudGlvbiB0aGF0
+Lj4NCj4+IEkgYWxzbyBtYW51YWxseSB0ZXN0ZWQgc2V2ZXJhbCBtYWNoaW5lczoNCj4+IEFTVDI0
+MDA6IGh0dHBzOi8vZ2l0aHViLmNvbS9mYWNlYm9vay9vcGVuYm1jL3JlbGVhc2VzL2Rvd25sb2Fk
+L3YyMDIxLjQ5LjAvd2VkZ2UxMDAubXRkDQo+PiBBU1QyNTAwOiBodHRwczovL2dpdGh1Yi5jb20v
+ZmFjZWJvb2svb3BlbmJtYy9yZWxlYXNlcy9kb3dubG9hZC92MjAyMS40OS4wL2ZieTMubXRkDQo+
+PiBBU1QyNjAwOiBodHRwczovL2dpdGh1Yi5jb20vZmFjZWJvb2svb3BlbmJtYy9yZWxlYXNlcy9k
+b3dubG9hZC92MjAyMS40OS4wL2Z1amkubXRkDQo+PiBBU1QxMDMwOiBodHRwczovL2dpdGh1Yi5j
+b20vcGV0ZXJkZWxldm9yeWFzL09wZW5CSUMvcmVsZWFzZXMvZG93bmxvYWQvb2J5MzUtY2wtMjAy
+Mi4xMy4wMS9ZMzVCQ0wuZWxmDQo+PiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1k
+ZXZlbC8yMDIyMDUxNjA1NTYyMC4yMzgwMTk3LTEtY2xnQGthb2Qub3JnLw0KPiBJIGhhdmUgcXVp
+dGUgYSBmZXcgaW1hZ2VzIHdoaWNoIEkgcnVuIG1hbnVhbGx5LiBPcGVuQk1DIGlzIHByb3ZpZGlu
+Zw0KPiBpbWFnZXMsIEFzcGVlZCBhbHNvLiBKb2VsIGRpZCBhIHNtYWxsIHRvb2wgZm9yIHRoZSBJ
+Qk0gcmFpbmllciA6DQo+IA0KPiAgaHR0cHM6Ly9naXRodWIuY29tL3NoZW5raS9xZW11LWJvb3Qt
+dGVzdA0KPiANCj4gSGF2aW5nIGFuIGF1dG9tYXRlZCBmcmFtZXdvcmsgZm9yIEFzcGVlZCBtYWNo
+aW5lcyBwdWxsaW5nIGltYWdlcw0KPiBmcm9tIGRpZmZlcmVudCBwbGFjZXMgd291bGQgYmUgbmlj
+ZSBidXQgd2UgY2Fubm90IHB1dCBhbGwgdW5kZXINCj4gUUVNVS4NCj4gDQo+IA0KPiBJIGxpa2Ug
+dGhlIGJ1aWxkcm9vdCBDSSB1c2luZyB0aGUgUUVNVSBib2FyZHMuIFNlZSBhIHBpcGVsaW5lIGV4
+YW1wbGU6DQo+IA0KPiAgaHR0cHM6Ly9naXRsYWIuY29tL2xlZ29hdGVyL2J1aWxkcm9vdC8tL3Bp
+cGVsaW5lcy81Mzk1NTkyMDkgDQo+IGJ1dCB0aGF0J3MgYnVpbGRyb290IG9ubHkgYW5kIGludGVn
+cmF0aW5nIGEgY3VzdG9tIHVib290IG1pZ2h0IGJlDQo+IGRpZmZpY3VsdC4NCj4gDQo+IEZvciBt
+eSBwcGMgbmVlZHMsIEkgZGlkIGEgcXVpY2stYW5kLWRpcnR5IG5vbi1yZWdyZXNzaW9uIHRlc3Qg
+c3VpdGUgOg0KPiANCj4gIGh0dHBzOi8vZ2l0aHViLmNvbS9sZWdvYXRlci9xZW11LXBwYy1ib290
+DQo+IA0KPiANCj4gQW55d2F5LCBJIGhhdmVuJ3QgZm91bmQgYSBzb2x1dGlvbiBub3Igc3BlbnQg
+bXVjaCB0aW1lIG9uIGl0IGJ1dA0KPiBJIGFtIGludGVyZXN0ZWQgIQ0KDQpPaCB0aGFua3MgZm9y
+IHRoZSBsaW5rcywgSeKAmW0gc29tZXdoYXQgaW50ZXJlc3RlZCBpbiBsb29raW5nIGludG8gdGhp
+cyBmdXJ0aGVyLg0KDQo+IA0KPiANCj4gQy4NCj4gDQo+IA0KPiANCj4gDQo+PiBQZXRlciBEZWxl
+dm9yeWFzICg1KToNCj4+ICAgaHc6IGFzcGVlZDogQWRkIG1pc3NpbmcgVUFSVCdzDQo+PiAgIGh3
+OiBhc3BlZWQ6IEFkZCB1YXJ0c19udW0gU29DIGF0dHJpYnV0ZQ0KPj4gICBodzogYXNwZWVkOiBF
+bnN1cmUgQVNUMTAzMCByZXNwZWN0cyB1YXJ0LWRlZmF1bHQNCj4+ICAgaHc6IGFzcGVlZDogSW50
+cm9kdWNlIGNvbW1vbiBVQVJUIGluaXQgZnVuY3Rpb24NCj4+ICAgaHc6IGFzcGVlZDogSW5pdCBh
+bGwgVUFSVCdzIHdpdGggc2VyaWFsIGRldmljZXMNCj4+ICBody9hcm0vYXNwZWVkX2FzdDEweDAu
+YyAgICAgfCAzMiArKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLQ0KPj4gIGh3L2FybS9h
+c3BlZWRfYXN0MjYwMC5jICAgICB8IDI3ICsrKysrKysrKysrKysrKysrKysrKystLS0tLQ0KPj4g
+IGh3L2FybS9hc3BlZWRfc29jLmMgICAgICAgICB8IDMzICsrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrLS0tLQ0KPj4gIGluY2x1ZGUvaHcvYXJtL2FzcGVlZF9zb2MuaCB8IDEwICsrKysrKysr
+KysNCj4+ICA0IGZpbGVzIGNoYW5nZWQsIDg4IGluc2VydGlvbnMoKyksIDE0IGRlbGV0aW9ucygt
+KQ0KPiANCg0K

@@ -1,139 +1,189 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp828955lfj;
-        Sat, 14 May 2022 03:58:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyqhlu7FPY4M9Pp2P/Gq/2+qQAxpVhK6iA4EeASTLrPmWpB7Ws1YLDBXbfc3SgsThP21O3I
-X-Received: by 2002:ac8:58d6:0:b0:2f3:d35c:4ef8 with SMTP id u22-20020ac858d6000000b002f3d35c4ef8mr8184598qta.265.1652525882408;
-        Sat, 14 May 2022 03:58:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652525882; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp1894119lfj;
+        Mon, 16 May 2022 03:37:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwdchvOR2arK5IGxp9eXZxZxblCEfE/1h2BftZHdRy+TFnEyhDSyNAVwN5qsiG1kJHmYJe0
+X-Received: by 2002:a17:906:9743:b0:6d8:632a:a42d with SMTP id o3-20020a170906974300b006d8632aa42dmr14611428ejy.157.1652697452168;
+        Mon, 16 May 2022 03:37:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652697452; cv=none;
         d=google.com; s=arc-20160816;
-        b=njKWBMRxM2BsrgxEZG8CkjUBvwDUq8z0H/mh2IW0lGDPcZC0x7ZZTGC+F5YvWtjjth
-         rNayha3WjFgKJQf9jNo2Fhn3E6hVeM6Xt0EYS+DnMlwpXkcxHVFrJtGfbo64VwswVJC/
-         chPG+z3DxqhXKPZ+22wKv+umDhxTcr256NvkNfVZm6u4f4nHov49fowz6EVNP0IQcCB/
-         eY3RHTAWB2t19+N1O74zVclwFOaxEbbmeOU7+YXs1p9iG0/VeK8bRogtvX3FOWAvYJvc
-         6K9WyNZabc0Xp/twNnDgGPS2YPhFfZbaPUAmnn/ehTP97GfursBuxn1gNaX5oXdQshKb
-         xIhw==
+        b=g9FTNxLvr1AmhZVFjO+6GRrndk7QzQOVfNODBbIYNstPGmJCEEuXPgKYYhyQX9/O+g
+         oq3Xt+sBljXXt2S1R6Y48i47QQGwpDXbEk3o5TA0KcX07EzzR+KiIkaNLS/C6gZD8IWD
+         E5X2g6HFXomc4T1ncFyKE3wPCCCIjiX2PxtSmBq0cZh21DtYfbUUvOm7hsCOiVqHpHC+
+         qgogx1Nd1hH6wkfuCEDVdNMWDw/mU5pOPbiz9CVRuWxmvOAY61I0B+n4mEAE+wd6TCWR
+         2XBrsldUrDKqBo7qre5yNb+PNyUU9h9m9daqHfS2Th83uyqHoXEvC12QTo51KxSDlqP8
+         6BZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=3aSaDiKXjj4mvNSwS/4qeozgYZIRA0A2InzcPTwRAXI=;
-        b=o8bjSy3Xezbb279Aam0D7U1a+sTITH3ZEzpBh2DLztiXj/fOUBvldzWMAzmQPp9MB+
-         LpOEvxtXVR7OUNSij57HuPzom0chz0nvC9c8Z+hlvAdhXRZYkTpeKqkYMCmyiuE4f26s
-         92EnF7N2XnAhDn4uMwPVDQs5Tl1QXgWbS/eCS5UGCOx4OgdjBsA8WDOke5pgmBLCCKtx
-         HFyqgUlj6dgYcLsXZWv/knrNsd1gqe2/lZwUrj23QFHzsztb8BcH62P6nM/xBX/L+Fja
-         l+o20h08afZ0xMdqtGB8HEOVCn8kt231Y7Aq2XWAejJ+0WjfmAqXGHfHk00exKE6TMw1
-         B8hA==
+        h=content-transfer-encoding:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=5AC5uF/WZuTpqfGs+Ddsx5o6audS2NY0UkboNjUXSC4=;
+        b=VTMdprLeu9GPBQbsqyeNvP+PdjmshEjKBLJ4AsEFFjV0hZKF/wvFnYiAM0qstgCnpQ
+         McYfoA1mgXrvJVFMgZ/Ay5vo0Orpn6MUW5wEyx5emz+c7yaELNU12+hfRW9mq35KfBcb
+         SuAvjSSn8XJ+kC7gwC/c3SaQSeBbb+0T4sDk3gaqq+6Qcanvq7NMGWzjoDIqZ3H/Wh70
+         3I9odKACLQISj3APjlds5/5L6buU7Ng9ToNAf5bdIr8ibV50povI0tlCZ+yIk6MoU8pY
+         bmsSuzabZqTOU4PZN6p3eXJgailb+f1tN2LV+k4rBCfynH41bRj8yQFebiQdOzp3J+UC
+         d9xQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=j1WNNStd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 13-20020a0562140d6d00b00440e46a7c3fsi3462604qvs.221.2022.05.14.03.58.02
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="b/akkovG";
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <mst@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id y26-20020a50e61a000000b0041d763065f4si9312651edm.484.2022.05.16.03.37.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 May 2022 03:58:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 May 2022 03:37:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=j1WNNStd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40820 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nppTF-0006R1-T8
-	for alex.bennee@linaro.org; Sat, 14 May 2022 06:58:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48914)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nppT2-0006Qt-EJ
- for qemu-arm@nongnu.org; Sat, 14 May 2022 06:57:48 -0400
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29]:34721)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nppT0-0004fT-Ci
- for qemu-arm@nongnu.org; Sat, 14 May 2022 06:57:47 -0400
-Received: by mail-yb1-xb29.google.com with SMTP id y76so19415469ybe.1
- for <qemu-arm@nongnu.org>; Sat, 14 May 2022 03:57:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3aSaDiKXjj4mvNSwS/4qeozgYZIRA0A2InzcPTwRAXI=;
- b=j1WNNStdaM7Ue7Bs+BmpnMBG72eXfbOsUTG+tuPjo3XyMVBl3DWBHQr9EugeP2KetO
- tyjndesmD+vvQPFraa/bcWXOsu9RlrbLg9IBnBd1JYaDHCCD1NKrYby5bfYiB9NkxNbZ
- ghFuovHSa02KI7QJXFpMLQuH1k4WPoYy1KA10aVO99PI2H1uc5rA7XsDClX1agMMQXPM
- lC5bUjTUieuvN/10S6yNeq+kmtQU7X+kctxgzgogqPNERBv2cUOdMC9AX3iKwSTkBvKW
- vbG1RDLOvQRa0BHtGrxZUjkwfH9PTzEaQW4ZU7bRD9Zw8F1bpRktUHaT/Qxq3jvXNqW/
- bVVg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="b/akkovG";
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1652697451;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5AC5uF/WZuTpqfGs+Ddsx5o6audS2NY0UkboNjUXSC4=;
+	b=b/akkovGRNTEvLQRVPWntm2VixACIwrTERzh/FBKbLQNsfb6+6U91T1zGymrgCqI0YXWwO
+	y8d7Y79Dy9APlva9mu4KO8ezbAPotW1kJHx0oV228HDyNgW9b9BHSApLp9+RZzq/zHR9xV
+	CHQ4lePWgmR2uIi3pUkaCyghZbJig2E=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-86-zBAa-44ZNI67S9g5dbXpxw-1; Mon, 16 May 2022 06:37:30 -0400
+X-MC-Unique: zBAa-44ZNI67S9g5dbXpxw-1
+Received: by mail-wm1-f72.google.com with SMTP id z23-20020a05600c221700b003942fd37764so10135528wml.8
+        for <alex.bennee@linaro.org>; Mon, 16 May 2022 03:37:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3aSaDiKXjj4mvNSwS/4qeozgYZIRA0A2InzcPTwRAXI=;
- b=FU4eSM+JIX1QaQbSDTeHyE3gSLCDgwSihhiTefbtYyA4vWI1lLcyDtGE6XXzDkHyEA
- 7eo44oNSpGiWMmqdcVftHXqHJX47Ya5feshbezemyLO9lo4uc4RF6yDlTjCVqE1ZAhq2
- 6hb41VxCtPVvgs86qHHleI1556f7nxOnn/j8f38Mt+17CWHFofwDKghWWt1tk7orgNt0
- jNTcurnh9SHpRQEEfbDRPGvg9rku8q5oOixXGMcTCV6irCrx2ozfSAFXR0ZRh20XNppC
- yz+92WxEFTnDfXO4LIWmBPsZL1hIYCa/CtMq/XyHNaFcojFaFbAGrTUWOYqFiaRIhMiv
- vk6g==
-X-Gm-Message-State: AOAM5303oq60LNv+Dv68boje49cQd+qkbisidH0U648M/VzDa6HDWTxL
- cWG6IUkVucp6KYiUUokRM9wSXUkQD+GgwAQjtmfZYA==
-X-Received: by 2002:a25:8f82:0:b0:64b:4d9:46fe with SMTP id
- u2-20020a258f82000000b0064b04d946femr8645626ybl.479.1652525865049; Sat, 14
- May 2022 03:57:45 -0700 (PDT)
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=5AC5uF/WZuTpqfGs+Ddsx5o6audS2NY0UkboNjUXSC4=;
+        b=I70iwdxqJ0LyVUE9yjteCkztJ1bdoolamMGcQMEmDfWqqo7U6+ZnEJdhRrtRz/FTNc
+         YnnmrKNwYfGBZhqlURH71BQ7BVQzU+0OE5wJEJZVYeC7fubZ+9AdZi5mJzzl532MNs9W
+         cikPhurMVC8jowdpTsz7qRlOlHRfEqKXrovnik4KCLE0jgKPV4zQD/Fd9N0o3Zj9HtoT
+         KfKAbZWfMqyGkdoqIpbMwpfFJl6XO7U6d+Rv3KQ2dRHSUNcAqSMBHH1VDBolnjHr6XHp
+         vql/mHPfhQrRI9xaZ6bPvypXgNNmvpauaZo5oxbFmn06M6pvs7+lo7OiY0DfFFOTBZLk
+         Tgpg==
+X-Gm-Message-State: AOAM533YksYJLlsGW7+ibeDk9EUpHnpPAziExAGv9LJ3uVbWHtEIMuek
+	2MKbuVHOacZPCwi7/RfR3SX0DAyx8T6nCvdx00pJzh11RRPdFuUQ5Vea2vBD1/qA0jWuYDUiKNf
+	2RvGdGHHs4O+lF4TH
+X-Received: by 2002:adf:f504:0:b0:20c:734f:d39d with SMTP id q4-20020adff504000000b0020c734fd39dmr13767110wro.717.1652697448836;
+        Mon, 16 May 2022 03:37:28 -0700 (PDT)
+X-Received: by 2002:adf:f504:0:b0:20c:734f:d39d with SMTP id q4-20020adff504000000b0020c734fd39dmr13767097wro.717.1652697448640;
+        Mon, 16 May 2022 03:37:28 -0700 (PDT)
+Return-Path: <mst@redhat.com>
+Received: from redhat.com ([2.55.141.66])
+        by smtp.gmail.com with ESMTPSA id w12-20020a7bc10c000000b003942a244ee1sm9629511wmi.38.2022.05.16.03.37.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 May 2022 03:37:28 -0700 (PDT)
+Date: Mon, 16 May 2022 06:37:25 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Ben Widawsky <ben.widawsky@intel.com>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-arm@nongnu.org
+Subject: [PULL 31/91] hw/pci-host/gpex-acpi: Add support for dsdt
+ construction for pxb-cxl
+Message-ID: <20220516095448.507876-32-mst@redhat.com>
+References: <20220516095448.507876-1-mst@redhat.com>
 MIME-Version: 1.0
-References: <CAJNiinuDjvX2c6uQr-wsRb1BNjLKVNWnokAnTiwYFtZg8-jXqA@mail.gmail.com>
- <CAFEAcA9AL3D6SsjhU2opuAAiCHaTSvvYV3JqCHEMG-7eMVpiAA@mail.gmail.com>
- <CAJNiinuyWmU9_DX5Sa8y14q4n0nn3APgsmq4cSOPH6vwXQubvg@mail.gmail.com>
-In-Reply-To: <CAJNiinuyWmU9_DX5Sa8y14q4n0nn3APgsmq4cSOPH6vwXQubvg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 14 May 2022 11:57:33 +0100
-Message-ID: <CAFEAcA_4JwJkQAVOyGhVZ8qc9rag=bNVf73COnbUetojwpgHzQ@mail.gmail.com>
-Subject: Re: Hello world example with qemu-system-arm
-To: James Gutbub <jgutbub@asu.edu>
-Cc: qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb29.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sMf2VOupHObJ
+In-Reply-To: <20220516095448.507876-1-mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+X-TUID: V3UsKdWLmFba
 
-On Fri, 13 May 2022 at 23:59, James Gutbub <jgutbub@asu.edu> wrote:
->
-> arm-none-eabi-as  -march=armv7-a startup.s -o startup.o
->
-> arm-none-eabi-ld  startup.o -Map=test.map -o test.elf -e _Reset
->
->
->
-> qemu-arm -cpu cortex-a7 -d in_asm,exec,cpu,int,unimp,guest_errors,nochain -D test.log test.elf
->
->
->
-> qemu-arm: Unable to reserve 0xffff0000 bytes of virtual address space at 0x1000 (Permission denied) for use as guest address space (check your virtual memory ulimit setting, min_mmap_addr or reserve less using -R option)
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-You don't say what's in your test.map, but it is probably
-trying to put bits of the ELF file in places that make
-qemu-arm's attempt to reserve address space unhappy.
+This adds code to instantiate the slightly extended ACPI root port
+description in DSDT as per the CXL 2.0 specification.
 
-'-R 0' will probably be enough to work around this.
+Basically a cut and paste job from the i386/pc code.
 
--- PMM
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Ben Widawsky <ben.widawsky@intel.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20220429144110.25167-30-Jonathan.Cameron@huawei.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ hw/pci-host/gpex-acpi.c | 20 +++++++++++++++++---
+ hw/arm/Kconfig          |  1 +
+ 2 files changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+index e7e162a00a..7c7316bc96 100644
+--- a/hw/pci-host/gpex-acpi.c
++++ b/hw/pci-host/gpex-acpi.c
+@@ -5,6 +5,7 @@
+ #include "hw/pci/pci_bus.h"
+ #include "hw/pci/pci_bridge.h"
+ #include "hw/pci/pcie_host.h"
++#include "hw/acpi/cxl.h"
+ 
+ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq)
+ {
+@@ -139,6 +140,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+         QLIST_FOREACH(bus, &bus->child, sibling) {
+             uint8_t bus_num = pci_bus_num(bus);
+             uint8_t numa_node = pci_bus_numa_node(bus);
++            bool is_cxl = pci_bus_is_cxl(bus);
+ 
+             if (!pci_bus_is_root(bus)) {
+                 continue;
+@@ -154,8 +156,16 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+             }
+ 
+             dev = aml_device("PC%.02X", bus_num);
+-            aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A08")));
+-            aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
++            if (is_cxl) {
++                struct Aml *pkg = aml_package(2);
++                aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0016")));
++                aml_append(pkg, aml_eisaid("PNP0A08"));
++                aml_append(pkg, aml_eisaid("PNP0A03"));
++                aml_append(dev, aml_name_decl("_CID", pkg));
++            } else {
++                aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A08")));
++                aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
++            }
+             aml_append(dev, aml_name_decl("_BBN", aml_int(bus_num)));
+             aml_append(dev, aml_name_decl("_UID", aml_int(bus_num)));
+             aml_append(dev, aml_name_decl("_STR", aml_unicode("pxb Device")));
+@@ -175,7 +185,11 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+                             cfg->pio.base, 0, 0, 0);
+             aml_append(dev, aml_name_decl("_CRS", crs));
+ 
+-            acpi_dsdt_add_pci_osc(dev);
++            if (is_cxl) {
++                build_cxl_osc_method(dev);
++            } else {
++                acpi_dsdt_add_pci_osc(dev);
++            }
+ 
+             aml_append(scope, dev);
+         }
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 97f3b38019..219262a8da 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -29,6 +29,7 @@ config ARM_VIRT
+     select ACPI_APEI
+     select ACPI_VIOT
+     select VIRTIO_MEM_SUPPORTED
++    select ACPI_CXL
+ 
+ config CHEETAH
+     bool
+-- 
+MST

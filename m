@@ -1,705 +1,202 @@
-Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp2819994lfj;
-        Tue, 17 May 2022 09:29:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwLd2GvO8/Z6PXnmuz2BIrBehoJG9hhSJCNWmmRdsOQH1pX6yl9ja4Wiud37N4+RbdDJs+g
-X-Received: by 2002:a05:620a:4509:b0:6a0:25a5:6642 with SMTP id t9-20020a05620a450900b006a025a56642mr16860096qkp.197.1652804941066;
-        Tue, 17 May 2022 09:29:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652804941; cv=none;
+Received: by 2002:a19:3859:0:0:0:0:0 with SMTP id d25csp2829990lfj;
+        Tue, 17 May 2022 09:45:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyF+klhFD7h649kLXWPcqKCNgehS9SIRpFrrNV6AvrD6vTpY7ymdcYIUeeeatz6UEa26Oa0
+X-Received: by 2002:ac8:5f8d:0:b0:2f3:e172:631d with SMTP id j13-20020ac85f8d000000b002f3e172631dmr21233067qta.248.1652805931786;
+        Tue, 17 May 2022 09:45:31 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1652805931; cv=pass;
         d=google.com; s=arc-20160816;
-        b=jn3OAd9O0yO/n0NpM2dMwPDZAQAZGgPb2bQTMkvhzUP1PCK2GsDJzqBdmZVjO9sV9N
-         GeAUVmUB3DYvbQgzSOmU9Znpecnqf3bC66R073OEopLgbN/z/tRmob1QVjeOheytmFuP
-         3DZ9i5NKClCtnravElmhQ0y521vWtft3127MyWOBpH6akttvhKChcwOmg8DU/AAWiiht
-         4BfoJTKHDvFpNk0Xh/4mYbN1FYV/pMKhVdiPq4loq3Iw1xsA25fpAlaPmGedAuBPo4qi
-         EuTwkCfrNgF2eI93ev9Kpr3Wv6OmGgsPAUD3hEQy7AAnKazIHn72fqg4FRsw2qyO2Oh5
-         DVvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=ZN6s0tD19PqPse8b/PGYE80BO4UY8bIQUtyMYbJQRmkYn2rvi6j5Et/zMvkA47B5O5
+         ljNW+53wJI2jHi9N+BlRwMSPd4Q98EirBgGhX/3oFC+2u6wXQTtPOKjs6WC1FbBXgUF/
+         nF65B+Se2TPSzRK9NkhEn0Gw0m7c90UBoISGe6VppLlicxDYBtT/+DRmzEt6MQtwF/10
+         AdolZhb8awRrp7+L+COxeJvuGRhQknTuLNNypVK1oEW7IcKxdwXR3KhTUgS+zX8YeKtT
+         U4OZSG1mbxPMAlv8UvbuUgwrJD1/zIIT179JD460+cZsBl2mpwH2jsoH9RADjJcxnK0M
+         CtdQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date;
-        bh=JxkAp7L6K6QALiBOxR1cUpyf/OQvuqKg9rh5CMwERY4=;
-        b=oSUQrhBCPsuWFaroDY8N91TkAA2BQNIIv5MhX2aTaXsGX9Qc+1dlhn4kabKv+r7vXU
-         /OvldBQWbA41VU3s1VfMnl/7ezoV6nRrNjeCV0VxZb4BKC/yxgNSvNu3kF3WKdAT5KbC
-         j4nzh9gkZ2lGwYxvWF97L3bIlvVfYg+I7QRiP/TiQCG42YFuNe4hR/7vkQGkqOYB2jpl
-         Taay410YDZFvqiNXiOYHN4igcPGEJc8yDaU96u2V9BW+uEQB7qwoMcZ+fqnCES3+hFdN
-         ok41q10oQ3gkrodq1+FJ0/sf0n8Qif/rDlZTO14tKgqt/j6bpWEMJ10GEbghBtaFX+G7
-         4vWg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=zc41E76hr3tCQJDkvGWX/0HNAiLGB3Z9IMzZOZL48lw=;
+        b=ZCGqn+3oqmXr7MQIpClbdh8UIvPiYJuORc6VZXEQ/10HulWLUOZOfrWVq3CUx910D9
+         xdxFxhmWKei7jf5rBdhnMbQKGiOmgSrZIgtl5Jc2tMuuL5zLyRN0JQN4j0UsdpOQKQRq
+         BSrVQcfAYoN3SVPmekISZC+1VKS/NXnrd3/yKdm5F0I6Ny4R8LQSnvVkBVqqg+I/npjM
+         EVb+Uq38lvwyld6bWqslq0EPlWRpAZKoqGRwjLqOgba6MiZZJ13T/9Ni3NKOPiXFSZR3
+         mS83SubSjDGSqCeZ4DCXvyvgM1ZIH0tL0BtNzHrQdkQimvxT4F6vr6xzK3NgyaF+WZck
+         oJAA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@provenrun.com header.s=selector1 header.b=XHauJPXA;
+       arc=pass (i=1 spf=pass spfdomain=provenrun.com dkim=pass dkdomain=provenrun.com dmarc=pass fromdomain=provenrun.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=provenrun.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h16-20020ac87d50000000b002f3c978e6adsi8751529qtb.71.2022.05.17.09.29.00
+        by mx.google.com with ESMTPS id c13-20020a056214224d00b004564ec055edsi10791268qvc.237.2022.05.17.09.45.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 May 2022 09:29:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 May 2022 09:45:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41754 helo=lists1p.gnu.org)
+       dkim=pass header.i=@provenrun.com header.s=selector1 header.b=XHauJPXA;
+       arc=pass (i=1 spf=pass spfdomain=provenrun.com dkim=pass dkdomain=provenrun.com dmarc=pass fromdomain=provenrun.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=provenrun.com
+Received: from localhost ([::1]:49706 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nr04C-0004PQ-CQ
-	for alex.bennee@linaro.org; Tue, 17 May 2022 12:29:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57780)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nr0KB-0004oE-AT
+	for alex.bennee@linaro.org; Tue, 17 May 2022 12:45:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60912)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1nr02M-0001vk-Cr
- for qemu-devel@nongnu.org; Tue, 17 May 2022 12:27:06 -0400
-Received: from us-smtp-delivery-44.mimecast.com ([207.211.30.44]:32511)
+ (Exim 4.90_1) (envelope-from <florian.lugou@provenrun.com>)
+ id 1nqyZg-0002DY-5a; Tue, 17 May 2022 10:53:24 -0400
+Received: from mail-mr2fra01on061f.outbound.protection.outlook.com
+ ([2a01:111:f400:7e19::61f]:43415
+ helo=FRA01-MR2-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1nr02J-0003DL-6I
- for qemu-devel@nongnu.org; Tue, 17 May 2022 12:27:06 -0400
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-577-2GVC9FrJN1uzyUbIHGIflQ-1; Tue, 17 May 2022 12:26:57 -0400
-X-MC-Unique: 2GVC9FrJN1uzyUbIHGIflQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4000E8015BA;
- Tue, 17 May 2022 16:26:56 +0000 (UTC)
-Received: from bahia (unknown [10.39.192.143])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 62A0E14E2EE1;
- Tue, 17 May 2022 16:26:51 +0000 (UTC)
-Date: Tue, 17 May 2022 18:26:50 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Alberto Faria <afaria@redhat.com>
-Cc: qemu-devel@nongnu.org, Andrew Jeffery <andrew@aj.id.au>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-block@nongnu.org, Palmer Dabbelt
- <palmer@dabbelt.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
- <f4bug@amsat.org>, qemu-ppc@nongnu.org, Eric Blake <eblake@redhat.com>,
- Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>, Hanna Reitz
- <hreitz@redhat.com>, John Snow <jsnow@redhat.com>, Stefan Hajnoczi
- <stefanha@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- qemu-riscv@nongnu.org, =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>, Stefan Weil <sw@weilnetz.de>, Laurent Vivier
- <laurent@vivier.eu>, "Denis V. Lunev" <den@openvz.org>, Juan Quintela
- <quintela@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Niek
- Linnenbank <nieklinnenbank@gmail.com>, Daniel Henrique Barboza
- <danielhb413@gmail.com>, Kevin Wolf <kwolf@redhat.com>, "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org, Fam Zheng
- <fam@euphon.net>, Alistair Francis <alistair@alistair23.me>, Beniamino
- Galvani <b.galvani@gmail.com>, Bin Meng <bin.meng@windriver.com>, David
- Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [PATCH 02/18] block: Add a 'flags' param to blk_pread()
-Message-ID: <20220517182650.00328ad6@bahia>
-In-Reply-To: <20220517113524.197910-3-afaria@redhat.com>
-References: <20220517113524.197910-1-afaria@redhat.com>
- <20220517113524.197910-3-afaria@redhat.com>
+ (Exim 4.90_1) (envelope-from <florian.lugou@provenrun.com>)
+ id 1nqyZe-00046y-3X; Tue, 17 May 2022 10:53:23 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=g4oNxDcdT8JHf3Nm0f+OAypIX7FUJsapvHZWRga+nrsu5YlGDWwO04K50erLfXuk2MgVynYQMHkk2svkHMBPC/Hf2ZyxxbvaRRsMPh2+xDi2WyXmYo2UJuWexfQTryiERD8/kb1Yi+ETqpqgB1JzRqARZlWZWWpMQxAy4YEoxoh8AVl9fe81aTAtvOpWGc273EERj3CPD6iDD2qHokWF2idM8deFBSdiwD+vvjDM1WNMi5ELDw/57+kM/1rSjQc7+oR/oo9WZ0xOV+r+dUZrR5nl65D9ooarfBOZlIcbdCm8EoaZK1q02MolJ6MN6n9UUs5vQYALNLx7PWGAZzUB3Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zc41E76hr3tCQJDkvGWX/0HNAiLGB3Z9IMzZOZL48lw=;
+ b=aUdm+zfWwdaqlxiNzGtOvXZ//ORtHOTL42fHzNb4YkhCIA7x/exIAaRQqnWmUVyJkCx0SNzOFKYX4RQx55YG3YZuCaxSt5XTRl/MlcKKeCzYbVwmXI/uNzCBRLW0lUXo017TMxnPSkUTv3ql99mTbWZUa8DHC3d8GfEYCRaipgkVYiZglc9ZE4uFSJjoq9webTmc3+I63zVVXQmaW6B4giP8MKyza236Cjq6Qs8ltU/2zwMv1s5f5Rp9qHWaOA8wRoUkDbPvClnWeqja3PiKuO6ke79nWlVZlEVBW+NIlxxcSTWjxQrVhteyjcT/H5GIot8CKYhPWvS4uxfo4MLxcg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=provenrun.com; dmarc=pass action=none
+ header.from=provenrun.com; dkim=pass header.d=provenrun.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=provenrun.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zc41E76hr3tCQJDkvGWX/0HNAiLGB3Z9IMzZOZL48lw=;
+ b=XHauJPXA4yYvXkHdVhxdZRnbvTyg49Ik3WCTVpY13MT86SbjAgL3SM0PYKpfI7FnJImrCd8VByt3pXOut4OAEAd6nnqji7yyyQZ/Ov53QWywrnDsGoAZSGMFVWpv6xdluSAm3hNMCjvvdF40W3o+8K0wbZPpj0D/7mgOIkxsLyOPfqxhzkfrnJhrQMOQKonoWiUk0Ntz0aWkuDrhcPIK/kn/Szk1+c3Me081HPYC2cWQglYqbW39IZPJUapuI+1gXE+hVUY3Xb2fmhnotKxm05m/PrvMuhk1ciohDL71UGt3fY0sQyrfU7PsILDemhP5SedF7cbNX7hukcsiwmo0fQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=provenrun.com;
+Received: from MR1P264MB2531.FRAP264.PROD.OUTLOOK.COM (2603:10a6:501:34::7) by
+ PR0P264MB2711.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:1d2::5) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5250.14; Tue, 17 May 2022 14:53:17 +0000
+Received: from MR1P264MB2531.FRAP264.PROD.OUTLOOK.COM
+ ([fe80::f09f:b7ee:d841:b4c7]) by MR1P264MB2531.FRAP264.PROD.OUTLOOK.COM
+ ([fe80::f09f:b7ee:d841:b4c7%3]) with mapi id 15.20.5250.018; Tue, 17 May 2022
+ 14:53:17 +0000
+From: Florian Lugou <florian.lugou@provenrun.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Florian Lugou <florian.lugou@provenrun.com>
+Subject: [PATCH] target/arm: Fix PAuth keys access checks for disabled SEL2
+Date: Tue, 17 May 2022 16:52:42 +0200
+Message-Id: <20220517145242.1215271-1-florian.lugou@provenrun.com>
+X-Mailer: git-send-email 2.25.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: MR2P264CA0070.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:500:31::34) To MR1P264MB2531.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:501:34::7)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
-Received-SPF: softfail client-ip=207.211.30.44; envelope-from=groug@kaod.org;
- helo=us-smtp-delivery-44.mimecast.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 6a5fbf16-4eed-4b0a-d4c0-08da3814f9dd
+X-MS-TrafficTypeDiagnostic: PR0P264MB2711:EE_
+X-Microsoft-Antispam-PRVS: <PR0P264MB2711999683946EDB8727DBC3F7CE9@PR0P264MB2711.FRAP264.PROD.OUTLOOK.COM>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: dEGFmZjkefVDVUBxKX3kr6S0V/Rjqs5waQbaUY7dwpbhfrQj52tqxOUtTPPt4pCOa6yYVg7AY2QqQ9omIiiPgEfMyZBEaFzXZ6zIvfzPebgkP1ReFJDTGnJ4XIwsnfJCoxKxzwnSL9H3rRLEdFSwHw9AUA1s/TgikAYnbwML1tsCWQt+Bgg3DLq2YCdMWuDKR+LfgJmCkWT544eZM1IMxf5hhiJNb8CEHMZFReOzR2x0E//lrtvUNBRhGOd6IZogWJfuDvZVkuQx13/KEYXgV2BsxqfQwP8V5P8UEQ/JaoDKCu7s5InSRJvPpVMgXAtE1qucYmd9i3qkk9uWrizEoqslG7j4kYc9bYGYw1uXf3UfKr2FGmRDv7Q5cRxCp7xrhQk1hEdg3/F/rmUKXMoNviby/fiSN6zEF0Vaa9/9iFiEsgTb7uY2emfTHeGUXx+9NppIz/5FUMxiRwgB5q7hWvWPGr3UV5Fwt+eDhLZLH3HAMHGVQd4ey6nxGlJtAK9IgnaQlOOs/fHDGa0aY73H9+WDnNgt8z/jbNIyUe9ZB1w0VcWbVw4zbZef5r75vG73BsC5x6pQ6661wtOs6kgjqjhMLDcf497Mui3Bk+BuY9ChiuemMDoPVinf7FcuueTqeBb41zsDGQklXZrv1XP/LA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MR1P264MB2531.FRAP264.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(13230001)(346002)(136003)(396003)(366004)(376002)(39830400003)(316002)(52116002)(66556008)(66946007)(83380400001)(2616005)(1076003)(186003)(38100700002)(54906003)(5660300002)(6916009)(6666004)(2906002)(66476007)(508600001)(36756003)(107886003)(8936002)(4744005)(41300700001)(86362001)(4326008)(8676002)(6486002)(44832011)(6512007)(6506007);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?xcdJY7ZztQme29lR8Kl/sOY6udHAklfK7GVuCkVtusz1fuoGk0ZjEWzWkPL7?=
+ =?us-ascii?Q?jIzVqJ1Sahl3RkF/XxvuPEXVFlG03lWFECiXs1qn0lOImCqdU7VKjhkwiahU?=
+ =?us-ascii?Q?gPCp9hPQ6IZY19WsMTsJuVrM0s2y0Ie3ObLy/M0i26dWggzcKt2XntQk8vnN?=
+ =?us-ascii?Q?pNK4FDi/z1oeJvHvY8UFcqA7UPNRqUoPdtrsUXU6u5Sot2dAkR2NhJxkC115?=
+ =?us-ascii?Q?3whvnPCPUy5ivVi7SRWb5ilYrlXoTM5AJ2Da1NX8JC/Md9QzgNhYF5axVAQy?=
+ =?us-ascii?Q?naNXDCuHJXPZdB7pmu2W6R3l+m44bftKdxDwVAB+jVdVBZZLSQHQntxp2R9G?=
+ =?us-ascii?Q?O3itySLSsstAw4U2U9CkIKyi3i2YwecD89xvTfekX+yDCoeSWWBy+yoxSJjU?=
+ =?us-ascii?Q?jhMLMPviK3AtEH0LONFU2Ab7LHLo6fJrG6xTVR0x+SEQDQI+LtyHU3mP9pYr?=
+ =?us-ascii?Q?33ew2bbPLXgc/60v6cP1iyjJ26qkmxfl7UBpB2D7rZ+iR9/y1Y9ZerDrLI/c?=
+ =?us-ascii?Q?uYROpPkbiZ8BQt3WoIY9/d4xCaD1gqCZxcjwciJ1EDm2j4EQe/JsYDqLXUPy?=
+ =?us-ascii?Q?BKS0T5D2emQDf1sEtDNjnWDMw5K9qCHVYzBESTGvnkkZ3Ad9rUV9uQ/dBVn4?=
+ =?us-ascii?Q?n70WbDxbIbqlrvpyfK2WJ5fInQ/ls3oSCNtyQgaqBMckMGfBW0r4EnntJe0j?=
+ =?us-ascii?Q?yxONaVD9zcZ1N1ncMV71KTfIneHyG+Zx8keMh4YMsVzmiAcJgj7qV8ss9Nz/?=
+ =?us-ascii?Q?RDJb3wch1KXhK9w/XQplr4ZV6p0TpbCERolz3DO4ewvrDA4JK7ESpyCIS3Yo?=
+ =?us-ascii?Q?HaEyC+/UiVMmjcBQFd99sh9kBhPJocJEJBoZHKw8Q+EQf9QUE3u6DJbzsMFG?=
+ =?us-ascii?Q?BMo5+dApbcPnPgOoZnvBNGqc1aEPXVo2PpXBBZWZx2S46MDBeBIN/NucyPEk?=
+ =?us-ascii?Q?4qE+OTXRwOPLbYKRVnC5UsZoekRwvnbVQXeP5blqNb73uR0MnebumT7OqHDZ?=
+ =?us-ascii?Q?7/JvMK8N+5ngE28ADGM71tz9h1t6lR4lcjcpRsQo52pVhzfuwuQ9eC3nCNXj?=
+ =?us-ascii?Q?rOx8Rp3v21hCXQ1CfausYdBeSKhMmWITc1Efu1bmtVXy1OMsij9SwiF4uhFg?=
+ =?us-ascii?Q?kNiDabEs5ItRjNR1qEEU1DRYSg//dm/DV4HqzKrDuml005qwnq51pd+ZiKZ/?=
+ =?us-ascii?Q?wA4CHt98izL1yIBVcikikJoCo9HhwwD+DHxG0cNw7shLr/CdTSvZ3YlR7W3i?=
+ =?us-ascii?Q?Jeb04cr/9hA2qnmfsuJdZqU+XCZwaFlvOnRicmX4XUmkiVFYs0F9mh9Nvfes?=
+ =?us-ascii?Q?EcqU/IQNLNq2j+6ez9ojuK9LRX9TMhH/VIlfQJxfViH/+xt1rsbJj3NdC71c?=
+ =?us-ascii?Q?XG5Vlktg/Yxmzvkor1t59/HjTbfhM38ws8UZqCM/TDbFSF6w59zB0p0D606L?=
+ =?us-ascii?Q?w7GOpRh/YeIz5VkCiTX0m7Me/kGGPU5wKpDCp/Ak+6yroGk1SSQa+gAkASVx?=
+ =?us-ascii?Q?s0xz/4umMkgY/pnRS0XgXUtGydJ1TItga4QYEvr9buyU56qm4DO3YGh0GH+e?=
+ =?us-ascii?Q?MorxRBlJ+HUFKAyhq77oiDDy/HezLdwSOHsJ0L2bSrz8y/L5kKR9vK3zqSlJ?=
+ =?us-ascii?Q?FWOhrreZ8T+MXmfv8XBLekceaDBgzDO88cGk8cMyyhWhfTR0oEXnLJjWqPF3?=
+ =?us-ascii?Q?6gTL8QzNJeoU8Yf+gItYjKm7T7fEKn/m44Af10fuh6d8ECgwEGNtczxXcLck?=
+ =?us-ascii?Q?MJ7AtPXM9JphvBsL+ooxUjIS6d9Yv10sz3DjqhdeZynmMKQLhnwirftSExec?=
+X-MS-Exchange-AntiSpam-MessageData-1: jdoTWv0e1+CVILVge/oIcu8ys+GwL4mc7p0=
+X-OriginatorOrg: provenrun.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6a5fbf16-4eed-4b0a-d4c0-08da3814f9dd
+X-MS-Exchange-CrossTenant-AuthSource: MR1P264MB2531.FRAP264.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 May 2022 14:53:17.1099 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: ff654c30-3eb4-4445-b89f-a54a92b1f03d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 574gRgpPeFJu1uylVy9sq4Iclx5J/IYSQqF5EN1axlfAKTm70HfnpXAe6rS2UEFq5+rT/AjPk5lsdSwhM4WV0IXnvZjsyoS0RRZhKFOO+I0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PR0P264MB2711
+Received-SPF: pass client-ip=2a01:111:f400:7e19::61f;
+ envelope-from=florian.lugou@provenrun.com;
+ helo=FRA01-MR2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Tue, 17 May 2022 12:44:48 -0400
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: phNTlkMcu7W3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RB/Zc3LXGIWh
 
-On Tue, 17 May 2022 12:35:08 +0100
-Alberto Faria <afaria@redhat.com> wrote:
+As per the description of the HCR_EL2.APK field in the ARMv8 ARM,
+Pointer Authentication keys accesses should only be trapped to Secure
+EL2 if it is enabled.
 
-> For consistency with other I/O functions, and in preparation to
-> implement it using generated_co_wrapper.
-> 
-> Callers were updated using this Coccinelle script:
-> 
->     @@ expression blk, offset, buf, bytes; @@
->     - blk_pread(blk, offset, buf, bytes)
->     + blk_pread(blk, offset, buf, bytes, 0)
-> 
-> It had no effect on hw/block/nand.c, presumably due to the #if, so that
-> file was updated manually.
-> 
-> Overly-long lines were then fixed by hand.
-> 
-> Signed-off-by: Alberto Faria <afaria@redhat.com>
-> ---
+Signed-off-by: Florian Lugou <florian.lugou@provenrun.com>
+---
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Greg Kurz <groug@kaod.org>
-
->  block.c                           |  2 +-
->  block/block-backend.c             |  5 +++--
->  block/commit.c                    |  2 +-
->  block/export/fuse.c               |  2 +-
->  hw/arm/allwinner-h3.c             |  2 +-
->  hw/arm/aspeed.c                   |  2 +-
->  hw/block/block.c                  |  2 +-
->  hw/block/fdc.c                    |  6 +++---
->  hw/block/hd-geometry.c            |  2 +-
->  hw/block/m25p80.c                 |  2 +-
->  hw/block/nand.c                   | 12 ++++++------
->  hw/block/onenand.c                | 12 ++++++------
->  hw/ide/atapi.c                    |  4 ++--
->  hw/misc/mac_via.c                 |  2 +-
->  hw/misc/sifive_u_otp.c            |  4 ++--
->  hw/nvram/eeprom_at24c.c           |  2 +-
->  hw/nvram/spapr_nvram.c            |  2 +-
->  hw/nvram/xlnx-bbram.c             |  2 +-
->  hw/nvram/xlnx-efuse.c             |  2 +-
->  hw/ppc/pnv_pnor.c                 |  2 +-
->  hw/sd/sd.c                        |  2 +-
->  include/sysemu/block-backend-io.h |  3 ++-
->  migration/block.c                 |  4 ++--
->  nbd/server.c                      |  4 ++--
->  qemu-img.c                        | 12 ++++++------
->  qemu-io-cmds.c                    |  2 +-
->  tests/unit/test-block-iothread.c  |  4 ++--
->  27 files changed, 52 insertions(+), 50 deletions(-)
-> 
-> diff --git a/block.c b/block.c
-> index 0fd830e2e2..ed701b4889 100644
-> --- a/block.c
-> +++ b/block.c
-> @@ -1037,7 +1037,7 @@ static int find_image_format(BlockBackend *file, const char *filename,
->          return ret;
->      }
->  
-> -    ret = blk_pread(file, 0, buf, sizeof(buf));
-> +    ret = blk_pread(file, 0, buf, sizeof(buf), 0);
->      if (ret < 0) {
->          error_setg_errno(errp, -ret, "Could not read image for determining its "
->                           "format");
-> diff --git a/block/block-backend.c b/block/block-backend.c
-> index c1c367bf9e..da89450861 100644
-> --- a/block/block-backend.c
-> +++ b/block/block-backend.c
-> @@ -1567,14 +1567,15 @@ BlockAIOCB *blk_aio_pwrite_zeroes(BlockBackend *blk, int64_t offset,
->                          flags | BDRV_REQ_ZERO_WRITE, cb, opaque);
->  }
->  
-> -int blk_pread(BlockBackend *blk, int64_t offset, void *buf, int bytes)
-> +int blk_pread(BlockBackend *blk, int64_t offset, void *buf, int bytes,
-> +              BdrvRequestFlags flags)
->  {
->      int ret;
->      QEMUIOVector qiov = QEMU_IOVEC_INIT_BUF(qiov, buf, bytes);
->      IO_OR_GS_CODE();
->  
->      blk_inc_in_flight(blk);
-> -    ret = blk_do_preadv(blk, offset, bytes, &qiov, 0);
-> +    ret = blk_do_preadv(blk, offset, bytes, &qiov, flags);
->      blk_dec_in_flight(blk);
->  
->      return ret;
-> diff --git a/block/commit.c b/block/commit.c
-> index 851d1c557a..e5b3ad08da 100644
-> --- a/block/commit.c
-> +++ b/block/commit.c
-> @@ -527,7 +527,7 @@ int bdrv_commit(BlockDriverState *bs)
->              goto ro_cleanup;
->          }
->          if (ret) {
-> -            ret = blk_pread(src, offset, buf, n);
-> +            ret = blk_pread(src, offset, buf, n, 0);
->              if (ret < 0) {
->                  goto ro_cleanup;
->              }
-> diff --git a/block/export/fuse.c b/block/export/fuse.c
-> index e80b24a867..dcf8f225f3 100644
-> --- a/block/export/fuse.c
-> +++ b/block/export/fuse.c
-> @@ -554,7 +554,7 @@ static void fuse_read(fuse_req_t req, fuse_ino_t inode,
->          return;
->      }
->  
-> -    ret = blk_pread(exp->common.blk, offset, buf, size);
-> +    ret = blk_pread(exp->common.blk, offset, buf, size, 0);
->      if (ret >= 0) {
->          fuse_reply_buf(req, buf, size);
->      } else {
-> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> index 318ed4348c..788083b6fa 100644
-> --- a/hw/arm/allwinner-h3.c
-> +++ b/hw/arm/allwinner-h3.c
-> @@ -174,7 +174,7 @@ void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk)
->      const int64_t rom_size = 32 * KiB;
->      g_autofree uint8_t *buffer = g_new0(uint8_t, rom_size);
->  
-> -    if (blk_pread(blk, 8 * KiB, buffer, rom_size) < 0) {
-> +    if (blk_pread(blk, 8 * KiB, buffer, rom_size, 0) < 0) {
->          error_setg(&error_fatal, "%s: failed to read BlockBackend data",
->                     __func__);
->          return;
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index a74c13ab0f..06ab8cd0a5 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -269,7 +269,7 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
->      }
->  
->      storage = g_malloc0(rom_size);
-> -    if (blk_pread(blk, 0, storage, rom_size) < 0) {
-> +    if (blk_pread(blk, 0, storage, rom_size, 0) < 0) {
->          error_setg(errp, "failed to read the initial flash content");
->          return;
->      }
-> diff --git a/hw/block/block.c b/hw/block/block.c
-> index 25f45df723..effb89910c 100644
-> --- a/hw/block/block.c
-> +++ b/hw/block/block.c
-> @@ -53,7 +53,7 @@ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
->       * block device and read only on demand.
->       */
->      assert(size <= BDRV_REQUEST_MAX_BYTES);
-> -    ret = blk_pread(blk, 0, buf, size);
-> +    ret = blk_pread(blk, 0, buf, size, 0);
->      if (ret < 0) {
->          error_setg_errno(errp, -ret, "can't read block backend");
->          return false;
-> diff --git a/hw/block/fdc.c b/hw/block/fdc.c
-> index 57bb355794..52f278ed82 100644
-> --- a/hw/block/fdc.c
-> +++ b/hw/block/fdc.c
-> @@ -1628,8 +1628,8 @@ int fdctrl_transfer_handler(void *opaque, int nchan, int dma_pos, int dma_len)
->          if (fdctrl->data_dir != FD_DIR_WRITE ||
->              len < FD_SECTOR_LEN || rel_pos != 0) {
->              /* READ & SCAN commands and realign to a sector for WRITE */
-> -            if (blk_pread(cur_drv->blk, fd_offset(cur_drv),
-> -                          fdctrl->fifo, BDRV_SECTOR_SIZE) < 0) {
-> +            if (blk_pread(cur_drv->blk, fd_offset(cur_drv), fdctrl->fifo,
-> +                          BDRV_SECTOR_SIZE, 0) < 0) {
->                  FLOPPY_DPRINTF("Floppy: error getting sector %d\n",
->                                 fd_sector(cur_drv));
->                  /* Sure, image size is too small... */
-> @@ -1741,7 +1741,7 @@ static uint32_t fdctrl_read_data(FDCtrl *fdctrl)
->                      return 0;
->                  }
->              if (blk_pread(cur_drv->blk, fd_offset(cur_drv), fdctrl->fifo,
-> -                          BDRV_SECTOR_SIZE)
-> +                          BDRV_SECTOR_SIZE, 0)
->                  < 0) {
->                  FLOPPY_DPRINTF("error getting sector %d\n",
->                                 fd_sector(cur_drv));
-> diff --git a/hw/block/hd-geometry.c b/hw/block/hd-geometry.c
-> index dcbccee294..24933eae82 100644
-> --- a/hw/block/hd-geometry.c
-> +++ b/hw/block/hd-geometry.c
-> @@ -63,7 +63,7 @@ static int guess_disk_lchs(BlockBackend *blk,
->  
->      blk_get_geometry(blk, &nb_sectors);
->  
-> -    if (blk_pread(blk, 0, buf, BDRV_SECTOR_SIZE) < 0) {
-> +    if (blk_pread(blk, 0, buf, BDRV_SECTOR_SIZE, 0) < 0) {
->          return -1;
->      }
->      /* test msdos magic */
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index bd58c07bb6..3e93769fed 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -1506,7 +1506,7 @@ static void m25p80_realize(SSIPeripheral *ss, Error **errp)
->          trace_m25p80_binding(s);
->          s->storage = blk_blockalign(s->blk, s->size);
->  
-> -        if (blk_pread(s->blk, 0, s->storage, s->size) < 0) {
-> +        if (blk_pread(s->blk, 0, s->storage, s->size, 0) < 0) {
->              error_setg(errp, "failed to read the initial flash content");
->              return;
->          }
-> diff --git a/hw/block/nand.c b/hw/block/nand.c
-> index 8bc80e3514..ea3d33adf4 100644
-> --- a/hw/block/nand.c
-> +++ b/hw/block/nand.c
-> @@ -667,7 +667,7 @@ static void glue(nand_blk_write_, NAND_PAGE_SIZE)(NANDFlashState *s)
->          off = (s->addr & PAGE_MASK) + s->offset;
->          soff = SECTOR_OFFSET(s->addr);
->          if (blk_pread(s->blk, sector << BDRV_SECTOR_BITS, iobuf,
-> -                      PAGE_SECTORS << BDRV_SECTOR_BITS) < 0) {
-> +                      PAGE_SECTORS << BDRV_SECTOR_BITS, 0) < 0) {
->              printf("%s: read error in sector %" PRIu64 "\n", __func__, sector);
->              return;
->          }
-> @@ -688,7 +688,7 @@ static void glue(nand_blk_write_, NAND_PAGE_SIZE)(NANDFlashState *s)
->          sector = off >> 9;
->          soff = off & 0x1ff;
->          if (blk_pread(s->blk, sector << BDRV_SECTOR_BITS, iobuf,
-> -                      (PAGE_SECTORS + 2) << BDRV_SECTOR_BITS) < 0) {
-> +                      (PAGE_SECTORS + 2) << BDRV_SECTOR_BITS, 0) < 0) {
->              printf("%s: read error in sector %" PRIu64 "\n", __func__, sector);
->              return;
->          }
-> @@ -731,7 +731,7 @@ static void glue(nand_blk_erase_, NAND_PAGE_SIZE)(NANDFlashState *s)
->          addr = PAGE_START(addr);
->          page = addr >> 9;
->          if (blk_pread(s->blk, page << BDRV_SECTOR_BITS, iobuf,
-> -                      BDRV_SECTOR_SIZE) < 0) {
-> +                      BDRV_SECTOR_SIZE, 0) < 0) {
->              printf("%s: read error in sector %" PRIu64 "\n", __func__, page);
->          }
->          memset(iobuf + (addr & 0x1ff), 0xff, (~addr & 0x1ff) + 1);
-> @@ -752,7 +752,7 @@ static void glue(nand_blk_erase_, NAND_PAGE_SIZE)(NANDFlashState *s)
->  
->          page = i >> 9;
->          if (blk_pread(s->blk, page << BDRV_SECTOR_BITS, iobuf,
-> -                      BDRV_SECTOR_SIZE) < 0) {
-> +                      BDRV_SECTOR_SIZE, 0) < 0) {
->              printf("%s: read error in sector %" PRIu64 "\n", __func__, page);
->          }
->          memset(iobuf, 0xff, ((addr - 1) & 0x1ff) + 1);
-> @@ -773,7 +773,7 @@ static void glue(nand_blk_load_, NAND_PAGE_SIZE)(NANDFlashState *s,
->      if (s->blk) {
->          if (s->mem_oob) {
->              if (blk_pread(s->blk, SECTOR(addr) << BDRV_SECTOR_BITS, s->io,
-> -                          PAGE_SECTORS << BDRV_SECTOR_BITS) < 0) {
-> +                          PAGE_SECTORS << BDRV_SECTOR_BITS, 0) < 0) {
->                  printf("%s: read error in sector %" PRIu64 "\n",
->                                  __func__, SECTOR(addr));
->              }
-> @@ -783,7 +783,7 @@ static void glue(nand_blk_load_, NAND_PAGE_SIZE)(NANDFlashState *s,
->              s->ioaddr = s->io + SECTOR_OFFSET(s->addr) + offset;
->          } else {
->              if (blk_pread(s->blk, PAGE_START(addr), s->io,
-> -                          (PAGE_SECTORS + 2) << BDRV_SECTOR_BITS) < 0) {
-> +                          (PAGE_SECTORS + 2) << BDRV_SECTOR_BITS, 0) < 0) {
->                  printf("%s: read error in sector %" PRIu64 "\n",
->                                  __func__, PAGE_START(addr) >> 9);
->              }
-> diff --git a/hw/block/onenand.c b/hw/block/onenand.c
-> index afc0cd3a0f..1225ec8076 100644
-> --- a/hw/block/onenand.c
-> +++ b/hw/block/onenand.c
-> @@ -230,7 +230,7 @@ static void onenand_reset(OneNANDState *s, int cold)
->          memset(s->blockwp, ONEN_LOCK_LOCKED, s->blocks);
->  
->          if (s->blk_cur && blk_pread(s->blk_cur, 0, s->boot[0],
-> -                                    8 << BDRV_SECTOR_BITS) < 0) {
-> +                                    8 << BDRV_SECTOR_BITS, 0) < 0) {
->              hw_error("%s: Loading the BootRAM failed.\n", __func__);
->          }
->      }
-> @@ -250,7 +250,7 @@ static inline int onenand_load_main(OneNANDState *s, int sec, int secn,
->      assert(UINT32_MAX >> BDRV_SECTOR_BITS > secn);
->      if (s->blk_cur) {
->          return blk_pread(s->blk_cur, sec << BDRV_SECTOR_BITS, dest,
-> -                         secn << BDRV_SECTOR_BITS) < 0;
-> +                         secn << BDRV_SECTOR_BITS, 0) < 0;
->      } else if (sec + secn > s->secs_cur) {
->          return 1;
->      }
-> @@ -274,7 +274,7 @@ static inline int onenand_prog_main(OneNANDState *s, int sec, int secn,
->          uint8_t *dp = 0;
->          if (s->blk_cur) {
->              dp = g_malloc(size);
-> -            if (!dp || blk_pread(s->blk_cur, offset, dp, size) < 0) {
-> +            if (!dp || blk_pread(s->blk_cur, offset, dp, size, 0) < 0) {
->                  result = 1;
->              }
->          } else {
-> @@ -308,7 +308,7 @@ static inline int onenand_load_spare(OneNANDState *s, int sec, int secn,
->  
->      if (s->blk_cur) {
->          uint32_t offset = (s->secs_cur + (sec >> 5)) << BDRV_SECTOR_BITS;
-> -        if (blk_pread(s->blk_cur, offset, buf, BDRV_SECTOR_SIZE) < 0) {
-> +        if (blk_pread(s->blk_cur, offset, buf, BDRV_SECTOR_SIZE, 0) < 0) {
->              return 1;
->          }
->          memcpy(dest, buf + ((sec & 31) << 4), secn << 4);
-> @@ -333,7 +333,7 @@ static inline int onenand_prog_spare(OneNANDState *s, int sec, int secn,
->          if (s->blk_cur) {
->              dp = g_malloc(512);
->              if (!dp
-> -                || blk_pread(s->blk_cur, offset, dp, BDRV_SECTOR_SIZE) < 0) {
-> +                || blk_pread(s->blk_cur, offset, dp, BDRV_SECTOR_SIZE, 0) < 0) {
->                  result = 1;
->              } else {
->                  dpp = dp + ((sec & 31) << 4);
-> @@ -375,7 +375,7 @@ static inline int onenand_erase(OneNANDState *s, int sec, int num)
->                  goto fail;
->              }
->              if (blk_pread(s->blk_cur, erasesec << BDRV_SECTOR_BITS, tmpbuf,
-> -                          BDRV_SECTOR_SIZE) < 0) {
-> +                          BDRV_SECTOR_SIZE, 0) < 0) {
->                  goto fail;
->              }
->              memcpy(tmpbuf + ((sec & 31) << 4), blankbuf, 1 << 4);
-> diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
-> index b626199e3d..7e405657df 100644
-> --- a/hw/ide/atapi.c
-> +++ b/hw/ide/atapi.c
-> @@ -98,11 +98,11 @@ cd_read_sector_sync(IDEState *s)
->      switch (s->cd_sector_size) {
->      case 2048:
->          ret = blk_pread(s->blk, (int64_t)s->lba << ATAPI_SECTOR_BITS,
-> -                        s->io_buffer, ATAPI_SECTOR_SIZE);
-> +                        s->io_buffer, ATAPI_SECTOR_SIZE, 0);
->          break;
->      case 2352:
->          ret = blk_pread(s->blk, (int64_t)s->lba << ATAPI_SECTOR_BITS,
-> -                        s->io_buffer + 16, ATAPI_SECTOR_SIZE);
-> +                        s->io_buffer + 16, ATAPI_SECTOR_SIZE, 0);
->          if (ret >= 0) {
->              cd_data_to_raw(s->io_buffer, s->lba);
->          }
-> diff --git a/hw/misc/mac_via.c b/hw/misc/mac_via.c
-> index 0515d1818e..d259def2d2 100644
-> --- a/hw/misc/mac_via.c
-> +++ b/hw/misc/mac_via.c
-> @@ -1029,7 +1029,7 @@ static void mos6522_q800_via1_realize(DeviceState *dev, Error **errp)
->              return;
->          }
->  
-> -        len = blk_pread(v1s->blk, 0, v1s->PRAM, sizeof(v1s->PRAM));
-> +        len = blk_pread(v1s->blk, 0, v1s->PRAM, sizeof(v1s->PRAM), 0);
->          if (len < 0) {
->              error_setg(errp, "can't read PRAM contents");
->              return;
-> diff --git a/hw/misc/sifive_u_otp.c b/hw/misc/sifive_u_otp.c
-> index 535acde08b..c730bb1ae0 100644
-> --- a/hw/misc/sifive_u_otp.c
-> +++ b/hw/misc/sifive_u_otp.c
-> @@ -65,7 +65,7 @@ static uint64_t sifive_u_otp_read(void *opaque, hwaddr addr, unsigned int size)
->                  int32_t buf;
->  
->                  if (blk_pread(s->blk, s->pa * SIFIVE_U_OTP_FUSE_WORD, &buf,
-> -                              SIFIVE_U_OTP_FUSE_WORD) < 0) {
-> +                              SIFIVE_U_OTP_FUSE_WORD, 0) < 0) {
->                      error_report("read error index<%d>", s->pa);
->                      return 0xff;
->                  }
-> @@ -240,7 +240,7 @@ static void sifive_u_otp_realize(DeviceState *dev, Error **errp)
->                  return;
->              }
->  
-> -            if (blk_pread(s->blk, 0, s->fuse, filesize) < 0) {
-> +            if (blk_pread(s->blk, 0, s->fuse, filesize, 0) < 0) {
->                  error_setg(errp, "failed to read the initial flash content");
->                  return;
->              }
-> diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-> index 84acd71f5a..876b3dd5dc 100644
-> --- a/hw/nvram/eeprom_at24c.c
-> +++ b/hw/nvram/eeprom_at24c.c
-> @@ -163,7 +163,7 @@ void at24c_eeprom_reset(DeviceState *state)
->      memset(ee->mem, 0, ee->rsize);
->  
->      if (ee->blk) {
-> -        int len = blk_pread(ee->blk, 0, ee->mem, ee->rsize);
-> +        int len = blk_pread(ee->blk, 0, ee->mem, ee->rsize, 0);
->  
->          if (len < 0) {
->              ERR(TYPE_AT24C_EE
-> diff --git a/hw/nvram/spapr_nvram.c b/hw/nvram/spapr_nvram.c
-> index 6000b945c3..4d32d92ad4 100644
-> --- a/hw/nvram/spapr_nvram.c
-> +++ b/hw/nvram/spapr_nvram.c
-> @@ -179,7 +179,7 @@ static void spapr_nvram_realize(SpaprVioDevice *dev, Error **errp)
->      }
->  
->      if (nvram->blk) {
-> -        int alen = blk_pread(nvram->blk, 0, nvram->buf, nvram->size);
-> +        int alen = blk_pread(nvram->blk, 0, nvram->buf, nvram->size, 0);
->  
->          if (alen < 0) {
->              error_setg(errp, "can't read spapr-nvram contents");
-> diff --git a/hw/nvram/xlnx-bbram.c b/hw/nvram/xlnx-bbram.c
-> index 6ed32adad9..cb245b864c 100644
-> --- a/hw/nvram/xlnx-bbram.c
-> +++ b/hw/nvram/xlnx-bbram.c
-> @@ -124,7 +124,7 @@ static void bbram_bdrv_read(XlnxBBRam *s, Error **errp)
->                      blk_name(s->blk));
->      }
->  
-> -    if (blk_pread(s->blk, 0, ram, nr) < 0) {
-> +    if (blk_pread(s->blk, 0, ram, nr, 0) < 0) {
->          error_setg(errp,
->                     "%s: Failed to read %u bytes from BBRAM backstore.",
->                     blk_name(s->blk), nr);
-> diff --git a/hw/nvram/xlnx-efuse.c b/hw/nvram/xlnx-efuse.c
-> index a0fd77b586..edaac9cf7c 100644
-> --- a/hw/nvram/xlnx-efuse.c
-> +++ b/hw/nvram/xlnx-efuse.c
-> @@ -77,7 +77,7 @@ static int efuse_bdrv_read(XlnxEFuse *s, Error **errp)
->                      blk_name(s->blk));
->      }
->  
-> -    if (blk_pread(s->blk, 0, ram, nr) < 0) {
-> +    if (blk_pread(s->blk, 0, ram, nr, 0) < 0) {
->          error_setg(errp, "%s: Failed to read %u bytes from eFUSE backstore.",
->                     blk_name(s->blk), nr);
->          return -1;
-> diff --git a/hw/ppc/pnv_pnor.c b/hw/ppc/pnv_pnor.c
-> index 1fb748afef..f341f5a9c9 100644
-> --- a/hw/ppc/pnv_pnor.c
-> +++ b/hw/ppc/pnv_pnor.c
-> @@ -99,7 +99,7 @@ static void pnv_pnor_realize(DeviceState *dev, Error **errp)
->  
->          s->storage = blk_blockalign(s->blk, s->size);
->  
-> -        if (blk_pread(s->blk, 0, s->storage, s->size) < 0) {
-> +        if (blk_pread(s->blk, 0, s->storage, s->size, 0) < 0) {
->              error_setg(errp, "failed to read the initial flash content");
->              return;
->          }
-> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index 8e6fa09151..701170bf37 100644
-> --- a/hw/sd/sd.c
-> +++ b/hw/sd/sd.c
-> @@ -752,7 +752,7 @@ void sd_set_cb(SDState *sd, qemu_irq readonly, qemu_irq insert)
->  static void sd_blk_read(SDState *sd, uint64_t addr, uint32_t len)
->  {
->      trace_sdcard_read_block(addr, len);
-> -    if (!sd->blk || blk_pread(sd->blk, addr, sd->data, len) < 0) {
-> +    if (!sd->blk || blk_pread(sd->blk, addr, sd->data, len, 0) < 0) {
->          fprintf(stderr, "sd_blk_read: read error on host side\n");
->      }
->  }
-> diff --git a/include/sysemu/block-backend-io.h b/include/sysemu/block-backend-io.h
-> index 6517c39295..288bf39be1 100644
-> --- a/include/sysemu/block-backend-io.h
-> +++ b/include/sysemu/block-backend-io.h
-> @@ -102,7 +102,8 @@ int coroutine_fn blk_co_copy_range(BlockBackend *blk_in, int64_t off_in,
->   * the "I/O or GS" API.
->   */
->  
-> -int blk_pread(BlockBackend *blk, int64_t offset, void *buf, int bytes);
-> +int blk_pread(BlockBackend *blk, int64_t offset, void *buf, int bytes,
-> +              BdrvRequestFlags flags);
->  int blk_pwrite(BlockBackend *blk, int64_t offset, const void *buf, int bytes,
->                 BdrvRequestFlags flags);
->  int coroutine_fn blk_co_preadv(BlockBackend *blk, int64_t offset,
-> diff --git a/migration/block.c b/migration/block.c
-> index 077a413325..fa216af025 100644
-> --- a/migration/block.c
-> +++ b/migration/block.c
-> @@ -568,8 +568,8 @@ static int mig_save_device_dirty(QEMUFile *f, BlkMigDevState *bmds,
->                  bmds_set_aio_inflight(bmds, sector, nr_sectors, 1);
->                  blk_mig_unlock();
->              } else {
-> -                ret = blk_pread(bmds->blk, sector * BDRV_SECTOR_SIZE, blk->buf,
-> -                                nr_sectors * BDRV_SECTOR_SIZE);
-> +                ret = blk_pread(bmds->blk, sector * BDRV_SECTOR_SIZE,
-> +                                blk->buf, nr_sectors * BDRV_SECTOR_SIZE, 0);
->                  if (ret < 0) {
->                      goto error;
->                  }
-> diff --git a/nbd/server.c b/nbd/server.c
-> index 213e00e761..849433aa3a 100644
-> --- a/nbd/server.c
-> +++ b/nbd/server.c
-> @@ -2040,7 +2040,7 @@ static int coroutine_fn nbd_co_send_sparse_read(NBDClient *client,
->              ret = nbd_co_send_iov(client, iov, 1, errp);
->          } else {
->              ret = blk_pread(exp->common.blk, offset + progress,
-> -                            data + progress, pnum);
-> +                            data + progress, pnum, 0);
->              if (ret < 0) {
->                  error_setg_errno(errp, -ret, "reading from file failed");
->                  break;
-> @@ -2444,7 +2444,7 @@ static coroutine_fn int nbd_do_cmd_read(NBDClient *client, NBDRequest *request,
->                                         data, request->len, errp);
->      }
->  
-> -    ret = blk_pread(exp->common.blk, request->from, data, request->len);
-> +    ret = blk_pread(exp->common.blk, request->from, data, request->len, 0);
->      if (ret < 0) {
->          return nbd_send_generic_reply(client, request->handle, ret,
->                                        "reading from file failed", errp);
-> diff --git a/qemu-img.c b/qemu-img.c
-> index 9d98ef63ac..edec9e4097 100644
-> --- a/qemu-img.c
-> +++ b/qemu-img.c
-> @@ -1309,7 +1309,7 @@ static int check_empty_sectors(BlockBackend *blk, int64_t offset,
->      int ret = 0;
->      int64_t idx;
->  
-> -    ret = blk_pread(blk, offset, buffer, bytes);
-> +    ret = blk_pread(blk, offset, buffer, bytes, 0);
->      if (ret < 0) {
->          error_report("Error while reading offset %" PRId64 " of %s: %s",
->                       offset, filename, strerror(-ret));
-> @@ -1526,7 +1526,7 @@ static int img_compare(int argc, char **argv)
->                  int64_t pnum;
->  
->                  chunk = MIN(chunk, IO_BUF_SIZE);
-> -                ret = blk_pread(blk1, offset, buf1, chunk);
-> +                ret = blk_pread(blk1, offset, buf1, chunk, 0);
->                  if (ret < 0) {
->                      error_report("Error while reading offset %" PRId64
->                                   " of %s: %s",
-> @@ -1534,7 +1534,7 @@ static int img_compare(int argc, char **argv)
->                      ret = 4;
->                      goto out;
->                  }
-> -                ret = blk_pread(blk2, offset, buf2, chunk);
-> +                ret = blk_pread(blk2, offset, buf2, chunk, 0);
->                  if (ret < 0) {
->                      error_report("Error while reading offset %" PRId64
->                                   " of %s: %s",
-> @@ -3779,7 +3779,7 @@ static int img_rebase(int argc, char **argv)
->                      n = old_backing_size - offset;
->                  }
->  
-> -                ret = blk_pread(blk_old_backing, offset, buf_old, n);
-> +                ret = blk_pread(blk_old_backing, offset, buf_old, n, 0);
->                  if (ret < 0) {
->                      error_report("error while reading from old backing file");
->                      goto out;
-> @@ -3793,7 +3793,7 @@ static int img_rebase(int argc, char **argv)
->                      n = new_backing_size - offset;
->                  }
->  
-> -                ret = blk_pread(blk_new_backing, offset, buf_new, n);
-> +                ret = blk_pread(blk_new_backing, offset, buf_new, n, 0);
->                  if (ret < 0) {
->                      error_report("error while reading from new backing file");
->                      goto out;
-> @@ -5124,7 +5124,7 @@ static int img_dd(int argc, char **argv)
->  
->          bytes = (in_pos + in.bsz > size) ? size - in_pos : in.bsz;
->  
-> -        in_ret = blk_pread(blk1, in_pos, in.buf, bytes);
-> +        in_ret = blk_pread(blk1, in_pos, in.buf, bytes, 0);
->          if (in_ret < 0) {
->              error_report("error while reading from input image file: %s",
->                           strerror(-in_ret));
-> diff --git a/qemu-io-cmds.c b/qemu-io-cmds.c
-> index 443f22c732..582e1a7090 100644
-> --- a/qemu-io-cmds.c
-> +++ b/qemu-io-cmds.c
-> @@ -547,7 +547,7 @@ static int do_pread(BlockBackend *blk, char *buf, int64_t offset,
->          return -ERANGE;
->      }
->  
-> -    ret = blk_pread(blk, offset, (uint8_t *)buf, bytes);
-> +    ret = blk_pread(blk, offset, (uint8_t *)buf, bytes, 0);
->      if (ret < 0) {
->          return ret;
->      }
-> diff --git a/tests/unit/test-block-iothread.c b/tests/unit/test-block-iothread.c
-> index 3c1a3f64a2..bfd12c9c15 100644
-> --- a/tests/unit/test-block-iothread.c
-> +++ b/tests/unit/test-block-iothread.c
-> @@ -116,11 +116,11 @@ static void test_sync_op_blk_pread(BlockBackend *blk)
->      int ret;
->  
->      /* Success */
-> -    ret = blk_pread(blk, 0, buf, sizeof(buf));
-> +    ret = blk_pread(blk, 0, buf, sizeof(buf), 0);
->      g_assert_cmpint(ret, ==, 0);
->  
->      /* Early error: Negative offset */
-> -    ret = blk_pread(blk, -2, buf, sizeof(buf));
-> +    ret = blk_pread(blk, -2, buf, sizeof(buf), 0);
->      g_assert_cmpint(ret, ==, -EIO);
->  }
->  
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 432bd81919..29f73c7343 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6758,7 +6758,7 @@ static CPAccessResult access_pauth(CPUARMState *env, const ARMCPRegInfo *ri,
+     int el = arm_current_el(env);
+ 
+     if (el < 2 &&
+-        arm_feature(env, ARM_FEATURE_EL2) &&
++        arm_is_el2_enabled(env) &&
+         !(arm_hcr_el2_eff(env) & HCR_APK)) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+-- 
+2.25.1
 

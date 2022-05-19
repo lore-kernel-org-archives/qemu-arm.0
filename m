@@ -1,117 +1,131 @@
-Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp1208443lfh;
-        Thu, 19 May 2022 08:14:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7Whho8O+MQHC+LVa0BUBCrW6jeW55kR17+FLohhNWLy36PRpXQiFOtNftKqT+SPHC4p2w
-X-Received: by 2002:a05:620a:22c1:b0:69f:9c48:11bc with SMTP id o1-20020a05620a22c100b0069f9c4811bcmr3360870qki.155.1652973262500;
-        Thu, 19 May 2022 08:14:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652973262; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CMtxvj2obj2/TE7djqnGYE1iEiWLRaf65tY+saUQZAdXNtTP1UnIDQYqXb42/mNO8X
-         rC0ohF6pC/cirTYSPTfQdzpIwDK0V9yZ5mmnG1GmgkBdoKiNm9Nrmm2TzisvlS3oHjbq
-         Ug0ZSi9kGe8GDkptQrniyu7EeKqJwr9tC4Yu9V9wjaUKufZ/RqorSoU7Is7UWrsb6ZWh
-         z3eKwk0d/cBFMmzM50o9CBMH6B9do5wn7HxVjSIkWuHiU8ckB720xKK/3laCzr9U5qPv
-         jSL5H7AHZdSOv6o5N4uoh/shuT0wsBgH51ml/0ZqtIWB3stnAa3Qo90l16z92kJN5k/X
-         ixaQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=TWWP0Ec8+JAHhg+W0DujJOolNBmHzV28ZMbXwRVPEws=;
-        b=jCUUkMDhR58/tJ36pv5Hc+nuuq8QTpFxzpjG1VC71NxiZIJq5FbDefiegQG8lu4vHy
-         QO1OqsuHWlnpWONEO5U6VUEUdCQBcaLKneeWvnBHkNKhSG6yO059MlZo2RF+1kEpSVm6
-         IbyHpcC5AX6cE/9kBGPLt4yS+/nR2vRQozSaVxYEOY2X5c2pNHIBlWJTAU/g0I42P+/T
-         RQQOx2DQuuTZg2NYsQ6KmGEhseIq/UgxoMep8IlVoE4lk5DueaqVxNGnA1vlCOLhKb3g
-         +fMTJDDZk3nTZSYBubiq9gSe2spbQ1prt4SHEMa5moZDSsd9hpKgZuaypP6yj6piCep6
-         St6Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gy3QnIuw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp1230665lfh;
+        Thu, 19 May 2022 08:48:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxwAuVaKFrz4UO+kj/tOT6siE8/Ya/EGlJ7puApTF00fEPmVD+U5QH1kSG12EAvgwQDK14B
+X-Received: by 2002:ad4:5f4e:0:b0:45a:b97d:14de with SMTP id p14-20020ad45f4e000000b0045ab97d14demr4657513qvg.73.1652975312444;
+        Thu, 19 May 2022 08:48:32 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iy5-20020a0562140f6500b004443b158fb9si1507246qvb.412.2022.05.19.08.14.22
+        by mx.google.com with ESMTPS id jl14-20020ad45e8e000000b0045dd051ea25si1395120qvb.97.2022.05.19.08.48.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 May 2022 08:14:22 -0700 (PDT)
+        Thu, 19 May 2022 08:48:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gy3QnIuw;
+       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=dwdm6LRK;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39262 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:33558 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nrhr4-0008MU-1r
-	for alex.bennee@linaro.org; Thu, 19 May 2022 11:14:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56774)
+	id 1nriO7-00038T-T9
+	for alex.bennee@linaro.org; Thu, 19 May 2022 11:48:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35558)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nrhhf-00008y-C5
- for qemu-devel@nongnu.org; Thu, 19 May 2022 11:04:39 -0400
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:51773)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nrhhd-0003EX-Qp
- for qemu-devel@nongnu.org; Thu, 19 May 2022 11:04:39 -0400
-Received: by mail-pj1-x1036.google.com with SMTP id gg20so5588732pjb.1
- for <qemu-devel@nongnu.org>; Thu, 19 May 2022 08:04:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=TWWP0Ec8+JAHhg+W0DujJOolNBmHzV28ZMbXwRVPEws=;
- b=gy3QnIuwB+8z1cPiSOYLwrDpH+zOFehhJ6E63TRECOL9qOD+IM+EJh7k+lGWluy0uZ
- /sAf3AaV2kgn4uLitbw4Lr+L2A900HtWA9pJsMs+zupzDNEtokmeKRV6lDBO0iSDrEbw
- FZnNZzM0dIu4CkPdgHBJUuA3ZtamO6pz+db5VY1PpDlAiUWfob44gPvalEkeoDhyCq/0
- zlbXfP/2e4R3fPV5HSiNijCNdnnzqqkgAuwOSa34vxdapr1z+e55wZrFdTJSSyAGmegr
- 8UusIN5KdCTXtnkewC5BsiYBVdXRJoMeie4gRaVMCkZVrADKvhLxR4IA9L87lIv6+C2A
- qvEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=TWWP0Ec8+JAHhg+W0DujJOolNBmHzV28ZMbXwRVPEws=;
- b=RZDI6OcIgE8xk44X7/1q7s4jdhdy/nOR6W0nhiIgzpUPV0JAg6nPDDeoUlR3U6Ism9
- CwUtYrD2qGPR3IPvMx1nd/NqKDfW3TaKroUQpRNPoxJGKnwL2s0A2VJW8FxTRyl/ZXc4
- iZCFI8vtp0URGty+lcJQMf2R6ktYiRKTE/O5j9YuInlQzkch4ZE5ExZiwE989uYYdZ0i
- Dx/cd3xxi5LxLy+4gQtN/UX9inGLTeHAhdtpwjzE/BCYiQzGY00oefGKvOSJjEwLzV/s
- taYngQoToF2wi1C5JqNiFx2X4sKlk3Rm/6XjLNjzjAJvQy7aZ8h0VVBUbHEoEaczS+8t
- cMNg==
-X-Gm-Message-State: AOAM530pRbBqbQLum4Zjgt2dNblqZfXYfvuAtMakUjDhdLtXYn1fw9MN
- CSlV67QNV338iypD53NIg9vnoA==
-X-Received: by 2002:a17:902:9349:b0:158:a6f7:e280 with SMTP id
- g9-20020a170902934900b00158a6f7e280mr5132961plp.155.1652972676322; 
- Thu, 19 May 2022 08:04:36 -0700 (PDT)
-Received: from [192.168.1.6] ([71.212.142.129])
- by smtp.gmail.com with ESMTPSA id
- m27-20020a62a21b000000b0050dc7628148sm4333639pff.34.2022.05.19.08.04.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 May 2022 08:04:35 -0700 (PDT)
-Message-ID: <c0547d5f-5842-ead7-ede2-23ca5a201ac9@linaro.org>
-Date: Thu, 19 May 2022 08:04:34 -0700
+ (Exim 4.90_1)
+ (envelope-from <bounces+SRS=DmMzc=V3@xilinx.onmicrosoft.com>)
+ id 1nriFE-0007Xs-5s; Thu, 19 May 2022 11:39:25 -0400
+Received: from mail-bn1nam07on2060f.outbound.protection.outlook.com
+ ([2a01:111:f400:7eb2::60f]:23553
+ helo=NAM02-BN1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1)
+ (envelope-from <bounces+SRS=DmMzc=V3@xilinx.onmicrosoft.com>)
+ id 1nriF8-0008Rx-9H; Thu, 19 May 2022 11:39:19 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=AmRtXE6USoFGeEslhh34G3OKTckXhijehJkBbNLnmemQ7Vq2jObo96XtA1crrd8Kc6un8WiWvOOTzHicJZdjiVaGtD7/2s8EBqmHqP0A8qVzcKh1EEVW5RgAUldhLbsw4z6UotZDuG+B4pxspoRezhh/1rMzq0T3VlYWai7Q5mtXD9Ne4RqyymqNZnrVcXx5g4DfmaNmSGkMDvaEsiu6EYlttOWdPV74q/UC6Qi4g+fg7pTG+3VxKAJ2xa9kqZsKE3xh9tb3bnVxsrauxZmbbrgwOG9nTOrI/20kff6la3uvdcp8RBxWdPdERlOgGNs2t2ya/2Sqt7ZhmwpQt9P6FA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=TJTUI8LE4GrkbevW5hQJgSYHGGQ54q8PX7vKxGohbCA=;
+ b=mD4Fa2fGn70J8CjAWywe5hGFAp+9oMNRmhsuvr7vRgVaPP5V/u2Zg/KEi+aHBCCO9pFYZV8k8V/TYwth0F5h96iUjjj1spPCPzGdtrRz+8SYlrC+sQbSBGlgqwApTqo/kunwXd7g7lZoyS7PYA8zYQdLireQ56kEBdyrc/pPp/qtKGtJLbdJ5E5vCiy+Q+DIXMgKrHu+c8dpHhAsy04/DSdgTl2HzpK2gBg0OHVU3h+d6iTZV8xV5S6rhcLhioE/I7ebynFCrBoDuRwfDW2iimSkhwFZ4CDRTRjz8JpZLlD7y6MarqZIx1wdVSsv3td5On/Bl/K21mVJZsvoHIbkwA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
+ is 149.199.80.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com;
+ dmarc=fail (p=quarantine sp=quarantine pct=100) action=quarantine
+ header.from=amd.com; dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=TJTUI8LE4GrkbevW5hQJgSYHGGQ54q8PX7vKxGohbCA=;
+ b=dwdm6LRK8BxhrVTaRDRMCjesNG6UNE+sW4+WWcHy5RvyasRkFZJb3DatzfoI1NnfSvV/CPE+4yRpZIsrAd2j7Z4MdrXlo0cXGndF3hTLCbctumzHd2gPgz+/E1SwSSzmOtMcz3cmERAzD+y+y1FI4PwZUT0kD0lY32LJ/r7KA6A=
+Received: from BN9P221CA0008.NAMP221.PROD.OUTLOOK.COM (2603:10b6:408:10a::30)
+ by BL0PR02MB4642.namprd02.prod.outlook.com (2603:10b6:208:40::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5250.17; Thu, 19 May
+ 2022 15:39:06 +0000
+Received: from BN1NAM02FT033.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:408:10a:cafe::da) by BN9P221CA0008.outlook.office365.com
+ (2603:10b6:408:10a::30) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5273.14 via Frontend
+ Transport; Thu, 19 May 2022 15:39:06 +0000
+X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is
+ 149.199.80.198) smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=quarantine header.from=amd.com;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ amd.com discourages use of 149.199.80.198 as permitted sender)
+Received: from xir-pvapexch02.xlnx.xilinx.com (149.199.80.198) by
+ BN1NAM02FT033.mail.protection.outlook.com (10.13.3.186) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.5273.14 via Frontend Transport; Thu, 19 May 2022 15:39:05 +0000
+Received: from xir-pvapexch01.xlnx.xilinx.com (172.21.17.15) by
+ xir-pvapexch02.xlnx.xilinx.com (172.21.17.17) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.14; Thu, 19 May 2022 16:39:04 +0100
+Received: from smtp.xilinx.com (172.21.105.198) by
+ xir-pvapexch01.xlnx.xilinx.com (172.21.17.15) with Microsoft SMTP Server id
+ 15.1.2176.14 via Frontend Transport; Thu, 19 May 2022 16:39:04 +0100
+Received: from [172.21.132.221] (port=36706 helo=xdcsswbld02.xilinx.com)
+ by smtp.xilinx.com with esmtp (Exim 4.90)
+ (envelope-from <fkonrad@amd.com>)
+ id 1nriEy-0007q5-IT; Thu, 19 May 2022 16:39:04 +0100
+To: <qemu-devel@nongnu.org>
+CC: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
+ <edgar.iglesias@gmail.com>, <alistair@alistair23.me>, <saipava@xilinx.com>,
+ <edgari@xilinx.com>, <fkonrad@amd.com>, "Edgar E . Iglesias"
+ <edgar.iglesias@amd.com>
+Subject: [PATCH v2 4/4] xlnx-zynqmp: fix the irq mapping for the display port
+ and its dma
+Date: Thu, 19 May 2022 16:38:29 +0100
+Message-ID: <20220519153829.356889-5-fkonrad@amd.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220519153829.356889-1-fkonrad@amd.com>
+References: <20220519153829.356889-1-fkonrad@amd.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH v2 7/7] target/arm: Add el_is_in_host
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220517054850.177016-1-richard.henderson@linaro.org>
- <20220517054850.177016-8-richard.henderson@linaro.org>
- <CAFEAcA_sQzRhq3WNLR3CvmBtt_Wz7Oc=+chDOXrTSrYSj7t6Ag@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA_sQzRhq3WNLR3CvmBtt_Wz7Oc=+chDOXrTSrYSj7t6Ag@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 4007d633-775a-4248-d819-08da39adb550
+X-MS-TrafficTypeDiagnostic: BL0PR02MB4642:EE_
+X-Microsoft-Antispam-PRVS: <BL0PR02MB46427C2FF904272E699094AFA6D09@BL0PR02MB4642.namprd02.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 2
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: W9Db/oEM+KKNMoF9nZ5kOmQEBAKWn+bW4Ml5Sa9vdJzlj2t6N/9Y4HPseXOiftItggxR5SI1RrZctMEMLxYdF2f95t7HhLf+L8SigCX24EZKbXcCv1LQOVeFtbzIRqnISVrH/3EG+Yoy72nQmAvp6o83bQ8lVl70AU82jhHVXsLOWMkdits3ysUL49dJ2qnCYiSF66a7Zx4eDEi7PKclzpB3BKAXjwfiF4kDwRYomZnE+RNnL80LAgscKLCdW9uNN8wM5sKH8YG4PXmcfNz6+gt/13uHduMuAhSX0H7fWnrr711oPPGvoMpvNu5PTTqn5z4wEuodrkXD/WvpK9Hu5sAdNcH++iF6XmScUd+rJOZruHveO69FLbra++j39Bl9iF7CLnUK9BD+5zY7WV/MfUUxUitNPDi+Ljxf9LiQ3sDpo+CxB8fgpvbsto43SUJUMWaP4M0GA8j877XfxHxFQd8NnGFe4gxqvnkDGNaxKZjrQ1irFx70vIjnSvUIRfITZeLG3PVBG/Il8bhaboV05UOi/HHb+GpwE8XKXgFZLel6thqRWc9rud5I14yAQwjTQT1n59vGyeUyDzZegtdzCLmW9j2eA9MzdAi5MRk26N79Ll9OyS5dQW5EEuUNmvQQAiVCwyLZgyArXiTgcIN8p2axiSMc+Ah/Ipaz3i1+Hmg7HgL2bvOQzB9aSCzeOqY6V4fPvwh8SdvgWXu2Zsmbiw==
+X-Forefront-Antispam-Report: CIP:149.199.80.198; CTRY:IE; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:xir-pvapexch02.xlnx.xilinx.com;
+ PTR:unknown-80-198.xilinx.com; CAT:NONE;
+ SFS:(13230001)(4636009)(40470700004)(46966006)(336012)(54906003)(83380400001)(40460700003)(26005)(6916009)(70586007)(82310400005)(9786002)(47076005)(1076003)(8936002)(508600001)(356005)(86362001)(4744005)(7636003)(5660300002)(316002)(35950700001)(70206006)(2616005)(2906002)(36756003)(4326008)(8676002)(6666004)(102446001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: xilinx.onmicrosoft.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 May 2022 15:39:05.8727 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4007d633-775a-4248-d819-08da39adb550
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.80.198];
+ Helo=[xir-pvapexch02.xlnx.xilinx.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN1NAM02FT033.eop-nam02.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR02MB4642
+Received-SPF: pass client-ip=2a01:111:f400:7eb2::60f;
+ envelope-from=bounces+SRS=DmMzc=V3@xilinx.onmicrosoft.com;
+ helo=NAM02-BN1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,22 +140,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Rc9Rg7nVuU0M
+Reply-to:  Frederic Konrad <fkonrad@amd.com>
+From:  Frederic Konrad via <qemu-devel@nongnu.org>
+X-TUID: vNWmwrVh0E8y
 
-On 5/19/22 04:39, Peter Maydell wrote:
->> +    mask = el ? HCR_E2H : HCR_E2H | HCR_TGE;
->> +    if ((env->cp15.hcr_el2 & mask) != mask) {
->> +        return false;
->> +    }
->> +
->> +    /* TGE and/or E2H set: double check those bits are currently legal. */
->> +    return arm_is_el2_enabled(env) && arm_el_is_aa64(env, 2);
->> +}
-> 
-> What about the HaveVirtHostExt() check ?
+When the display port has been initially implemented the device driver wasn't
+using interrupts.  Now that the display port driver waits for vblank interrupt
+it has been noticed that the irq mapping is wrong.  So use the value from the
+linux device tree and the ultrascale+ reference manual.
 
-Handled by do_hcr_write, in not letting E2H be set.
-Will add a comment.
+Signed-off-by: Frederic Konrad <fkonrad@amd.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+---
+ hw/arm/xlnx-zynqmp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 375309e68e..383e177a00 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -60,10 +60,10 @@
+ #define SERDES_SIZE         0x20000
+ 
+ #define DP_ADDR             0xfd4a0000
+-#define DP_IRQ              113
++#define DP_IRQ              0x77
+ 
+ #define DPDMA_ADDR          0xfd4c0000
+-#define DPDMA_IRQ           116
++#define DPDMA_IRQ           0x7a
+ 
+ #define APU_ADDR            0xfd5c0000
+ #define APU_IRQ             153
+-- 
+2.25.1
 
-r~

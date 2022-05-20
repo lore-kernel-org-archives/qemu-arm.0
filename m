@@ -1,151 +1,152 @@
-Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp1259249lfh;
-        Thu, 19 May 2022 09:34:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxiFX9IvrpbLDvpJGXPO4DnhIdC0Z7Ak0cHqxfYWI84Bjm5LaKy12X2aV8Fh2eMy6Y6ZGsp
-X-Received: by 2002:a05:622a:1b91:b0:2f3:cbd3:1d3f with SMTP id bp17-20020a05622a1b9100b002f3cbd31d3fmr4572203qtb.37.1652978048317;
-        Thu, 19 May 2022 09:34:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1652978048; cv=none;
+Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp1796946lfh;
+        Fri, 20 May 2022 05:47:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwouXjZR3kPHXs77+XMERq7ydk175hV5borAszqR1RzjXVYE2mzZCh/dFYlvjboHdbqxgY6
+X-Received: by 2002:a37:5ac4:0:b0:69a:1423:4cac with SMTP id o187-20020a375ac4000000b0069a14234cacmr6057379qkb.41.1653050855708;
+        Fri, 20 May 2022 05:47:35 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1653050855; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Ry1wmf2uU0D2zGqi0nPcW6cJnlXp6ZMSorrmw2xKbXZewAvfUc/mxReZW8ygY9eO/k
-         RxwR74pUoZ2aJDhtartDXjwh6oPEmLaHwTFOhOyqBFJVuSjeBR/VECD4TaGHf9DGXp7i
-         HH+hU1aZVKnuYfZGIThkj2BAY7E2FCVa+xaNLiuujSvQH2HXcbinNO/AxK5FfFD6RbYD
-         S6Lqz1URpKdswnJvMW2UXcn55VbGHOBWszFIRZ49J61FHeuYhXsKq654233GPoebhKgS
-         F9zYDoBvZJ/5Q7snMmylbVfmgredm+O1qWR9XInTG70CKflia+h34LXAmMzaWITsnzA1
-         q5Aw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=KkkaoJX/gItoyqFbDJdIloPJmRNFqp2KI//FPCOS9cax9jlX1NCVHNuYbxcK6wr3Lz
+         X47BAZgffEFClsuvRLdht+cSPx2ccxacSIf5ZFDKyobU4n2JdH3DAxV/qqoo+hSCnrwE
+         7mBqPWU+sWjulqus1DrX4bMaI+lOQsdkOoZLeT3LSmqNCuVf8D/K6xwNX0vD0guNpad8
+         CIrtFDe8IKSH+rKVBazTk+uKN/QHojVW5o960du0nz7CLRaua/N39AwcVD1V24bxZgCj
+         wrNd8dhwqDTKWyexylsaUiLmH26w+gbsNahYdcYbfxhguC2+lVFZpG8UedYpSjXTaVfU
+         iQUg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=IMljC8Xt9Lp3w6Mi2pLPvYPv4WBF6EpCQhvunQlqR4E=;
-        b=hs2GuNjgRy0fjCH8i88B9uwqRZJ623BWPExROlHb1K+eDMSPcAf823hfOQSH3+FX7O
-         tMwHtKhXhqmZKoDlQuFaiWMrSs4o2S9zuH5DjLZYayk7GKvcB8HelHjfL8CqWrZ196KR
-         kpw1/aA97yYDMEQg2sB2p46Ivzh7n+n5eTmkhL9ETvCP3NlhBDac32Ny94G2tc+IjKLG
-         tCaNKyACfHtIsGOiI5CDnTt9RSkrj1aC/MnWlHgSKo4r85m3WE5GCWhHJLoV6C8++Q1S
-         zFOaThzwrvwJgviwIig3rod+gN6W+IREdPKhkOXawuwKq+US2wkUNGciVnM+d+LxPHqV
-         2xhQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lP1jWQKY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gBXY50Hr95KuxeUxlVOTZnaUhvHZ5Aw8fPCec2+svQA=;
+        b=dS1f5+E1Mi/HRtVY88NP50zdxuXufbphebkdbkVDaTPq7yp9zP59MeVg7UVrmrhP09
+         V3BxyRJkeKR2akzvrSKVSP8PEmfanLYX2Xj6PfMjLmUxjJfsRZoL5UT55pPlp7mRCQWV
+         ZgxAPSzEjWvMjtoxxIfAR5cm1+M8ADF/vUAdCcTi6e/kgFb0BhWkGsY1/GlNcwP6NH1J
+         DgJa5+jUkecEbSpi7Eauzh3ydFb+zOZyVHtqTnpEgUcC3ImFasAi2y66Pw2Q1Ee/BnS8
+         oO19ak3z93YeXBbjn5n1dXql5l15hLmKGSTh5Enku4fL2gu4CZzMuNzaZOajumwyLC+8
+         JyeQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@icenowy.me header.s=zmail header.b=YKAOFVrX;
+       arc=pass (i=1 spf=pass spfdomain=icenowy.me dkim=pass dkdomain=icenowy.me dmarc=pass fromdomain=icenowy.me>);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t33-20020a05622a182100b002f3d1a09661si1520641qtc.488.2022.05.19.09.34.08
+        by mx.google.com with ESMTPS id de34-20020a05620a372200b0069ee712efc8si2217542qkb.86.2022.05.20.05.47.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 May 2022 09:34:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 May 2022 05:47:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lP1jWQKY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47356 helo=lists1p.gnu.org)
+       dkim=pass header.i=@icenowy.me header.s=zmail header.b=YKAOFVrX;
+       arc=pass (i=1 spf=pass spfdomain=icenowy.me dkim=pass dkdomain=icenowy.me dmarc=pass fromdomain=icenowy.me>);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nrj6F-0003KU-Q3
-	for alex.bennee@linaro.org; Thu, 19 May 2022 12:34:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47394)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ns22Z-00033V-33
+	for alex.bennee@linaro.org; Fri, 20 May 2022 08:47:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59622)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nrj5r-00032f-Ql
- for qemu-arm@nongnu.org; Thu, 19 May 2022 12:33:43 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:44870)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nrj5q-00005N-5c
- for qemu-arm@nongnu.org; Thu, 19 May 2022 12:33:43 -0400
-Received: by mail-pg1-x533.google.com with SMTP id v10so5519244pgl.11
- for <qemu-arm@nongnu.org>; Thu, 19 May 2022 09:33:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=IMljC8Xt9Lp3w6Mi2pLPvYPv4WBF6EpCQhvunQlqR4E=;
- b=lP1jWQKYMge+w6+IiqHBCu/LAQC8z9M0Fs7+EqmbCChHhNZ2scNo4mw8Iuy7UD/YFZ
- yGVr7ZAbJMXi4TTdmlyhrWDmZS45465kwUsd6KsTUYcFCyy/troU59n6s8i1CMDCJOs0
- oMvjkRIKcnMFFs0bTfodPdmMr3UD7X6CDCtz4e0bwm8c2HyPKkVI4augXjnL42F++KEE
- l0aXgHzRoMoqvlfkUPu91OxzP9E1lMJIQYOFzGfqRiPv77/AHc6BRKW+8fbPgyohblaD
- ueQ2ocKyV2VU6BSF6vzlI92/K7tqRutUM5mWHRXKioI6kLIc2qTj6wL4BAU67A1m78ma
- WPMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=IMljC8Xt9Lp3w6Mi2pLPvYPv4WBF6EpCQhvunQlqR4E=;
- b=WqxLtv28vaySAy9LKQX2WwCYoNQXuQq+kSlZYfRc3mbz6/z+Vtx7WvLIHM7sDDNDv1
- QyGJ0RiUyOs4EYO6G8gf5/r0x9tP0/eICjmecP+jyC88NyUGXd1QF3W4ywtpxdTO9v4k
- pKZ0Lx9scHKYAfOYlQOU8lA/XJ6vze4Vjv6c1n+Ph+Z0zD9HYyPAfb1hpRVc1dBneWbB
- TK3k8FxTLjsE854OshG5vU7e/Lu7w+GSplDsRJMbLpRDL3RVcU3udMnKI6toZdaBLUro
- SMS9o6Q5hCUwvHhi7CMNbonRL03CppR+QeAW7HwxAr72ybCPK0VnellssWWdMOBIcEWK
- M0Bg==
-X-Gm-Message-State: AOAM533l96zCS10jrD6uxeDEsTgKbcfqNLYjoYYz5m8+TqAQNWrOEUtT
- +wfrtaDw8pQW+aDGUc7p9SHmwg==
-X-Received: by 2002:a62:f901:0:b0:518:307a:b392 with SMTP id
- o1-20020a62f901000000b00518307ab392mr5456776pfh.44.1652978020564; 
- Thu, 19 May 2022 09:33:40 -0700 (PDT)
-Received: from [192.168.1.6] ([71.212.142.129])
- by smtp.gmail.com with ESMTPSA id
- 7-20020a17090a098700b001d25dfb9d39sm28236pjo.14.2022.05.19.09.33.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 May 2022 09:33:39 -0700 (PDT)
-Message-ID: <764b9678-f67b-3f9c-7f00-a30a35796eb0@linaro.org>
-Date: Thu, 19 May 2022 09:33:37 -0700
+ (Exim 4.90_1) (envelope-from <uwu@icenowy.me>)
+ id 1ns1xX-0000UZ-NZ; Fri, 20 May 2022 08:42:26 -0400
+Received: from sender4-op-o18.zoho.com ([136.143.188.18]:17846)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <uwu@icenowy.me>)
+ id 1ns1xV-00044C-Qu; Fri, 20 May 2022 08:42:23 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1653050535; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=W8GaDLRNwTTJH4lL3dpvyJwn9tbhlDT3YQeyQyAfCVhspa7KvI9Mxqs3GJdflMMbuBaufvY8FzoY0XaDrbr3q6gTTvV2uZMWRFRJ6ROfVnUua/9atHU3OvYaf11tcy1d/jK9DEfu/k0bjkAboveVIDySrtiuFCbDToOtaVEbiqc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1653050535;
+ h=Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To; 
+ bh=gBXY50Hr95KuxeUxlVOTZnaUhvHZ5Aw8fPCec2+svQA=; 
+ b=cNlouEBNcNkJOHwG0iHLAfFydWo2QfFRROLxAmdjsJhX5YqW31L77p+D66OUTsiU5JHkQrmwCFf1KzQ+9BB9eYJX+cwdgo3K5ZRFmc9GKCdnQtaAgSKHJlSFxKHiH9ojhv9LiPaec7mzpiuKqYD5EqiLKTc9IczwaHlHNHMG8qk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=icenowy.me;
+ spf=pass  smtp.mailfrom=uwu@icenowy.me;
+ dmarc=pass header.from=<uwu@icenowy.me>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1653050535; 
+ s=zmail; d=icenowy.me; i=uwu@icenowy.me;
+ h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Transfer-Encoding:Reply-To;
+ bh=gBXY50Hr95KuxeUxlVOTZnaUhvHZ5Aw8fPCec2+svQA=;
+ b=YKAOFVrXIhNjMqXZSRb8klhBYjJL6kIupO+d5jYLNJxZD1jTgABgzwKG/P3RsAEz
+ DNSR4/Vu9HKe5TNS/KQLjT8mEgQ8ayRr1rlldpBB1ezsL2DKB+VTt4jgYwSjESrVgMf
+ BGSEEri6D7PbTd9Fmms+RS/rN7jEaM+VsXbW9l00=
+Received: from edelgard.icenowy.me (59.41.160.101 [59.41.160.101]) by
+ mx.zohomail.com with SMTPS id 1653050532902282.85132173993804;
+ Fri, 20 May 2022 05:42:12 -0700 (PDT)
+From: Icenowy Zheng <uwu@icenowy.me>
+To: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Icenowy Zheng <uwu@icenowy.me>
+Subject: [PATCH] hw/sd/allwinner-sdhost: report FIFO water level as 1 when
+ data ready
+Date: Fri, 20 May 2022 20:42:00 +0800
+Message-Id: <20220520124200.2112699-1-uwu@icenowy.me>
+X-Mailer: git-send-email 2.36.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH v2 3/7] target/arm: Do not use
- aarch64_sve_zcr_get_valid_len in reset
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220517054850.177016-1-richard.henderson@linaro.org>
- <20220517054850.177016-4-richard.henderson@linaro.org>
- <CAFEAcA9SU0vXtzw76HkN4wrSgsMyBNwA_bHGa7x0u0rtNe4LQw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA9SU0vXtzw76HkN4wrSgsMyBNwA_bHGa7x0u0rtNe4LQw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.18; envelope-from=uwu@icenowy.me;
+ helo=sender4-op-o18.zoho.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ow90cmquiMEg
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /41RdKijvuwg
 
-On 5/19/22 03:40, Peter Maydell wrote:
-> Not all the code that looks at the sve vector length
-> goes through sve_zcr_len_for_el(), though. In particular,
-> this is setting up ZCR_EL1 for usermode, and all
-> the code under linux-user/ that wants to know the vector
-> length does it with "env->vfp.zcr_el[1] & 0xf".
+U-Boot queries the FIFO water level to reduce checking status register
+when doing PIO SD card operation.
 
-Oops, yes.  Linux-user should be checking ZCR_LEN from env->hflags.
+Report a FIFO water level of 1 when data is ready, to prevent the code
+from trying to read 0 words from the FIFO each time.
 
-> Incidentally, do_prctl_set_vl() also sets zcr_el[1] and
-> it doesn't call aarch64_sve_zcr_get_valid_len(). Should it,
-> or is it doing an equivalent check anyway?
+Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+---
+ hw/sd/allwinner-sdhost.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-I think this got missed when we introduced the set of valid lengths -- it's still assuming 
-all lengths less than maximum are valid.
-
-I'll add a couple of cleanup patches for this.
-
-r~
+diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
+index 041e45c680..b66fd9bce7 100644
+--- a/hw/sd/allwinner-sdhost.c
++++ b/hw/sd/allwinner-sdhost.c
+@@ -114,7 +114,9 @@ enum {
+ };
+ 
+ enum {
++    SD_STAR_FIFO_EMPTY      = (1 << 2),
+     SD_STAR_CARD_PRESENT    = (1 << 8),
++    SD_STAR_FIFO_LEVEL_1    = (1 << 17),
+ };
+ 
+ enum {
+@@ -467,6 +469,11 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
+         break;
+     case REG_SD_STAR:      /* Status */
+         res = s->status;
++        if (sdbus_data_ready(&s->sdbus)) {
++            res |= SD_STAR_FIFO_LEVEL_1;
++        } else {
++            res |= SD_STAR_FIFO_EMPTY;
++        }
+         break;
+     case REG_SD_FWLR:      /* FIFO Water Level */
+         res = s->fifo_wlevel;
+-- 
+2.36.0
 

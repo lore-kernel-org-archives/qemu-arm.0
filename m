@@ -1,83 +1,83 @@
-Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp3066549lfh;
-        Sun, 22 May 2022 11:33:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzJ6ZC3bqdSN9Reqj5lGaAlKqGLsI7/6lirADre2csjZU8xO01L3YG9VJCwdCUefXuSupod
-X-Received: by 2002:a05:6214:509e:b0:461:f3a0:e655 with SMTP id kk30-20020a056214509e00b00461f3a0e655mr14413876qvb.101.1653244400138;
-        Sun, 22 May 2022 11:33:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653244400; cv=none;
+Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp3066690lfh;
+        Sun, 22 May 2022 11:33:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8MHDcnMkPkmKeCzKrFUmv31A7ktJ3iA0fbovlMm/j4ruKSL7TlF+Od95oGKkU1ycTP5AQ
+X-Received: by 2002:a05:6214:238a:b0:441:76a5:2331 with SMTP id fw10-20020a056214238a00b0044176a52331mr14763337qvb.96.1653244415898;
+        Sun, 22 May 2022 11:33:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653244415; cv=none;
         d=google.com; s=arc-20160816;
-        b=K4dPz1wWTXrjeAlgxbM09rGw9RYMtUBV6sMX6t9ZqjwYt0dyi0I3h8qwOqQVGzhoJO
-         zezdMpKFfiXa06hveElQ3dprQOXfNTucmjepd+HVZenH9wo+hFNDvjLpoH4CXPlvCdpH
-         bxwLN9LZFDHL40UVllBPWqNQtXVWqHCGhSXOJlfPectq0Dj/hyPJePeTPb2FLEQi2qEQ
-         BkIpnEd23Y7NWpyjz0I0Q+PzRbvutUXxhXo7M7ovHj1FXtnZXYj6Z205w6CXu+UXMax1
-         KMAaVKEwrfoBCZDGaoJWA2vVyDrw5MdGSVcTsDdADA8FaDJr5mlR2jzANOf1E5Of3S9O
-         z3lA==
+        b=w091YSG+M+0b6YwQmOgyG2TYMqTgTvMCCFspxErFy602+skSqLvAFc9BJJLfStgaFi
+         dDPn+kBs10qpvHHRjK3x2LpAgiQWng6Bh6SbjeLCeJ+FZIzEBJtE3gpaoEOdC+12xV4B
+         DOdazqkU0HgxKmew6csFOk8eT2OS5YTX0cFiivm+iXwz50Vv4HOINWkERGZv5wTNKy1n
+         Sm1Yjic1kMz+bW6pLnKuplSNtRxKHkwiG1XavoIqdwGedhD5R4UMpjuXBpABJNPG6Jd0
+         tE/6vcDc2jB+tV3oEV8t7ZGx+v+lnfSQlGiENvaN4uEH4nvj4PG0XIw+/GHr2AajrKe/
+         i+HQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=vmfTzBu0WqXvpdSNe78zL/FGTgctRuAw3Wsuyq2/YuE=;
-        b=OYxcp0fRaYUvqS3Z/YgM5wpCPX9JCvRMLMC4/gio+faUX85tjd9Cfz2JRr3JQH1VYT
-         nxXo2JXL3x9glZB/ukAy9BwkyX14gHolAEcCXJ0BoVPwG5yJuur2ZSRTCn61W6A4Mki6
-         wR2NP0mjOq0ctqr5JE1Gb+gUwwh0inRwOs0YGO+L3t0IyyloEcSUecI2AjiSTW9FbQwP
-         mCJRQ1IzbwxXwP+ZEQeMPYK/lTh4MiMBdVQbc5byVOxXEX86IxjFHDlyQSBMmGouytX+
-         3x+RAD4UdGn8tNe3IySSlpf2A0X2f3PWha5xuMMx/Hmc4dl0l0xEN7kZVAaZTVaBNd8o
-         AqhQ==
+        bh=3A7i0Kme/mlZT1wSvyyrCrdhe7oXf3JQeJDZbBncgTk=;
+        b=sraIinfRPMV/zlh86bnwVVRP5cQr0MiSEpTIBi+07CjhX5afzyI6pHATndJA0pTT65
+         SCei9Y8mvVDpUJg0RrRssQStChdv2mtg3ZaQBUHUKfioPu3YUr0LeiEkCYPgKGO6OGid
+         sBHT8uKEZJP9ugeVP6s1KX1fJfh4eoNH6GDv5GbRuE/qF2V4Wjdrsq8HAWO/9pcDpz/p
+         xR5nTWqONIZ72yJbNkHN5yO949xmdgYv6JdrgzjDGMI5FUM5sGBq/za4hjijU89Ev0rA
+         UV5w+co4lPz7DI99XHCgRAuc063mC7u4yH9I5ZkEw1fZiWr37nL8f5LikCDiEew+J7I8
+         y62A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=I1jUMdvC;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=huIMNZoD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v13-20020a05622a014d00b002f3f4a7bd6esi1649675qtw.154.2022.05.22.11.33.19
+        by mx.google.com with ESMTPS id p14-20020a05621421ee00b00461c6189c1csi1988001qvj.362.2022.05.22.11.33.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 May 2022 11:33:20 -0700 (PDT)
+        Sun, 22 May 2022 11:33:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=I1jUMdvC;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=huIMNZoD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:48272 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nsqOF-0001mv-Km
-	for alex.bennee@linaro.org; Sun, 22 May 2022 14:33:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41840)
+	id 1nsqOV-0002ci-DD
+	for alex.bennee@linaro.org; Sun, 22 May 2022 14:33:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41850)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsqC7-0008IH-4s; Sun, 22 May 2022 14:20:47 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:47904)
+ id 1nsqC7-0008Im-7M; Sun, 22 May 2022 14:20:47 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:47890)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsqBp-0003qK-Hc; Sun, 22 May 2022 14:20:44 -0400
+ id 1nsqBo-0003q6-S4; Sun, 22 May 2022 14:20:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:To:From:Sender:Reply-To:Cc:
  Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=vmfTzBu0WqXvpdSNe78zL/FGTgctRuAw3Wsuyq2/YuE=; b=I1jUMdvCN117FwFuGrA1hE6bK2
- cRweCqvz9twY6z2x4xN9ky3R1Kbzn4GOXpw/7avht5SBb/mVAYpXfaT1xHRIwvkMsctAIsW9Ofeco
- rpq5aZQ+OdGF9m3HoSi4hGgPkntClObgc1+G+5icrRZdh51ypoxN7og2viyudDeFPPvoqGX4dKwne
- ZBDThPxrlHyJ46RH2cZSjNaaxboaxRtdzl0+gEdE65sxHdCA3/kus68pJmOdRPFhkqrAO26fT2wFH
- sVpPuyapAE+57jklZHChVG1zqY71D4eacSOImhz/K+Emwr9hliqaVKUunVyZZ9OPNILnQecdayCaR
- 4uhywbFVyuftqGu2439weY4oJMx9n85svx7sMzvfY6K+X9a8zPQmDFlfLMQ2cMcoF5SO0c0ok742E
- MI+d2TI81Q/NZkc/bY5gXrtEK7+UdPrbacCnvvSkRTNmQt9QyDQtGguBO4LfqUweCbssjh0sz9Twu
- sR/g5s9pIj7w2tSPjdt79gImljyg2J/1Hf96EZNEwzaIP0qdUYD09W5WKFBGCwb53QfT0wlYknG1x
- eZvWywmL5gmyqWpJRM/xrl3rWJH2hR69Vnm2/BByR/84VmbheowlCmxzdsDp5f44DAYmfkVOvTKu5
- cnRuwnzhFudfWi6occchNkvdYuIw6sXhRkKZDnWMo=;
+ bh=3A7i0Kme/mlZT1wSvyyrCrdhe7oXf3JQeJDZbBncgTk=; b=huIMNZoD3IXENr1h6JNf52qac9
+ 5rUEtYH175DtqTJ1v+5/GxKCVu2SYY1GGwg5tFdU3j27gw6+nmoQp9Tm3pabUeU1MDNabWjzcCx06
+ NimoytEV9hgAA+8vPwBTX+oDNbcUg9ailmYh2BonPMAuHEQLesvVl+OHV3MxsxoDY4CVaw+A9Oyit
+ oGaRwK5zbS+gVMuMFn/4cjLTYeXf0UAwCLUJ23JhWPR3HY6RYIOUxDJDelKE8b64UDYIT0JKqXZLS
+ CseYcjD/uTeEDdH1l/8AHO9MIDczsA+WI38AQMMiJUe+hzVD7W+W6GmsM83YmECwlhLI0eMrFn4I7
+ pgBzZiOjhYhAghwoiMEFcNDFNfRvb9SK74AjoU7SpkY4a9jgTTVkiYfc4oGrXtezdu+6ItyY5bGeb
+ uZ1KRvHGtIXpeH7Amu+e63wte6JMEIgfwTkISh/qbZMa2gKkgqgpAx/GUVMu6JFdUDIPBWCpIItwo
+ 83YngRIkJ8zvX17vP8EuPgnNS8aN/CX/5NqEcgw+2aYOlh2PmQAbxpdz+1+yN+scskfh+TMEIk+MS
+ m5pt0NQziowWOsezJcReSU0WD+ktPAffEAH30QWCfwYXPie/ONR1rPnRwahmimD2WYKejfXnLqokH
+ /OvidLtPNnYpAVj62WalhkCCUUlwqmnGlOrxEXbyA=;
 Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab] (helo=kentang.home)
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsqAP-0007pH-GO; Sun, 22 May 2022 19:19:02 +0100
+ id 1nsqAN-0007pH-Hm; Sun, 22 May 2022 19:18:59 +0100
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 To: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
  aleksandar.rikalo@syrmia.com, f4bug@amsat.org, jiaxun.yang@flygoat.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Sun, 22 May 2022 19:18:21 +0100
-Message-Id: <20220522181836.864-36-mark.cave-ayland@ilande.co.uk>
+Date: Sun, 22 May 2022 19:18:18 +0100
+Message-Id: <20220522181836.864-33-mark.cave-ayland@ilande.co.uk>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
 References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
@@ -85,8 +85,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: [PATCH 35/50] pckbd: replace irq_kbd and irq_mouse with qemu_irq
- array in KBDState
+Subject: [PATCH 32/50] ps2: use ps2_raise_irq() instead of calling
+ update_irq() directly
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -111,77 +111,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7j2zfccsXQWG
+X-TUID: 6sOCvDyf/4F3
 
-This allows both IRQs to be declared as a single qdev gpio array.
+This consolidates the logic of raising the PS2 IRQ into one single function.
 
 Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 ---
- hw/input/pckbd.c         | 12 ++++++------
- include/hw/input/i8042.h |  6 ++++--
- 2 files changed, 10 insertions(+), 8 deletions(-)
+ hw/input/ps2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
-index 1c61c55123..90acf0dd6a 100644
---- a/hw/input/pckbd.c
-+++ b/hw/input/pckbd.c
-@@ -170,8 +170,8 @@ static void kbd_update_irq_lines(KBDState *s)
-             }
+diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+index 8b76ce1cdc..55a2ac08c2 100644
+--- a/hw/input/ps2.c
++++ b/hw/input/ps2.c
+@@ -557,7 +557,7 @@ uint32_t ps2_read_data(PS2State *s)
+         s->update_irq(s->update_arg, 0);
+         /* reassert IRQs if data left */
+         if (q->count) {
+-            s->update_irq(s->update_arg, 1);
++            ps2_raise_irq(s);
          }
      }
--    qemu_set_irq(s->irq_kbd, irq_kbd_level);
--    qemu_set_irq(s->irq_mouse, irq_mouse_level);
-+    qemu_set_irq(s->irqs[I8042_KBD_IRQ], irq_kbd_level);
-+    qemu_set_irq(s->irqs[I8042_MOUSE_IRQ], irq_mouse_level);
- }
- 
- static void kbd_deassert_irq(KBDState *s)
-@@ -724,8 +724,8 @@ MMIOKBDState *i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-     s = &I8042_MMIO(dev)->kbd;
- 
--    s->irq_kbd = kbd_irq;
--    s->irq_mouse = mouse_irq;
-+    s->irqs[I8042_KBD_IRQ] = kbd_irq;
-+    s->irqs[I8042_MOUSE_IRQ] = mouse_irq;
- 
-     return I8042_MMIO(dev);
- }
-@@ -811,8 +811,8 @@ static void i8042_realizefn(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    s->irq_kbd = isa_get_irq(isadev, isa_s->kbd_irq);
--    s->irq_mouse = isa_get_irq(isadev, isa_s->mouse_irq);
-+    s->irqs[I8042_KBD_IRQ] = isa_get_irq(isadev, isa_s->kbd_irq);
-+    s->irqs[I8042_MOUSE_IRQ] = isa_get_irq(isadev, isa_s->mouse_irq);
- 
-     isa_register_ioport(isadev, isa_s->io + 0, 0x60);
-     isa_register_ioport(isadev, isa_s->io + 1, 0x64);
-diff --git a/include/hw/input/i8042.h b/include/hw/input/i8042.h
-index 9d1f8af964..4ba2664377 100644
---- a/include/hw/input/i8042.h
-+++ b/include/hw/input/i8042.h
-@@ -12,6 +12,9 @@
- #include "hw/sysbus.h"
- #include "qom/object.h"
- 
-+#define I8042_KBD_IRQ      0
-+#define I8042_MOUSE_IRQ    1
-+
- typedef struct KBDState {
-     uint8_t write_cmd; /* if non zero, write data to port 60 is expected */
-     uint8_t status;
-@@ -31,8 +34,7 @@ typedef struct KBDState {
-     void *mouse;
-     QEMUTimer *throttle_timer;
- 
--    qemu_irq irq_kbd;
--    qemu_irq irq_mouse;
-+    qemu_irq irqs[2];
-     qemu_irq a20_out;
-     hwaddr mask;
- } KBDState;
+     return val;
 -- 
 2.20.1
 

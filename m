@@ -1,92 +1,89 @@
-Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp3070540lfh;
-        Sun, 22 May 2022 11:42:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxP+UFEEy8iW8J1cTCsCBQSM7vKlNqVNfYEWBNZmytAmzDHMtIGPiZBudufCluTVpxlSdlB
-X-Received: by 2002:a37:6650:0:b0:6a3:5fb9:7ff7 with SMTP id a77-20020a376650000000b006a35fb97ff7mr5760915qkc.90.1653244974878;
-        Sun, 22 May 2022 11:42:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653244974; cv=none;
+Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp3061126lfh;
+        Sun, 22 May 2022 11:19:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJypgupYQZpSINkCXM6g4lC26PPT9k3BiQ9bdtDVP5FqkrziwFi0TxTe593Lf9ztDVZMuXvb
+X-Received: by 2002:a05:6214:21cf:b0:458:9bb:2dfa with SMTP id d15-20020a05621421cf00b0045809bb2dfamr14573801qvh.4.1653243595750;
+        Sun, 22 May 2022 11:19:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653243595; cv=none;
         d=google.com; s=arc-20160816;
-        b=WhRZsVczaQk4BWDmW3QOd24Dq/YaNuFlJkruzaX2GUQxoWCbcJDVL87A61Uu07XuyY
-         6XyPOlCAccFNUU5HeWwKLklGV4ePjeYD3VIUegR9qUqRYBX9CHpibNNYmwp4PKAZhKFF
-         IBdGLW+zGJC/fDFJj3Btp25nmQNifX40XfKf7+/1vTME1Lsv36KjOVJRCScpFAfj+Msu
-         FuRCoWtn3KU8yM34fl+v3qZINerTD+8q8GSmdnANERo01QnU1fu2j2UFpLIiWley6N6J
-         RUK2QyfOr5LQC0B0AD6/+w887Gxy2G2A3I9quFzw6fxe+B6j3ppa4Qm2ZjScCR9/1wVM
-         U0Ag==
+        b=T1nFj3OtAhMmY7Vb9LUKQGWg9qYZvdLd6e5iXGTAdrFdO6x91gOtu5UkmpCbujp7gT
+         LpP1SsiIF5v7cbmjOEZ5h7VmsL/2F5h0GKXEBXLoa0oJK9gDB+5fDTh5DnnHZmTMYqEi
+         PYrfpjhYfkg9K4FfqHq3Iqg1vOy0FReegNwqFHoSpMEFia0dboVIrDgCpbmSjsTLLsDb
+         1lVSamfHP8metTtzdcfwcdnHwLCDiiv97EukRXNRHag2blWgw+fTScIOadnCTHE9THZY
+         8+DEiX1lUvJiK1pOLLWf+wTRcFS7pEhpa+Q4msYHqT8eMShBxtFj+iPhRDJ/+Ar1tNrc
+         4c9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=/7Xk7MW3L+6OR4js6piTEuV3VzyW4LoopXb+vIlieq8=;
-        b=ZFu/3hzTogiUQCaeMyA/3oONNRQ2LEtcjhq1xCryDCm8IZStipczQLRZZ+Ntw/j4Lp
-         BcB77WsxEh4U+TDAw2Cg95RFLGtFGmKQ06Z5NynW3+TQYwF9Kg20XQbVxriYnchSBpdY
-         CM5SiIMb0ICE6LS0p/En/tIANtN83/11DyuPEZyr4ZYbjyYRhRxqgo20I+m5GAtSzjzO
-         PON5qrIP133Dkbq91MLwCp9WkIzbBG7zbdxzG5gXXDc0pmQiun+MF5Ka2zZbNpOGGuJ4
-         J65g3MF/4fuGPbCkXZtE6JAcdU971yhdySfJaHNcUkPOvVD76kUZ6reCX/Tm+loMJa4e
-         F26Q==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=I/7X60NHpNMLYj93Sc/a3t3DaVFXSUTIAHNkh05T/tM=;
+        b=gUNguh0dnu1xvNl6W1UXpQIXxuKMr62V42urXJ4cFQh3pnIlceE2vXopLshSvCZYPU
+         +MtOkUAZsNfhFYp5r5NppgBFt7gqwkLGOtGrOhVvMt+Ka4/rpVpMHuXdyI3ZjPk/3xfQ
+         gdF8sDHa5qn97ZIN7D8Dbnn67YOLWBC6mkqEqBUxr+kFWLtve23273MN72QkG25L1pmr
+         3mesXG9k6yzlmFNK4vvVPqEq2GorZE9eakI+W6ZEuHmhtPCJgtYMgSOzpoYskykpmf7g
+         LVg8Kfm3p8ZMZh6NWVHnOLt+ALwN82c6IkJVwXPk1ex+uRvQnleN7erFrJscu43wDsh/
+         eLOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=Uk25omJP;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=KjQ4kCWa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r11-20020a056214212b00b004444158f514si2002246qvc.80.2022.05.22.11.42.54
+        by mx.google.com with ESMTPS id m4-20020ac85b04000000b002f3b8c9ecf1si1893869qtw.767.2022.05.22.11.19.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 May 2022 11:42:54 -0700 (PDT)
+        Sun, 22 May 2022 11:19:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=Uk25omJP;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=KjQ4kCWa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:41060 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48602 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nsqXV-0008NN-CV
-	for alex.bennee@linaro.org; Sun, 22 May 2022 14:42:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42026)
+	id 1nsqBH-0006hm-5K
+	for alex.bennee@linaro.org; Sun, 22 May 2022 14:19:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41018)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsqCU-0000k4-Rz; Sun, 22 May 2022 14:21:12 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:48148)
+ id 1nsqAT-0006gX-Sq; Sun, 22 May 2022 14:19:05 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:47270)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsqCR-0003wZ-71; Sun, 22 May 2022 14:21:08 -0400
+ id 1nsqAN-0003Vo-I0; Sun, 22 May 2022 14:19:01 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:To:From:Sender:Reply-To:Cc:
- Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=/7Xk7MW3L+6OR4js6piTEuV3VzyW4LoopXb+vIlieq8=; b=Uk25omJPA4uEfiy46/Qmr/oV+7
- kpisCmTUMSRc3PgX/gW65hcmo1++Qmlojbz0c6rVDzXRWU55YFI0oJyKnoVYmnOiugheT5a3x989A
- oYejaUcmW1KInUH+ar1ibmj94CpT8ZiKMHrqdvYBGGdGcWkv2l2MfGnaF7gxBvFjnl9vNO3EKOLZk
- MiZyPgB3G3sF/e0B1kPfPzSk4IATbsOMT97HRTUiLYqqkRtgJTWA12fDB4HAloGu0/iLRDWEWSpSs
- MJEMvueZ+1qbjiP0pzfXkgMIJAVxhiWpU64MFhsZPEmoBGd2NlE1cn7epUHhZbK7EC1RHjsb44/e1
- P5FiR7QSv3Y6/PK1c6TWi134CuNf67bf/o2xqT16+HcCN8Q4rcJMtCOLZ+UmQ/LueLbDiHQz+5kxH
- mlp94tGZv+peuiSnDHCvvQSYfKVFN+FxvkIlGHdpD1yOW9albpWT6tpubQABaAvkOmqTYELW1DRIn
- xmvSz9RbjsYMLjH/BSJq12KiNYeIHP6TnxoKSUy7makRvoeOSm01xSLMRfbhwumpCZHuyl+0PQ8zo
- SmPhPK7/z8Yr4wR413+/HGMyg4wVPccljSDuB9+EMcEB/RVtqzbVp63/3Zh5eHok7qJvs1B7pzlE7
- J2xJqI8jEu3P4HnH6yUTBsmcKAhrmMXcYffvoaTxg=;
+ Message-Id:Date:To:From:Sender:Reply-To:Cc:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=I/7X60NHpNMLYj93Sc/a3t3DaVFXSUTIAHNkh05T/tM=; b=KjQ4kCWagEQ83+d/nvGhtf0zKI
+ IU78idm4tlBlmJbKsbB4fxewidJf+HJ+aut0/vbk838YURNkCWUh49MpzMmmHKKaPGX35ZFRwfeOr
+ sIENMI6OPvcBCVRHPQ4YbVpMjwaArVT258vZi3Du2MMdaIWHHb9EGfci6/u8GTB+LrsDEfvVqKXCw
+ KJy/xQhqYC013rkoYpHS92aBm4paR9PXkmZ3ZVUMsOBqSvZFFZxiEoRGJDr6q+U1kgkqj+fy58XJg
+ SZIR3kwsJYJf8C3KT/tEffvD5WH/fvKuImj1g7nUCAdSXdKdteXyV+iUTGk+bgmkvXX43MV2/t8te
+ Yo3HfG1WW61IpKDczQQNDm+EBbnaw7UaIEm4uwEvNhOwHtTvvYtnmFjFygmU+bqS8tVsr85WnBhDK
+ 4PmwtsE+CJ+2z+n1/cjxN+pE0yVenJEvOYV5EfBKdOiJUwB5UvJyn7prRtX/tMbX2FjU3ObbkR8hL
+ 6js2K+kC6qSV2LlpaWgeYbBXiWXpCnHPnhv+j+zxMJBBy4JfRgu4cWjxFFbl8DDfoZurGB3yHOXtJ
+ xUHSYT7epQ24xTTPKk2GS8gnr1xzZad+zxMJEqcK2hkXtVsGv85+ZXJla0WsjC9Dpvi3fVyX0wCxZ
+ 13aLkT0MxSwZI0rq2KWdWjXLPiRlMBRwbZvGkGmn8=;
 Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab] (helo=kentang.home)
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsqB2-0007pH-9c; Sun, 22 May 2022 19:19:40 +0100
+ id 1nsq99-0007pH-WE; Sun, 22 May 2022 19:17:48 +0100
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 To: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
  aleksandar.rikalo@syrmia.com, f4bug@amsat.org, jiaxun.yang@flygoat.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Sun, 22 May 2022 19:18:35 +0100
-Message-Id: <20220522181836.864-50-mark.cave-ayland@ilande.co.uk>
+Date: Sun, 22 May 2022 19:17:46 +0100
+Message-Id: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
-References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: [PATCH 49/50] pckbd: switch I8042 device from update_irq() function
- to PS2 device gpio
+Subject: [PATCH 00/50] PS2 device QOMification - part 1
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -111,75 +108,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tjyQay+oCcSU
+X-TUID: nAk2D0CDRN4+
 
-Define a new qdev input gpio for handling incoming PS2 IRQs, and then wire up the
-PS2 keyboard and mouse devices to use it. At the same time set update_irq() and
-update_arg to NULL in ps2_kbd_init() and ps2_mouse_init() to ensure that any
-accidental attempt to use the legacy update_irq() function will cause a NULL
-pointer dereference.
+This series came about when looking at improving the LASI PS2 device for
+the HPPA machine: there were improvements that I was keen to make, but
+was restricted because the PS2 device(s) weren't QOMified.
+
+Trying to do everything in a single patchset would be a very large series
+indeed, so here is part 1 of the series which does the basic QOMification
+process and consists of:
+
+- QOMifying the basic PS2, PS2 keyboard and PS2 mouse types
+
+- Moving any functionality that exists in a global device init function
+  directly into the relevant device, so that all device behaviour is
+  configured using qdev properties and QOM
+
+- Introducing a new I8042_MMIO type for use by the MIPS magnum machine
+
+- Switch all PS2 devices to use qdev gpios for IRQs instead of using the
+  update_irq() callback function along with the update_arg opaque
+
+Once this work has been done, a follow-up part 2 series will finish the
+remainder of the work which involves i) improving the QOM object model
+now QOMification is complete and ii) removing the legacy global device
+init functions for PS2 and related devices.
+
+Testing for this series has comprised of booting a machine with each type
+of PS2 device and confirming that i) the machine responds to keypresses
+when using a graphical console and ii) completing a successful migration
+from a machine with this series applies back to a machine running latest
+git master. The test machines I used were:
+
+- qemu-system-x86_64 -M pc for the I8042 device
+- qemu-system-hppa for the LASIPS2 device
+- qemu-system-arm -M versatilepb for the PL050 device
+- qemu-system-mips64el -M magnum for the I8042_MMIO device
+
+Finally the QOM tree changes caused by QOMification of the PS2 devices
+trigger a failure due to a bug in the bios-tables-test qtest for subtest
+/x86_64/acpi/q35/viot. This can be fixed by applying the series at
+https://lists.gnu.org/archive/html/qemu-devel/2022-05/msg04266.html
+"hw/acpi/viot: generate stable VIOT ACPI tables" first.
 
 Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
----
- hw/input/pckbd.c | 27 +++++++++++++++++++++++----
- 1 file changed, 23 insertions(+), 4 deletions(-)
 
-diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
-index b2fdd1c999..f1eeab9952 100644
---- a/hw/input/pckbd.c
-+++ b/hw/input/pckbd.c
-@@ -801,6 +801,18 @@ static const MemoryRegionOps i8042_cmd_ops = {
-     .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
-+static void i8042_set_irq(void *opaque, int n, int level)
-+{
-+    ISAKBDState *s = I8042(opaque);
-+    KBDState *ks = &s->kbd;
-+
-+    if (n) {
-+        kbd_update_aux_irq(ks, level);
-+    } else {
-+        kbd_update_kbd_irq(ks, level);
-+    }
-+}
-+
- static void i8042_reset(DeviceState *dev)
- {
-     ISAKBDState *s = I8042(dev);
-@@ -820,6 +832,9 @@ static void i8042_initfn(Object *obj)
-                           "i8042-cmd", 1);
- 
-     qdev_init_gpio_out_named(DEVICE(obj), &s->a20_out, I8042_A20_LINE, 1);
-+
-+    qdev_init_gpio_out(DEVICE(obj), s->irqs, 2);
-+    qdev_init_gpio_in(DEVICE(obj), i8042_set_irq, 2);
- }
- 
- static void i8042_realizefn(DeviceState *dev, Error **errp)
-@@ -840,14 +855,18 @@ static void i8042_realizefn(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    s->irqs[I8042_KBD_IRQ] = isa_get_irq(isadev, isa_s->kbd_irq);
--    s->irqs[I8042_MOUSE_IRQ] = isa_get_irq(isadev, isa_s->mouse_irq);
-+    isa_connect_gpio_out(isadev, I8042_KBD_IRQ, isa_s->kbd_irq);
-+    isa_connect_gpio_out(isadev, I8042_MOUSE_IRQ, isa_s->mouse_irq);
- 
-     isa_register_ioport(isadev, isa_s->io + 0, 0x60);
-     isa_register_ioport(isadev, isa_s->io + 1, 0x64);
- 
--    s->kbd = ps2_kbd_init(kbd_update_kbd_irq, s);
--    s->mouse = ps2_mouse_init(kbd_update_aux_irq, s);
-+    s->kbd = ps2_kbd_init(NULL, NULL);
-+    qdev_connect_gpio_out(DEVICE(s->kbd), PS2_DEVICE_IRQ,
-+                          qdev_get_gpio_in(dev, I8042_KBD_INPUT_IRQ));
-+    s->mouse = ps2_mouse_init(NULL, NULL);
-+    qdev_connect_gpio_out(DEVICE(s->mouse), PS2_DEVICE_IRQ,
-+                          qdev_get_gpio_in(dev, I8042_MOUSE_INPUT_IRQ));
-     if (isa_s->kbd_throttle && !isa_s->kbd.extended_state) {
-         warn_report(TYPE_I8042 ": can't enable kbd-throttle without"
-                     " extended-state, disabling kbd-throttle");
+
+Mark Cave-Ayland (50):
+  ps2: checkpatch fixes
+  ps2: QOMify PS2State
+  ps2: QOMify PS2KbdState
+  ps2: QOMify PS2MouseState
+  ps2: move QOM type definitions from ps2.c to ps2.h
+  ps2: improve function prototypes in ps2.c and ps2.h
+  ps2: introduce PS2DeviceClass
+  ps2: implement ps2_reset() for the PS2_DEVICE QOM type based upon
+    ps2_common_reset()
+  ps2: remove duplicate setting of scancode_set in ps2_kbd_init()
+  ps2: implement ps2_kbd_realize() and use it to register
+    ps2_keyboard_handler
+  ps2: implement ps2_mouse_realize() and use it to register
+    ps2_mouse_handler
+  ps2: don't use vmstate_register() in ps2_kbd_init()
+  ps2: don't use vmstate_register() in ps2_mouse_init()
+  pl050: checkpatch fixes
+  pl050: split pl050_update_irq() into separate pl050_set_irq() and
+    pl050_update_irq() functions
+  lasips2: spacing fixes
+  lasips2: rename ps2dev_update_irq() to lasips2_port_set_irq()
+  pckbd: checkpatch fixes
+  pckbd: move KBDState from pckbd.c to i8042.h
+  pckbd: move ISAKBDState from pckbd.c to i8042.h
+  pckbd: introduce new I8042_MMIO QOM type
+  pckbd: implement i8042_mmio_reset() for I8042_MMIO device
+  pckbd: add mask qdev property to I8042_MMIO device
+  pckbd: add size qdev property to I8042_MMIO device
+  pckbd: implement i8042_mmio_realize() function
+  pckbd: implement i8042_mmio_init() function
+  pckbd: alter i8042_mm_init() to return a I8042_MMIO device
+  pckbd: move mapping of I8042_MMIO registers to MIPS magnum machine
+  pckbd: more vmstate_register() from i8042_mm_init() to
+    i8042_mmio_realize()
+  pckbd: move ps2_kbd_init() and ps2_mouse_init() to
+    i8042_mmio_realize()
+  ps2: make ps2_raise_irq() function static
+  ps2: use ps2_raise_irq() instead of calling update_irq() directly
+  ps2: introduce ps2_lower_irq() instead of calling update_irq()
+    directly
+  ps2: add gpio for output IRQ and optionally use it in ps2_raise_irq()
+    and ps2_lower_irq()
+  pckbd: replace irq_kbd and irq_mouse with qemu_irq array in KBDState
+  pl050: switch over from update_irq() function to PS2 device gpio
+  lasips2: QOMify LASIPS2State
+  lasips2: move lasips2 QOM types from lasips2.c to lasips2.h
+  lasips2: rename lasips2_init() to lasips2_initfn() and update it to
+    return the LASIPS2 device
+  lasips2: implement lasips2_init() function
+  lasips2: move mapping of LASIPS2 registers to HPPA machine
+  lasips2: move initialisation of PS2 ports from lasi_initfn() to
+    lasi_init()
+  lasips2: add base property
+  lasips2: implement lasips2_realize()
+  lasips2: use qdev gpio for output IRQ
+  lasips2: switch over from update_irq() function to PS2 device gpio
+  pckbd: switch I8042_MMIO device from update_irq() function to PS2
+    device gpio
+  pckbd: add i8042_reset() function to I8042 device
+  pckbd: switch I8042 device from update_irq() function to PS2 device
+    gpio
+  ps2: remove update_irq() function and update_arg parameter
+
+ hw/hppa/machine.c          |  11 +-
+ hw/input/lasips2.c         | 110 +++++---
+ hw/input/pckbd.c           | 321 ++++++++++++++++--------
+ hw/input/pl050.c           |  50 ++--
+ hw/input/ps2.c             | 500 +++++++++++++++++++++----------------
+ hw/mips/jazz.c             |  11 +-
+ include/hw/input/i8042.h   |  54 +++-
+ include/hw/input/lasips2.h |  27 +-
+ include/hw/input/ps2.h     |  79 +++++-
+ 9 files changed, 775 insertions(+), 388 deletions(-)
+
 -- 
 2.20.1
 

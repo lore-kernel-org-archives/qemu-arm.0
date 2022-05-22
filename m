@@ -1,83 +1,83 @@
-Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp3063084lfh;
-        Sun, 22 May 2022 11:24:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwKrzCgTLXJrBSvsNHHvk6ZBZpLNPrBUUmdpiPMXfH4hhoEI/RWftiIf2G4nebesVKS5VeH
-X-Received: by 2002:ac8:5982:0:b0:2f3:b838:cdda with SMTP id e2-20020ac85982000000b002f3b838cddamr14195428qte.119.1653243871531;
-        Sun, 22 May 2022 11:24:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653243871; cv=none;
+Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp3063235lfh;
+        Sun, 22 May 2022 11:24:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxwsn6ZVR+8atrw34ASqKUPcSL3NM31+jarg/r4oHTXPuhwHUajxCebTaEcXUji422Qqglg
+X-Received: by 2002:a05:6214:1c83:b0:443:6801:6d06 with SMTP id ib3-20020a0562141c8300b0044368016d06mr14895391qvb.40.1653243892099;
+        Sun, 22 May 2022 11:24:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653243892; cv=none;
         d=google.com; s=arc-20160816;
-        b=SlNDknMlKfNmt6I8d3fImy+8Ft3ZIGCtDY9a7CoffOBHJZBPJ8ZvaLVqY8HM355C/n
-         QQUDgsnA2ATWsT0lOm7vRE7zTk4EuIjmXUuHfyQF3PvX411RRw6TuIBao09ljUEEyKD8
-         AqSTgEFIXBx2IIbgzouZuNUh51qCvKNPiQ1vJ//DcG6bSkj/qM5Op+FlCmR73deupoLZ
-         KXgyT1ya7UaY0YQPQHcLgKVODaeOExqFNW9DTNLv32qe8Lc+x8i31GU7RaBjMDjSTc3X
-         ljvB4GwvQ4hqGp1rsQX3nhbz7DzHNGHJ73NL+Eniky92307aQSGOu5S3oz099SZkiG6B
-         rL3A==
+        b=crLzNoiD2FELuPJH0ExgmREQ2Q+662fLRTT11nKtw4TSp5RecpKzlQ1XaccL06Q5cG
+         A/wwdMutTXOFpiFhS5QAQWmGyCaXHxiZWd0oBu4tlMdcooe5CfAi6d+O4FgLlOkZFxmR
+         +qCkNwIXL7x0huJbu8B6vkXj4msS3JP/aUW+22t6i1JElZ4PpB9I569CGebJFeNYpQQ5
+         aefeh1U+5lnWRY4p0jyEqYQwr6x06FsQbCcFETmNJFHh05ExC2qedGkfpAs09i157nV4
+         VafwN+U9jTo8so+DE2c+xQ2kik4f8/wjlzhNW21Sn2eH05sfjj1e4JgTfNgkhTF2bFxZ
+         yXNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=exnlTfS0pKIxz/Waxt0OF1ETIHTM7CRo2Ez6G0229e8=;
-        b=xrBDacKo1KS9amtyf1igy7sjDIEbqFDhzy0rGj7x9angNCi6A9CDyOcMQDleq9HF6y
-         KUqvC/r1UVDEcLS7N1MZlGnHGszvnnMktf2KBko6z9eybr4DVovHHnjqkGR5nkGaNdhv
-         Q58gBcXOqtmWoGIiaTdYMZbVzuYgW6otYy9oz6WPpn22EQsvByHhAmgmNUrVtv4C8RNl
-         9p3X4NDGJ3Q05HdglAOQpxhA5VPCpS7XWJe/QTLRn9NCumT8Z1gr8m6cgz+TYnab1/3t
-         mxlmZUB+3NZkYaP72VfD/WzTisLuVwBVwt8+wWBGIjjqX7jkTu40MB74SZLVF4v97baM
-         RoKg==
+        bh=oBbrmboxI2bOPyV9kjKCEFJMiErNmCGv2G8E9N42jsY=;
+        b=xHsSb6QxW6aWpQRqXIBmA5NQl7roQt2NxmE/dkG3Ur8sH1OdB9sQ/rzrDdzV0xs7ry
+         LFmIMcrxXvigX57Z3XOEViWy6WbNIW+J6B18S8yHgNZlBvvN551hcxVKsmRg6oO1sDj5
+         n4OKqgWvkPwnLnv7UdMGihxb3fIDs888InwpH+YUvcNEc5tNwqvJqkYGH1YUQXG+cJWj
+         8Mh4wzM7MlPxJC53p5TyTzO1PP8o7NdyrlMvMe9oTGihEivS7F0XrBSP+aXSbXre6J/P
+         DDSGjRTmWObZrHKKoy/l8suO8gFicTl33jhsz3ucedpEpi5SWPl1MwbUsgT7IaHAAmCe
+         j+vQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=ZjtJE4dr;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=ZECAW4yB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ib13-20020a0562141c8d00b00461eff5f9b8si2014609qvb.250.2022.05.22.11.24.31
+        by mx.google.com with ESMTPS id p18-20020a05620a22f200b0067e4be2382bsi1104946qki.112.2022.05.22.11.24.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 May 2022 11:24:31 -0700 (PDT)
+        Sun, 22 May 2022 11:24:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=ZjtJE4dr;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=ZECAW4yB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:59892 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60962 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nsqFi-0006PI-Vg
-	for alex.bennee@linaro.org; Sun, 22 May 2022 14:24:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41026)
+	id 1nsqG3-00077M-K9
+	for alex.bennee@linaro.org; Sun, 22 May 2022 14:24:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41362)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsqAU-0006gf-6M; Sun, 22 May 2022 14:19:10 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:47286)
+ id 1nsqBL-0007lv-PH; Sun, 22 May 2022 14:19:59 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:47600)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsqAP-0003Vv-De; Sun, 22 May 2022 14:19:04 -0400
+ id 1nsqBK-0003aN-7t; Sun, 22 May 2022 14:19:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:To:From:Sender:Reply-To:Cc:
  Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=exnlTfS0pKIxz/Waxt0OF1ETIHTM7CRo2Ez6G0229e8=; b=ZjtJE4drOIDqHBsnfr0c7K6Xik
- CUqOY2pG4cW2bIojsTUhG9HllZeoSnD5ulfgvPVzC1zYbTEoqOjhfabDR2n4AfxQ6PUAqLBc2RkOG
- /TW+9OkIBXt0/qSmUzv7LLCZXtMth6BB0sHQcbgCdgfjZmwaAaqbUU9OeX+jmvnulkij+mC1RgQdO
- Aj4EVXTO9Y/5ed3xB+edQQ0SWJ4jM9k0Zbnyc0c9veujnIv6xwsSJ6qqf4pbDmn2B9Jh/+HU5gQdQ
- wFB2dN5GsqIwAF2OKlqnQLGsCiJEUyUoQ0aShzGVc3fSNVZ/5v5r47bF1DSY5z193kkH+gXiaXUpz
- 9a5Qd7i6XxBNttQG/Bzgim+wFUnKsvfylsuYDvGzvFFMZTZ7dF7lblMALMNqCqFibRf8TuiSVyFKc
- /Oj6K7S0UPU+JKsb0MYLV0lxQ5lByDnnKyPGTvdH/vaVtqjnBy8Pjp/U9lKBKro2QHgzJVMMQ6nen
- +9mHY0kcLgWacJEzkOgDau9OlWDsffUrhyIN3MHaLIdpQ7bU236nB65lqCIXWDma3UvQYxSEYpv++
- 1yhBf7UOpciTnYy6ELuttG8O1euRQgLSoHOwHLaKhu46YqXM0cQ7m0pxAo5XLmwmqH/kgeqo1WY8i
- Pv20sKINBrSKMajeeVvHWkW5GtlGB09rB5D66Lf18=;
+ bh=oBbrmboxI2bOPyV9kjKCEFJMiErNmCGv2G8E9N42jsY=; b=ZECAW4yBfvPn4dvbwclvXNZoMh
+ o7e7oW2NWSLzcb7muSsvhaI4dXInbn7p7+01lWDMu1EdygVLUS/n9hVOM+yg+r+ETemteieK7w4bu
+ 9OnoR6W9WQT0AiDt/mt8f+HEe2xOn3DzWwjSbV6fHv6dJtJ7V+uNzlbT8EQB1LKGw3X+rpcfZBUct
+ q2C9wwbFtq5Z3yhu2WXLmdYDmx6LY9NloIPKgLA13dwsdtvXIm1dNRrysYvECFoYG8+X8Dr7e9tmQ
+ htL+GTY/kBCG4kRVM3IihWD9gJTFgwQBJZ44YvTNhxafLxf52Xfn9FWyl+h2LOwaMGkCeyfFavrqc
+ BwZLfOWx/2WuTeyGuGWtYlUyOF77NNBOs92QbrODvbeSG/bq7I2PtErm2xCYcOLq390KgzIuuGOH9
+ Osz1IhKDSWPNbMemgeoLSjN0cZQQ/9qoFbBX5hIfOIF4WAsjIRhvDOc8wSQgdnGW6uHQ3g8vIkt5o
+ nKmeeLYnuGF2tlgmjRfhu8qZ5Hs7OqVeQ9WrieU5afrbMaYiztr0UrEeXGQI8PvB/UQwPkM9yTgks
+ c+asEoJR4Zn6ECovcCNFWtRDmIPw8F8Td6oO83+Ss5WQXZp7W6KWLs064HLsVZhhwc6UlTXz5AujB
+ 8CzX+ywWhlc1CzKDa07fenh0mZnq/vgKTAwvSh0+Q=;
 Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab] (helo=kentang.home)
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsq9E-0007pH-Ck; Sun, 22 May 2022 19:17:52 +0100
+ id 1nsq9q-0007pH-G7; Sun, 22 May 2022 19:18:30 +0100
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 To: richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
  aleksandar.rikalo@syrmia.com, f4bug@amsat.org, jiaxun.yang@flygoat.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Sun, 22 May 2022 19:17:47 +0100
-Message-Id: <20220522181836.864-2-mark.cave-ayland@ilande.co.uk>
+Date: Sun, 22 May 2022 19:18:02 +0100
+Message-Id: <20220522181836.864-17-mark.cave-ayland@ilande.co.uk>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
 References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
@@ -85,7 +85,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: [PATCH 01/50] ps2: checkpatch fixes
+Subject: [PATCH 16/50] lasips2: spacing fixes
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -110,338 +110,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q4oPeShT0FFJ
+X-TUID: QWr1IPpj4Qm/
+
+This helps improve the readability of lasips2.c.
 
 Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 ---
- hw/input/ps2.c | 154 +++++++++++++++++++++++++++----------------------
- 1 file changed, 86 insertions(+), 68 deletions(-)
+ hw/input/lasips2.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-index c16df1de7a..67dd2eca84 100644
---- a/hw/input/ps2.c
-+++ b/hw/input/ps2.c
-@@ -34,41 +34,41 @@
- #include "trace.h"
+diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
+index 94f18be4cd..2ac3433014 100644
+--- a/hw/input/lasips2.c
++++ b/hw/input/lasips2.c
+@@ -205,7 +205,6 @@ static uint64_t lasips2_reg_read(void *opaque, hwaddr addr, unsigned size)
+         break;
  
- /* Keyboard Commands */
--#define KBD_CMD_SET_LEDS	0xED	/* Set keyboard leds */
--#define KBD_CMD_ECHO     	0xEE
--#define KBD_CMD_SCANCODE	0xF0	/* Get/set scancode set */
--#define KBD_CMD_GET_ID 	        0xF2	/* get keyboard ID */
--#define KBD_CMD_SET_RATE	0xF3	/* Set typematic rate */
--#define KBD_CMD_ENABLE		0xF4	/* Enable scanning */
--#define KBD_CMD_RESET_DISABLE	0xF5	/* reset and disable scanning */
--#define KBD_CMD_RESET_ENABLE   	0xF6    /* reset and enable scanning */
--#define KBD_CMD_RESET		0xFF	/* Reset */
-+#define KBD_CMD_SET_LEDS        0xED    /* Set keyboard leds */
-+#define KBD_CMD_ECHO            0xEE
-+#define KBD_CMD_SCANCODE        0xF0    /* Get/set scancode set */
-+#define KBD_CMD_GET_ID          0xF2    /* get keyboard ID */
-+#define KBD_CMD_SET_RATE        0xF3    /* Set typematic rate */
-+#define KBD_CMD_ENABLE          0xF4    /* Enable scanning */
-+#define KBD_CMD_RESET_DISABLE   0xF5    /* reset and disable scanning */
-+#define KBD_CMD_RESET_ENABLE    0xF6    /* reset and enable scanning */
-+#define KBD_CMD_RESET           0xFF    /* Reset */
- #define KBD_CMD_SET_MAKE_BREAK  0xFC    /* Set Make and Break mode */
- #define KBD_CMD_SET_TYPEMATIC   0xFA    /* Set Typematic Make and Break mode */
+     case REG_PS2_STATUS:
+-
+         ret = LASIPS2_STATUS_DATSHD | LASIPS2_STATUS_CLKSHD;
  
- /* Keyboard Replies */
--#define KBD_REPLY_POR		0xAA	/* Power on reset */
--#define KBD_REPLY_ID		0xAB	/* Keyboard ID */
--#define KBD_REPLY_ACK		0xFA	/* Command ACK */
--#define KBD_REPLY_RESEND	0xFE	/* Command NACK, send the cmd again */
-+#define KBD_REPLY_POR       0xAA    /* Power on reset */
-+#define KBD_REPLY_ID        0xAB    /* Keyboard ID */
-+#define KBD_REPLY_ACK       0xFA    /* Command ACK */
-+#define KBD_REPLY_RESEND    0xFE    /* Command NACK, send the cmd again */
- 
- /* Mouse Commands */
--#define AUX_SET_SCALE11		0xE6	/* Set 1:1 scaling */
--#define AUX_SET_SCALE21		0xE7	/* Set 2:1 scaling */
--#define AUX_SET_RES		0xE8	/* Set resolution */
--#define AUX_GET_SCALE		0xE9	/* Get scaling factor */
--#define AUX_SET_STREAM		0xEA	/* Set stream mode */
--#define AUX_POLL		0xEB	/* Poll */
--#define AUX_RESET_WRAP		0xEC	/* Reset wrap mode */
--#define AUX_SET_WRAP		0xEE	/* Set wrap mode */
--#define AUX_SET_REMOTE		0xF0	/* Set remote mode */
--#define AUX_GET_TYPE		0xF2	/* Get type */
--#define AUX_SET_SAMPLE		0xF3	/* Set sample rate */
--#define AUX_ENABLE_DEV		0xF4	/* Enable aux device */
--#define AUX_DISABLE_DEV		0xF5	/* Disable aux device */
--#define AUX_SET_DEFAULT		0xF6
--#define AUX_RESET		0xFF	/* Reset aux device */
--#define AUX_ACK			0xFA	/* Command byte ACK. */
-+#define AUX_SET_SCALE11     0xE6    /* Set 1:1 scaling */
-+#define AUX_SET_SCALE21     0xE7    /* Set 2:1 scaling */
-+#define AUX_SET_RES         0xE8    /* Set resolution */
-+#define AUX_GET_SCALE       0xE9    /* Get scaling factor */
-+#define AUX_SET_STREAM      0xEA    /* Set stream mode */
-+#define AUX_POLL            0xEB    /* Poll */
-+#define AUX_RESET_WRAP      0xEC    /* Reset wrap mode */
-+#define AUX_SET_WRAP        0xEE    /* Set wrap mode */
-+#define AUX_SET_REMOTE      0xF0    /* Set remote mode */
-+#define AUX_GET_TYPE        0xF2    /* Get type */
-+#define AUX_SET_SAMPLE      0xF3    /* Set sample rate */
-+#define AUX_ENABLE_DEV      0xF4    /* Enable aux device */
-+#define AUX_DISABLE_DEV     0xF5    /* Disable aux device */
-+#define AUX_SET_DEFAULT     0xF6
-+#define AUX_RESET           0xFF    /* Reset aux device */
-+#define AUX_ACK             0xFA    /* Command byte ACK. */
- 
- #define MOUSE_STATUS_REMOTE     0x40
- #define MOUSE_STATUS_ENABLED    0x20
-@@ -436,8 +436,9 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
-                 }
-             }
-         } else {
--            if (qcode < qemu_input_map_qcode_to_atset1_len)
-+            if (qcode < qemu_input_map_qcode_to_atset1_len) {
-                 keycode = qemu_input_map_qcode_to_atset1[qcode];
-+            }
-             if (keycode) {
-                 if (keycode & 0xff00) {
-                     ps2_put_keycode(s, keycode >> 8);
-@@ -530,8 +531,9 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
-                 }
-             }
-         } else {
--            if (qcode < qemu_input_map_qcode_to_atset2_len)
-+            if (qcode < qemu_input_map_qcode_to_atset2_len) {
-                 keycode = qemu_input_map_qcode_to_atset2[qcode];
-+            }
-             if (keycode) {
-                 if (keycode & 0xff00) {
-                     ps2_put_keycode(s, keycode >> 8);
-@@ -546,8 +548,9 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
-             }
-         }
-     } else if (s->scancode_set == 3) {
--        if (qcode < qemu_input_map_qcode_to_atset3_len)
-+        if (qcode < qemu_input_map_qcode_to_atset3_len) {
-             keycode = qemu_input_map_qcode_to_atset3[qcode];
-+        }
-         if (keycode) {
-             /* FIXME: break code should be configured on a key by key basis */
-             if (!key->down) {
-@@ -569,8 +572,10 @@ uint32_t ps2_read_data(PS2State *s)
-     trace_ps2_read_data(s);
-     q = &s->queue;
-     if (q->count == 0) {
--        /* NOTE: if no data left, we return the last keyboard one
--           (needed for EMM386) */
-+        /*
-+         * NOTE: if no data left, we return the last keyboard one
-+         * (needed for EMM386)
-+         */
-         /* XXX: need a timer to do things correctly */
-         index = q->rptr - 1;
-         if (index < 0) {
-@@ -619,10 +624,10 @@ void ps2_write_keyboard(void *opaque, int val)
- 
-     trace_ps2_write_keyboard(opaque, val);
-     ps2_cqueue_reset(&s->common);
--    switch(s->common.write_cmd) {
-+    switch (s->common.write_cmd) {
-     default:
-     case -1:
--        switch(val) {
-+        switch (val) {
-         case 0x00:
-             ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
-             break;
-@@ -632,7 +637,7 @@ void ps2_write_keyboard(void *opaque, int val)
-         case KBD_CMD_GET_ID:
-             /* We emulate a MF2 AT keyboard here */
-             ps2_cqueue_3(&s->common, KBD_REPLY_ACK, KBD_REPLY_ID,
--                s->translate ? 0x41 : 0x83);
-+                         s->translate ? 0x41 : 0x83);
-             break;
-         case KBD_CMD_ECHO:
-             ps2_cqueue_1(&s->common, KBD_CMD_ECHO);
-@@ -661,8 +666,8 @@ void ps2_write_keyboard(void *opaque, int val)
-         case KBD_CMD_RESET:
-             ps2_reset_keyboard(s);
-             ps2_cqueue_2(&s->common,
--                KBD_REPLY_ACK,
--                KBD_REPLY_POR);
-+                         KBD_REPLY_ACK,
-+                         KBD_REPLY_POR);
-             break;
-         case KBD_CMD_SET_TYPEMATIC:
-             ps2_cqueue_1(&s->common, KBD_REPLY_ACK);
-@@ -700,9 +705,11 @@ void ps2_write_keyboard(void *opaque, int val)
+         if (port->control & LASIPS2_CONTROL_DIAG) {
+@@ -238,9 +237,9 @@ static uint64_t lasips2_reg_read(void *opaque, hwaddr addr, unsigned size)
+                       __func__, addr);
+         break;
      }
++
+     trace_lasips2_reg_read(size, port->id, addr,
+                            lasips2_read_reg_name(addr), ret);
+-
+     return ret;
  }
  
--/* Set the scancode translation mode.
--   0 = raw scancodes.
--   1 = translated scancodes (used by qemu internally).  */
-+/*
-+ * Set the scancode translation mode.
-+ * 0 = raw scancodes.
-+ * 1 = translated scancodes (used by qemu internally).
-+ */
- 
- void ps2_keyboard_set_translation(void *opaque, int mode)
+@@ -257,6 +256,7 @@ static const MemoryRegionOps lasips2_reg_ops = {
+ static void ps2dev_update_irq(void *opaque, int level)
  {
-@@ -727,30 +734,33 @@ static int ps2_mouse_send_packet(PS2MouseState *s)
-     dz1 = s->mouse_dz;
-     dw1 = s->mouse_dw;
-     /* XXX: increase range to 8 bits ? */
--    if (dx1 > 127)
-+    if (dx1 > 127) {
-         dx1 = 127;
--    else if (dx1 < -127)
-+    } else if (dx1 < -127) {
-         dx1 = -127;
--    if (dy1 > 127)
-+    }
-+    if (dy1 > 127) {
-         dy1 = 127;
--    else if (dy1 < -127)
-+    } else if (dy1 < -127) {
-         dy1 = -127;
-+    }
-     b = 0x08 | ((dx1 < 0) << 4) | ((dy1 < 0) << 5) | (s->mouse_buttons & 0x07);
-     ps2_queue_noirq(&s->common, b);
-     ps2_queue_noirq(&s->common, dx1 & 0xff);
-     ps2_queue_noirq(&s->common, dy1 & 0xff);
-     /* extra byte for IMPS/2 or IMEX */
--    switch(s->mouse_type) {
-+    switch (s->mouse_type) {
-     default:
-         /* Just ignore the wheels if not supported */
-         s->mouse_dz = 0;
-         s->mouse_dw = 0;
-         break;
-     case 3:
--        if (dz1 > 127)
-+        if (dz1 > 127) {
-             dz1 = 127;
--        else if (dz1 < -127)
--                dz1 = -127;
-+        } else if (dz1 < -127) {
-+            dz1 = -127;
-+        }
-         ps2_queue_noirq(&s->common, dz1 & 0xff);
-         s->mouse_dz -= dz1;
-         s->mouse_dw = 0;
-@@ -816,8 +826,9 @@ static void ps2_mouse_event(DeviceState *dev, QemuConsole *src,
-     InputBtnEvent *btn;
- 
-     /* check if deltas are recorded when disabled */
--    if (!(s->mouse_status & MOUSE_STATUS_ENABLED))
-+    if (!(s->mouse_status & MOUSE_STATUS_ENABLED)) {
-         return;
-+    }
- 
-     switch (evt->type) {
-     case INPUT_EVENT_KIND_REL:
-@@ -868,8 +879,10 @@ static void ps2_mouse_sync(DeviceState *dev)
-         qemu_system_wakeup_request(QEMU_WAKEUP_REASON_OTHER, NULL);
-     }
-     if (!(s->mouse_status & MOUSE_STATUS_REMOTE)) {
--        /* if not remote, send event. Multiple events are sent if
--           too big deltas */
-+        /*
-+         * if not remote, send event. Multiple events are sent if
-+         * too big deltas
-+         */
-         while (ps2_mouse_send_packet(s)) {
-             if (s->mouse_dx == 0 && s->mouse_dy == 0
-                     && s->mouse_dz == 0 && s->mouse_dw == 0) {
-@@ -892,7 +905,7 @@ void ps2_write_mouse(void *opaque, int val)
-     PS2MouseState *s = (PS2MouseState *)opaque;
- 
-     trace_ps2_write_mouse(opaque, val);
--    switch(s->common.write_cmd) {
-+    switch (s->common.write_cmd) {
-     default:
-     case -1:
-         /* mouse command */
-@@ -906,7 +919,7 @@ void ps2_write_mouse(void *opaque, int val)
-                 return;
-             }
-         }
--        switch(val) {
-+        switch (val) {
-         case AUX_SET_SCALE11:
-             s->mouse_status &= ~MOUSE_STATUS_SCALE21;
-             ps2_queue(&s->common, AUX_ACK);
-@@ -980,28 +993,32 @@ void ps2_write_mouse(void *opaque, int val)
-     case AUX_SET_SAMPLE:
-         s->mouse_sample_rate = val;
-         /* detect IMPS/2 or IMEX */
--        switch(s->mouse_detect_state) {
-+        switch (s->mouse_detect_state) {
-         default:
-         case 0:
--            if (val == 200)
-+            if (val == 200) {
-                 s->mouse_detect_state = 1;
-+            }
-             break;
-         case 1:
--            if (val == 100)
-+            if (val == 100) {
-                 s->mouse_detect_state = 2;
--            else if (val == 200)
-+            } else if (val == 200) {
-                 s->mouse_detect_state = 3;
--            else
-+            } else {
-                 s->mouse_detect_state = 0;
-+            }
-             break;
-         case 2:
--            if (val == 80)
-+            if (val == 80) {
-                 s->mouse_type = 3; /* IMPS/2 */
-+            }
-             s->mouse_detect_state = 0;
-             break;
-         case 3:
--            if (val == 80)
-+            if (val == 80) {
-                 s->mouse_type = 4; /* IMEX */
-+            }
-             s->mouse_detect_state = 0;
-             break;
-         }
-@@ -1154,13 +1171,14 @@ static const VMStateDescription vmstate_ps2_keyboard_cqueue = {
-     }
- };
- 
--static int ps2_kbd_post_load(void* opaque, int version_id)
-+static int ps2_kbd_post_load(void *opaque, int version_id)
- {
--    PS2KbdState *s = (PS2KbdState*)opaque;
-+    PS2KbdState *s = (PS2KbdState *)opaque;
-     PS2State *ps2 = &s->common;
- 
--    if (version_id == 2)
--        s->scancode_set=2;
-+    if (version_id == 2) {
-+        s->scancode_set = 2;
-+    }
- 
-     ps2_common_post_load(ps2);
- 
-@@ -1176,10 +1194,10 @@ static const VMStateDescription vmstate_ps2_keyboard = {
-         VMSTATE_STRUCT(common, PS2KbdState, 0, vmstate_ps2_common, PS2State),
-         VMSTATE_INT32(scan_enabled, PS2KbdState),
-         VMSTATE_INT32(translate, PS2KbdState),
--        VMSTATE_INT32_V(scancode_set, PS2KbdState,3),
-+        VMSTATE_INT32_V(scancode_set, PS2KbdState, 3),
-         VMSTATE_END_OF_LIST()
-     },
--    .subsections = (const VMStateDescription*[]) {
-+    .subsections = (const VMStateDescription * []) {
-         &vmstate_ps2_keyboard_ledstate,
-         &vmstate_ps2_keyboard_need_high_bit,
-         &vmstate_ps2_keyboard_cqueue,
+     LASIPS2Port *port = opaque;
++
+     port->irq = level;
+     lasips2_update_irq(port->parent);
+ }
 -- 
 2.20.1
 

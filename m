@@ -1,98 +1,100 @@
-Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp3291163lfh;
-        Sun, 22 May 2022 23:41:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwmnZvmIRAKQB/dgaJ/AAgCIblE4d+YmS5pTtX8G5ICmC6EryhjEdAKgnFD5ciC20BohHSD
-X-Received: by 2002:a37:a385:0:b0:6a3:2baf:7e98 with SMTP id m127-20020a37a385000000b006a32baf7e98mr13164994qke.109.1653288091500;
-        Sun, 22 May 2022 23:41:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653288091; cv=none;
+Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp3376209lfh;
+        Mon, 23 May 2022 03:09:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzsWZRHzzndRoPGOaideN8CyxXlEV4Bv2rFo7k106Ioh83oXH7pQZRXaqHH6/gwl3wqENnf
+X-Received: by 2002:a05:6214:19cc:b0:461:fb6b:d408 with SMTP id j12-20020a05621419cc00b00461fb6bd408mr14418078qvc.64.1653300557671;
+        Mon, 23 May 2022 03:09:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653300557; cv=none;
         d=google.com; s=arc-20160816;
-        b=vxtqspS70T0AixqGiK+Lvr7GB4IVg4l/RyGD1Zs8sTK5aorkPkUCKg4qxpLc8N75dI
-         A3qksXMvhjIGJJu9etTWXNWOIUEnUxOQbUD2VI9wap/iC4v/MT12JfyhjQo4YwrDbG10
-         zPD5KwuPkIrssG8XmIZEEZehxz/UeYtPkDwxwAT7PB7818DDgZL4Boos6cT7qLgeSCbb
-         9vqtKIffGm7Qm+j+Rxm8Q0TSvBDywAhm8e3CWkSwOZd1fEIe7LwUGTqnoIjQTK9TLgmT
-         FAnqJWpR/nuIuihse8dLzGNZXBSdqqxpBS/VGKb56NV4jrjtdodJJmqmgdJUA22RzMhW
-         Cimg==
+        b=svmkov2XnkG0a7zkhiHFT9fcu4lba5+XqXpo5wObuDb0gQwaQEvzL1uPBxZTjyWZdm
+         7ya0O1bzZIMuM2zfXbyLkIVt4VveoxLJUqmdirXQLudlwGrvdYYESStyLwSrK4BzvPWr
+         B+98SeM9QYOX/CwO5fBCztX60f8z838zuKENAJNJ8bnhTL3aa9KZtWQXWGrLOHl0x2Ys
+         TWrC1+ogPXs8OqFV9LLDu6onZjHh/pLDISrG+8lYAOZkgjw7Q5fdRt5hsc6nHqntMNWx
+         TUra4QwXfwoUdUSzChpqYBZOvks8/lj7NsqZi9NaIUbQZml6JoP26lR4GgpMUnIDbmRi
+         zJeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=9gYwZS6POoaYLlQM8yoEU+gr8lDSqMuby92ZC1ONZJE=;
-        b=cou0JkX+0AV94DrURfzFJac199EHrPJ368v/IizYjngpWxvNsF0PFZZMF4a/sph0Z9
-         Gc1IYVWqihXTYcV8BvxyCAEsWxrkrp8WHNcJ21h2R/jIAU9kA+77069NEATOIHIHp0mD
-         uC8aLMFeENBd+TPnoZBcyY3ZEQ1F58B+WfofjnMxxB3dwuH3vCfxCwsFiRu+Xz3dCk8b
-         6ZF2MgCvyLkJR5NBuFLK6C1KL4RrA40zInyDeKDen6uLrpmzVpnaVOxx3Iw9CRhHChj+
-         394qdn6Gcp+RJRUrWuD+CGophlOAE0Yw4cuTl98Fe/u90pFhE8XdEKxN3MLlVzUDl0sG
-         8CVw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=sfWXSw8YzuNflUdZc9k3QCIuhA3VofWyA3OtiEjB/h8=;
+        b=pNDyoof/fbBIoowFN6TVLoAfAm5lEs/nqZJ1skjZC97To3lDZkrAdIZYRMhDwuIz39
+         BkDEvTN7f7q6juYr3UjLncytEL81XKFjPDXT8GCweUwLs/409aH4m5wpMEok6+LRjkaR
+         uwK5gQfhyxXIxeW914YaT8tnbhdIfN5O2355ezYZNc0usPCswhljmZJKCS5Z6IdTsgUC
+         e+bJpee7tZuyabKQso/O7kmjkPI5gUtCh7TjN/KfSk7CVB9SQYUvw9MtFlX4GDZbwFT+
+         z01nLtQH14qPEkZYIV+QQ5zSzgMRRLpgZCn5JBmBtqpXLJLfWqej3FqVVR4eMmVp/4qW
+         1nGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@reactos.org header.s=25047 header.b=cI1G7BFZ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TpkQX0Vb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=reactos.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jv5-20020a05621429e500b00462103abc5esi2271404qvb.247.2022.05.22.23.41.31
+        by mx.google.com with ESMTPS id q11-20020a05621419eb00b00461d082a4b2si2522763qvc.354.2022.05.23.03.09.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 May 2022 23:41:31 -0700 (PDT)
+        Mon, 23 May 2022 03:09:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@reactos.org header.s=25047 header.b=cI1G7BFZ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TpkQX0Vb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=reactos.org
-Received: from localhost ([::1]:41320 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33268 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nt1kx-0004hG-07
-	for alex.bennee@linaro.org; Mon, 23 May 2022 02:41:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34496)
+	id 1nt501-0001Hg-6l
+	for alex.bennee@linaro.org; Mon, 23 May 2022 06:09:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hpoussin@reactos.org>)
- id 1nt1en-0002Uz-Mo; Mon, 23 May 2022 02:35:09 -0400
-Received: from iserv.reactos.org ([2a01:4f8:1c17:5ae1::1]:57840)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1nt4nu-0001Nr-Kr
+ for qemu-devel@nongnu.org; Mon, 23 May 2022 05:56:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:29188)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hpoussin@reactos.org>)
- id 1nt1el-0004M6-6h; Mon, 23 May 2022 02:35:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=reactos.org
- ; s=25047;
- h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
- References:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=9gYwZS6POoaYLlQM8yoEU+gr8lDSqMuby92ZC1ONZJE=; b=cI1G7BFZKZE+Rk0UKj1lEQ3ztL
- o5VlJbZttnkTdkuXiwH0JBACcaEuQRtWG5wt2gwTcNF0XKR5MQPmtp7tjJdg9jpYPktRHL7/pC1gI
- ddrgp8rjK03VQ8/r9KpSygZov1Wd4d0W8OswGUJiP5fzqv5nXyYAA4xblb2QI+U+DdsU=;
-Received: by iserv.reactos.org with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <hpoussin@reactos.org>)
- id 1nt1eP-0005Iv-TH; Mon, 23 May 2022 06:34:45 +0000
-Message-ID: <adb1830e-8b71-a889-7a2e-416f9f76d714@reactos.org>
-Date: Mon, 23 May 2022 08:34:44 +0200
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1nt4nr-0002NG-79
+ for qemu-devel@nongnu.org; Mon, 23 May 2022 05:56:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1653299802;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=sfWXSw8YzuNflUdZc9k3QCIuhA3VofWyA3OtiEjB/h8=;
+ b=TpkQX0VbYGtiygrafzyyBEkuHvHVUfAjtv4Wt5ZuQA81aA3kID+t5PaTXj4oKco9rbnlyO
+ eOxz8nJEpEvECy3xWqbtgW/7PS9oRN23/YrYPggBDzA57iE4iA+jjHGeqSHbhEHGvC3cL+
+ 1eeQT+iTzi3KehG5Ijcqt3d68n19poc=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-20-1h8nZk-KPAKa2kEB2mky2w-1; Mon, 23 May 2022 05:56:37 -0400
+X-MC-Unique: 1h8nZk-KPAKa2kEB2mky2w-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C5E2485A5AA;
+ Mon, 23 May 2022 09:56:36 +0000 (UTC)
+Received: from dgilbert-t580.localhost (unknown [10.39.195.73])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9FC451121314;
+ Mon, 23 May 2022 09:56:34 +0000 (UTC)
+From: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, laurent@vivier.eu,
+ mjt@tls.msk.ru
+Cc: danielhb413@gmail.com, clg@kaod.org, mst@redhat.com, qemu-arm@nongnu.org
+Subject: [PATCH] Trivial: 3 char repeat typos
+Date: Mon, 23 May 2022 10:56:29 +0100
+Message-Id: <20220523095629.144441-1-dgilbert@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH 29/50] pckbd: more vmstate_register() from i8042_mm_init()
- to i8042_mmio_realize()
-Content-Language: en-US
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, aleksandar.rikalo@syrmia.com,
- f4bug@amsat.org, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
- <20220522181836.864-30-mark.cave-ayland@ilande.co.uk>
-From: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
-In-Reply-To: <20220522181836.864-30-mark.cave-ayland@ilande.co.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a01:4f8:1c17:5ae1::1;
- envelope-from=hpoussin@reactos.org; helo=iserv.reactos.org
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,45 +109,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5ELQnSM3yJCb
+X-TUID: hE/RKSCg49z+
 
-Hello,
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-If you want, you can break migration compatibility. I don't see it as a problem.
+Inspired by Julia Lawall's fixing of Linux
+kernel comments, I looked at qemu, although I did it manually.
 
-Hervé
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+---
+ hw/intc/openpic.c                | 2 +-
+ hw/net/imx_fec.c                 | 2 +-
+ hw/pci/pcie_aer.c                | 2 +-
+ hw/pci/shpc.c                    | 2 +-
+ hw/ppc/spapr_caps.c              | 2 +-
+ hw/scsi/spapr_vscsi.c            | 2 +-
+ qapi/net.json                    | 2 +-
+ target/arm/cpu64.c               | 2 +-
+ tools/virtiofsd/passthrough_ll.c | 2 +-
+ ui/input.c                       | 2 +-
+ 10 files changed, 10 insertions(+), 10 deletions(-)
 
-Le 22/05/2022 à 20:18, Mark Cave-Ayland a écrit :
-> Note in this case it is not possible to register a (new) VMStateDescription in
-> the DeviceClass without breaking migration compatibility for the MIPS magnum
-> machine.
-> 
-> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> ---
->   hw/input/pckbd.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
-> index eb77ad193e..7f3578aa4d 100644
-> --- a/hw/input/pckbd.c
-> +++ b/hw/input/pckbd.c
-> @@ -681,6 +681,9 @@ static void i8042_mmio_realize(DeviceState *dev, Error **errp)
->   
->       memory_region_init_io(&s->region, OBJECT(dev), &i8042_mmio_ops, ks,
->                             "i8042", s->size);
-> +
-> +    /* Note we can't use dc->vmsd without breaking migration compatibility */
-> +    vmstate_register(NULL, 0, &vmstate_kbd, ks);
->   }
->   
->   static void i8042_mmio_init(Object *obj)
-> @@ -721,8 +724,6 @@ MMIOKBDState *i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
->       s->irq_kbd = kbd_irq;
->       s->irq_mouse = mouse_irq;
->   
-> -    vmstate_register(NULL, 0, &vmstate_kbd, s);
-> -
->       s->kbd = ps2_kbd_init(kbd_update_kbd_irq, s);
->       s->mouse = ps2_mouse_init(kbd_update_aux_irq, s);
->   
+diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
+index 49504e740f..b0787e8ee7 100644
+--- a/hw/intc/openpic.c
++++ b/hw/intc/openpic.c
+@@ -729,7 +729,7 @@ static void openpic_tmr_set_tmr(OpenPICTimer *tmr, uint32_t val, bool enabled)
+ }
+ 
+ /*
+- * Returns the currrent tccr value, i.e., timer value (in clocks) with
++ * Returns the current tccr value, i.e., timer value (in clocks) with
+  * appropriate TOG.
+  */
+ static uint64_t openpic_tmr_get_timer(OpenPICTimer *tmr)
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 0db9aaf76a..8c11b237de 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -438,7 +438,7 @@ static void imx_eth_update(IMXFECState *s)
+      *   assignment fail.
+      *
+      * To ensure that all versions of Linux work, generate ENET_INT_MAC
+-     * interrrupts on both interrupt lines. This should be changed if and when
++     * interrupts on both interrupt lines. This should be changed if and when
+      * qemu supports IOMUX.
+      */
+     if (s->regs[ENET_EIR] & s->regs[ENET_EIMR] &
+diff --git a/hw/pci/pcie_aer.c b/hw/pci/pcie_aer.c
+index 92bd0530dd..eff62f3945 100644
+--- a/hw/pci/pcie_aer.c
++++ b/hw/pci/pcie_aer.c
+@@ -323,7 +323,7 @@ static void pcie_aer_msg_root_port(PCIDevice *dev, const PCIEAERMsg *msg)
+          */
+     }
+ 
+-    /* Errro Message Received: Root Error Status register */
++    /* Error Message Received: Root Error Status register */
+     switch (msg->severity) {
+     case PCI_ERR_ROOT_CMD_COR_EN:
+         if (root_status & PCI_ERR_ROOT_COR_RCV) {
+diff --git a/hw/pci/shpc.c b/hw/pci/shpc.c
+index 28e62174c4..88b56da799 100644
+--- a/hw/pci/shpc.c
++++ b/hw/pci/shpc.c
+@@ -480,7 +480,7 @@ static const MemoryRegionOps shpc_mmio_ops = {
+     .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         /* SHPC ECN requires dword accesses, but the original 1.0 spec doesn't.
+-         * It's easier to suppport all sizes than worry about it. */
++         * It's easier to support all sizes than worry about it. */
+         .min_access_size = 1,
+         .max_access_size = 4,
+     },
+diff --git a/hw/ppc/spapr_caps.c b/hw/ppc/spapr_caps.c
+index 655ab856a0..b4283055c1 100644
+--- a/hw/ppc/spapr_caps.c
++++ b/hw/ppc/spapr_caps.c
+@@ -553,7 +553,7 @@ static void cap_ccf_assist_apply(SpaprMachineState *spapr, uint8_t val,
+              * instruction is a harmless no-op.  It won't correctly
+              * implement the cache count flush *but* if we have
+              * count-cache-disabled in the host, that flush is
+-             * unnnecessary.  So, specifically allow this case.  This
++             * unnecessary.  So, specifically allow this case.  This
+              * allows us to have better performance on POWER9 DD2.3,
+              * while still working on POWER9 DD2.2 and POWER8 host
+              * cpus.
+diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
+index a07a8e1523..e320ccaa23 100644
+--- a/hw/scsi/spapr_vscsi.c
++++ b/hw/scsi/spapr_vscsi.c
+@@ -1013,7 +1013,7 @@ static int vscsi_send_capabilities(VSCSIState *s, vscsi_req *req)
+     }
+ 
+     /*
+-     * Current implementation does not suppport any migration or
++     * Current implementation does not support any migration or
+      * reservation capabilities. Construct the response telling the
+      * guest not to use them.
+      */
+diff --git a/qapi/net.json b/qapi/net.json
+index b92f3f5fb4..8da34360db 100644
+--- a/qapi/net.json
++++ b/qapi/net.json
+@@ -298,7 +298,7 @@
+ #
+ # @udp: use the udp version of l2tpv3 encapsulation
+ #
+-# @cookie64: use 64 bit coookies
++# @cookie64: use 64 bit cookies
+ #
+ # @counter: have sequence counter
+ #
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 04427e073f..2467c5bf76 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -997,7 +997,7 @@ static void aarch64_a64fx_initfn(Object *obj)
+     cpu->gic_vpribits = 5;
+     cpu->gic_vprebits = 5;
+ 
+-    /* Suppport of A64FX's vector length are 128,256 and 512bit only */
++    /* Support of A64FX's vector length are 128,256 and 512bit only */
+     aarch64_add_sve_properties(obj);
+     bitmap_zero(cpu->sve_vq_supported, ARM_MAX_VQ);
+     set_bit(0, cpu->sve_vq_supported); /* 128bit */
+diff --git a/tools/virtiofsd/passthrough_ll.c b/tools/virtiofsd/passthrough_ll.c
+index b15c631ca5..7a73dfcce9 100644
+--- a/tools/virtiofsd/passthrough_ll.c
++++ b/tools/virtiofsd/passthrough_ll.c
+@@ -2319,7 +2319,7 @@ static int do_lo_create(fuse_req_t req, struct lo_inode *parent_inode,
+          * If security.selinux has not been remapped and selinux is enabled,
+          * use fscreate to set context before file creation. If not, use
+          * tmpfile method for regular files. Otherwise fallback to
+-         * non-atomic method of file creation and xattr settting.
++         * non-atomic method of file creation and xattr setting.
+          */
+         if (!mapped_name && lo->use_fscreate) {
+             err = do_create_secctx_fscreate(req, parent_inode, name, mode, fi,
+diff --git a/ui/input.c b/ui/input.c
+index 8ac407dec4..e2a90af889 100644
+--- a/ui/input.c
++++ b/ui/input.c
+@@ -364,7 +364,7 @@ void qemu_input_event_send(QemuConsole *src, InputEvent *evt)
+      * when 'alt+print' was pressed. This flaw is now fixed and the
+      * 'sysrq' key serves no further purpose. We normalize it to
+      * 'print', so that downstream receivers of the event don't
+-     * neeed to deal with this mistake
++     * need to deal with this mistake
+      */
+     if (evt->type == INPUT_EVENT_KIND_KEY &&
+         evt->u.key.data->key->u.qcode.data == Q_KEY_CODE_SYSRQ) {
+-- 
+2.36.1
 

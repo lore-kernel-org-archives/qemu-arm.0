@@ -1,97 +1,104 @@
-Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp3614086lfh;
-        Mon, 23 May 2022 09:43:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzYWnGYE1GI+6Brl3kCpYtZ2mSSKFu0NGWaxb3+BfX2hOTxaxJyr0nDT+2lZcqasxehEk3I
-X-Received: by 2002:a05:620a:1902:b0:5f1:8f5d:b0f2 with SMTP id bj2-20020a05620a190200b005f18f5db0f2mr14535107qkb.60.1653324189232;
-        Mon, 23 May 2022 09:43:09 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1653324189; cv=pass;
+Received: by 2002:a19:ef07:0:0:0:0:0 with SMTP id n7csp3753791lfh;
+        Mon, 23 May 2022 13:49:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHAF8NqZXK++0CXch4uG8arQzoeoIInq8mO9tcxsBIWhEvun1flJNKSBdD/JOxg+dGwvB3
+X-Received: by 2002:a05:622a:1006:b0:2f9:3e20:7640 with SMTP id d6-20020a05622a100600b002f93e207640mr2285798qte.550.1653338951540;
+        Mon, 23 May 2022 13:49:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653338951; cv=none;
         d=google.com; s=arc-20160816;
-        b=KqsB/ZNNTfWOL/iX+3VL9U3LzOC+Tm3nS7OAmyFWKrhNOgIVU6n5KvKstgeLT6vxkZ
-         hXCfkbEs0XHvxB2Ek8CxA8ev0l/lmva4fu2F6T88drXIv1E5FadKTR40paRs/sO5ia22
-         x1OkBSDc0w2pxSndVlBJpslq6Wm6QdbpA0Luex++roObL4Xwd7f/WDDHfDSM03QoNvY5
-         GqPSrc1nrmZlyPgNtmWCE2iFX48URsN1gqP1j4OOtAtrflXZvd4H567xQGXGx4wfqLc1
-         ani78zIgfpoFUB90k/UXGjvyaeMd29UtKlR1QQxhXv2xD4Ku9AwfKOhDsCNtfJbw34dF
-         XqBg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=vlp4xmjnGNgiK750Xq1lAWdRDKWupPnykO9/6Y1tFhqS0igbWqbrCJ8D0uo7aSnF2h
+         Yq2SVDtgUsQDKCb7hB1awvfIYKpCcov7IHeUs12IJB9DURHnPxupXBBG079kNeAXsfHy
+         S27Zp2hh3YkLg2lWx/go/rFtjexAEr0NScXGnQIAhWHXMrXq7ROos0mOpzOwDNcXRGia
+         LR1rq1upcrcHdISXxggHbL+L5HZTGsxN5beCleFEfnrHr0T4GZwbMlEfa5kq1Wa856de
+         mS4s9eH1qGR2UetToD8bKrovxKYaQMV/NJQuGkJsTR059O2romo+G6hhRdfL1vwEo6oc
+         eKYg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:organization:references:in-reply-to:date:cc
-         :to:from:subject:message-id:dkim-signature;
-        bh=HSDqLNIbiAlIIj112gAv+SfiMnROsQCmP+UefJmb0TM=;
-        b=zRvtxpgrp2cpYMTCgbYzgQukjxkUb0Kk6fHCYEF+f6A/hdAllX0yCyicbwCjCjJaZb
-         nQmbpZB8tJt+ryITAoex8LnlBldKiTue3YK5zdQYYWFceKtbaSf/jZc5YMapVvGQ8b/j
-         DFV/agdbpda0GPsPK2m6G+bHX2P7u4I8eVb0lvFARm+DmEXUwGiKL5Xx1ZWXwmr6X3VO
-         Z4qprPs24Dv+JNl4jm/OWomBEVmvrDis++IfKt0fG90iLZivCg68jz7Pab5v7VUfChvP
-         2mD9oqaKmHMA9IlGLz3s+3XouACyqfvLqHmjBqm1RoompaaPktMvmv5zcLaqsOjsFqp2
-         3Tiw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@icenowy.me header.s=zmail header.b=G9PnyKMT;
-       arc=pass (i=1 spf=pass spfdomain=icenowy.me dkim=pass dkdomain=icenowy.me dmarc=pass fromdomain=icenowy.me>);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=oJAaanvQuK73f6LtwZ6AmktcHVIa9UGFP+msm39TbKw=;
+        b=AQRvB3s3E+1m+tSdavaZ3IMqpV371RjofnNJZxrsFDaJLNwKMSJnqVHeH8nxAEOONn
+         O1U+7eAExgXXWWfQSI034G+r7SA4FZvcq5xmPejeCLkMGBX9MKlr7vm8tM83tLsPEN77
+         jdF8Nj7tOpkI1aesb97PcUCh1JwWTYX3+LvrG3Hc4N3HmtkdxpKPFT9J4qYIU1X/6EdF
+         8L754MK3AdNgcclfPZ+iySToCRy++Zz84vFspn0sp2X3lbsGl+cxQHr3h+cvcqDaHUdJ
+         ftwsgo2/maEwcEFk4qqw7k2tJboTdSsMWR5dzFEV8JX4gJLIgdDIGU90+F76u0ZvqtKK
+         1TDQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="KqldvE/2";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iw1-20020a0562140f2100b00461c75e7fffsi2802390qvb.113.2022.05.23.09.43.09
+        by mx.google.com with ESMTPS id o2-20020a05622a008200b002f3f4a7b78asi3328788qtw.783.2022.05.23.13.49.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 May 2022 09:43:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 May 2022 13:49:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@icenowy.me header.s=zmail header.b=G9PnyKMT;
-       arc=pass (i=1 spf=pass spfdomain=icenowy.me dkim=pass dkdomain=icenowy.me dmarc=pass fromdomain=icenowy.me>);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36066 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b="KqldvE/2";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58942 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ntB9A-0005fo-OS
-	for alex.bennee@linaro.org; Mon, 23 May 2022 12:43:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49716)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ntEzH-0001pc-12
+	for alex.bennee@linaro.org; Mon, 23 May 2022 16:49:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <uwu@icenowy.me>)
- id 1ntB74-0004BE-26; Mon, 23 May 2022 12:40:58 -0400
-Received: from sender4-op-o18.zoho.com ([136.143.188.18]:17886)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <uwu@icenowy.me>)
- id 1ntB72-0007Zn-0k; Mon, 23 May 2022 12:40:57 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1653324043; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=PuiyuF0gMrnHd1B9Ro7m/XlPwk3wtlPoXhsNNgKEO+p3BZc68NyPkb2xLlEkmfdLtO6/WkhUT05fORXovZ2fxUr/pAxUiTiFoS4lgp7P8kQQ0pjzHJ2ZQ2VFK4tFIxF7ZPxRY6hp35XloltPdgwq8ihEQ08gCFrl4RmRMLxmMN4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1653324043;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
- bh=HSDqLNIbiAlIIj112gAv+SfiMnROsQCmP+UefJmb0TM=; 
- b=mWsXDKJgo8PYo9ezpXkHWCK46kthQYqHDXfBJYdm+J8KB/n+FUoVhTUJ7N+Tlf7dvXMwLXpiZjpghKeU5FYaTRkrv3baNqz8DO5dqAqvLinuTei/BDsub4OBu2lszbsbLiKeMGGBW11xgNK63fsQWWIxn1ZKRX3HOI4qTe+mNUk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=icenowy.me;
- spf=pass  smtp.mailfrom=uwu@icenowy.me;
- dmarc=pass header.from=<uwu@icenowy.me>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1653324043; 
- s=zmail; d=icenowy.me; i=uwu@icenowy.me;
- h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
- bh=HSDqLNIbiAlIIj112gAv+SfiMnROsQCmP+UefJmb0TM=;
- b=G9PnyKMTJeAnoIIKUt8wnnFBkdxsMD+wsIplzUK6h2q4yEUh3qpbcZcEkoOmvCeg
- ZXKufRgwCXIcohFIVsy+pN2U0FcT/MXa6i9hQIC2Z5shT6zeOGt1kGYfjcwI58FWpjQ
- 4Tni+lif2vFR0i73F2T7gIVB6QKtsOCJw9Xv4r/0=
-Received: from edelgard.icenowy.me (59.41.161.142 [59.41.161.142]) by
- mx.zohomail.com with SMTPS id 165332404077472.6018843189238;
- Mon, 23 May 2022 09:40:40 -0700 (PDT)
-Message-ID: <a7bdef698925136964b2215b94bcd53e1f153048.camel@icenowy.me>
-Subject: Re: [PATCH] hw/sd/allwinner-sdhost: report FIFO water level as 1
- when data ready
-From: Icenowy Zheng <uwu@icenowy.me>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Beniamino Galvani <b.galvani@gmail.com>, Niek Linnenbank
- <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Tue, 24 May 2022 00:40:36 +0800
-In-Reply-To: <CAFEAcA-5CxTPdzbwubjRvw-KwOAnW1vPP3O+acvURPD0kwXfMg@mail.gmail.com>
-References: <20220520124200.2112699-1-uwu@icenowy.me>
- <CAFEAcA-5CxTPdzbwubjRvw-KwOAnW1vPP3O+acvURPD0kwXfMg@mail.gmail.com>
-Organization: Anthon Open-Source Community
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.40.4 
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ntExw-0008BJ-Ll
+ for qemu-arm@nongnu.org; Mon, 23 May 2022 16:47:48 -0400
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f]:51956)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ntExu-0004zC-OX
+ for qemu-arm@nongnu.org; Mon, 23 May 2022 16:47:48 -0400
+Received: by mail-pj1-x102f.google.com with SMTP id gg20so15065555pjb.1
+ for <qemu-arm@nongnu.org>; Mon, 23 May 2022 13:47:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=oJAaanvQuK73f6LtwZ6AmktcHVIa9UGFP+msm39TbKw=;
+ b=KqldvE/25cf1yARueOkRl5RWX6gwhTLo4/xbLytS/mKo40SnWXK/Iq65VuNH6UBrVu
+ xVRDWoM0xBGHiwJ94i7YIN3CYzu0XxTVqlCdGTC95FSdtb+tPUc837xrQOKdiScajD4L
+ Bo9+pReewtraBa9iVexbkcP6GHUTTuEkpRQ5S9907R68La3ozoZz7L8q2RAQUcr61/6D
+ XGTH8zirNSFHzdiOGSpMQ/3K4nj1gpfeyPFIKY9veIu5+a0sgVVg02DFMufMzf3O8pv/
+ qOFXaOnkJ4ziqi+yQM9GmcGtfYNwDLAn+AhSVaqIXSYziARIDFJqbnFCcs8kzN9fsQVR
+ t9nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=oJAaanvQuK73f6LtwZ6AmktcHVIa9UGFP+msm39TbKw=;
+ b=S5woJJOT0+mN0YWJ65hy8HIvrEcZMAuav11P68N9Q524rgwftmXxvRH3590xEjGqaX
+ xN6EWZRxqfsOM0T0BnrY+t9XUPhOiqM9K/+t995PkTv/l4kufJY4hzm8f7Y27p23/QlP
+ VMSBcTKOZyNzI9VntS1NyI9c6s8xjQX0oqolvIMxl673BStffTcOvDzP+kjRZsUomFrj
+ HLSvHb+JKtOxIEE56+LqBhzKS12Vy1xsvc1Cxhov0ol2MESltc2elHFM/I/LyZ9Dq/7l
+ 1hl0ADXwLFZY5SUEGbH55kZrlJDzedxPrD2J23b2UWwK5eNu7MijcavqCtvxU5mbKCNA
+ ScXw==
+X-Gm-Message-State: AOAM530+aMVZl71uaimVaAUmI0Z6ECPz+4jXTE8AVJsPD7I1fcrPh84A
+ NHjaDd6Fd3week4EWuc+tX3xBlNPV9EUvg==
+X-Received: by 2002:a17:90a:e7c8:b0:1df:fe28:ceb8 with SMTP id
+ kb8-20020a17090ae7c800b001dffe28ceb8mr827372pjb.193.1653338865037; 
+ Mon, 23 May 2022 13:47:45 -0700 (PDT)
+Received: from stoup.. ([71.212.142.129]) by smtp.gmail.com with ESMTPSA id
+ c16-20020a624e10000000b0050dc7628142sm7721788pfb.28.2022.05.23.13.47.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 May 2022 13:47:44 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 01/18] target/arm: Allow raise_exception to handle finding
+ target EL
+Date: Mon, 23 May 2022 13:47:25 -0700
+Message-Id: <20220523204742.740932-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220523204742.740932-1-richard.henderson@linaro.org>
+References: <20220523204742.740932-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.18; envelope-from=uwu@icenowy.me;
- helo=sender4-op-o18.zoho.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,67 +107,101 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d42aV56mSJX3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CN9yNzmIJv6P
 
-=E5=9C=A8 2022-05-23=E6=98=9F=E6=9C=9F=E4=B8=80=E7=9A=84 15:14 +0100=EF=BC=
-=8CPeter Maydell=E5=86=99=E9=81=93=EF=BC=9A
-> On Fri, 20 May 2022 at 13:42, Icenowy Zheng <uwu@icenowy.me> wrote:
-> >=20
-> > U-Boot queries the FIFO water level to reduce checking status
-> > register
-> > when doing PIO SD card operation.
-> >=20
-> > Report a FIFO water level of 1 when data is ready, to prevent the
-> > code
-> > from trying to read 0 words from the FIFO each time.
-> >=20
-> > Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
-> > ---
-> > =C2=A0hw/sd/allwinner-sdhost.c | 7 +++++++
-> > =C2=A01 file changed, 7 insertions(+)
-> >=20
-> > diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
-> > index 041e45c680..b66fd9bce7 100644
-> > --- a/hw/sd/allwinner-sdhost.c
-> > +++ b/hw/sd/allwinner-sdhost.c
-> > @@ -114,7 +114,9 @@ enum {
-> > =C2=A0};
-> >=20
-> > =C2=A0enum {
-> > +=C2=A0=C2=A0=C2=A0 SD_STAR_FIFO_EMPTY=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-=3D (1 << 2),
-> > =C2=A0=C2=A0=C2=A0=C2=A0 SD_STAR_CARD_PRESENT=C2=A0=C2=A0=C2=A0 =3D (1 =
-<< 8),
-> > +=C2=A0=C2=A0=C2=A0 SD_STAR_FIFO_LEVEL_1=C2=A0=C2=A0=C2=A0 =3D (1 << 17=
-),
-> > =C2=A0};
->=20
-> Is there documentation on this hardware available somewhere?
-> The Linux kernel driver for it doesn't seem to have a #define
-> for this bit 17.
+The work of finding the correct target EL for an exception is
+currently split between raise_exception and target_exception_el.
+Begin merging these by allowing the input to raise_exception
+to be zero and use exception_target_el for that case.
 
-For the specific version on H3,
-https://linux-sunxi.org/File:Allwinner_H3_Datasheet_V1.2.pdf .
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/internals.h | 11 ++++++-----
+ target/arm/op_helper.c | 13 +++++++++----
+ 2 files changed, 15 insertions(+), 9 deletions(-)
 
->=20
-> In an ideal world we'd actually emulate the FIFO itself
-> (our pl181 and bcm2835_sdhost models do this, for example).
-
-Interesting, I will check it.
-
-> -- PMM
-
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index b654bee468..03363b0f32 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -111,18 +111,19 @@ FIELD(DBGWCR, SSCE, 29, 1)
+ /**
+  * raise_exception: Raise the specified exception.
+  * Raise a guest exception with the specified value, syndrome register
+- * and target exception level. This should be called from helper functions,
+- * and never returns because we will longjump back up to the CPU main loop.
++ * and the current or target exception level. This should be called from
++ * helper functions, and never returns because we will longjump back up
++ * to the CPU main loop.
+  */
+ G_NORETURN void raise_exception(CPUARMState *env, uint32_t excp,
+-                                uint32_t syndrome, uint32_t target_el);
++                                uint32_t syndrome, uint32_t cur_or_target_el);
+ 
+ /*
+  * Similarly, but also use unwinding to restore cpu state.
+  */
+ G_NORETURN void raise_exception_ra(CPUARMState *env, uint32_t excp,
+-                                      uint32_t syndrome, uint32_t target_el,
+-                                      uintptr_t ra);
++                                   uint32_t syndrome,
++                                   uint32_t cur_or_target_el, uintptr_t ra);
+ 
+ /*
+  * For AArch64, map a given EL to an index in the banked_spsr array.
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index c4bd668870..6b9141b79a 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -28,10 +28,15 @@
+ #define SIGNBIT (uint32_t)0x80000000
+ #define SIGNBIT64 ((uint64_t)1 << 63)
+ 
+-void raise_exception(CPUARMState *env, uint32_t excp,
+-                     uint32_t syndrome, uint32_t target_el)
++void raise_exception(CPUARMState *env, uint32_t excp, uint32_t syndrome,
++                     uint32_t cur_or_target_el)
+ {
+     CPUState *cs = env_cpu(env);
++    int target_el = cur_or_target_el;
++
++    if (cur_or_target_el == 0) {
++        target_el = exception_target_el(env);
++    }
+ 
+     if (target_el == 1 && (arm_hcr_el2_eff(env) & HCR_TGE)) {
+         /*
+@@ -54,7 +59,7 @@ void raise_exception(CPUARMState *env, uint32_t excp,
+ }
+ 
+ void raise_exception_ra(CPUARMState *env, uint32_t excp, uint32_t syndrome,
+-                        uint32_t target_el, uintptr_t ra)
++                        uint32_t cur_or_target_el, uintptr_t ra)
+ {
+     CPUState *cs = env_cpu(env);
+ 
+@@ -64,7 +69,7 @@ void raise_exception_ra(CPUARMState *env, uint32_t excp, uint32_t syndrome,
+      * the caller passed us, and cannot use cpu_loop_exit_restore().
+      */
+     cpu_restore_state(cs, ra, true);
+-    raise_exception(env, excp, syndrome, target_el);
++    raise_exception(env, excp, syndrome, cur_or_target_el);
+ }
+ 
+ uint64_t HELPER(neon_tbl)(CPUARMState *env, uint32_t desc,
+-- 
+2.34.1
 

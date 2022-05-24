@@ -1,99 +1,99 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp364717lfh;
-        Tue, 24 May 2022 10:20:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrHxmHgaALvArIl/ZL2v1pQT7wbhedVGapvv+yEQpoJoQuMwl1irnhK2PeaEi088KIHNm1
-X-Received: by 2002:a25:bd11:0:b0:655:8113:bf31 with SMTP id f17-20020a25bd11000000b006558113bf31mr2085712ybk.508.1653412833382;
-        Tue, 24 May 2022 10:20:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653412833; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp367357lfh;
+        Tue, 24 May 2022 10:25:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxjiodQdOaDacIstAGBvaL6oVNpyflkZdyftVBm4wLCe1uAcACQ0tt2s/c9bDbgz5Xd+I76
+X-Received: by 2002:a05:620a:280d:b0:67d:2480:fdea with SMTP id f13-20020a05620a280d00b0067d2480fdeamr17875718qkp.157.1653413101410;
+        Tue, 24 May 2022 10:25:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653413101; cv=none;
         d=google.com; s=arc-20160816;
-        b=T4dJKypUreU0puy+s2YHgPkvw3gIwyEDU4gaZTT3u1eP8qfYoZwJeocPbf+BL+HUdI
-         +z9pIONZU7YtaE+eSLGYiNXTjB3aim3cvAbv8hrJvDjhmvlOlIBdDakiywveHZK+hQWr
-         1pKWCxIGNy6fsI7iO+nriVLEDjfFHHr82N0aHGzNo92WYLkEnYQcsBh9sYLQs7xX0qwR
-         MAzcobqPBMiXoirpEK061MN+h6vvxSA5qI6ke66Qnr7MhStrVq/EEaKk5cLLHfaonzdc
-         5qbizdHiXNR5KwHuXO3nxb+qXNCIocz05XNV48MDCs7uYOR9M7IsHSayo9sOJFjpEd2b
-         vtjQ==
+        b=z5sHnZbzOVN7+uLNgJZwd5G9/movBMPqk/B6nk6hEpkc2kcHN8aiUt+guHrJw273Z2
+         5AtEEe3nm25gjp7BA/lDlFxgOV8fwhzoJDxcV+WGkkFdvl2berZJaWBVZbJzJUwkUQf0
+         8F2v7ZLYh6T6hUvWgN9Fhq5JbCPy5Uy1BVRmGuAlmf5HjQD1082hDBkabqTtzuNw2sL0
+         EeAFhwipDGEFMxy08CjAK8vp3Tw3kswKIJu9Xg1ZoLDiJ9ljZW04GiONzcjggp4vVOYX
+         JnGSK4xHD7xKMRHBUcYg11lpT+Lv+bFW3kQ9IPbvd9j9OcQ9lSbruX+Uhjrfojd5ZKgf
+         4LXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:from:references:to
          :content-language:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=1wsh6fKAWRgaJulWZL8xCU/ms5PKQhxkXyxoe5NQ2BU=;
-        b=DsHyigxvpQ8l/BTX29RvWCzj1QLZ/K+RoSSoRGDjKZQUjXV3xuCJEkQqiQvBtmDIo3
-         GbkJZ22Id+1rZlCmF8b9+t0i7rnuRWIN6s/J1Gcco6jfnsyhnjeIoYLo19NTmOjq48zb
-         tST0Ru70uj2DuileRr93J98NvlwzgXroHp3BcGi9gkNNa0qwfqQqHEoUMBTVHEVgLHxz
-         NOoS+yI/dwfc9Gvevv28SzJZZUCudq8wZZzIqc/sJvrAOA6emKaWiYN8xl4vtk/Qsfsm
-         tQdE2DzjCDPspGF77jpjRuTeRpM31sC9Kgo26KLR9Ji7F1IKFg4Vqs6yloM10usiPAjr
-         KNSA==
+        bh=EPGeL7ZRENlJWneVf0+6SMtnyDnUr6w+kVoTxUUYtLE=;
+        b=ICkqry6kgDx1GhZS5sfuK58dQYfItfrbbgSLpTFg0C6YYKRyiLnbLem2Un3mzJ5yA0
+         Ly+2gl0WF3IVXztmv4BpnEKTETSwdgGdl+zg04dI36uhRVGZjUKf6gYARwNOpwiNs4Yb
+         LSBtfUoXSW/6eXSFp3g+XXchcD/HLmOq0o7nMt97sCLBj9h5eEMG7jyNdNkQKxhGaJKd
+         bG149pXG1apIB5f71NzPEMiTYKcDk2Cq8lg7qGLXkg4RuXIoRJFGjJETUPIe9QnbhNcp
+         G8KFLHasx07pf1X9AofoPk/+8HZY9ueXQps1VdvwvWw1xXllec40A3BkiHiwba1toZEv
+         SLDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=KBKEjDMx;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=JLCEtq4G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id by14-20020a05690c082e00b002f80961760asi88931ywb.264.2022.05.24.10.20.33
+        by mx.google.com with ESMTPS id d18-20020a05620a141200b006a3a178124esi2242037qkj.472.2022.05.24.10.25.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 May 2022 10:20:33 -0700 (PDT)
+        Tue, 24 May 2022 10:25:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=KBKEjDMx;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=JLCEtq4G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1]:59138 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ntYCu-0008L7-PK
-	for alex.bennee@linaro.org; Tue, 24 May 2022 13:20:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40264)
+	id 1ntYHE-0004w4-Ru
+	for alex.bennee@linaro.org; Tue, 24 May 2022 13:25:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41164)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1ntYCc-0008KN-Nf; Tue, 24 May 2022 13:20:15 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:51234)
+ id 1ntYGp-0004ud-Pt; Tue, 24 May 2022 13:24:35 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:51256)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1ntYCa-0005u7-VA; Tue, 24 May 2022 13:20:14 -0400
+ id 1ntYGa-0006QM-F5; Tue, 24 May 2022 13:24:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
  In-Reply-To:From:References:To:MIME-Version:Date:Message-ID:Sender:Reply-To:
  Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=1wsh6fKAWRgaJulWZL8xCU/ms5PKQhxkXyxoe5NQ2BU=; b=KBKEjDMxZyPpqtkOAowzcpGv6/
- TP/mVU9wNA6UtX5BLOW47CRUNCtqdfvHek7AXHYR25LQUFBl84IG1TuJXMPU9YaElTg03a/ijCHFV
- bT3hHplRce/VR9yjcG7i/vUrCsBRDqV28ygS0vaW4c7zSx56N6aaB9yjgCwsgLI4btIemBJQE1fxH
- xqhkr9hIJ2ydtSLHpl4hXiti9qNtJVyISOZdk7uEl55+x7V4196yweOwoPPZACzKY3QgON4iHDrWw
- Qfd1Hp6F9XKafGTO+tf42q4Di5aw3elAXzF/gTmdFOAH/Qyk5+neJUClGcKV4KyiET0FpC4I7Mp/P
- OGZlTqStIPq/K+JYSuM1pOUU1kW3y0S6OE/Llg2cRH3q2BzS0efNmDAm/DpEyIU6kBGYWh029bTLV
- Nvan2Ih4H2CxlPxay89dfxSu47apB/lLAUc/NYzj8DmGl+z2jnX18rd2WiutQLuzfwcijAQ1jDyTC
- TyTtn+avM9PMtEms9z0H5NxETEtwCZI58ONv8nfYGjMQ5ceusgbcwk+Eq3a5umPzwLEx1TY9MIrd0
- hO5hkZPiqaei0gWlORfsXKM49y1NwrPUCTbaGHT2LXMf8J9l8AlzXCAVK8aIYCPAp64TWDS5vsdWY
- aLGHPMsjCIik53vc1sLMYPWis7mqRDrhdYysv1QYk=;
+ bh=EPGeL7ZRENlJWneVf0+6SMtnyDnUr6w+kVoTxUUYtLE=; b=JLCEtq4GWS1DwvKWJQTfqIw1ci
+ iyZffB5SWczh9isOEkbZRlqRxPAYtviQDBxdkgc5VUpgOQ6tiTgESzr2CW5Z5mD/di3hGTMgDtQhb
+ S5dokaGNnlFJRzSk6AC7c7ZIlJbTvy0JIVbH19v5+5XudAnMOO2BpKOX7qGr4iksz6CvYXqhipr6l
+ mDN+Q+HZ1O5E30Ny+9B6eEqubKZlqZPoGO+8dElSzjXTovszhU1+Ie/Rv+xPX6PwNzkp893+rdWK9
+ +2ib8cFrqNSfqice3vr6Whm4/09Qp+sEdWwp323bJgDLLNA8R78lCAN7nTl2kYS+HGrhyGhywL2c3
+ fCTmQuVhQ/UcGsP3rVHRqUx+6/bAjMjHWEFaMh3Mit1CfjGiSmkRriQEfbSE3Xdf+1Vw4+byfDm8l
+ KwxgFIdI983DrJV7GqZgyvUqxfD6BWLn5hLMDM8/UeTH85O1XaLe0uWOOUeVIflNnV5yEldal8HS+
+ CCt7Ny1lMBDz82Jxt9rJ9bL4eIillnrrSdOS5QwUrav+T0PRBBRm6cU+qxPAJImjCCW0glIgFmokW
+ EoXhop16nl6ha+SxbRVY+ivNhwTcD1r3Vsn86sRFCyDkCJxBFTpZ9wTZjVwX0pbtqNCLJUaAdlYh+
+ q0b0NF6MHL3QavBKGNnWbJteudeQSGBbWxMeTAXxA=;
 Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1ntYBL-000AWi-Lp; Tue, 24 May 2022 18:18:59 +0100
-Message-ID: <bdf51239-7b32-66f7-9d42-46b2cbbb8a6d@ilande.co.uk>
-Date: Tue, 24 May 2022 18:19:55 +0100
+ id 1ntYFO-000AYV-Ua; Tue, 24 May 2022 18:23:11 +0100
+Message-ID: <758bf46a-9d89-d36d-071b-24865b3bb874@ilande.co.uk>
+Date: Tue, 24 May 2022 18:24:05 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+To: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
  richard.henderson@linaro.org, deller@gmx.de, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, hpoussin@reactos.org,
- aleksandar.rikalo@syrmia.com, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, peter.maydell@linaro.org, aleksandar.rikalo@syrmia.com,
+ f4bug@amsat.org, jiaxun.yang@flygoat.com, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
- <20220522181836.864-10-mark.cave-ayland@ilande.co.uk>
- <b3c11eaa-7549-1695-6987-c181141c576f@amsat.org>
+ <20220522181836.864-30-mark.cave-ayland@ilande.co.uk>
+ <adb1830e-8b71-a889-7a2e-416f9f76d714@reactos.org>
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <b3c11eaa-7549-1695-6987-c181141c576f@amsat.org>
+In-Reply-To: <adb1830e-8b71-a889-7a2e-416f9f76d714@reactos.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 09/50] ps2: remove duplicate setting of scancode_set in
- ps2_kbd_init()
+Subject: Re: [PATCH 29/50] pckbd: more vmstate_register() from i8042_mm_init()
+ to i8042_mmio_realize()
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -119,24 +119,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9maukYPh0HuQ
+X-TUID: /tyINlGY2dXE
 
-On 22/05/2022 23:22, Philippe Mathieu-Daudé via wrote:
+On 23/05/2022 07:34, Hervé Poussineau wrote:
 
-> On 22/5/22 20:17, Mark Cave-Ayland wrote:
->> The default value for scancode_set is already set in ps2_reset() so there is no
+> Hello,
 > 
-> ps2_reset -> ps2_reset_keyboard ?
+> If you want, you can break migration compatibility. I don't see it as a problem.
+> 
+> Hervé
 
-Ah yes, it's just a typo in the commit message where ps2_reset() should be changed to 
-ps2_kbd_reset(). I can fix this for v2.
+Thanks for suggesting this. Given that migration of the magnum machine was broken for 
+a long time until I fixed it recently, I don't think it would be a problem either.
 
->> need to duplicate this in ps2_kbd_init().
+I was considering a similar proposal for lasips2 but was planning to do the migration 
+break in the part 2 series as part of the QOM modelling improvements rather than in 
+this initial series. I'll update the I8042_MMIO accordingly when my current working 
+branch for part 2.
+
+> Le 22/05/2022 à 20:18, Mark Cave-Ayland a écrit :
+>> Note in this case it is not possible to register a (new) VMStateDescription in
+>> the DeviceClass without breaking migration compatibility for the MIPS magnum
+>> machine.
 >>
 >> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 >> ---
->>   hw/input/ps2.c | 1 -
->>   1 file changed, 1 deletion(-)
+>>   hw/input/pckbd.c | 5 +++--
+>>   1 file changed, 3 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+>> index eb77ad193e..7f3578aa4d 100644
+>> --- a/hw/input/pckbd.c
+>> +++ b/hw/input/pckbd.c
+>> @@ -681,6 +681,9 @@ static void i8042_mmio_realize(DeviceState *dev, Error **errp)
+>>       memory_region_init_io(&s->region, OBJECT(dev), &i8042_mmio_ops, ks,
+>>                             "i8042", s->size);
+>> +
+>> +    /* Note we can't use dc->vmsd without breaking migration compatibility */
+>> +    vmstate_register(NULL, 0, &vmstate_kbd, ks);
+>>   }
+>>   static void i8042_mmio_init(Object *obj)
+>> @@ -721,8 +724,6 @@ MMIOKBDState *i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
+>>       s->irq_kbd = kbd_irq;
+>>       s->irq_mouse = mouse_irq;
+>> -    vmstate_register(NULL, 0, &vmstate_kbd, s);
+>> -
+>>       s->kbd = ps2_kbd_init(kbd_update_kbd_irq, s);
+>>       s->mouse = ps2_mouse_init(kbd_update_aux_irq, s);
+
 
 ATB,
 

@@ -1,54 +1,54 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp679953lfh;
-        Tue, 24 May 2022 22:41:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyoPHFYr0C60xxeq1JH5q1m/wLLcHOuMeopihS60lMDL9hJwTuriXCVKkOpbDyRpIboEMxV
-X-Received: by 2002:a05:622a:148:b0:2f9:5518:42c1 with SMTP id v8-20020a05622a014800b002f9551842c1mr3872155qtw.59.1653457278908;
-        Tue, 24 May 2022 22:41:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653457278; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp686125lfh;
+        Tue, 24 May 2022 22:58:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXmmTD3o5xY11aHaju4mdP12PiakvLPZXLbJcq9tPFUxQhIXsv2WkkiODFl6mJgmm/cDDd
+X-Received: by 2002:a05:6214:2305:b0:432:f1d4:6177 with SMTP id gc5-20020a056214230500b00432f1d46177mr24431091qvb.107.1653458296431;
+        Tue, 24 May 2022 22:58:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653458296; cv=none;
         d=google.com; s=arc-20160816;
-        b=J9Nvt/7V+n4a572wcRG03CU7HsjQDjvfSWEJaCaiLiIffKX6JJBpyDBOlJnONXjiLP
-         UZOGZmdoLjFiviJAJNYZtjQqWcrIn4gZtID+4tU1Z2DN54nvYgHoWYpNYDnYJl0ZHU6t
-         qb4VYS6JaGRj2kpowHvlIbOq4LUG+nJ3tGq8UBbWO04iZcXJrgrNmQXkB3KwI0eAaDWI
-         x1b5rRPloRrxB5i1nZBgfRNoubpvpQQRY75Ach11R1plRxEySNcaL2d6UDHzGUbvZoPe
-         rkN7x3tereGMmFa/UFjTycDA24GddWt0/f788Qq+xJImjs9wVfeLG4NuH2/aMEWQj5GK
-         2wCQ==
+        b=HpjQ53VwkeX1QvC8APSqdQt+0af6U4swQR1Uk51oRWvXoc4Yd9Irx7gGDWkSNxdbds
+         oYNZZLt+3y+vnPUIuh47NyDxfbH1Q0p/7278emvQBqER2anvIVyAQZ+R9mFeJODqaWDi
+         jLEUlJF8cx+mUP05KKIpoQeLbHRUx4ICnleb4M9TsjD5nGvR84Sg2aGyHkrJiLPoik8h
+         6D9KJIP2f82E3Pp5KgXQBDdRh/1VMa+Z2qcfTp4rGHHgwobCxSz0oUBT5Tu5CI9mEOIx
+         IiyHftF+0D8b7JZfi4WMiaeaQh4m1IjS1NSkI46hhKsW71O6Gdm+zoKMGlzqUmAjeIUg
+         NX4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from;
-        bh=wxrB68tRiteVuRooYZ2NQoRh1KqHbZT9gjd0yEIWvwk=;
-        b=ADHVNM5qyXdN8zrs7q7wFd0rDdVINCD8HVHgxYyOITHNoeGOZE/OYbSEw3ojxqCP/R
-         C5Qap2+U/gE9VUTs89lP85gemoaJaZ+DnEpMaLsxt0yFNYoMttNUycRf3XA7PG6MCROJ
-         voSgFw8C5JfimMJgxW1UD0c+XMctBBIGMF0dfj0cQsuhY+N59gGyaIFmV5aLCmiYhFT6
-         dakK5BI34Hi1KgHskD4mK9VWPxyU+12a2GyFMxN1IM1QBS0ux6eIXk9zcIFIAY+CAhm6
-         xbWbIqRKxjDQ479jnlysFGQTA13VkcyHV8XwLUj0kNvNuTR3bEWjF8xQ+9P/Myeg5obj
-         mLkw==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:cc:to:from;
+        bh=YlSfNo9VMZW5mygsFh2RgiXCOS9dkKHTk5rfP+CH5UU=;
+        b=IAfJorrYkUrVV8fN7Th/4mP/YNO3TMuklPckfFgsebiYtNJPUi+ED/kBmH0HOB0hEh
+         zWNJffxFbtSDVJ7TuKVi+ddKqv//6xwqAcBjNCz4GHjmz8ObK1lS82zmqt5CCllq6SCa
+         Ouu/bfY0B8jx+9r7KJbZdGGhrKcn5mYTgNM3lRnwjalAFBOUEaPVSc7rpKD3eQp8OUWE
+         /SXI6wnpWpnLXmDGMV+yfuFn7WZYcxg+cHxMPLTyyJaLYwPlr/JcNbHGe0feDB8rEoNX
+         uWfCtKP5qC49pQu0NVpy+Jv914KTp1K8sOdN2DGrBl6ihi+EyfSHr0OVEkM2sc3HoS71
+         24FQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k12-20020a05622a03cc00b002f3d8711217si648527qtx.659.2022.05.24.22.41.18
+        by mx.google.com with ESMTPS id t13-20020ac8588d000000b002f3db75589dsi824586qta.501.2022.05.24.22.58.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 May 2022 22:41:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 May 2022 22:58:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51830 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58238 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ntjlm-00037A-9O
-	for alex.bennee@linaro.org; Wed, 25 May 2022 01:41:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50316)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ntk2B-0008K8-Tg
+	for alex.bennee@linaro.org; Wed, 25 May 2022 01:58:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50390)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ntjgB-0000Xb-IM; Wed, 25 May 2022 01:35:31 -0400
-Received: from twspam01.aspeedtech.com ([211.20.114.71]:14436)
+ id 1ntjgT-0001AE-Sf; Wed, 25 May 2022 01:35:49 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:52379)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ntjg8-0003sg-FB; Wed, 25 May 2022 01:35:31 -0400
+ id 1ntjgR-0003xq-Nl; Wed, 25 May 2022 01:35:49 -0400
 Received: from mail.aspeedtech.com ([192.168.0.24])
- by twspam01.aspeedtech.com with ESMTP id 24P5KhCZ022844;
- Wed, 25 May 2022 13:20:43 +0800 (GMT-8)
+ by twspam01.aspeedtech.com with ESMTP id 24P5Kg9i022843;
+ Wed, 25 May 2022 13:20:42 +0800 (GMT-8)
  (envelope-from jamin_lin@aspeedtech.com)
 Received: from localhost.localdomain (192.168.70.123) by TWMBX02.aspeed.com
  (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Wed, 25 May
@@ -60,19 +60,17 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <steven_lee@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <jamin_lin@aspeedtech.com>
-Subject: [PATCH v2 1/4] hw/gpio Add GPIO read/write trace event.
-Date: Wed, 25 May 2022 13:34:41 +0800
-Message-ID: <20220525053444.27228-2-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 0/4] hw/gpio Add ASPEED GPIO model for AST1030
+Date: Wed, 25 May 2022 13:34:40 +0800
+Message-ID: <20220525053444.27228-1-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20220525053444.27228-1-jamin_lin@aspeedtech.com>
-References: <20220525053444.27228-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [192.168.70.123]
 X-ClientProxiedBy: TWMBX02.aspeed.com (192.168.0.24) To TWMBX02.aspeed.com
  (192.168.0.24)
 X-DNSRBL: 
-X-MAIL: twspam01.aspeedtech.com 24P5KhCZ022844
+X-MAIL: twspam01.aspeedtech.com 24P5Kg9i022843
 Received-SPF: pass client-ip=211.20.114.71;
  envelope-from=jamin_lin@aspeedtech.com; helo=twspam01.aspeedtech.com
 X-Spam_score_int: -18
@@ -81,150 +79,46 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zY5JJp9NqsyD
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QcelA1gmpfCa
 
-Add GPIO read/write trace event for aspeed model.
+-v2 changes
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/gpio/aspeed_gpio.c | 54 +++++++++++++++++++++++++++++++------------
- hw/gpio/trace-events  |  5 ++++
- 2 files changed, 44 insertions(+), 15 deletions(-)
+Create separate patches to support the following features
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 9b736e7a9f..4620ea8e8b 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -15,6 +15,7 @@
- #include "qapi/visitor.h"
- #include "hw/irq.h"
- #include "migration/vmstate.h"
-+#include "trace.h"
- 
- #define GPIOS_PER_GROUP 8
- 
-@@ -523,11 +524,15 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
-     uint64_t idx = -1;
-     const AspeedGPIOReg *reg;
-     GPIOSets *set;
-+    uint32_t value = 0;
-+    uint64_t debounce_value;
- 
-     idx = offset >> 2;
-     if (idx >= GPIO_DEBOUNCE_TIME_1 && idx <= GPIO_DEBOUNCE_TIME_3) {
-         idx -= GPIO_DEBOUNCE_TIME_1;
--        return (uint64_t) s->debounce_regs[idx];
-+        debounce_value = (uint64_t) s->debounce_regs[idx];
-+        trace_aspeed_gpio_read(offset, debounce_value);
-+        return debounce_value;
-     }
- 
-     reg = &agc->reg_table[idx];
-@@ -540,38 +545,55 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
-     set = &s->sets[reg->set_idx];
-     switch (reg->type) {
-     case gpio_reg_data_value:
--        return set->data_value;
-+        value = set->data_value;
-+        break;
-     case gpio_reg_direction:
--        return set->direction;
-+        value = set->direction;
-+        break;
-     case gpio_reg_int_enable:
--        return set->int_enable;
-+        value = set->int_enable;
-+        break;
-     case gpio_reg_int_sens_0:
--        return set->int_sens_0;
-+        value = set->int_sens_0;
-+        break;
-     case gpio_reg_int_sens_1:
--        return set->int_sens_1;
-+        value = set->int_sens_1;
-+        break;
-     case gpio_reg_int_sens_2:
--        return set->int_sens_2;
-+        value = set->int_sens_2;
-+        break;
-     case gpio_reg_int_status:
--        return set->int_status;
-+        value = set->int_status;
-+        break;
-     case gpio_reg_reset_tolerant:
--        return set->reset_tol;
-+        value = set->reset_tol;
-+        break;
-     case gpio_reg_debounce_1:
--        return set->debounce_1;
-+        value = set->debounce_1;
-+        break;
-     case gpio_reg_debounce_2:
--        return set->debounce_2;
-+        value = set->debounce_2;
-+        break;
-     case gpio_reg_cmd_source_0:
--        return set->cmd_source_0;
-+        value = set->cmd_source_0;
-+        break;
-     case gpio_reg_cmd_source_1:
--        return set->cmd_source_1;
-+        value = set->cmd_source_1;
-+        break;
-     case gpio_reg_data_read:
--        return set->data_read;
-+        value = set->data_read;
-+        break;
-     case gpio_reg_input_mask:
--        return set->input_mask;
-+        value = set->input_mask;
-+        break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
-                       HWADDR_PRIx"\n", __func__, offset);
-         return 0;
-     }
-+
-+    trace_aspeed_gpio_read(offset, value);
-+    return value;
- }
- 
- static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-@@ -585,6 +607,8 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-     GPIOSets *set;
-     uint32_t cleared;
- 
-+    trace_aspeed_gpio_write(offset, data);
-+
-     idx = offset >> 2;
-     if (idx >= GPIO_DEBOUNCE_TIME_1 && idx <= GPIO_DEBOUNCE_TIME_3) {
-         idx -= GPIO_DEBOUNCE_TIME_1;
-diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
-index 1dab99c560..e9cd4a5662 100644
---- a/hw/gpio/trace-events
-+++ b/hw/gpio/trace-events
-@@ -27,3 +27,8 @@ sifive_gpio_read(uint64_t offset, uint64_t r) "offset 0x%" PRIx64 " value 0x%" P
- sifive_gpio_write(uint64_t offset, uint64_t value) "offset 0x%" PRIx64 " value 0x%" PRIx64
- sifive_gpio_set(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
- sifive_gpio_update_output_irq(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
-+
-+# aspeed_gpio.c
-+aspeed_gpio_read(uint64_t offset, uint64_t value) "offset: 0x%" PRIx64 " value 0x%" PRIx64
-+aspeed_gpio_write(uint64_t offset, uint64_t value) "offset: 0x%" PRIx64 " value 0x%" PRIx64
-+
+1. Add GPIO read/write trace event.
+2. Support GPIO index mode for write operation.
+It did not support GPIO index mode for read operation.
+3. AST1030 integrates one set of Parallel GPIO Controller
+with maximum 151 control pins, which are 21 groups
+(A~U, exclude pin: M6 M7 Q5 Q6 Q7 R0 R1 R4 R5 R6 R7 S0 S3 S4
+S5 S6 S7 ) and the group T and U are input only.
+4. replace HWADDR_PRIx with PRIx64
+
+Jamin Lin (4):
+  hw/gpio Add GPIO read/write trace event.
+  hw/gpio: Add ASPEED GPIO model for AST1030
+  hw/gpio support GPIO index mode for write operation.
+  hw/gpio: replace HWADDR_PRIx with PRIx64
+
+ hw/arm/aspeed_ast10x0.c       |  11 ++
+ hw/gpio/aspeed_gpio.c         | 257 +++++++++++++++++++++++++++++++---
+ hw/gpio/trace-events          |   5 +
+ include/hw/gpio/aspeed_gpio.h |  16 ++-
+ 4 files changed, 269 insertions(+), 20 deletions(-)
+
 -- 
 2.17.1
 

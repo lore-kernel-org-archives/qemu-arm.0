@@ -1,71 +1,71 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1027163lfh;
-        Wed, 25 May 2022 09:13:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxjhDMVr9kzS1W/pkYds22uxBOXSdLjuaDFn9B5Od+Kg5+YeMEC8osWWzccvfgINlNBSmYC
-X-Received: by 2002:a05:6214:2aa6:b0:45b:474:f9d7 with SMTP id js6-20020a0562142aa600b0045b0474f9d7mr26424642qvb.75.1653495210372;
-        Wed, 25 May 2022 09:13:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653495210; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1029417lfh;
+        Wed, 25 May 2022 09:16:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKk+7svLnWQiFmvUUuqO763y1lKE97ohDyns5S5fgWs3nRB5d3tyxNabPI4szSjkTISAUz
+X-Received: by 2002:a05:6214:f2e:b0:461:f264:ba5 with SMTP id iw14-20020a0562140f2e00b00461f2640ba5mr26394894qvb.124.1653495397582;
+        Wed, 25 May 2022 09:16:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653495397; cv=none;
         d=google.com; s=arc-20160816;
-        b=s99PW1Wl434nfp1YsFUx2T/ss/6j6WP9mzf+Hj2vDItSK5uXKiIpjLitNX/UWfxtLc
-         jUlECizGa6q2+9X4HEiT+binCUp8M4pcR7fO3gVYJRmTw//JzqXZ425rThu1hV/IxmUr
-         9lmTumNU8OwQEAoYt2ZjtM9QEgKU0uWfxOLdlm6pTldTVRSopZ03YWZWlxqRAvUUtajm
-         Yuw2Hxk0VP1dH6UY301AlDDhGV4Zj4qBX3/z9J2EUykNKzcDQbzfvBNK4//+bzIhmIro
-         UNvSqm+4SpWz3DXqQ1OFcF4iNSYIn//QDwLWIzy+aBe4b6uuU4eEe/rDOsfwUTO+oDPs
-         OEuA==
+        b=M5WLgQmkVrhYAda8XEJoYMWRVKwWj0pSSy91IkEjBN2ZNk+5A2ZFExdHedgzL7W9CZ
+         l3WvrwwinUvwryR5OaRoPVBzgwmtSSn/L2ZK6yntnnVczzGDjnY1KNB9CM1+acixYrZA
+         qKrteYdinT2kZ2ObTega++H93MfA7L41HwFQJkz2y+V3ZvsCy8drCLVaeXs80jhduATJ
+         hcLEUI0IAzeHZfun+RjuS15bkR4vbW1IwYhcEao5JPCWzbYJwubwuQ9QT+I0VZq+188T
+         im3+EZMFQVGGy5Ry+ZcJ5gW3/nrbud2zWFBCPe9xF19vNtU7z4fVAiykrcV7yL0Y1kvN
+         SsFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=AQIv7lhN1t8sXZwr/YRQ6zH04hEcEPJhdiM4VgW64hM=;
-        b=Ae/aeELz+0srfTLjKkvrPS5Sv6uiNPPgGQmeDPjiKSb98UOUBwMc3d+algFDyb55dS
-         9yEuShBri5RDMAaQiCBs6B9ONy2B5KQnciKFV2kku2N6ZKndiT6BTDRkQj37I/h9V2kw
-         /pZJ5cRhFQ17h028x6W51+DpHbNGqKmGHA3DsM8Ljzqvu1BNuYFSpquiZ9YIPfb9OIEd
-         gO75WhnXby4TIPD+GMDho0Gz2FfhstWh5BKGCPHmdCyfUsriueF3K8UN/DvSuQ6DBEum
-         eko7cyO+WUbih0JmgfzTp3z9ZP6rY4N6BmYr9soDIF+iU7CT5AL8trGQepjKTeHmgF55
-         /kmw==
+        bh=8YvdMhsoGFshheaOFG2Ay4wP1NUm33m9LbHpfsNfT+U=;
+        b=p28mq8xcuZenHvrLajVt8Lo2LxSNnYiva0XNatyYrgjU9/zFOceSyOjLH4CbfHKU3H
+         Xigsnj0dSBMFMPvRXEfz9IeS0mX+0A/M+2wDJ1Musoj6BLdOfS6yY9+j8GqvWnBzzaMe
+         GmmAqt5y4KTP/kdeL1BC7YNwUxgsPAoygI8OWIRxM/qUZXktIbQMk7UrMX8065JELQLI
+         /yTsTldUgbjmY7PSsbAfZf88EmaubKM4uCBzG/9/M5SoJxUoOZPoNH4jxUznGFoavOAy
+         b+nGMBjxKUB4+DpbXQjWtfqFSjCXL0d2GxtpJqHp6r+4B+p/hWKYzjPcMdzyZlg1f7KF
+         Aoqw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n19-20020ac85b53000000b002f3c5f05d2asi1516050qtw.527.2022.05.25.09.13.30
+        by mx.google.com with ESMTPS id gw1-20020a0562140f0100b004564d25bac7si1859064qvb.167.2022.05.25.09.16.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 May 2022 09:13:30 -0700 (PDT)
+        Wed, 25 May 2022 09:16:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49250 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56198 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nttdZ-0003bM-Sq
-	for alex.bennee@linaro.org; Wed, 25 May 2022 12:13:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36546)
+	id 1nttga-0000S0-V3
+	for alex.bennee@linaro.org; Wed, 25 May 2022 12:16:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36566)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Lufh=WB=kaod.org=clg@ozlabs.org>)
- id 1nttSZ-000757-Gb; Wed, 25 May 2022 12:02:08 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:57957
+ id 1nttSb-00076f-9T; Wed, 25 May 2022 12:02:10 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:51697
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Lufh=WB=kaod.org=clg@ozlabs.org>)
- id 1nttSW-0004A3-Pi; Wed, 25 May 2022 12:02:06 -0400
+ id 1nttSU-00049r-IW; Wed, 25 May 2022 12:02:08 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4L7bRZ3LnXz4ySb;
- Thu, 26 May 2022 02:02:02 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4L7bRX19Rtz4xbt;
+ Thu, 26 May 2022 02:02:00 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4L7bRX4p4mz4xXj;
- Thu, 26 May 2022 02:02:00 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4L7bRV2jprz4xXj;
+ Thu, 26 May 2022 02:01:58 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Delevoryas <pdel@fb.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 08/15] hw: aspeed: Ensure AST1030 respects uart-default
-Date: Wed, 25 May 2022 18:01:29 +0200
-Message-Id: <20220525160136.556277-9-clg@kaod.org>
+Subject: [PULL 07/15] hw: aspeed: Add uarts_num SoC attribute
+Date: Wed, 25 May 2022 18:01:28 +0200
+Message-Id: <20220525160136.556277-8-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220525160136.556277-1-clg@kaod.org>
 References: <20220525160136.556277-1-clg@kaod.org>
@@ -94,42 +94,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s+89tyMTwWbp
+X-TUID: tNhivuIccuPv
 
 From: Peter Delevoryas <pdel@fb.com>
 
-The AST1030 machine initialization was not respecting the Aspeed SoC
-property "uart-default", which specifies which UART should be connected to
-the first serial device, it was just always connecting UART5. This doesn't
-change any behavior, because the default value for "uart-default" is UART5,
-but it makes it possible to override this in new machine definitions using
-the AST1030.
+AST2400 and AST2500 have 5 UART's, while the AST2600 and AST1030 have 13.
 
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220516062328.298336-4-pdel@fb.com>
+Message-Id: <20220516062328.298336-3-pdel@fb.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed_ast10x0.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ include/hw/arm/aspeed_soc.h | 1 +
+ hw/arm/aspeed_ast10x0.c     | 1 +
+ hw/arm/aspeed_ast2600.c     | 1 +
+ hw/arm/aspeed_soc.c         | 2 ++
+ 4 files changed, 5 insertions(+)
 
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 709a78285b59..669bc4985571 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -91,6 +91,7 @@ struct AspeedSoCClass {
+     int ehcis_num;
+     int wdts_num;
+     int macs_num;
++    int uarts_num;
+     const int *irqmap;
+     const hwaddr *memmap;
+     uint32_t num_cpus;
 diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index bb8177e86c87..faafb800f386 100644
+index fa2cc4406c0d..bb8177e86c87 100644
 --- a/hw/arm/aspeed_ast10x0.c
 +++ b/hw/arm/aspeed_ast10x0.c
-@@ -215,9 +215,9 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-                        qdev_get_gpio_in(DEVICE(&s->armv7m),
-                                 sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
- 
--    /* UART5 - attach an 8250 to the IO space as our UART */
--    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
--                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
-+    /* UART - attach an 8250 to the IO space as our UART */
-+    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
-+                   aspeed_soc_get_irq(s, s->uart_default),
-                    38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
- 
-     /* Timer */
+@@ -301,6 +301,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
+     sc->ehcis_num = 0;
+     sc->wdts_num = 4;
+     sc->macs_num = 1;
++    sc->uarts_num = 13;
+     sc->irqmap = aspeed_soc_ast1030_irqmap;
+     sc->memmap = aspeed_soc_ast1030_memmap;
+     sc->num_cpus = 1;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index f3ecc0f3b7c0..a9523074a089 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -588,6 +588,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+     sc->ehcis_num    = 2;
+     sc->wdts_num     = 4;
+     sc->macs_num     = 4;
++    sc->uarts_num    = 13;
+     sc->irqmap       = aspeed_soc_ast2600_irqmap;
+     sc->memmap       = aspeed_soc_ast2600_memmap;
+     sc->num_cpus     = 2;
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 96bc060680c9..7008cd1af716 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -490,6 +490,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
+     sc->ehcis_num    = 1;
+     sc->wdts_num     = 2;
+     sc->macs_num     = 2;
++    sc->uarts_num    = 5;
+     sc->irqmap       = aspeed_soc_ast2400_irqmap;
+     sc->memmap       = aspeed_soc_ast2400_memmap;
+     sc->num_cpus     = 1;
+@@ -516,6 +517,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
+     sc->ehcis_num    = 2;
+     sc->wdts_num     = 3;
+     sc->macs_num     = 2;
++    sc->uarts_num    = 5;
+     sc->irqmap       = aspeed_soc_ast2500_irqmap;
+     sc->memmap       = aspeed_soc_ast2500_memmap;
+     sc->num_cpus     = 1;
 -- 
 2.35.3
 

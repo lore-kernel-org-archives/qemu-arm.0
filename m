@@ -1,72 +1,70 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1030171lfh;
-        Wed, 25 May 2022 09:17:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzE0atLckYSBg6VuK+Z482T2F+/0N0/Jdd99S9/vbbgro9ITJBtAAWEiZNfPPmOoAtSVDKU
-X-Received: by 2002:ac8:7d46:0:b0:2f3:dd89:5557 with SMTP id h6-20020ac87d46000000b002f3dd895557mr25207589qtb.567.1653495458592;
-        Wed, 25 May 2022 09:17:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653495458; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1031601lfh;
+        Wed, 25 May 2022 09:19:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzaBuUYPx411hyJq7/pw7/rgg7//KlNnQQVL2DA8NS7TdMMkQpt7V93c5Rg8OM+sqPwWuDJ
+X-Received: by 2002:a05:620a:1aa7:b0:6a3:9ec6:17e0 with SMTP id bl39-20020a05620a1aa700b006a39ec617e0mr9206194qkb.225.1653495559367;
+        Wed, 25 May 2022 09:19:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653495559; cv=none;
         d=google.com; s=arc-20160816;
-        b=w+eV6zbIfoCW/FwOcZMeu7dqw50zu4vGiHqwpxE9fSONre8sROmB4vqVBmPXd256jw
-         eCrLF9UN1d9WGM3Gaz0jMXAsfiIuYeojrwcGG54rIAWZ4s5aFXd+I1vEVOCCSVFCG+1O
-         uB1qjDl4c8YKh+Yx1wzQTU7mu/cWwrgI5gCrpMM8oSSToHDPkVYN8A+IDcQ0lU6I9a4d
-         Ld55WqHFcaRfSjY9Sm9YapAI1Ad+ZMwL1dZGF/htIvYiukXxaA+cdjIpMl23GzQDj5KI
-         LS1wTSS0GrIdhIjSsbLUJpQwuNqcvGKFiPOd6zgBf93Bm0rA9CefqzkYyI1YSSikksVP
-         ix9Q==
+        b=zYmXlSIJ1iBch2dsynguMQN0i53hKY8vKJ2RmuetYSbJMQJjGEO9gUgEm3FzvLFRhb
+         Ac5N/H1dMic9uiTEpu1Ve+Ny0djzUQV0uSSOLAJ40N/Y9haDne3C5+i9koTmwRvTqC5n
+         TygZtJClzBvn0D2HBmQJclCncuxLlro9SMHLruplIKN0GUAxzNDwutswZf4YvJvwb72j
+         SblSEhDjVnRsqDM70x1GmhAKGGUH3IcPQIsZ+6Uee2MU6HHXBHeI+opxwj0wdtFdYDnU
+         w/QL1bRsk42oWpqEeY0oz1N1Ky3kE2IZq4M3flLeY8jQSyic4GgayOgg1Agql+B0uWa2
+         0lWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=qeKlC+LXZjGCaEsa+j0E9ReK4Vf+BQMg2OfTEySLRS4=;
-        b=Es6A5rocr+FIdpeQAwLpdJwKd7Du+LsKp8Vy4KNyxrgNAsygmbJsZiBqYX0wm/WkNg
-         wIUoWTYVVQQoKhSASeLsSZuW0XtMtpk+oLsmu9GapEll2oQY13d6Z8PoxmCoeorwdWpT
-         ZI22qodN+QfnCONXu+4br54iokvRg/wQFVIm0JfMJNWwaJPwFmVV7Yx6EwTDZoHAG3wF
-         PxtuB533brXbbMxZIc2nIVhsMa9ydi9olZsUgStMKyKBm6KZgBgRiCDuEjrV+WWC1Pj6
-         2Pp/d91osn1ALtRCmayG+DYg52NIj6WbWAtSbmFLf0qGpUgOZBFw6GodzOHs5U5Fw2ln
-         GOhg==
+        bh=C4fQeBun4eZgpUYCFm3CrpgOtkNtmLMEmp56KrJ184k=;
+        b=agOUdhLr6mg2fWBXcUy/44JMjVlFVm7WYWzNKIZ+UoX6NgA91fGxjKILMXvzbXtBg1
+         Qc9Bms+97szSKNU/YdgXfVGSLtfXDacRonXjagcz4AtPEUXuy53n5CUBn+9Da0xTCd9k
+         wQhn90seJXJMI0CIMevYqoAAIVGwLeS29ZSzJgJCcRCwP7SHeQA2OOmP4seEKewXob9T
+         gRnhdovfUenzwGwHgwD20gnKZEDwnwJxXzlp5X9TSpA2rNqxpCA8JJvi8rpHgzfQzSgs
+         CyESx6kp+Fijuay6WpcLKCAldXzfUpraZkmFqTdUQ7btmmD/wmLCNah4uPrFzsG6L6dt
+         IhLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q2-20020a05622a030200b002f92d429b6esi1733402qtw.217.2022.05.25.09.17.38
+        by mx.google.com with ESMTPS id jp12-20020ad45f8c000000b0045a853c88f7si1757504qvb.24.2022.05.25.09.19.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 May 2022 09:17:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 May 2022 09:19:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58788 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33182 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nttha-0002BE-2j
-	for alex.bennee@linaro.org; Wed, 25 May 2022 12:17:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36510)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nttjC-0004BC-TI
+	for alex.bennee@linaro.org; Wed, 25 May 2022 12:19:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Lufh=WB=kaod.org=clg@ozlabs.org>)
- id 1nttSV-00074a-Lr; Wed, 25 May 2022 12:02:07 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:48649
+ id 1nttSf-000793-7C; Wed, 25 May 2022 12:02:13 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:44733
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Lufh=WB=kaod.org=clg@ozlabs.org>)
- id 1nttSR-00049O-L0; Wed, 25 May 2022 12:02:03 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4L7bRR44pYz4xDK;
- Thu, 26 May 2022 02:01:55 +1000 (AEST)
+ id 1nttSb-0004AX-Ds; Wed, 25 May 2022 12:02:12 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4L7bRg0dqXz4ySr;
+ Thu, 26 May 2022 02:02:07 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4L7bRP3qNdz4xXj;
- Thu, 26 May 2022 02:01:53 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4L7bRd26T9z4xXj;
+ Thu, 26 May 2022 02:02:05 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Peter Delevoryas <pdel@fb.com>
-Subject: [PULL 05/15] aspeed: Introduce a get_irq AspeedSoCClass method
-Date: Wed, 25 May 2022 18:01:26 +0200
-Message-Id: <20220525160136.556277-6-clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Delevoryas <pdel@fb.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 10/15] hw: aspeed: Init all UART's with serial devices
+Date: Wed, 25 May 2022 18:01:31 +0200
+Message-Id: <20220525160136.556277-11-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220525160136.556277-1-clg@kaod.org>
 References: <20220525160136.556277-1-clg@kaod.org>
@@ -82,153 +80,122 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JxV5kBkrIpth
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BRE3Dfz1I8HL
 
-and make routine aspeed_soc_get_irq() common to all SoCs. This will be
-useful to share code.
+From: Peter Delevoryas <pdel@fb.com>
 
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>
-Cc: Peter Delevoryas <pdel@fb.com>
-Reviewed-by: Peter Delevoryas <pdel@fb.com>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220516055620.2380197-1-clg@kaod.org>
+Background:
+
+AspeedMachineClass.uart_default specifies the serial console UART, which
+usually corresponds to the "stdout-path" in the device tree.
+
+The default value is UART5, since most boards use UART5 for this:
+
+    amc->uart_default = ASPEED_DEV_UART5;
+
+Users can override AspeedMachineClass.uart_default in their board's machine
+class init to specify something besides UART5. For example, for fuji-bmc:
+
+    amc->uart_default = ASPEED_DEV_UART1;
+
+We only connect this one UART, of the 5 UART's on the AST2400 and AST2500
+and the 13 UART's on the AST2600 and AST1030, to a serial device that QEMU
+users can use. None of the other UART's are initialized, and the only way
+to override this attribute is by creating a specialized board definition,
+requiring QEMU source code changes and rebuilding.
+
+The result of this is that if you want to get serial console output on a
+board that uses UART3, you need to add a board definition. This was
+encountered by Zev in OpenBMC. [1]
+
+Changes:
+
+This commit initializes all of the UART's present on each Aspeed chip with
+serial devices and allows the QEMU user to connect as many or few as they
+like to serial devices. For example, you can still run QEMU and just connect
+stdout to the machine's default UART, without specifying any additional
+serial devices:
+
+    qemu-system-arm -machine fuji-bmc \
+        -drive file=fuji.mtd,format=raw,if=mtd \
+        -nographic
+
+However, if you don't want to add a special machine definition, you can now
+manually configure UART1 to connect to stdout and get serial console output,
+even if the machine's default is UART5:
+
+    qemu-system-arm -machine ast2600-evb \
+        -drive file=fuji.mtd,format=raw,if=mtd \
+        -serial null -serial mon:stdio -display none
+
+In the example above, the first "-serial null" argument is connected to
+UART5, and "-serial mon:stdio" is connected to UART1.
+
+Another example: you can get serial console output from Wedge100, which uses
+UART3, by reusing the palmetto AST2400 machine and rewiring the serial
+device arguments:
+
+    qemu-system-arm -machine palmetto-bmc \
+        -drive file=wedge100.mtd,format=raw,if=mtd \
+        -serial null -serial null -serial null \
+        -serial mon:stdio -display none
+
+There is a slight change in behavior introduced with this change: now, each
+UART's memory-mapped IO region will have a serial device model connected to
+it. Previously, all reads and writes to those regions would be ineffective
+and return zero values, but now some values will be nonzero, even when the
+user doesn't connect a serial device backend (like a socket, file, etc). For
+example, the line status register might indicate that the transmit buffer is
+empty now, whereas previously it might have always indicated it was full.
+
+[1] https://lore.kernel.org/openbmc/YnzGnWjkYdMUUNyM@hatter.bewilderbeest.net/
+[2] https://github.com/facebook/openbmc/releases/download/v2021.49.0/fuji.mtd
+[3] https://github.com/facebook/openbmc/releases/download/v2021.49.0/wedge100.mtd
+
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20220516062328.298336-6-pdel@fb.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/arm/aspeed_soc.h |  3 +++
- hw/arm/aspeed_ast10x0.c     |  5 +++--
- hw/arm/aspeed_ast2600.c     |  5 +++--
- hw/arm/aspeed_soc.c         | 13 ++++++++++---
- 4 files changed, 19 insertions(+), 7 deletions(-)
+ hw/arm/aspeed_soc.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index e13af374b923..3789f38603e5 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -94,6 +94,7 @@ struct AspeedSoCClass {
-     const int *irqmap;
-     const hwaddr *memmap;
-     uint32_t num_cpus;
-+    qemu_irq (*get_irq)(AspeedSoCState *s, int dev);
- };
- 
- 
-@@ -153,4 +154,6 @@ enum {
-     ASPEED_DEV_I3C,
- };
- 
-+qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
-+
- #endif /* ASPEED_SOC_H */
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 427154928254..9ae9efaac144 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -61,11 +61,11 @@ static const int aspeed_soc_ast1030_irqmap[] = {
-     [ASPEED_DEV_KCS]       = 138, /* 138 -> 142 */
- };
- 
--static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
-+static qemu_irq aspeed_soc_ast1030_get_irq(AspeedSoCState *s, int dev)
- {
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
- 
--    return qdev_get_gpio_in(DEVICE(&s->armv7m), sc->irqmap[ctrl]);
-+    return qdev_get_gpio_in(DEVICE(&s->armv7m), sc->irqmap[dev]);
- }
- 
- static void aspeed_soc_ast1030_init(Object *obj)
-@@ -280,6 +280,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
-     sc->irqmap = aspeed_soc_ast1030_irqmap;
-     sc->memmap = aspeed_soc_ast1030_memmap;
-     sc->num_cpus = 1;
-+    sc->get_irq = aspeed_soc_ast1030_get_irq;
- }
- 
- static const TypeInfo aspeed_soc_ast1030_type_info = {
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index eedda7badc37..4161a0cc4bbe 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -114,11 +114,11 @@ static const int aspeed_soc_ast2600_irqmap[] = {
-     [ASPEED_DEV_I3C]       = 102,   /* 102 -> 107 */
- };
- 
--static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
-+static qemu_irq aspeed_soc_ast2600_get_irq(AspeedSoCState *s, int dev)
- {
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
- 
--    return qdev_get_gpio_in(DEVICE(&s->a7mpcore), sc->irqmap[ctrl]);
-+    return qdev_get_gpio_in(DEVICE(&s->a7mpcore), sc->irqmap[dev]);
- }
- 
- static void aspeed_soc_ast2600_init(Object *obj)
-@@ -572,6 +572,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-     sc->irqmap       = aspeed_soc_ast2600_irqmap;
-     sc->memmap       = aspeed_soc_ast2600_memmap;
-     sc->num_cpus     = 2;
-+    sc->get_irq      = aspeed_soc_ast2600_get_irq;
- }
- 
- static const TypeInfo aspeed_soc_ast2600_type_info = {
 diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 58714cb2a01d..c339b5c74de5 100644
+index 912798a9c92f..30574d4276ab 100644
 --- a/hw/arm/aspeed_soc.c
 +++ b/hw/arm/aspeed_soc.c
-@@ -121,11 +121,11 @@ static const int aspeed_soc_ast2400_irqmap[] = {
- 
- #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
- 
--static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
-+static qemu_irq aspeed_soc_ast2400_get_irq(AspeedSoCState *s, int dev)
+@@ -546,9 +546,18 @@ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
+ void aspeed_soc_uart_init(AspeedSoCState *s)
  {
      AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
++    int i, uart;
  
--    return qdev_get_gpio_in(DEVICE(&s->vic), sc->irqmap[ctrl]);
-+    return qdev_get_gpio_in(DEVICE(&s->vic), sc->irqmap[dev]);
+     /* Attach an 8250 to the IO space as our UART */
+     serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
+                    aspeed_soc_get_irq(s, s->uart_default), 38400,
+                    serial_hd(0), DEVICE_LITTLE_ENDIAN);
++    for (i = 1, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
++        if (uart == s->uart_default) {
++            uart++;
++        }
++        serial_mm_init(get_system_memory(), sc->memmap[uart], 2,
++                       aspeed_soc_get_irq(s, uart), 38400,
++                       serial_hd(i), DEVICE_LITTLE_ENDIAN);
++    }
  }
- 
- static void aspeed_soc_init(Object *obj)
-@@ -487,6 +487,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
-     sc->irqmap       = aspeed_soc_ast2400_irqmap;
-     sc->memmap       = aspeed_soc_ast2400_memmap;
-     sc->num_cpus     = 1;
-+    sc->get_irq      = aspeed_soc_ast2400_get_irq;
- }
- 
- static const TypeInfo aspeed_soc_ast2400_type_info = {
-@@ -512,6 +513,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
-     sc->irqmap       = aspeed_soc_ast2500_irqmap;
-     sc->memmap       = aspeed_soc_ast2500_memmap;
-     sc->num_cpus     = 1;
-+    sc->get_irq      = aspeed_soc_ast2400_get_irq;
- }
- 
- static const TypeInfo aspeed_soc_ast2500_type_info = {
-@@ -528,4 +530,9 @@ static void aspeed_soc_register_types(void)
-     type_register_static(&aspeed_soc_ast2500_type_info);
- };
- 
--type_init(aspeed_soc_register_types)
-+type_init(aspeed_soc_register_types);
-+
-+qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
-+{
-+    return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
-+}
 -- 
 2.35.3
 

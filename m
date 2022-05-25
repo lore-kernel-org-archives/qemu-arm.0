@@ -1,71 +1,70 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1029443lfh;
-        Wed, 25 May 2022 09:16:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwDdWiI0Re0hNcpY8nBySC+pPQKKvy2B6CzXfdExcX77QiESPXjtK+MXelQlsnuVEaG2DKT
-X-Received: by 2002:a05:620a:40c2:b0:6a3:7a56:b282 with SMTP id g2-20020a05620a40c200b006a37a56b282mr11576732qko.408.1653495399827;
-        Wed, 25 May 2022 09:16:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653495399; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1029806lfh;
+        Wed, 25 May 2022 09:17:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyiu4VDK2q9bIDFtWe2DgRy3w4bp8OhjtE/pZJBRHsQFz+beCo0x0Yj3kJSK8ZTQkaJ4Z0x
+X-Received: by 2002:a05:6214:194e:b0:45a:d8e3:2d3f with SMTP id q14-20020a056214194e00b0045ad8e32d3fmr26528710qvk.59.1653495428917;
+        Wed, 25 May 2022 09:17:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653495428; cv=none;
         d=google.com; s=arc-20160816;
-        b=cgAGVPVO0csAM9mvfntoFZtbDO0+u5h/0bJ9J0sQcmbxL5yU/jAXj7npEVwLlnRY2v
-         wAZrF1Y+WS8OA4Afrm/CrNjiwvYe5ESw/frgy67EmflbrsWukJFs9F3O+OHozTshSay3
-         LDGi0M0lDRYUzD0BfrP61MDr2hM/RstoazEPW1gye03bzVMg/6Fa4j7ii7QImNAIndD2
-         HPPH9oRN/1VsU8rnGouMh6xvZ2l64ka8BykXx7IYl4eBAjekTL66UpKLzA1jHsQ1CgvM
-         3JQI6q5ePoMrPuKKJobDdB6JjyjCzWSCBNbQOnsszF0irkOC8NrjQOwEvK4xHmAK2CEC
-         /Cwg==
+        b=hZWUZDXPe7RmYdfDpc3uRSowVA/Sf6nl6RBRvnX2V4WbndzB7tAwGmM5SZ25M4jf3V
+         Pr8TMK/aUWmHVJg8wgT3MEQ/QknIefuBPxCb5y7wLtj6BbBFXd0ico/1GjMKr6dJ1719
+         HsezysNxZegkNmnagdBUowDlfvsfjXZcW5ONgJavOcIXwbyuyrkJAiifbyl6uRuDJniM
+         ZkiXQ93DUBZvgwcKxHvVVSshoEnSCTuF7MUVM6nK4xK+lVy+mS7hslelXxH16G9t00DT
+         CEzMC2+6BDXaRYM2UyDWT7BEp9G1eOeX8cOznQh3IXYZaxI7j6wwtndJqWyk3ZV1GIao
+         azeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=3/iguauI6NQE575/fb1n3zkmmqYZusshAO7sI7fpxh4=;
-        b=kTuH4kPpMjCrDWCvotExC3fU173KsZJ6Fx8fPzzIFs30BWyKPnxkZjvc24jEzR11vY
-         vyFcke1I90P59YAB22U7Un/UgMgVygkO7K4gTfDvQp7SsKGeRM2MEa+XVXfPNjtbu3lz
-         AgNJFz7gl7wlrNBbXYTKf/poZmIJZaB2/zUJZZFAkzbj1t7YQ26zTgYvUMRRf3JNAIrH
-         OtLx72xMxzcWwKN0j0bnPnVY5aTgfB2zdvewkz8L0KPrmY3LJ1cwLgcQGSkdd5fKgU8I
-         tuux4iwDlCB/AN0rmCZwMRNd6+Mly0qrNSAFkBoCNlaFGfWOIKVYj1t0CxX0KENcNdUr
-         7x/Q==
+        bh=4jAZsZuCBM48CZ7V92M4Kh49aW8+gcJR3fMeevAKGKE=;
+        b=MtC3lNLEZPnI/p8Ja5VOWVTxWcJLH98rHloK3IItvPtUEYhcbx/A6h8lkxY+Y9zKgl
+         dT1Bn74kGZ9qbls9eKs7uv7bGNjhVt/FypMSyVMsF9bzuHJPs3OOB8o+rPRlzS9Eug6R
+         FCI92006pWGp95MCDUYs623sN5nno0Q6cfen5welmyXITgKYmeILa/f19jXS61bmaj8c
+         ZbMIMM5wgXHAhXA1hh3n3iwtG68MOJy+fI+m5r6tjAxBsDHzRnfHzL3aNHSGI2WpuYX+
+         XdjwMxw0sfmsRZ7W+cODxvsBXNshFYuuVN5/2v4uCJcbJIdEcNypsUrfRVr9O1RCzkVN
+         ev4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bm22-20020a05620a199600b0069fe12b4b52si1848581qkb.61.2022.05.25.09.16.39
+        by mx.google.com with ESMTPS id q22-20020a05622a031600b002f3a69289cesi1569377qtw.764.2022.05.25.09.17.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 May 2022 09:16:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 May 2022 09:17:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55068 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57592 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nttgd-00085P-9T
-	for alex.bennee@linaro.org; Wed, 25 May 2022 12:16:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36564)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ntth6-0001Lg-De
+	for alex.bennee@linaro.org; Wed, 25 May 2022 12:17:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36478)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Lufh=WB=kaod.org=clg@ozlabs.org>)
- id 1nttSb-00076e-9O; Wed, 25 May 2022 12:02:10 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:48649
+ id 1nttSR-000743-Oz; Wed, 25 May 2022 12:02:05 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:47725
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Lufh=WB=kaod.org=clg@ozlabs.org>)
- id 1nttSX-00049O-Oi; Wed, 25 May 2022 12:02:08 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4L7bRc5ZL6z4ySp;
- Thu, 26 May 2022 02:02:04 +1000 (AEST)
+ id 1nttSM-00048f-IF; Wed, 25 May 2022 12:01:56 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4L7bRH5gtWz4xbt;
+ Thu, 26 May 2022 02:01:47 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4L7bRZ6xMjz4xXj;
- Thu, 26 May 2022 02:02:02 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4L7bRF6Hsmz4xXj;
+ Thu, 26 May 2022 02:01:45 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Delevoryas <pdel@fb.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 09/15] hw: aspeed: Introduce common UART init function
-Date: Wed, 25 May 2022 18:01:30 +0200
-Message-Id: <20220525160136.556277-10-clg@kaod.org>
+Subject: [PULL 02/15] hw/arm/aspeed: Add fby35 machine type
+Date: Wed, 25 May 2022 18:01:23 +0200
+Message-Id: <20220525160136.556277-3-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220525160136.556277-1-clg@kaod.org>
 References: <20220525160136.556277-1-clg@kaod.org>
@@ -81,126 +80,143 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rEsBjSnozITT
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: skM7epQJH23B
 
 From: Peter Delevoryas <pdel@fb.com>
 
+Add the 'fby35-bmc' machine type based on the kernel DTS[1] and userspace
+i2c setup scripts[2]. Undefined values are inherited from the AST2600-EVB.
+
+Reference images can be found in Facebook OpenBMC Github Release assets
+as "fby35.mtd". [3]
+
+You can boot the reference images as follows (fby35 uses dual-flash):
+
+qemu-system-arm -machine fby35-bmc \
+    -drive file=fby35.mtd,format=raw,if=mtd \
+    -drive file=fby35.mtd,format=raw,if=mtd \
+    -nographic
+
+[1] https://github.com/facebook/openbmc-linux/blob/412d5053258007117e94b1e36015aefc1301474b/arch/arm/boot/dts/aspeed-bmc-facebook-fby35.dts
+[2] https://github.com/facebook/openbmc/blob/e2294ff5d31dd65c248fe396a385286d6d5c463d/meta-facebook/meta-fby35/recipes-fby35/plat-utils/files/setup-dev.sh
+[3] https://github.com/facebook/openbmc/releases
+
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220516062328.298336-5-pdel@fb.com>
+Message-Id: <20220503225925.1798324-2-pdel@fb.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/arm/aspeed_soc.h |  1 +
- hw/arm/aspeed_ast10x0.c     |  7 ++-----
- hw/arm/aspeed_ast2600.c     |  7 ++-----
- hw/arm/aspeed_soc.c         | 16 ++++++++++++----
- 4 files changed, 17 insertions(+), 14 deletions(-)
+ hw/arm/aspeed.c | 63 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 669bc4985571..02a5a9ffcbd3 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -164,5 +164,6 @@ enum {
- };
- 
- qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
-+void aspeed_soc_uart_init(AspeedSoCState *s);
- 
- #endif /* ASPEED_SOC_H */
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index faafb800f386..938615d55f4a 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -15,7 +15,6 @@
- #include "sysemu/sysemu.h"
- #include "hw/qdev-clock.h"
- #include "hw/misc/unimp.h"
--#include "hw/char/serial.h"
- #include "hw/arm/aspeed_soc.h"
- 
- #define ASPEED_SOC_IOMEM_SIZE 0x00200000
-@@ -215,10 +214,8 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-                        qdev_get_gpio_in(DEVICE(&s->armv7m),
-                                 sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
- 
--    /* UART - attach an 8250 to the IO space as our UART */
--    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
--                   aspeed_soc_get_irq(s, s->uart_default),
--                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
-+    /* UART */
-+    aspeed_soc_uart_init(s);
- 
-     /* Timer */
-     object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index a9523074a089..b0a4199b6960 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -11,7 +11,6 @@
- #include "qapi/error.h"
- #include "hw/misc/unimp.h"
- #include "hw/arm/aspeed_soc.h"
--#include "hw/char/serial.h"
- #include "qemu/module.h"
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index a74c13ab0fbc..725c169488dc 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -21,6 +21,7 @@
+ #include "hw/misc/led.h"
+ #include "hw/qdev-properties.h"
+ #include "sysemu/block-backend.h"
++#include "sysemu/reset.h"
+ #include "hw/loader.h"
  #include "qemu/error-report.h"
- #include "hw/i2c/aspeed_i2c.h"
-@@ -372,10 +371,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
- 
--    /* UART - attach an 8250 to the IO space as our UART */
--    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
--                   aspeed_soc_get_irq(s, s->uart_default), 38400,
--                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
-+    /* UART */
-+    aspeed_soc_uart_init(s);
- 
-     /* I2C */
-     object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 7008cd1af716..912798a9c92f 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -303,10 +303,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
- 
--    /* UART - attach an 8250 to the IO space as our UART */
--    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
--                   aspeed_soc_get_irq(s, s->uart_default), 38400,
--                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
-+    /* UART */
-+    aspeed_soc_uart_init(s);
- 
-     /* I2C */
-     object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
-@@ -544,3 +542,13 @@ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
- {
-     return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
+ #include "qemu/units.h"
+@@ -951,6 +952,35 @@ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(i2c[12], TYPE_PCA9552, 0x67);
  }
-+
-+void aspeed_soc_uart_init(AspeedSoCState *s)
+ 
++static void fby35_i2c_init(AspeedMachineState *bmc)
 +{
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
++    AspeedSoCState *soc = &bmc->soc;
++    I2CBus *i2c[16];
 +
-+    /* Attach an 8250 to the IO space as our UART */
-+    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
-+                   aspeed_soc_get_irq(s, s->uart_default), 38400,
-+                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
++    for (int i = 0; i < 16; i++) {
++        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
++    }
++
++    i2c_slave_create_simple(i2c[2], TYPE_LM75, 0x4f);
++    i2c_slave_create_simple(i2c[8], TYPE_TMP421, 0x1f);
++    /* Hotswap controller is actually supposed to be mp5920 or ltc4282. */
++    i2c_slave_create_simple(i2c[11], "adm1272", 0x44);
++    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4e);
++    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4f);
++
++    aspeed_eeprom_init(i2c[4], 0x51, 128 * KiB);
++    aspeed_eeprom_init(i2c[6], 0x51, 128 * KiB);
++    aspeed_eeprom_init(i2c[8], 0x50, 32 * KiB);
++    aspeed_eeprom_init(i2c[11], 0x51, 128 * KiB);
++    aspeed_eeprom_init(i2c[11], 0x54, 128 * KiB);
++
++    /*
++     * TODO: There is a multi-master i2c connection to an AST1030 MiniBMC on
++     * buses 0, 1, 2, 3, and 9. Source address 0x10, target address 0x20 on
++     * each.
++     */
 +}
++
+ static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+ {
+     return ASPEED_MACHINE(obj)->mmio_exec;
+@@ -1293,6 +1323,35 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ }
+ 
++static void fby35_reset(MachineState *state)
++{
++    AspeedMachineState *bmc = ASPEED_MACHINE(state);
++    AspeedGPIOState *gpio = &bmc->soc.gpio;
++
++    qemu_devices_reset();
++
++    /* Board ID */
++    object_property_set_bool(OBJECT(gpio), "gpioV4", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioV5", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioV6", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioV7", false, &error_fatal);
++}
++
++static void aspeed_machine_fby35_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Facebook fby35 BMC (Cortex-A7)";
++    mc->reset      = fby35_reset;
++    amc->fmc_model = "mx66l1g45g";
++    amc->num_cs    = 2;
++    amc->macs_mask = ASPEED_MAC3_ON;
++    amc->i2c_init  = fby35_i2c_init;
++    /* FIXME: Replace this macro with something more general */
++    mc->default_ram_size = FUJI_BMC_RAM_SIZE;
++}
++
+ #define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
+ /* Main SYSCLK frequency in Hz (200MHz) */
+ #define SYSCLK_FRQ 200000000ULL
+@@ -1411,6 +1470,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_bletchley_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("fby35-bmc"),
++        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
++        .class_init    = aspeed_machine_fby35_class_init,
+     }, {
+         .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+         .parent         = TYPE_ASPEED_MACHINE,
 -- 
 2.35.3
 

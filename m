@@ -1,98 +1,94 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp731845lfh;
-        Wed, 25 May 2022 00:55:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz8fhEGIvWJGXeRgPFzVLrJOdP5PEjhVuhN8q1AOSHd75P094N4Qx+WbglsvZp7ambWnkJy
-X-Received: by 2002:a05:6214:931:b0:461:d289:b7f6 with SMTP id dk17-20020a056214093100b00461d289b7f6mr25177564qvb.55.1653465340973;
-        Wed, 25 May 2022 00:55:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653465340; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp753327lfh;
+        Wed, 25 May 2022 01:42:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzAffwaEhJa1WChodHBwuWt1coBZIR2spvhnogp4hPVqvC1PtUZoE4a6d2rCVPiPW0CMfEV
+X-Received: by 2002:a05:6214:20ec:b0:461:dc16:163d with SMTP id 12-20020a05621420ec00b00461dc16163dmr24711893qvk.40.1653468152250;
+        Wed, 25 May 2022 01:42:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653468152; cv=none;
         d=google.com; s=arc-20160816;
-        b=MoWxLHJbUdvIGBRv7hAoJcGY/arGcuu1yU9i5MoqBOjfLoTChX80E4oR3c9aj/0XEP
-         6rQRFE0/XH+utkgH4cKJG506mjpXJDp2bJdNEtMnRCHptSdO6kK1VOSjsB4TWxhBfaB4
-         qR1XkQLxSECvWHGupFVKdyQAh3+Glnk4Ii+nSjo7QQ1H8dQH+Ihmjxa3RaurxkYcCaal
-         hbCXiyA/Gjynrmm+MNd+cLfWZtpFRamiYDVurPVJUkYHgV+5efWDDEwelSNkFOOoxpkb
-         Sh8VA1hIGwJu8V16rl++P0ObbflIf3WSdDeK2XCOqLCMQWg77IMAhxnxi5zA0JG57cA+
-         X2mQ==
+        b=yVLUoI3OOsMn4T97I240TgkFksmkV5vJKTrHQ6OalmVssbkTgaTIqTnP+u2OcttQOU
+         k0YZg3KnraTWtJliFVRbithWflTE6AZcRyUjlzx3KsGvHxGHsVtU3Hv7PVINGOLvcivE
+         oE6m9K6OYvvsWekPI3kjvO3tj8OKhGLeifmGZl+kABa/nw/1QPpSzeRDV9B70aQsxfx4
+         /Ew5nLic2Y/F0drkNITzeYQEoPQE3xJ9YSM/FZ/KQFuVTcxHgQ9hsMuWHe7YoXzwQ36S
+         js38q8B2LlPjP4sefa2VTh1GD3EiKVGVqU6Rb+d0QC9AtHVVcGE7mNugEC3iqIWZEtWz
+         hohA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=170AwdzpmokcaIMp1uiUoySxLj/VESrbDVZkc3udCrk=;
-        b=Z1sqaJ7IA/owj0BUe6kMS6PS3qPld+/gmApEdRAlTnSE8fdvum2ftP9DOpOaJ/bLcu
-         n072LO2PCBN4G7RUZAS+1nD3mc/5tG4WCnRds6ToPVGmolTQnsVDV4WkkMnLpdjy+14x
-         G+JYoDhB8AO8orZEbMB+ardyDxMy1zTdqhHQyELgzOWiE9UjZLorZL0/+LuhFFJOkzXZ
-         EkivruevUGBOCIVhiqWzfsFnzAepFz/McEiK8/SFjPRuavujyfJ2eu6dzhlH/bJQNrca
-         0JidGHpmBVRADqDszZI6CPteTKDYPh2GbI6u6XUzpTmHYfztfwhlOseB1PhS9miQHmuX
-         Xs3w==
+        bh=UdP+C1gmYa+yeiBJxIIR6vXYPOc5BLvc751qHpXSGn0=;
+        b=OacWDkrxvGzHYuqSR9ZAQ86JZgCBvJIZE+VDpY6Qta4t2cCgvUzLORZiFeJR6LgmJg
+         c3rN3lIntJDkgU3JG0S79B2yCpkWAZJEiY6KurZFclJdn5E9QPEI1VbZNJV3jQKuoSc5
+         OmWxpsCkX/TVUqdVKoSHf3TKwrfooKmBil8Qcz+kJ1LQjfdDBZ4y9bTAt1GG+t3YwSUd
+         ZAr798uvgLLJZEeSf76ccihZJp6tNuJ0rI0HU2eXoekTcwm7Vo22gsCqViS28gsCkucY
+         0yH3/7k+MWXPHCh/arbwqLptNtHNNL70kG/zBe1d3PYTjZawPqZbbI9S35P8ZrEr29jm
+         syjw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12-20020a05620a240c00b006a53b2a4ce4si934754qkn.693.2022.05.25.00.55.40
+        by mx.google.com with ESMTPS id c13-20020ac87d8d000000b002f943906be5si950427qtd.246.2022.05.25.01.42.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 May 2022 00:55:40 -0700 (PDT)
+        Wed, 25 May 2022 01:42:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49560 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55190 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ntlro-00038d-6e
-	for alex.bennee@linaro.org; Wed, 25 May 2022 03:55:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45166)
+	id 1ntmb9-0005Kc-NL
+	for alex.bennee@linaro.org; Wed, 25 May 2022 04:42:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54322)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ntlqg-00035G-MC; Wed, 25 May 2022 03:54:30 -0400
-Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156]:48715)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ntmZr-0005IL-PE
+ for qemu-arm@nongnu.org; Wed, 25 May 2022 04:41:11 -0400
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:44445)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ntlqe-0000nB-65; Wed, 25 May 2022 03:54:30 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.235])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id DE94B2305A;
- Wed, 25 May 2022 07:54:22 +0000 (UTC)
-Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ntmZn-0007qP-32
+ for qemu-arm@nongnu.org; Wed, 25 May 2022 04:41:11 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.208])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id CEFB5103A932F;
+ Wed, 25 May 2022 10:41:03 +0200 (CEST)
+Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 25 May
- 2022 09:54:21 +0200
+ 2022 10:41:03 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-98R002cc1a2402-d5e7-497a-bb46-077fbdb536b1,
- 2A1E9CFC50F0E915D891E33B65A95B597C86F263) smtp.auth=clg@kaod.org
+ (GARM-105G0065c4b3ead-4188-4fd3-bef9-c089c6fd6928,
+ D6A97ED6E11FF164423AFC60B0B43C9491D8EECB) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <e0f743dd-f2b7-ed44-ccd9-780829ec2a78@kaod.org>
-Date: Wed, 25 May 2022 09:54:16 +0200
+Message-ID: <b9d55cf6-6240-003b-c9d4-c7bb73327685@kaod.org>
+Date: Wed, 25 May 2022 10:40:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH v2 3/4] hw/gpio support GPIO index mode for write
- operation.
+Subject: Re: [PATCH v2 1/1] hw/arm/aspeed: Add fby35 machine type
 Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <steven_lee@aspeedtech.com>, <troy_lee@aspeedtech.com>
-References: <20220525053444.27228-1-jamin_lin@aspeedtech.com>
- <20220525053444.27228-4-jamin_lin@aspeedtech.com>
+To: Peter Delevoryas <pdel@fb.com>
+CC: <patrick@stwcx.xyz>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+References: <20220503225925.1798324-1-pdel@fb.com>
+ <20220503225925.1798324-2-pdel@fb.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220525053444.27228-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20220503225925.1798324-2-pdel@fb.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: f3c9a2ee-6d1f-4a9c-ba38-e1d15e9c0c9b
-X-Ovh-Tracer-Id: 16189877710998440812
+X-Ovh-Tracer-GUID: e6e45f9d-040c-40c3-aac5-0864c42e64e4
+X-Ovh-Tracer-Id: 16978289120680971232
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrjeeggdduvdegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekteejtdelkeejvdevffduhfetteelieefgeefffeugffhfeekheffueefledujeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomh
-Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
- helo=3.mo548.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrjeehgddtiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgffgvdeffeefleeigfevleegtdegteegtdelgeejhfevgeegfedvkeehffejteeinecuffhomhgrihhnpehgihhthhhusgdrtghomhdpshgvthhuphdquggvvhdrshhhnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgh
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,251 +103,138 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b0RjrFpa3HJb
+X-TUID: wKaUTetQifBp
 
-On 5/25/22 07:34, Jamin Lin wrote:
-> It did not support GPIO index mode for read operation.
+Hello Peter,
+
+On 5/4/22 00:59, Peter Delevoryas wrote:
+> Add the 'fby35-bmc' machine type based on the kernel DTS[1] and userspace
+> i2c setup scripts[2]. Undefined values are inherited from the AST2600-EVB.
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Reference images can be found in Facebook OpenBMC Github Release assets
+> as "fby35.mtd". [3]
+> 
+> You can boot the reference images as follows (fby35 uses dual-flash):
+> 
+> qemu-system-arm -machine fby35-bmc \
+>      -drive file=fby35.mtd,format=raw,if=mtd \
+>      -drive file=fby35.mtd,format=raw,if=mtd \
+>      -nographic
+> 
+> [1] https://github.com/facebook/openbmc-linux/blob/412d5053258007117e94b1e36015aefc1301474b/arch/arm/boot/dts/aspeed-bmc-facebook-fby35.dts
+> [2] https://github.com/facebook/openbmc/blob/e2294ff5d31dd65c248fe396a385286d6d5c463d/meta-facebook/meta-fby35/recipes-fby35/plat-utils/files/setup-dev.sh
+> [3] https://github.com/facebook/openbmc/releases
+> 
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+> ---
+> 
+> v2: Removed avocado test, updated commit message.
+> 
+>   hw/arm/aspeed.c | 63 +++++++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 63 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index a74c13ab0f..725c169488 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -21,6 +21,7 @@
+>   #include "hw/misc/led.h"
+>   #include "hw/qdev-properties.h"
+>   #include "sysemu/block-backend.h"
+> +#include "sysemu/reset.h"
+>   #include "hw/loader.h"
+>   #include "qemu/error-report.h"
+>   #include "qemu/units.h"
+> @@ -951,6 +952,35 @@ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+>       i2c_slave_create_simple(i2c[12], TYPE_PCA9552, 0x67);
+>   }
+>   
+> +static void fby35_i2c_init(AspeedMachineState *bmc)
+> +{
+> +    AspeedSoCState *soc = &bmc->soc;
+> +    I2CBus *i2c[16];
+> +
+> +    for (int i = 0; i < 16; i++) {
+> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+> +    }
+> +
+> +    i2c_slave_create_simple(i2c[2], TYPE_LM75, 0x4f);
+> +    i2c_slave_create_simple(i2c[8], TYPE_TMP421, 0x1f);
+> +    /* Hotswap controller is actually supposed to be mp5920 or ltc4282. */
+> +    i2c_slave_create_simple(i2c[11], "adm1272", 0x44);
+> +    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4e);
+> +    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4f);
+> +
+> +    aspeed_eeprom_init(i2c[4], 0x51, 128 * KiB);
+> +    aspeed_eeprom_init(i2c[6], 0x51, 128 * KiB);
+> +    aspeed_eeprom_init(i2c[8], 0x50, 32 * KiB);
+> +    aspeed_eeprom_init(i2c[11], 0x51, 128 * KiB);
+> +    aspeed_eeprom_init(i2c[11], 0x54, 128 * KiB);
+> +
+> +    /*
+> +     * TODO: There is a multi-master i2c connection to an AST1030 MiniBMC on
+> +     * buses 0, 1, 2, 3, and 9. Source address 0x10, target address 0x20 on
+> +     * each.
+> +     */
+> +}
+> +
+>   static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+>   {
+>       return ASPEED_MACHINE(obj)->mmio_exec;
+> @@ -1293,6 +1323,35 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
+>           aspeed_soc_num_cpus(amc->soc_name);
+>   }
+>   
+> +static void fby35_reset(MachineState *state)
+> +{
+> +    AspeedMachineState *bmc = ASPEED_MACHINE(state);
+> +    AspeedGPIOState *gpio = &bmc->soc.gpio;
+> +
+> +    qemu_devices_reset();
+> +
+> +    /* Board ID */
+> +    object_property_set_bool(OBJECT(gpio), "gpioV4", true, &error_fatal);
+> +    object_property_set_bool(OBJECT(gpio), "gpioV5", true, &error_fatal);
+> +    object_property_set_bool(OBJECT(gpio), "gpioV6", true, &error_fatal);
+> +    object_property_set_bool(OBJECT(gpio), "gpioV7", false, &error_fatal);
+> +}
+> +
+> +static void aspeed_machine_fby35_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc       = "Facebook fby35 BMC (Cortex-A7)";
+> +    mc->reset      = fby35_reset;
+> +    amc->fmc_model = "mx66l1g45g";
+> +    amc->num_cs    = 2;
+> +    amc->macs_mask = ASPEED_MAC3_ON;
+> +    amc->i2c_init  = fby35_i2c_init;
+> +    /* FIXME: Replace this macro with something more general */
+> +    mc->default_ram_size = FUJI_BMC_RAM_SIZE;
+> +}
+> +
+>   #define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
+>   /* Main SYSCLK frequency in Hz (200MHz) */
+>   #define SYSCLK_FRQ 200000000ULL
+> @@ -1411,6 +1470,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>           .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
+>           .parent        = TYPE_ASPEED_MACHINE,
+>           .class_init    = aspeed_machine_bletchley_class_init,
+> +    }, {
+> +        .name          = MACHINE_TYPE_NAME("fby35-bmc"),
+> +        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
 
-
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Machine "fby35-bmc" inherits from the "ast2600-evb" machine definitions
+which means that any changes in "ast2600-evb" will silently modify
+"fby35-bmc". Is that what you want ?
 
 Thanks,
 
 C.
 
-
-
-> ---
->   hw/gpio/aspeed_gpio.c         | 168 ++++++++++++++++++++++++++++++++++
->   include/hw/gpio/aspeed_gpio.h |  14 +++
->   2 files changed, 182 insertions(+)
-> 
-> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> index 5138fe812b..c834bf19f5 100644
-> --- a/hw/gpio/aspeed_gpio.c
-> +++ b/hw/gpio/aspeed_gpio.c
-> @@ -16,6 +16,7 @@
->   #include "hw/irq.h"
->   #include "migration/vmstate.h"
->   #include "trace.h"
-> +#include "hw/registerfields.h"
->   
->   #define GPIOS_PER_GROUP 8
->   
-> @@ -204,6 +205,28 @@
->   #define GPIO_1_8V_MEM_SIZE            0x1D8
->   #define GPIO_1_8V_REG_ARRAY_SIZE      (GPIO_1_8V_MEM_SIZE >> 2)
->   
-> +/*
-> + * GPIO index mode support
-> + * It only supports write operation
-> + */
-> +REG32(GPIO_INDEX_REG, 0x2AC)
-> +    FIELD(GPIO_INDEX_REG, NUMBER, 0, 8)
-> +    FIELD(GPIO_INDEX_REG, COMMAND, 12, 1)
-> +    FIELD(GPIO_INDEX_REG, TYPE, 16, 4)
-> +    FIELD(GPIO_INDEX_REG, DATA_VALUE, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, DIRECTION, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, INT_ENABLE, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, INT_SENS_0, 21, 1)
-> +    FIELD(GPIO_INDEX_REG, INT_SENS_1, 22, 1)
-> +    FIELD(GPIO_INDEX_REG, INT_SENS_2, 23, 1)
-> +    FIELD(GPIO_INDEX_REG, INT_STATUS, 24, 1)
-> +    FIELD(GPIO_INDEX_REG, DEBOUNCE_1, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, DEBOUNCE_2, 21, 1)
-> +    FIELD(GPIO_INDEX_REG, RESET_TOLERANT, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, COMMAND_SRC_0, 20, 1)
-> +    FIELD(GPIO_INDEX_REG, COMMAND_SRC_1, 21, 1)
-> +    FIELD(GPIO_INDEX_REG, INPUT_MASK, 20, 1)
-> +
->   static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high, int gpio)
->   {
->       uint32_t falling_edge = 0, rising_edge = 0;
-> @@ -596,6 +619,144 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
->       return value;
->   }
->   
-> +static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-> +                                                uint64_t data, uint32_t size)
-> +{
-> +
-> +    AspeedGPIOState *s = ASPEED_GPIO(opaque);
-> +    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
-> +    const GPIOSetProperties *props;
-> +    GPIOSets *set;
-> +    uint32_t reg_idx_number = FIELD_EX32(data, GPIO_INDEX_REG, NUMBER);
-> +    uint32_t reg_idx_type = FIELD_EX32(data, GPIO_INDEX_REG, TYPE);
-> +    uint32_t reg_idx_command = FIELD_EX32(data, GPIO_INDEX_REG, COMMAND);
-> +    uint32_t set_idx = reg_idx_number / ASPEED_GPIOS_PER_SET;
-> +    uint32_t pin_idx = reg_idx_number % ASPEED_GPIOS_PER_SET;
-> +    uint32_t group_idx = pin_idx / GPIOS_PER_GROUP;
-> +    uint32_t reg_value = 0;
-> +    uint32_t cleared;
-> +
-> +    set = &s->sets[set_idx];
-> +    props = &agc->props[set_idx];
-> +
-> +    if (reg_idx_command)
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%" PRIx64 "data 0x%"
-> +            PRIx64 "index mode wrong command 0x%x\n",
-> +            __func__, offset, data, reg_idx_command);
-> +
-> +    switch (reg_idx_type) {
-> +    case gpio_reg_idx_data:
-> +        reg_value = set->data_read;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, DATA_VALUE));
-> +        reg_value &= props->output;
-> +        reg_value = update_value_control_source(set, set->data_value,
-> +                                                reg_value);
-> +        set->data_read = reg_value;
-> +        aspeed_gpio_update(s, set, reg_value);
-> +        return;
-> +    case gpio_reg_idx_direction:
-> +        reg_value = set->direction;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, DIRECTION));
-> +        /*
-> +         *   where data is the value attempted to be written to the pin:
-> +         *    pin type      | input mask | output mask | expected value
-> +         *    ------------------------------------------------------------
-> +         *   bidirectional  |   1       |   1        |  data
-> +         *   input only     |   1       |   0        |   0
-> +         *   output only    |   0       |   1        |   1
-> +         *   no pin         |   0       |   0        |   0
-> +         *
-> +         *  which is captured by:
-> +         *  data = ( data | ~input) & output;
-> +         */
-> +        reg_value = (reg_value | ~props->input) & props->output;
-> +        set->direction = update_value_control_source(set, set->direction,
-> +                                                     reg_value);
-> +        break;
-> +    case gpio_reg_idx_interrupt:
-> +        reg_value = set->int_enable;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INT_ENABLE));
-> +        set->int_enable = update_value_control_source(set, set->int_enable,
-> +                                                      reg_value);
-> +        reg_value = set->int_sens_0;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INT_SENS_0));
-> +        set->int_sens_0 = update_value_control_source(set, set->int_sens_0,
-> +                                                      reg_value);
-> +        reg_value = set->int_sens_1;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INT_SENS_1));
-> +        set->int_sens_1 = update_value_control_source(set, set->int_sens_1,
-> +                                                      reg_value);
-> +        reg_value = set->int_sens_2;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INT_SENS_2));
-> +        set->int_sens_2 = update_value_control_source(set, set->int_sens_2,
-> +                                                      reg_value);
-> +        /* set interrupt status */
-> +        reg_value = set->int_status;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INT_STATUS));
-> +        cleared = ctpop32(reg_value & set->int_status);
-> +        if (s->pending && cleared) {
-> +            assert(s->pending >= cleared);
-> +            s->pending -= cleared;
-> +        }
-> +        set->int_status &= ~reg_value;
-> +        break;
-> +    case gpio_reg_idx_debounce:
-> +        reg_value = set->debounce_1;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, DEBOUNCE_1));
-> +        set->debounce_1 = update_value_control_source(set, set->debounce_1,
-> +                                                      reg_value);
-> +        reg_value = set->debounce_2;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, DEBOUNCE_2));
-> +        set->debounce_2 = update_value_control_source(set, set->debounce_2,
-> +                                                      reg_value);
-> +        return;
-> +    case gpio_reg_idx_tolerance:
-> +        reg_value = set->reset_tol;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, RESET_TOLERANT));
-> +        set->reset_tol = update_value_control_source(set, set->reset_tol,
-> +                                                     reg_value);
-> +        return;
-> +    case gpio_reg_idx_cmd_src:
-> +        reg_value = set->cmd_source_0;
-> +        reg_value = deposit32(reg_value, GPIOS_PER_GROUP * group_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, COMMAND_SRC_0));
-> +        set->cmd_source_0 = reg_value & ASPEED_CMD_SRC_MASK;
-> +        reg_value = set->cmd_source_1;
-> +        reg_value = deposit32(reg_value, GPIOS_PER_GROUP * group_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, COMMAND_SRC_1));
-> +        set->cmd_source_1 = reg_value & ASPEED_CMD_SRC_MASK;
-> +        return;
-> +    case gpio_reg_idx_input_mask:
-> +        reg_value = set->input_mask;
-> +        reg_value = deposit32(reg_value, pin_idx, 1,
-> +                              FIELD_EX32(data, GPIO_INDEX_REG, INPUT_MASK));
-> +        /*
-> +         * feeds into interrupt generation
-> +         * 0: read from data value reg will be updated
-> +         * 1: read from data value reg will not be updated
-> +         */
-> +        set->input_mask = reg_value & props->input;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%" PRIx64 "data 0x%"
-> +            PRIx64 "index mode wrong type 0x%x\n",
-> +            __func__, offset, data, reg_idx_type);
-> +        return;
-> +    }
-> +    aspeed_gpio_update(s, set, set->data_value);
-> +    return;
-> +}
-> +
->   static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
->                                 uint32_t size)
->   {
-> @@ -610,6 +771,13 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
->       trace_aspeed_gpio_write(offset, data);
->   
->       idx = offset >> 2;
-> +
-> +    /* check gpio index mode */
-> +    if (idx == R_GPIO_INDEX_REG) {
-> +        aspeed_gpio_write_index_mode(opaque, offset, data, size);
-> +        return;
-> +    }
-> +
->       if (idx >= GPIO_DEBOUNCE_TIME_1 && idx <= GPIO_DEBOUNCE_TIME_3) {
->           idx -= GPIO_DEBOUNCE_TIME_1;
->           s->debounce_regs[idx] = (uint32_t) data;
-> diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-> index 6dee3cd438..41b36524d0 100644
-> --- a/include/hw/gpio/aspeed_gpio.h
-> +++ b/include/hw/gpio/aspeed_gpio.h
-> @@ -50,6 +50,20 @@ enum GPIORegType {
->       gpio_reg_input_mask,
->   };
->   
-> +/* GPIO index mode */
-> +enum GPIORegIndexType {
-> +    gpio_reg_idx_data = 0,
-> +    gpio_reg_idx_direction,
-> +    gpio_reg_idx_interrupt,
-> +    gpio_reg_idx_debounce,
-> +    gpio_reg_idx_tolerance,
-> +    gpio_reg_idx_cmd_src,
-> +    gpio_reg_idx_input_mask,
-> +    gpio_reg_idx_reserved,
-> +    gpio_reg_idx_new_w_cmd_src,
-> +    gpio_reg_idx_new_r_cmd_src,
-> +};
-> +
->   typedef struct AspeedGPIOReg {
->       uint16_t set_idx;
->       enum GPIORegType type;
+> +        .class_init    = aspeed_machine_fby35_class_init,
+>       }, {
+>           .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+>           .parent         = TYPE_ASPEED_MACHINE,
 

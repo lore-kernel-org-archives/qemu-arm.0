@@ -1,78 +1,74 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1025307lfh;
-        Wed, 25 May 2022 09:10:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw12PtC6gwDOCtNgAsnUVke3LZ3NMZQXcYgiHyrOGaAga475dJ34wLuu0Zxh+OoIHvM5eiZ
-X-Received: by 2002:a67:e154:0:b0:337:e26a:c216 with SMTP id o20-20020a67e154000000b00337e26ac216mr1862139vsl.71.1653495047653;
-        Wed, 25 May 2022 09:10:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653495047; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1026332lfh;
+        Wed, 25 May 2022 09:12:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJySh5zx5VP2HeHYbpufhblctbYBzIg7RvCZraT9ZXJx6j3TwR/1LD7fYuP7QO6C9qEk/IUs
+X-Received: by 2002:a05:6214:1cc4:b0:435:b8a0:1fe9 with SMTP id g4-20020a0562141cc400b00435b8a01fe9mr27012057qvd.54.1653495136002;
+        Wed, 25 May 2022 09:12:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653495135; cv=none;
         d=google.com; s=arc-20160816;
-        b=fM9+m6hl5rlG1Vy02RLoJL0m+i01fWgLaGZGlOErYkHmPZjocu3LV4kjOv7/dJQwpv
-         a4iDjR6OdKHsGztJsxGdh1iA0KSpS3dDYyv+M37+l8BXk9lL7c2mAt/+g2Ps00yWNh+F
-         W1wSqtLlK8kNMAk0DNU6GFVmXAUNHlGAWOIAWFTCAK6imj1FOIo4vvnWQN8AtwSzut8v
-         Z1UYMl5hZVVXxpbXsZ3hzTrVQncTkb51dqq1yrRoc4NCsCO+/jShecW+094VIiGXSi7/
-         g04FH1bp5yMG9boZv2cRmlw/BkHkaAPH6FZRSi0WLlrDgLnYgDf02XQYDSS2h3GGW75I
-         UYMw==
+        b=fOT/yo+nzVZnHhqEvPhBEaf7Efu0lRFBsnlTo5owuUtq9XHfaQsB0ZeAaTKrIUJ5wj
+         54RNaG1avoC0niHekyCD7Q6NqsbA+M3x+JrIKMJZiifjTqy5j7NS3cJ7KFwh5CHTFuen
+         pEvz4VNVFblOCHIcUGTUHvkJW14qBnHmWH3316X5LFOyfxnhtGTOx/NRsBOFlmL5/EHu
+         P+jNQtiVIk+OuXrEJ6mdzSeOY+e3fLZgT3X8myCihghkozvOM3aiUUi97Y9LU454Gyts
+         nz4F8F7ih2z8bKoNa7Rbj4QVvEXuGCQT25F9GFrSDbZx2aJurQ7ZynikS3Ccr7VHKd3p
+         DkPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=f/YlY+imtyN4ledA28EV4IxWHSSs54SGKAA719OT3Ks=;
-        b=0c34W6AmdlUvX28oJWGxKeO9zr4DrY86VtoAPcxgs2am6RAUmgQWCUl2jW0LlGfIlb
-         ru2wGLqnvZV6CaMt0eE83/sw+BOOiJsw/DUhSiZLSEtfnEPwjIJcOUFjcqZDsEKBx2ra
-         Z8eEbveyBXZPvRauqpnbfx+zho+qM7+PZAgLoslE7juJGQzd0hRq3H2CBtvhRYp1q4zC
-         7o5iRthDsc/cYsUFr93FgmyDmgsrjN4v1HhGUG4F4tcI6M1jsJqaSTb+b4370wdFL6iZ
-         kUdQDilSbY/gnNAxRkEm/SYUkHRCUMa8hVMTpOq6QVFV7gXSIjg5mCRtvFqv7G/WI1fH
-         dQfQ==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=UJ0GSrS4ifBwWpI4AZRP2pLMFxYHP36IIRhK1yH1Yqs=;
+        b=r8jjdQB5fDRXsXyx1TclWtwQQZLBie6+fF9IK7cBjtg/MPWi9kRxM3QBgu7H2y4uSs
+         +yuMe1U7MnniDGnxQex0vmJr+lyxRJrEOy8n1xEa4dMy6CeDqCUOVmxh4p2HYXP5Ro+U
+         HQ+H9VXJ99cvPESt1hQ9rI6vCDVs362Y/Jf5/yX6HLjkIuqxOpRR1JWVvq5I3537BdME
+         a0GSwFqFUkALFs6gW7MQySzIzuqt5RO7YfsNXIkyR5RA77IuQR+OhQiPjFmlyB7DSqEe
+         nxVXs7gNu/oChiZCgoaS+151mTf7LlET5l9Rqo3pYPUbQESFdGU8g4TG0PK8Qs/aDjbk
+         fHFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p25-20020a67f319000000b00337b55aee2bsi324506vsf.175.2022.05.25.09.10.47
+        by mx.google.com with ESMTPS id n76-20020a37404f000000b006a35fe2cb75si1283176qka.489.2022.05.25.09.12.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 May 2022 09:10:47 -0700 (PDT)
+        Wed, 25 May 2022 09:12:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40920 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46308 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nttax-00063n-5F
-	for alex.bennee@linaro.org; Wed, 25 May 2022 12:10:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36434)
+	id 1nttcJ-0001bZ-V1
+	for alex.bennee@linaro.org; Wed, 25 May 2022 12:12:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36436)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Lufh=WB=kaod.org=clg@ozlabs.org>)
- id 1nttSM-00073E-Kg; Wed, 25 May 2022 12:01:59 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76]:58825)
+ id 1nttSM-00073F-MZ; Wed, 25 May 2022 12:01:59 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:37653
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Lufh=WB=kaod.org=clg@ozlabs.org>)
- id 1nttSK-00048Y-JO; Wed, 25 May 2022 12:01:54 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4L7bRF2d46z4xDK;
- Thu, 26 May 2022 02:01:45 +1000 (AEST)
+ id 1nttSK-00048Q-Jp; Wed, 25 May 2022 12:01:54 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4L7bRB5Ytjz4xZv;
+ Thu, 26 May 2022 02:01:42 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4L7bRC26Bhz4xXj;
- Thu, 26 May 2022 02:01:43 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4L7bR913zDz4xXj;
+ Thu, 26 May 2022 02:01:40 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 01/15] docs: add minibmc section in aspeed document
-Date: Wed, 25 May 2022 18:01:22 +0200
-Message-Id: <20220525160136.556277-2-clg@kaod.org>
+Subject: [PULL 00/15] aspeed queue
+Date: Wed, 25 May 2022 18:01:21 +0200
+Message-Id: <20220525160136.556277-1-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20220525160136.556277-1-clg@kaod.org>
-References: <20220525160136.556277-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=Lufh=WB=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
 X-Spam_score_int: -16
 X-Spam_score: -1.7
@@ -94,87 +90,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yk1F0b3jrqJo
+X-TUID: P+w20qGxfXsY
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+The following changes since commit 3757b0d08b399c609954cf57f273b1167e5d7a8d:
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220506031521.13254-2-jamin_lin@aspeedtech.com>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- docs/system/arm/aspeed.rst | 61 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 61 insertions(+)
+  Merge tag 'pull-request-2022-05-18' of https://gitlab.com/thuth/qemu into staging (2022-05-20 08:04:30 -0700)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 60ed94f18759..6f2e4fb53d49 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -120,3 +120,64 @@ FMC chip and a bigger (64M) SPI chip, use :
- .. code-block:: bash
- 
-   -M ast2500-evb,fmc-model=mx25l25635e,spi-model=mx66u51235f
-+
-+
-+Aspeed minibmc family boards (``ast1030-evb``)
-+==================================================================
-+
-+The QEMU Aspeed machines model mini BMCs of various Aspeed evaluation
-+boards. They are based on different releases of the
-+Aspeed SoC : the AST1030 integrating an ARM Cortex M4F CPU (200MHz).
-+
-+The SoC comes with SRAM, SPI, I2C, etc.
-+
-+AST1030 SoC based machines :
-+
-+- ``ast1030-evb``          Aspeed AST1030 Evaluation board (Cortex-M4F)
-+
-+Supported devices
-+-----------------
-+
-+ * SMP (for the AST1030 Cortex-M4F)
-+ * Interrupt Controller (VIC)
-+ * Timer Controller
-+ * I2C Controller
-+ * System Control Unit (SCU)
-+ * SRAM mapping
-+ * Static Memory Controller (SMC or FMC) - Only SPI Flash support
-+ * SPI Memory Controller
-+ * USB 2.0 Controller
-+ * Watchdog Controller
-+ * GPIO Controller (Master only)
-+ * UART
-+ * LPC Peripheral Controller (a subset of subdevices are supported)
-+ * Hash/Crypto Engine (HACE) - Hash support only. TODO: HMAC and RSA
-+ * ADC
-+
-+
-+Missing devices
-+---------------
-+
-+ * PWM and Fan Controller
-+ * Slave GPIO Controller
-+ * PECI Controller
-+ * Mailbox Controller
-+ * Virtual UART
-+ * eSPI Controller
-+ * I3C Controller
-+
-+Boot options
-+------------
-+
-+The Aspeed machines can be started using the ``-kernel`` to load a
-+Zephyr OS or from a firmware. Images can be downloaded from the
-+ASPEED GitHub release repository :
-+
-+   https://github.com/AspeedTech-BMC/zephyr/releases
-+
-+To boot a kernel directly from a Zephyr build tree:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M ast1030-evb -nographic \
-+        -kernel zephyr.elf
--- 
-2.35.3
+are available in the Git repository at:
 
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20220525
+
+for you to fetch changes up to 52bcd997800fab67d57bea6d93e368f6f7a93b24:
+
+  hw/arm/aspeed: Add i2c devices for AST2600 EVB (2022-05-25 16:22:37 +0200)
+
+----------------------------------------------------------------
+aspeed queue:
+
+* Aspeed GPIO model extensions
+* GPIO support for the Aspeed AST1030 SoC
+* New fby35 machine (AST2600 based)
+* Extra unit tests for the GPIO and SMC models
+* Initialization of all UART with serial devices
+* AST2600 EVB and Documentation update
+
+----------------------------------------------------------------
+Cédric Le Goater (1):
+      aspeed: Introduce a get_irq AspeedSoCClass method
+
+Howard Chiu (1):
+      hw/arm/aspeed: Add i2c devices for AST2600 EVB
+
+Iris Chen (1):
+      hw: m25p80: allow write_enable latch get/set
+
+Jamin Lin (5):
+      docs: add minibmc section in aspeed document
+      hw/gpio Add GPIO read/write trace event.
+      hw/gpio: Add ASPEED GPIO model for AST1030
+      hw/gpio support GPIO index mode for write operation.
+      hw/gpio: replace HWADDR_PRIx with PRIx64
+
+Peter Delevoryas (7):
+      hw/arm/aspeed: Add fby35 machine type
+      docs: aspeed: Add fby35 board
+      hw: aspeed: Add missing UART's
+      hw: aspeed: Add uarts_num SoC attribute
+      hw: aspeed: Ensure AST1030 respects uart-default
+      hw: aspeed: Introduce common UART init function
+      hw: aspeed: Init all UART's with serial devices
+
+ docs/system/arm/aspeed.rst     |  62 ++++++++++
+ include/hw/arm/aspeed_soc.h    |  13 +++
+ include/hw/gpio/aspeed_gpio.h  |  16 ++-
+ tests/qtest/libqtest.h         |  22 ++++
+ hw/arm/aspeed.c                |  74 +++++++++++-
+ hw/arm/aspeed_ast10x0.c        |  48 ++++++--
+ hw/arm/aspeed_ast2600.c        |  32 +++--
+ hw/arm/aspeed_soc.c            |  46 ++++++--
+ hw/block/m25p80.c              |   1 +
+ hw/gpio/aspeed_gpio.c          | 257 ++++++++++++++++++++++++++++++++++++++---
+ tests/qtest/aspeed_gpio-test.c |  40 ++-----
+ tests/qtest/aspeed_smc-test.c  |  43 +++++++
+ tests/qtest/libqtest.c         |  24 ++++
+ hw/gpio/trace-events           |   4 +
+ 14 files changed, 607 insertions(+), 75 deletions(-)

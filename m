@@ -1,113 +1,165 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp401935lfh;
-        Tue, 24 May 2022 11:28:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzbimShp672fkX5Glyyq0yJ/P05uB3wuWkjEIv0NI7KWz9fsK60thQlV2qlVHsKX73vPWQb
-X-Received: by 2002:ac8:5f0a:0:b0:2f9:3b64:b5ba with SMTP id x10-20020ac85f0a000000b002f93b64b5bamr6478589qta.2.1653416918851;
-        Tue, 24 May 2022 11:28:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653416918; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp798835lfh;
+        Wed, 25 May 2022 03:11:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzGqUbLt7URRUDBKu56Fa9yLRWX/cHQ6GgC/1LHEwh/C87RuNbaWw1vjC/vrElAU5jeYAJg
+X-Received: by 2002:a05:6214:1648:b0:462:5e50:46cf with SMTP id f8-20020a056214164800b004625e5046cfmr4563843qvw.121.1653473473299;
+        Wed, 25 May 2022 03:11:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1653473473; cv=pass;
         d=google.com; s=arc-20160816;
-        b=bP+d1gauJ86ftZbW8g6OCxpVu/0Fib+boyhckzXpsj5TQuw8WAA7uePq+NMlwcpgv9
-         +7PW0UvSh42vpcgDAsZnQ+gBAXYrTx2XlcpYMY1RX0+XFCIrlF87lyFlQrJCR+VjvKK5
-         F0sQaUzuoRt9XyM34X8MrbD7Fsu4qYkSXk5xMmxjSnu/+HXYdrdFjw+S1G4dPCakhcRM
-         5D92IrHgz4TFitt3Xpa6TiHKbgHea2ME0QqTh0sT8UesIlfV1dBfvs39P4XRqzciXElu
-         PipqOtJ439JEmRBfq9IdR+XKVi0O14BWomYd3vhEZDmnG9pfFhJuHv5PKEKyixiOOpSy
-         T83A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=WtIthNIc6VUl0KgI8MMOJ0GIndBySBXzuMqMrFOYEwvt+j/IG3tGocub3U1mNrOnQh
+         xKq32iy5f6SIcLDsW9IkUt9VaqJ6Hj47VbUWbUx2TmKd0jB2l50QyJ0urI95RE7+iJC6
+         2kJOn3iq6BO9jSejcPA+jOElLwKplkLNK7+Op2Eklrb6PLTTYuA96zEI0By0uIjqvY2x
+         PRL+C5HnNjKq9LCd7oGz1d/mZJH3iyZA/876n1mEPtQ8zYI8b9l5d+M0UEyJNYbp+bCN
+         oTuqzgd0EblHO7y4HMhc5ZrYC04p0/DoCodR4BvZmeIbig5H5oGyE0RzYRMIEtVMvQhW
+         jnbw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=pFXT4nPiV8ybsWYGK7KCsX3VZr/Kw8boYrx4MeLfl7c=;
-        b=cW3/H8cgZvvrTk6X3fJhUvx9H+It1N5xsaO920WVPD3ccLkPNykxtUhgpwWOP4FdmY
-         cYH9MUco2dgOn9Maeo/8mKWQxwWqyYivEyd0N/wDIMqABE9IoUkzFCc9YaFm7qxouW8L
-         H8H+Ri1xlFb6sBeMdRjxRr5aTmq11vDyqjLr0lQMOPk31EmRv0VplY9IsiLYGqMxEHIJ
-         FywiARzV8hZ3nwvdFSSosvbwuT7Ba+qSa1YdYut9PrHxuGzoxDJjw5R0k67zgBXNJEQX
-         YxvLV8obGOgM3u7bDUNsp/1C64DvvBTCYJLDsUKPqV4nt4KdastEJdhGYpM2r4niwif0
-         TUeA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.net header.s=badeba3b8450 header.b="WkX/91xP";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :message-id:date:thread-index:thread-topic:subject:cc:to:from
+         :dkim-signature;
+        bh=UVDkqYsaaDQzDadhq95DWVD2+D2RO9bgXap/SYTOL0c=;
+        b=aOdsm0rBFb+EJS7tLPv7D1NOR40uqX36FELFnfScGUdnj/OvCbWZzAXuUvzVxzyuQp
+         BnoYLC/iAN4jNK5T6NzG4e8YoGa/jNzI+RN9leMIIhcCvTNItq3iYrO6kr2+1tA/oEXg
+         35j1MvlYrqq+oBgkOsfBRvcnijDxdC5EaVyr0nbqByNHQBu4pYLEvFam+jjpzbPcI+kz
+         ay09ojWEMPXYhcKiI+R6ZwVS/+3AVgH+HyFP41ypsU/b4MW44IkaL7QtF3MqXiv0Cuut
+         ann4Msp1uiZkct+rYKUoo5wHcVvwxmb3RTcjr1AqESL1BSPuVywhDNCVd58RstxP8oHk
+         jVqw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector1 header.b=njXTGS3m;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay41-20020a05620a17a900b006a01d828934si4859785qkb.94.2022.05.24.11.28.38
+        by mx.google.com with ESMTPS id g13-20020a0562140acd00b00461d8f5f4a5si1152623qvi.17.2022.05.25.03.11.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 May 2022 11:28:38 -0700 (PDT)
+        Wed, 25 May 2022 03:11:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.net header.s=badeba3b8450 header.b="WkX/91xP";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
-Received: from localhost ([::1]:51530 helo=lists1p.gnu.org)
+       dkim=pass header.i=@aspeedtech.com header.s=selector1 header.b=njXTGS3m;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ntZGn-0005xN-Lh
-	for alex.bennee@linaro.org; Tue, 24 May 2022 14:28:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54484)
+	id 1ntnyy-0001N0-QE
+	for alex.bennee@linaro.org; Wed, 25 May 2022 06:11:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40568)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <deller@gmx.de>)
- id 1ntZEF-00056p-Jo; Tue, 24 May 2022 14:25:59 -0400
-Received: from mout.gmx.net ([212.227.15.18]:55719)
+ (Exim 4.90_1) (envelope-from <howard_chiu@aspeedtech.com>)
+ id 1ntnoW-0003yQ-NA; Wed, 25 May 2022 06:00:25 -0400
+Received: from mail-tyzapc01on2070d.outbound.protection.outlook.com
+ ([2a01:111:f403:704b::70d]:49368
+ helo=APC01-TYZ-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <deller@gmx.de>)
- id 1ntZE8-0008GF-Td; Tue, 24 May 2022 14:25:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1653416735;
- bh=HDFpH32KMJlqvy6JupuFi39XQEFbREIvEWvoptgj6/E=;
- h=X-UI-Sender-Class:Date:Subject:To:References:From:In-Reply-To;
- b=WkX/91xPE5SANL8Gk0CoVV2d+OJRPOvwf2+OxvA6YNd7x8KxRXhJav/PZfFjIcjya
- +rGGe+erQaZOlO5i0Q7NsjwBzSlkrUOEdv/nH1RVmGlNFg8PorxbC0h4B2GuD7OGM8
- 5Ta98FQo4Uub3DDEXvEF2pnbRsNL91fp3xR/2A8Y=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [192.168.20.60] ([92.116.137.3]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MCKBc-1o2sd32r5e-009Tpn; Tue, 24
- May 2022 20:25:35 +0200
-Message-ID: <31ca8828-9b69-42da-7e0a-d1e3c5db2f08@gmx.de>
-Date: Tue, 24 May 2022 20:25:23 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 00/50] PS2 device QOMification - part 1
-Content-Language: en-US
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- richard.henderson@linaro.org, mst@redhat.com, pbonzini@redhat.com,
- peter.maydell@linaro.org, hpoussin@reactos.org,
- aleksandar.rikalo@syrmia.com, f4bug@amsat.org, jiaxun.yang@flygoat.com,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
-From: Helge Deller <deller@gmx.de>
-In-Reply-To: <20220522181836.864-1-mark.cave-ayland@ilande.co.uk>
-Content-Type: text/plain; charset=UTF-8
+ (Exim 4.90_1) (envelope-from <howard_chiu@aspeedtech.com>)
+ id 1ntnoP-0003kU-2e; Wed, 25 May 2022 06:00:24 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Izsf29zLAbKjC0Ji9rBVpIWYbbJW2fF6Nvz2j4k6hdT8M1T3VvbpF4fElxgEqPj8DNPLdHN3xvli3K/U25uxCECxsyOQ+gVXvFUWNxLCv6bHAqHGAdh1WOiJnHTlkB9rIw4yM4CO5jBELIFr8WnII4D9iQYaWFq5YOj76iMVn7D2yh8eTK6zUxlF2ng8Rn5PkNBIJ7ZzP8XdFaIZM3shD79u9b94lBwsbiD26LICJbwPvshp0XaFRCLydksgE7U6bMYDVa2WD0B1XTu+5hcCnXHbxN+rhxyoECx91HhVMzahT+Ahr/hxjg1wqoqKfmbkavNNtyyfdScguWzn3i9GhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UVDkqYsaaDQzDadhq95DWVD2+D2RO9bgXap/SYTOL0c=;
+ b=lQ8c85XtQXsdFJT5gY4UwXJA6bqY1OtMyzdMTd1jcvYpPQ5sHwWsgzxQbc52qHy234dH1YM6LcsVsetbeCbANFdHMXnb2WuyGfwOwlmBLaRIxnjBH8H5/W/tz/KQVpAhiY8GSU2oa+quu2D53WxhMll9hinjlzzrlkr8AemXuMuukaP655p8PuMr8UyYsrOrVNxxwLoZpUt2NdJwbv1MS3uGnWLJB+pNQaxlBft9wI7LTuF//8cGW1LcISNz7prYU/oxF1dYd0Wcdyq3chBGfUbM6Y+BYenVz+DQjLbLSa241guhKi5PLQeOFDGnYuGH8wDXEdGOzLEUVGAK+7EajQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UVDkqYsaaDQzDadhq95DWVD2+D2RO9bgXap/SYTOL0c=;
+ b=njXTGS3m+SZZpLbDpWUOxOTNsuHTUt7SEcyQIqEdWemdYUxX9Pv+PLMHzTfof1/3KQa3YdSvJ5qLwCNKyGC0mp20kFiGKK5PTs0IC5q43a1bsO47UkdwmIN7yAA6U7z7uACnqlx560vZFjZVIqENNEh5SnJ17zVT0QnsP7Cc/O2Y44xSOCRsHkaVzCBIkeefQE7l59+nGQVgZzPLTCyPZfnsyj7xfLz0dn4akpwGXedDU35zWnzWf9g2/cRid3NxOw+an0+T+viJy4WMhD6xiCM4aeZWIqKq6y4qPDjcxbdHDEaQ8ELcbvA29B17N61+yU2e/SabZHe/0BNxLWyEMA==
+Received: from SG2PR06MB2315.apcprd06.prod.outlook.com (2603:1096:4:b::19) by
+ TY2PR06MB2445.apcprd06.prod.outlook.com (2603:1096:404:4a::11) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5273.22; Wed, 25 May 2022 10:00:02 +0000
+Received: from SG2PR06MB2315.apcprd06.prod.outlook.com
+ ([fe80::c5c2:d3e1:f0af:4a19]) by SG2PR06MB2315.apcprd06.prod.outlook.com
+ ([fe80::c5c2:d3e1:f0af:4a19%3]) with mapi id 15.20.5273.023; Wed, 25 May 2022
+ 10:00:02 +0000
+From: Howard Chiu <howard_chiu@aspeedtech.com>
+To: "clg@kaod.org" <clg@kaod.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Steven Lee
+ <steven_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>
+Subject: [PATCH] hw/arm/aspeed: Add i2c devices for AST2600 EVB
+Thread-Topic: [PATCH] hw/arm/aspeed: Add i2c devices for AST2600 EVB
+Thread-Index: AdhwG4ccA//9oHFRRGKJBFgW1qyFLQ==
+Date: Wed, 25 May 2022 10:00:01 +0000
+Message-ID: <SG2PR06MB2315A0711B0DC6903A0291BAE6D69@SG2PR06MB2315.apcprd06.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 183cf250-feaa-4c9e-d34a-08da3e3555c6
+x-ms-traffictypediagnostic: TY2PR06MB2445:EE_
+x-microsoft-antispam-prvs: <TY2PR06MB2445BE4E64757C4B28E866DFE6D69@TY2PR06MB2445.apcprd06.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 2l2p8oUNc0xEc1Qo6yfCUzCveUG65L0wM/qMHJTDR/Mfd3RFE/J9sAc9/ht6n/6HObvsraWIoOcq4475WpgAjx2B+OGObHu1XtmtjPMKvuPm7KH06Svkmbvut+QqIowtzx97Q5SMcviLsEXMPp9kI5c/AI/W7gwSEg5spqeFgUrVLAm1TyR2FkA115jsvaQBtmKNuHtZ+oMUDIOxqI9akcgbupupP1nn4YNvunhtE/oQR6+0Ag0Gx4L2/25rmhpcfoBhP5IECR1sY5uxfp9QvbhhkFcM5lx88APtGxNWrGQCugUJ+HrSX6bYPbmvFmnpw9EcsYTRhUSGOz9bimndjHdjsGnxjRU18y8HFppqKIR40Y1oIl5iTLofKU5X3nfMPfZuSEFEJ6BEH6hYzuahFCHmE89FnjpXET5hD+6NrVepwaZrKMB2ffAHBe5IlPOUTEBT0+E0E20weimG/It1cyEyuuvaQkq8w5+88VXRkXmCy6hAWsxXojt+bxxXX8bNMRvuf3oFQ5/m42/rzZcE/bjWAYuhmRNW4criSd5VULYW+BD3KubhX2v8E/UUbGHe6PyQSLrxdkEA8/rsU64l9XSVVQCvYgkWTZ5t8nBBlsj4Nl8Ojut7d6HhR1cGc6U8dyCDLd1deQvg8d17z27C74RniomnafnEwUDTQjGs5jUh9ErNMtdZpj65x9b3PYz4JoKZprAT/I2su4jifAfwNw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SG2PR06MB2315.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(6506007)(7696005)(9686003)(508600001)(110136005)(5660300002)(38070700005)(83380400001)(316002)(54906003)(76116006)(55016003)(71200400001)(4326008)(33656002)(8676002)(26005)(52536014)(64756008)(66476007)(66446008)(66556008)(122000001)(8936002)(86362001)(66946007)(186003)(107886003)(2906002)(4744005)(38100700002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?2uJ2G7s3h8wo8KXd0ioMRVBE3OruM03/4L9vpU+exZywmmYvUBxFM/ahItgf?=
+ =?us-ascii?Q?AwozWPPnuW7AckXJNIDJR5vXwKRjZl7JPHT+AiCA/D9Z3gLbwTWPD6YgDwFc?=
+ =?us-ascii?Q?8NBUza8pFTO1znN4b39ug2rRFAGXzPe3LbtF7LwBK8AW511MwZ5C51XDLzff?=
+ =?us-ascii?Q?ZsmKAdfflTHgslPIfpss8hmUEZXhQ+G9xudY3Fy0f2lcq1IW0eLHdw5QgGyG?=
+ =?us-ascii?Q?x68HL+3sMrpydhdiZpg1QNONKpBV+IJfFmDehndGR6xzf69K96XGZ1h3d0q/?=
+ =?us-ascii?Q?LZobj/dhYHz6aYPaZpFcKrAHEWalGpQ6pJ0HcS13VZdDSXDj9JOVtLM5e6rB?=
+ =?us-ascii?Q?eQtHLJWMbntSoSfPi8eSUw+F5nelTHUkjl1qEZsoqmlHPpj04LI6camgF/2+?=
+ =?us-ascii?Q?ajos+5cqZUUbZIYJmOtdumF+7cKEUjPJp0dUrFmCDYCMyUNVxdIp1ZnzEiq6?=
+ =?us-ascii?Q?GuzIneUSZ6UXjgzxmCgP0PKC1H2BJwaoZaFy2qn4MHOq4Y6Wki+3F+zSaMVo?=
+ =?us-ascii?Q?nI/heU4hFt+g8O8T5K2p2qzsCUoa1R9ekJn8/2I9Akx8UIBvaqf2JRp6CVY8?=
+ =?us-ascii?Q?ZizvBXbWJgmZ1syJblgFQ4NcrX+3MxnyS7IsWtdqEVa3nrkAOi8AQlCa936s?=
+ =?us-ascii?Q?mhfgDtu+qR8gAaw9JF0aQpom0Gj8NeJ8kmoJ5PYQ5dWWkrxtyRyR7RZWJetb?=
+ =?us-ascii?Q?N0IIpfCAPsUaMdTlLeVRf33c1jzEjezZrPkfV8Gg258XTtuG+FjLzV398XLD?=
+ =?us-ascii?Q?TudQgu9+ZVX5ggABa/mJXXP35QexqjR9ZyYN5gBK69kAUwL9XFIVfWSoLNcy?=
+ =?us-ascii?Q?8eabsdKctutxkoK8kx0w2j+Gs6Hm+XNunLWaQpP8GEWH68eXK0o/WRsVJoDz?=
+ =?us-ascii?Q?8UbrpjJVjToIrTxhGApjsBnRUuflHzqUIh7GE8p4ClADOg2+H8bJW3f1zsFb?=
+ =?us-ascii?Q?dOBFZjSF2rUOhI+Uh59vPwSAW9k84Ct/JOAx0CGLQ8Rbpjf/wBUJFWTzaZyk?=
+ =?us-ascii?Q?rUN38uxJTuBGKQf5b1hZ+O/Fnrdc2dsQsj/Cv9pI6W87SJKIP7qMLd2W3Vt0?=
+ =?us-ascii?Q?LdZMltFp8tbai3SiovjlUd4Uo6t5tpPpPBsfz0C21ZfmgEj+Vf0U9rpX6+5d?=
+ =?us-ascii?Q?pQr5Iv8Pp+NfmfUQcqvZM8cVNovIMSwmk4aWUMXPCvpU9d75V0I7fZb5fOxE?=
+ =?us-ascii?Q?VkCDUc5BfvSrX0c++lwIidYptMZUk2rJMZDdJb2/eNeao9y3UtP3vvWCwR2h?=
+ =?us-ascii?Q?C+ARyXhDDfJcTxBdSJpsVVJ9SUP+BPtdBogmK2bIZElgjpmLwbShjyVeng52?=
+ =?us-ascii?Q?wYnq7EyOTZDQKPa8arc/+va+CnFCbhMLHIzP1WhA+laUKPJqla5mGj3gSDxU?=
+ =?us-ascii?Q?8s0w9YeuN9BbhUKsPMAF0+dWV6joSVb0DKsjI3tve+pgpXsE1uLTBzK/70Ry?=
+ =?us-ascii?Q?yxspHgq1Rea1twa+L1mtwqrdwJyBS6kbofhGvuriNyznUEGP9k6jeNkeEE3X?=
+ =?us-ascii?Q?cMR4W19Ap9CHKoPeqJCcJcd0II5HPs7gYeBUn+yGSjTulEtMoxOh5fRK2KXD?=
+ =?us-ascii?Q?LAxxFKukElarfEloySyOlPFbj8Un+Ax1AlYBTb/V92cSdxPewnB3mHbszC12?=
+ =?us-ascii?Q?Zat279SPyHgppqtDg9eIlhp3HhnYW0hVF0DyGX3ic1UYz3h0yKB/7OmdiMi2?=
+ =?us-ascii?Q?84KiOpcVxpRCXvxXEyswWT4DwKtqttIXbQyvEM3BHvuEqaMbKBIZUCCRPYb9?=
+ =?us-ascii?Q?klpGAVugw0JqThGMSCrx7uk4Qm52LsM=3D?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:t/2OLZSraRGEp4JKkAnLW6fqvIwXy51PMS9NGHLkoC7AhO76KHC
- hiRL70Qu+ZY4sbVI0eN9+ZRT+rBG2eKJh/OLpnFh+vJFk6LMy67j66ipW4cciyCX/0ul6Ww
- 1vPbZ7PI6AGfyuXACzI7MoJeOBjWllibkKvccxpYvYw23/kOefhA8UK4WaUyheKzMp2+q23
- i/+4+6EYoC781rH8HmSeQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Dxtp4/593z0=:/aYFurSEiiSwMC1I1YJhwI
- /ikrdaCDwA0M6lsPxhTQygDdwxhf9rkgGMeL/D9NurTTyambYYG7gXFriT+vx64CUZjHllM2n
- o6EZyWnEf7WTrC0nIcC5bzPw6CDw4rMoWkjdoDWETNse5UuF41HSSZ7cYaYLZpftl76Fdlkba
- IKtwH8Z9TQ8ijv3x69CpsMrg56xZ28cQKHGYm8BbaSnydYUM90KFkEkUzuCFMNmobEPO1RH3m
- vjHOeELIrZ2bDG6DMQeRc+Jow+4kVj/maeWsw5pV69hVW5FBTvcAm6NuidIyTbCFvCpWkDt9p
- V/msi6UUYhvZTF4SbUjhd05PiBu4j78Imt4MT8XlMI1Mi9AjSiZlWJrqQ0zuBraUnVksYMKLn
- y4TTuWBUAiG2tUihfxa/zRWCxk7bArSxbWvBfnqKkUuDAZ3nmabHYeoKecsIFc88Lzi+wtuVk
- aMJDhUwPQ+9RxyJnuIGuM1EGkR3RPuYrA4ZFH+oiaP+eERecOhoHqqXTnNOBvszxfYaE7OmUl
- VisHKR7Ce5sWzgBjpIdorcAdR+KQzz2F2j+dFIxk4rHjbgxjf61qz20TmgAPWJM7HXlDD1XPP
- 1D2GDQlDnySyGvydqfdarhMUPkhTY4bB9yLkRCvE/ZowjhHALslutPxPnUYc7ARCJByG2rfES
- O1xKMK+Yq3mZGcx9JE0sZDUD+doS5YfY7YGeCfsnAK4vG4cyp8jGivj0+/HG4IBre/B5SDuqr
- zsyMSAW6BYhMn7jECSl8loFGINFx/Yvq4hDMvwHOsZrSJwm+s/OIsygw5D54D4lBxyCen8kRb
- dbZUatekH2fculaJTsVQooNKYxR8gUe0w5h0NXzSWTO7+TqqhfUGTm1QEop2mHh4ovM0LUg+u
- Zd5ObXecUPu4lvqzKGHHmKXqQ28dZPVaz5QxQMpOH3afIEFJSTa246dOOyUaCVfKpsDP7USJw
- RHr+Bvv1g4hvu5qUke634EhBayls3cWiIl4BnZDWee1HTqPfWTO1kADBmAAVAX2R8LUzQejWp
- gcvya9BPaMIAkEhiv2Vmo5S4FpIoRI5ZvdutQbTwS1p3KG+LuptTXkAdJu2W2/gFruXhaQmPB
- pbyI+i4IJE8MINpnus3yJne/pxXHwg4e9zD
-Received-SPF: pass client-ip=212.227.15.18; envelope-from=deller@gmx.de;
- helo=mout.gmx.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+MIME-Version: 1.0
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SG2PR06MB2315.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 183cf250-feaa-4c9e-d34a-08da3e3555c6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 May 2022 10:00:01.9316 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 68U5huWzYN72F3z3W9a+wawNq6R+fLu3zc0uRsLfYaczDPs9gnAI4w4uR+nRVnuYEkmYmFbayV3PIo1UG9cJ1uIlj4NmxsZTd1RY4zjCc5I=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY2PR06MB2445
+Received-SPF: pass client-ip=2a01:111:f403:704b::70d;
+ envelope-from=howard_chiu@aspeedtech.com;
+ helo=APC01-TYZ-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -123,144 +175,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ud+eU6QnmcZ4
+X-TUID: 0DPcyXmxSVI7
 
-Hi Mark,
+Add EEPROM and LM75 temperature sensor according to hardware schematic
 
-On 5/22/22 20:17, Mark Cave-Ayland wrote:
-> This series came about when looking at improving the LASI PS2 device for
-> the HPPA machine: there were improvements that I was keen to make, but
-> was restricted because the PS2 device(s) weren't QOMified.
->
-> Trying to do everything in a single patchset would be a very large serie=
-s
-> indeed, so here is part 1 of the series which does the basic QOMificatio=
-n
-> process and consists of:
->
-> - QOMifying the basic PS2, PS2 keyboard and PS2 mouse types
->
-> - Moving any functionality that exists in a global device init function
->   directly into the relevant device, so that all device behaviour is
->   configured using qdev properties and QOM
->
-> - Introducing a new I8042_MMIO type for use by the MIPS magnum machine
->
-> - Switch all PS2 devices to use qdev gpios for IRQs instead of using the
->   update_irq() callback function along with the update_arg opaque
->
-> Once this work has been done, a follow-up part 2 series will finish the
-> remainder of the work which involves i) improving the QOM object model
-> now QOMification is complete and ii) removing the legacy global device
-> init functions for PS2 and related devices.
->
-> Testing for this series has comprised of booting a machine with each typ=
-e
-> of PS2 device and confirming that i) the machine responds to keypresses
-> when using a graphical console and ii) completing a successful migration
-> from a machine with this series applies back to a machine running latest
-> git master. The test machines I used were:
->
-> - qemu-system-x86_64 -M pc for the I8042 device
-> - qemu-system-hppa for the LASIPS2 device
-> - qemu-system-arm -M versatilepb for the PL050 device
-> - qemu-system-mips64el -M magnum for the I8042_MMIO device
->
-> Finally the QOM tree changes caused by QOMification of the PS2 devices
-> trigger a failure due to a bug in the bios-tables-test qtest for subtest
-> /x86_64/acpi/q35/viot. This can be fixed by applying the series at
-> https://lists.gnu.org/archive/html/qemu-devel/2022-05/msg04266.html
-> "hw/acpi/viot: generate stable VIOT ACPI tables" first.
->
-> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Signed-off-by: Howard Chiu <howard_chiu@aspeedtech.com>
+---
+ hw/arm/aspeed.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-Thanks a lot for this QOMifying and cleanup work!
-I've sucessfully tested it with qemu-system-hppa for HP-UX 10 and 11.
-
-You may add either or both of:
-
-Acked-by: Helge Deller <deller@gmx.de>
-Tested-by: Helge Deller <deller@gmx.de>
-
-Thank you!
-Helge
-
-
->
->
-> Mark Cave-Ayland (50):
->   ps2: checkpatch fixes
->   ps2: QOMify PS2State
->   ps2: QOMify PS2KbdState
->   ps2: QOMify PS2MouseState
->   ps2: move QOM type definitions from ps2.c to ps2.h
->   ps2: improve function prototypes in ps2.c and ps2.h
->   ps2: introduce PS2DeviceClass
->   ps2: implement ps2_reset() for the PS2_DEVICE QOM type based upon
->     ps2_common_reset()
->   ps2: remove duplicate setting of scancode_set in ps2_kbd_init()
->   ps2: implement ps2_kbd_realize() and use it to register
->     ps2_keyboard_handler
->   ps2: implement ps2_mouse_realize() and use it to register
->     ps2_mouse_handler
->   ps2: don't use vmstate_register() in ps2_kbd_init()
->   ps2: don't use vmstate_register() in ps2_mouse_init()
->   pl050: checkpatch fixes
->   pl050: split pl050_update_irq() into separate pl050_set_irq() and
->     pl050_update_irq() functions
->   lasips2: spacing fixes
->   lasips2: rename ps2dev_update_irq() to lasips2_port_set_irq()
->   pckbd: checkpatch fixes
->   pckbd: move KBDState from pckbd.c to i8042.h
->   pckbd: move ISAKBDState from pckbd.c to i8042.h
->   pckbd: introduce new I8042_MMIO QOM type
->   pckbd: implement i8042_mmio_reset() for I8042_MMIO device
->   pckbd: add mask qdev property to I8042_MMIO device
->   pckbd: add size qdev property to I8042_MMIO device
->   pckbd: implement i8042_mmio_realize() function
->   pckbd: implement i8042_mmio_init() function
->   pckbd: alter i8042_mm_init() to return a I8042_MMIO device
->   pckbd: move mapping of I8042_MMIO registers to MIPS magnum machine
->   pckbd: more vmstate_register() from i8042_mm_init() to
->     i8042_mmio_realize()
->   pckbd: move ps2_kbd_init() and ps2_mouse_init() to
->     i8042_mmio_realize()
->   ps2: make ps2_raise_irq() function static
->   ps2: use ps2_raise_irq() instead of calling update_irq() directly
->   ps2: introduce ps2_lower_irq() instead of calling update_irq()
->     directly
->   ps2: add gpio for output IRQ and optionally use it in ps2_raise_irq()
->     and ps2_lower_irq()
->   pckbd: replace irq_kbd and irq_mouse with qemu_irq array in KBDState
->   pl050: switch over from update_irq() function to PS2 device gpio
->   lasips2: QOMify LASIPS2State
->   lasips2: move lasips2 QOM types from lasips2.c to lasips2.h
->   lasips2: rename lasips2_init() to lasips2_initfn() and update it to
->     return the LASIPS2 device
->   lasips2: implement lasips2_init() function
->   lasips2: move mapping of LASIPS2 registers to HPPA machine
->   lasips2: move initialisation of PS2 ports from lasi_initfn() to
->     lasi_init()
->   lasips2: add base property
->   lasips2: implement lasips2_realize()
->   lasips2: use qdev gpio for output IRQ
->   lasips2: switch over from update_irq() function to PS2 device gpio
->   pckbd: switch I8042_MMIO device from update_irq() function to PS2
->     device gpio
->   pckbd: add i8042_reset() function to I8042 device
->   pckbd: switch I8042 device from update_irq() function to PS2 device
->     gpio
->   ps2: remove update_irq() function and update_arg parameter
->
->  hw/hppa/machine.c          |  11 +-
->  hw/input/lasips2.c         | 110 +++++---
->  hw/input/pckbd.c           | 321 ++++++++++++++++--------
->  hw/input/pl050.c           |  50 ++--
->  hw/input/ps2.c             | 500 +++++++++++++++++++++----------------
->  hw/mips/jazz.c             |  11 +-
->  include/hw/input/i8042.h   |  54 +++-
->  include/hw/input/lasips2.h |  27 +-
->  include/hw/input/ps2.h     |  79 +++++-
->  9 files changed, 775 insertions(+), 388 deletions(-)
->
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index a74c13ab0f..df74d3e955 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -526,8 +526,15 @@ static void ast2500_evb_i2c_init(AspeedMachineState *b=
+mc)
+=20
+ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+ {
+-    /* Start with some devices on our I2C busses */
+-    ast2500_evb_i2c_init(bmc);
++    AspeedSoCState *soc =3D &bmc->soc;
++    uint8_t *eeprom_buf =3D g_malloc0(8 * 1024);
++
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50,
++                          eeprom_buf);
++
++    /* LM75 is compatible with TMP105 driver */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8),
++                     TYPE_TMP105, 0x4d);
+ }
+=20
+ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+--=20
+2.25.1
 

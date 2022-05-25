@@ -1,97 +1,95 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1179658lfh;
-        Wed, 25 May 2022 13:51:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy0Id8dHdxHVoWz4kwRlZ89/rMrHh8zsIc+9Il9dzKMLqUqdE0rwXUGVCLUqXbRkdR6BIAX
-X-Received: by 2002:ad4:5b85:0:b0:461:f4ee:4663 with SMTP id 5-20020ad45b85000000b00461f4ee4663mr27379033qvp.21.1653511876008;
-        Wed, 25 May 2022 13:51:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653511876; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1179964lfh;
+        Wed, 25 May 2022 13:52:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/PXNNhdoGJkfZM1Fooip6jT7ue7yxDs2OugZIfUIIAdCh1XJcSk//bGgckIZr/XtZ2/Sw
+X-Received: by 2002:ac8:7f15:0:b0:2f9:38d0:abc8 with SMTP id f21-20020ac87f15000000b002f938d0abc8mr12594274qtk.509.1653511929691;
+        Wed, 25 May 2022 13:52:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653511929; cv=none;
         d=google.com; s=arc-20160816;
-        b=DkAeF7Gc3g/AP9TWQw4qcKmLPX2ERtmlMicBivuHyeX0zCF0+a5DP2q6TwEuY7U3mI
-         a9Vl/IrzBy3Zva14L5pkDQy96MQRykvrpnb6bNNqbJiY05awJrxaDwC1LjDPEXnNvk4l
-         e0N9Er4Y+3TlPcc9RJUSmV5ooqzIWQZGy2e8Msz2m8ZWVWzRXWaUs7pNc0AVpEokh+z5
-         /zRJZo/VTDzfUYQakxJwA/dqVNH0/j3anI8cUnkhPIvryHwvRvz9gG8m2gbCmpyQQcRF
-         yzKOaUmrYgnc+lWyORKrE3hY2GCVl35M0K74jooQcCdTV4ofzhVmRSbWrlJsg2CdQjqa
-         iL7Q==
+        b=UMqRh40n2zt9wM8z5q/rPUDaO4M7I1PMiPHbDIY+i1ZLMXAIpXS/BqVQpGZRu//7kx
+         UYH0Jehxe+VzazEuU9seG+b/gTHL8zzcDYTmC50pBS5+LdiPdDJH99lvEIDAQ8Y1uNvd
+         7A50IVgrPiR1Vwe5rx6F14HKzkztbKAyQ1cOQ3uJK3YcgX7pZaL+A65QNVF+WrLZ6wgL
+         1Wxah4WM3asKVgFjX/YAizcQzy6PwKlVZqsPj8Yl9nDcyb0Hv6BkFuiOv52ZtA2MPFEU
+         KsOIBygaJMWi2cmmsy3oBnxNzFXoMq+DjfPuQhCINHa/OOqHijtv+vDotXyz48fWXUeE
+         94+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=fabR/SupSLte16elj0BuyT31+eBPj42k7Udd3gKWjB4=;
-        b=e2R5yRt5Cx0to9k6WedcFTfpB50lfxzfWqRE0zkCDyGY34sRCj+FM4Re3tS+c75kCm
-         QDfHQi8kwln2gJ0N1zfxIxSDaYO2TIQ3Fjct7w0iv88EiS0jXdMIfjSPyqCee8EDIiVO
-         RHxpzlQkAyVE5x1kYTVvBnLs8yfq8S2yIRnIauK8m77Q8C1AkOtI7felFdjNyrwAa4O2
-         /jf4YbwHA3fl3svojXpCt9WvZKc4CcpyOO35GT8f4RVfteYiYq4Pnp06UJfZPgNsDQfD
-         fXsdm/dBDC9y4LR1CC9trcayLh5XNxo+ZKcXan0VQ9ypxQHsg/BGZdjVWqb76wR2MS4O
-         CXBA==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=LUIgwt/FGossgc701QtgMM24o8V33Dm5JNSVq+D4S+I=;
+        b=msP1qYKM0/Syq6PzCBaqTUwkIz2F6tbpHqZBnGzk3PIwjqrqLkYqGwBLHeP0Fymiez
+         M69G4s2NKGc0D2jgeOaBBeOYfMVQOBRxjiZj6SsOQX1H3v1fpUk2ZdQMVyDfoIfsTGTc
+         vkJ8MHFfAb7NFyaLNuuxZUdgSwGtk94L2t8FtyKUnRGJOt0bX6cuBQkrKm1ENdDOP+eE
+         IULjsCxAt7NvzlbnGa/GkQ3kOW6GKiVFlWjRqVrvAYUV9uSc1QGEK0u1yHOGFqWAz32H
+         7z3NWv0zVUE59FbdOk1X3Tu6cD7rkdjv5MebXDzQtpudEldh1C90aQrJIQy33vJj/JYR
+         lXhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=Hw7PLVfo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@fb.com header.s=facebook header.b=ZSKs6jqV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n184-20020a37a4c1000000b006a376a4729csi1750000qke.456.2022.05.25.13.51.15
+        by mx.google.com with ESMTPS id g6-20020a05620a278600b0069fde540dfbsi1903048qkp.399.2022.05.25.13.52.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 May 2022 13:51:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 May 2022 13:52:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=Hw7PLVfo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@fb.com header.s=facebook header.b=ZSKs6jqV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:34490 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ntxyN-0000qu-FQ
-	for alex.bennee@linaro.org; Wed, 25 May 2022 16:51:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60542)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ntxzF-0001vb-75
+	for alex.bennee@linaro.org; Wed, 25 May 2022 16:52:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60506)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=6144085ad1=pdel@fb.com>)
- id 1ntxy8-0000nY-3K
- for qemu-arm@nongnu.org; Wed, 25 May 2022 16:51:00 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:60224)
+ id 1ntxy5-0000j3-SO
+ for qemu-devel@nongnu.org; Wed, 25 May 2022 16:50:57 -0400
+Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:47782)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=6144085ad1=pdel@fb.com>)
- id 1ntxy4-0007jp-UE
- for qemu-arm@nongnu.org; Wed, 25 May 2022 16:50:59 -0400
+ id 1ntxy3-0007jh-CK
+ for qemu-devel@nongnu.org; Wed, 25 May 2022 16:50:57 -0400
 Received: from pps.filterd (m0148461.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24PGtc9l017420
- for <qemu-arm@nongnu.org>; Wed, 25 May 2022 13:50:55 -0700
+ by mx0a-00082601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24PGtc9i017420
+ for <qemu-devel@nongnu.org>; Wed, 25 May 2022 13:50:54 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
  h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding : content-type; s=facebook;
- bh=fabR/SupSLte16elj0BuyT31+eBPj42k7Udd3gKWjB4=;
- b=Hw7PLVfoVChb8x9V/qMSTUUoQibB3OJIgk2ffnv5DMn1q9Kt7zRngRz/FuoDbouorQ60
- hU0rFfuiCSlc/6l5ORSxkP8/hoPNRE1e1w8rlL4AzTbOrZF1IcE79TTGC/7np+UgvMrw
- LAzrbuBH2NqbULQfnGvxFRJ1TnKTnU7Wb3Y= 
+ : date : message-id : content-type : content-transfer-encoding :
+ mime-version; s=facebook; bh=LUIgwt/FGossgc701QtgMM24o8V33Dm5JNSVq+D4S+I=;
+ b=ZSKs6jqVGP96Nk2FBxg+V7ATqF3aAXTbUwdI+ItZ4A68UM5CCJxg5xQu6qsj5PMReviF
+ OVITBK/7nFTJQrh3n6we8ghzqOJmonerLkSR/Bto6OyJ7PnTLo/7nSCF5vOmfqqnR76M
+ 8qqw5YzdlVRsHFFpmZ5XywfMkiZcB0f9avw= 
 Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3g93vs8uqv-9
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3g93vs8uqv-6
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 25 May 2022 13:50:55 -0700
-Received: from twshared31479.05.prn5.facebook.com (2620:10d:c0a8:1b::d) by
+ for <qemu-devel@nongnu.org>; Wed, 25 May 2022 13:50:54 -0700
+Received: from twshared6447.05.prn5.facebook.com (2620:10d:c0a8:1b::d) by
  mail.thefacebook.com (2620:10d:c0a8:82::c) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Wed, 25 May 2022 13:50:50 -0700
+ 15.1.2375.28; Wed, 25 May 2022 13:50:49 -0700
 Received: by devvm9194.prn0.facebook.com (Postfix, from userid 385188)
- id 3B0D66E38181; Wed, 25 May 2022 13:50:40 -0700 (PDT)
+ id 368B56E3817F; Wed, 25 May 2022 13:50:40 -0700 (PDT)
 From: Peter Delevoryas <pdel@fb.com>
 To: 
 CC: <pdel@fb.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
  <zhdaniel@fb.com>, <troy_lee@aspeedtech.com>,
  <jamin_lin@aspeedtech.com>, <steven_lee@aspeedtech.com>,
  <k.jensen@samsung.com>
-Subject: [RFC 1/1] i2c/aspeed: Add slave device handling in new register mode
-Date: Wed, 25 May 2022 13:50:24 -0700
-Message-ID: <20220525205024.1158075-2-pdel@fb.com>
+Subject: [RFC 0/1] i2c/aspeed: Add slave device handling in new register mode
+Date: Wed, 25 May 2022 13:50:23 -0700
+Message-ID: <20220525205024.1158075-1-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220525205024.1158075-1-pdel@fb.com>
-References: <20220525205024.1158075-1-pdel@fb.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
 X-FB-Internal: Safe
 Content-Type: text/plain
-X-Proofpoint-ORIG-GUID: 1Em51eLtfuBoC8kXPP4Cr4Zx4fbgR0dl
-X-Proofpoint-GUID: 1Em51eLtfuBoC8kXPP4Cr4Zx4fbgR0dl
+X-Proofpoint-ORIG-GUID: lXxJSvSQ4o3zUQdruvRQpsYAVQ7f3aln
+X-Proofpoint-GUID: lXxJSvSQ4o3zUQdruvRQpsYAVQ7f3aln
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.486,FMLib:17.11.64.514
  definitions=2022-05-25_06,2022-05-25_02,2022-02-23_01
@@ -106,264 +104,53 @@ X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A3K6KcS+fJnT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xwOBdKNjm9Ev
 
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
----
+The AST2600/AST1030 new register mode patches[1] and the I2C slave device
+patches[2] will be really useful, but we still need DMA slave device
+handling in the new register mode too for the use-cases I'm thinking of
+(OpenBIC Zephyr kernel using Aspeed SDK drivers[3]).
+
+My test images are on Github[4]. They can be used with the ast1030-evb, or
+the oby35-cl and oby35-bb machines in the fb qemu branch[5].
+
+I'm submitting this as an RFC cause I just want to see how other people
+expect these changes to be made based on the previously submitted "new
+register mode" and "old register mode slave device" patches.
+
+Thanks,
+Peter
+
+[1] https://patchwork.kernel.org/project/qemu-devel/list/?series=3D626028&a=
+rchive=3Dboth
+[2] https://patchwork.kernel.org/project/qemu-devel/list/?series=3D627914&a=
+rchive=3Dboth
+[3] https://github.com/AspeedTech-BMC/zephyr/blob/db3dbcc9c52e67a47180890ac=
+938ed380b33f91c/drivers/i2c/i2c_aspeed.c#L1362-L1368
+[4] https://github.com/peterdelevoryas/OpenBIC/releases/tag/oby35-cl-2022.1=
+3.01
+[5] https://github.com/facebook/openbmc-qemu
+
+Peter Delevoryas (1):
+  i2c/aspeed: Add slave device handling in new register mode
+
  hw/i2c/aspeed_i2c.c         | 118 ++++++++++++++++++++++++++++++++++--
  include/hw/i2c/aspeed_i2c.h |  14 +++--
  2 files changed, 124 insertions(+), 8 deletions(-)
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 3f2dbe46df..01af647e0c 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -221,6 +221,10 @@
- #define I2CM_DMA_LEN          0x1c
- #define I2CS_INT_CTRL_REG     0x20
- #define I2CS_INT_STS_REG      0x24
-+#define   I2CS_PKT_DONE       BIT(16)
-+#define   I2CS_SLAVE_MATCH    BIT(7)
-+#define   I2CS_STOP           BIT(4)
-+#define   I2CS_RX_DONE        BIT(2)
- #define I2CS_CMD_STS_REG      0x28
- #define I2CS_DMA_LEN          0x2c
- #define I2CM_DMA_TX_BUF       0x30
-@@ -334,16 +338,38 @@ static uint64_t aspeed_i2c_bus_read_new(void *opaqu=
-e, hwaddr offset,
-         value =3D (i2c_bus_busy(bus->bus) << 16);
-         break;
-     case I2CC_M_X_POOL_BUF_CTRL_REG:
-+        break;
-     case I2CS_INT_CTRL_REG:
-+        value =3D bus->slave_intr_ctrl;
-+        break;
-     case I2CS_INT_STS_REG:
-+        value =3D bus->slave_intr_status;
-+        break;
-     case I2CS_CMD_STS_REG:
-+        value =3D bus->slave_cmd;
-+        break;
-     case I2CS_DMA_LEN:
-+        value =3D bus->slave_dma_len;
-+        break;
-     case I2CS_DMA_TX_BUF:
-+        /* FIXME: Not sure if we should return same value as RX buf */
-+        value =3D bus->slave_dma_addr;
-+        break;
-     case I2CS_DMA_RX_BUF:
-+        value =3D bus->slave_dma_addr;
-+        break;
-     case I2CS_SA_REG:
-+        value =3D bus->dev_addr;
-+        break;
-     case I2CS_DMA_LEN_STS_REG:
-+        value =3D bus->slave_dma_len_tx | (bus->slave_dma_len_rx << 16);
-+        break;
-     case I2CC_DMA_OP_ADDR_REG:
-+        value =3D bus->slave_dma_addr;
-+        break;
-     case I2CC_DMA_OP_LEN_REG:
-+        value =3D bus->slave_dma_len;
-+        break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, o=
-ffset);
-@@ -870,9 +896,7 @@ static void aspeed_i2c_bus_write_new(void *opaque, hw=
-addr offset,
-     switch (offset) {
-     case I2CC_M_S_FUNC_CTRL_REG:
-         if (value & I2CD_SLAVE_EN) {
--            qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
--                          __func__);
--            break;
-+            i2c_slave_set_address(&bus->slave->i2c, bus->dev_addr);
-         }
-         bus->ctrl =3D value & 0x007FFFFF;
-         break;
-@@ -934,16 +958,44 @@ static void aspeed_i2c_bus_write_new(void *opaque, =
-hwaddr offset,
-         bus->dma_len_rx =3D 0;
-         break;
-     case I2CC_M_X_POOL_BUF_CTRL_REG:
-+        break;
-     case I2CS_INT_CTRL_REG:
-+        bus->slave_intr_ctrl =3D value;
-+        break;
-     case I2CS_INT_STS_REG:
-+        if (value & I2CM_PKT_DONE) {
-+            value |=3D 0x280b5;
-+        }
-+        bus->slave_intr_status &=3D ~value;
-+        /* FIXME: Maybe need to check master interrupt status too. */
-+        if (!bus->slave_intr_status) {
-+            bus->controller->intr_status &=3D ~(1 << bus->id);
-+            qemu_irq_lower(aic->bus_get_irq(bus));
-+        }
-+        break;
-     case I2CS_CMD_STS_REG:
-+        assert(!(bus->slave_cmd >> 31));
-+        bus->slave_cmd =3D value;
-+        break;
-+    case I2CS_SA_REG:
-+        bus->dev_addr =3D value;
-+        break;
-     case I2CS_DMA_LEN:
-+        assert(value);
-+        bus->slave_dma_len =3D value;
-+        break;
-     case I2CS_DMA_TX_BUF:
-     case I2CS_DMA_RX_BUF:
--    case I2CS_SA_REG:
-+        bus->slave_dma_addr =3D value;
-+        break;
-     case I2CS_DMA_LEN_STS_REG:
-+        bus->slave_dma_len_tx =3D 0;
-+        bus->slave_dma_len_rx =3D 0;
-+        break;
-     case I2CC_DMA_OP_ADDR_REG:
-     case I2CC_DMA_OP_LEN_REG:
-+        /* Invalid to write to DMA operating status registers */
-+        break;
-     default:
-         break;
-     }
-@@ -1298,11 +1350,42 @@ static const TypeInfo aspeed_i2c_info =3D {
-     .abstract   =3D true,
- };
-=20
-+static int aspeed_i2c_slave_event_new(AspeedI2CBus *bus, enum i2c_event =
-event)
-+{
-+    AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
-+
-+    switch (event) {
-+    case I2C_START_SEND:
-+        bus->slave_dma_len_rx =3D 0;
-+        assert(bus->slave_dma_len_tx =3D=3D 0);
-+        assert(bus->slave_dma_len);
-+        assert(bus->slave_dma_addr);
-+        i2c_ack(bus->bus);
-+        break;
-+    case I2C_FINISH:
-+        bus->slave_intr_status |=3D I2CS_PKT_DONE;
-+        bus->slave_intr_status |=3D I2CS_SLAVE_MATCH;
-+        bus->slave_intr_status |=3D I2CS_RX_DONE;
-+        bus->slave_intr_status |=3D I2CS_STOP;
-+        bus->controller->intr_status |=3D 1 << bus->id;
-+        qemu_irq_raise(aic->bus_get_irq(bus));
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
- static int aspeed_i2c_slave_event(I2CSlave *slave, enum i2c_event event)
- {
-     AspeedI2CSlave *s =3D ASPEED_I2C_SLAVE(slave);
-     AspeedI2CBus *bus =3D s->bus;
-=20
-+    if (aspeed_i2c_bus_is_new_mode(bus)) {
-+        return aspeed_i2c_slave_event_new(bus, event);
-+    }
-+
-     switch (event) {
-     case I2C_START_SEND:
-         bus->buf =3D bus->dev_addr << 1;
-@@ -1330,11 +1413,29 @@ static int aspeed_i2c_slave_event(I2CSlave *slave=
-, enum i2c_event event)
-     return 0;
- }
-=20
-+static void aspeed_i2c_slave_send_async_new(AspeedI2CBus *bus, uint8_t d=
-ata)
-+{
-+    MemTxResult result =3D address_space_write(&bus->controller->dram_as=
-,
-+                                             bus->slave_dma_addr,
-+                                             MEMTXATTRS_UNSPECIFIED, &da=
-ta, 1);
-+    assert(result =3D=3D MEMTX_OK);
-+
-+    bus->slave_dma_addr++;
-+    bus->slave_dma_len--;
-+    bus->slave_dma_len_rx++;
-+
-+    i2c_ack(bus->bus);
-+}
-+
- static void aspeed_i2c_slave_send_async(I2CSlave *slave, uint8_t data)
- {
-     AspeedI2CSlave *s =3D ASPEED_I2C_SLAVE(slave);
-     AspeedI2CBus *bus =3D s->bus;
-=20
-+    if (aspeed_i2c_bus_is_new_mode(bus)) {
-+        return aspeed_i2c_slave_send_async_new(bus, data);
-+    }
-+
-     bus->buf =3D (data & I2CD_BYTE_BUF_RX_MASK) << I2CD_BYTE_BUF_RX_SHIF=
-T;
-     bus->intr_status |=3D I2CD_INTR_RX_DONE;
-=20
-@@ -1370,6 +1471,15 @@ static void aspeed_i2c_bus_reset(DeviceState *dev)
-     s->buf =3D 0;
-     s->dma_addr =3D 0;
-     s->dma_len =3D 0;
-+    s->slave_cmd =3D 0;
-+    s->tx_state_machine =3D 0;
-+    s->slave_dma_addr =3D 0;
-+    s->slave_dma_len =3D 0;
-+    s->slave_dma_len_tx =3D 0;
-+    s->slave_dma_len_rx =3D 0;
-+    s->slave_intr_ctrl =3D 0;
-+    s->slave_intr_status =3D 0;
-+
-     i2c_end_transfer(s->bus);
- }
-=20
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index 8e0671f60b..615bcb105b 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -61,12 +61,18 @@ struct AspeedI2CBus {
-     uint32_t pool_ctrl;
-     uint32_t dma_addr;
-     uint32_t dma_len;
--
--    uint8_t tx_state_machine;
--    uint32_t intr_ctrl_slave;
--    uint32_t intr_status_slave;
-     uint32_t dma_len_tx;
-     uint32_t dma_len_rx;
-+
-+    uint8_t tx_state_machine;
-+
-+    uint32_t slave_cmd;
-+    uint32_t slave_dma_addr;
-+    uint32_t slave_dma_len;
-+    uint32_t slave_dma_len_tx;
-+    uint32_t slave_dma_len_rx;
-+    uint32_t slave_intr_ctrl;
-+    uint32_t slave_intr_status;
- };
-=20
- struct AspeedI2CState {
 --=20
 2.30.2
 

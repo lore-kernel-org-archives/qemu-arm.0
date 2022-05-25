@@ -1,70 +1,72 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1029806lfh;
-        Wed, 25 May 2022 09:17:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyiu4VDK2q9bIDFtWe2DgRy3w4bp8OhjtE/pZJBRHsQFz+beCo0x0Yj3kJSK8ZTQkaJ4Z0x
-X-Received: by 2002:a05:6214:194e:b0:45a:d8e3:2d3f with SMTP id q14-20020a056214194e00b0045ad8e32d3fmr26528710qvk.59.1653495428917;
-        Wed, 25 May 2022 09:17:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653495428; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1030171lfh;
+        Wed, 25 May 2022 09:17:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzE0atLckYSBg6VuK+Z482T2F+/0N0/Jdd99S9/vbbgro9ITJBtAAWEiZNfPPmOoAtSVDKU
+X-Received: by 2002:ac8:7d46:0:b0:2f3:dd89:5557 with SMTP id h6-20020ac87d46000000b002f3dd895557mr25207589qtb.567.1653495458592;
+        Wed, 25 May 2022 09:17:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653495458; cv=none;
         d=google.com; s=arc-20160816;
-        b=hZWUZDXPe7RmYdfDpc3uRSowVA/Sf6nl6RBRvnX2V4WbndzB7tAwGmM5SZ25M4jf3V
-         Pr8TMK/aUWmHVJg8wgT3MEQ/QknIefuBPxCb5y7wLtj6BbBFXd0ico/1GjMKr6dJ1719
-         HsezysNxZegkNmnagdBUowDlfvsfjXZcW5ONgJavOcIXwbyuyrkJAiifbyl6uRuDJniM
-         ZkiXQ93DUBZvgwcKxHvVVSshoEnSCTuF7MUVM6nK4xK+lVy+mS7hslelXxH16G9t00DT
-         CEzMC2+6BDXaRYM2UyDWT7BEp9G1eOeX8cOznQh3IXYZaxI7j6wwtndJqWyk3ZV1GIao
-         azeQ==
+        b=w+eV6zbIfoCW/FwOcZMeu7dqw50zu4vGiHqwpxE9fSONre8sROmB4vqVBmPXd256jw
+         eCrLF9UN1d9WGM3Gaz0jMXAsfiIuYeojrwcGG54rIAWZ4s5aFXd+I1vEVOCCSVFCG+1O
+         uB1qjDl4c8YKh+Yx1wzQTU7mu/cWwrgI5gCrpMM8oSSToHDPkVYN8A+IDcQ0lU6I9a4d
+         Ld55WqHFcaRfSjY9Sm9YapAI1Ad+ZMwL1dZGF/htIvYiukXxaA+cdjIpMl23GzQDj5KI
+         LS1wTSS0GrIdhIjSsbLUJpQwuNqcvGKFiPOd6zgBf93Bm0rA9CefqzkYyI1YSSikksVP
+         ix9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=4jAZsZuCBM48CZ7V92M4Kh49aW8+gcJR3fMeevAKGKE=;
-        b=MtC3lNLEZPnI/p8Ja5VOWVTxWcJLH98rHloK3IItvPtUEYhcbx/A6h8lkxY+Y9zKgl
-         dT1Bn74kGZ9qbls9eKs7uv7bGNjhVt/FypMSyVMsF9bzuHJPs3OOB8o+rPRlzS9Eug6R
-         FCI92006pWGp95MCDUYs623sN5nno0Q6cfen5welmyXITgKYmeILa/f19jXS61bmaj8c
-         ZbMIMM5wgXHAhXA1hh3n3iwtG68MOJy+fI+m5r6tjAxBsDHzRnfHzL3aNHSGI2WpuYX+
-         XdjwMxw0sfmsRZ7W+cODxvsBXNshFYuuVN5/2v4uCJcbJIdEcNypsUrfRVr9O1RCzkVN
-         ev4A==
+        bh=qeKlC+LXZjGCaEsa+j0E9ReK4Vf+BQMg2OfTEySLRS4=;
+        b=Es6A5rocr+FIdpeQAwLpdJwKd7Du+LsKp8Vy4KNyxrgNAsygmbJsZiBqYX0wm/WkNg
+         wIUoWTYVVQQoKhSASeLsSZuW0XtMtpk+oLsmu9GapEll2oQY13d6Z8PoxmCoeorwdWpT
+         ZI22qodN+QfnCONXu+4br54iokvRg/wQFVIm0JfMJNWwaJPwFmVV7Yx6EwTDZoHAG3wF
+         PxtuB533brXbbMxZIc2nIVhsMa9ydi9olZsUgStMKyKBm6KZgBgRiCDuEjrV+WWC1Pj6
+         2Pp/d91osn1ALtRCmayG+DYg52NIj6WbWAtSbmFLf0qGpUgOZBFw6GodzOHs5U5Fw2ln
+         GOhg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q22-20020a05622a031600b002f3a69289cesi1569377qtw.764.2022.05.25.09.17.08
+        by mx.google.com with ESMTPS id q2-20020a05622a030200b002f92d429b6esi1733402qtw.217.2022.05.25.09.17.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 May 2022 09:17:08 -0700 (PDT)
+        Wed, 25 May 2022 09:17:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57592 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58788 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ntth6-0001Lg-De
-	for alex.bennee@linaro.org; Wed, 25 May 2022 12:17:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36478)
+	id 1nttha-0002BE-2j
+	for alex.bennee@linaro.org; Wed, 25 May 2022 12:17:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36510)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Lufh=WB=kaod.org=clg@ozlabs.org>)
- id 1nttSR-000743-Oz; Wed, 25 May 2022 12:02:05 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:47725
+ id 1nttSV-00074a-Lr; Wed, 25 May 2022 12:02:07 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]:48649
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Lufh=WB=kaod.org=clg@ozlabs.org>)
- id 1nttSM-00048f-IF; Wed, 25 May 2022 12:01:56 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4L7bRH5gtWz4xbt;
- Thu, 26 May 2022 02:01:47 +1000 (AEST)
+ id 1nttSR-00049O-L0; Wed, 25 May 2022 12:02:03 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4L7bRR44pYz4xDK;
+ Thu, 26 May 2022 02:01:55 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4L7bRF6Hsmz4xXj;
- Thu, 26 May 2022 02:01:45 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4L7bRP3qNdz4xXj;
+ Thu, 26 May 2022 02:01:53 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Delevoryas <pdel@fb.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 02/15] hw/arm/aspeed: Add fby35 machine type
-Date: Wed, 25 May 2022 18:01:23 +0200
-Message-Id: <20220525160136.556277-3-clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Peter Delevoryas <pdel@fb.com>
+Subject: [PULL 05/15] aspeed: Introduce a get_irq AspeedSoCClass method
+Date: Wed, 25 May 2022 18:01:26 +0200
+Message-Id: <20220525160136.556277-6-clg@kaod.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220525160136.556277-1-clg@kaod.org>
 References: <20220525160136.556277-1-clg@kaod.org>
@@ -93,130 +95,140 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: skM7epQJH23B
+X-TUID: JxV5kBkrIpth
 
-From: Peter Delevoryas <pdel@fb.com>
+and make routine aspeed_soc_get_irq() common to all SoCs. This will be
+useful to share code.
 
-Add the 'fby35-bmc' machine type based on the kernel DTS[1] and userspace
-i2c setup scripts[2]. Undefined values are inherited from the AST2600-EVB.
-
-Reference images can be found in Facebook OpenBMC Github Release assets
-as "fby35.mtd". [3]
-
-You can boot the reference images as follows (fby35 uses dual-flash):
-
-qemu-system-arm -machine fby35-bmc \
-    -drive file=fby35.mtd,format=raw,if=mtd \
-    -drive file=fby35.mtd,format=raw,if=mtd \
-    -nographic
-
-[1] https://github.com/facebook/openbmc-linux/blob/412d5053258007117e94b1e36015aefc1301474b/arch/arm/boot/dts/aspeed-bmc-facebook-fby35.dts
-[2] https://github.com/facebook/openbmc/blob/e2294ff5d31dd65c248fe396a385286d6d5c463d/meta-facebook/meta-fby35/recipes-fby35/plat-utils/files/setup-dev.sh
-[3] https://github.com/facebook/openbmc/releases
-
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20220503225925.1798324-2-pdel@fb.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>
+Cc: Peter Delevoryas <pdel@fb.com>
+Reviewed-by: Peter Delevoryas <pdel@fb.com>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20220516055620.2380197-1-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 63 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 63 insertions(+)
+ include/hw/arm/aspeed_soc.h |  3 +++
+ hw/arm/aspeed_ast10x0.c     |  5 +++--
+ hw/arm/aspeed_ast2600.c     |  5 +++--
+ hw/arm/aspeed_soc.c         | 13 ++++++++++---
+ 4 files changed, 19 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index a74c13ab0fbc..725c169488dc 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -21,6 +21,7 @@
- #include "hw/misc/led.h"
- #include "hw/qdev-properties.h"
- #include "sysemu/block-backend.h"
-+#include "sysemu/reset.h"
- #include "hw/loader.h"
- #include "qemu/error-report.h"
- #include "qemu/units.h"
-@@ -951,6 +952,35 @@ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(i2c[12], TYPE_PCA9552, 0x67);
- }
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index e13af374b923..3789f38603e5 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -94,6 +94,7 @@ struct AspeedSoCClass {
+     const int *irqmap;
+     const hwaddr *memmap;
+     uint32_t num_cpus;
++    qemu_irq (*get_irq)(AspeedSoCState *s, int dev);
+ };
  
-+static void fby35_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+    I2CBus *i2c[16];
+ 
+@@ -153,4 +154,6 @@ enum {
+     ASPEED_DEV_I3C,
+ };
+ 
++qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
 +
-+    for (int i = 0; i < 16; i++) {
-+        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
-+    }
-+
-+    i2c_slave_create_simple(i2c[2], TYPE_LM75, 0x4f);
-+    i2c_slave_create_simple(i2c[8], TYPE_TMP421, 0x1f);
-+    /* Hotswap controller is actually supposed to be mp5920 or ltc4282. */
-+    i2c_slave_create_simple(i2c[11], "adm1272", 0x44);
-+    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4e);
-+    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4f);
-+
-+    aspeed_eeprom_init(i2c[4], 0x51, 128 * KiB);
-+    aspeed_eeprom_init(i2c[6], 0x51, 128 * KiB);
-+    aspeed_eeprom_init(i2c[8], 0x50, 32 * KiB);
-+    aspeed_eeprom_init(i2c[11], 0x51, 128 * KiB);
-+    aspeed_eeprom_init(i2c[11], 0x54, 128 * KiB);
-+
-+    /*
-+     * TODO: There is a multi-master i2c connection to an AST1030 MiniBMC on
-+     * buses 0, 1, 2, 3, and 9. Source address 0x10, target address 0x20 on
-+     * each.
-+     */
-+}
-+
- static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+ #endif /* ASPEED_SOC_H */
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 427154928254..9ae9efaac144 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -61,11 +61,11 @@ static const int aspeed_soc_ast1030_irqmap[] = {
+     [ASPEED_DEV_KCS]       = 138, /* 138 -> 142 */
+ };
+ 
+-static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
++static qemu_irq aspeed_soc_ast1030_get_irq(AspeedSoCState *s, int dev)
  {
-     return ASPEED_MACHINE(obj)->mmio_exec;
-@@ -1293,6 +1323,35 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+ 
+-    return qdev_get_gpio_in(DEVICE(&s->armv7m), sc->irqmap[ctrl]);
++    return qdev_get_gpio_in(DEVICE(&s->armv7m), sc->irqmap[dev]);
  }
  
-+static void fby35_reset(MachineState *state)
+ static void aspeed_soc_ast1030_init(Object *obj)
+@@ -280,6 +280,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
+     sc->irqmap = aspeed_soc_ast1030_irqmap;
+     sc->memmap = aspeed_soc_ast1030_memmap;
+     sc->num_cpus = 1;
++    sc->get_irq = aspeed_soc_ast1030_get_irq;
+ }
+ 
+ static const TypeInfo aspeed_soc_ast1030_type_info = {
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index eedda7badc37..4161a0cc4bbe 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -114,11 +114,11 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+     [ASPEED_DEV_I3C]       = 102,   /* 102 -> 107 */
+ };
+ 
+-static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
++static qemu_irq aspeed_soc_ast2600_get_irq(AspeedSoCState *s, int dev)
+ {
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+ 
+-    return qdev_get_gpio_in(DEVICE(&s->a7mpcore), sc->irqmap[ctrl]);
++    return qdev_get_gpio_in(DEVICE(&s->a7mpcore), sc->irqmap[dev]);
+ }
+ 
+ static void aspeed_soc_ast2600_init(Object *obj)
+@@ -572,6 +572,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+     sc->irqmap       = aspeed_soc_ast2600_irqmap;
+     sc->memmap       = aspeed_soc_ast2600_memmap;
+     sc->num_cpus     = 2;
++    sc->get_irq      = aspeed_soc_ast2600_get_irq;
+ }
+ 
+ static const TypeInfo aspeed_soc_ast2600_type_info = {
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 58714cb2a01d..c339b5c74de5 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -121,11 +121,11 @@ static const int aspeed_soc_ast2400_irqmap[] = {
+ 
+ #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
+ 
+-static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
++static qemu_irq aspeed_soc_ast2400_get_irq(AspeedSoCState *s, int dev)
+ {
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+ 
+-    return qdev_get_gpio_in(DEVICE(&s->vic), sc->irqmap[ctrl]);
++    return qdev_get_gpio_in(DEVICE(&s->vic), sc->irqmap[dev]);
+ }
+ 
+ static void aspeed_soc_init(Object *obj)
+@@ -487,6 +487,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
+     sc->irqmap       = aspeed_soc_ast2400_irqmap;
+     sc->memmap       = aspeed_soc_ast2400_memmap;
+     sc->num_cpus     = 1;
++    sc->get_irq      = aspeed_soc_ast2400_get_irq;
+ }
+ 
+ static const TypeInfo aspeed_soc_ast2400_type_info = {
+@@ -512,6 +513,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
+     sc->irqmap       = aspeed_soc_ast2500_irqmap;
+     sc->memmap       = aspeed_soc_ast2500_memmap;
+     sc->num_cpus     = 1;
++    sc->get_irq      = aspeed_soc_ast2400_get_irq;
+ }
+ 
+ static const TypeInfo aspeed_soc_ast2500_type_info = {
+@@ -528,4 +530,9 @@ static void aspeed_soc_register_types(void)
+     type_register_static(&aspeed_soc_ast2500_type_info);
+ };
+ 
+-type_init(aspeed_soc_register_types)
++type_init(aspeed_soc_register_types);
++
++qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
 +{
-+    AspeedMachineState *bmc = ASPEED_MACHINE(state);
-+    AspeedGPIOState *gpio = &bmc->soc.gpio;
-+
-+    qemu_devices_reset();
-+
-+    /* Board ID */
-+    object_property_set_bool(OBJECT(gpio), "gpioV4", true, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioV5", true, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioV6", true, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioV7", false, &error_fatal);
++    return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
 +}
-+
-+static void aspeed_machine_fby35_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Facebook fby35 BMC (Cortex-A7)";
-+    mc->reset      = fby35_reset;
-+    amc->fmc_model = "mx66l1g45g";
-+    amc->num_cs    = 2;
-+    amc->macs_mask = ASPEED_MAC3_ON;
-+    amc->i2c_init  = fby35_i2c_init;
-+    /* FIXME: Replace this macro with something more general */
-+    mc->default_ram_size = FUJI_BMC_RAM_SIZE;
-+}
-+
- #define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
- /* Main SYSCLK frequency in Hz (200MHz) */
- #define SYSCLK_FRQ 200000000ULL
-@@ -1411,6 +1470,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_bletchley_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("fby35-bmc"),
-+        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
-+        .class_init    = aspeed_machine_fby35_class_init,
-     }, {
-         .name           = MACHINE_TYPE_NAME("ast1030-evb"),
-         .parent         = TYPE_ASPEED_MACHINE,
 -- 
 2.35.3
 

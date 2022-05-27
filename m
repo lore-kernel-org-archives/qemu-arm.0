@@ -1,201 +1,193 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1240506lfh;
-        Fri, 27 May 2022 12:27:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy8J6MYn3Q+UpQabmHcYmmzPNjOQLNWNEhaImfVhTs0fjU6FI9TqSWlGD0+pKg79ZXglglv
-X-Received: by 2002:a05:620a:4016:b0:6a5:9c5b:8a1c with SMTP id h22-20020a05620a401600b006a59c5b8a1cmr9818300qko.700.1653679641697;
-        Fri, 27 May 2022 12:27:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653679641; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1241813lfh;
+        Fri, 27 May 2022 12:29:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwPR8MY0O1tyCcgiTaMw9PEUyl5UxLuTSycoAsAc1cW7u1MkXduPKcYMLu/ZIPRdP1Rwa1V
+X-Received: by 2002:a05:620a:2586:b0:680:f3c1:9d4a with SMTP id x6-20020a05620a258600b00680f3c19d4amr28932100qko.619.1653679780157;
+        Fri, 27 May 2022 12:29:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653679780; cv=none;
         d=google.com; s=arc-20160816;
-        b=y2gjIa1+igUJPgzWKqD1eJkVmuHuUmo8Kd03IsBy4o3ptetu3QIh/rc5eGKO/QRrkN
-         odS53zeu8DFr3lJG7/+UpSFQ19sPxCO3YOBhIHTmE2QE2DGKnbKfr8KpaFY6iEosGlak
-         libFP6oNkbSwB790kUHTb4aLnW0Qxe7Xbd6AFuF68YKMQrHXFO4ZNqvTHNKbB9jexebK
-         GDXgKWVRx/9HsrvoPVuKVH5ID9Co1hmJdl7Lr+nJuSRZAACemEo/tKDMyhf8XuYG1EbM
-         jxVoL7qj7Q0Li5jef+UpLc19D8eVW59fr0IwEwmUnClBRPE3xF1VgtanI0jQoo0GoxP9
-         t30w==
+        b=iozgeyM/QAZhRnP16wQ+7tmcaZyyiSFzp/BsuSIweEnqNSxvK+41dIX5Ci4kU8f6NY
+         ez/scO4adjGB8ActjXWGp6koAw5F+Cjn/kzD0X4ZDP/GnZJKSbwsGFS0iJk9om72xNwI
+         yzn4QSzNaHM4KqcJxQFosertlTVj3zWrdX9ATGca2XJEomGDFFZJi39CeZR+S8f/MJak
+         jCSR2ofam3qUMl1qTQraguS28KWXd3iIXw/dcznz/9mVATGb88+2RedazLj0oQwfjCMQ
+         y6kq3uE/n1DBLJPAFpaG9QjI+wEEaKHa79mpqmdehT6lxECmodVc4ra8A7FH2otctVTN
+         f/bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=s+jNkIlkI0Mxzpu2Q0Y0wsvArZquJwwiRJK1CMneaAk=;
-        b=BOBb5CTYsMmvFb++FKQhFyKGdchfmODhmXvPB8GYvoITOD7b1BvJKfK+qPg3+ukcwA
-         kAppUZAzIxuLRZaMhW7QpwMo+BWzTnmYWwocVIIMrvZrXKwoN+3Ce993qVXdzX32DIXz
-         TKCmZV8eqPc2RTr9cwqS06b3qSq4Q1aymxQwG5RegwG5fx7q6YuwYC4SH8UxMl1lp8vW
-         8QQ3mJaP20qaId+jenxg1kxSS3JBv2bgYs9LE5dDBl11oMDT8X8RPxBfUSThFZWXse5B
-         3Ly1BvikC1zlBe+DKNAQ7qHEN6wuznhiMoODJ6PM43se9nxAgyLpR+5oIX1YYA4ndGXs
-         7/XA==
+        bh=bkaSejNiykp7LpPG5wJu2pOvy7PO5RL7VgLGFhoRfts=;
+        b=sWa58+/YLTmZGLRwhcp+x7ckQSNSH4x9R+q4ort2VGYQtHTFBnyW5UqTtfvDAvZY4L
+         VSwgtvqPOHsGTmieQXaLVROM9biXYNBoghnuYNdUDSk2o6jcEScHuKUB3mi4meIdCTuR
+         M0GvHRtsPGAx//LWkGcoFMwXPeq8x8pME3E1jBlUaUZWIek7M5B2UsL8BbDGAHf9/p93
+         timqWHaZwIn7kUCM4cJkDEbYB5d4051K+vbhZysQIALnD1AC3jK9iouzV609E7YVK1xO
+         9qGC6vww/cA0UvP/pfbxxScQKE5R5UIo83+RdMq2bA8jxmNH8wW9cAl9bzuZVp9a/H+2
+         DzQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aw41KLpF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=oRvnsXvs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 27-20020a05620a071b00b0069c7ad4331bsi2756818qkc.571.2022.05.27.12.27.21
+        by mx.google.com with ESMTPS id jr12-20020a0562142a8c00b0046205cad48csi2946435qvb.427.2022.05.27.12.29.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 May 2022 12:27:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 27 May 2022 12:29:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aw41KLpF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=oRvnsXvs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58088 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33792 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nufcH-0005Ur-36
-	for alex.bennee@linaro.org; Fri, 27 May 2022 15:27:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43938)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nufeS-0008Is-ND
+	for alex.bennee@linaro.org; Fri, 27 May 2022 15:29:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44438)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nuecM-0003c2-LW
- for qemu-arm@nongnu.org; Fri, 27 May 2022 14:23:22 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433]:40875)
+ id 1nuecX-00042C-NM
+ for qemu-devel@nongnu.org; Fri, 27 May 2022 14:23:33 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:37510)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nuec9-0004Qn-GV
- for qemu-arm@nongnu.org; Fri, 27 May 2022 14:23:21 -0400
-Received: by mail-pf1-x433.google.com with SMTP id i18so4970627pfk.7
- for <qemu-arm@nongnu.org>; Fri, 27 May 2022 11:23:04 -0700 (PDT)
+ id 1nuecM-0004VO-4R
+ for qemu-devel@nongnu.org; Fri, 27 May 2022 14:23:33 -0400
+Received: by mail-pl1-x635.google.com with SMTP id t4so1899212pld.4
+ for <qemu-devel@nongnu.org>; Fri, 27 May 2022 11:23:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=s+jNkIlkI0Mxzpu2Q0Y0wsvArZquJwwiRJK1CMneaAk=;
- b=aw41KLpFlQmebLxvSLA6TNhdIHjwfZCmtEx91PgyR9wui3ARYcclKvI7Qjww82A9WI
- 7fsf9jkK3brblVw1TScS+pVeKs1N88XXqu3WqOuoSm5tiDUzMsQQj9rSGCniUHM7MFMU
- fPDR+03biiqGNHS/pSxMRbi6rumkq/G21G+zIMdSK2nJ56Evs0xzQxUelvvIGoLwnSO5
- 8nKEnPqztdayyCX49uDPbr4AO0I+hezv1mH6C4wXPmVFKRpnzbi5nZwCAqTXvl2333RW
- sTtK+RceBH3Gap48sU1jydgyS6ikhBykK0ge0rxAX/rIWRUAQVSkqM0xWbtcegZLowza
- DbQg==
+ bh=bkaSejNiykp7LpPG5wJu2pOvy7PO5RL7VgLGFhoRfts=;
+ b=oRvnsXvsrOduUJj2k4XC+eL/WxAdJKT0RqlfCL6o5EfGEqhGg/N0AaEd7AMkby1BsF
+ UaqjvisofDAR1YEKwuceMo0xu8zxBe2bbCF7PHCNlSSVAxLNdYkjDeaLa8eF1egc3Ggi
+ /HnGz31YNYyDJ5U6jfXU2fto8zt6nF7oA8HQKOclHkmosvj0eU3ooBwQh5VQTKE7THve
+ cs1L61fZNxIvCuYehPQgeCjHIKVMEOcOQiHXa1Ms5p46OC7C8iOqAk0sPSLzAsQz/hRG
+ Bbwu/ZP2WOggLUR2Q5ghMXmK/460yClajS/khpLRBA32Ae1/siZNmUVbv8iPTpUUtF7t
+ F2Sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=s+jNkIlkI0Mxzpu2Q0Y0wsvArZquJwwiRJK1CMneaAk=;
- b=BPGEZBty9SH5nG47PHP2RHJYg5Laie1gqyYAVj4mLpHlO8JOGkPyGRn0HwVuy76wG0
- TLMibR53y67xXvK+732F8tij/8+9xmTAufNg+1lynzi0LtACFR/zMs2yjO93B7Z/TmHh
- wAgqSECBMYCb4dKhTPOw9aHNW5iuUKQTvrwCVg6zpRBZPflfDktznh1Npg5WQZikNwvu
- Nb98oxw1b9npboIoQi3YmdtInKo2lPbGxyqF+bgHiO+dik4P2HS3+qU9PHIXiVmRawMS
- UQzhbv1/D5ECDrNdl110vB5v1FW3Ralla/tz/yyA9eWILa8nQLvmhoU8wBickWRqnOL4
- +gww==
-X-Gm-Message-State: AOAM531gWoWZ88sElWm487iNGK5ee08kRW5KlYV8IUUCUcRvJKE0K/7Z
- xVqpRvs71R9zmaTyIRWleNOZ+h0vCqch2w==
-X-Received: by 2002:a05:6a00:9a6:b0:518:fb72:5e2e with SMTP id
- u38-20020a056a0009a600b00518fb725e2emr14379326pfg.55.1653675783846; 
- Fri, 27 May 2022 11:23:03 -0700 (PDT)
+ bh=bkaSejNiykp7LpPG5wJu2pOvy7PO5RL7VgLGFhoRfts=;
+ b=dxK6vXpKZkiry1pK5OXB8DxwZRR/YB9ScO0F3+BYcHbaMwmwYu5vKovTrRwiAK7Jwz
+ hdRtn33ZkKy8nz/AhzstaXxGfC1Luk1hErSxX/cDknZwrv4cFijcLKOIAOCB+biaEcR9
+ GwKIGhOqjP3ZBbrc+hi0+COOogm3D4fEXWVsg17M+cZTF79S2fMR1veEeRZidlPby+8W
+ e5UiKeoCjx7DDwsKH5ArnATJg8/bkn1Wd+IMQWu1+dTGeRLCzKIQXZfy95FVucW4Fom+
+ 7Dnvj+9/zLeOvGDQmVKOBLu5eXjLA9oXReS5j56FxAuhmK75VGoKdcx3t3Phr7MYRDzY
+ f/Ng==
+X-Gm-Message-State: AOAM533arSFW5isZXeR88zoVZqLKjZHJIsFpBsJ8bjMxQ0ISZ584fuNv
+ IFBDZA54EczAwRnzRHtWtm0ptdb0Rz5k/A==
+X-Received: by 2002:a17:902:e74b:b0:163:5f93:4f0e with SMTP id
+ p11-20020a170902e74b00b001635f934f0emr13544957plf.12.1653675800192; 
+ Fri, 27 May 2022 11:23:20 -0700 (PDT)
 Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
  by smtp.gmail.com with ESMTPSA id
- b15-20020a170903228f00b00163552a0953sm4033534plh.159.2022.05.27.11.23.03
+ b15-20020a170903228f00b00163552a0953sm4033534plh.159.2022.05.27.11.23.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 May 2022 11:23:03 -0700 (PDT)
+ Fri, 27 May 2022 11:23:19 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 059/114] target/arm: Use TRANS_FEAT for do_zip, do_zip_q
-Date: Fri, 27 May 2022 11:18:12 -0700
-Message-Id: <20220527181907.189259-60-richard.henderson@linaro.org>
+Subject: [PATCH 078/114] target/arm: Use TRANS_FEAT for FMMLA
+Date: Fri, 27 May 2022 11:18:31 -0700
+Message-Id: <20220527181907.189259-79-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220527181907.189259-1-richard.henderson@linaro.org>
 References: <20220527181907.189259-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ILfjnks23HiM
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: R8TUkbe/+Ils
 
-Convert SVE translation functions using do_zip*
-to use TRANS_FEAT and gen_gvec_ool_arg_zzz.
+Being able to specify the feature predicate in TRANS_FEAT
+makes it easier to split trans_FMMLA by element size,
+which also happens to simplify the decode.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-sve.c | 54 +++++++++-----------------------------
- 1 file changed, 13 insertions(+), 41 deletions(-)
+ target/arm/sve.decode      |  7 +++----
+ target/arm/translate-sve.c | 27 ++++-----------------------
+ 2 files changed, 7 insertions(+), 27 deletions(-)
 
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index 7e79198f5b..a54feb2f61 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -1598,10 +1598,9 @@ SQRDCMLAH_zzzz  01000100 esz:2 0 rm:5 0011 rot:2 rn:5 rd:5  ra=%reg_movprfx
+ USDOT_zzzz      01000100 .. 0 ..... 011 110 ..... .....  @rda_rn_rm
+ 
+ ### SVE2 floating point matrix multiply accumulate
+-{
+-  BFMMLA        01100100 01 1 ..... 111 001 ..... .....  @rda_rn_rm_e0
+-  FMMLA         01100100 .. 1 ..... 111 001 ..... .....  @rda_rn_rm
+-}
++BFMMLA          01100100 01 1 ..... 111 001 ..... .....  @rda_rn_rm_e0
++FMMLA_s         01100100 10 1 ..... 111 001 ..... .....  @rda_rn_rm_e0
++FMMLA_d         01100100 11 1 ..... 111 001 ..... .....  @rda_rn_rm_e0
+ 
+ ### SVE2 Memory Gather Load Group
+ 
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 75c52d8ce1..7c9deb267f 100644
+index a799ce3110..364e419f3e 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -2287,48 +2287,20 @@ TRANS_FEAT(PUNPKHI, aa64_sve, do_perm_pred2, a, 1, gen_helper_sve_punpk_p)
-  *** SVE Permute - Interleaving Group
+@@ -7318,29 +7318,10 @@ DO_SVE2_ZPZZ_FP(FMINP, fminp)
+  * SVE Integer Multiply-Add (unpredicated)
   */
  
--static bool do_zip(DisasContext *s, arg_rrr_esz *a, bool high)
+-static bool trans_FMMLA(DisasContext *s, arg_rrrr_esz *a)
 -{
--    static gen_helper_gvec_3 * const fns[4] = {
--        gen_helper_sve_zip_b, gen_helper_sve_zip_h,
--        gen_helper_sve_zip_s, gen_helper_sve_zip_d,
--    };
--    unsigned vsz = vec_full_reg_size(s);
--    unsigned high_ofs = high ? vsz / 2 : 0;
-+static gen_helper_gvec_3 * const zip_fns[4] = {
-+    gen_helper_sve_zip_b, gen_helper_sve_zip_h,
-+    gen_helper_sve_zip_s, gen_helper_sve_zip_d,
-+};
-+TRANS_FEAT(ZIP1_z, aa64_sve, gen_gvec_ool_arg_zzz,
-+           zip_fns[a->esz], a, 0)
-+TRANS_FEAT(ZIP2_z, aa64_sve, gen_gvec_ool_arg_zzz,
-+           zip_fns[a->esz], a, vec_full_reg_size(s) / 2)
- 
--    return gen_gvec_ool_arg_zzz(s, fns[a->esz], a, high_ofs);
--}
+-    gen_helper_gvec_4_ptr *fn;
 -
--static bool trans_ZIP1_z(DisasContext *s, arg_rrr_esz *a)
--{
--    return do_zip(s, a, false);
--}
--
--static bool trans_ZIP2_z(DisasContext *s, arg_rrr_esz *a)
--{
--    return do_zip(s, a, true);
--}
--
--static bool do_zip_q(DisasContext *s, arg_rrr_esz *a, bool high)
--{
--    unsigned vsz = vec_full_reg_size(s);
--    unsigned high_ofs = high ? QEMU_ALIGN_DOWN(vsz, 32) / 2 : 0;
--
--    if (!dc_isar_feature(aa64_sve_f64mm, s)) {
+-    switch (a->esz) {
+-    case MO_32:
+-        if (!dc_isar_feature(aa64_sve_f32mm, s)) {
+-            return false;
+-        }
+-        fn = gen_helper_fmmla_s;
+-        break;
+-    case MO_64:
+-        if (!dc_isar_feature(aa64_sve_f64mm, s)) {
+-            return false;
+-        }
+-        fn = gen_helper_fmmla_d;
+-        break;
+-    default:
 -        return false;
 -    }
--    return gen_gvec_ool_arg_zzz(s, gen_helper_sve2_zip_q, a, high_ofs);
--}
 -
--static bool trans_ZIP1_q(DisasContext *s, arg_rrr_esz *a)
--{
--    return do_zip_q(s, a, false);
+-    return gen_gvec_fpst_zzzz(s, fn, a->rd, a->rn, a->rm, a->ra, 0, FPST_FPCR);
 -}
--
--static bool trans_ZIP2_q(DisasContext *s, arg_rrr_esz *a)
--{
--    return do_zip_q(s, a, true);
--}
-+TRANS_FEAT(ZIP1_q, aa64_sve_f64mm, gen_gvec_ool_arg_zzz,
-+           gen_helper_sve2_zip_q, a, 0)
-+TRANS_FEAT(ZIP2_q, aa64_sve_f64mm, gen_gvec_ool_arg_zzz,
-+           gen_helper_sve2_zip_q, a,
-+           QEMU_ALIGN_DOWN(vec_full_reg_size(s), 32) / 2)
++TRANS_FEAT(FMMLA_s, aa64_sve_f32mm, gen_gvec_fpst_zzzz, gen_helper_fmmla_s,
++           a->rd, a->rn, a->rm, a->ra, 0, FPST_FPCR)
++TRANS_FEAT(FMMLA_d, aa64_sve_f64mm, gen_gvec_fpst_zzzz, gen_helper_fmmla_d,
++           a->rd, a->rn, a->rm, a->ra, 0, FPST_FPCR)
  
- static gen_helper_gvec_3 * const uzp_fns[4] = {
-     gen_helper_sve_uzp_b, gen_helper_sve_uzp_h,
+ static gen_helper_gvec_4 * const sqdmlal_zzzw_fns[] = {
+     NULL,                           gen_helper_sve2_sqdmlal_zzzw_h,
 -- 
 2.34.1
 

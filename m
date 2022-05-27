@@ -1,215 +1,251 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1208577lfh;
-        Fri, 27 May 2022 11:26:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6fXnwlWzuFuzrlOTHnpyJ7qziP6/dfJq9L1eJ1W6EJqCErdnuGsV0gjdQnhRFntGuxOGw
-X-Received: by 2002:a05:622a:5d1:b0:2f9:3e89:4e3b with SMTP id d17-20020a05622a05d100b002f93e894e3bmr18692111qtb.398.1653675973276;
-        Fri, 27 May 2022 11:26:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653675973; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp1210062lfh;
+        Fri, 27 May 2022 11:29:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/3n8mryRF/lfnSw3cBec0CihfooJnktUAP41LoTFaGQGxWrUhItzoxW8R7mfOFM0Z+dZt
+X-Received: by 2002:a05:620a:1712:b0:6a3:abba:697a with SMTP id az18-20020a05620a171200b006a3abba697amr16849764qkb.149.1653676157380;
+        Fri, 27 May 2022 11:29:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653676157; cv=none;
         d=google.com; s=arc-20160816;
-        b=Aa16HEq54+jqO6n+CnnyNnEYhYaLGvVjNsEoFgTg6dg7O949+wdHhntElEudfRkIIA
-         yDNMt/anGnRSmMBVE7gfyOWoItiZe85+YFHgNUbkmWeiJppHIlNWtY/mFM+q6YoQa4/Q
-         +A4LOqixNiWJVvKvRcZS6ziodE2P/wrJf4Ew2ZSAk/ofbF8upj1kSDqYLPrB2s+iGOCL
-         4mgIditmROa09LzSyzL7ruGMFYekgDGDoT48hAljECEAQ5Q78G95tApYIgUrQ0VIIQ8x
-         tKIB6ClXm/Z2esum9x2mzF+rYFjgEMVGgOm3m74nhnYZRmbbhHzJYanniMUe1lO9GNbm
-         6TNw==
+        b=PX9wXiM0kyMCfmpbLv57F8dEyu/r3WKE4+KIIbc4rAJJVTz4HPYBZnKddhuHM2hpXV
+         wzTXL1F1S28xR+yFJrt/AWYySx2HQCk3Sp1P70tPG8ig2xd8A6MEJPM6rJBUSOXENUPd
+         9qJ2OrxvOciOGT8zvSKPa7wzK5ytd1LpCV1wfxlA9ivIsFdK+zpw+2pYAKlDm8co6qrs
+         Ms8xPAhms9xNwCXBFo96y1ysWkHgX+8KIOtARQHD2iMOETv7SB6OgTc74Ax+G4k3oO8x
+         Fr+t5PBk77G12fojn1FXvPC1Tw/gg5mmsAGQ4rElWZ92QSmshkAcJ3D9sV0JMJmckCFI
+         zXFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=dxabHe71bVF6gWrVCnhG6cG25f2zMO3rtHLOUVp6u4E=;
-        b=Cj1qk7AwowtS5cYbOCvxfXWKs9GbHNDAE6SnvlkzY48nU4Q0bla+a43qiaYw2Hu2K6
-         OwC9m4grOFM1traYSD0kGOSXmFP4c8oJJzTlVEJ1QMSpuQ9KZMTK2N/Qi40G4UPiA+B4
-         f30JEMc/8D2Ep35uBe5FSEf5D/aZrff3NdAuIyjZwFoyGEqtuDWI3/EtNxXF42OSL9uG
-         ao1cPkf/IlP2jrFTjzGs4wLuKOKREDHyFWnhCT6HO/EfO9Srq7j0ZQBVJoCENcyOcqY5
-         3MNU7D4XFQUJevsVvcr9MfANh8UmMCrMuIOLWE4mPA8WRaO6QViN8bf7SqeGa9nLLsYl
-         ZXCA==
+        bh=BISgCZ5si8nkaQwz0BiOtyVorklPvI5PGitAoXiYROQ=;
+        b=O4X0lDuXEU37sFe0Ev8T3VN8DrLaYHXwPBfgkHppQHPtyR42KEaFh247HrfyxNSrO5
+         G8U5jBaTtwkO3R6NtPGCYPYcdi1xEuR+PpDpyQ46GQU8/EtOJjBkbXgWdYurKFNzA+Hp
+         MCWeJxmvGLfeB9CyNR3Xxc59QqbxZT64cTpGO5MLoX3XdCLMlZdTL4lIYtgGAs3zmTvr
+         dOKvh0dY001stHnFOgrH9jki1S9FRzuTIGefO0+jFgGCQxH2oHgi8n4jyfbQBd4FEhQx
+         o1vBA0q1DYl2M/uZuCasMlzNpNK4Wgv4FDFvCt4qzuQ7lvwIB7UGzOymHO4mtPDgTC8s
+         jVmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=njkkpmZT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=lB395Xve;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b22-20020a05622a021600b002f943906be0si3313249qtx.751.2022.05.27.11.26.13
+        by mx.google.com with ESMTPS id m16-20020a05622a119000b002f90ca929d2si3433886qtk.323.2022.05.27.11.29.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 May 2022 11:26:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 27 May 2022 11:29:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=njkkpmZT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=lB395Xve;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33810 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43350 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nuef5-0008CV-4Z
-	for alex.bennee@linaro.org; Fri, 27 May 2022 14:26:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39044)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nuei4-0006ab-T4
+	for alex.bennee@linaro.org; Fri, 27 May 2022 14:29:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41598)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nueMO-0003eN-Lf
- for qemu-devel@nongnu.org; Fri, 27 May 2022 14:06:52 -0400
-Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d]:37521)
+ id 1nueYT-0006Ub-VW
+ for qemu-arm@nongnu.org; Fri, 27 May 2022 14:19:22 -0400
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529]:43730)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nueMC-0001ga-2b
- for qemu-devel@nongnu.org; Fri, 27 May 2022 14:06:52 -0400
-Received: by mail-vk1-xa2d.google.com with SMTP id bs5so2348223vkb.4
- for <qemu-devel@nongnu.org>; Fri, 27 May 2022 11:06:39 -0700 (PDT)
+ id 1nueYR-0003Xb-4q
+ for qemu-arm@nongnu.org; Fri, 27 May 2022 14:19:21 -0400
+Received: by mail-pg1-x529.google.com with SMTP id s68so4548168pgs.10
+ for <qemu-arm@nongnu.org>; Fri, 27 May 2022 11:19:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dxabHe71bVF6gWrVCnhG6cG25f2zMO3rtHLOUVp6u4E=;
- b=njkkpmZT0rvIz2hvQ69ln9hhreHySUIbW1gj7hABFe+uxaELzlu5t0nDL0OxYdY8r/
- LaM48hfqf79hDbgSjXqzGfsQx05b8zzMLInsfrkOrAhzAGKpg1wwepQIW9aUoefA6mAV
- fERCUxWYPyjcs9cYvJbPZ7dfiyBU5eaOdRzxh7KK+uqVGxZ5BXY+TY/c6W2lhoouSmln
- tji/17AGCGWWEInUHpdzRIcSL+hVACUrRi+8BWHTlF79UmjIZln70K6pye7Y8DCQtG6N
- KOY2+NTP819256vuT68Ngj5XAsYM1M9BIADbgIRCGFCJZX42oyBxehiYUME4G5BxTuGn
- zM/w==
+ bh=BISgCZ5si8nkaQwz0BiOtyVorklPvI5PGitAoXiYROQ=;
+ b=lB395XvePLmEZQaY4+sFEz7f2BN0kZNwbEu+kTaptiTXPtICisy5lFtkB4/mztk5ap
+ nDrQytIQCJdzoaCgVhLA4e6LV65WCAvt8w7+fdP0CI6f5jrwgzlPXf0UquDDh7i/OU5V
+ 5jZ4g8x7cZvG7C0tQqwCnBiMJ8mncu7+OBAz6qAA2OoJ61zplWTk9NzC5R9bjgJwkScF
+ MrY1NCM+Eg4okHQbAG68L1fY6x2ijWW3UqTASb+apL/AZNi9bmHses1NwV0pUraYUmVg
+ tASLnL3DUJxrYdpC+5Kgytq5drts3yPFF3+svUuD2wsvO8d/rfmdTay+F88n5aqg4NTv
+ xilw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=dxabHe71bVF6gWrVCnhG6cG25f2zMO3rtHLOUVp6u4E=;
- b=gVfbl/yzUouHUUTu00Cso4Zr/HGa7/pcToOYgli2gKMnMkU8Tq7LR2wHX/k2jrNVVp
- ZhoUWQTEhcx6wpI9qCtsHI8TLy3gB0NlhR+RhViWNGY6auSkjEUzyIYvcIh6EEDj8Jd4
- QqDBRVUgusChSgGZ4D9W0Dw58jkqnPAUvelM7EyHU3GOON8XQGqj7nf+Q8dhpI2+iNAa
- bCXcUG3/id4C0NepeqnQAlWVRjcrCMUfbW9TCrlrdri944K20sOi8IBPpxjSjrW8RXvF
- 5KHuovA1Bu0MfOJczzXEoBLPAUbpiJRM68AzOQGq3eYa59LHAai85niEqjwL+ssUqGi0
- k0ug==
-X-Gm-Message-State: AOAM533J/442+5r0zc+wWvoaulX54QMSX1o3r7oR/DvAugO+m/h8sA1u
- r7pA4Xyyz+p/tK7Fk5+w+Jiaa8bM7STBSw==
-X-Received: by 2002:a17:902:ebca:b0:15f:4cc5:f40f with SMTP id
- p10-20020a170902ebca00b0015f4cc5f40fmr43710895plg.96.1653674788226; 
- Fri, 27 May 2022 11:06:28 -0700 (PDT)
+ bh=BISgCZ5si8nkaQwz0BiOtyVorklPvI5PGitAoXiYROQ=;
+ b=dvlo8kcgXuST+UmpLtHAStXZQcYhp7sp31cD0r1H823I9FyYKJ7hwnX4Dioc0AxKGl
+ ds2gC1atEdiSkGeND/yeh3xamNZq0vfxEJJR27/mHJpAeMnaufcfsEqNhcQIu7qjAdy9
+ 7vWaPJ73oY8rg0154jR6XGVU4cpspdaXE+jmM9GVUbDxheyAd7kJ0eRWoRXxxZEv61QS
+ D29nzdeM+kZA9xBGoW2ou7jOUVmqk1bGFQr87UNdeRcpPgZvsAsOq1MkJzjgNS8J8dhv
+ K5/cMtATyS0+pKfEtUtFmHWKoiASkq94HzSG0XR8UM0ZMVTH4f8pbrFFeshVkEQYWl3X
+ 2yQg==
+X-Gm-Message-State: AOAM530IafGVexZoouWAqMjmphhiKGQ0mdF1zp3kecwYNRNOtbfezaUY
+ pcgKLq2HKQgANAGQFNFNV6uefnXth49pKQ==
+X-Received: by 2002:a05:6a00:a85:b0:4e0:57a7:2d5d with SMTP id
+ b5-20020a056a000a8500b004e057a72d5dmr45178072pfl.81.1653675557802; 
+ Fri, 27 May 2022 11:19:17 -0700 (PDT)
 Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
  by smtp.gmail.com with ESMTPSA id
- e10-20020a170902cf4a00b001618fee3900sm3934492plg.196.2022.05.27.11.06.27
+ t5-20020a17090ae50500b001deb3cbd8f1sm1911612pjy.27.2022.05.27.11.19.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 May 2022 11:06:27 -0700 (PDT)
+ Fri, 27 May 2022 11:19:17 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 04/15] target/arm: Merge aarch64_sve_zcr_get_valid_len into
- caller
-Date: Fri, 27 May 2022 11:06:12 -0700
-Message-Id: <20220527180623.185261-5-richard.henderson@linaro.org>
+Subject: [PATCH 009/114] target/arm: Use TRANS_FEAT for gen_gvec_ool_zzzz
+Date: Fri, 27 May 2022 11:17:22 -0700
+Message-Id: <20220527181907.189259-10-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220527180623.185261-1-richard.henderson@linaro.org>
-References: <20220527180623.185261-1-richard.henderson@linaro.org>
+In-Reply-To: <20220527181907.189259-1-richard.henderson@linaro.org>
+References: <20220527181907.189259-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2d;
- envelope-from=richard.henderson@linaro.org; helo=mail-vk1-xa2d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m8JaKsZSY8Jq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0YjshIsCif1P
 
-This function is used only once, and will need modification
-for Streaming SVE mode.
+Convert SVE translation functions directly using
+gen_gvec_ool_zzzz to TRANS_FEAT.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 11 -----------
- target/arm/helper.c    | 30 +++++++++++-------------------
- 2 files changed, 11 insertions(+), 30 deletions(-)
+ target/arm/translate-sve.c | 89 +++++++++++++-------------------------
+ 1 file changed, 29 insertions(+), 60 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 09d25612af..199d1bf630 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -198,17 +198,6 @@ void arm_translate_init(void);
- void arm_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb);
- #endif /* CONFIG_TCG */
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 5aaef5b18f..823c1d0ae3 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -2417,19 +2417,12 @@ static gen_helper_gvec_3 * const sve_tbl_fns[4] = {
+ };
+ TRANS_FEAT(TBL, aa64_sve, gen_gvec_ool_arg_zzz, sve_tbl_fns[a->esz], a, 0)
  
--/**
-- * aarch64_sve_zcr_get_valid_len:
-- * @cpu: cpu context
-- * @start_len: maximum len to consider
-- *
-- * Return the maximum supported sve vector length <= @start_len.
-- * Note that both @start_len and the return value are in units
-- * of ZCR_ELx.LEN, so the vector bit length is (x + 1) * 128.
-- */
--uint32_t aarch64_sve_zcr_get_valid_len(ARMCPU *cpu, uint32_t start_len);
+-static bool trans_TBL_sve2(DisasContext *s, arg_rrr_esz *a)
+-{
+-    static gen_helper_gvec_4 * const fns[4] = {
+-        gen_helper_sve2_tbl_b, gen_helper_sve2_tbl_h,
+-        gen_helper_sve2_tbl_s, gen_helper_sve2_tbl_d
+-    };
 -
- enum arm_fprounding {
-     FPROUNDING_TIEEVEN,
-     FPROUNDING_POSINF,
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2a0399100e..66036c85d7 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6216,40 +6216,32 @@ int sve_exception_el(CPUARMState *env, int el)
-     return 0;
+-    if (!dc_isar_feature(aa64_sve2, s)) {
+-        return false;
+-    }
+-    return gen_gvec_ool_zzzz(s, fns[a->esz], a->rd, a->rn,
+-                             (a->rn + 1) % 32, a->rm, 0);
+-}
++static gen_helper_gvec_4 * const sve2_tbl_fns[4] = {
++    gen_helper_sve2_tbl_b, gen_helper_sve2_tbl_h,
++    gen_helper_sve2_tbl_s, gen_helper_sve2_tbl_d
++};
++TRANS_FEAT(TBL_sve2, aa64_sve2, gen_gvec_ool_zzzz, sve2_tbl_fns[a->esz],
++           a->rd, a->rn, (a->rn + 1) % 32, a->rm, 0)
+ 
+ static gen_helper_gvec_3 * const tbx_fns[4] = {
+     gen_helper_sve2_tbx_b, gen_helper_sve2_tbx_h,
+@@ -3810,15 +3803,12 @@ DO_ZZI(UMIN, umin)
+ 
+ #undef DO_ZZI
+ 
+-static bool trans_DOT_zzzz(DisasContext *s, arg_DOT_zzzz *a)
+-{
+-    static gen_helper_gvec_4 * const fns[2][2] = {
+-        { gen_helper_gvec_sdot_b, gen_helper_gvec_sdot_h },
+-        { gen_helper_gvec_udot_b, gen_helper_gvec_udot_h }
+-    };
+-    return gen_gvec_ool_zzzz(s, fns[a->u][a->sz],
+-                             a->rd, a->rn, a->rm, a->ra, 0);
+-}
++static gen_helper_gvec_4 * const dot_fns[2][2] = {
++    { gen_helper_gvec_sdot_b, gen_helper_gvec_sdot_h },
++    { gen_helper_gvec_udot_b, gen_helper_gvec_udot_h }
++};
++TRANS_FEAT(DOT_zzzz, aa64_sve, gen_gvec_ool_zzzz,
++           dot_fns[a->u][a->sz], a->rd, a->rn, a->rm, a->ra, 0)
+ 
+ /*
+  * SVE Multiply - Indexed
+@@ -8196,46 +8186,25 @@ static bool trans_UMLSLT_zzzw(DisasContext *s, arg_rrrr_esz *a)
+     return do_umlsl_zzzw(s, a, true);
  }
  
--uint32_t aarch64_sve_zcr_get_valid_len(ARMCPU *cpu, uint32_t start_len)
+-static bool trans_CMLA_zzzz(DisasContext *s, arg_CMLA_zzzz *a)
 -{
--    uint32_t end_len;
--
--    start_len = MIN(start_len, ARM_MAX_VQ - 1);
--    end_len = start_len;
--
--    if (!test_bit(start_len, cpu->sve_vq_map)) {
--        end_len = find_last_bit(cpu->sve_vq_map, start_len);
--        assert(end_len < start_len);
+-    static gen_helper_gvec_4 * const fns[] = {
+-        gen_helper_sve2_cmla_zzzz_b, gen_helper_sve2_cmla_zzzz_h,
+-        gen_helper_sve2_cmla_zzzz_s, gen_helper_sve2_cmla_zzzz_d,
+-    };
++static gen_helper_gvec_4 * const cmla_fns[] = {
++    gen_helper_sve2_cmla_zzzz_b, gen_helper_sve2_cmla_zzzz_h,
++    gen_helper_sve2_cmla_zzzz_s, gen_helper_sve2_cmla_zzzz_d,
++};
++TRANS_FEAT(CMLA_zzzz, aa64_sve2, gen_gvec_ool_zzzz,
++           cmla_fns[a->esz], a->rd, a->rn, a->rm, a->ra, a->rot)
+ 
+-    if (!dc_isar_feature(aa64_sve2, s)) {
+-        return false;
 -    }
--    return end_len;
+-    return gen_gvec_ool_zzzz(s, fns[a->esz], a->rd, a->rn,
+-                             a->rm, a->ra, a->rot);
+-}
++static gen_helper_gvec_4 * const cdot_fns[] = {
++    NULL, NULL, gen_helper_sve2_cdot_zzzz_s, gen_helper_sve2_cdot_zzzz_d
++};
++TRANS_FEAT(CDOT_zzzz, aa64_sve2, gen_gvec_ool_zzzz,
++           cdot_fns[a->esz], a->rd, a->rn, a->rm, a->ra, a->rot)
+ 
+-static bool trans_CDOT_zzzz(DisasContext *s, arg_CMLA_zzzz *a)
+-{
+-    static gen_helper_gvec_4 * const fns[] = {
+-        NULL, NULL, gen_helper_sve2_cdot_zzzz_s, gen_helper_sve2_cdot_zzzz_d
+-    };
+-
+-    if (!dc_isar_feature(aa64_sve2, s)) {
+-        return false;
+-    }
+-    return gen_gvec_ool_zzzz(s, fns[a->esz], a->rd, a->rn,
+-                             a->rm, a->ra, a->rot);
 -}
 -
- /*
-  * Given that SVE is enabled, return the vector length for EL.
-  */
- uint32_t sve_zcr_len_for_el(CPUARMState *env, int el)
+-static bool trans_SQRDCMLAH_zzzz(DisasContext *s, arg_SQRDCMLAH_zzzz *a)
+-{
+-    static gen_helper_gvec_4 * const fns[] = {
+-        gen_helper_sve2_sqrdcmlah_zzzz_b, gen_helper_sve2_sqrdcmlah_zzzz_h,
+-        gen_helper_sve2_sqrdcmlah_zzzz_s, gen_helper_sve2_sqrdcmlah_zzzz_d,
+-    };
+-
+-    if (!dc_isar_feature(aa64_sve2, s)) {
+-        return false;
+-    }
+-    return gen_gvec_ool_zzzz(s, fns[a->esz], a->rd, a->rn,
+-                             a->rm, a->ra, a->rot);
+-}
++static gen_helper_gvec_4 * const sqrdcmlah_fns[] = {
++    gen_helper_sve2_sqrdcmlah_zzzz_b, gen_helper_sve2_sqrdcmlah_zzzz_h,
++    gen_helper_sve2_sqrdcmlah_zzzz_s, gen_helper_sve2_sqrdcmlah_zzzz_d,
++};
++TRANS_FEAT(SQRDCMLAH_zzzz, aa64_sve2, gen_gvec_ool_zzzz,
++           sqrdcmlah_fns[a->esz], a->rd, a->rn, a->rm, a->ra, a->rot)
+ 
+ static bool trans_USDOT_zzzz(DisasContext *s, arg_USDOT_zzzz *a)
  {
-     ARMCPU *cpu = env_archcpu(env);
--    uint32_t zcr_len = cpu->sve_max_vq - 1;
-+    uint32_t len = cpu->sve_max_vq - 1;
-+    uint32_t end_len;
- 
-     if (el <= 1 &&
-         (arm_hcr_el2_eff(env) & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
--        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[1]);
-+        len = MIN(len, 0xf & (uint32_t)env->vfp.zcr_el[1]);
-     }
-     if (el <= 2 && arm_feature(env, ARM_FEATURE_EL2)) {
--        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[2]);
-+        len = MIN(len, 0xf & (uint32_t)env->vfp.zcr_el[2]);
-     }
-     if (arm_feature(env, ARM_FEATURE_EL3)) {
--        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[3]);
-+        len = MIN(len, 0xf & (uint32_t)env->vfp.zcr_el[3]);
-     }
- 
--    return aarch64_sve_zcr_get_valid_len(cpu, zcr_len);
-+    end_len = len;
-+    if (!test_bit(len, cpu->sve_vq_map)) {
-+        end_len = find_last_bit(cpu->sve_vq_map, len);
-+        assert(end_len < len);
-+    }
-+    return end_len;
- }
- 
- static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
 -- 
 2.34.1
 

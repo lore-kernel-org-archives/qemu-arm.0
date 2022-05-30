@@ -1,184 +1,296 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp2818329lfh;
-        Mon, 30 May 2022 07:41:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwaGry8EzOdIlhzfgSkAuLiH7HUMr3Cb/hICf/yjWkVdXLyiuPY6Ja+aCfezzTWzZ52oTIL
-X-Received: by 2002:a05:620a:190e:b0:6a6:2de8:8eba with SMTP id bj14-20020a05620a190e00b006a62de88ebamr3814844qkb.627.1653921709562;
-        Mon, 30 May 2022 07:41:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653921709; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp2841200lfh;
+        Mon, 30 May 2022 08:18:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwRAeDFWHTJk5e6EcvSRg9VqAFzRwM4M3Fek64pnCrkch58Tg2lTukoTqb2IRO3a76oSG4w
+X-Received: by 2002:a05:6214:5191:b0:462:4123:cc40 with SMTP id kl17-20020a056214519100b004624123cc40mr33005269qvb.46.1653923939550;
+        Mon, 30 May 2022 08:18:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653923939; cv=none;
         d=google.com; s=arc-20160816;
-        b=wLyTp4Uc9GGgaexH/E+NwXjg6dN/XF8PuxgIgYCbT7eIRZj9rq4kAKYj+G/ZnfMM4+
-         x+XQWNfnoqx6U7AfpsmNJ6t9dx4D50J7b+UoptAI847J4yxI94PLsT3rt0cOaOhQEDuS
-         33qyGgPXibSJWydzmQh2h3knlcjod+Fl65NpkQbcmXzsrOLNiOH0xx0mRmCPV4/aBc39
-         2yJcnJBaVCRQ2cgLD+Oo2FWbqBRX6s2f0Qi7vKmNI250ORNYJrmloo5yGCGAbx00f79B
-         aIVfeJzf0ezr8ApDPkbr4ITjQFO7AwfHP2NszD1N+OkRN8Loz3EqmSqgQ97yNrGq/SRS
-         8GMA==
+        b=NyLO6L+qKaqVvMjFi5CnlHUOaycNQt1q1bbVDb6TqVuoYHb2Og9PX+RMr8kTErehcJ
+         nwpquzF5XFuNpDk37FCDmJhJXllyAIDSLECWrFcoPEs/SAfINDz0wRGmb2S/11pSkB78
+         DgZmOxrMEm/tr3icRaTM6fUoRRHdMSSCqlQM/iR/sbEDmYQH/GEP/R/aXBJ0uldJakR5
+         UGE5A9f7WBl5RNEpbUxXSX/KMupG2VQ6kRdT1iEdvwVBic3IdqmpxkGQK/mwtP63e7EQ
+         VmrNx1n+bEGSzFzdgquchphUjr8IzFDtrbR/+xLtwYiPASwUEa93oVGHZrChzXXUmmJW
+         Rs0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=cxzJ0Q0Pgy8D7hAm6K1TWOjdF0JrXg7wW1lby0AGORQ=;
-        b=KLu4Z7ilJQJn3Sr9nozY4m6SI8zpCdzNDbe24jlgzxAZXi1BOyFeUFqTNcX6fX8Sih
-         q3Ui05DiEBtjw+rnYBTIDwZjtRYVbNPWR2SGXFJfwsXwF8ysgA58DOwy0LiM96JzZow2
-         7i9AjVotyhaII9vQ0owXjt4FoCyCmkDwuszdzLlrZO7uetQ6QnqAMKBe7fLM5wAgTsAb
-         W2SLZ7K0ui0g5ZTgJgBNgMIHIhXU7xSFjwL9sbc+3941fLujrCETOleAYsvT7oaSl6KE
-         XCFzIoX5sruM3OWFZIsQfBPcJfnTw7hU7ZYy7hY2Hhnap4GhWVUrPwI1TlDvMX6HE5HW
-         tXrQ==
+         :content-transfer-encoding:in-reply-to:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=wCZVEtHHcf54bfYPLovv548Nuh8agfnEWrBdVvw8/Os=;
+        b=DLq5kFFfNtZ1yJf5kB+mUz+GjG3dZ1V+q0SBbn4dZuE3hN2AWy5Az6Z5/60lT3eJ0W
+         HT79Y0sC6LJmqqkFUVCaXDulQzlN2QtXMWyBPBsN0gyqKkHb0k/BR88vlx0+EWXJI+aM
+         +a6yEpdXnaqZmA/q1nG12sCkWc5EpN5tD52zcRvRVUW8+nkmW05gW7mQY7FY2Busf3qL
+         pufN4aaSfwLhWzITsiUyGHZNeqZjsh/xsljS3Uo0bCu8zCLT1yTYYTwtyrUosQLLrEFo
+         OeSUqlV5w1j8InhJz9cRoQC+4ofJIJPWEaisDD/x/asQvM0t4uy46ty+teCKy67BIT8B
+         Zomw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h1DnHT3h;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="GL/f3w+5";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18-20020a05622a049200b002f91696bb92si8270088qtx.705.2022.05.30.07.41.49
+        by mx.google.com with ESMTPS id bq32-20020a05620a46a000b006a336202c2bsi8038278qkb.738.2022.05.30.08.18.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 May 2022 07:41:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 May 2022 08:18:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h1DnHT3h;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51756 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="GL/f3w+5";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:35440 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nvgab-0005b2-3u
-	for alex.bennee@linaro.org; Mon, 30 May 2022 10:41:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49168)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nvhAZ-0001OF-14
+	for alex.bennee@linaro.org; Mon, 30 May 2022 11:18:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nvgaN-0005aD-Sx
- for qemu-arm@nongnu.org; Mon, 30 May 2022 10:41:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:29723)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1nvgaK-0002C8-1n
- for qemu-arm@nongnu.org; Mon, 30 May 2022 10:41:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1653921690;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cxzJ0Q0Pgy8D7hAm6K1TWOjdF0JrXg7wW1lby0AGORQ=;
- b=h1DnHT3h60tiENwmv7UZtzUrH7rOOhK43OTn/k/ifBnNmrdCy+LRYe4tU+NaNs23chyKJr
- 6QZdHLDuXbLRp3T6PkOHjEK/ALtqH4c6pa87/gw1Z0FZfhsq9qE2yG2S3CHPQDAmXvqa1s
- D+Oswx1PMQdLYnlJEmWNAcl6uJDQV9Y=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-263-NDrAnxveNfuQAF_XkHROaw-1; Mon, 30 May 2022 10:41:29 -0400
-X-MC-Unique: NDrAnxveNfuQAF_XkHROaw-1
-Received: by mail-wm1-f72.google.com with SMTP id
- bg40-20020a05600c3ca800b00394779649b1so9860048wmb.3
- for <qemu-arm@nongnu.org>; Mon, 30 May 2022 07:41:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nvh2p-0007oZ-Eu; Mon, 30 May 2022 11:11:04 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:40475)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nvh2l-0006Zx-Vx; Mon, 30 May 2022 11:10:58 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id i18so10792642pfk.7;
+ Mon, 30 May 2022 08:10:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=wCZVEtHHcf54bfYPLovv548Nuh8agfnEWrBdVvw8/Os=;
+ b=GL/f3w+5vd5cjYg6dyNiF/a1rzk9QP+AmDxOAkxFPm7ogxpakbNqvWANqQlkY1U4Yq
+ aDQyPplCC+YP7zIhlqxwgq6gaYNk27prHZZi8yJRvO26VHYYBrrf4vATsYLjJAhc9cYK
+ DL1v62mEzyTa4j8Q/+Pofq+RSxko35CLvAM2P2K7Qzw3u1dF9ElN+0EEFEhGyQDhOGYP
+ uvmZh8OSGWSawI7VMwsL92zVc6t36/Yfe1eup5EbRPUHuRw5cn6Xdrc1LPFbm9w91sHd
+ UnSy1aIqDEIt0tMlxkAr7CZ+lnMssdEXbZEpTL0EBDYIaZbW3NQM0I6Ho7BMYNB1guly
+ 1UUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references
- :user-agent:reply-to:date:message-id:mime-version
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=cxzJ0Q0Pgy8D7hAm6K1TWOjdF0JrXg7wW1lby0AGORQ=;
- b=z5nurJ9X77FfGFP5AWfzxU8gsRuh2PCDWp6tXf7RVE4bU1E1vCogu8n9VowJDNcHzn
- 9CPXmpgrtFNWz0pasOumjbpBFBYfDts4zzqvnVzgex/JkIvG0y7itdaxFwU86KMwYxzM
- EVJHTMFCs/nHXhfrRQnY8mYx5EtoEkoWW7VzRqXEwevq6VKQAj3nLRDl3XQtOZX2eEoS
- DSqAYqKN1+byM/qWdJtfYLN6fnakAXwxso4vQxZxcZBjvmUwHx5jmmA3GrSGAdPgEiGi
- zpfDLQcqaNYY/uOt+M5+8ZfAUlBf2qwYJ5OSOGVUIpyWZAKIyCY6Cbo1acSx+HgM/N8l
- PPKQ==
-X-Gm-Message-State: AOAM530CNS/nBnHjThZisepXhAVy8FkW0XxQc/PstpG0FnixuPEyeNsD
- jflk8NVOyHoFrEgBChjv0wn4mpz3HsmOovon55Hh3xNpIDSZaWrJZHArp/W7Gz2YUbgIOiKYisJ
- BNHwpTl39hz70
-X-Received: by 2002:adf:fc01:0:b0:20c:ff9a:2c53 with SMTP id
- i1-20020adffc01000000b0020cff9a2c53mr45591981wrr.142.1653921688665; 
- Mon, 30 May 2022 07:41:28 -0700 (PDT)
-X-Received: by 2002:adf:fc01:0:b0:20c:ff9a:2c53 with SMTP id
- i1-20020adffc01000000b0020cff9a2c53mr45591924wrr.142.1653921688366; 
- Mon, 30 May 2022 07:41:28 -0700 (PDT)
-Received: from localhost (static-88-175-6-89.ipcom.comunitel.net.
- [89.6.175.88]) by smtp.gmail.com with ESMTPSA id
- r2-20020a7bc082000000b0039744664af7sm10615552wmh.1.2022.05.30.07.41.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 May 2022 07:41:27 -0700 (PDT)
-From: Juan Quintela <quintela@redhat.com>
-To: marcandre.lureau@redhat.com
-Cc: qemu-devel@nongnu.org,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>,  Paolo Bonzini <pbonzini@redhat.com>,
- Bandan Das <bsd@redhat.com>,  Stefan Hajnoczi <stefanha@redhat.com>,
- Thomas Huth <thuth@redhat.com>,  Darren Kenny <darren.kenny@oracle.com>,
- Qiuhao Li <Qiuhao.Li@outlook.com>,  Gerd Hoffmann <kraxel@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>,  "Michael S. Tsirkin"
- <mst@redhat.com>,  Igor Mammedov <imammedo@redhat.com>,  Ani Sinha
- <ani@anisinha.ca>,  John Snow <jsnow@redhat.com>,  Fam Zheng
- <fam@euphon.net>,  Peter Maydell <peter.maydell@linaro.org>,  =?utf-8?Q?C?=
- =?utf-8?Q?=C3=A9dric?= Le
- Goater <clg@kaod.org>,  Andrew Jeffery <andrew@aj.id.au>,  Joel Stanley
- <joel@jms.id.au>,  Dmitry Fleytman <dmitry.fleytman@gmail.com>,  Hannes
- Reinecke <hare@suse.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>,  Bin
- Meng <bin.meng@windriver.com>,  Su Hang <suhang16@mails.ucas.ac.cn>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,  David Gibson
- <david@gibson.dropbear.id.au>,  Greg Kurz <groug@kaod.org>,  Coiby Xu
- <Coiby.Xu@gmail.com>,  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,  Tyrone Ting
- <kfting@nuvoton.com>,  Keith Busch <kbusch@kernel.org>,  Klaus Jensen
- <its@irrelevant.dk>,  Markus Armbruster <armbru@redhat.com>,  Zhang Chen
- <chen.zhang@intel.com>,  Li Zhijian <lizhijian@fujitsu.com>,  Stefan
- Berger <stefanb@linux.vnet.ibm.com>,  Amit Shah <amit@kernel.org>,  Vikram
- Garhwal <fnu.vikram@xilinx.com>,  Francisco Iglesias
- <francisco.iglesias@xilinx.com>,  Michael Roth <michael.roth@amd.com>,
- qemu-block@nongnu.org (open list:IDE),  qemu-arm@nongnu.org (open
- list:ARM TCG CPUs),  qemu-ppc@nongnu.org (open list:sPAPR (pseries))
-Subject: Re: [PATCH v2 05/26] tests: move libqtest.h back under qtest/
-In-Reply-To: <20220426092715.3931705-6-marcandre.lureau@redhat.com> (marcandre
- lureau's message of "Tue, 26 Apr 2022 13:26:54 +0400")
-References: <20220426092715.3931705-1-marcandre.lureau@redhat.com>
- <20220426092715.3931705-6-marcandre.lureau@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
-Date: Mon, 30 May 2022 16:41:27 +0200
-Message-ID: <87h757qe08.fsf@secure.mitica>
+ bh=wCZVEtHHcf54bfYPLovv548Nuh8agfnEWrBdVvw8/Os=;
+ b=ts9QRqgmHFgPr2som7BvhjiQ7tiPeLA3N1fYTSHMGpEdbL9VlIqMIXfBNQh+ljIya3
+ HWBODdk+6U1VF3WuV6nu4dQr07mE089BDDwFDn1MnXe87RNtw8YVpYiAA01/f7tEyxYH
+ sQEB3zGOOBUHCTsFPKeicCpZ7UJ0q1fBJSFrLw9lfPCjwI560Sr2z/6Z31fpq8a191jD
+ 62nzsEnixvHB/DLGI40DlADtbzk12EngrL3zhaK3bn/LWUIWciRJtXns5GBvdFpc1ZjM
+ iJVB4DIEfhMm4MjxOCV0ju7EQ2awuFmN8SjIPDRNxTDwmWokALd3+64LTHGIgMBvLZ6I
+ HEPw==
+X-Gm-Message-State: AOAM5313iazJFjE6/mZM391Xmc3fg+QpqoB3UYWcmzZuEtvmRToZYt/4
+ wz6ALILMsNvFVNjC6n8Mitw=
+X-Received: by 2002:a63:2cd:0:b0:3fc:4a27:a985 with SMTP id
+ 196-20020a6302cd000000b003fc4a27a985mr60650pgc.64.1653923453562; 
+ Mon, 30 May 2022 08:10:53 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ e12-20020a170902b78c00b00163daef3dc2sm2754875pls.84.2022.05.30.08.10.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 30 May 2022 08:10:52 -0700 (PDT)
+Message-ID: <e22c20ff-d6dd-66e6-4143-d60f81609261@amsat.org>
+Date: Mon, 30 May 2022 17:10:47 +0200
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.9.1
+Subject: Re: [PATCH] tcg: Special case split barriers before/after load
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: redha.gouicem@gmail.com, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+References: <20220430234534.446733-1-richard.henderson@linaro.org>
+In-Reply-To: <20220430234534.446733-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x42b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X67SdJSfzaAB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-devel@nongnu.org>
+X-TUID: yKFGh58Oh0Rc
 
-marcandre.lureau@redhat.com wrote:
-> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->
-> Since commit a2ce7dbd917 ("meson: convert tests/qtest to meson"),
-> libqtest.h is under libqos/ directory, while libqtest.c is still in
-> qtest/. Move back to its original location to avoid mixing with libqos/.
->
-> Suggested-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+Hi Richard,
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+On 1/5/22 01:45, Richard Henderson wrote:
+> When st:ld is not required by the guest but ld:st is, we can
+> put ld:ld+ld:st barriers after loads, and then st:st barriers
+> before stores to enforce all required barriers.
+> 
+> The st:st barrier is often special cased by hosts, and that
+> is expected to be more efficient than a full barrier.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> 
+> Redha, I expect this to produce exactly the same barriers as you
+> did with your 'fix guest memory ordering enforcement' patch.
+> 
+> While this compiles, it does not fix the failures that I see
+> occasionally with our private gitlab runner.  The standalone
+> version of this failure is
+> 
+>    export QTEST_QEMU_BINARY=./qemu-system-i386
+>    for i in `seq 1 100`; do
+>      ./tests/qtest/ahci-test > /dev/null &
+>    done
+>    wait
+> 
+> About 10 to 15% of the runs will fail with
+> 
+> ERROR:../src/tests/qtest/ahci-test.c:92:verify_state: assertion failed (ahci_fingerprint == ahci->fingerprint): (0xe0000000 == 0x29228086)
+> 
+> Note that this test never seems to fail unless the system is under
+> load, thus starting 100 tests on my 80 core neoverse-n1 system.
+> 
+> 
+> r~
+> 
+> 
+> ---
+>   tcg/tcg-op.c | 55 +++++++++++++++++++++++++++++++++++++++++++++-------
+>   1 file changed, 48 insertions(+), 7 deletions(-)
+> 
+> diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+> index 5d48537927..4c568a2592 100644
+> --- a/tcg/tcg-op.c
+> +++ b/tcg/tcg-op.c
+> @@ -2834,9 +2834,6 @@ static void gen_ldst_i64(TCGOpcode opc, TCGv_i64 val, TCGv addr,
+>   
+>   static void tcg_gen_req_mo(TCGBar type)
+>   {
+> -#ifdef TCG_GUEST_DEFAULT_MO
+> -    type &= TCG_GUEST_DEFAULT_MO;
+> -#endif
+>       type &= ~TCG_TARGET_DEFAULT_MO;
+>       if (type) {
+>           tcg_gen_mb(type | TCG_BAR_SC);
+> @@ -2868,12 +2865,49 @@ static void plugin_gen_mem_callbacks(TCGv vaddr, MemOpIdx oi,
+>   #endif
+>   }
+>   
+> +typedef enum {
+> +    BAR_LD_BEFORE,
+> +    BAR_LD_AFTER,
+> +    BAR_ST_BEFORE,
+> +} ChooseBarrier;
+> +
+> +static TCGBar choose_barrier(ChooseBarrier which)
+> +{
+> +#ifdef TCG_GUEST_DEFAULT_MO
+> +    const TCGBar guest_mo = TCG_GUEST_DEFAULT_MO;
+> +#else
+> +    const TCGBar guest_mo = TCG_MO_ALL;
+> +#endif
+> +    TCGBar ret[3];
+> +
+> +    if (guest_mo == 0) {
+> +        return 0;
+> +    }
 
+This part ...:
+
+> +    /*
+> +     * Special case for i386 and s390x.  Because store-load is not
+> +     * required by the guest, we can split the barriers such that we
+> +     * wind up with a store-store barrier, which is expected to be
+> +     * quicker on some hosts.
+> +     */
+> +    if (guest_mo == (TCG_MO_ALL & ~TCG_MO_ST_LD)) {
+> +        ret[BAR_LD_BEFORE] = 0;
+> +        ret[BAR_LD_AFTER]  = TCG_MO_LD_LD | TCG_MO_LD_ST;
+> +        ret[BAR_ST_BEFORE] = TCG_MO_ST_ST;
+> +    } else {
+
+... could deserve another patch.
+
+> +        ret[BAR_LD_BEFORE] = (TCG_MO_LD_LD | TCG_MO_ST_LD) & guest_mo;
+> +        ret[BAR_ST_BEFORE] = (TCG_MO_LD_ST | TCG_MO_ST_ST) & guest_mo;
+> +        ret[BAR_LD_AFTER]  = 0;
+> +    }
+> +    return ret[which];
+> +}
+> +
+>   void tcg_gen_qemu_ld_i32(TCGv_i32 val, TCGv addr, TCGArg idx, MemOp memop)
+>   {
+>       MemOp orig_memop;
+>       MemOpIdx oi;
+>   
+> -    tcg_gen_req_mo(TCG_MO_LD_LD | TCG_MO_ST_LD);
+> +    tcg_gen_req_mo(choose_barrier(BAR_LD_BEFORE));
+> +
+>       memop = tcg_canonicalize_memop(memop, 0, 0);
+>       oi = make_memop_idx(memop, idx);
+>   
+> @@ -2904,6 +2938,8 @@ void tcg_gen_qemu_ld_i32(TCGv_i32 val, TCGv addr, TCGArg idx, MemOp memop)
+>               g_assert_not_reached();
+>           }
+>       }
+> +
+> +    tcg_gen_req_mo(choose_barrier(BAR_LD_AFTER));
+>   }
+>   
+>   void tcg_gen_qemu_st_i32(TCGv_i32 val, TCGv addr, TCGArg idx, MemOp memop)
+> @@ -2911,7 +2947,8 @@ void tcg_gen_qemu_st_i32(TCGv_i32 val, TCGv addr, TCGArg idx, MemOp memop)
+>       TCGv_i32 swap = NULL;
+>       MemOpIdx oi;
+>   
+> -    tcg_gen_req_mo(TCG_MO_LD_ST | TCG_MO_ST_ST);
+> +    tcg_gen_req_mo(choose_barrier(BAR_ST_BEFORE));
+> +
+>       memop = tcg_canonicalize_memop(memop, 0, 1);
+>       oi = make_memop_idx(memop, idx);
+>   
+> @@ -2959,7 +2996,8 @@ void tcg_gen_qemu_ld_i64(TCGv_i64 val, TCGv addr, TCGArg idx, MemOp memop)
+>           return;
+>       }
+>   
+> -    tcg_gen_req_mo(TCG_MO_LD_LD | TCG_MO_ST_LD);
+> +    tcg_gen_req_mo(choose_barrier(BAR_LD_BEFORE));
+> +
+>       memop = tcg_canonicalize_memop(memop, 1, 0);
+>       oi = make_memop_idx(memop, idx);
+>   
+> @@ -2994,6 +3032,8 @@ void tcg_gen_qemu_ld_i64(TCGv_i64 val, TCGv addr, TCGArg idx, MemOp memop)
+>               g_assert_not_reached();
+>           }
+>       }
+> +
+> +    tcg_gen_req_mo(choose_barrier(BAR_LD_AFTER));
+>   }
+>   
+>   void tcg_gen_qemu_st_i64(TCGv_i64 val, TCGv addr, TCGArg idx, MemOp memop)
+> @@ -3006,7 +3046,8 @@ void tcg_gen_qemu_st_i64(TCGv_i64 val, TCGv addr, TCGArg idx, MemOp memop)
+>           return;
+>       }
+>   
+> -    tcg_gen_req_mo(TCG_MO_LD_ST | TCG_MO_ST_ST);
+> +    tcg_gen_req_mo(choose_barrier(BAR_ST_BEFORE));
+> +
+>       memop = tcg_canonicalize_memop(memop, 1, 1);
+>       oi = make_memop_idx(memop, idx);
+>   
+
+Redha, could you test this patch?
+
+Regards,
+
+Phil.

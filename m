@@ -1,122 +1,151 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp2996416lfh;
-        Mon, 30 May 2022 13:06:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwL/f5ZMk7sn7evTIMg2pP2yWmM1FicncuV0iWAvEvthR8GvXiiCr6aDJh7CfEeBuLQ43Cz
-X-Received: by 2002:a05:620a:22c3:b0:6a6:48f6:6ae7 with SMTP id o3-20020a05620a22c300b006a648f66ae7mr2245260qki.422.1653941218490;
-        Mon, 30 May 2022 13:06:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653941218; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp2633489lfh;
+        Mon, 30 May 2022 02:33:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz1hKqaDTnP4sQ5KzEfM1EZSzY/1RzYIiTvxJC2Xo8GKvmLp4fzngXkDLqAdu/1AW9buEry
+X-Received: by 2002:a05:622a:448:b0:2f3:d76d:7b98 with SMTP id o8-20020a05622a044800b002f3d76d7b98mr42520790qtx.679.1653903238346;
+        Mon, 30 May 2022 02:33:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653903238; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ep+ixytfMCnwQy4c0Ie+66Fs/ASbjWRvq3yb/Dh8djWa2baTPN4KVRRUZhPq3qNTkD
-         QkZeO46aRVMJ1ZDpxUe9YFdBAckF78igny/Fg7ycnTMraeS51HDiLUqHcpGVUbX3AG1S
-         ncxL4rL3/VzrCCwxO5X8zGQd8pOXlPLrO568j9w8UO+XJP6hhgRUkmrkBTEuSJMBG8hm
-         NWsT0WhV8jRTzQW8m1J5hCwdicSIcsFQC4/dmXd9uuamJpClO7GXRsfzgaEM0tSj9My+
-         MSQ3Lj7hp2QDSbW0WzFXHOJoh3jWdo6PLjMZhaVGT6FLVdUfKkmnq3boUp5VKpcO6H0D
-         ADfw==
+        b=okgWx1iy7HPASI3kHHtc5Jy7a6QefVHEiNyfDONnosv2W89aHEhoafo/+VKfH0SptG
+         sVktKF0SdNiomD7LhOn9JeFSFpQ3WsvZ5jplSMZU3yzU5jwrfXGqEORJAAZr/PCFOVbm
+         //5Fz+nkN3T/nvFMEMYI5xhKXNOsR2R0ZLuhSGFVM7XaAAiJiGE8G+G9n7fxYrE4PtcW
+         ZUYYJyw7ksU6HHsJdzQCKv7tU6b3TrZpGdL1p9cpWlCGHRTVP+mObcEsTdmZqsgkM5hh
+         4U3O2WeFhv0y5iZtFI6DMmd/3ujjvSQcYw/BBhN8+PyzNpmu07ow0aEXoFZcRT4l7cbd
+         dYxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=hTPnGpAfJ8zMvfkD/hTU8PhEyKnLyhjxnq3sSlG9sGc=;
-        b=hysdEAz2ClO3DFz1jjZcaD20TOoZcqzRwVvDwVIJAW5MMapAbz7Ixe3I0+9HCzOzAt
-         5NYRF7afvNdH05e0ev5hj5TNDGo6hDiODx+mL9P9UQx5snAJz7XWFzi8NHSbm5npHM8w
-         dsEhM1V32tTMlg+rSK4VoeqBt6e5zkGoJhLc1ImyUl9IRX0CXf6Ygq7LHilTpdDVi8Cb
-         3r1ES5vktKGaIrtPSrF0F4Ame4+E/6oTKtSkjdFqC938gG8px/Prr0RhHzW0IYbRyKBn
-         Cgn5gS7vUM4CPF6EcjFhDHQb9r7ZZR/LgnHOKEzafrtgni7lQOXwC9dt2z22KRBdNTsl
-         033A==
+         :list-unsubscribe:list-id:precedence:references:cms-type
+         :content-transfer-encoding:subject:from:to:content-language
+         :user-agent:mime-version:date:message-id:dkim-signature:dkim-filter;
+        bh=2/IGmQNakwlvZLpc05nS0DUkRPqmT3kUTbUuxT0Cxuc=;
+        b=KYHJYV5CiujKkcFxLwhQuFBH/QffgnxisHNqU4tqBPUuQAro/D3MqsyuH5t0qhyQQb
+         +f1XTz0DGZ1Q1JPjz6u8DOm0EMPONcm0V2+bawPqjmOlk+L+ib+ORZkbuSJQH6v7Reif
+         jWiWKV/OUUhc5TrBEMBdAng2dmYcc7Jd6VPGKXMs9wXkQQOi1GQNFG+QA4GLjATXHhD3
+         shXefVndgQRmp0S8rNnFYJ3GwLqOIPK/tANH1+dl7WlRXPJ/Sr144cYrTz+Mg/ZnZ/++
+         sE36TfLiugOCeHvduyeFH4KhO2mhVZ+eITAyIDjgP0yaZoYoWIeon4B/XSfW4r/kPGNb
+         Dgcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CBEjfnyA;
+       dkim=pass header.i=@samsung.com header.s=mail20170921 header.b=VptnKWv0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=samsung.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f12-20020a05622a104c00b002f947b92064si8420127qte.151.2022.05.30.13.06.58
+        by mx.google.com with ESMTPS id q4-20020a05622a030400b002f1ff9fff56si7239536qtw.650.2022.05.30.02.33.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 May 2022 13:06:58 -0700 (PDT)
+        Mon, 30 May 2022 02:33:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CBEjfnyA;
+       dkim=pass header.i=@samsung.com header.s=mail20170921 header.b=VptnKWv0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57966 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=samsung.com
+Received: from localhost ([::1]:33764 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nvlfF-0000Eg-Sr
-	for alex.bennee@linaro.org; Mon, 30 May 2022 16:06:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37274)
+	id 1nvbmf-0007GD-SL
+	for alex.bennee@linaro.org; Mon, 30 May 2022 05:33:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41600)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nvlPw-00080u-FM
- for qemu-arm@nongnu.org; Mon, 30 May 2022 15:51:08 -0400
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e]:45884)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nvlPu-0001sP-Qx
- for qemu-arm@nongnu.org; Mon, 30 May 2022 15:51:08 -0400
-Received: by mail-pj1-x102e.google.com with SMTP id
- w2-20020a17090ac98200b001e0519fe5a8so199720pjt.4
- for <qemu-arm@nongnu.org>; Mon, 30 May 2022 12:51:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=hTPnGpAfJ8zMvfkD/hTU8PhEyKnLyhjxnq3sSlG9sGc=;
- b=CBEjfnyAS5GVcn6b6QKtAh7YsdYyaOnXVSxdSu2aY8Kzrw4MfoP3af2llGig09y1Il
- lhzO5Lih3nFdS5l8Rflg/6+hNwvo24Lb0NG4n0CMd4O3dqdmEb+Ah0jLUqhLPrXKFKy8
- RQcXJpDcbwkreVcgIHxg+49pq02JFLM/9GjjPwVMCyn5yD67tKxSCVRUKOLTugv0i0nD
- dPX9Gw/pQIyIWd4USILv8+j/x2aGUUnszvy4MNlVicAkymLgQU8BPkyLnmlnfRmRBgU+
- HJo6yfERIBLBwqS/NKHmRa+COsUGh078RbdlFKA2Oi9tak1d8zVDlo8VW/AxoxVHlrjc
- R4og==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=hTPnGpAfJ8zMvfkD/hTU8PhEyKnLyhjxnq3sSlG9sGc=;
- b=HVOpk5VctpgOwkSpsXHwo11KCZWq8S79HSHi6rlmWJaoIzYtuC2a2WrHHdA9TzGyZT
- DiAKNM6bOck0lTLmWToUh0cF3kuUUChpw5641omSxyKqff0UxaFx64vElTcb8K2sRSh4
- BPuAyYxyV8e8Cs9wxzw0kCdExzho8b7QEJkPEWvxBXKTUUUEAL2d8lFoLSqr7N4fvybn
- qqEj3zzBw+raUimx8fWQes+Ys1nh++Ao5DOUCqvPb39ndxRxsovQOZlVDwbxPH4n2+Gx
- Wrxq8RUE+hAhyLnULQnfpKE4PLAG/JEZbDEe1nYDzdrALe6fI/idRJqIpYncZtK2OQq4
- 1fWg==
-X-Gm-Message-State: AOAM530BQ1Qv7DwdJQs7U1b7l5fYqc9cR5pBogZ6pOanvosY/HC7B3Bf
- tpMAgSee6ixdHOuyznUSRxy/Vw==
-X-Received: by 2002:a17:903:1108:b0:156:73a7:7c1 with SMTP id
- n8-20020a170903110800b0015673a707c1mr56869763plh.101.1653940265233; 
- Mon, 30 May 2022 12:51:05 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1547:e101:feab:28bd:b064:f797?
- ([2602:ae:1547:e101:feab:28bd:b064:f797])
- by smtp.gmail.com with ESMTPSA id
- be1-20020a170902aa0100b0015ec71f72d6sm9453909plb.253.2022.05.30.12.51.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 May 2022 12:51:04 -0700 (PDT)
-Message-ID: <62f36b58-604a-80e7-1e94-0d6d3611ec84@linaro.org>
-Date: Mon, 30 May 2022 12:51:02 -0700
+ (Exim 4.90_1) (envelope-from <i.kotrasinsk@samsung.com>)
+ id 1nvbmS-0007G2-Qa
+ for qemu-arm@nongnu.org; Mon, 30 May 2022 05:33:44 -0400
+Received: from mailout2.w1.samsung.com ([210.118.77.12]:60928)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <i.kotrasinsk@samsung.com>)
+ id 1nvbmO-0003mJ-UP
+ for qemu-arm@nongnu.org; Mon, 30 May 2022 05:33:44 -0400
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+ by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
+ 20220530093334euoutp026e3ff58747596eed932ba87defb81041~z2DXjWAN30686606866euoutp02o
+ for <qemu-arm@nongnu.org>; Mon, 30 May 2022 09:33:34 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
+ 20220530093334euoutp026e3ff58747596eed932ba87defb81041~z2DXjWAN30686606866euoutp02o
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1653903214;
+ bh=2/IGmQNakwlvZLpc05nS0DUkRPqmT3kUTbUuxT0Cxuc=;
+ h=Date:To:From:Subject:References:From;
+ b=VptnKWv0qztEllFAhm3Taq8yuS5PRbC05q9iViXdcG5Ror4BDjiAEjkzNpPaQj9op
+ R0Vp2Fu4wmTWmCKQ5ZbG/ue2QJ2KJ3e0HyqFG8075jf8laqtIiikWgJWw9xW0aQ3iH
+ P71I7dZ7KwXNxHppxrOJeORfSloNw1XAql27njjM=
+Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
+ eucas1p2.samsung.com (KnoxPortal) with ESMTP id
+ 20220530093333eucas1p2fd3a7cac7e85fef5a9366cac91d7f419~z2DXZDyGa2424324243eucas1p2z
+ for <qemu-arm@nongnu.org>; Mon, 30 May 2022 09:33:33 +0000 (GMT)
+Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
+ eusmges1new.samsung.com (EUCPMTA) with SMTP id C2.37.09664.D6F84926; Mon, 30
+ May 2022 10:33:33 +0100 (BST)
+Received: from eusmtrp2.samsung.com (unknown [182.198.249.139]) by
+ eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+ 20220530093333eucas1p2c05b46a5f9c66704919743236753858f~z2DW4lZ7-0316403164eucas1p2X
+ for <qemu-arm@nongnu.org>; Mon, 30 May 2022 09:33:33 +0000 (GMT)
+Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
+ eusmtrp2.samsung.com (KnoxPortal) with ESMTP id
+ 20220530093333eusmtrp2370dac5eed2ab096741defe79af2ad40~z2DW4BGLk0280702807eusmtrp2f
+ for <qemu-arm@nongnu.org>; Mon, 30 May 2022 09:33:33 +0000 (GMT)
+X-AuditID: cbfec7f2-d97ff700000025c0-10-62948f6db654
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+ eusmgms2.samsung.com (EUCPMTA) with SMTP id 69.48.09038.D6F84926; Mon, 30
+ May 2022 10:33:33 +0100 (BST)
+Received: from [106.210.134.115] (unknown [106.210.134.115]) by
+ eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20220530093333eusmtip1c675d12aa134e12788b05053ce572882~z2DWtCc_V1036410364eusmtip1i
+ for <qemu-arm@nongnu.org>; Mon, 30 May 2022 09:33:33 +0000 (GMT)
+Message-ID: <e3573c25-1ba6-cb57-f813-99c538a2d254@samsung.com>
+Date: Mon, 30 May 2022 11:33:32 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 01/18] target/arm: Allow raise_exception to handle finding
- target EL
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220523204742.740932-1-richard.henderson@linaro.org>
- <20220523204742.740932-2-richard.henderson@linaro.org>
- <CAFEAcA9Q8FQpG6RF4rnMS3EXZqBXzOs=n-3oH8iq5gU2wV4Emw@mail.gmail.com>
- <da0ad208-948b-1da0-5c61-039c084d50dc@linaro.org>
- <CAFEAcA9bT0_tKH7vS+gt05rr+tskPh4JuzRTMvTN=CokQfFUdw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA9bT0_tKH7vS+gt05rr+tskPh4JuzRTMvTN=CokQfFUdw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0)
+ Gecko/20100101 Thunderbird/91.1.2
+Content-Language: en-GB
+To: qemu-arm@nongnu.org
+From: =?UTF-8?Q?Igor_Kotrasi=c5=84ski?= <i.kotrasinsk@samsung.com>
+Subject: Help: NVIC, level-triggered interrupts and interrupt pending
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrFIsWRmVeSWpSXmKPExsWy7djP87q5/VOSDL5uNLNY0L2QzYHR48m1
+ zUwBjFFcNimpOZllqUX6dglcGW/PfGAquCpR8XHOZKYGxkNCXYycHBICJhI7rzcwdjFycQgJ
+ rGCUuPLvAzOE08ck8f3oenYIp5dJYs2bXiaYlkNHNrNAJJYzSjw/OAOqpZtJYvGPBWBVvAJ2
+ EjsXbwWzWQRUJY5MvsYMEReUODnzCQuILSqQJDF1ch8biM0sIC7R9GUlaxcjB4cIkL3hiiiI
+ ySbgJDFplRRIhbCAq8S95kmsENXyEtvfzgFbKyHwll3i86pdLBDHuUj8v7CCHcIWlnh1fAuU
+ LSPxf+d8qAeKJZac3QFVXyNxvnslVI21xK7j3Swge5kFNCXW79KHCDtK3Lt+FCwsIcAnceOt
+ IMQJfBKTtk1nhgjzSnS0QQNUTWLarz3MMEuXNT6CWuQhsW31NbBFQgKxEuvv/GOdwKgwCylI
+ ZiEFwywkT85CuGcBI8sqRvHU0uLc9NRiw7zUcr3ixNzi0rx0veT83E2MwORw+t/xTzsY5776
+ qHeIkYmD8RCjBAezkghvQ/LEJCHelMTKqtSi/Pii0pzU4kOM0hwsSuK8yZkbEoUE0hNLUrNT
+ UwtSi2CyTBycUg1MvDd2BTnc9VDfFPXA4GQQ/8ITT+WLzjo9bFuZ17a0dWbfl+jYCG7re/Wy
+ r5QON7+Za++11CFfJvuQJ9ORgwLOa1tu+X47ItfmLLm4yiTIL3pLZnIWx5fP0fbqXIKz3K/x
+ bn3w6u66tQZszw7UM+4r3Lz7yNv0ksCpizhruopjZpc86JVYHdByv2GdxP9tiyYu5BH+/Mff
+ 4dYuE6+NIcfStYS6j084H6oqx8wfdpibIy/z5w+2L5OueUq3Oe2Ycln3zsW+Tt1Jf6V7M6uc
+ xPZscbi88/pzn0mMPJZXH/2SUty58GadzM/HnLvsLTtYRE+v/jG5+KlT+wfXgp7PIfwlMq/v
+ 6LTfeb1+xubFP3VdlViKMxINtZiLihMBvajvyn0DAAA=
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrJLMWRmVeSWpSXmKPExsVy+t/xu7q5/VOSDF48ErNY0L2QzYHR48m1
+ zUwBjFF6NkX5pSWpChn5xSW2StGGFkZ6hpYWekYmlnqGxuaxVkamSvp2NimpOZllqUX6dgl6
+ GW/PfGAquCpR8XHOZKYGxkNCXYycHBICJhKHjmxm6WLk4hASWMoosf7wL0aIhIzEj9Nr2CBs
+ YYk/17rYIIo6mSQWLLzNDpLgFbCT2Ll4KxOIzSKgKnFk8jVmiLigxMmZT1hAbFGBJInj22eA
+ 1TMLiEs0fVnJ2sXIwSECZG+4Igpisgk4SUxaJQVSISzgKnGveRIrRLWZRNfWLkYIW15i+9s5
+ zBMY+WchWTALydBZSFpmIWlZwMiyilEktbQ4Nz232EivODG3uDQvXS85P3cTIzCMtx37uWUH
+ 48pXH/UOMTJxMB5ilOBgVhLhbUiemCTEm5JYWZValB9fVJqTWnyI0RToy4nMUqLJ+cBIyiuJ
+ NzQzMDU0MbM0MLU0M1YS5/Us6EgUEkhPLEnNTk0tSC2C6WPi4JRqYNr+I8zgROAd+VdmRky5
+ 13OTd9tc+p36fnvSbvP7vAeYzZ81CJ40CTspktnLs/PwPHl+jcsKjjvqPysZL2WPqW+Yc6F/
+ 8Qz2gp3z7W+ZNPBVFdmuPHdl4t9JDTf5pT/xNG7Smi36LmntodVm9o4+m9cpm1mLF7OuNJjg
+ c27hy/N8wcEzb6jNLs1QtmT6d+aLSfCe4wuVFQvSE1PnhMo/OOp1r/Oo+Jyer1rT1nEFvuw5
+ 5s3v/KGGfY5ESKPV/b7zqrmb1q12jT0Rxf7W9Giw6vlDgtti1k5fnW3UsWBLSuO8zgSxfIYN
+ spzpcWfyAm1i3i05U+XPJFB/bXe1pNK8h3K7dnne57rkbdawVpWPTYmlOCPRUIu5qDgRAC2/
+ MB/sAgAA
+X-CMS-MailID: 20220530093333eucas1p2c05b46a5f9c66704919743236753858f
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+X-RootMTR: 20220530093333eucas1p2c05b46a5f9c66704919743236753858f
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20220530093333eucas1p2c05b46a5f9c66704919743236753858f
+References: <CGME20220530093333eucas1p2c05b46a5f9c66704919743236753858f@eucas1p2.samsung.com>
+Received-SPF: pass client-ip=210.118.77.12;
+ envelope-from=i.kotrasinsk@samsung.com; helo=mailout2.w1.samsung.com
+X-Spam_score_int: -71
+X-Spam_score: -7.2
+X-Spam_bar: -------
+X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,20 +160,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: alBy+2A8j4Mp
+X-TUID: IBCntQ7Sj/G+
 
-On 5/30/22 12:01, Peter Maydell wrote:
->> I'll have another go at this reorg this week.  If it still doesn't feel cleaner, we can
->> drop it, and I'll make some changes to the SME patch set building on this.
-> 
-> I was wondering if it would work better the other way around, so that
-> raise_exception() doesn't mess with the target_el at all, and all the
-> "work out which EL to take the exception to" is done in
-> target_exception_el() and similar ?
+Hi,
 
-We need some place to put the EC_ADVSIMDFPACCESSTRAP special case, and it has to be done 
-at the same time we're handling HCR_EL2.TGE.  Perhaps that can be separated out to its own 
-helper.
+I've been hacking on QEMU recently, adding support for a custom Cortex-M 
+board. One of the devices that I'm emulating is using level-triggered 
+interrupts, for which I assume qemu_irq_raise/lower is the right tool. 
+However, I'm having trouble receiving interrupts for my device which I 
+*think* are caused by interaction with setting/clearing 
+interrupt-pending status.
 
+The way I'm handling my interrupt currently is as follows:
 
-r~
+1. The device raises an interrupt with qemu_irq_raise.
+2. In interrupt handler, I set the clear-enable nvic register and queue 
+a handler.
+3. In handler, I read data from the device and set a register that 
+lowers its interrupt with qemu_irq_lower.
+4. Then I set the clear-pending nvic register.
+5. Finally I set the set-enable nvic register.
+
+The problem happens when the device re-raises the interrupt between 
+steps 3 and 4. I would expect the interrupt to stay pending after 
+clearing its pending status, and random ARM docs I found on the net seem 
+to confirm that:
+
+     A pending interrupt remains pending until one of the following:
+     ...
+     * Software writes to the corresponding interrupt clear-pending 
+register bit. For a level-sensitive interrupt, if the interrupt signal 
+is still asserted, the state of the interrupt does not change.
+
+ 
+https://developer.arm.com/documentation/dui0497/a/cortex-m0-peripherals/nested-vectored-interrupt-controller/level-sensitive-and-pulse-interrupts
+
+On QEMU however, pending status is cleared and I lose the interrupt. I 
+tried to hack in the behaviour described in the docs quoted above, like so:
+
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 773e311754..4914b1217f 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -2393,6 +2393,12 @@ static MemTxResult nvic_sysreg_write(void 
+*opaque, hwaddr addr,
+          for (i = 0, end = size * 8; i < end && startvec + i < 
+s->num_irq; i++) {
+              if (value & (1 << i) &&
+                  (attrs.secure || s->itns[startvec + i])) {
++                /* If the interrupt signal is still asserted, the state 
+of the
++                 * interrupt does not change.
++                 */
++                if (!setval && s->vectors[i + NVIC_FIRST_IRQ].level) {
++                    continue;
++                }
+                  s->vectors[startvec + i].pending = setval;
+              }
+          }
+
+This fixed the issue I was having. However, I'm not sure if it's the 
+right solution. One, this affects all devices connected to nvic, so this 
+might randomly break them. Two, there's a confusing comment in 
+armv7m_nvic.c, in set_irq_level, that seems to imply that all external 
+interrupts are edge-triggered:
+
+     /* The pending status of an external interrupt is
+      * latched on rising edge and exception handler return.
+      *
+      * Pulsing the IRQ will always run the handler
+      * once, and the handler will re-run until the
+      * level is low when the handler completes.
+      */
+
+I'd be very thankful for any help with this. I *think* I found a bug, 
+but I'm not 100% sure.
+
+Thanks,
+Igor

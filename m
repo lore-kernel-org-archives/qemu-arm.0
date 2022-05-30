@@ -1,152 +1,227 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp2925245lfh;
-        Mon, 30 May 2022 10:31:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzHO8sQ0u5e2ZV5BkN50yXk3vmzJVvqgviXFgUB6qKS8jmyc4ysWrw+HOSu46m8SFIx3Bmn
-X-Received: by 2002:ac8:58c3:0:b0:2fc:3014:2b45 with SMTP id u3-20020ac858c3000000b002fc30142b45mr19162796qta.345.1653931866793;
-        Mon, 30 May 2022 10:31:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653931866; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp2927713lfh;
+        Mon, 30 May 2022 10:36:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy3B3wbSTf+xWJ3l1YO9TciPjz6WIk+YaZnOMejs3gcGgGwWAzyL3yY4q1AiPjQXTBb/NnF
+X-Received: by 2002:ac8:5893:0:b0:300:5178:2445 with SMTP id t19-20020ac85893000000b0030051782445mr9185500qta.673.1653932203059;
+        Mon, 30 May 2022 10:36:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653932203; cv=none;
         d=google.com; s=arc-20160816;
-        b=YPY/Evu4t/CHmXIP8k0WADjYgod2gJ2nxotRh78s6ZTXpmp1njDtdZTANx7iyIr4xS
-         J7Fmq3INqvYKKKOmxuJqnmfco6PPVbg0+gfKDaU8I9r22Oh1eSP+tgyfOl9ucxRPcZ3W
-         UlNNcILsUoVtZZBXxjnkofuKncprBiw7JvRtRdsbxHyEe2LF/C/piv4QykkV+b38OhCd
-         z0JP6mqCW0fzz00tggiWzM6JDwFrMmebvPCt9MSvuhX8lc/O6MeHV4kORVV3zPZo45N8
-         e+OijRbiQ+uj6tV8pTGMXiKgnWLUFVLoZHaL8/qvupcXJsw1Few6QjJrlOmyfRbdJWUJ
-         CUww==
+        b=CweGT+B0d/162MTjGMlbBN8soheFn/4gdeMN7uIgFt8D9esxIYEcoidgncZWlT8x+q
+         ZEAXjLRyFuZIqadS42WBh86nTHZKSaYVUwTLvgpYpSQRrR3ZMTY7p5cm0R/J/29Ii+4j
+         gsLMc3ya0hsjTsmlN1IRE2XRsybhjJR6OW+m1jxvtwJtXNmRF8q500/yp0BApoYjJ7hT
+         3TNKOvhuClfYRCtIzVTZaRvdYPxi7TyOXktD5DCWm/liI1Zx8DVe6sqt+Esg6NVgGumW
+         q4SpfvIaAUkJL3WtLciaTpLxQQ30oNqpQNFG5U684zXy/shtzIiM9lquk9BfX0TJPQ6N
+         S8Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=WsGZti4F+jeMV6z6p2VrU92mU9kUkyl/cZrjausArAw=;
-        b=HXZ7ttcGC5Q36eunx432zcCExIzfJW6+WQXpN1oQfsSzPS937l8q0lL3F7cGZrOlAM
-         o0NBn4qD+XvmFBzrbDZ9ffIjQMi9lwXKWXgoDXLfMz/8d44zWMCpgGn+6gInoqy7wy8e
-         8DSnERVsNDKerpvvL1GbJurA5/OTBwKzqdm5fgQPF0LynjR2ANJoB5wC9sVOzoS9O1W/
-         jSfwXSmLSu3z9NXrsGxpPV8bUnd7hOL5xLgl5TEb7WpbA51qzh4PC+XksjpGt2v9PG26
-         SEF8Iulga2L+MjNpjKyTAzeEjhrI4gLW4cf3r4bjXxougFhnqQXRosmfR2ccpk1ip8oH
-         /xnw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=iZtq+w0K3cfwsLvEZf+lI+/QO9Scu3dGh1FQK6/h3q4=;
+        b=hlF5qrDRCBgTSSs7Epm++ZRj4bh1i8WQIS58saOK54F7epx7tVkd2iU98ac4wrC+XU
+         o+xSb0kVgjJEzvutYGIuBzwswj36wNc1evcWmI2NwW1BGiJ5XxRYwbFlsuUdGpZd2uJN
+         BzZpWTF4EKBOVzNBS6+4U1N6sz7qNVOdWbihSEBrCfE4sDdHmNcBqQBBnIoXhXfK41+i
+         1JWyCukYFEbdwf/MgZ6vlZGn0gms8SzBC6vVUkxTPKSF0D2oh/Jv9FY1vXJ1zFGcZ0Pj
+         y1D2MsV0vtvPEdPM4s87B5cooGBnfcLGV1Y2m6TMLm4mzsn+vwdqM6Fernrh5Hmn/xIz
+         LkwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uKl3z4Wj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JS1pox9J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x16-20020ac85f10000000b002f3a81a7cefsi8117432qta.123.2022.05.30.10.31.06
+        by mx.google.com with ESMTPS id 7-20020ac85947000000b002f3a3c970e6si7633926qtz.744.2022.05.30.10.36.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 May 2022 10:31:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 May 2022 10:36:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uKl3z4Wj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JS1pox9J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33202 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nvjEQ-0000wU-7b
-	for alex.bennee@linaro.org; Mon, 30 May 2022 13:31:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50476)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nvjJp-0003dI-Ht
+	for alex.bennee@linaro.org; Mon, 30 May 2022 13:36:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52214)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nviQC-0000wq-Tz
- for qemu-devel@nongnu.org; Mon, 30 May 2022 12:39:12 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:55887)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nvieH-000349-E2
+ for qemu-arm@nongnu.org; Mon, 30 May 2022 12:53:45 -0400
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135]:42180)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nviQ7-0004SI-6S
- for qemu-devel@nongnu.org; Mon, 30 May 2022 12:39:12 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id n10so11427055pjh.5
- for <qemu-devel@nongnu.org>; Mon, 30 May 2022 09:39:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nvieF-0006MV-0i
+ for qemu-arm@nongnu.org; Mon, 30 May 2022 12:53:44 -0400
+Received: by mail-yw1-x1135.google.com with SMTP id
+ 00721157ae682-2ef5380669cso115260067b3.9
+ for <qemu-arm@nongnu.org>; Mon, 30 May 2022 09:53:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=WsGZti4F+jeMV6z6p2VrU92mU9kUkyl/cZrjausArAw=;
- b=uKl3z4Wjm616w5GxQWvg98CFHXAdaztef2cxgOAVcUgxLTYXAzmHXhGa/KTFlLohBM
- XnQgLA8U5Hsua5bmOpKtrtuH6jZaTluk+0xMIqb2cTR66Z1M9m5DuzVWjmfCJtqgIGCd
- ay6bndQzhahVB3sNSSF773CUIctdUVwBtKLfbdOEhnARh/6SoZ/Weh6QPP5kLC8OnjXQ
- ZWWMqciZzWOOTlkC3I8EXRAcyBtxpJwZmzAmJLnOexM7azY6xvN60zQ/+TRhpN998ael
- NVwixxRFePHQGRlxVbJU+OQfz0GPYAIJq0cN74j5wIxTlpDomBXe3Vtt0cEyxtGjaBm2
- sq5w==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=iZtq+w0K3cfwsLvEZf+lI+/QO9Scu3dGh1FQK6/h3q4=;
+ b=JS1pox9JDUrTxaEreazOAXBXAgtt7Ck5lewlyEyMvGlspbW0WndZ1vwFMuhUITHhSx
+ CEQuGF61zWVgbOee5dHYn6XIXGPwyO4NGy+5Ew64lP2eA7jRIM1V/hUJx16RfNUuuidx
+ D3PkoYSRCi62/M0R9G9Ff13VwoxGn1ZYCpTJ4wnfrhghB1AfhSliFvZfd49fBHoItzOu
+ 9anWnSIX+1S8RrRsCELe/WLJo7+hNDMTvRQ/Ti45DN44Hm6eX4Y9Hb8hGeOF6cENNBbF
+ +zl8ux05hVv9UWeZOul2nzYpA97vyzZu2C/1Dt4ahP014w3MuieZLGPwspAm+C3cOvv8
+ FqzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=WsGZti4F+jeMV6z6p2VrU92mU9kUkyl/cZrjausArAw=;
- b=wQtWeF0SAHvrQPeWcz2wxM6V2w4JB9GXZ2CSb86G4Ags1UWmSf8zvZ7dOahsNXC6oB
- QYfzaqqtjmaTzKzIL21SRApv+8cyObOjwByGXJ5BOlmgWlSsg1Rb23lxTV19D4JkHAKO
- nG6PlBSkUzRog4Abs+e0OtQdkWGUX+dWGtHdPbkNuUUNXU/Zrt51umjm4vtNOFcV48CE
- cYnpiLOOrH9e0ITY0w4z1rhvwWtWiaqDoiBWymtDbIqwUxauf9loREnlpO7fDAO7mSvZ
- YQj1dH1hWfOxDMlq2o6b5MOLDrFRTpEakJZ6AW5dxJkObKhuTNrFeT9lto8h1Q1m98qd
- CU7Q==
-X-Gm-Message-State: AOAM530GGsGbw2OjfkkPad7Svtg6qE2PT/IozoLd82RyY83dvLek3A/Z
- 7LXu6WqaYZUP0n2EyN6s5zSd/Q==
-X-Received: by 2002:a17:902:76cb:b0:15e:e178:e2eb with SMTP id
- j11-20020a17090276cb00b0015ee178e2ebmr57655275plt.0.1653928745629; 
- Mon, 30 May 2022 09:39:05 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1547:e101:feab:28bd:b064:f797?
- ([2602:ae:1547:e101:feab:28bd:b064:f797])
- by smtp.gmail.com with ESMTPSA id
- q4-20020a17090a2e0400b001df2b09ce9dsm7170920pjd.4.2022.05.30.09.39.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 May 2022 09:39:05 -0700 (PDT)
-Message-ID: <da0ad208-948b-1da0-5c61-039c084d50dc@linaro.org>
-Date: Mon, 30 May 2022 09:39:03 -0700
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=iZtq+w0K3cfwsLvEZf+lI+/QO9Scu3dGh1FQK6/h3q4=;
+ b=vakRa8pCdd7lSupSdTYsdbz/yvsS4ysABuLgVIguCdAHx0okPmXd3C7patOES+xXJX
+ MkkQFLSupUPkGP0mCLesneGITPm1YmRvpnb9CiQbZFQvVOfuroHKCxtzORTmMl7q3F87
+ wqhmHW9OzDpde8qNPgqKn3c0Bd0OlY65zC3EWbO3nP2QtSvuSAtXmKPwnHRXjy803uKF
+ EDgTqwSLHNTAwTfdjsohp/VP4ir1ecf3uV+faJ4B5Tppx9Z+PpmqMDVUn4TYbUE+2ybo
+ U6CavroB4xIaCktE90pG9L8JaM1/5tWoFDd+oXiG3KLSSIqqSdUHzjHxxGhz1LT8Bp04
+ nd4w==
+X-Gm-Message-State: AOAM5302IUN6ZEdTbaS129treiCsjOQKYXQGBO29Cy3Ww2ySm0LPXFgT
+ SaYwnYvbQkMPZIDXNYXEIiPnIFp/3Fi+xU+dg7C+YA==
+X-Received: by 2002:a81:6589:0:b0:2ff:e11d:3fb3 with SMTP id
+ z131-20020a816589000000b002ffe11d3fb3mr42511016ywb.10.1653929620739; Mon, 30
+ May 2022 09:53:40 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 01/18] target/arm: Allow raise_exception to handle finding
- target EL
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220523204742.740932-1-richard.henderson@linaro.org>
- <20220523204742.740932-2-richard.henderson@linaro.org>
- <CAFEAcA9Q8FQpG6RF4rnMS3EXZqBXzOs=n-3oH8iq5gU2wV4Emw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA9Q8FQpG6RF4rnMS3EXZqBXzOs=n-3oH8iq5gU2wV4Emw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
+References: <8C1AB09A-AFB3-469A-8333-C3D1802D14AE@fb.com>
+In-Reply-To: <8C1AB09A-AFB3-469A-8333-C3D1802D14AE@fb.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 30 May 2022 17:53:29 +0100
+Message-ID: <CAFEAcA8LnnAnTqSw5Mm_01KAORn9qVnNsWbouXpJ6X_B=sZ0hw@mail.gmail.com>
+Subject: Re: Help: How do I make a machine with 2 separate ARM SoC's?
+To: Peter Delevoryas <pdel@fb.com>
+Cc: Cameron Esfahani via <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nLx7mBrfX2MQ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1a2kKwncSK16
 
-On 5/30/22 05:44, Peter Maydell wrote:
->>   G_NORETURN void raise_exception(CPUARMState *env, uint32_t excp,
->> -                                uint32_t syndrome, uint32_t target_el);
->> +                                uint32_t syndrome, uint32_t cur_or_target_el);
-> 
-> "cur_or_target_el" is odd, because it's mixing what the architecture
-> sets up as two distinct things: the state the exception is
-> "taken from", and the state the exception is "taken to". I was
-> hoping this was just a temporary thing for the purposes of the
-> refactoring and it would go away near the end of the series, but
-> it doesn't seem to.
+On Thu, 26 May 2022 at 23:14, Peter Delevoryas <pdel@fb.com> wrote:
+> Hey QEMU developers,
+>
+> Cedric mentioned here[1] that QEMU can support emulating a
+> more complete board, e.g. a machine with an AST2600 *and* an AST1030.
 
-No, sorry.  Most of the time it's cur_el, except from cpregs, where we get directed to a 
-specific higher el.  There may be some way to split the helpers...
+This is true, as long as all the CPUs are the same
+architecture family, e.g. all Arm CPUs. (Mixing A- and
+R- or A- and M-profile is OK, they just all have to be
+available in the same qemu-system-whatever binary.)
 
-I'll have another go at this reorg this week.  If it still doesn't feel cleaner, we can 
-drop it, and I'll make some changes to the SME patch set building on this.
+> I read through the memory API docs[2] and it mostly makes sense to me,
+> but what I don=E2=80=99t understand is, what does system_memory represent=
+?
 
+So, system_memory is something of a legacy from when QEMU was
+much older. Before the MemoryRegion and AddressSpace APIs were
+added to QEMU, everything that could initiate a memory transaction
+(CPUs, DMA-capable devices, etc) always saw the same view of
+memory. The functions to do memory accesses just operated on
+that view implicitly. (We still have some of them, for instance
+cpu_physical_memory_read() and cpu_physical_memory_write().) The
+MemoryRegion/AddressSpace APIs are much more flexible and allow
+different memory transaction initiators to see different views, as
+real hardware does. But for backwards compatibility we still have
+the old assumes-one-view APIs. The view those APIs use is the
+"system memory". We also have some device models which have been
+converted to use an AddressSpace to do their DMA operations, but
+which assume they want to use address_space_memory (which is the AS
+corresponding to the system_memory MR) instead of taking a
+MemoryRegion as a QOM pointer and creating an AddressSpace for it.
 
-r~
+In the modern view of the world, you can build up a system with
+a set of MemoryRegions. Typically you can start with an empty
+container, and the board code fills it with board-level devices,
+then passes it to the SoC code, which fills it with SoC devices,
+and passes it again to the CPU object, which creates an AddressSpace
+so it can initiate transactions into it. By making that initial
+"empty container" be the global system_memory MemoryRegion, this
+makes the legacy APIs and devices that still use it basically work.
+
+> Or, what should the layout be for a situation like I=E2=80=99m interested=
+ in,
+> where you have an AST2600 and an AST1030 (and actually, maybe even
+> an x86 CPU too? idk if that would be possible).
+
+Cross-architecture heterogenous board models can't be done today:
+the qemu-system-foo binaries compile-time build in some assumptions
+about specifics of the guest architecture. (This is something it would
+be nice to fix, but the amount of work is pretty big and hairy, and
+thus far nobody's had a pressing enough need for it to try to tackle it.)
+
+> I need to make sure each SoC runs in a different address space, right?
+> But, how do I actually do that? Do I model it as two containers inside
+> the large system_memory container, or as two different containers
+> that get swapped in for system_memory when executing their associated
+> CPU?
+
+The best way to think about QEMU's AddressSpace type is that it is
+the interface you use to initiate memory transactions. You create
+one from a MemoryRegion. When SoC and board code is building up its
+view of the world, what it is really creating and passing around is
+a hierarchy of MemoryRegions. It's only when the SoC code hands a
+MemoryRegion to a CPU or a DMA-capable device that that device says
+"I will need to make transactions to this, let me create the
+corresponding AddressSpace".
+
+> I was having trouble figuring out what the Xilinx boards are actually
+> doing in this case. Does each CPU share peripherals, or are the
+> A + R cpu=E2=80=99s actually in separate address spaces? I=E2=80=99m very=
+ confused lol.
+
+xlnx-versal-virt is a virtual board, so ignore that one: it's
+probably more confusing than helpful. The xlnx-zcu102 board
+uses the xlnx-zynqmp SoC, and that SoC has both R and A profile
+CPUs in it, but they both see basically the same view of the
+world because they're in the same SoC.
+
+Another device that does some moderately complicated things with
+MemoryRegions is the hw/arm/armsse.c SoC, which has several CPUs
+and has some per-CPU devices.
+
+I think we have not thus far had a model of a board where different
+CPUs see radically different things (only ones where they can see
+minor differences), so you'll probably run into places where the
+APIs are a bit clunky (and we can perhaps have a go at making
+them a bit less so). What I would do is make the system_memory
+container be used by whatever is the "main" application processor
+SoC in your board. If the two SoCs really see absolutely different
+worlds with no shared devices at all, then you'll want to create
+a new empty container for the second SoC. If they do have some
+board-level shared devices, then you'll want to do something a little
+more complicated with aliases.
+
+If you find the SoC device models you're using hardcode use of
+system_memory or address_space_memory you should treat those as
+bugs to be fixed. Other loose ends (like monitor commands that
+assume the system address space) can be ignored: having those
+operate on the 'application processor' SoC is fine, I think.
+
+Overall, this is definitely doable but will involve a fair
+about of slogging through territory where nobody has yet
+broken a trail for you :-)
+
+-- PMM

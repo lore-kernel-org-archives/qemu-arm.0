@@ -1,172 +1,141 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp3568923lfh;
-        Tue, 31 May 2022 09:14:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz50CywF05aKn2RKIuTyGw8dsKo4Nl4uDXZ6fmD2Gn7nSU5gd+1M5RnT3Uf6uJWDN7WH1p+
-X-Received: by 2002:a05:622a:1882:b0:2f9:4082:9f30 with SMTP id v2-20020a05622a188200b002f940829f30mr31748617qtc.159.1654013655524;
-        Tue, 31 May 2022 09:14:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654013655; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp3317254lfh;
+        Tue, 31 May 2022 02:29:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXmWWu7cWEdNtjuks1AzerGjZ+6GpRTEjvoqa8+RWno5/y5Bnuc5SOr1Vv0r+Z133f3Gvd
+X-Received: by 2002:a17:906:6806:b0:703:1f4e:9868 with SMTP id k6-20020a170906680600b007031f4e9868mr888089ejr.699.1653989362099;
+        Tue, 31 May 2022 02:29:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653989362; cv=none;
         d=google.com; s=arc-20160816;
-        b=dX1QEn9TidQ2nB6ArkFJWQQjdr8FGLNWbA/355NoOumFL9eKagRhx+tNz2sf5vYLk5
-         JtsC8pMnT5qOKTE6H6z8lf+vE0TjmX3xPDc9VSyYZATLF9LEPBs27lRtlabQlIN0kDS9
-         h/aEHN9V3+oKYxc3LH/k8Mn84c180Tg9J4dVrPk2bckgJvRoI65cE4Rn6vcjGHg8sLQq
-         9pgdMmvA4qj31sza2GgPPcH+9MyNkmAoFzxesbbWHxDi6undxb9ez/CSs/Il5XL4F2uC
-         b+Dli9lveOz9bM0Bh7/eM/9xUbnck3m9ByBweYNDRQYZ2f4Al+EK5K3lQgHnhKgwpHyw
-         uJIw==
+        b=PVBqnzeorlNTk2gaE223k2+kRApyDevgnUYq26+cque2i2nczvh1LyWTWpibwvAyKs
+         i0ciMg8mDc88bEKJ0pa48TIEKHMyjkbqdFETvx/XbyEXFH+o+PeGTN2nD/Eb4KytoIij
+         nWRXFmgjAyml4YMufv1ezkye7XxRBApNKMAUSiV6dL0MOd0RMDXR8QpXP8wzKbuJkMKL
+         gKkPhbNcmEZb3dJ9SZQe9jWCKspeuqxWUzIot5bKc9Q1lHSQB8nj14WzpANMln9th+12
+         eVL+Jh1wvpe3ywnHaN8w7Ib5kYWmaGq0vq+ksjcbclzLO6rSSIkfnj3yf4gWrvZHY19U
+         ZJow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=quiY50YXVS+133Jq7H4cy4RVjGdlaxQTTPKj8A1nTZ0=;
-        b=jkJjAN6aTfuGxAkBOOQpNml86byj/uFvXe5Fy6LMM1yFguJNrAvfkVRgmPmJwrMZEE
-         AxDUlnbk/gCaue/u1pT8OGRWOnaRGGdMw7Pb3io1ZcaZOlLcYX84RyB2SFpESugG43nh
-         AukMz2wiA9fyEmHK9J/UVdJCr83A98FZ0fdc9zcrOdk7sH2RAaj0DKcG1gkE4MId08GW
-         EmK+D7+BUnSBMtrErhf3DOLniOwdGohIBfmp2/liUdm5oPoBMCRZz4sB7SobQHRmeIEq
-         tvPovPaSulBlTzJB1Jb1q2lsI/CDJEGvn1IK410Ud/D8zKWG6vJLurUacVYKBBEN43sy
-         erPA==
+        h=list-id:precedence:mime-version:message-id:date:user-agent
+         :references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=/KsrAlA+cUzyY84FVZIvJ6NG3hfTuJ4yXZoPL+B3/xg=;
+        b=mg4VM6k7hDLyMQUh+g91NZYge15CvTbglyTyRc41oHxJGhpDjpX0gRwZNwO457SEj3
+         /5w5bEq9gVr4sZ6iwEphxazU/Xy3mrkApvTEy7PMwsUrquPTuzUEz5cIY+ce7MbeJDKg
+         lBIYcszq7Xpn9mxClAqZfmY1uv5/++sL36iilRdRJCyCO28cGYBZ8MipZH7WFfq4FjfL
+         8bVc/F6P+BkcGCM4VF7uy0I9w0wn8K0iFU8gljoO1Li0jv6YORK2Lly+OtTSlpEzneOz
+         lx9P27V/eLSHd5y2lMm52fQmc5k754GZvMmzBp3b88S+Bq/rEpmh2R+dMokt2fuuNJ/d
+         2erw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PrlC7igf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e7-20020a37ac07000000b006a345323322si8405771qkm.656.2022.05.31.09.14.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 May 2022 09:14:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FImTBorS;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id y6-20020aa7ca06000000b0042dc8c6e678si6724377eds.150.2022.05.31.02.29.21;
+        Tue, 31 May 2022 02:29:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PrlC7igf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36588 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nw4VZ-000727-S4
-	for alex.bennee@linaro.org; Tue, 31 May 2022 12:14:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41936)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nw4MR-0002Qu-Uc
- for qemu-devel@nongnu.org; Tue, 31 May 2022 12:04:47 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:34650)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nw4MQ-0001g6-1f
- for qemu-devel@nongnu.org; Tue, 31 May 2022 12:04:47 -0400
-Received: by mail-pg1-x530.google.com with SMTP id g184so13267232pgc.1
- for <qemu-devel@nongnu.org>; Tue, 31 May 2022 09:04:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :references:from:in-reply-to:content-transfer-encoding;
- bh=quiY50YXVS+133Jq7H4cy4RVjGdlaxQTTPKj8A1nTZ0=;
- b=PrlC7igfKEUZWazijzjlQNaZ44N8HF9sOnQcV7mMtkQ5tk7Oa4TxWtCf4bgIhjkqij
- 2zn285rZk0MJIuFOmVXyhJbMtF/Us1RDT72Hq5JjjLX5b1Zxuy/d4o2qEgpLkaRfn33T
- 97I1TF7ewJlzFqQeYoNxUOqA6/YAeFk4z4tzNDPG5CrnLWMm3qA9K6Ty71+NntHnTG4e
- I3iA01pFRwWRsTKKIHMeuBu0T7k7xXdZUeBrxCYU+DEmUPsSzppfr1lVMjSkHGWBIJE6
- lnn2vIvuYFLMwuj3zOev+ky8s7806yXxet7o/GHqNgM3OxKNGNHvuVwMaKEbJrrHMxYI
- A77Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=quiY50YXVS+133Jq7H4cy4RVjGdlaxQTTPKj8A1nTZ0=;
- b=ajQyp+BLTt+t6d+4lbMoLAPbl65+9AbR4XdDoTiTb+yk72Kg/4+bbAp1WST8KO+3QE
- GuIj2FCfi2ZwlJoyCBY4zM4NK3RilwR+17vqZtnD/8AFfDGHMNjXOHFfr2FUMJOX5yK4
- e2Fc8eOHjGAP8rkvNxB0N3cpJKsXm57qqgyIUhsSLRYAzH3llv+1gB2dQXbgUwAobLbI
- znNEMEINljkHiICtBLy1GJnK5+seH2FfqKrXreu83o+0IDWh8Pj5GE9E1SqrirzD4dIP
- EQkAjKR+giQgHDzAFs0bUk3Dng4YlGHLb3yXeCe4sGvz1yK19cEQWbDwZWZj29MxCgYF
- 2uFw==
-X-Gm-Message-State: AOAM531Zux1r8GyASEuoH/wCdm41m+cuptuYO6sO/7ZmzTKo/Ybxsh6F
- 5mjiPAf3cUQ9y+W6HlMzItwRnA==
-X-Received: by 2002:a05:6a00:2310:b0:505:a8ac:40e7 with SMTP id
- h16-20020a056a00231000b00505a8ac40e7mr62780452pfh.11.1654013083839; 
- Tue, 31 May 2022 09:04:43 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1547:e101:4ae9:ceee:85cc:a70c?
- ([2602:ae:1547:e101:4ae9:ceee:85cc:a70c])
- by smtp.gmail.com with ESMTPSA id
- a31-20020a631a1f000000b003db072fd9adsm10690789pga.74.2022.05.31.09.04.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 31 May 2022 09:04:43 -0700 (PDT)
-Message-ID: <28df077d-ba3d-6f37-04c8-e03e2e61fac8@linaro.org>
-Date: Tue, 31 May 2022 09:04:41 -0700
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FImTBorS;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S245255AbiEaJ3T (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 3 others); Tue, 31 May 2022 05:29:19 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47206 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S245301AbiEaJ3N (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 31 May 2022 05:29:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTP id D3A7B985A9
+        for <kvm@vger.kernel.org>; Tue, 31 May 2022 02:29:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1653989346;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         in-reply-to:in-reply-to:references:references;
+        bh=/KsrAlA+cUzyY84FVZIvJ6NG3hfTuJ4yXZoPL+B3/xg=;
+        b=FImTBorSvsowGD8lkkt7N8Ii1BG9+5LNIAROA9PDMfIUY9rT6LMX9OD4n/uDUbPPpiYjsK
+        TCM3gDGjyvmtVLtm6vaWlLeAtHla1L6hHrBbf4PC/+jVpfq0pcezFB1XxnZCTe8ytZlbu0
+        Q+bn79qRaQitBDBOinyk5u6dFu0GJPs=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-502-uqqkWcxkPGCZX_7_NZKlZQ-1; Tue, 31 May 2022 05:29:05 -0400
+X-MC-Unique: uqqkWcxkPGCZX_7_NZKlZQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 388A1811E7A;
+        Tue, 31 May 2022 09:29:04 +0000 (UTC)
+Received: from localhost (dhcp-192-194.str.redhat.com [10.33.192.194])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id F40672166B2B;
+        Tue, 31 May 2022 09:29:03 +0000 (UTC)
+From:   Cornelia Huck <cohuck@redhat.com>
+To:     Peter Maydell <peter.maydell@linaro.org>,
+        Thomas Huth <thuth@redhat.com>,
+        Laurent Vivier <lvivier@redhat.com>
+Cc:     Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org
+Subject: Re: [PATCH RFC 0/2] arm: enable MTE for QEMU + kvm
+In-Reply-To: <20220512131146.78457-1-cohuck@redhat.com>
+Organization: Red Hat GmbH
+References: <20220512131146.78457-1-cohuck@redhat.com>
+User-Agent: Notmuch/0.34 (https://notmuchmail.org)
+Date:   Tue, 31 May 2022 11:29:02 +0200
+Message-ID: <871qwacaox.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] target/arm: Implement FEAT_DoubleFault
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20220531151431.949322-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220531151431.949322-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eQKdJ+iqPdQL
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Spam-Status: No, score=-2.7 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE autolearn=ham
+        autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: hxEkKgamJJmH
 
-On 5/31/22 08:14, Peter Maydell wrote:
-> The FEAT_DoubleFault extension adds the following:
-> 
->   * All external aborts on instruction fetches and translation table
->     walks for instruction fetches must be synchronous.  For QEMU this
->     is already true.
-> 
->   * SCR_EL3 has a new bit NMEA which disables the masking of SError
->     interrupts by PSTATE.A when the SError interrupt is taken to EL3.
->     For QEMU we only need to make the bit writable, because we have no
->     sources of SError interrupts.
-> 
->   * SCR_EL3 has a new bit EASE which causes synchronous external
->     aborts taken to EL3 to be taken at the same entry point as SError.
->     (Note that this does not mean that they are SErrors for purposes
->     of PSTATE.A masking or that the syndrome register reports them as
->     SErrors: it just means that the vector offset is different.)
-> 
->   * The existing SCTLR_EL3.IESB has an effective value of 1 when
->     SCR_EL3.NMEA is 1.  For QEMU this is a no-op because we don't need
->     different behaviour based on IESB (we don't need to do anything to
->     ensure that error exceptions are synchronized).
-> 
-> So for QEMU the things we need to change are:
->   * Make SCR_EL3.{NMEA,EASE} writable
->   * When taking a synchronous external abort at EL3, adjust the
->     vector entry point if SCR_EL3.EASE is set
->   * Advertise the feature in the ID registers
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
-> Based-on:<20220531114258.855804-1-peter.maydell@linaro.org>
-> ("target/arm: Declare support for FEAT_RASv1p1")
-> 
->   docs/system/arm/emulation.rst |  1 +
->   target/arm/cpu.h              |  5 +++++
->   target/arm/cpu64.c            |  4 ++--
->   target/arm/helper.c           | 36 +++++++++++++++++++++++++++++++++++
->   4 files changed, 44 insertions(+), 2 deletions(-)
+Friendly ping :)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+On Thu, May 12 2022, Cornelia Huck <cohuck@redhat.com> wrote:
 
-r~
+> This series enables MTE for kvm guests, if the kernel supports it.
+> Lightly tested while running under the simulator (the arm64/mte/
+> kselftests pass... if you wait patiently :)
+>
+> A new cpu property "mte" (defaulting to on if possible) is introduced;
+> for tcg, you still need to enable mte at the machine as well.
+>
+> I've hacked up some very basic qtests; not entirely sure if I'm going
+> about it the right way.
+>
+> Some things to look out for:
+> - Migration is not (yet) supported. I added a migration blocker if we
+>   enable mte in the kvm case. AFAIK, there isn't any hardware available
+>   yet that allows mte + kvm to be used (I think the latest Gravitons
+>   implement mte, but no bare metal instances seem to be available), so
+>   that should not have any impact on real world usage.
+> - I'm not at all sure about the interaction between the virt machine 'mte'
+>   prop and the cpu 'mte' prop. To keep things working with tcg as before,
+>   a not-specified mte for the cpu should simply give us a guest without
+>   mte if it wasn't specified for the machine. However, mte on the cpu
+>   without mte on the machine should probably generate an error, but I'm not
+>   sure how to detect that without breaking the silent downgrade to preserve
+>   existing behaviour.
+> - As I'm still new to arm, please don't assume that I know what I'm doing :)
+>
+>
+> Cornelia Huck (2):
+>   arm/kvm: enable MTE if available
+>   qtests/arm: add some mte tests
+>
+>  target/arm/cpu.c               | 18 +++-----
+>  target/arm/cpu.h               |  4 ++
+>  target/arm/cpu64.c             | 78 ++++++++++++++++++++++++++++++++++
+>  target/arm/kvm64.c             |  5 +++
+>  target/arm/kvm_arm.h           | 12 ++++++
+>  target/arm/monitor.c           |  1 +
+>  tests/qtest/arm-cpu-features.c | 31 ++++++++++++++
+>  7 files changed, 137 insertions(+), 12 deletions(-)
+>
+> -- 
+> 2.34.3

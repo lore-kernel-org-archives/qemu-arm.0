@@ -1,141 +1,173 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp3317254lfh;
-        Tue, 31 May 2022 02:29:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyXmWWu7cWEdNtjuks1AzerGjZ+6GpRTEjvoqa8+RWno5/y5Bnuc5SOr1Vv0r+Z133f3Gvd
-X-Received: by 2002:a17:906:6806:b0:703:1f4e:9868 with SMTP id k6-20020a170906680600b007031f4e9868mr888089ejr.699.1653989362099;
-        Tue, 31 May 2022 02:29:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1653989362; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp3390737lfh;
+        Tue, 31 May 2022 04:47:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx9RLYCLkYkUdfxxvqZVxTIAR2odLoEGrk0vUys5/v1csnE5K95GHOVcEJpbSK3qbR41LbO
+X-Received: by 2002:a37:f518:0:b0:680:a811:1ef7 with SMTP id l24-20020a37f518000000b00680a8111ef7mr39784544qkk.765.1653997664244;
+        Tue, 31 May 2022 04:47:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653997664; cv=none;
         d=google.com; s=arc-20160816;
-        b=PVBqnzeorlNTk2gaE223k2+kRApyDevgnUYq26+cque2i2nczvh1LyWTWpibwvAyKs
-         i0ciMg8mDc88bEKJ0pa48TIEKHMyjkbqdFETvx/XbyEXFH+o+PeGTN2nD/Eb4KytoIij
-         nWRXFmgjAyml4YMufv1ezkye7XxRBApNKMAUSiV6dL0MOd0RMDXR8QpXP8wzKbuJkMKL
-         gKkPhbNcmEZb3dJ9SZQe9jWCKspeuqxWUzIot5bKc9Q1lHSQB8nj14WzpANMln9th+12
-         eVL+Jh1wvpe3ywnHaN8w7Ib5kYWmaGq0vq+ksjcbclzLO6rSSIkfnj3yf4gWrvZHY19U
-         ZJow==
+        b=HNl7fHni7IEBG8zaZDgs1KKw+OPeMhFVZ4W8kUPcJdCb42BPSUtsrsNIp7+C/Rr6Ke
+         soPPsjigAEC4mAywjgeZg4t6N8+/+mE0GtkdG2wQYwB/LDe6Btewa2nZfPCsSs5ZULtM
+         c1KxDn2n7xcsolBJ9pzq/edLn646le4Zu38D1gdRnaRbIn+RsK2Mefo84z13dXJOz1Qe
+         InQZaV0pXeDqPPAGRlrhdmP79Jvqo8RdL6DEQ7vKS8a2mRCwc0TZNcYJW4OJ0uqxuSRv
+         Odhf6T3qyKYn9N05VJsRaD9R/FbdakV/kpGCScFK5o2zH6p669RutswDM/NgFF5e6qxl
+         0FLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=/KsrAlA+cUzyY84FVZIvJ6NG3hfTuJ4yXZoPL+B3/xg=;
-        b=mg4VM6k7hDLyMQUh+g91NZYge15CvTbglyTyRc41oHxJGhpDjpX0gRwZNwO457SEj3
-         /5w5bEq9gVr4sZ6iwEphxazU/Xy3mrkApvTEy7PMwsUrquPTuzUEz5cIY+ce7MbeJDKg
-         lBIYcszq7Xpn9mxClAqZfmY1uv5/++sL36iilRdRJCyCO28cGYBZ8MipZH7WFfq4FjfL
-         8bVc/F6P+BkcGCM4VF7uy0I9w0wn8K0iFU8gljoO1Li0jv6YORK2Lly+OtTSlpEzneOz
-         lx9P27V/eLSHd5y2lMm52fQmc5k754GZvMmzBp3b88S+Bq/rEpmh2R+dMokt2fuuNJ/d
-         2erw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=cNL+HPsxLGvedzt9IvX4iZGG5fGms7OwfjLou6Y4NNI=;
+        b=if+6ptmsqT0GFqEnJtNnZCwLUZK722/ksG7QdH9qQtbe5/qSnr4wIvPhuOFJrI0ST9
+         0dB1kSH4mAIgdXDTM08UvBiyy+8i2ey8qji3v2szMOMNz9uL2t+zsJPQD1RMXvj64Er7
+         JeW9nmQghiDDHcp8E3tUEoBm9aN5LYIj7fqE7jVJutLx7RSeVRGf1Idekp6IhkrjTdRx
+         /vNOOTuvRyHUF/S2Yo6fGdd4EwDo0woIS+3aztmVuZA8De7Q/BnprHBUuPteXPwKnIDH
+         3+tP6OvfVTryUh++5zTN8RYP5tSHhCgfalKPFGik1VUSYyFfSS8FD8f2dMDO9wU4gbsX
+         VSLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FImTBorS;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id y6-20020aa7ca06000000b0042dc8c6e678si6724377eds.150.2022.05.31.02.29.21;
-        Tue, 31 May 2022 02:29:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Kft7PTh2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bj18-20020a05620a191200b0069f805d8142si9999562qkb.718.2022.05.31.04.47.44
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 31 May 2022 04:47:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FImTBorS;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S245255AbiEaJ3T (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 3 others); Tue, 31 May 2022 05:29:19 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47206 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S245301AbiEaJ3N (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 31 May 2022 05:29:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTP id D3A7B985A9
-        for <kvm@vger.kernel.org>; Tue, 31 May 2022 02:29:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1653989346;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=/KsrAlA+cUzyY84FVZIvJ6NG3hfTuJ4yXZoPL+B3/xg=;
-        b=FImTBorSvsowGD8lkkt7N8Ii1BG9+5LNIAROA9PDMfIUY9rT6LMX9OD4n/uDUbPPpiYjsK
-        TCM3gDGjyvmtVLtm6vaWlLeAtHla1L6hHrBbf4PC/+jVpfq0pcezFB1XxnZCTe8ytZlbu0
-        Q+bn79qRaQitBDBOinyk5u6dFu0GJPs=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-502-uqqkWcxkPGCZX_7_NZKlZQ-1; Tue, 31 May 2022 05:29:05 -0400
-X-MC-Unique: uqqkWcxkPGCZX_7_NZKlZQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 388A1811E7A;
-        Tue, 31 May 2022 09:29:04 +0000 (UTC)
-Received: from localhost (dhcp-192-194.str.redhat.com [10.33.192.194])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id F40672166B2B;
-        Tue, 31 May 2022 09:29:03 +0000 (UTC)
-From:   Cornelia Huck <cohuck@redhat.com>
-To:     Peter Maydell <peter.maydell@linaro.org>,
-        Thomas Huth <thuth@redhat.com>,
-        Laurent Vivier <lvivier@redhat.com>
-Cc:     Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
-        qemu-devel@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [PATCH RFC 0/2] arm: enable MTE for QEMU + kvm
-In-Reply-To: <20220512131146.78457-1-cohuck@redhat.com>
-Organization: Red Hat GmbH
-References: <20220512131146.78457-1-cohuck@redhat.com>
-User-Agent: Notmuch/0.34 (https://notmuchmail.org)
-Date:   Tue, 31 May 2022 11:29:02 +0200
-Message-ID: <871qwacaox.fsf@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Kft7PTh2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59002 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nw0Lf-0008JW-Ni
+	for alex.bennee@linaro.org; Tue, 31 May 2022 07:47:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57916)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nw0HB-0006Oi-Hz
+ for qemu-devel@nongnu.org; Tue, 31 May 2022 07:43:09 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:41893)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nw0H8-0006XR-Po
+ for qemu-devel@nongnu.org; Tue, 31 May 2022 07:43:04 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ p5-20020a1c2905000000b003970dd5404dso1052090wmp.0
+ for <qemu-devel@nongnu.org>; Tue, 31 May 2022 04:43:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cNL+HPsxLGvedzt9IvX4iZGG5fGms7OwfjLou6Y4NNI=;
+ b=Kft7PTh29RX49ExqUccUif8VayupKUbii3utrixoAWI6dsOyfgPzCU+sur6voj9jOU
+ mLn3IU7F04+AkgkvJoU9grt2zWYdZMzGTDMq/UBVeI4PwWgrYNmn/7+CTjlDPuQ13Lmc
+ MCNR2wlsaaiwEqqPnBflg6JTrmZ2tEqPyLcEJnHVXaXwdcZF8DAOEFRNDey1jpPoGd7d
+ tlG9n7stl2YLxlQhWW5cmX3urMFdNlT440kRJ7YMnbaV8BPFlb704wh5UeCm3otfLgbD
+ eGtjU6zZh1gi7b3tLq+EiwFsLHkhPogq7orYM7U7IpoQ6NRGRBPbCSvbOtrBy58ooHUY
+ G0UA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cNL+HPsxLGvedzt9IvX4iZGG5fGms7OwfjLou6Y4NNI=;
+ b=b0GK8jIC1gbTeq3Qn2uYWXovxmmLElj2TgiJiCs/ekC4uaHDdinxxybO57pxpphefK
+ 1tRziA/Uuqoe7ri5N79D5tBHwGGg/bZQXTg62E6b77lshHwsLUqAUCsDwLPE6AGCGacT
+ VX98zUmuOYAaIcmloCHucL8c7AGhK2HVGOfbcWK+HdMizwv9bDgatCKzWLE70n50Duem
+ scLMjWszQV24fPjJOENlh94nVsR9Z0LFGuwaEqvHKL+W1qqtb8F3aH28wEPPJ49Ozot/
+ pAA1PR627Hq4zD8u2SFEK11+6ZnffB9eyeXPRVYR/oD8Fd0D4FTk1b4Mu1xVrR6mYNdp
+ 9Adg==
+X-Gm-Message-State: AOAM530rFtHQJtTX3NjoAxnqXzbkHUAyy/+eoTcPm+jLnwP1mVO+SQxE
+ uD8YhUahjyJbHIeXug8wqexDAg==
+X-Received: by 2002:a05:600c:104a:b0:397:3385:898a with SMTP id
+ 10-20020a05600c104a00b003973385898amr23268991wmx.7.1653997380932; 
+ Tue, 31 May 2022 04:43:00 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ z17-20020a05600c221100b003973d425a7fsm2224309wml.41.2022.05.31.04.43.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 31 May 2022 04:43:00 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Declare support for FEAT_RASv1p1
+Date: Tue, 31 May 2022 12:42:58 +0100
+Message-Id: <20220531114258.855804-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Spam-Status: No, score=-2.7 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: hxEkKgamJJmH
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V441lEnyr36e
 
-Friendly ping :)
+The architectural feature RASv1p1 introduces the following new
+features:
+ * new registers ERXPFGCDN_EL1, ERXPFGCTL_EL1 and ERXPFGF_EL1
+ * new bits in the fine-grained trap registers that control traps
+   for these new registers
+ * new trap bits HCR_EL2.FIEN and SCR_EL3.FIEN that control traps
+   for ERXPFGCDN_EL1, ERXPFGCTL_EL1, ERXPFGP_EL1
+ * a larger number of the ERXMISC<n>_EL1 registers
+ * the format of ERR<n>STATUS registers changes
 
-On Thu, May 12 2022, Cornelia Huck <cohuck@redhat.com> wrote:
+The architecture permits that if ERRIDR_EL1.NUM is 0 (as it is for
+QEMU) then all these new registers may UNDEF, and the HCR_EL2.FIEN
+and SCR_EL3.FIEN bits may be RES0.  We don't have any ERR<n>STATUS
+registers (again, because ERRIDR_EL1.NUM is 0).  QEMU does not yet
+implement the fine-grained-trap extension.  So there is nothing we
+need to implement to be compliant with the feature spec.  Make the
+'max' CPU report the feature in its ID registers, and document it.
 
-> This series enables MTE for kvm guests, if the kernel supports it.
-> Lightly tested while running under the simulator (the arm64/mte/
-> kselftests pass... if you wait patiently :)
->
-> A new cpu property "mte" (defaulting to on if possible) is introduced;
-> for tcg, you still need to enable mte at the machine as well.
->
-> I've hacked up some very basic qtests; not entirely sure if I'm going
-> about it the right way.
->
-> Some things to look out for:
-> - Migration is not (yet) supported. I added a migration blocker if we
->   enable mte in the kvm case. AFAIK, there isn't any hardware available
->   yet that allows mte + kvm to be used (I think the latest Gravitons
->   implement mte, but no bare metal instances seem to be available), so
->   that should not have any impact on real world usage.
-> - I'm not at all sure about the interaction between the virt machine 'mte'
->   prop and the cpu 'mte' prop. To keep things working with tcg as before,
->   a not-specified mte for the cpu should simply give us a guest without
->   mte if it wasn't specified for the machine. However, mte on the cpu
->   without mte on the machine should probably generate an error, but I'm not
->   sure how to detect that without breaking the silent downgrade to preserve
->   existing behaviour.
-> - As I'm still new to arm, please don't assume that I know what I'm doing :)
->
->
-> Cornelia Huck (2):
->   arm/kvm: enable MTE if available
->   qtests/arm: add some mte tests
->
->  target/arm/cpu.c               | 18 +++-----
->  target/arm/cpu.h               |  4 ++
->  target/arm/cpu64.c             | 78 ++++++++++++++++++++++++++++++++++
->  target/arm/kvm64.c             |  5 +++
->  target/arm/kvm_arm.h           | 12 ++++++
->  target/arm/monitor.c           |  1 +
->  tests/qtest/arm-cpu-features.c | 31 ++++++++++++++
->  7 files changed, 137 insertions(+), 12 deletions(-)
->
-> -- 
-> 2.34.3
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ docs/system/arm/emulation.rst | 1 +
+ target/arm/cpu64.c            | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index 49cc3e8340e..81467f02ce9 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -52,6 +52,7 @@ the following architecture extensions:
+ - FEAT_PMUv3p1 (PMU Extensions v3.1)
+ - FEAT_PMUv3p4 (PMU Extensions v3.4)
+ - FEAT_RAS (Reliability, availability, and serviceability)
++- FEAT_RASv1p1 (RAS Extension v1.1)
+ - FEAT_RDM (Advanced SIMD rounding double multiply accumulate instructions)
+ - FEAT_RNG (Random number generator)
+ - FEAT_S2FWB (Stage 2 forced Write-Back)
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 3ff9219ca3b..bd1c62a3428 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -916,6 +916,7 @@ static void aarch64_max_initfn(Object *obj)
+      * we do for EL2 with the virtualization=on property.
+      */
+     t = FIELD_DP64(t, ID_AA64PFR1, MTE, 3);       /* FEAT_MTE3 */
++    t = FIELD_DP64(t, ID_AA64PFR1, RAS_FRAC, 1);  /* FEAT_RASv1p1 */
+     t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_2 */
+     cpu->isar.id_aa64pfr1 = t;
+ 
+-- 
+2.25.1
+

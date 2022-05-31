@@ -1,108 +1,109 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp3528231lfh;
-        Tue, 31 May 2022 08:14:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzCfYODnyStUE7K6mVN0pcRvX/SX9RGRURsRVEGG4EHqmzPQsafyfFGOiJlG/xRM4PLo/6b
-X-Received: by 2002:ac8:5bc6:0:b0:2f9:3493:4b68 with SMTP id b6-20020ac85bc6000000b002f934934b68mr36533493qtb.272.1654010097622;
-        Tue, 31 May 2022 08:14:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654010097; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp3588657lfh;
+        Tue, 31 May 2022 09:45:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy3SJq7/gH1gBKrHI8moRj3GmCLcbMjKwyOtCRuhZTzqQXI8zwDIrtKQknZJPPvkM4I/+UD
+X-Received: by 2002:ae9:f213:0:b0:6a5:c3e5:3832 with SMTP id m19-20020ae9f213000000b006a5c3e53832mr17432974qkg.314.1654015509564;
+        Tue, 31 May 2022 09:45:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654015509; cv=none;
         d=google.com; s=arc-20160816;
-        b=W2DzUNrBFvKrx4DwKCalQrrjxw9m46PwqydJg+V7JMXAe+Lt42KUz+muNxXiprxeAt
-         PvRlZjUUVNSApQoW+2EfY74P030ZXFfDu4ys0abQDUp6wG1kT14BlrRbCkV97z7KkSLP
-         j3QZDiUVez5DEB4daFJN5YGdcACwRbwStwDctVM5W56ZwX1pY0qspgyF2uv8zpXTrEX1
-         hKJrwF14P/Q5GXxaH+V7i2mbf1+79FL96F4nRrq330io5MPp5qJyZQaganPqO45nRYt7
-         FOfCrphfJIZXx4inAwPK+FKem2S1lGn7YrX+eKuo89RzGAVQknIuevgKQmD6Ln/bAtRR
-         sixQ==
+        b=dM244uVfbHtKabnPmboSMnbY0IZQpQTqiQxB+1TlYuaQzP9baNnyCNhl7c/MZMcRXy
+         PnLDy+WGC0uj8u7/hsub+HDyiJ4TvVl8dLHXPrF2BRuTz5gWM9VfGXhmWPxtI3oq3nkM
+         Qy0cU/3E9KXmaha8FFKQOPShUgYORvsxpR3LN7HKTeRl4bwVFc6tpeOwigO5aXpaDCn5
+         fqCVLhyjHM8sN0gzUqep/r18HZ4kY3pszKshHlOHQSxiVv/eQIjOi4YmBl4/kBixwYic
+         4S4iG5mWc89LFvuaDzq9GWeK4nAKgSVStBOE/WtjXTO104oDJ/k5OJn7COMH2EOJP+vC
+         5GOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=3WgZPgDk0dFcI58CSf3Go3i78DcgBwlK6f/TeEwMT/U=;
-        b=fwXo8kVNqeRoDw6XZHpxoPWq62kialBJgQqbYcsgLIAuPNcPbLW20E70NC9lwWZNFj
-         cJZEDMroPOjFgxgwioczefWdAM5iAiVfzPNuMIePT5yqqUnZnLTbWX0On53DuQKJTDbi
-         zVdYVQyu0LpsA6BG2CRxgkf9a7XCQnZZSDxvNVtA0kDESX9DWnAo4+pj4wlg3e+GwQJa
-         VdOty47oWAd6t4Uaj/dAa5jSlrStUMQMiIHbf6NLiehQdtogkTO70T0pOt5IM3CWxptI
-         VQO/K4/bPuj9dBMkjpw9PyrX4OHnS/RniR8DnLWQ0yWR6xI+5d10eJQruWe0o4z74Udv
-         KVWw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=KIKeAqkrG19d4My41f/svEHozW5TdYssAHIH19GQ9fA=;
+        b=F16+7mzH7EMAaKaqGpZUdsh4P552Xbl8Zkk3HIMFjTUAuwFkFpTnrBnMFR6lHb8Z6W
+         +Vn/87T9Pwb1s/4koXCmQXZB0u5q1nePwFPeAN9ZDK46ZoAAoU3VwoAxOKYVv5zSDj+M
+         jg+Ujy2Xvh06fk3O1g9MJZ7VzFpw2FZy3R2ayjt96BiW7Y5UkH8IjETbXUpeZSk6QFxI
+         3nasKCqhDyvkK+KFRF3b4Wq0E2lX8KSht2Bqpci0JcwqetChlCYMU2rZ14LGqgR/SCOd
+         H6oB94SSvm3ZC9UMs2AjQ/PcX+ZARvYRkZwDymGqajUzLsLaaTX3AI9l2CBgp/SIECHQ
+         xd4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XLGut18a;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=tP9Rf9qK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 18-20020ac84e92000000b002fbbd57563csi3119598qtp.522.2022.05.31.08.14.57
+        by mx.google.com with ESMTPS id kl18-20020a056214519200b0046205d7aa71si8343325qvb.18.2022.05.31.09.45.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 May 2022 08:14:57 -0700 (PDT)
+        Tue, 31 May 2022 09:45:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XLGut18a;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=tP9Rf9qK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55906 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:37408 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nw3aC-0004VJ-W2
-	for alex.bennee@linaro.org; Tue, 31 May 2022 11:14:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58952)
+	id 1nw4zU-0003Bh-R9
+	for alex.bennee@linaro.org; Tue, 31 May 2022 12:45:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48310)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nw3Zt-0004Tc-Jv
- for qemu-arm@nongnu.org; Tue, 31 May 2022 11:14:38 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:43980)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1nw4mS-0004Pz-0i
+ for qemu-arm@nongnu.org; Tue, 31 May 2022 12:31:40 -0400
+Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e]:41869)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nw3Zr-0002SU-Nu
- for qemu-arm@nongnu.org; Tue, 31 May 2022 11:14:37 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id s24so11804917wrb.10
- for <qemu-arm@nongnu.org>; Tue, 31 May 2022 08:14:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3WgZPgDk0dFcI58CSf3Go3i78DcgBwlK6f/TeEwMT/U=;
- b=XLGut18axQ2raXXAMQAIuwuKx/vSJGGGQydmoo9eY52IKVPcHe5MOTeuvgRju8FwOO
- 6K/01WQrUk0nEF5MMOl96FSsMKnepMmlzXwqZFtAHk6sOfHa4Wb1v88y5GtoyS9hsw7i
- Zsf/ze3mMWcpPR4Z+5ab/VF2qZRZznGnuowYJGvw7M5FuxLl4TpBHYckUaiR7ft4jyhM
- 1XG5b3iuqALUqbDKeWylU17UAAaqY5Xch+bAp0b9dzQPPTk99Ax4XL2PwZxU515oKOmX
- u+KcuZeQJJdDcGn59r+NHCxMIFItwFQbv9mGUKyiY/kSFMBZ3ubDqAHwGxtsD80vR69M
- v8xw==
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1nw4mO-0005vn-NR
+ for qemu-arm@nongnu.org; Tue, 31 May 2022 12:31:38 -0400
+Received: by mail-qv1-xf2e.google.com with SMTP id r1so12312471qvz.8
+ for <qemu-arm@nongnu.org>; Tue, 31 May 2022 09:31:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KIKeAqkrG19d4My41f/svEHozW5TdYssAHIH19GQ9fA=;
+ b=tP9Rf9qKhwP+AZZ/rpTX27784bvPBI/RVELijOsQFudJ3T7Z03VmD5P3VBjNLQR0E3
+ zUFq8Oynr5MGfjsBQSK5Lerxqbv35edOL5t9A19e/PeNLy1le0GJOdqyJ4ozSkJPJXmJ
+ i41jE10x3MVErzG6q/veReKM8FT/T7fU2TnGaYcZfZujQf8ne9diq8PxenwTVSeXjpjI
+ 0K39/ZGakaW+bx8RWjt813nPKB2yUa94T4W+xb2qGYTTyp3o3YdgHS22DHQTLK+T8BPV
+ SgEMCPk/Ak9K+7xEJi5AZHtCsRCdqvEPW9W3+bhtFrp4p6pviH63YW7Y0+ana0ebDBwN
+ T32Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3WgZPgDk0dFcI58CSf3Go3i78DcgBwlK6f/TeEwMT/U=;
- b=UdtmpgOH/r77k52K065mVgjeMZWPC0/CNfuWzW+pQXeKtYIWPlj2gnka1T3GGGVbGv
- PtnekMu/CXt9x4XlNT22V/B05xiLn0U1HmW69QeKzu6XKdIGe02AhlMvUa9T5ferWEIp
- +98hH/6YAMoL7XUHyMgG10VWm6Tr2FMWDIxtrb7AyQDHk4y8T1biU9SF7fIp7V1uzKQQ
- h5vLcL6QYEd7mOfA/VgusHzWlrGJPooKYLvI6YIvnpH6nQDUbROEACWBrhf2hdCLm9Wl
- KhvZLcAvQKiZsfTdExsC3nR3nFjBe0gl0rr7vzxD9dMgp0uI04XRIwFqiNGcmZiUefc9
- rs0A==
-X-Gm-Message-State: AOAM533f10/PCE4weZ+iLiEvss2BDxJG8qANg7XA5nt/Ne45u7sY51Z1
- NjrO9GI7hQuGA03ynHd9vecYzhSs75JyQQ==
-X-Received: by 2002:a5d:66c7:0:b0:210:3385:1e44 with SMTP id
- k7-20020a5d66c7000000b0021033851e44mr9349828wrw.566.1654010073705; 
- Tue, 31 May 2022 08:14:33 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- l12-20020a05600c10cc00b003942a244ed7sm2381418wmd.28.2022.05.31.08.14.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 May 2022 08:14:33 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Implement FEAT_DoubleFault
-Date: Tue, 31 May 2022 16:14:31 +0100
-Message-Id: <20220531151431.949322-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KIKeAqkrG19d4My41f/svEHozW5TdYssAHIH19GQ9fA=;
+ b=2UDfCBZnOLpbm74R4VMMeeVQdyTQOVbq7rul30lkiGFr2hAZYBA2wpgnxxXUZlsw2A
+ PkTOhvUqP+au0lVvjC6sKVYG3WFSlomHoCHVT5FosHHzcjjugpIHMHg5TAwdmLBLj9gZ
+ KDuK3BQCmq9TQUWEYAuUcePuACIl0s07ZuWbBOAigz4obN55kLJTmNhlVN9w0eKoo0kR
+ F/h09MJzEkV4zhLMwvTj05aSO4vuTJH852qFXF3IHAJrrGsP7yucHMd56zsjpm3QuIum
+ W8NOckkRNn29+EweCQJgBMMP33GzNJJ7QGkpbhr/eBg9LT644zfeEOV9Q+g2FDZWtM9S
+ dNIA==
+X-Gm-Message-State: AOAM532NAzUF9LDZ+5fUH2LR1gYk/A8qk+P4p2P/VvOsgDRvIQUwLASy
+ 2iEoUOhQmqAIyiWZF+KdfA26j41KeWCnISwRjI78sg==
+X-Received: by 2002:a05:6214:224f:b0:43f:cd6a:1d6b with SMTP id
+ c15-20020a056214224f00b0043fcd6a1d6bmr51826881qvc.12.1654014695062; Tue, 31
+ May 2022 09:31:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <20220531080921.4704-1-linmq006@gmail.com>
+In-Reply-To: <20220531080921.4704-1-linmq006@gmail.com>
+From: Hao Wu <wuhaotsh@google.com>
+Date: Tue, 31 May 2022 09:31:24 -0700
+Message-ID: <CAGcCb129Mz-ZDSc_wFF=Z6SiNHiC6Lnr+4TGvUKMOaYWchaCPg@mail.gmail.com>
+Subject: Re: [PATCH] qtest/npcm7xx_pwm-test: Fix memory leak in mft_qom_set
+To: Miaoqian Lin <linmq006@gmail.com>
+Cc: Havard Skinnemoen <hskinnemoen@google.com>,
+ Tyrone Ting <kfting@nuvoton.com>, 
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: multipart/alternative; boundary="0000000000005aa52805e0514ed0"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2e;
+ envelope-from=wuhaotsh@google.com; helo=mail-qv1-xf2e.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,158 +118,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xL8iLZOi/eiq
+X-TUID: Z3JrfO/10ogs
 
-The FEAT_DoubleFault extension adds the following:
+--0000000000005aa52805e0514ed0
+Content-Type: text/plain; charset="UTF-8"
 
- * All external aborts on instruction fetches and translation table
-   walks for instruction fetches must be synchronous.  For QEMU this
-   is already true.
+On Tue, May 31, 2022 at 6:18 AM Miaoqian Lin <linmq006@gmail.com> wrote:
 
- * SCR_EL3 has a new bit NMEA which disables the masking of SError
-   interrupts by PSTATE.A when the SError interrupt is taken to EL3.
-   For QEMU we only need to make the bit writable, because we have no
-   sources of SError interrupts.
+> g_strdup_printf() allocated memory for path, we should free it with
+> g_free() when no longer needed.
+>
+> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
 
- * SCR_EL3 has a new bit EASE which causes synchronous external
-   aborts taken to EL3 to be taken at the same entry point as SError.
-   (Note that this does not mean that they are SErrors for purposes
-   of PSTATE.A masking or that the syndrome register reports them as
-   SErrors: it just means that the vector offset is different.)
+> ---
+>  tests/qtest/npcm7xx_pwm-test.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/tests/qtest/npcm7xx_pwm-test.c
+> b/tests/qtest/npcm7xx_pwm-test.c
+> index c4a5fdcacd79..e320a625c4b6 100644
+> --- a/tests/qtest/npcm7xx_pwm-test.c
+> +++ b/tests/qtest/npcm7xx_pwm-test.c
+> @@ -268,6 +268,9 @@ static void mft_qom_set(QTestState *qts, int index,
+> const char *name,
+>              path, name, value);
+>      /* The qom set message returns successfully. */
+>      g_assert_true(qdict_haskey(response, "return"));
+> +
+> +    qobject_unref(response);
+> +    g_free(path);
+>  }
+>
+>  static uint32_t get_pll(uint32_t con)
+> --
+> 2.25.1
+>
+>
+>
 
- * The existing SCTLR_EL3.IESB has an effective value of 1 when
-   SCR_EL3.NMEA is 1.  For QEMU this is a no-op because we don't need
-   different behaviour based on IESB (we don't need to do anything to
-   ensure that error exceptions are synchronized).
+--0000000000005aa52805e0514ed0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-So for QEMU the things we need to change are:
- * Make SCR_EL3.{NMEA,EASE} writable
- * When taking a synchronous external abort at EL3, adjust the
-   vector entry point if SCR_EL3.EASE is set
- * Advertise the feature in the ID registers
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, May 31, 2022 at 6:18 AM Miaoq=
+ian Lin &lt;<a href=3D"mailto:linmq006@gmail.com">linmq006@gmail.com</a>&gt=
+; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
+ 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">g_strdu=
+p_printf() allocated memory for path, we should free it with<br>
+g_free() when no longer needed.<br>
+<br>
+Signed-off-by: Miaoqian Lin &lt;<a href=3D"mailto:linmq006@gmail.com" targe=
+t=3D"_blank">linmq006@gmail.com</a>&gt;<br></blockquote><div>Reviewed-by: H=
+ao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@google.com</a>&gt=
+;=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+---<br>
+=C2=A0tests/qtest/npcm7xx_pwm-test.c | 3 +++<br>
+=C2=A01 file changed, 3 insertions(+)<br>
+<br>
+diff --git a/tests/qtest/npcm7xx_pwm-test.c b/tests/qtest/npcm7xx_pwm-test.=
+c<br>
+index c4a5fdcacd79..e320a625c4b6 100644<br>
+--- a/tests/qtest/npcm7xx_pwm-test.c<br>
++++ b/tests/qtest/npcm7xx_pwm-test.c<br>
+@@ -268,6 +268,9 @@ static void mft_qom_set(QTestState *qts, int index, con=
+st char *name,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0path, name, value);<br>
+=C2=A0 =C2=A0 =C2=A0/* The qom set message returns successfully. */<br>
+=C2=A0 =C2=A0 =C2=A0g_assert_true(qdict_haskey(response, &quot;return&quot;=
+));<br>
++<br>
++=C2=A0 =C2=A0 qobject_unref(response);<br>
++=C2=A0 =C2=A0 g_free(path);<br>
+=C2=A0}<br>
+<br>
+=C2=A0static uint32_t get_pll(uint32_t con)<br>
+-- <br>
+2.25.1<br>
+<br>
+<br>
+</blockquote></div></div>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Based-on: <20220531114258.855804-1-peter.maydell@linaro.org>
-("target/arm: Declare support for FEAT_RASv1p1")
-
- docs/system/arm/emulation.rst |  1 +
- target/arm/cpu.h              |  5 +++++
- target/arm/cpu64.c            |  4 ++--
- target/arm/helper.c           | 36 +++++++++++++++++++++++++++++++++++
- 4 files changed, 44 insertions(+), 2 deletions(-)
-
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 81467f02ce9..83b44100659 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -23,6 +23,7 @@ the following architecture extensions:
- - FEAT_Debugv8p2 (Debug changes for v8.2)
- - FEAT_Debugv8p4 (Debug changes for v8.4)
- - FEAT_DotProd (Advanced SIMD dot product instructions)
-+- FEAT_DoubleFault (Double Fault Extension)
- - FEAT_FCMA (Floating-point complex number instructions)
- - FEAT_FHM (Floating-point half-precision multiplication instructions)
- - FEAT_FP16 (Half-precision floating-point data processing)
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c1865ad5dad..0ee1705a4fa 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3952,6 +3952,11 @@ static inline bool isar_feature_aa64_ras(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, RAS) != 0;
- }
- 
-+static inline bool isar_feature_aa64_doublefault(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, RAS) >= 2;
-+}
-+
- static inline bool isar_feature_aa64_sve(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SVE) != 0;
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index bd1c62a3428..cce68dd82a2 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -899,7 +899,7 @@ static void aarch64_max_initfn(Object *obj)
-     t = cpu->isar.id_aa64pfr0;
-     t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);        /* FEAT_FP16 */
-     t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);   /* FEAT_FP16 */
--    t = FIELD_DP64(t, ID_AA64PFR0, RAS, 1);       /* FEAT_RAS */
-+    t = FIELD_DP64(t, ID_AA64PFR0, RAS, 2);       /* FEAT_RASv1p1 + FEAT_DoubleFault */
-     t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
-     t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);      /* FEAT_SEL2 */
-     t = FIELD_DP64(t, ID_AA64PFR0, DIT, 1);       /* FEAT_DIT */
-@@ -916,7 +916,7 @@ static void aarch64_max_initfn(Object *obj)
-      * we do for EL2 with the virtualization=on property.
-      */
-     t = FIELD_DP64(t, ID_AA64PFR1, MTE, 3);       /* FEAT_MTE3 */
--    t = FIELD_DP64(t, ID_AA64PFR1, RAS_FRAC, 1);  /* FEAT_RASv1p1 */
-+    t = FIELD_DP64(t, ID_AA64PFR1, RAS_FRAC, 0);  /* FEAT_RASv1p1 + FEAT_DoubleFault */
-     t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_2 */
-     cpu->isar.id_aa64pfr1 = t;
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 40da63913c9..7f2c14bea94 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1776,6 +1776,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-         if (cpu_isar_feature(aa64_scxtnum, cpu)) {
-             valid_mask |= SCR_ENSCXT;
-         }
-+        if (cpu_isar_feature(aa64_doublefault, cpu)) {
-+            valid_mask |= SCR_EASE | SCR_NMEA;
-+        }
-     } else {
-         valid_mask &= ~(SCR_RW | SCR_ST);
-         if (cpu_isar_feature(aa32_ras, cpu)) {
-@@ -10113,6 +10116,31 @@ static uint32_t cpsr_read_for_spsr_elx(CPUARMState *env)
-     return ret;
- }
- 
-+static bool syndrome_is_sync_extabt(uint32_t syndrome)
-+{
-+    /* Return true if this syndrome value is a synchronous external abort */
-+    switch (syn_get_ec(syndrome)) {
-+    case EC_INSNABORT:
-+    case EC_INSNABORT_SAME_EL:
-+    case EC_DATAABORT:
-+    case EC_DATAABORT_SAME_EL:
-+        /* Look at fault status code for all the synchronous ext abort cases */
-+        switch (syndrome & 0x3f) {
-+        case 0x10:
-+        case 0x13:
-+        case 0x14:
-+        case 0x15:
-+        case 0x16:
-+        case 0x17:
-+            return true;
-+        default:
-+            return false;
-+        }
-+    default:
-+        return false;
-+    }
-+}
-+
- /* Handle exception entry to a target EL which is using AArch64 */
- static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
- {
-@@ -10168,6 +10196,14 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-     switch (cs->exception_index) {
-     case EXCP_PREFETCH_ABORT:
-     case EXCP_DATA_ABORT:
-+        /*
-+         * FEAT_DoubleFault allows synchronous external aborts taken to EL3
-+         * to be taken to the SError vector entrypoint.
-+         */
-+        if (new_el == 3 && (env->cp15.scr_el3 & SCR_EASE) &&
-+            syndrome_is_sync_extabt(env->exception.syndrome)) {
-+            addr += 0x180;
-+        }
-         env->cp15.far_el[new_el] = env->exception.vaddress;
-         qemu_log_mask(CPU_LOG_INT, "...with FAR 0x%" PRIx64 "\n",
-                       env->cp15.far_el[new_el]);
--- 
-2.25.1
-
+--0000000000005aa52805e0514ed0--

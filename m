@@ -1,92 +1,91 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4485696lfh;
-        Wed, 1 Jun 2022 14:23:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxzKPsJRp5rD+NjppNeuCPoWkN9BmbCCkCCibV9s7nLeYAA3gnlNPh+W2+B7CypklBjGKI0
-X-Received: by 2002:a05:622a:44b:b0:2f9:3af4:d451 with SMTP id o11-20020a05622a044b00b002f93af4d451mr1420216qtx.587.1654118615795;
-        Wed, 01 Jun 2022 14:23:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654118615; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4489337lfh;
+        Wed, 1 Jun 2022 14:32:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2TUq5dnRUjgDYqmsD86iuSIX1beKWLYJ22zwil5/npsPqei4S62m5gTavv//kDKgLHn+l
+X-Received: by 2002:a05:6214:76b:b0:464:4795:5ca2 with SMTP id f11-20020a056214076b00b0046447955ca2mr1278278qvz.93.1654119166188;
+        Wed, 01 Jun 2022 14:32:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654119166; cv=none;
         d=google.com; s=arc-20160816;
-        b=pnlPTVdx2Fdug+qCdwasub1tutG0ekHfhuBJIGCuXTyjAmkPEjnSsgEOjs6ddnZSz+
-         Ab5vHGr7tcXyc3c4GwOCOsvXETE4WhQ+tHmVpj1d4o/HUc0TOLj23zjuGZEBV2Jj//vo
-         fmYwbNBDBnGbtVDi/I1Rklu46XhEH1RIP3uqXup206F8fHxPsV6RPU/MMTHRM9DIAz7N
-         wDrPeWx/Fxpyhk8rBJJOYFjMpwVattUoU52p1Qw34tP6z9O2zlHk0NAhJqLtAS6YXZ2h
-         yzJAukXS9fgSxJP9D4eIPpxxqe1M/5sF1pkCN10v55Mas22CZLOaIIfV+xW1X8YIGHjN
-         Vh8g==
+        b=QHYFJfpdvFEvficMBz3VD7oU5F3bUOSAFu2FWbhx6DyFiIWwUqd5sMEsAE3T/MkS8G
+         B9Iqo57kOcDjtTF7C+X1DennskT3xkKbv21e/EtmQ0boOUiY+w+a4tDwjgF72+pgimdp
+         UIRBqw9wsqY3pJmsCV3dH/CCsowwpj5uqBYBHoNNUEcyOJzQl/34dFxK034TE0mguqO1
+         KKLH7/beDfgJIUNI+SW5vkr5SnY81EIgVm7PaEGgNKkmTYki9aPHJiHOdrB4HTJBLLhX
+         LHuKSwaST2Jc5Vpg8kTukG9QRhtP5FHxqT/cRFjHybeKpoaGUXZmQihvOZes91u0lWVh
+         j72Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ikiJGIYY6SHGA9nKiz+MpLBLyh8uJgTkxcb1tf7NZkY=;
-        b=zssrUbY2KTxOGPNGd1F6PIXWYPqKGnEmLHpFQ78yr1cmk4Xton+768m0uCAPu+fV/L
-         d/v2Ebm0MJBN0hmiXAfy0jucjQJF8MTqO4byHEyO/85u0yvt4plX5TB0P8x/ISImQbGM
-         25iFUILlIFe4w5Pdawk+XwGTiUUWwb/NbqUN8ourgrIYO+y5ozuoVmtzX73B5i6+qD+Q
-         hJO/izguENRSAK33paE+NDJKh8stLSWa80Cs/W41QF0u2RTthjYrA59u0d038uhH6LXN
-         rN8wFQetLv+g+1OdEoKhVjuMkeQPCnr5N4LGIOnjkHrWIc8uDjAGICtDkc2mstokbZcE
-         8x9w==
+        bh=Ra02+27G9ueEtq01sMrWGS/wIPBuGE4/oa5XUqciaOk=;
+        b=sUPfSaEqjDIiWvyaVSOC57vk8x9ekdnw3NuDiuI06v/mAwVzywB0tgaOv7yqH5Sbt2
+         prtKvflReGAK0VH/d25VFAtfj6YXJUAo9mckJy0XtxuyotzW0q5ExLMgt1p5jhXR13CM
+         aWmnqiPyXJHb4zSGi3QJCZLw4FFIH82tzMv5V3EMNazHm5W2SYGk90b6SGvT4Y7tEAqh
+         9YOWkOXNlekIw8GtC1Elj/iWaNZ9JOEob7drXoiLRfj7DJa06M9FdSX0+w8WxO/1xoNJ
+         yAV66zeIGs+8g2MmgtVn8pKYpEGxdqybnZyEtRNTDyBDp037puYj57v/yyWK47zgRvE+
+         zdZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lmwlGICQ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dZ2JzZ9i;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t3-20020a05621421a300b00462251f5df7si1136279qvc.330.2022.06.01.14.23.35
+        by mx.google.com with ESMTPS id 9-20020ad45ba9000000b00464469be213si117791qvq.527.2022.06.01.14.32.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Jun 2022 14:23:35 -0700 (PDT)
+        Wed, 01 Jun 2022 14:32:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lmwlGICQ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dZ2JzZ9i;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54214 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35934 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwVoV-0004kP-AG
-	for alex.bennee@linaro.org; Wed, 01 Jun 2022 17:23:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32958)
+	id 1nwVxM-0003Pv-Pc
+	for alex.bennee@linaro.org; Wed, 01 Jun 2022 17:32:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32778)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1nwVhI-0007io-Rd; Wed, 01 Jun 2022 17:16:08 -0400
-Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a]:37436)
+ id 1nwVgA-0006r1-76; Wed, 01 Jun 2022 17:14:58 -0400
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335]:45628)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1nwVhH-0006O7-9U; Wed, 01 Jun 2022 17:16:08 -0400
-Received: by mail-oa1-x2a.google.com with SMTP id
- 586e51a60fabf-f3381207a5so4403398fac.4; 
- Wed, 01 Jun 2022 14:16:06 -0700 (PDT)
+ id 1nwVg8-0005if-Cu; Wed, 01 Jun 2022 17:14:57 -0400
+Received: by mail-ot1-x335.google.com with SMTP id
+ h9-20020a056830400900b0060b03bfe792so2106927ots.12; 
+ Wed, 01 Jun 2022 14:14:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ikiJGIYY6SHGA9nKiz+MpLBLyh8uJgTkxcb1tf7NZkY=;
- b=lmwlGICQttVzYYsb3qJ6uBpuJUUHZh0ZIULi8kw6ap09G+x4SCL0Sb47Q6nuB8SqNJ
- NZeMvyf9qmZbvCOBgkC16T6QrHrqpSv5I8gDYQ1XubmxcbbTBMBPmJzo4AbQUyx8Ijy1
- w7umjxyo0jrLeS/Q+kSZvcmaoRrH8tu620/xKMdXX9Da6gttwriujMiLib3US9+WbE/C
- uAW3zLQLlyVoMUTCu7MO+erz6GSgBiYARivlihQL1t4sKDeZ0wHwK/V7butB1mKAzCAP
- b4LuAgkDSD4FpDIPeiKGkl7zfiDXB8IkSp2gy6dHRXQZmN/G6EcfgRNcKKw2tRU7EYg6
- bN4Q==
+ :cc; bh=Ra02+27G9ueEtq01sMrWGS/wIPBuGE4/oa5XUqciaOk=;
+ b=dZ2JzZ9iew1sH7CPi8mm+F0dPH76Llv3JdofEAlAKh0e6+V0K9TIbqrnbRNA0q7SAR
+ HZPNj/+hVeqjrPdXlBIQ/KqL2CwA/aoyUEInUet3r7MyPiEoXtzI8pkhZvmbyScLZpBS
+ wWFAaHQ9e0J45oBxP3AmeEdF/qZ7uMr/39W60opanwGhiR4Wrl2VmqFxSSz+BH3MMEwl
+ NK4bXHOlQaD0LBKkPRI4QCulj+Dj8nZeAAvCW/T1QAVgJH+1w3aGF+rLzmFSYfirO0BA
+ SP6Y+2JaTDCJ5wpVwRuDktvVYl5htRqa3eyaRT5JzZxcnTynUWvJQkDExJKR8c7XkW8c
+ z3ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ikiJGIYY6SHGA9nKiz+MpLBLyh8uJgTkxcb1tf7NZkY=;
- b=aSdy4XP6UvLtQuYvcrixLlVRUXL8UVpdsG23jrOQtaNUl5keC6X5FYnFPYVEaBKSHC
- 4HV3PD7VNbG1Jd6GPzjJU9KuS4HCy8+JUyRirQhL155q4LGl71XYVeEfZkkFYThNOpIl
- LZJyFQnzL8ZRpwcrkFYyKi5igFpbilCMTqTP2OJpdp58u8Lb+iPVhS6hJGey2O9vvmT9
- +7XrUefiW8k1I1fUuNT2vDHyki2SdyiMr6WZsA89kipGFjkoPJCVvKmHJZ6kNUvZ9QTg
- ZFRO9G2x5bXySAsHBHdA5FEs5S8hnv/P2QgO/5owvCUvQbrccgtYfN+u49ana1j8rgzb
- qWVw==
-X-Gm-Message-State: AOAM533PV22FEx03YSe8xwbzwYHaiBWWnJZwegj8r7qCaNOHZCxt13BM
- cREUDs0uile56bovbnqmQhkFAyS3kA/icBsYjuI=
-X-Received: by 2002:a05:6870:2047:b0:e9:1b34:fbe with SMTP id
- l7-20020a056870204700b000e91b340fbemr18174188oad.64.1654118165767; Wed, 01
- Jun 2022 14:16:05 -0700 (PDT)
+ bh=Ra02+27G9ueEtq01sMrWGS/wIPBuGE4/oa5XUqciaOk=;
+ b=LQOF+pTb9OqNKGdk25610cGceuV6+j1HTO0eaffzgGqE1pAjsxyZg7otyHrjXz5iEe
+ CXBAbvbwrz7ahl9bIxlU+8kstSYKQSFIPNBzprBmmCvotN/5n5duCgXaANu0EeoSPqxz
+ 3z3lcdJOC2RozFgDjQnPaB32UaYp8Z3c3cLmVM24xLGBjnDQlpiqR/j4s9XSeK9dJU3Y
+ YjJuxVunLZ61jXPknjsFUnuCDlxfiANLcL4FR/NrRM5S55QJy7idXZ8ux0+IC1BOZFIN
+ K7SSgifCJsALi1lpYwKERrn05i3cx1VGR9FK1kihvkdY8IVbVIDU7AbktEZoPXcbRzTU
+ Tf1w==
+X-Gm-Message-State: AOAM530tu5KN7UfSH77QCR0NOD12Q3YHNZiwQBdgYlxnn9DYDHvqcCax
+ jG0LaKvBckq2NRzsbOxKOxcJtSt9FoeDnhrBdXk=
+X-Received: by 2002:a05:6830:18dc:b0:60a:e7a3:dbe7 with SMTP id
+ v28-20020a05683018dc00b0060ae7a3dbe7mr769379ote.186.1654118094020; Wed, 01
+ Jun 2022 14:14:54 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220601172353.3220232-1-fkonrad@xilinx.com>
- <20220601172353.3220232-5-fkonrad@xilinx.com>
-In-Reply-To: <20220601172353.3220232-5-fkonrad@xilinx.com>
+ <20220601172353.3220232-2-fkonrad@xilinx.com>
+In-Reply-To: <20220601172353.3220232-2-fkonrad@xilinx.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 2 Jun 2022 07:15:39 +1000
-Message-ID: <CAKmqyKO00+TZfTzSXBMbbxwZY0f095tRyEVFzjZQdQZj-Eosdg@mail.gmail.com>
-Subject: Re: [PATCH v3 4/4] xlnx-zynqmp: fix the irq mapping for the display
- port and its dma
+Date: Thu, 2 Jun 2022 07:14:27 +1000
+Message-ID: <CAKmqyKMUnYrb4o40WCbjAJ4igAjw0W1=S=D1WQEBGU7agba_CQ@mail.gmail.com>
+Subject: Re: [PATCH v3 1/4] xlnx_dp: fix the wrong register size
 To: frederic.konrad@xilinx.com
 Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
@@ -95,8 +94,8 @@ Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Edgar Iglesias <edgari@xilinx.com>, fkonrad@amd.com, 
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2001:4860:4864:20::2a;
- envelope-from=alistair23@gmail.com; helo=mail-oa1-x2a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
+ envelope-from=alistair23@gmail.com; helo=mail-ot1-x335.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -119,17 +118,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r8AyJ5+uy4Ir
+X-TUID: RlSCkE/oQu+x
 
-On Thu, Jun 2, 2022 at 3:29 AM <frederic.konrad@xilinx.com> wrote:
+On Thu, Jun 2, 2022 at 3:26 AM <frederic.konrad@xilinx.com> wrote:
 >
 > From: Frederic Konrad <fkonrad@amd.com>
 >
-> When the display port has been initially implemented the device driver wasn't
-> using interrupts.  Now that the display port driver waits for vblank interrupt
-> it has been noticed that the irq mapping is wrong.  So use the value from the
-> linux device tree and the ultrascale+ reference manual.
+> The core and the vblend registers size are wrong, they should respectively be
+> 0x3B0 and 0x1E0 according to:
+>   https://www.xilinx.com/htmldocs/registers/ug1087/ug1087-zynq-ultrascale-registers.html.
 >
+> Let's fix that and use macros when creating the mmio region.
+>
+> Fixes: 58ac482a66d ("introduce xlnx-dp")
 > Signed-off-by: Frederic Konrad <fkonrad@amd.com>
 > Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 
@@ -138,26 +139,66 @@ Acked-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/xlnx-zynqmp.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/display/xlnx_dp.c         | 17 ++++++++++-------
+>  include/hw/display/xlnx_dp.h |  9 +++++++--
+>  2 files changed, 17 insertions(+), 9 deletions(-)
 >
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 375309e68e..383e177a00 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -60,10 +60,10 @@
->  #define SERDES_SIZE         0x20000
+> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+> index 9bb781e312..0378570459 100644
+> --- a/hw/display/xlnx_dp.c
+> +++ b/hw/display/xlnx_dp.c
+> @@ -1219,19 +1219,22 @@ static void xlnx_dp_init(Object *obj)
+>      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>      XlnxDPState *s = XLNX_DP(obj);
 >
->  #define DP_ADDR             0xfd4a0000
-> -#define DP_IRQ              113
-> +#define DP_IRQ              0x77
+> -    memory_region_init(&s->container, obj, TYPE_XLNX_DP, 0xC050);
+> +    memory_region_init(&s->container, obj, TYPE_XLNX_DP, DP_CONTAINER_SIZE);
 >
->  #define DPDMA_ADDR          0xfd4c0000
-> -#define DPDMA_IRQ           116
-> +#define DPDMA_IRQ           0x7a
+>      memory_region_init_io(&s->core_iomem, obj, &dp_ops, s, TYPE_XLNX_DP
+> -                          ".core", 0x3AF);
+> -    memory_region_add_subregion(&s->container, 0x0000, &s->core_iomem);
+> +                          ".core", sizeof(s->core_registers));
+> +    memory_region_add_subregion(&s->container, DP_CORE_REG_OFFSET,
+> +                                &s->core_iomem);
 >
->  #define APU_ADDR            0xfd5c0000
->  #define APU_IRQ             153
+>      memory_region_init_io(&s->vblend_iomem, obj, &vblend_ops, s, TYPE_XLNX_DP
+> -                          ".v_blend", 0x1DF);
+> -    memory_region_add_subregion(&s->container, 0xA000, &s->vblend_iomem);
+> +                          ".v_blend", sizeof(s->vblend_registers));
+> +    memory_region_add_subregion(&s->container, DP_VBLEND_REG_OFFSET,
+> +                                &s->vblend_iomem);
+>
+>      memory_region_init_io(&s->avbufm_iomem, obj, &avbufm_ops, s, TYPE_XLNX_DP
+> -                          ".av_buffer_manager", 0x238);
+> -    memory_region_add_subregion(&s->container, 0xB000, &s->avbufm_iomem);
+> +                          ".av_buffer_manager", sizeof(s->avbufm_registers));
+> +    memory_region_add_subregion(&s->container, DP_AVBUF_REG_OFFSET,
+> +                                &s->avbufm_iomem);
+>
+>      memory_region_init_io(&s->audio_iomem, obj, &audio_ops, s, TYPE_XLNX_DP
+>                            ".audio", sizeof(s->audio_registers));
+> diff --git a/include/hw/display/xlnx_dp.h b/include/hw/display/xlnx_dp.h
+> index 8ab4733bb8..1ef5a89ee7 100644
+> --- a/include/hw/display/xlnx_dp.h
+> +++ b/include/hw/display/xlnx_dp.h
+> @@ -39,10 +39,15 @@
+>  #define AUD_CHBUF_MAX_DEPTH                 (32 * KiB)
+>  #define MAX_QEMU_BUFFER_SIZE                (4 * KiB)
+>
+> -#define DP_CORE_REG_ARRAY_SIZE              (0x3AF >> 2)
+> +#define DP_CORE_REG_OFFSET                  (0x0000)
+> +#define DP_CORE_REG_ARRAY_SIZE              (0x3B0 >> 2)
+> +#define DP_AVBUF_REG_OFFSET                 (0xB000)
+>  #define DP_AVBUF_REG_ARRAY_SIZE             (0x238 >> 2)
+> -#define DP_VBLEND_REG_ARRAY_SIZE            (0x1DF >> 2)
+> +#define DP_VBLEND_REG_OFFSET                (0xA000)
+> +#define DP_VBLEND_REG_ARRAY_SIZE            (0x1E0 >> 2)
+> +#define DP_AUDIO_REG_OFFSET                 (0xC000)
+>  #define DP_AUDIO_REG_ARRAY_SIZE             (0x50 >> 2)
+> +#define DP_CONTAINER_SIZE                   (0xC050)
+>
+>  struct PixmanPlane {
+>      pixman_format_code_t format;
 > --
 > 2.25.1
 >

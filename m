@@ -1,98 +1,152 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp3994680lfh;
-        Wed, 1 Jun 2022 00:12:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyyaAr8tX2gHi5rj2XqKfD5xOkoSx67udHhCo24lFuNidm6dV6O35a0tHKaj/sHUNnck4OU
-X-Received: by 2002:a05:622a:48a:b0:2f3:fa4c:f091 with SMTP id p10-20020a05622a048a00b002f3fa4cf091mr50415041qtx.442.1654067521606;
-        Wed, 01 Jun 2022 00:12:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654067521; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4359025lfh;
+        Wed, 1 Jun 2022 10:26:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxy2Ya78I0Szua/YpRPszUTJ2MatD65IWKnUQpsGgvwMPJfiRbgrJZPgCD9KoFoRVBLALF3
+X-Received: by 2002:a05:622a:1483:b0:2f3:ecbe:89d3 with SMTP id t3-20020a05622a148300b002f3ecbe89d3mr637674qtx.253.1654104371371;
+        Wed, 01 Jun 2022 10:26:11 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1654104371; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ik+X9WbE4X7BuWpZEcJhcYBCl1cGfUQsZrB/tcMpLD0xZyJHofjHVo83+TwATGMBQW
-         mp8iLRIeCRwZIg20h3MJWeG++hagB9VAKkhE/a80E3gUvsfnmueC0qO+b5fxn65fdTGA
-         pufuew6z9tNpZ1CaUog3i8QbWZg7z6tycpbQ4Y/VjN+/nra47F4MRlTkUCJtz99MNjms
-         s0jEData8AQutlyHryhs/E1xLzGoUX0FLndrfDsaSSMZyx84GlKI9Czv3dyIKYRybBxu
-         DBB24kkzzTsLoGsKXdRnWkOPBZwQy+N/kJdmG+o87FVCWbJHqrroHNXUK4ERpFu16yGt
-         DNdw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=AZtGQuPHrTKAmUeKLQxgwSh4qNnM5EI0/OG4gD4gqlhCM2kQOfFBsJUYYECteRI/+K
+         wPlYkUUR1ySgwJJsSF9Fx90QAPCSt+JVYNpDtB8hMrztIOFYp8XEdmu5eF8TC+QQwZEP
+         9gILoEkvTiruiJO0ARyHeYQU85GK5ZEnBLml85Wu2CiWjjpvoLKMSmbZj2QxzesAhPgg
+         qyVJoqT0gWnA6xqqQKQzXjtp2aBuG966O4CoaCbIOtLVsXHCvDp8Wnw8Al67Lf6A8xaH
+         T5j5qRi8fKnncP7QFL+uhNQmAPLdGUCUVz9qyOuIvL7twVrvlv5GOzj1yXkZM6vESfXO
+         cr6A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=ih7xWLBBUxyQ2A1TiMJQxb8Tf1uCrR+uqm9yeUUdkVU=;
-        b=LAB3FVavAOzi0TygBorcFPWG+CgrRH9hR2/NlOaxp+iF+9HktLA2fwWdK5/4UYTQDY
-         7BGM3mptI7/zYUfvnyjs2EAE4o00MZAasZHve0En5XoTmIXlR/XVWkXfRDlqYtZURuza
-         JfuYbin+xaacPDvnt6FlN1M0hOsWZB8z7wYQ9K9N0ECy4OKA2MUlLTTQEV6Vbn+sFT5I
-         icLNIh0gYNZnGkx47toadLmvvbDS4xBGOEZQ47YVT0zsqNqNvR2tsTod9tdPfDcbo9Ow
-         sskjNnhIAV4tXxEBAFw1hfAdkjBqJ+fEy2STfiEXVXIUfLnSCSCw54ohhKpXgj/jr6nZ
-         cc8g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=eMB3BmhFEQqh2NG+sSpwFWme5g8dWkrkohSEKCx/LJ8=;
+        b=LLMOKZGepAY4ZuFMSlJJZ+xER5i0Ymg7FCELLoLWX/VoDK7tpxQFJ0PNSDTyKUpW5a
+         1tnXj+Dhuh3envqKKutxCAd305iWyyE2mbshlVGi/DFfrhUXvA1VKqgW0Hpc8X8e7jLU
+         QVwxZQt6PRyc42JTvmVl/QM/5LGzIR2HVwseqmN/aISVL0M+zy2W0bqoQ9+k52EUygRk
+         X1MgBkiXgDllJ9apTxxD5pXP4DP1uMXag32YXp2pXrK+RArC5YNw5ugUOTU8QLADkZfV
+         /C9Pi1oeuziK2aXMQuDxfdPC8YnmTwIV44YjbVVHiKd3UkDljiXkl0zZk9CJOuc+RGaT
+         Y50A==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=eOU7e9Mt;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y16-20020a05620a25d000b0069fe7f301b5si521366qko.541.2022.06.01.00.12.01
+        by mx.google.com with ESMTPS id c5-20020a05620a164500b006a62a43f443si1116200qko.377.2022.06.01.10.26.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Jun 2022 00:12:01 -0700 (PDT)
+        Wed, 01 Jun 2022 10:26:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57220 helo=lists1p.gnu.org)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=eOU7e9Mt;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+Received: from localhost ([::1]:40542 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwIWP-0001q1-45
-	for alex.bennee@linaro.org; Wed, 01 Jun 2022 03:12:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38264)
+	id 1nwS6k-0002w4-Nb
+	for alex.bennee@linaro.org; Wed, 01 Jun 2022 13:26:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43510)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nwIUx-0001nH-Kv
- for qemu-arm@nongnu.org; Wed, 01 Jun 2022 03:10:31 -0400
-Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117]:36919)
+ (Exim 4.90_1) (envelope-from <fkonrad@xilinx.com>)
+ id 1nwS4p-0000YM-Pg; Wed, 01 Jun 2022 13:24:11 -0400
+Received: from mail-sn1anam02on20601.outbound.protection.outlook.com
+ ([2a01:111:f400:7ea9::601]:41158
+ helo=NAM02-SN1-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nwIUv-0003IZ-CJ
- for qemu-arm@nongnu.org; Wed, 01 Jun 2022 03:10:31 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.147])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id DC1F827C20;
- Wed,  1 Jun 2022 07:10:21 +0000 (UTC)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 1 Jun 2022
- 09:10:21 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G0033362c8d4-2b5f-4d26-b275-f84bed73a068,
- A963F33A9D1A618F9A1E828761F10BD73193B711) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <983fc0e3-6166-74d4-1164-161c277e4a96@kaod.org>
-Date: Wed, 1 Jun 2022 09:10:15 +0200
+ (Exim 4.90_1) (envelope-from <fkonrad@xilinx.com>)
+ id 1nwS4n-00072g-0s; Wed, 01 Jun 2022 13:24:10 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=e5IhhKc+xHJPDrjg1liJsKi1IDJmxcgOGRXESS9G7rmr/NdD5nY/M9qAVSUIGgpbGGD1Z8U6LBWx0FFbI0vI4jHac3IVb/nDHT2OT60w7rlINCLACERK/kP0xBJJ7GT/o/zItobuApgC2Io/sz3axi+MoV4i2tII4hSuzxIE2mTpVP7GozR1yWFUAtNMCwnidNnDhAwRHhblcd1AkQY7gKk1YH2IqxnAIj29NED9mnUtgReO7sHNGWmL3Z1bcMgRXUPp2bBo2joefCCWadsIrNscmI+F8AvlB9LHNADcnWSbRxuV5sBjSX/TvVgJu5EwJN1CIi4UKK6pB9DzOru1UA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=eMB3BmhFEQqh2NG+sSpwFWme5g8dWkrkohSEKCx/LJ8=;
+ b=McJwnpNXx14a9M+Kr5i2yT+7MCeK303m8yTgVizFWAvx/KYDznt87sGC3WlxbtIeWK5D6tsqBpDCKqRxHENBv2gWSFvAQtEwbo3xAAiGIPijw7TYRGsY4eatKYdF6nvWSlj47LBu0KXTdnzs1L6NI+u/x3Blib1bQcsHOwG193ku5z39xRDhQbFJA7EPyTA7htyjS0TrOsqrVDseidASSnvhLQG+8/+vG2ovxIpsVR7w7vlPSfCUiRbKSnRIDFE321rLb+IYKU0rAXdPu7XKn+RybQuzuc9GNjca1gSvYxAjMkDGq25Ic8UIzmETIYiy2UDtUQcJNgfCd20/obk1ZA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.80.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
+ dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=eMB3BmhFEQqh2NG+sSpwFWme5g8dWkrkohSEKCx/LJ8=;
+ b=eOU7e9MtApeJJMHG9oxUjjIosvCPitpt0BtYsR77uPeaglxZgaoYy+KiCUSwEtbE6Ajd9UG6w6KbF2thXwS4F6jjHrnUZcluu5yslyIipK7p4MJRws51rYT4B46GKRl7Vzups16MnSDvDpfvVYHLCFduRk7kOfAACppfzGKKOBk=
+Received: from DM6PR12CA0015.namprd12.prod.outlook.com (2603:10b6:5:1c0::28)
+ by MWHPR02MB2526.namprd02.prod.outlook.com (2603:10b6:300:44::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.13; Wed, 1 Jun
+ 2022 17:24:03 +0000
+Received: from DM3NAM02FT038.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:5:1c0:cafe::6c) by DM6PR12CA0015.outlook.office365.com
+ (2603:10b6:5:1c0::28) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.12 via Frontend
+ Transport; Wed, 1 Jun 2022 17:24:03 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.80.198)
+ smtp.mailfrom=xilinx.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.80.198 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.80.198; helo=xir-pvapexch02.xlnx.xilinx.com; pr=C
+Received: from xir-pvapexch02.xlnx.xilinx.com (149.199.80.198) by
+ DM3NAM02FT038.mail.protection.outlook.com (10.13.5.131) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.5314.12 via Frontend Transport; Wed, 1 Jun 2022 17:24:03 +0000
+Received: from xir-pvapexch02.xlnx.xilinx.com (172.21.17.17) by
+ xir-pvapexch02.xlnx.xilinx.com (172.21.17.17) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.14; Wed, 1 Jun 2022 18:24:01 +0100
+Received: from smtp.xilinx.com (172.21.105.197) by
+ xir-pvapexch02.xlnx.xilinx.com (172.21.17.17) with Microsoft SMTP Server id
+ 15.1.2176.14 via Frontend Transport; Wed, 1 Jun 2022 18:24:01 +0100
+Received: from [172.21.132.221] (port=53720 helo=xdcsswbld02.xilinx.com)
+ by smtp.xilinx.com with esmtp (Exim 4.90)
+ (envelope-from <frederic.konrad@xilinx.com>)
+ id 1nwS4e-0004Ck-TG; Wed, 01 Jun 2022 18:24:01 +0100
+From: <frederic.konrad@xilinx.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
+ <edgar.iglesias@gmail.com>, <alistair@alistair23.me>, <saipava@xilinx.com>,
+ <edgari@xilinx.com>, <fkonrad@amd.com>
+Subject: [PATCH v3 0/4] xlnx-zcu102: fix the display port.
+Date: Wed, 1 Jun 2022 18:23:49 +0100
+Message-ID: <20220601172353.3220232-1-fkonrad@xilinx.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [RFC 0/1] i2c/aspeed: Add slave device handling in new register
- mode
-Content-Language: en-US
-To: Peter Delevoryas <pdel@fb.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <zhdaniel@fb.com>,
- <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>,
- <steven_lee@aspeedtech.com>, <k.jensen@samsung.com>, Joe Komlodi
- <komlodi@google.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery
- <andrew@aj.id.au>
-References: <20220525205024.1158075-1-pdel@fb.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220525205024.1158075-1-pdel@fb.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: fe5d5f81-22b4-463b-9fdc-867078678a5a
-X-Ovh-Tracer-Id: 1215127476620987381
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrkeelgdduudegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeutdeltdeggeeludehteeuvddtjeefudeglefhffdttddvudetkefgleetvdfffeenucffohhmrghinhepghhithhhuhgsrdgtohhmpdhkvghrnhgvlhdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtoheprghnughrvgifsegrjhdrihgurdgruh
-Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
- helo=1.mo552.mail-out.ovh.net
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: db33d264-8069-4732-af8e-08da43f3863e
+X-MS-TrafficTypeDiagnostic: MWHPR02MB2526:EE_
+X-Microsoft-Antispam-PRVS: <MWHPR02MB252614FCC6F501C4BA91B8A2CCDF9@MWHPR02MB2526.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: uFaiw7wAJz8dtnRfI3EYVW19XlVg4Z8on7CiROy+QZg4OjWqNBcDoCSCeYQhsKfbL+tuSrZQMj47wHq4lA1tL6IT1/iApR+/k32rz8+lHp2JvbPLz/BcsMaNB5Tgcgh2R1ucS2N2Mr0ClERAMzPXXApic0iPlUaBjudU1AvkNHj1zn87Cw+Vnc2Eg0npfSHK+WECy5YBJotnUyun0UlmrJx9Z2ryBbVgbWD1x9EwPJotfBQ3JcowWV7EW0hNPWHWu8oNn05pLfscZ/nkD2+TyG9hJRiTuw+YL2mUyYTL8qdpJk2FPc81+kVb33v+iEdvInEHRa1HFgr1kDMbGcp/c0aqbV3ARndIGq67CGy9krLy9MjruJQRw+Ob9MUkPZzCwE7HJCTIHoC6PrKNilfJo/jOZcPwd2bS87rBEE7GXp+jc9+9YHYYrczlvNmeFC9BCI1hwoFbX+O1NmCxtnhRKLwe71ZS173h5HKHd53Cxo+p0rI3+BICXCWDKlZP5A7UCaUiO43cNbvpSrc827C5eC8PYob4njgk439wLAzZGej9VW9gvThOZcl0/MFcfCX55ING3fZWlFBh1L/nG6O2yM8wPGvSJQERZBBUdc1jtjgBND+nHW/oso/FoGqauboKBwzKN2ppmD8mDmBX3h0Z2QHm865OywdMw0Vthul2ZeEP8CYaKJVikb7ADfpIsJ1QMQfpCdY7Dt0LMPNTC8Sl7g==
+X-Forefront-Antispam-Report: CIP:149.199.80.198; CTRY:IE; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:xir-pvapexch02.xlnx.xilinx.com;
+ PTR:unknown-80-198.xilinx.com; CAT:NONE;
+ SFS:(13230001)(4636009)(40470700004)(36840700001)(46966006)(4326008)(356005)(26005)(316002)(7636003)(83380400001)(6666004)(2906002)(36860700001)(7696005)(70586007)(70206006)(8676002)(36756003)(5660300002)(186003)(54906003)(40460700003)(9786002)(8936002)(2616005)(1076003)(508600001)(47076005)(426003)(336012)(6916009)(2876002)(82310400005)(102446001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jun 2022 17:24:03.1746 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: db33d264-8069-4732-af8e-08da43f3863e
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.80.198];
+ Helo=[xir-pvapexch02.xlnx.xilinx.com]
+X-MS-Exchange-CrossTenant-AuthSource: DM3NAM02FT038.eop-nam02.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR02MB2526
+Received-SPF: pass client-ip=2a01:111:f400:7ea9::601;
+ envelope-from=fkonrad@xilinx.com;
+ helo=NAM02-SN1-obe.outbound.protection.outlook.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,64 +161,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uYTJn+TDsBES
+X-TUID: xVwqEwcQUwpc
 
-[ Adding Joe ]
+From: Frederic Konrad <fkonrad@amd.com>
 
-On 5/25/22 22:50, Peter Delevoryas wrote:
-> The AST2600/AST1030 new register mode patches[1] and the I2C slave device
-> patches[2] will be really useful, but we still need DMA slave device
-> handling in the new register mode too for the use-cases I'm thinking of
-> (OpenBIC Zephyr kernel using Aspeed SDK drivers[3]).
-> 
-> My test images are on Github[4]. They can be used with the ast1030-evb, or
-> the oby35-cl and oby35-bb machines in the fb qemu branch[5].
-> 
-> I'm submitting this as an RFC cause I just want to see how other people
-> expect these changes to be made based on the previously submitted "new
-> register mode" and "old register mode slave device" patches.
+Hi,
 
+This patch set fixes some issues with the DisplayPort for the ZCU102:
 
-Currently, my preferred approach would be to start with Joe's patchset
-because the registerfields conversion is a huge effort and it's adding
-new mode support which should cover the needs for the AST1030 SoC [1].
+The first patch fixes the wrong register size and thus the risk of register
+overflow.
 
-Troy, could you please confirm this is OK with you ? I have pushed
-the patches on :
+The three other one add a vblank interrupt required by the linux driver:
+  - When using the VNC graphic backend and leaving it unconnected, in the best
+    case the gfx_update callback is called once every 3000ms which is
+    insufficient for the driver.  This is fixed by providing a VBLANK interrupt
+    from a ptimer.
+  - This requirement revealed two issues with the IRQ numbers and the
+    interrupt disable logic fixed by the two last patches.
 
-   https://github.com/legoater/qemu/commits/aspeed-7.1
+Tested by:
+  - booting Petalinux with the framebuffer enabled.
+  - migrating the running guest and ensure that the vblank timer still fire correctly.
 
-Then, adding slave support for old [2] and new mode (this patch)
-shouldn't be too much of a problem since they are small.
+Best Regards,
+Fred
 
-we lack a test case for this controller and writing a I2C Aspeed bus
-driver for qtest is not an easy task.
+v2 -> v3:
+  * Added a VMSTATE in order to migrate the vblank timer as suggested
+    by Peter Maydell (Patch 2).
+  * Rebased on 0cac736e.
+v1 -> v2:
+  * Better use of the ptimer API by using a correct POLICY as suggested
+    by Peter Maydell (Patch 2).
+  * Rebased on 78ac2eeb.
 
-It might be easier to start an ast2600-evb machine with a lightweight
-userspace (buildroot, I can host that somewhere on GH) and run some I2C
-get/set/detect commands from a python/expect framework, like avocado.
-I2C devices can be added on the command line for the purpose.
+Frederic Konrad (2):
+  xlnx_dp: fix the wrong register size
+  xlnx-zynqmp: fix the irq mapping for the display port and its dma
 
+Sai Pavan Boddu (2):
+  xlnx_dp: Introduce a vblank signal
+  xlnx_dp: Fix the interrupt disable logic
 
-Thanks,
+ hw/arm/xlnx-zynqmp.c         |  4 +--
+ hw/display/xlnx_dp.c         | 47 +++++++++++++++++++++++++++---------
+ include/hw/display/xlnx_dp.h | 12 +++++++--
+ 3 files changed, 48 insertions(+), 15 deletions(-)
 
-C.
-
-  
-> Thanks,
-> Peter
-> 
-> [1] https://patchwork.kernel.org/project/qemu-devel/list/?series=626028&archive=both
-> [2] https://patchwork.kernel.org/project/qemu-devel/list/?series=627914&archive=both
-> [3] https://github.com/AspeedTech-BMC/zephyr/blob/db3dbcc9c52e67a47180890ac938ed380b33f91c/drivers/i2c/i2c_aspeed.c#L1362-L1368
-> [4] https://github.com/peterdelevoryas/OpenBIC/releases/tag/oby35-cl-2022.13.01
-> [5] https://github.com/facebook/openbmc-qemu
-> 
-> Peter Delevoryas (1):
->    i2c/aspeed: Add slave device handling in new register mode
-> 
->   hw/i2c/aspeed_i2c.c         | 118 ++++++++++++++++++++++++++++++++++--
->   include/hw/i2c/aspeed_i2c.h |  14 +++--
->   2 files changed, 124 insertions(+), 8 deletions(-)
-> 
+-- 
+2.25.1
 

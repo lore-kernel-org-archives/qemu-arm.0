@@ -1,103 +1,103 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4483483lfh;
-        Wed, 1 Jun 2022 14:18:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyAIf3mf+SrrC0JM3+JHaiMia+x+EowSQZm2SzQd6uELINBOnbYXrcMIxrMmWWnU7MIEdyz
-X-Received: by 2002:a05:622a:1305:b0:2f3:e1b1:c622 with SMTP id v5-20020a05622a130500b002f3e1b1c622mr1409612qtk.137.1654118321157;
-        Wed, 01 Jun 2022 14:18:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654118321; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4483790lfh;
+        Wed, 1 Jun 2022 14:19:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyv8f3y0/eIKzbHa+EmpeX7Mx7faNUoxhfHFsMNzSE6AWSFhceVCRl0bG8XWmuuKLaO+9hf
+X-Received: by 2002:a05:620a:458c:b0:6a5:b92e:7406 with SMTP id bp12-20020a05620a458c00b006a5b92e7406mr1122288qkb.387.1654118359514;
+        Wed, 01 Jun 2022 14:19:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654118359; cv=none;
         d=google.com; s=arc-20160816;
-        b=PR9C6ZKdercJB/yNM5BxuHrpQx4wORogd36BdT5Z1WxCaY4QKHLlaxzjkYe3f30vSo
-         4b036Qa5h6LAbzOcVBcgo2heulPsCtjEhL8zC67Rz2veFIZQta1+mfM31ioqBUW4C1fB
-         J3D2aJpbnXcPFbe7lAOwhXVMYVmypfJuwXvKNwJHclFovYztMoEz4lqJLI73FWfsqC+T
-         5YwJ4ODKIZBPP/KVo04BMUsRy4f95VupXxYV7tZ9Mkp2FMiJTDuygahtzEQq6HasNZS7
-         W45XAeRgKMwff7GRuJbB6Sg7+uOAekW6IFG6AogmBMr+ZGAvsEF8GLf3VTRXz6LSkpYs
-         iLQA==
+        b=Q3OueeuizJARPcxU5SRRQLb0gkQzvzfcLfwne9wOzhprEwg0buGV+EdrRKpQw56UIz
+         gQhcWxz1z8g+i0i2m9TRvqg0urRg2Qg7C6te9Asdde2yj61eID8yDk0oyKatHRvnFU2c
+         QNdLvhWm++K/3I7LT/8z0KyEkDCnJlH7ueaiZPD6Rv7WK+Kuql1hfheNNaPjh0c7E8+t
+         R7mNdxeN8jIITXWoDsJM3MeBhqkn1AxlJSRjPt9YVk07Y0OdwofnIGAnhYq59Mz94tT3
+         dh/vZIJsjEvVc+Gw/gItlPcJdoFfCjISwgIZL+AKjNPR+q13Dm0CD77gyew4+b8dIUZq
+         P6Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:feedback-id:dkim-signature:dkim-signature;
-        bh=60NMw08L2ryECnMFT4jorObfQQnqhXdOTETyqAobztw=;
-        b=Ec0cW61MZgobVPRJ/uVcUG2ZxMyp+4nlZI+axD7L/NapODeq4bZm3t9uzOosOYzScM
-         y23vrWZc+WeJz0rwrzN/VaHRkXo0qbjCkNS04KgFxex7jPWVBGu6o9dODtoFwta8jgY7
-         k5g/JKkH5W+zLtsYkby+4zVQHXmacjldGIEtkrVvjTWiJUuqUeN0XYMivVuvY+43kU4G
-         /ya/2STwYeKk4K4VpwdwbOXt39kAGIa2gJH1l1X9uSH01NoZdlbm9/gizXtFj5g3MEPg
-         mJANiNrWTP65Hq//xaJEkofBoXRNRsS1GvU/ybTNG8Ppx3u5UyFh0TSHODtyQViD6v2v
-         SJdg==
+        bh=yHag3Mw2Igm/V+Ga8CJmUAjug2qRue6O68IO4p2OnYc=;
+        b=QFxOudvi4QO7bEyXQDQ+uJbpp9q3vRl1OTYsrqi/td1fsvrGaI1CTVVesT71QFkeB9
+         KZPjPzzPsGyUa0131GElhexLt/nb0rVFBeYK6ZAcgxQ4YY43wfKkGc3MJRbBpydV2dkk
+         sJa6hlxEybGEgGyuLlvbo0RlCcldvRVMGJTHrDtC4FY+Grl4ooAd0vLahrPiFTRODjkR
+         +xsf5QQI3Op7VH19Y7BXbXWk9Z3q6WGmS7rD+Np5FJNSSvG4baffYpn3BXYgGk7EiuWo
+         ATi7+56HGX3Q6ZBRWlOSHcqjJDpMdCGtROSphqwTGxfZna48Y5iHcMiBIH2UCzBOE88j
+         ameA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=q6yY6WdS;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=Ouai+9Fo;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=kXhCj158;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=I+QCtp+X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u13-20020a0562141c0d00b004634f3f9f93si1233822qvc.275.2022.06.01.14.18.40
+        by mx.google.com with ESMTPS id o21-20020ac872d5000000b002f3dd2fb4edsi1245290qtp.600.2022.06.01.14.19.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Jun 2022 14:18:41 -0700 (PDT)
+        Wed, 01 Jun 2022 14:19:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=q6yY6WdS;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=Ouai+9Fo;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=kXhCj158;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=I+QCtp+X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47974 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwVjk-0000TO-H8
-	for alex.bennee@linaro.org; Wed, 01 Jun 2022 17:18:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59900)
+	id 1nwVkM-0001Zf-Th
+	for alex.bennee@linaro.org; Wed, 01 Jun 2022 17:19:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1nwVaG-0000yj-KT; Wed, 01 Jun 2022 17:08:52 -0400
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:35037)
+ id 1nwVaC-0000rZ-AV; Wed, 01 Jun 2022 17:08:48 -0400
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:42125)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1nwVaE-00023Z-Od; Wed, 01 Jun 2022 17:08:52 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id F30FE5C01C7;
- Wed,  1 Jun 2022 17:08:49 -0400 (EDT)
+ id 1nwVaA-000231-C2; Wed, 01 Jun 2022 17:08:48 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.nyi.internal (Postfix) with ESMTP id 8E5C75C00DF;
+ Wed,  1 Jun 2022 17:08:45 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Wed, 01 Jun 2022 17:08:49 -0400
+ by compute2.internal (MEProxy); Wed, 01 Jun 2022 17:08:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
  h=cc:cc:content-transfer-encoding:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm3; t=1654117729; x=
- 1654204129; bh=60NMw08L2ryECnMFT4jorObfQQnqhXdOTETyqAobztw=; b=q
- 6yY6WdSTT33aC9n9K9qWg5bdk5PRZX0NGvZMv0G/144haYGrGWoX5/lC9G80jVUf
- evY/y4DFYRtVGpKZlN7+IEywxM2Wb4yrjGptGi8sYEEaH29xPmiPbAAS80WEULOW
- fk6ZEJac339OP17HZs5pGdIDge4OiRG0Ky5Ub14Yacwj3NKDtS8bx24ofcrCDlsc
- dWLiLWrPTTA0Zs4etGjINnRwg8nAfSJtu4xVP6UYMFo+tsz1fFyndM03zAPCwBE8
- +X/VvGrL4EQ5X8tOqmPiO9wECPo8XvHXl11Th4SfmQqd68ntfo3jJn+wuLg3901S
- +8hYARPbV1n9gFDrHF2yw==
+ :reply-to:sender:subject:subject:to:to; s=fm3; t=1654117725; x=
+ 1654204125; bh=yHag3Mw2Igm/V+Ga8CJmUAjug2qRue6O68IO4p2OnYc=; b=k
+ XhCj158JJ7bO7xnkbUBQ+Z5WKyKNEVYk9lZZmk9FKeF5+OrhgLVS1mx5XMNcEl7A
+ 4dLP/3FzcYqm81iSvwVnJg+HoDk/ipmnoL7A+v/5M/I42MVAMbRT380k/kT+XzXw
+ Dp/OklDgxpgzhLdoeFVEN2NxtQQKA6lMsytHzkDgb578cL8Uh6uaekLvKC+A/DM0
+ OwSIukO+RqSqkL1qu5WcZ/6c8mzUKfgEcgDi8hgPlqH3ONmTpnM4Ja5zpCwOl8N+
+ sgHn3RzJfsbBMF9gLBjk8MCcbFLi7sd7DiQL42+GKrfHrnVbTzcjhxq9baTP9PCE
+ 10Jg/vog1lnF3t9ML6/kQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; t=1654117729; x=1654204129; bh=60NMw08L2ryEC
- nMFT4jorObfQQnqhXdOTETyqAobztw=; b=Ouai+9FojQZQD7FJqAJ9p+IeazM7i
- rIaQsPqWx28eX1851IURUqow45zjjUUchtb2pqi0viYN9WJHL64Fk2JDOVXftWF+
- JCGdfT5QmIGZezWi1mh6yQcCoCYIvT+1xYb9qDq0dalj0bz4zJOWiAuj+WCzHAi9
- uF1KDpzDRIeftzVju1EiY3aAg1GxQakU2uyexU3UYJKi1ry3+TMor50CQnr22UsS
- 3hrIH5T+s7xMdultVtTNTQ2O0hGhAnAfoZIbzMcxIN11QCAvNdD7UVc93+/36fK3
- luLwbfxu8We2WYmvHhFH2aJWTW9wQvtZJPFSOn8RG5fwwGyWTxtJGu6jw==
-X-ME-Sender: <xms:YdWXYqkTTzcilhkxg8KX4Yzyqd3L3JdmEz64ufPuuUrGSG2EdyKoaA>
- <xme:YdWXYh1RF44KhCeV1WY9MWr_nUEkn2V4EiRMoMLm9Cx-1i9N0sWOSkqLm95qokkkr
- aF4EYkLmZlQD-xwr3o>
-X-ME-Received: <xmr:YdWXYorv6VYxRz6y7YWdeOpkI9FeJUpJM2x5BMfk9RYtIA2VwSynN2iL0LEsFzXlWIVdd9PRTZLkitXagLvp>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrledtgdduheehucetufdoteggodetrfdotf
+ :x-sasl-enc; s=fm1; t=1654117725; x=1654204125; bh=yHag3Mw2Igm/V
+ +Ga8CJmUAjug2qRue6O68IO4p2OnYc=; b=I+QCtp+XhYrK77ZdU5pavaZBDPJ3O
+ ZhoFuAYuMV4LOfpBbfMnObWb2PDDKll6ocbAT4JHaRk30zrUBXD0Bb0P3iFQZoOs
+ 9STLvcnYXFcRFGpbfOKqCVVOFCesqFm/tX2hZjl8I5I9cJEoE7pIabi5EYZ/acbc
+ gC6v9/QFh9TATXlEM679occxSofg+wDvPe2Ap6pHVKA3cqi3F+6rmuErlPhbEPza
+ oKh3jLOm9kCP/noiuUM/Ia+fvcY/IjX1sShNr0RykAtoZF3T+1Y5VfQL3rrI1A2h
+ nCc1sbiuB/aWd0UKrqYpjVvfDmL0FYUjYGXSWP+JdRyCylBz6gZ9ZHhRQ==
+X-ME-Sender: <xms:XdWXYrzmzZDEwrhHKkJQ8agUH1EgjIAruZ8-oYpKmyorefm7-DdtZw>
+ <xme:XdWXYjRCPqrbTdMZWTHdwIoQXOyH-qx4Jp9uc3QzTqOKV3riFPY1s84oaSEO81fTj
+ Yqdm6nzIJ87jkz__ok>
+X-ME-Received: <xmr:XdWXYlVATYPUpFihxzXeVpZesrFVA_D0DCeZzgK6u9FeV2T3EYZCV_4RYY6UKsBX3gVxIY9bwSvF0nVPjbLi>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrledtgdduheeiucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomhepmfhlrghu
  shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
  htvghrnhepjefgieelgfeiveehkeeuveehheekfeevgeeigfehfefgjeejhefffeegudej
- udegnecuvehluhhsthgvrhfuihiivgepudenucfrrghrrghmpehmrghilhhfrhhomhepih
+ udegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
  htshesihhrrhgvlhgvvhgrnhhtrdgukh
-X-ME-Proxy: <xmx:YdWXYull7PJWTjYngd2KiPAWYS2m0ysloB7fZBxuZ46YPTS1qqrHkQ>
- <xmx:YdWXYo1-Rg9rj_k1ei6X8LmxaJ_iqsXq9lKacWHfuPJWRzPZ0S_b6A>
- <xmx:YdWXYlssmUcMEcyUHgcRMvHHQGU-eSaKOrwZi2sbBZIl-sienP4UqA>
- <xmx:YdWXYtsLD9iddB95wJ4uouYWKXeeH2lBIi1KUBil_kjzLGQmX9bm0w>
+X-ME-Proxy: <xmx:XdWXYlgu8JioUvJNdk0yDIbFB5S6dH58AnPeVvUIKk-685U-wW8Duw>
+ <xmx:XdWXYtCPSi08BsoqtUcbssytrLcMp7ZvdFmcFSaXliQu_zO8TQFHgg>
+ <xmx:XdWXYuK3mrpE9r_L7gNzCSPKBbdffuTsV04pApvhlsqQO3WzOc89iA>
+ <xmx:XdWXYiKHtudzZqgRCibJEZy0rnKa0s7mJaoK8AyOMLfnyOQv0RIDfQ>
 Feedback-ID: idc91472f:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 1 Jun 2022 17:08:47 -0400 (EDT)
+ 1 Jun 2022 17:08:43 -0400 (EDT)
 From: Klaus Jensen <its@irrelevant.dk>
 To: qemu-devel@nongnu.org
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, qemu-arm@nongnu.org,
@@ -110,9 +110,9 @@ Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, qemu-arm@nongnu.org,
  Joel Stanley <joel@jms.id.au>,
  Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
  Klaus Jensen <k.jensen@samsung.com>
-Subject: [RFC PATCH v2 6/6] hw/misc: add a toy i2c echo device [DO NOT PULL]
-Date: Wed,  1 Jun 2022 23:08:31 +0200
-Message-Id: <20220601210831.67259-7-its@irrelevant.dk>
+Subject: [RFC PATCH v2 4/6] hw/i2c: add asynchronous send
+Date: Wed,  1 Jun 2022 23:08:29 +0200
+Message-Id: <20220601210831.67259-5-its@irrelevant.dk>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220601210831.67259-1-its@irrelevant.dk>
 References: <20220601210831.67259-1-its@irrelevant.dk>
@@ -142,204 +142,268 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2jaRZfR4gEzt
+X-TUID: QEH7KuJ1EXId
 
 From: Klaus Jensen <k.jensen@samsung.com>
 
-Add an example I2C device to demonstrate how a slave may master the bus
-and send data asynchronously to another slave.
+Add an asynchronous version of i2c_send() that requires the slave to
+explicitly acknowledge on the bus with i2c_ack().
 
-The device will echo whatever it is sent to the device identified by the
-first byte received.
+The current master must use the new i2c_start_send_async() to indicate
+that it wants to do an asynchronous transfer. This allows the i2c core
+to check if the target slave supports this or not. This approach relies
+on adding a new enum i2c_event member, which is why a bunch of other
+devices needs changes in their event handling switches.
 
 Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
 ---
- hw/misc/i2c-echo.c  | 162 ++++++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build |   2 +
- 2 files changed, 164 insertions(+)
- create mode 100644 hw/misc/i2c-echo.c
+ hw/arm/pxa2xx.c            |  2 ++
+ hw/display/sii9022.c       |  2 ++
+ hw/display/ssd0303.c       |  2 ++
+ hw/i2c/core.c              | 36 +++++++++++++++++++++++++++++++++++-
+ hw/i2c/smbus_slave.c       |  4 ++++
+ hw/i2c/trace-events        |  2 ++
+ hw/misc/ibm-cffps.c        |  2 ++
+ hw/misc/ir35221.c          |  2 ++
+ hw/nvram/eeprom_at24c.c    |  2 ++
+ hw/sensor/lsm303dlhc_mag.c |  2 ++
+ include/hw/i2c/i2c.h       | 16 ++++++++++++++++
+ 11 files changed, 71 insertions(+), 1 deletion(-)
 
-diff --git a/hw/misc/i2c-echo.c b/hw/misc/i2c-echo.c
-new file mode 100644
-index 000000000000..27992eff8c5b
---- /dev/null
-+++ b/hw/misc/i2c-echo.c
-@@ -0,0 +1,162 @@
-+#include "qemu/osdep.h"
-+#include "qemu/timer.h"
-+#include "qemu/main-loop.h"
-+#include "block/aio.h"
-+#include "hw/i2c/i2c.h"
-+
-+#define TYPE_I2C_ECHO "i2c-echo"
-+OBJECT_DECLARE_SIMPLE_TYPE(I2CEchoState, I2C_ECHO)
-+
-+enum i2c_echo_state {
-+    I2C_ECHO_STATE_IDLE,
-+    I2C_ECHO_STATE_REQUEST_MASTER,
-+    I2C_ECHO_STATE_START_SEND,
-+    I2C_ECHO_STATE_ACK,
-+};
-+
-+typedef struct I2CEchoState {
-+    I2CSlave parent_obj;
-+
-+    I2CBus *bus;
-+
-+    enum i2c_echo_state state;
-+    QEMUBH *bh;
-+
-+    unsigned int pos;
-+    uint8_t data[3];
-+} I2CEchoState;
-+
-+static void i2c_echo_bh(void *opaque)
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index f4f687df68ef..93dda83d7aa9 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -1305,6 +1305,8 @@ static int pxa2xx_i2c_event(I2CSlave *i2c, enum i2c_event event)
+     case I2C_NACK:
+         s->status |= 1 << 1;				/* set ACKNAK */
+         break;
++    default:
++        return -1;
+     }
+     pxa2xx_i2c_update(s);
+ 
+diff --git a/hw/display/sii9022.c b/hw/display/sii9022.c
+index b591a5878901..664fd4046d82 100644
+--- a/hw/display/sii9022.c
++++ b/hw/display/sii9022.c
+@@ -76,6 +76,8 @@ static int sii9022_event(I2CSlave *i2c, enum i2c_event event)
+         break;
+     case I2C_NACK:
+         break;
++    default:
++        return -1;
+     }
+ 
+     return 0;
+diff --git a/hw/display/ssd0303.c b/hw/display/ssd0303.c
+index aeae22da9c29..d67b0ad7b529 100644
+--- a/hw/display/ssd0303.c
++++ b/hw/display/ssd0303.c
+@@ -196,6 +196,8 @@ static int ssd0303_event(I2CSlave *i2c, enum i2c_event event)
+     case I2C_NACK:
+         /* Nothing to do.  */
+         break;
++    default:
++        return -1;
+     }
+ 
+     return 0;
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index 145dce60782a..d4ba8146bffb 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -161,7 +161,8 @@ static int i2c_do_start_transfer(I2CBus *bus, uint8_t address,
+            start condition.  */
+ 
+         if (sc->event) {
+-            trace_i2c_event("start", s->address);
++            trace_i2c_event(event == I2C_START_SEND ? "start" : "start_async",
++                            s->address);
+             rv = sc->event(s, event);
+             if (rv && !bus->broadcast) {
+                 if (bus_scanned) {
+@@ -212,6 +213,11 @@ int i2c_start_send(I2CBus *bus, uint8_t address)
+     return i2c_do_start_transfer(bus, address, I2C_START_SEND);
+ }
+ 
++int i2c_start_send_async(I2CBus *bus, uint8_t address)
 +{
-+    I2CEchoState *state = opaque;
++    return i2c_do_start_transfer(bus, address, I2C_START_SEND_ASYNC);
++}
 +
-+    switch (state->state) {
-+    case I2C_ECHO_STATE_IDLE:
-+        return;
+ void i2c_end_transfer(I2CBus *bus)
+ {
+     I2CSlaveClass *sc;
+@@ -261,6 +267,23 @@ int i2c_send(I2CBus *bus, uint8_t data)
+     return ret ? -1 : 0;
+ }
+ 
++int i2c_send_async(I2CBus *bus, uint8_t data)
++{
++    I2CNode *node = QLIST_FIRST(&bus->current_devs);
++    I2CSlave *slave = node->elt;
++    I2CSlaveClass *sc = I2C_SLAVE_GET_CLASS(slave);
 +
-+    case I2C_ECHO_STATE_REQUEST_MASTER:
-+        i2c_bus_master(state->bus, state->bh);
-+        state->state = I2C_ECHO_STATE_START_SEND;
-+        return;
++    if (!sc->send_async) {
++        return -1;
++    }
 +
-+    case I2C_ECHO_STATE_START_SEND:
-+        if (i2c_start_send_async(state->bus, state->data[0])) {
-+            goto release_bus;
-+        }
++    trace_i2c_send_async(slave->address, data);
 +
-+        state->pos++;
-+        state->state = I2C_ECHO_STATE_ACK;
-+        return;
++    sc->send_async(slave, data);
 +
-+    case I2C_ECHO_STATE_ACK:
-+        if (state->pos > 2) {
-+            break;
-+        }
++    return 0;
++}
 +
-+        if (i2c_send_async(state->bus, state->data[state->pos++])) {
-+            break;
-+        }
-+
+ uint8_t i2c_recv(I2CBus *bus)
+ {
+     uint8_t data = 0xff;
+@@ -297,6 +320,17 @@ void i2c_nack(I2CBus *bus)
+     }
+ }
+ 
++void i2c_ack(I2CBus *bus)
++{
++    if (!bus->bh) {
 +        return;
 +    }
 +
++    trace_i2c_ack();
 +
-+    i2c_end_transfer(state->bus);
-+release_bus:
-+    i2c_bus_release(state->bus);
-+
-+    state->state = I2C_ECHO_STATE_IDLE;
++    qemu_bh_schedule(bus->bh);
 +}
 +
-+static int i2c_echo_event(I2CSlave *s, enum i2c_event event)
-+{
-+    I2CEchoState *state = I2C_ECHO(s);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        state->pos = 0;
-+
-+        break;
-+
-+    case I2C_START_SEND:
-+        state->pos = 0;
-+
-+        break;
-+
-+    case I2C_FINISH:
-+        state->pos = 0;
-+        state->state = I2C_ECHO_STATE_REQUEST_MASTER;
-+        qemu_bh_schedule(state->bh);
-+
-+        break;
-+
-+    case I2C_NACK:
+ static int i2c_slave_post_load(void *opaque, int version_id)
+ {
+     I2CSlave *dev = opaque;
+diff --git a/hw/i2c/smbus_slave.c b/hw/i2c/smbus_slave.c
+index 5d10e27664db..feb3ec633350 100644
+--- a/hw/i2c/smbus_slave.c
++++ b/hw/i2c/smbus_slave.c
+@@ -143,6 +143,10 @@ static int smbus_i2c_event(I2CSlave *s, enum i2c_event event)
+             dev->mode = SMBUS_CONFUSED;
+             break;
+         }
 +        break;
 +
 +    default:
 +        return -1;
-+    }
-+
-+    return 0;
-+}
-+
-+static uint8_t i2c_echo_recv(I2CSlave *s)
-+{
-+    I2CEchoState *state = I2C_ECHO(s);
-+
-+    if (state->pos > 2) {
-+        return 0xff;
-+    }
-+
-+    return state->data[state->pos++];
-+}
-+
-+static int i2c_echo_send(I2CSlave *s, uint8_t data)
-+{
-+    I2CEchoState *state = I2C_ECHO(s);
-+
-+    if (state->pos > 2) {
+     }
+ 
+     return 0;
+diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+index 209275ed2dc8..af181d43ee64 100644
+--- a/hw/i2c/trace-events
++++ b/hw/i2c/trace-events
+@@ -4,7 +4,9 @@
+ 
+ i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
+ i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02x"
++i2c_send_async(uint8_t address, uint8_t data) "send_async(addr:0x%02x) data:0x%02x"
+ i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
++i2c_ack(void) ""
+ 
+ # aspeed_i2c.c
+ 
+diff --git a/hw/misc/ibm-cffps.c b/hw/misc/ibm-cffps.c
+index 042155bb7838..d69a727fd5f9 100644
+--- a/hw/misc/ibm-cffps.c
++++ b/hw/misc/ibm-cffps.c
+@@ -152,6 +152,8 @@ static int ibm_cffps_event(I2CSlave *i2c, enum i2c_event event)
+     case I2C_FINISH:
+          s->pointer = 0xFF;
+         break;
++    default:
 +        return -1;
-+    }
-+
-+    state->data[state->pos++] = data;
-+
-+    return 0;
-+}
-+
-+static void i2c_echo_realize(DeviceState *dev, Error **errp)
-+{
-+    I2CEchoState *state = I2C_ECHO(dev);
-+    BusState *bus = qdev_get_parent_bus(dev);
-+
-+    state->bus = I2C_BUS(bus);
-+    state->bh = qemu_bh_new(i2c_echo_bh, state);
-+
-+    return;
-+}
-+
-+static void i2c_echo_class_init(ObjectClass *oc, void *data)
-+{
-+    I2CSlaveClass *sc = I2C_SLAVE_CLASS(oc);
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->realize = i2c_echo_realize;
-+
-+    sc->event = i2c_echo_event;
-+    sc->recv = i2c_echo_recv;
-+    sc->send = i2c_echo_send;
-+}
-+
-+static const TypeInfo i2c_echo = {
-+    .name = TYPE_I2C_ECHO,
-+    .parent = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(I2CEchoState),
-+    .class_init = i2c_echo_class_init,
-+};
-+
-+static void register_types(void)
-+{
-+    type_register_static(&i2c_echo);
-+}
-+
-+type_init(register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 0135d1975ceb..4132fe5e0bf7 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -125,6 +125,8 @@ softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
+     }
  
- softmmu_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_ahb_apb_pnp.c'))
+     s->len = 0;
+diff --git a/hw/misc/ir35221.c b/hw/misc/ir35221.c
+index 5e01d3655059..c46b9ee1c3bf 100644
+--- a/hw/misc/ir35221.c
++++ b/hw/misc/ir35221.c
+@@ -117,6 +117,8 @@ static int ir35221_event(I2CSlave *i2c, enum i2c_event event)
+     case I2C_FINISH:
+          s->pointer = 0xFF;
+         break;
++    default:
++        return -1;
+     }
  
-+softmmu_ss.add(when: 'CONFIG_I2C', if_true: files('i2c-echo.c'))
+     s->len = 0;
+diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
+index 01a3093600fa..d695f6ae894a 100644
+--- a/hw/nvram/eeprom_at24c.c
++++ b/hw/nvram/eeprom_at24c.c
+@@ -75,6 +75,8 @@ int at24c_eeprom_event(I2CSlave *s, enum i2c_event event)
+         break;
+     case I2C_NACK:
+         break;
++    default:
++        return -1;
+     }
+     return 0;
+ }
+diff --git a/hw/sensor/lsm303dlhc_mag.c b/hw/sensor/lsm303dlhc_mag.c
+index 4c98ddbf207c..bb8d48b2fdb0 100644
+--- a/hw/sensor/lsm303dlhc_mag.c
++++ b/hw/sensor/lsm303dlhc_mag.c
+@@ -427,6 +427,8 @@ static int lsm303dlhc_mag_event(I2CSlave *i2c, enum i2c_event event)
+         break;
+     case I2C_NACK:
+         break;
++    default:
++        return -1;
+     }
+ 
+     s->len = 0;
+diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+index be8bb8b78a60..9b9581d23097 100644
+--- a/include/hw/i2c/i2c.h
++++ b/include/hw/i2c/i2c.h
+@@ -12,6 +12,7 @@
+ enum i2c_event {
+     I2C_START_RECV,
+     I2C_START_SEND,
++    I2C_START_SEND_ASYNC,
+     I2C_FINISH,
+     I2C_NACK /* Masker NACKed a receive byte.  */
+ };
+@@ -28,6 +29,9 @@ struct I2CSlaveClass {
+     /* Master to slave. Returns non-zero for a NAK, 0 for success. */
+     int (*send)(I2CSlave *s, uint8_t data);
+ 
++    /* Master to slave (asynchronous). Receiving slave must call i2c_ack(). */
++    void (*send_async)(I2CSlave *s, uint8_t data);
 +
- specific_ss.add(when: 'CONFIG_AVR_POWER', if_true: files('avr_power.c'))
+     /*
+      * Slave to master.  This cannot fail, the device should always
+      * return something here.
+@@ -127,11 +131,23 @@ int i2c_start_recv(I2CBus *bus, uint8_t address);
+  */
+ int i2c_start_send(I2CBus *bus, uint8_t address);
  
- specific_ss.add(when: 'CONFIG_IMX', if_true: files('imx6_src.c'))
++/**
++ * i2c_start_send_async: start an asynchronous 'send' transfer on an I2C bus.
++ *
++ * @bus: #I2CBus to be used
++ * @address: address of the slave
++ *
++ * Return: 0 on success, -1 on error
++ */
++int i2c_start_send_async(I2CBus *bus, uint8_t address);
++
+ void i2c_end_transfer(I2CBus *bus);
+ void i2c_nack(I2CBus *bus);
++void i2c_ack(I2CBus *bus);
+ void i2c_bus_master(I2CBus *bus, QEMUBH *bh);
+ void i2c_bus_release(I2CBus *bus);
+ int i2c_send(I2CBus *bus, uint8_t data);
++int i2c_send_async(I2CBus *bus, uint8_t data);
+ uint8_t i2c_recv(I2CBus *bus);
+ bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
+                   I2CNodeList *current_devs);
 -- 
 2.36.1
 

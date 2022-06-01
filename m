@@ -1,118 +1,98 @@
-Received: by 2002:a05:7022:70f:b0:61:a7cc:b0c1 with SMTP id 15csp528125dlh;
-        Wed, 12 Apr 2023 12:10:27 -0700 (PDT)
-X-Google-Smtp-Source: AKy350a+rNLeWBkwmuhsk5QBecUpR1gUl2cTBbHk/fIgntLBeuD1gI8UY9tVCHOb5oXkerb1M3zv
-X-Received: by 2002:a05:622a:11c1:b0:3e6:2d20:172f with SMTP id n1-20020a05622a11c100b003e62d20172fmr11455962qtk.32.1681326627137;
-        Wed, 12 Apr 2023 12:10:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681326627; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp3994680lfh;
+        Wed, 1 Jun 2022 00:12:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyyaAr8tX2gHi5rj2XqKfD5xOkoSx67udHhCo24lFuNidm6dV6O35a0tHKaj/sHUNnck4OU
+X-Received: by 2002:a05:622a:48a:b0:2f3:fa4c:f091 with SMTP id p10-20020a05622a048a00b002f3fa4cf091mr50415041qtx.442.1654067521606;
+        Wed, 01 Jun 2022 00:12:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654067521; cv=none;
         d=google.com; s=arc-20160816;
-        b=NLKJsJmUub+Xh0lxnPokirv45RhR63V74bOXbDUP6hczbhwXSw4gAhXb4trUzds4Ms
-         9UTFHpUtp9x5Gkp1j+j7fS1aa9IZRWiOR/0kCI2urNvvYHl998JBf7oIDlEBYtAmqZSW
-         Wq2tRYCBWbL04wnO+xFIwW5Uv5/ve2+bya0ZXCr7/LWMKB6nEm+Nom1rqWorFBQWg3a2
-         aZ9QtpMv+NM4ua95b5l4W3XNqHatOQxVp7isyBTPk8Jwt+Sxte3ZzNGcj/fd+PwbcMEs
-         PrD5m4KR40xh24ssEuZepY8YzlZY4vOmE4wrY+ZMiicBzVoVLNaaNcqgL/f7yWNRWNaQ
-         8eow==
+        b=ik+X9WbE4X7BuWpZEcJhcYBCl1cGfUQsZrB/tcMpLD0xZyJHofjHVo83+TwATGMBQW
+         mp8iLRIeCRwZIg20h3MJWeG++hagB9VAKkhE/a80E3gUvsfnmueC0qO+b5fxn65fdTGA
+         pufuew6z9tNpZ1CaUog3i8QbWZg7z6tycpbQ4Y/VjN+/nra47F4MRlTkUCJtz99MNjms
+         s0jEData8AQutlyHryhs/E1xLzGoUX0FLndrfDsaSSMZyx84GlKI9Czv3dyIKYRybBxu
+         DBB24kkzzTsLoGsKXdRnWkOPBZwQy+N/kJdmG+o87FVCWbJHqrroHNXUK4ERpFu16yGt
+         DNdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=utAOF5zZ6rrfXlL46IwaxiFUmBfGfm5M0Zg0s4mqZlQ=;
-        b=MEQKuKERMIzUq3O6KSVG+nrp9A1qXfrE84bEunTmPFZeoYdqMB/VsA99KZ3Y25kX8L
-         rSgy72VKwUcww020nQLFiT4AIIXoDjeYwWPg4dBknEngRcPBZZviS2tSJJdaonIwAiy7
-         WPm/auCBfNxOcD/jY7nKt8E8EgyLCtXOtcYHyukNdD7859drCVMZOmodAtrDt4QYTRbE
-         rGIjdVg2B+aWClb/17X9icD3TF2dXGOGd9JpPSwmuJDeee/ygvlIVVyk98non/oS/oIm
-         dxF1ZKB+dgp8ctjo0gQOgBhyyUC7ZbU5vqMBDmG+uWtWQRNX2z4+1e9OUunyOFvr4IrA
-         MHvQ==
+         :user-agent:mime-version:date:message-id;
+        bh=ih7xWLBBUxyQ2A1TiMJQxb8Tf1uCrR+uqm9yeUUdkVU=;
+        b=LAB3FVavAOzi0TygBorcFPWG+CgrRH9hR2/NlOaxp+iF+9HktLA2fwWdK5/4UYTQDY
+         7BGM3mptI7/zYUfvnyjs2EAE4o00MZAasZHve0En5XoTmIXlR/XVWkXfRDlqYtZURuza
+         JfuYbin+xaacPDvnt6FlN1M0hOsWZB8z7wYQ9K9N0ECy4OKA2MUlLTTQEV6Vbn+sFT5I
+         icLNIh0gYNZnGkx47toadLmvvbDS4xBGOEZQ47YVT0zsqNqNvR2tsTod9tdPfDcbo9Ow
+         sskjNnhIAV4tXxEBAFw1hfAdkjBqJ+fEy2STfiEXVXIUfLnSCSCw54ohhKpXgj/jr6nZ
+         cc8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=prcxXBZS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o15-20020a05622a044f00b003ba23d469e6si10831680qtx.159.2023.04.12.12.10.27
+        by mx.google.com with ESMTPS id y16-20020a05620a25d000b0069fe7f301b5si521366qko.541.2022.06.01.00.12.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Apr 2023 12:10:27 -0700 (PDT)
+        Wed, 01 Jun 2022 00:12:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=prcxXBZS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57220 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pmfqp-0004d8-Ms; Wed, 12 Apr 2023 15:09:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nwIWP-0001q1-45
+	for alex.bennee@linaro.org; Wed, 01 Jun 2022 03:12:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pmfqn-0004aX-UJ; Wed, 12 Apr 2023 15:09:49 -0400
-Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pmfqm-0007q2-6p; Wed, 12 Apr 2023 15:09:49 -0400
-Received: by mail-oo1-xc33.google.com with SMTP id
- g26-20020a4adc9a000000b0053b9059edd5so1894675oou.3; 
- Wed, 12 Apr 2023 12:09:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1681326585; x=1683918585;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=utAOF5zZ6rrfXlL46IwaxiFUmBfGfm5M0Zg0s4mqZlQ=;
- b=prcxXBZSBmQsW0IPza879YKLaX1Ki5Btj+LP7+bRGg2Y6ZcNwGKUFjdCEioyIup4gv
- k0+n78km6ge90eqg8PTxH/0Pb4q7LZQ5c9zkFTy/cgldITMx0SbUvI89lKFML+ctuQiX
- BW9gF4rjzCuux/35EVRj1emVR1V1gxm7vWPuzVvybJIbh4GpxsZQvYX8gemd+lhkqYSU
- BXOLzPKfWrzkGkI/bu8vR5NxVT7yFsQtn+33js2gOm4ncTnizfma8TjpleR4fcqmf90u
- T06s97Va/9ByccpeM+PmTxcWeSR5W0wwjQyckeP75ipTSds791icTdN6a0c/Uwes1nln
- M55Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1681326585; x=1683918585;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=utAOF5zZ6rrfXlL46IwaxiFUmBfGfm5M0Zg0s4mqZlQ=;
- b=Tsw096n7X/X1UMQzZZLsWVnmR7xoqxjCfS/ddIteFT+4JX0YfnIHzyYxStFQxlJm2h
- 7RN+YLWjV25vdxPYm4kgvuu3Yyz25bRzKFNUli21gYwju6owVPPOaW4d4jjshEHPn8W4
- xNT9Tq40XrJORC+NmttJtximusyDjf+dwbjrRUCOyodc0Et60IPmPcUS5pJmN2xybcxu
- RXFeUXO7F6VZCYTn8H5ovPvptwdI7N5bXdx8WjmkmtyMokKy9res2CxTxbc+YbIp5AS8
- rAByKalUltriWw1KSq8YLNQmCNjQOoe9CPYCdYaPagzbMadi6ISd+ogfloaaswciFRRv
- TYfw==
-X-Gm-Message-State: AAQBX9deqNLZR/LY/yHYcH/Zi2eDNjjDWqUkX/XIISHiMdQBtni3cXEs
- ztSBwmJ8A6VepqBOnL3wf0E=
-X-Received: by 2002:a4a:520c:0:b0:53e:5644:95c6 with SMTP id
- d12-20020a4a520c000000b0053e564495c6mr3440698oob.3.1681326585478; 
- Wed, 12 Apr 2023 12:09:45 -0700 (PDT)
-Received: from [192.168.68.107] ([191.255.108.232])
- by smtp.gmail.com with ESMTPSA id
- j41-20020a4a88ac000000b0053b88b03e24sm7349111ooa.18.2023.04.12.12.09.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Apr 2023 12:09:45 -0700 (PDT)
-Message-ID: <64fd2939-c632-1f04-a9e6-8b0078a62b15@gmail.com>
-Date: Wed, 12 Apr 2023 16:09:41 -0300
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nwIUx-0001nH-Kv
+ for qemu-arm@nongnu.org; Wed, 01 Jun 2022 03:10:31 -0400
+Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117]:36919)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nwIUv-0003IZ-CJ
+ for qemu-arm@nongnu.org; Wed, 01 Jun 2022 03:10:31 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.147])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id DC1F827C20;
+ Wed,  1 Jun 2022 07:10:21 +0000 (UTC)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Wed, 1 Jun 2022
+ 09:10:21 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G0033362c8d4-2b5f-4d26-b275-f84bed73a068,
+ A963F33A9D1A618F9A1E828761F10BD73193B711) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <983fc0e3-6166-74d4-1164-161c277e4a96@kaod.org>
+Date: Wed, 1 Jun 2022 09:10:15 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH v2 51/54] tcg/ppc: Remove unused constraints A, B, C, D
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [RFC 0/1] i2c/aspeed: Add slave device handling in new register
+ mode
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
- qemu-ppc@nongnu.org
-References: <20230411010512.5375-1-richard.henderson@linaro.org>
- <20230411010512.5375-52-richard.henderson@linaro.org>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20230411010512.5375-52-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Peter Delevoryas <pdel@fb.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <zhdaniel@fb.com>,
+ <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>,
+ <steven_lee@aspeedtech.com>, <k.jensen@samsung.com>, Joe Komlodi
+ <komlodi@google.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery
+ <andrew@aj.id.au>
+References: <20220525205024.1158075-1-pdel@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20220525205024.1158075-1-pdel@fb.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c33;
- envelope-from=danielhb413@gmail.com; helo=mail-oo1-xc33.google.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-1.083,
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: fe5d5f81-22b4-463b-9fdc-867078678a5a
+X-Ovh-Tracer-Id: 1215127476620987381
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrkeelgdduudegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeutdeltdeggeeludehteeuvddtjeefudeglefhffdttddvudetkefgleetvdfffeenucffohhmrghinhepghhithhhuhgsrdgtohhmpdhkvghrnhgvlhdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtoheprghnughrvgifsegrjhdrihgurdgruh
+Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
+ helo=1.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,35 +106,65 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JE1lBteuOei5
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uYTJn+TDsBES
 
+[ Adding Joe ]
 
-
-On 4/10/23 22:05, Richard Henderson wrote:
-> These constraints have not been used for quite some time.
+On 5/25/22 22:50, Peter Delevoryas wrote:
+> The AST2600/AST1030 new register mode patches[1] and the I2C slave device
+> patches[2] will be really useful, but we still need DMA slave device
+> handling in the new register mode too for the use-cases I'm thinking of
+> (OpenBIC Zephyr kernel using Aspeed SDK drivers[3]).
 > 
-> Fixes: 77b73de67632 ("Use rem/div[u]_i32 drop div[u]2_i32")
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
-
-Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-
->   tcg/ppc/tcg-target-con-str.h | 4 ----
->   1 file changed, 4 deletions(-)
+> My test images are on Github[4]. They can be used with the ast1030-evb, or
+> the oby35-cl and oby35-bb machines in the fb qemu branch[5].
 > 
-> diff --git a/tcg/ppc/tcg-target-con-str.h b/tcg/ppc/tcg-target-con-str.h
-> index f3bf030bc3..9dcbc3df50 100644
-> --- a/tcg/ppc/tcg-target-con-str.h
-> +++ b/tcg/ppc/tcg-target-con-str.h
-> @@ -10,10 +10,6 @@
->    */
->   REGS('r', ALL_GENERAL_REGS)
->   REGS('v', ALL_VECTOR_REGS)
-> -REGS('A', 1u << TCG_REG_R3)
-> -REGS('B', 1u << TCG_REG_R4)
-> -REGS('C', 1u << TCG_REG_R5)
-> -REGS('D', 1u << TCG_REG_R6)
->   
->   /*
->    * Define constraint letters for constants:
+> I'm submitting this as an RFC cause I just want to see how other people
+> expect these changes to be made based on the previously submitted "new
+> register mode" and "old register mode slave device" patches.
+
+
+Currently, my preferred approach would be to start with Joe's patchset
+because the registerfields conversion is a huge effort and it's adding
+new mode support which should cover the needs for the AST1030 SoC [1].
+
+Troy, could you please confirm this is OK with you ? I have pushed
+the patches on :
+
+   https://github.com/legoater/qemu/commits/aspeed-7.1
+
+Then, adding slave support for old [2] and new mode (this patch)
+shouldn't be too much of a problem since they are small.
+
+we lack a test case for this controller and writing a I2C Aspeed bus
+driver for qtest is not an easy task.
+
+It might be easier to start an ast2600-evb machine with a lightweight
+userspace (buildroot, I can host that somewhere on GH) and run some I2C
+get/set/detect commands from a python/expect framework, like avocado.
+I2C devices can be added on the command line for the purpose.
+
+
+Thanks,
+
+C.
+
+  
+> Thanks,
+> Peter
+> 
+> [1] https://patchwork.kernel.org/project/qemu-devel/list/?series=626028&archive=both
+> [2] https://patchwork.kernel.org/project/qemu-devel/list/?series=627914&archive=both
+> [3] https://github.com/AspeedTech-BMC/zephyr/blob/db3dbcc9c52e67a47180890ac938ed380b33f91c/drivers/i2c/i2c_aspeed.c#L1362-L1368
+> [4] https://github.com/peterdelevoryas/OpenBIC/releases/tag/oby35-cl-2022.13.01
+> [5] https://github.com/facebook/openbmc-qemu
+> 
+> Peter Delevoryas (1):
+>    i2c/aspeed: Add slave device handling in new register mode
+> 
+>   hw/i2c/aspeed_i2c.c         | 118 ++++++++++++++++++++++++++++++++++--
+>   include/hw/i2c/aspeed_i2c.h |  14 +++--
+>   2 files changed, 124 insertions(+), 8 deletions(-)
+> 
+

@@ -1,126 +1,125 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4725981lfh;
-        Thu, 2 Jun 2022 00:37:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzNRifniOATuTiiQYV3iDlnW8X9ChOzT5leI09J01P3sY/HcxPJoKaGoQzTbUGs/7xMWOKu
-X-Received: by 2002:ac8:5bc6:0:b0:2f9:3493:4b68 with SMTP id b6-20020ac85bc6000000b002f934934b68mr2674161qtb.272.1654155474785;
-        Thu, 02 Jun 2022 00:37:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654155474; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4727794lfh;
+        Thu, 2 Jun 2022 00:43:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyEuh7/6jp5GbeuB2PvIjjeMR+/0hJlDVDFteYkMzaa7CZiKs+19S7SB63WfqB+OD+Cig6r
+X-Received: by 2002:a37:305:0:b0:6a3:48bd:2ce1 with SMTP id 5-20020a370305000000b006a348bd2ce1mr2237308qkd.697.1654155791431;
+        Thu, 02 Jun 2022 00:43:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654155791; cv=none;
         d=google.com; s=arc-20160816;
-        b=hfGcE8aBk68U7EXPQUCekFrQ7VWQHI6snjJffW/Hf4hZ8LNv++hMeJJiXnrYhFQ4xC
-         KeQz6WyeTZabqODmp/xK+OSXlHRsieX4sEp7KOA46gcfjvcT7Ouj7PouOrN2DQyS8rXY
-         PMHun1b1Qs7Mb+Qfdwta70y/+chx6OhOKeC7ndrueUyOT2aaXduvNBYre15sD2FlNEFt
-         jnIsmtMmnI6HLv2jAZ+be9MhofjSU22mEOvEOQ0+TGzDtDB9hlY9kFSm8b35nB4Opwr6
-         7rOes6yM0Qp3bGUbzoqIGnDWNpkAD/p0dy046GyiDQMLKfMRKPBAX96hRjId6U5nGfn0
-         H5bA==
+        b=S2o75fpWU17+iZtqiFkm0uIbCSh9ccsFSraY73wNePR1BSPiEAt0Q6RXN+UnJTFha5
+         MS1Jv1TJbbYO0lCpb1sAtUIeQEFIAIUQRlG7zlO9pA6Gy2TMV10wTeanBI58+g1dZPSp
+         KeVbhR0Jla/kK8kNd0XR/3Z3inNk9ICnvzQgpthDlkhW/ZovjkQx8bfKQ8wEAAz6HiaC
+         1Mfb4AU1uNC/Sbqzao+XcaOyjaE5lRpcJj4d2hAlrWxRaZ/3Jz8t3ZV2nTKEPTGtaM4d
+         R7Cd0v7EM4stu3IGTreTusxFa+vd7a4mPRH41/UrkeJuTYT/JRMNMBZN0u1LjhlQk7uV
+         Bvsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :feedback-id:dkim-signature:dkim-signature;
-        bh=yowEY7uQrSDt5NNDp4lFVZcsizEWdlR2aE86b9lljV8=;
-        b=XvV5gv8gMwPqLCN/X6Mh2RhLrDJoJdB7xyPifND3+NCFqNtoC/Z9MDD70bHotHvzXi
-         ncQvfNIl8filAO/qWxwxsyK9lvMwl84XYI7upA6uykVGgZjxupJKHNfT5gR7DmkWf5A7
-         GYG6zeZHEv3MH+3tNsrLEN7AbA25Sy+rHMGY14gWKnPz1PYEIZ0N2IMENMFPuBaZGVd0
-         sckeP295USIkAnYch9fuD/utiteOyPpCHJd4SuhNyiV4S+m/bGNnIjoKMP7ZZJDb1UrG
-         msQti6jc4nsTqxQ6g6t4KUF6JUGT64K369H6mBFdYPgnRGaqDmNhJZ4mZIWgl3B70Dzg
-         7PBg==
+        bh=esxvLE4BPWDGsMBZkG7nPL192IjbXXvsfGvQR0oA+7g=;
+        b=u5wsgXPVu+sLXVLACu5rAcU1hWsTKYoDjyTPtX3n0Elol4L10Pg9VTC0bol1mL6Wo+
+         0qoVhjK7D1Jx2VVd0ZQmkAGn6aEqMPUR3QD8dUZs0mke1GeY+V1VG0rNaNBo+msp0DEw
+         2yQTan99ELah1W66KEt+vcPik3FAj94EOSN2jWgvtJuEOm2/Vj6ngnksGnnJsy1dHzUo
+         Ij9E18EIp+IkH0bd0Zb4ZZ5ldFLjIbV2MswHf4giGQJFn5WWkesYf9Q39HL1g33SrRby
+         38Y2yaUWCYf9vA+PT/+epPJlRGqznbPTDmVE1GNghQiLbN+/6qNY/7bB5zSssTxq7Ycs
+         jP6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=YWNbY6DB;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=r1YWYtmr;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=Ep9fmehQ;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=TgBxXs1V;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s2-20020a05622a018200b002f3dedb978asi1778897qtw.430.2022.06.02.00.37.54
+        by mx.google.com with ESMTPS id d6-20020a05622a05c600b002f3c92534f4si2003398qtb.473.2022.06.02.00.43.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jun 2022 00:37:54 -0700 (PDT)
+        Thu, 02 Jun 2022 00:43:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=YWNbY6DB;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=r1YWYtmr;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=Ep9fmehQ;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=TgBxXs1V;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35908 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41746 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwfP0-0003UZ-48
-	for alex.bennee@linaro.org; Thu, 02 Jun 2022 03:37:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47712)
+	id 1nwfU6-0007xc-PJ
+	for alex.bennee@linaro.org; Thu, 02 Jun 2022 03:43:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1nwfLT-0001N3-0G; Thu, 02 Jun 2022 03:34:15 -0400
-Received: from wout2-smtp.messagingengine.com ([64.147.123.25]:50995)
+ id 1nwfMt-0002Qr-GC; Thu, 02 Jun 2022 03:35:44 -0400
+Received: from wout2-smtp.messagingengine.com ([64.147.123.25]:54487)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1nwfLQ-0005Me-J2; Thu, 02 Jun 2022 03:34:14 -0400
+ id 1nwfMr-0005f9-NI; Thu, 02 Jun 2022 03:35:42 -0400
 Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.west.internal (Postfix) with ESMTP id 8DED93200916;
- Thu,  2 Jun 2022 03:34:08 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Thu, 02 Jun 2022 03:34:09 -0400
+ by mailout.west.internal (Postfix) with ESMTP id 03791320094B;
+ Thu,  2 Jun 2022 03:35:38 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute3.internal (MEProxy); Thu, 02 Jun 2022 03:35:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
  h=cc:cc:content-type:date:date:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm3; t=1654155248; x=1654241648; bh=yo
- wEY7uQrSDt5NNDp4lFVZcsizEWdlR2aE86b9lljV8=; b=YWNbY6DB77C7irftZq
- yvF/DYnF4XIMnwc6n6X+rNY/ZvarXEbFtJy6ukeXe7OVWMF3yGcvQPQfAnosaOcK
- H67qf+j7H3WZ6z+/NcGt68NJfKIRV33wW0iRUwu0ZSxBvjJf0Q/sRQ1A5C5m4nl7
- 8KFWwpcQdYWVjEOv6MvtiPYmQTcPy9aHmc0ffRpRTN2O7xco+TbrgUGINwDmkQH0
- /dwFXjIU5BPQI2TSmjTP+TqCJoAwwS6RdWJnyTkCEXPVlO1Qzv+2WhT2szSSBtmJ
- Vpc+0x+h/uMidOg+qUXZw/SBj3ez9XK/ByNMOfKRZv1oXdFLr+ADbk0BmPh47HW6
- PsXA==
+ :subject:subject:to:to; s=fm3; t=1654155338; x=1654241738; bh=es
+ xvLE4BPWDGsMBZkG7nPL192IjbXXvsfGvQR0oA+7g=; b=Ep9fmehQ13gNNMHGYJ
+ MzkVihVDjtbo4e25jGj+8KfSuD7wFdOhzQz62M/lwTIu0Y4WHEcy1cAx3lvzrLBd
+ wYFldt0YkBPF2Q/QQbZyOclf9eAITyDgGuX4Vl+XG5kphHfjO1wZOPmLFk9GZsvV
+ wJp6ZWVsiDsptvVwJNprL0Ng23yifgn6wvhxI7a6Zt5P2gQWNxN1z3x9e4Pp97y+
+ +Qu/e0NakKv6WscDC4H4m/9DOp8PGIMpeTKbFvZ2MSv+ovJ/T8BsfmasAmgkF/xW
+ ECbSuxguCFX2+czM/3tzn9RgpKXUiwyS8DdxYfUXSvvwxnZSyYnuRFs1Yvb/o/rj
+ ++Hw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
  :feedback-id:from:from:in-reply-to:in-reply-to:message-id
  :mime-version:references:reply-to:sender:subject:subject:to:to
  :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1654155248; x=1654241648; bh=yowEY7uQrSDt5NNDp4lFVZcsizEW
- dlR2aE86b9lljV8=; b=r1YWYtmrYcJqzDM8oYa23ljcSRiqxCJ3kCe/NQlHUHfh
- DEQ4tyYeWT8VPtIHtFGprwL3dbygAHOmOmetL6oxCe1c/hD98WRCxbejnCG4p9+E
- sSGfFaPCQ0RezjaHJzcr3VAM/XMJ9ZM+BlES57HH93qx0p0TOn5WBP0ZyVcMipgr
- OYUHDIOH1V9UQc5k8VtBIWZRWhOZ5GZV9R4xjcfV8mG2NlRUKvFWn/hrA98DJMoe
- dG7YZty12tV7uZHh72H6BtzVFbZ01E0RYMQsOCZaB0vMb/o2hr09u95Ww7TciLhZ
- 4Ulndi1Ssanzbn+D19wHMi/trmMy1RKLI5t3dyL79w==
-X-ME-Sender: <xms:72eYYt1XoIe56Rhkzz30pi5VDfDeCvggy12D06oDNGFQzCbOT4fu8Q>
- <xme:72eYYkET6LsZChJv7ei_VQGJ7MOuCwH-TiDTDF1fd_0HRaqIKhFhqIwD74xy1yKmh
- QY1PmQTjmuvFKNVuXU>
-X-ME-Received: <xmr:72eYYt7waJj2R4X_Ro_qdDrWqpt7vm_7zo7s-Ow__oWr_ppawXJX2qDFO3rJ7woY7Eq2Splemcby4q2_hw>
+ fm1; t=1654155338; x=1654241738; bh=esxvLE4BPWDGsMBZkG7nPL192Ijb
+ XXvsfGvQR0oA+7g=; b=TgBxXs1VtqYRRyN03EFclwooHWOPeEmD0eqD4Beq6zPd
+ q9AyuXJydevOO4npFIN+FK12O3WlT0sQleTDQUWgs/WNJpew1Ia+6BALWsVkinFj
+ si+XQxSnFIw8FEHMeWNxEtqlRcmu8j/j0IlGz9fNSVY6jSauX07kfOmM1IJ2r0d/
+ RVXhe5oJE3VAdodN/Bpv56OSXgV9d/hlY9Xy6Yv4dOy4UTUysu6aLUMTXywUm83t
+ NT9m6lf3u/SUEL/iasJ2nelfVkmOgtNgz86uLj9rQ7pwDmrCnn9Gmk1lMzP75D+o
+ AkxXzs86eRoXVx93FraCPT7nN+mNkKmDMYEbIRR9MA==
+X-ME-Sender: <xms:SWiYYnUxGfiArmt4V7TxDKaOCNQnGysCFEZkF70pm1nkzwtJNz1h8A>
+ <xme:SWiYYvlI-5rHw_5Tlp9mn4LwvpsgmkECTQRNHNSeArsco7bFS3haZDevbDmntsQiV
+ PsBuv5ilK3SAJ5MO7o>
+X-ME-Received: <xmr:SWiYYjYgeusm2QqKvTR-uZLM1ufhYL7u-VxVzs70RbGBTWiUhFpKoOACv82K2_XqRi99G09FpndymsE4UQ>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrledugdduudejucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhepfffhvfevuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepmfhlrghu
  shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
  htvghrnhepjefgjeefffdvuefhieefhffggfeuleehudekveejvedtuddugeeigeetffff
- jeevnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
+ jeevnecuvehluhhsthgvrhfuihiivgepudenucfrrghrrghmpehmrghilhhfrhhomhepih
  htshesihhrrhgvlhgvvhgrnhhtrdgukh
-X-ME-Proxy: <xmx:72eYYq1uoQLdhbMB9r-xjH0Nd4uPlwDLFtAkCr3mezENl3hvgslcww>
- <xmx:72eYYgFS63HO2fbza0mYBazxAmjttEpLwSe27xP4yHKDUQOLvpCP4Q>
- <xmx:72eYYr9sseS5JZFbD-wFZfZ4bsfD_ngMGIKFXV3PgnU0PtN6AgbXyA>
- <xmx:8GeYYndhAMLmwUhNS63-fwnmA-ippC6vTseWNd-hsOjXbekfunCORg>
+X-ME-Proxy: <xmx:SWiYYiWnm8b86dEBsgGLAtvYDdSkIEVu2S8b_OezCn81P3MLWzu0IA>
+ <xmx:SWiYYhkt0dBKMqj0qvcZLJm-6F_V580Ml9rT8whgrUPopuguCE9wAg>
+ <xmx:SWiYYvdFh5lvzZGTJqwSSAap1P4nIvqhaLOMi75_joNdgQ-e7cOazw>
+ <xmx:SmiYYk8UwySRLvXRH3A5qH4rIYZoPw-yu8QOSqwVnOpOzxDJnykvTQ>
 Feedback-ID: idc91472f:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 2 Jun 2022 03:34:05 -0400 (EDT)
-Date: Thu, 2 Jun 2022 09:34:04 +0200
+ 2 Jun 2022 03:35:35 -0400 (EDT)
+Date: Thu, 2 Jun 2022 09:35:34 +0200
 From: Klaus Jensen <its@irrelevant.dk>
 To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: qemu-devel@nongnu.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- qemu-arm@nongnu.org, Peter Delevoryas <pdel@fb.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>,
+Cc: cminyard@mvista.com, qemu-devel@nongnu.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, qemu-arm@nongnu.org,
+ Peter Delevoryas <pdel@fb.com>, Peter Maydell <peter.maydell@linaro.org>,
  Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
  Damien Hedde <damien.hedde@greensocs.com>,
  Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
  Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
  Klaus Jensen <k.jensen@samsung.com>
-Subject: Re: [RFC PATCH v2 2/6] hw/i2c/aspeed: add DEV_ADDR in old register
- mode
-Message-ID: <Yphn7HrOZQqdLW1m@apples>
+Subject: Re: [RFC PATCH v2 4/6] hw/i2c: add asynchronous send
+Message-ID: <YphoRhdvNHyuV8+N@apples>
 References: <20220601210831.67259-1-its@irrelevant.dk>
- <20220601210831.67259-3-its@irrelevant.dk>
- <13946fb6-727e-3d84-6028-8941a7e1907d@kaod.org>
+ <20220601210831.67259-5-its@irrelevant.dk>
+ <20220601220521.GS2554462@minyard.net>
+ <fc01e3f2-1533-0ff7-6294-b3f7cf3cb351@kaod.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="xUXZVOhaG/wAgVc9"
+ protocol="application/pgp-signature"; boundary="wd0o59QLkii3PIZN"
 Content-Disposition: inline
-In-Reply-To: <13946fb6-727e-3d84-6028-8941a7e1907d@kaod.org>
+In-Reply-To: <fc01e3f2-1533-0ff7-6294-b3f7cf3cb351@kaod.org>
 Received-SPF: pass client-ip=64.147.123.25; envelope-from=its@irrelevant.dk;
  helo=wout2-smtp.messagingengine.com
 X-Spam_score_int: -27
@@ -144,88 +143,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JFosh4k2JDSr
+X-TUID: +xr9jUdpTqCL
 
 
---xUXZVOhaG/wAgVc9
+--wd0o59QLkii3PIZN
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Jun  2 09:30, C=C3=A9dric Le Goater wrote:
-> On 6/1/22 23:08, Klaus Jensen wrote:
-> > From: Klaus Jensen <k.jensen@samsung.com>
+On Jun  2 09:32, C=C3=A9dric Le Goater wrote:
+> On 6/2/22 00:05, Corey Minyard wrote:
+> > On Wed, Jun 01, 2022 at 11:08:29PM +0200, Klaus Jensen wrote:
+> > > From: Klaus Jensen <k.jensen@samsung.com>
+> > >=20
+> > > Add an asynchronous version of i2c_send() that requires the slave to
+> > > explicitly acknowledge on the bus with i2c_ack().
+> > >=20
+> > > The current master must use the new i2c_start_send_async() to indicate
+> > > that it wants to do an asynchronous transfer. This allows the i2c core
+> > > to check if the target slave supports this or not. This approach reli=
+es
+> > > on adding a new enum i2c_event member, which is why a bunch of other
+> > > devices needs changes in their event handling switches.
 > >=20
-> > Add support for writing and reading the device address register in old
-> > register mode.
-> >=20
-> > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
-> > ---
-> >   hw/i2c/aspeed_i2c.c         | 5 +++--
-> >   include/hw/i2c/aspeed_i2c.h | 8 ++++++++
-> >   2 files changed, 11 insertions(+), 2 deletions(-)
-> >=20
-> > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> > index 576425898b09..5a7eb5579b01 100644
-> > --- a/hw/i2c/aspeed_i2c.c
-> > +++ b/hw/i2c/aspeed_i2c.c
-> > @@ -104,6 +104,7 @@ static uint64_t aspeed_i2c_bus_old_read(AspeedI2CBu=
-s *bus, hwaddr offset,
-> >       case A_I2CD_AC_TIMING2:
-> >       case A_I2CD_INTR_CTRL:
-> >       case A_I2CD_INTR_STS:
-> > +    case A_I2CD_DEV_ADDR:
-> >       case A_I2CD_POOL_CTRL:
-> >       case A_I2CD_BYTE_BUF:
-> >           /* Value is already set, don't do anything. */
-> > @@ -741,8 +742,7 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *=
-bus, hwaddr offset,
-> >           }
-> >           break;
-> >       case A_I2CD_DEV_ADDR:
-> > -        qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
-> > -                      __func__);
-> > +        bus->regs[R_I2CD_DEV_ADDR] =3D value;
-> >           break;
-> >       case A_I2CD_POOL_CTRL:
-> >           bus->regs[R_I2CD_POOL_CTRL] &=3D ~0xffffff;
-> > @@ -1060,6 +1060,7 @@ static void aspeed_i2c_bus_reset(DeviceState *dev)
-> >       s->regs[R_I2CD_INTR_CTRL] =3D 0;
-> >       s->regs[R_I2CD_INTR_STS] =3D 0;
-> > +    s->regs[R_I2CD_DEV_ADDR] =3D 0;
-> >       s->regs[R_I2CD_CMD] =3D 0;
-> >       s->regs[R_I2CD_BYTE_BUF] =3D 0;
-> >       s->regs[R_I2CD_DMA_ADDR] =3D 0;
-> > diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-> > index 79c6779c6c1e..03fe829a3a57 100644
-> > --- a/include/hw/i2c/aspeed_i2c.h
-> > +++ b/include/hw/i2c/aspeed_i2c.h
-> > @@ -297,6 +297,14 @@ static inline uint32_t aspeed_i2c_bus_cmd_offset(A=
-speedI2CBus *bus)
-> >       return R_I2CD_CMD;
-> >   }
-> > +static inline uint32_t aspeed_i2c_bus_dev_addr_offset(AspeedI2CBus *bu=
-s)
+> > This would be easier to read if you split out the default return of -1
+> > in all the devices to a separate patch.
 >=20
-> This routine seems unused.
+> yes and please drop ibm-cffps.c and ir35221.c which are not in mainline.
+> I will address them myself.
 >=20
 
-It is, but I added it to align with other registers that are different
-between old/new mode. But we can introduce it later if needed instead.
+Roger.
 
---xUXZVOhaG/wAgVc9
+--wd0o59QLkii3PIZN
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmKYZ+kACgkQTeGvMW1P
-DelgIgf/UDrzQW+oR/6TjzozyEgwMqeG6aIep7xlYzmuj3yX+XoZEVvxUysh26SP
-MfmMcyl31R9abmaBiwJYAeh8d+pclN1ColGzDrViu+USZmKflltwIPBqGmQ5Z+Y6
-HwR2s52Ia0HqjxkplQIU4dKO3jxtpTz1k+XNsyG/IF5Pi3puCy2kUxwCRTgXnQvu
-LvgUYtzgnRcT6ySN8LBB2i7usyGji7L4QzO0g9NO9PGP389O7e/PBpSzGbxZBePD
-t2a3Gb6SGfIvbz1D+0yfse2SNlqhP/+n+QNx2d1ZZxxk83W2oyWk9ZkZr7yrS2vo
-5oYbiLt8fE8yhAon3R1UlLOrpLv1gw==
-=btXE
+iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmKYaEQACgkQTeGvMW1P
+DemkkwgAlrlwQ2jD0ei9cmKWMWePCjYb87nmJEhpxy3OIBdyDGsEHPoQ2DgrY89l
+XXSIkJKrejQVB5J7dIRmUTJ98Mc32U4AEyRQxU/NkFWzBXHTWjpyRxeVuYCdre01
+srv7KI5W4rJWxTPpfzMNVGGKZvttwpCWkqHvl24TvDZ509mIYbg5JS0hf/0BBgKK
+Ghg9Y2huKXM7hNtURxTk11OgoAv20IjXS0V8Vx2kdbxFxizevgI9SL2VKgmqZuch
+gsB2VwIf7i2+yDiq8VvYMhuBWzpYbKCFj9nUxeehqMVFfkFXKM7yvU6sMCG1wLKz
+zmgPv7Ujs3PBAzSuHnkxmJj48U2ynA==
+=EUzg
 -----END PGP SIGNATURE-----
 
---xUXZVOhaG/wAgVc9--
+--wd0o59QLkii3PIZN--

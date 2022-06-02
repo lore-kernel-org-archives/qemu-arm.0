@@ -1,180 +1,252 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5493850lfh;
-        Fri, 3 Jun 2022 02:55:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJykvPGHIYxfRXRGDQNlcV22+Q10+iZZl57nFYRLdNX/c2Ev3opZPAdLoCqKZr2/bKpfQbHG
-X-Received: by 2002:a17:907:6e8f:b0:6ff:308e:dfa4 with SMTP id sh15-20020a1709076e8f00b006ff308edfa4mr7702495ejc.371.1654250158703;
-        Fri, 03 Jun 2022 02:55:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654250158; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5208286lfh;
+        Thu, 2 Jun 2022 15:14:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzutM4md+3DEDEt5MD340/nOi9XVQ/eelfIPwLh5suu14hNkvb1XSfBu+8U/CvLlTZvFCqn
+X-Received: by 2002:a37:42d2:0:b0:6a6:7b44:e150 with SMTP id p201-20020a3742d2000000b006a67b44e150mr3295017qka.773.1654208057255;
+        Thu, 02 Jun 2022 15:14:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654208057; cv=none;
         d=google.com; s=arc-20160816;
-        b=sfRlquoD/abZ/tsXSGfBpMtmhkWhRtso8q7IlyUxDSWj8Ka4K6jRBL1ESF/zthmtEk
-         hFeKJUE4ap+9OQOILRgOpxwsz++OD0WLZ5lATcmx5WrcyTLMBVxcV8OUfPhgmcTURjl3
-         MbFq3QrCom57Qs0kpkBdiEaCkRuoGXnTgSi70mBlQqV/rg3IITak6G4XOeOzmFdfKBvo
-         IygA8MuYVqyzQsAjHPel1X4hftFPodAywoqdmo4Mqj/NO7s3X1UOKX6GMlWY2NCsSOV6
-         hfsNtr3bI89vU6JywRF4qFH1zWXJxeN2gE666RqpEFVHqxXGbjdrgM3Ol+Yfg6GOf58Y
-         A8wA==
+        b=kM0msnI982jOdvBCZIz8Aap6Aa5p+SwVN07l9izZ/CLe9xiB3Mzr4YNoUlST1sLkW2
+         NME+/Aw2Q4VHqdX+kWutAd9UnTv1NHI6NXTmpamxcG1DMzD9tWmgIXsicLvXhtxcsOeT
+         ox1PepyMFKqgdiAOJTGEtT1HLeAoK/SkrjE27Z+vp5t1DcryeUCD6gIJNbI4rGBI6har
+         jLyFD09dAzjn1RzrARUUdUuyTVbNbnbpgOobrBFHYifIqDVgwUv2ywd0yTGn1e3MBgT9
+         jQ+1RJaODHCKL+bcHigydPRtAZTNtngpkiPCFHlYASLwV4/bP2DxLFn7iDkcFpOAtt5y
+         MzTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=br8BPF6nmcnTCRWyW/DjTNMx6+wBDJzATfvDHHwOfQU=;
-        b=SkPuQbnoprkiJKy2CLmP+KLGvXk3xIW0hDI2UypGHj4E2TwvKhxgad1Q/Uu4XbqnIa
-         r5HndN5GY0LwHycI9RMaiyFHPU3XXbHdJymqnootwZ1is4Ng7pFbiKhlAignnw5j93+B
-         RdxgSkN3q2pPiPiTTmrUNrrMBhM6fDx00D2N6g+Ydi26I/yXt1tcBcKaGjH1dnt43Ry3
-         wXDiHb+quhRb7+k4fehEwfsK4Us7kbcDbj7YndWizdfRnFNYtMGsLBJHcwgMtpX8bsIz
-         aK63MhbcEBRpBs7al9BhZJVfDcKKfnBMebSBt4BS/kav2VjmSwMWthBDgCgPPFqRMVfz
-         0yYA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=6xMWEOVCvEJI1KC6zgVAv9+GA3g0PTUVPfSZbthulxo=;
+        b=wNif8zFFJDmcl3sUoLadht63RHO5YPTaSelWxXU/rr10B8zBGetXYuI6z4REsTQbe6
+         gnanGQwSvZjflOcdAYpxlzWkAYf5yTvZaqcRlwUNpliXGtGTgQxplzSOowyW/DQmgTXg
+         xhhcv/dowqIq/ONiBu4NLyPSc/DAzZS0ZjLiIUEcVoEvoxuTvuZYKV6aWFxMaGm3K1bt
+         Zb/CW3NqlWhnSW/Lpvkr0YEwlifB96bY/qX5M4izE3/pNO6HtOWaQM5zE+basNJCLcMR
+         NK7wVn3RdFEWEQZl4dpepjpJ9Y2upFgTwPdjA0wAScwF6pRw1dtVDcIbsWydXXkeT5m5
+         EC5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Tmhndx58;
-       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d26-20020a50f69a000000b0042dbb8886ffsi6436008edn.155.2022.06.03.02.55.58
+       dkim=pass header.i=@linaro.org header.s=google header.b=YTtmezVt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i17-20020ac85c11000000b002f3b0d6fb92si2829711qti.33.2022.06.02.15.14.17
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Jun 2022 02:55:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 02 Jun 2022 15:14:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Tmhndx58;
-       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1654250157;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=br8BPF6nmcnTCRWyW/DjTNMx6+wBDJzATfvDHHwOfQU=;
-	b=Tmhndx58NmmwaVAOdoCNGCvMba70CND+dPWzorjc/BccOyZIV3FymCn1bQW1YsKs4ECIC8
-	j0xmPV0V6JlfewQEnTHWK1Zow3E9OAzRS3bmxUC81s95wIlZOlCUoSyjBLmeMlSPR0z8uY
-	sR9zNjVbiurzhIgIEUUHhHgeiA2EfUc=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-130-8vgkqPlXPI-GDf2HWr1fIg-1; Fri, 03 Jun 2022 05:55:56 -0400
-X-MC-Unique: 8vgkqPlXPI-GDf2HWr1fIg-1
-Received: by mail-ed1-f72.google.com with SMTP id y13-20020a056402358d00b0042dfb820070so4912060edc.6
-        for <alex.bennee@linaro.org>; Fri, 03 Jun 2022 02:55:56 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=YTtmezVt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44174 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nwt56-0001Eq-OQ
+	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:14:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37094)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nwsgv-0004oL-DC
+ for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:49:17 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e]:41921)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nwsgs-0008VG-Bw
+ for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:49:17 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id p8so5795319pfh.8
+ for <qemu-devel@nongnu.org>; Thu, 02 Jun 2022 14:49:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=6xMWEOVCvEJI1KC6zgVAv9+GA3g0PTUVPfSZbthulxo=;
+ b=YTtmezVtqWJQ2Djjac7C5I6VjZ0ID+vIeMTDTZtn9Dcwo4m0VA84XvFvHPvXHxGXKb
+ jq0v0gsprUokXueTdTA/+V7uXF1tzIwca43UuW0/lPcZaqTzHGKfTkJIP27qRTu+GSAp
+ a66D0mUNTGsmPYoTqYyBIANyCPtcjySDpZ3dRPmF6jGRyi/m7zfISyor/OxUY40gvvmn
+ GHAo+fbMVOJLfgZTlh6TPit9urdk5vx9Pc0/nsAST52STLnQl4Z9712vgk5d21adxUNI
+ 1q1Wa9TIk1zuA3uI+knygzfbiz0A2WuIo+DlznKk+T6dqsrtyJGw5Y8a4989Y2gIFoGP
+ 9d2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=br8BPF6nmcnTCRWyW/DjTNMx6+wBDJzATfvDHHwOfQU=;
-        b=cRFi6jSn5SN6aqC1slOLRuGkwzOgYwXcMTQzbG5L2n5N2NK60liv1vS4QNTJ2zAAMY
-         CRd21YisoBrBtPyD8d5hDr9IVNMrNeV+BSPI8ffpvBKcUSI+Tw/eYSyK4lAtkdo9Djaw
-         6s39PTS5i6nU4p5QMBlxATa8trOVzXjOS8F9k1nQ3LM6i86IocHI4sE7mhM6HxCb1od0
-         kWACyr8N0pZr2Pwz/bgCyAuh8695LfFt65GOvXcszSLnSnhVx4bWClHrBWDu8rNkxvDr
-         ocF7cr28cTtU6XGRyqeuINWQgFSDJ+FPrhhkEkhmxw0xWKseYspp+tmAv7Jb+CwrNduz
-         1Acw==
-X-Gm-Message-State: AOAM533cjXOvfI7lgTG+dKg92Y0R3Hjb+KCEgHYPqO4KIYia0pRJ+x8A
-	hnGQaMVX+eyP+tv2AF1cokpZaggVWMrzgRnTRMnzy9ZqJ/IQ5l0cApjj8BR98ks/f5UbCqiQA56
-	pozTp84kEEJbDzQNg
-X-Received: by 2002:a17:907:9615:b0:708:a422:c9c2 with SMTP id gb21-20020a170907961500b00708a422c9c2mr8011800ejc.217.1654250155571;
-        Fri, 03 Jun 2022 02:55:55 -0700 (PDT)
-X-Received: by 2002:a17:907:9615:b0:708:a422:c9c2 with SMTP id gb21-20020a170907961500b00708a422c9c2mr8011785ejc.217.1654250155343;
-        Fri, 03 Jun 2022 02:55:55 -0700 (PDT)
-Return-Path: <drjones@redhat.com>
-Received: from gator (cst2-175-76.cust.vodafone.cz. [31.30.175.76])
-        by smtp.gmail.com with ESMTPSA id f8-20020a170906494800b0070c4abe4706sm1172269ejt.158.2022.06.03.02.55.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jun 2022 02:55:55 -0700 (PDT)
-Date: Fri, 3 Jun 2022 11:55:53 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: f4bug@amsat.org, alex.bennee@linaro.org
-Subject: Re: [PATCH] tests/avocado: Prefer max cpu type when using AArch64
- virt machine
-Message-ID: <20220603095553.2fa53p6f246giyik@gator>
-References: <20220603092505.1450350-1-drjones@redhat.com>
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=6xMWEOVCvEJI1KC6zgVAv9+GA3g0PTUVPfSZbthulxo=;
+ b=AWvwaDXrqjzztdfeEUYENItBtwHySUQ06wi4SGQTe+m86Q4XOoFZ1tIQbBqENPKLEr
+ qR4ie+RQjTlbmSqqm44ZCE8CT/xq81yvX2J7aYinxmxcfFu162ecpAgvz+BqL/K35bg2
+ iLFbuDhHWbIqc+5reMm1qrK1JfbeoTBbV3O1FPtIfIzjULxKHMHljWkQOmcBko4xBfEb
+ V7h2ZO4THvlBaj+OfT827vzCRo8+eQrHdt98CHJ+iR/FS2O66Y8chrY5jXjSscjJ+/cX
+ Her6GXl+FgDMZI9S2WoipirjSK2riai8tkF4p8KlP0TYEtCNHW+pD+PbDp6Sgsb+ZN/H
+ GXfA==
+X-Gm-Message-State: AOAM531ujur9JSmm3yAlBtTr64ndMdaPnRzs54h4trR9Sfz9uIKbZNkp
+ sqQYoUS+Q/He9ewTUya0hE1GXI2UVxa5hQ==
+X-Received: by 2002:a63:f407:0:b0:3fa:91cf:270 with SMTP id
+ g7-20020a63f407000000b003fa91cf0270mr6085708pgi.428.1654206553484; 
+ Thu, 02 Jun 2022 14:49:13 -0700 (PDT)
+Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
+ by smtp.gmail.com with ESMTPSA id
+ bf7-20020a170902b90700b00163c6ac211fsm3988760plb.111.2022.06.02.14.49.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 Jun 2022 14:49:13 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 22/71] target/arm: Add SMEEXC_EL to TB flags
+Date: Thu,  2 Jun 2022 14:48:04 -0700
+Message-Id: <20220602214853.496211-23-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220602214853.496211-1-richard.henderson@linaro.org>
+References: <20220602214853.496211-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20220603092505.1450350-1-drjones@redhat.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: TAC8gw8+BLY+
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: a+WKhvCjrxq0
 
-On Fri, Jun 03, 2022 at 11:25:05AM +0200, Andrew Jones wrote:
-> The max cpu type is the best default cpu type for tests to use
-> when specifying the cpu type for AArch64 mach-virt. Switch all
-> tests to it.
+This is CheckSMEAccess, which is the basis for a set of
+related tests for various SME cpregs and instructions.
 
-Hmm, looking at tests in tests/qtest and tests/vm I see cortex-a57
-is still used for a default choice. I should probably post another
-patch changing those to max as well.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.h           |  2 ++
+ target/arm/translate.h     |  1 +
+ target/arm/helper.c        | 52 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-a64.c |  1 +
+ 4 files changed, 56 insertions(+)
 
-Thanks,
-drew
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 245d144fa1..31f812eda7 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1134,6 +1134,7 @@ void aarch64_sync_64_to_32(CPUARMState *env);
+ 
+ int fp_exception_el(CPUARMState *env, int cur_el);
+ int sve_exception_el(CPUARMState *env, int cur_el);
++int sme_exception_el(CPUARMState *env, int cur_el);
+ 
+ /**
+  * sve_vqm1_for_el:
+@@ -3272,6 +3273,7 @@ FIELD(TBFLAG_A64, ATA, 15, 1)
+ FIELD(TBFLAG_A64, TCMA, 16, 2)
+ FIELD(TBFLAG_A64, MTE_ACTIVE, 18, 1)
+ FIELD(TBFLAG_A64, MTE0_ACTIVE, 19, 1)
++FIELD(TBFLAG_A64, SMEEXC_EL, 20, 2)
+ 
+ /*
+  * Helpers for using the above.
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index f473a21ed4..a492e4217b 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -42,6 +42,7 @@ typedef struct DisasContext {
+     bool ns;        /* Use non-secure CPREG bank on access */
+     int fp_excp_el; /* FP exception EL or 0 if enabled */
+     int sve_excp_el; /* SVE exception EL or 0 if enabled */
++    int sme_excp_el; /* SME exception EL or 0 if enabled */
+     int vl;          /* current vector length in bytes */
+     /* Flag indicating that exceptions from secure mode are routed to EL3. */
+     bool secure_routed_to_el3;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 204c5cf849..98de2c797f 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6222,6 +6222,55 @@ int sve_exception_el(CPUARMState *env, int el)
+     return 0;
+ }
+ 
++/*
++ * Return the exception level to which exceptions should be taken for SME.
++ * C.f. the ARM pseudocode function CheckSMEAccess.
++ */
++int sme_exception_el(CPUARMState *env, int el)
++{
++#ifndef CONFIG_USER_ONLY
++    if (el <= 1 && !el_is_in_host(env, el)) {
++        switch (FIELD_EX64(env->cp15.cpacr_el1, CPACR_EL1, SMEN)) {
++        case 1:
++            if (el != 0) {
++                break;
++            }
++            /* fall through */
++        case 0:
++        case 2:
++            return 1;
++        }
++    }
++
++    if (el <= 2 && arm_is_el2_enabled(env)) {
++        /* CPTR_EL2 changes format with HCR_EL2.E2H (regardless of TGE). */
++        if (env->cp15.hcr_el2 & HCR_E2H) {
++            switch (FIELD_EX64(env->cp15.cptr_el[2], CPTR_EL2, SMEN)) {
++            case 1:
++                if (el != 0 || !(env->cp15.hcr_el2 & HCR_TGE)) {
++                    break;
++                }
++                /* fall through */
++            case 0:
++            case 2:
++                return 2;
++            }
++        } else {
++            if (FIELD_EX64(env->cp15.cptr_el[2], CPTR_EL2, TSM)) {
++                return 2;
++            }
++        }
++    }
++
++    /* CPTR_EL3.  Since EZ is negative we must check for EL3.  */
++    if (arm_feature(env, ARM_FEATURE_EL3)
++        && !FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, ESM)) {
++        return 3;
++    }
++#endif
++    return 0;
++}
++
+ /*
+  * Given that SVE is enabled, return the vector length for EL.
+  */
+@@ -13719,6 +13768,9 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+         }
+         DP_TBFLAG_A64(flags, SVEEXC_EL, sve_el);
+     }
++    if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
++        DP_TBFLAG_A64(flags, SMEEXC_EL, sme_exception_el(env, el));
++    }
+ 
+     sctlr = regime_sctlr(env, stage1);
+ 
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index d438fb89e7..8bbd1b7f07 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -14608,6 +14608,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
+     dc->align_mem = EX_TBFLAG_ANY(tb_flags, ALIGN_MEM);
+     dc->pstate_il = EX_TBFLAG_ANY(tb_flags, PSTATE__IL);
+     dc->sve_excp_el = EX_TBFLAG_A64(tb_flags, SVEEXC_EL);
++    dc->sme_excp_el = EX_TBFLAG_A64(tb_flags, SMEEXC_EL);
+     dc->vl = (EX_TBFLAG_A64(tb_flags, VL) + 1) * 16;
+     dc->pauth_active = EX_TBFLAG_A64(tb_flags, PAUTH_ACTIVE);
+     dc->bt = EX_TBFLAG_A64(tb_flags, BT);
+-- 
+2.34.1
 
-> 
-> Cc: Alex Bennée <alex.bennee@linaro.org>
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> ---
->  tests/avocado/replay_kernel.py     | 2 +-
->  tests/avocado/reverse_debugging.py | 2 +-
->  tests/avocado/tcg_plugins.py       | 6 +++---
->  3 files changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/tests/avocado/replay_kernel.py b/tests/avocado/replay_kernel.py
-> index 0b2b0dc692b1..c19022ea977d 100644
-> --- a/tests/avocado/replay_kernel.py
-> +++ b/tests/avocado/replay_kernel.py
-> @@ -147,7 +147,7 @@ def test_aarch64_virt(self):
->          """
->          :avocado: tags=arch:aarch64
->          :avocado: tags=machine:virt
-> -        :avocado: tags=cpu:cortex-a53
-> +        :avocado: tags=cpu:max
->          """
->          kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
->                        '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
-> diff --git a/tests/avocado/reverse_debugging.py b/tests/avocado/reverse_debugging.py
-> index d2921e70c3b4..d6a6d7277235 100644
-> --- a/tests/avocado/reverse_debugging.py
-> +++ b/tests/avocado/reverse_debugging.py
-> @@ -198,7 +198,7 @@ def test_aarch64_virt(self):
->          """
->          :avocado: tags=arch:aarch64
->          :avocado: tags=machine:virt
-> -        :avocado: tags=cpu:cortex-a53
-> +        :avocado: tags=cpu:max
->          """
->          kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
->                        '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
-> diff --git a/tests/avocado/tcg_plugins.py b/tests/avocado/tcg_plugins.py
-> index 642d2e49e305..2bbf62f5036e 100644
-> --- a/tests/avocado/tcg_plugins.py
-> +++ b/tests/avocado/tcg_plugins.py
-> @@ -68,7 +68,7 @@ def test_aarch64_virt_insn(self):
->          :avocado: tags=accel:tcg
->          :avocado: tags=arch:aarch64
->          :avocado: tags=machine:virt
-> -        :avocado: tags=cpu:cortex-a53
-> +        :avocado: tags=cpu:max
->          """
->          kernel_path = self._grab_aarch64_kernel()
->          kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-> @@ -94,7 +94,7 @@ def test_aarch64_virt_insn_icount(self):
->          :avocado: tags=accel:tcg
->          :avocado: tags=arch:aarch64
->          :avocado: tags=machine:virt
-> -        :avocado: tags=cpu:cortex-a53
-> +        :avocado: tags=cpu:max
->          """
->          kernel_path = self._grab_aarch64_kernel()
->          kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-> @@ -120,7 +120,7 @@ def test_aarch64_virt_mem_icount(self):
->          :avocado: tags=accel:tcg
->          :avocado: tags=arch:aarch64
->          :avocado: tags=machine:virt
-> -        :avocado: tags=cpu:cortex-a53
-> +        :avocado: tags=cpu:max
->          """
->          kernel_path = self._grab_aarch64_kernel()
->          kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-> -- 
-> 2.34.3
-> 

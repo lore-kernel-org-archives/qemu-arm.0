@@ -1,111 +1,112 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5205800lfh;
-        Thu, 2 Jun 2022 15:09:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx6dguwxh+e5T5PJUsNwlNY6aYjDJQnl9VRx/EF4CjdRL8tu9egkKhGokDq6g490pWAMBkk
-X-Received: by 2002:ac8:4707:0:b0:2ed:b56:5531 with SMTP id f7-20020ac84707000000b002ed0b565531mr5233156qtp.148.1654207767405;
-        Thu, 02 Jun 2022 15:09:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654207767; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5205948lfh;
+        Thu, 2 Jun 2022 15:09:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyiUtVoZwRq0QIU1go62KJ/meIoL78S5U+s9DPqzissQZHr6lpe4VKvN4Dv2wO/SL6Dwmjd
+X-Received: by 2002:a05:622a:3cb:b0:2f9:121e:6cd5 with SMTP id k11-20020a05622a03cb00b002f9121e6cd5mr5295449qtx.277.1654207783388;
+        Thu, 02 Jun 2022 15:09:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654207783; cv=none;
         d=google.com; s=arc-20160816;
-        b=IFf2G/EyKCdrReEVYjlPCaCN9c7ObvQKH9bduTHFzkBAmFh8G0589lIW1O8Cem63FA
-         ZJNlJQXDSOlTFdLyInDCdWubcoKlr0gHe98P1KyB3bAZGyOUUfCLguAlPZI2lHHpaB1u
-         Wt9jPLaGUpTmPJfT1KURPLYjznwk1f+G7deRMcuyWKw8kJc1EqMd+7bx1PdwuJKjKN3Z
-         aJOWQu7TZzuT3IlmGTMPCNDzJCW1UXEbTdHLe66EE/0yyRYswQZSyg/LpDZHEl+AJX2z
-         66foRVJT5rsmXmpUdD9fNKLO6XdvnwtPKX6lt+4/f9hR8ImZ1NL/y0kwnjj0YKNUqBt9
-         rHYA==
+        b=IH/QBh6z3hommOYCzpTxVyV4q2CSEOTsEi0GxP0ftU0ainIzW7Px9CyrTzzAFgyjCx
+         /vKKAcLlcp79OItt+vnq/0lwUcCzqJ2hxgMfcEEJjlwLGF9jb/ijODCabJlLVLy+cm0V
+         RWzGaRp1vHUBJy/3+wt8cTTpYDi3+V3Xic1W22qmeCtAbjpQPGJkFA+hT5nr+WTp4TfG
+         6hw8ylXrWA79lo1Jl/0Wo0jz9JQvSLyUA+anM7KIjT51hEZuj2uodbvmrrunlzqbMzOe
+         VplS0GuQgSOTXKjeX1Ij8Gkj1YnjB9z6G0eAuAiS0g3lXyUAGSEXTWTne2nmGKa/8DA7
+         c2cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=f4EFi0X8pC0ZHJX0LpV/2RPhRHjmGcoeXQX/e/CTo/k=;
-        b=GufrxvZBjw0M5K2XsxJU8UWG5WDjSETLfJLzN5P45fMqNjQEkgHq78imtUD078f915
-         s9gYjKltmpLcuTBa78x2Hqx7ru3g4/o0OHXt7ut05OmpvhZVYKmyZVM0Bd4RIMVeqXll
-         pF2FhFasSvjvGDgB1pmm0fA7LY0ed1HBR4aTEgy0Wfv1qVTqBH9S6/aOmFWx4qpj3l5i
-         5ak+6VK1ZE6rC8uqv2vX3hhhhaqkNiJTTGHXyJns4QMB2OM0crzrzE1RvaDVtAqSSuFd
-         rciCuJO9aFtz2YuAvc9dxP5jQwUFASLOaEQ9Hb+5C3rJch1rDYJakyQPj0XyivXHHdbV
-         EJYQ==
+        bh=XuOHiX6D0El6nNEd2Jyo7d9eF8KMwz8jltCon2kVgiU=;
+        b=MajT2nlE4VOhS/AzORa9vvnduInBzXBeHXKRb+olOpDdyLH6jfRPwx6Rhxn+J4tulh
+         haa6o5YAiPkXGNsmDFcGgVS1Mwia1pn3MWXj+mt8EdaUsJdknevtx6VkikCpE2BcZklt
+         W6ITqUD9qR55EfApSZ9/asG10bdGlPRgaxFK9jNSWMf/+snggQn+pvlLJ5eRMMIzWcL6
+         MY4qFxPK/otIOOj1i0QufZgsaR+hYYBKnuvlYGL7xIOoCIB2D3Za4RzsPoB9ee6r1eiW
+         UgYPa20QC+6fr2gZSXugXgb3ouNi/kuh+cD7+qRClATLYY1a3n6FJpcq+Rzd+hAzGcq0
+         4jbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=w+WMTH86;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MwxX3puf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m13-20020a0562141bcd00b0045e7223a123si2949713qvc.51.2022.06.02.15.09.27
+        by mx.google.com with ESMTPS id d12-20020a37680c000000b00680ffd297b2si594672qkc.89.2022.06.02.15.09.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jun 2022 15:09:27 -0700 (PDT)
+        Thu, 02 Jun 2022 15:09:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=w+WMTH86;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MwxX3puf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57510 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58932 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwt0Q-00088P-Og
-	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:09:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37340)
+	id 1nwt0g-0000eD-Oy
+	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:09:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36820)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwsh2-0004wp-Nw
- for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:49:24 -0400
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:36688)
+ id 1nwsgp-0004hy-Q7
+ for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:49:11 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:53061)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwsgz-0000D8-VL
- for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:49:24 -0400
-Received: by mail-pg1-x52f.google.com with SMTP id y187so5807471pgd.3
- for <qemu-devel@nongnu.org>; Thu, 02 Jun 2022 14:49:21 -0700 (PDT)
+ id 1nwsgm-0008U5-HP
+ for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:49:11 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id gd1so6024314pjb.2
+ for <qemu-devel@nongnu.org>; Thu, 02 Jun 2022 14:49:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=f4EFi0X8pC0ZHJX0LpV/2RPhRHjmGcoeXQX/e/CTo/k=;
- b=w+WMTH86vRXjCFIru5pdgadHYsK3I/Qzd5WBxZy70NVn4EPMuYJQqcWiyvxfP5TrWJ
- uE0nCwUfowzEk9j0ujnzWEnq1t+E/9ka+MWzvKHdEiNblYw7wIH6NzCD6QhBZZ8C5gGC
- Y3E6k/Nc8bP5gwKzrkXgo0SZy8fsWsOhPcYS3t2Ppwc9lWGRH5kTjpWcumTX4QV2J7iq
- APPMDG2SLkUeTW+lLTsmZTQbUGIgb61SlbjMuGpqMeMokcV47/l9U7INul/TdOovwdMM
- YJnI/v/AR/4T4Wh9uMjx0qdZU1JELe/rRkVHXymB7FXKylooLA8sH79+RZntkwUluFAt
- zkXQ==
+ bh=XuOHiX6D0El6nNEd2Jyo7d9eF8KMwz8jltCon2kVgiU=;
+ b=MwxX3pufgmoBkSuklsbXMX4fKzczM0WS5VRsi27d15kggwaf9opVpHVEkLUoI2AeW2
+ LhX7WOd9KoTHsD9JTXYVtCFL/YS9ntRAMcsrxNoV/2L36eRONV7lSG2kR9x5fPdJ3PAo
+ frizYBhAcOMG1JU4ruXGd4e14Htbpg1ddLS2kuzQbAhKYCZ6sS+y395UTv7Ll7XE3hH2
+ lPevEGg+0R494Y0FrlPANnxz1hCyuwzuVVekTGtMP/WNNhD2XMTKyLaSjiULzonzl9hi
+ w6BDok25WjPLKDhETbOHiQ1mEA0VH30kC+AOS/2JKaoSU3ylQVaLrjXAVJoR6clqh2xm
+ dSuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=f4EFi0X8pC0ZHJX0LpV/2RPhRHjmGcoeXQX/e/CTo/k=;
- b=dm3ikUHqq0bVD576yM3r5NBc4D8A1PrD0GfSubTrhjUR8/sqWKw71Pc6Mjw1+5gZyQ
- pJ9xIzq3bs9JIyjiI3e3hxTOUqHkYvy8vhL/GpiSoUPN5zQPFyatcr5LPRZ67h8Y1Bso
- embpjftFPThDVP1MFsOJQ/VgGVsySKJec9sDH+rRDzVPQfv9mVnVZNmQErZPnurC0+vx
- uIxNTImN88xtz10QeOpxB1PPkGpB56ZqkO0kTJnedcrYQbWWGEITuzi9W5NHLztvj2tH
- TRLOuowgfC0lWlJfXMt3CexVXKtlGpQIU6y05VNGMKH7XQ8gKU+QyvLAxKjLBq2qEgHU
- S7NA==
-X-Gm-Message-State: AOAM5319Gz+xJc+amjA0hLxpNeqF97fpdGcObab2l1h06Fk34UtWMtsS
- c3AquJz6p/M5NokPhZdmitHrULRR9hejZw==
-X-Received: by 2002:a05:6a00:2289:b0:51b:d392:1f46 with SMTP id
- f9-20020a056a00228900b0051bd3921f46mr3391260pfe.20.1654206560683; 
- Thu, 02 Jun 2022 14:49:20 -0700 (PDT)
+ bh=XuOHiX6D0El6nNEd2Jyo7d9eF8KMwz8jltCon2kVgiU=;
+ b=2YrlzG4+ptjZi/R+4Hd+vdZJ0Izt82nOEnLocUH7PsyHx0r3J6LzXobehB03HIkP5L
+ P7NAGl6XnNg86kfFipZ7LVDVHrug1yARIeTelCg8mq+C1L1aRlJU/+0Yo4+bEV58tYqW
+ RnSJQxvPIWKHE10zJ2zc1vvKYY6TTEli4KMqqMzTgT/qgfm9wKgSS/jQ3Wi/ytf6oaUP
+ el3Wsr4YSM1vzzXuESdlRLvj9Ci8MjyG6tb/bFZNIse1LVEt+xU4jUXGYBRDABLk4ip1
+ lPAmBCw/F0IcwrYTE8eI/fak7RsG12ZnH3rC7RmYKQOBwEFY1oE5OtyK6wX9uGRUQ+Xx
+ yshA==
+X-Gm-Message-State: AOAM533TA+55UR93ZLW6XpQzjnuGVZQ3atWA/AQorzONOXEp70ymeRA6
+ hITgWZkQ/kRCaRa+nkUfE09TR5JtyNvx/Q==
+X-Received: by 2002:a17:90a:10f:b0:1e3:3f45:796a with SMTP id
+ b15-20020a17090a010f00b001e33f45796amr7406799pjb.136.1654206547562; 
+ Thu, 02 Jun 2022 14:49:07 -0700 (PDT)
 Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
  by smtp.gmail.com with ESMTPSA id
- bf7-20020a170902b90700b00163c6ac211fsm3988760plb.111.2022.06.02.14.49.19
+ bf7-20020a170902b90700b00163c6ac211fsm3988760plb.111.2022.06.02.14.49.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jun 2022 14:49:20 -0700 (PDT)
+ Thu, 02 Jun 2022 14:49:07 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 30/71] target/arm: Implement SMSTART, SMSTOP
-Date: Thu,  2 Jun 2022 14:48:12 -0700
-Message-Id: <20220602214853.496211-31-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 15/71] target/arm: Move expand_pred_b to vec_internal.h
+Date: Thu,  2 Jun 2022 14:47:57 -0700
+Message-Id: <20220602214853.496211-16-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220602214853.496211-1-richard.henderson@linaro.org>
 References: <20220602214853.496211-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,205 +121,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AaObAftW1CCb
+X-TUID: 6C5Rujtc76i0
 
-These two instructions are aliases of MSR (immediate).
-Use the two helpers to properly implement svcr_write.
+Put the inline function near the array declaration.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h           |  1 +
- target/arm/helper-sme.h    | 21 +++++++++++++
- target/arm/helper.h        |  1 +
- target/arm/helper.c        |  6 ++--
- target/arm/sme_helper.c    | 60 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-a64.c | 24 +++++++++++++++
- target/arm/meson.build     |  1 +
- 7 files changed, 111 insertions(+), 3 deletions(-)
- create mode 100644 target/arm/helper-sme.h
- create mode 100644 target/arm/sme_helper.c
+ target/arm/vec_internal.h | 8 +++++++-
+ target/arm/sve_helper.c   | 9 ---------
+ 2 files changed, 7 insertions(+), 10 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 1bc7de1da1..b65e370b70 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1106,6 +1106,7 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
-                            int new_el, bool el0_a64);
- void aarch64_add_sve_properties(Object *obj);
- void aarch64_add_pauth_properties(Object *obj);
-+void arm_reset_sve_state(CPUARMState *env);
+diff --git a/target/arm/vec_internal.h b/target/arm/vec_internal.h
+index 1d63402042..d1a1ea4a66 100644
+--- a/target/arm/vec_internal.h
++++ b/target/arm/vec_internal.h
+@@ -50,8 +50,14 @@
+ #define H8(x)   (x)
+ #define H1_8(x) (x)
  
- /*
-  * SVE registers are encoded in KVM's memory in an endianness-invariant format.
-diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
-new file mode 100644
-index 0000000000..3bd48c235f
---- /dev/null
-+++ b/target/arm/helper-sme.h
-@@ -0,0 +1,21 @@
+-/* Data for expanding active predicate bits to bytes, for byte elements. */
 +/*
-+ *  AArch64 SME specific helper definitions
-+ *
-+ *  Copyright (c) 2022 Linaro, Ltd
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ * Expand active predicate bits to bytes, for byte elements.
 + */
-+
-+DEF_HELPER_FLAGS_2(set_pstate_sm, TCG_CALL_NO_RWG, void, env, i32)
-+DEF_HELPER_FLAGS_2(set_pstate_za, TCG_CALL_NO_RWG, void, env, i32)
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index b1334e0c42..5bca7255f1 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -1020,6 +1020,7 @@ DEF_HELPER_FLAGS_6(gvec_bfmlal_idx, TCG_CALL_NO_RWG,
- #ifdef TARGET_AARCH64
- #include "helper-a64.h"
- #include "helper-sve.h"
-+#include "helper-sme.h"
- #endif
+ extern const uint64_t expand_pred_b_data[256];
++static inline uint64_t expand_pred_b(uint8_t byte)
++{
++    return expand_pred_b_data[byte];
++}
  
- #include "helper-mve.h"
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 3edecb56b6..5328676deb 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6370,9 +6370,9 @@ static CPAccessResult access_esm(CPUARMState *env, const ARMCPRegInfo *ri,
- static void svcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                        uint64_t value)
+ static inline void clear_tail(void *vd, uintptr_t opr_sz, uintptr_t max_sz)
  {
--    value &= R_SVCR_SM_MASK | R_SVCR_ZA_MASK;
--    /* TODO: Side effects. */
--    env->svcr = value;
-+    helper_set_pstate_sm(env, FIELD_EX64(value, SVCR, SM));
-+    helper_set_pstate_za(env, FIELD_EX64(value, SVCR, ZA));
-+    arm_rebuild_hflags(env);
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 8cd371e3e3..e865c12527 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -103,15 +103,6 @@ uint32_t HELPER(sve_predtest)(void *vd, void *vg, uint32_t words)
+     return flags;
  }
  
- static void smcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
-new file mode 100644
-index 0000000000..c34d1b2e6b
---- /dev/null
-+++ b/target/arm/sme_helper.c
-@@ -0,0 +1,60 @@
-+/*
-+ * ARM SME Operations
-+ *
-+ * Copyright (c) 2022 Linaro, Ltd.
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "cpu.h"
-+#include "internals.h"
-+#include "exec/helper-proto.h"
-+
-+/* ResetSVEState */
-+void arm_reset_sve_state(CPUARMState *env)
-+{
-+    memset(env->vfp.zregs, 0, sizeof(env->vfp.zregs));
-+    memset(env->vfp.pregs, 0, sizeof(env->vfp.pregs));
-+    vfp_set_fpcr(env, 0x0800009f);
-+}
-+
-+void helper_set_pstate_sm(CPUARMState *env, uint32_t i)
-+{
-+    if (i == FIELD_EX64(env->svcr, SVCR, SM)) {
-+        return;
-+    }
-+    env->svcr ^= R_SVCR_SM_MASK;
-+    arm_reset_sve_state(env);
-+}
-+
-+void helper_set_pstate_za(CPUARMState *env, uint32_t i)
-+{
-+    if (i == FIELD_EX64(env->svcr, SVCR, ZA)) {
-+        return;
-+    }
-+    env->svcr ^= R_SVCR_ZA_MASK;
-+
-+    /*
-+     * ResetSMEState.
-+     *
-+     * SetPSTATE_ZA zeros on enable and disable.  It would appear that we
-+     * can zero this only on enable: while disabled, the storage is
-+     * inaccessible and the value does not matter.  We're not saving the
-+     * storage in vmstate when disabled either.
-+     */
-+    if (i) {
-+        memset(env->zarray, 0, sizeof(env->zarray));
-+    }
-+}
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index fdc035ad9a..40f2e53983 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -1761,6 +1761,30 @@ static void handle_msr_i(DisasContext *s, uint32_t insn,
-         }
-         break;
- 
-+    case 0x1b: /* SVCR* */
-+        if (!dc_isar_feature(aa64_sme, s) || crm < 2 || crm > 7) {
-+            goto do_unallocated;
-+        }
-+        if (sme_access_check(s)) {
-+            bool i = crm & 1;
-+            bool changed = false;
-+
-+            if ((crm & 2) && i != s->pstate_sm) {
-+                gen_helper_set_pstate_sm(cpu_env, tcg_constant_i32(i));
-+                changed = true;
-+            }
-+            if ((crm & 4) && i != s->pstate_za) {
-+                gen_helper_set_pstate_za(cpu_env, tcg_constant_i32(i));
-+                changed = true;
-+            }
-+            if (changed) {
-+                gen_rebuild_hflags(s);
-+            } else {
-+                s->base.is_jmp = DISAS_NEXT;
-+            }
-+        }
-+        break;
-+
-     default:
-     do_unallocated:
-         unallocated_encoding(s);
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 50f152214a..02c91f72bb 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -47,6 +47,7 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'mte_helper.c',
-   'pauth_helper.c',
-   'sve_helper.c',
-+  'sme_helper.c',
-   'translate-a64.c',
-   'translate-sve.c',
- ))
+-/*
+- * Expand active predicate bits to bytes, for byte elements.
+- * (The data table itself is in vec_helper.c as MVE also needs it.)
+- */
+-static inline uint64_t expand_pred_b(uint8_t byte)
+-{
+-    return expand_pred_b_data[byte];
+-}
+-
+ /* Similarly for half-word elements.
+  *  for (i = 0; i < 256; ++i) {
+  *      unsigned long m = 0;
 -- 
 2.34.1
 

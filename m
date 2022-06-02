@@ -1,158 +1,112 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4842772lfh;
-        Thu, 2 Jun 2022 04:46:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxInwlwnujoDncCyjGCoJIW75X7xZ0prux6D1Eo8p4/x/DOlGlNPTY95tQ5LlHvkwHkjRyk
-X-Received: by 2002:a05:622a:1110:b0:304:c366:a80f with SMTP id e16-20020a05622a111000b00304c366a80fmr3156471qty.640.1654170362811;
-        Thu, 02 Jun 2022 04:46:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654170362; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4874944lfh;
+        Thu, 2 Jun 2022 05:39:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy2+7XZVooi16YkWwSz5+p6yJbe+nXaVlKfkwz/rJTRWPoEvz0FYEVKGZvIBePoacT+ID/q
+X-Received: by 2002:a05:620a:4545:b0:6a0:74de:c70e with SMTP id u5-20020a05620a454500b006a074dec70emr2836375qkp.73.1654173593117;
+        Thu, 02 Jun 2022 05:39:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654173593; cv=none;
         d=google.com; s=arc-20160816;
-        b=HsovGwl6dUbw4HjTFrLkPkzrW7wy2d4+XoOr6NJcLBxY5RE/Zm50a6mO0PZvmyx9gl
-         +Mjm92DHQHGUGIaIF2lHomYWW5N0a9Fkm0WhI9i1urZIMXhjtyU6kC3M42TOd5VNJxZE
-         ljgAMeYQXHdkIn8TctTVHli8eq5rXVnptof95k63GB1BvN/Tl469BwyIaKSdM1ld+mjS
-         CHfg+bntdq9v2RjLBPZOxgoe+qqgejq5apzHM4YJw8Yi+eS7rVRNEEJ2O3IYE0hfUcSI
-         EVz+o4YV8Y8uighU+Fz4/7PcAiBaFeVjQQtgKGH6sQ26o/HQDjAIgGRzu0IoZZXUTUHB
-         8D0A==
+        b=HFZtzL+QhcSMnrqCFCtdW37lDjizXTa6/kVL7n/wFZm1POaOh5L1nJ9gRHtJCT2SMW
+         re6P1HJ/RUPElHkdBSvgcYapRmAJsrWkpa0Uuby5CpfC+9D0E/gGRxDHgRg2gG+S61wu
+         SOXAYseqfWYmEb90q5LxT2MfE1bWq9F2/3SRqP66zTayCyOu6dh5y2Wg6NBTgLYYjgep
+         KVvDaKSk5XwtUDPqrm204L8DM1q8D3v+nvpSzwHKdo+/EElDBnl6P1WmAZ4hzzityRcc
+         c+8LVF3i9LPglRN6Io57TQl6c29U8jHuymeEdFJlIJ3DHZtnU9Hh7caHQPCKCCBNSGfq
+         KwEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:cms-type
-         :content-transfer-encoding:in-reply-to:cc:content-language:to
-         :subject:from:user-agent:mime-version:date:message-id:dkim-signature
-         :dkim-filter;
-        bh=6vtwdhq1ZiM7VUPI4ZCn4FhMLb7tt1IDeTvWsoxxXhs=;
-        b=O+rCfT+5T03ByteXPPmJeQ4bGtt3t2aa1WRg8GBOxyR7fj4frSW0NSIkMnMJG9Anlt
-         yFgyYYiE54FIZMVsv1oy41YMj4AO3EZHBOPK/loE7d109AI8B90deEN1KhG8UT9DXXYf
-         3Wa4WphyXXYSwT+bhcjosm6874Iw9urEmkY8oyezDUrMFrmKALy7T3uRZNmXwkJaGHWK
-         iT53aWPw5xSBJy1SZr3j0IK4XaF3oe0abdwE50YkfDE62fvk2+SEE5+WmJ+P9v0cLDP4
-         fQwd6FhSmJ2Sfq5sWkbWvuf0awnvUi/khcGe0id0Zaknd8s14Dl3stMK0xJr9JWlaK1F
-         fGOQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=jhgbA2lMQPGoKsQJcVwIZxhhfgsvDfzzVu7M2rQgD5s=;
+        b=UiIxz5pjFn3ux+SmVp65/tN9UB5V3izPTS4risGccOdWqCEVlx76kTtLUXIySKLEtd
+         AByFyCVq8+yGEtbeGiY62o8BNutowKuMEbJhEaBGUEpXGrLwPsrpsFCdM4QLY5/dxRcs
+         duvszqFSVn0szyYGklyGod8ZSSqFFGEYwLKEE7gy8Z4VDNF4h4rislfgcC5QCDP7Vo1v
+         LjcfCpZvdG9FH4ULyRKb1jSilECKX3VksaPNkjr1lUE6s3KTLrO3E+aWoW4/TbA5CEiQ
+         oZtgWRTsix2TNdBZpLCKA8uCaRYXQ46FNWP9S8wlsCoUa9IdXaZrUXZEKniHUtm/kHQA
+         Yo4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@samsung.com header.s=mail20170921 header.b=SonXl9ra;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WiZ2kOmL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=samsung.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x25-20020ae9e919000000b006a37682052csi1891588qkf.410.2022.06.02.04.46.02
+        by mx.google.com with ESMTPS id u22-20020a05620a431600b0069fb8b83814si2774221qko.298.2022.06.02.05.39.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jun 2022 04:46:02 -0700 (PDT)
+        Thu, 02 Jun 2022 05:39:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@samsung.com header.s=mail20170921 header.b=SonXl9ra;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WiZ2kOmL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=samsung.com
-Received: from localhost ([::1]:48012 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58224 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwjH8-0001hc-AF
-	for alex.bennee@linaro.org; Thu, 02 Jun 2022 07:46:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44404)
+	id 1nwk7E-0006kH-Ic
+	for alex.bennee@linaro.org; Thu, 02 Jun 2022 08:39:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <i.kotrasinsk@samsung.com>)
- id 1nwjGB-0001fV-En
- for qemu-arm@nongnu.org; Thu, 02 Jun 2022 07:45:10 -0400
-Received: from mailout2.w1.samsung.com ([210.118.77.12]:11369)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <i.kotrasinsk@samsung.com>)
- id 1nwjG3-00076o-9M
- for qemu-arm@nongnu.org; Thu, 02 Jun 2022 07:44:57 -0400
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
- 20220602114444euoutp02e8b5e90ab378d5b6587d0c90aef37bce~0yxvxKrNP0382703827euoutp02g
- for <qemu-arm@nongnu.org>; Thu,  2 Jun 2022 11:44:44 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
- 20220602114444euoutp02e8b5e90ab378d5b6587d0c90aef37bce~0yxvxKrNP0382703827euoutp02g
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1654170284;
- bh=6vtwdhq1ZiM7VUPI4ZCn4FhMLb7tt1IDeTvWsoxxXhs=;
- h=Date:From:Subject:To:Cc:In-Reply-To:References:From;
- b=SonXl9raGW6TVmRwudrjblFkvjGLI0ec4GyOiGTjYWxs0YVDjh5t/X3cK71HVaZRS
- Ct9iq8XRbzebg7NfE+F93S1NB02HqlRD2vRuvFeTSKLASRlO9Fia+qVmEjd9egfF6q
- 55PFVsLPgShW941XuLBSHC1fNbOVTYETbL/vxHDY=
-Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20220602114443eucas1p13e4e25ffed9dc5ba1399e1619b73b54a~0yxvpBGY71237612376eucas1p1W;
- Thu,  2 Jun 2022 11:44:43 +0000 (GMT)
-Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
- eusmges1new.samsung.com (EUCPMTA) with SMTP id EF.FE.09664.BA2A8926; Thu,  2
- Jun 2022 12:44:43 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
- 20220602114443eucas1p2aa915ec355b45fcc00ec2679d28b2d57~0yxvXXZ4d2310223102eucas1p2-;
- Thu,  2 Jun 2022 11:44:43 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20220602114443eusmtrp133d555a529d34fa40a494cb3875f7ad8~0yxvWyhrA2465424654eusmtrp1s;
- Thu,  2 Jun 2022 11:44:43 +0000 (GMT)
-X-AuditID: cbfec7f2-d97ff700000025c0-dc-6298a2ab6e7d
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms1.samsung.com (EUCPMTA) with SMTP id 6E.9B.09095.BA2A8926; Thu,  2
- Jun 2022 12:44:43 +0100 (BST)
-Received: from [106.210.134.115] (unknown [106.210.134.115]) by
- eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20220602114443eusmtip13a350f0b04a4cf2e71613319281b147f~0yxvGjy5N1844018440eusmtip12;
- Thu,  2 Jun 2022 11:44:43 +0000 (GMT)
-Message-ID: <790734d6-1234-844f-0afa-a3e3b4020dac@samsung.com>
-Date: Thu, 2 Jun 2022 13:44:43 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nwk6F-0006gv-Ch
+ for qemu-arm@nongnu.org; Thu, 02 Jun 2022 08:38:51 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133]:45353)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nwk6D-0005MC-DA
+ for qemu-arm@nongnu.org; Thu, 02 Jun 2022 08:38:50 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-300628e76f3so49607677b3.12
+ for <qemu-arm@nongnu.org>; Thu, 02 Jun 2022 05:38:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=jhgbA2lMQPGoKsQJcVwIZxhhfgsvDfzzVu7M2rQgD5s=;
+ b=WiZ2kOmLkefcATqnUb5IW0sNgvgIo0EXOUZg5otmGKM4AA4r2IQZqdM97RL/heAJpp
+ iudnstKxyfv/DI6xyoxzDVq5VnJGooSKhW83IMTODuF5jmiWlEyX8VDfbsX7EjEea1O8
+ vR37PKnGvW6LFUQIpzz2FZK67L1Z8FFnSuIEjXOrgv0kd9GaPTIRPCxBKSTvWtSIe/Op
+ aY8v+95zw01wbWbcSmROMouMtDwWjH6U54PCLmuJgXC7nFY1wVLZG3Egp2eUX3MEiU6k
+ nmjhNmp/fuy4geTjKB5ZEgTvbR8sLl7kuAgcB971JeDrNiP86LezS9mMvxMs+1JU1oAL
+ uSEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=jhgbA2lMQPGoKsQJcVwIZxhhfgsvDfzzVu7M2rQgD5s=;
+ b=1Vwbk8wHUmhK/LZ0xuqdMIUA/h/H8g/sa7lvQmWjeFhU0kAbeA4EdBI2wWcZaGoZkE
+ 1Or1AdZDkk9qBGRnGCzQ7C5cJAg5todW+XgLT5UVvb+9TNK5dFu1h70pWjtyr8jg0+RY
+ 4c7Lqv7jCCw7QaI5GkA/CYYTui60gKJeu8WDxpcb7z4l/5W4Npa74dqJpSP/WyF78J0d
+ /NkgW4iOk9dQ/BubJT7mjD0CciaBTs/k5b0iIJ1lzxql5yR/6x245fI2VQaZduoaTBin
+ r5jzqMrAdht1fFeoZyOhLqWXgxwtvkn14D4jpGSeRPYCfv+hxOy11Vzrt0szJGArYm0H
+ MSPw==
+X-Gm-Message-State: AOAM531YEV3T2+PhLbFW4zngYhDTOUwL/G5P9jkP7JyEAaVgAs19/9rb
+ oz09yYaal9wyGzej+W0w7vYYiFowjwPDr7rsbAnL/A==
+X-Received: by 2002:a81:106:0:b0:2d0:e682:8a7a with SMTP id
+ 6-20020a810106000000b002d0e6828a7amr5244192ywb.257.1654173527811; Thu, 02 Jun
+ 2022 05:38:47 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0)
- Gecko/20100101 Thunderbird/91.10.0
-From: =?UTF-8?Q?Igor_Kotrasi=c5=84ski?= <i.kotrasinsk@samsung.com>
-Subject: Re: Help: NVIC, level-triggered interrupts and interrupt pending
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Language: en-GB
-Cc: qemu-arm@nongnu.org
-In-Reply-To: <b3d8f8b5-3976-8bb6-41b1-8b557524665a@samsung.com>
-Content-Transfer-Encoding: 8bit
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrMIsWRmVeSWpSXmKPExsWy7djPc7qrF81IMti1ztBizpkHLBYLuhey
- OTB53Lm2h83jybXNTAFMUVw2Kak5mWWpRfp2CVwZkz59Yiu4Llfx5PIl9gbGzeJdjJwcEgIm
- EivePmDuYuTiEBJYwSjx4MANVgjnC6PEhrXr2SGcz4wSbZMmscC0fP87hRHEFhJYzijxaqUr
- RNFHRomm6d1gCV4BO4l1i9eyg9gsAioS3yYuZYWIC0qcnPkEbJCoQLLEubNX2boYOTjYBJwk
- Jq2SAgkLC3hKLH18HWyMiICOxJXrm5lAbGYBcYmmLytZYeyJU0+CjeEUsJe4cPYjM0RcXqJ5
- 62ywdyQEFnJIHNm0ix1kvoSAi8S7GQ4Q9wtLvDq+hR3ClpE4PbkH6q9iiSVnd0DZNRLnu1dC
- 1VhL7DrezQIyhllAU2L9Ln2IsKPEvetHWSCm80nceCsIcQGfxKRt05khwrwSHW1CENVqEtN+
- 7WGGWbqs8RHLBEalWUhBMgvJj7OQ/DILYe8CRpZVjOKppcW56anFhnmp5XrFibnFpXnpesn5
- uZsYgeni9L/jn3Ywzn31Ue8QIxMH4yFGCQ5mJRHekl1Tk4R4UxIrq1KL8uOLSnNSiw8xSnOw
- KInzJmduSBQSSE8sSc1OTS1ILYLJMnFwSjUw1XK0XDddf27hNw/Tb8pzp7f6/q262Hu4ZdLL
- 6wtyDy2p0GjkfcvB6ujpvTFo3xyzY4sivPZaJWT9E7mzIuTI0ubDvnNfXijyd79075bripk7
- Q16+4UnWtFi8uGlDuXGlVfgkjwb+/2yu5RsY3er3sK23Lcz0VfKpb+O73C+9fq1u4/Ic1a9a
- Cervcj7u+m7zxfz1zPVHHn4oF19yNnOiYNLcjbyJDxM+3mEqy+0048vk2+Lwe6p5EbO+nX7X
- UUXezhe7OV4e2cPXu8/m3rqM6Y9Yj9jkcy29se/YeR359mqV0O8J+Z2X92aK5E/YeMLmbKXl
- Nvc04Ukdsc3XFCNWR69Ncynh3lZjttvv1e9iJZbijERDLeai4kQAlVwPWoYDAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmpnkeLIzCtJLcpLzFFi42I5/e/4Xd3Vi2YkGTS1ylvMOfOAxWJB90I2
- ByaPO9f2sHk8ubaZKYApSs+mKL+0JFUhI7+4xFYp2tDCSM/Q0kLPyMRSz9DYPNbKyFRJ384m
- JTUnsyy1SN8uQS9j0qdPbAXX5SqeXL7E3sC4WbyLkZNDQsBE4vvfKYxdjFwcQgJLGSV2zLnJ
- DJGQkfhxeg0bhC0s8edaFxtE0XtGiU87roAV8QrYSaxbvJYdxGYRUJH4NnEpK0RcUOLkzCcs
- ILaoQLJE85ZDTF2MHBxsAk4Sk1ZJgYSFBTwllj6+zghiiwjoSFy5vpkJYn4Xs8Sp/qdgM5kF
- xCWavqxkhbEnTj0JNpNTwF7iwtmPzCAzmQXUJdbPE4IokZdo3jqbeQKj0CwkV8xCMmkWQscs
- JB0LGFlWMYqklhbnpucWG+oVJ+YWl+al6yXn525iBMbItmM/N+9gnPfqo94hRiYOxkOMEhzM
- SiK8JbumJgnxpiRWVqUW5ccXleakFh9iNAWGxERmKdHkfGCU5pXEG5oZmBqamFkamFqaGSuJ
- 83oWdCQKCaQnlqRmp6YWpBbB9DFxcEo1MJUyF0Z8CIzddrjp4iPmjbvjk7ucfqntYf5nfFVK
- 3e+TQfNfvRmn5XUjQuzFPJesb7TMP2BteGzxVf7jprWfAyrZfIzWS7fEn+LUbhd8Vm6wNd8h
- oU4gfebEd9bxP+8xG5tMW2DlIrDo5EJdsfaFpz7kRJbFZN24PCPx4IMY5qacBt8Y/7DHDnoP
- TNTeLXK96u4a/j7chbv6mev30L/THs4t+P3dQsBT4BLbisrjQiXyyXz9m6aaHotrsXK8o/Ik
- 5fmUJiZlw0eHb225HyTKmidQdrDrz4G/EisWhTM5tsTM23Xrcuj8y29D1kk7nOJz196wQqDA
- 84Hg8tp5OX8mf9nj/aPnwz2TOSLrQp76K7EUZyQaajEXFScCAOFbTMwaAwAA
-X-CMS-MailID: 20220602114443eucas1p2aa915ec355b45fcc00ec2679d28b2d57
-X-Msg-Generator: CA
-Content-Type: text/plain; charset="utf-8"
-X-RootMTR: 20220530093333eucas1p2c05b46a5f9c66704919743236753858f
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20220530093333eucas1p2c05b46a5f9c66704919743236753858f
 References: <CGME20220530093333eucas1p2c05b46a5f9c66704919743236753858f@eucas1p2.samsung.com>
  <e3573c25-1ba6-cb57-f813-99c538a2d254@samsung.com>
  <CAFEAcA8EqCh0LDS=N+5W8fPnF2Fj-Z7r=wssDAD-V5tBWRM85w@mail.gmail.com>
  <5a05e699-d050-adae-ca14-c68b5534f214@samsung.com>
  <CAFEAcA90R49A6txYhP_vFHoa=XPV+g6XxoZdVXmHcS2EPW__Ew@mail.gmail.com>
  <b3d8f8b5-3976-8bb6-41b1-8b557524665a@samsung.com>
-Received-SPF: pass client-ip=210.118.77.12;
- envelope-from=i.kotrasinsk@samsung.com; helo=mailout2.w1.samsung.com
-X-Spam_score_int: -71
-X-Spam_score: -7.2
-X-Spam_bar: -------
-X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_HI=-5, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ <790734d6-1234-844f-0afa-a3e3b4020dac@samsung.com>
+In-Reply-To: <790734d6-1234-844f-0afa-a3e3b4020dac@samsung.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 2 Jun 2022 13:38:37 +0100
+Message-ID: <CAFEAcA8V0EeeNL-s95hOdc+hCHVcmhrfJ7ppEW3Jisn6NXSxBg@mail.gmail.com>
+Subject: Re: Help: NVIC, level-triggered interrupts and interrupt pending
+To: =?UTF-8?Q?Igor_Kotrasi=C5=84ski?= <i.kotrasinsk@samsung.com>
+Cc: qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -168,111 +122,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AVhGJH2pjr2p
+X-TUID: UJ/c5e+Ua0u+
 
+On Thu, 2 Jun 2022 at 12:44, Igor Kotrasi=C5=84ski <i.kotrasinsk@samsung.co=
+m> wrote:
+> I don't have a test image yet, but I'm pretty confident I understand the
+> bug now.
+>
+> As you said, an interrupt becomes pending if the input IRQ line is high
+> and the interrupt is not Active. The first condition in R_CVJS doesn't
+> mention any transitions, so the "event" mentioned there happens at any
+> time the condition is valid. So, no matter what writing to pending-clear
+> register does, pending status should still be set afterwards. This would
+> also match the explanatory document I found.
 
+Yeah, I came to basically the same conclusion. (On real hardware
+it's possible that the 'line high and not active' condition is
+only re-checked on the next clock tick so it might go non-pending
+for a cycle, but software wouldn't be able to see the difference.)
 
-On 30.05.2022 14:02, Igor Kotrasiński wrote:
-> 
-> 
-> On 30.05.2022 13:54, Peter Maydell wrote:
->> On Mon, 30 May 2022 at 12:34, Igor Kotrasiński
->> <i.kotrasinsk@samsung.com> wrote:
->>>
->>> On 30.05.2022 12:49, Peter Maydell wrote:
->>>> On Mon, 30 May 2022 at 10:33, Igor Kotrasiński
->>>> <i.kotrasinsk@samsung.com> wrote:
->>>>>
->>>>> Hi,
->>>>>
->>>>> I've been hacking on QEMU recently, adding support for a custom
->>>>> Cortex-M
->>>>> board. One of the devices that I'm emulating is using level-triggered
->>>>> interrupts, for which I assume qemu_irq_raise/lower is the right tool.
->>>>> However, I'm having trouble receiving interrupts for my device which I
->>>>> *think* are caused by interaction with setting/clearing
->>>>> interrupt-pending status.
->>>>>
->>>>> The way I'm handling my interrupt currently is as follows:
->>>>>
->>>>> 1. The device raises an interrupt with qemu_irq_raise.
->>>>> 2. In interrupt handler, I set the clear-enable nvic register and
->>>>> queue
->>>>> a handler.
->>>>> 3. In handler, I read data from the device and set a register that
->>>>> lowers its interrupt with qemu_irq_lower.
->>>>> 4. Then I set the clear-pending nvic register.
->>>>> 5. Finally I set the set-enable nvic register.
->>>>
->>>> You don't say in this sequence where "return from the interrupt
->>>> exception handler" happens, which is an important part of the
->>>> sequence. (That is, I'm not sure whether your design has only
->>>> step 2 in the CPU exception handler with the "queued" handler
->>>> being run after exception-return, or whether all of 2-5 are
->>>> in the CPU exception handler for the interrupt.)
->>>>
->>>
->>> Sorry, I lied a bit here. I'm running someone else's code and I misread
->>> it a bit. The exact sequence here is:
->>>
->>> 1. The device raises the interrupt.
->>> 2. Interrupt handler sets the set-pending register, then the
->>> clear-enable register, then returns.
->>> 3. A handler running outside exception context reads data from the
->>> device and lowers the irq.
->>> 3.5. The device raises the irq again.
->>> 4. The handler sets the clear-pending register, then the set-enable
->>> register.
->>
->> Does this code work on real hardware?
->>
->> Do you have a test case image you could provide?
->>
->> thanks
->> -- PMM
->>
-> 
-> The code works on our board which uses a Cortex-M35P, unfortunately I
-> don't have a test case image I can share. I'll try to prepare a minimal
-> example that runs on mps2-an505 or such.
-> 
-> Igor
+I want to go through the rest of the NVIC code to make sure we're
+also correctly implementing this part of the rule (ie that wherever
+active goes low we check if the line is high and set pending: we
+do that in the exception-return codepath but might have missed it
+in some other places).
 
-Hi,
-
-I don't have a test image yet, but I'm pretty confident I understand the
-bug now.
-
-As you said, an interrupt becomes pending if the input IRQ line is high
-and the interrupt is not Active. The first condition in R_CVJS doesn't
-mention any transitions, so the "event" mentioned there happens at any
-time the condition is valid. So, no matter what writing to pending-clear
-register does, pending status should still be set afterwards. This would
-also match the explanatory document I found.
-
-This diff would be a matching fix:
-
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 773e311754..bfd0fafe0a 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -2393,6 +2393,14 @@ static MemTxResult nvic_sysreg_write(void
-*opaque, hwaddr addr,
-         for (i = 0, end = size * 8; i < end && startvec + i <
-s->num_irq; i++) {
-             if (value & (1 << i) &&
-                 (attrs.secure || s->itns[startvec + i])) {
-+                /* Stay pending if line is up and interrupt is not active
-+                 * (R_CVJS)
-+                 */
-+                if (!setval &&
-+                    !s->vectors[i + NVIC_FIRST_IRQ].active &&
-+                    s->vectors[i + NVIC_FIRST_IRQ].level) {
-+                    continue;
-+                }
-                 s->vectors[startvec + i].pending = setval;
-             }
-         }
-
-Igor
-
+thanks
+-- PMM

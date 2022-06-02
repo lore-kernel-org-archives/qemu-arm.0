@@ -1,111 +1,111 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5208286lfh;
-        Thu, 2 Jun 2022 15:14:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzutM4md+3DEDEt5MD340/nOi9XVQ/eelfIPwLh5suu14hNkvb1XSfBu+8U/CvLlTZvFCqn
-X-Received: by 2002:a37:42d2:0:b0:6a6:7b44:e150 with SMTP id p201-20020a3742d2000000b006a67b44e150mr3295017qka.773.1654208057255;
-        Thu, 02 Jun 2022 15:14:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654208057; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5209600lfh;
+        Thu, 2 Jun 2022 15:16:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxFn45rLmjK7ppHfWc1JfUB6JUFkZgDBq+HCQhlrw1gTJzxLQFZkESbIz/Z69Zn/q1U9JzY
+X-Received: by 2002:a05:620a:1a0e:b0:6a5:dac2:d0ec with SMTP id bk14-20020a05620a1a0e00b006a5dac2d0ecmr4586321qkb.667.1654208196218;
+        Thu, 02 Jun 2022 15:16:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654208196; cv=none;
         d=google.com; s=arc-20160816;
-        b=kM0msnI982jOdvBCZIz8Aap6Aa5p+SwVN07l9izZ/CLe9xiB3Mzr4YNoUlST1sLkW2
-         NME+/Aw2Q4VHqdX+kWutAd9UnTv1NHI6NXTmpamxcG1DMzD9tWmgIXsicLvXhtxcsOeT
-         ox1PepyMFKqgdiAOJTGEtT1HLeAoK/SkrjE27Z+vp5t1DcryeUCD6gIJNbI4rGBI6har
-         jLyFD09dAzjn1RzrARUUdUuyTVbNbnbpgOobrBFHYifIqDVgwUv2ywd0yTGn1e3MBgT9
-         jQ+1RJaODHCKL+bcHigydPRtAZTNtngpkiPCFHlYASLwV4/bP2DxLFn7iDkcFpOAtt5y
-         MzTw==
+        b=DrpL2EgYwErTLTWz1T0QJJ58yhMI093xSHC6oFKxHrJlAys19Bka6qpQPhyJ9+Xc+r
+         Iz+ywrx//shASwnVfgXmQt6iT+j/ae1T9YjPyvwjvoT5VZxRBjgXQS9I8mu5NELIkgAB
+         8jSmKFnFXso+gGKCDn6BO9dsP9jzSYzLONQUE7qytogz9MilA4Zxnzhf89ccXdGS//8D
+         HCWMFjWj6n7F0W8qjrscDbKE0RuKn2imEoVnUrTWsCFK/I+uctitbLfcH9fYl7K3M+no
+         t42noWyeLHPGt7f1ptLD088c4eHItYtv7sJ134frxbN8nPi4aQxLbqnOlMLrDUu63Gvj
+         tKvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=6xMWEOVCvEJI1KC6zgVAv9+GA3g0PTUVPfSZbthulxo=;
-        b=wNif8zFFJDmcl3sUoLadht63RHO5YPTaSelWxXU/rr10B8zBGetXYuI6z4REsTQbe6
-         gnanGQwSvZjflOcdAYpxlzWkAYf5yTvZaqcRlwUNpliXGtGTgQxplzSOowyW/DQmgTXg
-         xhhcv/dowqIq/ONiBu4NLyPSc/DAzZS0ZjLiIUEcVoEvoxuTvuZYKV6aWFxMaGm3K1bt
-         Zb/CW3NqlWhnSW/Lpvkr0YEwlifB96bY/qX5M4izE3/pNO6HtOWaQM5zE+basNJCLcMR
-         NK7wVn3RdFEWEQZl4dpepjpJ9Y2upFgTwPdjA0wAScwF6pRw1dtVDcIbsWydXXkeT5m5
-         EC5Q==
+        bh=iaX51RzKkNkmjJGOwJXKVNsxoyHghI2U9FbxI6i+VnE=;
+        b=eSGhi9qGGZJxJq4599Wg1KgvUVz3ySwvnyNtKdrYM00a5FxtHW0i9PycxZKJuqLwHv
+         Cms6iD0aW10z8SQwriW0wdpSU7vEFfiD+xzKxtKBAEKRDkvG2ruQgkji/Ch4B1mMqRqs
+         VSBN7K28KAzDriC8Njn/cQPtpBGoo3V9pLC8iIX0yfyodnMXUCu94jAEG8De8Q0UyNMG
+         Jy60P+BKhGBE4Ghkbv3AZ4jRSCzJb5NLoQ/yc1FFZd2KPOhES+XgUFXw3AughsCrO+o6
+         AXfiRqAsQzP1zk2fzmbAJZnO/+537LoRXeVjm/yxppF8Bg4wT0fH7au14nRPmRSmcERV
+         YKLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YTtmezVt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d0rKmwUv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i17-20020ac85c11000000b002f3b0d6fb92si2829711qti.33.2022.06.02.15.14.17
+        by mx.google.com with ESMTPS id v2-20020ac85782000000b00304c99093basi2314889qta.166.2022.06.02.15.16.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jun 2022 15:14:17 -0700 (PDT)
+        Thu, 02 Jun 2022 15:16:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YTtmezVt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d0rKmwUv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44174 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48884 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwt56-0001Eq-OQ
-	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:14:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37094)
+	id 1nwt7L-0004YA-NP
+	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:16:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37528)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwsgv-0004oL-DC
- for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:49:17 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e]:41921)
+ id 1nwsh8-00056J-Pj
+ for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:49:31 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433]:44705)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwsgs-0008VG-Bw
- for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:49:17 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id p8so5795319pfh.8
- for <qemu-devel@nongnu.org>; Thu, 02 Jun 2022 14:49:13 -0700 (PDT)
+ id 1nwsh4-00005u-TA
+ for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:49:30 -0400
+Received: by mail-pf1-x433.google.com with SMTP id g205so5773136pfb.11
+ for <qemu-devel@nongnu.org>; Thu, 02 Jun 2022 14:49:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6xMWEOVCvEJI1KC6zgVAv9+GA3g0PTUVPfSZbthulxo=;
- b=YTtmezVtqWJQ2Djjac7C5I6VjZ0ID+vIeMTDTZtn9Dcwo4m0VA84XvFvHPvXHxGXKb
- jq0v0gsprUokXueTdTA/+V7uXF1tzIwca43UuW0/lPcZaqTzHGKfTkJIP27qRTu+GSAp
- a66D0mUNTGsmPYoTqYyBIANyCPtcjySDpZ3dRPmF6jGRyi/m7zfISyor/OxUY40gvvmn
- GHAo+fbMVOJLfgZTlh6TPit9urdk5vx9Pc0/nsAST52STLnQl4Z9712vgk5d21adxUNI
- 1q1Wa9TIk1zuA3uI+knygzfbiz0A2WuIo+DlznKk+T6dqsrtyJGw5Y8a4989Y2gIFoGP
- 9d2Q==
+ bh=iaX51RzKkNkmjJGOwJXKVNsxoyHghI2U9FbxI6i+VnE=;
+ b=d0rKmwUvB6yPZwyGwCyJfXCSzA9YcAC8VhLaIRccw6LtWR1VfuxiBIswfCO1W2wl53
+ Zu58g3SMNM0rIkgsd2A2e7/5EKjAgkl4u/C2Qcz7t7FrGlXwWYUmXcBRiXXOM4cs0Vat
+ oC2+etbWcV1kevfEjBfLYFRExTUTO5lpWI2A0LX6QiZwIKSUHPKgJB3f+Y+UVj8y1Qbj
+ qW5OK3FU4ON+wfssG9p5zbG0QP51yl3PNQF3Ekn2ltZtDPSzRpadvvLIR+6P5MV6Zwqd
+ INiRNECn/6MQg3jboaFxSu2/8Nj3VxDRUFARvTjOGbA3qVW3CxruJdYtQ96QnAyzvrNv
+ itmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6xMWEOVCvEJI1KC6zgVAv9+GA3g0PTUVPfSZbthulxo=;
- b=AWvwaDXrqjzztdfeEUYENItBtwHySUQ06wi4SGQTe+m86Q4XOoFZ1tIQbBqENPKLEr
- qR4ie+RQjTlbmSqqm44ZCE8CT/xq81yvX2J7aYinxmxcfFu162ecpAgvz+BqL/K35bg2
- iLFbuDhHWbIqc+5reMm1qrK1JfbeoTBbV3O1FPtIfIzjULxKHMHljWkQOmcBko4xBfEb
- V7h2ZO4THvlBaj+OfT827vzCRo8+eQrHdt98CHJ+iR/FS2O66Y8chrY5jXjSscjJ+/cX
- Her6GXl+FgDMZI9S2WoipirjSK2riai8tkF4p8KlP0TYEtCNHW+pD+PbDp6Sgsb+ZN/H
- GXfA==
-X-Gm-Message-State: AOAM531ujur9JSmm3yAlBtTr64ndMdaPnRzs54h4trR9Sfz9uIKbZNkp
- sqQYoUS+Q/He9ewTUya0hE1GXI2UVxa5hQ==
-X-Received: by 2002:a63:f407:0:b0:3fa:91cf:270 with SMTP id
- g7-20020a63f407000000b003fa91cf0270mr6085708pgi.428.1654206553484; 
- Thu, 02 Jun 2022 14:49:13 -0700 (PDT)
+ bh=iaX51RzKkNkmjJGOwJXKVNsxoyHghI2U9FbxI6i+VnE=;
+ b=DwSjp50LHPwxHMFd36feZU+e+ZQ/d7TuKtfdqtjTB8XymqFa4I3C5wQ/UCLJeH1/h3
+ O7KY5aTX78VRkovFEnNmx77eZedaBSmCANAAmpWridTm6xp5vHzcxSLz9J9Il046ghQx
+ JsmeOY35y+BA/7/6qxOCYmmSLMYIa7QZQSSlhAwHhgJXAuPIhu130qKEKYDOK73iBjjs
+ CkbIa8UAj16fvEhvLT1BLmgITM5cCYZHzOhuuvz6GW3WCijhicV/fpEhwYUu2eXkUocu
+ taCI/BYKPj5z45yZhjqEASsTga/TfApc1dgIspID1wJYm+c8KPtjrOM+BsBBG1Wob6vK
+ vVeA==
+X-Gm-Message-State: AOAM531vpxlUQsAz39MVhREV9YLq1/FpBAVS/K8b/rlqzizPxLK30hgG
+ d7D44JJpRfsVSK42EoKazQTWViO0ugFF/w==
+X-Received: by 2002:a63:86c3:0:b0:3fb:de4b:4de1 with SMTP id
+ x186-20020a6386c3000000b003fbde4b4de1mr5891328pgd.198.1654206566071; 
+ Thu, 02 Jun 2022 14:49:26 -0700 (PDT)
 Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
  by smtp.gmail.com with ESMTPSA id
- bf7-20020a170902b90700b00163c6ac211fsm3988760plb.111.2022.06.02.14.49.12
+ bf7-20020a170902b90700b00163c6ac211fsm3988760plb.111.2022.06.02.14.49.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jun 2022 14:49:13 -0700 (PDT)
+ Thu, 02 Jun 2022 14:49:25 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 22/71] target/arm: Add SMEEXC_EL to TB flags
-Date: Thu,  2 Jun 2022 14:48:04 -0700
-Message-Id: <20220602214853.496211-23-richard.henderson@linaro.org>
+Subject: [PATCH 36/71] target/arm: Unexport aarch64_add_*_properties
+Date: Thu,  2 Jun 2022 14:48:18 -0700
+Message-Id: <20220602214853.496211-37-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220602214853.496211-1-richard.henderson@linaro.org>
 References: <20220602214853.496211-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,133 +120,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a+WKhvCjrxq0
+X-TUID: HkxXh8HqT7WG
 
-This is CheckSMEAccess, which is the basis for a set of
-related tests for various SME cpregs and instructions.
+These functions are not used outside cpu64.c,
+so make them static.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h           |  2 ++
- target/arm/translate.h     |  1 +
- target/arm/helper.c        | 52 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-a64.c |  1 +
- 4 files changed, 56 insertions(+)
+ target/arm/cpu.h   | 3 ---
+ target/arm/cpu64.c | 4 ++--
+ 2 files changed, 2 insertions(+), 5 deletions(-)
 
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 245d144fa1..31f812eda7 100644
+index 3999152f1a..60f84ba033 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -1134,6 +1134,7 @@ void aarch64_sync_64_to_32(CPUARMState *env);
- 
- int fp_exception_el(CPUARMState *env, int cur_el);
- int sve_exception_el(CPUARMState *env, int cur_el);
-+int sme_exception_el(CPUARMState *env, int cur_el);
- 
- /**
-  * sve_vqm1_for_el:
-@@ -3272,6 +3273,7 @@ FIELD(TBFLAG_A64, ATA, 15, 1)
- FIELD(TBFLAG_A64, TCMA, 16, 2)
- FIELD(TBFLAG_A64, MTE_ACTIVE, 18, 1)
- FIELD(TBFLAG_A64, MTE0_ACTIVE, 19, 1)
-+FIELD(TBFLAG_A64, SMEEXC_EL, 20, 2)
+@@ -1097,8 +1097,6 @@ int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+ void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
+ void aarch64_sve_change_el(CPUARMState *env, int old_el,
+                            int new_el, bool el0_a64);
+-void aarch64_add_sve_properties(Object *obj);
+-void aarch64_add_pauth_properties(Object *obj);
+ void arm_reset_sve_state(CPUARMState *env);
  
  /*
-  * Helpers for using the above.
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index f473a21ed4..a492e4217b 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -42,6 +42,7 @@ typedef struct DisasContext {
-     bool ns;        /* Use non-secure CPREG bank on access */
-     int fp_excp_el; /* FP exception EL or 0 if enabled */
-     int sve_excp_el; /* SVE exception EL or 0 if enabled */
-+    int sme_excp_el; /* SME exception EL or 0 if enabled */
-     int vl;          /* current vector length in bytes */
-     /* Flag indicating that exceptions from secure mode are routed to EL3. */
-     bool secure_routed_to_el3;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 204c5cf849..98de2c797f 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6222,6 +6222,55 @@ int sve_exception_el(CPUARMState *env, int el)
-     return 0;
+@@ -1130,7 +1128,6 @@ static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
+ static inline void aarch64_sve_change_el(CPUARMState *env, int o,
+                                          int n, bool a)
+ { }
+-static inline void aarch64_add_sve_properties(Object *obj) { }
+ #endif
+ 
+ void aarch64_sync_32_to_64(CPUARMState *env);
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index c5bfc3d082..9ae9be6698 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -689,7 +689,7 @@ static void cpu_arm_get_default_vec_len(Object *obj, Visitor *v,
  }
+ #endif
  
-+/*
-+ * Return the exception level to which exceptions should be taken for SME.
-+ * C.f. the ARM pseudocode function CheckSMEAccess.
-+ */
-+int sme_exception_el(CPUARMState *env, int el)
-+{
-+#ifndef CONFIG_USER_ONLY
-+    if (el <= 1 && !el_is_in_host(env, el)) {
-+        switch (FIELD_EX64(env->cp15.cpacr_el1, CPACR_EL1, SMEN)) {
-+        case 1:
-+            if (el != 0) {
-+                break;
-+            }
-+            /* fall through */
-+        case 0:
-+        case 2:
-+            return 1;
-+        }
-+    }
-+
-+    if (el <= 2 && arm_is_el2_enabled(env)) {
-+        /* CPTR_EL2 changes format with HCR_EL2.E2H (regardless of TGE). */
-+        if (env->cp15.hcr_el2 & HCR_E2H) {
-+            switch (FIELD_EX64(env->cp15.cptr_el[2], CPTR_EL2, SMEN)) {
-+            case 1:
-+                if (el != 0 || !(env->cp15.hcr_el2 & HCR_TGE)) {
-+                    break;
-+                }
-+                /* fall through */
-+            case 0:
-+            case 2:
-+                return 2;
-+            }
-+        } else {
-+            if (FIELD_EX64(env->cp15.cptr_el[2], CPTR_EL2, TSM)) {
-+                return 2;
-+            }
-+        }
-+    }
-+
-+    /* CPTR_EL3.  Since EZ is negative we must check for EL3.  */
-+    if (arm_feature(env, ARM_FEATURE_EL3)
-+        && !FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, ESM)) {
-+        return 3;
-+    }
-+#endif
-+    return 0;
-+}
-+
- /*
-  * Given that SVE is enabled, return the vector length for EL.
-  */
-@@ -13719,6 +13768,9 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
-         }
-         DP_TBFLAG_A64(flags, SVEEXC_EL, sve_el);
-     }
-+    if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
-+        DP_TBFLAG_A64(flags, SMEEXC_EL, sme_exception_el(env, el));
-+    }
+-void aarch64_add_sve_properties(Object *obj)
++static void aarch64_add_sve_properties(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+     uint32_t vq;
+@@ -752,7 +752,7 @@ static Property arm_cpu_pauth_property =
+ static Property arm_cpu_pauth_impdef_property =
+     DEFINE_PROP_BOOL("pauth-impdef", ARMCPU, prop_pauth_impdef, false);
  
-     sctlr = regime_sctlr(env, stage1);
+-void aarch64_add_pauth_properties(Object *obj)
++static void aarch64_add_pauth_properties(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
  
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index d438fb89e7..8bbd1b7f07 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -14608,6 +14608,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     dc->align_mem = EX_TBFLAG_ANY(tb_flags, ALIGN_MEM);
-     dc->pstate_il = EX_TBFLAG_ANY(tb_flags, PSTATE__IL);
-     dc->sve_excp_el = EX_TBFLAG_A64(tb_flags, SVEEXC_EL);
-+    dc->sme_excp_el = EX_TBFLAG_A64(tb_flags, SMEEXC_EL);
-     dc->vl = (EX_TBFLAG_A64(tb_flags, VL) + 1) * 16;
-     dc->pauth_active = EX_TBFLAG_A64(tb_flags, PAUTH_ACTIVE);
-     dc->bt = EX_TBFLAG_A64(tb_flags, BT);
 -- 
 2.34.1
 

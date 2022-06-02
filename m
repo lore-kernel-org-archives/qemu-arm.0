@@ -1,133 +1,158 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4743912lfh;
-        Thu, 2 Jun 2022 01:22:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzxT4aMBCunHiLL8PLNiEwBPVjJNuCuxE44PoMwG0OB/IJThB59Xk6qnhhM1m85XVDLeUA8
-X-Received: by 2002:a05:622a:1053:b0:304:b6ac:3c21 with SMTP id f19-20020a05622a105300b00304b6ac3c21mr2694411qte.61.1654158154943;
-        Thu, 02 Jun 2022 01:22:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654158154; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4842772lfh;
+        Thu, 2 Jun 2022 04:46:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxInwlwnujoDncCyjGCoJIW75X7xZ0prux6D1Eo8p4/x/DOlGlNPTY95tQ5LlHvkwHkjRyk
+X-Received: by 2002:a05:622a:1110:b0:304:c366:a80f with SMTP id e16-20020a05622a111000b00304c366a80fmr3156471qty.640.1654170362811;
+        Thu, 02 Jun 2022 04:46:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654170362; cv=none;
         d=google.com; s=arc-20160816;
-        b=s6K+GUWoNEKyo5cQaNPAR+zxTZtw40IwVbLPWFombZgW0DnbFLho4bledr77QYeExz
-         guxZ5IlQfTYKsBnuQk6xSYjlkBdiVol+WVBTIH9s3Msy9ghTNpGdi8Ng3/G2bJiTf4T+
-         +nE8VRjNMZjXJcGODQayND0CPoZt2qgW1J9s5mvWycwRNeoxOiNX6uGlfKxpU/VmqmbC
-         WZUBFmuGbH2mXQawV3Olsa1ZA49N8L3kTEstXKaM8++dq7CN8RJKJ3sv2WTFPLVvRIRf
-         WlZvOaFl13pWKFKHv2cU8fpppqxPh7rplxsboM3M+BIhRZrzXQKFadhKYEzYTm6M3LWL
-         IQdw==
+        b=HsovGwl6dUbw4HjTFrLkPkzrW7wy2d4+XoOr6NJcLBxY5RE/Zm50a6mO0PZvmyx9gl
+         +Mjm92DHQHGUGIaIF2lHomYWW5N0a9Fkm0WhI9i1urZIMXhjtyU6kC3M42TOd5VNJxZE
+         ljgAMeYQXHdkIn8TctTVHli8eq5rXVnptof95k63GB1BvN/Tl469BwyIaKSdM1ld+mjS
+         CHfg+bntdq9v2RjLBPZOxgoe+qqgejq5apzHM4YJw8Yi+eS7rVRNEEJ2O3IYE0hfUcSI
+         EVz+o4YV8Y8uighU+Fz4/7PcAiBaFeVjQQtgKGH6sQ26o/HQDjAIgGRzu0IoZZXUTUHB
+         8D0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :feedback-id:dkim-signature:dkim-signature;
-        bh=hZErQfnGoKLmWjUV63hZgghgsRf/BW5z8nnzt25JSOM=;
-        b=if+wC6rLbekjsU1tV/Mu0Jvd9ZxjVgjentvFUb1NZ2rQ43PuoUiZw5Z3ha9SF2as6i
-         aCCAwn+oBXP2ippyKER5iAlLxL1wSDkrfSpX7JYuyXJDnzRMf3iGj6NFZHoY56749UQs
-         1hA/2urUi4cbqLAjUbJUc42Pzdso+b51AiHaaHTP7mES4YR5qO5PFOzHB2ZN3JbMtyQ7
-         +MQDp5gIc+fHUEckYxa/CzeR0taqLUao/3HYOus3ZvmWawztoO/mDInOBuSK6YaznyWZ
-         Fb/cB0KdT2T4nLm0N3qx+uHOzrvUAbffsSBJXTh6K2SiK0djyizoFsTsXdE5k8iyYxXw
-         LEUA==
+         :list-unsubscribe:list-id:precedence:references:cms-type
+         :content-transfer-encoding:in-reply-to:cc:content-language:to
+         :subject:from:user-agent:mime-version:date:message-id:dkim-signature
+         :dkim-filter;
+        bh=6vtwdhq1ZiM7VUPI4ZCn4FhMLb7tt1IDeTvWsoxxXhs=;
+        b=O+rCfT+5T03ByteXPPmJeQ4bGtt3t2aa1WRg8GBOxyR7fj4frSW0NSIkMnMJG9Anlt
+         yFgyYYiE54FIZMVsv1oy41YMj4AO3EZHBOPK/loE7d109AI8B90deEN1KhG8UT9DXXYf
+         3Wa4WphyXXYSwT+bhcjosm6874Iw9urEmkY8oyezDUrMFrmKALy7T3uRZNmXwkJaGHWK
+         iT53aWPw5xSBJy1SZr3j0IK4XaF3oe0abdwE50YkfDE62fvk2+SEE5+WmJ+P9v0cLDP4
+         fQwd6FhSmJ2Sfq5sWkbWvuf0awnvUi/khcGe0id0Zaknd8s14Dl3stMK0xJr9JWlaK1F
+         fGOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=m1s7uI7M;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=r9v0zjVz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@samsung.com header.s=mail20170921 header.b=SonXl9ra;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=samsung.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g8-20020a379d08000000b006a57b09338asi1723374qke.726.2022.06.02.01.22.34
+        by mx.google.com with ESMTPS id x25-20020ae9e919000000b006a37682052csi1891588qkf.410.2022.06.02.04.46.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jun 2022 01:22:34 -0700 (PDT)
+        Thu, 02 Jun 2022 04:46:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=m1s7uI7M;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=r9v0zjVz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42556 helo=lists1p.gnu.org)
+       dkim=pass header.i=@samsung.com header.s=mail20170921 header.b=SonXl9ra;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=samsung.com
+Received: from localhost ([::1]:48012 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwg6E-0004Gu-90
-	for alex.bennee@linaro.org; Thu, 02 Jun 2022 04:22:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59330)
+	id 1nwjH8-0001hc-AF
+	for alex.bennee@linaro.org; Thu, 02 Jun 2022 07:46:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44404)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1nwg5j-0004EA-24; Thu, 02 Jun 2022 04:22:03 -0400
-Received: from wout2-smtp.messagingengine.com ([64.147.123.25]:60179)
+ (Exim 4.90_1) (envelope-from <i.kotrasinsk@samsung.com>)
+ id 1nwjGB-0001fV-En
+ for qemu-arm@nongnu.org; Thu, 02 Jun 2022 07:45:10 -0400
+Received: from mailout2.w1.samsung.com ([210.118.77.12]:11369)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1nwg5g-0000C8-CV; Thu, 02 Jun 2022 04:22:02 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id 2BC04320083A;
- Thu,  2 Jun 2022 04:21:54 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Thu, 02 Jun 2022 04:21:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
- h=cc:cc:content-type:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm3; t=1654158113; x=1654244513; bh=hZ
- ErQfnGoKLmWjUV63hZgghgsRf/BW5z8nnzt25JSOM=; b=m1s7uI7Mx8vfzGuhBP
- /IyUTIpEPzaXX4W5V64GXiv0B58TO3GlKut1Yasf+HXo8RY1saV93liP9eUYSSE6
- H9ZwpJCsGZK6rTBT71yFfj3cOs4qioTuU0RMQrWsEVhHcUt2AvyzgaLPnR8+BKdk
- OLLNZ+7eiAsfil50uN31Ksfnkz9V7uH14yIEANQ65pbBcXRSgEPucKQc0IKg5eka
- LUdqbW27GgYBMc+cUlIbmC8LUM9kNKMr26FpMKUxzKwTFtyD0aEusSCQ1T0ge6uF
- s1/yVOWS47hCw0oR/NBS2Y8z5V6slm0i0geKOFCSGRxPjFaxaEXwCxNFf/fW5x7I
- t57Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:sender:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1654158113; x=1654244513; bh=hZErQfnGoKLmWjUV63hZgghgsRf/
- BW5z8nnzt25JSOM=; b=r9v0zjVzvVh/o1USHBWQx2GmN5TvorefoBaKQBTQ38rZ
- fThSBptN1sDnamDUhLKPl2Ci3Gvt365OhsAKbE46Exp0TzfFD5rvd9RRsFPROoaN
- dlJCMMoFCysIYBMwSUZJ6n557APqtxA/LMUlQ8NMjFp3qP/IZg08K0FsZlykRRMM
- YiFmosJ7bf21v34h7w17cflCTwzp9l8YLJ4tXyfI3ntQIsDDWVT0yw7GhuMPs4HU
- 8yc4JgI1MiJswY7PFGcTwSB6S9WYKJCx+brpzEHU3I1ExXAbJjiYlaVf7RaLu0E5
- KCHsKH0df71/jyOe6Q1oZRxBk5PjNfWk63jAYC/lTw==
-X-ME-Sender: <xms:IHOYYo5sCWnTceiYj434OZXjIMDQxzjVSk_FQEu6k53tNbeQxproSw>
- <xme:IHOYYp7oaK8AxaHN7rN1rmQQjkcy4YmENWPy1cbgKBqcG_OyM0AeMfDrikkWS7g_1
- HWZcitTV9f7a-sugK4>
-X-ME-Received: <xmr:IHOYYndXsV2t4Z4WngbdqfzfEfaLVFqJl-Ja31Tb8xy9IKwyKr-fyDfY8IrRrqWLchxKPCvB8AKi2agPiw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrledvgddtudcutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvvefukfhfgggtuggjsehgtdorredttdejnecuhfhrohhmpefmlhgruhhs
- ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
- gvrhhnpeetvddtteeiffekgfelffdvjeehhffgvdfhgeejfeejteelvefhkeetlefffeek
- vdenucffohhmrghinhepkhgvrhhnvghlrdhorhhgpdhgihhthhhusgdrtghomhenucevlh
- hushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehithhssehirhhr
- vghlvghvrghnthdrughk
-X-ME-Proxy: <xmx:IHOYYtKTrlFnzX-eckxHmLBsKGVZH31R8qnYkOTYzjpsLJlRZX1pcQ>
- <xmx:IHOYYsJg_z0pEPkZGENlzw2pLdEmRS4qPxvR85XyTfA2mTbGNRcN9A>
- <xmx:IHOYYuwaacbULPwp8Sl189St086kxBD1MG7pfGHhVm4WFykz_EC1jg>
- <xmx:IXOYYuAUVgDiT08laKTIjWk_bsNBWiMtQaHWS7nu9glvld_bKKFjDg>
-Feedback-ID: idc91472f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 2 Jun 2022 04:21:50 -0400 (EDT)
-Date: Thu, 2 Jun 2022 10:21:48 +0200
-From: Klaus Jensen <its@irrelevant.dk>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: qemu-devel@nongnu.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- qemu-arm@nongnu.org, Peter Delevoryas <pdel@fb.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>,
- Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
- Damien Hedde <damien.hedde@greensocs.com>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
- Klaus Jensen <k.jensen@samsung.com>
-Subject: Re: [RFC PATCH v2 0/6] hw/i2c: i2c slave mode support
-Message-ID: <YphzHGNYErSMEfPw@apples>
-References: <20220601210831.67259-1-its@irrelevant.dk>
- <6e0eb197-25c2-6b1e-2c19-f93597e29cff@kaod.org>
+ (Exim 4.90_1) (envelope-from <i.kotrasinsk@samsung.com>)
+ id 1nwjG3-00076o-9M
+ for qemu-arm@nongnu.org; Thu, 02 Jun 2022 07:44:57 -0400
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+ by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
+ 20220602114444euoutp02e8b5e90ab378d5b6587d0c90aef37bce~0yxvxKrNP0382703827euoutp02g
+ for <qemu-arm@nongnu.org>; Thu,  2 Jun 2022 11:44:44 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
+ 20220602114444euoutp02e8b5e90ab378d5b6587d0c90aef37bce~0yxvxKrNP0382703827euoutp02g
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1654170284;
+ bh=6vtwdhq1ZiM7VUPI4ZCn4FhMLb7tt1IDeTvWsoxxXhs=;
+ h=Date:From:Subject:To:Cc:In-Reply-To:References:From;
+ b=SonXl9raGW6TVmRwudrjblFkvjGLI0ec4GyOiGTjYWxs0YVDjh5t/X3cK71HVaZRS
+ Ct9iq8XRbzebg7NfE+F93S1NB02HqlRD2vRuvFeTSKLASRlO9Fia+qVmEjd9egfF6q
+ 55PFVsLPgShW941XuLBSHC1fNbOVTYETbL/vxHDY=
+Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
+ eucas1p1.samsung.com (KnoxPortal) with ESMTP id
+ 20220602114443eucas1p13e4e25ffed9dc5ba1399e1619b73b54a~0yxvpBGY71237612376eucas1p1W;
+ Thu,  2 Jun 2022 11:44:43 +0000 (GMT)
+Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
+ eusmges1new.samsung.com (EUCPMTA) with SMTP id EF.FE.09664.BA2A8926; Thu,  2
+ Jun 2022 12:44:43 +0100 (BST)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+ eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+ 20220602114443eucas1p2aa915ec355b45fcc00ec2679d28b2d57~0yxvXXZ4d2310223102eucas1p2-;
+ Thu,  2 Jun 2022 11:44:43 +0000 (GMT)
+Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
+ eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20220602114443eusmtrp133d555a529d34fa40a494cb3875f7ad8~0yxvWyhrA2465424654eusmtrp1s;
+ Thu,  2 Jun 2022 11:44:43 +0000 (GMT)
+X-AuditID: cbfec7f2-d97ff700000025c0-dc-6298a2ab6e7d
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+ eusmgms1.samsung.com (EUCPMTA) with SMTP id 6E.9B.09095.BA2A8926; Thu,  2
+ Jun 2022 12:44:43 +0100 (BST)
+Received: from [106.210.134.115] (unknown [106.210.134.115]) by
+ eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20220602114443eusmtip13a350f0b04a4cf2e71613319281b147f~0yxvGjy5N1844018440eusmtip12;
+ Thu,  2 Jun 2022 11:44:43 +0000 (GMT)
+Message-ID: <790734d6-1234-844f-0afa-a3e3b4020dac@samsung.com>
+Date: Thu, 2 Jun 2022 13:44:43 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="sARqXn+SLAwKtpH8"
-Content-Disposition: inline
-In-Reply-To: <6e0eb197-25c2-6b1e-2c19-f93597e29cff@kaod.org>
-Received-SPF: pass client-ip=64.147.123.25; envelope-from=its@irrelevant.dk;
- helo=wout2-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0)
+ Gecko/20100101 Thunderbird/91.10.0
+From: =?UTF-8?Q?Igor_Kotrasi=c5=84ski?= <i.kotrasinsk@samsung.com>
+Subject: Re: Help: NVIC, level-triggered interrupts and interrupt pending
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Language: en-GB
+Cc: qemu-arm@nongnu.org
+In-Reply-To: <b3d8f8b5-3976-8bb6-41b1-8b557524665a@samsung.com>
+Content-Transfer-Encoding: 8bit
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrMIsWRmVeSWpSXmKPExsWy7djPc7qrF81IMti1ztBizpkHLBYLuhey
+ OTB53Lm2h83jybXNTAFMUVw2Kak5mWWpRfp2CVwZkz59Yiu4Llfx5PIl9gbGzeJdjJwcEgIm
+ EivePmDuYuTiEBJYwSjx4MANVgjnC6PEhrXr2SGcz4wSbZMmscC0fP87hRHEFhJYzijxaqUr
+ RNFHRomm6d1gCV4BO4l1i9eyg9gsAioS3yYuZYWIC0qcnPkEbJCoQLLEubNX2boYOTjYBJwk
+ Jq2SAgkLC3hKLH18HWyMiICOxJXrm5lAbGYBcYmmLytZYeyJU0+CjeEUsJe4cPYjM0RcXqJ5
+ 62ywdyQEFnJIHNm0ix1kvoSAi8S7GQ4Q9wtLvDq+hR3ClpE4PbkH6q9iiSVnd0DZNRLnu1dC
+ 1VhL7DrezQIyhllAU2L9Ln2IsKPEvetHWSCm80nceCsIcQGfxKRt05khwrwSHW1CENVqEtN+
+ 7WGGWbqs8RHLBEalWUhBMgvJj7OQ/DILYe8CRpZVjOKppcW56anFhnmp5XrFibnFpXnpesn5
+ uZsYgeni9L/jn3Ywzn31Ue8QIxMH4yFGCQ5mJRHekl1Tk4R4UxIrq1KL8uOLSnNSiw8xSnOw
+ KInzJmduSBQSSE8sSc1OTS1ILYLJMnFwSjUw1XK0XDddf27hNw/Tb8pzp7f6/q262Hu4ZdLL
+ 6wtyDy2p0GjkfcvB6ujpvTFo3xyzY4sivPZaJWT9E7mzIuTI0ubDvnNfXijyd79075bripk7
+ Q16+4UnWtFi8uGlDuXGlVfgkjwb+/2yu5RsY3er3sK23Lcz0VfKpb+O73C+9fq1u4/Ic1a9a
+ Cervcj7u+m7zxfz1zPVHHn4oF19yNnOiYNLcjbyJDxM+3mEqy+0048vk2+Lwe6p5EbO+nX7X
+ UUXezhe7OV4e2cPXu8/m3rqM6Y9Yj9jkcy29se/YeR359mqV0O8J+Z2X92aK5E/YeMLmbKXl
+ Nvc04Ukdsc3XFCNWR69Ncynh3lZjttvv1e9iJZbijERDLeai4kQAlVwPWoYDAAA=
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmpnkeLIzCtJLcpLzFFi42I5/e/4Xd3Vi2YkGTS1ylvMOfOAxWJB90I2
+ ByaPO9f2sHk8ubaZKYApSs+mKL+0JFUhI7+4xFYp2tDCSM/Q0kLPyMRSz9DYPNbKyFRJ384m
+ JTUnsyy1SN8uQS9j0qdPbAXX5SqeXL7E3sC4WbyLkZNDQsBE4vvfKYxdjFwcQgJLGSV2zLnJ
+ DJGQkfhxeg0bhC0s8edaFxtE0XtGiU87roAV8QrYSaxbvJYdxGYRUJH4NnEpK0RcUOLkzCcs
+ ILaoQLJE85ZDTF2MHBxsAk4Sk1ZJgYSFBTwllj6+zghiiwjoSFy5vpkJYn4Xs8Sp/qdgM5kF
+ xCWavqxkhbEnTj0JNpNTwF7iwtmPzCAzmQXUJdbPE4IokZdo3jqbeQKj0CwkV8xCMmkWQscs
+ JB0LGFlWMYqklhbnpucWG+oVJ+YWl+al6yXn525iBMbItmM/N+9gnPfqo94hRiYOxkOMEhzM
+ SiK8JbumJgnxpiRWVqUW5ccXleakFh9iNAWGxERmKdHkfGCU5pXEG5oZmBqamFkamFqaGSuJ
+ 83oWdCQKCaQnlqRmp6YWpBbB9DFxcEo1MJUyF0Z8CIzddrjp4iPmjbvjk7ucfqntYf5nfFVK
+ 3e+TQfNfvRmn5XUjQuzFPJesb7TMP2BteGzxVf7jprWfAyrZfIzWS7fEn+LUbhd8Vm6wNd8h
+ oU4gfebEd9bxP+8xG5tMW2DlIrDo5EJdsfaFpz7kRJbFZN24PCPx4IMY5qacBt8Y/7DHDnoP
+ TNTeLXK96u4a/j7chbv6mev30L/THs4t+P3dQsBT4BLbisrjQiXyyXz9m6aaHotrsXK8o/Ik
+ 5fmUJiZlw0eHb225HyTKmidQdrDrz4G/EisWhTM5tsTM23Xrcuj8y29D1kk7nOJz196wQqDA
+ 84Hg8tp5OX8mf9nj/aPnwz2TOSLrQp76K7EUZyQaajEXFScCAOFbTMwaAwAA
+X-CMS-MailID: 20220602114443eucas1p2aa915ec355b45fcc00ec2679d28b2d57
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+X-RootMTR: 20220530093333eucas1p2c05b46a5f9c66704919743236753858f
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20220530093333eucas1p2c05b46a5f9c66704919743236753858f
+References: <CGME20220530093333eucas1p2c05b46a5f9c66704919743236753858f@eucas1p2.samsung.com>
+ <e3573c25-1ba6-cb57-f813-99c538a2d254@samsung.com>
+ <CAFEAcA8EqCh0LDS=N+5W8fPnF2Fj-Z7r=wssDAD-V5tBWRM85w@mail.gmail.com>
+ <5a05e699-d050-adae-ca14-c68b5534f214@samsung.com>
+ <CAFEAcA90R49A6txYhP_vFHoa=XPV+g6XxoZdVXmHcS2EPW__Ew@mail.gmail.com>
+ <b3d8f8b5-3976-8bb6-41b1-8b557524665a@samsung.com>
+Received-SPF: pass client-ip=210.118.77.12;
+ envelope-from=i.kotrasinsk@samsung.com; helo=mailout2.w1.samsung.com
+X-Spam_score_int: -71
+X-Spam_score: -7.2
+X-Spam_bar: -------
+X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_HI=-5, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -143,152 +168,111 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K11a9YNPCMXT
+X-TUID: AVhGJH2pjr2p
 
 
---sARqXn+SLAwKtpH8
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Jun  2 09:52, C=C3=A9dric Le Goater wrote:
-> On 6/1/22 23:08, Klaus Jensen wrote:
-> > From: Klaus Jensen <k.jensen@samsung.com>
-> >=20
-> > Hi all,
-> >=20
-> > This RFC series adds I2C "slave mode" support for the Aspeed I2C
->=20
-> I think you can remove the RFC prefix.
->=20
-> > controller as well as the necessary infrastructure in the i2c core to
-> > support this.
-> >=20
-> > v2 changes
-> > ~~~~~~~~~~
-> > I finally got around to working on this again. I'm sorry for not
-> > bringing a v2 to the table earlier.
-> >=20
-> > Mad props to Peter and Jonathan for putting this series to work and
-> > pushing it forward! Thanks!
-> >=20
-> > This series is based off C=C3=A9dric's aspeed-7.1 tree, so it includes =
-the
-> > register fields. This is all "old register mode", but Peter seems to
-> > have added support in new mode.
-> >=20
-> > There are some loose ends of course, i.e send_async doesn't handle
-> > broadcast and asynchronous slaves being sent stuff can't nack. But I
-> > wanted to get some feedback on the interface before I tackle that.
-> >=20
-> > This series
-> > ~~~~~~~~~~~
-> > Patch 1 and 2 are small Aspeed I2C changes/additions.
-> >=20
-> > Patch 3 adds support for multiple masters in the i2c core, allowing
-> > slaves to master the bus and (safely) issue i2c_send/recv().
-> >=20
-> > Patch 4 adds an asynchronous send i2c_send_async(I2CBus *, uint8) on the
-> > bus that must be paired with an explicit ack using i2c_ack(I2CBus *). We
-> > have previously discussed how we wanted to handle the issue that some
-> > slaves implement this and some do not. Using a QOM interface was up, but
-> > couldn't figure out a good way to do it. I ended up decided against it
-> > since I believe this have to be a run-time check anyway. The problem is
-> > that a slave can master the bus and try to communicate with *anyone* on
-> > the bus - and there is no reason why we should only allow asynchronous
-> > slaves on the bus in that case, or whatever we would want to do when
-> > devices are plugged. So, instead, the current master can issue an
-> > i2c_start_send() and if that fails (because it isnt implemented by the
-> > target slave) it can either bail out or use i2c_start_send_async() if it
-> > itself supports it. This works the other way around as well of course,
-> > but it is probably simpler to handle slaves that respond to
-> > i2c_start_send(). This approach relies on adding a new i2c_event, which
-> > is why a bunch of other devices needs changes in their event handling.
-> >=20
-> > Patch 5 adds *partial* slave mode functionality to the emulated Aspeed
-> > I2C controller, that is, it only supports asynchronous sends started by
-> > another slave that is currently mastering the bus. No asynchronous
-> > receive.
->=20
-> If there are no objections, I think this is a good way to move forward
-> and improve this initial implementation when the need arises.
->=20
+On 30.05.2022 14:02, Igor Kotrasiński wrote:
+> 
+> 
+> On 30.05.2022 13:54, Peter Maydell wrote:
+>> On Mon, 30 May 2022 at 12:34, Igor Kotrasiński
+>> <i.kotrasinsk@samsung.com> wrote:
+>>>
+>>> On 30.05.2022 12:49, Peter Maydell wrote:
+>>>> On Mon, 30 May 2022 at 10:33, Igor Kotrasiński
+>>>> <i.kotrasinsk@samsung.com> wrote:
+>>>>>
+>>>>> Hi,
+>>>>>
+>>>>> I've been hacking on QEMU recently, adding support for a custom
+>>>>> Cortex-M
+>>>>> board. One of the devices that I'm emulating is using level-triggered
+>>>>> interrupts, for which I assume qemu_irq_raise/lower is the right tool.
+>>>>> However, I'm having trouble receiving interrupts for my device which I
+>>>>> *think* are caused by interaction with setting/clearing
+>>>>> interrupt-pending status.
+>>>>>
+>>>>> The way I'm handling my interrupt currently is as follows:
+>>>>>
+>>>>> 1. The device raises an interrupt with qemu_irq_raise.
+>>>>> 2. In interrupt handler, I set the clear-enable nvic register and
+>>>>> queue
+>>>>> a handler.
+>>>>> 3. In handler, I read data from the device and set a register that
+>>>>> lowers its interrupt with qemu_irq_lower.
+>>>>> 4. Then I set the clear-pending nvic register.
+>>>>> 5. Finally I set the set-enable nvic register.
+>>>>
+>>>> You don't say in this sequence where "return from the interrupt
+>>>> exception handler" happens, which is an important part of the
+>>>> sequence. (That is, I'm not sure whether your design has only
+>>>> step 2 in the CPU exception handler with the "queued" handler
+>>>> being run after exception-return, or whether all of 2-5 are
+>>>> in the CPU exception handler for the interrupt.)
+>>>>
+>>>
+>>> Sorry, I lied a bit here. I'm running someone else's code and I misread
+>>> it a bit. The exact sequence here is:
+>>>
+>>> 1. The device raises the interrupt.
+>>> 2. Interrupt handler sets the set-pending register, then the
+>>> clear-enable register, then returns.
+>>> 3. A handler running outside exception context reads data from the
+>>> device and lowers the irq.
+>>> 3.5. The device raises the irq again.
+>>> 4. The handler sets the clear-pending register, then the set-enable
+>>> register.
+>>
+>> Does this code work on real hardware?
+>>
+>> Do you have a test case image you could provide?
+>>
+>> thanks
+>> -- PMM
+>>
+> 
+> The code works on our board which uses a Cortex-M35P, unfortunately I
+> don't have a test case image I can share. I'll try to prepare a minimal
+> example that runs on mps2-an505 or such.
+> 
+> Igor
 
-There is an outstanding issue with the SLAVE_ADDR_RX_MATCH interrupt bit
-(bit 7). Remember from my first series I had a workaround to make sure
-it wasnt masked.
+Hi,
 
-I posted this upstream to linux
+I don't have a test image yet, but I'm pretty confident I understand the
+bug now.
 
-  https://lore.kernel.org/lkml/20220602054842.122271-1-its@irrelevant.dk/
+As you said, an interrupt becomes pending if the input IRQ line is high
+and the interrupt is not Active. The first condition in R_CVJS doesn't
+mention any transitions, so the "event" mentioned there happens at any
+time the condition is valid. So, no matter what writing to pending-clear
+register does, pending status should still be set afterwards. This would
+also match the explanatory document I found.
 
-Not sure if that is the right way to fix it. You mentioned something
-about "fixing" a mask on the ast2600?
+This diff would be a matching fix:
 
-But with the above patch, all works an intended and no "workaround"
-required.
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 773e311754..bfd0fafe0a 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -2393,6 +2393,14 @@ static MemTxResult nvic_sysreg_write(void
+*opaque, hwaddr addr,
+         for (i = 0, end = size * 8; i < end && startvec + i <
+s->num_irq; i++) {
+             if (value & (1 << i) &&
+                 (attrs.secure || s->itns[startvec + i])) {
++                /* Stay pending if line is up and interrupt is not active
++                 * (R_CVJS)
++                 */
++                if (!setval &&
++                    !s->vectors[i + NVIC_FIRST_IRQ].active &&
++                    s->vectors[i + NVIC_FIRST_IRQ].level) {
++                    continue;
++                }
+                 s->vectors[startvec + i].pending = setval;
+             }
+         }
 
-> > Finally, patch 6 adds an example device using this new API. The device
-> > is a simple "echo" device that upon being sent a set of bytes uses the
-> > first byte as the address of the slave to echo to.
-> >=20
-> > With this combined I am able to boot up Linux on an emulated Aspeed 2600
-> > evaluation board and have the i2c echo device write into a Linux slave
-> > EEPROM. Assuming the echo device is on address 0x42:
-> >=20
-> >    # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-15/new_device
-> >    i2c i2c-15: new_device: Instantiated device slave-24c02 at 0x64
-> >    # i2cset -y 15 0x42 0x64 0x00 0xaa i
-> >    # hexdump /sys/bus/i2c/devices/15-1064/slave-eeprom
-> >    0000000 ffaa ffff ffff ffff ffff ffff ffff ffff
-> >    0000010 ffff ffff ffff ffff ffff ffff ffff ffff
-> >    *
-> >    0000100
->=20
-> I have started working on buildroot images  :
->=20
->   https://github.com/legoater/buildroot/commits/aspeed
->=20
-> The resulting files are quite small :
->=20
->     $ ll output/images/
->     total 86040
->     drwxr-xr-x 2 legoater legoater     4096 Jun  1 20:01 ./
->     drwxrwxr-x 6 legoater legoater     4096 Jun  1 19:40 ../
->     -rwxr-xr-x 1 legoater legoater    36837 Jun  1 20:01 aspeed-ast2600-e=
-vb.dtb*
->     -rw-r--r-- 1 legoater legoater 67108864 Jun  1 20:01 flash.img
->     -rw-r--r-- 1 legoater legoater  6682796 Jun  1 20:01 image.itb
->     -rw-r--r-- 1 legoater legoater     1846 Jun  1 20:01 image.its
->     -rw-r--r-- 1 legoater legoater  3168768 Jun  1 20:01 rootfs.cpio
->     -rw-r--r-- 1 legoater legoater  1026660 Jun  1 20:01 rootfs.cpio.xz
->     -rw-r--r-- 1 legoater legoater  3788800 Jun  1 20:01 rootfs.tar
->     -rw-r--r-- 1 legoater legoater   653777 Jun  1 20:00 u-boot.bin
->     -rw-r--r-- 1 legoater legoater  5617280 Jun  1 20:01 zImage
->=20
-> I will probably host them on GH and we could use them under avocado
-> to extend the tests.
->=20
->=20
-> They should boot real HW. I will submit the defconfigs to buildroot
-> after more tests and cleanups.
->=20
+Igor
 
-Nice!
-
---sARqXn+SLAwKtpH8
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmKYcxsACgkQTeGvMW1P
-DelkRgf/eX0z6D4zW0//xLTH2/VyVw/qz0cw8UFDkmmBjQc9PkNzMDTCbdJpovMI
-h/nhE/LlM933mGt1GJtlBrftPiE1ffrtUA/RrqbWPZHc44pNOFpa5XuNXUxHp8gh
-cJW0KXcyTb4QmCTFu3o8jHIy/U91ib0HqUPdOx6t2jivQSNmvw6n6wRkDBzTetQr
-F6lmd1q4qXIqiSDCCdyYOKEoskHVg4vKwJnWH0z07YoRCJ7Jh+m7MOzxbTsH42QI
-GDlSj0TESa1ShR7GLxJdNdZg0z0bs92REQqJbQJ92hJtiB0CYW5NTIdVoheHDY1j
-QCxNavdQuHu5es8EkyOd6LNHDqbbLQ==
-=xNxy
------END PGP SIGNATURE-----
-
---sARqXn+SLAwKtpH8--

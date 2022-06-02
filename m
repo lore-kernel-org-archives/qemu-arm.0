@@ -1,100 +1,255 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5563153lfh;
-        Fri, 3 Jun 2022 04:55:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJztpI3QUR6KgYLDbJIrpv6K/WhMmEsUwfdmFvO5jLhwti54RK9IXJy6HYZaKSgQXc9X295U
-X-Received: by 2002:a05:620a:178d:b0:6a4:61f1:742a with SMTP id ay13-20020a05620a178d00b006a461f1742amr5857227qkb.523.1654257348079;
-        Fri, 03 Jun 2022 04:55:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654257348; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5220658lfh;
+        Thu, 2 Jun 2022 15:41:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzUrrPg3o/9texzFK1ozFP4jtLDdg9p2nqXXJBgowwPeZwB3FbgYd6BqtKYOAHnWoanQtsm
+X-Received: by 2002:a05:622a:1053:b0:304:b6ac:3c21 with SMTP id f19-20020a05622a105300b00304b6ac3c21mr5406343qte.61.1654209684626;
+        Thu, 02 Jun 2022 15:41:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654209684; cv=none;
         d=google.com; s=arc-20160816;
-        b=VU3++lQRDh96oXJXU850ajhsG5HA5G2shQ6bkhnWcnynDCPX4v8BmUgZNDLZ4njiF1
-         T7WNfu2A6bR1XlY2QwONBRqd101cLrbE//kWTECBEc5/5T9aEOH1Z+51KHcBq0cqBySI
-         s2VmTUCtfCzgb7kuMg4vxgIk/1DVBGnu60uf9ytMYu9MbvaSDIQw4ZNTfGCoChC28CtS
-         Wm5nav/jgVMEqVhGQBxSOnvvmCwTjId00yNGuZkl2O1xF977Oh6xqp/Y1+ox429+lKNF
-         z/E4G3LGwIVkXELExMB5YdCzxLI7xluOIHhK5i6B+dzo8YMldL5UK6fzCtNg0CyqROJC
-         dGxw==
+        b=GEcpQNbpSaScNOIB7LPkRQEEjLY6Po1Gj/3cqUdPX4yxdrPRUMQWwm64rwOMpu6gOK
+         nv4hsrD8WGb5jk4Ab9bQOdws5e/3cbQlDap5mxxjEN1epf3X+GQBu5XqmVDKjesWrMNT
+         mGWUWl+r2g5NPAn1lzgrH2sJVcjcadKg7jcnw5ojZy6Bo8aGbkp5tr/ssMrF3shMlNA2
+         8JnqdrUleMbjZUD79s1MG2HSYrSZN9I5To4WugChFNUBo4H+zJ34DbiXFSANthzOK3Ld
+         RzIgE+VFtNBVTpibejWuwyA+apBP9eYn0lWYFnWkL/wpOwH+xVM5OAXLbZkLjbw5Tlax
+         5CAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=VhoPSLEifgFBRSvt4oTaKoS3WMrZaT+dJK0LGswuKk8=;
-        b=Rxd0ZkAkQp2L/vd0cAru4yCLsDEUS35IY4vipbrJmSYOLy+Jtg2ZVNZTVoQb0BvEHm
-         TdUX5b4s4kGe8k2/GmOK9PqAvyhjRV9Af8GGD7P+iFTkZIToR3bqFjJ8DNqQQErqcuPK
-         NWl5KvYQVihqy5gwM8yc0jVK/NkPoF1se0O61e4aaA/ADCmHlOwJpcAwrAsHFYXYDuVD
-         /c5jgWYPnF8c8pYtxSt89mhMjTK00c+VfQHD+yo2F7Ui+e89XOe15i5M2kfa962UvPzK
-         lmMr7rf2pMBZT8q1vHZY8+An8MSwSUUC1Yraet2dQVhcJwHRvZq7adriG/BdfB2PVObz
-         J2og==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=jaLSxCdfXBjAEEFrDF/LiYn6nOvGZYPG2MzO42FnVJ8=;
+        b=gMnJ8U7yVGaLBda4HFJstxwEOiKVY1GJOWp1+ojM5Cw4kkpLRYJ+Z4ZOU3AtMNgp0i
+         lAvtzACYxcXoa4fZ2F7ASxz6yV/kvnX6Z6KyTL3ERwTGS6G0RCE36YwGhS7mwsOFGr/X
+         kVWzstheC6DqdfadTH3tL384YIDPFAl+KoBKDu5jsq8Kz4G9he93pserA2q/Dzobmn6a
+         qDNUthGRa+lSvMtadc27vPgvgRvgHXWnwn/oTrw2rQ5Bv32F20p0qT9kZFJjlwMwVwO8
+         DWlaFwiKPWc07d7pq17HWeMJxlwi3pxyqUzoaj6GgiRmt7CX4cmxGVdbY8OCDaVU/jRV
+         e02g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y7vYXbOz;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id bb9-20020a05622a1b0900b002f93f42e301si3200226qtb.645.2022.06.03.04.55.47
+       dkim=pass header.i=@linaro.org header.s=google header.b=KAyMkH19;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bq6-20020a05620a468600b006a332910a75si3060000qkb.481.2022.06.02.15.41.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Jun 2022 04:55:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 02 Jun 2022 15:41:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y7vYXbOz;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1654257347;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=VhoPSLEifgFBRSvt4oTaKoS3WMrZaT+dJK0LGswuKk8=;
-	b=Y7vYXbOzLphCQRwpjeH7jMVf2mgpN6t2ZCw69spfbzqb+3z8gduW0qEFIX6gEF1z34lnoB
-	aU55bvMXy63I494cwOUvwa/l0IVV60O9kNJtNyn3iUDxZ/ujMHOFc9lLTYWrxWPqrEyvEB
-	eGBwH1AWiXKckEZBgwOx2CWDYvCpxsk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-627-j_G7oe-sP1CIG55D1x6pgA-1; Fri, 03 Jun 2022 07:55:46 -0400
-X-MC-Unique: j_G7oe-sP1CIG55D1x6pgA-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com [10.11.54.9])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 040F61010439;
-	Fri,  3 Jun 2022 11:55:46 +0000 (UTC)
-Received: from localhost (dhcp-192-194.str.redhat.com [10.33.192.194])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BBA9A492C3B;
-	Fri,  3 Jun 2022 11:55:45 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: f4bug@amsat.org, alex.bennee@linaro.org
-Subject: Re: [PATCH v2] tests: Prefer max cpu type when using AArch64 virt
- machine
-In-Reply-To: <20220603111849.1481100-1-drjones@redhat.com>
-Organization: Red Hat GmbH
-References: <20220603111849.1481100-1-drjones@redhat.com>
-User-Agent: Notmuch/0.36 (https://notmuchmail.org)
-Date: Fri, 03 Jun 2022 13:55:44 +0200
-Message-ID: <87y1ye7ygv.fsf@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=KAyMkH19;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53568 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nwtVM-000499-4O
+	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:41:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38512)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nwskI-0001dA-4e
+ for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:52:49 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636]:46948)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nwskD-0000uU-Mi
+ for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:52:44 -0400
+Received: by mail-pl1-x636.google.com with SMTP id w3so5508804plp.13
+ for <qemu-devel@nongnu.org>; Thu, 02 Jun 2022 14:52:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=jaLSxCdfXBjAEEFrDF/LiYn6nOvGZYPG2MzO42FnVJ8=;
+ b=KAyMkH19KY/Pm2RFkuqWb3Qye0mJCAMve9qqpl4bcuroGDuzPzj6Eenp1rxYW86c3A
+ NhXi1VYeyEMHeovBhn7gMlO3FG/8OVnsjetOZ0hqpJquij9eaniT4suQ190ltnPSv1QE
+ 1NJ3PT45n8cp7lEWWD/CqHo325jPrVJVZw2dP3q+zIMgh0G9+yl5LB+6M8eA80cNemCT
+ PPBHNJfF+WIa4AtrKdSJhROfScsPqq3BV/eS0lzq5hp703cUL1T/A/mOGBHIldrUSNkP
+ XmxkX0ig3b5/QDckmCrTTCL0M2OgCtjqufNhREtUzcqaUnQGd0HqqmlQxyJ2Cg1Zo69F
+ bW8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=jaLSxCdfXBjAEEFrDF/LiYn6nOvGZYPG2MzO42FnVJ8=;
+ b=IzvDJlz7cblMjRHJtQ7hA5c1lal/Hc2IrtLylmpD9c5eBYCpQEHDgMUz/IFGxGZDW6
+ xKpSpWkFFxZK1k0MEw7RsDFQicqhH9Rez/9Vo7jtk/gplVL5CxuyxLcFnYNiC1LZLFEP
+ ezYNTTkIMWeyidWDu0QSG7museiYCDZPzKuhYFG/Y8+MeW09vEwXVJYPi3ufM0Tdu4Zd
+ Kn/9y0IkwFNqeUQIm4LVIdsJvjlOilKUONB3KcdKJCiA86AM9qa566fpUzRFnK2gIx0R
+ 6ZVdKmZfNB/94gVM4aj+JrdZ0bBLfl6GK3Kf37SlgYSH1n2r6+JkCAcG9adxzs4uBKii
+ uShw==
+X-Gm-Message-State: AOAM532raHEkW61mw9QifXl3lMUOxQ4/2PUM24fmeifO+cZsecjvlKxS
+ TeUQVlmaPNpyLfXXiKVXKaq3C1FmXRdLBA==
+X-Received: by 2002:a17:902:d64e:b0:163:5074:c130 with SMTP id
+ y14-20020a170902d64e00b001635074c130mr7126494plh.125.1654206760283; 
+ Thu, 02 Jun 2022 14:52:40 -0700 (PDT)
+Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
+ by smtp.gmail.com with ESMTPSA id
+ e14-20020a170902ed8e00b0015edfccfdb5sm4039605plj.50.2022.06.02.14.52.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 Jun 2022 14:52:39 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 52/71] target/arm: Implement FMOPA, FMOPS (widening)
+Date: Thu,  2 Jun 2022 14:48:34 -0700
+Message-Id: <20220602214853.496211-53-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220602214853.496211-1-richard.henderson@linaro.org>
+References: <20220602214853.496211-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
-X-TUID: 2cRRFqv5fPpo
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YxJtkbl77v5o
 
-On Fri, Jun 03 2022, Andrew Jones <drjones@redhat.com> wrote:
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/helper-sme.h    |  2 ++
+ target/arm/sme.decode      |  1 +
+ target/arm/sme_helper.c    | 74 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-sme.c |  2 ++
+ 4 files changed, 79 insertions(+)
 
-> The max cpu type is the best default cpu type for tests to use
-> when specifying the cpu type for AArch64 mach-virt. Switch all
-> tests to it.
->
-> Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> ---
->  tests/avocado/boot_xen.py          |  6 +++---
->  tests/avocado/replay_kernel.py     |  2 +-
->  tests/avocado/reverse_debugging.py |  2 +-
->  tests/avocado/tcg_plugins.py       |  6 +++---
->  tests/qtest/bios-tables-test.c     | 12 ++++++------
->  tests/qtest/machine-none-test.c    |  4 ++--
->  tests/vm/aarch64vm.py              |  2 +-
->  tests/vm/ubuntu.aarch64            |  2 +-
->  8 files changed, 18 insertions(+), 18 deletions(-)
+diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
+index 6b36542133..ecc957be14 100644
+--- a/target/arm/helper-sme.h
++++ b/target/arm/helper-sme.h
+@@ -120,6 +120,8 @@ DEF_HELPER_FLAGS_5(sme_addva_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sme_addha_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sme_addva_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ 
++DEF_HELPER_FLAGS_7(sme_fmopa_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_7(sme_fmopa_s, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_7(sme_fmopa_d, TCG_CALL_NO_RWG,
+diff --git a/target/arm/sme.decode b/target/arm/sme.decode
+index afd9c0dffd..e8d27fd8a0 100644
+--- a/target/arm/sme.decode
++++ b/target/arm/sme.decode
+@@ -75,3 +75,4 @@ FMOPA_s         10000000 100 ..... ... ... ..... . 00 ..        @op_32
+ FMOPA_d         10000000 110 ..... ... ... ..... . 0 ...        @op_64
+ 
+ BFMOPA          10000001 100 ..... ... ... ..... . 00 ..        @op_32
++FMOPA_h         10000001 101 ..... ... ... ..... . 00 ..        @op_32
+diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
+index 69e4252abc..0807fbc708 100644
+--- a/target/arm/sme_helper.c
++++ b/target/arm/sme_helper.c
+@@ -980,6 +980,80 @@ static inline uint32_t f16mop_adj_pair(uint32_t pair, uint32_t pg, uint32_t neg)
+     return pair;
+ }
+ 
++static float32 f16_dotadd(float32 sum, uint32_t e1, uint32_t e2,
++                          float_status *s)
++{
++    float64 e1r = float16_to_float64(e1 & 0xffff, true, s);
++    float64 e1c = float16_to_float64(e1 >> 16, true, s);
++    float64 e2r = float16_to_float64(e2 & 0xffff, true, s);
++    float64 e2c = float16_to_float64(e2 >> 16, true, s);
++    float64 t64;
++    float32 t32;
++
++    /*
++     * The ARM pseudocode function FPDot performs both multiplies
++     * and the add with a single rounding operation.  Emulate this
++     * by performing the first multiply in round-to-odd, then doing
++     * the second multiply as fused multiply-add, and rounding to
++     * float32 all in one step.
++     */
++    FloatRoundMode old_rm = get_float_rounding_mode(s);
++    set_float_rounding_mode(float_round_to_odd, s);
++
++    t64 = float64_mul(e1r, e2r, s);
++
++    set_float_rounding_mode(old_rm, s);
++
++    t64 = float64r32_muladd(e1c, e2c, t64, 0, s);
++
++    /* This conversion is exact, because we've already rounded. */
++    t32 = float64_to_float32(t64, s);
++
++    /* The final accumulation step is not fused. */
++    return float32_add(sum, t32, s);
++}
++
++void HELPER(sme_fmopa_h)(void *vza, void *vzn, void *vzm, void *vpn,
++                         void *vpm, void *vst, uint32_t desc)
++{
++    intptr_t row, col, oprsz = simd_maxsz(desc);
++    uint32_t neg = simd_data(desc) << 15;
++    uint16_t *pn = vpn, *pm = vpm;
++
++    bool save_dn = get_default_nan_mode(vst);
++    set_default_nan_mode(true, vst);
++
++    for (row = 0; row < oprsz; ) {
++        uint16_t pa = pn[H2(row >> 4)];
++        do {
++            void *vza_row = vza + row * sizeof(ARMVectorReg);
++            uint32_t n = *(uint32_t *)(vzn + row);
++
++            n = f16mop_adj_pair(n, pa, neg);
++
++            for (col = 0; col < oprsz; ) {
++                uint16_t pb = pm[H2(col >> 4)];
++                do {
++                    if ((pa & 0b0101) == 0b0101 || (pb & 0b0101) == 0b0101) {
++                        uint32_t *a = vza_row + col;
++                        uint32_t m = *(uint32_t *)(vzm + col);
++
++                        m = f16mop_adj_pair(m, pb, neg);
++                        *a = f16_dotadd(*a, n, m, vst);
++
++                        col += 4;
++                        pb >>= 4;
++                    }
++                } while (col & 15);
++            }
++            row += 4;
++            pa >>= 4;
++        } while (row & 15);
++    }
++
++    set_default_nan_mode(save_dn, vst);
++}
++
+ void HELPER(sme_bfmopa)(void *vza, void *vzn, void *vzm, void *vpn,
+                         void *vpm, uint32_t desc)
+ {
+diff --git a/target/arm/translate-sme.c b/target/arm/translate-sme.c
+index 581bf9174f..847f2274b1 100644
+--- a/target/arm/translate-sme.c
++++ b/target/arm/translate-sme.c
+@@ -328,6 +328,8 @@ static bool do_outprod_fpst(DisasContext *s, arg_op *a, MemOp esz,
+     return true;
+ }
+ 
++TRANS_FEAT(FMOPA_h, aa64_sme, do_outprod_fpst,
++           a, MO_32, gen_helper_sme_fmopa_h)
+ TRANS_FEAT(FMOPA_s, aa64_sme, do_outprod_fpst,
+            a, MO_32, gen_helper_sme_fmopa_s)
+ TRANS_FEAT(FMOPA_d, aa64_sme_f64f64, do_outprod_fpst,
+-- 
+2.34.1
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>

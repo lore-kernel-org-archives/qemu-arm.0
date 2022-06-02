@@ -1,111 +1,137 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5207072lfh;
-        Thu, 2 Jun 2022 15:11:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzwCJHGTOgvZzLGEU9ZJqDVTGdWa1TISnPGMeOfgpVFczsil9QuXUxpGwCEDntWttOCmhhP
-X-Received: by 2002:ad4:5dc1:0:b0:462:194:bc7a with SMTP id m1-20020ad45dc1000000b004620194bc7amr58035139qvh.87.1654207916850;
-        Thu, 02 Jun 2022 15:11:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654207916; cv=none;
+Received: by 2002:a0c:fd46:0:0:0:0:0 with SMTP id j6csp10348711qvs;
+        Thu, 2 Jun 2022 12:20:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxEoPUQmqZ8IT0MXoT1uQtOC7RQ8A2xpq0XtddiJktTq4INvErfi9EwiTL3XVgshWUTTakj
+X-Received: by 2002:a05:622a:1ba8:b0:304:9c13:390e with SMTP id bp40-20020a05622a1ba800b003049c13390emr4804012qtb.117.1654197654281;
+        Thu, 02 Jun 2022 12:20:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654197654; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y0UoNy/04+XSB/VkTsVkyyMGGBX7kz5v8KxM+RHB59Yei/mCpukieU28txwrjR54D4
-         GQJP1NM2nv5GwXIp+oDPw9dk9HDPBCRpG9NYAbOeQxjXlzN2fTwzhDZm+cDX6VUbU/cX
-         mmpCTR7iSZH9EvSNb+Cv269GxWx69s74O+i7fO1+LAWFL6jpQVL5wxarlXU5S6CEUYYc
-         my4YZlVew+WjHypLSENXrdurcFIT4srFSxye+ROFobvTNGwQVM5SKCGDEFyswmzhFr42
-         m+jTeaMeFnjLE320hP4m4eNkUQwIHZHjrFf9D0SN7wUHhO+MkAukbTHpf6x83u5D0RUf
-         TCtw==
+        b=NUa1lBb8UEWRvNfyikYvy/v8L12hEqcmRyfuUjOyvNK44T/IrmpT7ILpMkOBNY3F5L
+         hmAEvDkwE1cHhH5z+5Rvi8NXILh2If/xR/q6g+Lfl5GsluHbP27PvsBD9/+bJ6hDasHW
+         2mzRYH+6gO+D1N5omi/v8rbJYeWAe3XhtV0lEbktqEn8H/GL5kQjEs5ZF8xNIfc+ywvw
+         foyxzkhFMSOSCR8xx6ESjgvtbXoz2kSYS6vutVdeVipSoXIuWjT7aU6YwXlNhLo/+lcn
+         WFkE6R3dZbpvGsnFu2Dgeo17nku8JYkpFf0/esaJsBz7SA681EHKZtU/PQQhwxeXWF5R
+         6CpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=FoWoKSqjjh68VSQj0A5P4qFwMda5yvhWWmestbQu+sY=;
-        b=sjG0fcJF6YOgDaKwh4RqHF+onAH9nVPYpuPsI9Xyc3KMW+k/ED+ActPtCec7fChGvS
-         BDimwzTII7HO7qFWJPFoQ+Vkc+GuSMuPFcWpgHOnTamfL8FyxsLGxCqHevLw+H8Oijp0
-         9ys1ZkjExwm3JWXf2GXeB+9hq1k9gpoqX6ZQFDmA24qXYGfiep9pQwcXJD5OTJnSLrms
-         yVS1I6MGCnwARtyrJpmsHmP95v7iJNlg1wNT+aEsN6YgcfjMiDeEdVK29kPkrUL9gi83
-         k4Kbb0TYCFDxBUhn1Kd9y4wlJ2ZQkcEtG4VRbVK7LlQmQW7xTZYf++QpiQWIrrz6eraw
-         XzsQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=mr012aGW6nT4gBeC642BNtp2RVJElYSvK9sVFfDJC/A=;
+        b=APeKmIChF+u/qbimHTjSrfk28c9NKiYqhHrTEI8NtFhoP2wJzlo8I7NOWeM972/7ED
+         irXG6yzUCDGiDF0xwXniViDYFA1Kq8uvuA1y2iiRPsQ7WYUH8/B3Sn6rSQ5diaPUar3P
+         +LtMkL3PUxd3VcUzPrxPaNcUa7rMAhhOingLgZPnHG9HWbRmJk4hoH9NQXD2vDI4MmS0
+         srw9dVvf7qjFAFC/ZPYEVboY8vIv5acF1pHllSQJh8AS3PA+NnHcYfLZObxJZvVSpwqt
+         CfTBo9ac58XFDnF1TX5SI3VV+aIdB24SkSF+vneRwY66m+gVWYtc7u2Q+sCMd/X0w1Oc
+         PylQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K07nzk3f;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b="jJLh6O/U";
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=ZaEq8gld;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d16-20020ac85ad0000000b00304c8fd5f85si2393019qtd.79.2022.06.02.15.11.56
+        by mx.google.com with ESMTPS id d142-20020a376894000000b0069fe87786cdsi2324279qkc.398.2022.06.02.12.20.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jun 2022 15:11:56 -0700 (PDT)
+        Thu, 02 Jun 2022 12:20:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K07nzk3f;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39018 helo=lists1p.gnu.org)
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b="jJLh6O/U";
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=ZaEq8gld;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41874 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwt2q-0006G7-Al
-	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:11:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37036)
+	id 1nwqNJ-0005ot-Qc
+	for alex.bennee@linaro.org; Thu, 02 Jun 2022 15:20:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37064)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwsgu-0004mk-8j
- for qemu-arm@nongnu.org; Thu, 02 Jun 2022 17:49:16 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435]:34777)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwsgr-0008Ve-Kb
- for qemu-arm@nongnu.org; Thu, 02 Jun 2022 17:49:15 -0400
-Received: by mail-pf1-x435.google.com with SMTP id c196so5815378pfb.1
- for <qemu-arm@nongnu.org>; Thu, 02 Jun 2022 14:49:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=FoWoKSqjjh68VSQj0A5P4qFwMda5yvhWWmestbQu+sY=;
- b=K07nzk3fzt1RoU69tILYMc49hbNKsxvDIX6uWYKwRhtbi7XidF+KFHASCiq1hwRB8i
- Pcp1fi5i7qg7gFwxCDM7RIxo4MsoE/fgJIb8LslwIpFCXs42Jjt716eBgYku7Pj3LCyN
- FnVXLpoae8+JBW1zz2gbOc6mYJye+TqKY2lewxHbUTo9e7d4U6lX62eX6TtmboS4mt42
- yRLuLFe6xL1H6ILqfAWyWVGapgs9aqN2Wb3qfOuuLh0BIaDt9l9fOcVfrtjZbtHJ8ddU
- tjgScKaf15k3c0yLwlC8qOUWuGIeFv3oxY57qHM8+jIhKDE+NFjCtHfqtqTXCL+E6k5W
- d+aw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=FoWoKSqjjh68VSQj0A5P4qFwMda5yvhWWmestbQu+sY=;
- b=5PZcoza/DW8YMTOESIXahvwx3HJFMDnZwhKnYRPLoQwQC0K5oWvs0TtGVphV4mVuC0
- YCNideVGgsFrvd93+1Wj3N5C6DPdhwSsbi+ENalcRCrxkwmwEXRF/QG+wOzHDSI/TIEz
- 2RVim5pb2ZXDpVX8Y+PigR+lEGAbT9kg8/Kn9XXRPLFbLP5PdZmhRsftG/0moXweZhAE
- INearE6ItzgVcgN450d6yQl4vRUH9Glvpc8epEUf/5bdxFqkwI8jmf+picFzC8ZBIcRL
- 7J8KnCWz1H439CaPP305tm0gKe/KM5l50kIErjihuSF94fsmh4krs51xi2n2YZHWKAMe
- A1hQ==
-X-Gm-Message-State: AOAM530QMub27N6ET9U+DtXVGHBPiQgYb991gUVuMLJ4RKKvX6/Rn5Vp
- 6xZiaYHPwm6RPSfa4uCghky8D11sIZWlyw==
-X-Received: by 2002:a05:6a00:2403:b0:4fd:e84a:4563 with SMTP id
- z3-20020a056a00240300b004fde84a4563mr7201469pfh.60.1654206552747; 
- Thu, 02 Jun 2022 14:49:12 -0700 (PDT)
-Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
- by smtp.gmail.com with ESMTPSA id
- bf7-20020a170902b90700b00163c6ac211fsm3988760plb.111.2022.06.02.14.49.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jun 2022 14:49:12 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 21/71] target/arm: Implement TPIDR2_EL0
-Date: Thu,  2 Jun 2022 14:48:03 -0700
-Message-Id: <20220602214853.496211-22-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220602214853.496211-1-richard.henderson@linaro.org>
-References: <20220602214853.496211-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1nwqMZ-0005mg-P0; Thu, 02 Jun 2022 15:20:10 -0400
+Received: from out3-smtp.messagingengine.com ([66.111.4.27]:38859)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1nwqMX-0005HE-E7; Thu, 02 Jun 2022 15:20:07 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 03A595C024F;
+ Thu,  2 Jun 2022 15:20:03 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Thu, 02 Jun 2022 15:20:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm3; t=1654197602; x=1654284002; bh=mr
+ 012aGW6nT4gBeC642BNtp2RVJElYSvK9sVFfDJC/A=; b=jJLh6O/UGomNn++nLS
+ /cNHPxejfyZuMDjpDIMDNaXBDl2bL7NshXlr5Kvpck2ZBnXkl/AZo02wBkO8bJCg
+ cFkOfDrDI1VrSlJS/pd5AwFyR9LBRnD0Cvdd1zKYuXqE86ya91K/ipK7fgH10CBc
+ gGyByEP5tZQt7RnEE+WeKdLWieBSWNIUIgoFBiOFIc+TnCaXcT6gdfT6EnXrjNfo
+ TTLnaEN9yc7VB9Qk1UxCBHvEHWS3h7hRF4M+UQiqw3jcXA+Avnc03qbm3dUNk4gl
+ jqCBM/wVF+HvZuV4J/iaUZP/UArIe6JV/E/8nIuZy7yj2LbNb/4XBUrdHEggJNKA
+ SMYw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+ :feedback-id:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to
+ :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm1; t=1654197602; x=1654284002; bh=mr012aGW6nT4gBeC642BNtp2RVJE
+ lYSvK9sVFfDJC/A=; b=ZaEq8gldZmoxKuE9ZM3oHGy7kN+zNDuNhSF3pAgrDnkM
+ Wh1FdeZ0+ejxnJkzUhUnNVCrN1u8ng6jMpE8uBsWHC2LwmsrPHgykFVjfEnFsS93
+ rpxtchUuF0mf1ioF1t7G9kqgfryatzUNbuubJq0/4Mqd0/vFSF4LpmjU1wa9Cy9C
+ 9EhjUNQkiEqZvdL4roHNFf+AN0kUkgTHvJxQr1p4rZbYpSoUJd0jkpa9sOEkI9HQ
+ +vquIhRaM3TKcf73YaTZxvBuw6MV+hD6l8+r2NYGcvJ+hzLNMH7HPLi2L+NchSIz
+ xbQg54q8XBaFHif3Fc2WxGK8wNoN4OXHYiKGR3+J7A==
+X-ME-Sender: <xms:YQ2ZYj6xNR_UTdmom8dkLBUstMpo3ILA6D8b_VnkgJS1ZCLRuoRgmQ>
+ <xme:YQ2ZYo5HOPj2Zk9Razn3vpECHF15Na1K4yJ7FGK6pSjgfJP5Bygf83sEbVpToVQn4
+ dO4YjedkEbJ0p1UZxU>
+X-ME-Received: <xmr:YQ2ZYqdjiFKLfv6Td4Tz0n3Qh47uf6ueYMM-J2v2v-XYl1sIUsd099BNIFVAovmrEVMCw0G-Atsv7lqcgA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrleeggddthecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpeffhffvvefukfhfgggtuggjsehgtderredttdejnecuhfhrohhmpefmlhgruhhs
+ ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
+ gvrhhnpeffuddvhfehjedugfeijeeuieelgeevuddvlefhkefhgfettefftddvkeevieel
+ feenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
+ enucfrrghrrghmpehmrghilhhfrhhomhepihhtshesihhrrhgvlhgvvhgrnhhtrdgukh
+X-ME-Proxy: <xmx:YQ2ZYkLkcaJfCAu9a4f8OjdgMksY6SwUoq2XMyUt4QQW4RDH2W86Gg>
+ <xmx:YQ2ZYnJArWLIfHEEGv2WG8ga4F3Szy9cbMwfDzpHae_CDXqlPg25DQ>
+ <xmx:YQ2ZYtx4qXEuC2nCjR66XnyADwi5GP6EWRFrUOfZ1pUu-jk9AQoS5A>
+ <xmx:Yg2ZYphq8eBbw-bX8f6aGA7OByCVYHdGpT2uciOJMEDdcJaoHf1gOQ>
+Feedback-ID: idc91472f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 2 Jun 2022 15:19:59 -0400 (EDT)
+Date: Thu, 2 Jun 2022 21:19:57 +0200
+From: Klaus Jensen <its@irrelevant.dk>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Cc: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>, qemu-devel@nongnu.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, qemu-arm@nongnu.org,
+ Peter Delevoryas <pdel@fb.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Corey Minyard <cminyard@mvista.com>,
+ Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
+ Damien Hedde <damien.hedde@greensocs.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
+ Klaus Jensen <k.jensen@samsung.com>, Zev Weiss <zev@bewilderbeest.net>
+Subject: Re: [RFC PATCH v2 0/6] hw/i2c: i2c slave mode support
+Message-ID: <YpkNXUkafYQ3ZSpT@apples>
+References: <20220601210831.67259-1-its@irrelevant.dk>
+ <6e0eb197-25c2-6b1e-2c19-f93597e29cff@kaod.org>
+ <YphzHGNYErSMEfPw@apples>
+ <00e2d10a-20f5-8357-5b13-41791940ce19@kaod.org>
+ <5683a737-8a15-20c5-5716-f5216d6c33c8@quicinc.com>
+ <c796202d-2e57-32b3-3007-343d37dcdb84@kaod.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="8agfdVEGsKIvyPAb"
+Content-Disposition: inline
+In-Reply-To: <c796202d-2e57-32b3-3007-343d37dcdb84@kaod.org>
+Received-SPF: pass client-ip=66.111.4.27; envelope-from=its@irrelevant.dk;
+ helo=out3-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,79 +146,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 39p7hIYB7mrw
+X-TUID: YqZ2vEKnlc4A
 
-This register is part of SME, but isn't closely related to the
-rest of the extension.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.h    |  1 +
- target/arm/helper.c | 32 ++++++++++++++++++++++++++++++++
- 2 files changed, 33 insertions(+)
+--8agfdVEGsKIvyPAb
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 24c5266f35..245d144fa1 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -474,6 +474,7 @@ typedef struct CPUArchState {
-             };
-             uint64_t tpidr_el[4];
-         };
-+        uint64_t tpidr2_el0;
-         /* The secure banks of these registers don't map anywhere */
-         uint64_t tpidrurw_s;
-         uint64_t tpidrprw_s;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 48534db0bd..204c5cf849 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6283,6 +6283,35 @@ static const ARMCPRegInfo zcr_reginfo[] = {
-       .writefn = zcr_write, .raw_writefn = raw_write },
- };
- 
-+#ifdef TARGET_AARCH64
-+static CPAccessResult access_tpidr2(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                    bool isread)
-+{
-+    int el = arm_current_el(env);
-+
-+    if (el == 0) {
-+        uint64_t sctlr = arm_sctlr(env, el);
-+        if (!(sctlr & SCTLR_EnTP2)) {
-+            uint64_t hcr = arm_hcr_el2_eff(env);
-+            return hcr & HCR_TGE ? CP_ACCESS_TRAP_EL2 : CP_ACCESS_TRAP;
-+        }
-+    }
-+    if (el < 3
-+        && arm_feature(env, ARM_FEATURE_EL3)
-+        && !(env->cp15.scr_el3 & SCR_ENTP2)) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+    return CP_ACCESS_OK;
-+}
-+
-+static const ARMCPRegInfo sme_reginfo[] = {
-+    { .name = "TPIDR2_EL0", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 3, .crn = 13, .crm = 0, .opc2 = 5,
-+      .access = PL0_RW, .accessfn = access_tpidr2,
-+      .fieldoffset = offsetof(CPUARMState, cp15.tpidr2_el0) },
-+};
-+#endif /* TARGET_AARCH64 */
-+
- void hw_watchpoint_update(ARMCPU *cpu, int n)
- {
-     CPUARMState *env = &cpu->env;
-@@ -8444,6 +8473,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-     }
- 
- #ifdef TARGET_AARCH64
-+    if (cpu_isar_feature(aa64_sme, cpu)) {
-+        define_arm_cp_regs(cpu, sme_reginfo);
-+    }
-     if (cpu_isar_feature(aa64_pauth, cpu)) {
-         define_arm_cp_regs(cpu, pauth_reginfo);
-     }
--- 
-2.34.1
+On Jun  2 17:40, C=C3=A9dric Le Goater wrote:
+> On 6/2/22 16:29, Jae Hyun Yoo wrote:
+> > Hi Klaus,
+> >=20
+> > On 6/2/2022 6:50 AM, C=C3=A9dric Le Goater wrote:
+> > > On 6/2/22 10:21, Klaus Jensen wrote:
+> > > >=20
+> > > > There is an outstanding issue with the SLAVE_ADDR_RX_MATCH interrup=
+t bit
+> > > > (bit 7). Remember from my first series I had a workaround to make s=
+ure
+> > > > it wasnt masked.
+> > > >=20
+> > > > I posted this upstream to linux
+> > > >=20
+> > > > https://lore.kernel.org/lkml/20220602054842.122271-1-its@irrelevant=
+=2Edk/
+> > > >=20
+> > > > Not sure if that is the right way to fix it.
+> > >=20
+> > > That's weird. I would have thought it was already enabled [ Adding Ja=
+e ]
+> >=20
+> > Slave mode support in Aspeed I2C driver is already enabled and it has
+> > worked well so far. The fix Klaus made in the link is incorrect.
+> >=20
+> > https://lore.kernel.org/lkml/20220602054842.122271-1-its@irrelevant.dk/
+> >=20
+> > The patch is adding ASPEED_I2CD_INTR_SLAVE_MATCH as a mask bit for
+> > I2CD0C (Interrupt Control Register) but actually this bit is part of
+> > I2CD10 (Interrupt Status Register). Means that the slave match interrupt
+> > can be enabled without enabling any mask bit in I2CD0C.
+>=20
+> Thanks Jae.
+>=20
+> So we should enable this interrupt always independently of the
+> Interrupt Control Register value.
+>=20
+> I would simply extend the mask value (bus->regs[intr_ctrl_reg])
+> with the SLAVE_ADDR_RX_MATCH bit when interrupts are raised in
+> aspeed_i2c_bus_raise_interrupt().
+>=20
 
+Alright, so my "workaround" from v1 was actually the right fix - I'll
+re-add it ;)
+
+
+--8agfdVEGsKIvyPAb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmKZDVwACgkQTeGvMW1P
+DeljdQf/Vdk3O/anDVQinA92Q3vkMYEvRWn+KSsqIU9n4UKz6MhJ+2qFvbm1M4YU
+SKvk8Vuf1EFlUJrCwoeP03x8xulPWa3u2XTzfqFTsxZ74ctT0bHdcWJ/Jyxjpz9U
+uoyj0lycPIYUddU2g9OoRQPKdqOwiPSHEWkya5AdbCgCoUPf/vHPlFf7HWmCMMuj
+YsFLNrYPV17d3uJrOvJh3eG6kMLjW70MICl/dfvnwTLnEmiuCDVUEKa3b8lAmmO4
+8HkUPACIpj6RDoRrJP9Zt2aIGaazW4BXs4QTBdb0Zv/2qzNvQIbve1QoZSsqvb1B
+7aP9L8DckfkhjLdWmhGqR0BewjgURw==
+=vfwT
+-----END PGP SIGNATURE-----
+
+--8agfdVEGsKIvyPAb--

@@ -1,113 +1,112 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5206276lfh;
-        Thu, 2 Jun 2022 15:10:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxyBLYP0R/L5UFOdmRPQg0PqG/Gvg9SvNGy98lkzCt2cGet7EALJdRFHU/EYKJkScyebJg4
-X-Received: by 2002:ac8:5b03:0:b0:304:bddb:b11 with SMTP id m3-20020ac85b03000000b00304bddb0b11mr5311893qtw.487.1654207827676;
-        Thu, 02 Jun 2022 15:10:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654207827; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5206554lfh;
+        Thu, 2 Jun 2022 15:11:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyerqoLjABN96oMNb1Njf8Zb3nhP3pSvlEtC3w3/YmRUxgiohIm5eQjBDMKPK5nAM7fAc9G
+X-Received: by 2002:a05:620a:1708:b0:6a5:7c13:1a04 with SMTP id az8-20020a05620a170800b006a57c131a04mr4549247qkb.23.1654207857402;
+        Thu, 02 Jun 2022 15:10:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654207857; cv=none;
         d=google.com; s=arc-20160816;
-        b=wY3WYOpKmq0IjcDQzcmSH9EcjBRfI2K0Uy1XNuPGog3sgz17ZwnwHPNCgrTTXDQjxZ
-         lvj8Amfj4k6H6izxkNXSkeCXMAX+pOn5VamGARt+prj0k5w8ae4dHRqpyTigYwkal8+x
-         QZpk9Wb1DnzMpvbrxK8l8HIo+xaUkWDhthuZwz8Jh5q/pTD8VOTqCMVZ3mNHsXeky8sq
-         0ayjcsDD7RGZ0Ra5bA7Lc27LkZfc9u+AIUln4PAJW6fL9/wDPLXcw3Ccxj4TP8xvkuK2
-         pKC907nMJ3XcL1wbtDqZEA29A9i1Fc0nPtlqmBnfBeteCII1ZoeHnS5rIo369yzaadi2
-         Uixg==
+        b=oC6QMhwGjVBwo7t2fiJW10ROCDM2IBFzSeILygIgsg37Qd5uiMmckTdUQLKdYy3iv7
+         EhVeyx+FLhYSGINdzoNQi7iaPmOLhKh2Qf8JXrtuzLZ8RBOoVcSnKHtW/xywdBn4BbHA
+         znBx/WJADec7QM13eL8ayZnQnItGByz3c/wYsvQta/mnHUK8E5NiQTl+Ua3tBKDqtUYL
+         UnSsqTMtVG5POp5o6XEfHwUEGXmEFRZpW6tjfEVZoa1fYFrOScV2mOfHjHlbpE5s7sAL
+         mGsi25p6/yP9rHWc/i+VYU2igBsgHXr0BTf9FTeE7yHvEChHmhji97QZMtotqsz7x/+8
+         kAnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=iCOG6DsXO7r1GwfN6wKfqvV2SzATr8uc1yKAbhFIADk=;
-        b=yfmZYHhP4vurS+Rl68LkAx55XOItKOOFdN908h6zdpmKg0mvG+cJHeths057GLMg0g
-         EZuy4evSIR5srhFFzKCDp2Dr/hAEq284w3T6g0tuzhn0Jz4mjVGcXy42CCIfsppcfvkk
-         5euA+iIWeKCaKEqUc61lwrpJmby7U4oJ/GoDnK5c/jnudmiNNzmLDb9hNH7eh0VFJbbp
-         wXh02dEA6DwiefkXoPdVH3z0Ecpqskw6qhdbNqpmU14NhM+O+c/yFNup5IMeMZIBNYvA
-         EVv31pDUB6WbXiKWbETxM/LerqvAwkAboL2XMtGGAldqlvLLdZnP5oETbUjt31Yz4J5d
-         sUlQ==
+        bh=7xdazpoc98KTxU+Hkap6hV74hgs0EjjQuCmdWfoKk1g=;
+        b=k6cq86TN1zCyMKvwu3mpgChbh91D8N2VHktvcIOR3kUmMzYsrQiFxg9CRUmnFsbfRN
+         aip46SLJPnMupk7Ibior9qfqIpoZqwlKQTHM2lPlFCTf43duUzdsptvVXE2Xk5jVPqxc
+         qNtaqrUrTfyEtvut92tqSP8j+VPDfeQ91IsMK5CDoFMxqeGzpzkyUxV/eRubF6HQdJqL
+         EaA4L1BDVfhHN4piVZrlVAbhHEzMapK2xr/DtGuPGPBdG3S/YfsX7O3AhhzWfC4NHnVP
+         tmToQCxZAwNMJNlvC4K/8ztzdnvcvvSGpCT1AD5Yy3sjCaVN2WihMcljocBAJETbvWTv
+         kWsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WHTZ1Ajz;
+       dkim=fail header.i=@linaro.org header.s=google header.b="k/0rUhe9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6-20020a0562140d0600b004648d177159si2223180qvh.368.2022.06.02.15.10.27
+        by mx.google.com with ESMTPS id v8-20020a05622a188800b002f91038e682si2807365qtc.5.2022.06.02.15.10.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jun 2022 15:10:27 -0700 (PDT)
+        Thu, 02 Jun 2022 15:10:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WHTZ1Ajz;
+       dkim=fail header.i=@linaro.org header.s=google header.b="k/0rUhe9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33758 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35290 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwt1P-0002fj-0x
-	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:10:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37360)
+	id 1nwt1s-0003hy-Td
+	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:10:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwsh3-0004y2-91
- for qemu-arm@nongnu.org; Thu, 02 Jun 2022 17:49:25 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:42552)
+ id 1nwsh5-00051f-Tq
+ for qemu-arm@nongnu.org; Thu, 02 Jun 2022 17:49:27 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:53064)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwsh0-0000DM-Sd
- for qemu-arm@nongnu.org; Thu, 02 Jun 2022 17:49:24 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id
- d12-20020a17090abf8c00b001e2eb431ce4so5890128pjs.1
- for <qemu-arm@nongnu.org>; Thu, 02 Jun 2022 14:49:22 -0700 (PDT)
+ id 1nwsh3-0008Ut-CS
+ for qemu-arm@nongnu.org; Thu, 02 Jun 2022 17:49:27 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id gd1so6024440pjb.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Jun 2022 14:49:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=iCOG6DsXO7r1GwfN6wKfqvV2SzATr8uc1yKAbhFIADk=;
- b=WHTZ1AjzKSx6vBe8d+WassEtCMBWyrCv8R6MB+aGns5aLIh5dmWbrYAqAlEBvrNUf2
- fZrLPelzQtSjTOWqIP9zHrBzt4d9bDw5tVqB+kGZ//G1jWb0PebijjU0rbE4CcqndRVK
- Jz1U3/zO9I2nRWkLlJFUfgYdYg1GhxPiYLK0kQJROvJjh0WU7cXcfKHBECrtUBA/vQFv
- 6gsFuzPg8uJN6Zi4InFl3v21YNIZpwCusaO90FjClSqlYvupr6vC94a4zdL5ioHTeo/b
- ZxUzDwnwJm3BTu/iF1xEOMALbgLkz+fQAU+9RQeSpYMGvS1nEt66xSCxlzv6bKaQDqVD
- 5U+Q==
+ bh=7xdazpoc98KTxU+Hkap6hV74hgs0EjjQuCmdWfoKk1g=;
+ b=k/0rUhe93OnFpqfx96UKtFrthpyt5fraiPax6W4qdLrQZM0Vndxhk3/P8nSZ542XRO
+ ySBOBL7OuHgSkho2UceHuQhS7cJajsl/gXcPWhtbC7k36B/DndU5+fExikfHhZnXBeYM
+ RW0/PKDllXKL2gxYVZ5ZTx/H0T9RYiZR6pIaCCag1DsBtUouH3pjvjpzgX2XLFCw6zGX
+ L3kmayLpNdhdptNLDLTJCbRFs80y4MxxyrJ8DZck/ls9/B8ZqBCcCy7sOVkw2svFX1W4
+ /HF6YT782uNIo6MXhz+uGQryI4v4WHEvrUiJccdrweIpTXUVNbrijNr/KD3Ev8bnpkNE
+ Zb1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=iCOG6DsXO7r1GwfN6wKfqvV2SzATr8uc1yKAbhFIADk=;
- b=kMweEnijR7eEhupRCPoPSHEA0wn2pfay20szB5CHxW3qIe1TWexqu0Me0UXENqloPT
- ZF8mfSpUucfIhrcD84rq+yshV+pWJq8PfaHuwkYeeaCEOCjj6f1FWyCuQMEaEhIXXPnB
- A04oN7ghJzubRXLz+j+T4QFgMXV4LwF5sAqGPx11WvCkSALQ/izFlUfBDEuvFTyroPvK
- ivELUXgRi/IjUvXQN5VZA1ScxyVZ1TtRg02kT8aIq/vy3fJHhhyZp+6IbMcJoOsUpAvc
- kn5XY7qZVrca5m0SYuFJHHCdx4Fa+Pshf6oRcrft6NnTzWDqXJcxPTt4r021FFVdlZXI
- TiQw==
-X-Gm-Message-State: AOAM530aRBVXcb6UzHM6XwLO30MqzTX/kAaY0Y55gNLeNbPwnMWiCmdv
- wKXHgH8ZVTvodoOueO9t6G3bvg==
-X-Received: by 2002:a17:903:288:b0:15f:a13:dfd5 with SMTP id
- j8-20020a170903028800b0015f0a13dfd5mr7035089plr.55.1654206561568; 
- Thu, 02 Jun 2022 14:49:21 -0700 (PDT)
+ bh=7xdazpoc98KTxU+Hkap6hV74hgs0EjjQuCmdWfoKk1g=;
+ b=WUJ5nvfGXgn/auRbGSKg4yc1AwPLZNCYCtOKnbWrQfvMDipITOmIKSYZR/ckm3+wlH
+ bLAf1iy6fIio3/t85aPLavJ5mnnTAasarZqZWkY3QsuBSFpXpV1NzPVzfxYhi/v7Uyq8
+ DfEJWEHpayXL16tbRwhqDm0mPOqw/0GNMnsestAzi2FEc282IefgsqY02ODjwMyD6QuM
+ aD5n//lgU6f/ND+0VCgxwMS3atP//AVxBmN+2b8dZ5KrIof5TQ/fL6czrZagxOV/+GRv
+ 8X/VHAnn541HtVuXwUM0hb6fuqSFwKsQxei4gFqSP5D6PzAUxtZcdMz6RUywDGVBWP8D
+ UNpA==
+X-Gm-Message-State: AOAM5331+l93llHFqVDqgkmyFsmLRNNn7ZWgyxpPQsMkrl7knxZ6PiAk
+ wScoDpbBRyAI64elikeR20uPvQ==
+X-Received: by 2002:a17:90b:1e47:b0:1e6:7d04:2f4 with SMTP id
+ pi7-20020a17090b1e4700b001e67d0402f4mr7336195pjb.93.1654206564595; 
+ Thu, 02 Jun 2022 14:49:24 -0700 (PDT)
 Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
  by smtp.gmail.com with ESMTPSA id
- bf7-20020a170902b90700b00163c6ac211fsm3988760plb.111.2022.06.02.14.49.21
+ bf7-20020a170902b90700b00163c6ac211fsm3988760plb.111.2022.06.02.14.49.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jun 2022 14:49:21 -0700 (PDT)
+ Thu, 02 Jun 2022 14:49:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 31/71] target/arm: Move error for sve%d property to
- arm_cpu_sve_finalize
-Date: Thu,  2 Jun 2022 14:48:13 -0700
-Message-Id: <20220602214853.496211-32-richard.henderson@linaro.org>
+Subject: [PATCH 34/71] target/arm: Generalize cpu_arm_{get,
+ set}_default_vec_len
+Date: Thu,  2 Jun 2022 14:48:16 -0700
+Message-Id: <20220602214853.496211-35-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220602214853.496211-1-richard.henderson@linaro.org>
 References: <20220602214853.496211-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,50 +121,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 11z1N3X8S9Dz
+X-TUID: xQv/NnS/BgBA
 
-Keep all of the error messages together.  This does mean that
-when setting many sve length properties we'll only generate
-one error, but we only really need one.
+Rename from cpu_arm_{get,set}_sve_default_vec_len,
+and take the pointer to default_vq from opaque.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu64.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ target/arm/cpu64.c | 27 ++++++++++++++-------------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
 
 diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 51c5d8d4bc..e18f585fa7 100644
+index dcec0a6559..c5bfc3d082 100644
 --- a/target/arm/cpu64.c
 +++ b/target/arm/cpu64.c
-@@ -487,8 +487,13 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
-                                   "using only sve<N> properties.\n");
-             } else {
-                 error_setg(errp, "cannot enable sve%d", vq * 128);
--                error_append_hint(errp, "This CPU does not support "
--                                  "the vector length %d-bits.\n", vq * 128);
-+                if (vq_supported) {
-+                    error_append_hint(errp, "This CPU does not support "
-+                                      "the vector length %d-bits.\n", vq * 128);
-+                } else {
-+                    error_append_hint(errp, "SVE not supported by KVM "
-+                                      "on this host\n");
-+                }
-             }
-             return;
-         } else {
-@@ -606,12 +611,6 @@ static void cpu_arm_set_sve_vq(Object *obj, Visitor *v, const char *name,
+@@ -638,11 +638,11 @@ static void cpu_arm_set_sve(Object *obj, bool value, Error **errp)
+ 
+ #ifdef CONFIG_USER_ONLY
+ /* Mirror linux /proc/sys/abi/sve_default_vector_length. */
+-static void cpu_arm_set_sve_default_vec_len(Object *obj, Visitor *v,
+-                                            const char *name, void *opaque,
+-                                            Error **errp)
++static void cpu_arm_set_default_vec_len(Object *obj, Visitor *v,
++                                        const char *name, void *opaque,
++                                        Error **errp)
+ {
+-    ARMCPU *cpu = ARM_CPU(obj);
++    uint32_t *ptr_default_vq = opaque;
+     int32_t default_len, default_vq, remainder;
+ 
+     if (!visit_type_int32(v, name, &default_len, errp)) {
+@@ -651,7 +651,7 @@ static void cpu_arm_set_sve_default_vec_len(Object *obj, Visitor *v,
+ 
+     /* Undocumented, but the kernel allows -1 to indicate "maximum". */
+     if (default_len == -1) {
+-        cpu->sve_default_vq = ARM_MAX_VQ;
++        *ptr_default_vq = ARM_MAX_VQ;
          return;
      }
  
--    if (value && kvm_enabled() && !kvm_arm_sve_supported()) {
--        error_setg(errp, "cannot enable %s", name);
--        error_append_hint(errp, "SVE not supported by KVM on this host\n");
--        return;
--    }
--
-     cpu->sve_vq_map = deposit32(cpu->sve_vq_map, vq - 1, 1, value);
-     cpu->sve_vq_init |= 1 << (vq - 1);
+@@ -675,15 +675,15 @@ static void cpu_arm_set_sve_default_vec_len(Object *obj, Visitor *v,
+         return;
+     }
+ 
+-    cpu->sve_default_vq = default_vq;
++    *ptr_default_vq = default_vq;
  }
+ 
+-static void cpu_arm_get_sve_default_vec_len(Object *obj, Visitor *v,
+-                                            const char *name, void *opaque,
+-                                            Error **errp)
++static void cpu_arm_get_default_vec_len(Object *obj, Visitor *v,
++                                        const char *name, void *opaque,
++                                        Error **errp)
+ {
+-    ARMCPU *cpu = ARM_CPU(obj);
+-    int32_t value = cpu->sve_default_vq * 16;
++    uint32_t *ptr_default_vq = opaque;
++    int32_t value = *ptr_default_vq * 16;
+ 
+     visit_type_int32(v, name, &value, errp);
+ }
+@@ -706,8 +706,9 @@ void aarch64_add_sve_properties(Object *obj)
+ #ifdef CONFIG_USER_ONLY
+     /* Mirror linux /proc/sys/abi/sve_default_vector_length. */
+     object_property_add(obj, "sve-default-vector-length", "int32",
+-                        cpu_arm_get_sve_default_vec_len,
+-                        cpu_arm_set_sve_default_vec_len, NULL, NULL);
++                        cpu_arm_get_default_vec_len,
++                        cpu_arm_set_default_vec_len, NULL,
++                        &cpu->sve_default_vq);
+ #endif
+ }
+ 
 -- 
 2.34.1
 

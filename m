@@ -1,114 +1,108 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4503466lfh;
-        Wed, 1 Jun 2022 15:06:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylyFchkmasigEvJuWg3WON+t+f/mMgIEhFORolYb1MJEjt2y0vGkH+hrJ0SiJHZUdEP5n6
-X-Received: by 2002:a05:620a:44d6:b0:6a3:67c8:8870 with SMTP id y22-20020a05620a44d600b006a367c88870mr1513059qkp.52.1654121161959;
-        Wed, 01 Jun 2022 15:06:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654121161; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4568461lfh;
+        Wed, 1 Jun 2022 17:37:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzml6wU+ksug6bo87C5ik9WRWTvhZxUPbTc4+M4BErMj4CZR10dLpNFwgJ66tT3KunxHstx
+X-Received: by 2002:a05:620a:14a2:b0:6a3:4b7f:d317 with SMTP id x2-20020a05620a14a200b006a34b7fd317mr1667786qkj.436.1654130245493;
+        Wed, 01 Jun 2022 17:37:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654130245; cv=none;
         d=google.com; s=arc-20160816;
-        b=ABiNz6dfeE0KVFtjDhnKdevcB+q5q+G3HC/w6asI96An9lmLA2la35gtTLMe3AyMnG
-         K6lITjM2Y5t9dAUYNb7LiSfqo1j15w52c1AMpONafhcSeO8pCek38XBGGoPpgUumuD4e
-         wcIrQAySU3w34RWq8k4mif+cEyUF30m41YFkEBfjIrzcrsf0ytMhtfJqfxt+iU7DLWqd
-         /zCc0BI8OuX06ILZz9cXCmnLcXw+0hzELiN4k9+0YEw5v1w7Tf36L8PRRrLA5E6axVpW
-         IjX24xkUQrspBsSnPnBlCOmwUK2GY/sM3aIvjjy6JTsxF7lHgStk5eBniYdH61Q54xZ2
-         Injg==
+        b=vzd6GAwI7JLz7h6Xx00wgouW5GyYb5HdpSGnFPtz85VLRBbdNvlRoqK9G+xZJ7/e9u
+         pH+x98uqsY8WHE8ctMPOXLOyIwP1K/fh8rmlKOhvKnZFki/j7i5scWZoLOe6/LdrdSA6
+         VIFhr3gczqy60OByeAQ77DWrr5p2MWitN6VEXl1Szd6UUNvx6qz0ZnHZuT9DetDZPB93
+         iQc0SW/Vy7mL1vLNoA/GXJvgtGToI0NFA3gmiKX/LcI+6sFaUWDW1lsjNQdy1ZPIz4FY
+         BRyvN6a7xb7lEUwA34TcRNW0nE5ijyY7FBDi12IOApv3T8yqR5pWeTzvG/yNDwslGSly
+         fNig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=IOt8VIZfW5T+i1OVVqnEIYobw8cFMQvb904jbX1ObL0=;
-        b=065akpIhCTBcPn541GKAQsZQ4ZRmCNhIb8avF0N/OrGKeMl7+lqIk9ETDrhW71gS6X
-         kZHugMkv+dIKFOErIGiJlpuThxP3+5FwMT9R6ePbvG66A/inSd05ZKwBN1yOjRKrm+Bb
-         I/1Srwca6VIUCXKYYS0FIyq/AKuZaeJgxqDYwUMdbH3nY9BJ6Yr5hKpNTvkfx2dXyB/x
-         Te4nflilOjdw+KFE3IjXM0g6xLzSRijnwYzwgT7H7cUXyK1G5lIrPhBoga/Mpz3WIJot
-         4ug7dA/FSSpcKt8+R/Ldo0WJFBQ51b8SCIkio8PL1/4yJDRQRCb21RFLUbj57wwReasN
-         09nQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=2h7+pDxxHVmgE2R/UdwCACCYRRU9YglMv2eX0ZE7HWM=;
+        b=e49pUReo7P5BfPGQPaBXXUGPSlczltyErr/rzvrS315rcZyQdngH7XI8ulFGVUuEVq
+         W/FSnF/cOyHbpXgiWO/rcRbSAtPtsKj5Slj3RFCGtFTi3lOljfFlvMG86sHkAzDExjxU
+         YSacdkY64tHEcicAV7NOSGmlzFzweRm4Ijg98jM7loaSLdE9XuyWmgsVXHtvUPvUSJ34
+         Zx5DKgtX2CVCc7Lpuhql6lRsHvUhbonycFwTMg8XOS7lbTADGVznSRsinkNFhPQZPkDm
+         UNvD7opQtk2w/b6XK/S5mpfZU6VVSYLPgph2MC7I6yYXOhv5vkjYP4Qa22WdAfd3oXjd
+         4c/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@mvista.com header.s=google header.b=d1FJjyxj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=icchz9qV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t24-20020a37ea18000000b006a339d370bbsi1647007qkj.338.2022.06.01.15.06.01
+        by mx.google.com with ESMTPS id h1-20020a0562140da100b004644f24041bsi1510795qvh.380.2022.06.01.17.37.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Jun 2022 15:06:01 -0700 (PDT)
+        Wed, 01 Jun 2022 17:37:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@mvista.com header.s=google header.b=d1FJjyxj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49860 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=icchz9qV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49328 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwWTY-0005gq-VT
-	for alex.bennee@linaro.org; Wed, 01 Jun 2022 18:06:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41804)
+	id 1nwYq4-0003q5-KR
+	for alex.bennee@linaro.org; Wed, 01 Jun 2022 20:37:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35518)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
- id 1nwWT2-0005gV-71
- for qemu-arm@nongnu.org; Wed, 01 Jun 2022 18:05:28 -0400
-Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c]:39589)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1nwYop-0003o8-J4; Wed, 01 Jun 2022 20:36:10 -0400
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336]:39886)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
- id 1nwWSz-00014s-CB
- for qemu-arm@nongnu.org; Wed, 01 Jun 2022 18:05:27 -0400
-Received: by mail-oa1-x2c.google.com with SMTP id
- 586e51a60fabf-f2e0a41009so4516980fac.6
- for <qemu-arm@nongnu.org>; Wed, 01 Jun 2022 15:05:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mvista.com; s=google;
- h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
- :in-reply-to; bh=IOt8VIZfW5T+i1OVVqnEIYobw8cFMQvb904jbX1ObL0=;
- b=d1FJjyxjVWaiIqzZdwcB75pTxOSpJWO4Ti7hratz7T8msf7h/kmxxjEv9P7jFmhJN4
- NltG3shUJCAhO5GeX2soiSSxSd4reCywafSL4kyc7sa9GjjAWwCF+d3Uv979HcBfrU4Q
- oWe/KxGXmUE7lvqD1fg0o2glXymLsxwDX/2gI=
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1nwYon-00040X-PQ; Wed, 01 Jun 2022 20:36:07 -0400
+Received: by mail-ot1-x336.google.com with SMTP id
+ w19-20020a9d6393000000b0060aeb359ca8so2407857otk.6; 
+ Wed, 01 Jun 2022 17:36:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2h7+pDxxHVmgE2R/UdwCACCYRRU9YglMv2eX0ZE7HWM=;
+ b=icchz9qVEzjES+Tn3jqWz/ngfLCLr9k3rWPIZLtIMsXtcvZej02IxW4QUpYYfMgVxY
+ ZiNQGJpfDGzbhJC4MPbwBiRDOhNGradZE0PxQulBf5gDQew94w5PDtIkXkHS8rjoAftz
+ KoyM1jOmRV6Y2pAUFU4tU+4lX12waqfcoJ5ENEw0SLmGcedgQiroLNPgESkG1JbrRcSX
+ WmaKYCFQlOaAaBXhem9BU6/HvU5EnA3BR0pb79GQsMEp8QjTS1sNvPm0yeUtARO2b0lv
+ glE/ifi/P0YVgN/hBY5TudwxuH9AXCnr1FWF7Y1ILaa4nOzpe/Bg2IHQ/eBYXIQYmOza
+ jw5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
- :references:mime-version:in-reply-to;
- bh=IOt8VIZfW5T+i1OVVqnEIYobw8cFMQvb904jbX1ObL0=;
- b=cRHZdzb+6hY0N+4rDCTDW9EcsBFPDmYV+5w6XlbUEfX50LXoLccaJ049Z8dsi25LGR
- SnjQ287Noj5J/5gOA7hickJ2cpSU+6vKHTba+rwVvoSeERXTiBPtEA4z7L8B6b/GvPct
- tDE3XVnCfr+/7bZjvmB9SOjarsNpXXK5AhbqH0AWsUYXC+jmTxGp/1N5k+jgZ5dy9D/k
- XCMRw3PsShTj1XVpvUee7zckG54Qo1ItSYO8IslMEvIyNHpF7Z35k8J67oWqqFnf68X4
- c2x0M5d2yalJw1hrmPRiPQLJspI3FGQLAZ2LKNIE466aEEXbH2phniLR925lp8KaYcU5
- yqdw==
-X-Gm-Message-State: AOAM533uWSKtAP8rjd49cA/Sj+OoG4PeXFeEImgnUDgBUULQLGNCFURk
- 2U5kzBmcG+oo4llkU4wTPrFYaw==
-X-Received: by 2002:a05:6870:1781:b0:f3:101e:7685 with SMTP id
- r1-20020a056870178100b000f3101e7685mr1029483oae.125.1654121123740; 
- Wed, 01 Jun 2022 15:05:23 -0700 (PDT)
-Received: from minyard.net ([2001:470:b8f6:1b:cca5:4cab:9a61:6930])
- by smtp.gmail.com with ESMTPSA id
- ej24-20020a056870f71800b000f30837129esm1241724oab.55.2022.06.01.15.05.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 01 Jun 2022 15:05:23 -0700 (PDT)
-Date: Wed, 1 Jun 2022 17:05:21 -0500
-From: Corey Minyard <cminyard@mvista.com>
-To: Klaus Jensen <its@irrelevant.dk>
-Cc: qemu-devel@nongnu.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- qemu-arm@nongnu.org, Peter Delevoryas <pdel@fb.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Padmakar Kalghatgi <p.kalghatgi@samsung.com>,
- Damien Hedde <damien.hedde@greensocs.com>,
- Andrew Jeffery <andrew@aj.id.au>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>,
- Arun Kumar Kashinath Agasar <arun.kka@samsung.com>,
- Klaus Jensen <k.jensen@samsung.com>
-Subject: Re: [RFC PATCH v2 4/6] hw/i2c: add asynchronous send
-Message-ID: <20220601220521.GS2554462@minyard.net>
-References: <20220601210831.67259-1-its@irrelevant.dk>
- <20220601210831.67259-5-its@irrelevant.dk>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2h7+pDxxHVmgE2R/UdwCACCYRRU9YglMv2eX0ZE7HWM=;
+ b=UKpnFWM0rfp9UPRuglKiaVnB/uBOsC8AnZY29YLpVVqCVwb7TAgKb4UaXHrbLnAyly
+ vw3hOoqONDxSJPrSR9VvVfsEO7IyUcAtvzmxROuCYWUAM7JGovyWb5dJBbLeX/akRfoB
+ b5X/3CJNIyne3klphH5dlooBVDdNrXSkw3LJa0jMhhHnkU4KAI0ImOolUpwLK0xTQHLN
+ f8rzq/JJLoWh2AU/5aUL3oBw9qjK6DKcRwIZEB+ZdBV+gb/4kWbM11ZR/jggxDv7/0Fn
+ +sSy8MPS5t34O01d7SEiMFWZ8u0xuLJoZlANUTYbjGezJ9K2BYCyVhwEwJKZhnfGe09g
+ Jcjg==
+X-Gm-Message-State: AOAM532avQh06mreISVEvW2O3/9OPMwDrFRUMhvIVQYbfRs/cyES+scx
+ 4dMtwGvUIve7Dsa/tKmWNoLLp4DYq2Rrf+JZkkE=
+X-Received: by 2002:a05:6830:18dc:b0:60a:e7a3:dbe7 with SMTP id
+ v28-20020a05683018dc00b0060ae7a3dbe7mr1071853ote.186.1654130164264; Wed, 01
+ Jun 2022 17:36:04 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20220601210831.67259-5-its@irrelevant.dk>
-Content-Type: multipart/signed; protocol="application/pkcs7-signature";
- micalg=sha-256; boundary="00000000000005d16105e06a1612"
-Received-SPF: pass client-ip=2001:4860:4864:20::2c;
- envelope-from=cminyard@mvista.com; helo=mail-oa1-x2c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20220601172353.3220232-1-fkonrad@xilinx.com>
+ <20220601172353.3220232-3-fkonrad@xilinx.com>
+In-Reply-To: <20220601172353.3220232-3-fkonrad@xilinx.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 2 Jun 2022 10:35:38 +1000
+Message-ID: <CAKmqyKMCHDTOd4Qenmd3K2LNk-OZ89rtETvTK3UHAJH57jPxSQ@mail.gmail.com>
+Subject: Re: [PATCH v3 2/4] xlnx_dp: Introduce a vblank signal
+To: frederic.konrad@xilinx.com
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Edgar Iglesias <edgar.iglesias@gmail.com>, 
+ Alistair Francis <alistair@alistair23.me>, Sai Pavan Boddu <saipava@xilinx.com>,
+ Edgar Iglesias <edgari@xilinx.com>, fkonrad@amd.com, 
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, 
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::336;
+ envelope-from=alistair23@gmail.com; helo=mail-ot1-x336.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -123,370 +117,132 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: cminyard@mvista.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VePHbxd8ywiM
+X-TUID: ZwG+Qxm1nfs9
 
---00000000000005d16105e06a1612
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Thu, Jun 2, 2022 at 3:29 AM <frederic.konrad@xilinx.com> wrote:
+>
+> From: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+>
+> Add a periodic timer which raises vblank at a frequency of 30Hz.
+>
+> Signed-off-by: Sai Pavan Boddu <saipava@xilinx.com>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> Changes by fkonrad:
+>   - Switched to transaction-based ptimer API.
+>   - Added the DP_INT_VBLNK_START macro.
+> Signed-off-by: Frederic Konrad <fkonrad@amd.com>
 
-On Wed, Jun 01, 2022 at 11:08:29PM +0200, Klaus Jensen wrote:
-> From: Klaus Jensen <k.jensen@samsung.com>
-> 
-> Add an asynchronous version of i2c_send() that requires the slave to
-> explicitly acknowledge on the bus with i2c_ack().
-> 
-> The current master must use the new i2c_start_send_async() to indicate
-> that it wants to do an asynchronous transfer. This allows the i2c core
-> to check if the target slave supports this or not. This approach relies
-> on adding a new enum i2c_event member, which is why a bunch of other
-> devices needs changes in their event handling switches.
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
-This would be easier to read if you split out the default return of -1
-in all the devices to a separate patch.
+Alistair
 
-You've already pointed out the lack of nack support.
-
-I think this is ok outside of that.
-
--corey
-
-> 
-> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
 > ---
->  hw/arm/pxa2xx.c            |  2 ++
->  hw/display/sii9022.c       |  2 ++
->  hw/display/ssd0303.c       |  2 ++
->  hw/i2c/core.c              | 36 +++++++++++++++++++++++++++++++++++-
->  hw/i2c/smbus_slave.c       |  4 ++++
->  hw/i2c/trace-events        |  2 ++
->  hw/misc/ibm-cffps.c        |  2 ++
->  hw/misc/ir35221.c          |  2 ++
->  hw/nvram/eeprom_at24c.c    |  2 ++
->  hw/sensor/lsm303dlhc_mag.c |  2 ++
->  include/hw/i2c/i2c.h       | 16 ++++++++++++++++
->  11 files changed, 71 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-> index f4f687df68ef..93dda83d7aa9 100644
-> --- a/hw/arm/pxa2xx.c
-> +++ b/hw/arm/pxa2xx.c
-> @@ -1305,6 +1305,8 @@ static int pxa2xx_i2c_event(I2CSlave *i2c, enum i2c_event event)
->      case I2C_NACK:
->          s->status |= 1 << 1;				/* set ACKNAK */
->          break;
-> +    default:
-> +        return -1;
+>  hw/display/xlnx_dp.c         | 28 +++++++++++++++++++++++++---
+>  include/hw/display/xlnx_dp.h |  3 +++
+>  2 files changed, 28 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+> index 0378570459..d0bea512bd 100644
+> --- a/hw/display/xlnx_dp.c
+> +++ b/hw/display/xlnx_dp.c
+> @@ -114,6 +114,7 @@
+>  #define DP_TX_N_AUD                         (0x032C >> 2)
+>  #define DP_TX_AUDIO_EXT_DATA(n)             ((0x0330 + 4 * n) >> 2)
+>  #define DP_INT_STATUS                       (0x03A0 >> 2)
+> +#define DP_INT_VBLNK_START                  (1 << 13)
+>  #define DP_INT_MASK                         (0x03A4 >> 2)
+>  #define DP_INT_EN                           (0x03A8 >> 2)
+>  #define DP_INT_DS                           (0x03AC >> 2)
+> @@ -270,10 +271,15 @@ static const VMStateDescription vmstate_dp = {
+>                               DP_VBLEND_REG_ARRAY_SIZE),
+>          VMSTATE_UINT32_ARRAY(audio_registers, XlnxDPState,
+>                               DP_AUDIO_REG_ARRAY_SIZE),
+> +        VMSTATE_PTIMER(vblank, XlnxDPState),
+>          VMSTATE_END_OF_LIST()
 >      }
->      pxa2xx_i2c_update(s);
->  
-> diff --git a/hw/display/sii9022.c b/hw/display/sii9022.c
-> index b591a5878901..664fd4046d82 100644
-> --- a/hw/display/sii9022.c
-> +++ b/hw/display/sii9022.c
-> @@ -76,6 +76,8 @@ static int sii9022_event(I2CSlave *i2c, enum i2c_event event)
->          break;
->      case I2C_NACK:
->          break;
-> +    default:
-> +        return -1;
->      }
->  
->      return 0;
-> diff --git a/hw/display/ssd0303.c b/hw/display/ssd0303.c
-> index aeae22da9c29..d67b0ad7b529 100644
-> --- a/hw/display/ssd0303.c
-> +++ b/hw/display/ssd0303.c
-> @@ -196,6 +196,8 @@ static int ssd0303_event(I2CSlave *i2c, enum i2c_event event)
->      case I2C_NACK:
->          /* Nothing to do.  */
->          break;
-> +    default:
-> +        return -1;
->      }
->  
->      return 0;
-> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-> index 145dce60782a..d4ba8146bffb 100644
-> --- a/hw/i2c/core.c
-> +++ b/hw/i2c/core.c
-> @@ -161,7 +161,8 @@ static int i2c_do_start_transfer(I2CBus *bus, uint8_t address,
->             start condition.  */
->  
->          if (sc->event) {
-> -            trace_i2c_event("start", s->address);
-> +            trace_i2c_event(event == I2C_START_SEND ? "start" : "start_async",
-> +                            s->address);
->              rv = sc->event(s, event);
->              if (rv && !bus->broadcast) {
->                  if (bus_scanned) {
-> @@ -212,6 +213,11 @@ int i2c_start_send(I2CBus *bus, uint8_t address)
->      return i2c_do_start_transfer(bus, address, I2C_START_SEND);
->  }
->  
-> +int i2c_start_send_async(I2CBus *bus, uint8_t address)
-> +{
-> +    return i2c_do_start_transfer(bus, address, I2C_START_SEND_ASYNC);
-> +}
-> +
->  void i2c_end_transfer(I2CBus *bus)
->  {
->      I2CSlaveClass *sc;
-> @@ -261,6 +267,23 @@ int i2c_send(I2CBus *bus, uint8_t data)
->      return ret ? -1 : 0;
->  }
->  
-> +int i2c_send_async(I2CBus *bus, uint8_t data)
-> +{
-> +    I2CNode *node = QLIST_FIRST(&bus->current_devs);
-> +    I2CSlave *slave = node->elt;
-> +    I2CSlaveClass *sc = I2C_SLAVE_GET_CLASS(slave);
-> +
-> +    if (!sc->send_async) {
-> +        return -1;
-> +    }
-> +
-> +    trace_i2c_send_async(slave->address, data);
-> +
-> +    sc->send_async(slave, data);
-> +
-> +    return 0;
-> +}
-> +
->  uint8_t i2c_recv(I2CBus *bus)
->  {
->      uint8_t data = 0xff;
-> @@ -297,6 +320,17 @@ void i2c_nack(I2CBus *bus)
->      }
->  }
->  
-> +void i2c_ack(I2CBus *bus)
-> +{
-> +    if (!bus->bh) {
-> +        return;
-> +    }
-> +
-> +    trace_i2c_ack();
-> +
-> +    qemu_bh_schedule(bus->bh);
-> +}
-> +
->  static int i2c_slave_post_load(void *opaque, int version_id)
->  {
->      I2CSlave *dev = opaque;
-> diff --git a/hw/i2c/smbus_slave.c b/hw/i2c/smbus_slave.c
-> index 5d10e27664db..feb3ec633350 100644
-> --- a/hw/i2c/smbus_slave.c
-> +++ b/hw/i2c/smbus_slave.c
-> @@ -143,6 +143,10 @@ static int smbus_i2c_event(I2CSlave *s, enum i2c_event event)
->              dev->mode = SMBUS_CONFUSED;
->              break;
->          }
-> +        break;
-> +
-> +    default:
-> +        return -1;
->      }
->  
->      return 0;
-> diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-> index 209275ed2dc8..af181d43ee64 100644
-> --- a/hw/i2c/trace-events
-> +++ b/hw/i2c/trace-events
-> @@ -4,7 +4,9 @@
->  
->  i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
->  i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02x"
-> +i2c_send_async(uint8_t address, uint8_t data) "send_async(addr:0x%02x) data:0x%02x"
->  i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
-> +i2c_ack(void) ""
->  
->  # aspeed_i2c.c
->  
-> diff --git a/hw/misc/ibm-cffps.c b/hw/misc/ibm-cffps.c
-> index 042155bb7838..d69a727fd5f9 100644
-> --- a/hw/misc/ibm-cffps.c
-> +++ b/hw/misc/ibm-cffps.c
-> @@ -152,6 +152,8 @@ static int ibm_cffps_event(I2CSlave *i2c, enum i2c_event event)
->      case I2C_FINISH:
->           s->pointer = 0xFF;
->          break;
-> +    default:
-> +        return -1;
->      }
->  
->      s->len = 0;
-> diff --git a/hw/misc/ir35221.c b/hw/misc/ir35221.c
-> index 5e01d3655059..c46b9ee1c3bf 100644
-> --- a/hw/misc/ir35221.c
-> +++ b/hw/misc/ir35221.c
-> @@ -117,6 +117,8 @@ static int ir35221_event(I2CSlave *i2c, enum i2c_event event)
->      case I2C_FINISH:
->           s->pointer = 0xFF;
->          break;
-> +    default:
-> +        return -1;
->      }
->  
->      s->len = 0;
-> diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-> index 01a3093600fa..d695f6ae894a 100644
-> --- a/hw/nvram/eeprom_at24c.c
-> +++ b/hw/nvram/eeprom_at24c.c
-> @@ -75,6 +75,8 @@ int at24c_eeprom_event(I2CSlave *s, enum i2c_event event)
->          break;
->      case I2C_NACK:
->          break;
-> +    default:
-> +        return -1;
->      }
->      return 0;
->  }
-> diff --git a/hw/sensor/lsm303dlhc_mag.c b/hw/sensor/lsm303dlhc_mag.c
-> index 4c98ddbf207c..bb8d48b2fdb0 100644
-> --- a/hw/sensor/lsm303dlhc_mag.c
-> +++ b/hw/sensor/lsm303dlhc_mag.c
-> @@ -427,6 +427,8 @@ static int lsm303dlhc_mag_event(I2CSlave *i2c, enum i2c_event event)
->          break;
->      case I2C_NACK:
->          break;
-> +    default:
-> +        return -1;
->      }
->  
->      s->len = 0;
-> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-> index be8bb8b78a60..9b9581d23097 100644
-> --- a/include/hw/i2c/i2c.h
-> +++ b/include/hw/i2c/i2c.h
-> @@ -12,6 +12,7 @@
->  enum i2c_event {
->      I2C_START_RECV,
->      I2C_START_SEND,
-> +    I2C_START_SEND_ASYNC,
->      I2C_FINISH,
->      I2C_NACK /* Masker NACKed a receive byte.  */
 >  };
-> @@ -28,6 +29,9 @@ struct I2CSlaveClass {
->      /* Master to slave. Returns non-zero for a NAK, 0 for success. */
->      int (*send)(I2CSlave *s, uint8_t data);
->  
-> +    /* Master to slave (asynchronous). Receiving slave must call i2c_ack(). */
-> +    void (*send_async)(I2CSlave *s, uint8_t data);
+>
+> +#define DP_VBLANK_PTIMER_POLICY (PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD | \
+> +                                 PTIMER_POLICY_CONTINUOUS_TRIGGER |    \
+> +                                 PTIMER_POLICY_NO_IMMEDIATE_TRIGGER)
 > +
+>  static void xlnx_dp_update_irq(XlnxDPState *s);
+>
+>  static uint64_t xlnx_dp_audio_read(void *opaque, hwaddr offset, unsigned size)
+> @@ -773,6 +779,13 @@ static void xlnx_dp_write(void *opaque, hwaddr offset, uint64_t value,
+>          break;
+>      case DP_TRANSMITTER_ENABLE:
+>          s->core_registers[offset] = value & 0x01;
+> +        ptimer_transaction_begin(s->vblank);
+> +        if (value & 0x1) {
+> +            ptimer_run(s->vblank, 0);
+> +        } else {
+> +            ptimer_stop(s->vblank);
+> +        }
+> +        ptimer_transaction_commit(s->vblank);
+>          break;
+>      case DP_FORCE_SCRAMBLER_RESET:
+>          /*
+> @@ -1177,9 +1190,6 @@ static void xlnx_dp_update_display(void *opaque)
+>          return;
+>      }
+>
+> -    s->core_registers[DP_INT_STATUS] |= (1 << 13);
+> -    xlnx_dp_update_irq(s);
+> -
+>      xlnx_dpdma_trigger_vsync_irq(s->dpdma);
+>
 >      /*
->       * Slave to master.  This cannot fail, the device should always
->       * return something here.
-> @@ -127,11 +131,23 @@ int i2c_start_recv(I2CBus *bus, uint8_t address);
->   */
->  int i2c_start_send(I2CBus *bus, uint8_t address);
->  
-> +/**
-> + * i2c_start_send_async: start an asynchronous 'send' transfer on an I2C bus.
-> + *
-> + * @bus: #I2CBus to be used
-> + * @address: address of the slave
-> + *
-> + * Return: 0 on success, -1 on error
-> + */
-> +int i2c_start_send_async(I2CBus *bus, uint8_t address);
+> @@ -1275,6 +1285,14 @@ static void xlnx_dp_finalize(Object *obj)
+>      fifo8_destroy(&s->rx_fifo);
+>  }
+>
+> +static void vblank_hit(void *opaque)
+> +{
+> +    XlnxDPState *s = XLNX_DP(opaque);
 > +
->  void i2c_end_transfer(I2CBus *bus);
->  void i2c_nack(I2CBus *bus);
-> +void i2c_ack(I2CBus *bus);
->  void i2c_bus_master(I2CBus *bus, QEMUBH *bh);
->  void i2c_bus_release(I2CBus *bus);
->  int i2c_send(I2CBus *bus, uint8_t data);
-> +int i2c_send_async(I2CBus *bus, uint8_t data);
->  uint8_t i2c_recv(I2CBus *bus);
->  bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
->                    I2CNodeList *current_devs);
-> -- 
-> 2.36.1
-> 
-
---00000000000005d16105e06a1612
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Description: S/MIME Cryptographic Signature
-
-MIIQ6AYJKoZIhvcNAQcCoIIQ2TCCENUCAQExDzANBglghkgBZQMEAgEFADALBgkqhkiG9w0BBwGg
-gg4sMIIFXzCCBEegAwIBAgIQD/rh8xorQzw9muFtZDtYizANBgkqhkiG9w0BAQsFADBlMQswCQYD
-VQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGlnaWNlcnQuY29t
-MSQwIgYDVQQDExtEaWdpQ2VydCBBc3N1cmVkIElEIFJvb3QgRzIwHhcNMTkwOTIzMTIyNTMyWhcN
-MzQwOTIzMTIyNTMyWjBqMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYD
-VQQLExB3d3cuZGlnaWNlcnQuY29tMSkwJwYDVQQDEyBEaWdpQ2VydCBBc3N1cmVkIElEIENsaWVu
-dCBDQSBHMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOqxRa06rLwKBvrDb/qQ8RtX
-feKA9o0A42oZbLF4GYr4Xdt9JE8r3PJRIOUZD1U3mEln4S/aZoS54Q+5Ecs3q2GGT/Z82VeAPLeG
-vJoT0LS5t/zXeUcbMuDFWgyj33kiesnuusnOWvpISoxN+oBH4oo0+oUiHI65mMjMAlb93x6sabh9
-kKvHQvHC4x2u7wYv5+NXjnbOhJS/1NjGq+ugLMXeldFMz0O5qFIDpn3aQGU0htyJQ2SZyxEqlUrg
-unsrYj9wgfW7XuhAi2j0y5d9oMT0SuVeKFFnQhTEk5B3fq+OBOW0AU2JdW1r929UtRbAr8RpLt05
-WI2G2RNVVlHYaU0CAwEAAaOCAgQwggIAMB0GA1UdDgQWBBSlYiBQ3LtbV5etI4814lRsqX75TjAf
-BgNVHSMEGDAWgBTOw0q5mVXyuNtgv6l+vVa1lzan1jAOBgNVHQ8BAf8EBAMCAYYwTAYDVR0lBEUw
-QwYIKwYBBQUHAwIGCCsGAQUFBwMEBgorBgEEAYI3CgMEBgorBgEEAYI3FAICBgorBgEEAYI3CgMM
-BgkqhkiG9y8BAQUwEgYDVR0TAQH/BAgwBgEB/wIBADA0BggrBgEFBQcBAQQoMCYwJAYIKwYBBQUH
-MAGGGGh0dHA6Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBFBgNVHR8EPjA8MDqgOKA2hjRodHRwOi8vY3Js
-My5kaWdpY2VydC5jb20vRGlnaUNlcnRBc3N1cmVkSURSb290RzIuY3JsMIHOBgNVHSAEgcYwgcMw
-gcAGBFUdIAAwgbcwKAYIKwYBBQUHAgEWHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwgYoG
-CCsGAQUFBwICMH4MfEFueSB1c2Ugb2YgdGhpcyBDZXJ0aWZpY2F0ZSBjb25zdGl0dXRlcyBhY2Nl
-cHRhbmNlIG9mIHRoZSBSZWx5aW5nIFBhcnR5IEFncmVlbWVudCBsb2NhdGVkIGF0IGh0dHBzOi8v
-d3d3LmRpZ2ljZXJ0LmNvbS9ycGEtdWEwDQYJKoZIhvcNAQELBQADggEBAHZrbCQCo3MAIqR0kekG
-YrC70EAGRDRq11COufNEXhcpv3YH6BMhUoVinPPNgfo5HPrZAFrLK/KPXYdJdgkASGsINabAfY2l
-jUaJwKlpIewwjS6KuGEn59MgidaAUPh6lbetIoRsLhCqCzAnX1aL99fjCMf4NMWLUC8TqotnnrKN
-uw4JSjx4fcQs+U5T1bbgnyDx+8ybONuIEDvinHdKDu2VjoECzez2y/1IVTPlh57zBfjHJQFqLWzH
-dou8M+ucdJtr2swXII6s3nkq4pfEn7KnbzMS9quFSuyOGILcg/3qVwaHNLM5R+8nB5gPI5+u5Uh5
-6w1i+9Ds1pjYAiTHdeUwggOWMIICfqADAgECAhALkxw61jln6mcjv8OvmvRLMA0GCSqGSIb3DQEB
-CwUAMGUxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5k
-aWdpY2VydC5jb20xJDAiBgNVBAMTG0RpZ2lDZXJ0IEFzc3VyZWQgSUQgUm9vdCBHMjAeFw0xMzA4
-MDExMjAwMDBaFw0zODAxMTUxMjAwMDBaMGUxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxEaWdpQ2Vy
-dCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xJDAiBgNVBAMTG0RpZ2lDZXJ0IEFzc3Vy
-ZWQgSUQgUm9vdCBHMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANnnKC9SPzZySYiT
-NPP4ah4xVICfrVRBtUfflqjUr4AtuQrPdf2JpX0k+uMiDCu8lRcLM78ZTUEGkAC9DE0Q/ge15xxu
-IlUxZZe90xfSHmLz2+psUIw/hAyWz7fLA+DKbaEUTBuJ3e0AsFJ8r5FssTgT0ekSCMAAsBwrEdp3
-cDabrs55h9yCcOYJdHBVaa+jaJ+/3bZ5s/KdcClV9Kv/lWHzyUBvHdG+k7vTiCq7nb9yWlZxOz/U
-89EK/ijvo+7Zma8D049gt/KSobG9iYkfMM3Dpi5iM64WAndEWueBCjynRC55uD8EvFygh+Ebr1GO
-zews+vj+bfA6fKqL5GeVMY0CAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMC
-AYYwHQYDVR0OBBYEFM7DSrmZVfK422C/qX69VrWXNqfWMA0GCSqGSIb3DQEBCwUAA4IBAQDKpVWM
-48hBbmknp3UR7zyGNm/SncZ4OB1plqKSaS44bJt9BNSJpbExN4rJIcyrbM2LHJrWv0jSMmbBisDz
-LzrvwOPUkYbRUOMD23N3b0o5U+3eJse1fa8rQtF1YuNKKwLHUEvgaeKWbA5EZhBEj60F6/h5rKYb
-6Dc0nVPJYaqiUq9KcBaGwjrIsRNwNtjP7vQKNNVbTP0HnKK62QFyXPNNwd0OsRwNxGO+rfQU+4ns
-okEOTMzIV0DQbgOqzQyOiZmZbPA8MK8432+8o74pICerdP8TInjel1JVHoO1VCAD7q7AT1beN8zD
-f6oEJ7vTd7hi2xd8nCgiE3Nszyb1iinnMIIFKzCCBBOgAwIBAgIQCPdWMA138ZCH0Zxtj7kynDAN
-BgkqhkiG9w0BAQsFADBqMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYD
-VQQLExB3d3cuZGlnaWNlcnQuY29tMSkwJwYDVQQDEyBEaWdpQ2VydCBBc3N1cmVkIElEIENsaWVu
-dCBDQSBHMjAeFw0yMjA1MDUwMDAwMDBaFw0yNDA1MDUyMzU5NTlaMEIxHDAaBgNVBAMME2NtaW55
-YXJkQG12aXN0YS5jb20xIjAgBgkqhkiG9w0BCQEWE2NtaW55YXJkQG12aXN0YS5jb20wggEiMA0G
-CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDY2HEGeR0DklI0Rsc7cH8OHr9h6y5Fg/qtl6HVGuHC
-b4jSzyo2ys2peHLhx979LWXp53YYOGrZZ394baGNPmoYpbXJ/W5k/aWXK7vfImw+gwbgeuHhc2Dp
-HJhoe9DURVt9gDO82SMjR/IKqSVwg45JHBxF70EqrhSBeMkgGTKxvfcU2tpDxtBVL0vxg81/Flai
-e6yI9hArJLMOCmCnYRiI+tgT6BFslDBXsCWEKvjEfMJMnNVStTUiXmSBQy0HiDkSE3ldzhgn7GfY
-BWXXJySlPK4HhTovbV1T1VDACwUutqZCGUNBNilu41So+zk2eVRBhkHvdFk8qhDv3kQNZgz9AgMB
-AAGjggHzMIIB7zAfBgNVHSMEGDAWgBSlYiBQ3LtbV5etI4814lRsqX75TjAdBgNVHQ4EFgQU1rCH
-cfCGeI7qWJROdKkH8y8zjRowDAYDVR0TAQH/BAIwADAeBgNVHREEFzAVgRNjbWlueWFyZEBtdmlz
-dGEuY29tMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDBAYIKwYBBQUHAwIwQwYD
-VR0gBDwwOjA4BgpghkgBhv1sBAEBMCowKAYIKwYBBQUHAgEWHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0
-LmNvbS9DUFMwgYsGA1UdHwSBgzCBgDA+oDygOoY4aHR0cDovL2NybDMuZGlnaWNlcnQuY29tL0Rp
-Z2lDZXJ0QXNzdXJlZElEQ2xpZW50Q0FHMi5jcmwwPqA8oDqGOGh0dHA6Ly9jcmw0LmRpZ2ljZXJ0
-LmNvbS9EaWdpQ2VydEFzc3VyZWRJRENsaWVudENBRzIuY3JsMH0GCCsGAQUFBwEBBHEwbzAkBggr
-BgEFBQcwAYYYaHR0cDovL29jc3AuZGlnaWNlcnQuY29tMEcGCCsGAQUFBzAChjtodHRwOi8vY2Fj
-ZXJ0cy5kaWdpY2VydC5jb20vRGlnaUNlcnRBc3N1cmVkSURDbGllbnRDQUcyLmNydDANBgkqhkiG
-9w0BAQsFAAOCAQEAUpuWwUYMpUU+gPKxMzEPOkQBp9BR9ZBF9/Kr5WU5Vakt4hPs1nmQ3/Wr+HmB
-4llcJj8DM/dI3vY2Wlsr0ydBWi2ZDN2Q+NbapQteT9SzEn/Ops72bzOzkD/cMypxtWvJ+iUgVYeM
-G6Ogl9m3UMnKgDGj+lN++EZt6mmHBNwqVm50lPQxYYl8MAqlVZRz95XYpe4dKPintnruV9Snmpnf
-KyDibF5/GZ3yMId625GUdOCA5W6USe9ytcrYpSotNxeKx5a2vSB5PDkH3bJSILrOQ45uBglwWvDM
-Xjuenh8YM44JfoWRVC02niCs7rCl0drMK5X/dIU7b3KY1VQtg+sMqDGCAoAwggJ8AgEBMH4wajEL
-MAkGA1UEBhMCVVMxFTATBgNVBAoTDERpZ2lDZXJ0IEluYzEZMBcGA1UECxMQd3d3LmRpZ2ljZXJ0
-LmNvbTEpMCcGA1UEAxMgRGlnaUNlcnQgQXNzdXJlZCBJRCBDbGllbnQgQ0EgRzICEAj3VjANd/GQ
-h9GcbY+5MpwwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIEIKoofU7k4eE/iiH24pmX
-98Jh9Wqz07AcmHJRY+FvYMZjMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkF
-MQ8XDTIyMDYwMTIyMDUyNFowaQYJKoZIhvcNAQkPMVwwWjALBglghkgBZQMEASowCwYJYIZIAWUD
-BAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQowCwYJKoZIhvcNAQEHMAsG
-CWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQC4ojgr85mWSAjiM3BGzN7KxofMnuplGdXMV4x7
-dB6zCHeHx67Mo3ynpT/g76Mj9UpT1cLo0/APapzvc2Rbq5shGjowQwvRsvkJbEXYvLH+0rvpXLAJ
-e6rE/IYMhdUupUcl9xMYgyjWDGXa4pUlwbLtQ7tg0NFbELqV+BKNCGSMhe2KTAwmue5du7upHLd4
-SlvqkUzJHtPoSG9EK1iHY1wd4ysFtW/qh4UXNGa9ZQ1gdhmNRDmdC/iNJ5N07+L5YMYOkkBkwH8+
-sfkyzF/1S9AzAMWduTo5/MmhDw/bhD9GEilAdsqCs0wXWRcmctlm58Qq1sR+sxD7daqAyLZi6uVZ
---00000000000005d16105e06a1612--
+> +    s->core_registers[DP_INT_STATUS] |= DP_INT_VBLNK_START;
+> +    xlnx_dp_update_irq(s);
+> +}
+> +
+>  static void xlnx_dp_realize(DeviceState *dev, Error **errp)
+>  {
+>      XlnxDPState *s = XLNX_DP(dev);
+> @@ -1309,6 +1327,10 @@ static void xlnx_dp_realize(DeviceState *dev, Error **errp)
+>                                             &as);
+>      AUD_set_volume_out(s->amixer_output_stream, 0, 255, 255);
+>      xlnx_dp_audio_activate(s);
+> +    s->vblank = ptimer_init(vblank_hit, s, DP_VBLANK_PTIMER_POLICY);
+> +    ptimer_transaction_begin(s->vblank);
+> +    ptimer_set_freq(s->vblank, 30);
+> +    ptimer_transaction_commit(s->vblank);
+>  }
+>
+>  static void xlnx_dp_reset(DeviceState *dev)
+> diff --git a/include/hw/display/xlnx_dp.h b/include/hw/display/xlnx_dp.h
+> index 1ef5a89ee7..e86a87f235 100644
+> --- a/include/hw/display/xlnx_dp.h
+> +++ b/include/hw/display/xlnx_dp.h
+> @@ -35,6 +35,7 @@
+>  #include "hw/dma/xlnx_dpdma.h"
+>  #include "audio/audio.h"
+>  #include "qom/object.h"
+> +#include "hw/ptimer.h"
+>
+>  #define AUD_CHBUF_MAX_DEPTH                 (32 * KiB)
+>  #define MAX_QEMU_BUFFER_SIZE                (4 * KiB)
+> @@ -107,6 +108,8 @@ struct XlnxDPState {
+>       */
+>      DPCDState *dpcd;
+>      I2CDDCState *edid;
+> +
+> +    ptimer_state *vblank;
+>  };
+>
+>  #define TYPE_XLNX_DP "xlnx.v-dp"
+> --
+> 2.25.1
+>
+>

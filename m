@@ -1,402 +1,233 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5463529lfh;
-        Fri, 3 Jun 2022 01:54:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw/tOuSbeH3COawyDdjzx3elHBzQBj1hoSFlAEcqrW3ZnHzx8jSf451VERsjkRXi1jQgOsQ
-X-Received: by 2002:a05:620a:43a3:b0:6a6:48ba:1f18 with SMTP id a35-20020a05620a43a300b006a648ba1f18mr5562363qkp.656.1654246440805;
-        Fri, 03 Jun 2022 01:54:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654246440; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5201422lfh;
+        Thu, 2 Jun 2022 15:02:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzNcROYTNWNegpxu5n4I6ioevpuSkb+XU2xtFl8m3CfvSaOjJqnDtIWnN9kqRV7pY4JykiK
+X-Received: by 2002:a05:620a:4042:b0:6a5:aded:fe52 with SMTP id i2-20020a05620a404200b006a5adedfe52mr4602353qko.365.1654207324137;
+        Thu, 02 Jun 2022 15:02:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654207324; cv=none;
         d=google.com; s=arc-20160816;
-        b=GlA6FwSHHFT2BbWu8nrWLn+9H4VIkGIEL6uwQoCiSU0A3p3RqXVDZsRS/jLkDyXP+g
-         TUD4aNpGtPG0GDXJ9vM5aGEFIrrtkOnsMN/ZLFZwp5AEAmwDuuMuk4MrBKRWFmFr5QO4
-         bIE520JbI7+tNaZV/jppCHw6yAPsS3LIQ6MX4qJ0n2awvspWZbtF8Jv1IwoajY/bjAKk
-         q9DnWPYg4rwDOc+U6FNb5sZ7eXf5kDW7dYFywgARlfxM6/+JhpMQHGzTgfLpwp3qnvk5
-         8SCUyj+DSYkquZe2sJQjiuIKOzLd1Xu6MKuMkOdJ4yRfx5NMlmrK2AACe/U2sYEup5lx
-         ETig==
+        b=nMv8dBmH/vd/wRCbUKRcOkqcjWKEMil0I91RMZJWkwZtzD4uALQ3OouG8wOR4bdTQq
+         gsnwZVXsPUfut6KcUp6Oc1lrxgfsG7unlMe4o/UzkgE0JUyMFHN4o+SPmqBmstn9gqLR
+         ClfjcRc2rNB+SHHf0jSE5eWPY1qT/zIwmLAaALrG9tEDdr6wU3NUDxLy2hJM7maePH5y
+         BDM9kuMwtp3qxJuCooRS7JWP86Zx1IGjSaugK+PUn8hGigf1mCeyRi3oLpOoCWPyGEqo
+         U9Zc+kj161vXST8slM6LCqyxh1/c7Ouw908fn8tM1Yp+7jqcMmLOXX/+zzeZFWvmEySX
+         JKqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=HJXHkmBUphV3/a3mCeJxjO1epszMVkY72pUNAx8B8ro=;
-        b=0oIwffxZ4Pjt8CCQbNee+eQJ8yQnEOI3cED7fv8vjZMse+Q8rGsTV77Oa2lSs3Hvu9
-         AC6tvYu3eMv2gkQvtCAHb7fBX5n1yYk0sw/CVriJ2Q0Jn/5XgpllzC892vQC4ZtwidJ4
-         lMZUdHoBUvBh62N7R2TypN91F8rc/5m8zzLWBZgqwLqLaKL/5U2ZC6ItgKTMqzK1OHfJ
-         lAUS1cLZclV8U5ot1RVYcrkM9vSQ+ttCVFi+ujGyKsQ9gAY8oAu5TFnM2NBC7fIE9Dse
-         98tPzHKOWJpuZKPceDONc4FeUKZ4UKtio45GScSLjksNic1qkZ55tOBcXMEsrlQtm8ij
-         b/9g==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=lRGebQyqBWSguPRywmTvdJmhpPUXlvnLMmD10I0JmJc=;
+        b=gFJnIJXiDDFPFSWyg8lDKvziie9DH4wtbjAmqoARI6zE2qjIxP6gx0tYoSJfL1cQnc
+         MNXET/0d2ACxfbGDaBkPmfqmgUao9WumkjQJqID8gG6l2+2q/N5XHONxD/Zoca3gWBHe
+         EXiXEXV0EEpRv5PeUUjwTYtJyff/ifiQbsm52Lm3jXmjcan8CN9030dI3Jm7GgjrFfl4
+         Ur0sZkdIeD9kSwTk7qsIFykyReUyKaDA8QYMUMAfh0NoHVdYhR0E5Z58/qs0A5iV0J8H
+         570BfEa68cXVDrD5IbIlC9MyEdveDOqo/5gZ4hm/7tNo7IbI+yrnHqbA1rQzWuL/pH2J
+         evUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=lXrwu39I;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m5-20020ac85b05000000b003039acaea07si3275584qtw.412.2022.06.03.01.54.00
+        by mx.google.com with ESMTPS id 8-20020ac85908000000b002f9261a0de6si2768022qty.190.2022.06.02.15.02.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jun 2022 01:54:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Jun 2022 15:02:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43128 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=lXrwu39I;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40064 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nx34C-0006TF-AW
-	for alex.bennee@linaro.org; Fri, 03 Jun 2022 04:54:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37316)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nwstH-0004XE-GU
+	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:02:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nx30F-0004wJ-7S
- for qemu-devel@nongnu.org; Fri, 03 Jun 2022 04:49:56 -0400
-Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156]:39221)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nx30B-0001JQ-Id
- for qemu-devel@nongnu.org; Fri, 03 Jun 2022 04:49:54 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.179])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 0F6E024319;
- Fri,  3 Jun 2022 08:49:46 +0000 (UTC)
-Received: from kaod.org (37.59.142.107) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Fri, 3 Jun 2022
- 10:49:41 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-107S001b8a3bd6e-fcca-4b6e-ae83-02901fa4c6d1,
- 2F375BC487B398842DD9155F09582B226C9A4747) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <b1d77c5d-de4d-fbc5-e7c6-1dddbe3f7ab0@kaod.org>
-Date: Fri, 3 Jun 2022 10:49:35 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nwsgr-0004kc-Tv
+ for qemu-arm@nongnu.org; Thu, 02 Jun 2022 17:49:14 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:42508)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nwsgo-00007x-Mu
+ for qemu-arm@nongnu.org; Thu, 02 Jun 2022 17:49:13 -0400
+Received: by mail-pg1-x532.google.com with SMTP id d129so5786572pgc.9
+ for <qemu-arm@nongnu.org>; Thu, 02 Jun 2022 14:49:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=lRGebQyqBWSguPRywmTvdJmhpPUXlvnLMmD10I0JmJc=;
+ b=lXrwu39I4hZ8xZuBJ/xJTwzvbO4UwmhjQ9vsm3hMeSTwAjq+EqmXjZ8a63nkBt5tfC
+ mdDrxLu4tYeH0tG+95j9ouedL7BAbzEmJw37MzLS4bwPlF7JtQsUApCGkDq+akCzpJOD
+ JnzMoT51DP1J+zWt7gIHeKo+h2hxd0Ly3dnKltfs6KA7P+xe0d5DxCRsOpJZzhvlR65V
+ r6Uz9MA7eHKI/rsIbfzSrsN3Y09oYcx4M8/QtVueg9VYILC0Tk8wgNkboR1oHjKSE6JQ
+ ZiVc/w2L3eOPBEfbmv4qVoTKnVv/4MX5eCN1lJ2GyKWIktrzaQXCL7+MWdONQdpPDhvl
+ tuQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=lRGebQyqBWSguPRywmTvdJmhpPUXlvnLMmD10I0JmJc=;
+ b=aGuneOsmD9ar1ILvI9MQBQ/rNK8AcY8PStm3E2prjAO/5gEAiIVgWAw2Zi4Syo0hqb
+ BuuaFI8RhZIiBxb8h76fcsDP3h4v6kwc5J91ic656D10z8m8muVpouPmZsxZJ9AcAAVk
+ 3HbrWnZ2Bcsd97pMMf4Pfdxtx+7oe3E1rKuDFOyM+W7q0Bevmt1zYaD4OBUBumbK50h+
+ 425vrM32Msl2UW4yrS+EcDG9e80STNBUPnHh5S0kSCVhKL7ofaoF3K1mF2hh1bY1FYmf
+ mYiSRq0xs7m4LQK4ZVHCLgbwsDTvS9/I1mIsQA4X1sbf/nheTlaJTfb677WK3tHMbL2B
+ bCHg==
+X-Gm-Message-State: AOAM530Ys9hr2MQrKKd/7c906skWGb20yxCYeSo/5T0dyNkJaHDWnUil
+ inWH3aiVwIOhEiy1wj0uMqe5JA==
+X-Received: by 2002:a65:44c2:0:b0:3fa:8a91:1ae9 with SMTP id
+ g2-20020a6544c2000000b003fa8a911ae9mr5966968pgs.412.1654206549415; 
+ Thu, 02 Jun 2022 14:49:09 -0700 (PDT)
+Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
+ by smtp.gmail.com with ESMTPSA id
+ bf7-20020a170902b90700b00163c6ac211fsm3988760plb.111.2022.06.02.14.49.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 Jun 2022 14:49:09 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 17/71] target/arm: Move expand_pred_h to vec_internal.h
+Date: Thu,  2 Jun 2022 14:47:59 -0700
+Message-Id: <20220602214853.496211-18-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220602214853.496211-1-richard.henderson@linaro.org>
+References: <20220602214853.496211-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 1/1] hw: m25p80: add W# pin and SRWD bit for write
- protection
-Content-Language: en-US
-To: Iris Chen <irischenlj@fb.com>
-CC: <pdel@fb.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
- <patrick@stwcx.xyz>, <alistair@alistair23.me>, <kwolf@redhat.com>,
- <hreitz@redhat.com>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
- <joel@jms.id.au>, <thuth@redhat.com>, <lvivier@redhat.com>,
- <pbonzini@redhat.com>, <qemu-block@nongnu.org>, Iris Chen
- <irischenlj@gmail.com>
-References: <irischenlj@fb.com> <20220526021216.1031533-1-irischenlj@fb.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20220526021216.1031533-1-irischenlj@fb.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.107]
-X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 3e9b1434-3352-4292-a052-84e8fd22cf95
-X-Ovh-Tracer-Id: 14639232066535000964
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrleeigddtjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeelleeiiefgkeefiedtvdeigeetueetkeffkeelheeugfetteegvdekgfehgffgkeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtjeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdpnhgspghrtghpthhtohepuddprhgtphhtthhopehirhhishgthhgvnhhljhesghhmrghilhdrtghomhdpoffvtefjohhsthepmhhoheehvd
-Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
- helo=8.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XI7CjS1MrPh/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: y3UKPOIv6yyT
 
-Hello Iris,
+Move the data to vec_helper.c and the inline to vec_internal.h.
 
-On 5/26/22 04:12, Iris Chen wrote:
-> From: Iris Chen <irischenlj@gmail.com>
-> 
-> Add the W# pin and SRWD bit which control the status register write
-> ability.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/vec_internal.h |  7 +++++++
+ target/arm/sve_helper.c   | 29 -----------------------------
+ target/arm/vec_helper.c   | 26 ++++++++++++++++++++++++++
+ 3 files changed, 33 insertions(+), 29 deletions(-)
 
-may be replace W# by WP# (for write protect)
-
-> 
-> Signed-off-by: Iris Chen <irischenlj@gmail.com>
-> ---
->   hw/block/m25p80.c             | 72 +++++++++++++++++++++++++++++++++++
->   tests/qtest/aspeed_smc-test.c | 62 ++++++++++++++++++++++++++++++
->   2 files changed, 134 insertions(+)
-> 
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 81ba3da4df..c845fa08d4 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -27,12 +27,14 @@
->   #include "hw/qdev-properties.h"
->   #include "hw/qdev-properties-system.h"
->   #include "hw/ssi/ssi.h"
-> +#include "hw/irq.h"
->   #include "migration/vmstate.h"
->   #include "qemu/bitops.h"
->   #include "qemu/log.h"
->   #include "qemu/module.h"
->   #include "qemu/error-report.h"
->   #include "qapi/error.h"
-> +#include "qapi/visitor.h"
->   #include "trace.h"
->   #include "qom/object.h"
->   
-> @@ -472,11 +474,13 @@ struct Flash {
->       uint8_t spansion_cr2v;
->       uint8_t spansion_cr3v;
->       uint8_t spansion_cr4v;
-> +    bool write_protect_pin;
-
-I would call this attribute 'wp_level' since it is an assertion level
-of the WP# pin.
-
->       bool write_enable;
->       bool four_bytes_address_mode;
->       bool reset_enable;
->       bool quad_enable;
->       bool aai_enable;
-> +    bool status_register_write_disabled;
->       uint8_t ear;
->   
->       int64_t dirty_page;
-> @@ -723,6 +727,21 @@ static void complete_collecting_data(Flash *s)
->           flash_erase(s, s->cur_addr, s->cmd_in_progress);
->           break;
->       case WRSR:
-> +        /*
-> +         * If W# is low and status_register_write_disabled is high,
-> +         * status register writes are disabled.
-> +         * This is also called "hardware protected mode" (HPM). All other
-> +         * combinations of the two states are called "software protected mode"
-> +         * (SPM), and status register writes are permitted.
-> +         */
-> +        if ((s->write_protect_pin == 0 && s->status_register_write_disabled)
-> +            || !s->write_enable) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "M25P80: Status register write is disabled!\n");
-> +            break;
-> +        }
-> +        s->status_register_write_disabled = extract32(s->data[0], 7, 1);
-> +
->           switch (get_man(s)) {
->           case MAN_SPANSION:
->               s->quad_enable = !!(s->data[1] & 0x02);
-> @@ -1195,6 +1214,8 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->   
->       case RDSR:
->           s->data[0] = (!!s->write_enable) << 1;
-> +        s->data[0] |= (!!s->status_register_write_disabled) << 7;
-> +
->           if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
->               s->data[0] |= (!!s->quad_enable) << 6;
->           }
-> @@ -1484,6 +1505,15 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
->       return r;
->   }
->   
-> +static void m25p80_write_protect_pin_irq_handler(void *opaque, int n, int level)
-> +{
-> +    Flash *s = M25P80(opaque);
-> +    bool wp = !!level;
-
-this extra variable looks superfluous. minor
-
-> +    /* W# is just a single pin. */
-> +    assert(n == 0);
-> +    s->write_protect_pin = wp;
-> +}
-> +
->   static void m25p80_realize(SSIPeripheral *ss, Error **errp)
->   {
->       Flash *s = M25P80(ss);
-> @@ -1515,12 +1545,18 @@ static void m25p80_realize(SSIPeripheral *ss, Error **errp)
->           s->storage = blk_blockalign(NULL, s->size);
->           memset(s->storage, 0xFF, s->size);
->       }
-> +
-> +    qdev_init_gpio_in_named(DEVICE(s),
-> +                            m25p80_write_protect_pin_irq_handler, "W#", 1);
->   }
->   
->   static void m25p80_reset(DeviceState *d)
->   {
->       Flash *s = M25P80(d);
->   
-> +    s->write_protect_pin = true;
-> +    s->status_register_write_disabled = false;
-
-Are we ok with these defaults ? We wouldn't want to break existing
-implementation.
-
-
->       reset_memory(s);
->   }
->   
-> @@ -1601,6 +1637,7 @@ static const VMStateDescription vmstate_m25p80 = {
->           VMSTATE_UINT8(needed_bytes, Flash),
->           VMSTATE_UINT8(cmd_in_progress, Flash),
->           VMSTATE_UINT32(cur_addr, Flash),
-> +        VMSTATE_BOOL(write_protect_pin, Flash),
-
-and what about status_register_write_disabled ?
-
->           VMSTATE_BOOL(write_enable, Flash),
->           VMSTATE_BOOL(reset_enable, Flash),
->           VMSTATE_UINT8(ear, Flash),
-> @@ -1622,6 +1659,38 @@ static const VMStateDescription vmstate_m25p80 = {
->       }
->   };
->   
-> +static void m25p80_get_write_protect_pin(Object *obj,
-> +                                       Visitor *v,
-> +                                       const char *name,
-> +                                       void *opaque,
-> +                                       Error **errp)
-> +{
-> +    Flash *s = M25P80(obj);
-> +    bool value;
-> +
-> +    value = s->write_protect_pin;
-> +
-> +    visit_type_bool(v, name, &value, errp);
-> +}
-> +
-> +static void m25p80_set_write_protect_pin(Object *obj,
-> +                                       Visitor *v,
-> +                                       const char *name,
-> +                                       void *opaque,
-> +                                       Error **errp)
-> +{
-> +    Flash *s = M25P80(obj);
-> +    bool value;
-> +    qemu_irq w;
-> +
-> +    if (!visit_type_bool(v, name, &value, errp)) {
-> +        return;
-> +    }
-> +
-> +    w = qdev_get_gpio_in_named(DEVICE(s), "W#", 0);
-> +    qemu_set_irq(w, value);
-> +}
-> +
->   static void m25p80_class_init(ObjectClass *klass, void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
-> @@ -1636,6 +1705,9 @@ static void m25p80_class_init(ObjectClass *klass, void *data)
->       device_class_set_props(dc, m25p80_properties);
->       dc->reset = m25p80_reset;
->       mc->pi = data;
-> +
-> +    object_class_property_add(klass, "W#", "bool", m25p80_get_write_protect_pin,
-> +                              m25p80_set_write_protect_pin, NULL, NULL);
-
-
-I think you can simply use qtest_set_irq_in() from the test to raise the
-interrupt and avoid adding a property to do the same.
-
-
->   }
->   
->   static const TypeInfo m25p80_info = {
-> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-
-
-I would include the test in a second patch.
-
-Thanks,
-
-C.
-
-> index ec233315e6..45c0d812c7 100644
-> --- a/tests/qtest/aspeed_smc-test.c
-> +++ b/tests/qtest/aspeed_smc-test.c
-> @@ -56,7 +56,9 @@ enum {
->       BULK_ERASE = 0xc7,
->       READ = 0x03,
->       PP = 0x02,
-> +    WRSR = 0x1,
->       WREN = 0x6,
-> +    SRWD = 0x80,
->       RESET_ENABLE = 0x66,
->       RESET_MEMORY = 0x99,
->       EN_4BYTE_ADDR = 0xB7,
-> @@ -390,6 +392,64 @@ static void test_read_status_reg(void)
->       flash_reset();
->   }
->   
-> +static void test_status_reg_write_protection(void)
-> +{
-> +    uint8_t r;
-> +
-> +    spi_conf(CONF_ENABLE_W0);
-> +
-> +    /* default case: W# is high and SRWD is low -> status register writable */
-> +    spi_ctrl_start_user();
-> +    writeb(ASPEED_FLASH_BASE, WREN);
-> +    /* test ability to write SRWD */
-> +    writeb(ASPEED_FLASH_BASE, WRSR);
-> +    writeb(ASPEED_FLASH_BASE, SRWD);
-> +    writeb(ASPEED_FLASH_BASE, RDSR);
-> +    r = readb(ASPEED_FLASH_BASE);
-> +    spi_ctrl_stop_user();
-> +    g_assert_cmphex(r & SRWD, ==, SRWD);
-> +
-> +    /* W# high and SRWD high -> status register writable */
-> +    spi_ctrl_start_user();
-> +    writeb(ASPEED_FLASH_BASE, WREN);
-> +    /* test ability to write SRWD */
-> +    writeb(ASPEED_FLASH_BASE, WRSR);
-> +    writeb(ASPEED_FLASH_BASE, 0);
-> +    writeb(ASPEED_FLASH_BASE, RDSR);
-> +    r = readb(ASPEED_FLASH_BASE);
-> +    spi_ctrl_stop_user();
-> +    g_assert_cmphex(r & SRWD, ==, 0);
-> +
-> +    /* W# low and SRWD low -> status register writable */
-> +    qtest_qom_set_bool(global_qtest,
-> +                       "/machine/soc/fmc/ssi.0/child[0]", "W#", false);
-> +    spi_ctrl_start_user();
-> +    writeb(ASPEED_FLASH_BASE, WREN);
-> +    /* test ability to write SRWD */
-> +    writeb(ASPEED_FLASH_BASE, WRSR);
-> +    writeb(ASPEED_FLASH_BASE, SRWD);
-> +    writeb(ASPEED_FLASH_BASE, RDSR);
-> +    r = readb(ASPEED_FLASH_BASE);
-> +    spi_ctrl_stop_user();
-> +    g_assert_cmphex(r & SRWD, ==, SRWD);
-> +
-> +    /* W# low and SRWD high -> status register NOT writable */
-> +    spi_ctrl_start_user();
-> +    writeb(ASPEED_FLASH_BASE, WREN);
-> +    /* test ability to write SRWD */
-> +    writeb(ASPEED_FLASH_BASE, WRSR);
-> +    writeb(ASPEED_FLASH_BASE, 0);
-> +    writeb(ASPEED_FLASH_BASE, RDSR);
-> +    r = readb(ASPEED_FLASH_BASE);
-> +    spi_ctrl_stop_user();
-> +    /* write is not successful */
-> +    g_assert_cmphex(r & SRWD, ==, SRWD);
-> +
-> +    qtest_qom_set_bool(global_qtest,
-> +                       "/machine/soc/fmc/ssi.0/child[0]", "W#", true);
-> +    flash_reset();
-> +}
-> +
->   static char tmp_path[] = "/tmp/qtest.m25p80.XXXXXX";
->   
->   int main(int argc, char **argv)
-> @@ -416,6 +476,8 @@ int main(int argc, char **argv)
->       qtest_add_func("/ast2400/smc/read_page_mem", test_read_page_mem);
->       qtest_add_func("/ast2400/smc/write_page_mem", test_write_page_mem);
->       qtest_add_func("/ast2400/smc/read_status_reg", test_read_status_reg);
-> +    qtest_add_func("/ast2400/smc/status_reg_write_protection",
-> +                   test_status_reg_write_protection);
->   
->       ret = g_test_run();
->   
+diff --git a/target/arm/vec_internal.h b/target/arm/vec_internal.h
+index d1a1ea4a66..1d527fadac 100644
+--- a/target/arm/vec_internal.h
++++ b/target/arm/vec_internal.h
+@@ -59,6 +59,13 @@ static inline uint64_t expand_pred_b(uint8_t byte)
+     return expand_pred_b_data[byte];
+ }
+ 
++/* Similarly for half-word elements. */
++extern const uint64_t expand_pred_h_data[0x55 + 1];
++static inline uint64_t expand_pred_h(uint8_t byte)
++{
++    return expand_pred_h_data[byte & 0x55];
++}
++
+ static inline void clear_tail(void *vd, uintptr_t opr_sz, uintptr_t max_sz)
+ {
+     uint64_t *d = vd + opr_sz;
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index e865c12527..1654c0bbf9 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -103,35 +103,6 @@ uint32_t HELPER(sve_predtest)(void *vd, void *vg, uint32_t words)
+     return flags;
+ }
+ 
+-/* Similarly for half-word elements.
+- *  for (i = 0; i < 256; ++i) {
+- *      unsigned long m = 0;
+- *      if (i & 0xaa) {
+- *          continue;
+- *      }
+- *      for (j = 0; j < 8; j += 2) {
+- *          if ((i >> j) & 1) {
+- *              m |= 0xfffful << (j << 3);
+- *          }
+- *      }
+- *      printf("[0x%x] = 0x%016lx,\n", i, m);
+- *  }
+- */
+-static inline uint64_t expand_pred_h(uint8_t byte)
+-{
+-    static const uint64_t word[] = {
+-        [0x01] = 0x000000000000ffff, [0x04] = 0x00000000ffff0000,
+-        [0x05] = 0x00000000ffffffff, [0x10] = 0x0000ffff00000000,
+-        [0x11] = 0x0000ffff0000ffff, [0x14] = 0x0000ffffffff0000,
+-        [0x15] = 0x0000ffffffffffff, [0x40] = 0xffff000000000000,
+-        [0x41] = 0xffff00000000ffff, [0x44] = 0xffff0000ffff0000,
+-        [0x45] = 0xffff0000ffffffff, [0x50] = 0xffffffff00000000,
+-        [0x51] = 0xffffffff0000ffff, [0x54] = 0xffffffffffff0000,
+-        [0x55] = 0xffffffffffffffff,
+-    };
+-    return word[byte & 0x55];
+-}
+-
+ /* Similarly for single word elements.  */
+ static inline uint64_t expand_pred_s(uint8_t byte)
+ {
+diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
+index 17fb158362..26c373e522 100644
+--- a/target/arm/vec_helper.c
++++ b/target/arm/vec_helper.c
+@@ -127,6 +127,32 @@ const uint64_t expand_pred_b_data[256] = {
+     0xffffffffffffffff,
+ };
+ 
++/*
++ * Similarly for half-word elements.
++ *  for (i = 0; i < 256; ++i) {
++ *      unsigned long m = 0;
++ *      if (i & 0xaa) {
++ *          continue;
++ *      }
++ *      for (j = 0; j < 8; j += 2) {
++ *          if ((i >> j) & 1) {
++ *              m |= 0xfffful << (j << 3);
++ *          }
++ *      }
++ *      printf("[0x%x] = 0x%016lx,\n", i, m);
++ *  }
++ */
++const uint64_t expand_pred_h_data[0x55 + 1] = {
++    [0x01] = 0x000000000000ffff, [0x04] = 0x00000000ffff0000,
++    [0x05] = 0x00000000ffffffff, [0x10] = 0x0000ffff00000000,
++    [0x11] = 0x0000ffff0000ffff, [0x14] = 0x0000ffffffff0000,
++    [0x15] = 0x0000ffffffffffff, [0x40] = 0xffff000000000000,
++    [0x41] = 0xffff00000000ffff, [0x44] = 0xffff0000ffff0000,
++    [0x45] = 0xffff0000ffffffff, [0x50] = 0xffffffff00000000,
++    [0x51] = 0xffffffff0000ffff, [0x54] = 0xffffffffffff0000,
++    [0x55] = 0xffffffffffffffff,
++};
++
+ /* Signed saturating rounding doubling multiply-accumulate high half, 8-bit */
+ int8_t do_sqrdmlah_b(int8_t src1, int8_t src2, int8_t src3,
+                      bool neg, bool round)
+-- 
+2.34.1
 

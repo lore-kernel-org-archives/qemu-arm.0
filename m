@@ -1,262 +1,96 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5213119lfh;
-        Thu, 2 Jun 2022 15:24:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyVUXHY7RcZ/SirkikOeCWshRzTxB79ZztFK6liy6CvBPnlZ/OXWltYQsoNdZAizzAHxzUn
-X-Received: by 2002:a37:a097:0:b0:6a6:7bd5:e9fe with SMTP id j145-20020a37a097000000b006a67bd5e9femr3264603qke.432.1654208663935;
-        Thu, 02 Jun 2022 15:24:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654208663; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5500062lfh;
+        Fri, 3 Jun 2022 03:07:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxrsbf8Z9Uqw7Y8lZTJCEa1LJ2jHJYUgKsuTLbPNMdvI12iD28DSWxdo0w0z3YWAXx5Z0fV
+X-Received: by 2002:a05:622a:1d4:b0:304:c72e:ac4b with SMTP id t20-20020a05622a01d400b00304c72eac4bmr6686817qtw.101.1654250839895;
+        Fri, 03 Jun 2022 03:07:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654250839; cv=none;
         d=google.com; s=arc-20160816;
-        b=mMTBgS+P2oqjZXXKtOvcJ2fQoYVY713WQNCxeW56lITEmN1JuhQxlLcZIemkW4Ze2C
-         unc3mjz9RGL9SsWphc7W07ka7h108U32i+c+Tx0uqojlhgktBxGXfOqQQ19zZn5WXlHt
-         xUA+jddm2Dpbe7zy9Ei1g/FCidBZ0WhOaZ80j/panSpJHgTHasQMl0WWqFNOQZ8z5Spd
-         /IHlpF74tfxnKVNPeVLgxLI4o0vYJn40E8N8R68B760Z3qErJ/KHsbluAbNsRjRHtAus
-         kvg/I+Y+3ysWIaJk4AkNbpXxxM7AZ8H/EqIl9dvsC+FsfcEQ5jBI9ckcY0/VmZmm+yJr
-         Z1RQ==
+        b=HGJbPE8Nw6bZ8664geiN4m1OnDiGjkQ8OXHRgrnM51PdF33JCuD8pQkVZIqP7/2AVf
+         ACq54QqGuPXr1ft0sFj4pMEFUbJWaBX/3weHUWteNv/iXDGvgbkj2DajNTPe2EITAIkz
+         QQ/jyQlko+8Vc8tOHQaS+xPHgFJfsLxhQfx7gQ0yazbNIYk+aiP9PbCEh4C+1rwsbrej
+         aOtm+fTT+EWhpJTv9yeoikugFiHe1ceb4Ff0MztoTaeXrmSC3te5Tkk2e6RWyNy4JAqY
+         mleWEgfSJ1iiX1L1XK6Y2+OLbmWL7NUZeRUrZG/gJ2bUz81Q3XN1j2Tb5Ld8j6ao0KDX
+         X2PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=kOf3bIlPmmzxnCo3oo6dl2Yq5IfQQ5VBzpADjTzwQdM=;
-        b=a1ntatoi1r32DTyKCNSkeKb9IHdKYVJSx05Oxa/w6vhd59kdNcPdPyR8C8AlrqKN56
-         mJuNYU/DL2MNDO6S/KdI8cwkR8SC9YkSu/pW2K1RtLERko3rUUppBU/9Zz/P/8zrXo4s
-         8YSo+gu3wlz+tPaRet+gIyi5NCQlqOVlNVzUJD2K+uPytEtnaHzUXcdXPJKju3LcGUZg
-         0c5QyenecdFVxPsWdNg4hrQhDPZpw/uV92tvB4Moce+k/QAgQI2jHwjYAifkbkdanYr6
-         yZxdwffkmk7qiWMxm17av2U5Lq/v/LcPvVFb+paE4m7MIaiQPPR5514jf2v+bznHG2Fb
-         YNWg==
+        h=content-transfer-encoding:mime-version:message-id:date:user-agent
+         :references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=kP8ltlA59JjLB0JV5vyYWZwW4BiEA6NoNU0/kU5d6Gw=;
+        b=kselv9RdZWKEQFvswKCRBs4P+DBfzz5t1cEJYT+qp45lhtekUHVXpaesnjld4kxmt5
+         F1xPwWjHLbN3+FZyLSji1TesKxixg9IKjpsxbP4ZFqM7y0csdLwA8XdzMg4jINmW3Li6
+         e2ZsQL1RJhHhBdR5SeK/eJsEwqMdZ/wyC656EwEMqcse4ziOMB49vB4Y2wPaXisPCgvQ
+         aT8JainyoHgw9/QPzkELAbcgoHXAXB4XM70fuTtq49TtRDgskkI/8Mp52iq6ayYfnF3A
+         8V4Zl+Sfr66VX6Wfn4j0sJus2RrglirSXCd05Mwrz6+IyoIXGTPrFktc8KZ95hZ7YgOT
+         BeQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YdFphnRl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g6-20020ac87d06000000b00304b6c8bcdcsi3048392qtb.669.2022.06.02.15.24.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D5FGhN1F;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id i15-20020ad45c6f000000b00467cb2fcc1asi1970792qvh.210.2022.06.03.03.07.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jun 2022 15:24:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 03 Jun 2022 03:07:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YdFphnRl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42108 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwtEt-0002C2-AZ
-	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:24:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38154)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwsk9-0001IO-31
- for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:52:37 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:53079)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwsk6-0000s0-0D
- for qemu-devel@nongnu.org; Thu, 02 Jun 2022 17:52:36 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id gd1so6030225pjb.2
- for <qemu-devel@nongnu.org>; Thu, 02 Jun 2022 14:52:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=kOf3bIlPmmzxnCo3oo6dl2Yq5IfQQ5VBzpADjTzwQdM=;
- b=YdFphnRlGHxBWuiWUjrcCe6DV8Kydbww5mcgMeo3Iy0bLrf7SA5ffCA/dyeEttwrfQ
- 8G/5aM0IykSrgtpBYdFpyxVFLJhR0ONq9jCbHgZ5RfMUB17veC+g3CntOOA6EdDX+Zev
- N1dSuq15jA8IdlEJKh2Tf2mUZgRXruOvWgnAQnRfAa5UnMFAFAsPqA6TKWTvqzgOU78r
- hpNVj4x4e15sAXNMo2H407FEpFTPByUT3ToUoFv787iXJBTCEfO6egfTDFY2oVmpElJT
- lz5gGq5ah1XLAp+e+f9SCFHGDYZ8YC4KPD+NI/GjZvMtLD4sikuR9u7PiCwaGIBm2rOX
- PJWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=kOf3bIlPmmzxnCo3oo6dl2Yq5IfQQ5VBzpADjTzwQdM=;
- b=OX1Q4aKaiHwTrvxGlMeuQ1sO3ueL55oEBfHcJffhFjL78kaKhujzCIRXf0vMpBq0jo
- yrUljsWYU/yHdO52uSNzEMbwaolUQ3XJq/r3mgk/dO7maE8jkuPg0o7rg1eNvC0FJF6O
- WEJfUf2WAOsUMD91V7kwfxyZVR25sApsH2wwM9KSqK0/BvPeXP/nQh7mzYfFjDftIdPI
- 5kqOQs+jPg3mAJDSLpKQDblm7TIyHv26QIYsIJnSQYwBm5w5CzUcG7M7VpAEz+WOHhqG
- /KXKxG77JXKpiRFZAh7EbWGPxNDpjoQZBeE/CJjD6BVIh5m0eSOVRNqxwlGdc674wh6f
- Escg==
-X-Gm-Message-State: AOAM530K3cBFYC977dDYhL0qIXrbLg/oeAhRwhw41a4sTSt7pGzfIc5P
- bCYpugETvhz8/pMy2JRogDqTZXn792HvJQ==
-X-Received: by 2002:a17:90b:1a81:b0:1e0:3314:2447 with SMTP id
- ng1-20020a17090b1a8100b001e033142447mr41781599pjb.121.1654206752672; 
- Thu, 02 Jun 2022 14:52:32 -0700 (PDT)
-Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
- by smtp.gmail.com with ESMTPSA id
- e14-20020a170902ed8e00b0015edfccfdb5sm4039605plj.50.2022.06.02.14.52.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jun 2022 14:52:32 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 43/71] target/arm: Implement SME RDSVL, ADDSVL, ADDSPL
-Date: Thu,  2 Jun 2022 14:48:25 -0700
-Message-Id: <20220602214853.496211-44-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220602214853.496211-1-richard.henderson@linaro.org>
-References: <20220602214853.496211-1-richard.henderson@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D5FGhN1F;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1654250839;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=kP8ltlA59JjLB0JV5vyYWZwW4BiEA6NoNU0/kU5d6Gw=;
+	b=D5FGhN1FzytHbDgLt0/eqFvmmTLcM5TQqp4ovQaob2oNQ71CMKoHTxJG/Irftye+4sJ1TB
+	3A7IzI7OAEYVtN3ZXCkefhSn0C0Eqqe4tFudcybO4g/h4fKHgmlrzuOLvD0MSXYy7D7QKs
+	qJMdG+vXLWj1ZIFx+/Huw331zD2gBzc=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-159-qvHnmHX8OceoU_SsM230bg-1; Fri, 03 Jun 2022 06:07:15 -0400
+X-MC-Unique: qvHnmHX8OceoU_SsM230bg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D0E5D811E75;
+	Fri,  3 Jun 2022 10:07:14 +0000 (UTC)
+Received: from localhost (dhcp-192-194.str.redhat.com [10.33.192.194])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8E9211410F36;
+	Fri,  3 Jun 2022 10:07:14 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: f4bug@amsat.org, alex.bennee@linaro.org
+Subject: Re: [PATCH] tests/avocado: Prefer max cpu type when using AArch64
+ virt machine
+In-Reply-To: <20220603092505.1450350-1-drjones@redhat.com>
+Organization: Red Hat GmbH
+References: <20220603092505.1450350-1-drjones@redhat.com>
+User-Agent: Notmuch/0.36 (https://notmuchmail.org)
+Date: Fri, 03 Jun 2022 12:07:13 +0200
+Message-ID: <871qw69i26.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bxARNrVKLM2q
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
+X-TUID: QKlAk/lDbmkk
 
-These SME instructions are nominally within the SVE decode space,
-so we add them to sve.decode and translate-sve.c.
+On Fri, Jun 03 2022, Andrew Jones <drjones@redhat.com> wrote:
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/translate-a64.h |  1 +
- target/arm/sve.decode      |  5 ++++-
- target/arm/translate-a64.c | 15 +++++++++++++++
- target/arm/translate-sve.c | 38 ++++++++++++++++++++++++++++++++++++++
- 4 files changed, 58 insertions(+), 1 deletion(-)
+> The max cpu type is the best default cpu type for tests to use
+> when specifying the cpu type for AArch64 mach-virt. Switch all
+> tests to it.
+>
+> Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  tests/avocado/replay_kernel.py     | 2 +-
+>  tests/avocado/reverse_debugging.py | 2 +-
+>  tests/avocado/tcg_plugins.py       | 6 +++---
+>  3 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
-index 789b6e8e78..6bd1b2eb4b 100644
---- a/target/arm/translate-a64.h
-+++ b/target/arm/translate-a64.h
-@@ -29,6 +29,7 @@ void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v);
- bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
-                             unsigned int imms, unsigned int immr);
- bool sve_access_check(DisasContext *s);
-+bool sme_enabled_check(DisasContext *s);
- TCGv_i64 clean_data_tbi(DisasContext *s, TCGv_i64 addr);
- TCGv_i64 gen_mte_check1(DisasContext *s, TCGv_i64 addr, bool is_write,
-                         bool tag_checked, int log2_size);
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index a54feb2f61..bbdaac6ac7 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -449,14 +449,17 @@ INDEX_ri        00000100 esz:2 1 imm:s5 010001 rn:5 rd:5
- # SVE index generation (register start, register increment)
- INDEX_rr        00000100 .. 1 ..... 010011 ..... .....          @rd_rn_rm
- 
--### SVE Stack Allocation Group
-+### SVE / Streaming SVE Stack Allocation Group
- 
- # SVE stack frame adjustment
- ADDVL           00000100 001 ..... 01010 ...... .....           @rd_rn_i6
-+ADDSVL          00000100 001 ..... 01011 ...... .....           @rd_rn_i6
- ADDPL           00000100 011 ..... 01010 ...... .....           @rd_rn_i6
-+ADDSPL          00000100 011 ..... 01011 ...... .....           @rd_rn_i6
- 
- # SVE stack frame size
- RDVL            00000100 101 11111 01010 imm:s6 rd:5
-+RDSVL           00000100 101 11111 01011 imm:s6 rd:5
- 
- ### SVE Bitwise Shift - Unpredicated Group
- 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 029c0a917c..222f93d42d 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -1216,6 +1216,21 @@ static bool sme_access_check(DisasContext *s)
-     return true;
- }
- 
-+/* Note that this function corresponds to CheckSMEEnabled. */
-+bool sme_enabled_check(DisasContext *s)
-+{
-+    /*
-+     * Note that unlike sve_excp_el, we have not constrained sme_excp_el
-+     * to be zero when fp_excp_el has priority.  This is because we need
-+     * sme_excp_el by itself for cpregs access checks.
-+     */
-+    if (!s->fp_excp_el || s->sme_excp_el < s->fp_excp_el) {
-+        s->fp_access_checked = true;
-+        return sme_access_check(s);
-+    }
-+    return fp_access_check_only(s);
-+}
-+
- /*
-  * This utility function is for doing register extension with an
-  * optional shift. You will likely want to pass a temporary for the
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 62b5f3040c..13bdd027a5 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -1286,6 +1286,19 @@ static bool trans_ADDVL(DisasContext *s, arg_ADDVL *a)
-     return true;
- }
- 
-+static bool trans_ADDSVL(DisasContext *s, arg_ADDSVL *a)
-+{
-+    if (!dc_isar_feature(aa64_sme, s)) {
-+        return false;
-+    }
-+    if (sme_enabled_check(s)) {
-+        TCGv_i64 rd = cpu_reg_sp(s, a->rd);
-+        TCGv_i64 rn = cpu_reg_sp(s, a->rn);
-+        tcg_gen_addi_i64(rd, rn, a->imm * s->svl);
-+    }
-+    return true;
-+}
-+
- static bool trans_ADDPL(DisasContext *s, arg_ADDPL *a)
- {
-     if (!dc_isar_feature(aa64_sve, s)) {
-@@ -1299,6 +1312,19 @@ static bool trans_ADDPL(DisasContext *s, arg_ADDPL *a)
-     return true;
- }
- 
-+static bool trans_ADDSPL(DisasContext *s, arg_ADDSPL *a)
-+{
-+    if (!dc_isar_feature(aa64_sme, s)) {
-+        return false;
-+    }
-+    if (sme_enabled_check(s)) {
-+        TCGv_i64 rd = cpu_reg_sp(s, a->rd);
-+        TCGv_i64 rn = cpu_reg_sp(s, a->rn);
-+        tcg_gen_addi_i64(rd, rn, a->imm * (s->svl / 8));
-+    }
-+    return true;
-+}
-+
- static bool trans_RDVL(DisasContext *s, arg_RDVL *a)
- {
-     if (!dc_isar_feature(aa64_sve, s)) {
-@@ -1311,6 +1337,18 @@ static bool trans_RDVL(DisasContext *s, arg_RDVL *a)
-     return true;
- }
- 
-+static bool trans_RDSVL(DisasContext *s, arg_RDSVL *a)
-+{
-+    if (!dc_isar_feature(aa64_sme, s)) {
-+        return false;
-+    }
-+    if (sme_enabled_check(s)) {
-+        TCGv_i64 reg = cpu_reg(s, a->rd);
-+        tcg_gen_movi_i64(reg, a->imm * s->svl);
-+    }
-+    return true;
-+}
-+
- /*
-  *** SVE Compute Vector Address Group
-  */
--- 
-2.34.1
-
+Is there anything in the boot_xen tests that requires cortex-a57, or
+should they be switched to max as well?

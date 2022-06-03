@@ -1,291 +1,281 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5219570lfh;
-        Thu, 2 Jun 2022 15:38:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx/PFT/uWFbe6jWf05AwF79eCCF8OLaJxL5FpPdJkEV9YziiG1KH6kvb31y1Qd7G/8Axwl2
-X-Received: by 2002:ad4:5aa3:0:b0:464:5ded:841e with SMTP id u3-20020ad45aa3000000b004645ded841emr13464816qvg.52.1654209526476;
-        Thu, 02 Jun 2022 15:38:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654209526; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp5541500lfh;
+        Fri, 3 Jun 2022 04:18:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz37DWq89pO8Hj7N5gmgFekw9RaZtmaXb0xmWeHne6tRMmp2mNew7smSmQgSh3l0qXNrTB7
+X-Received: by 2002:a17:907:6d15:b0:6fd:d985:889b with SMTP id sa21-20020a1709076d1500b006fdd985889bmr8294072ejc.753.1654255136800;
+        Fri, 03 Jun 2022 04:18:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654255136; cv=none;
         d=google.com; s=arc-20160816;
-        b=b4piOPnn+xMiNK+7R066xQrzsYelFOpPd58jbVZKo8qLYaIb8Q3kmfA/kCEENiU6z/
-         EO7qwPTBjOcVwPNJIxs9reCp+pRPX69N/1Xerjvd0X0BX/DBbLUCQy/Be7PI92+RZpi3
-         eUWoNPuQQ7XYuYvKQiY1FszTJ8p8RzyIUtSmQx5EDuDeKiOmilX+J0MgmR/8UhuPWDCp
-         16MxjZtTL6hXo5P4wZMFmQ6zacg3I+4GOF9khJFsL6JreliuQcvz14RUUGfoUDhwb717
-         JVEdqKbsylLSA3S9QHro9SxbWmHXyq8opCqzOqCKnXcybnK5fvmkoUd5JfdoOBQ1Ubm8
-         51Zg==
+        b=ZAWOk/Zt0h7fwIhRGaPEPerezbgQta95oQoJ2XOEdLo8S/UKGnFV2kn1CjjAHiBKRV
+         QPVbwGzKhid13Xulq355LdCGNrPcbzKv/0+jKjGPl14U9Rnhl1FZiUR/rTFWy7rXwC4O
+         WtNfu+92t7rZGYUERnHTW6Y4eMxMlTLmCMeRIiOS3tGST4V5ppp1/m51xItWfvV2D5T4
+         lyI5ZIewJWXo4+NxJIInVlin1o4eypPQCOKnCKFvNfC6bbzU3GwievnuKkTOGqcfMuLE
+         wp5vUBIcnqJD49b44xkTV/FoUXTcmQWp7o9wrj+WIBgVp4OlDldgV0NXdf/b/Wm0sFNz
+         O9dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=v2OWlMDXUhVyLVgrCa1XT6Oie3T/J/YrHToI9tDWVqs=;
-        b=omwAVS8pReymjkUXbrkFZmsENbSb7TsWLK2wg98RvEuL8OYmWSSzwdrF6RDV6LoYkQ
-         c1UNjJlG4hTJT4hFj7dC1IvxepvLTC8iyyxn+zqPXn70YUeIbic9WqE1HXwmSW+7HM8O
-         SjTs4gUkbK9yrmcXZZFTA9dk1nT8LjSGI1/qBL7l+oyiz6oksP/mj1MKgXHqdwQdeYeU
-         //Izztq3+UCush1uojqRrvJvhgO7letaPWWJL/IlEU0Qm9Bys1+4p5ea6yTXc9zsPyw5
-         T2lqqebYthBwmznLWAb075f7ICi7GjdCuQslEL5MahoJTTnQ/qktmta2F6Fx3l1Vmz38
-         OuZQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=KrgGtwwePF8sETGt2Mh/1UR9FcfHsk1Wt8hAxX8m0Ck=;
+        b=gtEd9fcpiN+m6Zhq627IAMPeEeoG2UZCR6yOfG0VXOqrt+qSxJh/ANXNLRerjlK8Ya
+         Anr0rU1wS2RBEr3nvyOnV2L7mowmugE3hG7ClbrfnZ5GuQ89IU2fRjoaGFJeu5SDujVW
+         UbcyhDMTXG1ihtqZkkMubKU+HtflBQ0PRUfDFKjTkMzR/t0XSguKl3HW0wn5kADdckbA
+         89gIcipuCbP06PpX+Mrbp1MlYjGt7zmjH/z1YVBnf2B+JfxEI7VhEtIdvR4a7qrAKbfz
+         BmuhXWnJQ4qY1Ra2dwlAKdb8bPUi8ag0QvJo6iXhf/wvmYA945iSnHoXf6iNLPFx4yKC
+         AcVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TDIHcX+Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m2-20020ad45dc2000000b00467cc31e9basi1210257qvh.427.2022.06.02.15.38.46
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BNXNPwLi;
+       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id hq24-20020a1709073f1800b0070fee8ebc61si23548ejc.493.2022.06.03.04.18.56
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jun 2022 15:38:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 03 Jun 2022 04:18:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TDIHcX+Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48240 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwtSn-0000WX-SG
-	for alex.bennee@linaro.org; Thu, 02 Jun 2022 18:38:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38506)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwskI-0001d8-3N
- for qemu-arm@nongnu.org; Thu, 02 Jun 2022 17:52:49 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636]:36707)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nwskE-0000up-Ep
- for qemu-arm@nongnu.org; Thu, 02 Jun 2022 17:52:45 -0400
-Received: by mail-pl1-x636.google.com with SMTP id u18so5552431plb.3
- for <qemu-arm@nongnu.org>; Thu, 02 Jun 2022 14:52:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=v2OWlMDXUhVyLVgrCa1XT6Oie3T/J/YrHToI9tDWVqs=;
- b=TDIHcX+YhcJv9QGBgBPMNTQWKRY1540ITeZ9jpxfcda0QMr2f/ZGbu0nsMvIoDhavr
- H1PQKZrHIfFm5JSK+a+2w4g9a1DP5MVe4EbwwnDjpHUvbCwhDwZ9hvu32XyfYzMoi9Zg
- 9i0ryN9NUyBcXCNO6VP4jaUweEGWAKryC65Xs3YifRvRFk0R/vMYUtoVkF3WetQG8TGO
- BsEKfjx/Jk1WSclzoLLBBO8YeRJu8zppZKDQ37aA2Ayllq6cuz4KNZbtKmHli5U+hohD
- aSfccQneugCEULwBPXnf5PBzbx8awkoKIonc5Ltrigf51ExxNnGOnbSOh8l86IW9JekJ
- QDiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=v2OWlMDXUhVyLVgrCa1XT6Oie3T/J/YrHToI9tDWVqs=;
- b=XVVgrwrZKiATyili7q/HA2N+IDtu/q7mCTLMf7f3Um1HveV2YXYmOQxbYaHQ4xjdVS
- 1+ntniISLVYmO17RZk69Ko7X4TqooLZWcvAbXZa/B0GbUhmW1eldfXUEeom+gLx5zrV3
- hsWOUs/ZxPZpTvx64Y1+THhnPoTFnmm0trV2Du0pMv9xOjHmvuxuW9kCI9sXVvofmodT
- gLQL0+zDlkZachR775+7lnq49E1wLuhV6W1DPfkHyutbtqq1UoU9+aj/e6cbSyhTJ8xi
- H5hf5t3P/42oI5lcdV8WDFj70i1gVE+hX3MAIGyBcWM9blzm/nGsxL8XSdUKMYIvfljW
- XPSg==
-X-Gm-Message-State: AOAM531DP3QFsxtzMBvNjhtmwwcaH/617XXotktbC1PNJcXtlnsNE4QQ
- UalEsK1Rltp3RqE0AEKmBeAIJYih3fMN/g==
-X-Received: by 2002:a17:902:f64f:b0:156:f1cc:b284 with SMTP id
- m15-20020a170902f64f00b00156f1ccb284mr6694383plg.147.1654206761064; 
- Thu, 02 Jun 2022 14:52:41 -0700 (PDT)
-Received: from stoup.. (174-21-71-225.tukw.qwest.net. [174.21.71.225])
- by smtp.gmail.com with ESMTPSA id
- e14-20020a170902ed8e00b0015edfccfdb5sm4039605plj.50.2022.06.02.14.52.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jun 2022 14:52:40 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 53/71] target/arm: Implement SME integer outer product
-Date: Thu,  2 Jun 2022 14:48:35 -0700
-Message-Id: <20220602214853.496211-54-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220602214853.496211-1-richard.henderson@linaro.org>
-References: <20220602214853.496211-1-richard.henderson@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BNXNPwLi;
+       spf=pass (google.com: domain of drjones@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1654255135;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=KrgGtwwePF8sETGt2Mh/1UR9FcfHsk1Wt8hAxX8m0Ck=;
+	b=BNXNPwLiQdOh3ravvIBsmThpyh+UexAQLHTuoj8njAeBNMSRjBfAgp2BqSj0poPkBpYrFh
+	SQiK0ickSi5t2wXW1wM1+xyyZipNWRDXS1J8WHy0if/cvFeV7x7nZ70Zj49FDKAgbC/PrS
+	rtcaiu5psqY6tvpbNmx+RBAE3G0mI6E=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-612-SwVrakS_MgiCwrFHaTzpCg-1; Fri, 03 Jun 2022 07:18:52 -0400
+X-MC-Unique: SwVrakS_MgiCwrFHaTzpCg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7F199811E75;
+	Fri,  3 Jun 2022 11:18:52 +0000 (UTC)
+Received: from gator.home (unknown [10.40.194.13])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id F347210725;
+	Fri,  3 Jun 2022 11:18:50 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: f4bug@amsat.org,
+	alex.bennee@linaro.org,
+	cohuck@redhat.com
+Subject: [PATCH v2] tests: Prefer max cpu type when using AArch64 virt machine
+Date: Fri,  3 Jun 2022 13:18:49 +0200
+Message-Id: <20220603111849.1481100-1-drjones@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TD1J3uX0VbBz
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-TUID: haUA4tjClKsK
 
-This is SMOPA, SUMOPA, USMOPA_s, UMOPA, for both Int8 and Int16.
+The max cpu type is the best default cpu type for tests to use
+when specifying the cpu type for AArch64 mach-virt. Switch all
+tests to it.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Cc: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- target/arm/helper-sme.h    | 16 ++++++++
- target/arm/sme.decode      | 10 +++++
- target/arm/sme_helper.c    | 82 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-sme.c | 14 +++++++
- 4 files changed, 122 insertions(+)
+ tests/avocado/boot_xen.py          |  6 +++---
+ tests/avocado/replay_kernel.py     |  2 +-
+ tests/avocado/reverse_debugging.py |  2 +-
+ tests/avocado/tcg_plugins.py       |  6 +++---
+ tests/qtest/bios-tables-test.c     | 12 ++++++------
+ tests/qtest/machine-none-test.c    |  4 ++--
+ tests/vm/aarch64vm.py              |  2 +-
+ tests/vm/ubuntu.aarch64            |  2 +-
+ 8 files changed, 18 insertions(+), 18 deletions(-)
 
-diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
-index ecc957be14..31562551ee 100644
---- a/target/arm/helper-sme.h
-+++ b/target/arm/helper-sme.h
-@@ -128,3 +128,19 @@ DEF_HELPER_FLAGS_7(sme_fmopa_d, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_6(sme_bfmopa, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sme_smopa_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sme_umopa_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sme_sumopa_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sme_usmopa_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sme_smopa_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sme_umopa_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sme_sumopa_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sme_usmopa_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-diff --git a/target/arm/sme.decode b/target/arm/sme.decode
-index e8d27fd8a0..628804e37a 100644
---- a/target/arm/sme.decode
-+++ b/target/arm/sme.decode
-@@ -76,3 +76,13 @@ FMOPA_d         10000000 110 ..... ... ... ..... . 0 ...        @op_64
+diff --git a/tests/avocado/boot_xen.py b/tests/avocado/boot_xen.py
+index fc2faeedb559..899c396bd55c 100644
+--- a/tests/avocado/boot_xen.py
++++ b/tests/avocado/boot_xen.py
+@@ -66,7 +66,7 @@ def test_arm64_xen_411_and_dom0(self):
+         """
+         :avocado: tags=arch:aarch64
+         :avocado: tags=accel:tcg
+-        :avocado: tags=cpu:cortex-a57
++        :avocado: tags=cpu:max
+         :avocado: tags=machine:virt
+         """
  
- BFMOPA          10000001 100 ..... ... ... ..... . 00 ..        @op_32
- FMOPA_h         10000001 101 ..... ... ... ..... . 00 ..        @op_32
-+
-+SMOPA_s         1010000 0 10 0 ..... ... ... ..... . 00 ..      @op_32
-+SUMOPA_s        1010000 0 10 1 ..... ... ... ..... . 00 ..      @op_32
-+USMOPA_s        1010000 1 10 0 ..... ... ... ..... . 00 ..      @op_32
-+UMOPA_s         1010000 1 10 1 ..... ... ... ..... . 00 ..      @op_32
-+
-+SMOPA_d         1010000 0 11 0 ..... ... ... ..... . 0 ...      @op_64
-+SUMOPA_d        1010000 0 11 1 ..... ... ... ..... . 0 ...      @op_64
-+USMOPA_d        1010000 1 11 0 ..... ... ... ..... . 0 ...      @op_64
-+UMOPA_d         1010000 1 11 1 ..... ... ... ..... . 0 ...      @op_64
-diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
-index 0807fbc708..cebddabbc7 100644
---- a/target/arm/sme_helper.c
-+++ b/target/arm/sme_helper.c
-@@ -1089,3 +1089,85 @@ void HELPER(sme_bfmopa)(void *vza, void *vzn, void *vzm, void *vpn,
-         } while (row & 15);
-     }
+@@ -84,7 +84,7 @@ def test_arm64_xen_414_and_dom0(self):
+         """
+         :avocado: tags=arch:aarch64
+         :avocado: tags=accel:tcg
+-        :avocado: tags=cpu:cortex-a57
++        :avocado: tags=cpu:max
+         :avocado: tags=machine:virt
+         """
+ 
+@@ -102,7 +102,7 @@ def test_arm64_xen_415_and_dom0(self):
+         """
+         :avocado: tags=arch:aarch64
+         :avocado: tags=accel:tcg
+-        :avocado: tags=cpu:cortex-a57
++        :avocado: tags=cpu:max
+         :avocado: tags=machine:virt
+         """
+ 
+diff --git a/tests/avocado/replay_kernel.py b/tests/avocado/replay_kernel.py
+index 0b2b0dc692b1..c19022ea977d 100644
+--- a/tests/avocado/replay_kernel.py
++++ b/tests/avocado/replay_kernel.py
+@@ -147,7 +147,7 @@ def test_aarch64_virt(self):
+         """
+         :avocado: tags=arch:aarch64
+         :avocado: tags=machine:virt
+-        :avocado: tags=cpu:cortex-a53
++        :avocado: tags=cpu:max
+         """
+         kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
+                       '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
+diff --git a/tests/avocado/reverse_debugging.py b/tests/avocado/reverse_debugging.py
+index d2921e70c3b4..d6a6d7277235 100644
+--- a/tests/avocado/reverse_debugging.py
++++ b/tests/avocado/reverse_debugging.py
+@@ -198,7 +198,7 @@ def test_aarch64_virt(self):
+         """
+         :avocado: tags=arch:aarch64
+         :avocado: tags=machine:virt
+-        :avocado: tags=cpu:cortex-a53
++        :avocado: tags=cpu:max
+         """
+         kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
+                       '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
+diff --git a/tests/avocado/tcg_plugins.py b/tests/avocado/tcg_plugins.py
+index 642d2e49e305..2bbf62f5036e 100644
+--- a/tests/avocado/tcg_plugins.py
++++ b/tests/avocado/tcg_plugins.py
+@@ -68,7 +68,7 @@ def test_aarch64_virt_insn(self):
+         :avocado: tags=accel:tcg
+         :avocado: tags=arch:aarch64
+         :avocado: tags=machine:virt
+-        :avocado: tags=cpu:cortex-a53
++        :avocado: tags=cpu:max
+         """
+         kernel_path = self._grab_aarch64_kernel()
+         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+@@ -94,7 +94,7 @@ def test_aarch64_virt_insn_icount(self):
+         :avocado: tags=accel:tcg
+         :avocado: tags=arch:aarch64
+         :avocado: tags=machine:virt
+-        :avocado: tags=cpu:cortex-a53
++        :avocado: tags=cpu:max
+         """
+         kernel_path = self._grab_aarch64_kernel()
+         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+@@ -120,7 +120,7 @@ def test_aarch64_virt_mem_icount(self):
+         :avocado: tags=accel:tcg
+         :avocado: tags=arch:aarch64
+         :avocado: tags=machine:virt
+-        :avocado: tags=cpu:cortex-a53
++        :avocado: tags=cpu:max
+         """
+         kernel_path = self._grab_aarch64_kernel()
+         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index a4a46e97f0b8..7c3a58a97460 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -1270,7 +1270,7 @@ static void test_acpi_virt_tcg_memhp(void)
+ 
+     data.variant = ".memhp";
+     test_acpi_one(" -machine nvdimm=on"
+-                  " -cpu cortex-a57"
++                  " -cpu max"
+                   " -m 256M,slots=3,maxmem=1G"
+                   " -object memory-backend-ram,id=ram0,size=128M"
+                   " -object memory-backend-ram,id=ram1,size=128M"
+@@ -1363,7 +1363,7 @@ static void test_acpi_virt_tcg_numamem(void)
+     };
+ 
+     data.variant = ".numamem";
+-    test_acpi_one(" -cpu cortex-a57"
++    test_acpi_one(" -cpu max"
+                   " -object memory-backend-ram,id=ram0,size=128M"
+                   " -numa node,memdev=ram0",
+                   &data);
+@@ -1397,7 +1397,7 @@ static void test_acpi_virt_tcg_pxb(void)
+                   "if=none,media=cdrom,id=drive-scsi0-0-0-1,readonly=on"
+                   " -device scsi-cd,bus=scsi0.0,scsi-id=0,"
+                   "drive=drive-scsi0-0-0-1,id=scsi0-0-0-1,bootindex=1"
+-                  " -cpu cortex-a57"
++                  " -cpu max"
+                   " -device pxb-pcie,bus_nr=128",
+                   &data);
+ 
+@@ -1511,7 +1511,7 @@ static void test_acpi_virt_tcg(void)
+ 
+     data.smbios_cpu_max_speed = 2900;
+     data.smbios_cpu_curr_speed = 2700;
+-    test_acpi_one("-cpu cortex-a57 "
++    test_acpi_one("-cpu max "
+                   "-smbios type=4,max-speed=2900,current-speed=2700", &data);
+     free_test_data(&data);
  }
-+
-+typedef uint64_t IMOPFn(uint64_t, uint64_t, uint64_t, uint8_t, bool);
-+
-+static inline void do_imopa(uint64_t *za, uint64_t *zn, uint64_t *zm,
-+                            uint8_t *pn, uint8_t *pm,
-+                            uint32_t desc, IMOPFn *fn)
-+{
-+    intptr_t row, col, oprsz = simd_oprsz(desc) / 8;
-+    bool neg = simd_data(desc);
-+
-+    for (row = 0; row < oprsz; ++row) {
-+        uint8_t pa = pn[H1(row)];
-+        uint64_t *za_row = &za[row * sizeof(ARMVectorReg)];
-+        uint64_t n = zn[row];
-+
-+        for (col = 0; col < oprsz; ++col) {
-+            uint8_t pb = pm[H1(col)];
-+            uint64_t *a = &za_row[col];
-+
-+            *a = fn(n, zm[col], *a, pa & pb, neg);
-+        }
-+    }
-+}
-+
-+#define DEF_IMOP_32(NAME, NTYPE, MTYPE) \
-+static uint64_t NAME(uint64_t n, uint64_t m, uint64_t a, uint8_t p, bool neg) \
-+{                                                                           \
-+    uint32_t sum0 = 0, sum1 = 0;                                            \
-+    /* Apply P to N as a mask, making the inactive elements 0. */           \
-+    n &= expand_pred_b(p);                                                  \
-+    sum0 += (NTYPE)(n >> 0) * (MTYPE)(m >> 0);                              \
-+    sum0 += (NTYPE)(n >> 8) * (MTYPE)(m >> 8);                              \
-+    sum0 += (NTYPE)(n >> 16) * (MTYPE)(m >> 16);                            \
-+    sum0 += (NTYPE)(n >> 24) * (MTYPE)(m >> 24);                            \
-+    sum1 += (NTYPE)(n >> 32) * (MTYPE)(m >> 32);                            \
-+    sum1 += (NTYPE)(n >> 40) * (MTYPE)(m >> 40);                            \
-+    sum1 += (NTYPE)(n >> 48) * (MTYPE)(m >> 48);                            \
-+    sum1 += (NTYPE)(n >> 56) * (MTYPE)(m >> 56);                            \
-+    if (neg) {                                                              \
-+        sum0 = (uint32_t)a - sum0, sum1 = (uint32_t)(a >> 32) - sum1;       \
-+    } else {                                                                \
-+        sum0 = (uint32_t)a + sum0, sum1 = (uint32_t)(a >> 32) + sum1;       \
-+    }                                                                       \
-+    return ((uint64_t)sum1 << 32) | sum0;                                   \
-+}
-+
-+#define DEF_IMOP_64(NAME, NTYPE, MTYPE) \
-+static uint64_t NAME(uint64_t n, uint64_t m, uint64_t a, uint8_t p, bool neg) \
-+{                                                                           \
-+    uint64_t sum = 0;                                                       \
-+    /* Apply P to N as a mask, making the inactive elements 0. */           \
-+    n &= expand_pred_h(p);                                                  \
-+    sum += (NTYPE)(n >> 0) * (MTYPE)(m >> 0);                               \
-+    sum += (NTYPE)(n >> 16) * (MTYPE)(m >> 16);                             \
-+    sum += (NTYPE)(n >> 32) * (MTYPE)(m >> 32);                             \
-+    sum += (NTYPE)(n >> 48) * (MTYPE)(m >> 48);                             \
-+    return neg ? a - sum : a + sum;                                         \
-+}
-+
-+DEF_IMOP_32(smopa_s, int8_t, int8_t)
-+DEF_IMOP_32(umopa_s, uint8_t, uint8_t)
-+DEF_IMOP_32(sumopa_s, int8_t, uint8_t)
-+DEF_IMOP_32(usmopa_s, uint8_t, int8_t)
-+
-+DEF_IMOP_64(smopa_d, int16_t, int16_t)
-+DEF_IMOP_64(umopa_d, uint16_t, uint16_t)
-+DEF_IMOP_64(sumopa_d, int16_t, uint16_t)
-+DEF_IMOP_64(usmopa_d, uint16_t, int16_t)
-+
-+#define DEF_IMOPH(NAME) \
-+    void HELPER(sme_##NAME)(void *vza, void *vzn, void *vzm, void *vpn,      \
-+                            void *vpm, uint32_t desc)                        \
-+    { do_imopa(vza, vzn, vzm, vpn, vpm, desc, NAME); }
-+
-+DEF_IMOPH(smopa_s)
-+DEF_IMOPH(umopa_s)
-+DEF_IMOPH(sumopa_s)
-+DEF_IMOPH(usmopa_s)
-+DEF_IMOPH(smopa_d)
-+DEF_IMOPH(umopa_d)
-+DEF_IMOPH(sumopa_d)
-+DEF_IMOPH(usmopa_d)
-diff --git a/target/arm/translate-sme.c b/target/arm/translate-sme.c
-index 847f2274b1..4aa0aff25c 100644
---- a/target/arm/translate-sme.c
-+++ b/target/arm/translate-sme.c
-@@ -337,3 +337,17 @@ TRANS_FEAT(FMOPA_d, aa64_sme_f64f64, do_outprod_fpst,
+@@ -1591,7 +1591,7 @@ static void test_acpi_virt_viot(void)
+         .scan_len = 128ULL * 1024 * 1024,
+     };
  
- /* TODO: FEAT_EBF16 */
- TRANS_FEAT(BFMOPA, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_bfmopa)
-+
-+TRANS_FEAT(SMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_smopa_s)
-+TRANS_FEAT(UMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_umopa_s)
-+TRANS_FEAT(SUMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_sumopa_s)
-+TRANS_FEAT(USMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_usmopa_s)
-+
-+TRANS_FEAT(SMOPA_d, aa64_sme_i16i64, do_outprod,
-+           a, MO_64, gen_helper_sme_smopa_d)
-+TRANS_FEAT(UMOPA_d, aa64_sme_i16i64, do_outprod,
-+           a, MO_64, gen_helper_sme_umopa_d)
-+TRANS_FEAT(SUMOPA_d, aa64_sme_i16i64, do_outprod,
-+           a, MO_64, gen_helper_sme_sumopa_d)
-+TRANS_FEAT(USMOPA_d, aa64_sme_i16i64, do_outprod,
-+           a, MO_64, gen_helper_sme_usmopa_d)
+-    test_acpi_one("-cpu cortex-a57 "
++    test_acpi_one("-cpu max "
+                   "-device virtio-iommu-pci", &data);
+     free_test_data(&data);
+ }
+@@ -1699,7 +1699,7 @@ static void test_acpi_oem_fields_virt(void)
+     char *args;
+ 
+     args = test_acpi_create_args(&data,
+-                                 "-cpu cortex-a57 "OEM_TEST_ARGS, true);
++                                 "-cpu max "OEM_TEST_ARGS, true);
+     data.qts = qtest_init(args);
+     test_acpi_load_tables(&data, true);
+     test_oem_fields(&data);
+diff --git a/tests/qtest/machine-none-test.c b/tests/qtest/machine-none-test.c
+index d0f8cd990245..d47533a835b7 100644
+--- a/tests/qtest/machine-none-test.c
++++ b/tests/qtest/machine-none-test.c
+@@ -24,8 +24,8 @@ struct arch2cpu {
+ 
+ static struct arch2cpu cpus_map[] = {
+     /* tested targets list */
+-    { "arm", "cortex-a15" },
+-    { "aarch64", "cortex-a57" },
++    { "arm", "max" },
++    { "aarch64", "max" },
+     { "avr", "avr6-avr-cpu" },
+     { "x86_64", "qemu64,apic-id=0" },
+     { "i386", "qemu32,apic-id=0" },
+diff --git a/tests/vm/aarch64vm.py b/tests/vm/aarch64vm.py
+index b00cce07eb81..a82b4dd7a91a 100644
+--- a/tests/vm/aarch64vm.py
++++ b/tests/vm/aarch64vm.py
+@@ -31,7 +31,7 @@
+ # parameters that works for backwards compatibility.
+ DEFAULT_CONFIG = {'kvm' : {'cpu'          : "host",
+                            'machine'      : "virt,gic-version=host"},
+-                  'tcg' : {'cpu'          : "cortex-a57",
++                  'tcg' : {'cpu'          : "max",
+                            'machine'      : "virt"},
+ }
+ 
+diff --git a/tests/vm/ubuntu.aarch64 b/tests/vm/ubuntu.aarch64
+index b291945a7e9d..e2958ccd2a44 100755
+--- a/tests/vm/ubuntu.aarch64
++++ b/tests/vm/ubuntu.aarch64
+@@ -18,7 +18,7 @@ import aarch64vm
+ import ubuntuvm
+ 
+ DEFAULT_CONFIG = {
+-    'cpu'          : "cortex-a57",
++    'cpu'          : "max",
+     'machine'      : "virt,gic-version=3",
+     'install_cmds' : "apt-get update,"\
+                      "apt-get build-dep -y --arch-only qemu,"\
 -- 
-2.34.1
-
+2.34.3

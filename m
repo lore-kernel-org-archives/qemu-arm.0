@@ -1,317 +1,168 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp4993783lfh;
-        Thu, 2 Jun 2022 08:43:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxzXOatTdVUck+ExQhFjcQA3s6dAOUWSeHz6wqRyE76UkZli9X278haIqXpxeeVAd/9Hmcy
-X-Received: by 2002:a05:6214:1ccf:b0:461:b48b:29e4 with SMTP id g15-20020a0562141ccf00b00461b48b29e4mr59419266qvd.5.1654184588436;
-        Thu, 02 Jun 2022 08:43:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654184588; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp6072027lfh;
+        Fri, 3 Jun 2022 21:09:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxcFieghMNoNagJoX6PDxWCzHPQ7tLFY5yNG0XM5adijQk1e8wFjC3Mhnu5HERMvMfMv7xP
+X-Received: by 2002:ad4:596f:0:b0:467:d3ad:b582 with SMTP id eq15-20020ad4596f000000b00467d3adb582mr7654791qvb.113.1654315743824;
+        Fri, 03 Jun 2022 21:09:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654315743; cv=none;
         d=google.com; s=arc-20160816;
-        b=XdsxqRoG5sd1fb4Mw4fl3uJGSCArxK8wmu+PcPBXPDfrBJy6cHT4GYUWL8N5qxs20y
-         ykMoy8p3nVkIgfKB3MJY47E5etz9kQpTHDK9mR4COQsUiEoE83Rd/flytAwa2uP8pQBb
-         +b0T/87uIrbYUJXqyaB7xyWgY2ZkxMwbDJstJlmihP6odpsbC72O5cOX3IDV12E3vlDv
-         lnhdMxJDpt5r4nF1PlO6ulG44EdF5HXBlpyOo0taGO30O4zTG7v/iQ+ZK527ro3LMRPX
-         OtuH1y2L/Cd15wzk46ziBdCsXa1DzsOtMWPrRXwfVYx11OeLOwn/vuFag6zEs8Unfd2J
-         YRzg==
+        b=S+4RJ6pcZZY1A/N4kA+NAw+Sj0W2PVSMPB2rmGlhjNDLOkFQYrKW6tsKlJnVaIhgn8
+         8Fi0g/CL7oKHPpRvQNVOfr7v4Au7ypall8Xz6UWm3Uf6se3vA9JS5zfqu6GMFwTOGKlb
+         OZlWzSoOsTPTWnPRerKl2Bik+XRM3fAdbIWVpdXFNG2SLqEcMwQebvhWnHA0IA3vsCCe
+         3HpYiJiz2FCrQzd49j8CMtZSOrZNjh4563ftn/GeVvOCx5NcWZS0yFFqAv1NVmn3RJKp
+         FTvD5D+qNyPzQaVdBVkj+oMet3rxFj0eRo3Yw4FI1fkU9JYoA2wxR2AwXShnG6iowB9z
+         MGvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=HiULhHXg/u53KCq4BQJn/kVnrrbkXGiIGnv7u8S1wnE=;
-        b=yCJaOeOltZ//KN4H7ebBa+ax5BoxfK7GuWA9zxxya3C4OBGV/jlsroAN+vd/LlGiGr
-         xYUh6UHwh1304BZMQi4MvHYTpa/Gkt2Ud/ljKsBzHf3jesJpX2XEQHDnz7A7nzX36hSU
-         o+vSNhgC757XLuzzS3QOAJYZ3+siBgp4O4W7/uYFBPuTS4dE2cmgCnxtsNXhTVVdEqbS
-         JgmcIEbdGXKgrNBLyiC5PN59ZZBASVL45tRn+uJSmFu3lQuBSL4C1EmqPZwhWCwtxJ/i
-         19PNvLVZ2pop9GudzmbCKXsre/LNBNHXmb6fXtZeoFkNFYH8ZiHV2uY5hIHqOoTCJgQk
-         errg==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=seW1fdhWGUT/3IrTFxKp5B2hwNwp/rzz5mP3cAVntBY=;
+        b=sEGwWwyJUKt7Xd47KlB4lh100xDUxZDTiBIKqgqVUTY+8U0qDul0iy+e1vZzPSZnLs
+         P8erfWbPlFNkYMvDsCqSdpgffMYRfPmbjfcHIwUh8O8CKAh0QCvPSVshzIv46OKZf2+M
+         kOUI5t0MXWuPVUrOpRAZJr83YY8X5ds3rVwRF77IJ8jsG5CAbsgnPwQ+kIyqrYxrZSDg
+         2A5nP1f1pJdufVZc22jRAC9jkGhqbs0fLsDm3U0ukEkro5IcqvEHpI5Vd1KJy//9L4TY
+         F6k6QVxhudS/KdNvLgMj6tzqqhl7Gjk2UNEhtIljn25IfZ7cPxNLXcLxGq23S/GD7qIq
+         trsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=SymN1ePs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a188-20020a3798c5000000b006a5965c0829si2526771qke.102.2022.06.02.08.43.08
+        by mx.google.com with ESMTPS id l20-20020a05622a051400b00304b65067fasi4885123qtx.708.2022.06.03.21.09.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jun 2022 08:43:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Jun 2022 21:09:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50298 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=SymN1ePs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46318 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nwmyZ-0008Vi-TX
-	for alex.bennee@linaro.org; Thu, 02 Jun 2022 11:43:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45452)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nxL5z-00020W-AL
+	for alex.bennee@linaro.org; Sat, 04 Jun 2022 00:09:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36430)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nwmwF-0008UW-P7; Thu, 02 Jun 2022 11:40:44 -0400
-Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192]:49717)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1nwmwD-0003vl-34; Thu, 02 Jun 2022 11:40:43 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.173])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id F15D124840;
- Thu,  2 Jun 2022 15:40:34 +0000 (UTC)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.9; Thu, 2 Jun 2022
- 17:40:34 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G003c96a2334-4ef5-4876-9cda-2102976dd278,
- 123C0E545D135716686AEE7B3F9DB382F3F098BA) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <c796202d-2e57-32b3-3007-343d37dcdb84@kaod.org>
-Date: Thu, 2 Jun 2022 17:40:33 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nxL3G-0007VR-GH
+ for qemu-devel@nongnu.org; Sat, 04 Jun 2022 00:06:14 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:55160)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nxL3D-0008Uy-Aq
+ for qemu-devel@nongnu.org; Sat, 04 Jun 2022 00:06:14 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id j7so8692071pjn.4
+ for <qemu-devel@nongnu.org>; Fri, 03 Jun 2022 21:06:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=seW1fdhWGUT/3IrTFxKp5B2hwNwp/rzz5mP3cAVntBY=;
+ b=SymN1ePsZBXi06F47vvZUNr8xIyDLmgnBBI5aqIRirMYWVgJCqogHvZijjTulOzTBD
+ hBb8/dJMqe2WXZW2oxA0VM0PBAqHm/PTwUB3d45pxZDaEthRziR8LHjj9ZXAcJQQ47aC
+ pK87gbf6kUlrv66ClyITqltuD+mYyZYzC/Tak00b7mAlIQLroifDqfvFZPDaw01rVu16
+ WcBI0y9HKnsXCrPszfp1l3M0v674jwA651uTwOOA/osTxG4vqbptN9jUfduUy0OJd8ck
+ VB4RxfpJOcbYf/vi6iR2JJMqcdaTFrf3SV+6UtXy6KvZ8JBu/OVVIPWMYd6rfpV7BWzH
+ 9X8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=seW1fdhWGUT/3IrTFxKp5B2hwNwp/rzz5mP3cAVntBY=;
+ b=vaSmkha1FX4i42m1QWg6avoHiJkebGIhQz5AWDdm2nwsqo4Uus9zQ7/gpkh01r85bE
+ YryOVOiggLS62rYLPwSPGXuJ1auCzadYnzKpkuNgyJDlyWDxtqy8N5kHaYGXKCv3Fqq8
+ h0I2LjucbEluUk6DZ0vEPKOwHLvaxX4mSa31qQlSMVvotCn7ZHiK7C0dTvdTEDpShUQQ
+ YOyIwDhR451uHolkM/D6cNWmfC3HTqRqmUvEfZ2MiBrtHO9mA/kwWvRi1OT5YjVJku70
+ CDPoiNeQkXfpLj/zCqs2MzHFiZ/1WFd/qLS8NwUaq/WOXQYJhKtr01BsoK5meHdJmCj1
+ T2kQ==
+X-Gm-Message-State: AOAM531xZIBNmmXMJpLuLaTTWf3wbvjsagUdVWdLSYxnuMh4P046G2g7
+ SagqTZ2aIlUnun68wiShH73YEZ8SGgzlRQ==
+X-Received: by 2002:a17:902:bd09:b0:162:1497:de0a with SMTP id
+ p9-20020a170902bd0900b001621497de0amr13103332pls.64.1654315569560; 
+ Fri, 03 Jun 2022 21:06:09 -0700 (PDT)
+Received: from stoup.. ([2602:ae:1547:e101:3286:cc26:3d5e:3f94])
+ by smtp.gmail.com with ESMTPSA id
+ a37-20020a631a65000000b003c14af50626sm6093779pgm.62.2022.06.03.21.06.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Jun 2022 21:06:09 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 00/28] target/arm: Split out ptw.c from helper.c
+Date: Fri,  3 Jun 2022 21:05:39 -0700
+Message-Id: <20220604040607.269301-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [RFC PATCH v2 0/6] hw/i2c: i2c slave mode support
-Content-Language: en-US
-To: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>, Klaus Jensen <its@irrelevant.dk>
-CC: <qemu-devel@nongnu.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- <qemu-arm@nongnu.org>, Peter Delevoryas <pdel@fb.com>, Peter Maydell
- <peter.maydell@linaro.org>, Corey Minyard <cminyard@mvista.com>, Padmakar
- Kalghatgi <p.kalghatgi@samsung.com>, Damien Hedde
- <damien.hedde@greensocs.com>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>, Arun Kumar Kashinath Agasar <arun.kka@samsung.com>, Klaus
- Jensen <k.jensen@samsung.com>, Zev Weiss <zev@bewilderbeest.net>
-References: <20220601210831.67259-1-its@irrelevant.dk>
- <6e0eb197-25c2-6b1e-2c19-f93597e29cff@kaod.org> <YphzHGNYErSMEfPw@apples>
- <00e2d10a-20f5-8357-5b13-41791940ce19@kaod.org>
- <5683a737-8a15-20c5-5716-f5216d6c33c8@quicinc.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <5683a737-8a15-20c5-5716-f5216d6c33c8@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: dd4ce5a8-fdfe-46e1-b117-d05e5dd65248
-X-Ovh-Tracer-Id: 15704614854151670657
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvfedrleefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpefhfeevveegueejhfettdeuvdejtefgkeffkeejgeeuteejgfduieelhedttefhtdenucffohhmrghinhepkhgvrhhnvghlrdhorhhgpdhgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepiigvvhessggvfihilhguvghrsggvvghsthdrnhgvthdpoffvtefjohhsthepmhhoheehvd
-Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
- helo=3.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h95Qzy1hW5Cb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tGHjxwd12Kiz
 
-On 6/2/22 16:29, Jae Hyun Yoo wrote:
-> Hi Klaus,
-> 
-> On 6/2/2022 6:50 AM, Cédric Le Goater wrote:
->> On 6/2/22 10:21, Klaus Jensen wrote:
->>> On Jun  2 09:52, Cédric Le Goater wrote:
->>>> On 6/1/22 23:08, Klaus Jensen wrote:
->>>>> From: Klaus Jensen <k.jensen@samsung.com>
->>>>>
->>>>> Hi all,
->>>>>
->>>>> This RFC series adds I2C "slave mode" support for the Aspeed I2C
->>>>
->>>> I think you can remove the RFC prefix.
->>>>
->>>>> controller as well as the necessary infrastructure in the i2c core to
->>>>> support this.
->>>>>
->>>>> v2 changes
->>>>> ~~~~~~~~~~
->>>>> I finally got around to working on this again. I'm sorry for not
->>>>> bringing a v2 to the table earlier.
->>>>>
->>>>> Mad props to Peter and Jonathan for putting this series to work and
->>>>> pushing it forward! Thanks!
->>>>>
->>>>> This series is based off Cédric's aspeed-7.1 tree, so it includes the
->>>>> register fields. This is all "old register mode", but Peter seems to
->>>>> have added support in new mode.
->>>>>
->>>>> There are some loose ends of course, i.e send_async doesn't handle
->>>>> broadcast and asynchronous slaves being sent stuff can't nack. But I
->>>>> wanted to get some feedback on the interface before I tackle that.
->>>>>
->>>>> This series
->>>>> ~~~~~~~~~~~
->>>>> Patch 1 and 2 are small Aspeed I2C changes/additions.
->>>>>
->>>>> Patch 3 adds support for multiple masters in the i2c core, allowing
->>>>> slaves to master the bus and (safely) issue i2c_send/recv().
->>>>>
->>>>> Patch 4 adds an asynchronous send i2c_send_async(I2CBus *, uint8) on the
->>>>> bus that must be paired with an explicit ack using i2c_ack(I2CBus *). We
->>>>> have previously discussed how we wanted to handle the issue that some
->>>>> slaves implement this and some do not. Using a QOM interface was up, but
->>>>> couldn't figure out a good way to do it. I ended up decided against it
->>>>> since I believe this have to be a run-time check anyway. The problem is
->>>>> that a slave can master the bus and try to communicate with *anyone* on
->>>>> the bus - and there is no reason why we should only allow asynchronous
->>>>> slaves on the bus in that case, or whatever we would want to do when
->>>>> devices are plugged. So, instead, the current master can issue an
->>>>> i2c_start_send() and if that fails (because it isnt implemented by the
->>>>> target slave) it can either bail out or use i2c_start_send_async() if it
->>>>> itself supports it. This works the other way around as well of course,
->>>>> but it is probably simpler to handle slaves that respond to
->>>>> i2c_start_send(). This approach relies on adding a new i2c_event, which
->>>>> is why a bunch of other devices needs changes in their event handling.
->>>>>
->>>>> Patch 5 adds *partial* slave mode functionality to the emulated Aspeed
->>>>> I2C controller, that is, it only supports asynchronous sends started by
->>>>> another slave that is currently mastering the bus. No asynchronous
->>>>> receive.
->>>>
->>>> If there are no objections, I think this is a good way to move forward
->>>> and improve this initial implementation when the need arises.
->>>>
->>>
->>> There is an outstanding issue with the SLAVE_ADDR_RX_MATCH interrupt bit
->>> (bit 7). Remember from my first series I had a workaround to make sure
->>> it wasnt masked.
->>>
->>> I posted this upstream to linux
->>>
->>> https://lore.kernel.org/lkml/20220602054842.122271-1-its@irrelevant.dk/
->>>
->>> Not sure if that is the right way to fix it. 
->>
->> That's weird. I would have thought it was already enabled [ Adding Jae ]
-> 
-> Slave mode support in Aspeed I2C driver is already enabled and it has
-> worked well so far. The fix Klaus made in the link is incorrect.
-> 
-> https://lore.kernel.org/lkml/20220602054842.122271-1-its@irrelevant.dk/
-> 
-> The patch is adding ASPEED_I2CD_INTR_SLAVE_MATCH as a mask bit for
-> I2CD0C (Interrupt Control Register) but actually this bit is part of
-> I2CD10 (Interrupt Status Register). Means that the slave match interrupt
-> can be enabled without enabling any mask bit in I2CD0C.
+The object here is to move 2500 lines out of helper.c.  Yay!
 
-Thanks Jae.
 
-So we should enable this interrupt always independently of the
-Interrupt Control Register value.
+r~
 
-I would simply extend the mask value (bus->regs[intr_ctrl_reg])
-with the SLAVE_ADDR_RX_MATCH bit when interrupts are raised in
-aspeed_i2c_bus_raise_interrupt().
 
-Other topics,
+Richard Henderson (28):
+  target/arm: Move stage_1_mmu_idx decl to internals.h
+  target/arm: Move get_phys_addr to ptw.c
+  target/arm: Move get_phys_addr_v5 to ptw.c
+  target/arm: Move get_phys_addr_v6 to ptw.c
+  target/arm: Move get_phys_addr_pmsav5 to ptw.c
+  target/arm: Move get_phys_addr_pmsav7_default to ptw.c
+  target/arm: Move get_phys_addr_pmsav7 to ptw.c
+  target/arm: Move get_phys_addr_pmsav8 to ptw.c
+  target/arm: Move pmsav8_mpu_lookup to ptw.c
+  target/arm: Move pmsav7_use_background_region to ptw.c
+  target/arm: Move v8m_security_lookup to ptw.c
+  target/arm: Move m_is_{ppb,system}_region to ptw.c
+  target/arm: Move get_level1_table_address to ptw.c
+  target/arm: Move combine_cacheattrs and subroutines to ptw.c
+  target/arm: Move get_phys_addr_lpae to ptw.c
+  target/arm: Move arm_{ldl,ldq}_ptw to ptw.c
+  target/arm: Move {arm_s1_,}regime_using_lpae_format to tlb_helper.c
+  target/arm: Move arm_pamax, pamax_map into ptw.c
+  target/arm: Move get_S1prot, get_S2prot to ptw.c
+  target/arm: Move check_s2_mmu_setup to ptw.c
+  target/arm: Move aa32_va_parameters to ptw.c
+  target/arm: Move ap_to_tw_prot etc to ptw.c
+  target/arm: Move regime_is_user to ptw.c
+  target/arm: Move regime_ttbr to ptw.c
+  target/arm: Move regime_translation_disabled to ptw.c
+  target/arm: Move arm_cpu_get_phys_page_attrs_debug to ptw.c
+  target/arm: Move stage_1_mmu_idx, arm_stage1_mmu_idx to ptw.c
+  target/arm: Pass CPUARMState to arm_ld[lq]_ptw
 
-The mask used in :
+ target/arm/internals.h  |   23 +-
+ target/arm/helper.c     | 2555 +--------------------------------------
+ target/arm/ptw.c        | 2540 ++++++++++++++++++++++++++++++++++++++
+ target/arm/tlb_helper.c |   26 +
+ target/arm/meson.build  |    1 +
+ 5 files changed, 2590 insertions(+), 2555 deletions(-)
+ create mode 100644 target/arm/ptw.c
 
-    case A_I2CD_INTR_CTRL:
-         bus->regs[R_I2CD_INTR_CTRL] = value & 0x7FFF;
-         break;
-  
-is incorrect. It should be:
-
-   0x0000707f for ast2400
-   0x0000f07f for ast2500 and ast2600
-
-I think we can use 0x0000f07f for all to reduce a bit the
-complexity.
-
-aspeed_i2c_bus_reset() needs a fix to reset the new mode
-registers also.
-
-Thanks,
-C.
-
-> Thanks,
-> Jae
-> 
->>> You mentioned something about "fixing" a mask on the ast2600?
->>
->> This can be addressed later.
->>
->> The model could be more precise since the driver is masking the value
->> already we should be fine. See commit 3fb2e2aeafb2 ("i2c: aspeed: disable
->> additional device addresses on ast2[56]xx") from Zeiv.
->>
->>  From the datasheet.
->> On the AST2400 (only 1 slave address)
->>
->>    * no upper bits
->>
->> On the AST2500 (2 possible slave addresses),
->>
->>    * bit[31] : Slave Address match indicator
->>    * bit[30] : Slave Address Receiving pending
->>
->> On the AST2600 (3 possible slave addresses),
->>
->>    * bit[31-30] : Slave Address match indicator
->>    * bit[29] : Slave Address Receiving pending
->>
->> Thanks,
->>
->> C.
->>
->>>
->>> But with the above patch, all works an intended and no "workaround"
->>> required.
->>>
->>>>> Finally, patch 6 adds an example device using this new API. The device
->>>>> is a simple "echo" device that upon being sent a set of bytes uses the
->>>>> first byte as the address of the slave to echo to.
->>>>>
->>>>> With this combined I am able to boot up Linux on an emulated Aspeed 2600
->>>>> evaluation board and have the i2c echo device write into a Linux slave
->>>>> EEPROM. Assuming the echo device is on address 0x42:
->>>>>
->>>>>     # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-15/new_device
->>>>>     i2c i2c-15: new_device: Instantiated device slave-24c02 at 0x64
->>>>>     # i2cset -y 15 0x42 0x64 0x00 0xaa i
->>>>>     # hexdump /sys/bus/i2c/devices/15-1064/slave-eeprom
->>>>>     0000000 ffaa ffff ffff ffff ffff ffff ffff ffff
->>>>>     0000010 ffff ffff ffff ffff ffff ffff ffff ffff
->>>>>     *
->>>>>     0000100
->>>>
->>>> I have started working on buildroot images  :
->>>>
->>>>    https://github.com/legoater/buildroot/commits/aspeed
->>>>
->>>> The resulting files are quite small :
->>>>
->>>>      $ ll output/images/
->>>>      total 86040
->>>>      drwxr-xr-x 2 legoater legoater     4096 Jun  1 20:01 ./
->>>>      drwxrwxr-x 6 legoater legoater     4096 Jun  1 19:40 ../
->>>>      -rwxr-xr-x 1 legoater legoater    36837 Jun  1 20:01 aspeed-ast2600-evb.dtb*
->>>>      -rw-r--r-- 1 legoater legoater 67108864 Jun  1 20:01 flash.img
->>>>      -rw-r--r-- 1 legoater legoater  6682796 Jun  1 20:01 image.itb
->>>>      -rw-r--r-- 1 legoater legoater     1846 Jun  1 20:01 image.its
->>>>      -rw-r--r-- 1 legoater legoater  3168768 Jun  1 20:01 rootfs.cpio
->>>>      -rw-r--r-- 1 legoater legoater  1026660 Jun  1 20:01 rootfs.cpio.xz
->>>>      -rw-r--r-- 1 legoater legoater  3788800 Jun  1 20:01 rootfs.tar
->>>>      -rw-r--r-- 1 legoater legoater   653777 Jun  1 20:00 u-boot.bin
->>>>      -rw-r--r-- 1 legoater legoater  5617280 Jun  1 20:01 zImage
->>>>
->>>> I will probably host them on GH and we could use them under avocado
->>>> to extend the tests.
->>>>
->>>>
->>>> They should boot real HW. I will submit the defconfigs to buildroot
->>>> after more tests and cleanups.
->>>>
->>>
->>> Nice!
->>
+-- 
+2.34.1
 

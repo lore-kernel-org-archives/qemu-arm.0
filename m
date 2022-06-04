@@ -1,104 +1,104 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp6078246lfh;
-        Fri, 3 Jun 2022 21:29:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyl2h5cbW91RqJTrZYS04BlUYUNQjLLzx4VhzBWhhJZ1bqoVcLGALxTgk9j4TE0JRY6aUs6
-X-Received: by 2002:a05:620a:cc1:b0:6a3:4f36:decb with SMTP id b1-20020a05620a0cc100b006a34f36decbmr8836053qkj.740.1654316948570;
-        Fri, 03 Jun 2022 21:29:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654316948; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp6079075lfh;
+        Fri, 3 Jun 2022 21:31:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwZb9zFzeASrczfYogpTYKSbMLtUjFYCax+PRHlSmTrJlz+dEMP2e5IQacHT5N+SB3U8RPa
+X-Received: by 2002:a05:620a:244b:b0:6a5:b92e:9b with SMTP id h11-20020a05620a244b00b006a5b92e009bmr8949677qkn.610.1654317081635;
+        Fri, 03 Jun 2022 21:31:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654317081; cv=none;
         d=google.com; s=arc-20160816;
-        b=sZsvBEkdDMlB0pua+hIA0bnFaUmzpYOeAHjllcJLEthoJFlUszWW2iKCD4ohf8pj94
-         n3TDCJhGgLLHkrI5Qv43KFrqSHGQZi01pf/1liTjllhhRQ8gVJdtFqK9hwZ4vugwkcJf
-         ReneQYbrXAUFQ1FuUTkw094XIyTnzPA8oVZj75tAbZ/D0zlAbaehL0VfaMvfvoceWiVu
-         +Bd6C8iTqMK1vm+wuwcUuOuvoiqD9Ay8AJitbNQUUnFYmX8/w5H9EbRS2WrxMM+33dV/
-         GUYblfp/UxdqEj0dmliwxXGv4rXkXb97LXR4jzz4i6FRnups1IB93xF8zVAFAEmXpjjo
-         jEEg==
+        b=zgD8rr3GAUiJuWAFCXtzcH3m1zmWX368bpubuokVbnog6ko1xuShivSivySC+kenIG
+         BeGaA8H0TMKBBm/Omu47g9Zgrz6sUwhaopaR7xjbT2fwboHSpWv/ullyXOwvt3qYBALV
+         dlXjsVLx3eIdnCRToMBiyExOfysToRmpLHMiIpHtqzUN9MEZ2tpqQhNvgKtChTmp88HC
+         ohExSihC00tO9dXnGOBv8cDOK6SPMkXVoHWBs+2lXZw5a31doZdbbenfhl2OEp13IR1G
+         HNYOyKCMfkL3ol7iFYwgjq/Y782bzHYqpUc1AZV/CILUe+hDK5oGjmlIqN5is9TBGS75
+         hxjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=wtKVh+cEc+jGez4qiMWVy6WVEeDNoJJFBFME/IY/n24=;
-        b=f5AjLAX3LrcikdzMXjtLST2BPw6m6zIgLrnwhcRiDw/KJ3Fm82x5SUScZw1gWs3Tnw
-         5vJZTZ4vjYp/5bSI6n2L7q+2+TeIpdikpUTtspxFwE7RttSx8mS5PzI3Km5o1LKLlDt9
-         OGgBYOztD12i9Hd060CMAwTWUPRBPUyDKWCCVQSocqQl89/0NbibxChT/v2FHysVswXN
-         YplQ1GN5+UsMu6vtjHZeA+uToOZZbo6Ngz7O5m30+veiZVK1Yck2Q38JFpg2FVUOLpPY
-         29hBWo8O25xG64sLIN959HET0aChDM2MC1NsnkyhUqNF8ly74mow76tLG7/wmj6ahBpw
-         kb4A==
+        bh=qkd0B4g6jM3nkL28VlmdmN6+46UTMQek41TjlfeZ+tg=;
+        b=ND1d0b30uJns07Q2gZcCJsj9LBpelPNbIeHy1DcTlxQl9O7qUvqOcRvKOq8h3w8wUm
+         Bf1rtzrOFbRut6ZbaUAaxa+XnD4C3o7v/qbrpvVHp8lm3JoLmjU6w5a7HDIzTQ+ZxccA
+         PD4O4SUvr0mJ2tRC5xAHWMawzWgVufnLicfW2JZMLX0JMuB9Uf5alZI+xW7OLZV1jYVU
+         WiPGQB1pq9hjAsqWyHhydB30YRF12LpTYXzdY6VYHCjSNjTax+I4wCT9ZoZjv0ZPDTxW
+         v1ERKxj69IGBPPhWvegyNUF2TMg4Chmp0b3s4Eoy5Ut8eEqdP/nfiryNf6vDcQVttc0k
+         YFnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vXHXbEtb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QKfnAh48;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m136-20020a37a38e000000b006a698b87321si2243366qke.424.2022.06.03.21.29.08
+        by mx.google.com with ESMTPS id q16-20020a05620a025000b006a69b65717asi2030740qkn.377.2022.06.03.21.31.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jun 2022 21:29:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Jun 2022 21:31:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vXHXbEtb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QKfnAh48;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60290 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34766 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nxLPQ-0005tR-2I
-	for alex.bennee@linaro.org; Sat, 04 Jun 2022 00:29:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37058)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1nxLRZ-0007lN-5P
+	for alex.bennee@linaro.org; Sat, 04 Jun 2022 00:31:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36996)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nxL3W-0008HK-Bx
- for qemu-arm@nongnu.org; Sat, 04 Jun 2022 00:06:30 -0400
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e]:53097)
+ id 1nxL3V-0008BF-0u
+ for qemu-devel@nongnu.org; Sat, 04 Jun 2022 00:06:29 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:50691)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nxL3T-0008V3-Ac
- for qemu-arm@nongnu.org; Sat, 04 Jun 2022 00:06:30 -0400
-Received: by mail-pj1-x102e.google.com with SMTP id gd1so8715234pjb.2
- for <qemu-arm@nongnu.org>; Fri, 03 Jun 2022 21:06:26 -0700 (PDT)
+ id 1nxL3S-0008V4-Hc
+ for qemu-devel@nongnu.org; Sat, 04 Jun 2022 00:06:28 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id e24so8741524pjt.0
+ for <qemu-devel@nongnu.org>; Fri, 03 Jun 2022 21:06:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=wtKVh+cEc+jGez4qiMWVy6WVEeDNoJJFBFME/IY/n24=;
- b=vXHXbEtbbcFjNjtLusPGZ+lJ53Ls5ucgvBDL9LCYemaqD6CAIRofxIl9rnmZt2FwEq
- Ifxp/1WVy4bZBALf0gbwM+7P5GU2/iCvdBz0IH0zT2s056VTrhw2VG5LgHWMn09C0SCz
- GimxSx+9iurXEw3rfS0+ea26BZolCVTh4azAyEO7hRiKnCji2NhPMK4sfqY8Jo5aNmdw
- KYLxMgLyBeIRTx5rYRPp3mAKVSYtpaGPcomMmzHOWv+5m5lQWOp/8FyMbrZ8Gd0q7hqy
- Wqy9Y786FBKValYITF2rRKl0FxOkjWf+NPeMMtSctj6C0C38VZOeZGltZy03rKpGla0k
- CIMA==
+ bh=qkd0B4g6jM3nkL28VlmdmN6+46UTMQek41TjlfeZ+tg=;
+ b=QKfnAh48w/6pL2qxSb4QBEVbra2oS9p4L4Ckt3nlLJ9YZC+50zh/86TlIow5GGanHY
+ ORV87jwPPI/XavX/yPqLgto6PIbHKp4T0yTPqReRyBhRqYAaO3q1ojmRb5YMKSFUIuBf
+ jgT01XeGP8FOaJFIWXaY178Qmxgk8AAn/Xs6VsAMxKH+nKqdoHIscYvq1HLIp4CQL4q2
+ R8J8NF1ijCno+XeK4QQDWzDEIFTeOmFTlaLCmcQo15k1F/IwaQKL19XoNMklWK5/XlcB
+ qpGaN0dZ638ZdD9rR7WV3tivf/CDNVLVo8CgOC2kJqS0M6qo0vu15dhbZieLzQTKkpg1
+ dPCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=wtKVh+cEc+jGez4qiMWVy6WVEeDNoJJFBFME/IY/n24=;
- b=srcf4cUj5NRrqx4mFxbhzZ9rUZGfzJHTeHzxHWL08PsNP5jKbNF6f1bDui+dC3oGZ/
- FhvCdgrqY4YWWdqn6x7NtpxcXtXY9euhvUhCGxanb8cAL3eVkg9YKPPtY3nF2Fbsq27b
- a5eHIIN6K2Yp+YMIh4NCrgP8F1w12aPoui5W9ldOlXKOabsEAhFYwTiJ/eb/frhQk0Np
- JAuXvZE9XWjvMTVZQBFZ68SOmLpgXdTlQCGSRmrPwxepF1ESzQpC8QVQjNCSHR2d/MK9
- ZF0zlf5Uy1I+KiiuCVTh+xqxFnR/bnqYSJ6n7dfrXoL2ve8iF5dJHZ6D1FoN2JSLzpiq
- 3qhQ==
-X-Gm-Message-State: AOAM5316kM2PNpm2KEPMI2JvVSRdi3iW8xwJySky8OEcsyo5B6yvhL2e
- V0GCo8utSdr/N0WdCGf58eRe/WBHPHXTpA==
-X-Received: by 2002:a17:90b:4a4c:b0:1e4:dcfc:e688 with SMTP id
- lb12-20020a17090b4a4c00b001e4dcfce688mr18753413pjb.38.1654315586483; 
- Fri, 03 Jun 2022 21:06:26 -0700 (PDT)
+ bh=qkd0B4g6jM3nkL28VlmdmN6+46UTMQek41TjlfeZ+tg=;
+ b=AByWfONLYwWnkHN6otY33b80uxX0O5u51CQVU5C9+fgF3FDIUOh0gIOj6COx4A3A6e
+ eCMJpE61NAMptrP6sNyl0AvlHW1ZtdiCsb3yDaAxuC79mM6KrUhbAroQkT76jc99L6Ul
+ QyC2YYu8rkm/JMq/veD4L+o/phqLC5iCHYFhnEvZVhLPiafr5yE5Qd82oV/YASSPaDgf
+ G1pPlLD3x9PWUIEE/QF29whcOoH/SaJZsmDmrEpwXo7DCjChGTiEMMCJpelXt63lKQl+
+ lV4ounpK54HHUZvS38ePFQnHysCKZodtfdgb2T66AoW3Nvc/6hm4Y5p/W6ca+iDePcvb
+ lPPw==
+X-Gm-Message-State: AOAM533cRCD3F90OXWM/eZB5YC+1Jy8QjE/cXDoXfmLtUoTy6dbeux87
+ L4hG0RNKTzfByBqa24LNscLtvJnyoglR5A==
+X-Received: by 2002:a17:902:a507:b0:162:2a77:7363 with SMTP id
+ s7-20020a170902a50700b001622a777363mr13336670plq.115.1654315585767; 
+ Fri, 03 Jun 2022 21:06:25 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1547:e101:3286:cc26:3d5e:3f94])
  by smtp.gmail.com with ESMTPSA id
  a37-20020a631a65000000b003c14af50626sm6093779pgm.62.2022.06.03.21.06.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Jun 2022 21:06:26 -0700 (PDT)
+ Fri, 03 Jun 2022 21:06:25 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 19/28] target/arm: Move get_S1prot, get_S2prot to ptw.c
-Date: Fri,  3 Jun 2022 21:05:58 -0700
-Message-Id: <20220604040607.269301-20-richard.henderson@linaro.org>
+Subject: [PATCH 18/28] target/arm: Move arm_pamax, pamax_map into ptw.c
+Date: Fri,  3 Jun 2022 21:05:57 -0700
+Message-Id: <20220604040607.269301-19-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220604040607.269301-1-richard.henderson@linaro.org>
 References: <20220604040607.269301-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,320 +107,113 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xnu+ShwAc7ct
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E+gKQgix6BVV
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.h    |   3 --
- target/arm/helper.c | 128 --------------------------------------------
- target/arm/ptw.c    | 128 ++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 128 insertions(+), 131 deletions(-)
+ target/arm/ptw.h    |  2 --
+ target/arm/helper.c | 25 -------------------------
+ target/arm/ptw.c    | 25 +++++++++++++++++++++++++
+ 3 files changed, 25 insertions(+), 27 deletions(-)
 
 diff --git a/target/arm/ptw.h b/target/arm/ptw.h
-index fba650d01c..93147e0b06 100644
+index 28b8cb9fb8..fba650d01c 100644
 --- a/target/arm/ptw.h
 +++ b/target/arm/ptw.h
-@@ -29,9 +29,6 @@ ARMVAParameters aa32_va_parameters(CPUARMState *env, uint32_t va,
-                                    ARMMMUIdx mmu_idx);
- bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
-                         int inputsize, int stride, int outputsize);
--int get_S2prot(CPUARMState *env, int s2ap, int xn, bool s1_is_el0);
--int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
--               int ap, int ns, int xn, int pxn);
+@@ -11,8 +11,6 @@
  
- #endif /* !CONFIG_USER_ONLY */
- #endif /* TARGET_ARM_PTW_H */
+ #ifndef CONFIG_USER_ONLY
+ 
+-extern const uint8_t pamax_map[7];
+-
+ bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx);
+ bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx);
+ uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx, int ttbrn);
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 001d632cd1..7aadc6eeb9 100644
+index 4ed2093acf..001d632cd1 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -10579,134 +10579,6 @@ int simple_ap_to_rw_prot_is_user(int ap, bool is_user)
-     }
+@@ -10778,31 +10778,6 @@ bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
  }
+ #endif /* !CONFIG_USER_ONLY */
  
--/* Translate S2 section/page access permissions to protection flags
-- *
-- * @env:     CPUARMState
-- * @s2ap:    The 2-bit stage2 access permissions (S2AP)
-- * @xn:      XN (execute-never) bits
-- * @s1_is_el0: true if this is S2 of an S1+2 walk for EL0
-- */
--int get_S2prot(CPUARMState *env, int s2ap, int xn, bool s1_is_el0)
+-/* This mapping is common between ID_AA64MMFR0.PARANGE and TCR_ELx.{I}PS. */
+-const uint8_t pamax_map[] = {
+-    [0] = 32,
+-    [1] = 36,
+-    [2] = 40,
+-    [3] = 42,
+-    [4] = 44,
+-    [5] = 48,
+-    [6] = 52,
+-};
+-
+-/* The cpu-specific constant value of PAMax; also used by hw/arm/virt. */
+-unsigned int arm_pamax(ARMCPU *cpu)
 -{
--    int prot = 0;
+-    unsigned int parange =
+-        FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
 -
--    if (s2ap & 1) {
--        prot |= PAGE_READ;
--    }
--    if (s2ap & 2) {
--        prot |= PAGE_WRITE;
--    }
--
--    if (cpu_isar_feature(any_tts2uxn, env_archcpu(env))) {
--        switch (xn) {
--        case 0:
--            prot |= PAGE_EXEC;
--            break;
--        case 1:
--            if (s1_is_el0) {
--                prot |= PAGE_EXEC;
--            }
--            break;
--        case 2:
--            break;
--        case 3:
--            if (!s1_is_el0) {
--                prot |= PAGE_EXEC;
--            }
--            break;
--        default:
--            g_assert_not_reached();
--        }
--    } else {
--        if (!extract32(xn, 1, 1)) {
--            if (arm_el_is_aa64(env, 2) || prot & PAGE_READ) {
--                prot |= PAGE_EXEC;
--            }
--        }
--    }
--    return prot;
--}
--
--/* Translate section/page access permissions to protection flags
-- *
-- * @env:     CPUARMState
-- * @mmu_idx: MMU index indicating required translation regime
-- * @is_aa64: TRUE if AArch64
-- * @ap:      The 2-bit simple AP (AP[2:1])
-- * @ns:      NS (non-secure) bit
-- * @xn:      XN (execute-never) bit
-- * @pxn:     PXN (privileged execute-never) bit
-- */
--int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
--               int ap, int ns, int xn, int pxn)
--{
--    bool is_user = regime_is_user(env, mmu_idx);
--    int prot_rw, user_rw;
--    bool have_wxn;
--    int wxn = 0;
--
--    assert(mmu_idx != ARMMMUIdx_Stage2);
--    assert(mmu_idx != ARMMMUIdx_Stage2_S);
--
--    user_rw = simple_ap_to_rw_prot_is_user(ap, true);
--    if (is_user) {
--        prot_rw = user_rw;
--    } else {
--        if (user_rw && regime_is_pan(env, mmu_idx)) {
--            /* PAN forbids data accesses but doesn't affect insn fetch */
--            prot_rw = 0;
--        } else {
--            prot_rw = simple_ap_to_rw_prot_is_user(ap, false);
--        }
--    }
--
--    if (ns && arm_is_secure(env) && (env->cp15.scr_el3 & SCR_SIF)) {
--        return prot_rw;
--    }
--
--    /* TODO have_wxn should be replaced with
--     *   ARM_FEATURE_V8 || (ARM_FEATURE_V7 && ARM_FEATURE_EL2)
--     * when ARM_FEATURE_EL2 starts getting set. For now we assume all LPAE
--     * compatible processors have EL2, which is required for [U]WXN.
+-    /*
+-     * id_aa64mmfr0 is a read-only register so values outside of the
+-     * supported mappings can be considered an implementation error.
 -     */
--    have_wxn = arm_feature(env, ARM_FEATURE_LPAE);
--
--    if (have_wxn) {
--        wxn = regime_sctlr(env, mmu_idx) & SCTLR_WXN;
--    }
--
--    if (is_aa64) {
--        if (regime_has_2_ranges(mmu_idx) && !is_user) {
--            xn = pxn || (user_rw & PAGE_WRITE);
--        }
--    } else if (arm_feature(env, ARM_FEATURE_V7)) {
--        switch (regime_el(env, mmu_idx)) {
--        case 1:
--        case 3:
--            if (is_user) {
--                xn = xn || !(user_rw & PAGE_READ);
--            } else {
--                int uwxn = 0;
--                if (have_wxn) {
--                    uwxn = regime_sctlr(env, mmu_idx) & SCTLR_UWXN;
--                }
--                xn = xn || !(prot_rw & PAGE_READ) || pxn ||
--                     (uwxn && (user_rw & PAGE_WRITE));
--            }
--            break;
--        case 2:
--            break;
--        }
--    } else {
--        xn = wxn = 0;
--    }
--
--    if (xn || (wxn && (prot_rw & PAGE_WRITE))) {
--        return prot_rw;
--    }
--    return prot_rw | PAGE_EXEC;
+-    assert(parange < ARRAY_SIZE(pamax_map));
+-    return pamax_map[parange];
 -}
 -
- /*
-  * check_s2_mmu_setup
-  * @cpu:        ARMCPU
+ int aa64_va_parameter_tbi(uint64_t tcr, ARMMMUIdx mmu_idx)
+ {
+     if (regime_has_2_ranges(mmu_idx)) {
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index d754273fa1..af9ad42028 100644
+index e4b860d2ae..d754273fa1 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -487,6 +487,134 @@ do_fault:
-     return true;
- }
+@@ -23,6 +23,31 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+                                ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
+     __attribute__((nonnull));
  
-+/*
-+ * Translate S2 section/page access permissions to protection flags
-+ * @env:     CPUARMState
-+ * @s2ap:    The 2-bit stage2 access permissions (S2AP)
-+ * @xn:      XN (execute-never) bits
-+ * @s1_is_el0: true if this is S2 of an S1+2 walk for EL0
-+ */
-+static int get_S2prot(CPUARMState *env, int s2ap, int xn, bool s1_is_el0)
++/* This mapping is common between ID_AA64MMFR0.PARANGE and TCR_ELx.{I}PS. */
++static const uint8_t pamax_map[] = {
++    [0] = 32,
++    [1] = 36,
++    [2] = 40,
++    [3] = 42,
++    [4] = 44,
++    [5] = 48,
++    [6] = 52,
++};
++
++/* The cpu-specific constant value of PAMax; also used by hw/arm/virt. */
++unsigned int arm_pamax(ARMCPU *cpu)
 +{
-+    int prot = 0;
++    unsigned int parange =
++        FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
 +
-+    if (s2ap & 1) {
-+        prot |= PAGE_READ;
-+    }
-+    if (s2ap & 2) {
-+        prot |= PAGE_WRITE;
-+    }
-+
-+    if (cpu_isar_feature(any_tts2uxn, env_archcpu(env))) {
-+        switch (xn) {
-+        case 0:
-+            prot |= PAGE_EXEC;
-+            break;
-+        case 1:
-+            if (s1_is_el0) {
-+                prot |= PAGE_EXEC;
-+            }
-+            break;
-+        case 2:
-+            break;
-+        case 3:
-+            if (!s1_is_el0) {
-+                prot |= PAGE_EXEC;
-+            }
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+    } else {
-+        if (!extract32(xn, 1, 1)) {
-+            if (arm_el_is_aa64(env, 2) || prot & PAGE_READ) {
-+                prot |= PAGE_EXEC;
-+            }
-+        }
-+    }
-+    return prot;
-+}
-+
-+/*
-+ * Translate section/page access permissions to protection flags
-+ * @env:     CPUARMState
-+ * @mmu_idx: MMU index indicating required translation regime
-+ * @is_aa64: TRUE if AArch64
-+ * @ap:      The 2-bit simple AP (AP[2:1])
-+ * @ns:      NS (non-secure) bit
-+ * @xn:      XN (execute-never) bit
-+ * @pxn:     PXN (privileged execute-never) bit
-+ */
-+static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
-+                      int ap, int ns, int xn, int pxn)
-+{
-+    bool is_user = regime_is_user(env, mmu_idx);
-+    int prot_rw, user_rw;
-+    bool have_wxn;
-+    int wxn = 0;
-+
-+    assert(mmu_idx != ARMMMUIdx_Stage2);
-+    assert(mmu_idx != ARMMMUIdx_Stage2_S);
-+
-+    user_rw = simple_ap_to_rw_prot_is_user(ap, true);
-+    if (is_user) {
-+        prot_rw = user_rw;
-+    } else {
-+        if (user_rw && regime_is_pan(env, mmu_idx)) {
-+            /* PAN forbids data accesses but doesn't affect insn fetch */
-+            prot_rw = 0;
-+        } else {
-+            prot_rw = simple_ap_to_rw_prot_is_user(ap, false);
-+        }
-+    }
-+
-+    if (ns && arm_is_secure(env) && (env->cp15.scr_el3 & SCR_SIF)) {
-+        return prot_rw;
-+    }
-+
-+    /* TODO have_wxn should be replaced with
-+     *   ARM_FEATURE_V8 || (ARM_FEATURE_V7 && ARM_FEATURE_EL2)
-+     * when ARM_FEATURE_EL2 starts getting set. For now we assume all LPAE
-+     * compatible processors have EL2, which is required for [U]WXN.
++    /*
++     * id_aa64mmfr0 is a read-only register so values outside of the
++     * supported mappings can be considered an implementation error.
 +     */
-+    have_wxn = arm_feature(env, ARM_FEATURE_LPAE);
-+
-+    if (have_wxn) {
-+        wxn = regime_sctlr(env, mmu_idx) & SCTLR_WXN;
-+    }
-+
-+    if (is_aa64) {
-+        if (regime_has_2_ranges(mmu_idx) && !is_user) {
-+            xn = pxn || (user_rw & PAGE_WRITE);
-+        }
-+    } else if (arm_feature(env, ARM_FEATURE_V7)) {
-+        switch (regime_el(env, mmu_idx)) {
-+        case 1:
-+        case 3:
-+            if (is_user) {
-+                xn = xn || !(user_rw & PAGE_READ);
-+            } else {
-+                int uwxn = 0;
-+                if (have_wxn) {
-+                    uwxn = regime_sctlr(env, mmu_idx) & SCTLR_UWXN;
-+                }
-+                xn = xn || !(prot_rw & PAGE_READ) || pxn ||
-+                     (uwxn && (user_rw & PAGE_WRITE));
-+            }
-+            break;
-+        case 2:
-+            break;
-+        }
-+    } else {
-+        xn = wxn = 0;
-+    }
-+
-+    if (xn || (wxn && (prot_rw & PAGE_WRITE))) {
-+        return prot_rw;
-+    }
-+    return prot_rw | PAGE_EXEC;
++    assert(parange < ARRAY_SIZE(pamax_map));
++    return pamax_map[parange];
 +}
 +
- /**
-  * get_phys_addr_lpae: perform one stage of page table walk, LPAE format
-  *
+ static bool regime_translation_big_endian(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+     return (regime_sctlr(env, mmu_idx) & SCTLR_EE) != 0;
 -- 
 2.34.1
 

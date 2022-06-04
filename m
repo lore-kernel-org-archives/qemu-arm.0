@@ -1,111 +1,111 @@
-Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp6074840lfh;
-        Fri, 3 Jun 2022 21:17:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxL1NTrPv7/I91RKfbLD90x0WqMXI0TRgxoyM2uK4i3RgqGvFYA37qxqIZCEe9a4sdn/4s3
-X-Received: by 2002:a05:620a:e8a:b0:69c:1f96:b247 with SMTP id w10-20020a05620a0e8a00b0069c1f96b247mr9039027qkm.234.1654316274663;
-        Fri, 03 Jun 2022 21:17:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1654316274; cv=none;
+Received: by 2002:ac2:4318:0:0:0:0:0 with SMTP id l24csp6074997lfh;
+        Fri, 3 Jun 2022 21:18:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxBEwyOdSEhLeuiTPJSr6jPOAxA4XbQvm3H6PKM5ccRHmHbRs3K7j+WmA/B1fw67j4Zi3CJ
+X-Received: by 2002:a05:620a:27cd:b0:6a3:756f:8267 with SMTP id i13-20020a05620a27cd00b006a3756f8267mr9034585qkp.374.1654316312605;
+        Fri, 03 Jun 2022 21:18:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654316312; cv=none;
         d=google.com; s=arc-20160816;
-        b=eTne/rJ2EelILf3e/vXdQTsiEOQNb8ARXIYwgiOU31blDee9/gS5eNyThnzFezFeb0
-         +rt6qF0qORFaHS/kPirSUwOECXAUKlyKCd33G043Xv9291OUwKo5OTQdTldCh9wpaBV1
-         qKG7gELMd8LhOEYV4QPxyVP5TD9g5/XrDGBmu46X+t8U+oJKQhoiwiIlDhqZLa5teq0E
-         QcCs86dzsASqGEs2ze7t6/vF4uBFmWrDrfAiENTF92DXh5cGDF/jozyYsx++L6JNgW1i
-         0nBdO1X5sxwwF5QB7pDL5ZNg1DDPS9okdzDg074ehCh7KH2x1YrxN6B4oV4sdGiu0E00
-         O6xw==
+        b=Vjf751JKtHVo9uarURN9SUJvC7hBQzlj0YOxD3rVIA9WiRau1edw4aZJ/evjfiDnK2
+         Km3j+yQqQEnRlmXZUzO6c6ucCLyiaaaPgwkDDw4Sa+qw1DB+2e64PzRoit+FDy2HQ7iD
+         i76ypBIZSx+dGhfLc4z4RcDZjLxT3AEkKheVRjQAYVwp8yQonDX1rfwzSAR89cKyUTA3
+         B7YLNhQvSdSTynGl60Dn1nb7EUkzwCpO5iOjCpJqZy+FvsvijHTp2CC2pkveonFJ9gaP
+         vKCr9mbvXZuju483LcblVKbtOIOkDTAGyybj/KQRb7kJ3zgM17lZUX9//jRtI8+AP7CV
+         a+kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=F5967HU6ZDcdq/w7bIRWwPsJ0i/7AnNCaM6zuiPdJ7g=;
-        b=DQ7qashtM42WVPgbtAMCVxWyGR+xvJiRc4eMpE48FAGxB/Fc2l423a5nFOBs3Lhn9z
-         AEBw6HWIGHxN+9nhJAs+fH/5zP+YFYORB32/IPlrQWdvCu6pZ4p7ne7C7l1cla0kdvgY
-         MN+kyAY80lvchfs/32rnXtfkT1YqONVnYed21b0js2GZEBU8++1GhtvkgQNAdMb+TDcr
-         Rv3m0Qju9jnU4uyygg2JtRO+djkjGXemlBzMsZYm5FrnrOHURemnAjFJ7myMORo7a8jm
-         wDyahCG6ZOHAhZJi1VzxMtQ1NlsoJLsA9P8HpIPUy9OR4hKuqh/mP/St4expT5k+nHF8
-         VYrQ==
+        bh=WU5z3Bzu3rwceAokLvQLv9D+G/DS17uNqZgTXkFyI+0=;
+        b=ePlSRZEkyC5FUl347so55j/e33KYiTAXPDOmMRAta3Mz8CyGMLNzqQbG2yCxF+iHWi
+         WNXeI4N5d3ee/Esu0TNeEFjyX6yFP2yTJYjQ13+PoUVQLY3/UTGvROEbxAp7KB/aca+j
+         UfSrdhbSnQ7Q1f5vGHqNcQuTEje++O+J3N3Ynlz1SUnCo8NGRynhlRzlzzL1Cj+tm/Pg
+         DeUU5+YM7HFV3K9LlUzurUzpAV6zWPcAGGQOrtb9l2xwxxD2cfkhr3HNm/JP6WE/vorq
+         J1QIrnQbaqnxKSHKPfTf0y8s73BkYGoE6K5ZMNun2AJImJLobKlGnlE3krsgzTqAM+ky
+         Jddg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lJrBryHA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KmLbh34I;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id if12-20020a0562141c4c00b0046247e40b11si318970qvb.174.2022.06.03.21.17.54
+        by mx.google.com with ESMTPS id k23-20020ac81417000000b002f53104ea7esi4101082qtj.577.2022.06.03.21.18.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jun 2022 21:17:54 -0700 (PDT)
+        Fri, 03 Jun 2022 21:18:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lJrBryHA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KmLbh34I;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40214 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41688 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1nxLEY-0000DK-4l
-	for alex.bennee@linaro.org; Sat, 04 Jun 2022 00:17:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36820)
+	id 1nxLFA-0001Ej-3S
+	for alex.bennee@linaro.org; Sat, 04 Jun 2022 00:18:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nxL3P-0007ru-SO
- for qemu-devel@nongnu.org; Sat, 04 Jun 2022 00:06:23 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:53095)
+ id 1nxL3Y-0008Of-4j
+ for qemu-devel@nongnu.org; Sat, 04 Jun 2022 00:06:32 -0400
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c]:36831)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nxL3M-00006t-UG
- for qemu-devel@nongnu.org; Sat, 04 Jun 2022 00:06:23 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id gd1so8715418pjb.2
- for <qemu-devel@nongnu.org>; Fri, 03 Jun 2022 21:06:20 -0700 (PDT)
+ id 1nxL3W-00007Y-3K
+ for qemu-devel@nongnu.org; Sat, 04 Jun 2022 00:06:31 -0400
+Received: by mail-pg1-x52c.google.com with SMTP id y187so8665024pgd.3
+ for <qemu-devel@nongnu.org>; Fri, 03 Jun 2022 21:06:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=F5967HU6ZDcdq/w7bIRWwPsJ0i/7AnNCaM6zuiPdJ7g=;
- b=lJrBryHARAPRxHJyZF9HnUx1nq1aF87miciwks4OXd4fmYfdlzIuSu4prPknoLVO9S
- dlmbihyKM87MnJlpIJJe52n7EM9iv59ejxOsJuknPofVf8uvfpXKF/4rgx/JGYYcmMIA
- Cg3PMzMVQC9CF8zsGeMHcwGDU3V14LcslrqNW4Um+q03wUJZRPS6qCYJG3l5I86F/gW7
- Yegkifv7PENWY23R2E7hXgV6XZH2k4SW48zLwaAeTih54GkcBTvrXfBQ+WIO5B7iM2tK
- u5rOIkpMvUKuAU2ruwwvWIA5EudI6xqa8Bjt1hTDW36NJcOvDFFsdKSeVC7Z+gDvDIFv
- eD0A==
+ bh=WU5z3Bzu3rwceAokLvQLv9D+G/DS17uNqZgTXkFyI+0=;
+ b=KmLbh34IZ1M3NvbeZtmVafdeC4d+uPFC9VVEsXJY/aUZOEQ8OtviIOz8NWVL5Pg4sB
+ BEzdd3KZ7zCFAOgLZrjmJECRuHrRVv4WrGyWzJMZ9MRE9ufPpzO9V9bKMiHeKfYTx9nR
+ 1Ge1O2ZjmOvOgi18at/yLDM2c20870RfkMc3uci7CMhUaGyHMRI0+OxcuPCcKFzMkdWc
+ yApTDtv12ErW7AWbrFW6uiPLXg7QocYNvktZpkiFRDSmPiXK+KxdGv3hIMDSZl4KeILD
+ aKXZE5TEKOXaDhJiYRYtFNkNYuxR38U4NkDSwapwf01aMg3kR14/nGxBjqOyw2C5/ACj
+ 6mJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=F5967HU6ZDcdq/w7bIRWwPsJ0i/7AnNCaM6zuiPdJ7g=;
- b=7gKhJ/Ct2vzm8TNOUSqhYCtNG4Wv56XuCD1L54VQLrppiN6VtquDSJeOvHv6VBFV6A
- 0nZQS10QLXj3wPFxKCek79+nG59ViLseGBz+N37Bt/rv6+81Xq6dxu/af6q+t25ejGoF
- mWHVe0bXqygJqW3tMctRG+kNmAZ5nGRajbXbHvyfGjG6UbkiqvWgWOXQBMc4aEUVg7ky
- vmhregr4tbfXpCZPBQ/3ugLgrTOo8tpfEi2YmrkaZNKR4OECTDPIsUpOsDNIefFYOL6T
- kW8e0PUC/6OEL6FGPNFaKgWmWnohY2MMCvkmkbIsTznSTIx8zvrjvEg8fRRSqYM5Bdso
- j4xw==
-X-Gm-Message-State: AOAM5316hDsfErGAU9wqSA7s67Aj2XczVWZ+umKvvMA9L63aymVhPHuO
- HNNz6R8ZkqFfmY8wq9k/4sbIqEaOFmWSzQ==
-X-Received: by 2002:a17:90a:de15:b0:1df:63dd:9cfc with SMTP id
- m21-20020a17090ade1500b001df63dd9cfcmr14317056pjv.200.1654315579607; 
- Fri, 03 Jun 2022 21:06:19 -0700 (PDT)
+ bh=WU5z3Bzu3rwceAokLvQLv9D+G/DS17uNqZgTXkFyI+0=;
+ b=LgWcvCFckrufStnvtRAR+hhTgLGxF54mrKYk7smul9Dm9nELYRWDqDIvs8COPTYSHh
+ 2cnc/0A8FgSN3OZzNATiYXrcbpToC7gg+LMU7SQPFLvEZN7Su2eybkZ6syOQha7LXdij
+ wggUT9/j4a3wW3UR/1cHFEMIrgEKNdP+AwPSeP/4roYyQAqMXgt6/2EUmNDyVIjfAmVG
+ 3gkz+zgzTBjJrFZxgzP81nGlNM8T2ntZBFxm0TooP3zSjLy5LTPD7s1I1aMORCT5IzxN
+ EGWhuV/QE7pE8QZ+N5LvHQOO2RD8CwbzGdIGzk1UjNNqkOvsZbV1WX5Wp/PofEQ5jvl8
+ OeCw==
+X-Gm-Message-State: AOAM533smp++vXFtK/PUkaG2VlL7Fjd7Wcqw3RBLU2lh3ii0i80DR4oh
+ XS186HCdCtyxhpzEYPi0OeqvM3u79gmAQQ==
+X-Received: by 2002:a65:668b:0:b0:3f6:4026:97cd with SMTP id
+ b11-20020a65668b000000b003f6402697cdmr11453154pgw.420.1654315589269; 
+ Fri, 03 Jun 2022 21:06:29 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1547:e101:3286:cc26:3d5e:3f94])
  by smtp.gmail.com with ESMTPSA id
- a37-20020a631a65000000b003c14af50626sm6093779pgm.62.2022.06.03.21.06.18
+ a37-20020a631a65000000b003c14af50626sm6093779pgm.62.2022.06.03.21.06.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Jun 2022 21:06:19 -0700 (PDT)
+ Fri, 03 Jun 2022 21:06:28 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 11/28] target/arm: Move v8m_security_lookup to ptw.c
-Date: Fri,  3 Jun 2022 21:05:50 -0700
-Message-Id: <20220604040607.269301-12-richard.henderson@linaro.org>
+Subject: [PATCH 22/28] target/arm: Move ap_to_tw_prot etc to ptw.c
+Date: Fri,  3 Jun 2022 21:06:01 -0700
+Message-Id: <20220604040607.269301-23-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220604040607.269301-1-richard.henderson@linaro.org>
 References: <20220604040607.269301-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,302 +120,215 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZBvwzXIp4XH3
-
-This function has one private helper, v8m_is_sau_exempt,
-so move that at the same time.
+X-TUID: gnJ1deSn3Lm1
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 123 ------------------------------------------
- target/arm/ptw.c    | 126 ++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 126 insertions(+), 123 deletions(-)
+ target/arm/ptw.h    | 10 ------
+ target/arm/helper.c | 77 ------------------------------------------
+ target/arm/ptw.c    | 81 +++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 81 insertions(+), 87 deletions(-)
 
+diff --git a/target/arm/ptw.h b/target/arm/ptw.h
+index 9314fb4d23..85ad576794 100644
+--- a/target/arm/ptw.h
++++ b/target/arm/ptw.h
+@@ -15,15 +15,5 @@ bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx);
+ bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx);
+ uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx, int ttbrn);
+ 
+-int ap_to_rw_prot(CPUARMState *env, ARMMMUIdx mmu_idx,
+-                  int ap, int domain_prot);
+-int simple_ap_to_rw_prot_is_user(int ap, bool is_user);
+-
+-static inline int
+-simple_ap_to_rw_prot(CPUARMState *env, ARMMMUIdx mmu_idx, int ap)
+-{
+-    return simple_ap_to_rw_prot_is_user(ap, regime_is_user(env, mmu_idx));
+-}
+-
+ #endif /* !CONFIG_USER_ONLY */
+ #endif /* TARGET_ARM_PTW_H */
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a2a5dab969..52655bbdf1 100644
+index 02e65c9e98..3a39a10e43 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -9,7 +9,6 @@
- #include "qemu/osdep.h"
- #include "qemu/units.h"
- #include "qemu/log.h"
--#include "target/arm/idau.h"
- #include "trace.h"
- #include "cpu.h"
- #include "internals.h"
-@@ -11657,128 +11656,6 @@ bool m_is_system_region(CPUARMState *env, uint32_t address)
-     return arm_feature(env, ARM_FEATURE_M) && extract32(address, 29, 3) == 0x7;
+@@ -10501,83 +10501,6 @@ bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+         g_assert_not_reached();
+     }
  }
+-
+-/* Translate section/page access permissions to page
+- * R/W protection flags
+- *
+- * @env:         CPUARMState
+- * @mmu_idx:     MMU index indicating required translation regime
+- * @ap:          The 3-bit access permissions (AP[2:0])
+- * @domain_prot: The 2-bit domain access permissions
+- */
+-int ap_to_rw_prot(CPUARMState *env, ARMMMUIdx mmu_idx, int ap, int domain_prot)
+-{
+-    bool is_user = regime_is_user(env, mmu_idx);
+-
+-    if (domain_prot == 3) {
+-        return PAGE_READ | PAGE_WRITE;
+-    }
+-
+-    switch (ap) {
+-    case 0:
+-        if (arm_feature(env, ARM_FEATURE_V7)) {
+-            return 0;
+-        }
+-        switch (regime_sctlr(env, mmu_idx) & (SCTLR_S | SCTLR_R)) {
+-        case SCTLR_S:
+-            return is_user ? 0 : PAGE_READ;
+-        case SCTLR_R:
+-            return PAGE_READ;
+-        default:
+-            return 0;
+-        }
+-    case 1:
+-        return is_user ? 0 : PAGE_READ | PAGE_WRITE;
+-    case 2:
+-        if (is_user) {
+-            return PAGE_READ;
+-        } else {
+-            return PAGE_READ | PAGE_WRITE;
+-        }
+-    case 3:
+-        return PAGE_READ | PAGE_WRITE;
+-    case 4: /* Reserved.  */
+-        return 0;
+-    case 5:
+-        return is_user ? 0 : PAGE_READ;
+-    case 6:
+-        return PAGE_READ;
+-    case 7:
+-        if (!arm_feature(env, ARM_FEATURE_V6K)) {
+-            return 0;
+-        }
+-        return PAGE_READ;
+-    default:
+-        g_assert_not_reached();
+-    }
+-}
+-
+-/* Translate section/page access permissions to page
+- * R/W protection flags.
+- *
+- * @ap:      The 2-bit simple AP (AP[2:1])
+- * @is_user: TRUE if accessing from PL0
+- */
+-int simple_ap_to_rw_prot_is_user(int ap, bool is_user)
+-{
+-    switch (ap) {
+-    case 0:
+-        return is_user ? 0 : PAGE_READ | PAGE_WRITE;
+-    case 1:
+-        return PAGE_READ | PAGE_WRITE;
+-    case 2:
+-        return is_user ? 0 : PAGE_READ;
+-    case 3:
+-        return PAGE_READ;
+-    default:
+-        g_assert_not_reached();
+-    }
+-}
+ #endif /* !CONFIG_USER_ONLY */
  
--static bool v8m_is_sau_exempt(CPUARMState *env,
--                              uint32_t address, MMUAccessType access_type)
--{
--    /* The architecture specifies that certain address ranges are
--     * exempt from v8M SAU/IDAU checks.
--     */
--    return
--        (access_type == MMU_INST_FETCH && m_is_system_region(env, address)) ||
--        (address >= 0xe0000000 && address <= 0xe0002fff) ||
--        (address >= 0xe000e000 && address <= 0xe000efff) ||
--        (address >= 0xe002e000 && address <= 0xe002efff) ||
--        (address >= 0xe0040000 && address <= 0xe0041fff) ||
--        (address >= 0xe00ff000 && address <= 0xe00fffff);
--}
--
--void v8m_security_lookup(CPUARMState *env, uint32_t address,
--                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
--                                V8M_SAttributes *sattrs)
--{
--    /* Look up the security attributes for this address. Compare the
--     * pseudocode SecurityCheck() function.
--     * We assume the caller has zero-initialized *sattrs.
--     */
--    ARMCPU *cpu = env_archcpu(env);
--    int r;
--    bool idau_exempt = false, idau_ns = true, idau_nsc = true;
--    int idau_region = IREGION_NOTVALID;
--    uint32_t addr_page_base = address & TARGET_PAGE_MASK;
--    uint32_t addr_page_limit = addr_page_base + (TARGET_PAGE_SIZE - 1);
--
--    if (cpu->idau) {
--        IDAUInterfaceClass *iic = IDAU_INTERFACE_GET_CLASS(cpu->idau);
--        IDAUInterface *ii = IDAU_INTERFACE(cpu->idau);
--
--        iic->check(ii, address, &idau_region, &idau_exempt, &idau_ns,
--                   &idau_nsc);
--    }
--
--    if (access_type == MMU_INST_FETCH && extract32(address, 28, 4) == 0xf) {
--        /* 0xf0000000..0xffffffff is always S for insn fetches */
--        return;
--    }
--
--    if (idau_exempt || v8m_is_sau_exempt(env, address, access_type)) {
--        sattrs->ns = !regime_is_secure(env, mmu_idx);
--        return;
--    }
--
--    if (idau_region != IREGION_NOTVALID) {
--        sattrs->irvalid = true;
--        sattrs->iregion = idau_region;
--    }
--
--    switch (env->sau.ctrl & 3) {
--    case 0: /* SAU.ENABLE == 0, SAU.ALLNS == 0 */
--        break;
--    case 2: /* SAU.ENABLE == 0, SAU.ALLNS == 1 */
--        sattrs->ns = true;
--        break;
--    default: /* SAU.ENABLE == 1 */
--        for (r = 0; r < cpu->sau_sregion; r++) {
--            if (env->sau.rlar[r] & 1) {
--                uint32_t base = env->sau.rbar[r] & ~0x1f;
--                uint32_t limit = env->sau.rlar[r] | 0x1f;
--
--                if (base <= address && limit >= address) {
--                    if (base > addr_page_base || limit < addr_page_limit) {
--                        sattrs->subpage = true;
--                    }
--                    if (sattrs->srvalid) {
--                        /* If we hit in more than one region then we must report
--                         * as Secure, not NS-Callable, with no valid region
--                         * number info.
--                         */
--                        sattrs->ns = false;
--                        sattrs->nsc = false;
--                        sattrs->sregion = 0;
--                        sattrs->srvalid = false;
--                        break;
--                    } else {
--                        if (env->sau.rlar[r] & 2) {
--                            sattrs->nsc = true;
--                        } else {
--                            sattrs->ns = true;
--                        }
--                        sattrs->srvalid = true;
--                        sattrs->sregion = r;
--                    }
--                } else {
--                    /*
--                     * Address not in this region. We must check whether the
--                     * region covers addresses in the same page as our address.
--                     * In that case we must not report a size that covers the
--                     * whole page for a subsequent hit against a different MPU
--                     * region or the background region, because it would result
--                     * in incorrect TLB hits for subsequent accesses to
--                     * addresses that are in this MPU region.
--                     */
--                    if (limit >= base &&
--                        ranges_overlap(base, limit - base + 1,
--                                       addr_page_base,
--                                       TARGET_PAGE_SIZE)) {
--                        sattrs->subpage = true;
--                    }
--                }
--            }
--        }
--        break;
--    }
--
--    /*
--     * The IDAU will override the SAU lookup results if it specifies
--     * higher security than the SAU does.
--     */
--    if (!idau_ns) {
--        if (sattrs->ns || (!idau_nsc && sattrs->nsc)) {
--            sattrs->ns = false;
--            sattrs->nsc = idau_nsc;
--        }
--    }
--}
--
- /* Combine either inner or outer cacheability attributes for normal
-  * memory, according to table D4-42 and pseudocode procedure
-  * CombineS1S2AttrHints() of ARM DDI 0487B.b (the ARMv8 ARM).
+ int aa64_va_parameter_tbi(uint64_t tcr, ARMMMUIdx mmu_idx)
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index b82638b5a0..c15fba43c3 100644
+index 427813ea56..9ab77c3998 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -11,6 +11,7 @@
- #include "qemu/range.h"
- #include "cpu.h"
- #include "internals.h"
-+#include "idau.h"
- #include "ptw.h"
- 
- 
-@@ -766,6 +767,131 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-     return !(*prot & (1 << access_type));
+@@ -211,6 +211,87 @@ static bool get_level1_table_address(CPUARMState *env, ARMMMUIdx mmu_idx,
+     return true;
  }
  
-+static bool v8m_is_sau_exempt(CPUARMState *env,
-+                              uint32_t address, MMUAccessType access_type)
++/*
++ * Translate section/page access permissions to page R/W protection flags
++ * @env:         CPUARMState
++ * @mmu_idx:     MMU index indicating required translation regime
++ * @ap:          The 3-bit access permissions (AP[2:0])
++ * @domain_prot: The 2-bit domain access permissions
++ */
++static int ap_to_rw_prot(CPUARMState *env, ARMMMUIdx mmu_idx,
++                         int ap, int domain_prot)
 +{
-+    /*
-+     * The architecture specifies that certain address ranges are
-+     * exempt from v8M SAU/IDAU checks.
-+     */
-+    return
-+        (access_type == MMU_INST_FETCH && m_is_system_region(env, address)) ||
-+        (address >= 0xe0000000 && address <= 0xe0002fff) ||
-+        (address >= 0xe000e000 && address <= 0xe000efff) ||
-+        (address >= 0xe002e000 && address <= 0xe002efff) ||
-+        (address >= 0xe0040000 && address <= 0xe0041fff) ||
-+        (address >= 0xe00ff000 && address <= 0xe00fffff);
-+}
++    bool is_user = regime_is_user(env, mmu_idx);
 +
-+void v8m_security_lookup(CPUARMState *env, uint32_t address,
-+                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
-+                                V8M_SAttributes *sattrs)
-+{
-+    /*
-+     * Look up the security attributes for this address. Compare the
-+     * pseudocode SecurityCheck() function.
-+     * We assume the caller has zero-initialized *sattrs.
-+     */
-+    ARMCPU *cpu = env_archcpu(env);
-+    int r;
-+    bool idau_exempt = false, idau_ns = true, idau_nsc = true;
-+    int idau_region = IREGION_NOTVALID;
-+    uint32_t addr_page_base = address & TARGET_PAGE_MASK;
-+    uint32_t addr_page_limit = addr_page_base + (TARGET_PAGE_SIZE - 1);
-+
-+    if (cpu->idau) {
-+        IDAUInterfaceClass *iic = IDAU_INTERFACE_GET_CLASS(cpu->idau);
-+        IDAUInterface *ii = IDAU_INTERFACE(cpu->idau);
-+
-+        iic->check(ii, address, &idau_region, &idau_exempt, &idau_ns,
-+                   &idau_nsc);
++    if (domain_prot == 3) {
++        return PAGE_READ | PAGE_WRITE;
 +    }
 +
-+    if (access_type == MMU_INST_FETCH && extract32(address, 28, 4) == 0xf) {
-+        /* 0xf0000000..0xffffffff is always S for insn fetches */
-+        return;
-+    }
-+
-+    if (idau_exempt || v8m_is_sau_exempt(env, address, access_type)) {
-+        sattrs->ns = !regime_is_secure(env, mmu_idx);
-+        return;
-+    }
-+
-+    if (idau_region != IREGION_NOTVALID) {
-+        sattrs->irvalid = true;
-+        sattrs->iregion = idau_region;
-+    }
-+
-+    switch (env->sau.ctrl & 3) {
-+    case 0: /* SAU.ENABLE == 0, SAU.ALLNS == 0 */
-+        break;
-+    case 2: /* SAU.ENABLE == 0, SAU.ALLNS == 1 */
-+        sattrs->ns = true;
-+        break;
-+    default: /* SAU.ENABLE == 1 */
-+        for (r = 0; r < cpu->sau_sregion; r++) {
-+            if (env->sau.rlar[r] & 1) {
-+                uint32_t base = env->sau.rbar[r] & ~0x1f;
-+                uint32_t limit = env->sau.rlar[r] | 0x1f;
-+
-+                if (base <= address && limit >= address) {
-+                    if (base > addr_page_base || limit < addr_page_limit) {
-+                        sattrs->subpage = true;
-+                    }
-+                    if (sattrs->srvalid) {
-+                        /*
-+                         * If we hit in more than one region then we must report
-+                         * as Secure, not NS-Callable, with no valid region
-+                         * number info.
-+                         */
-+                        sattrs->ns = false;
-+                        sattrs->nsc = false;
-+                        sattrs->sregion = 0;
-+                        sattrs->srvalid = false;
-+                        break;
-+                    } else {
-+                        if (env->sau.rlar[r] & 2) {
-+                            sattrs->nsc = true;
-+                        } else {
-+                            sattrs->ns = true;
-+                        }
-+                        sattrs->srvalid = true;
-+                        sattrs->sregion = r;
-+                    }
-+                } else {
-+                    /*
-+                     * Address not in this region. We must check whether the
-+                     * region covers addresses in the same page as our address.
-+                     * In that case we must not report a size that covers the
-+                     * whole page for a subsequent hit against a different MPU
-+                     * region or the background region, because it would result
-+                     * in incorrect TLB hits for subsequent accesses to
-+                     * addresses that are in this MPU region.
-+                     */
-+                    if (limit >= base &&
-+                        ranges_overlap(base, limit - base + 1,
-+                                       addr_page_base,
-+                                       TARGET_PAGE_SIZE)) {
-+                        sattrs->subpage = true;
-+                    }
-+                }
-+            }
++    switch (ap) {
++    case 0:
++        if (arm_feature(env, ARM_FEATURE_V7)) {
++            return 0;
 +        }
-+        break;
-+    }
-+
-+    /*
-+     * The IDAU will override the SAU lookup results if it specifies
-+     * higher security than the SAU does.
-+     */
-+    if (!idau_ns) {
-+        if (sattrs->ns || (!idau_nsc && sattrs->nsc)) {
-+            sattrs->ns = false;
-+            sattrs->nsc = idau_nsc;
++        switch (regime_sctlr(env, mmu_idx) & (SCTLR_S | SCTLR_R)) {
++        case SCTLR_S:
++            return is_user ? 0 : PAGE_READ;
++        case SCTLR_R:
++            return PAGE_READ;
++        default:
++            return 0;
 +        }
++    case 1:
++        return is_user ? 0 : PAGE_READ | PAGE_WRITE;
++    case 2:
++        if (is_user) {
++            return PAGE_READ;
++        } else {
++            return PAGE_READ | PAGE_WRITE;
++        }
++    case 3:
++        return PAGE_READ | PAGE_WRITE;
++    case 4: /* Reserved.  */
++        return 0;
++    case 5:
++        return is_user ? 0 : PAGE_READ;
++    case 6:
++        return PAGE_READ;
++    case 7:
++        if (!arm_feature(env, ARM_FEATURE_V6K)) {
++            return 0;
++        }
++        return PAGE_READ;
++    default:
++        g_assert_not_reached();
 +    }
 +}
 +
- static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
-                                  MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                                  hwaddr *phys_ptr, MemTxAttrs *txattrs,
++/*
++ * Translate section/page access permissions to page R/W protection flags.
++ * @ap:      The 2-bit simple AP (AP[2:1])
++ * @is_user: TRUE if accessing from PL0
++ */
++static int simple_ap_to_rw_prot_is_user(int ap, bool is_user)
++{
++    switch (ap) {
++    case 0:
++        return is_user ? 0 : PAGE_READ | PAGE_WRITE;
++    case 1:
++        return PAGE_READ | PAGE_WRITE;
++    case 2:
++        return is_user ? 0 : PAGE_READ;
++    case 3:
++        return PAGE_READ;
++    default:
++        g_assert_not_reached();
++    }
++}
++
++static int simple_ap_to_rw_prot(CPUARMState *env, ARMMMUIdx mmu_idx, int ap)
++{
++    return simple_ap_to_rw_prot_is_user(ap, regime_is_user(env, mmu_idx));
++}
++
+ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
+                              MMUAccessType access_type, ARMMMUIdx mmu_idx,
+                              hwaddr *phys_ptr, int *prot,
 -- 
 2.34.1
 
